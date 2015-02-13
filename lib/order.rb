@@ -42,23 +42,17 @@ end
 
 def add_items
   @order_list[@item] = @quantity
-  #puts @order_list
 end
 
-def unit_prices
-  unit_prices = []
-  @order_list.each do |item, quantity| 
-    unit_prices << PRICE_LIST[item]
-  
-  end
-unit_prices
+def get_item_prices
+  @unit_prices = []
+  @order_list.each{|item, quantity| @unit_prices << PRICE_LIST[item] * quantity.to_f}
+  @unit_prices
 end
 
-
-
-
-
-
+def get_overall_price
+  @unit_prices.inject(0) {|sum, i|  sum + i }
+end
 
 
 
