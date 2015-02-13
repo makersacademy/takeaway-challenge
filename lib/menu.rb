@@ -14,4 +14,8 @@ class Menu
 		@dishes << dish
 	end
 
+	def select_dish(dish)
+		@dishes.select{|item| item == dish}.first
+	end
+
 end
