@@ -58,7 +58,10 @@ def confirm_order
 end
 
 def send_text
-  puts "hello"
+  time = Time.new
+  time1hr = time + 3600
+  puts "Thank you! Your order was placed and will be delivered before #{time1hr.strftime("%I:%M%p")}."
+
 end
 
 def get_overall_price
