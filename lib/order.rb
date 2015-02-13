@@ -10,4 +10,10 @@ class Order
     @current_order[item_to_add] = quantity
   end
 
+  def total_price
+    total_price = 0
+    current_order.each {|dish, quantity| total_price += dish.price * quantity }
+    total_price
+  end
+
 end
