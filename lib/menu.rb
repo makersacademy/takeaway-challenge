@@ -1,10 +1,15 @@
 class Menu
 
-  attr_accessor :dish, :price
+attr_accessor :dishes
 
-  def initialize(dish, price = 0)
-    @dish = dish
-    @price = price
+  def initialize
+    @dishes = {
+
+      "Wolf Nipple Chips" => 12,
+      "Badgers Earlobes" => 9,
+      "Beans on Toast" => 4
+    }
+
   end
 
 end
