@@ -45,6 +45,8 @@ Order   | Collaborator
 --------|-------
 display customer item   | customer
 display quantity per item | customer, till
+send confirmation txt   | customer, twillio
+check sum is correct    | till
 update quantity | customer
 update customer item |  customer
 
