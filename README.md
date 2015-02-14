@@ -11,7 +11,7 @@ Task
 -----
 
 * Fork this repo
-* Write a Takeaway program. 
+* Write a Takeaway program.
 * Implement the following functionality:
   * list of dishes with prices
   * placing the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
@@ -25,3 +25,34 @@ Task
 
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+
+  Menu
+----------|--------------
+ Display item   |   customer
+ Update item   |
+Display item price | customer, till
+Update item price   |
+
+Customer
+-----------|--------------
+place order | menu
+change order | menu
+pay           | till
+receive change | till
+
+
+Order
+--------|-------
+display customer item   | customer
+display quantity per item | customer, till
+update quantity | customer
+update customer item |  customer
+
+Till
+-----|------
+calculate cost per item | order, menu
+calculate total cost |
+take payment    | customer
+return change  | customer
+
+
