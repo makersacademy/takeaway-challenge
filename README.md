@@ -25,3 +25,10 @@ Task
 
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+
+
+ curl -X POST https://api.twilio.com/2010-04-01/Accounts/AC44dcaf48c2de912fea75b0e472225c50/SMS/Messages.json \
+    -u AC44dcaf48c2de912fea75b0e472225c50:48311836b63933c72caaab829145bd8f \
+    --data-urlencode "From=+441173251558" \
+    --data-urlencode "To=+447737932693" \
+    --data-urlencode 'Body=Thank you! Your order was placed and will be delivered before '
