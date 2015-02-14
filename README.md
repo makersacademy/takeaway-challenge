@@ -26,14 +26,14 @@ Task
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
 
-  Menu
-----------|--------------
- Display item   |   customer
- Update item   |
-Display item price | customer, till
-Update item price   |
+  Menu               | Collaborator
+---------------------|--------------
+Display item         |customer
+Update item          |
+Display item price   | customer, till
+Update item price    |
 
-Customer
+Customer   | Collaborator
 -----------|--------------
 place order | menu
 change order | menu
@@ -41,14 +41,14 @@ pay           | till
 receive change | till
 
 
-Order
+Order   | Collaborator
 --------|-------
 display customer item   | customer
 display quantity per item | customer, till
 update quantity | customer
 update customer item |  customer
 
-Till
+Till | Collaborator
 -----|------
 calculate cost per item | order, menu
 calculate total cost |
