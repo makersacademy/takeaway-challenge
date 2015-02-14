@@ -2,9 +2,14 @@ require 'menu'
 
 describe Menu do
 
-  it 'should have a list of dishes with prices' do
-    menu = Menu.new
-    expect(menu.dishes).to include ({"Beans on Toast" => 4})
+  let(:menu) { Menu.new }
+
+  it 'should have dishes in an array' do
+    expect(menu.dishes).to eq []
+  end
+
+  it 'should display a list of dishes' do
+    expect(menu.display_dishes).to eq []
   end
 
 end

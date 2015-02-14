@@ -1,15 +1,13 @@
 class Menu
 
-attr_accessor :dishes
+attr_reader :dishes
 
   def initialize
-    @dishes = {
+    @dishes = []
+  end
 
-      "Wolf Nipple Chips" => 12,
-      "Badgers Earlobes" => 9,
-      "Beans on Toast" => 4
-    }
-
+  def display_dishes
+    @dishes
   end
 
 end
