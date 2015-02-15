@@ -10,7 +10,7 @@ class Takeaway
     account_sid = "ACaec4d28c46b3cad3b94eb351ea3231d5"
     auth_token = "04c7f3d58a93daca72f3b40bb132f310"
 
-    Twilio::REST::Client.new account_sid, auth_token
+    @texter = Twilio::REST::Client.new account_sid, auth_token
   end
 
 
@@ -46,6 +46,7 @@ class Takeaway
       raise 'That price is unexpected'
     else
       msg = order_success
+      @texter.account.messages.create({to: "+447759862868",from: "+441183240530",body: msg})
     end
   end
 
@@ -76,7 +77,7 @@ class Takeaway
 
   def order_success
     time = Time.new
-    "Thank you! Your order was placed and will be delivered before #{time.hour+1}:#{time.min}"
+    "Thank you! Your order was placed and will be delivered before #{(time.hour+1)%24}:#{time.min}"
   end
 
 
