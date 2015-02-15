@@ -2,7 +2,7 @@ require 'twilio-ruby'
 
 class Takeaway
 
-  attr_accessor :menu, :dishes_selected, :total_price
+  attr_accessor :menu, :dishes_selected, :total_price, :dishes
 
   def initialize
     @menu = Hash.new
@@ -38,5 +38,9 @@ class Takeaway
     @total_price = price.to_i * quantity.to_i
     raise 'Total price not correct' if @total_price != price.to_i * quantity.to_i
     puts total_price.to_s + '£'
+  end
+
+  def interactive_menu
+
   end
 end
