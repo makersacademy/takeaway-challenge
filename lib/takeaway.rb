@@ -9,4 +9,13 @@ class Takeaway
     }
   end
 
+  def check_order(order, total)
+    bill = order.map { |dish| dish_list[dish] }.inject(:+)
+    if bill == total
+      true
+    else
+      raise "sum is incorrect"
+    end
+  end
+
 end

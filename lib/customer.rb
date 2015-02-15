@@ -14,4 +14,8 @@ class Customer
     end
   end 
 
+  def order_from(takeaway, total)
+    takeaway.check_order(order, total)
+  end
+
 end

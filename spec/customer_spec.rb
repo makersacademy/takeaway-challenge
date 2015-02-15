@@ -18,4 +18,13 @@ describe Customer do
     expect(customer.order).to eq [:sandwich, :sandwich]
   end
 
+  it 'can place an order to a takeaway' do
+    customer = Customer.new
+    takeaway = double :takeaway
+    customer.add_to_order(:sandwich)
+    customer.add_to_order(:salad)
+    expect(takeaway).to receive(:check_order).with([:sandwich, :salad], 11)
+    customer.order_from(takeaway, 11)
+  end
+
 end
