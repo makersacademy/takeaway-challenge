@@ -18,13 +18,13 @@ describe Order do
 		expect(order.order_items).to eq [curry,kebab]
 	end
 
-	it 'should be able to total the items in the order list if there is one item' do
+	it 'should be able to total the cost of one item in the order list' do
 		order.add_item(menu,curry)
 		expect(curry).to receive(:price)
 		expect(order.order_total).to eq 500
 	end
 
-	it 'should be able to total the item in the order list if there are several items' do 
+	it 'should be able to calculate the total cost the items in the order list' do 
 		order.add_item(menu,curry)
 		order.add_item(menu,kebab)
 		expect(curry).to receive(:price)
@@ -38,4 +38,12 @@ describe Order do
 		expect(order.item_count(curry)).to eq 2
 	end
 	
+	it 'should raise an error if the total cost of the items in the order is incorrect' do
+		order.add_item(menu,curry)
+		order.add_item(menu,curry)
+		expect(curry).to receive(:price)
+		expect{order.order_total_check(950)}.to raise_error(RuntimeError, 'Order total is wrong')
+  end
+
+
 end

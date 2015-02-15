@@ -24,4 +24,8 @@ class Order
  order_items.select{|order_item| order_item == item}.count
 	end
 
+	def order_total_check(total)
+		raise 'Order total is wrong' if total != order_total
+	end
+
 end
