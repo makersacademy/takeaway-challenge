@@ -10,8 +10,11 @@ class Menu
     @dishlist << dish    
   end
 
-  def custom_order(orders)
-   orders.each {|order| @ordered << order}  
+  def custom_order(orders, total)
+   if total == orders.length
+        orders.each {|order| @ordered << order}
+      else raise 'Please check the sum of your ordered dishes'
+    end
   end
 
 end
