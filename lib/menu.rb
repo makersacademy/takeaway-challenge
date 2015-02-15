@@ -1,13 +1,25 @@
 class Menu
 
-  attr_reader :dish_list
+  attr_reader :dishes
 
   def initialize
-    @dish_list = []
+    @dishes = Hash.new
+  end
+
+  def dish_list
+    dishes.keys 
   end
 
   def add_dish(dish)
-    @dish_list << dish
+    dishes[dish] = :no_price
   end
+
+  def set_price_of(dish, to_price)
+    dishes[dish] = to_price
+  end
+
+  def price_of(dish)
+    dishes[dish]
+  end 
 
 end
