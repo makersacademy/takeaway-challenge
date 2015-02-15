@@ -3,8 +3,11 @@ require 'twilio-ruby'
 
 class TakeAway
 
-  def customer
-    'kevin'
+  attr_accessor :customer, :order
+
+  def initialize(customer, order)
+    @customer = customer
+    @order = order
   end
 
 
