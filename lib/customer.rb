@@ -1,4 +1,4 @@
-require_relative './sms.rb'
+require 'sms'
 
 class Takeaway
 
