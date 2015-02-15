@@ -1,4 +1,4 @@
-class Menu
+class Dish
 
 
 attr_accessor :name, :price

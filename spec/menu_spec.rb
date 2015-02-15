@@ -1,15 +1,15 @@
 require 'menu'
 
-describe Menu do
+describe Dish do
   
-  let(:menu){ Menu.new "frosties",1 }
+  let(:dish){ Dish.new "frosties",1 }
 
   it 'should be able to create a food item' do
-    expect(menu.name).to eq "frosties"
+    expect(dish.name).to eq "frosties"
   end
 
   it 'should be able to set a price for an item' do
-    expect(menu.price).to eq 1
+    expect(dish.price).to eq 1
   end
 
 end
