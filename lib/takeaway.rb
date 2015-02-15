@@ -1,4 +1,8 @@
+require_relative 'send_sms'
+
 class Takeaway
+
+  include Send_sms
 
   def initialize
     @order_list = {}
@@ -43,6 +47,7 @@ class Takeaway
 
   def confirm_total(num)
     if num == number_of_dishes
+      confirmation
       "Order confirmed!"
     else
       "Wrong number of dishes, please check your order"

@@ -32,4 +32,5 @@ describe Takeaway do
     expect(takeaway.confirm_total(15)).to eq("Wrong number of dishes, please check your order")
   end
 
+
 end
