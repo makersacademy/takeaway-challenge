@@ -2,9 +2,9 @@ require "takeaway"
 
 describe Takeaway do
 
-  let (:takeaway) {Takeaway.new}
-  let (:time)     {Time.new}
-  let (:customer) {double :customer}
+  let (:takeaway) { Takeaway.new     }
+  let (:time)     { Time.new         }
+  let (:customer) { double :customer }
 
   it "can generate the time and add on one hour" do
     time = Time.new
