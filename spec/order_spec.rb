@@ -45,5 +45,11 @@ describe Order do
 		expect{order.order_total_check(950)}.to raise_error(RuntimeError, 'Order total is wrong')
   end
 
+  it 'should be able to remove items form the order list' do
+  	order.add_item(menu,curry)
+  	order.remove_item(curry)
+  	expect(order.total_item_count).to eq (0)
+  end
+
 
 end

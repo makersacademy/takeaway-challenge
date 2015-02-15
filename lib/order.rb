@@ -21,11 +21,16 @@ class Order
 	end
 
 	def item_count(item)
- order_items.select{|order_item| order_item == item}.count
+ 		order_items.select{|order_item| order_item == item}.count
 	end
 
 	def order_total_check(total)
 		raise 'Order total is wrong' if total != order_total
 	end
+
+	def remove_item(item)
+		order_items.delete(item)
+	end
+
 
 end

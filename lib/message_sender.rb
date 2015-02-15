@@ -1,0 +1,3 @@
+class MessageSender
+
+end
