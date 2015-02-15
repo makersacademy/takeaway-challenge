@@ -47,6 +47,26 @@ class Takeaway
     end
   end
 
+  def calculate_price
+    @dishlist.inject(0) do |sum, dish|
+      dish_total = dish.price * dish.quantity
+      sum = sum + dish_total
+    end
+  end
+
+  def order_success
+    time = Time.new
+    "Thank you! Your order was placed and will be delivered before #{time.hour+1}:#{time.min}"
+  end
+
+  def place_order(expected_price)
+    if calculate_price != expected_price
+      raise 'That price is unexpected'
+    else
+      msg = order_success
+    end
+  end
+
 
 
 
