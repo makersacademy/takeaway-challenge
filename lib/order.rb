@@ -6,7 +6,7 @@ class Order
 		@order_items = []
 	end
 
-	def item_count
+	def total_item_count
 		@order_items.count
 	end
 
@@ -16,10 +16,12 @@ class Order
 
 	def order_total
 		total = 0
-		order_items.each do |order_item|
-			total = total + order_item.price
-		end
+		order_items.each{|order_item|total = total + order_item.price}	
 		total
+	end
+
+	def item_count(item)
+ order_items.select{|order_item| order_item == item}.count
 	end
 
 end
