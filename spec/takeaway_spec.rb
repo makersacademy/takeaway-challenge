@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   let(:takeaway) { Takeaway.new            }
-  let(:dish)     { double :dish , price: 2 }
+  let(:dish)     { double :dish , price: 2, name: 'dish' }
 
   before do
     takeaway.menu_update(dish)
