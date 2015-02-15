@@ -13,4 +13,8 @@ describe Customer do
 		expect(customer.select_food(menu)).to eq customer.selection
 	end
 
+	it 'should be able to change quantity' do
+		
+	end
+
 end

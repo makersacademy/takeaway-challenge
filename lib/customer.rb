@@ -13,6 +13,10 @@ class Customer
 		@selection
 	end
 
+	def quantity
+		
+	end
+
 	def select_food(dish)
 	selection << dish
 	end
