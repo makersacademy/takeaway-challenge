@@ -12,7 +12,7 @@ class Order
   end
 
   def sum
-    dishes.each { |dish| @total += dish.price }
+    dishes.map { |dish| @total += dish.price }
   end
 
 

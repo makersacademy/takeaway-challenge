@@ -2,12 +2,14 @@ require 'customer'
 
 describe Customer do
 
-  # it 'should be able to order a dish from the takeaway' do
-  #   customer.order_dish
-  #   expect()
-  # end
+  let(:customer) { Customer.new('Kev', +447730613823) }
 
+  it 'should have a contact name' do
+    expect(customer.name).to eq 'Kev'
+  end
 
-
+  it 'should have a contact number' do
+    expect(customer.number).to eq +447730613823
+  end
 
 end
