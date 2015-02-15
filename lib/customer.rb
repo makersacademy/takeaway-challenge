@@ -1,6 +1,6 @@
 require 'sms'
 
-class Takeaway
+class Customer
 
 	include Sms
 
