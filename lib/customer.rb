@@ -1,8 +1,8 @@
-require_relative './text.rb'
+require_relative './sms.rb'
 
 class Takeaway
 
-	include Text
+	include Sms
 
 	attr_reader :menu_list
 
