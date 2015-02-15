@@ -2,8 +2,8 @@ require 'takeaway'
 
 describe 'Takeaway' do
 
-  let(:takeaway) {Takeaway.new}
-
+  let(:takeaway) {Takeaway.new([],texter)}
+  let(:texter) {double :texter, client: nil}
   let(:fish) {double :dish, name: 'Fish', price: 7.50, quantity: 0}
   let(:burger) {double :dish, name: 'Burger', price: 6.25, quantity: 3}
   let(:steak) {double :dish, name: 'Steak', price: 11.50, quantity: 1}

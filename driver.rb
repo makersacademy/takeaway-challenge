@@ -1,5 +1,4 @@
-require './lib/dish'
-require './lib/takeaway'
+require './r'
 
 tofu = Dish.new('Tasty Tofu',1.50)
 fish = Dish.new('Savory Salmon',6.75)

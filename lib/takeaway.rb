@@ -1,16 +1,12 @@
-require 'twilio-ruby'
+require_relative 'texter.rb'
 class Takeaway
 
   attr_reader :dishlist
 
-  def initialize(dishes = [])
+  def initialize(dishes = [], text_client)
     @dishlist = dishes
 
-    # -- Twilio Login
-    account_sid = "ACaec4d28c46b3cad3b94eb351ea3231d5"
-    auth_token = "04c7f3d58a93daca72f3b40bb132f310"
-
-    @texter = Twilio::REST::Client.new account_sid, auth_token
+    @texter = text_client.client
   end
 
 
@@ -26,8 +22,8 @@ class Takeaway
     menu
   end
 
-  def order(dish,quantity=-1)
-    if quantity == -1
+  def order(dish,quantity="ADD")
+    if quantity == "ADD"
       dish.add
     else
       dish.set_quantity(quantity)
@@ -46,7 +42,10 @@ class Takeaway
       raise 'That price is unexpected'
     else
       msg = order_success
-      @texter.account.messages.create({to: "+447759862868",from: "+441183240530",body: msg})
+      txt_msg = {to: "+447759862868",from: "+441183240530",body: msg}
+      if @texter
+        @texter.account.messages.create(txt_msg)
+      end
     end
   end
 
