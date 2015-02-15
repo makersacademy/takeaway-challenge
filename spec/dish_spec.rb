@@ -2,14 +2,14 @@ require 'dish'
 
 describe Dish do
 
-  let(:dish) { Dish.new("Fish Fingers", 4) }
+  let(:dish) { Dish.new("Wolf Nipple Chips", 4.99) }
 
   it 'should have a name' do
-    expect(dish.name).to eq("Fish Fingers")
+    expect(dish.name).to eq("Wolf Nipple Chips")
   end
 
   it 'should have a price' do
-    expect(dish.price).to eq 4
+    expect(dish.price).to eq 4.99
   end
 
 end
