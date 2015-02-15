@@ -21,8 +21,13 @@ class Restaurant
     @client.messages.create(
       from: '+441583612037',
       to: "#{customers_phone_number}",
-      body: "Hello! This is a test!"
+      body: "Thank you! Your order was placed and will be delivered before #{delivery_time.to_s[11..15]}"
     )
+  end
+
+  def delivery_time
+    delivery_time = Time.now + (60 * 60)
+    delivery_time.round(0)
   end
 
 end
