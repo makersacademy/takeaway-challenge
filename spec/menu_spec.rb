@@ -25,13 +25,8 @@ describe Menu do
 
   it 'should display all dishes and their prices, sorted by category' do
     fill_menu
-    #expect(menu.display).to 
+    # un clear how to go about this?
 
-  end
-
-  it 'should display a category of dishes and their prices' do
-    fill_menu
-    #expect(menu.display('Dessert')).to 
   end
 
   #Helper method

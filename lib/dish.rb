@@ -3,12 +3,10 @@
 
 class Dish
 
-  attr_accessor :name, :price, :category
+  attr_accessor :info
 
   def initialize(name, category, price)
-    @name = name
-    @category = category
-    @price = price 
+    @info =  { :name => name, :category => category, :price => price}
   end
 
 end
