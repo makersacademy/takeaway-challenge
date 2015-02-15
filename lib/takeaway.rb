@@ -2,33 +2,13 @@ class Takeaway
 
   attr_reader :dishlist
 
-  def initialize
-    @dishlist = []
+  def initialize(dishes = [])
+    @dishlist = dishes
   end
 
 
   def add_dish(dish)
     @dishlist << dish
-  end
-
-  def longest_dish_name
-    @dishlist.inject {|max, word| max.name.length > word.name.length ? max : word}.name.length
-  end
-
-  def longest_dish_price
-    get_price(@dishlist.inject {|max, price| (get_price(max)).length > (get_price(price)).length ? max : price}).length
-  end
-
-  def get_price(dish)
-    '%.2f' % dish.price
-  end
-
-  def menu_list_item(dish)
-    price = get_price(dish)
-    pre_space = "".center(longest_dish_name-dish.name.length)
-    separator = "  --  "
-    post_space = "".center(longest_dish_price-price.length)
-    "#{dish.name}"+pre_space+separator+post_space+"#{price}\n"
   end
 
   def menu
@@ -54,11 +34,6 @@ class Takeaway
     end
   end
 
-  def order_success
-    time = Time.new
-    "Thank you! Your order was placed and will be delivered before #{time.hour+1}:#{time.min}"
-  end
-
   def place_order(expected_price)
     if calculate_price != expected_price
       raise 'That price is unexpected'
@@ -67,6 +42,35 @@ class Takeaway
     end
   end
 
+
+  # # # # # # # # # #
+
+  private
+
+  def longest_dish_name
+    @dishlist.inject {|max, word| max.name.length > word.name.length ? max : word}.name.length
+  end
+
+  def longest_dish_price
+    get_price(@dishlist.inject {|max, price| (get_price(max)).length > (get_price(price)).length ? max : price}).length
+  end
+
+  def get_price(dish)
+    '%.2f' % dish.price
+  end
+
+  def menu_list_item(dish)
+    price = get_price(dish)
+    pre_space = "".center(longest_dish_name-dish.name.length)
+    separator = "  --  "
+    post_space = "".center(longest_dish_price-price.length)
+    "#{dish.name}"+pre_space+separator+post_space+"#{price}\n"
+  end
+
+  def order_success
+    time = Time.new
+    "Thank you! Your order was placed and will be delivered before #{time.hour+1}:#{time.min}"
+  end
 
 
 
