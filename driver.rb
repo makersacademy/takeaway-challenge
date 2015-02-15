@@ -13,5 +13,5 @@ service.add_dish(fish)
 service.add_dish(burger)
 service.add_dish(steak)
 
-service.menu
+puts service.menu
 
