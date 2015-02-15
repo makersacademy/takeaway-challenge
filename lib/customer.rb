@@ -1,24 +1,30 @@
-class Customer
+require_relative './text.rb'
 
-	def initialize
-		@phone_number = "+447759190557"
-		@selection = []
+class Takeaway
+
+	include Text
+
+	attr_reader :menu_list
+
+	def initialize(menu_list = [])
+		@menu_list = menu_list
 	end
 
-	def phone_number
-		@phone_number
+	def add(menu_list)
+		@menu_list << menu_list
 	end
 
-	def selection
-		@selection
+	def place_order(order)
+		@order = order.dishes
 	end
 
-	def quantity
-		
+	def has_orders?
+		@order
 	end
 
-	def select_food(dish)
-	selection << dish
+	def confirm_order(order)
+		@order = nil
+		send_text
 	end
 
 end
