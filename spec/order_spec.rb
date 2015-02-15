@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   let(:order) { order = Order.new        }
-  let(:dish)  { double :dish, :price => 5}
+  let(:dish1) { double :dish, :price => 5}
   let(:dish2) { double :dish, :price => 5}
   let(:dish3) { double :dish, :price => 5}
 
@@ -16,12 +16,12 @@ describe Order do
   end
 
   it 'should be able to add dishes' do
-    order.add(dish)
-    expect(order.dishes).to eq [dish]
+    order.add(dish1)
+    expect(order.dishes).to eq [dish1]
   end
 
   it 'should give a total value' do
-    order.add(dish)
+    order.add(dish1)
     order.add(dish2)
     order.add(dish3)
     order.sum

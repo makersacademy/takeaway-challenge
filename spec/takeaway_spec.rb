@@ -14,4 +14,10 @@ describe TakeAway do
     expect(takeaway.order).to eq order
   end
 
+  it 'should confirm the customers order by text message' do
+    allow(order).to receive(:sum)
+    allow(takeaway).to receive(:text_message)
+    takeaway.text_message
+  end
+
 end

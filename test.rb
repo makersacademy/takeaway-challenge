@@ -3,5 +3,5 @@ require './lib/dish.rb'
 require './lib/customer.rb'
 require './lib/order.rb'
 require './lib/cart.rb'
-require './lib/send_sms.rb'
-require './send_sms.rb'
+require './lib/takeaway.rb'
+
