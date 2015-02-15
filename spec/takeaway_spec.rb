@@ -8,7 +8,7 @@ describe Takeaway do
 		expect(takeaway.menu.length).to eq(3)
 	end
 
-	it "should be able to add to the order" do
+	it "can receive an order" do
 	end
 
 	it "should be able to calculate the cost of the order" do
