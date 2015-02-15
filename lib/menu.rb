@@ -22,4 +22,8 @@ class Menu
     dishes[dish]
   end 
 
+  def print
+    dishes.each { |dish, price| puts "#{dish.name}".ljust(15) + "{price}".rjust(15)}
+  end
+
 end
