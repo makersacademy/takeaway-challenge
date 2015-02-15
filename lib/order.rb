@@ -1,16 +1,18 @@
-require 'menu'
-
 class Order
 
-	attr_reader :food_drinks_and_prices, :total_order
+	attr_reader :dishes, :total_order
 
-def initialize
-  @food_drinks_and_prices = []
-  @total_order = 0
-end
+	def initialize
+		@dishes = []
+	end
 
-def selection(dish)
-	food_drinks_and_prices << dish
-end
+	def selection(dish, quantity)
+		order = quantity.times.map{dish}
+		@dishes.concat(order)
+	end
+
+	def total_order
+		@dishes.inject(0){|i, dish| i + dish.price}
+	end
 
 end
