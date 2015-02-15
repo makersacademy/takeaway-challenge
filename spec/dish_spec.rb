@@ -1,4 +1,5 @@
 require 'dish'
+require_relative 'spec_helper'
 
 describe Dish do
 
