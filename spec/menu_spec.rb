@@ -1,20 +1,12 @@
 require 'menu'
 
-class Menu_class; include Menu; end
 
 describe Menu do
-	let(:menu){Menu_class.new}
-
-	it 'should have a list of available food' do
-		expect(menu.food_item).not_to be_empty
-	end
-
-	it 'should have a list of prices' do
-		expect(menu.item_price).not_to be_empty
-	end  
+	let(:fish_and_chips) { double :dish, name: "Fish and chips", price: 15 }
+	let(:menu){Menu.new([fish_and_chips])}
 	
-	it 'should have food and drinks with the corresponding price' do
-		expect(menu.menu.values).to include {keys :true}
-	end
 
+	it 'should have an item on the menu' do
+		expect(menu.menu_list).to eq([fish_and_chips])
+	end
 end
