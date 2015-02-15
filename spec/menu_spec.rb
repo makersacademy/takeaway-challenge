@@ -23,18 +23,4 @@ describe Menu do
     expect(menu.dishes.count).to eq(0)
   end
 
-  it 'should display all dishes and their prices, sorted by category' do
-    fill_menu
-    # un clear how to go about this?
-
-  end
-
-  #Helper method
-
-  def fill_menu
-    menu.add(dish1)
-    menu.add(dish2)
-    menu.add(dish3)
-  end
-
 end

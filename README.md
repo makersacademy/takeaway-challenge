@@ -1,27 +1,93 @@
-Takeaway Challenge
-==================
+##Takeaway
+_____________________
 
-Instructions
+Makers Academy week 2 challenge. The task was to create a takeaway system achieving the following; a customer can place an order, calculate the total, and if the total is correct would receive a text message informing them when their order would be delivered.
+
+This was changed to the following: a customer can view a menu (as a whole sorted by category, or only a sub category). The error scenario was changed to an order minimum error (a customer must order more than the minimum otherwise an error is raised)
+
+##Tools Used
+* Ruby
+* Rspec
+* Twilio
+
+
+## Domain Model / CRC
+
+A menu contains a list of dishes, their respective category and their price.
+A customer/phone can place an order detailing the dishes and their quantity.
+When the customer submits the order, the order checks if the total is above the minimum ordering amount.
+The text message is then sent using the Twilion API.
+
+Collaborations
+--------------
+
+Menu                    | Collaborators
+------------------------|-------------------
+List dishes and prices  | Customer, Order
+Add Dish                | Takeaway
+Remove dish             | Takeaway
+
+
+Customer                | Collaborators
+------------------------|-------------------
+Place order             | Menu, Order
+Receive text            | Order
+
+Order                   | Collaborators
+------------------------|--------------------
+Receive order           | Menu, Customer
+Calculate total         | Menu
+Send text               | Customer
+
+
+Ultimately I ended up creating the following classes and modules:
+
+Classes
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your challenge solution by 9am Monday morning
 
-Task
------
+* Menu
+* Order
+* Dish
+* Customer
+* Takeaway (wrapper class to initalized instances of menu and order, possibility of creating built in menu)
 
-* Fork this repo
-* Write a Takeaway program. 
-* Implement the following functionality:
-  * list of dishes with prices
-  * placing the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Submit a pull request with your solution
+Modules
+-------
+
+___________________________
+
+##How to use takeaway
+
+To use in irb:
+```shell
+require './lib/takeaway.rb'
+takeaway = Takeaway.new
+```
+Menu
+Load the built in menu:
+```shell
+takeaway.build_menu
+```
+Or build your own menu and dishes (item name, category, price):
+```shell
+salad = Dish.new('Garden Salad','Starter',6)
+menu.add(salad)
+menu.remove(salad)
+```
+Display the menu:
+```shell
+menu.display
+```
+
+Order
+To add an item and quantity to your order:
+```shell
+order.add_item()
+```
 
 
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+
+
+
+
+
