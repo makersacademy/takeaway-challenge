@@ -17,7 +17,5 @@ describe Customer do
     menu.custom_order(order2, 4)
   end
 
-  
-
 
 end
