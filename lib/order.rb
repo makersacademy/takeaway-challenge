@@ -33,7 +33,7 @@ class Order
     total > ORDER_MINIMUM
   end
 
-  def display_summary
+  def summary
     dishes.each {|dish, quantity| (puts "#{dish.info[:name]}, quantity: #{quantity}, total:#{dish.info[:price]*quantity}".ljust(10).center(30))}
   end
 

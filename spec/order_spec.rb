@@ -14,7 +14,7 @@ describe Order do
 
   it 'should receive a dish and quantity' do
 
-    #p menu.dishes
+
     #order.add_item('Garden salad', 3)
     #expect(order.dishes[dish1]).to eq(3)
 

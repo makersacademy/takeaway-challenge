@@ -71,21 +71,27 @@ takeaway.build_menu
 Or build your own menu and dishes (item name, category, price):
 ```shell
 salad = Dish.new('Garden Salad','Starter',6)
-menu.add(salad)
-menu.remove(salad)
+takeaway.menu.add(salad)
+takeaway.menu.remove(salad)
 ```
 Display the menu:
 ```shell
-menu.display
+takeaway.menu.display
 ```
 
 Order
 To add an item and quantity to your order:
 ```shell
-order.add_item()
+takeaway.order.add_item('Garden salad', 3)
 ```
-
-
+To view a summary of your order before submitting it:
+```shell
+takeaway.order.summary
+```
+To submit your order:
+```shell
+takeaway.order.submit
+```
 
 
 
