@@ -86,6 +86,7 @@ describe 'Takeaway' do
     populate_menu
     time = Time.new
     expect(takeaway).to receive(:order_success).and_return("Thank you! Your order was placed and will be delivered before #{(time.hour+1)%24}:#{time.min}")
+
     takeaway.place_order(30.25)
 
   end
