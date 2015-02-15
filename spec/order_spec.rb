@@ -3,30 +3,37 @@ require 'order'
 describe Order do
 
 let(:order){Order.new}
+#let(:time){Time.new}
 
 it 'should start with no items' do
-  #expect(order.item_count).to eq 0
   expect(order.item_count).to eq 0
 end
 
 it 'should be able to add items and quantities to the order' do
-  order.select_item("pizza",1)
-  expect(order.item_count).to_not eq 0  
+  order.select_item("Margarita",1)
+  expect(order.item_count).to eq 1  
 end
 
-xit 'should ensure that only items from the menu can be selected' do
-
-
+it 'should ensure that only items from the menu can be selected' do
+  order.select_item("Bob",2)
+  order.select_item("Margarita",1)
+  expect(order.item_count).to eq 1
 end
 
 it 'should be able to retrieve the total price of each item ordered' do
-
-
+  order.select_item("Margarita",2)
+  expect(order.get_item_prices).to eq [12.0]
 end
-
 
 it 'should be able to calculate the overall total price of the order' do
+  order.select_item("Margarita",2)
+  order.select_item("Pepperoni",2)
+  expect(order.get_overall_price).to eq 26.0
+end
 
+#to complete on Monday
+xit 'should be able to send a text message with the delivery confirmation' do
 
 end
+
 end
