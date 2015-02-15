@@ -3,28 +3,50 @@ require 'colorize'
 
 class Takeaway
 
-  attr_reader :menu, :order_information
+  attr_accessor :menu, :order_information, :takeaway
 
-  def initialize
-    @menu = {'Peanut Butter Sandwich' => 1.12,
-             'Bowl of Cornflakes'     => 0.99,
-             'Banana'                 => 0.10,
-             'Apple'                  => 0.15,
-             'Croissant'              => 0.67,
-             'Tea'                    => 0.70,
-             'Coffee'                 => 0.80}
+  def initialize(type=:makeaway)
+    @takeaway = type.downcase
+    @menu = menu_types[takeaway]
     @order_information = {}
   end
 
+  def menu_types
+    menu_types = { makeaway: {  'Peanut Butter Sandwich' => 1.12,
+                                'Bowl of Cornflakes'     => 0.99,
+                                'Banana'                 => 0.10,
+                                'Apple'                  => 0.15,
+                                'Croissant'              => 0.67,
+                                'Tea'                    => 0.70,
+                                'Coffee'                 => 0.80 },
+
+                   nandos:   {  'Half Chicken'           => 9.99,
+                                'Quarter Chicken'        => 7.99,
+                                'Whole Chicken'          => 13.99,
+                                'Sweet Potato Mash'      => 2.99,
+                                'Garlic Bread'           => 2.99,
+                                'Olives'                 => 1.49 },
+
+                   luigis:   {  'Pepperoni Pizza'        => 9.99,
+                                'Spaghetti Bolognease'   => 8.99,
+                                'Lasagne'                => 7.99,
+                                'Salad'                  => 2.99,
+                                'Gnocchi'                => 9.99 }
+                  } 
+  end
+
   def show_menu
+    spacing = 32
     menu.each do |menu_item, price|
-      print "#{menu_item}.".red; print "----------- #{price}\n"
+      print "#{menu_item} ".red; 
+      print "." * (spacing - menu_item.length)
+      print " £#{price}\n"
       sleep(1)
     end
   end
 
   def take_call_from(customer)
-    puts 'Hello MakeAway, would you like to place an order?'; sleep(1)
+    puts "Hello #{takeaway.capitalize}, would you like to place an order?"; sleep(1)
     puts 'Type y for yes and n for no, then hit enter...'
     answer = gets.chomp
     answer = nil if answer != 'y'
@@ -68,10 +90,12 @@ class Takeaway
     puts 'Enter y for Yes and n to start again, then hit Enter...'
     input = gets.chomp
     send_text if input == 'y'
+    
   end
 
   def end_call
-
+    puts 'You will receive a confirmation text shortly.'; sleep(1)
+    puts "Thanks for calling #{takeaway.capitalize}, have a nice day!"
   end
 
   def send_text
