@@ -2,7 +2,7 @@ require 'twilio-ruby'
 
 class Takeaway
 
-  attr_accessor :menu, :dishes_selected, :total_price, :dishes
+  attr_accessor :menu, :dishes_selected, :total_price, :dishes_available
 
   def initialize
     @menu = Hash.new
@@ -17,7 +17,7 @@ class Takeaway
     puts self.menu
     puts "To begin the selection, press enter. To cancel the action, type 'exit'."
 
-    while gets.chomp != 'exit'
+    while gets.chomp != 'exit' 
       puts "Please choose a dish."
       dish = gets.chomp
       dishes_selected << dish
@@ -31,6 +31,7 @@ class Takeaway
     puts "Here is your order."
     puts dishes_selected
     total_price_calculator(dish, quantity)
+    send_reply_message
   end
 
   def total_price_calculator(dish, quantity)
@@ -38,5 +39,18 @@ class Takeaway
     @total_price = price.to_i * quantity.to_i
     raise 'Total price not correct' if @total_price != price.to_i * quantity.to_i
     puts total_price.to_s + '£'
+  end
+
+  def send_reply_message
+  account_sid = ''
+  auth_token = ''
+  @client = Twilio::REST::Client.new account_sid, auth_token
+
+  @client.messages.create(
+  from: '',
+  to: '',
+  body: 'Your order has been accepted and is already on the way. Thanks for choosing Takeaway.rb.'
+)
+
   end
 end

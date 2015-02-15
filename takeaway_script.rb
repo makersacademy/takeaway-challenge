@@ -10,10 +10,10 @@ fried_chicken = Dish.new(6, 'fried chicken')
 caesar_salad = Dish.new(3, 'caesar salad')
 pasta = Dish.new(4, 'pasta')
 
-@dishes = [pizza, steak, fish_and_chips, fried_chicken, caesar_salad, pasta]
+@dishes_available = [pizza, steak, fish_and_chips, fried_chicken, caesar_salad, pasta]
 
 def auto_menu_update(takeaway)
-  @dishes.each do |dish|
+  @dishes_available.each do |dish|
     takeaway.menu_update(dish)
   end
 end
