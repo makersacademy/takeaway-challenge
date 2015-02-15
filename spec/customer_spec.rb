@@ -1,10 +1,9 @@
 require 'customer'
 
 describe Customer do
-  let(:customer){Customer.new(:name => "Thomas", :order => order)}
+  let(:customer){Customer.new(:name => "Thomas")}
   let(:schnitzel){double :dish, name: "Schnitzel", price: 4}
   let(:pie){double :dish, name: "pie", price: 2}
-  let(:order){double :order, order_sum: 2, dishes: [schnitzel, pie]}
   let(:menu){double :menu}
   
   it "has a name and a telephone number" do
@@ -17,5 +16,12 @@ describe Customer do
     menu.custom_order(order2, 4)
   end
 
-
+  it "can choose dishes" do
+    customer.choose(schnitzel)
+    customer.choose(pie)
+    customer.choose(pie)
+    customer.choose(pie)
+    customer.choose(pie)
+    expect(customer.order).to eq([schnitzel, pie, pie, pie, pie])
+  end
 end
