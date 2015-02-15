@@ -13,7 +13,6 @@ describe Menu do
 	end
 
 	it 'should be able to add a dish into the menu' do
-		expect(menu.menu_list).to eq([fish_and_chips, rib_eye])
 		menu.add(tajine)
 		expect(menu.menu_list).to eq([fish_and_chips, rib_eye, tajine])
 	end
