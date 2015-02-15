@@ -18,16 +18,6 @@ it 'change the quantity of items' do
   expect(customer.set_quantity).to change select_items.by 1
 end
 
-# it 'can submit an order' do
-# end
-
-
-
 
 end
 
-
-
-# Phone / Customer
-# Able to receive texts
-# Able to place order

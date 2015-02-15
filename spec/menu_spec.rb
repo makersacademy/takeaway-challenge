@@ -24,9 +24,3 @@ end
 
 
 end
-
-# Menu - list of dishes with prices
-# nam_
-# category
-# price
-
