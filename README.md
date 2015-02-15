@@ -3,7 +3,7 @@ _____________________
 
 Makers Academy week 2 challenge. The task was to create a takeaway system achieving the following; a customer can place an order, calculate the total, and if the total is correct would receive a text message informing them when their order would be delivered.
 
-This was changed to the following: a customer can view a menu (as a whole sorted by category, or only a sub category). The error scenario was changed to an order minimum error (a customer must order more than the minimum otherwise an error is raised)
+This was changed to the following: a customer can view a menu (as a whole sorted by category). The error scenario was changed to an order minimum error (a customer must order more than the minimum otherwise an error is raised)
 
 ##Tools Used
 * Ruby
@@ -14,33 +14,10 @@ This was changed to the following: a customer can view a menu (as a whole sorted
 ## Domain Model / CRC
 
 A menu contains a list of dishes, their respective category and their price.
-A customer/phone can place an order detailing the dishes and their quantity.
+When the customer add an item to his order, the order checks if the item exists on the menu.
 When the customer submits the order, the order checks if the total is above the minimum ordering amount.
-The text message is then sent using the Twilion API.
+The text message is then sent using the Twilio API.
 
-Collaborations
---------------
-
-Menu                    | Collaborators
-------------------------|-------------------
-List dishes and prices  | Customer, Order
-Add Dish                | Takeaway
-Remove dish             | Takeaway
-
-
-Customer                | Collaborators
-------------------------|-------------------
-Place order             | Menu, Order
-Receive text            | Order
-
-Order                   | Collaborators
-------------------------|--------------------
-Receive order           | Menu, Customer
-Calculate total         | Menu
-Send text               | Customer
-
-
-Ultimately I ended up creating the following classes and modules:
 
 Classes
 -------
@@ -48,11 +25,11 @@ Classes
 * Menu
 * Order
 * Dish
-* Customer
 * Takeaway (wrapper class to initalized instances of menu and order, possibility of creating built in menu)
 
 Modules
 -------
+* Twilio
 
 ___________________________
 
@@ -60,10 +37,9 @@ ___________________________
 
 To use in irb:
 ```shell
-require './lib/takeaway.rb'
+require './lib/takeaway'
 takeaway = Takeaway.new
 ```
-Menu
 Load the built in menu:
 ```shell
 takeaway.build_menu
@@ -93,7 +69,12 @@ To submit your order:
 takeaway.order.submit
 ```
 
+## Things I need to work on
 
+Everything works in IRB, but having trouble in RSPEC for testing the order.
 
+Features missing:
+- being able to remove a menu item
+- being able to only view one category on the menu
 
 
