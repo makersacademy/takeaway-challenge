@@ -4,7 +4,7 @@ class Customer
   def initialize(args)
     @name = args[:name] || rand(123)
     @tel = args[:tel] || "+447542902955"
-    @order = args[:order]
+    @order = args[:order] || []
   end
 
 
