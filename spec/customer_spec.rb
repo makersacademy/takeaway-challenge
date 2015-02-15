@@ -1,20 +1,11 @@
 require 'customer'
-require 'menu'
 
 describe Customer do
-	let(:customer){Customer.new}
-	let(:menu){double :menu}
 
-	it 'should have a phone number initializated' do
-		expect(customer.phone_number).to eq "+447759190557"
-	end
+	let(:customer){Customer.new([awesome_menu])}
 
-	it 'should select food' do
-		expect(customer.select_food(menu)).to eq customer.selection
-	end
-
-	it 'should be able to change quantity' do
-		
+	it 'should have a menu' do
+		expect(customer.menu_list).to eq([awesome_menu])
 	end
 
 end
