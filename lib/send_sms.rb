@@ -12,13 +12,3 @@ message = @client.account.messages.create(:body => "shsssh chops<3",
 puts message.sid
 
 
-# begin
-#     client = Twilio::REST::Client.new account_sid, auth_token
-#     client.account.messages.create(
-#       from => from_number,
-#       to =>   to_number,
-#       body => "Hello World"
-#     )
-# rescue Twilio::REST::RequestError => e
-#     puts e.message
-# end

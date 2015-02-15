@@ -5,7 +5,7 @@ describe Menu do
   let(:menu) { Menu.new }
 
   it 'should be created with a core menu of items' do
-    expect(menu.menu_items).to contain_exactly([:Beer, 2.5], [:"Chicken Nuggets", 3])
+    expect(menu.menu_items).to contain_exactly([:Beer, 2.5], [:Cod, 3])
   end
 
   it 'can add items with a price to the menu' do
@@ -15,6 +15,11 @@ describe Menu do
 
   it "can return the price of 1 beer" do
     expect(menu.menu_items[:Beer]).to eq 2.5
+  end
+
+  it 'can list out the whole menu with prices' do
+    menu.menu_items_set(Chips: 3.0)
+    expect(menu.menu_items).to contain_exactly([:Beer, 2.5], [:Cod, 3], [:Chips, 3.0])
   end
 
 
