@@ -6,4 +6,5 @@ class Customer
     @name = name
     @number = number
   end
+
 end

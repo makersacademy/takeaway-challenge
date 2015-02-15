@@ -2,10 +2,10 @@ require 'cart'
 
 describe Cart do
 
-  let(:cart) { Cart.new(dish, 5) }
+  let(:cart) { Cart.new(dish, 5)          }
   let(:dish) {double :dish, :price => 3.00}
 
-  it 'should know which dish is added' do
+  it 'should know when a dish is added' do
       expect(cart.dish).to eq(dish)
   end
 
@@ -16,6 +16,9 @@ describe Cart do
   it 'should give a total value' do
     expect(cart.order_total).to eq 15.00
   end
+
+
+
 
 
 end
