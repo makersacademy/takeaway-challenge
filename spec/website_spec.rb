@@ -3,8 +3,7 @@ require 'website'
 describe Website do 
 
 	let(:website){Website.new}
-	let(:menu){double :menu, dish:"Sushi", price:10}
-	let(:quantity){double :quantity}
+	let(:menu){double :menu, dish: "Sushi", price:10}
 	
 
 	it 'can add 1 dish to the order' do
@@ -17,9 +16,19 @@ describe Website do
 	end
 
 
-	it 'can add n dishes to the order' do 
-		expect{quantity.times{website.add_order(menu)}}.to change{website.menu_count}.to eq(quantity)
+	it 'can sum the prices of 2 dishes' do 
+		menu3 = {"Sushi" => 10}
+		menu4 = {"Sashimi" => 20}
+		website.add_order(menu3)
+		website.add_order(menu4)
+		expect(website.sum).to eq (30)
 	end
+
+
+
+
+
+
 
 
 

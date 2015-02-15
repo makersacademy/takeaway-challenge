@@ -1,16 +1,15 @@
 class Website
 
-	attr_accessor :menu, :quantity
+	attr_accessor :menu
 
 	def initialize
 		@menu = menu
-		@menus = 0
-		@quantity = 10
+		
 	end
 	
 
 	def menus
-		@menu ||=[]
+		@menu ||= []
 	end
 
 
@@ -24,7 +23,10 @@ class Website
 	end
 
 
-
+	def sum
+		list_menu = menus.join(',').scan(/\d+/).collect{|i| i.to_i}
+		sum_menu = list_menu.inject{ |sum, n| sum + n}
+	end
 
 
 
