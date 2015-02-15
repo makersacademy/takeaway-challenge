@@ -8,7 +8,7 @@ class Order
 
 	def selection(dish, quantity)
 		order = quantity.times.map{dish}
-		@dishes.concat(order)
+		@dishes << order
 	end
 
 	def total_order
