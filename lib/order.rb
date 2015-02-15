@@ -9,6 +9,7 @@ class Order
 
   def place_order(item, quantity, menu)
     raise "Cannot have 0 quantity" if quantity == 0
+    rasie "We don't sell that" if menu.menu_items[item].nil?
     item_price = menu.menu_items[item]
     item_total_qty_price = sub_total(item, quantity, item_price)
     @customer_order[item] =  item_total_qty_price
@@ -18,33 +19,29 @@ class Order
     @customer_order
   end
 
-  def total_order
+  def total_order_amount
+    customer_order.inject(0) { |memo, value| memo + value[1][1]}
+  end
+
+  def order_errors(item, quantity)
 
   end
 
-  def sub_total(item, quantity, item_price)
-    qty = quantity + item_quanity_ordered(item)
-    item_total = (item_price * quantity) + item_total_price(item)
+  private def sub_total(item, quantity, item_price)
+    qty = quantity + item_details(item, :quantity)
+    item_total = (item_price * quantity) + item_details(item, :total)
     accum_order = [qty, item_total]
   end
 
-  def item_quanity_ordered(item)
-    if customer_order[item].nil?
-      return 0
-    else
-      customer_order[item][0]
+  private def item_details(item, options)
+    return 0 if customer_order[item].nil?
+    case options
+      when :quantity
+        customer_order[item][0]
+      when :total
+         customer_order[item][1]
     end
   end
-
-  def item_total_price(item)
-    if customer_order[item].nil?
-      return 0
-    else
-      customer_order[item][1]
-    end
-  end
-
-
 
 
 end
