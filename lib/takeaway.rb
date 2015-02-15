@@ -39,8 +39,4 @@ class Takeaway
     raise 'Total price not correct' if @total_price != price.to_i * quantity.to_i
     puts total_price.to_s + '£'
   end
-
-  def interactive_menu
-
-  end
 end
