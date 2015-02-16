@@ -14,16 +14,18 @@ attr_reader :basket, :select_items, :change_quantity, :basket_count, :order_valu
 
   def select_items(item)
     Menu.items {|k,v| k.match item}
-    @order.merge!(item)
+      @order.merge!(item)
   end
 
-  # def change_quantity(item)
-  #    select_items(item) * qty.to_i
-  #   @order << item*qty
-  # end
+  def change_quantity(item)
+  end
 
   def basket
     @order
+  end
+
+  def basket_count
+    basket.count
   end
 
   def total_value
@@ -34,11 +36,11 @@ attr_reader :basket, :select_items, :change_quantity, :basket_count, :order_valu
     @min_order_value > total_value
   end
 
-    def submit_order
-      raise "You haven't reached the minimum order value of £10, please add to your order." if insufficient_order
-    else
-      Customer.send_text
-    end
+  def submit_order
+    raise "You haven't reached the minimum order value of £10, please add to your order." if insufficient_order
+  else
+    Customer.send_text
   end
 
 
+end
