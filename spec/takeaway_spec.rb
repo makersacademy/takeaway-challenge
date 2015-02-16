@@ -15,7 +15,7 @@ describe Takeaway do
     expect(takeaway).to respond_to(:menu)
   end
 
-  it "has a menu that contains food available at makers academy" do
+  it "has a menu that contains food I like" do
     expect(takeaway.menu).to include("Peanut Butter Sandwich")
   end
 
@@ -37,10 +37,6 @@ describe Takeaway do
 
   it "confirms an order with customer before placing it" do
     expect(takeaway).to respond_to(:confirm_order)
-  end
-
-  it "sends a confirmation text when an order is placed" do
-
   end
 
 end
