@@ -13,7 +13,7 @@ class Menu
 
   def print_menu
     @dishes.each do |dish, price|
-      puts "#{dish.name} --- $#{dish.price} "
+      puts "#{dish.name} --- $#{dish.price}"
     end
   end
 
