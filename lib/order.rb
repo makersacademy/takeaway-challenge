@@ -1,11 +1,27 @@
-require 'rubygems' # not necessary with ruby 1.9 but included for completeness 
-require 'twilio-ruby' 
- 
- module Sms
+class Order
 
-	def time
-		@time_ahead = Time.new + (60*60)
+	attr_reader :basket
+
+	def initialize
+	 	@basket = []
+	 end 
+
+	def add_dish(dish, quantity)
+		 quantity.times do
+		 	@basket << dish 
+		 end
+		 @basket
 	end
+
+	def total_amount
+		total = 0
+	 	@basket.each do |dish, quantity|
+	 		total += dish.price *quantity
+	 	end
+	 	total
+	 	send_text
+	end
+
 
 	 def send_text
 	# put your own credentials here 
@@ -23,6 +39,5 @@ require 'twilio-ruby'
 
 	end
 
-	
 
 end
