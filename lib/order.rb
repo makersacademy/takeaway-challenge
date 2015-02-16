@@ -10,10 +10,6 @@ attr_reader :basket, :select_items, :change_quantity, :basket_count, :order_valu
     @min_order_value = 10
   end
 
-  def basket
-    @order
-  end
-
   def select_items(item)
     Menu.items {|k,v| k.match item}
     @order.merge!(item)
@@ -23,6 +19,10 @@ attr_reader :basket, :select_items, :change_quantity, :basket_count, :order_valu
   #    select_items(item) * qty.to_i
   #   @order << item*qty
   # end
+
+  def basket
+    @order
+  end
 
   def total_value
     basket.values.inject(0) {|sum, i| sum+i }
