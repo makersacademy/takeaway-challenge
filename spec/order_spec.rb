@@ -16,6 +16,5 @@ describe Order do
   it 'can calculate the total price' do
     order.add_item_to_basket(dish, 2)
     expect(order.total_price).to eq 4
-
   end
 end

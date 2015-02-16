@@ -17,6 +17,5 @@ class Order
     end
     total
   end
-
-
+  
 end
