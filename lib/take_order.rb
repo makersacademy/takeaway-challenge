@@ -6,7 +6,8 @@ class Checkout
 
   def initialize(money, total)
     @money = money
-    @total = total
+    @total = total#doesn't access order total, have to insert total
+    #upon initialising checkout
   end
 
 def pay_money
