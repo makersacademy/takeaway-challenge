@@ -12,10 +12,4 @@ describe Takeaway do
 		expect(takeaway.menu["regular pizza"]).to eq(8)
 	end
 
-	it "can receive an order" do
-	end
-
-	it "should be able to calculate the cost of the order" do
-	end
-	
 end
