@@ -27,20 +27,4 @@ describe Order do
     expect(order.order_total).to eq (17.60)
   end
 
-  # it 'raises error if you try to add more than maximum order' do
-  #   20.times{order.add_cereal(frosties, 1)}
-  #   expect{order.add_cereal(frosties, 1)}.to raise_error(RuntimeError, 'Maximum order exceeded')
-  # end
-
-
-
-
-
-
-
-
-
-
-
-
 end

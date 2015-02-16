@@ -1,3 +1,5 @@
+require './lib/menu'
+
 class Order
 
   DEFAULT_MAXIMUM = 10
@@ -15,27 +17,30 @@ class Order
     @maximum_order ||= DEFAULT_MAXIMUM
   end
 
-  def add_cereal(cereal, amount)
-    # raise 'Maximum order exceeded' if full?
-    @orders[cereal] = amount
+  def add_cereal(dish, amount)
+    @orders[dish] = amount
   end
 
-  # def full?
-  #   item_count == maximum_order
-  # end
-
-  # def item_count
-  #   @orders.count
-  # end
+  def display_current_order
+    @orders
+  end
 
   def item_count
-    orders.map {|dish, amount| @count += amount}
+    orders.each {|dish, amount| @count += amount}
     @count
   end
 
   def order_total
-    orders.map {|dish, amount| @total += (dish.price * amount)}
-    @total
+    orders.each {|dish, amount| @total += (dish.price * amount)}
+    @total #this seems to have a bug where it keeps adding everytime
+    #you call it
   end
   
 end
+
+
+
+
+
+
+
