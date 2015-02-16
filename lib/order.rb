@@ -59,7 +59,17 @@ def confirm_order
   puts "The overall price is £#{@overall_price}0 \n"
   puts "Enter 'yes' if you are happy to proceed"
   answer = gets.chomp
-  (answer == "yes" || answer == "Yes") ? send_text : return
+  (answer == "yes" || answer == "Yes") ? payment : return
+end
+
+def payment
+  puts "Confirm payment amount:"
+  payment = gets.chomp
+  if payment.to_f == @overall_price
+    send_text
+  else puts "Wrong amount, please re-enter"
+    confirm_order 
+  end
 end
 
 def item_count

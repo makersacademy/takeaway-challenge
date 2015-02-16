@@ -30,6 +30,10 @@ it 'should be able to calculate the overall total price of the order' do
   expect(order.get_overall_price).to eq 26.0
 end
 
+it 'should be able to check the payment amount' do
+  order.selection("Margarita",2)
+#to complete on Monday
+end
 #to complete on Monday (mocks / stubs)
 xit 'should be able to send a text message with the delivery confirmation' do
 
