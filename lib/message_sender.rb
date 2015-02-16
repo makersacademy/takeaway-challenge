@@ -1,7 +1,21 @@
 class MessageSender
 
-	def order_time(time)
-		time.to_s.slice(11,5)
+	attr_reader :order_time
+
+	def set_order_time(time)
+		@order_time = time.to_s.slice(11,5)
 	end
+
+	def order_time
+		@order_time
+	end
+
+	def delivery_time
+		array = order_time.split(":")	
+		array[0] == "23" ? array[0] = "00" : array[0] = array[0].next 
+		array.insert(1,":")
+		array.join
+	end
+
 
 end
