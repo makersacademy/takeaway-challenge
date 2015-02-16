@@ -1,15 +1,9 @@
 require 'dishes'
 
 describe Dish do
-  
-  it 'knows its name' do
-    dish = Dish.new(:curry , 5)
-    expect(dish.name).to eq :curry
-  end
 
-  it 'knows its price' do
-    dish = Dish.new(:curry,5)
-    expect(dish.price).to eq 5
+  it 'has a name and a price' do
+    dish = Dish.new("pizza", 5)
+    expect(dish.name && dish.price).to eq "Pizza" && 5
   end
-  
 end

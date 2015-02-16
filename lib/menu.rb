@@ -1,20 +1,21 @@
 class Menu
 
-  attr_accessor :dishes
+  attr_reader :food_holder
 
   def initialize
-    @dishes = []
+    @food_holder = []
   end
 
-  def add_item_to_menu(dish)
-    @dishes << dish
-    puts "#{dish.name} -- $#{dish.price}"
+  def add_dish(dish)
+    @food_holder << dish
   end
 
   def print_menu
-    @dishes.each do |dish, price|
-      puts "#{dish.name} --- $#{dish.price}"
+    result = ''
+    @food_holder.each do |dish|
+      result << "#{dish.name} -- $#{dish.price}"
     end
+    result
   end
 
 end
