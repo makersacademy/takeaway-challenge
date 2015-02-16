@@ -1,8 +1,10 @@
-require "twilio-ruby"
+require 'twilio.rb'
 
 class Takeaway
 
-	attr_reader :menu
+include Sms
+
+	attr_reader :menu, :order
 
 	def initialize
 		@menu = {
@@ -21,19 +23,22 @@ class Takeaway
 	end
 
 	def order_food
-		show_menu
+		p show_menu
 		puts 'Hello welcome to the Zombie restaurant, what would you like today?'
 		dish = gets.chomp
-		# puts "how many would you like?"
-		# quantity = gets.chomp.to_i
-		order[dish]
+		puts 'how many of there would you like?'
+		quantity = gets.chomp.to_i
+		order[quantity, dish] = menu[dish]
+		say_order
 	end
 
-	def take_call
-		puts "Hello welcome to the zombie restaurant how can I help you?"
+	def say_order
+		say_order = 0
+    say_order.each do |item, price|
+      puts "That would be a  #{item[0]}, with a value of $#{price}."
+    end
+	end
 		
-
-	end
 
 end
 
