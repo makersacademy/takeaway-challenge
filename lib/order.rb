@@ -30,6 +30,7 @@ def customer_selection
   confirm_order
 end
 #to be updated for selection by menu number
+#probably need to take out all the puts and getschomps for testing purposes...
 def select_item
   puts "Please select an item from the menu. Type 'exit' to finish."
   @item = gets.chomp 
