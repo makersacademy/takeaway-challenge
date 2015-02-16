@@ -3,7 +3,7 @@ include Menu
 
 class Order
 
-attr_reader :basket, :select_items, :change_quantity, :basket_count, :order_value, :total_values, :big_order, :small_order
+attr_reader :basket, :select_items, :change_quantity, :basket_count, :order_value, :total_values
 
   def initialize
     @order = {}
