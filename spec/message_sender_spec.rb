@@ -6,7 +6,7 @@ describe MessageSender do
 	let(:time) {double :time, to_s: "2015-02-15 20:48:22 +0000"}
 	let(:time2) {double :time, to_s: "2015-02-15 23:48:22 +0000"}
 	let(:message_sender) {MessageSender.new}
-
+	let(:twilio) {double :twilio, account_sid: 'AC224c736fce467ca8cf9b8b3bfa73a034', auth_token: 'b4c6b04027185a9860c8e9b429038012'}
 
 	it 'should know what time it is' do
 		expect(time).to receive(:to_s)
@@ -29,6 +29,12 @@ describe MessageSender do
 		expect(time).to receive(:to_s)
 		message_sender.set_order_time(time)
 		expect(message_sender.sms_message).to eq "Thank you! Your order was placed and will be delivered before 21:48"
+	end
+
+	it 'should send the outbound message' do
+		expect(time).to receive(:to_s)
+		message_sender.set_order_time(time)
+		expect(message_sender.send_message).to eq "Thank you! Your order was placed and will be delivered before 21:48"
 	end
 
 end

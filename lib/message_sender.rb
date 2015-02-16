@@ -21,4 +21,8 @@ class MessageSender
 		"Thank you! Your order was placed and will be delivered before #{delivery_time}"
 	end
 		
+	def send_message
+		self.sms_message
+	end
+
 end
