@@ -1,10 +1,13 @@
 require_relative 'menu'
+require_relative 'calculator'
+require_relative 'send_text'
+
 require 'rubygems'
 require 'twilio-ruby'
 
 class Order
 
-include Menu
+include Menu, Calculator, Send_text
 attr_accessor :order_list
 
 def initialize
@@ -13,22 +16,22 @@ def initialize
 end
 
 def display_menu
-  PRICE_LIST.each {|food, price| puts "#{food} : £#{price}"}
+  PRICE_LIST.each_with_index {|(food, price), index| puts "#{index + 1} - #{food} : £#{price}0"}
 end
 
-def request_order
+def customer_selection
   @item = ""
   while @item != "exit"
-    request_item
+    select_item
     break if @item == "exit"
-    request_quantity  
+    select_quantity  
     add_items
   end
   confirm_order
 end
-
-def request_item
-  puts "Please select an item from the menu (using the number code). Type 'exit' to finish."
+#to be updated for selection by menu number
+def select_item
+  puts "Please select an item from the menu. Type 'exit' to finish."
   @item = gets.chomp 
   menu_check
 end
@@ -41,7 +44,7 @@ def menu_check
   end
 end
 
-def request_quantity
+def select_quantity
   puts "Quantity?"
   @quantity = gets.chomp
 end
@@ -53,51 +56,22 @@ end
 def confirm_order
   get_overall_price
   puts "The items ordered are #{@order_list}\n"
-  puts "The overall price is £#{@overall_price} \n"
+  puts "The overall price is £#{@overall_price}0 \n"
   puts "Enter 'yes' if you are happy to proceed"
   answer = gets.chomp
   (answer == "yes" || answer == "Yes") ? send_text : return
-end
-
-#put in separate class/mod?
-def send_text
-  time = Time.new
-  time1hr = time + 3600
-  puts "Thank you! Your order was placed and will be delivered before #{time1hr.strftime("%I:%M%p")}."
-
-  account_sid = 'AC60c54cda75e5c928759e85292d5cd749'
-  auth_token = 'b6f9be75ac109b8aad8db70d3679272e'
-  @client = Twilio::REST::Client.new account_sid, auth_token
- 
-  message = @client.account.messages.create(:body => "Thank you! Your order was placed and will be delivered before #{time1hr.strftime("%I:%M%p")}.",
-    :to => "+447982998227",  
-    :from => "+441618505718")  
-  puts message.sid
-end
-
-def get_overall_price
-  get_item_prices
-  @overall_price = @unit_prices.inject(0) {|sum, i|  sum + i }
-end
-
-def get_item_prices
-  @unit_prices = []
-  @order_list.each{|item, quantity| @unit_prices << PRICE_LIST[item] * quantity.to_f}
-  @unit_prices
 end
 
 def item_count
   @order_list.length
 end
 
-def select_item(item, quantity)
+def selection(item, quantity)
   @item = item
   @quantity = quantity
   unless !PRICE_LIST.keys.include? @item
     add_items
   end
 end
-
-private :send_text
 
 end
