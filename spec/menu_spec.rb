@@ -5,7 +5,7 @@ class Menu_Class; include Menu; end
 describe Menu do
   let(:menu){Menu_Class.new}
 
-it 'should have food & drink on initialization' do
+it 'should not be empty on initialization' do
   expect(menu.items).not_to be_empty
 end
 

@@ -1,7 +1,9 @@
 module Menu
 
+  attr_reader :items, :food, :price
+
   def initialize
-    @menu_items ={"Club Sandwich" => 5, "Cheeseburger" => 8, "Chips" => 3, "Soft Drink" => 2, "Coffee" => 2}
+    @menu_items ={"Duck Rice" => 8, "Tonkotsu Ramen" => 8, "Gyoza" => 5, "Jalapeno Hamachi" => 8, "Summer Rolls" => 5, "Mango" => 3}
   end
 
   def items
@@ -17,11 +19,5 @@ module Menu
   end
 
 
+
 end
-
-
-
-
-
-
-

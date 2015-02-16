@@ -1,42 +1,36 @@
-# require 'order'
-
-# describe Order do
-#   let(:order){Order.new}
-
-# it 'should have a list of selected dishes' do
-# end
-
-# it 'should have a quantity of each dish' do
-# end
-
-# it 'should have a total cost' do
-# end
-
-# it 'should have a minimum order value' do
-# end
-
-# it 'should reject an order that does not meet the minimum order value' do
-# end
-
-# it 'should inform a customer of a successful order via text' do
-# end
+require 'order'
+require 'customer'
+require 'nil'
 
 
-# end
+describe Order do
+  let(:order){Order.new}
+  let(:customer){double :Customer}
+  let(:menu){double :Menu}
 
+  it 'should allow customer to select items' do
+    order.select_items({"Duck Rice" => 8, "Gyoza" => 5, "Mango" => 3})
+    expect(order.select_items(items)).to eq order.basket
+  end
 
-# Order - placing the order by giving:
-# the list of dishes,
-# their quantities
-# a number that should be the exact total.
-# If the sum does not meet the minimum delivery cost the method should raise an error,
-# otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
+  # it 'should allow customer to change the quantity of items' do
+  #   expect{order.change_quantity({"Duck Rice" => 8}) * 6}.to change{order.basket_count}.by 6
+  # end
 
-# The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-# Use twilio-ruby gem to access the API
-# Use a Gemfile to manage your gems
+  it 'should calculate a total order value' do
+    order.select_items({"Duck Rice" => 8, "Gyoza" => 5, "Mango" => 3})
+    expect(order.total_value).to eq 16
+  end
 
-# Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-# However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-# Phone
+  it 'should reject an order that does not meet a minimum order value' do
+    order.select_items({"Duck Rice" => 8})
+    expect{order.submit_order}.to raise_error(RuntimeError, "You haven't reached the minimum order value of £10, please add to your order.")
+  end
+
+  it 'should submit an order using Twillio' do
+    order.select_items({"Duck Rice" => 8, "Gyoza" => 5, "Mango" => 3})
+    expect(order.submit_order).to eq "ACTIVATE TWILIO" #function to be implemented
+  end
+
+end
 
