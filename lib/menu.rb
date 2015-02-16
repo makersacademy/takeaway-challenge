@@ -7,7 +7,11 @@ class Menu
   end
 
   def add_dish(dish)
-    @food_holder << dish
+    if @food_holder.include?(dish)
+    raise "Dish already added"
+    else
+      @food_holder << dish
+    end
   end
 
   def print_menu
@@ -16,6 +20,10 @@ class Menu
       result << "#{dish.name} -- $#{dish.price}"
     end
     result
+  end
+
+  def remove_dish(dish)
+    @food_holder.delete(dish)
   end
 
 end
