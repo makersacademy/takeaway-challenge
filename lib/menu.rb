@@ -13,9 +13,5 @@ class Menu
   def dishes
     @dishes
   end  
-
-  def send_menu_to_assistant(assistant)
-    assistant.get_menu(self)
-  end  
- 
+  
 end
