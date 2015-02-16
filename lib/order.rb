@@ -48,14 +48,14 @@ class Order
 
   def send_message
   	account_sid = 'AC97531c3706f52626e04532164dfd12e8' 
-		auth_token = '[AuthToken]' 
+		auth_token = '4830c95b11f3f81bf60477dde5dc2497'
  
 		@client = Twilio::REST::Client.new account_sid, auth_token 
  
 		@client.account.messages.create({
 		:from => '+441254790223', 
-		:to => '07474718811', 
-		:body => '"Thank you! Your order was placed and will be delivered before 18:52"',  
+		:to => '+447474718811', 
+		:body => '"Thank you! Your order was placed and will be delivered before #{time}"',  
 		})
   end
 
