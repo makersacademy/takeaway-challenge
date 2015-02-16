@@ -1,4 +1,4 @@
 source "https://rubygems.org"
 
 gem 'rspec'
-gem 'twilio'
+gem 'twilio-ruby'
