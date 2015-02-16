@@ -22,6 +22,11 @@ describe Order do
     expect(order.total_value).to eq 16
   end
 
+  it 'should recognise an insufficient order' do
+    order.select_items({"Duck Rice" => 8})
+    expect(order.insufficient_order).to eq true
+  end
+
   it 'should reject an order that does not meet a minimum order value' do
     order.select_items({"Duck Rice" => 8})
     expect{order.submit_order}.to raise_error(RuntimeError, "You haven't reached the minimum order value of £10, please add to your order.")

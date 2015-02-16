@@ -14,10 +14,6 @@ attr_reader :basket, :select_items, :change_quantity, :basket_count, :order_valu
     @order
   end
 
-  def basket_count
-    basket.count
-  end
-
   def select_items(item)
     Menu.items {|k,v| k.match item}
     @order.merge!(item)
@@ -32,12 +28,12 @@ attr_reader :basket, :select_items, :change_quantity, :basket_count, :order_valu
     basket.values.inject(0) {|sum, i| sum+i }
   end
 
-  def order_insufficient
+  def insufficient_order
     @min_order_value > total_value
   end
 
   def submit_order
-      raise "You haven't reached the minimum order value of £10, please add to your order." if order_insufficient
+      raise "You haven't reached the minimum order value of £10, please add to your order." if insufficient_order
     else
       "ACTIVATE TWILIO" #function to be implemented
     end
