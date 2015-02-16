@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'dish'
 
 describe Dish do

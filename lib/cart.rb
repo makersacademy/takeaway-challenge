@@ -1,10 +1,11 @@
 class Cart
 
-  attr_accessor :dish, :quantity
+  attr_accessor :dish, :quantity, :price
 
-  def initialize(dish, quantity)
+  def initialize(dish, quantity, price)
     @dish = dish
     @quantity = quantity
+    @price = price
   end
 
   def order_total

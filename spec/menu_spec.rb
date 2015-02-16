@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'menu'
 
 describe Menu do

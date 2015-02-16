@@ -1,9 +1,10 @@
 class Order
 
-  attr_accessor :dishes, :total
+  attr_accessor :dishes, :price, :total
 
   def initialize
     @dishes = []
+    @price = 5
     @total = 0
   end
 

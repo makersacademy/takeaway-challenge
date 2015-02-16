@@ -1,8 +1,10 @@
+require 'simplecov'
+SimpleCov.start
 require 'cart'
 
 describe Cart do
 
-  let(:cart) { Cart.new(dish, 5)          }
+  let(:cart) { Cart.new(dish, 5, 3)          }
   let(:dish) {double :dish, :price => 3.00}
 
   it 'should know when a dish is added' do
