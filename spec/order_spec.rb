@@ -24,7 +24,7 @@ describe Order do
 		expect(order.order_total).to eq 500
 	end
 
-	it 'should be able to calculate the total cost the items in the order list' do 
+	it 'should be able to calculate the total cost of the items in the order list' do 
 		order.add_item(menu,curry)
 		order.add_item(menu,kebab)
 		expect(curry).to receive(:price)

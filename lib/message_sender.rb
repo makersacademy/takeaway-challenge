@@ -1,5 +1,6 @@
 class MessageSender
 
+	attr_accessor :sms_message
 	attr_reader :order_time, :delivery_time
 
 	def set_order_time(time)
@@ -18,7 +19,7 @@ class MessageSender
 	end
 
 	def sms_message
-		"Thank you! Your order was placed and will be delivered before #{delivery_time}"
+		@sms_message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
 	end
 		
 	def send_message
