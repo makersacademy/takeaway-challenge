@@ -25,4 +25,10 @@ describe MessageSender do
 		expect(message_sender.delivery_time).to eq "00:48"
 	end
 
+	it 'should create the output message' do
+		expect(time).to receive(:to_s)
+		message_sender.set_order_time(time)
+		expect(message_sender.sms_message).to eq "Thank you! Your order was placed and will be delivered before 21:48"
+	end
+
 end

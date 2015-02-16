@@ -1,6 +1,6 @@
 class MessageSender
 
-	attr_reader :order_time
+	attr_reader :order_time, :delivery_time
 
 	def set_order_time(time)
 		@order_time = time.to_s.slice(11,5)
@@ -17,5 +17,8 @@ class MessageSender
 		array.join
 	end
 
-
+	def sms_message
+		"Thank you! Your order was placed and will be delivered before #{delivery_time}"
+	end
+		
 end
