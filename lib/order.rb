@@ -1,5 +1,7 @@
 require_relative 'menu'
+require_relative 'customer'
 include Menu
+include Customer
 
 class Order
 
@@ -32,10 +34,11 @@ attr_reader :basket, :select_items, :change_quantity, :basket_count, :order_valu
     @min_order_value > total_value
   end
 
-  def submit_order
+    def submit_order
       raise "You haven't reached the minimum order value of £10, please add to your order." if insufficient_order
     else
-      "ACTIVATE TWILIO" #function to be implemented
+      Customer.send_text
     end
   end
+
 

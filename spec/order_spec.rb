@@ -28,11 +28,6 @@ describe Order do
     expect(order.total_value).to eq 16
   end
 
-  it 'should submit an order using Twillio' do
-    customer_order
-    expect(order.submit_order).to eq "ACTIVATE TWILIO" #function to be implemented
-  end
-
   it 'should recognise an insufficient order' do
     small_order
     expect(order.insufficient_order).to eq true
@@ -43,6 +38,9 @@ describe Order do
     expect{order.submit_order}.to raise_error(RuntimeError, "You haven't reached the minimum order value of £10, please add to your order.")
   end
 
+  it 'should send the customer a text using Twillio' do
+    customer_order
+    expect(order.submit_order).to eq order.send_text #text successfully sends to phone
+  end
 
 end
-
