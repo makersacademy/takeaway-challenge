@@ -31,12 +31,10 @@ describe MessageSender do
 		expect(message_sender.sms_message).to eq "Thank you! Your order was placed and will be delivered before 21:48"
 	end
 
-	xit 'should send the outbound message' do
+	it 'should send the outbound message' do
 		expect(time).to receive(:to_s)
 		message_sender.set_order_time(time)
-		expect(twilio).to recieve
-		
-		expect(message_sender.send_message).to eq "SM9acd879d0458458d8bb82fa9cfd22f15"
+		expect(message_sender.send_message).to eq 34
 	end
 
 end
