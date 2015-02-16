@@ -3,6 +3,6 @@ class Dish
 
   def initialize(name, price)
     @name = name
-    @price = price
+    @price = price  
   end
 end
