@@ -4,14 +4,6 @@ require 'sinatra'
 
 class Assistant
    
-  def take_order(order, customer, total)
-    if total==order.order_total_cost
-      confirm_order(customer)
-    else
-      puts "Sorry you inputted the wrong total cost, please try again."
-    end           
-  end  
-
   def confirm_order(customer)
     time=Time.new
     hour = time.strftime("%I").next

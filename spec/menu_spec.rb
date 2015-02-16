@@ -2,7 +2,7 @@ require 'menu'
 
 describe 'Menu' do 
 
-  let(:menu){Menu.new}
+  let(:menu){Menu.instance}
   let(:dish){double :dish, :name=> :pizza, :price=> 30}
   
   it 'should be able to add dishes' do
@@ -11,9 +11,12 @@ describe 'Menu' do
     }.from(0).to(1)  
   end  
 
-  it 'should be able to display its dishes' do 
-    menu.add_dish(dish) 
-    expect(menu.dishes).to eq([dish]) 
+  it 'should be a singleton class' do 
+    expect(menu).to be_a(Singleton) 
+  end
+
+  it 'should be able to display dishes' do 
+    expect(menu.dishes).to be_a(Array)
   end  
 
 end

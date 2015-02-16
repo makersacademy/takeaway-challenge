@@ -1,4 +1,8 @@
+require 'singleton'
+
 class Menu
+
+  include Singleton
 
   attr_reader :dishes
 
@@ -13,5 +17,5 @@ class Menu
   def dishes
     @dishes
   end  
-  
+ 
 end
