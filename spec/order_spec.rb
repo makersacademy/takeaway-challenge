@@ -1,6 +1,6 @@
 require 'order'
 
-describe 'Order' do
+describe Order do
 	let(:order){Order.new}
 	let(:coq_au_vin){double :dish, name: "Coq au vin", price: 30}
 
