@@ -1,7 +1,10 @@
 require 'twilio-ruby'
 require 'colorize'
+require_relative 'messaging'
 
 class Takeaway
+
+  include Messaging
 
   attr_accessor :menu, :order_information, :takeaway
 
@@ -45,22 +48,41 @@ class Takeaway
     end
   end
 
+  def check_answer
+    return true if gets.chomp == 'y'
+  end
+
+  def check_dish
+    input = gets.chomp.capitalize
+    return input if menu.has_key?(input)
+    while dish == nil
+      puts "Sorry we dont have that. What else would you like?"
+      dish = check_dish
+    end
+  end
+
   def take_call_from(customer)
     puts "Hello #{takeaway.capitalize}, would you like to place an order?"; sleep(1)
     puts 'Type y for yes and n for no, then hit enter...'
-    answer = gets.chomp
-    answer = nil if answer != 'y'
-    take_order if answer == 'y' 
-    end_call if answer == nil
+    check_answer == true ? take_order : end_call
+  end
+
+  def get_dish
+    puts 'What would you like to order?'
+    dish = check_dish
+    puts 'How many would you like?'
+    quantity = gets.chomp.to_i
+    order_information[[quantity, dish]] = menu[dish]
   end
 
   def take_order
     show_menu
-    puts 'What would you like to order?'
-    dish = gets.chomp
-    puts 'How many would you like?'
-    quantity = gets.chomp.to_i
-    order_information[[quantity, dish]] = menu[dish]
+    get_dish
+    puts "Would you like anything else?, type y for yes then hit Enter..."
+    while check_answer == true
+      get_dish
+      puts "Would you like anything else?, type y for yes then hit Enter..."
+    end
     repeat_order
     confirm_order
     end_call
@@ -75,37 +97,14 @@ class Takeaway
     end
   end
 
-  def get_time
-    time = Time.new
-      if time.min == (0..9)
-        output = (time.hour + 1).to_s + ':0' + time.min.to_s
-      else
-        output = (time.hour + 1).to_s + ':' + time.min.to_s
-      end
-    output
-  end
-
   def confirm_order
     puts 'Would you like to place this order'
     puts 'Enter y for Yes and n to start again, then hit Enter...'
-    input = gets.chomp
-    send_text if input == 'y'
-    
+    check_answer == true ? send_text : take_order    
   end
 
   def end_call
-    puts 'You will receive a confirmation text shortly.'; sleep(1)
     puts "Thanks for calling #{takeaway.capitalize}, have a nice day!"
-  end
-
-  def send_text
-    account_sid = 'AC44dcaf48c2de912fea75b0e472225c50'
-    auth_token  =  'e0e7f38e8db606f71a8a73fbab90169b'
-
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @message = @client.account.messages.create({:to   => '07737932693',
-                                                :from => '+441173251558',
-                                                :body => "Thank you! Your order was placed and will be delivered before #{get_time}"})
   end
 
 end
