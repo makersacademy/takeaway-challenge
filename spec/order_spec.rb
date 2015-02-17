@@ -1,5 +1,6 @@
 require 'order'
 
+
 describe Order do
 
 	
@@ -9,7 +10,7 @@ describe Order do
 		dish = double(dish)
 		order.add_dish(dish, 2)
 		expect(order.basket).to include dish
-		p order.basket
+		# p order.basket
 	end 
 
 	it 'can calculate the total of the order' do
