@@ -21,7 +21,7 @@ class Customer
   end  
 
   def confirm_order(assistant)
-    klass.test_customer_order(self, customer_order, assistant)      
+    customer_order.test_customer_order(self, customer_order, assistant)      
   end 
  
 end

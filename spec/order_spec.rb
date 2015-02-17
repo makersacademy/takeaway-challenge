@@ -1,4 +1,5 @@
 require 'order'
+require 'order_checker'
 
 describe 'Order' do 
   order_class=Order
@@ -7,6 +8,6 @@ describe 'Order' do
   let(:order){Order.new}
   
   it 'describes the thing' do 
-    p order_class.test_customer_order(customer, order, assistant)
+    p order.test_customer_order(customer, order, assistant)
   end  
 end  
