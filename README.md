@@ -5,7 +5,7 @@ Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
 * Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your challenge solution by 9am Monday morning
+* You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
 -----
