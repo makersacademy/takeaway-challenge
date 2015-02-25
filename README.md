@@ -10,6 +10,7 @@ Instructions
 Task
 -----
 
+* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
 * Fork this repo
 * Write a Takeaway program. 
 * Implement the following functionality:
