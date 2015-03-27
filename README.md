@@ -46,3 +46,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+
+[![Build Status](https://travis-ci.org/tansaku/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tansaku/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/tansaku/takeaway-challenge/badge.png)](https://coveralls.io/r/tansaku/takeaway-challenge)
+
