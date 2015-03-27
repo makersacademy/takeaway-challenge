@@ -1,7 +1,13 @@
-Takeaway Challenge
-==================
+# TakeAway
 
-Instructions
+I have not got to finish, To be honest I did not do very well in this challenge, there is so much stuff that still has
+to get done, Hopefully tomorrow I will be able to get more stuff done and solve my problems in the 121 sesh. 
+
+I got to the point of trying to test my order with sending a SMS with what was in the order. 
+
+------------
+
+Original Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
 * Feel free to use google, your notes, books, etc but work on your own
@@ -46,3 +52,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+>>>>>>> 9edfdd16f797c91838cb38bb5b718a8486e7db4a
