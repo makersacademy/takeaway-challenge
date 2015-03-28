@@ -1,5 +1,7 @@
 require 'capybara/rspec'
 require 'restaurant'
+require 'customer'
+require 'dish'
 
 feature 'Restaurants lists its dishes' do
 
