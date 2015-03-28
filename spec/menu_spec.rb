@@ -13,6 +13,8 @@ describe Menu do
       expect(subject.list[-13..-1]).to eq "steak: £9.00\n"
     end
     it 'can change prices in menu' do
+      subject.add(pickled_strawberry: 350)
+      expect(subject.list[-26..-1]).to eq "pickled_strawberry: £3.50\n"
     end
   end
 end

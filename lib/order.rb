@@ -1,6 +1,6 @@
 require_relative './menu'
 class Order
-  attr_reader :order
+  attr_reader :order, :menu
   alias_method :list, :order
   def initialize(menu = nil)
     @menu = menu || default_menu
@@ -8,12 +8,15 @@ class Order
   end
 
   def add(items)
+    fail unless items.each_key.all? do |dish|
+      menu.key?(dish)
+    end
     order.merge!(items)
   end
 
   def total
     cost = order.inject(0) do |total, (dish, number)|
-      total + number * @menu[dish]
+      total + number * menu[dish]
     end
     format '%.2f', cost / 100
   end

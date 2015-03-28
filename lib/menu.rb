@@ -12,7 +12,7 @@ class Menu
 
   def list
     menu.inject("") do |list, (dish, price)|
-      price = format '%.2f', price / 100
+      price = format '%.2f', price / 100.0
       list << "#{dish}: £#{price}\n"
     end
   end

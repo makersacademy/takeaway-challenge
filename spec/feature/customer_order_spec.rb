@@ -3,9 +3,13 @@ require 'order'
 
 feature 'customer makes an order' do
   let(:order) { Order.new(Menu.new.menu) }
-  scenario 'selecting items' do
+  scenario 'adding items to order' do
     order.add(flame_grilled_pheonix: 2)
     expect(order.list).to eq flame_grilled_pheonix: 2
+  end
+
+  scenario 'raises error for non-menu items' do
+    expect { order.add(boiled_pheonix: 2) }.to raise_error
   end
 
   scenario 'check order total cost' do
