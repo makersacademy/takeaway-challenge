@@ -1,14 +1,14 @@
 class Order
   def initialize
-    input
-    check_input
+    @input = []
   end
 
-  def input
-    puts 'please select the number of your dish'
+   def input
+    puts "please select the number of your dish and type'checkout'"
     gets.chomp
   end
 
-  def check_input
+  def valid_range? input
+    input.to_i.between?(1..4)
   end
 end
