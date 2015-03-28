@@ -12,9 +12,9 @@ describe Menu do
       milk_shake: 0.99
     }
   end
-  let(:menu) { Menu.new }
+  let(:menu) { described_class.new }
   let(:some_dishes) { { bigmac: 3, fries: 1, milk_shake: 2 } }
-  let(:my_order) { { bigmac: 3, fries: 1, milk_shake: 2, total: 14.94} }
+  let(:my_order) { { bigmac: 3, fries: 1, milk_shake: 2, total: 14.94 } }
 
   it 'presents a list of dishes with prices' do
     expect(menu.show_menu).to eq dishes
@@ -33,7 +33,7 @@ describe Menu do
   end
 
   it 'raises an error if nothing is selected' do
-    expect{menu.order}.to raise_error 'Please Select at least one item'
+    expect { menu.order }.to raise_error 'Please Select at least one item'
   end
 
   it 'calculates the price of the selection' do
@@ -46,7 +46,4 @@ describe Menu do
     expect(menu.order).to eq my_order
   end
 
-
 end
-# will want to bundle the output from menu into one standard output
-# type and NOT call it's various methods from outside the class
