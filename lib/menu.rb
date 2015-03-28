@@ -11,9 +11,13 @@ class Menu
   end
 
   def list
-    @menu.inject("") do |list, (dish, price)|
+    menu.inject("") do |list, (dish, price)|
       price = format '%.2f', price / 100
       list << "#{dish}: £#{price}\n"
     end
+  end
+
+  def add(items)
+    menu.merge!(items)
   end
 end
