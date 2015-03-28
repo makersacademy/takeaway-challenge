@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joejknowles/takeaway-challenge.svg?branch=master)](https://travis-ci.org/joejknowles/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 
