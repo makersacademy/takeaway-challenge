@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Restaurant
   attr_reader :menu, :order_recived
 
@@ -8,11 +10,11 @@ class Restaurant
 
   def get order, telephone
     @order_recived << order
-    t = Time.now
     send_message telephone
   end
 
   def send_message telephone
+    t = Time.now
     account_sid = 'AC9b042d9d06fec81d3d8044e7cb2975e2'
     auth_token = '648dfb68388439402d7316fd4959ec6b'
     @client = Twilio::REST::Client.new account_sid, auth_token
