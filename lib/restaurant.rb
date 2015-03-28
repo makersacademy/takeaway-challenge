@@ -27,7 +27,7 @@ class Restaurant
   end
 
   def time
-    (Time.now  + 60 * 60).strftime('%H:%M')
+    (Time.now + 60 * 60).strftime('%H:%M')
   end
 
   def total(items)
