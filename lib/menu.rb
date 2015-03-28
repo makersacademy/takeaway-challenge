@@ -19,7 +19,6 @@ class Menu
   def select_dishes selected
     case selected
     when Hash
-      fail 'Please Select at least one item' if selected.empty?
       @selected = selected
     else
       @selected = Hash.new { |this, key| this[key] = 'empty' }
@@ -41,6 +40,7 @@ class Menu
   end
 
   def order
+    fail 'Please Select at least one item' unless @selected
     price
     total = { total: @price.round(2) }
     @order = @selected.merge(total)
