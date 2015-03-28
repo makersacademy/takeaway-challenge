@@ -1,6 +1,6 @@
 require 'capybara/rspec'
 require 'menu'
-require 'text_conf'
+require 'text_confirm'
 RSpec.configure do |config|
   config.mock_with :rspec do |c|
     c.syntax = [:should, :expect]
