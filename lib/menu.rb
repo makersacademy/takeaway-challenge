@@ -14,13 +14,8 @@ class Menu
     ]
   end
 
-  def display
-    p @dishes
-  end
-
   def hello
     puts 'Welcome to The Greasy Diner'
     puts 'please make your selection:'
   end
-
 end
