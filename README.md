@@ -2,20 +2,20 @@
 
 Takeaway Challenge
 ==================
+Approach
+--------
+I included two extra user stories, one for editing the menu and one for validating order entries.
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Use
+---
+In irb, require 'order' and 'send_sms'. Phone numbers and twilio API keys have been removed and must be added for full text functionality.
+Add items to your order with 'order' an instance of the Order class. Then call place on an instance of Restaurant with order.list, and the total cost as arguments.
+You can add items to the menu, or change their prices with restaurant.add(items_and_prices_hash).
+Creating an order with items off the menu will raise an error.
+Correct message is sent when the return value of retaurant.place(..) is entered as an argument to sms.send(..).
 
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+User stories
+------------
 
 ```sh
 As a customer
@@ -42,18 +42,3 @@ As a restaurant owner
 So that I can fulfill all orders
 I would like to inform customers when they order off menu
 ```
-
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
