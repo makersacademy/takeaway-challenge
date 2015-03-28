@@ -15,5 +15,6 @@ class SendSMS
       body: text,
       to: @to,
       from: @from)
+    text
   end
 end

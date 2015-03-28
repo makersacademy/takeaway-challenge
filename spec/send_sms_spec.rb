@@ -11,8 +11,8 @@ describe SendSMS do
     it 'tries to send a message' do
       allow(Twilio::REST::Client).to receive(:new).and_return(client)
       allow(client).to receive_message_chain(
-        'account.messages.create') { :sent }
-      expect(subject.send('message')).to be :sent
+        'account.messages.create')
+      expect(subject.send('message')).to eq 'message'
     end
   end
 end

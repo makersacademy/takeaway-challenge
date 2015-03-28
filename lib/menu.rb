@@ -1,4 +1,5 @@
 class Menu
+  attr_reader :menu
   def initialize(new_dishes = {})
     @menu = default_menu.merge(new_dishes)
   end

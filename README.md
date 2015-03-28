@@ -37,6 +37,10 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 As a restaurant owner
 So that I can have an up to date menu
 I would like to be able to add new items and update prices
+
+As a restaurant owner
+So that I can fulfill all orders
+I would like to inform customers when they order off menu
 ```
 
 * Hints on functionality to implement:
