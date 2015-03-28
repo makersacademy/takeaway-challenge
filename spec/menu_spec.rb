@@ -13,7 +13,8 @@ describe Menu do
     }
   end
   let(:menu) { Menu.new }
-   let(:some_dishes) { { bigmac: 3, fries: 1, milk_shake: 2 } }
+  let(:some_dishes) { { bigmac: 3, fries: 1, milk_shake: 2 } }
+  let(:my_order) { { bigmac: 3, fries: 1, milk_shake: 2, total: 14.94} }
 
   it 'presents a list of dishes with prices' do
     expect(menu.show_menu).to eq dishes
@@ -38,6 +39,11 @@ describe Menu do
   it 'calculates the price of the selection' do
     menu.select_dishes(some_dishes)
     expect(menu.price).to eq 14.940000000000001
+  end
+
+  it 'returns the correct order' do
+    menu.select_dishes(some_dishes)
+    expect(menu.order).to eq my_order
   end
 
 
