@@ -2,8 +2,8 @@ require_relative './menu'
 class Order
   attr_reader :order
   alias_method :list, :order
-  def initialize(menu)
-    @menu = menu || Menu.new
+  def initialize(menu = nil)
+    @menu = menu || default_menu
     @order = {}
   end
 
@@ -25,5 +25,9 @@ class Order
 
   def time
     (Time.now  + 60 * 60).strftime('%H:%M')
+  end
+
+  def default_menu
+    Menu.new.menu
   end
 end
