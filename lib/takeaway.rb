@@ -8,11 +8,8 @@ class Takeaway
   end
 
   def show_menu
-    to_return = ''
-    # menu.map { |key, value| to_return << key.to_s + ': £' + value.to_s }.join(', ')
-    # menu.map { |key, value| to_return << "#{key}: £#{value}" }.join(', ')
-    menu.each { |key, value| to_return << key.to_s << ': £' << value.to_s << '\n' }
-    # menu.join(': £', ', ')
+    to_return = ""
+    menu.each { |k, v| to_return << k.to_s << ": £" << v.to_s << "\n" }
     to_return
   end
 end

@@ -24,7 +24,7 @@ context 'Takeaway' do
   end
 
   it 'can let a customer view the menu' do
-    menu_string = 'meal_small: £5\nmeal_medium: £10\nmeal_large: £15\n'
+    menu_string = "meal_small: £5\nmeal_medium: £10\nmeal_large: £15\n"
     expect(takeaway.show_menu).to eq menu_string
   end
 end
