@@ -1,12 +1,12 @@
 require 'order'
 
 describe Order do
-  it 'can add items to cart' do
+  it 'gets dish input' do
+    order = Order.new
+    allow(order.input).to receive(:gets).and_return(:name)
   end
-  it 'can delete items from cart' do
-  end
-  it 'can total items' do
-  end
-  it 'sends confirmation' do
+  it 'checks input' do
+    order = Order.new
+    expect(order.input).to eq (1..4)
   end
 end
