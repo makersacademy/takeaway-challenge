@@ -1,5 +1,8 @@
 class Dish
+  attr_reader :name, :price
+
   def initialize(options)
-    options
+    @name = options.fetch(:name)
+    @price = options.fetch(:price)
   end
 end
