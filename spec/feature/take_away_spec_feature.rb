@@ -35,14 +35,13 @@ feature 'As a customer' do
   end
 
   scenario 'I would like to be able to select some number of several
-      available dishes' do
+  available dishes' do
     menu.select_dishes some_dishes
     expect(menu.selection).to eq some_dishes
-
   end
 
   scenario 'I would like to check that the total I have been given matches the
-      sum of the various dishes in my order' do
+  sum of the various dishes in my order' do
     menu.select_dishes some_dishes
     expect(menu.price).to eq 21.87
   end
@@ -53,7 +52,7 @@ feature 'As a customer' do
   end
 
   scenario 'I would like to receive a text such as "Thank you! Your order
-      was placed and will be delivered before 18:52" after I have ordered' do
+  was placed and will be delivered before 18:52" after I have ordered' do
     menu.select_dishes some_dishes
     my_order = menu.order
     text_confirm.format_order my_order
