@@ -45,9 +45,7 @@ feature 'As a customer' do
   end
 
   before(:example) do
-    # stubs the method chain but returns the argument
     fake_client.stub_chain("account.messages.create") { |arg| arg[:body] }
-    # 'instatiates' a fake client
     Twilio::REST::Client.stub(:new).and_return(fake_client)
   end
 
