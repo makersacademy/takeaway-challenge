@@ -23,12 +23,20 @@ class Menu
       @selected = selected
     else
       @selected = Hash.new { |this, key| this[key] = 'empty' }
-      @selected[selected] = @dishes[selected]
+      @selected[selected] = 1
     end
     @selected
   end
 
   def price
-    @selected.values.pop
+    price = 0
+    @selected.each do | dish, quantity |
+    price += (@dishes[dish] * quantity)
+    end
+    price
+  end
+
+  def selection
+    @selected
   end
 end

@@ -13,7 +13,7 @@ describe Menu do
     }
   end
   let(:menu) { Menu.new }
-   let(:some_dishes) { { bigmac: 3, fries: 1, milkshake: 2 } }
+   let(:some_dishes) { { bigmac: 3, fries: 1, milk_shake: 2 } }
 
   it 'presents a list of dishes with prices' do
     expect(menu.show_menu).to eq dishes
@@ -26,16 +26,16 @@ describe Menu do
     end
   end
 
-  xit 'can allow multiple menu items to be selected' do
+  it 'can allow multiple menu items to be selected' do
     menu.select_dishes(some_dishes)
     expect(menu.selection).to eq some_dishes
   end
 
-  xit 'raises an error if nothing is selected' do
+  it 'raises an error if nothing is selected' do
     expect{menu.select_dishes({})}.to raise_error 'Please Select at least one item'
   end
 
-  xit 'calculates the price of the selection' do
+  it 'calculates the price of the selection' do
     menu.select_dishes(some_dishes)
     expect(menu.price).to eq 14.940000000000001
   end
