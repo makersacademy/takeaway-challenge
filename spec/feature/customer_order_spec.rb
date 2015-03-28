@@ -20,7 +20,8 @@ feature 'customer makes an order' do
     allow(client).to receive_message_chain(
       'account.messages.create') { :sent }
     sms = SendSMS.new
+    allow(Time).to receive(:now) { Time.new(2015, 03, 28, 17, 30, 11) }
     expect(sms.send(order.place(order.total))
-    ).to eq 'Thanks for your order, it should arrive in 30 mins.'
+    ).to eq 'Thanks for your order, it should arrive before 18:30.'
   end
 end

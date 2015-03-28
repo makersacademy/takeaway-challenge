@@ -1,4 +1,4 @@
-require 'menu'
+require_relative './menu'
 class Order
   attr_reader :order
   alias_method :list, :order
@@ -15,13 +15,15 @@ class Order
     cost = order.inject(0) do |total, (dish, number)|
       total + number * @menu[dish]
     end
-    cost = format '%.2f', cost / 100
-    puts "Order total: £#{cost}"
-    cost
+    format '%.2f', cost / 100
   end
 
   def place(sum)
     fail unless sum == total
-    'Thanks for your order, it should arrive in 30 mins.'
+    "Thanks for your order, it should arrive before #{time}."
+  end
+
+  def time
+    (Time.now  + 60 * 60).strftime('%H:%M')
   end
 end

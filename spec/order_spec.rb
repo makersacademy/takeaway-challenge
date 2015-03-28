@@ -18,8 +18,9 @@ describe Order do
     menu = { steak: 2000, chips: 200 }
     order = described_class.new(steak: 2000, chips: 200)
     order.add(steak: 1, chips: 1)
+    allow(Time).to receive(:now) { Time.new(2015, 03, 28, 17, 30, 11) }
     expect(order.place(order.total)).to eq(
-      'Thanks for your order, it should arrive in 30 mins.')
+      'Thanks for your order, it should arrive before 18:30.')
   end
 
   it 'raise error if total is not accurate' do
