@@ -1,10 +1,19 @@
 require 'twilio-ruby'
 
-account_sid = '*****'
-auth_token = '*****'
-@client = Twilio::REST::Client.new account_sid, auth_token
+class SendSMS
+  attr_reader :client
+  def initialize
+    account_sid = '*****'
+    auth_token = '*****'
+    @to = "****"
+    @from = "+441675292034"
+    @client = Twilio::REST::Client.new account_sid, auth_token
+  end
 
-message = @client.account.messages.create(:body => "Your meal will be there in five minutes!",
-    :to => "****",
-    :from => "+441675292034")
-puts message.to
+  def send(text)
+    message = @client.account.messages.create(
+      body: text,
+      to: @to,
+      from: @from)
+  end
+end
