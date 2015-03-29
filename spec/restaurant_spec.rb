@@ -5,6 +5,7 @@ describe Restaurant do
     expect(subject.load_dishes(dish)).to eq [dish]
   end
   it 'has a list of dishes' do
+    subject.load_dishes(dish)
     expect(subject.dishes).to eq [dish]
   end
 end
