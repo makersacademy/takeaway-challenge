@@ -1,21 +1,14 @@
-Takeaway Challenge
-==================
+#Takeaway Challenge#
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+[![Build Status](https://travis-ci.org/RBGeomaticsRob/takeaway-challenge.svg)](https://travis-ci.org/RBGeomaticsRob/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/RBGeomaticsRob/takeaway-challenge/badge.svg)](https://coveralls.io/r/RBGeomaticsRob/takeaway-challenge)
 
-Task
------
+##Task##
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+This is the end of the second week challenge at Makers Academy, it will be devloped in a test driven approach with a focus on good OO design, including a focus on SOLID principles.
 
-```sh
+##User Stories##
+```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -33,6 +26,25 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+##MVP Roadmap##
+Extracted prototype road map to provide focus and clarity on development steps from the user stories.
+```
+MVp1 - User can see a dish, place an order for it, check that the total price equals the price of the dish, confirm order and recieve a text to say it is on-route.
+
+MVp2 - User can see a dish, place *multiple orders* for it, check that the total price equals the *combined price of the dishes*, confirm order and recieve a text to say it is on-route.
+
+MVp3 - User can see a *multiple dishes*, place multiple orders for them, check that the total price equals the combined price of the dishes, confirm order and recieve a text to say it is on-route.
+```
+
+##Domain Design##
+
+This project is being developed in a BDD approach and therefore the domain design below will grow and
+
+- Menu - Responsibility Holding the menu items
+- Order - Responsibility collating order
+- Interaction - Responsible for capturing user input
+- Confirmation - Responsible for Texting Confirmation to the purchaser
+
 * Hints on functionality to implement:
   * ensure you have a list of dishes with prices
   * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
@@ -47,6 +59,3 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
