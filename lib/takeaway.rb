@@ -27,12 +27,12 @@ class Takeaway
   end
 
   def confirm_checkout
-    to_return = ""
-    @customer_order.inject(to_return) do |accumulator, (k, v)|
+    out = ""
+    @customer_order.inject(out) do |accumulator, (k, v)|
       accumulator << "#{v} x #{k} = £#{@menu[k] * v}\n"
     end
-    to_return << "Total = £#{total_price}"
-    to_return
+    out << "Total = £#{total_price}"
+    out
   end
 
   def delivery_conf
