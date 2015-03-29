@@ -14,7 +14,7 @@ module Send_sms
 
 		@client = Twilio::REST::Client.new account_sid, auth_token
 
-		message = @client.account.messages.create(:body => "Thank you! Your order has been accepted and will be delivered to you before 21:00",
+		message = @client.account.messages.create(:body => "Thank you! Your order has been accepted and will be delivered to you before #{time}",
 				:to => "+447817255124",
 				:from => "+441253530817")
 		puts.message.sid
