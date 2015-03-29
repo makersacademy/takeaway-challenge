@@ -9,15 +9,13 @@ class Takeaway
     @customer_order = {}
   end
 
-  def customer name, number
+  def customer name = nil, number = nil
     @customer_name = name
     @customer_number = number
   end
 
   def show_menu
-    @menu.inject("") do |show_menu, (dish, price)|
-      show_menu << "#{dish}: £#{price}\n"
-    end
+    @menu.inject("") { |out, (dish, price)| out << "#{dish}: £#{price}\n" }
   end
 
   def order item
@@ -25,11 +23,19 @@ class Takeaway
   end
 
   def total_price
-    puts @customer_order
     @total = 0
     @customer_order.each do |item, qty|
       @total += (@menu[item] * qty)
     end
     @total
+  end
+
+  def confirm_checkout
+    checkout_msg = ""
+    @customer_order.each do |item, qty|
+      checkout_msg << "#{qty} x #{item} = £#{@menu[item] * qty}\n"
+    end
+    checkout_msg << "Total = £#{total_price}"
+    checkout_msg
   end
 end

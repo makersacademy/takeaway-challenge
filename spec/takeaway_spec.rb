@@ -56,12 +56,28 @@ context 'Takeaway lets the customer' do
 
   it 'order multiple items' do
     order_2 = { "meal-small": 2, "meal-medium": 2, "meal-large": 2 }
-    # order_2_expected = { "meal-small" => 3 }
     expect(takeaway.order(order_2)).to eq order_2
   end
 
   it 'knows the price of ordering multiple item' do
     takeaway.order("meal-small": 2, "meal-medium": 2, "meal-large": 2)
     expect(takeaway.total_price).to eq 60
+  end
+
+  it 'view their final order before placing it' do
+    takeaway.order("meal-small": 1, "meal-medium": 2)
+    checkout_msg = "1 x meal-small = £5\n2 x meal-medium = £20\nTotal = £25"
+    expect(takeaway.confirm_checkout).to eq checkout_msg
+  end
+end
+
+context 'Takeawy' do
+  let(:takeaway) { Takeaway.new }
+
+  before do
+    takeaway.customer 'Bob', '07951761165'
+  end
+
+  it 'texts the customer with delivery time' do
   end
 end
