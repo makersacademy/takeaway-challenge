@@ -1,10 +1,9 @@
 require 'customer'
 
 describe Customer do
-	let(:customer) {Customer.new}
+	let(:customer) {Customer.new(["menu_1"])}
 
 	it "has a menu" do
-		expect(customer).to have_menu
+		expect(customer.dish_list).to eq(["menu_1"])
 	end
-
 end
