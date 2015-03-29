@@ -3,12 +3,16 @@ require 'takeaway'
 context 'Takeaway knows' do
   let(:takeaway) { Takeaway.new }
 
+  before do
+    takeaway.customer 'Bob', '07951761165'
+  end
+
   it 'Bob is their customer' do
-    expect(takeaway.customer_name 'Bob').to eq 'Bob'
+    expect(takeaway.customer_name).to eq 'Bob'
   end
 
   it 'Bob\'s number is 07951761165' do
-    expect(takeaway.customer_number '07951761165').to eq '07951761165'
+    expect(takeaway.customer_number).to eq '07951761165'
   end
 
   it 'their menu contains 3 selections' do
@@ -36,7 +40,7 @@ context 'Takeaway lets the customer' do
     expect(takeaway.show_menu).to eq menu_string
   end
 
-  it 'make an order' do
+  it 'order one item' do
 
   end
 end
