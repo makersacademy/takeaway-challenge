@@ -1,13 +1,13 @@
 require 'dish'
 
 describe Dish do
-  let(:dish) { Dish.new }
+  let(:dish) { Dish.new('pizza', '£6') }
   context 'when created' do
     it 'has a name' do
-      pizza = dish.name
-      expect(dish.name).to eq pizza
+      expect(dish.name).to eq 'pizza'
     end
-    xit 'has a price' do
+    it 'has a price' do
+      expect(dish.price).to eq '£6'
     end
     xit 'is available' do
     end
