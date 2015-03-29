@@ -2,9 +2,10 @@ require 'twilio-ruby'
 
 # Issue right now is that everything has to be created; customers, orders,
 # menus, dishes.
-# I need a UI for the customer interaction with restaurant, and I need to save
-# At least 1 menu somewhere
-# And I need time
+# I need a UI class for the customer interaction with restaurant,
+# and I need to save at least 1 menu somewhere
+# Make a separate Twilio client class
+
 class Restaurant
   attr_reader :menu, :pending_orders, :completed_orders
 
