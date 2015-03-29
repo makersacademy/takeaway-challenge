@@ -14,13 +14,16 @@ class Restaurant
   end
 
   def send_message total, telephone
-    time = Time.now
-    hour = (time.strftime('%I')).to_i
-    min = (time.strftime('%M')).to_i
-    meridian = time.strftime('%p')
     account_sid = 'AC9b042d9d06fec81d3d8044e7cb2975e2'
     auth_token = '648dfb68388439402d7316fd4959ec6b'
     @client = Twilio::REST::Client.new account_sid, auth_token
+    message total, telephone
+  end
+
+  def message total, telephone
+    hour = (Time.now.strftime('%I')).to_i
+    min = (Time.now.strftime('%M')).to_i
+    meridian = Time.now.strftime('%p')
     @client.messages.create(
       from: '+441315104481',
       to: "#{telephone}",
