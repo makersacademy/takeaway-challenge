@@ -1,6 +1,9 @@
 class Customer
+  attr_reader :name, :phone
+
   def initialize(options)
-    options
+    @name = options[:name]
+    @phone = options[:phone]
   end
 
   def view_menu(restaurant)
@@ -9,6 +12,7 @@ class Customer
 
   def order(order)
     restaurant = order.delete(:restaurant)
-    restaurant.receive_order(order)
+    order.merge!(from: self)
+    puts restaurant.receive_order(order)
   end
 end
