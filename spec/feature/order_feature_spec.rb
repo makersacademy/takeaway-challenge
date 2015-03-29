@@ -8,17 +8,17 @@ feature 'When a new order is started' do
   let(:dish1) { Dish.new :carbonara, 4.80 }
   let(:dish2) { Dish.new :amatriciana, 4.40 }
   let(:dish3) { Dish.new :pesto, 4.50 }
-  let(:restaurant) { Restaurant.new Menu }
+  let(:rest) { Restaurant.new Menu }
   let(:time) { (Time.now).strftime('%I:%M %p') }
-  let(:time_delivery) { (Time.now + (60 * 60)).strftime('%I:%M %p') }
-  let(:order) { Order.new restaurant }
+  let(:delivery) { (Time.now + (60 * 60)).strftime('%I:%M %p') }
+  let(:order) { Order.new rest }
 
   before do
     allow(order).to receive(:print)
     allow($stdout).to receive(:puts)
-    restaurant.menu.add dish1
-    restaurant.menu.add dish2
-    restaurant.menu.add dish3
+    rest.menu.add dish1
+    rest.menu.add dish2
+    rest.menu.add dish3
   end
 
   scenario 'can add dishes to order' do
@@ -64,8 +64,8 @@ feature 'When a new order is started' do
   scenario 'can be sent' do
     order.add_item :carbonara
     order.close
-    expect(restaurant).to receive(:message)
-    order.send :telephone
-    expect(restaurant.order_recived).to eq [[order, time, time_delivery]]
+    expect(rest).to receive(:message)
+    order.send :tel
+    expect(rest.order_recived).to eq [[order.new_order, time, delivery, :tel]]
   end
 end

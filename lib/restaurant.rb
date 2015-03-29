@@ -11,7 +11,7 @@ class Restaurant
   def get order, total, telephone
     time = (Time.now).strftime('%I:%M %p')
     time_delivery = (Time.now + (60 * 60)).strftime('%I:%M %p')
-    @order_recived << [order, time, time_delivery]
+    @order_recived << [order.new_order, time, time_delivery, telephone]
     send_message total, telephone
   end
 

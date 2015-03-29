@@ -10,9 +10,9 @@ class Menu
     @list[dish.name] = dish.price
   end
 
-  def remove dish
-    fail 'Dish is not in the menu' unless @list[dish.name]
-    @list.delete(dish.name)
+  def remove name
+    fail 'Dish is not in the menu' unless @list[name]
+    @list.delete(name)
   end
 
   def display

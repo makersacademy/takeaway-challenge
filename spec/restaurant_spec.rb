@@ -3,36 +3,36 @@ require 'restaurant'
 describe Restaurant do
   let(:menu) { double :menu, list: {} }
   let(:menu_class) { double :menu_class, new: menu }
-  let(:restaurant) { described_class.new menu_class }
+  let(:rest) { described_class.new menu_class }
   let(:time) { (Time.now).strftime('%I:%M %p') }
-  let(:time_delivery) { (Time.now + (60 * 60)).strftime('%I:%M %p') }
-  let(:order) { double :order }
+  let(:delivery) { (Time.now + (60 * 60)).strftime('%I:%M %p') }
+  let(:order) { double :order, new_order: { carbonara: 4.80 } }
 
   context 'when created' do
     it 'has a menu' do
-      expect(restaurant.menu.list).to be_empty
+      expect(rest.menu.list).to be_empty
     end
 
     it 'can store orders' do
-      expect(restaurant.order_recived).to eq []
+      expect(rest.order_recived).to eq []
     end
   end
 
   context 'when recives an order' do
     before do
-      expect(restaurant).to receive(:send_message)
+      expect(rest).to receive(:send_message)
     end
     it 'sends a message and stores the recived order' do
-      restaurant.get order, :total, :telephone
-      expect(restaurant.order_recived).to eq [[order, time, time_delivery]]
+      rest.get order, :total, :tel
+      expect(rest.order_recived).to eq [[order.new_order, time, delivery, :tel]]
     end
     it 'gets the now time' do
-      restaurant.get order, :total, :telephone
-      expect(restaurant.order_recived.last[1]).to eq time
+      rest.get order, :total, :tel
+      expect(rest.order_recived.last[1]).to eq time
     end
     it 'gets the time plus one hour' do
-      restaurant.get order, :total, :telephone
-      expect(restaurant.order_recived.last[2]).to eq time_delivery
+      rest.get order, :total, :telephone
+      expect(rest.order_recived.last[2]).to eq delivery
     end
   end
 end

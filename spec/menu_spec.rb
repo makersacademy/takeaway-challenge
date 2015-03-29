@@ -30,7 +30,7 @@ describe Menu do
 
     it 'can remove dishes from the list' do
       menu.add dish
-      menu.remove dish
+      menu.remove :carbonara
       expect(menu.list).to be_empty
     end
 
