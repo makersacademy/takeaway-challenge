@@ -54,6 +54,8 @@ Possible Future Additions
 
 In the future i may also extend this by adding additonal functionality such as:
 
+  Extending MVP to add defaults when user fails to give (Eg: dish price, dish names, etc)
+
   Restaurants could view the recipe for each dish on their menu.
 
 
