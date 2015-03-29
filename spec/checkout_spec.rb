@@ -9,7 +9,8 @@ describe Checkout do
     it 'has an empty total amount when created' do
       expect(checkout.total_amount).to eq 0
     end
-    xit 'has not been paid' do
+    it 'has not been paid' do
+      expect(checkout.paid).to be false
     end
   end
 
