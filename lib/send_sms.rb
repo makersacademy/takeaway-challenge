@@ -3,8 +3,7 @@ require 'twilio-ruby'
 module Send_sms
 
 	def time
-		time_plus_one_hour = Time.now + 1*60*60
-		time_plus_one_hour.strftime('%H:%M')
+		time = Time.now + 1*60*60
 	end
 
 	def send_text

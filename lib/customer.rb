@@ -10,10 +10,6 @@ class Customer
 		@dish_list = dish_list
 	end
 
-	def add(dish_list)
-		@dish_list << dish_list
-	end
-
 	def place_order(order)
 		@order = order.dishes
 	end

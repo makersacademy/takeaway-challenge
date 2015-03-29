@@ -10,8 +10,4 @@ attr_reader :dishes, :sum_order
 		order = quantity.times.map{dish}
 		@dishes.concat order
 	end
-
-	def sum_order
-		@dishes.inject(0){|i, dish| i + dish.price}
-	end
 end

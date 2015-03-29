@@ -12,10 +12,4 @@ describe Order do
 		order.selection("Dish4", 4)
 		expect(order.dishes).to eq(["Dish4", "Dish4", "Dish4", "Dish4"])
 	end
-
-	it "can sum the total price of the order" do
-		order.selection("Dish4", 4)
-		expect(order.sum_order).to eq(40)
-	end
-
 end
