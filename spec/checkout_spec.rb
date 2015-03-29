@@ -7,6 +7,7 @@ describe Checkout do
       expect(checkout.get_shopping_basket).to be_a Hash
     end
     it 'has an empty total amount when created' do
+      expect(checkout.total_amount).to eq 0
     end
     xit 'has not been paid' do
     end
