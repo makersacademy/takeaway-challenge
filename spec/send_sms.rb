@@ -8,5 +8,5 @@ auth_token = '{{ c5d21ea79dc39d103bb35a29928ddcc3 }}'
 
 message = @client.account.messages.create(:body => "Jenny please?! I love you <3",
     :to => "+447834552321",     # Replace with your phone number
-    :from => "+441143031298")   # Replace with your Twilio number
+    :from => "+44 1572 460311")   # Replace with your Twilio number
 puts message.sid
