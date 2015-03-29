@@ -23,20 +23,16 @@ class Takeaway
   end
 
   def total_price
-    total = 0
-    @customer_order.each do |item, qty|
-      total += (@menu[item] * qty)
-    end
-    total
+    @customer_order.inject(0) { |out, (item, qty)| out += (@menu[item] * qty) }
   end
 
   def confirm_checkout
-    checkout_msg = ""
-    @customer_order.each do |item, qty|
-      checkout_msg << "#{qty} x #{item} = £#{@menu[item] * qty}\n"
+    to_return = ""
+    @customer_order.inject(to_return) do |accumulator, (k, v)|
+      accumulator << "#{v} x #{k} = £#{@menu[k] * v}\n"
     end
-    checkout_msg << "Total = £#{total_price}"
-    checkout_msg
+    to_return << "Total = £#{total_price}"
+    to_return
   end
 
   def delivery_conf
