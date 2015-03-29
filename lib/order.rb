@@ -11,4 +11,8 @@ class Order
   def total_items
     @items.size
   end
+
+  def cost
+    @items.inject(0) { |sum, (_key, value)| sum += value }
+  end
 end

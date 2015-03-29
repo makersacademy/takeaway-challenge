@@ -29,7 +29,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ##MVP Roadmap##
 Extracted prototype road map to provide focus and clarity on development steps from the user stories.
 ```
-MVp1 - User can see a dish, place an order for it, check that the total price equals the price of the dish, confirm order and recieve a text to say it is on-route.
+MVp1 - User can check menu, place an order for it, check the order totals before purchase, confirm order and recieve a text to say it is on-route.
 
 MVp2 - User can see a dish, place *multiple orders* for it, check that the total price equals the *combined price of the dishes*, confirm order and recieve a text to say it is on-route.
 
@@ -42,6 +42,8 @@ This project is being developed in a BDD approach and therefore the domain desig
 
 - Menu - Responsibility Holding the menu items
 - Order - Responsibility collating order
+- Purchase - Responsible with proceeding with the order
+- Customer -
 - Interaction - Responsible for capturing user input
 - Confirmation - Responsible for Texting Confirmation to the purchaser
 
