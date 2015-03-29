@@ -1,9 +1,16 @@
 require 'menu'
 
 describe Menu do
-  xit 'can add a dish'
+  let(:murtabak) { double :dish, name: 'Murtabak', price: 10 }
 
-  xit 'can remove a dish'
+  it 'can add a dish' do
+    subject.add_dish(murtabak)
+    expect(subject.dishes).to eq [murtabak]
+  end
 
-  xit 'can return what dishes are on it'
+  it 'can remove a dish' do
+    subject.add_dish(murtabak)
+    subject.remove_dish(murtabak)
+    expect(subject.dishes).to eq []
+  end
 end
