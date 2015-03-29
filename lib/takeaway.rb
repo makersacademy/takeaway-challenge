@@ -1,9 +1,12 @@
+# require 'twilio-ruby'
+
 class Takeaway
   attr_reader :menu
-  attr_accessor :customer_name, :customer_number
+  attr_accessor :customer_name, :customer_number, :customer_order
 
   def initialize
     @menu = { "meal-small": 5, "meal-medium": 10, "meal-large": 15 }
+    @customer_order = {}
   end
 
   def customer name, number
@@ -12,11 +15,12 @@ class Takeaway
   end
 
   def show_menu
-    @menu.inject("") do |show_menu, (k, v)|
-      show_menu << "#{k.capitalize}: £#{v}\n"
+    @menu.inject("") do |show_menu, (dish, price)|
+      show_menu << "#{dish}: £#{price}\n"
     end
   end
 
-  def order_list
+  def order item
+    @customer_order.merge!(item)
   end
 end

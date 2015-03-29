@@ -35,12 +35,21 @@ end
 context 'Takeaway lets the customer' do
   let(:takeaway) { Takeaway.new }
 
+  before do
+    takeaway.customer 'Bob', '07951761165'
+  end
+
   it 'view the menu' do
-    menu_string = "Meal-small: £5\nMeal-medium: £10\nMeal-large: £15\n"
+    menu_string = "meal-small: £5\nmeal-medium: £10\nmeal-large: £15\n"
     expect(takeaway.show_menu).to eq menu_string
   end
 
   it 'order one item' do
+    order_1 = {"meal-medium" => 1}
+    expect(takeaway.order({"meal-medium" => 1})).to eq order_1
+  end
 
+  it 'order multiple items' do
+    
   end
 end
