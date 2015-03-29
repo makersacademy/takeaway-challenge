@@ -9,6 +9,12 @@ describe Order do
 
   it 'can add a dish to order' do
     order.add
-    allow(order).to receive(:new_order)
-  end 
+    allow(order).to receive(:new_order).and_return(burger: 10)
+  end
+
+  it 'can total prices' do
+    order.add :burger
+    order.add :pizza
+    expect(order.total_price).to eq 24
+  end
 end
