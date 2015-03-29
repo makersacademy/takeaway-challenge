@@ -1,4 +1,3 @@
-require 'twilio-ruby'
 require_relative 'module_checkout'
 
 class Menu

@@ -11,18 +11,18 @@ feature 'Listing and Ordering:' do
     expect(menu.list).to eq(Burger: 5, Pizza: 10, Coke: 1)
   end
 
-  scenario 'Customer orders an item from the list' do
+  scenario 'Customer adds an item to their basket from the list' do
     menu.add(:Burger)
     expect(menu.current_order).to eq(Burger: 1)
   end
 
-  scenario 'Customer orders multiple items from the list' do
+  scenario 'Customer adds multiple items from the list' do
     menu.add(:Burger, 2)
     menu.add(:Coke)
     expect(menu.current_order).to eq(Burger: 2, Coke: 1)
   end
 
-  scenario 'Customer orders item not on the menu' do
+  scenario 'Customer adds item not on the menu' do
     expect do
       menu.add(:Lobster)
     end.to raise_error 'Sorry, that item isn\'t on our menu'

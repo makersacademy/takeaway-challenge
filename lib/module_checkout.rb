@@ -15,7 +15,7 @@ module Checkout1
     time = (Time.now.hour + 1).to_s + ":" + (Time.now.min).to_s
     message = @client.account.messages.create(
       body: "Thanks! Your order has been placed and will arrive at #{time}",
-      to:  "+447527428379",
+      to: "+447527428379",
       from: "+441588242013")
   end
 end

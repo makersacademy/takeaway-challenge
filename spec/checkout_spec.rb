@@ -9,9 +9,9 @@ describe Checkout do
     expect(subject.complete(ord)).to eq 'You ordered: Burger: 5 at a cost of: £'
   end
 
-  xit 'can send a text to a customer' do
-    order = double(customer_order: { Burger: 5, Coke: 1 })
-    subject.complete(order)
+  it 'can send a text to a customer' do
+    order = { Burger: 5, Coke: 1 }
     expect(subject).to receive(:send_message)
+    subject.complete(order)
   end
 end

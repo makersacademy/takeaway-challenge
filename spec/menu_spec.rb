@@ -22,6 +22,11 @@ describe Menu do
     end.to raise_error 'Sorry, that item isn\'t on our menu'
   end
 
+  it 'is initially empty on the order and the total' do
+    expect(subject.current_order).to eq({})
+    expect(subject.total).to eq 0
+  end
+
   it 'can sum the prices of the ordered items' do
     subject.add(:Burger)
     subject.add(:Coke, 2)
@@ -34,10 +39,5 @@ describe Menu do
     expect(subject).to receive(:send_message)
     expect(subject.complete).to eq 'You ordered: Burger: 1 Pizza: 1 at a cost'\
                                    ' of: £15'
-  end
-
-  it 'can add items to the menu' do
-    subject.add(:Burger, 2)
-    expect(subject.current_order).to eq(Burger: 2)
   end
 end
