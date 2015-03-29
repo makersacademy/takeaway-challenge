@@ -34,3 +34,4 @@ Run `rake` in the application's root folder
 
 Proof that Twilio sent me an accurate message
 ---------------------------------------------
+[image](https://github.com/sanjsanj/takeaway-challenge/blob/master/IMAGES/SanjayTwilioMSG.PNG?raw=true)
