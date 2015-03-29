@@ -7,10 +7,10 @@ class Menu
   def dishes
     @dishes =
     [
-      { name: '1 Burger', price: 10.99 },
-      { name: '2 Pizza', price: 14.99 },
-      { name: '3 Salad', price: 7.99 },
-      { name: '4 fries', price: 2.99 }
+      { name: 'Burger', price: 10 },
+      { name: 'Pizza', price: 14 },
+      { name: 'Salad', price: 7 },
+      { name: 'fries', price: 2 }
     ]
   end
 
