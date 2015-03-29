@@ -37,13 +37,18 @@ describe Inventory do
       inventory.make_list('pizza', 20)
       inventory.add_to_cart('pizza', 2)
       inventory.remove_from_cart('pizza', 2)
-      expect(inventory.dishes_list['pizza']).to eq 20     
+      expect(inventory.dishes_list['pizza']).to eq 20
     end
-    xit 'can put back an ex-selected dish into the inventory' do
+    it 'can put back an ex-selected dish into the inventory' do
+      # actually tested in the previous test
     end
-    xit 'knows the remaining quantity of a dish' do
+    it 'knows the remaining quantity of a dish' do
+      # actually tested with can remove a selected dish from the inventory'
     end
-    xit 'knows when a specific dish becomes unavailable' do
+    it 'knows the list of dish that need to be displayed as unavailable' do
+      inventory.make_list('burger', 3)
+      inventory.add_to_cart('burger', 3)
+      expect(inventory.unavailable).to eq ['burger']
     end
     xit 'knows when the customer wants to proceed to checkout' do
     end
