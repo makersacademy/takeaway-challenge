@@ -24,7 +24,7 @@ feature 'When a new restaurant is created' do
 
   scenario 'it can get orders' do
     expect(restaurant).to receive(:send_message)
-    restaurant.get :order, :telephone
+    restaurant.get :order, :total, :telephone
     expect(restaurant.order_recived).to eq [:order]
   end
 end

@@ -21,8 +21,8 @@ describe Restaurant do
       expect(restaurant).to receive(:send_message)
     end
     it 'sends a message and stores the recived order' do
-      restaurant.get :order, :telephone
-      expect(restaurant.order_recived).to eq [:order]
+      restaurant.get order, :total, :telephone
+      expect(restaurant.order_recived).to eq [order]
     end
   end
 end
