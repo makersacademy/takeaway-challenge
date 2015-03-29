@@ -23,11 +23,11 @@ class Takeaway
   end
 
   def total_price
-    @total = 0
+    total = 0
     @customer_order.each do |item, qty|
-      @total += (@menu[item] * qty)
+      total += (@menu[item] * qty)
     end
-    @total
+    total
   end
 
   def confirm_checkout
@@ -40,7 +40,7 @@ class Takeaway
   end
 
   def delivery_conf
-    thing = MessageKlass.new
-    thing.send_text @customer_number
+    fail 'Error' if @customer_order.empty? || !customer_number
+    MessageKlass.new.send_text @customer_number, @customer_order
   end
 end
