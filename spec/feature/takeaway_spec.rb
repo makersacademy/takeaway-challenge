@@ -17,10 +17,10 @@ feature 'customer places an order' do
   scenario 'customer adds selected dishes to order after verification' do
     menu = Menu.new(test_menu)
     order = Order.new
-    order.add(:red_curry, menu)
-    order.add(:korma_chicken, menu)
+    menu.add_to_order(:red_curry, order)
+    menu.add_to_order(:korma_chicken, order)
     expect do
-      order.add(:spice_alec, menu)
+      menu.add_to_order(:spice_alec, order)
     end.to raise_error 'Invalid Dish, Available Dishes in the Menu'
     expect(order.list).to eq([:red_curry, :korma_chicken])
   end

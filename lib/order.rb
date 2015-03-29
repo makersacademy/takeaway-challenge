@@ -6,16 +6,7 @@ class Order
     @order = []
   end
 
-  def add item, menu
-    unless item_verified?(item, menu)
-      fail 'Invalid Dish, Available Dishes in the Menu'
-    end
+  def add item
     order << item
-  end
-
-  private
-
-  def item_verified? item, menu
-    menu.list.include?(item)
   end
 end

@@ -8,4 +8,15 @@ class Menu
     end
     @menu = menu_hsh
   end
+
+  def add_to_order item, order
+    fail 'Invalid Dish, Available Dishes in the Menu' unless valid_item?(item)
+    order.add(item)
+  end
+
+  private
+
+  def valid_item?(item)
+    menu.include?(item)
+  end
 end
