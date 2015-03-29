@@ -1,6 +1,14 @@
 Takeaway Challenge
 ==================
 
+- I started with teh domain model: on pen and paper. I identified the following classes that I'm going to start with: 
+* Dish (name, quantity, availability)
+* Inventory (moves dishes in and out of a shopping basket)
+* Checkout (payment of the shopping basket)
+* DeliveryInformation (send the SMS)
+
+
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it

@@ -1,0 +1,2 @@
+class DeliveryInformation
+end
