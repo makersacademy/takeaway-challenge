@@ -7,8 +7,4 @@ class Restaurant
   def load_dishes(dish)
     @dishes << dish
   end
-
-  # def list_dishes
-  #   @dishes
-  # end
 end
