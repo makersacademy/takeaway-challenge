@@ -13,6 +13,6 @@ class Customer
   def order(order)
     restaurant = order.delete(:restaurant)
     order.merge!(from: self)
-    puts restaurant.receive_order(order)
+    restaurant.receive_order(order)
   end
 end

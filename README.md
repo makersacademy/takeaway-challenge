@@ -52,7 +52,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Possible Future Additions
 -------
 
-In the future i may extend this by adding additonal functionality such as:
+In the future i may also extend this by adding additonal functionality such as:
 
   Restaurants could view the recipe for each dish on their menu.
 
