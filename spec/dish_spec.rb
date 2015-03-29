@@ -19,6 +19,8 @@ describe Dish do
 
   context 'when a client order is being processed' do
     xit 'knows its actual quantity' do
+      # 5 pizzas ordered
+      expect(dish.quantity).to eq 15
     end
     xit 'knows that it\'s available' do
     end

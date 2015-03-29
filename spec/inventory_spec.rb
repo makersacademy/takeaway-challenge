@@ -1,9 +1,11 @@
 require 'inventory'
 
 describe Inventory do
-
+  let(:inventory) { Inventory.new }
   context 'when created' do
-    xit 'knows the dishes list' do
+    it 'has a dishes list when created' do
+      inventory.make_list('pizza', 20)
+      expect(inventory.dishes_list).to include "pizza"
     end
     xit 'knows the default quantity of each dish' do
     end
