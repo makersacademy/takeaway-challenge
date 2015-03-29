@@ -15,7 +15,7 @@ feature 'When a new restaurant is created' do
     allow(order).to receive(:print)
     allow($stdout).to receive(:puts)
   end
-  
+
   scenario 'it has a menu' do
     expect(restaurant.menu.list).to be_empty
   end
