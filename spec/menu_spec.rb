@@ -16,4 +16,10 @@ describe Menu do
     menu = described_class.new(test_menu)
     expect(menu.list).to eq test_menu
   end
+
+  it 'raises error when initialized incorrectly' do
+    expect do
+      subject
+    end.to raise_error 'Invalid Input, Try Initializing Menu with Hash'
+  end
 end
