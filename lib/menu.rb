@@ -1,0 +1,3 @@
+# Menu
+class Menu
+end
