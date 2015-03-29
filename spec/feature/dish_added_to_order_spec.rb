@@ -4,6 +4,7 @@ require 'dish'
 feature 'Restaurant dish can be added to order and total shown' do
   let(:restaurant) { Restaurant.new }
   let(:dish) { Dish.new("Chicken curry") }
+  let(:order) { Order.new }
   before(:each) do
     restaurant.load_dishes(dish)
   end
