@@ -1,4 +1,3 @@
-# Dish
 class Dish
   attr_accessor :name, :price, :description
 
