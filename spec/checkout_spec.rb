@@ -1,7 +1,7 @@
 require 'checkout'
 
 describe Checkout do
-  let(:checkout) { Checkout.new }
+  let(:checkout) { described_class.new }
   context 'when created' do
     it 'gets the shopping basket from inventory' do
       expect(checkout.get_shopping_basket).to be_a Hash

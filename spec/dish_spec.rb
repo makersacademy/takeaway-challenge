@@ -1,7 +1,7 @@
 require 'dish'
 
 describe Dish do
-  let(:dish) { Dish.new('pizza', 6, 20) }
+  let(:dish) { described_class.new('pizza', 6, 20) }
   context 'when created' do
     it 'has a name' do
       expect(dish.name).to eq 'pizza'

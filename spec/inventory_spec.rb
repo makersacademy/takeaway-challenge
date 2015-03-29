@@ -1,7 +1,7 @@
 require 'inventory'
 
 describe Inventory do
-  let(:inventory) { Inventory.new }
+  let(:inventory) { described_class.new }
   context 'when created' do
     it 'has a dishes list when created' do
       inventory.make_list('pizza', 20)
@@ -23,9 +23,15 @@ describe Inventory do
   end
 
   context 'when a client order is being processed' do
-    xit 'can move a selected dish to the shopping basket' do
+    it 'can move a selected dish to the shopping basket' do
+      inventory.make_list('pizza', 20)
+      inventory.add_to_cart('pizza', 2)
+      expect(inventory.shopping_basket['pizza']).to eq 2
     end
-    xit 'can remove a selected dish from the inventory' do
+    it 'can remove a selected dish from the inventory' do
+      inventory.make_list('pizza', 20)
+      inventory.add_to_cart('pizza', 2)
+      expect(inventory.dishes_list['pizza']).to eq 18
     end
     xit 'can remove a selected dish from the shopping basket' do
     end

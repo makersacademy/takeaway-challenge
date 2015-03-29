@@ -1,7 +1,7 @@
 require 'delivery_information'
 
 describe DeliveryInformation do
-  let(:delinfo) { DeliveryInformation.new }
+  let(:delinfo) { described_class.new }
   it 'has not sent a SMS when created' do
     expect(delinfo.sent_sms).to be false
   end
