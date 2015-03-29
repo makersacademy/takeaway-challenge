@@ -25,7 +25,7 @@ class Order
       print "\t#{key.capitalize}\t"
       print "\t" if key.length <= 7
       print "#{value[0]}\t"
-      puts "#{value[1]} €"
+      puts "£ #{value[1]}"
     end
   end
 
@@ -39,7 +39,7 @@ class Order
     check
     puts "\t" + "-" * 30
     print "\tTotal:\t\t\t"
-    puts "#{total} €"
+    puts "£ #{total}"
   end
 
   def close
@@ -52,7 +52,7 @@ class Order
   def send telephone
     fail 'Order is empty' if @new_order.empty?
     fail 'Order is not closed yet' if @status == 'open'
-    @restaurant.get self, telephone
+    @restaurant.get self, total, telephone
   end
 
   private

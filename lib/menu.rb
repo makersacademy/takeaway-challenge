@@ -19,7 +19,7 @@ class Menu
     @list.each do |key, value|
       print "\t#{key.capitalize}\t\t"
       print "\t" if key.length <= 7
-      puts "€#{value}"
+      puts "£ #{value}"
     end
   end
 end
