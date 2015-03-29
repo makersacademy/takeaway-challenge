@@ -42,9 +42,9 @@ This project is being developed in a BDD approach and therefore the domain desig
 
 - Menu - Responsibility Holding the menu items
 - Order - Responsibility collating order
-- Purchase - Responsible with proceeding with the order
-- Customer -
-- Interaction - Responsible for capturing user input
+- Print - Responsible for displaying information on screen
+- Customer - Responsibility for knowing customer information
+- Shop - Responsible for processing orders.
 - Confirmation - Responsible for Texting Confirmation to the purchaser
 
 
