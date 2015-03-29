@@ -7,8 +7,8 @@ class Inventory
   end
 
   def make_list(dish_name, dish_quantity)
-    fail "#{dish_name} is not available anymore" if dish_quantity <= 0
     @dishes_list[dish_name] = dish_quantity
+    fail "#{dish_name} is not available anymore" if dish_quantity <= 0
   end
 
   def add_to_cart(dish_a, quantity_a)
@@ -16,12 +16,12 @@ class Inventory
       @shopping_basket[dish_a] = quantity_a
       @dishes_list[dish_a] -= @shopping_basket[dish_a]
     else
-      # fail to be written
+      fail "sorry. There are no #{dish_a} left"
     end
   end
 
   def unavailable
-    @dishes_list.each {|key, value| @unavailable << key if value <= 0 }
+    @dishes_list.each { |key, value| @unavailable << key if value <= 0 }
     @unavailable
   end
 

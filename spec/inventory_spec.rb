@@ -45,10 +45,16 @@ describe Inventory do
     it 'knows the remaining quantity of a dish' do
       # actually tested with can remove a selected dish from the inventory'
     end
-    it 'knows the list of dish that need to be displayed as unavailable' do
+    it 'knows the list of dishes that need to be displayed as unavailable' do
       inventory.make_list('burger', 3)
       inventory.add_to_cart('burger', 3)
       expect(inventory.unavailable).to eq ['burger']
+    end
+    it 'cannot add a dish to cart when dish has become unavailable' do
+      inventory.make_list('burger', 1)
+      inventory.add_to_cart('burger', 1)
+      expect { inventory.add_to_cart('burger', 1) }.to raise_error
+      "sorry. There are no burger left"
     end
     xit 'knows when the customer wants to proceed to checkout' do
     end
