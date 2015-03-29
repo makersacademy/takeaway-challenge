@@ -15,9 +15,9 @@ describe Inventory do
       expect { inventory.make_list('unicorn steak', 0) } .to raise_error
       "unicorn steak is not available anymore"
     end
-    xit 'has a shopping basket' do
-    end
-    xit 'has an empty shopping basket when created' do
+    it 'has an empty shopping basket when created' do
+      # I tried to eq {} at first and it didn't work!
+      expect(inventory.shopping_basket).to be_a Hash
     end
   end
 
