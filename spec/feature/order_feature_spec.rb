@@ -9,6 +9,8 @@ feature 'When a new order is started' do
   let(:dish2) { Dish.new :amatriciana, 4.40 }
   let(:dish3) { Dish.new :pesto, 4.50 }
   let(:restaurant) { Restaurant.new Menu }
+  let(:time) { (Time.now).strftime('%I:%M %p') }
+  let(:time_delivery) { (Time.now + (60 * 60)).strftime('%I:%M %p') }
   let(:order) { Order.new restaurant }
 
   before do
@@ -62,8 +64,8 @@ feature 'When a new order is started' do
   scenario 'can be sent' do
     order.add_item :carbonara
     order.close
-    expect(restaurant).to receive(:send_message)
+    expect(restaurant).to receive(:message)
     order.send :telephone
-    expect(restaurant.order_recived).to eq [order]
+    expect(restaurant.order_recived).to eq [[order, time, time_delivery]]
   end
 end

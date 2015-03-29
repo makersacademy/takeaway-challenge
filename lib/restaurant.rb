@@ -9,7 +9,9 @@ class Restaurant
   end
 
   def get order, total, telephone
-    @order_recived << order
+    time = (Time.now).strftime('%I:%M %p')
+    time_delivery = (Time.now + (60 * 60)).strftime('%I:%M %p')
+    @order_recived << [order, time, time_delivery]
     send_message total, telephone
   end
 
@@ -21,13 +23,14 @@ class Restaurant
   end
 
   def message total, telephone
-    hour = (Time.now.strftime('%I')).to_i
-    min = (Time.now.strftime('%M')).to_i
-    meridian = Time.now.strftime('%p')
     @client.messages.create(
       from: '+441315104481',
       to: "#{telephone}",
-      body: "\nOrder recived!\nThe total is £ #{total}.\nIt will arrive before #{hour + 1}:#{min} #{meridian}."
+      body: """
+            Order recived!
+            \rThe total is £ #{total}.
+            \rIt will arrive before #{order_recived.last[2]}.
+            """
     )
   end
 end

@@ -32,7 +32,7 @@ class Order
   def total
     total = 0
     @new_order.each_value { |value| total += value[1] }
-    total
+    total.round(2)
   end
 
   def recipit
