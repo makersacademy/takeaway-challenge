@@ -33,7 +33,11 @@ describe Inventory do
       inventory.add_to_cart('pizza', 2)
       expect(inventory.dishes_list['pizza']).to eq 18
     end
-    xit 'can remove a selected dish from the shopping basket' do
+    it 'can remove a selected dish from the shopping basket' do
+      inventory.make_list('pizza', 20)
+      inventory.add_to_cart('pizza', 2)
+      inventory.remove_from_cart('pizza', 2)
+      expect(inventory.dishes_list['pizza']).to eq 20     
     end
     xit 'can put back an ex-selected dish into the inventory' do
     end

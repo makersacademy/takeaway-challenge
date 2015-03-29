@@ -10,13 +10,17 @@ class Inventory
     @dishes_list[dish_name] = dish_quantity
   end
 
-  def add_to_cart(selected_dish, selected_quantity)
-    if selected_quantity <= @dishes_list[selected_dish]
-    @shopping_basket[selected_dish] = selected_quantity
-    value = @dishes_list[selected_dish] - @shopping_basket[selected_dish]
-    @dishes_list[selected_dish] = value
+  def add_to_cart(dish_a, quantity_a)
+    if quantity_a <= @dishes_list[dish_a]
+    @shopping_basket[dish_a] = quantity_a
+    @dishes_list[dish_a] -= @shopping_basket[dish_a]
     else
       # fail to be written
     end
+  end
+
+  def remove_from_cart(dish_ab, quantity_ab)
+  @shopping_basket[dish_ab] = 0
+  @dishes_list[dish_ab] += quantity_ab
   end
 end
