@@ -1,5 +1,8 @@
 require: rubocop-rspec
 
+AllCops:
+  RunRailsCops: false
+
 EmptyLinesAroundBlockBody:
   Enabled: false
 
@@ -40,3 +43,7 @@ Style/TrailingBlankLines:
   SupportedStyles:
   - final_newline
   - final_blank_line
+
+Rails/Output:
+  Description: Checks for calls to puts, print, etc.
+  Enabled: false
