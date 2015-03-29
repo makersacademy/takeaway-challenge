@@ -7,9 +7,13 @@ describe Inventory do
       inventory.make_list('pizza', 20)
       expect(inventory.dishes_list).to include "pizza"
     end
-    xit 'knows the default quantity of each dish' do
+    it 'knows the default quantity of each dish' do
+      inventory.make_list('pizza', 20)
+      expect(inventory.dishes_list['pizza']).to eq 20
     end
-    xit 'informs on dishes not being available anymore' do
+    it 'informs on dishes not being available anymore' do
+      expect { inventory.make_list('unicorn steak', 0) } .to raise_error
+      "unicorn steak is not available anymore"
     end
     xit 'has a shopping basket' do
     end
