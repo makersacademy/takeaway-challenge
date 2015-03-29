@@ -45,11 +45,23 @@ context 'Takeaway lets the customer' do
   end
 
   it 'order one item' do
-    order_1 = {"meal-medium" => 1}
-    expect(takeaway.order({"meal-medium" => 1})).to eq order_1
+    order_1 = { "meal-medium": 1 }
+    expect(takeaway.order(order_1)).to eq order_1
+  end
+
+  it 'knows the price of ordering 1 item' do
+    takeaway.order("meal-medium": 1)
+    expect(takeaway.total_price).to eq 10
   end
 
   it 'order multiple items' do
-    
+    order_2 = { "meal-small": 2, "meal-medium": 2, "meal-large": 2 }
+    # order_2_expected = { "meal-small" => 3 }
+    expect(takeaway.order(order_2)).to eq order_2
+  end
+
+  it 'knows the price of ordering multiple item' do
+    takeaway.order("meal-small": 2, "meal-medium": 2, "meal-large": 2)
+    expect(takeaway.total_price).to eq 60
   end
 end

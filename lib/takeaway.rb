@@ -23,4 +23,13 @@ class Takeaway
   def order item
     @customer_order.merge!(item)
   end
+
+  def total_price
+    puts @customer_order
+    @total = 0
+    @customer_order.each do |item, qty|
+      @total += (@menu[item] * qty)
+    end
+    @total
+  end
 end
