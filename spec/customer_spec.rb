@@ -1,6 +1,6 @@
 require 'customer'
 
-describe 'Customer' do
+describe Customer do
 	let(:customer) {Customer.new}
 
 	it "has a menu" do

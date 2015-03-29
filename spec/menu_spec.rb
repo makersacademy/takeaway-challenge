@@ -1,6 +1,6 @@
 require 'menu'
 
-describe "Menu" do
+describe Menu do
 	let(:menu) {Menu.new(["Dish1", "Dish2", "Dish3"])}
 	let(:Dish1) {Double :dish, name: "Dish1", price: 10}
 	let(:Dish2) {Double :dish, name: "Dish2", price: 10}
