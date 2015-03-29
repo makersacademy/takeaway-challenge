@@ -35,10 +35,6 @@ end
 context 'Takeaway lets the customer' do
   let(:takeaway) { Takeaway.new }
 
-  before do
-    takeaway.customer 'Bob', '07951761165'
-  end
-
   it 'view the menu' do
     menu_string = "meal-small: £5\nmeal-medium: £10\nmeal-large: £15\n"
     expect(takeaway.show_menu).to eq menu_string
@@ -73,10 +69,6 @@ end
 
 context 'Takeawy' do
   let(:takeaway) { Takeaway.new }
-
-  before do
-    takeaway.customer 'Bob', '07951761165'
-  end
 
   it 'texts the customer with delivery time' do
   end

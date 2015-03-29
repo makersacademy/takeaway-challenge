@@ -1,4 +1,4 @@
-# require 'twilio-ruby'
+require_relative 'send_text'
 
 class Takeaway
   attr_reader :menu
@@ -37,5 +37,10 @@ class Takeaway
     end
     checkout_msg << "Total = £#{total_price}"
     checkout_msg
+  end
+
+  def delivery_conf
+    thing = MessageKlass.new
+    thing.send_text @customer_number
   end
 end
