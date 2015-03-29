@@ -9,7 +9,7 @@ describe Menu do
   end
 
   # before :each do
-  #   menu = Menu.new(test_menu)
+  #   menu = described_class.new(test_menu)
   # end
 
   it 'accepts a list of dishes hash when initialized' do
