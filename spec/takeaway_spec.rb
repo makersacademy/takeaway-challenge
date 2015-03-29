@@ -1,30 +1,42 @@
 require 'takeaway'
 
-context 'Takeaway' do
-  takeaway = Takeaway.new
+context 'Takeaway knows' do
+  let(:takeaway) { Takeaway.new }
 
-  it 'knows Bob is their customer' do
-    expect(takeaway.customer 'Bob').to eq 'Bob'
+  it 'Bob is their customer' do
+    expect(takeaway.customer_name 'Bob').to eq 'Bob'
   end
 
-  it 'knows their menu contains 3 selections' do
+  it 'Bob\'s number is 07951761165' do
+    expect(takeaway.customer_number '07951761165').to eq '07951761165'
+  end
+
+  it 'their menu contains 3 selections' do
     expect(takeaway.menu.count).to eq 3
   end
 
-  it 'knows meal_small costs 5' do
-    expect(takeaway.menu[:meal_small]).to eq 5
+  it 'meal-small costs 5' do
+    expect(takeaway.menu[:"meal-small"]).to eq 5
   end
 
-  it 'knows meal_medium costs 10' do
-    expect(takeaway.menu[:meal_medium]).to eq 10
+  it 'meal-medium costs 10' do
+    expect(takeaway.menu[:"meal-medium"]).to eq 10
   end
 
-  it 'knows meal_large costs 15' do
-    expect(takeaway.menu[:meal_large]).to eq 15
+  it 'meal-large costs 15' do
+    expect(takeaway.menu[:"meal-large"]).to eq 15
   end
+end
 
-  it 'can let a customer view the menu' do
-    menu_string = "meal_small: £5\nmeal_medium: £10\nmeal_large: £15\n"
+context 'Takeaway lets the customer' do
+  let(:takeaway) { Takeaway.new }
+
+  it 'view the menu' do
+    menu_string = "Meal-small: £5\nMeal-medium: £10\nMeal-large: £15\n"
     expect(takeaway.show_menu).to eq menu_string
+  end
+
+  it 'make an order' do
+
   end
 end
