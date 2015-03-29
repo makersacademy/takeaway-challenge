@@ -1,9 +1,11 @@
 require 'dish'
 
 describe Dish do
-
+  let(:dish) { Dish.new }
   context 'when created' do
-    xit 'has a name' do
+    it 'has a name' do
+      pizza = dish.name
+      expect(dish.name).to eq pizza
     end
     xit 'has a price' do
     end
