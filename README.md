@@ -5,7 +5,7 @@
 
 ##Task##
 
-This is the end of the second week challenge at Makers Academy, it will be devloped in a test driven approach with a focus on good OO design, including a focus on SOLID principles.
+This is the end of the second week challenge at Makers Academy, it will be developed in a test driven approach with a focus on good OO design, including a focus on SOLID principles.
 
 ##User Stories##
 ```
@@ -44,6 +44,8 @@ This project is being developed in a BDD approach and therefore the domain desig
 - Order - Responsibility collating order
 - Interaction - Responsible for capturing user input
 - Confirmation - Responsible for Texting Confirmation to the purchaser
+
+
 
 * Hints on functionality to implement:
   * ensure you have a list of dishes with prices
