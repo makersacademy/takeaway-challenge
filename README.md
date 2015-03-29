@@ -1,4 +1,4 @@
-akers Academy Week2 Challenge: Takeaway Challenge
+Makers Academy Week2 Challenge: Takeaway Challenge
 =================================================
 [![Build Status](https://travis-ci.org/rjlynch/takeaway-challenge.svg?branch=master)](https://travis-ci.org/rjlynch/takeaway-challenge)
 
