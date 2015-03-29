@@ -8,9 +8,9 @@ context 'Text delivery confirmation' do
     expect { messageklass.send_text }.to raise_error
   end
 
-  xit 'succeeds otherwise' do
-    twilio.stub_chain("account.messages.create")
-    Twilio::REST::Client.stub(:new).and_return(twilio)
-    expect(messageklass.send_text '1234', "Message").not_to raise_error
-  end
+  # xit 'succeeds otherwise' do
+  #   twilio.stub_chain("account.messages.create")
+  #   Twilio::REST::Client.stub(:new).and_return(twilio)
+  #   expect(messageklass.send_text '1234', "Message").not_to raise_error
+  # end
 end

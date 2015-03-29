@@ -71,12 +71,12 @@ context 'Takeawy' do
   let(:takeaway) { Takeaway.new }
   # let(:MessageKlass.new) { double :send_text, true }
 
-  xit 'can text the customer if number and order are given' do
-    takeaway.customer 'Bob', '08008881234'
-    takeaway.order("meal-small": 1)
-    allow(MessageKlass.new).to receive(:send_text).and_return true
-    expect(takeaway.delivery_conf).not_to raise_error
-  end
+  # xit 'can text the customer if number and order are given' do
+  #   takeaway.customer 'Bob', '08008881234'
+  #   takeaway.order("meal-small": 1)
+  #   allow(MessageKlass.new).to receive(:send_text).and_return true
+  #   expect(takeaway.delivery_conf).not_to raise_error
+  # end
 
   it 'does not text if no customer number or no order' do
     takeaway.customer 'Bob'
