@@ -4,4 +4,8 @@ class Dish
     @name = name
     @price = price
   end
+
+  def available?
+    true
+  end
 end

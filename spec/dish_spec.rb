@@ -9,7 +9,8 @@ describe Dish do
     it 'has a price' do
       expect(dish.price).to eq '£6'
     end
-    xit 'is available' do
+    it 'is available' do
+      expect(dish).to be_available
     end
     xit 'has an initial quantity' do
     end
