@@ -28,8 +28,8 @@ class Takeaway
 
   def confirm_checkout
     out = ""
-    @customer_order.inject(out) do |accumulator, (k, v)|
-      accumulator << "#{v} x #{k} = £#{@menu[k] * v}\n"
+    @customer_order.inject(out) do |accumulator, (item, qty)|
+      accumulator << "#{qty} x #{item} = £#{@menu[item] * qty}\n"
     end
     out << "Total = £#{total_price}"
     out
