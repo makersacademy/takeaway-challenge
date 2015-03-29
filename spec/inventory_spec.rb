@@ -17,6 +17,7 @@ describe Inventory do
     end
     it 'has an empty shopping basket when created' do
       # I tried to eq {} at first and it didn't work!
+      # IRB confirms that when created it's {}. Any better way to do?
       expect(inventory.shopping_basket).to be_a Hash
     end
   end

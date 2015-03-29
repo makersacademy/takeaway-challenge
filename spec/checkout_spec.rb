@@ -1,11 +1,12 @@
 require 'checkout'
 
 describe Checkout do
-
+  let(:checkout) { Checkout.new }
   context 'when created' do
-    xit 'has a shopping basket amount feature' do
+    it 'gets the shopping basket from inventory' do
+      expect(checkout.get_shopping_basket).to be_a Hash
     end
-    xit 'has an empty amount when created' do
+    it 'has an empty total amount when created' do
     end
     xit 'has not been paid' do
     end
