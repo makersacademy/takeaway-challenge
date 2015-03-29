@@ -4,6 +4,7 @@ class Inventory
     @dishes_list = {}
     @shopping_basket = {}
     @unavailable = []
+    @ready_to_checkout = false
   end
 
   def make_list(dish_name, dish_quantity)
@@ -26,6 +27,10 @@ class Inventory
   def unavailable
     @dishes_list.each { |key, value| @unavailable << key if value <= 0 }
     @unavailable
+  end
+
+  def ready_to_checkout
+    @ready_to_checkout = true
   end
 
   def remove_from_cart(dish_ab, quantity_ab)

@@ -2,6 +2,10 @@ require 'inventory'
 
 describe Inventory do
   let(:inventory) { described_class.new }
+  # I couldn't get my double to work properly and I need help on that!
+  # I don't understand how to set them up with several parameters
+  let(:pizza) { double :dish, name: 'pizza', quantity: 20 }
+  let(:burger) { double :dish, 'burger' => 3 }
   context 'when created' do
     it 'has a dishes list when created' do
       inventory.make_list('pizza', 20)
@@ -12,6 +16,7 @@ describe Inventory do
       expect(inventory.dishes_list['pizza']).to eq 20
     end
     it 'informs on dishes not being available anymore' do
+      # this test works but rubocop is not happy with line length! Any idea?
       expect { inventory.make_list('unicorn steak', 0) } .to raise_error
       "unicorn steak is not available anymore"
     end
@@ -51,15 +56,18 @@ describe Inventory do
       expect(inventory.unavailable).to eq ['burger']
     end
     it 'cannot add a dish to cart when dish has become unavailable' do
+      # Any idea what to do against rubocop line length?
       inventory.make_list('burger', 1)
       inventory.add_to_cart('burger', 1)
       expect { inventory.add_to_cart('burger', 1) }.to raise_error "sorry. There are no burger left"
     end
     it 'cannot add more dishes to the basket than there are available' do
+      # Any idea what to do against rubocop line length?
       inventory.make_list('burger', 2)
       expect { inventory.add_to_cart('burger', 3) }.to raise_error "sorry. There are only 2 burgers left"
     end
-    xit 'knows when the customer wants to proceed to checkout' do
+    it 'knows when the customer wants to proceed to checkout' do
+      expect(inventory.ready_to_checkout).to eq true
     end
   end
 end
