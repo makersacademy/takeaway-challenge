@@ -7,16 +7,19 @@ class Inventory
   end
 
   def make_list(dish_name, dish_quantity)
-    @dishes_list[dish_name] = dish_quantity
     fail "#{dish_name} is not available anymore" if dish_quantity <= 0
+    @dishes_list[dish_name] = dish_quantity
   end
 
   def add_to_cart(dish_a, quantity_a)
-    if quantity_a <= @dishes_list[dish_a]
+    if quantity_a <= @dishes_list[dish_a] && @dishes_list[dish_a] != 0
       @shopping_basket[dish_a] = quantity_a
       @dishes_list[dish_a] -= @shopping_basket[dish_a]
-    else
+    # elsif quantity_a > @dishes_list[dish_a]
+    elsif @dishes_list[dish_a] == 0
       fail "sorry. There are no #{dish_a} left"
+    else
+      fail "sorry. There are only #{@dishes_list[dish_a]} #{dish_a}s left"
     end
   end
 

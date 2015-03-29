@@ -53,8 +53,11 @@ describe Inventory do
     it 'cannot add a dish to cart when dish has become unavailable' do
       inventory.make_list('burger', 1)
       inventory.add_to_cart('burger', 1)
-      expect { inventory.add_to_cart('burger', 1) }.to raise_error
-      "sorry. There are no burger left"
+      expect { inventory.add_to_cart('burger', 1) }.to raise_error "sorry. There are no burger left"
+    end
+    it 'cannot add more dishes to the basket than there are available' do
+      inventory.make_list('burger', 2)
+      expect { inventory.add_to_cart('burger', 3) }.to raise_error "sorry. There are only 2 burgers left"
     end
     xit 'knows when the customer wants to proceed to checkout' do
     end
