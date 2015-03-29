@@ -15,7 +15,9 @@ describe Checkout do
   end
 
   context 'payment' do
-    xit 'knows that the total amount corresponds to what was ordered' do
+    it 'knows that the total amount corresponds to what was ordered' do
+      checkout.calculate('pizza' => 2, 'burger' => 3, 'chips' => 5)
+      expect(checkout.total_amount).to eq 26
     end
     xit 'can be paid' do
     end
