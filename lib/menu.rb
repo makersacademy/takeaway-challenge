@@ -16,6 +16,10 @@ class Menu
     items[number]
   end
 
+  def each_item
+    items.each { |key, (price, dish)| yield(key, [dish, price]) }
+  end
+
   private
 
   def defaults

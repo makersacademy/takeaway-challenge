@@ -21,4 +21,8 @@ describe Menu do
     item1 = { 'dish' => dish1, 'price' => price1 }
     expect(subject.item(1)).to eq item1
   end
+
+  it 'can cycle through each item' do
+    expect { subject.each_item { |_k, (d, _p)| puts d } }.to output.to_stdout
+  end
 end

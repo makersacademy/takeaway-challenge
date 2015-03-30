@@ -16,4 +16,8 @@ class Order
   def cost
     @items.inject(0) { |sum, (_key, value)| sum += (value[0] * value[1]) }
   end
+
+  def each_item
+    items.each { |dish, price| yield(dish, price) }
+  end
 end

@@ -20,4 +20,9 @@ describe Order do
     subject.add!(menu.item(1), 2)
     expect(subject.cost).to eq menu.item(1)['price'] * 2
   end
+
+  it 'can cycle through each item' do
+    subject.add!(menu.item(1), 2)
+    expect { subject.each_item { |k, v| puts "#{k}#{v}" } }.to output.to_stdout
+  end
 end
