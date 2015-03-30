@@ -1,7 +1,7 @@
 require './lib/menu'
 
 class Customer
-  def view_menu
-    show_menu
+  def place_order(dish, quantity)
+    menu.basket()
   end
 end

@@ -22,4 +22,7 @@ describe Menu do
     expect(menu.basket[:sloppy_sandwich]).to eq menu.list[:sloppy_sandwich]
   end
 
+  it "can send a text " do
+    
+  end
 end
