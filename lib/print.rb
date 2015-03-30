@@ -1,6 +1,6 @@
 class Print
   def check(order)
-    order.items.each { |dish, price| puts "#{dish}  -  #{price}" }
+    order.items.each { |dish, p| puts "#{dish}  -  £#{p[0]} x #{p[1]}" }
     puts "Total Items #{order.total_items}"
     puts "Total Cost #{order.cost}"
   end

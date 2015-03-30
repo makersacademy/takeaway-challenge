@@ -5,7 +5,7 @@ describe Print do
   let(:menu) { double(:menu) }
 
   it 'can show on the screen the contents of order' do
-    allow(order).to receive(:items) { { 'Pepperoni' => 9.95 } }
+    allow(order).to receive(:items) { { 'Pepperoni' => [9.95, 2] } }
     allow(order).to receive(:total_items) { 1 }
     allow(order).to receive(:cost) { 9.95 }
     expect { subject.check(order) }.to output.to_stdout
