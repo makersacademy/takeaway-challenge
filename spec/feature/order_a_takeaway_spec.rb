@@ -8,6 +8,10 @@ feature 'a takeaway can be ordered' do
   let(:rob) { Customer.new(name: 'Rob', tel: '+7777000000', pcode: 'AA1 1ZZ') }
   before(:each) { allow(shop).to receive(:send).with(any_args) { 'sent' } }
 
+  scenario 'the menu can be viewed' do
+    expect { print.read(menu) }.to output.to_stdout
+  end
+
   scenario 'an item can be added to the order from the menu' do
     order.add(menu.item(1))
     expect(order.total_items).to eq 1
