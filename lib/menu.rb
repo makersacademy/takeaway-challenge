@@ -17,28 +17,14 @@ class Menu
   end
 
   def select_dishes selected
-    case selected
-    when Hash
-      @selected = selected
-    else
-      @selected = Hash.new { |this, key| this[key] = 'empty' }
-      @selected[selected] = 1
-    end
-    @selected
+    @selected = (selected.is_a?(Symbol) ? {selected => 1} : selected)
   end
 
   def price
-    @price = 0
-    @selected.each do |dish, quantity|
-      @price += (@dishes[dish] * quantity)
-    end
-    @price
+    @price = @selected.inject(0) {|memo, item| memo + @dishes[item.first] * item.last}
   end
 
   def order
-    fail 'Please Select at least one item' unless @selected
-    price
-    total = { total: @price.round(2) }
-    @order = @selected.merge(total)
+    @selected.merge({ total: price.round(2) }) rescue fail 'Please Select at least one item'
   end
 end

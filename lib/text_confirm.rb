@@ -1,9 +1,7 @@
 require 'twilio-ruby'
 class TextConfirm
   def format_order order
-    t = Time.new
-    t += 3600
-    @out_put = order.to_s + " expect delivery at #{t.strftime('%H:%M')}"
+    @out_put = order.to_s + " expect delivery at #{(Time.now + 3600).strftime('%H:%M')}"
   end
 
   def send_order

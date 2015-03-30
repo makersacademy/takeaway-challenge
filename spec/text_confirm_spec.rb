@@ -1,9 +1,9 @@
 require 'text_confirm'
-RSpec.configure do |config|
-  config.mock_with :rspec do |c|
-    c.syntax = [:should, :expect]
-  end
-end
+# RSpec.configure do |config|
+#   config.mock_with :rspec do |c|
+#     c.syntax = [:should, :expect]
+#   end
+# end
 
 describe TextConfirm do
   let(:text_confirm) { described_class.new }
@@ -24,7 +24,8 @@ describe TextConfirm do
 
   before(:example) do
     fake_client.stub_chain("account.messages.create") { |arg| arg[:body] }
-    Twilio::REST::Client.stub(:new).and_return(fake_client)
+    allow(Twilio::REST::Client).to receive(:new).and_return(fake_client)
+    # Twilio::REST::Client.stub(:new).and_return(fake_client)
   end
 
   it 'can send an order via text' do
