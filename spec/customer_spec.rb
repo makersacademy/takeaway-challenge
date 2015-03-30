@@ -27,16 +27,16 @@ describe Customer do
 
   it "can look at the menu" do
     allow(order_class).to receive(:new)
-    allow(order).to receive(:look_at_menu)
-    expect(customer.order).to receive :look_at_menu
+    allow(order).to receive(:present_menu)
+    expect(customer.order).to receive :present_menu
     customer.start_order order_class
     customer.look_at_menu
 
   end
   
   it "can pick the items it wants" do
-    allow(order).to receive(:pick).with(anything())
-    expect(order).to receive(:pick).with([:salad, :fish])
+    allow(order).to receive(:pick_items).with(anything())
+    expect(order).to receive(:pick_items).with([:salad, :fish])
     customer.start_order order_class
     customer.pick(:salad, :fish)
   end

@@ -12,11 +12,11 @@ class Customer
   end  
 
   def look_at_menu
-    order.look_at_menu
+    order.present_menu
   end
 
   def pick(*options)
-    order.pick options
+    order.pick_items options
   end  
 
   def place_order

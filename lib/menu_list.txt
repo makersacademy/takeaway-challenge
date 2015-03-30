@@ -1,5 +1,5 @@
 bread 3
 salad 5
 pasta 10
-speak 10
+steak 10
 fish 10

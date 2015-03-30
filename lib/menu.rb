@@ -9,4 +9,8 @@ class Menu
   def add_item name, price
     items[name] = price
   end  
+
+  def present_menu
+    puts items
+  end  
 end  

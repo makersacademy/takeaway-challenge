@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   let(:order) {Order.new}
-  let(:menu) { double :menu, :present_menu => 'bread *** 3' }
+  let(:menu) { double :menu, :present_menu => 'test', :fish => 10, :salad => 3 }
     
 
   it "can add menu" do
@@ -18,7 +18,7 @@ describe Order do
 
   it "can present a menu" do
     order.add_menu menu
-    expect(order.present_menu).to eq 'bread *** 3'
+    expect(order.present_menu).to eq 'test'
        
   end  
   
@@ -28,7 +28,7 @@ describe Order do
 
   end
 
-  it "can prsent the total price of the picked items" do
+  xit "can prsent the total price of the picked items" do
     order.pick_items("fish", "salad")
     expect(order.total_price).to eq 13
   end
