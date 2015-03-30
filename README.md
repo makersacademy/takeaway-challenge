@@ -1,3 +1,14 @@
+Nadav's Comments:
+=================
+
+I'm submiting, but the challange is not finished, doesn't work well, not tested, and I'm not really sure about the design (how to divide cistomer and order responsibilities, seems very repetative). 
+
+Thank you, 
+Nadav
+
+
+
+
 Takeaway Challenge
 ==================
 
