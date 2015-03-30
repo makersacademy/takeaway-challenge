@@ -2,7 +2,6 @@ require 'order'
 describe Order do
   let(:dish) { double :dish }
   it 'add dish to order' do
-    subject.add_dish(dish)
-    expect(subject.add_dish(dish)).to eq dish
+    expect(subject.add_dish(dish)).to be_an_instance_of OrderItem
   end
 end
