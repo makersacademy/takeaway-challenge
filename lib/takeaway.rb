@@ -10,8 +10,9 @@ class Takeaway
       "smoked salmon sandwich" => 5 }
     show_menu
     place_order
+    puts "This is what you have ordered: \n"
     dishes_list
-    total
+    puts "This is the total price for your order £#{total}"
   end
 
   def show_menu
@@ -40,15 +41,13 @@ class Takeaway
   end
 
   def dishes_list
-    puts "This is what you have ordered: \n"
-    dishes_list = @order.each { |index| puts "#{@menu.keys[index - 1]}" }
+    @order.each { |index| puts "#{@menu.keys[index - 1]}" }
   end
 
   def total
     order_prices = []
-    order.each { |index| order_prices << @menu.values[index - 1] }
+    @order.each { |index| order_prices << @menu.values[index - 1] }
     total = order_prices.inject(:+)
-    puts "This is the total price for your order £#{total}"
   end
 end
 
