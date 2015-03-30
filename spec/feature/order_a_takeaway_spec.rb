@@ -5,7 +5,8 @@ feature 'a takeaway can be ordered' do
   let(:menu) { Menu.new }
   let(:print) { Print.new }
   let(:shop) { Shop.new }
-  let(:rob) { Customer.new(name: 'Rob', tel: 00000000000, postcode: 'AA1 1ZZ') }
+  let(:rob) { Customer.new(name: 'Rob', tel: '+7777000000', pcode: 'AA1 1ZZ') }
+  before(:each) { allow(shop).to receive(:send).with(any_args) { 'sent' } }
 
   scenario 'an item can be added to the order from the menu' do
     order.add(menu.item(1))
@@ -23,8 +24,9 @@ feature 'a takeaway can be ordered' do
     expect(shop.total_orders).to eq 1
   end
 
-  xscenario 'user receives a text to confirm order' do
-
+  scenario 'user receives a text to confirm order' do
+    order.add(menu.item(1))
+    expect(shop.take_order(order, rob)).to eq 'sent'
   end
 
 end

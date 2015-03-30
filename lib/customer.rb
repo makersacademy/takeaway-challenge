@@ -1,5 +1,6 @@
 class Customer
   attr_reader :name, :tel, :postcode
+
   def initialize(options = {})
     @name = options[:name]
     @tel = options[:tel]

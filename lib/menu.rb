@@ -1,6 +1,7 @@
 require 'yaml'
 class Menu
   attr_reader :items
+
   def initialize(options = {})
     options.merge!(defaults)
     @items = yaml_to_hash(options[:menu])
