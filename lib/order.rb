@@ -5,7 +5,7 @@ class Order
     @items = {}
   end
 
-  def add(item, quantity)
+  def add!(item, quantity)
     @items[item['dish']] = [item['price'], quantity]
   end
 

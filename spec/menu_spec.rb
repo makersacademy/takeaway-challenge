@@ -6,7 +6,7 @@ describe Menu do
   end
   it 'can load dishes from a yaml file' do
     yaml_file = './menu.yml'
-    subject.load(yaml_file)
+    subject.load!(yaml_file)
     expect(subject.items).not_to be_empty
   end
 

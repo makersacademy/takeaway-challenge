@@ -28,38 +28,59 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ##MVP Roadmap##
 Extracted prototype road map to provide focus and clarity on development steps from the user stories.
-```
-MVp1 - User can check menu, place an order for it, check the order totals before purchase, confirm order and recieve a text to say it is on-route.
 
-MVp2 - User can see a dish, place *multiple orders* for it, check that the total price equals the *combined price of the dishes*, confirm order and recieve a text to say it is on-route.
+- MVp1 - User can check menu, place an order for it, check the order totals before purchase, confirm order and recieve a text to say it is on-route.
 
-MVp3 - User can see a *multiple dishes*, place multiple orders for them, check that the total price equals the combined price of the dishes, confirm order and recieve a text to say it is on-route.
-```
+- MVp2 - User can check menu, place an order for  *multiple quantities*, check the order totals before purchase, confirm order and recieve a text to say it is on-route.
+
+- MVp3 - User can check menu of all items, place an order for *multiple items* at multiple quantities, check the order totals before purchase, confirm order and recieve a text to say it is on-route.
+
+MVP reached.
+
 
 ##Domain Design##
 
 This project is being developed in a BDD approach and therefore the domain design below will grow and
 
-- Menu - Responsibility Holding the menu items
-- Order - Responsibility collating order
+- Menu - Responsibile for holding the menu items
+- Order - Responsibile for collating order
 - Print - Responsible for displaying information on screen
-- Customer - Responsibility for knowing customer information
+- Customer - Responsibile for knowing customer information
 - Shop - Responsible for processing orders.
-- Confirmation - Responsible for Texting Confirmation to the purchaser
+- Sms - Responsible for Texting Confirmation to the purchaser
+- Keys - Responsible for holding API keys/tokens (not sent to version control)
 
+##Methods##
 
+####Class: Menu####
+Optionally accepts a hash on load to set menu file *{ menu: './menu.yml' }*, otherwise default menu provided.
+- load!(*yaml_file*)
+- item(*number*)
+- items
 
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+####Class: Order####
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+- add!(*menu item, quantity*)
+- total_items
+- cost
+- items
 
+####Class: Shop####
 
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+- take_order!(*order, customer*)
+- total_orders
+- orders
+
+####Class: Customer####
+Requires a hash on load to set menu file *{ name: 'Rob', tel: +447777000000, pcode: 'AA1 2ZZ' }*.
+
+- name
+- tel
+- postcode
+
+##Contribution##
+
+This is a challenge set to identify progress in Wk2 at Makers Academy, therefore is designed to be tackled individually.
+
+However comment on the quality of the code would be very welcome.
+

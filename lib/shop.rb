@@ -8,7 +8,7 @@ class Shop
     @orders = {}
   end
 
-  def take_order(order, customer)
+  def take_order!(order, customer)
     @orders[(total_orders + 1)] = { order: order, user: customer }
     send(customer.tel, "Your takeaway order will arrive by #{one_hour}")
   end

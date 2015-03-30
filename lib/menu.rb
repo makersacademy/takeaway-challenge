@@ -7,7 +7,7 @@ class Menu
     @items = yaml_to_hash(options[:menu])
   end
 
-  def load(yaml_file)
+  def load!(yaml_file)
     items_from_yaml = yaml_to_hash(yaml_file)
     @items.merge!(items_from_yaml)
   end
