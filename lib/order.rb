@@ -17,4 +17,8 @@ class Order
   def total_price menu
     priced_list(menu).values.inject { |sum, v| sum + v }.round(2)
   end
+
+  def confirm messenger, number
+    messenger.send_message(number)
+  end
 end

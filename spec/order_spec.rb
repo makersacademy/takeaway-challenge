@@ -24,4 +24,10 @@ describe Order do
     subject.add(:more_food)
     expect(subject.total_price(menu)).to eq 12.5
   end
+
+  it 'sends SMS to customer when the order is completed' do
+    messenger = double :messenger
+    expect(messenger).to receive(:send_message).with(:number)
+    subject.confirm(messenger, :number)
+  end
 end

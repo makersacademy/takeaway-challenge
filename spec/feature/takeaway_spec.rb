@@ -30,4 +30,10 @@ feature 'customer places an order' do
     expect(order.priced_list(menu)).to eq(red_curry: 12.9, korma_chicken: 14.55)
     expect(order.total_price(menu)).to eq 27.45
   end
+
+  scenario 'sends a SMS to customer after successful order' do
+    messenger = double :messenger
+    expect(messenger).to receive(:send_message).with(:number).and_return("Message sent to #{:number}")
+    expect(order.confirm(messenger, :number)).to eq "Message sent to #{:number}"
+  end
 end
