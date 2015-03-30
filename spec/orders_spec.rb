@@ -13,4 +13,7 @@ describe Orders do
     orders.place_order(:book1)
     expect(orders.order_list).to include(:book1)
   end
+
+  xit 'knows the price of each ordered item' do
+  end
 end
