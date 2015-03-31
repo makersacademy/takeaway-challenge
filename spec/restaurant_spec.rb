@@ -3,7 +3,7 @@ describe Restaurant do
   it 'displays a list of dishes' do
     subject.load_dishes("./lib/dishes.txt")
     subject.view_dishes
-    expect(restaurant.view_dishes).to match [
+    expect(restaurant.dishes).to match [
       a_hash_including("Chicken curry" => 3.5, "Lamb curry" => 4.0)]
   end
 end
