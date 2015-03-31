@@ -1,4 +1,11 @@
-# require 'capybara/rspec'
+require 'capybara/rspec'
+feature 'User can view dishes' do
+  scenario 'view dishes' do
+    restaurant = Restaurant.new
+    restaurant.load_dishes("./lib/dishes.txt")
+    restaurant.view_dishes
+  end
+end
 # require 'dish'
 # # require 'restaurant'
 # feature 'Restaurant dish can be added to order and total shown' do
