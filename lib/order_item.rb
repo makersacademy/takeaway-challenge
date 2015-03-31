@@ -1,6 +1,8 @@
-class OrderItem
-  attr_reader :dish
-  def initialize(dish)
-    @dish = dish
-  end
-end
+# class OrderItem
+#   attr_reader :dish
+#   attr_accessor :quantity
+#   def initialize(dish)
+#     @dish = dish
+#     @quantity = 1
+#   end
+# end
