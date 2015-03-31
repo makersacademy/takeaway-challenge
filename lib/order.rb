@@ -9,8 +9,6 @@ class Order
   end
 
   def total
-    total = 0
-    items.each { |item| total += item.price }
-    total
+    items.inject(0) { |memo, item| memo + item.price }
   end
 end

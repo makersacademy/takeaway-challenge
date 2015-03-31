@@ -7,6 +7,7 @@ require_relative 'twilio_api'
 class Takeaway
   include DisplayOutput
   CURRENT_LEAD_TIME_IN_MINS = 60
+  SECONDS_IN_MINUTE = 60
   def initialize
     @order = Order.new
     @dish_list = DishList.new
@@ -37,6 +38,8 @@ class Takeaway
 
   private
 
+  attr_reader :order, :dish_list, :menu
+
   def send_sms
     message = "Thanks for your order. Your total is "
     message += "£#{convert_price(order_total)} and your "
@@ -53,8 +56,6 @@ class Takeaway
   end
 
   def order_time
-    CURRENT_LEAD_TIME_IN_MINS * 60
+    CURRENT_LEAD_TIME_IN_MINS * SECONDS_IN_MINUTE
   end
-
-  attr_reader :order, :dish_list, :menu
 end
