@@ -1,9 +1,12 @@
 require 'capybara/rspec'
+require 'restaurant'
 feature 'User can view dishes' do
   scenario 'view dishes' do
     restaurant = Restaurant.new
     restaurant.load_dishes("./lib/dishes.txt")
-    restaurant.view_dishes
+    hash = restaurant.view_dishes
+    expect(restaurant.view_dishes).to match [
+      a_hash_including("Chicken curry" => 3.5, "Lamb curry" => 4.0)]
   end
 end
 # require 'dish'
