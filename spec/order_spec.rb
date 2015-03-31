@@ -61,11 +61,6 @@ describe Order do
       expect { order.remove_item :carbonara }.to raise_error
     end
 
-    it 'can be checked so far' do
-      order.add_item :carbonara
-      expect(order.check).to eq(order.new_order)
-    end
-
     it 'can check the total so far' do
       order.add_item :carbonara
       order.add_item :amatriciana
@@ -73,13 +68,20 @@ describe Order do
     end
 
     it 'can be closed' do
-      order.close
+      order.add_item :carbonara
+      order.close 4.80
       expect { order.add_item :carbonara }.to raise_error
     end
 
     it 'cannot be closed twice' do
-      order.close
+      order.add_item :carbonara
+      order.close 4.80
       expect { order.close }.to raise_error
+    end
+
+    it 'raise error if the expected total is not equal to the total' do
+      order.add_item :carbonara
+      expect { order.close 3.0 }.to raise_error
     end
 
     it 'cannot be placed if empty' do
@@ -90,13 +92,13 @@ describe Order do
   context 'after been closed' do
     it 'can be placed' do
       order.add_item :carbonara
-      order.close
+      order.close 4.80
       allow(restaurant).to receive(:get)
-      order.send :telephone
+      order.send_order :telephone
     end
 
     it 'cannot be placed if open' do
-      expect { order.send :telephone }.to raise_error
+      expect { order.send_order :telephone }.to raise_error
     end
   end
 end

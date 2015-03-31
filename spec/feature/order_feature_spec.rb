@@ -43,12 +43,6 @@ feature 'When a new order is started' do
     expect(order.new_order).to eq(carbonara: [2, 9.60])
   end
 
-  scenario 'can check the order so far' do
-    order.add_item :carbonara
-    order.add_item :amatriciana
-    expect(order.check).to eq(order.new_order)
-  end
-
   scenario 'can check the total so far' do
     order.add_item :carbonara
     order.add_item :pesto
@@ -57,15 +51,20 @@ feature 'When a new order is started' do
 
   scenario 'can be closed' do
     order.add_item :carbonara
-    order.close
+    order.close 4.80
     expect { order.add_item :pesto }.to raise_error
+  end
+
+  scenario 'it raises error if the expected total doesn\'t match' do
+    order.add_item :carbonara
+    expect { order.close 4.20 }.to raise_error
   end
 
   scenario 'can be sent' do
     order.add_item :carbonara
-    order.close
-    expect(rest).to receive(:message)
-    order.send :tel
+    order.close 4.80
+    expect(rest).to receive(:send_message)
+    order.send_order :tel
     expect(rest.order_recived).to eq [[order.new_order, time, delivery, :tel]]
   end
 end

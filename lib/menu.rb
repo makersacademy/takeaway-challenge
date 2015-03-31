@@ -14,12 +14,4 @@ class Menu
     fail 'Dish is not in the menu' unless @list[name]
     @list.delete(name)
   end
-
-  def display
-    @list.each do |key, value|
-      print "\t#{key.capitalize}\t\t"
-      print "\t" if key.length <= 7
-      puts "£ #{value}"
-    end
-  end
 end

@@ -32,11 +32,11 @@ feature 'When a new restaurant is created' do
   end
 
   scenario 'it can get orders' do
-    expect(rest).to receive(:message)
+    expect(rest).to receive(:send_message)
     rest.menu.add dish
     order.add_item :carbonara
-    order.close
-    order.send :tel
+    order.close 4.80
+    order.send_order :tel
     expect(rest.order_recived).to eq [[order.new_order, time, delivery, :tel]]
   end
 end

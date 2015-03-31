@@ -40,8 +40,7 @@ describe Menu do
 
     it 'can display the list' do
       menu.add dish
-      menu.add dish2
-      expect(menu.display).to eq(menu.list)
+      expect(menu.list).to eq(carbonara: 4.80)
     end
   end
 end

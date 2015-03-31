@@ -16,8 +16,8 @@ class Restaurant
   end
 
   def send_message total, telephone
-    account_sid = 'AC9b042d9d06fec81d3d8044e7cb2975e2'
-    auth_token = '648dfb68388439402d7316fd4959ec6b'
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
     @client = Twilio::REST::Client.new account_sid, auth_token
     message total, telephone
   end
