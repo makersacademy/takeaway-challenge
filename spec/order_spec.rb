@@ -1,7 +1,8 @@
-# require 'order'
-# describe Order do
-#   let(:dish) { double :dish }
-#   it 'add dish to order' do
-#     expect(subject.add_dish(dish)).to be_an_instance_of OrderItem
-#   end
-# end
+require 'order'
+describe Order do
+  it 'can accept a list of dishes' do
+    dishes = {  "Chicken curry" => "1" }
+    expect(subject.place_order(dishes)).to include(
+      "Chicken curry" => "1")
+  end
+end
