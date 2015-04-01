@@ -1,7 +1,9 @@
 require 'menu'
 
-context 'Menu' do
-  let(:menu) { Menu.new }
+describe Menu do
+  dish_1 = { 'Cod' => 4 }
+  let(:menu) { described_class.new.add dish_1 }
+  # menu.add dish_1
 
   it 'has dishes' do
     expect(menu.items.keys).not_to be nil
@@ -12,8 +14,8 @@ context 'Menu' do
   end
 
   it 'can be displayed' do
-    view_menu = "Cod £4\nSausage £3\nChips £2\n"
-    expect(menu.view).to eq view_menu
+    menu_expect = "Cod £4\nSausage £3\nChips £2\n"
+    expect(menu.view).to eq menu_expect
   end
 
   it 'can have dishes added to it' do

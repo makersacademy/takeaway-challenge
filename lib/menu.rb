@@ -2,7 +2,8 @@ class Menu
   attr_reader :items
 
   def initialize
-    @items = { "Cod" => 4, "Sausage" => 3, "Chips" => 2 }
+    @items = {}
+    # @items = { "Cod" => 4, "Sausage" => 3, "Chips" => 2 }
   end
 
   def view
