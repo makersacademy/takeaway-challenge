@@ -1,35 +1,29 @@
 require 'menu'
 
 describe Menu do
-  dishes = { "Cod" => 4, "Sausage" => 3, "Chips" => 2 }
   let(:menu) { described_class.new }
+  let(:burger) { double :dish, name: 'Burger', price: 3 }
+  let(:chips)  { double :dish, name: 'Chips',  price: 2 }
 
-  before do
-    menu.add dishes
+  it 'has no dishes when created' do
+    expect(menu.dishes).to be_empty
   end
 
-  it 'has dishes' do
-    menu.add dishes
-    expect(menu.items.keys).not_to be_empty
-  end
-
-  it 'dishes have prices' do
-    expect(menu.items.values).not_to be_empty
+  it 'can add a dish' do
+    menu.add burger
+    expect(menu.dishes).to eq ['Burger']
   end
 
   it 'can be displayed' do
-    menu_expect = "Cod £4\nSausage £3\nChips £2\n"
+    menu.add burger
+    menu.add chips
+    menu_expect = "1. Burger: £3\n2. Chips: £2\n"
     expect(menu.view).to eq menu_expect
   end
 
-  it 'can have dishes added to it' do
-    new_dish = { "Beans" => 2 }
-    menu.add new_dish
-    expect(menu.items.key?("Beans")).to be true
-  end
-
   it 'can have dishes removed from it' do
-    menu.remove "Cod"
-    expect(menu.items.key?("Cod")).to be false
+    menu.add burger
+    menu.remove burger
+    expect(menu.dishes.include?('Burger')).to be false
   end
 end

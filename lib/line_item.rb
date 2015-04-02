@@ -1,8 +1,12 @@
 class LineItem
-  attr_reader :sub_total, :dish
+  attr_reader :dish, :quantity, :sub_total
 
-  def initialize qty, dish
-    @sub_total = dish.values[0] * qty
-    @dish = { dish.keys[0] => qty }
+  def initialize(opt = {})
+    @dish     = opt[:dish]
+    @quantity = opt[:quantity]
+  end
+
+  def sub_total
+    dish.price * quantity
   end
 end

@@ -1,19 +1,28 @@
-class Menu
-  attr_reader :items
+require_relative 'dish'
 
-  def initialize
-    @items = {}
+class Menu
+  def dishes
+    @dishes ||= []
   end
 
-  def view
-    @items.reduce("") { |out, (dish, price)| out << "#{dish} £#{price}\n" }
+  def dish_prices
+    @dish_prices ||= []
   end
 
   def add dish
-    @items.merge! dish
+    dishes << dish.name
+    dish_prices << dish.price
   end
 
   def remove dish
-    @items.delete dish
+    dishes.delete(dish.name)
+  end
+
+  def view
+    result = ""
+    dishes.each.with_index(1) do |dish, index|
+      result << "#{index}. #{dish}: £#{dish_prices[index - 1]}\n"
+    end
+    result
   end
 end
