@@ -7,6 +7,6 @@ class Dish
   end
 
   def details
-    { name => price }
+    { @name => @price }
   end
 end

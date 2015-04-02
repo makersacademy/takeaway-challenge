@@ -1,16 +1,20 @@
 require 'menu'
 
 describe Menu do
-  dish_1 = { 'Cod' => 4 }
-  let(:menu) { described_class.new.add dish_1 }
-  # menu.add dish_1
+  dishes = { "Cod" => 4, "Sausage" => 3, "Chips" => 2 }
+  let(:menu) { described_class.new }
+
+  before do
+    menu.add dishes
+  end
 
   it 'has dishes' do
-    expect(menu.items.keys).not_to be nil
+    menu.add dishes
+    expect(menu.items.keys).not_to be_empty
   end
 
   it 'dishes have prices' do
-    expect(menu.items.values).not_to be nil
+    expect(menu.items.values).not_to be_empty
   end
 
   it 'can be displayed' do

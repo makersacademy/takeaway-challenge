@@ -8,8 +8,4 @@ describe Takeaway do
   it 'has a menu' do
     expect(takeaway.show_menu).to eq menu_expect
   end
-
-  it 'takes order from customer' do
-
-  end
 end

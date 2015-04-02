@@ -1,12 +1,16 @@
 require 'line_item'
 
 describe LineItem do
-  line_item = described_class.new
-  add_qty = 2
-  add_dish = { "Cod" => 4 }
-  line_item.add add_qty, add_dish
+  qty = 2
+  dish = { "Cod" => 4 }
+  let(:line_item) { described_class.new qty, dish }
+
+  before do
+    line_item
+  end
 
   it 'can contain a dish' do
+    puts line_item.inspect
     expect(line_item.dish.key?("Cod")).to be true
   end
 

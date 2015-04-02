@@ -13,6 +13,6 @@ describe Dish do
   end
 
   it 'can be expressed as a hash' do
-    expect(dish.view).to eq dish_hash
+    expect(dish.details).to eq dish_hash
   end
 end
