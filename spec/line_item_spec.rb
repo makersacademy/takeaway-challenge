@@ -10,7 +10,7 @@ describe LineItem do
   end
 
   it 'can contain a dish' do
-    puts line_item.inspect
+    # puts line_item.inspect
     expect(line_item.dish.key?("Cod")).to be true
   end
 
