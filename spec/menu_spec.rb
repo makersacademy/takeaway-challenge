@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
   let(:menu) { described_class.new }
   let(:burger) { double :dish, name: 'Burger', price: 3 }
-  let(:chips)  { double :dish, name: 'Chips',  price: 2 }
+  let(:chips) { double :dish, name: 'Chips',  price: 2 }
 
   it 'has no dishes when created' do
     expect(menu.dishes).to be_empty

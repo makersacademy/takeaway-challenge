@@ -10,7 +10,7 @@ class Order
     sub_total = line_item.sub_total
     dish_name = line_item.dish
     dish_qty = line_item.quantity
-    @grand_total += sub_total
+    @grand_total += line_item.sub_total
     @lines << "#{dish_qty} x #{dish_name} = £#{sub_total}\n"
   end
 
