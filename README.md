@@ -4,7 +4,6 @@ Takeaway Challenge
 Task
 Create a program where a customer can order from a takeaway.
 Customer can choose items from a list of dishes and add them to there order.
-Once order is completed customer receives a confirmation text
 
 User stories
 ```sh

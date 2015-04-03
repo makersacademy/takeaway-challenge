@@ -1,5 +1,5 @@
 class Restaurant
-  attr_reader :dishes
+  attr_accessor :dishes
   def initialize
     @dishes = {}
   end
