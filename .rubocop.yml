@@ -9,6 +9,9 @@ EmptyLinesAroundBlockBody:
 Style/StringLiterals:
   Enabled: false
 
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
 Style/Documentation:
   Description: Document classes and non-namespace modules.
   Enabled: false
