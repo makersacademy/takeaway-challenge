@@ -11,8 +11,8 @@ class Restaurant
 
   def initialize menu
     @menu, @pending_orders, @completed_orders = menu, [], []
-    account_sid = 'ACcfd822b8c0e03bbc254ea0979dc90f66'
-    auth_token = 'b137a11502c6f3101c38554a4ff09444'
+    account_sid = 'A...'
+    auth_token = '...'
 
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
