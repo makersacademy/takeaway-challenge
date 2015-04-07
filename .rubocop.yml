@@ -1,10 +1,15 @@
 require: rubocop-rspec
 
-AllCops:
-  RunRailsCops: false
-
 EmptyLinesAroundBlockBody:
   Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Description: Keeps track of empty lines around class bodies.
+  Enabled: true
+  EnforcedStyle: empty_lines
+  SupportedStyles:
+  - empty_lines
+  - no_empty_lines  
 
 Style/StringLiterals:
   Enabled: false
@@ -47,6 +52,13 @@ Style/TrailingBlankLines:
   - final_newline
   - final_blank_line
 
-Rails/Output:
-  Description: Checks for calls to puts, print, etc.
+Style/RedundantSelf:
+  Description: Don't use self where it's not needed.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-self-unless-required
   Enabled: false
+
+Style/Semicolon:
+  Description: Don't use semicolons to terminate expressions.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-semicolon
+  Enabled: false
+  AllowAsExpressionSeparator: false
