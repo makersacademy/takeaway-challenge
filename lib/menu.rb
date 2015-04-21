@@ -1,4 +1,8 @@
 class Menu
+  attr_reader :selected, :dishes
+  alias_method :selection, :selected
+  alias_method :show_menu, :dishes
+
   def initialize
     @dishes = {
       cheeseburger: 3.00,
@@ -9,19 +13,8 @@ class Menu
     }
   end
 
-  def show_menu
-    @dishes
-  end
-
   def select_dishes selected
-    case selected
-    when Hash
-      @selected = selected
-    else
-      @selected = Hash.new { |this, key| this[key] = 'empty' }
-      @selected[selected] = 1
-    end
-    @selected
+    @selected = (selected.is_a?(Symbol) ? { selected => 1 } : selected)
   end
 
   def price
@@ -30,10 +23,6 @@ class Menu
       @price += (@dishes[dish] * quantity)
     end
     @price
-  end
-
-  def selection
-    @selected
   end
 
   def order
