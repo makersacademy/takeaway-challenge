@@ -1,13 +1,12 @@
 require 'capybara/rspec'
 require 'takeaway'
 
-feature 'custumer see the menu with prices' do
+feature 'customer see the menu with prices' do
   let(:takeaway) { Takeaway.new }
-  scenario 'we have a menu' do
-    expect(takeaway.menu).to be_a Hash
-  end
+  let(:menu) { Menu.new }
+
   scenario 'menu has a list of dishes and prices' do
-    expect(takeaway.menu).to include("baked eggs" => 7.75)
+    expect(takeaway.show.menu).to include("1. Roasted pork - £8")
   end
   scenario 'order a dish' do
     allow(takeaway).to receive(:place_order) { [1, 2] }
