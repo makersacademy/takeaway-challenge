@@ -8,12 +8,12 @@ class TextConfirm
 
   def send_order
     fail 'no order' unless @out_put
-    account_sid = 'Dont want to put this on git hub'
-    auth_token = 'but it works in irb'
+    account_sid = 'ACd9ed4b40c19dac966a7235f209791907'
+    auth_token = '3887cecd12717f7c6d8b4551313dcd98'
     @client = Twilio::REST::Client.new account_sid, auth_token
     hash = {
-      from: '+some number',
-      to: '+some other number',
+      from: '+441722241077',
+      to: '+447530516234',
       body: @out_put
     }
     @client.account.messages.create(hash)
