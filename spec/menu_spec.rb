@@ -32,7 +32,7 @@ describe Menu do
   end
 
   it 'raises an error if nothing is selected' do
-    expect { menu.select_dishes({}) }.to raise_error 'Please select an item'
+    expect { menu.order }.to raise_error 'Please select an item'
   end
 
   it 'calculates the price of the selection' do
