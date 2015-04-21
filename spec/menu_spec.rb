@@ -13,6 +13,7 @@ describe Menu do
 
   let(:menu) { described_class.new }
   let(:some_dishes) { { cheeseburger: 2, chips: 1, coke: 1 } }
+  let(:my_order) { { cheeseburger: 2, chips: 1, coke: 1, total: 8.50 } }
 
   it 'presents a list of dishes with prices' do
     expect(menu.show_menu).to eq dishes
@@ -37,5 +38,10 @@ describe Menu do
   it 'calculates the price of the selection' do
     menu.select_dishes(some_dishes)
     expect(menu.price).to eq 8.50
+  end
+
+  it 'returns the correct order' do
+    menu.select_dishes(some_dishes)
+    expect(menu.order).to eq my_order
   end
 end

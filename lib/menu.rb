@@ -26,14 +26,20 @@ class Menu
   end
 
   def price
-    price = 0
+    @price = 0
     @selected.each do |dish, quantity|
-      price += (@dishes[dish] * quantity)
+      @price += (@dishes[dish] * quantity)
     end
-    price
+    @price
   end
 
   def selection
     @selected
+  end
+
+  def order
+    price
+    total = { total: @price.round(2) }
+    @order = @selected.merge(total)
   end
 end
