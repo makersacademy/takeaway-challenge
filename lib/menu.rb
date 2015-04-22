@@ -12,7 +12,11 @@ class Menu
       { name: 'fries', price: 2.90 }
     ]
   end
-   def add(dish)
-    @dishes << dish
-  end
+
+   def self.add(name, price)
+  {
+    name: name,
+    price: price
+  }
+end
 end

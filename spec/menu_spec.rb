@@ -14,7 +14,7 @@ describe Menu do
     ]
   end
   it 'can add dishes to it' do
-    subject.add{ name:'icecream', price: 4.80 }
+    Menu.add("Icecream", 4.80)
     expect(subject.dishes).to eq [
       { name: 'Burger', price: 10.95 },
       { name: 'Pizza', price: 14.00 },
