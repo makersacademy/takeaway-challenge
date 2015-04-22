@@ -2,7 +2,7 @@ require 'json'
 class Menu
   attr_reader :menu
   def initialize
-    file = File.read('../menu.json')
+    file = File.read(File.expand_path("../../menu.json", __FILE__))
     @menu = JSON.parse(file)
   end
 
@@ -17,5 +17,5 @@ class Menu
   end
 end
 
-p menu = Menu.new
+# p menu = Menu.new
 # p menu.create_menu
