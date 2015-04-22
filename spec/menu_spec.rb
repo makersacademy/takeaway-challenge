@@ -1,10 +1,11 @@
 require 'menu'
 
 describe Menu do
-   it 'has a menu' do
+
+  it 'has a menu' do
     expect(subject.respond_to?(:dishes)).to be true
   end
-    it 'displays dishes and prices' do
+   it 'displays dishes and prices' do
     expect(subject.dishes).to eq [
       { name: 'Burger', price: 10.95 },
       { name: 'Pizza', price: 14.00 },
