@@ -17,4 +17,8 @@ class Order
     end
     total_price = [:sum] # Incomplete I know..help appriciated!
   end
+  
+  def Text_message
+    SMS.new.send_text @customer_number, @customer_order
+  end
 end

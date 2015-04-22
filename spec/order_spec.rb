@@ -17,3 +17,4 @@ describe Order do
     expect(order.total_price).to eq [:sum]
   end
 end
+  
