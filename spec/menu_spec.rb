@@ -2,6 +2,8 @@ require 'menu'
 
 describe Menu do
 
+  # let(:menu) { described_class }
+
   it 'to load menu file' do
   end
 
@@ -10,6 +12,7 @@ describe Menu do
   end
 
   it 'has a list of dishes and prices' do
-    expect(subject.create_menu).to include("1. Roasted pork - £8")
+    subject.menu
+    expect(subject.create_menu).to include("1. Roasted pork - £8\n")
   end
 end
