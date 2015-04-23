@@ -7,4 +7,3 @@ class Menu
     @menu = JSON.parse(file)
   end
 end
-

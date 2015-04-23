@@ -1,13 +1,14 @@
 require_relative 'menu'
 
 class Order
-  attr_accessor :order
+  attr_accessor :order, :menu
 
-  def initialize
+  def initialize menu
     @order = {}
+    @menu = menu
   end
 
-  def place_order(*dish_numbers, menu)
+  def place_order(*dish_numbers)
     dish_numbers.each do |number|
       return error if number.class != Fixnum
       dish = menu[number.to_s]['dish']
@@ -24,6 +25,6 @@ end
 
 menu = Menu.new
 menu_list = menu.menu
-order = Order.new
-p order.place_order(1,2, menu_list)
-# p order.order
+order = Order.new menu_list
+p order.place_order(1,2)
+p order.order
