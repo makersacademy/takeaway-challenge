@@ -1,5 +1,4 @@
 require 'menu'
-require 'dish'
 require 'order'
 
 feature 'Placing an order' do
