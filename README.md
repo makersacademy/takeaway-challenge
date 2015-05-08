@@ -1,11 +1,7 @@
 Takeaway Challenge
 ==================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This weekend's challenge includes using the Twilio API to build a simple food-ordering application. Users should be presented with a menu, be able to select from it and receive comfirmation of their orders. More details about the task are given below.
 
 Task
 -----
