@@ -1,5 +1,19 @@
+28/03/2015
+- I started with the domain model: on pen and paper. I identified the following classes that I'm going to start with: 
+* Dish (name, quantity, availability)
+* Inventory (moves dishes in and out of a shopping basket)
+* Checkout (payment of the shopping basket)
+* DeliveryInformation (send the SMS)
+
+29/03/2015
+- I struggle with some of the basics. I have quite a few things, but I don't know if I wrote it correctly. Am I making the right tests? I get the idea on how the takeaway can all work together and see it in my mind, but I don't have the programming/ruby language knowledge to make it happen yet. I really think each student should get a personal feedback on their challenges on what they did well, what looks off, what they should do next time, and especially their key mistakes, so he/she can correct them early and improve their skills, especially beginners like me. I still hope that what I've done so far is ok. It's passing the tests I submitted.
+
+
+
 Takeaway Challenge
 ==================
+
+
 
 Instructions
 -------
