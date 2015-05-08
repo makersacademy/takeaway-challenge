@@ -1,21 +1,16 @@
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+The fifth program I built during my programming bootcamp at [Makers Academy](http://www.makersacademy.com/). 
 
-Task
------
+Objective
+------------
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The objective was to write a Takeaway program with the following user stories:
 
-```sh
+```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -33,20 +28,33 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+The technologies used include:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* [Twilio API](https://www.twilio.com/sms) via the [Twilio-ruby gem](https://github.com/twilio/twilio-ruby)
+* [RSpec](http://rspec.info/)
+* [Rubocop](http://batsov.com/rubocop/)
+* [Rake](https://github.com/ruby/rake)
 
+How to use
+--------------
 
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+* Clone this repo
+* Navigate to the cloned directory in terminal
+* Fire up IRB: `$ irb`
+* Require the files: `> require './lib/menu'` and `> require './lib/text_confirm'`
+* Create a menu: `m = Menu.new`
+* Select some dishes: `m.select_dishes :(your chosen dish)`
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+|    Dish       |   Price (£)  |
+| :-----------: | :-----------:|
+| Cheese Burger | 3.00         |
+| Hamburger     | 2.00         |
+| Chips         | 1.50         |
+| Coke          | 1.00         |
+| Water         | 0.80         |
+
+* Check the total price: `m.price`
+* Place your order: `m.order`
+* Create an instance of the confimation text: `t = TextConfirm.new`
+* Prepare the confirmation message: `t.format_order m`
+* Finally, send off the confimation text: `t.send_order`
