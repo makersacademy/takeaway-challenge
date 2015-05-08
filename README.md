@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/andygout/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+[![Build Status](https://travis-ci.org/andygout/takeaway-challenge.png)](https://travis-ci.org/andygout/takeaway-challenge)
+
 [![Coverage Status](https://coveralls.io/repos/andygout/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
 
 Takeaway Challenge
@@ -6,7 +7,7 @@ Takeaway Challenge
 
 To Do
 -----
-*
+* Implement order delivery time text notification.
 
 User Stories
 -----
