@@ -1,6 +1,11 @@
 Takeaway Challenge
 ==================
 
+Benny's Notes
+-------
+* I did not have enough time to get as far as I would have liked to
+* What is still missing is the completion of the customer class, a UI to bridge the Customer class and Restaurant class, and a separate class for sending messages via Twilio. Otherwise I think I am pretty much there.
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
