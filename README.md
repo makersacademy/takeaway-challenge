@@ -1,4 +1,4 @@
-![My image](github.com/chidumaga/takeaway-challenge/twilio.jpg)
+![My image](https://github.com/chidumaga/takeaway-challenge/twilio.png)
 
 
 Takeaway Challenge
