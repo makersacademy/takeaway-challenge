@@ -10,8 +10,14 @@ describe Takeaway do
     expect(subject.orders).to eq [{:Fish => 5}]
   end
 
-  it "can send text messages to clients" do
+  xit "can send text messages to clients" do
     #will need to use stubs
     expect(subject.respond_to_order).to eq "Thank you! Your order was placed and will be delivered before (insert Time function)"
+  end
+
+  it "can enable order calculation" do #possible module
+    subject.add_order_item :Fish, 1
+    subject.add_order_item :Meat, 1
+    expect(subject.give_order_total).to eq 12
   end
 end

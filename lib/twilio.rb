@@ -12,6 +12,7 @@ class TwilioSender
   end
 
   def send_message
-    @client.account.messages.create(:body => "Thank you! Your order was placed and will be delivered before (insert Time function)", :to => "+447913251479", :from => "+441442796217")
+    hour_in_secs = 60*60
+    @client.account.messages.create(:body => "Thank you! Your order was placed and will be delivered before #{(Time.now+hour_in_secs).asctime}", :to => "+447913251479", :from => "+441442796217")
   end
 end

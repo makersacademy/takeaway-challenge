@@ -5,7 +5,7 @@ class Customer
 
   attr_accessor :takeaway
   def initialize
-    @takeaway = Takeaway.new
+    @takeaway = yield
   end
 
   def check_menu
@@ -17,13 +17,17 @@ class Customer
   end
 
   #consider_new_user story of removing an item
+  def check_order
+    takeaway.orders
+  end
+
+  def check_order_total
+    takeaway.give_order_total
+  end
 
   def confirm_order
     #insert code that asks for some sort of input to confirm
+    puts "Thank you for your order of #{takeaway.orders}"
     takeaway.message_sender.send_message
-  end
-
-  def check_order
-    takeaway.orders
   end
 end
