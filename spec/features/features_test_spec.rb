@@ -2,36 +2,24 @@ require 'menu'
 require 'dish'
 require 'order'
 
-feature 'Creating the menu' do
-
-  let(:menu) { Menu.new }
-  let(:dish) { Dish.new 'red curry', 5.95 }
-  let(:order) { Order.new }
-
-  scenario 'Populate the menu with dishes and display' do
-    menu.add_dish dish
-    expect(menu.show_menu).to be_a_kind_of(Array)
-  end
-
-end
-
 feature 'Placing an order' do
 
   let(:menu) { Menu.new }
-  let(:dish) { Dish.new 'red curry', 5.95 }
   let(:order) { Order.new }
 
-  scenario 'Adding a dish to the order' do
-    menu.add_dish dish
-    order.add_dish menu.dishes[0]
-    expect(order.dishes).to include dish
+  scenario 'Adding dishes to the order' do
+    dish1 = (menu.dishes.select { |dish| dish[:name] == 'Red curry' })[0] # UGLY CODE (without parentheses and index will return as array)
+    dish2 = (menu.dishes.select { |dish| dish[:name] == 'Green curry' })[0]
+    order.add_dish dish1
+    order.add_dish dish2
+    expect(order.dishes).to include dish1 && dish2
   end
 
- scenario 'Checking the total cost of the order' do
-    menu.add_dish dish
-    menu.add_dish Dish.new 'Green curry', 6.95
-    order.add_dish menu.dishes[0]
-    order.add_dish menu.dishes[1]
+  scenario 'Adding items to and checking total cost of order' do
+    dish1 = (menu.dishes.select { |dish| dish[:name] == 'Red curry' })[0] # UGLY
+    dish2 = (menu.dishes.select { |dish| dish[:name] == 'Green curry' })[0] # UGLY
+    order.add_dish dish1
+    order.add_dish dish2
     expect(order.total).to eq 12.9
   end
 

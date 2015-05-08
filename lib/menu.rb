@@ -1,17 +1,13 @@
 class Menu
 
-  attr_accessor :dishes
+  attr_reader :dishes
 
   def initialize
-    @dishes = []
-  end
-
-  def add_dish dish
-    @dishes << dish
+    @dishes = [{:name => 'Red curry', :price => 5.95, :spicy => 'V hot!'}, {:name => 'Green curry', :price => 6.95, :spicy => 'V V hot!'}]
   end
 
   def show_menu
-    @dishes.each { |dish| "Name: #{dish.name}; Price: £#{dish.price}" }
+    @dishes.each { |k| "Name: #{k[:name]}; Price: #{k[:price]}; Spicy?: #{k[:spicy]}" }
   end
 
 end
