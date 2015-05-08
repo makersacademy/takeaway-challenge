@@ -1,19 +1,25 @@
 Takeaway Challenge
 ==================
 
-Instructions
+About
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* A weekend challenge to create an MVP for an interactive takeaway ordering system. It should confirm orders by SMS. It's UI is IRB.
 
-Task
------
+How To Contribute
+-------
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Since this is a personal challenge to test my progress, I will not be accepting pull requests.
+
+However you are most welcome to leave comments with any hints, feedback or advice!
+
+How to Use
+-------
+
+Please download all files in lib, and require them in IRB. You can then use the classes to create new dishes, pass them to a restaurant. Create a customer, view the restaurants menu, and place an order.
+
+
+User Stories & Brief Given
+-------
 
 ```sh
 As a customer
@@ -36,17 +42,22 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * Hints on functionality to implement:
   * ensure you have a list of dishes with prices
   * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
+  * The text sending functionality should be implemented using Twilio API.
   * Use a Gemfile to manage your gems
   * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
   * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+**Criteria: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+
+Possible Future Additions
+-------
+
+In the future i may also extend this by adding additonal functionality such as:
+
+  Extending MVP to add defaults when user fails to give (Eg: dish price, dish names, etc)
+
+  Restaurants could view the recipe for each dish on their menu.
 
 
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+[![Build Status](https://travis-ci.org/DanBlakeman/takeaway-challenge.svg)](https://travis-ci.org/DanBlakeman/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/DanBlakeman/takeaway-challenge/badge.svg)](https://coveralls.io/r/DanBlakeman/takeaway-challenge)
