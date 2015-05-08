@@ -1,11 +1,11 @@
 class Dish
 
+  attr_accessor :name
   attr_accessor :price
 
-  def initialize name, price, description
+  def initialize name, price
     @name = name
     @price = price
-    @description = description
   end
 
 end

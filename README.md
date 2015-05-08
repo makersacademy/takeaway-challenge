@@ -6,8 +6,7 @@ Takeaway Challenge
 
 To Do
 -----
-* Create a menu from which to select dishes (including prices).
-* Dependency inversion so that upon creation menu will immediately be populated with existing hash of foods.
+*
 
 User Stories
 -----

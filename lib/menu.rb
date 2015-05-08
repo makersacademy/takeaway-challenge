@@ -11,7 +11,7 @@ class Menu
   end
 
   def show_menu
-    @dishes
+    @dishes.each { |d| p "Name: #{d.name.capitalize}; Price: £#{d.price}" }
   end
 
 end
