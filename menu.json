@@ -1,0 +1,26 @@
+{
+  "1":   {
+            "dish": "Roasted pork",
+            "price": "8"
+         },
+  "2":   {
+            "dish" : "Ricotta & mussrooms",
+            "price": "6"
+         },
+  "3":   {
+            "dish" : "Roasted Vegs & Harissa",
+            "price": "5"
+         },
+
+  "4":   {
+            "dish" : "BLT",
+            "price": "7"
+         },
+
+  "5":   {
+            "dish" : "Smoked Salmon & Avocado",
+            "price": "6.5"
+         }
+}
+
+
