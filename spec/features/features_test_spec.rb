@@ -14,12 +14,12 @@ feature 'Placing an order' do
     expect(order.dishes).to include dish1 && dish2
   end
 
-  scenario 'Adding items to and checking total cost of order' do
+  scenario 'Adding items to and checking running cost of order' do
     dish1 = (menu.dishes.select { |dish| dish[:name] == 'Red curry' })[0] # UGLY
     dish2 = (menu.dishes.select { |dish| dish[:name] == 'Green curry' })[0] # UGLY
     order.add_dish dish1
     order.add_dish dish2
-    expect(order.total).to eq 12.9
+    expect(order.running_total).to eq 12.9
   end
 
 end

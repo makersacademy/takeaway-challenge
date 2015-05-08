@@ -1,19 +1,19 @@
 class Order
 
   attr_accessor :dishes
-  attr_reader :total
+  attr_reader :running_total
 
   def initialize
     @dishes = []
-    @total = 0.0
+    @running_total = 0.0
   end
 
   def add_dish dish
     @dishes << dish
-    @total += dish[:price]
+    @running_total += dish[:price]
   end
 
-  def show_order
+  def show_running_order
     @dishes.each { |k| "Name: #{k[:name]}; Price: £#{k[:price]}" }
   end
 

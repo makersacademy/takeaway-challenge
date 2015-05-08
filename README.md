@@ -8,6 +8,7 @@ Takeaway Challenge
 To Do
 -----
 * Implement order delivery time text notification.
+* Remove items from order.
 
 User Stories
 -----
