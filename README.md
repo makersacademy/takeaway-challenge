@@ -7,8 +7,11 @@ Takeaway Challenge
 
 To Do
 -----
-* Implement order delivery time text notification.
+* Print receipt.
+* Make show current/final order check more specific (actual hash rather than just check if array).
+* Feature test: check final_total is same as running_total passed through.
 * Remove items from order.
+* Implement order delivery time text notification.
 
 User Stories
 -----

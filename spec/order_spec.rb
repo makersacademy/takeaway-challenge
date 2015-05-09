@@ -6,8 +6,8 @@ describe Order do
 
     it 'Displays the current dishes on the order' do
       dish = {'Korma': 4.95}
-      subject.add_dish dish
-      expect(subject.show_running_order).to be_a_kind_of(Array) # Better test for this given more entries added to array and key-value pairs to hashes?
+      2.times {subject.add_dish dish}
+      expect(subject.show_running_order).to be_a_kind_of(Array)
     end
 
     it 'Checking the current cost of the order while adding items' do

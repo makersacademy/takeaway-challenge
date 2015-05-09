@@ -1,5 +1,6 @@
 require 'menu'
 require 'order'
+require 'checkout'
 
 feature 'Placing an order' do
 
@@ -18,8 +19,24 @@ feature 'Placing an order' do
     dish1 = menu.dishes.select {|k, v| k == :'Red Curry'}
     dish2 = menu.dishes.select {|k, v| k == :'Green Curry'}
     order.add_dish dish1
-    order.add_dish dish2
-    expect(order.running_total).to eq 12.9
+    2.times { order.add_dish dish2 }
+    expect(order.running_total).to eq 19.85
+  end
+
+end
+
+feature 'Checking out an order' do
+
+  let(:menu) { Menu.new }
+  let(:order) { Order.new }
+
+  scenario 'Checking the total cost of final order' do
+    dish1 = menu.dishes.select {|k, v| k == :'Red Curry'}
+    dish2 = menu.dishes.select {|k, v| k == :'Green Curry'}
+    order.add_dish dish1
+    2.times { order.add_dish dish2 }
+    checkout = Checkout.new(order)
+    expect(checkout.final_total).to eq 19.85
   end
 
 end

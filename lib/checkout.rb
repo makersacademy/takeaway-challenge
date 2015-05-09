@@ -9,7 +9,11 @@ class Checkout
   end
 
   def show_final_order
-    true
+    order.dishes.each { |k, v| "#{k}: #{v}" }
+  end
+
+  def final_total
+    order.dishes.map(&:values).flatten.inject{ |sum, x| sum + x }
   end
 
   def print_receipt
