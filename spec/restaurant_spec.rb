@@ -1,0 +1,2 @@
+require 'customer'
+require 'restaurant'
