@@ -22,4 +22,18 @@ describe Customer do
       expect(subject.order).to eq(:food, :price)
     end
   end
+
+  context 'Show current order' do
+    it { is_expected.to respond_to(:current_order) }
+
+    it 'with total cost' do
+      subject.select("Rice", restaurant)
+      subject.select("Naan", restaurant)
+      expect(subject.total_cost).to eq 3.50
+    end
+
+    it 'with no cost, when nothing has been ordered' do
+      expect(subject.total_cost).to eq 0
+    end
+  end
 end
