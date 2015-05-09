@@ -1,4 +1,8 @@
+require 'till'
+
 class Order
+
+  include Till
 
   attr_reader :dishes
 
@@ -10,16 +14,12 @@ class Order
     @dishes << dish
   end
 
-  def total
-    @dishes.map(&:values).flatten.inject{ |sum, x| sum + x }
+  def running_total
+    total @dishes
   end
 
-  def show_order
-    receipt = []
-    @dishes.each do |h|
-      h.each { |k, v| receipt << "#{k} @ #{v} x #{@dishes.map(&:keys).flatten.count(k)}" }
-    end
-    "#{receipt.uniq}; TOTAL: #{total}"
+  def display_running_order
+    display_order @dishes
   end
 
 end

@@ -8,6 +8,7 @@ Takeaway Challenge
 To Do
 -----
 * Order summary and total in separate module.
+* Check Till Module
 * Remove items from order.
 * Implement order delivery time text notification.
 

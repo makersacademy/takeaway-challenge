@@ -13,7 +13,7 @@ describe Checkout do
 
    it 'Print receipt for final order' do
       checkout = Checkout.new(order)
-      expect(checkout.print_receipt).to eq "[\"Korma @ 4.95 x 1\", \"Red Curry @ 5.95 x 2\", \"Green Curry @ 6.95 x 1\"]; TOTAL: 23.8"
+      expect(checkout.display_final_order).to eq "[\"Korma @ 4.95 x 1\", \"Red Curry @ 5.95 x 2\", \"Green Curry @ 6.95 x 1\"]; TOTAL: 23.8"
     end
 
   end

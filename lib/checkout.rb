@@ -1,6 +1,9 @@
 require_relative 'order'
+require 'till'
 
 class Checkout
+
+  include Till
 
   attr_reader :order
 
@@ -9,15 +12,11 @@ class Checkout
   end
 
   def final_total
-    order.dishes.map(&:values).flatten.inject{ |sum, x| sum + x }
+    total @order.dishes
   end
 
-  def print_receipt
-    receipt = []
-    order.dishes.each do |h|
-      h.each { |k, v| receipt << "#{k} @ #{v} x #{order.dishes.map(&:keys).flatten.count(k)}" }
-    end
-    "#{receipt.uniq}; TOTAL: #{final_total}"
+  def display_final_order
+    display_order @order.dishes
   end
 
 end
