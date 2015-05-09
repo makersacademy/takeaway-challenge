@@ -1,10 +1,11 @@
+require 'rubygems'
 require 'twilio-ruby'
 
 class TwilioResponse
 
   def initialize
-    account_sid = 'ACf16002429104e481859dc4625e572723'
-    auth_token = 'd8c8dfaf3fedfe2695563568c8344428'
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
 
     # set up a client to talk to the Twilio REST API
     @client = Twilio::REST::Client.new account_sid, auth_token
@@ -12,10 +13,11 @@ class TwilioResponse
 
   def send_message
     time = Time.new
+    return_text = 'Thank you. Your order has been placed and will be delivered before #{(time.hour + 1).to_s}:#{time.min}'
 
     @client.account.messages.create(from: '+442033223858',
                                     to: '07459747193',
-                                    body: 'Thank you. Your order has been placed and will be delivered before #{(time.hour + 1).to_s}: #{time.min}')
+                                    body: return_text)
   end
 
 end
