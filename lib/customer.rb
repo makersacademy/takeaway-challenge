@@ -16,7 +16,6 @@ class Customer
     takeaway.add_order_item item, quantity
   end
 
-  #consider_new_user story of removing an item
   def check_order
     takeaway.orders
   end
@@ -25,9 +24,14 @@ class Customer
     takeaway.give_order_total
   end
 
+  def remove_previous_order
+    takeaway.remove_order
+  end
+
   def confirm_order
-    #insert code that asks for some sort of input to confirm
+    fail "No order to confirm" if takeaway.orders.empty?
     puts "Thank you for your order of #{takeaway.orders}"
+    puts "The total cost of your order is : #{takeaway.give_order_total}"
     takeaway.message_sender.send_message
   end
 end
