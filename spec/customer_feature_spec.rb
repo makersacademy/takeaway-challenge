@@ -67,6 +67,7 @@ feature 'Customer wants to finalise order' do
   end
 
   scenario 'and receive a confirmation text' do
+    allow(restaurant).to receive(:require).and_return(nil)
     customer.select("Rice", 1, restaurant)
     customer.select("Naan", 1, restaurant)
     customer.select("Vindaloo", 1, restaurant)

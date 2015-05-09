@@ -15,7 +15,7 @@ class Restaurant
   def place_order(customer)
     fail 'Nothing ordered yet' if customer.order.empty?
     customer.current_order
-    # require './send_sms.rb'
+    require './send_sms.rb'
     'Order confirmed'
   end
 

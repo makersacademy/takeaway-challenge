@@ -1,5 +1,9 @@
 Take-away Challenge - Daryl Watson
 
+--Seven commit
+
+Got the stubbing to work. It has finally stopped sending me texts
+
 --Sixth commit
 
 Fixed styling and added more tests

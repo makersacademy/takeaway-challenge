@@ -33,6 +33,7 @@ describe Restaurant do
     before (:example) do
       allow(customer).to receive(:order).and_return("Rice")
       allow(customer).to receive(:current_order).and_return(:order)
+      allow(subject).to receive(:require).and_return(nil)
     end
 
     it { is_expected.to respond_to (:place_order) }
