@@ -3,23 +3,37 @@ require 'restaurant'
 
 describe Customer do
 
-  let (:restaurant) { Restaurant.new }
+  let (:restaurant)  { double(:restaurant) }
+
+  before(:example) do
+    allow(restaurant).to receive(:dishes).and_return( {
+      :Rice => 1.50,
+      :Naan => 2.00
+      } )
+  end
 
   context 'Show all dishes available' do
     it { is_expected.to respond_to(:see_all_dishes).with(1).argument }
   end
 
-  context 'Select a dish' do
+  context 'Dish selection' do
+
     it { is_expected.to respond_to(:select).with(3).argument }
     it { is_expected.to respond_to(:order) }
 
-    xit '' do
-      # trying to place an order using doubles
-      food = double(:food)
-      price = double(:price)
-      restaurant.dishes.store(food, price)
-      subject.select(food, restaurant)
-      expect(subject.order).to eq(:food, :price)
+    it 'Can select an available dish' do
+      subject.select("Naan", 1, restaurant)
+      expect(subject.order).to eq [["Naan", 2.0]]
+    end
+
+    it 'Cannot select a dish not listed' do
+      expect { subject.select("Pizza", 1, restaurant) }.to raise_error
+    end
+
+    it 'Can select multiple dishes' do
+      subject.select("Naan", 1, restaurant)
+      subject.select("Rice", 2, restaurant)
+      expect(subject.order).to eq [["Naan", 2.0], ["Rice", 1.5], ["Rice", 1.5]]
     end
   end
 
@@ -37,10 +51,10 @@ describe Customer do
     it 'and display totals' do
       subject.select("Rice", 1, restaurant)
       subject.select("Naan", 1, restaurant)
-      expect(subject.totals).to eq 'Total, 2 items at £3.5'
+      expect(subject.totals).to eq 'Total, 2 items at £3.50'
     end
 
-    it 'with no cost, when nothing has been ordered' do
+    it 'with no cost when nothing has been ordered' do
       expect(subject.total_cost).to eq 0
     end
   end

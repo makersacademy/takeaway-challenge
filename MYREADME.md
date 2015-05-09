@@ -1,5 +1,9 @@
 Take-away Challenge - Daryl Watson
 
+--Fifth commit
+
+Can get all confirmation tests passing now. Not sure how to stub them to stop the text actually be sent. Refactored a lot of the other tests
+
 --Fourth commit
 
 Up to fourth user story. Can send confirmation text when runnning in IRB, but not able to get it to pass RSPEC tests

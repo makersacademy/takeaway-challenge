@@ -10,7 +10,10 @@ class Customer
   end
 
   def see_all_dishes(restaurant)
-    restaurant.dishes.each { |item, price| "#{item} - £#{price}" }
+    restaurant.dishes.each do |item, price|
+      # price = sprintf('%.2f', price)
+      p "#{item} - £#{sprintf('%.2f',price)}"
+    end
   end
 
   def select(item, quantity, restaurant)
@@ -27,13 +30,13 @@ class Customer
     if order.empty?
       "Nothing ordered yet"
     else
-      order.each { |selection| "puts #{selection[0]}, £#{selection[1]}" }
+      order.each { |selection| puts "#{selection[0]}, £#{sprintf('%.2f',selection[1])}" }
       totals
     end
   end
 
   def totals
-    "Total, #{order.length} items at £#{total_cost}"
+    "Total, #{order.length} items at £#{sprintf('%.2f', total_cost)}"
   end
 
   def total_cost
