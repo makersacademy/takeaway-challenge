@@ -1,3 +1,4 @@
+require_relative 'restaurant'
 class Customer
 
   attr_accessor :restaurant
@@ -8,5 +9,11 @@ class Customer
 
   def view_menu
     restaurant.menu
+  end
+
+  def select_dishes dish, quantity
+    quantity.times do
+      restaurant.order << restaurant.menu.select {|x,y| x==dish}
+    end
   end
 end

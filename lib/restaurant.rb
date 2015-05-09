@@ -1,18 +1,19 @@
-require_relative 'customer'
+
 class Restaurant
 
-  attr_accessor :menu
+  attr_accessor :menu, :order
 
   def initialize
     @menu = {
-      :Beef_BBQ => 15.99,
-      :Chicken_Supreme => 16.99,
-      :Hawaiian => 14.99,
-      :Margherita => 12.99,
-      :Pepperoni => 16.99,
-      :Texan_BBQ => 15.99,
-      :Tuna_Sweetcorn => 17.99,
-      :Vegetable => 16.99
+      :Beef_BBQ => 15,
+      :Chicken_Supreme => 16,
+      :Hawaiian => 14,
+      :Margherita => 12,
+      :Pepperoni => 16,
+      :Texan_BBQ => 15,
+      :Tuna_Sweetcorn => 17,
+      :Vegetable => 16
       }
+      @order = []
     end
 end
