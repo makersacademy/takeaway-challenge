@@ -11,13 +11,14 @@ describe Restaurant do
   context 'Has a list of dishes' do
 
     it { is_expected.to respond_to (:dishes) }
+    it { expect(subject.dishes.length).to eq 3 }
 
     it 'upon creation' do
-      expect(subject.dishes).to eq ( {
-        :Rice=>1.5,
-        :Naan=>2.0,
-        :Vindaloo=>5.0
-        } )
+      expect(subject.dishes).to eq ({
+        :Rice => 1.5,
+        :Naan => 2.0,
+        :Vindaloo => 5.0
+        })
     end
   end
 
@@ -27,13 +28,21 @@ describe Restaurant do
     end
   end
 
-  context 'Can send a confirmation' do
+  context 'On placing the order' do
+
+    before (:example) do
+      allow(customer).to receive(:order).and_return("Rice")
+      allow(customer).to receive(:current_order).and_return(:order)
+    end
 
     it { is_expected.to respond_to (:place_order) }
 
-    xit 'text of the order' do
-      allow(customer).to receive(:order).and_return("Rice")
-      allow(customer).to receive(:current_order).and_return(:order)
+    it 'shows onscreen a confirmation' do
+      customer.select("Rice", 1, subject)
+      expect(subject.place_order(customer)).to eq 'Order confirmed'
+    end
+
+    it 'it can send a confirmation text' do
       customer.select("Rice", 1, subject)
       expect(subject.place_order(customer)).to be_truthy
     end

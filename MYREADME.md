@@ -1,5 +1,9 @@
 Take-away Challenge - Daryl Watson
 
+--Sixth commit
+
+Fixed styling and added more tests
+
 --Fifth commit
 
 Can get all confirmation tests passing now. Not sure how to stub them to stop the text actually be sent. Refactored a lot of the other tests

@@ -47,12 +47,12 @@ feature 'Customer wants to select' do
   scenario 'two dishes' do
     customer.select("Rice", 1, restaurant)
     customer.select("Naan", 1, restaurant)
-    expect(customer.order).to eql [["Rice", 1.50],["Naan", 2.00]]
+    expect(customer.order).to eql [["Rice", 1.50], ["Naan", 2.00]]
   end
 
   scenario 'two of the same type of dish' do
     customer.select("Rice", 2, restaurant)
-    expect(customer.order).to eql [["Rice", 1.50],["Rice", 1.50]]
+    expect(customer.order).to eql [["Rice", 1.50], ["Rice", 1.50]]
   end
 
 end
@@ -66,7 +66,7 @@ feature 'Customer wants to finalise order' do
     expect { place_order(customer) }.to raise_error
   end
 
-  xscenario 'and receive a confirmation text' do
+  scenario 'and receive a confirmation text' do
     customer.select("Rice", 1, restaurant)
     customer.select("Naan", 1, restaurant)
     customer.select("Vindaloo", 1, restaurant)
