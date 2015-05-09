@@ -13,7 +13,12 @@ class Customer
 
   def select_dishes dish, quantity
     quantity.times do
-      restaurant.order << restaurant.menu.select {|x,y| x==dish}
+      restaurant.order << restaurant.menu.select {|x,y| x == dish}
     end
+  end
+
+  def check_total_amount
+    total_amount = restaurant.order.map{|item| item.values}.flatten.inject{|sum,x| sum + x }
+    return total_amount
   end
 end

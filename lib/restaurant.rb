@@ -1,7 +1,7 @@
 
 class Restaurant
 
-  attr_accessor :menu, :order
+  attr_accessor :menu, :order, :total_amount
 
   def initialize
     @menu = {
@@ -15,5 +15,6 @@ class Restaurant
       :Vegetable => 16
       }
       @order = []
+      @total_amount = 0
     end
-end
+  end
