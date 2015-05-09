@@ -7,9 +7,7 @@ Takeaway Challenge
 
 To Do
 -----
-* Print receipt.
-* Make show current/final order check more specific (actual hash rather than just check if array).
-* Feature test: check final_total is same as running_total passed through.
+* Order summary and total in separate module.
 * Remove items from order.
 * Implement order delivery time text notification.
 

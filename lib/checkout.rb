@@ -2,14 +2,10 @@ require_relative 'order'
 
 class Checkout
 
-  attr_accessor :order
+  attr_reader :order
 
   def initialize (order)
     @order = order
-  end
-
-  def show_final_order
-    order.dishes.each { |k, v| "#{k}: £#{v}" }
   end
 
   def final_total
@@ -17,7 +13,11 @@ class Checkout
   end
 
   def print_receipt
-    p order.dishes.inject{ |x, y| x.merge(y){|k, v1, v2| v1 + v2} }
+    receipt = []
+    order.dishes.each do |h|
+      h.each { |k, v| receipt << "#{k} @ #{v} x #{order.dishes.map(&:keys).flatten.count(k)}" }
+    end
+    "#{receipt.uniq}; TOTAL: #{final_total}"
   end
 
 end

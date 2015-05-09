@@ -1,20 +1,25 @@
 class Order
 
-  attr_accessor :dishes
-  attr_reader :running_total
+  attr_reader :dishes
 
   def initialize
     @dishes = []
-    @running_total = 0.0
   end
 
   def add_dish dish
     @dishes << dish
-    @running_total += dish.values[0]
   end
 
-  def show_running_order
-    @dishes.each { |k, v| "#{k}: £#{v}" }
+  def total
+    @dishes.map(&:values).flatten.inject{ |sum, x| sum + x }
+  end
+
+  def show_order
+    receipt = []
+    @dishes.each do |h|
+      h.each { |k, v| receipt << "#{k} @ #{v} x #{@dishes.map(&:keys).flatten.count(k)}" }
+    end
+    "#{receipt.uniq}; TOTAL: #{total}"
   end
 
 end
