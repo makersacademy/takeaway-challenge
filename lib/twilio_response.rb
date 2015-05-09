@@ -13,11 +13,14 @@ class TwilioResponse
 
   def send_message
     time = Time.new
-    return_text = 'Thank you. Your order has been placed and will be delivered before #{(time.hour + 1).to_s}:#{time.min}'
+    hour = time.hour + 1
+    minute = time.min
+
+    return_text = 'Thank you. Your order has been placed and will be delivered before' #{hour.to_s}:#{minute}''
 
     @client.account.messages.create(from: '+442033223858',
                                     to: '07459747193',
-                                    body: return_text)
+                                    body: return_text + " " + (time.hour + 1).to_s + ":" + (time.min).to_s)
   end
 
 end
