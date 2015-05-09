@@ -9,7 +9,7 @@ class Checkout
   end
 
   def show_final_order
-    order.dishes.each { |k, v| "#{k}: #{v}" }
+    order.dishes.each { |k, v| "#{k}: £#{v}" }
   end
 
   def final_total
@@ -17,7 +17,7 @@ class Checkout
   end
 
   def print_receipt
-    #@dishes.each { |k| "Name: #{k[:name]}; Price: £#{k[:price]}" }
+    p order.dishes.inject{ |x, y| x.merge(y){|k, v1, v2| v1 + v2} }
   end
 
 end

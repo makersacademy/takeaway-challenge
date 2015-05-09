@@ -14,7 +14,7 @@ class Order
   end
 
   def show_running_order
-    @dishes.each { |k, v| "#{k}: #{v}" }
+    @dishes.each { |k, v| "#{k}: £#{v}" }
   end
 
 end

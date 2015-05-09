@@ -7,7 +7,7 @@ class Menu
   end
 
   def show_menu
-    @dishes.each { |k, v| "#{k}: #{v}" }
+    @dishes.each { |k, v| "#{k}: £#{v}" }
   end
 
 end
