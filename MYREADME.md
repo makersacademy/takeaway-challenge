@@ -1,5 +1,9 @@
 Take-away Challenge - Daryl Watson
 
+--Fourth commit
+
+Up to fourth user story. Can send confirmation text when runnning in IRB, but not able to get it to pass RSPEC tests
+
 --Third commit
 
 Completed third user story: customer can see a list of all items ordered, with their price, and a final total

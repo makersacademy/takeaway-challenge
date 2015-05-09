@@ -11,8 +11,8 @@ feature 'Customer wants to see' do
   end
 
   scenario 'a list of all items ordered and their price' do
-    customer.select("Rice", restaurant)
-    customer.select("Naan", restaurant)
+    customer.select("Rice", 1, restaurant)
+    customer.select("Naan", 1, restaurant)
     expect(customer.current_order).to eq 'Total, 2 items at £3.5'
   end
 
@@ -20,13 +20,15 @@ feature 'Customer wants to see' do
     expect(customer.current_order).to eq 'Nothing ordered yet'
   end
 
-feature 'Customer want to select'
+end
+
+feature 'Customer wants to select' do
 
   let (:customer) { Customer.new }
   let (:restaurant) { Restaurant.new }
 
   scenario 'one dish' do
-    customer.select("Rice", restaurant)
+    customer.select("Rice", 1, restaurant)
     expect(customer.order).to eql [["Rice", 1.50]]
   end
 
@@ -35,14 +37,33 @@ feature 'Customer want to select'
   end
 
   scenario 'two dishes' do
-    customer.select("Rice", restaurant)
-    customer.select("Naan", restaurant)
+    customer.select("Rice", 1, restaurant)
+    customer.select("Naan", 1, restaurant)
     expect(customer.order).to eql [["Rice", 1.50],["Naan", 2.00]]
   end
 
   scenario 'two of the same type of dish' do
-    2.times { customer.select("Rice", restaurant) }
+    customer.select("Rice", 2, restaurant)
     expect(customer.order).to eql [["Rice", 1.50],["Rice", 1.50]]
   end
+
+end
+
+feature 'Customer wants to finalise order' do
+
+  let (:customer) { Customer.new }
+  let (:restaurant) { Restaurant.new }
+
+  scenario 'but has not ordered anything' do
+    expect { place_order(customer) }.to raise_error
+  end
+
+  scenario 'and receive a confirmation text' do
+    customer.select("Rice", 1, restaurant)
+    customer.select("Naan", 1, restaurant)
+    customer.select("Vindaloo", 1, restaurant)
+    expect(restaurant.place_order(customer)).to be_truthy
+  end
+
 
 end
