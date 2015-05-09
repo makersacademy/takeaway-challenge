@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'twilio-ruby'
 
 class TwilioResponse
@@ -13,8 +12,6 @@ class TwilioResponse
 
   def send_message
     time = Time.new
-    hour = time.hour + 1
-    minute = time.min
 
     return_text = 'Thank you. Your order has been placed and will be delivered before' #{hour.to_s}:#{minute}''
 
