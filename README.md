@@ -7,9 +7,8 @@ Takeaway Challenge
 
 To Do
 -----
-* Till Module spec tests.
 * Ability to remove items from order.
-* Implement order delivery time text notification.
+* Message spec file.
 
 User Stories
 -----
