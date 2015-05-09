@@ -10,11 +10,11 @@ class Order
 
   def add_dish dish
     @dishes << dish
-    @running_total += dish[:price]
+    @running_total += dish.values[0]
   end
 
   def show_running_order
-    @dishes.each { |k| "Name: #{k[:name]}; Price: £#{k[:price]}" }
+    @dishes.each { |k, v| "#{k}: #{v}" }
   end
 
 end
