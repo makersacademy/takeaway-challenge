@@ -1,7 +1,7 @@
 require_relative 'twilio'
 class Takeaway
 
-  attr_accessor :menu, :orders, :message_sender, :total_order_value
+  attr_reader :menu, :orders, :message_sender, :total_order_value
 
   def initialize(message_sender = TwilioSender.new)
     @menu = {:FishAndChips => 5, :MeatAndTwoVeg => 7}

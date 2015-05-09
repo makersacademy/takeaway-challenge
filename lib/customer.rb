@@ -3,7 +3,7 @@ require_relative 'twilio'
 
 class Customer
 
-  attr_accessor :takeaway
+  attr_reader :takeaway
   def initialize
     @takeaway = yield
   end
