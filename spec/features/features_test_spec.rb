@@ -19,9 +19,9 @@ feature 'Placing an order' do
     dish1 = menu.dishes.select {|k, v| k == :'Red Curry'}
     dish2 = menu.dishes.select {|k, v| k == :'Green Curry'}
     order.add_dish dish1
-    2.times { order.add_dish dish2 }
+    order.add_dish dish2, 2
     expect(order.running_total).to eq 19.85
-    expect(order.display_running_order).to eq "[\"Red Curry @ 5.95 x 1\", \"Green Curry @ 6.95 x 2\"]; TOTAL: 19.85"
+    expect(order.display_running_order).to eq "[\"Red Curry @ £5.95 x 1\", \"Green Curry @ £6.95 x 2\"]; TOTAL: £19.85"
 
   end
 
@@ -36,10 +36,10 @@ feature 'Checking out an order' do
     dish1 = menu.dishes.select {|k, v| k == :'Red Curry'}
     dish2 = menu.dishes.select {|k, v| k == :'Green Curry'}
     order.add_dish dish1
-    2.times { order.add_dish dish2 }
+    order.add_dish dish2, 2
     checkout = Checkout.new(order)
     expect(checkout.final_total).to eq 19.85
-    expect(checkout.display_final_order).to eq "[\"Red Curry @ 5.95 x 1\", \"Green Curry @ 6.95 x 2\"]; TOTAL: 19.85"
+    expect(checkout.display_final_order).to eq "[\"Red Curry @ £5.95 x 1\", \"Green Curry @ £6.95 x 2\"]; TOTAL: £19.85"
   end
 
 end

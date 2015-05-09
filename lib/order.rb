@@ -1,4 +1,4 @@
-require 'till'
+require_relative 'till'
 
 class Order
 
@@ -10,8 +10,8 @@ class Order
     @dishes = []
   end
 
-  def add_dish dish
-    @dishes << dish
+  def add_dish dish, quantity = 1
+    quantity.times { @dishes << dish }
   end
 
   def running_total

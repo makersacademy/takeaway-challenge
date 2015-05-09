@@ -15,8 +15,8 @@ class TillSpec
       end
 
       it 'Print receipt for final order' do
-        expect(subject.display_order order.dishes).to eq "[\"Korma @ 4.95 x 1\", \"Red Curry @ 5.95 x 2\", \"Green Curry @ 6.95 x 1\"]; TOTAL: 23.8"
-        end
+        expect(subject.display_order order.dishes).to eq "[\"Korma @ £4.95 x 1\", \"Red Curry @ £5.95 x 2\", \"Green Curry @ £6.95 x 1\"]; TOTAL: £23.8"
+      end
 
     end
 

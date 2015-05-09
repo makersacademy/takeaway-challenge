@@ -7,8 +7,8 @@ Takeaway Challenge
 
 To Do
 -----
-* Ability to remove items from order.
-* Message spec file.
+* Ability to remove items from order before sent to checkout.
+* checkout_spec: order successful test (stubs to prevent texting using RSpec - only in irb).
 
 User Stories
 -----

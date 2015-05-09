@@ -7,9 +7,9 @@ module Till
   def display_order dishes
     receipt = []
     dishes.each do |h|
-      h.each { |k, v| receipt << "#{k} @ #{v} x #{dishes.map(&:keys).flatten.count(k)}" }
+      h.each { |k, v| receipt << "#{k} @ £#{v} x #{dishes.map(&:keys).flatten.count(k)}" }
     end
-    "#{receipt.uniq}; TOTAL: #{total dishes}"
+    "#{receipt.uniq}; TOTAL: £#{total dishes}"
   end
 
 end
