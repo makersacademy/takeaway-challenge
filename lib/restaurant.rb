@@ -12,6 +12,7 @@ class Restaurant
 
   def receive_order(dishes)
     @dishes = dishes
+    valid_order?
     @dishes
   end
 
@@ -40,5 +41,11 @@ class Restaurant
     prices = @order_total.flatten.select { |x| x.is_a? Float }
     @total_price = prices.inject(0) { |total, price| total + price }
     @total_price
+  end
+
+  def valid_order?
+    @dishes.each do |dish|
+      fail "Not on the menu" unless @menu.has_key?(dish)
+    end
   end
 end

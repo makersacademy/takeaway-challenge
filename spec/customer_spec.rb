@@ -20,4 +20,9 @@ describe Customer do
   end
 
   it { is_expected.to respond_to(:view_order) }
+
+  it 'can order only one dish' do
+    subject.view_menu(restaurant)
+    expect(subject.choose_dishes("Lobster")).to eq ["Lobster"]
+  end
 end

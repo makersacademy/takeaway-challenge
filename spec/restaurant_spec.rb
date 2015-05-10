@@ -29,8 +29,8 @@ describe Restaurant do
     expect(restaurant.order_review).to eq([["Lobster", 30.00], ["Lobster", 30.00], ["Truffle", 40.00], ["Truffle", 40.00], ["Grand Total", 140.00]])
   end
 
-  xit 'checks order is valid' do
-    customer.view_menu(restaurant)
-    expect { customer.choose_dishes("Pizza") }.to raise_error "Not on the menu"
+  it 'checks order is valid' do
+    restaurant.menu = { "Lobster" => 30.00, "Truffle" => 40.00 }
+    expect { restaurant.receive_order(["Pizza"]) }.to raise_error "Not on the menu"
   end
 end
