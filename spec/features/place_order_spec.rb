@@ -22,6 +22,7 @@ feature 'A customer can place an order' do
     customer.view_menu(restaurant)
     customer.choose_dishes("Lobster")
     expect(customer.choose_amount(2)).to eq ["Lobster", "Lobster"]
+    expect(customer.choose_amount(1)).to eq ["Lobster"]
   end
 
   scenario 'A customer can review order' do
@@ -34,8 +35,7 @@ feature 'A customer can place an order' do
   scenario 'A customer cannot order off the menu' do
   end
 
-
-  xscenario 'A customer can place an order and recieve a message confirming the order' do
+  scenario 'A customer can place an order and recieve a message confirming the order' do
     customer.view_menu(restaurant)
     customer.choose_dishes("Truffle")
     customer.choose_amount("4")

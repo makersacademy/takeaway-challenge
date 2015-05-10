@@ -3,12 +3,13 @@ require 'time'
 class Customer
 
   attr_accessor :name
-  attr_reader :dishes
+  attr_accessor :dishes
   attr_reader :restaurant
   attr_reader :menu
 
   def initialize(name = 'Customer')
     @name = name
+    @restaurant = restaurant
   end
 
   def view_menu(restaurant)
@@ -17,8 +18,8 @@ class Customer
   end
 
   def choose_dishes(*dishes)
+    @restaurant.receive_order(dishes)
     @dishes = dishes
-    @restaurant.receive_order(@dishes)
     @dishes
   end
 
@@ -31,5 +32,7 @@ class Customer
   end
 
   def place_order
+    @restaurant.valid_order?
+    require_relative 'twilio-ruby'
   end
 end

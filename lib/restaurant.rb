@@ -47,5 +47,6 @@ class Restaurant
     @dishes.each do |dish|
       fail "Not on the menu" unless @menu.has_key?(dish)
     end
+    fail "Nothing ordered" if @menu.empty?
   end
 end
