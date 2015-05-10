@@ -4,18 +4,23 @@ class Customer
 
   attr_accessor :name
   attr_reader :order
+  attr_reader :dishes
+  attr_reader :amount
+  attr_reader :restaurant
 
   def initialize(name = 'Customer')
     @name = name
   end
 
-  def view_menu(menu)
-    menu.dishes
+  def view_menu(restaurant)
+    @restaurant = restaurant
+    restaurant.menu
   end
 
   def choose_dishes(*dishes)
     @dishes = dishes
-
+    @restaurant.receive_order(@dishes)
+    @dishes
   end
 
   def choose_amount(*amount)

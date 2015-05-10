@@ -63,7 +63,7 @@ Class Responsibility Collaborator
 | Resposibility | Collaborators |
 |:---------------|:---------------|
 |Know dishes| Customer|
-| | Menu |
+| | Restaurant |
 
 
 
