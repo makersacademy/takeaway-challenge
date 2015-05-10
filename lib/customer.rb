@@ -1,7 +1,9 @@
 require_relative 'restaurant'
+require_relative 'message_sender'
+
 class Customer
 
-  attr_accessor :restaurant
+  attr_reader :restaurant
 
   def initialize
     @restaurant = Restaurant.new
@@ -12,13 +14,14 @@ class Customer
   end
 
   def select_dishes dish, quantity
-    quantity.times do
-      restaurant.order << restaurant.menu.select {|x,y| x == dish}
-    end
+    restaurant.dishes_can_be_selected dish, quantity
   end
 
   def check_total_amount
-    total_amount = restaurant.order.map{|item| item.values}.flatten.inject{|sum,x| sum + x }
-    return total_amount
+    restaurant.give_total_amount
+  end
+
+  def order_confirmation
+    restaurant.text_message_is_send
   end
 end
