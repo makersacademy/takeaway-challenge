@@ -58,7 +58,7 @@ Class Responsibility Collaborator
 |Calculate total | Menu |
 |Check orders are valid| |
 
-**class Restaurant**
+**class Menu**
 
 | Resposibility | Collaborators |
 |:---------------|:---------------|
