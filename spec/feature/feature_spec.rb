@@ -26,4 +26,4 @@ end
 
 
 
-#How does the menu know if the restaurant can't provide a particular thing?
+#How does the menu know if the restaurant can't provide a particular dish?

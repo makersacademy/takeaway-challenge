@@ -5,7 +5,6 @@ class Order
 
   def initialize
   	@order_list = []
-  	@order_hash = {}
   end
   def add_dish(quantity, dish_key)
   	quantity.times do
@@ -18,8 +17,9 @@ class Order
   end
 
   def order_price
-    order_list.each do |n,i|
-      @order_hash << n if list.include(n)
+  	order_hash = {}
+    order_list.each do |dish_key,i|
+      order_hash << dish_key if list.include(dish_key)
     end
   end
 end
