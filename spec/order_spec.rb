@@ -12,5 +12,7 @@ describe Order do
   	expect(subject.view_order).to eq ["Bottle of Water", "Bottle of Water", "Bottle of Water", "Bottle of Water"]
   end
 
+  it '' do
+  end
 
 end
