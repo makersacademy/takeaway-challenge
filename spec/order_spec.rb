@@ -14,7 +14,7 @@ describe Order do
     allow(takeaway).to receive(:item_price).with("Pie and chips").and_return(5)
     order = Order.new(customer, takeaway)
     order.add_order_line("Pie and chips", 2)
-    expect(order.order_line[0]).to eq ["Pie and chips", 2, 10]
+    expect(order.order_line(0)).to eq ["Pie and chips", 2, 10]
   end
 
   it 'calculates an order total from given items and quantities' do

@@ -8,7 +8,7 @@ class Order
 
   def add_order_line(item, quantity)
     # Ruh roh. An array of arrays?! Check that adding items works properly.
-    @order << [item, quantity, @takeaway.item_price(item)]
+    @order << [item, quantity, quantity * @takeaway.item_price(item)]
   end
 
   def order_line(index)
