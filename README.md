@@ -17,19 +17,19 @@ Collaborators: Order, Message
 
 Responsibilities: .new, .list_orders
 
-Collaborators: Order, Menu
+Collaborators: Order, Menu, (OrderLine)
 
-### Menu
+### (Menu - merged into Takeaway for simplicity)
 
-Responsibilities: .new, .list
+(Responsibilities: .new, .list)
 
-Collaborators: MenuItem, Takeaway
+(Collaborators: MenuItem, Takeaway)
 
-### MenuItem
+### (MenuItem - merged into Takeaway for simplicity)
 
-Responsibilities: .new, .price
+(Responsibilities: .new, .price)
 
-Collaborators: Menu, OrderLine
+(Collaborators: Menu, OrderLine)
 
 ### OrderLine
 
