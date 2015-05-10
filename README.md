@@ -26,6 +26,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Approach
 -------
 * Modelled the Takeaway based on a primarily dual object relationship between a Customer object and a Takeaway object.  The Customer object was designed as a wrapper with public facing method calls that link to the relevant Takeaway actions.
+* In supplementary version (Takeaway:Approach 2) I have experimented with a different design that utilises a broader range of class objects
 * The Takeaway object is injected into the Customer object using yield to avoid dependency and operate as an attribute within Customer.
 * The Takeaway itself manages the menu and orders through list based data structures - elected not to design separate objects as for this simple program neither the menu nor the order required any distinct attributes or method calls.
 * Incorporated Twilio API to enable the Takeaway to send a text message when a customer has confirmed their order.  Message sending is handled by an encapsulated Twilio Sender object.

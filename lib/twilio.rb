@@ -2,7 +2,7 @@ require 'rubygems'
 require 'twilio-ruby'
 
 class TwilioSender
- attr_reader :message
+  attr_reader :message
 
   def initialize
     @account_sid = ENV['TWILIO_SID']
