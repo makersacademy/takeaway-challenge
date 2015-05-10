@@ -17,11 +17,21 @@ describe Customer do
 
   it 'can place an order' do
     customer = Customer.new { takeaway }
-    customer.place_order(2, "red curry")
-
-    allow(takeaway).to receive(:order).and_return (['red curry' => 5, 'red curry' => 5])
-    expect(customer.takeaway.order).to eq (['red curry' => 5, 'red curry' => 5])
+    customer.place_order(1, "red curry")
+    allow(takeaway).to receive(:order).and_return ([{'red curry' => 5}])
+    expect(customer.takeaway.order).to eq ([{'red curry' => 5}])
   end
 
-  it
+  it 'can receive an order confirmation' do
+    customer = Customer.new { takeaway }
+    time = Time.new
+    customer.place_order(1, "red curry")
+    allow(takeaway).to receive(:register_order)
+    allow(takeaway).to receive(:calculate_order)
+    allow(takeaway).to receive(:amount_due).and_return(5)
+    allow(takeaway).to receive(:set_confirmation)
+    allow(takeaway).to receive(:confirmation).and_return ("Thank you! Your order was placed and will be delivered before #{(time.hour) +1}:#{time.min}. The amount due is 5$")
+    customer.ask_confirmation
+    expect(customer.ask_confirmation).to eq ("Thank you! Your order was placed and will be delivered before #{(time.hour) +1}:#{time.min}. The amount due is 5$")
+  end
 end

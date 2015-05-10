@@ -16,8 +16,11 @@ describe Takeaway do
 
   it 'can confirm an order' do
     takeaway = Takeaway.new
+    time = Time.new
     subject.register_order({'red curry' => 5})
-    expect(subject.confirm_order).to eq ("your oder was placed total amount due is 5$")
+    subject.calculate_order
+    expect(subject.set_confirmation).to eq("Thank you! Your order was placed and will be delivered before #{(time.hour) +1}:#{time.min}. The amount due is 5$.")
+
   end
 
 end

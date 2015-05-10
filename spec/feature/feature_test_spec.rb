@@ -17,11 +17,18 @@ feature 'as a customer I want to order from a takeaway' do
 
   scenario 'an order is placed and the customer receives the total amount' do
     customer = Customer.new { Takeaway.new }
+    time = Time.new
     customer.see_menu
     customer.place_order(1, "red curry")
-    customer.place_order(2, "green curry")
-    expect(customer.confirm_order).to eq {"your oder was placed total amount due is 15$"}
+    customer.ask_confirmation
+    expect(customer.takeaway.set_confirmation).to eq ("Thank you! Your order was placed and will be delivered before #{(time.hour) +1}:#{time.min}. The amount due is 5$.")
   end
+
+  # scenario 'customer receives confirmation via twilio' do
+  #   takeaway = Takeaway.new { Twilio.new }
+
+
+
 end
 
 
