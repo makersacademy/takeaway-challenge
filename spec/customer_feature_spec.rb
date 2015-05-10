@@ -74,5 +74,4 @@ feature 'Customer wants to finalise order' do
     expect(restaurant.place_order(customer)).to eq 'Order confirmed'
   end
 
-
 end

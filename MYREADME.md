@@ -1,5 +1,9 @@
 Take-away Challenge - Daryl Watson
 
+--Eigth commit
+
+Now uses environment variables, so my account details and phone number are now hidden
+
 --Seven commit
 
 Got the stubbing to work. It has finally stopped sending me texts
