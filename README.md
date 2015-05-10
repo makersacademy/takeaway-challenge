@@ -29,12 +29,12 @@ Completed
   * have a list of dishes with prices
   * a customer can place an order by giving the list of dishes and their quantities
   * allow customer to view order summary and total price of the order.
-  * allow customer to place order and receive a text message as confirmation and a deliver time one hour after the order is placed.
+  * allow customer to place order and receive a text message as confirmation and a delivery time one hour after the order is placed.
 
 Future Tasks
 -----
-  *currently, a customer has to choose a restaurant's menu to view before being able to choose dishes and place an order, which may not be the best approach.
-  *create a user interface.
+  * currently, a customer has to choose a restaurant's menu to view before being able to choose dishes and place an order, which may not be the best approach.
+  * create a user interface.
 
 Considerations
 -----
