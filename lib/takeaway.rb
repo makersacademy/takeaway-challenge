@@ -13,4 +13,8 @@ class Takeaway
     @menu
   end
 
+  def item_price(item)
+    @menu[item]
+  end
+
 end
