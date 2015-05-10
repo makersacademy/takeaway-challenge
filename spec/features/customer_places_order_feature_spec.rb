@@ -15,16 +15,16 @@ feature 'user orders food' do
     default_menu["Poutine"] = 475
 
     # Create takeaway and add the menu
-    takeaway=Takeaway.new(Menu)
+    takeaway=Takeaway.new
     takeaway.add_menu_items(default_menu)
 
-    #Check the menu is what we expect
+    # Check the menu is what we expect
     expect(takeaway.list_menu).to eq(default_menu)
 
   end
 
   xscenario 'selects items and quantity to order' do
-    takeaway=Takeaway.new(Menu)
+    takeaway = Takeaway.new
 
     customer = Customer.new("Daniel", @tel_no)
 
