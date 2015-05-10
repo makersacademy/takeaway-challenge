@@ -9,7 +9,6 @@ class Customer
 
   def initialize(name = 'Customer')
     @name = name
-    @restaurant = restaurant
   end
 
   def view_menu(restaurant)

@@ -34,11 +34,4 @@ feature 'A customer can place an order' do
 
   scenario 'A customer cannot order off the menu' do
   end
-
-  scenario 'A customer can place an order and recieve a message confirming the order' do
-    customer.view_menu(restaurant)
-    customer.choose_dishes("Truffle")
-    customer.choose_amount("4")
-    customer.place_order
-  end
 end
