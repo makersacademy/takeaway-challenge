@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/andygout/takeaway-challenge.png)](https://travis-ci.org/andygout/takeaway-challenge)
 
-[![Coverage Status](https://coveralls.io/repos/andygout/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/andygout/takeaway-challenge/badge.png)](https://coveralls.io/r/andygout/takeaway-challenge)
 
 Takeaway Challenge
 ==================
