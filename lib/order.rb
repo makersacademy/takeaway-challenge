@@ -1,4 +1,5 @@
 require_relative 'dish'
+require_relative 'twilio'
 
 class Order
   attr_reader :dishes, :order
@@ -27,5 +28,11 @@ class Order
       puts "#{i}. #{dish[:name].capitalize.ljust(24, '.')} #{dish[:price]}"
       i += 1
     end
+  end
+
+  def notify(service = TwilioSMS)
+    service = service.new
+    message = "Thank you! Your order was placed and will be delivered before " + (Time.now + 60 * 60).strftime("%H:%M")
+    service.send(message)
   end
 end
