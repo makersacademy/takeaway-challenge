@@ -1,8 +1,10 @@
-require 'dishes'
+require 'dish'
 
-describe Dishes do
+describe Dish do
   it 'will include Thai tofu' do
-    dishes = Dishes.new
+    dishes = Dish.new
     expect(dishes.print.to_s).to include('thai tofu')
   end
+
+
 end

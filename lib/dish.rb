@@ -1,4 +1,4 @@
-class Dishes
+class Dish
   attr_reader :dishes
 
   def initialize
