@@ -6,7 +6,7 @@ class Menu
   end
 
   def print_menu
-  	@list
+  	list
   end
 end
 
