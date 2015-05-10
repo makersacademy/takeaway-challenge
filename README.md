@@ -9,8 +9,8 @@ Notes
 -----
 * I would have liked a feature whereby dishes could be removed from the order, but time was against me and given it was not part of the brief I decided not to include.
 * I passed the order across to the checkout so that I could play with some dependency injection.
-* Not sure how effective my tests are in checkout_spec, as they are not categorically testing if a message would be sent.  Again time was against me but I would have liked longer to figure out a way in which this could have been tested wth more certainty (but without sending an actual text).
-* Still don't quite understand what Travis CI and Coveralls are specifically looking for or how to interpret the errors they flag up, especially they are given after the RSpec tests have passed.
+* Not sure how effective my tests are in checkout_spec, as they are not categorically testing if a message would be sent.  Again time was against me but I would have liked longer to figure out a way in which this could have been tested wth more certainty (but without sending an actual text).  My final Coveralls test is suggesting I did not test the line where the twilio.rb file is included, so I'd like to learn how test in RSpec if the file exists/can be included but without actually running it.
+* Still don't quite understand what Travis CI and Coveralls are specifically looking for or how to interpret the errors they flag up, especially they are given after the RSpec tests have passed.  Current updates passes these tests but I am not really sure how I got there.
 
 User Stories
 -----
