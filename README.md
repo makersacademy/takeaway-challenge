@@ -1,6 +1,55 @@
 Takeaway Challenge
 ==================
 
+# Notes on Takeaway Challenge
+
+## Class Responsibility Collaborator domain modelling
+
+This is a first pass. There may be substantial changes for encapsulation and SRP reasons.
+
+### Customer
+
+Responsibilities: .new, .mobile_number, .mobile_number=, .list_orders, .list_messages
+
+Collaborators: Order, Message
+
+### Takeaway
+
+Responsibilities: .new, .list_orders
+
+Collaborators: Order, Menu
+
+### Menu
+
+Responsibilities: .new, .list
+
+Collaborators: MenuItem, Takeaway
+
+### MenuItem
+
+Responsibilities: .new, .price
+
+Collaborators: Menu, OrderLine
+
+### OrderLine
+
+Responsibilities: .new, .item_name, .item_quantity, .item_total
+
+Collaborators: MenuItem, Order
+
+### Order
+
+Responsibilities: .new, .item_add, .customer, .list_order, .order_status, .order_status=
+
+Collaborators: OrderLine, Customer, Takeaway, Message
+
+### Message
+
+Responsibilities: .new, .message_status
+
+Collaborators: Order, Customer
+
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
