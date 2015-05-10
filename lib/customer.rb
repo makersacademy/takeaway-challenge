@@ -7,6 +7,8 @@ class Customer
   attr_reader :dishes
   attr_reader :amount
   attr_reader :restaurant
+  attr_reader :menu
+  attr_reader :choice
 
   def initialize(name = 'Customer')
     @name = name
@@ -14,7 +16,7 @@ class Customer
 
   def view_menu(restaurant)
     @restaurant = restaurant
-    restaurant.menu
+    @menu = restaurant.menu
   end
 
   def choose_dishes(*dishes)
@@ -24,21 +26,7 @@ class Customer
   end
 
   def choose_amount(*amount)
-    @order = []
-    if amount.length == 1
-      num = amount[0].to_i
-      @dishes.each do |dish|
-        num.times {order << dish}
-      end
-    else
-      amounts = Hash[@dishes.zip(amount)]
-      amounts.each do |dish, amount|
-        amount.times do
-          order << dish
-        end
-      end
-    end
-    @order
+    @restaurant.calculate_order(amount)
   end
 
   def view_order(menu)

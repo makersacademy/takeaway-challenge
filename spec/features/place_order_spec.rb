@@ -28,7 +28,7 @@ feature 'A customer can place an order' do
     expect(customer.choose_amount(2)).to eq ["Lobster", "Lobster"]
   end
 
-  scenario 'A customer can review order' do
+  xscenario 'A customer can review order' do
     menu = Menu.new
     customer = Customer.new
     restaurant = Restaurant.new(menu)
@@ -38,7 +38,7 @@ feature 'A customer can place an order' do
     expect(customer.view_order(menu)).to eq([["Ice Cream", 100.00], ["Ice Cream", 100.00], ["Lobster", 30.00], ["Lobster", 30.00]])
   end
 
-  scenario 'A customer can view total price' do
+  xscenario 'A customer can view total price' do
     menu = Menu.new
     customer = Customer.new
     restaurant = Restaurant.new(menu)

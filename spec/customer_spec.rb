@@ -16,12 +16,13 @@ describe Customer do
     expect(customer).to respond_to(:view_menu).with(1).argument
   end
 
-  it 'can place and order' do
+  it 'can place an order' do
     customer = Customer.new("name")
     expect(customer).to respond_to(:choose_dishes).with(1).argument
   end
 
   it 'can choose a number of dishes' do
+    allow(restaurant).to receive(:calculate_order).and_return(["Lobster", "Lobster", "Caviar", "Caviar"])
     customer = Customer.new("name")
     customer.view_menu(restaurant)
     customer.choose_dishes("Lobster", "Caviar")
@@ -29,7 +30,7 @@ describe Customer do
   end
 
 
-  it 'can review placed order' do
+  xit 'can review placed order' do
     customer = Customer.new("name")
     customer.view_menu(restaurant)
     customer.choose_dishes("Lobster")
