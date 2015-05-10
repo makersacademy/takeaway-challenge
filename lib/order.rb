@@ -16,8 +16,8 @@ class Order
   end
 
   def total
-    #Another messy array reference here
-    @order.inject(0) {|accum, item| accum + item[2]}
+    # Another messy array reference here
+    @order.inject(0) { |accum, item| accum + item[2] }
   end
 
   def order

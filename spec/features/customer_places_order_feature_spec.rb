@@ -15,7 +15,7 @@ feature 'user orders food' do
     default_menu["Poutine"] = 475
 
     # Create takeaway and add the menu
-    takeaway=Takeaway.new("Bill's Chippy")
+    takeaway = Takeaway.new("Bill's Chippy")
     takeaway.add_menu_items(default_menu)
 
     # Check the menu is what we expect
@@ -36,7 +36,7 @@ feature 'user orders food' do
     default_menu["Poutine"] = 475
 
     # Create takeaway and add the menu
-    takeaway=Takeaway.new("Bill's Chippy")
+    takeaway = Takeaway.new("Bill's Chippy")
     takeaway.add_menu_items(default_menu)
 
     # Create a customer to place an order
@@ -49,7 +49,7 @@ feature 'user orders food' do
     expect(order.total).to eq(2325)
   end
 
-  xscenario 'shows order total and order lines to justify cost' do
+  scenario 'shows order total and order lines to justify cost' do
     # Set up a default menu
     default_menu = Hash.new
     default_menu["Pie and chips"] = 450
@@ -62,7 +62,7 @@ feature 'user orders food' do
     default_menu["Poutine"] = 475
 
     # Create takeaway and add the menu
-    takeaway=Takeaway.new("Bill's Chippy")
+    takeaway = Takeaway.new("Bill's Chippy")
     takeaway.add_menu_items(default_menu)
 
     # Create a customer to place an order
@@ -74,8 +74,9 @@ feature 'user orders food' do
     order.add_order_line("Poutine", 3)
 
     # The order display should work properly
-    expected_order = [""]
-    expect(order).to eq(expected_order)
+    expected_order = ["Daniel", "Bill's Chippy",
+                      [["Pie and chips", 2, 900], ["Poutine", 3, 1425]], 2325]
+    expect(order.order).to eq(expected_order)
   end
 
   xscenario 'receives SMS confirmation of order' do
