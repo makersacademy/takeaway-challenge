@@ -6,5 +6,4 @@ describe Dish do
     expect(dishes.print.to_s).to include('thai tofu')
   end
 
-
 end

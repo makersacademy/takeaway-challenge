@@ -3,6 +3,7 @@ class Dish
 
   def initialize
     @dishes = []
+
     preload_dishes
   end
 

@@ -9,7 +9,7 @@ class Order
     @order = []
   end
 
-  def add(dish, quantity)
+  def add(dish, quantity = 1)
     dish -= 1
 
     @order << [@dishes.dishes[dish][:name],
@@ -32,7 +32,9 @@ class Order
 
   def notify(service = TwilioSMS)
     service = service.new
-    message = "Thank you! Your order was placed and will be delivered before " + (Time.now + 60 * 60).strftime("%H:%M")
+    text = "Thank you! Your order total is $#{total} and will be delivered before "
+    time = (Time.now + 60 * 60).strftime('%H:%M')
+    message = text + time
     service.send(message)
   end
 end
