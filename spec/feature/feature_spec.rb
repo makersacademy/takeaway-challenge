@@ -10,9 +10,12 @@ feature 'A customer wants to order takeaway' do
   scenario 'Customer is able to select multiple dishes from the menu' do
   	order = Order.new
   	menu_dish = Menu.new
-  	order.add_dish "Bottle of Water"
-  	order.add_dish "Carbonara"
+  	order.add_dish 1, "Bottle of Water"
+  	order.add_dish 2, "Carbonara"
   	expect(order.view_order).to include "Bottle of Water" && "Carbonara"
+  end
+
+  xscenario 'Customer can view price of each dish alongside sum total of their order' do
   end
 end
 
