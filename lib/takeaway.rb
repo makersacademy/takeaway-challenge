@@ -1,8 +1,9 @@
 class Takeaway
 
-  def initialize
+  def initialize(name)
     # Not enforced, but menu hash structure is {"dish name" => cost}
-    @menu=Hash.new
+    @menu = Hash.new
+    @name = name
   end
 
   def add_menu_items(items)
@@ -15,6 +16,10 @@ class Takeaway
 
   def item_price(item)
     @menu[item]
+  end
+
+  def name
+    @name
   end
 
 end

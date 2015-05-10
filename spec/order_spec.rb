@@ -28,4 +28,22 @@ describe Order do
     expect(order.total).to eq(19)
   end
 
+  it 'returns an order in a specified format' do
+    takeaway = double :takeaway
+    allow(takeaway).to receive(:item_price).with("Pie and chips").and_return(5)
+    allow(takeaway).to receive(:item_price).with("Chip butty").and_return(3)
+    allow(takeaway).to receive(:name).and_return("Bill's Chippy")
+    customer = double :customer
+    allow(customer).to receive(:name).and_return("Daniel")
+    order = Order.new(customer, takeaway)
+    order.add_order_line("Pie and chips", 2)
+    order.add_order_line("Chip butty", 3)
+    expected_order = Array.new
+    expected_order << customer.name
+    expected_order << takeaway.name
+    expected_order << [["Pie and chips", 2, 10], ["Chip butty", 3, 9]]
+    expected_order << 19
+    expect(order.order).to eq(expected_order)
+  end
+
 end

@@ -14,7 +14,7 @@ describe Takeaway do
     default_menu["Poutine"] = 475
 
     # Create takeaway and add the menu
-    takeaway=Takeaway.new
+    takeaway = Takeaway.new("Bill's Chippy")
     takeaway.add_menu_items(default_menu)
 
     # Check the menu is what we expect

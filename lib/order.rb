@@ -20,4 +20,12 @@ class Order
     @order.inject(0) {|accum, item| accum + item[2]}
   end
 
+  def order
+    output = Array.new
+    output << @customer.name
+    output << @takeaway.name
+    output << @order
+    output << total
+  end
+
 end
