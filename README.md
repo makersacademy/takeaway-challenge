@@ -5,11 +5,12 @@
 Takeaway Challenge
 ==================
 
-To Do
+Notes
 -----
-* Ability to remove items from order before sent to checkout.
-* checkout_spec: order successful test (stubs to prevent texting using RSpec - only in irb).
-* Update README.md - approach to problem.
+* I would have liked a feature whereby dishes could be removed from the order, but time was against me and given it was not part of the brief I decided not to include.
+* I passed the order across to the checkout so that I could play with some dependency injection.
+* Not sure how effective my tests are in checkout_spec, as they are not categorically testing if a message would be sent.  Again time was against me but I would have liked longer to figure out a way in which this could have been tested wth more certainty (but without sending an actual text).
+* Still don't quite understand what Travis CI and Coveralls are specifically looking for or how to interpret the errors they flag up, especially they are given after the RSpec tests have passed.
 
 User Stories
 -----
