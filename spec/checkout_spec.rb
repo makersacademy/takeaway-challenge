@@ -8,18 +8,18 @@ describe Checkout do
 
     it 'Checking the total cost of final order' do
       checkout = Checkout.new(order)
-      expect(checkout.final_total).to eq 23.8
+      expect(checkout.total order.dishes).to eq 23.8
     end
 
     it 'Print receipt for final order' do
       checkout = Checkout.new(order)
-      expect(checkout.display_final_order).to eq "[\"Korma @ £4.95 x 1\", \"Red Curry @ £5.95 x 2\", \"Green Curry @ £6.95 x 1\"]; TOTAL: £23.8"
+      expect(checkout.display_order order.dishes).to eq "[\"Korma @ £4.95 x 1\", \"Red Curry @ £5.95 x 2\", \"Green Curry @ £6.95 x 1\"]; TOTAL: £23.8"
     end
 
     it 'Checks that dishes have been added to order being sending confirmation text' do
       order = Order.new
       checkout = Checkout.new(order)
-      expect {checkout.send_msg}.to raise_error 'No dishes have been added to the order'
+      expect { checkout.send_msg }.to raise_error 'No dishes have been added to the order'
     end
 
   end

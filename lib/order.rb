@@ -14,12 +14,4 @@ class Order
     quantity.times { @dishes << dish }
   end
 
-  def running_total
-    total @dishes
-  end
-
-  def display_running_order
-    display_order @dishes
-  end
-
 end

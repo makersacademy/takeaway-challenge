@@ -1,7 +1,6 @@
 module Till
-
   def total items
-    items.map(&:values).flatten.inject{ |sum, x| sum + x }
+    items.map(&:values).flatten.inject { |sum, x| sum + x }
   end
 
   def display_order dishes
@@ -11,5 +10,4 @@ module Till
     end
     "#{receipt.uniq}; TOTAL: £#{total dishes}"
   end
-
 end

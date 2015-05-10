@@ -9,6 +9,7 @@ To Do
 -----
 * Ability to remove items from order before sent to checkout.
 * checkout_spec: order successful test (stubs to prevent texting using RSpec - only in irb).
+* Update README.md - approach to problem.
 
 User Stories
 -----
