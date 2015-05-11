@@ -3,6 +3,14 @@ Takeaway Challenge
 
 # Notes on Takeaway Challenge
 
+## Progress on User Stories
+
+* See list of dishes with prices - complete
+* Select some number of several dishes - complete
+* Check that total matches sum of dishes in my order - complete (order display)
+* Send an SMS message when order is placed - complete
+
+
 ## Class Responsibility Collaborator domain modelling
 
 This is a first pass. There may be substantial changes for encapsulation and SRP reasons.

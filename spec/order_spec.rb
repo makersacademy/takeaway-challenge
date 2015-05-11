@@ -43,6 +43,7 @@ describe Order do
     expected_order << takeaway.name
     expected_order << [["Pie and chips", 2, 10], ["Chip butty", 3, 9]]
     expected_order << 19
+    expected_order << :open
     expect(order.order).to eq(expected_order)
   end
 
