@@ -1,32 +1,26 @@
+require 'welcome'
 require 'customer'
 require 'takeaway'
 
-feature "Customer finds Takeaway" do
-  let (:customer) {Customer.new{Takeaway.new}}
-  scenario "and looks at the menu" do
-    expect(customer.check_menu).to_not be_empty
+feature 'Customer checks out takeaway' do
+  let (:customer) {Customer.new}
+
+  before (:each) do
+    customer.takeaway = Takeaway.new Menu, Order, Message_Handler
   end
 
-  scenario "and adds an item from the menu to an order" do
-    customer.select_item :FishAndChips, 1
-    expect(customer.takeaway.orders).to eq [:FishAndChips => 5]
+  scenario 'and looks at the menu' do
+    expect(customer.check_menu).not_to be_empty
   end
 
-  scenario "can check items selected in order" do
-    customer.select_item :FishAndChips, 1
-    customer.select_item :MeatAndTwoVeg, 1
-    expect(customer.takeaway.orders).to eq [{:FishAndChips => 5}, {:MeatAndTwoVeg => 7}]
+  scenario "they can add initial items to current order" do
+    customer.add_item :FishAndChips
+    expect(customer.takeaway.current_order).to eq [:FishAndChips => 5]
   end
 
-  scenario "can check the total price of items in an order" do
-    customer.select_item :FishAndChips, 1
-    customer.select_item :MeatAndTwoVeg, 1
-    expect(customer.check_order_total).to eq 12
-  end
-
-  scenario "can remove items from the order" do
-    customer.select_item :FishAndChips, 2
-    customer.remove_previous_order
-    expect(customer.check_order_total).to eq 5
+  scenario "they can remove a selection before confirming" do
+    customer.add_item :FishAndChips, 3
+    customer.remove_order 2
+    expect(customer.takeaway.current_order).to eq [{:FishAndChips => 5}, {:FishAndChips => 5}]
   end
 end

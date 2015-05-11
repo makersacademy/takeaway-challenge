@@ -1,14 +1,21 @@
-require 'twilio'
+require 'welcome'
 require 'customer'
+require 'takeaway'
 
-feature 'Customer has made order' do
-  let (:customer) {Customer.new{Takeaway.new}}
-  scenario 'and receives a text message' do
-    allow(customer).to receive(:confirm_order).and_return(true)
-    expect(customer.confirm_order).to eq true
+feature "Customer has confirmed order" do
+  let (:customer) {Customer.new}
+
+  before (:each) do
+    customer.takeaway = Takeaway.new Menu, Order, Message_Handler
   end
 
-  scenario 'raises an error if order is empty' do
-    expect{customer.confirm_order}.to raise_error "No order to confirm"
+  scenario "and receives a text" do
+    allow(customer).to receive(:place_order).and_return(true)
+    expect(customer.place_order).to eq true
+  end
+
+  scenario "and gets delivery text when item arrives" do
+    allow(customer).to receive(:give_feedback).and_return(true)
+    expect(customer.give_feedback).to eq true
   end
 end

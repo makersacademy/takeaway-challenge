@@ -1,37 +1,31 @@
 require_relative 'takeaway'
-require_relative 'twilio'
 
 class Customer
 
-  attr_reader :takeaway
-  def initialize
-    @takeaway = yield
-  end
+  attr_accessor :takeaway
 
   def check_menu
-    takeaway.list_menu
+    takeaway.show_menu
   end
 
-  def select_item item, quantity = 1
-    takeaway.add_order_item item, quantity
+  def add_item item, quantity = 1
+    takeaway.take_order item, quantity
   end
 
-  def check_order
-    takeaway.orders
+  def review_order
+    takeaway.check_order
   end
 
-  def check_order_total
-    takeaway.give_order_total
+  def remove_order item_num
+    takeaway.remove_order_item item_num
   end
 
-  def remove_previous_order
-    takeaway.remove_order
+  def place_order
+    takeaway.confirm_order
   end
 
-  def confirm_order
-    fail "No order to confirm" if takeaway.orders.empty?
-    puts "Thank you for your order of #{takeaway.orders}"
-    puts "The total cost of your order is : #{takeaway.give_order_total}"
-    takeaway.message_sender.send_message
+  def give_feedback
+    takeaway.deliver_order
+    #try and add Twilio text functionality
   end
 end
