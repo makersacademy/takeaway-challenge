@@ -1,21 +1,23 @@
+[![Build Status](https://travis-ci.org/andygout/takeaway-challenge.png)](https://travis-ci.org/andygout/takeaway-challenge)
+
+[![Coverage Status](https://coveralls.io/repos/andygout/takeaway-challenge/badge.png)](https://coveralls.io/r/andygout/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Notes
+-----
+* I would have liked a feature whereby dishes could be removed from the order, but time was against me and given it was not part of the brief I decided not to include.
+* I also would have liked to have tried to include the cost of the order in the text being sent out, but this required a variable from the checkout class to be passed into the twilio file being required, which would have required some further investigation to try and get working.
+* I passed the order across to the checkout so that I could play with some dependency injection.
+* Till was used as a module rather than a class given order and checkout are not types of till, but I needed the function of a till to be used for both order and checkout, so seemed like the best option.
+* Not sure how effective my tests are in checkout_spec, as they are not categorically testing if a message would be sent.  Again time was against me but I would have liked longer to figure out a way in which this could have been tested wth more certainty (but without sending an actual text).  My final Coveralls test is suggesting I did not test the line where the twilio.rb file is included, so I'd like to learn how test in RSpec if the file exists/can be included but without actually running it.
+* Still don't quite understand what Travis CI and Coveralls are specifically looking for or how to interpret the errors they flag up, especially they are given after the RSpec tests have passed.  Current updates passes these tests but I am not really sure how I got there.
 
-Task
+User Stories
 -----
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```sh
+```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -50,6 +52,3 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
