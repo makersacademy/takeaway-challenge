@@ -52,7 +52,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
 
 
-Domain Model
+##H1 Domain Model
 
 Customer wants to order a meal from a list of dishes with prices; wants to select some number of available dishes. Customer then wants to verify the order is correct by checking the total given matches the sum of the various dishes. Customer wants the order delivered on time (withing of hour) with confirmation via text message.
 
