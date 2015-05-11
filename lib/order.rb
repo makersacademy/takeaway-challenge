@@ -1,4 +1,3 @@
-
 require_relative 'checkout'
 
 class Order
@@ -13,7 +12,7 @@ class Order
 
   def print_menu
   	menu_list.each do |dish_key, dish_price|
-      "#{dish_key}: #{£dish_price}"
+      "#{dish_key}: £#{dish_price}"
   	end
   end
 
@@ -29,5 +28,3 @@ class Order
   	order_list
   end
 end
-
-#use inject method to add up all dish prices?
