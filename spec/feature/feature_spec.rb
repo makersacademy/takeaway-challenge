@@ -11,14 +11,14 @@ feature 'A customer wants to order takeaway' do
   	order = Order.new
   	order.add_dish 1, "Bottle of Water"
   	order.add_dish 2, "Carbonara"
-  	expect(order.view_order).to include "Bottle of Water" && "Carbonara"
+  	expect(order.view_order).to eq [{"Bottle of Water" => 3.08}, {"Carbonara" => 0.4}, {"Carbonara" => 0.4}]
   end
 
   scenario 'Customer can view each dish alongside sum total of their order' do
     order = Order.new
     order.add_dish 2, "Bottle of Water"
     order.add_dish 3, "Ice cream"
-    expect(checkout.order_price ).to eq 7.6
+    expect(order.order_price ).to eq 7.6
   end
 end
 
