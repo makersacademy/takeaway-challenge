@@ -1,5 +1,5 @@
 require 'capybara/rspec'
-require 'menu'
+require 'order'
 
 feature 'A customer wants to order takeaway' do
   scenario 'Customer is able to view list of dishes from the menu' do
@@ -18,7 +18,7 @@ feature 'A customer wants to order takeaway' do
     order = Order.new
     order.add_dish 2, "Bottle of Water"
     order.add_dish 3, "Ice cream"
-    expect(order.order_price).to eq 7.6
+    expect(checkout.order_price ).to eq 7.6
   end
 end
 
