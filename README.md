@@ -8,7 +8,9 @@ Takeaway Challenge
 Notes
 -----
 * I would have liked a feature whereby dishes could be removed from the order, but time was against me and given it was not part of the brief I decided not to include.
+* I also would have liked to have tried to include the cost of the order in the text being sent out, but this required a variable from the checkout class to be passed into the twilio file being required, which would have required some further investigation to try and get working.
 * I passed the order across to the checkout so that I could play with some dependency injection.
+* Till was used as a module rather than a class given order and checkout are not types of till, but I needed the function of a till to be used for both order and checkout, so seemed like the best option.
 * Not sure how effective my tests are in checkout_spec, as they are not categorically testing if a message would be sent.  Again time was against me but I would have liked longer to figure out a way in which this could have been tested wth more certainty (but without sending an actual text).  My final Coveralls test is suggesting I did not test the line where the twilio.rb file is included, so I'd like to learn how test in RSpec if the file exists/can be included but without actually running it.
 * Still don't quite understand what Travis CI and Coveralls are specifically looking for or how to interpret the errors they flag up, especially they are given after the RSpec tests have passed.  Current updates passes these tests but I am not really sure how I got there.
 
