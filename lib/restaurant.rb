@@ -1,18 +1,18 @@
-require_relative 'customer.rb'
+require_relative 'customer'
 
 class Restaurant
-  attr_reader = :dishes
+  attr_accessor = :menu
 
   def initialize
-    @dishes = { 'Burger' => '£10',
-                'Hotdog' => '£8',
-                'Chicken Wings' => '£9',
-                'Chips' => '£5',
-                'Coke' => '£2',
-                'Lemonade' => '£2' }
+    @menu = { 'Burger' => '£10',
+              'Hotdog' => '£8',
+              'Chicken Wings' => '£9',
+              'Chips' => '£5',
+              'Coke' => '£2',
+              'Lemonade' => '£2' }
   end
 
-  def dishes
-    @dishes
+  def menu
+    @menu
   end
 end
