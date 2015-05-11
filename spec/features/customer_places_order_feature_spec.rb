@@ -4,7 +4,7 @@ feature 'user orders food' do
 
   scenario 'sees list of dishes with prices' do
     # Set up a default menu
-    default_menu = Hash.new
+    default_menu = {}
     default_menu["Pie and chips"] = 450
     default_menu["Fish and chips"] = 550
     default_menu["Egg and chips"] = 475
@@ -25,7 +25,7 @@ feature 'user orders food' do
 
   scenario 'selects items and quantity to order' do
     # Set up a default menu
-    default_menu = Hash.new
+    default_menu = {}
     default_menu["Pie and chips"] = 450
     default_menu["Fish and chips"] = 550
     default_menu["Egg and chips"] = 475
@@ -51,7 +51,7 @@ feature 'user orders food' do
 
   scenario 'shows order total and order lines to justify cost' do
     # Set up a default menu
-    default_menu = Hash.new
+    default_menu = {}
     default_menu["Pie and chips"] = 450
     default_menu["Fish and chips"] = 550
     default_menu["Egg and chips"] = 475
@@ -85,7 +85,7 @@ feature 'user orders food' do
     @tel_no = ENV['MY_MOBILE_NUMBER']
     # I've added status-checking as it's useful for tracking purposes
     # Set up a default menu
-    default_menu = Hash.new
+    default_menu = {}
     default_menu["Pie and chips"] = 450
     default_menu["Fish and chips"] = 550
     default_menu["Egg and chips"] = 475
@@ -108,8 +108,8 @@ feature 'user orders food' do
     order.add_order_line("Poutine", 3)
 
     # Place the order
-    message=Message.new
-    #expect(message).to receive(:send).with customer, order.time
+    message = Message.new
+    # expect(message).to receive(:send).with customer, order.time
     order.place(message)
     expect(order.status).to eq :placed
 

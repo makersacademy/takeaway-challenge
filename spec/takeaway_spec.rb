@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
   it 'returns the menu when asked to' do
     # Set up a default menu
-    default_menu = Hash.new
+    default_menu = {}
     default_menu["Pie and chips"] = 450
     default_menu["Fish and chips"] = 550
     default_menu["Egg and chips"] = 475

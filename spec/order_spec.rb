@@ -38,7 +38,7 @@ describe Order do
     order = Order.new(customer, takeaway)
     order.add_order_line("Pie and chips", 2)
     order.add_order_line("Chip butty", 3)
-    expected_order = Array.new
+    expected_order = []
     expected_order << customer.name
     expected_order << takeaway.name
     expected_order << [["Pie and chips", 2, 10], ["Chip butty", 3, 9]]

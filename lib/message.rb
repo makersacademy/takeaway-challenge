@@ -11,16 +11,14 @@ class Message
   end
 
   def send(customer, time)
-    message = "Thank you! Your order was placed and will be delivered before #{time+(60*60)}"
+    message = "Thank you! Your order was placed and will "
+    message += "be delivered before #{ time + (60 * 60) }"
     # set up a client to talk to the Twilio REST API
     @client = Twilio::REST::Client.new @account_sid, @auth_token
 
-    @client.account.messages.create({
-      :from => @sender,
-    	:to => customer.mobile_number,
-    	:body => message,
-    })
-
+    @client.account.messages.create(from: @sender,
+                                    to: customer.mobile_number,
+                                    body: message)
   end
 
 end

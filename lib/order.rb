@@ -11,7 +11,7 @@ class Order
   def initialize(customer, takeaway)
     @customer = customer
     @takeaway = takeaway
-    @order = Array.new
+    @order = []
     @status = :open
     @time = nil
   end
@@ -32,7 +32,7 @@ class Order
 
   def order
     # Whoa this is terrible. .order and @order are totally different!
-    output = Array.new
+    output = []
     output << @customer.name
     output << @takeaway.name
     output << @order
