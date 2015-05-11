@@ -1,6 +1,7 @@
-@tel_no = ENV['MY_MOBILE_NUMBER']
-
 feature 'user orders food' do
+  # Major issue with tests is duplication. Would ideally move a bunch of this
+  # into let statements to share across all tests. Or just turn the whole
+  # thing into one big test.
 
   scenario 'sees list of dishes with prices' do
     # Set up a default menu
@@ -24,6 +25,7 @@ feature 'user orders food' do
   end
 
   scenario 'selects items and quantity to order' do
+    @tel_no = ENV['MY_MOBILE_NUMBER']
     # Set up a default menu
     default_menu = {}
     default_menu["Pie and chips"] = 450
@@ -50,6 +52,7 @@ feature 'user orders food' do
   end
 
   scenario 'shows order total and order lines to justify cost' do
+    @tel_no = ENV['MY_MOBILE_NUMBER']
     # Set up a default menu
     default_menu = {}
     default_menu["Pie and chips"] = 450

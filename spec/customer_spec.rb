@@ -3,7 +3,6 @@
 require 'customer'
 
 describe Customer do
-
   it 'can create and retrieve details of a customer' do
     customer = Customer.new("Daniel", @tel_no)
     # Surely this doesn't count as too many expects?!?

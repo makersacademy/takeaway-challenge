@@ -1,5 +1,7 @@
 class Takeaway
 
+  attr_reader :name
+
   def initialize(name)
     # Not enforced, but menu hash structure is {"dish name" => cost}
     @menu = {}
@@ -17,7 +19,5 @@ class Takeaway
   def item_price(item)
     @menu[item]
   end
-
-  attr_reader :name
 
 end

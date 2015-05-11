@@ -11,9 +11,10 @@ class Message
   end
 
   def send(customer, time)
-    message = "Thank you! Your order was placed and will "
-    message += "be delivered before #{ time + (60 * 60) }"
+    message = "Thank you! Your order was placed and will be "
+    message += "delivered before #{ (time + (60 * 60)).strftime("%I:%M%p") }"
     # set up a client to talk to the Twilio REST API
+    # I wonder if this should be in initialize?
     @client = Twilio::REST::Client.new @account_sid, @auth_token
 
     @client.account.messages.create(from: @sender,

@@ -47,4 +47,8 @@ describe Order do
     expect(order.order).to eq(expected_order)
   end
 
+  xit 'lets you place an order' do
+    # This is in the feature test, but could use a unit test as well
+  end
+
 end
