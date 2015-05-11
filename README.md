@@ -1,6 +1,63 @@
 Takeaway Challenge
 ==================
 
+# Notes on Takeaway Challenge
+
+## Progress on User Stories
+
+* See list of dishes with prices - complete
+* Select some number of several dishes - complete
+* Check that total matches sum of dishes in my order - complete (order display)
+* Send an SMS message when order is placed - complete
+
+
+## Class Responsibility Collaborator domain modelling
+
+This is a first pass. There may be substantial changes for encapsulation and SRP reasons.
+
+### Customer
+
+Responsibilities: .new, .mobile_number, .mobile_number=, .list_orders, .list_messages
+
+Collaborators: Order, Message
+
+### Takeaway
+
+Responsibilities: .new, .list_orders
+
+Collaborators: Order, Menu, (OrderLine)
+
+### (Menu - merged into Takeaway for simplicity)
+
+(Responsibilities: .new, .list)
+
+(Collaborators: MenuItem, Takeaway)
+
+### (MenuItem - merged into Takeaway for simplicity)
+
+(Responsibilities: .new, .price)
+
+(Collaborators: Menu, OrderLine)
+
+### OrderLine
+
+Responsibilities: .new, .item_name, .item_quantity, .item_total
+
+Collaborators: MenuItem, Order
+
+### Order
+
+Responsibilities: .new, .item_add, .customer, .list_order, .order_status, .order_status=
+
+Collaborators: OrderLine, Customer, Takeaway, Message
+
+### Message
+
+Responsibilities: .new, .message_status
+
+Collaborators: Order, Customer
+
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
