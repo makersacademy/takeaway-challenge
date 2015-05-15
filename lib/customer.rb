@@ -9,7 +9,7 @@ class Customer
   end
 
   def select_dish menu, dish_number
-    @order_total += menu.display_menu[dish_number - 1][1]
+    self.order_total += menu.display_menu[dish_number - 1][1]
     menu.display_menu[dish_number - 1]
   end
 
