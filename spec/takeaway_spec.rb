@@ -14,5 +14,6 @@ describe Takeaway do
 
   it { is_expected.to respond_to(:order).with(2).arguments }
   
+  it { is_expected.to respond_to(:order_list) }
 
 end
