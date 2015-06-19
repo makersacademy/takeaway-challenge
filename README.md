@@ -15,7 +15,7 @@ Task
 * run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
-```sh
+```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
