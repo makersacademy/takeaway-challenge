@@ -3,11 +3,11 @@ class Takeaway
   attr_reader :menu
 
   def initialize
-    @menu = 'pizza: 8'
+    @menu = Hash['tempura', 8, 'okonomiyaki', 7, 'yakisoba', 6, 'gyoza', 3]
   end
 
   def show_menu
-    (@menu)
+    @menu
   end
 
 end
