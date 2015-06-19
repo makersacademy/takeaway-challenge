@@ -10,4 +10,6 @@ class Takeaway
     @menu
   end
 
+  def order(item, multiple)
+  end
 end

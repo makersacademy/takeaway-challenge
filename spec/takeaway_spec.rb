@@ -12,4 +12,7 @@ describe Takeaway do
     end
   end
 
+  it { is_expected.to respond_to(:order).with(2).arguments }
+  
+
 end
