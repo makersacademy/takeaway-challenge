@@ -18,9 +18,9 @@ describe Takeaway do
 
   describe 'order_list' do 
     it 'keeps track of the items ordered and number of each' do
-      subject.order('tempura', 1)
-      subject.order('gyoza', 1)
-      subject.order('tempura', 1)
+      subject.order(['tempura', 1], 8)
+      subject.order(['gyoza', 1], 3)
+      subject.order(['tempura', 1], 8)
       expect(subject.order_list).to eq ['tempura', 'gyoza', 'tempura']
     end
   end

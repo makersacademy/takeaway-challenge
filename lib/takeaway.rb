@@ -12,8 +12,8 @@ class Takeaway
     @menu
   end
 
-  def order(item, multiple)
-    multiple.to_i.times { @order_list.push(item) }
+  def order(list, expected_price)
+    #multiple.to_i.times { @order_list.push(item) }
   end
 
 end
