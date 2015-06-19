@@ -16,4 +16,12 @@ describe Takeaway do
   
   it { is_expected.to respond_to(:order_list) }
 
+  describe 'order_list' do 
+    it 'keeps track of the items ordered and number of each' do
+      subject.order('tempura', 1)
+      subject.order('gyoza', 1)
+      subject.order('tempura', 1)
+      expect(subject.order_list).to eq [['tempura', 2], ['gyoza', 1]]
+    end
+  end
 end
