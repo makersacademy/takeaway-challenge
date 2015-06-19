@@ -1,5 +1,5 @@
 class Takeaway
 
-  attr_accessor :menu
+  attr_reader :menu
 
 end
