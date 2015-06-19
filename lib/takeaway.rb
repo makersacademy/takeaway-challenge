@@ -5,6 +5,7 @@ class Takeaway
 
   def initialize
     @menu = Hash['tempura', 8, 'okonomiyaki', 7, 'yakisoba', 6, 'gyoza', 3]
+    @order_list = []
   end
 
   def show_menu
@@ -12,6 +13,7 @@ class Takeaway
   end
 
   def order(item, multiple)
+    multiple.to_i.times { @order_list.push(item) }
   end
 
 end

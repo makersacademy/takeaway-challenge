@@ -21,7 +21,7 @@ describe Takeaway do
       subject.order('tempura', 1)
       subject.order('gyoza', 1)
       subject.order('tempura', 1)
-      expect(subject.order_list).to eq [['tempura', 2], ['gyoza', 1]]
+      expect(subject.order_list).to eq ['tempura', 'gyoza', 'tempura']
     end
   end
 end
