@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require_relative '../../twilio_auth'
 
 class Checkout
 
@@ -8,9 +9,8 @@ class Checkout
     @total = nil
     @complete = false
 
-    account_sid = 'ACb6fc8e5e78c4dfb2dc9dec3718481961'
-    auth_token = '599fb47252f5488d78d96d7e210f0401'
-
+    account_sid = get_sid 
+    auth_token = get_auth
     @client = Twilio::REST::Client.new account_sid, auth_token
 
   end
@@ -18,15 +18,15 @@ class Checkout
   def submit
 
     raise 'your order is empty' if calc_total == 0
-    raise 'checkout already complete' if complete 
+    raise 'checkout already complete' if complete
 
     delivery_time = Time.new + 1800
 
-    # message = @client.account.messages.create(
-    #   :body => "Thank you! Your order was placed and will be delivered before #{delivery_time.strftime('%H:%M')}",
-    #   :to => "+447766767031",
-    #   :from => "+441279702199")
-    # puts message.to
+    message = @client.account.messages.create(
+      :body => "Thank you! Your order was placed and will be delivered before #{delivery_time.strftime('%H:%M')}",
+      :to => "+447766767031",
+      :from => "+441279702199")
+    puts message.to
 
     @total = calc_total
     @order.complete = true
@@ -37,7 +37,7 @@ class Checkout
 
   private
 
-  attr_accessor :complete 
+  attr_accessor :complete
 
   def calc_total
     @order.view_order.inject(0) {|total,(pizza,values)| total + values[1]}
@@ -45,5 +45,3 @@ class Checkout
   end
 
 end
-
-
