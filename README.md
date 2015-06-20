@@ -16,16 +16,18 @@ Project involves creating a takeaway menu of dishes and prices, to enable custom
 
 - Create new instance of menu - menu contains a fixed list of dishes and their price
 - Display contents of menu instance
-- Order item/items off menu
+
+- Place order of items (from menu) and specify the quantity of each item
 - Add items in order together to create bill total
-- 
+- add error message if item specified is not on menu?
+
 - 
 - Implement the ability to place orders via text message
 
 
 ## Still to complete/refactor
 
-- [ ]
+- [ ] 
 - [ ]
 
 ## Takeaway
