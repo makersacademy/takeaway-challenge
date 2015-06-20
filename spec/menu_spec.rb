@@ -24,5 +24,9 @@ describe Menu do
 
   it { is_expected.to respond_to(:add_to_order).with(2).arguments }
 
+  it 'should be initialised with a default menu' do
+    expect(subject.menu).to eq Menu::MENU
+  end
+
 
 end
