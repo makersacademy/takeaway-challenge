@@ -56,7 +56,10 @@ describe Order do
       expect{subject.add(:pepperoni, 1.5)}.to raise_error 'invalid number'
     end
 
-
+     it 'raise error if the order has been completed' do
+      subject.complete = true
+      expect{subject.add(:pepperoni, 1.5)}.to raise_error 'order has already been completed'
+    end
 
 
   end
@@ -76,6 +79,11 @@ describe Order do
     end
 
     it 'raise error when you remove more pizzas than are in order' do
+      subject.add(:pepperoni, 1)
+      expect{subject.remove(:pepperoni, 2)}.to raise_error 'invalid number'
+    end
+
+    it 'raise error if the order has been completed' do
       subject.add(:pepperoni, 1)
       expect{subject.remove(:pepperoni, 2)}.to raise_error 'invalid number'
     end

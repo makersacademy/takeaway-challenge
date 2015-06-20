@@ -1,11 +1,12 @@
-require_relative 'menu'
-
 class Order
+
+  attr_accessor :complete 
 
   def initialize (menu)
     @menu = menu.view
     @order = {}
     @total = 0.0
+    @complete = false
 
   end
 
@@ -21,6 +22,7 @@ class Order
   end
 
   def add pizza, number
+  	raise 'order has already been completed' if complete
     raise 'item not on menu' if !@menu.include?(pizza)
     raise 'invalid number' if number % 1 != 0
 
@@ -37,12 +39,13 @@ class Order
   end
 
   def remove pizza, number
+  	raise 'order has already been completed' if complete
     raise 'invalid number' if number > @order[pizza][0]
     add(pizza, -1 * number)
     @total = calc_total
   end
 
-  private
+  private 
 
   def pizza_already_selected? pizza
     @order.keys.include?(pizza)
