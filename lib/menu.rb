@@ -18,7 +18,7 @@ class Menu
 
   def show
     menu_items.each do |menu_item,price|
-      puts "#{menu_item.to_s.capitalize} ---- £#{price}"
+      "#{menu_item.to_s.capitalize} ---- £#{price}"
     end
   end
 
@@ -31,7 +31,9 @@ class Menu
   end
 
   def selections
-    selected_items
+    selected_items.each do |menu_item, quantity|
+      "#{quantity} x #{menu_item.to_s.capitalize}"
+    end
   end
 
   def total
