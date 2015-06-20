@@ -18,10 +18,12 @@ describe Takeaway do
 
   describe 'order_list' do 
     it 'keeps track of the items ordered and number of each' do
-      subject.order(['tempura', 1], 8)
-      subject.order(['gyoza', 1], 3)
-      subject.order(['tempura', 1], 8)
+      subject.order('tempura', 1)
+      subject.order('gyoza', 1)
+      subject.order('tempura', 1)
       expect(subject.order_list).to eq ['tempura', 'gyoza', 'tempura']
     end
   end
+
+  it { is_expected.to respond_to(:check_price).with(1).argument }
 end
