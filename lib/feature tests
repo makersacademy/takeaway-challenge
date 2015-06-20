@@ -1,0 +1,12 @@
+require './lib/menu'
+m = Menu.new
+m.show_menu
+order_form = OrderForm.new(Menu.new)
+order_form.add("Oolong Tea", 3)
+order_form.remove("Oolong Tea", 1)
+order_form.remove("Oolong Tea", 2)
+order_form.add("Chicken Rice")
+order_form.add("Laksa", 2)
+order_form.add("Hokkien Mee", 3)
+order_form.place_order
+o.pay
