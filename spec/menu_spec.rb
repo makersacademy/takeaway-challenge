@@ -4,7 +4,7 @@
 # NameError: uninitialized constant Order
 # menu.check
 # NoMethodError: undefined method `check' for nil:NilClass
-# menu.order 2, chow-mein
+# menu.add_to_order 2, chow-mein
 # NameError: undefined local variable or method `chow' for main:Object
 # menu.order 1, peking-duck
 # NameError: undefined local variable or method `peking' for main:Object
@@ -20,6 +20,9 @@ require 'menu'
 describe Menu do
 
   it { is_expected.to respond_to :check }
+
+  it { is_expected.to respond_to(:add_to_order).with(2).arguments }
+
 
 
 end
