@@ -1,22 +1,25 @@
+require_relative 'menu'
+
 class Takeaway
 
-  attr_reader :menu
+  #attr_reader :menu
   attr_reader :order_list
   attr_reader :total_price
   attr_reader :check_price
 
 
-  def initialize  
-    @menu = { 'tempura'     => 8,
-              'okonomiyaki' => 7,
-              'yakisoba'    => 6,
-              'gyoza'       => 3
-            }
+  def initialize(menu)
+    # @menu = { 'tempura'     => 8,
+    #           'okonomiyaki' => 7,
+    #           'yakisoba'    => 6,
+    #           'gyoza'       => 3
+    #         }
+    @menu = menu
     @order_list = []
   end
 
   def show_menu
-    @menu
+    @menu.show
   end
 
   def order(item, multiple)
