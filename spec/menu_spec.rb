@@ -34,6 +34,13 @@ describe Menu do
         expect(subject.check).to eq Menu::MENU
       end
 
+    end
+
+    describe 'add_to_order' do
+
+      it 'should raise an error message if the dish does not match an item in the menu' do
+        expect{subject.add_to_order(1, :pizza)}.to raise_error "Sorry! That's not on the menu!"
+      end
 
     end
 

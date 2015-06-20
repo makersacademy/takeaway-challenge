@@ -27,6 +27,7 @@ class Menu
   end
 
   def add_to_order quantity, dish
+   fail "Sorry! That's not on the menu!" unless @menu.include? dish
   end
 
 end
