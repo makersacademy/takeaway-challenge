@@ -15,5 +15,9 @@ describe Costumer do
     it 'can select an item from a menu' do
       expect(subject.add(:cheese_burger)).to eq({cheese_burger: 5})
     end
+
+    it 'can select multiple quantities from the same dish' do
+      expect(subject.add(:cheese_burger,2)).to eq({cheese_burger: 10})
+    end
   end
 end
