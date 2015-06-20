@@ -27,5 +27,15 @@ describe Costumer do
       subject.add(:coke,2)
       expect(subject.total).to eq 14
     end
+
+
+  end
+
+  describe 'pay' do
+    it 'returns an error when payment not equal to total' do
+      subject.add(:cheese_burger,2)
+      subject.add(:coke,2)
+      expect{subject.pay(10)}.to raise_error 'Incorrect amount'
+    end
   end
 end
