@@ -17,7 +17,9 @@ class Menu
   end
 
   def show
-    menu_items
+    menu_items.each do |menu_item,price|
+      puts "#{menu_item.to_s.capitalize} ---- £#{price}"
+    end
   end
 
   def choose quantity, menu_selection
@@ -30,6 +32,15 @@ class Menu
 
   def selections
     selected_items
+  end
+
+  def total
+    total_price = 0.0
+    selected_items.each do |selected_item, quantity|
+      find_price selected_item
+      total_price += (@price * quantity)
+    end
+    "£#{total_price}"
   end
 
 private
@@ -53,5 +64,10 @@ private
     selected_items[menu_selection.to_sym] = current_quantity + quantity
   end
 
+  def find_price selected_item
+    menu_items.select do |menu_item, value|
+      @price = menu_items[selected_item]
+    end
+  end
 
 end
