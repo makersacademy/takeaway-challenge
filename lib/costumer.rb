@@ -18,6 +18,10 @@ class Costumer
     @sum
   end
 
+  def pay amount
+    fail 'Incorrect amount' unless amount == total
+  end
+
   private
   attr_reader :menu
 
