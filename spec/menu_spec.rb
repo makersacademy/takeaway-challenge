@@ -10,10 +10,11 @@
 # NameError: undefined local variable or method `peking' for main:Object
 # menu.order 1, singapore-noodles
 # NameError: undefined local variable or method `singapore' for main:Object
-# order.check_total
+# my_order.check_total
 # NoMethodError: undefined method `check_total' for nil:NilClass
-# order.send
+# my_order.pay
 # ArgumentError: no method name given
+# my_order.place
 
 require 'menu'
 
@@ -22,7 +23,6 @@ describe Menu do
   it { is_expected.to respond_to :check }
 
   it { is_expected.to respond_to(:add_to_order).with(2).arguments }
-
 
 
 end
