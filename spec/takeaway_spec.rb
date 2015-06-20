@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  #it { is_expected.to respond_to :menu }
+  it { is_expected.to respond_to :menu }
   
   it { is_expected.to respond_to :show_menu }
 
@@ -20,7 +20,7 @@ describe Takeaway do
 
   it { is_expected.to respond_to(:order_total) }
 
-  it { is_expected.to respond_to (:order_confirm) }
+  it { is_expected.to respond_to(:order_confirm) }
 
 
   describe 'order_list' do 
