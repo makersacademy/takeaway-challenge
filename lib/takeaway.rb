@@ -32,4 +32,8 @@ class Takeaway
     end
     @total_price
   end
+
+  def order_confirm
+    #fail 'Please check the price again' if check_price == false
+  end
 end

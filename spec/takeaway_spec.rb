@@ -20,6 +20,9 @@ describe Takeaway do
 
   it { is_expected.to respond_to(:order_total) }
 
+  it { is_expected.to respond_to (:order_confirm) }
+
+
   describe 'order_list' do 
     it 'keeps track of the items ordered and number of each' do
       subject.order('tempura', 1)
@@ -45,6 +48,11 @@ describe Takeaway do
       subject.order('tempura', 1)
       expect(subject.check_price(19)).to eq(true)
     end
+
+    # it 'stops the order going through if expected price does not match actual total price' do
+    #   subject.order('tempura', 1)
+    #   expect { subject.check_price(4) }.to raise_error 'Please check the price again'
+    # end
   end
 
 end
