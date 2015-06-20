@@ -20,4 +20,12 @@ describe Costumer do
       expect(subject.add(:cheese_burger,2)).to eq({cheese_burger: 10})
     end
   end
+
+  describe 'total' do
+    it 'returns the total' do
+      subject.add(:cheese_burger,2)
+      subject.add(:coke,2)
+      expect(subject.total).to eq 14
+    end
+  end
 end
