@@ -12,13 +12,13 @@ describe "OrderHandler" do
 		end
 	end
 
-	# describe "#process_order" do
-	# 	let( :order ) { double 'order' }
+	describe "#process_order" do
+		let( :order ) { double 'order' }
 
-	# 	it "sends the order to OrderProcessor" do
-	# 		expect( order_processor ).to receive( :process ).with( order )
-	# 		order_handler.process_order order
-	# 	end
-	# end
+		it "sends the order to OrderProcessor" do
+			expect( order_processor ).to receive( :process ).with( order )
+			order_handler.process_order order
+		end
+	end
 
 end

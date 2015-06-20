@@ -5,7 +5,8 @@ class OrderHandler
 
 
 	def initialize menu, order_processor
-		@menu = menu
+		@menu 					 = menu
+		@order_processor = order_processor
 	end
 
 	def show_menu
@@ -18,7 +19,7 @@ class OrderHandler
 
 	private
 
-	attr_reader :menu
+	attr_reader :menu, :order_processor
 
 end
 
