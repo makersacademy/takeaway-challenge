@@ -40,9 +40,13 @@ class OrderForm
     return closing
   end
 
-  def texter
-
-
+  def pay(amount)
+    if amount == self.total
+      "We've received payment for your order of $#{self.total}. A text message will be sent to you to confirm your order and delivery time"
+      Texter.new
+    else
+      fail "Please pay the correct amount"
+    end
   end
 
 

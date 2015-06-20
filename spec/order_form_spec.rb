@@ -64,8 +64,30 @@ describe OrderForm do
       order_form.add("Hokkien Mee", 3)
       closing = "The total will be $20. Kindly make payment after verifying that it matches the sum of the prices of the dishes that you ordered."
       expect(order_form.place_order).to eq closing
-
     end
+  end
+
+  describe 'pay' do
+
+    it 'requires 1 argument' do
+      order_form = OrderForm.new(Menu.new)
+      expect(order_form).to respond_to(:pay).with(1).argument
+    end
+
+    it 'fails when payment does not match total' do
+      order_form = OrderForm.new(Menu.new)
+      order_form.add("Additional Egg", 5)
+      order_form.place_order
+      expect { order_form.pay(0) }.to raise_error "Please pay the correct amount"
+    end
+
+    it 'calls Texter if payment is correct' do
+      order_form = OrderForm.new(Menu.new)
+      order_form.add("Tao Hui")
+      order_form.place_order
+      expect
+    end
+
   end
 
 end
