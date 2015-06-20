@@ -25,6 +25,11 @@ class Takeaway
 
   def check_price(price)
     @check_price = (price == order_total)? true : false
+    if @check_price == true
+      puts 'Please go ahead and confirm the order'
+    else
+      puts 'Please check the price again before confirming the order'
+    end
     @check_price
   end
 

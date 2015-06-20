@@ -56,6 +56,12 @@ describe Takeaway do
       subject.check_price(6)
       expect { subject.order_confirm }.to raise_error 'Please check the price again'
     end
+
+    # it 'causes a confirmation text message to be sent to the user' do
+    #   subject.order('tempura', 1)
+    #   subject.check_price(8)
+    #   expect { subject.order_confirm } to 
+    # end
   end
 
 end
