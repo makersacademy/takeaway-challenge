@@ -28,5 +28,14 @@ describe Menu do
     expect(subject.menu).to eq Menu::MENU
   end
 
+    describe 'check' do
+
+      it 'should print out the list of dishes and prices' do
+        expect(subject.check).to eq Menu::MENU
+      end
+
+
+    end
+
 
 end
