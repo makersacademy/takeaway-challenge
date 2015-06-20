@@ -7,8 +7,8 @@ class Costumer
     @menu = menu
   end
 
-  def add(item)
-    basket[item] = menu.show[item]
+  def add(item, count = 1)
+    basket[item] = count * menu.show[item]
     basket
   end
 
