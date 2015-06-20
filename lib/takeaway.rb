@@ -2,9 +2,9 @@ class Takeaway
 
   attr_reader :menu
   attr_reader :order_list
+  attr_reader :total_price
 
-  def initialize
-    #@menu = Hash['tempura', 8, 'okonomiyaki', 7, 'yakisoba', 6, 'gyoza', 3]
+  def initialize  
     @menu = { 'tempura'     => 8,
               'okonomiyaki' => 7,
               'yakisoba'    => 6,
@@ -22,17 +22,14 @@ class Takeaway
   end
 
   def check_price(price)
-
+    (price == order_total)? true : false
   end
 
   def order_total
-    @price = 0
+    @total_price = 0
     @order_list.each do |x| 
-      @price += @menu.fetch(x)
+      @total_price += @menu.fetch(x)
     end
-    @price
-
-    #in order_list look for the keys (food names) and
-    #add the corresponding value to the price variable
+    @total_price
   end
 end

@@ -38,11 +38,13 @@ describe Takeaway do
     end
   end
 
-  # describe 'check_price' do
-  #   it 'compares the expected price with the order price' do
-  #     subject.order_total = 5
-  #     expect(subject.check_price(5)).to eq true
-  #   end
-  # end
+  describe 'check_price' do
+    it 'compares the expected price with the order price' do
+      subject.order('tempura', 1)
+      subject.order('gyoza', 1)
+      subject.order('tempura', 1)
+      expect(subject.check_price(19)).to eq(true)
+    end
+  end
 
 end
