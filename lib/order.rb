@@ -4,13 +4,13 @@ class Order
 
   def initialize (menu)
     @menu = menu.view
-    @selection = {}
+    @order = {}
     @total = 0.0
 
   end
 
-  def view_selection
-    @selection.clone
+  def view_order
+    @order.clone
 
   end
 
@@ -20,14 +20,16 @@ class Order
 
   end
 
-  def select pizza, number
+  def add pizza, number
+    raise 'item not on menu' if !@menu.include?(pizza)
+    raise 'invalid number' if number % 1 != 0
 
     if pizza_already_selected? pizza
-      @selection[pizza] = updated_values_for_select(pizza, number)
+      @order[pizza] = updated_values_for_add(pizza, number)
       @total = calc_total
     else
       temp_total = @menu[pizza]*number
-      @selection[pizza] = [number, temp_total]
+      @order[pizza] = [number, temp_total]
       @total = calc_total
 
     end
@@ -35,47 +37,36 @@ class Order
   end
 
   def remove pizza, number
-    select(pizza, -1 * number)
+    raise 'invalid number' if number > @order[pizza][0]
+    add(pizza, -1 * number)
     @total = calc_total
   end
 
   private
 
   def pizza_already_selected? pizza
-    @selection.keys.include?(pizza)
+    @order.keys.include?(pizza)
 
   end
 
-  def updated_values_for_select pizza, number
-    temp_number = number + @selection[pizza][0]
+  def updated_values_for_add pizza, number
+    temp_number = number + @order[pizza][0]
     temp_total = @menu[pizza]*temp_number
     [temp_number, temp_total]
 
   end
 
   def calc_total
-    @selection.inject(0) {|total,(pizza,values)| total + values[1]}
+    @order.inject(0) {|total,(pizza,values)| total + values[1]}
 
   end
 
 
 end
 
-menu = Menu.new
-p menu.view
-order = Order.new(menu)
-order.select(:pepperoni,5)
-p order.view_selection
-p order.view_total
-order.select(:margharita,7)
-p order.view_selection
-p order.view_total
-order.select(:pepperoni,3)
-p order.view_selection
-p order.view_total
-order.remove(:margharita, 3)
-p order.view_selection
-p order.view_total
+
+
+
 
 
 
