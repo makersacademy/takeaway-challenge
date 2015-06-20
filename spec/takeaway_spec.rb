@@ -26,4 +26,7 @@ describe Takeaway do
   end
 
   it { is_expected.to respond_to(:check_price).with(1).argument }
+
+  it { is_expected.to respond_to(:order_total) }
+  
 end

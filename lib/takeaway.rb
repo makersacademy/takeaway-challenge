@@ -16,6 +16,8 @@ class Takeaway
     multiple.times { @order_list.push(item) }
   end
 
-  
+  def check_price(price)
+    order_list
+  end
 
 end
