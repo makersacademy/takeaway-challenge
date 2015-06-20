@@ -2,7 +2,7 @@ require 'menu'
 describe Menu do
   let(:menu) {Menu.new}
   it 'shows the menu' do
-    expect(menu.show).to eq({cheese_burger: 5,
+    expect(menu.show).to eq({   cheese_burger: 5,
                                 hotdog:        4,
                                 lasagne:       5,
                                 beer:          2,
