@@ -28,5 +28,15 @@ describe Takeaway do
   it { is_expected.to respond_to(:check_price).with(1).argument }
 
   it { is_expected.to respond_to(:order_total) }
-  
+
+  describe 'order_total' do
+    it 'calculates the total price of items ordered' do
+      subject.order('tempura', 1)
+      subject.order('gyoza', 1)
+      subject.order('tempura', 1)
+      expect(subject.order_total).to eq 19
+    end
+
+  end
+
 end
