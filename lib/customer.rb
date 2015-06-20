@@ -5,7 +5,7 @@ class Customer
 	end
 
 	def get_menu
-		order_handler.get_menu
+		order_handler.show_menu
 	end
 
 	private
