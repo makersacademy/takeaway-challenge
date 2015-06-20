@@ -3,6 +3,8 @@ class Takeaway
   attr_reader :menu
   attr_reader :order_list
   attr_reader :total_price
+  attr_reader :check_price
+
 
   def initialize  
     @menu = { 'tempura'     => 8,
@@ -22,7 +24,8 @@ class Takeaway
   end
 
   def check_price(price)
-    (price == order_total)? true : false
+    @check_price = (price == order_total)? true : false
+    @check_price
   end
 
   def order_total
@@ -34,6 +37,6 @@ class Takeaway
   end
 
   def order_confirm
-    #fail 'Please check the price again' if check_price == false
+    fail 'Please check the price again' if @check_price == false
   end
 end

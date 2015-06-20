@@ -48,11 +48,14 @@ describe Takeaway do
       subject.order('tempura', 1)
       expect(subject.check_price(19)).to eq(true)
     end
+  end
 
-    # it 'stops the order going through if expected price does not match actual total price' do
-    #   subject.order('tempura', 1)
-    #   expect { subject.check_price(4) }.to raise_error 'Please check the price again'
-    # end
+  describe 'order_confirm' do
+    it 'stops the order going through if expected price does not match actual total price' do
+      subject.order('tempura', 1)
+      subject.check_price(6)
+      expect { subject.order_confirm }.to raise_error 'Please check the price again'
+    end
   end
 
 end
