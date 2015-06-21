@@ -2,7 +2,7 @@ require_relative 'order_form'
 class Customer
 
   attr_reader :order_form
-  
+
   def initialize
     @order_form = OrderForm.new
   end

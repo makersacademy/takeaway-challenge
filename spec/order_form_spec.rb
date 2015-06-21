@@ -14,16 +14,16 @@ describe OrderForm do
   end
 
   it 'does not add dishes that are not on the menu' do
-    expect{ subject.add_dish :Pizza, 1 }.to raise_error 'Not on the menu'
+    expect { subject.add_dish :Pizza, 1 }.to raise_error 'Not on the menu'
   end
 
   it 'errors if nothing ordered' do
-    expect{ subject.check_total 0 }.to raise_error 'No dishes were selected'
+    expect { subject.check_total 0 }.to raise_error 'No dishes were selected'
   end
 
   it 'errors if customer total is incorrect' do
   	subject.add_dish :Rice, 1
-    expect{subject.check_total 3}.to raise_error 'Error, total incorrect'
+    expect { subject.check_total 3 }.to raise_error 'Error, total incorrect'
   end
 
   it 'calculates the total' do
