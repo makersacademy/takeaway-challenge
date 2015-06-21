@@ -16,17 +16,4 @@ class Till # could call it something like Summer, Calculator...?
     message_centre.process self.total
   end
 
-  def time_in_one_hour # to messenger?
-    Time.now + 60*60
-  end
-
-  def generate_message # to messenger?
-    "#{message} #{time_in_one_hour}."
-  end
-
-  def notify
-    @notifier.send_message generate_message # assumes send_message interface on notifier
-  end
-
-
 end
