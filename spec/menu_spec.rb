@@ -2,6 +2,10 @@ require 'menu'
 
 describe Menu do
 
+  let(:text_sender) { double :text_sender }
+
+  subject { Menu.new text_sender }
+
   it { is_expected.to respond_to :show }
 
   it { is_expected .to respond_to(:choose).with(2).arguments }
@@ -36,6 +40,15 @@ describe Menu do
     subject.choose 2, :pizza
     subject.choose 4, :beer
     expect(subject.total).to eq "£31.54"
+  end
+
+  it "sends the number and message to text_sender" do
+    phone_number = "447963648096"
+    time =  Time.new 2015, 6, 21, 18, 03
+    allow(Time).to receive(:new) { time }
+    expect(text_sender).to receive(:send_text).with("447963648096", "Thanks! Your order should be delivered before 19:03, The total is £0.00.")
+    subject.order(phone_number)
+
   end
 
 

@@ -1,9 +1,12 @@
+require './lib/text_sender.rb'
+
 class Menu
 
   attr_accessor :selected_items
+  attr_reader :text_sender
 
 
-  def initialize
+  def initialize text_sender
 
     @menu_items = {pizza: 9.99,
                   fried_chicken: 4.99,
@@ -11,8 +14,8 @@ class Menu
                   beer: 2.89,
                   wine: 6.99
                   }
-
     @selected_items = {}
+    @text_sender = text_sender
 
   end
 
@@ -42,10 +45,15 @@ class Menu
       find_price selected_item
       total_price += (@price * quantity)
     end
-    "£#{total_price}"
+    price = sprintf "%.2f", total_price
+    "£#{price}"
   end
 
-private
+  def order phone_number
+    self.text_sender.send_text(phone_number, order_message)
+  end
+
+  private
 
   attr_reader :menu_items
 
@@ -71,5 +79,16 @@ private
       @price = menu_items[selected_item]
     end
   end
+
+  def time_in_an_hour
+    t = Time.new
+    t += (60*60)
+    t.strftime("%R")
+  end
+
+  def order_message
+    "Thanks! Your order should be delivered before #{time_in_an_hour}, The total is #{total}."
+  end
+
 
 end

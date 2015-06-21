@@ -3,8 +3,14 @@ require 'twilio-ruby'
 
 describe TextSender do
 
-@client = Twilio::REST::Client.new(ENV[account_sid], ENV[auth_token])
+  it "sends a message" do
+    messages = double :messages, create: nil
+    account = double :account, messages: messages
+    client = double :client, account: account
+    allow(Twilio::REST::Client).to receive(:new) { client }
+    expect(messages).to receive(:create).with(body: "Test message", to: "447963648096", from: "441322721396", via: client)
+    subject.send_text("447963648096", "Test message")
 
-@client.account.messages.create(from: "441322721396", to: "447963648096", body: "Hey future Simon!")
+  end
 
 end
