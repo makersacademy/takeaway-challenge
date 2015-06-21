@@ -32,10 +32,20 @@ describe Costumer do
   end
 
   describe 'pay' do
+    let(:fake_message) {double :fake_message}
+    let(:client) {double :client, messages: fake_message}
+
+    before(:each) {subject.add(:cheese_burger,2)
+                   subject.add(:coke,2)}
+
     it 'returns an error when payment not equal to total' do
-      subject.add(:cheese_burger,2)
-      subject.add(:coke,2)
       expect{subject.pay(10)}.to raise_error 'Incorrect amount'
+    end
+
+    it 'sends a message if payment is correct' do
+      expect(subject).to receive :send_message
+      subject.total
+      subject.pay(14)
     end
   end
 end
