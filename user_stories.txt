@@ -1,0 +1,7 @@
+I would like my program to work as below in irb
+
+c = Customer.new
+c.view_dishes
+c.place_order
+c.check_total
+
