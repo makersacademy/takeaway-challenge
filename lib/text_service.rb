@@ -1,6 +1,6 @@
-class Text_service
+# class Text_service
 
-  def send
+#   def send
 
-  end
-end
+#   end
+# end

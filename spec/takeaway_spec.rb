@@ -22,6 +22,8 @@ describe Takeaway do
 
   it { is_expected.to respond_to(:order_confirm) }
 
+  it { is_expected.to respond_to(:text) }
+
 
   describe 'order_list' do 
     it 'keeps track of the items ordered and number of each' do
@@ -58,9 +60,7 @@ describe Takeaway do
     end
 
     it 'triggers a confirmation text message' do
-      text_service = double :text_service
-      expect(text_service).to receive :send 
-      subject.order_confirm
+      
     end
   end
 

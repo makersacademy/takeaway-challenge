@@ -1,4 +1,4 @@
-require_relative './text_service'
+#require_relative './text_service'
 
 class Takeaway
 
@@ -18,7 +18,6 @@ class Takeaway
   end
 
   def show_menu
-    @menu = menu.show
     @menu
   end
 
@@ -46,8 +45,12 @@ class Takeaway
 
   def order_confirm
     fail 'Please check the price again' if @check_price == false
+
   end
 
+  def text
+
+  end
 # require 'rubygems' # not necessary with ruby 1.9 but included for completeness 
 # require 'twilio-ruby' 
  
