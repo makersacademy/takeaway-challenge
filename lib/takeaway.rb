@@ -44,7 +44,7 @@ class Takeaway
     @total_price
   end
 
-  def order_confirm
+  def confirm_order
     fail 'Please check the price again' if @check_price == false
     @texter.send
   end
