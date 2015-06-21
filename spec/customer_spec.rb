@@ -55,6 +55,17 @@ describe Customer do
   	expect(subject.total_price).to eq 41
   end
 
+  it 'calculates total price correctly when called multiple times' do
+  	subject.add_item(:cheese,2)
+  	subject.total_price
+  	subject.add_item(:barbeque)
+  	expect(subject.total_price).to eq 22
+  end
+
+  it 'doesn\'t allow decimal number for quantity of order' do
+  	expect{subject.add_item(:cheese,1.4)}.to raise_error 'invalid number'
+  end
+
 
 
 end

@@ -9,6 +9,7 @@ class Customer
   end
 
   def add_item (item, number=1)
+  	raise 'invalid number' if number %1 !=0
     if pizza_already_in_order?(item)
       current_total = order[item]
       order[item] = current_total.to_i+ menu[item]*number
@@ -37,5 +38,12 @@ class Customer
     @order.keys.include?(item)
   end
 
+  def total_price
+  	@total_price=0
+    @order.each_value{|price| @total_price += price}
+    @total_price
+  end
 
-end
+
+
+  end
