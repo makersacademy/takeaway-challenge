@@ -1,9 +1,9 @@
 require 'order_form'
 
 describe OrderForm do
-  
+
   it { is_expected.to respond_to :show_dishes }
-  
+
   it 'shows dishes' do
     expect(subject.show_dishes).to eq 'Noodles (£3.00), Rice (£2.50)'
   end
@@ -22,12 +22,12 @@ describe OrderForm do
   end
 
   it 'errors if customer total is incorrect' do
-  	subject.add_dish :Rice, 1
+    subject.add_dish :Rice, 1
     expect { subject.check_total 3 }.to raise_error 'Error, total incorrect'
   end
 
   it 'calculates the total' do
-  	subject.add_dish :Noodles, 1
+    subject.add_dish :Noodles, 1
     expect(subject.calculate_total).to eq 3
   end
 

@@ -5,13 +5,13 @@ class Takeaway
   # 	@foods = { Noodles: 3.00, Rice: 2.50 }
   # end
   def send_text
-  	time_due = Time.new + 3600
-  	h = time_due.hour
-  	m = time_due.min
+    time_due = Time.new + 3600
+    h = time_due.hour
+    m = time_due.min
 
-	@client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
-	 
-	message = @client.account.messages.create(:body => "Your order has been placed and will arrive by #{h}:#{m}",
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
+
+    message = @client.account.messages.create(:body => "Your order has been placed and will arrive by #{h}:#{m}",
 	    :to => "+447921262696",
 	    :from => "+441322721370")
   end
