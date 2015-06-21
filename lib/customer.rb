@@ -57,9 +57,8 @@ class Customer
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.account.messages.create(:body => "Thank you! Your order was placed and will be delivered before #{delivery_time}",
-                                              :to => "+447733080200",   
-                                              :from => "+44 1243 689132")   
-    # puts message.sid
+                                              :to => "+447733080200",
+                                              :from => "+44 1243 689132")
 
   end
 
