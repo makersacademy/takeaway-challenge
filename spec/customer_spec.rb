@@ -8,12 +8,12 @@ describe Customer do
 	  											 :process_order => nil
 	end
 	
-	describe "#get_menu" do
-		it "requests the menu" do
-			expect( order_handler ).to receive :show_menu
-			customer.get_menu
-		end
-	end
+	# describe "#get_menu" do
+	# 	it "requests the menu" do
+	# 		expect( order_handler ).to receive :show_menu
+	# 		customer.get_menu
+	# 	end
+	# end
 
 	describe "#send_order" do
 		it "sends an order" do

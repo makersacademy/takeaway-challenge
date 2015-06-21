@@ -2,8 +2,8 @@ require 'order_processor'
 
 describe OrderProcessor do 
 
-	subject { OrderProcessor.new notifiable, calculable }
-	let( :notifiable ) { double 'notifiable', :call => nil }
+	subject { OrderProcessor.new notifier, calculable }
+	let( :notifier ) { double 'notifier', :call => nil }
 	let( :calculable ) { double 'calculable' }
 
 
@@ -14,8 +14,8 @@ describe OrderProcessor do
 	# 	end
 
 	# 	context "when the order is accepted" do
-	# 		it "pass call to notifiable" do
-	# 			expect( notifiable ).to receive :call
+	# 		it "pass call to notifier" do
+	# 			expect( notifier ).to receive :call
 				
 	# 		end	
 	# 	end
@@ -28,3 +28,31 @@ describe OrderProcessor do
 	# end
 	
 end
+
+
+
+
+require 'order_handler'
+
+# describe "OrderHandler" do
+
+# 	let( :order_handler ) { OrderHandler.new eatable, order_processor }
+# 	let( :order_processor ) { double :order_processor, :process => nil }
+# 	let( :eatable ) { double 'eatable', :show => :eatable }
+	
+# 	describe "#show_eatable" do
+# 		it "returns the eatable" do
+# 			expect( order_handler.show_eatable ).to eq :eatable
+# 		end
+# 	end
+
+# 	describe "#process_order" do
+# 		let( :order ) { double 'order' }
+
+# 		it "sends the order to OrderProcessor" do
+# 			expect( order_processor ).to receive( :process ).with( order )
+# 			order_handler.call order
+# 		end
+# 	end
+
+# end

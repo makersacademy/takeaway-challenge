@@ -5,7 +5,7 @@ class Notifier
 	ACCOUNT_SID = "AC9b75faaa7dc888de8801780784c0639b"
 	AUTH_TOKEN  = "3c23078fac6c0265238b303c7eb4c3c1"
 
-  MESSAGE = "Your order will arrive at {time}"
+  message = "Your order will arrive at {time}"
 
   attr_accessor :message, :via, :client, :to, :via, :from
 
@@ -16,8 +16,8 @@ class Notifier
     @via     = opts[ :via     ] || Twilio::REST::Client.new( ACCOUNT_SID, AUTH_TOKEN )
   end
 
-  def self.call 
-      new.send_message  
+  def self.call( *args )
+      new(*args).send_message  
   end
 
   def send_message 
