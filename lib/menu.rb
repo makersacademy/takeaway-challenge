@@ -8,7 +8,7 @@ class Menu
   end
 
   def read
-    @content.each {|k, v| puts k.ljust(20) + v.to_s.rjust(2)}
+    @content.each {|dish, price| puts dish.ljust(20) + price.to_s.rjust(2)}
   end
 
 end
