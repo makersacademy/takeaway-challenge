@@ -45,11 +45,11 @@ class Takeaway
 
   def order_confirm
     fail 'Please check the price again' if @check_price == false
-
+    text
   end
 
   def text
-
+    true
   end
 # require 'rubygems' # not necessary with ruby 1.9 but included for completeness 
 # require 'twilio-ruby' 

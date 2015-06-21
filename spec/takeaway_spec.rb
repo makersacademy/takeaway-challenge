@@ -60,7 +60,10 @@ describe Takeaway do
     end
 
     it 'triggers a confirmation text message' do
-      
+      allow(subject).to receive(:check_price).and_return true
+      subject.order_confirm
+      expect(subject.text).to eq(true)
+
     end
   end
 
