@@ -1,4 +1,4 @@
-require_relative 'menu'
+# require_relative 'menu'
 
 class Customer
   attr_reader :menu, :order
@@ -9,7 +9,7 @@ class Customer
   end
 
   def add_item (item, number=1)
-  	raise 'invalid number' if number %1 !=0
+    raise 'invalid number' if number %1 !=0
     if pizza_already_in_order?(item)
       current_total = order[item]
       order[item] = current_total.to_i+ menu[item]*number
@@ -39,11 +39,19 @@ class Customer
   end
 
   def total_price
-  	@total_price=0
+    @total_price=0
     @order.each_value{|price| @total_price += price}
     @total_price
   end
 
+  def place_order payment_amount
+    raise 'That is not the correct payment amount!' if payment_amount !=total_price
+    print 'Thank you for your order'
+    send_text_confirmation
+  end
+
+  def send_text_confirmation
 
 
   end
+end

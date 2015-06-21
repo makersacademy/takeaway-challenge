@@ -66,6 +66,13 @@ describe Customer do
   	expect{subject.add_item(:cheese,1.4)}.to raise_error 'invalid number'
   end
 
+  it 'checks the payment amount is equal to the sum of all items' do
+  	subject.add_item(:cheese,2)
+  	expect{subject.place_order(16)}.to raise_error 'That is not the correct payment amount!'
+  end
+
+
+
 
 
 end
