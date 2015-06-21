@@ -46,9 +46,9 @@ class Order
   private
 
   def remove_zero_quantity_pizzas
-  	@order.each do |i|
-  	@order.delete(i[0]) if i[1][0] == 0
-  	end
+    @order.each do |i|
+    @order.delete(i[0]) if i[1][0] == 0
+    end
 
 
   end
