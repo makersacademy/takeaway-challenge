@@ -31,6 +31,22 @@ describe Customer do
     expect(customer.ask_total).to be 16.5
   end
 
+  it 'can pay for the exact amount' do
+    shop = Shop.new
+    customer = Customer.new shop
+    customer.select_dish('linguine')
+    customer.select_dish('beer')
+    expect(customer.pay(16.5)).to eq("Thanks for pay")
+  end
+
+  it 'get an error if tries to pay a amount different from the total' do
+    shop = Shop.new
+    customer = Customer.new shop
+    customer.select_dish('linguine')
+    customer.select_dish('beer')
+    expect{customer.pay(3)}.to raise_error 'Sorry, you need to pay the exact total'
+  end
+
 
 
 end
