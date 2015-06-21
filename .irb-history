@@ -1,0 +1,100 @@
+player.receive_strike 'C4'
+player.receive_strike 'C5'
+player.receive_strike 'C6'
+player.receive_strike 'C7'
+player.receive_strike 'C8'
+Player
+player
+player.lost?
+define_method(:jump) do
+puts "JUMP"
+define_method
+jump
+Something.hello
+puts self
+Something
+Something.new
+class Something
+Something.send(:define_method, :my_method) do
+puts "HELLO"
+Something.my_method
+module OtherThing
+def the_thing
+puts "John Carpenter"
+class OriginalThing
+extend OtherThing
+OriginalThing.the_thing
+ship = Ship.new
+Ship.submarine 'C4' :horizontal
+Ship.submarine 'C4', :horizon
+Ship.submarine "C4", :horizontal
+quit
+require './lib/board\
+require './lib/cell.rb'
+require './lib/board'
+require './lib/cell'
+require './lib/boat'
+ls
+boat = Boat.new
+board = Board.new
+board[0,2].place boat
+board[0][2].place boat
+board[0][2]
+board.grid[0][2]
+board.grid[3][5].place boat
+board.grid[3][5].insert boat
+board.grid[0][0].insert boat
+board
+def hello
+[1,2,4].each {|num| print "this is num #{num}"}
+def my_method
+puts "here we are at the top"
+yield
+puts "here we are at the bottom"
+my_method { puts "here we are, in the middle
+}
+my_method { puts "here we are, in the middle"}
+my_methos
+my_method
+yield ("whhhhhhat", "nooooo waaaaay")
+def method2
+yield("whhhhhhat", "nooooo waaaaay")
+end
+method2 {|a,b| "#{a}, I don't beleive this. #{b}"}
+require './lib/injecct.rb'
+[1,2,3].injecct
+irb
+menu= Menu.new
+exot
+require './lib/menu'
+menu = Menu.new
+require 'pp'
+menu.view
+items = ["thing", 3]
+items[0]
+items = [["Chop Suey",1]]
+items [0]
+items [0][0]
+items [0][0]exit
+items = {'hello': 3, 'hiii': 4}
+items['hello']
+items.value['hello']
+items.value?['hello']
+items[:hello]
+items[hello]
+require ./lib/order'
+order = Order.mew
+order.print_receipt
+order.create_order(["Dim Sum", 3],["Prawn Crackers", 2], 23.50)
+require Time
+require 'time'
+Time.new
+time = Time.new
+time.strftime("%I:%M%p")
+require './lib/order.rb'
+require './lib/order'
+order = Order.new
+order.view_menu
+order.place_order(['Chop Suey', 1],["Prawn Crackers", 1], 9.00)
+order.create_order(['Chop Suey', 1],["Prawn Crackers", 1], 9.00)
+exit

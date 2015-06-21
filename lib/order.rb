@@ -1,3 +1,5 @@
+require_relative 'text'
+
 class Order
 
   MENU = {         "Chop Suey" => 7.00,
@@ -8,15 +10,42 @@ class Order
              "Fortune Cookies" => 3.00 }
 
   def view_menu
-   LIST_OF_ITEMS.to_s
+   MENU.to_s
   end
 
-  def create(*item_quantity)
+  def create_order(*item_quantity, expected_cost)
+    if adder(item_quantity) == expected_cost
+      print_receipt(item_quantity, expected_cost)
+      send_text(expected_cost)
+      true
+    end
+  end
+
+  def adder(item_quantity)
     total_cost = 0
     item_quantity.each do |item, quantity|
       total_cost += MENU[item]*quantity
     end
     total_cost
+  end
+
+  def print_receipt(item_quantity, cost)
+    receipt = ''
+    receipt << "Thank you for ordering\nYou ordered:\n"
+    item_quantity.each do |item, quantity|
+      receipt << "Item: #{item}, total cost #{"%.2f" % (MENU[item]*quantity)}\n"
+    end
+    receipt << "Total cost: #{"%.2f" % cost}"
+    receipt
+  end
+
+  def send_text(cost)
+    puts "Can you please enter your phone number?"
+    number = gets.chomp
+    time = Time.new
+    time = time + 3600
+    message = "The total cost will be £#{"%.2f" % cost}. It will arrive before #{time.strftime("%I:%M%p")}"
+    Text.make_text(number,message)
   end
 
 
