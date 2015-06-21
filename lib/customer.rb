@@ -1,4 +1,5 @@
-# require_relative 'menu'
+require_relative 'menu'
+require 'twilio-ruby'
 
 class Customer
   attr_reader :menu, :order
@@ -51,7 +52,17 @@ class Customer
   end
 
   def send_text_confirmation
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    message = @client.account.messages.create(:body => "Thank you! Your order was placed and will be delivered before #{delivery_time}",
+                                              :to => "+447733080200",   
+                                              :from => "+44 1243 689132")   
+    # puts message.sid
 
+  end
 
+  def delivery_time
+    @delivery_time = Time.new + 3600
   end
 end
