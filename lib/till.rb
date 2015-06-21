@@ -2,10 +2,8 @@ class Till # could call it something like Summer, Calculator...?
   DEFAULT_MESSAGE="Thank you for your order! Your food will arrive by"
   attr_accessor :message
   attr_reader :items
-  def initialize itemizable, notifier
+  def initialize itemizable
     @items = itemizable.items
-    @notifier = notifier
-    @message = DEFAULT_MESSAGE
   end
 
   def total
