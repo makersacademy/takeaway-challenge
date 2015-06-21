@@ -1,6 +1,9 @@
+require_relative 'takeaway'
+
 class Texter
 
-def send
-end
+  def send
+    'message sent'
+  end
 
 end

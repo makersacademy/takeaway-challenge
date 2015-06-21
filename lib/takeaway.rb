@@ -1,4 +1,4 @@
-
+require_relative 'texter'
 
 class Takeaway
 
@@ -8,7 +8,8 @@ class Takeaway
   attr_reader :check_price
 
 
-  def initialize
+  def initialize(texter)
+    @texter = texter
     @menu = { 'tempura'     => 8,
               'okonomiyaki' => 7,
               'yakisoba'    => 6,
@@ -45,7 +46,7 @@ class Takeaway
 
   def order_confirm
     fail 'Please check the price again' if @check_price == false
-    texter.send
+    @texter.send
   end
 
   # def text
