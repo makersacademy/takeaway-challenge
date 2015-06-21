@@ -17,4 +17,12 @@ class Customer
     @basket << shop.show_menu[dish]
   end
 
+  def ask_total
+    total = basket.inject{|sum,x| sum + x }
+    total
+  end
+
+
+
+
 end
