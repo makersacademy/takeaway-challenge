@@ -9,4 +9,4 @@ order_form.add("Chicken Rice")
 order_form.add("Laksa", 2)
 order_form.add("Hokkien Mee", 3)
 order_form.place_order
-o.pay
+order_form.pay(20)

@@ -42,8 +42,12 @@ class OrderForm
 
   def pay(amount)
     if amount == self.total
-      "We've received payment for your order of $#{self.total}. A text message will be sent to you to confirm your order and delivery time"
-      Texter.new
+      puts "We've received payment for your order of $#{self.total}. A text message will be sent to you to confirm your order and delivery time"
+      time = Time.new
+      dtime = time + 3600
+      delivery_time = dtime.strftime("%I:%M%p")
+
+      Texter.new.send_message("Thanks for ordering! Your meal will be delivered to you by #{delivery_time}", "+44 07482606928", "+44 1254313397")
     else
       fail "Please pay the correct amount"
     end

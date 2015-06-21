@@ -1,5 +1,6 @@
 require 'menu'
 require 'order_form'
+require 'texter'
 
 describe OrderForm do
 
@@ -81,13 +82,13 @@ describe OrderForm do
       expect { order_form.pay(0) }.to raise_error "Please pay the correct amount"
     end
 
-    it 'calls Texter if payment is correct' do
+    xit 'calls Texter if payment is correct' do
       order_form = OrderForm.new(Menu.new)
       order_form.add("Tao Hui")
       order_form.place_order
-      expect
+      order_form.pay(1)
+      expect(Texter).to receive(:new)
     end
 
   end
-
 end

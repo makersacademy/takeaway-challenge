@@ -1,21 +1,15 @@
-# require 'twilio-ruby'
+require 'twilio-ruby'
 
-# class Texter
+class Texter
 
-#   account_sid = ENV['SID']
-#   auth_token = ENV['AUTH_TOKEN']
-#   @client = Twilio::REST::Client.new account_sid, auth_token
+  time = Time.new
+  dtime = time + 3600
+  delivery_time = dtime.strftime("%I:%M%p")
 
-#   time = Time.new
-#   dtime = time + 3600
-#   delivery_time = dtime.strftime("%I:%M%p")
-
-#   @message = @client.account.messages.create(:body => "Thanks for ordering! Your meal will be delivered to you by #{delivery_time}",
-#       :to => "+44 07482606928",
-#       :from => "+44 1254313397")
-
-#   def self.call
-#     puts @message.sid
-#   end
-
-# end
+  def send_message(message, to_number, from_number)
+    client = Twilio::REST::Client.new(ENV['SID'], ENV['AUTH_TOKEN'])
+    client.account.messages.create(:body => "#{message}",
+        :to => "#{to_number}",
+        :from => "#{from_number}")
+  end
+end
