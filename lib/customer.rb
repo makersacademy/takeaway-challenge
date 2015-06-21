@@ -1,12 +1,14 @@
 require_relative 'shop'
+require_relative 'textsender'
 
 class Customer
 
   attr_reader :shop, :basket
 
-  def initialize shop
+  def initialize shop, textsender
     @shop = shop
     @basket = []
+    @textsender = textsender
   end
 
   def ask_for_menu shop
@@ -24,8 +26,11 @@ class Customer
 
   def pay total
     fail 'Sorry, you need to pay the exact total' if total != ask_total
-    return 'Thanks for pay' if total == ask_total
-    total
+    if total == ask_total
+      return 'Thanks for pay'
+      return textsender.submit_text #why not working?
+      total
+    end
   end
 
 end

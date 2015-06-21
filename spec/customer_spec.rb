@@ -3,7 +3,8 @@ require 'customer'
 describe Customer do
 
   let(:shop) { shop = Shop.new }
-  let(:customer) { Customer.new(shop) }
+  let(:texsender) { textsender = Shop.new }
+  let(:customer) { Customer.new(shop, textsender) }
 
   before(:each) do
     customer.select_dish('linguine')
