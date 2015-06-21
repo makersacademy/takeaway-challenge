@@ -12,4 +12,7 @@ describe Customer do
     end
   end
 
+  it 'can submit the order' do
+    expect(subject).to respond_to(:submit_order).with(1).argument
+  end
 end

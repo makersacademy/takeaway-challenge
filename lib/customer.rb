@@ -15,4 +15,8 @@ class Customer
     order_form.add_dish dish, quantity
   end
 
+  def submit_order price
+    order_form.check_total price
+  end
+
 end
