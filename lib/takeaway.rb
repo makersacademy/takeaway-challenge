@@ -10,6 +10,7 @@ DISHES = {:bacon => 2.50,
 
 def initialize
   @order = []
+  @order_value = 0
 end
 
 def view_dishes
@@ -25,8 +26,27 @@ def on_menu? dish
   DISHES.has_key?(dish)
 end
 
-def order_value
-  DISHES[@order[0][0]]
+def order_total
+  @order.each do |dish|
+    @order_value += DISHES[dish[0]]*dish[1]
+  end
+  @order_value
+end
+
+def check_payment amount
+  unless correct? amount
+    fail 'incorrect payment amount'
+  else
+    'payment correct'
+  end
+end
+
+def correct? amount
+  amount == order_total
+end
+
+def delivery_time
+  Time.now + 3600
 end
 
 end
