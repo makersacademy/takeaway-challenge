@@ -21,15 +21,40 @@ describe Customer do
   end
 
   it 'allows more than one of an item to be added to the order' do
-  	subject.add_item(:meaty,2)
-  	expect(subject.order).to eq({meaty: 22})
+    subject.add_item(:meaty,2)
+    expect(subject.order).to eq({meaty: 22})
   end
 
-  it 'allows multiple orders of one item, placed at separate times' do
-  	subject.add_item(:cheese)
-  	subject.add_item(:cheese, 2)
-  	expect(subject.order).to eq({cheese: 21})
+  it 'allows multiple orders of one item, placed separately' do
+    subject.add_item(:cheese,2)
+    subject.add_item(:cheese, 1)
+    expect(subject.order).to eq({cheese: 21})
   end
-  
+
+  it 'allows an item to be removed from the order' do
+    subject.add_item(:spicy)
+    subject.remove_item(:spicy)
+    expect(subject.order.length).to eq 0
+  end
+
+  it 'allows multiple items to be removed from the order at once' do
+  	subject.add_item(:hawaiian,4)
+  	subject.remove_item(:hawaiian,2)
+  	expect(subject.order).to eq({hawaiian: 16})
+  end
+
+  it 'removes an item from the order when the quantity is 0' do
+  	subject.add_item(:cheese,3)
+  	subject.remove_item(:cheese, 3) 
+  	expect(subject.order.length).to eq 0
+  end
+
+  it 'can display the total price of the order' do
+  	subject.add_item(:cheese,2)
+  	subject.add_item(:spicy,3)
+  	expect(subject.total_price).to eq 41
+  end
+
+
 
 end
