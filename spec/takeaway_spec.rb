@@ -6,15 +6,19 @@ describe Takeaway do
                                        "Shepherd's Pie" => 5, "Bangers and mash" => 5} }
   subject { Takeaway.new menu }
 
-  it 'can receive orders' do
-    subject.order "Steak and chips"
-    expect(subject.orders).to eq({"Steak and chips" => 10})
+  it 'can receive orders as [dishes], [quantity], expected total' do
+    subject.order ["Steak and chips", "Fish and chips"],[2, 1], 27
+    expect(subject.preparing).to eq([["Steak and chips", 2], ["Fish and chips", 1]])
   end
 
-  it 'gives a receipt' do
-    subject.order "Fish and chips"
-    subject.order "Shepherd's Pie"
-    expect(subject.receipt).to eq 12
+  it 'gives a bill' do
+    subject.order ["Steak and chips", "Fish and chips"],[2, 1], 27
+    expect(subject.bill_comes_to).to eq 27
+  end
+
+  xit 'will raise an error if the expected total does not equal the actual total' do
+    expect { subject.order ["Steak and chips", "Fish and chips"],[2, 1], 26 }.to raise_error "Not totalling to expected"
+
   end
 
 end

@@ -1,21 +1,21 @@
 class Takeaway
 
-  attr_reader :orders
+  attr_reader :preparing
 
   def initialize menu
     @menu = menu
-    @orders = Hash.new
+    @preparing = []
   end
 
-  def order dish
-    orders[dish] = @menu.content[dish]
+  def order dishes, quantities, total
+    @preparing = dishes.zip(quantities)
+
   end
 
-  def receipt
-    orders.each { |dish,price| puts dish.ljust(20) + price.to_s.rjust(2)}
-    puts "-" * 22
-    total = (orders.values).inject { |sum, n| sum + n}
-    p total
+  def bill_comes_to
+    bill = preparing.map { |dish,quantity| quantity * @menu.content[dish]}
+    total = bill.inject { |sum,n| sum + n }
+    total
   end
 
 end
