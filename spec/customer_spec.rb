@@ -2,29 +2,23 @@ require 'customer'
 
 describe Customer do
 
-  # let(:shop) { double :shop }
+  let(:shop) { shop = Shop.new }
   # let(:customer) { Customer.new(shop) }
 
 
-  #ADD DOUBLES
   it 'can see a list of dishes with prices' do
-    shop = Shop.new
     customer = Customer.new shop
     expect(customer.ask_for_menu shop).to eq (shop.show_menu)
-  end #ADD DOUBLES
+  end
 
-  #ADD DOUBLES
   it 'can be able to select some number of several available dishes' do
-    shop = Shop.new
     customer = Customer.new shop
     customer.ask_for_menu shop
     customer.select_dish('linguine')
     expect(customer.basket).to eq [12]
   end
 
-  #ADD DOUBLES
   it 'can ask for the total to pay' do
-    shop = Shop.new
     customer = Customer.new shop
     customer.select_dish('linguine')
     customer.select_dish('beer')
@@ -32,7 +26,6 @@ describe Customer do
   end
 
   it 'can pay for the exact amount' do
-    shop = Shop.new
     customer = Customer.new shop
     customer.select_dish('linguine')
     customer.select_dish('beer')
@@ -40,7 +33,6 @@ describe Customer do
   end
 
   it 'get an error if tries to pay a amount different from the total' do
-    shop = Shop.new
     customer = Customer.new shop
     customer.select_dish('linguine')
     customer.select_dish('beer')
