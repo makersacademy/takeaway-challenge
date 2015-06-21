@@ -27,12 +27,12 @@ describe Order do
     end
 
     it 'raises error if dish is not on the menu' do
-      expect{ subject.add_dish('banana', 1) }.to raise_error 'Dish not on menu!'
+      expect { subject.add_dish('banana', 1) }.to raise_error 'Dish not on menu!'
     end
 
   end
 
-  describe '#add_dish' do
+  describe '#bill_total' do
 
     it 'updates order total when adding single pizza' do
       subject.add_dish('California roll', 1)
@@ -46,14 +46,4 @@ describe Order do
 
   end
 
-
 end
-
-# setup
-# action
-# expectation
-
-
-# setup
-# expectation about future
-# action

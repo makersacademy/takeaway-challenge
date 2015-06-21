@@ -33,5 +33,4 @@ class Order
     self.bill_total += dish_price
   end
 
-
 end
