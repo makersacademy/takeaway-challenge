@@ -1,5 +1,6 @@
 require_relative 'menu'
 require 'twilio-ruby'
+require 'rubygems'
 
 class Customer
   attr_reader :menu, :order
