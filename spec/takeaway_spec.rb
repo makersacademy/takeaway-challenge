@@ -22,7 +22,7 @@ describe Takeaway do
 
   it { is_expected.to respond_to(:order_confirm) }
 
-  it { is_expected.to respond_to(:text) }
+  #it { is_expected.to respond_to(:text) }
 
 
   describe 'order_list' do 
@@ -62,7 +62,7 @@ describe Takeaway do
     it 'triggers a confirmation text message' do
       allow(subject).to receive(:check_price).and_return true
       subject.order_confirm
-      expect(subject.text).to eq(true)
+      expect(texter).to receive(:send)
     end
   end
 
