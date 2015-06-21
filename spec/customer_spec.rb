@@ -3,7 +3,7 @@ require 'customer'
 describe Customer do
 
   let(:shop) { shop = Shop.new }
-  let(:texsender) { textsender = Shop.new }
+  let(:textsender) { textsender = TextSender.new }
   let(:customer) { Customer.new(shop, textsender) }
 
   before(:each) do
