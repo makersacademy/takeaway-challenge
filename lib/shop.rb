@@ -1,3 +1,4 @@
+
 class Shop
 
   attr_reader :menu
