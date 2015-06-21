@@ -3,9 +3,6 @@ require_relative 'takeaway'
 require 'twilio-ruby'
 
 class Texter
-
-
-
   def initialize
     @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
   end
@@ -18,7 +15,6 @@ class Texter
     :body => 'test message'
     })
   end
-
 end
 
 
