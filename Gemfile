@@ -8,3 +8,4 @@ gem 'coveralls', require: false
 gem 'rubocop-rspec'
 gem 'capybara'
 gem 'create_awesome_readme'
+gem 'twilio-ruby'

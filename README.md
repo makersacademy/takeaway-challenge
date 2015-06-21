@@ -14,8 +14,8 @@ Project involves creating a takeaway menu of dishes and prices, to enable custom
 
 ## Job List
 
-- Create new instance of menu - menu contains a fixed list of dishes and their price
-- Display contents of menu instance
+- Menu contains a fixed list of dishes and their price (now in Order class after numerous issues having a separate menu class)
+- Display contents of menu (now in Order class after numerous issues having a separate menu class)
 
 - Place order of items (from menu) and specify the quantity of each item
 - Add items in order together to create bill total
@@ -26,15 +26,12 @@ Project involves creating a takeaway menu of dishes and prices, to enable custom
 
 
 ## Still to complete/refactor
-
-- [ ] 
 - [ ]Couldn't raise error when item wasn't in menu - couldn't seem to get them to communicate
+- [ ] I wasted about 12 hours in total just trying to get my doubles working and some kind of interaction between the menu and order classes, in the end I had to combine everything into a single order class just to move forward with the project, so I hope to go back and split these back out into 2 separate classes when I understand it better and am able to do so
 
-## Takeaway
+- [ ]
+- So far there aren't many if any examples of the Single Responsibility and Dependency Injection/Inversion principles in program - apologies! TODO
 
-TODO: Enter a personal reflection and/or things you learnt
-
-- good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!
 
 
 USER STORIES
