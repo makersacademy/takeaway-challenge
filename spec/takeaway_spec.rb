@@ -1,19 +1,19 @@
-require 'menu'
+require 'takeaway'
 
-describe Menu do
+describe Takeaway do
 
   it { is_expected.to respond_to :check_menu }
 
   it { is_expected.to respond_to(:add_to_order).with(2).arguments }
 
   it 'should be initialised with a default menu' do
-    expect(subject.menu).to eq Menu::MENU
+    expect(subject.menu).to eq Takeaway::MENU
   end
 
     describe 'check' do
 
       it 'should print out the list of dishes and prices' do
-        expect(subject.check_menu).to eq Menu::MENU
+        expect(subject.check_menu).to eq Takeaway::MENU
       end
 
     end
@@ -45,5 +45,27 @@ describe Menu do
 
     end
 
+    describe 'pay' do
+      before(:each)do
+        subject.add_to_order(3, :spring_rolls)
+      end
+
+      it 'should raise an error message if you try to pay the wrong amount' do
+        expect{subject.pay 4}.to raise_error "Sorry, you need to pay the exact total of £6.00"
+      end
+
+      it 'should confirm your payment has been accepted once you pay the correct amount' do
+        expect(subject.pay 6).to eq "Thanks for your payment - your order has been placed and you'll receive a message confirming delivery time shortly"
+      end
+
+      it 'should clear your order summary once you pay the correct amount' do
+        subject.pay 6
+        expect(subject.order_summary).to be_empty
+      end
+
+
+
+
+    end
 
 end

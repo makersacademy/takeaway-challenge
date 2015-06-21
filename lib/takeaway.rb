@@ -1,4 +1,4 @@
-class Menu
+class Takeaway
 
   MENU = { ribs_in_bbq_sauce: 2.50,
            prawn_toast: 2.50,
@@ -39,6 +39,12 @@ class Menu
     puts 'ORDER SUMMARY'.center(page_width)
     formatting order_summary
     puts 'Total:'.ljust(page_width/2) + ('£' + total_cost.to_s + '0').rjust(page_width/2)
+  end
+
+  def pay price
+    fail "Sorry, you need to pay the exact total of #{'£' + total_cost.to_s + '0'}" unless price.to_f == @total_cost
+    order_summary.clear
+    "Thanks for your payment - your order has been placed and you'll receive a message confirming delivery time shortly"
   end
 
   private
