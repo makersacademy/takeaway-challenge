@@ -1,16 +1,15 @@
 require 'twilio-ruby'
-require_relative '../../twilio_auth'
 
 class Checkout
-
+  
   def initialize (order)
 
     @order = order
     @total = nil
     @complete = false
 
-    account_sid = get_sid 
-    auth_token = get_auth
+    account_sid = ENV['TWILIO_SID']
+    auth_token = ENV['TWILIO_AUTH']
     @client = Twilio::REST::Client.new account_sid, auth_token
 
   end
