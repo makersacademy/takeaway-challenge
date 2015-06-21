@@ -1,12 +1,20 @@
-# class Customer
+require_relative 'shop'
 
-#   def initialize shop
-#   end
+class Customer
 
-#   def ask_for_menu
+  attr_reader :shop, :basket
 
-#   end
+  def initialize shop
+    @shop = shop
+    @basket = []
+  end
 
+  def ask_for_menu shop
+    shop.show_menu
+  end
 
+  def select_dish dish #put dish with '', like 'lasagne'
+    @basket << shop.show_menu[dish]
+  end
 
-# end
+end
