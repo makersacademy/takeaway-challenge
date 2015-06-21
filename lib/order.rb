@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Order
 
-  attr_accessor :order_content, :order_total
+  attr_accessor :order_content, :bill_total
   attr_reader :menu
 
   def initialize
@@ -26,6 +26,11 @@ class Order
     raise 'Dish not on menu!' unless menu.include?(dish)
     quantity.times { order_content << dish }
     running_total dish, quantity
+  end
+
+  def running_total dish, quantity
+    dish_price = menu[dish] * quantity
+    self.bill_total += dish_price
   end
 
 

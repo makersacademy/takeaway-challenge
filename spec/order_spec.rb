@@ -35,13 +35,13 @@ describe Order do
   describe '#add_dish' do
 
     it 'updates order total when adding single pizza' do
-      subject.add('California roll', 1)
-      expect(subject.total_cost).to eq 4.0
+      subject.add_dish('California roll', 1)
+      expect(subject.bill_total).to eq 4.0
     end
 
     it 'updates order total when adding more than one of a pizza' do
-      subject.add('California roll', 2)
-      expect(subject.total_cost).to eq 8.0
+      subject.add_dish('California roll', 2)
+      expect(subject.bill_total).to eq 8.0
     end
 
   end
