@@ -8,7 +8,7 @@ describe Customer do
   
   context 'can select available dishes' do
   	it 'can select 1 x Noodles' do
-      expect(subject.select_dish 'Noodles', 1).to eq '1 x Noodles added'
+      expect(subject.select_dish :Noodles, 1).to eq '1 x Noodles added'
     end
   end
 

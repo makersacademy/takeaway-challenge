@@ -12,6 +12,7 @@ class OrderForm
   end
 
   def add_dish dish, quantity
+  	fail 'Not on the menu' unless @dishes.has_key?(dish)
   	quantity.times { order << dish }
   	"#{quantity} x #{dish} added"
   end

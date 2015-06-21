@@ -9,8 +9,11 @@ describe OrderForm do
   end
 
   it 'adds dishes to the order' do
-    subject.add_dish 'Rice', 2
+    subject.add_dish :Rice, 2
     expect(subject.order.length).to eq 2
   end
 
+  it 'does not add dishes that are not on the menu' do
+    expect{ subject.add_dish :Pizza, 1 }.to raise_error 'Not on the menu'
+  end
 end
