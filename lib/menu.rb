@@ -13,21 +13,47 @@ class Menu
            prawn_crackers: 1.00 }
 
   attr_reader :menu
+  attr_reader :total_cost
+  attr_reader :order_summary
 
   def initialize
     @menu = MENU
+    @order_summary = {}
+    @total_cost = 0
   end
 
-  def check
-    page_width = 40
+  def check_menu
+    page_width = 50
     puts 'MENU'.center(page_width)
-    @menu.each do |k, v|
-      puts (k.to_s.ljust(page_width/2) + ('£' + v.to_s + '0').rjust(page_width/2))
-    end
+    formatting menu
   end
 
   def add_to_order quantity, dish
-   fail "Sorry! That's not on the menu!" unless @menu.include? dish
+    fail "Sorry! That's not on the menu!" unless @menu.include? dish
+    @order_summary[dish]= (menu[dish] * quantity)
+    add_to_total_cost quantity, dish
   end
+
+  def check_order_summary
+    page_width = 50
+    puts 'ORDER SUMMARY'.center(page_width)
+    formatting order_summary
+    puts 'Total:'.ljust(page_width/2) + ('£' + total_cost.to_s + '0').rjust(page_width/2)
+  end
+
+  private
+
+    def add_to_total_cost quantity, dish
+      item_cost = menu[dish] * quantity
+      @total_cost += item_cost
+    end
+
+    def formatting hash
+      hash.each do |k, v|
+        page_width = 50
+        puts (k.to_s.ljust(page_width/2) + ('£' + v.to_s + '0').rjust(page_width/2))
+      end
+    end
+
 
 end

@@ -1,5 +1,11 @@
 class Order
 
+  attr_reader :order
+
+  def initialize
+    @order = {}
+  end
+
   def check_total
   end
 
