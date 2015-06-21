@@ -52,7 +52,11 @@ describe Order do
       expect{subject.add(:burger, 1)}.to raise_error 'item not on menu'
     end
 
-    it 'raise error if the quanity is negative' do
+    it 'raise error if the quanity is negative and the pizza isnt already in order' do
+      expect{subject.add(:pepperoni, -1)}.to raise_error 'invalid number'
+    end
+
+    it 'raise error if the quanity isnt an integer' do
       expect{subject.add(:pepperoni, 1.5)}.to raise_error 'invalid number'
     end
 
@@ -60,6 +64,13 @@ describe Order do
       subject.complete = true
       expect{subject.add(:pepperoni, 1.5)}.to raise_error 'order has already been completed'
     end
+
+    it 'raise error if pizza is in order but quantity is negative resulting in overall negative quantity' do
+      subject.add(:pepperoni, 1)
+      expect{subject.add(:pepperoni, -2)}.to raise_error 'invalid number'
+    end
+
+
 
 
   end
@@ -78,19 +89,15 @@ describe Order do
       expect(subject.view_total).to eq 30
     end
 
-    it 'raise error when you remove more pizzas than are in order' do
-      subject.add(:pepperoni, 1)
-      expect{subject.remove(:pepperoni, 2)}.to raise_error 'invalid number'
-    end
-
-    # it 'raise error when you remove a pizza that isnt in the order' do
-    #   expect{subject.remove(:pepperoni, 2)}.to raise_error 'pizza not in order'
+    # it 'raise error when you remove more pizzas than are in order' do
+    #   subject.add(:pepperoni, 1)
+    #   expect{subject.remove(:pepperoni, 2)}.to raise_error 'invalid number'
     # end
 
-    it 'raise error if the order has been completed' do
-      subject.add(:pepperoni, 1)
-      expect{subject.remove(:pepperoni, 2)}.to raise_error 'invalid number'
-    end
+    # it 'raise error if the order has been completed' do
+    #   subject.add(:pepperoni, 1)
+    #   expect{subject.remove(:pepperoni, 2)}.to raise_error 'invalid number'
+    # end
 
   end
 
