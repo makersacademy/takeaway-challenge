@@ -17,7 +17,7 @@ describe "OrderHandler" do
 
 		it "sends the order to OrderProcessor" do
 			expect( order_processor ).to receive( :process ).with( order )
-			order_handler.process_order order
+			order_handler.call order
 		end
 	end
 

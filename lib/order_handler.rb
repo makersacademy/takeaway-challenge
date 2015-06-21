@@ -13,7 +13,7 @@ class OrderHandler
 		menu
 	end
 
-	def process_order order 
+	def call order 
 		order_processor.process order 
 	end 
 

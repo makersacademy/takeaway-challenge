@@ -9,15 +9,11 @@ class OrderProcessor
 		check order
 	end
 
-	def notify_order
-		notifiable.send
-	end
-
 	private
 
 	attr_reader :notifiable, :calculable
 
-	def order_verificator? order
+	def valid_order? order
 		order[ sum ] == calculator( order )
 	end
 
@@ -26,8 +22,8 @@ class OrderProcessor
 	end
 
 	def check order
-		if order_verificator 
-			
+		if valid_order 
+			notifiable.call
 		else
 			raise_exception
 		end
