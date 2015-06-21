@@ -63,7 +63,6 @@ describe Takeaway do
       allow(subject).to receive(:check_price).and_return true
       subject.order_confirm
       expect(subject.text).to eq(true)
-
     end
   end
 
