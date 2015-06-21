@@ -58,6 +58,7 @@ describe Takeaway do
     end
 
     it 'triggers a confirmation text message' do
+      text_service = double :text_service
       expect(text_service).to receive :send 
       subject.order_confirm
     end

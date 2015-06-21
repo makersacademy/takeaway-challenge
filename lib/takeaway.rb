@@ -1,3 +1,5 @@
+require_relative './text_service'
+
 class Takeaway
 
   attr_reader :menu
