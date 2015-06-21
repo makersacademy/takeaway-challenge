@@ -11,4 +11,10 @@ describe Takeaway do
     expect(subject.orders).to eq({"Steak and chips" => 10})
   end
 
+  it 'gives a receipt' do
+    subject.order "Fish and chips"
+    subject.order "Shepherd's Pie"
+    expect(subject.receipt).to eq 12
+  end
+
 end
