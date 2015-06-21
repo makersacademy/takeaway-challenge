@@ -28,24 +28,30 @@ class Order
 
     if pizza_already_selected? pizza
       @order[pizza] = updated_values_for_add(pizza, number)
-      @total = calc_total
     else
+      raise 'invalid number' if number <= 0
       temp_total = @menu[pizza]*number
       @order[pizza] = [number, temp_total]
-      @total = calc_total
-
     end
+
+    remove_zero_quantity_pizzas
+    @total = calc_total
 
   end
 
   def remove pizza, number
-    raise 'order has already been completed' if complete
-    raise 'invalid number' if number > @order[pizza][0]
     add(pizza, -1 * number)
-    @total = calc_total
   end
 
   private
+
+  def remove_zero_quantity_pizzas
+  	@order.each do |i|
+  		@order.delete(i[0]) if i[1][0] == 0
+  	end
+
+
+  end
 
   def pizza_already_selected? pizza
     @order.keys.include?(pizza)
@@ -54,9 +60,9 @@ class Order
 
   def updated_values_for_add pizza, number
     temp_number = number + @order[pizza][0]
+    raise 'invalid number' if temp_number < 0
     temp_total = @menu[pizza]*temp_number
     [temp_number, temp_total]
-
   end
 
   def calc_total
@@ -66,3 +72,5 @@ class Order
 
 
 end
+
+
