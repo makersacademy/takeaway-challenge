@@ -57,11 +57,10 @@ describe Takeaway do
       expect { subject.order_confirm }.to raise_error 'Please check the price again'
     end
 
-    # it 'causes a confirmation text message to be sent to the user' do
-    #   subject.order('tempura', 1)
-    #   subject.check_price(8)
-    #   expect { subject.order_confirm } to 
-    # end
+    it 'triggers a confirmation text message' do
+      expect(text_service).to receive :send 
+      subject.order_confirm
+    end
   end
 
 end
