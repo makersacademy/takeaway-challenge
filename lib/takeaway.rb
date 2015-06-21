@@ -1,5 +1,6 @@
-class Takeaway
+require 'texter'
 
+class Takeaway
 
 DISHES = {:bacon => 2.50,
           :cheese => 1.00,
@@ -38,6 +39,7 @@ def check_payment amount
     fail 'incorrect payment amount'
   else
     'payment correct'
+    Texter.send delivery_time
   end
 end
 
@@ -47,6 +49,27 @@ end
 
 def delivery_time
   Time.now + 3600
+end
+
+def make_order
+  puts "Choose dish and quantity (type finish to end order"
+  puts "Dish?"
+  dish = gets.chomp
+  if dish != 'finish'
+    puts "Quantity?"
+    quantity = gets.chomp
+    select_dish dish.to_sym, quantity.to_i
+    puts "order comes to £#{order_total}"
+    make_order
+  else
+    make_payment
+  end
+end
+
+def make_payment
+  puts 'Please input payment amount'
+  amount = gets.chomp
+  check_payment amount
 end
 
 end
