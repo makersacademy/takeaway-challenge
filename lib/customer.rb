@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'calculator'
 
 
 class Customer
@@ -15,7 +16,6 @@ class Customer
   end
 
   def select_dishes(dish,num)
-    
     @ordered << [dish,num]
   end
 
