@@ -28,7 +28,7 @@ Project involves creating a takeaway menu of dishes and prices, to enable custom
 ## Still to complete/refactor
 
 - [ ] 
-- [ ]
+- [ ]Couldn't raise error when item wasn't in menu - couldn't seem to get them to communicate
 
 ## Takeaway
 
