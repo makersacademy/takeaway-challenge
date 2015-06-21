@@ -1,3 +1,5 @@
+require_relative 'texter'
+
 class Takeaway
 
   MENU = { ribs_in_bbq_sauce: 2.50,
@@ -12,9 +14,7 @@ class Takeaway
            egg_fried_rice: 2.00,
            prawn_crackers: 1.00 }
 
-  attr_reader :menu
-  attr_reader :total_cost
-  attr_reader :order_summary
+  attr_reader :menu, :total_cost, :order_summary
 
   def initialize
     @menu = MENU
@@ -42,9 +42,10 @@ class Takeaway
   end
 
   def pay price
-    fail "Sorry, you need to pay the exact total of #{'£' + total_cost.to_s + '0'}" unless price.to_f == @total_cost
-    order_summary.clear
-    "Thanks for your payment - your order has been placed and you'll receive a message confirming delivery time shortly"
+    check_payment price
+    clear_order_history
+    confirmation_text
+    "Thanks for your order - delivery time will be confirmed by text message"
   end
 
   private
@@ -59,6 +60,22 @@ class Takeaway
         page_width = 50
         puts (k.to_s.ljust(page_width/2) + ('£' + v.to_s + '0').rjust(page_width/2))
       end
+    end
+
+    def check_payment price
+      fail "There are no items in your order to pay for!" if @total_cost == 0
+      fail "Sorry, you need to pay the exact total - #{'£' + total_cost.to_s + '0'}" unless price.to_f == @total_cost
+    end
+
+    def confirmation_text
+      t = (Time.now + 3600)
+      estimate = t.hour.to_s + ':' + t.min.to_s
+      Texter.send_message( "Your order is on it's way! It should arrive by #{estimate}" )
+    end
+
+    def clear_order_history
+      order_summary.clear
+      @total_cost = 0
     end
 
 
