@@ -1,4 +1,6 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 class Costumer
 
   attr_reader :basket
@@ -22,9 +24,28 @@ class Costumer
 
   def pay amount
     fail 'Incorrect amount' if amount != @sum
+    send_message
   end
 
   private
   attr_reader :menu
+
+  def send_message
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
+    @client.account.messages.create({
+            from: '+441243689175',
+            to: '+447463797379',
+            body: "Thank you! Your order was placed and will be delivered before #{time}"
+      })
+  end
+
+  def time
+    @minute = Time.now.min
+    @hour = (Time.now.hour + 1).to_s
+
+    @minute = "0#{@minute}" if @minute < 10
+
+    "#{@hour}:#{@minute}"
+  end
 
 end
