@@ -12,10 +12,12 @@ class TextSender
 
   def submit_text
 
+    delivery_time = Time.new + 3600
+
     @client.messages.create(
     from: '+441242305328',
     to: '+447472301963',
-    body: 'aarrfrfa'
+    body: "Thank you! Your order was placed and will be delivered before #{delivery_time.strftime('%H:%M')}"
     )
 
   end
