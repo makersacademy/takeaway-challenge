@@ -18,4 +18,12 @@ describe Order do
     expect(order.items).to eq(expected_hash)
   end
 
+  xit 'can remove items from the order' do
+
+  end
+
+  xit 'prints a receipt on request' do
+
+  end
+
 end

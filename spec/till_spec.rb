@@ -2,20 +2,23 @@ require 'till'
 
 describe Till do
 
-  let(:order   ) { double :order, items: { :burger => 9.99 } }
-  let(:notifier) { double :notifier, notify: nil }
-  subject(:till) { Till.new order, notifier }
+  let(:order         ) { double :order, items: { :burger => 9.99 } }
+  let(:notifier      ) { double :notifier, notify: nil }
+  let(:message_centre) { double :message_centre, process: nil }
+
+  subject(:till)       { Till.new order }
 
   it "calculates a total" do
     expect(till.total).to eq 9.99
   end
 
-  it "generates a message" do
-    expect(till.generate_message).to eq "Thank you for your order!"
+  it 'sends the total to receipt when order is finalised' do
+    expect(message_centre).to receive(:process)
+    till.process message_centre, 447785244600
   end
 
-  it "sends the message to a messenger" do
-    expect(notifier).to receive(:send_message).with("Thank you for your order!")
-    till.notify
+  xit "generates a receipt" do
+
   end
+
 end

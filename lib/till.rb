@@ -1,6 +1,4 @@
 class Till # could call it something like Summer, Calculator...?
-  DEFAULT_MESSAGE="Thank you for your order! Your food will arrive by"
-  attr_accessor :message
   attr_reader :items
   def initialize itemizable
     @items = itemizable.items
@@ -10,8 +8,7 @@ class Till # could call it something like Summer, Calculator...?
     @items.values.inject(:+)
   end
 
-  def process message_centre
-    message_centre.process self.total
+  def process message_centre, customer_details # this does not belong in this class
+    message_centre.process customer_details
   end
-
 end
