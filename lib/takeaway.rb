@@ -50,33 +50,32 @@ class Takeaway
 
   private
 
-    def add_to_total_cost quantity, dish
-      item_cost = menu[dish] * quantity
-      @total_cost += item_cost
-    end
+  def add_to_total_cost quantity, dish
+    item_cost = menu[dish] * quantity
+    @total_cost += item_cost
+  end
 
-    def formatting hash
-      hash.each do |k, v|
-        page_width = 50
-        puts (k.to_s.ljust(page_width/2) + ('£' + v.to_s + '0').rjust(page_width/2))
-      end
+  def formatting hash
+    hash.each do |k, v|
+      page_width = 50
+      puts (k.to_s.ljust(page_width/2) + ('£' + v.to_s + '0').rjust(page_width/2))
     end
+  end
 
-    def check_payment price
-      fail "There are no items in your order to pay for!" if @total_cost == 0
-      fail "Sorry, you need to pay the exact total - #{'£' + total_cost.to_s + '0'}" unless price.to_f == @total_cost
-    end
+  def check_payment price
+    fail "There are no items in your order to pay for!" if @total_cost == 0
+    fail "Sorry, you need to pay the exact total - #{'£' + total_cost.to_s + '0'}" unless price.to_f == @total_cost
+  end
 
-    def confirmation_text
-      t = (Time.now + 3600)
-      estimate = t.hour.to_s + ':' + t.min.to_s
-      Texter.send_message( "Your order is on it's way! It should arrive by #{estimate}" )
-    end
+  def confirmation_text
+    t = (Time.now + 3600)
+    estimate = t.hour.to_s + ':' + t.min.to_s
+    Texter.send_message( "Your order is on it's way! It should arrive by #{estimate}" )
+  end
 
-    def clear_order_history
-      order_summary.clear
-      @total_cost = 0
-    end
-
+  def clear_order_history
+    order_summary.clear
+    @total_cost = 0
+  end
 
 end

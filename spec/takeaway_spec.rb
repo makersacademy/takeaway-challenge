@@ -65,6 +65,6 @@ describe Takeaway do
       subject.pay 6
       expect(subject.total_cost).to eq 0
     end
-   end
+  end
 
 end
