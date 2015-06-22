@@ -27,30 +27,6 @@ def on_menu? dish
   DISHES.has_key?(dish)
 end
 
-def order_total
-  @order.each do |dish|
-    @order_value += DISHES[dish[0]]*dish[1]
-  end
-  @order_value
-end
-
-def check_payment amount
-  unless correct? amount
-    fail 'incorrect payment amount'
-  else
-    'payment correct'
-    Texter.send delivery_time
-  end
-end
-
-def correct? amount
-  amount == order_total
-end
-
-def delivery_time
-  Time.now + 3600
-end
-
 def make_order
   puts "Choose dish and quantity (type finish to end order"
   puts "Dish?"
@@ -70,6 +46,30 @@ def make_payment
   puts 'Please input payment amount'
   amount = gets.chomp
   check_payment amount
+end
+
+def check_payment amount
+  unless correct? amount
+    fail 'incorrect payment amount'
+  else
+    'payment correct'
+    Texter.send delivery_time
+  end
+end
+
+def order_total
+  @order.each do |dish|
+    @order_value += DISHES[dish[0]]*dish[1]
+  end
+  @order_value
+end
+
+def correct? amount
+  amount == order_total
+end
+
+def delivery_time
+  Time.now + 3600
 end
 
 end
