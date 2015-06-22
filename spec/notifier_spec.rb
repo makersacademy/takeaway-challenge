@@ -11,10 +11,11 @@ describe Notifier do
   describe "#call" do
     it "creats a message" do
       expect( messages ).to receive( :create ).with( {
-                              from: :from,
-                              to:   :to,
-                              body: :message
+        from: :from,
+        to:   :to,
+        body: :message
       })
+      
       described_class.call from: :from, to: :to, message: :message, via: via
     end
   end

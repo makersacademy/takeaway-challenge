@@ -16,8 +16,7 @@ class Customer
 	end
 
 	def take_order
-		puts "Give your order with this format:"
-		puts "potatoes: 1, carrots: 2, price: 10"
+    require_order_with_format	
 
 		process_order input_parser.call( gets.chomp )
 		
@@ -31,6 +30,19 @@ class Customer
 		order_processor.process order
 	end
 
+  def require_order_with_format
+    puts "Give your order in this format:"
+    puts "potatoes: 1, carrots: 2, price: 10"
+  end
+
+end
+
+Customer::BasicPresenter = ->(opts = {}) do
+  puts "#{opts[:dish]} - #{opts[:price]}} $"
+end
+
+Customer::BasicInputParser = ->(input) do 
+    input.split(',').map { |e| e.split(':').map(&:strip) }  
 end
 
 BASIC_MENU = {
@@ -51,10 +63,3 @@ BASIC_MENU = {
   }
 }
 
-Customer::BasicPresenter = ->(opts = {}) do
-  puts "#{opts[:dish]} - #{opts[:price]}} $"
-end
-
-Customer::BasicInputParser = ->(input) do 
-    input.split(',').map { |e| e.split(':').map(&:strip) }  
-end

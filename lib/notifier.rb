@@ -2,10 +2,10 @@ require 'twilio-ruby'
 
 class Notifier
 
-	ACCOUNT_SID = "AC9b75faaa7dc888de8801780784c0639b"
+	ACCOUNT_SID = ["AC9b75faaa7dc888de8801780784c0639b"]
 	AUTH_TOKEN  = "3c23078fac6c0265238b303c7eb4c3c1"
 
-  message = "Your order will arrive at {time}"
+  MESSAGE = "Your order will arrive at {time}"
 
   attr_accessor :message, :via, :client, :to, :via, :from
 
