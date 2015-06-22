@@ -1,4 +1,4 @@
-require 'Takeout'
+require 'takeout'
 
 describe Takeout do
   let(:Pizza) {double :Pizza => 6}
