@@ -13,7 +13,7 @@ auth_token = ENV['auth_token']
 @client = Twilio::REST::Client.new account_sid, auth_token 
 
 pizza = double :pizza, number: '+441293311548'
-customer = double :customer, number: '+447919532523'
+customer = double :customer, number: ENV('my_number')
 
 messages = double :dummy_messages 
 client = double :client, messages: messages
