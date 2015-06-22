@@ -10,7 +10,8 @@ class Texter
     @client = Twilio::REST::Client.new account_sid, auth_token
     our_number = ENV['OUR_NUMBER']
     customer_number = ENV['CUSTOMER_NUMBER']
-    @client.account.messages.create({:from=> our_number, :to=>customer_number, :body=>message})
+    @client.account.messages.create({ :from => our_number, :to =>customer_number, :body => message })
+
   end
 
 end

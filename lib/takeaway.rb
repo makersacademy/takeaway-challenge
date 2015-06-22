@@ -30,7 +30,7 @@ class Takeaway
 
   def add_to_order quantity, dish
     fail "Sorry! That's not on the menu!" unless @menu.include? dish
-    @order_summary[dish]= (menu[dish] * quantity)
+    @order_summary[dish] = (menu[dish] * quantity)
     add_to_total_cost quantity, dish
   end
 
