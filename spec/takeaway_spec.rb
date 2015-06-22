@@ -20,4 +20,11 @@ describe Takeaway do
 
   end
 
+  context 'contacting the customer regarding her order'do
+    xit 'sends text messages' do
+
+    end
+
+  end
+
 end
