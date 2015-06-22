@@ -22,5 +22,4 @@ describe Takeaway do
 end
 
 
-#Need to fix tests, test everything when using puts and add twillio
-#Twilio number given to me not valid
+#Tests broken when added user interface

@@ -1,4 +1,4 @@
-#require_relative 'text_sender'
+require_relative 'text_sender'
 
 class Takeaway
   def initialize
@@ -52,7 +52,7 @@ class Takeaway
     end
     @final_price = total_price
     puts "Your total is #{total_price} pounds"
-    #TextSender.new
+    Texter.new.send_message
   end
 end
 
