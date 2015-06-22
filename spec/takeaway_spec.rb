@@ -1,4 +1,4 @@
-require './lib/takeaway'
+require 'takeaway'
 require 'twilio-ruby'
 
 describe Takeaway do
@@ -13,6 +13,6 @@ describe Takeaway do
 
   xit 'sends a message' do
     expect(dummy_messages).to receive :create
-    Takeaway.send_text(message: "Your order has been placed", from: beijing_hanoi, to: nat, via: client)
+    subject.send_text(message: "Your order has been placed", from: beijing_hanoi, to: nat, via: client)
   end
 end

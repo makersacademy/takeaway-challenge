@@ -4,7 +4,7 @@ class Takeaway
   # def initialize
   # 	@foods = { Noodles: 3.00, Rice: 2.50 }
   # end
-  def send_text
+  def send_text(m)
     time_due = Time.new + 3600
     h = time_due.hour
     m = time_due.min

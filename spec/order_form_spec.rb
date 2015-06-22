@@ -2,6 +2,8 @@ require 'order_form'
 
 describe OrderForm do
 
+  let(:dish) {double :'{:Noodles=>3.0, :Rice=>2.5}'}
+
   it { is_expected.to respond_to :show_dishes }
 
   it 'shows dishes' do

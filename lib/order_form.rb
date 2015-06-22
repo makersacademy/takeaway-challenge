@@ -1,4 +1,5 @@
 require_relative 'takeaway'
+require_relative 'menu'
 
 class OrderForm
 
@@ -7,7 +8,7 @@ class OrderForm
 
   def initialize
     @order = []
-    @dishes = { Noodles: 3.00, Rice: 2.50 }
+    @dishes = Menu.new.dishes
     @takeaway = Takeaway.new
   end
 
