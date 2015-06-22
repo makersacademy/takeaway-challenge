@@ -1,19 +1,6 @@
 Takeaway Challenge
 ==================
-
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+USER STORIES
 
 ```
 As a customer
@@ -33,23 +20,24 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+Completed:
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Started by using irb to work out a rough plan of how I would like the program to operate. 
+Built up functionality using TDD and OOD, creating a Takeaway class and a Texter class (which interacts with Twilio)
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+I managed to implement the majority of the functionality for the takeaway - the menu can be checked, items can be added to the order and there's the ablity to check current order summary and pay. 
+The program will not allow you to 'pay' anything other than the calculated total, and once you have 'paid' it wipes the order summary and running total of costs so you can't accidentally pay twice.
 
+The program also automatically sends you a text message with the estimated time of delivery (1 hr from time of order) once you have 'paid'.
 
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+Unresolved:
+
+I have not managed to implement tests correctly for my Texter class. I really struggled with getting the interaction with Twilio working and wasn't able to work out how to stub the test.
+
+I am also aware that my Takeaway class has a lot of methods. I think I managed to refactor the methods within the class quite well but I should probably move the MENU hash and check_menu method into a separate class and work out how to refer to them from the Takeaway class. 
+
+I tried to use dependency injection to resolve dependency on the Texter class, but broke all my tests in the process and was unable to resolve - would really appreciate some help with this.
+
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
