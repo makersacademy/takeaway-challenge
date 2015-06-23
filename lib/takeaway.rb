@@ -16,6 +16,7 @@ class Takeaway
               'gyoza'       => 3
             }
     @order_list = []
+    @total_price = 0
   end
 
   def show_menu
@@ -37,7 +38,6 @@ class Takeaway
   end
 
   def order_total
-    @total_price = 0
     @order_list.each do |x| 
       @total_price += @menu.fetch(x)
     end
