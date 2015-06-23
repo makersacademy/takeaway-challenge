@@ -3,9 +3,10 @@ require 'takeaway'
 describe Takeaway do
 
   let(:texter) { double :texter, send: 'message sent' }
-  subject { Takeaway.new(texter) }
+  let(:menu) { double :menu }
+  subject { Takeaway.new(texter, menu) }
 
-  it { is_expected.to respond_to :menu }
+  #it { is_expected.to respond_to :menu }
   
   it { is_expected.to respond_to :show_menu }
 
@@ -60,7 +61,6 @@ describe Takeaway do
     end
 
     it 'triggers a confirmation text message' do
-      texter = double :texter
       allow(subject).to receive(:check_price).and_return true
       subject.confirm_order
       expect(texter).to receive(:send)

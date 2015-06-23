@@ -1,26 +1,23 @@
 require_relative 'texter'
+require_relative 'menu'
 
 class Takeaway
 
-  attr_reader :menu
+  #attr_reader :menu
   attr_reader :order_list
   attr_reader :total_price
   attr_reader :check_price
 
 
-  def initialize(texter)
+  def initialize(texter, menu)
     @texter = texter
-    @menu = { 'tempura'     => 8,
-              'okonomiyaki' => 7,
-              'yakisoba'    => 6,
-              'gyoza'       => 3
-            }
+    @menu = menu
     @order_list = []
     @total_price = 0
   end
 
   def show_menu
-    @menu
+    menu.show
   end
 
   def order(item, multiple)
@@ -38,7 +35,7 @@ class Takeaway
   end
 
   def order_total
-    @order_list.each do |x| 
+    @order_list.each do |x|   
       @total_price += @menu.fetch(x)
     end
     @total_price
