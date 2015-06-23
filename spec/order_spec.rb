@@ -1,17 +1,11 @@
 require 'order'
 
 describe Order do
-  # let(:menu) do
-  #   double :menu, takeaway_menu: { 'California roll': 4.0, 'Spicy tuna roll': 4.5 }
-  # end
-
-  # subject { Order.new(menu) }
-
-  it 'has a menu when initialised' do
-    expect(subject.menu).not_to be_empty
+  let(:menu) do
+    double :menu, takeaway_menu: { 'California roll': 4.0, 'Spicy tuna roll': 4.5 }
   end
 
-  it { is_expected.to respond_to :display_menu }
+  subject { Order.new(Menu.new) }
 
   it { is_expected.to respond_to(:add_dish).with(2).arguments }
 
@@ -32,16 +26,39 @@ describe Order do
 
   end
 
+  describe '#remove_dish' do
+
+    it 'removes a dish from the order content' do
+      subject.add_dish('California roll', 1 )
+      subject.add_dish('Spicy tuna roll', 1 )
+      subject.remove_dish('California roll', 1)
+      expect(subject.order_content).to eq ['Spicy tuna roll']
+    end
+
+  end
+
   describe '#bill_total' do
 
-    it 'updates order total when adding single pizza' do
+    it 'updates order total when adding single dish' do
       subject.add_dish('California roll', 1)
       expect(subject.bill_total).to eq 4.0
     end
 
-    it 'updates order total when adding more than one of a pizza' do
+    it 'updates order total when adding more than a single dish' do
       subject.add_dish('California roll', 2)
       expect(subject.bill_total).to eq 8.0
+    end
+
+  end
+
+  describe '#print_itemised_bill' do
+
+    it { is_expected.to respond_to :print_itemised_bill }
+
+    xit 'prints an itemised bill' do
+      subject.add_dish('California roll', 2)
+      subject.remove_dish('California roll', 1)
+      expect(subject.print_itemised_bill).to eq 'California roll £4.0 California roll £4.0 Spicy tuna roll £4.5 Bill total: £12.5'
     end
 
   end
