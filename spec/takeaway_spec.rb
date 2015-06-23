@@ -1,7 +1,9 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject { Takeaway.new(Texter.new) }
+
+  let(:texter) { double :texter, send: 'message sent' }
+  subject { Takeaway.new(texter) }
 
   it { is_expected.to respond_to :menu }
   
@@ -52,7 +54,7 @@ describe Takeaway do
 
   describe 'confirm_order' do
     it 'stops the order going through if expected price does not match actual total price' do
-      texter = double :texter
+      #texter = double :texter
       subject.order('tempura', 1)
       subject.check_price(6)
       expect { subject.confirm_order }.to raise_error 'Please check the price again'
