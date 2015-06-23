@@ -1,12 +1,12 @@
-require 'costumer'
-describe Costumer do
+require 'customer'
+describe Customer do
   let(:menu) {double :menu, show: { cheese_burger: 5,
                                     hotdog:        4,
                                     lasagne:       5,
                                     beer:          2,
                                     coke:          2,
                                     cheese_cake:   3}}
-  subject {Costumer.new(menu)}
+  subject {Customer.new(menu)}
   it 'has a basket' do
     expect(subject.basket).to eq({})
   end

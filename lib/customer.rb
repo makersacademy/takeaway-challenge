@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
-class Costumer
+class Customer
 
   attr_reader :basket
 
