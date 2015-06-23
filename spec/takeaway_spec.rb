@@ -54,13 +54,12 @@ describe Takeaway do
 
   describe 'confirm_order' do
     it 'stops the order going through if expected price does not match actual total price' do
-      #texter = double :texter
       subject.order('tempura', 1)
       subject.check_price(6)
       expect { subject.confirm_order }.to raise_error 'Please check the price again'
     end
 
-    xit 'triggers a confirmation text message' do
+    it 'triggers a confirmation text message' do
       texter = double :texter
       allow(subject).to receive(:check_price).and_return true
       subject.confirm_order
