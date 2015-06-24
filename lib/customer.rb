@@ -27,8 +27,8 @@ class Customer
   def pay total
     fail 'Sorry, you need to pay the exact total' if total != ask_total
     if total == ask_total
-      return 'Thanks for pay'
-      return textsender.submit_text #why not working?
+      'Thanks for pay'
+      @textsender.submit_text #why not working?
       total
     end
   end

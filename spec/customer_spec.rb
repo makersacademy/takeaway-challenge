@@ -2,8 +2,8 @@ require 'customer'
 
 describe Customer do
 
-  let(:shop) { shop = Shop.new }
-  let(:textsender) { textsender = TextSender.new }
+  let(:shop) { Shop.new }
+  let(:textsender) { TextSender.new }
   let(:customer) { Customer.new(shop, textsender) }
 
   before(:each) do
@@ -26,6 +26,11 @@ describe Customer do
 
   it 'can pay for the exact amount' do
     expect(customer.pay(16.5)).to eq("Thanks for pay")
+  end
+
+  it 'send a text' do
+    expect(textsender).to receive(:submit_text)
+    customer.pay(16.5)
   end
 
   it 'get an error if tries to pay a amount different from the total' do
