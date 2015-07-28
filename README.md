@@ -1,5 +1,7 @@
 Takeaway Challenge
 ==================
+My text_sender (even though I verified my number) will not send a text. I believe the code is right for how to call it, but can't get the api working.
+
 
 Instructions
 -------
