@@ -8,29 +8,11 @@ class Takeaway
     @final_price = 0
   end
 
-  def place_order
-    puts ''
-    puts 'Welcome to Takeaway.'
-    puts 'Here is our menu:'
-    puts @menu
-    puts 'Type what you would like to eat from the menu.'
-    puts 'When you are finished ordering type: '
-    puts 'done'
-    puts ''
-    puts "What would you like?"
-    while true
-      new_item = gets.chomp
-      if new_item == "done"
-        puts ''
-        puts "You ordered #{@order}"
-        puts ''
-        return @order
-      elsif new_item != "pizza" and new_item != "salad" and new_item != "fish and chips"
-        fail 'Did not enter a valid item'
-      else
-        @order << new_item
-        puts "Anything else?"
-      end
+  def place_order item
+    if @menu.has_key?(item)
+      @order.push(item)
+    else
+      fail 'Item not found in menu'
     end
   end
 
@@ -51,12 +33,11 @@ class Takeaway
       price_list_temp = price_list_temp[1..-1]
     end
     @final_price = total_price
-    puts "Your total is #{total_price} pounds"
     Texter.new.send_message
+    return @final_price
+  end
+
+  def show_menu
+    @menu
   end
 end
-
-
-takeaway = Takeaway.new
-takeaway.place_order
-takeaway.calculate_total

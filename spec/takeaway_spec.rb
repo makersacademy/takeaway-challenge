@@ -3,20 +3,21 @@ require 'takeaway'
 describe Takeaway do
 
   it 'shows a menu for the customer' do
-    expect(subject.menu).to eq({ "pizza" => 8, "salad" => 6, "fish and chips" => 10 })
+    expect(subject.show_menu).to eq({ "pizza" => 8, "salad" => 6, "fish and chips" => 10 })
   end
 
   it 'allows customers to choose a meal from the menu' do
-    @order = ['pizza', 'salad']
-    expect(subject.place_order).to eq(["pizza", "salad"])
+    subject.place_order "salad"
+    expect(subject.place_order "pizza").to eq(["salad", "pizza"])
   end
 
   it 'fails if customer enters an item not on the menu' do
-    expect { subject.place_order }.to raise_error ('Did not enter a valid item')
+    expect { subject.place_order "burger" }.to raise_error ('Item not found in menu')
   end
 
   it 'finds the total price of the meal' do
-    @order = ['pizza', 'salad']
+    subject.place_order "pizza"
+    subject.place_order "salad"
     expect(subject.calculate_total).to eq 14
   end
 end
