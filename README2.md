@@ -1,0 +1,1 @@
+So far I have downloaded the twilio-ruby gemfile and have begun to think about the different classes I will need. Currently trying to get the text_sender class set up correctly so that I'm able to receive messages. I would also have a menu class and a user class.
