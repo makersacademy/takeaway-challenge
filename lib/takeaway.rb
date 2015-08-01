@@ -1,4 +1,9 @@
 class TakeAway
+
+require 'rubygems' # not necessary with ruby 1.9 but included for completeness
+require 'twilio-ruby'
+
+
   attr_reader :menu
   attr_accessor :order, :prices
 
@@ -43,13 +48,25 @@ class TakeAway
 
   def confirm_order
     puts "Please confirm that your order is correct by typing Y for Yes or N for No."
-    puts order
+    show_order
     confirmation = gets.chomp
     if confirmation == "Y"
-      #text
+      delivery_time = Time.new + 3600
+      send_message(delivery_time)
     else
       "Please edit your order."
     end
+  end
+
+  def send_message(delivery_time)
+    account_sid = 'ACd18bfc872e98296bfd513c3537d79945'
+    auth_token = 'bb86f5ef30b2e093ec06255279f7ece8'
+    @client = Twilio::REST::Client.new account_sid, auth_token
+      @client.account.messages.create({
+      :from => '+441698313072',
+      :to => '+447761239717',
+      :body => "Thank you! Your order was placed and will be delivered before #{delivery_time.hour}:#{delivery_time.min}"
+  })
   end
 end
 
