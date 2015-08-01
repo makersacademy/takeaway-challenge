@@ -2,8 +2,8 @@ class Menu
 
   attr_reader :dishes
 
-  def initialize
-    @dishes = {food: 10}
+  def initialize options
+    @dishes = options[:dishes]
   end
 end
 

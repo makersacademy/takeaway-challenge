@@ -1,10 +1,17 @@
-require 'menu'
+require "menu"
 
 describe Menu do
 
-  it 'has a list of dishes' do
+  let(:subject) { described_class.new( { dishes: { rice: 10.99, pizza: 5.99 } } ) }
+
+  it "has a list of dishes" do
     expect(subject).to respond_to(:dishes)
   end
 
+  describe "#dishes" do
 
+    it "is populated on intialize" do
+      expect(subject.dishes).to eq( { rice: 10.99, pizza: 5.99 } )
+    end
+  end
 end
