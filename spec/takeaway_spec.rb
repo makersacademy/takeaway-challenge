@@ -2,8 +2,10 @@ require 'takeaway'
 
 describe TakeAway do
   let(:menu){ double(:menu) }
+  let(:confirmation_yes){ double(:confirmation, { confirmation: "Y" }) }
+  let(:confirmation_no){ double(:confirmation, { confirmation: "N" }) }
   before(:each) do
-    allow(menu).to receive(:dishes).and_return({ "chilli squid" => 3.95, "pork wonton" => 3.95 })
+    allow(menu).to receive(:dishes).and_return({ "chilli squid" => 3.95, "pork wonton" => 2.95 })
   end
 
   it "can add a menu" do
@@ -35,11 +37,11 @@ describe TakeAway do
 
     it "calculates cost per item correctly" do
       subject.place_order("chilli squid" => 3)
-      expect(subject.total_cost_per_item(3.95, 3)).to eq(11.85)
+      expect(subject.total_cost_per_item(3.95, 3)).to eq("11.85")
     end
 
     it "raises error if item is not on the menu" do
-      expect{ subject.place_order("chilli prawns" => 1) }.to raise_error "This item is not on the menu."
+      expect{ subject.place_order("chilli prawns" => 1) }.to raise_error "Chilli prawns is not on the menu."
     end
 
     it "adds multiple items to order" do
@@ -49,7 +51,6 @@ describe TakeAway do
 
     describe "#delete_from_order" do
       before(:each) do
-      subject.add_menu(menu)
       allow(menu.dishes).to receive(:[]).with("chilli squid").and_return(3.95)
       subject.place_order("chilli squid" => 1)
       end
@@ -57,6 +58,29 @@ describe TakeAway do
       it "deletes item from order" do
         subject.delete_from_order("chilli squid", 1)
         expect(subject.order).to be_empty
+      end
+    end
+    describe "#show_order" do
+      before(:each) do
+      allow(menu.dishes).to receive(:[]).with("chilli squid").and_return(3.95)
+      subject.place_order("chilli squid" => 1)
+      end
+
+      it "displays the current order" do
+        expect(subject.show_order).to eq("chilli squid x 1" => "3.95")
+      end
+    end
+
+    describe "#grand_total" do
+      it "gives the total cost for the order" do
+        subject.place_order("chilli squid" => 3, "pork wonton" => 2)
+        expect(subject.grand_total).to eq("17.75")
+      end
+    end
+
+    describe "#confirm_order" do
+      xit "returns string if confirmation is No" do
+
       end
     end
   end
