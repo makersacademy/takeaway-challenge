@@ -1,6 +1,4 @@
 class TakeAway
-
-
   attr_reader :menu
   attr_accessor :order
 
@@ -30,6 +28,5 @@ class TakeAway
   def delete_from_order(dish, quantity)
     order.delete("#{dish} x #{quantity}")
   end
-
 end
 
