@@ -23,13 +23,17 @@ class Menu
     "aubergine & tofu (v)" => 7.95
     }
 
-  attr_accessor :menu
+  attr_accessor :dishes
 
-  def initialize(menu=MENU)
-    @menu = menu
+  def initialize(dishes=MENU)
+    @dishes = dishes
   end
 
   def add_to_menu(dish, price)
-    menu[dish] = price
+    dishes[dish] = price
+  end
+
+  def remove_from_menu(dish)
+    dishes.delete(dish)
   end
 end
