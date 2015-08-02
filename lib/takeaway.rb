@@ -26,13 +26,10 @@ class TakeAway
     end
   end
 
-  def show_order
-    order_output = ""
-    order.each do |item, price|
-      order_output += "#{item}: £#{price}, "
-    end
-    order_output += "Total: £#{grand_total}"
-    order_output
+
+  def grand_total
+    total_in_pence = prices.inject(:+)
+    "%.2f" % (total_in_pence / 100.0)
   end
 
   def total_cost_per_item(price, quantity)
@@ -41,27 +38,32 @@ class TakeAway
     "%.2f" % (price_in_pence / 100.0)
   end
 
+  def show_order
+    order_output = print_order_items
+    order_output += "Total: £#{grand_total}"
+    order_output
+  end
+
   def delete_from_order(dish, quantity)
     order.delete("#{dish} x #{quantity}")
   end
 
-  def grand_total
-    total_in_pence = prices.inject(:+)
-    "%.2f" % (total_in_pence / 100.0)
-  end
-
   def confirm_order
     puts "Please confirm that your order is correct by typing Y for Yes or N for No."
-    show_order
-    grand_total
+    puts show_order
     confirmation = gets.chomp
-    if confirmation == "Y"
-      delivery_time = Time.new + 3600
-      send_message(delivery_time)
-    else
-      "Please edit your order."
-    end
+    delivery_time = Time.new + 3600
+    confirmation == "Y" ? send_message(delivery_time) : "Please edit your order."
   end
+
+  private
+
+  def print_order_items
+    order_output = ""
+    order.each { |item, price| order_output += "#{item}: £#{price}, " }
+    order_output
+  end
+
 
   def send_message(delivery_time)
     account_sid = 'ACd18bfc872e98296bfd513c3537d79945'

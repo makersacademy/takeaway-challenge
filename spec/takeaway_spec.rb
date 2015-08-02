@@ -2,8 +2,6 @@ require 'takeaway'
 
 describe TakeAway do
   let(:menu){ double(:menu) }
-  let(:confirmation_yes){ double(:confirmation, { confirmation: "Y" }) }
-  let(:confirmation_no){ double(:confirmation, { confirmation: "N" }) }
   before(:each) do
     allow(menu).to receive(:dishes).and_return({ "chilli squid" => 3.95, "pork wonton" => 2.95 })
   end
@@ -19,10 +17,6 @@ describe TakeAway do
   describe "#place_order" do
     before(:each) do
       subject.add_menu(menu)
-    end
-
-    it "responds to method place_order" do
-      expect(subject).to respond_to(:place_order).with(1).argument
     end
 
     it "adds item to order hash" do
@@ -65,7 +59,7 @@ describe TakeAway do
       it "displays the current order" do
         allow(menu.dishes).to receive(:[]).with("chilli squid").and_return(3.95)
         subject.place_order("chilli squid" => 1)
-        order = "chilli squid x 1: £3.95\nTotal: £3.95"
+        order = "chilli squid x 1: £3.95, Total: £3.95"
         expect(subject.show_order).to eq(order)
       end
     end
@@ -78,10 +72,19 @@ describe TakeAway do
     end
 
     describe "#confirm_order" do
-      xit "returns string if confirmation is No" do
+      before(:each) do
+      allow(menu.dishes).to receive(:[]).with("chilli squid").and_return(3.95)
+      subject.place_order("chilli squid" => 1)
+      end
 
+      it "returns string if confirmation is No" do
+        expect(subject.confirm_order).to eq("Please edit your order.")
+      end
+
+      it "sends text if confirmation is Yes" do
+        expect(subject).to receive(:send_message)
+        subject.confirm_order
       end
     end
   end
-
 end
