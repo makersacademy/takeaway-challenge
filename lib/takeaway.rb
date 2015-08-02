@@ -68,11 +68,11 @@ class TakeAway
     account_sid = 'ACd18bfc872e98296bfd513c3537d79945'
     auth_token = 'bb86f5ef30b2e093ec06255279f7ece8'
     @client = Twilio::REST::Client.new account_sid, auth_token
-      @client.account.messages.create({
+      @client.account.messages.create(
         from: '+441698313072',
         to: '+447761239717',
         body: "Thank you! Your order was placed and will be delivered before #{delivery_time.hour}:#{delivery_time.min}"
-                                      })
+                                      )
   end
 end
 
