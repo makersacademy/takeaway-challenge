@@ -7,6 +7,4 @@ let (:menu){double(:menu)}
 		expect(subject.menu_list).not_to be_empty
 	end
 
-	xit 'should print the menu' do
-	end
 end

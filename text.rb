@@ -7,7 +7,7 @@ client = Twilio::REST::Client.new account_sid, auth_token
  
 from = "+441767512024" # Your Twilio number
  
-friends = {"+447985177537" => "Curious George"}
+friends = {"+447985177537" => "Emily"}
 time = Time.new
 time2 = time + (60*60)
 time_format = time2.strftime("%H:%M:%S")

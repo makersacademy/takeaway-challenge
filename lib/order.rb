@@ -1,14 +1,16 @@
 require_relative 'menu'
-require 'twilio-ruby'
 
 class Order < Menu
 
-	attr_reader :order
+	attr_reader :order, :texted
+
+	attr_accessor :texted
 
 	def initialize
 		@order = {}
 		@menu_keys = menu_list.keys
 		@menu_values = menu_list.values
+		@texted = false
 	end
 
 	def new_order(list,total_cost)
@@ -17,7 +19,7 @@ class Order < Menu
 		list.each do |x,y|
 			dish = menu_keys[x - 1]
 			cost = menu_values[x - 1] * y
-			puts "#{list.index([x,y])+1}. #{dish}   x #{y}   £#{cost}"
+			puts "#{(list.index([x,y]))+1}. #{dish}   x #{y}   £#{cost}"
 			order.merge!({dish => cost})
 		end
 		sum = 0
@@ -33,6 +35,7 @@ class Order < Menu
 
 	def send_text
 		system("ruby text.rb")
+		@texted = true
 	end
 
 end
