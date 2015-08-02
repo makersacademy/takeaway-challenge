@@ -8,13 +8,14 @@ class Order
     @menu = menu
   end
 
-  def select_dishes(dish,price, quantity)
-    quantity.times do add_to_ticket(dish, price)
+  def select_dishes(dish, price, quantity)
+    quantity.times do
+      add_to_ticket(dish, price)
     end
   end
 
   def add_to_ticket(dish, price)
-    selection = {dish => price}
+    selection = { dish => price }
     @ticket << selection
     sum_order
   end

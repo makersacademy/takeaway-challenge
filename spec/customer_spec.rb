@@ -1,13 +1,13 @@
 require 'customer'
 
 describe Customer do
-  let(:order) {double :order}
+  let(:order) { double :order }
 
   it "can place order" do
     expect(subject).to respond_to(:place_order)
   end
   describe '#get_name' do
-    let(:customer) {Customer.new}
+    let(:customer) { Customer.new }
     it "can get name" do
       allow(customer.get_name).to receive(:gets).and_return("owen")
       expect(customer.name).to eq "owen"
