@@ -17,13 +17,13 @@ describe Order do
 
  it "holds the correct number of dishes" do
  	subject.add_items_to_order("Dosa", 3)
- 	expect(subject.dishes_ordered.count).to eq 3 
+ 	expect(subject.dish_count).to eq 3 
  end
 
- #working in IRB
+ #Now working
  it "calculates the order total" do
  	subject.add_items_to_order("Dosa", 3)
- 	expect(subject.order_total).to eq 12
+ 	expect(subject.total).to eq 12
  end
 
 
