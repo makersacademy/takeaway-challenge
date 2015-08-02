@@ -4,9 +4,9 @@ You will need a free Twilio account:
   Enter the AUTH_SID & AUTH_TOKEN in the takeaway-challenge/lib/restaurant.rb file
 
 To create a new restaurant (menu provided):
-
+```
   restaurant_name = restaurant.new
-
+```
 To create a new customer account:
 
   customer_name =  customer.new( name_string, phone_number_string)
