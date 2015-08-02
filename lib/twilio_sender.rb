@@ -13,10 +13,10 @@ class TwilioSender
 
   def send_text to, message
     message = @client.account.messages.create(
-        body:   message,
-        to:     to,
-        from:   @from,
-        via:    @client)
+                                                body: message,
+        to: to,
+        from: @from,
+        via: @client)
   end
 
 end
