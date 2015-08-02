@@ -26,7 +26,13 @@ describe Customer do
 
 		it 'raises an error if the payment resquested doesnt match total' do
 			subject.select_dish("Classic Burger")
-			expect{subject.payment_requested(20)}.to raise_error 'Payment does not match total'
+			expect{subject.checkout(20)}.to raise_error 'Payment does not match total'
+		end 
+
+		it 'sends a notification when the text was sent' do 
+			subject.select_dish("Classic Burger")
+			subject.total_price
+			expect(subject.checkout(6.75)).to eq 'Your message was sent'
 		end 
 	end
 

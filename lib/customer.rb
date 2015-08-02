@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'delivery'
 
 class Customer 
 	include Menu
@@ -25,8 +26,9 @@ class Customer
    	@total
 	end
 
-	def payment_requested amount
+	def checkout amount
 		raise 'Payment does not match total' if (amount != total)
+		Delivery.new.text_customer
 	end 
 
 end 
