@@ -37,7 +37,14 @@ describe Customer do
 		subject.show_drinks(menu_class)
 		subject.pick_pizza(1, 'some pizza')
 		subject.pick_drinks(1, 'some drink')
-		expect(subject.total_charge).to eq 7.50
+		expect(subject.total_charge).to eq 8.00
 	end
 
+	it 'can place an order' do
+		subject.show_pizzas(menu_class)
+		subject.show_drinks(menu_class)
+		subject.pick_pizza(1, 'some pizza')
+		subject.pick_drinks(1, 'some drink')
+		expect(subject).to respond_to(:place_order)
+	end
 end

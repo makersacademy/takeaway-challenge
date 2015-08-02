@@ -38,4 +38,21 @@ class Customer
 		end
 		ordered_drinks
 	end
+
+	def total_charge
+		total_pizzas = pizzas_bill.inject(0) {|x,y| x + y}
+		total_drinks = drinks_bill.inject(0) {|x,y| x + y}
+		total = total_pizzas + total_drinks
+		total
+	end
+
+	def place_order
+		print 'Your order is:'
+		print ordered_pizzas
+		print pizzas_bill
+		print ordered_drinks
+		print drinks_bill
+		print 'With a total charge of:'
+		print self.total_charge
+	end
 end

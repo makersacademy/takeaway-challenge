@@ -1,7 +1,7 @@
 class Menu
 
 	def self.pizzas
-		{"Tomato" => '4.50', "Margarita" => '5.90', "Bufala" => '6.85', "Ham" => '6.85', "Veggie" => '6.70', "Chorizo" => '6.95'}
+		{"Tomato" => 4.50, "Margarita" => 5.90, "Bufala" => 6.85, "Ham" => 6.85, "Veggie" => 6.70, "Chorizo" => 6.95}
 	end
 
 	def self.drinks
