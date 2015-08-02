@@ -47,4 +47,40 @@ describe Order do
     end
   end
 
+  describe '#place_order' do 
+    context 'when given amount is correct' do 
+      it 'it returns a message saying the order was successfully placed' do
+        allow(@subject).to receive(:selection).and_return({biriyani: 1, cheeseburger: 2})
+        expect(@subject.place_order 13).to eq "Thankyou! Order was successfully placed."
+      end
+    end
+
+    context 'when given amount is incorrect' do
+      it 'it returns a message saying the given amount is incorrect and suggests a calculated total' do 
+        allow(@subject).to receive(:selection).and_return({biriyani: 1, cheeseburger: 2})
+        expect(@subject.place_order 10).to eq "Order unsuccessful. Total should equal 13.0"
+      end
+    end
+
+    describe '#correct_amount?' do 
+      it 'returns true when given amount matches #build_order total' do
+        @subject.add_item :biriyani, 2
+        expect(@subject.correct_amount? 10).to be true
+      end
+
+      it 'returns false when given amount that does not match #build_order total' do 
+        @subject.add_item :biriyani, 2
+        expect(@subject.correct_amount? 5).to be false
+      end
+    end
+
+    describe '#build_order' do 
+      it 'returns a hash containing the selection hash and the TRUE total amount' do
+        allow(@subject).to receive(:selection).and_return({biriyani: 2, side_of_salmonella: 1})
+        expect(@subject.build_order).to eq({ {biriyani: 2, side_of_salmonella: 1} => 11.95 })
+      end
+    end
+
+  end
+
 end
