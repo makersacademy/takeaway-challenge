@@ -33,7 +33,9 @@ Place your order (1 argument for what you think the total price is):
 ```
 order.place_order 35
 ```
-If price is correct, you will be asked to enter your phone number and you will receive a confirmation text message.
+If the total price is correct, you will be asked to enter your phone number and you will receive a confirmation text message. 
+
+If the total price is incorrect, you will be advised as to what the total price should be and will have to re-place the order using the correct amount.
 
 
 NB Above is what I have implemented; below is the original challenge text.
