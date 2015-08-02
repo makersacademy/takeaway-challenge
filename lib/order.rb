@@ -1,14 +1,14 @@
 require_relative 'menu'
+require 'twilio-ruby'
 
 class Order < Menu
 
-	attr_reader :order, :correct_cost
+	attr_reader :order
 
 	def initialize
 		@order = {}
 		@menu_keys = menu_list.keys
 		@menu_values = menu_list.values
-		@correct_cost = true
 	end
 
 	def new_order(list,total_cost)
@@ -22,15 +22,17 @@ class Order < Menu
 		end
 		sum = 0
 		order.values.each {|a| sum += a }
-		if sum != total_cost
-			correct_cost = false
-			fail "Total cost is incorrect"
-		end
-		puts "TOTAL COST - £#{total_cost}"
+		fail "Total cost is incorrect" if sum != total_cost
+		puts "TOTAL COST - £#{total_cost}" 
 	end
 
 	def place_order
 		fail "No order has been entered" if order == {}
+		send_text
+	end
+
+	def send_text
+		system("ruby text.rb")
 	end
 
 end

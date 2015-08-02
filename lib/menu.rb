@@ -1,6 +1,6 @@
 class Menu
 
-	attr_accessor :menu_list, :menu_keys, :menu_values
+	attr_reader :menu_list, :menu_keys, :menu_values
 
 	def initialize
 		@menu_list = menu_list
