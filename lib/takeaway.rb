@@ -2,8 +2,8 @@ require_relative 'twilio_sender'
 
 class Takeaway
 
-  attr_reader :selection
-  
+  attr_reader :selection, :menu
+
   def initialize
     @menu = {
       pizza: 9.99,
@@ -23,11 +23,14 @@ class Takeaway
   end
 
   def select_items item, quantity #selection_has_been_chosen?
-    @selection[item] = quantity
+    @selection[item.capitalize] = quantity
   end
 
-  def show_selections item, quantity
-
+  def get_price item
+    menu.select do |product, price|
+      @price = menu[item]
+    end
+    @price
   end
 
   def total
@@ -47,9 +50,6 @@ class Takeaway
   end
 
   def update_existing_selections
-  end
-
-  def get_price
   end
 
   def time_in_one_hour

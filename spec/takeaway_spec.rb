@@ -9,6 +9,11 @@ describe Takeaway do
   it 'can choose items and quantities from the menu' do
     subject.select_items(:chicken, 1)
     subject.select_items(:beer, 3)
-    expect(subject.selection).to include({chicken: 1, beer: 3})
+    expect(subject.selection).to include({ Chicken: 1, Beer: 3 })
   end
+
+  it 'can get the price of an item' do
+      expect(subject.get_price(:wine)).to eq(7.99)
+  end
+
 end
