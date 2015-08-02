@@ -1,4 +1,4 @@
-require 'sendSms'
+require 'send_sms'
 
 describe SendSms do
 
