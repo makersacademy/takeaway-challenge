@@ -10,8 +10,7 @@ class Messenger
   end
 
   def send_message order
-    body = generate_body
-    message_details = { body: body, phone_number: order.contact_number }
+    message_details = { body: generate_body, phone_number: order.contact_number }
     validate_phone_number message_details
   end
 
