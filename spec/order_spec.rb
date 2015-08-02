@@ -7,7 +7,7 @@ describe Order do
 
   it "Can select a number dishes off the menu" do
     subject.select_dishes("hamburger", 6.0, 2)
-    expect(subject.ticket).to eq [ { "hamburger"=>6.0 } , { "hamburger"=>6.0 } ]
+    expect(subject.ticket).to eq [ { "hamburger" => 6.0 } , { "hamburger" => 6.0 } ]
   end
 
   it "can display the order total" do
