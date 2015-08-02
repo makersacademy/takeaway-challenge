@@ -26,7 +26,7 @@ describe Order do
     end
   end
 
-    describe "#contact_number" do
+  describe "#contact_number" do
 
     it "is initialized with contact_number" do
       expect(subject.contact_number).to eq("+4407572437603")
