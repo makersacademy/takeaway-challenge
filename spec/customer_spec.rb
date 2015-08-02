@@ -1,0 +1,43 @@
+require 'customer'
+
+describe Customer do
+  let(:subject) {described_class.new("Piers", "+447736409366")}
+  let(:restaurant) {double :restaurant}
+  let(:orderClass) {double (:orderClass), :new => order}
+  let(:order) {double :order}
+
+  describe '#request_menu' do
+    it 'asks the restaurant to display its menu' do
+      subject.select_restaurant restaurant
+      expect(restaurant).to receive( :display_menu )
+      subject.request_menu
+    end
+  end
+
+  describe '#create_order' do
+    it 'creates an order object' do
+      subject.create_order
+      expect(subject.order).to be_instance_of(Order)
+    end
+  end
+
+  describe '#update_order' do
+    it 'tells the order object to call its add method' do
+      subject.select_restaurant restaurant
+      subject.create_order orderClass
+      allow(subject.order).to receive(:add)
+      expect(subject.order).to receive( :add ).with(restaurant, :pizza, 2)
+      subject.update_order :pizza, 2
+    end
+  end
+
+  describe '#submit_order' do
+    it 'asks the restaurant to send the customer a confirmation text' do
+      subject.select_restaurant restaurant
+      allow(restaurant).to receive( :send_text )
+      subject.submit_order
+    end
+
+  end
+
+end
