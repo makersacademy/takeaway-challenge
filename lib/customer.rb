@@ -36,7 +36,7 @@ class Customer
   end
 
   def see_menu
-    self.order.menu.display.each {|k,v| puts "#{k}:#{v}"}
+    self.order.menu.display.each { |k,v| puts "#{k}:#{v}" }
     get_food
   end
 

@@ -20,7 +20,7 @@ class Order
   end
 
   def sum_order
-    prices = @ticket.map {|dish| dish.values}.flatten
+    prices = @ticket.map { |dish| dish.values }.flatten
     @total_cost = prices.inject(:+)
   end
 
