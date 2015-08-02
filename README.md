@@ -1,44 +1,4 @@
-Takeaway Challenge
-==================
 
-Implemented Features
--------
-
-Build a Menu (has default items):
-```
-menu = Menu.new
-```
-
-Extra - can add additional items to the menu:
-```
-menu.add_dish :hamburger, 4.95
-```
-
-Build an Order:
-```
-order = Order.new menu
-```
-
-Display a tabled version of the menu (uses the terminal-table gem):
-```
-menu.show
-```
-
-Add items to the order (name, quantity):
-```
-order.add_item :pizza, 7
-```
-
-Place your order (1 argument for what you think the total price is):
-```
-order.place_order 35
-```
-If the total price is correct, you will be asked to enter your phone number and you will receive a confirmation text message. 
-
-If the total price is incorrect, you will be advised as to what the total price should be and will have to re-place the order using the correct amount.
-
-
-NB Above is what I have implemented; below is the original challenge text.
 
 
 Instructions
