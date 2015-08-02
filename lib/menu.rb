@@ -1,9 +1,13 @@
 class Menu
 
-	attr_accessor :menu_items, :add_item_to_menu
+attr_accessor :menu_name, :menu_items, :add_item_to_menu
+
+DEFAULT_MENU_NAME = "Ben's Menu"
+DEFAULT_MENU = {"Dosa" => 4,"Badam Drink" => 3,"Bisebele Bhath" => 2,"Water" => 1}
 
 	def initialize
-		@menu_items = {}
+		@menu_name = DEFAULT_MENU_NAME
+		@menu_items = DEFAULT_MENU
 	end
 
 	def add_item_to_menu (item, price)
@@ -13,15 +17,4 @@ class Menu
 end
 
 
-class BenMenu < Menu
-
-	attr_accessor :menu_name, :menu_items
-
-	def initialize
-		@menu_name = "Ben's Menu"
-		@menu_items = {"Dosa" => 4,"Badam Drink" => 3,
-			"Bisebele Bhath" => 2,"Water" => 1}
-	end
-
-end
 
