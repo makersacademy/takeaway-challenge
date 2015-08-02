@@ -8,6 +8,14 @@ for use in IRB to populate states
 
 Populate a resturant with a instance of restuarant class
 
+I'm calling the instance of the resturant pizza_hut in these tests
+
 ```
 pizza_hut = Restaurant.new({ menu: Menu , options: { dishes: { rice: 10.99, pizza: 5.99 } } })
+```
+
+view dishes on menu
+
+```
+pizza_hut.current_menu.view_dishes
 ```

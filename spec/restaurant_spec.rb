@@ -4,7 +4,7 @@ describe Restaurant do
 
   let (:menu) { double(:menu, dishes: { rice: 10.99, pizza: 5.99 } ) }
   let(:menu_class) { double(:menu_class, :new => menu) }
-  let (:order) { double(:order, ordered_items: { rice: 1, pizza: 1 }, total: 10.98 ) }
+  let (:incorrect_order) { double(:order, ordered_items: { rice: 1, pizza: 1 }, total: 10.98 ) }
 
 
   it "can have menu on initialize" do
@@ -15,7 +15,7 @@ describe Restaurant do
 
 
   it "checks order total is correct" do
-    expect{ subject.check_order(menu, order) }.to raise_error "total incorrect"
+    expect{ subject.check_order(incorrect_order) }.to raise_error "total incorrect"
   end
 end
 
