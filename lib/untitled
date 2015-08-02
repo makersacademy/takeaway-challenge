@@ -1,8 +1,0 @@
-
-  def display_menu
-        menu = { 'chow mein' => 2.99, "egg fried rice" => 1.99, "spring rolls" => 2.99 }
-    menu.each do |key, value|
-      puts "#{key}: £#{value}"
-    end
-  end
-display_menu
