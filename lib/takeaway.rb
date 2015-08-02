@@ -20,7 +20,40 @@ class Takeaway
     end
   end
 
+  def select_items item, quantity #selection_has_been_chosen?
+    @selection << 'item, quantity'
+  end
 
+  def show_selections
+  end
+
+  def total
+  end
+
+  def order phone_number
+  end
+
+  private
+
+  attr_reader :menu
+
+  def selection_has_been_chosen?
+  end
+
+  def add_new_selections
+  end
+
+  def update_existing_selections
+  end
+
+  def get_price
+  end
+
+  def time_in_one_hour
+  end
+
+  def order_message
+  end
 #it has a menu y
 #it can show a menu y
 #it can choose from the menu
@@ -29,6 +62,5 @@ class Takeaway
 #it can calculate the price of the menu (With one or multiple items)
 #it can then send a text with the price and time for delivery
 
-#
 
 end
