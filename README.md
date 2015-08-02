@@ -1,6 +1,11 @@
 Takeaway Challenge
 ==================
 
+What I did
+-------
+* I first read the user stories and wrote out a domain model for the features.
+* I then followed the Red, Green, Refactor loop and implemented the model.
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
