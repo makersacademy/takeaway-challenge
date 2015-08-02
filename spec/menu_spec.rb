@@ -1,6 +1,6 @@
 require 'menu'
 
-describe Dishes do
+describe Menu do
   it 'generates instances of dish' do
     Menu.new
     expect($menu.count).to be > 0
