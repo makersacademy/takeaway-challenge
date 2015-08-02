@@ -2,7 +2,6 @@ require 'List'
 
 describe List do
   let(:dish) { double(:dish, :name => :paella, :price => 15) }
-#  let(:dish2) { double(:dish, :name => :fish_n_chips, :price => 11) }
 
   describe '#load_predefined_dishes'
   it 'creates a list of dishes with prices' do
