@@ -10,7 +10,6 @@ class Menu
 
   def initialize
     @dishes = DEFAULT_MENU
-    show
   end
 
   def add_dish name, price
@@ -19,7 +18,7 @@ class Menu
 
   def show
     rows = []
-    
+
     dishes.each do |dish, amount|
       row = [ dish, ("£" + (sprintf "%.2f", amount)) ]
       rows << row

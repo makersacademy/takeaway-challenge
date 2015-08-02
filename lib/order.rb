@@ -1,5 +1,7 @@
+require 'twilio-ruby'
+
 class Order
-  
+
   attr_reader :selection
   attr_reader :menu
 
@@ -18,7 +20,12 @@ class Order
   end
 
   def place_order amount
-    return "Thankyou! Order was successfully placed." if correct_amount? amount
+    if correct_amount? amount
+      print "What is your mobile number?\n"
+      customer_number = gets.chomp
+      send_sms(customer_number)
+      return "Thankyou! Your order was successfully placed and will be delivered within 1 hour."
+    end
     return "Order unsuccessful. Total should equal #{build_order[selection]}" if !correct_amount? amount
   end
 
@@ -32,6 +39,20 @@ class Order
       total += quantity * menu.dishes[item]
     end
     {selection => total}
+  end
+
+  private
+
+  def send_sms customer_number
+    account_sid = 'ACfed1f4665fc636698782b7f3bf434687'
+    auth_token = 'bd7088193c3098480f2948d5afea3a32'
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.messages.create(
+      from: '+441768392015', 
+      to: "#{customer_number}", 
+      body: 'Thankyou! Your order was successfully placed and will be delivered within 1 hour.')
+    
+    puts "SMS order confirmation successfully sent"
   end
 
 end

@@ -5,11 +5,12 @@ describe Menu do
   let(:biriyani){double :biriyani, title: "Biriyani", price: 5.00}
 
   context 'when created' do 
-    it 'has a default set of dishes' do 
+    it 'has a default set of dishes' do
       expect(subject.dishes).to eq Menu::DEFAULT_MENU
     end
 
     xit 'displays itself'
+      # Don't know how to test for this
   end
 
   it 'can have dishes added to it' do
