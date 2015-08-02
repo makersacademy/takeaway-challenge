@@ -1,3 +1,5 @@
+require_relative "order.rb"
+
 class Restaurant
 
   attr_reader :current_menu
@@ -13,8 +15,19 @@ class Restaurant
   end
 
   def check_order order
+    total = total_order order
+    raise "total incorrect" unless total == order.total
+  end
+
+  def total_order order
+    total = 0
+    order.ordered_items.each do | item, quantity |
+      total += quantity * (@current_menu.dishes[item] || 0)
+    end
+    total
   end
 
 end
 
 
+#ordered_items: { rice: 1, pizza: 1 }, total: 10.98 ) }

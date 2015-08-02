@@ -12,10 +12,9 @@ describe Restaurant do
     expect(restaurant.current_menu).to eq(menu)
   end
 
-
-
   it "checks order total is correct" do
-    expect{ subject.check_order(incorrect_order) }.to raise_error "total incorrect"
+    restaurant = described_class.new( { menu: menu_class, dishes: { rice: 10.99, pizza: 5.99 } } )
+    expect{ restaurant.check_order(incorrect_order) }.to raise_error "total incorrect"
   end
 end
 
