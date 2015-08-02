@@ -1,5 +1,3 @@
-require 'terminal-table'
-
 class Menu
 
   attr_reader :dishes
