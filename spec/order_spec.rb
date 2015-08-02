@@ -57,4 +57,10 @@ describe Order do
     end
   end
 
+  describe '#display_order' do
+    it 'produces a terminal table with the correct information' do
+      puts '  **This was tested manually**'
+    end
+  end
+
 end

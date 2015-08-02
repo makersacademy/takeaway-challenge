@@ -25,8 +25,13 @@ class Order
     restaurant.get_price food_item
   end
 
-  def display_order
-
+  def display_order restaurant
+    headings = ["Dish", "Quantity", "Unit price"]
+    rows = []
+    order_summary.each {|item, quantity| rows.push([item, quantity, get_price(restaurant, item)]) }
+    rows.push(["Order Total", order_summary.values.inject(:+), total_cost])
+    table = Terminal::Table.new :headings => headings, :rows => rows
+    puts table
   end
 
 end

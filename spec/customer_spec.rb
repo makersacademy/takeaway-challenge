@@ -31,13 +31,21 @@ describe Customer do
     end
   end
 
+  describe '#display_order' do
+    it 'sends a display_order message to the order object' do
+      subject.select_restaurant restaurant
+      subject.create_order orderClass
+      expect(order).to receive(:display_order).with(restaurant)
+      subject.display_order
+    end
+  end
+
   describe '#submit_order' do
     it 'asks the restaurant to send the customer a confirmation text' do
       subject.select_restaurant restaurant
       allow(restaurant).to receive( :send_text )
       subject.submit_order
     end
-
   end
 
 end

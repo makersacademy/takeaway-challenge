@@ -26,6 +26,10 @@ class Customer
     order.add restaurant, food_item, num
   end
 
+  def display_order
+    order.display_order restaurant
+  end
+
   def submit_order
     restaurant.send_text self
   end
