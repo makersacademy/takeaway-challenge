@@ -9,11 +9,9 @@ class Menu
   end
 
   def view_dishes
-    view = ''
-    dishes.each do |item, price|
-      view << "#{item} price:£#{price}\n"
-    end
-    view
+    menu_view = ''
+    dishes.each { |item, price| menu_view << "#{item} price:£#{price}\n" }
+    menu_view
   end
 end
 
