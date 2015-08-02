@@ -25,7 +25,7 @@ describe Restaurant do
 
     it "ignore non menu items" do
       restaurant = described_class.new( { menu: menu_class, dishes: { rice: 10.99, pizza: 5.99 }, messenger: messenger_class } )
-      expect(messenger_class).to receive(:send_message).with(off_menu_order)
+      expect(messenger).to receive(:send_message).with(off_menu_order)
       restaurant.place_order(off_menu_order)
     end
 
@@ -36,7 +36,7 @@ describe Restaurant do
 
     it "confirms order if correct" do
       restaurant = described_class.new( { menu: menu_class, dishes: { rice: 10.99, pizza: 5.99 }, messenger: messenger_class } )
-      expect(messenger_class).to receive(:send_message).with(order)
+      expect(messenger).to receive(:send_message).with(order)
       restaurant.place_order(order)
     end
   end
