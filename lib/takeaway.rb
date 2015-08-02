@@ -48,12 +48,16 @@ class TakeAway
     order.delete("#{dish} x #{quantity}")
   end
 
-  def confirm_order
+  def order_confirmed?
     puts "Please confirm that your order is correct by typing Y for Yes or N for No."
     puts show_order
     confirmation = gets.chomp
+    confirmation = "Y" ? true : false
+  end
+
+  def confirm_order
     delivery_time = Time.new + 3600
-    confirmation == "Y" ? send_message(delivery_time) : "Please edit your order."
+    order_confirmed? ? send_message(delivery_time) : "Please edit your order."
   end
 
   private
@@ -63,7 +67,6 @@ class TakeAway
     order.each { |item, price| order_output += "#{item}: £#{price}, " }
     order_output
   end
-
 
   def send_message(delivery_time)
     account_sid = 'ACd18bfc872e98296bfd513c3537d79945'
