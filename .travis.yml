@@ -4,3 +4,4 @@ before_install:
 - sed -i '2d' Gemfile
 
 script: bundle exec rspec spec
+sudo: required
