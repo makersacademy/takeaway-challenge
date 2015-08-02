@@ -10,6 +10,10 @@ describe Takeaway do
       expect(takeaway).to receive(:exact_sum)
       takeaway.place_order(:chicken, 2)
     end
+
+    it "should raise error if dish is not on the menu" do
+      expect { takeaway.place_order(:spaghetti, 2) }.to raise_error "Sorry, that dish is not on the menu."
+    end
   end
 
   describe "#exact_sum" do

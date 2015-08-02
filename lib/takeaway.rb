@@ -10,6 +10,7 @@ class Takeaway
   end
 
   def place_order(dish, quantity)
+    fail "Sorry, that dish is not on the menu." unless list.keys.include?(dish)
     quantity.times { recorded_orders << dish }
     exact_sum
   end
