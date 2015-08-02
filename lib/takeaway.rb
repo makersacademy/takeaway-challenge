@@ -22,29 +22,29 @@ class Takeaway
 
   private
 
-  def verify_order order, total
-    verify_items(order)
-    verify_total(order, total)
-  end
-
-  def verify_total order, total
-    raise "Expected total incorrect." unless calculate_total(order) == total
-  end
-
-  def verify_items order
-    order.keys.each do |item|
-      raise "#{item} not on menu." unless @menu.keys.include? item
+    def verify_order order, total
+      verify_items(order)
+      verify_total(order, total)
     end
-  end
 
-  def calculate_total order
-    total = 0
-    order.each { |item, quantity| total += @menu[item] * quantity }
-    total
-  end
+    def verify_total order, total
+      raise "Expected total incorrect." unless calculate_total(order) == total
+    end
 
-  def confirm_order phonenumber
-    @sms_sender.send_confirmation_sms(phonenumber)
-  end
+    def verify_items order
+      order.keys.each do |item|
+        raise "#{item} not on menu." unless @menu.keys.include? item
+      end
+    end
+
+    def calculate_total order
+      total = 0
+      order.each { |item, quantity| total += @menu[item] * quantity }
+      total
+    end
+
+    def confirm_order phonenumber
+      @sms_sender.send_confirmation_sms(phonenumber)
+    end
 
 end
