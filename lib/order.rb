@@ -42,7 +42,7 @@ class Order
 
   private
 
-  def send_sms customer_number
+  def send_sms
     customer_number = gets.chomp
 
     account_sid = 'ACfed1f4665fc636698782b7f3bf434687'
