@@ -78,10 +78,12 @@ describe TakeAway do
       end
 
       it "returns string if confirmation is No" do
+        allow(subject).to receive(:gets).and_return("N")
         expect(subject.confirm_order).to eq("Please edit your order.")
       end
 
       it "sends text if confirmation is Yes" do
+        allow(subject).to receive(:gets).and_return("Y")
         expect(subject).to receive(:send_message)
         subject.confirm_order
       end

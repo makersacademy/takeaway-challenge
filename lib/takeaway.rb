@@ -48,16 +48,12 @@ class TakeAway
     order.delete("#{dish} x #{quantity}")
   end
 
-  def order_confirmed?
+  def confirm_order
     puts "Please confirm that your order is correct by typing Y for Yes or N for No."
     puts show_order
     confirmation = gets.chomp
-    confirmation = "Y" ? true : false
-  end
-
-  def confirm_order
     delivery_time = Time.new + 3600
-    order_confirmed? ? send_message(delivery_time) : "Please edit your order."
+    confirmation == "Y" ? send_message(delivery_time) : "Please edit your order."
   end
 
   private
