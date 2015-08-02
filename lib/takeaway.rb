@@ -2,9 +2,10 @@ require_relative 'twilio_sender'
 
 class Takeaway
 
-  attr_reader :selection, :menu
+  attr_reader :menu, :twilio_sender
+  attr_accessor :selection
 
-  def initialize
+  def initialize twilio_sender
     @menu = {
       pizza: 9.99,
       chicken: 2.99,
@@ -14,6 +15,7 @@ class Takeaway
       wine: 7.99
       }
       @selection = {}
+      @twilio_sender = twilio_sender
   end
 
   def display_menu
@@ -34,10 +36,17 @@ class Takeaway
     total_price = 0.0
     selection.each { |item, quantity| get_price item
       total_price += (@price * quantity) }
-    price = total_price
+    @price = sprintf('%.2f', total_price)
+    "£#{@price}"
+
   end
 
-  def order phone_number
+  def order to, amount
+    if amount == total
+      self.twilio_sender.send_text(to, order_message)
+    else
+      fail 'Cannot confirm this order'
+    end
   end
 
   private
@@ -61,9 +70,13 @@ class Takeaway
   end
 
   def time_in_one_hour
+    time = Time.new
+    time += (60*60)
+    time.strftime("%H:%M")
   end
 
   def order_message
+    "Thanks! Your order should be delivered before #{time_in_one_hour}, The total is #{total}"
   end
 #it has a menu y
 #it can show a menu y
