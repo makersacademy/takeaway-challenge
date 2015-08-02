@@ -8,7 +8,7 @@ class Menu
 
   def view_dishes
     menu_view = ''
-    dishes.each { |item, price| menu_view << "#{item} price:£#{price}\n" }
+    dishes.each { | item, price | menu_view << "#{item} price:£#{price}\n" }
     menu_view
   end
 end

@@ -13,6 +13,13 @@ class Restaurant
     create_messenger
   end
 
+  def place_order order
+    check_order_total order
+    @messenger.send_message order
+  end
+
+  private
+
   def populate_menu
     @current_menu = @menu.new(@menu_content)
   end
@@ -20,13 +27,6 @@ class Restaurant
   def create_messenger
     @messenger = @messenger_to_use.new
   end
-
-  def place_order order
-    check_order_total order
-    @messenger.send_message order
-  end
-
-  private
 
   def check_order_total order
     total = total_order order
