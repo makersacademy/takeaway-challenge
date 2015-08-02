@@ -32,12 +32,12 @@ describe Takeaway do
 
     it "should call the method successful when true" do
       takeaway.place_order(:chicken, 2)
-      expect(takeaway).to receive(:successful).with(8)
+      expect(takeaway).to receive(:processing_order).with(8)
       takeaway.check(8)
     end
   end
 
-  describe "#successful" do
+  describe "#processing_order" do
     it "should return twilio message on iPhone" do
       twilio = (double :twilio)
       allow(takeaway).to receive(:make_twilio) { twilio }

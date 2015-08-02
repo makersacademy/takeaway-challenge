@@ -10,7 +10,7 @@ class Takeaway
   end
 
   def place_order(dish, quantity)
-    fail "Sorry, that dish is not on the menu." unless list.keys.include?(dish)
+    fail "Sorry, that dish is not on the menu." unless menu_include?(dish)
     quantity.times { recorded_orders << dish }
     exact_sum
   end
@@ -20,16 +20,26 @@ class Takeaway
   end
 
   def check(customer_input)
-    return successful(customer_input) if self.exact_sum == customer_input
+    return processing_order(customer_input) if correct?(customer_input)
     fail "Your order costs is incorrect"
   end
 
-  def successful(customer_input)
+  def processing_order(customer_input)
     make_twilio.text_message(customer_input)
   end
 
   def make_twilio
     TwilioMessage.new
+  end
+
+  private
+
+  def correct?(customer_input)
+    exact_sum == customer_input
+  end
+
+  def menu_include?(dish)
+    list.keys.include?(dish)
   end
 
 end
