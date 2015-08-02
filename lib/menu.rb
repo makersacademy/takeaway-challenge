@@ -1,4 +1,5 @@
 require_relative './dish.rb'
+require_relative './order.rb'
 
 class Menu
 
