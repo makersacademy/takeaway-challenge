@@ -1,5 +1,5 @@
-
-
+Takeaway Challenge
+==================
 
 Instructions
 -------
