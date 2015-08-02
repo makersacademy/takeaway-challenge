@@ -14,9 +14,16 @@ class Restaurant
     @current_menu = @menu.new(@menu_content)
   end
 
-  def check_order order
+  def place_order order, customer
+    check_order_total order
+    customer.send_confirmation_message
+  end
+
+  private
+
+  def check_order_total order
     total = total_order order
-    raise "total incorrect" unless total == order.total
+    raise "incorrect order" if total != order.total || total == 0
   end
 
   def total_order order
@@ -26,8 +33,5 @@ class Restaurant
     end
     total
   end
-
 end
 
-
-#ordered_items: { rice: 1, pizza: 1 }, total: 10.98 ) }
