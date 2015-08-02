@@ -13,7 +13,7 @@ class Takeaway
       beer: 0.99,
       cider: 0.99,
       wine: 7.99
-      }
+            }
     @selection = {}
     @twilio_sender = twilio_sender
   end
@@ -34,11 +34,11 @@ class Takeaway
 
   def total
     total_price = 0.0
-    selection.each { |item, quantity| get_price item
-      total_price += (@price * quantity) }
+    selection.each do |item, quantity| get_price item
+      total_price += (@price * quantity)
+      end
     @price = sprintf('%.2f', total_price)
     "£#{@price}"
-
   end
 
   def order to, amount
