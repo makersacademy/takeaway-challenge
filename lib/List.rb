@@ -34,6 +34,7 @@ class List
     food_order.each_key { |dish| sum += (available[dish] * food_order[dish]) }
     sum
   end
+
 end
 
 
