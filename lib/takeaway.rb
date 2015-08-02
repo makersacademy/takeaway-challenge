@@ -1,19 +1,23 @@
 class Takeaway
   
   attr_reader :menu, :order
+  attr_accessor :to_cook
   
   def initialize
-    @menu = { :burger => 4, :fries => 2, :coke => 1 }
+    @to_cook = []
     @order = []
+    total_price = 0
+  end
+
+  def menu
+     @menu = { "burger" => 4, "fries" => 2, "coke" => 1 } 
+  end
+
+  def order_in
+    # confirmataion text to go here
   end
   
-  def show_menu
-    menu
-  end
-  
-  def order_item item, quantity = 1
-    quantity.times do
-      order << menu.select { |choice| choice == item }
-    end
+  def whats_cooking
+    to_cook
   end
 end

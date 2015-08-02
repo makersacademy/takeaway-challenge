@@ -7,17 +7,14 @@ describe 'Features' do
     it { expect(takeaway.menu).not_to be_empty }
   end
 
-  describe '#ordering' do
-    it { expect(customer).to respond_to(:select_item) }
-#    it 'adds an item to an order' do
-#      customer.select_item :Burger, 1
-#      expect(takeaway.order).to eq [{:burger => 4}]
-#    end
-    it { expect(customer).to respond_to(:selection) }   
-  end
-  
-  describe '#customer' do
-    it { expect(customer).to respond_to(:check_menu) }
-      
-  end
+  describe '#customer' do 
+    describe '#ordering' do
+      it { expect(customer).to respond_to(:show_menu) }
+      it 'adds an item to an order' do
+        customer.order_item :Burger, 1
+        expect(customer.order).not_to be_empty
+      end
+      it { expect(customer).to respond_to(:view_order) }   
+    end
+  end 
 end
