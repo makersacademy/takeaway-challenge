@@ -12,10 +12,15 @@ class Messenger
   def send_message order
     body = generate_body
     message_details = { body: body, phone_number: order.contact_number }
-    send_to_twilio message_details
+    validate_phone_number message_details
   end
 
   private
+
+  def validate_phone_number message_details
+    raise "invalid phone number" unless message_details[:phone_number] =~ (/^\+\d{13}$/)
+    send_to_twilio message_details
+  end
 
   def generate_body
     delivery_time = calculate_delivery_time

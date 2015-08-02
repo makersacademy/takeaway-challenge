@@ -18,3 +18,10 @@ view dishes on menu
 
 ```
 pizza_hut.current_menu.view_dishes
+```
+
+
+set up an order
+```
+order = Order.new( { items: { rice: 1, pizza: 1 }, total: 16.98, contact_number: '+4407572437603'}  )
+ ```
