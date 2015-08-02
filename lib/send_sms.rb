@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'twilio-ruby'
 
-class Send_sms
+class SendSms
 
   attr_reader :message
 

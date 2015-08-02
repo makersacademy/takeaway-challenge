@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject{Takeaway.new(sms_sender)}
+  subject { Takeaway.new(sms_sender) }
   let(:sms_sender) { double(:sms_sender) }
 
   it "responds to #menu"do
