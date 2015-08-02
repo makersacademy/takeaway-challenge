@@ -1,8 +1,8 @@
 require 'customer'
 
 describe Customer do
-  let(:dish) { double :dish, price: 9.99}
-  let(:dish2) { double :dish, price: 12}
+  let(:dish) { double :dish, price: 9.99 }
+  let(:dish2) { double :dish, price: 12 }
   before { subject.place_order dish, 1 }
 
   # select method is private

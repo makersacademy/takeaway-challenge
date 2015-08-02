@@ -1,5 +1,5 @@
 require_relative 'dish'
-require_relative 'dishes'
+require_relative 'menu'
 require 'twilio-ruby'
 
 class Customer
@@ -8,15 +8,16 @@ class Customer
   def initialize
     @orders = {}
     @quantity = 0
-    menu
   end
 
   def checkout
-    sms
+    p 'Please enter Yes to confirm checkout'
+    answer = gets.chomp.upcase
+    answer == 'Yes' ? sms : 'No worries'
   end
 
-  def menu
-    $all_dish
+  def see_menu
+    $menu
   end
 
   def place_order(dish, quantity)
@@ -45,7 +46,7 @@ class Customer
   end
 
   def find(dish)
-    $all_dish.select { |key| key == dish }
+    $menu.select { |key| key == dish }
   end
 
   def number_of_items

@@ -1,16 +1,16 @@
 require_relative 'dish'
 
-class Dishes
+class Menu
   attr_reader :dish
 
   def initialize
-    $all_dish = {}
+    $menu = {}
     premade_dishes
   end
 
   def new_dish(name, price)
     Dish.new(name, price)
-    $all_dish[name] = price
+    $menu[name] = price
   end
 
   def premade_dishes
