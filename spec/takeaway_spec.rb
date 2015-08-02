@@ -3,7 +3,7 @@ require 'takeaway'
 describe TakeAway do
   let(:menu) { double(:menu) }
   before(:each) do
-    allow(menu).to receive(:dishes).and_return( "chilli squid" => 3.95, "pork wonton" => 2.95 )
+    allow(menu).to receive(:dishes).and_return("chilli squid" => 3.95, "pork wonton" => 2.95)
   end
 
   it "can add a menu" do

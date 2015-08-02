@@ -25,7 +25,7 @@ class Menu
 
   attr_accessor :dishes
 
-  def initialize(dishes=JAPANESE_MENU)
+  def initialize(dishes = JAPANESE_MENU)
     @dishes = dishes
   end
 

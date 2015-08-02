@@ -1,4 +1,3 @@
-#require 'rubygems'
 require 'twilio-ruby'
 
 class TakeAway
@@ -19,13 +18,12 @@ class TakeAway
     menu
   end
 
-  def place_order(items={})
+  def place_order(items = {})
     items.each do |dish, quantity|
       raise "#{dish.capitalize} is not on the menu." unless menu.include?(dish)
       order["#{dish} x #{quantity}"] = total_cost_per_item(menu[dish], quantity)
     end
   end
-
 
   def grand_total
     total_in_pence = prices.inject(:+)
@@ -68,10 +66,10 @@ class TakeAway
     account_sid = 'ACd18bfc872e98296bfd513c3537d79945'
     auth_token = 'bb86f5ef30b2e093ec06255279f7ece8'
     @client = Twilio::REST::Client.new account_sid, auth_token
-      @client.account.messages.create(
-        from: '+441698313072',
-        to: '+447761239717',
-        body: "Thank you! Your order was placed and will be delivered before #{delivery_time.hour}:#{delivery_time.min}"
+    @client.account.messages.create(
+      from: '+441698313072',
+      to: '+447761239717',
+      body: "Thank you! Your order was placed and will be delivered before #{delivery_timhour}:#{delivery_time.min}"
                                       )
   end
 end
