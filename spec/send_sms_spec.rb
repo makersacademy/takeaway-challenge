@@ -2,7 +2,7 @@ require 'send_sms'
 
 describe Send_sms do
 
-  let(:phonenumber){double :phonenumber}
+  let(:phonenumber) { double :phonenumber }
 
   it "repsonds to send_confirmation_sms" do
     expect(subject).to respond_to(:send_confirmation_sms)

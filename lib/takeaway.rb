@@ -1,14 +1,14 @@
 class Takeaway
-MENU = {
-  "Breaded Koala" => 28.90,
-  "Robust cherry pie" => 4.20,
-  "Beetle soup" => 4.20,
-  "Antelope thigh" => 30.10,
-  "Panda cub surpise" => 2100.00,
-  "Grilled banana" => 3.20
-}
+  MENU = {
+    "Breaded Koala" => 28.90,
+    "Robust cherry pie" => 4.20,
+    "Beetle soup" => 4.20,
+    "Antelope thigh" => 30.10,
+    "Panda cub surpise" => 2100.00,
+    "Grilled banana" => 3.20
+  }
 
-attr_reader :menu
+  attr_reader :menu
 
   def initialize sms_sender
     @menu = MENU

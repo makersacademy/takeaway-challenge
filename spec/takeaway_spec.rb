@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   subject{Takeaway.new(sms_sender)}
-  let(:sms_sender) { double(:sms_sender)}
+  let(:sms_sender) { double(:sms_sender) }
 
   it "responds to #menu"do
     expect(subject).to respond_to(:menu)
@@ -24,16 +24,16 @@ describe Takeaway do
   describe "#place order" do
 
     before(:each) do
-      @order_list = {"Grilled banana" => 2}
+      @order_list = { "Grilled banana" => 2 }
     end
 
     it "should raise error if item not on menu" do
-      bad_order_list = {"Koala Pie" => 4}
-      expect{subject.place_order(bad_order_list, "£20", :phonenumber)}.to raise_error "Koala Pie not on menu."
+      bad_order_list = { "Koala Pie" => 4 }
+      expect { subject.place_order(bad_order_list, "£20", :phonenumber) }.to raise_error "Koala Pie not on menu."
     end
 
     it "should raise_error if expected order total is incorrect" do
-      expect{subject.place_order(@order_list, 6, :phonenumber)}.to raise_error "Expected total incorrect."
+      expect { subject.place_order(@order_list, 6, :phonenumber) }.to raise_error "Expected total incorrect."
     end
 
     it "should call confirm_order" do
