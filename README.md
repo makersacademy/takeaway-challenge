@@ -1,13 +1,13 @@
 ##What is this?
-The takeaway challenge is a weekend challenge from the 2nd week of MakersAcademy: still focusing on implementing good OOP & TDD principles.
+The takeaway challenge is a weekend challenge from the 2nd week of MakersAcademy: the focus of this week was again on implementing good OOP & TDD principles.
 
 NB. For testing, this project uses RSpec 3 notation
 
 ##Getting Started
 
 You will need a free Twilio account:
--[] Enter the AUTH_SID & AUTH_TOKEN in the takeaway-challenge/lib/restaurant.rb file
--[] Only enter phone numbers for customers that have been verified for your Twilio account (if using the free account)
+- [] Enter the AUTH_SID & AUTH_TOKEN in the takeaway-challenge/lib/restaurant.rb file
+- [] Only enter phone numbers for customers that have been verified for your Twilio account (if using the free account)
 
 To create a new restaurant (menu provided):
 ```ruby
