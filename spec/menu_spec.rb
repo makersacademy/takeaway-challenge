@@ -6,5 +6,9 @@ describe Menu do
 		expect(subject.food['salmon sashimi']).to eq(4.00)
 	end
 
+	xit 'returns a list of food items and prices' do
+		expect()
+	end
+
 	
 end

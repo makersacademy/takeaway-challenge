@@ -28,6 +28,9 @@ describe Order do
 	end
 
 	context 'placing order' do
+		it 'should raise error if order list is empty' do
+			expect{subject.place_order}.to raise_error "You have not selected any items"
+		end
 
 	end
 	

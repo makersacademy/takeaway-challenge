@@ -1,10 +1,12 @@
 class Order 
 
 	attr_reader :menu, :order
+	attr_accessor :restaurant
 
 	def initialize
 		@order_list = {}
 		@food = Menu.new.food
+		@restaurant = Restaurant.new
 	end
 
 	def show_menu
@@ -17,7 +19,7 @@ class Order
 	end
 
 	def total_cost
-		fail "You have not selected any items" if @order_list.empty?
+		fail "You have not selected any items" if nothing_ordered?
 		total = 0 
     @order_list.each do |dish, number| 
       total += number * @food[dish]
@@ -30,13 +32,19 @@ class Order
 	end
 
 	def place_order
-		send_confirmation_message
+		fail "You have not selected any items" if nothing_ordered?
+		@restaurant.send_confirmation_message
+		return "Thank you for your order! It will arrive at #{Time.new}"
 	end
 
 private
 	
 	def item_on_menu?(dish)
 		@food.has_key?(dish)
+	end
+
+	def nothing_ordered?
+		@order_list.empty?
 	end
 
 end
