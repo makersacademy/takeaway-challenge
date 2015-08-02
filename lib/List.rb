@@ -9,7 +9,7 @@ class List
 
   def initialize
     @available = Hash.new
-    @food_order = Hash.new
+    @food_order = Hash.new { |hash, key| hash[key] = 0 }
   end
 
   def load_predefined_dishes
@@ -22,7 +22,7 @@ class List
 
   def select_food_order *dish_names
     fail 'Your food selection is not available.' unless food_available? dish_names
-    dish_names.each { |name| food_order[name] = available[name] }
+    dish_names.each { |name| food_order[name] += 1 }
   end
 
   def food_available? selected_food
@@ -31,7 +31,15 @@ class List
 
   def food_order_sum
     sum = 0
-    food_order.each_value { |price| sum += price }
+    food_order.each_key { |dish| sum += (available[dish] * food_order[dish]) }
     sum
   end
 end
+
+# list = List.new
+# list.load_predefined_dishes
+# list.select_food_order :risotto, :lasagna, :risotto
+# list.food_order
+
+
+
