@@ -1,5 +1,6 @@
 require_relative './dish.rb'
 require_relative './order.rb'
+require 'terminal-table'
 
 class Menu
 
@@ -9,9 +10,26 @@ class Menu
 
   def initialize
     @dishes = DEFAULT_MENU
+    show
   end
 
   def add_dish name, price
     dishes[name] = price
+  end
+
+  def show
+    rows = []
+    
+    dishes.each do |dish, amount|
+      row = [ dish, ("£" + (sprintf "%.2f", amount)) ]
+      rows << row
+    end
+
+    table = Terminal::Table.new
+
+    table.rows = rows
+    table.title = "MENU"
+
+    puts table
   end
 end
