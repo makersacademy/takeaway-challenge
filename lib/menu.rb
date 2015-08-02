@@ -21,7 +21,7 @@ class Menu
     "korean sweet spicy & chicken" => 8.95,
     "kimchee stew" => 8.95,
     "aubergine & tofu (v)" => 7.95
-    }
+                    }
 
   attr_accessor :dishes
 

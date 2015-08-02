@@ -1,3 +1,5 @@
+![Travis CI Build Working](https://travis-ci.org/katylouise/takeaway-challenge.svg?branch=master)
+
 Takeaway Challenge
 ==================
 
