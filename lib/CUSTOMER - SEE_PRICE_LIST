@@ -1,0 +1,38 @@
+CUSTOMER - SEE_PRICE_LIST
+CUSTOMER - ORDER_DISH (ARG: SPECIFIC AMOUNT)
+
+CUSTOMER - CHECK_ORDER
+CUSTOMER - RECEIVE_CONFIRMATION_TEXT
+
+REQUIRED:
+price_list = {x:1, y:2, z:3}
+
+place_order()
+fail "Bill not correct" if xxx
+"Thank you! Your order was placed and will be delivered before 18:52"
+
+
+DOMAIN MODEL 
+
+Class customer
+	customer.see_menu
+		display contents of the menu hash
+	customer.place_order (item, quantity, price)
+		takes item, quantity and sums them (by calling sum_total)
+		returns hash with value as the total
+	customer.verify_order
+		
+Class Restaurant
+menu = {x:1, y:2, z:3}
+
+	restaurant.sum_order
+
+	restaurant.send_confirmation ()
+	"Thank you! Your order was placed and will be delivered before 18:52"
+
+
+	#	it "allows customer to place an order" do 
+#	expect(subject).to respond_to :place_order
+#	end
+
+

@@ -1,10 +1,10 @@
-require_relative './restaurant.rb'
+require_relative './menu.rb'
 
 
 class Customer
 
 def see_menu
-	Restaurant.show_menu
+
 end
 
 	
