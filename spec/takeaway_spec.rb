@@ -41,7 +41,7 @@ describe TakeAway do
     end
 
     it "raises error if item is not on the menu" do
-      expect{ subject.place_order("chilli prawns" => 1) }.to raise_error "Chilli prawns is not on the menu."
+      expect { subject.place_order("chilli prawns" => 1) }.to raise_error "Chilli prawns is not on the menu."
     end
 
     it "adds multiple items to order" do
@@ -60,14 +60,13 @@ describe TakeAway do
         expect(subject.order).to be_empty
       end
     end
-    describe "#show_order" do
-      before(:each) do
-      allow(menu.dishes).to receive(:[]).with("chilli squid").and_return(3.95)
-      subject.place_order("chilli squid" => 1)
-      end
 
+    describe "#show_order" do
       it "displays the current order" do
-        expect(subject.show_order).to eq("chilli squid x 1" => "3.95")
+        allow(menu.dishes).to receive(:[]).with("chilli squid").and_return(3.95)
+        subject.place_order("chilli squid" => 1)
+        order = "chilli squid x 1: £3.95\nTotal: £3.95"
+        expect(subject.show_order).to eq(order)
       end
     end
 

@@ -1,5 +1,5 @@
 class Menu
-  MENU = {
+  JAPANESE_MENU = {
     "chilli squid" => 3.95,
     "duck spring rolls (2)" => 3.95,
     "vegetable spring rolls (v)" => 3.95,
@@ -25,7 +25,7 @@ class Menu
 
   attr_accessor :dishes
 
-  def initialize(dishes=MENU)
+  def initialize(dishes=JAPANESE_MENU)
     @dishes = dishes
   end
 

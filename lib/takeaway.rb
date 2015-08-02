@@ -1,8 +1,7 @@
-class TakeAway
-
-require 'rubygems' # not necessary with ruby 1.9 but included for completeness
+#require 'rubygems'
 require 'twilio-ruby'
 
+class TakeAway
 
   attr_reader :menu
   attr_accessor :order, :prices
@@ -28,7 +27,12 @@ require 'twilio-ruby'
   end
 
   def show_order
-    order
+    order_output = ""
+    order.each do |item, price|
+      order_output += "#{item}: £#{price}, "
+    end
+    order_output += "Total: £#{grand_total}"
+    order_output
   end
 
   def total_cost_per_item(price, quantity)
@@ -49,6 +53,7 @@ require 'twilio-ruby'
   def confirm_order
     puts "Please confirm that your order is correct by typing Y for Yes or N for No."
     show_order
+    grand_total
     confirmation = gets.chomp
     if confirmation == "Y"
       delivery_time = Time.new + 3600
