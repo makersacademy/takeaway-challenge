@@ -24,4 +24,9 @@ class Customer
 		selected_dishes.each_value{|price| @total += price} if @total == 0
    	@total
 	end
+
+	def payment_requested amount
+		raise 'Payment does not match total' if (amount != total)
+	end 
+
 end 

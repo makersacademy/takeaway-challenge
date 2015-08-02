@@ -16,12 +16,18 @@ describe Customer do
 		end 
 	end 
 
-	describe 'total_price' do
-		it 'adds up the prices of the selected dishes' do 
-			subject.select_dish("Classic Burger")
-			subject.select_dish("Cheese Burger")
-			expect(subject.total_price).to eq 14.7
-		end 
+	it 'adds up the prices of the selected dishes' do 
+		subject.select_dish("Classic Burger")
+		subject.select_dish("Cheese Burger")
+		expect(subject.total_price).to eq 14.7
 	end 
+
+	describe '#payment_requested' do
+
+		it 'raises an error if the payment resquested doesnt match total' do
+			subject.select_dish("Classic Burger")
+			expect{subject.payment_requested(20)}.to raise_error 'Payment does not match total'
+		end 
+	end
 
 end 
