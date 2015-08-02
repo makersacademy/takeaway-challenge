@@ -9,11 +9,29 @@ class Messenger
     @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
   end
 
-  def send_message
+  def send_message order
+    body = generate_body
+    message_details = { body: body, phone_number: order.contact_number }
+    send_to_twilio message_details
+  end
+
+  private
+
+  def generate_body
+    delivery_time = calculate_delivery_time
+    text = "your order has been placed delivery time: #{delivery_time}"
+  end
+
+  def calculate_delivery_time
+    time = Time.now + 60*60
+    delivery_time =  time.strftime("%H:%M")
+  end
+
+  def send_to_twilio message_details
     @client.account.messages.create({
       :from => '+441695302059',
-      :to => '+4407572437603',
-      :body => 'Hello Lewis',
+      :to => message_details[:phone_number],
+      :body => message_details[:body],
     })
   end
 end
