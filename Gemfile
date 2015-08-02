@@ -7,3 +7,4 @@ gem 'coveralls', require: false
 gem 'rubocop-rspec'
 gem 'capybara'
 gem 'rspec-collection_matchers'
+gem 'twilio-ruby'

@@ -4,7 +4,7 @@ class List
                     :burrata => 6, :lasagna => 11,
                     :risotto => 10, :parmigiana => 12.50,
                     :quinoa_salad => 7.50
-                  }
+                    }
   attr_accessor :available, :food_order
 
   def initialize
@@ -35,11 +35,6 @@ class List
     sum
   end
 end
-
-# list = List.new
-# list.load_predefined_dishes
-# list.select_food_order :risotto, :lasagna, :risotto
-# list.food_order
 
 
 
