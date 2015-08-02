@@ -1,7 +1,7 @@
 require 'twilio_sender'
 require 'twilio-ruby'
 
-describe Twilio_Sender do
+describe TwilioSender do
 
   it 'can send a message' do
     messages = double :messages, create: nil

@@ -13,14 +13,15 @@ describe Takeaway do
   it 'can choose items and quantities from the menu' do
     subject.select_items(:chicken, 1)
     subject.select_items(:beer, 3)
-    expect(subject.selection).to include({ chicken: 1, beer: 3 })
+    expect(subject.selection).to include(chicken: 1, beer: 3)
   end
 
   it 'can add multiple of the same item separately' do
     subject.select_items(:chicken, 1)
     subject.select_items(:chicken, 1)
-    expect(subject.selection).to include({ chicken: 2 })
+    expect(subject.selection).to include(chicken: 2)
   end
+
   # made private method
   # it 'can get the price of an item' do
   #     expect(subject.get_price(:wine)).to eq(7.99)
@@ -42,7 +43,7 @@ describe Takeaway do
 
   it 'raises an error if the amount is not confirmed when ordering' do
     subject.select_items(:beer, 1)
-    expect{ subject.order('447825786185', 0.00) }.to raise_error('Cannot confirm this order')
+    expect { subject.order('447825786185', 0.00) }.to raise_error('Cannot confirm this order')
   end
 
 end
