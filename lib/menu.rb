@@ -8,8 +8,8 @@ class Menu
   end
 
   def show_menu
-    puts 'Thank you for checking out our restaurant. Here is our menu:'
+    'Thank you for checking out our restaurant. Here is our menu:'
     dishes.each { |food, price| puts "#{food}: £#{price}" }
-    puts 'Please take your time.'
+    'Please take your time.'
   end
 end
