@@ -1,3 +1,4 @@
+
 class Order
   MENU = { Pizza: 5,
            Pasta: 4,
@@ -6,10 +7,12 @@ class Order
 
   attr_reader :menu, :ordered_dishes
 
-  def initialize menu = MENU
+  def initialize menu = MENU, twilio_sms
     @menu = menu
     @ordered_dishes = {}
     @total = 0
+    @twilio_sms = twilio_sms
+    @number = '+447460959285'
   end
 
   def show_menu
@@ -38,6 +41,10 @@ class Order
       result += ("#{dish}, £ #{menu[dish]} * #{quantity}\n")
     end
     result += "Total amount: #{calculate_total}"
+  end
+
+  def confirm_order
+    @twilio_sms.send_order_sms(@number)
   end
 
 end
