@@ -17,7 +17,7 @@ describe Menu do
 
   describe "#view_dishes" do
     it "displays list of dishes and prices" do
-      expect(subject.view_dishes).to eq({ rice: 10.99, pizza: 5.99 })
+      expect(subject.view_dishes).to eq("rice price:£10.99\npizza price:£5.99\n")
     end
   end
 

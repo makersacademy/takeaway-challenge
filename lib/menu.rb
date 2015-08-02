@@ -9,12 +9,13 @@ class Menu
   end
 
   def view_dishes
+    view = ''
     dishes.each do |item, price|
-      puts "#{item} price: £#{price}"
+      view << "#{item} price:£#{price}\n"
     end
+    view
   end
 end
-
 
 
 
