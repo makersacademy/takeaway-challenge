@@ -1,22 +1,29 @@
 require_relative "order.rb"
+require_relative "messenger.rb"
 
 class Restaurant
 
-  attr_reader :current_menu
+  attr_reader :current_menu, :messenger
 
   def initialize options
     @menu = options[:menu]
     @menu_content = options[:options]
+    @messenger_to_use = options[:messenger]
     populate_menu
+    create_messenger
   end
 
   def populate_menu
     @current_menu = @menu.new(@menu_content)
   end
 
-  def place_order order, customer
+  def create_messenger
+    @messenger = @messenger_to_use.new
+  end
+
+  def place_order order
     check_order_total order
-    customer.send_confirmation_message
+    @messenger.send_message order
   end
 
   private
