@@ -35,6 +35,8 @@ order.place_order 35
 ```
 If price is correct, you will be asked to enter your phone number and you will receive a confirmation text message.
 
+NB Above is what I have implemented; below is the original challenge text.
+
 
 Instructions
 -------
