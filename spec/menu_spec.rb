@@ -8,8 +8,7 @@ describe Menu do
 
   describe "#see_list" do
     it "should return an array of all the dishes" do
-      list = { chicken: 4, lamb: 7, vegetables: 3, latte: 2 }
-      expect(subject.see_content).to eq list.keys
+      expect(subject.see_content).to eq "They're all delicious!"
     end
   end
 end

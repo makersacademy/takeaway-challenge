@@ -5,7 +5,6 @@ describe Takeaway do
   before(:each) { allow(menu).to receive(:content).and_return({ chicken: 4, lamb: 7, vegetables: 3, latte: 2 }) }
   let(:takeaway) { Takeaway.new(menu) }
 
-
   describe "#place_order" do
     it "should return total costs of order" do
       expect(takeaway).to receive(:exact_sum)

@@ -10,5 +10,6 @@ class Menu
     puts "Dishes".ljust(10) + "Prices".rjust(10)
     puts "--------------------"
     content.keys.each { |x| puts (x.capitalize.to_s).ljust(10) + content[x].to_s.rjust(10) }
+    "They're all delicious!"
   end
 end
