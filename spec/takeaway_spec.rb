@@ -17,17 +17,17 @@ describe TakeAway do
 
     it "adds item to order hash" do
       subject.place_order("chilli squid" => 1)
-      expect(subject.order).to include("chilli squid x 1")
+      expect(subject.order).to include("chilli squid")
     end
 
     it "adds correct quantity of item to order" do
         subject.place_order("chilli squid" => 3)
-        expect(subject.order).to include("chilli squid x 3")
+        expect(subject.order["chilli squid"]).to eq(3)
       end
 
     it "calculates cost per item correctly" do
       subject.place_order("chilli squid" => 3)
-      expect(subject.total_cost_per_item(3.95, 3)).to eq("11.85")
+      expect(subject.total_cost_per_item("chilli squid", 3)).to eq(1185)
     end
 
     it "raises error if item is not on the menu" do
@@ -75,13 +75,13 @@ describe TakeAway do
 
       it "returns string if confirmation is No" do
         allow(subject).to receive(:gets).and_return("N")
-        expect(subject.confirm_order).to eq("Please edit your order.")
+        expect(subject.confirm_order(+441123456789)).to eq("Please edit your order.")
       end
 
       it "sends text if confirmation is Yes" do
         allow(subject).to receive(:gets).and_return("Y")
         expect(subject).to receive(:send_message)
-        subject.confirm_order
+        subject.confirm_order(+441123456789)
       end
     end
   end

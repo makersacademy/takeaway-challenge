@@ -1,13 +1,13 @@
 require 'twilio-ruby'
 
 class TakeAway
+  SECRET_KEY = ENV['SECRET_KEY']
 
   attr_reader :menu
-  attr_accessor :order, :prices
+  attr_accessor :order
 
   def initialize
     @order = {}
-    @prices = []
   end
 
   def add_menu(menu)
@@ -30,16 +30,14 @@ class TakeAway
     order[item] = current_quantity + quantity
   end
 
-
   def grand_total
-    total_in_pence = prices.inject(:+)
+    total_in_pence = 0
+    order.each { |item, quantity| total_in_pence += total_cost_per_item(item, quantity) }
     "%.2f" % (total_in_pence / 100.0)
   end
 
   def total_cost_per_item(item, quantity)
     price_in_pence = ((menu[item] * 100).round * quantity)
-    prices << price_in_pence
-    "%.2f" % (price_in_pence / 100.0)
   end
 
   def show_order
@@ -48,12 +46,9 @@ class TakeAway
   end
 
   def delete_from_order(item, quantity)
-    if quantity = order[item]
-      order.delete("#{item}")
-    else
-      new_quantity = order[item] - quantity
-      order[item] = new_quantity
-    end
+    new_quantity = order[item] - quantity
+    order.delete("#{item}")
+    order[item] = new_quantity if new_quantity > 0
   end
 
   def confirm_order(phone_number)
@@ -69,8 +64,8 @@ class TakeAway
   def print_order_items_with_cost
     order_output = ""
     order.each do |item, quantity|
-      price = total_cost_per_item(item, quantity)
-      order_output += "#{item} x #{quantity}: £#{price}, "
+      price_in_pence = total_cost_per_item(item, quantity)
+      order_output += "#{item} x #{quantity}: £%.2f, " % (price_in_pence / 100.0)
     end
     order_output
   end
@@ -81,9 +76,9 @@ class TakeAway
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.account.messages.create(
       from: '+441698313072',
-      to: phonenumber,
+      to: phone_number,
       body: "Thank you! Your order was placed and will be delivered before #{delivery_time.hour}:#{delivery_time.min}"
-                                      )
+                                    )
   end
 end
 
