@@ -16,14 +16,20 @@ class Menu
   def add_to_basket(item, quantity=1)
     raise "Please order from menu" unless check_for_food(item)
     include_items(item, quantity)
-    item.to_s * quantity
+    [item, quantity]#.to_s * quantity
   end
+
+  def total
+    
+  end
+
+  private
 
   def check_for_food(item)
     dishes.has_key?(item)
   end
 
   def include_items(item, quantity)
-    dishes.select {|food, price|quantity.times { basket << food } if food == item}
+    dishes.select {|food, price|quantity.times { basket << {food => price} } if food == item}
   end
 end

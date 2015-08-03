@@ -18,14 +18,18 @@ describe Menu do
   end
 
   it "is capable of adding an item to basket" do
-    expect(subject.add_to_basket(:burger)).to eq(subject.basket.join)
+    expect(subject.add_to_basket(:burger)).to eq([:burger, 1])
   end
 
   it "is capable of adding multipes of the same item to basket" do
-    expect(subject.add_to_basket(:burger, 2)).to eq(subject.basket.join)
+    expect(subject.add_to_basket(:burger, 2)).to eq([:burger, 2])
   end
 
   it 'does not accepts orders outside the menu' do
     expect{subject.add_to_basket(:pizza)}.to raise_error "Please order from menu"
+  end
+
+  it 'should responds to #total' do
+    expect(subject).to respond_to(:total)
   end
 end
