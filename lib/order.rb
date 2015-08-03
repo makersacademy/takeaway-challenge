@@ -5,8 +5,8 @@ class Order
 
 	def initialize
 		@order_list = {}
-		@food = Menu.new.food
-		@restaurant = Restaurant.new
+		@food = Menu.new.food 	# need to remove dependencies
+		@restaurant = Restaurant.new   # need to remove dependencies
 	end
 
 	def show_menu
@@ -24,7 +24,7 @@ class Order
     @order_list.each do |dish, number| 
       total += number * @food[dish]
     end
-    "Total cost of yout meal is £#{total}"
+    "Total cost of yout meal is £#{'%.2f' % total}"
 	end
 
 	def show_order
@@ -34,7 +34,7 @@ class Order
 	def place_order
 		fail "You have not selected any items" if nothing_ordered?
 		@restaurant.send_confirmation_message
-		return "Thank you for your order! It will arrive at #{Time.new}"
+		return "Thank you for your order! It will arrive at #{Time.new.hour + 1}:#{Time.new.min}"
 	end
 
 private
