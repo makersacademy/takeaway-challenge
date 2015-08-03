@@ -29,7 +29,12 @@ describe Menu do
     expect{subject.add_to_basket(:pizza)}.to raise_error "Please order from menu"
   end
 
-  it 'should responds to #total' do
+  it 'responds to #total' do
     expect(subject).to respond_to(:total)
+  end
+
+  it 'shows the basket #total' do
+    subject.add_to_basket(:burger, 2)
+    expect(subject.basket_total).to eq(10)
   end
 end
