@@ -10,10 +10,6 @@ describe TakeAway do
     expect(subject.add_menu(menu)).to eq(menu.dishes)
   end
 
-  it "can show the menu" do
-    expect(subject.show_menu).to eq(subject.menu)
-  end
-
   describe "#place_order" do
     before(:each) do
       subject.add_menu(menu)
