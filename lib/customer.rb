@@ -13,7 +13,7 @@ class Customer
   def checkout
     p 'Please enter Yes to confirm checkout'
     answer = gets.chomp.upcase.to_s
-    answer == 'Yes' ? sms
+    answer == 'Yes' ? sms : 'No worries checkout later'
   end
 
   def see_menu
