@@ -22,4 +22,8 @@ describe Order do
     expect(subject.total_order).to eq 14
   end
 
+  it 'should text the user after placing an order' do
+
+  end
+
 end
