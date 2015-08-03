@@ -1,12 +1,13 @@
 #require 'terminal-table'
 require 'twilio-ruby'
-require 'sms'
+require './lib/sms.rb'
 
 class Restaurant
 
-  def initialize
+  def initialize #smsclass <= suggested by peer
     @menu = {margherita: 5, pepperoni: 6, hawaiian: 6, supreme: 7}
     @selected = {}
+    #@sms = smsclass.new <= suggested by peer review
   end
 
   def choose(amount, dish)
@@ -24,6 +25,7 @@ class Restaurant
   end
 
   def send_sms
+    #@sms <= suggested by peer
     Sms.new.send_text
   end
 
