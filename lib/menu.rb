@@ -21,7 +21,7 @@ class Menu
   def display_menu
     rows = []
     items.each { |item, price| rows.push([item, price]) }
-    table = Terminal::Table.new :rows => rows
+    table = Terminal::Table.new rows: rows #new hash notation
     puts table
   end
 

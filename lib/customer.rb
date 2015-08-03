@@ -15,7 +15,7 @@ class Customer
   end
 
   def request_menu
-      restaurant.display_menu
+    restaurant.display_menu
   end
 
   def create_order (orderClass=Order)
