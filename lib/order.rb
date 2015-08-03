@@ -11,8 +11,11 @@ class Order
   end
 
   def add_item dish, quantity
-    return "That item is not on the menu" if !on_menu? dish
-    selection.store dish, quantity
+    if !on_menu? dish
+      return "That item is not on the menu"
+    else
+      selection.store dish, quantity
+    end
   end
 
   def on_menu? dish
@@ -21,11 +24,11 @@ class Order
 
   def place_order amount
     if correct_amount? amount
-      print "What is your mobile number?\n"
       send_sms
       return "Thankyou! Your order was successfully placed and will be delivered within 1 hour."
+    else
+      return "Order unsuccessful. Total should equal #{build_order[selection]}"
     end
-    return "Order unsuccessful. Total should equal #{build_order[selection]}" if !correct_amount? amount
   end
 
   def correct_amount? amount
@@ -43,10 +46,11 @@ class Order
   private
 
   def send_sms
+    print "What is your mobile number?\n"
     customer_number = gets.chomp
 
-    account_sid = 'ACfed1f4665fc636698782b7f3bf434687'
-    auth_token = 'bd7088193c3098480f2948d5afea3a32'
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["TWILIO_TOKEN"]
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.messages.create(
       from: '+441768392015', 

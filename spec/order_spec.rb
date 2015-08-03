@@ -1,6 +1,6 @@
 require 'order'
 
-describe Order do 
+describe "Order" do 
 
   let (:menu){double :menu, dishes: {biriyani: 5.00, uk_curry: 6.00, cheeseburger: 4.00, pizza: 5.00, side_of_salmonella: 1.95}}
   
@@ -81,7 +81,5 @@ describe Order do
         expect(@subject.build_order).to eq({ {biriyani: 1, cheeseburger: 2} => 13 })
       end
     end
-
   end
-
 end
