@@ -1,5 +1,6 @@
 Takeaway Challenge
 ==================
++[![Build Status](https://travis-ci.org/adrianw1832/takeaway-challenge.svg)](https://travis-ci.org/adrianw1832/takeaway-challenge)
 
 What I did
 -----------
