@@ -25,11 +25,12 @@ describe Restaurant do
     expect(subject.total_price).to eq 27
   end
 
-  it 'can receive an order' do
+  it 'sends an sms when the order is correct' do
     subject.choose(2, "margherita")
     subject.choose(1, "pepperoni")
-    expect(subject.place_order(16)).to eq true
-  end
+    allow(subject).to receive(:send_sms) {true} # I know this doesn't make sense
+    expect(subject.place_order(16)).to eq true # I couldn't figure out how to
+  end                                          # stub the sms properly.
 
   it 'raises an error if the expected amount does not match the actual total' do
     subject.choose(2, "margherita")

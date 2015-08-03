@@ -1,4 +1,6 @@
 #require 'terminal-table'
+require 'twilio-ruby'
+require 'sms'
 
 class Restaurant
 
@@ -18,8 +20,11 @@ class Restaurant
 
   def place_order(expected_total)
     raise "Your expected amount does not match the total price for the selected dishes" if expected_total != total_price
-    dishes = selected
-    true
+    send_sms
+  end
+
+  def send_sms
+    Sms.new.send_text
   end
 
   def margherita_subtotal
