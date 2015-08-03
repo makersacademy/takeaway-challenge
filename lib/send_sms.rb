@@ -5,7 +5,7 @@ module Send_sms
 # put your own credentials here
   def do
     account_sid = 'AC98d3efd00c4a9a7bbb98fc8f86d2308a'
-    auth_token = '7872f37eb4c6ff5b8dd181d98f99a4ba'
+    auth_token = '[auth token]'
 
     # set up a client to talk to the Twilio REST API
     @client = Twilio::REST::Client.new account_sid, auth_token
