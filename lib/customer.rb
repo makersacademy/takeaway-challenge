@@ -3,7 +3,7 @@ require_relative 'menu'
 require_relative 'twilio'
 
 class Customer
-  attr_accessor :name, :phone_number, :order, :selection, :price
+  attr_accessor :name, :phone_number, :order, :selection, :price, :total
   def initialize(order = Order.new)
     @name
     @phone_number
@@ -11,16 +11,13 @@ class Customer
     @selection
     @quantity
     @price
+    @total
   end
 
   def place_order
-    get_info
+    get_name
     @order.select_dishes(@selection, @price, @quantity)
     get_total
-  end
-
-  def get_info
-    get_name
   end
 
   def get_name
@@ -58,7 +55,7 @@ class Customer
   end
 
   def get_total
-    total = @order.total_cost
+    @total = @order.total_cost
     puts "Your total is $#{total}. Please confirm (y or n)"
     confirmation = gets.chomp
     get_confirmation(confirmation)

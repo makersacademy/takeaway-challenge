@@ -35,6 +35,11 @@ describe Customer do
     expect(subject).to respond_to(:get_price)
   end
 
+  it "can confirm order" do
+    expect(subject).to respond_to(:get_confirmation)
+  end
+
+
   # it "can display the menu" do
   #   menu = subject.see_menu
   #   expect(menu[0...9]).to eq "hamburger"
