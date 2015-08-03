@@ -5,9 +5,10 @@ Customers request menus. Then check their totals against a number provided them 
 ----------------
 
 CLASSES
-Menu - Simply instantiates menu objects, which contain hashes of dishes and their prices. [methods:#menu_items]
 
-Customer - Purpose of this class is to choose dishes, and order them. Includes a number of methods. Starred methods have material dependencies whose managment are discussed below:
+MENU - Simply instantiates menu objects, which contain hashes of dishes and their prices. [methods:#menu_items]
+
+CUSTOMER - Purpose of this class is to choose dishes, and order them. Includes a number of methods. Starred methods have material dependencies whose managment are discussed below:
 
   #request* - a customer object can request a menu be created. While Menu objects are hard coded with their menu items, the menu class is more akin to a restaurant class, and future improvements could see the customer asking for many lists of menu items from multiple restautarnts. What's important is that the objects have a menu_items method. Any object with such a method can be exposed (injected) to customer through the #menu.
   
@@ -23,4 +24,4 @@ Customer - Purpose of this class is to choose dishes, and order them. Includes a
 
   #menu - stores the menu_items retrieved by #request. #menu makes whatever menu_items have been retrieved available for use within customer. 
 
-Order - Not yet fully tested. Order instances are created by customers with valid orders. This dependency is somewhat justified; orders only exist if customers decide as such. However, order instances can be created by any customers that have order_information and a phone number (i.e. uniquely identifying information). As such the order class could be used by different customer classes as long as appropriate information (methods) are available. The Order class can be further decoupled by reducing variables that are set at initialization (i.e. not all orders will include telephone confirmation). 
+ORDER - Not yet fully tested. Order instances are created by customers with valid orders. This dependency is somewhat justified; orders only exist if customers decide as such. However, order instances can be created by any customers that have order_information and a phone number (i.e. uniquely identifying information). As such the order class could be used by different customer classes as long as appropriate information (methods) are available. The Order class can be further decoupled by reducing variables that are set at initialization (i.e. not all orders will include telephone confirmation). 
