@@ -2,7 +2,8 @@ require 'order'
 
 describe Order do
 
-	let(:dish) {double :dish}
+	let(:dish) {double :dish }
+  let(:restaurant) { double :restaurant }
 	
 	context 'selecting a dish' do
 		it { is_expected.to respond_to(:select_dish) }
@@ -17,15 +18,15 @@ describe Order do
 	end
 
 	context 'calculating and checking totals' do
-		it { is_expected.to respond_to(:total_cost) }
+		it { is_expected.to respond_to(:print_receipt) }
 
 		it 'should return total cost of order' do
 			subject.select_dish('salmon sashimi', 2)
-			expect(subject.total_cost).to eq("Total cost of yout meal is £#{'%.2f' % 8.00}")
+			expect(subject.print_receipt).to eq("Total cost of yout meal is £#{'%.2f' % 8.00}")
 		end
 
 		it 'should raise error if order list is empty' do
-			expect{subject.total_cost}.to raise_error "You have not selected any items"
+			expect{subject.print_receipt}.to raise_error "You have not selected any items"
 		end
 	end
 
@@ -36,10 +37,10 @@ describe Order do
 
 		it 'should send message once order has been placed' do
       subject.select_dish('salmon sashimi', 2)
-      expect(restaurant).to receive(:send_confirmation_text)
+      allow(restaurant).to receive(:send_confirmation_text)
       subject.place_order
+      expect(subject.place_order).to eq("Thank you for your order! It will arrive at #{Time.new.hour + 1}:#{Time.new.min}")
     end
-
 	end
 	
 end

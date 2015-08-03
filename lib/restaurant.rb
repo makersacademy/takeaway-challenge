@@ -12,8 +12,7 @@ class Restaurant
 		@client.account.messages.create(
 		from: "+441773252056", 
       to: "+447729835662",   
-      body: "Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}
-      The total cost is #{'%.2f' % order.total_cost}"
+      body: "Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}"
 		)
 	end
 

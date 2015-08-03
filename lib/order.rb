@@ -1,6 +1,6 @@
 class Order 
 
-	attr_reader :menu, :order
+	attr_reader :menu, :order_list
 	attr_accessor :restaurant
 
 	def initialize
@@ -18,7 +18,7 @@ class Order
 		@order_list.store(dish, number)
 	end
 
-	def total_cost
+	def print_receipt
 		fail "You have not selected any items" if nothing_ordered?
 		total = 0 
     @order_list.each do |dish, number| 
