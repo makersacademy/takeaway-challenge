@@ -37,9 +37,8 @@ describe Order do
 
 		it 'should send message once order has been placed' do
       subject.select_dish('salmon sashimi', 2)
-      allow(restaurant).to receive(:send_confirmation_text)
+      expect(restaurant).to receive(:send_confirmation_text)
       subject.place_order
-      expect(subject.place_order).to eq("Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}")
     end
 	end
 	
