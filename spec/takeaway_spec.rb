@@ -28,10 +28,10 @@ describe Menu do
   it 'does not accepts orders outside the menu' do
     expect{subject.add_to_basket(:pizza)}.to raise_error "Please order from menu"
   end
-
-  it 'responds to #total' do
-    expect(subject).to respond_to(:total)
-  end
+  # 
+  # it 'responds to #total' do
+  #   expect(subject).to respond_to(:total).with(2).argument
+  # end
 
   it 'shows the basket #total' do
     subject.add_to_basket(:burger, 2)
