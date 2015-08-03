@@ -1,7 +1,7 @@
 require_relative "text"
 class Takeaway
 
-  attr_reader :menu, :order, :price, :cust_price
+  attr_reader :menu, :order
 
   def initialize(text)
     @text=text
@@ -14,16 +14,15 @@ class Takeaway
     @cust_price = cust_price
 
     items.each do |item|
-      fail "Apologies, we do not have #{item} on the menu." if !menu.include?(item)
+      item_checker(item)
       order << item 
     end
 
-    order.each { |y| @price += menu[y] }
+    price_adder
 
-    fail "Your order costs £#{"%.2f"% price} not £#{"%.2f"% cust_price}" if !same_price?
+    price_checker
 
-    time = Time.new + 3600
-    @text.send_text("Thank you! Your order was placed and will be delivered before #{ time.strftime("%H:%M") }")
+    text_sender
   end
 
   def same_price?
@@ -32,6 +31,22 @@ class Takeaway
 
   private
 
-  attr_reader :text
+  attr_reader :text, :price, :cust_price
 
+  def item_checker(item)
+    fail "Apologies, we do not have #{item} on the menu." if !menu.include?(item)
+  end
+
+  def price_adder
+    order.each { |y| @price += menu[y] }
+  end
+
+  def price_checker
+    fail "Your order costs £#{"%.2f"% price} not £#{"%.2f"% cust_price}" if !same_price?
+  end
+
+  def text_sender
+    time = Time.new + 3600
+    @text.send_text("Thank you! Your order was placed and will be delivered before #{ time.strftime("%H:%M") }")
+  end
 end
