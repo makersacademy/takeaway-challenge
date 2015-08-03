@@ -1,5 +1,6 @@
 require "takeaway"
 describe Takeaway do
+  let (:subject) { Takeaway.new(double :text) }
   describe "#menu" do
     it { is_expected.to respond_to(:menu)}
     it "displays menu items and prices" do
@@ -23,7 +24,13 @@ describe Takeaway do
       expect(subject).to be_same_price
     end
     it "raises error if price entered is not the same as the order total" do
-      expect { subject.place_order("pizza", "pasta", "curry", 1) }.to raise_error "Your order costs £19.35 not £1"
+      expect { subject.place_order("pizza", "pasta", "curry", 1) }.to raise_error "Your order costs £19.35 not £1.00"
+    end
+    let (:text) { spy :text }
+    let (:subject) { Takeaway.new(text) }
+    it "sends a message to the Text class to send a text" do
+      subject.place_order("pizza", "pasta", 12.40)
+      expect(text).to have_received(:send_text)
     end
   end
 end
