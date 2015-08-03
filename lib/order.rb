@@ -34,7 +34,7 @@ class Order
 	def place_order
 		fail "You have not selected any items" if nothing_ordered?
 		@restaurant.send_confirmation_message
-		"Thank you for your order! It will arrive at #{Time.new.hour + 1}:#{Time.new.min}"
+		"Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}"
 	end
 
 private

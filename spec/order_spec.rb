@@ -22,7 +22,7 @@ describe Order do
 
 		it 'should return total cost of order' do
 			subject.select_dish('salmon sashimi', 2)
-			expect(subject.print_receipt).to eq("Total cost of yout meal is £#{'%.2f' % 8.00}")
+			expect(subject.print_receipt).to eq("Total cost of your meal is £#{'%.2f' % 8.00}")
 		end
 
 		it 'should raise error if order list is empty' do
@@ -39,7 +39,7 @@ describe Order do
       subject.select_dish('salmon sashimi', 2)
       allow(restaurant).to receive(:send_confirmation_text)
       subject.place_order
-      expect(subject.place_order).to eq("Thank you for your order! It will arrive at #{Time.new.hour + 1}:#{Time.new.min}")
+      expect(subject.place_order).to eq("Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}")
     end
 	end
 	
