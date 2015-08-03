@@ -1,37 +1,66 @@
+I'm very sorry to say that I tried to do my work this weekend on my laptop at home, and that I had serious problems with ruby version conflicts, stopping me from getting the twilio gem to work at all.
+
+Similarly, rspec wouldn't work, failing in a way that made no sense to me, so I tried to do what I could without it, and even that lead to problems that made me feel like I haven't learnt anything (eg I couldn't even initialize a class in irb).  All of this triggered a minor depressive episode and I decided to stop working before it got worse, try and get a good night's sleep and approach the next week's learning as positively as I can.  I'm very disappointed in myself and hope I can get past this, and apologise for my failure, and hope I've learnt at least not to bother trying to use my own laptop for work in future.
+
+Chris
+
+
+
+
+
+
 Takeaway Challenge
 ==================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+
+
+just need a menu hash of names => prices
+menu class?
+
+
+
+
 
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
+
+needs an order class that creates a new hash by selecting from the menu hash
+
+
+
+
+
+
+
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 
+write a method in order that creates an itemised bill from your order
+
+
+
+
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+
+
+get twilio to work. work out how to get the current time and modify it to be an hour in the future.
+
+
+
+
+
+
+
+
+
 
 * Hints on functionality to implement:
   * ensure you have a list of dishes with prices
