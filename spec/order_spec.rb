@@ -34,10 +34,11 @@ describe Order do
 			expect{subject.place_order}.to raise_error "You have not selected any items"
 		end
 
-		xit 'should send message once order has been placed' do
-			subject.select_dish('salmon sashimi', 2)
-			expect(subject.place_order).to receive(restaurant.send_confirmation_text)
-		end
+		it 'should send message once order has been placed' do
+      subject.select_dish('salmon sashimi', 2)
+      expect(restaurant).to receive(:send_confirmation_text)
+      subject.place_order
+    end
 
 	end
 	
