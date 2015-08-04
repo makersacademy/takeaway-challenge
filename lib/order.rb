@@ -12,7 +12,7 @@ class Order
     @ordered_dishes = {}
     @total = 0
     @twilio_sms = twilio_sms
-    @number = '+447460959285'
+    @number = '+44**********'
   end
 
   def show_menu
