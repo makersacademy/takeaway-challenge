@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
   let(:menu) { double :menu }
-  before(:each) { allow(menu).to receive(:content).and_return({ chicken: 4, lamb: 7, vegetables: 3, latte: 2 }) }
+  before(:each) { allow(menu).to receive(:content).and_return({ chicken: 4, lamb: 7}) }
   subject { Takeaway.new(menu) }
 
   describe "#place_order" do
