@@ -8,7 +8,7 @@ NB. For testing, this project uses RSpec 3 notation
 You will need a free Twilio account:
 - [ ] Enter the following Twilio account details as environment variables:
   - ENV["TWILIO_ACCOUNT_SID"] : AUTH_SID
-  - ENV["TWILIO_AUTH_TOKEN"] : AUTH_TOKEN 
+  - ENV["TWILIO_AUTH_TOKEN"] : AUTH_TOKEN
   - ENV["TWILIO_NUMBER"] : Twilio phone number
 - [ ] Only enter phone numbers for customers that have been verified for your Twilio account (if using the free account)
 
@@ -29,7 +29,7 @@ Customer commands:
 ```ruby
   customer_name.
                 request_menu
-                create_order
+                create_order order_klass
                 update_order food_item, quantity
                 display_order
                 submit_order
@@ -50,7 +50,7 @@ So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 (In this case, let's assume the customer wants 3 orders of lasagne)
 ```ruby
-customer_name.create_order
+customer_name.create_order Order
 customer_name.update_order :lasagne, 3
 ```
 

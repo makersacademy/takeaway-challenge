@@ -5,7 +5,7 @@ class Customer
   attr_accessor :phone_number, :name, :restaurant, :order
   attr_reader :user_input_module
 
-  def initialize (name="Customer Name", number="+4407777777777")
+  def initialize (name, number)
     @name = name
     @phone_number = number
   end
