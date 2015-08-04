@@ -2,11 +2,12 @@ require_relative 'twilio_message'
 
 class Takeaway
 
-  attr_reader :list, :recorded_orders
+  attr_reader :list, :recorded_orders, :api
 
   def initialize(menu)
     @list = menu.content
     @recorded_orders = []
+    @api = TwilioMessage.new
   end
 
   def place_order(dish, quantity)
@@ -25,11 +26,7 @@ class Takeaway
   end
 
   def processing_order(customer_input)
-    make_twilio.text_message(customer_input)
-  end
-
-  def make_twilio
-    TwilioMessage.new
+    api.text_message(customer_input)
   end
 
   private
