@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 
 class TakeAway
-  SECRET_KEY = ENV['SECRET_KEY']
+  SECRET_KEY = ENV['TWILIO_AUTH_TOKEN']
 
   attr_reader :menu
   attr_accessor :order
@@ -72,7 +72,7 @@ class TakeAway
 
   def send_message(delivery_time, phone_number)
     account_sid = 'ACd18bfc872e98296bfd513c3537d79945'
-    auth_token = 'bb86f5ef30b2e093ec06255279f7ece8'
+    auth_token = SECRET_KEY
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.account.messages.create(
       from: '+441698313072',
