@@ -1,5 +1,12 @@
 Takeaway Challenge
 ==================
+[![Build Status](https://travis-ci.org/leon-wee/takeaway-challenge.svg?branch=master)](https://travis-ci.org/leon-wee/takeaway-challenge)
+
+What I did
+-------
+* I first read the user stories and wrote out a domain model for the features.
+* I then followed the Red, Green, Refactor loop and implemented the model.
+* It was good
 
 Instructions
 -------
