@@ -34,8 +34,8 @@ class Order
     @client = Twilio::REST::Client.new account_sid, auth_token
 
     @client.account.messages.create({
-      :from => '+441822600013',
-      :to => '+447919376807',
-      :body => "Thank you for your order! It should be with you by #{Time.new}" })
+      from: '+441822600013',
+      to: '+447919376807',
+      body: "Thank you for your order! It should be with you by #{Time.new}" })
   end
 end
