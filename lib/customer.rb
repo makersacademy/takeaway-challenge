@@ -18,8 +18,8 @@ class Customer
     restaurant.display_menu
   end
 
-  def create_order (orderClass=Order)
-    @order = orderClass.new
+  def create_order (order_class)
+    @order = order_class.new
   end
 
   def update_order food_item, num=1

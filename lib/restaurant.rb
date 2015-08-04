@@ -2,10 +2,7 @@ require_relative 'customer'
 require 'twilio-ruby'
 
 class Restaurant
-  include Twilio # is this too great a dependency? - need to inject instead
-  ACCOUNT_SID = '****'
-  AUTH_TOKEN = '****'
-  TWILIO_NUMBER = '****'
+  include Twilio
 
   attr_reader :menu
   attr_accessor :customers
@@ -24,9 +21,9 @@ class Restaurant
     delivery_time = (Time.new + (25*60)).strftime "%H:%M"
     message = "Thank you for placing your order! It should be with at approx #{delivery_time}"
     # set up a client to talk to the Twilio REST API
-    @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
+    @client = Twilio::REST::Client.new ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]
     @client.account.messages.create({
-      :from => TWILIO_NUMBER,
+      :from => ENV["TWILIO_NUMBER"],
       :to => num_string,
       :body => message
     })

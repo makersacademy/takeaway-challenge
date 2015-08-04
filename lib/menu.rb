@@ -19,9 +19,7 @@ class Menu
   end
 
   def display_menu
-    rows = []
-    items.each { |item, price| rows.push([item, price]) }
-    table = Terminal::Table.new rows: rows #new hash notation
+    table = Terminal::Table.new rows: items.map{|items,price|[items, price]}
     puts table
   end
 

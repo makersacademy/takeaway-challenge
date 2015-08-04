@@ -1,7 +1,7 @@
 require 'customer'
 
 describe Customer do
-  let(:subject) {described_class.new("Piers", "+447736409366")}
+  let(:subject) {described_class.new("Pedro", "+4477777777")}
   let(:restaurant) {double :restaurant}
   let(:orderClass) {double (:orderClass), :new => order}
   let(:order) {double :order}
@@ -16,8 +16,8 @@ describe Customer do
 
   describe '#create_order' do
     it 'creates an order object' do
-      subject.create_order
-      expect(subject.order).to be_instance_of(Order)
+      subject.create_order(orderClass)
+      expect(subject.order).to eq order
     end
   end
 

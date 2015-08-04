@@ -7,14 +7,11 @@ class Order
     @total_cost = 0
   end
 
-  def add restaurant, food_item, num=1
-    if check_inclusion? restaurant, food_item # r.menu.items.keys.include? food_item
-      order_summary[food_item] == nil ? order_summary[food_item] = num : order_summary[food_item] += num
+  def add restaurant, food_item, quantity=1
+      raise "Invalid menu selection. Please try again." unless check_inclusion? restaurant, food_item # r.menu.items.keys.include? food_item
+      order_summary[food_item] == nil ? order_summary[food_item] = quantity : order_summary[food_item] += quantity
       price = get_price restaurant, food_item
-      num.times {self.total_cost += price } # Why was self needed here?? Kicked up error for '+' if not used...
-    else
-      raise "Invalid menu selection. Please try again."
-    end
+      quantity.times {self.total_cost += price } # Why was self needed here?? Kicked up error for '+' if not used...
   end
 
   def check_inclusion? restaurant, food_item
@@ -28,7 +25,7 @@ class Order
   def display_order restaurant
     headings = ["Dish", "Quantity", "Unit price"]
     rows = []
-    order_summary.each {|item, quantity| rows.push([item, quantity, get_price(restaurant, item)]) }
+    rows = order_summary.map { |item, quantity| [item, quantity, get_price(restaurant, item)] }
     rows.push(["Order Total", order_summary.values.inject(:+), total_cost])
     table = Terminal::Table.new :headings => headings, :rows => rows
     puts table
