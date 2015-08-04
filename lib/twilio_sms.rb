@@ -6,11 +6,11 @@ class TwilioSms
   def send_order_sms number
     t = Time.new + 3600
     t = t.strftime("%l:%M")
-    account_sid = 'ACe92d409db5c0169c0a49dc6c818122c4'
-    auth_token = '3d2c7f40ac9387da9d42ad9f8d06eb54'
+    account_sid = 'AC***************************'
+    auth_token = '3d*****************************'
     @client = Twilio::REST::Client.new account_sid, auth_token
     @message = @client.messages.create(
-      from: '+441775302013',
+      from: '+44*************',
       to: number,
       body: "Thank you! Your order was placed and will be delivered before #{t}"
     )
