@@ -6,7 +6,10 @@ NB. For testing, this project uses RSpec 3 notation
 ##Getting Started
 
 You will need a free Twilio account:
-- [ ] Enter the AUTH_SID & AUTH_TOKEN in the takeaway-challenge/lib/restaurant.rb file
+- [ ] Enter the following Twilio account details as environment variables:
+  - ENV["TWILIO_ACCOUNT_SID"] : AUTH_SID
+  - ENV["TWILIO_AUTH_TOKEN"] : AUTH_TOKEN 
+  - ENV["TWILIO_NUMBER"] : Twilio phone number
 - [ ] Only enter phone numbers for customers that have been verified for your Twilio account (if using the free account)
 
 To create a new restaurant (menu provided):
