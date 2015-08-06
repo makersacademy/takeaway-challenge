@@ -14,10 +14,13 @@ class Order
 
 
 	def add_items_to_order (dish, quantity = 1)
-		fail "Order something on the menu!" unless menu.has_key? dish
-		@dishes_ordered[dish] = (@dishes_ordered[dish] ? @dishes_ordered[dish] + quantity :  quantity )
-		puts "You haved added #{quantity} #{dish} to your order"
-		"You have ordered #{@dish_count = @dish_count + quantity} dishes in total"
+		if menu.has_key? dish
+			@dishes_ordered[dish] = (@dishes_ordered[dish] ? @dishes_ordered[dish] + quantity :  quantity )
+			puts "You haved added #{quantity} #{dish} to your order"
+			"You have ordered #{@dish_count = @dish_count + quantity} dishes in total"
+		else
+			return "Order something on the menu!"
+		end
 	end
 
 
@@ -29,13 +32,6 @@ class Order
   	p dishes_ordered.map { |food, quantity| "Item: #{food} / Quantity: #{quantity}\n" }
   end
 
-
-  # good order 
-  # expect(subject).to receive(:sens_sms)
-  # subject.checkout(correct_amount)
-
-  # bad order
-  # expect{subject.checkout(bad_anout)}.to raise_error "you didnt enter enough"
 
 	def checkout(payment_amount)
     fail "You have not paid the correct amount." unless payment_amount == order_total
