@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'timecop'
 
 describe TakeAway do
   let(:menu) { double(:menu) }
@@ -49,6 +50,10 @@ describe TakeAway do
         subject.delete_from_order("chilli squid", 1)
         expect(subject.order).to be_empty
       end
+
+      it "knows about banans" do
+        expect(subject.send(:bananas)).to eq "bananas"
+      end
     end
 
     describe "#show_order" do
@@ -80,7 +85,8 @@ describe TakeAway do
 
       it "sends text if confirmation is Yes" do
         allow(subject).to receive(:gets).and_return("Y")
-        expect(subject).to receive(:send_message)
+        Timecop.freeze(Time.now)
+        expect(subject).to receive(:send_message).with(Time.new + 3600, +441123456789)
         subject.confirm_order(+441123456789)
       end
     end

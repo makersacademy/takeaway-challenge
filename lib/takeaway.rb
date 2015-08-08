@@ -22,7 +22,7 @@ class TakeAway
   end
 
   def item_already_ordered?(item)
-    true if order.include?(item)
+    order.include?(item)
   end
 
   def change_item_quantity(item, quantity)
@@ -31,8 +31,7 @@ class TakeAway
   end
 
   def grand_total
-    total_in_pence = 0
-    order.each { |item, quantity| total_in_pence += total_cost_per_item(item, quantity) }
+    total_in_pence = order.inject(0) { |total, (item, quantity)| total + total_cost_per_item(item, quantity) }
     "%.2f" % (total_in_pence / 100.0)
   end
 
@@ -62,12 +61,10 @@ class TakeAway
   private
 
   def print_order_items_with_cost
-    order_output = ""
-    order.each do |item, quantity|
+    order.inject("") do |order_str, (item, quantity)|
       price_in_pence = total_cost_per_item(item, quantity)
-      order_output += "#{item} x #{quantity}: £%.2f, " % (price_in_pence / 100.0)
+      order_str + "#{item} x #{quantity}: £%.2f, " % (price_in_pence / 100.0)
     end
-    order_output
   end
 
   def send_message(delivery_time, phone_number)
@@ -77,8 +74,11 @@ class TakeAway
     @client.account.messages.create(
       from: '+441698313072',
       to: phone_number,
-      body: "Thank you! Your order was placed and will be delivered before #{delivery_time.hour}:#{delivery_time.min}"
-                                    )
+      body: "Thank you! Your order was placed and will be delivered before #{delivery_time.hour}:#{delivery_time.min}"                                 )
+  end
+
+  def bananas
+    (__method__).to_s
   end
 end
 
