@@ -1,16 +1,18 @@
 require_relative 'twilio_api'
 
 class Order
-  attr_reader :order, :dishes
+  attr_reader :ordered_dishes, :dishes, :text_provider
 
   def initialize(menu)
-    @order = Hash.new(0)
+    @ordered_dishes = {}
+    @ordered_dishes.default = 0
     @dishes = menu.dishes
+    @text_provider = TwilioAPI.new
   end
 
   def add(food, amount)
-    fail 'Not on the menu!' unless dishes.keys.include?(food)
-    amount.times { @order[food] += 1 }
+    fail 'Not on the menu!' unless dish_on_menu?(food)
+    amount.times { @ordered_dishes[food] += 1 }
     number_of_dishes
   end
 
@@ -30,17 +32,17 @@ class Order
 
   private
 
-  def text_provider
-    TwilioAPI.new
+  def dish_on_menu?(food)
+    dishes.keys.include?(food)
   end
 
   def number_of_dishes
-    list = order.map { |food, number| "#{number} #{food}" }.join(', ')
+    list = ordered_dishes.map { |food, number| "#{number} #{food}" }.join(', ')
     list = list.reverse.sub(',', 'dna ').reverse
     "So far, you have ordered #{list} sushi(s)."
   end
 
   def calculate_total
-    order.map { |food, number| dishes[food] * number }.inject(0, :+)
+    ordered_dishes.map { |food, number| dishes[food] * number }.inject(0, :+)
   end
 end
