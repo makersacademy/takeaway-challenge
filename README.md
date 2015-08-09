@@ -1,5 +1,10 @@
 Takeaway Challenge
 ==================
++[![Build Status](https://travis-ci.org/adrianw1832/takeaway-challenge.svg)](https://travis-ci.org/adrianw1832/takeaway-challenge)
+
+What I did
+-----------
+I split it into 3 classes: menu, order and the TwilioAPI. The code itself was quite simple and obvious but writing the tests, especially for twilio, was much harder. I am not actually sure what the best way is to go about it.
 
 Instructions
 -------
