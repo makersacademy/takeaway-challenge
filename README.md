@@ -1,5 +1,11 @@
-Takeaway Challenge
+Takeaway Challenge [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 ==================
+What I did
+-------
+* I created a Restaurant class that allows users to order food from a given list
+* I implemented the Twilio Api that sends a text to the user when a successful order is placed
+* I stubbed the api so that it would not send text messages every time I ran Rspec
+* Technologies used: Ruby, Rspec, Twilio Api
 
 Instructions
 -------
@@ -9,10 +15,6 @@ Instructions
 
 Task
 -----
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -51,5 +53,5 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
