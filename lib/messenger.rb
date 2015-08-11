@@ -5,7 +5,7 @@ class Messenger
 
 
   account_sid = 'AC27da7bbd65e8f39fde0f311bd60229ad'
-  auth_token = '{{ 7d0e678fc3c465add583bca648b955b6 }}'
+  auth_token = '{{ REMOVED FOR SAFETY, GET IT FROM TWILIO SITE }}'
   @client = Twilio::REST::Client.new account_sid, auth_token
 
   message = @client.account.messages.create(:body => "testing",
