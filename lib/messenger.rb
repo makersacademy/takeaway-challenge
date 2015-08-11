@@ -2,8 +2,8 @@ require 'twilio-ruby'
 
 class Messenger
 
-  ACCOUNT_SID = 'ACa5ef8ead3ef15b82f3e25c23c9504fa5'
-  AUTH_TOKEN = 'b8c8ffa5636d5b69488e8a210dc3a1f2'
+  ACCOUNT_SID = 'REMOVED'
+  AUTH_TOKEN = 'REMOVED'
 
   def initialize
     @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
@@ -33,7 +33,7 @@ class Messenger
 
   def send_to_twilio message_details
     @client.account.messages.create({
-      :from => '+441695302059',
+      :from => 'REMOVED',
       :to => message_details[:phone_number],
       :body => message_details[:body],
     })
