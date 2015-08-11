@@ -8,8 +8,8 @@ describe TwilioSender do
     account = double :account, messages: messages
     client = double :client, account: account
     allow(Twilio::REST::Client).to receive(:new) { client }
-    expect(messages).to receive(:create).with(body: "Test", to: "447825786185", from: "441767512027", via: client)
-    subject.send_text("447825786185", "Test")
+    expect(messages).to receive(:create).with(body: "Test", to: "____", from: "____", via: client)
+    subject.send_text("____", "Test")
   end
 
 end
