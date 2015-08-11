@@ -11,5 +11,4 @@ module Menu
 	def price dish
 		dishes[dish]
 	end 
-
 end 

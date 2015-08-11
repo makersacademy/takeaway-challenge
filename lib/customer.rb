@@ -21,7 +21,7 @@ class Customer
 		'Your dish has been added to the total'
 	end 
 
-	def total_price
+	def view_price
 		selected_dishes.each_value{|price| @total += price} if @total == 0
    	@total
 	end

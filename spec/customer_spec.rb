@@ -1,7 +1,7 @@
 require 'customer'
 
 describe Customer do 
-	describe'#select dish' do 
+	describe'#select_dish' do 
 		it 'can select a dish' do
 			expect(subject).to respond_to(:select_dish).with(1).argument 
 		end 
@@ -19,7 +19,7 @@ describe Customer do
 	it 'adds up the prices of the selected dishes' do 
 		subject.select_dish("Classic Burger")
 		subject.select_dish("Cheese Burger")
-		expect(subject.total_price).to eq 14.7
+		expect(subject.view_price).to eq 14.7
 	end 
 
 	describe '#payment_requested' do
@@ -31,9 +31,8 @@ describe Customer do
 
 		it 'sends a notification when the text was sent' do 
 			subject.select_dish("Classic Burger")
-			subject.total_price
+			subject.view_price
 			expect(subject.checkout(6.75)).to eq 'Your message was sent'
 		end 
 	end
-
 end 
