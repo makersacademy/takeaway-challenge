@@ -4,7 +4,6 @@ class Restaurant
 	
 	def send_confirmation_message
 		 
-
 		@client = Twilio::REST::Client.new ENV['TWILIO_AUTH_SID'], ENV['TWILIO_AUTH_TOKEN']
 		 
 		@client.account.messages.create(
