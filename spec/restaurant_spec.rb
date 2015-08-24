@@ -7,11 +7,11 @@ describe Restaurant do
   let(:account) { double :account, messages: message }
   let(:client)  { double :client, account: account }
   
-  subject { Restaurant.new(client)}
+  subject { Restaurant.new(client, "12345")}
 
   it 'sends a message via the client' do
     expect(message).to receive(:create).with(
-      { from: "+441773252056",
+      { from: "12345",
         to: "+447729835662",
         body: "This is your confirmation message!"
         })
