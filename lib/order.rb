@@ -3,10 +3,10 @@ class Order
 	attr_reader :menu, :order_list
 	attr_accessor :restaurant
 
-	def initialize
+	def initialize(restaurant)
 		@order_list = {}
 		@food = Menu.new.food 	# need to remove dependencies
-		@restaurant = Restaurant.new   # need to remove dependencies
+		@restaurant = restaurant   # need to remove dependencies
 	end
 
 	def show_menu
@@ -33,8 +33,7 @@ class Order
 
 	def place_order
 		fail "You have not selected any items" if nothing_ordered?
-		@restaurant.send_confirmation_message
-		"Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}"
+		@restaurant.send_confirmation_message("Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}")
 	end
 
 private

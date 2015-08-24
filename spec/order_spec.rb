@@ -4,7 +4,9 @@ describe Order do
 
 	let(:dish) {double :dish }
   let(:restaurant) { double :restaurant }
-	
+
+	subject { Order.new(restaurant) }	
+
 	context 'selecting a dish' do
 		it { is_expected.to respond_to(:select_dish) }
 
@@ -35,12 +37,10 @@ describe Order do
 			expect{subject.place_order}.to raise_error "You have not selected any items"
 		end
 
-		let(:api) { double :api }
-
 		it 'should confirm once order has been placed' do
       subject.select_dish('salmon sashimi', 2)
-      allow(restaurant).to receive(:send_confirmation_text)
-      expect(subject.place_order).to eq "Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}"
+      expect(restaurant).to receive(:send_confirmation_message).with("Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}")
+      subject.place_order
     end
 	end
 	

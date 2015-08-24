@@ -1,15 +1,16 @@
 require 'twilio-ruby'
 
 class Restaurant
+
+	def initialize(twilio_client)
+		@client = twilio_client
+	end
 	
-	def send_confirmation_message
-		 
-		@client = Twilio::REST::Client.new ENV['TWILIO_AUTH_SID'], ENV['TWILIO_AUTH_TOKEN']
-		 
+	def send_confirmation_message(message)
 		@client.account.messages.create(
 		from: ENV['TWILIO_NUMBER'], 
       to: "+447729835662",  
-      body: "Thank you for your order! It will arrive at #{(Time.now + 3600).hour}:#{Time.new.min}"
+      body: message
 		)
 	end
 
