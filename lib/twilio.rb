@@ -10,7 +10,7 @@ end
 
 def send_text(name, phone)
   account_sid = 'AC2f4d6a3fb2fcdd3e058b6930b7f47697'
-  auth_token = '18a596c4b02371cb565004ab54694bcf'
+  auth_token = ENV["TWILIO_AUTH_TOKEN"]
   @client = Twilio::REST::Client.new account_sid, auth_token
 
   message = @client.account.messages.create(
