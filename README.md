@@ -15,7 +15,7 @@ Task
 * run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
-```sh
+```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -41,6 +41,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   * Use a Gemfile to manage your gems
   * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
   * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+
+* Advanced! (have a go if you're feeling adventurous):
+  * Implement the ability to place orders via text message.
 
 * A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
 * Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
