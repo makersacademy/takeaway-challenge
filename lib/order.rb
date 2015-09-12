@@ -32,7 +32,6 @@ class Order
 
   def check_orders
     puts "Dish   Quantities  Price  total"
-
     orders.each do |order|
       puts "#{order[:dish]}      #{order[:quantities]}         #{order[:price]}    #{order[:quantities] * order[:price]}"
     end
