@@ -12,7 +12,7 @@ describe Order do
     #   expect { subject.choose_dish }.to output("What would you like to order? Please enter a menu item number.\n").to_stdout
     # end
     it "asks customer to choose a menu item number" do
-      $stdin = StringIO.new('2')
+      allow(subject).to receive(:gets).and_return('2')
       expect(subject.choose_dish).to eq(2)
     end
   end
@@ -22,16 +22,16 @@ describe Order do
     #   expect { subject.choose_how_many(:bbq) }.to output("How many of dishes do you want?\n").to_stdout
     # end
     it "asks customer to choose how many dishes he/she wants" do
-      $stdin = StringIO.new('1')
+      allow(subject).to receive(:gets).and_return('1')
       expect(subject.choose_how_many(:bbq)).to eq(1)
     end
   end
 
   it "remembers my order" do
     menu = Menu.new
-    $stdin = StringIO.new('4')
+    allow(subject).to receive(:gets).and_return('4')
     subject.choose_dish
-    $stdin = StringIO.new('2')
+    allow(subject).to receive(:gets).and_return('2')
     subject.choose_how_many(menu)
     expect(subject.cart(menu)).to eq([{ pasta: 8, quantities: 2 }])
   end
