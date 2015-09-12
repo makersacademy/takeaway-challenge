@@ -1,5 +1,6 @@
 class Customer
-  attr_writer :basket
+
+  attr_reader :basket
 
   def initialize
     @basket = []
@@ -9,13 +10,15 @@ class Customer
     takeaway.menu
   end
 
-  def place_order(takeaway, _item)
+  def add_item(takeaway, _item)
     fail 'Sorry that item is not on the menu' if takeaway.menu.key?(_item) == false
     @basket << _item
   end
 
-  def basket
-    @basket
+  def place_order(takeaway)
+    puts "Send us your number to confirm the order"
+    @customer_number = "+447850122007"
+    takeaway.receive_order
   end
 
   def bill(takeaway)
@@ -26,6 +29,7 @@ class Customer
         end
       end
       final_bill.inject(:+)
+      place_order(takeaway)
   end
 
 end
