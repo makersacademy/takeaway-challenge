@@ -22,4 +22,15 @@ class Customer
     end
   end
 
+  def receipt
+    order.map do |dish, quantity|
+      puts "Dish: #{dish} x#{quantity}"
+    end
+  end
+
+
+  def total
+    order.map {|dish, quantity| self.menu[dish] * quantity}.reduce(:+)
+  end
+
 end

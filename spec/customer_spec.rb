@@ -20,4 +20,10 @@ describe Customer do
     expect( subject.order["crispy chilli beef"] ).to eq(2)
   end
 
+  it "add up total of dishes" do
+    subject.place_order("crispy chilli beef", 1)
+    subject.place_order("sweet and sour chicken", 2)
+    expect(subject.total).to eq(13)
+  end
+
 end
