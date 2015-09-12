@@ -23,7 +23,7 @@ describe Order do
     # end
     it "asks customer to choose how many dishes he/she wants" do
       allow(subject).to receive(:gets).and_return('1')
-      expect(subject.choose_how_many(:bbq)).to eq(1)
+      expect(subject.choose_how_many).to eq(1)
     end
   end
 
@@ -32,21 +32,22 @@ describe Order do
     allow(subject).to receive(:gets).and_return('4')
     subject.choose_dish
     allow(subject).to receive(:gets).and_return('2')
-    subject.choose_how_many(menu)
-    expect(subject.cart(menu)).to eq([{ pasta: 8, quantities: 2 }])
+    subject.choose_how_many
+    expect(subject.cart(menu)).to eq([{dish: 'Pasta', price: 7, quantities: 2 }])
   end
 
   # it "can check my orders" do
   #   menu = Menu.new
-  #   $stdin = StringIO.new('4')
+  #   allow(subject).to receive(:gets).and_return('4')
   #   subject.choose_dish
-  #   $stdin = StringIO.new('2')
-  #   subject.choose_how_many(menu)
-  #   $stdin = StringIO.new('3')
+  #   allow(subject).to receive(:gets).and_return('2')
+  #   subject.choose_how_many
+  #   allow(subject).to receive(:gets).and_return('3')
   #   subject.choose_dish
-  #   $stdin = StringIO.new('3')
-  #   subject.choose_how_many(menu)
-  #   expect(subject.check_orders).to output().to_stdout
+  #   allow(subject).to receive(:gets).and_return('3')
+  #   subject.choose_how_many
+  #   subject.cart(menu)
+  #   expect { subject.check_orders }.to output('hihihi').to_stdout
   # end
 
 

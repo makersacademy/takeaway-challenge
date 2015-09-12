@@ -21,19 +21,26 @@ class Order
     @menu_num = gets.chomp.to_i
   end
   #
-  def choose_how_many(menu)
+  def choose_how_many
     puts "How many of dishes do you want?"
     @quantities = gets.chomp.to_i
   #   @hash[menu.menu[@menu_num - 1].keys[0]] = @quantities
   end
 
   def cart(menu)
-    dish = menu.menu[@menu_num - 1].keys.first
-    price = menu.menu[@menu_num - 1]
+    @dish = menu.menu[@menu_num - 1].keys.first
+    @price = menu.menu[@menu_num - 1]
     menu.menu.map do |menu_item|
-      if menu.menu[@menu_num - 1].keys.first == dish
-        return orders << (@hash[dish] = price).merge({quantities: @quantities})
+      if menu.menu[@menu_num - 1].keys.first == @dish
+        return orders << (@hash[@dish] = @price).merge({quantities: @quantities})
       end
+    end
+  end
+
+  def check_orders
+    orders.each do |order|
+      puts "Dish       Quantities        Price       total"
+      puts "#{@dish}:           #{order[:quantities]}            #{order[@dish]}           #{order[:quantities] * order[@dish]}"
     end
   end
 end
