@@ -4,7 +4,7 @@ describe Customer do
 
   it { is_expected.to respond_to(:place_order).with(2).argument }
 
-  it "can see menu" do
+  it "can view menu" do
     expect(subject.display_menu).to eq ({ "crispy chilli beef" => 5,
       "sweet and sour chicken" => 4,
       "egg fried rice" => 2 })
@@ -19,12 +19,5 @@ describe Customer do
     subject.place_order("crispy chilli beef", 2)
     expect( subject.order["crispy chilli beef"] ).to eq(2)
   end
-
-
-  # it "adds up price of selected dished" do
-  #   subject.place_order("crispy chilli beef")
-  #   subject.place_order("crispy chilli beef")
-  #   expect(subject.view_price).to eq 10
-  # end
 
 end

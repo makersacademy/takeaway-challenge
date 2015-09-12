@@ -21,15 +21,5 @@ class Customer
       order.store(dish, quantity)
     end
   end
-  #
-  # def view_price
-  #   selected_dishes.each_value do |price|
-  #     @total += price if total == 0
-  #     @total
-  #   end
-  # end
-
-
-
 
 end
