@@ -29,7 +29,6 @@ class Customer
         end
       end
       final_bill.inject(:+)
-      place_order(takeaway)
   end
 
 end
