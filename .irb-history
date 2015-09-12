@@ -1,0 +1,100 @@
+(@menu["2"] ||= []).push("pasta", 2.00)
+@menu
+menu = {"pizza" => 3, "pasta" => 2, "salad" => 1}
+menu.each do |dish, price|
+order << menu.dish
+chiense = Menu.new
+customer.choose_dish("crispy chilli beed")
+customer.choose_dish("cs")
+cu.choose_dish("cs")
+menu = Menu.new
+menu.display_menu
+menu.choose_dish("coke")
+menu.choose_dish("crispy chilli beef")
+menu
+customer.order
+customer.choose_dish("crispy chilli b")
+customer.choose_dish("spring rolls")
+me = Customer.new
+me.display_menu
+me.choose_dish("spring rolls")
+me.choose_dish("crispy chilli beef")
+me.view_order
+cu.choose_dish("dja")
+cu.choose_dish("crispy chilli beef")
+order = []
+order << {"crispy chilli beef" => 3}
+order
+customer.display_price
+customer.choose_dish("spring rolls", 4)
+customer.choose_dish("crispy chilli beef", 4)
+customer.choose_dish("crispy chili beef", 3)
+customer.choose_dish("crispy chilli beef", 3)
+customer.choose_dish("sweet and sour chicken", 2)
+customer = Custome
+customer.price("crispy chillif")
+customer.price("crispy chilli beef")
+customer.choose_dish("crispy chilli beef")
+dishes = {"Classic Burger" => 6.75, 
+ Burger" => 8.95, 
+clear
+customer.quit
+customer.place_order("spring rolls",3)
+cu.display_meny
+cu.place_order("crispy chilli beef", 5)
+cu
+cu.display_menu
+cu.place_order("snjkd")
+cu.place_order("snjkd",2)
+cu.place_order("crispy chilli beef",2)
+cu.receipt
+cu.reciept
+cu.place_order("sweet and sour chicken",1)
+cu.place_order("crispy chilli beef",1)
+cu.total
+customer
+customer.place_order("dnskl",3)
+customer.place_order("",3)
+customer.place_order("sweet and sour chicken", 4)
+customer.place_order("egg fried rice", 4)
+customer.charge(2)
+customer.charge(6)
+cu = Customer.new
+customer.charge(10)
+customer.place_order("crispy chilli beef", 1)
+customer.place_order("egg fried rice", 3)
+time.now
+Time.no
+delivery_time = Time.new + 1
+delivery_time
+t = Time.now + 60
+t = Time.new + 60
+t
+Time.now
+delivery_time = Time.new + 60
+60*60
+delivery_time = Time.now + 3600
+customer.charge(11)
+customer.charge(12)
+customer.place_order("crispy chilli beef", 2)
+customer.place_order("egg fried rice", 1)
+customer.place_order("sweet and sour chicken", 2)
+customer.place_order("crispy chilli beef, 3")
+customer.place_order("crispy chilli beef", 3)
+customer.place_order("sweet and soure chicken", 3)
+customer.place_order("sweet and sour chicken", 1)
+customer.place_order("egg fried rice", 2)
+customer.charge(20)
+customer.charge(23)
+customer.display_menu
+customer.place_order("sweet and sour chicken",3)
+customer.place_order("crispy chilli beef",1)
+customer.charge(30)
+customer.charge(21)
+customer = Customer.new
+customer.place_order("crispy chilli beef",3)
+customer.place_order("egg fried rice",2)
+customer.receipt
+customer.total_cost
+customer.charge(19)
+quit

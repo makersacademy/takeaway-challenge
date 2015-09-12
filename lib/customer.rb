@@ -1,5 +1,5 @@
 require_relative 'menu.rb'
-require_relative 'delivery.rb'
+require_relative 'text_sender.rb'
 
 class Customer
 
@@ -39,7 +39,6 @@ class Customer
   def charge amount
       raise "Payment does not match total" if (amount != total_cost)
       "Thank you for your order, you will recieve a text confirmation shortly."
-      Delivery.new.send_sms
   end
 
 end
