@@ -5,8 +5,9 @@ class Customer
   attr_reader :order, :menu
 
   def initialize(menu = Menu.new)
-    @order = {}
     @menu = menu.dishes
+    @order = {}
+    @total = 0
   end
 
   def display_menu
@@ -20,6 +21,7 @@ class Customer
     else
       order.store(dish, quantity)
     end
+    @total += @menu[dish]
   end
 
   def receipt
@@ -28,9 +30,13 @@ class Customer
     end.join(", ")
   end
 
-
-  def total
+  def total_cost
     order.map {|dish, quantity| self.menu[dish] * quantity}.reduce(:+)
   end
+
+  def charge total_cost
+    raise "Payment does not match total" if (total_cost != @total)
+  end
+
 
 end
