@@ -31,10 +31,20 @@ class Order
     orders << menu.menu[@menu_num - 1].merge({quantities: @quantities})
   end
 
-  # def check_orders
-  #   orders.each do |order|
-  #     puts "Dish       Quantities        Price       total"
-  #     puts "#{@dish}:           #{order[:quantities]}            #{order[@dish]}           #{order[:quantities] * order[@dish]}"
-  #   end
-  # end
+  def check_orders
+    puts "Dish   Quantities  Price  total"
+
+    orders.each do |order|
+      puts "#{order[:dish]}      #{order[:quantities]}         #{order[:price]}    #{order[:quantities] * order[:price]}"
+    end
+    puts "The total price is #{total_price}"
+  end
+
+  def total_price
+    sum = 0
+    orders.each do |order|
+      sum += order[:price] * order[:quantities]
+    end
+    sum
+  end
 end
