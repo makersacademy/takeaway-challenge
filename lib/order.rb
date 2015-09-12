@@ -4,7 +4,6 @@ class Order
   attr_reader :orders
   def initialize
     @orders = []
-    @hash = Hash.new
   end
 
   def greet
@@ -37,6 +36,8 @@ class Order
     end
     puts "The total price is #{total_price}"
   end
+
+  private
 
   def total_price
     sum = 0
