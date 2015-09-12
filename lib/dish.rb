@@ -1,4 +1,3 @@
-
 class Dish
 
   attr_reader :name, :price
@@ -7,6 +6,5 @@ class Dish
     @name = name
     @price = price
   end
-
 
 end
