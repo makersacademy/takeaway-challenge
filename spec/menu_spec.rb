@@ -2,9 +2,9 @@ require 'menu'
 
 describe Menu do
 
-  it 'should display the menu' do
-    expect(subject.display_menu).to eq({ "4x chicken wings" => 1.59,
-        "chicken burger meal" => 4.49,
-        "fries" => 1.29 })
-      end
+ xit 'should be able to add to menu' do
+   subject
+   subject.add_to_menu("pasta", 2.99)
+   expect(subject.menu).to include("pasta", 2.99)
+ end
 end
