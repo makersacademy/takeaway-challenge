@@ -7,6 +7,6 @@ describe Menu do
   # end
   #
   it "diplays menu items" do
-    expect { subject.show }.to output("1. dish: £BBQ\n1. price: £10\n2. dish: £Hamburger\n2. price: £8\n3. dish: £Pizza\n3. price: £9\n4. dish: £Pasta\n4. price: £7\n5. dish: £Sushi\n5. price: £6\n").to_stdout
+    expect { subject.show }.to output("1. BBQ: £10\n2. Hamburger: £8\n3. Pizza: £9\n4. Pasta: £7\n5. Sushi: £6\n").to_stdout
   end
 end

@@ -19,9 +19,7 @@ class Menu
 
   def show
     @menu.map.with_index do |item, index|
-      item.map do |dish, price|
-        puts "#{index + 1}. #{dish}: £#{price}"
-      end
+      puts "#{index + 1}. #{item[:dish]}: £#{item[:price]}"
     end
   end
 end

@@ -24,7 +24,6 @@ class Order
   def choose_how_many
     puts "How many of dishes do you want?"
     @quantities = gets.chomp.to_i
-  #   @hash[menu.menu[@menu_num - 1].keys[0]] = @quantities
   end
 
   def cart(menu)
