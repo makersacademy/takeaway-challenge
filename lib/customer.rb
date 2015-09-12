@@ -1,4 +1,5 @@
 require_relative 'menu.rb'
+require_relative 'delivery.rb'
 
 class Customer
 
@@ -36,12 +37,9 @@ class Customer
   end
 
   def charge amount
-    if (amount != total_cost)
-      raise "Payment does not match total"
-    else
-      "Your order is on its way and will be with you by #{(Time.new + 3600).strftime("%H:%M")}"
-    end
+      raise "Payment does not match total" if (amount != total_cost)
+      "Thank you for your order, you will recieve a text confirmation shortly."
+      Delivery.new.send_sms
   end
-
 
 end
