@@ -20,7 +20,15 @@ describe Customer do
   end
 
   describe '#bill' do
-    
+
+    it 'should calculate the customers final bill' do
+    menu = { 'Tomato soup' => 5,
+              'Steak and chips' => 15}
+    subject.place_order(takeaway,"Steak and chips")
+    subject.place_order(takeaway,"Tomato soup")
+    expect(subject.bill(takeaway)).to eql(20)
+    end
+
   end
 
 end
