@@ -2,9 +2,12 @@ require 'menu'
 
 describe Menu do
 
-    it "should have list of dishes" do
-      menu = Menu.new
-      menu.dish("crispy chilli beef", 5.99)
-      expect(menu.list).to include({"crispy chilli beef" => 5.99})
+    it "should have a hash of dishes and price" do
+      expect(subject.dishes).to be_a Hash
     end
+
+    it "can extract the price of a dish" do
+      expect(subject.price_list["crispy chilli beef"]).to eq(5)
+    end
+
 end

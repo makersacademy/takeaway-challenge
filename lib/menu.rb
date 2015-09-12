@@ -1,13 +1,16 @@
 class Menu
 
-  def dish(dish,price)
+  attr_reader :dishes
+
+  def initialize
+    @dishes = { "crispy chilli beef" => 5,
+      "sweet and sour chicken" => 4,
+      "egg fried rice" => 2
+    }
   end
 
-  def list
-    { "crispy chilli beef" => 5.99,
-      "sweet and sour chicken" => 4.99,
-      "egg fried rice" => 2.99
-    }
+  def price_list
+    dishes.each { |dish, price| "#{dish}: £#{price}"}
   end
 
 end
