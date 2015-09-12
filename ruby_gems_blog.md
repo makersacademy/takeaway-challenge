@@ -15,7 +15,7 @@ For example, `apt-get [un]install [package]` becomes `gem [un]install [package]`
 
 From [rubygems.org](http://guides.rubygems.org/what-is-a-gem/),
 
-_Each gem follows the same standard structure of code organization:_
+Each gem follows the same standard structure of code organization:
 
 ```
 % tree freewill
@@ -31,9 +31,9 @@ freewill/
 └── freewill.gemspec
 ```
 
-_Here, you can see the major components of a gem:_
+Here, you can see the major components of a gem:
 
-_* The `lib` directory contains the code for the gem
+* The `lib` directory contains the code for the gem
 * The `test` or `spec` directory contains tests, depending on which test framework the developer uses
 * A gem usually has a `Rakefile`, which the rake program uses to automate tests, generate code, and perform other tasks.
 * This gem also includes an executable file in the bin directory, which will be loaded into the user’s PATH when the gem is installed.
