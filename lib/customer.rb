@@ -18,7 +18,7 @@ class Customer
   end
 
   def place_order(dish, quantity)
-    fail "This dish is not on the menu" unless menu.has_key?(dish)
+    fail "This dish is not on the menu" unless menu.key?(dish)
     if order.include?(dish)
       order[dish] += quantity
     else
@@ -38,7 +38,7 @@ class Customer
   end
 
   def charge amount
-      raise "Payment does not match total" if (amount != total_cost)
+      fail "Payment does not match total" if (amount != total_cost)
       "Thank you for your order, you will recieve a text confirmation shortly."
   end
 
