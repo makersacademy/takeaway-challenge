@@ -3,6 +3,7 @@ require_relative 'menu.rb'
 class Customer
 
   attr_reader :order, :menu
+  attr_writer :total
 
   def initialize(menu = Menu.new)
     @menu = menu.dishes
@@ -26,7 +27,7 @@ class Customer
 
   def receipt
     order.map do |dish, quantity|
-      "Dish: #{dish} x#{quantity}"
+      "#{dish} x#{quantity}"
     end.join(", ")
   end
 
@@ -34,8 +35,12 @@ class Customer
     order.map {|dish, quantity| self.menu[dish] * quantity}.reduce(:+)
   end
 
-  def charge total_cost
-    raise "Payment does not match total" if (total_cost != @total)
+  def charge amount
+    if (amount != total_cost)
+      raise "Payment does not match total"
+    else
+      "Your order is on its way and will be with you by #{(Time.new + 3600).strftime("%H:%M")}"
+    end
   end
 
 

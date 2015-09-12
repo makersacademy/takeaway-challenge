@@ -41,12 +41,18 @@ describe Customer do
     it "give a receipt of total order" do
       subject.place_order("crispy chilli beef", 1)
       subject.place_order("sweet and sour chicken", 2)
-      expect(subject.receipt).to eq ("Dish: crispy chilli beef x1, Dish: sweet and sour chicken x2")
+      expect(subject.receipt).to eq ("crispy chilli beef x1, sweet and sour chicken x2")
     end
 
     it "raises an error is payment requested doensn't match total" do
       subject.place_order("crispy chilli beef", 2)
       expect{subject.charge(6)}.to raise_error "Payment does not match total"
+    end
+
+    it "if payment is accepted, text notification is sent" do
+      subject.place_order("crispy chilli beef", 2)
+      subject.total_cost
+      expect(subject.charge(10)).to eq "Your order is on its way and will be with you by #{(Time.new + 3600).strftime("%H:%M")}"
     end
 
   end
