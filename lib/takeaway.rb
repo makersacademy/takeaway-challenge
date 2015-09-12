@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+# require_relative '../.env.rb'
 
 class Takeaway
 
@@ -10,10 +11,9 @@ class Takeaway
               'Beef casserole' => 18 }
   end
 
-  def calculate_delivery_time
-    @time = Time.now
-    @hour = @time.hour + 1
-    @minute = @time.min
+  def calculate_delivery_time(time = Time.now)
+    @hour = time.hour + 1
+    @minute = time.min
     @time_1hour = @hour.to_s + ":" + @minute.to_s
     @time_1hour
   end

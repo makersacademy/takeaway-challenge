@@ -4,9 +4,13 @@ describe Customer do
 
   let(:takeaway) { Takeaway.new }
 
-  it 'customer should be able to view menu' do
-    expect(subject).to respond_to(:view_menu).with(1).argument
-  end
+    it 'customer should be able to view menu' do
+      expect(subject).to respond_to(:view_menu).with(1).argument
+    end
+
+    it 'menu should appear when view_menu is called' do
+      expect(subject.view_menu(takeaway)).to eql takeaway.menu
+    end
 
   describe '#add_item' do
 
@@ -22,9 +26,13 @@ describe Customer do
 
     it 'should raise an error if customer order is not on menu' do #need adjusting
       expect{subject.add_item(takeaway, "Fries")}.to raise_error("Sorry that item is not on the menu")
-      end
-      
+    end
+
   end
+
+    it 'should respond to place_order method' do
+      expect(subject).to respond_to(:place_order).with(1).argument
+    end
 
     it 'should calculate the customers final bill' do
     menu = { 'Tomato soup' => 5,
@@ -34,4 +42,4 @@ describe Customer do
     expect(subject.bill(takeaway)).to eql(20)
     end
 
-  end
+end
