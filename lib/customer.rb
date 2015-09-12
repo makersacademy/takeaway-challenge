@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Customer
   include Menu
@@ -7,6 +8,6 @@ class Customer
     menu
   end
 
-  def select_dishes(dish, quantity)
-  end
+
+
 end
