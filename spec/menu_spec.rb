@@ -3,16 +3,13 @@ require 'menu'
 describe Menu do
 
   describe "#initialize/new" do
-
     it "starts with an empy list of dishes" do
       new_menu = Menu.new
       expect(new_menu.dishes).to eq([])
     end
-
   end
 
   describe "#add_dish" do
-
     it 'raises error when dish passed in does not respond to name' do
       expect{subject.add_dish('not_a_dish')}.to raise_error 'invalid dish'
     end
@@ -41,11 +38,9 @@ describe Menu do
       subject.add_dish(dish)
       expect(subject.dishes).to eq([dish])
     end
-
   end
 
   describe "#display" do
-
     it 'displays the current dishes on the menu with name and price' do
       dish1 = double(:dish)
       dish2 = double(:dish)
@@ -63,7 +58,6 @@ describe Menu do
       " Rice                          £   3.95\nSingapore Noodle"\
       "                        £   4.99\n")
     end
-
   end
 
 end

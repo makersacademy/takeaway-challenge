@@ -16,8 +16,8 @@ class Menu
 
   def display
     to_display = "                  MENU  \n\n"
-    dishes.each do |dish|
-      to_display = to_display + dish.display_info + "\n"
+    to_display = dishes.inject(to_display) do |object, dish|
+      object = object + dish.display_info + "\n"
     end
     to_display
   end
