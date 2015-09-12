@@ -28,19 +28,13 @@ class Order
   end
 
   def cart(menu)
-    @dish = menu.menu[@menu_num - 1].keys.first
-    @price = menu.menu[@menu_num - 1]
-    menu.menu.map do |menu_item|
-      if menu.menu[@menu_num - 1].keys.first == @dish
-        return orders << (@hash[@dish] = @price).merge({quantities: @quantities})
-      end
-    end
+    orders << menu.menu[@menu_num - 1].merge({quantities: @quantities})
   end
 
-  def check_orders
-    orders.each do |order|
-      puts "Dish       Quantities        Price       total"
-      puts "#{@dish}:           #{order[:quantities]}            #{order[@dish]}           #{order[:quantities] * order[@dish]}"
-    end
-  end
+  # def check_orders
+  #   orders.each do |order|
+  #     puts "Dish       Quantities        Price       total"
+  #     puts "#{@dish}:           #{order[:quantities]}            #{order[@dish]}           #{order[:quantities] * order[@dish]}"
+  #   end
+  # end
 end
