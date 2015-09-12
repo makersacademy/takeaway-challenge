@@ -29,8 +29,7 @@ describe Customer do
   it "provides a summary of te total order" do
     subject.make_order("chicken katsu", 2)
     subject.make_order("miso soup", 2)
-    expect(subject.order_summary.to eq
-    ("2 chicken katsu, 2 miso soup")
+    expect(subject.order_summary).to eq ("2 chicken katsu, 2 miso soup")
   end
 
   it "calculates total order" do
