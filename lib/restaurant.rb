@@ -7,7 +7,9 @@ class Restaurant
   end
 
   def submit_order(customer_name, customer_phone_number, order_dishes)
-    order_dishes.each { |dish| fail "Dish not on menu" if !@menu.dishes.include? dish }
+    order_dishes.each do
+      |dish| fail "Dish not on menu" if !@menu.dishes.include? dish
+    end
     Order.new(customer_name, customer_phone_number, order_dishes)
   end
 

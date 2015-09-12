@@ -22,7 +22,8 @@ describe Restaurant do
 
   it "raises an error when trying to order a dish not on the menu" do
     dishes = [Dish.new("Sushi", 20)]
-    expect{subject.submit_order("Sarah", "0123456789", dishes)}.to raise_error "Dish not on menu"
+    expect{subject.submit_order("Sarah", "0123456789", dishes)}
+      .to raise_error "Dish not on menu"
   end
 
 end
