@@ -15,7 +15,7 @@ class Takeaway
   def select_item(dish, quantity = 1)
     selection[dish] = quantity
     selection.delete(dish) if quantity == 0
-    "Selected #{quantity} #{dish.to_s}"
+    "Selected #{quantity} #{dish}"
   end
 
   def present_selection
@@ -29,22 +29,22 @@ class Takeaway
 
   def place_order(payment)
     error = "Payment of #{pounded(payment)} for order of #{pounded(tot_up)}"
-    raise error if payment != tot_up
+    fail error if payment != tot_up
     "Your order of #{pounded(payment)} is accepted"
   end
 
-private
+  private
 
   attr_reader :menu
   attr_accessor :selection
 
   def tot_up
     return 0 if selection.empty?
-    selection.map { |dish, n| selection[dish] * menu[dish] }.inject(:+)
+    selection.map { |dish, _n| selection[dish] * menu[dish] }.inject(:+)
   end
 
   def pounded(pennies)
-    "£#{pennies / 100}.#{sprintf('%02i', pennies % 100)}"
+    "£#{pennies / 100}.#{format('%02i', pennies % 100)}"
   end
 
 end

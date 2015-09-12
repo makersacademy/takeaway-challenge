@@ -1,9 +1,12 @@
 require 'takeaway'
 
+TEST_MENU = { cat: 1234, dog: 808, foo: 9 }
+EMPTY_MENU = {}
+
 describe Takeaway do
 
-  let(:subject) { Takeaway.new({cat: 1234, dog: 808, foo: 9}) }
-  let(:blank_menu) { Takeaway.new({}) }
+  let(:subject) { Takeaway.new(TEST_MENU) }
+  let(:blank_menu) { Takeaway.new(EMPTY_MENU) }
 
   it "presents the menu" do
     expect(subject.present_menu).to eq "Cat: £12.34, Dog: £8.08, Foo: £0.09"
@@ -57,7 +60,8 @@ describe Takeaway do
     subject.select_item(:cat)
     subject.select_item(:dog, 2)
     subject.select_item(:foo, 7)
-    expect{subject.place_order(2912)}.to raise_error("Payment of £29.12 for order of £29.13")
+    expected_error = "Payment of £29.12 for order of £29.13"
+    expect{subject.place_order(2912)}.to raise_error(expected_error)
   end
 
 end
