@@ -7,7 +7,3 @@ class Takeaway
               'Beef casserole' => 18 }
   end
 end
-
-takeaway = Takeaway.new
-
-print takeaway.menu

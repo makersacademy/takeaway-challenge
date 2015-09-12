@@ -14,7 +14,18 @@ class Customer
     @basket << _item
   end
 
-  def view_basket
+  def basket
     @basket
   end
+
+  def bill(takeaway)
+    final_bill = []
+      self.basket.each do |item|
+        if takeaway.menu.has_key?(item)
+          final_bill << takeaway.menu[item]
+        end
+      end
+      final_bill.inject(:+)
+  end
+
 end
