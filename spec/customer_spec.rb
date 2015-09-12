@@ -2,7 +2,13 @@ require 'customer'
 
 describe Customer do
 
+  let(:text_sender) { double :text_sender }
+
+  subject { Customer.new text_sender}
+
   describe "#order" do
+
+    it { is_expected.to respond_to(:display_menu) }
 
     it { is_expected.to respond_to(:place_order).with(2).argument }
 
@@ -46,13 +52,22 @@ describe Customer do
 
     it "raises an error is payment requested doensn't match total" do
       subject.place_order("crispy chilli beef", 2)
-      expect{subject.charge(6)}.to raise_error "Payment does not match total"
+      expect{subject.charge(6)}.to raise_error
+      "Payment does not match total"
     end
 
     it "if payment is accepted, text notification is sent" do
       subject.place_order("crispy chilli beef", 2)
       subject.total_cost
       expect(subject.charge(10)).to eq "Thank you for your order, you will recieve a text confirmation shortly."
+    end
+
+    it "sends the number and message to text_sender" do
+      phone_number = "447590425818"
+      time =  Time.new 2015, 9, 12, 23, 23
+      allow(Time).to receive(:new) { time }
+      expect(text_sender).to receive(:send_text).with("447590425818", "Thanks! Your order should be delivered by 00:23")
+      subject.order_dishes("447590425818")
     end
 
   end
