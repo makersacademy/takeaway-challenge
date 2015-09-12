@@ -8,6 +8,8 @@ class Customer
     menu
   end
 
-
+  def verify_bill(order, total_price)
+    order.order_total(total_price)
+  end
 
 end
