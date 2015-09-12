@@ -26,4 +26,10 @@ describe Customer do
     expect(subject.total).to eq(13)
   end
 
+  it "give a receipt of total order" do
+    subject.place_order("crispy chilli beef", 1)
+    subject.place_order("sweet and sour chicken", 2)
+    expect(subject.receipt).to eq ("Dish: crispy chilli beef x1, Dish: sweet and sour chicken x2")
+  end
+
 end

@@ -24,8 +24,8 @@ class Customer
 
   def receipt
     order.map do |dish, quantity|
-      puts "Dish: #{dish} x#{quantity}"
-    end
+      "Dish: #{dish} x#{quantity}"
+    end.join(", ")
   end
 
 
