@@ -1,3 +1,4 @@
+
 require "./lib/dish"
 
 describe Dish do
@@ -11,7 +12,6 @@ describe Dish do
   it "has a price" do
     expect(subject.price).to eq(8)
   end
-
 
 end
 
