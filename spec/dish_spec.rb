@@ -12,6 +12,10 @@ describe Dish do
     expect(subject.price).to eq(8)
   end
 
+  it "has equality" do
+    expect(subject).to eq(Dish.new("Burger", 8))
+  end
+
 end
 
 
