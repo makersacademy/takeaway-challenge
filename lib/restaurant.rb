@@ -6,7 +6,9 @@ class Restaurant
     @menu = menu
   end
 
-  # def submit_order
-  # end
+  def submit_order(customer_name, customer_phone_number, dishes)
+    Order.new(customer_name, customer_phone_number, dishes)
+  end
+
 
 end
