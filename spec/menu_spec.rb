@@ -47,7 +47,21 @@ describe Menu do
   describe "#display" do
 
     it 'displays the current dishes on the menu with name and price' do
-
+      dish1 = double(:dish)
+      dish2 = double(:dish)
+      allow(dish1).to receive(:name).and_return('Egg Fried Rice')
+      allow(dish1).to receive(:price).and_return(3.95)
+      allow(dish2).to receive(:name).and_return('Singapore Noodle')
+      allow(dish2).to receive(:price).and_return(4.99)
+      allow(dish1).to receive(:display_info).and_return(
+      'Egg Fried Rice                          £   3.95')
+      allow(dish2).to receive(:display_info).and_return(
+      'Singapore Noodle                        £   4.99')
+      subject.add_dish(dish1)
+      subject.add_dish(dish2)
+      expect(subject.display).to eq("                  MENU  \n\nEgg Fried"\
+      " Rice                          £   3.95\nSingapore Noodle"\
+      "                        £   4.99\n")
     end
 
   end

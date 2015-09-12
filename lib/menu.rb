@@ -14,6 +14,14 @@ class Menu
     @dishes << dish
   end
 
+  def display
+    to_display = "                  MENU  \n\n"
+    dishes.each do |dish|
+      to_display = to_display + dish.display_info + "\n"
+    end
+    to_display
+  end
+
   private
 
   def wrong_name?(dish)
