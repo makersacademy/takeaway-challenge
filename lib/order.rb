@@ -1,5 +1,5 @@
 require 'twilio-ruby'
-require_relative '../.env.rb'
+require './.env.rb'
 
 class Order 
 
@@ -21,7 +21,7 @@ class Order
   end
 
   def add_item(dish, quantity = 1)
-    fail 'That item is not on the menu' unless menu.dishes_available.has_key?(dish)
+    fail 'That item is not on the menu' unless menu.dishes_available.key?(dish)
     dish_check_and_add(dish, quantity)
     price = quantity * menu.dishes_available[dish]
     @total += price
@@ -52,7 +52,7 @@ class Order
   private 
 
   def dish_check_and_add(dish, quantity)
-    basket.has_key?(dish) ? basket[dish] += quantity : basket[dish] = quantity
+    basket.key?(dish) ? basket[dish] += quantity : basket[dish] = quantity
   end
 
   def quantity_check_and_remove(dish, quantity)

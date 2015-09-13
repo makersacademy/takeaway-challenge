@@ -6,7 +6,7 @@ describe Order do
   it { is_expected.to respond_to(:remove_item).with(2).argument }
   it { is_expected.to respond_to(:check_dishes) }
   it { is_expected.to respond_to(:basket) }
-    it { is_expected.to respond_to(:place_order) }
+  it { is_expected.to respond_to(:place_order) }
   
 
   it 'should be able to check the list of dishes with prices' do
