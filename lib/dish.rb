@@ -7,6 +7,6 @@ class Dish
   end
 
   def show_details
-    "#{name}: £#{price.to_s}"
+    "#{name}: £#{price}"
   end
 end

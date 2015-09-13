@@ -11,16 +11,29 @@ class Order
       order << dish
   end
 
-  def place_order
-    puts "Your order:\n"
+  def total_price
     total, count = 0, 0
+    order.each do |item|
+      total += (item.price * amount[count])
+      count += 1
+    end
+    total
+  end
+
+  def show_order
+    puts "Your order:\n"
+    count = 0
     order.each do |dish|
       quantity = order.count(dish)
       puts "#{dish.show_details} X#{amount[count]}"
-      total += (dish.price * amount[count])
       count += 1
     end
-    puts "Total: £#{sprintf('%.2f', total)}"
   end
 
+  def place_order payment
+    fail 'Payment does not match total!' if payment != total_price
+    show_order
+    total_price
+    Text.new.send_text
+  end
 end
