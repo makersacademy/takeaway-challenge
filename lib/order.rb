@@ -20,12 +20,18 @@ class Order
     basket_hash.each_pair do |k, v|
       puts "#{v}x #{k.name} | £#{'%.2f' % (v * k.price)}"
     end
-    puts "Total cost: £#{'%.2f' % basket.inject(0){|sum, x| sum + x.price}}"
+    puts "Total cost: £#{'%.2f' % total_cost}"
   end
 
   def submit(payment)
-    fail "Payment does not match total cost" if basket.inject(0){|sum, x| sum + x.price} != payment
+    fail "Payment does not match total cost" if payment != total_cost
     send_text
+  end
+
+  private
+
+  def total_cost
+    basket.inject(0){|sum, x| sum + x.price}
   end
 
 end
