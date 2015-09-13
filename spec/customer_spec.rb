@@ -14,19 +14,19 @@ describe Customer do
 
     before { subject.place_order :Burger }
 
-    it 'will raise an error when not on the menu' do
+    it 'will raise an error when dish is not on the menu' do
       expect { subject.place_order(:Duck) }.to raise_error 'Please select a dish from the menu.'
     end
 
     it 'can place an order' do
-      expect(subject.place_order :Burger).to eq 'Thank you for ordering!'
+      expect(subject.place_order :Burger).to eq 'Thank you for ordering. Your order so far is 2 x Burger: £19.98.'
     end
 
     it 'a dish has a default quantity of one' do
       expect(subject.order.values).to eq [1]
     end
 
-    it 'the same dish can be ordered more than one time' do
+    it 'a dish can be ordered more than once at the same time' do
       subject.place_order :Burger, 3
       expect(subject.order.values).to eq [4]
     end
@@ -36,7 +36,7 @@ describe Customer do
       expect(subject.order.values).to eq [3]
     end
 
-    it 'can order several dishes' do
+    it 'can order different dishes' do
       subject.place_order :Chips, 4
       subject.place_order :Salad
       expect(subject.order.values).to eq [1, 4, 1]
@@ -48,7 +48,7 @@ describe Customer do
     before { subject.place_order :Chips, 2 }
 
     it 'displays the total costs for each dish and the overall sum' do
-      expect(subject.check_out).to eq 1
+      expect(subject.check_out).to eq "Your bill is: £23.96."
     end
   end
 
