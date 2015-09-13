@@ -1,39 +1,43 @@
 Takeaway Challenge
 ==================
+[![Build Status]()
+[![Coverage Status]()
 
-Instructions
+Introduction
 -------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+ I've been learning to program with ruby for 6 weeks now, and this was the second weekend challenge given to us by Makers Academy.
+
+ The challenge was to create a takeaway program that uses the Twilio API to send text message confirmations on orders placed.
 
 Task
 -----
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Spend an hour composing a blog post to answer the question `What is a ruby gem? Give a code example showing how to use a ruby gem in a piece of code. What are some dangers to using a gem?`
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
+* Answer the question `What is a ruby gem? Give a code example showing how to use a ruby gem in a piece of code. What are some dangers to using a gem?`
+
 * Write a Takeaway program with the following user stories:
 
+User Stories
+----------
 ```
 As a customer
 So that I can check if I want to order something
-I would like to see a list of dishes with prices
+<!-- I would like to see a list of dishes with prices -->
 
 As a customer
 So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+<!-- I would like to be able to select some number of several available dishes -->
 
 As a customer
 So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+<!-- I would like to check that the total I have been given matches the sum of the various dishes in my order -->
 
 As a customer
 So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+<!-- I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered -->
 ```
-
-* Hints on functionality to implement:
+Model
+-------
+  * Hints on functionality to implement:
   * ensure you have a list of dishes with prices
   * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
   * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
@@ -51,5 +55,17 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Development/Feedback
+--------
+
+Instructions
+--------
+First run IRB or PRY in terminal(or equivalent).
+```
+$ require './lib/customer.rb'
+$ customer_name = Customer.new
+```
+
+Author
+------
+Daniel St Paul
