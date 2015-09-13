@@ -1,6 +1,6 @@
 require 'order'
 
-describe Order do
+describe Orders do
 
 let(:menu_item1) {double :menu_item1, name: "Curry", price: 5}
 let(:menu_item2) {double :menu_item2, name: "Burger", price: 6}
@@ -27,9 +27,15 @@ let(:menu_item2) {double :menu_item2, name: "Burger", price: 6}
     expect(subject.total).to eq(16)
   end
 
+  it "raises and error if I am not happy with the total" do
+   allow(subject).to receive(:correct).and_return(false)
+   expect{subject.correct}.to raise_error("Order Total incorrect")
 
+ end
 
+ it "sends a text message with the time of the delivery if the customer is happy with the total" do
 
+ end
 
 
 end

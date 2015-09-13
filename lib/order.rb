@@ -1,6 +1,6 @@
 require_relative 'menu'
 
-class Order
+class Orders
 
 attr_reader :order
 
@@ -23,16 +23,35 @@ attr_reader :order
   total_dishes.inject(:+)
   end
 
+  def show_order
+    puts "Your Order"
+    @order.each do |item|
 
+    end
+  end
 
   def total
+    order
     total = []
     order.each do |item|
       total<<item[2]
     end
-    total.inject(:+)
-
+    puts "Order Total"
+    total_order = total.inject(:+)
+    puts "£" + total_order.to_s
   end
+
+  def correct(customer_happy)
+   fail "Order Total incorrect" if customer_happy != "Yes"
+
+   puts "Thank you for your order"
+   puts "Please enter your phone number"
+   puts "and we will send you a message"
+   puts "telling you when your delivery"
+   puts "is due"
+  end
+
+
 
 
 
@@ -47,10 +66,14 @@ p menu
 menu.add_item(curry)
 menu.add_item(burger)
 p menu
-order = Order.new
+order = Orders.new
 p order
 order.add_menu_item_to_order(curry)
 order.add_menu_item_to_order(burger)
+puts order
+
 puts
-p order
-p order.total_dishes
+p order.show_order
+puts
+puts order.total
+order.correct("Yes")
