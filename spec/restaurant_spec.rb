@@ -5,18 +5,21 @@ require "./lib/dish"
 describe Restaurant do
 
   subject do
-    dishes = [Dish.new("Burger", 8)]
+    dishes = [Dish.new("Burger", 8), Dish.new("Pizza", 10)]
     menu = Menu.new(dishes)
     Restaurant.new(menu)
   end
 
   it "has a menu" do
-    expect(subject.menu.dishes.length).to eq(1)
+    expect(subject.menu.dishes.length).to eq(2)
   end
 
   it "can recieve order" do
-    dishes = [Dish.new("Burger", 8)]
-    order = subject.submit_order("Sarah", "0123456789", dishes)
+    burger = Dish.new("Burger", 8)
+    pizza = Dish.new("Pizza", 10)
+    order_dishes = {burger => 1,
+                    pizza => 2}
+    order = subject.submit_order("Sarah", "0123456789", order_dishes)
     expect(order.customer_name).to eq("Sarah")
   end
 
