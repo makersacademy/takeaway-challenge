@@ -8,7 +8,6 @@ class Menu
     @subtotal = []                                                    # => []
   end
 
-
   def order(item, quantity)
     not_on_menu?(item,quantity)
     @quantity = quantity
@@ -23,6 +22,8 @@ class Menu
     @basket_price = @subtotal.inject(:+).round(10)  # => 7.0
   end
 
+  private
+  
   def not_on_menu?(item,quantity)
     raise "Item not on menu" unless @list_of_items.has_key?(item)
   end
