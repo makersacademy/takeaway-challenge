@@ -6,7 +6,7 @@ class Menu
     @menu = {}
   end
 
-  def add(dish)
+  def make_dish_available(dish)
     number = next_dish_number
     @menu[number] = dish
   end
