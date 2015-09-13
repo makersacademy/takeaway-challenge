@@ -1,0 +1,100 @@
+letters = (A..J).to_a
+letters = ("A..J").to_a
+letters = ("A".."J").to_a
+numbers = (1..10).to_a
+letters.map {|letter| numbers.map {|number| letter+number}}
+letters.map {|letter| numbers.map {|number| letter+number.to_s}}
+letters.map {|letter| numbers.map {|number| letter+number.to_s}}.flatten
+b = [1,2]
+a!&b
+a&b
+sub1 = Submarine.new("A2", :N)
+c = "A1"
+c[1].to_i + 1.to_s
+c = "A10"
+c[1..2] = (c[1..2].to_i - 1).to_s)
+c[1..2] = c[1..2].to_i - 1).to_s
+c[1] = (c[1..2].to_i - 1).to_s
+c[1..2] = (c[1..2].to_i - 1).to_s
+c = "A9"
+c[1] = (c[1].to_i + 1).to_s
+c
+inject(:a)
+a = [1,2,3]
+a.inject(result, :puts)
+a.inject(2, :+)
+a.inject(5, :+)
+a.inject(5, :*)
+a = ["ab", "cde"]
+a.inject("fg", +)
+a.inject("fg", :+)
+a.inject(0, [])
+a.inject(0, :[])
+a.inject(0, :upcase)
+a.inject(:upcase)
+a.inject('fg', :upcase)
+a.inject('fg', :find)
+a.inject('fg', :sub)
+a.inject('fg', 'a', :sub)
+a.inject('fg', :match)
+a.inject('fg', :length)
+a.inject('fg', :index)
+a.inject('fg', :chars)
+a = [1,2,3,4]
+a.inject(0, :+)
+a.inject(1, :+)exit
+class Plane
+def initialise
+take_off
+def take_off
+fly = true
+plane = Plane.new
+plane.take_off
+arr = [1,2,3,4]
+new = 0
+arr each do
+[1,2,3].inject
+[1,2,3,4].inject(:+)
+(:+).is_a? Symbol
+[1,2,3,4,5,6].inject(0,:+)
+[1,2,3,4,5,6].inject(:+)
+[2,3,4].inject(:*)
+[2,3,4].inject(2, :*)
+[2,3,4].shift
+a = [2,3,4]
+a.shift
+a
+p = Proc.new {|sum, i| sum+i}
+[1,2,3].inject(&p)
+[1,2,3].map
+5 {|i| i+2}
+p1 = Proc.new {|digit| digit.to_i}
+p1.call("1")
+p1.call("1", "2", "3")
+l1 = lambda {|digit| digit.to_i}
+l1.call("1")
+l1.call("1", "2", "3")
+[:a, :b, :c].inject(:d) {|init, sym| init+sym}
+[:a, :b, :c].inject(:d) {|init, sym| init==sym}
+[:+].inject(:+) {|init, el| init==el}
+[:+].inject(:+)
+:+:+
+end
+dish = Dish.new 'pizza'
+cust.list_of_dishes
+cust.add_dish('dip', 1)
+cust order
+cust.order
+cust.check_total(26.47)
+cust.place_order(ordered_dishes, 25.98)
+q
+cust.add_dish('pizza', 2)
+cust.ordered_dishes
+cust.order.total
+cust.place_order(23)
+irb
+load '../.env'
+load '../.env.rb'
+cust = Customer.new
+cust.send_text
+exit
