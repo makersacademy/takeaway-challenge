@@ -19,7 +19,12 @@ describe User do
   end
 
   context "when checking out" do
-    
+
+    it "checks the user input against the basket total" do
+      subject.add(menu.starters["Soup"])
+      expect{subject.checkout(1.99)}.to raise_error "Error - Payment value does not match basket total"
+    end
+
     xit "an item summary is displayed" do
       subject.add(menu.starters["Soup"])
       expect(subject.checkout).to eq "1 items in your basket, total £3.99"
