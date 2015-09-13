@@ -16,6 +16,7 @@ class Menu
   end
 
   def view
+    raise "No meal options have been added to this menu" if dishes_available.count == 0
     dishes_available.each do |k, v|
       puts "#{k}: #{v.name} | Price: £#{v.price}"
     end
