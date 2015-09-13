@@ -2,6 +2,7 @@ require_relative "../lib/User"
 
 describe User do
   let(:menu) {double(:menu,{starters: {"Soup" => ["Soup",3.99], "Salad" => ["Salad",4.99]}})}
+  let(:checkout_complete) {double(:checkout_complete)}
 
   it "has an empty basket when initialized" do
      expect(subject.basket).to eq []
@@ -24,7 +25,8 @@ describe User do
       expect(subject.checkout).to eq "1 items in your basket, total £3.99"
     end
 
-    it "a text message is sent" do
+    xit "sends a text message" do
+      allow(subject).to receive(:sendMessage).and_return(true)
       subject.checkout_complete
       expect(subject.sent).to eq true
     end

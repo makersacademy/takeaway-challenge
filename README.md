@@ -1,34 +1,24 @@
 **Takeaway Challenge**
 =================
-Week two Makers Academy - Takeaway Challenge!
 
 Description
 ------------
- Takeaway challenge
+Takeaway Challenge!
 
 Installation/Dependencies
 --------------------------
 - Ruby 2.2.0
 - Rspec 3.3.2
-- Coveralls 0.7.9
+- Coveralls 0.8.2
 
 Other Info:
 
 Takeaway Challenge
 ==================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```

@@ -15,7 +15,7 @@ def sendMessage(message_out,receiver)
     :to => ENV["TO"],
     :body => message_out,
     )
-  @sent = true
+  return true
 end
 
 end
