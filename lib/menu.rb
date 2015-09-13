@@ -1,8 +1,12 @@
 class Menu
   attr_reader :items
 
-  def initialize
-    @items = { pizza: 5.99, burger: 4.99, chips: 2.99, sandwich: 3.99 }
+  def initialize(items)
+    @items = items
+  end
+
+  def add(added_item, item_price)
+    @items.store(added_item, item_price)
   end
 
   def list
@@ -11,7 +15,4 @@ class Menu
     menu.strip.chomp(",")
   end
 
-  def on_menu?(dish)
-    items.has_key?(dish)
-  end
 end
