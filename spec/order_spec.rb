@@ -36,7 +36,8 @@ describe Order do
     subject.choose_dish
     allow(subject).to receive(:gets).and_return('2')
     subject.choose_how_many
-    expect(subject.cart(menu)).to eq([{dish: 'Pasta', price: 7, quantities: 2 }])
+    expect(subject.cart(menu)).
+      to eq([{dish: 'Pasta', price: 7, quantities: 2 }])
   end
 
   it "can check orders" do
@@ -47,10 +48,10 @@ describe Order do
     subject.cart(menu)
     width = 10
     expect { subject.check_orders }.
-      to output(("Dish".ljust(width) + "Quantities".center(width) +
-      "Price".center(width) + "Total".rjust(width) + "\n" +
-      "Pizza".ljust(width) + "3".center(width) + "9".center(width) +
-      "27".rjust(width) + "\n" + "The total price is 27\n")).to_stdout
+      to output(("Dish".ljust(width) << "Quantities".center(width) <<
+        "Price".center(width) << "Total".rjust(width) + "\n" <<
+          "Pizza".ljust(width) << "3".center(width) + "9".center(width) <<
+            "27".rjust(width) + "\n" << "The total price is 27\n")).to_stdout
   end
 
   describe "#execute_orders" do
@@ -65,11 +66,11 @@ describe Order do
     it "sends text message" do
       text = double :text
       allow(text).to receive(:send_text_message).
-        and_return("Thank you! Your order was placed and will be delivered " +
-        "before #{(Time.now + 3600).strftime('%H:%M')}")
+        and_return("Thank you! Your order was placed and will be delivered " <<
+          "before #{(Time.now + 3600).strftime('%H:%M')}")
       expect(text.send_text_message).
-        to eq("Thank you! Your order was placed and will be delivered " +
-        "before #{(Time.now + 3600).strftime('%H:%M')}")
+        to eq("Thank you! Your order was placed and will be delivered " <<
+          "before #{(Time.now + 3600).strftime('%H:%M')}")
     end
   end
 end

@@ -1,5 +1,7 @@
 require_relative 'menu'
 require_relative 'text'
+require 'rubygems'
+require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
 
@@ -30,17 +32,17 @@ class Order
   end
 
   def cart(menu)
-    orders << menu.menu[@menu_num - 1].merge({quantities: @quantities})
+    orders << menu.menu[@menu_num - 1].merge(quantities: @quantities)
   end
 
   def check_orders
     width = 10
-    puts "Dish".ljust(width) + "Quantities".center(width) +
-      "Price".center(width) + "Total".rjust(width)
+    puts "Dish".ljust(width) << "Quantities".center(width) <<
+      "Price".center(width) << "Total".rjust(width)
     orders.each do |order|
-      puts "#{order[:dish].ljust(width)}" +
-      "#{order[:quantities].to_s.center(width)}" +
-      "#{order[:price].to_s.center(width)}" +
+      puts "#{order[:dish].ljust(width)}" <<
+      "#{order[:quantities].to_s.center(width)}" <<
+      "#{order[:price].to_s.center(width)}" <<
       "#{(order[:quantities] * order[:price]).to_s.rjust(width)}"
     end
     puts "The total price is #{total_price}"
