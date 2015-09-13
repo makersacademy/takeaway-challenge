@@ -1,5 +1,7 @@
 ```
-What is a ruby gem? Give a code example showing how to use a ruby gem in a piece of code. What are some dangers to using a gem?
+What is a ruby gem?
+Give a code example showing how to use a ruby gem in a piece of code.
+What are some dangers to using a gem?
 ```
 
 From Wikipedia,
