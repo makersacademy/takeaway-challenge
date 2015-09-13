@@ -37,6 +37,14 @@ class Order
     puts "The total price is #{total_price}"
   end
 
+  def execute_orders
+    orders.map do |order|
+      order[:paid] = true
+      order[:ordered_at] = Time.now.strftime("%b %e, %Y %H:%M")
+    end
+    orders
+  end
+
   private
 
   def total_price

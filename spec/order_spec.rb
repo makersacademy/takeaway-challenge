@@ -30,7 +30,7 @@ describe Order do
     expect(subject.cart(menu)).to eq([{dish: 'Pasta', price: 7, quantities: 2 }])
   end
 
-  it "can check my orders" do
+  it "can check orders" do
     menu = Menu.new
     allow(subject).to receive(:gets).and_return('4')
     subject.choose_dish
@@ -43,5 +43,15 @@ describe Order do
     subject.choose_how_many
     subject.cart(menu)
     expect { subject.check_orders }.to output("Dish   Quantities  Price  total\nPasta      2         7    14\nPizza      3         9    27\nThe total price is 41\n").to_stdout
+  end
+
+  it "executes orders" do
+    menu = Menu.new
+    allow(subject).to receive(:gets).and_return('4')
+    subject.choose_dish
+    allow(subject).to receive(:gets).and_return('2')
+    subject.choose_how_many
+    subject.cart(menu)
+    expect(subject.execute_orders.first[:paid]).to be true
   end
 end
