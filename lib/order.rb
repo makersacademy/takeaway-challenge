@@ -64,10 +64,11 @@ class Order
     @auth_token = ENV[:auth_token]
     @client = Twilio::REST::Client.new @account_sid, @auth_token
     @client.messages.create(
+      from: '441315101887',
       to: ENV[:phone_number],
       body: 'Thank you. Your order of has been placed successfully 
         and will be with before #{calculate_delivery_time}.
-        The total cost is #{total}',
+        The total cost is #{total.round(2)}',
     )
   end
 
