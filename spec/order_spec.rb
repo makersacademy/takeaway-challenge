@@ -13,8 +13,8 @@ describe Order do
   describe "#greet" do
     it "greets to the customer" do
       expect { subject.greet }.
-        to output("Thank you for visiting our takeaway website.\n" +
-        "please take a look at our menu.\n").to_stdout
+        to output("Thank you for visiting our takeaway website.\n" <<
+          "please take a look at our menu.\n").to_stdout
     end
   end
   describe "#choose_dish" do
@@ -53,24 +53,12 @@ describe Order do
           "Pizza".ljust(width) << "3".center(width) + "9".center(width) <<
             "27".rjust(width) + "\n" << "The total price is 27\n")).to_stdout
   end
-
-  describe "#execute_orders" do
-    it "executes orders" do
-      allow(subject).to receive(:gets).and_return('4')
-      subject.choose_dish
-      allow(subject).to receive(:gets).and_return('2')
-      subject.choose_how_many
-      subject.cart(menu)
-      expect(subject.execute_orders.first[:paid]).to be true
-    end
-    it "sends text message" do
-      text = double :text
-      allow(text).to receive(:send_text_message).
-        and_return("Thank you! Your order was placed and will be delivered " <<
-          "before #{(Time.now + 3600).strftime('%H:%M')}")
-      expect(text.send_text_message).
-        to eq("Thank you! Your order was placed and will be delivered " <<
-          "before #{(Time.now + 3600).strftime('%H:%M')}")
-    end
+  it "executes orders" do
+    allow(subject).to receive(:gets).and_return('4')
+    subject.choose_dish
+    allow(subject).to receive(:gets).and_return('2')
+    subject.choose_how_many
+    subject.cart(menu)
+    expect(subject.execute_orders.first[:paid]).to be true
   end
 end

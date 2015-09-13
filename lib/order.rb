@@ -53,6 +53,9 @@ class Order
       order[:paid] = true
       order[:ordered_at] = Time.now.strftime("%b %e, %Y %H:%M")
     end
+    allow(Text).to receive(:send_text_message).
+      and_return("Thank you! Your order was placed and will be delivered before
+        #{(Time.now + 3600).strftime('%H:%M')}")
     Text.send_text_message
     orders
   end
