@@ -19,7 +19,7 @@ describe Customer do
     end
 
     it 'can place an order' do
-      expect(subject.place_order :Burger).to eq 'Thank you for ordering. Your order so far is 2 x Burger: £19.98.'
+      expect(subject.place_order :Burger).to eq 'Thank you for ordering.'
     end
 
     it 'a dish has a default quantity of one' do
@@ -43,12 +43,26 @@ describe Customer do
     end
   end
 
+  context '#review_order' do
+
+    it 'raises an eror if no dishes are ordered' do
+      expect { subject.review_order }.to raise_error "You haven't ordered anything."
+    end
+
+    it 'should return the dishes and quantity order' do
+      subject.place_order :Pizza, 2
+      subject.place_order :Salad, 5
+      expect(subject.review_order).to eq "Pizza: 2, Salad: 5"
+    end
+  end
+
+
   context '#check_out' do
     before { subject.place_order :Burger, 2 }
     before { subject.place_order :Chips, 2 }
 
-    it 'displays the total costs for each dish and the overall sum' do
-      expect(subject.check_out).to eq "Your bill is: £23.96."
+    it 'displays the total costs' do
+      expect(subject.check_out).to eq "Total costs: £23.96."
     end
   end
 
