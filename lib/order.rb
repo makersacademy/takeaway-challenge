@@ -5,25 +5,44 @@ class Order
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @basket = []
+    @basket = {}
     @total = 0.0
   end
 
   def check_dishes
-    menu.dishes_available
+    list_of_dishes = ''
+    menu.dishes_available.each do |dish, price|
+      list_of_dishes += ("#{dish} £#{price}\n")
+    end
+    list_of_dishes
   end
 
   def add_item(dish, quantity = 1)
     fail 'That item is not on the menu' unless menu.dishes_available.has_key?(dish)
-    basket << dish
-    @total += menu.dishes_available[dish]
+    basket[dish] = quantity
+    price = quantity * menu.dishes_available[dish]
+    @total += price
   end
 
   def remove_item(dish, quantity = 1)
     fail 'Item was not in the basket' unless basket.include?(dish)
+    fail 'You do not have that quantity of the item in the basket' if quantity > basket[dish]
     basket.delete(dish)
-    @total -= menu.dishes_available[dish]
+    price = quantity * menu.dishes_available[dish]
+    @total -= price
   end
+
+  def total_price_verified?
+    basket_total = 0.0
+    basket.each do |item|
+      basket_total += menu.dishes_available[item]
+    end
+    p basket_total
+    basket_total == total ? true : false
+  end
+
+  private 
+
 
 
 end
