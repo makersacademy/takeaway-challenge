@@ -1,14 +1,20 @@
+require_relative 'takeaway.rb'
 require_relative 'menu.rb'
 
 class Customer
 
-  attr_reader :mobile
-
   include Menu
+
+  attr_reader :mobile, :order
 
   def initialize(mobile)
     @mobile = mobile
+    @order = []
   end
 
+  def place_order(*args)
+    args.each { |arg| order << arg }
+    order.map! { |x| menu[x] }
+  end
 
 end
