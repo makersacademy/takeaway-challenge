@@ -29,7 +29,7 @@ include Menu
 
   def place_order(list = ordered_dishes, total)
     fail "Order is empty" if list.empty?
-    fail "Total is not correct" if !total_correct(total)
+    fail "Total is not correct" unless total_correct(total)
     send_text
   end
 
@@ -40,7 +40,7 @@ include Menu
     @client.messages.create(
       from: ENV['phone'],
       to: ENV['my_phone'],
-      body: 'Thank you! Your order was placed and will be delivered before 18:52')
+      body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 60*60).strftime('%H:%m')}")
   end
 
   private
