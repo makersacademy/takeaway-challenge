@@ -11,7 +11,7 @@ class Order
   end
 
   def add_item(dish, quantity)
-    if display_menu.has_key?(dish)
+    if display_menu.key?(dish)
       @contents << dish
       @contents << quantity
     else
