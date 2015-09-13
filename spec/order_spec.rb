@@ -26,6 +26,10 @@ describe Order do
       expected_output = "2x Dishy1 | £2.22\n3x Dishy2 | £6.66\nTotal cost: £8.88\n"
       expect{ subject.summary }.to output(expected_output).to_stdout
     end
+
+    it 'raises an error if no dishes have been added to the order' do
+      expect{ subject.summary }.to raise_error "Basket empty"
+    end
   end
 
   describe '#submit' do
@@ -40,6 +44,10 @@ describe Order do
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 3)
       expect{ subject.submit(9.50) }.to raise_error "Payment does not match total cost"
+    end
+
+    it 'raises an error if no dishes have been added to the order' do
+      expect{ subject.submit(0) }.to raise_error "Basket empty"
     end
   end
 
