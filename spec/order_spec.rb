@@ -2,6 +2,12 @@ require 'order'
 require 'stringio'
 
 describe Order do
+  let(:menu) { double :menu,
+    menu: [{dish: 'BBQ',       price: 10},
+             {dish: 'Hamburger', price: 8},
+             {dish: 'Pizza',     price: 9},
+             {dish: 'Pasta',     price: 7},
+             {dish: 'Sushi',     price: 6}] }
   describe "#greet" do
     it "greets to the customer" do
       expect { subject.greet }.to output("Thank you for visiting our takeaway website.\nplease take a look at our menu.\n").to_stdout
@@ -22,7 +28,6 @@ describe Order do
   end
 
   it "remembers my order" do
-    menu = Menu.new
     allow(subject).to receive(:gets).and_return('4')
     subject.choose_dish
     allow(subject).to receive(:gets).and_return('2')
@@ -31,7 +36,6 @@ describe Order do
   end
 
   it "can check orders" do
-    menu = Menu.new
     allow(subject).to receive(:gets).and_return('4')
     subject.choose_dish
     allow(subject).to receive(:gets).and_return('2')
@@ -46,7 +50,6 @@ describe Order do
   end
 
   it "executes orders" do
-    menu = Menu.new
     allow(subject).to receive(:gets).and_return('4')
     subject.choose_dish
     allow(subject).to receive(:gets).and_return('2')

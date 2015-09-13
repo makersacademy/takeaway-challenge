@@ -1,6 +1,8 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
+  include Text
   attr_reader :orders
   def initialize
     @orders = []
@@ -42,6 +44,7 @@ class Order
       order[:paid] = true
       order[:ordered_at] = Time.now.strftime("%b %e, %Y %H:%M")
     end
+    Text.send_text_message
     orders
   end
 
