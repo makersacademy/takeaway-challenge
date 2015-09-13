@@ -1,11 +1,9 @@
 class Order
 
-  attr_reader :order
-  attr_reader :amount
+  attr_reader :order, :amount
 
   def initialize
-    @order = []
-    @amount = []
+    @order, @amount = [], []
   end
 
   def add_to_order dish, quantity
@@ -15,8 +13,7 @@ class Order
 
   def place_order
     puts "Your order:\n"
-    total = 0
-    count = 0
+    total, count = 0, 0
     order.each do |dish|
       quantity = order.count(dish)
       puts "#{dish.show_details} X#{amount[count]}"
