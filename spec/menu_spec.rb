@@ -18,4 +18,9 @@ describe Menu do
     expect(subject.items).to eq({pizza: 5.99, burger: 4.99, chip: 3.99})
     end
   end
+  describe '#remove'
+    it 'should remove items from the menu' do
+      subject.remove(:burger)
+      expect(subject.items).to eq({pizza: 5.99})
+    end
 end

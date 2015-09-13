@@ -17,7 +17,7 @@ subject { Restaurant.new(Menu, pizza: 5.99, burger: 4.99, chip: 2.99, sandwich: 
   describe '#review' do
     it 'should return the items and quantity order' do
       subject.make_order(:pizza, 2)
-      expect(subject.review).to eq("pizza: 2")
+      expect(subject.review).to eq("Total cost: £11.98. pizza: 2")
     end
   end
   describe '#reciept' do
@@ -34,7 +34,7 @@ subject { Restaurant.new(Menu, pizza: 5.99, burger: 4.99, chip: 2.99, sandwich: 
     end
     it 'should show customer total cost' do
       subject.make_order(:pizza, 2)
-      expect(subject.receipt).to eq("Thank you! Total cost: £11.98 - pizza: £11.98 it should arrive before 01:00")
+      expect(subject.receipt).to eq("Thank you! Total cost: £11.98 - pizza: £11.98. It should arrive before 01:00")
     end
   end
   describe '#reset_order'
