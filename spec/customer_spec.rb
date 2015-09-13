@@ -53,7 +53,7 @@ describe Customer do
     it "if payment is accepted, text notification is sent" do
       subject.place_order("crispy chilli beef", 2)
       subject.total_cost
-      expect(subject.charge(10)).to eq "Thank you for your order, you will recieve a text confirmation shortly."
+      expect(subject.charge(10)).to eq "Your message was sent"
     end
 
   end

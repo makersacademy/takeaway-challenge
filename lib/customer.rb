@@ -1,4 +1,5 @@
 require_relative 'menu.rb'
+require_relative 'text_sender.rb'
 
 
 class Customer
@@ -18,7 +19,7 @@ class Customer
   end
 
   def place_order(dish, quantity)
-    raise "This dish is not on the menu" unless menu.key?(dish)
+    fail "This dish is not on the menu" unless menu.key?(dish)
     if order.include?(dish)
       order[dish] += quantity
     else
@@ -38,8 +39,8 @@ class Customer
   end
 
   def charge amount
-      raise "Payment does not match total" if (amount != total_cost)
-      "Thank you for your order, you will recieve a text confirmation shortly."
+      fail "Payment does not match total" if (amount != total_cost)
+      Delivery.new.text_customer
   end
-  
+
 end
