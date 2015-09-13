@@ -56,13 +56,13 @@ describe Order do
     expect(subject.total).to eq(0)
   end
 
-  it 'should be able to remove more items than there are in the basket' do 
+  it 'should not be able to remove more items than there are in the basket' do 
     menu = Menu.new
     subject.add_item("Duck Pancakes")
     expect{ subject.remove_item("Duck Pancakes", 2) }.to raise_error 'You do not have that quantity of the item in the basket'
   end
 
-  xit 'should check the total is equal to the sum of the prices of the items in the basket' do
+  it 'should check the total is equal to the sum of the prices of the items in the basket' do
     menu = Menu.new
     subject.add_item("Duck Pancakes", 3)
     subject.add_item("Crispy Beef", 4)
