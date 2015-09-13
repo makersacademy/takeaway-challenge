@@ -5,7 +5,7 @@ class User
 
 include Messenger
 
-  attr_reader :basket, :total, :menu, :sent
+  attr_reader :basket, :total, :menu
 
   def initialize
     @basket = []
