@@ -16,15 +16,15 @@ class Menu
   end
 
   def view
-    raise "No meal options have been added to this menu" if no_dishes_available?
+    fail "No meal options have been added to this menu" if no_dishes_available?
     dishes_available.each do |k, v|
       puts "#{k}: #{v.name} | Price: £#{v.price}"
     end
   end
 
   def select(order_number)
-    raise "No meal options have been added to this menu" if no_dishes_available?
-    raise "There are no dishes matching the number given" if !dishes_available.keys.include?(order_number)
+    fail "No meal options have been added to this menu" if no_dishes_available?
+    fail "There are no dishes matching the number given" unless dishes_available.keys.include?(order_number)
     dishes_available[order_number]
   end
 
