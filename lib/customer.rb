@@ -18,7 +18,7 @@ class Customer
   def place_order(takeaway)
     puts "Send us your number to confirm the order"
     @customer_number = "+447850122007"
-    takeaway.receive_order
+    takeaway.send_message
   end
 
   def bill(takeaway)

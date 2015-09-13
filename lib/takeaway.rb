@@ -18,10 +18,6 @@ class Takeaway
     @time_1hour
   end
 
-  def receive_order
-    send_message
-  end
-
   def send_message
     @account_sid = 'ACc9a80215897ab2945cfb24f869fbf293'
     @auth_token = '3c8e9f010f3df56c4c463633b30ad6d3'
