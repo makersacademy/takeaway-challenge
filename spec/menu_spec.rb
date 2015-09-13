@@ -24,12 +24,11 @@ describe Menu do
     end
 
     it "has multiple dishes" do
-      expect(subject.dishes[0].name).to eq ("Burger")
-      expect(subject.dishes[1].name).to eq ("Pizza")
-      expect(subject.dishes[2].name).to eq ("Pasta")
-      expect(subject.dishes[0].price).to eq (8)
-      expect(subject.dishes[1].price).to eq (10)
-      expect(subject.dishes[2].price).to eq (6)
+      dish_1 = Dish.new("Burger", 8)
+      dish_2 = Dish.new("Pizza", 10)
+      dish_3 = Dish.new("Pasta", 6)
+      dishes = [dish_1, dish_2, dish_3]
+      expect(subject.dishes).to match_array dishes
     end
   end
 

@@ -28,4 +28,5 @@ describe Restaurant do
     expect{subject.submit_order("Sarah", "0123456789", dishes)}.to raise_error "Dish not on menu"
   end
 
+
 end

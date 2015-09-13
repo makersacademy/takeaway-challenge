@@ -13,5 +13,4 @@ class Restaurant
     Order.new(customer_name, customer_phone_number, order_dishes)
   end
 
-
 end
