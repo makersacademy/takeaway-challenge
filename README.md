@@ -1,1 +1,1 @@
-Moe's Takeaway weekend challenge
+Moe's takeaway challenge
