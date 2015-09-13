@@ -1,6 +1,6 @@
 require 'dish'
 
-chicken_chow_mein = Dish.new('Chicken Chow Mein', '£5.95')
+chicken_chow_mein = Dish.new('Chicken Chow Mein', 5.95)
 
 describe Dish do
 
