@@ -22,7 +22,7 @@ class Customer
   end
 
   def select_dish(dish, quantity)
-      fail 'Dish not on menu' unless menu.menu_list.has_key?(dish)
+      fail 'Dish not on menu' unless menu.menu_list.key?(dish)
       update_total_items(quantity)
       add_to_order(dish, quantity)
       update_price(dish, quantity)
