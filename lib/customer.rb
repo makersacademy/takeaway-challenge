@@ -13,7 +13,7 @@ class Customer
 
   def receipt
     order.map do |dish, quantity|
-      "#{dish} x#{quantity} - £#{menu.menu_list[dish] * quantity}"
+      "#{quantity}x #{dish} - £#{menu.menu_list[dish] * quantity}"
     end.join(", ")
   end
 
@@ -26,6 +26,10 @@ class Customer
       update_total_items(quantity)
       add_to_order(dish, quantity)
       update_price(dish, quantity)
+  end
+
+  def order_total_cost
+    "Total    £" + order_total.to_s
   end
 
   private
