@@ -24,6 +24,8 @@ class Menu
     menu[dish_number]
   end
 
+  private
+
   def no_dishes_available?
     menu.count == 0
   end
