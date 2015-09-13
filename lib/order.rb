@@ -22,7 +22,7 @@ class Order
   def add_item(dish, quantity = 1)
     fail 'That item is not on the menu' unless menu.dishes_available.key?(dish)
     dish_check_and_add(dish, quantity)
-    price = quantity * menu.dishes_available[dish]
+    price = quantity * menu.dishes_available[dish].round(2)
     @total += price.round(2)
   end
 
@@ -30,14 +30,14 @@ class Order
     fail 'Item was not in the basket' unless basket.include?(dish)
     fail 'You do not have that quantity of the item in the basket' if quantity > basket[dish]
     quantity_check_and_remove(dish, quantity)
-    price = quantity * menu.dishes_available[dish]
+    price = quantity * menu.dishes_available[dish].round(2)
     @total -= price.round(2)
   end
 
   def total_price_verified?
     basket_total = 0.0
     basket.each do |dish, quantity|
-      basket_total += quantity * menu.dishes_available[dish]
+      basket_total += quantity * menu.dishes_available[dish].round(2)
     end
     basket_total.round(2) == total ? true : false
   end
@@ -56,7 +56,7 @@ class Order
   end
 
   def quantity_check_and_remove(dish, quantity)
-    basket[dish] == 1 ? basket.delete(dish) : basket[dish] -= quantity
+    basket[dish] == quantity ? basket.delete(dish) : basket[dish] -= quantity
   end
 
   def send_message
