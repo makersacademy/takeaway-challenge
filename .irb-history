@@ -1,0 +1,100 @@
+board.place ship, [4,4], "west"
+overlap?(ship, ship2)
+board.overlap?(ship,ship2)
+ship2 = Ship.new
+board.place ship, [0,0], "south"
+board.place ship2, [3,3], "south"
+ship3 = Ship.new(5)
+board.place ship3, [1,4], "north"
+board.receive_fire([3,3])
+board
+board.receive_fire([1,4])
+board.receive_fire([1,3])
+board.receive_fire([1,2])
+board.receive_fire([1,1])
+board.receive_fire([0,0])
+board.receive_fire([1,0])
+require './lib/submarine.rb'
+ship = Ship.new
+board.place sub, [4,4], "south"
+board.place sub, [4,4], "east"
+ship
+sub
+board.place sub, [4,4], "north"
+board = Board.new
+sub = Submarine.new
+board.place sub, [4,4], "west"
+sub2 = Submarine.new
+board.place sub2, [3,2], "north"
+sub3 = Submarine.new
+board.place sub3, [2,2], "south"
+array1 = ([0,0],[0,1],[0,2])
+array1 = ([0,0], [0,1], [0,2])
+array = [chick 2, pasta 1, pizza 3]
+array = ['chick' 2, 'pasta' 1, 'pizza' 3]
+array = ['chick 2', 'pasta 2', 'pizza 3']
+array.each_slice(2)
+array.split(//)
+array.split(',')
+array = ['pizza', 2, 'banana', 3]
+array.to_h
+c.place_order pepperoni_pizza 1, spaghetti_pomodoro 2
+c.place_order(pepperoni_pizza, 1, spaghetti_pomodoro, 2)
+c.place_order(:pepperoni_pizza, 1, :spaghetti_pomodoro, 2)
+c.place_order([:pepperoni_pizza, 1])
+c.place_order(:pepperoni_pizza, 1, :garlic_bread, 1)
+order.add_item("pepperoni pizza", 1, "spaghetti pomodoro", 1)
+o.add_item("pepperoni pizza", 1, "spaghetti pomodoro", 1)
+o.add_item("pepperoni pizza", 1)
+o.add_item("spaghetti pomodoro", 1)
+a.collect {|x,y| x => y }
+a.each_slice(2).to_a
+a = ["a", 1, "b", 1]
+Hash[a.each_slice(2).to_a]
+
+b = Hash[a.each_slice(2).to_a]
+b[:a]
+b["a"]
+o.add_item("spaghetti pomodoro", 2)
+o.add_item("pepperoni pizza", 2)
+exi
+order.add_item("spaghetti carbonara", 1)
+order.add_item("spaghetti pomodoro", 2)
+order.order_total(13.50)
+order.order_total(19.50)
+order.order_total(6.00)
+order.order_total(1.00)
+exkt
+c.add_item("spaghetti pomodoro", 1)
+@order.add_item("spaghetti pomodoro", 1)
+c.verify_bill(6.00)
+order1.add_item("spaghetti pomodoro", 1)
+customer.verify_bill(order1, 6.00)
+customer.verify_bill(order1, 1.00)
+order = Order.new
+order.add_item("spaghetti pomodoro", 1)
+order.add_item("pepperoni pizza", 2)
+order.add_item("spaghetti carbonara", 3)
+c.verify_bill(38.50)
+c.verify_bill(order, 38.50)
+c = Customer.new
+o = Order.new
+c.check_menu
+o.add_item(:pepperoni_pizza, 1)
+o.contents
+c.verify_order(o, 5.00)
+c.verify_bill(o, 5.00)
+c.verify_bill(o, 1)
+o.price
+o.prices
+customer = Customer.new
+order1 = Order.new
+customer.check_menu
+order1.add_item(:pepperoni_pizza, 2)
+order1.contents
+order1.add_item(:spaghetti pomodoro, 4)
+order1.add_item(:spaghetti_pomodoro, 4)
+customer.verify_bill(order1, 34.00)
+customer.verify_bill(order1, 1)
+menu = Menu.new
+exit

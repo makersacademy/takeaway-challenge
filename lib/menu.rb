@@ -1,10 +1,10 @@
 module Menu
 
-  def menu
+  def display_menu
     dish_list = {
-      'pepperoni pizza' => 5.00,
-      'spaghetti pomodoro' => 6.00,
-      'spaghetti carbonara' => 7.50
+      :pepperoni_pizza => 5.00,
+      :spaghetti_pomodoro => 6.00,
+      :spaghetti_carbonara => 7.50
     }
 
     dish_list.each do |dish, price|
