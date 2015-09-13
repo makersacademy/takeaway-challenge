@@ -13,7 +13,7 @@ class Customer
 
   def receipt
     order.map do |dish, quantity|
-      "#{dish} x#{quantity}"
+      "#{dish} x#{quantity} - £#{menu.menu_list[dish] * quantity}"
     end.join(", ")
   end
 
@@ -23,14 +23,22 @@ class Customer
 
   def select_dish(dish, quantity)
       fail 'Dish not on menu' unless menu.menu_list.has_key?(dish)
-      @total_items += quantity
-      @order[dish] = quantity
+      update_total_items(quantity)
+      add_to_order(dish, quantity)
       update_price(dish, quantity)
   end
 
   private
-  
+
   def update_price(dish, quantity)
     @order_total += menu.menu_list[dish] * quantity
+  end
+
+  def update_total_items(quantity)
+    @total_items += quantity
+  end
+
+  def add_to_order(dish, quantity)
+    @order[dish] = quantity
   end
 end

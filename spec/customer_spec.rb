@@ -20,7 +20,7 @@ describe Customer do
 
   it  'should be able to display a receipt of full order' do
     subject.select_dish("chicken burger meal", 3)
-    expect(subject.receipt).to eq("chicken burger meal x3")
+    expect(subject.receipt).to eq("chicken burger meal x3 - £13.47")
   end
 
   it 'must display entire menu' do
