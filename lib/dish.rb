@@ -1,15 +1,21 @@
 class Dish
 
-  attr_reader :description, :price, :quantity
+  attr_reader :number, :description, :price
+  attr_accessor :quantity
 
-  def initialize (description, price, quantity)
+  def initialize(number, description, price, quantity)
+    @number = number
     @description = description
     @price = price
     @quantity = quantity
   end
 
   def see
-    "#{description} \: \£#{format("%.2f", price)} \: #{quantity}"
+    "#{number} \: #{description} \: \£#{format("%.2f", price)}"
+  end
+
+  def total
+    @price * @quantity
   end
 
 end
