@@ -6,8 +6,6 @@ describe Customer do
     expect(subject).to respond_to(:display_menu)
   end
 
-  # it "can display the price of a dish"
-
   it "can add a dish from the menu to an order" do
     expect(subject).to respond_to(:add_to_order).with(2).arguments
   end
