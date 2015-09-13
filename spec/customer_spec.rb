@@ -26,5 +26,13 @@ describe Customer do
     expect{cust.place_order({'pizza'=>2}, 33)}.to raise_error "Total is not correct"
   end
 
+  it "receive a message if order is ok" do
+    order = double :order, empty?: false
+    allow(order).to receive(:total).and_return(35)
+    cust = Customer.new(order)
+    allow(cust).to receive(:send_text).and_return("Text sent!")
+    expect(cust.place_order({'pizza'=>2}, 35)).to eq("Text sent!")
+  end
+
 
 end

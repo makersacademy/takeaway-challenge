@@ -1,4 +1,9 @@
+
+require_relative 'order'
 require_relative 'menu'
+require 'twilio-ruby'
+require_relative '../.env.rb'
+
 
 class Customer
 
@@ -22,15 +27,28 @@ include Menu
     total == order.total
   end
 
-  def ordered_dishes
-     order.dishes
-  end
-
   def place_order(list = ordered_dishes, total)
     fail "Order is empty" if list.empty?
     fail "Total is not correct" if !total_correct(total)
-
+    send_text
   end
 
+  def send_text
+    account_sid = ENV['account_sid']
+    auth_token = ENV['auth_token']
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.messages.create(
+      from: ENV['phone'],
+      to: ENV['my_phone'],
+      body: 'Thank you! Your order was placed and will be delivered before 18:52')
+  end
+
+  private
+
+  def ordered_dishes
+     order.dishes
+  end
 end
+
+
 
