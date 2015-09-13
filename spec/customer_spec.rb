@@ -17,7 +17,7 @@ describe Customer do
   it "can select some number of several available dishes" do
     subject.make_order("chicken katsu", 2)
     subject.make_order("miso soup", 2)
-    expect(subject.order).to eq({"chicken katsu" => 2, "miso soup" => 2})
+    expect(subject.order).to eq("chicken katsu" => 2, "miso soup" => 2)
   end
 
   it "can will add the quantity of a dish if ordered again" do
