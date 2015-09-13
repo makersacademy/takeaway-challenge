@@ -9,7 +9,7 @@ class Menu
   end
 
   def select_food(item)
-    @list.select { |key, value| key == item.to_sym }
+    @list.select { |key| key == item.to_sym }
   end
 
 

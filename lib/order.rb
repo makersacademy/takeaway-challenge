@@ -7,7 +7,6 @@ class Order
     @order = {}
   end
 
-
   def add item, menu
     @order.merge!(menu.select_food(item.to_s))
   end
