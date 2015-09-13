@@ -7,11 +7,7 @@ class Menu
   end
 
   def add(dish)
-    if no_dishes_available?
-      menu_number = 1
-    else
-      menu_number = dishes_available.keys.max + 1
-    end
+    menu_number = next_menu_number
     @dishes_available[menu_number] = dish
   end
 
@@ -34,6 +30,11 @@ class Menu
 
   def valid_order_number?(number)
     dishes_available.keys.include?(number)
+  end
+
+  def next_menu_number
+    return 1 if no_dishes_available?
+    dishes_available.keys.max + 1
   end
 
 end
