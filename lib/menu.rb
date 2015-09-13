@@ -8,7 +8,7 @@ module Menu
     }
 
     dish_list.each do |dish, price|
-      puts "#{dish} => #{'%.2f' % price}"
+      puts "#{dish} => £#{'%.2f' % price}"
     end
   end
 end

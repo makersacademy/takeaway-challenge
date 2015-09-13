@@ -10,18 +10,18 @@ describe Order do
     expect{subject.add_item(:bread, 1)}.to raise_error 'Item not on menu'
   end
 
-  it 'adds items to order_contents' do
+  it 'adds items to order.contents' do
     subject.add_item(:pepperoni_pizza, 1)
     expect(subject.contents).to include(:pepperoni_pizza, 1)
   end
 
-  it 'returns "bill is correct" when total_price is correct' do
+  it 'returns true when total_price is correct' do
      subject.add_item(:pepperoni_pizza, 1)
-     expect(subject.order_total(5.00)).to eq 'Bill is correct'
+     expect(subject.order_total(5.00)).to eq true
   end
 
-  it 'raises an error when total_price is incorrect' do
+  it 'returns false when total_price is incorrect' do
     subject.add_item(:pepperoni_pizza, 1)
-    expect{subject.order_total(4.00)}.to raise_error 'Incorrect bill'
+    expect(subject.order_total(4.00)).to eq false
   end
 end

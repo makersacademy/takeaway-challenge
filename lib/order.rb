@@ -4,8 +4,7 @@ require_relative 'menu'
 class Order
   include Menu
 
-
-  attr_accessor :contents, :add_item
+  attr_accessor :contents
 
   def initialize
     @contents = []
@@ -27,9 +26,9 @@ class Order
     prices << display_menu[dish]*quantity
     end
     if total_price == prices.inject(:+)
-      return 'Bill is correct'
+      true
     else
-      fail 'Incorrect bill'
+      false
     end
   end
 end
