@@ -8,9 +8,9 @@ describe Customer do
 
   it 'can check the menu' do
     expect(customer.check_menu).to include(
-    :pepperoni_pizza => 5.00,
-    :spaghetti_pomodoro => 6.00,
-    :spaghetti_carbonara => 7.50)
+    pepperoni_pizza: 5.00,
+    spaghetti_pomodoro: 6.00,
+    spaghetti_carbonara: 7.50)
   end
 
   it 'can verify and complete order if payment is correct' do
