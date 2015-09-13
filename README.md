@@ -3,7 +3,7 @@
 ## Bananas Take Away
 
 
-Welcome to the only restaurant in Bananas City!
+Welcome to the one and only restaurant in Bananas City!
 
 --- Under Construction ---
 
