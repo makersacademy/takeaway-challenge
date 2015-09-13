@@ -38,18 +38,13 @@ describe Customer do
     expect(subject.order_total_cost).to eq("Total    £13.47")
   end
 
-  let(:messages){double :messages, create: nil}
-  let(:account){double :account}
-  let(:client){double :client}
-
   it "sends a message" do
-      # messages = double :messages, create: nil
-      # account = double :account, messages: messages
-      # client = double :client, account: account
-      allow(Twilio::REST::Client).to receive(:new){client}
-      expect(messages).to receive(:create).with(body: "Thank you! Your order was
-        placed and will be delivered within the next hour.",
-          to: "447415121250", from: "442820032756", via: client)
-      subject.send_message("447415121250")
+      messages = double :messages, create: nil
+      account = double :account, messages: messages
+      client = double :client, account: account
+      allow(Twilio::REST::Client).to receive(:new) { client }
+      expect(messages).to receive(:send_message).with(body: "Thank you! Your order was placed and will be
+        delivered within the next hour.", to: "4415121250", from: "442820032756")
+      subject.send_message("+447415121250")
   end
 end
