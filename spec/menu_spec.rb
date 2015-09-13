@@ -10,11 +10,4 @@ describe Menu do
       expect(subject.list).to eq("pizza: £5.99, burger: £4.99, chips: £2.99, sandwich: £3.99")
     end
   end
-  describe '#include?'
-    it 'should return boolean value' do
-      expect(subject.on_menu?(:pizza)).to be true
-    end
-    it 'should return boolean value' do
-      expect(subject.on_menu?(:carrots)).to be false
-    end
 end

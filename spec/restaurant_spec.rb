@@ -1,27 +1,21 @@
 require 'restaurant'
 describe Restaurant do
-
-  describe '#order' do
+subject { Restaurant.new(Menu)}
+  describe '#make_order' do
     it 'should respond to order' do
-      is_expected.to respond_to(:order)
+      is_expected.to respond_to(:make_order)
     end
     it 'should raise and error if item not on the menu' do
       expect{ subject.make_order(:carrots, 1) }.to raise_error "Cannot order items not on the menu"
     end
     it 'should add items to order' do
-      expect(subject.make_order(:pizza, 1)).to eq(1)
+      expect(subject.make_order(:pizza, 1)).to eq("1 x pizza has been added to your order")
     end
   end
   describe '#review' do
     it 'should return the items and quantity order' do
       subject.make_order(:pizza, 2)
-      expect(subject.review).to eq("order = pizza: 2")
-    end
-  end
-  describe '#total' do
-    it "should add up the total amount of the order" do
-      subject.make_order(:pizza, 2)
-      expect(subject.total).to eq(11.98)
+      expect(subject.review).to eq("pizza: 2")
     end
   end
   describe '#reciept' do
@@ -30,7 +24,7 @@ describe Restaurant do
     end
     it 'should show customer total cost' do
       subject.make_order(:pizza, 2)
-      expect(subject.reciept).to eq("Total cost: £11.98")
+      expect(subject.reciept).to eq("Total cost: £11.98\n - pizza: £11.98")
     end
   end
 end
