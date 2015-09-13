@@ -1,7 +1,17 @@
-class Customer
-  attr_reader :order
+require_relative 'order'
 
-  def place_order(orderklass = Order)
-    @order = orderklass.new
+class Customer
+  attr_reader :orders
+  def initialize(orders = Order.new)
+    @orders = orders
   end
+
+  def place_order(menu = Menu.new)
+    orders.greet
+    orders.present(menu)
+    orders.choose_dish
+    orders.choose_how_many
+    orders.cart(menu)
+  end
+
 end
