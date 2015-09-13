@@ -25,10 +25,7 @@ class Customer
   end
 
   def price_of_order
-
   end
-
-
 
 end
 
