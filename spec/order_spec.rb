@@ -2,10 +2,13 @@ require 'order'
 
 describe Order do
 
-  let(:dish1){double(:dish1, name: "Dishy1", price: 1.11)}
-  let(:dish2){double(:dish2, name: "Dishy2", price: 2.22)}
+  let(:dish1){double(:dish1, name: "Dishy1", price: 3.50)}
+  let(:dish2){double(:dish2, name: "Dishy2", price: 5.00)}
+  let(:dish3){double(:dish3, name: "Dishy3", price: 4.99)}
   let(:menu1){double(:menu1, select: dish1)}
   let(:menu2){double(:menu2, select: dish2)}
+  let(:menu3){double(:menu3, select: dish3)}
+
 
   describe '#add_to_basket' do
     it 'calls the menu#select method' do
@@ -23,7 +26,7 @@ describe Order do
     it 'gives a summary of the order, grouping items and displaying prices with a total' do
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 3)
-      expected_output = "2x Dishy1 | £2.22\n3x Dishy2 | £6.66\nTotal cost: £8.88\n"
+      expected_output = "2x Dishy1 | £7.00\n3x Dishy2 | £15.00\nTotal cost: £22.00\n"
       expect{ subject.summary }.to output(expected_output).to_stdout
     end
 
@@ -37,13 +40,21 @@ describe Order do
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 3)
       expect(subject).to receive(:send_text)
-      subject.submit(8.88)
+      subject.submit(22.00)
     end
 
     it 'raises an error if payment does not match the total cost' do
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 3)
-      expect{ subject.submit(9.50) }.to raise_error "Payment does not match total cost"
+      expect{ subject.submit(25.25) }.to raise_error "Payment does not match total cost"
+    end
+
+    it '(irb fail) does not raise error when payment correct' do
+      RSpec::Expectations.configuration.warn_about_potential_false_positives = false
+      subject.add_to_basket(menu1, 1, 2)
+      subject.add_to_basket(menu2, 1, 1)
+      subject.add_to_basket(menu3, 1, 1)
+      expect{ subject.submit(16.99) }.not_to raise_error "Payment does not match total cost"
     end
 
     it 'raises an error if no dishes have been added to the order' do
