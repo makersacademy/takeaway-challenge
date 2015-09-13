@@ -2,7 +2,7 @@ require_relative 'twilio'
 
 class Customer
 
-  attr_reader :order, :menu
+  attr_reader :order, :menu, :send_text
 
   def initialize(menu = Menu.new, send_text = TwilioSend.new)
     @order = {}
@@ -36,7 +36,7 @@ class Customer
     "Would you like confirm your order? y/n"
     customer_response = customer_response.downcase
     if customer_response == "y"
-      # send_text.sms
+      send_text.sms(+447514209436)
       "Thank you! A text confirmation will be sent shortly."
     else
       "Cancel or revise order."

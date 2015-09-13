@@ -2,12 +2,14 @@ require 'twilio.rb'
 
 describe TwilioSend do
 
-  # xit "should use Twilio to send a text message" do
-  # end
+  it "should use Twilio to send a text message" do
+    expect(subject).to respond_to(:sms).with(1).argument
+  end
 
-
-  #   twilio_client = mock(Twilio::REST::Client)
-  #   expect(subject).to receive(:sms)
-  #
+  it 'should provide comfirmation message' do
+      time = (Time.now + 3600).strftime("%H:%M")
+      expect(subject.message).to eq(
+      "Thank you! Your order was placed and will be delivered before #{time}.")
+    end
 
   end

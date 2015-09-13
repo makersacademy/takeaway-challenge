@@ -44,17 +44,17 @@ describe Customer do
     expect(subject.total_dishes).to eq(4)
   end
 
-  it "confirm order when customer accepts" do
-    expect(subject.confirm_order("y")).to eq("Thank you! A text confirmation will be sent shortly.")
-  end
-
   it "customer can revoke order" do
     expect(subject.confirm_order("n")).to eq("Cancel or revise order.")
   end
 
-  # it "sends text message upon order confirmation" do
-  #   # subject.confirm_order("Y")
-  #   # expect()
-  # end
+  let(:mock_api) { double :api }
+  before { allow(subject).to receive(:send_text) { mock_api } }
+
+    it 'sends a text upon order confirmation' do
+      allow(mock_api).to receive(:sms).with(+447514209436)
+      message = "Thank you! A text confirmation will be sent shortly."
+      expect(subject.confirm_order("y")).to eq(message)
+    end
 
 end

@@ -13,24 +13,8 @@ class TwilioSend
     @client = Twilio::REST::Client.new ENV[:account_sid], ENV[:auth_token]
     @client.messages.create(
       from: @twilio_number,
-      to: mobile.to_s,
+      to: mobile,
       body: message)
   end
 
 end
-
-# Twilio::REST::Client.new
-
-
-# def initialize(twilio_client, twilio_number)
-# 		@client = twilio_client
-# 		@number = twilio_number
-# 	end
-#
-# 	def send_confirmation_message(message)
-# 		@client.account.messages.create(
-# 		from: @number,
-#       to: "+447729835662",
-#       body: message
-# 		)
-# 	end
