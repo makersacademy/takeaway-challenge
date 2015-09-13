@@ -1,7 +1,3 @@
-menu = {"pizza" => 3, "pasta" => 2, "salad" => 1}
-menu.each do |dish, price|
-order << menu.dish
-chiense = Menu.new
 customer.choose_dish("crispy chilli beed")
 customer.choose_dish("cs")
 cu.choose_dish("cs")
@@ -90,11 +86,15 @@ customer = Customer.new
 customer.display_menu
 customer.place_order("sweet and sour chicken",3)
 customer.place_order("egg fried rice",2)
+customer.place_order("crispy chilli beef",1)
 customer.receipt
+customer.total_cost
 customer.charge(30)
 customer.charge(21)
-customer = Customer.new(7590425818)
-customer.place_order("crispy chilli beef",1)
-customer.total_cost
-customer.charge(5)
+menu = { "crispy chilli beef" => 5,
+      "sweet and sour chicken" => 4,
+      "egg fried rice" => 2
+    }
+display = menu.each { |key, value| "#{key}, £#{value}" }
+p display
 quit

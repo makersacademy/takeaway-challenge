@@ -1,12 +1,12 @@
 require_relative 'menu.rb'
-require_relative 'text_sender.rb'
+
 
 class Customer
 
   attr_reader :order, :menu, :text_sender
   attr_writer :total
 
-  def initialize(menu = Menu.new, text_sender)
+  def initialize(menu = Menu.new)
     @menu = menu.dishes
     @order = {}
     @total = 0
@@ -18,7 +18,7 @@ class Customer
   end
 
   def place_order(dish, quantity)
-    fail "This dish is not on the menu" unless menu.key?(dish)
+    raise "This dish is not on the menu" unless menu.key?(dish)
     if order.include?(dish)
       order[dish] += quantity
     else
@@ -38,20 +38,8 @@ class Customer
   end
 
   def charge amount
-      fail "Payment does not match total" if (amount != total_cost)
+      raise "Payment does not match total" if (amount != total_cost)
       "Thank you for your order, you will recieve a text confirmation shortly."
   end
-
-  def order_dishes phone_number
-    self.text_sender.send_text(phone_number, order_message)
-  end
-
-  def time_in_an_hour
-    (Time.new + 3600).strftime("%H:%M")
-  end
-
-  def order_message
-    "Thanks! Your order should be delivered by #{time_in_an_hour}"
-  end
-
+  
 end
