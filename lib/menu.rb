@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader:list
+  attr_reader :list
 
   def initialize
     @list = {'fish':5.0,

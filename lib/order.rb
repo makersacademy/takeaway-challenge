@@ -1,7 +1,6 @@
-
 class Order
 
-  attr_reader:order
+  attr_reader :order
 
   def initialize
     @order = {}
