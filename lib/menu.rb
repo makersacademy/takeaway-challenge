@@ -4,6 +4,7 @@ require_relative 'lamb'
 require_relative 'mutton'
 require_relative 'naan'
 require_relative 'poppadom'
+# require_relative 'message'
 
 class Menu
 
@@ -50,6 +51,10 @@ class Menu
 
 	def bill
 		puts '£' + (total.inject{|sum,x| sum + x }).to_s
+	end
+
+	def checkout
+		text
 	end
 
 end

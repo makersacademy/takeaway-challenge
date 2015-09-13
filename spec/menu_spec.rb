@@ -12,9 +12,4 @@ describe Menu do
 		expect(menu.display_menu).to eq(nil)
 	end
 
-	# it 'can output the bill so far' do
-	# 	menu = Menu.new
-		
-	# end
-
 end
