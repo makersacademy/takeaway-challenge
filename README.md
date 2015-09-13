@@ -5,7 +5,9 @@ Description
 ------------
 Week 2 Makers Academy - Takeaway Challenge!
 
-![Alt text](http://www.calpeonline24.com/images/pizza_box.jpg)
+![Pizza](https://github.com/harryandrew/takeaway-challenge/blob/master/images/pizze_box.jpg?raw=true)
+
+Challenge - to write a takeaway application using a TDD/BDD approach, that sends a confirmation text message via the Twilio API.
 
 Installation/Dependencies
 --------------------------
@@ -42,4 +44,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Twilio Output
 ------
 
-![Alt text](http://tinyurl.com/qydxc8l)
+![iPhone Output](https://github.com/harryandrew/takeaway-challenge/blob/master/images/iPhone_output.png?raw=true)
