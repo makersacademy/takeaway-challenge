@@ -2,7 +2,7 @@ require 'customer.rb'
 
 describe Customer do
 
-  it { is_expected.to respond_to(:make_order).with(2).argument }
+  it {is_expected.to respond_to(:make_order).with(2).argument}
 
   it "raises error if customer selects a dish that's not on the menu" do
     expect{ subject.make_order("pasta", 1) }.to raise_error
@@ -26,7 +26,7 @@ describe Customer do
     expect( subject.order["chicken katsu"] ).to eq(4)
   end
 
-  it "provides a summary of te total order" do
+  it "provides a summary of the total order" do
     subject.make_order("chicken katsu", 2)
     subject.make_order("miso soup", 2)
     expect(subject.order_summary).to eq ("2 chicken katsu, 2 miso soup")
@@ -35,7 +35,26 @@ describe Customer do
   it "calculates total order" do
     subject.make_order("chicken katsu", 2)
     subject.make_order("miso soup", 2)
-    expect(subject.charge).to eq("The total of your order is £10.00")
+    expect(subject.charge).to eq ("You've ordered 4 dishes and cost is £10.00.")
   end
+
+  it "gives the total number of items ordered" do
+    subject.make_order("chicken katsu", 2)
+    subject.make_order("miso soup", 2)
+    expect(subject.total_dishes).to eq(4)
+  end
+
+  it "confirm order when customer accepts" do
+    expect(subject.confirm_order("y")).to eq("Thank you! A text confirmation will be sent shortly.")
+  end
+
+  it "customer can revoke order" do
+    expect(subject.confirm_order("n")).to eq("Cancel or revise order.")
+  end
+
+  # it "sends text message upon order confirmation" do
+  #   # subject.confirm_order("Y")
+  #   # expect()
+  # end
 
 end
