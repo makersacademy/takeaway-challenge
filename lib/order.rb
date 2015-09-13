@@ -16,12 +16,12 @@ class Order
   def present(menu)
     menu.show
   end
-  #
+
   def choose_dish
     puts "What would you like to order? Please enter a menu item number."
     @menu_num = gets.chomp.to_i
   end
-  #
+  
   def choose_how_many
     puts "How many of dishes do you want?"
     @quantities = gets.chomp.to_i
@@ -32,9 +32,14 @@ class Order
   end
 
   def check_orders
-    puts "Dish   Quantities  Price  total"
+    width = 10
+    puts "Dish".ljust(width) + "Quantities".center(width) +
+      "Price".center(width) + "Total".rjust(width)
     orders.each do |order|
-      puts "#{order[:dish]}      #{order[:quantities]}         #{order[:price]}    #{order[:quantities] * order[:price]}"
+      puts "#{order[:dish].ljust(width)}" +
+      "#{order[:quantities].to_s.center(width)}" +
+      "#{order[:price].to_s.center(width)}" +
+      "#{(order[:quantities] * order[:price]).to_s.rjust(width)}"
     end
     puts "The total price is #{total_price}"
   end

@@ -2,15 +2,19 @@ require 'order'
 require 'stringio'
 
 describe Order do
-  let(:menu) { double :menu,
+  let(:menu) do
+    double :menu,
     menu: [{dish: 'BBQ',       price: 10},
-             {dish: 'Hamburger', price: 8},
-             {dish: 'Pizza',     price: 9},
-             {dish: 'Pasta',     price: 7},
-             {dish: 'Sushi',     price: 6}] }
+           {dish: 'Hamburger', price: 8},
+           {dish: 'Pizza',     price: 9},
+           {dish: 'Pasta',     price: 7},
+           {dish: 'Sushi',     price: 6}]
+  end
   describe "#greet" do
     it "greets to the customer" do
-      expect { subject.greet }.to output("Thank you for visiting our takeaway website.\nplease take a look at our menu.\n").to_stdout
+      expect { subject.greet }.
+        to output("Thank you for visiting our takeaway website.\n" +
+        "please take a look at our menu.\n").to_stdout
     end
   end
   describe "#choose_dish" do
@@ -36,40 +40,36 @@ describe Order do
   end
 
   it "can check orders" do
-    allow(subject).to receive(:gets).and_return('4')
-    subject.choose_dish
-    allow(subject).to receive(:gets).and_return('2')
-    subject.choose_how_many
-    subject.cart(menu)
     allow(subject).to receive(:gets).and_return('3')
     subject.choose_dish
     allow(subject).to receive(:gets).and_return('3')
     subject.choose_how_many
     subject.cart(menu)
-    expect { subject.check_orders }.to output("Dish   Quantities  Price  total\nPasta      2         7    14\nPizza      3         9    27\nThe total price is 41\n").to_stdout
+    width = 10
+    expect { subject.check_orders }.
+      to output(("Dish".ljust(width) + "Quantities".center(width) +
+      "Price".center(width) + "Total".rjust(width) + "\n" +
+      "Pizza".ljust(width) + "3".center(width) + "9".center(width) +
+      "27".rjust(width) + "\n" + "The total price is 27\n")).to_stdout
   end
 
   describe "#execute_orders" do
-    before do
+    it "executes orders" do
       allow(subject).to receive(:gets).and_return('4')
       subject.choose_dish
       allow(subject).to receive(:gets).and_return('2')
       subject.choose_how_many
       subject.cart(menu)
-    end
-    it "executes orders" do
       expect(subject.execute_orders.first[:paid]).to be true
     end
     it "sends text message" do
       text = double :text
       allow(text).to receive(:send_text_message).
-        and_return("Thank you! Your order was placed and will be delivered before
-          #{(Time.now + 3600).strftime('%H:%M')}")
+        and_return("Thank you! Your order was placed and will be delivered " +
+        "before #{(Time.now + 3600).strftime('%H:%M')}")
       expect(text.send_text_message).
-        to eq("Thank you! Your order was placed and will be delivered before
-          #{(Time.now + 3600).strftime('%H:%M')}")
+        to eq("Thank you! Your order was placed and will be delivered " +
+        "before #{(Time.now + 3600).strftime('%H:%M')}")
     end
   end
-
-
 end
