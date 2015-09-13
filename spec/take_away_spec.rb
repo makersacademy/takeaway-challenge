@@ -2,6 +2,8 @@ require 'take_away'
  
   describe TakeAway do
 
+  	
+
   	it "customer can enter restaurant" do
   		expect(TakeAway).to respond_to(:new)
   	end

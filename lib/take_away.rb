@@ -4,10 +4,10 @@ class TakeAway
   attr_writer :menu, :meal_order
  
    def initialize
-     @menu = { "pizza" => 9.99,
-               "cheeseburger" => 4.99,
-               "steak" => 14.99,
-               "salad" => 6.99
+     @menu = { :pizza => 9.99,
+               :cheeseburger => 4.99,
+               :steak => 14.99,
+               :salad => 6.99
              }
 
      @meal_order = []
