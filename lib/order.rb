@@ -66,7 +66,9 @@ class Order
     @client.messages.create(
       from: '441246488347',
       to: ENV[:phone_number],
-      body: "Thank you. Your order has been placed successfully and will be with before #{calculate_delivery_time}. The total cost is £#{total.round(2)}",
+      body: "Thank you. Your order has been placed successfully and will be \ 
+            with before #{calculate_delivery_time}. \
+            The total cost is £#{total.round(2)}",
     )
   end
 
