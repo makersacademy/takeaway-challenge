@@ -1,0 +1,40 @@
+What is a ruby gem? 
+
+A ruby gem is a pre-packed ruby library or plug-in. It provides functionality for specific needs, such as sending emails, implementing a testing framework, having an eBay interface and many others. 
+
+Give a code example showing how to use a ruby gem in a piece of code. 
+Gems are installed in the command line like so:
+
+gem install GEM_NAME
+
+Some gems are stand-alone ruby programs and can be accessed on their own in the command line. For example, the maruku gem will convert Markdown to HTML and can be run in the command line thusly:
+
+maruku doc.markdown
+
+Other gems are not so useful as a stand-alone program but provide great built in functionality to pre existing programs, such as the Amazon Simple Storage Service (Amazon S3). This gem is installed in the command line by:
+
+gem install aws-s3
+
+It can then be used in your programs by simply requiring the gem like so:
+
+require 'aws/s3'
+
+An aside: Bundler
+
+Ruby provides some more great functionality with the project called Bundler. If you were working on a project and wanted to share it or work on it on another computer, instead of having to install each gem used in your project individually, all the require gems can be packaged up in a file called the Gemfile and can be installed by simply running the command 'bundle' (after having installed the bundle gem).
+
+The format of the Gemfile is very simple. At the top, the source of the gems is specified, for example:
+
+source "http://rubygems.org"
+
+Below that, all the required gems are listed like so:
+
+gem "maruku"
+gem "aws-s3"
+
+Then running the bundle command installs all the gems in the Gemfile.
+
+
+What are some dangers to using a gem?
+
+When you use a gem, you are relying on someone else's code rather than your own. This can cause compatibility issues between your own code and that in the gem.
