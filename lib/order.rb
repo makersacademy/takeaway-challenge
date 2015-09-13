@@ -6,7 +6,7 @@ class Order
     @basket = []
   end
 
-  def place_order(menu, dish_number, quantity)
+  def add_to_basket(menu, dish_number, quantity)
     quantity.times do
       @basket << menu.select(dish_number)
     end
