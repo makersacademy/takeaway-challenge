@@ -32,4 +32,22 @@ describe Menu do
     end
   end
 
+  describe '#select' do
+    it 'returns the selected dish given the corresponding menu number' do
+      subject.add(dish1)
+      subject.add(dish2)
+      subject.add(dish3)
+      expect( subject.select(2) ).to eq dish2
+    end
+
+    it 'raises an error if no dishes have been added' do
+      expect{ subject.select(1) }.to raise_error "No meal options have been added to this menu"
+    end
+
+    it 'raises an error if order number isn\'t listed' do
+      subject.add(dish1)
+      expect{ subject.select(2) }.to raise_error "There are no dishes matching the number given"
+    end
+  end
+
 end
