@@ -5,11 +5,12 @@ describe Menu do
   let(:dish1){double(:dish1, name: "Dishy1", price: 1.11)}
   let(:dish2){double(:dish2, name: "Dishy2", price: 2.22)}
   let(:dish3){double(:dish3, name: "Dishy3", price: 3.33)}
+  let(:dish_decimal){double(:dish4, name: "Dishy4", price: 5.00)}
 
   describe '#add' do
     it 'adds a new dish to the menu' do
       subject.add(dish1)
-      expect(subject.dishes_available.values.include?(dish1)).to be true
+      expect(subject.menu.values.include?(dish1)).to be true
     end
   end
 
@@ -28,7 +29,12 @@ describe Menu do
     end
 
     it 'raises an error if no dishes available' do
-      expect{ subject.view }.to raise_error "No meal options have been added to this menu"
+      expect{ subject.view }.to raise_error "No dishes available on this menu"
+    end
+
+    it 'displays prices to 2 decimal places' do
+      subject.add(dish_decimal)
+      expect{ subject.view }.to output("1: Dishy4 | Price: £5.00\n").to_stdout
     end
   end
 
@@ -41,7 +47,7 @@ describe Menu do
     end
 
     it 'raises an error if no dishes have been added' do
-      expect{ subject.select(1) }.to raise_error "No meal options have been added to this menu"
+      expect{ subject.select(1) }.to raise_error "No dishes available on this menu"
     end
 
     it 'raises an error if order number isn\'t listed' do
