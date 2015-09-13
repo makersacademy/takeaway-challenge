@@ -24,12 +24,16 @@ class Menu
 
   def select(order_number)
     fail "No meal options have been added to this menu" if no_dishes_available?
-    fail "There are no dishes matching the number given" unless dishes_available.keys.include?(order_number)
+    fail "There are no dishes matching the number given" unless valid_order_number?(order_number)
     dishes_available[order_number]
   end
 
   def no_dishes_available?
     dishes_available.count == 0
+  end
+
+  def valid_order_number?(number)
+    dishes_available.keys.include?(number)
   end
 
 end
