@@ -2,19 +2,24 @@ require_relative '../.env.rb'
 require 'twilio-ruby'
 
 class Delivery
-	def text_customer
-		account_sid = ENV[:account_sid]
-		auth_token = ENV[:auth_token]
-		@client = Twilio::REST::Client.new account_sid, auth_token
+
+    attr_reader :sender, :client
+
+    def initialize
+      @sender = "441496877050"
+      @client = Twilio::REST::Client.new(ENV[:account_sid], ENV[:auth_token])
+    end
 
     def delivery_time
       delivery_time = (Time.new + 3600).strftime("%H:%M")
     end
 
-		@client.account.messages.create({
-		    :to => ENV[:phone_number],
-		    :from => "441496877050",
-		    :body => "Thank you for your order. It will be delivered before #{delivery_time}"})
-    'Your message was sent'
-  end
+    def text_customer
+  		@client.account.messages.create({
+  		    :body => "Thank you for your order. It will be delivered before #{delivery_time}",
+  		    :to => ENV[:phone_number],
+  		    :from => sender})
+      'Your message was sent'
+    end
+
 end
