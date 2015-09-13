@@ -3,6 +3,14 @@ require_relative "../lib/User"
 describe User do
   let(:menu) {double(:menu,{starters: {"Soup" => ["Soup",3.99], "Salad" => ["Salad",4.99]}})}
 
+  it { is_expected.to respond_to(:add) }
+  it { is_expected.to respond_to(:summary) }
+  it { is_expected.to respond_to(:basket) }
+  it { is_expected.to respond_to(:total) }
+  it { is_expected.to respond_to(:menu) }
+  it { is_expected.to respond_to(:checkout) }
+  it { is_expected.to respond_to(:checkout_complete) }
+
   it "has an empty basket when initialized" do
      expect(subject.basket).to eq []
   end
