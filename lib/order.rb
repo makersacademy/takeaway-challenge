@@ -1,5 +1,7 @@
 require_relative 'menu'
 require_relative 'text'
+require 'dotenv'
+Dotenv.load
 
 class Order
   include Text
@@ -21,7 +23,7 @@ class Order
     puts "What would you like to order? Please enter a menu item number."
     @menu_num = gets.chomp.to_i
   end
-  
+
   def choose_how_many
     puts "How many of dishes do you want?"
     @quantities = gets.chomp.to_i
