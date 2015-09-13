@@ -33,7 +33,7 @@ class Order
   private
 
   def total_cost
-    basket.inject(0){|sum, x| sum + x.price}
+    ('%.2f' % basket.inject(0){|sum, x| sum + x.price}).to_f
   end
 
   def empty_basket?
