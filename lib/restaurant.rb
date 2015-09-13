@@ -2,8 +2,9 @@ class Restaurant
 
   attr_reader :menu
 
-  def initialize(menu)
+  def initialize(menu, notification_service=Notificationservice.new)
     @menu = menu
+    @notification_service = notification_service
   end
 
   def submit_order(customer_name, customer_phone_number,
@@ -13,9 +14,8 @@ class Restaurant
     end
     order = Order.new(customer_name, customer_phone_number, order_dishes)
     fail "Sum is incorrect" unless order.total_amount == expected_sum
+    @notification_service.send_notification(customer_phone_number, "Thank you! Your order was placed and will be delivered before #{order.delivery_time.strftime("%H:%M")}")
     order
   end
-
-
 
 end
