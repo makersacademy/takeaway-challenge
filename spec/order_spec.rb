@@ -75,4 +75,13 @@ describe Order do
     expect(subject.total_price_verified?).to eq(true)
   end
 
+  context 'Ordering' do 
+
+    xit 'should not place an order if the basket is empty' do 
+      allow(subject).to receive(:place_order)
+      expect{ subject.place_order }.to raise_error 'Basket is empty'
+    end
+
+  end
+
 end
