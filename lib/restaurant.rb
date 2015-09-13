@@ -6,7 +6,8 @@ class Restaurant
     @menu = menu
   end
 
-  def submit_order(customer_name, customer_phone_number, order_dishes, expected_sum)
+  def submit_order(customer_name, customer_phone_number,
+    order_dishes, expected_sum)
     order_dishes.each_key do |dish|
       fail "Dish not on menu" unless @menu.dishes.include? dish
     end

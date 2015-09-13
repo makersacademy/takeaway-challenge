@@ -11,6 +11,6 @@ class Dish
     @name == other.name && @price == other.price
   end
 
-  alias eql? ==
+  alias_method eql? ==
 
 end
