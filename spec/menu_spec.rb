@@ -26,6 +26,10 @@ describe Menu do
       expected_output = "1: Dishy1 | Price: £1.11\n2: Dishy2 | Price: £2.22\n3: Dishy3 | Price: £3.33\n"
       expect{ subject.view }.to output(expected_output).to_stdout
     end
+
+    it 'raises an error if no dishes available' do
+      expect{ subject.view }.to raise_error "No meal options have been added to this menu"
+    end
   end
 
 end
