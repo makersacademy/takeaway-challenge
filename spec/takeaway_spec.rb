@@ -2,7 +2,7 @@ require 'takeaway.rb'
 
 describe Takeaway do
 
-  let(:customer){ double:customer }
+  let(:customer) { double:customer }
 
   it 'responds to create_bill method with an argument' do
     is_expected.to respond_to(:create_bill).with(1).argument
