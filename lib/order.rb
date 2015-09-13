@@ -13,7 +13,7 @@ class Order
   end
 
   def summary
-    fail "Basket empty" if basket.count == 0
+    fail "Basket empty" if empty_basket?
     basket_hash = {}
     basket.uniq.each do |a|
       basket_hash[a] = basket.count(a)
@@ -25,7 +25,7 @@ class Order
   end
 
   def submit(payment)
-    fail "Basket empty" if basket.count == 0
+    fail "Basket empty" if empty_basket?
     fail "Payment does not match total cost" if payment != total_cost
     send_text
   end
@@ -34,6 +34,10 @@ class Order
 
   def total_cost
     basket.inject(0){|sum, x| sum + x.price}
+  end
+
+  def empty_basket?
+    basket.count == 0
   end
 
   def send_text
