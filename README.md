@@ -1,3 +1,19 @@
+**Takeaway Challenge**
+=================
+Week two Makers Academy - Takeaway Challenge!
+
+Description
+------------
+ Takeaway challenge
+
+Installation/Dependencies
+--------------------------
+- Ruby 2.2.0
+- Rspec 3.3.2
+- Coveralls 0.7.9
+
+Other Info:
+
 Takeaway Challenge
 ==================
 
