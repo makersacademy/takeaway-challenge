@@ -1,3 +1,6 @@
+require 'twilio-ruby'
+require_relative '../.env.rb'
+
 class Order 
 
   attr_accessor :basket
@@ -19,7 +22,7 @@ class Order
 
   def add_item(dish, quantity = 1)
     fail 'That item is not on the menu' unless menu.dishes_available.has_key?(dish)
-    basket[dish] = quantity
+    dish_check_and_add(dish, quantity)
     price = quantity * menu.dishes_available[dish]
     @total += price
   end
@@ -27,7 +30,7 @@ class Order
   def remove_item(dish, quantity = 1)
     fail 'Item was not in the basket' unless basket.include?(dish)
     fail 'You do not have that quantity of the item in the basket' if quantity > basket[dish]
-    quantity_check(dish, quantity)
+    quantity_check_and_remove(dish, quantity)
     price = quantity * menu.dishes_available[dish]
     @total -= price
   end
@@ -40,10 +43,40 @@ class Order
     basket_total == total ? true : false
   end
 
+  def place_order
+    fail 'The total price has been miscalculated' unless total_price_verified?
+    send_message
+    "Thank you for your order. You will receive text confirmation shortly"
+  end
+
   private 
 
-  def quantity_check(dish, quantity)
+  def dish_check_and_add(dish, quantity)
+    basket.has_key?(dish) ? basket[dish] += quantity : basket[dish] = quantity
+  end
+
+  def quantity_check_and_remove(dish, quantity)
     basket[dish] == 1 ? basket.delete(dish) : basket[dish] -= quantity
+  end
+
+  def send_message
+    @account_sid = ENV[:account_sid]
+    @auth_token = ENV[:auth_token]
+    @client = Twilio::REST::Client.new @account_sid, @auth_token
+    @client.messages.create(
+      to: ENV[:phone_number],
+      body: 'Thank you. Your order of has been placed successfully 
+        and will be with before #{calculate_delivery_time}.
+        The total cost is #{total}',
+    )
+  end
+
+  def calculate_delivery_time
+    @time = Time.now
+    @hour = @time.hour + 1
+    @minute = @time.min
+    @time_1hour = @hour.to_s + ":" + @minute.to_s
+    @time_1hour
   end
 
 
