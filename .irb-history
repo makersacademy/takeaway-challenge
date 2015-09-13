@@ -1,0 +1,100 @@
+plane = Plane.new
+glasgow.clear_to_land(plane)
+player.ships
+ship = Ship.new
+player.fire("A1")
+player.fire("A2")
+player.board
+array = [1,2,3,4,5,6]
+arraynew =array.select{|x| x >3}
+s = Ship.new "B"
+player.place s
+player=Player.new
+ship= Ship.new("A1")
+player.place(ship)
+array = []
+array.select
+array.select{|x| n}
+array.find{|x| n}
+array.inject |x,Y|
+irb
+array = [1,2,3,4,5]
+array.inject do |x,y| 
+x + y
+array.inject(0) {|result, element| result + element|}
+array.inject(0) {|result, element| result + element}
+array.inject(10) {|result, element| result + element p results}
+array.inject(10) {|result, element| result + element}
+array.inject{|result, element| result + element}
+hash = [[:first_name, 'Philip']], [[:last_name, "Clarke"]]
+hash.inject({}) do |result, element|
+result[element.first] = element.last
+result
+arrayinject(:+)
+array.inject(:+)
+array.inject(:*)
+array = [1,2,3,4]
+array.inject(:**)
+element, *rest = array
+def sum(array)
+p rest
+case rest
+when []
+element
+element + sum(rest)
+a = [1,2,3,4]
+b = sum(a)
+def smallest(array)
+array.inject do |acc, ele|
+if ele < acc
+ele
+else
+acc
+a =[1,2,3,4,5]
+b = smallest
+b = smallest(a)
+def calc(a,b)
+yield(a,b)
+puts calc(5,6){|a,b| a+b }
+puts calc(5,6){|a,b| a-b }
+def foo
+yield
+end
+foo {puts "this is a message"}
+menu.add_items(curry,5)
+menu.items
+menu.add_items("curry","5")
+class Stuff
+def initialize( thing ="price
+menu.add_item("Burger","3")
+menu.add_item("curry","5")
+menu.list
+QUIT
+qyuit
+burger = Menu.item.new("burger",6)
+menu.add_item(curry)
+menu.add_item(burger)
+menu.list.menu
+order = order.new
+menu = Menu.new
+burger = Menu_item.new("burger",6)
+menu.list_menu
+curry = Menu_item.new("Curry",5)
+curry = Menu_item.new("curry",5)
+text=Text.new
+text = Text.new(09762107779)
+text = Text.new(07962107779)
+orders.place_order
+order.place_order
+order = Order.new
+text = Text.new(7962107779)
+order = Orders.new
+order.correct?
+newarray = array.inject{|acc,n| n**n}
+newarray = array.inject{|acc,n| n*2}
+array = [1,2,3,4,]
+newarray = array.inject{|acc,n| acc+n}
+require './.env.rb'
+require '../.env.rb'
+message = Message.new
+quit

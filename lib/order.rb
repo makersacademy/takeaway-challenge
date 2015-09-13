@@ -39,6 +39,7 @@ attr_reader :order
     puts "Order Total"
     total_order = total.inject(:+)
     puts "£" + total_order.to_s
+    total_order
   end
 
   def correct(customer_happy)
@@ -57,23 +58,23 @@ attr_reader :order
 
 end
 
-curry = Menu_item.new("Curry",5)
-burger = Menu_item.new("Burger",6)
-p curry
-p burger
-menu = Menu.new
-p menu
-menu.add_item(curry)
-menu.add_item(burger)
-p menu
-order = Orders.new
-p order
-order.add_menu_item_to_order(curry)
-order.add_menu_item_to_order(burger)
-puts order
-
-puts
-p order.show_order
-puts
-puts order.total
-order.correct("Yes")
+# curry = Menu_item.new("Curry",5)
+# burger = Menu_item.new("Burger",6)
+# p curry
+# p burger
+# menu = Menu.new
+# p menu
+# menu.add_item(curry)
+# menu.add_item(burger)
+# p menu
+# order = Orders.new
+# p order
+# order.add_menu_item_to_order(curry)
+# order.add_menu_item_to_order(burger)
+# puts order
+#
+# puts
+# p order.show_order
+# puts
+# puts order.total
+# order.correct("Yes")
