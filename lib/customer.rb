@@ -48,7 +48,8 @@ class Customer
     @twilio_client.account.sms.messages.create(
       :from => "+442820032756",
       :to => number_to_send_to,
-      :body => "Thank you! Your order was placed and will be delivered within the next hour."
+      :body => "Thank you! Your order was placed and will be
+        delivered within the next hour."
     )
   end
 

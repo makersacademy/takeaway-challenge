@@ -48,15 +48,8 @@ describe Customer do
       # client = double :client, account: account
       allow(Twilio::REST::Client).to receive(:new){client}
       expect(messages).to receive(:create).with(body: "Thank you! Your order was
-        placed and will be delivered within the next hour.", to: "447415121250", from: "442820032756", via: client)
+        placed and will be delivered within the next hour.",
+          to: "447415121250", from: "442820032756", via: client)
       subject.send_message("447415121250")
-    end
-
-#     public void Should_Send_Sms_Message_Successfully()
-# {
-#   var message = Notifications.CreateMessage(+447415121250);
-#   message.Send("AC63482774f34b8e6f883e798060865df1", "76425f95ba89d9b7b0bb989e18e007a6");
-#
-#   Assert.AreEqual(MessageStatus.Success, message.Status);
-# }
+  end
 end
