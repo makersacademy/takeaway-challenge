@@ -32,6 +32,24 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+## Functional representation
+### Nouns
+* Dishes
+* Meal
+* Text
+
+### Verbs
+* Check _(...whether the order total entered is correct.)_
+* See _(...a list of dishes with prices.)_
+* Order _(...a meal, which is another name for a list of dishes.)_
+* Receive _(...a text message, or, rather send the text message will probably be more appropriate.)
+
+### Table
+Objects  | Messages
+------------- | -------------
+`dish` | `see`
+`meal` | `check`, `order`
+`sms` | `send`
 
 * Hints on functionality to implement:
   * ensure you have a list of dishes with prices
