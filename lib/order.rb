@@ -27,7 +27,7 @@ class Order
   def remove_item(dish, quantity = 1)
     fail 'Item was not in the basket' unless basket.include?(dish)
     fail 'You do not have that quantity of the item in the basket' if quantity > basket[dish]
-    basket[dish] == 1 ? basket.delete(dish) : basket[dish] -= quantity
+    quantity_check(dish, quantity)
     price = quantity * menu.dishes_available[dish]
     @total -= price
   end
@@ -42,6 +42,9 @@ class Order
 
   private 
 
+  def quantity_check(dish, quantity)
+    basket[dish] == 1 ? basket.delete(dish) : basket[dish] -= quantity
+  end
 
 
 end
