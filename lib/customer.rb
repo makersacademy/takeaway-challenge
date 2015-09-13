@@ -1,8 +1,13 @@
 require_relative 'menu'
+require 'rubygems'
+require 'twilio-ruby'
+require_relative '../.env.rb'
 
 class Customer
+  include Twilio
 
-  attr_accessor :menu, :new_order, :menu, :order, :total_items, :order_total
+  attr_accessor :menu, :new_order, :menu, :order, :total_items,
+    :order_total, :send_message, :twilio
 
   def initialize
     @menu = Menu.new
@@ -30,6 +35,21 @@ class Customer
 
   def order_total_cost
     "Total    £" + order_total.to_s
+  end
+
+  def send_message(number_to_send_to)
+
+    twilio_sid = ENV[:account_sid]
+    twilio_token = ENV[:auth_token]
+    twilio_phone_number = ENV[:phone_num]
+
+    @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+
+    @twilio_client.account.sms.messages.create(
+      :from => "+442820032756",
+      :to => number_to_send_to,
+      :body => "Thank you! Your order was placed and will be delivered within the next hour."
+    )
   end
 
   private
