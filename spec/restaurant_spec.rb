@@ -21,20 +21,12 @@ subject { Restaurant.new(Menu, pizza: 5.99, burger: 4.99, chip: 2.99, sandwich: 
     end
   end
   describe '#reciept' do
-    before do
-    Timecop.freeze(Time.local(2015)).strftime("%H:%M")
-    end
-
-    after do
-    Timecop.return
-    end
-
     it 'should respond to receipt' do
       is_expected.to respond_to(:receipt)
     end
     it 'should show customer total cost' do
       subject.make_order(:pizza, 2)
-      expect(subject.receipt).to eq("Thank you! Total cost: £11.98 - pizza: £11.98. It should arrive before 01:00")
+      expect(subject.receipt).to eq("Thank you! Total cost: £11.98 - pizza: £11.98. It should arrive before #{(Time.new + 3600).strftime("%H:%M")}")
     end
   end
   describe '#reset_order'
