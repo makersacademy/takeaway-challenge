@@ -17,4 +17,5 @@ describe Customer do
     c1.place_order "chicken_curry"
     expect(c1.order).to include(5.00)
   end
+
 end

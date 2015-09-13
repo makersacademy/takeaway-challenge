@@ -1,4 +1,3 @@
-require_relative 'takeaway.rb'
 require_relative 'menu.rb'
 
 class Customer
