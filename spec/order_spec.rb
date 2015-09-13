@@ -6,15 +6,15 @@ describe Order do
   let(:dish2){double(:dish2, name: "Dishy2", price: 2.22)}
   let(:menu){double(:menu, select: dish1)}
 
-  describe '#place_order' do
+  describe '#add_to_basket' do
     it 'calls the menu#select method' do
       expect(menu).to receive(:select)
-      subject.place_order(menu, 1, 2)
+      subject.add_to_basket(menu, 1, 2)
     end
 
     it 'given the menu, dish number and quantity adds the dish/dishes to the order' do
       # allow(menu).to receive(:select){dish1}
-      subject.place_order(menu, 1, 2)
+      subject.add_to_basket(menu, 1, 2)
       expect( subject.basket.count(dish1) ).to eq 2
     end
   end
