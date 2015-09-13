@@ -1,6 +1,6 @@
 Takeaway Challenge
 ==================
-[![Build Status]()
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)
 [![Coverage Status]()
 
 Introduction
