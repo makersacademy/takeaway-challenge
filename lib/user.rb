@@ -18,11 +18,12 @@ include Messenger
     @total += item[1]
   end
 
+  def summary
+    "#{basket.length} items in your basket, total £#{total}"
+  end
+
   def checkout(input)
     fail "Error - Payment value does not match basket total" unless input == @total
-    puts "#{basket.length} items in your basket, total £#{total}"
-    puts "Hit enter to proceed, else CTRL-C to abort."
-    $stdin.gets.chomp
     self.checkout_complete
     puts "Order placed!"
   end
