@@ -53,7 +53,11 @@ describe Restaurant do
     it "sends a text message when order is submitted" do
       burger = Dish.new("Burger", 8)
       order_dishes = {burger => 1}
-      expect(notification_service).to receive(:send_notification).with("0123456789", /Thank you! Your order was placed and will be delivered before [0-9]{1,2}:[0-9]{2}/)
+      message = "Thank you!"+
+        " Your order was placed and will be delivered before"
+      expect(notification_service).to receive(:send_notification).
+        with("0123456789",
+          /#{message} [0-9]{1,2}:[0-9]{2}/)
       subject.submit_order("Sarah", "0123456789", order_dishes, 8)
     end
   end

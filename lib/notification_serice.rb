@@ -17,9 +17,9 @@ class Notificationservice
 
   def send_notification(phone_number, message)
     @client.account.messages.create(
-      :from => @from,
-      :to => phone_number,
-      :body => message
+      from: @from,
+      to: phone_number,
+      body: message
     )
   end
 
