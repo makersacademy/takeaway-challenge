@@ -38,10 +38,6 @@ class Customer
     order.map { |dish, quantity| "#{dish}: #{quantity}"}.join(", ")
   end
 
-  def total_cost_per_dish
-    order.map { |dish, quantity| "#{quantity} x #{dish}: £#{'%.2f' % (quantity * Restaurant::MENU[dish])}"}.join(", ")
-  end
-
   def final_bill
     total_bill = 0
     order.each do |dish, quantity|
