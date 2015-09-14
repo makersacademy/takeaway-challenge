@@ -26,10 +26,17 @@ describe Customer do
     expect( subject.order["chicken katsu"] ).to eq(4)
   end
 
+  it "update order if customer changes mind" do
+    subject.make_order("chicken katsu", 2)
+    subject.update_order("chicken katsu", 1)
+    expect( subject.order["chicken katsu"] ).to eq(1)
+  end
+
   it "provides a summary of the total order" do
     subject.make_order("chicken katsu", 2)
     subject.make_order("miso soup", 2)
-    expect(subject.order_summary).to eq ("2 chicken katsu, 2 miso soup")
+    expect(subject.order_summary).to eq (
+    "You have ordered: 2 chicken katsu, 2 miso soup")
   end
 
   it "calculates total order" do

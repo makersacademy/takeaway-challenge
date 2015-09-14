@@ -19,13 +19,17 @@ class Customer
     end
   end
 
+  def update_order(dish, quantity)
+    order[dish] = quantity if order.include?(dish)
+  end
+
   def total_dishes
     order.values.reduce(:+)
   end
 
   def order_summary
-    "You have ordered:"
-    order.map { |dish, quantity| "#{quantity} #{dish}" }.join(", ")
+    summary = order.map { |dish, quantity| "#{quantity} #{dish}" }.join(", ")
+    "You have ordered: #{summary}"
   end
 
   def charge
