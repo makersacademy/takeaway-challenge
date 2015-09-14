@@ -8,7 +8,7 @@ class Order
 
   def add item, number, menu
     line= menu.select_food(item.to_s)
-    line.each{|k,v| v[1]=number}
+    line.each{|k,v| k=k, v[1]=number}
     @order.merge!(line)
   end
 
