@@ -1,6 +1,6 @@
 class Rice
 
-attr_reader :price
+attr_reader :price, :item
 
 	def initialize
 		@price = 2.35

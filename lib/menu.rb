@@ -53,8 +53,8 @@ class Menu
 		puts '£' + (total.inject{|sum,x| sum + x }).to_s
 	end
 
-	def checkout
-		text
+	def checkout message
+		message.text
 	end
 
 end

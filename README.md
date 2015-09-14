@@ -56,4 +56,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ------------------------------------------------------
 
-Could not get the twilio funtion to work.
+Fixed twilio funtion, severely lacking in tests.
