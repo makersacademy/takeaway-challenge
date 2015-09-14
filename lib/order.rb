@@ -1,4 +1,8 @@
+require_relative 'texting'
+
 class Order
+
+  include Texting
 
   attr_reader :basket
 
@@ -41,7 +45,7 @@ class Order
   end
 
   def send_text
-
+    Texting.send_text
   end
 
 end
