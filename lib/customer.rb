@@ -16,4 +16,9 @@ class Customer
     order.map! { |x| menu[x] }
   end
 
+  def check_total
+    total = order.inject { |acc, num| acc + num }
+    "Current order total is £#{total}0"
+  end
+
 end

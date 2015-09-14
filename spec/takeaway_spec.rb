@@ -11,7 +11,7 @@ describe Takeaway do
   it 'should add up the total bill correctly' do
     t = Takeaway.new
     allow(customer).to receive(:order) { [5.00, 3.50] }
-    expect(t.create_bill customer).to eq(8.5)
+    expect(t.create_bill customer).to eq("Your total bill is £8.50")
   end
 
   it 'should respond to confirm_order' do
