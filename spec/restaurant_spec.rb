@@ -6,16 +6,6 @@ describe Restaurant do
     expect(subject.menu).to eq({ "starter" => 3, "main" => 6, "drinks" => 2 })
   end
 
-  describe ".show_menu" do
-    it "responds to show_menu" do
-      expect(subject).to respond_to :show_menu
-    end
-
-    it "shows the default menu when initalized" do
-      expect(subject.show_menu).to eq({ "starter" => 3, "main" => 6, "drinks" => 2 })
-    end
-  end
-
   describe ".take_order" do
     it "responds to take_order with 2 arguments" do
       expect(subject).to respond_to(:take_order).with(2).argument
@@ -44,7 +34,7 @@ describe Restaurant do
       expect(subject).to respond_to(:total_correct?).with(1).argument
     end
 
-    it "returns true if total expected by customer matches sum of dish prices" do
+    it "returns true if total matches sum of dish prices" do
       subject.take_order "starter", 1
       expect(subject.total_correct? 3).to be true
     end
