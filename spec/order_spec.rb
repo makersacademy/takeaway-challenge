@@ -38,13 +38,13 @@ describe Order do
   describe '#submit' do
 
     before(:each) do
-      allow(subject).to receive(:send_text){nil}
+      allow(subject).to receive(:issue_confirmation_text){nil}
     end
 
     it 'calls the #send_text method if payment matches total' do
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 3)
-      expect(subject).to receive(:send_text)
+      expect(subject).to receive(:issue_confirmation_text)
       subject.submit(22.00)
     end
 

@@ -28,7 +28,7 @@ class Order
   def submit(payment)
     fail "Basket empty" if empty_basket?
     fail "Payment does not match total cost" if payment != total_cost
-    send_text
+    issue_confirmation_text
   end
 
   private
@@ -49,7 +49,7 @@ class Order
     basket_hash
   end
 
-  def send_text
+  def issue_confirmation_text
     Texting.send_text
   end
 
