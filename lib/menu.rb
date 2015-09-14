@@ -4,6 +4,8 @@ class Menu
 
   def initialize
     @dishes = []
+    pizza, burger= Dish.new('Pizza', 2.50), Dish.new('Burger', 1.50)
+    coke, sprite = Dish.new('Coke', 1.00), Dish.new('Sprite', 1.00)
   end
 
   def show

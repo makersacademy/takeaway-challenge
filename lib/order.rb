@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class Order
 
   attr_reader :order, :amount
@@ -6,7 +8,8 @@ class Order
     @order, @amount = [], []
   end
 
-  def add_to_order dish, quantity
+  def add_to_order menu, dish, quantity
+      fail 'Item not on menu' if menu.dishes.include?(dish) == false
       amount << quantity
       order << dish
   end
