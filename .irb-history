@@ -1,3 +1,4 @@
+order
 customer.display_price
 customer.choose_dish("spring rolls", 4)
 customer.choose_dish("crispy chilli beef", 4)
@@ -13,7 +14,6 @@ dishes = {"Classic Burger" => 6.75,
 clear
 customer.quit
 customer.place_order("spring rolls",3)
-customer.place_order("crispy chilli beef",3)
 cu.display_meny
 cu.place_order("crispy chilli beef", 5)
 cu
@@ -59,7 +59,6 @@ customer.place_order("crispy chilli beef", 3)
 customer.place_order("sweet and soure chicken", 3)
 customer.place_order("sweet and sour chicken", 1)
 customer.place_order("egg fried rice", 2)
-customer.charge(20)
 customer.charge(23)
 customer.display_menu
 customer.place_order("sweet and sour chicken",3)
@@ -91,10 +90,11 @@ array.inject("     ", &add)
 array = [10,2,5]
 array.inject(3) { |result, num| result += num }
 customer = Customer.new
-customer.place_order("crispy chilli beef",2)
-customer.place_order("egg fried rice",3)
+customer.place_order("crispy chilli beef",3)
+customer.place_order("egg friend rice",5)
+customer.place_order("egg fried rice",5)
 customer.receipt
 customer.total_cost
-customer.charge(15)
-customer.charge(16)
+customer.charge(20)
+customer.charge(25)
 quit

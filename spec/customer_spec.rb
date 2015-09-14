@@ -50,12 +50,6 @@ describe Customer do
       "Payment does not match total"
     end
 
-    # it "if payment is accepted, text notification is sent" do
-    #   subject.place_order("crispy chilli beef", 2)
-    #   subject.total_cost
-    #   expect(subject.charge(10)).to eq "Your message was sent"
-    # end
-
   end
 
 end

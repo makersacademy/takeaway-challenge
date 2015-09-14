@@ -19,7 +19,7 @@ class Delivery
   		    :body => "Thank you for your order. It will be delivered before #{delivery_time}",
   		    :to => ENV[:phone_number],
   		    :from => sender})
-      'Your message was sent'
+      'You will reciece a text confimation shortly'
     end
 
 end
