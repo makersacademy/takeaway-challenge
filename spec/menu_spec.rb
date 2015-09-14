@@ -1,5 +1,4 @@
 require 'menu'
-
 describe Menu do
 
     it "should have a hash of dishes and price" do
