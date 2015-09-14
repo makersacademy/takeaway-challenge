@@ -18,10 +18,7 @@ class Order
 
   def summary
     fail "Basket empty" if empty_basket?
-    basket_hash = {}
-    basket.uniq.each do |a|
-      basket_hash[a] = basket.count(a)
-    end
+    basket_hash = dishes_and_quantities
     basket_hash.each_pair do |k, v|
       puts "#{v}x #{k.name} | £#{'%.2f' % (v * k.price)}"
     end
@@ -42,6 +39,14 @@ class Order
 
   def empty_basket?
     basket.count == 0
+  end
+
+  def dishes_and_quantities
+    basket_hash = {}
+    basket.uniq.each do |a|
+      basket_hash[a] = basket.count(a)
+    end
+    basket_hash
   end
 
   def send_text
