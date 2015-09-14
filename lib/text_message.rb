@@ -15,6 +15,7 @@ class TextMessage
       body: "Thank you! Your order \n\n" + order.display_order + "\nwill be"\
       " delivered before #{delivery_time}"
     )
+    return 'Text sent!'
   end
 
 end

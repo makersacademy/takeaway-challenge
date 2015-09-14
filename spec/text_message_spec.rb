@@ -7,21 +7,22 @@ describe TextMessage do
       KEYS = {account_sid:'double',auth_token:'double',phone_number:'double'}
       text = TextMessage.new
       order = double(:fake_order)
-      allow(text).to receive(:send_order_text).and_return(nil)
-      class Twilio
+      allow(order).to receive(:display_order).and_return('order details')
+      module Twilio
       end
-      class Rest < Twilio
+      class Twilio::REST
       end
-      class Client < Rest
+      class Twilio::REST::Client
         def initialize(arg1,arg2)
         end
         def messages
+          self
         end
-        def create(from:, to:, body:)
+        def create(from: 'anyone', to: 'anything', body: 'not_empty')
         end
       end
       result = text.send_order_text('777777777',order)
-      expect(result).to eq(nil)
+      expect(result).to eq('Text sent!')
     end
   end
 
