@@ -12,9 +12,10 @@ class TwilioSend
     @twilio_number = ENV[:number]
     @client = Twilio::REST::Client.new ENV[:account_sid], ENV[:auth_token]
     @client.messages.create(
+      body: message,
       from: @twilio_number,
-      to: mobile,
-      body: message)
+      to: mobile.to_s
+      )
   end
 
 end
