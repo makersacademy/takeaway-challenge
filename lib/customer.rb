@@ -46,11 +46,10 @@ class Customer
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
     @twilio_client.account.messages.create(
-    :body =>
+    body:
       "Thank you! Your order was placed and will be delivered within the next hour.",
-        :to => number_to_send_to,
-          :from => "+442820032756"
-    )
+        to: number_to_send_to,
+          from: "+442820032756")
   end
 
   private
