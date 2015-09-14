@@ -65,16 +65,4 @@ describe Customer do
       expect(subject.confirm_order("y")).to eq(message)
     end
 
-    # it "checks the text has the right message" do
-    #   messages = double :messages, create: nil
-    #   account = double :account, messages: messages
-    #   client = double :client, account: account
-    #
-    #   allow(Twilio::Rest::Client).to receive(:sms) {client}
-    #   expect(messages).to receive(:create).with(body:
-    #   "Thank you for your order. It will be delivered before
-    #   #{(Time.new + 3600).strftime("%H:%M")}", to: "447514209436", from: "441503505054")
-    #   subject.send_text.sms("447514209436")
-    # end
-
 end
