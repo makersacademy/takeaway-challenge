@@ -10,7 +10,7 @@ describe TextMessage do
       allow(order).to receive(:display_order).and_return('order details')
       module Twilio
       end
-      class Twilio::REST
+      module Twilio::REST
       end
       class Twilio::REST::Client
         def initialize(arg1,arg2)
