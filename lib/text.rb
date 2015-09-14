@@ -15,9 +15,9 @@ class Text
   end
 
   def send_text
-    @client.account.messages.create({
+    @client.account.messages.create(
     body: "Thank you for your order. It will be delivered before #{time}",
     to: ENV[:phone_number],
-    from: sender})
+    from: sender)
   end
 end
