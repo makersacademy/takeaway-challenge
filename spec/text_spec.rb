@@ -12,7 +12,7 @@ describe Text do
   #   client = double :client, account: account
   #
   #   allow(Twilio::REST::Client).to receive(:new) { client }
-  #   expect(messages).to receive(:send_text).with(body: "Thank you for your order. It will be delivered before 02:07", to: :phone_number, from: "441724411046")
+  #   expect(messages).to receive(:send_text).with(body: "Thank you for your order. It will be delivered before 02:35", to: "447908605707", from: "441724411046")
   #   subject.send_text
-  #end
+  # end
 end

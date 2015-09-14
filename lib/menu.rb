@@ -7,8 +7,9 @@ class Menu
   end
 
   def show
-    puts "Menu: \n"
-    dishes.each{ |dish| puts "#{dish.show_details}" + "\n"}
+    output = "Menu:"
+    dishes.each{ |dish| output+= "\n#{dish.show_details}" }
+    output
   end
 
   def add_dish(dish)

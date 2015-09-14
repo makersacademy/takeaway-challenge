@@ -22,11 +22,13 @@ class Order
 
   def show_order
     count = 0
+    output = ''
     order.each do |dish|
       quantity = order.count(dish)
-      puts "#{dish.show_details} X#{amount[count]}"
+      output += "\n#{dish.show_details} X#{amount[count]}"
       count += 1
     end
+    output
   end
 
   def place_order payment

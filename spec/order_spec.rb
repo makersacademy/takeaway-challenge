@@ -21,7 +21,7 @@ describe Order do
 
     it 'should show order' do
       subject.add_to_order(dish, 3)
-      expect{subject.show_order}.to output("Pizza: £2.00 X3\n").to_stdout
+      expect(subject.show_order).to eql "\nPizza: £2.00 X3"
     end
   end
 

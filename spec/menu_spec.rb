@@ -15,7 +15,7 @@ describe Menu do
   describe '#show' do
     it 'should show the entire menu' do
       subject.add_dish(dish)
-      expect{subject.show}.to output("Menu: \nCoke: £1\n").to_stdout
+      expect(subject.show).to eql "Menu:\nCoke: £1"
     end
   end
 end
