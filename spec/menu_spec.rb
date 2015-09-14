@@ -2,10 +2,10 @@ require 'menu'
 
 describe Menu do
 
-  let(:dish1){double(:dish1, name: "Dishy1", price: 1.11)}
-  let(:dish2){double(:dish2, name: "Dishy2", price: 2.22)}
-  let(:dish3){double(:dish3, name: "Dishy3", price: 3.33)}
-  let(:dish_decimal){double(:dish4, name: "Dishy4", price: 5.00)}
+  let(:dish1) { double(:dish1, name: "Dishy1", price: 1.11) }
+  let(:dish2) { double(:dish2, name: "Dishy2", price: 2.22) }
+  let(:dish3) { double(:dish3, name: "Dishy3", price: 3.33) }
+  let(:dish_decimal) { double(:dish4, name: "Dishy4", price: 5.00) }
 
   describe '#make_dish_available' do
     it 'adds a new dish to the menu' do

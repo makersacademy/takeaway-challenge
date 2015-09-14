@@ -2,12 +2,12 @@ require 'order'
 
 describe Order do
 
-  let(:dish1){double(:dish1, name: "Dishy1", price: 3.50)}
-  let(:dish2){double(:dish2, name: "Dishy2", price: 5.00)}
-  let(:dish3){double(:dish3, name: "Dishy3", price: 4.99)}
-  let(:menu1){double(:menu1, select: dish1)}
-  let(:menu2){double(:menu2, select: dish2)}
-  let(:menu3){double(:menu3, select: dish3)}
+  let(:dish1) { double(:dish1, name: "Dishy1", price: 3.50) }
+  let(:dish2) { double(:dish2, name: "Dishy2", price: 5.00) }
+  let(:dish3) { double(:dish3, name: "Dishy3", price: 4.99) }
+  let(:menu1) { double(:menu1, select: dish1) }
+  let(:menu2) { double(:menu2, select: dish2) }
+  let(:menu3) { double(:menu3, select: dish3) }
 
 
   describe '#add_to_basket' do
