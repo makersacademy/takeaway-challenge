@@ -53,3 +53,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+------------------------------------------------------
+
+Fixed twilio funtion, severely lacking in tests.
