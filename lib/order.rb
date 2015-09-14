@@ -7,20 +7,24 @@ class Order
   attr_reader :basket
 
   def initialize
-    @basket = []
+    @basket = {}
   end
 
   def add_to_basket(menu, dish_number, quantity)
+    dish = menu.select(dish_number)
     quantity.times do
-      @basket << menu.select(dish_number)
+      if basket.keys.include?(dish)
+        @basket[dish] += dish.price
+      else
+        @basket[dish] = dish.price
+      end
     end
   end
 
   def summary
     fail "Basket empty" if empty_basket?
-    basket_hash = dishes_and_quantities
-    basket_hash.each_pair do |k, v|
-      puts "#{v}x #{k.name} | £#{'%.2f' % (v * k.price)}"
+    basket.each_pair do |k, v|
+      puts "#{(v / k.price).to_i}x #{k.name} | £#{'%.2f' % v}"
     end
     puts "Total cost: £#{'%.2f' % total_cost}"
   end
@@ -34,19 +38,11 @@ class Order
   private
 
   def total_cost
-    ('%.2f' % basket.inject(0){|sum, x| sum + x.price}).to_f
+    ('%.2f' % basket.values.mick_inject(0){|sum, x| sum + x}).to_f
   end
 
   def empty_basket?
-    basket.count == 0
-  end
-
-  def dishes_and_quantities
-    basket_hash = {}
-    basket.uniq.each do |a|
-      basket_hash[a] = basket.count(a)
-    end
-    basket_hash
+    basket.keys.count == 0
   end
 
   def issue_confirmation_text

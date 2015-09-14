@@ -18,7 +18,7 @@ describe Order do
 
     it 'given the menu, dish number and quantity adds the dish/dishes to the order' do
       subject.add_to_basket(menu1, 1, 2)
-      expect( subject.basket.count(dish1) ).to eq 2
+      expect( (subject.basket[dish1] / dish1.price).to_i ).to eq 2
     end
   end
 
