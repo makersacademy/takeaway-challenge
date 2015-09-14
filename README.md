@@ -1,11 +1,13 @@
 Takeaway Challenge
 =======================
 
+## Makers weekend 2 Challenge
+
+
+
 ## Synopsis
 
 A ruby program to run a takeaway menu and text alert system.
-
-![NAME_OF_IMAGE](http://ENTER_URL)
 
 It is derived from the following user stories:
 
@@ -26,11 +28,14 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-# Functional Representation
+## Functional Representation
 Objects  | Messages
 ------------- | -------------
 `menu` | `list items` select
-`checkout/order` | `list order`, `total price`, `send text`
+`order` | `build order`, `list order`, `total price`,
+`checkout` | `confirm order`
+`message` | `send text`
+'delivery' | `calculate time`
 `customer` |
 
 ## Technologies Used
@@ -38,14 +43,8 @@ Objects  | Messages
 - Ruby
 - rspec
 
-## Job List
-
-- [Write menu class & tests]
-- [Write order class & tests]
-- [ ]
-- [ ]
 
 ## Still to complete/refactor
 
-- [ ]
+- [ Add usage instructions here]
 - [ ]
