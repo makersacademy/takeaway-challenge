@@ -26,10 +26,10 @@ class Takeout
     puts 'Please type Yes confirm order and price or No to cancel'
     confirm = gets.chomp!
       if confirm.downcase == 'yes'
-        delivery()
+        delivery
       else
         puts "Order cancelled"
-        @Order = Order.new
+        @order = Order.new
       end
 
   end
@@ -54,8 +54,8 @@ end
 
 t = Takeout.new
 puts 'Welcome to The Ruby Gem Odd Menu Takaway'
-t.list_menu()
+t.list_menu
 puts 'Build your order'
-t.build()
+t.build
 puts 'Please confirm your order'
-t.confirm()
+t.confirm
