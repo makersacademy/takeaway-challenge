@@ -21,7 +21,7 @@ describe Order do
 
     it 'should show order' do
       subject.add_to_order dish, 3
-      expect{subject.show_order}.to output("Your order:\nPizza: £2.00 X3\n").to_stdout
+      expect{subject.show_order}.to output("Pizza: £2.00 X3\n").to_stdout
     end
   end
 
@@ -37,7 +37,7 @@ describe Order do
 
     it 'should raise error when payment doesn not match total' do
       subject.add_to_order dish, 3
-      expect{subject.place_order(3)}.to raise_error 'Payment does not match total!'
+      expect{subject.place_order(3)}.to raise_error"Payment doesn't match total!"
     end
   end
 

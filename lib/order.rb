@@ -21,7 +21,6 @@ class Order
   end
 
   def show_order
-    puts "Your order:\n"
     count = 0
     order.each do |dish|
       quantity = order.count(dish)
@@ -31,7 +30,7 @@ class Order
   end
 
   def place_order payment
-    fail 'Payment does not match total!' if payment != total_price
+    fail "Payment doesn't match total!" if payment != total_price
     show_order
     total_price
     Text.new.send_text
