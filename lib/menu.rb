@@ -10,13 +10,6 @@ class Menu
   end
 
   def read
-    p "Welcome to the UK's No.1 Dai Pai Dong!"
-    print_menu
-  end
-
-  private
-
-  def print_menu
-    @dishes.each {|dish, price| p "#{dish}: £#{price}"}
+    @dishes.each {|dish, price| "#{dish}: £#{price}"}
   end
 end

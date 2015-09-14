@@ -12,7 +12,7 @@ describe Customer do
   describe '#add' do
     it 'allows subject to place dish in basket' do
       subject.add 'spring roll', 2
-      expect(subject.basket).to eq({'spring roll' => 2})
+      expect(subject.basket).to eq('spring roll' => 2)
     end
 
     it 'notifies subject that dish has been placed in basket' do
