@@ -7,6 +7,7 @@ describe Order do
   it { is_expected.to respond_to :order }
 
   describe '#add_to_order' do
+
     it { is_expected.to respond_to :add_to_order }
 
     it 'should add dish to order' do
@@ -17,6 +18,7 @@ describe Order do
   end
 
   describe '#show_order' do
+
     it {is_expected.to respond_to :show_order }
 
     it 'should show order' do
@@ -26,6 +28,9 @@ describe Order do
   end
 
   describe '#total_price' do
+
+    it { is_expected.to respond_to :total_price }
+
     it 'should show the total price' do
       subject.add_to_order(dish, 3)
       expect(subject.total_price).to be 6.0
@@ -33,6 +38,7 @@ describe Order do
   end
 
   describe '#place_order' do
+
     it { is_expected.to respond_to :place_order }
 
     it 'should raise error when payment doesn not match total' do

@@ -6,6 +6,9 @@ describe Menu do
   it { is_expected.to respond_to :dishes }
 
   describe '#add_dish' do
+
+    it { is_expected.to respond_to :add_dish }
+
     it 'should add dish to menu' do
       subject.add_dish(dish)
       expect(subject.dishes).to eql [dish]
@@ -13,6 +16,9 @@ describe Menu do
   end
 
   describe '#show' do
+
+    it { is_expected.to respond_to :add_dish }
+
     it 'should show the entire menu' do
       subject.add_dish(dish)
       expect(subject.show).to eql "Menu:\nCoke: £1"
