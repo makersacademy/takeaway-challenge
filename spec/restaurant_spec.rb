@@ -56,9 +56,15 @@ describe Restaurant do
       expect(subject).to respond_to :send_order_confirmation
     end
 
-    xit "sends a text message" do
-      expect(subject.send_order_confirmation).to
-    end
+    # it "sends the correct text message" do
+    #   client = double :client
+    #   allow(subject).to receive(:client) { client }
+    #   allow(client).to receive(:account)
+    #   allow(client.account).to receive(:messages)
+    #   expect(client.account.messages).to receive(:create).with({:from => '+441143599202', :to => '+447903226001', :body => "Thank you! Your order was placed and will be delivered before #{Time.new + 3600}"})
+    #   subject.send_order_confirmation
+    #   # expect(subject.send_order_confirmation).to
+    # end
   end
 
 end
