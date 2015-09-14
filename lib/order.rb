@@ -32,7 +32,7 @@ class Order
   end
 
   def place_order payment
-    fail "Payment doesn't match total!" if payment != total_price
+    fail "Incorrect Payment" if payment != total_price
     show_order
     total_price
     Text.new.send_text

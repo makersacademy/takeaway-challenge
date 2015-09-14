@@ -43,7 +43,7 @@ describe Order do
 
     it 'should raise error when payment doesn not match total' do
       subject.add_to_order(dish, 3)
-      expect{subject.place_order(3)}.to raise_error"Payment doesn't match total!"
+      expect{subject.place_order(3)}.to raise_error "Incorrect Payment"
     end
   end
 
