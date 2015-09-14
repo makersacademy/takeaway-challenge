@@ -16,18 +16,34 @@ describe Menu do  # ~> NoMethodError: undefined method `describe' for main:Objec
     expect{subject.order(:soup,5)}.to raise_error("Item not on menu")
 
   end
-
+  #
   # it 'can keep a running total of my order' do
   #   menu = Menu.new
   #   menu.order(:rice,2)
   #   menu.order(:naan,3)
-  #   expect(subject.basket_price).to_eq(7)
+  #   expect(menu.basket_price).to eq(7)
   # end
-  # it 'places items into the customers basket' do
-  #   menu = Menu.new
-  #   menu.order(:naan,2)
-  #   expect(menu.basket).to eq(:naan)
-  # end
+
+#alternatively.....
+
+  it 'can keep a running total of my order' do
+    subject.order(:rice,2)
+    subject.order(:naan,3)
+    expect(subject.basket_price).to eq(7)
+  end
+
+
+
+
+
+
+
+
+  it 'places items into the customers basket' do
+    menu = Menu.new
+    menu.order(:naan,2)
+    expect(menu.basket[0][0]).to eq(:naan)
+  end
 
 end
 

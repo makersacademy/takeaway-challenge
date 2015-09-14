@@ -9,8 +9,7 @@ class Menu
   end
 
   def order(item, quantity)
-    not_on_menu?(item,quantity)
-    @quantity = quantity
+    not_on_menu?(item)
     @price = list_of_items.fetch(item)
     @list_of_items[item]
     puts "Thank you for ordering #{quantity} x #{item}, costing £#{list_of_items.fetch(item)} each"  # => nil, nil
@@ -23,8 +22,8 @@ class Menu
   end
 
   private
-  
-  def not_on_menu?(item,quantity)
+
+  def not_on_menu?(item)
     raise "Item not on menu" unless @list_of_items.has_key?(item)
   end
 
