@@ -12,8 +12,8 @@ module Texting
     to = ENV['MY_PHONE_NUMBER']
 
     delivery_time = Time.new + (60*60)
-    message = "Thank you! Your order has been placed and delivery " +
-              "is scheduled for #{delivery_time.strftime('%H:%M')}"
+    message = "Thank you! Your order has been placed and delivery \
+              is scheduled for #{delivery_time.strftime('%H:%M')}"
 
     @client = Twilio::REST::Client.new account_sid, auth_token
 

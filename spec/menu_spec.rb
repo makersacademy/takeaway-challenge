@@ -25,9 +25,9 @@ describe Menu do
       subject.make_dish_available(dish1)
       subject.make_dish_available(dish2)
       subject.make_dish_available(dish3)
-      expected_output = "1: Dishy1 | Price: £1.11\n" +
-                        "2: Dishy2 | Price: £2.22\n" +
-                        "3: Dishy3 | Price: £3.33\n"
+      expected_output = "1: Dishy1 | Price: £1.11\n\
+                        2: Dishy2 | Price: £2.22\n\
+                        3: Dishy3 | Price: £3.33\n"
       expect{ subject.view }.to output(expected_output).to_stdout
     end
 
