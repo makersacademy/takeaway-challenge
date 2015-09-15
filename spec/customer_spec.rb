@@ -30,7 +30,7 @@ describe Customer do
     order = double :order, empty?: false
     allow(order).to receive(:total).and_return(35)
     cust = Customer.new(order)
-    expect{cust.place_order({'pizza'=>2}, 33)}.to raise_error "Total is not correct"
+    expect{cust.place_order({'dip'=>2},3)}.to raise_error "Total is not correct"
   end
 
   it "receive a message if order is ok" do
@@ -44,9 +44,9 @@ describe Customer do
 
   it "knows the list of ordered dishes" do
     order = double :order
-    allow(order).to receive(:dishes).and_return({'pizza'=>1})
+    allow(order).to receive(:dishes).and_return('pizza'=>1)
     cust = Customer.new(order)
-    expect(cust.list).to eq({'pizza'=>1})
+    expect(cust.list).to eq('pizza'=>1)
   end
 
 
