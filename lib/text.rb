@@ -7,7 +7,6 @@ class Text
 
   def initialize
     @sender = "441724411046"
-    @client = Twilio::REST::Client.new(ENV[:account_sid], ENV[:auth_token])
   end
 
   def time
@@ -15,7 +14,8 @@ class Text
   end
 
   def send_text
-    @client.account.messages.create(
+    @client = Twilio::REST::Client.new(ENV[:account_sid], ENV[:auth_token])
+    @client.messages.create(
     body: "Thank you for your order. It will be delivered before #{time}",
     to: ENV[:phone_number],
     from: sender)
