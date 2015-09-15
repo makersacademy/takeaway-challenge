@@ -23,14 +23,16 @@ include Messenger
   end
 
   def checkout(input)
-    fail "Error - Payment value does not match basket total" unless input == @total
-    self.checkout_complete
+    fail "Error - Payment value does not match basket total" unless 
+    input == @total
+    checkout_complete
     puts "Order placed!"
   end
 
   def checkout_complete
     time = Time.new + 3600
-    sendMessage("Thank you! Your order was placed and will be delivered #{time.strftime("at %H:%M")}", "+447866856308")
+    sendMessage("Thank you! Your order was placed and will 
+    be delivered #{time.strftime("at %H:%M")}", "+447866856308")
   end
 
 end

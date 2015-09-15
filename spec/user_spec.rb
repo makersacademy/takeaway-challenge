@@ -1,7 +1,8 @@
 require_relative "../lib/User"
 
 describe User do
-  let(:menu) {double(:menu,{starters: {"Soup" => ["Soup",3.99], "Salad" => ["Salad",4.99]}})}
+  let(:menu) {double(:menu,{starters: 
+  {"Soup" => ["Soup",3.99], "Salad" => ["Salad",4.99]}})}
 
   it { is_expected.to respond_to(:add) }
   it { is_expected.to respond_to(:summary) }
@@ -34,10 +35,9 @@ describe User do
 
     it "checks user input against basket total" do
       subject.add(subject.menu.starters["Soup"])
-      expect{subject.checkout(1.99)}.to raise_error "Error - Payment value does not match basket total"
+      expect{subject.checkout(1.99)}.to raise_error
+      "Error - Payment value does not match basket total"
     end
-
   end
-
 end
 

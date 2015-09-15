@@ -10,8 +10,10 @@ describe Dummy do
 
   it "can send out messages" do
     client = double(:client)
-    expect(Twilio::REST::Client).to receive(:new).with(ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"])
-    expect(nil).to receive_message_chain(:account,:sms,:messages,:create)
+    expect(Twilio::REST::Client).to receive(:new).with(
+      ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"])
+    expect(nil).to receive_message_chain(
+      :account,:sms,:messages,:create)
     subject.sendMessage("test",0)
   end
 
