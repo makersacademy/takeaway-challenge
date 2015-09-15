@@ -13,8 +13,8 @@ class Menu
 
   def view
     fail "No dishes available on this menu" if no_dishes_available?
-    menu.each do |k, v|
-      puts "#{k}: #{v.name} | Price: £#{'%.2f' % v.price}"
+    menu.each do |number, dish|
+      puts "#{number}: #{dish.name} | Price: £#{'%.2f' % dish.price}"
     end
   end
 

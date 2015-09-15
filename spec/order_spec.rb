@@ -16,17 +16,21 @@ describe Order do
       subject.add_to_basket(menu1, 1, 2)
     end
 
-    it 'given the menu, dish number and quantity adds the dish/dishes to the order' do
+    it 'given the menu, dish number and quantity adds
+        the dish/dishes to the order' do
       subject.add_to_basket(menu1, 1, 2)
       expect( (subject.basket[dish1] / dish1.price).to_i ).to eq 2
     end
   end
 
   describe '#summary' do
-    it 'gives a summary of the order, grouping items and displaying prices with a total' do
+    it 'gives a summary of the order, grouping
+        items and displaying prices with a total' do
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 3)
-      expected_output = "2x Dishy1 | £7.00\n3x Dishy2 | £15.00\nTotal cost: £22.00\n"
+      expected_output = "2x Dishy1 | £7.00\n" +
+                        "3x Dishy2 | £15.00\n" +
+                        "Total cost: £22.00\n"
       expect{ subject.summary }.to output(expected_output).to_stdout
     end
 
@@ -41,7 +45,8 @@ describe Order do
       allow(subject).to receive(:issue_confirmation_text){nil}
     end
 
-    it 'calls the #send_text method if payment matches total' do
+    it 'calls the #issue_confirmation_text
+        method if payment matches total' do
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 3)
       expect(subject).to receive(:issue_confirmation_text)
@@ -51,15 +56,18 @@ describe Order do
     it 'raises an error if payment does not match the total cost' do
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 3)
-      expect{ subject.submit(25.25) }.to raise_error "Payment does not match total cost"
+      error_msg = "Payment does not match total cost"
+      expect{ subject.submit(25.25) }.to raise_error error_msg
     end
 
     it '(irb fail) does not raise error when payment correct' do
-      RSpec::Expectations.configuration.warn_about_potential_false_positives = false
+      RSpec::Expectations.configuration.
+                          warn_about_potential_false_positives = false
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 1)
       subject.add_to_basket(menu3, 1, 1)
-      expect{ subject.submit(16.99) }.not_to raise_error "Payment does not match total cost"
+      error_msg = "Payment does not match total cost"
+      expect{ subject.submit(16.99) }.not_to raise_error error_msg
     end
 
     it 'raises an error if no dishes have been added to the order' do
