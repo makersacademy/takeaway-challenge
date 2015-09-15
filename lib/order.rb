@@ -41,9 +41,9 @@ class Order
       "Price".center(width) << "Total".rjust(width)
     orders.each do |order|
       puts "#{order[:dish].ljust(width)}" <<
-      "#{order[:quantities].to_s.center(width)}" <<
-      "#{order[:price].to_s.center(width)}" <<
-      "#{(order[:quantities] * order[:price]).to_s.rjust(width)}"
+        "#{order[:quantities].to_s.center(width)}" <<
+          "#{order[:price].to_s.center(width)}" <<
+            "#{(order[:quantities] * order[:price]).to_s.rjust(width)}"
     end
     puts "The total price is #{total_price}"
   end
