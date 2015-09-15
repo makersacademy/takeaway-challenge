@@ -11,7 +11,7 @@ class TwilioText
     @client.messages.create(
       from: ENV['phone'],
       to: ENV['my_phone'],
-      body: "Thank you! Your order was placed and will be delivered before #{time}")
+      body: "Thank you! Your order was placed and will be delivered by #{time}")
   end
 
   def time
