@@ -24,4 +24,13 @@ describe Order do
     expect(subject.total).to eq(29.97)
   end
 
+  it "empty when initialized" do
+    expect(subject).to be_empty
+  end
+
+  it "is not empty if dish added" do
+    subject.add_dish('pizza', 2)
+    expect(subject).not_to be_empty
+  end
+
 end
