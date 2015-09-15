@@ -2,7 +2,7 @@ require 'takeaway.rb'
 
 describe Takeaway do
 
-  let(:customer) { double:customer }
+  let(:customer) { double:customer, mobile: 123 }
 
   it 'responds to create_bill method with an argument' do
     is_expected.to respond_to(:create_bill).with(1).argument
@@ -18,4 +18,10 @@ describe Takeaway do
     is_expected.to respond_to(:confirm_order).with(1).argument
   end
 
+  it 'connects with Twilio' do
+    client = double(:client)
+    allow(client).to receive_message_chain(:messages, :create)
+    expect(Twilio::REST::Client).to receive(:new).and_return(client)
+    subject.send_text(customer)
+  end
 end
