@@ -28,9 +28,9 @@ describe Order do
         items and displaying prices with a total' do
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 3)
-      expected_output = "2x Dishy1 | £7.00\n\
-                        3x Dishy2 | £15.00\n\
-                        Total cost: £22.00\n"
+      expected_output = "2x Dishy1 | £7.00\n" +
+                        "3x Dishy2 | £15.00\n" +
+                        "Total cost: £22.00\n"
       expect{ subject.summary }.to output(expected_output).to_stdout
     end
 
@@ -62,7 +62,7 @@ describe Order do
 
     it '(irb fail) does not raise error when payment correct' do
       RSpec::Expectations.configuration.
-          warn_about_potential_false_positives = false
+        warn_about_potential_false_positives = false
       subject.add_to_basket(menu1, 1, 2)
       subject.add_to_basket(menu2, 1, 1)
       subject.add_to_basket(menu3, 1, 1)
