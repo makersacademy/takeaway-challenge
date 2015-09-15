@@ -1,5 +1,5 @@
 require 'twilio-ruby'
-require '../.env.rb'
+require './.env.rb'
 
 class Text
 
