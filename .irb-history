@@ -1,43 +1,3 @@
-letters = (A..J).to_a
-letters = ("A..J").to_a
-letters = ("A".."J").to_a
-numbers = (1..10).to_a
-letters.map {|letter| numbers.map {|number| letter+number}}
-letters.map {|letter| numbers.map {|number| letter+number.to_s}}
-letters.map {|letter| numbers.map {|number| letter+number.to_s}}.flatten
-b = [1,2]
-a!&b
-a&b
-sub1 = Submarine.new("A2", :N)
-c = "A1"
-c[1].to_i + 1.to_s
-c = "A10"
-c[1..2] = (c[1..2].to_i - 1).to_s)
-c[1..2] = c[1..2].to_i - 1).to_s
-c[1] = (c[1..2].to_i - 1).to_s
-c[1..2] = (c[1..2].to_i - 1).to_s
-c = "A9"
-c[1] = (c[1].to_i + 1).to_s
-c
-inject(:a)
-a = [1,2,3]
-a.inject(result, :puts)
-a.inject(2, :+)
-a.inject(5, :+)
-a.inject(5, :*)
-a = ["ab", "cde"]
-a.inject("fg", +)
-a.inject("fg", :+)
-a.inject(0, [])
-a.inject(0, :[])
-a.inject(0, :upcase)
-a.inject(:upcase)
-a.inject('fg', :upcase)
-a.inject('fg', :find)
-a.inject('fg', :sub)
-a.inject('fg', 'a', :sub)
-a.inject('fg', :match)
-a.inject('fg', :length)
 a.inject('fg', :index)
 a.inject('fg', :chars)
 a = [1,2,3,4]
@@ -63,7 +23,6 @@ arr each do
 [2,3,4].shift
 a = [2,3,4]
 a.shift
-a
 p = Proc.new {|sum, i| sum+i}
 [1,2,3].inject(&p)
 [1,2,3].map
@@ -79,7 +38,6 @@ l1.call("1", "2", "3")
 [:+].inject(:+) {|init, el| init==el}
 [:+].inject(:+)
 :+:+
-end
 dish = Dish.new 'pizza'
 cust.list_of_dishes
 cust.add_dish('dip', 1)
@@ -95,6 +53,48 @@ cust.place_order(23)
 irb
 load '../.env'
 load '../.env.rb'
-cust = Customer.new
 cust.send_text
+cust = Customer.new
+[1,2,3].inject(1) {|sum, el| sum+el}
+[1,2,3].inject(1, :+)
+[1,2,3].inject {|sum, el| sum+el}
+[1,2,3].inject(:+)
+a = [1,2,3]
+a.object_id
+a.inject(:+)
+b = a.inject([]) {|a,b| a<<b if b.even?}
+b = a.inject([]) {|a,b| a<<b if b.even?; a}
+b
+b.object_id
+a = MyArray.new()
+a.my_inject_rec([]) {|a,b| a<<b if b.even; a}
+a.my_inject_rec([]) {|a,b| a<<b if b.even?; a}
+a.push(1,2,3)
+a.my_inject([]) {|a,b| a<<b if b.even?; a}
+a.my_inject {|a,b| a+b}
+[*'A'..'J'].each {|el| p el} 
+['A'..'J'].each {|el| p el} 
+[1..2]
+[*1..5]
+cell = Cell.new
+board = Board.new(cell)
+board = Board.new
+board.grid[A1]
+board.grid[:A1]
+board = Board.new(Cell)
+board.grid.keys
+a = {}
+a['a'] = 'apple'
+a
+
+p board.grid.keys[1..10]
+p board.grid.keys[0..9]
+i=9
+i = 0
+while i<99
+p board.grid.keys[i..i+9]
+i = i+10
+end
+twilio = TwilioText.new
+twilio.send_text
 exit
