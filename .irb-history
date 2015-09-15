@@ -1,0 +1,100 @@
+a.inject('fg', :index)
+a.inject('fg', :chars)
+a = [1,2,3,4]
+a.inject(0, :+)
+a.inject(1, :+)exit
+class Plane
+def initialise
+take_off
+def take_off
+fly = true
+plane = Plane.new
+plane.take_off
+arr = [1,2,3,4]
+new = 0
+arr each do
+[1,2,3].inject
+[1,2,3,4].inject(:+)
+(:+).is_a? Symbol
+[1,2,3,4,5,6].inject(0,:+)
+[1,2,3,4,5,6].inject(:+)
+[2,3,4].inject(:*)
+[2,3,4].inject(2, :*)
+[2,3,4].shift
+a = [2,3,4]
+a.shift
+p = Proc.new {|sum, i| sum+i}
+[1,2,3].inject(&p)
+[1,2,3].map
+5 {|i| i+2}
+p1 = Proc.new {|digit| digit.to_i}
+p1.call("1")
+p1.call("1", "2", "3")
+l1 = lambda {|digit| digit.to_i}
+l1.call("1")
+l1.call("1", "2", "3")
+[:a, :b, :c].inject(:d) {|init, sym| init+sym}
+[:a, :b, :c].inject(:d) {|init, sym| init==sym}
+[:+].inject(:+) {|init, el| init==el}
+[:+].inject(:+)
+:+:+
+dish = Dish.new 'pizza'
+cust.list_of_dishes
+cust.add_dish('dip', 1)
+cust order
+cust.order
+cust.check_total(26.47)
+cust.place_order(ordered_dishes, 25.98)
+q
+cust.add_dish('pizza', 2)
+cust.ordered_dishes
+cust.order.total
+cust.place_order(23)
+irb
+load '../.env'
+load '../.env.rb'
+cust.send_text
+cust = Customer.new
+[1,2,3].inject(1) {|sum, el| sum+el}
+[1,2,3].inject(1, :+)
+[1,2,3].inject {|sum, el| sum+el}
+[1,2,3].inject(:+)
+a = [1,2,3]
+a.object_id
+a.inject(:+)
+b = a.inject([]) {|a,b| a<<b if b.even?}
+b = a.inject([]) {|a,b| a<<b if b.even?; a}
+b
+b.object_id
+a = MyArray.new()
+a.my_inject_rec([]) {|a,b| a<<b if b.even; a}
+a.my_inject_rec([]) {|a,b| a<<b if b.even?; a}
+a.push(1,2,3)
+a.my_inject([]) {|a,b| a<<b if b.even?; a}
+a.my_inject {|a,b| a+b}
+[*'A'..'J'].each {|el| p el} 
+['A'..'J'].each {|el| p el} 
+[1..2]
+[*1..5]
+cell = Cell.new
+board = Board.new(cell)
+board = Board.new
+board.grid[A1]
+board.grid[:A1]
+board = Board.new(Cell)
+board.grid.keys
+a = {}
+a['a'] = 'apple'
+a
+
+p board.grid.keys[1..10]
+p board.grid.keys[0..9]
+i=9
+i = 0
+while i<99
+p board.grid.keys[i..i+9]
+i = i+10
+end
+twilio = TwilioText.new
+twilio.send_text
+exit
