@@ -1,5 +1,4 @@
 require 'order'
-require 'stringio'
 
 describe Order do
   let(:menu) do
@@ -54,6 +53,7 @@ describe Order do
             "27".rjust(width) + "\n" << "The total price is 27\n")).to_stdout
   end
   it "executes orders" do
+    text = double :text
     allow(Text).to receive(:send_text_message).and_return(true)
     allow(subject).to receive(:gets).and_return('4')
     subject.choose_dish
