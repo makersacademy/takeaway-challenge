@@ -18,8 +18,7 @@ describe Order do
     end
 
     it 'should raise error if dish is not on menu' do
-      expect{subject.add_to_order(menu, dish3, 1)}.to raise_error
-      'Item not on menu'
+      expect{subject.add_to_order(menu, dish3, 1)}.to raise_error 'Item not on menu'
     end
   end
 
