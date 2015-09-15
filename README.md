@@ -23,16 +23,16 @@ Instructions
 **Run**     
 _require './lib/user'_   
 **Set yourself up:**  
-_<your_name> = User.new_  
+_your_name = User.new_  
 **View the menu!**   
-_<your_name>.menu.show_  
+_your_name.menu.show_  
 **See something you like? Add it to the basket:**  
-_<your_name>.add(<your_name>.menu.starters["Soup"])_  
+_your_name.add(your_name.menu.starters["Soup"])_  
 **Checkout the total of your basket:**     
-_<your_name>.total_  
+_your_name.total_  
 **Happy with your order?**  
 _Time to checkout... (remember to input price as an argument)_   
-_<your_name>.checkout(price)_    
+_your_name.checkout(price)_    
 
 If the order is correct you will receive a text message with a confirmation of your order 
 
