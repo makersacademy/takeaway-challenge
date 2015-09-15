@@ -1,13 +1,26 @@
 require_relative '../lib/twilio_api.rb'
+require 'dotenv'
+Dotenv.load
 
-describe Messenger do
-  
+class Dummy
+  include Messenger
+end
 
-  let(:dummy_user) { User.new { include Messenger } }
+describe Dummy do
 
   it "can send out messages" do
-    allow(dummy_user).to receive(:sendMessage).and_return("")
-    dummy_user.sendMessage
+    client = double(:client)
+    expect(Twilio::REST::Client).to receive(:new).with(ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"])
+    expect(nil).to receive_message_chain(:account,:sms,:messages,:create)
+    subject.sendMessage("test",0)
   end
 
 end
+
+
+# it 'connects with TwilioAPI' do
+#       client = double(:client)
+#       allow(client).to receive_message_chain(:messages, :create)
+#       expect(Twilio::REST::Client).to receive(:new).and_return(client)
+#       subject.send_sms(10)
+#     end
