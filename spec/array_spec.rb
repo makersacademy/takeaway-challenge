@@ -9,14 +9,16 @@ describe Array do
       expect(array.mick_inject{ |sum, a| sum + a }).to eq 10
     end
 
-    it 'does accumulative multiplication of integers with inital value given' do
+    it 'does accumulative multiplication of integers
+        with inital value given' do
       array = [2,4,6,8]
       expect(array.mick_inject(3){ |tot, a| tot * a }).to eq 1152
     end
 
     it 'works for combining array of strings' do
       array = ["Friday", "nights", "were", "made", "for", "ruby!"]
-      expect(array.mick_inject{ |str, a| str + " #{a}" }).to eq "Friday nights were made for ruby!"
+      expected_str = "Friday nights were made for ruby!"
+      expect(array.mick_inject{ |str, a| str + " #{a}" }).to eq expected_str
     end
 
     it 'returns nil or empty arrays' do

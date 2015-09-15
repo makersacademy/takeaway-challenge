@@ -23,8 +23,8 @@ class Order
 
   def summary
     fail "Basket empty" if empty_basket?
-    basket.each_pair do |k, v|
-      puts "#{(v / k.price).to_i}x #{k.name} | £#{'%.2f' % v}"
+    basket.each_pair do |dish, cost|
+      puts "#{(cost / dish.price).to_i}x #{dish.name} | £#{'%.2f' % cost}"
     end
     puts "Total cost: £#{'%.2f' % total_cost}"
   end
@@ -38,7 +38,7 @@ class Order
   private
 
   def total_cost
-    ('%.2f' % basket.values.mick_inject(0){|sum, x| sum + x}).to_f
+    ('%.2f' % basket.values.mick_inject(0){|sum, cost| sum + cost}).to_f
   end
 
   def empty_basket?
