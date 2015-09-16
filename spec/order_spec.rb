@@ -51,5 +51,10 @@ describe Order do
       subject.add_to_order(menu, dish, 3)
       expect{subject.place_order(3)}.to raise_error "Incorrect Payment"
     end
+
+    it 'should send text when payment is authorised' do
+      subject.add_to_order(menu, dish, 3)
+      expect(subject.place_order(6)).to eql 'text sent'
+    end
   end
 end
