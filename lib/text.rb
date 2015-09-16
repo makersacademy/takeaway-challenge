@@ -20,6 +20,5 @@ class Text
     body: "Thank you for your order. It will be delivered before #{time}",
     to: ENV["PHONE_NUMBER"],
     from: sender)
-    return 'Text sent'
   end
 end
