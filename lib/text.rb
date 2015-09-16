@@ -1,5 +1,6 @@
 require 'twilio-ruby'
-require './.env.rb'
+require 'dotenv'
+Dotenv.load
 
 class Text
 
@@ -14,10 +15,10 @@ class Text
   end
 
   def send_text
-    @client = Twilio::REST::Client.new(ENV[:account_sid], ENV[:auth_token])
+    @client = Twilio::REST::Client.new(ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"])
     @client.messages.create(
     body: "Thank you for your order. It will be delivered before #{time}",
-    to: ENV[:phone_number],
+    to: ENV["PHONE_NUMBER"],
     from: sender)
   end
 end
