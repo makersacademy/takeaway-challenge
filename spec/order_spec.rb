@@ -51,6 +51,12 @@ describe Order do
       subject.add_to_order(menu, dish, 3)
       expect{subject.place_order(3)}.to raise_error "Incorrect Payment"
     end
+
+    it 'sends text when payment authorised' do
+      subject.add_to_order(menu, dish, 3)
+      expect(subject).to recieve :send_text
+      subject.place_order(3)
+    end
   end
 
 end
