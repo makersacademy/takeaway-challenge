@@ -53,18 +53,14 @@ describe Restaurant do
 
   describe ".send_order_confirmation" do
     it "responds to send_order_confirmation" do
-      expect(subject).to respond_to :send_order_confirmation
+      expect(subject).to respond_to(:send_order_confirmation).with(1).argument
     end
 
-    # it "sends the correct text message" do
-    #   client = double :client
-    #   allow(subject).to receive(:client) { client }
-    #   allow(client).to receive(:account)
-    #   allow(client.account).to receive(:messages)
-    #   expect(client.account.messages).to receive(:create).with({:from => '+441143599202', :to => '+447903226001', :body => "Thank you! Your order was placed and will be delivered before #{Time.new + 3600}"})
-    #   subject.send_order_confirmation
-    #   # expect(subject.send_order_confirmation).to
-    # end
+    it "sends order confirmation to twilio ruby gem" do
+      twilio_ruby = double :twilio_ruby
+      expect(twilio_ruby).to receive(:send_sms_request)
+      subject.send_order_confirmation twilio_ruby
+    end
   end
 
 end

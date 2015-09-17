@@ -23,16 +23,11 @@ class Restaurant
   end
 
   def total_calc
-    total = 0
-    @orders.each do |dish, amount|
-      total += @menu[dish] * amount
-    end
-    total
+    @orders.inject(0) { |total, (dish, amount)| total + (@menu[dish] * amount) }
   end
 
-  def send_order_confirmation
-    @client = Twilio::REST::Client.new ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"]
-    @client.account.messages.create({:from => '+441143599202', :to => '+447903226001', :body => "Thank you! Your order was placed and will be delivered before #{Time.new + 3600}"})
+  def send_order_confirmation twilio_ruby
+    twilio_ruby.send_sms_request
   end
 
 end
