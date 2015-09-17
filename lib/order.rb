@@ -31,7 +31,7 @@ class Order
     output
   end
 
-  def place_order (payment)
+  def place_order(payment)
     fail "Incorrect Payment" if payment != total_price
     show_order
     total_price
