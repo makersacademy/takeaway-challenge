@@ -1,10 +1,11 @@
 Takeaway Challenge
 ==================
 
-Instructions
+About the challenge
 -------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* This is Week 2 Challenge at Makers Academy.
+* The program is for a takeaway restaurant that allows customers to order dishes from a menu, check prices and total cost.
+Completed orders will receive a SMS confirming when their order will be delivered.
 
 Task
 -----
@@ -48,8 +49,18 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
 * Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
-
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+
+How to run the program
+----------------------
+Use IRB from Terminal to run this program.
+
+```
+$ require './lib/customer.rb'
+$ name = Customer.new
+
+```
+
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
