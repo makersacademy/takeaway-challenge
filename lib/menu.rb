@@ -10,7 +10,7 @@ class Menu
   end
 
   def menu_pricelist
-    dishes.each { |dish, price| puts "#{dish}: £#{price}0" }
+    dishes.each { |dish, price| "#{dish}: £#{price}0" }
   end
 
 end
