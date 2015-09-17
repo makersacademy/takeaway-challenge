@@ -25,8 +25,6 @@ describe Order do
 
   describe '#show_order' do
 
-    it {is_expected.to respond_to :show_order }
-
     it 'should show order' do
       subject.add_to_order(menu, dish, 3)
       expect(subject.show_order).to eql "\nPizza: £2.00 X3"
@@ -34,8 +32,6 @@ describe Order do
   end
 
   describe '#total_price' do
-
-    it { is_expected.to respond_to :total_price }
 
     it 'should show the total price' do
       subject.add_to_order(menu, dish, 3)

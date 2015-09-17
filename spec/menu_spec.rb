@@ -11,7 +11,7 @@ describe Menu do
 
     it 'should add dish to menu' do
       subject.add_dish(dish)
-      expect(subject.dishes).to eql [dish]
+      expect(subject.dishes.first).to eql dish
     end
   end
 
