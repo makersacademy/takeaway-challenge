@@ -13,4 +13,9 @@ class Menu
     dishes.each { |dish, price| "#{dish}: £#{price}0" }
   end
 
+  def dish_available?(dish)
+    fail "Sorry! That dish is not on the menu." unless dishes.key?(dish)
+    return true
+  end
+
 end

@@ -2,17 +2,16 @@ require_relative 'twilio'
 
 class Customer
 
-  attr_reader :order
+  attr_reader :order, :menu
 
   def initialize(menu = Menu.new, send_text = TwilioSend.new)
     @order = {}
-    @menu = menu.dishes
+    @menu = menu
     @send_text = send_text
   end
 
   def make_order(dish, quantity)
-    fail "Sorry! That dish is not on the menu" unless dish_available?(dish)
-    if order.include?(dish)
+    if menu.dish_available?(dish) == true && order.include?(dish)
       order[dish] += quantity
     else
       order.store(dish, quantity)
@@ -48,14 +47,8 @@ class Customer
 
   private
 
-  attr_reader :menu
-
-  def dish_available?(dish)
-    menu.key?(dish)
-  end
-
   def total_cost
-    order.map { |dish, quantity| menu[dish] * quantity }.reduce(:+)
+    order.map { |dish, quantity| menu.dishes[dish] * quantity }.reduce(:+)
   end
 
 end
