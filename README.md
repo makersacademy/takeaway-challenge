@@ -57,7 +57,14 @@ Use IRB from Terminal to run this program.
 
 ```
 $ require './lib/customer.rb'
-$ name = Customer.new
+$ customer_name = Customer.new
+To create a new customer
+
+$ customer_name.menu.pricelist
+To see the menu and price
+
+$ customer_name.make_order("dish", quantity)
+To make an order
 
 ```
 

@@ -9,13 +9,13 @@ class Menu
                 "miso soup" => 1.50 }
   end
 
-  def menu_pricelist
+  def pricelist
     dishes.each { |dish, price| "#{dish}: £#{price}0" }
   end
 
   def dish_available?(dish)
     fail "Sorry! That dish is not on the menu." unless dishes.key?(dish)
-    return true
+    true
   end
 
 end
