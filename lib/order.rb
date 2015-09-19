@@ -2,8 +2,6 @@ require_relative 'texting'
 
 class Order
 
-  include Texting
-
   attr_reader :basket
 
   def initialize
@@ -24,7 +22,7 @@ class Order
   def summary
     fail "Basket empty" if empty_basket?
     basket.each_pair do |dish, cost|
-      puts "#{(cost / dish.price).to_i}x #{dish.name} | £#{'%.2f' % cost}"
+      puts "#{(cost / dish.price).round}x #{dish.name} | £#{'%.2f' % cost}"
     end
     puts "Total cost: £#{'%.2f' % total_cost}"
   end
