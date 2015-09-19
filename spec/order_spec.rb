@@ -5,9 +5,11 @@ describe Order do
   let(:dish1) { double(:dish1, name: "Dishy1", price: 3.50) }
   let(:dish2) { double(:dish2, name: "Dishy2", price: 5.00) }
   let(:dish3) { double(:dish3, name: "Dishy3", price: 4.99) }
+  let(:dish4) { double(:dish4, name: "Dishy4", price: 5.99) }
   let(:menu1) { double(:menu1, select: dish1) }
   let(:menu2) { double(:menu2, select: dish2) }
   let(:menu3) { double(:menu3, select: dish3) }
+  let(:menu4) { double(:menu4, select: dish4) }
 
 
   describe '#add_to_basket' do
@@ -36,6 +38,13 @@ describe Order do
 
     it 'raises an error if no dishes have been added to the order' do
       expect{ subject.summary }.to raise_error "Basket empty"
+    end
+
+    it 'added test due to irb failure' do
+      subject.add_to_basket(menu4, 1, 3)
+      expected_output = "3x Dishy4 | £17.97\n" +
+                        "Total cost: £17.97\n"
+      expect{ subject.summary }.to output(expected_output).to_stdout
     end
   end
 
