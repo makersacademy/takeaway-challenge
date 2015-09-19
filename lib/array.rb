@@ -6,8 +6,8 @@ class Array
 
     if initial.nil?
       initial = self[0]
-      shift
-      accumulate(initial, &block)
+      new_array = self.drop(1)
+      new_array.accumulate(initial, &block)
     else
       accumulate(initial, &block)
     end
@@ -27,8 +27,3 @@ class Array
   end
 
 end
-
-
-
-
-
