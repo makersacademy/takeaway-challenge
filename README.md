@@ -1,11 +1,12 @@
+[![Code Climate](https://codeclimate.com/github/Harryandrew/takeaway-challenge/badges/gpa.svg)](https://codeclimate.com/github/Harryandrew/takeaway-challenge)
+![Pizza](https://github.com/harryandrew/takeaway-challenge/blob/master/images/pizza_box.jpg)
+
 **Takeaway Challenge**
 =================
 
 Description
 ------------
 Week 2 Makers Academy - Takeaway Challenge!
-
-![Pizza](https://github.com/harryandrew/takeaway-challenge/blob/master/images/pizza_box.jpg)
 
 Challenge - to write a takeaway application using a TDD/BDD approach, that sends a confirmation text message via the Twilio API.
 

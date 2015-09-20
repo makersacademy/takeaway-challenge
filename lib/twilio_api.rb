@@ -16,6 +16,5 @@ module Messenger
     to: ENV["TO"],
     body: message_out,
     )
-end
-
+  end
 end
