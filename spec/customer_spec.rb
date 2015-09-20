@@ -49,30 +49,22 @@ describe Customer do
   end
 
   describe '#checkout' do
-    let(:text_api) {double :api}
-    before do
-      allow(subject).to receive(:text_provider) {text_api}
-    end
-
     it {is_expected.to respond_to(:checkout).with(1).argument}
 
-    it 'will fail if subject is trying to dupe' do
+    it 'will fail if customer is tries to pay less' do
       subject.add 'peking duck', 2
       subject.add 'spring roll', 5
       expect{subject.checkout(5.00)}.to raise_error(
       'Please input the correct amount or more :)')
     end
 
-    it 'sends a payment confirmation text message' do
-      expect(text_api).to receive(:send_sms)
-      text_api.send_sms(20.93)
-    end
-
-    it 'notifies subject that their order has been received' do
-      allow(text_api).to receive(:send_sms)
-      notification = 'Your order has been received, you should get a'\
-      ' confirmation text soon.'
-      expect(subject.checkout(20.93)).to eq notification
+    it 'notifies customer that their order has been comfirmed' do
+      text_provider = double :text_provider
+      allow(text_provider).to receive(:send_sms).and_return('Your order has'\
+      ' been received, you should get a confirmation text soon.')
+      customer = Customer.new(Menu.new, text_provider)
+      expect(customer.checkout(50.00)).to eq('Your order has'\
+      ' been received, you should get a confirmation text soon.')
     end
   end
 end

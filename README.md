@@ -62,8 +62,22 @@ Instructions
 --------
 First run IRB or PRY in terminal(or equivalent).
 ```
-$ require './lib/customer.rb'
-$ customer_name = Customer.new
+2.2.3 :001 > require './lib/customer.rb'
+ => true
+2.2.3 :002 > dan = Customer.new
+ => #<Customer:0x007fbd44264680 @menu=#<Menu:0x007fbd44264658 @dishes={"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}>, @basket={}, @text_provider=#<TwilioAPI:0x007fbd44264608>>
+2.2.3 :003 > dan.read_menu
+ => {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}
+2.2.3 :004 > dan.add 'char sui bun', 4
+ => "4x char sui bun(s) added to your basket."
+2.2.3 :005 > dan.add 'spring roll'
+ => "1x spring roll(s) added to your basket."
+2.2.3 :006 > dan.basket_summary
+ => "char sui bun x4 = £15.96, spring roll x1 = £0.99" 
+2.2.3 :007 > dan.total
+ => "Total: £16.95"
+2.2.3 :008 > dan.checkout(16.95)
+ => "Your order has been received, you should get a confirmation text soon."
 ```
 
 Author

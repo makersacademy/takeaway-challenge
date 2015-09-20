@@ -4,10 +4,10 @@ require_relative 'menu'
 class Customer
   attr_reader :basket, :text_provider
 
-  def initialize(menu=Menu.new)
+  def initialize(menu=Menu.new, text_api=TwilioAPI.new)
     @menu = menu
     @basket = {}
-    @text_provider = TwilioAPI.new
+    @text_provider = text_api
   end
 
   def read_menu
