@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq&service=github)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=mohamedIssaq)
 **Takeaway Challenge**
 =================
 
