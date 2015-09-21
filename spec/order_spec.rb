@@ -30,8 +30,7 @@ describe Order do
     end
 
     it 'should not be able to add items not on the menu' do 
-      expect{ subject.add_item("Chicken Korma") }.to raise_error 
-        'That item is not on the menu'
+      expect{ subject.add_item("Chicken Korma") }.to raise_error 'That item is not on the menu'
     end
 
     it 'should add to the quantity if the same item is added more than once' do
@@ -52,8 +51,7 @@ describe Order do
 
     it 'should not be able to remove an item not in the basket' do
       subject.add_item("Duck Pancakes")
-      expect{ subject.remove_item("Egg Fried Rice") }.to raise_error 
-        'Item was not in the basket'
+      expect{ subject.remove_item("Egg Fried Rice") }.to raise_error 'Item was not in the basket'
     end
 
     it 'should decrease the total price accordingly if an item is removed' do
@@ -64,8 +62,7 @@ describe Order do
 
     it 'should not be able to remove more items than there are in the basket' do 
       subject.add_item("Duck Pancakes")
-      expect{ subject.remove_item("Duck Pancakes", 2) }.to raise_error 
-        'You do not have that quantity of the item in the basket'
+      expect{ subject.remove_item("Duck Pancakes", 2) }.to raise_error 'You do not have that quantity of the item in the basket'
     end
 
   end

@@ -1,5 +1,7 @@
 require 'twilio-ruby'
-require './.env.rb'
+require 'dotenv'
+Dotenv.load
+
 
 class Order 
 
@@ -21,7 +23,7 @@ class Order
 
   def add_item(dish, quantity = 1)
     fail 'That item is not on the menu' unless menu.dishes_available.key?(dish)
-    dish_check_and_add(dish, quantity)
+    check_basket_and_add(dish, quantity)
     price = quantity * menu.dishes_available[dish].round(2)
     @total += price.round(2)
   end
@@ -51,7 +53,9 @@ class Order
 
   private 
 
-  def dish_check_and_add(dish, quantity)
+  attr_writer :total
+
+  def check_basket_and_add(dish, quantity)
     basket.key?(dish) ? basket[dish] += quantity : basket[dish] = quantity
   end
 
@@ -60,10 +64,10 @@ class Order
   end
 
   def send_message
-    @account_sid = ENV[:account_sid]
-    @auth_token = ENV[:auth_token]
-    @client = Twilio::REST::Client.new @account_sid, @auth_token
-    @client.messages.create(
+    account_sid = ENV[:account_sid]
+    auth_token = ENV[:auth_token]
+    client = Twilio::REST::Client.new @account_sid, @auth_token
+    client.messages.create(
       from: '441246488347',
       to: ENV[:phone_number],
       body: "Thank you. Your order has been placed successfully and will be \ 
