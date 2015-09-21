@@ -1,7 +1,4 @@
 source 'https://rubygems.org'
-require 'dotenv'
-Dotenv.load
-gem 'dotenv'
 gem 'rspec'
 gem 'rubocop'
 gem 'coveralls', require: false
