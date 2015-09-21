@@ -1,6 +1,4 @@
 require_relative '../lib/twilio_api.rb'
-require 'dotenv'
-Dotenv.load
 
 class Dummy
   include Messenger

@@ -1,6 +1,4 @@
 require 'twilio-ruby'
-require 'dotenv'
-Dotenv.load
 
 module Messenger
 
