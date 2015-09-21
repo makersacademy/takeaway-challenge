@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/Harryandrew/airport_challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/Harryandrew/airport_challenge?branch=master)
 
 [![Code Climate](https://codeclimate.com/github/Harryandrew/takeaway-challenge/badges/gpa.svg)](https://codeclimate.com/github/Harryandrew/takeaway-challenge)
 
