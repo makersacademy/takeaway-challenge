@@ -6,6 +6,8 @@ context "When initialized" do
 
   it { is_expected.to respond_to(:show) }
   it { is_expected.to respond_to(:starters) }
+  it { is_expected.to respond_to(:menu) }
+  it { is_expected.to respond_to(:show) }
   it { is_expected.to respond_to(:mains) }
   it { is_expected.to respond_to(:desserts) }
   it { is_expected.to respond_to(:drinks) }
@@ -15,7 +17,7 @@ context "When initialized" do
   end
 
   it "can show available items" do
-    expect(subject).to respond_to(:show)
+    expect(subject.show[0]["Soup"]).to eq ["Soup", 3.99]
   end
 
 end
