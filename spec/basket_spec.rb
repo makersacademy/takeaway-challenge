@@ -4,18 +4,15 @@ require_relative '../lib/menu.rb'
 describe Basket do
   let(:menu) { double(:menu, order:[naan,2]) }
 
-  it "responds to the method 'view'" do
-    expect(subject).to respond_to(:view)
-  end
 
-  it 'responds to the method price' do
-    expect(subject).to respond_to(:price)
+  it 'responds to the method total_price' do
+    expect(subject).to respond_to(:total_price)
   end
 
   it "shows a list of items that have been ordered" do
     basket = Basket.new
     basket.order(:naan)
-    expect(basket.view).to eq([:naan])
+    expect(basket.items).to eq([:naan])
   end
 
   # it 'can keep a running total of my order' do

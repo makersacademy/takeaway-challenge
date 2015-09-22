@@ -10,7 +10,7 @@ class Menu
   private
 
   def not_on_menu?(item)
-    raise "Item not on menu" unless @dishes.key?(item)
+    fail "Item not on menu" unless @dishes.key?(item)
   end
 
 end

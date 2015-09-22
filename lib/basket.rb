@@ -3,19 +3,15 @@ class Basket
   attr_reader :items
 
     def initialize
-      @basket = []
+      @items = []
     end
 
-    def view
-      @basket
-    end
-
-    def price
+    def total_price
       # @price = @basket.inject(:+)
     end
 
     def order(item)
-      @basket << item
+      @items << item
     end
 
     # def order(item, quantity)
