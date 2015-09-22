@@ -1,6 +1,19 @@
 Takeaway Challenge
 ==================
 
+
+# menu = Menu.new       # => #<Menu:0x007fec0a90f530 @list_of_items={:naan=>1.0, :daal=>3.0, :rice=>2.0}, @basket=[], @subtotal=[]>
+# menu.list_of_items    # => {:naan=>1.0, :daal=>3.0, :rice=>2.0}
+# menu.order(:naan, 3)  # => [3.0]
+# menu.order(:rice, 2)  # => [3.0, 4.0]
+# menu.basket           # => [[:naan, 1.0, 3], [:rice, 2.0, 2]]
+# menu.basket_price     # => 7.0
+
+# >> Thank you for ordering 3 x naan, costing £1.0 each
+# >> Thank you for ordering 2 x rice, costing £2.0 each
+
+
+
 Instructions
 -------
 * Feel free to use google, your notes, books, etc but work on your own
