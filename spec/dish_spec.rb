@@ -1,4 +1,4 @@
-require_relative 'spec_helper.rb'
+require 'spec_helper'
 require_relative '../lib/dish.rb'
 
 describe Dish do

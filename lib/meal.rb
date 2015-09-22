@@ -1,4 +1,4 @@
-require_relative 'dish.rb'
+require 'dish'
 
 class Meal
 
@@ -12,8 +12,8 @@ class Meal
 
   def total
     total = 0.00
-    @dishes.each do |i|
-      total += i.total
+    @dishes.each do |dish|
+      total += dish.total
     end
     total
   end

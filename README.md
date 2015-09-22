@@ -1,3 +1,13 @@
+# Example syntax
+```
+2.1.5 :001 > menu = Takeaway.new
+ => #<Takeaway:0x007fe9629292c8 @menu=[#<Dish:0x007fe962929250 @number=44, @description="Duck a la banana", @price=4.5, @quantity=0>, #<Dish:0x007fe962929200 @number=10, @description="Deep fried Mars bar", @price=0.1, @quantity=0>, #<Dish:0x007fe9629291b0 @number=20, @description="Birdseye potato waffles", @price=1.99, @quantity=0>, #<Dish:0x007fe962929160 @number=69, @description="Trio! Trio.", @price=1.5, @quantity=0>]>
+2.1.5 :002 > menu.see
+ => "44 : Duck a la banana : £4.50, 10 : Deep fried Mars bar : £0.10, 20 : Birdseye potato waffles : £1.99, 69 : Trio! Trio. : £1.50"
+2.1.5 :003 > menu.order([[44, 2], [20, 1]], 10.99)
+ => true
+```
+
 Takeaway Challenge
 ==================
 
