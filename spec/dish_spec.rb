@@ -14,7 +14,7 @@ describe Dish do
     it 'displays correct dish information' do
       dish = Dish.new('Egg Fried Rice',3.95)
       expect(dish.display_info).to eq(
-      'Egg Fried Rice                          £   3.95')
+      'Egg Fried Rice                         £   4.95')
     end
   end
 
