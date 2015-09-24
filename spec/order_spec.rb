@@ -23,9 +23,9 @@ describe Order do
 
   describe "#display_order" do
     it 'displays information about the order with total cost' do
-      dish1 = double(:dish)
+      dish1 = double(:dish, name: 'Fried Rice')
       dish2 = double(:dish)
-      allow(dish1).to receive(:name).and_return('Fried Rice')
+      # allow(dish1).to receive(:name).and_return('Fried Rice')
       allow(dish1).to receive(:price).and_return(3.95)
       allow(dish2).to receive(:name).and_return('Chicken Curry')
       allow(dish2).to receive(:price).and_return(4.90)
