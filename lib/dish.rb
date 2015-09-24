@@ -7,7 +7,10 @@ class Dish
   end
 
   def display_info
-    @name + ' £ ' + price
+    space_length = 40 - @name.length
+    price = @price.to_s
+    sign_space = price.length == 4 ? '   ' : '  '
+    @name + ' '*space_length + '£' + sign_space + price
   end
 
 end
