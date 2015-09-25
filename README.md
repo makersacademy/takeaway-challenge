@@ -1,19 +1,4 @@
-Takeaway Challenge
-==================
-
-Instructions
--------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Spend an hour composing a blog post to answer the question `What is a ruby gem? Give a code example showing how to use a ruby gem in a piece of code. What are some dangers to using a gem?`
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The task is to write a takeaway program with the following user story:
 
 ```
 As a customer
@@ -33,23 +18,43 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+I have 2 classes:
+- Customer
+- Order
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Order can add dish, knows the total, knows if it is empty.
+Each customer has an order.
+Customer can add dish to an order, can see his order, can check total, can place order.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Also I have 2 modules:
+- Menu
+- TwilioText
+
+Customer includes Menu to see the menu, Order includes menu to see the price of each dish (to calculate total).
+Customer also includes TwilioText to place order and receive text.
+
+irb example:
+
+```irb
+
+$irb
+
+:001 > customer = Customer.new
+ => #<Customer:0x007fb55e014b98 @order=#<Order:0x007fb55e014b70 @dishes={}>>
+:002 > customer.add_dish(:pizza, 1)
+ => 1
+:003 > customer.add_dish(:dip, 1)
+ => 1
+:004 > customer.my_list
+ => {:pizza=>1, :dip=>1}
+:005 > customer.total_correct(16)
+ => false
+:006 > customer.total_correct(13.48)
+ => true
+:007 > customer.place_order(13.48)
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC5c7f51a9ef5ab4cae242e91d8e98a940/Messages/SM8d4abc08e7cd415bb888a06fa7845991>
+
+```
 
 
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)

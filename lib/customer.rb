@@ -3,16 +3,15 @@ require_relative 'order'
 require_relative 'menu'
 require_relative 'twilio_text'
 
-
 class Customer
 
-include Menu
+  include Menu
+  include TwilioText
 
-  attr_reader :order, :twilio_text
+  attr_reader :order
 
-  def initialize(order = Order.new, twilio_text = TwilioText.new)
+  def initialize(order = Order.new)
     @order = order
-    @twilio_text = twilio_text
   end
 
   def list_of_dishes
@@ -27,13 +26,13 @@ include Menu
     total == order.total
   end
 
-  def place_order(list, total)
+  def place_order(list=my_list, total)
     fail "Order is empty" if list.empty?
     fail "Total is not correct" unless total_correct(total)
-    twilio_text.send_text
+    send_text
   end
 
-  def list
+  def my_list
      order.dishes
   end
 end

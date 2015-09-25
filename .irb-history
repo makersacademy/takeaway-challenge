@@ -1,100 +1,100 @@
-a.inject('fg', :index)
-a.inject('fg', :chars)
-a = [1,2,3,4]
-a.inject(0, :+)
-a.inject(1, :+)exit
-class Plane
-def initialise
-take_off
-def take_off
-fly = true
-plane = Plane.new
-plane.take_off
-arr = [1,2,3,4]
-new = 0
-arr each do
-[1,2,3].inject
-[1,2,3,4].inject(:+)
-(:+).is_a? Symbol
-[1,2,3,4,5,6].inject(0,:+)
-[1,2,3,4,5,6].inject(:+)
-[2,3,4].inject(:*)
-[2,3,4].inject(2, :*)
-[2,3,4].shift
-a = [2,3,4]
-a.shift
-p = Proc.new {|sum, i| sum+i}
-[1,2,3].inject(&p)
-[1,2,3].map
-5 {|i| i+2}
-p1 = Proc.new {|digit| digit.to_i}
-p1.call("1")
-p1.call("1", "2", "3")
-l1 = lambda {|digit| digit.to_i}
-l1.call("1")
-l1.call("1", "2", "3")
-[:a, :b, :c].inject(:d) {|init, sym| init+sym}
-[:a, :b, :c].inject(:d) {|init, sym| init==sym}
-[:+].inject(:+) {|init, el| init==el}
-[:+].inject(:+)
-:+:+
-dish = Dish.new 'pizza'
-cust.list_of_dishes
-cust.add_dish('dip', 1)
-cust order
-cust.order
-cust.check_total(26.47)
-cust.place_order(ordered_dishes, 25.98)
-q
-cust.add_dish('pizza', 2)
-cust.ordered_dishes
-cust.order.total
-cust.place_order(23)
-irb
-load '../.env'
-load '../.env.rb'
-cust.send_text
-cust = Customer.new
-[1,2,3].inject(1) {|sum, el| sum+el}
-[1,2,3].inject(1, :+)
-[1,2,3].inject {|sum, el| sum+el}
-[1,2,3].inject(:+)
-a = [1,2,3]
-a.object_id
-a.inject(:+)
-b = a.inject([]) {|a,b| a<<b if b.even?}
-b = a.inject([]) {|a,b| a<<b if b.even?; a}
-b
-b.object_id
-a = MyArray.new()
-a.my_inject_rec([]) {|a,b| a<<b if b.even; a}
-a.my_inject_rec([]) {|a,b| a<<b if b.even?; a}
-a.push(1,2,3)
-a.my_inject([]) {|a,b| a<<b if b.even?; a}
-a.my_inject {|a,b| a+b}
-[*'A'..'J'].each {|el| p el} 
-['A'..'J'].each {|el| p el} 
-[1..2]
-[*1..5]
-cell = Cell.new
-board = Board.new(cell)
-board = Board.new
-board.grid[A1]
-board.grid[:A1]
-board = Board.new(Cell)
+player.board.place(ship, 'D', :vertically)
+ship = Ship.new(3)
+board.place(ship, :A3, :vertically)
 board.grid.keys
-a = {}
-a['a'] = 'apple'
-a
-
-p board.grid.keys[1..10]
-p board.grid.keys[0..9]
-i=9
-i = 0
-while i<99
-p board.grid.keys[i..i+9]
-i = i+10
+board.grid.values
+ship = Ship.new(1)
+board.place(ship, :A1, :vertically)
+a = []
+a.size
+board.place_ships_auto
+board
+board.place_ships_auto(3)
+board.place(ship, :G9)
+:G9.to_s.reverse.next.reverse.to_sym
+board = Board.new(Cell)
+ship = Ship.new(2)
+board.place(ship, :G9, :horizontally)
+:G9.next
+:G8.next
+coord = :G9
+coord = 'G9'
+coord[0]+(coord[1]+1).to_s
+coord[0]+(coord[1].to_i+1).to_s
+comp.choose['rock', 'paper', 'scissors']
+comp.choose ['rock', 'paper', 'scissors']
+comp.choice(['1', '2', '3'])
+comp = Computer.new
+comp.make_choice['rock', 'paper', 'scissors']
+comp.make_choice(['rock', 'paper', 'scissors'])
+comp.choice
+player1 = Player.new "John"
+game.add_player(player1)
+player2 = Computer.new
+game.add_player player2
+player3 = Player.new 1
+game.add_player player3
+game
+game.player1.choice = 'rock'
+game.player2.make_choice
+game.player2.make_choice(options)
+game.player2.make_choice(game.options)
+game.score
+player1 = Player.new
+computer = Computer.new
+game.add_player computer
+game.computer_choice
+computer.choice
+player.choice = 'paper'
+player.choice= 'paper'
+player1.choice= 'paper'
+game.winner
+game = Game.new
+player1 = Player.new('John')
+game.add_player player1
+p game
+player1.choice
+until a
+a = 1
+eit
+DataMapper.setup(:default, "postgres://localhost/database_play")
+class Student
+property :name, String
+Student.create(name: "Ptolemy")
+\l
+Student.delete(id: 1)
+Student.destroy(id: 1)
+Student.destroy
+Student.create(nsme: 'John')
+Student.create(name: 'John')
+Student.delete(name: 'Ptolemy')
+Student.destroy(name: 'Ptolemy')
+require 'data_mapper'
+require 'dm-postgres-adapter'
+DataMapper::Logger.new($stdout, :debug)
+DataMapper.setup(:default, "postgres://localhost/some_database")
+class Links
+include DataMapper::Resource
+property :id, Serial
+property :title, String
+property :url, String
 end
-twilio = TwilioText.new
-twilio.send_text
+DataMapper.finalize
+Link.create(title: 'Google', url: 'www.google.com')
+Links.create(title: 'Google', url: 'www.google.com')
+Links.destroy (id == 3)
+Links.destroy ('id' == 3)
+plane = Plane.new
+plane.flying?
+plane.land
+plane.status= false
+plane.take_off
+plane.status
+customer = Customer.new
+customer.add_dish(:pizza, 1)
+customer.add_dish(:dip, 1)
+customer.my_list
+customer.total_correct(16)
+customer.total_correct(13.48)
+customer.place_order(13.48)
 exit

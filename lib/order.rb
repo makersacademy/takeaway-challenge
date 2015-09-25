@@ -7,11 +7,11 @@ class Order
   attr_reader :dishes
 
   def initialize
-    @dishes = {}
+    @dishes = Hash.new(0)
   end
 
   def add_dish(dish, quantity)
-    dishes.include?(dish) ? (dishes[dish]+=quantity) : (dishes[dish]=quantity)
+    dishes[dish]+=quantity
   end
 
   def total
