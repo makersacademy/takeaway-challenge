@@ -14,10 +14,6 @@ class Customer
     @order = order
   end
 
-  def list_of_dishes
-    Menu::MENU
-  end
-
   def add_dish(dish, quantity)
     order.add_dish(dish, quantity)
   end

@@ -8,11 +8,6 @@ describe Customer do
 
   include_examples 'menu'
 
-  it "can see the menu" do
-    expect(subject.list_of_dishes).to eq({pizza: 12.99, potato_wedges: 3.99, nachos: 3.99,
-    chicken_wings: 8.99, dip: 0.49})
-  end
-
   it "can add dish" do
     expect(order).to receive(:add_dish).with(:pizza,1)
     subject.add_dish(:pizza,1)
