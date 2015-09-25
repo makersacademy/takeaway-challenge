@@ -79,6 +79,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
+    vcr (2.9.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -92,6 +93,7 @@ DEPENDENCIES
   rubocop
   rubocop-rspec
   twilio-ruby
+  vcr
 
 BUNDLED WITH
    1.10.6

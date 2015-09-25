@@ -1,4 +1,5 @@
 require 'customer'
+require 'vcr'
 
 describe Customer do
 
@@ -6,6 +7,11 @@ describe Customer do
   subject { Customer.new(order) }
 
   include_examples 'menu'
+
+  it "can see the menu" do
+    expect(subject.list_of_dishes).to eq({pizza: 12.99, potato_wedges: 3.99, nachos: 3.99,
+    chicken_wings: 8.99, dip: 0.49})
+  end
 
   it "can add dish" do
     expect(order).to receive(:add_dish).with(:pizza,1)
@@ -31,12 +37,17 @@ describe Customer do
     expect(subject.my_list).to eq(pizza: 1)
   end
 
-  # it "receive a message if order is ok" do
-  #   allow(order).to receive(:total).and_return(35)
-  #   twilio_text = double :twilio_text
-  #   allow(twilio_text).to receive(:send_text).and_return("Text sent!")
-  #   cust = Customer.new(order, twilio_text)
-  #   expect(cust.place_order({'pizza'=>2}, 35)).to eq("Text sent!")
-  # end
+  it "a message is sent if the order is ok" do
+    allow(order).to receive(:total).and_return(35)
+    expect(subject).to receive(:send_text)
+    subject.place_order({pizza: 2}, 35)
+  end
+
+  it "receives a message after the order is placed" do
+    VCR.use_cassette(subject) do
+      response = subject.send_text
+      expect(response.body).to eq "Thank you! Your order was placed and will be delivered by #{(Time.now + 60*60).strftime('%H:%M')}"
+    end
+  end
 
 end
