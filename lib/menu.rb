@@ -30,7 +30,7 @@ class Menu
 
   def display_menu_title
     side_spacing = (line_length - name.length) / 2
-    to_display = " "*side_spacing + "MENU" + " "*side_spacing + "\n\n"
+    to_display = " "*side_spacing + name + " "*side_spacing + "\n\n"
   end
 
   def wrong_name?(dish)

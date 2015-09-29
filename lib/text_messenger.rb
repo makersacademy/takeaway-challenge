@@ -7,7 +7,8 @@ class TextMessenger
     @message = @client.messages.create(
       from: twillio_phone_number.to_s,
       to: number,
-      body: "Thank you for your order!\n\n" + order.display_order_on_sms + "\nwill be delivered before "+ delivery_time
+      body: "Thank you for your order!\n\n" + order.display_order_on_sms +
+      "\nwill be delivered before "+ delivery_time
     )
     'Text sent!'
   end
