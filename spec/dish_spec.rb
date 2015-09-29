@@ -13,14 +13,16 @@ describe Dish do
   describe '#display_info' do
     it 'displays correct dish information for cheap dish' do
       dish = Dish.new('Egg Fried Rice',3.90)
+      expect(dish.display_info.length).to eq(dish.line_length)
       expect(dish.display_info).to eq(
-      'Egg Fried Rice                          £   3.90')
+      'Egg Fried Rice                            £   3.90')
     end
 
     it 'displays correct dish information for expensive dish' do
       dish = Dish.new('Peking Duck',15)
+      expect(dish.display_info.length).to eq(dish.line_length)
       expect(dish.display_info).to eq(
-      'Peking Duck                             £  15.00')
+      'Peking Duck                               £  15.00')
     end
   end
 

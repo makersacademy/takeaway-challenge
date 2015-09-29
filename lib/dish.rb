@@ -1,6 +1,8 @@
+require 'line_length'
+
 class Dish
+  include LineLength
   attr_reader :name, :price
-  DISPLAY_LENGTH = 40
 
   def initialize(name, price)
     @name = name
@@ -8,16 +10,19 @@ class Dish
   end
 
   def display_info
-    space_length = DISPLAY_LENGTH - @name.length
-    price = '%.2f' % @price
-    @name + ' '*space_length + pound_sign_and_spacing + price
+    display_part_i + display_part_ii
   end
 
   private
 
-  def pound_sign_and_spacing
-    sign_space = ('%.2f' % @price).length == 4 ? ' '*3 : ' '*2
-    "£#{sign_space}"
+  def display_part_i
+    space_length = PART_I_LENGTH - @name.length
+    name + " "*space_length
   end
 
+  def display_part_ii
+    price = '%.2f' % @price
+    space_length = PART_II_LENGTH - '£'.length - price.length
+    "£" + " "*space_length + price
+  end
 end
