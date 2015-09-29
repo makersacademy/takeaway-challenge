@@ -16,7 +16,7 @@ class Dish
   private
 
   def display_part_i
-    space_length = PART_I_LENGTH - @name.length
+    space_length = PART_I_LENGTH - name.length
     name + " "*space_length
   end
 

@@ -1,42 +1,53 @@
-require_relative 'menu'
+require 'line_length'
 
 class Order
-
-  attr_reader :ordered_dishes, :order_total
-  PART_I_LENGTH = 42
-  PART_II_LENGTH = 8
+  include LineLength
+  attr_reader :ordered_dishes
 
   def initialize
     @ordered_dishes = []
-    @order_total = 0
   end
 
   def add_to_order(dish,quantity)
     @ordered_dishes << {dish:dish,quantity:quantity}
   end
 
-  def display_order_on_email
+  def order_total
+    @order_total = 0
+    ordered_dishes.each{|dish| @order_total+=dish[:dish].price*dish[:quantity]}
+    @order_total
+  end
+
+  def display_order_on_receipt
     display = display_order_title
     display += display_order_body
     display += display_order_total
   end
 
   def display_order_on_sms
-    display = display_order_on_email
-    totals_line = "-"*(PART_I_LENGTH + PART_II_LENGTH)
-    new_totals_line = "-"*((PART_I_LENGTH + PART_II_LENGTH)/2)
-    display.gsub!("\n\n","\n")
-    display.gsub!(" ","")
-    display.gsub!("£"," £ ")
-    display.gsub!(totals_line,new_totals_line)
-    display
+    display = shorten_spaces(display_order_on_receipt)
+    display = shorten_line(display)
   end
 
   private
 
+  def shorten_spaces(display)
+    display.gsub!("\n\n","\n")
+    display.gsub!(" ","")
+    display.gsub!("£"," £ ")
+    display
+  end
+
+  def shorten_line(display)
+    totals_line = "-"*(line_length)
+    new_totals_line = "-"*(line_length/2)
+    display.gsub!(totals_line,new_totals_line)
+    display
+  end
+
   def display_order_title
     title = "Order Details"
-    title_spacing = (PART_I_LENGTH + PART_II_LENGTH - title.length)/2
+    title_spacing = (line_length - title.length)/2
     " "*title_spacing + "#{title}\n\n"
   end
 
@@ -47,13 +58,11 @@ class Order
   end
 
   def display_order_total
-    display = ''
-    display += "-"*(PART_I_LENGTH + PART_II_LENGTH) + "\n"
-    ordered_dishes.each{|dish| @order_total+=dish[:dish].price*dish[:quantity]}
-    grand_total = '%.2f' % order_total
+    display = "-"*line_length + "\n"
+    total = '%.2f' % order_total
     part_i_spaces = PART_I_LENGTH - 'Total'.length
-    part_ii_spaces = PART_II_LENGTH - '£'.length - grand_total.length
-    display += 'Total'+" "*part_i_spaces+'£'+" "*part_ii_spaces+grand_total
+    part_ii_spaces = PART_II_LENGTH - '£'.length - total.length
+    display += 'Total'+" "*part_i_spaces+'£'+" "*part_ii_spaces + total
   end
 
   def add_line_to_order_display(dish_hash)

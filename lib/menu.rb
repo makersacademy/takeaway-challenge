@@ -1,28 +1,33 @@
-require_relative 'dish'
+require 'line_length'
 
 class Menu
+  include LineLength
+  attr_reader :dishes, :name
 
-  attr_reader :dishes
-
-  def initialize
+  def initialize(name="MENU")
+    @name = name
     @dishes = []
   end
 
   def add_dish(dish)
     wrong_name?(dish)
     wrong_price?(dish)
-    @dishes << dish
+    dishes << dish
   end
 
   def display
-    to_display = "                  MENU  \n\n"
-    to_display = dishes.inject(to_display) do |object, dish|
+    to_display = dishes.inject(display_menu_title) do |object, dish|
       object = object + dish.display_info + "\n"
     end
     to_display
   end
 
   private
+
+  def display_menu_title
+    side_spacing = (line_length - name.length) / 2
+    to_display = " "*side_spacing + "MENU" + " "*side_spacing + "\n\n"
+  end
 
   def wrong_name?(dish)
     fail 'invalid dish' unless dish.respond_to?(:name)

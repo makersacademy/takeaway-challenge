@@ -12,6 +12,17 @@ describe Order do
     end
   end
 
+  describe "#order_total" do
+    it 'Calculates the total of an order' do
+      dish1 = double(:dish, price: 5)
+      dish2 = double(:dish, price: 14.5)
+      order = Order.new
+      order.add_to_order(dish1,3)
+      order.add_to_order(dish2,2)
+      expect(order.order_total).to eq(44.0)
+    end
+  end
+
   describe "#add_to_order" do
     it 'add dishes of given quantity to the order' do
       dish1 = double{:dish_object1}
@@ -31,7 +42,7 @@ describe Order do
       order = Order.new
       order.add_to_order(dish1,2)
       order.add_to_order(dish2,4)
-      display = order.display_order_on_email
+      display = order.display_order_on_receipt
       expected_display = "                  Order Details\n\nFried Rice @ 3.95"\
         " x 2                     £   7.90\nChicken Curry @ 4.9 x 4           "\
         "        £  19.60\n--------------------------------------------------"\
@@ -42,7 +53,15 @@ describe Order do
 
   describe "#display_order_on_sms" do
     it 'displays a shortened format order information to send on sms' do
-      
+      dish1 = double(:dish, name: 'Fried Rice', price: 3.95)
+      dish2 = double(:dish, name: 'Chicken Curry', price: 4.90)
+      order = Order.new
+      order.add_to_order(dish1,2)
+      order.add_to_order(dish2,4)
+      display = order.display_order_on_sms
+      expected_display = "OrderDetails\nFriedRice@3.95x2 £ 7.90\nChickenCurry@"\
+      "4.9x4 £ 19.60\n-------------------------\nTotal £ 27.50"
+      expect(display).to eq(expected_display)
     end
   end
 end
