@@ -1,12 +1,10 @@
 rvm: '2.2.3'
 
-- CI=true
-- TRAVIS=true
-
 before_install:
 - sed -i '2d' Gemfile
-
+- coveralls --verbose
 # after_success:
 # - CI=true TRAVIS=true coveralls --verbose
+
 
 script: bundle exec rspec spec
