@@ -1,6 +1,6 @@
 require 'twilio-ruby'
 
-class TextMessage
+class TextMessenger
 
   def send_order_text number, order
     @client = Twilio::REST::Client.new twillio_account_sid, twillio_auth_token
