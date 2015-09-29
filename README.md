@@ -1,6 +1,18 @@
 Takeaway Challenge
 ==================
 
+Completed
+-------
+* Dish class and test suites, can make dish objects which has name and price.
+* Menu class and test suites, can make menus and add dish objects to menus, menu can display itself in a formatted way.
+* Stored some constants (line display lengths) in a module to be used in other classes.
+* Order class and test suites, can make new order, add dishes with quantity to the
+
+
+To Do
+-------
+* Modify order class so that a menu or menus must be _attached_ to it and can only order from the menu.
+
 Instructions
 -------
 * Feel free to use google, your notes, books, etc but work on your own

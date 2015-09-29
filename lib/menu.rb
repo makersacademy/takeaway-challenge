@@ -15,6 +15,10 @@ class Menu
     dishes << dish
   end
 
+  def offer?(dish)
+    @dishes.include?(dish)
+  end
+
   def display
     to_display = dishes.inject(display_menu_title) do |object, dish|
       object = object + dish.display_info + "\n"

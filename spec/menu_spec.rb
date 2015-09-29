@@ -43,6 +43,21 @@ describe Menu do
     end
   end
 
+  describe "#offer?" do
+    it 'returns true when dish is offered on the menu' do
+      dish = double(:dish, name: "dish1", price: 9.99)
+      subject.add_dish(dish)
+      expect(subject.offer?(dish)).to eq(true)
+    end
+
+    it 'returns false when dish is not offered on the menu' do
+      dish1 = double(:dish1, name: "dish1", price: 9.99)
+      dish2 = double(:dish2)
+      subject.add_dish(dish1)
+      expect(subject.offer?(dish2)).to eq(false)
+    end
+  end
+
   describe "#display" do
     it 'displays the current dishes on the menu with name and price' do
       dish1 = double(:dish, name: 'Egg Fried Rice', price: 3.95)

@@ -8,14 +8,15 @@ class Order
     @ordered_dishes = []
   end
 
-  def add_to_order(dish,quantity)
+  def add_to_order(dish,quantity,menu)
+    fail "Not on menu" unless menu.offer?(dish)
     @ordered_dishes << {dish:dish,quantity:quantity}
   end
 
   def order_total
     @order_total = 0
     ordered_dishes.each{|dish| @order_total+=dish[:dish].price*dish[:quantity]}
-    @order_total
+    @order_total.round(2)
   end
 
   def display_order_on_receipt
