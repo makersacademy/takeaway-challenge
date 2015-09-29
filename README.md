@@ -1,5 +1,4 @@
-
-
+[![Build Status](https://travis-ci.org/chn-challenger/takeaway-challenge.png)](https://travis-ci.org/chn-challenger/takeaway-challenge)
 
 Takeaway Challenge
 ==================
