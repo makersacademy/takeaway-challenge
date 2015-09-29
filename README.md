@@ -15,5 +15,5 @@ Completed Features
 
 Twillio text screenshot
 -----
+_Text message display has since improved_
 ![](http://i.imgur.com/jS1B2dE.png)
-_Text display has since improved_
