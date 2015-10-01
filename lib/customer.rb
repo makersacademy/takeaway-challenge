@@ -6,8 +6,7 @@ require_relative '../.env.rb'
 class Customer
   include Twilio
 
-  attr_accessor :menu, :new_order, :menu, :order, :total_items,
-    :order_total, :send_message, :twilio
+  attr_accessor :menu, :order, :order_total, :total_items
 
   def initialize
     @menu = Menu.new
@@ -19,7 +18,7 @@ class Customer
   def receipt
     order.map do |dish, quantity|
       "#{quantity}x #{dish} - £#{menu.menu_list[dish] * quantity}"
-    end.join(", ")
+    end.join(', ')
   end
 
   def display_menu
@@ -27,18 +26,17 @@ class Customer
   end
 
   def select_dish(dish, quantity)
-      fail 'Dish not on menu' unless menu.menu_list.key?(dish)
-      update_total_items(quantity)
-      add_to_order(dish, quantity)
-      update_price(dish, quantity)
+    fail 'Dish not on menu' unless menu.menu_list.key?(dish)
+    update_total_items(quantity)
+    add_to_order(dish, quantity)
+    update_price(dish, quantity)
   end
 
   def order_total_cost
-    "Total    £" + order_total.to_s
+    'Total    £' + order_total.to_s
   end
 
   def send_message(number_to_send_to)
-
     twilio_sid = ENV[:account_sid]
     twilio_token = ENV[:auth_token]
     twilio_phone_number = ENV[:phone_num]
@@ -46,10 +44,10 @@ class Customer
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
     @twilio_client.account.messages.create(
-    body:
-      "Thank you! Your order was placed and will be delivered within the next hour.",
-        to: number_to_send_to,
-          from: "+442820032756")
+      body:
+        'Thank you! Your order was placed and will be delivered within the next hour.',
+      to: number_to_send_to,
+      from: '+442820032756')
   end
 
   private
