@@ -41,7 +41,7 @@ describe Customer do
     client = double :client, account: account
     allow(Twilio::REST::Client).to receive(:new) { client }
     expect(messages).to receive(:create).with(body:
-      "Thank you! Your order was placed and will" +
+      "Thank you! Your order was placed and will" \
         " be delivered within the next hour.",
       to: '+447415121250',
       from: '+442820032756')
