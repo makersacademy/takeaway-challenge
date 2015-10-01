@@ -1,7 +1,6 @@
 require 'customer'
 
 describe Customer do
-
   it 'should not be able to add dishes not on the menu' do
     expect { subject.select_dish('cars', 3) }.to raise_error 'Dish not on menu'
   end
@@ -23,7 +22,7 @@ describe Customer do
 
   it 'must display entire menu' do
     expect(subject.display_menu).to eq('4x chicken wings' => 1.59,
-                                       'chicken burger meal' => 4.49, 'fries' => 1.29, 'pizza' => 4.99)
+      'chicken burger meal' => 4.49, 'fries' => 1.29, 'pizza' => 4.99)
   end
 
   it 'should update order total when items are added' do
@@ -42,9 +41,10 @@ describe Customer do
     client = double :client, account: account
     allow(Twilio::REST::Client).to receive(:new) { client }
     expect(messages).to receive(:create).with(body:
-      'Thank you! Your order was placed and will be delivered within the next hour.',
-                                              to: '+447415121250',
-                                              from: '+442820032756')
+      "Thank you! Your order was placed and will" +
+        " be delivered within the next hour.",
+      to: '+447415121250',
+      from: '+442820032756')
     subject.send_message('+447415121250')
   end
 end

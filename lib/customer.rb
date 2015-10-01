@@ -45,7 +45,8 @@ class Customer
 
     @twilio_client.account.messages.create(
       body:
-        'Thank you! Your order was placed and will be delivered within the next hour.',
+        "Thank you! Your order was placed and will" +
+          " be delivered within the next hour.",
       to: number_to_send_to,
       from: '+442820032756')
   end
