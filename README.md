@@ -53,3 +53,17 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+- How to install this on your machine
+- Outline your approach
+- Describe any design patterns or principles you used
+- Obstacles you encountered and how you overcame them
+- Demonstrate what you learned
+- Further features/improvements you would add
+- The tests you have written
+- Badges  from the CI Build and Test Coverage
+- Descriptive commit messages
+- Passing tests
+- Good code. Have you run it through a linter and removed all extraneous comments?
+  (there are some really useful ones in Atom that’ll stop you getting loads of emails
+  from the Hound check that I can show you)
