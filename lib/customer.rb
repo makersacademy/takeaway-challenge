@@ -1,7 +1,10 @@
 require_relative 'menu'
 require 'rubygems'
 require 'twilio-ruby'
-require_relative '../.env.rb'
+# require_relative '../.env.rb'
+require 'dotenv'
+Dotenv.load
+
 
 class Customer
   include Twilio
@@ -37,9 +40,9 @@ class Customer
   end
 
   def send_message(number_to_send_to)
-    twilio_sid = ENV[:account_sid]
-    twilio_token = ENV[:auth_token]
-    twilio_phone_number = ENV[:phone_num]
+    twilio_sid = ENV['ACCOUNT_SID']
+    twilio_token = ENV['AUTH_TOKEN']
+    twilio_phone_number = ENV['PHONE_NUM']
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
