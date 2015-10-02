@@ -13,11 +13,11 @@ Steps
 Approach towards solving the challenge
 --------------------------------------
 
-To begin with, it was important to decide on how many classes the system needed. I decided to use two classes. One for the menu and the other for the orders. I built the system using test-driven development to ensure that bugs can be eliminated. As you can see the build has 100% coveralls.
+To begin with, it was important to decide on how many classes the system needed. I decided to use two classes. One for the menu and the other for the orders. I also added an additional module for the text method to keep this separate.
+
+I built the system using test-driven development to ensure that bugs can be eliminated. As you can see the build has 100% coveralls.
 
 The takeaway system if fully functional. If you feel that there are any errors or improvements can be made then please let me know.
-
-I intend to introduce a module for the twillio API when I get a chance.
 
 
 Steps of using the takeaway system
