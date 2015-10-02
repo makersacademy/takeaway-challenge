@@ -9,6 +9,7 @@ Dotenv.load
 
 class Customer
   include Twilio
+  include Text
 
   attr_accessor :menu, :order, :order_total, :total_items
 

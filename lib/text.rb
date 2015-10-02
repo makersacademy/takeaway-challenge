@@ -1,6 +1,6 @@
 module Text
 
-  def send_message(number_to_send_to)
+  def self.send_message(number_to_send_to)
     twilio_sid = ENV['ACCOUNT_SID']
     twilio_token = ENV['AUTH_TOKEN']
     twilio_phone_number = ENV['PHONE_NUM']
