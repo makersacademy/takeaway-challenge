@@ -1,4 +1,4 @@
-Takeaway Challenge		![](https://travis-ci.org/UsmanJ/airport_challenge.svg?branch=master)	[![Coverage Status](https://coveralls.io/repos/UsmanJ/takeaway-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/UsmanJ/takeaway-challenge?branch=master)
+Takeaway Challenge		[![Build Status](https://travis-ci.org/UsmanJ/takeaway-challenge.svg?branch=master)](https://travis-ci.org/UsmanJ/takeaway-challenge)	[![Coverage Status](https://coveralls.io/repos/UsmanJ/takeaway-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/UsmanJ/takeaway-challenge?branch=master)
 ======================
 
 Steps
