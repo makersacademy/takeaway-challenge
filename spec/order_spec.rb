@@ -28,14 +28,11 @@ let(:menu_item2) {double :menu_item2, name: "Burger", price: 6}
   end
 
   it "raises and error if I am not happy with the total" do
-   allow(subject).to receive(:correct).and_return(false)
-   expect{subject.correct}.to raise_error("Order Total incorrect")
+   expect{subject.correct("No")}.to raise_error("Order Total incorrect")
 
  end
 
- it "sends a text message with the time of the delivery if the customer is happy with the total" do
 
- end
 
 
 end
