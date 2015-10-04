@@ -22,10 +22,3 @@ attr_reader :menu
 
 
 end
-
-# curry= Menu_item.new("Curry",5)
-# menu = Menu.new
-# p menu
-#
-# menu.add_item(curry)
-# p menu.list_menu

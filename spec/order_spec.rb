@@ -28,9 +28,9 @@ let(:menu_item2) {double :menu_item2, name: "Burger", price: 6}
   end
 
   it "raises and error if I am not happy with the total" do
-   expect{subject.correct("No")}.to raise_error("Order Total incorrect")
+    expect{subject.correct("No")}.to raise_error("Order Total incorrect")
 
- end
+  end
 
 
 
