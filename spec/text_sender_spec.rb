@@ -4,7 +4,6 @@ require_relative '../.env.rb'
 
 describe Delivery do
 
-
   it "sends a message" do
 
     messages = double :messages, create: nil

@@ -4,8 +4,6 @@ describe Customer do
 
   describe "#order" do
 
-    it { is_expected.to respond_to(:place_order).with(2).argument }
-
     it "can view menu" do
       expect(subject.display_menu).to eq ({ "crispy chilli beef" => 5,
         "sweet and sour chicken" => 4,
@@ -13,8 +11,8 @@ describe Customer do
     end
 
     it "raises an error if chosen dish is not on menu" do
-     expect{ subject.place_order("spring rolls", 3) }.to raise_error
-     "This dish is not on the menu"
+      message = "This dish is not on the menu"
+     expect{ subject.place_order("spring rolls", 3) }.to raise_error message
     end
 
     it "can chose a dish and quantity" do
