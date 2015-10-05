@@ -1,7 +1,6 @@
 require 'text_sender'
 require 'twilio-ruby'
 
-
 describe Delivery do
 
   it "sends a message" do
