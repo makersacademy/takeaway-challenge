@@ -22,15 +22,11 @@ class Customer
 
   def verify_and_pay(payment)
     if payment == total
-      order_complete
+      @text_provider.send_text
+      'Thank you, payment has been accepted. You will shortly receive a confirmation text message.'
     else
       fail 'Payment failed, please pay correct total.'
     end
-  end
-
-  def order_complete
-    @text_provider.send_text
-    'Thank you, payment has been accepted. You will shortly receive a confirmation text message.'
   end
 
   def order_total

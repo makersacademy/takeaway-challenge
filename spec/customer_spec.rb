@@ -35,6 +35,11 @@ describe Customer do
     end
 
     it 'can verify and complete order if payment is correct' do
+      text_provider = double :text_provider
+      allow(text_provider).to receive(:send_text).and_return('Thank you, '\
+      'payment has been accepted. You will shortly receive a confirmation '\
+      'text message.')
+      customer = Customer.new(text_provider)
       customer.add_item(:spaghetti_pomodoro)
       expect(customer.verify_and_pay(6.00)).to eq 'Thank you, payment has been accepted. You will shortly receive a confirmation text message.'
     end
@@ -42,18 +47,6 @@ describe Customer do
     it 'raises an error if payment is incorrect' do
       customer.add_item(:spaghetti_pomodoro)
       expect{customer.verify_and_pay(4.00)}.to raise_error 'Payment failed, please pay correct total.'
-    end
-
-    it 'notifies customer that their order has been confirmed' do
-      text_provider = double :text_provider
-      allow(text_provider).to receive(:send_text).and_return('Thank you, '\
-      'payment has been accepted. You will shortly receive a confirmation '\
-      'text message.')
-      customer = Customer.new(text_provider)
-      customer.add_item(:spaghetti_pomodoro)
-      expect(customer.order_complete).to eq('Thank you, '\
-      'payment has been accepted. You will shortly receive a confirmation '\
-      'text message.')
     end
   end
 
