@@ -5,7 +5,7 @@ Week two weekend challenge at Makers Academy. My task is to test drive the creat
 
 Task
 -----
-* Write a Takeaway program with the following user stories:
+Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -38,7 +38,7 @@ I will start by breaking down each user story and outlining possible classes and
 ### Functionality I will implement:
 
   * A list of dishes with prices
-  * A customer cam place an order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
+  * A customer can place an order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
   * The text sending functionality will be implemented using Twilio API.
   * The twilio-ruby gem will be used to access the API
   * A Gemfile will be used to manage gems
