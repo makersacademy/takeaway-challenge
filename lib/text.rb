@@ -5,9 +5,11 @@ Dotenv.load
 class Text
 
   def send_text
-    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
+    @client = Twilio::REST::Client.new account_sid, auth_token
 
-    @client.account.messages.create(
+    @client.messages.create(
       from: ENV['TWILIO'],
       to: ENV['NUMBER'],
       body: payment_confirmation)

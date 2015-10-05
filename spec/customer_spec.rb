@@ -29,14 +29,6 @@ describe Customer do
 
   describe '#checkout' do
 
-    let(:text_provider) {double :text_provider, send_text: nil}
-
-    before do
-      allow(text_provider).to receive(:send_text).and_return('Thank you, '\
-      'payment has been accepted. You will shortly receive a confirmation '\
-      'text message.')
-    end
-
     it 'returns correct order total' do
       customer.add_item(:spaghetti_pomodoro)
       expect(customer.order_total).to eq 'Your order total is: £6.00'
@@ -53,9 +45,13 @@ describe Customer do
     end
 
     it 'notifies customer that their order has been confirmed' do
+      text_provider = double :text_provider
+      allow(text_provider).to receive(:send_text).and_return('Thank you, '\
+      'payment has been accepted. You will shortly receive a confirmation '\
+      'text message.')
       customer = Customer.new(text_provider)
       customer.add_item(:spaghetti_pomodoro)
-      expect(customer.verify_and_pay(6.00)).to eq('Thank you, '\
+      expect(customer.order_complete).to eq('Thank you, '\
       'payment has been accepted. You will shortly receive a confirmation '\
       'text message.')
     end
