@@ -25,13 +25,13 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-### Technologies Used:
+## Technologies Used:
 
 1. Ruby
 2. Rspec
 3. Github
 
-### Approach I will use:
+## Approach I will use:
 
 I will start by breaking down each user story and outlining possible classes and methods. I will then experiment using irb to see how I would like my classes/objects to interact with one another and what method names to call. Next, I will take a RED -> GREEN -> REFACTOR approach and write each test first, watch it fail, make it pass and then refactor if needed.
 
@@ -44,7 +44,36 @@ I will start by breaking down each user story and outlining possible classes and
   * A Gemfile will be used to manage gems
   * All classes/modules will be thoroughly tested and mocks and/or stubs will be used as necessary
 
-### New things I learnt/improved on:
+### How the app will work:
+
+```ruby
+→ irb
+2.2.3 :001 > require './lib/customer.rb'
+ => true
+2.2.3 :002 > c = Customer.new
+ => #<Customer:0x007f894b02c570 @order_basket={}, @takeaway=#<Takeaway:0x007f894b02c520>>
+2.2.3 :003 > c.view_menu
+ => {"pizza"=>10.0, "burrito"=>6.0, "burger"=>7.0, "chicken"=>5.0, "chips"=>2.0}
+2.2.3 :004 > c.select_item('burger', 1)
+ => 1
+2.2.3 :005 > c.select_item('sausage', 1)
+RuntimeError: Sorry, that item is not on the menu.
+2.2.3 :006 > c.order_basket
+ => {"burger"=>1}
+2.2.3 :007 > c.select_item('burrito', 1)
+ => 1
+2.2.3 :008 > c.order_basket
+ => {"burger"=>1, "burrito"=>1}
+
+
+```
+
+## Progress
+
+
+
+
+## New things I have learnt/improved on:
 
   1. Ruby gems
   2. API's
