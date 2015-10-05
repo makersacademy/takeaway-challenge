@@ -41,12 +41,14 @@ describe Customer do
       'text message.')
       customer = Customer.new(text_provider)
       customer.add_item(:spaghetti_pomodoro)
-      expect(customer.verify_and_pay(6.00)).to eq 'Thank you, payment has been accepted. You will shortly receive a confirmation text message.'
+      expect(customer.verify_and_pay(6.00)).to eq 'Thank you, payment has '\
+      'been accepted. You will shortly receive a confirmation text message.'
     end
 
     it 'raises an error if payment is incorrect' do
       customer.add_item(:spaghetti_pomodoro)
-      expect{customer.verify_and_pay(4.00)}.to raise_error 'Payment failed, please pay correct total.'
+      expect{customer.verify_and_pay(4.00)}.to raise_error 'Payment failed, '\
+      'please pay correct total.'
     end
   end
 
