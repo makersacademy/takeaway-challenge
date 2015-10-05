@@ -1,8 +1,14 @@
 require_relative 'order'
+require_relative 'text'
 
 class Customer
   include Menu
-  include Text
+
+  attr_reader :text_provider
+
+  def initialize(text_api=Text.new)
+    @text_provider = text_api
+  end
 
   def verify_and_pay(order, total_price)
     if order.order_total(total_price) == true
@@ -13,7 +19,7 @@ class Customer
   end
 
   def order_complete
-    send_text(text_content)
+    @text_provider.send_text(text_content)
     'Thank you, payment has been accepted. You will shortly receive a confirmation text message.'
   end
 
