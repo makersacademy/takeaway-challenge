@@ -1,6 +1,6 @@
 require 'text_sender'
 require 'twilio-ruby'
-require_relative '../.env.rb'
+
 
 describe Delivery do
 
