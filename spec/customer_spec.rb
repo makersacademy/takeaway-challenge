@@ -7,7 +7,7 @@ describe Customer do
   let(:order)    { Order.new.add_item(:spaghetti_pomodoro, 1) }
 
   it 'can check the menu' do
-    expect(customer.check_menu).to include(
+    expect(customer.display_menu).to include(
     pepperoni_pizza: 5.00,
     spaghetti_pomodoro: 6.00,
     spaghetti_carbonara: 7.50)

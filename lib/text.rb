@@ -1,15 +1,15 @@
-require 'rubygems'
 require 'twilio-ruby'
-require_relative '../../.env.rb'
+require 'dotenv'
+Dotenv.load
 
 module Text
 
   def send_text(text_content)
-    @client = Twilio::REST::Client.new ENV[:account_sid], ENV[:auth_token]
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
 
     message = @client.account.messages.create(:body => text_content,
-        :to => ENV[:phone_number],
-        :from => ENV[:twilio_number])
+        :to => ENV['NUMBER'],
+        :from => ENV['TWILIO'])
     puts message.sid
   end
 end

@@ -4,10 +4,6 @@ class Customer
   include Menu
   include Text
 
-  def check_menu
-    display_menu
-  end
-
   def verify_and_pay(order, total_price)
     if order.order_total(total_price) == true
       self.order_complete
