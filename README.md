@@ -30,50 +30,39 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 1. Ruby
 2. Rspec
 3. Github
+4. Twilio
 
-## Approach I will use:
+## Approach I plan to use:
 
 I will start by breaking down each user story and outlining possible classes and methods. I will then experiment using irb to see how I would like my classes/objects to interact with one another and what method names to call. Next, I will take a RED -> GREEN -> REFACTOR approach and write each test first, watch it fail, make it pass and then refactor if needed.
 
-### Functionality I will implement:
-
-  * A list of dishes with prices
-  * A customer can place an order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality will be implemented using Twilio API.
-  * The twilio-ruby gem will be used to access the API
-  * A Gemfile will be used to manage gems
-  * All classes/modules will be thoroughly tested and mocks and/or stubs will be used as necessary
-
-### How the app will work:
+## How the app will work:
 
 ```ruby
 → irb
 2.2.3 :001 > require './lib/customer.rb'
  => true
-2.2.3 :002 > c = Customer.new
- => #<Customer:0x007f894b02c570 @order_basket={}, @takeaway=#<Takeaway:0x007f894b02c520>>
-2.2.3 :003 > c.view_menu
+2.2.3 :002 > customer = Customer.new
+ => #<Customer:0x007fa45d183798 @takeaway=#<Takeaway:0x007fa45d183770>, @order_basket={}, @order_total=0, @total_items=0>
+2.2.3 :003 > customer.view_menu
  => {"pizza"=>10.0, "burrito"=>6.0, "burger"=>7.0, "chicken"=>5.0, "chips"=>2.0}
-2.2.3 :004 > c.select_item('burger', 1)
- => 1
-2.2.3 :005 > c.select_item('sausage', 1)
-RuntimeError: Sorry, that item is not on the menu.
-2.2.3 :006 > c.order_basket
- => {"burger"=>1}
-2.2.3 :007 > c.select_item('burrito', 1)
- => 1
-2.2.3 :008 > c.order_basket
- => {"burger"=>1, "burrito"=>1}
-
-
+2.2.3 :004 > customer.select_item('burger', 2)
+ => 2
+2.2.3 :005 > customer.select_item('pizza', 2)
+ => 4
+2.2.3 :006 > customer.receipt
+ => "2x burger - £14.0, 2x pizza - £20.00"
+2.2.3 :007 > customer.total_cost
+ => "£34.00"
+2.2.3 :008 > customer.pay('£34.00')
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC6bc3bdc8a652039b67ded216da24ea1e/Messages/SM6ed29ab6ca8f4689a8c71bcd5d71542a>
+2.2.3 :009 >
 ```
 
 ## Progress
+App completed and all tests passing.
 
-
-
-
-## New things I have learnt/improved on:
+## New things I learnt/improved on:
 
   1. Ruby gems
   2. API's
