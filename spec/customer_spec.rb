@@ -37,9 +37,10 @@ describe Customer do
   describe "#payment" do
 
     it "give a receipt of total order" do
+      message = "crispy chilli beef x1, sweet and sour chicken x2"
       subject.place_order("crispy chilli beef", 1)
       subject.place_order("sweet and sour chicken", 2)
-      expect(subject.receipt).to eq ("crispy chilli beef x1, sweet and sour chicken x2")
+      expect(subject.receipt).to eq message
     end
 
     it "raises an error is payment requested doensn't match total" do
