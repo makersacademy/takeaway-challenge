@@ -32,11 +32,11 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 3. Github
 4. Twilio
 
-## Approach I plan to use:
+## Approach I used:
 
-I will start by breaking down each user story and outlining possible classes and methods. I will then experiment using irb to see how I would like my classes/objects to interact with one another and what method names to call. Next, I will take a RED -> GREEN -> REFACTOR approach and write each test first, watch it fail, make it pass and then refactor if needed.
+I started by breaking down each user story and outlining possible classes and methods. I then experimented using irb to see how I would like my classes/objects to interact with one another and what method names to call. Next, I took a RED -> GREEN -> REFACTOR approach and wrote each test first, watched it fail, made it pass and then refactored if needed.
 
-## How the app will work:
+## How the app works:
 
 ```ruby
 → irb
