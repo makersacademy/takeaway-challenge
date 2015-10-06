@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/catherinestevenson/airport_challenge.svg?branch=master)](https://travis-ci.org/catherinestevenson/airport_challenge)
-
-[![Coverage Status](https://coveralls.io/repos/catherinestevenson/takeaway-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/catherinestevenson/takeaway-challenge?branch=master)
+[![Build Status](https://travis-ci.org/catherinestevenson/airport_challenge.svg?branch=master)](https://travis-ci.org/catherinestevenson/airport_challenge) [![Coverage Status](https://coveralls.io/repos/catherinestevenson/takeaway-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/catherinestevenson/takeaway-challenge?branch=master)
 
 Takeaway Challenge
 ==================
