@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/catherinestevenson/airport_challenge.svg?branch=master)](https://travis-ci.org/catherinestevenson/airport_challenge)
+
 Takeaway Challenge
 ==================
 
