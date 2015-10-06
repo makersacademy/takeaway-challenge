@@ -37,7 +37,7 @@ class Customer
     if amount != total_cost.to_s
       fail 'Payment does not match total, please try payment again'
     else
-      'Thank you! Your order was placed and you will receive a text confirmation shortly.'
+      'Thank you for your order. You will receive text confirmation shortly.'
       Text.new.send_message
     end
   end

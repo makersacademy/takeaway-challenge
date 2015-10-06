@@ -19,7 +19,8 @@ class Text
   @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
   @twilio_client.account.messages.create(
-    body: "Your order has been confirmed. It will be delivered before #{delivery_time}",
+    body: "Your order has been confirmed." \
+      " It will be delivered before #{delivery_time}",
     to: my_number,
     from: twilio_phone_number)
   end

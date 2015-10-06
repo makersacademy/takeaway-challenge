@@ -36,6 +36,7 @@ describe Customer do
 
   it 'raises an error when right amount is not paid' do
     subject.select_item('pizza', 2)
-    expect{ subject.pay('£15.00') }.to raise_error 'Payment does not match total, please try payment again'
+    expect{ subject.pay('£15.00') }.to raise_error
+      'Payment does not match total, please try payment again'
   end
 end
