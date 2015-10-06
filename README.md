@@ -40,7 +40,7 @@ I started by breaking down each user story and outlining possible classes and me
 
 ## How the app works:
 
-```ruby
+```
 → irb
 2.2.3 :001 > require './lib/customer.rb'
  => true
