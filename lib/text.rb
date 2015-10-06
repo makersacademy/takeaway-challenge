@@ -38,5 +38,4 @@ class Text
   #   to: my_number,
   #   from: twilio_phone_number)
   # end
-
 end
