@@ -1,13 +1,15 @@
 Takeaway Challenge		[![Build Status](https://travis-ci.org/UsmanJ/takeaway-challenge.svg?branch=master)](https://travis-ci.org/UsmanJ/takeaway-challenge)	[![Coverage Status](https://coveralls.io/repos/UsmanJ/takeaway-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/UsmanJ/takeaway-challenge?branch=master)
 ======================
 
-Steps
+Instructions
 -----
 
-1. Fork this repo and clone it to your local machine
-2. Run the command 'gem install bundle'
-3. After installation, run 'bundle'
-4. Use the takeaway system.
+Create a system for a takeaway which can be used as a till. This means it should be able to do the following:
+- Display a menu with prices
+- Add items to an order
+- Place an order and display receipt
+- Send a confirmation text to customer
+- Update prices
 
 
 Approach towards solving the challenge
