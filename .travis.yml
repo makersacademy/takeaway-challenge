@@ -1,4 +1,5 @@
-rvm: '2.2.2'
+language: ruby
+rvm: '2.2.3'
 
 before_install:
 - sed -i '2d' Gemfile
