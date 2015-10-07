@@ -3,19 +3,20 @@ require 'twilio-ruby'
 
 class Takeaway
 
-  def menu
-    @menu = { 'Tomato soup' => 5,
-              'Steak and chips' => 15,
-              'Salmon Stew' => 12,
-              'Chicken currey' => 10,
-              'Beef casserole' => 18 }
+  attr_reader :menu
+
+  def initialize
+    @menu = { :tomato_soup => 5,
+              :steak_and_chips => 15,
+              :salmon_stew => 12,
+              :chicken_curry => 10,
+              :beef_casserole => 18 }
   end
 
   def calculate_delivery_time(time = Time.now)
-    @hour = time.hour + 1
-    @minute = time.min
-    @time_1hour = @hour.to_s + ":" + @minute.to_s
-    @time_1hour
+    hour = time.hour + 1
+    minute = time.min
+    time_in_1hour = hour.to_s + ":" + minute.to_s
   end
 
   def send_message

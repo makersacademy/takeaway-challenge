@@ -10,14 +10,14 @@ class Customer
     takeaway.menu
   end
 
-  def add_item(takeaway, _item)
-    fail 'Sorry that item is not on the menu' if takeaway.menu.key?(_item) == false
-    @basket << _item
+  def add_item(takeaway, item)
+    fail 'Sorry that item is not on the menu' unless takeaway.menu.key?(item)
+    @basket << item
   end
 
   def place_order(takeaway)
     puts "Send us your number to confirm the order"
-    @customer_number = "+447850122007"
+    customer_number = "+447850122007"
     takeaway.send_message
   end
 
@@ -28,7 +28,7 @@ class Customer
           final_bill << takeaway.menu[item]
         end
       end
-      final_bill.inject(:+)
+    final_bill.inject(:+)
   end
 
 end
