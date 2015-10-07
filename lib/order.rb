@@ -10,60 +10,40 @@ class Order
   attr_reader :orders
   def initialize
     @orders = []
+    @cost = 0
   end
 
-  def greet
-    puts "Thank you for visiting our takeaway website."
-    puts "please take a look at our menu."
+  def choose_dish(dish, quantities)
+    @orders << {dish: dish, quantities: quantities}
   end
 
-  def present(menu)
-    menu.show
-  end
-
-  def choose_dish
-    puts "What would you like to order? Please enter a menu item number."
-    @menu_num = gets.chomp.to_i
-  end
-
-  def choose_how_many
-    puts "How many of dishes do you want?"
-    @quantities = gets.chomp.to_i
-  end
-
-  def cart(menu)
-    orders << menu.menu[@menu_num - 1].merge(quantities: @quantities)
-  end
-
-  def check_orders
-    width = 10
-    puts "Dish".ljust(width) << "Quantities".center(width) <<
-      "Price".center(width) << "Total".rjust(width)
-    orders.each do |order|
-      puts "#{order[:dish].ljust(width)}" <<
-        "#{order[:quantities].to_s.center(width)}" <<
-        "#{order[:price].to_s.center(width)}" <<
-        "#{(order[:quantities] * order[:price]).to_s.rjust(width)}"
+  def check_orders(menu)
+    @orders.each do |order|
+      menu.show.each do |menu|
+        if menu[:dish] == order[:dish]
+          @cost += order[:quantities] * menu[:price]
+        end
+      end
     end
-    puts "The total price is #{total_price}"
+    "You will be charged £#{@cost}."
   end
 
-  def execute_orders
-    orders.map do |order|
-      order[:paid] = true
-      order[:ordered_at] = Time.now.strftime("%b %e, %Y %H:%M")
-    end
-    Text.send_text_message
-    orders
-  end
+  # def execute_orders
+  #   orders.map do |order|
+  #     order[:paid] = true
+  #     order[:ordered_at] = Time.now.strftime("%b %e, %Y %H:%M")
+  #   end
+  #   Text.send_text_message
+  #   orders
+  # end
 
-  private
-
-  def total_price
-    sum = 0
-    orders.each do |order|
-      sum += order[:price] * order[:quantities]
-    end
-    sum
-  end
+  # private
+  #
+  # def total_price
+  #   sum = 0
+  #   orders.each do |order|
+  #     sum += order[:price] * order[:quantities]
+  #   end
+  #   sum
+  # end
 end
