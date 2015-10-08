@@ -13,7 +13,7 @@ class Order
   end
 
   def choose_dish(menu, dish, quantities)
-    order = menu.show.select { |item| item[:dish] == dish }.first
+    order = menu.show.find { |item| item[:dish] == dish }
     @orders << {dish: dish, price: order[:price], quantities: quantities}
   end
 

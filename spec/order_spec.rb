@@ -54,7 +54,8 @@ describe Order do
 
     it 'stores the time you place an order' do
       subject.pay(64, customer)
-      expect(subject.orders.first[:created_at]).to eq(Time.now.strftime("%b %e, %Y %H:%M"))
+      expect(subject.orders.first[:created_at])
+        .to eq(Time.now.strftime("%b %e, %Y %H:%M"))
     end
 
     it 'sends customers text message when order is placed' do

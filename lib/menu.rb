@@ -1,5 +1,5 @@
 class Menu
-
+  
   def initialize
     @menu = [{dish: 'BBQ',       price: 10},
              {dish: 'Hamburger', price: 8},
