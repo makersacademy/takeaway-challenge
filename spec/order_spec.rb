@@ -33,11 +33,12 @@ describe Order do
   describe "#pay(price)" do
     let(:customer) { double :customer, name: 'Jongmin',
       phone_number: '+44 7497 811148'}
-  
+
     before do
       subject.choose_dish(menu, 'BBQ', 4)
       subject.choose_dish(menu, 'Sushi', 4)
       subject.checkout
+      allow(Text).to receive(:send_text_message).and_return(true)
     end
 
     it "sets :paid property to true" do
