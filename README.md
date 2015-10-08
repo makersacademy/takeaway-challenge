@@ -33,4 +33,4 @@ I didn't have time this weekend to finish both challenges. This is how I'm think
 
 - the Menu will just be a module with the list of dishes
 
-- the Restaurant will be responsible for receiving the orders and sending a confirmation to the Customer
+- the Restaurant will be responsible for receiving the orders and sending a text confirmation to the Customer
