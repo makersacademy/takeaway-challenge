@@ -1,5 +1,3 @@
-require 'order'
-
 describe Order do
   let(:menu) do
     double :menu,
@@ -7,18 +5,26 @@ describe Order do
            {dish: 'Sushi',     price: 6}]
   end
 
-  describe "#choose_dish" do
-    it "has customer choose a dish and quantities" do
-      expect(subject.choose_dish('BBQ', 3))
-        .to eq([{dish: 'BBQ', quantities: 3}])
-    end
+  it "has customer choose a dish and quantities" do
+    expect(subject.choose_dish(Menu.new, 'BBQ', 3))
+      .to eq([{dish: 'BBQ', price: 10, quantities: 3}])
   end
 
+
   it "checks your orders" do
-    subject.choose_dish('BBQ', 4)
-    subject.choose_dish('Sushi', 4)
-    expect(subject.check_orders(Menu.new))
-      .to eq("You will be charged £64.")
+    menu = Menu.new
+    subject.choose_dish(menu, 'BBQ', 4)
+    subject.choose_dish(menu, 'Sushi', 4)
+    expect(subject.check_orders).to eq("You will be charged £64.")
+  end
+
+  it "places orders when you pay" do
+    menu = Menu.new
+    subject.choose_dish(menu, 'BBQ', 4)
+    subject.choose_dish(menu, 'Sushi', 4)
+    subject.place_orders(64)
+    expect(subject.orders.first[:paid]).to be true
+    expect(subject.orders.last[:paid]).to be true
   end
 
 #   it "executes orders" do

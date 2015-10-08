@@ -1,4 +1,3 @@
-require_relative 'menu'
 require_relative 'text'
 require 'rubygems'
 require 'twilio-ruby'
@@ -13,21 +12,22 @@ class Order
     @cost = 0
   end
 
-  def choose_dish(dish, quantities)
-    @orders << {dish: dish, quantities: quantities}
+  def choose_dish(menu, dish, quantities)
+    order = menu.show.select { |item| item[:dish] == dish }.first
+    @orders << {dish: dish, price: order[:price], quantities: quantities}
   end
 
-  def check_orders(menu)
-    @orders.each do |order|
-      menu.show.each do |menu|
-        if menu[:dish] == order[:dish]
-          @cost += order[:quantities] * menu[:price]
-        end
-      end
-    end
+  def check_orders
+    orders.each { |order| @cost += order[:price] * order[:quantities]}
     "You will be charged £#{@cost}."
   end
 
+  def place_orders(price)
+    orders.each do |order|
+      order[:paid] = true
+      order[:created_at] = Time.now
+    end
+  end
   # def execute_orders
   #   orders.map do |order|
   #     order[:paid] = true

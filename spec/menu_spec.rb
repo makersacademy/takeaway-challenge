@@ -1,5 +1,3 @@
-require 'menu'
-
 describe Menu do
   it "diplays menu items" do
     expect(subject.show).to eq([{dish: 'BBQ',       price: 10},
