@@ -38,6 +38,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 I started by breaking down each user story and outlining possible classes and methods. I then experimented using irb to see how I would like my classes/objects to interact with one another and what method names to call. Next, I took a RED -> GREEN -> REFACTOR approach and wrote each test first, watched it fail, made it pass and then refactored if needed.
 
+Two new things I learnt in particular during this challenge were using ruby gems and API's. 
+
 ## How the app works:
 
 ```
@@ -61,14 +63,6 @@ I started by breaking down each user story and outlining possible classes and me
 2.2.3 :009 >
 ```
 
-## Progress
+## Progress:
+
 App completed and all tests passing.
-
-## New things I learnt/improved on:
-
-  1. Ruby gems
-  2. API's
-  3. Single Responsibility Principle
-  4. Dependency Injection/Inversion Principle
-  5. Test Driven Development
-  6. Object Orientated Programming
