@@ -1,2 +1,2 @@
 require 'spec_helper'
-require_relative '../lib/sms.rb'
+require './lib/sms'

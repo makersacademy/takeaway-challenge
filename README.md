@@ -1,4 +1,16 @@
+# Takeaway Challenge
+
+A simple Ruby application to simulate how a takeaway food ordering service might be automated.
+
+The `Takeaway` class functions as a container for a menu, with available dishes listed manually in the `initialize` function. This is sub-optimal and in a working implementation I'd like to see these being read in from a file. The menu can be listed by calling the `see` method.
+
+An order is placed using `order`, and the customer is required to calculate and submit the price themselves to avoid overcharging.
+
+Other classes are `Dish`, which is the most basic unit, with a knowledge of its "number" (a reference, not a quantity), a discription, a price, and a quantity. Class `Meal` contains an array of `Dish`es and provides its cost when the method `total` is called.
+
+
 # Example syntax
+
 ```
 2.1.5 :001 > menu = Takeaway.new
  => #<Takeaway:0x007fe9629292c8 @menu=[#<Dish:0x007fe962929250 @number=44, @description="Duck a la banana", @price=4.5, @quantity=0>, #<Dish:0x007fe962929200 @number=10, @description="Deep fried Mars bar", @price=0.1, @quantity=0>, #<Dish:0x007fe9629291b0 @number=20, @description="Birdseye potato waffles", @price=1.99, @quantity=0>, #<Dish:0x007fe962929160 @number=69, @description="Trio! Trio.", @price=1.5, @quantity=0>]>
@@ -8,40 +20,6 @@
  => true
 ```
 
-Takeaway Challenge
-==================
-
-Instructions
--------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Spend an hour composing a blog post to answer the question `What is a ruby gem? Give a code example showing how to use a ruby gem in a piece of code. What are some dangers to using a gem?`
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
 ## Functional representation
 ### Nouns
 * Dishes
@@ -60,24 +38,3 @@ Objects  | Messages
 `dish` | `see`
 `meal` | `check`, `order`
 `sms` | `send`
-
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
