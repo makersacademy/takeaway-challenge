@@ -1,19 +1,10 @@
-class Menu
-
-attr_reader :list_menu
+module Menu
 
 def initialize
-@menu = { 'Plantain fries'=> 3,
-          'Banana Curry'=> 8,
-          'Banoffee Pie'=> 5,
-          'Banana Milkshake' => 3}
+  @menu = { 'plantain fries'=> 3,
+            'banana curry'=> 8,
+            'banoffee pie'=> 5,
+            'banana milkshake'=> 3}
 end
-
-def list_menu
-  list = []
-  @menu.each { |dish, price| list << "#{dish}....£#{price}"}
-  list
-end
-
 
 end
