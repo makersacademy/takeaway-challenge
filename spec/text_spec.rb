@@ -1,7 +1,6 @@
-# describe Text do
-#
-#   it { is_expected.to respond_to(:send_text_message)}
-#   it "sends text a text message to customer" do
-#     allow(Text).to receive(:send_text_message).and_return(true)
-#   end
-# end
+describe Text do
+
+  it 'has "send_text_message" method with 1 argument' do
+    expect(Text).to respond_to(:send_text_message).with(2).argument
+  end
+end

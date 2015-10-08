@@ -8,8 +8,8 @@ class Order
   include Text
   attr_reader :orders
   def initialize
-    @orders = []
     @cost = 0
+    @orders = []
   end
 
   def choose_dish(menu, dish, quantities)
@@ -17,33 +17,34 @@ class Order
     @orders << {dish: dish, price: order[:price], quantities: quantities}
   end
 
-  def check_orders
-    orders.each { |order| @cost += order[:price] * order[:quantities]}
-    "You will be charged £#{@cost}."
+  def checkout
+    calculate
+    result = ''
+    orders.map do |order|
+      result += "#{order[:dish]}: #{order[:quantities]} * #{order[:price]} "\
+      "= #{order[:quantities] * order[:price]} | "
+    end
+    result += "The total amount is £#{@cost}"
   end
 
-  def place_orders(price)
+  def cancel_orders
+    @orders = []
+  end
+
+  def pay(amount, user)
+    fail 'You are not paying the exact amount' unless @cost == amount
     orders.each do |order|
       order[:paid] = true
-      order[:created_at] = Time.now
+      order[:created_at] = (Time.now).strftime("%b %e, %Y %H:%M")
     end
+    Text.send_text_message(user.name, user.phone_number)
   end
-  # def execute_orders
-  #   orders.map do |order|
-  #     order[:paid] = true
-  #     order[:ordered_at] = Time.now.strftime("%b %e, %Y %H:%M")
-  #   end
-  #   Text.send_text_message
-  #   orders
-  # end
 
-  # private
-  #
-  # def total_price
-  #   sum = 0
-  #   orders.each do |order|
-  #     sum += order[:price] * order[:quantities]
-  #   end
-  #   sum
-  # end
+  private
+
+  def calculate
+    price = orders.map { |order| order[:price] * order[:quantities]}
+    @cost = price.inject(:+)
+  end
+
 end
