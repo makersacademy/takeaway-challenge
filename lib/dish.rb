@@ -1,3 +1,4 @@
+# The most basic unit, Dish contains details of an individual dish.
 class Dish
 
   attr_reader :number, :description, :price

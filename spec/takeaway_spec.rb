@@ -3,8 +3,9 @@ require './lib/takeaway'
 
 describe Takeaway do
 
-  let(:dish) { double :dish, see: 'Dish output', number: '', quantity: ''}
-  let(:meal) { double :meal, total: 10.00 }
+  let(:dish) { double :dish, see: 'Dish output', number: '',
+    quantity: ''}
+  let(:meal) { double :meal, add: '', total: 10.00 }
 
   before(:each) { allow(dish).to receive(:new).and_return(dish) }
   before(:each) { allow(meal).to receive(:new).and_return(meal) }

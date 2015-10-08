@@ -1,5 +1,7 @@
-require 'meal'
+require_relative 'meal'
 
+# This class is initialised with Dishes to form a menu and can construct
+# an instance of Meal from a given list of dishes.
 class Takeaway
 
   def initialize(dish_klass)
@@ -22,26 +24,20 @@ class Takeaway
   def order(dishes, expected_total, meal_klass)
     @meal = meal_klass.new
 
-    # Check the wanted order numbers against the menu and create a meal.
-    dishes.each do |wanted_dish|
-      @menu.each do |menu_dish|
-        if menu_dish.number == wanted_dish[0]
-          menu_dish.quantity = wanted_dish[1]
-          @meal.add menu_dish
-        end
-      end
+    dishes.inject(@meal) do |meal, dish|
+      meal.add get_dish_object(dish)
     end
 
     fail 'You\'ve got the price wrong!' unless
-      check_price(@meal, expected_total)
+      @meal.total == expected_total
 
   true
   end
 
   private
 
-  def check_price(meal, expected_total)
-    meal.total == expected_total
+  def get_dish_object(wanted_dish)
+    @menu.select{|tested_dish| tested_dish.number == wanted_dish[0]}
   end
 
 end

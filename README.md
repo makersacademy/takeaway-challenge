@@ -12,8 +12,13 @@ Other classes are `Dish`, which is the most basic unit, with a knowledge of its 
 # Example syntax
 
 ```
-2.1.5 :001 > menu = Takeaway.new
- => #<Takeaway:0x007fe9629292c8 @menu=[#<Dish:0x007fe962929250 @number=44, @description="Duck a la banana", @price=4.5, @quantity=0>, #<Dish:0x007fe962929200 @number=10, @description="Deep fried Mars bar", @price=0.1, @quantity=0>, #<Dish:0x007fe9629291b0 @number=20, @description="Birdseye potato waffles", @price=1.99, @quantity=0>, #<Dish:0x007fe962929160 @number=69, @description="Trio! Trio.", @price=1.5, @quantity=0>]>
+2.1.5 :001 > menu = Takeaway.new(Dish)
+ => #<Takeaway:0x007fa911ad7c78
+ @menu=
+  [#<Dish:0x007fa911ad7bb0 @description="Duck a la banana", @number=44, @price=4.5, @quantity=0>,
+   #<Dish:0x007fa911ad7ac0 @description="Deep fried Mars bar", @number=10, @price=0.1, @quantity=0>,
+   #<Dish:0x007fa911ad7a20 @description="Birdseye potato waffles", @number=20, @price=1.99, @quantity=0>,
+   #<Dish:0x007fa911ad7868 @description="Trio! Trio.", @number=69, @price=1.5, @quantity=0>]>
 2.1.5 :002 > menu.see
  => "44 : Duck a la banana : £4.50, 10 : Deep fried Mars bar : £0.10, 20 : Birdseye potato waffles : £1.99, 69 : Trio! Trio. : £1.50"
 2.1.5 :003 > menu.order([[44, 2], [20, 1]], 10.99)

@@ -1,5 +1,7 @@
-require 'dish'
+require_relative 'dish'
 
+# Meal is responsible for containing an array of Dishes and provides a total
+# cost.
 class Meal
 
   def initialize
@@ -8,6 +10,7 @@ class Meal
 
   def add(dish)
     @dishes << dish
+    self
   end
 
   def total
