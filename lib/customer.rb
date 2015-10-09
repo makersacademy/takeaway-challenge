@@ -1,19 +1,20 @@
 require_relative 'menu'
 require_relative 'text'
 require 'twilio-ruby'
-# require 'dotenv'
-# Dotenv.load
-
 
 class Customer
   include Text
 
-  attr_reader :menu
+  attr_reader :menu, :order, :order_total
 
   def initialize
     @menu = Menu.new
     @order = []
     @order_total = 0
+  end
+
+  def see_menu
+    @menu.menu_items.each { |k, v| "#{k}, #{v}" }
   end
 
   def select_dishes(dish, quantity=1)
@@ -32,12 +33,8 @@ class Customer
     send_text
   end
 
-  private
-
   def total_order(dish, quantity)
     @order_total += menu.menu_items[dish] * quantity
   end
 
 end
-
-# DOTENV HIDES NUMBER
