@@ -21,8 +21,8 @@ describe Menu do
         expect(subject.order).to include('hamburger', 'pizza')
     end 
 
-    # xit 'raises an error if selection is not on the menu' do
-    #     expect(subject.select_dishes('noodles', 4)).to output('Noodles is not on our menu').to_stdout
+    # it 'raises an error if selection is not on the menu' do
+    #     expect(subject.select_dishes('noodles', 4)).to eq('Noodles is not on our menu').to_stdout
     # end
 
     it 'checks the total price given matches the sum of the total order' do
