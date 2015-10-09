@@ -1,15 +1,12 @@
 require_relative 'text'
-require 'rubygems'
-require 'twilio-ruby'
-require 'dotenv'
-Dotenv.load
 
 class Order
   include Text
   attr_reader :orders
-  def initialize
+  def initialize(text_client = Text)
     @cost = 0
     @orders = []
+    @text_client = text_client
   end
 
   def choose_dish(menu, dish, quantities)
@@ -31,13 +28,13 @@ class Order
     @orders = []
   end
 
-  def pay(amount, user)
+  def pay(amount, customer)
     fail 'You are not paying the exact amount' unless @cost == amount
     orders.each do |order|
       order[:paid] = true
       order[:created_at] = (Time.now).strftime("%b %e, %Y %H:%M")
     end
-    Text.send_text_message(user.name, user.phone_number)
+    @text_client.send_text_message(customer.name, customer.phone_number)
   end
 
   private
