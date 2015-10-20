@@ -110,6 +110,7 @@ end
 This ensures that Takeaway#complete_order gets some test coverage and that no SMS will be sent by our tests.  This is acceptable, but we still don't have very good test coverage.  See the pill on [levels of stubbing 3rd party services](https://github.com/makersacademy/course/blob/master/pills/levels_of_stubbing.md) for some alternatives.
 
 
+
 ## Unit vs Integration tests
 
 Note that if you create real objects in your tests other than that which is the subject, then you are creating an integration test (or using the Chicago style).  In general you want to separate up your unit from your integration/feature tests.  Unit tests can just rest in the root of the spec folder, but features of integration tests should go in a subfolder (spec/features or spec/integration) or even in a separate folder on the root directory to allow them to run completely separately.
