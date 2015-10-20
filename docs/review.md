@@ -52,21 +52,63 @@ It's a great idea to show the full story of how your app is used (from a user's 
 
 # Step 2: Tests and \*\_spec.rb files  
 
-## Stubbing the Twilio API
-- link to pill on stubbing & VCR etc.
+## Tests should test real behaviours not stubs
 
-## Watch out for Vacuous tests
+We already talked about ["Vacuous" tests](https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#vacuous-tests) in the airport challenge code review.  The example there focused on how we shouldn't test the behaviour of a double; but we can get into similar trouble if we are stubbing a real object, e.g.
 
-This is an unnecessary ('vacuous') test. If you remove it, you'll have coverage just as high as you do now.
 ```ruby
 it 'sends a payment confirmation text message' do
-  expect(text_api).to receive(:send_sms)
-  text_api.send_sms(20.93)
+  expect(subject).to receive(:send_sms)
+  subject.send_sms(20.93)
 end
 ```
-You can confirm this test is 'vacuous' by checking that the code coverage doesn't change when you remove it.
 
-- make sure the object under test is not a double
+In the above the `expect(subject).to receive(:send_sms)` command "stubs" out any existing method called `send_sms` on the subject.  Using `expect` instead of `allow` means that at the end of the it block, RSpec checks that subject did receive the message `send_sms`, which we have ensured by calling `subject.send_sms`, so this test passes without ever touching the application code.
+
+You can confirm this test is 'vacuous' by checking that the [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) doesn't change when you remove it.
+
+In general you shouldn't be stubbing out behaviour on the object under test.  The two key exceptions are when you have randomness or a 3rd party API.  We saw how to [stub random behaviour](https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#handling-randomness-in-tests) in the airport challenge code review, but how do we stub a 3rd party API?  See the next section.
+
+## Stubbing the Twilio API
+
+The Twilio gem provides access to the online Twilio service.  If we don't stub it out we have the danger that we will send test SMS messages every time we run out tests.  Not a good thing.
+
+The simplest approach is to stub out interaction with the Twilio gem, for example:
+
+```ruby
+class Takeaway
+
+  def complete_order
+    send_text("Thank you for your order: £#{total_price}")
+  end
+
+  def send_text(message)
+    Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+      .messages.create(
+        from: ENV['TWILIO_PHONE'],
+        to: ENV['TWILIO_DESTINATION_PHONE'],
+        body: message
+      )
+  end
+
+  ...
+end
+```
+
+can be stubbed out like so:
+
+```ruby
+describe Takeaway
+  subject(:takeaway) { described_class.new }
+  it 'sends a payment confirmation text message' do
+    expect(takeaway).to receive(:send_text).with("Thank you for your order: £20.93")
+    takeaway.complete_order(20.93)
+  end
+end
+```
+
+This ensures that Takeaway#complete_order gets some test coverage and that no SMS will be sent by our tests.  This is acceptable, but we still don't have very good test coverage.  See the pill on [levels of stubbing 3rd party services]() for some alternatives.
+
 
 ## Unit vs Integration tests
 
