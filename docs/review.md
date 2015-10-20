@@ -138,7 +138,7 @@ class Takeaway
 end
 ```
 
-has two public methods, `complete_order` and `is_correct_amount?`, that both should be tested independently `is_correct_amount?` will be implicitly tested by any test of `complete_order`, but since it is public it should have it's own explcit test.
+has two public methods, `complete_order` and `is_correct_amount?`, that both should be tested independently `is_correct_amount?` will be implicitly tested by any test of `complete_order`, but since it is public it should have it's own expilcit test.
 
 However, perhaps `is_correct_amount?` will only ever used internally by Takeaway, and never called by any collaborator objects?  In which case we can make the public interface of Takeaway simpler like so:
 
@@ -163,7 +163,7 @@ end
 # Step 3: Application code and \*.rb files
 
 ## Use of modules
-There are two main uses of modules in Ruby; one is to provide 'utility' libraries (which are often a code smell) and the other is to provide mixins.  However, using a module as a mixin can violate the Single Responsibility Principle.  Although code is _defined_ in the module, when it is `include`d in a class, its behaviour becomes part of that class and therefore part of the class's responsibilities.  Shared behavioiur can be refactored into mixins (e.g. `BikeContainer` in Boris Bikes), but other responsibilities the class is dependent on should be injected (see [Appropriate use of Dependency Injection](appropriate-use-of-dependency-injection)).
+There are two main uses of modules in Ruby; one is to provide 'utility' libraries (which are sometimes a code smell) and the other is to provide mixins.  However, using a module as a mixin can violate the Single Responsibility Principle.  Although code is _defined_ in the module, when it is `include`d in a class, its behaviour becomes part of that class and therefore part of the class's responsibilities.  Shared behavioiur can be refactored into mixins (e.g. `BikeContainer` in Boris Bikes), but other responsibilities the class is dependent on (e.g. sending text messages for the restaurant) should be injected (see [Appropriate use of Dependency Injection](appropriate-use-of-dependency-injection)).
 
 ## Demeter violations
 
@@ -214,17 +214,35 @@ restaurant = Restaurant.new(dummy_messager)
 ```
 
 ## Separation of Concerns
-Applications generally comprise 
-Note that you should generally prefer to avoid having `puts` in your classes or modules.  If there is output to present on the command line we should prefer to return it from the method and have all output displayed from some ruby code in a base takeaway.rb file or similar, i.e. one that doesn't have classes/modules.  The idea here is 'separation of concerns' - the same reason why we try not to mix different languages (e.g. ruby and html) wherever possible.  We don't want to lock our business logic to a particular output representation, i.e. in this case takeaway and customer are business objects and so they shouldn't do anything that locks them to STDOUT/STDIN i.e. prefer not to use gets and puts inside those classes/modules
+Applications generally comprise a number of *concerns*.  For example, pure business logic is a concern; interacting with the user (UI) is a concern; persisting data to a file or database is a concern; and so on.  Generally, as well as having a single responsibility, a class should only be involved in one concern (which kind of follows, right?).
+
+To this end, a class that contains pure business logic should not also be concerned with the User Interface or presentation logic.  If your business logic class uses `puts` statements to communicate with the user, then it has poor separation of concerns.  Business logic objects should return other objects and status indicators that can be translated in a separate presentation layer into user-friendly messages and interactions.  This means our business logic is not constrained to a particular output representation.
+
+Separation of concerns leads to some very powerful design patterns such as Model View Controller (MVC), which we will meet in Week 4.
+
 
 ## Design for Single Responsibility Principle
+It's easy to overlook responsibilities and end up with a class that does too much.  This is a great opportunity to refactor your design to extract those responsibilities. One common indication is that a group of methods share a noun.  For example, in `Restaurant` we might have:
 
-This method should probably exist in its own class, as right now this current class has too many responsibilities.
+```ruby
+def add_to_order(item)
+...
+end
 
-You only have two classes and they don't interact, so you don't find yourself in a situation needing doubles to stub out interaction between the two - you should probably pull out a menu class and then test TakeAway and Menu independently, so their responsibilities can be separated according to the Single Responsibility Principle (SRP)
+def order_total
+...
+end
 
-## Personal Details and Tokens on GitHub
-Your phone/sid/auth_token are on github see https://help.github.com/articles/remove-sensitive-data/ to remove them, and prefer ENV variables and possibly also the dotenv gem in order to avoid this in future
+def finalize_order
+...
+end
+```
+
+The noun 'order' appears in three method names and this is a clear indication that we need an `Order` class.  The beauty of OO is that as soon as we extract this responsibility into another class, our design becomes instantly much more powerful.  Enabling the restaurant to handle multiple orders is suddenly much easier.
+
+
+## Personal details and - [ ] okens on GitHub
+Your phone/sid/auth_token should never be committed to GitHub. see https://help.github.com/articles/remove-sensitive-data/ to remove them. Prefer ENV variables and possibly also the dotenv gem in order to avoid this in future.
 
 
 ## Use Hash.new(0) to simplify code tracking numbers of things
