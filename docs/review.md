@@ -83,8 +83,9 @@ https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#us
 # Step 3: Application code and \*.rb files
 
 ## Use of modules
+There are two main uses of modules in Ruby; one is to provide 'utility' libraries (which are often a code smell) and the other is to provide mixins.  However, using a module as a mixin can violate the Single Responsibility Principle.  Although code is _defined_ in the module, when it is `include`d in a class, its behaviour becomes part of that class and therefore part of the class's responsibilities.  Shared behavioiur can be refactored into mixins (e.g. `BikeContainer` in Boris Bikes), but other responsibilities the class is dependent on should be injected (see [Appropriate use of Dependency Injection](appropriate-use-of-dependency-injection)).
 
-## Demeter Violations
+## Demeter violations
 
 The [Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter) suggests that:
 
@@ -92,36 +93,48 @@ The [Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter) suggests that
 * Each object should only talk to its friends; don't talk to strangers.
 * Only talk to your immediate friends.
 
-The following test shows a process of reaching through a series of related objects.  The warning sign is the multiple periods in `subject.menu.dishes.length`.  Here we are seeing Restaurant is being tested for properties that belong to the menu - effectively they are none of restaurant's business and shouldn't be tested here; and we shouldn't be seeing chains like this in application code either
+The following test shows a process of reaching through a series of related objects.  The warning sign is the multiple periods in `subject.menu.dishes.length`.  Here we are seeing `Restaurant` is being tested for properties that belong to the menu - effectively they are none of restaurant's business and shouldn't be tested here; and we shouldn't see deep-reaching chains like this in application code either:
 
 ```ruby
 describe Restaurant do
-  it "has a menu" do
+  it "has 2 items on the menu" do
     expect(subject.menu.dishes.length).to eq(2)
   end
 end
 ```
 
+Note this is different to *method chaining*, which enables the calling of multiple methods _on the same object_ in one line of code.  The Demeter violation applies to reaching down through multiple objects.
+
 ## Appropriate use of Dependency Injection
 
-One way to do this would be to make Takeaway a class and then have Customer refer to that via composition, e.g. just `@takeaway = Takeaway.new` in the customer constructor, although we might then want to clean that up with dependency injection (DI) like so:
+It is likely that the `Restaurant` (or equivalent) class is dependent on another object to handle the Twilio messaging.  If not, then this is a violation of Single Responsibility Principle.  In order to invert dependencies and make testing easier, the Twilio class should be _injected_ into the `Restaurant` class.  So instead of:
 
 ```ruby
-require 'takeaway'
-
-class Customer
-
-  def initialize(klass = Takeaway)
-    @takeaway = klass.new
+class Restaurant
+  def initialize()
+    @mmessager = Messager.new
   end
+end
+...
+restaurant = Restaurant.new
+```
 
-  def view_menu
-    @takeaway.menu
+You can have (note you can define a default for the dependency as shown here, but that's optional):
+```ruby
+class Restaurant
+  def initialize(messager = Messager.new)
+    @mmessager = messager
   end
+end
+...
+restaurant = Restaurant.new
+# or
+restaurant = Restaurant.new(dummy_messager)
+# where dummy_messager might be a test double for example
 ```
 
 ## Separation of Concerns
-
+Applications generally comprise 
 Note that you should generally prefer to avoid having `puts` in your classes or modules.  If there is output to present on the command line we should prefer to return it from the method and have all output displayed from some ruby code in a base takeaway.rb file or similar, i.e. one that doesn't have classes/modules.  The idea here is 'separation of concerns' - the same reason why we try not to mix different languages (e.g. ruby and html) wherever possible.  We don't want to lock our business logic to a particular output representation, i.e. in this case takeaway and customer are business objects and so they shouldn't do anything that locks them to STDOUT/STDIN i.e. prefer not to use gets and puts inside those classes/modules
 
 ## Design for Single Responsibility Principle
