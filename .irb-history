@@ -1,0 +1,100 @@
+puts'person is smoking'
+class Fire
+def smoke
+puts'fire is smoking'
+def make_smoke
+def make_smoke(smoker)
+smoker.smoke
+make_smoke(Fire.new)
+make_smoke(Person.new)
+game = Game.new(4)
+game.player_2.harbor
+subject.place ship
+ship = Ship.new
+4
+game = Game.start
+game.player_2.loser?
+0
+game.player_1.harbour
+game.player_2.add_boat(Boat.new(1, 2,2, 'west')
+exiy
+co = "A"
+co.ord
+((co.ord) += 1).chr
+(co.ord + 1).chr
+co = ["A","1"]
+((co.[0].ord) += 1).chr
+co[0].ord += 1
+(co[0].ord) += 1
+letter = co[0]
+(letter.ord += 1).chr
+letter = co[0].ord
+(letter += 1).chr
+xit
+game.player_2.harbour
+game.start_game
+array.inject(0){|sum, x| sum += x*2}
+array =[1,2,3,4,5]
+array.inject(0){|sum,x| sum += x}
+array = [1,2,3,4,5]
+array.new_inject
+dish = Dish.new('apple', '£1')
+menu.dishes
+dish = Dish.new('apple','£1.00')
+menu.add_dish dish
+dish.show_details
+menu.show
+dish = Dish.new('Pizza', 2'
+)
+dish = dish.new
+dish = Dish.new('pizza',2)
+dish1 = Dish.new('Burger', 1.5)
+menu.add_dish(dish1)
+order.add_to_order(dish, 2)
+order.add_to_order(dish1, 3)
+order.show
+order.place_order
+proc = Proc.new { |a, b| "#{a += 1}, #{b += 1}" }
+proc 1,2
+proc(1,2)
+proc = lambda { |a, b| "#{a += 1}, #{b += 1}" }
+proc.call(1,2)
+proc.call(1)
+jekyll serve --watch
+game = Game.new
+game.add_player(chris)
+game.add_player('chris)
+game.add_player('emily)
+game.add_player('emily')
+game.shoots(A1)
+game.shoots('A1')
+board = Board.new
+board = Board.new(10)
+board - 
+board = Board.new(cell)
+class Board 
+board.each{|cell| prints cell}
+end
+class Board
+def view
+puts grid
+board = Board.new(Cell)
+board.view
+board.grid.key[0]
+board.grid.key
+board.grid.key[2]
+board.grid.key(0)
+board.grid[0]
+board.grid[:A1]
+puts board.grid
+print board.grid
+board.grid.each{|cell| puts cell}
+dish = Dish.new('pizza', 5.00, 5)
+dish = Dish.new('pizza', 2.5)
+menu = Menu.new
+menu.add_dish(dish)
+order = Order.new
+order.add_to_order(menu, dish, 3)
+order.place_order(7)
+order.place_order(7.5)
+exit
