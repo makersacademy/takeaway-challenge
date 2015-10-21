@@ -71,9 +71,9 @@ In general you shouldn't be stubbing out behaviour on the object under test.  Th
 
 ## Stubbing the Twilio API
 
-The Twilio gem provides access to the online Twilio service.  If we don't stub it out we have the danger that we will send test SMS messages every time we run out tests.  Not a good thing.
+The Twilio gem provides access to the online Twilio service.  If we don't stub out this interaction, we will send test SMS messages every time we run our tests.  Not a good thing.
 
-The simplest approach is to stub out interaction with the Twilio gem, for example:
+The simplest approach is to stub out a method that calls the service, for example:
 
 ```ruby
 class Takeaway
@@ -83,12 +83,7 @@ class Takeaway
   end
 
   def send_text(message)
-    Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-      .messages.create(
-        from: ENV['TWILIO_PHONE'],
-        to: ENV['TWILIO_DESTINATION_PHONE'],
-        body: message
-      )
+    # this method calls the object that handles the Twilio API
   end
 
   ...
@@ -100,6 +95,11 @@ can be stubbed out like so:
 ```ruby
 describe Takeaway
   subject(:takeaway) { described_class.new }
+
+  before do
+    allow(takeaway).to receive(:send_text)
+  end
+  
   it 'sends a payment confirmation text message' do
     expect(takeaway).to receive(:send_text).with("Thank you for your order: £20.93")
     takeaway.complete_order(20.93)
@@ -241,19 +241,55 @@ end
 The noun 'order' appears in three method names and this is a clear indication that we need an `Order` class.  The beauty of OO is that as soon as we extract this responsibility into another class, our design becomes instantly much more powerful.  Enabling the restaurant to handle multiple orders is suddenly much easier.
 
 
-## Personal details and - [ ] okens on GitHub
+## Personal details and tokens on GitHub
 Your phone/sid/auth_token should never be committed to GitHub. see https://help.github.com/articles/remove-sensitive-data/ to remove them. Prefer ENV variables and possibly also the dotenv gem in order to avoid this in future.
 
 
-## Use Hash.new(0) to simplify code tracking numbers of things
-- Use the language to solve problems that have already been solved
-- use inject
-The logic for managing counts of things can be simplified by creating a hash with a default value `Hash.new(0)`
+## Explore the language for solutions to common problems
+### Use `Hash.new` to specify defaults other than `nil`
+This can be particularly useful if you are managing counts of things (e.g. dishes).  Instead of:
+```ruby
+def initialize
+  @items = {}
+end
 
-## Tell don't ask
-https://pragprog.com/articles/tell-dont-ask
+def add_dish(dish, quantity = 1)
+  @items[dish] = 0 unless items[dish]
+  @items[dish] += quantity
+end
+```
+You can remove the test and initialization in the first line of `add_dish` by defining `0` as the default:
+```ruby
+def initialize
+  @items = Hash.new(0)
+end
 
-## Open/ closed principle
-- e.g. hard coding the menu
+def add_dish(dish, quantity = 1)
+  @items[dish] += quantity
+end
+```
+
+### Use `reduce` to aggregate over a collection (e.g. when calculating the total)
+instead of the following (which assumes `@items` is an array rather than a hash):
+
+```ruby
+def total_price
+  total = 0
+  @items.each do |item|
+    total += item.price
+  end
+  total
+end
+```
+You can use the `reduce` method (alias `inject`) already provided by Ruby:
+```ruby
+def total_price
+  @items.reduce { |sum, item| sum + item }
+end
+```
+
+## Hard coding the menu
+The menu should not be hard coded in the business logic layer as this violates the Open/Closed Principle.  When the menu changes, you should not have to change the code.  The menu should be built at runtime (i.e. in IRB) or loaded from an external hash or maybe even a file.
 
 ## Use consistent styles and indentation
+The Ruby community has a very consistent style guide and you should follow it.  Use tools like [Rubocop](https://github.com/bbatsov/rubocop) to analyze your code for violations.
