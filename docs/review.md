@@ -117,6 +117,8 @@ Note that if you create real objects in your tests other than that which is the 
 
 If you are using Chicago style unit tests where you are using other real classes apart from the subject under test, you  should be trying to use them as sparingly as possible.
 
+[TODO: need input from junior facing coaches on above]
+
 ## Use of named subject etc.
 https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#use-named-subject-with-described_class
 
