@@ -205,7 +205,7 @@ You can have (note you can define a default for the dependency as shown here, bu
 ```ruby
 class Restaurant
   def initialize(messager = Messager.new)
-    @mmessager = messager
+    @messager = messager
   end
 end
 ...
@@ -215,12 +215,16 @@ restaurant = Restaurant.new(dummy_messager)
 # where dummy_messager might be a test double for example
 ```
 
+[TODO: should we prefer `messager = Messager`, particularly if there is no state associated with that entity?]
+
 ## Separation of Concerns
 Applications generally comprise a number of *concerns*.  For example, pure business logic is a concern; interacting with the user (UI) is a concern; persisting data to a file or database is a concern; and so on.  Generally, as well as having a single responsibility, a class should only be involved in one concern (which kind of follows, right?).
 
 To this end, a class that contains pure business logic should not also be concerned with the User Interface or presentation logic.  If your business logic class uses `puts` statements to communicate with the user, then it has poor separation of concerns.  Business logic objects should return other objects and status indicators that can be translated in a separate presentation layer into user-friendly messages and interactions.  This means our business logic is not constrained to a particular output representation.
 
 Separation of concerns leads to some very powerful design patterns such as Model View Controller (MVC), which we will meet in Week 4.
+
+[code example?]
 
 
 ## Design for Single Responsibility Principle
@@ -244,7 +248,7 @@ The noun 'order' appears in three method names and this is a clear indication th
 
 
 ## Personal details and tokens on GitHub
-Your phone/sid/auth_token should never be committed to GitHub. see https://help.github.com/articles/remove-sensitive-data/ to remove them. Prefer ENV variables and possibly also the dotenv gem in order to avoid this in future.
+Your phone/sid/auth_token should never be committed to GitHub. See https://help.github.com/articles/remove-sensitive-data/ to remove them. Prefer ENV variables and we recommend the [dotenv gem](https://github.com/bkeepers/dotenv) for managing them.
 
 
 ## Explore the language for solutions to common problems
@@ -293,5 +297,7 @@ end
 ## Hard coding the menu
 The menu should not be hard coded in the business logic layer as this violates the Open/Closed Principle.  When the menu changes, you should not have to change the code.  The menu should be built at runtime (i.e. in IRB) or loaded from an external hash or maybe even a file.
 
+[code example?]
+
 ## Use consistent styles and indentation
-The Ruby community has a very consistent style guide and you should follow it.  Use tools like [Rubocop](https://github.com/bbatsov/rubocop) to analyze your code for violations.
+The Ruby community has a very consistent style guide and you should follow it.  Use tools like [Rubocop](https://github.com/bbatsov/rubocop) to analyze your code for violations.  The rule of thumb for indentation is ensure that you are two space indented inside any `do ... end`, `class ... end` or `def ... end` block.
