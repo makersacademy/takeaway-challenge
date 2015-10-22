@@ -15,37 +15,37 @@ Please checkout your reviewee's code and run their tests. Read the code and try 
 
 Please do include all the gems you use in your Gemfile. This is an important courtesy to other developers and yourself in the future, so that all the project dependencies can be pulled in whenever the project is checked out on a new machine, e.g. `twilio-ruby` gem
 
-## README not updated
+## README updated
 
-Please do update your README following the [contribution notes](https://github.com/makersacademy/takeaway-challenge/blob/master/CONTRIBUTING.md), i.e.
+Every good code base will have its README updated following the [contribution notes](https://github.com/makersacademy/takeaway-challenge/blob/master/CONTRIBUTING.md), i.e.
 
 * Make sure you have written your own README that briefly explains your approach to solving the challenge.
 * If your code isn't finished it's not ideal but acceptable as long as you explain in your README where you got to and how you would plan to finish the challenge.
 
-The above is a relatively straightforward thing to do that doesn't involve much programming - I'll often get it done while thinking about other problems in the back of my mind :-)
+The above is a relatively straightforward thing to do that doesn't involve much programming.  Pro-tip: work on this while letting your sub-conscious work on those trickier coding problems :-)
 
 ## Instructions in README
 
-It's a great idea to show the full story of how your app is used (from a user's perspective) in the README.
+The README is a great place to show the full story of how your app is used (from a user's perspective), e.g.
 
 ```sh
-2.2.3 :001 > c = Customer.new
- => #<Customer:0x007f975b1a39a8 @menu=#<Menu:0x007f975b1a3890 @dishes={"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}>, @basket={}, @text_provider=#<TwilioAPI:0x007f975b1a33e0>>
-2.2.3 :002 > c.read_menu
+2.2.3 :001 > t = TakeAway.new
+ => #<TakeAway:0x007f975b1a39a8 @menu=#<Menu:0x007f975b1a3890 @dishes={"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}>, @basket={}, @text_provider=#<TwilioAPI:0x007f975b1a33e0>>
+2.2.3 :002 > t.read_menu
  => {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}
-2.2.3 :003 > c.add 'spring roll'
+2.2.3 :003 > t.order 'spring roll'
  => "1x spring roll(s) added to your basket."
-2.2.3 :004 > c.add 'spring roll'
+2.2.3 :004 > t.order 'spring roll'
  => "1x spring roll(s) added to your basket."
-2.2.3 :005 > c.add 'spring roll', 4
+2.2.3 :005 > t.order 'spring roll', 4
  => "4x spring roll(s) added to your basket."
-2.2.3 :006 > c.basket_summary
+2.2.3 :006 > t.basket_summary
  => "spring roll x4 = £3.96"
-2.2.3 :007 > c.add 'pork dumpling', 3
+2.2.3 :007 > t.add 'pork dumpling', 3
  => "3x pork dumpling(s) added to your basket."
-2.2.3 :008 > c.basket_summary
+2.2.3 :008 > t.basket_summary
  => "spring roll x4 = £3.96, pork dumpling x3 = £8.97"
-2.2.3 :009 > c.total
+2.2.3 :009 > t.total
  => "Total: £12.93"
 2.2.3 :010 > c.checkout(12.93)
 ```
@@ -83,7 +83,7 @@ class Takeaway
   end
 
   def send_text(message)
-    # this method calls the object that handles the Twilio API
+    # this method calls the Twilio API
   end
 
   ...
@@ -99,7 +99,7 @@ describe Takeaway
   before do
     allow(takeaway).to receive(:send_text)
   end
-  
+
   it 'sends a payment confirmation text message' do
     expect(takeaway).to receive(:send_text).with("Thank you for your order: £20.93")
     takeaway.complete_order(20.93)
@@ -109,18 +109,38 @@ end
 
 This ensures that Takeaway#complete_order gets some test coverage and that no SMS will be sent by our tests.  This is acceptable, but we still don't have very good test coverage.  See the pill on [levels of stubbing 3rd party services](https://github.com/makersacademy/course/blob/master/pills/levels_of_stubbing.md) for some alternatives.
 
-
-
 ## Unit vs Integration tests
 
-Note that if you create real objects in your tests other than that which is the subject, then you are creating an integration test (or using the Chicago style).  In general you want to separate up your unit from your integration/feature tests.  Unit tests can just rest in the root of the spec folder, but features of integration tests should go in a subfolder (spec/features or spec/integration) or even in a separate folder on the root directory to allow them to run completely separately.
+Note that if you create real objects (not doubles) in your unit tests other than that which is the subject, then you are using the [Chicago style)[http://programmers.stackexchange.com/questions/123627/what-are-the-london-and-chicago-schools-of-tdd] of unit testing (also called [integration testing](http://stackoverflow.com/a/7876055/316729)).  In general you want to separate up your unit from your integration (or "feature") tests.  Unit tests can just rest in the root of the spec folder, but features of integration tests should go in a subfolder (spec/features or spec/integration) or even in a separate folder on the root directory to allow them to run completely separately.
 
-If you are using Chicago style unit tests where you are using other real classes apart from the subject under test, you  should be trying to use them as sparingly as possible.
+At Makers Academy we recommend using the London style with doubles to effectively isolate the single class being tested in a unit test.
 
-[TODO: need input from junior facing coaches on above]
+```ruby
+# London Style
+describe Order do
+  let(:menu) { double :menu, price: '£1.00', contains?: true }
+  subject(:order) { described_class.new(menu) }
 
-## Use of named subject etc.
-https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#use-named-subject-with-described_class
+  it 'order total to be sum of items added' do
+    order.add('Pizza')
+    order.add('Pizza')
+    expect(order.total).to eq '£2.00'
+  end
+end
+```
+
+```ruby
+# Chicago Style --> arguably an 'integration' or 'feature' test
+describe Order do
+  subject(:order) { described_class.new(Menu.new) } # note real Menu class
+
+  it 'order total to be sum of items added' do
+    order.add('Pizza')
+    order.add('Pizza')
+    expect(order.total).to eq '£2.00'
+  end
+end
+```
 
 ## Explicit tests for every element of the public interface
 
@@ -165,9 +185,10 @@ end
 # Step 3: Application code and \*.rb files
 
 ## Use of modules
+
 There are two main uses of modules in Ruby; one is to provide 'utility' libraries (which are sometimes a code smell) and the other is to provide mixins.  However, using a module as a mixin can violate the Single Responsibility Principle.  Although code is _defined_ in the module, when it is `include`d in a class, its behaviour becomes part of that class and therefore part of the class's responsibilities.  Shared behavioiur can be refactored into mixins (e.g. `BikeContainer` in Boris Bikes), but other responsibilities the class is dependent on (e.g. sending text messages for the restaurant) should be injected (see [Appropriate use of Dependency Injection](appropriate-use-of-dependency-injection)).
 
-## Demeter violations
+## Law of Demeter
 
 The [Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter) suggests that:
 
@@ -215,19 +236,46 @@ restaurant = Restaurant.new(dummy_messager)
 # where dummy_messager might be a test double for example
 ```
 
-[TODO: should we prefer `messager = Messager`, particularly if there is no state associated with that entity?]
-
 ## Separation of Concerns
+
 Applications generally comprise a number of *concerns*.  For example, pure business logic is a concern; interacting with the user (UI) is a concern; persisting data to a file or database is a concern; and so on.  Generally, as well as having a single responsibility, a class should only be involved in one concern (which kind of follows, right?).
 
 To this end, a class that contains pure business logic should not also be concerned with the User Interface or presentation logic.  If your business logic class uses `puts` statements to communicate with the user, then it has poor separation of concerns.  Business logic objects should return other objects and status indicators that can be translated in a separate presentation layer into user-friendly messages and interactions.  This means our business logic is not constrained to a particular output representation.
 
 Separation of concerns leads to some very powerful design patterns such as Model View Controller (MVC), which we will meet in Week 4.
 
-[code example?]
+```ruby
+# good
+class Menu
+  def to_s
+    'the menu is empty'
+  end
+end
+```
 
+```
+$ menu = Menu.new
+$ puts menu # note that the to_s is called by default when `puts`ing an object in Ruby
+=> "the menu is empty"
+```
+
+```ruby
+# bad
+class Menu
+  def display
+    puts 'the menu is empty'
+  end
+end
+```
+
+```
+$ menu = Menu.new
+$ menu.display
+=> "the menu is empty" # note that this string will be outputed in your tests etc.
+```
 
 ## Design for Single Responsibility Principle
+
 It's easy to overlook responsibilities and end up with a class that does too much.  This is a great opportunity to refactor your design to extract those responsibilities. One common indication is that a group of methods share a noun.  For example, in `Restaurant` we might have:
 
 ```ruby
@@ -248,11 +296,12 @@ The noun 'order' appears in three method names and this is a clear indication th
 
 
 ## Personal details and tokens on GitHub
-Your phone/sid/auth_token should never be committed to GitHub. See https://help.github.com/articles/remove-sensitive-data/ to remove them. Prefer ENV variables and we recommend the [dotenv gem](https://github.com/bkeepers/dotenv) for managing them.
 
+A well ordered codebase will use ENV variables and the [dotenv gem](https://github.com/bkeepers/dotenv) to ensure that sensitive infomration such as phone numbers and security tokens are not pushed up to public repos on Github.
 
 ## Explore the language for solutions to common problems
 ### Use `Hash.new` to specify defaults other than `nil`
+
 This can be particularly useful if you are managing counts of things (e.g. dishes).  Instead of:
 ```ruby
 def initialize
@@ -276,6 +325,7 @@ end
 ```
 
 ### Use `reduce` to aggregate over a collection (e.g. when calculating the total)
+
 instead of the following (which assumes `@items` is an array rather than a hash):
 
 ```ruby
@@ -294,10 +344,36 @@ def total_price
 end
 ```
 
-## Hard coding the menu
-The menu should not be hard coded in the business logic layer as this violates the Open/Closed Principle.  When the menu changes, you should not have to change the code.  The menu should be built at runtime (i.e. in IRB) or loaded from an external hash or maybe even a file.
+## Open Closed Principle
 
-[code example?]
+The Open Closed Principle tells us that we want our code to be *open* for extension but *closed* for modification.  The idea is that if we need to add some new functionality then we can do that by *extending* our code rather than *modifying* it.
+
+For example the menu items should not be hard coded into a restaurant class.  Arguably they should not be in the business logic at all, e.g. being added at runtime (i.e. in IRB) or loaded from an external hash or maybe even a file.  We are concerned that the menu items will likely change, so if they are hard coded in like this:
+
+```ruby
+class Restaurant
+  def initialize
+    @menu = {}
+    @menu[:pizza] = 100
+    @menu[:coke] = 70
+  end
+end
+```
+
+Then in order to make any changes to the menu we have to open up the Restaurant class itself.  Restaurant is not open for extension at all in the above example.  It must be opened up for modification in order to make any changes to the menu.  Consider this alternative:
+
+```ruby
+class Restaurant
+  def initialize(menu = Menu.new)
+    @menu = menu
+  end
+end
+```
+
+The type of Menu that Restaurant uses can now easily be changed.  It is "open for extension".  We can create a new type of Menu class that loads from a file, takes dynamic user, whatever we want, and Restaurant will happily collaborate (assuming the menu has the correct public interface, e.g. Menu#contains?, Menu#price etc.).  This latter Restaurant is also "closed for modification".  We don't need to modify because it can easily be extended through the use of different collaborator objects.
 
 ## Use consistent styles and indentation
-The Ruby community has a very consistent style guide and you should follow it.  Use tools like [Rubocop](https://github.com/bbatsov/rubocop) to analyze your code for violations.  The rule of thumb for indentation is ensure that you are two space indented inside any `do ... end`, `class ... end` or `def ... end` block.
+
+The Ruby community has a very consistent style guide and you should follow it.  Use tools like [Rubocop](https://github.com/bbatsov/rubocop) (`gem install rubocop ; rubocop`) to analyze your code for violations.
+
+You may find it difficult to remember the indentation rules, but one helpful rule of thumb for indentation is to ensure that you are two space indented inside any `do ... end`, `class ... end` or `def ... end` block.
