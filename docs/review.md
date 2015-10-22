@@ -3,7 +3,7 @@ Welcome to the code review for Takeaway Challenge!  Again, don't worry - you are
 
 If you don't feel comfortable giving technical feedback at this stage, try going through this guide with your reviewee and review the code together.
 
-Please use [this form] to record each of the following issues as they occur.  This form helps us get an overall picture of how the whole cohort is doing - it's not an assessment of an individual student.
+Please use [this form](http://goo.gl/forms/e7NFbMSCyf) to tick off where your reviewee has successfully avoided these issues!  This form helps us get an overall picture of how the whole cohort is doing - it's not an assessment of an individual student.
 
 # Step 0: Checkout and Run tests
 
