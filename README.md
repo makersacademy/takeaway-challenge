@@ -9,8 +9,7 @@ Instructions
 Task
 -----
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Spend an hour composing a blog post to answer the question `What is a ruby gem? Give a code example showing how to use a ruby gem in a piece of code. What are some dangers to using a gem?`
+* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
 * Fork this repo
 * run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
