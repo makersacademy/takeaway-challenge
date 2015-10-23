@@ -1,9 +1,8 @@
 class Dish
-  attr_reader :description, :price, :quantity
+  attr_reader :description, :price
   def initialize(description: description, price: price)
     @description = description
     @price = price
-    @quantity = 0
   end
 
   def update_quantity(quantity)
