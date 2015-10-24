@@ -29,6 +29,10 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 ```
+| Object       | Message           |
+| ------------- |:-------------:|
+| User    |  |
+| Menu     | Select dish to buy   |
 ```
 As a customer
 So that I can verify that my order is correct
