@@ -1,3 +1,4 @@
+require './lib/order.rb'
 class Menu
 
 attr_reader :menu
