@@ -1,35 +1,42 @@
 class Menu
 require 'yaml'
 
-ITEMS = [{category: "Appetiser", description: "Salt and Pepper Prawns", price: 5.00},
-         {category: "Appetiser", description: "Chilli King Prawn", price: 5.00},
-         {category: "Appetiser", description: "King Prawn Skewers", price: 5.00},
-         {category: "Appetiser", description: "Prawn Toast", price: 5.00},
-         {category: "Main", description: "King Prawn Chow Mein", price: 5.00},
-         {category: "Main", description: "King Prawn Egg Fried Rice", price: 5.00},
-         {category: "Appetiser", description: "King Prawn in Black Bean Sauce", price: 5.00},
-         {category: "Main", description: "Satay King Prawn", price: 5.00},
-         {category: "Appetiser", description: "Wonton King Prawn", price: 5.00},
-         {category: "Appetiser", description: "Tempura King Prawn", price: 5.00},
-         {category: "Main", description: "Sweet & Sour King Prawn", price: 5.00}]
+MENU = [{description: "Salt and Pepper King Prawns", price: 5.00, quantity: 0},
+         {description: "Chilli King Prawn", price: 5.00, quantity: 0},
+         {description: "King Prawn Skewers", price: 5.00, quantity: 0},
+         {description: "Prawn Toast", price: 5.00, quantity: 0},
+         {description: "King Prawn Chow Mein", price: 5.00, quantity: 0},
+         {description: "King Prawn Egg Fried Rice", price: 5.00, quantity: 0},
+         {description: "King Prawn in Black Bean Sauce", price: 5.00, quantity: 0},
+         {description: "Satay King Prawn", price: 5.00, quantity: 0},
+         {description: "Wonton King Prawn", price: 5.00, quantity: 0},
+         {description: "Tempura King Prawn", price: 5.00, quantity: 0},
+         {description: "Sweet & Sour King Prawn", price: 5.00, quantity: 0}]
+
+  def initialize
+    @menu = MENU
+  end
 
   def print_items
-    ITEMS.sort_by! { |hsh| hsh[:category] } #sort hashes by Appetiser > Main
-    puts menu_format("Item Number","Category","Description","Price (£)") # add a title to the menu
-    ITEMS.each_with_index do |elem, index|
-      puts menu_format(index+1,elem[:category], elem[:description],elem[:price]) # loop through the elements and print to screen
+    puts menu_format("Item Number","Description","Price (£)", "Quantity") # add a title to the menu
+    @menu.each_with_index do |elem, index|
+      puts menu_format(index+1, elem[:description],elem[:price],elem[:quantity]) # loop through the elements and print to screen
     end
   end
 
-  def menu_format(item_num, category, description, price)
+  def menu_format(item_num, description, price, quantity) #POTENTIALLY A NEW CLASS
     item_str = item_num.to_s.ljust(15)
-    category_str = category.to_s.ljust(15)
     description_str = description.to_s.ljust(40)
-    price_str = price.is_a?(Float) ? sprintf("%.2f", price).ljust(10) : price.ljust(10) #differentiate title (string) and price (float)
-    item_str+category_str+description_str+price_str #concatenate
+    price_str = price.is_a?(Float) ? sprintf("%.2f", price).ljust(10) : price.ljust(10) #differentiate title (String) and price (Float)
+    quantity_str = quantity.to_s.ljust(10)
+    item_str+description_str+price_str+quantity_str #concatenate
   end
 
-  def compare_items(item_num, cost)
-
+  def menu_price_diff(item_num, price)
+    @menu[item_num-1][:price] == price
   end
 end
+
+menu = Menu.new
+
+menu.print_items
