@@ -40,7 +40,15 @@ describe Takeaway do
     end
   end
 
-  
+  # context "#basket_summary" do
+  #
+  #   it "reports a summary of the basket" do
+  #     expect(takeaway.basket_summary).to eq ""
+  #   end
+  #
+  # end
+
+  context 
 
 
 

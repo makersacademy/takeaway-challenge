@@ -16,4 +16,10 @@ class Takeaway
     "#{qty}x #{itm}(s) added to your basket."
   end
 
+  def basket_summary
+    @order.basket_sum(@menu)
+  end
+
+
+
 end
