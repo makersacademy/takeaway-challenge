@@ -1,42 +1,23 @@
 class Menu
-require 'yaml'
+  DEFAULT_MENU = [{food: "Salt and Pepper King Prawn", price: 3.99, quantity_ordered: 0}, {food: "Pork Dumplings", price: 2.50, quantity_ordered: 0}]
 
-MENU = [{description: "Salt and Pepper King Prawns", price: 5.00, quantity: 0},
-         {description: "Chilli King Prawn", price: 5.00, quantity: 0},
-         {description: "King Prawn Skewers", price: 5.00, quantity: 0},
-         {description: "Prawn Toast", price: 5.00, quantity: 0},
-         {description: "King Prawn Chow Mein", price: 5.00, quantity: 0},
-         {description: "King Prawn Egg Fried Rice", price: 5.00, quantity: 0},
-         {description: "King Prawn in Black Bean Sauce", price: 5.00, quantity: 0},
-         {description: "Satay King Prawn", price: 5.00, quantity: 0},
-         {description: "Wonton King Prawn", price: 5.00, quantity: 0},
-         {description: "Tempura King Prawn", price: 5.00, quantity: 0},
-         {description: "Sweet & Sour King Prawn", price: 5.00, quantity: 0}]
+  attr_reader :menu, :total_basket
 
-  def initialize
-    @menu = MENU
+  def initialize(menu = DEFAULT_MENU)
+    @menu = menu
   end
 
-  def print_items
-    puts menu_format("Item Number","Description","Price (£)", "Quantity") # add a title to the menu
-    @menu.each_with_index do |elem, index|
-      puts menu_format(index+1, elem[:description],elem[:price],elem[:quantity]) # loop through the elements and print to screen
+  def add(food, quantity=1)
+    @menu.each{ |elem| elem[:quantity_ordered] += quantity if elem[:food] == food }
+  end
+
+  def total
+    "£#{sprintf("%.2f",@menu.inject(0) {|sum, elem| sum += (elem[:quantity_ordered] * elem[:price])})}"
+  end
+
+  def view_menu
+    @menu.each do |elem|
+      puts "#{elem[:food]} - £#{sprintf("%.2f", elem[:price])}"
     end
   end
-
-  def menu_format(item_num, description, price, quantity) #POTENTIALLY A NEW CLASS
-    item_str = item_num.to_s.ljust(15)
-    description_str = description.to_s.ljust(40)
-    price_str = price.is_a?(Float) ? sprintf("%.2f", price).ljust(10) : price.ljust(10) #differentiate title (String) and price (Float)
-    quantity_str = quantity.to_s.ljust(10)
-    item_str+description_str+price_str+quantity_str #concatenate
-  end
-
-  def menu_price_diff(item_num, price)
-    @menu[item_num-1][:price] == price
-  end
 end
-
-menu = Menu.new
-
-menu.print_items
