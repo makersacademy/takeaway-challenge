@@ -13,7 +13,7 @@ class Takeaway
     @menu.read
   end
 
-  def add(itm, qty=1)
+  def place_order(itm, qty=1)
     @order.add_to_basket(itm, qty)
     "#{qty}x #{itm}(s) added to your basket."
   end

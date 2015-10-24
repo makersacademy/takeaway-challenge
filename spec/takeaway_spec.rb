@@ -4,7 +4,7 @@ describe Takeaway do
 
   subject(:takeaway) { described_class.new(menu_klass.new, order_klass.new) }
 
-  let(:menu) { double(:menu, dishes: {"Spring Roll" => 0.99, "Fried Prawn" => 2.99}) }
+  let(:menu) {double(:menu, dishes: {'Spring Roll'=>0.99, 'King Prawn'=>2.99})}
   let(:menu_klass) { double(:menu_klass, new: menu) }
 
   let(:order) { double(:order) }
@@ -33,11 +33,12 @@ describe Takeaway do
     end
   end
 
-  context "#add" do
+  context "#place_order" do
 
     it "reports items being added to #basket" do
       allow(order).to receive(:add_to_basket)
-      expect(takeaway.add(itm, qty)).to eq "#{qty}x #{itm}(s) added to your basket."
+      message = "#{qty}x #{itm}(s) added to your basket."
+      expect(takeaway.place_order(itm, qty)).to eq message
     end
   end
 
@@ -55,26 +56,24 @@ describe Takeaway do
 
     it "reports the total cost" do
       allow(order).to receive(:total_bill).with(menu) { total }
-      expect(takeaway.total_cost).to eq "Total Cost: £#{(menu.dishes[itm]*qty).round(2)}"
+      message = "Total Cost: £#{(menu.dishes[itm]*qty).round(2)}"
+      expect(takeaway.total_cost).to eq message
     end
   end
 
   context "#checkout" do
 
+    before { allow(order).to receive(:total_bill).with(menu) { total }
+    takeaway.total_cost}
+
     it "raises error if final cost given does not match sum of basket" do
-      allow(order).to receive(:total_bill).with(menu) { total }
-      takeaway.total_cost
-      expect{takeaway.checkout(1.50)}.to raise_error described_class::CHECKOUT_ERROR
+      expect{takeaway.checkout(1.50)}.to raise_error Takeaway::CHECKOUT_ERROR
     end
 
     it "otherwise sends a text message" do
-      allow(order).to receive(:total_bill).with(menu) { total }
-      takeaway.total_cost
       expect(takeaway).to receive(:send_msg)
       takeaway.checkout(total)
     end
   end
-
-
 
 end
