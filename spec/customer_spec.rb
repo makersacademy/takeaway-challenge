@@ -31,5 +31,12 @@ describe '#select_dish' do
   end
 end
 
+it 'provides a total that matches the sum of all selected dishes' do
+  customer.select_dish(:noodles, 2)
+  customer.select_dish(:rice, 1)
+  expect(customer.order_total).to eq(16.85)
+end
+
+
 
 end

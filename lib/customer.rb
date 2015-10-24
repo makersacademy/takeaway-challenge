@@ -18,6 +18,10 @@ class Customer
     @selections[dish] += quantity
   end
 
+  def order_total
+    @selections.map{ |k,v| self.takeaway.menu[k] * v }.inject(:+)
+  end
+
   def order_error(dish)
     raise 'Dish unavailable: please select a dish from the menu' unless @takeaway.menu.has_key?(dish)
   end
