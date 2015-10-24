@@ -11,13 +11,10 @@ class TakeawayText
   def call(num = '+447479365828', name = 'POTATO DRAGON', total = 0)
     body_text = "#{name}, OOOOH FOOD, total cost: #{total}"
     message = @client.account.messages.create(
-                                              :from => @from,
-                                              :to => num,
-                                              :body => body_text
-                                              )
+                                              from: @from,
+                                              to: num,
+                                              body: body_text
+    )
     puts "YEAH BITCH, FOOD"
   end
 end
-
-a = TakeawayText.new
-a.call

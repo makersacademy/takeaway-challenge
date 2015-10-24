@@ -2,10 +2,13 @@ require 'order'
 
 describe Order do
 
-  let(:order1) { [['icecream', 4]] }
+  let(:menu)   { {icecream: 5,
+                  dohnuts: 2,
+                  potatoes: 1} }
+  let(:order1) { [['icecream', 4],['dohnuts', 7]] }
 
   it 'returns the menu' do
-    expect(subject.menu).to eq subject.menu_list
+    expect(subject.menu).to eq menu
   end
 
   it 'has an order log' do
@@ -15,14 +18,19 @@ describe Order do
   describe 'ordering food' do
     before(:each) do
       subject.add_order('icecream', 4)
+      subject.add_order('dohnuts', 7)
     end
+
     it 'allows an item, and quantity to be input' do
       expect(subject.order_log).to eq order1
     end
 
     it 'records a sum of food input' do
-      subject.add_order('dohnuts', 7)
       expect(subject.sum).to eq [20, 14]
+    end
+
+    it 'calculates a total cost' do
+      expect(subject.total).to eq 34
     end
   end
 end
