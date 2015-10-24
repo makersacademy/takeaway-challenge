@@ -10,6 +10,9 @@ describe Takeaway do
   let(:order) { double(:order) }
   let(:order_klass) { double(:order_klass, new: order) }
 
+  let(:itm) { 'Spring Roll' }
+  let(:qty) { 2 }
+
   context "#initialize" do
 
     it "creates a new #Menu instance" do
@@ -29,11 +32,16 @@ describe Takeaway do
     end
   end
 
-  context "#order" do
+  context "#add" do
 
+    it "reports items being added to #basket" do
+      allow(order).to receive(:add_to_basket)
+      expect(takeaway.add(itm, qty)).to eq "#{qty}x #{itm}(s) added to your basket."
+    end
+  end
 
+  
 
-end
 
 
 end

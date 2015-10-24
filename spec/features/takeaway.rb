@@ -1,7 +1,6 @@
 # class Takeaway
 #
 #   CHECKOUT_ERROR = "Total cost entered does not match the sum of your order!"
-#   ITEM_ERROR = "This item does not exist!"
 #
 #   attr_reader :menu, :order
 #
@@ -14,8 +13,9 @@
 #     @menu.read
 #   end
 #
-#   def order(itm, qty=1)
-#     @menu.dishes[itm].nil? ? (raise ITEM_ERROR) : @order.add_to_basket(itm, qty)
+#   def add(itm, qty=1)
+#     @order.add_to_basket(itm, qty)
+#     "#{qty}x #{itm}(s) added to your basket."
 #   end
 #
 #   def basket_summary
@@ -52,7 +52,6 @@
 #
 #   def add_to_basket(itm, qty)
 #     @basket[itm] += qty
-#     "#{qty}x #{itm}(s) added to your basket."
 #   end
 #
 #   def basket_sum(menu)
