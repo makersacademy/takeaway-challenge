@@ -1,18 +1,22 @@
 Takeaway Challenge
 ==================
+The challenge is to build a Takeaway app that allows the customer to see a menu (dishes + price) from which she can order a number of items. The customer needs to be able to check the order (price of the dishes + total to pay). The customer will receive a text message indicating the time of delivery.
 
-Instructions
--------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+At a later point, the feature to order food by text can be implemented.
 
-Task
------
+[How to install this on your machine]
+[Outline your approach]
+[Describe any design patterns or principles you used]
+[Obstacles you encountered and how you overcame them]
+[Demonstrate what you learned]
+[Further features/improvements you would add]
+[The tests you have written]
+[Badges  from the CI Build and Test Coverage]
+[User Stories to Implement](#user-stories-to-implement)
+[Additional Hints](#additional-hints)
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+User stories to implement
+--------------------------
 
 ```
 As a customer
@@ -32,14 +36,15 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+Additional Hints
+-----------------
+* ensure you have a list of dishes with prices
+* place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
+* The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
+* Use the twilio-ruby gem to access the API
+* Use a Gemfile to manage your gems
+* Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
+* However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
 
 * Advanced! (have a go if you're feeling adventurous):
   * Implement the ability to place orders via text message.
