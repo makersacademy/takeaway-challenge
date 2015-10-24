@@ -44,7 +44,7 @@ describe Takeaway do
 
   context "#basket_summary" do
 
-    it "reports a summary of the basket" do
+    it "triggers summary of basket" do
       allow(order).to receive(:basket_sum)
       expect(order).to receive(:basket_sum).with(menu)
       takeaway.basket_summary
