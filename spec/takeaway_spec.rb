@@ -48,7 +48,13 @@ describe Takeaway do
   #
   # end
 
-  context 
+  context "#total_cost" do
+
+    it "reports the total cost" do
+      allow(order).to receive(:total_bill).with(menu) { 1.98 }
+      expect(takeaway.total_cost).to eq "Total Cost: £#{(menu.dishes[itm]*qty).round(2)}"
+    end
+  end
 
 
 

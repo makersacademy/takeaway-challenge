@@ -20,6 +20,11 @@ class Takeaway
     @order.basket_sum(@menu)
   end
 
+  def total_cost
+    @total = @order.total_bill(@menu)
+    "Total Cost: £#{@total}"
+  end
+
 
 
 end
