@@ -5,15 +5,25 @@ The challenge is to build a Takeaway app that allows the customer to see a menu 
 At a later point, the feature to order food by text can be implemented.
 
 [How to install this on your machine]
+
 [Outline your approach]
+
 [Describe any design patterns or principles you used]
+
 [Obstacles you encountered and how you overcame them]
+
 [Demonstrate what you learned]
+
 [Further features/improvements you would add]
+
 [The tests you have written]
+
 [Badges  from the CI Build and Test Coverage]
+
 [User Stories to Implement](#user-stories-to-implement)
+
 [Additional Hints](#additional-hints)
+
 
 User stories to implement
 --------------------------
