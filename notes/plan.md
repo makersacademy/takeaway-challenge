@@ -32,15 +32,13 @@ Plan is to incrementally code solution:
 stage 1 tests
 
 
-Test crud for a dish
+Test crud for a dish - DONE
 
-Test crud for a container of dishes
+Test crud for a menu - DONE
 
-Test crud for a menu
+Test print menu
 
 Test crud for a order
-
-Test show menu
 
 
 stage 2 tests
