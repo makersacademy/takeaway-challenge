@@ -56,6 +56,16 @@ describe Takeaway do
     end
   end
 
+  context "#checkout" do
+
+    it "raises error if final cost given does not match sum of basket" do
+      allow(order).to receive(:total_bill).with(menu) { 1.98 }
+      takeaway.total_cost
+      expect{takeaway.checkout(1.50)}.to raise_error described_class::CHECKOUT_ERROR
+    end
+
+  end
+
 
 
 end
