@@ -1,4 +1,6 @@
 require './lib/order.rb'
+require 'rubygems' # not necessary with ruby 1.9 but included for completeness
+require 'twilio-ruby'
 
 new_menu = Menu.new
 puts new_menu.menu
@@ -29,3 +31,21 @@ answer = gets.chomp
   end
 end
  puts order.current_order
+ puts "your order amount is: #{order.order_total}"
+
+ text_message = "thank you for your order it will arrive by #{(Time.now + (60*40)).strftime("%H:%M")}, the amount total is #{"£%.2f"%order.collect_amount}"
+ puts text_message
+
+ #Twilio message creation
+
+ account_sid = 'AC4de8dd33e2d6ee76b3faf33cb63def35'
+ auth_token = '53e0790c0c05a41fdfb74f288bcb9476'
+
+ @client = Twilio::REST::Client.new account_sid, auth_token
+
+ @client.account.messages.create(
+ 	from: '+441274451660',
+ 	to: '+447960022719',
+ 	body: text_message,
+ )
+ puts 'confirmation text sent'
