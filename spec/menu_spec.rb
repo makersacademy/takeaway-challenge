@@ -3,7 +3,10 @@ require 'menu'
 describe Menu do
   let(:description) {"Cheeseburger"}
   let(:price) {4.99}
-  let(:burger) {double :dish, :description => description, :price => price}
+  let(:burger_to_s) {"#{description}\t#{price}"}
+  let(:burger) {double :dish, :description => description,
+                              :price => price,
+                              :to_s => burger_to_s }
   subject(:menu) {described_class.new}
 
   context 'Menu Items' do
@@ -28,6 +31,13 @@ describe Menu do
     it 'selects a dish by its description' do
       menu.add(burger)
       expect(menu.choose(description)).to eq burger
+    end
+  end
+  context 'Display Menu' do
+
+    it 'prints the menu' do
+      menu.add(burger)
+      expect(menu.to_s).to eq "#{burger_to_s}\n"
     end
   end
 end

@@ -17,5 +17,6 @@ class Menu
   end
 
   def to_s
+    @dishes.inject(String.new) {|memo, dish| memo << "#{dish.to_s}\n" }
   end
 end

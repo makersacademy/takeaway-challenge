@@ -9,4 +9,7 @@ class Dish
     raise "Quantity is negative" if quantity < 0
     @quantity = quantity
   end
+  def to_s
+    "#{description}\t#{price}"
+  end
 end

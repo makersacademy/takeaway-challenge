@@ -20,4 +20,10 @@ describe Dish do
       expect(burger.price).to eq price
     end
   end
+
+  context 'Print' do
+    it 'prints the description and price' do
+      expect(burger.to_s).to eq "#{description}\t#{price}"
+    end
+  end
 end
