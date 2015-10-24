@@ -22,7 +22,7 @@ I would like to see a list of dishes with prices
 | Object       | Message           |
 | ------------- |:-------------:|
 | User    |  |
-| Dish      | Price of dishes    |
+| Take away      | Read menu   |
 
 ```
 As a customer
