@@ -1,6 +1,6 @@
 class Menu
   attr_reader :dish_klass, :menu, :dish
-  attr_accessor :menu_id
+  attr_accessor :menu_id, :output
 
   def initialize dish_klass=Dish
     @dish_klass = dish_klass
@@ -18,6 +18,14 @@ class Menu
 
   def list_dishes
     menu
+  end
+
+  def print_dishes
+    @output = ""
+    menu.each do |item|
+      self.output += "#{item.menu_id}. #{item.name} (£#{item.price})\n"
+    end
+    output
   end
 
   def read menu_id

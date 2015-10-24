@@ -56,5 +56,16 @@ subject {Menu.new dish_klass1}
     end
   end
 
+  describe 'print menu' do
+    context 'when list of items in menu_id order' do
+      it '#print_dishes' do
+        subject.add_dish 'Standard Pizza',4.99
+        subject.add_dish 'Hamburger',2.99
+        print_of_menu = "1. Standard Pizza (£4.99)\n2. Hamburger (£2.99)\n"
+        expect(subject.print_dishes).to eq print_of_menu
+      end
+    end
+  end
+
 
 end
