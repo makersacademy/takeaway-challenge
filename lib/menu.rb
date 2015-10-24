@@ -1,3 +1,5 @@
+require './lib/dish'
+
 class Menu
   attr_reader :dish_klass, :menu, :dish
   attr_accessor :menu_id, :output
@@ -14,10 +16,6 @@ class Menu
     dish.name = name
     dish.price = price
     menu << dish
-  end
-
-  def list_dishes
-    menu
   end
 
   def print_dishes

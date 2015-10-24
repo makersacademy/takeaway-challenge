@@ -29,25 +29,21 @@ Send text message (send/text)
 
 Plan is to incrementally code solution:
 
-stage 1 tests
 
+stage 1 tests
 
 Test crud for a dish - DONE
 
 Test crud for a menu - DONE
 
-Test print menu
+Test print menu - DONE
 
-Test crud for a order
+Test methods for a order(add,order,total,update,read)
 
 
 stage 2 tests
 
-Test make an order
-
-Test submit using an order
-
-Test Validate an order
+Test submit an order
 
 Test reject an order
 
