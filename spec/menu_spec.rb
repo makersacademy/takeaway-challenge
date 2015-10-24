@@ -10,4 +10,10 @@ describe Menu do
 
     expect(subject.read_menu).to eq menu
   end
+
+  it 'select some number of several available dishes from the menu' do
+    hash = {}
+    hash[:beef_burger] = 2
+    expect(subject.add_order(:beef_burger, 2)).to eq hash
+  end
 end
