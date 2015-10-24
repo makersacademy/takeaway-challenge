@@ -28,7 +28,7 @@ class Takeaway
   end
 
   def checkout(final_cost)
-    correct_amount?(final_cost) ? (send_msg) : (raise CHECKOUT_ERROR)
+    correct_amount?(final_cost) ? (send_msg) : (fail CHECKOUT_ERROR)
   end
 
   private
