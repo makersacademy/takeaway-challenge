@@ -12,6 +12,7 @@ describe Takeaway do
 
   let(:itm) { 'Spring Roll' }
   let(:qty) { 2 }
+  let(:total) { 1.98 }
 
   context "#initialize" do
 
@@ -51,7 +52,7 @@ describe Takeaway do
   context "#total_cost" do
 
     it "reports the total cost" do
-      allow(order).to receive(:total_bill).with(menu) { 1.98 }
+      allow(order).to receive(:total_bill).with(menu) { total }
       expect(takeaway.total_cost).to eq "Total Cost: £#{(menu.dishes[itm]*qty).round(2)}"
     end
   end
@@ -59,11 +60,17 @@ describe Takeaway do
   context "#checkout" do
 
     it "raises error if final cost given does not match sum of basket" do
-      allow(order).to receive(:total_bill).with(menu) { 1.98 }
+      allow(order).to receive(:total_bill).with(menu) { total }
       takeaway.total_cost
       expect{takeaway.checkout(1.50)}.to raise_error described_class::CHECKOUT_ERROR
     end
 
+    it "otherwise sends a text message" do
+      allow(order).to receive(:total_bill).with(menu) { total }
+      takeaway.total_cost
+      expect(takeaway).to receive(:send_msg)
+      takeaway.checkout(total)
+    end
   end
 
 

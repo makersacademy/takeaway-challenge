@@ -12,7 +12,7 @@
 #   def read_menu
 #     @menu.read
 #   end
-#
+# 
 #   def add(itm, qty=1)
 #     @order.add_to_basket(itm, qty)
 #     "#{qty}x #{itm}(s) added to your basket."
@@ -37,8 +37,8 @@
 #     final_cost == @total
 #   end
 #
-#   def send_text
-#     TextMessenger.send_text
+#   def send_text(messenger = TextMessenger)
+#     messenger.send_text
 #   end
 #
 # end

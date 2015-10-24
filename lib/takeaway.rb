@@ -28,7 +28,7 @@ class Takeaway
   end
 
   def checkout(final_cost)
-    correct_amount?(final_cost) ? (send_text) : (raise CHECKOUT_ERROR)
+    correct_amount?(final_cost) ? (send_msg) : (raise CHECKOUT_ERROR)
   end
 
   private
@@ -37,6 +37,8 @@ class Takeaway
     final_cost == @total
   end
 
-
+  def send_msg
+    TextMessenger.send_text
+  end
 
 end
