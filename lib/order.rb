@@ -13,4 +13,7 @@ class Order
     basket << {item_num: item_num, quantity: quantity, total: sum}
   end
 
+  def view_menu
+    @menu.list_items
+  end
 end
