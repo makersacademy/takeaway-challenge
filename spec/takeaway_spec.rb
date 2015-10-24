@@ -5,10 +5,10 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu_klass.new, order_klass.new) }
 
   let(:menu) {double(:menu, dishes: {'Spring Roll'=>0.99, 'King Prawn'=>2.99})}
-  let(:menu_klass) { double(:menu_klass, new: menu) }
+  let(:menu_klass) { double(:menu_klass, new => menu) }
 
   let(:order) { double(:order) }
-  let(:order_klass) { double(:order_klass, new: order) }
+  let(:order_klass) { double(:order_klass, new => order) }
 
   let(:itm) { 'Spring Roll' }
   let(:qty) { 2 }
@@ -63,8 +63,10 @@ describe Takeaway do
 
   context "#checkout" do
 
-    before { allow(order).to receive(:total_bill).with(menu) { total }
-    takeaway.total_cost}
+  before do
+    allow(order).to receive(:total_bill).with(menu) { total }
+    takeaway.total_cost
+  end
 
     it "raises error if final cost given does not match sum of basket" do
       expect{takeaway.checkout(1.50)}.to raise_error Takeaway::CHECKOUT_ERROR
