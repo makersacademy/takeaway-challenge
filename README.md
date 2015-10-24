@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/dearshrewdwit/takeaway-challenge.svg?branch=master)](https://travis-ci.org/dearshrewdwit/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 
