@@ -1,4 +1,4 @@
-require './docs/menu'
+require './lib/menu'
 
 describe Menu do
 
