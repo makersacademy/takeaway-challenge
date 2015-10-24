@@ -1,55 +1,62 @@
 class Burger
-  attr_reader :price
-  PRICE = 4.5
-  def initialize
-    @price = PRICE
+  SET_PRICE = 4.5
+  @@price = SET_PRICE
+
+  def self.price
+    @@price
   end
 end
 
 class Kebab
-  attr_reader :price
-  PRICE = 3.5
-  def initialize
-    @price = PRICE
+  SET_PRICE = 3.5
+  @@price = SET_PRICE
+
+  def self.price
+    @@price
   end
 end
 
 class Fried_Chicken
-  attr_reader :price
-  PRICE = 4.5
-  def initialize
-    @price = PRICE
+  SET_PRICE = 4.5
+  @@price = SET_PRICE
+
+  def self.price
+    @@price
   end
 end
 
 class Chicken_Nuggets
-  attr_reader :price
-  PRICE = 3
-  def initialize
-    @price = PRICE
+  SET_PRICE = 3
+  @@price = SET_PRICE
+
+  def self.price
+    @@price
   end
 end
 
 class Pie
-  attr_reader :price
-  PRICE = 4
-  def initialize
-    @price = PRICE
+  SET_PRICE = 4
+  @@price = SET_PRICE
+
+  def self.price
+    @@price
   end
 end
 
 class Fries
-  attr_reader :price
-  PRICE = 2
-  def initialize
-    @price = PRICE
+  SET_PRICE = 2
+  @@price = SET_PRICE
+
+  def self.price
+    @@price
   end
 end
 
 class Onion_Rings
-  attr_reader :price
-  PRICE = 2
-  def initialize
-    @price = PRICE
+  SET_PRICE = 2
+  @@price = SET_PRICE
+
+  def self.price
+    @@price
   end
 end
