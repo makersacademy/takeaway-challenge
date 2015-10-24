@@ -1,57 +1,85 @@
 class Takeaway
 
   CHECKOUT_ERROR = "Total cost entered does not match the sum of your order!"
+  ITEM_ERROR = "This item does not exist!"
 
-  attr_reader :menu
+  attr_reader :menu, :messenger
 
-  def initialize(menu = Menu.new)
-    @basket = Hash.new(0)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
+    @order = order
   end
 
   def read_menu
-    @menu.dishes.each { |item, cost| print "#{item}: £#{cost}, " }
+    @menu.read
   end
 
-  def order(item, quantity=1)
-    if @menu.dishes[item].nil?
-      "#{item} does not exist!"
-    else
-      @basket[item] += quantity
-      "#{quantity}x #{item}(s) added to your basket."
-    end
+  def order(itm, qty=1)
+    @menu.dishes[itm].nil? ? (raise ITEM_ERROR) : @order.add_to_basket(itm, qty)
   end
 
   def basket_summary
-    @basket.each do |item, quantity|
-      print "#{item} x#{quantity} = £#{(@menu.dishes[item]*quantity).round(2)}, "
-    end
+    @order.basket_sum(@menu)
   end
 
   def total_cost
-    @total = []
-    @basket.each do |item, quantity|
-      @total << (@menu.dishes[item]*quantity).round(2)
-    end
-    "Total Cost: £#{(@total.inject(:+)).round(2)}"
+    @total = @order.total_bill(@menu)
+    "Total Cost: £#{@total}"
   end
 
   def checkout(final_cost)
-    if its_correct_amount?(final_cost)
-      send_text
-    else
-      raise CHECKOUT_ERROR
-    end
+    its_correct_amount?(final_cost) ? (send_text) : (raise CHECKOUT_ERROR)
+  end
+
+  private
+
+  def its_correct_amount?(final_cost)
+    final_cost == @total
   end
 
   def send_text
     TextMessenger.send_text
   end
 
-  private
+end
 
-  def its_correct_amount?(final_cost)
-    final_cost == (@total.inject(:+)).round(2)
+
+class Order
+
+  def initialize
+    @basket = Hash.new(0)
+  end
+
+  def add_to_basket(itm, qty)
+    @basket[itm] += qty
+    "#{qty}x #{itm}(s) added to your basket."
+  end
+
+  def basket_sum(menu)
+    @basket.each do |itm, qty|
+    print "#{itm} x#{qty} = £#{(menu.dishes[itm]*qty).round(2)}, "
+    end
+  end
+
+  def total_bill(menu)
+    total = []
+    @basket.each{ |itm, qty| total << (menu.dishes[itm]*qty).round(2) }
+    (total.inject(:+)).round(2)
+  end
+
+end
+
+
+class Menu
+
+  attr_reader :dishes
+
+  def initialize
+    @dishes = {"Spring Roll" => 0.99, "Fried Prawn" => 2.99}
+  end
+
+  def read
+    @dishes.each { |item, cost| print "#{item}: £#{cost}, " }
   end
 
 end
@@ -71,20 +99,7 @@ class TextMessenger
     	:to => '+447780330410',
     	:body => "Thank you! Your order was placed and will be delivered before #{(Time.now + (60*60)).strftime("%H:%M")}"
     })
-  end
-
-end
-
-class Order
-
-end
-
-class Menu
-
-  attr_reader :dishes
-
-  def initialize
-    @dishes = {"Spring Roll" => 0.99, "Fried Prawn" => 2.99}
+    "You will shortly receive an SMS confirming your order."
   end
 
 end
