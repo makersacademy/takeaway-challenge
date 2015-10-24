@@ -8,8 +8,8 @@ auth_token = '53e0790c0c05a41fdfb74f288bcb9476'
 # set up a client to talk to the Twilio REST API
 @client = Twilio::REST::Client.new account_sid, auth_token
 
-@client.account.messages.create({
-	:from => '+441274451660',
-	:to => '+447960022719',
-	:body => 'good morning rebecca',
-})
+@client.account.messages.create(
+	from: '+441274451660',
+	to: '+447960022719',
+	body: 'good morning rebecca',
+)
