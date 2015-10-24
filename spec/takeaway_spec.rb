@@ -41,13 +41,15 @@ describe Takeaway do
     end
   end
 
-  # context "#basket_summary" do
-  #
-  #   it "reports a summary of the basket" do
-  #     expect(takeaway.basket_summary).to eq ""
-  #   end
-  #
-  # end
+  context "#basket_summary" do
+
+    it "reports a summary of the basket" do
+      allow(order).to receive(:basket_sum)
+      expect(order).to receive(:basket_sum).with(menu)
+      takeaway.basket_summary
+    end
+
+  end
 
   context "#total_cost" do
 
