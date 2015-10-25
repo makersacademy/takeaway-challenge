@@ -25,15 +25,18 @@ class Takeaway
     info(dish, quantity)
   end
 
+  private
 
   def end_program(dish)
     if dish == 'end'
-      @twilio.send_text_message
+      send_message
       exit
     end
   end
 
-  private
+  def send_message
+    @twilio.send_text_message
+  end
 
   def total_order(dish, quantity)
     selected = @menu.dishes.select {
@@ -43,9 +46,13 @@ class Takeaway
   end
 
   def info(dish, quantity)
-    puts "you ordered #{quantity} x #{dish} = #{@total_per_dish}, if you want to send the order set dish to end"
+    info = "you ordered #{quantity} x #{dish} = #{@total_per_dish}, the total now is #{@total}"
+    reset_total_per_dish
+    info
+  end
+
+  def reset_total_per_dish
     @total_per_dish = 0
-    puts "the total now is #{@total}"
   end
 
 

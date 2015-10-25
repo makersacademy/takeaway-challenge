@@ -31,7 +31,7 @@ describe Takeaway do
   end
 
   it "expect to close the program" do
-    allow(twilio).to receive(:send_text_message)
+    allow(subject).to receive(:send_message)
     begin
       subject.select_dishes(end_order)
       rescue SystemExit
