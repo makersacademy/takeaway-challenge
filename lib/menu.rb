@@ -9,7 +9,7 @@ class Menu
   end
 
   def choose(description)
-    @dishes.find {|dish| dish.description == description}
+    @dishes.detect {|dish| dish.description == description}
   end
 
   def dishes
@@ -17,6 +17,6 @@ class Menu
   end
 
   def to_s
-    @dishes.inject(String.new) {|memo, dish| memo << "#{dish.to_s}\n" }
+    @dishes.inject('') {|memo, dish| memo << "#{dish}\n" }
   end
 end

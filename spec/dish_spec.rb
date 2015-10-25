@@ -3,7 +3,9 @@ require 'dish'
 describe Dish do
   let(:description) {"Cheeseburger"}
   let(:price) {4.99}
-  subject(:burger) {described_class.new(description: description, price: price)}
+  subject(:burger) do
+    described_class.new(description: description, price: price)
+  end
 
   context 'Description' do
     it {is_expected.to respond_to(:description)}

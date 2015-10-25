@@ -1,6 +1,6 @@
 class Order
 
-  def initialize(order_total_klass: order_total_klass)
+  def initialize(order_total_klass:)
     @order_totaller = order_total_klass.new
     @order_lines = Hash.new(0)
   end

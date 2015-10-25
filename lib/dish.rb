@@ -1,12 +1,12 @@
 class Dish
   attr_reader :description, :price
-  def initialize(description: description, price: price)
+  def initialize(description:, price:)
     @description = description
     @price = price
   end
 
   def update_quantity(quantity)
-    raise "Quantity is negative" if quantity < 0
+    fail "Quantity is negative" if quantity < 0
     @quantity = quantity
   end
   def to_s

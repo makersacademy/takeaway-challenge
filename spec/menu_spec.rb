@@ -4,9 +4,12 @@ describe Menu do
   let(:description) {"Cheeseburger"}
   let(:price) {4.99}
   let(:burger_to_s) {"#{description}\t#{price}"}
-  let(:burger) {double :dish, :description => description,
-                              :price => price,
-                              :to_s => burger_to_s }
+  let(:burger) do
+    double :dish,
+    description: description,
+    price: price,
+    to_s: burger_to_s
+  end
   subject(:menu) {described_class.new}
 
   context 'Menu Items' do

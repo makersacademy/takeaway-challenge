@@ -3,9 +3,10 @@ require 'order'
 describe Order do
   let(:description) {"Cheeseburger"}
   let(:price) {4.99}
-  let(:burger) do double :dish,
-                  description: description,
-                  price: price
+  let(:burger) do
+    double :dish,
+      description: description,
+      price: price
   end
   let(:order_total) { double :order_total, calculate: price }
   let(:order_total_klass) { double :order_total_klass, new: order_total }
