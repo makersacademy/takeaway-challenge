@@ -38,7 +38,7 @@ To create the text message function I used the **Twilio API**.
 
 To carry out SRP I had decided to create 4 separate classes:
 
-* [Takeaway](https://github.com/hsheikhm/takeaway-challenge/blob/master/lib/takeaway.rb) (User interaction, delegating responsibilities to other classes, and raising errors where relevant)
+* [Takeaway](https://github.com/hsheikhm/takeaway-challenge/blob/master/lib/takeaway.rb) (User interaction, delegating responsibilities, raising errors where relevant)
 * [Order](https://github.com/hsheikhm/takeaway-challenge/blob/master/lib/order.rb) (Responsible for creating new orders, adding items to basket, calculating final costs)
 * [Menu](https://github.com/hsheikhm/takeaway-challenge/blob/master/lib/menu.rb) (To list all dishes and prices)
 * [TextMessenger](https://github.com/hsheikhm/takeaway-challenge/blob/master/lib/textmessenger.rb) (Responsible for sending the text message to user)
