@@ -6,7 +6,7 @@ class Menu
   attr_reader :menu, :total_basket
 
   def initialize(menu_type = MenuTypes::CHINESE)
-    @menu = menu_type.clone
+    @menu = menu_type
   end
 
   def add(food, quantity=1)
@@ -18,9 +18,16 @@ class Menu
     @menu.inject(0) {|sum, elem| sum += (elem[:quantity_ordered] * elem[:price])}
   end
 
+  def view_basket
+    ordered_items = @menu.select {|hash| hash[:quantity_ordered] > 0 }
+    ordered_items.map {|hash| "#{hash[:food]} x#{hash[:quantity_ordered]}: £#{sprintf("%.2f", hash[:quantity_ordered]*hash[:price])}" if hash[:quantity_ordered] > 0 }.join(", ") + ", Total: £#{sprintf("%.2f", total)}"
+  end
+
   def view_menu
     @menu.each do |elem|
       puts "#{elem[:food]} - £#{sprintf("%.2f", elem[:price])}"
     end
   end
+
+  #COULD THE VIEW_ METHODS BE A SEPARATE CLASS?
 end

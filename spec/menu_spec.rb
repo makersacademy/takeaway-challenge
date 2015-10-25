@@ -32,6 +32,18 @@ describe Menu do
     end
   end
 
+  describe '#view_basket' do
+    it 'should display the current basket in text format' do
+      subject.add("Pork Dumplings", 2 )
+      subject.add("Salt and Pepper King Prawn", 4)
+      expect(subject.view_basket).to eq "Salt and Pepper King Prawn x4: £15.96, Pork Dumplings x2: £5.00, Total: £20.96"
+    end
+    it 'should display the current basket in text format when one item is ordered' do
+      subject.add("Salt and Pepper King Prawn", 4)
+      expect(subject.view_basket).to eq "Salt and Pepper King Prawn x4: £15.96, Total: £15.96"
+    end
+  end
+
   describe '#view_menu' do
     it 'should display the menu' do
       expect(STDOUT).to receive(:puts).with("Salt and Pepper King Prawn - £3.99")

@@ -2,8 +2,9 @@ require 'takeaway'
 
 
 describe Takeaway do
-  let(:menu) { double :menu, total: 10 }
-  subject { described_class.new(menu)}
+  let(:menu) { double :menu, total: 10 , view_current_order: anything}
+  let(:twilio) { double :twilio, messages: 'blah' }
+  subject { described_class.new(menu) }
   describe '#initialize' do
     it 'initializes with a menu' do
       expect(subject.menu).to eq menu
@@ -24,4 +25,20 @@ describe Takeaway do
     end
   end
 
+  describe '#view_current_order' do
+    it 'calls Menu#view_basket' do
+      expect(menu).to receive(:view_basket)
+      subject.view_current_order
+    end
+  end
+
+  describe '#checkout' do
+    it 'calls the send_message if the #confirm_order method is true' do
+      allow(subject).to receive(:send_message).and_return("blah")
+      expect(subject).to receive(:send_message)
+      subject.checkout(10)
+    end
+  end
+
+  describe '#'
 end
