@@ -4,6 +4,10 @@ describe Takeaway do
   it 'lists available dishes and their prices' do
     expect(subject.list_dishes).to eq("Hamburger: £1, Pizza: £2, Hotdog: £2, Tacos: £3, Nachos: £1")
   end
+  it 'checks that the cost of the order is correct' do
+    subject.add "Tacos", 6; subject.add "Hotdog", 3
+    expect(subject.total).to eq(24)
+  end
   describe '#add' do
     it 'can choose dishes from the menu and add them to the order' do
       subject.add("Pizza")
@@ -14,6 +18,6 @@ describe Takeaway do
         subject.add "Hotdog", 3
         expect(subject.order[0][:quantity]).to eq(3)
     end
-  end
 
+  end
 end

@@ -1,8 +1,5 @@
-require './lib/menu'
-require './lib/dish'
-
 class Takeaway
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :total
   def initialize
       @menu = [{ name: "Hamburger", price: 1},
         {name: "Pizza", price: 2},
@@ -21,6 +18,7 @@ class Takeaway
   def add(item, quantity = 1)
     element = @menu.select{|dish| dish[:name] == item}
     element[0].store(:quantity, quantity)
+    @total += ((element[0][:price])*(element[0][:quantity]))
     @order << element
     @order.flatten!
   end
