@@ -25,13 +25,13 @@ class TakeAway
   end
 
   def order_value
-    "Total: "+ sprintf('£%.2f', total)
+    "Total: "+ format('£%.2f', total)
   end
 
   def confirm_order(amount=0)
     fail "There are no dishes ordered, please order some first" if basket.empty?
-    fail "£#{sprintf('%.2f', amount)} does not match order value of #{sprintf('£%.2f', total)}" if amount != total
-    restaurant.complete_order("#{basket_summary}\n#{order_value}")
+    fail "£#{format('%.2f', amount)} does not match order value of #{format('£%.2f', total)}" if amount != total
+    restaurant.complete_order(amount)
   end
 
   private
@@ -42,7 +42,7 @@ class TakeAway
   end
 
   def my_basket
-    basket.map {|dish, qty| "#{dish} x#{qty} = #{'£%.2f' % (qty * restaurant.menu[dish])}"}.join(', ')
+    basket.map {|dish, qty| "#{dish} x#{qty} = #{format('£%.2f', (qty * restaurant.menu[dish])}"}.join(', ')
   end
 
   def not_on_menu?(dish)
