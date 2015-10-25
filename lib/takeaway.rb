@@ -11,14 +11,17 @@ class Takeaway
         {name: "Nachos", price: 1}
       ]
       @order = []
+      @total = 0
   end
 
   def list_dishes
     @menu.map{ |dish| p "#{dish[:name]}: £#{dish[:price]}"}*", "
   end
 
-  def add(term)
-    @order << @menu.select{|dish| dish[:name] == term}
+  def add(item, quantity = 1)
+    element = @menu.select{|dish| dish[:name] == item}
+    element[0].store(:quantity, quantity)
+    @order << element
     @order.flatten!
   end
 end
