@@ -19,11 +19,11 @@ class SendText
   def send_sms(text)
     @client = Twilio::REST::Client.new @sid, @token
 
-    @client.account.messages.create({
+    @client.account.messages.create(
     	:from => @twilio_number,
     	:to => @client_number,
     	:body => text
-    })
+    )
   end
 
 end
