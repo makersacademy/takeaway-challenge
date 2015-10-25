@@ -18,8 +18,8 @@ class Takeaway
     list
   end
 
-  def add_to_order(dish_num)
-    @order << @dishes[dish_num]
+  def add_to_order(dish_num, quantity)
+    @order << [@dishes[dish_num], quantity]
   end
 
   private

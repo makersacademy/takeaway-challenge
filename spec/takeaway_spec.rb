@@ -18,9 +18,9 @@ describe Takeaway do
   end
 
   context '#add_to_order' do
-    it 'adds a dish to the order' do
-      takeaway.add_to_order(0)
-      expect(takeaway.order).to eq [dish]
+    it 'adds two of a dish to the order' do
+      takeaway.add_to_order(0, 2)
+      expect(takeaway.order).to eq [[dish,2]]
     end
   end
 
