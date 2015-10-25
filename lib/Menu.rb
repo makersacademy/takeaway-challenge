@@ -13,7 +13,26 @@ class Menu
 		DEFAULT_MENU
 	end
 
-	private
+	def order(item, amount)
+#     loop do
+#     	puts "What would you like?"
+#     	item = gets.chomp
+#     	puts "How many?"
+#     	amount = gets.chomp
+#     	if item || amount == 'Done'
+#     		break
+#     	end
+#     end
+end
 
+# loop do
+#   puts "What would you like to order?"
+#   item = gets.chomp
+#   puts "And how many?"
+#   amount = gets.chomp
+#     if item == 'Order'
+#     break
+#   end
+# end
 	
 end

@@ -8,5 +8,9 @@ describe Menu do
     expect(subject.see_menu).to eq Menu::DEFAULT_MENU
   end
 
+  it 'Should take order' do
+  	expect(subject).to respond_to :order
+  end
+
 	
 end
