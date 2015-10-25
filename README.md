@@ -1,3 +1,57 @@
+Update
+======
+
+Author - Rob Youngman
+
+Current Status
+==============
+
+Fails RSpec with 4 errors.
+The takeaway functionality of menu, add, remove, total, summary has been functionally tested.
+
+Instruction for running in irb
+==============================
+
+Here's an example of ordering a pizza
+
+.2.3 :001 > require './lib/menu'
+ => true
+2.2.3 :002 > require './lib/messenger'
+ => true
+2.2.3 :003 > require './lib/takeaway'
+ => true
+2.2.3 :004 > require './lib/restaurant'
+ => true
+2.2.3 :005 > messenger = Messenger.new
+ => #<Messenger:0x007f8fe2be7ea8>
+2.2.3 :006 > menu = Menu.new
+ => #<Menu:0x007f8fe2bdcb98 @items={"Pepperoni"=>1, "Hot Shot"=>1, "Jardin"=>2, "Provencale"=>2, "Roquefort"=>3, "Neptune"=>3, "Poulet"=>4, "Four Seasons"=>4}>
+2.2.3 :007 > restaurant = Restaurant.new(messenger,menu)
+ => #<Restaurant:0x007f8fe2bce138 @messenger=#<Messenger:0x007f8fe2be7ea8>, @menu=#<Menu:0x007f8fe2bdcb98 @items={"Pepperoni"=>1, "Hot Shot"=>1, "Jardin"=>2, "Provencale"=>2, "Roquefort"=>3, "Neptune"=>3, "Poulet"=>4, "Four Seasons"=>4}>, @header={:from=>"+441290211165", :to=>"+447527994300"}>
+2.2.3 :008 > takeaway = restaurant.request_takeaway
+ => #<Takeaway:0x007f8fe2bbfe80 @menu=#<Menu:0x007f8fe2bdcb98 @items={"Pepperoni"=>1, "Hot Shot"=>1, "Jardin"=>2, "Provencale"=>2, "Roquefort"=>3, "Neptune"=>3, "Poulet"=>4, "Four Seasons"=>4}>, @restaurant=#<Restaurant:0x007f8fe2bce138 @messenger=#<Messenger:0x007f8fe2be7ea8>, @menu=#<Menu:0x007f8fe2bdcb98 @items={"Pepperoni"=>1, "Hot Shot"=>1, "Jardin"=>2, "Provencale"=>2, "Roquefort"=>3, "Neptune"=>3, "Poulet"=>4, "Four Seasons"=>4}>, @header={:from=>"+441290211165", :to=>"+447527994300"}>, @basket={}>
+2.2.3 :009 > takeaway.menu
+Pepperoni  £1
+Hot Shot  £1
+Jardin  £2
+Provencale  £2
+Roquefort  £3
+Neptune  £3
+Poulet  £4
+Four Seasons  £4
+#<Menu:0x007f8fe2bdcb98>
+ => nil
+2.2.3 :010 > takeaway.add('Neptune')
+ => 1
+2.2.3 :011 > takeaway.summary
+Neptune x1 = £3
+ => nil
+2.2.3 :012 > takeaway.total
+Total: £3
+ => nil
+2.2.3 :013 > restaurant.order_takeaway
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC89d950d129482b828259244e80366b30/Messages/SM802bcf5621444d2f8d36b9623ec4a1f6>
+
 Takeaway Challenge
 ==================
 
