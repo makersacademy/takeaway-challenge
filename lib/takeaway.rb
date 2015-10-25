@@ -1,5 +1,5 @@
 class Takeaway
-  def initialize(menu_klass: menu_klass, order_klass: order_klass)
+  def initialize(menu_klass: , order_klass:)
     @menu = menu_klass.new
     @order = order_klass.new
   end
