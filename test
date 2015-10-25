@@ -1,0 +1,8 @@
+
+
+def basket_sum
+    raise 'Basket is empty' if basket.empty?
+    message = @basket.each {|item, qty|  "#{item} x #{qty} = £ #{menu.dish[item] * qty}"}
+  end
+
+  basket_sum
