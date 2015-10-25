@@ -18,6 +18,10 @@ describe Takeaway do
         subject.add "Hotdog", 3
         expect(subject.order[0][:quantity]).to eq(3)
     end
-
   end
+  # describe '#total_checker' do
+  #   it 'confirms that the total is correct' do
+  #     expect.
+  #   end
+  # end
 end
