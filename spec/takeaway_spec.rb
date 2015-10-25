@@ -60,7 +60,7 @@ describe TakeAway do
       takeaway.order("Chips", 3)
       takeaway.order("Burger", 2)
       takeaway.order("Chicken Tikka", 2)
-      err_msg = "£0.00 does not match order value of £16.63"
+      err_msg = "Confirm order value of £16.63"
       expect { takeaway.confirm_order }.to raise_error(err_msg)
     end
 

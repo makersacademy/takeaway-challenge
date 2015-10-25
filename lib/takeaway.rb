@@ -30,7 +30,7 @@ class TakeAway
 
   def confirm_order(amount=0)
     fail "There are no dishes ordered, please order some first" if basket.empty?
-    fail "£#{format('%.2f', amount)} does not match order value of #{format('£%.2f', total)}" if amount != total
+    fail "Confirm order value of #{format('£%.2f', total)}" if amount != total
     restaurant.complete_order(amount)
   end
 
@@ -42,7 +42,10 @@ class TakeAway
   end
 
   def my_basket
-    basket.map {|dish, qty| "#{dish} x#{qty} = #{format('£%.2f', (qty * restaurant.menu[dish])}"}.join(', ')
+    basket.map do |dish, qty|
+      amount = qty * restaurant.menu[dish]
+      order_list = "#{dish} x#{qty} = #{format('£%.2f', amount)}"
+    end.join(', ')
   end
 
   def not_on_menu?(dish)
