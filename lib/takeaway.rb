@@ -1,57 +1,53 @@
-require 'twilio-ruby'        # => true
-require_relative 'send_text'  # => true
+require 'twilio-ruby'
 
-MENU = {'hamburger' => 1, 'chips' => 1.50}  # => {"hamburger"=>1, "chips"=>1.5}
+require_relative 'send_text'
+require_relative 'menu'
 
 class Takeaway
-  include SendText            # => Takeaway
-  attr_reader :menu, :basket  # => nil
+  include SendText
 
-  def initialize(menu = MENU)
-    @menu = menu               # => {"hamburger"=>1, "chips"=>1.5}
-    @basket = []               # => []
+  attr_reader :menu, :basket
+
+  def initialize(menu_klass: Menu)
+    @basket = []
+    @menu = menu_klass.new
   end
 
   def show_menu
-    items = menu.map { |item, price| "#{item.capitalize}: £#{price}"}  # => ["Hamburger: £1", "Chips: £1.5"]
-    "Menu\n\n#{items.join("\n")}"                                      # => "Menu\n\nHamburger: £1\nChips: £1.5"
+    menu.show
   end
 
   def order(item, qty = 1)
-    basket << [item.downcase, qty]             # => [["hamburger", 4]], [["hamburger", 4], ["hamburger", 5]], [["hamburger", 4], ["hamburger", 5], ["chips", 3]]
-    "#{qty}x #{item}(s) added to your basket"  # => "4x Hamburger(s) added to your basket", "5x Hamburger(s) added to your basket", "3x Chips(s) added to your basket"
+    basket << [item, qty]
+    "#{item} x#{qty} added to your basket"
+  end
+
+  def basket_content
+    basket.map do |item, qty|
+      "#{item} x#{qty}: £#{qty * menu.dishes[item]}"
+    end.join("\n")
   end
 
   def complete_order(price)
-    fail 'Wrong total' unless calculate_price == price
-    send_text "Thank you for your order: £#{price}"
-  end
-
-  def basket_summary
-    basket.map { |item, qty| "#{qty}x #{item}(s): £#{qty * menu[item]}"}.join("\n")  # => "4x hamburger(s): £4\n5x hamburger(s): £5\n3x chips(s): £4.5"
+    fail 'Wrong total' if wrong_total?(price)
+    delivery_time = (Time.now + 60*60).strftime("%H:%m")
+    send_text "Your order has been confirmed!" +
+              "Expect your yummie food by #{delivery_time}\n" +
+              "Your order:\n" +
+              "#{basket_content}\n" +
+              "#{total}"
   end
 
   def total
-    "Total price: £#{calculate_price}"
+    "Total price: £" + calculate_price.to_s
   end
 
-private                                                     # => Takeaway
+private
   def calculate_price
-    basket.map { |item, qty| qty * menu[item] }.inject(:+)
+    basket.map { |item, qty| qty * menu.dishes[item] }.inject(:+)
   end
-
-  def wrong_total?(order, total)
-    calculate_total(order) != total
+  
+  def wrong_total?(price)
+    calculate_price != price
   end
 end
-
-
-t = Takeaway.new        # => #<Takeaway:0x007ff6ec05f600 @menu={"hamburger"=>1, "chips"=>1.5}, @basket=[]>
-t.show_menu             # => "Menu\n\nHamburger: £1\nChips: £1.5"
-t.order 'Hamburger', 4  # => "4x Hamburger(s) added to your basket"
-t.order 'Hamburger', 5  # => "5x Hamburger(s) added to your basket"
-t.order 'Chips', 3      # => "3x Chips(s) added to your basket"
-t.basket_summary        # => "4x hamburger(s): £4\n5x hamburger(s): £5\n3x chips(s): £4.5"
-# t.calculate_total(t.basket)
-# t.order(order: {"Hamburger" => 10}, total: 6)
-# t.basket_summary

@@ -1,27 +1,29 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { Takeaway.new(menu) }
-  let(:menu) { { menuitem1: 1, menuitem2: 1.5 } }
+  let(:menu_klass) { double(:menu_klass, new: menu) }
+  let(:dishes) { {menuitem1: 1, menuitem2: 1.50 } }
+  let(:menu) { double(:menu, show: dishes, dishes: dishes)}
+
+  subject(:takeaway) { described_class.new(menu_klass: menu_klass) }
 
   describe '#show_menu' do
     it 'shows a list of menu items' do
-      menu = "Menu\n\nMenuitem1: £1\nMenuitem2: £1.5"
-      expect(takeaway.show_menu).to eq menu
+      expect(takeaway.show_menu).to eq dishes
     end
   end
 
   describe '#order' do
     context 'first order' do
       it 'stores name and quantity of dish in basket' do
-        takeaway.order( :menuitem1,  2)
+        takeaway.order(:menuitem1, 2)
         expect(takeaway.basket).to include [:menuitem1, 2]
       end
     end
     context 'additional orders' do
       it 'stores name and quantity of dish in basket' do
-        takeaway.order( :menuitem1,  2)
-        takeaway.order( :menuitem2,  5)
+        takeaway.order(:menuitem1, 2)
+        takeaway.order(:menuitem2, 5)
         expect(takeaway.basket).to include [:menuitem2, 5]
       end
     end
@@ -45,10 +47,10 @@ describe Takeaway do
 
   describe '#basket_summary' do
     it 'shows the ordered items and the total' do
+      result = "menuitem1 x2: £2\nmenuitem2 x5: £7.5"
       takeaway.order :menuitem1, 2
       takeaway.order :menuitem2, 5
-      summary = "2x menuitem1(s): £2\n5x menuitem2(s): £7.5"
-      expect(takeaway.basket_summary).to eq summary
+      expect(takeaway.basket_content).to eq result
     end
   end
 
