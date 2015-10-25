@@ -5,7 +5,7 @@ class TakeAway
 
   attr_reader :menu, :order
 
-  def initialize (menu = Menu.new)
+  def initialize menu = Menu.new
     @menu = menu
     @order = Hash.new(0)
     # @basket = Array.new
@@ -16,18 +16,18 @@ class TakeAway
   end
 
   def add_meal item, quantity = 1
-    fail 'dish not in the menu' if !menu.dishes.include?(item)
+    fail 'not in the menu' unless menu.dishes.include?(item)
     order[item] += quantity
     "#{quantity} #{item} has been added to your order"
   end
 
   def delete item, quantity = 1
-    fail 'dish not in the menu' if !menu.dishes.include?(item)
+    fail 'dish not in the menu' unless menu.dishes.include?(item)
     order[item] -= quantity
   end
 
   def order_summary
-    summary = order.map { |item,quantity| "#{item} x #{quantity} = £#{(menu.dishes[item]*quantity)}" }.join(', ')
+    summary = order.map{|item,quantity|"#{item} x #{quantity} = £#{(menu.dishes[item]*quantity)}"}.join(', ')
     "Your order: " +summary
   end
 
