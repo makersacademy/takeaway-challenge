@@ -24,7 +24,14 @@ class Takeaway
     @order << [@dishes[dish_num], quantity]
   end
 
+  def place_order(total)
+    raise WRONG_TOTAL_ERROR unless total == order_total
+  end
+
   private
+
+  def order_total
+  end
 
   def three_col_line(str1, str2, str3)
     str1.ljust(10) + str2.ljust(10) + str3.rjust(6) + "\n"
