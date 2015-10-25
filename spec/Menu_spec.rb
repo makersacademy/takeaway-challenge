@@ -1,10 +1,13 @@
 require 'Menu'
 
 describe Menu do
-	
-	it 'Displays list of menu items' do
-	expect(subject).to respond_to :see_list
 
-end
+	subject(:menu) {described_class.new}
+	
+	it 'should allow you to see the menu' do
+    expect(subject.see_menu).to eq Menu::DEFAULT_MENU
+  end
+
+
 	
 end
