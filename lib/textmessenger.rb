@@ -12,8 +12,7 @@ class TextMessenger
     @client.account.messages.create(
     	from: '+441873740087',
     	to: '+447780330410',
-      body: "Thank you! Your order will be delivered before #{time}"
-    )
+      body: "Thank you! Your order will be delivered before #{@time}")
     "You will shortly receive an SMS confirming your order."
   end
 

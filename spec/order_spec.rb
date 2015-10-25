@@ -27,8 +27,8 @@ describe Order do
 
     it "reports summary of basket" do
       order.add_to_basket(itm, qty)
-      message = "#{itm} x#{qty} = £#{(menu.dishes[itm]*qty).round(2)}"
-      expect(order.basket_sum(menu)).to eq message
+      message = "#{itm} x#{qty} = £#{(menu.dishes[itm]*qty).round(2)}, "
+      expect{order.basket_sum(menu)}.to output(message).to_stdout
     end
   end
 

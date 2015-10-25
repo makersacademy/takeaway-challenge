@@ -14,6 +14,10 @@ describe Takeaway do
   let(:qty) { 2 }
   let(:total) { 1.98 }
 
+  let(:item_error) { described_class::ITEM_ERROR }
+  let(:checkout_error) { described_class::CHECKOUT_ERROR }
+
+
   context "#initialize" do
 
     it "creates a new #Menu instance" do
@@ -34,6 +38,10 @@ describe Takeaway do
   end
 
   context "#place_order" do
+
+    it "raises error if item does not exist" do
+      expect{takeaway.place_order('Crackers')}.to raise_error item_error
+    end
 
     it "reports items being added to #basket" do
       allow(order).to receive(:add_to_basket)
@@ -71,7 +79,7 @@ describe Takeaway do
   end
 
     it "raises error if final cost given does not match sum of basket" do
-      expect{takeaway.checkout(1.50)}.to raise_error Takeaway::CHECKOUT_ERROR
+      expect{takeaway.checkout(1.50)}.to raise_error checkout_error
     end
 
     it "otherwise sends a text message" do
@@ -79,5 +87,4 @@ describe Takeaway do
       takeaway.checkout(total)
     end
   end
-
 end

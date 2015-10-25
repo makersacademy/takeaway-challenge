@@ -1,8 +1,6 @@
-require_relative 'menu'  # => true
-
 class Order
 
-  attr_reader :basket  # => nil
+  attr_reader :basket
 
   def initialize
     @basket = Hash.new(0)
@@ -13,8 +11,8 @@ class Order
   end
 
   def basket_sum(menu)
-    @basket.each do |itm, qty|
-    return "#{itm} x#{qty} = £#{(menu.dishes[itm]*qty).round(2)}"
+    basket.each do |itm, qty|
+    print "#{itm} x#{qty} = £#{(menu.dishes[itm]*qty).round(2)}, "
     end
   end
 

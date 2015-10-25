@@ -18,5 +18,4 @@ describe Menu do
       expect(menu.read).to eq display
     end
   end
-
 end

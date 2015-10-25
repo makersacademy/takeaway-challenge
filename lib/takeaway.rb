@@ -5,6 +5,7 @@ require_relative 'textmessenger'
 class Takeaway
 
   CHECKOUT_ERROR = "Total cost entered does not match the sum of your order!"
+  ITEM_ERROR = "This item does not exist!"
 
   attr_reader :menu, :order, :total
 
@@ -18,12 +19,13 @@ class Takeaway
   end
 
   def place_order(itm, qty=1)
+    fail ITEM_ERROR if @menu.dishes[itm].nil?
     order.add_to_basket(itm, qty)
     "#{qty}x #{itm}(s) added to your basket."
   end
 
   def basket_summary
-    @order.basket_sum(@menu)
+    order.basket_sum(menu)
   end
 
   def total_cost
