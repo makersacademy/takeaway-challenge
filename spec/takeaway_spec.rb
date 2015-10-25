@@ -2,11 +2,12 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { Takeaway.new(menu) }
-  let(:menu) { { menuitem1: 1, menuitem2: 1.50 } }
+  let(:menu) { { menuitem1: 1, menuitem2: 1.5 } }
 
   describe '#show_menu' do
     it 'shows a list of menu items' do
-      expect(takeaway.show_menu).to eq takeaway.menu
+      menu = "Menu\n\nMenuitem1: £1\nMenuitem2: £1.5"
+      expect(takeaway.show_menu).to eq menu
     end
   end
 
@@ -44,8 +45,18 @@ describe Takeaway do
 
   describe '#basket_summary' do
     it 'shows the ordered items and the total' do
-      takeaway.order(order: { menuitem1: 2 , menuitem2: 5}, total: 9.50)
-      expect(takeaway.basket_summary).to eq takeaway.basket
+      takeaway.order :menuitem1, 2
+      takeaway.order :menuitem2, 5
+      summary = "2x menuitem1(s): £2\n5x menuitem2(s): £7.5"
+      expect(takeaway.basket_summary).to eq summary
+    end
+  end
+
+  describe '#total' do
+    it 'shows the total price to pay for ordered items' do
+      takeaway.order :menuitem1, 2
+      takeaway.order :menuitem2, 5
+      expect(takeaway.total).to eq "Total price: £9.5"
     end
   end
 end
