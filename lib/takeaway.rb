@@ -27,10 +27,14 @@ class Takeaway
 
   def place_order(total)
     raise WRONG_TOTAL_ERROR unless total == order_total
-    ORDER_SUCCESS_MSG
+    order_success
   end
 
   private
+
+  def order_success
+    ORDER_SUCCESS_MSG
+  end
 
   def order_total
     total = 0
