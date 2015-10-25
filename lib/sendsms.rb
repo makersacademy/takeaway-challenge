@@ -13,11 +13,11 @@ class SendSMS
     message = "Your order has been confirmed! It will be delivered by #{in1hr}"
     @client = Twilio::REST::Client.new account_sid, auth_token
 
-    @client.account.messages.create({
+    @client.account.messages.create(
     	from: '+441623272327',
     	to: '+447415580694',
     	body: "#{message}\n#{order_summary}\n#{total}",
-    })
+    )
   end
 
 end
