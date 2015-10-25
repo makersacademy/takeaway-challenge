@@ -3,7 +3,7 @@ require './lib/sendtext'
 class Restaurant
   attr_reader :menu, :sendtext
 
-  def initialize (sendtext = SendText.new)
+  def initialize(sendtext = SendText.new)
     @menu = {"Chips" => 0.89, "Chicken Tikka" => 3.99, "Burger" => 2.99, "Veggie Wrap" => 4.99}
     @sendtext = sendtext
   end

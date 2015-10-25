@@ -3,7 +3,7 @@ require './lib/restaurant'
 class TakeAway
   attr_reader :restaurant, :dish, :basket
 
-  def initialize (restaurant = Restaurant.new)
+  def initialize(restaurant = Restaurant.new)
     @restaurant = restaurant
     @dish = ""
     @basket = Hash.new(0)
@@ -14,23 +14,23 @@ class TakeAway
   end
 
   def order(dish, qty=1)
-    raise "This dish is not available on menu" if not_on_menu?(dish)
+    fail "This dish is not available on menu" if not_on_menu?(dish)
     basket[dish] += qty
     "#{qty}x #{dish}(s) added to your basket."
   end
 
   def basket_summary
-    raise "basket is empty, no dishes ordered" if basket.empty?
+    fail "basket is empty, no dishes ordered" if basket.empty?
     my_basket
   end
 
   def order_value
-    "Total: "+ '£%.2f' % total
+    "Total: "+ sprintf('£%.2f', total)
   end
 
   def confirm_order(amount=0)
-    raise "There are no dishes ordered, please order some first" if basket.empty?
-    raise "£#{'%.2f' % amount} does not match order value of #{'£%.2f' % total}" if amount != total
+    fail "There are no dishes ordered, please order some first" if basket.empty?
+    fail "£#{sprintf('%.2f', amount)} does not match order value of #{sprintf('£%.2f', total)}" if amount != total
     restaurant.complete_order("#{basket_summary}\n#{order_value}")
   end
 
@@ -46,7 +46,7 @@ class TakeAway
   end
 
   def not_on_menu?(dish)
-    restaurant.menu.has_key?(dish) == false
+    restaurant.menu.key?(dish) == false
   end
 
 end
