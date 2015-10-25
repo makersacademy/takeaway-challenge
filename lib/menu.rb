@@ -1,18 +1,21 @@
+require_relative 'menu_types'
+
 class Menu
-  DEFAULT_MENU = [{food: "Salt and Pepper King Prawn", price: 3.99, quantity_ordered: 0}, {food: "Pork Dumplings", price: 2.50, quantity_ordered: 0}]
+  include MenuTypes
 
   attr_reader :menu, :total_basket
 
-  def initialize(menu = DEFAULT_MENU)
-    @menu = menu
+  def initialize(menu_type = MenuTypes::CHINESE)
+    @menu = menu_type.clone
   end
 
   def add(food, quantity=1)
+    raise "Food type not found for #{food}" unless @menu.any? {|hsh| hsh[:food] == food }
     @menu.each{ |elem| elem[:quantity_ordered] += quantity if elem[:food] == food }
   end
 
   def total
-    "£#{sprintf("%.2f",@menu.inject(0) {|sum, elem| sum += (elem[:quantity_ordered] * elem[:price])})}"
+    @menu.inject(0) {|sum, elem| sum += (elem[:quantity_ordered] * elem[:price])}
   end
 
   def view_menu

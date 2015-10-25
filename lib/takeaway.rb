@@ -6,14 +6,17 @@ class Takeaway
 
   def initialize(menu_klass = Menu.new)
     @menu = menu_klass
-    @total = 0
   end
 
   def add(food, quantity = 1)
     @menu.add(food, quantity)
   end
 
-  def checkout
+  def request_menu
+    @menu.view_menu
+  end
 
+  def confirm_total(total)
+    total == @menu.total
   end
 end
