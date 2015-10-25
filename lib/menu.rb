@@ -6,10 +6,10 @@ class Menu
 
   def initialize
     @dishes = {
-      'hamburger' => 2#,
-      # 'pasta'     => 4,
-      # 'burrito'   => 3,
-      # 'lasagna'   => 5
+      'hamburger' => 2,
+      'pasta'     => 4,
+      'burrito'   => 3,
+      'lasagna'   => 5
     }
   end
 
