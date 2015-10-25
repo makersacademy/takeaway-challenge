@@ -36,4 +36,12 @@ describe Takeaway do
       expect(takeaway.total).to eq("Total: £22.50")
     end
   end
+
+  describe '#checkout' do
+    it 'raises an error if the total bill does not match the sum of the various dishes' do
+      takeaway.order('kimchi', 2)
+      takeaway.order('salmon maki', 3)
+      expect{takeaway.checkout(16.5)}.to raise_error 'Total cost does not match the sum of the dishes in your order!'
+    end
+  end
 end

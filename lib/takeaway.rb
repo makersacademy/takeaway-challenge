@@ -1,5 +1,5 @@
 class Takeaway
-  attr_reader :dishes, :basket
+  attr_reader :dishes, :basket, :total
 
   DISHES = { 'chicken gyoza' => 4.00,
              'singapore fried noodles' => 7.00,
@@ -9,7 +9,7 @@ class Takeaway
              'beef soup ramen' => 6.50 }
 
   def initialize(dishes = DISHES)
-    @dishes = DISHES
+    @dishes = dishes
     @basket = Hash.new(0)
   end
 
@@ -27,8 +27,12 @@ class Takeaway
   end
 
   def total
-    total = basket.map { |item, quantity| dishes[item] * quantity }.inject(:+)
-    "Total: #{'£%.2f' % total}"
+    @total = basket.map { |item, quantity| dishes[item] * quantity }.inject(:+) unless basket.empty?
+    "Total: #{'£%.2f' % @total}"
   end
 
+  def checkout(amount = 0)
+    fail "Total cost does not match the sum of the dishes in your order!" if amount != total
+    "Thank you for your order: £#{'£%.2f' % @total}."
+  end
 end
