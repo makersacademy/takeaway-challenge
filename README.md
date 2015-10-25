@@ -7,7 +7,7 @@ Takeaway Challenge
 * Clone to your machine
 * Run the command ```bundle``` in the project directory to ensure you have all the gems
 * Then run the following in ```irb``` or ```pry```
------
+
 ```ruby
 > require './lib/order'             => true
 > eds_takeout = Order.new           => #<Order:0x007fd6b1bb5820 @restaurant=Restaurant>
