@@ -3,6 +3,7 @@ class Takeaway
   attr_reader :order
 
   WRONG_TOTAL_ERROR = 'Order total incorrect, please try again'
+  ORDER_SUCCESS_MSG = 'Order placed succesfully'
 
   def initialize(dishes)
     @dishes = dishes

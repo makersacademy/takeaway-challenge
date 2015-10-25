@@ -10,7 +10,7 @@ describe Takeaway do
   let(:menu_string){ '1'.ljust(10) + name.ljust(10) + price.to_s.rjust(6) + "\n" }
 
   let(:wrong_total_error){ Takeaway::WRONG_TOTAL_ERROR }
-
+  let(:order_sucess_msg){ Takeaway::ORDER_SUCCESS_MSG}
   subject(:takeaway){ Takeaway.new(menu_array) }
 
   context '#list_dishes' do
@@ -30,6 +30,10 @@ describe Takeaway do
     it 'raises error if user provided total does not equal order total' do
       takeaway.add_to_order(0,2)
       expect{ takeaway.place_order(price) }.to raise_error wrong_total_error
+    end
+    it 'returns "Order placed" if provided total matches order total' do
+      takeaway.add_to_order(0,2)
+      expect(takeaway.place_order(price*2)).to eq order_sucess_msg
     end
   end
 
