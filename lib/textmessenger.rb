@@ -9,11 +9,11 @@ class TextMessenger
   @time = (Time.now + (60*60)).strftime("%H:%M")
 
   def self.send_text
-    @client.account.messages.create({
-    	:from => '+441873740087',
-    	:to => '+447780330410',
-      :body => "Thank you! Your order will be delivered before #{time}"
-    })
+    @client.account.messages.create{
+    	from: '+441873740087',
+    	to: '+447780330410',
+      body: "Thank you! Your order will be delivered before #{time}"
+    }
     "You will shortly receive an SMS confirming your order."
   end
 

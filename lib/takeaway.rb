@@ -23,11 +23,11 @@ class Takeaway
   end
 
   def basket_summary
-    order.basket_sum(menu)
+    @order.basket_sum(@menu)
   end
 
   def total_cost
-    @total = order.total_bill(menu)
+    @total = order.total_bill(menu) unless empty?
     "Total Cost: £#{total}"
   end
 
@@ -36,6 +36,10 @@ class Takeaway
   end
 
   private
+
+  def empty?
+    order.basket.empty?
+  end
 
   def correct_amount?(final_cost)
     final_cost == total
