@@ -4,7 +4,7 @@ class Takeaway
 
   def initialize
     @menu = {}
-    @basket = {}
+    @basket = Hash.new(0)
     @total = 0
   end
 
@@ -17,7 +17,7 @@ class Takeaway
   end
 
   def order(name, quantity = 1)
-    @basket.store(name, quantity)
+    @basket[name] += quantity
     puts "#{quantity}x #{name}(s) added to your basket."
   end
 

@@ -10,15 +10,6 @@ describe Takeaway do
     expect(subject.show_menu).to eq "{\"chilli\"=>2.99, \"lasagne\"=>4.5}"
   end
 
-  it 'order should display confirmation message' do
-    expect{ subject.order("chilli", 3) }.to output("3x chilli(s) added to your basket.\n").to_stdout
-  end
-
-  it 'order should add to basket' do
-    subject.order("chilli", 3)
-    expect(subject.basket).to include("chilli"=>3)
-  end
-
   before(:each) do
     subject.add_dish('chilli', 2.99)
     subject.add_dish('lasagne', 4.5)
@@ -33,12 +24,15 @@ describe Takeaway do
     end
 
     it 'order should add to basket' do
-      subject.order("chilli", 3)
       expect(subject.basket).to include("chilli"=>3)
     end
 
-    it 'should display total amount for order' do
+    it 'should be able to add more of the same item to the order' do
+      subject.order("chilli", 3)
+      expect(subject.basket).to include("chilli"=>6)
+    end
 
+    it 'should display total amount for order' do
       expect(subject.total).to eq (2.99 * 3 + 4.5)
     end
 
