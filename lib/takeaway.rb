@@ -27,11 +27,18 @@ class Takeaway
 
   def place_order(total)
     raise WRONG_TOTAL_ERROR unless total == order_total
+    ORDER_SUCCESS_MSG
   end
 
   private
 
   def order_total
+    total = 0
+    @order.each do |item|
+      price, quantity = item[0].price, item[1]
+      total += price * quantity
+    end
+    total
   end
 
   def three_col_line(str1, str2, str3)
