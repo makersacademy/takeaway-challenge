@@ -25,7 +25,18 @@ To confirm your order please repeat the total amount:
                                     sent to your mobile. See you next time!"
 
 ```
-
+Features
+---
+- New orders comes preloaded with menus, with a default set to Italian
+- New order resets any existing orders and opens a new one
+- Before opening a new order you can see all menus in detail
+- Adds and deletes items with explicit quantity or default quantity 1
+- Checks items exist or gives user a message indicating that they do not
+- Cancel orders
+- Gives an order summary and a total in GBP
+- Asks for confirmation before placing an order
+- Upon successful placement of order, sends a confirmation SMS via Twilio API
+with order details and delivery time of 1 hour from when message sent
 
 User stories:
 --
