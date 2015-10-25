@@ -8,6 +8,8 @@ At a later point, the feature to order food by text can be implemented.
 
 [Outline your approach]
 
+* Implementing all functionality in a single class following a rigorous red/green/refactor cycle
+
 [Describe any design patterns or principles you used]
 
 [Obstacles you encountered and how you overcame them]
