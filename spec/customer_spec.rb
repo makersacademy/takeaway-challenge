@@ -22,7 +22,7 @@ let(:takeaway) { double(menu: {chips: 4.00, rice: 2.00 }) }
     describe '#select_dish' do
       it 'adds dishes to the customer\'s basket' do
         customer.select_dish(:chips, 2)
-        expect(customer.basket).to eq({chips: 2})
+        expect(customer.basket).to eq(chips: 2)
       end
 
       it 'raises an error if the selected dish does not exist' do

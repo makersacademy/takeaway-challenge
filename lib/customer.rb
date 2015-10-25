@@ -14,7 +14,7 @@ class Customer
   end
 
   def select_dish(dish, quantity)
-    raise 'Please select a dish from the menu' unless dish_exists?(dish)
+    fail 'Please select a dish from the menu' unless dish_exists?(dish)
     @basket[dish] += quantity
     "#{quantity}x #{dish}(s) added to your basket"
   end
@@ -24,14 +24,14 @@ class Customer
   end
 
   def place_order
-    raise 'Your basket is empty. Please select a dish' if basket_empty?
+    fail 'Your basket is empty. Please select a dish' if basket_empty?
     @takeaway.complete_order(self.order_total)
   end
 
   private
 
   def dish_exists?(dish)
-    self.takeaway.menu.has_key?(dish)
+    self.takeaway.menu.key?(dish)
   end
 
   def basket_empty?

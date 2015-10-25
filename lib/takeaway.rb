@@ -30,10 +30,9 @@ class Takeaway
     auth_token = '04143500350b6edc0ed55c042c3629c9'
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.account.messages.create(
-        :from => '441358202027',
-        :to => '+447868303463',
-        :body => message_to_send
-        )
+        from: '441358202027',
+        to: '+447868303463',
+        body: message_to_send)
     message_to_send
   end
 
