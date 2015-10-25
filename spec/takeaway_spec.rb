@@ -9,27 +9,27 @@ describe TakeAway do
       expect(takeaway).to respond_to :order
     end
     it 'can\'t order a dish not in the menu' do
-      expect{takeaway.add_meal(:pomodoro, 2)}.to raise_error 'not in the menu'
+      expect{takeaway.add_meal :pomodoro, 2}.to raise_error 'not in the menu'
     end
     it 'can order a dish in the menu' do
-      expect{takeaway.add_meal(:pizza, 2)}.to change{takeaway.order.length}.by(1)
+      expect{takeaway.add_meal :pizza,2}.to change{takeaway.order.length}.by 1
     end
     it 'can\'t delete a dish not in the ordered dishes' do
-      expect{takeaway.add_meal(:pomodoro, 2)}.to raise_error'not in the menu'
+      expect{takeaway.add_meal :pomodoro, 2}.to raise_error'not in the menu'
     end
     it 'can delete an item ordered' do
-      takeaway.add_meal(:pizza, 2)
-      expect{takeaway.delete(:pizza, 1)}.to change{takeaway.order[:pizza]}.by(-1)
+      takeaway.add_meal :pizza, 2
+      expect{takeaway.delete :pizza,1 }.to change{takeaway.order[:pizza]}.by -1
     end
   end
 
   context 'bill' do
     it 'has a order summary' do
-      takeaway.add_meal(:pizza, 2)
+      takeaway.add_meal :pizza, 2
       expect(takeaway.order_summary).to eq 'Your order: pizza x 2 = £20'
     end
     it 'is:' do
-      takeaway.add_meal(:pizza, 2)
+      takeaway.add_meal :pizza, 2
       expect(takeaway.total).to eq 'Your bill is: £20'
     end
   end
