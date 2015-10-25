@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 
 class SendText
   attr_reader :client, :sid, :token, :twilio_number, :client_number
