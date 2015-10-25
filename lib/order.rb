@@ -11,8 +11,10 @@ class Order
     @total = 0
   end
 
-  def pick_menu_item menu_item
-    order << menu.read(menu_item)
+  def pick_menu_item menu_item,quantity=1
+    quantity.times do
+      order << menu.read(menu_item)
+    end
   end
 
   def total

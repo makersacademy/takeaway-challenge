@@ -38,6 +38,10 @@ end
       subject.pick_menu_item(2)
       expect(subject.total).to eq 6.98
     end
+    it '#add more than 1 item' do
+      subject.pick_menu_item(1,2)
+      expect(subject.order[-2]).to eq dish1
+    end
   end
 
 end

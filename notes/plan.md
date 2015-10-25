@@ -47,6 +47,12 @@ Test SendText (DI Twillo) - DONE
 
 Test SubmitOrder (DI SendText, get, validated?, submit) -DONE
 
+Test add quantiy and default 1 to pick_dish - DONE
+
+Demo Receipt with order total and give total and phone number to submit order.
+
+Update README.md
+
 
 
 stage 3 tests
