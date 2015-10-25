@@ -22,7 +22,7 @@ class Takeaway
   end
 
   def add_to_order(dish_num, quantity)
-    @order << [@dishes[dish_num], quantity]
+    @order << {dish: @dishes[dish_num], quantity: quantity}
   end
 
   def place_order(total)
@@ -35,7 +35,7 @@ class Takeaway
   def order_total
     total = 0
     @order.each do |item|
-      price, quantity = item[0].price, item[1]
+      price, quantity = item[:dish].price, item[:quantity]
       total += price * quantity
     end
     total
