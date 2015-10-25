@@ -17,4 +17,10 @@ describe Takeaway do
       expect(takeaway.open_menu).not_to be_empty
     end
   end
+
+  describe '#order' do
+    it 'reports items being added to basket' do
+      expect{takeaway.order(item, quantity)}.to change{ takeaway.basket.length}.by(1)
+    end
+  end
 end

@@ -17,4 +17,8 @@ class Takeaway
     dishes.map { |item, price| "#{item}: #{'£%.2f' % price}" }
   end
 
+  def order(item, quantity = 1)
+    basket[item] += 1
+    "#{quantity}x #{item}(s) added to your basket."
+  end
 end
