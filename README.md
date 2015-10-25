@@ -4,28 +4,68 @@ The challenge is to build a Takeaway app that allows the customer to see a menu 
 
 At a later point, the feature to order food by text can be implemented.
 
-[How to install this on your machine]
+[Outline your approach](#my-approach)
 
-[Outline your approach]
+[Used design patterns and principles](#design-principles-and-patterns)
 
-* Implementing all functionality in a single class following a rigorous red/green/refactor cycle
+[Further features/improvements to add](#further-improvements-to-add)
 
-[Describe any design patterns or principles you used]
-
-[Obstacles you encountered and how you overcame them]
-
-[Demonstrate what you learned]
-
-[Further features/improvements you would add]
-
-[The tests you have written]
-
-[Badges  from the CI Build and Test Coverage]
+[How to use](#how-to-use)
 
 [User Stories to Implement](#user-stories-to-implement)
 
 [Additional Hints](#additional-hints)
 
+My approach
+-----------
+
+After implementing all functionality in a single class following a rigorous red/green/refactor cycle, I extracted a Menu class. I thought of extracting an Order class as well, but that would basically leave Takeaway void of any functionality, so I decided against it.
+
+Design principles and patterns
+------------------------------
+
+* Single Responsibility principle (and dependency injection)
+* DRY
+
+Further improvements to add
+---------------------------
+
+* Different national cuisines
+* Order food via text
+* Make selecting food from menu more intuitive
+
+How to Use
+----------
+
+Pass the menu specific to your restaurant as an argument
+
+`restaurant = Takeaway.new(FrenchCuisine)`
+
+Show the menu:
+
+`restaurant.show_menu`
+
+Place an order:
+
+`restaurant.order('Hamburger', 2)`
+
+See the content of your shopping basket:
+
+`restaurant.basket_content`
+
+See the total to pay for your order:
+
+`restaurant.total`
+
+Reset the order:
+
+`restaurant.reset`
+
+When checking out, pass the price, so we know you agree to it:
+
+`restaurant.checkout(3.99)`
+
+You will receive a text message with confirmation of your order and estimated delivery time (ca. 1 hour).
 
 User stories to implement
 --------------------------
