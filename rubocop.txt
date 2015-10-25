@@ -1,0 +1,10 @@
+Inspecting 9 files
+...C.....
+
+Offenses:
+
+lib/send_text.rb:4:3: C: Metrics/MethodLength: Method has too many lines. [11/10] (https://github.com/bbatsov/ruby-style-guide#short-methods)
+  def send_text(basket_content, total)
+  ^^^
+
+9 files inspected, 1 offense detected

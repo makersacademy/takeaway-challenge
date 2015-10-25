@@ -24,7 +24,7 @@ class Takeaway
   def basket_content
     fail 'Basket is empty' if basket.empty?
     basket.map { |item, qty| "#{item} x#{qty}: £#{qty * menu.dishes[item]}"}
-          .join("\n")
+      .join("\n")
   end
 
   def checkout(price = 0)
@@ -41,7 +41,7 @@ class Takeaway
     @basket = Hash.new(0)
   end
 
-private
+  private
   def calculate_price
     basket.map { |item, qty| qty * menu.dishes[item] }.inject(:+)
   end

@@ -23,14 +23,14 @@ describe Takeaway do
     context 'first order' do
       it 'stores name and quantity of dish in basket' do
         takeaway.order(:menuitem1, 2)
-        expect(takeaway.basket).to include({menuitem1: 2})
+        expect(takeaway.basket).to include(menuitem1: 2)
       end
     end
     context 'additional orders' do
       it 'stores name and quantity of dish in basket' do
         takeaway.order(:menuitem1, 2)
         takeaway.order(:menuitem1, 2)
-        expect(takeaway.basket).to include({menuitem1: 4})
+        expect(takeaway.basket).to include(menuitem1: 4)
       end
     end
   end
@@ -39,7 +39,8 @@ describe Takeaway do
     context 'when total given by user corresponds to calculated total' do
       it 'sends a confirmation text message' do
         takeaway.order :menuitem1, 2
-        expect(takeaway).to receive(:send_text).with("menuitem1 x2: £2", "Total price: £2")
+        mgs = "menuitem1 x2: £2", "Total price: £2"
+        expect(takeaway).to receive(:send_text).with(msg)
         takeaway.checkout(2)
       end
     end
