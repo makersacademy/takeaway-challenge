@@ -3,13 +3,12 @@ require 'customer'
 describe Customer do
 
 subject(:customer) { described_class.new(takeaway_klass) }
-let(:customer_klass) { double(new: customer, view_menu: takeaway.menu)}
 let(:takeaway_klass) { double(new: takeaway) }
 let(:takeaway) { double(menu: {chips: 4.00, rice: 2.00 }) }
 
     describe '#view_menu' do
-      it 'shows a customer a menu from a specified takeaway' do
-        expect(customer_klass.view_menu(takeaway)).to eq(takeaway.menu)
+      it 'shows a customer a menu from the specified takeaway' do
+        expect(customer.view_menu).to eq(takeaway.menu)
       end
     end
 
