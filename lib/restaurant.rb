@@ -1,12 +1,12 @@
-require_relative 'cuisines'
+require_relative 'menus'
 
 class Restaurant
 
+  include Menus
   attr_reader :menu
-  include Cuisines
 
   def initialize(type)
-    @menu = CUISINES[type]
+    @menu = MENUS[type]
   end
 
 end

@@ -7,47 +7,36 @@ class Takeaway
 
   def initialize(restaurant_klass=Restaurant)
     @restaurant = restaurant_klass
-    @order = Hash.new(0)
   end
 
-  def available
-    "Available cuisines: #{@restaurant::CUISINES.keys}"
+  def whats_available
+    @restaurant::MENUS.keys
   end
 
-  def new_order(cuisine=:Italian)
-    @menu = @restaurant.new(cuisine).menu
+  def new_order(type=:Italian)
+    reset_order
+    @menu = @restaurant.new(type).menu
     "A new order has been opened. Please read the menu"
   end
 
   def add(item, quantity=1)
-    if menu.include?(item)
-      order[item] += quantity
-      "#{item} x#{quantity} has been added to your order"
-    else
-      "Sorry, your selection is unavailable"
-    end
+    menu.include?(item) ? adds_with_message(item, quantity) : "Sorry, your selection is unavailable"
   end
 
   def delete(item, quantity=1)
-    if order.include?(item)
-      order[item] -= quantity
-      "#{item} x#{quantity} has been deleted from your order"
-    else
-      "Sorry, your order does not contain that item"
-    end
+    order.include?(item) ? delete_with_message(item, quantity) : "Sorry, your order does not contain that item"
   end
 
   def order_summary
-    summary = order.map { |item,quantity| "#{item} x#{quantity} = #{gbp(menu[item]*quantity)}" }.join(', ')
-    "Your order: "+summary
+    "Your order: #{summary.join(' ')}"
   end
 
   def total
-    "Your total: #{gbp(order_total)}"
+    "Your total: #{in_GBP(order_total)}"
   end
 
   def cancel_order
-    reset
+    reset_order
     "Order cancelled."
   end
 
@@ -57,7 +46,9 @@ class Takeaway
 
   private
 
-  # attr_reader :order
+  def summary
+    summary = order.map { |i,q| "#{i} x#{q} = #{in_GBP(item_value(i, q))}" }
+  end
 
   def confirmed?
     print "To confirm your order please repeat the total amount: "
@@ -65,16 +56,21 @@ class Takeaway
   end
 
   def order_total
-    order.map { |item,quantity| menu[item]*quantity }.reduce(:+)
+    order.map { |item,quantity| item_value(item, quantity) }.reduce(:+)
   end
 
-  def reset
+  def reset_order
     @order = Hash.new(0)
+  end
+
+  def reset_menu
+    @menu = "Please open a new order"
   end
 
   def confirmation_message
     send_sms
-    reset
+    reset_order
+    reset_menu
     "Your order has been confirmed! A confirmation text will be sent to your mobile. See you next time!"
   end
 
@@ -82,8 +78,22 @@ class Takeaway
     SendSMS.new(order_summary, total)
   end
 
-  def gbp(amount)
+  def item_value(item, quantity)
+    menu[item]*quantity
+  end
+
+  def in_GBP(amount)
     format("£%.2f",amount)
+  end
+
+  def delete_with_message(item, quantity)
+    order[item] -= quantity
+    "#{item} x#{quantity} has been deleted from your order"
+  end
+
+  def adds_with_message(item, quantity)
+    order[item] += quantity
+    "#{item} x#{quantity} has been added to your order"
   end
 
 end

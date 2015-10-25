@@ -1,4 +1,4 @@
-require 'rubygems' # not necessary with ruby 1.9 but included for completeness
+# require 'rubygems' # not necessary with ruby 1.9 but included for completeness
 require 'twilio-ruby'
 
 class SendSMS
@@ -8,19 +8,39 @@ class SendSMS
   end
 
   def send_sms(order_summary, total)
-    # put your own credentials here
-    account_sid = 'AC403eb1e438cc3f5d5512ae76466ab194' #'SECRETKEY'
-    auth_token =  'e234744b9f701e4cb1de7a78a1e6ba2e' #'SECRETtwilioKEY'
-    in1hr = (Time.now + 3600).strftime("%H:%M")
-    message = "Your order has been confirmed! It will be delivered by #{in1hr}"
-    # set up a client to talk to the Twilio REST API
-    @client = Twilio::REST::Client.new account_sid, auth_token
 
-    @client.account.messages.create({
-    	:from => '+441724410077',
-    	:to => '+447943313541',
-    	:body => "#{message}\n#{order_summary}\n#{total}",
-    })
+    @client = Twilio::REST::Client.new twilio_account_sid, twilio_auth_token
+
+    @client.account.messages.create(
+    	from: twilio_phone_number,
+    	to: client_phone_number,
+    	body: "#{message}\n\n#{order_summary}\n\n#{total}" )
+  end
+
+  private
+
+  def message
+    """\nYour order has been confirmed!\nIt's being cooked up right now and will be delivered by #{in_one_hour}\nGet ready to enjoy your meal!"""
+  end
+
+  def in_one_hour
+    (Time.now + 3600).strftime("%H:%M")
+  end
+
+  def twilio_account_sid
+    ENV['TWILIO_ID']
+  end
+
+  def twilio_auth_token
+    ENV['TWILIO_AUTH_TOK']
+  end
+
+  def client_phone_number
+    ENV['MY_PHONE_NUMBER']
+  end
+
+  def twilio_phone_number
+    ENV['TWILIO_NUMBER']
   end
 
 end

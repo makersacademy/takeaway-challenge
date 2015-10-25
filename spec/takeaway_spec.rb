@@ -1,14 +1,16 @@
 require 'takeaway'
 
 describe Takeaway do
-  describe '#new_order'
+
+  let(:takeaway) { described_class.new(restaurant) }
+  let(:restaurant) { double() }
 
     it "until a new_order, menu is nil" do
       expect(subject.menu).to eq nil
     end
 
-  let(:takeaway) { described_class.new(restaurant) }
-  let(:restaurant) { double() }
+    it { is_expected.to respond_to(:available) }
+
   let(:cuisine) { double(menu: {item: 5}) }
 
 
