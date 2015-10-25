@@ -2,6 +2,8 @@ class Takeaway
 
   attr_reader :order
 
+  WRONG_TOTAL_ERROR = 'Order total incorrect, please try again'
+
   def initialize(dishes)
     @dishes = dishes
     @order = []
