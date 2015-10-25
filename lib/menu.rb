@@ -1,6 +1,8 @@
 require_relative 'dish'
+require_relative 'formatter'
 
 class Menu
+  include Formatter
 
   def initialize(dish_klass = Dish, dishes_str = nil)
     @dish_klass = dish_klass
@@ -14,7 +16,7 @@ class Menu
     list = ""
     @dishes.each_with_index do |dish, index|
       num, name, price = (index).to_s, dish.name, dish.price.to_s
-      list << three_col_line(num, name, price)
+      list << three_col_str(num, name, price)
     end
     list
   end
@@ -42,10 +44,6 @@ class Menu
          arr = str.split(',')
          @dish_klass.new(arr[0], arr[1].to_f)
       end
-  end
-
-  def three_col_line(str1, str2, str3)
-    str1.ljust(10) + str2.ljust(10) + str3.rjust(6) + "\n"
   end
 
 end

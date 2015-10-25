@@ -12,7 +12,7 @@ describe Takeaway do
 
   context '#list_dishes' do
     it 'returns the result of @menu.list_dishes' do
-      allow(menu).to receive(:list_dishes) { :dishes }
+      allow(menu).to receive(:formatted_dishes) { :dishes }
       expect(takeaway.list_dishes).to eq :dishes
     end
   end

@@ -1,1 +1,2 @@
 Burger,5.99
+Chips,0.99
