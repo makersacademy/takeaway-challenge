@@ -1,34 +1,30 @@
 require 'order'
 
 describe Order do
-  subject(:order){ Order.new }
+  subject(:order) { Order.new }
 
-  let(:name){ 'Burger' }
-  let(:price){ 4.99 }
-  let(:dish){ double('dish', name: name, price: price) }
+  let(:dish){ double(:dish, price: 1)}
 
   context '#initialize' do
-    it 'defaults @list to an empty array' do
-      expect(order.list).to be_empty
+    it 'sets @list to an empty array' do
+      expect(subject.list).to be_empty
     end
   end
 
   context '#add' do
-    it 'adds an item to the order' do
-      quantity = 1
+    it 'adds the dish and quantity to @list' do
+      quantity = 3
       order.add(dish, quantity)
-      expect(order.list).to eq [{dish: dish, quantity: quantity}]
+      expect(order.list).to eq [{dish: dish, quantity: 3 }]
     end
   end
 
   context '#total' do
-    it 'returns zero for an empty order' do
-      expect(order.total).to eq 0
-    end
-    it 'returns the total value of an order' do
-      quantity = 2
-      order.add(dish, quantity)
-      expect(order.total).to eq price * 2
+    it 'returns the total value of @list' do
+      quantity = 3
+      2.times { order.add(dish, quantity) }
+      expect(order.total).to eq (2 * 3 * 1)
     end
   end
+
 end

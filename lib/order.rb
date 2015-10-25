@@ -16,7 +16,7 @@ class Order
       price, quantity = item[:dish].price, item[:quantity]
       total += price * quantity
     end
-    total
+    return total
   end
 
 end

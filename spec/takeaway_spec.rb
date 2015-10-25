@@ -1,39 +1,31 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway){ Takeaway.new(menu_array, order_klass) }
 
-  let(:name){ 'Burger' }
-  let(:price){ 4.99 }
-  let(:dish){ double('dish', name: name, price: price) }
-
-  let(:order){ double(:order, add: nil) }
+  let(:order){ double(:order) }
   let(:order_klass){ double(:order_klass, new: order) }
 
-  let(:menu_array){ [dish] }
-  let(:menu_string){ '1'.ljust(10) + name.ljust(10) + price.to_s.rjust(6) + "\n" }
+  let(:menu){ double(:menu) }
+  let(:menu_klass){ double(:menu_klass, new: menu)}
 
-  let(:wrong_total_error){ Takeaway::WRONG_TOTAL_ERROR }
-  let(:order_sucess_msg){ Takeaway::ORDER_SUCCESS_MSG}
-
+  subject(:takeaway){ Takeaway.new(order_klass, menu_klass) }
 
   context '#list_dishes' do
-    it 'lists the available dishes' do
-      expect(takeaway.list_dishes).to eq menu_string
+    it 'returns the result of @menu.list_dishes' do
+      allow(menu).to receive(:list_dishes) { :dishes }
+      expect(takeaway.list_dishes).to eq :dishes
     end
   end
 
   context '#place_order' do
     before :each do
-      quantity = 2
-      takeaway.add_to_order(0,quantity)
-      allow(order).to receive(:total) {quantity * price}
+      allow(order).to receive(:total) { 5 }
     end
-    it 'raises error if user provided total does not equal order total' do
-      expect{ takeaway.place_order(price) }.to raise_error wrong_total_error
+    it 'raises error if provided total is different to @order.total' do
+      expect{ takeaway.place_order(4) }.to raise_error Takeaway::WRONG_TOTAL_ERROR
     end
-    it 'returns "Order placed" if provided total matches order total' do
-      expect(takeaway.place_order(price * 2)).to eq order_sucess_msg
+    it 'returns success mesage if total matches @order.total' do
+      expect(takeaway.place_order(5)).to eq Takeaway::ORDER_SUCCESS_MSG
     end
   end
 
