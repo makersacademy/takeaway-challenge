@@ -6,7 +6,7 @@ class Menu
   	@list_of_dishes = { "lasagne" => 8, 
   		                "pizza" => 14, 
   		                "classic burger" => 11,
-  		                "cheese burgeer" => 12,
+  		                "cheese burger" => 12,
   		                "beef burger" => 13,
   		                "salad" => 4 }
   end
