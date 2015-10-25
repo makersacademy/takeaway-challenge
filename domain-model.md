@@ -21,9 +21,11 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 Functional representation
 -------------------------
-|Nouns|Verbs|
+|Objects|Messages|
 |-|
-|dish|list_dishes|
+|Restaurant|list_dishes
 ||place_order
 ||send_text
 ||check_amount
+|dish|get_price
+||get_name
