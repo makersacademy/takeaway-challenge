@@ -25,4 +25,10 @@ class Takeaway
   def basket_summary
     basket.map { |item, quantity| "#{item} x#{quantity} = #{'£%.2f' % (dishes[item] * quantity)}" }.join(', ')
   end
+
+  def total
+    total = basket.map { |item, quantity| dishes[item] * quantity }.inject(:+)
+    "Total: #{'£%.2f' % total}"
+  end
+
 end

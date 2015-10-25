@@ -28,4 +28,12 @@ describe Takeaway do
       expect(takeaway.basket_summary).to eq("kimchi x2 = £6.00, salmon maki x3 = £16.50")
     end
   end
+
+  describe '#total' do
+    it 'shows the total price' do
+      takeaway.order('kimchi', 2)
+      takeaway.order('salmon maki', 3)
+      expect(takeaway.total).to eq("Total: £22.50")
+    end
+  end
 end
