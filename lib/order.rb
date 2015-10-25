@@ -1,7 +1,7 @@
 require_relative 'send_sms'
 require_relative 'restaurant'
 
-class Takeaway
+class Order
 
   attr_reader :menu, :order
 
@@ -28,7 +28,7 @@ class Takeaway
   end
 
   def order_summary
-    "Your order: #{summary.join(' ')}"
+    "Your order: #{summary.join(', ')}"
   end
 
   def total
