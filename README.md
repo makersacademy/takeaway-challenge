@@ -26,3 +26,43 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+My Approach
+------------
+
+
+
+
+Feature Test Sample
+--------------------
+***New Takeaway Object:***
+```
+2.2.3 :001 > takeaway = Takeaway.new
+```
+***User can see the menu:***
+```
+2.2.3 :002 > takeaway.read_menu
+ => {"Spring Roll"=>0.99, "Fried Prawn"=>2.99, "Egg Fried Rice"=>1.99, "Prawn Cracker"=>0.79}
+```
+***User can place an order and specify quantity:***
+```
+2.2.3 :003 > takeaway.place_order("Spring Roll", 2)
+ => "2x Spring Roll(s) added to your basket."
+2.2.3 :004 > takeaway.place_order("Egg Fried Rice", 5)
+ => "5x Egg Fried Rice(s) added to your basket."
+```
+***User can see their shopping basket:***
+```
+2.2.3 :005 > takeaway.basket_summary
+Spring Roll x2 = £1.98, Egg Fried Rice x5 = £9.95
+```
+***User can see the total cost:***
+```
+2.2.3 :006 > takeaway.total_cost
+ => "Total Cost: £11.93"
+```
+***User can checkout their order and will receive SMS confirmation:***
+```
+2.2.3 :007 > takeaway.checkout(11.93)
+ => "You will shortly receive an SMS confirming your order."
+```
