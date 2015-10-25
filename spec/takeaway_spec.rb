@@ -1,7 +1,7 @@
 require "takeaway"
 
 describe Takeaway do
-  
+
 
   let(:dishes){ {
     'hamburger' => 2,
@@ -31,7 +31,7 @@ describe Takeaway do
   end
 
   it "expect to close the program" do
-    allow(twilio).to receive(:send_text_message).and_return(nil)
+    allow(twilio).to receive(:send_text_message)
     begin
       subject.select_dishes(end_order)
       rescue SystemExit
