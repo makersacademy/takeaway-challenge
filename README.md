@@ -27,3 +27,5 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Instructions
 -----
 
+Steps
+-----
