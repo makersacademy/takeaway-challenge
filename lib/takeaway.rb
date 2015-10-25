@@ -22,7 +22,7 @@ class Takeaway
   end
 
   def add_to_order(dish_num, quantity)
-    @order << {dish: @dishes[dish_num], quantity: quantity}
+    @order << {dish: @dishes[dish_num - 1], quantity: quantity}
   end
 
   def place_order(total)

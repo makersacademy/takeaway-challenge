@@ -21,7 +21,7 @@ describe Takeaway do
 
   context '#add_to_order' do
     it 'adds two of a dish to the order' do
-      takeaway.add_to_order(0, 2)
+      takeaway.add_to_order(1, 2)
       expect(takeaway.order).to eq [{dish: dish, quantity: 2}]
     end
   end
@@ -33,7 +33,7 @@ describe Takeaway do
     end
     it 'returns "Order placed" if provided total matches order total' do
       takeaway.add_to_order(0,2)
-      expect(takeaway.place_order(price*2)).to eq order_sucess_msg
+      expect(takeaway.place_order(price * 2)).to eq order_sucess_msg
     end
   end
 
