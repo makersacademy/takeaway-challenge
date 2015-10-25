@@ -18,7 +18,11 @@ class Takeaway
   end
 
   def order(item, quantity = 1)
-    basket[item] += 1
+    basket[item] += quantity
     "#{quantity}x #{item}(s) added to your basket."
+  end
+
+  def basket_summary
+    basket.map { |item, quantity| "#{item} x#{quantity} = #{'£%.2f' % (dishes[item] * quantity)}" }.join(', ')
   end
 end

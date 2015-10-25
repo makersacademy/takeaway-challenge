@@ -2,9 +2,6 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
-  let(:item) { 'kimchi' }
-  let(:quantity) { 2 }
-
 
   describe '#initialize' do
     it 'has a list of dishes with prices' do
@@ -20,7 +17,15 @@ describe Takeaway do
 
   describe '#order' do
     it 'reports items being added to basket' do
-      expect{takeaway.order(item, quantity)}.to change{ takeaway.basket.length}.by(1)
+      expect{takeaway.order('kimchi', 2)}.to change{ takeaway.basket.length}.by(1)
+    end
+  end
+
+  describe '#basket_summary' do
+    it 'creates an order summary' do
+      takeaway.order('kimchi', 2)
+      takeaway.order('salmon maki', 3)
+      expect(takeaway.basket_summary).to eq("kimchi x2 = £6.00, salmon maki x3 = £16.50")
     end
   end
 end
