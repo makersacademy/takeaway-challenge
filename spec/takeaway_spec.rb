@@ -4,7 +4,7 @@ describe Takeaway do
 
   let(:subject)   { Takeaway.new( "13", order, txt) }
   let(:order)     { double(:order) }
-  let(:txt)       { double(:order) }
+  let(:txt)       { double(:txt) }
   let(:num)       { "13" }
   let(:name)      { "oooh" }
   let(:order_1)   { ["dohnuts", 4] }
@@ -27,12 +27,17 @@ describe Takeaway do
   end
 
   describe "ordering" do
+
+    it 'prints the current menu' do
+      message = "This minutes menu, dohnuts :£4, potatoes :£9"
+      expect(subject.menu).to eq message
+    end
     it "places a new order" do
       expect(subject.add("dohnuts", 4)).to eq msg
     end
 
     it "raises an error when wrong food is entered" do
-      expect(subject.add("DESPAIR", 5)).to raise_error(ArgumentError, "try again")
+      expect(subject.add("gold", 5)).to raise_error(ArgumentError, "nope")
     end
   end
 
@@ -50,5 +55,4 @@ describe Takeaway do
       expect(subject.checkout).to eq num
     end
   end
-
 end

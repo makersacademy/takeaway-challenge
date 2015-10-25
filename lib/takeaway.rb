@@ -10,9 +10,14 @@ class Takeaway
     @txt = txt_klass
   end
 
+  def menu
+    menu_string = ''
+    @order.menu.each{|x,y| menu_string << ", #{x} :£#{y}"}
+    "This minutes menu#{menu_string}"
+  end
 
   def add(food, quantity=1)
-    fail ArgumentError, "try again" if check_order(food)
+    fail ArgumentError, "nope" unless check_input(food)
     @order.add_to(food, quantity)
     current_order
   end
@@ -23,7 +28,7 @@ class Takeaway
 
   def checkout
     message = current_order.gsub!(/Current/, "Final")
-    @txt.call(@num, message)
+    @txt.call(@number, message)
   end
 
   private

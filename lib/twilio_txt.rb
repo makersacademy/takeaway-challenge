@@ -1,6 +1,7 @@
 require "twilio-ruby"
 
 class Sms
+  attr_reader :num
   def initialize(client=false, frm=ENV["twilioFRM"])
     @from = frm
     @sid = ENV["twilioSID"]
@@ -8,10 +9,9 @@ class Sms
     @client = client ? client : Twilio::REST::Client.new(@sid, @tok)
   end
 
-  def call(num="+447479365828", message="DOOM POTATO")
-    @client.account.messages.create(from: @from, to: num, body: message)
+  def call(num="no_num", message="DOOM POTATO")
+    @num = (num == "no_num" ? "+447479365828" : num)
+    @client.account.messages.create(from: @from, to: @num, body: message)
+    "ORDER PLACED: #{message}"
   end
 end
-
-# a = Sms.new
-# a.call

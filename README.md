@@ -4,7 +4,33 @@
 *Takeawaaaaaaaay Challenge*
 ==================
 
-Task
+## Instructions
+
+```python
+2.2.3 :001 > a = Takeaway.new
+ => #<Takeaway:0x007ff33c...
+2.2.3 :002 > a.menu
+ => "This minutes menu, icecream :£5, dohnuts :£2, potatoes :£1"
+2.2.3 :003 > a.add('potatoes')
+ => "Current order: {:potatoes=>1}, Current total: 1"
+2.2.3 :004 > a.add('potatoes', 300)
+ => "Current order: {:potatoes=>301}, Current total: 301"
+2.2.3 :005 > a.current_order
+ => "Current order: {:potatoes=>301}, Current total: 301"
+2.2.3 :006 > a.checkout
+ => "ORDER PLACED: Final order: {:potatoes=>301}, Final total: 301"
+2.2.3 :007 >
+
+you then receive a text
+```
+
+### * TODO *
+- txt 2 order
+- pretty the interface
+- editing of the menu
+
+
+## Original Task
 -----
 User stories
 ```
@@ -24,8 +50,6 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-So it begins..
 
 * Hints on functionality to implement:
   * ensure you have a list of dishes with prices
