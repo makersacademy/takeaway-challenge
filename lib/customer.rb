@@ -9,8 +9,8 @@ class Customer
     @basket = Hash.new(0)
   end
 
-  def self.view_menu(restaurant)
-    restaurant.menu
+  def view_menu
+    @takeaway.menu
   end
 
   def select_dish(dish, quantity)

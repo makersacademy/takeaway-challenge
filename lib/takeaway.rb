@@ -31,7 +31,7 @@ class Takeaway
   def delivery_time
     current_time = Time.now
     delivery_hour = current_time.hour + 1
-    delivery_minute = '%.0f' % current_time.min
+    delivery_minute = current_time.min
     "#{delivery_hour}:#{delivery_minute}"
   end
 
