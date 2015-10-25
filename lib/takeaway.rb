@@ -1,5 +1,3 @@
-require 'twilio-ruby'
-
 require_relative 'send_text'
 require_relative 'menu'
 
@@ -9,7 +7,7 @@ class Takeaway
   attr_reader :menu, :basket
 
   def initialize(menu_klass: Menu)
-    @basket = []
+    @basket = Hash.new(0)
     @menu = menu_klass.new
   end
 
@@ -18,36 +16,41 @@ class Takeaway
   end
 
   def order(item, qty = 1)
-    basket << [item, qty]
+    fail 'This item is not on the menu' unless available?(item)
+    basket[item] += qty
     "#{item} x#{qty} added to your basket"
   end
 
   def basket_content
-    basket.map do |item, qty|
-      "#{item} x#{qty}: £#{qty * menu.dishes[item]}"
-    end.join("\n")
+    fail 'Basket is empty' if basket.empty?
+    basket.map { |item, qty| "#{item} x#{qty}: £#{qty * menu.dishes[item]}"}
+          .join("\n")
   end
 
-  def complete_order(price)
+  def checkout(price = 0)
     fail 'Wrong total' if wrong_total?(price)
-    delivery_time = (Time.now + 60*60).strftime("%H:%m")
-    send_text "Your order has been confirmed!" +
-              "Expect your yummie food by #{delivery_time}\n" +
-              "Your order:\n" +
-              "#{basket_content}\n" +
-              "#{total}"
+    send_text(basket_content, total)
+    reset_order
   end
 
   def total
     "Total price: £" + calculate_price.to_s
   end
 
+  def reset_order
+    @basket = Hash.new(0)
+  end
+
 private
   def calculate_price
     basket.map { |item, qty| qty * menu.dishes[item] }.inject(:+)
   end
-  
+
   def wrong_total?(price)
     calculate_price != price
+  end
+
+  def available?(item)
+    menu.dishes.include? item
   end
 end
