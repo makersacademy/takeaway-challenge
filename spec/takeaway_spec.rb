@@ -6,7 +6,7 @@ describe TakeAway do
 
   context 'Customer' do
     it 'can see the menu' do
-      expect(takeaway).to respond_to :order
+      expect(takeaway.menu_list).not_to be_empty
     end
     it 'can\'t order a dish not in the menu' do
       expect{takeaway.add_meal :pomodoro, 2}.to raise_error 'not in the menu'
@@ -19,7 +19,7 @@ describe TakeAway do
     end
     it 'can delete an item ordered' do
       takeaway.add_meal :pizza, 2
-      expect{takeaway.delete :pizza,1 }.to change{takeaway.order[:pizza]}.by -1
+      expect{takeaway.delete :pizza,1 }.to change{takeaway.order[:pizza]}.by(-1)
     end
   end
 
@@ -31,6 +31,11 @@ describe TakeAway do
     it 'is:' do
       takeaway.add_meal :pizza, 2
       expect(takeaway.total).to eq 'Your bill is: £20'
+    end
+    it 'will send a sms' do
+      takeaway.add_meal :pizza, 1
+      takeaway.order_summary
+      expect(takeaway.send_sms).to respond_to(:SendSMS).with(2).arguments
     end
   end
 
