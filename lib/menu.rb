@@ -19,6 +19,7 @@ class Menu
   end
 
   def view_basket
+    raise "Nothing added to the order!" if empty?
     ordered_items = @menu.select {|hash| hash[:quantity_ordered] > 0 }
     ordered_items.map {|hash| "#{hash[:food]} x#{hash[:quantity_ordered]}: £#{sprintf("%.2f", hash[:quantity_ordered]*hash[:price])}" if hash[:quantity_ordered] > 0 }.join(", ") + ", Total: £#{sprintf("%.2f", total)}"
   end
@@ -27,6 +28,10 @@ class Menu
     @menu.each do |elem|
       puts "#{elem[:food]} - £#{sprintf("%.2f", elem[:price])}"
     end
+  end
+
+  def empty?
+    !@menu.any? {|hash| hash[:quantity_ordered] > 0 }
   end
 
   #COULD THE VIEW_ METHODS BE A SEPARATE CLASS?

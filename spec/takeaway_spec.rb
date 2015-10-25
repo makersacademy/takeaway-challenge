@@ -2,9 +2,10 @@ require 'takeaway'
 
 
 describe Takeaway do
-  let(:menu) { double :menu, total: 10 , view_current_order: anything}
-  let(:twilio) { double :twilio, messages: 'blah' }
-  subject { described_class.new(menu) }
+  let(:menu) { double :menu, total: 10 , view_basket: anything}
+  let(:twilio) { double :twilio, messages: messages }
+  let(:messages) {double :messages, create: 'Foo' }
+  subject { described_class.new(menu, twilio) }
   describe '#initialize' do
     it 'initializes with a menu' do
       expect(subject.menu).to eq menu
@@ -40,5 +41,10 @@ describe Takeaway do
     end
   end
 
-  describe '#'
+  describe '#send_message' do
+    it 'calls the twilio class and attempts to send a message' do
+      expect(twilio).to receive(:messages)
+      subject.send_message
+    end
+  end
 end

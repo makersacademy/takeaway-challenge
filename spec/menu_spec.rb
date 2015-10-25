@@ -42,6 +42,9 @@ describe Menu do
       subject.add("Salt and Pepper King Prawn", 4)
       expect(subject.view_basket).to eq "Salt and Pepper King Prawn x4: £15.96, Total: £15.96"
     end
+    it 'should raise an error if there is nothing in the basket' do
+      expect{subject.view_basket}.to raise_error "Nothing added to the order!"
+    end
   end
 
   describe '#view_menu' do
