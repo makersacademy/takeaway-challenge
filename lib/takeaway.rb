@@ -1,4 +1,6 @@
 require_relative "menu"
+#require_relative 'twilio'
+
 
 class Takeaway
 
@@ -16,6 +18,7 @@ class Takeaway
   end
 
   def select_dishes(dish, quantity = 1 )
+    end_program(dish)
     total_order(dish, quantity)
     @selected_dishes[dish] += quantity
     info(dish, quantity)
@@ -25,8 +28,7 @@ class Takeaway
 
   def total_order(dish, quantity)
     selected = @menu.dishes.select {
-      |key| key.to_s.match(dish)
-    }
+      |key| key.to_s.match(dish) }
     @total_per_dish = selected[dish] * quantity
     @total += selected[dish] * quantity
   end
@@ -35,6 +37,10 @@ class Takeaway
     puts "you ordered #{quantity} x #{dish} = #{@total_per_dish}"
     @total_per_dish = 0
     puts "the total now is #{@total}"
+  end
+
+  def end_program(dish)
+    abort("order has been placed") if dish == 'end'
   end
 
 end

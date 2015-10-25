@@ -11,6 +11,7 @@ describe Takeaway do
   let(:dish){'hamburger'}
   let(:sel_dish){{'hamburger' => 4}}
   let(:total_cost){8}
+  let(:end_order){'end'}
 
 
   it "expect takeaway to print the menu" do
@@ -25,6 +26,13 @@ describe Takeaway do
   it "expect to calculate the total of the ordered dishes" do
     subject.select_dishes(dish, 4)
     expect(subject.total).to eq(total_cost)
+  end
+
+  it "expect to close the program" do
+    begin
+      subject.select_dishes(end_order)
+      rescue SystemExit
+    end
   end
 
 end
