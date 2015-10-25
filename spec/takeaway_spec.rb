@@ -39,8 +39,9 @@ describe Takeaway do
     context 'when total given by user corresponds to calculated total' do
       it 'sends a confirmation text message' do
         takeaway.order :menuitem1, 2
-        mgs = "menuitem1 x2: £2", "Total price: £2"
-        expect(takeaway).to receive(:send_text).with(msg)
+        msg = "menuitem1 x2: £2"
+        total = "Total price: £2"
+        expect(takeaway).to receive(:send_text).with(msg, total)
         takeaway.checkout(2)
       end
     end
