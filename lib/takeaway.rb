@@ -1,5 +1,5 @@
 class Takeaway
-  attr_reader :dishes
+  attr_reader :dishes, :basket
 
   DISHES = { 'chicken gyoza' => 4.00,
              'singapore fried noodles' => 7.00,
@@ -10,5 +10,11 @@ class Takeaway
 
   def initialize(dishes = DISHES)
     @dishes = DISHES
+    @basket = Hash.new(0)
   end
+
+  def open_menu
+    dishes.map { |item, price| "#{item}: #{'£%.2f' % price}" }
+  end
+
 end
