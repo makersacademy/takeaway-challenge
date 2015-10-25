@@ -39,8 +39,8 @@ Dependencies are minimised; different food classes can be included as arguments 
 
 Setup
 -----
-1. Fork this repository using `git clone <url>`
-2. cd to the project's root folder, run `gem install bundle` and then `bundle`
+1. Fork this repository and then clone it using `git clone <url>`
+2. cd to the project's folder, run `gem install bundle` and then `bundle`
 3. Run `gem install twilio-ruby`
 4. Run the program in irb using the following commands:
 
