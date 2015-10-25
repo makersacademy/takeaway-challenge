@@ -14,7 +14,7 @@ class Order
 
   def basket_sum(menu)
     @basket.each do |itm, qty|
-    print "#{itm} x#{qty} = £#{(menu.dishes[itm]*qty).round(2)}"
+    return "#{itm} x#{qty} = £#{(menu.dishes[itm]*qty).round(2)}"
     end
   end
 

@@ -4,7 +4,7 @@ describe Order do
 
   subject(:order) { described_class.new }
 
-  let(:menu) { double(:menu, :dishes => { 'Spring Roll' => 0.99 }) }
+  let(:menu) { double(:menu, dishes: { 'Spring Roll' => 0.99 }) }
   let(:itm) { 'Spring Roll' }
   let(:qty) { 2 }
 
