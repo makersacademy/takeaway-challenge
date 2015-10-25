@@ -1,11 +1,15 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway){ Takeaway.new(:dish) }
+
+  let(:dish){ double(name: 'dish1', price: 1) }
+  let(:menu){ [dish, dish] }
+
+  subject(:takeaway){ Takeaway.new(:menu) }
 
   context '#list_dishes' do
-    it 'lists the available dish' do
-      expect(takeaway.list_dishes).to eq (:dish)
+    it 'lists the available dishes' do
+      expect(takeaway.list_dishes).to eq (:menu)
     end
   end
 
