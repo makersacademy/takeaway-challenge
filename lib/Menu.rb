@@ -1,3 +1,5 @@
+require_relative 'Menu'
+
 class Menu
 
 	DEFAULT_MENU = { "Margarita" => 6.00, 
@@ -11,4 +13,7 @@ class Menu
 		DEFAULT_MENU
 	end
 
+	private
+
+	
 end
