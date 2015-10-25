@@ -38,16 +38,16 @@ Test crud for a menu - DONE
 
 Test print menu - DONE
 
-Test methods for a order(add,order,total,update,read)
+Test methods for a order(add,order,total) - DONE
 
 
 stage 2 tests
 
-Test submit an order
+Test SendText (DI Twillo) - DONE
 
-Test reject an order
+Test SubmitOrder (DI SendText, get, validated?, submit)
 
-Test generate accept message
+Test generate accept message (accept, reject)
 
 Test accept an order and send SMS accept message
 
