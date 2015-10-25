@@ -32,10 +32,25 @@ describe Takeaway do
   end
   let(:notifier) {double :notifier, notify: true}
   let(:notifier_klass) {double :notifier_klass, new: notifier}
+  let(:menu_loader) {double :menu_loader}
+  let(:menu_loader_klass) {double :menu_loader_klass, new: menu_loader}
+  let(:config_loader) {double :config_loader}
+  let(:config_loader_klass) do
+    double :config_loader_klass,
+      new: config_loader
+  end
+  let(:order_total) {double :order_total}
+  let(:order_total_klass) do
+    double :order_total_klass,
+      new: order_total
+  end
   subject(:takeaway) do
     described_class.new(menu_klass: menu_klass,
+                        menu_loader_klass: menu_loader_klass,
                         order_klass: order_klass,
+                        order_total_klass: order_total_klass,
                         notifier_klass: notifier_klass,
+                        config_loader_klass: config_loader_klass,
                         delivery_estimator_klass: delivery_estimator_klass)
   end
 

@@ -8,7 +8,7 @@ describe MenuLoader do
     it {is_expected.to respond_to(:objects)}
 
     it 'Raises an error when it cannot find the data file' do
-      expect { menu_loader.load("no_file") }.to raise_error "Data File missing!"
+      expect { menu_loader.load("no_file") }.to raise_error Errno::ENOENT
     end
 
     it 'returns a hash with objects in it if the file is found' do

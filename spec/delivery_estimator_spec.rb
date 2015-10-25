@@ -9,7 +9,7 @@ describe DeliveryEstimator do
 
     it 'Returns a time an hour into the future' do
       allow(Time).to receive(:now).and_return now
-      expect(delivery_estimator.eta).to eq (now + 60 * 60)
+      expect(delivery_estimator.eta).to eq(now + 60 * 60)
     end
   end
 end

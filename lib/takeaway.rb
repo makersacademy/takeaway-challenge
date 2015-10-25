@@ -1,11 +1,14 @@
 class Takeaway
   def initialize(menu_klass:,
+                 menu_loader_klass:,
                  order_klass:,
+                 order_total_klass:,
                  notifier_klass:,
+                 config_loader_klass:,
                  delivery_estimator_klass:)
-    @menu = menu_klass.new
-    @order = order_klass.new
-    @notifier = notifier_klass.new
+    @menu = menu_klass.new(menu_loader_klass: menu_loader_klass)
+    @order = order_klass.new(order_total_klass: order_total_klass)
+    @notifier = notifier_klass.new(config_loader_klass: config_loader_klass)
     @estimator = delivery_estimator_klass.new
   end
 
