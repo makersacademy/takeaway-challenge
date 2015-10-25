@@ -5,7 +5,7 @@ class SubmitOrder
   attr_reader :client, :total
   attr_accessor :order
 
-  def initialize sendtext_klass, account_sid, auth_token
+  def initialize sendtext_klass=Sendtext, account_sid, auth_token
     @client = sendtext_klass.new account_sid,auth_token
   end
 
@@ -18,9 +18,9 @@ class SubmitOrder
     total == order.total
   end
 
-  def submit mobilenumber
+  def submit message
     if validated?
-      client.send_message = "Thank you! Your order was placed and will be delivered before 18:52"
+      client.send_message = message
       "Order OK and sent expect a text message confirmation"
     else
       "Order total incorrect"

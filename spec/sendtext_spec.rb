@@ -12,6 +12,7 @@ describe Sendtext do
   message =   {from: from_mobile,
               to: to_mobile,
               body: message_body}
+
   let(:twillo) {double(:twillo)}
   let(:client) {double(:client)}
   let(:create) {double(:create)}

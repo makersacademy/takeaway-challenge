@@ -45,11 +45,8 @@ stage 2 tests
 
 Test SendText (DI Twillo) - DONE
 
-Test SubmitOrder (DI SendText, get, validated?, submit)
+Test SubmitOrder (DI SendText, get, validated?, submit) -DONE
 
-Test generate accept message (accept, reject)
-
-Test accept an order and send SMS accept message
 
 
 stage 3 tests
