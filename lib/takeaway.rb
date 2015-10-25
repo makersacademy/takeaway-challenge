@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Takeaway
 
   attr_reader :order
@@ -5,15 +7,13 @@ class Takeaway
   WRONG_TOTAL_ERROR = 'Order total incorrect, please try again'
   ORDER_SUCCESS_MSG = 'Order placed succesfully'
 
-  def initialize(dishes)
+  def initialize(dishes, order_klass) #= Order
     @dishes = dishes
-    @order = []
+    @order = order_klass.new
   end
 
   def list_dishes
     list = ""
-    #list << three_col_line('Num','Name','Price')
-    #list << three_col_line('---','----','-----')
     @dishes.each_with_index do |dish, index|
       num, name, price = (index + 1).to_s, dish.name, dish.price.to_s
       list << three_col_line(num, name, price)
@@ -22,27 +22,22 @@ class Takeaway
   end
 
   def add_to_order(dish_num, quantity)
-    @order << {dish: @dishes[dish_num - 1], quantity: quantity}
+    @order.add( get_dish(dish_num), quantity)
   end
 
   def place_order(total)
-    raise WRONG_TOTAL_ERROR unless total == order_total
+    raise WRONG_TOTAL_ERROR unless total == @order.total
     order_success
   end
 
   private
 
-  def order_success
-    ORDER_SUCCESS_MSG
+  def get_dish(dish_num)
+    @dishes[dish_num - 1]
   end
 
-  def order_total
-    total = 0
-    @order.each do |item|
-      price, quantity = item[:dish].price, item[:quantity]
-      total += price * quantity
-    end
-    total
+  def order_success
+    ORDER_SUCCESS_MSG
   end
 
   def three_col_line(str1, str2, str3)
