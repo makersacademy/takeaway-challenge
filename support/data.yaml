@@ -1,0 +1,3 @@
+--- !ruby/object:Dish
+description: Cheeseburger
+price: 4.99

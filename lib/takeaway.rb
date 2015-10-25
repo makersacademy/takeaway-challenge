@@ -1,7 +1,12 @@
 class Takeaway
-  def initialize(menu_klass: , order_klass:)
+  def initialize(menu_klass:,
+                 order_klass:,
+                 notifier_klass:,
+                 delivery_estimator_klass:)
     @menu = menu_klass.new
     @order = order_klass.new
+    @notifier = notifier_klass.new
+    @estimator = delivery_estimator_klass.new
   end
 
   def print_menu
@@ -18,5 +23,9 @@ class Takeaway
 
   def add_to_order(dish, qty)
     @order.add(dish, qty)
+  end
+
+  def notify
+    @notifier.notify(@estimator.eta)
   end
 end

@@ -1,11 +1,7 @@
 class Menu
 
-  def initialize
-    @dishes = []
-  end
-
-  def add(dish)
-    @dishes << dish
+  def initialize(menu_loader_klass:)
+    @dishes = menu_loader_klass.new.load("./support/data.yaml")
   end
 
   def choose(description)
