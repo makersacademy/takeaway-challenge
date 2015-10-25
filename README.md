@@ -38,6 +38,7 @@ As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 ```
+* *Create a method to check what is in the basket*
 * *Create a total method to check the total of the order.*
 ```
 As a customer
