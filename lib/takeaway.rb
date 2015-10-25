@@ -26,8 +26,8 @@ class Takeaway
   private
 
   def send_sms(message_to_send)
-    account_sid = ENV['ACCOUNT_SID']
-    auth_token = ENV['AUTH_TOKEN']
+    account_sid = 'ACe54bd6751e630538fe3b6e2e16f46975'
+    auth_token = '04143500350b6edc0ed55c042c3629c9'
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.account.messages.create(
         :from => '441358202027',
