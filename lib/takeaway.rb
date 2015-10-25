@@ -16,9 +16,18 @@ class Takeaway
     send_sms("Thank you! Your order total of £#{order_total} was placed and will be delivered before #{delivery_time}")
   end
 
+  def delivery_time
+    current_time = Time.now
+    delivery_hour = current_time.hour + 1
+    delivery_minute = current_time.min
+    "#{delivery_hour}:#{delivery_minute}"
+  end
+
+  private
+
   def send_sms(message_to_send)
-    account_sid = 'ACe54bd6751e630538fe3b6e2e16f46975'
-    auth_token = '04143500350b6edc0ed55c042c3629c9'
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.account.messages.create(
         :from => '441358202027',
@@ -26,13 +35,6 @@ class Takeaway
         :body => message_to_send
         )
     message_to_send
-  end
-
-  def delivery_time
-    current_time = Time.now
-    delivery_hour = current_time.hour + 1
-    delivery_minute = current_time.min
-    "#{delivery_hour}:#{delivery_minute}"
   end
 
 end
