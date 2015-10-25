@@ -17,7 +17,7 @@ class Takeaway
   end
 
   def add(food, quantity=1)
-    fail ArgumentError, "nope" unless check_input(food)
+    fail "nope" unless check_input(food)
     @order.add_to(food, quantity)
     current_order
   end
@@ -34,7 +34,7 @@ class Takeaway
   private
 
   def check_input(food)
-    @order.menu.key?(food.to_sym)
+    order.menu.include?(food.to_sym)
   end
 
   def check_order

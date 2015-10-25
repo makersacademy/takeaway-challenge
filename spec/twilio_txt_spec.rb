@@ -11,7 +11,7 @@ describe Sms do
   end
 
   it "returns a message when called" do
-    expect(subject.call).to eq "output message"
+    expect(subject.call).to eq "ORDER PLACED: DOOM POTATO"
   end
 
   it 'defaults to a predefined number' do

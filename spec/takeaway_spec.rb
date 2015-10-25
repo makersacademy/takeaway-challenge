@@ -37,7 +37,7 @@ describe Takeaway do
     end
 
     it "raises an error when wrong food is entered" do
-      expect(subject.add("gold", 5)).to raise_error(ArgumentError, "nope")
+      expect{ subject.add("gold") }.to raise_error("nope")
     end
   end
 
