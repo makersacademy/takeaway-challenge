@@ -6,9 +6,9 @@ describe Burger do
   end
 end
 
-describe Fried_Chicken do
+describe Deluxe_Fried_Chicken do
   it 'has the expected price' do
-    expect(described_class.price).to eq Fried_Chicken::SET_PRICE
+    expect(described_class.price).to eq Deluxe_Fried_Chicken::SET_PRICE
   end
 end
 

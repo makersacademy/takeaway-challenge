@@ -16,7 +16,7 @@ class Kebab
   end
 end
 
-class Fried_Chicken
+class Deluxe_Fried_Chicken
   SET_PRICE = 4.5
   @@price = SET_PRICE
 
