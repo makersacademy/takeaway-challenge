@@ -21,7 +21,7 @@ describe CustomerOrder  do
 
 
     it 'should add lines to the order' do
-      expect{ customer_order.add_items(:dish_one, 10) }.to change { customer_order.order_dishes.length }.by 1
+      expect{ customer_order.add_items(:dish_one, 10, 2.00) }.to change { customer_order.order_dishes.length }.by 1
     end
   end
 
