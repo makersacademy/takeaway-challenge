@@ -26,15 +26,27 @@ class Order
 
   def receipt
     receipt = "Your order has been placed and will be delivered at #{time}: "
-    @list.each_with_index do |item, index|
-      na = item[:dish].name
-      qu = item[:quantity]
-      pr = item[:dish].price * qu
-      receipt << "#{na} x#{qu} = #{pound_str(pr)}"
-      receipt << ", " if index < (@list.length - 1)
-    end
+    receipt << receipt_items
     receipt << ". Total: #{pound_str(total)}"
     return receipt
+  end
+
+  private
+
+  def receipt_items
+    items = ''
+    @list.each_with_index do |item, index|
+      items << receipt_item_str(item)
+      items << ", " if index < (@list.length - 1)
+    end
+    return items
+  end
+
+  def receipt_item_str(item)
+    na = item[:dish].name
+    qu = item[:quantity]
+    pr = item[:dish].price * qu
+    "#{na} x#{qu} = #{pound_str(pr)}"
   end
 
   def time
