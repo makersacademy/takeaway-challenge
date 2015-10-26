@@ -51,11 +51,12 @@ MY_NUMBER=                  # Your mobile number (must be authorised with Twilio
 
 ### TODO
 
-* Massively improve test coverage
+* Massively improve test coverage.
 * Separate file for default menu. Do not hard code!
-* Add line totals in CustomerOrder#display_order
-* Review encapsulation
-* Review breaking out some methods to new classes
+* Add line totals in CustomerOrder#display_order.
+* Improve encapsulation.
+* Review breaking out some methods to new classes.
+* Better separation of concerns.
 * Remove all the comments!
 
 ### Technologies used
