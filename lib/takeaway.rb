@@ -1,6 +1,5 @@
 require_relative 'menu'
 require_relative 'order'
-require_relative 'messenger'
 
 class Takeaway
   attr_reader :menu, :order, :total
@@ -31,7 +30,7 @@ class Takeaway
   end
 
   def checkout(amount = 0)
-    is_correct_amount? ? send_sms : fail ERROR
+    is_correct_amount? ? (send_sms) : (fail ERROR)
   end
 
   private

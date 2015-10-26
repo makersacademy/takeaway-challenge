@@ -13,6 +13,6 @@ class Menu
   end
 
   def open
-    dishes.map { |item, price| "#{item}: £#{'%.2f'%price}" }
+    dishes.map { |item, price| "#{item}: £#{sprintf('%.2f', price)}" }
   end
 end
