@@ -3,7 +3,7 @@ require './lib/restaurant.rb'
 describe Restaurant do
 
   let(:menu) {Menu.new}
-  subject(:subject) {Restaurant.new(menu)}
+  subject(:subject) { Restaurant.new(menu) }
 
   describe "#initialization" do
 
