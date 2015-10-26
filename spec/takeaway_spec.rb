@@ -2,13 +2,16 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(menu_klass.new, order_klass.new) }
+  subject(:takeaway) { described_class.new(menu_klass.new, order_klass.new, textmessenger_klass.new) }
 
   let(:menu) {double(:menu, dishes: { 'Spring Roll' => 0.99, 'Prawn' => 2.99 })}
   let(:menu_klass) { double(:menu_klass, new: menu) }
 
   let(:order) { double(:order) }
   let(:order_klass) { double(:order_klass, new: order) }
+
+  let(:messenger) { double(:messenger) }
+  let(:textmessenger_klass) { double(:textmessengerklass, new: messenger) }
 
   let(:itm) { 'Spring Roll' }
   let(:qty) { 2 }
@@ -26,6 +29,10 @@ describe Takeaway do
 
     it "creates a new #Order instance" do
       expect(takeaway).to have_attributes(order: order)
+    end
+
+    it "creates a new #TextMessenger instance" do
+      expect(takeaway).to have_attributes(messenger: messenger)
     end
   end
 

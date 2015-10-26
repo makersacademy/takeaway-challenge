@@ -7,7 +7,7 @@ class Takeaway
   CHECKOUT_ERROR = "Total cost entered does not match the sum of your order!"
   ITEM_ERROR = "This item does not exist!"
 
-  attr_reader :menu, :order, :total
+  attr_reader :menu, :order, :messenger, :total
 
   def initialize(menu=Menu.new, order=Order.new, messenger=TextMessenger.new)
     @menu = menu
