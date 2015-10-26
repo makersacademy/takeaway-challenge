@@ -60,7 +60,7 @@ RuntimeError: Sorry we don't have Chicken & chips on the menu
 To finalise an order a user must confirm the order and the total price as
 follows:
 
-'''
+```
 
 [11] pry(main)> order.confirm_order(9)
 
