@@ -60,6 +60,7 @@ class Takeaway
   end
 
   def total_order
+    # puts order1.print_dishes
     puts "T O T A L"
     puts "=========="
     puts "Total cost of current order: £#{order1.total}"
