@@ -4,7 +4,7 @@ class SendSMS
 
   def initialize order_summary, total
     send_sms order_summary, total
-   end
+  end
 
   def send_sms order_summary, total
     account_sid = ENV['twilio_sid']

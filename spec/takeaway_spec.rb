@@ -3,7 +3,7 @@ require 'takeaway'
 describe TakeAway do
 
   subject(:takeaway) {described_class.new menu_klass, sms_klass}
-  let(:menu) {double('menu', show_menu: [:pizza, 2], add: nil, dishes: {pizza: 10} )}
+  let(:menu) {double('menu', show_menu:[:pizza, 2],add: nil,dishes:{pizza: 10})}
   let(:menu_klass) {double('menu', new: menu)}
   let(:sms) {double('sms')}
   let(:sms_klass) {double('sms_klass', new: sms)}
@@ -37,7 +37,7 @@ describe TakeAway do
     end
     it 'confirm the order' do
       takeaway.add_item :pizza, 2
-      response = "thank you for your order, You will" <<
+      response = "thank you for your order, You will" \
                  " receive a confirmation message soon"
       expect(takeaway.confirmation('yes')).to eq response
     end
