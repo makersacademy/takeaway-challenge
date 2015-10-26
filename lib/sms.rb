@@ -15,5 +15,5 @@ class SMS
          to: '+447415580694',
          body: "#{message}\n",
      )
-   end
+ end
 end

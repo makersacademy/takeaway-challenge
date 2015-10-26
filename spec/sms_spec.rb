@@ -6,5 +6,5 @@ describe SMS do
 
   it 'send a text message' do
    expect(sms).to respond_to(:send_sms)
- end
+  end
 end

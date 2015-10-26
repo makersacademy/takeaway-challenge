@@ -9,7 +9,7 @@ class Order
   end
 
   def add_item name, quantity = 1
-    raise "Sorry we don't have #{name} on the menu" unless item_on_menu? name
+    fail "Sorry we don't have #{name} on the menu" unless item_on_menu? name
     @summary.basket[name] += quantity
     return "#{quantity} #{name}(s) added to your order"
   end
@@ -19,7 +19,7 @@ class Order
   end
 
   def confirm_order price
-    raise "Sorry our records don't match, we believe the total price is £#{ total_price }.  Please check your order." unless price_correct? price
+    fail "Sorry our records don't match, we believe the total price is £#{ total_price }.  Please check your order." unless price_correct? price
     @sms.send_sms
     @basket = Hash.new(0)
   end
