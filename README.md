@@ -14,6 +14,7 @@ Open irb and require the following files:
 require './lib/menu'
 require './lib/order'
 require './lib/order_summary'
+require './lib/sms'
 
 ```
 
