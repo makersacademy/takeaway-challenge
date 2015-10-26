@@ -42,11 +42,11 @@ This is how an app can be used:
  => "3x kimchi(s) added to your basket."
 2.2.3 :004 > kyotoya.order("salmon maki", 4)
  => "4x salmon maki(s) added to your basket."
-2.2.3 :005 > takeaway.basket_summary
-kimchi x3 = £1.98, salmon maki x4 = £9.95
+2.2.3 :005 > kyotoya.basket_summary
+kimchi x3 = £6.00, salmon maki x4 = £22.00
 2.2.3 :006 > kyotoya.total
- => "Total: £11.93"
-2.2.3 :007 > kyotoya.checkout(11.93)
+ => "Total: £28.00"
+2.2.3 :007 > kyotoya.checkout(28)
  => ""Thank you! Your order was placed and will be delivered before 10:54."
 ```
 
