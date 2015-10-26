@@ -32,13 +32,13 @@ class Menu
   private
 
   def read_file
-    raise FILE_ERROR unless File.exist?(@filename) && File.file?(@filename)
+    fail FILE_ERROR unless File.exist?(@filename) && File.file?(@filename)
     contents = ''
     file = File.open(@filename, 'r')
-    while !(line = file.gets).nil?
+    until (line = file.gets).nil?
       contents << line.chomp + '/'
     end
-    return contents
+    contents
   end
 
   def parse_dishes(dishes_str)

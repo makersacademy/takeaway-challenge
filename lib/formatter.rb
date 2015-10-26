@@ -5,7 +5,7 @@ module Formatter
   end
 
   def pound_str(float)
-    sprintf('£%.2f', float)
+    format('£%.2f', float)
   end
 
 end
