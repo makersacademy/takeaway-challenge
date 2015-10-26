@@ -44,9 +44,9 @@ You need to store your environment variables in a file called .env in the root d
 
 ```
 ACCOUNT_SID=“My_Account_SID”       # Your Twilio account SID between quotes
-export AUTH_TOKEN=“My_Auth_Token”  # Your Twilio auth token between quotes
-export TWILIONO=                   # Your Twilio phone number
-export MY_NUMBER=                  # Your mobile number (must be authorised with Twilio)
+AUTH_TOKEN=“My_Auth_Token”  # Your Twilio auth token between quotes
+TWILIONO=                   # Your Twilio phone number
+MY_NUMBER=                  # Your mobile number (must be authorised with Twilio)
 ```
 
 ### TODO
