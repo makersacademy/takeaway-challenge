@@ -2,8 +2,8 @@ require "takeaway"
 
 describe Takeaway do
 
-
-  let(:dishes){ {
+  subject(:takeaway) { described_class.new(menu, twilio) }
+  let(:dishes_r){ {
     'hamburger' => 2,
     'pasta'     => 4,
     'burrito'   => 3,
@@ -11,21 +11,25 @@ describe Takeaway do
   } }
   let(:dish){'hamburger'}
   let(:sel_dish){{'hamburger' => 4}}
-  let(:total_cost){8}
+  let(:total_cost){16}
   let(:end_order){'end'}
   let(:twilio){ double :twilio}
+  let(:menu){ double :menu}
 
 
   it "expect takeaway to print the menu" do
-    expect(subject.menu_restaurant).to eq(dishes)
+    allow(menu).to receive(:dishes).and_return(dishes_r)
+    expect(takeaway.menu_restaurant).to eq(dishes_r)
   end
 
   it "expect to select more quantity of the same item" do
+    allow(menu).to receive(:dishes).and_return(sel_dish)
     subject.select_dishes(dish, 4)
-    expect(subject.selected_dishes).to eq(sel_dish)
+    expect(takeaway.selected_dishes).to eq(sel_dish)
   end
 
   it "expect to calculate the total of the ordered dishes" do
+    allow(menu).to receive(:dishes).and_return(sel_dish)
     subject.select_dishes(dish, 4)
     expect(subject.total).to eq(total_cost)
   end
@@ -33,7 +37,7 @@ describe Takeaway do
   it "expect to close the program" do
     allow(subject).to receive(:send_message)
     begin
-      subject.select_dishes(end_order)
+      subject.pay(0)
       rescue SystemExit
     end
   end

@@ -2,9 +2,6 @@ require 'twilio-ruby'
 
 class Twilio_sms
 
-  def index
-  end
-
   def send_text_message
 
     account_sid= 'AC0b5e68dd8ffad76c7ca97787af3b4eca'

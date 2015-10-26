@@ -19,20 +19,21 @@ class Takeaway
   end
 
   def select_dishes(dish, quantity = 1 )
-    end_program(dish)
     total_order(dish, quantity)
     @selected_dishes[dish] += quantity
     info(dish, quantity)
   end
 
-  private
-
-  def end_program(dish)
-    if dish == 'end'
+  def pay(money)
+    if total == money
       send_message
       exit
+    else
+      raise "Amount paid not correct"
     end
   end
+
+  private
 
   def send_message
     @twilio.send_text_message
