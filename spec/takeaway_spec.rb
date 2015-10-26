@@ -2,16 +2,16 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(menu_klass.new, order_klass.new, textmessenger_klass.new) }
+subject(:takeaway) {Takeaway.new(mnu_klass.new,ord_klass.new,txtmsg_klass.new)}
 
   let(:menu) {double(:menu, dishes: { 'Spring Roll' => 0.99, 'Prawn' => 2.99 })}
-  let(:menu_klass) { double(:menu_klass, new: menu) }
+  let(:mnu_klass) { double(:mnu_klass, new: menu) }
 
   let(:order) { double(:order) }
-  let(:order_klass) { double(:order_klass, new: order) }
+  let(:ord_klass) { double(:ord_klass, new: order) }
 
   let(:messenger) { double(:messenger) }
-  let(:textmessenger_klass) { double(:textmessengerklass, new: messenger) }
+  let(:txtmsg_klass) { double(:txtmsg_klass, new: messenger) }
 
   let(:itm) { 'Spring Roll' }
   let(:qty) { 2 }
