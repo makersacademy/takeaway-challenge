@@ -1,6 +1,3 @@
-require_relative 'menu'
-require_relative 'order'
-
 class Takeaway
   attr_reader :menu, :order, :total
 
@@ -15,9 +12,9 @@ class Takeaway
     menu.open
   end
 
-  def order(item, quantity = 1)
-    order.add_basket(item, quantity)
-    "#{quantity}x #{item}(s) added to your basket."
+  def add_to_order(item, quantity = 1)
+    order.add_basket(item, qty)
+    "#{qty}x #{item}(s) added to your basket."
   end
 
   def order_summary
