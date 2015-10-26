@@ -27,11 +27,6 @@ describe Takeaway do
       expect(subject.my_order).to eq ({'hotdog' => 2})
     end
 
-    xit "raises error if menu_item isn't on the menu" do
-
-    end
-  end
-
   context '#calculate' do
     it 'calculates total value of my order' do
       subject.order('hotdog')
@@ -46,5 +41,10 @@ describe Takeaway do
       subject.order('Fries')
       expect(subject.calculate).to eq 7.25
     end
+  end
+
+  context '#basket' do
+    it { is_expected.to respond_to :basket }
+  end
   end
 end

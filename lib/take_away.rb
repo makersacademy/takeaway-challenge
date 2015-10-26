@@ -1,12 +1,17 @@
+require_relative 'menu'
 class Takeaway
 
-  attr_reader :my_order
+  attr_reader :my_order, :check_out
+  
+  MENU = { "hotdog"=>1.99,
+          "cheesebuger"=>1.49,
+          "Hamburger"=>0.99,
+          "Fries"=>0.89, }
 
-  MENU = { "hotdog"=>1.99, "cheesebuger"=>1.49,
-    "Hamburger"=>0.99, "Fries"=>0.89, }
-
-  def initialize
+  def initialize(menu_klass = Menu.new)
+    @menu = menu_klass
     @my_order = {}
+    @total = 0.0
   end
 
   def read_menu
@@ -22,11 +27,21 @@ class Takeaway
   end
 
   def calculate
-    total = 0.0
     my_order.each do |item, quantity|
-      item_price = MENU[item]
-      total += item_price * quantity
+    item_price = MENU[item]
+    @total += item_price * quantity
     end
-    total
+    @total
   end
+
+  def basket
+    raise "Your basket is empty!" if basket.empty?
+    my_order
+  end
+
+  def check_out
+    ("Thank you for your order: £#{@total}")
+  end
+
+
 end
