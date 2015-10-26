@@ -4,7 +4,7 @@ class Customer
 
   attr_reader :takeaway, :basket
 
-  def initialize(takeaway_klass)
+  def initialize(takeaway_klass = Takeaway)
     @takeaway = takeaway_klass.new
     @basket = Hash.new(0)
   end

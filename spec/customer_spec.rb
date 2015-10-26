@@ -42,7 +42,7 @@ let(:takeaway) { double(menu: {chips: 4.00, rice: 2.00 }) }
       it 'raises an error if the basket is empty' do
         error = 'Your basket is empty. Please select a dish'
         expect{customer.place_order}.to raise_error error
-      end
+    end
 
       it 'places a customer\'s order with the takeaway' do
         confirmation_message = 'Thank you! Your order was placed and will be delivered before 19:00'
