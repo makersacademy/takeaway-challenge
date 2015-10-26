@@ -1,14 +1,15 @@
 require_relative 'order'
 require_relative 'menu'
+require_relative 'sms'
 
 class Takeaway
 
   WRONG_TOTAL_ERROR = 'Order total incorrect, please try again'
-  ORDER_SUCCESS_MSG = 'Order placed succesfully'
 
-  def initialize(order_klass = Order, menu_klass = Menu)
+  def initialize(order_klass = Order, menu_klass = Menu, sms_klass = Sms)
     @order = order_klass.new
     @menu = menu_klass.new
+    @sms = sms_klass.new
   end
 
   def list_dishes
@@ -27,7 +28,7 @@ class Takeaway
   private
 
   def order_success
-    ORDER_SUCCESS_MSG
+    @sms.send(@order.receipt)
   end
 
 end

@@ -19,4 +19,16 @@ class Order
     return total
   end
 
+  def receipt
+    receipt = 'Your order: '
+    @list.each_with_index do |item, index|
+      na, qu, = item[:dish].name, item[:quantity]
+      pr = item[:dish].price * qu
+      receipt << "#{na} x#{qu} = £#{pr}"
+      receipt << ", " if index < (@list.length - 1)
+    end
+    return receipt
+  end
+
+
 end
