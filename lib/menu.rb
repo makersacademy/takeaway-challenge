@@ -12,7 +12,7 @@ class Menu
   end
 
   def contains?( name)
-    @items.has_key?(name)
+    @items.key?(name)
   end
 
   def price( name)
