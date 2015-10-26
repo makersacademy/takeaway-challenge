@@ -11,30 +11,26 @@ Clone the repository:
 
 ```
 https://github.com/FergusLemon/takeaway-challenge.git
-
 ```
 change into the directory:
 
 ```
 cd takeaway_challenge
-
 ```
 
 and run the tests:
 
 ```
 rspec
-
 ```
 
-Open irb and require the following files:
+To see how the program works, open irb or pry and require the following files:
 
 ```
 require './lib/menu'
 require './lib/order'
 require './lib/order_summary'
 require './lib/sms'
-
 ```
 
 A user can then check the menu, order items and view a summary of their basket
@@ -65,7 +61,6 @@ as follows:
 "Triple-Thick Shakes"=>4}>
 [9] pry(main)> order.total_price
 => 9
-
 ```
 
 If a user tries to select a menu that is not on the menu they will receive
@@ -74,7 +69,6 @@ an error message:
 ```
 [10] pry(main)> order.add_item("Chicken & chips")
 RuntimeError: Sorry we don't have Chicken & chips on the menu
-
 ```
 
 To finalise an order a user must confirm the order and the total price as
@@ -83,16 +77,14 @@ follows:
 ```
 
 [11] pry(main)> order.confirm_order(9)
-
 ```
 The user will receive a text message saying that they will receive their order
 within the hour.  If the user inputs a total price that is different to the
-total calculated by the programme they receive an error message:
+total calculated by the program they receive an error message:
 
 ```
 
 [12] pry(main)> order.confirm_order(8)
 RuntimeError: Sorry our records don't match, we believe the total price is £9.  
 Please check your order.
-
 ```
