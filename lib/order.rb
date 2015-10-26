@@ -2,7 +2,8 @@ class Order
 
   attr_reader :summary, :menu
 
-  def initialize (menu_klass = Menu.new, order_summary_klass = OrderSummary.new, sms_klass = SMS.new)
+  def initialize (menu_klass = Menu.new, order_summary_klass\
+    = OrderSummary.new, sms_klass = SMS.new)
     @summary = order_summary_klass
     @menu = menu_klass
     @sms = sms_klass
@@ -35,7 +36,8 @@ class Order
 
   def price_calculator
     total = 0
-    @summary.basket.each { |name, quantity| total += (quantity * price_matcher(name)) }
+    @summary.basket.each { |name, quantity| total += (quantity *\
+    price_matcher(name)) }
     total
   end
 
