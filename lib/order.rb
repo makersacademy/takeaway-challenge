@@ -21,14 +21,14 @@ class Order
       quantity = item[:quantity]
       total += price * quantity
     end
-    return total
+    total
   end
 
   def receipt
     receipt = "Your order has been placed and will be delivered at #{time}: "
     receipt << receipt_items
     receipt << ". Total: #{pound_str(total)}"
-    return receipt
+    receipt
   end
 
   private
@@ -39,7 +39,7 @@ class Order
       items << receipt_item_str(item)
       items << ", " if index < (@list.length - 1)
     end
-    return items
+    items
   end
 
   def receipt_item_str(item)
