@@ -35,4 +35,4 @@ Manipulating the subsequent hashes was a challenge, as was the dependency inject
 ####**Tests**
 There is not adequate testing of the verify class, with a stub for the twilio functionality.
 
-https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
