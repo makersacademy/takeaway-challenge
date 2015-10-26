@@ -4,8 +4,6 @@ describe Takeaway do
 	
 	menu = {fish_and_chips: 5.99, curry_and_rice: 7.99, wun_ton_soup: 5.99, sweet_and_sour_pork: 6.50, prawns_chop_suey: 5.50}
 	dish = :fish_and_chips 
-	let(:qty) {2}
-	let(:user_total) {15}
 	let(:order) {{:fish_and_chips => [5.99,2]}}
 	let(:confirmation) {double :confirmation}
 	let(:text) {double :text}
@@ -18,6 +16,12 @@ describe Takeaway do
 		end
 		it 'creates an empty hash to store the order' do
 			expect(takeaway.checkout).to be_empty
+		end
+	end
+
+	context '#show' do
+		it 'returns the meals on the menu' do
+			expect(takeaway.show).to eq menu
 		end
 	end
 
