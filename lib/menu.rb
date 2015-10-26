@@ -16,7 +16,7 @@ class Menu
 
   private
   def load_menu(menu_name)
-    file_name = "lib/menus/#{menu_name.to_s}.menu"
+    file_name = "lib/menus/#{menu_name}.menu"
     File.open(file_name).map { |line| line.chomp.split(' => ') }.to_h
   end
 end

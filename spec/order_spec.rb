@@ -1,11 +1,15 @@
 require 'order'
 #
 describe Order do
-  let(:menu) { double(:menu, dishes: dishes)}
-  let(:messager) { double(:messager)}
-  let(:dishes) { {menuitem1: 1, menuitem2: 1.50 } }
+  subject(:order) do
+    described_class.new(menu_instance: menu, messager: msg_klass)
+  end
 
-  subject(:order) { described_class.new(menu_instance: menu, messager: messager)}
+  let(:msg_klass) { double(:msg_klass, new: messager)}
+  let(:messager) { double(:messager)}
+
+  let(:menu) { double(:menu, dishes: dishes)}
+  let(:dishes) { {menuitem1: 1, menuitem2: 1.50 } }
 
   describe '#add' do
     it 'stores name and quantity of dish in basket' do

@@ -13,8 +13,10 @@ describe Messager do
       body: order
     }
 
-    expect(Twilio::REST::Client).to receive(:new).with(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']).and_return(client)
-    allow(client).to receive_message_chain(:messages, :create).with(twilio_message_body)
+    expect(Twilio::REST::Client).to receive(:new)
+      .with(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']).and_return(client)
+    allow(client).to receive_message_chain(:messages, :create)
+      .with(twilio_message_body)
     allow(messager).to receive(:compose_message).with(order).and_return(order)
     messager.send_text(order)
   end

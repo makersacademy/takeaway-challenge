@@ -17,7 +17,7 @@ class Order
 
   def overview
     return 'Basket is empty' if basket.empty?
-    basket.map { |item, qty| "#{item} x#{qty}: £#{item_price(item, qty)}"}
+    basket.map { |item, qty| "#{item} x#{qty}: £#{price(item, qty)}"}
       .join("\n") + "\n" + total
   end
 
@@ -28,8 +28,9 @@ class Order
     send_text
   end
 
-  def item_price(item, qty)
-    ('%.2f' % (qty * menu.dishes[item].to_f)).to_f
+  def price(item, qty)
+    price = qty * menu.dishes[item].to_f
+    format('%.2f', price)
   end
 
   def reset
@@ -55,7 +56,7 @@ class Order
   end
 
   def calculate_price
-    basket.map { |item, qty| item_price(item, qty) }.inject(:+)
+    basket.map { |item, qty| price(item, qty).to_f }.inject(:+)
   end
 
 end
