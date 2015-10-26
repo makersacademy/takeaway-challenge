@@ -1,12 +1,14 @@
 require 'twilio-ruby'
 require_relative 'takeaway'
+require 'dotenv'
+Dotenv.load
 
 module Twilio
 
 attr_reader :client
 
-ACCOUNT_SID = 'ACc772cdd79988a960ca9fab13e3122a1e'
-AUTH_TOKEN = '9094b2c1421543822bd7cf8bcabbe929'
+ACCOUNT_SID = ENV['ACCOUNT_SID']
+AUTH_TOKEN = ENV['AUTH_TOKEN']
 
   def send_message(sender,receiver,client = Twilio::REST::Client)
     api_link = client.new ACCOUNT_SID, AUTH_TOKEN

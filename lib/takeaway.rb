@@ -1,19 +1,19 @@
 require_relative 'twilio'
 require_relative 'foods'
+require 'dotenv'
+Dotenv.load
 
 class Takeaway
 include Twilio
 attr_reader :ordered_dishes
-ACCOUNT_SID = 'ACc772cdd79988a960ca9fab13e3122a1e'
-AUTH_TOKEN = '9094b2c1421543822bd7cf8bcabbe929'
-SENDER = '+447481337824'
+SENDER = ENV['SENDER']
 
   def initialize
     @menu_file = 'menu-file.txt'
     @dish_array = []
     @ordered_dishes = Hash.new(0)
     @running_total = 0
-    @receiver = '+447527743476'
+    @receiver = ENV['RECEIVER']
   end
 
   def menu
