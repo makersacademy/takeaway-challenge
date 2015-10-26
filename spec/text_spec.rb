@@ -8,9 +8,7 @@ describe Text do
 
 	context '#message' do
 		it 'sends a message' do	
-			allow(messages).to receive(:create)
-			expect(client).to receive(messages)
-			text.message
+
 		end
 	end
 end

@@ -7,7 +7,7 @@ class Takeaway
 
 	attr_reader :menu, :checkout
 
-	def initialize(menu)
+	def initialize menu
 		@menu = menu
 		@checkout = {}
 	end
