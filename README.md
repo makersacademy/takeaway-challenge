@@ -1,18 +1,35 @@
 Takeaway Challenge
 ==================
 
-Instructions
+Intro
 -------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* The challenge is writing a takeaway programme that sends a text message when the order is placed and total confirmed. The features are implemented according to the following user stories.
 
-Task
+Approach
 -----
+* Class structure :
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+- Restaurant class (takeaway interface)
+- Order class (places & calculate order total)
+- Menu class (contains dishes)
+- Messenger module (twilio)
+
+The classes are structured in the following hierarchy :
+
+* Restaurant ---> Order ---> Menu, with Twilio as a module that sends text messages when order is complete. 
+
+Currently rspec tests need to have better coverage and I am hoping to complete the rspec test for the messenger module.
+
+Gems List
+------
+gem 'rspec'
+gem 'rubocop'
+gem 'coveralls', require: false
+gem 'rubocop-rspec'
+gem 'capybara'
+gem 'twilio-ruby'
+gem 'dotenv', '~> 2.0', '>= 2.0.2'
+
 
 ```
 As a customer
