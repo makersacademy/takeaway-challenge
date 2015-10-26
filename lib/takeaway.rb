@@ -2,10 +2,11 @@ require './lib/menu'
 require './lib/message'
 class Takeaway
   attr_reader :order, :total
-  def initialize(menu_klass=Menu.new)
+  def initialize(menu_klass, message_klass = Message)
       @menu = menu_klass
       @order = []
       @total = 0
+      @new_message = message_klass
   end
 
   def list_dishes
@@ -23,7 +24,7 @@ class Takeaway
 
   def send_message
     list_order
-    Message.new(@dishes, @total).send_message
+    @new_message.new(@dishes, @total).send_message
   end
 
   def list_order
