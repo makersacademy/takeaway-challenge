@@ -7,11 +7,15 @@ describe Takeaway do
 
   subject { described_class.new(menu_klass)}
 
+  it 'menu should display complete menu' do
+    expect(subject.menu).to eq menu.show
+  end
+
   before(:each) do
     subject.order("chilli", 3)
     subject.order("pizza")
     allow(menu).to receive(:price).with('chilli').and_return 2.99
-    allow(menu).to receive(:price).with('pizza').and_return 4.5    
+    allow(menu).to receive(:price).with('pizza').and_return 4.5
   end
 
   describe 'ordering' do

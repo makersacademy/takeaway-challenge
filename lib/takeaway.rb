@@ -11,7 +11,7 @@ class Takeaway
   end
 
   def menu
-    @menu.show_menu
+    @menu.show
   end
 
   def order(name, quantity = 1)
