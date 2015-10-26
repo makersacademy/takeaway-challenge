@@ -7,6 +7,25 @@ confirming and receiving a text message upon completion of the order.
 
 Instructions
 ==================
+Clone the repository:
+
+```
+https://github.com/FergusLemon/takeaway-challenge.git
+
+```
+change into the directory:
+
+```
+cd takeaway_challenge
+
+```
+
+and run the tests:
+
+```
+rspec
+
+```
 
 Open irb and require the following files:
 
