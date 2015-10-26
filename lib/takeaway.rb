@@ -3,6 +3,9 @@ require_relative 'menu'
 require_relative 'sms'
 
 class Takeaway
+  extend Forwardable
+
+  def_delegator :@order, :add, :add
 
   WRONG_TOTAL_ERROR = 'Order total incorrect, please try again'
 
@@ -17,7 +20,8 @@ class Takeaway
   end
 
   def add_to_order(dish_num, quantity)
-    @order.add( @menu.dishes[dish_num], quantity)
+    dish = @menu.dishes[dish_num]
+    add(dish, quantity)
   end
 
   def place_order(total)

@@ -20,6 +20,10 @@ describe Takeaway do
     end
   end
 
+  context '#add_to_order' do
+    
+  end
+
   context '#place_order' do
     it 'raises error if provided total is different to @order.total' do
       allow(order).to receive(:total) { 5 }
