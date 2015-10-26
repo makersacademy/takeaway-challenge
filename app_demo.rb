@@ -9,21 +9,23 @@ class Takeaway
     @menu1 = Menu.new Dish
   end
 
+  def select_option
+    puts 'Takeaway Challenge'
+    puts '=================='
+    puts
+    puts 'Select Option:'
+    puts 'A - Add dish to menu'
+    puts 'B - Display menu so that can make an order'
+    puts 'C - Create an order'
+    puts 'D - Total an order'
+    puts 'E - Submit order'
+    puts 'X - End'
+    option = gets.chomp.downcase
+  end
 
   def demo
     begin
-      puts 'Takeaway Challenge'
-      puts '=================='
-      puts
-      puts 'Select Option:'
-      puts 'A - Add dish to menu'
-      puts 'B - Display menu so that can make an order'
-      puts 'C - Create an order'
-      puts 'D - Total an order'
-      puts 'E - Submit order'
-      puts 'X - End'
-      option = gets.chomp
-      case option.downcase
+      case select_option
       when 'a'
         while true
           puts 'Add dishes name and then price (press return twice to end order )'
