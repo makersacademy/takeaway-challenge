@@ -16,7 +16,8 @@ Instruction for running in irb
 ==============================
 
 Here's an example of ordering a pizza
-'''
+
+```
 .2.3 :001 > require './lib/menu'
  => true
 2.2.3 :002 > require './lib/messenger'
@@ -54,7 +55,7 @@ Total: £3
  => nil
 2.2.3 :013 > restaurant.order_takeaway
  => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC89d950d129482b828259244e80366b30/Messages/SM802bcf5621444d2f8d36b9623ec4a1f6>
- '''
+ ```
 
 Takeaway Challenge
 ==================
