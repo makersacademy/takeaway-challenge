@@ -5,10 +5,6 @@ class Order
     @order_lines = Hash.new(0)
   end
 
-  def pick(description)
-    @menu.choose(description)
-  end
-
   def add(dish, qty)
     @order_lines[dish] += qty
   end

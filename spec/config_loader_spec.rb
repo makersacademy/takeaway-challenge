@@ -5,7 +5,6 @@ describe ConfigLoader do
   subject(:config_loader) {described_class.new(config_file)}
 
   context 'Loading Configuration' do
-    it {is_expected.to respond_to(:config)}
     it {is_expected.to respond_to(:account_sid)}
     it {is_expected.to respond_to(:auth_token)}
 

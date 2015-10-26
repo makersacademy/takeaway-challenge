@@ -10,7 +10,4 @@ class ConfigLoader
     fail "Auth Token Missing" unless  @config.key?('Auth Token')
     @config['Auth Token']
   end
-  def config
-    @config.dup
-  end
 end
