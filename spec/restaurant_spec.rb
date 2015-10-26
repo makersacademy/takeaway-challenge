@@ -2,8 +2,7 @@ require 'restaurant'
 
 describe Restaurant do
 
-let(:subject) {Restaurant.new({"Pizza" => 12,"Pasta" => 13})}
-let(:menu) { double(:menu, dishes: {"Pizza" => 12,"Pasta" => 13})}
+let(:subject) {Restaurant.new(taste: {"Pizza" => 12,"Pasta" => 13})}
 
   it 'allows to select dishes with quantities' do
     expect(subject).to respond_to(:select_dish).with(2).arguments
@@ -45,13 +44,14 @@ let(:menu) { double(:menu, dishes: {"Pizza" => 12,"Pasta" => 13})}
 
   end
 
-  #describe '#right_amount?' do
-    #it "calculates bill" do
-    #  subject.select_dish("Pizza",2)
-    #  subject.select_dish("Pasta",2)
-    #  expect(subject.right_amount?(50)).to eq true
-    #end
-  #end
-
+=begin
+  describe '#right_amount?' do
+    it "calculates bill" do
+      subject.select_dish("Pizza",2)
+      subject.select_dish("Pasta",2)
+      expect(subject.right_amount?(50)).to eq true
+    end
+  end
+=end
 
 end

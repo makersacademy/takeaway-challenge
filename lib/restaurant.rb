@@ -1,6 +1,6 @@
 require_relative 'order'
 require_relative 'menu'
-
+require_relative 'message'
 
 
 class Restaurant
@@ -9,9 +9,9 @@ class Restaurant
 
   attr_reader :order
 
-  def initialize(dishes)
+  def initialize(menu_klass: Menu, taste: MENU)
     @order = {}
-    @menu = Menu.new(dishes).dishes
+    @menu = menu_klass.new(taste)
   end
 
   def confirm_order
