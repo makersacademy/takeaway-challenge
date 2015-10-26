@@ -1,8 +1,8 @@
-require 'order'
+require 'restaurant'
 
-describe Order do
+describe Restaurant do
 
-let(:subject) {Order.new({"Pizza" => 12,"Pasta" => 13})}
+let(:subject) {Restaurant.new({"Pizza" => 12,"Pasta" => 13})}
 let(:menu) { double(:menu, dishes: {"Pizza" => 12,"Pasta" => 13})}
 
   it 'allows to select dishes with quantities' do
@@ -39,7 +39,7 @@ let(:menu) { double(:menu, dishes: {"Pizza" => 12,"Pasta" => 13})}
   context 'when payment amount is correct' do
     it "sends a confirmation message" do
       subject.select_dish("Pizza",2)
-      expect(subject.submit_order(24)).to eq("Thank you! Your order was placed and will be delivered in one hour")
+      expect(subject.submit_order(24)).to eq("Your order has been placed successfully. You will receive a confirmation text message.")
     end
   end
 
