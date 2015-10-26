@@ -1,19 +1,38 @@
-Takeaway Challenge
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+*Takeawaaaaaaaay Challenge*
 ==================
 
-Instructions
--------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Instructions
 
-Task
+```python
+2.2.3 :001 > a = Takeaway.new
+ => #<Takeaway:0x007ff33c...
+2.2.3 :002 > a.menu
+ => "This minutes menu, icecream :£5, dohnuts :£2, potatoes :£1"
+2.2.3 :003 > a.add('potatoes')
+ => "Current order: {:potatoes=>1}, Current total: 1"
+2.2.3 :004 > a.add('potatoes', 300)
+ => "Current order: {:potatoes=>301}, Current total: 301"
+2.2.3 :005 > a.current_order
+ => "Current order: {:potatoes=>301}, Current total: 301"
+2.2.3 :006 > a.checkout
+ => "ORDER PLACED: Final order: {:potatoes=>301}, Final total: 301"
+2.2.3 :007 >
+
+you i receive a text
+```
+
+### * TODO *
+- txt 2 order
+- pretty the interface
+- editing of the menu
+
+
+## Original Task
 -----
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+User stories
 ```
 As a customer
 So that I can check if I want to order something
@@ -49,6 +68,3 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 **Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
