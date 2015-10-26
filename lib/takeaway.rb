@@ -9,9 +9,10 @@ class Takeaway
 
   attr_reader :menu, :order, :total
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu=Menu.new, order=Order.new, messenger=TextMessenger.new)
     @menu = menu
     @order = order
+    @messenger = messenger
   end
 
   def read_menu
@@ -48,7 +49,7 @@ class Takeaway
   end
 
   def send_msg
-    TextMessenger.send_text
+    @messenger.send_text
   end
 
 end
