@@ -1,54 +1,68 @@
-Takeaway Challenge
-==================
+# Overview
+This program is designed to simulate a takeaway order process.
 
-Instructions
--------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+A customer has the ability to view the menu of their chosen takeaway venue. The
+customer is able to add dishes to their basket(provided that the dish is a valid item provided by the takeaway) along with a specified quantity, check the total of
+their basket and place an order with the takeaway.
 
-Task
------
+When the takeaway receives the order, the customer will be sent an SMS,
+notifying them of their order total and estimated delivery time.
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+# Approach
+The intention was to develop a program that adhered to the Open/Closed and Single
+Responsibility Principle, more explicitly, I wanted to inject my dependency (the Takeaway class)
+as close to run-time as possible.
 
+The Takeaway class currently holds a concrete dependency on the menu, which is initailized at
+run-time. Future improvements should be made so that this dependency is also injected, allowing
+users of the system to extend the functionality of the program to include more menus, but require no modification of the program itself.
+
+# Feature test run:
+
+##### Firstly require the relevant file.
+```Ruby
+require './lib/customer'
+# => true
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+##### Instantiate an instance of the Customer class
+```Ruby
+customer = Customer.new(Takeaway)
+# => #<Customer:0x007fb36c06f118
+# @basket={},
+# @takeaway=
+# #<Takeaway:0x007fb36c06f0f0
+# @menu={:chicken_noodle_soup˜>4.95, :duck_spring_rolls=>4.95, :crispy_duck=>8.95, :singapore_fried_noodles=>7.95, :steamed_rice=>2.95}>>
 ```
 
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+##### Run the view_menu instance method to view your Takeaway's chosen menu
+```Ruby
+customer.view_menu
+# => {:chicken_noodle_soup=>4.95, :duck_spring_rolls=>4.95, :crispy_duck=>8.95, :singapore_fried_noodles=>7.95, :steamed_rice=>2.95}
+```
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+##### When attempting to place an order with an empty basket, an error should be raised
+```Ruby
+customer.place_order
+# RuntimeError: Your basket is empty. Please select a dish
+```
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+##### When attempting to order a dish that does not exist on the menu, an error should be raised
+```Ruby
+customer.select_dish(:invalid_dish, 2)
+# RuntimeError: Please select a dish from the menu
+```
 
+##### Selecting valid dishes will add them to your basket
+```Ruby
+customer.select_dish(:singapore_fried_noodles, 2)
+# => "2x singapore_fried_noodles(s) added to your basket"
 
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+customer.select_dish(:steamed_rice, 2)
+# => "2x steamed_rice(s) added to your basket"
+```
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+##### Finally, an order can be placed. The user will receive a confirmation message on the interface and a text sent to their phone.
+```Ruby
+customer.place_order
+# => "Thank you! Your order total of £21.8 was placed and will be delivered before 19:35"
+```
