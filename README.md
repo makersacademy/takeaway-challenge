@@ -27,8 +27,8 @@ Develop and implement a restaurant food takeaway application.  The program shoul
 
 
 User Story
-----------˜
-
+----------
+˜
 ```
 As a customer
 So that I can check if I want to order something
