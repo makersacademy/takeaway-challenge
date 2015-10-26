@@ -21,7 +21,7 @@
  => "ORDER PLACED: Final order: {:potatoes=>301}, Final total: 301"
 2.2.3 :007 >
 
-you then receive a text
+you i receive a text
 ```
 
 ### * TODO *
