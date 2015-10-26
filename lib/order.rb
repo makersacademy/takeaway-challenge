@@ -22,12 +22,12 @@ class Order
     order.inject(0) {|memo,item| memo + item.price}
   end
 
-  # def print_dishes
-  #   @output = ""
-  #   order.each do |item|
-  #     self.output += "#{item.menu_id}. #{item.name} (£#{item.price})\n"
-  #   end
-  #   output
-  # end
+  def print_dishes
+    @output = ""
+    order.each do |item|
+      self.output += "#{item.menu_id}. #{item.name} (£#{item.price})\n"
+    end
+    output
+  end
 
 end

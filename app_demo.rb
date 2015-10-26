@@ -55,17 +55,29 @@ class Takeaway
   end
 
   def print_menu
+    puts
+    puts
     puts "M E N U"
     puts '======='
+    puts
     puts menu1.print_dishes
+    puts
     puts
   end
 
   def total_order
-    # puts order1.print_dishes
+    puts
+    puts
+    puts "R E C E I P T"
+    puts "============="
+    puts order1.print_dishes
+    puts
     puts "T O T A L"
     puts "=========="
     puts "Total cost of current order: £#{order1.total}"
+    puts
+    puts
+
   end
 
   def create_order
@@ -76,7 +88,7 @@ class Takeaway
       break if menu_item1 == ''
       puts 'Enter quantiy or return if one'
       @quantity = gets.chomp.to_i
-      p !!quantity ? order1.pick_menu_item(menu_item1.to_i,quantity) : order1.pick_menu_item(menu_item1.to_i)
+      !!quantity ? order1.pick_menu_item(menu_item1.to_i,quantity) : order1.pick_menu_item(menu_item1.to_i)
     end
   end
 
