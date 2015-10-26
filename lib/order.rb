@@ -1,5 +1,7 @@
 class Order
 
+  attr_reader :summary, :menu
+
   def initialize (menu_klass = Menu.new, order_summary_klass = OrderSummary.new, sms_klass = SMS.new)
     @summary = order_summary_klass
     @menu = menu_klass
@@ -24,7 +26,7 @@ class Order
 
   private
 
-  attr_reader :summary, :menu, :sms
+  attr_reader :sms
 
   def item_on_menu? name
     @menu.dishes.include? name
