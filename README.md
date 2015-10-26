@@ -45,7 +45,7 @@ Text message functionality was integrated using [Twilio](https://github.com/twil
 How to Use
 ----------
 
-Initialize your new restaurant. The standard menu is Italian, but you can pass another `menu_name: `, which will look for menu's in the `lib/menus` folder. For example `menu_name: :polish` will load `polish.menu`. Please have a look at the default menu for the right formatting.
+Initialize your new restaurant. The standard menu is Italian, but you can pass another `menu_name: `, which will look for menu's in the `lib/menus` folder. For example `menu_name: :polish` will load `polish.menu`. Please have a look at the [default menu](https://github.com/samover/takeaway-challenge/blob/master/lib/menus/italian.menu) for the right formatting.
 
 ```
 dalla_mama = Takeaway.new(menu_name: :italian)
