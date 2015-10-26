@@ -4,11 +4,13 @@ require_relative 'formatter'
 class Menu
   include Formatter
 
+  FILE_ERROR = "No such file."
+
   def initialize(dish_klass = Dish, dishes_str = nil)
     @dish_klass = dish_klass
     @dishes = Array.new
-    filename = "menu.txt"
-    dishes_str = read_file(filename) if dishes_str.nil?
+    @filename = "menu.txt"
+    dishes_str = read_file if dishes_str.nil?
     parse_dishes(dishes_str)
   end
 
@@ -29,15 +31,14 @@ class Menu
 
   private
 
-  def read_file(filename)
-    if File.exist?(filename) && File.file?(filename)
-      contents = ''
-      file = File.open(filename, 'r')
-      while (line = file.gets) != nil
-        contents << line.chomp + '/'
-      end
-      return contents
+  def read_file
+    raise FILE_ERROR unless File.exist?(@filename) && File.file?(@filename)
+    contents = ''
+    file = File.open(@filename, 'r')
+    while (line = file.gets) != nil
+      contents << line.chomp + '/'
     end
+    return contents
   end
 
   def parse_dishes(dishes_str)
