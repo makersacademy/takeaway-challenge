@@ -1,7 +1,7 @@
 require './lib/order'
 
 describe Order do
-  let(:menu) { double(:menu, dish: {:beef_burger => 4.0, :fish_burger => 2.0}) }
+  let(:menu) { double(:menu, dish: {beef_burger: 4.0, fish_burger: 2.0}) }
   let(:menu_klass){ double(:menu_klass, :new => :menu) }
   let(:item) {:beef_burger}
   let(:item2) {:fish_burger}
@@ -30,11 +30,11 @@ describe Order do
     message =   "Your total is: #{total}"
     subject.add_order(item, qty)
     subject.add_order(item2, qty)
-    expect(subject.total_sum).to eq message
+    expect(subject.total_sum).to eq 12.0
   end
 
   it 'sends a payment confirmation text message' do
-    expect(subject.checkout(40.0)).to eq 'Thank you for shopping with us,
+    expect(subject.checkout).to eq 'Thank you for shopping with us,
     you will recieve a text message confirming your order'
   end
 end

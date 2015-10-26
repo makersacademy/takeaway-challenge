@@ -21,17 +21,18 @@ class Order < SendMessage
   def basket_sum
     raise 'Basket is empty' if basket.empty?
     message = ""
-    @basket.each {|item, qty| message = message + "#{item} x #{qty} = £#{(menu.dish[item]*qty).round(2)}"}
+    @basket.each {|item, qty| message += "#{item} x #{qty} = £#{(menu.dish[item]*qty).round(2)}"}
     message
   end
 
   def total_sum
     @basket.map {|item, qty| @total += (menu.dish[item] * qty)}
     "Your total is: #{total}"
+    @total
   end
 
-  def checkout(total)
-    send_sms(total)
+  def checkout
+    send_sms(total_sum)
     'Thank you for shopping with us,
     you will recieve a text message confirming your order'
   end
