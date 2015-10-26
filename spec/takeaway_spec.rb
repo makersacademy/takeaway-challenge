@@ -33,7 +33,7 @@ describe Takeaway do
     it 'removes item' do
       allow(menu).to receive(:contains?).with('Neptune').and_return(true)
       takeaway.add('Neptune')
-      expect{ takeaway.remove('Neptune') }.to change { takeaway.basket.length }.by -1
+      expect{ takeaway.remove('Neptune') }.to change { takeaway.basket.length }.by (-1)
     end
 
     it 'fails to remove item not already in basket' do

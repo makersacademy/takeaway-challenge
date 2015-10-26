@@ -9,14 +9,14 @@ class Takeaway
 
   def add( name, qty = 1)
     fail "#{name} not available" unless @menu.contains?(name)
-    if @basket.has_key?(name) then
+    if @basket.key?(name)
       @basket[name] += qty
     else
       @basket[name] = qty
     end
   end
 
-  def remove ( name, qty = 1)
+  def remove( name, qty = 1)
     fail "#{name} not in basket" unless @basket.include?(name)
     fail "Insuffient quantity of #{name} in basket" unless (basket[name] >= qty)
     @basket[name] -= qty
@@ -29,19 +29,19 @@ class Takeaway
 
   def summary
     str = ""
-    basket.each { |name, qty|
+    basket.each do |name, qty|
       price = @menu.price( name)
       str = str + "#{name} " + "x#{qty} = £#{price * qty} "
-    }
+    end
     puts "#{str}"
   end
 
   def total
     t = 0
-    basket.each { |name, qty|
+    basket.each do |name, qty|
       price = @menu.price( name)
       t += price * qty
-    }
+    end
     puts "Total: £#{t}"
   end
 

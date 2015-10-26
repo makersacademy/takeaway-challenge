@@ -8,9 +8,9 @@ class Messenger
     @client = Twilio::REST::Client.new account_sid, auth_token
 
     @client.account.messages.create({
-      :from => from,
-      :to => to,
-      :body => body,
+      from: from,
+      to: to,
+      body: body,
     })
   end
 end

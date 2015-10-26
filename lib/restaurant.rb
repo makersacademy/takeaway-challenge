@@ -1,9 +1,9 @@
 
 class Restaurant
-  def initialize ( messenger, menu)
+  def initialize( messenger, menu)
     @messenger = messenger
     @menu = menu
-    @header = { :from => '+441290211165', :to => '+447527994300'}
+    @header = { from: '+441290211165', to: '+447527994300'}
   end
 
   def request_takeaway
