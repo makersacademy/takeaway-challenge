@@ -8,7 +8,7 @@ class Menu
 
   def initialize(dish_klass = Dish, dishes_str = nil)
     @dish_klass = dish_klass
-    @dishes = Array.new
+    @dishes = []
     @filename = "menu.txt"
     dishes_str = read_file if dishes_str.nil?
     parse_dishes(dishes_str)
@@ -35,7 +35,7 @@ class Menu
     raise FILE_ERROR unless File.exist?(@filename) && File.file?(@filename)
     contents = ''
     file = File.open(@filename, 'r')
-    while (line = file.gets) != nil
+    while !(line = file.gets).nil?
       contents << line.chomp + '/'
     end
     return contents
