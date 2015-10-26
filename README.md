@@ -1,3 +1,73 @@
+# Usage
+
+Navigate to the root directory of the project in terminal. Ensure that you have required ‘lib/takeaway.rb’ in your Ruby environment.
+
+create a new takeaway:
+
+```
+t = Takeaway.new
+```
+
+to read the menu:
+
+```
+t.read_menu
+```
+
+to order dishes:
+
+```
+t.order(‘Dish’,qty)
+```
+
+nb. ‘dish’ must be a string and is case sensitive. Qty should be an integer.
+
+Before you check out you need to check your basket and note the total value of your order:
+
+```
+t.basket
+```
+
+to check out and place your order:
+
+```
+takeaway.checkout(‘total order value’)
+```
+
+where ‘total order value’ is an integer you must confirm to place the order.
+
+### SMS confirmation
+
+The program uses the dotenv gem to store environment variables: https://github.com/bkeepers/dotenv. 
+
+You need to store your environment variables in a file called .env in the root directory. The following variables are required:
+
+```
+ACCOUNT_SID=“My_Account_SID”       # Your Twilio account SID between quotes
+export AUTH_TOKEN=“My_Auth_Token”  # Your Twilio auth token between quotes
+export TWILIONO=                   # Your Twilio phone number
+export MY_NUMBER=                  # Your mobile number (must be authorised with Twilio)
+```
+
+### TODO
+
+* Massively improve test coverage
+* Separate file for default menu. Do not hard code!
+* Add line totals in CustomerOrder#display_order
+* Review encapsulation
+* Review breaking out some methods to new classes
+* Remove all the comments!
+
+### Technologies used
+
+* Ruby
+* Twilio API and Ruby Gem
+* dotenv Ruby Gem
+* TDD (partially)
+
+
+# Original challenge instructions:
+
 Takeaway Challenge
 ==================
 
@@ -52,3 +122,5 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+
