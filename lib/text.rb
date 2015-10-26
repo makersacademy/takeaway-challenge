@@ -15,7 +15,7 @@ auth_token = e9f6d0f3fd7848d17462e183e269b4da
     sms =  @client.account.messages.create(
       :from => +441237488039,
       :to => +447710612703,
-      :body => "Hi, your food will be with you before #{order_time}!"
+      :body => "Thank you! Your order was placed and will be delivered before 18:52"
       )
       puts sms
 end
