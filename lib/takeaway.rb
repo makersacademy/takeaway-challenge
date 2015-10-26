@@ -32,7 +32,7 @@ class Takeaway
   end
 
   def change_order(food, quantity)
-    @order.order_log[food.to_sym] = quantity rescue "error"
+    @order.order_log[food.to_sym] = quantity if check_input(food)
   end
 
   def delete_order(food)
