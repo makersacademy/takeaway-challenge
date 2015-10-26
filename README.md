@@ -26,6 +26,8 @@ If an item is selected, this is chosen via the next item method. The order total
 
 Manipulating the subsequent hashes was a challenge, as was the dependency injection of the menu class.
 
+To simulate the user end, I created a ruby file feature.rb to run in IRB.
+
 ###**Improvements**
 - removing hardwired menu
 - error methods for incorrect choice selection
