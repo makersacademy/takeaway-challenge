@@ -1,19 +1,34 @@
 Takeaway Challenge
 ==================
 
-Instructions
--------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
-Task
------
+Specifications
+--------------
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Develop and implement a restaurant food takeaway application.  The program should facilitate functioning of a ordering a dish from a restaurant for a takeaway.  Implement the functionality based on following guidelines:
 
+* Restaurant provides list of dishes with prices.
+
+* Customer places an order with
+  * list of dishes,
+  * their quantities and
+  * specifies total number of items ordered.
+
+  The sum of quantities ordered should be equal to this total number. The system should raise an error if these numbers do not matches
+
+* Restaurant sends text message to customer when an order is placed successfully that it will be delivered within the next hour.
+
+* Use twilio-ruby gem to access the API which implements text sending functionality.
+
+* Use mocks and/or stubs, as necessary to not to send texts when the tests are run
+
+* Advanced functionality
+  * Implement the ability to place orders via text message.
+
+
+User Story
+----------
+˜
 ```
 As a customer
 So that I can check if I want to order something
@@ -32,23 +47,27 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+My approach
+-----------
+* Created three classes
+  * Takeaway class (takeaway.rb)
+    * deals with takeaway orders
+    * shows whats in basket (order)
+    * shows basket summary with total value of all items on order
+    * asks user to confirm order by giving the total order value
+  * Restaurant class (restaurant.rb)
+    * deals with receiving the order and sending out confirmation texts
+    * sending out text is dealt by sendtext.rb
+  * Menu class
+    * deals with menu items that are on order
+    * shows menu
+    * allows user to check if a dish can be ordered
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+A test run is as below
+----------------------
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+![alt text](takeaway-challenge.png)
 
-
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
