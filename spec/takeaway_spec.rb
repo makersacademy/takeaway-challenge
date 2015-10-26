@@ -93,5 +93,11 @@ describe Takeaway do
       expect(takeaway).to receive(:send_msg)
       takeaway.checkout(total)
     end
+
+    it "#messenger receives #send_text method" do
+      allow(messenger).to receive(:send_text)
+      expect(messenger).to receive(:send_text)
+      takeaway.checkout(total)
+    end
   end
 end
