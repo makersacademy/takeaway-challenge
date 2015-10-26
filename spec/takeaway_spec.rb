@@ -82,7 +82,9 @@ describe Takeaway do
 
   context 'Adding an item to an order' do
     it {is_expected.to respond_to(:add_to_order).with(2).argument}
-    it 'Adds an item to an order' do
+    it 'Adds an items to an order' do
+      allow(order).to receive(:add).with(kebab, 1).and_return(kebab)
+      takeaway.add_to_order(kebab, 1)
       allow(order).to receive(:add).with(burger, 1).and_return(burger)
       expect(takeaway.add_to_order(burger, 1)).to eq burger
     end
