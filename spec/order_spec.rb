@@ -8,8 +8,7 @@ describe Order do
   context 'selecting an item from the menu' do
 
     it 'allows a customer to select an item' do
-      order.add_item("Golden French Fries")
-      expect(order.items).to include ( {"Golden French Fries" => 1})
+      expect(order.add_item("Golden French Fries")).to eq "1 Golden French Fries(s) added to your order"
     end
 
     it 'returns an error message if selected item is not on the menu' do
@@ -24,5 +23,20 @@ describe Order do
       5.times{ order.add_item("Golden French Fries") }
       expect(order.total_price).to eq 2.5
     end
+  end
+
+  context 'it verifies the final order' do
+    before do
+      allow(order).to receive(:total_price) {3}
+    end
+
+      it 'raise an error if an order is invalid' do
+        expect {order.confirm_order(2)}.to raise_error "Sorry our records don't match, we believe the total price is £3.  Please check your order."
+      end
+
+      xit 'sends a text if the order is valid' do
+        expect(order.confirm_order(3)).
+      end
+
   end
 end
