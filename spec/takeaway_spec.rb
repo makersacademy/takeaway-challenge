@@ -34,7 +34,7 @@ describe TakeAway do
     end
     it 'confirm the order' do
       takeaway.add_item :pizza, 2
-      response = "thank you for your order, You will" +
+      response = "thank you for your order, You will" <<
                  " receive a confirmation message soon"
       expect(takeaway.confirmation('yes')).to eq response
     end
