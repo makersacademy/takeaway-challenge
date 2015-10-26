@@ -4,11 +4,16 @@ class Menu
     @items = Hash.new(0)
   end
 
-  def show_menu
-    @items
+  def show
+    @items.to_s
   end
 
   def add_dish(name, price)
     @items[name] = price
   end
+
+  def price(name)
+    @items[name]
+  end  
+
 end

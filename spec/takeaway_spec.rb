@@ -1,18 +1,17 @@
 require 'takeaway'
 
 describe Takeaway do
-  
-  it 'show_menu should display all items and prices' do
-    subject.add_dish('chilli', 2.99)
-    subject.add_dish('lasagne', 4.5)
-    expect(subject.show_menu).to eq "{\"chilli\"=>2.99, \"lasagne\"=>4.5}"
-  end
+
+  let(:menu_klass) { double :menu_klass, new: menu }
+  let(:menu) { double :menu, show: "{\"chilli\"=>2.99, \"pizza\"=>4.5}"}
+
+  subject { described_class.new(menu_klass)}
 
   before(:each) do
-    subject.add_dish('chilli', 2.99)
-    subject.add_dish('lasagne', 4.5)
-    subject.order('chilli', 3)
-    subject.order('lasagne')
+    subject.order("chilli", 3)
+    subject.order("pizza")
+    allow(menu).to receive(:price).with('chilli').and_return 2.99
+    allow(menu).to receive(:price).with('pizza').and_return 4.5    
   end
 
   describe 'ordering' do
@@ -26,7 +25,7 @@ describe Takeaway do
     end
 
     it 'should not be able to order item not on menu' do
-      expect{ subject.order('pizza') }.to raise_error "Sorry, we don't have that!"
+      expect{ subject.order('lasagne') }.to raise_error "Sorry, we don't have that!"
     end
 
     it 'should be able to add more of the same item to the order' do

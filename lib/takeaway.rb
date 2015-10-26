@@ -1,23 +1,21 @@
+require_relative 'menu'
+
 class Takeaway
 
   attr_reader :basket
 
-  def initialize
-    @menu = {}
+  def initialize(menu_klass)
+    @menu = menu_klass.new
     @basket = Hash.new(0)
     @total = 0
   end
 
-  def add_dish(name, price)
-    @menu.store(name, price)
-  end
-
-  def show_menu
-    @menu.to_s
+  def menu
+    @menu.show_menu
   end
 
   def order(name, quantity = 1)
-    fail "Sorry, we don't have that!" unless @menu.has_key?(name)
+    fail "Sorry, we don't have that!" unless @menu.show.include?(name)
     @basket[name] += quantity
     puts "#{quantity}x #{name}(s) added to your basket."
   end
@@ -25,7 +23,7 @@ class Takeaway
   def total
     @total = 0
     @basket.each { |name, quantity|
-      @total += @menu[name] * quantity
+      @total += @menu.price(name) * quantity
     }
     @total
   end
