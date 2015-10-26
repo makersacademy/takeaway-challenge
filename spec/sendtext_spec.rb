@@ -1,12 +1,12 @@
 require 'sendtext'
 
 describe Sendtext do
-  account_sid = 'ACaa9d88865685ca7e9bdec766b71fa313'
-  auth_token = '7fcdf88aeafb171703682f9e91c42d97'
+  account_sid = 'private'
+  auth_token = 'secret'
 
 
-  from_mobile = '+441384901121'
-  to_mobile = '+447914245451' #+447508059316 other verified number
+  from_mobile = '+449999999999'
+  to_mobile = '+449999999999'
   message_body = 'This is a Twillo Test for takeaway challenge'
 
   message =   {from: from_mobile,
