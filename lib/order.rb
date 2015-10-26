@@ -18,4 +18,5 @@ class Order
   def total
     @total = @sum.reduce(:+)
   end
+
 end

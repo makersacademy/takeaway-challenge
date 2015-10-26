@@ -31,6 +31,14 @@ class Takeaway
     @txt.call(@number, message)
   end
 
+  def change_order(food, quantity)
+    @order.order_log[food.to_sym] = quantity rescue "error"
+  end
+
+  def delete_order(food)
+    @order.order_log.delete(food.to_sym)
+  end
+
   private
 
   def check_input(food)

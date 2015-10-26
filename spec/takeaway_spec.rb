@@ -10,6 +10,7 @@ describe Takeaway do
   let(:order_1)   { ["dohnuts", 4] }
   let(:menu_1)    { {dohnuts: 4, potatoes: 9} }
   let(:log)       { {dohnuts: 8} }
+  let(:log_2)     { {dohnuts: 1} }
   let(:msg)       { "Current order: #{log}, Current total: 2" }
 
   before(:each) do
@@ -32,6 +33,7 @@ describe Takeaway do
       message = "This minutes menu, dohnuts :£4, potatoes :£9"
       expect(subject.menu).to eq message
     end
+
     it "places a new order" do
       expect(subject.add("dohnuts", 4)).to eq msg
     end
@@ -54,5 +56,17 @@ describe Takeaway do
     it "sends a message on checkout with the full order" do
       expect(subject.checkout).to eq num
     end
+
+    it "changes an order" do
+      subject.change_order("dohnuts", 1)
+      expect(subject.order.order_log).to eq log_2
+    end
+
+    it "deletes an order" do
+      subject.delete_order("dohnuts")
+      expect(subject.order.order_log).to be_empty
+    end
+
   end
+
 end
