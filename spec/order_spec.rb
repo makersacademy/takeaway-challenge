@@ -2,9 +2,9 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { described_class.new }
-  let(:menu) { double('menu', :dishes => { "Golden French Fries" => 1 }) }
-  let(:sms) {double('sms')}
+  subject(:order) { described_class.new(menu_klass = menu, order_summary_klass = OrderSummary.new, sms_klass = sms)}
+  let(:sms) { double('sms')}
+  let(:menu) { double('menu', :dishes => { "Golden French Fries" => 0.5 }) }
 
   context 'selecting an item from the menu' do
 
@@ -20,8 +20,7 @@ describe Order do
   context 'it calculates the cost of the order' do
 
     it 'calculates the total price' do
-      allow(menu).to receive(:price_matcher).and_return 0.5
-      5.times{ order.add_item("Golden French Fries") }
+      5.times{order.add_item("Golden French Fries")}
       expect(order.total_price).to eq 2.5
     end
   end
@@ -35,10 +34,9 @@ describe Order do
         expect {order.confirm_order(2)}.to raise_error "Sorry our records don't match, we believe the total price is £3.  Please check your order."
       end
 
-      xit 'sends a text if the order is valid' do
-        expect(sms).to receive (:send_sms)
+      it 'sends a text if the order is valid' do
+        expect(sms).to receive(:send_sms)
         order.confirm_order(3)
       end
-
   end
 end

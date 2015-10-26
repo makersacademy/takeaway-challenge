@@ -4,6 +4,7 @@ Takeaway Challenge
 This program allows the user to view the original McDonalds menu, select any number of available items from the menu, check a summary of the order before confirming and receiving a text message upon completion of the order.
 
 Instructions
+==================
 
 Open irb and require the following files:
 
