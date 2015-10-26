@@ -1,6 +1,5 @@
 require 'takeaway'
 
-
 describe Takeaway do
   let(:menu) { double :menu, total: 10 , view_basket: anything}
   let(:twilio) { double :twilio, messages: messages }
@@ -35,16 +34,11 @@ describe Takeaway do
 
   describe '#checkout' do
     it 'calls the send_message if the #confirm_order method is true' do
-      allow(subject).to receive(:send_message).and_return("blah")
       expect(subject).to receive(:send_message)
       subject.checkout(10)
     end
-  end
-
-  describe '#send_message' do
-    it 'calls the twilio class and attempts to send a message' do
-      expect(twilio).to receive(:messages)
-      subject.send_message
+    it 'raises an error when the total provided does not match the total recorded by the menu' do
+      expect{ subject.checkout(8) }.to raise_error "Total provided does not match order total!  Please try again"
     end
   end
 end

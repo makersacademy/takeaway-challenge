@@ -3,10 +3,10 @@ require 'twilio-ruby'
 
 class Takeaway
 
-  ACCOUNTS_SID = 'AC0d5ab4e4089ccba3ffa0d6e307f3220d'
-  AUTH_TOKEN = 'e513890d85d278d4cf1513a63d89dcaa'
+  ACCOUNTS_SID = ENV['TWILIO_SID']
+  AUTH_TOKEN = ENV['TWILIO_AUTH']
 
-  attr_reader :menu, :total
+  attr_reader :menu
 
   def initialize(menu_klass = Menu.new, twilio_klass = Twilio::REST::Client.new(ACCOUNTS_SID, AUTH_TOKEN))
     @menu = menu_klass
@@ -25,18 +25,21 @@ class Takeaway
     @menu.view_basket
   end
 
-  def confirm_total(total)
-    total == @menu.total
-  end
-
   def checkout(total)
-    send_message if confirm_total(total)
+    raise "Total provided does not match order total!  Please try again" unless confirm_total(total)
+    send_message
   end
 
+  private
   def send_message
     @twilio.messages.create(
       from: '+441274451315',
       to: '+447805214741',
       body: "Your order has been accepted!  #{view_current_order} will arrive by #{(Time.now+3600).strftime('%H:%M')}")
   end
+
+  def confirm_total(total)
+    total == @menu.total
+  end
+
 end
