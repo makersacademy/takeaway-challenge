@@ -13,26 +13,11 @@ class Menu
 		DEFAULT_MENU
 	end
 
-	def order(item, amount)
-#     loop do
-#     	puts "What would you like?"
-#     	item = gets.chomp
-#     	puts "How many?"
-#     	amount = gets.chomp
-#     	if item || amount == 'Done'
-#     		break
-#     	end
-#     end
-end
 
-# loop do
-#   puts "What would you like to order?"
-#   item = gets.chomp
-#   puts "And how many?"
-#   amount = gets.chomp
-#     if item == 'Order'
-#     break
-#   end
+# def add_dish(item, amount)
+# 	default_menu[item] = amount
+
+
 # end
 	
 end
