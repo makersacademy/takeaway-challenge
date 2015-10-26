@@ -1,5 +1,4 @@
 require './lib/order.rb'
-require 'rubygems' # not necessary with ruby 1.9 but included for completeness
 require 'twilio-ruby'
 
 new_menu = Menu.new
@@ -33,7 +32,9 @@ end
  puts order.current_order
  puts "your order amount is: #{order.order_total}"
 
- text_message = "thank you for your order it will arrive by #{(Time.now + (60*40)).strftime("%H:%M")}, the amount total is #{"£%.2f"%order.collect_amount}"
+ text_message = "thank you for your order it will arrive " \
+ "by #{(Time.now + (60*40)).strftime("%H:%M")}, the amount " \
+ "total is #{"£%.2f"%order.collect_amount}"
  puts text_message
 
  #Twilio message creation

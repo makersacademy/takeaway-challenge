@@ -3,28 +3,31 @@ require './lib/verify.rb'
 
 class Order
 
-attr_reader :current_order, :current_menu, :item_no, :item_total, :collect_amount
+attr_reader :current_order, :current_menu, :no_of_item, :item_total, \
+            :collect_amount, :text_message
 
-    def initialize(menu_klass: Menu)
+    def initialize(menu_klass: Menu, verify_klass: Verify)
       @current_order = []
       @current_menu = []
       @menu_klass = menu_klass
+      @verify_klass = verify_klass
+
     end
 
-    def start_order(item, item_no)
+    def start_order(item, no_of_item)
      current_menu << menu_klass.new
      current_order << current_menu[0].menu.select {|k,v| k == item}
-     current_order[-1][:item_no] = item_no
+     current_order[-1][:no_of_item] = no_of_item
      current_order[-1][:item_total] = (current_order[-1][item] \
-     * current_order[-1][:item_no])
+     * current_order[-1][:no_of_item])
 
     end
 
-    def next_item(item, item_no)
+    def next_item(item, no_of_item)
       current_order << current_menu[0].menu.select {|k,v| k == item}
-      current_order[-1][:item_no] = item_no
+      current_order[-1][:no_of_item] = no_of_item
       current_order[-1][:item_total] = (current_order[-1][item] \
-      * current_order[-1][:item_no])
+      * current_order[-1][:no_of_item])
     end
 
     def order_total
@@ -38,8 +41,23 @@ attr_reader :current_order, :current_menu, :item_no, :item_total, :collect_amoun
       @collect_amount
     end
 
+    def confirmation
+      @text_message = "Thank you for your order it will arrive by \n \
+      #{(Time.now + (60*40)).strftime("%H:%M")}, \n \
+      you have ordered: #{ current_order.each {|item| puts item}} \n \
+      the amount total is #{"£%.2f"%collect_amount}"
+
+    end
+
+    def send_text
+      Verify.new.send_message(@text_message)
+    end
+
+
+
+
   private
 
     attr_reader :menu_klass
-
+    attr_reader :verify_klass
 end
