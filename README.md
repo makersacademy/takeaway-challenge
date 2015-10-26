@@ -64,7 +64,7 @@ follows:
 
 [11] pry(main)> order.confirm_order(9)
 
-'''
+```
 The user will receive a text message saying that they will receive their order
 within the hour.  If the user inputs a total price that is different to the
 total calculated by the programme they receive an error message:
