@@ -25,7 +25,7 @@ class Takeaway
   end
 
   def place_order(total)
-    raise WRONG_TOTAL_ERROR unless total == @order.total
+    fail WRONG_TOTAL_ERROR unless total == @order.total
     order_success
   end
 
