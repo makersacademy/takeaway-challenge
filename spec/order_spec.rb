@@ -1,12 +1,15 @@
 require 'order'
 
 describe Order do
-  subject(:order) { Order.new }
+  let(:time_klass){ double(:time_klass, new: 0) }
+  subject(:order) { Order.new(time_klass) }
+
   let(:quantity){ 3 }
   let(:price) { 1 }
+  let(:total) { quantity * price }
   let(:name) { 'Food' }
   let(:dish){ double(:dish, name: name, price: price)}
-  let(:receipt){ "Your order: #{name} x#{quantity} = £#{price * quantity}" }
+  let(:receipt){ "Your order has been placed and will be delivered at 3600: #{name} x#{quantity} = £#{price * quantity}. Total: #{total}" }
 
   context '#initialize' do
     it 'sets @list to an empty array' do

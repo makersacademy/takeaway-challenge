@@ -2,7 +2,8 @@ class Order
 
   attr_reader :list
 
-  def initialize
+  def initialize(time_klass = Time)
+    @time_klass = time_klass
     @list = Array.new
   end
 
@@ -20,14 +21,19 @@ class Order
   end
 
   def receipt
-    receipt = 'Your order: '
+    receipt = "Your order has been placed and will be delivered at #{time}: "
     @list.each_with_index do |item, index|
       na, qu, = item[:dish].name, item[:quantity]
       pr = item[:dish].price * qu
       receipt << "#{na} x#{qu} = £#{pr}"
       receipt << ", " if index < (@list.length - 1)
     end
+    receipt << ". Total: #{total}"
     return receipt
+  end
+
+  def time
+    (@time_klass.new + 3600)
   end
 
 
