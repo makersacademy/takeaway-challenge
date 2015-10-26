@@ -12,16 +12,27 @@ The Takeaway is the way the user interacts with the program.  There are several 
 ####Below is an example of how the ordering system is meant to work.
 
 **[1] pry(main)> require './lib/takeaway.rb'**
+
 => true
+
 **[2] pry(main)> t = Takeaway.new**
+
 => #<Takeaway:0x007fe80c836ac0
+
  @menu=
+
   #<Menu:0x007fe80c836a98
+
    @menu=
+
     [{:food=>"Salt and Pepper King Prawn", :price=>3.99, :quantity_ordered=>0},
+
      {:food=>"Pork Dumplings", :price=>2.5, :quantity_ordered=>0}]>,
+
  @twilio=
+
   <Twilio::REST::Client @account_sid=AC0d5ab4e4089ccba3ffa0d6e307f3220d>>
+
 **[3] pry(main)> t.request_menu**
 Salt and Pepper King Prawn - £3.99
 Pork Dumplings - £2.50
