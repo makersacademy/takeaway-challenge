@@ -1,54 +1,40 @@
-Takeaway Challenge
-==================
 
-Instructions
--------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+#**Takeaway challenge**
 
-Task
------
+##*Introduction*
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The aim of this weeks challenge was to create a takeaway menu that an individual could place an order from, ideally implementing a text confirmation service. The complexities revolved around ensuring an individual could order more than one of an item from the menu, and also different items.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+###*Installation*
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+The program uses the following:
+- version 2.2.1 of Ruby
+- gem twilio-ruby 4.5.0
+- sinatra 1.4.6
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+To enable the user interface, I created a ruby file called feature.rb. When in IRB this enables the functionality of the code to be tested without using method calls. By running the .rb file you can see the functionality of the program. An earlier version of ruby was used, due to it being a stable version for the twilio functionality.
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+###**Approach**
 
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+I believe the challenge warranted 2/3 classes. One for the menu, one for the order and potentially one for verifying and sending the confirmation text message. I started by drafting out the two objects 'menu' & 'order' as classes and looking at the messages required between the two classes.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Initially, I built some basic functionality into the Menu class, enabling upon initialisation the creation of a basic menu, with the ability to view this menu list, add items and remove menu items.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Appraoching the order class, I created a start_order method with argument for the menu item to be added. This creates via injection a menu class, that then selects the details associated to the chosen item and calculates the line cost.
 
+If an item is selected, this is chosen via the next item method. The order total method collates the total cost of the order and the confirmation creates the body of text for the twilio text. Finally, send_text creates a Verify class and sends a confirmation text of the order.
 
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+Manipulating the subsequent hashes was a challenge, as was the dependency injection of the menu class.
+
+To simulate the user end, I created a ruby file feature.rb to run in IRB.
+
+###**Improvements**
+- removing hardwired menu
+- error methods for incorrect choice selection
+- presentation of order - removing hash
+- I'm not sure it follows the SRP
+
+####**Tests**
+There is not adequate testing of the verify class, with a stub for the twilio functionality.
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
