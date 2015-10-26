@@ -43,7 +43,10 @@ Use TDD to incrementally code the require functionality using Red, Green, Refact
 
 ## Installation
 
-Provide code examples and explanations of how to get the project.
+Clode repo.
+
+Run bundle
+
 
 ## API Reference
 
@@ -51,11 +54,11 @@ Depending on the size of the project, if it is small and simple enough the refer
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
+From the root directory run `rspec`
 
 ## Contributors
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+As this is a Maker's challenge no extra contributors.
 
 ## License
 
