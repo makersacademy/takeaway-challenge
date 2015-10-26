@@ -1,5 +1,4 @@
-Takeaway Challenge [![Build Status](https://travis-ci.org/samover/takeaway-challenge.svg?branch=master)](https://travis-ci.org/samover/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/samover/takeaway-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/samover/takeaway-challenge?branch=master)
+Takeaway Challenge [![Build Status](https://travis-ci.org/samover/takeaway-challenge.svg?branch=master)](https://travis-ci.org/samover/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/samover/takeaway-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/samover/takeaway-challenge?branch=master)
 ==================
 
 [Task](#task)
@@ -35,9 +34,13 @@ My approach
 Playing around in IRB and using pen and paper, I got a good sense of how the app would be shaped and which objects and messages it would need to contain. From this emerged the **Domain Model**. Rigidly sticking to the **Red/Green/Refactor cycle**, one class emerged with accompanying tests. I then refactored the production code, extracting methods to other classes. After making all tests for the new classes pass (stubbing dependencies according to the **London School**), feature tests helped me integrate the dependencies and to test the functionality of the whole app.
 
 The principles and patterns of design that I drew upon are mainly DRY (*Don't Repeat Yourself*), SRP (*Single Responsibility Principle*) and derived from that DI (*Dependency Injection*). These principles led me to have four classes:
+
 1. [Takeaway](https://github.com/samover/takeaway-challenge/blob/master/lib/takeaway.rb)
+
 2. [Order](https://github.com/samover/takeaway-challenge/blob/master/lib/order.rb)
+
 3. [Menu](https://github.com/samover/takeaway-challenge/blob/master/lib/menu.rb)
+
 4. [Messager](https://github.com/samover/takeaway-challenge/blob/master/lib/messager.rb)
 
 Text message functionality was integrated using [Twilio](https://github.com/twilio/twilio-ruby)
