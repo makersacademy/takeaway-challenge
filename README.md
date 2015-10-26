@@ -27,7 +27,7 @@ Develop and implement a restaurant food takeaway application.  The program shoul
 
 
 User Story
-----------
+----------˜
 
 ```
 As a customer
@@ -46,6 +46,28 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+My approach
+-----------
+* Created three classes
+  * Takeaway class (takeaway.rb)
+    * deals with takeaway orders
+    * shows whats in basket (order)
+    * shows basket summary with total value of all items on order
+    * asks user to confirm order by giving the total order value
+  * Restaurant class (restaurant.rb)
+    * deals with receiving the order and sending out confirmation texts
+    * sending out text is dealt by sendtext.rb
+  * Menu class
+    * deals with menu items that are on order
+    * shows menu
+    * allows user to check if a dish can be ordered
+
+A test run is as below
+----------------------
+
+![alt text](takeaway-challenge.png)
+
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)

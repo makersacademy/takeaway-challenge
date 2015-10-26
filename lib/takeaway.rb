@@ -1,16 +1,13 @@
 require './lib/restaurant'
-
+require './lib/menu'
 class TakeAway
-  attr_reader :restaurant, :dish, :basket
+  attr_reader :restaurant, :menu, :dish, :basket
 
-  def initialize(restaurant = Restaurant.new)
+  def initialize(restaurant = Restaurant.new, menu = Menu.new)
     @restaurant = restaurant
+    @menu = menu
     @dish = ""
     @basket = Hash.new(0)
-  end
-
-  def read_menu
-    restaurant.read_menu
   end
 
   def order(dish, qty=1)
@@ -37,19 +34,19 @@ class TakeAway
   private
 
   def total
-    total = basket.map {|dish, qty| (qty * restaurant.menu[dish])}
+    total = basket.map {|dish, qty| (qty * @menu.items[dish])}
     total.inject {|sum, amount| sum + amount}.round(2)
   end
 
   def my_basket
     basket.map do |dish, qty|
-      amount = qty * restaurant.menu[dish]
+      amount = qty * @menu.items[dish]
       order_list = "#{dish} x#{qty} = #{format('£%.2f', amount)}"
     end.join(', ')
   end
 
   def not_on_menu?(dish)
-    restaurant.menu.key?(dish) == false
+    menu.can_order?(dish) == false
   end
 
 end

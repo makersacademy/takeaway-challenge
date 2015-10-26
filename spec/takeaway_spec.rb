@@ -2,18 +2,8 @@ require 'takeaway'
 
 describe TakeAway do
 
-  context "#read_menu" do
-    it "restaurant has list of dishes" do
-      expect(subject.read_menu).not_to be_empty
-    end
-  end
-
   context "#order_food" do
 
-    it "cannot order a dish if not on the menu" do
-      err_msg="This dish is not available on menu"
-      expect { subject.order("Sausages") }.to raise_error(err_msg)
-    end
 
     it "default order quantity will be 1" do
       subject.order("Chips")
