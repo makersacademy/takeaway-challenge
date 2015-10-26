@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
   let(:menu) {double :menu}
   let(:restaurant) {double :restaurant}
-  subject(:takeaway) {described_class.new( :restaurant, :menu)}
+  subject(:takeaway) {described_class.new( restaurant, menu)}
 
   it { is_expected.to respond_to(:add).with(1).argument }
   it { is_expected.to respond_to(:remove).with(1).argument }
@@ -23,7 +23,7 @@ describe Takeaway do
     end
 
     it 'fails to add unknown item to basket' do
-    allow(menu).to receive(:contains?).with('Tandoori').and_return(true)
+    allow(menu).to receive(:contains?).with('Tandoori').and_return(false)
     expect{ takeaway.add('Tandoori') }.to raise_error("Tandoori not available")
     end
   end
