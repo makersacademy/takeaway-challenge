@@ -10,7 +10,7 @@ class Takeaway
   end
 
   def open_menu
-    menu.dishes.map { |item, price| "#{item}: #{'£%.2f' % price}" }
+    menu.open
   end
 
   def order(item, quantity = 1)

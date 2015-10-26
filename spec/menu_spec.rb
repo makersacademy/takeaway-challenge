@@ -8,4 +8,10 @@ describe Menu do
       expect(menu.dishes).to eq described_class::DISHES
     end
   end
+
+  context '#open' do
+    it 'opens the menu' do
+      expect(menu.open).not_to be_empty
+    end
+  end
 end

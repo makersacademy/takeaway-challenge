@@ -11,4 +11,8 @@ class Menu
   def initialize(dishes = DISHES)
     @dishes = dishes
   end
+
+  def open
+    dishes.map { |item, price| "#{item}: £#{'%.2f'%price}" }
+  end
 end
