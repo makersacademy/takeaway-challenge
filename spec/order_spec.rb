@@ -9,7 +9,7 @@ describe Order do
   let(:total) { quantity * price }
   let(:name) { 'Food' }
   let(:dish){ double(:dish, name: name, price: price)}
-  let(:receipt){ "Your order has been placed and will be delivered at 3600: #{name} x#{quantity} = £#{price * quantity}. Total: #{total}" }
+  let(:receipt){ "Your order has been placed and will be delivered at 3600: #{name} x#{quantity} = #{pound_str(price * quantity)}. Total: #{pound_str(total)}" }
 
   context '#initialize' do
     it 'sets @list to an empty array' do

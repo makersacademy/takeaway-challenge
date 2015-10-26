@@ -1,4 +1,7 @@
+require_relative 'formatter'
+
 class Order
+  include Formatter
 
   attr_reader :list
 
@@ -25,10 +28,10 @@ class Order
     @list.each_with_index do |item, index|
       na, qu, = item[:dish].name, item[:quantity]
       pr = item[:dish].price * qu
-      receipt << "#{na} x#{qu} = £#{pr}"
+      receipt << "#{na} x#{qu} = #{pound_str(pr)}"
       receipt << ", " if index < (@list.length - 1)
     end
-    receipt << ". Total: #{total}"
+    receipt << ". Total: #{pound_str(total)}"
     return receipt
   end
 

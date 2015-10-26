@@ -15,7 +15,8 @@ class Menu
   def formatted_dishes
     list = ""
     @dishes.each_with_index do |dish, index|
-      num, name, price = (index).to_s, dish.name, dish.price.to_s
+
+      num, name, price = (index).to_s, dish.name, pound_str(dish.price)
       list << three_col_str(num, name, price)
     end
     list

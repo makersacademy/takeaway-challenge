@@ -13,7 +13,7 @@ describe Menu do
 
   context '#formatted_dishes' do
     it 'returns a formatted list of dishes' do
-      name, price = dish.name, dish.price.to_s
+      name, price = dish.name, pound_str(dish.price)
       expect(menu.formatted_dishes).to eq three_col_str('0',name,price)
     end
   end
