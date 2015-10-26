@@ -1,23 +1,22 @@
-DISHES = {
-  'Spaghetti Al Pomodoro Fresco E Basilico' => 9.50,
-  'Spaghetti Carbonara' => 9.50,
-  'Spaghetti Alla Bolognese' => 8.50,
-  'Penne All’Arrabiata' => 8.95,
-  'Fettuccine Al Salmone' => 10.95,
-  'Lasagne Al Forno' => 10.50,
-  'Tagliata Di Manzo Con Rucola' => 16.95,
-  'Scaloppine Melanzane' => 15.95
-  }
-
 class Menu
   attr_reader :dishes
 
-  def initialize(dishes: DISHES)
-    @dishes = dishes
+  def initialize(menu_name: :italian)
+    @dishes = load_menu(menu_name)
   end
 
   def show
     items = dishes.map { |item, price| "#{item}: £#{price}"}
     "Menu\n\n#{items.join("\n")}"
+  end
+
+  def listed? item
+    dishes.include? item
+  end
+
+  private
+  def load_menu(menu_name)
+    file_name = "lib/menus/#{menu_name.to_s}.menu"
+    File.open(file_name).map { |line| line.chomp.split(' => ') }.to_h
   end
 end

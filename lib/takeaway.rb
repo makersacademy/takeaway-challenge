@@ -1,56 +1,41 @@
-require_relative 'send_text'
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
-  include SendText
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :order, :order_klass, :menu_name
 
-  def initialize(menu_klass: Menu)
-    @basket = Hash.new(0)
-    @menu = menu_klass.new
+  def initialize(menu_klass: Menu, order_klass: Order, menu_name: :italian)
+    @menu = menu_klass.new(menu_name: menu_name)
+    @order_klass = order_klass
+    @order = order_klass.new(menu_instance: menu)
   end
 
   def show_menu
     menu.show
   end
 
-  def order(item, qty = 1)
-    fail 'This item is not on the menu' unless available?(item)
-    basket[item] += qty
-    "#{item} x#{qty} added to your basket"
+  def place_order(item, qty = 1)
+    @order ||= order_klass.new(menu_instance: menu)
+    return 'Please order 1 or more items' if qty < 1
+    return 'This item is not on the menu' unless available? item
+    order.add(item, qty)
   end
 
-  def basket_content
-    fail 'Basket is empty' if basket.empty?
-    basket.map { |item, qty| "#{item} x#{qty}: £#{qty * menu.dishes[item]}"}
-      .join("\n")
+  def show_order
+    order.overview
   end
 
-  def checkout(price = 0)
-    fail 'Wrong total' if wrong_total?(price)
-    send_text(basket_content, total)
-    reset_order
-  end
-
-  def total
-    "Total price: £" + calculate_price.to_s
+  def checkout_order(price = 0)
+    order.checkout(price)
   end
 
   def reset_order
-    @basket = Hash.new(0)
+    order.reset
   end
 
   private
-  def calculate_price
-    basket.map { |item, qty| qty * menu.dishes[item] }.inject(:+)
-  end
-
-  def wrong_total?(price)
-    calculate_price != price
-  end
-
-  def available?(item)
-    menu.dishes.include? item
+  def available? item
+    menu.listed? item
   end
 end
