@@ -18,8 +18,7 @@ class Order
     available_menu ? update_basket : not_update_basket
   end
 
-  def update_basket		
-  	puts "you have added #{@quantity} x #{@dish} to your basket, the price is €#{accumulated_prize}."
+  def update_basket
   	@basket.delete_if { |e| e[:name] == @dish }
   	@basket << { name: @dish, quantity: @quantity, 
   	  	        price: menu.list_of_dishes[@dish], 
