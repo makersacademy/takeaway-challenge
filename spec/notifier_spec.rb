@@ -21,7 +21,7 @@ describe Notifier do
       allow(messages).to receive(:create).with(anything).and_return(anything)
       allow(Time).to receive(:now).and_return now
       allow(Twilio::REST::Client).to receive(:new).and_return fake_client
-      expect(notifier.notify(Time.now)).to eq (
+      expect(notifier.notify(Time.now)).to eq(
         "Thank you! Your order was placed and will be delivered before 00:00")
     end
   end
