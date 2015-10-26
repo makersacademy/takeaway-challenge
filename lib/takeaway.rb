@@ -13,8 +13,8 @@ class Takeaway
   end
 
   def add_to_order(item, quantity = 1)
-    order.add_basket(item, qty)
-    "#{qty}x #{item}(s) added to your basket."
+    order.add_basket(item, num)
+    "#{num}x #{item}(s) added to your basket."
   end
 
   def order_summary

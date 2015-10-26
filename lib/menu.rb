@@ -15,4 +15,3 @@ class Menu
   def open
     dishes.map { |item, price| "#{item}: £#{sprintf('%.2f', price)}" }
   end
-end
