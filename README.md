@@ -11,12 +11,12 @@ The Takeaway is the way the user interacts with the program.  There are several 
 
 ####Below is an example of how the ordering system is meant to work.
 
->**[1] pry(main)> require './lib/takeaway.rb'**
->=> true
->**[2] pry(main)> t = Takeaway.new**
->=> #<Takeaway:0x007fe80c836ac0
- @menu=
-  #<Menu:0x007fe80c836a98
+**[1] pry(main)> require './lib/takeaway.rb'**\s\s
+=> true\s\s
+**[2] pry(main)> t = Takeaway.new**\s\s
+=> #<Takeaway:0x007fe80c836ac0\s\s
+ @menu=\s\s
+  #<Menu:0x007fe80c836a98\s\s
    @menu=
     [{:food=>"Salt and Pepper King Prawn", :price=>3.99, :quantity_ordered=>0},
      {:food=>"Pork Dumplings", :price=>2.5, :quantity_ordered=>0}]>,
