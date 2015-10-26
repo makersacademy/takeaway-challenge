@@ -13,7 +13,7 @@ describe Order do
   end
 
   context "#order_summary" do
-    it "returns total number of items in basket" do
+    it "should return total number of items" do
   #     subject.add_to_basket("Hamburger", 5)
   #     subject.add_to_basket("Pizza", 3)
   #     expect(subject.basket_total).to eq 8
