@@ -1,3 +1,12 @@
 --- !ruby/object:Dish
 description: Cheeseburger
 price: 4.99
+
+--- !ruby/object:Dish
+description: Pizza
+price: 7.99
+
+--- !ruby/object:Dish
+description: Kebab
+price: 2.99
+

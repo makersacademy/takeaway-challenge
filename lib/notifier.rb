@@ -7,10 +7,11 @@ class Notifier
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
   def notify(estimated_time)
-    time = "#{estimated_time.hour}:#{estimated_time.min}"
-    body = "Thank you! Your order was placed and will be delivered before #{time}"
+    time = estimated_time.strftime("%H:%S")
+    b = "Thank you! Your order was placed and will be delivered before #{time}"
     @client.messages.create(from: '+447481341019',
                             to: '+442032907677',
-                            body: body)
+                            body: b)
+    b
   end
 end

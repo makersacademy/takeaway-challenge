@@ -8,6 +8,7 @@ class MenuLoader
     File.open(file, "r").each do |object|
       @objects << YAML.load(object)
     end
+    objects
   end
   def objects
     @objects.dup
