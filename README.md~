@@ -15,6 +15,5 @@ Check your basket: order.basket
 Checking the total amount of your basket: order.total
 
 Checkout: order.checkout(amount)
-If the total amount is different from the amount given on checkout, it will show an error message.
 
-I didn't have time to implement the text sending functionality with twilio.
+If the 
