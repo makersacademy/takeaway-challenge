@@ -4,6 +4,7 @@ describe Order do
 
   subject(:order) { described_class.new }
   let(:menu) { double('menu', :dishes => { "Golden French Fries" => 1 }) }
+  let(:sms) {double('sms')}
 
   context 'selecting an item from the menu' do
 
@@ -35,7 +36,8 @@ describe Order do
       end
 
       xit 'sends a text if the order is valid' do
-        expect(order.confirm_order(3)).
+        expect(sms).to receive (:send_sms)
+        order.confirm_order(3)
       end
 
   end

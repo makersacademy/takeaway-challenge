@@ -62,3 +62,5 @@ If a user tries to select a menu that is not on the menu they will receive an er
 RuntimeError: Sorry we don't have Chicken & chips on the menu
 
 ```
+
+To finalise an order a user must confirm the order and the total price as follows:
