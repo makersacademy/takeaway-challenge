@@ -8,7 +8,7 @@ class Order
     @menu = menu
   end
 
-  def add_order(dish, quantity)
+  def add_dish(dish, quantity)
     @basket[dish.to_sym] += quantity
     output = "#{quantity}x #{dish}(s) added to your basket"
     output
@@ -18,10 +18,12 @@ class Order
     raise "Your basket is empty!" if basket.empty?
   end
 
-  def order_total
-    sum = 0
-    @basket = basket.each { |k,v| @sum+=(@menu.dishes[k]*v)}
-    output = "Total = £ #{sum}"
+  def total
+    basket.inject(0) {|total, (dish, quantity)| total += price(dish)*quantity}
+  end
+
+  def total_output
+    output = "Total = £#{sum}"
     output
   end
 end

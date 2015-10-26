@@ -1,7 +1,7 @@
 Takeaway Challenge
 ==================
 
-Approach
+Intro
 -------
 * The challenge is writing a takeaway programme that sends a text message when the order is placed and total confirmed. The features are implemented according to the following user stories.
 
@@ -10,13 +10,17 @@ Approach
 * Class structure :
 
 - Restaurant class (takeaway interface)
-- Menu class (contains dishes)
 - Order class (places & calculate order total)
-- Twilio class (messenger)
+- Menu class (contains dishes)
+- Messenger module (twilio)
 
-The approach is to have the Restaurant class as the umbrella class that requires Menu, Order and Twilio class. 
+The classes are structured in the following hierarchy :
 
-Gems
+* Restaurant ---> Order ---> Menu, with Twilio as a module that sends text messages when order is complete. 
+
+Currently rspec tests need to have better coverage and I am hoping to complete the rspec test for the messenger module.
+
+Gems List
 ------
 gem 'rspec'
 gem 'rubocop'
@@ -24,6 +28,8 @@ gem 'coveralls', require: false
 gem 'rubocop-rspec'
 gem 'capybara'
 gem 'twilio-ruby'
+gem 'dotenv', '~> 2.0', '>= 2.0.2'
+
 
 ```
 As a customer

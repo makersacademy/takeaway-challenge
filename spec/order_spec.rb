@@ -12,13 +12,13 @@ describe Order do
       expect(subject.basket).to be_empty
     end
 
-    it {is_expected.to respond_to(:add_order).with(2).arguments}
+    it {is_expected.to respond_to(:add_dish).with(2).arguments}
   end
 
   describe "#add order" do
 
     it "adds selected dishes and quantities in basket" do
-      expect(subject.add_order("Burger",2)).to eq "2x Burger(s) added to your basket"
+      expect(subject.add_dish("Burger",2)).to eq "2x Burger(s) added to your basket"
     end
   end
 
@@ -31,9 +31,9 @@ describe Order do
 
   describe "#total" do
 
-    it "adds up total of placed order in basket" do
-      allow(subject).to receive(:order_total).and_return("Total = £8")
-      expect(subject.order_total).to eq "Total = £8"
+    it "outputs total of basket" do
+      allow(subject).to receive(:total_output).and_return("Total = £8")
+      expect(subject.total_output).to eq "Total = £8"
     end
   end
 end
