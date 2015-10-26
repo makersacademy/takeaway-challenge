@@ -14,6 +14,3 @@ class SMS
     puts "Message sent"
   end
 end
-
-# a = Text.new
-# a.send_text
