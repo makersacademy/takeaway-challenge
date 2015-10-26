@@ -1,6 +1,7 @@
-require './lib/menu'
+require_relative 'menu'
+require_relative 'send_message'
 
-class Order
+class Order < SendMessage
 
   attr_reader :basket, :menu, :total
 
@@ -8,7 +9,7 @@ class Order
     @menu_klass = menu_klass
     @menu = @menu_klass.new
     @basket = Hash.new(0)
-    @total = 0
+    @total = 0.0
   end
 
   def add_order(name, quantity)
@@ -20,13 +21,19 @@ class Order
   def basket_sum
     raise 'Basket is empty' if basket.empty?
     message = ""
-    @basket.each {|item, qty| message = message + "#{item} x #{qty} = £#{(menu.dish[item]*qty)}"}
+    @basket.each {|item, qty| message = message + "#{item} x #{qty} = £#{(menu.dish[item]*qty).round(2)}"}
     message
   end
 
   def total_sum
-    @basket.map {|item, qty| @total += menu.dish[item] * qty}
+    @basket.map {|item, qty| @total += (menu.dish[item] * qty)}
     "Your total is: #{total}"
+  end
+
+  def checkout(total)
+    send_sms(total)
+    'Thank you for shopping with us,
+    you will recieve a text message confirming your order'
   end
 
 end

@@ -32,4 +32,9 @@ describe Order do
     subject.add_order(item2, qty)
     expect(subject.total_sum).to eq message
   end
+
+  it 'sends a payment confirmation text message' do
+    expect(subject.checkout(40.0)).to eq 'Thank you for shopping with us,
+    you will recieve a text message confirming your order'
+  end
 end
