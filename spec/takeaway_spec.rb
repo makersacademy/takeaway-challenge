@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-
+  
   it 'show_menu should display all items and prices' do
     subject.add_dish('chilli', 2.99)
     subject.add_dish('lasagne', 4.5)
