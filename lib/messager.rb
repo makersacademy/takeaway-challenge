@@ -5,13 +5,11 @@ Dotenv.load
 
 class Messager
 
-  def initialize(order)
-    send_text(order)
+  def initialize
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
   end
 
   def send_text(order)
-    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
-
     @message = @client.messages.create(
       to: ENV['SMS_TO'],
       from: ENV['SMS_FROM'],

@@ -27,7 +27,7 @@ describe Order do
   describe '#checkout' do
     before do
       msg = "menuitem1 x3: £3\nTotal price: £3"
-      allow(messager).to receive(:new).with(msg).and_return("menuitem1 x3: £3\nTotal price: £3")
+      allow(order).to receive(:send_text).and_return(msg)
     end
 
     it 'returns an empty basket when empty' do
@@ -41,10 +41,6 @@ describe Order do
       order.add :menuitem1, 3
       order.checkout 3
       expect(order.processed).to eq true
-    end
-    it 'sends a confirmation text' do
-      order.add :menuitem1, 3
-      expect(order.checkout 3).to eq "menuitem1 x3: £3\nTotal price: £3"
     end
   end
 

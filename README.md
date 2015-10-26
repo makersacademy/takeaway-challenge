@@ -19,7 +19,7 @@ At a later point, the feature to order food by text can be implemented.
 My approach
 -----------
 
-After implementing all functionality in a single class following a rigorous red/green/refactor cycle, I extracted a Menu class. I thought of extracting an Order class as well, but that would basically leave Takeaway void of any functionality, so I decided against it.
+After implementing all functionality in a single class following a rigorous red/green/refactor cycle, I extracted the classes Order, Messager and Menu. The frontend is Takeaway, which depends on Order and Menu. 
 
 Design principles and patterns
 ------------------------------
