@@ -2,8 +2,6 @@ require 'takeaway'
 
 describe Takeaway do
 
-  it { is_expected.to respond_to(:order).with(2).argument }
-
   it 'show_menu should display all items and prices' do
     subject.add_dish('chilli', 2.99)
     subject.add_dish('lasagne', 4.5)
@@ -25,6 +23,10 @@ describe Takeaway do
 
     it 'order should add to basket' do
       expect(subject.basket).to include("chilli"=>3)
+    end
+
+    it 'should not be able to order item not on menu' do
+      expect{ subject.order('pizza') }.to raise_error "Sorry, we don't have that!"
     end
 
     it 'should be able to add more of the same item to the order' do

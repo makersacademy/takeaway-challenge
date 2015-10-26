@@ -17,6 +17,7 @@ class Takeaway
   end
 
   def order(name, quantity = 1)
+    fail "Sorry, we don't have that!" unless @menu.has_key?(name)
     @basket[name] += quantity
     puts "#{quantity}x #{name}(s) added to your basket."
   end
