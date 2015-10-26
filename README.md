@@ -1,7 +1,9 @@
 Takeaway Challenge
 ==================
 
-This program allows the user to view the original McDonalds menu, select any number of available items from the menu, check a summary of the order before confirming and receiving a text message upon completion of the order.
+This program allows the user to view the original McDonalds menu, select any
+number of available items from the menu, check a summary of the order before
+confirming and receiving a text message upon completion of the order.
 
 Instructions
 ==================
@@ -59,13 +61,16 @@ To finalise an order a user must confirm the order and the total price as
 follows:
 
 '''
+
 [11] pry(main)> order.confirm_order(9)
+
 '''
 The user will receive a text message saying that they will receive their order
 within the hour.  If the user inputs a total price that is different to the
 total calculated by the programme they receive an error message:
 
 ```
+
 [12] pry(main)> order.confirm_order(8)
 RuntimeError: Sorry our records don't match, we believe the total price is £9.  
 Please check your order.
