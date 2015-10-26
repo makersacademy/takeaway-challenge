@@ -20,9 +20,9 @@ class Messager
   end
 
   def compose_message(order)
-    text =  "Your order has been confirmed! \
-            Expect your yummie food by #{delivery_time} \
-            \n#{order}"
+    "Your order has been confirmed! \
+    Expect your yummie food by #{delivery_time} \
+    \n#{order}"
   end
 
   def delivery_time
