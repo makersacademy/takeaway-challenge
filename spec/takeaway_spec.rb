@@ -32,25 +32,6 @@ describe Takeaway do
 
   end
 
-# PRIVATE
-#   context '#validate_order' do
-#     it 'should accept orders from the menu' do
-#       expect(takeaway.validate(:dish_one)).to eq (:dish_one)
-#     end
-
-#     it 'should reject orders that are not on the menu' do
-#       expect {takeaway.validate(:dish_unknown,1)}.to raise_error "I'm sorry, that is not on the menu."
-#     end
-#   end
-
-  context '#order_total' do
-    it{ is_expected.to respond_to :order_total } 
-
-    # it 'returns the total value of the order' do
-    #   total
-    # end
-  end
-
   context '#basket' do
     it { is_expected.to respond_to :basket }
 
@@ -60,12 +41,6 @@ describe Takeaway do
 
   context '#checkout' do
     it { is_expected.to respond_to :checkout }
-  end
-
-  context '#send_sms' do
-    it { is_expected.to respond_to :send_sms }
-
-    # it sends a message to TwilioSMS.send_sms
   end
 
 end
