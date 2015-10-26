@@ -12,7 +12,7 @@ class Sms
     to = ENV['MY_NUMBER']
     @client.account.messages.create(
           :from => from,
-          :to => to,
+          :to =>  to,
           :body => msg)
   end
 
@@ -21,7 +21,7 @@ class Sms
   def get_client
     account_sid = ENV['TWILIO_SID']
     auth_token = ENV['TWILIO_TOKEN']
-    @client_klass.new account_sid, auth_token
+    @client_klass.new(account_sid, auth_token)
   end
 
 end

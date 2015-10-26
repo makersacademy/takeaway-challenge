@@ -17,7 +17,8 @@ class Order
   def total
     total = 0
     @list.each do |item|
-      price, quantity = item[:dish].price, item[:quantity]
+      price = item[:dish].price
+      quantity = item[:quantity]
       total += price * quantity
     end
     return total
@@ -26,7 +27,8 @@ class Order
   def receipt
     receipt = "Your order has been placed and will be delivered at #{time}: "
     @list.each_with_index do |item, index|
-      na, qu, = item[:dish].name, item[:quantity]
+      na = item[:dish].name
+      qu = item[:quantity]
       pr = item[:dish].price * qu
       receipt << "#{na} x#{qu} = #{pound_str(pr)}"
       receipt << ", " if index < (@list.length - 1)
