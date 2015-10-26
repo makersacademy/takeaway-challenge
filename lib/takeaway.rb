@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Takeaway
   attr_reader :dishes, :basket, :total
 
@@ -33,6 +35,18 @@ class Takeaway
 
   def checkout(amount = 0)
     fail "Total cost does not match the sum of the dishes in your order!" if amount != total
-    "Thank you for your order: £#{'£%.2f' % @total}."
+    send_text
+  end
+
+  def send_text
+    account_sid = "PN2ba53d6e4525039c3c3c17ebb2bc2a15"
+    auth_token = "d8bfb8790ec316cd64d6d254a4bcc6c6"
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @time = (Time.now + (60*60)).strftime("%H:%M")
+    @message = @client.messages.create(
+      to: "+375293069300",
+      from: "+43676800505017",
+      body: "Thank you! Your order was placed and will be delivered before #{@time}")
   end
 end

@@ -43,5 +43,11 @@ describe Takeaway do
       takeaway.order('salmon maki', 3)
       expect{takeaway.checkout(16.5)}.to raise_error 'Total cost does not match the sum of the dishes in your order!'
     end
+
+    it 'sends a payment confirmation text message' do
+      allow(takeaway).to receive(:send_text)
+      expect(takeaway).to receive(:send_text).with("Thank you for your order: £27.50")
+      takeaway.checkout(27.50)
+    end
   end
 end
