@@ -4,11 +4,12 @@ class SendSMS
 
   def initialize order_summary, total
     send_sms order_summary, total
-  end
+   end
 
   def send_sms order_summary, total
-    account_sid = 'ACd268326a81162bbacb7d84216a8b7d67'
-    auth_token =  'f8a6adaa76de9e0e19ce240c580d4886'
+    account_sid = ENV['twilio_sid']
+    auth_token =  ENV['twilio_token']
+    twilio_phone_number = ENV['mattia']
     in1hr = (Time.now + 3600).strftime("%H:%M")
     message = "Your order has been confirmed! It will be delivered by #{in1hr}"
     @client = Twilio::REST::Client.new account_sid, auth_token

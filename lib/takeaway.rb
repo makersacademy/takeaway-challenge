@@ -5,8 +5,8 @@ class TakeAway
 
   attr_reader :menu, :order
 
-  def initialize menu = Menu.new
-    @menu = menu
+  def initialize menu_klass
+    @menu = menu_klass.new
     @order = Hash.new(0)
     # @basket = Array.new
   end
@@ -15,7 +15,7 @@ class TakeAway
     @menu.show_menu
   end
 
-  def add_meal item, quantity = 1
+  def add_item item, quantity = 1
     fail 'not in the menu' unless menu.dishes.include?(item)
     order[item] += quantity
     "#{quantity} #{item} has been added to your order"
@@ -27,19 +27,30 @@ class TakeAway
   end
 
   def order_summary
-    summary = order.map{|item,quantity|"#{item} x #{quantity} = £#{(menu.dishes[item]*quantity)}"}.join(', ')
+    summary = order.map{|i,q|"#{i} x #{q} = £#{(menu.dishes[i]*q)}"}.join(', ')
     "Your order: " +summary
+  end
+
+  def confirmation(replay = nil)
+    puts 'it\'s ok?'
+    replay = gets.chomp.downcase if replay.nil?
+    confirmed if replay == 'yes'
   end
 
   def total
     "Your bill is: £#{total_bill}"
   end
 
+  private
+  def confirmed
+    send_sms
+    'thank you for your order, You will receive a confirmation message soon'
+  end
+
   def send_sms
     SendSMS.new(order_summary, total)
   end
 
-  private
   def total_bill
     order.map { |item,quantity| menu.dishes[item]*quantity }.reduce(:+)
   end
