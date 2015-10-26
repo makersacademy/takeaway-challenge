@@ -1,4 +1,4 @@
-require 'textmessenger'
+require 'messenger'
 
 describe Messenger do
 
