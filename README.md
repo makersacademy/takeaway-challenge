@@ -6,8 +6,25 @@ Author - Rob Youngman
 Current Status
 ==============
 
-Fails RSpec with 4 errors.
+RSpec fails with 4 errors.
+These tests were passing until I introduced Dependency Injection for the Menu class.
+All four errors appear to be caused by the same problem.
+Here's an example of one of the errors
+
+  1) Takeaway Add item to basket add first item
+     Failure/Error: expect{ takeaway.add('Neptune') }.to change { takeaway.basket.length }.by 1
+     NoMethodError:
+       undefined method `contains?' for :menu:Symbol
+     # ./lib/takeaway.rb:11:in `add'
+     # ./spec/takeaway_spec.rb:17:in `block (4 levels) in <top (required)>'
+     # ./spec/takeaway_spec.rb:17:in `block (3 levels) in <top (required)>'
+
 The takeaway functionality of menu, add, remove, total, summary has been functionally tested.
+
+A screenshot of a successful notification from Twillio is located in the file named twillioSMS.png.
+
+Some more refactoring is required to improve the quality of the code and to meet code review standards
+but I have run out of time.
 
 Instruction for running in irb
 ==============================
