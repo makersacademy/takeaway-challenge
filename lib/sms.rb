@@ -8,19 +8,19 @@ class Sms
   end
 
   def send(msg)
-    from = +441740582013
-    to = +447753459230
+    from = ENV['TWILIO_NUMBER']
+    to = ENV['MY_NUMBER']
     @client.account.messages.create(
-          :from => @from,
-          :to => @to,
+          :from => from,
+          :to => to,
           :body => msg)
   end
 
   private
 
   def get_client
-    account_sid = "AC466c0233268a94d27d7b5751937e3168"
-    auth_token = "9d8cbb995fe1b8fa3c796334cbe04a0f"
+    account_sid = ENV['TWILIO_SID']
+    auth_token = ENV['TWILIO_TOKEN']
     @client_klass.new account_sid, auth_token
   end
 
