@@ -49,7 +49,7 @@ class Takeaway
   end
 
   def send_msg
-    @messenger.send_text
+    messenger.send_text
   end
 
 end
