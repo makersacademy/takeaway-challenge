@@ -1,6 +1,6 @@
-require 'takeaway'
+require 'order'
 
-describe Takeaway do
+describe Order do
 
   let(:takeaway) { described_class.new(restaurant) }
   let(:restaurant) { double() }
@@ -9,7 +9,7 @@ describe Takeaway do
       expect(subject.menu).to eq nil
     end
 
-    it { is_expected.to respond_to(:available) }
+    it { is_expected.to respond_to(:whats_available) }
 
   let(:cuisine) { double(menu: {item: 5}) }
 
@@ -71,7 +71,7 @@ describe Takeaway do
 
 
   describe '#cancel_order' do
-      let(:ta) { Takeaway.new(restaurant) }
+      let(:ta) { Order.new(restaurant) }
       let(:test1) { double(menu: {item: 5}) }
 
     before do
@@ -95,7 +95,7 @@ describe Takeaway do
   end
 
   describe '#place_order' do
-    let(:ta) { Takeaway.new(restaurant) }
+    let(:ta) { Order.new(restaurant) }
     let(:test1) { double(menu: {item: 5}) }
 
     before do
