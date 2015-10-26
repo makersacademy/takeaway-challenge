@@ -1,5 +1,7 @@
 require './lib/order'
 require './lib/submitorder'
+require 'dotenv'
+Dotenv.load
 
 class Takeaway
 
@@ -22,13 +24,13 @@ class Takeaway
   def submit_order
     puts "Please give mobile number in format +447914245451:"
     @to_mobile = gets.chomp
-    @from_mobile = '+441384901121' #+447508059316 other verified number
+    @from_mobile  = ENV['FROMNO']
     @message_body = 'Thank you! Your order was placed and will be delivered before 18:52'
     @message =   {from: from_mobile,
                 to: to_mobile,
                 body: message_body}
-    @account_sid = 'ACaa9d88865685ca7e9bdec766b71fa313'
-    @auth_token = '7fcdf88aeafb171703682f9e91c42d97'
+    @account_sid  = ENV['ACCOUNTSID']
+    @auth_token  = ENV['AUTHTOKEN']
     p @submitorder1 = SubmitOrder.new(account_sid, auth_token)
     p submitorder1.get order1, order1.total
     while !submitorder1.validated?
