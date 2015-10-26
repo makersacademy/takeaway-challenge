@@ -1,22 +1,16 @@
+require_relative 'menu'
 require 'twilio-ruby'
 
 class Takeaway
-  attr_reader :dishes, :basket, :total
+  attr_reader :menu, :basket, :total
 
-  DISHES = { 'chicken gyoza' => 4.00,
-             'singapore fried noodles' => 7.00,
-             'salmon maki' => 5.50,
-             'kimchi' => 3.00,
-             'vegetable tempura' => 7.00,
-             'beef soup ramen' => 6.50 }
-
-  def initialize(dishes = DISHES)
-    @dishes = dishes
+  def initialize(menu_klass = Menu.new)
+    @menu = menu_klass
     @basket = Hash.new(0)
   end
 
   def open_menu
-    dishes.map { |item, price| "#{item}: #{'£%.2f' % price}" }
+    menu.dishes.map { |item, price| "#{item}: #{'£%.2f' % price}" }
   end
 
   def order(item, quantity = 1)
@@ -25,11 +19,11 @@ class Takeaway
   end
 
   def basket_summary
-    basket.map { |item, quantity| "#{item} x#{quantity} = #{'£%.2f' % (dishes[item] * quantity)}" }.join(', ')
+    basket.map { |item, quantity| "#{item} x#{quantity} = #{'£%.2f' % (menu.dishes[item] * quantity)}" }.join(', ')
   end
 
   def total
-    @total = basket.map { |item, quantity| dishes[item] * quantity }.inject(:+) unless basket.empty?
+    @total = basket.map { |item, quantity| menu.dishes[item] * quantity }.inject(:+) unless basket.empty?
     "Total: #{'£%.2f' % @total}"
   end
 
