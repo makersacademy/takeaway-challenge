@@ -2,8 +2,11 @@ require 'takeaway'
 
 describe TakeAway do
 
-  subject(:takeaway) {described_class.new Menu}
-
+  subject(:takeaway) {described_class.new menu_klass, sms_klass}
+  let(:menu) {double('menu', show_menu: [:pizza, 2], add: nil, dishes: {pizza: 10} )}
+  let(:menu_klass) {double('menu', new: menu)}
+  let(:sms) {double('sms')}
+  let(:sms_klass) {double('sms_klass', new: sms)}
   context 'Customer' do
     it 'can see the menu' do
       expect(takeaway.menu_list).not_to be_empty

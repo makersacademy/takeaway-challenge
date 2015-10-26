@@ -5,9 +5,10 @@ class TakeAway
 
   attr_reader :menu, :order
 
-  def initialize menu_klass
+  def initialize menu_klass, sms_klass
     @menu = menu_klass.new
     @order = Hash.new(0)
+    @sms_klass = sms_klass
     # @basket = Array.new
   end
 
@@ -48,7 +49,7 @@ class TakeAway
   end
 
   def send_sms
-    SendSMS.new(order_summary, total)
+    @sms_klass.new(order_summary, total)
   end
 
   def total_bill
