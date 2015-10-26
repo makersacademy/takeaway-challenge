@@ -17,11 +17,11 @@ describe Takeaway do
     end
   end
 
-  describe '#basket_summary' do
+  describe '#order_summary' do
     it 'creates an order summary' do
       takeaway.order('kimchi', 2)
       takeaway.order('salmon maki', 3)
-      expect(takeaway.basket_summary).to eq("kimchi x2 = £6.00, salmon maki x3 = £16.50")
+      expect(takeaway.order_summary).to eq("kimchi x2 = £6.00, salmon maki x3 = £16.50")
     end
   end
 
@@ -34,10 +34,11 @@ describe Takeaway do
   end
 
   describe '#checkout' do
-    it 'raises an error if the total bill does not match the sum of the various dishes' do
+    it 'raises an error if the total bill does not match the sum' do
       takeaway.order('kimchi', 2)
       takeaway.order('salmon maki', 3)
-      expect{takeaway.checkout(16.5)}.to raise_error 'Total cost does not match the sum of the dishes in your order!'
+      msg = 'Total cost does not match the sum of the dishes in your order!'
+      expect{takeaway.checkout(16.5)}.to raise_error { msg }
     end
   end
 end

@@ -5,6 +5,8 @@ require_relative 'messenger'
 class Takeaway
   attr_reader :menu, :order, :total
 
+  ERROR = "Total cost does not match the sum of the dishes in your order!"
+
   def initialize(menu_klass = Menu.new, order_klass = Order.new)
     @menu = menu_klass
     @order = order_klass
@@ -24,12 +26,25 @@ class Takeaway
   end
 
   def total
-    @total = order.total(menu) unless basket.empty?
+    @total = order.total(menu) unless empty?
     "Total: £#{sprintf('%.2f', @total)}"
   end
 
   def checkout(amount = 0)
-    fail "Total cost does not match the sum of the dishes in your order!" if amount != total
+    is_correct_amount? ? send_sms : fail ERROR
+  end
+
+  private
+
+  def empty?
+    order.basket.empty?
+  end
+
+  def is_correct_amount?
+    amount == total
+  end
+
+  def send_sms
     messenger.send_text
   end
 end
