@@ -1,6 +1,9 @@
 require './lib/menu.rb'
 require './lib/verify.rb'
 
+require 'dotenv'
+Dotenv.load
+
 class Order
 
 attr_reader :current_order, :current_menu, :no_of_item, :item_total, \
