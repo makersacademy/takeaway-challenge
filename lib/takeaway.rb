@@ -1,12 +1,14 @@
 require_relative "menu"
 require_relative 'twilio'
+require 'dotenv'
+Dotenv.load
 
 
 class Takeaway
 
   attr_reader :selected_dishes, :total
 
-  def initialize (menu = Menu.new, twilio = Twilio_sms.new)
+  def initialize (menu = Menu.new, twilio = Twilio_sms)
     @menu = menu
     @selected_dishes = Hash.new(0)
     @total = 0
@@ -26,7 +28,7 @@ class Takeaway
 
   def pay(money)
     if total == money
-      send_message
+      send_message(@selected_dishes, @total)
       exit
     else
       raise "Amount paid not correct"
@@ -35,8 +37,8 @@ class Takeaway
 
   private
 
-  def send_message
-    @twilio.send_text_message
+  def send_message(dish, total)
+    @twilio.new(dish, total).send_text_message
   end
 
   def total_order(dish, quantity)
