@@ -18,7 +18,7 @@ describe TakeAway do
       expect{takeaway.add_item :pizza,2}.to change{takeaway.order.length}.by 1
     end
     it 'can\'t delete a dish not in the ordered dishes' do
-      expect{takeaway.add_item :pomodoro, 2}.to raise_error'not in the menu'
+      expect{takeaway.add_item :pomodoro, 2}.to raise_error 'not in the menu'
     end
     it 'can delete an item ordered' do
       takeaway.add_item :pizza, 2
