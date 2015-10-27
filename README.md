@@ -30,9 +30,9 @@ Approach
 --------
 I wanted to build an interface that would be easy to use within irb, and to make use of three concepts that we had focused upon during the week: the Single Responsibility Principle, encapsulation and dependency injection.
 
-Dependencies are minimised; different food classes can be included as arguments submitted for order (the current list is in the `./lib/foods.rb` file.), and communication with the Twilio REST API is handled in a separate Twilio module. The program works as follows:
+Dependencies are minimised; different foods can be included as arguments submitted for order, and communication with the Twilio REST API is handled in a separate Twilio module. The program works as follows:
 * Users can view a menu and order dishes via an instance of the main Takeaway class.
-* The `take_order` command is used to select dishes. The command's first argument should be the total cost of the dishes being added (visible in the `menu`). The subsequent arguments should be the desired dishes, such as `Burger` or `Onion_Rings`. If the estimated cost in the first argument is wrong, an error will be raised. This approach satisfies the third user story above.
+* The `take_order` command is used to select dishes. The command's first argument should be the total cost of the dishes being added (visible in the `menu`). The subsequent arguments should be the desired dishes, entered as symbols, e.g. :burger or :onion_rings. If the estimated cost in the first argument is wrong, an error will be raised. This approach satisfies the third user story above.
 * Users can call the `review_order` command to see the dishes they have selected, along with their quantities and the subtotal.
 * The `remove_order` command will erase the current order.
 * Once the user is happy with their order, the `submit_order` command will finalise it. Calling the command will send a text via Twilio confirming that delivery will be made in the next hour.
@@ -48,12 +48,12 @@ Setup
 require './lib/takeaway'
 my_takeaway = Takeaway.new # Creates an instance of the Takeaway class
 my_takeaway.menu # Displays the takeaway's menu, with prices, sourced from ./menu-file.txt
-my_takeaway.take_order(<total price>,*<dishes>) # Orders the selected dishes. An unlimited number of arguments can be submitted for <dishes>. The <total price> must equal the exact price sum of all the dishes specified or an error will be raised. Dish names must match those in the menu, except with underscores rather than spaces. Here is an example:
-my_takeaway.take_order(9.00,Fried_Chicken,Fries,Onion_Rings)
+my_takeaway.take_order(<total price>,*<dishes>) # Orders the selected dishes. An unlimited number of arguments can be submitted for <dishes>. The <total price> must equal the exact price sum of all the dishes specified or an error will be raised. Dish names must match those in the menu i.e. they must be symbols. Here is an example:
+my_takeaway.take_order(9.00,:fried_chicken,:fries,:onion_rings)
 my_takeaway.review_order # Displays the current order
 my_takeaway.subtotal # Displays the total price of the currently-selected dishes
 my_takeaway.remove_order # Erases the current order
-my_takeaway.submit_order # Submits the current order and sends user a text
+my_takeaway.submit_order # Submits the current order and sends the user a text
 ```
 
 Real food not included, I'm afraid. Sorry!
