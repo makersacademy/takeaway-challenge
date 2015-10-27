@@ -297,7 +297,7 @@ The noun 'order' appears in three method names and this is a clear indication th
 
 ## Personal details and tokens on GitHub
 
-A well ordered codebase will use ENV variables and the [dotenv gem](https://github.com/bkeepers/dotenv) to ensure that sensitive infomration such as phone numbers and security tokens are not pushed up to public repos on Github.
+A well ordered codebase will use ENV variables and the [dotenv gem](https://github.com/bkeepers/dotenv) to ensure that sensitive information such as phone numbers and security tokens are not pushed up to public repos on Github.
 
 ## Explore the language for solutions to common problems
 ### Use `Hash.new` to specify defaults other than `nil`
