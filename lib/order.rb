@@ -1,5 +1,5 @@
 class Order
-  attr_reader :basket, :total
+  attr_reader :basket, :check, :all
 
   def initialize
     @basket = Hash.new(0)
@@ -10,11 +10,12 @@ class Order
   end
 
   def basket_summary(menu)
-    basket.map { |item, num| "#{item} x#{num} = £#{sprintf('%.2f', menu.dishes[item] * num)}" }.join(', ')
+    @all = menu.dishes[item]*num
+    basket.map { |item,num| "#{item} x#{num} = £#{@all}" }.join(', ')
   end
 
-  def total(menu)
-    @total = order.basket.map { |item, num| menu.dishes[item] * num }.inject(:+)
-    "Total: £#{sprintf('%.2f', @total)}"
+  def bill(menu)
+    @check = basket.map { |item, num| @all }.inject(:+)
+    "Total: £#{@total}"
   end
 end

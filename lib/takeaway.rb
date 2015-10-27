@@ -1,18 +1,19 @@
 class Takeaway
-  attr_reader :menu, :order, :total
+  attr_reader :menu, :order, :messenger, :result
 
   ERROR = "Total cost does not match the sum of the dishes in your order!"
 
-  def initialize(menu_klass = Menu.new, order_klass = Order.new)
-    @menu = menu_klass
-    @order = order_klass
+  def initialize(menu = Menu.new, order = Order.new, messenger = Messenger.new)
+    @menu = menu
+    @order = order
+    @messenger = messenger
   end
 
   def open_menu
     menu.open
   end
 
-  def add_to_order(item, quantity = 1)
+  def add_to_order(item, num = 1)
     order.add_basket(item, num)
     "#{num}x #{item}(s) added to your basket."
   end
@@ -22,12 +23,12 @@ class Takeaway
   end
 
   def total
-    @total = order.total(menu) unless empty?
-    "Total: £#{sprintf('%.2f', @total)}"
+    @result = order.bill(menu) unless empty?
+    "Total: £#{@result}"
   end
 
   def checkout(amount = 0)
-    is_correct_amount? ? (send_sms) : (fail ERROR)
+    is_correct_amount?(amount) ? (send_sms) : (fail ERROR)
   end
 
   private
@@ -36,7 +37,7 @@ class Takeaway
     order.basket.empty?
   end
 
-  def is_correct_amount?
+  def is_correct_amount?(amount)
     amount == total
   end
 
