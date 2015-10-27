@@ -35,19 +35,27 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 This is how an app can be used:
 -------------------------------
 ```
-2.2.3 :001 > kyotoya = Takeaway.new
-2.2.3 :002 > kyotoya.open_menu
- => {'chicken gyoza' => 4.00, 'singapore fried noodles' => 7.00, 'salmon maki' => 5.50, 'kimchi' => 3.00, 'vegetable tempura' => 7.00, 'beef soup ramen' => 6.50}
-2.2.3 :003 > kyotoya.order("kimchi", 3)
+2.2.3 :001 > require './lib/menu'
+ => true
+2.2.3 :002 > require './lib/order'
+ => true
+2.2.3 :003 > require './lib/messenger'
+ => true
+2.2.3 :004 > require './lib/takeaway'
+ => true
+2.2.3 :005 > kyotoya = Takeaway.new
+2.2.3 :006 > kyotoya.open_menu
+  => #<Takeaway:0x007f91b28d5d60 @menu=#<Menu:0x007f91b28d5d10 @dishes={"chicken gyoza"=>4.0, "singapore fried noodles"=>7.0, "salmon maki"=>5.5, "kimchi"=>3.0, "vegetable tempura"=>7.0, "beef soup ramen"=>6.5}>, @order=#<Order:0x007f91b28d5c98 @basket={}>, @messenger=#<Messenger:0x007f91b28d5bf8>>
+2.2.3 :007 > kyotoya.add_to_order("kimchi", 3)
  => "3x kimchi(s) added to your basket."
-2.2.3 :004 > kyotoya.order("salmon maki", 4)
+2.2.3 :008 > kyotoya.add_to_order("salmon maki", 4)
  => "4x salmon maki(s) added to your basket."
-2.2.3 :005 > kyotoya.basket_summary
+2.2.3 :009 > kyotoya.order_summary
 kimchi x3 = £6.00, salmon maki x4 = £22.00
-2.2.3 :006 > kyotoya.total
+2.2.3 :010 > kyotoya.total
  => "Total: £28.00"
-2.2.3 :007 > kyotoya.checkout(28)
- => ""Thank you! Your order was placed and will be delivered before 10:54."
+2.2.3 :011 > kyotoya.checkout(28)
+ => "Thank you! Your order was placed and will be delivered before 10:54."
 ```
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
