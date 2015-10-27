@@ -32,6 +32,7 @@ describe 'Customer features' do
       expect(takeaway.show_order).to match('Total price: £64.35')
     end
   end
+  
   feature 'when checking out' do
     it 'returns message that total is not right' do
       takeaway.place_order('Fettuccine Al Salmone', 3)
