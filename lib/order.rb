@@ -7,7 +7,7 @@ class Order
 
   def initialize(time_klass = Time)
     @time_klass = time_klass
-    @list = Array.new
+    @list = []
   end
 
   def add(dish, quantity)
