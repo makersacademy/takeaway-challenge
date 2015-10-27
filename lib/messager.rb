@@ -17,6 +17,7 @@ class Messager
     )
   end
 
+  private
   def compose_message(order)
     "Your order has been confirmed! \
     Expect your yummie food by #{delivery_time} \
