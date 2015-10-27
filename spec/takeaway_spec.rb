@@ -1,13 +1,13 @@
 require 'takeaway'
 require 'twilio'
 require 'support/shared_examples_for_twilio'
+MOCK_PRICE = 1
 
 describe Takeaway do
 
   let(:takeaway) {described_class.new}
-  let(:dish_klass) {double(new: dish, price: 4)}
+  let(:dish) {double}
   let(:class_double) {double}
-  let(:dish) {double(class: class_double)}
 
   context 'The menu' do
     let(:menu_file) {double(each_line: nil)}
@@ -24,14 +24,16 @@ describe Takeaway do
   context 'Ordering dishes' do
     describe '#take_order' do
       it 'raises an error when user\'s cost total doesn\'t match the real total' do
-        expect{takeaway.take_order(dish_klass.price + 1, dish_klass)}.to raise_error 'The total provided does not match the sum of the prices of the dishes selected'
+        allow(takeaway).to receive(:dish_prices).and_return(MOCK_PRICE)
+        expect{takeaway.take_order(MOCK_PRICE+1, dish)}.to raise_error 'The total provided does not match the sum of the prices of the dishes selected'
       end
     end
 
     describe '#review_order' do
       it 'returns the dishes currently ordered, with their quantities and the total price' do
-        takeaway.take_order(dish_klass.price,dish_klass)
-        expect(takeaway.review_order).to eq ("Your current order is: #{{class_double => 1}}. The total cost is £#{'%.2f' %dish_klass.price}.")
+        allow(takeaway).to receive(:dish_prices).and_return(MOCK_PRICE)
+        takeaway.take_order(MOCK_PRICE,dish)
+        expect(takeaway.review_order).to eq ("Your current order is: #{{dish => MOCK_PRICE}}. The total cost is £#{'%.2f' %MOCK_PRICE}.")
       end
 
       it 'raises an error if the ordered_dishes array is empty' do
@@ -41,7 +43,8 @@ describe Takeaway do
 
     describe '#remove_order' do
       before(:each) do
-        takeaway.take_order(dish_klass.price,dish_klass)
+        allow(takeaway).to receive(:dish_prices).and_return(MOCK_PRICE)
+        takeaway.take_order(MOCK_PRICE,dish)
         takeaway.remove_order
       end
 
@@ -60,8 +63,9 @@ describe Takeaway do
 
     describe '#subtotal' do
       it 'returns the running total' do
-        takeaway.take_order(dish_klass.price,dish_klass)
-        expect(takeaway.subtotal).to eq "#{'%.2f' %dish_klass.price}"
+        allow(takeaway).to receive(:dish_prices).and_return(MOCK_PRICE)
+        takeaway.take_order(MOCK_PRICE,dish)
+        expect(takeaway.subtotal).to eq "#{'%.2f' %MOCK_PRICE}"
       end
     end
 

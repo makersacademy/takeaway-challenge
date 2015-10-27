@@ -2,12 +2,16 @@ Welcome to our takeaway!
 
 Please choose your order from the items below:
 
-Burger £4.50
-Kebab £3.50
-Deluxe Fried Chicken £4.50
-Chicken Nuggets £3.00
-Pie £4.00
+:burger £4.50
+:kebab £3.50
+:deluxe_fried_chicken £4.50
+:chicken_nuggets £3.00
+:pie £4.00
 
 Side Dishes
-Fries £2.00
-Onion Rings £2.00
+:fries £2.00
+:onion Rings £2.00
+
+Drinks
+:coke £1.00
+:lilt £1.00
