@@ -30,8 +30,8 @@ describe Messager do
   end
 
   it 'retuns a delivery time 1 hour from now' do
-    @time_now = Time.parse("Oct 25 20015 10:00AM")
-    allow(Time).to receive(:now).and_return(@time_now)
+    time_now = Time.parse("Oct 25 20015 10:00AM")
+    allow(Time).to receive(:now).and_return(time_now)
     expect(messager.delivery_time).to eq ('11:00')
   end
 end
