@@ -21,7 +21,7 @@ class Order
       quantity = item[:quantity]
       total += price * quantity
     end
-    total
+    total.round(2)
   end
 
   def receipt
@@ -45,7 +45,7 @@ class Order
   def receipt_item_str(item)
     na = item[:dish].name
     qu = item[:quantity]
-    pr = item[:dish].price * qu
+    pr = (item[:dish].price * qu).round(2)
     "#{na} x#{qu} = #{pound_str(pr)}"
   end
 
