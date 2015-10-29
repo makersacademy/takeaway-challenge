@@ -1,19 +1,9 @@
 Takeaway Challenge
 ==================
 
-Instructions
--------
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
+About
 -----
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Fork this repo
-* run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+This is my solution to the second of the weekend challenges we were set on the Makers Academy course. The project aims to fulfill the following user stories:
 ```
 As a customer
 So that I can check if I want to order something
@@ -32,23 +22,48 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * ensure you have a list of dishes with prices
-  * place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use a Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+Usage
+-----
+To run this project, perform the following steps:
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+0. Add the following environment variables:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+  ```
+  TWILIO_NUMBER <- Your Twilio API phone number
+  MY_NUMBER     <- Your phone number
+  TWILIO_SID    <- Your Twilio SID
+  TWILIO_TOKEN  <- Your Twilio token
+  ```
+0. Run ```git clone git@github.com:thisdotrob/takeaway-challenge.git```.
+0. Move to the root directory of the project.
+0. Install the bundler gem: ```gem install bundler```.
+0. Run ```bundle``` to install the required gems.
+0. Open your REPL of choice e.g. ```irb```
+0. Initialize a new Takeaway object: ```ta = Takeaway.new```
+0. View the menu: ```puts ta.list_dishes```:
 
+  ```
+  0         Burger     £5.99
+  1         Chips      £0.99
+  ```
+0. Add dishes to the order using ```ta.add_to_order(dish #, quantity)```, e.g. to order 10 burgers based on the menu above:
 
-**Note: We are looking for good OO design and programming! Remember the Single Responsibility and Dependency Injection/Inversion principles!**
+  ```ruby
+  ta.add_to_order(0, 10)
+  ```
+0. When you have added your required dishes, complete the order by calculating your total and send it as an argument to the ```place_order``` method:
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+  ```ruby
+  ta.place_order(59.90)
+  ```
+
+Modifying the menu
+------------------
+The menu is loaded from the ```menu.txt``` file. Each dish should be on a new line in the following format:
+```
+name,price
+```
+
+Author
+------
+Rob Stevenson (this.rob@outlook.com)
