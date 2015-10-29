@@ -13,6 +13,8 @@ describe Takeaway do
 
   subject(:takeaway){ Takeaway.new(order_klass, menu_klass, sms_klass) }
 
+  let(:wrong_total_error){ Takeaway::WRONG_TOTAL_ERROR }
+
   context '#list_dishes' do
     it 'returns the result of @menu.list_dishes' do
       allow(menu).to receive(:formatted_dishes) { :dishes }
@@ -29,7 +31,7 @@ describe Takeaway do
 
   context '#place_order' do
     it 'raises error if provided total is different to @order.total' do
-      expect{ takeaway.place_order(4) }.to raise_error Takeaway::WRONG_TOTAL_ERROR
+      expect{ takeaway.place_order(4) }.to raise_error wrong_total_error
     end
     it 'calls #order_success if provided total matches @order.total' do
       expect(takeaway).to receive(:order_success)
