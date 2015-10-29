@@ -27,6 +27,7 @@ Usage
 To run this project, perform the following steps:
 
 0. Add the following environment variables:
+
   ```
   TWILIO_NUMBER <- Your Twilio API phone number
   MY_NUMBER     <- Your phone number
