@@ -83,6 +83,13 @@ describe Order do
     it 'raises an error if no dishes have been added to the order' do
       expect{ order.submit(0) }.to raise_error "Basket empty"
     end
+
+    it 'empties the basket following a successful submission' do
+      order.add_to_basket(restaurant1, 1, 2)
+      order.add_to_basket(restaurant2, 1, 3)
+      order.submit(22.00)
+      expect(order).to be_empty_basket
+    end
   end
 
 end

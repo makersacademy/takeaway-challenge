@@ -30,6 +30,11 @@ class Order
     fail "Basket empty" if empty_basket?
     fail "Payment does not match total cost" if payment != total_cost
     issue_confirmation_text
+    reset_basket
+  end
+
+  def empty_basket?
+    basket.keys.count == 0
   end
 
   private
@@ -38,12 +43,12 @@ class Order
     (format('%.2f', basket.values.inject(0){|sum, cost| sum + cost} )).to_f
   end
 
-  def empty_basket?
-    basket.keys.count == 0
-  end
-
   def issue_confirmation_text
     texting_service.send_text
+  end
+
+  def reset_basket
+    @basket = {}
   end
 
 end
