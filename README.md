@@ -27,7 +27,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   * Ensure you have a list of dishes with prices.
   * Place the order by selecting your dishes, their quantities and a number that should be the exact total. If the number does not match the total an error should be raised, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
 
-* Testing:
+* Texting:
   * The text sending functionality should be implemented using [Twilio API](https://www.twilio.com/api). You'll therefore need to register for a free account.
   * Use the [twilio-ruby gem](https://github.com/twilio/twilio-ruby) to access the API.
   * Use a Gemfile to manage your gems.
@@ -35,7 +35,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent.
 
 * Extended feature:
-  Implement the ability to place orders via text message.
+  * Implement the ability to place orders via text message.
 
 
 ## To run this version
@@ -59,26 +59,27 @@ TWIL_PHONE_NUMBER= '987654321'
 ```
 $ irb
 2.2.3 :001 > mickys = Restaurant.new
- => #<Restaurant:0x007f92a2101648 @menu=[]>
-2.2.3 :002 > mickys.make_dish_available(Dish.new('Burger', 5.99))
- => [#<Dish:0x007f92a21d1820 @name="Burger", @price=5.99>]
-2.2.3 :003 > mickys.make_dish_available(Dish.new('Chips', 0.99))
- => [#<Dish:0x007f92a21d1820 @name="Burger", @price=5.99>, #<Dish:0x007f92a22105e8 @name="Chips", @price=0.99>]
+ => #<Restaurant:0x007fc37127eed0 @menu=[]>
+2.2.3 :002 > mickys.make_dish_available(Dish.new('burger', 5.99))
+ => [#<Dish:0x007fc3712be5f8 @name="Burger", @price=5.99>]
+2.2.3 :003 > mickys.make_dish_available(Dish.new('chips', 0.99))
+ => [#<Dish:0x007fc3712be5f8 @name="Burger", @price=5.99>, #<Dish:0x007fc3712dfc08 @name="Chips", @price=0.99>]
 2.2.3 :004 > my_order = Order.new
- => #<Order:0x007f92a2258de8 @basket={}, @texting_service=TextingTwilio>
+ => #<Order:0x007fc371306560 @basket={}, @texting_service=TextingTwilio>
 2.2.3 :005 > puts mickys.view_menu
 1: Burger | Price: £5.99
 2: Chips | Price: £0.99
  => nil
 2.2.3 :006 > my_order.add_to_basket(mickys, 1, 3)
  => 3
-2.2.3 :007 > my_order.add_to_basket(mickys, 1, 1)
+2.2.3 :007 > my_order.add_to_basket(mickys, 2, 1)
  => 1
 2.2.3 :008 > puts my_order.summary
-4x Burger | £23.96
-Total cost: £23.96
+3x Burger | £17.97
+1x Chips | £0.99
+Total cost: £18.96
  => nil
-2.2.3 :009 > my_order.submit(23.96)
+2.2.3 :009 > my_order.submit(18.96)
  => <Twilio::REST::Message ...
 ```
 
@@ -95,13 +96,6 @@ Total cost: £23.96
 
 - Using Ruby and testing in RSpec, test drive the creation of a set of classes/modules to satisfy the above user stories
 - Implementing the [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) principles of object-oriented design
-
-
-## Favourite Code Snippet
-
-~~~
- TODO: paste code here
-~~~
 
 
 ## Still to complete/refactor
