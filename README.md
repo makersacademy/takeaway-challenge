@@ -1,4 +1,5 @@
-Build will go here
+[![Build Status](https://travis-ci.org/Benaud12/takeaway-challenge.svg?branch=master)](https://travis-ci.org/Benaud12/takeaway-challenge)
+
 
 Takeaway Challenge
 =======================
