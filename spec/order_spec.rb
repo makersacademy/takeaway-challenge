@@ -52,7 +52,7 @@ describe Order do
   describe '#submit' do
 
     before(:each) do
-      allow(order).to receive(:issue_confirmation_text){nil}
+      allow(order.texting_service).to receive(:send_text){nil}
     end
 
     it 'calls the #issue_confirmation_text
@@ -90,6 +90,16 @@ describe Order do
       order.submit(22.00)
       expect(order).to be_empty_basket
     end
-  end
 
+    describe '#issue_confirmation_text' do
+
+      it 'calls the #send_text method of the texting_service' do
+        order.add_to_basket(restaurant1, 1, 2)
+        order.add_to_basket(restaurant2, 1, 3)
+        expect(order.texting_service).to receive(:send_text)
+        order.submit(22.00)
+      end
+
+    end
+  end
 end
