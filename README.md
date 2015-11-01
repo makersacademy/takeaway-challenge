@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Benaud12/takeaway-challenge.svg?branch=master)](https://travis-ci.org/Benaud12/takeaway-challenge)
+[![Build Status](https://travis-ci.org/Benaud12/takeaway-challenge.svg?branch=master)](https://travis-ci.org/Benaud12/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq&service=github)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=mohamedIssaq)
 
 
 Takeaway Challenge
