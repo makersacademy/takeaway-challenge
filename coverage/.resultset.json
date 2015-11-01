@@ -176,18 +176,17 @@
         null,
         1,
         null,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
         null,
-        0,
-        0,
+        1,
+        1,
         null,
+        1,
         null,
-        0,
-        null,
-        0,
+        1,
         null,
         null,
         null,
@@ -308,8 +307,22 @@
         null,
         null,
         null
+      ],
+      "/Users/michaelroger/Projects/takeaway-challenge/spec/texting_twilio_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1446340587
+    "timestamp": 1446385709
   }
 }
