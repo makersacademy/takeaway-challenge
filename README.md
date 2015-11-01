@@ -94,8 +94,8 @@ Total cost: £18.96
 - Twilio Texting API
 - [dotenv](https://github.com/bkeepers/dotenv)
 - [vcr](https://github.com/vcr/vcr) and [webmock](https://github.com/bblimke/webmock) gems used for testing the Twilio API response, some useful links below for guidance on using the vcr gem:
-  http://www.relishapp.com/vcr/vcr/docs
-  http://natashatherobot.com/vcr-gem-rails-rspec/
+  * http://www.relishapp.com/vcr/vcr/docs
+  * http://natashatherobot.com/vcr-gem-rails-rspec/
 
 
 ## Job List
