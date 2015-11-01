@@ -55,11 +55,11 @@ describe Order do
       allow(order.texting_service).to receive(:send_text){nil}
     end
 
-    it 'calls the #issue_confirmation_text
-        method if payment matches total' do
+    it 'calls the #send_text method of the
+      texting_service if payment matches total' do
       order.add_to_basket(restaurant1, 1, 2)
       order.add_to_basket(restaurant2, 1, 3)
-      expect(order).to receive(:issue_confirmation_text)
+      expect(order.texting_service).to receive(:send_text)
       order.submit(22.00)
     end
 
@@ -91,15 +91,5 @@ describe Order do
       expect(order).to be_empty_basket
     end
 
-    describe '#issue_confirmation_text' do
-
-      it 'calls the #send_text method of the texting_service' do
-        order.add_to_basket(restaurant1, 1, 2)
-        order.add_to_basket(restaurant2, 1, 3)
-        expect(order.texting_service).to receive(:send_text)
-        order.submit(22.00)
-      end
-
-    end
   end
 end
