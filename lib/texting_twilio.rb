@@ -2,7 +2,7 @@ require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
 
-module Texting
+module TextingTwilio
 
   def self.send_text
 

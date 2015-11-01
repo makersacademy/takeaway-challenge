@@ -1,30 +1,29 @@
-require_relative 'texting'
+require_relative 'texting_twilio'
 
 class Order
 
-  attr_reader :basket
+  attr_reader :basket, :texting_service
 
-  def initialize
+  def initialize(texting_service = TextingTwilio)
     @basket = {}
+    @texting_service = texting_service
   end
 
   def add_to_basket(menu, dish_number, quantity)
     dish = menu.select(dish_number)
+    @basket[dish] ||= 0
     quantity.times do
-      if basket.keys.include?(dish)
-        @basket[dish] += dish.price
-      else
-        @basket[dish] = dish.price
-      end
+      @basket[dish] += dish.price
     end
   end
 
   def summary
     fail "Basket empty" if empty_basket?
+    summary_string = ""
     basket.each_pair do |dish, cost|
-      puts "#{(cost / dish.price).round}x #{dish.name} | £#{format('%.2f', cost)}"
+      summary_string << "#{(cost / dish.price).round}x #{dish.name} | £#{format('%.2f', cost)}\n"
     end
-    puts "Total cost: £#{format('%.2f', total_cost)}"
+    summary_string << "Total cost: £#{format('%.2f', total_cost)}"
   end
 
   def submit(payment)
@@ -36,7 +35,7 @@ class Order
   private
 
   def total_cost
-    (format('%.2f', basket.values.mick_inject(0){|sum, cost| sum + cost} )).to_f
+    (format('%.2f', basket.values.inject(0){|sum, cost| sum + cost} )).to_f
   end
 
   def empty_basket?
@@ -44,7 +43,7 @@ class Order
   end
 
   def issue_confirmation_text
-    Texting.send_text
+    texting_service.send_text
   end
 
 end
