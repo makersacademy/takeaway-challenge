@@ -1,2 +1,2 @@
 .env
-spec/vcr/twilio_spec_text.yml
+spec/vcr/twilio_send_text.yml
