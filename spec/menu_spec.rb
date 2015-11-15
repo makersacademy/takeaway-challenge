@@ -23,4 +23,8 @@ describe Menu do
     expect(menu.has_dish?(:chicken)).to be true
   end
 
+  it "calculate a price" do
+    expect(menu.price(:chicken)).to eq(dishes[:chicken])
+  end
+
 end
