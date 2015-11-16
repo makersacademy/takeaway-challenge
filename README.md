@@ -48,7 +48,7 @@ This is designed to run in the command line.
 - Fork this repository and clone it to your local machine
 - Run `gem install bundle` in the command line
 - Once complete, run `bundle` to install the relevant gems
-- Add a `.env` file to the root directory and add details of your phone number and Twilio account, as shwon below (if you don't have a Twilio account it just means you won't receive a text)
+- Add a `.env` file to the root directory and add details of your phone number and Twilio account, as shown below (if you don't have a Twilio account it just means you won't receive a text)
 ```
 # .env file
 
@@ -57,6 +57,7 @@ AUTH_TOKEN= 'xxxxxxxxxxxxxx'
 MY_PHONE_NUMBER= '123456789'
 TWIL_PHONE_NUMBER= '987654321'
 ```
+
 - You may then order your favourite meals to your heart's content, as per the example below...
 
 ```
@@ -85,6 +86,10 @@ Total cost: £18.96
 2.2.3 :009 > my_order.submit(18.96)
  => <Twilio::REST::Message ...
 ```
+
+#### Running tests
+
+To execute the RSpec tests in this version, simply run `rspec` from the command line. On the first run you should receive a text from Twilio and a file should be created in the following location `spec/vcr/twilio_send_text.yml`. This file will then mock the Twilio response for any subsequent running of the tests, see below for further details on the vcr gem.
 
 
 ## Technologies Used
