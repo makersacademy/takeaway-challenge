@@ -26,8 +26,8 @@ describe Restaurant do
       restaurant.make_dish_available(dish1)
       restaurant.make_dish_available(dish2)
       restaurant.make_dish_available(dish3)
-      expected_output = "1: Dishy1 | Price: £1.11\n" +
-                        "2: Dishy2 | Price: £2.22\n" +
+      expected_output = "1: Dishy1 | Price: £1.11\n" \
+                        "2: Dishy2 | Price: £2.22\n" \
                         "3: Dishy3 | Price: £3.33\n"
       expect(restaurant.view_menu).to eq expected_output
     end

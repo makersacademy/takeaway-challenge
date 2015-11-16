@@ -91,6 +91,8 @@ Total cost: £18.96
 
 To execute the RSpec tests in this version, simply run `rspec` from the command line. On the first run you should receive a text from Twilio and a file should be created in the following location `spec/vcr/twilio_send_text.yml`. This file will then mock the Twilio response for any subsequent running of the tests, see below for further details on the vcr gem.
 
+**Note** - The file above will contain your sensitive Twilio data, therefore the `spec/vcr` folder has been added to the `.gitignore` file. Be sure not to upload any sensitive data to Github.
+
 
 ## Technologies Used
 

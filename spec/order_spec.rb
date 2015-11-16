@@ -31,8 +31,8 @@ describe Order do
         items and displaying prices with a total' do
       order.add_to_basket(restaurant1, 1, 2)
       order.add_to_basket(restaurant2, 1, 3)
-      expected_output = "2x Dishy1 | £7.00\n" +
-                        "3x Dishy2 | £15.00\n" +
+      expected_output = "2x Dishy1 | £7.00\n" \
+                        "3x Dishy2 | £15.00\n" \
                         "Total cost: £22.00"
       expect(order.summary).to eq expected_output
     end
@@ -43,7 +43,7 @@ describe Order do
 
     it 'added test due to irb failure' do
       order.add_to_basket(restaurant4, 1, 3)
-      expected_output = "3x Dishy4 | £17.97\n" +
+      expected_output = "3x Dishy4 | £17.97\n" \
                         "Total cost: £17.97"
       expect(order.summary).to eq expected_output
     end
@@ -71,8 +71,8 @@ describe Order do
     end
 
     it '(irb fail) does not raise error when payment correct' do
-      RSpec::Expectations.configuration.
-        warn_about_potential_false_positives = false
+      RSpec::Expectations.configuration
+        .warn_about_potential_false_positives = false
       order.add_to_basket(restaurant1, 1, 2)
       order.add_to_basket(restaurant2, 1, 1)
       order.add_to_basket(restaurant3, 1, 1)

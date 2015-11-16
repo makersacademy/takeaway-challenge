@@ -12,17 +12,14 @@ class Restaurant
 
   def view_menu
     fail "No dishes available on this menu" if no_dishes_available?
-    menu_string = ""
-    menu.each_with_index do |dish, index|
-      menu_string << "#{index+1}: #{dish.name} | Price: £#{'%.2f' % dish.price}\n"
-    end
-    menu_string
+    readable_menu
   end
 
   def select(dish_number)
-    fail "No dishes available on this menu" if no_dishes_available?
+    fail 'No dishes available on this menu' if no_dishes_available?
     index = dish_number - 1
-    fail "There are no dishes matching the number given" unless valid_order_number?(index)
+    error_message = 'There are no dishes matching the number given'
+    fail error_message unless valid_order_number?(index)
     menu[index]
   end
 
@@ -33,7 +30,14 @@ class Restaurant
   end
 
   def valid_order_number?(number)
-    !!menu[number]
+    menu[number]
+  end
+
+  def readable_menu
+    menu.each_with_index.inject('') do |return_string, (dish, index)|
+      item = "#{index+1}: #{dish.name} | Price: £#{format('%.2f', dish.price)}\n"
+      return_string << item
+    end
   end
 
 end
