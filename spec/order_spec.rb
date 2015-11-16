@@ -71,8 +71,8 @@ describe Order do
     end
 
     it '(irb fail) does not raise error when payment correct' do
-      RSpec::Expectations.configuration
-        .warn_about_potential_false_positives = false
+      RSpec::Expectations.configuration.
+        warn_about_potential_false_positives = false
       order.add_to_basket(restaurant1, 1, 2)
       order.add_to_basket(restaurant2, 1, 1)
       order.add_to_basket(restaurant3, 1, 1)
