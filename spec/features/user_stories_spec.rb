@@ -22,8 +22,12 @@ describe 'User Stories' do
     # So that I can verify that my order is correct
     # I would like to check that the total I have been given matches the sum of
     # the various dishes in my order
-    xit "the customer's total should match the sum of dishes in the order" do
-
+    it "the customer's total should match the sum of dishes in the order" do
+      takeaway = Takeaway.new
+      takeaway.choose("Dish 1", 3)
+      takeaway.calculate_quantities(takeaway.order)
+      takeaway.calculate_cost(takeaway.order)
+      expect{ takeaway.place_order(takeaway.order,takeaway.quantity,takeaway.total) }.not_to raise_error
     end
 
     # As a customer
