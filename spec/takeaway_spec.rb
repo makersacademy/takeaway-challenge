@@ -24,6 +24,10 @@ describe Takeaway do
       expect{takeaway.order("steak", 1, "mains", 2, "desert", 3, 34)}.to raise_error "Unable to place order: dish not on menu"
     end
 
+    it 'raises an error if the customer supplied total does not match the actual total' do
+      expect{takeaway.order("starter", 1, "mains", 2, "desert", 3, 666)}.to raise_error "Unable to place order: supplied total doesn't match actual total"
+    end
+
   end
 
 end

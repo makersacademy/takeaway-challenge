@@ -29,4 +29,17 @@ let(:menu) {"starter : 5\nmains : 10\ndesert : 3\n"}
       expect{takeaway.order("steak", 1, "mains", 2, "desert", 3, 34)}.to raise_error "Unable to place order: dish not on menu"
     end
   end
+
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  describe 'User Story 3' do
+
+    it 'raises an error if the customer supplied total does not match the actual total' do
+      expect{takeaway.order("starter", 1, "mains", 2, "desert", 3, 666)}.to raise_error "Unable to place order: supplied total doesn't match actual total"
+    end
+
+
+
+  end
 end
