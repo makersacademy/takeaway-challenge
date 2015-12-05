@@ -16,10 +16,12 @@ describe Takeaway do
 
   describe '#order' do
 
-    it { is_expected.to respond_to(:order) }
-
     it 'can take multiple argument' do
-      expect{takeaway.order(1, 2, 3, 4, 5, 6, 7)}.not_to raise_error
+      expect{takeaway.order("starter", 1, "mains", 2, "desert", 3, 34)}.not_to raise_error
+    end
+
+    it 'prevents a customer from ordering unavailable dishes' do
+      expect{takeaway.order("steak", 1, "mains", 2, "desert", 3, 34)}.to raise_error "Unable to place order: dish not on menu"
     end
 
   end
