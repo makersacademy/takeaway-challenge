@@ -6,5 +6,4 @@ describe Menu do
   it 'returns list with dishes and prices' do
     expect(menu.list[:Lamb]).to eq 2.00
   end
-
 end

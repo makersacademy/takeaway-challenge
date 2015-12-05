@@ -16,4 +16,13 @@ describe Takeaway do
       expect(takeaway.total_of_dishes).to eq 15
     end
   end
+
+  context 'when finalising order' do
+    xit 'returns total price' do
+      takeaway.select_order(:Chicken, 5)
+      takeaway.select_order(:Chicken, 3)
+      allow(takeaway).to receive(:list).and_return (2)
+      expect{takeaway.total_price}.to change {takeaway.total_bill}.by(16)
+    end
+  end
 end

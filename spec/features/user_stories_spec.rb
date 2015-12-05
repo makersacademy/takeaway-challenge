@@ -32,5 +32,17 @@ describe 'User stories' do
     end
   end
 
+  # User story 3
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches
+  # the sum of the various dishes in my order
+  it 'returns total price' do
+    takeaway.menu_klass.list
+    takeaway.select_order(:Chicken, 5)
+    takeaway.select_order(:Lamb, 3)
+    takeaway.total_of_dishes
+    expect(takeaway.total_price).to eq 16
+  end
 
 end
