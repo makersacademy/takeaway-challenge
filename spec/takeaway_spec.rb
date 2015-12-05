@@ -17,6 +17,11 @@ describe Takeaway do
     end
   end
 
-
-
+  context 'when finalising order' do
+    xit 'returns total price' do
+      takeaway.select_order(:Lamb_curry, 2)
+      takeaway.select_order(:Prawn_curry, 3)
+      expect(takeaway.total_price).to eq 23
+    end
+  end
 end

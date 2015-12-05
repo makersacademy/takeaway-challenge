@@ -1,7 +1,5 @@
 class Menu
 
-#attr_reader :dishes
-
   def list
     menu_list
   end
@@ -21,5 +19,4 @@ class Menu
             Coke: 1.00
     }
   end
-
 end
