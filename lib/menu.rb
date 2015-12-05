@@ -10,12 +10,13 @@ class Menu
 
   def return_menu
     @dishes = {
-              Chicken: 4,
-              Soup:    2,
-              Lamb:    5,
-              Rice:    3,
-              Coke:    1,
-              Beer:    1.5,
+              Chicken: {Price: 2.00, Qty: 10},
+              Soup:    {Price: 5.00, Qty: 5},
+              Lamb:    {Price: 2.00, Qty: 2},
+              Rice:    {Price: 3.25, Qty: 20},
+              Coke:    {Price: 5.00, Qty: 15},
+              Beer:    {Price: 7.00, Qty: 12},
               }
+
   end
 end
