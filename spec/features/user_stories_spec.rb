@@ -2,19 +2,25 @@
 describe 'User Stories' do
 
   let(:takeaway) { Takeaway.new }
-  let(:menu) {Menu.new}
-  let(:order) {Order.new}
-  let(:item) { 'Satay' }
+  let(:menu) { Menu.new }
+  let(:order) { Order.new }
+  let(:item) { Item.new('Satay', 4.50) }
   let(:quantity) { 3 }
+  let(:food) { 'Satay' }
+  let(:random_food) { 'Turkish Delight'}
 
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
+describe 'Menu #get_item' do
+  it 'can look up an item' do
+    expect(menu.get_item(food).name).to eq food
+  end
 
-it 'allows customers to view a menu pricelist' do
-  expect{ menu.pricelist }.not_to raise_error
+  it 'raises an error if the item is not on the menu' do
+    expect{ menu.get_item(random_food) }.to raise_error 'Sorry we don\'t have that item'
+  end
 end
-
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
