@@ -1,8 +1,10 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) {described_class.new(menu)}
+  subject(:takeaway) {described_class.new({menu_klass: menu,
+                                          sendSms_klass: sender})}
   let(:menu) {double :menu}
+  let(:sender) {double :sendSms}
   let(:rand_num) {rand(1..9)}
 
   context 'when selecting order' do

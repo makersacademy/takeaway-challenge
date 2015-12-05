@@ -1,6 +1,7 @@
 describe 'User stories' do
-  subject(:takeaway) {Takeaway.new(menu)}
-  let(:menu) {Menu.new}
+  subject(:takeaway) {Takeaway.new({menu_klass: Menu.new, sendSms_klass: SendSms.new})}
+  # let(:menu_klass) {Menu.new}
+  # let(:sendSms_klass) {SendSms.new}
 
   # User story 1
   # As a customer
@@ -47,6 +48,7 @@ describe 'User stories' do
     end
   end
 
+  # User story 4
   # As a customer
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was
@@ -54,7 +56,7 @@ describe 'User stories' do
   it 'sends a text confirmation' do
     takeaway.select_order(:Chicken, 5)
     takeaway.select_order(:Lamb, 3)
-    
+
   end
 
 end

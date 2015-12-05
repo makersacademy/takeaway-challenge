@@ -4,11 +4,12 @@ class Takeaway
 
   attr_reader :menu_klass, :complete_order, :total_bill
 
-  def initialize(menu_klass = Menu.new)
-    @menu_klass = menu_klass
+  def initialize(args)
+    @menu_klass     = args[:menu_klass]
+    @sendSms_klass  = args[:sendSms_klass]
     @complete_order = {}
-    @total_dishes = 0
-    @total_bill = 0
+    @total_dishes   = 0
+    @total_bill     = 0
   end
 
   def select_order(item, qty)
