@@ -1,6 +1,6 @@
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :order
 
   def initialize
     @menu = {"starter" => 5, "mains" => 10, "desert" => 3}
@@ -12,10 +12,17 @@ class Takeaway
 
   def order(*dishes)
     dishes.pop
-    order_hash = Hash[*dishes]
-    order_hash.each do |k, v|
-      fail "Unable to place order: dish not on menu" unless @menu.has_key?(k)
-    end
+    @order = convert_order_to_hash(dishes)
+    check_all_dishes_are_on_menu
   end
 
+  def convert_order_to_hash(dishes)
+    Hash[*dishes]
+  end
+
+  def check_all_dishes_are_on_menu
+    @order.each do |dish, quantity|
+      fail "Unable to place order: dish not on menu" unless @menu.has_key?(dish)
+    end
+  end
 end

@@ -16,7 +16,7 @@ describe Takeaway do
 
   describe '#order' do
 
-    it 'can take multiple argument' do
+    it 'can take multiple arguments' do
       expect{takeaway.order("starter", 1, "mains", 2, "desert", 3, 34)}.not_to raise_error
     end
 
