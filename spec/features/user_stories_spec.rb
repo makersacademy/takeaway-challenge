@@ -10,14 +10,13 @@ describe 'User Stories' do
   # I would like to see a list of dishes with prices
 
   context '#menu' do
-    it 'is expected to respond to menu' do
-      expect { takeaway.menu }.not_to raise_error
-    end
+
+
     it 'displays a menu with a list of dishes with prices' do
       expect(menu.dishes).to eq ({
         :salad => 12,
         :burger => 14,
-        :fajitas => 13,
+        :fajita => 13,
         :pasta => 8,
         :brownies => 9
       })
@@ -33,7 +32,19 @@ describe 'User Stories' do
   # I would like to be able to select some number of several available dishes
 
   it 'selects items from the menu which is stored as an order' do
-    expect(takeaway.order(:salad)).to eq "1* #{:salad} added to your basket"
+    expect(takeaway.select(:salad, 2)).to eq "You have added 2 salad(s) to your basket"
+  end
+
+  it 'returns the total number of dishes' do
+    takeaway.select(:salad, 2)
+    takeaway.select(:burger, 1)
+    expect(takeaway.number_of_dishes).to eq 3
+  end
+
+  it 'returns the total number of choices' do
+    takeaway.select(:salad, 2)
+    takeaway.select(:burger, 1)
+    expect(takeaway.order.size).to eq 2
   end
 
 
@@ -42,10 +53,7 @@ describe 'User Stories' do
 
 end
 
-# As a customer
-# So that I can order the meal I want
-# I would like to be able to select some number of several available dishes
-#
+
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
