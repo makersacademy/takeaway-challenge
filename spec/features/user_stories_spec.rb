@@ -13,12 +13,12 @@ describe 'User Stories' do
 
 
     it 'displays a menu with a list of dishes with prices' do
-      expect(menu.dishes).to eq ({
-        :salad => 12,
-        :burger => 14,
-        :fajita => 13,
-        :pasta => 8,
-        :brownies => 9
+      expect(menu.dishes).to eq({
+        salad: 12,
+        burger: 14,
+        fajita: 13,
+        pasta: 8,
+        brownies: 9
       })
     end
 
@@ -47,7 +47,16 @@ describe 'User Stories' do
     expect(takeaway.order.size).to eq 2
   end
 
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
+  it 'returns the sum of the cost of each item ordered' do
+    takeaway.select(:salad, 2)
+    takeaway.select(:burger, 1)
+    takeaway.total_dishes_ordered
+    expect(takeaway.total_price).to eq 38
+  end
 
 
 
