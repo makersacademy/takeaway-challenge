@@ -4,5 +4,5 @@ require 'sinatra'
 
 get '/' do
   'Hello Mudder Fudgers! Currently running version ' + Twilio::VERSION + \
-      ' of the twilio-ruby library'
+  ' of the twilio-ruby library'
 end

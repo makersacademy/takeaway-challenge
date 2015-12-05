@@ -47,5 +47,14 @@ describe 'user stories' do
       takeaway.total_of_dishes
       expect(takeaway.total_price).to eq 23
     end
+
+    it 'confirms order and delivery time via text message' do
+      # As a customer
+      # So that I am reassured that my order will be delivered on time
+      # I would like to receive a text such as "Thank you! Your order was placed
+      # and will be delivered before 18:52" after I have ordered
+      
+    end
+
   end
 end
