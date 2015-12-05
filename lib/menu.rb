@@ -11,14 +11,14 @@ class Menu
 
   def menu_list
     @dishes = {
-            Lamb_curry: 4,
-            Chicken_curry: 4.50,
-            Prawn_curry: 5,
-            Boiled_rice: 1.75,
-            Pilau_rice: 2,
-            Plain_naan: 1.50,
-            Cobra: 3.50,
-            Coke: 1
+            Lamb_curry: {Price: 4, Quantity: 20},
+            Chicken_curry: {Price: 4.50, Quantity: 20},
+            Prawn_curry: {Price: 5, Quantity: 20},
+            Boiled_rice: {Price: 1.75, Quantity: 20},
+            Pilau_rice: {Price: 2, Quantity: 20},
+            Plain_naan: {Price: 1.50, Quantity: 20},
+            Cobra: {Price: 3.50, Quantity: 20},
+            Coke: {Price: 1, Quantity: 20}
     }
   end
 
