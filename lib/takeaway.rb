@@ -1,21 +1,16 @@
+require_relative 'menu'
 class Takeaway
 
-  
+  attr_reader :menu
 
-  def initialize
-    @menu = {
-      :salad => 12,
-      :burger => 14,
-      :fajitas => 13,
-      :pasta => 8,
-      :brownies => 9
-    }
+  def initialize(menu_klass = Menu.new)
+    @menu_klass = menu
+    @order = Hash.new
   end
 
-  def menu
-    @menu
+  def order(item)
+    "1* #{item} added to your basket"
   end
-
 
 
 end
