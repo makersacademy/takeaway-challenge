@@ -1,44 +1,35 @@
+require 'rubygems'
+require 'twilio-ruby'
+
 class Takeaway
-  attr_reader :list, :order, :quantity, :total
+  attr_reader :order_klass, :order, :order_time
 
-  def initialize
-    @list = { "Dish 1" => 1.00,
-              "Dish 2" => 2.00,
-              "Dish 3" => 3.00 }
-    @order = []
+  def initialize(order_klass)
+    @order_klass = order_klass
+    @order = nil
   end
 
-  def menu
-    list
+  def create_order(menu_klass)
+    @order = order_klass.new(menu_klass)
   end
 
-  def choose(dish, quantity=1)
-    quantity.times do
-      list.select { |k,v| order.push([k, v]) if k == dish }
-    end
+  def place_order(order, quantity, total, number)
+    fail "Wrong total!" if total != order.calculate_cost(order)
+    @order_time = Time.now + 3600
+    send_sms(number)
   end
 
-  def calculate(order)
-    calculate_quantities(order)
-    calculate_cost(order)
-  end
+  private
 
-  def place_order(order, quantity, total)
-    fail "Wrong total!" if total != calculate_cost(order)
-    puts "Your order has been placed!"
-  end
-
-  def calculate_quantities(order)
-    b = Hash.new(0)
-    order.each { |v| b[v] += 1 }
-    b.each { |k, v| puts "#{v} x #{k[0]}" }
-    @quantity = order.length
-  end
-
-  def calculate_cost(order)
-    @total = order.inject(0) do |memo, k|
-      memo + k[1]
-    end
+  def send_sms(number)
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.messages.create(
+      from: ENV["TWILIO_SMS_NUMBER"],
+      to: number,
+      body: "Thank you! Your order was placed and will be delivered before #{order_time}"
+    )
   end
 
 end
