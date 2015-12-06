@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
   let(:order) { described_class.new}
-  let(:item) { 'Satay'}
+  let(:item) { double :item, name: 'Satay', price: '4.50'}
   let(:quantity) { 3 }
 
   describe '#add' do
