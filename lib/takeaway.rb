@@ -3,7 +3,8 @@ require_relative 'text.rb'
 
 class Takeaway
 
-  attr_reader :menu, :order_as_hash, :customer_supplied_total, :actual_total, :text
+  attr_reader :menu, :order_as_hash, :customer_supplied_total, :actual_total,
+  :text
 
   def initialize(text_klass = Text.new)
     @menu = {"starter" => 5, "mains" => 10, "desert" => 3}
@@ -26,11 +27,12 @@ class Takeaway
     text.send
   end
 
-private
+  private
 
   def check_customer_and_actual_totals_match
     calculate_order_total
-    fail "Unable to place order: supplied total doesn't match actual total" if totals_dont_match?
+    message = "Unable to place order: supplied total doesn't match actual total"
+    fail message  if totals_dont_match?
   end
 
   def totals_dont_match?
@@ -39,7 +41,7 @@ private
 
   def calculate_order_total
     @actual_total = 0
-    order_as_hash.each {|k, v| @actual_total += menu[k] * v}
+    order_as_hash.each {|dish, quantity| @actual_total += menu[dish] * quantity}
   end
 
   def convert_order_to_hash(dishes)
@@ -48,7 +50,7 @@ private
 
   def check_all_dishes_are_on_menu
     order_as_hash.each do |dish, quantity|
-      fail "Unable to place order: dish not on menu" unless @menu.has_key?(dish)
+      fail "Unable to place order: dish not on menu" unless @menu.key?(dish)
     end
   end
 end
