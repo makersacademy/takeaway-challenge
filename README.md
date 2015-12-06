@@ -29,7 +29,7 @@ To install the program:-
   3. Run `bundle` to install the project gems
 
 To use the program:-
-  1. Run `irb` or `pry` from the command line 
+  1. Run `irb` or `pry` from the command line
   2. `load './lib/takeaway.rb'`
   3. `takeaway = Takeaway.new`
 
@@ -45,6 +45,43 @@ You are required to 'pay' the correct amount for your order to be processed.
 
 This program comes with a short menu of only three items. Dishes can be added / removed to the menu (by the takeaway owner!) by creating new dish objects `menu.add(Dish.new(dish_name, price))`.
 
+Program example:-
+```sh
+[5] pry(main)> t = Takeaway.new
+=> #<Takeaway:0x007fe7c9e0c640
+ @menu=
+  #<Menu:0x007fe7c9e0c618
+   @dishes=
+    [#<Dish:0x007fe7c9e0c5a0 @name="Satay", @price=4.5>,
+     #<Dish:0x007fe7c9e0c550 @name="Spring rolls", @price=3.0>,
+     #<Dish:0x007fe7c9e0c500 @name="Tom yum soup", @price=4.9>]>,
+ @order=#<Order:0x007fe7c9e0c4b0 @basket={}>>
+[6] pry(main)> t.add_to_order('Satay')
+=> 1
+[7] pry(main)> t.view_order
+1x Satay = 4.5
+=> {#<Dish:0x007fe7c9e0c5a0 @name="Satay", @price=4.5>=>1}
+[8] pry(main)> t.add_to_order('Spring rolls', 3)
+=> 3
+[9] pry(main)> t.view_order
+1x Satay = 4.5
+3x Spring rolls = 9.0
+=> {#<Dish:0x007fe7c9e0c5a0 @name="Satay", @price=4.5>=>1,
+ #<Dish:0x007fe7c9e0c550 @name="Spring rolls", @price=3.0>=>3}
+[10] pry(main)> t.add_to_order('Tom yum soup', 2)
+=> 2
+[11] pry(main)> t.remove_from_order('Satay')
+=> 1
+[12] pry(main)> t.view_order
+3x Spring rolls = 9.0
+2x Tom yum soup = 9.8
+=> {#<Dish:0x007fe7c9e0c550 @name="Spring rolls", @price=3.0>=>3,
+ #<Dish:0x007fe7c9e0c500 @name="Tom yum soup", @price=4.9>=>2}
+[13] pry(main)> t.total_price
+=> 18.8
+[14] pry(main)> t.checkout(18.8)
+=> "Thank you! Your order was placed and will be delivered by 21:38"
+```
 
 
 

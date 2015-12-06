@@ -33,7 +33,7 @@ class Takeaway
   end
 
   def checkout(total)
-    return order.confirm if total == @order.total
+    return @order.confirm if total == @order.total
     fail "Incorrect amount. Your order total is: #{total_price}"
   end
 end
