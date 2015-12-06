@@ -8,7 +8,8 @@ describe Takeaway do
 
   describe '#read_menu' do
     it 'should return what is present on the menu' do
-      expect(takeaway.read_menu).to include(burger: 1.88, beef: 2.34, fries: 1.10)
+      contents = {burger: 1.88, beef: 2.34, fries: 1.10}
+      expect(takeaway.read_menu).to include contents
     end
   end
 
