@@ -1,11 +1,12 @@
 require_relative 'menu'
+require_relative 'msg'
 
 class Restaurant
-  attr_reader :menu, :customer_order, :actual_total
+  attr_reader :menu, :msg, :customer_order, :actual_total
 
-  def initialize(menu: Menu.new)
+  def initialize(menu: Menu.new, msg: Msg.new)
     @menu = menu
-    @customer_order = []
+    @msg = msg
   end
 
   def request_menu
@@ -17,7 +18,7 @@ class Restaurant
     ordering_instructions
     take_order
     fail "Your order is incorrect" unless customer_total_correct?
-    customer_order
+    msg.send_confirmation
   end
 
   private
