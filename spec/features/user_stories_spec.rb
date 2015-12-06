@@ -3,6 +3,7 @@ require 'takeaway'
 describe 'User Stories' do
   subject(:takeaway) { Takeaway.new }
   subject(:menu) { Menu.new }
+  subject(:order) { Order.new }
 
   # As a customer
   # So that I can check if I want to order something
@@ -18,7 +19,12 @@ describe 'User Stories' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
 
-
+  describe 'User Story 2' do
+    it 'allows the user to select their preferred dishes' do
+      takeaway.order('Dish 1': 3, 'Dish 2': 1)
+      expect(order.list).to include('Dish 1': 3, 'Dish 2': 1)
+    end
+  end
 
 
 
