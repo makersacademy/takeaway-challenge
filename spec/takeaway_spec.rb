@@ -14,7 +14,9 @@ describe Takeaway do
   end
 
   describe '#order' do
-    it 'should tell order to add an item' do
+    xit 'should tell current_order to add an item' do
+      expect(order).to receive(:order_item).with(:burger, 2)
+      takeaway.order(:burger, 2)
     end
   end
 
