@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe "User stories" do
 
-let(:takeaway) {Takeaway.new}
+let(:takeaway) {Takeaway.new(double(:text, send: nil))}
 let(:menu) {"starter : 5\nmains : 10\ndesert : 3\n"}
 
   # As a customer
@@ -46,8 +46,7 @@ let(:menu) {"starter : 5\nmains : 10\ndesert : 3\n"}
   describe 'User Story 4' do
 
     it 'sends a text message to confirm a succesful order' do
-      takeaway.order("starter", 1, "mains", 2, "desert", 3, 34)
-      expect(takeaway.text.message).not_to eq nil
+      expect(takeaway.text).to respond_to(:send)
     end
 
   end

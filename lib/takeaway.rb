@@ -1,8 +1,11 @@
+
+require_relative 'text.rb'
+
 class Takeaway
 
   attr_reader :menu, :order_as_hash, :customer_supplied_total, :actual_total, :text
 
-  def initialize(text_klass: Text.new)
+  def initialize(text_klass = Text.new)
     @menu = {"starter" => 5, "mains" => 10, "desert" => 3}
     @text = text_klass
   end
@@ -28,7 +31,6 @@ private
   def check_customer_and_actual_totals_match
     calculate_order_total
     fail "Unable to place order: supplied total doesn't match actual total" if totals_dont_match?
-
   end
 
   def totals_dont_match?

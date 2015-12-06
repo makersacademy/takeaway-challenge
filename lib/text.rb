@@ -4,9 +4,8 @@ class Text
 
   attr_reader :message
 
-  def send
+  def send(working_number = "+441202835326")
 
-    # To find these visit https://www.twilio.com/user/account
     account_sid = ENV["TWILIO_ACCOUNT_SID"]
     auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
@@ -14,7 +13,7 @@ class Text
 
     @message = @client.messages.create(
       to: ENV["MY_MOBILE_NUMBER"],
-      from: "+441202835326",
+      from: working_number,
       body: "Thanks! Your order will be delivered before #{time_in_one_hour}"
     )
   end
