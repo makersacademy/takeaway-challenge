@@ -4,13 +4,13 @@ describe OrderList do
 
   let(:pizza){double(:pizza, name: :pizza, price: 1)}
   let(:chicken){double(:chicken, name: :chicken, price: 2)}
-  let(:dish_list){double(:dish_list, prices: {pizza: 1, chicken: 2}, dishes: [pizza, chicken])}
+  let(:dish_list){double(:dish_list, price_list: {pizza: 1, chicken: 2}, dishes: [pizza, chicken])}
   subject(:order_list) {described_class.new(dish_list)}
 
-  describe '#prices' do
-    it 'gives prices for dish list' do
-      expect(dish_list).to receive(:prices)
-      order_list.prices
+  describe '#price_list' do
+    it 'gives a list with the price of each dish' do
+      expect(dish_list).to receive(:price_list)
+      order_list.price_list
     end
   end
 

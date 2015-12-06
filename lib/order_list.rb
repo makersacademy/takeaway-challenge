@@ -7,35 +7,35 @@ class OrderList
   end
 
 
-  def prices
-    @dish_list.prices
+  def price_list
+    @dish_list.price_list
   end
 
-  def place_order(total=nil,hash_quantities)
-  fail 'An ordered dish is unavailable' unless ordered_dishes_available?(hash_quantities)
-  fail 'Total does not match sum of dishes in order' unless total == nil || total == dish_total(hash_quantities)
+  def place_order(total=nil,amount_list)
+  fail 'An ordered dish is unavailable' unless ordered_dishes_available?(amount_list)
+  fail 'Total does not match sum of dishes in order' unless total == nil || total == dish_total(amount_list)
   end
 
   private
 
-  def dishes_names
+  def available_dish_names
     @dish_list.dishes.map{|dish| dish.name}
   end
 
-  def ordered_dishes_available?(hash_quantities)
-    hash_quantities.keys.all?{|(name)| dishes_names.include? name }
+  def ordered_dishes_available?(amount_list)
+    amount_list.keys.all?{|(name)| available_dish_names.include? name }
   end
 
-  def dish_total(hash_quantities)
-    total_payment = each_dish_payment(hash_quantities).inject(0){|sum, dish| sum += dish[1] }
+  def dish_total(amount_list)
+    total_payment = each_dish_payment(amount_list).inject(0){|sum, dish| sum += dish[1] }
   end
 
-  def ordered_price_list(hash_quantities)
-    prices.delete_if{|key, value| hash_quantities[key] == nil}
+  def ordered_price_list(amount_list)
+    price_list.delete_if{|key, value| amount_list[key] == nil}
   end
 
-  def each_dish_payment(hash_quantities)
-    ordered_price_list(hash_quantities).merge(hash_quantities){|key, price, quantity| price * quantity}
+  def each_dish_payment(amount_list)
+    ordered_price_list(amount_list).merge(amount_list){|key, price, quantity| price * quantity}
   end
 
 

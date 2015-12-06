@@ -11,9 +11,9 @@ describe 'User Stories' do
 
 
 
-  describe '#prices' do
+  describe '#price_list' do
     it 'gives a list with the price of each dish' do
-      expect(order_list.prices).to eq ({pizza: 1, chicken: 2})
+      expect(order_list.price_list).to eq ({pizza: 1, chicken: 2})
     end
   end
 
