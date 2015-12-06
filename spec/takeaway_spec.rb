@@ -2,57 +2,57 @@ require 'takeaway'
 
 describe TakeAway do
   let(:menu) { double :menu, has?: true }
-  let(:menu_klass) { double :menu_klass, new: menu}
-  let(:takeaway) { described_class.new(menu_klass) }
+  let(:order) { double :order }
+  let(:order_klass) { double :order_klass, new: order}
+  let(:takeaway) { described_class.new(menu, order_klass) }
 
-  describe '#menu' do
-    it 'has to show dishes available in menu' do
-      expect(takeaway.menu).to eq menu
+  describe '#add_to_order' do
+    it 'adds a dish to the order' do
+      expect(order).to receive(:add)
+      takeaway.add_to_order('dish1')
+    end
+    it 'create a new order if there is no one' do
+      allow(order).to receive(:add)
+      expect(order_klass).to receive(:new)
+      takeaway.add_to_order('dish1')
     end
   end
-
-  describe '#show_basket' do
-    it 'says the basket is empty at the beginning' do
-      msg = 'Basket is empty'
-      expect(takeaway.show_basket).to eq msg
-    end
-
-  end
-
-  describe '#add_to_basket' do
-    it 'adds 1 dish to the basket if no quantity argument is given' do
-      takeaway.add_to_basket('dish')
-      expect(takeaway.basket).to include 'dish' => 1
-    end
-
-    it 'adds a specific quantity of dish to the basket' do
-      takeaway.add_to_basket('dish', 5)
-      expect(takeaway.basket).to include 'dish' => 5
-    end
-
-    it 'raise an error if the dish is not in the menu' do
-      allow(menu).to receive(:has?).and_return false
-      msg = 'Dish not available'
-      expect { takeaway.add_to_basket('dish_not_available') }.to raise_error msg
+  describe '#basket' do
+    it 'raise an error if there is no orders' do
+      msg = 'No orders'
+      expect { takeaway.basket }.to raise_error msg
     end
   end
-
-  context 'when basket is no more empty' do
+  describe '#complete_order' do
+    it 'raise an error if there is no orders' do
+      msg = 'No orders'
+      expect { takeaway.complete_order(10) }.to raise_error msg
+    end
+  end
+  context 'given an order' do
     before do
-      takeaway.add_to_basket('dish1', 2)
-      takeaway.add_to_basket('dish2', 1)
+      allow(order).to receive(:add)
+      takeaway.add_to_order('dish1')
     end
-    describe '#add_to_basket' do
-      it 'adds the dish with no overwriting previous amount' do
-        takeaway.add_to_basket('dish1')
-        expect(takeaway.basket).to include 'dish1' => 3
+    describe '#basket' do
+      it 'show the basket summary' do
+        expect(order).to receive(:show_basket)
+        takeaway.basket
       end
     end
-    describe '#total' do
-      it 'returns the total of the order' do
-        allow(menu).to receive(:dishes).and_return('dish1' => 10, 'dish2' => 20)
-        expect(takeaway.total).to eq 40
+    describe '#complete_order' do
+      it 'raise an error if the amount given is different from the total' do
+        msg = 'Amount given no correct'
+        allow(order).to receive(:total).and_return 5
+        expect { takeaway.complete_order(10) }.to raise_error msg
+      end
+      it 'completes the order' do
+        allow(order).to receive(:total).and_return 10
+        takeaway.complete_order(10)
+        msg = 'No orders'
+        expect { takeaway.basket }.to raise_error msg
       end
     end
   end
+
 end

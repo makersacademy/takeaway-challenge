@@ -1,40 +1,43 @@
 require_relative 'menu'
+require_relative 'order'
 
 class TakeAway
 
-  attr_reader :menu, :basket
+  attr_reader :menu
 
-  def initialize(menu_klass = Menu)
-    self.menu = menu_klass.new
-    self.basket = Hash.new(0)
+  def initialize(menu = Menu.new, order_klass = Order)
+    self.menu = menu
+    self.order_klass = order_klass
   end
 
-  def show_basket
-    return 'Basket is empty' if basket.empty?
-    pretty_print
-  end
-
-  def add_to_basket(dish, quantity = 1)
-    fail 'Dish not available' unless menu.has?(dish)
-    @basket[dish] += quantity
-    msg = "#{quantity}x #{dish}(s) added to the basket"
-  end
-
-  def total
-    basket.inject(0) { |s, a| s + a[1] * menu.dishes[a[0]] }
+  def add_to_order(dish, quantity = 1)
+    new_order unless order
+    order.add(dish, quantity)
   end
 
   def basket
-    @basket.dup
+    fail 'No orders' unless order
+    order.show_basket
+  end
+
+  def complete_order(amount)
+    fail 'No orders' unless order
+    fail 'Amount given no correct' unless correct_amount?(amount)
+    # 'invia messaggio'
+    self.order = nil
   end
 
   private
 
-  attr_writer :menu, :basket
+  attr_writer :menu
+  attr_accessor :order_klass, :order
 
-  def pretty_print
-    msg = ''
-    basket.each { |k, v| msg << "#{v}x #{k}(s)\n"}
-    msg
+  def new_order
+    self.order = order_klass.new(menu)
   end
+
+  def correct_amount?(amount)
+    order.total == amount
+  end
+
 end
