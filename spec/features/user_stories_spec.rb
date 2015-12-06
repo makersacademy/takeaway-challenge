@@ -5,6 +5,7 @@ describe 'User Stories' do
   let(:takeaway) { Takeaway.new }
   let(:menu) { Menu.new}
   let(:order) {Order.new}
+  let(:sms) {Sms.new}
 
   # As a customer
   # So that I can check if I want to order something
@@ -59,12 +60,11 @@ describe 'User Stories' do
     expect(takeaway.total_price).to eq 38
   end
 
+  #
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
+  xit 'places and order via the list of dishes, their quantity and totals'
 
 end
-
-
-#
-# As a customer
-# So that I am reassured that my order will be delivered on time
-# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered

@@ -1,17 +1,20 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
 class Takeaway
 
-  attr_reader :menu_klass, :total_dishes, :order, :total_cost
+  attr_reader :menu, :order
 
-  def initialize(menu_klass = Menu.new, order_klass = Order.new)
+  def initialize(menu_klass = Menu.new, order_klass = Order.new, sms_klass = Sms.new)
     @menu = menu_klass
     @order = order_klass
+    @sms = sms_klass
     @total_dishes = 0
 
   end
 
   def select(item, qty=1)
+    fail "Sorry we don't have #{item} on the menu" unless @menu.dishes.include? item
     @order.basket[item] += qty
     "You have added #{qty} #{item}(s) to your basket"
 
