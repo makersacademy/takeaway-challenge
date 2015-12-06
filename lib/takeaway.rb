@@ -33,6 +33,7 @@ class Takeaway
 
   def basket_checkout(payment)
     checkout.finalise_payment(payment, working_order, menu_summary)
+    @current_order = order_klass.new
   end
 
   private
