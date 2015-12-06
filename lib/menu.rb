@@ -7,7 +7,7 @@ class Menu
       {"Salad" => 4},
       {"Chicken" => 7},
       {"Fish" => 9},
-      {"Chef's special" => 15}
+      {"Daily special" => 15}
     ]
   end
 
