@@ -24,7 +24,7 @@ class Menu
     @order
   end
 
-  #private
+  private
 
   def readable_list
     string = ""
