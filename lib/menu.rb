@@ -1,16 +1,13 @@
 class Menu
 
-  attr_reader :meals
+  attr_reader :dishes
 
   def initialize
-    @meals = {'Bombay Aloo' => 5,
-              'Lamb Passanda' => 9,
-              'Chicken Tikka Masala' => 8}
+    @dishes = {}
   end
 
-  def show
-    meals.map {|k,v| "#{k} : £#{v}" }.join("\n")
+  def create(name, price)
+    @dishes[name] = price
   end
-
 
 end

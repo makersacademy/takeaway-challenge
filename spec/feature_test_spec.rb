@@ -2,8 +2,9 @@ require 'menu'
 require 'takeaway'
 
 describe 'User Stories' do
-  let(:takeaway) { Takeaway.new(menu) }
+  let(:takeaway) { Takeaway.new(menu, order_klass) }
   let(:menu) { Menu.new }
+  let(:order_klass) {Order}
 
   context  do
     before(:each) do
@@ -21,25 +22,24 @@ describe 'User Stories' do
         expect(takeaway.check_menu).to include(pie: 7.99)
       end
     end
+
+  end
+
+
+  describe 'User Story 2' do
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
+    context 'when a customer wants a dish' do
+      it 'it should let them place an order' do
+        takeaway.place_order(:soup, 1)
+        takeaway.place_order(:sandwich, 3)
+        expect(takeaway.check_order).to eq(soup: 1, sandwich: 3)
+      end
+    end
   end
   end
 end
-
-
-#
-#   describe 'User Story 2' do
-#   # As a customer
-#   # So that I can order the meal I want
-#   # I would like to be able to select some number of several available dishes
-#     context 'when a customer wants a dish' do
-#       it 'it should let them place an order' do
-#         takeaway.place_order(:soup, 1)
-#         takeaway.place_order(:sandwich, 3)
-#         expect(takeaway.check_order).to eq('soup'=>1,'sandwich'=>3)
-#       end
-#     end
-#   end
-# end
 #
 #   describe 'User Story 3' do
 #   # As a customer

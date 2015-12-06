@@ -10,15 +10,4 @@ describe Menu do
       expect(menu.dishes).to include(pie: 7.99)
     end
   end
-
-  describe '#remove' do
-    it 'should remove old dishes from the menu' do
-      menu.create(:pie, 7.99)
-      menu.remove(:pie)
-      expect(menu.dishes).not_to include(pie: 7.99)
-    end
-  end
-
-
-
 end

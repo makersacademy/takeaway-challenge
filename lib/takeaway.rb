@@ -1,26 +1,33 @@
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :order_klass
 
-  def initialize(menu_klass)
-    @menu = menu_klass.new
-    @order = []
+  def initialize(menu, order_klass)
+    @menu = menu
+    @order_klass = order_klass
+    @order = order_klass.new
   end
 
   def check_menu
-    @menu.show
+    @menu.dishes
   end
 
-  def place_order(dish, quantity)
-    raise 'Not on menu' if not_on_menu(dish)
-    order.push([dish, quantity])
-    puts "#{quantity} #{dish} added to your order."
+  def place_order(dish, qty)
+    fail "Not on menu: #{dish}" if not_on_menu?(dish)
+    @order.take_order(dish, qty)
+  end
+
+  def check_order
+    @order.current_order
+  end
+  def new_order
+    @order = order_klass.new
   end
 
   private
 
-    def not_on_menu(dish)
-      !@menu.meals.has_key?(dish)
-    end
+ def not_on_menu?(dish)
+   !@menu.dishes.include?(dish)
+ end
 
 end
