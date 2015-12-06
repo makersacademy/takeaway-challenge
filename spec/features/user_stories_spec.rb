@@ -40,8 +40,14 @@ describe 'User Stories' do
     # As a customer
     # So that I can order the meal I want
     # I would like to be able to select some number of several available dishes
-    it 'so I can order what I want, I would like select from available dishes' do
-      
+    it 'so I can order my meal, I would like to log items to my order' do
+      takeaway.order(:burger, 4)
+      takeaway.order(:shrimp, 2)
+      expect(takeaway.current_order.list).to include(burger: 4, shrimp: 2)
+    end
+
+    it 'I would like to be stopped from ordering anything that doesn\'t exist' do
+      expect(takeaway.order(:cat, 3)).to raise_error "You cannot buy cat here"
     end
   end
 
