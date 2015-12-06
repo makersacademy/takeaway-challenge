@@ -67,6 +67,15 @@ describe 'User Stories' do
         expect(takeaway.basket_total).to eq '£13.52'
       end
 
+      it 'to ensure payment is right, it pass when right' do
+        expect(takeaway.basket_checkout(13.52)).not_to raise_error
+      end
+
+      it 'to ensure payment is right, it fails when wrong' do
+        bad_payment = "Cannot be accepted, you need to pay £13.52"
+        expect(takeaway.basket_checkout(12.23)).to raise_error bad_payment
+      end
+
     end
   end
 end
