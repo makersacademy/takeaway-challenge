@@ -1,22 +1,14 @@
-Takeaway Challenge
-==================
 
-Instructions
--------
+![makersacademy](media/ma_logo.png)
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+**week 2 / weekend challenge**
 
-Task
------
+# The challenge
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+This weekend challenge is to create a simple takeaway app where users can view dishes from a menu, select some and place an order.
+[Twilio REST API](https://www.twilio.com/docs/api/rest) should be used to send via SMS the order confirmation.
+
+## User stories
 
 ```
 As a customer
@@ -36,43 +28,63 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+# Implementation
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+[![Build Status](https://travis-ci.org/allimac/takeaway-challenge.svg?branch=master)](https://travis-ci.org/allimac/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/allimac/takeaway-challenge/badge.png)](https://coveralls.io/r/allimac/takeaway-challenge)
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+## Modules & gems
 
+* yaml
+* twilio-ruby
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+## PRY code-flow
 
 ```
-$ coveralls report
+[1] pry(main)> require './lib/menu.rb'
+=> true
+[2] pry(main)> menu = Menu.new
+=> #<Menu:0x007fb8b29acd48 @order=#<Order:0x007fb8b29acd20 @dishes=[], @number_dishes=0, @total=0>, @order_klass=Order>
+[3] pry(main)> menu.view
+=> "// MENU // -- appetisers --  Olives £2 / Hummus £1.5 / -- mains --  Beef £7 / Chicken £6 / -- desserts --  Sorbet £3 / Tart £4 /"
+[4] pry(main)> menu.select("Beef")
+=> [{:name=>"Beef", :price=>7, :quantity=>1}]
+[5] pry(main)> menu.select("Sorbet")
+=> [{:name=>"Beef", :price=>7, :quantity=>1}, {:name=>"Sorbet", :price=>3, :quantity=>1}]
+[6] pry(main)> menu.order.review
+=> "Your order: 1x Beef £7, 1x Sorbet £3, Total price: $10"
+[7] pry(main)> menu.order.place
+=> true
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
 
-Build Badge Example
-------------------
+## Classes
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+### Menu
+
+Menu allows to view dishes from a data source and add them to a takeaway order specifying their quantity.
+Every instance of Menu has its own instance of the dependent class Order.
+It receives the following messages:
+* view menu in readable format
+* select(dish, quantity)
+
+### Order
+
+Order allows to store added dishes, review the order with the total price, and place the order.
+When the order is placed an SMS is sent via [Twilio REST API](https://www.twilio.com/docs/api/rest) calculating the approximate arrival time (based on number of dishes added plus delivery time).
+It receives the following messages:
+* add(dish_w_quantity)
+* review
+* place
+
+
+## Data
+
+* A .yml file in /lib/resources stores all the menu data
+
+
+## Possible improvements
+
+* reset order after is succesfully placed
+* allow users to order via SMS
+* improve refactoring

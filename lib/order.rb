@@ -16,7 +16,7 @@ class Order
   end
 
   def review
-    "Your order:\n"+readable_dishes+"Total price: $"+@total.to_s
+    "Your order: "+readable_dishes+"Total price: £"+@total.to_s
   end
 
   def dishes
@@ -54,7 +54,7 @@ class Order
   def readable_dishes
     string = ""
     @dishes.each do |dish|
-      string += "#{dish[:quantity]}x #{dish[:name]} £#{dish[:price]}\n"
+      string += "#{dish[:quantity]}x #{dish[:name]} £#{dish[:price]}, "
     end
     string
   end
