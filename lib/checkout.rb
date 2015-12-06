@@ -15,9 +15,9 @@ class Checkout
     total
   end
 
-  # def finalise_payment(payment, order, prices)
-  #   expected_payment = sum_total(order, prices)
-  #   fail "Cannot be accepted, you need to pay £#{expected_payment}" if payment != expected_payment
-  # end
+  def finalise_payment(payment, order, prices)
+    expected_payment = sum_total(order, prices)
+    fail "Cannot be accepted, you need to pay £#{expected_payment}" if payment != expected_payment
+  end
 
 end
