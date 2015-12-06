@@ -9,8 +9,20 @@ class Order
   end
 
   def add(item, quantity = DEFAULT_QUANTITY)
-    quantity = @basket[item] + quantity if already_in_basket?(item)
+    quantity = @basket[item] + quantity if @basket[item]
     @basket[item] = quantity
+  end
+
+  def remove(item)
+    fail 'Item not in basket' if !@basket[item]
+    quantity = @basket[item]
+    if
+      quantity > 1
+    then
+      @basket[item] = quantity-1
+    else
+      @basket.delete(item)
+    end
   end
 
   def total
@@ -21,10 +33,13 @@ class Order
     total
   end
 
-private
+  def confirm
+    "Thank you! Your order was placed and will be delivered by #{delivery_time}"
+  end
 
-  def already_in_basket?(item)
-    @basket[item]
+private
+  def delivery_time
+    (Time.new + 3600).strftime("%H:%M")
   end
 
 end

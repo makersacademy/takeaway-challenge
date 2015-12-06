@@ -14,18 +14,14 @@ class Menu
 
   def get_item(food)
     items.each { |item| return item if item.name == food }
-    fail 'Sorry we don\'t have that item'
+    fail 'Sorry we don\'t have that on our menu'
   end
 
+  def add(item)
+    @items << item
+  end
+
+  def remove(item_name)
+    @items.delete(get_item(item_name))
+  end
 end
-
-
-    # 'Spring rolls'        => 2.20,
-    # 'Tom yum soup'        => 4.90,
-    # 'Green curry'         => 6.50,
-    # 'Red curry'           => 6.50,
-    # 'Panang curry'        => 6.50,
-    # 'Pad thai'            => 5.50,
-    # 'Pad see ew'          => 6.80,
-    # 'Steamed rice'        => 2.50,
-    # 'Coconut rice'        => 2.80
