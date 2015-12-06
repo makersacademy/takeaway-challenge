@@ -13,6 +13,27 @@ I have tried to encapsulate my code as much as possible throughout. The user sho
 Installation Instructions
 ----
 
+Clone the repository from [github](https://github.com/michaellennox/takeaway-challenge) and then move to the repository.
+
+```
+$ git clone git@github.com:michaellennox/takeaway-challenge.git
+$ cd takeaway-challenge
+```
+
+Load dependencies with bundle
+
+```
+$ gem install bundle
+$ bundle
+```
+
+Load the app in irb
+
+```
+$ irb
+2.2.3 :001 > load './lib/takeaway.rb'
+```
+
 Running the Program
 ----
 
