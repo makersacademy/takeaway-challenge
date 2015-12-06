@@ -23,19 +23,27 @@ class Takeaway
   end
 
   def basket_summary
-    checkout.sum_each(current_order.list, menu.dishes)
+    checkout.sum_each(working_order, menu_summary)
   end
 
   def basket_total
-    total = checkout.sum_total(current_order.list, menu.dishes)
+    total = checkout.sum_total(working_order, menu_summary)
     "£#{total}"
   end
 
   def basket_checkout(payment)
-    checkout.finalise_payment(payment, current_order.list, menu.dishes)
+    checkout.finalise_payment(payment, working_order, menu_summary)
   end
 
   private
+
+  def working_order
+    current_order.list
+  end
+
+  def menu_summary
+    menu.dishes
+  end
 
   def not_on_menu?(item)
     !menu.includes?(item)
