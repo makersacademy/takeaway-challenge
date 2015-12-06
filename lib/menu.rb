@@ -22,12 +22,20 @@ attr_accessor :basket
     else
       remove_item(item_name) if already_in_basket?(item_name)
       quantity.times do
-        @basket << @menu.select{|key, value| key == item_name}
+        @basket << @menu.select{|item| item_name === item}
+        @basket - [{}]
        end
     end
   end
 
 
+  def total
+    sum = @basket.map{|hash| hash.values}.flatten
+    sum.inject(:+)
+  end
+
+
+private
 
   def remove_item(item_name)
     remove = []
@@ -37,11 +45,6 @@ attr_accessor :basket
 
   def already_in_basket?(item_name)
     @basket.select{|item| item === item_name}
-  end
-
-
-  def review_order
-
   end
 
 

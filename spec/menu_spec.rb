@@ -15,21 +15,21 @@ describe "Menu" do
     it "allows to pick an item number and stipulate its quantity" do
       menu = Menu.new('lib/menu.yaml')
       menu.choose(:"Kielbasa chicken", 2)
-      expect(menu.basket).to eq([{:"Kielbasa chicken"=>"£4"}, {:"Kielbasa chicken"=>"£4"}])
+      expect(menu.basket).to eq([{:"Kielbasa chicken"=>4}, {:"Kielbasa chicken"=>4}])
     end
 
     it "Selects a number of items from the menu" do
       menu = Menu.new('lib/menu.yaml')
       menu.choose(:"Kielbasa chicken", 1)
       menu.choose(:"Bacon ipsum", 1)
-      expect(menu.basket).to eq([{:"Kielbasa chicken"=>"£4"}, {:"Bacon ipsum"=>"£3"}])
+      expect(menu.basket).to eq([{:"Kielbasa chicken"=>4}, {:"Bacon ipsum"=>3}])
     end
 
     it "Updates an item's quantity in the basket to the new total, rather than adding them" do
       menu = Menu.new('lib/menu.yaml')
       menu.choose(:"Kielbasa chicken", 1)
       menu.choose(:"Kielbasa chicken", 2)
-      expect(menu.basket).to eq([{:"Kielbasa chicken"=>"£4"}, {:"Kielbasa chicken"=>"£4"}])
+      expect(menu.basket).to eq([{:"Kielbasa chicken"=>4}, {:"Kielbasa chicken"=>4}])
     end
 
     it "Removes items from the basket whose quantity is passed in as zero" do
@@ -37,12 +37,23 @@ describe "Menu" do
       menu.choose(:"Kielbasa chicken", 1)
       menu.choose(:"Bacon ipsum", 1)
       menu.choose(:"Kielbasa chicken", 0)
-      expect(menu.basket).to eq([{:"Bacon ipsum"=>"£3"}])
+      expect(menu.basket).to eq([{:"Bacon ipsum"=>3}])
     end
   end
 
 
+  describe "#total" do
+
+    it "Totals the price for all the items in your basket" do
+      menu = Menu.new('lib/menu.yaml')
+      menu.choose(:"Kielbasa Chicken", 1)
+      expect(menu.total).to eq 4
+    end
+
+  end
+
   describe "#complete_order" do
+
     xit "Resets the basket after completion" do
       menu = Menu.new('lib/menu.yaml')
       menu.choose(:"Bacon ipsum", 1)
@@ -60,17 +71,6 @@ describe "Menu" do
 
 
   end
-
-  # describe ""
-  # xit "Shows prices" do
-  #   menu = Menu.new
-  #   expect(menu.item_price).to return{the value at the key for the item name}
-  # end
-  #
-  # xit "Shows item name" do
-  #   menu = Menu.new
-  #   exect(menu.item).to eq item
-  # end
 
 
 end
