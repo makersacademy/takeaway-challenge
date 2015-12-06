@@ -1,5 +1,4 @@
-Week2: Takeaway Challenge
-==================
+* Week 2: Takeaway Challenge
 
 ** Installation Requirements
 
