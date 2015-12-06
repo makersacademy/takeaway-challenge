@@ -7,6 +7,7 @@
 
 This weekend challenge is to create a simple takeaway app where users can view dishes from a menu, select some and place an order.
 [Twilio REST API](https://www.twilio.com/docs/api/rest) should be used to send via SMS the order confirmation.
+:spaghetti::wine_glass:
 
 ## User stories
 
