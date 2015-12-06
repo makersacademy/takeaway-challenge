@@ -23,6 +23,10 @@ describe Checkout do
       bad_payment = "Cannot be accepted, you need to pay £7.21"
       expect{checkout.finalise_payment(7.11, order, prices)}.to raise_error bad_payment
     end
+
+    it 'should not raise error if given correct payment' do
+      expect{checkout.finalise_payment(7.21, order, prices)}.not_to raise_error
+    end
   end
 
 end
