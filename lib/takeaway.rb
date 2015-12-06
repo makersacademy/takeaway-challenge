@@ -1,5 +1,4 @@
 class Takeaway
-
   ERROR = 'Cannot place order: '
   TOTAL = 'total does not match pricing!'
   DISH = ' not available!'
@@ -17,8 +16,8 @@ class Takeaway
 
   def place_order(order, total)
     dishes = order_klass.new(order, total).as_hash
-    fail (ERROR + unavailable(dishes) + DISH) unless have? dishes
-    fail (ERROR + TOTAL) unless correct? dishes, total
+    fail(ERROR + unavailable(dishes) + DISH) unless have? dishes
+    fail(ERROR + TOTAL) unless correct?(dishes, total)
     phone.complete_order
   end
 

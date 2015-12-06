@@ -1,19 +1,17 @@
 class Order
   attr_reader :total, :as_hash
 
-  def initialize order, total
+  def initialize(order, total)
     @total = total
-    @as_hash = {}
-    order.split(', ').each { |item|
-      parse item
-    }
+    @as_hash = parse order
   end
 
   private
 
-  def parse item
-      dish = item[/[a-zA-Z].*/]
-      quantity = item[/^\d+/].to_i
-      as_hash[dish] = quantity
+  def parse order
+    order.split(', ').inject({}) { |result, item|
+      result[item[/[a-zA-Z].*/]] = item[/^\d+/].to_i
+      result
+    }
   end
 end
