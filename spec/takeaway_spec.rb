@@ -1,8 +1,8 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new }
-  let(:menu) {double('menu', :dishes => { salad: 12 }) }
+  subject(:takeaway) { described_class.new(menu_klass = menu) }
+  let(:menu) {double('menu', :dishes => { "Salad" => 12 }) }
   let(:dish) {double :dish}
   let(:dish2) {double :dish2}
 
@@ -19,9 +19,10 @@ describe Takeaway do
   end
 
   it 'returns the sum of the cost of each item ordered' do
-    takeaway.select(:dish, 2)
-    takeaway.select(:dish2, 1)
-    expect(takeaway.total_price).to eq 38
+    5.times{takeaway.select("Salad")}
+      takeaway.total_dishes_ordered
+      expect(takeaway.total_price).to eq 60
+
   end
 
 end

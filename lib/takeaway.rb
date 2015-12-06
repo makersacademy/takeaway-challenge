@@ -1,18 +1,20 @@
 require_relative 'menu'
+require_relative 'order'
 class Takeaway
 
   attr_reader :menu_klass, :total_dishes, :order, :total_cost
 
-  def initialize(menu_klass = Menu.new)
+  def initialize(menu_klass = Menu.new, order_klass = Order.new)
     @menu = menu_klass
-    @order = Hash.new
+    @order = order_klass
     @total_dishes = 0
 
   end
 
   def select(item, qty=1)
-    @order[item] = qty
+    @order.basket[item] += qty
     "You have added #{qty} #{item}(s) to your basket"
+
   end
 
   def total_dishes_ordered
@@ -20,7 +22,7 @@ class Takeaway
   end
 
   def number_of_dishes
-    @order.each_value { |value| @total_dishes += value }
+    @order.basket.each_value { |value| @total_dishes += value }
     @total_dishes
   end
 
@@ -30,7 +32,7 @@ class Takeaway
 
   def total_price
     total = 0
-    @order.each { |name, qty| total += (qty * price_matcher(name))}
+    @order.basket.each { |name, qty| total += (qty * price_matcher(name))}
     total
 
   end

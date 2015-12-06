@@ -4,6 +4,7 @@
 describe 'User Stories' do
   let(:takeaway) { Takeaway.new }
   let(:menu) { Menu.new}
+  let(:order) {Order.new}
 
   # As a customer
   # So that I can check if I want to order something
@@ -44,7 +45,7 @@ describe 'User Stories' do
   it 'returns the total number of choices' do
     takeaway.select(:salad, 2)
     takeaway.select(:burger, 1)
-    expect(takeaway.order.size).to eq 2
+    expect(takeaway.order.basket.size).to eq 2
   end
 
   # As a customer
@@ -63,9 +64,6 @@ describe 'User Stories' do
 end
 
 
-# As a customer
-# So that I can verify that my order is correct
-# I would like to check that the total I have been given matches the sum of the various dishes in my order
 #
 # As a customer
 # So that I am reassured that my order will be delivered on time
