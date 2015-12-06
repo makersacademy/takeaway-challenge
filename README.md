@@ -1,3 +1,53 @@
+This is a program written by Sara Tateno in response to Makers Academy's Weekend Challenge #2: The Takeaway Challenge.
+
+These are the customer stories it is designed to meet:-
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+To install the program:-
+1. Fork and clone the repo from https://github.com/saratateno/takeaway-challenge
+2. Run `gem install bundler` in your directory
+3. Run `bundle` to install the project gems
+
+To use the program:-
+1. Run `irb` or `pry` from the command line
+2. `load './lib/takeaway.rb'`
+3. `takeaway = Takeaway.new`
+
+You can now use the following commands:-
+`takeaway.view_menu` to see the available dishes
+`takeaway.add_to_order(dish_name)` entering a string of the dish name to add to your order
+`takeaway.remove_from_order(dish_name)` entering a string of the dish name to remove it from your order
+`takeaway.view_order` to see a summary of your order
+`takeaway.total_price` to see the total cost of your order
+`takeaway.checkout(total)` to purchase your order
+
+You are required to 'pay' the correct amount for your order to be processed.
+
+This program comes with a short menu of only three items. Dishes can be added / removed to the menu (by the takeaway owner!) by creating new dish objects `menu.add(Dish.new(dish_name, price))`.
+
+
+
+
+
+
+
 Takeaway Challenge
 ==================
 
@@ -56,7 +106,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
