@@ -3,25 +3,50 @@ require 'yaml'
 
 class Menu
 
-attr_reader :items, :order
+attr_reader :menu
+attr_accessor :basket
 
   def initialize(file)
-    @items = YAML.load_file(file)
-    @order = []
+    @menu = YAML.load_file(file)
+    @basket = []
   end
 
   def view_menu
-    @items
+    @menu
   end
 
-  def choose(order_item_number)
-    order_item_number.each{|item_number|
-       @order << self.items[item_number]
-     }
+
+  def choose(item_name, quantity)
+    if quantity == 0
+        remove_item(item_name)
+    else
+      remove_item(item_name) if already_in_basket?(item_name)
+      quantity.times do
+        @basket << @menu.select{|key, value| key == item_name}
+       end
+    end
+  end
+
+
+
+  def remove_item(item_name)
+    remove = []
+    remove << @menu.select{|key, value| key == item_name}
+    @basket = @basket - remove
+  end
+
+  def already_in_basket?(item_name)
+    @basket.select{|item| item === item_name}
+  end
+
+
+  def review_order
+
   end
 
 
 end
+
 
 
 
