@@ -3,19 +3,17 @@ require 'twilio-ruby'
 
 class OrderList
 
+  extend Forwardable
+
+  def_delegator :@dish_list, :price_list
+
+  attr_reader :client
 
   def initialize(dish_list)
     @dish_list = dish_list
     account_sid = 'AC052294c8bfb6a8bccf164140b4116340'
     auth_token = '9db8e3404e5865a71a79d28c3ef11e71'
     @client = Twilio::REST::Client.new(account_sid, auth_token)
-  end
-
-  attr_reader :client
-
-
-  def price_list
-    @dish_list.price_list
   end
 
   def place_order(total=nil,amount_list)
