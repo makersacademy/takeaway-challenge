@@ -23,14 +23,14 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-To install the program:- \n
-  1. Fork and clone the repo, e.g. `git clone git@github.com:saratateno/takeaway-challenge.git` \n
-  2. Run `gem install bundler` in your directory \n
-  3. Run `bundle` to install the project gems \n
+To install the program:-
+  1. Fork and clone the repo, e.g. `git clone git@github.com:saratateno/takeaway-challenge.git`
+  2. Run `gem install bundler` in your directory
+  3. Run `bundle` to install the project gems
 
-To use the program:- \n
-  1. Run `irb` or `pry` from the command line \n
-  2. `load './lib/takeaway.rb'`\n
+To use the program:-
+  1. Run `irb` or `pry` from the command line 
+  2. `load './lib/takeaway.rb'`
   3. `takeaway = Takeaway.new`
 
 You can now use the following commands:-
