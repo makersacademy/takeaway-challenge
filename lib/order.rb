@@ -8,25 +8,25 @@ class Order
     @basket = {}
   end
 
-  def add(item, quantity = DEFAULT_QUANTITY)
-    quantity = @basket[item] + quantity if @basket[item]
-    @basket[item] = quantity
+  def add(dish, quantity = DEFAULT_QUANTITY)
+    quantity = @basket[dish] + quantity if @basket[dish]
+    @basket[dish] = quantity
   end
 
-  def remove(item)
-    fail 'Item not in basket' if !@basket[item]
-    quantity = @basket[item]
+  def remove(dish)
+    fail 'Dish not in basket' if !@basket[dish]
+    quantity = @basket[dish]
     if quantity > 1
-      @basket[item] = quantity-1
+      @basket[dish] = quantity-1
     else
-      @basket.delete(item)
+      @basket.delete(dish)
     end
   end
 
   def total
     total = 0
-    basket.each do |item, quantity|
-      total += item.price * quantity
+    basket.each do |dish, quantity|
+      total += dish.price * quantity
     end
     total
   end

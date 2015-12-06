@@ -1,4 +1,4 @@
-class Item
+class Dish
 
   attr_reader :name, :price
 

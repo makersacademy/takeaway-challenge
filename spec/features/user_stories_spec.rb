@@ -1,14 +1,11 @@
 
 describe 'User Stories' do
 
-  let(:takeaway) { Takeaway.new(menu) }
+  let(:takeaway) { Takeaway.new(menu, order) }
   let(:menu) { Menu.new }
   let(:order) { Order.new }
-  let(:checkout) { Checkout.new }
-  let(:item) { Item.new('Satay', 4.50) }
-  let(:item2) { Item.new('Spring rolls', 3.00) }
-  let(:quantity) { 3 }
-
+  let(:dish) { Dish.new('Pad Thai', 5.00) }
+  let(:dish2) { Dish.new('Green Curry', 6.00) }
 
 # As a customer
 # So that I can check if I want to order something
@@ -16,14 +13,28 @@ describe 'User Stories' do
 
 describe 'Takeaway' do
   it 'allows the customer to view the menu with prices' do
-    menu.add(item)
-    expect(takeaway.view_menu).to include item
+    menu.add(dish)
+    expect(takeaway.view_menu).to include dish
   end
-end
 
-# As a customer
-# So that I can order the meal I want
-# I would like to be able to select some number of several available dishes
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
+  it 'allows the customer to view their order' do
+    expect(takeaway).to respond_to(:view_order)
+  end
+
+  it 'allows the customer to order a number of dishes' do
+    menu.add(dish)
+    takeaway.order(dish.name, 2)
+    expect(order.basket).to include dish
+  end
+
+  # # As a customer
+  # # So that I can verify that my order is correct
+  # # I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+end
 
 
 
@@ -37,11 +48,8 @@ end
   end
 end
 
-# # As a customer
-# # So that I can verify that my order is correct
-# # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-# xit 'raises an error if the total does not equal the sum of items in the basket' do
+# xit 'raises an error if the total does not equal the sum of dishes in the basket' do
 #   basket.total to raise_error
 # end
 #
