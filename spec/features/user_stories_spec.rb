@@ -49,6 +49,15 @@ describe 'User Stories' do
     it 'I would like to be stopped from ordering items not on menu' do
       expect{takeaway.order(:cat, 3)}.to raise_error "You cannot buy cat here"
     end
+
+    # As a customer,
+    # So that I can verify that my order is correct,
+    # I would like to check that the total I have been given
+    # matches the sum of the various dishes in my order
+    it 'to verify the order is correct, I should see each dishes sum' do
+
+    end
+
   end
 
 end

@@ -23,6 +23,11 @@ describe Takeaway do
       allow(menu).to receive(:includes?).and_return(false)
       expect{takeaway.order(:lamb, 3)}.to raise_error "You cannot buy lamb here"
     end
+
+    it 'should default the number ordered to 1 if no argument passed' do
+      expect(order).to receive(:order_item).with(:beef, 1)
+      takeaway.order(:beef)
+    end
   end
 
 end
