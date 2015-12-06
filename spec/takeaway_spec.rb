@@ -39,12 +39,19 @@ describe TakeAway do
 
   context 'when basket is no more empty' do
     before do
-      takeaway.add_to_basket('dish')
+      takeaway.add_to_basket('dish1', 2)
+      takeaway.add_to_basket('dish2', 1)
     end
     describe '#add_to_basket' do
       it 'adds the dish with no overwriting previous amount' do
-        takeaway.add_to_basket('dish')
-        expect(takeaway.basket).to include 'dish' => 2
+        takeaway.add_to_basket('dish1')
+        expect(takeaway.basket).to include 'dish1' => 3
+      end
+    end
+    describe '#total' do
+      it 'returns the total of the order' do
+        allow(menu).to receive(:dishes).and_return('dish1' => 10, 'dish2' => 20)
+        expect(takeaway.total).to eq 40
       end
     end
   end
