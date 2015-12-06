@@ -37,7 +37,7 @@ describe "user stories" do
   it 'so that Kylie is reassured the order will be delivered on time, she should receive a confirmation text message after order' do
     dish = "Chicken"
     menu.select(dish, 1)
-    expect{ menu.order.place }.not_to raise_error
+    expect{ menu.order.place(false) }.not_to raise_error
   end
 end
 
