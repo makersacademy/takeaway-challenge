@@ -28,6 +28,7 @@ class Takeaway
 
   def basket_total
     total = checkout.sum_total(current_order.list, menu.dishes)
+    "£#{total}"
   end
 
   private
