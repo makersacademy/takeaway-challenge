@@ -1,6 +1,9 @@
-This is a program written by Sara Tateno in response to Makers Academy's Weekend Challenge #2: The Takeaway Challenge.
+Takeaway Challenge
+==================
 
-These are the customer stories it is designed to meet:-
+This is a program written by Sara Tateno in response to Makers Academy's Weekend Challenge #2.
+
+It is designed to meet the following user stories:-
 
 ```
 As a customer
@@ -20,30 +23,27 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-To install the program:-
-1. Fork and clone the repo from https://github.com/saratateno/takeaway-challenge
-2. Run `gem install bundler` in your directory
-3. Run `bundle` to install the project gems
+To install the program:- \n
+  1. Fork and clone the repo, e.g. `git clone git@github.com:saratateno/takeaway-challenge.git` \n
+  2. Run `gem install bundler` in your directory \n
+  3. Run `bundle` to install the project gems \n
 
-To use the program:-
-1. Run `irb` or `pry` from the command line
-2. `load './lib/takeaway.rb'`
-3. `takeaway = Takeaway.new`
+To use the program:- \n
+  1. Run `irb` or `pry` from the command line \n
+  2. `load './lib/takeaway.rb'`\n
+  3. `takeaway = Takeaway.new`
 
 You can now use the following commands:-
-`takeaway.view_menu` to see the available dishes
-`takeaway.add_to_order(dish_name)` entering a string of the dish name to add to your order
-`takeaway.remove_from_order(dish_name)` entering a string of the dish name to remove it from your order
-`takeaway.view_order` to see a summary of your order
-`takeaway.total_price` to see the total cost of your order
-`takeaway.checkout(total)` to purchase your order
+* `takeaway.view_menu` to see the available dishes
+* `takeaway.add_to_order(dish_name)` entering a string of the dish name to add to your order
+* `takeaway.remove_from_order(dish_name)` entering a string of the dish name to remove it from your order
+* `takeaway.view_order` to see a summary of your order
+* `takeaway.total_price` to see the total cost of your order
+* `takeaway.checkout(total)` to purchase your order
 
 You are required to 'pay' the correct amount for your order to be processed.
 
 This program comes with a short menu of only three items. Dishes can be added / removed to the menu (by the takeaway owner!) by creating new dish objects `menu.add(Dish.new(dish_name, price))`.
-
-
-
 
 
 
