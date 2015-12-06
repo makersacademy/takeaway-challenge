@@ -1,11 +1,11 @@
-* Week 2: Takeaway Challenge
+# Week 2: Takeaway Challenge
 
-** Installation Requirements
+## Installation Requirements
 
 Users must run bundle in the command line to install the required gems for the
 program to work.
 
-** Guidance in using the program
+## Guidance in using the program
 
 First the takeaway user of this program must create dishes, giving each a name
 and price. An example is provided below:
