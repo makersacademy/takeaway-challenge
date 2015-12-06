@@ -22,6 +22,14 @@ describe Order do
     end
   end
 
+  describe '#dishes' do
+    it 'should return items, prices, total price in array' do
+      order.add(dish1)
+      order.add(dish2)
+      expect(order.dishes).to include dish1, dish2
+    end
+  end
+
   describe '#place' do
     it 'should place the order and send a text message' do
       order.add(dish1)

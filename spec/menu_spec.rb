@@ -1,5 +1,4 @@
 require 'menu'
-require 'order'
 
 describe Menu do
 
@@ -11,7 +10,7 @@ describe Menu do
 
   describe '#view' do
     it 'should return a full list of dishes with prices' do
-      expect(menu.view).to start_with("THE MENU")
+      expect(menu.view).to start_with("---- MENU")
     end
 
     xit 'should return a list of appetisers with prices' do
@@ -19,10 +18,14 @@ describe Menu do
     end
   end
 
-  describe '#choose' do
-    it 'should return the choosen dish with its price and quantity' do
-      menu.choose(dish_name, 3)
-      expect(menu.choose(dish_name, 3)).to eq dish
+  describe '#select' do
+    it 'should return the selected dish with its price and quantity' do
+      menu.select(dish_name, 3)
+      expect(menu.select(dish_name, 3)).to eq dish
+    end
+
+    it 'should raise error if the dish douesn\'t exist' do
+      expect{menu.select("Pizza", 3)}.to raise_error "Not in the menu!"
     end
   end
 end

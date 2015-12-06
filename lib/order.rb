@@ -24,7 +24,7 @@ class Order
 
   def place(send_text = true)
     if send_text
-      tokens = YAML::load(File.open('./lib/tokens.yml'))
+      tokens = YAML::load(File.open('./lib/resources/tokens.yml'))
       account_sid = tokens["account_sid"]
       auth_token = tokens["auth_token"]
       client = Twilio::REST::Client.new account_sid, auth_token
@@ -39,7 +39,7 @@ class Order
   private
 
   def update_total(dish)
-    @total += (dish[:price] * dish[:quantity])
+    @total = @total + (dish[:price] * dish[:quantity])
   end
 
   def readable_dishes

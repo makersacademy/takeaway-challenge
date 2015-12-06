@@ -1,49 +1,50 @@
+require_relative 'order'
+require 'yaml'
+
 class Menu
 
-  DISHES = {
-    Appetisers:
-      [{name: "Olives", price: 2},
-      {name: "Hummus", price: 1.5}],
-    Mains:
-      [{name: "Beef", price: 7},
-      {name: "Chicken", price: 6}],
-    Desserts:
-      [{name: "Sorbet", price: 3},
-      {name: "Tart", price: 4}]}
+  MENU = YAML::load(File.open('./lib/resources/menu.yml'))
 
   def initialize(order = Order)
     @order_klass = order
+    @order = @order_klass.new
   end
 
   def view
-    "THE MENU\n"+readable_list
+    output = "---- MENU -----\n"+readable_list
   end
 
-  def choose(dish_name, quantity = 1)
-    @order = @order_klass.new
-    @order.add(add_quantity(find(dish_name), quantity))
+  def select(dish_name, quantity = 1)
+    dish = find(dish_name)
+    dish = w_quantity(find(dish_name), quantity)
+    @order.add(dish)
   end
 
-  private
+  def order
+    @order
+  end
+
+  #private
 
   def readable_list
     string = ""
-    DISHES.each do |section, dishes|
-      string += "#{section}\n"
+    MENU.each do |section, dishes|
+      string += "<><> #{section.downcase} <><>\n"
       dishes.each { |dish| string += "#{dish[:name]} $#{dish[:price]}\n"}
     end
     string
   end
 
   def find(dish_name)
-    DISHES.each do |section, dishes|
+    MENU.each do |section, dishes|
       dishes.each do |dish|
-        return dish if dish[:name] == dish_name
+        @dish_found = dish if dish[:name] == dish_name
       end
     end
+    @dish_found ? @dish_found : fail("Not in the menu!")
   end
 
-  def add_quantity(dish, quantity)
+  def w_quantity(dish, quantity)
     dish.merge(quantity: quantity)
   end
 
