@@ -1,6 +1,8 @@
 require_relative 'dish'
 
 class DishList
+
+attr_reader :dishes
   def initialize(dishes)
     @dishes = dishes
   end

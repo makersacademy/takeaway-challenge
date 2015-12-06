@@ -8,11 +8,11 @@ describe 'User Stories' do
   let(:dish1) {Dish.new(name: :pizza, price: 1)}
   let(:dish2) {Dish.new(name: :chicken, price: 2)}
   let(:dish_list) {DishList.new([dish1, dish2])}
-  let(:order_list) {OrderList.new}
+  let(:order_list) {OrderList.new(dish_list)}
 
 describe '#prices' do
   it 'gives a list with the price of each dish' do
-    expect(order_list.prices(dish_list)).to eq ({pizza: 1, chicken: 2})
+    expect(order_list.prices).to eq ({pizza: 1, chicken: 2})
   end
 end
 
@@ -20,7 +20,25 @@ end
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
 
+describe '#place_order' do
 
+  context 'a dish selected is unavailable' do
+    it 'raises an error when a dish is unavailable' do
+      expect{order_list.place_order({apple: 2})}.to raise_error "An ordered dish is unavailable" 
+    end
+  end
+
+  context 'all dishes selected are available' do
+
+  it 'receives quantities of different dishes' do
+    expect(order_list).to respond_to(:place_order).with(1).argument
+
+  end
+
+  end
+
+
+end
 
 # As a customer
 # So that I can verify that my order is correct
