@@ -31,4 +31,11 @@ describe Takeaway do
     end
   end
 
+  describe '#basket_summary' do
+    it 'should send a call to checkout with order and price lists' do
+      expect(checkout).to receive(:sum_each).with(order.order_item, menu.dishes)
+      takeaway.basket_summary
+    end
+  end
+
 end
