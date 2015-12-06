@@ -1,3 +1,5 @@
+require_relative 'dish'
+
 class DishList
   def initialize(dishes)
     @dishes = dishes
