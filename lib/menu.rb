@@ -10,4 +10,9 @@ class Menu
     dishes[dish] = price
   end
 
+  def remove_dish(dish)
+    fail 'Dish not in the list!' unless dishes.key?(dish)
+    dishes.delete(dish)
+  end
+
 end

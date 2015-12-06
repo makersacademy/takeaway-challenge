@@ -22,8 +22,21 @@ describe Menu do
 
   context 'when dishes is not empty' do
     before do
-
+      menu.add_dish('dish1', 1)
+      menu.add_dish('dish2', 1)
     end
+    describe '#remove_dish' do
+      it 'remove the dish from the list' do
+        menu.remove_dish('dish1')
+        expect(menu.dishes).not_to include('dish1' => 1)
+      end
+      it 'raise an error if the dish is not in the list' do
+        msg = 'Dish not in the list!'
+        expect { menu.remove_dish('dish3') }.to raise_error msg
+      end
+    end
+
+
   end
 
 end
