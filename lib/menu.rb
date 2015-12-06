@@ -16,4 +16,8 @@ attr_reader :dishes
     dishes.each {|plate, price| puts "#{plate} : £#{price.to_f}" }
   end
 
+  def available?(dish)
+    dishes.key?(dish)
+  end
+
 end
