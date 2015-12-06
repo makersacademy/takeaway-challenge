@@ -39,7 +39,21 @@ let(:menu) {"starter : 5\nmains : 10\ndesert : 3\n"}
       expect{takeaway.order("starter", 1, "mains", 2, "desert", 3, 666)}.to raise_error "Unable to place order: supplied total doesn't match actual total"
     end
 
+  end
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  describe 'User Story 4' do
 
+    it 'sends a text message to confirm a succesful order' do
+      takeaway.order("starter", 1, "mains", 2, "desert", 3, 34)
+      expect(takeaway.text.message).not_to eq nil
+    end
 
   end
+
+
+
+
+
 end

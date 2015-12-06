@@ -28,6 +28,8 @@ describe Takeaway do
       expect{takeaway.order("starter", 1, "mains", 2, "desert", 3, 666)}.to raise_error "Unable to place order: supplied total doesn't match actual total"
     end
 
+    it { is_expected.to respond_to(:text)}
+
   end
 
 end

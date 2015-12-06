@@ -1,9 +1,10 @@
 class Takeaway
 
-  attr_reader :menu, :order_as_hash, :customer_supplied_total, :actual_total
+  attr_reader :menu, :order_as_hash, :customer_supplied_total, :actual_total, :text
 
-  def initialize
+  def initialize(text_klass: Text.new)
     @menu = {"starter" => 5, "mains" => 10, "desert" => 3}
+    @text = text_klass
   end
 
   def show_dishes
@@ -15,6 +16,11 @@ class Takeaway
     convert_order_to_hash(dishes)
     check_all_dishes_are_on_menu
     check_customer_and_actual_totals_match
+    text_confirmation(text)
+  end
+
+  def text_confirmation(text)
+    text.send
   end
 
 private
