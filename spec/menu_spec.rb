@@ -15,6 +15,7 @@ describe Menu do
   end
 
   context 'after the menu has been populated' do
+    
     before(:example) do
       menu.add_item(:burger, 2.45)
       menu.add_item(:lamb, 3.45)
@@ -37,6 +38,7 @@ describe Menu do
         expect(menu.includes?(:dinosaur)).to be false
       end
     end
+
   end
 
 end

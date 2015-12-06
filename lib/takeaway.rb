@@ -23,7 +23,7 @@ class Takeaway
   private
 
   def not_on_menu?(item)
-    !menu.dishes.include?(item)
+    !menu.includes?(item)
   end
 
 end

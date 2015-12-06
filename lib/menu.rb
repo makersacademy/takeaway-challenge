@@ -14,4 +14,8 @@ class Menu
     dishes.delete(item)
   end
 
+  def includes?(item)
+    dishes.include?(item)
+  end
+
 end
