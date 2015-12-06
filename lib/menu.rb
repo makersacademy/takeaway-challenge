@@ -1,7 +1,7 @@
 class Menu
 
   def initialize
-    @dishes = {}
+    self.dishes = {}
   end
 
   def to_s
@@ -10,13 +10,17 @@ class Menu
   end
 
   def add_dish(dish, price)
-    fail 'Dish already in the list!' if dishes.key?(dish)
+    fail 'Dish already in the list!' if has?(dish)
     @dishes[dish] = price
   end
 
   def remove_dish(dish)
-    fail 'Dish not in the list!' unless dishes.key?(dish)
+    fail 'Dish not in the list!' unless has?(dish)
     @dishes.delete(dish)
+  end
+
+  def has?(dish)
+    dishes.key?(dish)
   end
 
   def dishes
@@ -24,6 +28,8 @@ class Menu
   end
 
   private
+
+  attr_writer :dishes
 
   def pretty_print
     msg = format('%1$- 20s %2$s %3$s', 'DISH', 'PRICE', "\n")

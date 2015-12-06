@@ -25,6 +25,12 @@ describe Menu do
     end
   end
 
+  describe '#has?' do
+    it 'returns false if the dish is not in the list' do
+      expect(menu.has?('dish')).to be false
+    end
+  end
+
   context 'when dishes is not empty' do
     before do
       menu.add_dish('dish1', 1)
