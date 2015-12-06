@@ -5,6 +5,8 @@ describe 'User Stories' do
   let(:dish_list) {DishList.new(dish1, dish2)}
   let(:order_list) {OrderList.new(dish_list)}
 
+  before(:example){allow(order_list.client.messages).to receive(:create)}
+
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -43,12 +45,14 @@ describe 'User Stories' do
       context 'when given total does not match sum of dishes in customer\'s order' do
         it 'raises an error' do
           expect{order_list.place_order(2,pizza: 1)}.to raise_error "Total does not match sum of dishes in order"
+
         end
       end
 
         context 'when given total does matches sum of dishes in customer\'s order' do
           it 'does not raise an error' do
             expect{order_list.place_order(1,pizza: 1)}.not_to raise_error
+
           end
         end
       end

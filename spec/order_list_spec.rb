@@ -6,6 +6,7 @@ describe OrderList do
   let(:chicken){double(:chicken, name: :chicken, price: 2)}
   let(:dish_list){double(:dish_list, price_list: {pizza: 1, chicken: 2}, dishes: [pizza, chicken])}
   subject(:order_list) {described_class.new(dish_list)}
+  before(:example){allow(order_list.client.messages).to receive(:create)}
 
   describe '#price_list' do
     it 'gives a list with the price of each dish' do

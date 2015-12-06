@@ -1,11 +1,17 @@
 require_relative 'dish_list'
-
+require 'twilio-ruby'
 
 class OrderList
 
+
   def initialize(dish_list)
     @dish_list = dish_list
+    account_sid = 'AC052294c8bfb6a8bccf164140b4116340'
+    auth_token = '9db8e3404e5865a71a79d28c3ef11e71'
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
+
+  attr_reader :client
 
 
   def price_list
@@ -15,6 +21,11 @@ class OrderList
   def place_order(total=nil,amount_list)
     fail 'An ordered dish is unavailable' unless ordered_dishes_available?(amount_list)
     fail 'Total does not match sum of dishes in order' unless total == nil || total == dish_sum(amount_list)
+    @client.messages.create(
+    from:'+441613751762',
+    to:'+447747056242',
+    body:"Thank you! Your order was placed and will be delivered before #{Time.new.hour+1}:"+ Time.new.strftime("%M")
+  )
   end
 
   private
