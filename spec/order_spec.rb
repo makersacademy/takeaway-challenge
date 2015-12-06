@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  let (:order) { described_class.new}
+  let (:order) { described_class.new }
 
   describe '#take_order' do
     it 'should take a  dish order with quantity' do

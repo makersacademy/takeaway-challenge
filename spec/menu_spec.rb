@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
 
-  let(:menu) { described_class.new}
+  let(:menu) { described_class.new }
 
   describe '#create' do
     it 'should allow new dishes to be added to the menu' do

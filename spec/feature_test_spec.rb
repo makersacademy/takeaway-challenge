@@ -4,7 +4,7 @@ require 'takeaway'
 describe 'User Stories' do
   let(:takeaway) { Takeaway.new(menu, order_klass) }
   let(:menu) { Menu.new }
-  let(:order_klass) {Order}
+  let(:order_klass) { Order }
 
   context  do
     before(:each) do
@@ -51,6 +51,5 @@ describe 'User Stories' do
       end
     end
   end
-end
-
+  end
 end

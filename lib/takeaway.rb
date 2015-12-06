@@ -29,10 +29,11 @@ class Takeaway
 
   def complete_order
     history << order
+
     new_order
   end
 
-private
+  private
 
   def calculate_bill
    bill = 0
