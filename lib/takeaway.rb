@@ -15,7 +15,7 @@ class Takeaway
     menu.dishes
   end
 
-  def order(item, quantity)
+  def order(item, quantity = 1)
     fail "You cannot buy #{item} here" if not_on_menu?(item)
     current_order.order_item(item, quantity)
   end

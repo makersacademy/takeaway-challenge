@@ -1,5 +1,4 @@
 describe 'User Stories' do
-
   let(:takeaway) { Takeaway.new(menu: menu) }
   let(:menu) { Menu.new }
 
@@ -54,10 +53,20 @@ describe 'User Stories' do
     # So that I can verify that my order is correct,
     # I would like to check that the total I have been given
     # matches the sum of the various dishes in my order
-    it 'to verify the order is correct, I should see each dishes sum' do
+    context 'after customer\'s order is complete' do
+      before(:example) do
+        takeaway.order(:burger, 4)
+        takeaway.order(:shrimp, 2)
+      end
+
+      it 'to verify the order is correct, I should see each dishes sum' do
+        expect(takeaway.basket_summary).to eq '4x burger = £9.76, 2x shrimp = £3.76'
+      end
+
+      it 'to know my total cost, I should see my order\'s total' do
+        expect(takeaway.total).to eq '£13.52'
+      end
 
     end
-
   end
-
 end
