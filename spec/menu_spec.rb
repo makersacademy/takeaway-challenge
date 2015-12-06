@@ -7,6 +7,11 @@ describe Menu do
     expect(menu.dishes).to be_empty
   end
 
+  it 'print Menu is empty at the beginning' do
+    msg = 'Menu is empty'
+    expect(menu.to_s).to eq msg
+  end
+
   describe '#add_dish' do
     it 'add a dish with relative price to the list' do
       menu.add_dish('dish', 1)
@@ -23,7 +28,6 @@ describe Menu do
   context 'when dishes is not empty' do
     before do
       menu.add_dish('dish1', 1)
-      menu.add_dish('dish2', 1)
     end
     describe '#remove_dish' do
       it 'remove the dish from the list' do
@@ -35,8 +39,13 @@ describe Menu do
         expect { menu.remove_dish('dish3') }.to raise_error msg
       end
     end
-
-
+    it 'print dishes available' do
+      msg =  "DISH                 PRICE \n"
+      msg << "--------------------------\n"
+      msg << "dish1                1 \n"
+      msg << "--------------------------"
+      expect(menu.to_s).to eq msg
+    end
   end
 
 end
