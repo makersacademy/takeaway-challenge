@@ -15,4 +15,15 @@ class Takeaway
     menu.dishes
   end
 
+  def order(item, quantity)
+    fail "You cannot buy #{item} here" if not_on_menu?(item)
+    current_order.order_item(item, quantity)
+  end
+
+  private
+
+  def not_on_menu?(item)
+    !menu.dishes.include?(item)
+  end
+
 end

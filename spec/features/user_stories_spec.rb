@@ -47,7 +47,7 @@ describe 'User Stories' do
     end
 
     it 'I would like to be stopped from ordering items not on menu' do
-      expect(takeaway.order(:cat, 3)).to raise_error "You cannot buy cat here"
+      expect{takeaway.order(:cat, 3)}.to raise_error "You cannot buy cat here"
     end
   end
 
