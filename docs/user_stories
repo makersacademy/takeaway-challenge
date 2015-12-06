@@ -1,0 +1,30 @@
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+Key verbs: check, see, order, select, receive
+Key nouns: customer, order, list of dishes, prices, total cost / sum of ordered dishes, on time, text message
+
+customer needs to be able to:
+see / list of dishes + prices
+select / some number of available dishes
+check / the total to pay
+matches / the sum of the dishes
+receive / text message with confirmation
+
+Classes
+Menu : list of dishes + price (customer needs to be able to see and select for order)
+Takeaway: take selections, verify order, check price, confirm
+Text_Message: send text message
