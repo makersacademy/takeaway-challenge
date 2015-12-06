@@ -1,11 +1,12 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) {described_class.new({menu_klass: menu,
-                                          sendSms_klass: sender})}
+  subject(:takeaway) {described_class.new({menu_klass: menu,send_sms_klass: sms})}
   let(:menu) {double :menu}
-  let(:sender) {double :sendSms}
+  let(:sms) {double :send_sms}
   let(:rand_num) {rand(1..9)}
+  let(:customer) {{phone: :"+447723929855", name: :William}}
+
 
   context 'when selecting order' do
     it 'returns number of choices' do
@@ -20,11 +21,20 @@ describe Takeaway do
   end
 
   context 'when finalising order' do
-    xit 'returns total price' do
+    before do
       takeaway.select_order(:Chicken, 5)
       takeaway.select_order(:Chicken, 3)
+      allow(sms).to receive(:confirmation_text).and_return(customer)
+    end
+
+    xit 'returns total price' do
       allow(takeaway).to receive(:list).and_return (2)
       expect{takeaway.total_price}.to change {takeaway.total_bill}.by(16)
+    end
+
+    it 'sends a text message' do
+      # allow(takeaway).to receive(:list).and_return (2)
+      expect(takeaway.text_confirmation(customer)).to eq(customer)
     end
   end
 end

@@ -1,10 +1,11 @@
 
 require 'send_sms'
 
-describe SendSms do
+describe Send_SMS do
   subject(:sms) {described_class.new}
+  let(:customer) {{phone: :"+447723929855", name: :William}}
 
-  it 'sends text messages with time ahead 45 minutes stamp' do
-    expect(sms.confirmation_text).to eq sms.customers
+  xit 'sends text messages with 45 minutes ahead stamp' do
+    expect(sms.confirmation_text(customer)).to eq(customer)
   end
 end

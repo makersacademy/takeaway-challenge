@@ -1,7 +1,7 @@
 describe 'User stories' do
-  subject(:takeaway) {Takeaway.new({menu_klass: Menu.new, sendSms_klass: SendSms.new})}
-  # let(:menu_klass) {Menu.new}
-  # let(:sendSms_klass) {SendSms.new}
+  subject(:takeaway) {Takeaway.new({menu_klass: Menu.new, send_sms_klass: Send_SMS.new})}
+  let(:customer) {{phone: :"+447723929855", name: :William}}
+
 
   # User story 1
   # As a customer
@@ -53,10 +53,10 @@ describe 'User stories' do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was
   # placed and will be delivered before 18:52" after I have ordered
-  it 'sends a text confirmation' do
+  xit 'sends a text confirmation' do
     takeaway.select_order(:Chicken, 5)
     takeaway.select_order(:Lamb, 3)
-
+    expect(takeaway.text_confirmation(customer)).to eq(customer)
   end
 
 end

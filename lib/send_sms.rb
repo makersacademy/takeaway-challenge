@@ -1,30 +1,29 @@
 require 'twilio-ruby'
 
-class SendSms
+class Send_SMS
 
-  attr_reader :customers
-
-  def confirmation_text
-    sender
+  def confirmation_text(args)
+    sender(args)
   end
+
 
   private
 
   def credentials(value)
-    return account_sid = 'AC3c30852abaf447e0f8c4b51eb23b0d01' if value == :sid
-    return auth_token = '5c5c4e416d9ac5b15ce57e0f12eb6d37' if value == :token
+    return 'AC3c30852abaf447e0f8c4b51eb23b0d01' if value == :sid
+    return '5c5c4e416d9ac5b15ce57e0f12eb6d37' if value == :token
+    return '+441477652033' if value == :from
   end
 
-  def sender
-    @client = Twilio::REST::Client.new credentials(:sid), credentials(:token)
-    from = '+441477652033'
-    @customers = { "+447723929855": "William" }
-    @customers.each do |key, value|
-     message = @client.account.messages.create(
-        from: from, to: key,
-        body: "Thank you! #{value}, your order was placed and will be
-              delivered before #{(Time.now+2700).strftime("%I:%M%p")}")
-     puts "Message sent to #{value}"
-    end
+  def sender(args)
+    client = Twilio::REST::Client.new credentials(:sid), credentials(:token)
+    client.account.messages.create(from: credentials(:from), to: args[:phone],
+    body: "Thank you! #{args[:name]}, your order was placed and will be delivered before #{stamp_time}")
+    args
   end
+
+  def stamp_time
+    (Time.now+3600).strftime("%I:%M%p")
+  end
+
 end

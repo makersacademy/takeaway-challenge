@@ -6,7 +6,7 @@ class Takeaway
 
   def initialize(args)
     @menu_klass     = args[:menu_klass]
-    @sendSms_klass  = args[:sendSms_klass]
+    @send_sms_klass  = args[:send_sms_klass]
     @complete_order = {}
     @total_dishes   = 0
     @total_bill     = 0
@@ -22,6 +22,10 @@ class Takeaway
 
   def total_price
     bill_calculator
+  end
+
+  def text_confirmation(args)
+    @send_sms_klass.confirmation_text(args)
   end
 
   private
