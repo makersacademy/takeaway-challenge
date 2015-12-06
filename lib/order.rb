@@ -5,7 +5,7 @@ class Order
   attr_reader :basket
 
   def initialize
-    @basket = Hash.new
+    @basket = {}
   end
 
   def add(item, quantity = DEFAULT_QUANTITY)
@@ -16,9 +16,7 @@ class Order
   def remove(item)
     fail 'Item not in basket' if !@basket[item]
     quantity = @basket[item]
-    if
-      quantity > 1
-    then
+    if quantity > 1
       @basket[item] = quantity-1
     else
       @basket.delete(item)
