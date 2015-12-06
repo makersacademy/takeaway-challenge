@@ -24,7 +24,7 @@ class Order
   def overview
     return 'Basket is empty' if basket.empty?
     basket.map { |item, quantity| "#{item} x#{quantity}: £#{price(item, quantity)}... "}
-      .join("\n") + total
+      .join + total
   end
 
   def checkout(price = 0)

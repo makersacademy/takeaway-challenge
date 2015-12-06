@@ -7,6 +7,7 @@ class Takeaway
 
   def initialize
     @menu = Menu.new
+    @order = Order.new
   end
 
   def show_menu
@@ -14,7 +15,6 @@ class Takeaway
   end
 
   def place_order(item, quantity = 1)
-    @order = Order.new
     return 'This item is not available' unless available?(item)
     order.add(item, quantity)
   end
