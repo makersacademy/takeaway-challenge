@@ -39,7 +39,7 @@ class Order
   private
 
   def update_total(dish)
-    @total = @total + (dish[:price] * dish[:quantity])
+    @total += (dish[:price] * dish[:quantity])
   end
 
   def readable_dishes

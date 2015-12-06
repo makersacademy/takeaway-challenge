@@ -3,8 +3,8 @@ require 'order'
 describe Order do
 
   subject(:order) { described_class.new }
-  let(:dish1) { {name: "Olives", price: 2, quantity: 3} }
-  let(:dish2) { {name: "Hummus", price: 1.5, quantity: 2} }
+  let(:dish1) { { name: "Olives", price: 2, quantity: 3 } }
+  let(:dish2) { { name: "Hummus", price: 1.5, quantity: 2 } }
 
   describe '#add' do
     it 'should allow to order the selected dish' do
@@ -37,5 +37,4 @@ describe Order do
       expect(order.place(false)).to eq true
     end
   end
-
 end

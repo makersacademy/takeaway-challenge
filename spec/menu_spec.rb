@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
 
   let(:dish_name) { "Beef" }
-  let(:dish) { [{name: "Beef", price: 7, quantity: 3}] }
+  let(:dish) { [{ name: "Beef", price: 7, quantity: 3 }] }
   let(:order) { double(:order, add: dish) }
   let(:order_klass) { double(:order_klass, new: order) }
   subject(:menu) { described_class.new(order_klass) }
@@ -25,7 +25,7 @@ describe Menu do
     end
 
     it 'should raise error if the dish douesn\'t exist' do
-      expect{menu.select("Pizza", 3)}.to raise_error "Not in the menu!"
+      expect { menu.select("Pizza", 3) }.to raise_error "Not in the menu!"
     end
   end
 end
