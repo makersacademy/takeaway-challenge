@@ -34,4 +34,17 @@ describe Order do
       expect(order.place(false)).to eq true
     end
   end
+
+  describe '#number_dishes' do
+    it 'calculates the amount of dishes in the order' do
+      expect(order.number_dishes).to eq 5
+    end
+  end
+
+  describe '#delivery_time' do
+    it 'calculates the delivery time based on number
+        of dishes (5\' per dish) and transport (10\')' do
+      expect { order.delivery_time }.not_to raise_error
+    end
+  end
 end

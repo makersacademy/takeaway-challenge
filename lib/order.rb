@@ -5,6 +5,7 @@ require 'yaml'
 class Order
 
   def initialize
+    @tokens = YAML::load(File.open('./lib/resources/tokens.yml'))
     @dishes = []
     @total = 0
     @number_dishes = 0
@@ -25,27 +26,13 @@ class Order
 
   def place(send_text = true)
     if send_text
-      tokens = YAML::load(File.open('./lib/resources/tokens.yml'))
-      account_sid = tokens["account_sid"]
-      auth_token = tokens["auth_token"]
-      client = Twilio::REST::Client.new account_sid, auth_token
+      client = Twilio::REST::Client.new @tokens["account_sid"], @tokens["auth_token"]
       client.account.messages.create(
-      :from => tokens["from_number"],
-      :to => tokens["to_number"],
+      :from => @tokens["from_number"],
+      :to => @tokens["to_number"],
       :body => "Your order should arrive by #{delivery_time}!" )
     end
     true
-  end
-
-  private
-
-  def delivery_time
-    ready_at = Time.now + (number_dishes * 5 + 10)*60
-    ready_at.hour.to_s+":"+ready_at.min.to_s
-  end
-  
-  def update_total(dish)
-    @total += (dish[:price] * dish[:quantity])
   end
 
   def number_dishes
@@ -53,10 +40,21 @@ class Order
     @number_dishes
   end
 
+  def delivery_time
+    ready_at = Time.now + (number_dishes * 5 + 10)*60
+    ready_at.hour.to_s+":"+ready_at.min.to_s
+  end
+
+  private
+
+  def update_total(dish)
+    @total += (dish[:price] * dish[:quantity])
+  end
+
   def readable_dishes
     string = ""
     @dishes.each do |dish|
-      string += "#{dish[:quantity]}x #{dish[:name]} $#{dish[:price]}\n"
+      string += "#{dish[:quantity]}x #{dish[:name]} £#{dish[:price]}\n"
     end
     string
   end

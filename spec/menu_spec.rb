@@ -10,11 +10,7 @@ describe Menu do
 
   describe '#view' do
     it 'returns a full list of dishes with prices' do
-      expect(menu.view).to start_with("---- MENU")
-    end
-
-    xit 'returns a list of appetisers with prices' do
-      expect(menu.view(appetisers)).not_to eq nil
+      expect(menu.view).to start_with("// MENU //")
     end
   end
 

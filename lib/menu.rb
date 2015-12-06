@@ -15,7 +15,6 @@ class Menu
   end
 
   def select(dish_name, quantity = 1)
-    dish = find(dish_name)
     dish = w_quantity(find(dish_name), quantity)
     @order.add(dish)
   end
