@@ -3,16 +3,6 @@ require 'takeaway'
 describe Takeaway do
   subject(:takeaway) { described_class.new }
 
-  describe '#menu' do
-    it 'can show a list of dishes with prices' do
-      expect(takeaway.menu).to eq( pizza: 6,
-                                  hamburger: 7,
-                                  curry: 5,
-                                  chips: 3,
-                                  cake: 4 )
-    end
-  end
-
   describe '#current_order' do
     it 'is empty by default' do
       expect(takeaway.order).to be_empty

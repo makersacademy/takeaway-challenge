@@ -1,12 +1,10 @@
+require_relative 'menu'
+
 class Takeaway
 attr_reader :menu, :order
 
   def initialize
-    @menu = { pizza: 6,
-              hamburger: 7,
-              curry: 5,
-              chips: 3,
-              cake: 4 }
+    @menu = Menu.new
     @order = []
     @bill = 0
   end
@@ -16,7 +14,7 @@ attr_reader :menu, :order
   end
 
   def bill_calc
-    @order.each { |x| @bill += x[1] * menu[x[0].to_sym] }
+    @order.each { |x| @bill += x[1] * menu.list[x[0].to_sym] }
     @bill
   end
 
@@ -24,5 +22,6 @@ attr_reader :menu, :order
     bill_calc
     fail 'bill and expected bill are different' if @bill != expected_bill
     'order successfully placed'
+    # send_sms
   end
 end
