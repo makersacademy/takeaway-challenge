@@ -13,7 +13,7 @@ attr_reader :dishes
   end
 
   def show
-    dishes.each {|plate, price| puts "#{plate} : £#{price.to_f}" }
+    dishes.each {|dish, price| puts "#{dish} : £#{price.to_f}" }
   end
 
   def available?(dish)
