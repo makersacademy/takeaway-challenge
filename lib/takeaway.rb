@@ -31,6 +31,10 @@ class Takeaway
     "£#{total}"
   end
 
+  def basket_checkout(payment)
+    checkout.finalise_payment(payment, current_order.list, menu.dishes)
+  end
+
   private
 
   def not_on_menu?(item)
