@@ -6,8 +6,12 @@ class Menu
               "Drink" => 1 }
   end
 
-  def show_menu
-    dishes
+  def show
+    dishes.map { |item, price| "#{item}: £#{price}"}
+  end
+
+  def listed?(item)
+    dishes.include?(item)
   end
 
 end
