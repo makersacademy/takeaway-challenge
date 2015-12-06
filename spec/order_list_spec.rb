@@ -19,7 +19,8 @@ describe OrderList do
 
     context 'a dish selected is unavailable' do
       it 'raises an error' do
-        expect{order_list.place_order(apple: 2)}.to raise_error "An ordered dish is unavailable"
+        expect{order_list.place_order(apple: 2)}
+          .to raise_error "An ordered dish is unavailable"
       end
     end
 
@@ -30,7 +31,8 @@ describe OrderList do
 
       context 'when given total does not match sum of dishes in customer\'s order' do
         it 'raises an error' do
-          expect{order_list.place_order({pizza: 1},2)}.to raise_error "Total does not match sum of dishes in order"
+          expect{order_list.place_order({pizza: 1},2)}
+            .to raise_error "Total does not match sum of dishes in order"
         end
       end
 

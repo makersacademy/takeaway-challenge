@@ -17,8 +17,10 @@ class OrderList
   end
 
   def place_order(amount_list,total=nil)
-    fail 'An ordered dish is unavailable' unless ordered_dishes_available?(amount_list)
-    fail 'Total does not match sum of dishes in order' unless total == nil || total == dish_sum(amount_list)
+    fail 'An ordered dish is unavailable' unless
+        ordered_dishes_available?(amount_list)
+    fail 'Total does not match sum of dishes in order' unless
+       total.nil? || total == dish_sum(amount_list)
     @client.messages.create(
     from:'+441613751762',
     to:'+447747056242',
@@ -41,11 +43,11 @@ class OrderList
   end
 
   def each_dish_payment(amount_list)
-    ordered_price_list(amount_list).merge(amount_list){|key, price, quantity| price * quantity}
+    ordered_price_list(amount_list).merge(amount_list){|_key, price, quantity| price * quantity}
   end
 
   def ordered_price_list(amount_list)
-    price_list.delete_if{|key, value| amount_list[key] == nil}
+    price_list.delete_if{|key| amount_list[key].nil?}
   end
 
 end

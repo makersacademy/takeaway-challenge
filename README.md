@@ -27,6 +27,9 @@ dish_list = DishList.new(pizza, chicken)
 The `OrderList` class provides customers with an interface through which to place
 orders. Upon creating an order list, customers must specify which dish list the order
 will be for. They can determine the prices of different dishes through `price_list`, and
-can place their order through `place_order`. If an integer is provided before specifying
-the quantities of different dishes ordered, this is interpreted as the customer's expected total
-cost. This is used to verify that the order was correctly made, and is optional. 
+can place their order through `place_order`. Suppose an integer is provided after specifying
+the quantities of different dishes ordered (in a hash). This is interpreted as the customer's expected total
+cost. This is used to verify that the order was correctly made, and is optional.
+
+###Author
+Andrew Burnie
