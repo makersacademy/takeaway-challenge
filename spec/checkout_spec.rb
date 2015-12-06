@@ -14,7 +14,7 @@ describe Checkout do
 
   describe '#sum_total' do
     it 'should sum the basket total from order and price' do
-      expect(checkout.sum_total(order, prices)).to eq '£7.21'
+      expect(checkout.sum_total(order, prices)).to eq 7.21
     end
   end
 

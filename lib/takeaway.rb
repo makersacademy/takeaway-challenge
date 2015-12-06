@@ -4,7 +4,7 @@ require_relative 'checkout'
 
 class Takeaway
 
-  attr_reader :menu, :order_klass, :current_order
+  attr_reader :menu, :order_klass, :current_order, :checkout
 
   def initialize(menu: Menu.new, order_klass: Order, checkout: Checkout.new)
     @menu = menu
@@ -20,6 +20,10 @@ class Takeaway
   def order(item, quantity = 1)
     fail "You cannot buy #{item} here" if not_on_menu?(item)
     current_order.order_item(item, quantity)
+  end
+
+  def basket_summary
+    checkout.sum_each(current_order.list, menu.dishes)
   end
 
   private

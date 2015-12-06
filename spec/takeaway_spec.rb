@@ -5,7 +5,7 @@ describe Takeaway do
   let(:menu) { double(:menu, dishes: menu_contents, includes?: true) }
   let(:menu_contents) { {burger: 1.88, beef: 2.34, fries: 1.10} }
   let(:order_klass) { double(:order, new: order) }
-  let(:order) { double(:order, order_item: nil) }
+  let(:order) { double(:order, order_item: nil, list: nil) }
   let(:checkout) { double(:checkout) }
 
   describe '#read_menu' do
@@ -33,7 +33,7 @@ describe Takeaway do
 
   describe '#basket_summary' do
     it 'should send a call to checkout with order and price lists' do
-      expect(checkout).to receive(:sum_each).with(order.order_item, menu.dishes)
+      expect(checkout).to receive(:sum_each).with(order.list, menu.dishes)
       takeaway.basket_summary
     end
   end

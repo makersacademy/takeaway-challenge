@@ -12,7 +12,7 @@ class Checkout
   def sum_total(order, prices)
     total = 0
     order.each { |key, value| total += prices[key] * value }
-    "£#{total}"
+    total
   end
 
 end
