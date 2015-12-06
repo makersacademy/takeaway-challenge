@@ -17,7 +17,7 @@ class Order
   end
 
   def remove(dish)
-    fail 'Dish not in basket' if !@basket[dish]
+    fail 'Dish not in basket' unless @basket[dish]
     quantity = @basket[dish]
     if quantity > 1
       @basket[dish] = quantity-1
@@ -45,7 +45,7 @@ class Order
     message
   end
 
-private
+  private
   def delivery_time
     (Time.new + 3600).strftime("%H:%M")
   end
