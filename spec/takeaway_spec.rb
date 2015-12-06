@@ -38,4 +38,16 @@ describe Takeaway do
     end
   end
 
+  describe '#basket_total' do
+    it 'should send a call to checkout with order and price lists' do
+      expect(checkout).to receive(:sum_total).with(order.list, menu.dishes)
+      takeaway.basket_total
+    end
+
+    xit 'should convert what is returned by checkout to a string' do
+      allow(checkout).to receive(:sum_total).and_return(5.59)
+      expect(takeaway.basket_total).to eq "£5.59"
+    end
+  end
+
 end

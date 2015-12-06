@@ -64,7 +64,7 @@ describe 'User Stories' do
       end
 
       it 'to know my total cost, I should see my order\'s total' do
-        expect(takeaway.total).to eq '£13.52'
+        expect(takeaway.basket_total).to eq '£13.52'
       end
 
     end
