@@ -13,5 +13,5 @@ class Menu
   def remove_item(item)
     list.delete(item)
   end
-
+  
 end

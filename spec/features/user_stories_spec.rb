@@ -3,7 +3,7 @@ describe 'User Stories' do
   let(:takeaway) { Takeaway.new(menu: menu) }
   let(:menu) { Menu.new }
 
-  # Below story was added by myself to remove the need to hard-code in a menu
+  # Below stories were added by myself to remove the need to hard-code in a menu
 
   # As a restaurant owner,
   # So I can manage the items on my menu
@@ -22,5 +22,27 @@ describe 'User Stories' do
     expect(menu.list).to be_empty
   end
 
+  context 'after the restaurant owner has populated their menu' do
+    before(:example) do
+      menu.add_item(:burger, 2.44)
+      menu.add_item(:shrimp, 1.88)
+      menu.add_item(:fries, 1.22)
+      menu.add_item(:beef, 4.22)
+    end
+
+    # As a customer
+    # So that I can check if I want to order something
+    # I would like to see a list of dishes with prices
+    it 'to check what is in offer, I would like to see a list of items' do
+      expect(takeaway.read_menu).to include(burger: 2.44, shrimp: 1.88)
+    end
+
+    # As a customer
+    # So that I can order the meal I want
+    # I would like to be able to select some number of several available dishes
+    it 'so I can order what I want, I would like select from available dishes' do
+      
+    end
+  end
 
 end
