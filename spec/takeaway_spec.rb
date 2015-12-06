@@ -50,4 +50,15 @@ describe Takeaway do
     end
   end
 
+  describe '#basket_checkout' do
+    it 'should send a call to pay everything up' do
+      expect(checkout).to receive(:finalise_payment).with(5.59, order.list, menu.dishes)
+      takeaway.basket_checkout(5.59)
+    end
+
+    it 'should close the current basket' do
+
+    end
+  end
+
 end
