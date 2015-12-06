@@ -1,4 +1,5 @@
 class Menu
+  attr_reader :pizza, :hamburger, :curry, :chips, :cake
 
   def initialize
     @pizza = { pizza: 6 }
@@ -13,7 +14,7 @@ class Menu
     @hamburger,
     @curry,
     @chips,
-    @cake ]
+    @cake ].inject(&:merge)
   end
 
 end
