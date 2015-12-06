@@ -7,6 +7,7 @@ class Order
   def initialize
     @dishes = []
     @total = 0
+    @number_dishes = 0
   end
 
   def add(dish)
@@ -31,15 +32,25 @@ class Order
       client.account.messages.create(
       :from => tokens["from_number"],
       :to => tokens["to_number"],
-      :body => "Your order will arrive in 30 minutes!" )
+      :body => "Your order should arrive by #{delivery_time}!" )
     end
     true
   end
 
   private
 
+  def delivery_time
+    ready_at = Time.now + (number_dishes * 5 + 10)*60
+    ready_at.hour.to_s+":"+ready_at.min.to_s
+  end
+  
   def update_total(dish)
     @total += (dish[:price] * dish[:quantity])
+  end
+
+  def number_dishes
+    @dishes.each { |dish| @number_dishes += dish[:quantity] }
+    @number_dishes
   end
 
   def readable_dishes

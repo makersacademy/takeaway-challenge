@@ -11,7 +11,7 @@ class Menu
   end
 
   def view
-    output = "---- MENU -----\n"+readable_list
+    output = "// MENU //"+readable_menu
   end
 
   def select(dish_name, quantity = 1)
@@ -26,11 +26,11 @@ class Menu
 
   private
 
-  def readable_list
+  def readable_menu
     string = ""
     MENU.each do |section, dishes|
-      string += "<><> #{section.downcase} <><>\n"
-      dishes.each { |dish| string += "#{dish[:name]} $#{dish[:price]}\n"}
+      string += " -- #{section.downcase} -- "
+      dishes.each { |dish| string += " #{dish[:name]} £#{dish[:price]} /"}
     end
     string
   end
@@ -38,10 +38,10 @@ class Menu
   def find(dish_name)
     MENU.each do |section, dishes|
       dishes.each do |dish|
-        @dish_found = dish if dish[:name] == dish_name
+        @dish = dish if dish[:name] == dish_name
       end
     end
-    @dish_found ? @dish_found : fail("Not in the menu!")
+    @dish ? @dish : fail("Not in the menu!")
   end
 
   def w_quantity(dish, quantity)
