@@ -49,8 +49,6 @@ describe 'Takeaway' do
     allow(takeaway).to receive(:total_price).and_return(15)
     expect{ (takeaway.checkout(20)) }.to raise_error "Incorrect amount. Your order total is: #{takeaway.total_price}"
   end
-
-
 end
 
   # As a customer

@@ -1,3 +1,5 @@
+# require_relative 'sms'
+
 class Order
 
   DEFAULT_QUANTITY = 1
@@ -6,6 +8,7 @@ class Order
 
   def initialize
     @basket = {}
+    # @sms_client = sms_client
   end
 
   def add(dish, quantity = DEFAULT_QUANTITY)
@@ -38,12 +41,17 @@ class Order
   end
 
   def confirm
-    "Thank you! Your order was placed and will be delivered by #{delivery_time}"
+    # sms_client.send(message)
+    message
   end
 
 private
   def delivery_time
     (Time.new + 3600).strftime("%H:%M")
+  end
+
+  def message
+    "Thank you! Your order was placed and will be delivered by #{delivery_time}"
   end
 
 end

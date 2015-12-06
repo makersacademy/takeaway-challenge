@@ -6,7 +6,7 @@ class Sms
     @client = twilio_client
   end
 
-  def send_sms(message)
+  def send(message)
     @client.messages.create(
      from: from
      to: to
