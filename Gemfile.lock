@@ -83,7 +83,7 @@ DEPENDENCIES
   coveralls
   rake
   rspec
-  sinatra
+  sinatra (= 1.4.6)
   twilio-ruby (~> 4.2.1)
 
 BUNDLED WITH
