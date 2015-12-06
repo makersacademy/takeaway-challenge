@@ -6,6 +6,10 @@ describe Order do
   let(:dish2) { double :dish, name: 'Spring rolls', price: 3.00}
   let(:quantity) { 3 }
 
+  it 'allows the customer to view their order' do
+    expect(order).to respond_to(:view)
+  end
+
   describe '#add' do
     it 'allows a customer to add an dish to the basket' do
       expect { order.add(dish) }.not_to raise_error

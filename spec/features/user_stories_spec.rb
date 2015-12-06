@@ -20,13 +20,10 @@ describe 'Takeaway' do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  it 'allows the customer to view their order' do
-    expect(takeaway).to respond_to(:view_order)
-  end
 
   it 'allows the customer to order a number of dishes' do
     menu.add(dish)
-    takeaway.order(dish.name, 2)
+    takeaway.add_to_order(dish.name, 2)
     expect(order.basket).to include dish
   end
 
@@ -34,9 +31,21 @@ describe 'Takeaway' do
   # # So that I can verify that my order is correct
   # # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
+  it 'allows the customer to see a summary of their order' do
+    expect(takeaway).to respond_to(:view_order)
+  end
+
+  it 'allows the customer to see the total price of their order' do
+    expect(takeaway).to respond_to(:total_price)
+  end
+
+  it 'only allows checkout if the figure equals the order total' do
+    allow(takeaway).to receive(:total_price).and_return(15)
+    expect{ (takeaway.checkout(20)) }.to raise_error "Incorrect amount. Your order total is: #{takeaway.total_price}"
+  end
+
+
 end
-
-
 
   # As a customer
   # So that I am reassured that my order will be delivered on time
@@ -47,9 +56,3 @@ end
     end
   end
 end
-
-
-# xit 'raises an error if the total does not equal the sum of dishes in the basket' do
-#   basket.total to raise_error
-# end
-#

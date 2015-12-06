@@ -23,6 +23,12 @@ class Order
     end
   end
 
+  def view
+    @basket.each do | dish, quantity|
+      puts "#{quantity}x #{dish.name} = #{dish.price * quantity}"
+    end
+  end
+
   def total
     total = 0
     basket.each do |dish, quantity|
