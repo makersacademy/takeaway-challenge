@@ -1,20 +1,28 @@
 class Takeaway
-  def initialize menu
+  ERROR = 'Cannot place order: '
+  TOTAL = 'total does not match pricing!'
+  DISH = ' not available!'
+
+  def initialize menu, order_klass
     @the_menu = menu
+    @order_klass = order_klass
   end
 
   def menu
     puts the_menu.format
+    the_menu.raw
   end
 
-  def order dishes, total
-    fail "Cannot place order: #{unavailable dishes} not available!" unless have? dishes
-    fail 'Cannot place order: total does not match pricing!' unless correct? dishes, total
-    #placeOrder
+  def place_order order, total
+    dishes = order_klass.new(order, total).as_hash
+    puts dishes
+    fail (ERROR + unavailable(dishes) + DISH) unless have? dishes
+    fail (ERROR + TOTAL) unless correct? dishes, total
+    #do texting
   end
 
   private
-  attr_reader :the_menu
+  attr_reader :the_menu, :order_klass
 
   def have? dishes
     (dishes.keys - the_menu.raw.keys).empty?
