@@ -12,7 +12,7 @@ class Takeaway
   end
 
   def read_menu
-    menu.list
+    menu.dishes
   end
 
 end

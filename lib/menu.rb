@@ -1,17 +1,17 @@
 class Menu
 
-  attr_reader :list
+  attr_reader :dishes
 
   def initialize
-    @list = {}
+    @dishes = {}
   end
 
   def add_item(item, price)
-    list[item] = price
+    dishes[item] = price
   end
 
   def remove_item(item)
-    list.delete(item)
+    dishes.delete(item)
   end
-  
+
 end

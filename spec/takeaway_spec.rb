@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order_klass: order_klass) }
-  let(:menu) { double(:menu, list: {burger: 1.88, beef: 2.34, fries: 1.10}) }
+  let(:menu) { double(:menu, dishes: {burger: 1.88, beef: 2.34, fries: 1.10}) }
   let(:order_klass) { double(:order, new: order) }
   let(:order) { double(:order) }
 

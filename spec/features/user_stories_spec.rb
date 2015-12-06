@@ -10,7 +10,7 @@ describe 'User Stories' do
   # I want to be able to add new items to it
   it 'to manage items on my menu, I want to be able to add new items' do
     menu.add_item(:shrimp, 1.88)
-    expect(menu.list).to include(shrimp: 1.88)
+    expect(menu.dishes).to include(shrimp: 1.88)
   end
 
   # As a restaurant owner,
@@ -19,7 +19,7 @@ describe 'User Stories' do
   it 'to manage out of stock, I want to be able to remove existing items' do
     menu.add_item(:burger, 2.44)
     menu.remove_item(:burger)
-    expect(menu.list).to be_empty
+    expect(menu.dishes).to be_empty
   end
 
   context 'after the restaurant owner has populated their menu' do
