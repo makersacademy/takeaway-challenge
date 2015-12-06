@@ -52,11 +52,8 @@ $ irb
 2.2.3 :002 > menu = Menu.new
  => #<Menu:0x007faaca198648 @dishes={}>
 2.2.3 :003 > menu.add_item(:beef, 2.43)
- => 2.43
 2.2.3 :004 > menu.add_item(:lamb, 4.32)
- => 4.32
 2.2.3 :005 > menu.add_item(:stew, 2.11)
- => 2.11
 2.2.3 :006 > menu.dishes
  => {:beef=>2.43, :lamb=>4.32, :stew=>2.11}
 2.2.3 :007 > takeout = Takeaway.new(menu: menu)
@@ -69,11 +66,8 @@ The customer can then order items with `.order(:item_name, quantity)`, they can 
 
 ```
 2.2.3 :008 > takeout.order(:stew, 2)
- => 2
 2.2.3 :009 > takeout.order(:lamb)
- => 1
 2.2.3 :010 > takeout.order(:beef, 5)
- => 5
 2.2.3 :011 > takeout.basket_summary
  => "2x stew = £4.22, 1x lamb = £4.32, 5x beef = £12.15"
 2.2.3 :012 > takeout.basket_total
