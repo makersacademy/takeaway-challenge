@@ -21,7 +21,7 @@ class Takeaway
   end
 
   def total_price
-    bill_calculator
+    "£#{bill_calculator}"
   end
 
   def text_confirmation(args)

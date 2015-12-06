@@ -16,9 +16,11 @@ class Send_SMS
   end
 
   def sender(args)
+    message1 = "Thank you! #{args[:name]}, your order was placed and "
+    message2 = "will be delivered before #{stamp_time}"
     client = Twilio::REST::Client.new credentials(:sid), credentials(:token)
     client.account.messages.create(from: credentials(:from), to: args[:phone],
-    body: "Thank you! #{args[:name]}, your order was placed and will be delivered before #{stamp_time}")
+    body: message1 + message2)
     args
   end
 

@@ -5,7 +5,7 @@ describe Takeaway do
   let(:menu) {double :menu}
   let(:sms) {double :send_sms}
   let(:rand_num) {rand(1..9)}
-  let(:customer) {{phone: :"+447723929855", name: :William}}
+  let(:customer) {{phone: :"+441123456789", name: :Sebastian}}
 
 
   context 'when selecting order' do
@@ -27,13 +27,12 @@ describe Takeaway do
       allow(sms).to receive(:confirmation_text).and_return(customer)
     end
 
-    xit 'returns total price' do
-      allow(takeaway).to receive(:list).and_return (2)
-      expect{takeaway.total_price}.to change {takeaway.total_bill}.by(16)
-    end
+    # it 'returns total price' do
+    #   allow(takeaway).to receive(:list).and_return(2)
+    #   expect{takeaway.total_price}.to change{takeaway.total_bill}.by(16)
+    # end
 
     it 'sends a text message' do
-      # allow(takeaway).to receive(:list).and_return (2)
       expect(takeaway.text_confirmation(customer)).to eq(customer)
     end
   end
