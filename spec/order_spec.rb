@@ -12,6 +12,12 @@ describe Order do
       order.order_item(:burger, 2)
       expect(order.list).to include(burger: 2)
     end
+
+    it 'should add duplicate items to the original number' do
+      order.order_item(:burger, 2)
+      order.order_item(:burger, 3)
+      expect(order.list).to include(burger: 5)
+    end
   end
 
 end
