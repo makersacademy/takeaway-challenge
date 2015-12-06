@@ -1,18 +1,23 @@
 [![Build Status](https://travis-ci.org/michaellennox/takeaway-challenge.svg)](https://travis-ci.org/michaellennox/takeaway-challenge)
 
-# Takeaway Challenge
+Takeaway Challenge
+==================
 
-## How I Worked
+How I Worked
+----
 
 I aimed to complete this challenge in a test driven manner, using automated feature and unit tests with rspec. I would convert each individual user story into a failing feature test and then work on each individual segment as a new failing unit test. I have aimed to commit every test cycle so you can view my process.
 
 I have tried to encapsulate my code as much as possible throughout.
 
-## Installation Instructions
+Installation Instructions
+----
 
-## Running the Program
+Running the Program
+----
 
-## Brief
+Brief
+----
 
 Write a takeaway program with the following user stories
 
