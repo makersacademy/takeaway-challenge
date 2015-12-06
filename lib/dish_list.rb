@@ -5,11 +5,7 @@ class DishList
 
   def prices
     price_list = {}
-    @dishes.each do |dish|
-      name = dish.name
-      price = dish.price
-      price_list[name] = price
-    end
+    @dishes.each{ |dish| price_list[dish.name] = dish.price}
     price_list
   end
 
