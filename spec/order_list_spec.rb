@@ -27,6 +27,18 @@ describe OrderList do
         expect{order_list.place_order({pizza: 1})}.not_to raise_error
       end
 
+      context 'when given total does not match sum of dishes in customer\'s order' do
+        it 'raises an error' do
+          expect{order_list.place_order(2,{pizza: 1})}.to raise_error "Total does not match sum of dishes in order"
+        end
+      end
+
+        context 'when given total does matches sum of dishes in customer\'s order' do
+          it 'does not raise an error' do
+            expect{order_list.place_order(1,{pizza: 1})}.not_to raise_error
+          end
+        end
+
     end
 
 
