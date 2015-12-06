@@ -2,7 +2,7 @@ require_relative 'dish_list'
 
 class OrderList
 
-  def initialize(dish_list=DishList.new)
+  def initialize(dish_list)
     @dish_list = dish_list
   end
 

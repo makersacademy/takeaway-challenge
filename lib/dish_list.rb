@@ -3,8 +3,8 @@ require_relative 'dish'
 class DishList
 
 attr_reader :dishes
-  def initialize(dishes)
-    @dishes = dishes
+  def initialize(*dishes)
+    @dishes = [*dishes]
   end
 
   def price_list

@@ -2,7 +2,7 @@ describe 'User Stories' do
 
   let(:dish1) {Dish.new(name: :pizza, price: 1)}
   let(:dish2) {Dish.new(name: :chicken, price: 2)}
-  let(:dish_list) {DishList.new([dish1, dish2])}
+  let(:dish_list) {DishList.new(dish1, dish2)}
   let(:order_list) {OrderList.new(dish_list)}
 
   # As a customer
@@ -27,14 +27,14 @@ describe 'User Stories' do
 
     context 'when a selected dish is unavailable' do
       it 'raises an error' do
-        expect{order_list.place_order({apple: 2})}.to raise_error "An ordered dish is unavailable"
+        expect{order_list.place_order(apple: 2)}.to raise_error "An ordered dish is unavailable"
       end
     end
 
     context 'when all selected dishes are available' do
 
       it 'does not raise an error' do
-        expect{order_list.place_order({pizza: 1})}.not_to raise_error
+        expect{order_list.place_order(pizza: 1)}.not_to raise_error
       end
       # As a customer
       # So that I can verify that my order is correct
@@ -42,13 +42,13 @@ describe 'User Stories' do
 
       context 'when given total does not match sum of dishes in customer\'s order' do
         it 'raises an error' do
-          expect{order_list.place_order(2,{pizza: 1})}.to raise_error "Total does not match sum of dishes in order"
+          expect{order_list.place_order(2,pizza: 1)}.to raise_error "Total does not match sum of dishes in order"
         end
       end
 
         context 'when given total does matches sum of dishes in customer\'s order' do
           it 'does not raise an error' do
-            expect{order_list.place_order(1,{pizza: 1})}.not_to raise_error
+            expect{order_list.place_order(1,pizza: 1)}.not_to raise_error
           end
         end
       end
