@@ -1,11 +1,17 @@
 require 'takeaway'
 
 describe 'User Stories' do
+  subject(:takeaway) { Takeaway.new }
+  subject(:menu) { Menu.new }
 
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-
+  describe 'User story 1' do
+    it 'lists the items on the menu' do
+      expect(takeaway.read_menu).to include(menu.contents)
+    end
+  end
 
 
 
