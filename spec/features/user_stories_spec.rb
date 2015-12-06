@@ -22,21 +22,20 @@ end
 
 describe '#place_order' do
 
-  context 'a dish selected is unavailable' do
-    it 'raises an error when a dish is unavailable' do
-      expect{order_list.place_order({apple: 2})}.to raise_error "An ordered dish is unavailable" 
+  describe '#place_order' do
+
+    context 'a dish selected is unavailable' do
+      it 'raises an error' do
+        expect{order_list.place_order({apple: 2})}.to raise_error "An ordered dish is unavailable"
+      end
+    end
+
+    context 'all dishes selected are available' do
+      it 'does not raise an error' do
+        expect{order_list.place_order({pizza: 1})}.not_to raise_error
+      end
     end
   end
-
-  context 'all dishes selected are available' do
-
-  it 'receives quantities of different dishes' do
-    expect(order_list).to respond_to(:place_order).with(1).argument
-
-  end
-
-  end
-
 
 end
 

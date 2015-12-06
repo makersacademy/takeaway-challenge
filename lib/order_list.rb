@@ -12,9 +12,17 @@ class OrderList
   end
 
   def place_order(hash_quantities)
-  dishes_available = @dish_list.dishes.map{|dish| dish.name}
-  condition = hash_quantities.keys.all?{|(name)| dishes_available.include? name }
-  fail 'An ordered dish is unavailable' if dishes_available
+  fail 'An ordered dish is unavailable' unless ordered_dishes_available?(hash_quantities)
+  end
+
+  private
+
+  def dishes_available
+    @dish_list.dishes.map{|dish| dish.name}
+  end
+
+  def ordered_dishes_available?(hash_quantities)
+    hash_quantities.keys.all?{|(name)| dishes_available.include? name }
   end
 
 end
