@@ -6,4 +6,8 @@ class Order
     @list = {}
   end
 
+  def order_item(item, quantity)
+    list[item] = quantity
+  end
+
 end
