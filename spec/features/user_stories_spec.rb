@@ -15,7 +15,7 @@ describe 'User Stories' do
 
   describe '#price_list' do
     it 'gives a list with the price of each dish' do
-      expect(order_list.price_list).to eq({pizza: 1, chicken: 2})
+      expect(order_list.price_list).to eq(pizza: 1, chicken: 2)
     end
   end
 
@@ -30,7 +30,7 @@ describe 'User Stories' do
     context 'when a selected dish is unavailable' do
       it 'raises an error' do
         expect{order_list.place_order(apple: 2)}
-        .to raise_error "An ordered dish is unavailable"
+          .to raise_error "An ordered dish is unavailable"
       end
     end
 
@@ -46,14 +46,14 @@ describe 'User Stories' do
 
       context 'when given total does not match sum of dishes in customer\'s order' do
         it 'raises an error' do
-          expect{order_list.place_order(2,pizza: 1)}
-          .to raise_error "Total does not match sum of dishes in order"
+          expect{order_list.place_order({pizza: 1},2)}
+            .to raise_error "Total does not match sum of dishes in order"
         end
       end
 
       context 'when given total does matches sum of dishes in customer\'s order' do
         it 'does not raise an error' do
-          expect{order_list.place_order(1,pizza: 1)}.not_to raise_error
+          expect{order_list.place_order({pizza: 1},1)}.not_to raise_error
 
         end
       end

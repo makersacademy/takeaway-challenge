@@ -16,14 +16,14 @@ class OrderList
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
-  def place_order(total=nil,amount_list)
+  def place_order(amount_list,total=nil)
     fail 'An ordered dish is unavailable' unless ordered_dishes_available?(amount_list)
     fail 'Total does not match sum of dishes in order' unless total == nil || total == dish_sum(amount_list)
     @client.messages.create(
     from:'+441613751762',
     to:'+447747056242',
     body:"Thank you! Your order was placed and will be delivered before #{Time.new.hour+1}:"+ Time.new.strftime("%M")
-  )
+    )
   end
 
   private
@@ -33,7 +33,7 @@ class OrderList
   end
 
   def available_dish_names
-    @dish_list.dishes.map{|dish| dish.name}
+    @dish_list.dishes.map(&:name)
   end
 
   def dish_sum(amount_list)
