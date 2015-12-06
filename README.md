@@ -75,7 +75,6 @@ The customer can then order items with `.order(:item_name, quantity)`, they can 
 2.2.3 :013 > takeout.basket_checkout(20.33)
 RuntimeError: Cannot be accepted, you need to pay £20.69
 2.2.3 :014 > takeout.basket_checkout(20.69)
- => nil
 ```
 
 Brief
