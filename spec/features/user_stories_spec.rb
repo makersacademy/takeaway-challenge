@@ -33,7 +33,7 @@ describe 'User Stories' do
     # I would like to check that the total I have been given
     # matches the sum of the various dishes in my order
 
-    it "should check if the customer's total matches the sum of the order" do
+    xit "should check if the customer's total matches the sum of the order" do
       takeaway = Takeaway.new(Order)
       takeaway.new_order(Menu.new.contents)
       takeaway.order.choose("Dish 1", 3)
@@ -41,7 +41,7 @@ describe 'User Stories' do
       takeaway.order.calculate_cost(takeaway.order.dishes)
       expect{
         takeaway.place_order(takeaway.order,takeaway.order
-        .quantity,takeaway.order.total, '+447969267944')
+        .quantity,takeaway.order.total, 'phonenumber')
       }.not_to raise_error
     end
   end
@@ -53,14 +53,14 @@ describe 'User Stories' do
     # I would like to receive a text such as "Thank you! Your order was
     # placed and will be delivered before 18:52" after I have ordered
 
-    it "should send a text to confirm the order was placed" do
+    xit "should send a text to confirm the order was placed" do
       takeaway = Takeaway.new(Order)
       takeaway.new_order(Menu.new.contents)
       takeaway.order.choose("Dish 1", 3)
       takeaway.order.calculate_quantities(takeaway.order.dishes)
       takeaway.order.calculate_cost(takeaway.order.dishes)
       takeaway.place_order(takeaway.order,takeaway.order.quantity,takeaway.order
-      .total, '+447969267944')
+      .total, 'phonenumber')
     end
   end
 end
