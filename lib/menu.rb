@@ -13,9 +13,7 @@ class Menu
   end
 
   def get_item(food)
-    items.each { |item|
-      return item if item.name == food
-    }
+    items.each { |item| return item if item.name == food }
     fail 'Sorry we don\'t have that item'
   end
 

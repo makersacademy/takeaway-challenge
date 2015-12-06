@@ -5,6 +5,7 @@ describe 'User Stories' do
   let(:menu) { Menu.new }
   let(:order) { Order.new }
   let(:item) { Item.new('Satay', 4.50) }
+  let(:item2) { Item.new('Spring rolls', 3.00) }
   let(:quantity) { 3 }
   let(:food) { 'Satay' }
   let(:random_food) { 'Turkish Delight'}
@@ -12,15 +13,20 @@ describe 'User Stories' do
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
-describe 'Menu #get_item' do
-  it 'can look up an item' do
-    expect(menu.get_item(food).name).to eq food
-  end
 
-  it 'raises an error if the item is not on the menu' do
-    expect{ menu.get_item(random_food) }.to raise_error 'Sorry we don\'t have that item'
+describe 'Menu' do
+  describe '#get_item' do
+    it 'can look up an item' do
+      expect(menu.get_item(food).name).to eq food
+    end
+
+    it 'raises an error if the item is not on the menu' do
+      expect{ menu.get_item(random_food) }.to raise_error 'Sorry we don\'t have that item'
+    end
   end
 end
+
+
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
@@ -53,7 +59,17 @@ describe 'Order' do
       basket = { item => 3 }
       expect(order.basket).to eq basket
     end
+
+    it 'adds up the total cost of items in the basket' do
+      3.times { order.add(item) }
+      4.times { order.add(item2) }
+      expect(order.total).to eq (3*4.50 + 4*3.00)
+    end
+
+
   end
+
+
 end
 
 

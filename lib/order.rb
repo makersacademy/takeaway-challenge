@@ -13,6 +13,14 @@ class Order
     @basket[item] = quantity
   end
 
+  def total
+    total = 0
+    basket.each do |item, quantity|
+      total += item.price * quantity
+    end
+    total
+  end
+
 private
 
   def already_in_basket?(item)
