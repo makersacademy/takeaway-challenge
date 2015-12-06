@@ -33,8 +33,8 @@ class Takeaway
   end
 
   def correct? dishes, total
-    dishes.inject(0) { |result, (key, value)| 
-      result + (the_menu.raw[key] * value)
+    dishes.inject(0) { |result, (dish, number)| 
+      result + (the_menu.raw[dish] * number)
     } == total
   end
 end
