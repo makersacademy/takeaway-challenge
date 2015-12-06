@@ -27,6 +27,12 @@ describe 'Takeaway' do
     expect(order.basket).to include dish
   end
 
+  it 'allows the customer to remove dishes from their order' do
+    menu.add(dish)
+    takeaway.add_to_order(dish.name)
+    takeaway.remove_from_order(dish.name)
+    expect(order.basket).not_to include dish
+  end
   # # As a customer
   # # So that I can verify that my order is correct
   # # I would like to check that the total I have been given matches the sum of the various dishes in my order

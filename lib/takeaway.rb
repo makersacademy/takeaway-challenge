@@ -23,6 +23,11 @@ class Takeaway
     @order.add(dish, quantity)
   end
 
+  def remove_from_order(dish_name)
+    dish = @menu.get_dish(dish_name)
+    @order.remove(dish)
+  end
+
   def total_price
     @order.total
   end
