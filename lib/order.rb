@@ -5,7 +5,6 @@ require 'yaml'
 class Order
 
   def initialize
-    @tokens = YAML::load(File.open('./lib/resources/tokens.yml'))
     @dishes = []
     @total = 0
     @number_dishes = 0
@@ -26,6 +25,7 @@ class Order
 
   def place(send_text = true)
     if send_text
+      @tokens = YAML::load(File.open('./lib/resources/tokens.yml'))
       client = Twilio::REST::Client.new @tokens["account_sid"], @tokens["auth_token"]
       client.account.messages.create(
       :from => @tokens["from_number"],
