@@ -1,14 +1,16 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'checkout'
 
 class Takeaway
 
   attr_reader :menu, :order_klass, :current_order
 
-  def initialize(menu: Menu.new, order_klass: Order)
+  def initialize(menu: Menu.new, order_klass: Order, checkout: Checkout.new)
     @menu = menu
     @order_klass = order_klass
     @current_order = order_klass.new
+    @checkout = checkout
   end
 
   def read_menu
