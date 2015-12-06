@@ -1,13 +1,15 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'text_provider'
 
 class TakeAway
 
-  attr_reader :menu
+  attr_reader :menu, :text_provider
 
-  def initialize(menu = Menu.new, order_klass = Order)
-    self.menu = menu
-    self.order_klass = order_klass
+  def initialize(args)
+    self.menu = args[:menu]
+    self.order_klass = args[:order_klass]
+    self.text_provider = args[:text_provider_klass].new(args[:config])
   end
 
   def add_to_order(dish, quantity = 1)
@@ -23,13 +25,13 @@ class TakeAway
   def complete_order(amount)
     fail 'No orders' unless order
     fail 'Amount given no correct' unless correct_amount?(amount)
-    # 'invia messaggio'
+    text_provider.deliver
     self.order = nil
   end
 
   private
 
-  attr_writer :menu
+  attr_writer :menu, :text_provider
   attr_accessor :order_klass, :order
 
   def new_order

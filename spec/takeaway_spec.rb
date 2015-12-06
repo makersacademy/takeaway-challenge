@@ -4,7 +4,17 @@ describe TakeAway do
   let(:menu) { double :menu, has?: true }
   let(:order) { double :order }
   let(:order_klass) { double :order_klass, new: order}
-  let(:takeaway) { described_class.new(menu, order_klass) }
+  let(:text_provider) { double :text_provider }
+  let(:config) { double :config }
+  let(:text_provider_klass) { double :text_provider_klass, new: text_provider}
+  let(:takeaway) do
+    described_class.new(
+      menu: menu,
+      order_klass: order_klass,
+      text_provider_klass: text_provider_klass,
+      config: config
+    )
+  end
 
   describe '#add_to_order' do
     it 'adds a dish to the order' do
@@ -46,8 +56,14 @@ describe TakeAway do
         allow(order).to receive(:total).and_return 5
         expect { takeaway.complete_order(10) }.to raise_error msg
       end
+      it "sends an SMS when the order has been placed" do
+        allow(order).to receive(:total).and_return 10
+        expect(takeaway.text_provider).to receive(:deliver)
+        takeaway.complete_order(10)
+      end
       it 'completes the order' do
         allow(order).to receive(:total).and_return 10
+        allow(text_provider).to receive(:deliver)
         takeaway.complete_order(10)
         msg = 'No orders'
         expect { takeaway.basket }.to raise_error msg
