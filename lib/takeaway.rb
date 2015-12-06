@@ -26,6 +26,10 @@ class Takeaway
     checkout.sum_each(current_order.list, menu.dishes)
   end
 
+  def basket_total
+    total = checkout.sum_total(current_order.list, menu.dishes)
+  end
+
   private
 
   def not_on_menu?(item)

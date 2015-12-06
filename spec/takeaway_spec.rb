@@ -44,7 +44,7 @@ describe Takeaway do
       takeaway.basket_total
     end
 
-    xit 'should convert what is returned by checkout to a string' do
+    it 'should convert what is returned by checkout to a string' do
       allow(checkout).to receive(:sum_total).and_return(5.59)
       expect(takeaway.basket_total).to eq "£5.59"
     end
