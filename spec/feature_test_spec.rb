@@ -22,9 +22,7 @@ describe 'User Stories' do
         expect(takeaway.check_menu).to include(pie: 7.99)
       end
     end
-
   end
-
 
   describe 'User Story 2' do
   # As a customer
@@ -34,24 +32,25 @@ describe 'User Stories' do
       it 'it should let them place an order' do
         takeaway.place_order(:soup, 1)
         takeaway.place_order(:sandwich, 3)
-        expect(takeaway.check_order).to eq(soup: 1, sandwich: 3)
+        expect(takeaway.check_order).to eq "soup x 1: total £4.99\nsandwich x 3: total £17.97\n"
       end
     end
   end
+
+
+  describe 'User Story 3' do
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+    context 'when a customer places an order' do
+      it 'it should return the final bill' do
+        takeaway.place_order(:soup, 3)
+        takeaway.place_order(:pie, 4)
+        expect(takeaway.confirm_order).
+        to eq "soup x 3: total £14.97\npie x 4: total £31.96\nFinal bill: £46.93"
+      end
+    end
   end
 end
-#
-#   describe 'User Story 3' do
-#   # As a customer
-#   # So that I can verify that my order is correct
-#   # I would like to check that the total I have been given matches the sum of the various dishes in my order
-#     context 'when a customer places an order' do
-#       it 'it should return the final bill' do
-#         takeaway.place_order('Bombay Aloo', 3)
-#         takeaway.place_order('Lamb Passanda', 4)
-#         expect(takeaway.check_order).to eq "3 x Bombay Aloo: £15\n4 x Lamb Passanda: £36\n Total: £51"
-#       end
-#     end
-#   end
-#
-# end
+
+end

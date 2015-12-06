@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :current_order
+  attr_reader :current_order, :bill
 
   def initialize
     @current_order = {}
@@ -12,18 +12,18 @@ class Order
 
   private
 
-    def first(dish)
-      @current_order.has_key?(dish)
-    end
+  def first(dish)
+    @current_order.has_key?(dish)
+  end
 
+  def addmore(dish,qty)
+    @current_order[dish] += qty
+  end
 
-    def addmore(dish,qty)
-      @current_order[dish] += qty
-    end
+  def addfirst(dish, qty)
+    @current_order[dish] = qty
+  end
 
-    def addfirst(dish, qty)
-      @current_order[dish] = qty
-    end
 
 
 end

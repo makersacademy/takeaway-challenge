@@ -19,21 +19,40 @@ require 'takeaway'
 
   context 'when placing an order' do
     describe '#place_order' do
-       it 'should allow an order to begin' do
-         expect{takeaway.place_order(:pie, 3)}.
-         not_to raise_error "Not on menu: pie"
-       end
 
-       it 'should not let them order off-menu' do
-         expect{takeaway.place_order(:poison, 12)}.
-         to raise_error "Not on menu: poison"
-       end
+    it 'should not let them order off-menu' do
+      expect{takeaway.place_order(:poison, 12)}.
+      to raise_error "Not on menu: poison"
     end
+
+      it 'should update the customer on items in basket' do
+       line = "pie x 3: total £23.97\n"
+       expect(takeaway.place_order(:pie, 3)).to eq line
+     end
+    end
+
     describe '#check_order' do
       it 'should let the customer view their current order' do
-        takeaway.place_order(:pie, 3)
-        expect(takeaway.check_order).to include order.current_order
+        expect(takeaway.check_order).to eq "pie x 3: total £23.97\n"
       end
+    end
+
+    context 'when an order is nearing completion' do
+      describe '#confirm_order' do
+        it 'should allow the customer to check the final order' do
+          expect(takeaway.confirm_order).
+          to eq "pie x 3: total £23.97\nFinal bill: £23.97"
+        end
+      end
+    end
+
+    context 'when an order is finished' do
+      describe '#complete_order'
+        it 'should store the order in history' do
+        takeaway.complete_order
+        expect(takeaway.history).to include takeaway.order
+      end
+
     end
   end
 
