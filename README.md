@@ -39,7 +39,7 @@ You can now use the following commands:-
 * `takeaway.remove_from_order(dish_name)` entering a string of the dish name to remove it from your order
 * `takeaway.view_order` to see a summary of your order
 * `takeaway.total_price` to see the total cost of your order
-* `takeaway.checkout(total)` to purchase your order
+* `takeaway.checkout(total, phone_number)` to purchase your order and to receive a confirmation text to your phone
 
 You are required to 'pay' the correct amount for your order to be processed.
 

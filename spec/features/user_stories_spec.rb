@@ -36,12 +36,9 @@ describe 'Takeaway' do
 
   it 'only allows checkout if the figure equals the order total' do
     allow(takeaway).to receive(:total_price).and_return(15)
-    expect{ (takeaway.checkout(20)) }.to raise_error "Incorrect amount. Your order total is: #{takeaway.total_price}"
+    allow(order).to receive(:confirm).and_return(true)
+    expect{ (takeaway.checkout(20, 1234)) }.to raise_error "Incorrect amount. Your order total is: #{takeaway.total_price}"
   end
 end
 
-  describe 'Sms' do
-    xit 'sends an SMS confirmation when an order is placed' do
-    end
-  end
 end

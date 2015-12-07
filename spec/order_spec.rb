@@ -5,6 +5,7 @@ describe Order do
   let(:dish) { double :dish, name: 'Satay', price: 4.50}
   let(:dish2) { double :dish, name: 'Spring rolls', price: 3.00}
   let(:quantity) { 3 }
+  let(:sms_client) { double :sms_client}
 
   it 'allows the customer to view their order' do
     expect(order).to respond_to(:view)
@@ -32,7 +33,7 @@ describe Order do
       expect(order.basket).to eq basket
     end
 
-    it 'adds to the quantity of an dish if it is already in the order' do
+    it 'adds to the quantity of a dish if it is already in the order' do
       3.times { order.add(dish) }
       basket = { dish => 3 }
       expect(order.basket).to eq basket
@@ -66,10 +67,10 @@ describe Order do
   end
 
   describe '#confirm' do
-    it 'outputs a delivery time message when an order has been placed' do
-      delivery_time = (Time.new + 3600).strftime("%H:%M")
-      message = "Thank you! Your order was placed and will be delivered by #{delivery_time}"
-      expect(order.confirm).to eq message
+    it 'sends SMS message when an order has been placed' do
+      phone_number = '1234'
+      expect(order.sms_client).to receive(:send)
+      order.confirm(phone_number)
     end
   end
 end

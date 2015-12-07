@@ -30,13 +30,13 @@ class Takeaway
     @order.total
   end
 
-  def checkout(total)
-    return @order.confirm if total == @order.total
+  def checkout(total, phone_number)
+    return @order.confirm(phone_number) if total == @order.total
     fail "Incorrect amount. Your order total is: #{total_price}"
   end
 
   private
 
   attr_reader :menu
-  
+
 end

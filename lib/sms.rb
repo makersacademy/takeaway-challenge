@@ -1,24 +1,29 @@
 require 'twilio-ruby'
+require 'dotenv'
 
 class Sms
+  attr_reader :credentials
 
   def initialize
+    @credentials = Dotenv.load
     @client = twilio_client
+
   end
 
-  def send(message)
+  def send(message, number)
     @client.messages.create(
-     from: from
-     to: to
+     from: credentials["TWILIO_NUMBER"],
+     to: credentials["TWILIO_MOBILE"],
      body: message
-    )
+     )
   end
 
-private
+  private
 
   def twilio_client
-    account_sid = account_sid
-    auth_token = auth_token
+    account_sid = credentials["TWILIO_ACCOUNT_SID"]
+    auth_token = credentials["TWILIO_AUTH_TOKEN"]
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
+
 end

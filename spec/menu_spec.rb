@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
   let(:menu) { described_class.new }
   let(:food) { 'Satay' }
-  let(:random_food) { Dish.new('Turkish Delight', 4.00) }
+  let(:random_food) { double :dish, name: 'Turkish Delight', price: 4.00 }
 
   it 'allows customers to view the menu dishes' do
     expect{ menu.dishes }.not_to raise_error

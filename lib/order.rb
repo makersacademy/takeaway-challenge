@@ -1,14 +1,14 @@
-# require_relative 'sms'
+require_relative 'sms'
 
 class Order
 
   DEFAULT_QUANTITY = 1
 
-  attr_reader :basket
+  attr_reader :basket, :sms_client
 
-  def initialize
+  def initialize(sms_client = Sms.new)
     @basket = {}
-    # @sms_client = sms_client
+    @sms_client = sms_client
   end
 
   def add(dish, quantity = DEFAULT_QUANTITY)
@@ -40,9 +40,8 @@ class Order
     total
   end
 
-  def confirm
-    # sms_client.send(message)
-    message
+  def confirm(phone_number)
+    @sms_client.send(message, phone_number)
   end
 
   private
