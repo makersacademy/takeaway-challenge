@@ -1,7 +1,7 @@
 # TakeAway - simple ruby restaurant software.
  A simple ruby program to help you create and manage menus, meals, orders, and sms order confirmation using the TWILIO api.
  
- The objective of this program was to satisfy the specification brief given by a client who wants to be able to order food from a takeaway and receive confirmation of their order by sms. The user stories were give as follows:
+ The objective of this program was to satisfy the specification brief given by a client who wants to be able to order food from a takeaway and receive confirmation of their order by sms. The user stories were given as follows:
  
 >As a customer
 >So that I can check if I want to order something
@@ -22,9 +22,9 @@
  This program was written as a solution to a challenge at www.MakersAcademy.com . The orginal challenge can be found at https://github.com/makersacademy/takeaway-challenge
 # Setting up
  - Create a new folder for this project
- - Fork this repo into a your github profile
+ - Fork this repo into your github profile
  - Run bundle
- ```sh
+```sh
 $ mkdir MyTakeAway
 $ cd MyTakeAway
 $ git clone github.com/[...YOUR GIT NAME...]/takeaway
@@ -45,7 +45,7 @@ $ rspec
 ```
 # Getting started
 
- ### 1. Creating a new Takeaway
+ ## 1. Creating a new Takeaway
 
 Once you have verified the rspec tests are passing and you are now bathing in a glory of green lights.
 you can safely assume you can use this takeaway program with relevant ease.
