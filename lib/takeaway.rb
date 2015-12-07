@@ -1,5 +1,9 @@
 require 'rubygems'
 require 'twilio-ruby'
+require 'dotenv'
+require 'menu'
+require 'order'
+Dotenv.load
 
 class Takeaway
   attr_reader :order_klass, :order, :order_time
@@ -22,12 +26,12 @@ class Takeaway
   private
 
   def send_sms(number)
-    account_sid = 'account_sid'
-    auth_token = 'auth_token'
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.messages.create(
-      from: twilio_number,
-      to: number,
+      from: ENV['TWILIO_NUM'],
+      to: ENV['PHONE_NUM'],
       body: "Thank you! Your order was placed and will be delivered before
         #{order_time}"
     )

@@ -41,7 +41,7 @@ describe 'User Stories' do
       takeaway.order.calculate_cost(takeaway.order.dishes)
       expect{
         takeaway.place_order(takeaway.order,takeaway.order
-        .quantity,takeaway.order.total, 'phonenumber')
+        .quantity,takeaway.order.total, ENV['PHONE_NUM'])
       }.not_to raise_error
     end
   end
@@ -60,7 +60,7 @@ describe 'User Stories' do
       takeaway.order.calculate_quantities(takeaway.order.dishes)
       takeaway.order.calculate_cost(takeaway.order.dishes)
       takeaway.place_order(takeaway.order,takeaway.order.quantity,takeaway.order
-      .total, 'phonenumber')
+      .total, ENV['+PHONE_NUM'])
     end
   end
 end
