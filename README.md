@@ -39,6 +39,8 @@ Instructions
 1. Fork this repo and clone to your local machine.
 2. Run ```gem install bundle```
 3. Once installation is complete, run ```bundle```
+4. If you do not already have a Twilio account, create an account.
+5. Create a .env file in your root directory and input your "TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN" and "TWILIO_SMS_NUMBER" credentials.  Make sure you add this file to .gitignore.
 4. Open ```irb``` or ```pry``` from the project directory and follow the below commands:
 
 ```
