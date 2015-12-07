@@ -30,7 +30,7 @@ class Takeaway
 
   def check_order (dishes)
     convert_order_to_hash(dishes)
-    check_all_dishes_are_on_menu
+    check_all_dishes_are_on_menu(order_as_hash)
     check_customer_and_actual_totals_match
   end
 
@@ -49,17 +49,14 @@ class Takeaway
   end
 
   def calculate_order_total
-    @actual_total = 0
-    order_as_hash.each {|dish, quantity| @actual_total += menu.dishes[dish] * quantity}
+    @actual_total = menu.calculate_order_total(order_as_hash)
   end
 
   def convert_order_to_hash(dishes)
     @order_as_hash = Hash[*dishes]
   end
 
-  def check_all_dishes_are_on_menu
-    order_as_hash.each do |dish, quantity|
-      fail "Unable to place order: dish not on menu" unless menu.dishes.key?(dish)
-    end
+  def check_all_dishes_are_on_menu(order_as_hash)
+     menu.check_all_dishes_are_on_menu(order_as_hash)
   end
 end
