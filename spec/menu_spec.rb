@@ -13,9 +13,13 @@ describe Menu do
 
   end
 
-  it 'prevents a customer from ordering unavailable dishes' do
-    message = "Unable to place order: dish not on menu"
-    expect{menu.check_all_dishes_are_on_menu({"steak": 1})}.to raise_error message
+  describe 'ordering dishes' do
+
+    it 'prevents a customer from ordering unavailable dishes' do
+      message = "Unable to place order: dish not on menu"
+      expect{menu.check_all_dishes_are_on_menu({"steak": 1})}.to raise_error message
+    end
+
   end
 
 end
