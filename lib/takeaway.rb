@@ -47,8 +47,6 @@ class Takeaway
   private
 
   def send_sms(client_number)
-  # account_sid = 'AC6c3b2f378924f8f5ff1587863865e8a6'
-  # auth_token = '518f76c2b5b9533333af831e1a98baef'
 
   account_sid = ENV["ACCOUNT_SID"]
   auth_token = ENV["AUTH_TOKEN"]
@@ -56,9 +54,10 @@ class Takeaway
   @client = Twilio::REST::Client.new account_sid, auth_token
 
   @client.account.messages.create({
-	:from => twilio_number,
-	:to => client_number,
-	:body => "Thank you for your order!! Your order will be delivered at #{order_time}",
+	from: twilio_number,
+	to: client_number,
+	body: "Thank you for your order!! Your order will be delivered at
+  #{order_time}",
   })
   end
 
