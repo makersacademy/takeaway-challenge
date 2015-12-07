@@ -3,8 +3,6 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :menu
-
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
     @order = order
@@ -36,4 +34,9 @@ class Takeaway
     return @order.confirm if total == @order.total
     fail "Incorrect amount. Your order total is: #{total_price}"
   end
+
+  private
+
+  attr_reader :menu
+  
 end
