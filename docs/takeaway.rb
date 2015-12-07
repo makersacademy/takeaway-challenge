@@ -1,19 +1,23 @@
+require './docs/twilio_msg.rb'
+#
+# require 'dotenv'
+# Dotenv.load
+
 class Takeaway
 
 attr_reader :table_order
 
   def initialize
     @table_order = Array.new
+    @text_order = Text.new
   end
 
   def show_menu
     puts full_menu
   end
 
-  def order(*items)
-    items.each do |list|
-      @table_order << list
-    end
+  def order(item, quantity)
+      @table_order << [item, quantity]
   end
 
   def bill
@@ -21,7 +25,10 @@ attr_reader :table_order
   end
 
   def place_order
-    "Thank you! Your order was placed and will be delivered before #{(Time.new + 3600)}"
+    message = "Thank you! Your order was placed and will be delivered before"
+    time = (Time.new + 3600).strftime("%H:%M")
+    bill = calculate_bill
+    @text_order.confirm_order(message + " #{time} totalling #{bill}")
   end
 
 
@@ -51,8 +58,8 @@ private
   end
 
   def calculate_bill
-    price = @table_order.map do |item|
-      self.menu[item]
+    price = @table_order.map do |item, quantity|
+      self.menu[item] * quantity
     end
     "£#{'%.2f' % price.inject(:+)}"
   end

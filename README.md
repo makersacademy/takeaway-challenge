@@ -2,6 +2,11 @@ Takeaway Restaurant Challenge
 
 James Borrell
 
+Fork this repo
+Clone repo into local repository
+Run the command 'bundle' in the project directory to ensure you have all the gems
+Run Takeaway program
+
 Menu has list of food available as well as corresponding prices.
 
     Command: <Takeaway-Name>.show_menu
