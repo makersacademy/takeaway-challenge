@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
   let(:order_klass) { double :order_klass, new: menu_klass, calculate_quantities: order, calculate_cost: order, calculate: order }
-  subject(:takeaway) { described_class.new(order_klass) }
+  subject(:takeaway) { described_class.new(order_klass, menu_klass) }
   let(:order) { double :order, inject: [["Dish 1" => 2.00]], length: 3, each: nil, calculate_cost: 2}
   let(:quantity) { double :quantity => 3}
   let(:total) { double :total => 6}

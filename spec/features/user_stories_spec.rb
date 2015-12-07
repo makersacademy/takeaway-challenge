@@ -34,8 +34,8 @@ describe 'User Stories' do
     # I would like to check that the total I have been given matches the sum of
     # the various dishes in my order
     it "the customer's total should match the sum of dishes in the order" do
-      takeaway = Takeaway.new(Order)
-      takeaway.create_order(Menu.new.list)
+      takeaway = Takeaway.new(Order, Menu.new.list)
+      takeaway.create_order(takeaway.menu)
       takeaway.order.choose("Dish 1", 3)
       takeaway.order.calculate_quantities(takeaway.order.dishes)
       takeaway.order.calculate_cost(takeaway.order.dishes)
@@ -50,8 +50,8 @@ describe 'User Stories' do
     # I would like to receive a text such as "Thank you! Your order was placed
     # and will be delivered before 18:52" after I have ordered
     it "should send a text to confirm the order was placed" do
-      takeaway = Takeaway.new(Order)
-      takeaway.create_order(Menu.new.list)
+      takeaway = Takeaway.new(Order, Menu.new.list)
+      takeaway.create_order(takeaway.menu)
       takeaway.order.choose("Dish 1", 3)
       takeaway.order.calculate_quantities(takeaway.order.dishes)
       takeaway.order.calculate_cost(takeaway.order.dishes)
