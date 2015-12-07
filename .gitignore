@@ -1,2 +1,4 @@
 /**/.DS_Store
 /coverage
+lib/resources/tokens.yml
+domain_model.md

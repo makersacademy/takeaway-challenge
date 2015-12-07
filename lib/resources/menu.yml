@@ -1,0 +1,15 @@
+:Appetisers:
+  - :name: Olives
+    :price: 2
+  - :name: Hummus
+    :price: 1.5
+:Mains:
+  - :name: Beef
+    :price: 7
+  - :name: Chicken
+    :price: 6
+:Desserts:
+  - :name: Sorbet
+    :price: 3
+  - :name: Tart
+    :price: 4
