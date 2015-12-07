@@ -1,15 +1,14 @@
 #Takeaway Challenge [![Build Status](https://travis-ci.org/hibreez/takeaway-challenge.svg?branch=master)](https://travis-ci.org/hibreez/takeaway-challenge)[![Coverage Status](https://coveralls.io/repos/hibreez/takeaway-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/hibreez/takeaway-challenge?branch=master)
 
 A Takeaway restaurant ordering system for the [takeaway challenge]
-(https://github.com/makersacademy/takeaway-challenge).
-
-Uses [twilio-ruby](https://github.com/twilio/twilio-ruby) to send SMS messages 
-to confirm orders.
+(https://github.com/makersacademy/takeaway-challenge),  
+using [twilio-ruby](https://github.com/twilio/twilio-ruby) to send SMS messages 
+to confirm orders.  
 
 A `Takeaway` restaurant
 * displays it's `Menu` as a formatted list of dishes and prices,  
 * accepts user's `Order`s in plain text, confirms the price,   
-* and uses it's `Phone` to send texts confirming delivery time.  
+* and uses it's `Phone` to send texts confirming delivery time.   
 
 
 ####Installation  
@@ -24,7 +23,7 @@ To receive SMS messages you will to make a (free)
 variables with your account details:  
 `ACCOUNTSID=` Your Twilio Account SID.  
 `AUTHTOKEN=` Your Twilio Auth Token.  
-`MYPHONE=` A verified phone number to receive the messages. 
+`MYPHONE=` A verified phone number to receive the messages.   
 
 
 ####User Stories
@@ -45,7 +44,7 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+```  
 
 
 ####Usage
