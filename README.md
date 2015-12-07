@@ -1,5 +1,9 @@
 Week 2 Takeaway Challenge
 
+I have been asked to create a Takeaway program.  The user should be able to
+select items from a menu, add selected items to an order, confirm price of
+order and then receive a text confirmation with a delivery time once order is
+complete.
 
 
 User Stories:
@@ -21,3 +25,12 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+The program consists of 3 classes:
+* Takeaway class
+* Menu class
+* SendText Class
+
+How the app works in pry:
+
+![Takeaway Example](/Users/TY/Desktop/Makers/Week2/screenshot.png)
