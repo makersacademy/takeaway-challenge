@@ -32,7 +32,7 @@ class Takeaway
     @client.messages.create(
       from: ENV['TWILIO_NUM'],
       to: ENV['PHONE_NUM'],
-      body: "Thank you! Your order was placed and will be delivered before
+      body: "Thank you for your order! It will be delivered before
         #{order_time}"
     )
   end
