@@ -1,5 +1,6 @@
 require_relative 'meal'
 
+
 class Menu
 
 attr_reader :menu_string, :menu, :menu_hash, :menu_items,:menu_array

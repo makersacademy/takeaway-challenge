@@ -1,5 +1,6 @@
 require 'meal'
 
+
 describe MealItem do
 subject(:meal_new) { described_class.new("Burger","£10.00") }
 

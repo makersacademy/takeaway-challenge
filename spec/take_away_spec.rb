@@ -2,6 +2,7 @@ require 'take_away'
 require 'menu'
 require 'order'
 
+
 describe Takeaway do
 
 subject(:takeaway_new) do

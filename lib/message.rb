@@ -2,6 +2,7 @@ require 'twilio-ruby'
 require 'envyable'
 Envyable.load('./config/env.yml', 'development')
 
+
 class Message
   attr_reader  :from, :contact
 

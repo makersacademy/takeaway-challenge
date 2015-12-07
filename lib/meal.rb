@@ -1,3 +1,4 @@
+
 class MealItem
   attr_reader :price, :description, :item
   def initialize(item,price,description = nil)

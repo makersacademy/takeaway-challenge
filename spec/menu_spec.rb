@@ -1,5 +1,6 @@
 require  'menu'
 
+
 describe Menu do
 subject(:menu_new) do
   described_class.new("CHICKEN CACCIATORE,£13.75,CHICKEN KORMA,£14.99")
