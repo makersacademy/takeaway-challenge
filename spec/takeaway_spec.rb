@@ -22,7 +22,4 @@ describe Takeaway do
     takeaway.place_order(dishes)
   end
 
-  it 'gives you the total order'
-    expect(order).to receive(:total)
-
 end
