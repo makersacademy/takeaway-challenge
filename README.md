@@ -40,10 +40,13 @@ These are the public messages you can send to an object TakeAway.
 
 * **initialize(args)**
 when you create an instance of takeaway you have to specify in a hash some parameters.
-__menu:__ an instance of the Menu class which provides available dishes for TakeAway
-__order_klass:__ the class Order to make TakeAway able to generate instances of Order
-__text_provider_klass:__ the class TextProvider to make TakeAway able to generate a TextProvider instance
-__config:__ an hash containing all the parameters needed to config the Twilio TextProvider instance to send message.
+> *menu:* an instance of the Menu class which provides available dishes for TakeAway
+
+ > *order_klass:* the class Order to make TakeAway able to generate instances of Order
+
+ > *text_provider_klass:* the class TextProvider to make TakeAway able to generate a TextProvider instance
+
+ >*config:* an hash containing all the parameters needed to config the Twilio TextProvider instance to send message.
 * **add_to_order(dish, quantity = 1)** it create a new order if no order is already set. Adds a quantity of dish to the order.
 * **basket** show the basket of the actual order.
 * **complete_order(amount)** place the order if the amount given is the same of the order amount. Send a reminder sms to the customer using Twilio-Ruby gem.
@@ -79,7 +82,7 @@ These are the public messages you can send to an object TextProvider.
 
 * **initialize(config)** create a new instance of TextProvider and sets up all the needed parameters to make the Twilio Gem works.
 config is an hash with the following keys:
-__account_sid:__, __auth_token:__, __from:__, __to:__, __body:__
+*account_sid:*, *auth_token:*, *from:*, *to:*, *body:*
 
 * **deliver** sends a new message using the config parameter given
 
