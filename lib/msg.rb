@@ -9,7 +9,6 @@ class Msg
   end
 
   def send_confirmation
-
     expected_time
 
     account_sid = "enter your Twilo account_sid here"
@@ -17,7 +16,6 @@ class Msg
     client = Twilio::REST::Client.new account_sid, auth_token
 
     from = "enter your Twilo phone number here"
-
     customer = {"number" => "Me"}
 
     customer.each do |key, value|

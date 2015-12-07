@@ -19,11 +19,13 @@ describe 'User Stories' do
 
   #As a customer
   #So that I can verify that my order is correct
-  #I would like to check that the total I have been given matches the sum of the various dishes in my order
+  #I would like to check that the total I have been given matches
+  #the sum of the various dishes in my order
 
   #As a customer
   #So that I am reassured that my order will be delivered on time
-  #I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  #I would like to receive a text such as "Thank you! Your order was
+  #placed and will be delivered before 18:52" after I have ordered
   it 'sends a text if the order is successful' do
     expect(msg).to receive(:send_confirmation).and_return("Your order was successful and should arrive by #{(Time.new + 3600).hour.to_s + ":" + (Time.new + 3600).min.to_s}.")
     msg.send_confirmation
