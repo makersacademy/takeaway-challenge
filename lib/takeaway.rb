@@ -1,20 +1,19 @@
 
-require_relative 'text.rb'
+require_relative 'text'
+require_relative 'menu'
 
 class Takeaway
 
   attr_reader :menu, :order_as_hash, :customer_supplied_total, :actual_total,
   :text
 
-  def initialize(text_klass = Text.new)
-    @menu = {"starter" => 5, "mains" => 10, "desert" => 3}
-    @text = text_klass
+  def initialize(text = Text.new, menu = Menu.new)
+    @text = text
+    @menu = menu
   end
 
   def show_dishes
-    menu.each do |key, value|
-    puts "#{key} : #{value}"
-    end
+    menu.show_dishes
   end
 
   def order(*dishes)
@@ -22,8 +21,6 @@ class Takeaway
     check_order(dishes)
     text_confirmation(text)
   end
-
-
 
   private
 
@@ -53,7 +50,7 @@ class Takeaway
 
   def calculate_order_total
     @actual_total = 0
-    order_as_hash.each {|dish, quantity| @actual_total += menu[dish] * quantity}
+    order_as_hash.each {|dish, quantity| @actual_total += menu.dishes[dish] * quantity}
   end
 
   def convert_order_to_hash(dishes)
@@ -62,7 +59,7 @@ class Takeaway
 
   def check_all_dishes_are_on_menu
     order_as_hash.each do |dish, quantity|
-      fail "Unable to place order: dish not on menu" unless @menu.key?(dish)
+      fail "Unable to place order: dish not on menu" unless menu.dishes.key?(dish)
     end
   end
 end

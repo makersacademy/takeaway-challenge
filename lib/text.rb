@@ -1,7 +1,12 @@
 require 'twilio-ruby'
 
 class Text
-
+  #refactor for DI
+  #use mixin module for currency formatting.
+  #include order in texts
+  #split out some more classes and use doubles
+  #dotenv gem
+  #using hash for defaults
   attr_reader :message
 
   def send(working_number = "+441202835326",

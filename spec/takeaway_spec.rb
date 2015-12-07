@@ -3,19 +3,14 @@ require 'takeaway'
 describe Takeaway do
 
   subject(:takeaway) {described_class.new}
-  let(:menu) {"starter : 5\nmains : 10\ndesert : 3\n"}
+  let(:menu) double(:menu)
 
   before do
     allow(takeaway).to receive(:text_confirmation)
+    allow(menu).to receive(:dishes)
   end
 
-  describe 'looking at a list of dishes with prices' do
 
-    it 'returns a list of dishes with price' do
-    expect{takeaway.show_dishes}.to output(menu).to_stdout
-    end
-
-  end
 
   describe '#order' do
 
