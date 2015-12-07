@@ -1,22 +1,9 @@
-Takeaway Challenge
-==================
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Takeaway Challenge [![Build Status](https://travis-ci.org/giamir/takeaway-challenge.svg?branch=master)](https://travis-ci.org/giamir/takeaway-challenge)
+=================
 
 Task
 -----
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -36,43 +23,74 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+Solution
+---------
+I solved this challenge using 4 classes:
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+* TakeAway
+* Order
+* Menu
+* TextProvider
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+### TakeAway class
+
+> __This is the only class the user should use.__
+
+These are the public messages you can send to an object TakeAway.
+
+* **initialize(args)**
+when you create an instance of takeaway you have to specify in a hash some parameters.
+__menu:__ an instance of the Menu class which provides available dishes for TakeAway
+__order_klass:__ the class Order to make TakeAway able to generate instances of Order
+__text_provider_klass:__ the class TextProvider to make TakeAway able to generate a TextProvider instance
+__config:__ an hash containing all the parameters needed to config the Twilio TextProvider instance to send message.
+* **add_to_order(dish, quantity = 1)** it create a new order if no order is already set. Adds a quantity of dish to the order.
+* **basket** show the basket of the actual order.
+* **complete_order(amount)** place the order if the amount given is the same of the order amount. Send a reminder sms to the customer using Twilio-Ruby gem.
+
+### Order class
+
+> __This class should not be use by the user.__
+
+These are the public messages you can send to an object Order.
+
+* **initialize(menu)** initialize a new instance of Order with a menu instance parameter which provides available dishes for Order.
+* **show_basket** shows the basket of the order.
+* **add(dish, quantity)** adds a quantity of dish to the order.
+* **total** return the total amount you have to pay for the order.
+
+### Menu class
+
+> __This class could be use by the user. It does not have any dependencies.__
+
+These are the public messages you can send to an object Menu.
+
+* **add_dish(dish, price)** adds a dish with relative price to the menu.
+* **remove_dish(dish)** removes a dish from the menu.
+* **has?(dish)** returns true if the dish is available.
+* **dishes** returns a duplicate of the hash available in the menu.
+* **to_s** pretty prints of the class menu.
+
+### TextProvider
+
+> __This class should not be use by the user.__
+
+These are the public messages you can send to an object TextProvider.
+
+* **initialize(config)** create a new instance of TextProvider and sets up all the needed parameters to make the Twilio Gem works.
+config is an hash with the following keys:
+__account_sid:__, __auth_token:__, __from:__, __to:__, __body:__
+
+* **deliver** sends a new message using the config parameter given
 
 
-In code review we'll be hoping to see:
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+Example
+--------
+```
 
 ```
-$ coveralls report
-```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Contributors
+-------------
+[Giamir Buoncristiani](https://github.com/giamir)
