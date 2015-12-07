@@ -11,7 +11,7 @@ class Twillio
     @message = @client.account.messages.create(:body => "Hey! Thanks for choosing chuck's sub shop! You've ordered #{display_order} It will be delivered before #{Time.now + 10*60*60}",
         :to => ENV["MY_REAL_NUMBER"],     # Replace with your phone number
         :from => num)   # Replace with your Twilio number
-    puts message.sid
+    message.sid
   end
 
 end
