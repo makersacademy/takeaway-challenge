@@ -1,9 +1,8 @@
 #Takeaway Challenge [![Build Status](https://travis-ci.org/hibreez/takeaway-challenge.svg?branch=master)](https://travis-ci.org/hibreez/takeaway-challenge)[![Coverage Status](https://coveralls.io/repos/hibreez/takeaway-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/hibreez/takeaway-challenge?branch=master)
 
 A Takeaway restaurant ordering system for the [takeaway challenge]
-(https://github.com/makersacademy/takeaway-challenge),  
-using [twilio-ruby](https://github.com/twilio/twilio-ruby) to send SMS messages 
-to confirm orders.  
+(https://github.com/makersacademy/takeaway-challenge), 
+using [twilio-ruby](https://github.com/twilio/twilio-ruby) to send a text to confirm orders.  
 
 A `Takeaway`
 * displays it's `Menu` as a formatted list of dishes and prices,  
@@ -18,9 +17,9 @@ cd takeaway-challenge`
 gem install bundle`  
 bundle`
 ```
-To receive SMS messages you will to make a (free) 
+To receive the SMS messages you will to make a (free) 
 [Twilio](https://www.twilio.com/) account and then set up three environment 
-variables with your account details:  
+variables:  
 `ACCOUNTSID=` Your Twilio Account SID.  
 `AUTHTOKEN=` Your Twilio Auth Token.  
 `MYPHONE=` A verified phone number to receive the messages.   
@@ -48,6 +47,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 ####Usage
+Program can be used in `irb` or `pry`:
 ```
 [1] pry(main)> require './lib/takeaway.rb'
   => true
