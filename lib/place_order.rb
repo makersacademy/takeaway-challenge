@@ -5,7 +5,9 @@ class Order
 
   attr_reader :receipt
 
-  def initialize(restaurant_klass: Restaurant)
+  def initialize(restaurant_klass = Restaurant)
+    #dont put Restaurant in class
+    #order = Order.new(Restaurant)
     @total = 0
     @restaurant_klass = restaurant_klass
     @restaurant = @restaurant_klass.new

@@ -2,6 +2,8 @@ require_relative 'place_order'
 require_relative 'text'
 class Restaurant
 attr_reader :menu
+#factory pattern
+#service objects
 
 MENU = {"chicken"=>10,
         "steak"=>20,
@@ -14,7 +16,7 @@ MENU = {"chicken"=>10,
     end
 
     def checkout(order)
-     p "Your receipt is: #{order}"
+      p "Your receipt is: #{order}"
       @text.messege
     end
 

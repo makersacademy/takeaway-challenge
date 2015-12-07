@@ -1,4 +1,4 @@
-require 'spec_helper'
+
 require 'restaurant'
 describe 'Restaurant' do
 
