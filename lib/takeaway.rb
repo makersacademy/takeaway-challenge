@@ -15,15 +15,13 @@ class Takeaway
 
   def place_order(dishes)
     add(dishes)
-    message.send
-    order.total
   end
 
   private
 
   attr_reader :menu, :order, :message
 
-  def add_dishes(dishes)
+  def add(dishes)
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
     end
