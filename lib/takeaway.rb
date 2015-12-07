@@ -1,9 +1,13 @@
+require 'menu'
+require 'order'
+require 'phone'
+
 class Takeaway
   ERROR = 'Cannot place order: '
   TOTAL = 'total does not match pricing!'
   DISH = ' not available!'
 
-  def initialize(menu, order_klass, phone)
+  def initialize(menu=Menu.new, order_klass=Order, phone=Phone.new)
     @the_menu = menu
     @order_klass = order_klass
     @phone = phone
@@ -33,8 +37,8 @@ class Takeaway
   end
 
   def correct?(dishes, total)
-    dishes.inject(0) { |result, (dish, number)| 
+    dishes.inject(0) do |result, (dish, number)| 
       result + (the_menu.raw[dish] * number)
-    } == total
+    end == total
   end
 end

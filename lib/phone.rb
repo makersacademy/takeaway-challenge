@@ -4,8 +4,8 @@ require 'dotenv'
 class Phone
   SMS = "Thank you! Your order was placed and will be delivered before "
 
-  def initialize
-    @client = Twilio::REST::Client.new ENV['ACCOUNTSID'], ENV['AUTHTOKEN']
+  def initialize(account_sid=ENV['ACCOUNTSID'], auth_token=ENV['AUTHTOKEN'])
+    @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
   def complete_order
