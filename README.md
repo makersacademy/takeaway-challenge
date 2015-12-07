@@ -31,8 +31,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 # Implementation
 
-[![Build Status](https://travis-ci.org/allimac/takeaway-challenge.svg?branch=master)](https://travis-ci.org/allimac/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/allimac/takeaway-challenge/badge.png)](https://coveralls.io/r/allimac/takeaway-challenge)
+My implementation was driven by acceptance unit test cycles. The final implementation has 3 classes with defined responsabilities.
 
 ## Modules & gems
 
@@ -97,7 +96,9 @@ It receives the following messages:
 
 ## Future improvements
 
+* extract from Order a new class that deals with the stored dishes, has total price and total number of dishes. Order shoul donly deal with the logistics. 
 * stub the send_text method so that the sms is not sent when testing
+* use ENV variables in .yml file
 * refactor find, print_menu methods for Menu class
 * prevent user from adding the same dish and just increase its qty
 * reset order after is succesfully placed
