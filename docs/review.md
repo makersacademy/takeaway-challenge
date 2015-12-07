@@ -78,7 +78,7 @@ The simplest approach is to stub out a method that calls the service, for exampl
 ```ruby
 class Takeaway
 
-  def complete_order
+  def complete_order(total price)
     send_text("Thank you for your order: £#{total_price}")
   end
 
