@@ -36,8 +36,7 @@ attr_accessor :basket
   end
 
   def complete_order
-    take_payment
-    confirm_order
+    send_message
     empty_basket
   end
 
@@ -58,9 +57,5 @@ private
     @basket= []
   end
 
-
-  def take_payment
-
-  end
 
 end

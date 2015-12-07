@@ -28,7 +28,7 @@ describe "User Stories" do
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-  xit "So that I can verify my order, I would like to be given a total price for my order that I can check" do
+  it "So that I can verify my order, I would like to be given a total price for my order that I can check" do
     menu = Menu.new('lib/menu.yaml')
     menu.choose(:"Kielbasa Chicken", 1)
     expect(menu.total).to eq 4
@@ -41,7 +41,7 @@ describe "User Stories" do
 
   it "So that I know my order will be delivered, I would like to recieve a text about my order" do
 
-    
+
   end
 
 
