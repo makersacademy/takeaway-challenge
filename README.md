@@ -1,22 +1,40 @@
 Takeaway Challenge
 ==================
 
-Instructions
--------
+This is the challenge for the second weekend at Makers Academy, the goal was to build a system that emulates a takeaway with the following requirements
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+1. Customer can see the menu
+2. Customer can select some food from the menu
+3. Customer receives a bill
+4. Customer receives a confirmation by text message with expected delivery time on it.
 
-Task
------
+On this system we have three classes as follow:
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Takeaway, which responsibilities are:
+    1. Provide the menu for the customer
+    2. Receive order from the customer
+    3. Provide a bill for the customer
+
+* Menu, which responsibilities are:
+    1. Provide menu with available dishes
+    2. Keep a list of different dishes
+
+* Send_SMS, which responsibilities are:
+    1. Receive customer phone number and name
+    2. Create and send a text message confirmation to customer phone number
+
+
+Below you have an example of how to run the whole application on irb.
+
+
+![Takeaway example](/Users/willibaur/Dropbox/Course/WK-02/IRB_Example.png)
+
+You need to inject Takeaway class with two classes of a type Menu and Send_SMS within a hash
+
+When asking for text confirmation you need to provide customer details within a hash (phone number needs to be validated first on twilio, at the moment only my phone number is validated, WIP about how to validate any number automatically)
+
+User Stories provided
+=====================
 
 ```
 As a customer
@@ -36,43 +54,15 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+Testing by using rspec
+=======================================
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+`user/username/takeaway/rspec`
 
 
-In code review we'll be hoping to see:
+Resources
+=========
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+I designed this solution by myself, I did not copy any other solution available on the web.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+I only used as external resource Twilio documentation
