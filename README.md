@@ -27,6 +27,14 @@ To install the program:-
   1. Fork and clone the repo, e.g. `git clone git@github.com:saratateno/takeaway-challenge.git`
   2. Run `gem install bundler` in your directory
   3. Run `bundle` to install the project gems
+  4. Create a `.env` file in the project root directory
+  5. Store your Twilio credentials in the  `.env` file in the following format:-
+  ```
+  TWILIO_NUMBER='+441234567890'
+  TWILIO_MOBILE='+440987654321'
+  TWILIO_ACCOUNT_SID='ACxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  TWILIO_AUTH_TOKEN='cd0xxxxxxxxxxxxxxxxxxxxxxxxx'
+  ```
 
 To use the program:-
   1. Run `irb` or `pry` from the command line
@@ -43,7 +51,7 @@ You can now use the following commands:-
 
 You are required to 'pay' the correct amount for your order to be processed.
 
-This program comes with a short menu of only three items. Dishes can be added / removed to the menu (by the takeaway owner!) by creating new dish objects `menu.add(Dish.new(dish_name, price))`.
+This program comes with a short menu of only three items. Dishes can be added / removed to the menu (by the takeaway owner) by creating new dish objects `menu.add(Dish.new(dish_name, price))`.
 
 Program example:-
 ```sh
