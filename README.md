@@ -5,10 +5,10 @@ A Takeaway restaurant ordering system for the [takeaway challenge]
 using [twilio-ruby](https://github.com/twilio/twilio-ruby) to send SMS messages 
 to confirm orders.  
 
-A `Takeaway` restaurant
+A `Takeaway`
 * displays it's `Menu` as a formatted list of dishes and prices,  
-* accepts user's `Order`s in plain text, confirms the price,   
-* and uses it's `Phone` to send texts confirming delivery time.   
+* accepts user's `Order`s in plain text and confirms their price,   
+* uses it's `Phone` to send SMS messages with a delivery time.   
 
 
 ####Installation  
