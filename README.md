@@ -5,10 +5,10 @@ Solution to [takeaway challenge]
 
 Takeaway restaurant ordering system. 
 Uses classes: `Takeaway`, `Menu`, `Order` and `Phone`.  
-`Takeaway` restaurant 
-  displays it's `Menu` as a formatted list of dishes and prices,
-  accepts user's `Order`s in plain text and confirms their price, 
-  and uses it's `Phone` to send texts confirming delivery time.
+A `Takeaway` restaurant   
+  displays it's `Menu` as a formatted list of dishes and prices,  
+  accepts user's `Order`s in plain text, confirms the price,   
+  and uses it's `Phone` to send texts confirming delivery time.  
 
 ####Installation  
 ```
