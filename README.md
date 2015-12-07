@@ -1,6 +1,6 @@
 This is my submission for the Makers Academy week 2 weekend challenge.
 
-For this application to work, it is very important that you add your twilio account SID and auth token to your env variables as TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN. You can find these details here: https://www.twilio.com/user/account. You will also need to add your mobile phone number as MY_MOBILE_NUMBER.
+For this application to work, it is very important that you add your twilio account SID and auth token to your env variables as TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN. You can find these details here: https://www.twilio.com/user/account. You will also need to add your mobile phone number as MY_MOBILE_NUMBER. For the tests to work, you will also need to add your test account SID and your test auth token as TEST_TWILIO_ACCOUNT_SID and TEST_TWILIO_AUTH_TOKEN. These can be found here: https://www.twilio.com/user/account/phone-numbers/dev-tools/test-credentials
 
 Please run 'Bundle' from your command line to install all gems required.
 
