@@ -19,16 +19,21 @@ class SendText
 
       from = '+441183241104'
 
-      @customers = { '+447838549907' => "Tony" }
+      @customers = { :"+44712345" => :Chris }
 
       @customers.each do |key, value|
         message = @client.account.messages.create(
           :from => from,
           :to => key,
-          :body => "Hey #{value}, thank you for ordering with us! Your order will be delivered by #{(Time.now + 2700).strftime("%I:%M%p")}.  Enjoy!"
+          :body => "Hey #{value}, thank you for ordering with us! Your order
+           will be delivered by #{(time_stamp).strftime("%I:%M%p")}.  Enjoy!"
 
         )
         puts "Sent message #{value}"
       end
+    end
+
+    def time_stamp
+      Time.now + (60 * 60)
     end
 end
