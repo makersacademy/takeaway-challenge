@@ -28,14 +28,14 @@ describe Order do
   describe '#calculate_quantities' do
     it 'calculates how many dishes have been ordered' do
       order.calculate_quantities(dishes)
-      expect(order.quantity).not_to be_nil #vacuous?
+      expect(order.quantity).not_to be_nil
     end
   end
 
   describe '#calculate_cost' do
     it 'calculates how much the order costs' do
       order.calculate_cost(order)
-      expect(order.total).not_to be_nil #vacuous?
+      expect(order.total).not_to be_nil
     end
   end
 
