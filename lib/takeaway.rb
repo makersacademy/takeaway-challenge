@@ -23,6 +23,18 @@ class Takeaway
     send_sms(number)
   end
 
+  def cost
+    @order.calculate_cost(order_contents)
+  end
+
+  def order_contents
+    @order.dishes
+  end
+
+  def quantities
+    @order.calculate_quantities(@order.dishes)
+  end
+
   private
 
   def send_sms(number)

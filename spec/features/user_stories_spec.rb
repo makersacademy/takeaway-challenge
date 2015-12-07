@@ -37,11 +37,11 @@ describe 'User Stories' do
       takeaway = Takeaway.new(Order)
       takeaway.new_order(Menu.new.contents)
       takeaway.order.choose("Dish 1", 3)
-      takeaway.order.calculate_quantities(takeaway.order.dishes)
-      takeaway.order.calculate_cost(takeaway.order.dishes)
+      takeaway.quantities
+      takeaway.cost
       expect{
-        takeaway.place_order(takeaway.order,takeaway.order
-        .quantity,takeaway.order.total, ENV['PHONE_NUM'])
+        takeaway.place_order(takeaway.order,takeaway.quantities,takeaway.cost,
+          ENV['PHONE_NUM'])
       }.not_to raise_error
     end
   end
@@ -57,10 +57,10 @@ describe 'User Stories' do
       takeaway = Takeaway.new(Order)
       takeaway.new_order(Menu.new.contents)
       takeaway.order.choose("Dish 1", 3)
-      takeaway.order.calculate_quantities(takeaway.order.dishes)
-      takeaway.order.calculate_cost(takeaway.order.dishes)
-      takeaway.place_order(takeaway.order,takeaway.order.quantity,takeaway.order
-      .total, ENV['PHONE_NUM'])
+      takeaway.quantities
+      takeaway.cost
+      takeaway.place_order(takeaway.order,takeaway.quantities,takeaway.cost,
+        ENV['PHONE_NUM'])
     end
   end
 end

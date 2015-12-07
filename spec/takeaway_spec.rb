@@ -6,15 +6,12 @@ describe Takeaway do
     calculate_cost: order, calculate: order
   }
   subject(:takeaway) { described_class.new(order_klass) }
-  let(:order) {
-    double :order, inject: [["Dish 1" => 5.00]],
-    length: 4, each: nil, calculate_cost: 5
-  }
-  let(:quantity) { double :quantity => 4}
-  let(:total) { double :total => 8}
+  let(:order) { double :order, inject: [["Dish 1" => 5.00]], calculate_cost: 5 }
   let(:menu_klass) { double :menu_klass, new: nil }
-  let(:menu) { double :menu }
   let(:number) { double :number }
+
+  quantity = 4
+  total = 8
 
   describe '#new_order' do
     it 'creates a new Order' do
