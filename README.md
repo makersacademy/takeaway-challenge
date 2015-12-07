@@ -12,6 +12,11 @@ Instructions and User notes
 
 * The purpose of the Msg class is to send a confirmation text to the user that their order has been received, along with an expected delivery time. In order to use this class, you will need to add in your Twilio details where shown by the comments.
 
+
+Incomplete parts
+-----
+* The test coverage is not high enough. This is because I have not been able to find a suitable way to test the #order method in the Restaurant class (which both outputs to STDOUT and uses STDIN to change a variable), and most processes rely on this method.
+
 User Stories
 -----
 
