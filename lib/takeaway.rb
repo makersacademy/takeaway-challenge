@@ -16,21 +16,21 @@ class Takeaway
     @order = order_klass.new(menu)
   end
 
-  def place_order(order, quantity, total, number)
-    fail "Wrong total!" if total != self.order.calculate_cost(order)
+  def place_order(order, total, phone_number)
+    fail "Wrong total!" if total != order.calculate_cost(order)
     @order_time = Time.new + 3600
-    send_sms(number)
+    send_sms(phone_number)
   end
 
   private
 
-  def send_sms(number)
+  def send_sms(phone_number)
     account_sid = credentials["TWILIO_ACCOUNT_SID"]
     auth_token = credentials["TWILIO_AUTH_TOKEN"]
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.messages.create(
       from: credentials["TWILIO_SMS_NUMBER"],
-      to: number,
+      to: phone_number,
       body: "Thank you! Your order was placed and will be delivered before #{order_time.strftime("%H:%M")}"
     )
   end

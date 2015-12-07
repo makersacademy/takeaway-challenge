@@ -8,7 +8,7 @@ describe Takeaway do
   let(:total) { double :total => 6}
   let(:menu_klass) { double :menu_klass, new: nil }
   let(:menu) { double :menu }
-  let(:number) { double :number }
+  let(:phone_number) { double :phone_number }
 
   describe '#create_order' do
     it 'creates a new instance of Order' do
@@ -24,7 +24,7 @@ describe Takeaway do
     end
 
     it 'raises an error if the total cost does not equal the sum of dishes' do
-      expect{ takeaway.place_order(order, quantity, total, number) }.to raise_error "Wrong total!"
+      expect{ takeaway.place_order(order, total, phone_number) }.to raise_error "Wrong total!"
     end
 
     it 'sends a text to confirm order' do
