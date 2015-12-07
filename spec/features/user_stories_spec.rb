@@ -75,7 +75,10 @@ describe 'User Stories' do
         bad_payment = "Cannot be accepted, you need to pay £13.52"
         expect{takeaway.basket_checkout(12.23)}.to raise_error bad_payment
       end
-
     end
+
+    # As a customer
+    # So that I am reassured that my order will be delivered on time
+    # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   end
 end

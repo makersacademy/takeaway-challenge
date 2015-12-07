@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/michaellennox/takeaway-challenge.svg)](https://travis-ci.org/michaellennox/takeaway-challenge)
+[![Build Status](https://travis-ci.org/michaellennox/takeaway-challenge.svg)](https://travis-ci.org/michaellennox/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq&service=github)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=mohamedIssaq)
 
 Takeaway Challenge
 ==================
