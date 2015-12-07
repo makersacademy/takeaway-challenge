@@ -12,6 +12,10 @@ describe Order do
       order.add(:'Classic Fondue', 2)
       expect(order.items).to include('Classic Fondue': 2)
     end
+    # it 'should raise error message if dish requested is not in the menu' do
+    #   order.add('Chicken', 1)
+    #   expect(order.items).to raise_error 'That dish is not in the menu'
+    # end
   end
 
   describe '#total' do
@@ -29,6 +33,5 @@ describe Order do
         order.add(:'Special Fondue', 1)
     end
   end
-  # end
 
 end

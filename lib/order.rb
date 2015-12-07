@@ -12,7 +12,7 @@ class Order
 
   def total
     items_totals.inject(:+)
-   end
+  end
 
   private
 
