@@ -17,6 +17,21 @@ describe 'User Stories' do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  it 'should be able to order three of the same menu item'
+  it 'should be able to order three of the same menu item' do
+    order.add_item(:rice, 3)
+    expect(order.list).to include(rice: 3)
+  end
+
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  xit 'should provide list of order with total' do
+
+  end
+
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
 
 end
