@@ -4,7 +4,9 @@ class Text
 
   attr_reader :message
 
-  def send(working_number = "+441202835326", my_account_sid = ENV["TWILIO_ACCOUNT_SID"], my_auth_token = ENV["TWILIO_AUTH_TOKEN"])
+  def send(working_number = "+441202835326",
+    my_account_sid = ENV["TWILIO_ACCOUNT_SID"],
+    my_auth_token = ENV["TWILIO_AUTH_TOKEN"])
 
     account_sid = my_account_sid
     auth_token = my_auth_token
