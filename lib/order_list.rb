@@ -1,4 +1,5 @@
 require_relative 'dish_list'
+require_relative 'personal_details'
 require 'twilio-ruby'
 
 class OrderList
@@ -11,8 +12,8 @@ class OrderList
 
   def initialize(dish_list)
     @dish_list = dish_list
-    account_sid = 'AC052294c8bfb6a8bccf164140b4116340'
-    auth_token = '9db8e3404e5865a71a79d28c3ef11e71'
+    account_sid = PersonalDetails::AccountSid
+    auth_token = PersonalDetails::AuthToken
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
@@ -22,8 +23,8 @@ class OrderList
     fail 'Total does not match sum of dishes in order' unless
        total.nil? || total == dish_sum(amount_list)
     @client.messages.create(
-    from:'+441613751762',
-    to:'+447747056242',
+    from: PersonalDetails::TwiioPhone,
+    to: PersonalDetails::PersonalPhone,
     body:"Thank you! Your order was placed and will be delivered before #{Time.new.hour+1}:"+ Time.new.strftime("%M")
     )
   end
