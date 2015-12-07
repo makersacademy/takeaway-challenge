@@ -21,7 +21,7 @@ describe "user stories" do
   it 'so that Kylie can order what she wants,
       she should be able to select from available dishes' do
     dish = "Beef"
-    expect{ menu.select(dish, 2) }.not_to raise_error
+    expect{ order.add(dish, 2) }.not_to raise_error
   end
 
   # # - As a customer
@@ -32,8 +32,8 @@ describe "user stories" do
       he should be able to check that total price matches
       the sum of various dishes' do
     dish = "Chicken"
-    menu.select(dish, 1)
-    expect{ menu.order.review }.not_to raise_error
+    order.add(dish, 1)
+    expect{ order.review }.not_to raise_error
   end
 
   # # - As a customer
@@ -44,7 +44,7 @@ describe "user stories" do
     on time, she should receive a confirmation text message
     after order' do
     dish = "Chicken"
-    menu.select(dish, 1)
-    expect{ menu.order.place(false) }.not_to raise_error
+    order.add(dish, 1)
+    expect{ order.place }.not_to raise_error
   end
 end

@@ -42,20 +42,22 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ## PRY code-flow
 
 ```
-[1] pry(main)> require './lib/menu.rb'
+[1] pry(main)> require './lib/order.rb'
 => true
 [2] pry(main)> menu = Menu.new
-=> #<Menu:0x007fb8b29acd48 @order=#<Order:0x007fb8b29acd20 @dishes=[], @number_dishes=0, @total=0>, @order_klass=Order>
+...
 [3] pry(main)> menu.view
 => "// MENU // -- appetisers --  Olives £2 / Hummus £1.5 / -- mains --  Beef £7 / Chicken £6 / -- desserts --  Sorbet £3 / Tart £4 /"
-[4] pry(main)> menu.select("Beef")
-=> [{:name=>"Beef", :price=>7, :quantity=>1}]
-[5] pry(main)> menu.select("Sorbet")
-=> [{:name=>"Beef", :price=>7, :quantity=>1}, {:name=>"Sorbet", :price=>3, :quantity=>1}]
-[6] pry(main)> menu.order.review
-=> "Your order: 1x Beef £7, 1x Sorbet £3, Total price: $10"
-[7] pry(main)> menu.order.place
-=> true
+[4] pry(main)> order = Order.new
+...
+[5] pry(main)> order.add("Beef", 3)
+=> [{:name=>"Beef", :price=>7, :qty=>3}]
+[6] pry(main)> order.add("Sorbet", 1)
+=> [{:name=>"Beef", :price=>7, :qty=>3}, {:name=>"Sorbet", :price=>3, :qty=>1}]
+[7] pry(main)> order.review
+=> "Your order: 3x Beef £7, 1x Sorbet £3. Total price: £24"
+[8] pry(main)> order.place
+=> "Order placed. You will get an SMS with the delivery time soon!"
 ```
 
 
@@ -63,29 +65,41 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ### Menu
 
-Menu allows to view dishes from a data source and add them to a takeaway order specifying their quantity.
-Every instance of Menu has its own instance of the dependent class Order.
+Menu allows to view all dishes and find dishes from a .yml file. A different file to read the menu from can be passed as argument (the file is located in lib/resources/).
+```
+menu = Menu.new('pizza_restaurant.yml')
+```
 It receives the following messages:
-* view menu in readable format
-* select(dish, quantity)
+* view menu
+* find(dish)
 
 ### Order
 
-Order allows to store added dishes, review the order with the total price, and place the order.
-When the order is placed an SMS is sent via [Twilio REST API](https://www.twilio.com/docs/api/rest) calculating the approximate arrival time (based on number of dishes added plus delivery time).
+Order allows to store added dishes, review the order with the total price, and place the order. Every instance of Order instantiate a Menu as well (a default menu is passed as argument to menu class).
+When the order is placed an SMS is created and the message send is called on it.
 It receives the following messages:
-* add(dish_w_quantity)
+* add(dish, qty)
 * review
 * place
+
+### Sms
+
+Sms allows to send an SMS using [Twilio REST API](https://www.twilio.com/docs/api/rest) passing the method the delivery time.
+It receives the following messages:
+* send(delivery_time)
 
 
 ## Data
 
 * A .yml file in /lib/resources stores all the menu data
+* Twilio tokens are stored in a .gitignored .yml file
 
 
-## Possible improvements
+## Future improvements
 
+* stub the send_text method so that the sms is not sent when testing
+* refactor find, print_menu methods for Menu class
+* prevent user from adding the same dish and just increase its qty
 * reset order after is succesfully placed
 * allow users to order via SMS
 * improve refactoring

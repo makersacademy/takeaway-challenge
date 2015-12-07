@@ -1,62 +1,53 @@
 require 'rubygems'
 require 'twilio-ruby'
 require 'yaml'
+require_relative 'sms'
+require_relative 'menu'
 
 class Order
 
-  def initialize
+  AVG_DELIVERY = 600
+  AVG_DISH_PREP = 300
+
+  def initialize(menu = Menu)
+    @menu_klass = menu
+    @menu = @menu_klass.new
     @dishes = []
-    @total = 0
-    @number_dishes = 0
   end
 
-  def add(dish)
-    update_total(dish)
+  def add(dish, qty = 1)
+    dish = (@menu.find(dish)).merge(qty: qty)
+    "#{qty}x #{dish} added"
     @dishes << dish
   end
 
   def review
-    "Your order: "+readable_dishes+"Total price: £"+@total.to_s
+    "Your order: "+print_dishes+". Total price: £"+total_price.to_s
   end
 
-  def dishes
-    @dishes.dup
-  end
-
-  def place(send_text = true)
-    if send_text
-      @tokens = YAML::load(File.open('./lib/resources/tokens.yml'))
-      client = Twilio::REST::Client.new @tokens["account_sid"], @tokens["auth_token"]
-      client.account.messages.create(
-      :from => @tokens["from_number"],
-      :to => @tokens["to_number"],
-      :body => "Your order should arrive by #{delivery_time}!" )
-    end
-    true
-  end
-
-  def number_dishes
-    @dishes.each { |dish| @number_dishes += dish[:quantity] }
-    @number_dishes
-  end
-
-  def delivery_time
-    ready_at = Time.now + (number_dishes * 5 + 10)*60
-    ready_at.hour.to_s+":"+ready_at.min.to_s
+  def place
+    sms = Sms.new
+    sms.send(delivery_time)
+    "Order placed. You will get an SMS with the delivery time soon!"
   end
 
   private
 
-  def update_total(dish)
-    @total += (dish[:price] * dish[:quantity])
+  def total_price
+    @dishes.inject(0) { |sum,dish| sum + (dish[:price] * dish[:qty]) }
   end
 
-  def readable_dishes
-    string = ""
-    @dishes.each do |dish|
-      string += "#{dish[:quantity]}x #{dish[:name]} £#{dish[:price]}, "
-    end
-    string
+  def number_dishes
+    @dishes.inject(0) { |sum,dish| sum + dish[:qty] }
+  end
+
+  def delivery_time
+    prep = (number_dishes * AVG_DISH_PREP)
+    Time.now + prep + AVG_DELIVERY
+  end
+
+  def print_dishes
+    @dishes.map { |dish| "#{dish[:qty]}x #{dish[:name]} £#{dish[:price]}" }.join(", ")
   end
 
 end
