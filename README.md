@@ -4,6 +4,7 @@
  - Create a new folder for this project
  - Fork this repo into a your github profile
  - Run bundle
+
  ```sh
 $ mkdir MyTakeAway
 $ cd MyTakeAway
@@ -18,6 +19,7 @@ $ gem install rspec
 ```
  - Navigate to the project folder
  - then run ```$ rspec ```
+ 
  ```sh
 $ cd MyTakeAway
 $ rspec
