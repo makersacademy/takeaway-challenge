@@ -47,7 +47,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 ####Usage
-Program can be used in `irb` or `pry`:
+The program can be used in `irb` or `pry`:
 ```
 [1] pry(main)> require './lib/takeaway.rb'
   => true
