@@ -10,7 +10,7 @@ Instructions and User notes
 
 * The Menu class simply provides the menu. As this class is injected in to Restaurant, this allows the Restaurant class to use different menus easily.
 
-* The purpose of the Msg class is to send a confirmation text to the user that their order has been received, along with an expected delivery time. In order to use this class, you will need to add in your Twilio details where shown by the comments.
+* The purpose of the Msg class is to send a confirmation text to the user that their order has been received, along with an expected delivery time. In order to use this class, you will need to have a .env file containing your Twilo account details and the phone number(s) to send confirmation to.
 
 
 Incomplete parts
