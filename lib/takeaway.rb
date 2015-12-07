@@ -18,16 +18,24 @@ class Takeaway
   end
 
   def order(*dishes)
-    @customer_supplied_total = dishes.pop
-    convert_order_to_hash(dishes)
-    check_all_dishes_are_on_menu
-    check_customer_and_actual_totals_match
+    get_customer_total(dishes)
+    check_order(dishes)
     text_confirmation(text)
   end
 
 
 
   private
+
+  def get_customer_total(dishes)
+    @customer_supplied_total = dishes.pop
+  end
+
+  def check_order (dishes)
+    convert_order_to_hash(dishes)
+    check_all_dishes_are_on_menu
+    check_customer_and_actual_totals_match
+  end
 
   def text_confirmation(text)
     text.send
