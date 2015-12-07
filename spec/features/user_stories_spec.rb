@@ -1,7 +1,12 @@
 describe 'User Stories' do
 
-  let(:menu)  { Menu.new  }
-  let(:order) { Order.new(menu.options) }
+  let(:menu)  {     Menu.new                }
+  let(:order) {     Order.new(menu.options) }
+  let(:twil)  {     Twillio.new             }
+
+  before do
+    allow(twil).to receive(:confirmation_text)
+  end
 
   # As a customer
   # So that I can check if I want to order something

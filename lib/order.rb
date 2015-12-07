@@ -1,4 +1,6 @@
 require 'twilio-ruby'
+require 'menu.rb'
+require 'send_sms.rb'
 
 class Order
 
@@ -10,6 +12,11 @@ class Order
     @current = {}
   end
 
+  # def options
+  #   menu = Menu.new
+  #   menu.options
+  # end
+
   def total
     calculate_total
     display_order
@@ -18,7 +25,8 @@ class Order
   def place_order(current, expected_total)
     calculate_total
     raise"Sorry mate- but your total is actually #{@total}" if expected_total != @total
-    confirmation_text
+    twil = Twillio.new
+    twil.confirmation_text(display_order)
   end
 
   def choose(dish, quantity)
@@ -42,17 +50,5 @@ class Order
     string = ''
     @current.each {|key, value| string += "#{value} #{key}s at £#{'%.2f' % @options[key]} each." + "\n" }
     string += "Your total is: £#{'%.2f' % @total}."
-  end
-
-  def confirmation_text
-    # Get your Account Sid and Auth Token from twilio.com/user/account
-    account_sid = 'AC09c3f33609c1212163f034b3b06d8bab'
-    auth_token  = '3a16956dbda9c2074cbcba205fc514bb'
-    @client = Twilio::REST::Client.new account_sid, auth_token
-
-    message = @client.account.messages.create(:body => "Hey! Thanks for choosing chuck's sub shop! You've ordered #{display_order} It will be delivered before #{Time.now + 10*60*60}",
-        :to => "+4407340207478",     # Replace with your phone number
-        :from => "+441212854805")   # Replace with your Twilio number
-    puts message.sid
   end
 end
