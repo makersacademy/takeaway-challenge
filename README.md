@@ -3,11 +3,20 @@
 Solution to [takeaway challenge]
 (https://github.com/makersacademy/takeaway-challenge).
 
+Takeaway restaurant ordering system. 
+Uses classes: `Takeaway`, `Menu`, `Order` and `Phone`.  
+`Takeaway` restaurant 
+  displays it's `Menu` as a formatted list of dishes and prices,
+  accepts user's `Order`s in plain text and confirms their price, 
+  and uses it's `Phone` to send texts confirming delivery time.
+
 ####Installation  
-`git clone git@github.com:hibreez/takeaway-challenge.git`  
-`cd takeaway-challenge`  
-`gem install bundle`  
-`bundle`
+```
+git clone git@github.com:hibreez/takeaway-challenge.git`  
+cd takeaway-challenge`  
+gem install bundle`  
+bundle`
+```
 
 ####User Stories
 ```

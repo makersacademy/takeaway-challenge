@@ -7,7 +7,7 @@ describe Phone do
     allow(phone).to receive(:send_text)
     expect(phone).to receive(:send_text).
       with('Thank you! Your order was placed and will be delivered before'\
-            " #{(Time.now + 3600).strftime("%H:%M")}.")
+           " #{(Time.now + 3600).strftime("%H:%M")}.")
     phone.complete_order
   end
 end
