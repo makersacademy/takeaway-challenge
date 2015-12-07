@@ -23,7 +23,7 @@ variables:
 `ACCOUNTSID=` Your Twilio Account SID.  
 `AUTHTOKEN=` Your Twilio Auth Token.  
 `MYPHONE=` A verified phone number to receive the messages.  
-You can set these globally or just in a the file `.env` in the project root.
+You can set these globally or just in the file `.env` in the project root.
 
 
 ####User Stories
