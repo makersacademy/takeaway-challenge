@@ -1,6 +1,6 @@
-require 'menu'
-require 'order'
-require 'phone'
+require_relative 'menu'
+require_relative 'order'
+require_relative 'phone'
 
 class Takeaway
   ERROR = 'Cannot place order: '
