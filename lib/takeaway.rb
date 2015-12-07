@@ -1,10 +1,11 @@
 class Takeaway
 
-  attr_reader :menu, :order, :order_klass, :bill, :history
+  attr_reader :menu, :order, :order_klass, :history, :text
 
-  def initialize(menu, order_klass)
+  def initialize(menu, order_klass, text)
     @menu = menu
     @order_klass = order_klass
+    @text = text
     @order = order_klass.new
     @history = []
   end
@@ -29,17 +30,13 @@ class Takeaway
 
   def complete_order
     history << order
-
+    puts "Enter phone number for confirmation text"
+    number = gets.chomp.to_i
+    @text.send_text(number)
     new_order
   end
 
   private
-
-  def calculate_bill
-   bill = 0
-   @order.current_order.each{|k, v| bill += @menu.dishes[k] * v}
-   order_summary + "Final bill: £#{bill}"
-  end
 
   def not_on_menu?(dish)
     !menu.dishes.include?(dish)
@@ -47,6 +44,12 @@ class Takeaway
 
   def new_order
    @order = order_klass.new
+  end
+
+  def calculate_bill
+   bill = 0
+   @order.current_order.each{|k, v| bill += @menu.dishes[k] * v}
+   order_summary + "Final bill: £#{bill}"
   end
 
   def order_summary

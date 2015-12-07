@@ -13,7 +13,7 @@ class Order
   private
 
   def first(dish)
-    @current_order.has_key?(dish)
+    @current_order.key?(dish)
   end
 
   def addmore(dish,qty)

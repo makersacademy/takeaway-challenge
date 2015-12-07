@@ -1,10 +1,12 @@
 require 'menu'
 require 'takeaway'
+require 'text'
 
 describe 'User Stories' do
-  let(:takeaway) { Takeaway.new(menu, order_klass) }
+  let(:takeaway) { Takeaway.new(menu, order_klass, text) }
   let(:menu) { Menu.new }
   let(:order_klass) { Order }
+  let(:text) { Text.new }
 
   context  do
     before(:each) do
@@ -48,6 +50,18 @@ describe 'User Stories' do
         takeaway.place_order(:pie, 4)
         expect(takeaway.confirm_order).
         to eq "soup x 3: total £14.97\npie x 4: total £31.96\nFinal bill: £46.93"
+      end
+    end
+  end
+
+  describe 'User Story 4' do
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+    context 'when a customer places an order' do
+      it 'it should send a confirmation text' do
+        expect(takeaway.text).to receive(:send_text).with(Integer)
+        takeaway.complete_order
       end
     end
   end
