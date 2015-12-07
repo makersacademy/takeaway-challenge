@@ -17,7 +17,7 @@ cd takeaway-challenge
 gem install bundle  
 bundle
 ```
-To receive the SMS messages you will to make a (free) 
+To receive the SMS messages you will have to make a (free) 
 [Twilio](https://www.twilio.com/) account and then set up three environment 
 variables:  
 `ACCOUNTSID=` Your Twilio Account SID.  
