@@ -9,9 +9,8 @@ class Order
   private
 
   def parse order
-    order.split(', ').reduce({}) do |result, item|
-      result[item[/[a-zA-Z].*/]] = item[/^\d+/].to_i
-      result
+    order.split(', ').each_with_object({}) do |item, hash|
+      hash[item[/[a-zA-Z].*/]] = item[/^\d+/].to_i
     end
   end
 end
