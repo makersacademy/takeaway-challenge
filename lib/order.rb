@@ -3,8 +3,8 @@ require_relative 'menu'
 class Order
   attr_reader :menu , :basket
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu=Menu.new)
+    @menu = menu
     @basket = {}
   end
 

@@ -10,9 +10,9 @@ class Takeaway
 
   Dotenv.load
 
-  def initialize
-    @menu = Menu.new
-    @order = Order.new
+  def initialize(order=Order.new, menu=Menu.new)
+    @menu = menu
+    @order = order
     @twilio_number = ENV["TWILIO_NUMBER"]
     @client_number = ENV["CLIENT_NUMBER"]
   end
