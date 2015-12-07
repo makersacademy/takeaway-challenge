@@ -32,7 +32,7 @@ $ bundle install
 ```
  
 # Testing 
-You now have a copy of this project. Inside the project you will find spec files that you can use to test this program. to do so make sure ruby gem is installed.
+You now have a copy of this project. Inside the project you will find spec files that you can use to test this program. to do so make sure ruby '''rspec''' gem is installed.
 ```sh
 $ gem install rspec
 ```
