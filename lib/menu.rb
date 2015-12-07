@@ -7,9 +7,9 @@ class Menu
   end
 
   def format
-    MENU.inject("") { |result, (key, value)|
+    MENU.reduce("") do |result, (key, value)|
       dots = SPACERS - (key.length + (value.to_s.split("").size))
       result + key + ('.' * dots) + '£' + value.to_s + "\n" 
-    }
+    end
   end
 end

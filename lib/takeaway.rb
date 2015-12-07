@@ -37,7 +37,7 @@ class Takeaway
   end
 
   def correct?(dishes, total)
-    dishes.inject(0) do |result, (dish, number)| 
+    dishes.reduce(0) do |result, (dish, number)| 
       result + (the_menu.raw[dish] * number)
     end == total
   end
