@@ -31,8 +31,9 @@ class Order
   attr_writer :menu, :basket
 
   def pretty_print_basket
-    msg = ''
-    basket.each { |k, v| msg << "#{v}x #{k}(s)\n"}
-    msg
+    msg = format('%1$- 20s %2$s %3$s', 'DISH', 'QUANTITY', "\n")
+    msg << '-' * 29 + "\n"
+    basket.each { |k, v| msg << format('%1$- 20s %2$s %3$s', k, v, "\n") }
+    msg << '-' * 29
   end
 end

@@ -35,6 +35,16 @@ describe Order do
       order.add('dish1', 2)
       order.add('dish2', 1)
     end
+    describe '#show_basket' do
+      it 'print dishes available' do
+        msg =  "DISH                 QUANTITY \n"
+        msg << "-----------------------------\n"
+        msg << "dish1                2 \n"
+        msg << "dish2                1 \n"
+        msg << "-----------------------------"
+        expect(order.show_basket).to eq msg
+      end
+    end
     describe '#add' do
       it 'adds the dish with no overwriting previous amount' do
         order.add('dish1', 1)
