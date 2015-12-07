@@ -24,7 +24,7 @@ end
   describe 'User Story 2' do
 
     it 'allows a customer to place an order' do
-      expect{takeaway.place_order("starter", 1, "desert", 3, 14)}.not_to raise_error
+      expect{takeaway.place_order("starter", 1, 5)}.not_to raise_error
     end
 
     it 'prevents a customer from ordering unavailable dishes' do

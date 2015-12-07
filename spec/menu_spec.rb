@@ -17,7 +17,7 @@ describe Menu do
 
     it 'prevents a customer from ordering unavailable dishes' do
       message = "Unable to place order: dish not on menu"
-      expect{menu.check_all_dishes_are_on_menu({"steak": 1})}.to raise_error message
+      expect{menu.check_dishes_are_on_menu({"steak": 1})}.to raise_error message
     end
 
   end

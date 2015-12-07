@@ -1,6 +1,7 @@
 class Order
 
-  attr_reader :order_as_hash, :menu, :actual_total, :customer_supplied_total, :text
+  attr_reader :order_as_hash, :menu, :actual_total, :customer_supplied_total,
+  :text
 
   def initialize(menu = Menu.new, text = Text.new)
     @menu = menu
@@ -13,9 +14,9 @@ class Order
     text_confirmation(text)
   end
 
-  def check_order (dishes)
+  def check_order(dishes)
     convert_order_to_hash(dishes)
-    check_all_dishes_are_on_menu
+    check_dishes_are_on_menu
     check_customer_and_actual_totals_match
   end
 
@@ -25,8 +26,8 @@ class Order
     @order_as_hash = Hash[*dishes]
   end
 
-  def check_all_dishes_are_on_menu
-     menu.check_all_dishes_are_on_menu(order_as_hash)
+  def check_dishes_are_on_menu
+     menu.check_dishes_are_on_menu(order_as_hash)
   end
 
   def check_customer_and_actual_totals_match

@@ -12,8 +12,8 @@ class Menu
     end
   end
 
-  def check_all_dishes_are_on_menu(order_as_hash)
-    order_as_hash.each do |dish, quantity|
+  def check_dishes_are_on_menu(order_as_hash)
+    order_as_hash.each do |dish, _quantity|
       fail "Unable to place order: dish not on menu" unless dishes.key?(dish)
     end
   end

@@ -7,7 +7,7 @@ describe Order do
 
   before do
     allow(order).to receive(:text_confirmation)
-    allow(menu).to receive(:check_all_dishes_are_on_menu)
+    allow(menu).to receive(:check_dishes_are_on_menu)
     allow(menu).to receive(:calculate_order_total)
   end
 
