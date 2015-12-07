@@ -14,15 +14,16 @@ A `Takeaway`
 ```
 git clone git@github.com:hibreez/takeaway-challenge.git  
 cd takeaway-challenge  
-gem install bundle  
+gem install bundler  
 bundle
 ```
 To receive the SMS messages you will have to make a (free) 
 [Twilio](https://www.twilio.com/) account and then set up three environment 
-variables:  
+variables:
 `ACCOUNTSID=` Your Twilio Account SID.  
 `AUTHTOKEN=` Your Twilio Auth Token.  
-`MYPHONE=` A verified phone number to receive the messages.   
+`MYPHONE=` A verified phone number to receive the messages.  
+You can set these globally or just in a the file `.env` in the project root.
 
 
 ####User Stories

@@ -1,5 +1,6 @@
 require 'twilio-ruby'
 require 'dotenv'
+Dotenv.load
 
 class Phone
   SMS = "Thank you! Your order was placed and will be delivered before "

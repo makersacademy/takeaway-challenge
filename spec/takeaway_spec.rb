@@ -24,10 +24,6 @@ describe Takeaway do
   end
 
   describe '#order' do
-    it 'accepts an order' do
-      expect(takeaway).to respond_to(:place_order).with(2).arguments
-    end
-
     it 'raises error for order with unexpected dish' do
       takeaway = described_class.new(menu, carrot_order_klass, phone)
       expect{takeaway.place_order('99 Carrot', 666)}.
