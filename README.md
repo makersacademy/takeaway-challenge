@@ -45,7 +45,7 @@ $ rspec
 ```
 # Getting started
 
- ## 1. Creating a new Takeaway
+ # 1. Creating a new Takeaway
 
 Once you have verified the rspec tests are passing and you are now bathing in a glory of green lights.
 you can safely assume you can use this takeaway program with relevant ease.
@@ -63,23 +63,24 @@ The ``` Takeaway``` class takes 3 arguments (Name_of_takeaway,  Phone_No ,Addres
 => <Takeaway:0x007f9b4a0c61c8 @name="Sandys Sandwiches", @tel="+555-666", @address="8 King Street NW5 4LQ", @menus=[], @orders=[]> 
 ```
 
- ### 2. Creating New Menus
+ # 2. Creating New Menus
 
 You Now have a Takeaway. This take away will accept a ```Menu``` object and a ```Order``` object and store it in the ```@menus``` and ```@order``` attribute of the Takeaway. To do this you have two handy methods at your disposal:
  
  - ```Takeaway#create_menu ```
  - ```Takeaway#create_order```
  
-To continue our example above we can use these methods on the ```new_takeaway``` we created by simplycalling the ```create_menu``` method on it.
+To continue our example above we can use these methods on the ```new_takeaway``` we created by simply calling the ```create_menu``` method on it.
 
- ### 3. Creating a New Order
+ # 3. Creating a New Order
  You now have a mneu from which you can orer
- ### 4. Adding Meal Items to Cart.
  
- ### 5. Finalise order with SMS confirmation
+ # 4. Adding Meal Items to Cart.
+ 
+ # 5. Finalise order with SMS confirmation
  
  
- ### Appendix. Program Stucture - chain of command.
+ # Appendix. Program Stucture - chain of command.
  
  
 |               |Takeaway       |       |
