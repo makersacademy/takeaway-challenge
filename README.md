@@ -18,10 +18,11 @@ chicken = Dish.new(name: chicken, price: 2)
 Note that the labels `name:` and `price:` must be used and both attributes must
 be provided. However, the order in which they are provided is not important.
 
-A Dish List can then be created as follows:
+A Dish List can then be created as follows. Note that dishes have to be entered
+into an array `[]`.
 
 ```ruby
-dish_list = DishList.new(pizza, chicken)
+dish_list = DishList.new([pizza, chicken])
 ```
 
 The `OrderList` class provides customers with an interface through which to place

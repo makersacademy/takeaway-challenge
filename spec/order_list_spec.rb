@@ -36,8 +36,8 @@ describe OrderList do
         context 'when given total does matches sum of dishes in customer\'s order' do
           it 'sends a text' do
             order_list.place_order({pizza: 1},1)
-            expect(self).to receive(:send_text_message)
-            send_text_message
+            expect(order_list.client.messages).to receive(:create)
+            order_list.client.messages.create
           end
         end
 

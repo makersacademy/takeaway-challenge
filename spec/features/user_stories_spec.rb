@@ -2,7 +2,7 @@ describe 'User Stories' do
 
   let(:dish1) {Dish.new(name: :pizza, price: 1)}
   let(:dish2) {Dish.new(name: :chicken, price: 2)}
-  let(:dish_list) {DishList.new(dish1, dish2)}
+  let(:dish_list) {DishList.new([dish1, dish2])}
   let(:order_list) {OrderList.new(dish_list)}
 
   before(:example){allow(order_list.client.messages).to receive(:create)}
@@ -51,8 +51,8 @@ describe 'User Stories' do
       context 'when given total does matches sum of dishes in customer\'s order' do
         it 'sends a text' do
           order_list.place_order({pizza: 1},1)
-          expect(self).to receive(:send_text_message)
-          send_text_message
+          expect(order_list.client.messages).to receive(:create)
+          order_list.client.messages.create
         end
       end
     end

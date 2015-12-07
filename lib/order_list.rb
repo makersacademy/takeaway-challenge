@@ -48,11 +48,15 @@ class OrderList
   end
 
   def send_text_message
-    @client.messages.create(
+    client.messages.create(
     from: PersonalDetails::TwiioPhone,
     to: PersonalDetails::PersonalPhone,
-    body:"Thank you! Your order was placed and will be delivered before #{Time.new.hour+1}:"+ Time.new.strftime("%M")
+    body:"Thank you! Your order was placed and will be delivered before" + delivery_hr_and_min
     )
+  end
+
+  def delivery_hr_and_min
+    "#{Time.new.hour+1}:"+ Time.new.strftime("%M")
   end
 
 end
