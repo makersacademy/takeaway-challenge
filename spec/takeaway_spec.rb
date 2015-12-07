@@ -32,6 +32,7 @@ describe Takeaway do
     #   expect{takeaway.total_price}.to change{takeaway.total_bill}.by(16)
     # end
 
+    
     it 'sends a text message' do
       expect(takeaway.text_confirmation(customer)).to eq(customer)
     end

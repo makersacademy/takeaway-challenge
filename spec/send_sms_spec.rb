@@ -9,7 +9,7 @@ describe Send_SMS do
     before do
       allow(sms).to receive(:confirmation_text).and_return(customer)
     end
-    it 'sends text messages with 1 hour ahead time stamp' do
+    it 'sends text messages with 1 hour ahead stamp' do
       expect(sms.confirmation_text(customer)).to eq(customer)
     end
   end
