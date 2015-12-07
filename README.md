@@ -1,9 +1,13 @@
 #Takeaway Challenge
+[![Build Status]
+(https://travis-ci.org/hibreez/takeaway-challenge.svg?branch=master)]
+(https://travis-ci.org/hibreez/takeaway-challenge) 
+[![Coverage Status]
+(https://coveralls.io/repos/hibreez/takeaway-challenge/badge.png)]
+(https://coveralls.io/r/hibreez/takeaway-challenge)
 
-[![Build Status](https://travis-ci.org/hibreez/takeaway-challenge.svg?branch=master)](https://travis-ci.org/hibreez/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/hibreez/takeaway-challenge/badge.png)](https://coveralls.io/r/hibreez/takeaway-challenge)
-
-Solution to [takeaway challenge](https://github.com/makersacademy/takeaway-challenge).
+Solution to [takeaway challenge]
+(https://github.com/makersacademy/takeaway-challenge).
 
 ####Installation  
 `git clone git@github.com:hibreez/takeaway-challenge.git`  
