@@ -7,6 +7,7 @@ class Order
   end
 
   def add(dish, quantity)
+    fail 'That dish is not in the menu' unless menu.available?(dish)
     items[dish] += quantity
   end
 
@@ -25,4 +26,3 @@ class Order
   end
 
 end
-  

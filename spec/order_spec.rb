@@ -8,21 +8,24 @@ describe Order do
   # let(:price) { {'Classic Fondue': 13.0, 'Special Fondue': 14.5} }
 
   describe '#add' do
+
+    before do
+      allow(menu).to receive(:available?).with(:'Classic Fondue').and_return(true)
+      allow(menu).to receive(:available?).with(:'Special Fondue').and_return(true)
+      allow(menu).to receive(:price).with(:'Classic Fondue').and_return(13.0)
+      allow(menu).to receive(:price).with(:'Special Fondue').and_return(14.5)
+    end
+
     it 'should add the selected dishes with specified quantity to the order' do
       order.add(:'Classic Fondue', 2)
       expect(order.items).to include('Classic Fondue': 2)
     end
-    # it 'should raise error message if dish requested is not in the menu' do
-    #   order.add('Chicken', 1)
-    #   expect(order.items).to raise_error 'That dish is not in the menu'
-    # end
-  end
+    it 'should raise error message if dish requested is not in the menu' do
+      allow(menu).to receive(:available?).with(:Chicken).and_return(false)
+      expect { order.add(:Chicken, 2) }.to raise_error "That dish is not in the menu"
+    end
 
-  describe '#total' do
     it 'calculates the total for the order' do
-      allow(menu).to receive(:price).with(:'Classic Fondue').and_return(13.0)
-      allow(menu).to receive(:price).with(:'Special Fondue').and_return(14.5)
-
       new_order
       total = 40.5
       expect(order.total).to eq(total)
