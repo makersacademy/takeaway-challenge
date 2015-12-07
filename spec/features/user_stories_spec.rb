@@ -13,4 +13,10 @@ describe 'User stories' do
     takeaway.add(:'Cheeseburger', 1)
       expect(takeaway.order).to include('Cheeseburger': 1)
     end
+
+  it 'allows the order total to be sum of items added' do
+    takeaway.add('Cheeseburger', 1)
+    takeaway.add('Cheeseburger', 1)
+    expect(takeaway.total).to eq '£10.00'
   end
+end
