@@ -4,12 +4,13 @@ require 'send_sms.rb'
 
 class Order
 
-  attr_reader :options
+  attr_reader :options, :twil
   attr_accessor :current
 
   def initialize(options)
     @options = options
     @current = {}
+    @twil = Twillio.new
   end
 
   # def options
@@ -25,8 +26,7 @@ class Order
   def place_order(current, expected_total)
     calculate_total
     raise"Sorry mate- but your total is actually #{@total}" if expected_total != @total
-    twil = Twillio.new
-    twil.confirmation_text(display_order)
+    @twil.confirmation_text(display_order)
   end
 
   def choose(dish, quantity)

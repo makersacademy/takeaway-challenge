@@ -27,6 +27,9 @@ describe Order do
     end
   end
   describe '#place_order' do
+    it 'sends text if user expects correct total' do
+      expect(order.twil).to respond_to(:confirmation_text).with(1).argument
+    end
 
     it "raises error if the user's expected total does not match the actual total" do
       order.current= {"beef-chuck brisket sub"=>3}

@@ -11,4 +11,12 @@ describe Twillio do
   it 'allow customers to place order by passing current dishes/quantities and expected total' do
     expect(subject).to respond_to(:confirmation_text).with(1).argument
   end
+
+
+  it 'sends a text message to confirm a succesful order' do
+    twil.confirmation_text("Hello!", ENV["TWILIO_TEST_SID"], ENV["TWILIO_TEST_AUTH_TOKEN"], ENV["TWILIO_MAGIC_NUMBER"])
+    expect(twil.message).not_to eq nil
+  end
+
+
 end
