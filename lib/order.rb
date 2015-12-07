@@ -25,5 +25,4 @@ class Order
   end
 
 end
-  # def finalize_order
-  # end
+  
