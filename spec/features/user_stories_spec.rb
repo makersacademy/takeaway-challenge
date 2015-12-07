@@ -36,9 +36,6 @@ describe 'User Stories' do
 
     context 'when all selected dishes are available' do
 
-      it 'does not raise an error' do
-        expect{order_list.place_order(pizza: 1)}.not_to raise_error
-      end
       # As a customer
       # So that I can verify that my order is correct
       # I would like to check that the total I have been given matches
@@ -52,9 +49,10 @@ describe 'User Stories' do
       end
 
       context 'when given total does matches sum of dishes in customer\'s order' do
-        it 'does not raise an error' do
-          expect{order_list.place_order({pizza: 1},1)}.not_to raise_error
-
+        it 'sends a text' do
+          order_list.place_order({pizza: 1},1)
+          expect(self).to receive(:send_text_message)
+          send_text_message
         end
       end
     end

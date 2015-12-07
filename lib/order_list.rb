@@ -22,11 +22,7 @@ class OrderList
         ordered_dishes_available?(amount_list)
     fail 'Total does not match sum of dishes in order' unless
        total.nil? || total == dish_sum(amount_list)
-    @client.messages.create(
-    from: PersonalDetails::TwiioPhone,
-    to: PersonalDetails::PersonalPhone,
-    body:"Thank you! Your order was placed and will be delivered before #{Time.new.hour+1}:"+ Time.new.strftime("%M")
-    )
+    send_text_message
   end
 
   private
@@ -49,6 +45,14 @@ class OrderList
 
   def ordered_price_list(amount_list)
     price_list.delete_if{|key| amount_list[key].nil?}
+  end
+
+  def send_text_message
+    @client.messages.create(
+    from: PersonalDetails::TwiioPhone,
+    to: PersonalDetails::PersonalPhone,
+    body:"Thank you! Your order was placed and will be delivered before #{Time.new.hour+1}:"+ Time.new.strftime("%M")
+    )
   end
 
 end

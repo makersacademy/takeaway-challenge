@@ -25,9 +25,6 @@ describe OrderList do
     end
 
     context 'all dishes selected are available' do
-      it 'does not raise an error' do
-        expect{order_list.place_order(pizza: 1)}.not_to raise_error
-      end
 
       context 'when given total does not match sum of dishes in customer\'s order' do
         it 'raises an error' do
@@ -37,8 +34,10 @@ describe OrderList do
       end
 
         context 'when given total does matches sum of dishes in customer\'s order' do
-          it 'does not raise an error' do
-            expect{order_list.place_order({pizza: 1},1)}.not_to raise_error
+          it 'sends a text' do
+            order_list.place_order({pizza: 1},1)
+            expect(self).to receive(:send_text_message)
+            send_text_message
           end
         end
 
