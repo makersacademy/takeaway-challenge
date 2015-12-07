@@ -24,3 +24,17 @@ $ gem install rspec
 $ cd MyTakeAway
 $ rspec
 ```
+# Creating a new Takeaway
+
+Once you have verified the rspec tests are passing and you are now bathing in a glory of green lights.
+you can safely assume you can use this takeaway program with relevant ease.
+
+First things first, fire up your IRB:
+```sh $ irb
+2.2.3 :001 > require './lib/take_away.rb'
+ => true 
+```
+To create a new Takeawy object
+```sh
+$ new_takeaway = Takeaway.new("Sandys Sandwiches","38","King Street","NW5 4LQ","+555-666")
+```
