@@ -1,3 +1,5 @@
+require_relative 'message'
+
 class Order
   attr_reader :items
 
@@ -7,12 +9,15 @@ class Order
   end
 
   def add(dish, quantity)
-    items[dish] += quantity
+    fail 'That dish is not in the menu' unless menu.available?(dish)
+    items[dish] = quantity
   end
 
   def total
     items_totals.inject(:+)
   end
+
+  def send_text
 
   private
 
@@ -25,4 +30,3 @@ class Order
   end
 
 end
-  
