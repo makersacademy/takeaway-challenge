@@ -17,8 +17,8 @@ class Takeaway
   end
 
   def place_order(order, quantity, total, number)
-    fail "Wrong total!" if total != order.calculate_cost(order)
-    @order_time = Time.now + 3600
+    fail "Wrong total!" if total != self.order.calculate_cost(order)
+    @order_time = Time.new + 3600
     send_sms(number)
   end
 
@@ -31,7 +31,7 @@ class Takeaway
     @client.messages.create(
       from: credentials["TWILIO_SMS_NUMBER"],
       to: number,
-      body: "Thank you! Your order was placed and will be delivered before #{order_time}"
+      body: "Thank you! Your order was placed and will be delivered before #{order_time.strftime("%H:%M")}"
     )
   end
 
