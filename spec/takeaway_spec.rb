@@ -25,17 +25,20 @@ describe Takeaway do
   end
 
   describe '#place_order(expected_bill)' do
-    it 'raises an error if bill and expected bill are different' do
-      different = 'bill and expected bill are different'
+
+    before do
       takeaway.add_to_order('pizza', 2)
       takeaway.add_to_order('chips', 1)
+    end
+
+    it 'raises an error if bill and expected bill are different' do
+      different = 'bill and expected bill are different'
       expect{ takeaway.place_order(10) }.to raise_error different
     end
 
-    it 'confirms that the order was placed successfully' do
-      takeaway.add_to_order('pizza', 2)
-      takeaway.add_to_order('chips', 1)
-      expect(takeaway.place_order(15)).to eq 'order successfully placed'
+    it 'calls the send_sms method' do
+      expect(takeaway).to receive(:send_sms)
+      takeaway.place_order(15)
     end
   end
 end
