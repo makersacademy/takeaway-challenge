@@ -1,5 +1,5 @@
 require_relative 'menu'
-require_relative 'msg'
+require_relative 'my_msg'
 
 class Restaurant
   attr_reader :menu, :msg, :customer_order, :actual_total
@@ -53,7 +53,7 @@ class Restaurant
   def calculate_actual_total
     @actual_total = 0
     customer_order.each do |item|
-      if menu.list.has_key?(item[0])
+      if menu.list.key?(item[0])
         @actual_total += ((item[1].to_i) * menu.list[item[0]])
       end
     end
