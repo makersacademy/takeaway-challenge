@@ -1,4 +1,12 @@
+require_relative 'text_alert'
+
 class Checkout
+
+  attr_reader :text_alert
+
+  def initialize(text_alert = TextAlert.new)
+    @text_alert = text_alert
+  end
 
   def sum_each(order, prices)
     summary_string = ""
@@ -19,6 +27,7 @@ class Checkout
     expected_payment = sum_total(order, prices)
     bad_payment = "Cannot be accepted, you need to pay £#{expected_payment}"
     fail bad_payment if payment != expected_payment
+    text_alert.send_confirmation
   end
 
 end
