@@ -6,8 +6,8 @@ class Text
 
 def initialize
   # put your own credentials here
-  account_sid = 'AC49c1a326793ac7fdaf8635cb8c2201ff'
-  auth_token = '11c78e30dfed8ccd4bc329c165976e2e'
+  account_sid = ENV["SID"]
+  auth_token = ENV["TOKEN"]
 
   # set up a client to talk to the Twilio REST API
   @client = Twilio::REST::Client.new account_sid, auth_token
