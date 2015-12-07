@@ -1,6 +1,101 @@
 Takeaway Challenge
 ==================
 
+This is a program written by Sara Tateno in response to Makers Academy's Weekend Challenge #2.
+
+It is designed to meet the following user stories:-
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+To install the program:-
+  1. Fork and clone the repo, e.g. `git clone git@github.com:saratateno/takeaway-challenge.git`
+  2. Run `gem install bundler` in your directory
+  3. Run `bundle` to install the project gems
+  4. Create a `.env` file in the project root directory
+  5. Store your Twilio credentials in the  `.env` file in the following format:-
+  ```
+  TWILIO_NUMBER='+441234567890'
+  TWILIO_MOBILE='+440987654321'
+  TWILIO_ACCOUNT_SID='ACxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  TWILIO_AUTH_TOKEN='cd0xxxxxxxxxxxxxxxxxxxxxxxxx'
+  ```
+
+To use the program:-
+  1. Run `irb` or `pry` from the command line
+  2. `load './lib/takeaway.rb'`
+  3. `takeaway = Takeaway.new`
+
+You can now use the following commands:-
+* `takeaway.view_menu` to see the available dishes
+* `takeaway.add_to_order(dish_name)` entering a string of the dish name to add to your order
+* `takeaway.remove_from_order(dish_name)` entering a string of the dish name to remove it from your order
+* `takeaway.view_order` to see a summary of your order
+* `takeaway.total_price` to see the total cost of your order
+* `takeaway.checkout(total, phone_number)` to purchase your order and to receive a confirmation text to your phone
+
+You are required to 'pay' the correct amount for your order to be processed.
+
+This program comes with a short menu of only three items. Dishes can be added / removed to the menu (by the takeaway owner) by creating new dish objects `menu.add(Dish.new(dish_name, price))`.
+
+Program example:-
+```sh
+[5] pry(main)> t = Takeaway.new
+=> #<Takeaway:0x007fe7c9e0c640
+ @menu=
+  #<Menu:0x007fe7c9e0c618
+   @dishes=
+    [#<Dish:0x007fe7c9e0c5a0 @name="Satay", @price=4.5>,
+     #<Dish:0x007fe7c9e0c550 @name="Spring rolls", @price=3.0>,
+     #<Dish:0x007fe7c9e0c500 @name="Tom yum soup", @price=4.9>]>,
+ @order=#<Order:0x007fe7c9e0c4b0 @basket={}>>
+[6] pry(main)> t.add_to_order('Satay')
+=> 1
+[7] pry(main)> t.view_order
+1x Satay = 4.5
+=> {#<Dish:0x007fe7c9e0c5a0 @name="Satay", @price=4.5>=>1}
+[8] pry(main)> t.add_to_order('Spring rolls', 3)
+=> 3
+[9] pry(main)> t.view_order
+1x Satay = 4.5
+3x Spring rolls = 9.0
+=> {#<Dish:0x007fe7c9e0c5a0 @name="Satay", @price=4.5>=>1,
+ #<Dish:0x007fe7c9e0c550 @name="Spring rolls", @price=3.0>=>3}
+[10] pry(main)> t.add_to_order('Tom yum soup', 2)
+=> 2
+[11] pry(main)> t.remove_from_order('Satay')
+=> 1
+[12] pry(main)> t.view_order
+3x Spring rolls = 9.0
+2x Tom yum soup = 9.8
+=> {#<Dish:0x007fe7c9e0c550 @name="Spring rolls", @price=3.0>=>3,
+ #<Dish:0x007fe7c9e0c500 @name="Tom yum soup", @price=4.9>=>2}
+[13] pry(main)> t.total_price
+=> 18.8
+[14] pry(main)> t.checkout(18.8)
+=> "Thank you! Your order was placed and will be delivered by 21:38"
+```
+
+
+
+Takeaway Challenge
+==================
+
 Instructions
 -------
 
@@ -56,7 +151,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
