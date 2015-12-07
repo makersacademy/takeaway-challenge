@@ -35,7 +35,7 @@ class Takeaway
 
   def check_customer_and_actual_totals_match
     calculate_order_total
-    message = "Unable to place order: supplied total doesn't match actual total"
+    message = "Unable to place order: total doesn't match actual total"
     fail message  if totals_dont_match?
   end
 
