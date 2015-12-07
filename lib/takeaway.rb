@@ -12,7 +12,9 @@ class Takeaway
   end
 
   def show_dishes
-    print "starter : 5\nmains : 10\ndesert : 3\n"
+    menu.each do |key, value|
+    puts "#{key} : #{value}"
+    end
   end
 
   def order(*dishes)
