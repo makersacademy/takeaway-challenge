@@ -50,7 +50,7 @@ $ rspec
 Once you have verified the rspec tests are passing and you are now bathing in a glory of green lights.
 you can safely assume you can use this takeaway program with relevant ease (caveat emptor).
 
-First things first, fire up your IRB and require the file (make sure you are already in the project folder when you do this) :
+First things first, fire up IRB and require the file (make sure you are already in the project folder when you do this) :
 ```sh 
 $ irb
 2.2.3 :001 > require './lib/take_away.rb'
