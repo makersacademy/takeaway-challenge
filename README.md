@@ -63,14 +63,14 @@ The ``` Takeaway``` class takes 3 arguments (Name_of_takeaway,  Phone_No ,Addres
 => <Takeaway:0x007f9b4a0c61c8 @name="Sandys Sandwiches", @tel="+555-666", @address="8 King Street NW5 4LQ", @menus=[], @orders=[]> 
 ```
 
-## 2. Creating New Menus
-
-You Now have a Takeaway. This take away will accept a ```Menu``` object and a ```Order``` object and store it in the ```@menus``` and ```@order``` attribute of the Takeaway. To do this you have two handy methods at your disposal:
+You Now have a Takeaway. This take away will accept a ```Menu``` object and a ```Order``` object and store it in the ```@menus``` and ```@orders``` attributes of the Takeaway. To do this you have two handy methods at your disposal:
  
  - ```Takeaway#create_menu ```
  - ```Takeaway#create_order```
- 
-To continue our example above we can use these methods on the ```new_takeaway``` we created by simply calling the ```create_menu``` method on it.
+
+## 2. Creating New Menus
+
+To continue our example above we can use these methods on the ```new_takeaway``` we created by simply calling the ```create_menu``` method on it. This will give us a new menu object and pass that to the takeaways menus attribute as one of possibly many menus the takeaway may choose to offer. lovely job!
 
 ## 3. Creating a New Order
  You now have a menu from which you can order
