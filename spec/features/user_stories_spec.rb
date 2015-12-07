@@ -2,7 +2,7 @@ describe 'User Stories' do
 
   let(:dish1) {Dish.new(name: :pizza, price: 1)}
   let(:dish2) {Dish.new(name: :chicken, price: 2)}
-  let(:dish_list) {DishList.new([dish1, dish2])}
+  let(:dish_list) {DishList.new(dish1, dish2)}
   let(:order_list) {OrderList.new(dish_list)}
 
   before(:example){allow(order_list.client.messages).to receive(:create)}
