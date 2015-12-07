@@ -8,14 +8,14 @@ class Order
 
   def choose(dish, quantity=1)
     quantity.times do
-      menu.select { |k,v| dishes.push([k, v]) if k == dish }
+      menu.select { |item,price| dishes.push([item, price]) if item == dish }
     end
   end
 
   def calculate_quantities(order)
-    b = Hash.new(0)
-    dishes.each { |v| b[v] += 1 }
-    b.each { |k, v| puts "#{v} x #{k[0]}" }
+    quantities = Hash.new(0)
+    dishes.each { |num| quantities[num] += 1 }
+    quantities.each { |item, num| puts "Your order contains #{num} x #{item[0]}" }
     @quantity = dishes.length
   end
 
