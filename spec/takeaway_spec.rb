@@ -2,11 +2,11 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) {described_class.new(double(:text, send: nil))}
+  subject(:takeaway) {described_class.new} #double(:text, send: nil)
   let(:menu) {"starter : 5\nmains : 10\ndesert : 3\n"}
 
   before do
-
+    allow(takeaway).to receive(:text_confirmation)
   end
 
   describe 'looking at a list of dishes with prices' do

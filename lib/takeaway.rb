@@ -23,11 +23,13 @@ class Takeaway
     text_confirmation(text)
   end
 
+
+
+  private
+
   def text_confirmation(text)
     text.send
   end
-
-  private
 
   def check_customer_and_actual_totals_match
     calculate_order_total
