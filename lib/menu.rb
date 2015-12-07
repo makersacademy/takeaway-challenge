@@ -1,5 +1,6 @@
 require 'yaml'
-
+require 'twilio-ruby'
+require_relative 'twilio.rb'
 
 class Menu
 
@@ -34,6 +35,12 @@ attr_accessor :basket
     sum.inject(:+)
   end
 
+  def complete_order
+    take_payment
+    confirm_order
+    empty_basket
+  end
+
 
 private
 
@@ -47,13 +54,13 @@ private
     @basket.select{|item| item === item_name}
   end
 
+  def empty_basket
+    @basket= []
+  end
+
+
+  def take_payment
+
+  end
 
 end
-
-
-
-
-#menu = Menu.new(menu.txt) # => makes a new menu that it reads from a text file.
-
-#then we just need a menu.txt of the format:
-# "Item name": "Price in £s"

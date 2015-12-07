@@ -49,28 +49,19 @@ describe "Menu" do
       menu.choose(:"Kielbasa Chicken", 1)
       expect(menu.total).to eq 4
     end
-
   end
 
   describe "#complete_order" do
 
-    xit "Resets the basket after completion" do
+    it "Resets the basket after completion" do
       menu = Menu.new('lib/menu.yaml')
       menu.choose(:"Bacon ipsum", 1)
+      menu.complete_order
       expect(menu.basket).to be_empty
     end
 
-  end
+    it "sends a confirmation text on completion" do
 
-  describe "#order" do
-    xit "Displays the order so it can be reviewed" do
-      menu = Menu.new('lib/menu.yaml')
-      menu.choose(:"Bacon ipsum", 1)
-      menu.sum
     end
-
-
   end
-
-
 end
