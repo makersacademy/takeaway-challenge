@@ -12,6 +12,11 @@ describe 'User Stories' do
       menu = Menu.new
       expect(menu.list).not_to be_empty
     end
+
+    it 'should allow user to add a new dish to the menu' do
+      menu = Menu.new
+      expect { menu.add_menu_item("Dish 4", 4.00) }.to change{ menu.list.count}.by(1)
+    end
   end
 
   describe 'Order' do

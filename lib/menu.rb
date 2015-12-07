@@ -7,4 +7,8 @@ class Menu
               "Dish 3" => 3.00 }
   end
 
+  def add_menu_item(dish, price)
+    list[dish] = price
+  end
+
 end
