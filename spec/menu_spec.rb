@@ -1,17 +1,11 @@
 require 'menu'
+
 describe Menu do
-  subject(:menu) {described_class.new(dishes)}
-  let(:dishes) do
-    {Chicken: 3.99, Falafel: 4.50}
-    
-  end
-  it 'must show a list of dishes with prices' do
-    expect(menu.dishes).to eq (dishes)
-  end
-  it 'prints a list of dishes with prices' do
-    printed_menu = "Chicken £3.99, Falafel £4.50"
-    expect(menu.print).to eq(printed_menu)
-  end
+it 'must show a list of dishes with prices' do
+  menu=Menu.new
+expect(menu.dish_list).to eq ({:chicken => 3, :beef => 4, :pizza => 5})
+end
+
 
 
 
