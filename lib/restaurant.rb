@@ -1,5 +1,5 @@
 require_relative 'menu'
-require_relative 'my_msg'
+require_relative 'msg'
 
 class Restaurant
   attr_reader :menu, :msg, :customer_order, :actual_total
