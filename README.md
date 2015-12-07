@@ -33,4 +33,4 @@ I first determined the objects and messages that the program would need to conta
 -Message (sms functionality was integrated using Twilio)
 -Takeaway
 
-Once the classes and corresponding responsibilities had been established
+Once the classes and corresponding responsibilities had been established I proceeded working in a test driven manner following the Red/Green/Refactor cycle.
