@@ -4,11 +4,14 @@ Solution to [takeaway challenge]
 (https://github.com/makersacademy/takeaway-challenge).
 
 Takeaway restaurant ordering system. 
-Uses classes: `Takeaway`, `Menu`, `Order` and `Phone`.  
+
+Uses [twilio-ruby](https://github.com/twilio/twilio-ruby) to send SMS messages 
+to confirm orders.
+
 A `Takeaway` restaurant   
-  displays it's `Menu` as a formatted list of dishes and prices,  
-  accepts user's `Order`s in plain text, confirms the price,   
-  and uses it's `Phone` to send texts confirming delivery time.  
++displays it's `Menu` as a formatted list of dishes and prices,  
++accepts user's `Order`s in plain text, confirms the price,   
++and uses it's `Phone` to send texts confirming delivery time.  
 
 ####Installation  
 ```
@@ -17,6 +20,12 @@ cd takeaway-challenge`
 gem install bundle`  
 bundle`
 ```
+To receive SMS messages you will to make a (free) 
+[Twilio](https://www.twilio.com/) account and then set up three environment 
+variables with your account details:
+`ACCOUNTSID=` Your Twilio Account SID.
+`AUTHTOKEN=` Your Twilio Auth Token.
+`MYPHONE=` A verified phone number to receive the messages.
 
 ####User Stories
 ```

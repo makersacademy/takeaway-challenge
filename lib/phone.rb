@@ -17,7 +17,7 @@ class Phone
   def send_text message
     @client.messages.create(
       from: '+441173251426',
-      to: ENV['PHONE'],
+      to: ENV['MYPHONE'],
       body: message
     )
   end
