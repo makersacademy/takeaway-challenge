@@ -43,13 +43,14 @@ class Takeaway
   end
 
   def new_order
-   @order = order_klass.new
+    @order = order_klass.new
   end
 
   def calculate_bill
-   bill = 0
-   @order.current_order.each{|k, v| bill += @menu.dishes[k] * v}
-   order_summary + "Final bill: £#{bill}"
+    bill = 0
+    @order.current_order.each{|k, v| bill += @menu.dishes[k] * v}
+    print order_summary
+    print "Final bill: £#{bill}"
   end
 
   def order_summary
@@ -58,7 +59,7 @@ class Takeaway
       cost = @menu.dishes[k] * v
       summary << "#{k} x #{v}: total £#{cost.round(2)}\n"
     end
-    summary
+    print summary
   end
 
 end

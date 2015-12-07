@@ -34,7 +34,9 @@ describe 'User Stories' do
       it 'it should let them place an order' do
         takeaway.place_order(:soup, 1)
         takeaway.place_order(:sandwich, 3)
-        expect(takeaway.check_order).to eq "soup x 1: total £4.99\nsandwich x 3: total £17.97\n"
+        expect{takeaway.check_order}.
+        to output("soup x 1: total £4.99\nsandwich x 3: total £17.97\n").
+        to_stdout
       end
     end
   end
@@ -48,8 +50,9 @@ describe 'User Stories' do
       it 'it should return the final bill' do
         takeaway.place_order(:soup, 3)
         takeaway.place_order(:pie, 4)
-        expect(takeaway.confirm_order).
-        to eq "soup x 3: total £14.97\npie x 4: total £31.96\nFinal bill: £46.93"
+        expect{takeaway.confirm_order}.
+        to output("soup x 3: total £14.97\npie x 4: total £31.96\nFinal bill: £46.93").
+        to_stdout
       end
     end
   end

@@ -2,14 +2,14 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject (:takeaway) { described_class.new(menu, order_klass, text) }
-  let (:menu) { double :menu, new: nil, dishes: dishes, on_menu?: nil }
-  let (:dishes) { {soup: 4.99, sandwich: 5.99, pie: 7.99} }
-  let (:order_klass) { double :order_klass, take_order: nil, new: order }
-  let (:order) { double :order, take_order: nil, current_order: current_order }
-  let (:current_order) { {pie: 3} }
-  let (:text) { double :text, send_text: nil }
-  let (:test_number) { double :test_nunber }
+  subject(:takeaway) { described_class.new(menu, order_klass, text) }
+  let(:menu) { double :menu, new: nil, dishes: dishes, on_menu?: nil }
+  let(:dishes) { {soup: 4.99, sandwich: 5.99, pie: 7.99} }
+  let(:order_klass) { double :order_klass, take_order: nil, new: order }
+  let(:order) { double :order, take_order: nil, current_order: current_order }
+  let(:current_order) { {pie: 3} }
+  let(:text) { double :text, send_text: nil }
+  let(:test_number) { double :test_nunber }
 
   context 'when starting an order' do
     describe '#check_menu' do
@@ -29,21 +29,22 @@ describe Takeaway do
 
       it 'should update the customer on items in basket' do
         line = "pie x 3: total £23.97\n"
-        expect(takeaway.place_order(:pie, 3)).to eq line
+        expect{takeaway.place_order(:pie, 3)}.to output(line).to_stdout
       end
     end
 
     describe '#check_order' do
       it 'should let the customer view their current order' do
-        expect(takeaway.check_order).to eq "pie x 3: total £23.97\n"
+        expect{takeaway.check_order}.to output("pie x 3: total £23.97\n").
+        to_stdout
       end
     end
 
     context 'when an order is nearing completion' do
       describe '#confirm_order' do
         it 'should allow the customer to check the final order' do
-          expect(takeaway.confirm_order).
-            to eq "pie x 3: total £23.97\nFinal bill: £23.97"
+          expect{takeaway.confirm_order}.
+          to output{"pie x 3: total £23.97\nFinal bill: £23.97"}.to_stdout
         end
       end
     end
