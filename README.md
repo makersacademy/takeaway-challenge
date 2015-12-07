@@ -12,10 +12,10 @@ A `Takeaway`
 
 ####Installation  
 ```
-git clone git@github.com:hibreez/takeaway-challenge.git`  
-cd takeaway-challenge`  
-gem install bundle`  
-bundle`
+git clone git@github.com:hibreez/takeaway-challenge.git  
+cd takeaway-challenge  
+gem install bundle  
+bundle
 ```
 To receive the SMS messages you will to make a (free) 
 [Twilio](https://www.twilio.com/) account and then set up three environment 
