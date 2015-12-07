@@ -1,3 +1,24 @@
+This is my submission for the Makers Academy week 2 weekend challenge.
+
+For this application to work, it is very important that you add your twilio account SID and auth token to your env variables as TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN. You can find these details here: https://www.twilio.com/user/account. You will also need to add your mobile phone number as MY_MOBILE_NUMBER. For the tests to work, you will also need to add your test account SID and your test auth token as TEST_TWILIO_ACCOUNT_SID and TEST_TWILIO_AUTH_TOKEN. These can be found here: https://www.twilio.com/user/account/phone-numbers/dev-tools/test-credentials
+
+Please run 'Bundle' from your command line to install all gems required.
+
+This application is designed to model a takeaway ordering service. Below is an example of how to run the code from PRY.
+
+[1] pry(main)> load './lib/takeaway.rb'
+=> true
+[2] pry(main)> takeaway = Takeaway.new
+=> #<Takeaway:0x007ffb649a11d8 @menu={"starter"=>5, "mains"=>10, "desert"=>3}, @text=#<Text:0x007ffb649a1188>>
+[3] pry(main)> takeaway.show_dishes
+starter : 5
+mains : 10
+desert : 3
+=> nil
+[4] pry(main)> takeaway.order("starter", 2, "mains", 2, "desert", 1, 33)
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/ACaee8365e73fec8578fcc85122bac9918/Messages/SM149215a1506842b98ec63d6d3bdbb19d>
+
+
 Takeaway Challenge
 ==================
 
@@ -56,7 +77,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
