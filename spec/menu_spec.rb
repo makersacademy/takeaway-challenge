@@ -17,4 +17,11 @@ describe Menu do
       expect(menu.available?('Chicken')).to be false
     end
   end
+
+  describe '#price' do
+    it 'calculates price of a dish' do
+      expect(menu.price('Classic Fondue')).to eq(13.0)
+    end
+  end 
+
 end

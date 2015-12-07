@@ -20,4 +20,8 @@ attr_reader :dishes
     dishes.key?(dish)
   end
 
+  def price(dish)
+    dishes[dish]
+  end
+
 end
