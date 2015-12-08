@@ -28,7 +28,7 @@ describe Takeaway do
       time_of_arrival = (Time.new + 3600).strftime("%H:%M")
       restaurant.order('maki rolls', 2)
       restaurant.order('california roll', 4)
-      expect(restaurant.place_order).to eq "You will receive a confirmation text shortly"
+      expect(restaurant.place_order).to eq "Thank you! Your order was placed and will be delivered before #{time_of_arrival} totalling £30.00"
     end
 
 

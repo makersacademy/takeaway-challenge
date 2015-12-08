@@ -28,7 +28,8 @@ attr_reader :table_order
     message = "Thank you! Your order was placed and will be delivered before"
     time = (Time.new + 3600).strftime("%H:%M")
     bill = calculate_bill
-    @text_order.confirm_order(message + " #{time} totalling #{bill}")
+    message + " #{time} totalling #{bill}"
+    # @text_order.confirm_order(message + " #{time} totalling #{bill}")
   end
 
 
