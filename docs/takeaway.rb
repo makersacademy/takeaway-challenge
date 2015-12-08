@@ -9,7 +9,7 @@ attr_reader :table_order
 
   def initialize
     @table_order = Array.new
-    @text_order = Text.new
+    # @text_order = Text.new
   end
 
   def show_menu
