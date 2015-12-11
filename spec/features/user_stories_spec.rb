@@ -1,8 +1,20 @@
 require 'order'
 require 'menu'
 require 'takeaway'
+require 'sms'
 
 describe 'User Stories' do
+  let(:phone) {double :phone, send_sms: nil}
+  let(:number) { double :number }
+  let(:credentials) do
+    {
+      account_sid: '123',
+      auth_token: '23fds',
+      from: '+123',
+      to: '+234',
+      body: "Thank you! Your order was placed and will be delivered before %s"
+    }
+  end
 
   describe 'Menu' do
     # As a customer
@@ -34,12 +46,12 @@ describe 'User Stories' do
     # I would like to check that the total I have been given matches the sum of
     # the various dishes in my order
     it "the customer's total should match the sum of dishes in the order" do
-      takeaway = Takeaway.new(Order, Menu.new.list)
+      takeaway = Takeaway.new(Order, Menu.new.list, phone)
       takeaway.create_order(takeaway.menu)
       takeaway.order.choose("Dish 1", 3)
       takeaway.order.calculate_quantities(takeaway.order.dishes)
       takeaway.order.calculate_cost(takeaway.order.dishes)
-      expect{ takeaway.place_order(takeaway.order,takeaway.order.total, takeaway.credentials['TWILIO_SMS_NUMBER']) }.not_to raise_error
+      expect{ takeaway.place_order(takeaway.order,takeaway.order.total, number) }.not_to raise_error
     end
 
   end
@@ -50,12 +62,13 @@ describe 'User Stories' do
     # I would like to receive a text such as "Thank you! Your order was placed
     # and will be delivered before 18:52" after I have ordered
     it "should send a text to confirm the order was placed" do
-      takeaway = Takeaway.new(Order, Menu.new.list)
+      takeaway = Takeaway.new(Order, Menu.new.list, phone)
       takeaway.create_order(takeaway.menu)
       takeaway.order.choose("Dish 1", 3)
       takeaway.order.calculate_quantities(takeaway.order.dishes)
       takeaway.order.calculate_cost(takeaway.order.dishes)
-      takeaway.place_order(takeaway.order,takeaway.order.total, takeaway.credentials['TWILIO_SMS_NUMBER'])
+      takeaway.place_order(takeaway.order,takeaway.order.total, number)
+      takeaway.sms.send_sms(takeaway.order, credentials[:to])
     end
   end
 

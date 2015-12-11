@@ -1,15 +1,17 @@
-require 'dotenv'
 require 'rubygems'
-require 'twilio-ruby'
 
 class Takeaway
-  attr_reader :order_klass, :order, :order_time, :menu, :credentials
+  attr_reader :order_klass, :order, :order_time, :menu, :credentials, :sms
 
-  def initialize(order_klass, menu_klass)
+  def initialize(order_klass=Order, menu_klass=Menu.new.list, sms=SMS.new)
     @order_klass = order_klass
     @order = nil
     @menu = menu_klass
-    @credentials = Dotenv.load
+    @sms = sms
+  end
+
+  def view_menu
+    menu.print
   end
 
   def create_order(menu_klass)
@@ -18,21 +20,7 @@ class Takeaway
 
   def place_order(order, total, phone_number)
     fail "Wrong total!" if total != order.calculate_cost(order)
-    @order_time = Time.new + 3600
-    send_sms(phone_number)
+    order_time = Time.new + 3600
+    sms.send_sms(order_time, phone_number)
   end
-
-  private
-
-  def send_sms(phone_number)
-    account_sid = credentials["TWILIO_ACCOUNT_SID"]
-    auth_token = credentials["TWILIO_AUTH_TOKEN"]
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.messages.create(
-      from: credentials["TWILIO_SMS_NUMBER"],
-      to: phone_number,
-      body: "Thank you! Your order was placed and will be delivered before #{order_time.strftime("%H:%M")}"
-    )
-  end
-
 end

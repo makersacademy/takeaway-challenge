@@ -4,7 +4,6 @@ describe Menu do
   subject(:menu) { described_class.new }
   let(:dish) { double :dish }
   let(:price) { double :price }
-    it { is_expected.to respond_to :list }
 
     describe '#add_menu_item' do
       it 'adds a new item to the menu list' do

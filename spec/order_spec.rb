@@ -2,33 +2,27 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class.new(menu_klass)}
-  let(:menu_klass) { double :menu_klass, select: dish }
-  let(:menu) { double :menu }
+  let(:menu_klass) { {"Dish 1" => 1.00,
+                      "Dish 2" => 2.00,
+                      "Dish 3" => 3.00 } }
   let(:dish) { double :dish }
-  let(:dishes) { double :dish }
-
-  describe '#menu' do
-    it {is_expected.to respond_to :menu}
-  end
 
   describe '#choose' do
-    it 'should enable a user to select a dish' do
-      allow(order).to receive(:dishes).and_return(["Dish 1", 1.0])
-      order.choose(dish)
-      expect(order.dishes).not_to be_empty
+    it 'should enable a user to select multiple quantities of dishes' do
+      order.choose("Dish 2", 2)
+      expect(order.dishes).to eq [["Dish 2", 2.0], ["Dish 2", 2.0]]
     end
 
-    it 'should enable a user to select multiple quantities of dishes' do
-      allow(order).to receive(:dishes).and_return(["Dish 1", 1.0])
-      order.choose("Dish 1", 2)
-      expect(order.dishes).not_to be_empty
+    it "it doesn't allow items that are not on the menu to be added" do
+      allow(menu_klass).to receive(:has_dish?).with(:chicken).and_return(false)
+      expect { order.choose(:chicken, 2) }.to raise_error "This is not on the menu"
     end
   end
 
   describe '#calculate_quantities' do
     it 'calculates how many dishes have been ordered' do
-      order.calculate_quantities(dishes)
-      expect(order.quantity).not_to be_nil #vacuous?
+      order.choose("Dish 2", 2)
+      expect(order.calculate_quantities(order.dishes)).to be 2
     end
   end
 

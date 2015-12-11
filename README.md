@@ -49,7 +49,7 @@ Instructions
 > require './lib/order.rb'
 > takeaway = Takeaway.new(Order)
 > takeaway.create_order(Menu.new.list) # creates a new order from the menu
-> takeaway.order.menu # view the menu
+> takeaway.view_menu # view the menu
 > takeaway.order.choose("Dish 1", 2) # choose a dish name and quantity
 > takeaway.order.dishes # view the dishes you have selected
 > takeaway.order.calculate_cost(takeaway.order.dishes) # calculate the cost of your order
