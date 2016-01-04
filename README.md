@@ -9,6 +9,7 @@ Email: emma.beynon@gmail.com
 
 
 This is my submission for the Makers Academy Week 2 Weekend Challenge: https://github.com/makersacademy/takeaway-challenge
+
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq&service=github)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=mohamedIssaq)
 
 Overview
