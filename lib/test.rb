@@ -10,6 +10,7 @@ class Test
     @client = Twilio::REST::Client.new @@account_sid, @@auth_token
     # @msg_sid = 'MM123'
     @replies = []
+    @all_texts = []
   end
 
   def text
@@ -20,11 +21,13 @@ class Test
     )
   end
 
-  def reply(choice)
+  def reply
     @client.messages.list.each do |message|
-      @replies << message.body
+      @all_texts << message.body
     end
-    p @replies[choice]
+    @all_texts.each { |reply|
+      @replies << reply unless reply.include? "Twilio trial"
+    }
   end
 
 
