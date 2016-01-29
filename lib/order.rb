@@ -6,9 +6,11 @@ class Order
     @customer = customer
     @menu = menu
     @order_details = order_details
-    order_details.each do |item|
-      fail "Sorry, we don't serve #{item}. Order aborted." unless menu.keys.include? item
+    @items = []
+    order_details.each do |i|
+      @items << i unless menu.keys.include? i
     end
+    fail "Sorry, we don't serve: #{@items.join(', ')}. Order aborted." unless @items.empty?
   end
 
   def calculate_bill

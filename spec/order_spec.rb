@@ -2,12 +2,12 @@ require 'order'
 
 describe Order do
 
-  let(:menu) {{:orange => 1, :noodles => 10, :pie => 6}}
+  let(:menu) {{orange: 1, noodles: 10, pie: 6}}
   let(:customer) {double :customer}
   let(:order_details) {[:orange, :noodles]}
-  let(:invalid_details) {[:dog, :pie]}
+  let(:invalid_details) {[:dog, :pie, :haggis]}
   let(:price) {11}
-  let(:error) {"Sorry, we don't serve dog. Order aborted."}
+  let(:error) {"Sorry, we don't serve: dog, haggis. Order aborted."}
   subject(:order) {described_class.new customer, menu, order_details}
 
   it{is_expected.to respond_to(:customer)}
