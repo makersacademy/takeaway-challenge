@@ -1,13 +1,14 @@
 require_relative '../../lib/takeaway.rb'
+require 'twilio-ruby'
 
 describe "FEATURE SPEC" do
-
-
-
+  
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
   describe 'takeaway features' do
+
+
     it 'US1 - see a list of dishes with prices' do
       takeaway = Takeaway.new(Menu.new)
       expect(takeaway.show_menu).to eq ({ ribs: 3,
@@ -18,6 +19,7 @@ describe "FEATURE SPEC" do
     end
 
 
+     
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
@@ -41,8 +43,10 @@ describe "FEATURE SPEC" do
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
     it 'US4 - returns confirmation if bill matches estimate' do
       takeaway = Takeaway.new(Menu.new)
+      confirmation = "Thank you! Your order was placed and will be delivered before #{(Time.now+ 60*60).strftime("%H:%M")}"
+      allow(takeaway).to receive(:send_text).with(confirmation).and_return(confirmation)
       takeaway.select({beef: 2, rolls: 3}, 17) 
-      expect(takeaway.correct_bill?).to eq "Thank you! Your order was placed and will be delivered before #{takeaway.delivery_time}"
+      expect(takeaway.correct_bill?).to eq confirmation
       end  
   end
 end
