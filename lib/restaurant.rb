@@ -26,4 +26,10 @@ class Restaurant
     @orders.clone
   end
 
+  def place_order
+    # makes new order instance
+    # fetches and returns bill from order instance
+  end
+
+
 end
