@@ -19,8 +19,16 @@ attr_reader :menu, :estimate
 
   def correct_bill?
     raise "incorrect bill amount" unless calculate_bill == estimate
-    true
+    confirm_order
   end 
+
+  def confirm_order
+    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+  end
+
+  def delivery_time
+    (Time.now + 24*60*60).strftime("%H:%M")
+  end
 
   def calculate_bill
     bill = 0

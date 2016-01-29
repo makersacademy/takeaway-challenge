@@ -25,14 +25,15 @@ describe Takeaway do
   end
 
   describe '#correct_bill?' do
-    it 'returns true when the correct total is entered' do
+    it 'returns confirmation when the correct total is entered' do
+      
       allow(menu).to receive(:show).and_return({ ribs: 3,
       beef: 4,
       rolls: 3,
       chips: 2,
       pies: 5})
       takeaway.select({beef: 2, rolls: 3}, 17)
-      expect(takeaway.correct_bill?).to eq true
+      expect(takeaway.correct_bill?).to eq "Thank you! Your order was placed and will be delivered before #{(Time.now+ 24*60*60).strftime("%H:%M")}"
     end
 
     it 'raises and error when the incorrect total is entered' do
