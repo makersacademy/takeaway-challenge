@@ -1,0 +1,6 @@
+Object        Message
+
+Menu          show
+Dishes        
+Bill          correct?
+Takeaway      submit, show_menu, select({dish: quantity})
