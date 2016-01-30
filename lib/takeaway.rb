@@ -14,5 +14,8 @@ class Takeaway
     @menu.to_s
   end
 
+  def select_dishes(dish, num)
+  end
+
 
 end
