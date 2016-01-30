@@ -1,5 +1,5 @@
-require 'twilio-ruby'
-require 'rubygems'
+#require 'twilio-ruby'
+#require 'rubygems'
 
 class Text
 
