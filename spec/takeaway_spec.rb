@@ -12,7 +12,16 @@ describe Takeaway do
       allow(takeaway).to receive(:get_choice) {"1"}
       expect(takeaway.get_choice).to eq "1"
     end
-    
   end
   
+  describe "#order" do
+    
+    it 'stores an item into the order' do
+      
+      takeaway.order(pizza)
+      expect(takeaway.order.trolley).to include?({pizza: 10.0})
+      
+    end
+  end
+
 end

@@ -1,16 +1,40 @@
+require_relative 'restaurant.rb'
+
 class Takeaway
   
+  attr_reader :restaurant
+  
+  def initialize(restaurant=Restaurant.new)
+    @action ||= nil
+    @restaurant = restaurant
+  end
+  
   def menu
-    puts "What cuisine would you like?"
-    puts "1 - Italian"
-    puts "2 - Mexican"
-    puts "3 - Indian"
+    read_list
     get_choice
   end
   
   def get_choice
-   action = gets.chomp
+    @action ? @action : @action = gets.chomp
+    display_menu
   end
   
+  def display_menu
+    restaurant.own_menu
+    #puts "Pizza - £10.00"
+    #puts "Pasta - £8.00"
+    #puts "Milanese - £14.00"
+  end
+  
+  private 
+  
+  def read_list
+    File.open("./lib/restaurants_list.txt", "r") do |file|
+      while line = file.gets
+        puts line
+      end
+    end
+  end   
+ 
   
 end
