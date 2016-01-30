@@ -17,4 +17,15 @@ describe "User Stories" do
     take_away.order "Egg Fried Rice", 2
     expect(take_away.basket_summary).to eq "Egg Fried Rice x2: £3.80"
   end
+  
+  #  As a customer
+  #  So that I can verify that my order is correct
+  #  I would like to check that the total I have been given matches the sum of the various dishes in my order
+  it 'checks that the total is correct' do
+    take_away = TakeAway.new
+    take_away.order "Egg Fried Rice", 2
+    take_away.order "Spring Roll"
+    total = take_away.total
+    expect(take_away.complete(5.3)).to eq "Order Complete"
+  end
 end
