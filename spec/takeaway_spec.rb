@@ -3,12 +3,6 @@ require 'takeaway'
 describe TakeAway do
   subject(:take_away) {described_class.new}
   
-  describe "default" do
-    it "starts with an empty basket" do
-      expect(take_away.basket).to be_empty
-    end
-  end
-  
   describe "#menu" do
     it "can read menu" do
       expect(take_away.read_menu).to include "Egg Fried Rice"
@@ -47,11 +41,11 @@ describe TakeAway do
     it "Completes an order" do
       take_away.order "Spring Roll"
       take_away.total
-      expect(take_away.complete(1.50)).to eq "Order Complete"
+      expect(take_away.complete_order(1.50)).to eq "Order Complete"
     end
     
     it "Raises an error if sum doesn't match total" do
-      expect {take_away.complete(5.30)}.to raise_error "Value does not match the total"
+      expect {take_away.complete_order(5.30)}.to raise_error "Value does not match the total"
     end
   end
 end
