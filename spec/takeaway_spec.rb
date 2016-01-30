@@ -4,8 +4,6 @@ describe Takeaway do
 
 subject(:takeaway) {described_class.new}
   
-  it { should respond_to(:order) }
-
 
   it 'displays a list of dishes' do 
   expect(takeaway.list_menu).to include ("Roast Pork Belly Hirata Buns")
