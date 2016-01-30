@@ -9,4 +9,10 @@ describe OrderCost do
   it 'can increase the total' do
     expect{ordercost.add(1)}.to change{ordercost.total}.by(1)
   end
+
+  it 'can reset total' do
+    ordercost.add(1)
+    ordercost.reset
+    expect(ordercost.total).to eq 0
+  end
 end

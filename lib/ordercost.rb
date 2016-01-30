@@ -9,4 +9,8 @@ class OrderCost
     @total += number
   end
 
+  def reset
+    @total = 0
+  end
+
 end

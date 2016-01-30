@@ -33,7 +33,7 @@ describe Takeaway do
       takeaway = Takeaway.new(menu)
       takeaway.order("margherita", 2)
       takeaway.order("garlic bread", 4)
-      expect(takeaway.total).to eq takeaway.basket_sum
+      expect(takeaway.check_total).to eq true
     end
   end
 
