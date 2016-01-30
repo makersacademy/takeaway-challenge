@@ -1,6 +1,7 @@
 class Takeaway
 
-  def initialize(menu)
+  def initialize(menu, calculator)
+    @calculator = calculator
     @menu = menu
   end
 
@@ -22,14 +23,14 @@ class Takeaway
 
   private
 
-  attr_reader :estimate, :order
+  attr_reader :estimate, :order, :calculator
   
   def delivery_time
     (Time.now + 60*60).strftime("%H:%M")
   end
 
   def calculate_bill
-    Calculator.new(order, self).calculate
+    calculator.calculate(order, self)
   end
 
   def order_placed 

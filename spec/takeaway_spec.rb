@@ -2,9 +2,10 @@ require 'takeaway'
 require 'dotenv'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu) }
+  subject(:takeaway) { described_class.new(menu, calculator) }
+  let(:calculator) { double :calculator }
   let(:choice) { {beef:2, rolls:3} }
-   let(:menu) { double :menu, show: {ribs: 3,
+  let(:menu) { double :menu, show: {ribs: 3,
     beef: 4,
     rolls: 3,
     chips: 2,
@@ -28,11 +29,13 @@ describe Takeaway do
         "and will be delivered before "\
         "#{(Time.now+ 60*60).strftime("%H:%M")}"
         allow(takeaway).to receive(:send_text).with(confirm).and_return(confirm)
+        allow(calculator).to receive(:calculate).and_return(17)
         takeaway.select(choice, 17)
         expect(takeaway.confirm_order).to eq confirm
       end
 
       it 'raises error when the incorrect total is entered' do
+        allow(calculator).to receive(:calculate).and_return(17)
         takeaway.select(choice, 24)
         expect {takeaway.confirm_order}.to raise_error("incorrect bill amount")
       end

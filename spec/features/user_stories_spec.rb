@@ -4,7 +4,7 @@ require 'twilio-ruby'
 require 'dotenv'
 
 describe "FEATURE SPEC" do
-  let(:takeaway) { Takeaway.new(Menu.new) }
+  let(:takeaway) { Takeaway.new(Menu.new, Calculator.new) }
   let(:choice) { {beef:2, rolls:3} }
   let(:default_menu) { {ribs: 3,
         beef: 4,

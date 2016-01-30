@@ -1,10 +1,6 @@
 class Calculator
-  def initialize(order, takeaway)
-    @order = order
-    @takeaway = takeaway
-  end
 
-  def calculate
+  def calculate(order, takeaway)
     order.reduce(0) {|bill, (k, v)| bill + takeaway.show_menu[k]*v}
   end
 
