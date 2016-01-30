@@ -12,14 +12,16 @@ class Takeaway
 
   def initialize(menu: MENU)
     @basket = []
+    @menu = menu
   end
 
   def read_menu
     MENU
   end
 
-  def order(dish)
-    fail "This item isn't on the menu." unless MENU[dish]
+  def order(dish, number = 1)
+    fail "This item isn't on the menu." unless @menu[dish]
+    fail "For larger orders please phone us directly." if number > 10
     @basket << dish
   end
 

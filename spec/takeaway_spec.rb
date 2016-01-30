@@ -27,11 +27,11 @@ describe Takeaway do
   describe "adds menu items to basket" do
 
     before do
-      takeaway.order("Won Ton")
+      takeaway.order("Won Ton", 2)
     end
 
-    it "adds an item" do
-      expect(takeaway.basket_summary).to include("Won Ton")
+    it "adds an item multiple times" do
+      expect(takeaway.basket_summary).to include("Won Ton") #modify test
     end
 
     context "invalid order" do
@@ -40,6 +40,12 @@ describe Takeaway do
         expect do
           takeaway.order("Mozarella and Basil Pasta")
         end.to raise_error "This item isn't on the menu."
+      end
+
+      it "raises an error if too many of the same dish" do
+        expect do
+          takeaway.order("Won Ton", 11)
+        end.to raise_error "For larger orders please phone us directly."
       end
     end
   end
