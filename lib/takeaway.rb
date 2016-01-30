@@ -13,6 +13,7 @@ class Takeaway
   def initialize(menu: MENU)
     @basket = []
     @menu = menu
+    @total = 0
   end
 
   def read_menu
@@ -22,14 +23,27 @@ class Takeaway
   def order(dish, number = 1)
     fail "This item isn't on the menu." unless @menu[dish]
     fail "For larger orders please phone us directly." if number > 10
-    @basket << dish
-    "#{number}x #{dish} added to your basket."
+    add_to_basket(dish, number)
   end
 
   def basket_summary
     @basket.dup
   end
 
+  def calculate_price(price, number = 1)
+    @total += price * number
+  end
+
+  def total
+    "Total: #{@total.round(2)}"
+  end
+
   private
     attr_reader :basket
+
+    def add_to_basket(dish, number)
+      @basket << dish
+      calculate_price(@menu[dish], number)
+      "#{number}x #{dish} added to your basket."
+    end
 end

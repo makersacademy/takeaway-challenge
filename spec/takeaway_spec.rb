@@ -26,8 +26,18 @@ describe Takeaway do
 
   describe "adds menu items to basket" do
 
+    it "adds on item by default" do
+      expect(takeaway.order("Won Ton")).to eq "1x Won Ton added to your basket."
+    end
+
     it "adds an item multiple times" do
       expect(takeaway.order("Won Ton", 2)).to eq "2x Won Ton added to your basket."
+    end
+
+    it "returns a total" do
+      takeaway.order("Won Ton", 3)
+      takeaway.order("Pork Chow Mein")
+      expect(takeaway.total).to eq "Total: 15.7" #to do - handle currency correctly
     end
 
     context "invalid order" do
