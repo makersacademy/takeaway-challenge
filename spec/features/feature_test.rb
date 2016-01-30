@@ -1,8 +1,10 @@
 require_relative '../../lib/ristorante'
+require_relative '../../lib/order'
 
 describe Ristorante do
-  subject(:ristorante) {described_class.new}
-  let(:menu_list) {Ristorante::MENU_LIST}
+  let(:order) { Order.new}
+  subject(:ristorante) {described_class.new(order)}
+  let(:menu_list) {ristorante.menu_list}
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -25,14 +27,39 @@ describe Ristorante do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  describe '#place_order' do
+  describe '#select_dishes' do
     context 'order options' do
       it "selects several dishes" do
-        ristorante.place_order(1, 2)
-        ristorante.place_order(3, 2)
-        expect(ristorante.current_order).to include(:miso_soup, 6)
+        ristorante.select_dishes(1, 2)
+        order = [{dish: :egg_fried_rice, quantity: 2, price: 6}]
+        expect(ristorante.order.current_order).to match(order)
       end
     end
   end
+
+  describe '#order_total' do
+    it "returns the current order total" do
+      ristorante.select_dishes(1, 2)
+      order = [{dish: :egg_fried_rice, quantity: 2, price: 6}]
+      expect(ristorante.order.order_total).to eq(6)
+    end
+
+  end
+
+  describe "#place_order" do
+    it "raises an error if the order total is different selected dishes" do
+      ristorante.select_dishes(1, 2)
+      allow(order).to receive(:wrong_total?) {true}
+      expect {ristorante.place_order}.to raise_error("Wrong total amount")
+    end
+
+    it "resets order.order_total if you place an order" do
+      ristorante.select_dishes(1, 2)
+      ristorante.place_order
+      expect(order.order_total).to eq 0
+    end
+
+  end
+
 
 end

@@ -1,11 +1,10 @@
 require_relative '../lib/ristorante'
 
 describe Ristorante do
-  subject(:ristorante) {described_class.new}
-  let(:menu_list) {double :menu_list}
-  let(:food) {double :food}
-  let(:quantity) {double :quantity}
-
+  let(:order) {double :order}
+  subject(:ristorante) {described_class.new(order_klass: order)}
+  let(:menu_list) {double :menu_list, one: [dish, 4]}
+  let(:dish) {double :dish}
 
   describe '#menu'
     context 'menu options' do
@@ -19,15 +18,23 @@ describe Ristorante do
       end
     end
 
-  # describe '#place_order' do
-  #   context 'order options' do
-  #     it "selects several dishes" do
-  #       ristorante.place_order(food, quantity)
-  #       ristorante.place_order(food, quantity)
-  #       current_order = {egg_fried_rice: 6, miso_soup: 6}
-  #       expect(ristorante.current_order).to include(current_order)
-  #     end
-  #   end
-  # end
+  describe '#select_dishes' do
+    it "sends set_current_order to order" do
+      expect(order).to receive(:set_current_order)
+      order.set_current_order(dish,2)
+    end
+  end
+
+  describe '#place_order' do
+    it "sends #set_current_order to order " do
+      expect(order).to receive(:set_current_order)
+      order.set_current_order
+    end
+
+    it "sends #send_sms to order " do
+      expect(order).to receive(:send_sms)
+      order.send_sms
+    end
+  end
 
 end
