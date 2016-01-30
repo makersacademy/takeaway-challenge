@@ -2,9 +2,10 @@ class Takeaway
   def initialize(menu)
     @menu = menu
     @basket = {}
+    @total = 0
   end
 
-  attr_reader :basket
+  attr_reader :basket, :total
 
   def menu
     @menu.dishes
@@ -12,6 +13,15 @@ class Takeaway
 
   def order(dish, number=1)
     @basket[ordered(dish,number)] = price(dish,number)
+    @total += price(dish,number)
+  end
+
+  def basket_sum
+    sum = 0
+    @basket.each do |key, value|
+      sum += value
+    end
+    sum
   end
 
   private

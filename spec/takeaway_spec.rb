@@ -39,4 +39,21 @@ describe Takeaway do
       expect(takeaway.basket).to eq basket
     end
   end
+
+  context 'pricing' do
+    before do
+      takeaway.order(dish)
+      takeaway.order(dish2, 2)
+    end
+
+    it 'can return total cost' do
+      expect(takeaway.total).to eq 13.50
+    end
+
+    it 'can return the current total of the basket' do
+      expect(takeaway.basket_sum). to eq 13.50
+    end
+
+  end
+
 end
