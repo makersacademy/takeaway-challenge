@@ -10,19 +10,23 @@ class Takeaway
            "King Prawn Kung Po" => 5.40
          }.freeze
 
-  attr_reader :basket
-
-  def initialize
+  def initialize(menu: MENU)
     @basket = []
   end
-
-
 
   def read_menu
     MENU
   end
 
+  def order(dish)
+    fail "This item isn't on the menu." unless MENU[dish]
+    @basket << dish
+  end
 
-private
+  def basket_summary
+    @basket.dup
+  end
 
+  private
+    attr_reader :basket
 end
