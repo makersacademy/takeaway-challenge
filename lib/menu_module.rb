@@ -1,6 +1,6 @@
 module Menu
 
-  attr_reader :starters, :mains, :desserts, :sides
+  attr_reader :starters, :mains, :desserts, :sides, :view_menu
 
   def initialize
     @starters = {:soup => 1.50,
@@ -15,26 +15,8 @@ module Menu
     @sides = {:bread => 0.50,
     :chips => 1.50,
     :kimchi => 2.00}.freeze
-  end
-
-  def view_menu
-    [@starters, @mains, @desserts, @sides].freeze
-  end
-
-  def view_starters
-    @starters
-  end
-
-  def view_mains
-    @mains
-  end
-
-  def view_desserts
-    @desserts
-  end
-
-  def view_sides
-    @sides
+    @view_menu = {}
+    @view_menu.merge!(@starters).merge!(@mains).merge!(@desserts).merge!(@sides)
   end
 
 end

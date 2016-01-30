@@ -19,7 +19,7 @@ class Order
   end
 
   def on_menu?(item)
-    self.starters.has_key?(item.downcase)
+    self.view_menu.has_key?(item.downcase)
   end
 
   def update_order(order)
@@ -27,11 +27,7 @@ class Order
   end
 
   def correct_price?(item, quantity, price)
-    if price == self.starters[item] * quantity
-      true
-    else
-      false
-    end
+    price == self.view_menu[item] * quantity
   end
 
 end
