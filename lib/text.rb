@@ -16,7 +16,7 @@ class Text
     @client = Twilio::REST::Client.new(ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"])
     @client.messages.create(
     body: "Thank you for your order. It will be delivered before #{delivery_time}",
-    to: ENV["phone_number"],
+    to: ENV["my_phone_number"],
     from: sender)
     'text sent'
   end

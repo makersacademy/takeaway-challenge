@@ -1,7 +1,6 @@
 require './lib/text'
 
 describe Text do
-  subject(:text) { described_class.new }
   let(:text) {double :text}
 
   describe 'text' do
