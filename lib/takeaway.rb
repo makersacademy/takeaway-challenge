@@ -38,8 +38,6 @@ class Takeaway
   end
 
   def send_text(body)
-    @client = Twilio::REST::Client.new Dotenv.load["ACCOUNT_SID"], Dotenv.load["AUTH_TOKEN"]
-    @client.messages.create(from: '+441452260236',
-                            to: '+447930300220', body: body)
+    Twilio::REST::Client.new(Dotenv.load["ACCOUNT_SID"], Dotenv.load["AUTH_TOKEN"]).messages.create(from: '+441452260236', to: '+447930300220', body: body)
   end
 end

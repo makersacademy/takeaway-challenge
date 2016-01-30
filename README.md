@@ -45,7 +45,7 @@ from /Users/GotWai/Dropbox/Projects/takeaway-challenge/lib/takeaway.rb:19:in `co
 [10] pry(main)> takeaway.select({beef: 2, rolls: 3}, 17)
 => {:beef=>2, :rolls=>3}
 [11] pry(main)> takeaway.confirm_order
-=> <Twilio::REST::Message @path=/2010-04-01/Accounts/ACe1ded990723482f202fe47c9b5de8a63/Messages/SMc78e52456cd245089a81986eb1725947>
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/>
 ```
 
 Build Badge
