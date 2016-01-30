@@ -44,7 +44,7 @@ subject(:takeaway) {described_class.new}
     takeaway.select_item("Roast Pork Belly Hirata Buns")
     takeaway.select_item("Salt & Pepper Squid",2)
     takeaway.select_item("Roast Pork Belly Hirata Buns")
-    expect(takeaway.total).to eq "Your total is £18"
+    expect(takeaway.total).to eq "Total cost: £18"
     end
 
    end
@@ -52,8 +52,17 @@ subject(:takeaway) {described_class.new}
 
    describe "#order_summary" do 
 
-    "it prints out summed items and a total amount"
+    it { should respond_to(:order_summary) }
 
+    it "it prints out summed items and a total amount" do
+    takeaway = Takeaway.new
+    menu = Menu.new
+    takeaway.select_item("Roast Pork Belly Hirata Buns")
+    takeaway.select_item("Salt & Pepper Squid",2)
+    takeaway.select_item("Roast Pork Belly Hirata Buns")
+    summary = "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns,\n 2 x Salt & Pepper Squid\n Total cost: £18"
+    expect(takeaway.order_summary).to eq summary
+    end
   end
 
 end

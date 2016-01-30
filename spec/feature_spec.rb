@@ -34,7 +34,7 @@ describe 'User Stories' do
   takeaway.select_item("Roast Pork Belly Hirata Buns")
   takeaway.select_item("Salt & Pepper Squid",2)
   takeaway.select_item("Roast Pork Belly Hirata Buns")
-  expect(takeaway.total).to eq "Your total is £18"
+  expect(takeaway.order_summary).to eq "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns,\n 2 x Salt & Pepper Squid\n Total cost: £18"
   end
 
 
