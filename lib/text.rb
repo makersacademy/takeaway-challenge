@@ -20,9 +20,4 @@ class Text
     from: sender)
     'text sent'
   end
-
-  def whats_dis
-    p ENV["ACCOUNT_SID"]
-    p ENV["AUTH_TOKEN"]
-  end
 end
