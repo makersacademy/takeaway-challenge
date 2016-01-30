@@ -7,7 +7,8 @@ describe Calculator do
         beef: 4,
         rolls: 3,
         chips: 2,
-        pies: 5} }
+        pies: 5}
+        }
   let(:order) { { chips: 5, pies: 20} }
   
 

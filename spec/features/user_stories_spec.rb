@@ -4,16 +4,19 @@ require 'twilio-ruby'
 require 'dotenv'
 
 describe "FEATURE SPEC" do
-  let(:takeaway) { Takeaway.new(Menu.new, Calculator.new, Twilio::REST::Client.new("01234", "56789")) }
+  let(:takeaway) { Takeaway.new(Menu.new, Calculator.new,
+  Twilio::REST::Client.new("01234", "56789")) }
   let(:choice) { {beef:2, rolls:3} }
   let(:default_menu) { {ribs: 3,
         beef: 4,
         rolls: 3,
         chips: 2,
-        pies: 5} }
+        pies: 5}
+        }
   let(:confirm) {"Thank you! Your order was placed "\
                   "and will be delivered before "\
-                 "#{(Time.now+ 60*60).strftime("%H:%M")}"}
+                 "#{(Time.now+ 60*60).strftime("%H:%M")}"
+                }
 
   describe 'User Story 1' do
     it 'Can view a list of dishes with prices' do 
