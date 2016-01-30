@@ -23,6 +23,7 @@ class Takeaway
     fail "This item isn't on the menu." unless @menu[dish]
     fail "For larger orders please phone us directly." if number > 10
     @basket << dish
+    "#{number}x #{dish} added to your basket."
   end
 
   def basket_summary

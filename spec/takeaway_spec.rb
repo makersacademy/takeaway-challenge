@@ -26,12 +26,8 @@ describe Takeaway do
 
   describe "adds menu items to basket" do
 
-    before do
-      takeaway.order("Won Ton", 2)
-    end
-
     it "adds an item multiple times" do
-      expect(takeaway.basket_summary).to include("Won Ton") #modify test
+      expect(takeaway.order("Won Ton", 2)).to eq "2x Won Ton added to your basket."
     end
 
     context "invalid order" do
