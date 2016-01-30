@@ -4,6 +4,7 @@ require 'dotenv'
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
   let(:choice) { {beef:2, rolls:3} }
+  let(:keys) { {"ACCOUNT_SID": '0000', "AUTH_TOKEN": '0000'} }
   let(:menu) { double :menu, show: {ribs: 3,
     beef: 4,
     rolls: 3,
