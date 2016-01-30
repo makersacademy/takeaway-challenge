@@ -10,6 +10,8 @@ describe Restaurant do
     allow(menu).to receive(:list_items) {items}
     allow(customer).to receive(:bill_correct?) {true}
     allow(customer).to receive(:restaurant_bill) {11}
+    allow(customer).to receive(:name) {"Rufus"}
+    allow(customer).to receive(:tel_no) {"+441548312031"}
   end
 
   let(:error) {"Bill incorrect. Please check order"}

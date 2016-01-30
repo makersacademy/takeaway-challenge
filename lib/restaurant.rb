@@ -1,7 +1,9 @@
 require 'forwardable'
+require 'send_sms'
 
 class Restaurant
 
+  include SMS
   extend Forwardable
 
   def_delegator :@menu, :list_items, :menu
@@ -21,7 +23,17 @@ class Restaurant
   def place_order customer, order_details
     @orders << new_order(customer, menu, order_details)
     fail "Bill incorrect. Please check order" unless customer.bill_correct? self
-    "Thank you for your custom. Your total is $#{customer.restaurant_bill}. Your order will be delivered at #{Time.now + 3600}"
+
+    message = "Thank you for your custom, #{customer.name}. Your total is $#{customer.restaurant_bill}. Your order will be delivered at #{Time.now + 3600}"
+
+    send_confirmation_sms customer.tel_no, message
+
+    "Sent order confirmation to #{customer.name}"
+
+    #File.read('./lib/send_sms.rb')
+
+    # or just .load file?
+    #"Thank you for your custom. Your total is $#{customer.restaurant_bill}. Your order will be delivered at #{Time.now + 3600}"
   end
 
   def orders

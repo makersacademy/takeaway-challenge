@@ -2,8 +2,8 @@
 describe 'Feature test' do
 
   let(:name) {"Rufus"}
-  let(:tel_no) {"1-800-EXAMPLE"}
-  let(:message) {"Thank you for your custom. Your total is $11. Your order will be delivered at #{Time.now + 3600}"}
+  let(:tel_no) {"+441548312031"}
+  let(:message) {"Sent order confirmation to Rufus"}
   let(:error) {"Sorry, we don't serve: dog, haggis. Order aborted."}
   let(:items) {{orange: 1, noodles: 10, pie: 6}}
   let(:order_details) {[:orange, :noodles]}

@@ -18,7 +18,7 @@ describe Customer do
   let(:items) {{orange: 1, noodles: 10, pie: 6}}
   let(:restaurant) {double :restaurant}
   let(:name) {"Rufus"}
-  let(:tel_no) {"1-800-EXAMPLE"}
+  let(:tel_no) {"+441548312031"}
   let(:check_bill_output) {"Thank you for your custom. Your total is $11. Your order will be delivered at #{Time.now + 3600}"}
   subject(:customer) {described_class.new(name, tel_no)}
 
