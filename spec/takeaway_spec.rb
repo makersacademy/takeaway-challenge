@@ -2,53 +2,38 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double :menu }
-  
+  let(:choice) { {beef:2, rolls:3} }
+  let(:menu) { double :menu, show: {ribs: 3,
+    beef: 4,
+    rolls: 3,
+    chips: 2,
+    pies: 5} }
 
-  describe '#show_menu' do
+    describe '#show_menu' do
+      it 'returns a menu' do
+        expect(takeaway.show_menu).to eq menu.show
+      end
+    end
 
-    it 'returns a hash' do
-      allow(menu).to receive(:show).and_return(Hash.new)
-      expect(takeaway.show_menu).to be_a Hash
+    describe '#select' do
+      it 'selects a few dishes from the menu' do
+        expect(takeaway.select(choice, 20)).to eq choice
+      end
+    end
+
+    describe '#confirm_order' do
+      it 'confirms if the correct total is entered' do    
+        confirm = "Thank you! Your order was placed "\
+        "and will be delivered before "\
+        "#{(Time.now+ 60*60).strftime("%H:%M")}"
+        allow(takeaway).to receive(:send_text).with(confirm).and_return(confirm)
+        takeaway.select(choice, 17)
+        expect(takeaway.confirm_order).to eq confirm
+      end
+
+      it 'raises error when the incorrect total is entered' do
+        takeaway.select(choice, 24)
+        expect {takeaway.confirm_order}.to raise_error("incorrect bill amount")
+      end
     end
   end
-
-  describe '#select' do
-  
-    it 'selects a few dishes from the menu' do
-      allow(menu).to receive(:show).and_return({ribs: 3,
-        beef: 4,
-        rolls: 3,
-        chips: 2,
-        pies: 5})
-      expect(takeaway.select({beef:2, rolls:3}, 20)).to eq ({beef:2, rolls:3})
-    end
-  end
-
-  describe '#correct_bill?' do
-  
-    it 'returns confirmation when the correct total is entered' do
-      confirm = "Thank you! Your order was placed "\
-                "and will be delivered before "\
-                "#{(Time.now+ 60*60).strftime("%H:%M")}"
-      allow(takeaway).to receive(:send_text).with(confirm).and_return(confirm)
-      allow(menu).to receive(:show).and_return({ribs: 3,
-        beef: 4,
-        rolls: 3,
-        chips: 2,
-        pies: 5})
-      takeaway.select({beef: 2, rolls: 3}, 17)
-      expect(takeaway.correct_bill?).to eq confirm
-    end
-
-    it 'raises and error when the incorrect total is entered' do
-      allow(menu).to receive(:show).and_return({ribs: 3,
-        beef: 4,
-        rolls: 3,
-        chips: 2,
-        pies: 5})
-      takeaway.select({beef: 2, rolls: 3}, 24)
-      expect {takeaway.correct_bill?}.to raise_error("incorrect bill amount")
-    end
-  end
-end

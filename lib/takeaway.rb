@@ -1,18 +1,14 @@
-require 'twilio-ruby'
-
 class Takeaway
 
+  ACCOUNT_SID = 'ACe1ded990723482f202fe47c9b5de8a63'
+  AUTH_TOKEN = '33f4d96523cf8e5308eddf3fa120c615'
 
   def initialize(menu)
-    @select = {}
     @menu = menu
-    @estimate = 0
-    account_sid = 'ACe1ded990723482f202fe47c9b5de8a63'
-    auth_token = '33f4d96523cf8e5308eddf3fa120c615'
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
   end
 
-  attr_reader :menu, :estimate
+  attr_reader :menu
 
   def show_menu
     menu.show
@@ -23,12 +19,14 @@ class Takeaway
     @select = order
   end
 
-  def correct_bill?
+  def confirm_order
     fail "incorrect bill amount" unless calculate_bill == estimate
-    confirm_order
+    order_placed
   end
 
   private
+
+  attr_reader :estimate
   
   def delivery_time
     (Time.now + 60*60).strftime("%H:%M")
@@ -40,7 +38,7 @@ class Takeaway
     bill  
   end
 
-  def confirm_order  
+  def order_placed 
     send_text("Thank you! Your order was placed "\
               "and will be delivered before #{delivery_time}")
   end
