@@ -1,12 +1,15 @@
 
 require_relative 'menu.rb'
 require_relative 'calculate.rb'
+require_relative 'mail.rb'
 
 class Takeaway
-include Calculate_order
+attr_reader :menu
 
+include Calculate_order
   def initialize(restaurant_type)
-    @menu = Menu.new(restaurant_type)
+    @menu = Menu.new(restaurant_type).menu
+    @mail = Mail.new
   end
 
   def show_menu
@@ -20,8 +23,10 @@ include Calculate_order
   #def order
     #@order = order_input(@menu)
   #end
+  
 private
   def mail
+    @mail.send
   end
 
 end
