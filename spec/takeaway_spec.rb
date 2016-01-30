@@ -38,6 +38,11 @@ describe Takeaway do
       basket = ({"#{dish} x1"  => price, "#{dish2} x2" => price *  2})
       expect(takeaway.basket).to eq basket
     end
+
+    it 'tells you what you have just ordered' do
+      message = "You have just ordered 1x #{dish}!"
+      expect(takeaway.order(dish)).to eq message
+    end
   end
 
   context 'pricing' do
@@ -47,13 +52,48 @@ describe Takeaway do
     end
 
     it 'can return total cost' do
-      expect(takeaway.total).to eq 13.50
+      expect(takeaway.total).to eq "Total: £#{13.5}0"
     end
 
-    it 'can return the current total of the basket' do
-      expect(takeaway.basket_sum). to eq 13.50
+    it 'can check sum of basket = total' do
+      expect(takeaway.check_total).to eq true
     end
 
   end
 
-end
+  context 'texting' do
+    before do
+      allow(takeaway).to receive(:send_text)
+      takeaway.order(dish)
+    end
+
+    it 'won\'t send text if total is wrong' do
+      allow(takeaway).to receive(:check_total).and_return(false)
+      expect {takeaway.complete_order}.to raise_error "This order was not completed"
+    end
+
+    it 'texts confirmation message' do
+      message = "Thank you for your order of £4.50."
+      message << " Your food will be delivered within an hour."
+      expect(takeaway).to receive(:send_text).with(message)
+      takeaway.complete_order
+    end
+  end
+
+  context 'complete order' do
+    before do
+      allow(takeaway).to receive(:send_text)
+      takeaway.order(dish)
+    end
+
+    it 'resets basket when order completed' do
+      takeaway.complete_order
+      expect(takeaway.basket).to eq ({})
+    end
+
+    it 'resets total when order completed' do
+      takeaway.complete_order
+      expect(takeaway.total).to eq ("Total: £0.00")
+    end
+  end
+ end
