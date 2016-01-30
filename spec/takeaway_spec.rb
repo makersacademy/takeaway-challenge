@@ -3,12 +3,13 @@ require 'takeaway'
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
   let(:menu) { double :menu }
+  
 
   describe '#show_menu' do
 
-    it 'returns an empty hash' do
-      allow(menu).to receive(:show).and_return({})
-      expect(takeaway.show_menu).to eq ({})
+    it 'returns a hash' do
+      allow(menu).to receive(:show).and_return(Hash.new)
+      expect(takeaway.show_menu).to be_a Hash
     end
   end
 
