@@ -12,7 +12,7 @@ attr_reader :order, :total
 	end
 
 	def list_menu
-	print_menu
+	puts print_menu
 	end
 
 	def select_item(item, amount=1)

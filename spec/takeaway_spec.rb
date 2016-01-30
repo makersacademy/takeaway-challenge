@@ -8,10 +8,11 @@ let(:dish2) {double(:dish2)}
 
 
   describe "#list_menu" do 
- 
-    it 'displays a list of dishes' do 
-    expect(takeaway.list_menu).to include ("Roast Pork Belly Hirata Buns")
+    it "" do 
+    pretty_menu = takeaway.list_menu
+    expect{ takeaway.list_menu }.to output(pretty_menu).to_stdout 
     end
+    
 
   end
 
