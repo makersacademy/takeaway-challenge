@@ -38,6 +38,6 @@ class Takeaway
   end
 
   def send_text(body)
-    twilio.messages.create(from:'+441452260236', to:'+447930300220', body:body)
+    twilio.messages.create(from: Dotenv.load['FROM'], to: Dotenv.load['TO'], body:body)
   end
 end
