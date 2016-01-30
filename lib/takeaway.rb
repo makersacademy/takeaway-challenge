@@ -4,4 +4,6 @@ class Takeaway
   end
 
   attr_reader :menu
+
+  #Have menu be a different class - the takeaway deals with orders, it doesn't also save the dishes and prices.
 end
