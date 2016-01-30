@@ -3,7 +3,7 @@ describe 'Feature test' do
 
   let(:name) {"Rufus"}
   let(:tel_no) {"1-800-EXAMPLE"}
-  let(:message) {"Expected bill of $11, was charged $11"}
+  let(:message) {"Thank you for your custom. Your total is $11. Your order will be delivered at #{Time.now + 3600}"}
   let(:error) {"Sorry, we don't serve: dog, haggis. Order aborted."}
   let(:items) {{orange: 1, noodles: 10, pie: 6}}
   let(:order_details) {[:orange, :noodles]}
@@ -20,7 +20,7 @@ describe 'Feature test' do
   end
 
   it 'allows order to be placed and retrieved so that customer can check bill' do
-    expect(customer.check_bill(restaurant)).to eq message
+    expect(restaurant.place_order(customer, order_details)).to eq message
   end
 
   it 'raises error when customer places invalid order' do

@@ -19,12 +19,12 @@ describe Customer do
   let(:restaurant) {double :restaurant}
   let(:name) {"Rufus"}
   let(:tel_no) {"1-800-EXAMPLE"}
-  let(:check_bill_output) {"Expected bill of $11, was charged $11"}
+  let(:check_bill_output) {"Thank you for your custom. Your total is $11. Your order will be delivered at #{Time.now + 3600}"}
   subject(:customer) {described_class.new(name, tel_no)}
 
   it{is_expected.to respond_to(:tel_no)}
   it{is_expected.to respond_to(:name)}
-  it{is_expected.to respond_to(:check_bill)}
+  it{is_expected.to respond_to(:bill_correct?)}
 
   describe '#name' do
     it 'returns customer name' do
@@ -41,7 +41,7 @@ describe Customer do
   describe 'checking the bill' do
 
     it 'is able to check the total given by the restaurant' do
-      expect(subject.check_bill(restaurant)).to eq check_bill_output
+      expect(subject.bill_correct?(restaurant)).to be true
     end
 
   end

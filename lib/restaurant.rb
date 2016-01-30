@@ -20,6 +20,11 @@ class Restaurant
 
   def place_order customer, order_details
     @orders << new_order(customer, menu, order_details)
+    if customer.bill_correct? self
+      "Thank you for your custom. Your total is $#{customer.restaurant_bill}. Your order will be delivered at #{Time.now + 3600}"
+    else
+      fail "Bill incorrect. Please check order"
+    end
   end
 
   def orders

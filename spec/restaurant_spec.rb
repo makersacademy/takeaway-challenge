@@ -8,8 +8,11 @@ describe Restaurant do
     allow(menu_klass).to receive(:new) {menu}
     allow(menu2).to receive(:list_items) {items2}
     allow(menu).to receive(:list_items) {items}
+    allow(customer).to receive(:bill_correct?) {true}
+    allow(customer).to receive(:restaurant_bill) {11}
   end
 
+  let(:error) {"Bill incorrect. Please check order"}
   let(:customer) {double :customer}
   let(:order_klass) {double :order_klass}
   let(:order) {double :order}
@@ -44,6 +47,11 @@ describe Restaurant do
     it 'allows the creation of a new order' do
       subject.place_order customer, details
       expect(subject.orders).to include order
+    end
+
+    it 'throws an error when the bill is wrong' do
+      allow(customer).to receive(:bill_correct?) {false}
+      expect{subject.place_order(customer, details)}.to raise_error error
     end
 
   end
