@@ -9,11 +9,18 @@ describe Order do
   it 'starts a new order' do
    order = Order.new
   end
-end
 
-describe Menu do
-  it 'lists available_dishes' do
-   menu = Menu.new
-   menu.show_menu
+  describe '#show_menu' do
+    it 'shows the list of available dishes' do
+     order = Order.new
+     order.show_menu
+    end
   end
+  
+  describe '#choose' do
+    it 'records the choice' do
+    order = Order.new
+    order.choose("Margherita")
+  end
+ end
 end
