@@ -6,12 +6,15 @@ class Order
     @current_order = []
   end
 
-def select_item(item)
-  # fail if item !=
-  @current_order << item
-end
+  def select_item(item)
+    if item == 'chips' or item == 'sausage' or item =='fish'
+      @current_order << item
+    else
+      raise 'please select item from menu'
+    end
+  end
 
-def complete_order
+  def complete_order
 
-end
+  end
 end
