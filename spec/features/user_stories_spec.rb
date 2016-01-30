@@ -16,7 +16,7 @@ describe "FEATURE SPEC" do
 
     it 'US2 - selects some dishes' do
       takeaway = Takeaway.new(Menu.new)
-      expect(takeaway.select({beef: 2, rolls: 3}, 17)).to eq ({beef: 2, rolls: 3})
+      expect(takeaway.select({beef:2, rolls:3}, 17)).to eq ({beef:2, rolls:3})
     end
 
     it 'US3 - raises error when billed different amount' do
@@ -27,10 +27,12 @@ describe "FEATURE SPEC" do
 
     it 'US4 - returns confirmation if bill matches estimate' do
       takeaway = Takeaway.new(Menu.new)
-      confirmation = "Thank you! Your order was placed and will be delivered before #{(Time.now+ 60*60).strftime("%H:%M")}"
-      allow(takeaway).to receive(:send_text).with(confirmation).and_return(confirmation)
+      confirm = "Thank you! Your order was placed "\
+                     "and will be delivered before "\
+                     "#{(Time.now+ 60*60).strftime("%H:%M")}"
+      allow(takeaway).to receive(:send_text).with(confirm).and_return(confirm)
       takeaway.select({beef: 2, rolls: 3}, 17) 
-      expect(takeaway.correct_bill?).to eq confirmation
+      expect(takeaway.correct_bill?).to eq confirm
     end  
   end
 end

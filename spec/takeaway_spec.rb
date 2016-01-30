@@ -20,22 +20,24 @@ describe Takeaway do
         rolls: 3,
         chips: 2,
         pies: 5})
-      expect(takeaway.select({beef: 2, rolls: 3}, 20)).to eq ({beef: 2, rolls: 3})
+      expect(takeaway.select({beef:2, rolls:3}, 20)).to eq ({beef:2, rolls:3})
     end
   end
 
   describe '#correct_bill?' do
   
     it 'returns confirmation when the correct total is entered' do
-      confirmation = "Thank you! Your order was placed and will be delivered before #{(Time.now+ 60*60).strftime("%H:%M")}"
-      allow(takeaway).to receive(:send_text).with(confirmation).and_return(confirmation)
+      confirm = "Thank you! Your order was placed "\
+                "and will be delivered before "\
+                "#{(Time.now+ 60*60).strftime("%H:%M")}"
+      allow(takeaway).to receive(:send_text).with(confirm).and_return(confirm)
       allow(menu).to receive(:show).and_return({ribs: 3,
         beef: 4,
         rolls: 3,
         chips: 2,
         pies: 5})
       takeaway.select({beef: 2, rolls: 3}, 17)
-      expect(takeaway.correct_bill?).to eq confirmation
+      expect(takeaway.correct_bill?).to eq confirm
     end
 
     it 'raises and error when the incorrect total is entered' do

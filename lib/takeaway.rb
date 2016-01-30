@@ -2,11 +2,14 @@ require 'twilio-ruby'
 
 class Takeaway
 
+
   def initialize(menu)
     @select = {}
     @menu = menu
     @estimate = 0
-    @client = Twilio::REST::Client.new 'ACe1ded990723482f202fe47c9b5de8a63', '33f4d96523cf8e5308eddf3fa120c615'
+    account_sid = 'ACe1ded990723482f202fe47c9b5de8a63'
+    auth_token = '33f4d96523cf8e5308eddf3fa120c615'
+    @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
   attr_reader :menu, :estimate
@@ -38,10 +41,12 @@ class Takeaway
   end
 
   def confirm_order  
-    send_text("Thank you! Your order was placed and will be delivered before #{delivery_time}")
+    send_text("Thank you! Your order was placed "\
+              "and will be delivered before #{delivery_time}")
   end
 
   def send_text(body)
-    @client.messages.create(from: '+441452260236', to: '+447930300220', body: body)
+    @client.messages.create(from: '+441452260236',
+                            to: '+447930300220', body: body)
   end
 end
