@@ -60,8 +60,8 @@ subject(:takeaway) {described_class.new}
     takeaway.select_item("Roast Pork Belly Hirata Buns")
     takeaway.select_item("Salt & Pepper Squid",2)
     takeaway.select_item("Roast Pork Belly Hirata Buns")
-    summary = "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns,\n 2 x Salt & Pepper Squid\n Total cost: £18"
-    expect(takeaway.order_summary).to eq summary
+    summary = "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns, £10\n 2 x Salt & Pepper Squid, £8\n Total cost: £18"
+    expect(takeaway.order_summary).to include summary
     end
   end
 
