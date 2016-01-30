@@ -20,6 +20,10 @@ class Restaurant
     @menu = @menu_klass.new new_menu
   end
 
+  def orders
+    @orders.clone
+  end
+
   def place_order customer, order_details
     @orders << new_order(customer, menu, order_details)
     fail "Bill incorrect. Please check order" unless customer.bill_correct? self
@@ -29,15 +33,6 @@ class Restaurant
     send_confirmation_sms customer.tel_no, message
 
     "Sent order confirmation to #{customer.name}"
-
-    #File.read('./lib/send_sms.rb')
-
-    # or just .load file?
-    #"Thank you for your custom. Your total is $#{customer.restaurant_bill}. Your order will be delivered at #{Time.now + 3600}"
-  end
-
-  def orders
-    @orders.clone
   end
 
 end
