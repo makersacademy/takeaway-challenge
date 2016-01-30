@@ -106,4 +106,16 @@ describe Order do
     end
   end
 
+  xdescribe 'edge cases' do
+    it 'incorrect name is passed for a dish' do
+
+    end
+
+    it 'minus number is given for quantity' do
+
+    end
+
+    
+  end
+
 end

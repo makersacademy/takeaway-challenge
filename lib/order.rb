@@ -45,3 +45,7 @@ class Order
     overview.inject(0){|sum,dish| sum + (dish[0]*dish[2])}
   end
 end
+
+#TODO - rename and make methods SRP - as SM suggested
+#TODO - move things into private
+#TODO - is this the best way to ininitalize the Text klass??
