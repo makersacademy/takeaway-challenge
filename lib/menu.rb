@@ -1,20 +1,51 @@
 
-ItalianFood = Struct.new :dish, :price
+require_relative 'italian_menu'
 
 class Menu
 
-attr_reader :selection, :cuisine_choice, :order
+SCREEN_WIDTH = 40
 
-  def initialize(cuisine_choice=ItalianFood)
+attr_reader :selection, :cuisine_choice, :meal, :course, :menu_choice
+# :menu_choice
+# :order
+
+  def initialize(cuisine_choice=ItalianMenu)
     @cuisine_choice = cuisine_choice
     @selection = []
-    @order = order
+    # @order = order
     #will inject order_klass later?
   end
 
-  # def display(menu)
-  # Will display the menu using nice layout for the food with prices
-  # end
+  def menu_choice(meal= :dinner, course= :all)
+    @meal = meal
+    @course = course
+    fail "We only serve lunch and dinner" until meal_choice_valid?
+    fail "Please choose starter, main, dessert or 'all'" until course_choice_valid?
+    @menu_choice = cuisine_choice.new(meal, course)
+  end
+
+
+  def display
+    menu_choice.dishes.each{|key, value| puts("#{key}".ljust(SCREEN_WIDTH) + "#{value}".rjust(SCREEN_WIDTH))}
+  end
+
+
+
+  def select(dish, quantity)
+    @menu_choice.dishes.select
+  end
+
+  private
+
+    def meal_choice_valid?
+      meal == :dinner || meal == :lunch
+    end
+
+    def course_choice_valid?
+      course == :starter || course == :main || course == :dessert || course == :all
+    end
+
+end
   #
   # def select(dish, quantity)
   # Will let the
@@ -28,7 +59,3 @@ attr_reader :selection, :cuisine_choice, :order
   # def bill
   # => will retrieve info from order
   # end
-
-
-
-end
