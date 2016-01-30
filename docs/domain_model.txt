@@ -1,0 +1,4 @@
+objects            messages
+customer
+list               show
+dish               prices
