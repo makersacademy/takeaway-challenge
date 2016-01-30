@@ -1,8 +1,6 @@
 class Menu
 
-  @@message = "No menu here yet!"
-
-  def initialize items=@@message
+  def initialize items="No menu here yet!"
     @menu_items = items
   end
 

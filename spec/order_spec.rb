@@ -2,7 +2,8 @@ require 'order'
 
 describe Order do
 
-  let(:menu) {{orange: 1, noodles: 10, pie: 6}}
+  let(:menu) {double :menu}
+  let(:menu_items) {{orange: 1, noodles: 10, pie: 6}}
   let(:customer) {double :customer}
   let(:order_details) {[:orange, :noodles]}
   let(:invalid_details) {[:dog, :pie, :haggis]}
@@ -10,10 +11,12 @@ describe Order do
   let(:error) {"Sorry, we don't serve: dog, haggis. Order aborted."}
   subject(:order) {described_class.new customer, menu, order_details}
 
+  before {allow(menu).to receive(:list_items).and_return(menu_items)}
+
   it{is_expected.to respond_to(:customer)}
   it{is_expected.to respond_to(:menu)}
   it{is_expected.to respond_to(:order_details)}
-  it{is_expected.to respond_to(:calculate_bill)}
+  it{is_expected.to respond_to(:total)}
 
   describe '#initialize' do
 
@@ -37,7 +40,7 @@ describe Order do
   describe '#calculate_bill' do
 
     it 'sums and returns the total cost of the order' do
-      expect(subject.calculate_bill).to eq price
+      expect(subject.total).to eq price
     end
 
   end

@@ -2,8 +2,24 @@ require 'customer'
 
 describe Customer do
 
+  before do
+    allow(restaurant).to receive(:orders) {[order]}
+    allow(order).to receive(:customer) {customer}
+    allow(order).to receive(:total) {price}
+    allow(order).to receive(:order_details) {order_details}
+    allow(order).to receive(:menu) {menu}
+    allow(menu).to receive(:list_items) {items}
+  end
+
+  let(:order) {double :order}
+  let(:order_details) {[:orange, :noodles]}
+  let(:price) {11}
+  let(:menu) {double :menu}
+  let(:items) {{orange: 1, noodles: 10, pie: 6}}
+  let(:restaurant) {double :restaurant}
   let(:name) {"Rufus"}
   let(:tel_no) {"1-800-EXAMPLE"}
+  let(:check_bill_output) {"Expected bill of $11, was charged $11"}
   subject(:customer) {described_class.new(name, tel_no)}
 
   it{is_expected.to respond_to(:tel_no)}
@@ -22,8 +38,23 @@ describe Customer do
     end
   end
 
-  describe '#check_bill' do
-    # stuff
+  describe 'checking the bill' do
+
+    # it 'is able to fetch order objects from a given restaurant' do
+    #   expect(subject.find_order restaurant).to eq price
+    # end
+    #
+    # it 'is able to calculate its own total' do
+    #   subject.find_order restaurant
+    #   expect(subject.calculate_bill).to eq price
+    # end
+
+    # ^^^ private methods
+
+    it 'is able to check the total given by the restaurant' do
+      expect(subject.check_bill restaurant).to eq check_bill_output
+    end
+
   end
 
 

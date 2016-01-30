@@ -24,6 +24,7 @@ describe Restaurant do
   it{is_expected.to respond_to(:menu)}
   it{is_expected.to respond_to(:new_order)}
   it{is_expected.to respond_to(:change_menu)}
+  it{is_expected.to respond_to(:place_order)}
 
   context 'menu management' do
 
@@ -41,7 +42,7 @@ describe Restaurant do
   context 'order management' do
 
     it 'allows the creation of a new order' do
-      subject.new_order details, customer
+      subject.place_order customer, details
       expect(subject.orders).to include order
     end
 
