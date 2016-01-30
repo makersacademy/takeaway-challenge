@@ -2,8 +2,6 @@ class Takeaway
 
   def initialize(menu)
     @menu = menu
-    @keys = Dotenv.load
-    @client = Twilio::REST::Client.new keys["ACCOUNT_SID"], keys["AUTH_TOKEN"]
   end
 
   attr_reader :menu
@@ -40,6 +38,8 @@ class Takeaway
   end
 
   def send_text(body)
+    @keys = Dotenv.load
+    @client = Twilio::REST::Client.new keys["ACCOUNT_SID"], keys["AUTH_TOKEN"]
     @client.messages.create(from: '+441452260236',
                             to: '+447930300220', body: body)
   end
