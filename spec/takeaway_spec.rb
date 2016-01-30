@@ -11,7 +11,7 @@ describe Takeaway do
     rolls: 3,
     chips: 2,
     pies: 5}
-    }
+  }
 
   describe '#show_menu' do
     it 'returns a menu' do

@@ -7,7 +7,7 @@ describe Menu do
                         rolls: 3,
                         chips: 2,
                         pies: 5}
-                     }
+  }
 
   describe '#show' do
     it 'returns a menu' do
