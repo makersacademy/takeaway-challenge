@@ -1,14 +1,13 @@
 require 'order'
 
 describe Order do
-  let(:menu_klass){ double('menu_klass',new: menu) }
-  subject(:order){ described_class.new(menu_klass.new) }
+  let(:menu_klass){ double('menu_klass', new: menu) }
+  let(:text_klass){ double('text_klass', new: text) }
+  subject(:order){ described_class.new(menu_klass.new,text_klass.new) }
   let(:dish1){ double('dish') }
   let(:dish2){ double('dish') }
-  # let(:dish1){ double('dish', name: 'dish1', price: 7.5) }
-  # let(:dish2){ double('dish', name: 'dish2', price: 10.0) }
+  let(:text){ double('text') }
   let(:menu){ double('menu', dishes: { dish1 => 7.5, dish2 => 10.0 })}
-
 
 
   describe '#initialize' do
@@ -64,39 +63,47 @@ describe Order do
       quantity = 1
       order.select_dish(quantity,dish1)
       order.select_dish(quantity,dish2)
-      expect{order.place(18.5)}.to raise_error 'Value not correct'
+      expect{order.place(order.show_sum+1)}.to raise_error "Incorrect value - should be #{order.show_sum}"
     end
 
     it 'confirm order if the price is correct' do
+      allow(text).to receive(:send_confirmation)
       quantity = 1
       order.select_dish(quantity,dish1)
       order.select_dish(quantity,dish2)
-      expect(order.place(17.5)).to include order.overview
+      expect(order.place(order.show_sum)).to include order.overview
     end
 
-    it 'initiates a confirmation' do
-      quantity = 1
-      order.select_dish(quantity,dish1)
-      order.select_dish(quantity,dish2)
-      expect(order).to receive(:confirmation)
-      order.place(17.5)
-    end
-
+    # it 'initiates a confirmation' do
+    #   quantity = 1
+    #   order.select_dish(quantity,dish1)
+    #   order.select_dish(quantity,dish2)
+    #   expect(order).to receive(:confirmation)
+    #   order.place(17.5)
+    # end
 
   end
 
   describe '#confirmation' do
+    before{allow(text).to receive(:send_confirmation)}
 
-    it 'returns a time stamp when order is delivered in one hour' do
+    it 'calls the confirmation' do
       quantity = 1
       order.select_dish(quantity,dish1)
       order.select_dish(quantity,dish2)
-      order.place(17.5)
-      time = Time.now + (60*60)
-      time2 = "#{time.hour} : #{time.min}"
-      expect(order.confirmation).to eq time2
+      expect(text).to receive(:send_confirmation)
+      order.place(order.show_sum)
     end
 
+    xit 'returns a time stamp when order is delivered in one hour' do
+      quantity = 2
+      order.select_dish(quantity,dish1)
+      order.select_dish(quantity,dish2)
+      order.place(order.show_sum)
+      time = (Time.now + (60*60)).strftime("%H:%M")
+      msg = "Thank you! Your order was placed and will be delivered before #{time}"
+      expect(order.confirmation).to eq msg
+    end
   end
 
 end
