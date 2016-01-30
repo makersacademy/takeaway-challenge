@@ -22,7 +22,7 @@ class Takeaway
 
   private
 
-  attr_reader :estimate, :order, :keys
+  attr_reader :estimate, :order
   
   def delivery_time
     (Time.now + 60*60).strftime("%H:%M")
@@ -38,8 +38,7 @@ class Takeaway
   end
 
   def send_text(body)
-    @keys = Dotenv.load
-    @client = Twilio::REST::Client.new keys["ACCOUNT_SID"], keys["AUTH_TOKEN"]
+    @client = Twilio::REST::Client.new Dotenv.load["ACCOUNT_SID"], Dotenv.load["AUTH_TOKEN"]
     @client.messages.create(from: '+441452260236',
                             to: '+447930300220', body: body)
   end

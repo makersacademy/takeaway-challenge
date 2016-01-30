@@ -5,9 +5,7 @@ class Calculator
   end
 
   def calculate
-    bill = 0
-    order.each {|k, v| bill += takeaway.show_menu[k]*v}
-    bill  
+    order.reduce(0) {|bill, (k, v)| bill + takeaway.show_menu[k]*v}
   end
 
   private

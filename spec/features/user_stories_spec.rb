@@ -6,7 +6,6 @@ require 'dotenv'
 describe "FEATURE SPEC" do
   let(:takeaway) { Takeaway.new(Menu.new) }
   let(:choice) { {beef:2, rolls:3} }
-  let(:keys) { {"ACCOUNT_SID" => '0000', "AUTH_TOKEN" => '0000'} }
   let(:default_menu) { {ribs: 3,
         beef: 4,
         rolls: 3,

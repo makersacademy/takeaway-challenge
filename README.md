@@ -4,7 +4,9 @@ Takeaway Challenge
 Implementation
 --------
 
-I created a features test file to guide my design, which consists of three classes - takeaway, menu and calculator. Each class has a corresponding spec file for unit tests, which are each mocked and stubbed to remove dependencies on each other. In my feature test, the following user stories were implemented:
+I created a features test file to guide my design, which consists of three classes - takeaway, menu and calculator. Each class has a corresponding spec file for unit tests, which are each mocked and stubbed to remove dependencies on each other. My implementation is fully functional when spiking in irb/pry, and allows for a confirmation text message to be sent via the Twilio API. This API has disabled by way of stubs in the feature and unit tests. Dotenv gem was utilized to hide the Twilio account SID and authentication tokens, and the .env file added to .gitignore.
+
+In my feature test, the following user stories were implemented:
 
 ```
 As a customer
@@ -26,13 +28,28 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 Instructions
 -------
-TO DO
 
+```
+[6] pry(main)> takeaway = Takeaway.new(Menu.new)
+=> #<Takeaway:0x007fe3c8ea4968
+ @menu=
+  #<Menu:0x007fe3c8ea4a30
+   @show={:ribs=>3, :beef=>4, :rolls=>3, :chips=>2, :pies=>5}>>
+[7] pry(main)> takeaway.show_menu
+=> {:ribs=>3, :beef=>4, :rolls=>3, :chips=>2, :pies=>5}
+[8] pry(main)> takeaway.select({beef: 2, rolls: 3}, 19)
+=> {:beef=>2, :rolls=>3}
+[9] pry(main)> takeaway.confirm_order
+RuntimeError: incorrect bill amount
+from /Users/GotWai/Dropbox/Projects/takeaway-challenge/lib/takeaway.rb:19:in `confirm_order'
+[10] pry(main)> takeaway.select({beef: 2, rolls: 3}, 17)
+=> {:beef=>2, :rolls=>3}
+[11] pry(main)> takeaway.confirm_order
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/ACe1ded990723482f202fe47c9b5de8a63/Messages/SMc78e52456cd245089a81986eb1725947>
+```
 
 Build Badge
 ------------------
 
-TO DO
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+[![Build Status](https://travis-ci.org/ggwc82/takeaway-challenge.svg?branch=master)](https://travis-ci.org/ggwc82/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/ggwc82/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/ggwc82/takeaway-challenge?branch=master)
