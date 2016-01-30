@@ -1,12 +1,8 @@
 require 'menu'
 
-describe 'menu' do
+describe 'Menu' do
 
   subject(:menu) { Menu.new }
-
-  it 'has a list of items and prices' do
-    expect(menu.pizzas).to be_a(Hash)
-  end
 
   describe "#display_menu" do
     it 'displays the menu' do
