@@ -8,7 +8,7 @@ describe 'User stories' do
   #I would like to see a list of dishes with prices
   it 'see a list of dishes with prices ' do
     takeaway = Takeaway.new
-    expect(takeaway.display_menu).to eq ('{"chiken"=>3, "rice"=>1, "pizza"=>6, "chips"=>2}')
+    expect(takeaway.display_menu).to eq ('{"chicken"=>3, "rice"=>1, "pizza"=>6, "chips"=>2}')
   end
 
 
