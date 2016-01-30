@@ -49,11 +49,15 @@ describe Order do
     end
 
     it "can accept an item for an order, specifying quantity" do
-      expect{order.add_to_order(:soup, 3)}.to change{order.current_order}.to ({:soup => 3})
+      expect{order.add_to_order(:soup, 3, 4.50)}.to change{order.current_order}.to ({:soup => 3})
     end
 
     it "won't accept items not on the menu" do
-      expect{order.add_to_order(:Tacos, 1)}.to raise_error 'Item not on menu'
+      expect{order.add_to_order(:Tacos, 1, 1)}.to raise_error 'Item not on menu'
+    end
+
+    it "verifies the price entered is correct" do
+      expect{order.add_to_order(:soup, 3, 5)}.to raise_error 'Incorrect price, order rejected'
     end
   end
 
