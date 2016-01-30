@@ -18,15 +18,15 @@ describe Ristorante do
 
   describe '#select_dishes' do
     it "sends set_current_order to order" do
-      expect(order).to receive(:set_current_order)  
+      expect(order).to receive(:set_current_order).with(dish, 2)
       order.set_current_order(dish,2)
     end
   end
 
   describe '#place_order' do
     it "sends #set_current_order to order " do
-      expect(order).to receive(:set_current_order)
-      order.set_current_order(double, 1 , 2)
+      expect(order).to receive(:set_current_order).with(dish, 1, 2)
+      order.set_current_order(dish, 1 , 2)
     end
 
     it "sends #send_sms to order " do
