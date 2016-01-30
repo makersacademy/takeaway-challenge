@@ -16,7 +16,7 @@ class Takeaway
 
   def select(order, estimate)
     @estimate = estimate
-    @select = order
+    @order = order
   end
 
   def confirm_order
@@ -26,16 +26,14 @@ class Takeaway
 
   private
 
-  attr_reader :estimate
+  attr_reader :estimate, :order
   
   def delivery_time
     (Time.now + 60*60).strftime("%H:%M")
   end
 
   def calculate_bill
-    bill = 0
-    @select.each {|k, v| bill += show_menu[k]*v}
-    bill  
+    Calculator.new(order, self).calculate
   end
 
   def order_placed 
