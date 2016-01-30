@@ -2,9 +2,10 @@ require 'takeaway'
 require 'dotenv'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu, calculator) }
+  subject(:takeaway) { described_class.new(menu, calculator, twilio) }
   let(:calculator) { double :calculator }
   let(:choice) { {beef:2, rolls:3} }
+  let(:twilio) { double :twilio }
   let(:menu) { double :menu, show: {ribs: 3,
     beef: 4,
     rolls: 3,
