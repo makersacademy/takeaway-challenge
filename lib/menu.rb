@@ -1,5 +1,5 @@
 MENU = { 
-
+  
   "Margherita" => 11.99,
   "Fiorentina" => 12.99,
   "Vegeteriano" => 10.99, 
