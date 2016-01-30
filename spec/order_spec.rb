@@ -1,7 +1,8 @@
 require_relative '../lib/order'
 
 describe Order do
-  subject(:order) { described_class.new }
+  let(:sms) {double :sms}
+  subject(:order) { described_class.new(sms) }
   let(:dish) { double :dish }
 
   describe '#set_current_order' do
@@ -35,6 +36,27 @@ describe Order do
     it "returns false if sum_up_prices is not equal to total " do
       order.set_current_order(dish, 1, 2)
       expect(order.wrong_total?).to eq false
+    end
+  end
+
+  describe "#send_sms" do
+    it "sends #send message to sms object" do
+      expect(sms).to receive(:send)
+      sms.send
+    end
+
+    it "it clears the #current_order array" do
+      order.set_current_order(dish, 1, 2)
+      allow(sms).to receive(:send) {nil}
+      order.send_sms
+      expect(order.current_order).to be_empty
+    end
+
+    it "it resets the #order_total" do
+      order.set_current_order(dish, 1, 2)
+      allow(sms).to receive(:send) {nil}
+      order.send_sms
+      expect(order.order_total).to eq 0
     end
   end
 

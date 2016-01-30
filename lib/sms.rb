@@ -8,10 +8,13 @@ class Sms
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def send(order_number)
+  def message
     message = "Thank you! Your order:#{order_number} was placed"\
               " and will be delivered before"\
               " #{Time.now.hour + 1}:#{Time.now.min}"
+  end
+
+  def send(order_number)    
     @client.account.messages.create(
     	from: '+441625800275',
       to:   '+447719164551',

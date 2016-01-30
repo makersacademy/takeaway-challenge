@@ -2,7 +2,7 @@ require_relative '../lib/ristorante'
 
 describe Ristorante do
   let(:order) {double :order}
-  subject(:ristorante) {described_class.new(order_klass: order)}
+  subject(:ristorante) {described_class.new(order)}
   let(:menu_list) {double :menu_list, one: [dish, 4]}
   let(:dish) {double :dish}
 
