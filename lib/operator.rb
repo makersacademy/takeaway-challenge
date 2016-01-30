@@ -12,13 +12,15 @@ class Operator
 
   def check_new_messages
     @current_text = @text.new_message
+  end
+
+  def action
     send(@menu.food) if request_menu?
-    sort_order unless request_menu?
-    @current_text
+    sort_order(@current_text) unless request_menu?
   end
 
   def request_menu?
-    true if @current_text.include? 'menu'
+    @current_text.include? 'menu'
   end
 
   def send(message)
@@ -40,6 +42,7 @@ class Operator
       end
     }
     @price = @menu.create_receipt(@order_information)
+    confirmation_message
     @order_information
   end
 
@@ -49,6 +52,8 @@ class Operator
       message = message + "#{quantity}x #{food}\n"
     }
     message = message + "Total cost: £#{@price}"
+    send(message)
+    message
   end
 
 

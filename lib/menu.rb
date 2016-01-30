@@ -6,10 +6,11 @@ class Menu
   end
 
   def food
-    menu_string = "Menu\n"
+    menu_string = "\nMenu\n"
     @menu_list.each {|key,value|
       menu_string = menu_string + "#{key}, #{value}\n"
     }
+    menu_string = menu_string + "To place an order please reply with the food item and quantity in the following format (example): \n  pizza 3, steak, chips 2 ... etc."
     menu_string
   end
 

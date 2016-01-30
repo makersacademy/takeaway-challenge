@@ -20,23 +20,23 @@ describe Operator do
     expect(subject.check_new_messages).to eq message
   end
 
+  it {is_expected.to respond_to(:action)}
+
   it 'can recognise if a customer is requesting a menu' do
     subject.check_new_messages
     expect(subject.request_menu?).to be true
   end
 
   it 'can sort an incoming order' do
-    subject.check_new_messages
     expect(subject.sort_order(order)).to eq({:steak=>1,:chips=>3,:pizza=>2})
   end
 
   it 'can send a menu to a customer when necessary' do
-    subject.check_new_messages
     expect(subject.send(menu))
   end
 
   it 'can create a confirmation message' do
-    subject.check_new_messages
+    subject.sort_order(order)
     expect(subject.confirmation_message).to be_instance_of String
   end
 
