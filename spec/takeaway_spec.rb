@@ -8,15 +8,23 @@ describe Takeaway do
     expect(takeaway.see_menu).to eq ({"soup"=>3.22, "garlic bread"=>1.35, "olives"=>2.86})
   end
 
-  it 'return order with dish name and 1x (if not specified)' do
-    expect(takeaway.order('dish')).to eq '1x dish(s)'
+  it "add dish name and quantity 1x(if not specified) to basket" do
+    takeaway.order("soup")
+    expect(takeaway.basket).to eq ({"soup"=>1})
   end
 
-  it 'return order with dish name and quantity' do
-    expect(takeaway.order('dish',2)).to eq '2x dish(s)'
+  it "add dish name and quantity to basket" do
+    takeaway.order("soup",3)
+    expect(takeaway.basket).to eq ({"soup"=>3})
   end
 
-  it 'so customer can verify see the selected items' do
+  it "add quantity to dish if it is already in the basket" do
+    takeaway.order("soup",3)
+    takeaway.order("soup")
+    expect(takeaway.basket).to eq ({"soup"=>4})
+  end
+
+  xit 'so customer can verify see the selected items' do
     takeaway.order('dish1',2)
     takeaway.order('dish2',3)
     takeaway.order('dish3')

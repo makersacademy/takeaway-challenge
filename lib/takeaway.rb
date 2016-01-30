@@ -6,13 +6,14 @@ class Takeaway
 
   def initialize(menu)
     @menu = menu
-    @basket =[]
+    @basket =Hash.new(0)
   end
 
   def_delegator :@menu, :see_menu
 
-  def order dish, quantity = 1
-    basket << {dish.to_sym => quantity}
-    "#{quantity}x #{dish}(s)"
+  def order(dish, quantity = 1)
+    quantity += basket[dish] if basket[dish]
+    basket[dish] = quantity
+    "#{quantity}x #{dish}(s) added to your basket."
   end
 end
