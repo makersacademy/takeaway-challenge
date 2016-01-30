@@ -15,7 +15,7 @@ describe TakeAway do
     end
   end
   
-  describe "#order" do
+  describe "#basket_summary" do
     it 'allows you too select items from the menu' do
       take_away.order "Egg Fried Rice"
       expect(take_away.basket_summary).to eq "Egg Fried Rice x1: £1.90"
@@ -24,6 +24,12 @@ describe TakeAway do
     it 'only lets you order items on the menu' do
       dish = "Tikka Masala"
       expect { take_away.order(dish) }.to raise_error "#{dish} is not on the menu"
+    end
+    
+    it "adds multiple items to the basket" do
+      take_away.order 'Egg Fried Rice'
+      take_away.order 'Spring Roll'
+      expect(take_away.basket_summary).to include 'Spring Roll'
     end
   end
 end
