@@ -2,16 +2,17 @@ require "./lib/menu"
 
 class Takeaway
 
-attr_reader :order
+attr_reader :order, :total
 
 	def initialize
 	@menu = Menu.new
 	@dishes = @menu.dishes
 	@order = []
+	@total = 0
 	end
 
 	def list_menu
-	@dishes
+	print_menu
 	end
 
 	def select_item(item, amount=1)
@@ -38,7 +39,7 @@ attr_reader :order
 private
 
 def sum_total
-@total = 0
+
 @order.each do |item|
 	 		@dishes.select do |k,v| 
 	 		@total += v	if k == item
@@ -69,9 +70,8 @@ duplicates = Hash.new(0)
 end
 
 
-
 def incorrect_total(amount)
-	amount != @total
+	amount != total
 end
 
 def one_hours_time
@@ -79,6 +79,9 @@ def one_hours_time
 	time.strftime("%H:%M")
 end
 
+def print_menu
+@dishes.each {|k,v| "Dish: #{k}, Price: £#{v}"} 
+end
 
 
 # def select_item(item, amount=1)

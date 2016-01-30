@@ -85,6 +85,7 @@ let(:dish2) {double(:dish2)}
        allow(takeaway).to receive(:total) {18}
        allow(takeaway).to receive(:one_hours_time) {"20:00"}
        thank_you_message ="Thank you! Your order was placed and will be delivered before 20:00"
+       takeaway.place_order(18)
        expect(takeaway.place_order(18)).to eq thank_you_message
        end
     
