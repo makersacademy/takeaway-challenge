@@ -3,7 +3,6 @@ require_relative '../lib/ristorante'
 describe Ristorante do
   let(:order) {double :order}
   subject(:ristorante) {described_class.new(order)}
-  let(:menu_list) {double :menu_list, one: [dish, 4]}
   let(:dish) {double :dish}
 
   describe '#menu'
@@ -12,15 +11,14 @@ describe Ristorante do
         expect {ristorante.menu}.not_to raise_error
       end
 
-      it "returns the dish list" do
-        allow(ristorante).to receive(:menu) {menu_list}
-        expect(ristorante.menu).to eq menu_list
+      it "expects the menu to be a has" do
+        expect(ristorante.menu).to be_a Hash
       end
     end
 
   describe '#select_dishes' do
     it "sends set_current_order to order" do
-      expect(order).to receive(:set_current_order)
+      expect(order).to receive(:set_current_order)  
       order.set_current_order(dish,2)
     end
   end
@@ -28,12 +26,17 @@ describe Ristorante do
   describe '#place_order' do
     it "sends #set_current_order to order " do
       expect(order).to receive(:set_current_order)
-      order.set_current_order
+      order.set_current_order(double, 1 , 2)
     end
 
     it "sends #send_sms to order " do
       expect(order).to receive(:send_sms)
       order.send_sms
+    end
+
+    it "sends #assign_order_number to order " do
+      expect(order).to receive(:assign_order_number)
+      order.assign_order_number
     end
   end
 

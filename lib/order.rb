@@ -7,7 +7,7 @@ class Order
     @sms = sms_klass
     @current_order = []
     @order_total = 0
-    @order_number = 0
+    @order_log = []
   end
 
   def set_current_order(dish, quantity, price)
@@ -29,6 +29,15 @@ class Order
 
   def send_sms
     @sms.send(@order_number)
+    order_logging
+  end
+
+  private
+
+  def order_logging
+    order = %(Order: #{@current_order}
+    Order Number: #{@order_number} Order Amount: #{@order_total})
+    @order_log << order
     @current_order.clear
     @order_total = 0
   end

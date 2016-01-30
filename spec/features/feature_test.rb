@@ -4,7 +4,7 @@ require_relative '../../lib/order'
 describe Ristorante do
   let(:order) { Order.new}
   subject(:ristorante) {described_class.new(order)}
-  let(:menu_list) {ristorante.menu_list}
+  let(:menu) {ristorante.menu}
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -19,7 +19,7 @@ describe Ristorante do
       end
 
       it "returns the dish list" do
-        expect(ristorante.menu).to eq menu_list
+        expect(ristorante.menu).to eq menu
       end
     end
   end
@@ -47,13 +47,13 @@ describe Ristorante do
   end
 
   describe "#place_order" do
-    it "raises an error if the order total is different selected dishes" do
+    it "raises an error if the order total differs the selected dishes" do
       ristorante.select_dishes(1, 2)
       allow(order).to receive(:wrong_total?) {true}
       expect {ristorante.place_order}.to raise_error("Wrong total amount")
     end
 
-    it "resets order.order_total if you place an order" do
+    it "resets order.order_total after you place an order" do
       ristorante.select_dishes(1, 2)
       ristorante.place_order
       expect(order.order_total).to eq 0

@@ -7,17 +7,8 @@ class Ristorante
     @order = order_klass
   end
 
-  def menu_list
-  menu_list = {1=>[:egg_fried_rice, 3],
-               2=>[:chicken_legs, 2],
-               3=>[:miso_soup, 3],
-               4=>[:sofrito, 5],
-               5=>[:pasta, 1],
-               6=>[:garlic_bread, 1.5]}
-  end
-
   def menu
-    @menu = menu_list
+    @menu = menu_list.dup
   end
 
   def place_order
@@ -32,5 +23,15 @@ class Ristorante
     order.set_current_order(dish, quantity, price)
   end
 
+  private
+
+  def menu_list
+  menu_list = {1=>[:egg_fried_rice, 3],
+               2=>[:chicken_legs, 2],
+               3=>[:miso_soup, 3],
+               4=>[:sofrito, 5],
+               5=>[:pasta, 1],
+               6=>[:garlic_bread, 1.5]}
+  end
 
 end
