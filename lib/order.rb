@@ -1,11 +1,16 @@
-class Menu
-  attr_reader :menu
+require_relative 'menu'
+class Order
+  attr_reader :my_order
 
-  def initialize
-    @menu = {soup: 2      ,
-             bread_roll: 2,
-             scones: 1    ,
-             sandwich: 3  ,
-             }
+  def initialize(menu_klass = Menu)
+    @my_order = []
+    @menu_klass = menu_klass.new
+  end
+
+  def select_meal(dish)
+    unless @menu_klass.dishes.keys.include?(dish)
+      raise "Please select a dish from the menu."
+    end
+    @my_order << dish
   end
 end
