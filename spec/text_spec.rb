@@ -1,12 +1,18 @@
 require 'text'
 
 describe Text do
-  let(:message) {"hello can i have a menu"}
+  let(:input_message) {"hello can i have a menu"}
   let(:reply) {double(:reply)}
+  let(:client) {double(:client)}
+  subject(:text) {described_class.new client}
 
-  # it 'can return the most recent message received' do
-  #   subject.reply
-  #   expect(subject.new_message).to eq message
-  # end
+
+  before(:example) do
+  allow(client).to receive(:message)
+  end
+
+  it 'can create a list of incoming messages' do
+    expect(subject.reply).to eq input_message
+  end
 
 end

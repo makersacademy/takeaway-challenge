@@ -24,7 +24,7 @@ class Operator
   end
 
   def send(message)
-    @text.text(message)
+    @text.send_text(message)
   end
 
   def sort_order(order)

@@ -1,4 +1,4 @@
-#require 'twilio-ruby'
+require 'twilio-ruby'
 #require 'rubygems'
 
 class Text
@@ -7,11 +7,11 @@ class Text
   @@account_sid = ENV['ACCOUNT_SID']
   @@auth_token = ENV['AUTH_TOKEN']
 
-  def initialize
-    @client = Twilio::REST::Client.new @@account_sid, @@auth_token
+  def initialize(client = Twilio::REST::Client.new(@@account_sid, @@auth_token))
+    @client = client
   end
 
-  def text(message)
+  def send_text(message)
     @client.messages.create(
     from: ENV['TWILIO_PHONE'],
     to: ENV['MY_PHONE'],

@@ -11,7 +11,7 @@ describe Operator do
 
   before(:example) do
     allow(text).to receive(:new_message).and_return(message)
-    allow(text).to receive(:text)
+    allow(text).to receive(:send_text)
     allow(menu).to receive(:food).and_return(menu_string)
     allow(menu).to receive(:create_receipt)
   end
