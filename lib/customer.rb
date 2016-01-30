@@ -17,7 +17,7 @@ class Customer
   def find_order restaurant
     @my_order = nil
     restaurant.orders.clone.select.with_index do |ord, ind|
-      if ord.customer === self
+      if ord.customer == self
         @my_order = restaurant.orders[ind]
         @restaurant_bill = @my_order.total
       end

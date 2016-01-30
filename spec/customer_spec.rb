@@ -40,22 +40,10 @@ describe Customer do
 
   describe 'checking the bill' do
 
-    # it 'is able to fetch order objects from a given restaurant' do
-    #   expect(subject.find_order restaurant).to eq price
-    # end
-    #
-    # it 'is able to calculate its own total' do
-    #   subject.find_order restaurant
-    #   expect(subject.calculate_bill).to eq price
-    # end
-
-    # ^^^ private methods
-
     it 'is able to check the total given by the restaurant' do
-      expect(subject.check_bill restaurant).to eq check_bill_output
+      expect(subject.check_bill(restaurant)).to eq check_bill_output
     end
 
   end
-
 
 end
