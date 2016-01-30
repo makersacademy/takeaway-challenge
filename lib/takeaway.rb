@@ -4,7 +4,7 @@ class Takeaway
 
 
   def initialize
-    @menu = {"chiken" =>3,
+    @menu = {"chicken" =>3,
      "rice" =>1,
      "pizza" =>6,
      "chips" =>2 }
