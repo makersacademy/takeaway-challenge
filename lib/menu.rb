@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :starters, :mains, :desserts, :sides
+  attr_reader :starters, :mains, :desserts, :sides, :full_menu
 
   def initialize
     @starters = {:soup => 1.50,
@@ -15,6 +15,7 @@ class Menu
     @sides = {:bread => 0.50,
     :chips => 1.50,
     :kimchi => 2.00}.freeze
+    @full_menu = [@starters, @mains, @desserts, @sides]
   end
 
 end
