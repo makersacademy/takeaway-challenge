@@ -80,7 +80,9 @@ def one_hours_time
 end
 
 def print_menu
-@dishes.each {|k,v| "Dish: #{k}, Price: £#{v}"} 
+pretty_menu = ""
+@dishes.each {|k,v| pretty_menu += "Dish: #{k}, Price: £#{v}\n"} 
+pretty_menu.chomp
 end
 
 
