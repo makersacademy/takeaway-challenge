@@ -38,14 +38,19 @@ describe TakeAway do
   end
   
   describe "#complete" do
-    it "Completes an order" do
-      take_away.order "Spring Roll"
-      take_away.total
-      expect(take_away.complete_order(1.50)).to eq "Order Complete"
+    context "when successfull" do      
+      it 'sends a text when order is complete' do
+        allow(take_away).to receive(:send_text)
+        expect(take_away).to receive(:send_text).with("Thank you! Your order was placed.")
+          take_away.complete_order(0)
+      end
     end
     
-    it "Raises an error if sum doesn't match total" do
-      expect {take_away.complete_order(5.30)}.to raise_error "Value does not match the total"
+    context "when not successful" do
+    
+      it "Raises an error if sum doesn't match total" do
+        expect {take_away.complete_order(5.30)}.to raise_error "Value does not match the total"
+      end
     end
   end
 end

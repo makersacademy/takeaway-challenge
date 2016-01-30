@@ -11,6 +11,7 @@ class Order
   def add_dish_to_basket(dish, quantity = 1)
     raise "#{dish} is not on the menu" unless on_the_menu?(dish)
     @basket[dish] += quantity
+    add_to_total(dish, quantity)
   end
   
   def current_order
@@ -20,19 +21,18 @@ class Order
   
   private
   
-  def format_basket 
+  def format_basket ###
     @basket.each do |dish, quantity|
        order_list(dish, quantity)
-       add_to_total(dish, quantity)
     end
   end
   
-  def order_list(dish, quantity)
+  def order_list(dish, quantity) ###
     @current_order += dish + " x" + quantity.to_s + ":" + " £" + "%.2f" %(price(dish) * quantity)
   end
   
   def add_to_total(dish, quantity) 
-    @total_amount  += price(dish) * quantity
+    @total_amount += price(dish) * quantity
   end
   
   def on_the_menu?(dish)

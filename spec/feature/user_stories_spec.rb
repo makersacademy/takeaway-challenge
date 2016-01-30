@@ -25,7 +25,8 @@ describe "User Stories" do
     take_away = TakeAway.new
     take_away.order "Egg Fried Rice", 2
     take_away.order "Spring Roll"
-    total = take_away.total
-    expect(take_away.complete_order(5.3)).to eq "Order Complete"
+    allow(take_away).to receive(:send_text).with("Thank you! Your order was placed and will be delivered before %H:%M")
+    expect(take_away).to receive(:send_text).with("Thank you! Your order was placed.")
+      take_away.complete_order(5.3)
   end
 end
