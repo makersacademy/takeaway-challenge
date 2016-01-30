@@ -8,7 +8,7 @@ let(:dish2) {double(:dish2)}
 
 
   describe "#list_menu" do 
-    it "" do 
+    it "displays a list of items and prices" do 
     pretty_menu = takeaway.list_menu
     expect{ takeaway.list_menu }.to output(pretty_menu).to_stdout 
     end
@@ -73,7 +73,7 @@ let(:dish2) {double(:dish2)}
    context "if payment amount does not match total amount" do
        
        it "raises an error" do
-       allow(takeaway).to receive(:total) {18}
+       allow(takeaway).to receive(:bill) {18}
        message = "payment does not match total price, please try again"
        expect{takeaway.place_order(14)}.to raise_error message
        end
@@ -83,10 +83,9 @@ let(:dish2) {double(:dish2)}
       context "if payment matches total amount" do
        
        it "sends thank you message" do
-       allow(takeaway).to receive(:total) {18}
+       allow(takeaway).to receive(:bill) {18}
        allow(takeaway).to receive(:one_hours_time) {"20:00"}
        thank_you_message ="Thank you! Your order was placed and will be delivered before 20:00"
-       takeaway.place_order(18)
        expect(takeaway.place_order(18)).to eq thank_you_message
        end
     

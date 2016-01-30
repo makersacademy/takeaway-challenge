@@ -46,7 +46,9 @@ describe 'User Stories' do
   takeaway.select_item("Roast Pork Belly Hirata Buns")
   takeaway.select_item("Salt & Pepper Squid",2)
   takeaway.select_item("Roast Pork Belly Hirata Buns")
-  summary = "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns, £10\n 2 x Salt & Pepper Squid, £8\n Total cost: £18"
+  thank_you_message ="Thank you! Your order was placed and will be delivered before 20:00"
+  allow(takeaway).to receive(:one_hours_time) {"20:00"}
+  expect(takeaway.place_order(18)).to eq thank_you_message
   end
 
 end

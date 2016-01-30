@@ -2,13 +2,13 @@ require "./lib/menu"
 
 class Takeaway
 
-attr_reader :order, :total
+attr_reader :order, :bill
 
 	def initialize
 	@menu = Menu.new
 	@dishes = @menu.dishes
 	@order = []
-	@total = 0
+	@bill = 0
 	end
 
 	def list_menu
@@ -16,21 +16,22 @@ attr_reader :order, :total
 	end
 
 	def select_item(item, amount=1)
-	amount.times {order << item} 
+	amount.times {@order << item} 
+	sum_total
 	"you added #{amount} #{item} to your basket"
 	end
 
-	def total
-	sum_total
-	"Total cost\: £#{@total}"
+	def total	
+	"Total cost\: £#{bill}"
 	end
 
 	def order_summary
-    "Your order summary is:\n#{subtotal_of_items}\n #{total}"
+    "Your order summary is:\n#{subtotal_of_items}\n Total cost: £#{bill}"
 	end
 
 
 	def place_order(amount)
+	print @bill
 	raise "payment does not match total price, please try again" if incorrect_total(amount)
 	"Thank you! Your order was placed and will be delivered before #{one_hours_time}"
 	end
@@ -39,14 +40,15 @@ attr_reader :order, :total
 private
 
 def sum_total
-
-@order.each do |item|
+@bill = 0
+temp = @order.dup
+temp.each do |item|
 	 		@dishes.select do |k,v| 
-	 		@total += v	if k == item
+	 		@bill += v	if k == item
 			end
 		end
-	  @total
 	 end
+@bill
 end
 
 def subtotal_of_items
@@ -71,7 +73,7 @@ end
 
 
 def incorrect_total(amount)
-	amount != total
+	amount != bill
 end
 
 def one_hours_time
