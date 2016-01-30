@@ -4,7 +4,7 @@ require 'twilio-ruby'
 require 'dotenv'
 
 describe "FEATURE SPEC" do
-  let(:takeaway) { Takeaway.new(Menu.new, Calculator.new, Twilio::REST::Client.new(Dotenv.load["ACCOUNT_SID"], Dotenv.load["AUTH_TOKEN"])) }
+  let(:takeaway) { Takeaway.new(Menu.new, Calculator.new, Twilio::REST::Client.new("01234", "56789")) }
   let(:choice) { {beef:2, rolls:3} }
   let(:default_menu) { {ribs: 3,
         beef: 4,
