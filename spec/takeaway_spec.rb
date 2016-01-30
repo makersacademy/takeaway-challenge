@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:menu) { double :menu, dishes: { :spam => 1 } }
+  let(:menu) { double :menu, dishes: { "Spam" => 1 } }
   subject(:takeaway) { described_class.new(menu) }
 
   it 'is an instance of Takeaway class' do
@@ -14,6 +14,14 @@ describe Takeaway do
   end
 
   it 'can show the dishes and prices from a menu' do
-    expect(takeaway.show_menu).to include(:spam)
+    expect(takeaway.show_menu).to include("Spam")
+  end
+
+  it 'allows the user to order a dish from the menu' do
+    expect(takeaway).to respond_to(:order).with(1).argument
+  end
+
+  it 'should raise an error if ordered dish is not on the menu' do
+    expect{ takeaway.order("Pizza") }.to raise_error 'Dish not available: not part of the menu'
   end
 end

@@ -13,5 +13,15 @@ describe 'feature tests' do
       expect(t.show_menu).to include("Spam")
     end
 
+    # As a customer
+    # So that I can order the meal I want
+    # I would like to be able to select some number of several available dishes
+
+  it 'allows a customer to select from the available dishes' do
+    m = Menu.new
+    t = Takeaway.new(m)
+    t.order("Spam")
+    expect(t.current_order).to include("Spam")
   end
 end
+  end
