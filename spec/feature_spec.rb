@@ -35,9 +35,22 @@ describe 'User Stories' do
   takeaway.select_item("Salt & Pepper Squid",2)
   takeaway.select_item("Roast Pork Belly Hirata Buns")
   summary = "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns, £10\n 2 x Salt & Pepper Squid, £8\n Total cost: £18"
-  expect(takeaway.order_summary).to include summary
+  message = "payment does not match total price, please try again"
+  expect{takeaway.place_order(15)}.to raise_error message
   end
 
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+  it 'so I can verify my order, check that the total I have been given matches the sum of the various dishes in my order' do
+  takeaway = Takeaway.new
+  menu = Menu.new
+  takeaway.select_item("Roast Pork Belly Hirata Buns")
+  takeaway.select_item("Salt & Pepper Squid",2)
+  takeaway.select_item("Roast Pork Belly Hirata Buns")
+  summary = "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns, £10\n 2 x Salt & Pepper Squid, £8\n Total cost: £18"
+  end
 
 end
 

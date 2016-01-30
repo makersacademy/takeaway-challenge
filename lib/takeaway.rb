@@ -8,7 +8,6 @@ attr_reader :order
 	@menu = Menu.new
 	@dishes = @menu.dishes
 	@order = []
-	@total = 0
 	end
 
 	def list_menu
@@ -30,13 +29,16 @@ attr_reader :order
 	end
 
 
-
-
+	def place_order(amount)
+	raise "payment does not match total price, please try again" if incorrect_total(amount)
+	"Thank you! Your order was placed and will be delivered before #{one_hours_time}"
+	end
 
 
 private
 
 def sum_total
+@total = 0
 @order.each do |item|
 	 		@dishes.select do |k,v| 
 	 		@total += v	if k == item
@@ -68,10 +70,14 @@ end
 
 
 
-def subtotal
-
+def incorrect_total(amount)
+	amount != @total
 end
 
+def one_hours_time
+	time = Time.new + 60 * 60	
+	time.strftime("%H:%M")
+end
 
 
 
