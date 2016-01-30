@@ -34,14 +34,14 @@ describe Takeaway do
       expect(takeaway.basket_summary).to include("Won Ton")
     end
 
-    context "invalid order"
+    context "invalid order" do
 
       it "raises an error if item is invalid" do
         expect do
           takeaway.order("Mozarella and Basil Pasta")
         end.to raise_error "This item isn't on the menu."
       end
-
+    end
   end
   # context "removes menu items"
   # context "places an order"
