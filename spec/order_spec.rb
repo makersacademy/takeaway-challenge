@@ -52,6 +52,11 @@ describe Order do
       order.select_dish(quantity,dish2)
       expect(order.show_sum).to be 17.5
     end
+
+    it 'deals with no orders' do
+      expect(order.show_sum).to be 0
+    end
+
   end
 
   describe '#place' do
@@ -62,13 +67,36 @@ describe Order do
       expect{order.place(18.5)}.to raise_error 'Value not correct'
     end
 
-    xit 'confirm order if the price is correct' do
+    it 'confirm order if the price is correct' do
       quantity = 1
       order.select_dish(quantity,dish1)
       order.select_dish(quantity,dish2)
-      expect(order.place(18.5)).to include order.overview
+      expect(order.place(17.5)).to include order.overview
+    end
+
+    it 'initiates a confirmation' do
+      quantity = 1
+      order.select_dish(quantity,dish1)
+      order.select_dish(quantity,dish2)
+      expect(order).to receive(:confirmation)
+      order.place(17.5)
     end
 
 
   end
+
+  describe '#confirmation' do
+
+    it 'returns a time stamp when order is delivered in one hour' do
+      quantity = 1
+      order.select_dish(quantity,dish1)
+      order.select_dish(quantity,dish2)
+      order.place(17.5)
+      time = Time.now + (60*60)
+      time2 = "#{time.hour} : #{time.min}"
+      expect(order.confirmation).to eq time2
+    end
+
+  end
+
 end

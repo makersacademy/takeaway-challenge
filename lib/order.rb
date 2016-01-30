@@ -20,8 +20,23 @@ class Order
     calculate_price
   end
 
+  def show_selection(value)
+    [overview,"Total sum for order is: #{value}"]
+  end
+
+  def place(value)
+    fail 'Value not correct' if value != show_sum
+    confirmation
+    show_selection(value)
+  end
+
+  def confirmation
+    time = Time.now + (60*60)
+    "#{time.hour} : #{time.min}"
+  end
+
   private
-  
+
   def calculate_price
     overview.inject(0){|sum,dish| sum + dish[2]}
   end
