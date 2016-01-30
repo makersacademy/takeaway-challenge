@@ -5,7 +5,12 @@ describe 'user stories' do
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
-
+  describe 'customer can see a list of dishes & prices' do
+    it 'displays the menu' do
+      menu = Menu.new
+      expect(menu.display_menu).to be_a(Hash)
+    end
+  end
 
 # As a customer
 # So that I can order the meal I want
