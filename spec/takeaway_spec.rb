@@ -2,6 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
   let(:dish) {"margherita"}
+  let(:dish2) {"garlic bread"}
   let(:price) {4.50}
   let(:menu) {double(:menu, dishes: dish, price: price)}
   subject(:takeaway) {described_class.new(menu)}
@@ -29,6 +30,13 @@ describe Takeaway do
     it 'can remember an order of more than one of a dish' do
       takeaway.order(dish, 3)
       expect(takeaway.basket).to eq ({"#{dish} x3"  => price*3})
+    end
+
+    it 'can remember more than one order' do
+      takeaway.order(dish)
+      takeaway.order(dish2, 2)
+      basket = ({"#{dish} x1"  => price, "#{dish2} x2" => price *  2})
+      expect(takeaway.basket).to eq basket
     end
   end
 end
