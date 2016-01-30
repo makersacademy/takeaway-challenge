@@ -1,7 +1,8 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new }
+  subject(:takeaway) { described_class.new(menu) }
+  let(:menu) { double(:menu, display: {}) }
 
   describe '#basket' do
     it 'starts with an empty basket' do
@@ -9,10 +10,13 @@ describe Takeaway do
     end
   end
 
-  # describe '#show_menu' do
-  #
-  # end
-  #
+  describe '#show_menu' do
+    it 'calls display method on menu' do
+      expect(menu).to receive(:display)
+      takeaway.show_menu
+    end
+  end
+
   # describe '#order' do
   #
   # end
