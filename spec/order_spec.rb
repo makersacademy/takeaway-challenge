@@ -3,6 +3,7 @@ require 'menu'
 
 describe Order do
   subject(:order){described_class.new}
+  let(:message){double(:message)}
 
   describe '#show_menu' do
    
