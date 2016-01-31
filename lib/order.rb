@@ -9,13 +9,15 @@ class Order
   end
 
   def check_order
+    puts "\nYour order currently contains:"
     @order_list.each do |item|
-      puts "#{item.name}....£#{item.price}"
+      puts "\t#{item.name}....£#{item.price}"
     end
+    puts ""
   end
 
   def print_final_order
-    "#{check_order}\nThe total cost of your order is: £#{total}."
+    puts "#{check_order}\nThe total cost of your order is: £#{total}."
   end
 
   def total

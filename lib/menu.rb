@@ -14,10 +14,14 @@ class Menu
     @item_list.push item
   end
 
+  #def new_item
+
   def show_items
+    puts ""
     @item_list.each do |item|
-      puts #{item.name}....£#{item.price}"
+      puts "\t#{item.name}....£#{item.price}"
     end
+    puts ""
   end
 
 end

@@ -35,6 +35,13 @@ describe Host do
 
    end
 
+  #  describe "#add to menu" do
+   #
+  #    it "you can add items to the menu" do
+  #      expect(host.add_to_menu(item)).to eq item
+  #    end
+   #
+  #  end
 
    describe "#add to order" do
 

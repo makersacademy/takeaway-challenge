@@ -8,17 +8,21 @@ class Host
 
   attr_reader :current_menu, :new_order
 
-  def initialize(current_menu = Menu.new, new_order = Order.new)
+  def initialize(current_menu = Menu.new, order_klass = Order)
     @credentials = Dotenv.load
     @current_menu = current_menu
-    @new_order = new_order
+    @order_klass = order_klass
+    @new_order = @order_klass.new
     @client = Twilio::REST::Client.new @credentials["ACCOUNT_SID"], @credentials["AUTH_TOKEN"]
-
   end
 
   def show_menu
-    puts "Welcome to Yummy Sushi, today's menu is:"
-    @current_menu.show_items.clone
+    puts "\nWelcome to Yummy Sushi, today's menu is:"
+    @current_menu.show_items
+  end
+
+  def add_to_menu(item)
+    @current_menu.add_item(item)
   end
 
   def add_to_order(item)
@@ -32,7 +36,7 @@ class Host
   def place_order
     print_recipt
     send_message
-    @new_order = new_order.new
+    @new_order = order_klass.new
   end
 
   def print_recipt
@@ -43,7 +47,7 @@ class Host
     @client.messages.create(
       from: @credentials["MOBILE_FROM"],
       to: @credentials["MOBILE_TO"],
-      body: "Thank you! Your order was placed and will be delivered in about an hour"
+      body: "Thank you! Your order has been placed and will be delivered in about an hour"
     )
   end
 
