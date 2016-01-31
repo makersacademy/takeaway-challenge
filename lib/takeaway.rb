@@ -1,13 +1,41 @@
-class Takeaway
-  attr_reader :dishes
+require_relative 'menu'
+require_relative 'order'
 
-  def initialize(dishes = {onion_bhaji: 2.95, chicken_tikka_masala: 7.95, naan: 1.95})
-    @dishes = dishes
+class Takeaway
+  attr_reader :menu, :order
+
+  def initialize(menu = Menu.new, order = Order.new)
+    @menu = menu
+    @order = order
   end
 
-  def select_dishes(order)
-    order.each do |key, value|
-      raise 'Bouillabaisse is not available.' unless dishes.has_key? key
+  def read_menu
+    @menu.display_menu
+  end
+
+  def select_dishes(dishes)
+    dishes.each do |item, quantity|
+      @order.add(item, quantity) if @menu.has_dish?(item)
     end
+    @order.basket
+  end
+
+  def checkout
+    total = @order.order_total
+    "You\'ve ordered #{total} items."
+  end
+
+  def confirm_order(number)
+    raise 'Total number of dishes does not match. Please check again.' unless total_correct?(number)
+  end
+
+  private
+
+  def total_correct?(number)
+    @order.order_total == number
+  end
+
+  def bill_total
+    @order.basket.map { |k, v| menu.display_menu[k] * v }.reduce(:+)
   end
 end
