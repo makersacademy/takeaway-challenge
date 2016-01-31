@@ -15,6 +15,7 @@ class Menu
   end
 
   def price(item)
+    fail 'Item not in menu!' unless @dish_list.include?(item)
     @dish_list[item]
   end
 end

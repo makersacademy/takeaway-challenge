@@ -14,5 +14,10 @@ describe Menu do
       item = 'fries'
       expect(menu.price(item)).to eq menu.list[item]
     end
+
+    it 'raises error if item is not in menu' do
+      message = 'Item not in menu!'
+      expect { menu.price(rand) }.to raise_error(message)
+    end
   end
 end
