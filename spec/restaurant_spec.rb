@@ -12,6 +12,7 @@ describe Restaurant do
     allow(customer).to receive(:restaurant_bill) {11}
     allow(customer).to receive(:name) {"Rufus"}
     allow(customer).to receive(:tel_no) {"+441548312031"}
+    allow(subject).to receive(:send_confirmation_sms) {nil}
   end
 
   let(:error) {"Bill incorrect. Please check order"}
@@ -46,10 +47,13 @@ describe Restaurant do
 
   context 'order management' do
 
+    # test disabled to prevent failure on GitHub (since auth tokens not pushed)
+
     it 'allows the creation of a new order' do
       subject.place_order customer, details
       expect(subject.orders).to include order
     end
+
 
     it 'throws an error when the bill is wrong' do
       allow(customer).to receive(:bill_correct?) {false}

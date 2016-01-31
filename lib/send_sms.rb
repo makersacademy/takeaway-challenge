@@ -12,9 +12,9 @@ module SMS
     twilio_no = "+441548312031"
 
     client.account.messages.create(
-      :from => twilio_no,
-      :to => number,
-      :body => message
+      from: twilio_no,
+      to:   number,
+      body: message
     )
   end
 
