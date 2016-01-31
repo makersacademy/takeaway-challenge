@@ -1,5 +1,5 @@
 require './lib/menu.rb'
-
+require './lib/sms_sender.rb'
 class Takeaway
 
 attr_reader :customer_order
@@ -13,7 +13,7 @@ attr_reader :customer_order
   order_checker
   message = 'sorry your calculated sum does not match the order total'
   raise(message) if order_sum != exact_total
-  "thankyou, your order will cost £#{order_sum}"
+  sms_send
  end
 
  def order_sum
@@ -30,6 +30,14 @@ def order_checker
   if (@customer_order.keys - view_menu.keys).empty? != true
     raise "#{message}#{message2}"
   end
+
+def sms_send
+  Sms.new
 end
+end
+
+
+
+
 
 end

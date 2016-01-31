@@ -19,6 +19,7 @@ describe Takeaway do
   end
 
   it 'takes an order in form of a hash' do
+    allow(subject).to receive(:sms_send).and_return(true)
     subject.place_order(order_hash,46.5)
     expect(subject.customer_order).to be_a (Hash)
     end
@@ -30,6 +31,7 @@ describe Takeaway do
   end
 
   it 'calculates the sum of the order' do
+      allow(subject).to receive(:sms_send).and_return(true)
       order_value = 46.5
       subject.place_order(order_hash, order_value)
       expect(subject.order_sum).to eq order_value
