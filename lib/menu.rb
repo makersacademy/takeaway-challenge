@@ -1,13 +1,8 @@
+require 'yaml'
+
 class Menu
   def initialize
-    @dish_list = {
-      'cheeseburger' => 3.99,
-      'fries' => 1.99,
-      'nuggets' => 2.99,
-      'wings' => 2.99,
-      'soda' => 0.99,
-      'juice' => 0.99
-    }
+    @dish_list = load_dish_list
   end
 
   def list
@@ -15,7 +10,13 @@ class Menu
   end
 
   def price(item)
-    fail 'Item not in menu!' unless @dish_list.include?(item)
-    @dish_list[item]
+    fail 'Item not in menu!' unless list.include?(item)
+    list[item]
+  end
+
+  private
+
+  def load_dish_list
+    YAML.load_file('./docs/dish_list.txt')
   end
 end

@@ -11,13 +11,15 @@ describe Menu do
 
   describe '#price' do
     it 'returns the price of an item from dish_list' do
-      item = 'fries'
-      expect(menu.price(item)).to eq menu.list[item]
+      value = rand
+      allow(menu).to receive(:list).and_return('item' => value)
+      expect(menu.price('item')).to eq value
     end
 
     it 'raises error if item is not in menu' do
       message = 'Item not in menu!'
-      expect { menu.price(rand) }.to raise_error(message)
+      allow(menu).to receive(:list).and_return('item')
+      expect { menu.price('other_item') }.to raise_error(message)
     end
   end
 end
