@@ -44,7 +44,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 My Approach to this Challenge
 
-Yummy Sushi Restaurant (because Sushi is the best food ever and we should get more fake orders that way, test cases love sushi.)
+Yummy Sushi Restaurant (because Sushi is the best food ever and we should get more fake orders that way because test cases love sushi.)
 
 The customer needs to be able to view the menu items, names and associated prices. 
 The customer needs to be able to select items from the menu which should be stored in a basket.
