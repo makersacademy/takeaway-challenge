@@ -16,7 +16,7 @@ class CalculateBill
   end
  
   def type_of_pizza(order)
-    order.map{|k,v| k}.join
+   order.map{|k,v| k}.join
   end
 
   def quantity(order)
@@ -32,7 +32,7 @@ class CalculateBill
   end
 
   def over_all_cost(all_order)
-    all_order.collect{|x| total_cost(x)}
+   all_order.collect{|x| total_cost(x)}
   end
 
   def itemised_cost(order)

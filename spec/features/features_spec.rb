@@ -7,14 +7,15 @@ require 'calculate_bill'
 # I would like to see a list of dishes with prices
 
 describe Order do
+  subject(:order){described_class.new}
+  
   it 'starts a new order' do
-   order = Order.new
+   order
   end
 
   describe '#show_menu' do
     it 'shows the list of available dishes' do
-     order = Order.new
-     order.show_menu
+    order.show_menu
     end
   end
 
@@ -24,7 +25,6 @@ describe Order do
   
   describe '#choose' do
    it 'records the quantity as well' do
-    order = Order.new
     order.choose("Margherita", 2)
   end
  end
@@ -35,27 +35,25 @@ describe Order do
 
   describe '#total cost' do
    it 'returns the total cost of the order' do
-    order = Order.new
     order.total_cost
    end
   end
 
   describe '#check_total' do
    it 'returns itemised total' do
-    order = Order.new
     order.check_total
     end
   end
 end
 
 describe CalculateBill do
+  subject(:calc){described_class.new}
+  
   it 'returns final total' do
-    calc = CalculateBill.new
     calc.final_total([{"Margherita" => 2}])
   end
 
   it 'returns itemised bill' do
-    calc = CalculateBill.new
     calc.itemised_bill([{"Margherita" => 2}])
   end
 end
