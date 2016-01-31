@@ -20,8 +20,15 @@ describe Takeaway do
   describe '#place_order' do
     it { is_expected.to respond_to(:place_order) }
 
+    it "parses the customer's order" do
+      allow(order).to receive(:new) { dishes }
+      expect(takeaway).to receive(:parse_dishes)
+      takeaway.place_order(dishes)
+    end
+
     it 'initializes a new order' do
-      expect(order).to receive(:new)
+      allow(takeaway).to receive(:parse_dishes) { dishes }
+      expect(order).to receive(:new) { dishes }
       takeaway.place_order(dishes)
     end
   end

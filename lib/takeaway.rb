@@ -23,6 +23,7 @@ class Takeaway
   # IDEA: order_log and/or despatcher
   def initialize(order_klass = Order)
     @order_klass = order_klass
+    @order = nil
   end
 
   def view_menu
@@ -32,6 +33,25 @@ class Takeaway
   end
 
   def place_order(*dishes, total)
-    @order_klass.new(*dishes)
+    @order = @order_klass.new(parse_dishes(*dishes, total))
+  end
+
+  private
+
+  def parse_dishes(*dishes, total)
+    dish_hash = {}
+    dishes.each do |dish|
+      quantity, *dish_name = dish.split(' ')
+      dish_sym = dish_name.join('_').downcase.to_sym
+      message = "Sorry, we do not have #{dish_name.join(" ")} on our menu."
+      fail message unless MENU.keys.include?(dish_sym)
+      dish_hash[dish_sym] = quantity.to_i
+    end
+    
+    message = 'Please include the total price as a number at the end of ' \
+    'your order.'
+    fail message unless total.is_a? Numeric
+    dish_hash[:total] = total
+    dish_hash
   end
 end
