@@ -32,8 +32,8 @@ def order_input(menu)
           "Please try again."
         end
       end
-    puts "If you wish to complete your order press y; press any other key to place another order."
-    unless gets.chomp.downcase == y
+    puts "If you wish to finish ordering press y; press any other key to place another order."
+    if gets.chomp.downcase == "y"
       x = 2
     end
   end
