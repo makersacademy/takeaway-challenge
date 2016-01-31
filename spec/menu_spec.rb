@@ -37,19 +37,20 @@ describe Menu do
   end
 
   context '#select_dish' do
-    it 'passes a set_selected call to the dish' do
-      expect(dish).to receive(:set_selected)
-      menu.select_dish(dish)
-    end
-
     it 'sets the quantity of dishes requested' do
-      allow(dish).to receive(:set_selected) {true}
       menu.select_dish(dish,3)
       expect(menu.selected_dishes[dish]).to eq 3
+    end
+
+    it 'sets the dishes as selected' do
+      expect{menu.select_dish(dish)}.to change{menu.selected_dishes}
     end
   end
 
   context 'taking the order' do
-
+    it 'creates the price calculator' do
+      expect(price_calculator).to receive(:new)
+      menu.take_order
+    end
   end
 end
