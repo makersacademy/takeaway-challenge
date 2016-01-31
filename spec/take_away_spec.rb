@@ -1,4 +1,3 @@
-
 require './lib/take_away.rb'
 
 describe TakeAway do
@@ -6,37 +5,48 @@ describe TakeAway do
 
   describe "#show_menu" do
 
-    it { is_expected.to respond_to :show_menu}
-
     it "returns a menu" do
       expect { take_away.show_menu }.to output(
-"                       MENU
+                       /MENU/
+      ).to_stdout
+    end
+  end
 
-              COMBINATIE MENU'S met rijst
+  describe "#enter_order" do
 
- 1  BABI PANGANG / Koe loe kai                     € 11,90
- 2  BABI PANGANG / Tjap tjoy kip                   € 11,70
- 3  BABI PANGANG / Foe yong hai kip                € 11,70
- 4  BABI PANGANG / Kip met Kerrie saus             € 12,00
- 5  BABI PANGANG / Kip met zoete Peking saus       € 12,00
- 6  FOE YONG HAI / Tjap tjoy kip                   € 11,00
- 7  FOE YONG HAI / Koe loe kai                     € 11,70
- 8  FOE YONG HAI / Krokante kip met zoetzure saus  € 12,00
+    before(:example) do
+      io_obj = double("input")
+      allow(take_away).to receive(:gets).and_return(io_obj).at_least(3).times
+      expect(io_obj).to receive(:chomp).and_return(5, 2, 99,)
+    end
 
-                   SOEP & SALADES
+    it "gives information" do
+      expect { take_away.enter_order }.to output(
+               /dish number/
+      ).to_stdout
+    end
 
- 9  MAISSOEP met krab en kip                       €  3,20
-10  KIPPENSOEP                                     €  2,30
-11  TOMATENSOEP met kip                            €  2,50
-12  SICHUAN SOEP (pikant-zuur)                     €  4,00
-13  WAN TAN SOEP                                   €  3,80
-14  JAPANSE MISO SOEP                              €  2,30
-15  MAIS SALADE                                    €  2,50
-16  KRAB SALADE                                    €  2,50
-17  ZEEWIER SALADE                                 €  2,50
-18  TONIJN SALADE                                  €  2,50
-19  ZURE KOMKOMMER                                 €  2,50
-").to_stdout
+    it "accepts input from user" do
+      expect { take_away.enter_order }.to output(
+               /quantity/
+      ).to_stdout
+    end
+
+    it "add ordered items to order hash" do
+      expect { take_away.enter_order }.to output().to_stdout
+      expect(take_away.order[5]).to eq 2
+    end
+  end
+
+  describe "#calculate_order" do
+
+    it "asks for an estimated total" do
+      io_obj = double("input")
+      allow(take_away).to receive(:gets).and_return(io_obj)
+      expect(io_obj).to receive(:chomp).and_return(100)
+      expect { take_away.calculate_order }.to output(
+               /total/
+      ).to_stdout
     end
   end
 end

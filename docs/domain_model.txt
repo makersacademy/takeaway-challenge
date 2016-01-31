@@ -1,4 +1,4 @@
 objects            messages
 customer
-list               show
-dish               prices
+take_away          show_menu
+dish               price
