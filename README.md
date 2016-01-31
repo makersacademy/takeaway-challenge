@@ -17,6 +17,9 @@ Takeaway Challenge
 
 `````
 
+[![Build Status](https://travis-ci.org/seanhawkridge/takeaway-challenge.svg?branch=master)](https://travis-ci.org/seanhawkridge/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/seanhawkridge/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/seanhawkridge/takeaway-challenge?branch=master)
+
 The Task
 --------
 
