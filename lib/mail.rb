@@ -1,9 +1,11 @@
 
 require 'twilio-ruby'
-  class Mail
+  module Mail
+
 
     def send
-
+      p "The message has been sent"
+=begin
 account_sid = ""
 auth_token = ""
 t = Time.now + 3600
@@ -16,6 +18,6 @@ t = Time.now + 3600
   to: '+447401333xxx',
   body: "Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}"
 )
-
+=end
     end
   end

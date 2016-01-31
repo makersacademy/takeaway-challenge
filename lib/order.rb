@@ -1,6 +1,9 @@
 module Order
-=begin
+
 def order_input(menu)
+  dish_array = []
+  quantity_array = []
+  return_array = []
   x = 1
   while x == 1
     y = 1
@@ -15,6 +18,7 @@ def order_input(menu)
         "Sorry, did not recognise that dish."
       end
     end
+    z = 1
     while z == 1
       puts "Enter the quantity you require. (Enter q to quit)"
       quantity = gets.chomp
@@ -25,12 +29,14 @@ def order_input(menu)
           quantity_array << quantity.to_i
           z = 2
         else
-          "Please enter the quantity again."
+          "Please try again."
         end
       end
-
-
-
-  puts "If you wish to order more food press "
-=end
+    puts "If you wish to complete your order press y; press any other key to place another order."
+    unless gets.chomp.downcase == y
+      x = 2
+    end
+  end
+  return_array << dish_array << quantity_array
+  end
 end

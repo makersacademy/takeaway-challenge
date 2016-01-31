@@ -1,15 +1,9 @@
-require_relative 'menulist.rb'
-class Menu
-include MenuList
 
-attr_reader :menu
-  def initialize (menu_type)
-    @menu = select(menu_type)
-  end
+module Menu_Print
 
-  def show
+  def show (menu)
     puts "Menu:"
-    @menu.each{|x,y| puts "#{x}. Price: £#{sprintf('%.2f', y)}"}
+    menu.each{|x,y| puts "#{x}. Price: £#{sprintf('%.2f', y)}"}
   end
 
 end

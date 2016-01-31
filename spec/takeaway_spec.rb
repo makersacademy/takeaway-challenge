@@ -9,9 +9,15 @@ describe Takeaway do
     end
   end
 
-  describe '#complete_order'do
-    it 'allows you to order'do
-    expect(takeaway.complete_order([[:Hamburger, :Chips],[1,2],[6.50]])).to eq true
+  describe '#order'
+    xit 'allows you to make an order'do
+
+    end
+
+
+  describe '#confirm_order'do
+    it 'allows you to confirm order'do
+    expect { takeaway.confirm_order([[:Hamburger, :Chips],[1,2],[6.50]]) }.to output("\"The message has been sent\"\n").to_stdout
 
     end
   end
