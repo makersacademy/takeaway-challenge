@@ -127,7 +127,7 @@ end
 
       it 'puts dish selections into selection array' do
         menu.select_dish("Tiramisu", 1)
-        expect(menu.selection).to include selection2
+        expect(menu.basket.selection).to include selection2
       end
 
       it 'does not instantiate a new basket on second selections' do
@@ -136,7 +136,7 @@ end
       end
 
       it 'selecting dishes increases the size of selection array' do
-        expect {menu.select_dish("Tiramisu", 1)}.to change{menu.selection.size}.by(1)
+        expect {menu.select_dish("Tiramisu", 1)}.to change{menu.basket.selection.size}.by(1)
       end
 
     end

@@ -20,8 +20,8 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   def menu_choice(meal= :dinner, course= :all)
     @meal = meal
     @course = course
-    fail "We only serve lunch and dinner" until meal_choice_valid?
-    fail "Please choose starter, main, dessert or 'all'" until course_choice_valid?
+    fail "We only serve lunch and dinner" unless meal_choice_valid?
+    fail "Please choose starter, main, dessert or 'all'" unless course_choice_valid?
     @menu_choice = cuisine_choice.new(meal, course).dishes
   end
 
@@ -38,7 +38,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   end
 
   def select_dish(dish, quantity)
-    if selection.size == 0
+    if selection.empty?
       selection << [dish, quantity]
       @basket = create_basket
     else
@@ -66,9 +66,6 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     [:starter, :main, :dessert, :all].include? course
   end
 
-  def create_basket
-    @basket = basket.new(selection)
-  end
 
 end
 
