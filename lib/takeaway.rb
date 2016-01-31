@@ -8,9 +8,17 @@ attr_reader :customer_order
   Menu.new.menu
  end
 
- def make_order(order_hash, exact_total)
+ def place_order(order_hash, exact_total)
   @customer_order = order_hash
   order_checker
+  message = 'sorry your calculated sum does not match the order total'
+  raise(message) if order_sum != exact_total
+  "thankyou, your order will cost £#{order_sum}"
+ end
+
+ def order_sum
+  cost = view_menu.map {|k, v| v * @customer_order[k] if @customer_order.key? k}.compact
+  cost.inject(:+)
  end
 
 
