@@ -29,6 +29,7 @@ class Takeaway
     @dispatch = order_dispatch
   end
 
+  # IDEA: extract into module
   def view_menu
     MENU.each do |k, v|
       printf "%-15s %15s\n", "#{k.to_s.tr('_',' ').capitalize}:", "£#{v}"
