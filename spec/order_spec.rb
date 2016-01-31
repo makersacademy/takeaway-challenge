@@ -66,30 +66,46 @@ describe Order do
   end
 
   describe "#add_to_basket" do
-    let(:dummy_submission) {double :dummy_submission}
+    let(:dummy_selection) {[[:Carbonara, 2], [:Margherita, 1], [:Risotto, 1]]}
 
     before do
       allow(dummy_basket_klass).to receive(:is_a).and_return(dummy_basket_klass)
-      allow(dummy_basket_klass).to receive(:selection).and_return []
-      allow(dummy_basket_klass).to receive(:new).with(order.submission).and_return dummy_basket
+      allow(dummy_basket_klass).to receive(:new).with(dummy_selection).and_return dummy_basket
+      order.add_to_basket
     end
 
     it 'will initialize a new basket if one does not already exist' do
-      order.add_to_basket
       expect(order.basket).to eq dummy_basket
+    end
+
+    it 'will add selection to the basket' do
+      allow(dummy_basket).to receive(:selection).and_return dummy_selection
+      expect(order.basket.selection).to eq dummy_selection
+    end
+
+  context 'Adding to existing basket' do
+
+    before do
+      allow(dummy_basket).to receive(:is_a).with(dummy_basket_klass).and_return false
+      allow(dummy_basket).to receive(:selection).and_return [[:Pasta, 2]]
+      order.add_to_basket
     end
 
     it 'will not initialize a new basket if one already exists' do
-      order.add_to_basket
-      allow(dummy_basket).to receive(:is_a).with(dummy_basket_klass).and_return false
-      allow(dummy_basket).to receive(:selection).and_return [order.submission]
-      order.add_to_basket
       expect(order.basket).to eq dummy_basket
     end
 
 
 
+    it 'will add selection to existing basket items' do
+      expect(order.basket.selection).to include [:Pasta, 2]
+    end
+    #   expect {oystercard.touch_out(station_out)}.to change(oystercard, :balance).by(-penalty_fare)
 
 
+
+
+
+    end
   end
 end

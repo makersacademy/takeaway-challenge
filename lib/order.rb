@@ -30,9 +30,9 @@ attr_reader :user_input, :menu_choice, :basket, :basket_klass
     selection = []
     submission.each{|dish_quantity| selection << dish_quantity}
     if basket.is_a basket_klass
-      @basket = basket_klass.new(submission)
+      @basket = basket_klass.new(selection)
     else
-      @basket.selection << submission
+      @basket.selection << selection
     end
   end
 
