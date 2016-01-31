@@ -7,7 +7,6 @@ describe Menu do
   before do
       allow(item).to receive(:name)       {"Salmon roll"}
       allow(item).to receive(:price)      {7.0}
-      allow(item).to receive(:reference)  {"A1"}
   end
 
   describe "#initialize" do
@@ -29,7 +28,7 @@ describe Menu do
 
     it "returns all the items in item_list in a nicely formatted way with the reference at the front" do
       menu.add_item(item)
-      expect(menu.show_items).to eq "#{item.reference}....#{item.name}....£#{item.price}"
+      expect(menu.show_items).to eq [item]#"#{item.name}....£#{item.price}"
     end
 
   end

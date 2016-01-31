@@ -1,7 +1,7 @@
 require "./lib/item.rb"
 
 describe Item do
-subject(:item) {described_class.new("name", 7.0, "A1")}
+subject(:item) {described_class.new("name", 7.0)}
 
   describe "#initialize" do
 
@@ -11,10 +11,6 @@ subject(:item) {described_class.new("name", 7.0, "A1")}
 
     it "has a price for each new item" do
       expect(item.price).to eq 7.0
-    end
-
-    it "has a unique item reference for each item" do
-      expect(item.reference).to eq "A1"
     end
 
   end

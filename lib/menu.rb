@@ -16,7 +16,7 @@ class Menu
 
   def show_items
     @item_list.each do |item|
-      return "#{item.reference}....#{item.name}....£#{item.price}"
+      puts #{item.name}....£#{item.price}"
     end
   end
 

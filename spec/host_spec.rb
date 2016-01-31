@@ -7,10 +7,10 @@ describe Host do
   let(:item) {double(:item)}
 
   before do
-    allow(menu).to receive(:show_items).and_return("A1....Salmon roll....£7.0")
+    allow(menu).to receive(:show_items).and_return("Salmon roll....£7.0")
     allow(order).to receive(:add_item).and_return(item)
-    allow(order).to receive(:check_order).and_return("A1....Salmon roll....£7.0")
-    allow(order).to receive(:print_final_order).and_return("A1....Salmon roll....£7.0\nThe total cost of your order is: £7.0.")
+    allow(order).to receive(:check_order).and_return("Salmon roll....£7.0")
+    allow(order).to receive(:print_final_order).and_return("Salmon roll....£7.0\nThe total cost of your order is: £7.0.")
     allow(order).to receive(:new).and_return(order)
 
   end
@@ -30,7 +30,7 @@ describe Host do
    describe "#show_menu" do
 
      it "shows the list of menu items" do
-       expect(host.show_menu).to eq "A1....Salmon roll....£7.0"
+       expect(host.show_menu).to eq "Salmon roll....£7.0"
      end
 
    end
@@ -47,7 +47,7 @@ describe Host do
    describe "#show_order" do
 
      it "shows all the items you currently have in your order" do
-       expect(host.show_order).to eq "A1....Salmon roll....£7.0"
+       expect(host.show_order).to eq "Salmon roll....£7.0"
      end
 
    end
@@ -60,7 +60,7 @@ describe Host do
      end
 
      it "prints the list of items and total cost" do
-       expect(host.place_order).to eq "A1....Salmon roll....£7.0\nThe total cost of your order is: £7.0."
+       expect(host.place_order).to eq "Salmon roll....£7.0\nThe total cost of your order is: £7.0."
      end
 
    end
@@ -68,7 +68,7 @@ describe Host do
    describe "#print_recipt" do
 
      it "prints out a list of the items and their prices and a total cost" do
-       expect(host.print_recipt).to eq "A1....Salmon roll....£7.0\nThe total cost of your order is: £7.0."
+       expect(host.print_recipt).to eq "Salmon roll....£7.0\nThe total cost of your order is: £7.0."
      end
 
    end

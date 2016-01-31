@@ -8,10 +8,8 @@ describe Order do
   before do
       allow(item1).to receive(:name)       {"Salmon roll"}
       allow(item1).to receive(:price)      {7.0}
-      allow(item1).to receive(:reference)  {"A1"}
       allow(item2).to receive(:name)       {"Tuna roll"}
       allow(item2).to receive(:price)      {8.5}
-      allow(item2).to receive(:reference)  {"B1"}
   end
 
   describe "#initialize" do
@@ -23,11 +21,6 @@ describe Order do
   end
 
   describe "#add_item to order_list" do
-
-    # it "can store ordered items in the order list" do
-    #   order.add_item(item1)
-    #   expect(order.check_order).to eq "#{item1.reference}....#{item1.name}....£#{item1.price}"
-    # end
 
     it "can store more than one ordered items in the order list" do
       order.add_item(item1)
