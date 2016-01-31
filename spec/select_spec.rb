@@ -25,18 +25,31 @@ describe Select do
 			it 'raise an error when there dish is not in the menu' do 
 				expect {subject.pick('water')}.to raise_error 'this dish is not in the menu'
 			end
-			it 'creates an order with the item selected and its quantity' do 
-				ord = {"Burger"=>5}
+			it 'creates an order with the item selected, price and its quantity' do 
+				ord = {"5 Burger" => {"10£ each"=>"50£"}}
 				subject.pick('Burger',5)
-				expect(subject.order).to include ord
-			end
-			it 'will show the bill for checking the prices and the sum' do 
-				ord = {"Burger"=>5, "Steak"=>2}
-				subject.pick('Burger',5)
-				subject.pick('Steak',2)
-				expect(subject.bill). to eq 56
+				expect(subject.order).to eq ord
 			end
 		end
+			
+		describe 'bill' do 
+			it 'has a bill' do 
+				expect(subject).to respond_to(:order)
+			end
+			it 'will show the bill for checking the prices and the sum' do 
+				ord = "{\"3 Burger\"=>{\"10£ each\"=>\"30£\"}, \"2 Steak\"=>{\"18£ each\"=>\"36£\"}} +'\n' + Due 66£"
+				subject.pick('Burger',3)
+				subject.pick('Steak',2)
+				expect(subject.bill). to eq ord
+			end
+		end
+
+		describe "#place_order" do
+			it 'place an order and get it before 18:52" after ordering' do 
+			t = Time.now + 1132
+			expect(subject.place_order).to eq "Thank you! Your order has been placed and will be delivered before #{t.strftime('%H:%M')}"
+		end
+	end
 
 
 end
