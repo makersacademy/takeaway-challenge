@@ -8,10 +8,10 @@ attr_reader :meal, :course
     @course = course
   end
 
-
   def dishes
     meal == :dinner ? dinner : lunch
   end
+
 
   def dinner
       starters = { Starters: 'Price',
@@ -37,7 +37,7 @@ attr_reader :meal, :course
     if course == :all
       starters.merge(mains).merge(desserts)
     else
-      right_course
+      course == :starter ? starters : course == :main ? mains : desserts
     end
   end
 
@@ -60,23 +60,14 @@ attr_reader :meal, :course
     if all?
       starters.merge(mains).merge(desserts)
     else
-      right_course
+     course == :starter ? starters : course == :main ? mains : desserts
     end
   end
 
-private
+  private
 
   def all?
     course == :all
   end
-
-  def right_course
-    course == :starter ? starters : course == :main ? mains : desserts
-  end
-
-
-
-
-
 
 end
