@@ -6,8 +6,6 @@ require_relative 'order'
 class Takeaway
   DELIVERY_TIME = 1
 
-  attr_reader :menu, :order
-
   def initialize(phone, menu = Menu.new, order = Order.new)
     @phone = phone
     @menu = menu
@@ -15,18 +13,18 @@ class Takeaway
   end
 
   def read_menu
-    @menu.display_menu
+    menu.display_menu
   end
 
   def select_dishes(dishes)
     dishes.each do |item, quantity|
-      @order.add(item, quantity) if @menu.has_dish?(item)
+      order.add(item, quantity) if menu.has_dish?(item)
     end
-    @order.basket
+    order.basket
   end
 
   def checkout
-    total = @order.order_total
+    total = order.order_total
     "You\'ve ordered #{total} items."
   end
 
@@ -39,12 +37,14 @@ class Takeaway
 
   private
 
+  attr_reader :menu, :order
+
   def total_correct?(number)
-    @order.order_total == number
+    order.order_total == number
   end
 
   def bill_total
-    @order.basket.map { |k, v| menu.display_menu[k] * v }.reduce(:+)
+    order.basket.map { |k, v| menu.display_menu[k] * v }.reduce(:+)
   end
 
   def delivery_clock

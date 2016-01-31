@@ -7,11 +7,11 @@ class Order
   end
 
   def add(item, quantity)
-    @basket[item] += quantity
+    basket[item] += quantity
   end
 
   def order_total
-    @basket.values.inject(:+)
+    basket.values.inject(:+)
   end
 
   private
