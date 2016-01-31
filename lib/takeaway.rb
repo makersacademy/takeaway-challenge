@@ -1,9 +1,11 @@
 require_relative 'menu'
+require_relative 'sms_handler'
 
 class Takeaway
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sms_handler = SmsHandler.new)
     @basket = Hash.new([0, 0])
     @menu = menu
+    @sms_handler = sms_handler
   end
 
   def basket
@@ -16,21 +18,16 @@ class Takeaway
 
   def order(item, quantity = 1)
     quantity += @basket[item].first
-    @basket[item] = quantity, quantity * price(item)
+    @basket[item] = quantity, quantity * @menu.price(item)
   end
 
   def bill
-    @basket.inject(0) { |sum, (_item, (_quantity, subtotal))| sum + subtotal }
+    @basket.inject(0) { |sum, (_itm, (_qtty, subtotal))| sum + subtotal }
   end
 
   def checkout(estimate)
+    fail 'Basket is empty!' if @basket.empty?
     fail 'Incorrect estimated total!' unless estimate == bill
-  end
-
-  private
-
-  def price(item)
-    fail 'Item not in menu!' unless @menu.list.include?(item)
-    @menu.list[item]
+    @sms_handler.send(estimate)
   end
 end
