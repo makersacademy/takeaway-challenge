@@ -2,8 +2,7 @@ require_relative 'menu'
 
 class Takeaway
   def initialize(menu = Menu.new)
-    @basket = Hash.new(0)
-    # @basket = []
+    @basket = Hash.new([0, 0])
     @menu = menu
   end
 
@@ -16,13 +15,12 @@ class Takeaway
   end
 
   def order(item, quantity = 1)
-    fail 'Item not in menu!' unless @menu.list.include?(item)
-    @basket[item] += quantity
-    # quantity.times { @basket << item }
+    quantity += @basket[item].first
+    @basket[item] = quantity, quantity * price(item)
   end
 
   def bill
-    @basket.inject(0) { |sum, (item, quantity)| sum + price(item) * quantity }
+    @basket.inject(0) { |sum, (_item, (_quantity, subtotal))| sum + subtotal }
   end
 
   def checkout(estimate)
@@ -32,6 +30,7 @@ class Takeaway
   private
 
   def price(item)
+    fail 'Item not in menu!' unless @menu.list.include?(item)
     @menu.list[item]
   end
 end
