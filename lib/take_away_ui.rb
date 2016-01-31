@@ -36,7 +36,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     p "What would you like to eat? Eg '2 Carbonara and a Tiramisu'"
     user_input = STDIN.gets.chomp
     @order = order.new(user_input, menu_choice)
-    order.add_to_basket
+    @order.add_to_basket
   end
 
 
@@ -50,7 +50,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   end
 
   def review_order
-    basket.itemised_bill.each do |item|
+    @basket.itemised_bill.each do |item|
       puts ("Dish: #{item[0]}".ljust(SCREEN_WIDTH) + "Quantity: #{item[1]}".ljust(SCREEN_WIDTH/2) + "Price per dish: #{item[2]}".rjust(SCREEN_WIDTH/2) + "Total: #{item[3]}".rjust(SCREEN_WIDTH))
     end
       puts ("GRAND TOTAL: #{basket.total_bill}".center(SCREEN_WIDTH))
@@ -82,13 +82,3 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
 
 
 end
-
-  #
-  # def confirm_order
-  #   will initialize a order.new with the information from def.select
-  #
-  # end
-  #
-  # def bill
-  # => will retrieve info from order
-  # end
