@@ -15,7 +15,7 @@ class Message
                      from: from,
                      to: key,
                      body: "Thank you #{value}. " + message
-                                               )
+                                                )
       puts "message sent"
     end
   end

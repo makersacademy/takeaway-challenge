@@ -37,10 +37,10 @@ class Order
   def order_taker(dish, number)
     number.times do
         @menu.menu_list.select do |menu_dish, price|
-          if menu_dish == dish
+        if menu_dish == dish
           @current_order[dish] += price
           @total += price
-          end
+        end
       end
     end
   end
