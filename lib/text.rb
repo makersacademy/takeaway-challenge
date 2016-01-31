@@ -4,6 +4,9 @@ require 'dotenv'
 Dotenv.load
 
 class Text
+
+  attr_reader :send_message
+
   def initialize
     @account_sid = ENV['ACCOUNT_SID']
     @auth_token = ENV['AUTH_TOKEN']
