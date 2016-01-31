@@ -6,5 +6,6 @@ group :development, :test do
 	gem 'rake'
 	gem 'rspec'
 	gem 'coveralls', require: false
+	gem 'capybara'
 
 end
