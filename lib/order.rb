@@ -1,8 +1,9 @@
 require './lib/menu_module.rb'
+require './lib/text_module.rb'
 
 class Order
 
-  include Menu
+  include Menu, Text
 
   attr_reader :current_order
 
