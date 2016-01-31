@@ -5,7 +5,7 @@ Takeaway Challenge
 Approach
 --------
 My program has 3 classes: take_away, order and menu. The take_away is the public interface and handles user input. 
-  This input is the passed off to the order class which is in charge of adding dishes to the order and pricing everything.
+  This input is then passed off to the order class which is in charge of adding dishes to the order and pricing everything.
   The dishes and prices are stored within the menu class.
   
 Instructions
@@ -23,7 +23,7 @@ Instructions
    => "Total: £9.10" 
   2.2.3 :007 > chinese.complete_order(9.10)
 ```
-Build Badge Example
-------------------
+Build Badge
+-----------
 
 [![Build Status](https://travis-ci.org/tcpickard94/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tcpickard94/takeaway-challenge)
