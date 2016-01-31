@@ -1,4 +1,5 @@
 require 'order'
+require 'menu_module'
 
 describe Order do
 
@@ -6,19 +7,7 @@ describe Order do
 
   let(:confirmation) { double :confirmation }
 
-  starters = {:soup => 1.50,
-  :salad => 1.00,
-  :scallops => 2.50}
-  mains = {:steak => 7.50,
-  :lasagne => 5.50,
-  :lobster => 8.00 }
-  desserts = {:tiramisu => 2.50,
-  :cheesecake => 2.00,
-  :profiteroles => 1.50}
-  sides = {:bread => 0.50,
-  :chips => 1.50,
-  :kimchi => 2.00}
-  full_menu = starters.merge(mains).merge(desserts).merge(sides)
+  full_menu = Menu::STARTERS.merge(Menu::MAINS).merge(Menu::DESSERTS).merge(Menu::SIDES)
 
   it "has an order class" do
     expect(order).to be_a Order
@@ -26,19 +15,19 @@ describe Order do
 
   context "using Menu module" do
     it "can display starters in a hash" do
-      expect(order.starters).to eq starters
+      expect(order.starters).to eq Menu::STARTERS
     end
 
     it "can display mains in a hash" do
-      expect(order.mains).to eq mains
+      expect(order.mains).to eq Menu::MAINS
     end
 
     it "can display desserts in a hash" do
-      expect(order.desserts).to eq desserts
+      expect(order.desserts).to eq Menu::DESSERTS
     end
 
     it "can display sides in a hash" do
-      expect(order.sides).to eq sides
+      expect(order.sides).to eq Menu::SIDES
     end
 
     it "can display a full menu in a hash" do
