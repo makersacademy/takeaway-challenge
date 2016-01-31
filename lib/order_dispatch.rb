@@ -1,5 +1,5 @@
 # require_relative 'takeaway'
-require_relative 'order'
+# require_relative 'order'
 require 'dotenv'
 require 'twilio-ruby'
 
@@ -11,13 +11,13 @@ class OrderDispatch
     )
   end
 
-  def new_order(order)
+  def new_order(_order)
     # TODO: send text
-    @client.account.messages.create({
+    @client.account.messages.create(
       from: '+441442796261',
       to:   '+447935790008',
       body: "Thank you! Your order was placed and will be delivered before " \
         "#{(Time.now + 60 * 60).strftime "%H:%M"}."
-      })
+    )
   end
 end

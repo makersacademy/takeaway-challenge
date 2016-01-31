@@ -7,8 +7,8 @@ describe Order do
   describe '#initialize' do
     context 'when ordering an incorrect dish' do
       it 'raises an error' do
-        expect { described_class.new("7 Incorrect Dish") }.
-          to raise_error (/Sorry, we do not have/)
+        expect { described_class.new("7 Incorrect Dish") }
+          .to raise_error(/Sorry, we do not have/)
       end
     end
   end
