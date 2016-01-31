@@ -1,5 +1,7 @@
 module Price
 
+  PRICE_ERROR = "Incorrect price, order rejected".freeze
+
   private
 
   def update_total(price)

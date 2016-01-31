@@ -6,8 +6,6 @@ class Order
 
   include Text, Price, Menu
 
-  PRICE_ERROR = "Incorrect price, order rejected".freeze
-
   attr_reader :current_order
 
   def initialize
