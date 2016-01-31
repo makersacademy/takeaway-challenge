@@ -36,4 +36,10 @@ module Menu
     SIDES
   end
 
+  private
+
+  def on_menu?(item)
+    self.view_menu.key?(item.downcase)
+  end
+
 end

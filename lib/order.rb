@@ -1,9 +1,10 @@
 require './lib/menu_module.rb'
 require './lib/text_module.rb'
+require './lib/price_module.rb'
 
 class Order
 
-  include Text, Menu
+  include Text, Price, Menu
 
   PRICE_ERROR = "Incorrect price, order rejected".freeze
 
@@ -32,18 +33,6 @@ class Order
   end
 
   private
-
-  def update_total(price)
-    @total += price
-  end
-
-  def correct_price?(item, quantity, price)
-    price == self.view_menu[item] * quantity
-  end
-
-  def on_menu?(item)
-    self.view_menu.key?(item.downcase)
-  end
 
   def update_order(order, price)
     @current_order << order

@@ -19,6 +19,9 @@ To start an order you will need to instantiate a new Order. When instantiated th
     - Used to verify that items ordered are on the menu
   - Text
     - Holds the functionality to text order confirmations
+  - Price
+    - Contains the functionality for calculating prices
+    - Verifies entered prices are correct
 
 -------------------------
 
