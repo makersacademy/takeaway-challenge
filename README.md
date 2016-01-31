@@ -1,10 +1,6 @@
 # Takeaway Challenge 
 ==================
-
-------------------
-[![Coverage Status](https://coveralls.io/repos/github/MarcoCode/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/MarcoCode/takeaway-challenge?branch=master)
-
-[![Build Status](https://travis-ci.org/MarcoCode/takeaway-challenge.svg?branch=master)](https://travis-ci.org/MarcoCode/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/MarcoCode/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/MarcoCode/takeaway-challenge?branch=master) [![Build Status](https://travis-ci.org/MarcoCode/takeaway-challenge.svg?branch=master)](https://travis-ci.org/MarcoCode/takeaway-challenge)
 ------------------
 
 What is it?
@@ -26,7 +22,9 @@ What cousine would you like?
 1 - Italian
 2 - Mexican
 3 - Indian
+
 1
+
 Pizza = £10.0
 Pasta = £8.0
 Milanese = £14.0
