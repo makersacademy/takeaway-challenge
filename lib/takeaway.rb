@@ -14,8 +14,9 @@ class Takeaway
     @menu.dishes.dup
   end
 
-  def order(item, number = 1)
+  def order(item, number=1)
     @basket["#{item} x#{number}"] = @menu.price(item) * number
+    "You ordered #{item} x#{number}"
   end
 
 end
