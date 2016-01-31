@@ -1,24 +1,45 @@
-require_relative 'menu'
+# require_relative 'take_away_ui'
+
+private
 
 class Order
 
-attr_reader :user_input, :menu_choice, :meal_quantities, :meal_selection, :current_order
+attr_reader :user_input, :menu_choice, :basket, :basket_klass
 
-  def initialize(user_input, menu_choice)
+  def initialize(user_input, menu_choice, basket_klass=Basket)
     @user_input = user_input
-    @current_order = current_order
     @menu_choice = menu_choice
+    @basket_klass = basket_klass
+    @basket = basket_klass
   end
 
 
   def process_order_dishes
-    @meal_quantities = user_input.gsub(/\D/,"").split("").map!{|number| number.to_i}
-    @dish_selection = user_input.gsub(/\W/," ").split(" ").map!{|word| word.capitalize.to_sym}.keep_if{|meal| menu_choice.has_key? meal}
-    meal_selection.zip(meal_quantities)
+    user_input.gsub(/\W/," ").split(" ").map!{|word| word.capitalize.to_sym}.keep_if{|meal| menu_choice.has_key? meal}
   end
 
-  # def calculate_bill
-  #
-  # end
+  def process_order_quantities
+    user_input.gsub(" a ", "1").gsub(/\D/,"").split("").map!{|number| number.to_i}
+  end
 
+  def submission
+    process_order_dishes.zip(process_order_quantities)
+  end
+
+  def add_to_basket
+    selection = []
+    submission.each{|dish_quantity| selection << dish_quantity}
+    if basket.is_a basket_klass
+      @basket = basket_klass.new(submission)
+    else
+      @basket.selection << submission
+    end
+  end
+
+  # selection << [dish, quantity]
+  # if @basket.self = Basket
+  #   @basket = basket.new(selection)
+  # else
+  #   @basket.selection << [dish, quantity]
+  # end
 end

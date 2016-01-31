@@ -1,4 +1,4 @@
-require 'menu'
+require 'take_away_ui'
 
 
 describe 'feature_test' do

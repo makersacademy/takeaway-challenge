@@ -1,9 +1,8 @@
 
 require_relative 'italian_menu'
-# require_relative 'order'
-# require_relative 'basket'
 
-class Menu
+
+class TakeAwayUI
 
 SCREEN_WIDTH = 40
 
@@ -32,7 +31,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection
 
 
   def take_order
-    p "What would you like to eat?"
+    p "What would you like to eat? Eg '2 Carbonara and a Tiramisu'"
     user_input = STDIN.gets.chomp
     @order = order.new(user_input, menu_choice)
   end
