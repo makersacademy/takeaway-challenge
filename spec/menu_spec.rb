@@ -61,6 +61,12 @@ context "Choosing and displaying menus"
     end
 
     describe '#take_order' do
+      let(:test_order) {"2 carbonara, 1 tiramisu and I dunno"}
+
+      before do
+        allow(STDOUT).to receive(:p).with("What would you like to eat?")
+        allow(STDIN).to receive(:gets).and_return(test_order)
+      end
 
       it {is_expected.to respond_to(:take_order)}
 

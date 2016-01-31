@@ -11,6 +11,7 @@ attr_reader :selection, :cuisine_choice, :meal, :course, :order
 
   def initialize(cuisine_choice=ItalianMenu, order=Order)
     @cuisine_choice = cuisine_choice
+    #Could I get rid of this orer and injection>
     @order = order
   end
 
@@ -30,13 +31,13 @@ attr_reader :selection, :cuisine_choice, :meal, :course, :order
 
   def take_order
     p "What would you like to eat?"
-    user_input = gets.chomp
-    order.new(user_input, menu_choice)
+    user_input = STDIN.gets.chomp
+    @order = order.new(user_input, menu_choice)
   end
 
-  # def review_order
-  #
-  # end
+  def review_order
+
+  end
 
   private
 
