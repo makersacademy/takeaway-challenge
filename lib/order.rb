@@ -5,7 +5,7 @@ class Order
 
   include Text, Menu
 
-  PRICE_ERROR = "Incorrect price, order rejected"
+  PRICE_ERROR = "Incorrect price, order rejected".freeze
 
   attr_reader :current_order
 
