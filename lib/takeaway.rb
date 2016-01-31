@@ -1,7 +1,8 @@
-require_relative 'order'
+require_relative 'order_dispatch'
 
 class Takeaway
-  # Menu inspired by Dishoom. I recommend the Chicken Ruby
+  # Welcome to The Kaiser Chefs, how can we help?
+  # Menu inspired by Dishoom. I recommend the Chicken Ruby.
   MENU = {
     far_far:            2.5,
     samosas:            4,
@@ -18,12 +19,14 @@ class Takeaway
     kingfisher:         3.5,
     chai:               2,
     botal_water:        2
-  }
+  }.freeze
 
-  # IDEA: order_log and/or despatcher
-  def initialize(order_klass = ::Order)
-    @order_klass = order_klass
-    @order = nil
+  def self.build_with_dispatch
+    new(OrderDispatch.new)
+  end
+
+  def initialize(order_dispatch)
+    @dispatch = order_dispatch
   end
 
   def view_menu
@@ -32,23 +35,11 @@ class Takeaway
     end
   end
 
-  def place_order(*dishes)
-    @order = @order_klass.new(parse_dishes(*dishes))
+  def place_order(order)
+    @dispatch.new_order(order)
   end
 
-  private
-
-  def parse_dishes(*dishes)
-    dish_hash = {}
-
-    dishes.each do |dish|
-      quantity, *dish_name = dish.split(' ')
-      dish_sym = dish_name.join('_').downcase.to_sym
-      message = "Sorry, we do not have #{dish_name.join(" ")} on our menu."
-      fail message unless MENU.keys.include?(dish_sym)
-      dish_hash[dish_sym] = quantity.to_i
-    end
-
-    dish_hash
-  end
+  # def print_receipt(order)
+  #
+  # end
 end
