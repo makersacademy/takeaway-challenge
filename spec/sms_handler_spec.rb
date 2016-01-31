@@ -8,9 +8,9 @@ describe SmsHandler do
   describe '#send_sms' do
     it 'makes a new client' do
       allow(client).to receive_message_chain(:messages, :create)
-      expect(Twilio::REST::Client).to receive(:new)
-        .with(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
-        .and_return(client)
+      expect(Twilio::REST::Client).to receive(:new).
+        with(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']).
+        and_return(client)
       sms_handler.send_sms(message)
     end
 
@@ -21,8 +21,8 @@ describe SmsHandler do
         body: message
       }
       allow(Twilio::REST::Client).to receive(:new).and_return(client)
-      expect(client).to receive_message_chain(:messages, :create)
-        .with(twilio_message_body)
+      expect(client).to receive_message_chain(:messages, :create).
+        with(twilio_message_body)
       sms_handler.send_sms(message)
     end
   end
