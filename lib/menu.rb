@@ -1,5 +1,6 @@
 
 require_relative 'italian_menu'
+require_relative 'order'
 
 class Menu
 
@@ -32,7 +33,7 @@ attr_reader :selection, :cuisine_choice, :meal, :course, :order
   def take_order
     p "What would you like to eat?"
     user_input = STDIN.gets.chomp
-    @order = order.new(user_input, menu_choice)
+    @order = order.new(user_input, menu_choice).process_order
   end
 
   def review_order
