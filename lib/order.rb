@@ -1,14 +1,14 @@
 require './lib/menu_module.rb'
-require './lib/text.rb'
+require './lib/text_module.rb'
 
 class Order
 
   include Text, Menu
 
-  attr_reader :current_order, :total
+  attr_reader :current_order
 
   def initialize
-    @current_order = {}
+    @current_order = []
     @total = 0
     super
   end
@@ -16,13 +16,17 @@ class Order
   def add_to_order(item, quantity, price)
     raise "Item not on menu" unless on_menu?(item)
     raise "Incorrect price, order rejected" unless correct_price?(item, quantity, price)
-    order = {item => quantity}
+    order = ["#{quantity} x #{item} = £#{price}"]
     update_order(order, price)
   end
 
   def update_order(order, price)
-    @current_order.merge!(order)
+    @current_order << order
     update_total(price)
+  end
+
+  def total
+    "£#{@total}"
   end
 
   def finalize_order
