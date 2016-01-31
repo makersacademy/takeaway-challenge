@@ -23,24 +23,49 @@ describe Takeaway do
   end
 
   describe '#order' do
-    it 'allows the user to order an item from the menu' do
-      takeaway.order(dish_1)
-      expect(takeaway.basket).to eq ({"#{dish_1} x1"  => price})
+
+    context 'making an order' do
+
+      it 'allows the user to order an item from the menu' do
+        takeaway.order(dish_1)
+        expect(takeaway.basket).to eq ({"#{dish_1} x1"  => price})
+      end
+
+      it 'remembers more than one order of the same dish' do
+        takeaway.order(dish_1, 3)
+        expect(takeaway.basket).to eq ({"#{dish_1} x3"  => price*3})
+      end
+
+      it 'remembers orders consisting of multiple different items' do
+        takeaway.order(dish_1)
+        takeaway.order(dish_2, 2)
+        expect(takeaway.basket).to eq ({"#{dish_1} x1"  => price, "#{dish_2} x2" => price*2})
+      end
+
+      it 'repeats your orders back to you as you make them' do
+        expect(takeaway.order(dish_1)).to eq "You ordered #{dish_1} x1"
+      end
     end
 
-    it 'remembers more than one order of the same dish' do
-      takeaway.order(dish_1, 3)
-      expect(takeaway.basket).to eq ({"#{dish_1} x3"  => price*3})
-    end
+    context 'pricing an order' do
 
-    it 'remembers orders consisting of multiple different items' do
-      takeaway.order(dish_1)
-      takeaway.order(dish_2, 2)
-      expect(takeaway.basket).to eq ({"#{dish_1} x1"  => price, "#{dish_2} x2" => price*2})
-    end
+      describe '#total' do
 
-    it 'repeats your orders back to you as you make them' do
-      expect(takeaway.order(dish_1)).to eq "You ordered #{dish_1} x1"
+        before do
+          takeaway.order(dish_1)
+          takeaway.order(dish_2, 3)
+        end
+
+        it 'will give you the total price of your order' do
+          expect(takeaway.total).to eq "Total order cost: £#{24}"
+        end
+
+        it 'will let user check the total matches the order sum' do
+          expect(takeaway.check_total).to be true
+        end
+      end
     end
   end
+
+
 end

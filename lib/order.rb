@@ -1,17 +1,17 @@
 class Order
 
-  attr_reader :cost
+  attr_reader :total
 
   def initialize
-    @cost = 0
+    @total = 0
   end
 
   def add(price)
-    @cost += price
+    @total += price
   end
 
   def reset
-    @cost = 0
+    @total = 0
   end
 
 end
