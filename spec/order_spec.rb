@@ -1,18 +1,16 @@
 require 'order'
 
 describe Order do
-  let(:menu_klass){ double('menu_klass', new: menu) }
-  let(:text_klass){ double('text_klass', new: text) }
-  subject(:order){ described_class.new(menu_klass.new,text_klass.new) }
-  let(:dish1){ double('dish') }
-  let(:dish2){ double('dish') }
+  subject(:order){ described_class.new(menu,text)}
+  let(:dish1){ double('menu') }
+  let(:dish2){ double('menu') }
   let(:text){ double('text') }
   let(:menu){ double('menu', dishes: { dish1 => 7.5, dish2 => 10.0 })}
 
 
   describe '#initialize' do
     it 'creates an empty order' do
-      expect(order.overview.empty?).to be true
+      expect(order.current.empty?).to be true
     end
 
     it 'initiates menu' do
@@ -22,25 +20,27 @@ describe Order do
 
   describe '#show_menu' do
     it 'shows the menu' do
-      expect(order.show_menu).to eq menu
+      allow(menu).to receive(:show)
+      expect(menu).to receive(:show)
+      order.show_menu
     end
   end
 
   describe '#select_dishe' do
     it 'insert a single dish with 1 in quantity into the order' do
       order.select_dish(1,dish1)
-      expect(order.overview[0]).to include 1, dish1, 7.5
+      expect(order.current[0]).to include 1, dish1, 7.5
     end
 
     it 'insert multiple dish with 1 in quantity into the order' do
       quantity = 1
       order.select_dish(quantity,dish1)
       order.select_dish(quantity,dish2)
-      expect(order.overview).to include [1, dish1, menu.dishes[dish1]],[quantity,dish2,menu.dishes[dish2]]
+      expect(order.current).to include [1, dish1, menu.dishes[dish1]],[quantity,dish2,menu.dishes[dish2]]
     end
 
-    xit 'insert multiple dish with multiple quantities into the order' do
-
+    it 'raise argument error if quantity is zero or less' do
+      expect{order.select_dish(0,dish1)}.to raise_error ArgumentError
     end
   end
 
@@ -71,16 +71,8 @@ describe Order do
       quantity = 1
       order.select_dish(quantity,dish1)
       order.select_dish(quantity,dish2)
-      expect(order.place(order.show_sum)).to include order.overview
+      expect(order.place(order.show_sum)).to include order.current
     end
-
-    # it 'initiates a confirmation' do
-    #   quantity = 1
-    #   order.select_dish(quantity,dish1)
-    #   order.select_dish(quantity,dish2)
-    #   expect(order).to receive(:confirmation)
-    #   order.place(17.5)
-    # end
 
   end
 
@@ -95,27 +87,6 @@ describe Order do
       order.place(order.show_sum)
     end
 
-    xit 'returns a time stamp when order is delivered in one hour' do
-      quantity = 2
-      order.select_dish(quantity,dish1)
-      order.select_dish(quantity,dish2)
-      order.place(order.show_sum)
-      time = (Time.now + (60*60)).strftime("%H:%M")
-      msg = "Thank you! Your order was placed and will be delivered before #{time}"
-      expect(order.confirmation).to eq msg
-    end
-  end
-
-  xdescribe 'edge cases' do
-    it 'incorrect name is passed for a dish' do
-
-    end
-
-    it 'minus number is given for quantity' do
-
-    end
-
-    
   end
 
 end
