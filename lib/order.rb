@@ -8,6 +8,7 @@ class Order
   def initialize(menu = Menu.new, messager = Messager.new)
     @list = []
     @menu = menu
+    @pizzas = menu.pizzas
     @messager = messager
   end
 
@@ -15,10 +16,12 @@ class Order
     @menu.display_menu
   end
 
-  def choose(item)
-   @choice = @menu.set_menu.select { |key, value| item.include? key }
-     "You have added 1x #{item} to your order."
+  def choose(item, n = 1)
+   n.times do @choice = @pizzas.select { |key, value| item.include? key }
+     fail "Not on menu! Make another choice." if @choice.empty?
      @list << @choice
+   end
+   "You have added #{n} x #{item} to your order."
   end
 
   def total
@@ -29,7 +32,7 @@ class Order
 
   def place
     t = Time.now + 60*60
-    @message = "Thank you for your order! " +
+    @message = "Thank you for your order! " \
     "It will be delivered before #{t.strftime("%H:%M")}."
   end
 

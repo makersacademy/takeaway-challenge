@@ -2,6 +2,13 @@ require 'messager'
 
 describe 'Messager' do
 
-        # allow(messager).to receive(:send_sms).with(@message)
+  subject(:messager) { Messager.new }
+
+  describe '#send_sms' do
+    it 'sends an sms' do
+      expect(messager).to receive(:send_sms).with(@message)
+      messager.send_sms(@message)
+    end
+  end
 
 end

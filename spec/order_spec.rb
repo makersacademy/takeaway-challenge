@@ -27,13 +27,22 @@ describe 'Order' do
 
     describe '#choose' do
       it 'allows customer to choose items and add to list' do
-         order.choose("Margherita")
-         expect(order.list).to include("Margherita" => 6)
-       end
+         order.choose("margherita")
+         expect(order.list).to include("margherita" => 6)
+      end
+
+      it 'confirms the correct number and items to customer' do
+         expect(order.choose("margherita", 2)).to eq "You have added 2 x margherita to your order."
+      end
+
+      it 'raises an error if item is not on the menu' do
+        message = "Not on menu! Make another choice."
+         expect{order.choose("pasta")}.to raise_error(message)
+      end
     end
 
     before do
-      order.choose("Margherita")
+      order.choose("margherita")
       order.total
     end
 
