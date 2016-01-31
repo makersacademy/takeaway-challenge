@@ -1,6 +1,9 @@
-require "./lib/menu"
+require './lib/menu'
+require './lib/messaging'
 
 class Takeaway
+
+include Message
 
 attr_reader :order, :bill
 
@@ -31,9 +34,8 @@ attr_reader :order, :bill
 
 
 	def place_order(amount)
-	print @bill
 	raise "payment does not match total price, please try again" if incorrect_total(amount)
-	"Thank you! Your order was placed and will be delivered before #{one_hours_time}"
+	send_confirmation
 	end
 
 
@@ -88,8 +90,3 @@ pretty_menu.chomp
 end
 
 
-# def select_item(item, amount=1)
-# 		selection = @dishes.select {|k,v| k == item}
-# 		@order.merge!(selection)
-# 		"you added #{amount} #{item} to your basket"
-# 	end

@@ -48,6 +48,7 @@ describe 'User Stories' do
   takeaway.select_item("Roast Pork Belly Hirata Buns")
   thank_you_message ="Thank you! Your order was placed and will be delivered before 20:00"
   allow(takeaway).to receive(:one_hours_time) {"20:00"}
+  allow(takeaway).to receive(:send_confirmation) {thank_you_message}
   expect(takeaway.place_order(18)).to eq thank_you_message
   end
 
