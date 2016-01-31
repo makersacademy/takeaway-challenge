@@ -24,7 +24,12 @@ class Select
 
     def bill
     	calculadora
-    	"#{@order} +'\n' + Due #{@due}£"
+    	@order.each do |key, value|
+    		value.each do |k,v|
+    			puts "#{key}-> #{k} -> #{v}"
+    		end
+    	end
+    	"Due #{@due}£"
     end
 
     def place_order
@@ -51,6 +56,7 @@ private
     		@due+= x[0] * x[1]
     	end
     end
+
 
     def deliver
     	t = Time.now + 1132

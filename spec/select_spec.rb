@@ -38,10 +38,9 @@ describe Select do
 				expect(subject).to respond_to(:order)
 			end
 			it 'will show the bill for checking the prices and the sum' do 
-				ord = "{\"3 Burger\"=>{\"10£ each\"=>\"30£\"}, \"2 Steak\"=>{\"18£ each\"=>\"36£\"}} +'\n' + Due 66£"
 				subject.pick('Burger',3)
 				subject.pick('Steak',2)
-				expect(subject.bill). to eq ord
+				expect(subject.bill). to eq "Due 66£"
 			end
 		end
 
