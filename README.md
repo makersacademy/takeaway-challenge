@@ -38,7 +38,7 @@ calculate total cost:
 
 check the total cost:
 
-  2.2.3 :007 > order.check_total
+  2.2.3 :007 > order.check_total =>
   "1.0 X Vegeteriano(10.99) = 10.99"
   "1.0 X Formaggio(12.99) = 12.99"
 
