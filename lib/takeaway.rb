@@ -1,43 +1,32 @@
 class Takeaway
 
-  def initialize(menu, calculator, twilio)
+  def initialize(menu, calculator, twilio, order)
     @calculator = calculator
     @menu = menu
     @twilio = twilio
+    @order = order
   end
 
   def show_menu
     menu.show
   end
 
-  def select(order, estimate)
+  def select(items, estimate)
     @estimate = estimate
-    @order = order
+    order.save = items
   end
 
   def confirm_order
     fail "incorrect bill amount" unless calculate_bill == estimate
-    order_placed
+    order.order_placed(twilio)
+    "order confirmed: correct amount billed #{estimate}"
   end
 
   private
 
   attr_reader :estimate, :order, :calculator, :twilio, :menu
-  
-  def delivery_time
-    (Time.now + 60*60).strftime("%H:%M")
-  end
 
   def calculate_bill
-    calculator.calculate(order, self)
-  end
-
-  def order_placed 
-    send_text("Thank you! Your order was placed "\
-              "and will be delivered before #{delivery_time}")
-  end
-
-  def send_text(body)
-    twilio.messages.create(from: Dotenv.load['FROM'], to: Dotenv.load['TO'], body:body)
+    calculator.calculate(order.save, self)
   end
 end

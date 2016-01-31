@@ -1,12 +1,16 @@
 require_relative '../../lib/takeaway.rb'
 require_relative '../../lib/menu.rb'
+require_relative '../../lib/order.rb'
+require_relative '../../lib/calculator.rb'
+
 require 'twilio-ruby'
 require 'dotenv'
 
-describe "FEATURE SPEC" do
+describe "---FEATURE SPEC---" do
   let(:takeaway) { Takeaway.new(Menu.new, Calculator.new,
-  Twilio::REST::Client.new("01234", "56789"))
+  Twilio::REST::Client.new("01234", "56789"), order)
   }
+  let(:order) { Order.new }
   let(:choice) { {beef:2, rolls:3} }
   let(:default_menu) { {ribs: 3,
         beef: 4,
@@ -31,24 +35,16 @@ describe "FEATURE SPEC" do
     end
   end
 
-  describe 'User Story 3' do
+  describe 'User Story 3 & 4' do
     it 'Raises error when billed different amount' do
       takeaway.select(choice, 23) 
       expect {takeaway.confirm_order}.to raise_error("incorrect bill amount")
     end
 
-    it 'Calculates the bill correctly and returns no error' do
-      allow(takeaway).to receive(:send_text).with(confirm).and_return(confirm)
+    it 'Confirms the order, correct bill amount & sends text message' do
+      allow(order).to receive(:send_text).with(confirm).and_return(confirm)
       takeaway.select(choice, 17)
-      expect {takeaway.confirm_order}.to_not raise_error
+      expect(takeaway.confirm_order).to eq "order confirmed: correct amount billed 17"
     end
-  end
-
-  describe 'User Story 4' do
-    it 'Returns confirmation if bill matches estimate' do
-      allow(takeaway).to receive(:send_text).with(confirm).and_return(confirm)
-      takeaway.select(choice, 17) 
-      expect(takeaway.confirm_order).to eq confirm
-    end  
   end
 end
