@@ -41,8 +41,8 @@ class Host
 
   def send_message
     @client.messages.create(
-      from: @credentials["MOBILE_FROM"],#'+441372700118',
-      to: @credentials["MOBILE_TO"], #+447508980065',
+      from: @credentials["MOBILE_FROM"],
+      to: @credentials["MOBILE_TO"],
       body: "Thank you! Your order was placed and will be delivered in about an hour"
     )
   end

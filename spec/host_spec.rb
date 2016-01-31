@@ -59,10 +59,6 @@ describe Host do
        expect(host.new_order).to eq order
      end
 
-     it "prints the list of items and total cost" do
-       expect(host.place_order).to eq "Salmon roll....£7.0\nThe total cost of your order is: £7.0."
-     end
-
    end
 
    describe "#print_recipt" do
@@ -76,7 +72,7 @@ describe Host do
    describe "#send_message" do
 
      it "sends a message to mobile number" do
-       
+
      end
 
    end
