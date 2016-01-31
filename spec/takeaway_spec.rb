@@ -1,6 +1,7 @@
 require 'takeaway'
 
 TEST_PRICE = 1.99
+TEST_QUANTITY = 3
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
@@ -31,33 +32,35 @@ describe Takeaway do
     end
 
     it 'increases quantity to existing item to basket' do
-      quantity = 2
-      quantity.times { takeaway.order('fries') }
-      expect(takeaway.basket['fries']).to eq quantity
+      TEST_QUANTITY.times { takeaway.order('fries') }
+      expect(takeaway.basket['fries']).to eq TEST_QUANTITY
     end
 
     it 'adds specific quantity of item to basket' do
-      quantity = 3
-      takeaway.order('fries', quantity)
-      expect(takeaway.basket['fries']).to eq quantity
+      takeaway.order('fries', TEST_QUANTITY)
+      expect(takeaway.basket['fries']).to eq TEST_QUANTITY
     end
   end
 
   # TODO: quantity less than 1?
   # TODO: remove item method?
 
-  describe '#bill' do
-    it 'returns the calculated bill' do
-      quantity = 2
-      total = TEST_PRICE * quantity
-      takeaway.order('fries', quantity)
-      expect(takeaway.bill).to eq total
+  context 'bill and checkout' do
+    describe '#bill' do
+      it 'returns the calculated bill' do
+        total = TEST_PRICE * TEST_QUANTITY
+        takeaway.order('fries', TEST_QUANTITY)
+        expect(takeaway.bill).to eq total
+      end
+    end
+
+    describe '#checkout' do
+      it 'raises error if estimated and actual total is not matching' do
+        takeaway.order('fries', TEST_QUANTITY)
+        wrong_total = TEST_PRICE * TEST_QUANTITY + rand
+        message = 'Incorrect estimated total!'
+        expect { takeaway.checkout(wrong_total) }.to raise_error(message)
+      end
     end
   end
-
-  # describe '#checkout' do
-    # it 'raises error if estimated and actual total is not matching' do
-    #   expect { takeaway.checkout }
-    # end
-  # end
 end

@@ -12,7 +12,7 @@ class Takeaway
   end
 
   def show_menu
-    @menu.list.dup
+    @menu.list
   end
 
   def order(item, quantity = 1)
@@ -23,6 +23,10 @@ class Takeaway
 
   def bill
     @basket.inject(0) { |sum, (item, quantity)| sum + price(item) * quantity }
+  end
+
+  def checkout(estimate)
+    fail 'Incorrect estimated total!' unless estimate == bill
   end
 
   private
