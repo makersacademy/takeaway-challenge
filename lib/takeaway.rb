@@ -26,7 +26,7 @@ attr_accessor :final_order
   end
 
   def complete_order(price)
-    fail 'Incorrect amount' if is_payment_correct?(price) != true
+    fail 'Incorrect amount' if payment_correct?(price) != true
     send_text("Your order totalling $#{@order.total} has been registered and will be delivered before 18:52")
     @order.current_order.clear
   end
@@ -37,7 +37,7 @@ attr_accessor :final_order
     @message.send_message(message)
   end
 
-  def is_payment_correct?(price)
+  def payment_correct?(price)
     price == @order.total
   end
 end
