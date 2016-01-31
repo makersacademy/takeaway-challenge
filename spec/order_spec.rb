@@ -2,10 +2,13 @@ require 'order'
 
 RSpec.describe Order do
 
-  let(:menu) {double :menu, show_menu: {"chicken" =>3,
+  let(:menu) {double :menu, show_menu:
+    {"chicken" =>3,
      "rice" =>1,
      "pizza" =>6,
-     "chips" =>2 }}
+     "chips" =>2
+    }
+  }
 
 
   subject(:order)  {described_class.new(menu)}

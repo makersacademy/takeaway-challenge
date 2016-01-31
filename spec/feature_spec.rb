@@ -26,7 +26,8 @@ describe 'User stories' do
       expect(takeaway.basket.size).to eq(0)
       takeaway.select_dishes("chips", 2)
       expect(takeaway.basket.size).to eq(1)
-      expect{takeaway.select_dishes("turkey", 5)}.to raise_error "turkey is not on the menu"
+      expect{takeaway.select_dishes("turkey", 5)}.to raise_error ""\
+      "turkey is not on the menu"
     end
   end
 
@@ -40,6 +41,7 @@ describe 'User stories' do
       takeaway.select_dishes("chips", 2)
       takeaway.select_dishes("pizza", 3)
       takeaway.check(22)
+      #missing failing check which should raise an error
     end
   end
 

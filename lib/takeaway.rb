@@ -7,7 +7,7 @@ class Takeaway
   attr_reader :basket
 
 
-  def initialize (menu, messager)
+  def initialize(menu, messager)
     @menu = menu
     @basket = Order.new(menu)
     @messager = messager
