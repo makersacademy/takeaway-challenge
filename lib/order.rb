@@ -16,10 +16,16 @@ class Order
   def add_item(menu_item, quantity)
     @history[menu_item] = quantity
     item_added_confirmation(menu_item, quantity)
+    print "added to your order"
   end
 
   def history
     @history.dup
+  end
+
+  def show_order
+    @history.each {|menu_item, quantity|item_added_confirmation(menu_item, quantity)}
+    print "total #{order_total}"
   end
 
   def confirm_order(total)
@@ -30,7 +36,7 @@ class Order
   private
 
   def item_added_confirmation(menu_item, quantity)
-    print "#{quantity} #{menu_item.name} added to your order"
+    print "#{quantity} #{menu_item.name}, "
   end
 
   def total_mismatch_error(total)
@@ -42,16 +48,17 @@ class Order
   end
 
   def sub_totals
-    @history.collect {|menu_item, quantity| menu_item.price * quantity}
+    @history.collect {|menu_item, quantity| item_total(menu_item, quantity) }
+  end
+
+  def item_total(menu_item, quantity)
+    menu_item.price * quantity
   end
 
   def hour_ahead
     (Time.now+3600).strftime('%H:%M')
   end
 
-  # def show_order
-  #   puts @history.each {|key, value| key.name}
-  # end
 
 
 end
