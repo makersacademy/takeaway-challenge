@@ -10,17 +10,17 @@ User interacts through 'Takeaway' class, which contains the following functional
 
 ```
 2.2.3 :001 > require './lib/takeaway.rb'
- => true 
+ => true
 2.2.3 :002 > shop = Takeaway.new
- => #<Takeaway:0x007fecdba6c2a8 @menu={:Hamburger=>4.5, :Cheeseburger=>4.6, :Chips=>1.0}> 
+ => #<Takeaway:0x007fecdba6c2a8 @menu={:Hamburger=>4.5, :Cheeseburger=>4.6, :Chips=>1.0}>
 2.2.3 :003 > wine_shop = Takeaway.new :wine
- => #<Takeaway:0x007fecdba5de10 @menu={:red=>3.0, :white=>3.0, :blue=>10.0}> 
+ => #<Takeaway:0x007fecdba5de10 @menu={:red=>3.0, :white=>3.0, :blue=>10.0}>
 2.2.3 :004 > shop.show_menu
 Menu:
 Hamburger. Price: £4.50
 Cheeseburger. Price: £4.60
 Chips. Price: £1.00
- => {:Hamburger=>4.5, :Cheeseburger=>4.6, :Chips=>1.0} 
+ => {:Hamburger=>4.5, :Cheeseburger=>4.6, :Chips=>1.0}
 2.2.3 :005 > shop.order
 Enter the name of the dish. (Enter q to quit)
 Hamburger
@@ -31,9 +31,8 @@ y
 Order completed
 If you wish to complete your order press y; press any other key to place another order.
 y
- => [[:Hamburger], [1], [4.5]] 
+ => [[:Hamburger], [1], [4.5]]
 2.2.3 :006 > shop.confirm_order
-"The message has been sent"
- => "The message has been sent" 
+""Thank you! Your order was placed and will be delivered before 22:21"
+ => "Thank you! Your order was placed and will be delivered before 22:21" 
 ```
-

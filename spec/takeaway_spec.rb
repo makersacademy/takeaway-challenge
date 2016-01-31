@@ -17,7 +17,8 @@ describe Takeaway do
 
   describe '#confirm_order'do
     it 'allows you to confirm order'do
-    expect { takeaway.confirm_order([[:Hamburger, :Chips],[1,2],[6.50]]) }.to output("\"The message has been sent\"\n").to_stdout
+    t = Time.now + 3600
+    expect { takeaway.confirm_order([[:Hamburger, :Chips],[1,2],[6.50]]) }.to output("\"Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}\"\n").to_stdout
 
     end
   end
