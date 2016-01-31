@@ -43,11 +43,11 @@ class Takeaway
   end
 
   def basket_summary
-    basket_total = 0
+    _basket_total = 0
     @basket.each do |item, price|
       basket_total += price
     end
-    basket_total
+    _basket_total
   end
 
   private
