@@ -40,12 +40,14 @@ describe Order do
       expect(order.current_order).to eq []
     end
 
-    it "can accept an item for an order (starter), specifying quantity and price" do
-      expect{order.add_to_order(:soup, 3, 4.50)}.to change{order.current_order}.to [["3 x soup = £4.5"]]
+    it "can add an item to an order (starter), specifying quantity and price" do
+      order.add_to_order(:soup, 3, 4.50)
+      expect(order.current_order).to eq [["3 x soup = £4.5"]]
     end
 
-    it "can accept an item for an order (main), specifying quantity and price" do
-      expect{order.add_to_order(:lobster, 5, 40)}.to change{order.current_order}.to [["5 x lobster = £40"]]
+    it "can add an item to an order (main), specifying quantity and price" do
+      order.add_to_order(:lobster, 5, 40)
+      expect(order.current_order).to eq [["5 x lobster = £40"]]
     end
 
     it "won't accept items not on the menu" do
@@ -53,7 +55,7 @@ describe Order do
     end
 
     it "verifies the price entered is correct" do
-      expect{order.add_to_order(:soup, 3, 5)}.to raise_error 'Incorrect price, order rejected'
+      expect{order.add_to_order(:soup, 3, 5)}.to raise_error Order::PRICE_ERROR
     end
   end
 

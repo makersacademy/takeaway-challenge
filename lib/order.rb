@@ -5,6 +5,8 @@ class Order
 
   include Text, Menu
 
+  PRICE_ERROR = "Incorrect price, order rejected"
+
   attr_reader :current_order
 
   def initialize
@@ -15,7 +17,7 @@ class Order
 
   def add_to_order(item, quantity, price)
     raise "Item not on menu" unless on_menu?(item)
-    raise "Incorrect price, order rejected" unless correct_price?(item, quantity, price)
+    raise PRICE_ERROR unless correct_price?(item, quantity, price)
     order = ["#{quantity} x #{item} = £#{price}"]
     update_order(order, price)
   end
@@ -40,7 +42,7 @@ class Order
   end
 
   def on_menu?(item)
-    self.view_menu.has_key?(item.downcase)
+    self.view_menu.key?(item.downcase)
   end
 
   def update_order(order, price)
