@@ -2,10 +2,11 @@
 require_relative 'text.rb'
 require_relative 'menu.rb'
 require_relative 'order.rb'
+require 'pp'
 
 class Restaurant
 
-  attr_reader :menu, :order, :count
+  attr_reader :menu, :order
 
   def initialize(menu = Menu.new, messager = Text.new)
     @menu = menu
@@ -23,8 +24,10 @@ class Restaurant
     summary
   end
 
-  def item_count
-    @order.values.reduce(:+)
+  def remove_item(item)
+    fail 'No such item in your order' unless @order.include?(item)
+    @order.tap { |items| items.delete(item) }
+    summary
   end
 
   def order_summary
