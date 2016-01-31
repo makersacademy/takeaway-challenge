@@ -7,6 +7,7 @@ class Host
   attr_reader :current_menu, :new_order
 
   def initialize(current_menu = Menu.new, new_order = Order.new)
+    @credentials = Dotenv.load
     @current_menu = current_menu
     @new_order = new_order
   end
