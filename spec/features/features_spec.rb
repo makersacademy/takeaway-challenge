@@ -28,8 +28,8 @@ describe Order do
   describe '#choose' do
    it 'records the quantity as well' do
     order.choose("Margherita", 2)
+   end
   end
- end
 
 # As a customer
 # So that I can verify that my order is correct
@@ -45,7 +45,7 @@ describe Order do
   describe '#check_total' do
    it 'returns itemised total' do
     order.check_total
-    end
+   end
   end
 
   describe '#send_message' do

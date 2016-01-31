@@ -15,7 +15,8 @@ describe CalculateBill do
 
    it 'returns itemised bill' do
     all_order = [{"Margherita"=>2}]
-    expect(calc.itemised_bill(all_order)).to eq(["2.0 X Margherita(11.99) = 23.98"])
+    message1 = "2.0 X Margherita(11.99) = 23.98"
+    expect(calc.itemised_bill(all_order)).to eq([message1])
    end
   end
 end
