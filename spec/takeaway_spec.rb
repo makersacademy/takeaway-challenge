@@ -9,18 +9,21 @@ describe Takeaway do
 
   subject(:takeaway){described_class.new(menu: TEST_MENU)}
 
-#has a read_menu
 #has a basket
 #can return a dynamic delivery message
 
   describe "before order" do
 
     it "returns an item and its price" do
-      expect(takeaway.read_menu).not_to be_empty
+      expect(takeaway.menu).not_to be_empty
     end
 
-    it "starts with an empty basket" do
-      expect(takeaway.basket_summary).to be_empty
+    it "starts with zero items in basket" do
+      expect(takeaway.basket_number).to eq 0
+    end
+
+    it "returns empty basket message if 0 items" do
+      expect(takeaway.basket_message).to eq "Your basket is empty"
     end
   end
 
@@ -56,5 +59,7 @@ describe Takeaway do
     end
   end
   # context "removes menu items"
-  # context "places an order"
+  describe "places an order" do
+
+  end
 end
