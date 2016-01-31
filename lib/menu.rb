@@ -1,18 +1,19 @@
 
 require_relative 'italian_menu'
-require_relative 'order'
+# require_relative 'order'
+# require_relative 'basket'
 
 class Menu
 
 SCREEN_WIDTH = 40
 
-attr_reader :selection, :cuisine_choice, :meal, :course, :order
+attr_reader :selection, :cuisine_choice, :meal, :course, :order, :basket
 # :menu_choice
 # :order
 
-  def initialize(cuisine_choice=ItalianMenu, order=Order)
+  def initialize(cuisine_choice=ItalianMenu, order=Order, basket=Basket)
     @cuisine_choice = cuisine_choice
-    #Could I get rid of this orer and injection>
+    @basket = basket
     @order = order
   end
 
@@ -33,12 +34,14 @@ attr_reader :selection, :cuisine_choice, :meal, :course, :order
   def take_order
     p "What would you like to eat?"
     user_input = STDIN.gets.chomp
-    @order = order.new(user_input, menu_choice).process_order
+    @order = order.new(user_input, menu_choice)
   end
 
-  def review_order
-
+  def select_dish(dish, quantity)
+    @basket = basket.new(dish, quantity)
   end
+
+
 
   private
 
@@ -51,10 +54,7 @@ attr_reader :selection, :cuisine_choice, :meal, :course, :order
   end
 
 end
-  #
-  # def select(dish, quantity)
-  # Will let the
-  # end
+
   #
   # def confirm_order
   #   will initialize a order.new with the information from def.select
