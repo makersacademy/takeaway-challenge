@@ -38,22 +38,24 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   end
 
   def select_dish(dish, quantity)
-    selection << [dish, quantity]
-    if selection.size == 1
-      @basket = basket.new(selection, menu_choice)
+    if selection.size == 0
+      selection << [dish, quantity]
+      @basket = create_basket
     else
       @basket.selection << [dish, quantity]
     end
   end
 
-  # def review_order
-  #
-  # end
+  def review_order
+    basket.itemised_bill.each do |item|
+      puts ("Dish: #{item[0]}".ljust(SCREEN_WIDTH) + "Quantity: #{item[1]}".ljust(SCREEN_WIDTH/2) + "Price per dish: #{item[2]}".rjust(SCREEN_WIDTH/2) + "Total: #{item[3]}".rjust(SCREEN_WIDTH))
+    end
+  end
 
   private
 
   def create_basket
-    @basket = basket.new(selection)
+    @basket = basket.new(selection, menu_choice)
   end
 
   def meal_choice_valid?

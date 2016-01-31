@@ -32,4 +32,11 @@ describe Basket do
 
     end
   end
+
+  describe '#bill' do
+
+      xit 'creates a three dimensional array of meals, prices and quantity' do
+
+      end
+
 end
