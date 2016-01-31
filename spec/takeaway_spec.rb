@@ -29,5 +29,15 @@ describe Takeaway do
       expect(takeaway.order_log.status.last).to be_an Hash
     end
   end
+  
+  describe '#check_out' do
+    
+    it 'Does not finalises the order if total inputted is not correct' do
+      takeaway.order("pasta")
+      expect(takeaway.check_out 34).to eq "The total is not correct or no order has been made!"
+    end
+    
+  end
+  
 
 end

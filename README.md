@@ -13,12 +13,15 @@ Rationale
 
 * The Takeaway class
            - Is responsible for the interface of the program 
-		   
+		   - It reads a .text file in order to create a list of restaurants (not implemented, but left open)
 * The Restaurant class
            - Is responsible to store a specific menu type 
 
 * The Order class 
            - Is responsible for managing the order
+
+* The Messager class
+           - Is responsible for sending the text message using Twilio
 
 Instructions
 ------------
@@ -73,6 +76,10 @@ Pizza x 6 = £60.0
 Pasta x 1 = £8.0
 
 => "Total = £68.0"
+
+irb(main):012:0> t.check_out 68
+
+=> "Thank You! You will receive a confirmation text for you order."
 
 
 

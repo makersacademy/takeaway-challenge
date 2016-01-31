@@ -1,18 +1,21 @@
 require_relative 'restaurant.rb'
 require_relative 'order.rb'
+require_relative 'twilio_messager'
+require 'dotenv'
 
 class Takeaway
   
-  attr_reader :restaurant, :order_log
+  attr_reader :restaurant, :order_log, :messager
   
-  def initialize(restaurant = Restaurant.new, order=Order.new) 
+  def initialize(restaurant = Restaurant.new, order=Order.new, messager=Messager.new) 
     @action ||= nil 
     @restaurant = restaurant 
     @order_log  = order 
-
+    @messager = messager
   end
   
   def menu
+    boot_strap
     read_list
     choice
   end
@@ -29,25 +32,35 @@ class Takeaway
   end 
   
   def check_order
-  self.order_log.check_order
+    order_log.check_order
   end
   
   def clear_order
-    self.order_log.clear_order
+    order_log.clear_order
   end
   
   def total 
-    self.order_log.calculate_total
+    order_log.calculate_total
   end
   
-  private 
+  def check_out(total)
+    return "The total is not correct or no order has been made!" if total_error(total)
+    messager.send_sms("Thank You! You will receive your order by #{time_format}. Total = £#{total}")
+    close_order
+  end
+  
+    private 
   
   def display_menu
     restaurant.own_menu
   end
   
   def item_exist?(item)
-    self.restaurant.menu.key?(item.capitalize)
+    restaurant.menu.key?(item.capitalize)
+  end
+  
+  def total_error(total)
+    total != order_log.total || total <= 0
   end
   
   def add_to_basket(item, capacity)
@@ -63,6 +76,19 @@ class Takeaway
       end
     end
   end   
+  
+  def boot_strap
+    Dotenv.load
+  end
+  
+  def time_format
+    (Time.now + 3600).strftime("%H:%M:%S")
+  end
+  
+  def close_order
+    clear_order
+    "Thank You! You will receive a confirmation text for you order."
+  end
  
   
 end
