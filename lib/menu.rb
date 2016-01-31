@@ -35,13 +35,14 @@
 #  the text should actually be sent
 
 class Menu
-  attr_reader :food_list
+
+  MENU_LIST = {
+    chips: 2.00,
+    fish: 3.00,
+    sausage: 2.50
+  }
 
   def show_menu
-    @food_list = {
-      'chips' => 2.00,
-      'fish' => 3.00,
-      'sausage' => 2.50
-    }
+    MENU_LIST
   end
 end

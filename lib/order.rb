@@ -1,14 +1,20 @@
 require_relative 'menu'
 require_relative 'text'
-class Order
-  attr_reader :current_order, :order_total
 
-  def initialize
-    @current_order = []
+class Order
+  attr_reader :current_order, :menu
+
+  def initialize(menu = Menu.new)
+    @current_order = {}
+    @menu = menu
   end
 
-  def select_item(menu, item, quantity)
-    item_included?(menu, item)
+  def select_item(item,quantity)
+    if item_included?(item)
+      @current_order[item] = quantity
+    else
+      raise 'please select item from menu'
+    end
   end
 
   def calculate_price
@@ -23,11 +29,7 @@ class Order
 
   private
 
-  def item_included?(menu, item)
-    if item == 'chips' or item == 'sausage' or item =='fish'
-      @current_order << item
-    else
-      raise 'please select item from menu'
-    end
+  def item_included?(item)
+    @menu.show_menu.include?(item)
   end
 end

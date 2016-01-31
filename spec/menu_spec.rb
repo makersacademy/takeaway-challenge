@@ -6,6 +6,6 @@ describe Menu do
   # let(:menu) {double :menu}
 
     it 'displays menu list' do
-      expect(menu.show_menu).to include('chips' => 2.00)
+      expect(menu.show_menu).to include(:chips => 2.00)
     end
   end
