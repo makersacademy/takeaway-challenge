@@ -70,10 +70,11 @@ subject(:restaurant) { described_class.new(menu_klass, text_klass) }
   describe '#place_order' do
 
     it 'sends a payment confirmation text message' do
-      allow(text_klass).to receive(:send_message).and_return("Thank you for your payment of £8.00")
       subject.add_item(:item_1)
       subject.add_item(:item_2)
+      expect(text_klass).to receive(:send_message)
       subject.place_order(8.00)
+
     end
 
   end
