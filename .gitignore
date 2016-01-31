@@ -1,6 +1,2 @@
 /**/.DS_Store
 /coverage
-/.env
-/fixtures
-/fixtures/vcr_cassettes
-/fixtures/vcr_cassettes/twilio.yml
