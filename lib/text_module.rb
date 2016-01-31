@@ -8,6 +8,12 @@ module Text
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-
+  def text
+    @client.messages.create(
+    from: '+441503505018',
+    to: '+447450946912',
+    body: "Thanks for your order! It's on its way and should be with you by " + (Time.new + 3600) + "!"
+    )
+  end
 
 end
