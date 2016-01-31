@@ -11,7 +11,7 @@ class Order
     end
     
     def order_selection(item, quantity)
-        if Menu::MENU_ITEMS.include?(item) 
+        if @menu_klass.view_menu.include?(item) 
             chosen_items[item] = quantity
         else
             raise "please select an item from the menu"
@@ -22,8 +22,8 @@ class Order
         @chosen_items
     end
     
-    def show_bill
-        "£#{calculate_bill}"
+    def order_summary
+        order_summary_calc
     end
     
     def total_dishes
@@ -32,6 +32,10 @@ class Order
     
     def show_menu
         @menu_klass.view_menu
+    end
+    
+    def show_bill
+        "£#{calculate_bill}"
     end
     
     def confirmation_text
@@ -46,8 +50,13 @@ class Order
         end
         @number_of_dishes
     end
-            
-            
+    
+    def order_summary_calc
+        #make this nicer
+        @chosen_items.map do |item, quantity|
+          "#{item} x #{quantity} = £#{@menu_klass.view_menu[item] * quantity}0"
+        end.join(", ")
+    end
     
     def calculate_bill
         @chosen_items.each do |item, price|

@@ -35,6 +35,15 @@ describe Order do
         end
     end
     
+    describe '#order_summary' do
+        
+        it 'should return a summary of the order with item and price for each item' do
+            order.order_selection(:Crispy_Duck, 2)
+            order.order_selection(:Sprite, 3)
+            expect(order.order_summary).to eq "Crispy_Duck x 2 = £15.00, Sprite x 3 = £3.00"
+        end
+    end
+    
     describe '#show_menu' do
         
         it 'should show the menu of dishes' do
