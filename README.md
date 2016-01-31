@@ -1,5 +1,12 @@
-Takeaway Challenge
+wTakeaway Challenge
 ==================
+
+To do:
+- Look at gem files how to
+- Look at automated system how to
+- Struct for food
+- Seperate interface system
+^Confirmation tick of 
 
 Instructions
 -------
