@@ -4,6 +4,8 @@ describe Order do
 
   subject(:order) { described_class.new }
 
+  let(:confirmation) { double :confirmation }
+
   starters = {:soup => 1.50,
   :salad => 1.00,
   :scallops => 2.50}
@@ -63,6 +65,29 @@ describe Order do
 
     it "verifies the price entered is correct" do
       expect{order.add_to_order(:soup, 3, 5)}.to raise_error 'Incorrect price, order rejected'
+    end
+  end
+
+  context 'when finalizing orders' do
+    before do
+      order.add_to_order(:soup, 3, 4.50)
+      order.add_to_order(:lobster, 2, 16)
+    end
+
+    it "can view items in an order and the quantity of each" do
+      expect(order.current_order).to eq ({:soup=>3, :lobster=>2})
+    end
+
+    it "can view the total cost of the order" do
+      expect(order.total).to eq 20.5
+    end
+  end
+
+  context "using Text module" do
+    it "can send a text to confirm order" do
+      VCR.use_cassette('twilio') do
+        order.finalize_order
+      end
     end
   end
 
