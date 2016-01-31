@@ -10,7 +10,7 @@ class Order
 
   def check_order
     @order_list.each do |item|
-      return "#{item.reference}....#{item.name}....£#{item.price}"
+      puts "#{item.reference}....#{item.name}....£#{item.price}"
     end
   end
 
