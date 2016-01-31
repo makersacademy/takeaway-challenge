@@ -1,7 +1,7 @@
 class Takeaway
 
-  def initialize(menu=Menu.new)
-    @basket = {}
+  def initialize(menu = Menu.new)
+    @basket = Hash.new(0)
     @menu = menu
   end
 
@@ -10,6 +10,11 @@ class Takeaway
   end
 
   def show_menu
-    @menu.display.dup
+    @menu.list.dup
+  end
+
+  def order(item, quantity = 1)
+    fail 'Item not in menu!' unless @menu.list.include?(item)
+    @basket[item] += quantity
   end
 end
