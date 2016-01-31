@@ -1,5 +1,4 @@
 #Takeaway Challenge
-#==================
 
 ## What is it?
 
@@ -7,14 +6,14 @@ My effort at the Maker's Academy second week Takeaway Challenge, which uses Twil
 
 ##My approach
 
- ###Takeaway class: responsible for showing the menu, taking an order, displaying current basket, and placing the order.
+###Takeaway class: responsible for showing the menu, taking an order, displaying current basket, and placing the order.
 
- ###Order class: responsible for managing the order and doing the heavy lifting.
+###Order class: responsible for managing the order and doing the heavy lifting.
 
- ###Menu class: responsible for creating new menus, open for expansion.
+###Menu class: responsible for creating new menus, open for expansion.
 
- ###Messenge class: responsible for sending out confirmation sms's
-
+###Messenge class: responsible for sending out confirmation sms's
+```
 User Stories
 
 As a customer
@@ -32,7 +31,7 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-
+```
 ##Using the program should play out something like this in irb:
 ```
 > menu = Menu.new
