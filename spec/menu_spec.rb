@@ -30,9 +30,6 @@ describe Menu do
     before do
       menu.add_dishes(dish)
     end
-    it 'sets up the dishes for viewing' do
-      expect{menu.view_prices}.to change{menu.price_list}
-    end
 
     it 'presents the dishes to the user' do
       expect(menu.view_prices).to eq(menu.price_list)
@@ -44,5 +41,15 @@ describe Menu do
       expect(dish).to receive(:set_selected)
       menu.select_dish(dish)
     end
+
+    it 'sets the quantity of dishes requested' do
+      allow(dish).to receive(:set_selected) {true}
+      menu.select_dish(dish,3)
+      expect(menu.selected_dishes[dish]).to eq 3
+    end
+  end
+
+  context 'taking the order' do
+
   end
 end
