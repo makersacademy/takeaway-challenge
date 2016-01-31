@@ -7,7 +7,7 @@ class TakeAway
 
 SCREEN_WIDTH = 40
 
-attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_choice
+attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_choice, :price
 
 
   def initialize(cuisine_choice=ItalianMenu, order=Order, basket=Basket)
@@ -15,6 +15,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     @basket = basket
     @order = order
     @selection = []
+    @price = 0
   end
 
   def menu_choice(meal= :dinner, course= :all)
@@ -52,9 +53,20 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     basket.itemised_bill.each do |item|
       puts ("Dish: #{item[0]}".ljust(SCREEN_WIDTH) + "Quantity: #{item[1]}".ljust(SCREEN_WIDTH/2) + "Price per dish: #{item[2]}".rjust(SCREEN_WIDTH/2) + "Total: #{item[3]}".rjust(SCREEN_WIDTH))
     end
+      puts ("GRAND TOTAL: #{basket.total_bill}".center(SCREEN_WIDTH))
+  end
+
+  def confirm_order(price)
+    @price = price
+    fail "Price does not match" if !price_correct?
+    basket.checkout
   end
 
   private
+
+  def price_correct?
+    price == basket.total_bill
+  end
 
   def create_basket
     @basket = basket.new(selection, menu_choice)

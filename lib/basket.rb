@@ -14,7 +14,6 @@ attr_reader :selection, :menu_choice
     look_up_prices.each_with_index {|meal, index| meal << meal[1..2].inject(:*)}
   end
 
-
   private
 
   def look_up_prices
@@ -24,6 +23,8 @@ attr_reader :selection, :menu_choice
   def total_bill
     itemised_bill.transpose.last.inject(:+)
   end
+
+
 
 
 end

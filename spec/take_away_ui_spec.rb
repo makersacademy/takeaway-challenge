@@ -150,9 +150,69 @@ end
         expect {menu.select_dish("Tiramisu", 1)}.to change{menu.basket.selection.size}.by(1)
       end
 
+
+
+      describe "#review_order" do
+        let(:sample_bill) {double :sample_bill}
+        let(:sample_total) {double :sample_total}
+
+        before do
+          allow(dummy_basket).to receive(:itemised_bill).and_return sample_bill
+          allow(sample_bill).to receive(:each)
+          allow(dummy_basket).to receive(:total_bill).and_return sample_total
+        end
+
+        it 'will retrieve the itemised_bill' do
+          expect(dummy_basket).to receive(:itemised_bill).and_return sample_bill
+          menu.review_order
+        end
+
+        it 'will retrieve the total_bill' do
+          expect(dummy_basket).to receive(:total_bill).and_return sample_total
+          menu.review_order
+        end
+      end
+
+
+    describe "#confirm_order" do
+      let(:price) {double :price}
+      let(:sample_total) {double :sample_total}
+
+      before do
+        allow(dummy_basket).to receive(:total_bill).and_return price
+        allow(dummy_basket).to receive(:checkout)
+      end
+
+
+      it 'Stores the customer\'s expected price' do
+        menu.confirm_order(price)
+        expect(menu.price).to eq price
+      end
+
+      it 'checks the price against the total_bill' do
+        expect(dummy_basket).to receive(:total_bill)
+        menu.confirm_order(price)
+      end
+
+      it 'raises error "Price does not match" if there is not a match.' do
+        expect{menu.confirm_order(sample_total)}.to raise_error("Price does not match")
+      end
+
+      it 'does not raise an error if prices match' do
+        allow(dummy_basket).to receive(:total_bill).and_return sample_total
+        expect{menu.confirm_order(sample_total)}.not_to raise_error
+      end
+
+      it 'checks-out the basket if prices match' do
+        expect(dummy_basket).to receive(:checkout)
+        menu.confirm_order(price)
+      end
+
+
     end
 
 
+  end
   end
 
 end
