@@ -78,10 +78,10 @@ describe Restaurant do
       expect{subject.place_order(7.00)}.to raise_error("Wrong payment amount")
     end
 
-    # it 'activates a payment confirmation text message' do
-    #   expect(text_klass).to receive(:send_message)
-    #   subject.place_order(8.00)
-    # end
+    it 'activates a payment confirmation text message' do
+      expect(text_klass.new).to receive(:send_message)
+      subject.place_order(8.00)
+    end
 
   end
 
