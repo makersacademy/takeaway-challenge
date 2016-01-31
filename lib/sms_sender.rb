@@ -1,5 +1,5 @@
 class Sms
-def initialize
+def initialize(order_sum)
 
 @time_of_delivery = Time.now + (60*60)
 
@@ -14,7 +14,7 @@ def initialize
   @client.messages.create(
     from: '+441913280584',
     to: '+447969996662',
-    body: "Hello! thankyou for your order! Your food is being prepared and will be with you by #{@time_of_delivery.hour}:#{@time_of_delivery.min}!"
+    body: "Hello! thankyou for your order! Your food is being prepared and will be with you by #{@time_of_delivery.hour}:#{@time_of_delivery.min}! Your order cost will be £#{order_sum}"
     )
 end
 end

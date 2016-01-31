@@ -16,12 +16,6 @@ attr_reader :customer_order
   sms_send
  end
 
- def order_sum
-  cost = view_menu.map {|k, v| v * @customer_order[k] if @customer_order.key? k}.compact
-  cost.inject(:+)
- end
-
-
 private
 
 def order_checker
@@ -32,12 +26,12 @@ def order_checker
   end
 
 def sms_send
-  Sms.new
+  Sms.new(order_sum)
 end
+
+def order_sum
+  cost = view_menu.map {|k, v| v * @customer_order[k] if @customer_order.key? k}.compact
+  cost.inject(:+)
+ end
 end
-
-
-
-
-
 end
