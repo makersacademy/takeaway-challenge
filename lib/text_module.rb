@@ -12,7 +12,7 @@ module Text
     @client.messages.create(
     from: '+441503505018',
     to: '+447450946912',
-    body: "Thanks for your order! It's on its way and should be with you by " + (Time.new + 3600) + "!"
+    body: "Thanks for your order! It's on its way and should be with you by " + (Time.new + 3600).to_s[11..15] + "!"
     )
   end
 
