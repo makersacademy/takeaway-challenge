@@ -20,22 +20,28 @@ describe Order do
     end
   end
   
-  describe '#total' do
+  describe '#check_order' do
    
    it 'returns the total of the current order' do
      
-     expect(order.calculate_total).to eq "Total = £46.0"
+     expect(order.check_order).to eq "Total = £46.0"
    end
-  end
   
-  describe '#check_total' do
     
     it 'returns the list of items currently ordered' do
       
       expect{ order.check_order}.to output("Pizza x 3 = £30.0\nPasta x 2 = £16.0\n").to_stdout
     end
-    
   end
   
+  describe '#clear_order' do
+    
+    it 'clears the current order' do
+      
+      order.clear_order
+      expect(order.status).to eq []
+    end
+  end
   
+   
 end

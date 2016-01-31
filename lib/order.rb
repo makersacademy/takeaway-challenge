@@ -18,10 +18,9 @@ class Order
     calculate_total
   end
   
-  def calculate_total
-    @total = 0
-    status.each { |item| @total += item.values[0] }
-    "Total = £#{total}"
+  def clear_order
+    self.status = Array.new
+    "Your basket is now empty."
   end
   
   private
@@ -33,6 +32,12 @@ class Order
   
   def calculate_partial
     self.status.each { |item| "added #{item.keys[0]} to your basket"}
+  end
+  
+  def calculate_total
+    @total = 0
+    status.each { |item| @total += item.values[0] }
+    "Total = £#{total}"
   end
   
 end

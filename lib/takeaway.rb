@@ -32,6 +32,10 @@ class Takeaway
   self.order_log.check_order
   end
   
+  def clear_order
+    self.order_log.clear_order
+  end
+  
   def total 
     self.order_log.calculate_total
   end
