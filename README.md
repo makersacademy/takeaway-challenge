@@ -1,3 +1,5 @@
+Having read the user stories, I decided to only use two classes to complete the challenge - the Takeaway class, and a Menu class. The Menu would be injected in to the Takeaway class on initialization, as this would allow a different menu to be used in the future. I have implented Twilio and tested that it is working. I used Dotenv to hide my credentials on GitHub. I have put an example of how the user would interact with the program below.
+
 ```
 michaelcollins at Michaels-MacBook-Pro-2 in ~/projects/takeaway-challenge on master*
 $ pry
