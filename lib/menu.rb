@@ -3,9 +3,9 @@ class Menu
 
   def initialize
     @menu_contents = {
-      "chocolate cake" => 3,
-      "brownie" => 1,
-      "lemon drizzle" => 4,
+      "chocolate cake" => 3.00,
+      "brownie" => 1.00,
+      "lemon drizzle" => 4.00
     }
     end
 
@@ -15,6 +15,10 @@ class Menu
 
     def menu_display
        @menu_contents.each{|key, value| puts("#{key}"+ "---" + "£#{value}")}
+    end
+
+    def price(item)
+      @menu_contents[item]
     end
 
 end
