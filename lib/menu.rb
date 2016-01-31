@@ -11,7 +11,7 @@ class Menu
       menu_string = menu_string + "#{key}, #{value}\n"
     }
     menu_string = menu_string + "To place an order please reply with the food item and quantity in the following format (example): \n  pizza 3, steak, chips 2 ... etc."
-    menu_string
+    menu_string.clone
   end
 
   def price(item,amount)

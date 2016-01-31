@@ -56,8 +56,4 @@ class Operator
     message
   end
 
-
-
-
-
 end

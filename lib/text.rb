@@ -33,7 +33,7 @@ class Text
 
   def new_message
     reply
-    @replies[0].downcase
+    @replies[0].downcase.clone
   end
 
 
