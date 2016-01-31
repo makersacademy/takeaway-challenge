@@ -24,18 +24,18 @@ To start an order you will need to instantiate a new Order. When instantiated th
 
 An example of how you may create and finalize an order would be:
 
-  my_order = Order.new
+  - my_order = Order.new
 
-  my_order.add_to_order(:soup, 3, 4.50)
+  - my_order.add_to_order(:soup, 3, 4.50)
 
-  my_order.finalize_order
+  - my_order.finalize_order
 
 In the example above, a new order is instantiated and 3 soups with a price of £4.50 are added to the order. The price entered needs to be correct (based on those listed on the menu), otherwise an error will be shown to let you know the price is wrong. If the price is incorrect, the items will not be added to your order. By calling 'finalize_order', a text will be sent to confirm the order.
 
 You can also view current orders and total cost:
 
-  my_order.current_order => Displays the items in your current order
+  - my_order.current_order => Displays the items in your current order
 
-  my_order.total => Displays your current total cost
+  - my_order.total => Displays your current total cost
 
 -------------------------
