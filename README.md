@@ -33,6 +33,8 @@ I built a Restaurant class that handles orders, a Menu class that provides a has
 
 I used the dotenv ruby gem to prevent pushing sensitive info (auth keys, phone numbers etc) to github.
 
+I also added some feature tests to make sure the classes interacted with each other.
+
 The solution functions in IRB like so:
 
 `````

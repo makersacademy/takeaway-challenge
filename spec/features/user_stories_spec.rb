@@ -5,7 +5,6 @@ require 'text'
 describe 'User Stories' do
 
   let(:menu) {Menu.new}
-  let(:messager) {Text.new}
   let(:restaurant) {Restaurant.new}
 
   it 'Displays the menu' do
