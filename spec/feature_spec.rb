@@ -8,7 +8,7 @@ describe 'User stories' do
   #I would like to see a list of dishes with prices
   context 'to see a menu' do
     it 'returns a list of dishes with prices ' do
-    takeaway = Takeaway.new
+    takeaway = Takeaway.new(Messager.new)
       expect(takeaway.display_menu).to eq ({"chicken" =>3,
      "rice" =>1,
      "pizza" =>6,

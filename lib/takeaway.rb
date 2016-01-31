@@ -1,14 +1,17 @@
+require_relative 'messager'
+
 class Takeaway
 
   attr_reader :menu, :basket
 
 
-  def initialize
+  def initialize (messager)
     @menu = {"chicken" =>3,
      "rice" =>1,
      "pizza" =>6,
      "chips" =>2 }
     @basket = []
+    @messager = messager
   end
 
   def display_menu
@@ -16,6 +19,7 @@ class Takeaway
   end
 
   def select_dishes(dish, num)
+    fail "#{dish} is not on the menu" if @menu[dish].nil?
     @basket.push([dish, num])
   end
 
@@ -24,8 +28,17 @@ class Takeaway
     true
   end
 
+  def complete_order
+    send_text
+    @basket = [] #because after check-out I need to restart from scratch!
+    puts basket
+  end
 
-private
+  def send_text
+    @messager.send_text
+  end
+
+  private
   def sum
     total = 0
     @basket.each do |selection|
@@ -36,9 +49,5 @@ private
     end
   total
   end
-
-
-
-
 
 end
