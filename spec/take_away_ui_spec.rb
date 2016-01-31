@@ -74,7 +74,9 @@ end
     describe '#display' do
 
 
-      it {is_expected.to respond_to(:display)}
+      before do
+        allow(italian_menu).to receive(:each)
+      end
 
       it 'displays the dishes and prices of the ItalianMenu, defaulted to Dinner/Mains' do
         expect(menu.display).to eq default_menu_dinner_mains
@@ -99,10 +101,19 @@ end
 
     describe '#take_order' do
 
-      it {is_expected.to respond_to(:take_order)}
+      before do
+        allow(dummy_order).to receive(:add_to_basket)
+      end
+
 
       it 'instantiates a new order' do
-        expect(menu.take_order).to eq dummy_order
+        expect(dummy_order_klass).to receive(:new).and_return(dummy_order)
+        menu.take_order
+      end
+
+      it 'adds the order to basket' do
+        expect(dummy_order).to receive(:add_to_basket)
+        menu.take_order
       end
 
     end

@@ -13,6 +13,15 @@ attr_reader :user_input, :menu_choice, :basket, :basket_klass
     @basket = basket_klass
   end
 
+  def add_to_basket
+    selection = []
+    submission.each{|dish_quantity| selection << dish_quantity}
+    unless basket.is_a? basket_klass
+      @basket = basket.new(selection, menu_choice)
+    else
+      (@basket.selection << selection).flatten
+    end
+  end
 
   def process_order_dishes
     user_input.gsub(/\W/," ").split(" ").map!{|word| word.capitalize.to_sym}.keep_if{|meal| menu_choice.has_key? meal}
@@ -26,20 +35,6 @@ attr_reader :user_input, :menu_choice, :basket, :basket_klass
     process_order_dishes.zip(process_order_quantities)
   end
 
-  def add_to_basket
-    selection = []
-    submission.each{|dish_quantity| selection << dish_quantity}
-    if basket.is_a basket_klass
-      @basket = basket_klass.new(selection, menu_choice)
-    else
-      @basket.selection << selection
-    end
-  end
 
-  # selection << [dish, quantity]
-  # if @basket.self = Basket
-  #   @basket = basket.new(selection)
-  # else
-  #   @basket.selection << [dish, quantity]
-  # end
+
 end

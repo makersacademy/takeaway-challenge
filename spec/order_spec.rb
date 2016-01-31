@@ -67,43 +67,58 @@ describe Order do
 
   describe "#add_to_basket" do
     let(:dummy_selection) {[[:Carbonara, 2], [:Margherita, 1], [:Risotto, 1]]}
+    let(:dummy_selection2) {[[:Pasta, 2]]}
 
     before do
-      allow(dummy_basket_klass).to receive(:is_a).and_return(dummy_basket_klass)
+      allow(dummy_basket_klass).to receive(:is_a?).and_return false
       allow(dummy_basket_klass).to receive(:new).with(dummy_selection, menu_choice).and_return dummy_basket
-      order.add_to_basket
+      allow(dummy_basket).to receive(:selection)
     end
 
     it 'will initialize a new basket if one does not already exist' do
-      expect(order.basket).to eq dummy_basket
+      expect(dummy_basket_klass).to receive(:new).and_return(dummy_basket)
+      order.add_to_basket
     end
 
     it 'will add selection to the basket' do
-      allow(dummy_basket).to receive(:selection).and_return dummy_selection
-      expect(order.basket.selection).to eq dummy_selection
+      order.add_to_basket
+      expect(dummy_basket).to receive(:selection).and_return(dummy_selection)
+      order.basket.selection
     end
+
+    it 'will add selection2 to the basket' do
+      order.add_to_basket
+      expect(dummy_basket).to receive(:selection).and_return(dummy_selection2)
+      order.basket.selection
+    end
+
 
   context 'Adding to existing basket' do
 
     before do
-      allow(dummy_basket).to receive(:is_a).with(dummy_basket_klass).and_return false
-      allow(dummy_basket).to receive(:selection).and_return [[:Pasta, 2]]
+      allow(dummy_basket).to receive(:is_a?).with(dummy_basket_klass)
+      allow(dummy_basket).to receive(:new).with(dummy_selection, menu_choice)
+      allow(dummy_basket).to receive(:selection).and_return(dummy_selection)
       order.add_to_basket
     end
 
-    it 'will not initialize a new basket if one already exists' do
-      expect(order.basket).to eq dummy_basket
+    it 'will check that there is no basket there already' do
+      expect(dummy_basket).to receive(:is_a?).and_return true
+      order.add_to_basket
     end
 
+
+    it 'will not initialize a new basket if one already exists' do
+      expect(dummy_basket_klass).not_to receive(:new)
+      order.add_to_basket
+    end
 
 
     it 'will add selection to existing basket items' do
-      expect(order.basket.selection).to include [:Pasta, 2]
+      expect(dummy_basket).to receive(:selection).and_return dummy_selection2
+      order.basket.selection
     end
     #   expect {oystercard.touch_out(station_out)}.to change(oystercard, :balance).by(-penalty_fare)
-
-
-
 
 
     end

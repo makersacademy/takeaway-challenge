@@ -35,7 +35,9 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     p "What would you like to eat? Eg '2 Carbonara and a Tiramisu'"
     user_input = STDIN.gets.chomp
     @order = order.new(user_input, menu_choice)
+    order.add_to_basket
   end
+
 
   def select_dish(dish, quantity)
     if selection.empty?
