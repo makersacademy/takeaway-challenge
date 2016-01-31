@@ -1,7 +1,6 @@
 class Menu
   def initialize
     @dish_list = {
-      "hello" => 1,
       'cheeseburger' => 3.99,
       'fries' => 1.99,
       'nuggets' => 2.99,
@@ -11,7 +10,11 @@ class Menu
     }
   end
 
-  def display
+  def list
     @dish_list.dup
+  end
+
+  def price(item)
+    @dish_list[item]
   end
 end
