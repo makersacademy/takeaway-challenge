@@ -4,7 +4,7 @@ Mark Hill 31/1/2016
 ####Build software allowing users to view restaurant menus, place orders, and have orders confirmed by text message.
 
 ####Content:
-User interacts through 'Takeaway' class, which contains the following functionalities required through modules: 'Calculate', which calculates the price of the order; 'Menu_Print', which displays the menu; 'Order', which allows the customer to order; 'Mail', which sends the customer a confirmation text (currently disabled); and MenuList, which enables the user to set the menu of the takeaway.
+User interacts through 'Takeaway' class, which contains the following functionalities included through modules: 'Calculate', which calculates the price of the order; 'Menu_Print', which displays the menu; 'Order', which allows the customer to order; 'Mail', which sends the customer a confirmation text (currently disabled); and MenuList, which enables the user to set the menu of the takeaway.
 
 ####Example
 
