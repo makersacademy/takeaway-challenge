@@ -1,4 +1,4 @@
-Takeaway - Placing orders for a takeaway meal: V1.0
+Takeaway - Placing orders for a takeaway meal: V1.1 [![Build Status](https://travis-ci.org/MatDrake/takeaway-challenge.svg?branch=master)](https://travis-ci.org/MatDrake/takeaway-challenge)
 
 Author: Mat Drake
 
