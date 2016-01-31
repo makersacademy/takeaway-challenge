@@ -44,7 +44,4 @@ class Order
       end
     end
   end
-
-
-
 end
