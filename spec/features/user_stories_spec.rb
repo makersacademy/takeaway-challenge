@@ -1,7 +1,8 @@
 require 'takeaway'
 
 describe 'User Stories' do
-  let(:takeaway) { Takeaway.new(menu, order) }
+  let(:takeaway) { Takeaway.new(phone, menu, order) }
+  let(:phone) { Dotenv.load['TWILIO_PHONE'] }
   let(:menu) { Menu.new }
   let(:order) { Order.new }
 
@@ -37,5 +38,15 @@ describe 'User Stories' do
     dishes = {chicken_tikka_masala: 1, naan: 2}
     takeaway.select_dishes(dishes)
     expect{ takeaway.confirm_order(4) }.to raise_error 'Total number of dishes does not match. Please check again.'
+  end
+
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  it 'sends a text to confirm order and delivery time' do
+    dishes = {chicken_tikka_masala: 1, naan: 2}
+    takeaway.select_dishes(dishes)
+    expect(takeaway).to receive(:send_text)
+    takeaway.confirm_order(3)
   end
 end
