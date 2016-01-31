@@ -17,9 +17,9 @@ class Text
     @client = Twilio::REST::Client.new account_sid, auth_token
 
     @client.account.messages.create({
-    	:from => '+441442796264',
-    	:to => '+447931642696',
-      :body => body
+    	from: '+441442796264',
+    	to: '+447931642696',
+      body: body
     })
   end
 end

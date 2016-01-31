@@ -1,24 +1,17 @@
 require_relative 'menu'
-require_relative 'text'
 
 class Order
-  BLANKS = 29
 
-  attr_reader :current, :menu, :text
+  attr_reader :current, :menu
 
-  def initialize(menu,text=nil)
+  def initialize(menu)
     @menu = menu
-    @text = text
     @current = []
   end
 
-  def show_menu
-    puts menu.show
-  end
-
-  def select_dish(quantity,dish)
+  def add(dish,quantity=1)
     fail ArgumentError, 'Need to select how many you want' if quantity < 1
-    price_of_dish = dishes[dish]
+    price_of_dish = menu[dish]
     current << [quantity, dish, price_of_dish]
   end
 
@@ -27,32 +20,10 @@ class Order
   end
 
   def show_selection
-    ["Total sum for order is: #{show_sum}", current]
-  end
-
-  def place(value)
-    fail "Incorrect value - should be #{show_sum}" if value != show_sum
-    confirmation
-    show_selection
+    ["Total sum for order is: £#{show_sum}", current]
   end
 
   private
-
-  attr_reader :dishes
-
-  def dishes
-    menu.dishes
-  end
-
-  def deliver_time
-    (Time.now + (60*60)).strftime("%H:%M")
-  end
-
-  def confirmation
-    # Twilio number +441442796264
-    msg = "Thank you! Your order of #{show_sum} was placed and will be delivered before #{deliver_time}"
-    text.send_confirmation(msg) if text
-  end
 
   def calculate_price
     current.inject(0){|sum,selection| sum + (selection[0]*selection[2])}
