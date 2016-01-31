@@ -1,17 +1,19 @@
 class Menu
 
+attr_reader :pizza_menu, :list_menu
+
   def list_menu
     pizza_menu =
-      {'Margherita' => '£6',
-      'Funghi' => '£6.50',
-      'Fiorentina' => '£6.50',
-      'Formaggi' => '£6.50',
-      'Giardino' => '£6.50',
-      'Tropicali' => '£7',
-      'Reine' => '£7',
-      'Marino' => '£7.50',
-      'Pepporoni' => '£7.50',
-      'Carne' => '£7.50',
+      {'Margherita' => 6,
+      'Funghi' => 6,
+      'Fiorentina' => 6,
+      'Formaggi' => 6,
+      'Giardino' => 6,
+      'Tropicali' => 7,
+      'Reine' => 7,
+      'Marino' => 7,
+      'Pepporoni' => 7,
+      'Carne' => 7,
       }
     puts pizza_menu
   end
