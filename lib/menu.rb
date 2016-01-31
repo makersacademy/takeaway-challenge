@@ -7,14 +7,14 @@ class Menu
 
 SCREEN_WIDTH = 40
 
-attr_reader :selection, :cuisine_choice, :meal, :course, :order, :basket
-# :menu_choice
-# :order
+attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection
+
 
   def initialize(cuisine_choice=ItalianMenu, order=Order, basket=Basket)
     @cuisine_choice = cuisine_choice
     @basket = basket
     @order = order
+    @selection = []
   end
 
   def menu_choice(meal= :dinner, course= :all)
@@ -38,12 +38,19 @@ attr_reader :selection, :cuisine_choice, :meal, :course, :order, :basket
   end
 
   def select_dish(dish, quantity)
-    @basket = basket.new(dish, quantity)
+    selection << [dish, quantity]
+    if selection.size == 1
+      @basket = basket.new(selection)
+    else
+      @basket.selection << [dish, quantity]
+    end
   end
 
-
-
   private
+
+  def create_basket
+    @basket = basket.new(selection)
+  end
 
   def meal_choice_valid?
     meal == :dinner || meal == :lunch
@@ -51,6 +58,10 @@ attr_reader :selection, :cuisine_choice, :meal, :course, :order, :basket
 
   def course_choice_valid?
     [:starter, :main, :dessert, :all].include? course
+  end
+
+  def create_basket
+    @basket = basket.new(selection)
   end
 
 end

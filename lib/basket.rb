@@ -2,16 +2,18 @@
 
 class Basket
 
-@basket_items
+attr_reader :selection
 
-  def initialize(dish, quantity)
-    @basket_items = [dish, quantity]
+  def initialize(selection)
+    @selection = []
   end
 
   # def review_order
   #   @order.process_order
   #
   # end
+
+
 
 
 end

@@ -11,9 +11,9 @@ attr_reader :user_input, :menu_choice, :meal_quantities, :meal_selection, :curre
   end
 
 
-  def process_order
+  def process_order_dishes
     @meal_quantities = user_input.gsub(/\D/,"").split("").map!{|number| number.to_i}
-    @meal_selection = user_input.gsub(/\W/," ").split(" ").map!{|word| word.capitalize.to_sym}.keep_if{|meal| menu_choice.has_key? meal}
+    @dish_selection = user_input.gsub(/\W/," ").split(" ").map!{|word| word.capitalize.to_sym}.keep_if{|meal| menu_choice.has_key? meal}
     meal_selection.zip(meal_quantities)
   end
 

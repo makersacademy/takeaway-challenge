@@ -40,6 +40,14 @@ end
       expect(menu.basket).to eq dummy_basket_klass
     end
 
+    it 'has a selection array' do
+      expect(menu.selection).to be_a Array
+    end
+
+    it 'has an empty selection array as default' do
+      expect(menu.selection).to be_empty
+    end
+
   end
 
   context "Choosing and displaying menus" do
@@ -78,12 +86,15 @@ end
 
   context 'Submiting orders by text or selecting and adding to basket individually' do
     let(:test_order) {"2 carbonara, 1 tiramisu and I dunno"}
+    let(:selection1) {["Cake",3]}
+    let(:selection2) {["Tiramisu", 1]}
+
 
     before do
       allow(STDOUT).to receive(:p).with("What would you like to eat?")
       allow(STDIN).to receive(:gets).and_return(test_order)
       allow(dummy_order_klass).to receive(:new).with(test_order, default_menu_dinner_mains).and_return(dummy_order)
-      allow(dummy_basket_klass).to receive(:new).with(dish, quantity).and_return(dummy_basket)
+      allow(dummy_basket_klass).to receive(:new).with([selection1]).and_return(dummy_basket)
     end
 
     describe '#take_order' do
@@ -97,18 +108,40 @@ end
     end
 
   describe '#select_dish' do
-
       it {is_expected.to respond_to(:select_dish).with(2).arguments}
 
-      it 'instantiates a new basket' do
-        expect(menu.select_dish(dish, quantity)).to eq dummy_basket
+
+      before do
+        allow(dummy_basket).to receive(:selection).and_return([[selection1]])
+        allow(dummy_basket_klass).to receive(:new).with([menu.selection]).and_return(dummy_basket)
+        menu.select_dish("Cake", 3)
+      end
+
+      it 'puts dish selections into selection1 array' do
+        expect(menu.selection).to include selection1
+      end
+
+      it 'instantiates a new basket on first selection' do
+        expect(menu.basket).to eq dummy_basket
+      end
+
+      it 'puts dish selections into selection array' do
+        menu.select_dish("Tiramisu", 1)
+        expect(menu.selection).to include selection2
+      end
+
+      it 'does not instantiate a new basket on second selections' do
+        menu.select_dish("Tiramisu", 1)
+        expect(menu.basket).to eq dummy_basket
+      end
+
+      it 'selecting dishes increases the size of selection array' do
+        expect {menu.select_dish("Tiramisu", 1)}.to change{menu.selection.size}.by(1)
       end
 
     end
 
+
   end
 
 end
-
-# expect(dummy_journey).to receive(:finish).with(exit_station)
-# log.end_journey(exit_station)
