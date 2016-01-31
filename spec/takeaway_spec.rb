@@ -49,10 +49,10 @@ let(:confirmation) {double(:confirmation)}
     expect(takeaway.total).to eq "Total cost: £18"
     end
 
-   end
+  end
 
 
-   describe "#order_summary" do 
+  describe "#order_summary" do 
 
     it { should respond_to(:order_summary) }
 
@@ -63,8 +63,7 @@ let(:confirmation) {double(:confirmation)}
     summary = "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns, £10\n 2 x Salt & Pepper Squid, £8\n Total cost: £18\n"
     expect{ takeaway.order_summary }.to output(summary).to_stdout 
 
-    # expect(takeaway.order_summary).to include summary
-    end
+  end
   
   end
 
@@ -72,30 +71,30 @@ let(:confirmation) {double(:confirmation)}
 
     it { should respond_to(:place_order).with(1).arguments }
 
-   context "if payment amount does not match total amount" do
+  context "if payment amount does not match total amount" do
        
-       it "raises an error" do
-       allow(takeaway).to receive(:bill) {18}
-       message = "payment does not match total price, please try again"
-       expect{takeaway.place_order(14)}.to raise_error message
-       end
+    it "raises an error" do
+    allow(takeaway).to receive(:bill) {18}
+    message = "payment does not match total price, please try again"
+    expect{takeaway.place_order(14)}.to raise_error message
+    end
     
-   end
+  end
 
-    context "if payment matches total amount" do
+  context "if payment matches total amount" do
        
-       it "sends thank you message" do
-       allow(takeaway).to receive(:bill) {18}
-       allow(takeaway).to receive(:one_hours_time) {"20:00"}
-       thank_you_message ="Thank you! Your order was placed and will be delivered before 20:00"
-       allow(takeaway).to receive(:send_message) {(thank_you_message)}
-       expect(takeaway.place_order(18)).to eq thank_you_message
-       end
+    it "sends thank you message" do
+    allow(takeaway).to receive(:bill) {18}
+    allow(takeaway).to receive(:one_hours_time) {"20:00"}
+    thank_you_message ="Thank you! Your order was placed and will be delivered before 20:00"
+    allow(takeaway).to receive(:send_message) {thank_you_message}
+    expect(takeaway.place_order(18)).to eq thank_you_message
+    end
     
-   end
+  end
 
 
-   end
+  end
 
 
 
