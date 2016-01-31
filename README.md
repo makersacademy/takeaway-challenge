@@ -1,6 +1,19 @@
 Takeaway Challenge
 ==================
 
+My takeaway challenge submission allows you to read a menu, add items from the menu to your order, check your order, check the total cost of the order and pay. When payment is made, a text message will be sent to your phone confirming your order and guarantee an hour from when the payment was made.
+
+	2.2.3 :001 > require './lib/takeaway'
+	2.2.3 :002 > takeaway = TakeAway.new
+	2.2.3 :003 > takeaway.read_menu
+	2.2.3 :004 > takeaway.add_item_to_order(item, quantity)
+	2.2.3 :006 > takeaway.order
+	2.2.3 :005 > takeaway.total_cost
+	2.2.3 :007 > takeaway.pay(amount)
+
+	Will send SMS confirming order with Time.now + 1 hour
+	
+
 Instructions
 -------
 
