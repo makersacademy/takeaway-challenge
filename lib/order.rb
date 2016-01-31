@@ -5,37 +5,36 @@ require_relative 'menu.rb'
 
 class Order
 
-attr_reader :user_order, :place_order, :quantity
+attr_reader :basket, :balance
 
-  def initialize
-    @user_order = []
-    @basket = Hash.new([0.0])
-    @menu = Menu.new
-  end
-
-  # def basket
-  #   @basket.dup
-  # end
-  #this works but query best for price?
-
-  def price(item)
-  fail 'Item not in menu!' unless !!@menu_contents.include?(item)
-  @menu_contents[item]
+  def initialize(menu_klass = Menu)
+    @menu_klass = menu_klass
+    @basket = {}
+    @balance = 0.00
   end
 
   def place_order(item, quantity = 1)
-    # fail "please order from menu" if !@menu.public_menu_contents.keys.include?(item)
-    quantity += @basket[item].first
-    @basket[item] = quantity, quantity * price(item)
-  end
-    # user_order << {item: item, quantity: quantity}
-
-  def bill
-   @basket.inject(0) { |sum, (_item, (_quantity, subtotal))| sum + subtotal }
+    fail "please order from menu" if !@menu.public_menu_contents.keys.include?(item)
+    basket << [item, quantity]
   end
 
+#I want to access my menu_contents hash and return their price(value).
+# I then want to multiply them by the quantity in place_order method.
+  def cost
+    basket.each{|item|.price} * place_order.each{|item|.quantity}
+    total = += balance
+  end
+
+#I want to do an integer check
+  def check_total
+    if cost/menu_contents.sum[value] == integer
+      true
+    else
+      false
+  end
 
 end
+
 
 # THE SUPER LONG ORDER
     # def take_order
