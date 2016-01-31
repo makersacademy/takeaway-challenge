@@ -15,6 +15,7 @@ class Order
   end
   
   def current_order
+    @current_order = ''
     format_basket
     @current_order
   end
@@ -23,13 +24,12 @@ class Order
   
   def format_basket
     @basket.each do |dish, quantity|
-       order_list(dish, quantity)
-       @basket.delete(dish)
+       @current_order << order_list(dish, quantity)
     end
   end
   
   def order_list(dish, quantity)
-    @current_order << dish + " x" + quantity.to_s + ":" + " £" + "%.2f" %(price(dish) * quantity) + "\n"
+    "#{dish} x#{quantity}: £%.2f" % (price(dish) *quantity) + "\n"
   end
   
   def add_to_total(dish, quantity) 
