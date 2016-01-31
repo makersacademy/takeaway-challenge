@@ -8,8 +8,8 @@ describe 'User Stories' do
   let(:restaurant) {Restaurant.new}
 
   before do
-    restaurant.add_item("Bread", 2)
-    restaurant.add_item("Chicken Tagine", 4)
+    restaurant.add_item "Bread", 2
+    restaurant.add_item "Chicken Tagine", 4
   end
 
   it 'Displays the menu' do
@@ -34,12 +34,12 @@ describe 'User Stories' do
   end
 
   it 'allows a customer to remove items' do
-    restaurant.remove_item("Bread")
-    expect(restaurant.order_summary).to eq('4 x Chicken Tagine = £20.00')
+    restaurant.remove_item "Bread"
+    expect(restaurant.order_summary).to eq '4 x Chicken Tagine = £20.00'
   end
 
   it 'raises an error when an item is not in the order' do
-    expect{restaurant.remove_item("Cheese")}.to raise_error 'No such item in your order'
+    expect{restaurant.remove_item "Cheese" }.to raise_error 'No such item in your order'
   end
 
   it 'allows a user to see an order total' do
@@ -47,7 +47,7 @@ describe 'User Stories' do
   end
 
   it 'raises an error if the wrong payment amount is submitted' do
-    expect{restaurant.place_order(7.00)}.to raise_error 'Wrong payment amount'
+    expect{restaurant.place_order 7.00 }.to raise_error 'Wrong payment amount'
   end
 
 end
