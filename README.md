@@ -1,78 +1,39 @@
-Takeaway Challenge
-==================
+##TAKEAWAY CHALLENGE
+Mark Hill 31/1/2016
 
-Instructions
--------
+####Build software allowing users to view restaurant menus, place orders, and have orders confirmed by text message.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+####Content:
+User interacts through 'Takeaway' class, which contains the following functionalities required through modules: 'Calculate', which calculates the price of the order; 'Menu_Print', which displays the menu; 'Order', which allows the customer to order; 'Mail', which sends the customer a confirmation text (currently disabled); and MenuList, which enables the user to set the menu of the takeaway.
 
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+####Example
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+2.2.3 :001 > require './lib/takeaway.rb'
+ => true 
+2.2.3 :002 > shop = Takeaway.new
+ => #<Takeaway:0x007fecdba6c2a8 @menu={:Hamburger=>4.5, :Cheeseburger=>4.6, :Chips=>1.0}> 
+2.2.3 :003 > wine_shop = Takeaway.new :wine
+ => #<Takeaway:0x007fecdba5de10 @menu={:red=>3.0, :white=>3.0, :blue=>10.0}> 
+2.2.3 :004 > shop.show_menu
+Menu:
+Hamburger. Price: £4.50
+Cheeseburger. Price: £4.60
+Chips. Price: £1.00
+ => {:Hamburger=>4.5, :Cheeseburger=>4.6, :Chips=>1.0} 
+2.2.3 :005 > shop.order
+Enter the name of the dish. (Enter q to quit)
+Hamburger
+Enter the quantity you require. (Enter q to quit)
+1
+You entered 1, is that correct? Enter y to continue with your order
+y
+Order completed
+If you wish to complete your order press y; press any other key to place another order.
+y
+ => [[:Hamburger], [1], [4.5]] 
+2.2.3 :006 > shop.confirm_order
+"The message has been sent"
+ => "The message has been sent" 
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
