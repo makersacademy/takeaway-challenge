@@ -1,13 +1,14 @@
 require_relative 'menu.rb'
+require_relative 'order.rb'
 
 class Takeaway
 
-attr_accessor :current_order
-
+attr_accessor :final_order
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @current_order = Hash.new(0)
+    @order = Order.new
+    @final_order = Hash.new(0)
   end
 
   def show_menu
@@ -16,18 +17,14 @@ attr_accessor :current_order
 
   def order(dish, number=1)
     if @menu.menu_list.include? dish
-    @current_order[dish] += number
-    "#{dish}: #{number}"
-  end
+        @order.take_order(dish, number, @menu)
+    end
   end
 
   def basket
-    @s = ""
-    @current_order.select do |dish, number|
-         @s << "#{dish} * #{number}, "
-    end
-    @s
+    @order.basket
   end
+
 
   private
 

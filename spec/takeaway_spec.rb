@@ -14,16 +14,16 @@ describe Takeaway do
 
   describe '#order' do
     it 'orders items from the menu' do
-      expect(takeaway.order("chicken", 2)).to eq "chicken: 2"
+      order_result = "2 * chicken added to your order "
+      expect(takeaway.order("chicken", 2)).to eq order_result
     end
   end
 
   describe '#basket' do
     it 'returns a string to the client showing their order' do
       takeaway.order("chicken", 2)
-      expect(takeaway.basket).to eq "chicken * 2, "
+      expect(takeaway.basket).to eq "chicken * 2 for $31.0, "
     end
   end
-
 
 end
