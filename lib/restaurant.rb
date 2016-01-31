@@ -25,8 +25,8 @@ class Restaurant
     new(OrderDispatch.new)
   end
 
-  def initialize(order_dispatch)
-    @menu     = MENU
+  def initialize(order_dispatch, menu = MENU)
+    @menu     = menu
     @dispatch = order_dispatch
   end
 
