@@ -16,8 +16,8 @@ describe Order do
   describe '#basket' do
     it 'returns a string to the client showing their order' do
       order.take_order("chicken", 2, menu)
-      test_order = "Your order summary is: \nchicken * 2 for $30,\nTotal = 30"
-      expect(order.basket).to eq test_order
+      test_order = "Your order summary is: \nchicken * 2 for $30,\nTotal = 30\n"
+      expect{order.basket}.to output(test_order).to_stdout
     end
   end
 end

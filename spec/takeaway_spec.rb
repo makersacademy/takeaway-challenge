@@ -26,8 +26,8 @@ describe Takeaway do
   describe '#basket' do
     it 'returns a string to the client showing their order' do
       takeaway.order("chicken", 2)
-      test_order = "Your order summary is: \nchicken * 2 for $30,\nTotal = 30"
-      expect(takeaway.basket).to eq test_order
+      test_order = "Your order summary is: \nchicken * 2 for $30,\nTotal = 30\n"
+      expect{ takeaway.basket}.to output(test_order).to_stdout
     end
   end
 

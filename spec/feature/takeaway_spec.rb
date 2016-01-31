@@ -29,14 +29,18 @@ describe 'User Stories' do
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
   it 'allows a customer to check prices before finalising the order' do
+
+
     menu = Menu.new
     menu.add("Chicken", 15)
     menu.add("Beef", 20)
     takeaway = Takeaway.new(menu)
     takeaway.order("Beef", 2)
     takeaway.order("Chicken", 2)
-    test_order = "Your order summary is: \nBeef * 2 for $40,\nChicken * 2 for $30,\nTotal = 70"
-    expect(takeaway.basket).to eq test_order
+    test_order = "Your order summary is: \nBeef * 2 for $40,\nChicken * 2 for $30,\nTotal = 70\n"
+    expect{ takeaway.basket}.to output(test_order).to_stdout
+
+
   end
 
   # As a customer

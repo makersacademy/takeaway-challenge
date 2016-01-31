@@ -31,7 +31,7 @@ class Order
          @s << "#{dish} * #{@basket[dish]} for $#{number},\n"
       end
     @s << "Total = #{@total}"
-    @s
+    puts @s
   end
 
   def order_taker(dish, number)
