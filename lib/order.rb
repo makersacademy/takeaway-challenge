@@ -20,11 +20,6 @@ class Order
     update_order(order, price)
   end
 
-  def update_order(order, price)
-    @current_order << order
-    update_total(price)
-  end
-
   def total
     "£#{@total}"
   end
@@ -46,6 +41,11 @@ class Order
 
   def on_menu?(item)
     self.view_menu.has_key?(item.downcase)
+  end
+
+  def update_order(order, price)
+    @current_order << order
+    update_total(price)
   end
 
 end
