@@ -1,3 +1,4 @@
+```
 michaelcollins at Michaels-MacBook-Pro-2 in ~/projects/takeaway-challenge on master*
 $ pry
 [1] pry(main)> require './lib/takeaway'
@@ -38,4 +39,5 @@ RuntimeError: Total is not correct, please try again
 from /Users/michaelcollins/Projects/takeaway-challenge/lib/takeaway.rb:27:in `confirm_order'
 [9] pry(main)> t.confirm_order(19)
 => "Thanks for your order, it will be delivered by 19:24"
-[10] pry(main)> 
+[10] pry(main)>
+```
