@@ -34,6 +34,7 @@ I used the dotenv ruby gem to prevent pushing sensitive info (auth keys, phone n
 The solution functions in IRB like so:
 
 `````
+
 [4] pry(main)> uncle_alis = Restaurant.new
 => #<Restaurant:0x007fc5f23aac68
  @menu=
@@ -61,10 +62,11 @@ from /Users/seanhawkridge/Dropbox/Dev/takeaway-challenge/lib/restaurant.rb:22:in
 [11] pry(main)> uncle_alis.order_total
 => "Order Total: £19.00"
 [12] pry(main)> uncle_alis.place_order(18.00)
-RuntimeError: Wrong payment ammount
+RuntimeError: Wrong payment amount
 from /Users/seanhawkridge/Dropbox/Dev/takeaway-challenge/lib/restaurant.rb:42:in `place_order'
 [13] pry(main)> uncle_alis.place_order(19.00)
 => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC419b01a364d7474cd3f99212ea942b70/Messages/SM29c9ac2bb3c246a1bc5dfaf7d4d1aa14>
 [14] pry(main)>
+
 
 `````
