@@ -1,8 +1,10 @@
 require 'takeaway'
 
+TEST_PRICE = 1.99
+
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double(:menu, list: { 'fries' => 1.99 }) }
+  let(:menu) { double(:menu, list: { 'fries' => TEST_PRICE }) }
 
   describe '#basket' do
     it 'starts with an empty basket' do
@@ -27,9 +29,35 @@ describe Takeaway do
       takeaway.order('fries')
       expect(takeaway.basket).to include 'fries'
     end
+
+    it 'increases quantity to existing item to basket' do
+      quantity = 2
+      quantity.times { takeaway.order('fries') }
+      expect(takeaway.basket['fries']).to eq quantity
+    end
+
+    it 'adds specific quantity of item to basket' do
+      quantity = 3
+      takeaway.order('fries', quantity)
+      expect(takeaway.basket['fries']).to eq quantity
+    end
+  end
+
+  # TODO: quantity less than 1?
+  # TODO: remove item method?
+
+  describe '#bill' do
+    it 'returns the calculated bill' do
+      quantity = 2
+      total = TEST_PRICE * quantity
+      takeaway.order('fries', quantity)
+      expect(takeaway.bill).to eq total
+    end
   end
 
   # describe '#checkout' do
-  #
+    # it 'raises error if estimated and actual total is not matching' do
+    #   expect { takeaway.checkout }
+    # end
   # end
 end
