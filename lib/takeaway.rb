@@ -29,7 +29,7 @@ class Takeaway
 
   def complete_order
     send_text
-    @basket = Order.new(@menu) #because after check-out I need to restart from scratch!
+    @basket = Order.new(@menu)
   end
 
   def send_text

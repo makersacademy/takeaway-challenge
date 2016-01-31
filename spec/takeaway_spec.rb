@@ -6,7 +6,7 @@ RSpec.describe Takeaway do
      "rice" =>1,
      "pizza" =>6,
      "chips" =>2 }
-   }
+  }
 
 
   subject(:takeaway)  {described_class.new(menu, messager)}
@@ -24,8 +24,7 @@ RSpec.describe Takeaway do
       expect(takeaway.display_menu).to eq ({"chicken" =>3,
      "rice" =>1,
      "pizza" =>6,
-     "chips" =>2 }
-     )
+     "chips" =>2 })
     end
 
     it {is_expected.to respond_to(:select_dishes).with(2).arguments}

@@ -7,10 +7,10 @@ RSpec.describe Menu do
   it {is_expected.to respond_to(:show_menu)}
 
   it 'lists the items if show_menu is called' do
-    expect(menu.show_menu).to eq({"chicken" =>3,
+    expect(menu.show_menu).to eq("chicken" =>3,
     "rice" =>1,
     "pizza" =>6,
-    "chips" =>2 })
+    "chips" =>2)
   end
 
 
