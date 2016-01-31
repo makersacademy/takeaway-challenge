@@ -34,7 +34,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 ##Using the program should play out something like this in irb:
-
+'''
 > menu = Menu.new
   => #<Menu:0x007fa23202d998 @menu_list={}>
 
