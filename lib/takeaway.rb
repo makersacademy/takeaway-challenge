@@ -5,7 +5,7 @@ class Takeaway
 attr_reader :your_order
 
  def view_menu
-  Menu.new.menu_layout
+  Menu.new.menu
  end
 
  def make_order(order_hash, exact_total)

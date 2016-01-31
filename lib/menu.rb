@@ -1,9 +1,9 @@
 class Menu
 
-attr_reader :menu_layout
+  attr_reader :menu
 
   def initialize
-    @menu_items = {"Chicken Noodle Soup" => '3.50',
+    @menu = {"Chicken Noodle Soup" => '3.50',
            "Burger and Fries" => '6',
            "Chicken Tikka Madras" => '7',
            "Fresh Caesar Salad" => '5.50',
@@ -11,11 +11,4 @@ attr_reader :menu_layout
            "Singapore Style Noodles" => '4.50',
            }
   end
-
-  private
-
-  def menu_layout
-  @menu_items.each {|k, v| puts "#{k} = £#{v} \n"}
-  end
-
 end
