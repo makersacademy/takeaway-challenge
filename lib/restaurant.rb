@@ -4,12 +4,13 @@ require_relative 'menu.rb'
 
 class Restaurant
 
-  attr_reader :menu, :order, :messager
+  attr_reader :menu, :order, :messager_klass
 
-  def initialize(menu = Menu.new, messager = Text)
+  def initialize(menu = Menu.new, messager_klass = Text)
     @menu = menu
-    @messager = messager
+    @messager_klass = messager_klass
     @order = {}
+    @messager = nil
   end
 
   def display_menu
@@ -38,7 +39,8 @@ class Restaurant
 
   def place_order(payment)
     fail 'Wrong payment amount' unless payment == order_calc.to_f
-    messager.new.send_message(confirmation_message)
+    @messager = messager_klass.new
+    @messager.send_message(confirmation_message)
   end
 
   private
