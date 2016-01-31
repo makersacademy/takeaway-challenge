@@ -1,41 +1,56 @@
+require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
+
 class Takeaway
 
-  attr_reader :current_order
+  attr_reader :current_order, :order
 
   def initialize(menu = Menu.new)
+    ### Begin Twilio-API Setup
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    ### End Twilio-API Setup
     @dishes = menu.dishes
-    @current_order = {}
-    @total = 0
+    @menu = menu
+    @order = Order.new(@menu)
+    @output = Output.new(@order, @dishes)
   end
 
   def show_menu
-    @dishes
+    @output.show_menu
   end
 
-  def order(dish, quantity = 1)
-    raise 'Dish not available: not part of the menu' unless @dishes.include?(dish)
-    @current_order.merge!({ dish => quantity })
-    end
+  def show_total
+    @output.show_total
+  end
 
   def show_basket
-    line_width = 80
-    @total = 0
-    puts "~ Basket ~".center(line_width)
-    puts ""
-    @current_order.each do |key, value|
-      if value > 1
-        puts "#{key} x #{value}".ljust(line_width/2) + "@#{money_format(@dishes[key])} each = £#{money_format(@dishes[key] * value)}".rjust(line_width/2)
-        @total += (@dishes[key] * value)
-      else
-        puts "#{key} x #{value}".ljust(line_width/2) + "£#{money_format(@dishes[key])}".rjust(line_width/2)
-        @total += (@dishes[key] * value)
-      end
-    end
-    puts ""
-    puts "Total: £#{money_format(@total)}".rjust(line_width)
+    @output.show_basket
   end
 
-  def money_format(number)
-    sprintf('%.2f', number)
+  def add(dish, quantity = 1)
+    @order.add_to_order(dish, quantity)
   end
+
+  def checkout(sum)
+    @order.complete_order(sum)
+    send_text_confirmation
+  end
+
+  private
+
+  def send_text_confirmation
+    @message = @client.messages.create(
+      to: ENV['TO'],
+      from: ENV['FROM'],
+      body: "Thank you! Your order was placed and will be delivered before #{ Time.new.hour+1 }:#{ add_zero(Time.new.min.to_s) }."
+    )
+  end
+
+  def add_zero(num)
+    num.to_i > 9 ? num : "0#{ num }"
+  end
+
 end

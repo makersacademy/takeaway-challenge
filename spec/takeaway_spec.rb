@@ -1,4 +1,6 @@
 require 'takeaway'
+require 'order'
+require 'output'
 
 describe Takeaway do
 
@@ -17,15 +19,24 @@ describe Takeaway do
     expect(takeaway.show_menu).to include("Spam")
   end
 
-  it 'allows the user to order a dish from the menu' do
-    expect(takeaway).to respond_to(:order).with(1).argument
+  it 'allows the customer to order a dish from the menu' do
+    expect(takeaway).to respond_to(:add).with(1).argument
   end
 
-  it 'should raise an error if ordered dish is not on the menu' do
-    expect{ takeaway.order("Pizza") }.to raise_error 'Dish not available: not part of the menu'
+  it 'should raise an error if the ordered dish is not from the menu' do
+    expect{ takeaway.add("Pizza") }.to raise_error 'Dish not available: not part of the menu'
   end
 
   it 'allows the customer to check the basket and total price' do
     expect(takeaway).to respond_to(:show_basket)
+  end
+
+  it 'allows the customer to submit a total to the checkout' do
+    expect(takeaway).to respond_to(:checkout).with(1).argument
+  end
+
+  it 'raises an error if the incorrect payment is submitted' do
+    takeaway.add("Spam", 5)
+    expect { takeaway.checkout(6) }.to raise_error 'Payment error: incorrect payment submitted'
   end
 end
