@@ -45,7 +45,7 @@ class Order
     args.each do |dish|
       quantity, *dish_name = dish.split(' ')
       dish_sym = dish_name.join('_').downcase.to_sym
-      message = "Sorry, we do not have #{dish_name.join(' ').capitalize}" \
+      message = "Sorry, we do not have #{dish_name.join(' ').capitalize} " \
       'on our menu.'
       fail message unless MENU.keys.include?(dish_sym)
       order_hash[dish_sym] = quantity.to_i

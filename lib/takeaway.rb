@@ -2,7 +2,7 @@ require_relative 'order_dispatch'
 
 class Takeaway
   # Welcome to The Kaiser Chefs, how can we help?
-  # Menu inspired by Dishoom. I recommend the Chicken Ruby.
+  # Our menu is inspired by Dishoom, I recommend the Chicken Ruby.
   MENU = {
     far_far:            2.5,
     samosas:            4,
