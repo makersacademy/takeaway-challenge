@@ -9,7 +9,7 @@ class Takeaway
     mattar_paneer:      6.5,
     chicken_ruby:       8,
     masala_prawns:      9,
-    vegetable_biryani:  7.5,
+    biryani:            7.5,
     naan:               2.5,
     roti:               2.5,
     basmati_rice:       2,
@@ -21,25 +21,26 @@ class Takeaway
   }
 
   # IDEA: order_log and/or despatcher
-  def initialize(order_klass = Order)
+  def initialize(order_klass = ::Order)
     @order_klass = order_klass
     @order = nil
   end
 
   def view_menu
     MENU.each do |k, v|
-      puts k.to_s.gsub(/_/, ' ').capitalize + ': £' + v.to_s
+      printf "%-15s %15s\n", "#{k.to_s.gsub(/_/, ' ').capitalize}:", "£#{v.to_s}"
     end
   end
 
-  def place_order(*dishes, total)
-    @order = @order_klass.new(parse_dishes(*dishes, total))
+  def place_order(*dishes)
+    @order = @order_klass.new(parse_dishes(*dishes))
   end
 
   private
 
-  def parse_dishes(*dishes, total)
+  def parse_dishes(*dishes)
     dish_hash = {}
+
     dishes.each do |dish|
       quantity, *dish_name = dish.split(' ')
       dish_sym = dish_name.join('_').downcase.to_sym
@@ -47,11 +48,7 @@ class Takeaway
       fail message unless MENU.keys.include?(dish_sym)
       dish_hash[dish_sym] = quantity.to_i
     end
-    
-    message = 'Please include the total price as a number at the end of ' \
-    'your order.'
-    fail message unless total.is_a? Numeric
-    dish_hash[:total] = total
+
     dish_hash
   end
 end
