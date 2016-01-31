@@ -5,7 +5,7 @@ describe Takeaway do
 subject(:takeaway) {described_class.new}
 let(:dish1) {double(:dish1)} 
 let(:dish2) {double(:dish2)} 
-
+let(:confirmation) {double(:confirmation)}
 
   describe "#list_menu" do 
     it "displays a list of items and prices" do 
@@ -60,13 +60,15 @@ let(:dish2) {double(:dish2)}
     takeaway.select_item("Roast Pork Belly Hirata Buns")
     takeaway.select_item("Salt & Pepper Squid",2)
     takeaway.select_item("Roast Pork Belly Hirata Buns")
-    summary = "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns, £10\n 2 x Salt & Pepper Squid, £8\n Total cost: £18"
-    expect(takeaway.order_summary).to include summary
+    summary = "Your order summary is:\n 2 x Roast Pork Belly Hirata Buns, £10\n 2 x Salt & Pepper Squid, £8\n Total cost: £18\n"
+    expect{ takeaway.order_summary }.to output(summary).to_stdout 
+
+    # expect(takeaway.order_summary).to include summary
     end
   
   end
 
-  describe "#place_summary" do 
+  describe "#place_order" do 
 
     it { should respond_to(:place_order).with(1).arguments }
 
@@ -80,14 +82,14 @@ let(:dish2) {double(:dish2)}
     
    end
 
-      context "if payment matches total amount" do
+    context "if payment matches total amount" do
        
        it "sends thank you message" do
        allow(takeaway).to receive(:bill) {18}
        allow(takeaway).to receive(:one_hours_time) {"20:00"}
        thank_you_message ="Thank you! Your order was placed and will be delivered before 20:00"
-       allow(takeaway).to receive(:send_confirmation) {thank_you_message}
-        expect(takeaway.place_order(18)).to eq thank_you_message
+       allow(takeaway).to receive(:send_message) {(thank_you_message)}
+       expect(takeaway.place_order(18)).to eq thank_you_message
        end
     
    end

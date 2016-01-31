@@ -3,15 +3,12 @@ require './lib/messaging'
 
 class Takeaway
 
-include Message
-
 attr_reader :order, :bill
 
 	def initialize
 	@menu = Menu.new
 	@dishes = @menu.dishes
 	@order = []
-	@bill = 0
 	end
 
 	def list_menu
@@ -29,13 +26,13 @@ attr_reader :order, :bill
 	end
 
 	def order_summary
-    "Your order summary is:\n#{subtotal_of_items}\n Total cost: £#{bill}"
+    puts "Your order summary is:\n#{subtotal_of_items}\n Total cost: £#{bill}"
 	end
 
 
 	def place_order(amount)
 	raise "payment does not match total price, please try again" if incorrect_total(amount)
-	send_confirmation
+	send_message
 	end
 
 
@@ -89,4 +86,8 @@ pretty_menu = ""
 pretty_menu.chomp
 end
 
+def send_message
+@confirmation = Message.new
+@confirmation.text_message
+end
 

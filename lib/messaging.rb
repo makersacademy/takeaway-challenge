@@ -1,9 +1,9 @@
 require 'twilio-ruby'
 require './lib/takeaway'
 
-module Message
+class Message
 
-	def send_confirmation
+	def text_message
 
 	accountSID = 'AC057ecd456cd3493339ba8c2de10350a0'
 	authToken= '2e8be36624c5fda0f464b1ae086c2770'
