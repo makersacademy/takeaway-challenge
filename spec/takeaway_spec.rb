@@ -25,6 +25,18 @@ describe Takeaway do
     expect(takeaway.basket).to eq ({"soup"=>4})
   end
 
+  it "remove completely dish from the basket by #correct_order" do
+    takeaway.order("soup",3)
+    takeaway.correct_order("soup",4)
+    expect(takeaway.basket).to eq ({})
+  end
+
+  it "remove quantity of dish from the basket by #correct_order" do
+    takeaway.order("soup",3)
+    takeaway.correct_order("soup",2)
+    expect(takeaway.basket).to eq ({"soup"=>1})
+  end
+
   it "so customer can verufy the order by see sum of dishes" do
     takeaway.order("soup",3)
     takeaway.order("soup")
@@ -37,6 +49,12 @@ describe Takeaway do
     takeaway.order("soup")
     takeaway.order("olives",2)
     expect(takeaway.total).to eq "Total: £18.60"
+  end
+
+  it "so customer can #complete_order" do
+    allow(takeaway).to receive(:delivery_time).and_return(:value)
+    message = "Thank you! Your order was placed and will be delivered before #{takeaway.delivery_time}"
+    expect(takeaway.complete_order).to eq message
   end
 
 
