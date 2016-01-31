@@ -1,61 +1,35 @@
-t = Takeaway.new      creates new takeaway, which
-                      automatically spawns a new menu
-                      complete with dishes to read
+==PROGRAM INSTRUCTIONS==
 
-t.read_menu           shows hash of dishes & prices
+pizza = Menu.new
 
-t.order 'egg', 4     orders 4 eggs and puts in basket
-                     with confirmation
+- Creates a pizza menu
 
-t.basket_summary     shows '4x eggs = £2.65, 2x bread
-                    = £1.05'
+pizzahut = Takeaway.new(pizza)
 
-t.total               shows total order price '
-                      Total: £5.00'
+- Creates new takeaway with pizza menu
 
-c.checkout            sends order and confirmation
-                      text message via Twilio
+pizzahut.show_menu
+pizza.price('pizza')
 
-----------
+- Show the menu and prices
+- Show individual item price
 
+pizzahut.order 'chicken', 4
 
-Classes
+- Orders 4 chickens & confirms  
 
-Takeaway - calls a new menu, completes/finalises order
-Menu - sets menu and prices
-Order - allows user to compile and send order
+pizzahut.basket_summary    
 
------------
+- Gives order overview
 
+pizzahut.reset
 
-1.
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+- Reset order and start again
 
-- restaurant, menu, dishes, prices
-- check menu & prices
+pizzahut.check_total
 
-2.
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+- Checks balance of order matches sum of products
 
-- order, dishes, shopping trolley / basket
-- select, add to basket/trolley
+pizza_hut.complete_order
 
-3.
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-- order, total price
-- add prices of items together, verify sum matches total
-
-4.
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-
-- text message, order time
-- send text message to user,
+- Completes order, confirms with text message
