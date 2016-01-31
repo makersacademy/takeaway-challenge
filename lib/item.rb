@@ -2,13 +2,18 @@ class Item
 
   attr_reader :price
 
-  def initialize(name, price)
+  def initialize(name, price, reference)
     @name = name
     @price = price
+    @reference = reference
   end
 
   def name
     @name.clone
+  end
+
+  def reference
+    @reference.clone
   end
 
 end
