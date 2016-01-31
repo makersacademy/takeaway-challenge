@@ -48,15 +48,15 @@ describe Order do
 
   context "when placing orders" do
     it "has an empty hash for a new order" do
-      expect(order.current_order).to eq ({})
+      expect(order.current_order).to eq []
     end
 
     it "can accept an item for an order (starter), specifying quantity and price" do
-      expect{order.add_to_order(:soup, 3, 4.50)}.to change{order.current_order}.to ({:soup => 3})
+      expect{order.add_to_order(:soup, 3, 4.50)}.to change{order.current_order}.to [["3 x soup = £4.5"]]
     end
 
     it "can accept an item for an order (main), specifying quantity and price" do
-      expect{order.add_to_order(:lobster, 5, 40)}.to change{order.current_order}.to ({:lobster => 5})
+      expect{order.add_to_order(:lobster, 5, 40)}.to change{order.current_order}.to [["5 x lobster = £40"]]
     end
 
     it "won't accept items not on the menu" do
@@ -75,11 +75,11 @@ describe Order do
     end
 
     it "can view items in an order and the quantity of each" do
-      expect(order.current_order).to eq ({:soup=>3, :lobster=>2})
+      expect(order.current_order).to eq [["3 x soup = £4.5"], ["2 x lobster = £16"]]
     end
 
     it "can view the total cost of the order" do
-      expect(order.total).to eq 20.5
+      expect(order.total).to eq "£20.5"
     end
   end
 
