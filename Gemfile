@@ -5,3 +5,6 @@ gem 'rake'
 gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
+gem 'rubocop'
+gem 'twilio-ruby'
+gem 'sinatra'
