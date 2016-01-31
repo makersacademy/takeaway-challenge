@@ -29,3 +29,30 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+How the app can be used:
+
+```
+[2] pry(main)> order = Order.new
+=> #<Order:0x007f9b3e2e1a90
+ @list=[],
+ @menu=#<Menu:0x007f9b3e2e1a68 @pizzas={"margherita"=>6, "fiorentina"=>7, "quattro stagioni"=>8, "quattro formaggi"=>7, "marinara"=>5}>,
+ @messager=
+  #<Messager:0x007f9b3e2e1a18
+@pizzas={"margherita"=>6, "fiorentina"=>7, "quattro stagioni"=>8, "quattro formaggi"=>7, "marinara"=>5}>
+[3] pry(main)> order.read_menu
+margherita: 6
+fiorentina: 7
+quattro stagioni: 8
+quattro formaggi: 7
+marinara: 5
+=> {"margherita"=>6, "fiorentina"=>7, "quattro stagioni"=>8, "quattro formaggi"=>7, "marinara"=>5}
+[4] pry(main)> order.choose("fiorentina")
+=> "You have added 1 x fiorentina to your order."
+[5] pry(main)> order.choose("marinara", 2)
+=> "You have added 2 x marinara to your order."
+[6] pry(main)> order.total
+=> "The total cost is £17."
+[7] pry(main)> order.place
+=> "Thank you for your order! It will be delivered before 19:12."
+[8] pry(main)> order.send_message
+```
