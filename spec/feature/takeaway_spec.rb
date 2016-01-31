@@ -26,7 +26,8 @@ describe 'User Stories' do
   end
   # As a customer
   # So that I can verify that my order is correct
-  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  # I would like to check that the total I have been given matches
+  # the sum of the various dishes in my order
 
   it 'allows a customer to check prices before finalising the order' do
 
@@ -45,7 +46,8 @@ describe 'User Stories' do
 
   # As a customer
   # So that I am reassured that my order will be delivered on time
-  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  # I would like to receive a text such as "Thank you! Your order
+  # was placed and will be delivered before 18:52" after I have ordered
 
   it 'sends a text message to confirm order was placed' do
     test_message = "Your order totalling $70 has been registered and will be delivered before 18:52"

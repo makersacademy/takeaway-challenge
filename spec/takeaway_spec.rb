@@ -49,6 +49,6 @@ describe Takeaway do
       takeaway.order("chicken", 2)
       takeaway.order("chicken", 2)
       expect{takeaway.complete_order(20)}.to raise_error('Incorrect amount')
-     end
+    end
   end
 end

@@ -3,10 +3,6 @@ require 'menu'
 describe Menu do
 subject(:menu) {described_class.new}
 
-  it 'is a menu class' do
-    expect(menu).to be_a Menu
-  end
-
   describe '#add' do
     it 'adds menu items and their prices to a hash' do
       menu.add("chicken", 15)
