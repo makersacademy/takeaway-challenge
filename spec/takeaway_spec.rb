@@ -24,4 +24,8 @@ describe Takeaway do
   it 'should raise an error if ordered dish is not on the menu' do
     expect{ takeaway.order("Pizza") }.to raise_error 'Dish not available: not part of the menu'
   end
+
+  it 'allows the customer to check the basket and total price' do
+    expect(takeaway).to respond_to(:show_basket)
+  end
 end
