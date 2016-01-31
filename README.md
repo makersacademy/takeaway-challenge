@@ -1,6 +1,32 @@
 Takeaway Challenge
 ==================
 
+## PURPOSE
+
+To simulate a takeaway app utilizing the Twilio Gem.
+
+## RESULT
+
+...[in progress]...
+
+## HOW TO USE
+
+...[instructions]...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Instructions
 -------
 
