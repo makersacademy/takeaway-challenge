@@ -18,9 +18,15 @@ describe Takeaway do
     
     it 'stores an item into the order' do
       
-      takeaway.order(pizza)
-      expect(takeaway.order.trolley).to include?({pizza: 10.0})
+      takeaway.order("pizza", 2)
+      expect(takeaway.order_log.status).to include({"Pizza"=> 10.0})
       
+    end
+    
+    it 'stores items in hashes' do
+      
+      takeaway.order("pasta")
+      expect(takeaway.order_log.status.last).to be_an Hash
     end
   end
 
