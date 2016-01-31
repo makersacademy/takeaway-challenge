@@ -44,6 +44,12 @@ describe Takeaway do
       takeaway.order('prawn crackers', 3)
       expect{takeaway.confirm_order(5)}.to raise_error 'Total is not correct, please try again'
     end
+
+    it 'sends a confirmation text' do
+      takeaway.order('prawn crackers')
+      expect(takeaway).to receive(:send_text)
+      takeaway.confirm_order(2)
+    end
   end
 
 
