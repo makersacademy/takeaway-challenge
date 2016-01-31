@@ -1,10 +1,12 @@
 require 'order_dispatch'
 
 describe OrderDispatch do
-  subject(:dispatch)  { described_class.new(client, order_klass) }
+  subject(:dispatch)  { described_class.new(client_klass, order_klass) }
   let(:order_klass)   { double :order_klass, new: order }
+  let(:client_klass)  { double :client_klass, new: client }
   let(:client)        { double :client }
-  let(:order)         { double :order }
+  let(:order_details) { double :hash }
+  let(:order)         { double :order, total: 20, summary: order_details }
 
   before do
     allow(client).to receive(:account)  { client }
@@ -12,16 +14,9 @@ describe OrderDispatch do
     allow(client).to receive(:create)   { nil }
   end
 
-  describe '#initialize' do
-    it 'initializes with an empty order history' do
-      expect(dispatch.order_history).to be_empty
-    end
-  end
-
   describe '#place_order' do
-    let(:order_details) { double :hash }
     after do
-      dispatch.place_order(order_details)
+      dispatch.place_order(order_details, order.total)
     end
 
     it 'initializes a new order' do
@@ -30,13 +25,6 @@ describe OrderDispatch do
 
     it 'sends text confirmation' do
       expect(client).to receive(:create)
-    end
-  end
-
-  describe '#order_history' do
-    it 'returns a list of previous orders' do
-      dispatch.place_order(order)
-      expect(dispatch.order_history).to include order
     end
   end
 end

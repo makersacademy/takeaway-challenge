@@ -1,29 +1,28 @@
 require_relative 'order_dispatch'
 
-# Welcome to The Kaiser Chefs, how can we help?
-# Our menu is inspired by Dishoom, I recommend the Chicken Ruby.
-MENU = {
-  far_far:            2.5,
-  samosas:            4,
-  okra_fries:         4.2,
-  mattar_paneer:      6.5,
-  chicken_ruby:       8,
-  masala_prawns:      9,
-  biryani:            7.5,
-  naan:               2.5,
-  roti:               2.5,
-  basmati_rice:       2,
-  bhang_lassi:        3,
-  thums_up:           2.5,
-  kingfisher:         3.5,
-  chai:               2,
-  botal_water:        2
-}.freeze
-
-class Takeaway
+class Restaurant
+  # Welcome to Kaiser Chefs, how can we help?
+  # Our menu is inspired by Dishoom, I recommend the Chicken Ruby.
+  MENU = {
+    far_far:            2.5,
+    samosas:            4,
+    okra_fries:         4.2,
+    mattar_paneer:      6.5,
+    chicken_ruby:       8,
+    masala_prawns:      9,
+    biryani:            7.5,
+    naan:               2.5,
+    roti:               2.5,
+    basmati_rice:       2,
+    bhang_lassi:        3,
+    thums_up:           2.5,
+    kingfisher:         3.5,
+    chai:               2,
+    botal_water:        2
+  }.freeze
 
   def self.build_with_dispatch
-    new(OrderDispatch.build_with_client)
+    new(OrderDispatch.new)
   end
 
   def initialize(order_dispatch)
@@ -33,19 +32,17 @@ class Takeaway
 
   # IDEA: extract into module
   def view_menu
-    @menu.each do |k, v|
-      printf "%-15s %15s\n", "#{k.to_s.tr('_',' ').capitalize}:", "£#{v}"
-    end
+    @menu.clone.freeze
   end
 
   def place_order(*args)
     order_details = parse_dishes(args)
-    @dispatch.place_order(order_details)
+    total = calculate_total(order_details)
+    @dispatch.place_order(order_details, total)
   end
 
   private
 
-  # IDEA: get user input from command line
   def parse_dishes(args)
     order_details = {}
 
@@ -58,7 +55,6 @@ class Takeaway
       order_details[dish_sym] = quantity.to_i
     end
 
-    order_details[:total] = calculate_total(order_details)
     order_details
   end
 
