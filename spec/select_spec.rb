@@ -2,8 +2,6 @@ require 'select.rb'
 
 describe Select do
 		let(:burger){double (:burger)}
-		# let(:pint){double (:pint)}
-		# let(:ord) {{ burger:1, pint:1}}
 		it 'shows the menu' do 
 			men = {'Burger'=> 10, 'Pint'=> 4.50,'Steak'=>18,'Wine'=> 22,'Chips'=> 3.25}
 			expect(subject.menu).to eq men
@@ -16,6 +14,9 @@ describe Select do
 		it 'has an order' do
  			expect(subject).to respond_to(:order)
 		end
+		it 'has an due amount' do
+ 			expect(subject).to respond_to(:order)
+ 		end
 
 		describe 'pick' do 
 			it 'take an argument for dish and argument for quantity' do 
@@ -46,10 +47,11 @@ describe Select do
 
 		describe "#place_order" do
 			it 'place an order and get it before 18:52" after ordering' do 
-			t = Time.now + 1132
-			expect(subject.place_order).to eq "Thank you! Your order has been placed and will be delivered before #{t.strftime('%H:%M')}"
+				t = Time.now + 1132
+				msg = "Thank you! Your order will be delivered before #{t.strftime('%H:%M')}"
+				expect(subject.place_order).to eq msg
+			end
 		end
-	end
 
 
 end
