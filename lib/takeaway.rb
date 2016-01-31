@@ -1,13 +1,14 @@
-require_relative 'menu'
+require_relative 'order'
+require 'twilio-ruby'
+
+
 
 class Takeaway
 
   attr_reader :menu, :basket, :order_cost
 
-
-
-  def initialize(menu_klass = Menu)
-    @menu = menu_klass.new
+  def initialize(menu)
+    @menu = menu
     @basket = {}
     @order_cost = Order.new
   end
@@ -30,7 +31,33 @@ class Takeaway
     @order_cost.total == basket_summary
   end
 
+  def reset
+    @basket = {}
+    @order_cost = 0
+  end
+
+  def complete_order
+    send_text(message)
+    reset
+    "Thank you, come again."
+  end
+
   private
+
+  def send_text(message)
+    account_sid = "I wish I knew how to get dotenv working"
+    auth_token = "I wish I knew how to get dotenv working"
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @message = @client.messages.create(
+    to: "+44779xxxxxxx",
+    from: "+441xxxxxxxx",
+    body: message
+    )
+  end
+
+  def message
+    message = "Your order comes to £#{order_cost.total}, and will be with you in 1 hour"
+  end
 
   def price(item, number)
     @menu.price(item) * number
@@ -43,5 +70,7 @@ class Takeaway
     end
     basket_total
   end
-  
+
+
+
 end

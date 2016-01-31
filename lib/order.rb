@@ -1,3 +1,4 @@
+require_relative 'takeaway'
 class Order
 
   attr_reader :total

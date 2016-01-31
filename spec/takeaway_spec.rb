@@ -2,8 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) {described_class.new(menu_klass)}
-  let(:menu_klass) { double :menu_klass, new: menu}
+  subject(:takeaway) {described_class.new(menu)}
   let(:price){6}
   let(:menu) {double(:menu, dishes: dish_1, price: price)}
   let(:dish_1) {double 'chicken'}
@@ -45,6 +44,13 @@ describe Takeaway do
       it 'repeats your orders back to you as you make them' do
         expect(takeaway.order(dish_1)).to eq "You ordered #{dish_1} x1"
       end
+
+      it 'allows the user to reset their basket and start again' do
+        takeaway.order(dish_1, 15)
+        takeaway.reset
+        expect(takeaway.basket).to be_empty
+        expect(takeaway.order_cost).to eq 0
+      end
     end
 
     context 'pricing an order' do
@@ -65,7 +71,21 @@ describe Takeaway do
         end
       end
     end
+
+    context 'text messaging' do
+
+      describe '#send_text' do
+        before do
+          allow(takeaway).to receive(:send_text)
+          takeaway.order(dish_1, 2)
+        end
+
+        it 'sends a text message to confirm order' do
+          message = "Your order comes to £12, and will be with you in 1 hour"
+          expect(takeaway).to receive(:send_text).with(message)
+          takeaway.complete_order
+        end
+      end
+    end
   end
-
-
 end
