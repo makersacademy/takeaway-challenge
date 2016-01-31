@@ -58,6 +58,8 @@ I believe the flow will go along the lines of:
 
 items -> menu -> interface -> order -> sends texts
 
+As items is the first thing that the other classes draw from I will start TDD from there. This should allow me to build on the program and limit the need to split off classes later. 
+
 
 
 
