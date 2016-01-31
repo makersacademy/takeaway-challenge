@@ -2,9 +2,19 @@ require 'takeaway'
 
 RSpec.describe Takeaway do
   let(:messager) {double :messager}
-  subject(:takeaway)  {described_class.new(messager)}
+  let(:menu) {double :menu, show_menu: {"chicken" =>3,
+     "rice" =>1,
+     "pizza" =>6,
+     "chips" =>2 }}
+
+
+  subject(:takeaway)  {described_class.new(menu, messager)}
 
    before do
+      allow(menu).to receive(:price_of).with("chicken").and_return(3)
+      allow(menu).to receive(:price_of).with("rice").and_return(1)
+      allow(menu).to receive(:price_of).with("pizza").and_return(6)
+      allow(menu).to receive(:price_of).with("ham").and_return(nil)
       allow(takeaway).to receive(:send_text)
     end
 
@@ -22,7 +32,7 @@ RSpec.describe Takeaway do
       expect{takeaway.select_dishes('chicken', 4)}.to change{takeaway.basket.size}.by 1
     end
 
-    it '' do
+    it 'raises an error if the dish selected is not available' do
       expect{takeaway.select_dishes('ham', 1)}.to raise_error ""\
       "ham is not on the menu"
     end
@@ -47,7 +57,7 @@ RSpec.describe Takeaway do
 
     it {is_expected.to respond_to(:complete_order)}
 
-    it 'sends a message and emtpies the basket after complete_order' do
+    it 'sends a message and empties the basket after complete_order' do
       takeaway.select_dishes("rice", 3)
       expect(takeaway).to receive(:send_text)
       takeaway.complete_order
