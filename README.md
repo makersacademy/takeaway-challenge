@@ -1,22 +1,65 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Takeaway Challenge
 ==================
 
-Instructions
--------
+TakeAway was Designed to run with Ruby 2.2.3 
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+The target of this program is given a menu of dishes, you can see them, choose them, check the order broken down, the bill and even place the order to be received within 18 minutes and 52 seconds!
 
-Task
------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Run the program
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+| => irb                                   <------------ `open irb`
+2.2.3 :001 > `require './lib/select.rb'`   <------------ `require!`
+=> true 
+2.2.3 :002 > `menu = Select.new`           <----------- `create an instance!`
+=> #<Select:0x007fed72885628 @menu={"Burger"=>10, "Pint"=>4.5, "Steak"=>18, "Wine"=>22, "Chips"=>3.25}, @order={}, @total=[], @due=0> 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Once to have run the program you can use the next commands
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use `.see` to check the whole menu
+2.2.3 :003 > `menu.see`                    <----------- `check the menu` 
+=> {"Burger"=>10, "Pint"=>4.5, "Steak"=>18, "Wine"=>22, "Chips"=>3.25} 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use `.pick(your dish, number of dishes` to choose a dish. If you are happy with only one portion do not worry about introducing number of dishes, the program will set it to 1 automaticly.
+
+2.2.3 :004 > `menu.pick('chips',4)`        <----------- choose your favorite dishes and pick them!
+would you like something else?
+ 
+2.2.3 :005 > `menu.pick('Steak',4)`        
+would you like something else?
+ 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use `.order`to see your order and it's details.'
+
+2.2.3 :006 > `menu.order`                  <----------- `Check your order broken down to make sure it is right`
+4 Chips-> 3.25£ each -> 13.0£
+4 Steak-> 18£ each -> 72£
+=> {"4 Chips"=>{"3.25£ each"=>"13.0£"}, "4 Steak"=>{"18£ each"=>"72£"}} 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use `.bill` for check the list of items and the amount due, do not worry if you do not trust about the price, it will show you everything for you to check the IT IS RIGHT!
+
+2.2.3 :007 > `menu.bill`                   <-----------  `check the amount due and the list broken down`
+4 Chips-> 3.25£ each -> 13.0£
+4 Steak-> 18£ each -> 72£
+=> "Due 85.0£" 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use `place_order`  for just get your food asap!
+
+2.2.3 :008 > `menu.place_order`            <---------`Place the order and get it within 18 minutes and 52 seconds`
+4 Chips-> 3.25£ each -> 13.0£
+4 Steak-> 18£ each -> 72£
+=> `"Thank you! Your order will be delivered before 23:06"`
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ```
 As a customer
