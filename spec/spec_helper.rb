@@ -4,11 +4,12 @@ require 'capybara/rspec'
 require 'vcr'
 require 'webmock'
 
-TWILIO_VARS = []
-TWILIO_VARS << 'TWILIO_ACCOUNT_SID'
-TWILIO_VARS << 'TWILIO_AUTH_TOKEN'
-TWILIO_VARS << 'TWILIO_PHONE'
-TWILIO_VARS << 'TWILIO_DESTINATION_PHONE'
+sid = 'TWILIO_ACCOUNT_SID'
+token = 'TWILIO_AUTH_TOKEN'
+from_phone = 'TWILIO_PHONE'
+to_phone = 'TWILIO_DESTINATION_PHONE'
+
+TWILIO_VARS = [sid, token, from_phone, to_phone].freeze
 
 VCR.configure do |config|
   config.cassette_library_dir = "fixtures/vcr_cassettes"
