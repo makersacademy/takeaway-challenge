@@ -1,12 +1,15 @@
 require 'twilio-ruby'
+require 'dotenv'
 
 module Text
+
+  Dotenv.load
 
   def text_confirmation(body)
     setup
     @client.messages.create(
-    from: '+441503505018',
-    to: '+447450946912',
+    from: ENV['TWILIO_FROM_NUMBER'],
+    to: ENV['TWILIO_TO_NUMBER'],
     body: body
     )
   end
@@ -24,11 +27,11 @@ module Text
   end
 
   def set_sid
-    @account_sid = "ACb317af848af7853745abacca58a4aa95"
+    @account_sid = ENV['TWILIO_SID']
   end
 
   def set_token
-    @auth_token = "6ddd28b7dafddf0cdc366f38589dbca0"
+    @auth_token = ENV['TWILIO_TOKEN']
   end
 
 end
