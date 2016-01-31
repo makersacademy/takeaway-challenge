@@ -8,7 +8,7 @@ class TakeAway
   
   def initialize(order = Order.new)
     @order = order
-    @credentials = Dotenv.load
+    @env = Dotenv.load
   end
   
   def read_menu
@@ -16,7 +16,7 @@ class TakeAway
   end
   
   def complete_order(price)
-    raise "Value does not match the total" unless is_correct_amount?(price)
+    fail "Value does not match the total" unless correct_amount?(price)
     send_text("Thank you! Your order was placed.")
   end
   
@@ -29,7 +29,6 @@ class TakeAway
   end
   
   def total
-    basket_summary
     "Total: £" + "%.2f" % @order.total_amount
   end
   
@@ -40,15 +39,15 @@ class TakeAway
   end
   
   def send_text(message)
-    client = Twilio::REST::Client.new @credentials["account_sid"], @credentials["auth_token"]
+    client = Twilio::REST::Client.new @env["account_sid"], @env["auth_token"]
     client.account.messages.create(
-      :from => @credentials["from_number"],
-      :to => @credentials["to_number"],
-      :body => message
+      from: @env["from_number"],
+      to: @env["to_number"],
+      body: message
     )
   end
   
-  def is_correct_amount?(price)
+  def correct_amount?(price)
     @order.total_amount == price
   end
 end

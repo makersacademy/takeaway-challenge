@@ -9,7 +9,7 @@ class Order
   end
   
   def add_dish_to_basket(dish, quantity = 1)
-    raise "#{dish} is not on the menu" unless on_the_menu?(dish)
+    fail "#{dish} is not on the menu" unless on_the_menu?(dish)
     @basket[dish] += quantity
     add_to_total(dish, quantity)
   end
@@ -21,14 +21,15 @@ class Order
   
   private
   
-  def format_basket ###
+  def format_basket
     @basket.each do |dish, quantity|
        order_list(dish, quantity)
+       @basket.delete(dish)
     end
   end
   
-  def order_list(dish, quantity) ###
-    @current_order += dish + " x" + quantity.to_s + ":" + " £" + "%.2f" %(price(dish) * quantity)
+  def order_list(dish, quantity)
+    @current_order << dish + " x" + quantity.to_s + ":" + " £" + "%.2f" %(price(dish) * quantity) + "\n"
   end
   
   def add_to_total(dish, quantity) 

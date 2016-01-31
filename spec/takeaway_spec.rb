@@ -15,7 +15,7 @@ describe TakeAway do
     end
     
     it 'allows you too select items from the menu' do
-      expect(take_away.basket_summary).to eq "Egg Fried Rice x1: £1.90"
+      expect(take_away.basket_summary).to eq "Egg Fried Rice x1: £1.90\n"
     end
     
     it 'only lets you order items on the menu' do
@@ -38,18 +38,20 @@ describe TakeAway do
   end
   
   describe "#complete" do
+  
     context "when successfull" do      
       it 'sends a text when order is complete' do
+        message = "Thank you! Your order was placed."
         allow(take_away).to receive(:send_text)
-        expect(take_away).to receive(:send_text).with("Thank you! Your order was placed.")
+        expect(take_away).to receive(:send_text).with(message)
           take_away.complete_order(0)
       end
     end
     
     context "when not successful" do
-    
       it "Raises an error if sum doesn't match total" do
-        expect {take_away.complete_order(5.30)}.to raise_error "Value does not match the total"
+        error = "Value does not match the total"
+        expect {take_away.complete_order(5.30)}.to raise_error error
       end
     end
   end

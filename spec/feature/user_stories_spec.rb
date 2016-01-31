@@ -15,7 +15,7 @@ describe "User Stories" do
   it 'allows people to place an order' do
     take_away = TakeAway.new
     take_away.order "Egg Fried Rice", 2
-    expect(take_away.basket_summary).to eq "Egg Fried Rice x2: £3.80"
+    expect(take_away.basket_summary).to eq "Egg Fried Rice x2: £3.80\n"
   end
   
   #  As a customer
@@ -23,10 +23,11 @@ describe "User Stories" do
   #  I would like to check that the total I have been given matches the sum of the various dishes in my order
   it 'checks that the total is correct' do
     take_away = TakeAway.new
+    message = "Thank you! Your order was placed."
     take_away.order "Egg Fried Rice", 2
     take_away.order "Spring Roll"
-    allow(take_away).to receive(:send_text).with("Thank you! Your order was placed and will be delivered before %H:%M")
-    expect(take_away).to receive(:send_text).with("Thank you! Your order was placed.")
+    allow(take_away).to receive(:send_text).with(message)
+    expect(take_away).to receive(:send_text).with(message)
       take_away.complete_order(5.3)
   end
 end
