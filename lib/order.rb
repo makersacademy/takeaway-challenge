@@ -1,4 +1,4 @@
-# require_relative 'take_away_ui'
+require_relative 'basket'
 
 private
 
@@ -30,7 +30,7 @@ attr_reader :user_input, :menu_choice, :basket, :basket_klass
     selection = []
     submission.each{|dish_quantity| selection << dish_quantity}
     if basket.is_a basket_klass
-      @basket = basket_klass.new(selection)
+      @basket = basket_klass.new(selection, menu_choice)
     else
       @basket.selection << selection
     end

@@ -1,12 +1,13 @@
 
 require_relative 'italian_menu'
+require_relative 'order'
 
 
-class TakeAwayUI
+class TakeAway
 
 SCREEN_WIDTH = 40
 
-attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection
+attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_choice
 
 
   def initialize(cuisine_choice=ItalianMenu, order=Order, basket=Basket)
@@ -39,11 +40,15 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection
   def select_dish(dish, quantity)
     selection << [dish, quantity]
     if selection.size == 1
-      @basket = basket.new(selection)
+      @basket = basket.new(selection, menu_choice)
     else
       @basket.selection << [dish, quantity]
     end
   end
+
+  # def review_order
+  #
+  # end
 
   private
 

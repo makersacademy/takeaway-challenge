@@ -1,6 +1,6 @@
 require 'take_away_ui'
 
-describe TakeAwayUI do
+describe TakeAway do
 
   #Doubling cuisine class
   let(:dummy_cuisine_klass) {double :dummy_cuisine_klass}
@@ -94,7 +94,7 @@ end
       allow(STDOUT).to receive(:p).with("What would you like to eat? Eg '2 Carbonara and a Tiramisu'")
       allow(STDIN).to receive(:gets).and_return(test_order)
       allow(dummy_order_klass).to receive(:new).with(test_order, default_menu_dinner_mains).and_return(dummy_order)
-      allow(dummy_basket_klass).to receive(:new).with([selection1]).and_return(dummy_basket)
+      allow(dummy_basket_klass).to receive(:new).with([selection1], italian_menu).and_return(dummy_basket)
     end
 
     describe '#take_order' do
@@ -113,7 +113,7 @@ end
 
       before do
         allow(dummy_basket).to receive(:selection).and_return([[selection1]])
-        allow(dummy_basket_klass).to receive(:new).with([menu.selection]).and_return(dummy_basket)
+        allow(dummy_basket_klass).to receive(:new).with(menu.selection, default_menu_dinner_mains).and_return(dummy_basket)
         menu.select_dish("Cake", 3)
       end
 

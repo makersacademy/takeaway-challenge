@@ -70,7 +70,7 @@ describe Order do
 
     before do
       allow(dummy_basket_klass).to receive(:is_a).and_return(dummy_basket_klass)
-      allow(dummy_basket_klass).to receive(:new).with(dummy_selection).and_return dummy_basket
+      allow(dummy_basket_klass).to receive(:new).with(dummy_selection, menu_choice).and_return dummy_basket
       order.add_to_basket
     end
 
