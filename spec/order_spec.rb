@@ -17,7 +17,7 @@ describe Order do
     end
 
     it 'matches with an item' do
-      allow(subject).to receive(:choose) {"Margherita"}
+      allow(order).to receive(:choose) {"Margherita"}
       expect(MENU).to include(subject.choose)
     end
   end
@@ -25,21 +25,21 @@ describe Order do
   describe 'ordered_items' do
 
     it 'returns array of orderd items' do
-        expect(subject.ordered_items).to be_a Array
+        expect(order.ordered_items).to be_a Array
       end
 
       it 'includes items from the menu' do
-        subject.choose("Margherita",1)
-        expect(subject.ordered_items).to include("Margherita" => 1)
+        order.choose("Margherita",1)
+        expect(order.ordered_items).to include("Margherita" => 1)
       end
   end
 
   describe '#total_cost' do
       
     it 'returns correct amount' do
-      subject.choose("Margherita",2)
-      subject.choose("Formaggio",1)
-      expect(subject.total_cost).to eq(36.97)
+      order.choose("Margherita",2)
+      order.choose("Formaggio",1)
+      expect(order.total_cost).to eq(36.97)
     end
   end
 
@@ -50,4 +50,25 @@ describe Order do
      expect(order.check_total).to eq(["2.0 X Margherita(11.99) = 23.98"])
     end
   end
+
+  describe '#send_message' do
+    it {is_expected.to respond_to(:send_message)}
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

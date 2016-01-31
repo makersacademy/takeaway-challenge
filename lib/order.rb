@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'calculate_bill'
+require_relative 'message'
 
 class Order 
 
@@ -29,6 +30,11 @@ class Order
 
   def tidy_menu
     puts MENU.map{ |k,v| (k + "  £" + v.to_s) }
+  end
+
+  def send_message
+    message = Message.new
+    message.send(check_total)
   end
 
 end
