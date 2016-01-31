@@ -1,16 +1,20 @@
 # I would like to see a list of dishes with prices
+class Menu
 
-def print_menu
+  def initialize
+    @menu_contents = {
+      "chocolate cake" => 3,
+      "brownie" => 1,
+      "lemon drizzle" => 4,
+    }
+    end
 
-  restaurant_menu = {
-    "chocolate cake" => 3,
-    "apple crumble" => 2,
-    "brownie" => 1,
-    "lemon drizze" => 4,
-    "pear and apple" => 3
-  }
-  restaurant_menu.each do |item, price|
-    puts "#{item}: £#{price}"
-  end
+    def public_menu_contents
+      @menu_contents.dup
+    end
+
+    def menu_display
+       @menu_contents.each{|key, value| puts("#{key}"+ "---" + "£#{value}")}
+    end
 
 end
