@@ -10,5 +10,4 @@ class Menu
     @dishes[item]
   end
 
-
 end

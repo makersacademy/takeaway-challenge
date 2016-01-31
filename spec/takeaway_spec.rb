@@ -9,7 +9,6 @@ describe Takeaway do
   let(:dish_1) {double 'chicken'}
   let(:dish_2) {double 'pizza'}
 
-
   describe '#initialize' do
     it 'starts with an empty basket' do
       expect(takeaway.basket).to be_empty

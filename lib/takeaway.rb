@@ -8,6 +8,7 @@ class Takeaway
   def initialize(menu_klass = Menu)
     @menu = menu_klass.new
     @basket = {}
+    @total= Order.new
   end
 
   def show_menu
@@ -18,5 +19,8 @@ class Takeaway
     @basket["#{item} x#{number}"] = @menu.price(item) * number
     "You ordered #{item} x#{number}"
   end
+
+  def
+
 
 end
