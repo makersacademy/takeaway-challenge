@@ -74,11 +74,11 @@ subject(:restaurant) { described_class.new(menu_klass, text_klass) }
 
   describe '#place_order' do
 
-    it 'raises an error if the wrong payment ammount is submitted' do
-      expect{subject.place_order(7.00)}.to raise_error("Wrong payment ammount")
+    it 'raises an error if the wrong payment amount is submitted' do
+      expect{subject.place_order(7.00)}.to raise_error("Wrong payment amount")
     end
 
-    it 'sends a payment confirmation text message' do
+    it 'activates a payment confirmation text message' do
       expect(text_klass).to receive(:send_message)
       subject.place_order(8.00)
     end

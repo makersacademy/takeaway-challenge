@@ -1,78 +1,70 @@
 Takeaway Challenge
 ==================
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+`````
+                           _________
+             r==           |       |
+          _  //            |  M.A. |   ))))
+         |_)//(''''':      |       |
+           //  \_____:_____.-------.P      )))))
+          //   | ===  |   /        \
+      .:'//.   \ \=|   \ /  .:'':./    )))))
+     :' // ':   \ \ ''..'--:'-.. ':
+     '. '' .'    \:.....:--'.-'' .'
+      ':..:'                ':..:'
 
 
-In code review we'll be hoping to see:
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+`````
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+The Task
+--------
 
-Notes on Test Coverage
-------------------
+Write a Takeaway program that allows a user to view a menu, select some items, confirm the details of their order, place their order and receive a confirmation text (using the Twilio api).
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+My Approach
+-----------
 
-```
-$ coveralls report
-```
+I worked through the user stories to understand the classes and methods the program might need. Aiming the develop the program using TDD, I wrote failing tests and then designed methods to pass them.
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+I built a Restaurant class that handles orders, a Menu class that provides a hash of items and prices, and a Text class that uses the Twilio api to send a confirmation text.
 
-Build Badge Example
-------------------
+I used the dotenv ruby gem to prevent pushing sensitive info (auth keys, phone numbers etc) to github.
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+The solution functions in IRB like so:
+
+`````
+[4] pry(main)> uncle_alis = Restaurant.new
+=> #<Restaurant:0x007fc5f23aac68
+ @menu=
+  #<Menu:0x007fc5f23aac40
+   @menu_list={"Chicken Tagine"=>5.0, "Meatball Tagine"=>5.0, "Lentils"=>3.0, "Bread"=>0.5}>,
+ @messager=
+  #<Text:0x007fc5f23aaba0
+   @account_sid="***",
+   @auth_token="***",
+   @client=<Twilio::REST::Client @account_sid=***>>,
+ @order={}>
+[5] pry(main)> uncle_alis.display_menu
+=> {"Chicken Tagine"=>5.0, "Meatball Tagine"=>5.0, "Lentils"=>3.0, "Bread"=>0.5}
+[6] pry(main)> uncle_alis.add_item("Chicken Tagine", 2)
+=> "2 x Chicken Tagine = £10.00"
+[7] pry(main)> uncle_alis.add_item("Lentils", 2)
+=> "2 x Chicken Tagine = £10.00, 2 x Lentils = £6.00"
+[8] pry(main)> uncle_alis.add_item("Bread", 6)
+=> "2 x Chicken Tagine = £10.00, 2 x Lentils = £6.00, 6 x Bread = £3.00"
+[9] pry(main)> uncle_alis.order_summary
+=> "2 x Chicken Tagine = £10.00, 2 x Lentils = £6.00, 6 x Bread = £3.00"
+[10] pry(main)> uncle_alis.add_item("Pizza")
+RuntimeError: No such item on the menu
+from /Users/seanhawkridge/Dropbox/Dev/takeaway-challenge/lib/restaurant.rb:22:in `add_item'
+[11] pry(main)> uncle_alis.order_total
+=> "Order Total: £19.00"
+[12] pry(main)> uncle_alis.place_order(18.00)
+RuntimeError: Wrong payment ammount
+from /Users/seanhawkridge/Dropbox/Dev/takeaway-challenge/lib/restaurant.rb:42:in `place_order'
+[13] pry(main)> uncle_alis.place_order(19.00)
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/AC419b01a364d7474cd3f99212ea942b70/Messages/SM29c9ac2bb3c246a1bc5dfaf7d4d1aa14>
+[14] pry(main)>
+
+`````

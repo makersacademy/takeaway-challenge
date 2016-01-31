@@ -1,8 +1,6 @@
 
 require_relative 'text.rb'
 require_relative 'menu.rb'
-require_relative 'order.rb'
-require 'pp'
 
 class Restaurant
 
@@ -39,7 +37,7 @@ class Restaurant
   end
 
   def place_order(payment)
-    fail 'Wrong payment ammount' unless payment == order_calc.to_f
+    fail 'Wrong payment amount' unless payment == order_calc.to_f
     @messager.send_message(confirmation_message)
   end
 
