@@ -23,36 +23,16 @@ class Order
 
   attr_reader :total
 
-  def initialize(*args)
-    @dishes = parse_dishes(args)
+  def initialize(order_hash)
+    @dishes = order_hash
     @total = calculate_total
   end
-
-  # def check_total(total)
-  #
-  # end
 
   def summary
     @dishes.clone.freeze
   end
 
   private
-
-  # IDEA: get user input from command line
-  def parse_dishes(args)
-    order_hash = {}
-
-    args.each do |dish|
-      quantity, *dish_name = dish.split(' ')
-      dish_sym = dish_name.join('_').downcase.to_sym
-      message = "Sorry, we do not have #{dish_name.join(' ').capitalize} " \
-      'on our menu.'
-      fail message unless MENU.keys.include?(dish_sym)
-      order_hash[dish_sym] = quantity.to_i
-    end
-
-    order_hash
-  end
 
   def calculate_total
     @dishes.reduce(0) do |sum, (k, v)|

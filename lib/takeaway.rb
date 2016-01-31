@@ -23,11 +23,11 @@ MENU = {
 class Takeaway
 
   def self.build_with_dispatch
-    new(OrderDispatch.new)
+    new(OrderDispatch.build_with_client)
   end
 
   def initialize(order_dispatch)
-    @menu = MENU
+    @menu     = MENU
     @dispatch = order_dispatch
   end
 
@@ -38,11 +38,33 @@ class Takeaway
     end
   end
 
-  def place_order(order)
-    @dispatch.new_order(order)
+  def place_order(*args)
+    order_details = parse_dishes(args)
+    @dispatch.place_order(order_details)
   end
 
-  # def print_receipt(order)
-  #
-  # end
+  private
+
+  # IDEA: get user input from command line
+  def parse_dishes(args)
+    order_details = {}
+
+    args.each do |dish|
+      quantity, *dish_name = dish.split(' ')
+      dish_sym = dish_name.join('_').downcase.to_sym
+      message = "Sorry, we do not have #{dish_name.join(' ').capitalize} " \
+      'on our menu.'
+      fail message unless @menu.keys.include?(dish_sym)
+      order_details[dish_sym] = quantity.to_i
+    end
+
+    order_details[:total] = calculate_total(order_details)
+    order_details
+  end
+
+  def calculate_total(order_details)
+    order_details.reduce(0) do |sum, (k, v)|
+      sum + v * @menu[k]
+    end
+  end
 end
