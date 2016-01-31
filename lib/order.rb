@@ -2,11 +2,12 @@ require_relative 'menu'
 require_relative 'text'
 
 class Order
-  attr_reader :current_order, :menu
+  attr_reader :current_order, :menu, :bill
 
   def initialize(menu = Menu.new)
     @current_order = {}
     @menu = menu
+    @bill = 0
   end
 
   def select_item(item,quantity)
@@ -17,8 +18,15 @@ class Order
     end
   end
 
-  def calculate_price
+  def check_order
+    @current_order
+  end
 
+  def calculate_price
+    @current_order.each do |item, price|
+       @bill += menu.show_menu[item] * price
+    end
+    "%.2f" % @bill
   end
 
   def complete_order

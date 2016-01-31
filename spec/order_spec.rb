@@ -21,11 +21,16 @@ describe Order do
     it 'calculates price' do
       order.select_item(:fish, 2)
       order.select_item(:chips, 3)
-      expect(order.calculate_price).to eq 5
+      expect(order.calculate_price).to eq '12.00'
+    end
+
+    it 'gives current order' do
+      order.select_item(:fish, 2)
+      expect(order.check_order).to include :fish
     end
   end
 end
 #   it 'completes an order' do
-#     expect(order.complete_order).to eq []
+#     expect(order.complete_order).to eq {}
 #   end
 # end
