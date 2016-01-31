@@ -37,38 +37,28 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 > menu = Menu.new
   => #<Menu:0x007fa23202d998 @menu_list={}>
-
 > menu.add("Tagliatelle alla Bolognaise", 18)
   => 18
-
 > menu.add("Gnocchi alla pesto", 18)
   => 18
-
 > menu.add("Prosciutto di Parma", 23)
   => 23
-
 > menu.menu_list
   => {"Tagliatelle alla Bolognaise"=>18, "Gnocchi alla pesto"=>18, "Prosciutto di Parma"=>23}
-
 > takeaway = Takeaway.new(menu)
   => #<Takeaway:0x007fa23401b7c8 @menu=#<Menu:0x007fa23202d998 @menu_list={"Tagliatelle alla Bolognaise"=>18, "Gnocchi alla pesto"=>18, "Prosciutto di Parma"=>23}>, @order=#<Order:0x007fa23401b7a0 @current_order={}, @basket={}, @total=0>, @message=#<Message:0x007fa23401b728>>
-
 > takeaway.show_menu
   => {"Tagliatelle alla Bolognaise"=>18, "Gnocchi alla pesto"=>18, "Prosciutto di Parma"=>23}
-
 > takeaway.order("Gnocchi alla pesto")
   => "1 * Gnocchi alla pesto added to your order"
-
 > takeaway.order("Prosciutto di Parma", 4)
   => "4 * Prosciutto di Parma added to your order"
-
 > takeaway.basket
   Your order summary is:
   Gnocchi alla pesto * 1 for $18,
   Prosciutto di Parma * 4 for $92,
   Total = 110
   => nil
-
 > takeaway.complete_order(110)
   message sent: Thank you Mr Parry. Your order totalling $110 has been registered to your account and will be delivered with the hour.
 
