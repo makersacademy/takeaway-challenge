@@ -14,8 +14,6 @@ describe Takeaway do
   end
 
   describe '#select_dishes' do
-    it { is_expected.to respond_to(:select_dishes).with(1).argument }
-
     it 'returns the dishes that were selected' do
       expect(takeaway.select_dishes(dishes)).to eq dishes
     end

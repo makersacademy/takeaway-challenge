@@ -10,7 +10,7 @@ class Menu
   end
 
   def has_dish?(dish)
-    display_menu.has_key? dish
+    display_menu.key? dish
   end
 
   private

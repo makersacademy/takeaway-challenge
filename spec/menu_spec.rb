@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new('menu.yaml') }
-  let(:dishes) { {:onion_bhaji=>2.95, :chicken_tikka_masala=>7.95, :naan=>1.95} }
+  let(:dishes) { {onion_bhaji: 2.95, chicken_tikka_masala: 7.95, naan: 1.95} }
 
   describe '#display_menu' do
     it 'displays menu' do

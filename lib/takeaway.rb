@@ -56,14 +56,14 @@ class Takeaway
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     from_phone = ENV['TWILIO_PHONE']
-    to_phone = @phone#ENV['TWILIO_DESTINATION_PHONE']
+    to_phone = @phone
 
     @client = Twilio::REST::Client.new account_sid, auth_token
 
-    @client.account.messages.create({
+    @client.account.messages.create(
       from: Dotenv.load['TWILIO_PHONE'],
       to: to_phone,
       body: message
-    })
+    )
   end
 end
