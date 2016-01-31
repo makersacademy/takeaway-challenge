@@ -1,8 +1,10 @@
 Takeaway Challenge
 ==================
 Author
-travis-ci
-coveralls
+
+[![Build Status](https://travis-ci.org/arnoldmanzano/takeaway-challenge.svg?branch=master)](https://travis-ci.org/arnoldmanzano/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/arnoldmanzano/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/arnoldmanzano/takeaway-challenge?branch=master)
+
 -technology used
 -installation instructions
 -irb tests
