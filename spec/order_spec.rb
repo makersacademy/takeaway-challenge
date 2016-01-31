@@ -2,9 +2,9 @@ require 'order'
 
 describe Order do
 
-subject(:order) {described_class.new}
-let(:menu) {double(:menu, :menu_list => {"chicken" => 15.50}) }
-let(:takeaway) {double(:takeaway, :order => {"chicken" => 15.50})}
+  subject(:order) {described_class.new}
+  let(:menu) {double(:menu, :menu_list => {"chicken" => 15}) }
+  let(:takeaway) {double(:takeaway, :order => {"chicken" => 15})}
 
   describe '#take_order' do
     it 'takes an order' do
@@ -16,10 +16,8 @@ let(:takeaway) {double(:takeaway, :order => {"chicken" => 15.50})}
   describe '#basket' do
     it 'returns a string to the client showing their order' do
       order.take_order("chicken", 2, menu)
-      expect(order.basket).to eq "chicken * 2 for $31.0, "
+      test_order = "Your order summary is: \nchicken * 2 for $30,\nTotal = 30"
+      expect(order.basket).to eq test_order
     end
   end
-
-  #describe '#final_order'
-
 end
