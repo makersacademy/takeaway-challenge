@@ -6,13 +6,13 @@ My effort at the Maker's Academy second week Takeaway Challenge, which uses Twil
 
 ##My approach
 
-###Takeaway class: responsible for showing the menu, taking an order, displaying current basket, and placing the order.
+Takeaway class: responsible for showing the menu, taking an order, displaying current basket, and placing the order.
 
-###Order class: responsible for managing the order and doing the heavy lifting.
+Order class: responsible for managing the order and doing the heavy lifting.
 
-###Menu class: responsible for creating new menus, open for expansion.
+Menu class: responsible for creating new menus, open for expansion.
 
-###Messenge class: responsible for sending out confirmation sms's
+Messenge class: responsible for sending out confirmation sms's
 ```
 User Stories
 
