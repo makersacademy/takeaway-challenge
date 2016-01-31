@@ -1,22 +1,14 @@
 Takeaway Challenge
 ==================
 
-Instructions
--------
+What is it?
+---------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Takeaway challenge is a take-away simulation program made in ruby using OOP and
+BDD/TDD methodologies, a client is able to select dishes from the takeaway
+menu and place an order,
+an SMS is sent confirming the order and the time of the delivery.
+The User stories were the following:
 
 ```
 As a customer
@@ -36,43 +28,103 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Design Process
+-------
+I tried using SOLID principles for this challenge to get into the habit
+of proper programming. By using encapsulation, SRP, DIP.
+I also followed the BDD life cycle.
+* First I isolated the different user stories, eg.:
+  **As a customer
+  So that I can check if I want to order something
+  I would like to see a list of dishes with prices**
+* I created the acceptance tests (or feature tests):
+  **Restaurant, Order, SMS**
+* Then multiple unit tests for every acceptance test eg.:
+  **Order: current_order, place_order...**
+* And last the implementation:
+  **class Order end, class Sms end**
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+
+Build Process
+-----
+
+I made this challenge the TDD way, by writing the Rspec Unit/Feature tests
+before my actual code. I created the Unit tests the London way as DRY
+as i could, and the feature test using the Chicago way.
+
+At first i created the whole system into one file/class and then i decided that
+i had functionalities that could be separated into different classes, then i
+created the Order class that's responsible for anything related to orders, and
+the Sms class handling our sms responses. I also configured Rspec accordingly
+to reflect the different class separation by using mocks and stubs.
+
+For the SMS responses i used the Twilio's API. I also attempted to make my
+program able to receive incoming texts and place an order, for this to happen i
+needed to convert it into a web app using Sinatra framework,
+which i didn't spend too much time creating the whole app,
+as we haven't covered web technologies yet.
+I made only the part that you can send an sms and get an automated reply back.
+the url that hosts the sms-receive functionality:
+http://vps193319.ovh.net:4567/sms_receive
 
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+Example running this program on IRB
+-----
 
 ```
-$ coveralls report
+[1] pry(main)> require './lib/ristorante'
+=> true
+[2] pry(main)> r = Ristorante.new
+=> #<Ristorante:0x007fe441bdd5a8
+ @order=
+  #<Order:0x007fe441bdd580
+   @current_order=[],
+   @order_log=[],
+   @order_total=0,
+   @sms=
+    #<Sms:0x007fe441bdd558 @account_sid="AC5f0916482a7dd3822a118d4b27a4e49b">>>
+[3] pry(main)> r.menu
+=> {1=>[:egg_fried_rice, 3],
+ 2=>[:chicken_legs, 2],
+ 3=>[:miso_soup, 3],
+ 4=>[:sofrito, 5],
+ 5=>[:pasta, 1],
+ 6=>[:garlic_bread, 1.5]}
+[4] pry(main)> r.select_dishes(1, 2)
+=> 6
+[5] pry(main)> r.current_order
+=> nil
+[6] pry(main)> r
+=> #<Ristorante:0x007fe441bdd5a8
+ @menu=
+  {1=>[:egg_fried_rice, 3],
+   2=>[:chicken_legs, 2],
+   3=>[:miso_soup, 3],
+   4=>[:sofrito, 5],
+   5=>[:pasta, 1],
+   6=>[:garlic_bread, 1.5]},
+ @order=
+  #<Order:0x007fe441bdd580
+   @current_order=[{:dish=>:egg_fried_rice, :quantity=>2, :price=>6}],
+   @order_log=[],
+   @order_total=6,
+   @sms=
+    #<Sms:0x007fe441bdd558 @account_sid="AC5f0916482a7dd3822a118d4b27a4e49b">>>
+[7] pry(main)> r.order.current_order
+=> [{:dish=>:egg_fried_rice, :quantity=>2, :price=>6}]
+[8] pry(main)> r.select_dishes(3, 2)
+=> 12
+[9] pry(main)> r.order.current_order
+=> [{:dish=>:egg_fried_rice, :quantity=>2, :price=>6},
+ {:dish=>:miso_soup, :quantity=>2, :price=>6}]
+[10] pry(main)> r.order.order_total
+=> 12
+[11] pry(main)> r.place_order
+=> 0
+[12] pry(main)> r.order.current_order
+=> []
+[13] pry(main)> r.order.order_total
+=> 0
+[14] pry(main)>
 ```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
