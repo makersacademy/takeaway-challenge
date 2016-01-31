@@ -1,3 +1,5 @@
+require_relative "notification"
+
 class Takeaway
 
   MENU = { "Spring Roll" => 1.95,
@@ -10,19 +12,16 @@ class Takeaway
            "King Prawn Kung Po" => 5.40
          }.freeze
 
-  def delivery_calc
-    time = (Time.now + 60 * 60).asctime.split[3]
-  end
-
   def price_calc(price, number = 1)
     @total += price * number
   end
 
-  def initialize(menu: MENU)
+  def initialize(menu: MENU, notification_class: Notification)
     @basket = []
     @menu = menu
     @total = 0
     @basket_summary = []
+    @notification_class = notification_class
   end
 
   def menu
@@ -30,24 +29,21 @@ class Takeaway
   end
 
   def basket_summary
-    @basket_summary
-  end
-
-  def basket_message
-    "Your basket is empty" if basket_number == 0
+    return "Your basket is empty" if unique_dishes_ordered == 0
+    @basket_summary.join(",")
   end
 
   def order(dish, number = 1)
     fail "This item isn't on the menu." unless @menu[dish]
     fail "For larger orders please phone us directly." if number > 10
-    @basket_summary << "#{dish} x #{number} = #{@menu[dish]*number}"
+    @basket_summary << "#{dish} x #{number} = #{(@menu[dish]*number).round(2)}"
     add_to_basket(dish, number)
   end
 
   def confirm_order
-    puts "Would you like to proceed with your order? (yes/no)"
-    answer = gets.chomp
-    "Thank you for your order. Your meal will arrive by #{delivery_calc}!" if answer == "yes"
+    message = "Thank you for your order. Your meal will arrive by #{delivery_calc}!"
+    @notification_class.new.send_sms(message)
+    message
   end
 
   def total
@@ -57,10 +53,17 @@ class Takeaway
   private
     attr_reader :basket
 
+    def unique_dishes_ordered
+      @basket.count
+    end
+
     def add_to_basket(dish, number)
       @basket << dish
       price_calc(@menu[dish], number)
       "#{number}x #{dish} added to your basket."
     end
 
+    def delivery_calc
+      time = (Time.now + 60 * 60).asctime.split[3]
+    end
 end
