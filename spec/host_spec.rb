@@ -72,4 +72,12 @@ describe Host do
      end
 
    end
+
+   describe "#send_message" do
+
+     it "sends a message to mobile number" do
+       
+     end
+
+   end
  end
