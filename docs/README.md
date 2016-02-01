@@ -11,10 +11,19 @@ The README.md, files, code and tests were prepared by Elaine Finn @ Makers Acade
 Requirements
 ############
 
-This project requires:
+This project requires the following Ruby version:
 
- - rspec
- - bundle install has implemented all necessary gems
+source 'https://rubygems.org'
+ruby '2.2.3'
+
+This project requires the following Ruby gems:
+
+gem 'rake'
+gem 'rspec'
+gem 'coveralls', require: false
+gem 'capybara'
+gem 'twilio-ruby', '~> 4.2.1'
+gem 'rubocop', '~> 0.36.0', require: false
 
 Installation
 ############
@@ -41,15 +50,35 @@ User stories
 
  - can be found in user_stories_spec.rb
 
-IRB demo of app
-###############
+IRB demo of app - User perspective
+##################################
 
-TBC
+REPLACE WITH EF CODE!
+
+2.2.3 :001 > t = TakeAway.new
+ => #<TakeAway:0x007f975b1a39a8 @menu=#<Menu:0x007f975b1a3890 @dishes={"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}>, @basket={}, @text_provider=#<TwilioAPI:0x007f975b1a33e0>>
+2.2.3 :002 > t.read_menu
+ => {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}
+2.2.3 :003 > t.order 'spring roll'
+ => "1x spring roll(s) added to your basket."
+2.2.3 :004 > t.order 'spring roll'
+ => "1x spring roll(s) added to your basket."
+2.2.3 :005 > t.order 'spring roll', 4
+ => "4x spring roll(s) added to your basket."
+2.2.3 :006 > t.basket_summary
+ => "spring roll x4 = £3.96"
+2.2.3 :007 > t.add 'pork dumpling', 3
+ => "3x pork dumpling(s) added to your basket."
+2.2.3 :008 > t.basket_summary
+ => "spring roll x4 = £3.96, pork dumpling x3 = £8.97"
+2.2.3 :009 > t.total
+ => "Total: £12.93"
+2.2.3 :010 > c.checkout(12.93)
 
 Code status
 ###########
 
-TBC
+WIP
 
 Copyright and Licensing
 #######################

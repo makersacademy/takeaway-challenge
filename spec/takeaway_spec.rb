@@ -1,15 +1,15 @@
-require 'dishes'
+require 'takeaway'
 
-describe Dishes do 
+describe Takeaway do 
 
-	subject(:dishes) {described_class.new}
+	let(:menu) {double(:menu)}
+	subject(:takeaway) {described_class.new(menu)}
 
-	describe '#list' do
+	describe '#menu' do
 
-		it 'shows a list of dishes with prices' do
-
+		it 'shows menu of dishes with prices' do
+			expect(takeaway.menu).to eq(menu)
 		end
-
 	end
 end
 
