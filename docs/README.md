@@ -1,7 +1,7 @@
 Title of project
 ################
 
-Takeaway Challenge - the aim of this project is to generate code to address 4 user stories (see features/user_stories_spec.rb).
+Takeaway Challenge - the aim of this project is to generate code to address 4 user stories - see https://github.com/makersacademy/takeaway-challenge
 
 Author
 ######
@@ -43,15 +43,14 @@ Project Directories
 ->doc directory - contains README.md and review.md
 ->lib directory - contains code 
 ->spec directory - contains rspec tests
-->spec directory -> features directory - contains user_stories_spec.rb 
-
-User stories
-############
-
- - can be found in user_stories_spec.rb
 
 IRB demo of app - User perspective
 ##################################
+
+2.2.3 :001 > require './lib/takeaway'
+ => true 
+2.2.3 :002 > takeaway = Takeaway.new(@menu)
+ => #<Takeaway:0x007fdb73197980 @menu=nil> 
 
 REPLACE WITH EF CODE!
 
