@@ -6,12 +6,13 @@ class Takeaway
 
   attr_reader :current_order, :order
 
-  def initialize(menu = Menu.new)
-    ### Begin Twilio-API Setup
-    account_sid = ENV['ACCOUNT_SID']
-    auth_token = ENV['AUTH_TOKEN']
-    @client = Twilio::REST::Client.new account_sid, auth_token
+  def initialize(menu = Menu.new, twilio)
+    # ### Begin Twilio-API Setup
+    # account_sid = ENV['ACCOUNT_SID']
+    # auth_token = ENV['AUTH_TOKEN']
+    # @client = Twilio::REST::Client.new account_sid, auth_token
     ### End Twilio-API Setup
+    @twilio = twilio
     @dishes = menu.dishes
     @menu = menu
     @order = Order.new(@menu)
@@ -42,7 +43,7 @@ class Takeaway
   private
 
   def send_text_confirmation
-    @message = @client.messages.create(
+    @message = @twilio.messages.create(
       to: ENV['TO'],
       from: ENV['FROM'],
       body: "Thank you! Your order was placed and will be delivered before #{ Time.new.hour+1 }:#{ add_zero(Time.new.min.to_s) }."
