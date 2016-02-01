@@ -5,7 +5,7 @@ describe Order do
   let(:menu_klass) {double :menu_klass}
   let(:menu) {double :menu}
 
-  subject(:order) {described_class.new(:menu)}
+  subject(:order) {described_class.new}
 
   before do
     allow(menu).to receive(:new)
