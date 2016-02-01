@@ -3,11 +3,12 @@ require 'takeaway.rb'
 describe Takeaway do
   let(:menu) { double :menu, dishes: {'prawn crackers' => 2} }
   let(:menu_klass) { double :menu_klass, new: menu }
-  subject(:takeaway) { described_class.new(menu_klass) }
+  let(:text) { double :text, send_text: nil }
+  let(:text_klass) { double :text_klass, new: text }
+  subject(:takeaway) { described_class.new(menu_klass, text_klass) }
 
   describe '#menu' do
     it 'returns a copy of the menu' do
-      allow(menu).to receive(:dishes) { {'prawn crackers' => 2} }
       expect(takeaway.menu).to eq ({'prawn crackers' => 2})
     end
   end
@@ -26,10 +27,6 @@ describe Takeaway do
       expect{takeaway.order('potato')}.to raise_error 'Sorry, that item is not on the menu'
     end
 
-    it 'updates the total' do
-      takeaway.order('prawn crackers', 2)
-      expect(takeaway.total).to eq 4
-    end
   end
 
   describe '#basket' do
@@ -47,10 +44,15 @@ describe Takeaway do
 
     it 'sends a confirmation text' do
       takeaway.order('prawn crackers')
-      expect(takeaway).to receive(:send_text)
+      expect(text).to receive(:send_text)
       takeaway.confirm_order(2)
     end
   end
 
-
+  describe '#calculate_total' do
+    it 'calculates the total of the items in the basket' do
+      takeaway.order('prawn crackers', 3)
+      expect(takeaway.calculate_total).to eq 6
+    end
+  end
 end
