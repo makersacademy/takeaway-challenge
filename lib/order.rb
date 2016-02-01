@@ -1,7 +1,6 @@
 class Order
   
-  attr_reader :total
-  attr_accessor :status
+  attr_reader :status, :total
   
   def initialize
     @status = []
@@ -23,7 +22,10 @@ class Order
     "Your basket is now empty."
   end
   
-private
+  private
+  
+  attr_writer :status
+  attr_writer :total
   
   def calculate_basket
     basket = status.group_by(&:keys)
@@ -35,8 +37,8 @@ private
   end
   
   def calculate_total
-    @total = 0
-    status.each { |item| @total += item.values[0] }
+    total = 0
+    status.each { |item| total += item.values[0] }   #use inject? 
     "Total = £#{total}"
   end
   

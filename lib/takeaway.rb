@@ -12,10 +12,10 @@ class Takeaway
     @restaurant = restaurant 
     @order_log  = order 
     @messager = messager
+    boot_strap
   end
   
   def menu
-    boot_strap
     read_list
     choice
   end
@@ -45,7 +45,7 @@ class Takeaway
     close_order
   end
   
-private 
+  private 
   
   def display_menu
     restaurant.own_menu

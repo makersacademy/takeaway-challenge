@@ -31,6 +31,7 @@ describe Order do
     it 'returns the list of items currently ordered' do
       
       expect{ order.check_order}.to output("Pizza x 3 = £30.0\nPasta x 2 = £16.0\n").to_stdout
+      
     end
   end
   
@@ -40,6 +41,7 @@ describe Order do
       
       order.clear_order
       expect(order.status).to eq []
+      
     end
   end
   

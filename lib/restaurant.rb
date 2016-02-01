@@ -8,7 +8,7 @@ class Restaurant
   end 
 
   def own_menu
-    @menu.each_pair { |key, value| puts "#{key} = £#{value.round(2)}"}
+    menu.each_pair { |key, value| puts "#{key} = £#{value.round(2)}"}
     "Please order from the menu above:"
   end
   
