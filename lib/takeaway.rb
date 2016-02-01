@@ -1,14 +1,11 @@
-require_relative 'menu.rb'
 require_relative 'order.rb'
-require 'dotenv'
-require 'rubygems'
-require 'twilio-ruby'
+require_relative 'messager.rb'
 
 class TakeAway
   
-  def initialize(order = Order.new)
+  def initialize(order = Order.new, messager = Messager.new)
     @order = order
-    @env = Dotenv.load
+    @messager = messager
   end
   
   def read_menu
@@ -39,12 +36,7 @@ class TakeAway
   end
   
   def send_text(message)
-    client = Twilio::REST::Client.new @env["account_sid"], @env["auth_token"]
-    client.account.messages.create(
-      from: @env["from_number"],
-      to: @env["to_number"],
-      body: message
-    )
+    @messager.send_text(message)
   end
   
   def correct_amount?(price)

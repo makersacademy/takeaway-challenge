@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class Order
   attr_reader :total_amount, :menu
   

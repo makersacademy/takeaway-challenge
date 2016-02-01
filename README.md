@@ -23,7 +23,7 @@ Instructions
    => "Total: £9.10" 
   2.2.3 :007 > chinese.complete_order(9.10)
 ```
-Build Badge
+Build Status
 -----------
 
 [![Build Status](https://travis-ci.org/tcpickard94/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tcpickard94/takeaway-challenge)
