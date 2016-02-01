@@ -8,8 +8,8 @@ class Messager
 
   def initialize
     @credentials = Dotenv.load
-    @account_sid = @credentials['ACCOUNT_SID']
-    @auth_token = @credentials['AUTH_TOKEN']
+    @account_sid = @credentials['ACCOUNT_SID'] || nil
+    @auth_token = @credentials['AUTH_TOKEN'] || nil
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
   end
 
