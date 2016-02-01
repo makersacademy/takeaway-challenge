@@ -1,8 +1,6 @@
 require_relative 'order_dispatch'
 
 class Restaurant
-  # Welcome to Kaiser Chefs, how can we help?
-  # Our menu is inspired by Dishoom, I recommend the Chicken Ruby.
   MENU = {
     far_far:            2.5,
     samosas:            4,
@@ -30,7 +28,6 @@ class Restaurant
     @dispatch = order_dispatch
   end
 
-  # IDEA: extract into module
   def view_menu
     @menu.clone.freeze
   end
