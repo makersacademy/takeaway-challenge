@@ -8,6 +8,7 @@ describe Host do
 
   before do
     allow(menu).to receive(:show_items).and_return("Salmon roll....£7.0")
+    allow(menu).to receive(:add_item).and_return(item)
     allow(order).to receive(:add_item).and_return(item)
     allow(order).to receive(:check_order).and_return("Salmon roll....£7.0")
     allow(order).to receive(:print_final_order).and_return("Salmon roll....£7.0\nThe total cost of your order is: £7.0.")
@@ -35,17 +36,17 @@ describe Host do
 
    end
 
-  #  describe "#add to menu" do
-   #
-  #    it "you can add items to the menu" do
-  #      expect(host.add_to_menu(item)).to eq item
-  #    end
-   #
-  #  end
+  describe "#add to menu" do
+
+    it "lets you add items to the menu" do
+      expect(host.add_to_menu(item)).to eq item
+    end
+
+  end
 
    describe "#add to order" do
 
-     it "you can add items from the menu to your order" do
+     it "lets you add items from the menu to your order" do
        expect(host.add_to_order(item)).to eq item
      end
 

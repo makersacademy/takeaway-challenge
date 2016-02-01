@@ -29,6 +29,8 @@ class Host
     @new_order.add_item(item)
   end
 
+  #TODO - add remove from order method.
+
   def show_order
     @new_order.check_order
   end
@@ -36,7 +38,7 @@ class Host
   def place_order
     print_recipt
     send_message
-    @new_order = order_klass.new
+    @new_order = @order_klass.new
   end
 
   def print_recipt

@@ -2,6 +2,7 @@ class Order
 
   def initialize
     @order_list = []
+    @total = 0
   end
 
   def add_item(item)
@@ -11,17 +12,20 @@ class Order
   def check_order
     puts "\nYour order currently contains:"
     @order_list.each do |item|
-      puts "\t#{item.name}....£#{item.price}"
+      puts "\t#{item.name}....£#{item.price}\n\n"
     end
-    puts ""
+  end
+
+  def show_list
+    @order_list.clone.freeze
   end
 
   def print_final_order
-    puts "#{check_order}\nThe total cost of your order is: £#{total}."
+    total
+    puts "#{check_order}\nThe total cost of your order is: £#{@total}"
   end
 
   def total
-    @total = 0
     @order_list.each do |item|
       @total += item.price
     end
