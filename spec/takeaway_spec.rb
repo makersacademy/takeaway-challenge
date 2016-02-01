@@ -10,7 +10,7 @@ describe Takeaway do
 	let(:dishes) {{chicken: 2, fish: 1}}
 
 	it {is_expected.to respond_to(:print_menu)} #instance of Order to respond to Order's print_menu method.
-	# it {is_expected.to respond_to(:select)}
+	it {is_expected.to respond_to(:place_order)}
 	# it {is_expected.to respond_to(:total)}
 	# it {is_expected.to respond_to(:text)}
 

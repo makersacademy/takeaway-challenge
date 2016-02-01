@@ -6,7 +6,7 @@ Takeaway Challenge - the aim of this project is to generate code to address 4 us
 Author
 ######
 
-The README.md, files, code and tests were prepared by Elaine Finn @ Makers Academy (Jan 2016 cohort).
+The README.md, files, code and tests were prepared by Makers Academy (Sam Morgan/Leo).
 
 Requirements
 ############
