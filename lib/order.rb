@@ -2,15 +2,26 @@ require_relative 'menu'
 class Order
   attr_reader :my_order
 
-  def initialize(menu_klass = Menu)
-    @my_order = []
-    @menu_klass = menu_klass.new
+  def initialize(menu = Menu.new)
+    @my_order = {}
+    @menu = menu
   end
 
-  def select_meal(dish)
-    unless @menu_klass.dishes.keys.include?(dish)
+  def display_menu
+    @menu.duplicate_menu
+  end
+
+  def select_meal(dish, quantity=1)
+    unless @menu.duplicate_menu.keys.include?(dish)
       raise "Please select a dish from the menu."
     end
-    @my_order << dish
+    @my_order[item] = quantity
+  end
+
+  def totaliser
+    total = @my_order.map do |k, v|
+      @menu.dishes[k] * v
+    end
+    total.inject(:+)
   end
 end
