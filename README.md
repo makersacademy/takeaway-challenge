@@ -28,7 +28,8 @@ I have made three classes for the application: 'Menu', 'Order' and 'Text'.  As w
 
 I have included an IRB transcript below which demonstrates how the application would be used.
 
-```2.2.3 :001 > require './lib/order.rb'
+```
+2.2.3 :001 > require './lib/order.rb'
  => true 
 2.2.3 :002 > order = Order.new
  => #<Order:0x000000018689f8 @menu_klass=#<Menu:0x00000001868980>, @text_klass=#<Text:0x00000001868930 @credentials={"TWILIO_SID"=>"******", "TWILIO_AUTH_TOKEN"=>"******", "TWILIO_NUMBER"=>"******", "MY_NUMBER"=>"******"}>, @chosen_items={}, @final_bill=0, @number_of_dishes=0> 
@@ -51,7 +52,8 @@ I have included an IRB transcript below which demonstrates how the application w
 2.2.3 :011 > order.show_bill
  => "£27.60" 
 2.2.3 :012 > order.finalize_order
- => [Details removed - Twilio text confirmation sent] ```
+ => [Details removed - Twilio text confirmation sent]
+ ```
  
  When a new order is created, a user is able to display the menu with the show_menu command.  This lists the items and their prices in a hash.  The order_selection command can then be used to select the dish and a quantity.  They are able to check their order size using check_order, which will display the dishes and quantity of each.  Order_summary allows the user to check dishes, quantity and price for each type of dish.  Further dishes can be added and show_bill can be used to check the total amount payable.  Finally, the user can use the finalize_order command and will receive the text confirmation through the twilio gem.
  
