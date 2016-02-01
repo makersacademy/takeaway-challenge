@@ -1,5 +1,5 @@
 require 'calculate_bill'
-require 'order'
+
 
 describe CalculateBill do
   subject(:calc){described_class.new}
