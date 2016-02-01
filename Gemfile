@@ -5,7 +5,7 @@ gem 'rake'
 gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
-# gem 'rubocop'
+gem 'rubocop'
 gem 'twilio-ruby'
-# gem 'sinatra'
+gem 'sinatra'
 gem 'dotenv-rails', groups: [:development, :test]
