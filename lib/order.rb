@@ -17,7 +17,12 @@ class Order
   end
 
   def view_order
-    basket.each{| hash | hash.each {|dish, value| puts dish.to_s + ' : ' + value.to_s }}
+    basket.each{| hash | hash.each {|dish, value| puts 'Dish: ' + dish.to_s + '; total amount: £' + value.to_s }}
   end
+
+  # def order_total
+  #   # basket.each{ |hash| hash.each { |sum, (key, value)| }}
+  #   basket.reduce(0){|sum, hash| sum += hash.price.first}
+  # end
 
 end

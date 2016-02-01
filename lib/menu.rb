@@ -15,10 +15,10 @@ MENU_LIST = {
     @menu_list = MENU_LIST
   end
 
-  def read_menu
-    @menu_list.each do | dish, price |
-      puts "#{dish}: £#{price}"
-  end
+  # def read_menu
+  #   @menu_list.each do | dish, price |
+  #     puts "#{dish}: £#{price}"
+  #     end
+  # end
 
-end
 end
