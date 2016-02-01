@@ -32,8 +32,15 @@ describe Takeaway do
   context '#receipt' do
     it 'has a receipt for my order' do
       takeaway.order("Burger", 1)
-      expect(takeaway.order_total).to eq(10)
+     # takeaway.confirmed_order(10)
+      #expect(takeaway.total).to eq(true)
     end
+
+    it 'confirms my order with a text message' do
+      takeaway.order("Burger", 1)
+      #takeaway.confirmed_order(10)
+      #expect(takeaway.confirmed_order(10)).to receive(:send_text).with("Thank you for your order! Your total is #{takeaway.order_total}")
+    end  
   end
 
 end
