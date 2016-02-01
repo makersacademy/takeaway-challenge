@@ -1,78 +1,66 @@
 Takeaway Challenge
 ==================
 
-Instructions
+Installation
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Fork the repository then git clone to your local repository
+* Install Bundler to manage gem dependancies, then run 'Bundle' from the command line to install the relevant gems
+* Open the program form the command line by requiring the 'Restaurant' lib file from the command line
 
-Task
------
+Operation
+-------
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* The interface for the Takeaway program is the Restaurant class, this provides the public interface for the takeaway program, and is where the commands would be issued. The Restaurant interface is instantiated with the  'Restaurant.new' command. There are four main commands that provide the functionality specified by the User stories;
+
+* show_menu - Returns a menu of items that can be ordered
+* place_order ('dish', quantity) - Adds the specified dish to the order in the specified quantity(will default to 1 if no quantity provided)
+* show_order - Returns a list of the items currently in the order, their quantities and the total of the order
+* confirm_order(total) - The customer passes in their estimated/anticipated total to confirm the order, if this total does not match the total of items in the basket, an error will be raised. Otherwise the order will be confirmed and a string returned, and a text message confirming delivery time will be sent to the customer.
+
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+2.2.3 :001 > require './lib/restaurant.rb'
+ => true
+2.2.3 :002 > r = Restaurant.new
+ => #<Restaurant:0x007fb859a64078 @menu_item_klass=MenuItem, @order=#<Order:0x007fb859a64050 @history={}, @messager_klass=#<Messager:0x007fb859a666c0>>>
+2.2.3 :003 > r.show_menu
+salt and pepper squid => 3.5,
+chicken satay => 4.5,
+prawn summer rolls => 5.6,
+sticky pork ribs => 5.0,
+chilli soft shell crab => 7.5,
+2.2.3 :004 > r.place_order("chicken satay")
+1 chicken satay, added to your order => nil
+2.2.3 :005 > r.place_order("salt and pepper squid", 5)
+5 salt and pepper squid, added to your order => nil
+2.2.3 :006 > r.show_order
+1 chicken satay, 5 salt and pepper squid, total 22.0 => nil
+2.2.3 :007 > r.confirm_order(23.0)
+RuntimeError: Total given does not match calculated total
+	from /Users/emmabaddeley/Projects/takeaway-challenge/lib/order.rb:43:in `total_mismatch_error'
+	from /Users/emmabaddeley/Projects/takeaway-challenge/lib/order.rb:32:in `confirm_order'
+	from (irb):7
+	from /Users/emmabaddeley/.rvm/rubies/ruby-2.2.3/bin/irb:15:in `<main>'
+2.2.3 :008 > r.confirm_order(22.0)
+Your order has been confirmed
+ => nil
+2.2.3 :009 >
 
 ```
-$ coveralls report
-```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+Approach
+-------
 
-Build Badge Example
-------------------
+I created four classes to implement the functionality required by the user stories;
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+* Restaurant Class - this is the public interface for the program that the customer interacts with. It is responsible for listing the menu and allowing a customer to place an order. It has unidirectional relationships with Order and MenuItem. Restaurant is instantiated once.
+* MenuItem - Instantiated once for each item on the menu (defined as a constant in Restaurant). Holds information about the name and price of each menu item.
+* Order Class - this class is responsible for adding items to the order, calculating the total of the order, and confirming when an order is completed. Order is instantiated once for each instantiation of Restaurant.
+* Messager Class - responsible for sending the confirmation text message to the customer when the order is completed.
+
+Gems
+-------
+
+* Twilio - I used the Twilio gem to send messages to phones
+* Dotenv - I used the Dotenv gem to hide my Twilio credentials an environmental variables
