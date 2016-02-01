@@ -36,7 +36,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     p "What would you like to eat? Eg '2 Carbonara and a Tiramisu'"
     user_input = STDIN.gets.chomp
     @order = order.new(user_input, menu_choice)
-    @order.add_to_basket
+    @basket = order.add_to_basket
   end
 
 
@@ -50,11 +50,21 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   end
 
   def review_order
-    @basket.itemised_bill.each do |item|
+    basket.itemised_bill.each do |item|
       puts ("Dish: #{item[0]}".ljust(SCREEN_WIDTH) + "Quantity: #{item[1]}".ljust(SCREEN_WIDTH/2) + "Price per dish: #{item[2]}".rjust(SCREEN_WIDTH/2) + "Total: #{item[3]}".rjust(SCREEN_WIDTH))
     end
       puts ("GRAND TOTAL: #{basket.total_bill}".center(SCREEN_WIDTH))
   end
+
+  # def remove(selected)
+  #   @dish = selected
+  #   @basket.selection.delete_if{|full_order| @dish.capitalize.to_sym == full_order[0] }
+  # end
+  #
+  # def change_quantity(dish, quantity)
+  #   @dish = dish
+  #   @basket.map!{|full_order| @dish.capitalize.to_sym == full_order[0] ? full_order[1] = quantity : full_order[1] }
+  # end
 
   def confirm_order(price)
     @price = price

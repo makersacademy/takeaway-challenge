@@ -43,25 +43,38 @@ describe Basket do
 
     before do
       allow(STDOUT).to receive(:puts).with("Unexpected Item In Bagging Area, removing item")
+      allow(worked_basket_bad).to receive(:unexpected_item_in_bagging_area?)
+      allow(worked_basket).to receive(:unexpected_item_in_bagging_area?)
+      allow(worked_basket_bad).to receive(:remove_unexpected_items)
     end
 
       it 'returns a multidimensional array, each subarray has 4 elements' do
-        print worked_basket.itemised_bill
+        worked_basket.itemised_bill
         expect(worked_basket.itemised_bill).to be_a Array
       end
 
       it 'checks if there are "Unexpected Items In Bagging Area" if item not on menu' do
-        allow(sample_selection_bad).to receive(:unexpected_item_in_bagging_area?)
-        expect(sample_selection_bad).to receive(:unexpected_item_in_bagging_area?).and_return true
+        expect(worked_basket_bad).to receive(:unexpected_item_in_bagging_area?)
         worked_basket_bad.itemised_bill
       end
 
-      it 'deletes items if they are not on the selected menu.' do
-
+      it 'returns true if there are "Unexpected Items In Bagging Area" if item not on menu' do
+        expect(worked_basket_bad).to receive(:unexpected_item_in_bagging_area?).and_return true
+        worked_basket_bad.itemised_bill
       end
 
-      xit 'has the dish name as the first element' do
-        expect(worked_basket.itemised_bill).to be_a Symbol
+      it 'returns false if there are no "Unexpected Items In Bagging Area" if item not on menu' do
+        expect(worked_basket).to receive(:unexpected_item_in_bagging_area?).and_return false
+        worked_basket.itemised_bill
+      end
+
+      it 'deletes items if they are not on the selected menu.' do
+        expect(worked_basket_bad).to receive(:remove_unexpected_items)
+        worked_basket_bad.itemised_bill
+      end
+
+      it 'has the dish name as the first element' do
+        expect(worked_basket.itemised_bill[0][0]).to be_a Symbol
       end
 
 

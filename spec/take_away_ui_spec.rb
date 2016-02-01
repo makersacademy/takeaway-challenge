@@ -157,6 +157,7 @@ end
         let(:sample_total) {double :sample_total}
 
         before do
+          allow(STDOUT).to receive(:puts).and_return("")
           allow(dummy_basket).to receive(:itemised_bill).and_return sample_bill
           allow(sample_bill).to receive(:each)
           allow(dummy_basket).to receive(:total_bill).and_return sample_total

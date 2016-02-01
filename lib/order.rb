@@ -1,6 +1,6 @@
 require_relative 'basket'
 
-private
+# private
 
 class Order
 
@@ -16,8 +16,9 @@ attr_reader :user_input, :menu_choice, :basket, :basket_klass
   def add_to_basket
     selection = []
     submission.each{|dish_quantity| selection << dish_quantity}
-    unless basket.is_a? basket_klass
+    if basket == basket_klass
       @basket = basket.new(selection, menu_choice)
+      basket
     else
       (@basket.selection << selection).flatten
     end

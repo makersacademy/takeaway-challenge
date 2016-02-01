@@ -103,13 +103,13 @@ describe Order do
     end
 
     it 'will check that there is no basket there already' do
-      expect(dummy_basket).to receive(:is_a?).and_return true
+      expect(dummy_basket).to receive(:==).and_return false
       order.add_to_basket
     end
 
 
     it 'will not initialize a new basket if one already exists' do
-      expect(dummy_basket_klass).not_to receive(:new)
+      expect(dummy_basket).not_to receive(:new)
       order.add_to_basket
     end
 
