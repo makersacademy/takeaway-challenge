@@ -21,33 +21,21 @@ attr_reader :selection, :menu_choice
   end
 
 
-  def remove_unexpected_items
-    unexpected_items = (selection.transpose[0] - menu_choice.keys)
-    reselection = selection.delete_if {|item| item[0] == unexpected_items[0]}
-    @selection = reselection
-  end
-
-
 private
 
   def look_up_prices
     @selection.each{|full_order| full_order << menu_choice[full_order[0]]}
   end
 
-  # #
-  # def removed_unexpected_items
-  #   i = []
-  #   selection.transpose[0].each_with_index{|element, index| i <<  index if @menu_choice.has_key?(element) }
-  #   @selection = selection.i
-  #   print selection
-  # end
+  def remove_unexpected_items
+    unexpected_items = (selection.transpose[0] - menu_choice.keys)
+    reselection = selection.delete_if {|item| item[0] == unexpected_items[0]}
+    @selection = reselection
+  end
 
   def unexpected_item_in_bagging_area?
     unexpected_items = menu_choice.keys & selection.transpose[0]
     unexpected_items.size >= 1
   end
-
-
-
 
 end

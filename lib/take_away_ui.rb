@@ -10,7 +10,7 @@ class TakeAway
 
 SCREEN_WIDTH = 40
 
-attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_choice, :price, :order_summary
+attr_reader :cuisine_choice, :order, :basket, :selection, :menu_choice, :price, :order
 
 
   def initialize(cuisine_choice=ItalianMenu, order=Order, basket=Basket)
@@ -18,7 +18,6 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     @basket = basket
     @order = order
     @selection = Array.new
-    @price = 0
   end
 
   def menu_choice(meal= :dinner, course= :all)
@@ -65,15 +64,17 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     checkout_message(order_summary)
   end
 
-  def checkout_message(order_summary)
-    CheckoutMessage.new.send_sms(order_summary)
-  end
-
   def order_summary
     "Your food is on it's way! GRAND TOTAL: £#{price}"
   end
 
   private
+
+  attr_reader :meal, :course
+
+  def checkout_message(order_summary)
+    CheckoutMessage.new.send_sms(order_summary)
+  end
 
   def price_correct?
     price == basket.total_bill
@@ -90,8 +91,6 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   def course_choice_valid?
     [:starter, :main, :dessert, :all].include? course
   end
-
-
 
 end
 

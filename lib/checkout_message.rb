@@ -3,6 +3,7 @@ require 'rubygems'
 require 'twilio-ruby'
 require 'dotenv'
 
+private
 
 class CheckoutMessage
 

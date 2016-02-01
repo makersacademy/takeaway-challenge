@@ -1,6 +1,6 @@
 require_relative 'basket'
 
-# private
+private
 
 class Order
 
@@ -17,10 +17,10 @@ attr_reader :user_input, :menu_choice, :basket, :basket_klass
     selection = []
     submission.each{|dish_quantity| selection << dish_quantity}
     if basket == basket_klass
-      @basket = basket.new(selection, menu_choice)
+      @basket = basket_klass.new(selection, menu_choice)
       basket
     else
-      (@basket.selection << selection).flatten
+      (basket.selection << selection).flatten
     end
   end
 
@@ -35,7 +35,4 @@ attr_reader :user_input, :menu_choice, :basket, :basket_klass
   def submission
     process_order_dishes.zip(process_order_quantities)
   end
-
-
-
 end

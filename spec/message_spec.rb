@@ -12,7 +12,7 @@ describe CheckoutMessage do
     it 'is initialized with credentials from Dotenv' do
       expect(message.creds).to eq Dotenv.load
     end
-
+    
   end
 
   describe "#time_delivery_expected" do
@@ -23,16 +23,6 @@ describe CheckoutMessage do
       p time
       expect(message.time_delivery_expected).to eq(time.strftime "%H:%M")
     end
+
   end
-
-  # describe '#send_sms' do
-  #
-  #   it "will send a message confirming order" do
-  #     allow(message).to_receive(:send_sms).with(sample_message).and_return "blah"
-  #     expect(message).to eq "blah"
-  #
-  #   end
-  #
-  # end
-
 end
