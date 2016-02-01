@@ -1,4 +1,3 @@
-require 'twilio-ruby'
 require 'dotenv'
 require_relative 'menu'
 require_relative 'order'

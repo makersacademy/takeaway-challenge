@@ -24,15 +24,15 @@ This programme can be run in `irb` or `pry` from the command line. Replace `PHON
 $ irb
 2.2.3 :001 > require './lib/takeaway'
  => true
-2.2.3 :002 > takeaway = Takeaway.new(PHONE)
- => #<Takeaway:0x007f8e111aa300 @phone='PHONE', @menu=#<Menu:0x007f8e111aa2b0 @filename="menu.yaml">, @order=#<Order:0x007f8e111aa210 @basket={}, @order_total=0>>
+2.2.3 :002 > takeaway = Takeaway.new
+ => #<Takeaway:0x007fff313a5970 @menu=#<Menu:0x007fff313a5948 @filename="menu.yaml">, @order=#<Order:0x007fff313a5880 @basket={}, @order_total=0>, @messenger=#<Messenger:0x007fff313a5830>>
 2.2.3 :003 >
 ```
 
 To see a list of available dishes on the menu, use the `.read_menu` command. A sample menu is provided in the `./lib/menu.yaml` file, and can be edited using the same format.
 
 ```
-2.2.3 :003 > takeaway.read_menu
+.2.3 :003 > takeaway.read_menu
  => {:onion_bhaji=>2.95, :chicken_tikka_masala=>7.95, :naan=>1.95}
 2.2.3 :004 >
 ```
@@ -49,13 +49,13 @@ Select dishes by entering the dish names with desired quantity, using the `.sele
 2.2.3 :007 >
 ```
 
-To place an order, use the `.checkout` command. Then confirm the order by entering the total number of dishes ordered using the `.confirm_order` command.
+To place an order, use the `.checkout` command. Then confirm the order by entering the total number of dishes ordered using the `.confirm_order` command. Replace `PHONE` with a valid phone number for text service.
 
 ```
 2.2.3 :007 > takeaway.checkout
  => "You've ordered 7 items."
-2.2.3 :008 > takeaway.confirm_order(7)
- => "Thank you! Your order was placed and will be delivered before 00:52. Total price is £26.65"
+2.2.3 :008 > takeaway.confirm_order(7, PHONE)
+ => "Thank you! Your order was placed and will be delivered before 14:48. Total price is £26.65"
 2.2.3 :009 >
 ```
 
