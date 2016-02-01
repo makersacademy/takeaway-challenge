@@ -1,9 +1,9 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:menu) { double :menu, list_menu: test_menu }
-  let(:test_menu) {"'Pizza' => 7"}
-  subject(:takeaway) { described_class.new(menu)}
+  let(:menu) { double :menu }
+  let(:test_menu) { {'Pizza' => 7} }
+  subject(:takeaway) { described_class.new}
 
   describe '#initialize' do
     it 'starts with an empty basket' do
@@ -17,9 +17,8 @@ describe Takeaway do
   # # I would like to see a list of dishes with prices
   describe '#show menu' do
     it 'returns contents of menu' do
-      # NOT SURE HOW TO CORRECTLY TEST THIS
-      # BUT IT WORKS IN PRY USING: takeaway.show_menu
-      expect(takeaway.show_menu).to eq test_menu
+      allow(takeaway).to receive(:show_menu) {test_menu}
+      expect(takeaway.show_menu).to eq (test_menu)
     end
   end
 

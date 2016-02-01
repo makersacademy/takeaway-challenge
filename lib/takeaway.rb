@@ -3,27 +3,15 @@ require 'twilio-ruby'
 
 class Takeaway
 
-attr_reader :basket, :list_menu, :menu
+attr_reader :basket
 
-  def initialize(menu)
+  def initialize
     @basket = []
-    @menu = menu
-    @pizza_menu =
-      {'Margherita' => 6,
-      'Funghi' => 6,
-      'Fiorentina' => 6,
-      'Formaggi' => 6,
-      'Giardino' => 6,
-      'Tropicali' => 7,
-      'Reine' => 7,
-      'Marino' => 7,
-      'Pepporoni' => 7,
-      'Carne' => 7,
-      }
+    @menu = Menu.new
   end
 
   def show_menu
-    @menu.list_menu
+    @menu.pizza_menu
   end
 
   def place_order(dish, quantity)
@@ -31,9 +19,9 @@ attr_reader :basket, :list_menu, :menu
   end
 
   def total
-    total = 0
-    basket.each{|dish, quantity| total += (@pizza_menu[dish] * quantity)}
-    total
+    @total = 0
+    basket.each{|dish, quantity| @total += (@menu.pizza_menu[dish] * quantity)}
+    @total
   end
 
   def check_total
@@ -46,8 +34,6 @@ attr_reader :basket, :list_menu, :menu
     end
   end
 
-  # I want the 'total' argument to be the same number calculated above
-  # but don't think this is what is happening
   def order_processed(total)
     send_text("Thanks for your order, total cost: #{total}")
   end

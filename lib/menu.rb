@@ -1,9 +1,9 @@
 class Menu
 
-attr_reader :pizza_menu, :list_menu
+attr_reader :pizza_menu
 
-  def list_menu
-    pizza_menu =
+  def initialize
+    @pizza_menu =
       {'Margherita' => 6,
       'Funghi' => 6,
       'Fiorentina' => 6,
@@ -15,7 +15,6 @@ attr_reader :pizza_menu, :list_menu
       'Pepporoni' => 7,
       'Carne' => 7,
       }
-    puts pizza_menu
   end
 
 end
