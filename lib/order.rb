@@ -30,8 +30,8 @@ class Order
   end
 
   def complete_order(payment)
-    current_order
     fail "Incorrect Payment" if payment != bill
+    current_order
     calculate_price
     Text.new.send_text
   end
