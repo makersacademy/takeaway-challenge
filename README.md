@@ -8,7 +8,7 @@ Using the user stories I created three classes(Order,CalculateBill,Message) and 
 Instructions
 ------------
 
-You can use the program by first requiring the file:
+```You can use the program by first requiring the file:
 
   2.2.3 :001 > require "./lib/order"
 
@@ -45,6 +45,7 @@ check the total cost:
 recieve a confirmation message:
 
   2.2.3 :008 > order.send_message
+  ```
 
 
 Created by Matt Gough (mattpgough@gmail.com)
