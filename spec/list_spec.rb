@@ -22,4 +22,12 @@ describe List do
 		displayed_list = "Chicken_tandoori £9.99, Lamb_handi £9.99"
 		expect(list.display).to eq(displayed_list)
 	end
-end
+
+	it "tells if a dish is on the list" do
+   expect(list.has_dish?(:chicken_tandoori)).to be true
+  end
+
+  it "tells if a dish is not on the list" do
+    expect(list.has_dish?(:vindaloo)).to be false
+  end
+ end
