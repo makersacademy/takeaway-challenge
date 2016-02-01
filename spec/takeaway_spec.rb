@@ -1,8 +1,9 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new }
-  let(:menu) { double :menu }
+  let(:menu) { double :menu, list_menu: test_menu }
+  let(:test_menu) {"'Pizza' => 7"}
+  subject(:takeaway) { described_class.new(menu)}
 
   describe '#initialize' do
     it 'starts with an empty basket' do
@@ -18,6 +19,7 @@ describe Takeaway do
     it 'returns contents of menu' do
       # NOT SURE HOW TO CORRECTLY TEST THIS
       # BUT IT WORKS IN PRY USING: takeaway.show_menu
+      expect(takeaway.show_menu).to eq test_menu
     end
   end
 
@@ -57,7 +59,8 @@ describe Takeaway do
   # placed and will be delivered before 18:52" after I have ordered
   describe '#send text' do
     it 'sends text when order made' do
-      allow(takeaway).to receive(:send_text).with('Thanks for your order, total cost: 27')
+      allow(takeaway).to receive(:send_text)
+      expect(takeaway).to receive(:send_text).with('Thanks for your order, total cost: 27')
       takeaway.order_processed(27)
     end
   end
