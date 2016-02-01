@@ -7,7 +7,7 @@ describe Operator do
   let(:order) {"steak, chips 3, pizza 2"}
   let(:menu_string) {double(:menu_string)}
   let(:message) {"requesting menu please"}
-  subject(:oystercard) {described_class.new(menu, text)}
+  subject(:operator) {described_class.new(menu, text)}
 
   before(:example) do
     allow(text).to receive(:new_message).and_return(message)
@@ -17,27 +17,27 @@ describe Operator do
   end
 
   it 'should be able to check for new incoming text messages' do
-    expect(subject.check_new_messages).to eq message
+    expect(operator.check_new_messages).to eq message
   end
 
   it {is_expected.to respond_to(:action)}
 
   it 'can recognise if a customer is requesting a menu' do
-    subject.check_new_messages
-    expect(subject.request_menu?).to be true
+    operator.check_new_messages
+    expect(operator.request_menu?).to be true
   end
 
   it 'can sort an incoming order' do
-    expect(subject.sort_order(order)).to eq({:steak=>1,:chips=>3,:pizza=>2})
+    expect(operator.sort_order(order)).to eq({:steak=>1,:chips=>3,:pizza=>2})
   end
 
   it 'can send a menu to a customer when necessary' do
-    expect(subject.send(menu))
+    expect(operator.send(menu))
   end
 
   it 'can create a confirmation message' do
-    subject.sort_order(order)
-    expect(subject.confirmation_message).to be_instance_of String
+    operator.sort_order(order)
+    expect(operator.confirmation_message).to be_instance_of String
   end
 
 end

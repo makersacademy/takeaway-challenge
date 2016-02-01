@@ -22,18 +22,28 @@ class Text
   def reply
     @replies = []
     @all_texts = []
-    @client.messages.list.each do |message|
-      @all_texts << message.body
-    end
-    @all_texts.each { |reply|
-      @replies << reply unless reply.include? "Twilio trial"
-    }
+    @all_texts = import_from_twilio
+    extract_incoming_messages
     @replies
   end
 
   def new_message
     reply
     @replies[0].downcase.clone
+  end
+
+  private
+  def import_from_twilio
+    @client.messages.list.each do |message|
+      @all_texts << message.body
+    end
+    @all_texts
+  end
+
+  def extract_incoming_messages
+    @all_texts.each do |reply|
+      @replies << reply unless reply.include? "Twilio trial"
+    end
   end
 
 
