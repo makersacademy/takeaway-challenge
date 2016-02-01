@@ -5,7 +5,7 @@ Takeaway Challenge
 What is it?
 -----------
 
-This is Week 2 weekend challenge at Makers Academy. This Takeaway program can take customer's order from a list of available dishes on a menu. Once the order is placed, a confirmation text will be sent, notifying customer the delivery time. Full instructions can be found in [INSTRUCTIONS.md](https://github.com/yyl29/takeaway-challenge/blob/master/INSTRUCTIONS.md).
+This is Week 2 weekend challenge at Makers Academy. This Takeaway program can take customer's order from a list of available dishes on a menu. Once the order is placed, a confirmation text will be sent using the Twilio API, notifying customer the delivery time. Full instructions can be found in [INSTRUCTIONS.md](https://github.com/yyl29/takeaway-challenge/blob/master/INSTRUCTIONS.md).
 
 Features
 ---------
@@ -49,7 +49,7 @@ Select dishes by entering the dish names with desired quantity, using the `.sele
 2.2.3 :007 >
 ```
 
-To place an order, use the `.checkout` command then confirm the order by entering the total number of dishes ordered using the `.confirm_order` command.
+To place an order, use the `.checkout` command. Then confirm the order by entering the total number of dishes ordered using the `.confirm_order` command.
 
 ```
 2.2.3 :007 > takeaway.checkout
