@@ -1,4 +1,4 @@
-require 'checkout'
+require 'checkout_message'
 
 describe CheckoutMessage do
   subject(:message) {described_class.new}

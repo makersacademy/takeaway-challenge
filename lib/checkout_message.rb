@@ -17,17 +17,17 @@ class CheckoutMessage
   end
 
   def time_delivery_expected
-    time.strftime "%H:%M:%S"
+    time.strftime "%H:%M"
   end
 
   def send_sms(message)
-
-
-    client = Twilio::REST::Client.new(creds["ACCOUNT_SID"], creds["AUTH_TOKEN"])
+    account_sid = creds["ACCOUNT_SID"]
+    auth_token = creds["AUTH_TOKEN"]
+    client = Twilio::REST::Client.new(account_sid, auth_token)
     client.account.messages.create(
       :from => creds["TWILIO_PHONE"],
       :to => creds["TWILIO_DESTINATION_PHONE"],
-      :body => message + "Should be with you by #{time} "
+      :body => message + "Should be with you by #{time_delivery_expected} "
       )
   end
 

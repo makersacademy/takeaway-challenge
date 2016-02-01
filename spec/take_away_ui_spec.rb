@@ -22,7 +22,7 @@ describe TakeAway do
 
   #Doubling checkout class
   let(:checkout_message) {double :checkout_message}
-  # let(:checkout_time) {Checkout::HOURS_UNTIL_DELIVERY}
+  let(:message_text) {"Your food is on it's way! GRAND TOTAL: £0"}
 
 
 before do
@@ -189,7 +189,7 @@ end
           allow(dummy_basket).to receive(:total_bill).and_return price
           allow(dummy_basket).to receive(:checkout)
           allow(dummy_basket).to receive(:itemised_bill).and_return sample_selection
-          allow(checkout_message).to receive(:send_sms)
+          allow(checkout_message).to receive(:send_sms).with(message_text).and_return checkout_message
         end
 
 
@@ -199,7 +199,7 @@ end
         end
 
         it 'checks the price against the total_bill' do
-          expect(sample_selection).to receive(:total_bill)
+          expect(dummy_basket).to receive(:total_bill)
           menu.confirm_order(price)
         end
 
@@ -214,12 +214,12 @@ end
 
         it 'checks-out the basket if prices match' do
           expect(dummy_basket).to receive(:checkout)
-          menu.confirm_order(price)
+          menu.checkout_message(price)
         end
 
         it 'sends a confirmation text message' do
-          expect(takeaway).to receive(:send_sms).with(takeaway.order_summary)
-          takeaway.complete_order(takeaway.order_summary)
+          expect(checkout_message).to receive(:send_sms).with(message_text).and_return checkout_message
+          menu.checkout_message(checkout_message)
         end
 
 

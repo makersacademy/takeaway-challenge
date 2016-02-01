@@ -1,7 +1,7 @@
 
 require_relative 'italian_menu'
 require_relative 'order'
-require_relative 'checkout'
+require_relative 'checkout_message'
 require 'twilio-ruby'
 require 'dotenv'
 
@@ -17,7 +17,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     @cuisine_choice = cuisine_choice
     @basket = basket
     @order = order
-    @selection = []
+    @selection = Array.new
     @price = 0
   end
 
@@ -62,6 +62,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   def confirm_order(price)
     @price = price
     fail "Price does not match" if !price_correct?
+    # checkout_message(order_summary)
   end
 
   def checkout_message(order_summary)
@@ -69,7 +70,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   end
 
   def order_summary
-    "Your food is on it's way! GRAND TOTAL: £#{basket.total_bill}"
+    "Your food is on it's way! GRAND TOTAL: £#{price}"
   end
 
   private

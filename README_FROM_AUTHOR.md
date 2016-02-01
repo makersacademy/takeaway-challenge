@@ -30,9 +30,9 @@ The development of Customer Relationship Management functions, such as including
 
 THINGS I NEED TO DO
 
-1. Get Dotenv to work!
-2. Write an ability to review and amend order before confirming it.
-3. Feature test specs
+
+1. Write an ability to review and amend order before confirming it.
+
 
 
 USER STORIES:
