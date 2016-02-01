@@ -8,7 +8,7 @@ describe Takeaway do
     
     it { is_expected.to respond_to(:clear_order)}
     it { is_expected.to respond_to(:check_order)}
-    
+    it { is_expected.to respond_to(:choice)}
     
     
     it 'gets the answer for the cuisine type' do
@@ -17,6 +17,7 @@ describe Takeaway do
       expect(takeaway.get_choice).to eq "1"
     end
   end
+  
   
   describe "#order" do
     

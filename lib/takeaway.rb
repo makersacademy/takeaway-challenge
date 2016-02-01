@@ -7,7 +7,7 @@ class Takeaway
   
   attr_reader :restaurant, :order_log, :messager
   
-  def initialize(restaurant = Restaurant.new, order=Order.new, messager=Messager.new) 
+  def initialize(restaurant=Restaurant.new, order=Order.new, messager=Messager.new) 
     @action ||= nil 
     @restaurant = restaurant 
     @order_log  = order 
