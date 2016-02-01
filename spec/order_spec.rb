@@ -3,13 +3,13 @@ require 'menu'
 
 describe Order do
   let(:menu_list) do {
-    :caesar_salad => 4,
-    :gazpacho => 3,
-    :tartiflette => 6,
-    :butternut_squash_risotto => 6,
-    :roasted_vegetables => 6,
-    :pumpkin_pie => 2,
-    :eclair => 2 }
+    caesar_salad: 4,
+    gazpacho: 3,
+    tartiflette: 6,
+    butternut_squash_risotto: 6,
+    roasted_vegetables: 6,
+    pumpkin_pie: 2,
+    eclair: 2 }
   end
   subject(:order) {described_class.new(menu_list)}
   # real class with fake bit injected
