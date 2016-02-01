@@ -4,7 +4,7 @@ describe Order do
   subject(:order) { described_class.new}
   let(:subject) {double(order)}
 
-  describe 'order' do
+  describe 'Make an order' do
     it 'creates menu' do
       expect(order.current_order).to include {}
     end
@@ -15,7 +15,7 @@ describe Order do
     end
 
     it 'raises error when item not on menu selected' do
-      expect {order.select_item('dogshit')}.to raise_error
+      expect {order.select_item('dogshit', 2)}.to raise_error 'please select item from menu'
     end
 
     it 'calculates price' do
@@ -30,14 +30,10 @@ describe Order do
     end
   end
 
-    before do
-      allow(order).to receive(:complete_order).and_return('Incorrect Payment')
-    end
-
-    describe 'complete order' do
+    describe 'fail to complete order' do
       it 'fails if incorrect payment' do
         order.select_item(:chips, 3)
-        expect(order.complete_order).to eq 'Incorrect Payment'
+        expect{order.complete_order(10)}.to raise_error 'Incorrect Payment'
       end
     end
 
