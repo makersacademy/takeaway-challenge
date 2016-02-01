@@ -1,7 +1,7 @@
 require_relative 'dish'
 class Menu
   attr_reader :menu_list
-  def initialize (menu_list=Hash.new)
+  def initialize (menu_list={})
     @menu_list = menu_list
   end
   def see_menu
