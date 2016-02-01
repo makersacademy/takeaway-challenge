@@ -1,19 +1,17 @@
-# deals with menus and selection
+# deals with menus content and selection
 
 class Menu
 
-	attr_reader :dishes, :prices
+	attr_reader :dishes
 
-	def initialize
-		@dishes = Hash.new
-		@prices = prices
+	def initialize(dishes)
+		@dishes = dishes
 	end
 
-	def list_dishes
-		@dishes
-	end
-
-	def prices
-		@prices
-	end
+	def print
+ 		dishes.map do |title, price| 
+ 		"%s £%.2f" % [title.to_s.capitalize, price]
+ 		end.join(", ")
+ 	end
 end
+
