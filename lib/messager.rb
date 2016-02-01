@@ -8,15 +8,17 @@ class Messager
 
   def initialize
     @credentials = Dotenv.load
-    @account_sid = @credentials['ACCOUNT_SID'] || nil
-    @auth_token = @credentials['AUTH_TOKEN'] || nil
+    @account_sid = @credentials['ACCOUNT_SID']
+    @auth_token = @credentials['AUTH_TOKEN']
+    @twilio_number = @credentials['TWILIO_NUMBER']
+    @my_number = @credentials['MY_NUMBER']
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
   end
 
   def send_sms(message)
     @client.messages.create(
-    from: '+441704325073',
-    to: '+447842112075',
+    from: @twilio_number,
+    to: @my_number,
     body: message
     )
     puts 'Your order has been confirmed'

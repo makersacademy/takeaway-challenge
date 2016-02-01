@@ -2,7 +2,7 @@ require_relative 'menu_item'
 require_relative 'order'
 
 class Restaurant
-  
+
   extend Forwardable
   def_delegator :@order, :confirm_order, :confirm_order
   def_delegator :@order, :show_order, :show_order
@@ -20,7 +20,7 @@ class Restaurant
 
   def show_menu
     @itemized_menu = create_menu(MENU)
-    @itemized_menu.each {|menu_item| puts "#{menu_item.name}" " => " "#{menu_item.price},"}
+    @itemized_menu.each {|menu_item| puts "#{menu_item.name} = #{menu_item.price},"}
   end
 
  def place_order(item, quantity=1)

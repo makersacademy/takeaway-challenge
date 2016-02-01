@@ -6,7 +6,7 @@ describe Restaurant do
   xdescribe '#show_menu' do
 
     it 'outputs the list of menu items' do
-      expect{restaurant.show_menu}.to output(Restaurant::MENU.each {|key, value| "#{key} = #{value}"}).to_stdout
+      expect{restaurant.show_menu}.to output(Restaurant::MENU.each {|key, value| puts "#{key.to_s} = #{value}"}).to_stdout
     end
 
   end
@@ -33,10 +33,18 @@ describe Restaurant do
       expect{restaurant.show_order}.to output("4 prawn summer rolls, total 22.4").to_stdout
     end
 
-    
+  end
 
+  describe '#show_order' do
+
+    it 'returns the items that have been ordered and the price' do
+      restaurant.show_menu
+      restaurant.place_order("prawn summer rolls", 4)
+      expect{restaurant.show_order}.to output("4 prawn summer rolls, total 22.4").to_stdout
+    end
 
   end
+
 
   xdescribe '#confirm_order' do
 
