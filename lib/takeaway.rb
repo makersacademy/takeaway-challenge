@@ -6,7 +6,7 @@ class Takeaway
 
   attr_reader :current_order, :order
 
-  def initialize(menu = Menu.new, twilio)
+  def initialize(twilio, menu = Menu.new)
     # ### Begin Twilio-API Setup
     # account_sid = ENV['ACCOUNT_SID']
     # auth_token = ENV['AUTH_TOKEN']

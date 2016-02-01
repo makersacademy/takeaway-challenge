@@ -18,25 +18,36 @@ Features modeled include the following:
 Instructions
 -------
 
-* First open Terminal, `cd` in to the project directory and run `irb` or any similar REPL.
-* Require the nexessary files using the following:
+* Open Terminal, `cd` in to the project directory and use the `bundle` command to install all required dependencies.
+* Run `irb` or any similar REPL, and require the necessary files using the following:
 ```
 require './lib/takeaway'
 require './lib/menu'
 require './lib/order'
 require './lib/output'
 ```
-* You can now create your takeaway using...
+* You can now create your takeaway. Note that to create the takeaway the Twilio dependency needs to be injected, as shown below...
 ```
-takeaway = Takeaway.new
+takeaway = Takeaway.new(Twilio::REST::Client.new(account_sid, auth_token))
 ```
-* Note that the Takeaway object creates a new Menu object upon initialization, which holds the list of dishes and prices. However if preferable another menu object can be created manually using...
+* In order to maintain privacy of Twilio API codes, plus phone numbers used, dotenv has been implemented. Firstly ensure that there is a .env file at the root of the project folder, and that it it's contents are similar to that shown below..
+```
+ACCOUNT_SID="xxx" # insert account_sid
+AUTH_TOKEN="xxx" # insert auth_token
+TO="xxx" # insert to phone number
+FROM="xxx" # insert from phone number
+```
+* A takeaway can now be called using the following...
+```
+takeaway = Takeaway.new(Twilio::REST::Client.new(Dotenv.load["ACCOUNT_SID"], Dotenv.load["AUTH_TOKEN"]))
+```
+* ...which will read the values from the .env file, negating the need to store the values within the source code. Note that the Takeaway object creates a new Menu object upon initialization, which holds the list of dishes and prices. However if preferable another menu object can be created manually using...
 ```
 menu = Menu.new
 ```
-* ...and then passed to the Takeaway at creation time, using...
+* ...and then passed to the Takeaway at creation time as its second argument, such as...
 ```
-takeaway = Takeaway.new(menu)
+takeaway = Takeaway.new(Twilio::REST::Client.new(Dotenv.load["ACCOUNT_SID"], Dotenv.load["AUTH_TOKEN"]), menu)
 ```
 
 * You can then view the menu using...

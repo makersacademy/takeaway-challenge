@@ -3,7 +3,7 @@ require 'menu'
 require 'twilio-ruby'
 
   describe 'Feature Tests' do
-    subject (:takeaway) { Takeaway.new(Menu.new, Twilio::REST::Client.new("0", "0")) }
+    subject (:takeaway) { Takeaway.new(Twilio::REST::Client.new("0", "0"), Menu.new) }
 
     it 'allows the customer to view the available dishes with prices' do
       # As a customer
