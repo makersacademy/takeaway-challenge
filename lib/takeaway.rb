@@ -1,4 +1,7 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
+require_relative 'ordercost.rb'
 
 class Takeaway
   def initialize(menu)
@@ -10,7 +13,7 @@ class Takeaway
   attr_reader :basket
 
   def total
-    "Total: £#{cost.total.to_f}0"
+    "Total: £#{float}0"
   end
 
   def check_total
@@ -44,20 +47,25 @@ class Takeaway
   end
 
   def message
-      message = "Thank you for your order of £#{cost.total}0."
-      message << " Your food will be delivered within an hour."
+    message = "Thank you for your order of £#{cost.total}0."
+    message << " Your food will be delivered within an hour."
   end
 
   def basket_sum
-    sum = 0
-    @basket.each do |key, value|
-      sum += value
-    end
-    sum
+    @basket.inject(0) {|sum, (_key, value)| sum + value }
   end
 
   def send_text(message)
-    Use Twilio Gem
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    text = @client.account.messages.create(:body => message,
+      :to => ENV['MY_NUMBER'], :from => ENV['FROM_NUMBER'])
+  end
+
+  def float
+    total_cost = cost.total
+    total_cost.to_f
   end
 
   def ordered(dish, number)

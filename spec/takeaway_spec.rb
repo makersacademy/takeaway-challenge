@@ -52,7 +52,7 @@ describe Takeaway do
     end
 
     it 'can return total cost' do
-      expect(takeaway.total).to eq "Total: £#{13.5}0"
+      expect(takeaway.total).to eq "Total: £13.50"
     end
 
     it 'can check sum of basket = total' do
