@@ -29,4 +29,8 @@ describe Menu do
     expect(menu.has_dish?(:drinks)).to be false
   end
 
+  it 'calculates a price' do
+    expect(menu.price(:starter)).to eq(dishes[:starter])
+  end
+
 end

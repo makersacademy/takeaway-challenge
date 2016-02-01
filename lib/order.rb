@@ -1,20 +1,26 @@
 class Order
 
-  attr_reader :dishes
+  attr_reader :dishes, :menu
 
   def initialize
     @dishes = {}
+    @menu = menu
   end
 
   def add(dish, quantity)
     dishes[dish] = quantity
   end
 
-<<<<<<< HEAD
-  def has_dish?
+  def total
+    item_totals
   end
 
-=======
->>>>>>> 5b518b08298087d7c384d87ce4b9817b570e4534
+  private
+
+  def item_totals
+    dishes.map do |dish, quantity|
+      menu.price(dish) * quantity
+    end
+  end
 
 end

@@ -16,4 +16,8 @@ attr_reader :dishes, :show
     !!dishes[name_of_dish]
   end
 
+  def price(dish)
+    dishes[dish]
+  end
+
 end
