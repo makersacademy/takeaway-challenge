@@ -33,6 +33,12 @@ class Order
   end
 
   def send_message
+    send_private_message
+  end
+
+  private
+
+  def send_private_message
     message = Message.new
     message.send(check_total)
   end
