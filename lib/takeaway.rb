@@ -2,12 +2,13 @@ require 'dotenv'
 require './lib/menu'
 require './lib/messaging'
 
-class Takeaway
+class Takeaway 
 
 attr_reader :order, :bill
 
-	def initialize
-	@menu = Menu.new
+	def initialize (menu = Menu.new, message = Message.new )
+	@menu = menu
+	@confirmation = message
 	@dishes = @menu.dishes
 	@order = []
 	end
