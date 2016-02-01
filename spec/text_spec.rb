@@ -11,8 +11,8 @@ describe Text do
   before(:example) do
     allow_message_expectations_on_nil
     allow(client).to receive(:messages)
-    allow(client.messages).to receive(:list)
-    allow(client.messages.list).to receive(:each)
+    allow(client.messages).to receive(:list).and_return(["hello can i have a menu"])
+    #allow(client.messages.list).to receive(:each)
     allow(message).to receive(:body).and_return(message)
     #allow(message.body).to_return("hello")
   end
@@ -21,8 +21,8 @@ describe Text do
   it {is_expected.to respond_to(:send_text).with(1).argument}
   it {is_expected.to respond_to(:send_text)}
 
-  # it 'can create a list of incoming messages' do
-  #   expect(subject.reply).to eq [input_message]
-  # end
+  it 'can create a list of incoming messages' do
+    expect(subject.reply).to eq [input_message]
+  end
 
 end
