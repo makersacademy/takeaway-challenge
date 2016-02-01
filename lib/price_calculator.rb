@@ -1,7 +1,6 @@
 class PriceCalculator
   attr_reader :selected_dishes, :grand_total
-  def initialize(selected_dishes)
-    @selected_dishes = selected_dishes
+  def initialize
     @grand_total = 0
   end
 

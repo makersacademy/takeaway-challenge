@@ -2,8 +2,8 @@ require 'price_calculator'
 require 'dish'
 
 describe PriceCalculator do
-  subject(:price_calculator) {described_class.new(selected_dishes)}
-  let(:selected_dishes) {double :selected_dishes}
+  subject(:price_calculator) {described_class.new}
+  let(:selected_dishes) {{dish => 2, dish2 => 4, dish3 => 1}}
   let(:dish) {double :dish}
   let(:dish2) {double :dish}
   let(:dish3) {double :dish}
@@ -16,16 +16,6 @@ describe PriceCalculator do
     allow(dish3).to receive(:price) {4.25}
     allow(selected_dishes).to receive(:quantity) do
       {dish => 2, dish2 => 4, dish3 => 1}
-    end
-    allow(selected_dishes).to receive(:each) do
-      selected_dishes.quantity.each do |dish,quantity|
-        price_calculator.grand_total += dish.price * quantity
-      end
-    end
-  end
-  xcontext '#initialize' do
-    it 'receives the selected_dishes from the menu' do
-      expect(price_calculator.selected_dishes).not_to be_empty
     end
   end
 
