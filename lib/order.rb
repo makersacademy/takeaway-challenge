@@ -55,7 +55,6 @@ class Order
     end
     
     def order_summary_calc
-        #make this nicer
         @chosen_items.map do |item, quantity|
           "#{item} x #{quantity} = £#{@menu_klass.view_menu[item] * quantity}0"
         end.join(", ")
