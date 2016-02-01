@@ -42,8 +42,8 @@ def sum_total
 @bill = 0
 temp = @order.dup
 temp.each do |item|
-	 		@dishes.select do |k,v| 
-	 		@bill += v	if k == item
+	 		@dishes.select do |dish,price| 
+	 		@bill += price	if dish == item
 			end
 		end
 	 end
@@ -57,14 +57,14 @@ duplicates = Hash.new(0)
     @order.each do |dish|
  	duplicates[dish] += 1
  	end	
- 	duplicates.each do |k, v|
+ 	duplicates.each do |dish, quantity|
  		if items.empty?
- 		subtotal+=(@dishes[k] * v)
-  		items << " #{v} x #{k}, £#{subtotal}\n"
+ 		subtotal+=(@dishes[dish] * quantity)
+  		items << " #{quantity} x #{dish}, £#{subtotal}\n"
   		else
   		subtotal = 0
-  		subtotal+=(@dishes[k] * v)
-  		items << " #{v} x #{k}, £#{subtotal}\n" 
+  		subtotal+=(@dishes[dish] * quantity)
+  		items << " #{quantity} x #{dish}, £#{subtotal}\n" 
   		end	
 	end
 	items.chomp
@@ -82,7 +82,7 @@ end
 
 def print_menu
 pretty_menu = ""
-@dishes.each {|k,v| pretty_menu += "Dish: #{k}, Price: £#{v}\n"} 
+@dishes.each {|dish,price| pretty_menu += "Dish: #{dish}, Price: £#{price}\n"} 
 pretty_menu.chomp
 end
 

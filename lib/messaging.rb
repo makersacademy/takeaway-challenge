@@ -14,15 +14,17 @@ class Message
 
 	friends = { '447970362728' => 'Russell Vaughan'}
 
+	message = "Thank you! Your order was placed and will be delivered before #{one_hours_time}"
+
 	friends.each do |key,value|
 
 	message = @client.account.messages.create(
 	:from => from,
 	:to  => key,
-	:body => "Thank you! Your order was placed and will be delivered before #{one_hours_time}")
+	:body => message)
 	
 	end
-	"Thank you! Your order was placed and will be delivered before #{one_hours_time}"
+	message
 	end
 
 end
