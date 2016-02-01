@@ -5,8 +5,8 @@ describe 'user stories' do
 
   describe 'customer can see a list of dishes & prices' do
     it 'displays the menu' do
-      menu = Menu.new
-      expect(menu.display_menu).to be_a(Hash)
+      order = Order.new
+      expect{order.read_menu}.to output.to_stdout
     end
   end
 

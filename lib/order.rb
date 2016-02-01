@@ -3,7 +3,7 @@ require_relative 'messager'
 
 class Order
 
-  attr_reader :list, :menu, :order, :total_cost, :message, :messager
+  attr_reader :list, :menu, :total_cost, :order, :message, :messager
 
   def initialize(menu = Menu.new, messager = Messager.new)
     @list = []
@@ -31,13 +31,19 @@ class Order
   end
 
   def place
-    t = Time.now + 60*60
     @message = "Thank you for your order! " \
-    "It will be delivered before #{t.strftime("%H:%M")}."
+    "It will be delivered before #{time_in_hours}."
   end
 
   def send_message
     @messager.send_sms(@message)
+  end
+
+  private
+
+  def time_in_hours
+    t = Time.now + 60*60
+    t.strftime("%H:%M")
   end
 
 end

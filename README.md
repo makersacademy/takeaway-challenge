@@ -10,6 +10,13 @@ This project is to create a takeaway program that:
 
 The text message function is implemented using the Twilio API.
 
+Technologies used:
+
+* Testing - RSpec
+* Back-end - Ruby
+* Utilities -
+[Twilio](https://github.com/twilio/twilio-ruby), [Dotenv](https://github.com/bkeepers/dotenv)
+
 User stories provided:
 
 ```
@@ -32,20 +39,14 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 How the app can be used:
 
 ```
+[1] pry(main)> require './lib/order.rb'
 [2] pry(main)> order = Order.new
-=> #<Order:0x007f9b3e2e1a90
- @list=[],
- @menu=#<Menu:0x007f9b3e2e1a68 @pizzas={"margherita"=>6, "fiorentina"=>7, "quattro stagioni"=>8, "quattro formaggi"=>7, "marinara"=>5}>,
- @messager=
-  #<Messager:0x007f9b3e2e1a18
-@pizzas={"margherita"=>6, "fiorentina"=>7, "quattro stagioni"=>8, "quattro formaggi"=>7, "marinara"=>5}>
 [3] pry(main)> order.read_menu
 margherita: 6
 fiorentina: 7
 quattro stagioni: 8
 quattro formaggi: 7
 marinara: 5
-=> {"margherita"=>6, "fiorentina"=>7, "quattro stagioni"=>8, "quattro formaggi"=>7, "marinara"=>5}
 [4] pry(main)> order.choose("fiorentina")
 => "You have added 1 x fiorentina to your order."
 [5] pry(main)> order.choose("marinara", 2)
