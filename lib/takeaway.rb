@@ -2,14 +2,15 @@ require 'twilio-ruby'
 require 'dotenv'
 require_relative 'menu'
 require_relative 'order'
+require_relative 'messenger'
 
 class Takeaway
   DELIVERY_TIME = 1
 
-  def initialize(phone, menu = Menu.new, order = Order.new)
-    @phone = phone
+  def initialize(menu = Menu.new, order = Order.new, messenger = Messenger.new)
     @menu = menu
     @order = order
+    @messenger = messenger
   end
 
   def read_menu
@@ -28,10 +29,10 @@ class Takeaway
     "You\'ve ordered #{total} items."
   end
 
-  def confirm_order(number)
+  def confirm_order(number, phone = Dotenv.load['TWILIO_DESTINATION_PHONE'])
     raise 'Total number of dishes does not match. Please check again.' unless total_correct?(number)
     message = "Thank you! Your order was placed and will be delivered before #{delivery_clock}. Total price is £#{bill_total}"
-    send_text(message)
+    @messenger.send_text(message, phone)
     message
   end
 
@@ -51,20 +52,5 @@ class Takeaway
   def delivery_clock
     t = Time.new + 60 * 60 * DELIVERY_TIME
     t.strftime "%H:%M"
-  end
-
-  def send_text(message)
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
-    from_phone = ENV['TWILIO_PHONE']
-    to_phone = @phone
-
-    @client = Twilio::REST::Client.new account_sid, auth_token
-
-    @client.account.messages.create(
-      from: Dotenv.load['TWILIO_PHONE'],
-      to: to_phone,
-      body: message
-    )
   end
 end

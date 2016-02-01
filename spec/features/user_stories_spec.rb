@@ -1,10 +1,10 @@
 require 'takeaway'
 
 describe 'User Stories' do
-  let(:takeaway) { Takeaway.new(phone, menu, order) }
-  let(:phone) { Dotenv.load['TWILIO_PHONE'] }
+  let(:takeaway) { Takeaway.new(menu, order, messenger) }
   let(:menu) { Menu.new }
   let(:order) { Order.new }
+  let(:messenger) { Messenger.new }
   let(:dishes) { dishes = {chicken_tikka_masala: 1, naan: 2} }
 
   # As a customer
@@ -43,7 +43,7 @@ describe 'User Stories' do
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   it 'sends a text to confirm order and delivery time' do
     takeaway.select_dishes(dishes)
-    expect(takeaway).to receive(:send_text)
+    expect(messenger).to receive(:send_text)
     takeaway.confirm_order(3)
   end
 end

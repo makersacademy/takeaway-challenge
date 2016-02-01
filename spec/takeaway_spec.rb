@@ -1,11 +1,11 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(phone, menu, order) }
-  let(:phone) { double :phone }
+  subject(:takeaway) { described_class.new(menu, order, messenger) }
   let(:menu) { double :menu, display_menu: {onion_bhaji: 2.95, chicken_tikka_masala: 7.95, naan: 1.95},has_dish?: true }
   let(:dishes) { {chicken_tikka_masala: 1, naan: 2} }
-  let(:order) {double :order, add: dishes, basket: dishes, order_total: 3}
+  let(:order) { double :order, add: dishes, basket: dishes, order_total: 3 }
+  let(:messenger) { double :messenger }
 
   describe '#read_menu' do
     it 'displays a list of dishes with prices' do
@@ -28,7 +28,7 @@ describe Takeaway do
 
   describe '#confirm_order' do
     it 'sends a text to confirm order and delivery time' do
-      expect(takeaway).to receive(:send_text)
+      expect(messenger).to receive(:send_text)
       takeaway.confirm_order(3)
     end
 
