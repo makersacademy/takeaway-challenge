@@ -8,9 +8,7 @@ $ pry
 [2] pry(main)> t = Takeaway.new
 => #<Takeaway:0x007fb1a322dbf0
  @basket={},
- @credentials=
-  {"ACCOUNT_SID"=>"AC8bd1098ecfdd34da6881b6dff31079bd",
-   "AUTH_TOKEN"=>"6794497d9374c3ed5a1b4fe7a87155da"},
+ @credentials
  @menu=
   #<Menu:0x007fb1a322dbc8
    @dishes=

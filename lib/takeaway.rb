@@ -1,4 +1,4 @@
-require_relative 'menu.rb'
+require_relative 'menu'
 require 'dotenv'
 require 'twilio-ruby'
 
