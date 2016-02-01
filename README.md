@@ -25,10 +25,12 @@ Rationale
 
 Instructions
 ------------
-
+```
 irb(main):002:0> t = Takeaway.new
 
-=> \#\<Takeaway:0x007fc73983e1b0 @action=nil, @restaurant=\#\<Restaurant:0x007fc73983e188 @cuisine="Italian", @menu={"Pizza"=>10.0, "Pasta"=>8.0, "Milanese"=>14.0}>, @order_log=\#\<Order:0x007fc73983e110 @status=[], @total=0>\>
+=> #<Takeaway:0x007fc73983e1b0 @action=nil, @restaurant=#<Restaurant:0x007fc73983e188 @cuisine="Italian",
+
+@menu={"Pizza"=>10.0, "Pasta"=>8.0, "Milanese"=>14.0}>, @order_log=#<Order:0x007fc73983e110 @status=[], @total=0>>
 
 irb(main):003:0> t.menu
 
@@ -81,7 +83,7 @@ Pasta x 1 = £8.0
 irb(main):012:0> t.check_out 68
 
 => "Thank You! You will receive a confirmation text for you order."
-
+```
 
 
 
