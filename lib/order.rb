@@ -1,6 +1,7 @@
 module Order
 
-def order_input(menu)
+
+  def order_input(menu)
   dish_array = []
   quantity_array = []
   return_array = []

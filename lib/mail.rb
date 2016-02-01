@@ -4,21 +4,21 @@ require 'twilio-ruby'
 
 
     def send
+      #t = Time.now + 3600
+      #p "Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}"
+
+      account_sid = ENV['TWILIO_ACCOUNT_SID']
+      auth_token = ENV['TWILIO_AUTH_TOKEN']
       t = Time.now + 3600
-      p "Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}"
 
-#account_sid = ""
-#auth_token = ""
-#t = Time.now + 3600
-
-#@client = Twilio::REST::Client.new account_sid, auth_token
+      @client = Twilio::REST::Client.new account_sid, auth_token
 
 
-#@client.messages.create(
-  #from: '+441257733xxx',
-  #to: '+447401333xxx',
-  #body: "Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}"
-#)
+      @client.messages.create(
+        from: ENV['TWILIO_PHONE'],
+        to: ENV['MY_PHONE'],
+        body: "Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}"
+        )
 
     end
   end

@@ -1,5 +1,6 @@
-require 'order'
 =begin
+require 'order'
+
 describe Order do
   describe MenuList do
     let (:including_class){ Class.new { include MenuList } }
@@ -8,7 +9,6 @@ describe Order do
 
     end
   end
-
 
   describe '#return'do
     it 'returns the order you have made'do
