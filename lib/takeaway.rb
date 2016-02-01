@@ -1,17 +1,21 @@
 require_relative 'menu'
+require_relative 'message'
+require_relative 'order'
 require 'forwardable'
+
 
 class Takeaway
 
   extend Forwardable
+
   attr_reader :basket, :menu
 
   def initialize(menu)
     @menu = menu
-    @basket =Hash.new(0)
+    @basket = Hash.new(0)
   end
 
-  def_delegator :@menu, :see_menu
+  def_delegators :@menu, :see_menu
 
   def order(dish, quantity = 1)
     count = quantity + basket[dish] if basket[dish]
@@ -46,8 +50,18 @@ class Takeaway
     "Total: £#{format("%.2f", summary)}"
   end
 
-  def complete_order
-    "Thank you! Your order was placed and will be delivered before #{self.delivery_time}"
+  def complete_order(final_amount)
+    msg_body = "Thank you! Your order with total price "
+    msg_body += "of £#{format("%.2f", final_amount)} "
+    msg_body += "is confirmed and will be delivered to you "
+    msg_body += "before #{self.delivery_time}!"
+    send_sms(msg_body)
+  end
+
+  def send_sms(text, message_klass = Message)
+    message = message_klass.new
+    message.send_message(text)
+    text
   end
 
   def delivery_time
