@@ -44,7 +44,8 @@ class Takeaway
   end
 
   def bill_total
-    order.basket.map { |k, v| menu.display_menu[k] * v }.reduce(:+)
+    total = order.basket.map { |k, v| menu.display_menu[k] * v }.reduce(:+)
+    sprintf('%.2f', total)
   end
 
   def delivery_clock
