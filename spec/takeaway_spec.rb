@@ -5,7 +5,7 @@ describe Takeaway do
 	subject(:takeaway) {described_class.new(list: list, order: order)}
 
 	let(:list) { double(:list, display: displayed_list) }
-	let(:order) {double (:order)}
+	let(:order) {instance_double("order", total: 29.97)}
 	let(:displayed_list) { "chicken_tandoori: 10" }
 	let(:dishes) { {chicken_tandoori: 2, lamb_handi: 1} }
 

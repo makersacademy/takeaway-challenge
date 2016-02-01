@@ -30,4 +30,7 @@ describe List do
   it "tells if a dish is not on the list" do
     expect(list.has_dish?(:vindaloo)).to be false
   end
- end
+  it "calculates a price" do
+	  expect(list.price(:chicken_tandooro)).to eq(dishes[:chicken])
+  end
+end
