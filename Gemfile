@@ -8,4 +8,4 @@ gem 'capybara'
 gem 'rubocop'
 gem 'twilio-ruby'
 gem 'sinatra'
-gem 'dotenv-rails'
+gem 'dotenv-rails', :groups => [:development, :test]
