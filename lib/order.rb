@@ -7,10 +7,9 @@ class Order
 
 attr_reader :basket, :balance
 
-  def initialize(menu= Menu.new)
-    # (menu_klass = Menu)
-    # @menu_klass = menu_klass
-    @basket = {}
+  def initialize(menu_klass)
+    @menu = menu_klass
+    @basket = []
     @balance = 0
   end
 
@@ -20,8 +19,8 @@ attr_reader :basket, :balance
   end
 
   def price(item, amount)
-    total = 0
-    cost += (@public_menu_contents[item]*amount)
+    @balance = 0
+    @balance += (@public_menu_contents[item]*amount)
   end
 
 #Here I want to check that the basket matches price.
