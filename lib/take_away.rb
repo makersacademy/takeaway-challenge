@@ -25,7 +25,7 @@ class TakeAway
       puts "Enter a dish number or 99 to end ordering"
       dish_number = gets.chomp
       break if dish_number.to_i == 99
-      if dish_number.to_i <= 0 or dish_number.to_i > 19
+      if dish_number.to_i <= 0 || dish_number.to_i > 19
         puts "please enter a valid dish number"
         next
       end

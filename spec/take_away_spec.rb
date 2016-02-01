@@ -33,7 +33,7 @@ describe TakeAway do
     end
 
     it "add ordered items to order hash" do
-      expect { take_away.enter_order }.to output().to_stdout
+      expect { take_away.enter_order }.to output.to_stdout
       expect(take_away.order[5]).to eq 2
     end
   end
@@ -43,7 +43,7 @@ describe TakeAway do
     it "creates a hash with dish information" do
       take_away.create_dish_hash
       expect(take_away.dish_hash[5][1]).to eq 12.00
-      expect(take_away.dish_hash[5][0]).to match /Peking/
+      expect(take_away.dish_hash[5][0]).to match( /Peking/ )
     end
 
   end
@@ -51,7 +51,7 @@ describe TakeAway do
   describe "#order_total" do
 
     xit "calculates an order total" do
-      take_away.instance_variable_set(:@order, {5 => 2})
+      take_away.instance_variable_set(:@order, 5 => 2)
       expect(take_away.order_total).to eq 24.00
     end
 
