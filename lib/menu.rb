@@ -1,7 +1,7 @@
 # # As a customer
 # # So that I can check if I want to order something
 # # I would like to see a list of dishes with prices
-# # FOOD,MENU,ORDER?TEXT?
+# 
 # # As a customer
 # # So that I can order the meal I want
 # # I would like to be able to select some number of several available dishes
@@ -39,7 +39,10 @@ class Menu
   MENU_LIST = {
     chips: 2.00,
     fish: 3.00,
-    sausage: 2.50
+    sausage: 2.50,
+    peas: 2.00,
+    coke: 1.00,
+    water: 0.5
   }
 
   def show_menu

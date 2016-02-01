@@ -29,10 +29,11 @@ class Order
     "%.2f" % @bill
   end
 
-  def complete_order
-    # totalprice
+  def complete_order(payment)
+    current_order
+    fail "Incorrect Payment" if payment != bill
+    calculate_price
     Text.new.send_text
-    @current_order
   end
 
   private
