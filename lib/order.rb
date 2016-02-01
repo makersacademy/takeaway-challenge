@@ -1,28 +1,21 @@
-# deals with orders + cost
-
 class Order
 
-	def initialize(menu:) #dependency injection - 'other class is injected into this class'
+	attr_reader :dishes
+
+	def initialize(menu)
+		@dishes = {}
 		@menu = menu
 	end
 
-	def print_menu
-		menu.print
+	def add(dish, quantity)
+		raise NoItemError, "#{dish} is not on the menu" unless menu.has_dish?(dish)
+		dishes[dish] = quantity
 	end
 
 	private
 
-	attr_reader :menu  ## ?? ## why is this private?
-
-	# def select
-		
-	# end
-
-	# def total
-
-	# end
-
-	# def text
-
-	# end
+	attr_reader :menu
 end
+
+
+class NoItemError < StandardError; end

@@ -1,19 +1,31 @@
 require 'order'
 
-describe Order do  
+describe Order do 	
 
-	subject(:order) {described_class.new(menu: menu)} #injecting menu to allo method to be handled in new class menu (Order doesn't need to know!)
-	
-	let(:menu) {double(:menu, print: printed_menu)}
-	let(:printed_menu) {"chicken: £3.50"}
+	subject(:order) {described_class.new(menu)}
 
-	it {is_expected.to respond_to(:print_menu)}
-	# it {is_expected.to respond_to(:select)}
-	# it {is_expected.to respond_to(:total)}
-	# it {is_expected.to respond_to(:text)}
+	let(:menu) {double(:menu)}
 
-	it 'shows the menu with dishes and prices' do
-		expect(order.print_menu).to eq(printed_menu)  #to return a print out of menu - test a specific item on menu!
+	let(:dishes) do
+		{
+			chicken: 2,
+			fish: 1
+		}
+	end
+
+	before do
+		allow(menu).to receive(:has_dish?).with(:chicken).and_return(true)
+		allow(menu).to receive(:has_dish?).with(:fish).and_return(true)
+	end
+
+	it 'selects several dishes from the menu' do
+		order.add(:chicken, 2)
+		order.add(:fish, 1)
+		expect(order.dishes).to eq(dishes)
+	end
+
+	it 'doesn\'t allow items to be added that are not on the menu' do
+		allow(menu).to receive(:has_dish?).with(:beef).and_return(false)
+		expect{order.add(:beef, 2)}.to raise_error NoItemError, "beef is not on the menu"
 	end
 end
-

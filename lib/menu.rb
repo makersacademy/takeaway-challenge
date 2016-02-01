@@ -1,4 +1,4 @@
-# deals with menus content and selection
+# deals with menu content and selection
 
 class Menu
 
@@ -10,8 +10,8 @@ class Menu
 
 	def print
  		dishes.map do |title, price| 
- 		"%s £%.2f" % [title.to_s.capitalize, price]
- 		end.join(", ")
+ 		"%s £%.2f" % [title.to_s, price]
+ 		end.join(', ')
  	end
 end
 
