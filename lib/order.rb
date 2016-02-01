@@ -14,5 +14,4 @@ class Order
   def reset
     @total = 0
   end
-
 end

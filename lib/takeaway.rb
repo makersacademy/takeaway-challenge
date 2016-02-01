@@ -1,8 +1,6 @@
 require_relative 'order'
 require 'twilio-ruby'
 
-
-
 class Takeaway
 
   attr_reader :menu, :basket, :order_cost
@@ -43,22 +41,20 @@ class Takeaway
   end
 
   def basket_summary
-    _basket_total = 0
-    @basket.each do |item, price|
-      basket_total += price
-    end
-    _basket_total
+    basket_total = 0
+    @basket.reduce {|item, price| basket_total += price}
+    basket_total
   end
 
   private
 
   def send_text(message)
-    account_sid = "I wish I knew how to get dotenv working"
-    auth_token = "I wish I knew how to get dotenv working"
+    account_sid = ENV['TWILIO_ID']
+    auth_token = ENV['TWILIO_TOKEN']
     @client = Twilio::REST::Client.new account_sid, auth_token
     @message = @client.messages.create(
-    to: "+44779xxxxxxx",
-    from: "+441xxxxxxxx",
+    to: ENV['MY_PHONE_NUMBER'],
+    from: ENV['MY_TWILIO_PHONE'],
     body: message
     )
   end
@@ -70,8 +66,5 @@ class Takeaway
   def price(item, number)
     @menu.price(item) * number
   end
-
-
-
 
 end

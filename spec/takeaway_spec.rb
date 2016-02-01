@@ -16,7 +16,7 @@ describe Takeaway do
 
   describe '#show_menu' do
     it 'allows the user to see a copy of the menu' do
-      allow(menu).to receive(:dishes) { {'pizza' => 4} }
+      allow(menu).to receive(:dishes) {{'pizza' => 4} }
       expect(takeaway.show_menu).to eq ({'pizza' => 4})
     end
   end
