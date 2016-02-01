@@ -1,10 +1,12 @@
 require_relative 'menu'
+require_relative 'text'
 class Order
     
-    attr_reader :chosen_items, :menu_klass, :final_bill
+    attr_reader :chosen_items, :menu_klass, :final_bill, :text_klass
     
-    def initialize(menu_klass = Menu.new)
+    def initialize(menu_klass = Menu.new, text_klass = Text.new)
         @menu_klass = menu_klass
+        @text_klass = text_klass
         @chosen_items = Hash.new
         @final_bill = 0
         @number_of_dishes = 0
@@ -38,7 +40,8 @@ class Order
         "£#{calculate_bill}"
     end
     
-    def confirmation_text
+    def finalize_order
+        @text_klass.send_message(confirmation_text)
     end
     
     private
@@ -65,4 +68,13 @@ class Order
         "%.2f" % @final_bill
     end
     
+    def delivery_time
+        time = (Time.new + 3600).strftime("%H:%M")
+    end
+
+    
+    def confirmation_text
+         "Thank you for placing your order!  Your order will arrive at #{delivery_time} and will be a total of #{show_bill
+         }."
+    end
 end

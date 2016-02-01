@@ -1,8 +1,12 @@
 require 'order'
 
 describe Order do
+    let(:menu_klass) {double :menu_klass}
+    let(:text_klass) {double :text_klass, new: text}
     subject(:order) {described_class.new}
-    
+    let(:text) {double :text}
+
+    let(:send_message) {double :send_message}
     
     describe '#initialize' do
         
@@ -12,7 +16,7 @@ describe Order do
         
     end
     
-    describe '#order_selection' do
+    context 'order_selection' do
         
         it 'should add items and quantities to the chosen items hash' do
             order_hash = {:Coke => 5}
@@ -71,9 +75,11 @@ describe Order do
         end
     end
     
-    describe '#confirmation_text' do 
-        
+    describe '#finalize_order' do 
         it 'should send a confirmation_text to the user' do
+            allow(text_klass).to receive(:send_message).with("Thank you for placing your order!  Your order will arrive at #{(Time.new + 3600).strftime("%H:%M")} and will be a total of #{order.show_bill
+         }.")
+            order.finalize_order
         end
     end
 end
