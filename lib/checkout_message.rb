@@ -13,10 +13,10 @@ class CheckoutMessage
 
   def initialize
     @creds = Dotenv.load
-    @time = Time.new + (60 * 60 * HOURS_UNTIL_DELIVERY)
   end
 
-  def time_delivery_expected
+  def time_delivery_expected(time=Time.new)
+    time += 60 * 60 * HOURS_UNTIL_DELIVERY
     time.strftime "%H:%M"
   end
 

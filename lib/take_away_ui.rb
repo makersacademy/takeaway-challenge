@@ -62,7 +62,7 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   def confirm_order(price)
     @price = price
     fail "Price does not match" if !price_correct?
-    # checkout_message(order_summary)
+    checkout_message(order_summary)
   end
 
   def checkout_message(order_summary)

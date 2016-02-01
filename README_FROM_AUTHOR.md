@@ -55,7 +55,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 USAGE GUIDE:
-<!--
+```ruby
 irb
 
 2.2.3 :001 > require './lib/take_away_ui.rb'
@@ -99,6 +99,7 @@ Dish: Tiramisu                          Quantity: 1           Price per dish: 10
 2.2.3 :007 > takeaway.confirm_order(59)
  => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC311eb9c4bc2c0171b0fa8dbe12bc7e28/Messages/SM6a201068009c4c58828194bd9515c650>
 2.2.3 :008 >  -->
+```
 
 CLASSES:
 
