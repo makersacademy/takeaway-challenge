@@ -3,16 +3,18 @@ require 'text'
 describe Text do
   let(:input_message) {"hello can i have a menu"}
   let(:reply) {double(:reply)}
-  let(:message) {double(:message)}
+  let(:message) {"hello can i have a menu"}
   let(:client) {double(:client)}
   subject(:text) {described_class.new client}
 
 
   before(:example) do
-    # allow(client).to receive(:messages)
-    # allow(client.messages).to receive(:list)
-    # allow(client.messages.list).to receive(:each)
-    # allow(message).to receive(:body).and_return("hello")
+    allow_message_expectations_on_nil
+    allow(client).to receive(:messages)
+    allow(client.messages).to receive(:list)
+    allow(client.messages.list).to receive(:each)
+    allow(message).to receive(:body).and_return(message)
+    #allow(message.body).to_return("hello")
   end
 
   it {is_expected.to respond_to(:reply)}
