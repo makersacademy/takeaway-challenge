@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'custy'
+require 'twilio-ruby'
 
 class Takeaway
    
@@ -9,7 +10,7 @@ class Takeaway
    end
    
    def total(custy)
-       "#{custy} your total is #{custy.total}"
+       "#{custy.name} your order comes to £#{custy.total} thanks for shopping at t-quay"
    end
    
    def text
@@ -21,7 +22,7 @@ class Takeaway
      @client.messages.create(
      from: '+14159341234',
      to: '+16105557069',
-     body: 'Hey there!'
+     body: "Hey there! #{custy.name} your total is #{custy.total}"
         )
        
    end
