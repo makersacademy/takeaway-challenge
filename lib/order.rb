@@ -7,10 +7,11 @@ class Order
 
 attr_reader :basket, :balance
 
-  def initialize(menu_klass = Menu)
-    @menu_klass = menu_klass
+  def initialize(menu= Menu.new)
+    # (menu_klass = Menu)
+    # @menu_klass = menu_klass
     @basket = {}
-    @balance = 0.00
+    @balance = 0
   end
 
   def place_order(item, quantity = 1)
@@ -18,23 +19,21 @@ attr_reader :basket, :balance
     basket << [item, quantity]
   end
 
-#I want to access my menu_contents hash and return their price(value).
-# I then want to multiply them by the quantity in place_order method.
-  def cost
-    basket.each{|item|.price} * place_order.each{|item|.quantity}
-    total = += balance
+  def price(item, amount)
+    total = 0
+    cost += (@public_menu_contents[item]*amount)
   end
 
-#I want to do an integer check
-  def check_total
-    if cost/menu_contents.sum[value] == integer
-      true
-    else
-      false
-  end
-
+#Here I want to check that the basket matches price.
+  def create_receipt
+  total_cost = 0
+  @basket.each {|item, quantity|
+    total_cost += price(item,quantity)
+  }
+  total_cost
 end
 
+end
 
 # THE SUPER LONG ORDER
     # def take_order

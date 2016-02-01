@@ -10,15 +10,11 @@ class Menu
     end
 
     def public_menu_contents
-      @menu_contents.dup
+      @menu_contents.clone
     end
 
     def menu_display
        @menu_contents.each{|key, value| puts("#{key}"+ "---" + "£#{value}")}
-    end
-
-    def price(item)
-      @menu_contents[item]
     end
 
 end

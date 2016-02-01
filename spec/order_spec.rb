@@ -23,7 +23,7 @@ describe Order do
     describe 'calculating order' do
 
       it 'should calculate the cost of the order' do
-        expect(user_order).to respond_to(:calculate_order)
+        expect(user_order).to respond_to(:price)
       end
 
 
