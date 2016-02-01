@@ -1,11 +1,10 @@
 Takeaway Challenge
 ==================
-https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 
 This is a simple program that accepts a user's orders to a Restaurant and notifies them via SMS of successful placement of the order using the Twilio API.
 
-> Welcome to Kaiser Chefs, how can we help?
-Our menu is inspired by Dishoom, I recommend the Chicken Ruby.
+> Welcome to Kaiser Chefs, how can we help? Our menu is inspired by Dishoom, today's special is the Chicken Ruby.
 
 Approach
 ----------
