@@ -1,14 +1,15 @@
 require_relative '../lib/order'
 
 describe Order do
-  let(:sms) {double :sms}
   subject(:order) { described_class.new(sms) }
+
+  let(:sms) {double :sms}
   let(:dish) { double :dish }
+  let(:c_order) { [{dish: dish, quantity: 1, price: 2}] }
 
   describe '#set_current_order' do
     it "populates current order array" do
       order.set_current_order(dish, 1, 2)
-      c_order = [{dish: dish, quantity: 1, price: 2}]
       expect(order.current_order).to match(c_order)
     end
 
