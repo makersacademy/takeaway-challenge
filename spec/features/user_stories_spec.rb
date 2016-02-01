@@ -26,7 +26,7 @@ describe 'User Stories' do
   end
 
   it 'raises an error when an item is not on the menu' do
-    expect{restaurant.add_item("Cheese")}.to raise_error 'No such item on the menu'
+    expect{restaurant.add_item "Cheese" }.to raise_error 'No such item on the menu'
   end
 
   it 'allows a user to see an order summary' do
