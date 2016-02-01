@@ -38,15 +38,22 @@ describe TakeAway do
     end
   end
 
-  describe "#calculate_order" do
+  describe "#create_dish_hash" do
 
-    it "asks for an estimated total" do
-      io_obj = double("input")
-      allow(take_away).to receive(:gets).and_return(io_obj)
-      expect(io_obj).to receive(:chomp).and_return(100)
-      expect { take_away.calculate_order }.to output(
-               /total/
-      ).to_stdout
+    it "creates a hash with dish information" do
+      take_away.create_dish_hash
+      expect(take_away.dish_hash[5][1]).to eq 12.00
+      expect(take_away.dish_hash[5][0]).to match /Peking/
     end
+
+  end
+
+  describe "#order_total" do
+
+    xit "calculates an order total" do
+      take_away.instance_variable_set(:@order, {5 => 2})
+      expect(take_away.order_total).to eq 24.00
+    end
+
   end
 end
