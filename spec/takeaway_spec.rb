@@ -1,6 +1,6 @@
 require 'takeaway'
 
-TEST_PRICE = 1.99
+TEST_PRICE = 1.5
 TEST_QUANTITY = 3
 
 describe Takeaway do
@@ -71,6 +71,3 @@ describe Takeaway do
     end
   end
 end
-
-# TODO: quantity less than 1?
-# TODO: remove item method?

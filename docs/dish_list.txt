@@ -1,5 +1,5 @@
-cheeseburger: 3.99
-wings: 2.99
-fries: 1.99
-soda: 0.99
-juice: 0.99
+cheeseburger: 3.50
+wings: 2.50
+fries: 1.50
+soda: 0.50
+juice: 0.50
