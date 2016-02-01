@@ -64,5 +64,5 @@ describe Order do
 
   end
 
-
+#investigate reduce and inject for calc totals and the Law of Demeter(separation of classes)
 end

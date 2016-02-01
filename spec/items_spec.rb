@@ -15,3 +15,5 @@ subject(:item) {described_class.new("name", 7.0)}
 
   end
 end
+
+#add read me with items

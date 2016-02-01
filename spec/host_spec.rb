@@ -66,6 +66,8 @@ describe Host do
        host.print_recipt
        expect(host.new_order).to eq order
      end
+     #Check new order as opposed to same instance from before
+     #see if there is a way to test if a method has been called.
 
    end
 
@@ -80,7 +82,8 @@ describe Host do
    describe "#send_message" do
 
      it "sends a message to mobile number" do
-
+       #should have been in a separate class, check emma's repo for testing help
+       
      end
 
    end

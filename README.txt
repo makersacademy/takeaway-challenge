@@ -22,6 +22,16 @@ Installation Instructions
 (note: If this returns an error you may need to install the bundler gem first, using the command: $ gem install bundler
 for further details check the website: http://bundler.io)
 
+4. writing a .env file. You will need to create your own .env file and save it in the root of the takeaway-challenge project folder. It should contain the following variables with your own details in quotation marks replacing the enter text below:
+
+ACCOUNT_SID=“enter your sid”
+AUTH_TOKEN=“enter your token”
+MOBILE_FROM=“enter your twilo number”
+MOBILE_TO=“enter your verified number”
+
+IMPORTANT - now create a .gitignore file (or add to one if you already have it) and 
+make sure .env is listed there so that you do not accidentally upload it to git hub. The .gitignore file should be saved in the root folder of your takeaway-challenge.
+
 
 User Stores to Cover
 
@@ -56,12 +66,30 @@ We need a menu class, an item class, an order class and a kind of interface that
 
 I believe the flow will go along the lines of:
 
-items -> menu -> interface -> order -> sends texts
+items -> menu -> host -> order -> sends texts
 
 As items is the first thing that the other classes draw from I will start TDD from there. This should allow me to build on the program and limit the need to split off classes later. 
 
+Everything will be controlled through the host class.
+
+There are a lot of things still to be added, for example the item class might be better as a hash created by menu from a text file to save people adding a lot of items to the menu every time you load it in IRB. The hash would change the way the cost is calculated so I would probably use reduce 
+
+How to use it:
+
+1. create a host, e.g. bob = Host.new
+
+2. create some items, e.g. a1 = Item.new(“Sushi roll”, 7)  b1 = Item.new(“Tuna roll”, 5.5)  c1 = Item.new(“Cucumber roll”, 3.5)
+
+3. add the items to your menu, e.g. bob.add_to_menu(a1)
+
+4. show the menu items you have added, e.g. bob.show_menu
+
+5. add items to your order, e.g. bob.add_to_order(a1)
+
+6. show your order, e.g. bob.show_order
+
+7. place your order, e.g. bob.place_order  
 
 
-
-
-
+Adjustments made after submission with the help of code review from Emma Beynon and https://github.com/emmabeynon/takeaway-challenge
+Thank you Emma!
