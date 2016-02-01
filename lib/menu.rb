@@ -1,14 +1,13 @@
 class Menu
 
-attr_reader :dishes
+  attr_reader :list_dishes
 
   def initialize(dishes)
-    @dishes = dishes
+      @list_dishes = dishes
   end
 
-  def printing
-    dishes.map do |title, price|
-      "%s €%.2f" % [title.to_s.capitalize, price]
-    end.join(", ")
+  def print_menu
+      @list_dishes.each {|key, value| puts "#{key} for #{value}"}
   end
+
 end
