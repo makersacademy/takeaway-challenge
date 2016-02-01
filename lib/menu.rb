@@ -11,9 +11,7 @@ class Menu
   end
 
   def display_menu
-    @pizzas.each do | item, price |
-      puts "#{item}: #{price}"
-    end
+    @pizzas.each {| item, price | puts "#{item}: #{price}" }
   end
 
 end

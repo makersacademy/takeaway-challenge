@@ -6,7 +6,7 @@ describe 'Order' do
   let(:menu) { double :menu }
   let(:messager) { double :messager }
 
-  describe '#initialize' do
+  describe 'new order' do
     it 'should have an empty order list' do
       expect(order.list).to be_empty
     end
@@ -14,7 +14,6 @@ describe 'Order' do
     it 'should have a menu' do
       expect(order.menu).not_to be(nil)
     end
-
   end
 
   context 'customer can see menu and place order' do
@@ -36,7 +35,7 @@ describe 'Order' do
       end
 
       it 'raises an error if item is not on the menu' do
-        message = "Not on menu! Make another choice."
+         message = "Not on menu! Make another choice."
          expect{order.choose("pasta")}.to raise_error(message)
       end
     end
@@ -54,19 +53,16 @@ describe 'Order' do
 
     describe '#place' do
       it 'confirms the order and delivery time' do
-        expect(order.message).to eq @message
+        expect(order.place).to eq(order.message)
       end
     end
 
     describe '#send_message' do
-
       it 'sends a text message to customer' do
         allow(order).to receive(:send_message)
         expect(order).to receive(:send_message)
         order.send_message
       end
     end
-
   end
-
 end

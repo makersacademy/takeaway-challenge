@@ -10,5 +10,4 @@ describe 'Messager' do
       messager.send_sms(@message)
     end
   end
-
 end
