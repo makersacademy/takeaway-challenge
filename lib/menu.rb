@@ -12,4 +12,8 @@ attr_reader :dishes, :show
     end.join(", ")
   end
 
+  def has_dish?(name_of_dish)
+    !!dishes[name_of_dish]
+  end
+
 end

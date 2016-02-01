@@ -21,4 +21,12 @@ describe Menu do
     expect(menu.show).to eq(show_menu)
   end
 
+  it 'tells if a dish is on the menu' do
+    expect(menu.has_dish?(:starter)).to be true
+  end
+
+  it 'tells if a dish is not on the menu' do
+    expect(menu.has_dish?(:drinks)).to be false
+  end
+
 end
