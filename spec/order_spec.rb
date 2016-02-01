@@ -79,6 +79,7 @@ describe Order do
         it 'should send a confirmation_text to the user' do
             allow(text_klass).to receive(:send_message).with("Thank you for placing your order!  Your order will arrive at #{(Time.new + 3600).strftime("%H:%M")} and will be a total of #{order.show_bill
          }.")
+            allow(order).to receive(:finalize_order)
             order.finalize_order
         end
     end

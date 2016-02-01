@@ -7,7 +7,7 @@ class Order
     def initialize(menu_klass = Menu.new, text_klass = Text.new)
         @menu_klass = menu_klass
         @text_klass = text_klass
-        @chosen_items = Hash.new
+        @chosen_items = Hash.new(0)
         @final_bill = 0
         @number_of_dishes = 0
     end
