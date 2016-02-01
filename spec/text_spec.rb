@@ -20,8 +20,8 @@ describe Text do
   it {is_expected.to respond_to(:send_text).with(1).argument}
   #it {is_expected.to respond_to(:send_text)}
 
-  it 'can create a list of incoming messages' do
-    expect(text.reply).to eq [input_message]
-  end
+  # it 'can create a list of incoming messages' do
+  #   expect(text.reply).to eq [input_message]
+  # end
 
 end
