@@ -44,7 +44,8 @@ check the total cost:
 
 recieve a confirmation message:
 
-  2.2.3 :008 > order.send_message```
+  2.2.3 :008 > order.send_message
+  ```
 
 
 Created by Matt Gough (mattpgough@gmail.com)
