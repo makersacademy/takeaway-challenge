@@ -25,6 +25,7 @@ Use `.see` to check the whole menu
 
 2.2.3 :003 > `menu.see`                    <----------- `check the menu` 
 => {"Burger"=>10, "Pint"=>4.5, "Steak"=>18, "Wine"=>22, "Chips"=>3.25} 
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Use `.pick(your dish, number of dishes)` to choose a dish. If you are happy with only one portion do not worry about introducing number of dishes, the program will set it to 1 automaticly.
