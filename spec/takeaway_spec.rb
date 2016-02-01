@@ -3,7 +3,9 @@ require 'takeaway'
 describe Takeaway do
   let(:menu) { double :menu }
   let(:test_menu) { {'Pizza' => 7} }
-  subject(:takeaway) { described_class.new}
+  subject(:takeaway) { described_class.new (twilio_class)}
+  let(:twilio_class) {double :twilio_class, :new => client }
+  let(:client) {double :client}
 
   describe '#initialize' do
     it 'starts with an empty basket' do
@@ -47,7 +49,7 @@ describe Takeaway do
     it 'returns the breakdown of costs' do
       takeaway.place_order('Funghi', 3)
       takeaway.place_order('Carne', 1)
-      expect(takeaway.total).to eq 25
+      expect(takeaway.calculate_total).to eq 25
     end
   end
 
@@ -57,10 +59,9 @@ describe Takeaway do
   # I would like to receive a text such as "Thank you! Your order was
   # placed and will be delivered before 18:52" after I have ordered
   describe '#send text' do
-    it 'sends text when order made' do
-      allow(takeaway).to receive(:send_text)
-      expect(takeaway).to receive(:send_text).with('Thanks for your order, total cost: 27')
-      takeaway.order_processed(27)
+    it 'sends text when order total confirmed by user' do
+      expect(client).to receive_message_chain("messages.create")
+      takeaway.check_total
     end
   end
 
