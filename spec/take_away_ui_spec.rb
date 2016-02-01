@@ -20,6 +20,10 @@ describe TakeAway do
   let(:dummy_basket_klass) {double :dummy_basket_klass}
   let(:dummy_basket) {double :dummy_basket}
 
+  #Doubling checkout class
+  let(:checkout_message) {double :checkout_message}
+  # let(:checkout_time) {Checkout::HOURS_UNTIL_DELIVERY}
+
 
 before do
   allow(dummy_cuisine_klass).to receive(:new).and_return(italian_menu)
@@ -178,10 +182,14 @@ end
       describe "#confirm_order" do
         let(:price) {double :price}
         let(:sample_total) {double :sample_total}
+        let(:sample_selection) {[[:Carbonara, 3], [:Calzone, 1], [:Risotto, 3]]}
+
 
         before do
           allow(dummy_basket).to receive(:total_bill).and_return price
           allow(dummy_basket).to receive(:checkout)
+          allow(dummy_basket).to receive(:itemised_bill).and_return sample_selection
+          allow(checkout_message).to receive(:send_sms)
         end
 
 
@@ -191,7 +199,7 @@ end
         end
 
         it 'checks the price against the total_bill' do
-          expect(dummy_basket).to receive(:total_bill)
+          expect(sample_selection).to receive(:total_bill)
           menu.confirm_order(price)
         end
 
@@ -207,6 +215,11 @@ end
         it 'checks-out the basket if prices match' do
           expect(dummy_basket).to receive(:checkout)
           menu.confirm_order(price)
+        end
+
+        it 'sends a confirmation text message' do
+          expect(takeaway).to receive(:send_sms).with(takeaway.order_summary)
+          takeaway.complete_order(takeaway.order_summary)
         end
 
 

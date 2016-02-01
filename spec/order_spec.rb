@@ -118,8 +118,6 @@ describe Order do
       expect(dummy_basket).to receive(:selection).and_return dummy_selection2
       order.basket.selection
     end
-    #   expect {oystercard.touch_out(station_out)}.to change(oystercard, :balance).by(-penalty_fare)
-
 
     end
   end

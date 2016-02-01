@@ -20,13 +20,19 @@ MY APPROACH:
 
 I approached my design with the intention of making it very easy to adapt. I separated out classes based, in part, on the areas that would be most likely to be enhanced in the future:
 
-The inclusion of different menus and ability for the user navigate these seamlessly. Ie, breakfast vs dinner menus or different cuisines.
+The inclusion of different menus. Ie, breakfast vs dinner menus or different cuisines with example class of Italian Menu.
 
-The separation of the customer's order from their menu selection.  
+The separation of processing from the user's takeaway interface.
+
+The separation of text-order processing from ordering with select.
 
 The development of Customer Relationship Management functions, such as including different ways to message customers and store information about the customer.
 
+THINGS I NEED TO DO
 
+1. Get Dotenv to work!
+2. Write an ability to review and amend order before confirming it.
+3. Feature test specs
 
 
 USER STORIES:
@@ -49,60 +55,68 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 USAGE GUIDE:
+<!--
+irb
 
-** Behaviour of program
-<!-- Only Airports are allowed to instruct Planes to land or take off
-Remember to park newly created planes at your chosen airport before instructing them to take off
-There is a 10% chance bad weather will prevent landing and taking off -->
+2.2.3 :001 > require './lib/take_away_ui.rb'
+ => true
+2.2.3 :002 > takeaway = TakeAway.new
+ => #<TakeAway:0x007fcd30b43de0 @cuisine_choice=ItalianMenu, @basket=Basket, @order=Order, @selection=[], @price=0>
+2.2.3 :003 > takeaway.menu_choice(:lunch, :all)
+ => {:Starters=>"Price", :Soup=>5, :Frutti_de_mer=>9, :Proscuitto=>7, :Capocollo=>9, :Mains=>"Price", :Focaccia=>10, :Calzone=>10, :Penne=>11, :Margherita=>13, :Lasagne=>13, :Desserts=>"Price", :Pannacotta=>7, :Semi_fresso=>7, :Tiramisu=>10}
+2.2.3 :004 > takeaway.display
+Starters                                                                   Price
+Calamari                                                                       8
+Olives                                                                         4
+Panzerottini                                                                   7
+Bruschetta                                                                     6
+Gamberi                                                                        9
+Insalata                                                                       7
+Mains                                                                      Price
+Margherita                                                                    13
+Pasta                                                                         12
+Risotto                                                                       11
+Calzone                                                                       10
+Carbonara                                                                     12
+Bolognese                                                                     12
+Gnocchi                                                                       11
+Desserts                                                                   Price
+Tiramisu                                                                      10
+Gelato                                                                         8
+Frutti                                                                         9
+Tortoni                                                                        9
+ => {:Starters=>"Price", :Calamari=>8, :Olives=>4, :Panzerottini=>7, :Bruschetta=>6, :Gamberi=>9, :Insalata=>7, :Mains=>"Price", :Margherita=>13, :Pasta=>12, :Risotto=>11, :Calzone=>10, :Carbonara=>12, :Bolognese=>12, :Gnocchi=>11, :Desserts=>"Price", :Tiramisu=>10, :Gelato=>8, :Frutti=>9, :Tortoni=>9}
+2.2.3 :005 > takeaway.take_order
+"What would you like to eat? Eg '2 Carbonara and a Tiramisu'"
+2 calamari 3 gnocchi and a tiramisu
+ => #<Basket:0x007fcd30b12f10 @selection=[[:Calamari, 2], [:Gnocchi, 3], [:Tiramisu, 1]], @menu_choice={:Starters=>"Price", :Calamari=>8, :Olives=>4, :Panzerottini=>7, :Bruschetta=>6, :Gamberi=>9, :Insalata=>7, :Mains=>"Price", :Margherita=>13, :Pasta=>12, :Risotto=>11, :Calzone=>10, :Carbonara=>12, :Bolognese=>12, :Gnocchi=>11, :Desserts=>"Price", :Tiramisu=>10, :Gelato=>8, :Frutti=>9, :Tortoni=>9}>
+2.2.3 :006 > takeaway.review_order
+Dish: Calamari                          Quantity: 2            Price per dish: 8                               Total: 16
+Dish: Gnocchi                           Quantity: 3           Price per dish: 11                               Total: 33
+Dish: Tiramisu                          Quantity: 1           Price per dish: 10                               Total: 10
+            GRAND TOTAL: 59             
+ => nil
+2.2.3 :007 > takeaway.confirm_order(59)
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC311eb9c4bc2c0171b0fa8dbe12bc7e28/Messages/SM6a201068009c4c58828194bd9515c650>
+2.2.3 :008 >  -->
 
 CLASSES:
 
-Airport
+TakeAway
 
-<!-- Instantiates with two arguments, a capacity and weather.
-Capacity defaults to a constant DEFAULT_CAPACITY of 20.
-Weather defaults to an injected instantiation of the Weather class. -->
+Acts as the user interface.
 
 	Methods:
 
-	<!-- airport.land(plane)
-		Will not allow a plane to land if the airport is full.
-		Will not allow a plane to land if the weather is not sunny.
-		Will not allow a plane to land if the plane has already landed and isn't flying.
-		Otherwise, it will change the plane's status to 'landed' and put the plane in the holding bay. -->
 
-	airport.take_off
-		<!-- Will not allow a plane to take off if airport is empty.
-		It will otherwise remove the plane from the holding bay in order to check it's status.  
-		It will not allow a plane to take off if it is already flying or if the weather is not sunny and put it back in the holding bay.
-		Otherwise it will then change the plane's status from Landed to Flying as it takes off. -->
 
 	Private Methods:
-<!--
-	full?
-		Will check if the holding bay is bigger than or equal to the airport's capacity.
-
-	empty?
-		Will check if the holding bay is empty. -->
 
 	Att_reader:
 	holding_bay
 	capacity
 	sunny
 
-
-$ irb feature test
-> require './lib/airport'
-> airport1 = Airport.new
-> aiport2 = Airport.new
-> plane1 = Plane.new
-> plane2 = Plane.new
-> airport.land(plane1)
-> heathrow.land(plane2)
-> heathrow.take_off(plane1)
-> heathrow.take_off(plane2)
-> jfk.land(plane1)
-> jfk.land(plane2)
 
 
 LICENSE:	This project is licensed under the terms of the MIT license.
@@ -112,15 +126,21 @@ AUTHORS: 	Viola Crellin
 CONTACT: 	viola.crellin@gmail.com
 
 PROJECT CONTENTS:
-      <!-- Gemfile
+
+      Gemfile
 			Gemfile.lock
 			Rakefile
 			README.md - a description of the challenge set by MakersAcademy
 			lib directory
-				airport.rb
-				plane.rb
-				weather.rb
+				basket.rb
+				italian_menu.rb
+				order.rb
+				message.rb
 			spec directory
-				airport_spec.rb
-				plane_spec.rb
-				weather_spec.rb -->
+				basket_spec.rb
+				checkout_spec.rb
+				take_away_ui_spec.rb
+				italian_food_spec.rb
+				message_spec.rb
+				feature_spec directory
+					take_away_feature_spec.rb

@@ -1,13 +1,16 @@
 
 require_relative 'italian_menu'
 require_relative 'order'
+require_relative 'checkout'
+require 'twilio-ruby'
+require 'dotenv'
 
 
 class TakeAway
 
 SCREEN_WIDTH = 40
 
-attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_choice, :price
+attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_choice, :price, :order_summary
 
 
   def initialize(cuisine_choice=ItalianMenu, order=Order, basket=Basket)
@@ -39,7 +42,6 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
     @basket = order.add_to_basket
   end
 
-
   def select_dish(dish, quantity)
     if selection.empty?
       selection << [dish, quantity]
@@ -56,20 +58,18 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
       puts ("GRAND TOTAL: #{basket.total_bill}".center(SCREEN_WIDTH))
   end
 
-  # def remove(selected)
-  #   @dish = selected
-  #   @basket.selection.delete_if{|full_order| @dish.capitalize.to_sym == full_order[0] }
-  # end
-  #
-  # def change_quantity(dish, quantity)
-  #   @dish = dish
-  #   @basket.map!{|full_order| @dish.capitalize.to_sym == full_order[0] ? full_order[1] = quantity : full_order[1] }
-  # end
 
   def confirm_order(price)
     @price = price
     fail "Price does not match" if !price_correct?
-    basket.checkout
+  end
+
+  def checkout_message(order_summary)
+    CheckoutMessage.new.send_sms(order_summary)
+  end
+
+  def order_summary
+    "Your food is on it's way! GRAND TOTAL: £#{basket.total_bill}"
   end
 
   private
@@ -91,4 +91,15 @@ attr_reader :cuisine_choice, :meal, :course, :order, :basket, :selection, :menu_
   end
 
 
+
 end
+
+# def remove(selected)
+#   @dish = selected
+#   @basket.selection.delete_if{|full_order| @dish.capitalize.to_sym == full_order[0] }
+# end
+#
+# def change_quantity(dish, quantity)
+#   @dish = dish
+#   @basket.map!{|full_order| @dish.capitalize.to_sym == full_order[0] ? full_order[1] = quantity : full_order[1] }
+# end

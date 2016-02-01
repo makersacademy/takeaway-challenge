@@ -20,9 +20,6 @@ attr_reader :selection, :menu_choice
     itemised_bill.transpose.last.inject(:+)
   end
 
-  def checkout
-    "checked out"
-  end
 
   def remove_unexpected_items
     unexpected_items = (selection.transpose[0] - menu_choice.keys)
