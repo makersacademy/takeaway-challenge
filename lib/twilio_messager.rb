@@ -9,7 +9,7 @@ class Messager
    
   end
   
-  private
+private
   
   def twilio_send(message)
     

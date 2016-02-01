@@ -33,6 +33,7 @@ irb(main):002:0> t = Takeaway.new
 irb(main):003:0> t.menu
 
 What cousine would you like?
+
 1 - Italian
 
 2 - Mexican

@@ -4,7 +4,7 @@ class Order
   attr_accessor :status
   
   def initialize
-    @status = Array.new
+    @status = []
     @total = 0
   end
   
@@ -19,14 +19,14 @@ class Order
   end
   
   def clear_order
-    self.status = Array.new
+    self.status = []
     "Your basket is now empty."
   end
   
-  private
+private
   
   def calculate_basket
-    basket = status.group_by { |item| item.keys }
+    basket = status.group_by(&:keys)
     basket.each_pair {|item, number| puts "#{item.join} x #{number.size} = £#{(number[0].values.join.to_i) * (number.size/1.0)}"}
   end
   

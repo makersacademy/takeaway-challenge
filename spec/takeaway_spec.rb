@@ -6,6 +6,10 @@ describe Takeaway do
   
   describe 'Allows user to order' do
     
+    it { is_expected.to respond_to(:clear_order)}
+    it { is_expected.to respond_to(:check_order)}
+    
+    
     
     it 'gets the answer for the cuisine type' do
       
@@ -28,6 +32,13 @@ describe Takeaway do
       takeaway.order("pasta")
       expect(takeaway.order_log.status.last).to be_an Hash
     end
+    
+    it 'returns a confirmation message with item and quantity' do
+      
+      expect(takeaway.order("pizza", 2)).to eq "2 x Pizza added to your order."
+      
+    end
+    
   end
   
   describe '#check_out' do

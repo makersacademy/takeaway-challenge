@@ -28,7 +28,7 @@ class Takeaway
   def order(item, capacity=1) 
     return "Please choose an item in the menu" unless item_exist?(item)
     add_to_basket(item, capacity)
-    "#{capacity} x #{item} added to your order."
+    "#{capacity} x #{item.capitalize} added to your order."
   end 
   
   def check_order
@@ -39,17 +39,13 @@ class Takeaway
     order_log.clear_order
   end
   
-  def total 
-    order_log.calculate_total
-  end
-  
   def check_out(total)
     return "The total is not correct or no order has been made!" if total_error(total)
     messager.send_sms("Thank You! You will receive your order by #{time_format}. Total = £#{total}")
     close_order
   end
   
-    private 
+private 
   
   def display_menu
     restaurant.own_menu
