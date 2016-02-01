@@ -1,43 +1,72 @@
-require 'menu'
+require './lib/menu.rb'
 
 class Order
 
-	attr_reader = false
+	attr_reader :basket
 
 
-	def initialize (menu_klass = Menu)
+	def initialize (menu = Menu.new)
+		@menu = menu
+		@this_menu = {}
 		@basket = []
-		@paid = false
 		@confirmed_order = false
-	end
-
-	def show_menu
-		Menu.show
-	end
-
-	def add_to_basket(dish, quanitity)
-
+		@item_costs = []
 
 	end
 
-	def payment (amount)
-
+	def this_menu
+		@this_menu = @menu.show_menu.dup
 	end
+
+	def add_to_basket(dish, quantity)
+		this_menu
+		raise 'Order already confirmed. Please submit new order' if confirmed_order?
+		raise 'Item not on menu' if !@this_menu.include?(dish)
+		quantity.times {@basket << dish}
+		price_of_each_item
+		@basket
+	end
+
+
+	def total
+		total = 0
+		@item_costs.each {|x| total += x }
+		total
+	end
+
+
+	def receipt
+		@item_costs.zip(@basket) << "TOTAL: £#{total}"
+	end
+
+
 
 	def confirm_order
-		raise 'Incorrect amount received. Please enter the correct value'
-		if @paid = true
+		raise 'Order already confirmed. Please submit new order' if confirmed_order?
 			@confirmed_order = true
-	end
+
+			#send text message. New delivery!
+	
 
 	end
+
+
 
 
 private
 
-	def price_of_order
+	def price_of_each_item
+		
+		@basket.each do |x|
+
+	 		  @item_costs << @this_menu[x]
+		
+		end
 	end
 
-	def check_price_of_order
+	def confirmed_order?
+		!!@confirmed_order
 	end
 
+
+end
