@@ -1,38 +1,19 @@
 require 'takeaway'
+require 'menu'
 
 describe Takeaway do 
 
-	let(:menu) {double(:menu)}
-	subject(:takeaway) {described_class.new(menu)}
+	# subject(:menu) {described_class.new(menu)}
 
-	describe '#menu' do
+	# 	it 'shows a menu' do			
+	# 		expect(subject).to respond_to(:menu).with(1).argument  
+	# 	end
 
-		it 'shows menu of dishes with prices' do
-			expect(takeaway.menu).to eq(menu)
-		end
-	end
+	# 	it 'shows a price' do			
+	# 		expect(subject).to respond_to(:price).with(1).argument  
+	# 	end
+
 end
 
-# 	describe '#select' do
 
-# 		it 'selects some number of available dishes' do
 
-# 		end
-
-# 	end
-
-# 	describe '#total' do
-
-# 		it 'checks the total for dishes in my order' do
-
-# 		end
-
-# 	end
-
-# 	describe '#text' do
-
-# 		it 'receives a text to say "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered' do
-
-# 		end
-
-# end
