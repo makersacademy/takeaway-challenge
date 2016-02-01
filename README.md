@@ -12,7 +12,7 @@ My first step was to draw a simple diagram, outlining classes, state, behavior a
 
 I proceeded to extract some of the Restaurant class's functionality into an OrderDispatch interactor class, responsible for creating new orders and confirming they were placed. Particular attention was placed on encapsulation and limiting the amount of information being passed between the objects: for example, menu information belongs to the Restaurant class and it is therefore here that we handle business logic to ensure that new orders are correct and calculate the total price.
 
-Having decided to first attempt the challenge without the guidance of the review rubric, the program behaves somewhat different from the prescribed method. New order instances are automatically created via a Restaurant's order dispatcher when calling Restaurant#place_order and passing in comma-separated strings with the quantity and name for each dish. If the order is successfully placed, the user will receive confirmation via a text message with the total price and maximum estimated time of delivery, as well as being able to see an order summary alongside the total price.
+Having decided to first attempt the challenge without the guidance of the review rubric, the program behaves somewhat different from the prescribed method. New order instances are automatically created via a Restaurant's order dispatcher when calling Restaurant#place_order and passing in comma-separated strings with the quantity and name for each dish. This was done to eventually accommodate the possibility of placing an order via text. If the order is successfully placed, the user will receive confirmation via a text message with the total price and maximum estimated time of delivery, as well as being able to see an order summary alongside the total price.
 
 NOTE: due to the design decision to automatically create order instances, there is no standalone functionality to check the price of an order against the menu items; this information is all provided upon placing an order.
 
@@ -59,10 +59,13 @@ The program was tested using RSpec with >90% coverage (the convenience method fo
 
 Next steps
 ------------
-* Create Customer structs with attributes that can be used to access an order history from the OrderDispatch (via the Restaurant)
+* Refactor so that Restaurant#place_order takes a single string with CSVs (see bullet below)
 * Allow customers to place orders via text message
+* Load a menu from file (YAML) to create varied Restaurant objects
+* Create Customer structs with attributes that can be used to access an order history from the OrderDispatch (via the Restaurant)
 * Extract the business logic for parsing customer orders and calculating order totals
 * Implement a basket/checkout system
+* Write an RSpec feature test
 
 Notes
 -----
