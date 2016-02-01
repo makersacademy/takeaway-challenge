@@ -16,6 +16,7 @@ Run the program
 => true 
 2.2.3 :002 > `menu = Select.new`           <----------- `create an instance!`
 => #<Select:0x007fed72885628 @menu={"Burger"=>10, "Pint"=>4.5, "Steak"=>18, "Wine"=>22, "Chips"=>3.25}, @order={}, @total=[], @due=0> 
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Once to have run the program you can use the next commands
