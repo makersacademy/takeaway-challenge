@@ -49,7 +49,7 @@ describe Order do
   end
 
   describe '#send_message' do
-    it 'sends confirmation message' do
+    xit 'sends confirmation message' do
       order.send_message
     end
   end
@@ -76,7 +76,7 @@ describe Message do
   subject(:new_message){described_class.new}
   #let(:message){double (:new_message)}
 
-  it 'sends a confirmation message' do
+  xit 'sends a confirmation message' do
     new_message.send([{"Margherita" => 2}])
   end
 end
