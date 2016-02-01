@@ -20,7 +20,7 @@ class Restaurant
   }.freeze
 
   def self.build_with_dispatch
-    new(OrderDispatch.new)
+    new(OrderDispatch.build_with_twilio)
   end
 
   def initialize(order_dispatch, menu = MENU)

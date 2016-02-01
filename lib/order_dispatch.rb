@@ -3,12 +3,17 @@ require 'dotenv'
 require 'twilio-ruby'
 
 class OrderDispatch
+  @@tokens = Dotenv.load
 
-  def initialize(client_klass = Twilio::REST::Client, order_klass = Order)
-    @credentials = Dotenv.load
-    @client      = client_klass.new(
-      @credentials['account_sid'], @credentials['auth_token']
-    )
+  def self.build_with_twilio
+    new(Twilio::REST::Client.new(
+      @@tokens['account_sid'], @@tokens['auth_token']
+    ))
+  end
+
+  def initialize(client, order_klass = Order)
+    # @credentials = Dotenv.load
+    @client      = client
     @order_klass = order_klass
   end
 
@@ -23,8 +28,8 @@ class OrderDispatch
 
   def send_confirmation(body)
     @client.account.messages.create(
-      from: @credentials['twilio_num'],
-      to:   @credentials['user_num'],
+      from: @@tokens['twilio_num'],
+      to:   @@tokens['user_num'],
       body: body
     )
   end

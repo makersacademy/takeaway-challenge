@@ -1,9 +1,8 @@
 require 'order_dispatch'
 
 describe OrderDispatch do
-  subject(:dispatch)  { described_class.new(client_klass, order_klass) }
+  subject(:dispatch)  { described_class.new(client, order_klass) }
   let(:order_klass)   { double :order_klass, new: order }
-  let(:client_klass)  { double :client_klass, new: client }
   let(:client)        { double :client }
   let(:order_details) { double :hash }
   let(:order)         { double :order, total: 20, summary: order_details }
