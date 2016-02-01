@@ -1,3 +1,4 @@
+require 'dotenv'
 require './lib/menu'
 require './lib/messaging'
 

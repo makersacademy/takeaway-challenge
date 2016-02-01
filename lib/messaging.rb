@@ -1,3 +1,4 @@
+require 'dotenv'
 require 'twilio-ruby'
 require './lib/takeaway'
 
@@ -5,25 +6,25 @@ class Message
 
 	def text_message
 
-	accountSID = 'AC057ecd456cd3493339ba8c2de10350a0'
-	authToken= '2e8be36624c5fda0f464b1ae086c2770'
+	Dotenv.load
 
-	@client = Twilio::REST::Client.new accountSID, authToken
+	accountSID = ENV['TWILIO_ACCOUNT_SID']
+    authToken = ENV['TWILIO_AUTH_TOKEN']
+	from_phone = ENV['TWILIO_PHONE']
 
-	from = '447481346274'
-
-	friends = { '447970362728' => 'Russell Vaughan'}
+	receiver = ENV['RECEIVER']
 
 	message = "Thank you! Your order was placed and will be delivered before #{one_hours_time}"
 
-	friends.each do |key,value|
+	@client = Twilio::REST::Client.new accountSID, authToken
 
-	message = @client.account.messages.create(
-	:from => from,
-	:to  => key,
-	:body => message)
+	@client.account.messages.create(
+	:from => from_phone,
+	:to  => receiver,
+	:body => message
+
+	)
 	
-	end
 	message
 	end
 
