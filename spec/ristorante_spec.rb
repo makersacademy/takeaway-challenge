@@ -5,7 +5,7 @@ describe Ristorante do
 
   let(:order) {double :order}
   let(:dish) {double :dish}
-  let(:dish1) { {dish: "pizza", quantity: 2, price: 2} }
+  let(:error) {"Wrong total amount"}
 
   before do
     allow(order).to receive(:wrong_total?) {false}
@@ -15,10 +15,6 @@ describe Ristorante do
 
   describe '#menu'
     context 'menu options' do
-      it "doesn't raise error when menu is called" do
-        expect {ristorante.menu}.not_to raise_error
-      end
-
       it "expects the menu to be a has" do
         expect(ristorante.menu).to be_a Hash
       end
@@ -32,6 +28,11 @@ describe Ristorante do
   end
 
   describe '#place_order' do
+    it "raises and error if the order is wrong" do
+      allow(order).to receive(:wrong_total?) {true}
+      expect {ristorante.place_order}.to raise_error(error)
+    end
+
     it "sends #send_sms to order " do
       expect(order).to receive(:send_sms)
       ristorante.place_order
