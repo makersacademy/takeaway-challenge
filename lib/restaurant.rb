@@ -20,7 +20,7 @@ class Restaurant
 
   def show_menu
     @itemized_menu = create_menu(MENU)
-    @itemized_menu.each {|menu_item| puts "#{menu_item.name} = #{menu_item.price},"}
+    @itemized_menu.each {|menu_item| "#{menu_item.name} = #{menu_item.price},"}
   end
 
  def place_order(item, quantity=1)

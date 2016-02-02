@@ -24,7 +24,7 @@ describe Order do
    end
 
    it 'returns a string confirming the item added and the quantity' do
-     expect{order.add_item(menu_item, small_order)}.to output("#{small_order} #{menu_item.name}, added to your order").to_stdout
+     expect(order.add_item(menu_item, small_order)).to eq("#{small_order} #{menu_item.name}, added to your order")
    end
 
  end
@@ -34,13 +34,13 @@ describe Order do
 
    it 'returns the items ordered and the current total' do
      order.add_item(menu_item, small_order)
-     expect{order.show_order}.to output("1 #{menu_item.name}, total #{menu_item.price * small_order}").to_stdout
+     expect(order.show_order).to eq("1 #{menu_item.name}, total #{menu_item.price * small_order}")
    end
 
    it 'returns the items ordered and the current total with multiple different items' do
      order.add_item(menu_item, small_order)
      order.add_item(menu_item_two, small_order)
-     expect{order.show_order}.to output("#{small_order} #{menu_item.name}, #{small_order} #{menu_item_two.name}, total #{menu_item.price + menu_item_two.price}").to_stdout
+     expect(order.show_order).to eq("#{small_order} #{menu_item.name}, #{small_order} #{menu_item_two.name}, total #{menu_item.price + menu_item_two.price}")
    end
 
  end

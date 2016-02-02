@@ -7,11 +7,11 @@ class Messager
   attr_reader :message
 
   def initialize
-    @credentials = Dotenv.load
-    @account_sid = @credentials['ACCOUNT_SID']
-    @auth_token = @credentials['AUTH_TOKEN']
-    @twilio_number = @credentials['TWILIO_NUMBER']
-    @my_number = @credentials['MY_NUMBER']
+    Dotenv.load
+    @account_sid = ENV['ACCOUNT_SID']
+    @auth_token = ENV['AUTH_TOKEN']
+    @twilio_number = ENV['TWILIO_NUMBER']
+    @my_number = ENV['MY_NUMBER']
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
   end
 
@@ -21,12 +21,12 @@ class Messager
     to: @my_number,
     body: message
     )
-    puts 'Your order has been confirmed'
+    'Your order has been confirmed'
   end
 
   def receive_sms
     message = @client.account.messages.get('SM614bbade097f4e189ff2375ec9793c2e')
-    puts message.body
+    message.body
   end
 
 end

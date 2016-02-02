@@ -15,8 +15,7 @@ class Order
 
   def add_item(menu_item, quantity)
     @history[menu_item] = quantity
-    item_added_confirmation(menu_item, quantity)
-    print "added to your order"
+    item_added_confirmation(menu_item, quantity) + "added to your order"
   end
 
   def history
@@ -24,8 +23,9 @@ class Order
   end
 
   def show_order
-    @history.each {|menu_item, quantity|item_added_confirmation(menu_item, quantity)}
-    print "total #{order_total}"
+    string_to_return = ''
+    @history.each {|menu_item, quantity| string_to_return << "#{quantity} #{menu_item.name}, " }
+    string_to_return << "total #{order_total}"
   end
 
   def confirm_order(total)
@@ -36,7 +36,7 @@ class Order
   private
 
   def item_added_confirmation(menu_item, quantity)
-    print "#{quantity} #{menu_item.name}, "
+    return "#{quantity} #{menu_item.name}, "
   end
 
   def total_mismatch_error(total)
