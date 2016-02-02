@@ -1,7 +1,30 @@
-module Order
+class Order
+
+  def initialize
+    @return_array = [[],[]]
+  end
+
+  def order_input(dish, quantity, menu)
+    if menu.has_key?(dish.to_sym)
+      @return_array[0] << dish.to_sym
+      @return_array[1] << quantity
+      p "current order is #{@return_array}"
+    else
+      puts "That dish is not recognised"
+    end
+    @return_array
+  end
+
+  def reset
+    @return_array = [[],[]]
+  end
+end
+
+=begin
+  def
 
 
-  def order_input(menu)
+
   dish_array = []
   quantity_array = []
   return_array = []
@@ -41,3 +64,4 @@ module Order
   return_array << dish_array << quantity_array
   end
 end
+=end

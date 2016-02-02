@@ -10,7 +10,8 @@ describe Takeaway do
   end
 
   describe '#order'
-    xit 'allows you to make an order'do
+    it 'allows you to make an order'do
+    expect(takeaway.order("Hamburger", 1)).to eq [[:Hamburger],[1],[4.5]]
 
     end
 

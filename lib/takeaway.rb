@@ -12,19 +12,23 @@ include Calculate_Order
 include MenuList
 include Mail
 include Menu_Print
-include Order
 
-  def initialize(restaurant_type = :burger)
+  def initialize(restaurant_type = :burger, order = Order.new)
     @menu = select(restaurant_type)
+    @order_instance = order
   end
 
   def show_menu
     show(@menu)
   end
 
-  def order
-    order = order_input(@menu)
-    @order = order << [calculate(order, @menu)]
+  def order(dish, quantity)
+    @basket = @order_instance.order_input(dish, quantity, @menu)
+    @order = @basket << [calculate(@basket, @menu)]
+  end
+
+  def reset_order
+    @order_instance.reset
   end
 
   def confirm_order (order_list = @order)
