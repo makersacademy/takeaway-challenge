@@ -1,78 +1,75 @@
 Takeaway Challenge
-==================
+===================
+[![Build Status](https://travis-ci.org/yyl29/takeaway-challenge.svg?branch=master)](https://travis-ci.org/yyl29/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/yyl29/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/yyl29/takeaway-challenge?branch=master)
 
-Instructions
--------
+What is it?
+-----------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is Week 2 weekend challenge at Makers Academy. This Takeaway program can take customer's order from a list of available dishes on a menu. Once the order is placed, a confirmation text will be sent using the [Twilio API](https://www.twilio.com/?v=b), notifying customer the delivery time. Full instructions can be found in [INSTRUCTIONS.md](https://github.com/yyl29/takeaway-challenge/blob/master/INSTRUCTIONS.md).
 
-Task
------
+Features
+---------
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Menu of a list of available dishes with prices on request
+* Multiple dishes can be selected at the same time
+* Order is checked before placing
+* Text confirmation service notifying the delivery time
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+User Guide
+----------
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+This programme can be run in `irb` or `pry` from the command line.
 
 ```
-$ coveralls report
+$ irb
+2.2.3 :001 > require './lib/takeaway'
+ => true
+2.2.3 :002 > takeaway = Takeaway.new
+ => #<Takeaway:0x007fff313a5970 @menu=#<Menu:0x007fff313a5948 @filename="menu.yaml">, @order=#<Order:0x007fff313a5880 @basket={}, @order_total=0>, @messenger=#<Messenger:0x007fff313a5830>>
+2.2.3 :003 >
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+To see a list of available dishes on the menu, use the `.read_menu` command. A sample menu is provided in the `./lib/menu.yaml` file, and can be edited using the same format.
 
-Build Badge Example
-------------------
+```
+.2.3 :003 > takeaway.read_menu
+ => {:onion_bhaji=>2.95, :chicken_tikka_masala=>7.95, :naan=>1.95}
+2.2.3 :004 >
+```
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Select dishes by entering the dish names with desired quantity, using the `.select_dishes` command. Multiple items can be added at the same time.
+
+```
+2.2.3 :004 > takeaway.select_dishes(onion_bhaji: 1)
+ => {:onion_bhaji=>1}
+2.2.3 :005 > takeaway.select_dishes(chicken_tikka_masala: 2, naan: 3)
+ => {:onion_bhaji=>1, :chicken_tikka_masala=>2, :naan=>3}
+2.2.3 :006 > takeaway.select_dishes(naan: 1)
+ => {:onion_bhaji=>1, :chicken_tikka_masala=>2, :naan=>4}
+2.2.3 :007 >
+```
+
+To place an order, use the `.checkout` command. Then confirm the order by entering the total number of dishes ordered using the `.confirm_order` command. Replace `PHONE` with a valid phone number for text service.
+
+```
+2.2.3 :007 > takeaway.checkout
+ => "You've ordered 7 items."
+2.2.3 :008 > takeaway.confirm_order(7, PHONE)
+ => "Thank you! Your order was placed and will be delivered before 14:48. Total price is £26.65"
+2.2.3 :009 >
+```
+
+Once the order is placed, a confirmation text would then be sent to the provided phone number, notifying of the delivery time ([see note](#note-on-text-service)). The delivery time is currently set to 1 hour from ordering.
+
+###Note on Text Service
+
+The text sending functionality is implemented using [Twilio API](https://www.twilio.com/?v=b). To use this service, register for it and include your API credentials in a `.env` file in the project's root:
+
+```
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_PHONE=+44xxxxxxxxxx
+TWILIO_DESTINATION_PHONE=+44xxxxxxxxxx
+```
+
+where `TWILIO_DESTINATION_PHONE` is the default phone number where text is sent to if no number is entered when confirming order.
