@@ -28,27 +28,39 @@ class Operator
   end
 
   def sort_order(order)
+    item_quantity = seperate_text(order)
+    order_information = meal_quantity(item_quantity)
+    @price = @menu.create_receipt(order_information)
+    confirmation_message(order_information)
+    order_information
+  end
+
+
+  private
+  def seperate_text(order)
     item_quantity = []
-    @order_information = {}
     items = order.split(",")
     items.each do |x|
       item_quantity << x.split(" ")
     end
-    item_quantity.each do |x|
-      if x.length == 1
-        @order_information[x[0].to_sym] = 1
-      else
-        @order_information[x[0].to_sym] = x[1].to_i
-      end
-    end
-    @price = @menu.create_receipt(@order_information)
-    confirmation_message
-    @order_information
+    item_quantity
   end
 
-  def confirmation_message
+  def meal_quantity(item_quantity)
+    order_information = {}
+    item_quantity.each do |x|
+      if x.length == 1
+        order_information[x[0].to_sym] = 1
+      else
+        order_information[x[0].to_sym] = x[1].to_i
+      end
+    end
+    order_information
+  end
+
+  def confirmation_message(order_information)
     message = "Thank you for placing your order of:\n"
-    @order_information.each do |food,quantity|
+    order_information.each do |food,quantity|
       message = message + "#{quantity}x #{food}\n"
     end
     message = message + "Total cost: £#{@price}"

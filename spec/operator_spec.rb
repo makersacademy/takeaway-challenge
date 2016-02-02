@@ -35,9 +35,10 @@ describe Operator do
     expect(operator.send(menu))
   end
 
-  it 'can create a confirmation message' do
-    operator.sort_order(order)
-    expect(operator.confirmation_message).to be_instance_of String
-  end
+  #make private ??
+  # it 'can create a confirmation message' do
+  #   operator.sort_order(order)
+  #   expect(operator.confirmation_message(message)).to be_instance_of String
+  # end
 
 end
