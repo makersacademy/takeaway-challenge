@@ -21,6 +21,13 @@ describe Takeaway do
   end
 
   describe '#receive_order' do
+    let(:customer) { double :customer, phone: '07712987654' }
+
+    before do
+      allow(order).to receive(:customer).and_return customer
+      allow(messager).to receive(:send_message)
+    end
+
     it 'fails if the order is empty' do
       order = double(order, empty?: true)
       expect{ takeaway.receive_order(order, 0) }.to raise_error 'Cannot process an empty order'
@@ -37,6 +44,11 @@ describe Takeaway do
 
     it 'fails if not given the correct payment' do
       expect{ takeaway.receive_order(order, 20) }.to raise_error "Incorrect payment: the order total is £17.00"
+    end
+
+    it "sends a message to the customer's number" do
+      expect(messager).to receive(:send_message).with('07712987654', anything)
+      takeaway.receive_order(order, 17)
     end
   end
 end
