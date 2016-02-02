@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do  
 
-	subject(:takeaway) {described_class.new(menu: menu, order: order, sms: sms)} #injecting menu class to allow amy menu methods to be handled in menu class (Order doesn't need to know!) - ## ?? ## Role of value menu?  Doesn't work without, but unsure of role...
+	subject(:takeaway) {described_class.new(menu: menu, order: order, sms: sms, config: {})} #injecting menu class to allow amy menu methods to be handled in menu class (Order doesn't need to know!) - ## ?? ## Role of value menu?  Doesn't work without, but unsure of role...
 	
 	let(:menu) {double(:menu, print: printed_menu)} #verifying doubles...?!  skipped this step (for now...)
 	let(:order) {double(:order, total: 15.50)}  #why hardwiring number in here?!
