@@ -61,15 +61,15 @@ To place an order, use the `.checkout` command. Then confirm the order by enteri
 
 Once the order is placed, a confirmation text would then be sent to the provided phone number, notifying of the delivery time ([see note](#note-on-text-service)). The delivery time is currently set to 1 hour from ordering.
 
-##Note on Text Service
+###Note on Text Service
 
 The text sending functionality is implemented using [Twilio API](https://www.twilio.com/?v=b). To use this service, register for it and include your API credentials in a `.env` file in the project's root:
 
 ```
-TWILIO_ACCOUNT_SID=#ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-TWILIO_AUTH_TOKEN=#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-TWILIO_PHONE=#+44xxxxxxxxxx
-TWILIO_DESTINATION_PHONE=#+44xxxxxxxxxx
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_PHONE=+44xxxxxxxxxx
+TWILIO_DESTINATION_PHONE=+44xxxxxxxxxx
 ```
 
 where `TWILIO_DESTINATION_PHONE` is the default phone number where text is sent to if no number is entered when confirming order.
