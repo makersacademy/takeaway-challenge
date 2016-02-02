@@ -13,5 +13,9 @@ class Menu
  		"%s £%.2f" % [title.to_s, price]
  		end.join(', ')
  	end
+
+ 	def price(dish)
+ 		dishes[dish]
+ 	end
 end
 
