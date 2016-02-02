@@ -5,9 +5,14 @@ class Order
   end
 
   def order_input(dish, quantity, menu)
+    p dish
+    p quantity
+    p @return_array
     if menu.has_key?(dish.to_sym)
       @return_array[0] << dish.to_sym
+      p @return_array
       @return_array[1] << quantity
+      p @return_array
       p "current order is #{@return_array}"
     else
       puts "That dish is not recognised"

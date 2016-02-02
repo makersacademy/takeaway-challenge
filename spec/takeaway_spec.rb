@@ -9,12 +9,15 @@ describe Takeaway do
     end
   end
 
-  describe '#order'
+  describe '#order'do
     it 'allows you to make an order'do
     expect(takeaway.order("Hamburger", 1)).to eq [[:Hamburger],[1],[4.5]]
-
     end
-
+    it 'allows you to make more than one order'do
+      takeaway.order("Hamburger", 1)
+      expect(takeaway.order("Hamburger", 1)).to eq [[:Hamburger, :Hamburger],[1,1],[9]]
+    end
+  end
 
   describe '#confirm_order'do
     it 'allows you to confirm order'do

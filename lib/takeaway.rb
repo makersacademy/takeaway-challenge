@@ -23,8 +23,9 @@ include Menu_Print
   end
 
   def order(dish, quantity)
+    @basket = []
     @basket = @order_instance.order_input(dish, quantity, @menu)
-    @order = @basket << [calculate(@basket, @menu)]
+    @order = @basket + [[calculate(@basket, @menu)]]
   end
 
   def reset_order
