@@ -5,3 +5,5 @@ gem 'rake'
 gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
+gem 'twilio-ruby', '~> 4.2.1'
+gem 'dotenv-rails', :groups => [:development, :test]
