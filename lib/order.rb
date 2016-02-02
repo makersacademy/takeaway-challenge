@@ -2,7 +2,11 @@ class Order
   extend Forwardable
 
   def_delegators :items, :each, :include?, :member?, :empty?
-  def initialize
+
+  attr_reader :customer
+
+  def initialize(customer)
+    @customer = customer
     @items = {}
   end
 

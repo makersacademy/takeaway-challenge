@@ -1,7 +1,12 @@
 require 'order'
 
 describe Order do
-  subject(:order) { Order.new }
+  let(:customer) { double(:customer) }
+  subject(:order) { Order.new(customer) }
+
+  it 'requires a customer' do
+    expect(order.customer).to be customer
+  end
 
   it 'is empty by default' do
     expect(order).to be_empty
