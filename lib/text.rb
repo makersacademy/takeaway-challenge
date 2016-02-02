@@ -36,7 +36,6 @@ class Text
   private
   def import_from_twilio
     @client.messages.list.each do |message|
-      p message.body
       @all_texts << message.body
     end
     @all_texts
