@@ -15,6 +15,7 @@ describe Menu do
 
   it 'prints list of dishes with their prices' do
     printed_menu = 'Patties £2.95, Ackee £6.95'
-    expect(menu.print).to eq(printed_menu)
+    expect(menu.print).to eq (dishes)
+
   end
 end
