@@ -26,6 +26,14 @@ class Operator
     order_information
   end
 
+  def confirmation_message(order_information)
+    message = "Thank you for placing your order of:\n"
+    message = food_list(order_information,message)
+    message = message + "Total cost: £#{@price}"
+    # send(message)
+    message
+  end
+
   # def action
   #   send(@menu.food) if request_menu?
   #   sort_order(@current_text) unless request_menu?
@@ -60,14 +68,6 @@ class Operator
       end
     end
     order_information
-  end
-
-  def confirmation_message(order_information)
-    message = "Thank you for placing your order of:\n"
-    message = message + food_list(order_information,message)
-    message = message + "Total cost: £#{@price}"
-    # send(message)
-    message
   end
 
   def food_list(order_information,message)
