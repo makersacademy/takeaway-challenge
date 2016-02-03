@@ -1,3 +1,1 @@
-class Customer < Struct.new(:name, :phone)
-
-end
+Customer = Struct.new(:name, :phone)
