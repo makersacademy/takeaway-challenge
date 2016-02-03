@@ -34,4 +34,11 @@ describe Menu do
       expect(items).to include name => price
     end
   end
+
+  it 'converts to a readable presentation string' do
+    menu = Menu.from_hash(items)
+    menu.add('A long menu item name', 25)
+    expected = "Pizza:#{' ' * 16}\t£  9.25"
+    expect(menu.to_s).to include expected
+  end
 end
