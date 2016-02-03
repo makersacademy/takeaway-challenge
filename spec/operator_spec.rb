@@ -4,6 +4,7 @@ describe Operator do
 
   let(:text) {double(:text)}
   let(:menu) {double(:menu)}
+  let(:random_message) {'hello'}
   let(:current_text) {"steak, chips 3, pizza 2"}
   let(:menu_string) {double(:menu_string)}
   #let(:message) {"requesting menu please"}
@@ -26,15 +27,15 @@ describe Operator do
 
   describe '#sort_order' do
     it 'can sort an incoming order' do
-      operator.check_new_messages
-      expect(operator.sort_order).to eq({:steak=>1,:chips=>3,:pizza=>2})
+      # operator.check_new_messages
+      expect(operator.sort_order(current_text)).to eq({:steak=>1,:chips=>3,:pizza=>2})
     end
   end
 
   describe '#confirmation_message' do
     it 'can create a confirmation message from the order information hash' do
       operator.check_new_messages
-      order_information = operator.sort_order
+      order_information = operator.sort_order(current_text)
       expect(operator.confirmation_message(order_information)).to eq "Thank you for placing your order of:\n1x steak\n3x chips\n2x pizza\nTotal cost: £44"
     end
   end
@@ -43,6 +44,19 @@ describe Operator do
     it 'can send a menu' do
       expect(text).to receive(:send_text)
       operator.send_menu
+    end
+  end
+
+  describe '#order_online' do
+    it 'can place an order through irb, thus removing need to text in order' do
+      expect(operator.order_online("steak, chips 3, pizza 2")).to eq current_text
+    end
+  end
+
+  describe '#send' do
+    it 'can sent any required message' do
+      expect(text).to receive(:send_text)
+      operator.send(random_message)
     end
   end
 
