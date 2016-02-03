@@ -39,6 +39,13 @@ describe Operator do
     end
   end
 
+  describe '#sent_menu' do
+    it 'can send a menu' do
+      expect(text).to receive(:send_text)
+      operator.send_menu
+    end
+  end
+
 
 
   # it {is_expected.to respond_to(:action)}

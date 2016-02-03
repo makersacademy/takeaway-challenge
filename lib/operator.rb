@@ -15,7 +15,8 @@ class Operator
   end
 
   def send_menu
-    send(@menu.food)
+    # send(@menu.food)
+    @text.send_text(@menu.food)
   end
 
   def sort_order
@@ -45,9 +46,9 @@ class Operator
     @current_text.include? 'menu'
   end
 
-  def send(message)
-    @text.send_text(message)
-  end
+  # def send(message)
+  #   @text.send_text(message)
+  # end
 
   def seperate_text(order)
     item_quantity = []
