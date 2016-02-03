@@ -6,7 +6,7 @@ class Operator
   def initialize(menu = Menu.new, text = Text.new)
     @menu = menu
     @text = text
-    @current_text = @text.new_message
+    #@current_text = @text.new_message
     @price = 0
   end
 

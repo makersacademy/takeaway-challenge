@@ -33,6 +33,7 @@ describe Operator do
   # end
 
   it 'can sort an incoming order' do
+    operator.check_new_messages
     expect(operator.sort_order).to eq({:steak=>1,:chips=>3,:pizza=>2})
   end
 
