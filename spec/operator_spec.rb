@@ -60,6 +60,18 @@ describe Operator do
     end
   end
 
+  # describe '#automatic' do
+  #   it 'can automatically take an order and reply with a confirmation' do
+  #     operator.check_new_messages
+  #     operator.automatic
+  #     expect(operator.sort_order(current_text))
+  #     expect(operator.confirmation_message({:steak=>1,:chips=>3,:pizza=>2}))
+  #     expect(operator.send(random_message))
+  #   end
+  # end
+
+  it {is_expected.to respond_to(:automatic)}
+
 
 
   # it {is_expected.to respond_to(:action)}
