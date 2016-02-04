@@ -1,15 +1,20 @@
+
 class Menu
 
-  def initialize items="No menu here yet!"
-    @menu_items = items
+  def initialize items={}
+    @items = items
   end
 
   def list_items
-    @menu_items.clone
+    @items.clone
   end
 
-  def change_menu new_menu
-    @menu_items = new_menu
+  def add_items item, price
+    @items[item] = price
+  end
+
+  def remove_item item
+    @items.delete(item)
   end
 
 end

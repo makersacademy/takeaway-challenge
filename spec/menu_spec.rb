@@ -3,20 +3,36 @@ require 'menu'
 describe Menu do
 
   let(:items) {{orange: 1, noodles: 10, pie: 6}}
-  let(:message) {"No menu here yet!"}
-  let(:new_menu) {described_class.new}
   subject(:menu) {described_class.new}
 
-  it{is_expected.to respond_to(:list_items)}
-  it{is_expected.to respond_to(:change_menu)}
 
-  it 'returns an "empty" message until menu is set' do
-    expect(subject.list_items).to eql message
+  describe '#list_items' do
+    it 'lists items currently on menu' do
+      expect(menu.list_items).to eq ({})
+    end
   end
 
-  it 'allows a change of menu' do
-    subject.change_menu items
-    expect(subject.list_items).to eql items
+
+  context 'managing menu items' do
+
+    before do
+      menu.add_items :orange, 2
+    end
+
+    describe '#add_item' do
+      it 'adds an item to the list' do
+        expect(menu.list_items).to include ({orange: 2})
+      end
+    end
+
+    describe '#remove_item' do
+      it 'removes an item from the list' do
+        menu.add_items :pie, 8
+        menu.remove_item :orange
+        expect(menu.list_items).not_to include ({orange: 2})
+      end
+    end
+
   end
 
 end
