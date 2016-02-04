@@ -52,7 +52,7 @@ class Operator
   #   sort_order(@current_text) unless request_menu?
   # end
 
-  private
+  # private
 
   # def request_menu?
   #   @current_text.include? 'menu'
@@ -62,22 +62,24 @@ class Operator
   def seperate_text(order)
     item_quantity = []
     items = order.split(",")
-    items.each do |x|
-      item_quantity << x.split(" ")
-    end
-    item_quantity
+    items.each { |x| item_quantity << x.split(" ")}
+    item_quantity = item_quantity.flat_map {|x| [x[0].to_sym , x[1].to_i]}
   end
 
+  # def meal_quantity(item_quantity)
+  #   order_information = {}
+  #   item_quantity.each do |x|
+  #     if x.length == 1
+  #       order_information[x[0].to_sym] = 1
+  #     else
+  #       order_information[x[0].to_sym] = x[1].to_i
+  #     end
+  #   end
+  #   order_information
+  # end
+
   def meal_quantity(item_quantity)
-    order_information = {}
-    item_quantity.each do |x|
-      if x.length == 1
-        order_information[x[0].to_sym] = 1
-      else
-        order_information[x[0].to_sym] = x[1].to_i
-      end
-    end
-    order_information
+    order_information = Hash[*item_quantity.flatten]
   end
 
   def food_list(order_information,message)

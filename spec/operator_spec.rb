@@ -5,7 +5,7 @@ describe Operator do
   let(:text) {double(:text)}
   let(:menu) {double(:menu)}
   let(:random_message) {'hello'}
-  let(:current_text) {"steak, chips 3, pizza 2"}
+  let(:current_text) {"steak 1, chips 3, pizza 2"}
   let(:menu_string) {double(:menu_string)}
   #let(:message) {"requesting menu please"}
   subject(:operator) {described_class.new(menu, text)}
@@ -49,7 +49,7 @@ describe Operator do
 
   describe '#order_online' do
     it 'can place an order through irb, thus removing need to text in order' do
-      expect(operator.order_online("steak, chips 3, pizza 2")).to eq current_text
+      expect(operator.order_online("steak 1, chips 3, pizza 2")).to eq current_text
     end
   end
 
