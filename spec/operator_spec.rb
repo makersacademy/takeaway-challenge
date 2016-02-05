@@ -36,7 +36,8 @@ describe Operator do
     it 'can create a confirmation message from the order information hash' do
       operator.check_new_messages
       order_information = operator.sort_order(current_text)
-      expect(operator.confirmation_message(order_information)).to eq "Thank you for placing your order of:\n1x steak\n3x chips\n2x pizza\nTotal cost: £44"
+      time = operator.arrival_time
+      expect(operator.confirmation_message(order_information)).to include "Thank you for placing your order of:\n1x steak\n3x chips\n2x pizza\nTotal cost: £44\nIt will arrive at #{time}"
     end
   end
 
@@ -57,6 +58,13 @@ describe Operator do
     it 'can sent any required message' do
       expect(text).to receive(:send_text)
       operator.send(random_message)
+    end
+  end
+
+  context '#menu' do
+    it 'can view a menu in irb' do
+      expect(menu).to receive(:food)
+      operator.request_menu
     end
   end
 

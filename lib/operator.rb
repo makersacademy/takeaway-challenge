@@ -1,7 +1,9 @@
 require_relative 'menu.rb'
 require_relative 'text.rb'
+require 'time'
 
 class Operator
+  DELIVERY_TIME = 1800
 
   def initialize(menu = Menu.new, text = Text.new)
     @menu = menu
@@ -11,6 +13,10 @@ class Operator
 
   def check_new_messages
     @current_text = @text.new_message
+  end
+
+  def request_menu
+    @menu.food
   end
 
   def action
@@ -38,7 +44,8 @@ class Operator
     price = @menu.create_receipt(order_information)
     message = "Thank you for placing your order of:\n"
     message = food_list(order_information,message)
-    message = message + "Total cost: £#{price}"
+    message = message + "Total cost: £#{price}\n"
+    message = message + "It will arrive at #{arrival_time}"
   end
 
   def send(message)
@@ -49,6 +56,12 @@ class Operator
     order_information = sort_order(@current_text)
     message = confirmation_message(order_information)
     send(message)
+  end
+
+  def arrival_time
+    time = Time.new
+    time += DELIVERY_TIME
+    time.strftime("%H:%M")
   end
 
   private
