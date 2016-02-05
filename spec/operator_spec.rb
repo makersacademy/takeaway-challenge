@@ -19,20 +19,20 @@ describe Operator do
 
   it {is_expected.to respond_to(:send_menu)}
 
-  describe '#check_new_messages' do
+  context '#check_new_messages' do
     it 'should be able to check for new incoming text messages' do
       expect(operator.check_new_messages).to eq current_text
     end
   end
 
-  describe '#sort_order' do
+  context '#sort_order' do
     it 'can sort an incoming order' do
       # operator.check_new_messages
       expect(operator.sort_order(current_text)).to eq({:steak=>1,:chips=>3,:pizza=>2})
     end
   end
 
-  describe '#confirmation_message' do
+  context '#confirmation_message' do
     it 'can create a confirmation message from the order information hash' do
       operator.check_new_messages
       order_information = operator.sort_order(current_text)
@@ -40,20 +40,20 @@ describe Operator do
     end
   end
 
-  describe '#sent_menu' do
+  context '#sent_menu' do
     it 'can send a menu' do
       expect(text).to receive(:send_text)
       operator.send_menu
     end
   end
 
-  describe '#order_online' do
+  context '#order_online' do
     it 'can place an order through irb, thus removing need to text in order' do
       expect(operator.order_online("steak 1, chips 3, pizza 2")).to eq current_text
     end
   end
 
-  describe '#send' do
+  context '#send' do
     it 'can sent any required message' do
       expect(text).to receive(:send_text)
       operator.send(random_message)
@@ -72,25 +72,11 @@ describe Operator do
 
   it {is_expected.to respond_to(:automatic)}
 
+  context '#action' do
+    it 'raises an error when there has been no check for a new message' do
+      expect{operator.action}.to raise_error 'You have not checked the inbox'
+    end
+  end
 
-
-  # it {is_expected.to respond_to(:action)}
-
-  # it 'can recognise if a customer is requesting a menu' do
-  #   operator.check_new_messages
-  #   expect(operator.request_menu?).to be true
-  # end
-
-
-
-  # it 'can send a menu to a customer when necessary' do
-  #   expect(operator.send(menu))
-  # end
-
-  #make private ??
-  # it 'can create a confirmation message' do
-  #   operator.sort_order(order)
-  #   expect(operator.confirmation_message(message)).to be_instance_of String
-  # end
 
 end
