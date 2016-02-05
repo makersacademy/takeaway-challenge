@@ -2,9 +2,9 @@ require 'rubygems'
 require 'twilio-ruby'
 require 'dotenv'
 
-module SMS
+class SMS
 
-  def send_confirmation_sms number, message
+  def send_sms number, message
     Dotenv.load
     account_sid = ENV['ACCOUNT_SID']
     auth_token = ENV['AUTH_TOKEN']
@@ -16,6 +16,8 @@ module SMS
       to:   number,
       body: message
     )
+
+    "Your message was successfully sent"
   end
 
 end

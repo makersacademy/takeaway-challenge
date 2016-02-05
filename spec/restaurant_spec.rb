@@ -3,8 +3,9 @@ require 'restaurant'
 describe Restaurant do
 
   let(:menu) {double :menu, list_items: {orange: 1, noodles: 10, pie: 6}}
+  let(:sms) {double :sms, send_sms: "message"}
 
-  subject(:restaurant) {described_class.new(menu)}
+  subject(:restaurant) {described_class.new(menu, sms)}
 
   context 'menu management' do
     describe '#menu' do
@@ -29,7 +30,6 @@ describe Restaurant do
         expect{restaurant.place_order(customer, [:haggis, :dog], 12)}.to raise_error "Invalid order"
       end
     end
-
 
     describe '#verify_bill' do
       it 'throws an error when bill is wrong' do
