@@ -14,78 +14,51 @@ Takeaway Challenge
  
  ```
 
+This is my solution to the [Makers Academy Takeaway Challenge](https://github.com/makersacademy/takeaway-challenge).
+
+Using the user stories I created three classes(Order,CalculateBill,Message) and a Menu module. I combined these, using their associated methods, to match the user stories. I used [Twilio](https://www.twilio.com/) to send a comfirmation SMS when the order had been proccessed. I used Rspec to feature test and unit test my code, using TDD. 
+
 Instructions
--------
+------------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+```You can use the program by first requiring the file:
 
-Task
------
+  2.2.3 :001 > require "./lib/order"
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+creating a new order:
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+  2.2.3 :002 > order = Order.new
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+see the menu:
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+  2.2.3 :003 > order.show_menu
+  
+  Margherita  £11.99
+  Fiorentina  £12.99
+  Vegeteriano  £10.99
+  Formaggio  £12.99
+  Siciliana  £13.99
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+choose from the menu:
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+  2.2.3 :004 > order.choose("Vegeteriano",1)
+  2.2.3 :005 > order.choose("Formaggio",1)
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+calculate total cost:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+   2.2.3 :006 > order.total_cost
+   => 23.98 
+
+check the total cost:
+
+  2.2.3 :007 > order.check_total =>
+  "1.0 X Vegeteriano(10.99) = 10.99"
+  "1.0 X Formaggio(12.99) = 12.99"
+
+recieve a confirmation message:
+
+  2.2.3 :008 > order.send_message
+  ```
 
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Created by Matt Gough (mattpgough@gmail.com)
