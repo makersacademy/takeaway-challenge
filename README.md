@@ -77,4 +77,4 @@ takeaway.show_total
 ```
 takeaway.checkout(10.50) # enter total price without £ sign.
 ```
-* Where the total price must be entered correctly. If the final price is entered incorrectly the following error will be raised: `'Payment error: incorrect payment submitted'`. If the total price was entered correctly a text message will be sent confirming the delivery time, which will be 1 hour later than the order time.
+* Where the total price must be entered correctly. If the final price is entered incorrectly the following error will be raised: `'Payment error: incorrect payment submitted'`. If the total price is entered correctly a text message will be sent confirming the delivery time, which will be 1 hour later than the order time.
