@@ -4,7 +4,7 @@ Takeaway Challenge
 Introduction
 -------
 
-This project aims to create a command line takeaway restaurant simulation, in Ruby. This is a solo project created for the Makers Academy week 2 weekend challenge. Twilio API is used to implement sending of text messages to the customer, Rspec is used throughout to test all functionality, and dotenv is used to maintain privacy of Twilio account details, and related info.
+This project aims to create a command line takeaway restaurant simulation, in Ruby. This is a solo project created for the Makers Academy week 2 weekend challenge. Twilio API is used to implement sending of text messages to the customer's mobile phone, Rspec is used throughout to provide feature and unit test functionality, and dotenv is used to maintain privacy of Twilio account details, and related info, by keeping such information on a locally stored file which is .gitignore'd.
 
 Features modeled include the following:
 
@@ -18,7 +18,8 @@ Features modeled include the following:
 Instructions
 -------
 
-* Open Terminal, `cd` in to the project directory and use the `bundle` command to install all required dependencies.
+* Open Terminal, and clone the repository locally using `git clone https://github.com/barrygrubb/takeaway-challenge.git`.
+* `cd` in to the project directory and use the `bundle` command to install all required dependencies.
 * Run `irb` or any similar REPL, and require the necessary files using the following:
 ```
 require './lib/takeaway'
