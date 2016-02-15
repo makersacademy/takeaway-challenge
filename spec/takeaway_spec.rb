@@ -39,4 +39,8 @@ describe Takeaway do
     takeaway.add("Mixed Kebab", 5)
     expect { takeaway.checkout(6) }.to raise_error 'Payment error: incorrect payment submitted'
   end
+
+  it 'responds when asked to show the total' do
+    expect(takeaway).to respond_to(:show_total)
+  end
 end
