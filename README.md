@@ -1,6 +1,7 @@
 Takeaway Challenge
 ==================
 [![Build Status](https://travis-ci.org/barrygrubb/takeaway-challenge.svg?branch=master)](https://travis-ci.org/barrygrubb/takeaway-challenge)
+add coveralls badge
 
 Introduction
 -------
