@@ -3,10 +3,11 @@ require_relative 'price_calculator.rb'
 
 class Menu
   attr_reader :price_list, :selected_dishes
-  def initialize(price_calculator_class: PriceCalculator)
+  def initialize(price_calculator_klass)
     @dishes = []
     @price_list = {}
     @selected_dishes = {}
+    @price_calculator_klass = price_calculator_klass
   end
 
   def price_list
@@ -30,8 +31,8 @@ class Menu
     @selected_dishes[dish] = quantity
   end
 
-  def take_order(selected_dishes)
-    @price_calc = PriceCalculator.new(selected_dishes)
+  def take_order(selected_dishes = @selected_dishes)
+    @price_calc = @price_calculator_klass.new
     @price_calc.price(selected_dishes)
   end
 end
