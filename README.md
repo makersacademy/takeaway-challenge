@@ -1,6 +1,16 @@
 Takeaway Challenge
 ==================
 
+The Takeaway Challenge is Makers Academy Week 2 weekend challenge.
+It was designed to test my progress in TDD Ruby, and it uses Ruby and Rspec.
+It also uses the Twilio API to send a text to the customer when the order is placed.
+In order to implement the code, please run 'bundle' so the Gemfile will install
+the required dependencies (such as Rspec), and run Rspec in the command line to see
+the results of the tests. Please note that this file is currently in the
+process of being updated and as such, the Travis build may not yet pass.
+
+==================
+
 Instructions
 -------
 
@@ -56,7 +66,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
