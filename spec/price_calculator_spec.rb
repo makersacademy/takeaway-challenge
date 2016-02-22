@@ -33,11 +33,13 @@ describe PriceCalculator do
 
     context 'price calculation display' do
       it 'displays the subtotal for the quantity of each dish' do
-
+        expect(price_calculator).to receive(:display_subtotals).and_return(price_calculator.subtotals)
+        price_calculator.display_subtotals
       end
 
       it 'displays the grand total of the order' do
-
+        expect(price_calculator).to receive(:display_grand_total).and_return(price_calculator.grand_total)
+        price_calculator.display_grand_total
       end
     end
   end
