@@ -2,10 +2,7 @@ require 'menu'
 
 describe Menu do
   subject(:menu) do
-    described_class.new(price_calculator_klass)
-  end
-  let(:price_calculator_klass) do
-    double :price_calculator_klass, new: price_calculator
+    described_class.new(price_calculator)
   end
   let(:price_calculator) {double :price_calculator, price: 3.99}
   let(:selected_dishes) {{dish => 3}}
@@ -48,10 +45,10 @@ describe Menu do
     end
   end
 
-  context 'taking the order' do
-    it 'creates the price calculator' do
-      expect(price_calculator_klass).to receive(:new)
-      menu.take_order(dish)
+  context 'creating the order' do
+    it 'passes the selected_dishes to the price calculator' do
+      expect(price_calculator).to receive(:price)
+      menu.make_order(dish)
     end
   end
 end

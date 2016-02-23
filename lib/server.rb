@@ -5,9 +5,10 @@ class Server
 
   attr_reader :menu
 
-  def initialize(menu_klass, cuisine_klass)
+  def initialize(menu_klass, cuisine_klass, price_calculator_klass)
     @menu_klass = menu_klass
     @cuisine_klass = cuisine_klass
+    @price_calculator_klass = price_calculator_klass
   end
 
   def request_cuisine
@@ -18,7 +19,8 @@ class Server
   end
 
   def create_menu
-    @menu = @menu_klass.new(calc = PriceCalculator)
+    @calc = @price_calculator_klass.new(self)
+    @menu = @menu_klass.new(calc = @calc)
     @cuisine.dishes.each do |dish|
       @menu.add_dishes(dish)
     end
