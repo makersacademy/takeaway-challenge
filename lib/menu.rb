@@ -27,7 +27,7 @@ class Menu
     price_list
   end
 
-  def select_dish(dish,quantity = 1)
+  def select_dish(dish, quantity = 1)
     @selected_dishes[dish] = quantity
   end
 
