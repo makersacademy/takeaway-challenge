@@ -5,10 +5,9 @@ describe Menu do
     described_class.new(price_calculator)
   end
   let(:price_calculator) {double :price_calculator, price: 3.99}
-  let(:selected_dishes) {{dish => 3}}
   let(:dish) {double :dish}
   before do
-    allow(dish).to receive(:name) {:chow_mein}
+    allow(dish).to receive(:name) {"chow mein"}
     allow(dish).to receive(:price) {3.99}
   end
   context '#initialize' do
@@ -35,13 +34,16 @@ describe Menu do
   end
 
   context '#select_dish' do
+    before do
+      menu.add_dishes(dish)
+    end
     it 'sets the quantity of dishes requested' do
-      menu.select_dish(dish,3)
+      menu.select_dish(dish.name,3)
       expect(menu.selected_dishes[dish]).to eq 3
     end
 
     it 'sets the dishes as selected' do
-      expect{menu.select_dish(dish)}.to change{menu.selected_dishes}
+      expect{menu.select_dish(dish.name)}.to change{menu.selected_dishes}
     end
   end
 

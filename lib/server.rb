@@ -32,8 +32,8 @@ class Server
     end
   end
 
-  def select_dish(dish)
-    menu.select_dish(dish)
+  def select_dish(dish_name,quantity)
+    menu.select_dish(dish_name,quantity)
   end
 
   def take_order
@@ -49,6 +49,6 @@ class Server
   end
 
   def present_total
-    puts "Your meal's total cost is £#{order_total}"
+    puts "Your meal's total cost is £#{@calc.display_grand_total}"
   end
 end

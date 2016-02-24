@@ -27,8 +27,12 @@ class Menu
     price_list
   end
 
-  def select_dish(dish, quantity = 1)
-    @selected_dishes[dish] = quantity
+  def select_dish(dish_name, quantity = 1)
+    @dishes.each do |dish|
+      if dish.name == dish_name
+        @selected_dishes[dish] = quantity
+      end
+    end
   end
 
   def make_order(selected_dishes = @selected_dishes)

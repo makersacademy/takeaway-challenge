@@ -21,7 +21,9 @@ describe Server do
     double :price_calculator_klass, new: price_calculator
   end
   let(:price_calculator) do
-    double :price_calculator, price: 7.98, grand_total: 7.98
+    double :price_calculator, price: 7.98,
+    grand_total: 7.98,
+    display_grand_total: 7.98
   end
   let(:price_list) {double :price_list}
   let(:selected_dishes) {double :selected_dishes}
@@ -78,7 +80,7 @@ describe Server do
       describe '#select_dish' do
         it 'calls the menu\'s select_dish method' do
           expect(menu).to receive(:select_dish)
-          server.select_dish(dish)
+          server.select_dish(dish,2)
         end
       end
     end
