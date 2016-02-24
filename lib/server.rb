@@ -51,4 +51,11 @@ class Server
   def present_total
     puts "Your meal's total cost is £#{@calc.display_grand_total}"
   end
+
+  def present_subtotals
+    puts "Your dishes' prices are as follows:"
+    menu.selected_dishes.each do |dish,quantity|
+      puts "#{dish.name}, #{quantity} ordered at £#{dish.price} each.  The subtotal of these items is £#{dish.price * quantity}."
+    end
+  end
 end

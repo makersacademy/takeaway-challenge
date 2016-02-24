@@ -108,12 +108,19 @@ describe Server do
       end
     end
 
-    context 'presenting the total to the customer' do
+    context 'presenting the totals to the customer' do
       describe '#present_total' do
         it 'puts a human readable view of the total' do
-          server.total
           expect(STDOUT).to receive(:puts).with("Your meal's total cost is £7.98")
           server.present_total
+        end
+      end
+
+      describe '#present_subtotals' do
+        it 'puts a human readable view of the subtotals' do
+          expect(STDOUT).to receive(:puts).with("Your dishes' prices are as follows:")
+          expect(STDOUT).to receive(:puts).with("Chow Mein, 2 ordered at £3.99 each.  The subtotal of these items is £7.98.")
+          server.present_subtotals
         end
       end
     end
