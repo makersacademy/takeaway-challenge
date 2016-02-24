@@ -3,45 +3,30 @@ require 'dish'
 
 describe PriceCalculator do
   subject(:price_calculator) {described_class.new(server)}
+  let(:dish) {double :dish, name: "chow mein", price: 3.99}
+  let(:dish2) {double :dish, name: "speceal fried rice", price: 4.50}
+  let(:dish3) {double :dish, name: "sweet and sour chicken", price: 4.25}
   let(:selected_dishes) {{dish => 2, dish2 => 4, dish3 => 1}}
-  let(:dish) {double :dish}
-  let(:dish2) {double :dish}
-  let(:dish3) {double :dish}
-  let(:server) {double :server, total: 35}
-  before do
-    allow(dish).to receive(:name) {:chow_mein}
-    allow(dish2).to receive(:name) {:special_fried_rice}
-    allow(dish3).to receive(:name) {:sweet_and_sour_chicken}
-    allow(dish).to receive(:price) {3.99}
-    allow(dish2).to receive(:price) {4.50}
-    allow(dish3).to receive(:price) {4.25}
-    allow(selected_dishes).to receive(:quantity) do
-      {dish => 2, dish2 => 4, dish3 => 1}
-    end
-  end
+  let(:server) {double :server, total: 30.23}
 
-  context '#price calculation' do
+  describe '#price' do
     it 'calculates the price correctly' do
-      allow(server).to receive(:total) {30.23}
       price_calculator.price(selected_dishes)
       expect(price_calculator.grand_total).to eq(server.total)
     end
 
-    it 'raises an error if the price calculation is not correct' do
-      expect{price_calculator.price(selected_dishes)}.to raise_error "Grand Total incorrect."
+    it 'sets up the subtotals array' do
+      expect{price_calculator.price(selected_dishes)}.to change{price_calculator.subtotals}
     end
 
-    context 'price calculation display' do
-      it 'displays the subtotal for the quantity of each dish' do
-        expect(price_calculator).to receive(:display_subtotals).and_return(price_calculator.subtotals)
-        price_calculator.display_subtotals
-      end
-
-      it 'displays the grand total of the order' do
-        expect(price_calculator).to receive(:display_grand_total).and_return(price_calculator.grand_total)
-        price_calculator.display_grand_total
-      end
+    it 'raises an error if the price calculation is not correct' do
+      allow(server).to receive(:total) {35}
+      expect{price_calculator.price(selected_dishes)}.to raise_error "Grand Total incorrect."
     end
   end
 
+  context 'price calculation display' do
+    it{is_expected.to respond_to(:grand_total)}
+    it{is_expected.to respond_to(:subtotals)}
+  end
 end

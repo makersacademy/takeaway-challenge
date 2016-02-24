@@ -23,7 +23,7 @@ describe Server do
   let(:price_calculator) do
     double :price_calculator, price: 7.98,
     grand_total: 7.98,
-    display_grand_total: 7.98
+    subtotals: [[dish.name, dish.price, 2, 2*dish.price]]
   end
   let(:price_list) {double :price_list}
   let(:selected_dishes) {double :selected_dishes}
