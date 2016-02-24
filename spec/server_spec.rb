@@ -12,7 +12,8 @@ describe Server do
     price_list: {dish.name => dish.price},
     add_dishes: [dish],
     make_order: price_calculator,
-    selected_dishes: {dish => 1}
+    select_dish: selected_dishes,
+    selected_dishes: {dish => 2}
   end
   let(:cuisine_klass) {double :cuisine_klass, new: cuisine}
   let(:cuisine) {double :cuisine, create_dishes: dish, dishes: [dish]}
@@ -20,9 +21,10 @@ describe Server do
     double :price_calculator_klass, new: price_calculator
   end
   let(:price_calculator) do
-    double :price_calculator, price: 3.99, grand_total: 3.99
+    double :price_calculator, price: 7.98, grand_total: 7.98
   end
   let(:price_list) {double :price_list}
+  let(:selected_dishes) {double :selected_dishes}
   let(:chinese) {double :cuisine}
 
   context 'producing the desired the cuisine' do
@@ -72,6 +74,15 @@ describe Server do
       end
     end
 
+    context 'setting the customer\'s selections' do
+      describe '#select_dish' do
+        it 'calls the menu\'s select_dish method' do
+          expect(menu).to receive(:select_dish)
+          server.select_dish(dish)
+        end
+      end
+    end
+
     context 'taking the order' do
       describe '#take_order' do
         it 'calls the menu\'s make_order method' do
@@ -91,6 +102,16 @@ describe Server do
         it 'raises an error if the order total is incorrect' do
           allow(price_calculator).to receive(:grand_total) {5}
           expect{server.total}.to raise_error "Order Total incorrect."
+        end
+      end
+    end
+
+    context 'presenting the total to the customer' do
+      describe '#present_total' do
+        it 'puts a human readable view of the total' do
+          server.total
+          expect(STDOUT).to receive(:puts).with("Your meal's total cost is £7.98")
+          server.present_total
         end
       end
     end

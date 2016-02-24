@@ -32,6 +32,10 @@ class Server
     end
   end
 
+  def select_dish(dish)
+    menu.select_dish(dish)
+  end
+
   def take_order
     menu.make_order
   end
@@ -42,5 +46,9 @@ class Server
     end
     raise "Order Total incorrect." if order_total != @calc.grand_total
     order_total
+  end
+
+  def present_total
+    puts "Your meal's total cost is £#{order_total}"
   end
 end
