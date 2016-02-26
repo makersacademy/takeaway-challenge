@@ -2,7 +2,7 @@ require 'server'
 
 describe Server do
   subject(:server) do
-    described_class.new(menu_klass, cuisine_klass, price_calculator_klass)
+    described_class.new(menu_klass, cuisine_klass, price_calculator_klass, text_messaging_klass)
   end
   let(:dish) {double :dish, name: "Chow Mein", price: 3.99}
   let(:menu_klass) {double :menu_klass, new: menu}
@@ -28,6 +28,9 @@ describe Server do
   let(:price_list) {double :price_list}
   let(:selected_dishes) {double :selected_dishes}
   let(:chinese) {double :cuisine}
+  let(:text_messaging_klass) {double :text_messaging_klass, new: text_message}
+  let(:text_message) {double :text_message, send_text: 'message sent'}
+  let(:number) {double :number}
 
   context 'producing the desired the cuisine' do
     describe '#request_cuisine' do
@@ -89,7 +92,17 @@ describe Server do
       describe '#take_order' do
         it 'calls the menu\'s make_order method' do
           expect(menu).to receive(:make_order)
-          server.take_order
+          server.take_order(number)
+        end
+
+        it 'instantiates the TextMessaging class' do
+          expect(text_messaging_klass).to receive(:new)
+          server.take_order(number)
+        end
+
+        it 'calls TextMessaging\'s send_text method' do
+          expect(text_message).to receive(:send_text)
+          server.take_order(number)
         end
       end
     end

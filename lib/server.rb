@@ -1,14 +1,19 @@
+require 'dotenv'
 require_relative './menu.rb'
 require_relative './cuisine.rb'
+require_relative './text_messaging.rb'
+
+Dotenv.load
 
 class Server
 
   attr_reader :menu, :order_total
 
-  def initialize(menu_klass, cuisine_klass, price_calculator_klass)
+  def initialize(menu_klass, cuisine_klass, price_calculator_klass, text_messaging_klass)
     @menu_klass = menu_klass
     @cuisine_klass = cuisine_klass
     @price_calculator_klass = price_calculator_klass
+    @text_messaging_klass = text_messaging_klass
     @order_total = 0
   end
 
@@ -36,8 +41,10 @@ class Server
     menu.select_dish(dish_name,quantity)
   end
 
-  def take_order
+  def take_order(number)
     menu.make_order
+    text_message = @text_messaging_klass.new(number)
+    text_message.send_text
   end
 
   def total
