@@ -14,78 +14,92 @@ Takeaway Challenge
  
  ```
 
+This projects is still in a initial state, it tries to simulate an Takeaway restaurant. You can interact with it with irb in the command line. The coding is based on 4 user stories(docs/userstories.txt). 2 of them are implemented at this moment.
+
+Author
+------
+
+This README.md and the code was made by Wim Hekkelman at Makers Academy (jan 2016 cohort).
+
+Installation and requirements
+-----------------------------
+
+This Takeaway Challenge is forked and cloned locally from https://github.com/makersacademy/takeaway-challenge
+
+After cloning only bundle was run.
+```
+bundle
+```
+Directories
+-----------
+- docs contains the domain model and userstories
+- lib contains the program files and the menu files
+- spec contains rspec tests
+
 Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+------------
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+2.2.3 :001 > require './lib/take_away'
+ => true
+2.2.3 :002 > takeaway = TakeAway.new
+ => #<TakeAway:0x007fcbd89810d8 @order={}, @dish_hash={}>
+   2.2.3 :003 > takeaway.show_menu
+                       MENU
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+              COMBINATIE MENU'S met rijst
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
+ 1  BABI PANGANG / Koe loe kai                     € 11,90
+ 2  BABI PANGANG / Tjap tjoy kip                   € 11,70
+ 3  BABI PANGANG / Foe yong hai kip                € 11,70
+       etc
+17  ZEEWIER SALADE                                 €  2,50
+18  TONIJN SALADE                                  €  2,50
+19  ZURE KOMKOMMER                                 €  2,50
+=> #<File:lib/menu.txt (closed)>  
+2.2.3 :004 > takeaway.enter_order
+Enter the dish number and the quantity when ask
+Enter a dish number or 99 to end ordering
+2
+Enter quantity
+3
+Enter a dish number or 99 to end ordering
+18
+Enter quantity
+2
+Enter a dish number or 99 to end ordering
+99
+ => nil
+2.2.3 :005 > takeaway.order
+ => {2=>3, 18=>2}
+2.2.3 :007 > takeaway.create_dish_hash
+ => #<File:lib/menu (closed)>
+2.2.3 :008 > takeaway.dish_hash
+ => {1=>["BABI PANGANG / Koe loe kai", 11.9], 2=>["BABI PANGANG
+Tjap tjoy kip", 11.7], 3=>["BABI PANGANG / Foe yong hai kip", 11.7], 4=>["BABI PANGANG / Kip met Kerrie saus", 12.0],  2.5],
+    etc
+17=>["ZEEWIER SALADE", 2.5], 18=>["TONIJN SALADE", 2.5], 19=>["ZURE KOMKOMMER", 2.5]}
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+Copyright and Licensing
+-----------------------
+The MIT License (MIT)
 
-Build Badge Example
-------------------
+Copyright (c) [2016] [Wim Hekkelman]
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

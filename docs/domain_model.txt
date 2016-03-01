@@ -1,0 +1,4 @@
+objects            messages
+customer
+take_away          show_menu
+dish               price
