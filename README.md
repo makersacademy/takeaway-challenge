@@ -26,7 +26,7 @@ Instructions
 Task
 -----
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
+* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
