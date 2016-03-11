@@ -27,6 +27,11 @@ describe Order do
       order.remove_dish(dish2)
       expect(order.dish_list).not_to include(dish2)
     end
+    it '3.1 raises an error when trying to remove non-existent dish' do
+      message = "You did not add #{dish2[:name]}!"
+      order.add_dish(dish1)
+      expect{order.remove_dish(dish2)}.to raise_error message
+    end
   end
 
   describe '#total' do
