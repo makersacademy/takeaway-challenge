@@ -13,4 +13,10 @@ class Order
   def remove_dish(dish)
     @dish_list.delete(dish)
   end
+
+  def total
+    price = 0
+    @dish_list.each {|dish| price += dish[:amount]*dish[:price]}
+    price
+  end
 end
