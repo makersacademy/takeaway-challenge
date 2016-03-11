@@ -22,3 +22,6 @@ class Order
     price
   end
 end
+
+# initialize ([{name: 'sushi', amout: 4}, {name: 'soup', amout: 3}], total)
+#         => (*dishes, total)

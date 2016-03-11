@@ -12,7 +12,7 @@ describe Order do
     end
   end
 
-  describe '#add a dish from order' do
+  describe '#add_dish' do
     it '2.0 adds a dish to the dish_lsit' do
       order.add_dish(dish1)
       expect(order.dish_list).to include(dish1)
@@ -21,7 +21,7 @@ describe Order do
     # end
   end
 
-  describe '#removes a dish from order' do
+  describe '#removes_dish' do
     it '3.0 removes a dish from the dish_list' do
       order.add_dish(dish2)
       order.remove_dish(dish2)
@@ -57,5 +57,4 @@ end
 # - add a dish
 # - remove a dish
 # - calc_total
-# - send order
-# - cancel_order
+# - place_order
