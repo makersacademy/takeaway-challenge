@@ -6,3 +6,6 @@ MENU = [
         {name: 'bread', price: 3},
         {name: 'olives', price: 1.5}
         ]
+
+# extract correct dish on the menu given a name of the dish
+p MENU.select {|item| (item[:name] == 'soup') || (item[:name] == 'bread') }
