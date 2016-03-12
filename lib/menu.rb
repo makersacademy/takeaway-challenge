@@ -7,6 +7,11 @@ MENU_ITEMS =
     "eggs" => 3 }
 
 
+def see_dishes
+  dishes
+end
+
+private
   def dishes
     @dishes = MENU_ITEMS
   end
