@@ -1,7 +1,7 @@
 class Menu
 
   def initialize
-    @menu = Hash.new
+    @menu = {}
   end
 
   def add_to_menu(item,price)
