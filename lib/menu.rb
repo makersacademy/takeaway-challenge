@@ -1,6 +1,8 @@
 class Menu
+  attr_reader :list
 
-    LIST = {
+  def initialize
+    @list = {
             'Risotto'   => 5.5,
             'Carbonara' => 6.5,
             'Bolognese' => 6,
@@ -8,17 +10,18 @@ class Menu
             'Pizza'     => 7,
             'Coke'      => 2
             }
+  end
 
   def show
-    LIST
+    @list
   end
 
   def add(item, price)
-    LIST[item] = price
+    @list[item] = price
   end
 
   def remove(item)
-    LIST.delete(item)
+    @list.delete(item)
   end
 
 end

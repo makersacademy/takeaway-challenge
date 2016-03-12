@@ -2,12 +2,12 @@ require 'menu'
 
 describe Menu do
 subject(:menu) { described_class.new }
-let(:item) { double :'Olives' }
+let(:item) { double :Olives }
 let(:price) { double :'3'}
 
   describe '#show' do
     it 'displays menu' do
-      expect(menu.show).to eq Menu::LIST
+      expect(menu.show).to eq menu.list
     end
   end
 
@@ -16,13 +16,13 @@ let(:price) { double :'3'}
 
     it 'adds an item to the menu' do
       menu.add(item, price)
-      expect(Menu::LIST.include?(item)).to be true
+      expect(menu.list.include?(item)).to be true
     end
 
     it 'changes an item price on menu' do
       menu.add(item, price)
       menu.add(item, price2)
-      expect(Menu::LIST[item]).to eq price2
+      expect(menu.list[item]).to eq price2
     end
   end
 
@@ -30,7 +30,7 @@ let(:price) { double :'3'}
     it 'removes an item from menu' do
       menu.add(item, price)
       menu.remove(item)
-      expect(Menu::LIST[item]).to be nil
+      expect(menu.list[item]).to be nil
     end
   end
 end
