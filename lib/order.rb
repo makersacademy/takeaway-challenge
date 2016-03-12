@@ -30,7 +30,7 @@ class Order
   def sum
     prices = []
     @basket.each { |item, quant| prices << @menu.display[item] * quant }
-    ("%.2f" % prices.inject(:+)).to_f
+    sprintf ("%.2f", prices.inject(:+)).to_f
   end
 
   private
