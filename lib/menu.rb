@@ -14,6 +14,4 @@ class Menu
     current_menu
   end
 
-
-
 end
