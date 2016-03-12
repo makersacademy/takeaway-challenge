@@ -10,7 +10,7 @@ class Menu
     'Coleslaw' => 3,
     'Side salad' => 3,
     'Sauce' => 1
-    }
+  }.freeze
 
   def initialize
     @menu = MENU_ITEMS
