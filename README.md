@@ -11,13 +11,13 @@ Takeaway Challenge - Author Harsheet Patel
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
 -------
 
-The build of this software is still in progress. Instructions on how to use this repository will be updated later.
+This software is still in progress. Instructions on how to use this repository will be updated later.
 
 User stories
 -----
@@ -41,7 +41,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 
-Build 
+Build
 ------------------
 
 [![Build Status](https://travis-ci.org/hkp108/takeaway-challenge.svg?branch=master)](https://travis-ci.org/hkp108/takeaway-challenge)
