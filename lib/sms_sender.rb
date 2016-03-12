@@ -2,11 +2,11 @@ require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
 
-class SMS
+class SmsSender
 
   MESSAGE = "Thank you! Your order was placed and will be delivered before #{(Time.now+3600).strftime('%H:%M')}"
 
-  def initialize (client = create_client)
+  def initialize(client = create_client)
     @client = client
   end
 
@@ -14,7 +14,7 @@ class SMS
     @client.account.messages.create({
       :from => ENV['FROM_PHONE_NUMBER'],
       :to => ENV['TO_PHONE_NUMBER'],
-      :body =>  MESSAGE,
+      :body =>  MESSAGE
     })
   end
 

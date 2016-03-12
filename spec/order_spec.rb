@@ -2,7 +2,8 @@ require 'order'
 
 describe Order do
   let(:menu) { double :menu, list: {MENU_ITEM => MENU_ITEM_PRICE}, price: MENU_ITEM_PRICE }
-  subject(:order) { described_class.new(menu) }
+  let(:sms_sender) { double :sms_sender }
+  subject(:order) { described_class.new(menu, sms_sender) }
   MENU_ITEM = 'Cheese sandwich'
   MENU_ITEM_PRICE = 3
   ITEM_QUANTITY = rand(1..5)
@@ -44,12 +45,11 @@ describe Order do
   describe '#checkout' do
 
     before do
-      order.add_to_basket(MENU_ITEM, ITEM_QUANTITY)
+      order.add_to_basket(MENU_ITEM)
     end
 
     it 'raises error if estimated cost is incorrect' do
-      total = MENU_ITEM_PRICE*ITEM_QUANTITY
-      estimated_total = rand(0..total-1)
+      estimated_total = rand(0..MENU_ITEM_PRICE-1)
       message = Order::INCORRECT_ESTIMATED_TOTAL_ERROR
       expect{ order.checkout(estimated_total) }.to raise_error message
     end
@@ -57,6 +57,10 @@ describe Order do
       order = described_class.new(menu)
       message = Order::EMPTY_BASKET_ERROR
       expect{ order.checkout(0) }.to raise_error message
+    end
+    it 'sends an SMS confirmation' do
+      expect(sms_sender).to receive(:send_sms)
+      order.checkout(MENU_ITEM_PRICE)
     end
   end
 end
