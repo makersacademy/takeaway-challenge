@@ -3,6 +3,8 @@ require 'takeaway'
 describe TakeAway do
   subject(:takeaway) { described_class.new }
   let(:menu) {double :menu }
+  # let(:food_item1) {double :food_item}
+  # let(:food_item2) {double :food_item}
 
   it 'should respond to list_menu method' do
     expect(takeaway).to respond_to :list_menu
@@ -17,14 +19,6 @@ describe TakeAway do
     it 'should initialize with a menu hash' do
       expect(takeaway.menu).to be_a Hash
     end
-
-    # it 'should initialize with selection hash' do
-    #   expect(takeaway.selection).to be_a Hash
-    # end
-    #
-    # it 'should initializa the selection hash as empty' do
-    #   expect(takeaway.selection).to be_empty
-    # end
   end
 
   describe '#list_menu' do
@@ -36,13 +30,15 @@ describe TakeAway do
   end
 
   describe '#order' do
+    # NOT SURE HOW TO IMPLEMENT THIS TEST **********
     it 'should raise error message if item inputted is not in menu' do
       message = 'Item not in menu'
       expect{takeaway.order(menu)}.to raise_error message
     end
 
     it 'should select the item inputted and add to selection hash' do
-      
+      takeaway.order("fish and chips")
+      expect(takeaway.selection["fish and chips"]).to eq 4.34
     end
   end
 end

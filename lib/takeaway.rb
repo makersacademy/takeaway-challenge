@@ -1,6 +1,6 @@
 
 class TakeAway
-  attr_reader :menu
+  attr_reader :menu, :selection
 
   NOT_IN_MENU = "Item not in menu"
 
@@ -18,6 +18,7 @@ class TakeAway
 
   def order(item)
     raise NOT_IN_MENU if !menu.include? item
+    @selection = menu.select{|k,v| k == item}
   end
 
 end
