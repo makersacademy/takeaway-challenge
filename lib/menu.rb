@@ -2,10 +2,10 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = []
+    @dishes = {}
   end
 
   def add(dish)
-    @dishes << dish
+    @dishes[dish.name] = dish
   end
 end
