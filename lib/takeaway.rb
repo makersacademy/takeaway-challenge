@@ -2,6 +2,11 @@ class TakeAway
 
   attr_reader :basket, :total, :menu
 
+  def initialize
+    @basket = []
+    @total = []
+  end
+
   def menu
     @menu = {
         "Bratwurst in a bun" => 2.49,
@@ -17,12 +22,11 @@ class TakeAway
         "Weißbier" => 2.99,
         "Schwarzbier" => 2.99
       }
-
-      puts menu
   end
 
-  def order(dish)
-
+  def order(quantity,dish)
+    price = self.menu[dish]
+    @basket << quantity << dish << price
   end
 
 
