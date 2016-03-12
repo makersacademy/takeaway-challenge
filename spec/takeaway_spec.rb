@@ -2,8 +2,11 @@ require "takeaway"
 
 describe TakeAway do
   let(:menu) { double :menu, dispaly: { "kiwiburger" => 9.35 } }
-  let(:order) { double :order, add: nil, sum: nil }
+  let(:order) { double :order, add: nil, sum: nil, summary: "summary" }
   let(:order_class) { double :order_class, new: order }
+  let(:client) { double :client, account: account }
+  let(:accout) { double :account, messages: messages }
+  let(:messages) { double :messages, create: nil }
   subject(:takeaway) { described_class.new(menu, order_class: order_class) }
 
   describe "#read_menu" do
@@ -14,11 +17,6 @@ describe TakeAway do
   end
 
   describe "#order" do
-    it "should create a new order" do
-      expect(order_class).to receive(:new).and_return(order)
-      subject.order("kiwiburger")
-    end
-
     it "should add item to the order" do
       expect(order).to receive(:add)
       subject.order("kiwiburger")
@@ -45,6 +43,12 @@ describe TakeAway do
       message = "Thank you for your order: £9.35."
       expect(subject).to receive(:send_text).with message
       subject.complete_order(9.35)
+    end
+
+    it "should raise error when amount is not correct" do
+      allow(subject).to receive(:amount_correct?).and_return false
+      message = described_class::CHECKOUT_ERROR
+      expect { subject.complete_order(9.35) }.to raise_error message
     end
   end
 end

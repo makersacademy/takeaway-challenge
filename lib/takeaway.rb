@@ -8,6 +8,8 @@ Dotenv.load
 
 class TakeAway
 
+  CHECKOUT_ERROR = "Incorrect amount! Please check again.".freeze
+
   def initialize(menu, order_class: Order, messenger_class: Messenger)
     @menu = menu
     @order = order_class.new(@menu)
@@ -23,7 +25,7 @@ class TakeAway
   end
 
   def basket_summary
-    @order.summary
+    @order.summary + ". " + total
   end
 
   def total
@@ -31,7 +33,8 @@ class TakeAway
   end
 
   def complete_order(price)
-    send_text("Thank you for your order: £#{price}.") if amount_correct?(price)
+    fail CHECKOUT_ERROR unless amount_correct?(price)
+    send_text("Thank you for your order: £#{price}.")
   end
 
   private
