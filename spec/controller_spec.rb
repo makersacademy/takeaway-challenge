@@ -21,8 +21,8 @@ describe Controller do
 
   describe '#welcome' do
 
-      xit 'expects to return a welcome message to the user' do
-        expect{test_controller.welcome}.to output('welcome').to_stdout
+      it 'expects to return a welcome message to the user' do
+        expect(test_controller.welcome).to eq described_class::WELCOME_MESSAGE
       end
 
       it 'expect to create a new active order' do
@@ -46,7 +46,7 @@ describe Controller do
     end
 
     it 'add the order to the list' do
-      expect(dummy_order).to receive(:add_dish).with(dummy_dish)
+      expect(dummy_order).to receive(:add_dish).with(dummy_dish, 1)
       test_controller.update_order dummy_dish
     end
 
@@ -69,11 +69,11 @@ describe Controller do
     end
 
     it 'raises an error if the payment is incorrect' do
-      expect {test_controller.checkout 1}.to raise_error('Incorrect Payment!')
+      expect {test_controller.checkout 1}.to raise_error(described_class::PAYMENT_ERROR)
     end
 
     xit 'calls the confirmation text' do
-      
+
     end
 
   end

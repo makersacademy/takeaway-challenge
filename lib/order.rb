@@ -8,7 +8,7 @@ class Order
     @bill = 0
   end
 
-  def add_dish dish , number = 1
+  def add_dish dish , number
     @current_order[dish] = number
   end
 

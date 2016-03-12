@@ -20,7 +20,7 @@ describe Order do
   describe '#add_dish' do
 
     it 'adds a dish to the current order' do
-      test_order.add_dish dummy_dish
+      test_order.add_dish dummy_dish , 1
       expect(test_order.current_order).to include dummy_dish => 1
     end
 
@@ -29,7 +29,7 @@ describe Order do
   describe '#update_total' do
 
     it 'recalculate the total bill' do
-      test_order.add_dish dummy_dish
+      test_order.add_dish dummy_dish , 1
       test_order.update_total
       expect(test_order.bill).to eq dummy_dish.dish_price
     end
