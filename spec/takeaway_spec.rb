@@ -25,6 +25,13 @@ describe TakeAway do
     end
   end
 
+  describe "#basket_summary" do
+    it "should list the order summary" do
+      expect(order).to receive(:summary)
+      subject.basket_summary
+    end
+  end
+
   describe "#total" do
     it "should return a total for the order" do
       expect(order).to receive(:sum)

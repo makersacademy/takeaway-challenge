@@ -5,7 +5,6 @@ class TakeAway
 
   def initialize(menu, order_class: Order)
     @menu = menu
-    @order_class = order_class
     @order = order_class.new(@menu)
   end
 
@@ -17,7 +16,20 @@ class TakeAway
     @order.add(item, quantity)
   end
 
+  def basket_summary
+    @order.summary
+  end
+
   def total
     "Total: £#{@order.sum}"
   end
+
+  def complete_order(price)
+    amount_correct?(price)
+  end
+
+  private
+    def amount_correct?(price)
+      total == price
+    end
 end

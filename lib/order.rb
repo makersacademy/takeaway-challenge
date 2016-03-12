@@ -19,10 +19,18 @@ class Order
     "#{basket.values.last}x #{basket.keys.last}(s) added to your basket."
   end
 
+  def summary
+    items = []
+    @basket.each do |item, quant|
+      items << "#{item} x#{quant} = £#{"%.2f" % (@menu.display[item] * quant)}"
+    end
+    items.join(", ")
+  end
+
   def sum
     prices = []
-    @basket.each { |item, quant| prices << (@menu.display[item] * quant) }
-    prices.inject(:+).round(2)
+    @basket.each { |item, quant| prices << @menu.display[item] * quant }
+    ("%.2f" % prices.inject(:+)).to_f
   end
 
   private

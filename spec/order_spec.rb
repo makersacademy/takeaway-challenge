@@ -25,6 +25,15 @@ describe Order do
     end
   end
 
+  describe "#summary" do
+    it "should return a list of ordered dishes with prices" do
+      subject.add("kiwiburger", 2)
+      subject.add("elderflower")
+      message = "kiwiburger x2 = £18.70, elderflower x1 = £2.35"
+      expect(subject.summary).to eq message
+    end
+  end
+
   describe "#sum" do
     it "should calculate the total for the order" do
       subject.add("kiwiburger", 2)

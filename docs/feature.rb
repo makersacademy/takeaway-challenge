@@ -16,3 +16,4 @@ menu.upload(gbk)
 takeaway = TakeAway.new(menu)
 p takeaway.order("kiwiburger", 2)
 p takeaway.order("elderflower", 2)
+p takeaway.basket_summary
