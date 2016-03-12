@@ -1,24 +1,41 @@
+require 'rubygems'
+require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
+
 class Order
 
-  attr_reader :menu
+  MENU = [
+          {name: 'sushi', price: 7},
+          {name: 'ramen', price: 12},
+          {name: 'soup', price: 4.5},
+          {name: 'fish and chips', price: 10},
+          {name: 'bread', price: 3},
+          {name: 'olives', price: 1.5}
+          ].freeze
 
-  def initialize(menu_class=Menu)
-    @menu = menu_class.new
-    @basket = []
+  def show_menu
+    menu = ''
+    MENU.each {|item| menu << "#{item[:name]}: £#{item[:price]}\n"}
+    menu
   end
 
-  def basket
-    @basket.dup.freeze
+  def price(dish)
+    raise 'Choose dishes in the menu' unless in_menu?(dish)
+    MENU.each {|item| return item[:price] if item[:name] == dish[:name]}
   end
 
-  def place_order(*dishes, given_total)
-    @basket = dishes.each { |dish| dish[:price] = @menu.price(dish) }
-    raise 'Re-calculate the total price' unless given_total == total
+  def confirm
+    @client = Twilio::REST::Client.new ENV['SID'], ENV['TOKEN']
+    @client.messages.create(
+      from: ENV['FROM'], to: ENV['MY_NUMBER'],
+      body: "Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}"
+    )
   end
 
-  def total
-    price = 0
-    @basket.each {|dish| price += (dish[:amount] * dish[:price])}
-    price
+  private
+
+  def in_menu?(dish)
+    MENU.any? {|item| item[:name] == dish[:name]}
   end
 end
