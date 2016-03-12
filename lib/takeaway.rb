@@ -1,6 +1,6 @@
 
 class TakeAway
-  attr_reader :menu
+  attr_reader :menu, :selection
 
   def initialize
     @menu = {"fish and chips" => 4.34,
@@ -8,6 +8,7 @@ class TakeAway
              "sausges and mash" => 5.46,
              "cheeze pizza" => 2.87,
              "pepperoni pizza" => 3.93}
+    @selection = {}
   end
 
   def list_menu
