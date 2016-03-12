@@ -2,9 +2,9 @@ require 'menu'
 
 describe Menu do
 subject(:menu) { described_class.new }
-let(:item) { double :Olives }
+let(:item) { double :'Olives' }
 let(:price) { double :'3'}
-
+# let(:listed) {double "Risotto, £5.5\nCarbonara, £6.5\nBolognese, £6\nCalzone, £6\nPizza, £7\nCoke, £2"}
   describe '#show' do
     it 'displays menu' do
       expect(menu.show).to eq menu.list

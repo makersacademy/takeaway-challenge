@@ -16,6 +16,14 @@ class Menu
     @list
   end
 
+  def read
+    menu_display = ''
+    @list.each do |key, value|
+      menu_display << "#{key}, £#{value}\n"
+    end
+    puts menu_display
+  end
+
   def add(item, price)
     @list[item] = price
   end
@@ -23,5 +31,4 @@ class Menu
   def remove(item)
     @list.delete(item)
   end
-
 end
