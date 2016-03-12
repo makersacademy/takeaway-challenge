@@ -2,25 +2,25 @@ require_relative 'dish'
 
 class Menu
 
-	def initialize(dish_class=Dish)
-		@dish_class = dish_class
-		@list = []
+
+	def initialize
+		@menu_list = Hash.new
 	end
 
 	def add_dish(item, price)
-		@list << @dish_class.new(item, price)
+		@menu_list[item] = price
 	end
 
 	def delete_dish(item)
-		@list.delete_if{ |dish| dish.item ==item}
+		@menu_list.delete(item)
 	end
 
 	def menu_list
-		@list.dup
+		@menu_list.dup
 	end
 
-	def find_on(menu, this_dish)
-		menu.select { |dish| dish.item == this_dish }
+	def find(this_dish)
+		@menu_list[this_dish]
 	end
 
 	# def find_on_order(this_dish)

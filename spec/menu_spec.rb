@@ -2,10 +2,7 @@ require 'menu'
 
 describe Menu do 
 
-
-let(:dish1) {double :dish1, :item => "apple"}
-let(:dish_class) {double(:dish_class, new: dish1) }
-subject(:menu) {described_class.new(dish_class)}
+subject(:menu) {described_class.new}
 
 	describe '#initialize' do
 
@@ -34,7 +31,15 @@ subject(:menu) {described_class.new(dish_class)}
 
 		it 'shows you all the items on the menu' do
 			menu.add_dish("apple", 1)
-			expect(menu.menu_list).to eq [dish1]
+			expect(menu.menu_list["apple"]).to eq 1
+		end
+	end
+
+	describe '#find' do
+
+		it 'returns the price of the dish if found' do
+			menu.add_dish("apple", 1)
+			expect(menu.find("apple")).to eq 1
 		end
 	end
 
