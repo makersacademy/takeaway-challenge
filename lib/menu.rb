@@ -7,7 +7,7 @@ class Menu
           {name: 'fish and chips', price: 10},
           {name: 'bread', price: 3},
           {name: 'olives', price: 1.5}
-                ].freeze
+          ].freeze
 
   def show_menu
     menu = ''
@@ -15,10 +15,8 @@ class Menu
     menu
   end
 
-  def find_price(*dishes)
-    dishes.each do |dish|
-      MENU.each {|item| dish[:price] = item[:price] if dish[:name] == item[:name]}
-    end
-    dishes
+  def find_price(dish)
+    MENU.each {|item| dish[:price] = item[:price] if item[:name] == dish[:name]}
+    dish
   end
 end
