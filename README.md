@@ -35,19 +35,32 @@ Task
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+```
+1. I need a takeaway class where I can access the menu from.
+2. I need a menu class, which will log all the dishes.
+3. I need a dish class, which will store the name and price of a dish.
 
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+```
+1. I need an order class.
+2. I need a select food method in the takeaway class.
 
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+1. Check total method
 
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+1. Text message class
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
