@@ -14,12 +14,13 @@ Takeaway Challenge
 
  ```
 
- ## Introduction
+Introduction
+-------------
 
 
 
- ## Author
-
+Author
+-------
  Junyuan Xue
 
  [github](https://github.com/junyuanxue)  [blog](https://spinningcodes.wordpress.com/)
