@@ -15,8 +15,14 @@ class Menu
     menu
   end
 
-  def find_price(dish)
-    MENU.each {|item| dish[:price] = item[:price] if item[:name] == dish[:name]}
-    dish
+  def price(dish)
+    raise 'Choose dishes in the menu' unless in_menu?(dish)
+    MENU.each {|item| return item[:price] if item[:name] == dish[:name]}
+  end
+
+  private
+
+  def in_menu?(dish)
+    MENU.any? {|item| item[:name] == dish[:name]}
   end
 end

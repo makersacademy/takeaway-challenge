@@ -11,9 +11,9 @@ class Order
     @basket.dup.freeze
   end
 
-  def place_order(*dishes, total)
-    dishes.each { |dish| @basket << @menu.find_price(dish) }
-    @basket = @basket.flatten
+  def place_order(*dishes, given_total)
+    @basket = dishes.each { |dish| dish[:price] = @menu.price(dish) }
+    raise 'Re-calculate the total price' unless given_total == total
   end
 
   def total

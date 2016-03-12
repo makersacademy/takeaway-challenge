@@ -2,13 +2,9 @@ require 'menu'
 
 describe Menu do
 
-  # full_menu = Menu::MENU
-
   subject(:menu) { described_class.new }
-  let(:dish1) { {name: 'sushi', amount: 3} }
-  let(:dish2) { {name: 'ramen', amount: 1} }
-  let(:dish1_with_price) { {name: 'sushi', amount: 3, price: 7} }
-  let(:dish2_with_price) { {name: 'ramen', amount: 1, price: 12} }
+  let(:valid_dish) { {name: 'sushi', amount: 3, price: 7} }
+  let(:invalid_dish) { {name: 'sandwitch', amount: 1} }
 
   describe '#show_menu' do
     it '0.0 shows a list of dishes available to order with price' do
@@ -16,9 +12,13 @@ describe Menu do
     end
   end
 
-  describe '#find_price' do
-    it '1.0 finds a price of each dish and appends it to dish info' do
-      expect(menu.find_price(dish1)).to eq(dish1_with_price)
+  describe '#price' do
+    it '1.0 finds a price of each dish' do
+      expect(menu.price(valid_dish)).to eq(valid_dish[:price])
+    end
+    it '1.1 raises an error if the dish is not included in the menu' do
+      message = 'Choose dishes in the menu'
+      expect{menu.price(invalid_dish)}.to raise_error message
     end
   end
 end
