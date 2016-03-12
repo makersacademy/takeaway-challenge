@@ -7,4 +7,11 @@ class Request
     @body = body
     @datetime = datetime
   end
+
+  def ==(request)
+    self.channel == request.channel &&
+    self.from == request.from &&
+    self.body == request.body &&
+    self.datetime == request.datetime
+  end
 end

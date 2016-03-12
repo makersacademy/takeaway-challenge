@@ -6,26 +6,38 @@ require './lib/sms.rb'
 require 'rubygems'
 require 'twilio-ruby'
 
+requests = []
+customers = []
+customers << Customer.new(name: "Joe Bloggs", mobile:ENV['MY_NUMBER'])
+
+menu = Menu.new
+
+menu.add Dish.new(name: "Curry", price: 16)
+menu.add Dish.new(name: "Chili", price: 2)
+menu.add Dish.new(name: "Salad", price: 4)
+menu.add Dish.new(name: "Chips", price: 8)
+
 sms_client = Twilio::REST::Client.new ENV['TWILIO_SID'],ENV['TWILIO_AUTH_TOKEN']
 sms_number = ENV['TWILIO_NUMBER']
 sms = Sms.new(client: sms_client, number: sms_number)
 
-p sms.get_messages
+requests.concat(sms.get_messages)
+
+requests.each do |request|
+  customer_index = customers.index {|customer| customer.mobile == request.from}
+  customer = customers[customer_index]
+
+  order = Order.new(customer: customer)
+  request_ary = request.body.split(',')
+  request_ary.each do |item|
+    line = item.split(' ')
+    order.add(menu.dishes[line[0].capitalize],line[1].to_i)
+  end
+  time = (Time.now + (60*60)).strftime("%I:%M%p")
+  order.finalise(customer: customer, delivery_time: time, channel: sms)
+end
 
 exit
-
-menu = Menu.new
-
-curry = Dish.new(name: "Curry", price: 16)
-chili = Dish.new(name: "Chili", price: 2)
-salad = Dish.new(name: "Salad", price: 4)
-chips = Dish.new(name: "Chips", price: 8)
-
-menu.add(curry)
-menu.add(chili)
-menu.add(salad)
-menu.add(chips)
-
 
 # customer sees list of dishes with prices
 puts "MENU"
