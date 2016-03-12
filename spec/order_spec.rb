@@ -23,10 +23,10 @@ describe Order do
     end
   end
 
-  describe '#select_item' do
+  describe '#add_to_basket' do
 
     before do
-      order.select_item(MENU_ITEM, ITEM_QUANTITY)
+      order.add_to_basket(MENU_ITEM, ITEM_QUANTITY)
     end
 
     it 'should add menu item to basket' do
@@ -34,10 +34,24 @@ describe Order do
     end
     it 'raises error when trying to select item that is not on the menu' do
       message = Order::NOT_ON_MENU_ERROR
-      expect{ order.select_item('Falafel')}.to raise_error message
+      expect{ order.add_to_basket('Falafel') }.to raise_error message
     end
     it 'should add cost of items to order cost' do
       expect(order.total).to eq (MENU_ITEM_PRICE*ITEM_QUANTITY)
+    end
+  end
+
+  describe '#checkout' do
+
+    before do
+      order.add_to_basket(MENU_ITEM, ITEM_QUANTITY)
+    end
+
+    it 'should verify estimated cost' do
+      total = MENU_ITEM_PRICE*ITEM_QUANTITY
+      estimated_total = rand(0..total-1)
+      message = Order::INCORRECT_ESTIMATED_TOTAL_ERROR
+      expect{ order.checkout(estimated_total) }.to raise_error message
     end
   end
 end
