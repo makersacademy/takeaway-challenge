@@ -1,7 +1,7 @@
 require 'order'
 
 describe Order do
-  let(:menu) { double :menu }
+  let(:menu) { double :menu, menu: {'Beef burger' => 8.5} }
   subject(:order) { described_class.new(menu) }
 
   describe '#initialize' do
@@ -18,6 +18,10 @@ describe Order do
       quantity = rand(4)
       order.select_item('Beef burger', quantity)
       expect(order.basket).to include('Beef burger' => quantity)
+    end
+    it 'raises error when trying to select item that is not on the menu' do
+      message = Order::NOT_ON_MENU_ERROR
+      expect{ order.select_item('Falafel')}.to raise_error message
     end
   end
 end
