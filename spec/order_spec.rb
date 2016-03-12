@@ -21,6 +21,12 @@ describe Order do
     end
   end
 
-  describe 'finalize' do
+  describe '#complete_order' do
+    it 'checks amount' do
+      allow(menu).to receive(:contains?).and_return(true)
+      allow(menu).to receive(:price).and_return(7)
+      order.add(:pizza, 2)
+      expect(order.complete_order(14)).to be true
+    end
   end
 end

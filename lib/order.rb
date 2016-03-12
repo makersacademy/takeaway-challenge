@@ -1,8 +1,11 @@
 class Order
-  attr_reader :basket
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = Hash.new(0)
+  end
+
+  def basket
+    @basket.dup
   end
 
   def add(dish, quant = 1)
@@ -10,7 +13,13 @@ class Order
   end
 
   def remove(dish, quant = 1)
-    @basket[dish] -= quant if @basket.contains? dish
+    if @basket.include? dish
+      if basket[dish] > 1
+        @basket[dish] -= quant
+      else
+        @basket.delete dish
+      end
+    end
   end
 
   def total
@@ -19,5 +28,10 @@ class Order
       total += (@menu.price dish) * quant
     end
     total
+  end
+
+  def complete_order(money)
+    raise 'wrong amount' unless money == total
+    true
   end
 end
