@@ -1,8 +1,8 @@
 require "order"
 
 describe Order do
-
-  let(:menu) { double :menu, display: { "kiwiburger" => 9.35, "elderflower" => 2.35 } }
+  burger = { "kiwiburger" => 9.35, "elderflower" => 2.35 }
+  let(:menu) { double :menu, display: burger }
   subject(:order) { described_class.new(menu) }
 
   describe "#add" do
@@ -29,7 +29,7 @@ describe Order do
     it "should return a list of ordered dishes with prices" do
       subject.add("kiwiburger", 2)
       subject.add("elderflower")
-      message = "kiwiburger x2 = £18.70, elderflower x1 = £2.35"
+      message = "kiwiburger x2 = £18.7, elderflower x1 = £2.35"
       expect(subject.summary).to eq message
     end
   end

@@ -22,7 +22,7 @@ class Order
   def summary
     items = []
     @basket.each do |item, quant|
-      items << sprintf ("#{first} x#{second} = £#{third}", first: item, second: quant, third: "%.2f" % (@menu.display[item] * quant))
+      items << "#{item} x#{quant} = £#{@menu.display[item] * quant}"
     end
     items.join(", ")
   end
@@ -30,7 +30,7 @@ class Order
   def sum
     prices = []
     @basket.each { |item, quant| prices << @menu.display[item] * quant }
-    sprintf ("%.2f", prices.inject(:+)).to_f
+    prices.inject(:+)
   end
 
   private
