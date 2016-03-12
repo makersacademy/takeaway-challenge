@@ -10,7 +10,7 @@ class TakeAway
 
   CHECKOUT_ERROR = "Incorrect amount! Please check again.".freeze
 
-  def initialize(menu, order_class: Order, messenger_class: Messenger)
+  def initialize(menu, order_class, messenger_class)
     @menu = menu
     @order = order_class.new(@menu)
     @messager = messenger_class.new

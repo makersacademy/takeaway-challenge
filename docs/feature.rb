@@ -13,13 +13,13 @@ gbk = {"avocado bacon burger" => 9.45,
 
 menu = Menu.new
 menu.upload(gbk)
-takeaway = TakeAway.new(menu)
+takeaway = TakeAway.new(menu, Order, Messenger)
 takeaway.order("kiwiburger", 2)
 takeaway.order("elderflower", 2)
 takeaway.basket_summary
 takeaway.total
 takeaway.complete_order(23.4)
 
-let(:client) { double :client, account: account }
-let(:accout) { double :account, messages: messages }
-let(:messages) { double :messages, create: nil }
+# let(:client) { double :client, account: account }
+# let(:accout) { double :account, messages: messages }
+# let(:messages) { double :messages, create: nil }
