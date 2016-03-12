@@ -1,10 +1,10 @@
 require 'takeaway'
 
 describe TakeAway do
-  subject(:takeaway) { described_class.new }
+  subject(:takeaway) { described_class.new(order_class) }
+  let(:order) {double :order}
+  let(:order_class) {double :order_class, new: order}
   let(:menu) {double :menu }
-  # let(:food_item1) {double :food_item}
-  # let(:food_item2) {double :food_item}
 
   it 'should respond to list_menu method' do
     expect(takeaway).to respond_to :list_menu
@@ -12,13 +12,17 @@ describe TakeAway do
 
   # CHANGE TO 2 ARGUMENTS WHEN ADDING IN QUANTITY *********
   it 'should respond to order method' do
-    expect(takeaway).to respond_to(:order).with(1).argument
+    expect(takeaway).to respond_to(:order).with(2).arguments
   end
 
   describe '#initialize' do
     it 'should initialize with a menu hash' do
       expect(takeaway.menu).to be_a Hash
     end
+
+    # it 'should initialize with a new instance of order' do
+    #
+    # end
   end
 
   describe '#list_menu' do
