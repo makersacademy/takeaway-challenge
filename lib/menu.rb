@@ -15,7 +15,7 @@ class Menu
   def initialize
     @menu = MENU_ITEMS
   end
-  
+
   def list
     @menu.dup
   end
@@ -23,5 +23,4 @@ class Menu
   def price item
     MENU_ITEMS[item]
   end
-
 end

@@ -31,5 +31,4 @@ class Order
     raise INCORRECT_ESTIMATED_TOTAL_ERROR if estimate != total
     @sms_sender.send_sms
   end
-
 end

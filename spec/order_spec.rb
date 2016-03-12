@@ -35,7 +35,7 @@ describe Order do
     end
     it 'raises error when trying to select item that is not on the menu' do
       message = Order::NOT_ON_MENU_ERROR
-      expect{ order.add_to_basket('Falafel') }.to raise_error message
+      expect { order.add_to_basket('Falafel') }.to raise_error message
     end
     it 'should add cost of items to order cost' do
       expect(order.total).to eq (MENU_ITEM_PRICE*ITEM_QUANTITY)
@@ -51,12 +51,12 @@ describe Order do
     it 'raises error if estimated cost is incorrect' do
       estimated_total = rand(0..MENU_ITEM_PRICE-1)
       message = Order::INCORRECT_ESTIMATED_TOTAL_ERROR
-      expect{ order.checkout(estimated_total) }.to raise_error message
+      expect { order.checkout(estimated_total) }.to raise_error message
     end
     it 'raises error if basket is empty' do
       order = described_class.new(menu)
       message = Order::EMPTY_BASKET_ERROR
-      expect{ order.checkout(0) }.to raise_error message
+      expect { order.checkout(0) }.to raise_error message
     end
     it 'sends an SMS confirmation' do
       expect(sms_sender).to receive(:send_sms)

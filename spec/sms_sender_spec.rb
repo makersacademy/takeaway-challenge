@@ -13,5 +13,4 @@ describe SmsSender do
       sms_sender.send_sms
     end
   end
-
 end

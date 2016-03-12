@@ -23,5 +23,4 @@ class SmsSender
     def create_client
       Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
     end
-
 end
