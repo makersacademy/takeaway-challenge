@@ -14,11 +14,11 @@ Takeaway Challenge
 
  ```
 
- ##Introduction
+ ## Introduction
 
- 
 
- ##Author
+
+ ## Author
 
  Junyuan Xue
 
