@@ -1,5 +1,10 @@
 require_relative "menu"
 require_relative "order"
+require_relative "messager"
+require "rubygems"
+require "twilio-ruby"
+require 'dotenv'
+Dotenv.load
 
 class TakeAway
 
@@ -25,11 +30,15 @@ class TakeAway
   end
 
   def complete_order(price)
-    amount_correct?(price)
+    send_text("Thank you for your order: £#{price}.") if amount_correct?(price)
   end
 
   private
     def amount_correct?(price)
-      total == price
+      @order.sum == price
+    end
+
+    def send_text(message)
+      Messager.new.send(message)
     end
 end

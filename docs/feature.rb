@@ -1,4 +1,4 @@
-require_relative "../lib/takeaway"
+require "./lib/takeaway"
 
 
 gbk = {"avocado bacon burger" => 9.45,
@@ -14,6 +14,8 @@ gbk = {"avocado bacon burger" => 9.45,
 menu = Menu.new
 menu.upload(gbk)
 takeaway = TakeAway.new(menu)
-p takeaway.order("kiwiburger", 2)
-p takeaway.order("elderflower", 2)
-p takeaway.basket_summary
+takeaway.order("kiwiburger", 2)
+takeaway.order("elderflower", 2)
+takeaway.basket_summary
+takeaway.total
+takeaway.complete_order(23.4)
