@@ -1,5 +1,7 @@
 require_relative 'order'
 require_relative 'menu'
+require 'dotenv'
+Dotenv.load
 
 order1 = Order.new
 order1.menu
