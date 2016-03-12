@@ -20,4 +20,8 @@ class Menu
     MENU_ITEMS.each{|key,value| puts "#{key}: £#{value}"}
   end
 
+  def price (item)
+    MENU_ITEMS[item]
+  end
+
 end

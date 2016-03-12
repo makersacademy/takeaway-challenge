@@ -1,9 +1,11 @@
 class Order
 
-  attr_reader :basket
+  attr_reader :basket, :price
 
-  def initialize
+  def initialize(menu = Menu.new)
     @basket = []
+    @menu = menu
+    @price = 0
   end
 
 end
