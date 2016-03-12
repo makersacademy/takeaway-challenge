@@ -6,3 +6,5 @@ gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
 gem 'byebug'
+gem 'dotenv'
+gem 'twilio-ruby'
