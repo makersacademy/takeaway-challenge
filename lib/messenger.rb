@@ -1,3 +1,8 @@
+require "rubygems"
+require "twilio-ruby"
+require "dotenv"
+Dotenv.load
+
 class Messenger
 
   def initialize
@@ -8,12 +13,12 @@ class Messenger
     @client.account.messages.create(
       from: ENV["TWILIO_NUMBER"],
       to: ENV["RECEIVER_NUMBER"],
-      body: message + delivery_time
+      body: message + " " + delivery_time
     )
   end
 
   def delivery_time
     delivery = Time.now + 60*60
-    " It will be delivered before #{delivery.strftime("%H:%S")}. :)"
+    "It will be delivered before #{delivery.strftime("%H:%M")}. :)"
   end
 end

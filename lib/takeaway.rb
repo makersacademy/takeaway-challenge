@@ -1,10 +1,6 @@
 require_relative "menu"
 require_relative "order"
 require_relative "messenger"
-require "rubygems"
-require "twilio-ruby"
-require 'dotenv'
-Dotenv.load
 
 class TakeAway
 
