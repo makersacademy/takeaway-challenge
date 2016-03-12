@@ -10,10 +10,11 @@ class TakeAway
     @menu = {"fish and chips" => 4.34,
              "chicken korma" => 3.56,
              "sausges and mash" => 5.46,
-             "cheeze pizza" => 2.87,
+             "cheese pizza" => 2.87,
              "pepperoni pizza" => 3.93}
     @order_class = order_class
     @current_order = nil
+    @selection = {}
   end
 
   def list_menu
@@ -21,10 +22,11 @@ class TakeAway
   end
 
   def order(item, quantity=DEFAULT_QUANTITY)
-    @current_order = @order_class.new
+    in_order
     raise NOT_IN_MENU unless include_item?(item)
-    select_item(item)
-    @current_order.add_to_basket(@selection, quantity)
+    select_item(item, quantity)
+    @current_order.add_to_basket(@selection)
+    reset_selection
   end
 
   private
@@ -33,8 +35,16 @@ class TakeAway
     menu.include? item
   end
 
-  def select_item(item)
-    @selection = menu.select{|k,v| k == item}
+  def select_item(item, quantity)
+    @selection[item] = quantity
+  end
+
+  def in_order
+    @current_order ||= @order_class.new
+  end
+
+  def reset_selection
+    @selection.clear
   end
 
 end

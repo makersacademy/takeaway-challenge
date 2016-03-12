@@ -41,6 +41,7 @@ describe TakeAway do
     end
 
     it 'should select the item inputted and add to selection hash' do
+      allow(order).to receive(:add_to_basket)
       takeaway.order("fish and chips")
       expect(takeaway.selection["fish and chips"]).to eq 4.34
     end
