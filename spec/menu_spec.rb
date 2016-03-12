@@ -1,0 +1,36 @@
+require 'menu'
+
+describe Menu do
+subject(:menu) { described_class.new }
+let(:item) { double :'Olives' }
+let(:price) { double :'3'}
+
+  describe '#show' do
+    it 'displays menu' do
+      expect(menu.show).to eq Menu::LIST
+    end
+  end
+
+  describe '#add' do
+    let(:price2) { double :'2.5'}
+
+    it 'adds an item to the menu' do
+      menu.add(item, price)
+      expect(Menu::LIST.include?(item)).to be true
+    end
+
+    it 'changes an item price on menu' do
+      menu.add(item, price)
+      menu.add(item, price2)
+      expect(Menu::LIST[item]).to eq price2
+    end
+  end
+
+  describe '#remove' do
+    it 'removes an item from menu' do
+      menu.add(item, price)
+      menu.remove(item)
+      expect(Menu::LIST[item]).to be nil
+    end
+  end
+end
