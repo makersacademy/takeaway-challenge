@@ -16,11 +16,12 @@ class Menu
     @menu = MENU_ITEMS
   end
 
+  # Is this method pointless?
   def view
     MENU_ITEMS.each{|key,value| puts "#{key}: £#{value}"}
   end
 
-  def menu
+  def list
     @menu.dup
   end
 
