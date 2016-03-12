@@ -3,7 +3,8 @@ require_relative 'menu'
 class Order
 
   NOT_ON_MENU_ERROR = 'Sorry, that item is not on the menu.'
-  INCORRECT_ESTIMATED_TOTAL_ERROR = "Your estimated total is incorrect"
+  INCORRECT_ESTIMATED_TOTAL_ERROR = 'Your estimated total is incorrect'
+  EMPTY_BASKET_ERROR = 'Your basket is empty!'
 
   attr_reader :basket, :total
 
@@ -24,6 +25,7 @@ class Order
   end
 
   def checkout(estimate)
+    raise EMPTY_BASKET_ERROR if basket.empty?
     raise INCORRECT_ESTIMATED_TOTAL_ERROR if estimate != total
   end
 

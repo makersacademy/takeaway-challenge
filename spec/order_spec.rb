@@ -47,11 +47,16 @@ describe Order do
       order.add_to_basket(MENU_ITEM, ITEM_QUANTITY)
     end
 
-    it 'should verify estimated cost' do
+    it 'raises error if estimated cost is incorrect' do
       total = MENU_ITEM_PRICE*ITEM_QUANTITY
       estimated_total = rand(0..total-1)
       message = Order::INCORRECT_ESTIMATED_TOTAL_ERROR
       expect{ order.checkout(estimated_total) }.to raise_error message
+    end
+    it 'raises error if basket is empty' do
+      order = described_class.new(menu)
+      message = Order::EMPTY_BASKET_ERROR
+      expect{ order.checkout(0) }.to raise_error message
     end
   end
 end
