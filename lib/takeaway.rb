@@ -3,7 +3,7 @@ require_relative "order"
 
 class TakeAway
 
-  def initialize(menu, order_class)
+  def initialize(menu, order_class: Order)
     @menu = menu
     @order_class = order_class
     @order = nil

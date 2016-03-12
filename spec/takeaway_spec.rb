@@ -4,7 +4,7 @@ describe TakeAway do
   let(:menu) { double :menu }
   let(:order) { double :order, add: nil }
   let(:order_class) { double :order_class, new: order }
-  subject(:takeaway) { described_class.new(menu, order_class) }
+  subject(:takeaway) { described_class.new(menu, order_class: order_class) }
 
   describe "#read_menu" do
     it "should display the menu" do
