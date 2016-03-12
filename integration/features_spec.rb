@@ -9,6 +9,10 @@ describe Restaurant do
     restaurant.menu.add :Burger, 7.00
   end
   it 'shows menu' do
-    expect(restaurant.menu.display).to include Burger: 7.00
+    expect(restaurant.read_menu).to include Burger: 7.00
+  end
+
+  it 'select number of available dishes' do
+    expect(restaurant.order pizza).to be_instance_of Order
   end
 end

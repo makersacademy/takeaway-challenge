@@ -28,4 +28,20 @@ describe Menu do
       expect(menu.display).to eq Burger: 7.00
     end
   end
+
+  describe '#cointains?' do
+    it 'checks menu for existing item' do
+      expect(menu.contains?(:Burger)).to be true
+    end
+
+    it 'checks menu for unexisting item' do
+      expect(menu.contains?(:Pancake)).to be false
+    end
+  end
+
+  describe '#price' do
+    it 'displays the price of an item' do
+      expect(menu.price(:Burger)).to be 7.00
+    end
+  end
 end
