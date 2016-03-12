@@ -9,13 +9,15 @@ class Restaurant
     @menu.display
   end
 
-  def order(item, quant = 1)
+  def order(dish, quant = 1)
+    dish = dish.to_sym
     new_order
-    @current_order.add(item, quant)
+    @current_order.add(dish, quant)
   end
 
-  def remove(item, quant = 1)
-    @current_order.remove(item, quant)
+  def remove(dish, quant = 1)
+    dish = dish.to_sym
+    @current_order.remove(dish, quant)
   end
 
   def show_order

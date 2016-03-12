@@ -18,8 +18,8 @@ describe Menu do
 
   describe '#load_menu' do ## fix this test later
     it 'loads a menu' do
-      menu.load_menu(Pizza: 6.00)
-      expect(menu.display).to include Pizza: 6.00
+      menu.load_menu
+      expect(menu.display).to include pizza: 7.00
     end
   end
 

@@ -1,3 +1,5 @@
+require 'yaml'
+
 class Menu
   def initialize
     @dishes = {}
@@ -8,15 +10,17 @@ class Menu
   end
 
   def remove(dish)
-    @dishes.delete(dish)
+    @dishes.delete(dish.to_sym)
   end
 
-  def load_menu(menu)
-    @dishes = menu
+  def load_menu(path = './menu_test.yml')
+    text = File.read path
+    @dishes = YAML.load text
+    @dishes = Hash[@dishes.map { |(k, v)| [k.to_sym, v] }]
   end
 
   def display
-    @dishes
+    @dishes.dup
   end
 
   def contains?(item)

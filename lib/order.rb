@@ -9,10 +9,12 @@ class Order
   end
 
   def add(dish, quant = 1)
+    dish = dish.to_sym
     @basket[dish] += quant if @menu.contains? dish
   end
 
   def remove(dish, quant = 1)
+    dish = dish.to_sym
     if @basket.include? dish
       if basket[dish] > 1
         @basket[dish] -= quant
@@ -25,7 +27,7 @@ class Order
   def total
     total = 0
     @basket.each do |dish, quant|
-      total += (@menu.price dish) * quant
+      total += (@menu.price dish.to_sym) * quant
     end
     total
   end
