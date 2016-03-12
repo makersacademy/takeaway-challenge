@@ -1,15 +1,15 @@
-class Messager
+class Messenger
 
   def initialize
     @client = Twilio::REST::Client.new ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"]
   end
 
   def send(message)
-    @client.account.messages.create({
+    @client.account.messages.create(
       from: ENV["TWILIO_NUMBER"],
       to: ENV["RECEIVER_NUMBER"],
       body: message + delivery_time
-    })
+    )
   end
 
   def delivery_time

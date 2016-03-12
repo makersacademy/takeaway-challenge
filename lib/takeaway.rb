@@ -1,6 +1,6 @@
 require_relative "menu"
 require_relative "order"
-require_relative "messager"
+require_relative "messenger"
 require "rubygems"
 require "twilio-ruby"
 require 'dotenv'
@@ -8,9 +8,10 @@ Dotenv.load
 
 class TakeAway
 
-  def initialize(menu, order_class: Order)
+  def initialize(menu, order_class: Order, messenger_class: Messenger)
     @menu = menu
     @order = order_class.new(@menu)
+    @messager = messenger_class.new
   end
 
   def read_menu
@@ -39,6 +40,6 @@ class TakeAway
     end
 
     def send_text(message)
-      Messager.new.send(message)
+      @messager.send(message)
     end
 end
