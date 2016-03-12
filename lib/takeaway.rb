@@ -12,7 +12,10 @@ class TakeAway
         "Crispy onions" => 0.29,
         "Mustard" => 0.29,
         "Ketchup" => 0.29,
-        "Sidesalad" => 0.75
+        "Sidesalad" => 0.75,
+        "Orange juice" => 1.49,
+        "Weißbier" => 2.99,
+        "Schwarzbier" => 2.99
       }
 
       puts menu
