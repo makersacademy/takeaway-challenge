@@ -16,6 +16,7 @@ class Order
     @total += item.total
   end
 
-  def finalise
+  def finalise(customer: nil, delivery_time:nil, channel:nil)
+    channel.send_message(customer:customer, delivery_time:delivery_time)
   end
 end

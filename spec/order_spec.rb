@@ -3,7 +3,11 @@ require 'order'
 describe Order do
 
   subject(:order){described_class.new(order_line_class: order_line_class, customer: customer)}
-  let(:customer){double :Customer, name: "customer", mobile: "xxxxx xxxxxx"}
+
+  let(:customer){double :Customer, name:'customer', mobile: 'mobile'}
+  let(:time){Time.now + (60 * 60)}
+  let(:sms){double :Sms}
+
   let(:order_line_class){double :OrderLine, new: order_line}
   let(:order_line){double :order_line, dish: nil, qty: nil, total: nil}
 
@@ -38,6 +42,15 @@ describe Order do
       it {expect(order.total).to eq (44)}
 
     end
+  end
+
+  describe '#finalise' do
+    it 'expect calling of send_message method' do
+
+      expect(sms).to receive(:send_message).with(customer: customer, delivery_time:time)
+      order.finalise(customer: customer, delivery_time:time, channel:sms)
+    end
+
   end
 
 end

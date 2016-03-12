@@ -2,6 +2,9 @@ require './lib/dish.rb'
 require './lib/menu.rb'
 require './lib/order.rb'
 require './lib/customer.rb'
+require './lib/sms.rb'
+require 'rubygems'
+require 'twilio-ruby'
 
 menu = Menu.new
 
@@ -25,11 +28,11 @@ end
 
 puts
 # create new order for customer
-customer = Customer.new(name: "Joe Bloggs", mobile:"01234 567890")
+customer = Customer.new(name: "Joe Bloggs", mobile:ENV['MY_NUMBER'])
 
 order = Order.new(customer: customer)
 
-# customer selects dishes and quantity
+# customer selects dishes and quantity and sees total
 
 order.add(menu.dishes["Curry"], 2)
 order.add(menu.dishes["Chips"], 3)
@@ -42,7 +45,12 @@ end
 
 puts "Order subtotal: £#{order.total}"
 
-exit
-order.finalise
+# send sms confirmation to customer
 
-puts "Order total: #{order.total}"
+sms_client = Twilio::REST::Client.new ENV['TWILIO_SID'],ENV['TWILIO_AUTH_TOKEN']
+sms_number = ENV['TWILIO_NUMBER']
+sms = Sms.new(client: sms_client, number: sms_number)
+
+time = (Time.now + (60*60)).strftime("%I:%M%p")
+
+order.finalise(customer: customer, delivery_time: time, channel: sms)

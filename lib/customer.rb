@@ -1,8 +1,8 @@
 class Customer
   attr_reader :name, :mobile
 
-  def initialize(name: nil, mobile: nil)
+  def initialize(name:, mobile:)
     @name = name
-    @mobile = mobile
+    @mobile = mobile.gsub(/\s/,'')
   end
 end
