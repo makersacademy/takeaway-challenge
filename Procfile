@@ -1,1 +1,1 @@
-web: bundle exec ruby sms.rb -p $PORT
+web: bundle exec ruby ./lib/sms.rb -p $PORT
