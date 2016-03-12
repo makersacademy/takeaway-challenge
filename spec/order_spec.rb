@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   subject(:order){described_class.new(order_line_class: order_line_class, customer: customer)}
-  let(:customer){double :Customer, name: "customer", mobile: "07474 791111"}
+  let(:customer){double :Customer, name: "customer", mobile: "xxxxx xxxxxx"}
   let(:order_line_class){double :OrderLine, new: order_line}
   let(:order_line){double :order_line, dish: nil, qty: nil, total: nil}
 
