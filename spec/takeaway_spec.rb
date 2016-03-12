@@ -1,7 +1,11 @@
 require 'takeaway'
 
 describe Takeaway do
+
+
   subject(:takeaway){ described_class.new }
+  let(:aclient){ double(:Client, messages: messages) }
+  let(:messages){ double(:message, create: nil) }
   let(:list) { {rice: 3, pea: 2} }
 
   describe '#menu' do
@@ -19,6 +23,16 @@ describe Takeaway do
   describe '#place_order' do
     it 'raises an error if sum of items and total are different' do
       expect{ takeaway.place_order(list, 0) }.to raise_error("Amount given is not correct")
+    end
+
+    it 'sends a text message' do
+      expect(takeaway).to receive(:confirm).with(list)
+      takeaway.place_order(list,35)
+    end
+    it 'test' do
+      allow(takeaway).to receive(:client){aclient}
+      expect(messages).to receive(:create)
+      takeaway.place_order(list, 35)
     end
   end
 

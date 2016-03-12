@@ -1,13 +1,15 @@
 require_relative 'takeaway'
-
+require 'dotenv'
+Dotenv.load
+require 'twilio-ruby'
 
 takeaway = Takeaway.new
 p takeaway.menu
-realmenu = takeaway.menu
 
-order = {rice: 3, pea: 2}
 
-order.each{|k,v| realmenu[k] * v}
+p takeaway.select_items({rice:3, pea:5})
+p takeaway.place_order({rice:3, pea:5},65)
 
-p order.map{|k,v| v * realmenu[k] if realmenu.key? k}.reduce(:+)
-p ENV['LOAD_PATH']
+time = Time.new
+p time.hour
+p time.min
