@@ -1,4 +1,5 @@
 Nick Mountjoy -
+[![Build Status](https://travis-ci.org/NickMountjoy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/NickMountjoy/takeaway-challenge)
 Takeaway Challenge
 ==================
 

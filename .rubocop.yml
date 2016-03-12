@@ -49,7 +49,7 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Max: 7
 
-# ************** Enabled ************** 
+# ************** Enabled **************
 
 Style/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
@@ -568,7 +568,7 @@ Style/WhileUntilDo:
   Description: 'Checks for redundant do after while or until.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-multiline-while-do'
   Enabled: true
-# enable for later challenge 
+# enable for later challenge
 
   # Align ends correctly.
 Lint/EndAlignment:
@@ -749,7 +749,7 @@ Metrics/PerceivedComplexity:
                  human reader.
   Enabled: true
 
-# ************** Disabled ************** 
+# ************** Disabled **************
 
 Style/EmptyLinesAroundClassBody:
   Description: Keeps track of empty lines around class bodies.
@@ -757,7 +757,7 @@ Style/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines
   SupportedStyles:
   - empty_lines
-  - no_empty_lines  
+  - no_empty_lines
 
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
