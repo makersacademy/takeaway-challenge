@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
     subject(:menu){described_class.new(order_class)}
-    let(:order_class){double:orderclass, new: order}
+    let(:order_class){double:order_class, new: order}
     let(:order){double:order, new_order: nil}
     let(:item){double:item}
 
@@ -23,5 +23,6 @@ describe Menu do
       menu.order_item(item)
     end
   end
+
 
 end
