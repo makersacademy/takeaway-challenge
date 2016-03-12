@@ -64,4 +64,12 @@ describe Restaurant do
       restaurant.view_order
     end
   end
+
+  describe '#order_summary' do
+    it { is_expected.to respond_to(:order_summary) }
+    it 'returns list of all the items ordered' do
+      expect(order).to receive(:summary)
+      restaurant.order_summary
+    end
+  end
 end
