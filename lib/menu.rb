@@ -7,7 +7,7 @@ class Menu
   end
 
   def list_dishes
-    current_menu = String.new
+    current_menu = ''
     @dish_list.each do |dish|
       current_menu << "#{dish.dish_name}: #{dish.dish_price}£\n"
     end
