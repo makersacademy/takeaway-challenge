@@ -2,7 +2,8 @@ require 'menu'
 
 describe Menu do
   subject(:test_menu) {described_class.new dummy_list}
-  let(:dummy_list) {{dish_1: 1, dish_2: 2 }}
+  let(:dummy_list) {Array.new(3) {dummy_dish}}
+  let(:dummy_dish) {double :dish, dish_name: :banana, dish_price: 3}
 
   describe '#initialize' do
 
@@ -14,16 +15,18 @@ describe Menu do
 
   describe '#list_dishes' do
 
-    it 'returns a hash of available dishes and price' do
-      expect(test_menu.list_dishes).to eq dummy_list
+    it 'fetch name info for the dishes in the menu' do
+        expect(dummy_dish).to receive(:dish_name).exactly(3).times
+        test_menu.list_dishes
     end
 
-  end
+    it 'fetch price info for the dishes in the menu' do
+      expect(dummy_dish).to receive(:dish_price).exactly(3).times
+      test_menu.list_dishes
+    end
 
-  describe '#retrieve_price' do
-
-    it 'returns the price of a dish' do
-      expect(test_menu.retrieve_price(dummy_list.keys.first)).to eq dummy_list.values.first
+    it 'returns a human-readable list of available dishes and price' do
+      expect(test_menu.list_dishes.class).to eq String
     end
 
   end
