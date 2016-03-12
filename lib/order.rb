@@ -1,3 +1,5 @@
+require_relative 'currentorder'
+
 class Order
 
   attr_reader :completed_order
@@ -7,8 +9,8 @@ class Order
     @completed_order = []
   end
 
-  def new_order(item)
-    make_order.new_item(item)
+  def new_order(item,value)
+    make_order.new_item(item,value)
   end
 
   def review_order

@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Menu
 
   attr_reader :menu_view
@@ -13,7 +15,8 @@ class Menu
 
   def order_item(item)
     @order ||= @order_class.new
-    @order.new_order(item)
+    value = menu_view[item]
+    @order.new_order(item,value)
   end
 
 end
