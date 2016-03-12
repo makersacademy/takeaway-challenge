@@ -4,10 +4,12 @@ describe TakeAway do
   let(:menu) { double :menu, dispaly: { "kiwiburger" => 9.35 } }
   let(:order) { double :order, add: nil, sum: nil, summary: "summary" }
   let(:order_class) { double :order_class, new: order }
+  let(:messenger_class) { double :messenger_class, new: messenger }
+  let(:messenger) { double :messenger }
   let(:client) { double :client, account: account }
   let(:accout) { double :account, messages: messages }
   let(:messages) { double :messages, create: nil }
-  subject(:takeaway) { described_class.new(menu, order_class: order_class) }
+  subject(:takeaway) { described_class.new(menu, order_class: order_class, messenger_class: messenger_class) }
 
   describe "#read_menu" do
     it "should display the menu" do
