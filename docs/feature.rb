@@ -19,3 +19,7 @@ takeaway.order("elderflower", 2)
 takeaway.basket_summary
 takeaway.total
 takeaway.complete_order(23.4)
+
+let(:client) { double :client, account: account }
+let(:accout) { double :account, messages: messages }
+let(:messages) { double :messages, create: nil }
