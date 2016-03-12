@@ -1,10 +1,16 @@
 require_relative 'order'
+require_relative 'menu'
 
 order1 = Order.new
-p order1.add_dish({name: 'sushi', amout: 4},{name: 'soup', amout: 3}, 28)
+p order1.place_order({name: 'sushi', amout: 4},{name: 'soup', amout: 3}, 28)
 
-p order1.cart
+p order1.basket
 puts order1.show_menu
+
+p menu = Menu.new
+p menu.show_menu
+p Menu::MENU
+
 
 # MENU = [
 #         {name: 'sushi', price: 12},
