@@ -35,9 +35,16 @@ class Order
   end
 
   def total
-    "Your total for this order is £#{@order_sum.reduce(:+)}."
+    @total = @order_sum.reduce(:+)
+    "Your total for this order is £#{@total}."
   end
 
+  def pay(amount)
+    error = 'payment is incorrect'
+    raise error unless amount == @total
+    delivery = (Time.now + 3600).strftime("%H:%M")
+    "Thank you! Your order should be with you by #{delivery}"
+  end
   private
 
     def menu_hash

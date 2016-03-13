@@ -8,6 +8,7 @@ describe Order do
   let(:menu) {double :menu, show: []}
   let(:menu_hash) { {item=>price, item2=>price} }
   let(:list) { puts :"Carbonara, £6.5\nPizza, £7\nCoke, £2\n" }
+  let(:delivery) { (Time.now + 3600).strftime("%H:%M") }
 
   describe '#read_menu' do
     it 'shows the menu & prices' do
@@ -34,7 +35,7 @@ describe Order do
       end
 
       it 'adds item to order sum' do
-        order.add(item,2)
+        order.add(item, 2)
         expect(order.order_sum.size).to eq 2
       end
     end
@@ -52,6 +53,15 @@ describe Order do
         order.add(item)
         total = "Your total for this order is £#{price}."
         expect(order.total).to eq total
+      end
+    end
+
+    describe '#pay' do
+      it 'informs order placement & payment received' do
+        order.add(item)
+        order.total
+        message = "Thank you! Your order should be with you by #{delivery}"
+        expect(order.pay(price)).to eq message
       end
     end
   end
