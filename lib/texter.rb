@@ -21,7 +21,7 @@ class Text
 
   def confirmation(message)
 
-  @message = @client.messages.create(
+  @client.messages.create(
     to: @my_no,
     from: @twilly_no,
     body: message
