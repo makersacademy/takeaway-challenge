@@ -1,7 +1,7 @@
 Takeaway Challenge
 ==================
 [![Build Status](https://travis-ci.org/eripheebs/takeaway-challenge.svg?branch=master)](https://travis-ci.org/eripheebs/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/github/eripheebs/takeaway-challenge?branch=master)](https://coveralls.io/github/eripheebs/takeaway-challenge?branch=master)
+[![Coverage Status](https://coveralls.io/github/eripheebs/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/eripheebs/takeaway-challenge?branch=master)
 
 What it does (With code examples)
 -----
