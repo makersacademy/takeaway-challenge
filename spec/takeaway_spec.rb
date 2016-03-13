@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   let(:basket_class) { double(:basket_class, new: basket) }
-  let(:basket) { double(:basket, add: nil, remove: nil) }
+  let(:basket) { double(:basket, add: nil, remove: nil, calc_total: 35) }
 
   let(:menu_class) { double(:menu_class, new: menu) }
   let(:menu) { double(:menu, find_price: 7) }
@@ -24,25 +24,31 @@ describe Takeaway do
   end
 
   describe '#add' do
-    # it '1.0 calls find_price method on menu with converted hash as argument' do
-    #   expect(takeaway.menu).to receive(:find_price).and_return(7)
-    #   takeaway.add('sushi', 5)
-    # end
-    it '1.1 calls add method on basket with priced dish' do
+    it '1.0 calls add method on basket with priced dish' do
       expect(takeaway.basket).to receive(:add)
       takeaway.add('sushi', 5)
     end
   end
 
   describe '#remove' do
-    # it '2.0 calls find_price method on menu with converted hash as argument' do
-    #   expect(takeaway.menu).to receive(:find_price).and_return(7)
-    #   takeaway.remove('sushi', 5)
-    # end
-    it '2.1 calls remove method on basket with priced dish' do
+    it '2.0 calls remove method on basket with priced dish' do
       expect(takeaway.basket).to receive(:remove)
       takeaway.remove('sushi', 5)
     end
-
   end
+
+  describe '#place_order' do
+    before(:each) do
+      takeaway.add('sushi', 5)
+    end
+    it '3.0 calls calc_total on basket' do
+      expect(takeaway.basket).to receive(:calc_total)
+      takeaway.place_order(35)
+    end
+    it '3.1 raises an error if given total is incorrect' do
+      message = 'Re-calculate and enter correct total'
+      expect{takeaway.place_order(30)}.to raise_error message
+    end
+  end
+
 end

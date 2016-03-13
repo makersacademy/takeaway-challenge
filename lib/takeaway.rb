@@ -15,6 +15,12 @@ class Takeaway
     @basket.remove(priced_dish(dish, qty))
   end
 
+  def place_order(total)
+    actual_total = @basket.calc_total
+    raise 'Re-calculate and enter correct total' unless total == actual_total
+    
+  end
+
   private
 
   def priced_dish(dish, qty)
