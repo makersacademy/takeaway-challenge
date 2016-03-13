@@ -1,11 +1,11 @@
-require_relative 'menu'
-require_relative 'sms_sender'
+require_relative "menu"
+require_relative "sms_sender"
 
 class Order
 
-  NOT_ON_MENU_ERROR = 'Sorry, that item is not on the menu.'
-  INCORRECT_ESTIMATED_TOTAL_ERROR = 'Your estimated total is incorrect'
-  EMPTY_BASKET_ERROR = 'Your basket is empty!'
+  NOT_ON_MENU_ERROR = "Sorry, that item is not on the menu."
+  INCORRECT_ESTIMATED_TOTAL_ERROR = "Your estimated total is incorrect"
+  EMPTY_BASKET_ERROR = "Your basket is empty!"
 
   attr_reader :total
 
