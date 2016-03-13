@@ -17,6 +17,7 @@ class Menu
   end
 
   def find_price(dish)
+    raise 'This dish is not available' unless in_menu?(dish)
     LIST.each {|i| return i[:price] if i[:name] == dish}
   end
 
@@ -27,4 +28,9 @@ class Menu
     LIST.each {|dish| @list << "#{dish[:name]}: £#{dish[:price]}\n"}
     @list.dup.freeze
   end
+
+  def in_menu?(dish)
+    LIST.any? {|i| i[:name] == dish}
+  end
+
 end
