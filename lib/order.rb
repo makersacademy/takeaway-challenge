@@ -23,7 +23,6 @@ class Order
 
   def subtotal(name, quantity)
     @sum = 0
-    #binding.pry
     @sum = @current_order.keys.last.price*quantity
     summarize(name, quantity)
     @sum
@@ -44,21 +43,22 @@ class Order
 
   def confirm_order(money)
     raise "Insufficient payment" if money != total.last[1]
+    #binding.pry
     send_sms
   end
 
-
-private
-  def send_sms
-  account_sid = 'ACc7333e016936b7abf7ea074e16eadb8c'
-  auth_token = '[e498717d0bb400106172bb47a4368d73]'
+  def tw_setup
+  account_sid = ENV['TWILIOID']
+  auth_token = ENV['TWILIOID']
   @client = Twilio::REST::Client.new account_sid, auth_token 
-
-
-  @client.account.messages.create({
-    :from => '+441593362052', 
-    :to => '+491604729966', 
-    :body => 'some text',  
-  })
   end
+
+  def send_sms
+  #tw_setup
+  # @client.account.messages.create({
+  #    :from => ENV['FROM'], 
+  #    :to => ENV['TO'], 
+  #    :body => '"Thank you! Your order was placed and will be delivered before #{((Time.new.hour)+1)}" + ":#{Time.new.min}"',  
+  #    })
+   end
 end

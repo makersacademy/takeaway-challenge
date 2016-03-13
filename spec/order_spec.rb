@@ -81,5 +81,13 @@ describe Order do
       order.place_order(dish,2)
       expect{order.confirm_order(5)}.to raise_error RuntimeError
     end
+
+    it ' 3. it should trigger a sms' do
+      allow(menu).to receive(:place_order).and_return(dish)
+      order.place_order(dish,2)
+      expect(order).to receive(:send_sms)
+      order.confirm_order(10)
+    end
+
   end
 end
