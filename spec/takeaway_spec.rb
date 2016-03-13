@@ -5,10 +5,12 @@ describe Takeaway do
   let(:dish) {double :dish}
   let(:order) {double :order}
   let(:order_klass) {double :order_klass, new: order}
-  subject(:takeaway) { described_class.new menu, order_klass}
+  let(:messenger) {double :messenger}
+  let(:messenger_klass) {double :messenger_klass, new: messenger}
+  subject(:takeaway) { described_class.new menu, order_klass, messenger_klass}
 
   describe '#select_item' do
-    it '> should send add item method to order class' do
+    it '> should send add item method to order class if it is on the menu' do
       allow(takeaway).to receive(:on_menu?).and_return(true)
       expect(order).to receive(:add_item).with(dish)
       takeaway.select_item(dish)
@@ -21,14 +23,6 @@ describe Takeaway do
       expect{takeaway.select_item(dish)}.to raise_error message
     end
 
-    it '> should add item to order basket if it is on the menu' do
-      allow(order).to receive(:add_item).with(dish)
-      allow(order).to receive(:calc_total).and_return(5)
-      allow(takeaway).to receive(:on_menu?).and_return(true)
-      takeaway.select_item(dish)
-      expect(takeaway.confirm_order(5)).to eq(nil)
-    end
-
   end
 
   describe '#confirm_order' do
@@ -38,8 +32,11 @@ describe Takeaway do
       allow(takeaway).to receive(:on_menu?).and_return(true)
     end
 
-    xit '> should send text message if argument matches order total' do
-
+    it '> should send text message if argument matches order total' do
+      takeaway.select_item(dish)
+      text_message = "Thank you! Your order was placed and will be delivered before #{Time.new + 3600}."
+      expect(messenger).to receive(:send).with(text_message)
+      takeaway.confirm_order(5)
     end
 
     it '> should raise error if argument does not match order total' do
