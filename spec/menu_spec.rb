@@ -37,10 +37,19 @@ subject(:menu) {described_class.new}
 
 	describe '#find' do
 
-		it 'returns the price of the dish if found' do
+		it 'returns false if dish is not on the menu' do
 			menu.add_dish("apple", 1)
-			expect(menu.find("apple")).to eq 1
+			expect(menu.find("pear")).to eq false
+		end
+
+	describe '#find_price_of' do
+
+		it 'returns the price of a dish' do
+			menu.add_dish("apple", 1)
+			expect(menu.find_price_of("apple")).to eq 1
 		end
 	end
+
+end
 
 end

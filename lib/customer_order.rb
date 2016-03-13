@@ -1,6 +1,6 @@
 require_relative 'menu'
 require_relative 'customer'
-require_relative 'message'
+
 
 class CustomerOrder 
 
@@ -15,7 +15,7 @@ class CustomerOrder
 
 	def add_to_order(this_dish, quantity)
 		fail "#{this_dish} is not on the menu." if !@instance_menu.find(this_dish)
-		if !find_item(this_dish).empty?
+		if find_quantity(this_dish)
 		 	@my_order[selected(this_dish)] = find_quantity(this_dish) + quantity
 		else
 			@my_order[selected(this_dish)] = quantity
@@ -23,13 +23,8 @@ class CustomerOrder
 	end
 
 	def remove_from_order(this_dish, quantity)
-		fail "#{this_dish} is not in your order." if find_item(this_dish).empty?
-		quantity < find_quantity(this_dish) ? @my_order[selected(this_dish)] = find_quantity(this_dish) - quantity : @my_order.delete(remove(this_dish))
-	end
-
-	def total_cost		 
-		 cost
-		 @sum
+		fail "#{this_dish} is not in your order." if !find_quantity(this_dish)
+		quantity < find_quantity(this_dish) ? @my_order[selected(this_dish)] = find_quantity(this_dish) - quantity : @my_order.delete(selected(this_dish))
 	end
 
 	private
@@ -42,29 +37,10 @@ class CustomerOrder
 		@current_menu.select {|k,v| k == this_dish }
 	end
 
-	def find_item(this_dish)
-		@my_order.select{ |k,v| k[this_dish]}
-	end
-
-	def remove(this_dish)
-		find_item(this_dish).keys[0]
-	end
-
-	def item_list
-		help = []
-		@my_order.keys.each {|value| value.each {|k,v| help << v}}
-		help
-	end
-
-	def cost
-		@sum = 0
-		[@my_order.values,item_list].transpose.map{|x| x.reduce :*}.each {|k| @sum+=k}
-	end
-
-	# def subtotal
-	# 	totals = Hash.new
-	# 	cost.each {|key| @my_ordertotals[key] = cost[i]}
-	# 	totals
+	# def find_item(this_dish)
+	# 	@my_order.select{ |k,v| k[this_dish]}
 	# end
+
+
 
 end
