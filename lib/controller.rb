@@ -1,6 +1,9 @@
+require 'twilio-ruby'
+
 class Controller
 
   PAYMENT_ERROR = "Incorrect Payment! Fork over the money yo!"
+  CONFIRMATION_MESSAGE = "Your order is completed. Delivery in the next 15h."
   WELCOME_MESSAGE =  "Welcome to Fake Takeaway. use #list_dishes for menu,
   #update_order to add a dish and #checkout to pay"
 
@@ -9,6 +12,7 @@ class Controller
   def initialize menu_ofday , order_class
     @order_class = order_class
     @menu = menu_ofday
+    setup_messenger
   end
 
   def welcome
@@ -27,6 +31,25 @@ class Controller
 
   def checkout payment
     raise PAYMENT_ERROR unless payment == current_order.bill
+    send_sms CONFIRMATION_MESSAGE
+  end
+
+  private
+
+  def setup_twilo
+    account_sid = ENV['TWISID']
+    auth_token = ENV['TWITOK']
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @sender = '+441570400043'
+    @receiver = '+447426955621'
+  end
+
+  def send_sms message
+    client.account.messages.create(
+      from: @sender,
+      to: @receiver,
+      body: message
+    )
   end
 
 end

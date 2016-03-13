@@ -17,6 +17,10 @@ describe Controller do
       expect(test_controller.order_class).to eq dummy_order_class
     end
 
+    xit 'set the twilio interface up' do
+
+    end
+
   end
 
   describe '#welcome' do
@@ -72,8 +76,8 @@ describe Controller do
       expect {test_controller.checkout 1}.to raise_error(described_class::PAYMENT_ERROR)
     end
 
-    xit 'calls the confirmation text' do
-
+    xit 'sends the confirmation text' do
+      #todo:stubbing
     end
 
   end
