@@ -44,8 +44,21 @@ describe Basket do
       expect(basket.content).to include(dish2_half)
     end
     it '2.2 raises an error if the given dish is not in the basket' do
-      message = 'You did not add this dish'
+      message = 'None in the basket'
       expect{basket.remove(dish3)}.to raise_error message
+    end
+  end
+
+  describe '#calc_total' do
+    it '3.0 calculates the actual total' do
+      basket.add(dish1)
+      basket.add(dish2)
+      basket.add(dish3)
+      expect(basket.calc_total).to eq(56)
+    end
+    it '3.1 raises an error if basket is empty' do
+      message = 'Basket is empty'
+      expect{basket.calc_total}.to raise_error message
     end
   end
 end

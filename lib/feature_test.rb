@@ -9,17 +9,8 @@ tw = Takeaway.new
 puts tw.menu.list
 p tw.basket.content
 
-tw.add('tofu salad', 4)
+
+tw.add('sushi', 5)
 p tw.basket.content
 
-tw.add('sushi', 2)
-p tw.basket.content
-
-tw.add('sushi', 2)
-p tw.basket.content
-
-tw.remove('sushi', 2)
-p tw.basket.content
-
-tw.remove('sushi', 2)
-p tw.basket.content
+p tw.place_order(35)

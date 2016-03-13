@@ -1,8 +1,8 @@
 class Basket
-  # respobsible for updating the basket and calculate total
 
   def initialize
     @content = []
+    @total = 0
   end
 
   def content
@@ -10,13 +10,19 @@ class Basket
   end
 
   def add(dish)
-    in_basket?(dish) ? add_qty(dish) : @content << dish
+    in_basket?(dish) ? update_qty(dish) : @content << dish
   end
 
   def remove(dish)
-    raise 'You did not add this dish' unless in_basket?(dish)
+    raise 'None in the basket' unless in_basket?(dish)
     reduce_qty(dish)
     @content.select! {|i| i[:amount] > 0}
+  end
+
+  def calc_total
+    raise 'Basket is empty' if @content.empty?
+    @content.each {|dish| @total += (dish[:amount] * dish[:price])}
+    @total
   end
 
   private
@@ -25,7 +31,7 @@ class Basket
     @content.any? {|i| i[:name] == dish[:name]}
   end
 
-  def add_qty(dish)
+  def update_qty(dish)
     @content.each {|i| i[:amount] += dish[:amount] if i[:name] == dish[:name] }
   end
 
