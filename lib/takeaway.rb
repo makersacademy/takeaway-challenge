@@ -1,5 +1,3 @@
-Dotenv.load
-
 class Takeaway
 
   def initialize(menu= Menu.new, order_klass=Order, messenger_klass=Messenger)
@@ -7,10 +5,7 @@ class Takeaway
     @order_klass = order_klass
     @order = @order_klass.new
     @messenger_klass = messenger_klass
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
-    client = Twilio::REST::Client.new account_sid, auth_token
-    @messenger = @messenger_klass.new client
+    @messenger = @messenger_klass.new
   end
 
   def select_item(dish, number=1)

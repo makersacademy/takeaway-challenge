@@ -6,6 +6,7 @@ describe Takeaway do
   let(:dish) {double :dish}
   let(:order) {double :order}
   let(:order_klass) {double :order_klass, new: order}
+  let(:client) {double :client, new: client}
   let(:messenger) {double :messenger}
   let(:messenger_klass) {double :messenger_klass, new: messenger}
   subject(:takeaway) { described_class.new menu, order_klass, messenger_klass}
