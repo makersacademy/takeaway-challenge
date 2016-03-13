@@ -11,13 +11,13 @@ class Takeaway
     @messenger = @messenger_klass.new client
   end
 
-  def select_item(dish)
+  def select_item(dish, number=1)
     raise "#{dish} is not on the menu." unless on_menu?(dish)
-    @order.add_item(dish)
+    number.times{@order.add_item(dish)}
   end
 
   def confirm_order(assumed_total)
-    error_message = "Order does not match total of #{@order.calc_total}"
+    error_message = "Does not match total of #{@order.calc_total}"
     raise error_message unless matches_total?(assumed_total)
     send_text
   end
@@ -25,7 +25,7 @@ class Takeaway
 private
 
   def on_menu?(dish)
-    @menu.include? dish
+    @menu.view.include? dish
   end
 
   def matches_total?(assumed_total)

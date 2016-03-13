@@ -16,6 +16,12 @@ describe Takeaway do
       takeaway.select_item(dish)
     end
 
+    it '> should add more than one of the item if passed second argument' do
+      allow(takeaway).to receive(:on_menu?).and_return(true)
+      expect(order).to receive(:add_item).with(dish).twice
+      takeaway.select_item(dish, 2)
+    end
+
     it '> should raise error if item not on menu' do
       message = "#{dish} is not on the menu."
       allow(takeaway).to receive(:on_menu?).and_return(false)
@@ -40,7 +46,7 @@ describe Takeaway do
     end
 
     it '> should raise error if argument does not match order total' do
-      message = "Order does not match total of #{order.calc_total}"
+      message = "Does not match total of #{order.calc_total}"
       takeaway.select_item(dish)
       expect{takeaway.confirm_order(6)}.to raise_error message
     end

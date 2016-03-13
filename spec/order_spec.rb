@@ -15,8 +15,8 @@ describe Order do
   describe '#add_item' do
 
     it '> should be able to add some number of an item to the basket' do
-      order.add_item(dish, 2)
-      expect(order.basket).to eq([dish, dish])
+      order.add_item(dish)
+      expect(order.basket).to eq([dish])
     end
 
   end
@@ -24,7 +24,7 @@ describe Order do
   describe '#calc_total' do
 
     it '> should calculate the total cost of the orders' do
-      order.add_item(dish, 1)
+      order.add_item(dish)
       expect(order.calc_total).to eq(3)
     end
   end
