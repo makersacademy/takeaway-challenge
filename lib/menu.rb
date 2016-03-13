@@ -18,8 +18,12 @@ class Menu
 		@menu_list.dup
 	end
 
-	def find(this_dish)
-		@menu_list[this_dish]
+	def find_price_of(dish)
+		@menu_list[dish]
 	end
-	
+
+	def find(dish)
+		@menu_list.include?(dish)
+	end
+
 end

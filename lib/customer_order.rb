@@ -1,10 +1,13 @@
 require_relative 'menu'
+require_relative 'customer'
+require_relative 'message'
 
 class CustomerOrder 
 
-	attr_reader :my_order, :current_menu
+	attr_reader :my_order, :current_menu, :customer
 
-	def initialize(instance_menu)
+	def initialize(instance_menu, name, number)
+		@customer = Customer.new(name,number)
 		@instance_menu = instance_menu
 		@current_menu = @instance_menu.menu_list	
 		@my_order = Hash.new

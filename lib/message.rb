@@ -3,7 +3,7 @@ require 'dotenv'
 
 Dotenv.load
 
-class Checkout
+class Message
 
   	def initialize
     	@client = Twilio::REST::Client.new ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"]
@@ -16,5 +16,5 @@ class Checkout
       		body: message
     	)
   	end
-  	
+
 end
