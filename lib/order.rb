@@ -3,10 +3,16 @@ Dotenv.load
 
 class Order
 
+  attr_reader :menu
+
   def initialize(menu_klass:Menu)
   @menu_class = menu_klass
   @menu = @menu_class.new
   @order = []
+  end
+
+  def set_menu(dish)
+    @menu.add_dish(Dish.new)
   end
 
   def see_menu
