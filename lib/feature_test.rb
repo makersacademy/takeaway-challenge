@@ -18,4 +18,8 @@ p tw.basket.content
 tw.add('sushi', 2)
 p tw.basket.content
 
-tw.
+tw.remove('sushi', 2)
+p tw.basket.content
+
+tw.remove('sushi', 2)
+p tw.basket.content
