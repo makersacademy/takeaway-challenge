@@ -10,12 +10,6 @@ attr_reader :myorder
         @menu = Menu.new
   end
 
-   def show_menu
-    @menu.menu.each do |key, value|
-    puts '£' + value.to_s + '------------' + key
-   end
-  end
-
   def place_order(dish, quantity)
      raise "Sorry, that is not a dish on the menu" if !@menu.dishes.has_key?("#{dish}")
      myorder.store("#{dish}",quantity)

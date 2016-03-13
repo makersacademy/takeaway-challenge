@@ -7,7 +7,7 @@ attr_reader :dishes
   end
 
   def show_menu
-    @dishes
+    @dishes.dup
   end
 
 end
