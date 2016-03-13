@@ -7,6 +7,7 @@ describe Takeaway do
   let(:aclient){ double(:Client, messages: messages) }
   let(:messages){ double(:message, create: nil) }
   let(:list) { {rice: 3, pea: 2} }
+  before(:each){ allow(takeaway).to receive(:client){aclient} }
 
   describe '#menu' do
     it 'gives a hash of dishes and prices' do
@@ -25,15 +26,11 @@ describe Takeaway do
       expect{ takeaway.place_order(list, 0) }.to raise_error("Amount given is not correct")
     end
 
-    it 'sends a text message' do
+    it 'sends the order to be texted' do
       expect(takeaway).to receive(:confirm).with(list)
       takeaway.place_order(list,35)
     end
-    it 'test' do
-      allow(takeaway).to receive(:client){aclient}
-      expect(messages).to receive(:create)
-      takeaway.place_order(list, 35)
-    end
+    
   end
 
 
