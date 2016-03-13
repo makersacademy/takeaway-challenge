@@ -20,13 +20,15 @@ This program simulates an online takeaway system that would allow restaurants to
 
 Features
 -------------
-* Upload and modify a menu
-* Display a menu
-* Add available items to a basket
-* Display basket summary
-* Calculate a total
-* Confirm total price upon completing order
-* Send a confirmation text message after order is complete
+* For customers:
+..* Display a menu
+..* Add available items to a basket
+..* Display a basket summary, listing dishes, their quantities and prices
+..* Calculate and display a total
+..* Confirm total price upon completing order
+* For restaurants:
+..* Upload and modify a menu with dishes and prices
+..* Send a confirmation text message after order is complete
 
 How to use Takeaway
 --------------------
