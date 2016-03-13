@@ -2,12 +2,12 @@ require 'dish'
 
 describe Dish do
 
-  let(:name) { double(:name)}
+  let(:dish_name) { double(:dish_name)}
   let(:price) { double(:price) }
   let(:quantity) { double(:quantity) }
-  subject(:dish) { described_class.new(name, price, quantity)}
+  subject(:dish_class) { described_class.new(dish_name, price, quantity)}
 
-  it {is_expected.to respond_to(:name)}
+  it {is_expected.to respond_to(:dish)}
   it {is_expected.to respond_to(:price)}
   it {is_expected.to respond_to(:quantity)}
 

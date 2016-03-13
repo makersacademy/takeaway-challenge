@@ -1,9 +1,9 @@
 class Dish
 
-  attr_reader :name, :price, :quantity
+  attr_reader :dish, :price, :quantity, :sum
 
-  def initialize(name,price,quantity)
-    @name = name
+  def initialize(dish,price,quantity)
+    @dish = dish
     @price = price
     @quantity = quantity
   end
