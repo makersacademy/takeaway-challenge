@@ -1,3 +1,5 @@
+require_relative 'twilio'
+
 class Order
 
   attr_reader :takeaway
@@ -20,12 +22,22 @@ class Order
     Your total order price is £#{@order_total}0."
   end
 
+  def confirm_order(payment)
+    fail "insufficient payment" unless payment == @order_total
+    #send_confirmation
+  end
+
   private
 
   def price_per_item(dish_number, number)
     item_price = @takeaway.menu[(dish_number - 1)][2]
     item_price.slice!(0)
     @order_total += (item_price.to_f * number)
+  end
+
+  def send_confirmation
+    delivery_time = Time.now + 3600
+    send_message(delivery_time)
   end
 
 end
