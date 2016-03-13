@@ -3,12 +3,8 @@ require 'pry'
 
 menu = Menu.new
 
-puts
 p menu.contents
-# menu.review(:beef)
-puts
 menu.show_menu
-puts
 
 
 
@@ -16,10 +12,13 @@ require './lib/order'
 
 order = Order.new
 
-order.choose(:fish)
-order.choose(:beef)
+order.choose(:fish, 1)
+order.choose(:beef, 2)
+order.choose(:rice, 2)
 p order.selections
 
-p "sum total is: #{order.sum_total}"
+order.sum_total
 
 p order.selections.last
+
+order.complete_order(order.sum_total)

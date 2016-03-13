@@ -23,7 +23,29 @@ class Order
   end
 
   def complete_order(pay)
-    pay == @sum ? "Thanks for your order" : raise("Payment error!")
+    if pay == @sum
+      "Thanks for your order"
+      send_sms
+    else
+      raise("Payment error!")
+    end
+  end
+
+  private
+
+  def send_sms
+    require 'rubygems'
+    require 'twilio-ruby'
+
+    account_sid = ENV['TWILSID']
+    auth_token = ENV['TWILTOK']
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.account.messages.create({
+    	:from => ENV['FROM'],
+    	:to => ENV['TO'],
+    	:body => 'Thanks for your order, get ready for mail order steak!',
+    })
   end
 
 end
