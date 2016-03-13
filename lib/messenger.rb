@@ -4,9 +4,8 @@ require "dotenv"
 Dotenv.load
 
 class Messenger
-
   def initialize
-    @client = Twilio::REST::Client.new ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"]
+    @client = Twilio::REST::Client.new ENV["ACC_SID"], ENV["AUTH"]
   end
 
   def send(message)
@@ -18,7 +17,6 @@ class Messenger
   end
 
   def delivery_time
-    delivery = Time.now + 60*60
-    "It will be delivered before #{delivery.strftime("%H:%M")}. :)"
+    "It will be delivered before #{Time.now.hour + 1}:#{Time.now.min}. :)"
   end
 end

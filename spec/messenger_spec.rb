@@ -2,18 +2,21 @@ require "messenger"
 
 describe Messenger do
   let(:client) { double :client, account: account }
+  let(:Client) { double Twilio::REST::Client, new: client }
+  subject(:messenger) { described_class.new }
   let(:account) { double :account, messages: messages }
   let(:messages) { double :message, create: nil }
 
   describe "#send" do
     it "should send a text message" do
-      # ENV["TWILIO_NUMBER"] = "12345"
-      # ENV["RECEIVER_NUMBER"] = "54321"
-      expect(messages).to receive(:create)
-      # .with(
-      # from: ENV["TWILIO_NUMBER"],
-      # to: ENV["RECEIVER_NUMBER"],
-      # body: "hello")
+      ENV = { "ACC_SID" => "fake_id",
+              "AUTH" => "fake_token",
+              "TWILIO_NUMBER" => "12345",
+              "RECEIVER_NUMBER" => "54321" }
+      expect(messages).to receive(:create).with(
+      from: ENV["TWILIO_NUMBER"],
+      to: ENV["RECEIVER_NUMBER"],
+      body: "hello")
       subject.send("hello")
     end
   end
