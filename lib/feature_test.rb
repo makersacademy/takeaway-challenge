@@ -10,13 +10,15 @@ p takeaway.select_items({rice:3, pea:5})
 
 
 hash = {a: 1}
-strash = "{b 2}"
+incoming = "{a:2}"
 #p eval(strash).empty?
 
-begin ord = eval(strash)
-  puts "yep"
+begin order = eval(incoming)
+  if order.empty?
+    p "Your order contained no items."
+  else
+    puts SMSMessage.new.format_order(order)
+  end
 rescue Exception => exc
-  puts "nope"
+  p "Please submit a valid order."
 end
-
-puts ord.class
