@@ -1,5 +1,4 @@
 require_relative 'takeaway'
-require_relative 'checkout'
 require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
