@@ -2,16 +2,23 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :current_order
+  attr_reader :current_order, :total
 
   def initialize(menu = Menu)
     @current_order = []
     @menu = Menu.new
+    @total = []
   end
 
   def now
     greeting
     loops
+  end
+
+  def sum
+    into_total
+    total = @total.inject(0, &:+)
+    p "your total is #{total}"
   end
 
   def get_action
@@ -40,6 +47,12 @@ class Order
     #else
     #  "sorry, we don't have that"
     #end
+  end
+
+  def into_total
+    @current_order.each do |x|
+      @total << x[1]
+    end
   end
 
 
