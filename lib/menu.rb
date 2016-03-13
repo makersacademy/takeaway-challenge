@@ -1,3 +1,4 @@
+require 'pry'
 class Menu
 
 attr_reader :order
@@ -10,7 +11,7 @@ attr_reader :order
   end
 
   def create_dish(name, price)
-    @dishes = {name => @dish_class.new(name, price)}
+    @dishes[name] = @dish_class.new(name, price)
   end
 
   def see_dishes
@@ -23,12 +24,17 @@ attr_reader :order
 
   def place_order(name, quantity)
     @order[@dishes[name]] = quantity
-    subtotal
+    total
   end
 
-  def subtotal
-    @order.each_pair do |key, value|
-    "#{key.name}, #{(key.price*value)}"
+
+  def total
+    @sum = 0
+    order.each_pair do |dish, quantity|
+      @sum += (dish.price)*quantity
     end
+    @sum
   end
+
+
 end
