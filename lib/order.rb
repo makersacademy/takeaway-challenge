@@ -4,8 +4,8 @@ class Order
 attr_reader :myorder, :menu
 
   def initialize
-    @myorder = {}
     @menu = {"Chicken" => 5, "Lamb" => 8, "Chips" => 2}
+        @myorder = {}
   end
 
   def show_menu
@@ -14,12 +14,20 @@ attr_reader :myorder, :menu
   end
   end
 
-  def place_order(dish, quantity, total)
+  def place_order(dish, quantity)
      raise "Sorry, that is not a dish on the menu" if !@menu.has_key?("#{dish}")
      myorder.store("#{dish}",quantity)
-     myorder
+     puts "#{quantity} x #{dish} has been added to your order"
   end
 
-    def calculate_total
+    def total_bill
+      total = []
+      myorder.each{|item, quantity| total <<(@menu[item]*quantity)}
+      (total.inject(:+))
     end
+
+    def confirm_order(total)
+      raise "Sorry that does not match the total" if total_bill != total
+    end
+
 end
