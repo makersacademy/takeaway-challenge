@@ -9,11 +9,26 @@ class Basket
     @content.dup.freeze
   end
 
-  def add(*dishes)
-    dishes.each { |dish| @content << dish }
+  def add(dish)
+    in_basket?(dish) ? add_qty(dish) : @content << dish
   end
 
-  def remove(*dishes)
-    dishes.each { |dish| @content.delete(dish) }
+  def remove(dish)
+    in_basket?(dish) ? reduce_qty(dish) : @content.delete(dish)
+    @content.select! {|i| i[:amount] > 0}
+  end
+
+  private
+
+  def in_basket?(dish)
+    @content.any? {|i| i[:name] == dish[:name]}
+  end
+
+  def add_qty(dish)
+    @content.each {|i| i[:amount] += dish[:amount] if i[:name] == dish[:name] }
+  end
+
+  def reduce_qty(dish)
+    @content.each {|i| i[:amount] -= dish[:amount] if i[:name] == dish[:name] }
   end
 end
