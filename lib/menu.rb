@@ -1,12 +1,14 @@
 require_relative 'order'
+require_relative 'deliverymessage'
 
 class Menu
 
   attr_reader :menu_view
 
-  def initialize(neworder = Order)
+  def initialize(neworder = Order,deliverymessage = DeliveryMessage)
     @menu_view = {'eggs' => 4,'bacon' => 3,'toast' => 4}
     @order_class = neworder
+    @deliverymessage = deliverymessage
   end
 
   def view_menu
@@ -27,7 +29,8 @@ class Menu
   def finish_order
     raise 'You must order first' if @order.nil?
     @order.completed
-    puts 'Thanks for your order'
+    @message = @deliverymessage.new
+    @message.send_message
   end
 
 end

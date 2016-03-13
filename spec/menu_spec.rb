@@ -1,10 +1,12 @@
 require 'menu'
 
 describe Menu do
-    subject(:menu){described_class.new(order_class)}
+    subject(:menu){described_class.new(order_class,delivery_message)}
     let(:order_class){double:order_class, new: order}
     let(:order){double:order, new_order: value, order_review: nil, completed: nil}
     let(:item){double:item}
+    let(:delivery_message){double:delivery_message, new: message}
+    let(:message){double:message, send_message: nil}
     let(:value){double:value}
 
   describe '#view_menu' do
@@ -13,7 +15,7 @@ describe Menu do
     end
   end
 
-  describe '#order' do
+  describe '#order_item' do
     it 'sends order to order class' do
       expect(order).to receive(:new_order).and_return(item)
       menu.order_item(item)
@@ -23,6 +25,7 @@ describe Menu do
       expect(order_class).to receive(:new)
       menu.order_item(item)
     end
+
   end
 
   describe '#review' do
@@ -42,6 +45,12 @@ describe Menu do
     it 'raises error if no order made yet' do
       message = "You must order first"
       expect {menu.finish_order}.to raise_error message
+    end
+
+    it 'calls for text to be sent' do
+      menu.order_item(item)
+      expect(message).to receive(:send_message)
+      menu.finish_order
     end
 
   end
