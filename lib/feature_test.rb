@@ -6,7 +6,7 @@ p takeaway.menu
 
 
 p takeaway.select_items({rice:3, pea:5})
-p takeaway.place_order({rice:3, pea:5},65)
+#p takeaway.place_order({rice:3, pea:5},65)
 
 
 hash = {a: 1}

@@ -11,15 +11,21 @@ get '/sms' do
     if order.empty?
       response = "Your order contained no items."
     else
-      response = SMSMessage.new.format_order(order)
+      response = format_order(order)
     end
   rescue Exception => exc
     response = "Exception: #{exc}"
   end
 
   twiml = Twilio::TwiML::Response.new do |r|
-
     r.Message response
   end
   twiml.text
+end
+
+def format_order(order)
+  message = "Thank you for your order of:\n"
+  order.each{|k,v| message << "#{v} x #{k}\n"}
+  message << delivery_time
+  message
 end
