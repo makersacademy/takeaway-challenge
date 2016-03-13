@@ -13,9 +13,6 @@ class Takeaway
     @order.see_dishes
   end
 
-  def order_total
-    @order_total = @order.order_total
-  end
 
   def confirm_order_total(total)
     raise WRONG_TOTAL_ERR unless order_total_correct?(total)    
@@ -35,6 +32,10 @@ class Takeaway
 
   def real_dish?(dish)
     @order.real_dish?(dish)
+  end
+
+  def order_total
+    @order_total = @order.order_total
   end
 
 end

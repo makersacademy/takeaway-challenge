@@ -17,7 +17,16 @@ describe Menu do
       expect(menu).to receive(:return_dish_price)
       menu.dish_price(dish)
     end
-  
+ 
+  end
+
+  describe '#check_dish' do
+    
+    it 'will return true if item is in menu' do
+      allow(menu).to receive(:dishes) { [dish] }
+      expect(menu.check_dish(dish)) .to eq true
+    end
+
   end
 
 

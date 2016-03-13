@@ -3,7 +3,7 @@ require_relative 'sms'
 
 class Order
 
-  attr_reader :menu, :menu_class
+  attr_reader 
 
   def initialize(menu_class=Menu, sms_class=Sms)
     @menu_class = menu_class
