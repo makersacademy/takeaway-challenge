@@ -5,7 +5,7 @@ class Menu
   attr_reader :menu_view
 
   def initialize(neworder = Order)
-    @menu_view = {eggs: 4,bacon: 3,toast: 4}
+    @menu_view = {'eggs' => 4,'bacon' => 3,'toast' => 4}
     @order_class = neworder
   end
 

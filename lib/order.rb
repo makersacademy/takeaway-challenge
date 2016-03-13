@@ -10,7 +10,7 @@ class Order
   end
 
   def new_order(item,value)
-    make_order.new_item(item,value)
+    make_order.new_item(item => value)
   end
 
   def review_order

@@ -5,16 +5,17 @@ describe Order do
   let(:current_order_class){double :current_order_class, new: current_order}
   let(:current_order){double :current_order, new_item: nil, order: nil}
   let(:item){double :item}
+  let(:value){double :value}
 
   describe '#new_order' do
     it 'creates a current order list' do
       expect(current_order_class).to receive(:new)
-      order.new_order(item)
+      order.new_order(item,value)
     end
 
     it 'pushes items to current order' do
-      expect(current_order).to receive(:new_item).with(item)
-      order.new_order(item)
+      expect(current_order).to receive(:new_item).with(item => value)
+      order.new_order(item,value)
     end
   end
 
@@ -36,7 +37,7 @@ describe Order do
       order.new_order(item)
       order.completed
       expect(current_order_class).to receive(:new)
-      order.new_order(item)
+      order.new_order(item,value)
     end
   end
 
