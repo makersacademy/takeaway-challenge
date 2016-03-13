@@ -20,4 +20,13 @@ class Takeaway
     @this_order.add(dish)
   end
 
+  def order_price
+    @this_order.total_price
+  end
+
+  def finalize_order(payment)
+    raise PAYMENT_ERROR if payment > @this_order.total_price
+    "Thank you! Your order was placed and will be delivered before #{(Time.now + (60*60)).strftime('%H:%M')}"
+  end
+
 end
