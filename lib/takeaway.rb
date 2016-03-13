@@ -9,7 +9,8 @@ class TakeAway
   def initialize(menu, order_class, messenger_class)
     @menu = menu
     @order = order_class.new(@menu)
-    @messager = messenger_class.new
+    client = Twilio::REST::Client.new ENV["ACC_SID"], ENV["AUTH"]
+    @messager = messenger_class.new(client)
   end
 
   def read_menu

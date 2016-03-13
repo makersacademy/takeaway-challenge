@@ -4,8 +4,8 @@ require "dotenv"
 Dotenv.load
 
 class Messenger
-  def initialize
-    @client = Twilio::REST::Client.new ENV["ACC_SID"], ENV["AUTH"]
+  def initialize(client)
+    @client = client
   end
 
   def send(message)
