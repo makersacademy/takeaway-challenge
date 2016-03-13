@@ -17,5 +17,4 @@ subject(:dish) { described_class.new(:name, :price) }
       expect(dish.available).to be true
     end
   end
-
 end
