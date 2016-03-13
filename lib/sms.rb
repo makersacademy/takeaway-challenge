@@ -2,6 +2,8 @@ require 'rubygems'
 require 'sinatra'
 require 'twilio-ruby'
 require_relative 'sms_message'
+require 'dotenv'
+Dotenv.load
 
 get '/sms' do
   incoming = params[:Body]
