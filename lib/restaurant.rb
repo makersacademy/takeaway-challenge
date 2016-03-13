@@ -1,8 +1,9 @@
 class Restaurant
-  def initialize(menu = Menu.new, order_klass = Order, sms = Sms)
+  def initialize(menu = Menu.new, order_klass = Order, sms = Sms.new)
     @menu = menu
     @order_klass = order_klass
     @sms = sms
+    @order_log = []
   end
 
   def read_menu
@@ -21,25 +22,35 @@ class Restaurant
   end
 
   def show_order
-    @current_order.basket
+    @current_order.show_basket
   end
 
   def order_total
     @current_order.total
   end
 
-  def complete_order(money)
+  def checkout(money)
     @current_order.complete_order money
-    send_message
+    send_message(order_total)
+    store_order
   end
 
-  def send_message
-    @sms.new
+  def send_message(total)
+    @sms.message(total)
+  end
+
+  def order_log
+    @order_log.dup
   end
 
   private
 
   def new_order
     @current_order ||= @order_klass.new @menu
+  end
+
+  def store_order
+    @order_log << @current_order
+    @current_order = nil
   end
 end

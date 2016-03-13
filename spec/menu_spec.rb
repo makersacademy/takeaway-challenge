@@ -16,7 +16,7 @@ describe Menu do
     end
   end
 
-  describe '#load_menu' do ## fix this test later
+  describe '#load_menu' do
     it 'loads a menu' do
       menu.load_menu
       expect(menu.display).to include pizza: 7.00
