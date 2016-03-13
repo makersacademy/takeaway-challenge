@@ -1,8 +1,8 @@
 require 'twilio-ruby'
 require 'dotenv'
-class Text
+# require 'rubygems'
 
-  attr_reader :credentials
+class Text
 
   def initialize
     @twilio_creds = Dotenv.load
@@ -14,11 +14,13 @@ class Text
 
   private
 
+  attr_reader :twilio_creds
+
   def confirmation_text(message)
     account_sid = @twilio_creds['account_sid']
     auth_token  = @twilio_creds['auth_token']
-    sender = @twilio_creds['twilio_num']
-    receiver = @twilio_creds['my_num']
+    sender      = @twilio_creds['twilio_num']
+    receiver    = @twilio_creds['my_num']
 
   @client = Twilio::REST::Client.new  account_sid, auth_token
 
@@ -27,6 +29,6 @@ class Text
     from: sender,
     body: message
   )
-end
+  end
 
 end

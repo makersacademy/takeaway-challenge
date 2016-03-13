@@ -8,7 +8,7 @@ let(:list) { {'Carbonara' => 6.5,'Pizza' => 7, 'Coke' => 2} }
 
   describe '#show' do
     it 'displays menu' do
-      expect(menu.show).to eq list
+    expect(menu.show).to eq list
     end
   end
 

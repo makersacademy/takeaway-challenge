@@ -1,14 +1,15 @@
 require 'order'
 
 describe Order do
-  subject(:order) { described_class.new(menu: menu)}
-  let(:item) {double :item}
+  subject(:order) { described_class.new(menu: menu, text: text)}
+  let(:item) { double :item }
   let(:item2) { 'Pizza' }
   let(:price) { 6 }
   let(:menu) {double :menu, show: []}
   let(:menu_hash) { {item=>price, item2=>price} }
   let(:list) { puts :"Carbonara, £6.5\nPizza, £7\nCoke, £2\n" }
-  let(:delivery) { (Time.now + 3600).strftime("%H:%M") }
+  let(:text) { double :text }
+  let(:time) { (Time.now + 3600).strftime("%H:%M") }
 
   describe '#read_menu' do
     it 'shows the menu & prices' do
@@ -57,11 +58,10 @@ describe Order do
     end
 
     describe '#pay' do
-      it 'informs order placement & payment received' do
-        order.add(item)
-        order.total
-        message = "Thank you! Your order should be with you by #{delivery}"
-        expect(order.pay(price)).to eq message
+      it 'if payment correct, sends confirmation text' do
+        message = "Thank you! Your order should be with you by #{time}"
+        expect(text).to receive(:send_confirmation).with(message)
+        order.pay(price)
       end
     end
   end
