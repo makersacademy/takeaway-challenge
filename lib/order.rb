@@ -12,7 +12,6 @@ class Order
   def initialize(menu = Menu.new, sms_sender = SmsSender.new)
     @basket = {}
     @menu = menu
-    @total = 0
     @sms_sender = sms_sender
   end
 
@@ -27,12 +26,18 @@ class Order
   def add_to_basket(item, quantity=1)
     raise NOT_ON_MENU_ERROR unless @menu.list.include? item
     @basket[item] = quantity
-    @total += @menu.price(item)*quantity
   end
 
   def checkout(estimate=0)
     raise EMPTY_BASKET_ERROR if basket.empty?
-    raise INCORRECT_ESTIMATED_TOTAL_ERROR if estimate != total
+    raise INCORRECT_ESTIMATED_TOTAL_ERROR if estimate != calculate_total
     @sms_sender.send_sms
   end
+
+  private
+
+    def calculate_total
+      @basket.map { |item,quantity| @menu.price(item)*quantity }.inject(:+)
+    end
+
 end
