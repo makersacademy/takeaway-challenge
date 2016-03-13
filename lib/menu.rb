@@ -1,11 +1,15 @@
 class Menu
 
   def initialize
-    @menu = {}
+    @menu = []
   end
 
-  def print
+  def view
     @menu.dup
+  end
+
+  def add(dish)
+    @menu << dish
   end
 
 end
