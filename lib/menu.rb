@@ -8,7 +8,7 @@ class Menu
   def initialize(neworder = Order,deliverymessage = DeliveryMessage)
     @menu_view = {'eggs' => 4,'bacon' => 3,'toast' => 4}
     @order_class = neworder
-    @deliverymessage = deliverymessage
+    @delivery_message = deliverymessage
   end
 
   def view_menu
@@ -29,7 +29,7 @@ class Menu
   def finish_order
     raise 'You must order first' if @order.nil?
     @order.completed
-    @message = @deliverymessage.new
+    @message = @delivery_message.new
     @message.send_message
   end
 
