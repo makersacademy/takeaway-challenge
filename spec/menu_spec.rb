@@ -40,4 +40,12 @@ describe Menu do
       menu.see_dishes
     end
   end
+
+  describe ' #place_order' do 
+
+    it '1. returns a dish instance' do
+      menu.create_dish(:tuna, 4.56)
+      expect(menu.place_order(:tuna)).to eq dish
+    end
+  end
 end

@@ -55,4 +55,31 @@ describe Order do
       expect(order.summary.last).to eq [dish, 2, 10]
     end
   end
+
+  describe ' #total' do
+
+    it ' 1. should calculate the total order' do
+      allow(menu).to receive(:place_order).and_return(dish)
+      order.place_order(dish,2)
+      expect(order.total.last[1]).to eq 10
+    end
+
+    it ' 2. should give a suammary of the order + the total' do
+      allow(menu).to receive(:place_order).and_return(dish)
+      order.place_order(dish,2)
+      expect(order.total.last).to eq [:total, 10]
+    end
+  end
+
+  describe ' #confirm_order' do
+    it ' 1. should take an argument, that reps. payment' do
+      expect(order).to respond_to(:confirm_order).with(1)
+    end
+
+    it ' 2. raise if too little money was paid' do
+      allow(menu).to receive(:place_order).and_return(dish)
+      order.place_order(dish,2)
+      expect{order.confirm_order(5)}.to raise_error RuntimeError
+    end
+  end
 end

@@ -1,12 +1,11 @@
 require 'pry'
 class Menu
 
-attr_reader :order
+attr_reader :order, :dishes
 
   def initialize(dish_class=Dish)
     @dish_class = dish_class
     @dishes = Hash.new
-    @order = Hash.new
 
   end
 
@@ -21,4 +20,9 @@ attr_reader :order
       dish.price
     end
   end
+
+  def place_order(name)
+    @dishes[name]
+  end
+
 end

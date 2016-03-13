@@ -7,6 +7,7 @@ class Order
     @menu = menu
     @current_order = Hash.new
     @summary = []
+    
   end
 
   def see_menu
@@ -14,7 +15,7 @@ class Order
   end
 
   def place_order(name, quantity)
-    @current_order[menu.place_order(name, quantity)]= quantity
+    @current_order[@menu.place_order(name)]= quantity
     subtotal(name, quantity)
   end
 
@@ -30,4 +31,15 @@ class Order
    @summary << [name, quantity, @sum]
   end
 
+  def total
+    total = 0
+    @summary.each do |order|
+      total += order[2]
+    end
+    summary + [[:total, total]]
+  end
+
+  def confirm_order(money)
+     raise "Insufficient payment" if money != total.last[1]
+  end
 end

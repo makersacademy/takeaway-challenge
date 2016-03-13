@@ -14,13 +14,18 @@ puts
 
 p 'Test 2 get a list of dishes'
 p order.see_menu
-
 puts
-p 'Test 3 #place_order, and get subtoal output total (40)'
-p menu.place_order(:tuna_paste, 10)
+puts
 
+p 'Test 3 #place_order'
+order.place_order(:tuna_paste, 10)
+puts
+puts
 
-p 'Test 3 #place_order again expect higher total(100)'
-p menu.place_order(:steak, 10)
+p 'Test 4 place a second order and get the order summary'
+order.place_order(:steak, 10)
+p order.summary
+puts puts
 
-p 
+p 'Test 5 should give me the total and the summary'
+p order.total
