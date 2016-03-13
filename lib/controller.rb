@@ -1,4 +1,6 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class Controller
 
@@ -12,7 +14,7 @@ class Controller
   def initialize menu_ofday , order_class
     @order_class = order_class
     @menu = menu_ofday
-    setup_messenger
+    setup_twilio
   end
 
   def welcome
@@ -36,12 +38,12 @@ class Controller
 
   private
 
-  def setup_twilo
+  def setup_twilio
     account_sid = ENV['TWISID']
     auth_token = ENV['TWITOK']
     @client = Twilio::REST::Client.new account_sid, auth_token
-    @sender = '+441570400043'
-    @receiver = '+447426955621'
+    @sender = ENV['SENDER']
+    @receiver = ENV['RECEIVER']
   end
 
   def send_sms message

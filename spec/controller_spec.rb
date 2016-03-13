@@ -7,7 +7,7 @@ describe Controller do
   let(:dummy_order) {double :order, add_dish: nil, update_total: nil, bill: 0}
   let(:dummy_dish) {double :dish}
 
-  describe '#initalize' do
+  describe '#initialize' do
 
     it 'is initalized with a menu of the day' do
       expect(test_controller.menu).to eq dummy_menu
@@ -17,8 +17,9 @@ describe Controller do
       expect(test_controller.order_class).to eq dummy_order_class
     end
 
-    xit 'set the twilio interface up' do
-
+    it 'set the twilio interface up' do
+      expect(test_controller).to receive(:setup_twilio)
+      test_controller = described_class.new
     end
 
   end
