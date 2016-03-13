@@ -1,12 +1,14 @@
 require_relative 'menu'
+require_relative 'sms'
 
 class Order
 
   attr_reader :menu, :menu_class
 
-  def initialize(menu_class=Menu)
+  def initialize(menu_class=Menu, sms_class=Sms)
     @menu_class = menu_class
     @menu = menu_class.new
+    @sms_class = sms_class 
     @current_order = Hash.new
   end
 
@@ -33,9 +35,10 @@ class Order
     end
     sum
   end
-
+  
   def place_order
-    puts "order placed"
+    @sms = @sms_class.new
+    @sms.send_order_confirmation
   end
 
 end
