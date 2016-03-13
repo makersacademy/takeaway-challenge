@@ -1,25 +1,25 @@
 
 class Order
 
-attr_reader :myorder
+attr_reader :myorder, :menu
+
   def initialize
-    @menu = { "Chicken" => 5, "Lamb" => 8, "Chips" => 2 }
     @myorder = {}
+    @menu = {"Chicken" => 5, "Lamb" => 8, "Chips" => 2}
   end
 
   def show_menu
-    @menu
+    @menu.each do |key, value|
+    puts '£' + value.to_s + '------------' + key
+  end
   end
 
-  def order_food (dish, quantity, total)
-    if @menu.has_key?("#{dish}") then myorder.store("#{dish}",quantity)
-    else
+  def place_order(dish, quantity, total)
      raise "Sorry, that is not a dish on the menu" if !@menu.has_key?("#{dish}")
+     myorder.store("#{dish}",quantity)
+     myorder
+  end
+
+    def calculate_total
     end
-  end
-
-  def check_total
-
-  end
-
 end
