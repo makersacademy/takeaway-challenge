@@ -5,10 +5,11 @@ class Order
 
   attr_reader :menu
 
-  def initialize(menu_klass:Menu, menu: nil)
+  def initialize(menu_klass:Menu,  menu: nil, notification_klass: SMS)
   @menu_class = menu_klass
   @menu = menu || @menu_class.new
   @order = []
+  @cilent = notification_klass.new
   end
 
   def load_menu(menu)
@@ -16,9 +17,9 @@ class Order
     self
   end
 
-  # def set_to_menu(dish,price)
-  #   @menu.add_dish(dish,price)
-  # end
+  def set_to_menu(dish,price)
+    @menu.add_dish(dish,price)
+  end
 
   def display_menu
     @menu.display
@@ -46,7 +47,7 @@ class Order
   end
 
   def send_sms
-
+    @cilent.send
   end
 
   private
@@ -72,5 +73,3 @@ class Order
   end
 
 end
-
-# ENV['ACCOUNT_SID']

@@ -1,6 +1,7 @@
 require './lib/order.rb'
 require './lib/menu.rb'
 require './lib/dish.rb'
+require './lib/sms.rb'
 
 kfc = Menu.new
 kfc.add_dish(:chicken_wings,3.99)
@@ -23,4 +24,4 @@ order.load_menu(kfc)
 order.display_menu
 order.take_order(:chips, 2)
 order.view_current_order
-order.order_total
+order.confirm_order

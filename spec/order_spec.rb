@@ -3,7 +3,8 @@ require 'byebug'
 
 describe Order do
 
-  subject(:order){ described_class.new(menu_klass: menu_klass) }
+  subject(:order){ described_class.new(menu_klass: menu_klass, notification_klass: notification_controller) }
+  let(:notification_controller) { double(:notification_controller, new: nil) }
   let(:menu_klass) { double(:menu_klass, new: menu) }
   let(:menu) { double(:menu, display: {dish1=>dish1_price})}
   let(:dish1) { :dish1 }
