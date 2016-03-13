@@ -14,7 +14,9 @@ puts
 
 p 'Test 2 get a list of dishes'
 p order.see_menu
-p 'Test 2 #place_order output total (40)'
+
+puts
+p 'Test 3 #place_order, and get subtoal output total (40)'
 p menu.place_order(:tuna_paste, 10)
 
 
