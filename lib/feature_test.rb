@@ -19,6 +19,8 @@ order = Order.new(menu: kfc)
 # order.set_menu(:lamb_curry,5)
 # order.set_menu(:salad,2)
 # order.set_menu(:chicken_wings,3)
-
+order.load_menu(kfc)
 order.display_menu
-order.take_order(:lamb_curry, 2)
+order.take_order(:chips, 2)
+order.view_current_order
+order.order_total
