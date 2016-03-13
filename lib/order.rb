@@ -10,16 +10,20 @@ class Order
     @menu = menu_class.new
   end
 
-  def choose(argument)
-    @selections << @menu.place_order(argument)
+  def choose(item, quantity)
+    quantity.times { @selections << [item, @menu.pick(item)] }
     # binding.pry
   end
 
   def sum_total
-    sum = 0
+    @sum = 0
     #binding.pry
-    @selections.each { |item| sum += item.price }
-    sum
+    @selections.each { |item| @sum += item[1] }
+    @sum
+  end
+
+  def complete_order(pay)
+    pay == @sum ? "Thanks for your order" : raise("Payment error!")
   end
 
 end

@@ -1,10 +1,25 @@
 require './lib/menu'
+require 'pry'
 
 menu = Menu.new
 
-puts ""
-puts menu.contents
+puts
+p menu.contents
 # menu.review(:beef)
-puts ""
+puts
 menu.show_menu
-puts " "
+puts
+
+
+
+require './lib/order'
+
+order = Order.new
+
+order.choose(:fish)
+order.choose(:beef)
+p order.selections
+
+p "sum total is: #{order.sum_total}"
+
+p order.selections.last

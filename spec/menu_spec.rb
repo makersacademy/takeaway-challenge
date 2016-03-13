@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
 
   subject(:menu) { described_class.new }
-  let(:dish)     { double :dish } #('food_name', 0) } #, name: 'Beef', price: 11}
+
 
   describe '#contents' do
     it '1. is a hash' do
@@ -12,11 +12,9 @@ describe Menu do
 
   end
 
-  describe '#review' do
-    it '2. returns the price of a dish' do
-      # menu.contents
-      allow(dish).to receive(:price).and_return(2)
-      expect(menu.review(:beef)).to be_an(Integer) # needs a double!
+  describe '#show_menu' do
+    it '2. reveals a list of dishes with prices ' do
+      expect(menu.show_menu).to eq(:beef => 11, :fish => 13, :dahl => 9, :rice => 6)
     end
   end
 end
