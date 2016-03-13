@@ -11,8 +11,7 @@ get '/sms' do
     if order.empty?
       response = "Your order contained no items."
     else
-      response = "Thanks for the hash!"
-      #SMSMessage.new.format_order(order)
+      response = SMSMessage.new.format_order(order)
     end
   rescue Exception => exc
     response = "Exception: #{exc}"
