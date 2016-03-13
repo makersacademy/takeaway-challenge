@@ -26,7 +26,13 @@ describe Order do
       end
 
       it 'adds a meal to the order' do
-        expect{ order.add 0 }.to change { order.summary }.to include dish1
+        expect{ order.add 0 }.to change { order.summary }.to include dish1.name
+      end
+    end
+
+    describe '#summary' do
+      it 'shows a summary of order' do
+        expect{ order.add 0 }.to change { order.summary }.to include dish1.name
       end
     end
   end

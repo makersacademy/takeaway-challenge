@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Order
 
-  def initialize(menu: Menu.new)
+  def initialize(menu: )
     @summary = {}
     @menu = menu
   end
@@ -12,10 +12,24 @@ class Order
   end
 
   def summary
-    @summary.dup
+    summary_display = "---\n"
+    @summary.each do |key, value|
+      summary_display += "Quantity: #{value}\nName: #{key.name}\nPrice: #{key.price}\n---\n"
+    end
+    summary_display += "===\nTotal: #{total}\n===\n"
   end
 
   def from_menu
     @menu.display
+  end
+
+  private
+
+  def total
+    @total = 0
+    @summary.each do |key, value|
+      @total += key.price * value
+    end
+    @total
   end
 end

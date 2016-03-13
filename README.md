@@ -1,3 +1,6 @@
+Must initialize an order class with a menu instance
+
+
 Original link
 https://github.com/makersacademy/takeaway-challenge
 My Github link
