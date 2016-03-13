@@ -1,4 +1,3 @@
-require 'rubygems' # not necessary with ruby 1.9 but included for completeness
 require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
@@ -18,7 +17,7 @@ class SMS
       :body => "Thank you! Your order was placed and will be delivered before #{(Time.now.+3600).strftime("%R")}" })
       self
   end
-  
+
   def client
     @client
   end
