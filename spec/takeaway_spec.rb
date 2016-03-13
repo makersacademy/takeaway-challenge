@@ -30,7 +30,6 @@ describe Takeaway do
       allow(order).to receive(:add_item).with(dish)
       expect{takeaway.select_item(dish)}.to raise_error message
     end
-
   end
 
   describe '#confirm_order' do
@@ -53,5 +52,4 @@ describe Takeaway do
       expect{takeaway.confirm_order(6)}.to raise_error message
     end
   end
-
 end

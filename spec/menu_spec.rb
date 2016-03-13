@@ -22,5 +22,4 @@ describe Menu do
       expect(menu.view).to include(dish)
     end
   end
-
 end

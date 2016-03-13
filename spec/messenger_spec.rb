@@ -16,5 +16,4 @@ describe Messenger do
       messenger.send(message, phone)
     end
   end
-
 end
