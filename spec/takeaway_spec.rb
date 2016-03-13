@@ -21,6 +21,14 @@ describe Takeaway do
       expect{takeaway.select_item(dish)}.to raise_error message
     end
 
+    it '> should add item to order basket if it is on the menu' do
+      allow(order).to receive(:add_item).with(dish)
+      allow(order).to receive(:calc_total).and_return(5)
+      allow(takeaway).to receive(:on_menu?).and_return(true)
+      takeaway.select_item(dish)
+      expect(takeaway.confirm_order(5)).to eq(nil)
+    end
+
   end
 
   describe '#confirm_order' do
@@ -30,9 +38,8 @@ describe Takeaway do
       allow(takeaway).to receive(:on_menu?).and_return(true)
     end
 
-    it '> should add item to order basket if it is on the menu' do
-      takeaway.select_item(dish)
-      expect(takeaway.confirm_order(5)).to eq(true)
+    xit '> should send text message if argument matches order total' do
+
     end
 
     it '> should raise error if argument does not match order total' do
