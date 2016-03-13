@@ -21,8 +21,8 @@ attr_reader :order, :dishes
     end
   end
 
-  def place_order(name)
-    @dishes[name]
+  def dish_price(name)
+    @dishes[name].price
   end
 
 end
