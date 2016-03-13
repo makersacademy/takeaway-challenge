@@ -1,5 +1,4 @@
 class Menu
-
   def initialize
     @menu = {}
   end

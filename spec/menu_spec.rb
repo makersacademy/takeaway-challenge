@@ -1,10 +1,9 @@
 require "menu"
 
 describe Menu do
-
   describe "#upload" do
     it "should upload an external menu" do
-      menu = {"skinny fries" => 2.95, "onion rings" => 3.5}
+      menu = { "skinny fries" => 2.95, "onion rings" => 3.5 }
       subject.upload(menu)
       expect(subject.display).to eq menu
     end

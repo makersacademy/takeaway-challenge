@@ -3,7 +3,6 @@ require_relative "order"
 require_relative "messenger"
 
 class TakeAway
-
   CHECKOUT_ERROR = "Incorrect amount! Please check again.".freeze
 
   def initialize(menu, order_class, messenger_class)
@@ -35,11 +34,12 @@ class TakeAway
   end
 
   private
-    def amount_correct?(price)
-      @order.sum == price
-    end
+  
+  def amount_correct?(price)
+    @order.sum == price
+  end
 
-    def send_text(message)
-      @messager.send(message)
-    end
+  def send_text(message)
+    @messager.send(message)
+  end
 end
