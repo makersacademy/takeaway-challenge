@@ -14,7 +14,8 @@ class Basket
   end
 
   def remove(dish)
-    in_basket?(dish) ? reduce_qty(dish) : @content.delete(dish)
+    raise 'You did not add this dish' unless in_basket?(dish)
+    reduce_qty(dish)
     @content.select! {|i| i[:amount] > 0}
   end
 

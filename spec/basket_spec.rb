@@ -43,5 +43,9 @@ describe Basket do
       basket.remove(dish2_half)
       expect(basket.content).to include(dish2_half)
     end
+    it '2.2 raises an error if the given dish is not in the basket' do
+      message = 'You did not add this dish'
+      expect{basket.remove(dish3)}.to raise_error message
+    end
   end
 end
