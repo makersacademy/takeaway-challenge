@@ -10,7 +10,7 @@ class Order
     @bill
   end
 
-  def current_order
+  def show_outstanding_order
     @current_order.dup
   end
 

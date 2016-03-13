@@ -4,29 +4,13 @@ describe Controller do
   subject(:test_controller) {described_class.new dummy_menu , dummy_order_class, dummy_twilio_class}
   let(:dummy_menu) {double :menu, list_dishes: nil}
   let(:dummy_order_class) {double :Order, new: dummy_order}
-  let(:dummy_order) {double :order, add_dish: nil, update_total: nil, bill: 0}
+  let(:dummy_order) {double :order, add_dish: nil, update_total: nil, total_bill: 0}
   let(:dummy_dish) {double :dish}
 
   let(:dummy_twilio_class) {double :Client, new: dummy_twilio}
   let(:dummy_twilio) {double :client, account: dummy_account}
   let(:dummy_account) {double :account, messages: dummy_messages}
   let(:dummy_messages) {double :messages, create: nil}
-
-  describe '#initialize' do
-
-    it 'is initalized with a menu of the day' do
-      expect(test_controller.menu).to eq dummy_menu
-    end
-
-    it 'is initalized with a order class' do
-      expect(test_controller.order_class).to eq dummy_order_class
-    end
-
-    xit 'set the twilio interface up' do
-
-    end
-
-  end
 
   describe '#welcome' do
 
@@ -35,7 +19,8 @@ describe Controller do
       end
 
       it 'expect to create a new active order' do
-        expect(test_controller.current_order.class).not_to eq nil
+        expect(test_controller).to receive(:setup_new_order)
+        test_controller.welcome
       end
   end
 
@@ -73,7 +58,7 @@ describe Controller do
     end
 
     it 'checks the payment against the total' do
-      expect(dummy_order).to receive(:bill)
+      expect(dummy_order).to receive(:total_bill)
       test_controller.checkout 0
     end
 

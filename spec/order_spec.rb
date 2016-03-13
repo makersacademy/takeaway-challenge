@@ -10,7 +10,7 @@ describe Order do
 
     it 'adds a dish to the current order' do
       test_order.add_dish 1 , 1
-      expect(test_order.current_order).to include dummy_dish => 1
+      expect(test_order.show_outstanding_order).to include dummy_dish => 1
     end
 
   end
