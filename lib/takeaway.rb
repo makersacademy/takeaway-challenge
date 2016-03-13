@@ -8,11 +8,18 @@ class Takeaway
   end
 
   def add(dish, qty=1)
-    price = @menu.find_price(dish)
-    priced_dish = {name: dish, amount: qty, price: price}
-    @basket.add(priced_dish)
+    @basket.add(priced_dish(dish, qty))
   end
 
+  def remove(dish, qty=1)
+    @basket.remove(priced_dish(dish, qty))
+  end
 
+  private
+
+  def priced_dish(dish, qty)
+    price = @menu.find_price(dish)
+    priced_dish = {name: dish, amount: qty, price: price}
+  end
 
 end
