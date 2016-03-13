@@ -1,5 +1,5 @@
 require_relative 'menu'
-require_relative 'message'
+require_relative 'sms_message'
 require 'dotenv'
 Dotenv.load
 
@@ -26,7 +26,7 @@ class Takeaway
 private
 
   def confirm(order)
-    Message.new.send(order)
+    SMSMessage.new.send(order)
   end
 
 

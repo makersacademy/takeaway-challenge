@@ -1,6 +1,6 @@
-require 'message'
+require 'sms_message'
 
-describe Message do
+describe SMSMessage do
   subject(:message){ described_class.new }
   let(:aclient){ double(:Client, messages: messages) }
   let(:messages){ double(:message, create: nil) }

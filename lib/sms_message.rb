@@ -1,6 +1,6 @@
 require 'twilio-ruby'
 
-class Message
+class SMSMessage
 
   def initialize
     @client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'],ENV['AUTH_TOKEN'])
@@ -10,22 +10,23 @@ class Message
     client.messages.create(
     to: "+447709344456",
     from: "+441233800814",
-    body: "Thank you for your order of:\n#{format_order(order)}\nIt will be delivered by #{delivery_time}."
+    body: "#{format_order(order)}"
     )
+  end
+
+  def format_order(order)
+    message = "Thank you for your order of:\n"
+    order.each{|k,v| message << "#{v} x #{k}\n"}
+    message << delivery_time
+    message
   end
 
 private
 
   attr_reader :client
 
-  def format_order(order)
-    message = ""
-    order.each{|k,v| message << "#{v} x #{k}\n"}
-    message.chomp
-  end
-
   def delivery_time
-    "#{Time.new.hour + 1}:#{Time.new.min}"
+    "It will be delivered by #{Time.new.hour + 1}:#{Time.new.min}."
   end
 
 end
