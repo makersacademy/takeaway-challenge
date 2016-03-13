@@ -26,7 +26,7 @@ class Order
     @total += @menu.price(item)*quantity
   end
 
-  def checkout(estimate)
+  def checkout(estimate=0)
     raise EMPTY_BASKET_ERROR if basket.empty?
     raise INCORRECT_ESTIMATED_TOTAL_ERROR if estimate != total
     @sms_sender.send_sms
