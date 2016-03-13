@@ -10,7 +10,6 @@ describe TakeAway do
     expect(takeaway).to respond_to :list_menu
   end
 
-  # CHANGE TO 2 ARGUMENTS WHEN ADDING IN QUANTITY *********
   it 'should respond to order method' do
     expect(takeaway).to respond_to(:order).with(2).arguments
   end
@@ -19,14 +18,9 @@ describe TakeAway do
     it 'should initialize with a menu hash' do
       expect(takeaway.menu).to be_a Hash
     end
-
-    # it 'should initialize with a new instance of order' do
-    #
-    # end
   end
 
   describe '#list_menu' do
-    # NOT SURE ABOUT THIS TEST *****************
     it 'should list the food items and prices' do
       allow(takeaway).to receive(:list_menu).and_return menu
       expect(takeaway.list_menu).to eq menu
@@ -34,16 +28,9 @@ describe TakeAway do
   end
 
   describe '#order' do
-    # NOT SURE HOW TO IMPLEMENT THIS TEST **********
     it 'should raise error message if item inputted is not in menu' do
       message = 'Item not in menu'
       expect{takeaway.order(menu)}.to raise_error message
-    end
-
-    it 'should select the item inputted and add to selection hash' do
-      allow(order).to receive(:add_to_basket)
-      takeaway.order("fish and chips")
-      expect(takeaway.selection["fish and chips"]).to eq 4.34
     end
   end
 end

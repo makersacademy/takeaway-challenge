@@ -22,6 +22,10 @@ class Order
     total_price
   end
 
+  def basket_summary
+    "#{(basket.keys)} x#{(basket.values)}, £#{total}"
+  end
+
   private
 
   def current_price(basket)

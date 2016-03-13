@@ -29,6 +29,10 @@ class TakeAway
     reset_selection
   end
 
+  def checkout
+    
+  end
+
   private
 
   def include_item?(item)
