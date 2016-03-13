@@ -22,6 +22,27 @@ describe Order do
       order.add_to_basket({"fish and chips" => 2})
       expect(order.basket["fish and chips"]).to eq 2
     end
+
+    it 'should calculate the subtotal price of the current order' do
+      selection = {"fish and chips" => 2}
+      order.add_to_basket(selection)
+      expect(order.subtotal).to eq [8.68]
+    end
+
+  end
+
+  describe '#total' do
+    it 'should return the total price of the current order' do
+      order.subtotal << 4.34
+      order.subtotal << 3.56
+      expect(order.total).to eq 7.90
+    end
+  end
+
+  describe '#basket_summary' do
+    it 'should return items in the basket, quantity, each price and the total' do
+
+    end
   end
 
 end

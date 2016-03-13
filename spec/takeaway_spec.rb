@@ -32,5 +32,11 @@ describe TakeAway do
       message = 'Item not in menu'
       expect{takeaway.order(menu)}.to raise_error message
     end
+
+    it 'should reset selection to an empty hash' do
+      allow(order).to receive(:add_to_basket)
+      takeaway.order("cheese pizza")
+      expect(takeaway.selection).to be_empty
+    end
   end
 end

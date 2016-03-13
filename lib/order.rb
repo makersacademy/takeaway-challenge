@@ -15,7 +15,7 @@ class Order
 
   def add_to_basket(selection)
     basket.merge!(selection)
-    current_price(basket)
+    current_price(selection)
   end
 
   def total
@@ -35,8 +35,8 @@ class Order
 
   private
 
-  def current_price(basket)
-    basket.each do |item, count|
+  def current_price(selection)
+    selection.each do |item, count|
       price = count * @menu[item]
       subtotal << price
     end
