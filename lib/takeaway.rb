@@ -1,4 +1,5 @@
 require_relative 'order'
+require_relative 'checkout'
 
 class TakeAway
   attr_reader :menu, :selection, :order_class, :current_order
