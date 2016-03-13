@@ -6,11 +6,7 @@ Dotenv.load
 
 tw = Takeaway.new
 
-puts tw.menu.list
-p tw.basket.content
+require_relative 'fake_twilio'
 
-
-tw.add('sushi', 5)
-p tw.basket.content
-
-p tw.place_order(35)
+p fake = FakeTwilio.new('123', '123')
+p fake.create(from:'from', to: 'to', body: 'body')
