@@ -26,7 +26,7 @@ class Restaurant
   end
 
   def order_total
-    @current_order.total
+    "Total: £#{@current_order.total}"
   end
 
   def checkout(money)
@@ -52,5 +52,6 @@ class Restaurant
   def store_order
     @order_log << @current_order
     @current_order = nil
+    'Thank you! Your order is being prepared.'
   end
 end

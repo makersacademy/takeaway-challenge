@@ -13,8 +13,11 @@ describe Menu do
 
   describe '#remove' do
     it 'removes item from the menu' do
-      menu.remove(:Burger)
-      expect(menu.display).not_to include Burger: 7.00
+      expect(menu.remove(:Burger)).to eq 'Burger has been removed from the menu'
+    end
+
+    it 'does not remove unexisting item' do
+      expect(menu.remove(:lobster)).to eq 'lobster is not on the menu'
     end
   end
 

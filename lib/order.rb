@@ -7,7 +7,7 @@ class Order
   def show_basket
     bask = []
     @basket.each do |dish, quant|
-      bask << "#{dish} x#{quant} = #{@menu.price dish.to_sym}"
+      bask << "#{dish} x#{quant} = #{(@menu.price dish.to_sym) * quant}"
     end
     bask.join(', ')
   end
@@ -25,6 +25,7 @@ class Order
     if has? dish
       @basket[dish] -= quant
       @basket.delete dish if @basket[dish] == 0
+      "#{quant}x #{dish}(s) removed from your basket."
     end
   end
 

@@ -21,13 +21,14 @@ describe Order do
 
   describe '#show_basket' do
     it 'shows items in the basket' do
-      expect(order.show_basket).to eq 'pizza x2 = 7'
+      expect(order.show_basket).to eq 'pizza x2 = 14'
     end
   end
 
   describe '#remove' do
     it 'removes item from basket' do
-      expect(order.remove(:pizza, 2)).to eq 0
+      message = '2x pizza(s) removed from your basket.'
+      expect(order.remove(:pizza, 2)).to eq message
     end
   end
 

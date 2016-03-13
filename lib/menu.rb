@@ -7,10 +7,16 @@ class Menu
 
   def add(dish, price)
     @dishes[dish.to_sym] = price
+    "#{dish} has been added to the menu"
   end
 
   def remove(dish)
-    @dishes.delete(dish.to_sym)
+    if contains? dish
+      @dishes.delete(dish.to_sym)
+      "#{dish} has been removed from the menu"
+    else
+      "#{dish} is not on the menu"
+    end
   end
 
   def load_menu(path = './menu_test.yml')
