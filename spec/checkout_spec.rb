@@ -1,8 +1,9 @@
-require 'checkout.rb'
+require 'checkout'
 
 describe Checkout do
-  subject(:checkout) { described_class.new }
+  subject(:checkout) { described_class.new(client_class) }
   let(:client) { double :client, messages: messages }
+  let(:client_class) { double :client_class, new: client }
   let(:messages) { double :messages, create: nil }
   let(:from) { 123 }
   let(:to) { 456 }
