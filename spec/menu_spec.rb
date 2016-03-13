@@ -5,14 +5,6 @@ describe Menu do
   let(:dummy_list) {Array.new(3) {dummy_dish}}
   let(:dummy_dish) {double :dish, dish_name: nil, dish_price: 3}
 
-  describe '#initialize' do
-
-      it 'can be initalized with a given list of dishes' do
-        expect(subject.dish_list).to eq dummy_list
-      end
-
-  end
-
   describe '#list_dishes' do
 
     it 'fetch name info for the dishes in the menu' do
