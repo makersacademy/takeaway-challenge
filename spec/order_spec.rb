@@ -10,6 +10,7 @@ describe Order do
   let(:dish) { double :dish }
   let(:dish2) { double :dish }   
   let(:quantity) { double :quantity }
+  let(:total) { double :total }
 
   describe '#initialize' do
   
@@ -21,14 +22,19 @@ describe Order do
   end
 
   describe '#add_to_order' do
-  
-    it 'is expect to call push_to_current_order with the two parameters received' do
+     
+    it 'will call push_to_current_order with the two parameters received' do
+      allow(menu).to receive(:check_dish).with(dish) { true }
       allow(order).to receive(:push_to_current_order).with(dish, quantity) 
       expect(order).to receive(:push_to_current_order).with(dish, quantity) 
       order.add_to_order(dish, quantity)
     end
     
-  
+    it 'will raise error if dish is not on menu' do
+      allow(menu).to receive(:check_dish).with(dish) { false }
+      expect { order.add_to_order(dish, quantity) }.to raise_error(Order::INVALID_DISH_ERR)       
+    end
+
   end
   
   describe '#see_dishes' do
@@ -40,26 +46,11 @@ describe Order do
   
   end
 
-  describe '#real_dish' do
-
-    it 'will call on menu to check dish' do
-      allow(menu).to receive(:check_dish).with(dish)
-      expect(menu).to receive(:check_dish).with(dish)
-      order.real_dish?(dish)
-    end
   
-  end
 
-  describe '#place_order' do
+
     
-    it 'will create a new instance of sms class' do
-      allow(sms).to receive(:send_order_confirmation)
-      allow(sms_class).to receive(:new).and_return(sms)
-      expect(sms_class).to receive(:new)
-      order.place_order
-    end
     
-  end
   
   describe '#order_total' do
   
@@ -68,32 +59,45 @@ describe Order do
       expect(order.order_total).to eq 5
     end
   
-#    it 'will correctly calculate the price of the order' do
-#      allow(order).to receive(:current_order).and_return(dish, dish2)
-#      allow(menu).to receive(:dish_price).with(dish).and_return(4)
-#      allow(menu).to receive(:dish_price).with(dish).and_return(6)
-#      expect(order.order_total).to eq 
-#    end
-  
   end
 
-  describe 'place_order'
-
-    it 'will call on send_order_confirmation in sms class' do
-      allow(sms).to receive(:send_order_confirmation)
-      allow(sms_class).to receive(:new).and_return(sms)
-      expect(sms).to receive(:send_order_confirmation)
-      order.place_order
-    end
-
-    it 'will call create a new sms' do
-      allow(sms).to receive(:send_order_confirmation)
-      allow(sms_class).to receive(:new) { sms }
-      expect(sms_class).to receive(:new)
-      order.place_order
-
-    end
-
-  end 
+  describe '#place_order' do
+    
+    context 'when total given is correct' do
+      before(:each) { allow(order).to receive(:correct_total?).with(total) { true } }
       
+      it 'will create a new instance of sms class' do
+        allow(sms).to receive(:send_order_confirmation)
+        allow(sms_class).to receive(:new).and_return(sms)
+        expect(sms_class).to receive(:new)
+        order.place_order(total)
+      end
 
+      it 'will call on send_order_confirmation in sms class' do
+        allow(sms).to receive(:send_order_confirmation)
+        allow(sms_class).to receive(:new).and_return(sms)
+        expect(sms).to receive(:send_order_confirmation)
+        order.place_order(total)
+      end
+
+      it 'will call create a new sms' do
+        allow(sms).to receive(:send_order_confirmation)
+        allow(sms_class).to receive(:new) { sms }
+        expect(sms_class).to receive(:new)
+        order.place_order(total)
+
+      end
+
+    end
+    context 'when total given is incorrect' do
+      it 'will raise error' do
+        allow(order).to receive(:correct_total) { false }
+        expect { order.place_order(total) }.to raise_error Order::WRONG_TOTAL_ERR
+    
+      end
+ 
+    end      
+ 
+  end
+      
+end

@@ -29,31 +29,17 @@ describe Takeaway do
   end
 
   describe '#confirm_order_total' do
-    
-    it 'will raise error if total given does not match order total' do
-      allow(order).to receive(:order_total) { total }
-      expect{ takeaway.confirm_order_total(wrong_total) }.to raise_error(Takeaway::WRONG_TOTAL_ERR)
-    end  
-  
-  end
 
-  
-  
     it 'will place order if total given matches order total' do
-      allow(takeaway).to receive(:order_total_correct?).with(total) { true }  
       allow(order).to receive(:place_order) 
       expect(order).to receive(:place_order)
       takeaway.confirm_order_total(total)
     end
- 
-      
-   describe 'add_to_order' do
+  
+  end    
+  
+  describe '#add_to_order' do
 
-    it 'will raise error if dish is not on menu' do
-      allow(order).to receive(:real_dish?).with(dish) { false }
-      expect{ takeaway.add_to_order(dish) }.to raise_error(Takeaway::INVALID_DISH_ERR)
-    end
- 
     it 'will call add_to_order if dish is on menu' do
       allow(order).to receive(:real_dish?).with(dish) { true }
       expect(order).to receive(:add_to_order).with(dish, 1)
@@ -62,7 +48,14 @@ describe Takeaway do
       
   end 
  
+  describe '#order_total' do
+
+    it 'will call order total in order' do
+      allow(order).to receive(:order_total)
+      expect(order).to receive(:order_total)
+      takeaway.order_total
+    end
+
+  end
+
 end
-
-    
-
