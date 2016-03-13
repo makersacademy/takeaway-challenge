@@ -5,7 +5,6 @@ class TakeAway
   def initialize(dish_class=Dish)
     @dish_class = dish_class
     @basket = Array.new
-    @total = Array.new
   end
 
   def list_menu
@@ -25,13 +24,27 @@ class TakeAway
       }
   end
 
-  def add_to_basket(name,quantity)
-    price = self.list_menu[name]
-    @basket << @dish_class.new(name,price,quantity)
+  def add_to_basket(dish,quantity)
+    price = self.list_menu[dish]
+    @basket << @dish_class.new(dish,price,quantity)
   end
 
-  def total()
-    # @basket
+  def order(total_received)
+    error_message = 'Total received doesn\'t match total price'
+    raise error_message if total_received != @total
+    'Send text'
+  end
+
+
+
+
+  private
+
+  def takeaway_total
+    self.basket.each_index do |item|
+      @total = self.basket[item].price * self.basket[item].quantity
+    end
+    total
   end
 
 
