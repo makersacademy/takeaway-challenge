@@ -1,11 +1,11 @@
-require_relative 'order'
+require_relative 'basket'
 require_relative 'menu'
 require 'dotenv'
 Dotenv.load
 
-order1 = Order.new
-order1.menu
+menu = Menu.new
+puts menu.list
 
-
-order1.place_order({name: 'sushi', amount: 5}, 35)
-order1.total
+basket = Basket.new
+p basket.add({name: 'Miso soup', amount: 3, price: 1.5}, {name: 'Okonomi-yaki', amount: 2, price: 10})
+p basket.remove({name: 'Miso soup', amount: 3, price: 1.5})
