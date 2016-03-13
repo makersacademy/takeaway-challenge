@@ -10,11 +10,13 @@ p takeaway.select_items({rice:3, pea:5})
 
 
 hash = {a: 1}
-strash = "{a:1, b:2}"
-p eval(strash).empty?
+strash = "{b 2}"
+#p eval(strash).empty?
 
-begin eval(strash)
+begin ord = eval(strash)
   puts "yep"
 rescue Exception => exc
   puts "nope"
 end
+
+puts ord.class

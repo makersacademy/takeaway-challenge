@@ -7,14 +7,14 @@ get '/sms' do
   incoming = params[:Body]
 
   twiml = Twilio::TwiML::Response.new do |r|
-    begin eval(incoming)
-      if eval(incoming).empty?
-        r.Message "Please submit a valid order. You put #{incoming.class}"
+    begin order = eval(incoming)
+      if order.empty?
+         r.Message "Your order contained no items."
       else
-        r.Message SMSMessage.new.format_order(incoming)
+        r.Message SMSMessage.new.format_order(order)
       end
     rescue Exception => exc
-      r.Message "EXC: Please submit a valid order. You put #{incoming.class}"
+      r.Message "Please submit a valid order."
     end
   end
   twiml.text
