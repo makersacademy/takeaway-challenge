@@ -17,6 +17,9 @@ describe Sms do
   end
 
   it 'composes message' do
+    allow(Twilio::REST::Client).to receive(:new).with(ENV['SID'],
+                                                      ENV['TOKEN']
+                                                     ).and_return(client)
     allow(sms).to receive(:name).and_return('Tobenna')
     allow(sms).to receive(:calculate_waiting).and_return('20:45')
     expect(sms).to receive(:send).with(text)
