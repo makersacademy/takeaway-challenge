@@ -3,7 +3,8 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { described_class.new }
+  let(:menu) { double :menu }
+  subject(:order) { described_class.new(menu)}
   let(:item) { double(:item) }
   let(:quantity) { double(:quantity) }
 
@@ -12,28 +13,28 @@ describe Order do
       it 'has a date and time' do
         expect(order.time).to be_a Time
       end
-      it 'has an empty array to hold the order' do
-        expect(order.order).to be_empty
+      it 'has a hash to hold the order' do
+        expect(order.order).to be_a Hash
       end
     end
   end
-  context 'when receiving an order' do
-    before(:each) do
-      order.choice('Chicken curry', 2)
-      order.choice('Massman curry', 3)
-    end
-    describe '#choice' do
-      it 'puts item and quantity to a temp array' do                              # i'd like to minimize access to 'selection'. private methods?
-        expect(order.selection.length).to eq 2
+  context 'when adding to an order' do
+    describe '#add_dish' do
+      it 'adds the item to the order array' do
+        allow(menu).to receive(:on_menu?).and_return(true)
+        order.add_item("Hamburger", 7)
+        expect(order.order).to include hamburger: 7
       end
     end
-    describe 'compile_order' do
-      it 'puts compiled order into order' do
-        expect{ order.compile_order }.to change{ order.order.length}.by 2
+  end
+  context 'when completing an order' do
+    describe '#total' do
+      it 'displays order total' do                          # couldn't tell you why this works
+        allow(menu).to receive(:on_menu?).and_return(true)
+        allow(menu).to receive(:price).and_return(5)
+        order.add_item(:taco, 2)
+        expect(order.total).to eq 10
       end
-      # it 'has an item with 3 items' do
-      #   expect(order.order[0].length).to eq 3
-      # end
     end
   end
 end

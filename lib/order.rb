@@ -1,20 +1,32 @@
 class Order
 
-  attr_reader :time, :order, :selection
+  attr_reader :time, :order
 
-  def initialize
+  def initialize(menu)
     @time = Time.now
-    @order = Array.new
+    @order = {}
+    @menu = menu
   end
 
-  def choice(dish, quantity)
-    @selection ||= Array.new
-    @selection << [dish, quantity]
+  def add_item(dish, quantity)
+    dish = dish.downcase.to_sym
+    @order[dish] = quantity if @menu.on_menu?(dish)
   end
+
+  def total
+    total = 0
+    @order.each do |dish, quantity|
+      total += (@menu.price dish.downcase.to_sym) * quantity
+    end
+    total
+  end
+
+
 
   def compile_order
   #   @selection.each do |item|
   #     item.each do |dish|
   #       menu.items
   end
+
 end
