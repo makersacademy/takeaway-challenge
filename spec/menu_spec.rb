@@ -40,38 +40,4 @@ describe Menu do
       menu.see_dishes
     end
   end
-
-  describe ' #place_order' do 
-
-    before(:each) do
-      allow(dish).to receive_messages(price: 4.56, total: nil)
-    end
-
-    it '1. saves a dish and its quantity' do
-      menu.create_dish(:tuna, 4.56)
-      menu.place_order(:tuna, 5)
-      expect(menu.order).to include(dish => 5)
-    end
-
-    it '2. returns a subtotal total of the order' do
-      expect(menu).to receive(:subtotal)
-      menu.place_order(:fish,2) 
-    end
-
-    it '3. it should save multiple dishes' do
-      allow(menu).to receive(:subtotal)
-      menu.create_dish(:fish, 4.56)
-      menu.place_order(:fish, 2)
-      menu.place_order(:steak,  3)
-      expect(menu.order.size).to eq(2)
-    end
-  end
-
-  describe ' #subtotal' do
-    it  'should return a subtotal of the order' do
-      allow(menu).to receive_messages( order: {dish=>5}, dishes: {:tuna=>dish})
-      allow(dish).to receive_messages(name: 'tuna', price: 4.56)
-      expect(menu.subtotal).to eq (5*4.56)
-    end
-  end
 end
