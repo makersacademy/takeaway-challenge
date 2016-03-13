@@ -4,19 +4,14 @@ Dotenv.load
 
 class Checkout
 
-  ACCOUNT_SID = ENV['ACCOUNT_SID']
-  AUTH_TOKEN = ENV['AUTH_TOKEN']
-  TWILIO_NUM = ENV['TWILIO_NUM']
-  MY_NUM = ENV['MY_NUM']
-
   def initialize(client)
-    @client = Twilio::REST::client.new ACCOUNT_SID, AUTH_TOKEN
+    @client = client
   end
 
   def send_sms
     @client.messages.create(
-      from: TWILIO_NUM,
-      to: MY_NUM,
+      from: ENV['TWILIO_NUM'],
+      to: ENV['MY_NUM'],
       body: "Thank you! Your order was placed and will be delivered before #{time}"
     )
   end

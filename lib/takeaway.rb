@@ -55,7 +55,7 @@ class TakeAway
   end
 
   def create_checkout
-    @checkout_class = checkout_class.new
+    @checkout_class = checkout_class.new(Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
   end
 
   def reset_selection
