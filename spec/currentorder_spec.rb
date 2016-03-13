@@ -7,14 +7,25 @@ describe CurrentOrder do
   describe '#new_item' do
     it 'stores items ordered' do
       currentorder.new_item(order)
-      expect(currentorder.current_order).to eq order
+      expect(currentorder.current_order).to eq [order]
     end
   end
 
-  # describe '#order_review' do
-  #   it 'returns a list of whats been ordered' do
-  #     expect(currentorder.order_review).to return
-  #   end
-  # end
+  describe '#order_review' do
+    it 'stores items ordered' do
+      currentorder.new_item(order)
+      expect(currentorder.current_order).to eq [order]
+    end
+  end
+
+  describe '#current_order' do
+    it 'stores items ordered' do
+      currentorder.new_item(order)
+      expect(currentorder.current_order).to eq [order]
+    end
+  end
+
+
+
 
 end

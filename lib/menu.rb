@@ -21,7 +21,7 @@ class Menu
   def order_item(item)
     @order ||= @order_class.new
     value = menu_view[item]
-    @order.new_order(item,value)*2
+    @order.new_order(item,value)
   end
 
   def finish_order

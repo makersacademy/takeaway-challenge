@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
     subject(:menu){described_class.new(order_class)}
     let(:order_class){double:order_class, new: order}
-    let(:order){double:order, new_order: nil, order_review: nil, completed: nil}
+    let(:order){double:order, new_order: value, order_review: nil, completed: nil}
     let(:item){double:item}
     let(:value){double:value}
 
@@ -15,13 +15,20 @@ describe Menu do
 
   describe '#order' do
     it 'sends order to order class' do
-      expect(order).to receive(:new_order).with(item,value)
+      expect(order).to receive(:new_order).and_return(item)
       menu.order_item(item)
     end
 
     it 'creates new order' do
       expect(order_class).to receive(:new)
       menu.order_item(item)
+    end
+  end
+
+  describe '#review' do
+    it 'raise error if there is no order to review' do
+      message = 'You must order first'
+      expect{menu.review}.to raise_error message
     end
   end
 
@@ -34,8 +41,9 @@ describe Menu do
 
     it 'raises error if no order made yet' do
       message = "You must order first"
-      expect{menu.finish_order}.to raise_error message
+      expect {menu.finish_order}.to raise_error message
     end
+
   end
 
 

@@ -13,20 +13,19 @@ class CurrentOrder
     @current_order << order
   end
 
-  def order_review
-    menu_summary
-    puts "Total: " + @total.to_s
+  def current_order
+    @current_order
   end
 
-private
 
-  def menu_summary
+  def order_review
     @current_order.each do |hash|
       hash.each do |key,value|
         @total += value
-        p key + " cost: " + value.to_s
+        key + " cost: " + value.to_s
       end
     end
   end
+
 
 end

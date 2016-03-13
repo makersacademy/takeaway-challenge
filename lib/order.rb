@@ -19,7 +19,6 @@ class Order
 
   def completed
     @completed_order = @current
-    @current_order = nil
     @current = nil
   end
 

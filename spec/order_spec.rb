@@ -30,7 +30,7 @@ describe Order do
     it 'Pushes order into completed order' do
       order.new_order(item,value)
       order.completed
-      expect(order.completed_order).to eq [current_order]
+      expect(order.completed_order).to eq current_order
     end
 
     it 'Removes current order once complete' do
