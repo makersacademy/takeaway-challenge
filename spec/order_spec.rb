@@ -3,6 +3,7 @@ require 'order'
 describe Order do
   subject(:order) {described_class.new}
   let(:menu) {double :menu}
+  let(:text) {double :text}
 
   describe '#initialize'do
     it 'should start with an empty order list' do
@@ -125,7 +126,13 @@ describe Order do
 
   describe '#confirm_order' do
     it 'sends a text to user confirming order' do
-
+      order.pick('Meat Biriyani', 3)
+      order.pick('Rougaye eggs', 1)
+      order.pick('Ocotopus Vindaye', 5)
+      total = order.total_cost
+      arrival_time = (Time.new + 3600).strftime("%H:%M:%S")
+      message = "Your order costs: £#{total} and will arrive before #{arrival_time}"
+      expect(order.confirm_order).to eq message
     end
   end
 

@@ -36,8 +36,6 @@ order.change('Broad beans curry and dal pouri')
 #US3
 require './lib/menu.rb'
 require './lib/order.rb'
-require './lib/restaurant.rb'
-restaurant = Restaurant.new
 
 order = Order.new
 Menu.new.view_contents

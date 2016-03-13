@@ -6,6 +6,7 @@ class Order
     @menu = menu
     @list = {}
     @sub_total = {}
+    @total = 0
   end
 
   def list
@@ -43,18 +44,32 @@ class Order
 
   def sub_total_orders
     create_sub_totals
+    sub_total
   end
 
   def total_cost
-    sub_total.values.inject(0) do |total, amount_price|
+    sub_total_orders
+    @total = sub_total.values.inject(0) do |total, amount_price|
       total += amount_price.last
     end
   end
 
   def confirm_order
+    message
   end
 
+
   private
+
+    def message
+      "Your order costs: £#{@total} and will arrive before #{arrival_time}"
+    end
+
+    def arrival_time
+      (Time.new + 3600).strftime("%H:%M:%S")
+    end
+
+
     def menu
       @menu.dup
     end
