@@ -1,6 +1,5 @@
-rvm: 
-'2.2.3'
-'2.3.0'
+rvm: '2.2.3'
+
 
 before_ install:
 - sed -i '2d' Gemfile
