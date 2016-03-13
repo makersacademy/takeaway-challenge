@@ -1,7 +1,7 @@
 require 'sms_message'
 
 describe SMSMessage do
-  subject(:message){ described_class.new }
+  subject(:message){ described_class.new(aclient) }
   let(:aclient){ double(:Client, messages: messages) }
   let(:messages){ double(:message, create: nil) }
   let(:list) { {rice: 3, pea: 2} }
@@ -9,7 +9,6 @@ describe SMSMessage do
 
   describe "#send" do
     it 'sends a text message' do
-      allow(message).to receive(:client){aclient}
       expect(messages).to receive(:create)
       message.send(list)
     end
