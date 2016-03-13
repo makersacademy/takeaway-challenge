@@ -2,7 +2,7 @@ require 'currentorder'
 
 describe CurrentOrder do
   subject(:currentorder){described_class.new}
-  let(:order){double:order}
+  let(:order){double:order, {'eggs' => 4}}
 
   describe '#new_item' do
     it 'stores items ordered' do
@@ -25,6 +25,12 @@ describe CurrentOrder do
     end
   end
 
+  describe '#order_review' do
+    it 'returns each item cost' do
+      currentorder.new_item(order)
+      expect(currentorder.order_review).to eq 'eggs' + " cost: " + '4'
+    end
+  end
 
 
 
