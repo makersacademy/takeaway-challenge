@@ -29,3 +29,7 @@ def format_order(order)
   message << delivery_time
   message
 end
+
+def delivery_time
+  "It will be delivered by #{Time.new.hour + 1}:#{Time.new.min}."
+end
