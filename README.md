@@ -16,6 +16,7 @@ Takeaway Challenge
 Makers Academy Week 02 Weekend Challenge <br>
 
 [![Build Status](https://travis-ci.org/rhiannonruth/takeaway-challenge.svg?branch=master)](https://travis-ci.org/rhiannonruth/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/rhiannonruth/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/rhiannonruth/takeaway-challenge?branch=master)
 
 User Stories
 -------
