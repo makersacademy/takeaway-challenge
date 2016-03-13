@@ -23,7 +23,14 @@ class Order
   end
 
   def basket_summary
-    "#{(basket.keys)} x#{(basket.values)}, £#{total}"
+    order_list = ''
+    @basket.each do |item, qty|
+      string = "#{item}(s) x#{qty}, £#{menu[item]} each. "
+      order_list << string
+    end
+    total_price = "Total: £#{total}"
+    order_list << total_price
+    order_list
   end
 
   private
