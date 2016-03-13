@@ -22,20 +22,18 @@ describe Order do
     end
   end
 
-context 'item is on menu' do
-  before do
-  allow(menu).to receive(:show).and_return(menu_hash)
-  end
+  context 'item is on menu' do
+    before do
+    allow(menu).to receive(:show).and_return(menu_hash)
+    end
 
-  describe '#add' do
-    it 'adds dish to order' do
-        # allow(menu).to receive(:show).and_return(menu_hash)
+    describe '#add' do
+      it 'adds dish to order' do
         order.add(item)
         expect(order.order[0]).to include item
       end
 
       it 'adds item to order sum' do
-        # allow(menu).to receive(:show).and_return(menu_hash)
         order.add(item,2)
         expect(order.order_sum.size).to eq 2
       end
@@ -43,21 +41,18 @@ context 'item is on menu' do
 
     describe '#order_summary' do
       it 'returns the whole order, including quantity and price' do
-        # allow(menu).to receive(:show).and_return(menu_hash)
         order.add(item2)
-        summary = "1x #{item2}(s), £#{price} each. Total of £#{price}.\n"
+        summary = "1x #{item2}(s), £#{price} each. Total: £#{price}.\n"
         expect(order.summary).to eq summary
       end
     end
 
     describe '#total' do
       it 'returns total price for order' do
-        # allow(menu).to receive(:show).and_return(menu_hash)
         order.add(item)
         total = "Your total for this order is £#{price}."
         expect(order.total).to eq total
       end
     end
   end
-
 end

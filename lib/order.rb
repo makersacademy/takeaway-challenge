@@ -28,7 +28,8 @@ class Order
   def summary
     order_list = ''
     @order.each do |qty, item, price|
-      order_list << "#{qty}x #{item}(s), £#{price} each. Total of £#{qty*price}.\n"
+      string = "#{qty}x #{item}(s), £#{price} each. Total: £#{qty*price}.\n"
+      order_list << string
     end
       order_list
   end
