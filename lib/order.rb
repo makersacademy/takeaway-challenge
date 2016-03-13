@@ -30,8 +30,8 @@ class Order
 
   def calculate_order_total
     sum = 0
-    @current_order.each do |item, qty|
-      sum += (@menu.see_dishes[item] * qty )
+    @current_order.each do |dish, qty|
+      sum += (@menu.see_dishes[dish] * qty )
     end
     sum
   end
