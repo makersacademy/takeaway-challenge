@@ -25,13 +25,13 @@ Instructions
 
 ```ruby
 [5] pry(main)> menu = Menu.new
-=> #<Menu:0x007f84618c4988 @dishes={}>
+=> #<Menu:0x007fb8438f1d50 @dishes={}>
 [6] pry(main)> r=Restaurant.new menu
-=> #<Restaurant:0x007f846088de48
- @menu=#<Menu:0x007f84618c4988 @dishes={}>,
+=> #<Restaurant:0x007fb84307e998
+ @menu=#<Menu:0x007fb8438f1d50 @dishes={}>,
  @order_klass=Order,
  @order_log=[],
- @sms=#<Sms:0x007f846088dd30 @client=<Twilio::REST::Client @account_sid=XXXXXXXXXXXXXXXXXXXXXX>>>
+ @sms=#<Sms:0x007fb84307e880 @client=<Twilio::REST::Client @account_sid=AC4d884080618a7f0dbde8223d27f647f9>>>
 [7] pry(main)> menu.load_menu
 => {:pizza=>7.0, :burger=>9.99, :pasta=>7.5, :"something healthy"=>8.0}
 [8] pry(main)> menu.add 'lasagne', 7.99
@@ -57,7 +57,7 @@ Instructions
 [18] pry(main)> r.checkout 14
 => "Thank you! Your order is being prepared."
 [19] pry(main)> r.order_log
-=> [#<Order:0x007f846329c130
+=> [#<Order:0x007fb84425b058
   @basket={:pizza=>2},
-  @menu=#<Menu:0x007f84618c4988 @dishes={:pizza=>7.0, :burger=>9.99, :pasta=>7.5, :"something healthy"=>8.0}>>]
+  @menu=#<Menu:0x007fb8438f1d50 @dishes={:pizza=>7.0, :burger=>9.99, :pasta=>7.5, :"something healthy"=>8.0}>>]
 ```

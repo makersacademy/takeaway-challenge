@@ -17,6 +17,8 @@ class Order
     if @menu.contains? dish
       @basket[dish] += quant
       "#{quant}x #{dish}(s) added to your basket."
+    else
+      "#{dish} not on the menu"
     end
   end
 
@@ -26,6 +28,8 @@ class Order
       @basket[dish] -= quant
       @basket.delete dish if @basket[dish] == 0
       "#{quant}x #{dish}(s) removed from your basket."
+    else
+      "#{dish} is not on your basket."
     end
   end
 

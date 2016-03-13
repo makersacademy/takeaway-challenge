@@ -15,6 +15,12 @@ describe Order do
       expect(order).to receive(:add).and_return(message)
       order.add(:pizza)
     end
+
+    it 'does not add unavailable dish' do
+      allow(menu).to receive(:contains?).and_return(false)
+      message = 'lobster not on the menu'
+      expect(order.add(:lobster)).to  eq message
+    end
   end
 
   before(:each) { order.add(:pizza, 2) }
@@ -29,6 +35,11 @@ describe Order do
     it 'removes item from basket' do
       message = '2x pizza(s) removed from your basket.'
       expect(order.remove(:pizza, 2)).to eq message
+    end
+
+    it 'does not remove unexistent dish' do
+      message = 'lobster is not on your basket.'
+      expect(order.remove(:lobster)).to eq message
     end
   end
 
