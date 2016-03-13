@@ -1,10 +1,11 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu: menu, order: order) }
+  subject(:takeaway) { described_class.new(menu: menu, order: order, sms: sms) }
 
-  let(:order) { double(:order, total: 15.00)}
   let(:menu) { double(:menu, print: printed_menu) }
+  let(:order) { double(:order, total: 15.00)}
+  let(:sms) { double(:sms, deliver: nil)}
   let(:printed_menu) { "Pizza: £12.50" }
 
   let(:dishes) { {chicken: 2, fish: 1} }
@@ -22,6 +23,12 @@ describe Takeaway do
     allow(order).to receive(:add)
     total = takeaway.place_order(dishes)
     expect(total).to eq(15.00)
+  end
+
+  it "it sends a text msg when the order has been placed" do
+    allow(order).to receive(:add)
+    expect(sms).to receive(:deliver)
+    takeaway.place_order(dishes)
 
   end
 
