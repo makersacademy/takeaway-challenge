@@ -1,3 +1,10 @@
+require_relative 'basket'
+require_relative 'menu'
+require 'rubygems'
+require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
+
 class Takeaway
 
   attr_reader :basket, :menu
@@ -18,6 +25,7 @@ class Takeaway
   def place_order(total)
     actual_total = @basket.calc_total
     raise 'Re-calculate and enter correct total' unless total == actual_total
+    confirm_order
   end
 
   private
@@ -25,5 +33,15 @@ class Takeaway
   def priced_dish(dish, qty)
     price = @menu.find_price(dish)
     priced_dish = {name: dish, amount: qty, price: price}
+  end
+
+  def confirm_order
+    @client = Twilio::REST::Client.new ENV['SID'], ENV['TOKEN']
+    @client.messages.create(
+      from: ENV['FROM'],
+      to: ENV['MY_NUMBER'],
+      body: "Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}"
+    )
+    'Confirmation text sent'
   end
 end
