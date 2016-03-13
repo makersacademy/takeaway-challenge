@@ -24,13 +24,13 @@ class Order
   end
 
   def add_to_basket(item, quantity=1)
-    raise NOT_ON_MENU_ERROR unless @menu.list.include? item
+    fail NOT_ON_MENU_ERROR unless @menu.list.include? item
     @basket[item] = quantity
   end
 
   def checkout(estimate=0)
-    raise EMPTY_BASKET_ERROR if basket.empty?
-    raise INCORRECT_ESTIMATED_TOTAL_ERROR if estimate != calculate_total
+    fail EMPTY_BASKET_ERROR if basket.empty?
+    fail INCORRECT_ESTIMATED_TOTAL_ERROR if estimate != calculate_total
     @sms_sender.send_sms
   end
 
