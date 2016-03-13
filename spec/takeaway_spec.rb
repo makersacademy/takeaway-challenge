@@ -2,14 +2,11 @@ require 'takeaway'
 
 describe Takeaway do
 
+  subject(:takeaway) { described_class.new(basket_class, menu_class) }
   let(:basket_class) { double(:basket_class, new: basket) }
   let(:basket) { double(:basket, add: nil, remove: nil, calc_total: 35) }
-
   let(:menu_class) { double(:menu_class, new: menu) }
   let(:menu) { double(:menu, find_price: 7) }
-
-  let(:priced_dish1) { {name: 'sushi', amount: 5, price: 7} }
-  subject(:takeaway) { described_class.new(basket_class, menu_class) }
 
   describe '#initialize' do
     before(:each) do

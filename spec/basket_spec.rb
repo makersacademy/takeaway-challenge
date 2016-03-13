@@ -8,7 +8,6 @@ describe Basket do
   let(:dish2_half) { {name: 'tofu salad', amount: 2, price: 4.5} }
   let(:dish3) { {name: 'miso soup', amount: 2, price: 1.5} }
 
-
   describe '#initialize' do
     it '0.0 initializes with an empty basket' do
       expect(basket.content).to be_empty
@@ -20,7 +19,6 @@ describe Basket do
       basket.add(dish1)
       basket.add(dish2)
     end
-
     it '1.0 adds dish to the basket' do
       expect(basket.content).to include(dish1 && dish2)
     end

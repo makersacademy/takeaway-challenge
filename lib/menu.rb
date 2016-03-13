@@ -32,5 +32,4 @@ class Menu
   def in_menu?(dish)
     LIST.any? {|i| i[:name] == dish}
   end
-
 end
