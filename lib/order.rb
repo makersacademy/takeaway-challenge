@@ -23,14 +23,7 @@ class Order
   end
 
   def basket_summary
-    order_list = ''
-    @basket.each do |item, qty|
-      string = "#{item}(s) x#{qty}, £#{menu[item]} each. "
-      order_list << string
-    end
-    total_price = "Total: £#{total}"
-    order_list << total_price
-    order_list
+    summarise_order
   end
 
   private
@@ -44,6 +37,17 @@ class Order
 
   def total_price
     @total = @subtotal.reduce(0, :+).round(2)
+  end
+
+  def summarise_order
+    summary = ''
+    @basket.each do |item, qty|
+      string = "#{item}(s) x#{qty}, £#{menu[item]} each. "
+      summary << string
+    end
+    total_price = "Total: £#{total}"
+    summary << total_price
+    summary
   end
 
 end

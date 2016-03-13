@@ -41,7 +41,10 @@ describe Order do
 
   describe '#basket_summary' do
     it 'should return items in the basket, quantity, each price and the total' do
-
+      selection = {"fish and chips" => 2}
+      order.add_to_basket(selection)
+      message = "fish and chips(s) x2, £4.34 each. Total: £8.68"
+      expect(order.basket_summary).to eq message
     end
   end
 
