@@ -13,6 +13,10 @@ private
     @dishes = MENU_ITEMS
   end
 
+  def check_dish(dish)
+    dish_in_menu?(dish)
+  end
+
 MENU_ITEMS = 
   { "burger" => 7,
     "fish" => 8,
@@ -21,6 +25,10 @@ MENU_ITEMS =
 
   def return_dish_price(dish)
     dishes[dish]
+  end
+  
+  def dish_in_menu?(dish)  
+    dishes.include?(dish) 
   end
 
 end

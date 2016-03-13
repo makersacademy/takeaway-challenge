@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class.new(menu_class, sms_class) }
-  let(:menu_class) { double :menu_class, :new => menu }
+  let(:menu_class) { double :menu_class, new: menu }
   let(:menu) { double :menu }
   let(:sms_class) { double :sms }
   let(:sms) { double :sms }
@@ -39,7 +39,7 @@ describe Order do
     it { is_expected. to respond_to(:order_total) }
   
  
-    it 'will return the result of calculat_order_total' do 
+    it 'will return the result of calculate_order_total' do 
       allow(order).to receive(:calculate_order_total).and_return(5)
       expect(order.order_total).to eq 5
     end

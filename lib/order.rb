@@ -19,14 +19,26 @@ class Order
   def see_dishes
    @menu.see_dishes 
   end
+  
+  def real_dish?(dish)
+    @menu.check_dish(dish)
+  end
 
-  def push_to_current_order(dish, quantity)
-     @current_order[dish] = quantity
+  def place_order
+    @sms = @sms_class.new
+    @sms.send_order_confirmation
   end
 
   def order_total
     calculate_order_total
   end
+
+  private
+  def push_to_current_order(dish, quantity)
+     @current_order[dish] = quantity
+  end
+
+
 
   def calculate_order_total
     sum = 0
@@ -36,9 +48,5 @@ class Order
     sum
   end
   
-  def place_order
-    @sms = @sms_class.new
-    @sms.send_order_confirmation
-  end
 
 end
