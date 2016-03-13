@@ -1,8 +1,11 @@
 class Menu
 
+attr_reader :order
+
   def initialize(dish_class=Dish)
     @dish_class = dish_class
     @dishes = Hash.new
+    @order = Hash.new
 
   end
 
@@ -13,9 +16,19 @@ class Menu
   def see_dishes
     raise 'there are no dishes' if @dishes.empty?
     @dishes.each_value do |dish| 
-      puts dish.name
-      print dish.price
-      end
+      dish.name
+      dish.price
+    end
   end
 
+  def place_order(name, quantity)
+    @order[@dishes[name]] = quantity
+    subtotal
+  end
+
+  def subtotal
+    @order.each_pair do |key, value|
+    "#{key.name}, #{(key.price*value)}"
+    end
+  end
 end

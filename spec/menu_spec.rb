@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  let(:dish) {double(:Dish, name: :tuna, price: nil)}
+  let(:dish) {double(:Dish, name: :tuna)}
   let(:dish_class) {double(:Dish_class, new: dish)}
   subject(:menu) {described_class.new(dish_class)}
   
@@ -11,16 +11,18 @@ describe Menu do
       menu.create_dish(:tuna, 4.56)
     end
 
-    it '2. should save a new dish in dishes hash' do
+    it '2. should create a hash where the key is the name of the dish' do
+      allow(dish).to receive(:price)
+      menu.create_dish(:tuna, 4.56)
+      expect(menu.see_dishes).to include(:tuna)
+    end
+
+    it '3. should save a new dish in dishes hash' do
+      allow(dish).to receive(:price)
       menu.create_dish(:tuna, 4.56)
       expect(menu.see_dishes).to include(dish.name => dish)
     end
-
-    xit '3 should create a hash where the key is the name of the dish' do
-      menu.create_dish(:tuna, 4.56)
-    end
   end
-
 
   describe ' #see_dishes'  do
     
@@ -28,12 +30,41 @@ describe Menu do
       expect{menu.see_dishes}.to raise_error(RuntimeError)
     end
 
-    it '2, should return a dish name with its price' do
+    it '2. should return a dish name with its price' do
       menu.create_dish(:tuna, 4.56)
       expect(dish).to receive_messages(name: nil, price: nil)
       menu.see_dishes
     end
+  end
 
+  describe ' #place_order' do 
 
+    before(:each) do
+      allow(dish).to receive(:price).and_return(4.56)
+    end
+
+    it '1. saves a dish and its quantity' do
+      menu.create_dish(:tuna, 4.56)
+      menu.place_order(:tuna, 5)
+      expect(menu.order).to include(dish => 5)
+    end
+
+    it '2. returns a subtotal total of the order' do
+      expect(menu).to receive(:subtotal)
+      menu.place_order(:fish,2) 
+    end
+
+    it '3. it should save multiple dishes' do
+      allow(menu).to receive(:subtotal)
+      menu.create_dish(:fish, 4.56)
+      menu.place_order(:fish, 2)
+      menu.place_order(:steak,  3)
+      expect(menu.order.size).to eq(2)
+    end
+
+    describe ' #subtotal' do
+    it  'should return a subtotal of the order'
+      allow(menu)
+    end
   end
 end
