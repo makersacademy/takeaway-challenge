@@ -48,7 +48,7 @@ describe Controller do
 
   end
 
-  describe '#update_order' do
+  describe '#add_dish' do
 
     before(:each) do
       test_controller.welcome
@@ -56,12 +56,12 @@ describe Controller do
 
     it 'add the order to the list' do
       expect(dummy_order).to receive(:add_dish).with(dummy_dish, 1)
-      test_controller.update_order dummy_dish
+      test_controller.add_dish dummy_dish
     end
 
     it 'update the total due' do
       expect(dummy_order).to receive(:update_total)
-      test_controller.update_order dummy_dish
+      test_controller.add_dish dummy_dish
     end
 
   end

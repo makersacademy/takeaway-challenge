@@ -8,8 +8,8 @@ class Order
     @bill = 0
   end
 
-  def add_dish dish , number
-    @current_order[dish] = number
+  def add_dish dish_number , number
+    @current_order[@menu.retrieve_dishes[dish_number-1]] = number
   end
 
   def update_total

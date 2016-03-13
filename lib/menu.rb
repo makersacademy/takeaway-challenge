@@ -9,9 +9,13 @@ class Menu
   def list_dishes
     current_menu = ''
     @dish_list.each do |dish|
-      current_menu << "#{dish.dish_name}: #{dish.dish_price}£\n"
+      current_menu << "•  #{dish.dish_name}: #{dish.dish_price}£\n"
     end
     current_menu
+  end
+
+  def retrieve_dishes
+    @dish_list.dup
   end
 
 end

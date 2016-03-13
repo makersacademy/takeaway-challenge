@@ -4,9 +4,12 @@ Dotenv.load
 class Controller
 
   PAYMENT_ERROR = "Incorrect Payment! Fork over the money yo!"
-  CONFIRMATION_MESSAGE = "Your order is completed. Delivery in the next 15h."
-  WELCOME_MESSAGE =  "Welcome to Fake Takeaway. use #list_dishes for menu,
-  #update_order to add a dish and #checkout to pay"
+  CONFIRMATION_MESSAGE = "Your order is completed. Delivery soon."
+  WELCOME_MESSAGE =  "  ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+  Welcome to Fake Takeaway. use #list_dishes for menu,
+  #update_order to order by number and #checkout to pay
+  ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+  "
 
   attr_reader :menu, :order_class, :current_order
 
@@ -26,8 +29,8 @@ class Controller
     @menu.list_dishes
   end
 
-  def update_order dish , number = 1
-    @current_order.add_dish dish , number
+  def add_dish dish_number , number = 1
+    @current_order.add_dish dish_number , number
     @current_order.update_total
   end
 
