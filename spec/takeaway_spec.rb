@@ -3,11 +3,12 @@ require 'takeaway'
 describe Takeaway do
 
   let(:basket_class) { double(:basket_class, new: basket) }
-  let(:basket) { double(:basket) }
+  let(:basket) { double(:basket, add: nil) }
 
   let(:menu_class) { double(:menu_class, new: menu) }
-  let(:menu) { double(:menu) }
+  let(:menu) { double(:menu, find_price: 7) }
 
+  let(:priced_dish1) { {name: 'sushi', amount: 5, price: 7} }
   subject(:takeaway) { described_class.new(basket_class, menu_class) }
 
   describe '#initialize' do
@@ -23,8 +24,20 @@ describe Takeaway do
   end
 
   describe '#add' do
-    it 'accepts dish and default qty=1' do
-
+    it '1.0 calls find_price method on menu with converted hash as argument' do
+      expect(takeaway.menu).to receive(:find_price).and_return(7)
+      takeaway.add('sushi', 5)
+    end
+    it '1.1 calls add method on basket with priced dish' do
+      expect(takeaway.basket).to receive(:add)
+      takeaway.add('sushi', 5)
     end
   end
+
+  # describe '#remove' do
+  #   it '2.0 calls find_price method on menu with converted hash as argument' do
+  #     expect(takeaway.menu).to receive(:find_price).and_return(7)
+  #     takeaway.add('sushi', 5)
+  #   end
+  # end
 end
