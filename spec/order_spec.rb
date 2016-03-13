@@ -1,10 +1,9 @@
 require 'order'
-require 'byebug'
 
 describe Order do
 
-  subject(:order){ described_class.new(menu_klass: menu_klass, notification_klass: notification_controller) }
-  let(:notification_controller) { double(:notification_controller, new: nil) }
+  subject(:order){ described_class.new(menu_klass: menu_klass, sms_klass: sms) }
+  let(:sms) { double(:sms, new: nil) }
   let(:menu_klass) { double(:menu_klass, new: menu) }
   let(:menu) { double(:menu, display: {dish1=>dish1_price})}
   let(:dish1) { :dish1 }
@@ -44,7 +43,7 @@ describe Order do
     end
   end
 
-  describe '#place order' do
+  describe '#place_order' do
     it 'should raise error if amount given is less than the total' do
       order.take_order(dish1, quantity)
       message = "Not enough money given"
@@ -59,6 +58,7 @@ describe Order do
   describe 'confirms the order' do
     it 'clears the current order' do
       order.take_order(dish1, quantity)
+      allow(order).to receive(:send_sms)
       order.confirm_order
       expect(order.view_current_order).to eq []
     end

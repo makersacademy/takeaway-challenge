@@ -17,7 +17,39 @@ Takeaway Challenge - Author Harsheet Patel
 Instructions
 -------
 
-This software is still in progress. Instructions on how to use this repository will be updated later.
+This software allows you to process takeaway orders and implements a sms notification system using Twilio REST API. The current written code has been designed to have four classes:
+ 'Order' class to process the order
+ 'Menu' class to show the list of the available dishes
+ 'Dish' class for the dish name and price
+ 'SMS' class which has the Twilio client functionality to send the text message.
+
+ To run:
+ run `bundle`
+
+ Create a menu:
+ `kfc = Menu.new`
+
+ Add dishes to the menu:
+ `kfc.add_dish(:chicken_wings,2.99)` (name,price as arguments)
+ `kfc.add_dish(:chicken_wings,2.99)`
+
+Create order:
+`order1 = Order.new` (Order is initialized with no menu so can loaded or dishes can be added within)
+
+Load a menu:
+`order1.load_menu(kfc)`
+
+Add to a menu: (useful if no menu)
+`order1.add_a_dish(:chips,1.99)` (name,price as arguments)
+
+View menu:
+`order.see_menu`
+
+Add dish order:
+`order.take_order(:chips,5)` (name,quantity as arguments)
+
+Place order:
+`order.place_order(amount_given)`
 
 User stories
 -----

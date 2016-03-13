@@ -25,9 +25,7 @@ describe Menu do
       menu.add_dish(dish1_name,dish1_price)
       allow(menu).to receive(:create_dish) { dish2 }
       menu.add_dish(dish2_name,dish2_price)
-      p menu.display
       expect(menu.display).to eq({dish1_name => dish1_price, dish2_name => dish2_price})
     end
   end
-
 end
