@@ -11,6 +11,7 @@ get '/sms' do
       r.Message SMSMessage.new.format_order(incoming)
     else
       r.Message "Please submit a valid order."
+    end
   end
   twiml.text
 end
