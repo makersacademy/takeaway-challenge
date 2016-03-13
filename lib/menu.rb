@@ -13,10 +13,21 @@ class Menu
     @menu_view
   end
 
+  def review
+    raise 'You must order first' if @order.nil?
+    @order.review_order
+  end
+
   def order_item(item)
     @order ||= @order_class.new
     value = menu_view[item]
-    @order.new_order(item,value)
+    @order.new_order(item,value)*2
+  end
+
+  def finish_order
+    raise 'You must order first' if @order.nil?
+    @order.completed
+    puts 'Thanks for your order'
   end
 
 end

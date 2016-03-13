@@ -14,11 +14,12 @@ class Order
   end
 
   def review_order
-    make_order.order
+    make_order.order_review
   end
 
   def completed
-    @completed_order << @current
+    @completed_order = @current
+    @current_order = nil
     @current = nil
   end
 
