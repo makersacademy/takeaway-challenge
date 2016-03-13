@@ -15,7 +15,7 @@ describe Menu do
 
     it 'contains information on food and prices' do
       menu = Menu.new
-      expect(menu.list).to include({food: "pasta", price: "30"})
+      expect(menu.list).to include Array
     end
   end
 end

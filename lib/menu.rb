@@ -1,7 +1,7 @@
 class Menu
 
   def initialize
-    @food = [{food: "pasta", price: "30"}]
+    @food = [ ["pasta", 10 ], [ "pizza", 40 ], [ "spaghetti", 200 ] ]
   end
 
   def list
