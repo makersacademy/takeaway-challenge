@@ -6,5 +6,15 @@ class Takeaway
     @order = @order_klass.new
   end
 
+  def select_item(dish)
+    raise "#{dish} is not on the menu." unless on_menu?(dish)
+    @order.add_item(dish)
+  end
+
+private
+
+  def on_menu?(dish)
+    @menu.include? dish
+  end
 
 end

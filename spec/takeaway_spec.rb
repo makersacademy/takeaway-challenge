@@ -1,16 +1,16 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new menu, order_klass}
   let(:menu) {double :menu}
   let(:dish) {double :dish}
-  let(:order_klass) {double :Order, new: order}
   let(:order) {double :order}
+  let(:order_klass) {double :order_klass, new: order}
+  subject(:takeaway) { described_class.new menu, order_klass}
 
   describe '#select_item' do
     it '> should send add item method to order class' do
       allow(takeaway).to receive(:on_menu?).and_return(true)
-      expect(order).to receive(add_item).with(dish)
+      expect(order).to receive(:add_item).with(dish)
       takeaway.select_item(dish)
     end
 
@@ -24,7 +24,6 @@ describe Takeaway do
   end
 
   describe '#confirm_order' do
-
     before do
       allow(order).to receive(:add_item).with(dish)
       allow(order).to receive(:calc_total).and_return(5)
