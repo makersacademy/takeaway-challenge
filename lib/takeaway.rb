@@ -1,10 +1,12 @@
 require_relative 'order'
+require_relative 'sms'
 
 class Takeaway
   
-  def initialize(order_class=Order)
+  def initialize(order_class=Order, sms_class=Sms)
      @order_class = order_class
      @order = @order_class.new
+     @sms_class = sms_class
   end
   
   def see_dishes
@@ -14,6 +16,8 @@ class Takeaway
 
   def confirm_order_total(total)
     @order.place_order(total)
+    @sms = @sms_class.new
+    @sms.send_order_confirmation
   end
    
   def add_to_order(dish, quantity=1)

@@ -2,13 +2,15 @@ require 'takeaway'
 
 describe Takeaway do
   let(:Takeaway) { described_class }
-  subject(:takeaway) { described_class.new(order_class) }
+  subject(:takeaway) { described_class.new(order_class, sms_class) }
   let(:order_class ) { double :order_class, new: order }
   let(:order) { double :order }
   let(:dish) { double :dish }
   let(:quantity) { double :quantity }
   let(:total) { double :total }
   let(:wrong_total) { double :wrong_total }
+  let(:sms_class) { double :sms_class, new: sms }
+  let(:sms) { double :sms }
 
   describe '#initialize' do
 
@@ -31,11 +33,18 @@ describe Takeaway do
   describe '#confirm_order_total' do
 
     it 'will place order if total given matches order total' do
+      allow(sms).to receive(:send_order_confirmation)
       allow(order).to receive(:place_order) 
       expect(order).to receive(:place_order)
       takeaway.confirm_order_total(total)
     end
-  
+ 
+    it 'will create sms if total give matches order total' do
+      allow(order).to receive(:place_order).with(total)
+      allow(sms).to receive(:send_order_confirmation)
+      expect(sms_class).to receive(:new) { sms }
+      takeaway.confirm_order_total(total)
+    end
   end    
   
   describe '#add_to_order' do

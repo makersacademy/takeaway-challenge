@@ -1,13 +1,11 @@
 require_relative 'menu'
-require_relative 'sms'
 
 class Order
 
 
-  def initialize(menu_class=Menu, sms_class=Sms)
+  def initialize(menu_class=Menu)
     @menu_class = menu_class
     @menu = menu_class.new
-    @sms_class = sms_class 
     @current_order = Hash.new
   end
 
@@ -23,8 +21,6 @@ class Order
 
   def place_order(total)
     raise WRONG_TOTAL_ERR unless correct_total?(total)
-    @sms = @sms_class.new
-    @sms.send_order_confirmation
   end
 
   def order_total

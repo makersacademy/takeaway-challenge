@@ -2,13 +2,10 @@ require 'order'
 
 describe Order do
   let(:Order) {described_class}
-  subject(:order) { described_class.new(menu_class, sms_class) }
+  subject(:order) { described_class.new(menu_class) }
   let(:menu_class) { double :menu_class, new: menu }
   let(:menu) { double :menu }
-  let(:sms_class) { double :sms }
-  let(:sms) { double :sms }
   let(:dish) { double :dish }
-  let(:dish2) { double :dish }   
   let(:quantity) { double :quantity }
   let(:total) { double :total }
 
@@ -46,12 +43,6 @@ describe Order do
   
   end
 
-  
-
-
-    
-    
-  
   describe '#order_total' do
   
     it 'will return the result of calculate_order_total' do 
@@ -66,19 +57,6 @@ describe Order do
     context 'when total given is correct' do
       before(:each) { allow(order).to receive(:correct_total?).with(total) { true } }
       
-      it 'will create a new instance of sms class' do
-        allow(sms).to receive(:send_order_confirmation)
-        allow(sms_class).to receive(:new).and_return(sms)
-        expect(sms_class).to receive(:new)
-        order.place_order(total)
-      end
-
-      it 'will call on send_order_confirmation in sms class' do
-        allow(sms).to receive(:send_order_confirmation)
-        allow(sms_class).to receive(:new).and_return(sms)
-        expect(sms).to receive(:send_order_confirmation)
-        order.place_order(total)
-      end
 
       it 'will call create a new sms' do
         allow(sms).to receive(:send_order_confirmation)
