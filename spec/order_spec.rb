@@ -6,18 +6,6 @@ describe Order do
   let(:dummy_list) {Array.new(1) {dummy_dish}}
   let(:dummy_dish) {double :dish, dish_price: 1}
 
-  describe '#initalize' do
-
-    it 'is initialized with an empty order' do
-      expect(test_order.current_order).to be_empty
-    end
-
-    it 'is initalized with the right menu' do
-      expect(test_order.menu).to eq dummy_menu
-    end
-
-  end
-
   describe '#add_dish' do
 
     it 'adds a dish to the current order' do
@@ -32,7 +20,7 @@ describe Order do
     it 'recalculate the total bill' do
       test_order.add_dish 1 , 1
       test_order.update_total
-      expect(test_order.bill).to eq dummy_dish.dish_price
+      expect(test_order.total_bill).to eq dummy_dish.dish_price
     end
 
   end

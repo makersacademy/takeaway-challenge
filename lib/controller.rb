@@ -35,7 +35,7 @@ class Controller
   end
 
   def checkout payment
-    raise PAYMENT_ERROR unless payment == current_order.bill
+    raise PAYMENT_ERROR unless payment == current_order.total_bill
     send_sms CONFIRMATION_MESSAGE
   end
 

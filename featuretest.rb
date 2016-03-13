@@ -21,7 +21,7 @@ puts shop.list_dishes
 puts "\n\n"
 
 shop.add_dish 1 , 1
-shop.add_dish 3, 1
+shop.add_dish 3 , 1
 
-p shop.current_order.bill
-shop.checkout 120
+p shop.current_order.total_bill
+shop.checkout 70
