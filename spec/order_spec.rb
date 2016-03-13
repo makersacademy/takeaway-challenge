@@ -7,33 +7,33 @@ describe Order do
   let(:dish2) { double(:Dish, name: "Fish", price: 2) }
   let(:dish3) { double(:Dish, name: "Steak", price: 3) }
 
-  describe '#accept' do
-    it 'accepts an order' do
+  describe '#from_menu' do
+    it 'displays the menu for selection' do
+      expect(menu).to receive(:display)
+      order.from_menu
+    end
+  end
 
+  describe '#add' do
+    it 'gets the dish from the menu' do
+      expect(menu).to receive(:dishes)
+      order.add 0
     end
 
-    describe '#from_menu' do
-      it 'displays the menu for selection' do
-        expect(menu).to receive(:display)
-        order.from_menu
-      end
+    it 'adds a meal to the order' do
+      expect{ order.add 0 }.to change { order.summary }.to include dish1.name
     end
+  end
 
-    describe '#add' do
-      it 'gets the dish from the menu' do
-        expect(menu).to receive(:dishes)
-        order.add 0
-      end
-
-      it 'adds a meal to the order' do
-        expect{ order.add 0 }.to change { order.summary }.to include dish1.name
-      end
+  describe '#summary' do
+    it 'shows a summary of order' do
+      expect{ order.add 0 }.to change { order.summary }.to include dish1.name
     end
+  end
 
-    describe '#summary' do
-      it 'shows a summary of order' do
-        expect{ order.add 0 }.to change { order.summary }.to include dish1.name
-      end
+  describe '#submit' do
+    it 'submit final order' do
+      expect{ order.submit }.to change{ order }.to be_confirmed
     end
   end
 end
