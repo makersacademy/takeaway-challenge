@@ -2,7 +2,6 @@ require 'takeaway'
 
 describe Takeaway do
 
-
   subject(:takeaway){ described_class.new }
   let(:aclient){ double(:Client, messages: messages) }
   let(:messages){ double(:message, create: nil) }
@@ -30,7 +29,7 @@ describe Takeaway do
       expect(takeaway).to receive(:confirm).with(list)
       takeaway.place_order(list,35)
     end
-    
+
   end
 
 

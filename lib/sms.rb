@@ -2,8 +2,6 @@ require 'rubygems'
 require 'sinatra'
 require 'twilio-ruby'
 require_relative 'sms_message'
-require 'dotenv'
-Dotenv.load
 
 get '/sms' do
   incoming = params[:Body]
@@ -14,7 +12,7 @@ get '/sms' do
       response = format_order(order)
     end
   rescue Exception => exc
-    response = "Exception: #{exc}"
+    response = "Please submit a valid order."
   end
 
   twiml = Twilio::TwiML::Response.new do |r|

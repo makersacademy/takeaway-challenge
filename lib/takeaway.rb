@@ -6,8 +6,8 @@ Dotenv.load
 
 class Takeaway
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu_type = Menu.new)
+    @menu = menu_type
   end
 
   def menu

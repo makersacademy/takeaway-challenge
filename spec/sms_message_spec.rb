@@ -13,6 +13,10 @@ describe SMSMessage do
       expect(messages).to receive(:create)
       message.send(list)
     end
+
+    it 'has the correct format' do
+      p message.send(list)
+    end
   end
 
 
