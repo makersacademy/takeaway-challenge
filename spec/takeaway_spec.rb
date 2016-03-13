@@ -6,6 +6,11 @@ describe TakeAway do
   let(:order_class) {double :order_class, new: order}
   let(:menu) {double :menu }
 
+  before do
+    allow(order).to receive(:add_to_basket)
+    allow(order).to receive(:total)
+  end
+
   it 'should respond to list_menu method' do
     expect(takeaway).to respond_to :list_menu
   end
@@ -34,9 +39,16 @@ describe TakeAway do
     end
 
     it 'should reset selection to an empty hash' do
-      allow(order).to receive(:add_to_basket)
       takeaway.order("cheese pizza")
       expect(takeaway.selection).to be_empty
+    end
+  end
+
+  describe '#checkout' do
+    it 'should raise and error message if payment does not match order total' do
+      message = "Incorrect payment amount"
+      takeaway.order("fish and chips", 2)
+      expect{takeaway.checkout(5)}.to raise_error message
     end
   end
 end

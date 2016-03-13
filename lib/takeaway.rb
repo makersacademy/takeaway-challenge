@@ -5,6 +5,7 @@ class TakeAway
 
   NOT_IN_MENU = "Item not in menu"
   DEFAULT_QUANTITY = 1
+  INCORRECT_PAYMENT = "Incorrect payment amount"
 
   def initialize(order_class)
     @menu = {"fish and chips" => 4.34,
@@ -29,8 +30,8 @@ class TakeAway
     reset_selection
   end
 
-  def checkout
-    
+  def checkout(payment)
+    raise INCORRECT_PAYMENT if incorrect_amount?(payment)
   end
 
   private
@@ -49,6 +50,10 @@ class TakeAway
 
   def reset_selection
     @selection.clear
+  end
+
+  def incorrect_amount?(payment)
+    payment != @current_order.total
   end
 
 end
