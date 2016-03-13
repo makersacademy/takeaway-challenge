@@ -14,7 +14,7 @@ get '/sms' do
         r.Message SMSMessage.new.format_order(incoming)
       end
     rescue Exception => exc
-      r.Message "EXC: Please submit a valid order."
+      r.Message "EXC: Please submit a valid order. You put #{incoming.class}"
     end
   end
   twiml.text
