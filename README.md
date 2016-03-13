@@ -3,7 +3,7 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            | KEVIN |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -88,3 +88,8 @@ Build Badge
 ------------------
 
 [![Build Status](https://travis-ci.org/kevinpmcc/takeaway-challenge.svg?branch=master)](https://travis-ci.org/kevinpmcc/takeaway-challenge)
+
+Author
+-------------------
+Kevin McCarthy
+kevinpatrickmccarthy@gmail.com
