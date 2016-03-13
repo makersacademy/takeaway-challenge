@@ -19,4 +19,12 @@ describe Menu do
     end
   end
 
+  describe '#price' do
+    it 'shows price of a dish' do
+      menu.add(:dish, :price)
+      expect(menu.price(:dish)).to eq :price
+    end
+  end
+
+
 end

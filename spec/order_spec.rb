@@ -15,8 +15,14 @@ describe Order do
 
   describe '#add' do
     xit 'adds dishes to order' do
-      allow(menu).to receive(:menu_list) { dish }
       expect{ order.add(dish, 1) }.to change{ order.this_order.size }.by(1)
+    end
+  end
+
+  describe '#total_price' do
+    xit 'calculates total price' do
+      order.add(dish, 2)
+      expect(order.total_price).to eq 
     end
   end
 
