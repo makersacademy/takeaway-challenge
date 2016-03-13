@@ -6,3 +6,4 @@ gem 'rspec'
 gem 'pry'
 gem 'coveralls', require: false
 gem 'capybara'
+gem 'twilio-ruby'

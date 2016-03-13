@@ -29,3 +29,8 @@ puts puts
 
 p 'Test 5 should give me the total and the summary'
 p order.total
+puts puts
+
+p 'Test 6 should send a confirmation sms'
+p order.confirm_order(100)
+
