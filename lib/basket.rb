@@ -9,11 +9,11 @@ class Basket
     @content.dup.freeze
   end
 
-  def add(dish)
-    @content << dish
+  def add(*dishes)
+    dishes.each { |dish| @content << dish }
   end
 
-  def remove(dish)
-    @content.delete(dish)
+  def remove(*dishes)
+    dishes.each { |dish| @content.delete(dish) }
   end
 end
