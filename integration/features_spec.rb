@@ -1,18 +1,14 @@
 require_relative '../lib/restaurant'
 require_relative '../lib/menu'
 require_relative '../lib/order'
+require_relative '../lib/sms'
 
-describe Restaurant do
-  subject(:restaurant) { described_class.new }
-  before(:each) do
-    restaurant.menu.add :Pizza, 6.00
-    restaurant.menu.add :Burger, 7.00
-  end
-  it 'shows menu' do
-    expect(restaurant.read_menu).to include Burger: 7.00
-  end
-
-  it 'select number of available dishes' do
-    expect(restaurant.order pizza).to be_instance_of Order
-  end
-end
+menu = Menu.new
+menu.load_menu
+r = Restaurant.new menu
+r.read_menu
+r.order :pizza, 2
+r.order :pasta
+r.show_order
+r.order_total
+r.remove :pasta

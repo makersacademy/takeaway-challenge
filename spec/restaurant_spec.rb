@@ -20,31 +20,32 @@ describe Restaurant do
     end
   end
 
+  before(:each) { restaurant.order :pizza }
+
   describe '#remove' do
     it 'removes dish from order' do
-      restaurant.order :pizza
       expect(order).to receive(:remove).and_return(nil)
       restaurant.remove :pizza
     end
   end
 
   it 'shows order' do
-    restaurant.order :pizza
     expect(order).to receive(:show_basket).and_return(nil)
     restaurant.show_order
   end
 
   it 'order_total' do
-    restaurant.order :pizza
     expect(order).to receive(:total).and_return(nil)
     restaurant.order_total
   end
 
+  before(:each) do
+    allow(order).to receive(:total).and_return(nil)
+    allow(sms).to receive(:message).and_return(nil)
+  end
+
   describe '#checkout' do
     it 'sends message to order' do
-      restaurant.order :pizza
-      allow(order).to receive(:total).and_return(nil)
-      allow(sms).to receive(:message).and_return(nil)
       expect(order).to receive(:complete_order).and_return(nil)
       restaurant.checkout 50
     end
@@ -52,6 +53,9 @@ describe Restaurant do
 
   describe '#order_log' do
     it 'shows history of orders' do
+      allow(order).to receive(:complete_order).and_return(nil)
+      restaurant.checkout 50
+      expect(restaurant.order_log).to include order
     end
   end
 end

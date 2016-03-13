@@ -5,9 +5,11 @@ class Order
   end
 
   def show_basket
+    bask = []
     @basket.each do |dish, quant|
-      p "#{dish} x#{quant} = #{@menu.price dish.to_sym}"
+      bask << "#{dish} x#{quant} = #{@menu.price dish.to_sym}"
     end
+    bask.join(', ')
   end
 
   def add(dish, quant = 1)

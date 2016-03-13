@@ -2,9 +2,11 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
+
   before(:each) { menu.add(:Burger, 7.00) }
+
   describe '#add' do
-    it 'adds something to the menu' do
+    it 'adds dish to the menu' do
       expect(menu.display).to include Burger: 7.00
     end
   end
@@ -17,7 +19,7 @@ describe Menu do
   end
 
   describe '#load_menu' do
-    it 'loads a menu' do
+    it 'loads menu from a file' do
       menu.load_menu
       expect(menu.display).to include pizza: 7.00
     end
