@@ -1,11 +1,16 @@
 require 'controller'
 
 describe Controller do
-  subject(:test_controller) {described_class.new dummy_menu , dummy_order_class}
+  subject(:test_controller) {described_class.new dummy_menu , dummy_order_class, dummy_twilio_class}
   let(:dummy_menu) {double :menu, list_dishes: nil}
   let(:dummy_order_class) {double :Order, new: dummy_order}
   let(:dummy_order) {double :order, add_dish: nil, update_total: nil, bill: 0}
   let(:dummy_dish) {double :dish}
+
+  let(:dummy_twilio_class) {double :Client, new: dummy_twilio}
+  let(:dummy_twilio) {double :client, account: dummy_account}
+  let(:dummy_account) {double :account, messages: dummy_messages}
+  let(:dummy_messages) {double :messages, create: nil}
 
   describe '#initialize' do
 
@@ -17,9 +22,8 @@ describe Controller do
       expect(test_controller.order_class).to eq dummy_order_class
     end
 
-    it 'set the twilio interface up' do
-      expect(test_controller).to receive(:setup_twilio)
-      test_controller = described_class.new
+    xit 'set the twilio interface up' do
+
     end
 
   end
@@ -77,8 +81,9 @@ describe Controller do
       expect {test_controller.checkout 1}.to raise_error(described_class::PAYMENT_ERROR)
     end
 
-    xit 'sends the confirmation text' do
-      #todo:stubbing
+    it 'sends the confirmation text' do
+      expect(dummy_messages).to receive(:create)
+      test_controller.checkout 0
     end
 
   end

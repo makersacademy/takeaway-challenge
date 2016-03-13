@@ -1,4 +1,3 @@
-require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
 
@@ -11,7 +10,8 @@ class Controller
 
   attr_reader :menu, :order_class, :current_order
 
-  def initialize menu_ofday , order_class
+  def initialize menu_ofday , order_class , twilio_client
+    @twilio_client = twilio_client
     @order_class = order_class
     @menu = menu_ofday
     setup_twilio
@@ -41,13 +41,13 @@ class Controller
   def setup_twilio
     account_sid = ENV['TWISID']
     auth_token = ENV['TWITOK']
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = @twilio_client.new account_sid, auth_token
     @sender = ENV['SENDER']
     @receiver = ENV['RECEIVER']
   end
 
   def send_sms message
-    client.account.messages.create(
+    @client.account.messages.create(
       from: @sender,
       to: @receiver,
       body: message
