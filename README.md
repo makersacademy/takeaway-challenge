@@ -14,18 +14,34 @@ Takeaway Challenge
  
  ```
 
-Instructions
+What is Takeaway Challenge?
 -------
+* Takeaway Challenge is a weekend challenge from my second week at Makers
+  Academy.
+* The project is to simulate a takeaway where customers can
+  * view menu items and prices
+  * add items with quantities to their order
+  * place their order with the order total
+  * if total is correct they will receive a text message confirming they'll
+    receive their order within 30 minutes.
+  * if total is incorrect they will receive error
+  * if dish they try to add does not exist they will receive an error
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
-Task
+
+Approach Taken 
 -----
+I broke the initial stories into their domains. As the project progressed I
+decided to have 4 classes Takeaway, Menu, Order and Sms. The customer interacts
+through the takeaway class.
 
+Technologies Used
+--------
+
+
+
+* Ruby 2.3.0 to write program
+* 
 * Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems

@@ -47,10 +47,8 @@ class Order
 
   def calculate_order_total
     sum = 0
-    @current_order.each do |dish, qty|
-      sum += (@menu.dish_price(dish) * qty )
-    end
-    @order_total = sum
+    @current_order.map { |dish, qty|
+     (@menu.dish_price(dish) * qty )}.inject(:+)
   end
   
 
