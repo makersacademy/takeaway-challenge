@@ -15,16 +15,8 @@ class Order
     confirm_addition
   end
 
-  def confirm_addition
-    "#{basket.values.last}x #{basket.keys.last}(s) added to your basket."
-  end
-
   def summary
-    items = []
-    @basket.each do |item, quant|
-      items << "#{item} x#{quant} = £#{@menu.display[item] * quant}"
-    end
-    items.join(", ")
+    summary_format.join(", ")
   end
 
   def sum
@@ -36,5 +28,17 @@ class Order
   private
     def available?(item)
       @menu.display.include? item
+    end
+
+    def confirm_addition
+      "#{basket.values.last}x #{basket.keys.last}(s) added to your basket."
+    end
+
+    def summary_format
+      items = []
+      @basket.each do |item, quant|
+        items << "#{item} x#{quant} = £#{@menu.display[item] * quant}"
+      end
+      items
     end
 end

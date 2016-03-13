@@ -16,7 +16,7 @@ describe Messenger do
       ENV = { "ACC_SID" => "fake_id",
               "AUTH" => "fake_token",
               "TWILIO_NUMBER" => "12345",
-              "RECEIVER_NUMBER" => "54321" }
+              "RECEIVER_NUMBER" => "54321" }.freeze
       expect(messages).to receive(:create).with(
       from: ENV["TWILIO_NUMBER"],
       to: ENV["RECEIVER_NUMBER"],
