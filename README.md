@@ -48,8 +48,7 @@ Installation Instructions
 *Clone the git repo in your chosen directory
 
 ```
-git clone
-https://github.com/kevinpmcc/takeaway-challenge.git 
+git clone https://github.com/kevinpmcc/takeaway-challenge.git 
 ```
 
 *Run the command 'bundle' in the project directory to ensure you have all the
@@ -84,19 +83,8 @@ https://www.twilio.com/try-twilio
 
 ```
 
-Notes on Test Coverage
+
+Build Badge 
 ------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+[![Build Status](https://travis-ci.org/kevinpmcc/takeaway-challenge.svg?branch=master)](https://travis-ci.org/kevinpmcc/takeaway-challenge)
