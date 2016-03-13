@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :takeaway, :order_total, :food_order
+  attr_reader :takeaway
 
   def initialize(takeaway = Takeaway)
     @takeaway = takeaway.new
@@ -15,20 +15,17 @@ class Order
     return "You have ordered #{chosen_dish[1]} * #{number} at £#{chosen_dish[2]} each."
   end
 
-  def price_per_item(dish_number, number)
-    item_price = @takeaway.menu[(dish_number - 1)][2]
-    item_price.slice!(0)
-    @order_total += (item_price.to_f * number)
-  end
-
-  def total_price
-    "The total price of this order is £#{@order_total}0."
-  end
-
   def order_summary
     "You have ordered " + @food_order[0..-2].join(", ") + " and #{@food_order[-1]}.
     Your total order price is £#{@order_total}0."
   end
 
+  private
+
+  def price_per_item(dish_number, number)
+    item_price = @takeaway.menu[(dish_number - 1)][2]
+    item_price.slice!(0)
+    @order_total += (item_price.to_f * number)
+  end
 
 end
