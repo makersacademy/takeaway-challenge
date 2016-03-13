@@ -5,33 +5,42 @@ class Order
 
   attr_reader :menu
 
-  def initialize(menu_klass:Menu)
+  def initialize(menu_klass:Menu, menu: nil)
   @menu_class = menu_klass
-  @menu = @menu_class.new
+  @menu = menu || @menu_class.new
   @order = []
   end
 
-  def set_menu(dish)
-    @menu.add_dish(Dish.new)
+  def load_menu(menu)
+    @menu = menu
+    self
   end
 
-  def see_menu
-    @menu.list
+  def set_menu(dish,price)
+    @menu.add_dish(dish,price)
   end
 
-  def take_order(hash)
-    @dish = hash[:dish]
-    @quantity = hash[:quantity]
+  def display_menu
+    @menu.display
+  end
+
+  def take_order(dish,quantity)
+    @dish = dish
+    @quantity = quantity
     raise "That dish is not available" unless dish_available?
     raise "Quantity must be an integer" unless quantity_valid?
     add_to_order
     @order
   end
 
+  def view_current_order
+    @order.dup
+  end
+
   private
 
   def dish_available?
-    @menu.include?(@dish)
+    display_menu.include?(@dish)
   end
 
   def quantity_valid?
