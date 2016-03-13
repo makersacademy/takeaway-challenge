@@ -1,10 +1,12 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
-  attr_reader :order, :order_sum, :menu
+  attr_reader :order, :order_sum, :menu, :text
 
-  def initialize(menu: Menu.new)
+  def initialize(menu: Menu.new, text: Text.new)
     @menu = menu
+    @text = text
     @order = []
     @order_sum = []
   end
@@ -41,14 +43,26 @@ class Order
 
   def pay(amount)
     error = 'payment is incorrect'
-    raise error unless amount == @total
-    delivery = (Time.now + 3600).strftime("%H:%M")
-    "Thank you! Your order should be with you by #{delivery}"
+    raise error unless payment_correct?(amount)
+    @text.send_confirmation(confirmation_text)
   end
+
   private
 
-    def menu_hash
-      @menu.show
-    end
+  def confirmation_text
+    "Thank you! Your order should be with you by #{time}"
+  end
+
+  def time
+    delivery = (Time.now + 3600).strftime("%H:%M")
+  end
+
+  def payment_correct?(amount)
+    @total = amount
+  end
+
+  def menu_hash
+    @menu.show
+  end
 
 end
