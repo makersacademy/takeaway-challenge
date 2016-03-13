@@ -57,17 +57,10 @@ describe Order do
     context 'when total given is correct' do
       before(:each) { allow(order).to receive(:correct_total?).with(total) { true } }
       
-
-      it 'will call create a new sms' do
-        allow(sms).to receive(:send_order_confirmation)
-        allow(sms_class).to receive(:new) { sms }
-        expect(sms_class).to receive(:new)
-        order.place_order(total)
-
-      end
-
     end
+    
     context 'when total given is incorrect' do
+    
       it 'will raise error' do
         allow(order).to receive(:correct_total) { false }
         expect { order.place_order(total) }.to raise_error Order::WRONG_TOTAL_ERR
