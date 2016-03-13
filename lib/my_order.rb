@@ -1,12 +1,17 @@
+require_relative 'texter'
+require_relative 'menu'
+
 class MyOrder
 
-DEL_TIME = Time.now + 3600
+TIME = Time.now + 3600
+MESSAGE = "Thanks your order it will be with you by #{TIME.hour}:#{TIME.min}"
 
   attr_reader :picks, :menu
 
-  def initialize(menu)
+  def initialize(menu, text_class: Text)
     @picks = []
     @menu = menu
+    @text = text_class
   end
 
   def pick(plate, quantity=1)
@@ -25,7 +30,8 @@ DEL_TIME = Time.now + 3600
   end
 
   def confirm_order
-    return "Thanks your order it will be with you by #{DEL_TIME.hour}:#{DEL_TIME.min}"
+    @text.new.send_message(MESSAGE)
   end
+
 
 end

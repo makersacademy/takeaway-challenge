@@ -1,6 +1,7 @@
 require_relative 'dish'
 require_relative 'menu'
 require_relative 'my_order'
+require_relative 'texter'
 
 dish = Dish.new("Chicken Curry", 12.30)
 menu = Menu.new
@@ -44,3 +45,5 @@ puts my_order.total
 puts my_order.check_out
 
 print my_order.confirm_order
+
+my_order.send_message
