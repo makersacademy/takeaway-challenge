@@ -1,7 +1,5 @@
-require_relative 'customer_order'
-require 'dotenv'
+require_relative 'complete_order'
 
-Dotenv.load
 
 m = Menu.new
 m.add_dish("apple", 3)
@@ -27,4 +25,5 @@ p o.my_order
 o.add_to_order("pear",2)
 
 p o.my_order
+
 

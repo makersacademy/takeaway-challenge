@@ -37,10 +37,5 @@ class CustomerOrder
 		@current_menu.select {|k,v| k == this_dish }
 	end
 
-	# def find_item(this_dish)
-	# 	@my_order.select{ |k,v| k[this_dish]}
-	# end
-
-
 
 end

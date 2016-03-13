@@ -1,5 +1,3 @@
-
-
 class Menu
 
 	def initialize
