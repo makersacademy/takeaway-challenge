@@ -9,12 +9,12 @@ get '/sms' do
   twiml = Twilio::TwiML::Response.new do |r|
     begin eval(incoming)
       if eval(incoming).empty?
-        r.Message "Please submit a valid order."
+        r.Message "Please submit a valid order. You put #{incoming.class}"
       else
         r.Message SMSMessage.new.format_order(incoming)
       end
     rescue Exception => exc
-      r.Message "Please submit a valid order."
+      r.Message "EXC: Please submit a valid order."
     end
   end
   twiml.text

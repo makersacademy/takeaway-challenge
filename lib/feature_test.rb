@@ -10,7 +10,7 @@ p takeaway.select_items({rice:3, pea:5})
 
 
 hash = {a: 1}
-strash = "{a:1}"
+strash = "{a:1, b:2}"
 p eval(strash).empty?
 
 begin eval(strash)
