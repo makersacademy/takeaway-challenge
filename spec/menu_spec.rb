@@ -54,12 +54,12 @@ describe Menu do
     end
 
     it '2. returns a subtotal total of the order' do
-      expect(menu).to receive(:total)
+      expect(menu).to receive(:subtotal)
       menu.place_order(:fish,2) 
     end
 
     it '3. it should save multiple dishes' do
-      allow(menu).to receive(:total)
+      allow(menu).to receive(:subtotal)
       menu.create_dish(:fish, 4.56)
       menu.place_order(:fish, 2)
       menu.place_order(:steak,  3)
@@ -71,7 +71,7 @@ describe Menu do
     it  'should return a subtotal of the order' do
       allow(menu).to receive_messages( order: {dish=>5}, dishes: {:tuna=>dish})
       allow(dish).to receive_messages(name: 'tuna', price: 4.56)
-      expect(menu.total).to eq (5*4.56)
+      expect(menu.subtotal).to eq (5*4.56)
     end
   end
 end

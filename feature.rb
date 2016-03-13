@@ -11,6 +11,9 @@ menu.create_dish(:steak, 6)
 p menu.see_dishes
 puts
 puts
+
+p 'Test 2 get a list of dishes'
+p order.see_menu
 p 'Test 2 #place_order output total (40)'
 p menu.place_order(:tuna_paste, 10)
 
@@ -18,4 +21,4 @@ p menu.place_order(:tuna_paste, 10)
 p 'Test 3 #place_order again expect higher total(100)'
 p menu.place_order(:steak, 10)
 
-
+p 

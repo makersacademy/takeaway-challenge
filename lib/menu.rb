@@ -24,11 +24,11 @@ attr_reader :order
 
   def place_order(name, quantity)
     @order[@dishes[name]] = quantity
-    total
+    subtotal
   end
 
 
-  def total
+  def subtotal
     @sum = 0
     order.each_pair do |dish, quantity|
       @sum += (dish.price)*quantity
@@ -36,5 +36,5 @@ attr_reader :order
     @sum
   end
 
-
+  
 end
