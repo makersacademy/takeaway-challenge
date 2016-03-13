@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new}
-  
+  subject(:dish) { double :dish }
   describe '#dishes' do
     
     it 'returns a hash of dishes' do
@@ -11,6 +11,17 @@ describe Menu do
 
   end
 
+  describe '#dish_price' do
+
+    it 'calls on return_dish_price' do
+      expect(menu).to receive(:return_dish_price)
+      menu.dish_price(dish)
+    end
+  
+  end
+
+
+      
   #if add to order is empty expect new order to be created
   #if add to order is not empty
   #

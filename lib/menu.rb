@@ -5,8 +5,8 @@ def see_dishes
   dishes
 end
 
-def dish_price(item)
-  return_dish_price
+def dish_price(dish)
+  return_dish_price(dish)
 end
 private
   def dishes
@@ -19,5 +19,8 @@ MENU_ITEMS =
     "smoothie" => 4,
     "eggs" => 3 }
 
+  def return_dish_price(dish)
+    dishes[dish]
+  end
 
 end

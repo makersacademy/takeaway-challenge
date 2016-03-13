@@ -44,21 +44,22 @@ describe Order do
       expect(order.order_total).to eq 5
     end
   
-    it 'will correctly calculate the price of the order' do
-      allow(order).to receive(:current_order).and_return(dish, dish2)
-      allow(menu).to receive(:see_dishes).with(dish).and_return(4)
-      puts menu.see_dishes(dish)
-      allow(menu).to receive(:see_dishes).with(dish).and_return(6)
-      expect(order.order_total).to eq 
-    end
+#    it 'will correctly calculate the price of the order' do
+#      allow(order).to receive(:current_order).and_return(dish, dish2)
+#      allow(menu).to receive(:dish_price).with(dish).and_return(4)
+#      allow(menu).to receive(:dish_price).with(dish).and_return(6)
+#      expect(order.order_total).to eq 
+#    end
 
   end
 
   describe '#see_dishes' do
+   
     it 'will display a hash of dishes and prices' do
       allow(menu).to receive(:see_dishes).and_return Hash.new
       expect(order.see_dishes.class).to eq Hash
     end
+  
   end
 
   describe '#place_order' do
@@ -76,8 +77,6 @@ describe Order do
       order.place_order
     end
 
-  end
-  
-    
+  end 
       
 end
