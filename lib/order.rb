@@ -7,7 +7,7 @@ class Order
   INCORRECT_ESTIMATED_TOTAL_ERROR = 'Your estimated total is incorrect'
   EMPTY_BASKET_ERROR = 'Your basket is empty!'
 
-  attr_reader :basket, :total
+  attr_reader :total
 
   def initialize(menu = Menu.new, sms_sender = SmsSender.new)
     @basket = {}
@@ -18,6 +18,10 @@ class Order
 
   def view_menu
     @menu.list
+  end
+
+  def basket
+    @basket.dup
   end
 
   def add_to_basket(item, quantity=1)
