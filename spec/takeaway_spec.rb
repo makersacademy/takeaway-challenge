@@ -1,4 +1,5 @@
 require 'takeaway'
+Dotenv.load
 
 describe Takeaway do
   let(:menu) {double :menu}
