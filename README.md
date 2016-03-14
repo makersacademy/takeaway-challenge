@@ -18,6 +18,7 @@ The design of GOCHISO involves 3 classes: Takeaway, Menu and Basket. The Takeawa
 
 ### Flowchart of ordering process
 
+
 ```
 .           Takeaway is initiated
                       ↓
