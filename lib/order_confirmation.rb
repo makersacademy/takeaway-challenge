@@ -11,8 +11,8 @@ class OrderConfirmation
 
     client = Twilio::REST::Client.new account_sid, auth_token
 
-    from = "441600800024"
-    to = "447871578312"
+    from = ENV['TWILIO_NUMBER']
+    to = ENV['MY_NUMBER']
     body = message
 
     client.account.messages.create(
