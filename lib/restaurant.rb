@@ -1,3 +1,6 @@
+require_relative 'menu'
+require_relative 'order'
+
 class Restaurant
   def initialize(menu_instance: menu, order_klass: Order)
     @menu = menu_instance
@@ -26,8 +29,8 @@ class Restaurant
     @order.summary
   end
 
-  def checkout
-    @order.complete
+  def checkout(amount)
+    @order.complete(amount)
     create_order
   end
 

@@ -44,12 +44,12 @@ describe Order do
 
   describe '#complete' do
     it 'completes the order' do
-      order.complete
+      order.complete(250)
       expect(order.details).to be_empty
     end
     it 'it initaites a text message' do
       expect(delivery).to receive(:dispatch)
-      order.complete
+      order.complete(250)
     end
   end
 end

@@ -2,6 +2,9 @@ require 'bigdecimal'
 require_relative 'delivery'
 
 class Order
+
+  INSUFICIENT_FUNDS = 'Not enough funds in your account'
+
   def initialize(menu: menu_object, delivery_klass: Delivery)
     @details = []
     @menu = menu
@@ -26,7 +29,7 @@ class Order
   end
 
   def summary
-    "Total: $#{total}"
+    "Total: $#{readable_total}"
   end
 
   def remove(dish_name)
@@ -36,14 +39,19 @@ class Order
     end
   end
 
-  def complete
-    @delivery.dispatch(total)
+  def complete(amount)
+    fail INSUFICIENT_FUNDS unless amount == total
+    @delivery.dispatch(readable_total)
     empty_details
   end
 
   def total
     total = 0
     view.each { |order| total += order[:sub_total] }
+    total
+  end
+
+  def readable_total
     format('%.2f', ((total * 100).round / 100.0))
   end
 

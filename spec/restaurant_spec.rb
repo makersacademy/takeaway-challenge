@@ -36,7 +36,7 @@ describe Restaurant do
     describe '#checkout' do
       it 'finishes your order' do
         expect(order).to receive(:complete)
-        restaurant.checkout
+        restaurant.checkout(250)
       end
     end
 

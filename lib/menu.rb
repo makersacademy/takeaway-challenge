@@ -1,7 +1,9 @@
+require_relative 'dish'
+
 class Menu
   ALREADY_EXISTS_ERROR = 'Dish is already on the menu'.freeze
   DOES_NOT_EXIST_ERROR = 'This dish is not on the menu'.freeze
-  def initialize(dish_klass: dish_class)
+  def initialize(dish_klass: Dish)
     @dishes = []
     @dish_klass = dish_klass
   end

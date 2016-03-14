@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/tobenna/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tobenna/takeaway-challenge)
-
-[![Coverage Status](https://coveralls.io/repos/github/tobenna/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/tobenna/takeaway-challenge?branch=master)
+[![Build Status](https://travis-ci.org/tobenna/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tobenna/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/tobenna/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/tobenna/takeaway-challenge?branch=master)
 
 Takeaway Challenge
 ==================
@@ -37,24 +35,40 @@ A free account on Twilio will only allow you to send texts to "verified" numbers
 Usage Example
 -----
 
+Adding items to the menu
+
 ```sh
-2.2.3 :001 > t = TakeAway.new
- => #<TakeAway:0x007f975b1a39a8 @menu=#<Menu:0x007f975b1a3890 @dishes={"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}>, @basket={}, @text_provider=#<TwilioAPI:0x007f975b1a33e0>>
-2.2.3 :002 > t.read_menu
- => {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}
-2.2.3 :003 > t.order 'spring roll'
- => "1x spring roll(s) added to your basket."
-2.2.3 :004 > t.order 'spring roll'
- => "1x spring roll(s) added to your basket."
-2.2.3 :005 > t.order 'spring roll', 4
- => "4x spring roll(s) added to your basket."
-2.2.3 :006 > t.basket_summary
- => "spring roll x4 = £3.96"
-2.2.3 :007 > t.add 'pork dumpling', 3
- => "3x pork dumpling(s) added to your basket."
-2.2.3 :008 > t.basket_summary
- => "spring roll x4 = £3.96, pork dumpling x3 = £8.97"
-2.2.3 :009 > t.total
- => "Total: £12.93"
-2.2.3 :010 > c.checkout(12.93)
+2.2.3 :001 > m = Menu.new
+ => #<Menu:0x007fb0dc074d08 @dish_klass=Dish, @dishes=[]>
+2.2.3 :002 > m.add('Eba and soup', 200)
+ => [#<Dish:0x007fb0da22dae8
+  @name="Eba and soup",
+  @price=#<BigDecimal:7fb0da22d958,'0.2E3',9(18)>>]
+2.2.3 :003 > men.add('Pounded Yam', 150)
+ => [#<Dish:0x007fb0da22dae8
+  @name="Eba and soup",
+  @price=#<BigDecimal:7fb0da22d958,'0.2E3',9(18)>>,
+ #<Dish:0x007fb0da30deb8
+  @name="Pounded Yam",
+  @price=#<BigDecimal:7fb0da30dc60,'0.15E3',9(18)>>]
 ```
+Ordering Items
+
+```sh
+2.2.3 :004 > r = Restaurant.new(menu_instance: m)
+ => #<Restaurant:0x007fb0dd883728
+2.2.3 :005 > r.view_menu
+ => [#<Dish:0x007fb0da22dae8 @name="Eba and soup", @price=#<BigDecimal:7fb0da22d958,'0.2E3',9(18)>>,
+ #<Dish:0x007fb0da30deb8 @name="Pounded Yam", @price=#<BigDecimal:7fb0da30dc60,'0.15E3',9(18)>>,
+ #<Dish:0x007fb0da8708d8 @name="Fried Chicken", @price=#<BigDecimal:7fb0da8706a8,'0.3E3',9(18)>>,
+ #<Dish:0x007fb0da054e60 @name="Borga", @price=#<BigDecimal:7fb0da054cf8,'0.1E4',9(18)>>]
+2.2.3 :006 > r.order_add('Pounded Yam', 25)
+ => [{:dish=>#<Dish:0x007fb0da30deb8 @name="Pounded Yam", @price=#<BigDecimal:7fb0da30dc60,'0.15E3',9(18)>>, :quantity=>25}]
+2.2.3 :007 > r.order_add('Eba and soup', 15)
+ => [{:dish=>#<Dish:0x007fb0da30deb8 @name="Pounded Yam", @price=#<BigDecimal:7fb0da30dc60,'0.15E3',9(18)>>, :quantity=>25},
+ {:dish=>#<Dish:0x007fb0da22dae8 @name="Eba and soup", @price=#<BigDecimal:7fb0da22d958,'0.2E3',9(18)>>, :quantity=>15}]
+2.2.3 :008 > r.order_summary
+ => "Total: $6750.00"
+2.2.3 :009 > r.checkout(6750)
+
+After checkout SMS would be sent to the number in your ENV
