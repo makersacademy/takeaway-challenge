@@ -30,9 +30,10 @@ Description
 
 * I took care of preserving the ASCII art this time.
 
-* I have 4 classes: controller, order, menu, dish.
+* I have 5 classes: controller, order, menu, dish, messenger.
 * The Dish class represent..a dish. It has methods to return its name, and its price per portion.
-* The Controller class is the 'shop' itself, greeting the customer and taking care of communications
+* The Messenger class wraps the Twilio interface up so that controller does not needs to take care of the setup.
+* The Controller class is the 'shop' itself, greeting the customer and linking menu, orders and communicationl
 * The Controller knows about the menu of the day (Menu class) which has methods to show the dishes available in a human-readable form, and in an actual array
 * The Controller gets also loaded with a Order class, and creates new instances when greeting a customer
 * When a dish is added by selecting its corresponding number on the list and the amount wanted, it gets stored in the order and the total bill update_order
@@ -45,3 +46,7 @@ Notes
 * Following on that, I didn't manage to clean up the rspec, so magic numbers and overly long lines everywhere.
 * While I'm somewhat happy with the state of the Dish, Order and Menu class and the fact that the last 2 don't depend on each other, I feel like the Controller class is a bit too bloated and untidy.
 * Another big problem is line length, I find it hard to have both explicative names and test and keep in the 80 limit without doing some funky stuff that I think would impact on readability (and thus negate the desired effect)
+* I tried to design methods in controller to be easy to delegate with the Forwardable module, but didn't get around doing that.
+* A good suggestion I didn't get to implement/refactor in is, instead of having the human-display methods return a string, isolate them better and actually have them print to the console (I wanted to avoid that since it was messing up my Rspec report). Even better, research if there is a way for Rspec to filter out all output sent to STDOUT during test runs
+
+made by Lorenzo, big thanks as always to Lou for the review.
