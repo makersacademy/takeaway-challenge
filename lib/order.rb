@@ -10,7 +10,7 @@ class Order
   attr_reader :total
 
   def initialize(menu = Menu.new, sms_sender = SmsSender.new)
-    @basket = {}
+    @basket = Hash.new(0)
     @menu = menu
     @sms_sender = sms_sender
   end
@@ -39,5 +39,6 @@ class Order
     def calculate_total
       @basket.map { |item,quantity| @menu.price(item)*quantity }.inject(:+)
     end
+
 
 end
