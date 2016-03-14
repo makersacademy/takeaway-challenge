@@ -4,7 +4,7 @@ require_relative 'menu'
 class MyOrder
 
 TIME = Time.now + 3600
-MESSAGE = "Thanks your order it will be with you by #{TIME.hour}:#{TIME.min}"
+MESSAGE = "Thanks your order it will be with you by #{TIME.strftime("%H:%M")}"
 
   attr_reader :picks, :menu
 

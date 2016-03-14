@@ -3,6 +3,8 @@ require 'dotenv'
 
 class Text
 
+attr_reader :client
+
   def initialize
     @credentials = Dotenv.load
     @account_sid = @credentials['account_sid']

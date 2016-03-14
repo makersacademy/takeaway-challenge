@@ -1,11 +1,8 @@
 require_relative 'dish'
 
-
-
 class Menu
 
 M_W = 13
-
 
 attr_reader :dishes
 

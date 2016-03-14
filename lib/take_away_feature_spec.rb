@@ -32,18 +32,21 @@ menu.choose("Pilau Rice")
 
 
 
-my_order.pick("Chicken Curry", 2)
-my_order.pick("Fish Curry", 1)
-my_order.pick("Poppadom", 2)
+my_order.pick("Chicken Curry", 4)
+
 puts "Your Order is"
-my_order.picks.each{|pick| print "#{pick[0].name} x #{pick[1]} \n"}
+#my_order.picks.each{|pick| print "#{pick[0].name} x #{pick[1]} \n"}
 arr = 0
 
 p my_order.picks
 puts my_order.total
+p my_order.menu.show_menu
+#puts my_order.check_out
 
-puts my_order.check_out
 
-print my_order.confirm_order
 
-my_order.send_message
+text = Text.new
+
+
+
+#my_order.confirm_order
