@@ -4,8 +4,8 @@ require 'pry'
 menu = Menu.new
 
 p menu.contents
-menu.show_menu
 
+menu.show_menu
 
 
 require './lib/order'

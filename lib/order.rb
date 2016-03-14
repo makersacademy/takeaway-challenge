@@ -12,12 +12,10 @@ class Order
 
   def choose(item, quantity)
     quantity.times { @selections << [item, @menu.pick(item)] }
-    # binding.pry
   end
 
   def sum_total
     @sum = 0
-    #binding.pry
     @selections.each { |item| @sum += item[1] }
     @sum
   end
@@ -31,9 +29,13 @@ class Order
     end
   end
 
+  def send_sms
+    twilio_text
+  end
+
   private
 
-  def send_sms
+  def twilio_text
     require 'rubygems'
     require 'twilio-ruby'
 

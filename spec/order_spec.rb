@@ -2,10 +2,7 @@ require 'order'
 
 describe Order do
 
-  let(:dish) { double(:dish) }
   let(:menu) { double(:menu) }
-
-
   subject(:order) { described_class.new }
 
   describe '#initialize' do
@@ -34,12 +31,11 @@ describe Order do
 
   describe '#complete_order' do
     before do
-    order.choose(:fish, 1)
-    order.choose(:rice, 2)
-    order.sum_total
+      order.choose(:fish, 1)
+      order.choose(:rice, 2)
+      order.sum_total
     end
     it 'returns confirmation when payment is successful' do
-
       expect(order.complete_order(25)).to eq("Thanks for your order")
     end
 
