@@ -29,7 +29,7 @@ describe Restaurant do
     describe '#order_remove' do
       it 'removes a dish from your order' do
         expect(order).to receive(:remove).with(dish_name, quantity)
-        restaurant.order_remove(dish_name, quantity)
+        restaurant.order_remove(dish_name)
       end
     end
 
