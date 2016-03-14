@@ -4,14 +4,13 @@ Dotenv.load
 
 class SmsSender
 
-  TIME = (Time.now+3600).strftime("%H:%M")
-  MESSAGE = "Thank you! Your order was placed and will be delivered before #{TIME}"
-
   def send_sms
+    time = (Time.now+3600).strftime("%H:%M")
+    message = "Thank you! Your order was placed and will be delivered before #{time}"
     client.account.messages.create({
       :from => ENV["FROM_PHONE_NUMBER"],
       :to => ENV["TO_PHONE_NUMBER"],
-      :body =>  MESSAGE
+      :body => message
     })
   end
 
