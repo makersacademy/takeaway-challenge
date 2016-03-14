@@ -16,7 +16,7 @@ class Menu
 
   def remove(dish_name)
     find_dish(dish_name)
-    raise DOES_NOT_EXIST_ERROR unless in_menu?
+    fail DOES_NOT_EXIST_ERROR unless in_menu?
     delete(dish_name)
   end
 
@@ -43,7 +43,7 @@ class Menu
         return @dish
       end
     end
-    raise DOES_NOT_EXIST_ERROR
+    fail DOES_NOT_EXIST_ERROR
   end
 
   private
