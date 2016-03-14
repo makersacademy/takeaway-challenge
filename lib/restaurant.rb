@@ -15,7 +15,7 @@ class Restaurant
   end
 
   def order_remove(dish_name)
-    @order.remove(dish_name, quantity)
+    @order.remove(dish_name)
   end
 
   def view_order
