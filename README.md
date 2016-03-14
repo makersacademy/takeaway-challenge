@@ -72,7 +72,10 @@ katsu curry: £12
      {:name=>"sushi", :amount=>4, :price=>7},
      {:name=>"tofu salad", :amount=>2, :price=>4.5}]
 
-2.2.3 :012 > dinner.place_order(61)
+2.2.3 :012 > dinner.basket.show_summary
+ => 61
+
+2.2.3 :013 > dinner.place_order(61)
  => "Confirmation text sent"
 
 <Text message sent to the customer>
