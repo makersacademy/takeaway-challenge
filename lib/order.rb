@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :this_order
+  attr_reader :this_order, :menu
 
   def initialize(menu=Menu.new)
     @this_order = Hash.new(0)
@@ -10,9 +10,7 @@ class Order
   end
 
   def add(dish, quantity=1)
-    if @menu.read.include?(dish)
       @this_order[dish] += quantity
-    end
   end
 
   def total_price

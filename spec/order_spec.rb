@@ -4,7 +4,8 @@ describe Order do
 
   subject(:order) { described_class.new(menu) }
   let(:dish) { double :dish }
-  let(:menu_list) { double :menu_list }
+  let(:price) { double :price }
+  let(:menu_list) { double :menu_list, include?: true }
   let(:menu) { double :menu, read: menu_list }
 
   describe '#initialize' do
@@ -14,15 +15,16 @@ describe Order do
   end
 
   describe '#add' do
-    xit 'adds dishes to order' do
+    it 'adds dishes to order' do
       expect{ order.add(dish, 1) }.to change{ order.this_order.size }.by(1)
     end
   end
 
   describe '#total_price' do
     xit 'calculates total price' do
-      order.add(dish, 2)
-      expect(order.total_price).to eq 
+      order.add(dish, 1)
+      
+      expect(order.total_price).to eq
     end
   end
 
