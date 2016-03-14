@@ -22,15 +22,15 @@ class Order
 
   def complete_order(pay)
     if pay == @sum
-      "Thanks for your order"
       send_sms
+      "Thanks for your order"
     else
       raise("Payment error!")
     end
   end
 
   def send_sms
-    twilio_text
+    # twilio_text
   end
 
   private
