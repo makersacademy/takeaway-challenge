@@ -17,5 +17,9 @@ order = Order.new(menu: kfc)
 order.load_menu(kfc)
 order.display_menu
 order.take_order(:chips, 2)
+order.take_order(:chicken_wings, 2)
 order.view_current_order
+order.place_order(50)
+order.place_order(2)
+order.order_total
 order.confirm_order

@@ -18,6 +18,8 @@ class SMS
       self
   end
 
+  private
+  
   def client
     @client
   end

@@ -39,6 +39,7 @@ class Order
 
   def place_order(amount)
     raise "Not enough money given" unless amount > order_total
+    confirm_order
   end
 
   def confirm_order
@@ -47,11 +48,21 @@ class Order
     "Order has been placed"
   end
 
-  def send_sms
-    @cilent.send
+  def order_total
+    total = 0
+    @order.each do |hash|
+      hash.each do |dish,quantity|
+      total += (display_menu[dish] * quantity)
+    end
+  end
+    total
   end
 
   private
+
+  def send_sms
+    @cilent.send
+  end
 
   def dish_available?
     display_menu.include?(@dish)
@@ -63,13 +74,5 @@ class Order
 
   def add_to_order
     @order << {@dish => @quantity}
-  end
-
-  def order_total
-    total = 0
-    @order.first.each do |dish,quantity|
-      total += (display_menu[dish] * quantity)
-    end
-    total
   end
 end

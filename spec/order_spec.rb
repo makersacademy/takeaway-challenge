@@ -49,10 +49,6 @@ describe Order do
       message = "Not enough money given"
       expect{order.place_order(10)}.to raise_error(message)
     end
-    it 'should not raise error if correct amount given' do
-      order.take_order(dish1, quantity)
-      expect{order.place_order(20)}.not_to raise_error
-    end
   end
 
   describe 'confirms the order' do

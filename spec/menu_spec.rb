@@ -28,4 +28,10 @@ describe Menu do
       expect(menu.display).to eq({dish1_name => dish1_price, dish2_name => dish2_price})
     end
   end
+
+  describe '#list' do
+    it 'has the array of dishes' do
+    expect(menu.list).to be_a(Array)
+    end
+  end
 end
