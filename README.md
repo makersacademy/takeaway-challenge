@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kevinpmcc/takeaway-challenge.svg?branch=master)](https://travis-ci.org/kevinpmcc/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 ```
@@ -84,10 +86,8 @@ https://www.twilio.com/try-twilio
 ```
 
 
-Build Badge 
-------------------
 
-[![Build Status](https://travis-ci.org/kevinpmcc/takeaway-challenge.svg?branch=master)](https://travis-ci.org/kevinpmcc/takeaway-challenge)
+
 
 Author
 -------------------
