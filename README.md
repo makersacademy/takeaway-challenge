@@ -11,81 +11,42 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
 -------
+* This is a takeaway shop simulator. At first you will be greeted with a small prompt listing some commands
+* Use #list_dishes to be returned a string with the available dishes
+* Use #update_order dish_id , amount to add a certain amount of a given dish to the current order
+* Use #outstanding_order to get a recap of the current order and a subTotal
+* Use #checkout amount_in_pounds to pay the bill and receive a confirmation text
+* #welcome sets up a new order once paid. It also works to scrub the order clean at any moment and start over, but that's a secondary effect that could be changed/removed in future
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Description
+-------
+[![Build Status](https://travis-ci.org/lorenzoturrino/airport_challenge.svg?branch=master)](https://travis-ci.org/lorenzoturrino/airport_challenge)
+[![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=mohamedIssaq)
 
-Task
------
+* I took care of preserving the ASCII art this time.
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* I have 5 classes: controller, order, menu, dish, messenger.
+* The Dish class represent..a dish. It has methods to return its name, and its price per portion.
+* The Messenger class wraps the Twilio interface up so that controller does not needs to take care of the setup.
+* The Controller class is the 'shop' itself, greeting the customer and linking menu, orders and communicationl
+* The Controller knows about the menu of the day (Menu class) which has methods to show the dishes available in a human-readable form, and in an actual array
+* The Controller gets also loaded with a Order class, and creates new instances when greeting a customer
+* When a dish is added by selecting its corresponding number on the list and the amount wanted, it gets stored in the order and the total bill update_order
+* There is a call to show (in human format) the current open order and the total due so far, to be able to pay the correct amount.
+* Once done, a user can call #checkout, pay (the right amount!) and receive a confirmation message + text. It is possible to insert a new order.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+Notes
+-------
+* This time around I went for a 'make it work first, refactor later'. While I found this easier, I'm not sure it's the best approach, as I have a feeling my code is not as clean or good. This Weekend I had very little spare time, so that adds to the noise.
+* Following on that, I didn't manage to clean up the rspec, so magic numbers and overly long lines everywhere.
+* While I'm somewhat happy with the state of the Dish, Order and Menu class and the fact that the last 2 don't depend on each other, I feel like the Controller class is a bit too bloated and untidy.
+* Another big problem is line length, I find it hard to have both explicative names and test and keep in the 80 limit without doing some funky stuff that I think would impact on readability (and thus negate the desired effect)
+* I tried to design methods in controller to be easy to delegate with the Forwardable module, but didn't get around doing that.
+* A good suggestion I didn't get to implement/refactor in is, instead of having the human-display methods return a string, isolate them better and actually have them print to the console (I wanted to avoid that since it was messing up my Rspec report). Even better, research if there is a way for Rspec to filter out all output sent to STDOUT during test runs
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+made by Lorenzo, big thanks as always to Lou for the review.
