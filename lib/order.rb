@@ -2,9 +2,10 @@ require_relative 'menu'
 
 class Order
 
-  def initialize(menu: )
+  def initialize(menu: , notify: Notify.new)
     @summary = {}
     @menu = menu
+    @notify = notify
   end
 
   def add item
@@ -22,7 +23,8 @@ class Order
 
   def submit(order=@summary, paid=due)
     raise discrepency_message unless correct_total?(order, paid)
-    "Thank you! Your order was placed and will be delivered before #{next_hour}"
+    message = "Thank you! Your order was placed and will be delivered before #{next_hour}"
+    @notify.text message
   end
 
   private

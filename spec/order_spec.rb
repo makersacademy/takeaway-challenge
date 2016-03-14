@@ -1,12 +1,13 @@
 require 'order'
 
 describe Order do
-  subject(:order) { described_class.new(menu: menu) }
+  subject(:order) { described_class.new(menu: menu, notify: notify) }
   let(:menu) { double(:Menu, dishes: [dish1, dish2, dish3]) }
   let(:dish1) { double(:Dish, name: "Chicken", price: 1) }
   let(:dish2) { double(:Dish, name: "Fish", price: 2) }
   let(:dish3) { double(:Dish, name: "Steak", price: 3) }
   let(:dish1_index) { menu.dishes.index(dish1) }
+  let(:notify) { double(:Notify, text: nil) }
 
   describe '#from_menu' do
     it 'displays the menu for selection' do
@@ -35,11 +36,12 @@ describe Order do
   end
 
   describe '#submit' do
-    it 'submit correct final order' do
+    it 'sends a text' do
       next_hour = "#{(Time.now + 3600).hour}:#{Time.now.min}"
       message = "Thank you! Your order was placed "
       message += "and will be delivered before #{next_hour}"
-      expect(order.submit).to include message
+      expect(notify).to receive(:text).with(message)
+      order.submit
     end
 
     it 'submitting an incorrect final order errors' do
