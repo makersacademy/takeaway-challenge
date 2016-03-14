@@ -70,5 +70,6 @@ Ordering Items
 2.2.3 :008 > r.order_summary
  => "Total: $6750.00"
 2.2.3 :009 > r.checkout(6750)
+```
 
 After checkout SMS would be sent to the number in your ENV
