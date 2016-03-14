@@ -94,7 +94,7 @@ A text message will then be sent confirming the order and delivery time.
 
 How to use dotenv
 ------------------
-I used [dotenv] (https://github.com/bkeepers/dotenv) to protect sensitive data such as Twilio tokens and personal phone numbers. To install the gem, simply type in your terminal:
+I used [dotenv] (https://github.com/bkeepers/dotenv) to protect sensitive data such as [Twilio] (https://github.com/twilio/twilio-ruby) tokens and personal phone numbers. To install the gem, simply type in your terminal:
 ```
 $ gem install dotenv
 ```
@@ -112,7 +112,7 @@ TWILIO_NUMBER="type_in_your_twilio_number"
 RECEIVER_NUMBER="type_in_receivers_number"
 ```
 
-In your application, replace exposed sensitive data with, for example, ENV["AUTH"].
+In your application, replace exposed sensitive data with, for example, `ENV["AUTH"]`.
 Also make sure to add `.env` to `.gitignore` so that it does not get uploaded onto Github.
 
 To run the tests
