@@ -1,2 +1,6 @@
 /**/.DS_Store
 /coverage
+.env
+test.rb
+twilio_test.rb
+Untitled
