@@ -1,6 +1,5 @@
 require 'bigdecimal'
 require_relative 'delivery'
-require 'pry'
 
 class Order
   def initialize(menu: menu_object, delivery_klass: Delivery)
