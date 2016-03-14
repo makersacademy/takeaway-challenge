@@ -47,16 +47,16 @@ describe Basket do
     end
   end
 
-  describe '#calc_total' do
+  describe '#show_summary' do
     it '3.0 calculates the actual total' do
       basket.add(dish1)
       basket.add(dish2)
       basket.add(dish3)
-      expect(basket.calc_total).to eq(56)
+      expect(basket.show_summary).to eq(56)
     end
     it '3.1 raises an error if basket is empty' do
       message = 'Basket is empty'
-      expect{basket.calc_total}.to raise_error message
+      expect{basket.show_summary}.to raise_error message
     end
   end
 end
