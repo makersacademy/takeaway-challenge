@@ -1,6 +1,6 @@
-require './docs/dishes.rb'
+require './docs/dish.rb'
 
-describe Dishes do
+describe Dish do
   subject(:dish) { described_class.new(delicious_meal, price, quantity) }
   let(:delicious_meal) { double(:delicious_meal) }
   let(:price) { double(:price) }
