@@ -13,6 +13,8 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+ 
+ [![Build Status](https://travis-ci.org/MuriloDalRi/takeaway-challenge.svg?branch=master)](https://travis-ci.org/MuriloDalRi/takeaway-challenge)
 
 Instructions
 -------
