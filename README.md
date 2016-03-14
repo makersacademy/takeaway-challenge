@@ -1,91 +1,93 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
+[![Build Status](https://travis-ci.org/eripheebs/takeaway-challenge.svg?branch=master)](https://travis-ci.org/eripheebs/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/eripheebs/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/eripheebs/takeaway-challenge?branch=master)
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
+What it does (With code examples)
 -----
+You can create dishes with names and prices and menus which can store dishes:
+```
+irb
+2.2.3 :006 > menu = Menu.new
+ => #<Menu:0x007fd191819e98 @menu=[]>
+2.2.3 :007 > curry = Dish.new(name: "Curry", price: 7)
+ => #<Dish:0x007fd192a61a38 @name="Curry", @price=7>
+2.2.3 :008 > doughnut = Dish.new(name: "Doughnut", price: 2)
+ => #<Dish:0x007fd192a18f90 @name="Doughnut", @price=2>
+2.2.3 :009 > menu.add(curry)
+ => [#<Dish:0x007fd192a61a38 @name="Curry", @price=7>]
+2.2.3 :010 > menu.add(doughnut)
+ => [#<Dish:0x007fd192a61a38 @name="Curry", @price=7>, #<Dish:0x007fd192a18f90 @name="Doughnut", @price=2>]
+```
+You can create your own takeaway:
+```
+2.2.3 :011 > doughnuts_and_curry_house = Takeaway.new(menu)
+ => #<Takeaway:0x007fd1929c27d0 @menu=#<Menu:0x007fd191819e98 @menu=[#<Dish:0x007fd192a61a38 @name="Curry", @price=7>, #<Dish:0x007fd192a18f90 @name="Doughnut", @price=2>]>, @order_klass=Order, @order=#<Order:0x007fd1929c2780 @baske=[]>, @messenger_klass=Messenger, @messenger=#<Messenger:0x007fd1929c26e0 @account_sid="----------", @auth_token="---------", @from_phone="--------", @client=<Twilio::REST::Client @account_sid=----------->>>
+```
+You can order items that are on the menu:
+```
+2.2.3 :013 > doughnuts_and_curry_house.select_item(doughnut)
+ => 1
+```
+You can order more then one of the item at a time:
+```
+2.2.3 :014 > doughnuts_and_curry_house.select_item(doughnut, 2)
+ => 2
+```
+If you try to order an item not on the menu you get an error:
+```
+2.2.3 :012 > doughnuts_and_curry_house.select_item(sandwhich)
+RuntimeError: sandwhich is not on the menu.
+```
+You can confirm order against the total you expect:
+```
+2.2.3 :018 > doughnuts_and_curry_house.confirm_order(8)
+(It sends a text to your phone!)
+```
+If the order does not match the total you expect you will get an error message:
+```
+2.2.3 :017 > doughnuts_and_curry_house.confirm_order(2)
+RuntimeError: Does not match total of 8
+```
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+How I interpreted the User Stories:
+-----
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
-
+```
+1. I need a takeaway class where I can access the menu from and order food
+2. I need a menu class, which will log all the dishes.
+3. I need a dish class, which will store the dish's name and cost.
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
-
+```
+1. I need an order class.
+2. I need a method to add items to the basket in the order that must be called by a method in the takeaway class.
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+```
+1. I need a confirm order method in the takeaway class where you pass through an argument and it checks if it is the same.
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+1. I need a messenger class
+2. The confirm order method will send a text if the argument passed through matches the order total.
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+Installation Instructions
+-----
+- Fork the repo
+- Clone the repo to your computer: git clone [repo url]
+- Install bundle gem
+- Write an .env file in the root directory with your own Twilio account details
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Author
+-----
+Erika Pheby
