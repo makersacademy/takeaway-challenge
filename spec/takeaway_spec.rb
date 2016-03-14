@@ -11,7 +11,6 @@ describe "#confirmed_order" do
 
     it 'sends a payment confirmation text message' do
       expect(takeaway).to receive(:send_text).with("Thank you for your order")
-      order = Order.new
       takeaway.order.place_order("Chicken", 2)
       takeaway.complete_order(10)
     end
