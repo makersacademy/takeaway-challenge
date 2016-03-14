@@ -83,18 +83,19 @@ describe Order do
     end
   end
 
-  describe ' #delete_order' do
+  describe ' #delete' do
     it ' should delete a specific dish' do 
       allow(menu).to receive(:dish_price).and_return(10)
       order.place_order(dish2,6)
       order.delete(dish)
-      expect(order.current_order[1][0]).to eq dish2
+
+      expect(order.current_order[0][0]).to eq dish2
     end
   end
 
   describe ' #confirmation_number' do 
-    xit '1. should raise an error if it contains a string' do
-      expect{order.confirmation_number('test')}.to raise_error
+    it '1. should raise an error if it contains a string' do
+      expect{order.confirmation_number('test')}.to raise_error RuntimeError
     end
 
     it ' it should save a number' do

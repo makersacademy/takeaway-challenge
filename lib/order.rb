@@ -45,11 +45,11 @@ class Order
   end
 
   def delete(name)
-    current_order.each {|order| order.delete_if order.include?(name)}
+    current_order.delete_if{|order| order[0] ==(name)}
   end
 
   def confirmation_number(number)
-    #raise if number ~= /rspec/
+    raise if number =~ /[a-z]/i
     @number = number
   end
 private
