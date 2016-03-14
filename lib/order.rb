@@ -1,3 +1,6 @@
+
+
+
 class Order
   attr_reader :menu, :items
   def initialize(menu)
@@ -10,6 +13,7 @@ class Order
   end
 
   def place_order(sum)
+    raise "Not enough money" if sum < total
     receipt = ""
     dish_and_quantity.each{|item| receipt << item + ", "}
     receipt << "Total : #{total}"
