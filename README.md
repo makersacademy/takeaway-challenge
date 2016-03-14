@@ -31,3 +31,4 @@ Notes
 -------
 * This time around I went for a 'make it work first, refactor later'. While I found this easier, I'm not sure it's the best approach, as I have a feeling my code is not as clean or good. This Weekend I had very little spare time, so that adds to the noise.
 * Following on that, I didn't manage to clean up the rspec, so magic numbers and overly long lines everywhere.
+* While I'm somewhat happy with the state of the Dish, Order and Menu class and the fact that the last 2 don't depend on each other, I feel like the Controller class is a bit too bloated and untidy.

@@ -1,6 +1,9 @@
 require 'controller'
 
 describe Controller do
+  PAY_ZERO_POUND = 0
+  ADD_FIRST_DISH = 1
+
   subject(:test_controller) {described_class.new dummy_menu , dummy_order_class, dummy_twilio_class}
   let(:dummy_menu) {double :menu, list_dishes: nil, retrieve_dishes: [dummy_dish]}
   let(:dummy_order_class) {double :Order, new: dummy_order}
@@ -19,7 +22,7 @@ describe Controller do
       end
 
       it 'expect to create a new active order' do
-        expect(test_controller).to receive(:setup_new_order)
+        expect(test_controller).to receive :setup_new_order
         test_controller.welcome
       end
   end
@@ -27,8 +30,21 @@ describe Controller do
   describe '#list_dishes' do
 
     it 'calls the function on menu' do
-      expect(dummy_menu).to receive(:list_dishes)
+      expect(dummy_menu).to receive :list_dishes
       test_controller.list_dishes
+    end
+
+  end
+
+  describe '#show_outstanding_order' do
+    
+    before(:each) do
+      test_controller.welcome
+    end
+
+    it 'calls the function on order' do
+      expect(dummy_order).to receive :show_outstanding_order
+      test_controller.show_outstanding_order
     end
 
   end
@@ -41,12 +57,12 @@ describe Controller do
 
     it 'add the order to the list' do
       expect(dummy_order).to receive(:add_dish).with dummy_dish , 1
-      test_controller.add_dish 1
+      test_controller.add_dish ADD_FIRST_DISH
     end
 
     it 'update the total due' do
       expect(dummy_order).to receive :update_total
-      test_controller.add_dish 1
+      test_controller.add_dish ADD_FIRST_DISH
     end
 
   end
@@ -59,7 +75,7 @@ describe Controller do
 
     it 'checks the payment against the total' do
       expect(dummy_order).to receive :total_bill
-      test_controller.checkout 0
+      test_controller.checkout PAY_ZERO_POUND
     end
 
     it 'raises an error if the payment is incorrect' do
@@ -67,13 +83,13 @@ describe Controller do
     end
 
     it 'raises an error if trying to pay twice (you dummy)' do
-      test_controller.checkout 0
-      expect{test_controller.checkout 0}.to raise_error described_class::ALREADY_PAID
+      test_controller.checkout PAY_ZERO_POUND
+      expect{test_controller.checkout PAY_ZERO_POUND}.to raise_error described_class::ALREADY_PAID
     end
 
     it 'sends the confirmation text' do
-      expect(dummy_messages).to receive(:create)
-      test_controller.checkout 0
+      expect(dummy_messages).to receive :create
+      test_controller.checkout PAY_ZERO_POUND
     end
 
   end

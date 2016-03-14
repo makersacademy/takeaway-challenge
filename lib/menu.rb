@@ -19,7 +19,7 @@ class Menu
   private
 
   def parse_name name
-    name.to_s.gsub '_' , ' '
+    name.to_s.tr '_' , ' '
   end
 
 end

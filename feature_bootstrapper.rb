@@ -11,7 +11,7 @@ dishes = {
   noodles: 1
 }
 
-dish_list = Array.new
+dish_list = []
 dishes.each { |name , price| dish_list << ( Dish.new name , price ) }
 menu_ofday = Menu.new dish_list
 @shop = Controller.new menu_ofday , Order , Twilio::REST::Client

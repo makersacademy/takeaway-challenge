@@ -8,4 +8,4 @@ puts "\n\n"
 
 puts @shop.show_outstanding_order
 @shop.show_outstanding_order
-puts @shop.checkout 7
+puts @shop.checkout 70
