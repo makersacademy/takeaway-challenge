@@ -9,7 +9,8 @@ describe Takeaway do
   let(:client) {double :client, new: client}
   let(:messenger) {double :messenger}
   let(:messenger_klass) {double :messenger_klass, new: messenger}
-  subject(:takeaway) { described_class.new menu, order_klass, messenger_klass}
+  let(:phone) { double :phone }
+  subject(:takeaway) { described_class.new menu, order_klass, messenger_klass, phone}
 
   describe '#select_item' do
     it '> should send add item method to order class if it is on the menu' do
@@ -42,7 +43,7 @@ describe Takeaway do
     it '> should send text message if argument matches order total' do
       takeaway.select_item(dish)
       text_message = "Thank you! Your order was placed and will be delivered before #{Time.new + 3600}."
-      expect(messenger).to receive(:send).with(text_message)
+      expect(messenger).to receive(:send).with(text_message, phone)
       takeaway.confirm_order(5)
     end
 
