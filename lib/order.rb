@@ -3,7 +3,7 @@ require_relative 'delivery'
 
 class Order
 
-  INSUFICIENT_FUNDS = 'Not enough funds in your account'
+  INSUFICIENT_FUNDS = 'Not enough funds in your account'.freeze
 
   def initialize(menu: menu_object, delivery_klass: Delivery)
     @details = []
