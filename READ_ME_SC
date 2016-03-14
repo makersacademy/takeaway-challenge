@@ -1,0 +1,65 @@
+takeaway-challenge
+------------------
+
+Installation
+-------------
+* git clone sara6 network address
+* cd takeaway-challenge
+* bundle install
+* check twilio-ruby gem for text messsaging
+
+Lib and spec set up
+-------------------
+* menu
+* order
+* sms
+* Each of the above has a corresponding spec file.
+
+Description
+-----------
+* Got to user story 3(calculate price of order) and ran into difficulty.
+* order.rb place_order method needs fixing after adding price and receipt methods.
+* check menu class injected properly.
+* text messaging not complete. ENV not set-up properly to protect number.
+
+IRB testing
+------------
+Apples-Air:takeaway-challenge Apple$ pry
+[1] pry(main)> require './lib/menu.rb'
+=> true
+[2] pry(main)> cake_shop = Menu.new
+=> #<Menu:0x007f85b1c7ae78 @menu_contents={"chocolate cake"=>3.0, "brownie"=>1.0, "lemon drizzle"=>4.0}>
+[3] pry(main)> require './lib/order.rb'
+=> true
+[4] pry(main)> sarah_order = Order.new
+=> #<Order:0x007f85b1b19890 @balance=0, @basket={}, @menu_klass=Menu>
+[5] pry(main)> cake_shop.menu_display
+chocolate cake---£3.0
+brownie---£1.0
+lemon drizzle---£4.0
+=> {"chocolate cake"=>3.0, "brownie"=>1.0, "lemon drizzle"=>4.0}
+[6] pry(main)> sarah_order.place_order("Brownie",1)
+NoMethodError: undefined method `public_menu_contents' for nil:NilClass
+from /Users/Apple/Desktop/Makers_work/Week_2/weekend_challenge/takeaway-challenge/lib/order.rb:17:in `place_order'
+[7] pry(main)> exit
+Apples-Air:takeaway-challenge Apple$ pry
+[1] pry(main)> require './lib/menu.rb'
+=> true
+[2] pry(main)> cake_shop = Menu.new
+=> #<Menu:0x007f9151ba66e0 @menu_contents={"chocolate cake"=>3.0, "brownie"=>1.0, "lemon drizzle"=>4.0}>
+[3] pry(main)> cake_shop.menu_display
+chocolate cake---£3.0
+brownie---£1.0
+lemon drizzle---£4.0
+=> {"chocolate cake"=>3.0, "brownie"=>1.0, "lemon drizzle"=>4.0}
+[4] pry(main)> sarah_order = Order.new
+NameError: uninitialized constant Order
+from (pry):4:in `__pry__'
+[5] pry(main)> require './lib/order.rb'
+=> true
+[6] pry(main)> sarah_order = Order.new
+=> #<Order:0x007f91519d4f38 @balance=0, @basket={}>
+[7] pry(main)> sarah_order.place_order("Brownie",1)
+NoMethodError: undefined method `public_menu_contents' for nil:NilClass
+from /Users/Apple/Desktop/Makers_work/Week_2/weekend_challenge/takeaway-challenge/lib/order.rb:18:in `place_order'
+[8] pry(main)>
