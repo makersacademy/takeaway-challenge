@@ -16,7 +16,7 @@ describe Order do
       expect(order.items).to eq [dish, dish]
     end
   end
-
+# .to contain include
   describe "#place_order" do
     it "should return name and quantity of each item in order and total sum" do
       order.add_dish("dish",2)
@@ -28,6 +28,7 @@ describe Order do
       expect{order.place_order(10)}.to raise_error("Not enough money")
     end
   end
+
 
 
 

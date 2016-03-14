@@ -7,3 +7,6 @@ class Dishes
   end
 
 end
+
+# dish
+# struct objects 

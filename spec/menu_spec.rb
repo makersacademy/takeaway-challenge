@@ -10,6 +10,7 @@ describe Menu do
       expect(menu.all_dishes).to eq []
     end
   end
+  # to+be empty, length == 0
 
   describe "#add_dish" do
     it "should create a new dish object" do

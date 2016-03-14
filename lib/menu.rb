@@ -22,3 +22,5 @@ class Menu
 private
 attr_reader :dishes
 end
+
+# one class which is interface 

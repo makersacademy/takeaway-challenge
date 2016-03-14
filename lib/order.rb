@@ -21,11 +21,13 @@ class Order
 
 
   end
+  # list _ dishes
 
 
 
 
 private
+# total is public
   def total
     @total = @items.map{|x| x.price}.inject(0){|x,y| x+y}
   end
