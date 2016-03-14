@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/ccfz/takeaway-challenge.svg?branch=master)](https://travis-ci.org/ccfz/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/ccfz/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/ccfz/takeaway-challenge?branch=master)
+
 
 # Take-away Challenge
 
