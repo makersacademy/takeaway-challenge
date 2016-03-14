@@ -14,6 +14,15 @@ Takeaway Challenge
 
  ```
 
+Instructions
+-------
+* This is a takeaway shop simulator. At first you will be greeted with a small prompt listing some commands
+* Use #list_dishes to be returned a string with the available dishes
+* Use #update_order dish_id , amount to add a certain amount of a given dish to the current order
+* Use #outstanding_order to get a recap of the current order and a subTotal
+* Use #checkout amount_in_pounds to pay the bill and receive a confirmation text
+* #welcome sets up a new order once paid. It also works to scrub the order clean at any moment and start over, but that's a secondary effect that could be changed/removed in future
+
 Description
 -------
 [![Build Status](https://travis-ci.org/lorenzoturrino/airport_challenge.svg?branch=master)](https://travis-ci.org/lorenzoturrino/airport_challenge)

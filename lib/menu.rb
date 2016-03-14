@@ -7,7 +7,7 @@ class Menu
   def list_dishes
     current_menu = ''
     @dish_list.each.with_index do |dish, index|
-      current_menu << "#{index+1}: #{parse_name dish.dish_name}, #{dish.dish_price}£\n"
+    current_menu << "#{index+1}: #{parse_name dish.dish_name}, #{dish.dish_price}£\n"
     end
     current_menu
   end
