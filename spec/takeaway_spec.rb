@@ -25,6 +25,13 @@ describe Takeaway do
       takeaway.select_item(dish, 2)
     end
 
+    it '> should check if item is on menu' do
+      allow(order).to receive(:add_item).with(dish)
+      allow(menu).to receive_message_chain(:view, :include?).and_return(true)
+      expect(menu).to receive_message_chain(:view, :include?)
+      takeaway.select_item(dish, 2)
+    end
+
     it '> should raise error if item not on menu' do
       message = "#{dish} is not on the menu."
       allow(takeaway).to receive(:on_menu?).and_return(false)
