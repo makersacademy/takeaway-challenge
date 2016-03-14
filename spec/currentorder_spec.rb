@@ -11,19 +11,19 @@ describe CurrentOrder do
     end
   end
 
-  describe '#order_review' do
-    it 'stores items ordered' do
-      currentorder.new_item(order)
-      expect(currentorder.current_order).to eq [order]
-    end
-  end
-
   describe '#current_order' do
     it 'stores items ordered' do
       currentorder.new_item(order)
       expect(currentorder.current_order).to eq [order]
     end
   end
+
+  # describe '#order_review' do
+  #   it 'returns the total cost' do
+  #
+  # end
+  #
+
 
   # it 'raises error if item not on the item' do
 

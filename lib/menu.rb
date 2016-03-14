@@ -5,10 +5,10 @@ class Menu
 
   attr_reader :menu_view
 
-  def initialize(neworder = Order,deliverymessage = DeliveryMessage)
+  def initialize(new_order = Order,delivery_message = DeliveryMessage)
     @menu_view = {'eggs' => 4,'bacon' => 3,'toast' => 4}
-    @order_class = neworder
-    @delivery_message = deliverymessage
+    @order_class = new_order
+    @delivery_message = delivery_message
   end
 
   def view_menu
@@ -20,10 +20,12 @@ class Menu
     @order.review_order
   end
 
-  def order_item(item)
+  def order_item(item,quanitliy= 1)
     @order ||= @order_class.new
-    value = menu_view[item]
-    @order.new_order(item,value)
+    quanitliy.times do
+      value = menu_view[item]
+      @order.new_order(item,value)
+    end
   end
 
   def finish_order
