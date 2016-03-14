@@ -1,16 +1,63 @@
-Must initialize an order class with a menu instance.
-
-
-Original link
-https://github.com/makersacademy/takeaway-challenge
-My Github link
-https://github.com/olmesm/takeaway-challenge
-==================
-
-
-
 Takeaway Challenge
 ==================
+
+This app allows for a take-away restaurant to be created.
+
+Begin by cloning the repo to your PC then run bundle install.
+
+```
+git clone https://github.com/olmesm/takeaway-challenge.git
+cd takeaway-challenge
+bundle
+```
+
+Restaurant consists of four classes.
+  * Menu
+  * Notify
+  * Order
+  * Dish
+
+Dish
+-------
+Each meal is added as a dish instance. the dish is then added to the menu.
+
+`dish1 = Dish.new(name: "Chicken", price: 1)`
+
+Menu
+-------
+The contains a menu of dishes. A dish needs to be initialized then added to the menu.
+
+```
+new_menu = Menu.new
+# dishes can be added as follows, but need to be initialized first
+new_menu.add dish1
+```
+
+Order
+-------
+Needs to be initialized with a menu instance.
+
+`order = Order.new(menu: new_menu)`
+
+Notify
+-------
+Notify will alert the customer that their order has been accepted and is on its way.
+
+This class does not need to be initialized as an instance will be created with the order instance.
+
+Original challenge link
+---
+https://github.com/makersacademy/takeaway-challenge
+
+Challenge on my Github link
+---
+https://github.com/olmesm/takeaway-challenge
+
+Original Readme
+==================
+
+
+
 ```
                             _________
               r==           |       |
