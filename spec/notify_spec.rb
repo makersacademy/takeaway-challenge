@@ -1,3 +1,5 @@
+require 'dotenv'
+Dotenv.load
 require 'notify'
 
 describe Notify do
@@ -9,7 +11,8 @@ describe Notify do
 
   describe '#text' do
     it 'sends a text' do
-      expect(messages).to receive(:create)
+      argument = {:to=>ENV['PERSONAL'], :from=>ENV['TWILIO'], :body=>message}
+      expect(messages).to receive(:create).with argument
       twilio.text message
     end
   end

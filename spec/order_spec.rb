@@ -23,21 +23,21 @@ describe Order do
     end
 
     it 'adds a meal to the order' do
-      expect{ order.add dish1_index }.to change {
-        order.summary }.to include dish1.name
+      expect{ order.add dish1_index }
+      .to change { order.summary }.to include dish1.name
     end
   end
 
   describe '#summary' do
     it 'shows a summary of order' do
-      expect{ order.add dish1_index }.to change {
-        order.summary }.to include dish1.name
+      expect{ order.add dish1_index }
+        .to change {order.summary }.to include dish1.name
     end
   end
 
   describe '#submit' do
     it 'sends a text' do
-      next_hour = "#{(Time.now + 3600).hour}:#{Time.now.min}"
+      next_hour = "#{(Time.now + 3600).hour}:#{Time.now.min}" #check strftime
       message = "Thank you! Your order was placed "
       message += "and will be delivered before #{next_hour}"
       expect(notify).to receive(:text).with(message)

@@ -3,14 +3,14 @@ require_relative 'menu'
 class Order
 
   def initialize(menu: , notify: Notify.new)
-    @summary = {}
+    @summary = Hash.new(0)
     @menu = menu
     @notify = notify
   end
 
   def add item
     dish = @menu.dishes[item]
-    @summary[dish].nil? ? @summary[dish] = 1 : @summary[dish] += 1
+    @summary[dish] += 1
   end
 
   def summary
@@ -39,7 +39,7 @@ class Order
 
   def due(order=@summary)
     due = 0
-    order.each { |key, value| due += key.price * value }
+    order.each { |dish, quantity| due += dish.price * quantity }
     due
   end
 
