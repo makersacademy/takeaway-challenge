@@ -5,9 +5,9 @@ describe Order do
   let(:item) { double :item }
   let(:item2) { 'Pizza' }
   let(:price) { 6 }
-  let(:menu) {double :menu, show: []}
+  let(:menu) {double :menu, show: {item=>price}}
   let(:menu_hash) { {item=>price, item2=>price} }
-  let(:list) { puts :"Carbonara, £6.5\nPizza, £7\nCoke, £2\n" }
+  let(:list) { {item=>price} }
   let(:text) { double :text }
   let(:time) { (Time.now + 3600).strftime("%H:%M") }
 
@@ -20,7 +20,7 @@ describe Order do
   describe '#add' do
     it 'raise error if dish not on menu' do
       message = "That's not on this menu."
-      expect{order.add(item)}.to raise_error message
+      expect{order.add(item2)}.to raise_error message
     end
   end
 
@@ -49,11 +49,11 @@ describe Order do
       end
     end
 
-    describe '#total' do
+    describe '#calculate_total' do
       it 'returns total price for order' do
         order.add(item)
         total = "Your total for this order is £#{price}."
-        expect(order.total).to eq total
+        expect(order.calculate_total).to eq total
       end
     end
 

@@ -3,6 +3,8 @@ require 'dotenv'
 
 class Text
 
+  attr_reader :twilio_creds
+  
   def initialize
     @twilio_creds = Dotenv.load
   end
@@ -12,8 +14,6 @@ class Text
   end
 
   private
-
-  attr_reader :twilio_creds
 
   def confirmation_text(message)
     account_sid = @twilio_creds['account_sid']

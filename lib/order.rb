@@ -2,7 +2,7 @@ require_relative 'menu'
 require_relative 'text'
 
 class Order
-  attr_reader :order, :order_sum, :menu, :text
+  attr_reader :menu, :text
 
   def initialize(menu: Menu.new, text: Text.new)
     @menu = menu
@@ -12,19 +12,14 @@ class Order
   end
 
   def read_menu
-    menu_display = ''
-    menu_hash.each do |key, value|
-      menu_display << "#{key}, £#{value}\n"
-    end
-     puts menu_display
+    @menu.show
   end
 
   def add(item, qty=1)
     error = "That's not on this menu."
-    raise error unless menu_hash.include?(item)
-    qty.times{@order_sum << menu_hash[item]}
-    @order << [qty, item, menu_hash[item]]
-    "#{qty}x #{item}(s) added to your order."
+    raise error unless read_menu.include?(item)
+    order_sum(item, qty)
+    order(item, qty)
   end
 
   def summary
@@ -36,7 +31,7 @@ class Order
       order_list
   end
 
-  def total
+  def calculate_total
     @total = @order_sum.reduce(:+)
     "Your total for this order is £#{@total}."
   end
@@ -61,8 +56,12 @@ class Order
     @total = amount
   end
 
-  def menu_hash
-    @menu.show
+  def order_sum(item, qty)
+    qty.times{@order_sum << read_menu[item]}
   end
 
+  def order(item, qty)
+    @order << [qty, item, read_menu[item]]
+    "#{qty}x #{item}(s) added to your order."
+  end
 end
