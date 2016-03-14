@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  let(:dish) { double(:dish, price: nil, name: nil) }
+  let(:dish) { double(:dish, price: 5, name: 'dish') }
   let(:dish_klass) { double(:dish_klass, new: dish) }
   subject(:menu) do
     described_class.new(dish_klass: dish_klass)
