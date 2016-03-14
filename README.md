@@ -3,89 +3,131 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  J.X. |   ))))
           |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
+            //  \_____:_____.-------D     )))))    FOOD == HAPPINESS :D
            //   | ===  |   /        \
        .:'//.   \ \=|   \ /  .:'':./    )))))
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
+Introduction
+-------------
+This program simulates an online takeaway system that would allow restaurants to upload and modify menus, and customers to order available items and confirm their order upon checkout.
+
+Features
+-------------
+* For customers:
+    * Display a menu;
+    * Add available items to a basket;
+    * Display a basket summary, listing dishes, their quantities and prices;
+    * Calculate and display a total;
+    * Confirm total price upon completing order.
+* For restaurants:
+    * Upload and modify a menu with dishes and prices;
+    * Send a confirmation text message after order is complete.
+
+How to use Takeaway
+--------------------
+To clone this repo:
+```
+$ git clone git@github.com:junyuanxue/takeaway-challenge.git
+```
+
+Change to `takeaway-challenge` directory, open `irb` and require the `takeaway` file:
+```
+$ cd takeaway-challenge
+$ irb
+2.2.3 :001 > require "./lib/takeaway"
+ => true
+```
+
+To allow the flexibility of uploading menus (from an external file or hash) and modifying items, the program does not have a built-in menu at the moment. So before we start a takeaway order, we can design a menu first. (Hmm, and I really fancy some juicy, meaty burger...)
+```
+2.2.3 :002 > gbk = {"avocado bacon burger" => 9.45,
+2.2.3 :003 >     "kiwiburger" => 9.35,
+2.2.3 :004 >     "salvador burger" => 10.55,
+2.2.3 :005 >     "skinny fries" => 2.95,
+2.2.3 :006 >     "oreo milkshake" => 4.75,
+2.2.3 :007 >     "elderflower" => 2.35}
+ => {"avocado bacon burger"=>9.45, "kiwiburger"=>9.35, "salvador burger"=>10.55, "skinny fries"=>2.95, "oreo milkshake"=>4.75, "elderflower"=>2.35}
+2.2.3 :008 > burger = Menu.new
+ => #<Menu:0x007fc55b960b40 @menu={}>
+2.2.3 :009 > burger.upload(gbk)
+ => {"avocado bacon burger"=>9.45, "kiwiburger"=>9.35, "salvador burger"=>10.55, "skinny fries"=>2.95, "oreo milkshake"=>4.75, "elderflower"=>2.35}
+```
+
+Awesome! Now we can start our takeaway.
+```
+2.2.3 :010 > lunch = TakeAway.new(burger, Order, Messenger)
+ => #<TakeAway:0x007fc55c21a718 @menu=#<Menu:0x007fc55b960b40 @menu={"avocado bacon burger"=>9.45, "kiwiburger"=>9.35, "salvador burger"=>10.55, "skinny fries"=>2.95, "oreo milkshake"=>4.75, "elderflower"=>2.35}>, @order=#<Order:0x007fc55c21a6f0 @menu=#<Menu:0x007fc55b960b40 @menu={"avocado bacon burger"=>9.45, "kiwiburger"=>9.35, "salvador burger"=>10.55, "skinny fries"=>2.95, "oreo milkshake"=>4.75, "elderflower"=>2.35}>, @basket={}>, @messager=#<Messenger:0x007fc55b93a710 @client=<Twilio::REST::Client @account_sid=xxxxxxxxxxx>>>
+```
+
+To order a burger, some skinny fries (my favourite! :D), and of course, who can resist an Oreo milkshake:
+```
+2.2.3 :011 > lunch.order("avocado bacon burger")
+ => "1x avocado bacon burger(s) added to your basket."
+2.2.3 :012 > lunch.order("skinny fries", 2)
+ => "2x skinny fries(s) added to your basket."
+2.2.3 :013 > lunch.order("oreo milkshake")
+ => "1x oreo milkshake(s) added to your basket."
+```
+
+You can then view your basket summary, which you can check against your total:
+```
+2.2.3 :014 > lunch.basket_summary
+ => "avocado bacon burger x1 = £9.45, skinny fries x2 = £5.9, oreo milkshake x1 = £4.75. Total: £20.1"
+2.2.3 :015 > lunch.total
+ => "Total: £20.1"
+```
+
+And to complete your order:
+```
+2.2.3 :016 > lunch.complete_order(20.1)
+ => <Twilio::REST::Message @path=/20xx-xx-xx/Accounts/xxxxxxxxxxx/Messages/xxxxxxxxxx>
+```
+
+A text message will then be sent confirming the order and delivery time.
+
+How to use dotenv
+------------------
+I used [dotenv] (https://github.com/bkeepers/dotenv) to protect sensitive data such as [Twilio] (https://github.com/twilio/twilio-ruby) tokens and personal phone numbers. To install the gem, simply type in your terminal:
+```
+$ gem install dotenv
+```
+
+Create a `.env` file in the main directory of your project:
+```
+touch .env
+```
+
+Then input your [Twilio] (https://github.com/twilio/twilio-ruby) account details into your `.env` file:
+```
+ACC_SID="type_in_your_twilio_account"
+AUTH="type_in_your_twilio_auth_token"
+TWILIO_NUMBER="type_in_your_twilio_number"
+RECEIVER_NUMBER="type_in_receivers_number"
+```
+
+In your application, replace exposed sensitive data with, for example, `ENV["AUTH"]`.
+Also make sure to add `.env` to `.gitignore` so that it does not get uploaded onto Github.
+
+To run the tests
+-----------------
+In your terminal, type `$ rspec` under `takeaway-challenge` directory and it will run all the unit tests in spec files.
+
+Tools used
+-------------
+* Ruby
+* RSpec
+* [Twilio-Ruby] (https://github.com/twilio/twilio-ruby)
+* [dotenv] (https://github.com/bkeepers/dotenv)
+
+Author
 -------
+ Junyuan Xue
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+ [github](https://github.com/junyuanxue)  [blog](https://spinningcodes.wordpress.com/)
