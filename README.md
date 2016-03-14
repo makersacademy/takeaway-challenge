@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/tobenna/takeaway-challenge.svg?branch=master)]https://travis-ci.org/tobenna/takeaway-challenge.svg?branch=master
+
+[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 
@@ -27,7 +31,3 @@ The following environment variables are needed in your .env file
 'DEST_NUM' -> The number you want to be receiving the text messages
 
 A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
