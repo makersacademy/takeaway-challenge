@@ -5,10 +5,10 @@ describe Checkout do
   subject(:checkout) { described_class.new(client) }
   let(:messages) { double :messages, create: nil }
 
-  ENV = { "ACCOUNT_SID" => "FAKE ID",
-          "AUTH_TOKEN" => "FAKE TOKEN",
-          "TWILIO_NUM" => "FAKE FROM",
-          "MY_NUM" => "FAKE TO" }
+  # ENV = { "ACCOUNT_SID" => "FAKE ID",
+  #         "AUTH_TOKEN" => "FAKE TOKEN",
+  #         "TWILIO_NUM" => "FAKE FROM",
+  #         "MY_NUM" => "FAKE TO" }
 
   it 'should respond to send_sms method' do
     expect(checkout).to respond_to :send_sms
