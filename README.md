@@ -1,3 +1,13 @@
+User Instructions:
+
+The Takeaway file should be required in IRB. The user should create a new instance of the Takeaway class in IRB. They can then view the menu by calling the view_menu method on their instance. 
+
+To order the user should call the place_order method on their instance and pass it an argument of a  hash, with its keys as the strings of the dish they would like to order and the values the quantities of that dish. The second argument should then be an integer of their total. 
+
+If the hash keys match the items on the menu and their sum is correct the user will get a text sent with the order.
+
+
+
 Takeaway Challenge
 ==================
 ```
