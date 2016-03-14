@@ -18,16 +18,17 @@ class Takeaway
     @this_order ||= @order_class.new
   end
 
-  def add_to_order(dish)
-    @this_order.add(dish)
+  def add_to_order(dish, quantity=1)
+    @this_order.add(dish, quantity)
+    "#{quantity}x#{dish} was added to your order"
   end
 
   def order_price
-    @this_order.total_price
+    "Total: #{@this_order.total_price}"
   end
 
   def finalize_order(payment)
-    raise PAYMENT_ERROR if payment < @this_order.total_price
+    fail PAYMENT_ERROR if payment < @this_order.total_price
     "Thank you! Your order was placed and will be delivered before #{(Time.now + (60*60)).strftime('%H:%M')}"
   end
 

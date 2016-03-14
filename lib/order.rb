@@ -11,8 +11,8 @@ class Order
 
   def add(dish, quantity=1)
     if @menu.read.include?(dish)
-    @this_order[dish] += quantity
-  end
+      @this_order[dish] += quantity
+    end
   end
 
   def total_price

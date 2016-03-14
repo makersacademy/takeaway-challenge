@@ -1,6 +1,6 @@
 class Menu
 
-  attr_accessor :menu_list
+  attr_reader :menu_list
 
   def initialize
     @menu_list = { "pizza" => 3.50,
