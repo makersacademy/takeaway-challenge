@@ -1,9 +1,11 @@
+
 class TakeAway
 
   attr_reader :basket, :total
 
-  def initialize(dish_class=Dish)
+  def initialize(dish_class=Dish, order_confirmation_class=OrderConfirmation)
     @dish_class = dish_class
+    @order_confirmation_class = order_confirmation_class.new
     @basket = []
   end
 
@@ -30,25 +32,17 @@ class TakeAway
 
   def order(total_received)
     error_message = 'Total received doesn\'t match total price'
-
-    raise error_message if total_received != @total
-    'Send text'
+    raise error_message if total_received != total
+    text_message = "Thank you for your order. You've paid £#{total}. Your food will arrive in 40-60m."
+    @order_confirmation_class.send_sms(text_message)
   end
 
-  def text_message
-    @text_message =
-    "Thank you for your order. You've paid £#{total}.
-    Your food will arrive in 40-60m."
-  end
-
-  private
-
-  def takeaway_total
-    self.basket.each_index do |item|
-      @total = self.basket[item].price * self.basket[item].quantity
+  def total
+    @basket.each_index do |dish|
+      self.basket[dish].price
+      @total = @basket[dish].price * @basket[dish].quantity
     end
-    total
+    @total
   end
-
 
 end
