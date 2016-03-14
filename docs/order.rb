@@ -14,7 +14,7 @@ class Order
 
   def add(dish)
     @view << dish
-    @total += dish.price
+    @total += dish.price * dish.quantity
   end
 
   def finish
