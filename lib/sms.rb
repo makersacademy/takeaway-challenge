@@ -15,14 +15,14 @@ class Sms
 
   def delivery_time
     one_hour = 60*60
-    @delivery_time = ((Time.now + one_hour).strftime('%H:%M')) 
+    (Time.now + one_hour).strftime('%H:%M') 
   end
 
   def send_order_confirmation
     message = client.account.messages.create(
     :from => @twilio_number,
     :to => @cust_phone_number,
-    :body => "Thank you! Your order was placed and will be delivered before #{@delivery_time}"
+    :body => "Thank you! Your order was placed and will be delivered before #{delivery_time}"
   )  
   end
 

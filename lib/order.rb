@@ -5,7 +5,7 @@ class Order
 
   def initialize(menu_class=Menu)
     @menu_class = menu_class
-    @menu = menu_class.new
+    @menu = @menu_class.new
     @current_order = Hash.new
   end
 
@@ -24,13 +24,14 @@ class Order
   end
 
   def order_total
-    @order_total = calculate_order_total
+    calculate_order_total
   end
+
+  WRONG_TOTAL_ERR = "Sorry, correct total is £#{}"  
+  INVALID_DISH_ERR = "Sorry, that is not on the menu" 
 
   private
 
-  WRONG_TOTAL_ERR = "Sorry, correct total is £#{@order_total}"  
-  INVALID_DISH_ERR = "Sorry, that is not on the menu" 
   
   def push_to_current_order(dish, quantity)
      @current_order[dish] = quantity
@@ -42,9 +43,9 @@ class Order
 
 
   def calculate_order_total
-    sum = 0
-    @current_order.map { |dish, qty|
-     (@menu.dish_price(dish) * qty )}.inject(:+)
+    @current_order.map do  |dish, qty|
+      (@menu.dish_price(dish) * qty )
+    end.inject(:+)
 
   end
   

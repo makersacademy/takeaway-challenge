@@ -1,7 +1,5 @@
 require 'sms'
 
-
-
 describe Sms do
 
   subject(:sms) { described_class.new }
@@ -10,20 +8,25 @@ describe Sms do
   let(:client) { double :client, account: account }
   let(:account) { double :account, messages: messages }
   let(:messages) { double :messages, create: nil }
-  let(:delivery_time) { double :delivery_time }
-  let(:message_details) { double :message_details }
-
+  
   describe '#send_order_confirmation' do
     it { is_expected.to respond_to(:send_order_confirmation) } 
 
 
     it 'will create a message' do
-      allow(sms).to receive(:send_order_confirmation) {  }
-      allow(client).to receive(:account) { nil }
-      allow(messages).to receive(:create).with(message_details){ nil }
+      allow(sms).to receive(:client) { client }
+      allow(client).to receive(:account) { client }
+      allow(client).to receive(:messages) { client }
+      expect(client).to receive(:create)
       sms.send_order_confirmation
+     
     end
 
-  end
+  describe '#delivery_time' do
 
+    it 'will return a time' do
+      expect(sms.delivery_time.class).to eq String
+  end
+  end
+  end
 end
