@@ -58,12 +58,17 @@ describe Controller do
     end
 
     it 'checks the payment against the total' do
-      expect(dummy_order).to receive(:total_bill)
+      expect(dummy_order).to receive :total_bill
       test_controller.checkout 0
     end
 
     it 'raises an error if the payment is incorrect' do
-      expect {test_controller.checkout 1}.to raise_error(described_class::PAYMENT_ERROR)
+      expect{test_controller.checkout 1}.to raise_error described_class::PAYMENT_ERROR
+    end
+
+    it 'raises an error if trying to pay twice (you dummy)' do
+      test_controller.checkout 0
+      expect{test_controller.checkout 0}.to raise_error described_class::ALREADY_PAID
     end
 
     it 'sends the confirmation text' do

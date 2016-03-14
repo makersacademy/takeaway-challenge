@@ -4,6 +4,7 @@ Dotenv.load
 class Controller
 
   PAYMENT_ERROR = "Incorrect Payment! Fork over the money yo!"
+  ALREADY_PAID = "Thank you, but you paid already!"
   CONFIRMATION_MESSAGE = "Your order is completed. Delivery soon. ID is:"
   GOODBYE_MESSAGE = "Thank you for ordering! You will receive a confirmation
   via SMS soon. In the meantime, use #welcome if you want to order again."
@@ -41,7 +42,7 @@ class Controller
 
   def checkout payment
     raise PAYMENT_ERROR unless payment == @current_order.total_bill
-    send_sms CONFIRMATION_MESSAGE + @current_order.object_id.to_s
+    raise ALREADY_PAID if @bill_paid
     confirm_transaction
   end
 
@@ -49,6 +50,7 @@ class Controller
 
   def setup_new_order
     @current_order = @order_class.new @menu
+    @bill_paid = false
   end
 
   def setup_twilio
@@ -66,6 +68,8 @@ class Controller
   end
 
   def confirm_transaction
+    @bill_paid = true
+    send_sms CONFIRMATION_MESSAGE + @current_order.object_id.to_s
     GOODBYE_MESSAGE
   end
 
