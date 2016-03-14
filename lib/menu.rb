@@ -16,7 +16,6 @@ class Menu
 
   def remove(dish_name)
     find_dish(dish_name)
-    fail DOES_NOT_EXIST_ERROR unless in_menu?
     delete(dish_name)
   end
 

@@ -34,9 +34,7 @@ class Order
 
   def remove(dish_name)
     dish = find_dish(dish_name)
-    @details.reject! do |sub_order|
-      sub_order[:dish].name == dish.name
-    end
+    @details.reject! { |sub_order| sub_order[:dish].name == dish.name }
   end
 
   def complete(amount)
@@ -46,9 +44,8 @@ class Order
   end
 
   def total
-    total = 0
-    view.each { |order| total += order[:sub_total] }
-    total
+    view.inject(0) { |mem, order| mem + order[:sub_total] }
+    # NOTE: has to start from zero if you use inject
   end
 
   def readable_total
