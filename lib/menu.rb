@@ -1,5 +1,3 @@
-# will be delivered before 18:52" after I have ordered
-# require 'pry'
 class Menu
   ALREADY_EXISTS_ERROR = 'Dish is already on the menu'.freeze
   DOES_NOT_EXIST_ERROR = 'This dish is not on the menu'.freeze
