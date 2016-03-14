@@ -21,6 +21,10 @@ attr_reader :order, :dishes
     end
   end
 
+  def delete_dish(name)
+    @dishes.delete(name)
+  end
+
   def dish_price(name)
     @dishes[name].price
   end

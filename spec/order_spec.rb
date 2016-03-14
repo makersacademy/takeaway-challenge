@@ -10,7 +10,7 @@ describe Order do
     allow(menu).to receive(:dish_price).and_return(5)
     order.place_order(dish,2)
   end
-  
+
   describe ' #initialize' do
     it ' 1. should initialize a menu' do
       expect(order.menu).to eq menu
@@ -39,13 +39,13 @@ describe Order do
   describe ' #subtotal' do
     
     it ' returns a subtotal of the order' do
-      expect(order.summarize.last[2]).to eq 10
+      expect(order.summary.last[2]).to eq 10
     end
   end
 
-  describe ' #order_summary' do
+  describe ' #summary' do
     it ' should list dishes with their quantity & subtotal' do
-      expect(order.summary.last).to eq [dish, 2, 10]
+      expect(order.total[-2]).to eq [dish, 2, 10]
     end
   end
 
@@ -74,7 +74,32 @@ describe Order do
       expect(order).to receive(:send_sms)
       order.confirm_order(10)
     end
+  end
 
+  describe ' #abort' do
+    it 'should clear the current order' do 
+      order.abort
+      expect(order.current_order).to eq nil
+    end
+  end
 
+  describe ' #delete_order' do
+    it ' should delete a specific dish' do 
+      allow(menu).to receive(:dish_price).and_return(10)
+      order.place_order(dish2,6)
+      order.delete(dish)
+      expect(order.current_order[1][0]).to eq dish2
+    end
+  end
+
+  describe ' #confirmation_number' do 
+    xit '1. should raise an error if it contains a string' do
+      expect{order.confirmation_number('test')}.to raise_error
+    end
+
+    it ' it should save a number' do
+      order.confirmation_number(3022030323)
+      expect(order.number).to eq 3022030323
+    end
   end
 end

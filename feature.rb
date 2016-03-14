@@ -18,7 +18,7 @@ puts
 puts
 
 p 'Test 3 #place_order'
-order.place_order(:tuna_paste, 10)
+p order.place_order(:tuna_paste, 10)
 puts
 puts
 
@@ -32,5 +32,5 @@ p order.total
 puts puts
 
 p 'Test 6 should send a confirmation sms'
-p order.confirm_order(100)
+p #order.confirm_order(100)
 

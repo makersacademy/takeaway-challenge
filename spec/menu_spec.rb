@@ -5,6 +5,9 @@ describe Menu do
   let(:dish_class) {double(:Dish_class, new: dish)}
   subject(:menu) {described_class.new(dish_class)}
 
+  before(:each) do
+  allow(dish).to receive(:price)
+  end 
   
   describe ' #create_dish' do 
 
@@ -18,7 +21,6 @@ describe Menu do
     end
 
     it '2. should create a hash where the key is the name of the dish' do
-      allow(dish).to receive(:price)
       expect(menu.see_dishes).to include(:tuna)
     end
 
@@ -47,6 +49,16 @@ describe Menu do
       allow(dish).to receive(:price).and_return(4.56)
       menu.create_dish(:tuna, 4.56)
       expect(menu.dish_price(:tuna)).to eq 4.56
+    end
+  end
+
+
+  describe '#delete dish' do
+    it 'should delete a dish' do
+      menu.create_dish(:steak, 7.56)
+      menu.create_dish(:tuna, 4.56)
+      menu.delete_dish(:steak)
+      expect(menu.see_dishes).to_not include(:steak)
     end
   end
 end
