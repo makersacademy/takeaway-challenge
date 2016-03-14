@@ -5,9 +5,9 @@ class Takeaway
 
 attr_reader :order
 
-def initialize (order_class = Order)
-  @order = order_class.new
-end
+  def initialize (order_class = Order)
+    @order = order_class.new
+  end
 
     def complete_order(total)
       raise "Sorry that does not match the total" if @order.total_bill != total
