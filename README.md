@@ -11,6 +11,27 @@ cd takeaway-challenge
 bundle
 ```
 
+Environmental Variables
+---
+A new `.env` file needs to be added to your takeaway-challenge folder and environment variables need to be added as follows:
+
+```
+# Sign-up at https://www.twilio.com
+# and enter your details below.
+ACCOUNTSID=     # Account ID supplied by Twilio.
+AUTHTOKEN=      # Auth Token supplied by Twilio.
+PERSONAL=       # Your personal mobile number.
+TWILIO=         # Number assigned from Twilio.
+```
+
+Next run the following to append `/.env` to your `.gitignore` file.
+
+```
+echo '/.env' | cat >> .gitignore
+```
+Restaurant
+====
+
 Restaurant consists of four classes.
   * Menu
   * Notify
