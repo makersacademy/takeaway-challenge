@@ -20,7 +20,7 @@ require 'order'
 describe Order do
   let(:menu) { double :menu, find_dish: dish }
   let(:dish) { double :dish, price: 10, name: 'Rice-cakes' }
-  let(:delivery) { double :delivery, dispatch: nil}
+  let(:delivery) { double :delivery, dispatch: nil }
   let(:delivery_klass) { double :delivery_klass, new: delivery }
   subject(:order) do
     described_class.new(menu: menu, delivery_klass: delivery_klass)

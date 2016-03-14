@@ -1,7 +1,7 @@
 require 'bigdecimal'
 
 class Order
-  def initialize(menu: menu_object, delivery_klass: delivery_klass)
+  def initialize(menu: menu_object, delivery_klass: delivery_class)
     @details = []
     @menu = menu
     @total = 0

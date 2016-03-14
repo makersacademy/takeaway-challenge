@@ -25,11 +25,11 @@ class Delivery
   end
 
   def send_message(to = ENV['DEST_NUM'])
-    @client.messages.create(from: @tel, to: to,body: @message)
+    @client.messages.create(from: @tel, to: to, body: @message)
   end
 
   def delivery_time
     one_hour = (60 * 60)
-    (Time.now + one_hour).strftime("%I:%M%p")
+    (Time.now + one_hour).strftime('%I:%M%p')
   end
 end
