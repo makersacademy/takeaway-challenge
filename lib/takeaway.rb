@@ -4,13 +4,12 @@ class TakeAway
 
   def initialize(dish_class=Dish)
     @dish_class = dish_class
-    @basket = Array.new
+    @basket = []
   end
 
   def list_menu
-    menu = {
-        "Bratwurst in a bun" => 2.49,
-        "Bockwurst in a bun" => 2.49,
+    menu = {"Bratwurst in a bun" => 2.49,
+      "Bockwurst in a bun" => 2.49,
         "Käsekrainer in a bun" => 2.79,
         "Veggie sausage in a bun" => 2.29,
         "Sauerkraut" => 1.19,
@@ -31,12 +30,16 @@ class TakeAway
 
   def order(total_received)
     error_message = 'Total received doesn\'t match total price'
+
     raise error_message if total_received != @total
     'Send text'
   end
 
-
-
+  def text_message
+    @text_message =
+    "Thank you for your order. You've paid £#{total}.
+    Your food will arrive in 40-60m."
+  end
 
   private
 
@@ -48,13 +51,4 @@ class TakeAway
   end
 
 
-
 end
-
-# class BasketItem
-#   attr_reader :price,:quantity
-#   def initialize(price,quantity)
-#     @price = price
-#     @quantity = quantity
-#   end
-# end
