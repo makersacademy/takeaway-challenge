@@ -11,4 +11,6 @@ class Dishes
   def quantity(num = @quantity)
     @quantity = num
   end
+
+
 end

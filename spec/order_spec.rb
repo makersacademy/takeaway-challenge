@@ -19,6 +19,11 @@ describe Order do
   end
 
   describe 'order review' do
+
+    it 'should finish the order' do
+      message = "Thanks for ordering with us!"
+      expect(order.finish).to eq message
+    end
     it 'should return sum of all dish prices in order' do
       5.times { order.add(dish) }
       expect(order.total).to eq 50
