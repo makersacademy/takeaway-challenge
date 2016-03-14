@@ -1,7 +1,8 @@
 require 'bigdecimal'
+require_relative 'delivery'
 
 class Order
-  def initialize(menu: menu_object, delivery_klass: delivery_class)
+  def initialize(menu: menu_object, delivery_klass: Delivery)
     @details = []
     @menu = menu
     @total = 0
@@ -24,8 +25,7 @@ class Order
   end
 
   def summary
-    pretty_total = format('%.2f', ((total * 100).round / 100.0))
-    "Total: $#{pretty_total}"
+    "Total: $#{total}"
   end
 
   def remove(dish_name)
@@ -36,14 +36,14 @@ class Order
   end
 
   def complete
-    @delivery.dispatch(@order)
+    @delivery.dispatch(total)
     empty_details
   end
 
   def total
     total = 0
     view.each { |order| total += order[:sub_total] }
-    total.to_f
+    format('%.2f', ((total * 100).round / 100.0))
   end
 
   private

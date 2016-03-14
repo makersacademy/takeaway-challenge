@@ -3,12 +3,12 @@ require 'restaurant'
 describe Restaurant do
   let(:menu) { double(:menu, view: nil) }
   let(:order) { double(:order, add: nil, view: 'Orders') }
-  let(:menu_klass) { double(:menu_klass, new: menu) }
+  let(:menu) { double :menu }
   let(:order_klass) { double(:order_klass, new: order) }
   let(:dish_name) { 'Pizza' }
   let(:quantity) { 7 }
   subject(:restaurant) do
-    described_class.new(menu_klass: menu_klass, order_klass: order_klass)
+    described_class.new(menu_instance: menu, order_klass: order_klass)
   end
   context 'There is an active order' do
     before { restaurant.order_add(dish_name, quantity) }

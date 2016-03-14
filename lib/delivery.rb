@@ -11,15 +11,14 @@ class Delivery
     @client = twilio_rest.new account_sid, auth_token
   end
 
-  def dispatch(order)
-    @message = build_message(order)
+  def dispatch(total)
+    @message = build_message(total)
     send_message
   end
 
   private
 
-  def build_message(order)
-    total = order.total
+  def build_message(total)
     time = delivery_time
     "Thank you! Your order cost:$#{total} and will be delivered before #{time}"
   end

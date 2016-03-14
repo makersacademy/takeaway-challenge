@@ -1,6 +1,6 @@
 class Restaurant
-  def initialize(menu_klass: menu_class, order_klass: order_class)
-    @menu = menu_klass.new
+  def initialize(menu_instance: menu, order_klass: Order)
+    @menu = menu_instance
     @order_klass = order_klass
     create_order
   end
@@ -14,7 +14,7 @@ class Restaurant
     @order.add(dish_name, quantity)
   end
 
-  def order_remove(dish_name, quantity = 1)
+  def order_remove(dish_name)
     @order.remove(dish_name, quantity)
   end
 
@@ -34,6 +34,6 @@ class Restaurant
   private
 
   def create_order
-    @order = @order_klass.new @menu
+    @order = @order_klass.new(menu: @menu)
   end
 end
