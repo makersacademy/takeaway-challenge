@@ -30,7 +30,7 @@ class Order
   end
 
   def send_sms
-    # twilio_text
+    twilio_text
   end
 
   private
