@@ -10,7 +10,12 @@ class Order
   end
 
   def show_outstanding_order
-    @current_order.dup
+    order = "The current order is:\n"
+    @current_order.each do |dish, amount|
+      order << "• #{dish.dish_name} x#{amount}: #{dish.dish_price*amount}£\n"
+    end
+    order << "\n    For a subTotal of #{@bill}£"
+    order.tr '_' , ' '
   end
 
   def add_dish dish , amount

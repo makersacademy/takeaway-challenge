@@ -4,13 +4,11 @@ describe Order do
   subject(:test_order) {described_class.new}
   let(:dummy_dish) {double :dish, dish_price: 1}
 
-  describe '#add_dish' do
+  describe '#show_outstanding_order' do
 
-    it 'adds a dish to the current order' do
-      test_order.add_dish dummy_dish , 1
-      expect(test_order.show_outstanding_order).to include dummy_dish => 1
-    end
-
+      it 'returns a human-readable summary of the current order' do
+        expect(test_order.show_outstanding_order.class).to eq String
+      end
   end
 
   describe '#update_total' do

@@ -7,5 +7,5 @@ puts "\n\n"
 @shop.add_dish 3 , 1
 
 puts @shop.show_outstanding_order
-@shop.show_outstanding_order
+
 puts @shop.checkout 70
