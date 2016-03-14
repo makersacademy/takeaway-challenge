@@ -63,5 +63,12 @@ describe Order do
       expect(order).to receive(:send_sms)
       order.confirm_order
     end
+
+    describe '#order_total'
+    it 'shows the total' do
+      order.take_order(dish1, quantity)
+      total = menu.display[dish1] * quantity
+      expect(order.order_total).to eq(total)
+    end
   end
 end
