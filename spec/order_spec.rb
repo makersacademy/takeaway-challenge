@@ -1,12 +1,12 @@
 require "order"
 
 describe Order do
-  let(:menu) { double :menu, list: {MENU_ITEM => MENU_ITEM_PRICE}, price: MENU_ITEM_PRICE }
+  let(:menu) { double :menu, list: {menu_item => menu_item_price}, price: menu_item_price }
   let(:sms_sender) { double :sms_sender }
   subject(:order) { described_class.new(menu, sms_sender) }
-  MENU_ITEM = "Cheese sandwich"
-  MENU_ITEM_PRICE = 3
-  ITEM_QUANTITY = rand(1..5)
+  let(:menu_item) { double :cheese_sandwich }
+  let(:menu_item_price) { 3 }
+  let(:item_quantity) { rand(1..5) }
 
   describe "#initialize" do
     it "has an empty basket" do
@@ -24,11 +24,11 @@ describe Order do
   describe "#add_to_basket" do
 
     before do
-      order.add_to_basket(MENU_ITEM, ITEM_QUANTITY)
+      order.add_to_basket(menu_item, item_quantity)
     end
 
     it "should add menu item to basket" do
-      expect(order.basket).to include(MENU_ITEM => ITEM_QUANTITY)
+      expect(order.basket).to include(menu_item => item_quantity)
     end
     it "raises error when trying to select item that is not on the menu" do
       message = Order::NOT_ON_MENU_ERROR
@@ -39,11 +39,11 @@ describe Order do
   describe "#checkout" do
 
     before do
-      order.add_to_basket(MENU_ITEM)
+      order.add_to_basket(menu_item)
     end
 
     it "raises error if estimated cost is incorrect" do
-      estimated_total = rand(0..MENU_ITEM_PRICE-1)
+      estimated_total = rand(0..menu_item_price-1)
       message = Order::INCORRECT_ESTIMATED_TOTAL_ERROR
       expect { order.checkout(estimated_total) }.to raise_error message
     end
@@ -54,7 +54,7 @@ describe Order do
     end
     it "sends an SMS confirmation" do
       expect(sms_sender).to receive(:send_sms)
-      order.checkout(MENU_ITEM_PRICE)
+      order.checkout(menu_item_price)
     end
   end
 end
