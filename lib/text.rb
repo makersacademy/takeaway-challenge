@@ -1,6 +1,5 @@
 require 'twilio-ruby'
 require 'dotenv'
-# require 'rubygems'
 
 class Text
 
@@ -25,7 +24,7 @@ class Text
   @client = Twilio::REST::Client.new  account_sid, auth_token
 
   @message = @client.messages.create(
-    to: receiver,
+    to:   receiver,
     from: sender,
     body: message
   )
