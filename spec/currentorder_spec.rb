@@ -25,12 +25,11 @@ describe CurrentOrder do
     end
   end
 
-  describe '#order_review' do
-    it 'returns each item cost' do
-      currentorder.new_item(order)
-      expect(currentorder.order_review).to eq 'eggs' + " cost: " + '4'
-    end
-  end
+  # it 'raises error if item not on the item' do
+
+  # it 'sums the correct total amount'
+
+  # it returns the menu and cost
 
 
 

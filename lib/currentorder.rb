@@ -24,6 +24,7 @@ class CurrentOrder
         @total += value
         key + " cost: " + value.to_s
       end
+      @total
     end
   end
 
