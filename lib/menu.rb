@@ -21,6 +21,7 @@ class Menu
   end
 
   def order_item(item,quantity=1)
+    # raise 'This item is not on the menu' if not_on_menu?(item)
     @order ||= @order_class.new
     quantity.times do
       value = menu_view[item]
@@ -33,6 +34,12 @@ class Menu
     @order.completed
     @message = @delivery_message.new
     @message.send_message
+  end
+
+  private
+
+  def not_on_menu?(item)
+    @menu_view[item].nil?
   end
 
 end

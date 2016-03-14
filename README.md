@@ -14,6 +14,16 @@ Takeaway Challenge
 
  ```
 
+ Installation Instructions
+ ---------
+
+ To instal the takeaway software you must follow these Instructions.
+
+ ```
+ $ git clone https://github.com/acookson91/takeaway-challenge.git
+ $ cd takeaway-challenge
+ ```
+
 Instructions
 -------
 

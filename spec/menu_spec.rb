@@ -5,9 +5,11 @@ describe Menu do
     let(:order_class){double:order_class, new: order}
     let(:order){double:order, new_order: value, order_review: nil, completed: nil}
     let(:item){double:item}
+    let(:item2){double:item2}
     let(:delivery_message){double:delivery_message, new: message}
     let(:message){double:message, send_message: nil}
     let(:value){double:value}
+    let(:menu_view){double:item => 4}
 
   describe '#view_menu' do
     it 'returns menu' do
@@ -21,6 +23,11 @@ describe Menu do
       menu.order_item(item)
     end
 
+    it 'raises error if item not on the menu' do
+      message = 'This item is not on the menu'
+      expect{menu.order_item(item2)}.to raise_error message
+    end
+
     it 'creates new order' do
       expect(order_class).to receive(:new)
       menu.order_item(item)
@@ -30,7 +37,6 @@ describe Menu do
       expect(order).to receive(:new_order).and_return(item).twice
       menu.order_item(item,2)
     end
-
 
   end
 

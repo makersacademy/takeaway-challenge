@@ -17,16 +17,25 @@ class CurrentOrder
     @current_order
   end
 
-
   def order_review
-    @current_order.each do |hash|
-      hash.each do |key,value|
-        @total += value
-        key + " cost: " + value.to_s
-      end
-      @total
-    end
+    cost_breakdown
+    current_total
   end
 
+
+private
+
+  def current_total
+    puts 'Total order cost: ' + @total.to_s
+  end
+
+  def cost_breakdown
+    @current_order.each do |hash|
+      hash.each do |key,value|
+      @total += value
+      puts  key.capitalize + " cost: " + value.to_s
+      end
+    end
+  end
 
 end
