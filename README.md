@@ -31,7 +31,7 @@ Instructions
  @menu=#<Menu:0x007fb8438f1d50 @dishes={}>,
  @order_klass=Order,
  @order_log=[],
- @sms=#<Sms:0x007fb84307e880 @client=<Twilio::REST::Client @account_sid=AC4d884080618a7f0dbde8223d27f647f9>>>
+ @sms=#<Sms:0x007fb84307e880 @client=<Twilio::REST::Client @account_sid=XXXXXXXXXXXXXXXXXXXXXXXXXXXXX>>>
 [7] pry(main)> menu.load_menu
 => {:pizza=>7.0, :burger=>9.99, :pasta=>7.5, :"something healthy"=>8.0}
 [8] pry(main)> menu.add 'lasagne', 7.99
