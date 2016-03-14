@@ -13,6 +13,11 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+## Introduction
+
+## Installation Instructions
+
+## Usage instructions
 
 ## Assumptions
 
@@ -28,7 +33,15 @@ Takeaway Challenge
 
 ## ISSUES
 
-* Major issues with rspec. I simply do not understand how to test for the desired behavior. I need further instruction o the use of rspec. I will get this through online training courses offered by lynda.com and reading the rspec book. The relish documentation is insufficient as a teaching tool and "try different things until it works" is contrary to my learning style.  
+* Major issues with rspec. I simply do not understand how to test for the desired behavior. I need further instruction o the use of rspec. I will get this through online training courses offered by lynda.com and reading the rspec book. The relish documentation is insufficient as a teaching tool and "try different things until it works" is contrary to my learning style.
+* The SMS capability is untested in rspec.
+
+## BUGS
+
+* Too many to count I'm sure. rspec posed a formidable challenge to me (see above).
+
+## IMPRESSIONS
+
 
 
 Instructions

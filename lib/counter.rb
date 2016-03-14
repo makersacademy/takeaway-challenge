@@ -1,5 +1,7 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
+# how to add these to every file rather than type here
 
 class Counter
 
