@@ -8,10 +8,16 @@ describe Order do
     described_class.new(menu: menu, delivery_klass: delivery_klass)
   end
 
-  before { order.add('dish', 25) }
+  before { order.add('Rice-cakes', 25) }
   describe '#add' do
     it 'adds a dish with its quantity to the current order' do
       expect(order.details).to include(dish: dish, quantity: 25)
+    end
+
+    it 'increases quantity when already in cart' do
+      order.add('Rice-cakes', 25)
+      expected_dish = { name: dish.name, quantity: 50, sub_total: 500 }
+      expect(order.view).to include expected_dish
     end
   end
 

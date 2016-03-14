@@ -1,5 +1,6 @@
 require 'bigdecimal'
 require_relative 'delivery'
+require 'pry'
 
 class Order
   def initialize(menu: menu_object, delivery_klass: Delivery)
@@ -11,6 +12,7 @@ class Order
 
   def add(dish_name, quantity = 1)
     dish = find_dish(dish_name)
+    return increase_quantity(dish_name, quantity) if in_basket?(dish_name)
     save_order(dish, quantity)
   end
 
@@ -52,6 +54,12 @@ class Order
     @menu.find_dish(name)
   end
 
+  def increase_quantity(dish_name, quantity)
+    @details.each do |item|
+      item[:quantity] += quantity if find_by_name(item, dish_name)
+    end
+  end
+
   def save_order(dish, quantity)
     @details << { dish: dish, quantity: quantity }
   end
@@ -64,5 +72,14 @@ class Order
 
   def empty_details
     @details = []
+  end
+
+  def in_basket?(dish_name)
+    @details.each { |item| return true if find_by_name(item, dish_name) }
+    false
+  end
+
+  def find_by_name(item, dish_name)
+    item[:dish].name == dish_name
   end
 end
