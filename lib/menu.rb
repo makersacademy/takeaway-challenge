@@ -20,9 +20,9 @@ class Menu
     @order.review_order
   end
 
-  def order_item(item,quanitliy= 1)
+  def order_item(item,quantity=1)
     @order ||= @order_class.new
-    quanitliy.times do
+    quantity.times do
       value = menu_view[item]
       @order.new_order(item,value)
     end

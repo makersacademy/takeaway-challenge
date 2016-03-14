@@ -26,6 +26,12 @@ describe Menu do
       menu.order_item(item)
     end
 
+    it 'adds the correct quantity' do
+      expect(order).to receive(:new_order).and_return(item).twice
+      menu.order_item(item,2)
+    end
+
+
   end
 
   describe '#review' do
