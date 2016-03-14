@@ -1,26 +1,17 @@
 require 'takeaway'
 
 describe TakeAway do
-  let(:conf) { double(:order_confirmation, send_sms: sms ) }
-  let(:confirmation_class) { double(:confirmation_class, new: conf) }
   let(:dish_init) { double(:dish_init ) }
   let(:dish_class) { double(:dish_class, new: dish_init) }
 
-  subject(:takeaway) { described_class.new }
+  let(:conf) { double(:order_confirmation, send_sms: "sms" ) }
+  let(:confirmation_class) { double(:confirmation_class, new: conf) }
+
+  subject(:takeaway) { described_class.new(dish_class,confirmation_class) }
   let(:name) { double :name }
   let(:quantity) { double :quantity }
   let(:total_received) { double :total_received}
   let(:total) { double :total }
-  let(:FakeSMS) { double :FakeSMS}
-  # before(:each) do
-  #   stub_const("Twilio::REST::Client", OrderConfirmation)
-  # end
-
-  it { is_expected.to respond_to(:basket)}
-  it { is_expected.to respond_to(:total) }
-  it { is_expected.to respond_to(:order).with(1).argument }
-  it { is_expected.to respond_to(:text_message)}
-
 
   describe '#list_menu' do
     it 'has hash of dish instances' do
@@ -43,11 +34,10 @@ describe TakeAway do
     end
 
     it 'sends text when total received matches total price' do
-      takeaway.add_to_basket name, quantity
+      expect(conf).to receive(:send_sms)
       total_received = 20
       total_received = takeaway.total
-      message = "Thank you for your order. You've paid £#{takeaway.total}. Your food will arrive in 40-60m."
-      expect(takeaway.order(total_received)).to eq message
+      takeaway.order(total_received)
     end
   end
 
