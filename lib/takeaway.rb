@@ -32,7 +32,7 @@ class Takeaway
 
   def priced_dish(dish, qty)
     price = @menu.find_price(dish)
-    priced_dish = {name: dish, amount: qty, price: price}
+    {name: dish, amount: qty, price: price}
   end
 
   def confirm_order

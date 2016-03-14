@@ -10,6 +10,6 @@ class FakeTwilio
   end
 
   def create(from:, to:, body:)
-    Message.new(from: from, to: to, body: body)
+    Message.new(from: from, to: to, body: 'Fake SMS sent!')
   end
 end

@@ -25,7 +25,7 @@ class Menu
 
   def make_list
     @list = ''
-    LIST.each {|dish| @list << "#{dish[:name]}: £#{dish[:price]}\n"}
+    LIST.each {|i| @list << "#{i[:name]}: £#{i[:price]}\n"}
     @list.dup.freeze
   end
 

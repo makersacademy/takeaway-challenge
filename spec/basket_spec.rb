@@ -33,7 +33,7 @@ describe Basket do
       basket.add(dish1)
       basket.add(dish2)
     end
-    it '2.0 removes dish from the basket' do
+    it '2.0 removes dish from the basket if qty becomes zero' do
       basket.remove(dish2)
       expect(basket.content).not_to include(dish2)
     end
