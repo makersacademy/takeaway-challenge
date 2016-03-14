@@ -6,6 +6,7 @@ describe Order do
   let(:dish1) { double(:Dish, name: "Chicken", price: 1) }
   let(:dish2) { double(:Dish, name: "Fish", price: 2) }
   let(:dish3) { double(:Dish, name: "Steak", price: 3) }
+  let(:dish1_index) { menu.dishes.index(dish1) }
 
   describe '#from_menu' do
     it 'displays the menu for selection' do
@@ -17,17 +18,19 @@ describe Order do
   describe '#add' do
     it 'gets the dish from the menu' do
       expect(menu).to receive(:dishes)
-      order.add menu.dishes.index(dish1)
+      order.add dish1_index
     end
 
     it 'adds a meal to the order' do
-      expect{ order.add menu.dishes.index(dish1) }.to change { order.summary }.to include dish1.name
+      expect{ order.add dish1_index }.to change {
+        order.summary }.to include dish1.name
     end
   end
 
   describe '#summary' do
     it 'shows a summary of order' do
-      expect{ order.add menu.dishes.index(dish1) }.to change { order.summary }.to include dish1.name
+      expect{ order.add dish1_index }.to change {
+        order.summary }.to include dish1.name
     end
   end
 
