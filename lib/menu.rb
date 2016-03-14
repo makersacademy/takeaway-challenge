@@ -24,7 +24,7 @@ private
   { "burger" => 7,
     "fish" => 8,
     "smoothie" => 4,
-    "eggs" => 3 }
+    "eggs" => 3 }.freeze
 
   def return_dish_price(dish)
     dishes[dish]

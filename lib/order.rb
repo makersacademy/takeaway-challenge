@@ -24,7 +24,7 @@ class Order
   end
 
   def order_total
-    calculate_order_total
+    @order_total = calculate_order_total
   end
 
   private
@@ -45,6 +45,7 @@ class Order
     sum = 0
     @current_order.map { |dish, qty|
      (@menu.dish_price(dish) * qty )}.inject(:+)
+
   end
   
 

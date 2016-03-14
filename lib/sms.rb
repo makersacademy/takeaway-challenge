@@ -4,11 +4,9 @@ Dotenv.load
 
 class Sms
   
-  attr_reader :client, :cust_phone_number, :twilio_number
   def initialize
     @cust_phone_number = ENV['CUSTOMER_PHONE_NUMBER']
     @twilio_number = ENV['TWILIO_NUMBER']
-    delivery_time
   end
 
   def client
@@ -16,7 +14,8 @@ class Sms
   end
 
   def delivery_time
-    @delivery_time = ((Time.now + 60*60).strftime('%H:%M')) 
+    one_hour = 60*60
+    @delivery_time = ((Time.now + one_hour).strftime('%H:%M')) 
   end
 
   def send_order_confirmation
