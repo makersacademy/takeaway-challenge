@@ -2,7 +2,7 @@ require 'controller'
 
 describe Controller do
   subject(:test_controller) {described_class.new dummy_menu , dummy_order_class, dummy_twilio_class}
-  let(:dummy_menu) {double :menu, list_dishes: nil}
+  let(:dummy_menu) {double :menu, list_dishes: nil, retrieve_dishes: [dummy_dish]}
   let(:dummy_order_class) {double :Order, new: dummy_order}
   let(:dummy_order) {double :order, add_dish: nil, update_total: nil, total_bill: 0}
   let(:dummy_dish) {double :dish}
@@ -40,13 +40,13 @@ describe Controller do
     end
 
     it 'add the order to the list' do
-      expect(dummy_order).to receive(:add_dish).with(dummy_dish, 1)
-      test_controller.add_dish dummy_dish
+      expect(dummy_order).to receive(:add_dish).with dummy_dish , 1
+      test_controller.add_dish 1
     end
 
     it 'update the total due' do
-      expect(dummy_order).to receive(:update_total)
-      test_controller.add_dish dummy_dish
+      expect(dummy_order).to receive :update_total
+      test_controller.add_dish 1
     end
 
   end
