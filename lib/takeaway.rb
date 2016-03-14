@@ -7,21 +7,22 @@ class TakeAway
   NOT_IN_MENU = "Item not in menu"
   DEFAULT_QUANTITY = 1
   INCORRECT_PAYMENT = "Incorrect payment amount"
+  MENU = {"fish and chips" => 4.34,
+          "chicken korma" => 3.56,
+          "sausages and mash" => 5.46,
+          "cheese pizza" => 2.87,
+          "pepperoni pizza" => 3.93}
 
   def initialize(order_class, checkout_class)
-    @menu = {"fish and chips" => 4.34,
-             "chicken korma" => 3.56,
-             "sausges and mash" => 5.46,
-             "cheese pizza" => 2.87,
-             "pepperoni pizza" => 3.93}
     @order_class = order_class
     @checkout_class = checkout_class
     @current_order = nil
     @selection = {}
+    @menu = MENU
   end
 
-  def list_menu
-    @menu.dup
+  def display_menu
+    MENU.each { |dish, price| puts "dish: #{dish} price: #{price}" }
   end
 
   def order(item, quantity=DEFAULT_QUANTITY)

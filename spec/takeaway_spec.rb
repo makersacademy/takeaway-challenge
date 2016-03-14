@@ -13,24 +13,10 @@ describe TakeAway do
     allow(order).to receive(:total)
   end
 
-  it 'should respond to list_menu method' do
-    expect(takeaway).to respond_to :list_menu
-  end
-
-  it 'should respond to order method' do
-    expect(takeaway).to respond_to(:order).with(2).arguments
-  end
-
-  describe '#initialize' do
-    it 'should initialize with a menu hash' do
-      expect(takeaway.menu).to be_a Hash
-    end
-  end
-
-  describe '#list_menu' do
+  describe '#display_menu' do
     it 'should list the food items and prices' do
-      allow(takeaway).to receive(:list_menu).and_return menu
-      expect(takeaway.list_menu).to eq menu
+      allow(takeaway).to receive(:display_menu).and_return menu
+      expect(takeaway.display_menu).to eq menu
     end
   end
 

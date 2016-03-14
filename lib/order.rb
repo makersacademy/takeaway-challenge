@@ -9,11 +9,7 @@ class Order
   def initialize
     @basket = {}
     @subtotal = []
-    @menu = {"fish and chips" => 4.34,
-             "chicken korma" => 3.56,
-             "sausges and mash" => 5.46,
-             "cheese pizza" => 2.87,
-             "pepperoni pizza" => 3.93}
+    @menu = TakeAway::MENU
   end
 
   def add_to_basket(selection)
@@ -33,7 +29,7 @@ class Order
 
   def current_price(selection)
     selection.each do |item, count|
-      price = count * @menu[item]
+      price = count * menu[item]
       subtotal << price
     end
   end
