@@ -1,8 +1,7 @@
 class Order
 
-  def initialize menu_ofday
+  def initialize
     @current_order = {}
-    @menu = menu_ofday
     @bill = 0
   end
 
@@ -14,8 +13,8 @@ class Order
     @current_order.dup
   end
 
-  def add_dish dish_number , number
-    @current_order[@menu.retrieve_dishes[dish_number-1]] = number
+  def add_dish dish , amount
+    @current_order[dish] = amount
     nil
   end
 

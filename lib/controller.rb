@@ -35,7 +35,7 @@ class Controller
   end
 
   def add_dish dish_number , number = 1
-    @current_order.add_dish dish_number , number
+    @current_order.add_dish grab_dish(dish_number) , number
     @current_order.update_total
     nil
   end
@@ -48,8 +48,12 @@ class Controller
 
   private
 
+  def grab_dish number
+    @menu.retrieve_dishes[number-1]
+  end
+
   def setup_new_order
-    @current_order = @order_class.new @menu
+    @current_order = @order_class.new
     @bill_paid = false
   end
 
