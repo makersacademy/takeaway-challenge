@@ -15,10 +15,9 @@ class Controller
   "
 
   def initialize menu_ofday , order_class , twilio_client
-    @twilio_client = twilio_client
+    @messenger = twilio_client
     @order_class = order_class
     @menu = menu_ofday
-    setup_twilio
   end
 
   def welcome
@@ -57,18 +56,8 @@ class Controller
     @bill_paid = false
   end
 
-  def setup_twilio
-    @client = @twilio_client.new ENV['TWISID'] , ENV['TWITOK']
-    @sender = ENV['SENDER']
-    @receiver = ENV['RECEIVER']
-  end
-
   def send_sms message
-    @client.account.messages.create(
-      from: @sender,
-      to: @receiver,
-      body: message
-    )
+    @messenger.send_sms message
   end
 
   def confirm_transaction

@@ -4,16 +4,12 @@ describe Controller do
   PAY_ZERO_POUND = 0
   ADD_FIRST_DISH = 1
 
-  subject(:test_controller) {described_class.new dummy_menu , dummy_order_class, dummy_twilio_class}
+  subject(:test_controller) {described_class.new dummy_menu , dummy_order_class, dummy_messenger}
   let(:dummy_menu) {double :menu, list_dishes: nil, retrieve_dishes: [dummy_dish]}
   let(:dummy_order_class) {double :Order, new: dummy_order}
   let(:dummy_order) {double :order, add_dish: nil, update_total: nil, total_bill: 0}
   let(:dummy_dish) {double :dish}
-
-  let(:dummy_twilio_class) {double :Client, new: dummy_twilio}
-  let(:dummy_twilio) {double :client, account: dummy_account}
-  let(:dummy_account) {double :account, messages: dummy_messages}
-  let(:dummy_messages) {double :messages, create: nil}
+  let(:dummy_messenger) {double :messenger, send_sms: nil}
 
   describe '#welcome' do
 
@@ -37,7 +33,7 @@ describe Controller do
   end
 
   describe '#show_outstanding_order' do
-    
+
     before(:each) do
       test_controller.welcome
     end
@@ -88,7 +84,7 @@ describe Controller do
     end
 
     it 'sends the confirmation text' do
-      expect(dummy_messages).to receive :create
+      expect(dummy_messenger).to receive :send_sms
       test_controller.checkout PAY_ZERO_POUND
     end
 
