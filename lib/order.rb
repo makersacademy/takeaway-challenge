@@ -13,31 +13,44 @@ class Order
   end
 
   def summary
-    summary_display = "---\n"
-    @summary.each do |key, value|
-      summary_display += "Quantity: #{value}\nName: #{key.name}\n"
-      summary_display += "Price: #{key.price}\n---\n"
-    end
-    summary_display += "===\nTotal: #{total}\n===\n"
+    generate_summary
   end
 
   def from_menu
     @menu.display
   end
 
-  def submit
-  end
-
-  def confirmed?
+  def submit(order=@summary, paid=due)
+    raise discrepency_message unless correct_total?(order, paid)
+    "Thank you! Your order was placed and will be delivered before #{next_hour}"
   end
 
   private
 
-  def total
-    @total = 0
+  def correct_total?(order, paid)
+    due(order) == paid
+  end
+
+  def discrepency_message
+    "There is a discrepency with your order!"
+  end
+
+  def due(order=@summary)
+    due = 0
+    order.each { |key, value| due += key.price * value }
+    due
+  end
+
+  def next_hour
+    "#{(Time.now + 3600).hour}:#{Time.now.min}"
+  end
+
+  def generate_summary
+    summary_display = "---\n"
     @summary.each do |key, value|
-      @total += key.price * value
+      summary_display += "Quantity: #{value}\nName: #{key.name}\n"
+      summary_display += "Price: #{key.price}\n---\n"
     end
-    @total
+    summary_display += "===\nTotal: #{due}\n===\n"
   end
 end

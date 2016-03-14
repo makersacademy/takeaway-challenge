@@ -17,23 +17,31 @@ describe Order do
   describe '#add' do
     it 'gets the dish from the menu' do
       expect(menu).to receive(:dishes)
-      order.add 0
+      order.add menu.dishes.index(dish1)
     end
 
     it 'adds a meal to the order' do
-      expect{ order.add 0 }.to change { order.summary }.to include dish1.name
+      expect{ order.add menu.dishes.index(dish1) }.to change { order.summary }.to include dish1.name
     end
   end
 
   describe '#summary' do
     it 'shows a summary of order' do
-      expect{ order.add 0 }.to change { order.summary }.to include dish1.name
+      expect{ order.add menu.dishes.index(dish1) }.to change { order.summary }.to include dish1.name
     end
   end
 
   describe '#submit' do
-    it 'submit final order' do
-      expect{ order.submit }.to change{ order }.to be_confirmed
+    it 'submit correct final order' do
+      next_hour = "#{(Time.now + 3600).hour}:#{Time.now.min}"
+      message = "Thank you! Your order was placed "
+      message += "and will be delivered before #{next_hour}"
+      expect(order.submit).to include message
+    end
+
+    it 'submitting an incorrect final order errors' do
+      message = "There is a discrepency with your order!"
+      expect{ order.submit({dish1 => 1}, 2) }.to raise_error message
     end
   end
 end
