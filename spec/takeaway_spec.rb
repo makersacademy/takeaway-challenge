@@ -5,7 +5,7 @@ describe Takeaway do
 
   subject(:takeaway) { described_class.new(basket_class, menu_class) }
   let(:basket_class) { double(:basket_class, new: basket) }
-  let(:basket) { double(:basket, add: nil, remove: nil, calc_total: 35) }
+  let(:basket) { double(:basket, add: nil, remove: nil, show_summary: 35) }
   let(:menu_class) { double(:menu_class, new: menu) }
   let(:menu) { double(:menu, find_price: 7) }
 
@@ -40,7 +40,7 @@ describe Takeaway do
       takeaway.add('sushi', 5)
     end
     it '3.0 calls calc_total on basket' do
-      expect(takeaway.basket).to receive(:calc_total)
+      expect(takeaway.basket).to receive(:show_summary)
       takeaway.place_order(35)
     end
     it '3.1 raises an error if given total is incorrect' do

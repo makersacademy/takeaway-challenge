@@ -23,8 +23,8 @@ class Takeaway
   end
 
   def place_order(total)
-    actual_total = @basket.calc_total
-    raise 'Re-calculate and enter correct total' unless total == actual_total
+    actual_total = @basket.show_summary
+    raise 'Re-calculate and enter correct total' if total != actual_total
     confirm_order
   end
 
