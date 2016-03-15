@@ -2,7 +2,8 @@ require 'sms'
 
 describe SMS do
 
-subject(:sms) { described_class.new }
+subject(:sms) { described_class.new twilio }
+let(:twilio) { double :twilio, new: client }
 let(:client) { double :client, messages: messages }
 let(:messages) { double :messages, create: nil }
 before(:each){ allow(sms).to receive(:client){client} }
