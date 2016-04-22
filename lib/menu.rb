@@ -19,4 +19,8 @@ class Menu
       puts "#{dish} : £#{price}"
     end
   end
+  
+  def print
+    self.to_s
+  end
 end
