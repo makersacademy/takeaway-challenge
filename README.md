@@ -1,4 +1,4 @@
-Takeaway Challenge 
+Takeaway Challenge [![Build Status](https://travis-ci.org/omajul85/takeaway-challenge.svg?branch=master)](https://travis-ci.org/omajul85/takeaway-challenge)
 ==================
 
 **Author:** Omar Alvarez
