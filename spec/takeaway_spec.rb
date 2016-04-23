@@ -8,7 +8,7 @@ describe Takeaway do
   let(:multi_confirmation) { "#{quantity} #{item}(s) added to your order" }
   let(:quantity) { 5 }
   let(:empty_basket) { [] }
-  let(:order) { 'something' }
+  let(:order) { { item: quantity } }
 
   describe '#menu' do
     it 'shows a list of dishes with prices' do
@@ -24,7 +24,7 @@ describe Takeaway do
   end
 
   describe '#order' do
-    xit 'adds items to the basket' do
+    it 'adds items to the basket' do
       takeaway.order(item, quantity)
       expect(takeaway.basket).to include order
     end
@@ -35,6 +35,11 @@ describe Takeaway do
 
     it 'allows multiple quantities to be added' do
       expect(takeaway.order(item, quantity)).to eq multi_confirmation
+    end
+
+    it 'raises an error if item is not on menu' do
+      message = 'Item is not on menu'
+      expect{ takeaway.order('invalid') }.to raise_error message
     end
   end
 

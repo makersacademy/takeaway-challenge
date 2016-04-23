@@ -11,16 +11,20 @@ class Takeaway
     @menu.show_menu
   end
 
-  # As a customer
-  # So that I can order the meal I want
-  # I would like to be able to select some number of several available dishes
-
   def order(item, number = 1)
+    fail 'Item is not on menu' unless on_menu?(item)
+    @basket_items << { item: number }
     "#{number} #{item}(s) added to your order"
   end
 
   def basket
     @basket_items.dup
+  end
+
+  private
+
+  def on_menu?(item)
+    @menu.show_menu.include?(item)
   end
 
 end
