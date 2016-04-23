@@ -47,33 +47,64 @@ Installation
 * Clone this repo
 * Install `bundle` gem - `gem install bundle`
 * Run `bundle` from the root directory
-
-
-Classes
------
-*Dish*
-
-Dishes should be initialized with a name and a price. These can be returned via `attr_reader`s and altered via `attr_writers`s.
-
+* In IRB/PRY, require the following files:
 ```
 [1] pry(main)> require './lib/dish.rb'
 
 => true
-[2] pry(main)> pad_thai = Dish.new 'Pad Thai', 7
+[2] pry(main)> require './lib/menu.rb'
+
+=> true
+```
+
+
+Classes
+-----
+**Dish**
+
+Dishes should be initialized with a name and a price. These can be returned via `#name` and `#price` and altered via `#name=` and `#price=`
+
+```
+[1] pry(main)> pad_thai = Dish.new 'Pad Thai', 7
 
 => #<Dish:0x007f93a134cf60
  @name="Pad Thai",
  @price=7>
-[3] pry(main)> pad_thai.name
+[2] pry(main)> pad_thai.name
 => "Pad Thai"
-[4] pry(main)> pad_thai.price
+[3] pry(main)> pad_thai.price
 => 7
-[5] pry(main)> pad_thai.name = 'Hoisin Crispy Owl'
+[4] pry(main)> pad_thai.name = 'Hoisin Crispy Owl'
 
 => "Hoisin Crispy Owl"
-[6] pry(main)> pad_thai.name=> "Hoisin Crispy Owl"
-[7] pry(main)> pad_thai.price = 10
+[5] pry(main)> pad_thai.name=> "Hoisin Crispy Owl"
+[6] pry(main)> pad_thai.price = 10
 
 => 10
-[8] pry(main)> pad_thai.price=> 10
+[7] pry(main)> pad_thai.price=> 10
+```
+
+**Menu**
+
+Menus can be initialized with any class which can respond to a `#name` and `#price` method. If nothing is passed, then Dish class will be used be default.
+Dishes can be added to the menu via the `#add` method.
+Dishes can be removed from the menu via the `#remove` method.
+`#view` returns a hash of names and prices of the dishes on the menu.
+
+```
+[1] pry(main)> menu = Menu.new=> #<Menu:0x007ffe321b91e8
+ @dish_class=Dish,
+ @dishes=[],
+[2] pry(main)> menu.add pad_thai
+=> [#<Dish:0x007ffe319c4e10
+  @name="Pad Thai",
+  @price=7>]
+[3] pry(main)> menu.view
+=> {"PAD THAI"=>7}
+[4] pry(main)> menu.remove pad_thai
+
+=> []
+[5] pry(main)> menu.view
+RuntimeError: Menu is empty
+from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.rb:14:in `view'
 ```
