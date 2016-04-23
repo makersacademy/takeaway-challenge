@@ -12,5 +12,6 @@ p menu
 # p menu.print_menu.pop.quantity = 4
 p dish.args[:name]
 p menu.print_menu
+p order.selected_dishes
 
 #Scenario 2: select dish and quantity

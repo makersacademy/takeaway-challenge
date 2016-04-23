@@ -3,16 +3,11 @@ require_relative 'dish'
 
 class Order
 
-  def initialize(menu = Menu.new)
+  attr_accessor :selected_dishes
+
+  def initialize(menu = Menu.new(dish))
     @menu = menu
     @selected_dishes = []
-  end
-
-  def select_dish(dish, quantity)
-    fail "The dish is not in the menu" unless has_dish?(dish)
-    dish.quantity = quantity
-    @selected_dishes << dish
-    dish
   end
 
   def total
@@ -21,9 +16,4 @@ class Order
     end.inject(:+)
   end
 
-  private
-
-    def has_dish?(dish)
-      @menu.dishes.include?(dish)
-    end
 end
