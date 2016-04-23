@@ -4,12 +4,16 @@ class Order
 
   def initialize(menu = Menu.new)
     @menu = menu
+    @selected_dishes = []
   end
 
-  def select_dish(quantity)
-    selected_dish = @menu.print_menu.pop
-    # binding.pry
-    selected_dish.quantity = quantity
-    selected_dish
+  def show_menu   #extract this to Takeaway class?
+    @menu.print_menu
+  end
+
+  def select_dish(dish, quantity)
+    fail "The dish is not in the menu" unless show_menu.include?(dish)
+    @selected_dishes << dish.quantity = quantity
+    dish
   end
 end
