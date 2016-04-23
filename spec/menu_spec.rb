@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
   
   subject(:menu) { described_class.new }
-  let(:dishes) { { beef_burger: '1.99',  cheese_burger: '1.99', chicken_wings: '0.49', coke: '0.99' } }
+  let(:dishes) { { 'beef burger' => '1.99',  'cheese burger' => '1.99', 'chicken wings' => '0.49', 'coke' => '0.99' } }
   
   
   it 'contains a list of dishes' do
@@ -13,13 +13,27 @@ describe Menu do
   describe '#select_dish' do
     
     it 'returns chosen dish with name and price' do
-      expect(menu.select_dish(:beef_burger)).to eq [{ :beef_burger => '1.99' }]
+      expect(menu.select_dish('beef burger')).to eq [{ 'beef burger' => '1.99' }]
     end
     
     it 'can select multiple dishes' do
-      expect(menu.select_dish(:beef_burger, 2)).to eq [{ :beef_burger => '1.99' },{ :beef_burger => '1.99' }]
+      expect(menu.select_dish('beef burger', 2)).to eq [{ 'beef burger' => '1.99' },{ 'beef burger' => '1.99' }]
     end
     
+  end
+  
+  describe '#add_dish' do
+    it 'adds a dish to the menu' do
+      menu.add_dish('pizza', '6.99')
+      expect(menu.dishes['pizza']).to eq '6.99'
+    end
+  end
+  
+   describe '#remove_dish' do
+    it 'removes a dish from the menu' do
+      menu.remove_dish('beef burger')
+      expect(menu.dishes['beef burger']).to eq nil
+    end
   end
 
 end
