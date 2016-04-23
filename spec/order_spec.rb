@@ -5,8 +5,9 @@ require 'pry'
 describe Order do
 
   subject(:order) { described_class.new(menu) }
-  let(:menu) { double :menu, dishes: [dish] }
-  let(:dish) { Dish.new(name: "Pizza", price: 7.99) }
+  let(:menu) { double :menu, dishes: [dish, dish2] }
+  let(:dish) { Dish.new(name: "Pizza", price: 7.50) }
+  let(:dish2) { Dish.new(name: "Soup", price: 3.20) }
   let(:dish1) { double :dish }
 
   context "when dish not in menu" do
@@ -22,9 +23,12 @@ describe Order do
     end
   end
   
-  # it 'raises an error when quantity not equal total' do
-  #   total = 4
-  #   dish.quantity = 4
-  #   expect(order.)
-  # end
+  context "when place order" do
+
+    it 'shows the order total' do
+      order.select_dish(dish, 2)
+      order.select_dish(dish2, 1)
+      expect(order.total).to eq 18.20
+    end
+  end
 end

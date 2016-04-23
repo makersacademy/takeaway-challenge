@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'dish'
 
 class Order
 
@@ -9,8 +10,15 @@ class Order
 
   def select_dish(dish, quantity)
     fail "The dish is not in the menu" unless has_dish?(dish)
-    @selected_dishes << dish.quantity = quantity
+    dish.quantity = quantity
+    @selected_dishes << dish
     dish
+  end
+
+  def total
+    @selected_dishes.map do |dish| 
+      dish.quantity * dish.args[:price]
+    end.inject(:+)
   end
 
   private
