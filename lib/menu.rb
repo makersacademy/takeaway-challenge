@@ -14,10 +14,18 @@ class Menu
     dishes.has_key?(dish.to_sym)
   end
 
+  def price(dish)
+    dishes[dish.to_sym]
+  end
+
+  def get_menu
+    self.to_s
+  end
+
   def to_s
     list = ""
     @dishes.each do |k,v|
-      list += "#{k} : €#{v}\n"
+      list += "#{k} : \t€#{v}\n"
     end
     message = "Bar El Gato Muerto"+"\n"+"MENU" +"\n" + list
   end

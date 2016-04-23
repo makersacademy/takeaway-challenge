@@ -16,15 +16,19 @@ describe Menu do
     end
   end
 
-  context 'provides the menu on screen' do
+  context '#get_menu' do
     before do
       list = ""
       menu.dishes.each do |k,v|
-        list += "#{k} : €#{v}\n"
+        list += "#{k} : \t€#{v}\n"
       end
       @message = "Bar El Gato Muerto"+"\n"+"MENU" +"\n" + list
     end
-    it 'Mr. Waiter: menu, please!' do
+    it 'provides menu on screen' do
+      expect(menu.get_menu).to eq @message
+    end
+
+    it 'calls the to_s method' do
       expect(menu.to_s).to eq @message
     end
   end
@@ -40,10 +44,12 @@ describe Menu do
   end
 
   context '#price' do
-    xit 'returns price of croquetas gato' do
+    it 'returns price of croquetas gato' do
+      expect(menu.price("croquetas gato")).to eq 7.99
     end
 
-    xit 'returns default message for bug_makers' do
+    it 'returns default message for bug_makers' do
+      expect(menu.price("bug makers")).to eq 0
     end
   end
 end
