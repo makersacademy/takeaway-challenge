@@ -19,12 +19,49 @@ describe Order do
   end
 
   context('#add') do
-    it 'returns the correct message for dish jamon serrano' do
-      expect(order.add("jamon serrano")).to eq "1 x jamon serrano added to your basket."
+    describe 'message formatting' do
+      it 'returns the correct message for dish jamon serrano' do
+        output = "1 x jamon serrano added to your basket."
+        expect(order.add("jamon serrano")).to eq output
+      end
+
+      it 'returns the correct message for dish 2 x croquetas gato' do
+        output = "2 x croquetas gato added to your basket."
+        expect(order.add("croquetas gato",2)).to eq output
+      end
     end
 
-    it 'returns the correct message for dish 2 x croquetas gato' do
-      expect(order.add("croquetas gato",2)).to eq "2 x croquetas gato added to your basket"
+    describe ' adding to basket' do
+      it 'adds to basket 1 jamon serrano, when chosen so' do
+        order.add("jamon serrano")
+        expect(order.basket).to eq({ "jamon serrano": 1 })
+      end
+
+      it 'adds to basket 2 spanish sangria, when chose so' do
+        order.add("spanish sangria", 2)
+        expect(order.basket).to eq({ "spanish sangria": 2 })
+      end
+
+      it 'adds to basket 1 spanish sangria, then another one, it should have 2' do
+        order.add("spanish sangria")
+        order.add("spanish sangria")
+        expect(order.basket).to eq({ "spanish sangria": 2 })
+      end
     end
+
+    describe 'when full order passed with total' do
+      xit 'raises error if the total sum is not correct' do
+      end
+
+      xit 'raises error if the product is not listed and total is zero' do
+      end
+
+      xit 'returns the correct message if total is correct' do
+        #but how do we continue processing to sending text etc? Takeaway.process(order)
+      end
+    end
+  end
+
+  context('#total') do
   end
 end

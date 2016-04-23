@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe TakeAway do
-  let(:menu) {(double :menu, dishes: { "jamón ibérico": 14.99, "croquetas bacalao": 7.99 })}
+  let(:menu) {(double :menu, dishes: { "jamón iberico": 14.99, "croquetas bacalao": 7.99 })}
   let(:courier) {double :courier}
   subject(:takeaway) { described_class.new(:menu, :messager) }
 
