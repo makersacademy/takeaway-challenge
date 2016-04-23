@@ -1,7 +1,7 @@
-Takeaway Challenge
+﻿Takeaway Challenge
 ==================
 ```
-                            _________
+    Sergio Enrech Trillo    _________
               r==           |       |
            _  //            |  M.A. |   ))))
           |_)//(''''':      |       |
@@ -13,6 +13,43 @@ Takeaway Challenge
        ':..:'                ':..:'
  
  ```
+
+Solution
+-------
+This is the attempt made to resolve this exercise.  Object modelling was the first challenge to resolve, and it was a critical one to ensure a good implementation adhering to all the relevant best practices and SOLID principles. It was decided to use the following model:
+
+##Classes:
+
+###Menu:  Class that manages storing the menu and accessing to its information
+
+* Attributes: 
+	- dishes (reader).  dishes is a hash to keep track of all the dishes and its prices.  Default value is “dish not found”  
+* Methods:
+	- price(dish) : Returns a Fixnum object. Gets in the hash the value containing the price of a dish, or the default value if not found.  
+	- contains?:(dish) Returns a Boolean object.  Checks if the dish exists in the hash dishes
+* Class interaction: Menu needs to be injected into class Order to ensure orders can be passed using the available dishes.
+
+###TakeAway : Class that receives orders when they are complete, and send texts to customers
+* Attributes: 
+	- Time ( Time.now() )
+* Methods:
+	- send_text(customer_phone): Returns..? Send texts to customers using details from order
+* Class interation: Order needs to be injected into TakeAway
+
+###Order : Class that manages customers orders.  It is probably the model core.
+* Attributes: 
+	- basket (accessor) non-completed orders status capture in basket
+* Methods:
+	- add(*args): adds a dish to the basket, taking into account quantities and the logic of how customer can ask for dishes. Sets complete? if the entry is of the type qty dish amount as per instructions
+	- total : Returns a Fixnum object. Traverses the current baskets and calculate the current sum
+	- basket_summary: (no args) Provides a summary of the dishes currently in basket, quantity, dishes and cost per group of dishes, e.g. "jamon serrano x4 = £63.96, croquetas gato x3 = £23.97"
+	-checkout: (no args) Requests to complete the order and send it for processing. Check for edge cases if zero items in basket and request to checkout. Calls Takeaway send_text if order ok. Clears current basket. Return not needed?
+* Class interaction: Order is the kernel of the model. It takes a Customer object to get customer details (phone number), a Menu object to get access to dishes and prices, and a Takeaway object to ensure it can call the relevant method in the Takeway to send the text. 
+
+###Customer: Small class that stores customer name and telephone number.  Probably not required at this stage but for future scalability 
+* Attributes: :name, :phone (reader)
+* Methods : none (apart from the attributes automatically generated)
+
 
 Instructions
 -------

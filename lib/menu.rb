@@ -2,12 +2,16 @@ class Menu
 
   attr_reader :dishes
 
-  DISH_NOT_FOUND = "Sorry, we don't have that"
+  DEFAULT_VALUE = 0
   HASH_SIZE = 4
 
   def initialize
     @dishes = { "jamon serrano": 15.99, "croquetas gato": 7.99, "tortilla patata": 4.99, "spanish sangria": 7.25 }
-    @dishes.default = DISH_NOT_FOUND
+    @dishes.default = 0
+  end
+
+  def contains?(dish)
+    dishes.has_key?(dish.to_sym)
   end
 
   def to_s

@@ -6,7 +6,7 @@ describe Menu do
   context 'default key hash'  do
     it "expect to get message for non-found dish " do
       temp = menu.dishes["no_esta"]
-      expect(menu.dishes[:"bug-maker"]).to eq Menu::DISH_NOT_FOUND
+      expect(menu.dishes[:"bug-maker"]).to eq Menu::DEFAULT_VALUE
     end
   end
 
@@ -30,12 +30,12 @@ describe Menu do
   end
 
   context '#contains?' do
-    xit 'returns true for tortilla patata' do
-
+    it 'tortilla de patata is in the menu' do
+      expect(menu.contains? "tortilla patata").to be true
     end
 
-    xit 'returns false for bug_makers' do
-
+    it 'bug makers is not in the menu' do
+      expect(menu.contains? "bug makers").to be false
     end
   end
 
