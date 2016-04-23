@@ -24,6 +24,11 @@ describe Establishment do
 			establishment.place_order(100,item1:1,item2:2,item3:3)
 			expect(texter).to have_received(:send_confirmation)
 		end
+		it 'doesn\'t tell texter object to send order confirmation if pass? does not return true' do
+			allow(checker).to receive(:pass?){ false }
+			establishment.place_order(100,item1:1,item2:2,item3:3)
+			expect(texter).not_to have_received(:send_confirmation)
+		end
 	end
 
 end
