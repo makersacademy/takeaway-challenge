@@ -1,13 +1,11 @@
 class Takeaway
 
+  attr_reader :menu
+
   def initialize
     @menu = {item: 7, item2: 4}
     @order_total = 0
     @current_order = []
-  end
-
-  def menu
-    @menu
   end
 
   def add_to_order *order

@@ -10,7 +10,7 @@ auth_token = 'c5fc6662e7564163f94e5ebe15e0d79c'
 
 @client.account.messages.create({
 	:from => '+441484906105',
-	:to => '+447969761516',
+	:to => '',
 	:body => '',
 	# :media_url => 'http:adas',
 	# :status_callback => 'aasda'
