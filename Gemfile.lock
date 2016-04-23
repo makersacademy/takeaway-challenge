@@ -18,6 +18,7 @@ GEM
       tins (~> 1.6.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dotenv (2.1.1)
     json (1.8.3)
     jwt (1.5.4)
     mime-types (3.0)
@@ -66,6 +67,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   coveralls
+  dotenv
   rake
   rspec
   twilio-ruby
