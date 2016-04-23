@@ -62,7 +62,7 @@ Classes
 -----
 **Dish**
 
-Dishes should be initialized with a name and a price. These can be returned via `#name` and `#price` and altered via `#name=` and `#price=`
+Dishes should be initialized with a name. These can be returned via `#name` and `#price` and altered via `#name=` and `#price=`
 
 ```
 [1] pry(main)> pad_thai = Dish.new 'Pad Thai', 7
