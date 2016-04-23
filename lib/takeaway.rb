@@ -30,7 +30,7 @@ class TakeAway
 
   def confirm_order
     t = Time.new + 60 * 60
-    "Thank you! Your order was placed and will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!"
+    "Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!"
   end
 
   def incorrect_total?

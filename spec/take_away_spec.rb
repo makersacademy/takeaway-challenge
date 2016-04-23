@@ -22,15 +22,16 @@ describe TakeAway do
         take_away.select(:hamburger, 1)
         take_away.select(:pizza_deluxe, 2)
         t = Time.new + 60 * 60
-        message = "Thank you! Your order was placed and will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!"
-        expect(take_away.place_order(take_away.current_order, 42)). to eq message
+        message = "Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!"
+        expect(take_away.place_order(take_away.current_order, 42)).to eq message
       end
     end
     context 'customer places order with wrong total amount' do
       it 'raises an error if input sum is not correct' do
         take_away.select(:hamburger, 1)
         take_away.select(:pizza_deluxe, 2)
-        expect{ take_away.place_order(take_away.current_order, 45) }. to raise_error 'Not correct amount'
+        message = 'Not correct amount'
+        expect{ take_away.place_order(take_away.current_order, 45) }.to raise_error message
       end
     end
   end
