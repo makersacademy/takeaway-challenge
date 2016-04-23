@@ -5,11 +5,12 @@ require 'pry'
 describe Order do
 
   subject(:order) { described_class.new(menu) }
-  let(:takeaway) { Takeaway.new(menu, order) }
+  let(:takeaway) { Takeaway.new(menu, order, sms) }
   let(:menu) { double :menu, dishes: [dish, dish2] }
   let(:dish) { Dish.new(name: "Pizza", price: 7.50) }
   let(:dish2) { Dish.new(name: "Soup", price: 3.20) }
   let(:dish1) { double :dish }
+  let(:sms) { double :sms, deliver: nil }
   
   context "when order is placed" do
 

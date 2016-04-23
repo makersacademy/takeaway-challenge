@@ -1,10 +1,13 @@
 require 'pry'
+require 'order'
+require 'sms'
 
 class Takeaway
 
-  def initialize(menu, order = Order.new(menu))
+  def initialize(menu, order, sms)
     @menu = menu
-    @order = order
+    @order = order || Order.new(menu)
+    @sms = sms || SMS.new
   end
 
   def show_menu
@@ -12,10 +15,9 @@ class Takeaway
   end
 
   def place_order(dish, quantity)
-    fail "The dish is not in the menu" unless has_dish?(dish)
-    dish.quantity = quantity
-    @order.selected_dishes << dish
-    dish
+    add_dishes(dish, quantity)
+    @order.total
+    sms.deliver
   end
 
   private
@@ -23,4 +25,12 @@ class Takeaway
     def has_dish?(dish)
       @menu.dishes.include?(dish)
     end
+
+    def add_dishes(dish, quantity)
+      fail "The dish is not in the menu" unless has_dish?(dish)
+      dish.quantity = quantity
+      @order.selected_dishes << dish
+    end
+
+    attr_reader :sms
 end
