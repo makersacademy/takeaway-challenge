@@ -1,8 +1,10 @@
 class Menu
-  attr_reader :dishes
-
   def initialize(*dishes)
     @dishes = dishes
+  end
+
+  def dishes
+    @dishes.dup
   end
 
   def new_dish(dish)
@@ -12,7 +14,7 @@ class Menu
   def list
     @list = []
     @dishes.each do |dish|
-      @list << "#{dish.name} - £#{'%.2f' % dish.price}"
+      @list << "#{dish.name} - £#{format('%.2f',dish.price)}"
     end
     @list.join(", ")
   end

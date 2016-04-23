@@ -15,11 +15,11 @@ class Message
 
     @client = Twilio::REST::Client.new account_sid, auth_token
 
-    @client.account.messages.create({
-    	:from => ENV['FROM_PHONE'],
-    	:to => ENV['TO_PHONE'],
-    	:body => "Thank you for your order, "\
+    @client.account.messages.create(
+    	from: ENV['FROM_PHONE'],
+    	to: ENV['TO_PHONE'],
+    	body: "Thank you for your order, "\
       "It will be delivered by #{@del_time}"
-    })
+    )
   end
 end

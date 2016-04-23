@@ -22,7 +22,8 @@ describe Menu do
 
   describe "#list" do
     it "should return a string of all available dishes and prices" do
-      expect(subject.list).to eq "Pepperoni Pizza - £9.50, Margherita Pizza - £7.50"
+      menu_message = "Pepperoni Pizza - £9.50, Margherita Pizza - £7.50"
+      expect(subject.list).to eq menu_message
     end
   end
 end

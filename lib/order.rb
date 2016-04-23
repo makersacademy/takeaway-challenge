@@ -12,8 +12,9 @@ class Order
   end
 
   def add(item, number = 1)
-    fail "This item is not on the menu" unless @menu.dishes.any? {|dish| dish.name == item}
-    number.times {@my_order << @menu.dishes.find {|dish| dish.name == item }}
+    message = "This item is not on the menu"
+    fail message unless on_menu?(item)
+    number.times {dish_finder(item)}
   end
 
   def order_cost
@@ -25,7 +26,8 @@ class Order
   end
 
   def confirm(pay)
-    pay_err = "You have not paid enough, The total is £#{'%.2f' % order_cost}"
+    pay_err = "You have not paid enough, "\
+    "The total is £#{format('%.2f', order_cost)}"
     fail pay_err if not_enough?(pay)
     @message = @message_class.new(del_time)
     @message.send
@@ -39,5 +41,13 @@ class Order
 
   def del_time
     (Time.now + 3600).strftime("%H:%M")
+  end
+
+  def on_menu?(item)
+    @menu.dishes.any? {|dish| dish.name == item}
+  end
+
+  def dish_finder(item)
+    @my_order << @menu.dishes.detect {|dish| dish.name == item }
   end
 end

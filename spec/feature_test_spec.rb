@@ -54,4 +54,4 @@ describe "Feature Test" do
     order.add("Margherita Pizza", 1)
     expect(order).to respond_to(:confirm)
   end
-  end
+end
