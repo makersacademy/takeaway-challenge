@@ -29,7 +29,4 @@ class Menu
     end
     message = "Bar El Gato Muerto"+"\n"+"MENU" +"\n" + list
   end
-
-
-
 end

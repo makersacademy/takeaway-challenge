@@ -8,8 +8,8 @@ describe Order do
       expect(order.basket).to be_empty
     end
 
-    it '#complete? is false' do
-      expect(order.complete?).to be false
+    it '#total is 0€' do
+      expect(order.total).to eq "Total: 0.0€"
     end
 
     it 'receives a menu object' do
@@ -50,10 +50,9 @@ describe Order do
   end
 
   context('#checkout') do
-    it 'changes status order to ready to be processed' do
+    it 'returns 3 if amount given is 3' do
       order.add("jamon serrano")
-      order.checkout
-      expect(order.ready_to_process).to be true
+      expect(order.checkout(3)).to eq 3
     end
   end
 
@@ -65,9 +64,23 @@ describe Order do
 
     it 'returns "jamon serrano" when 1xjamon in basket' do
       order.add("jamon serrano")
-      p order.basket
       order.basket_summary
       expect(order.basket_summary).to eq ("jamon serrano x 1 = €15.99, ")
+    end
+  end
+
+  context('#total') do
+    it 'returns 29Eur for 4 spanish sangrias ' do
+      order.add("spanish sangria", 4)
+      expect(order.total).to eq "Total: 29.0€"
+    end
+
+    it 'returns 53.45 Eur for 1 croquetas 1 jamon 3 tortillas and 2 sangrias ' do
+      order.add("croquetas gato")
+      order.add("jamon serrano")
+      order.add("tortilla patata", 3)
+      order.add("spanish sangria", 2)
+      expect(order.total).to eq "Total: 53.45€"
     end
   end
 end

@@ -1,25 +1,32 @@
 require 'takeaway'
 
 describe TakeAway do
-  let(:menu) {(double :menu, dishes: { "jamón iberico": 14.99, "croquetas bacalao": 7.99 })}
-  let(:courier) {double :courier}
-  subject(:takeaway) { described_class.new(:menu, :messager) }
+  let(:list_dishes) { { "jamon serrano": 15.99, "croquetas gato": 7.99, "tortilla patata": 4.99, "spanish sangria": 7.25 } }
+  let(:basket) { {"jamon serrano": 1, "croquetas gato": 2} }
+  let(:basket_wrong_price) { {"jamon serrano": 2, "croquetas gato": 1, "tortilla patata": 1} }
+  let(:menu) { double :menu, dishes: list_dishes, contains?: true }
+  let(:messager) { double :messager }
+  let(:order) { double :order, menu: menu, dishes: list_dishes, basket: basket, customer_price: 31.97, bill: 31.97}
+  let(:wrong_order) { double :order, menu: menu, dishes: list_dishes, basket: basket_wrong_price, bill: 44.96, customer_price: 3.25 }
+  subject(:takeaway) {described_class.new(messager, order)}
+  let(:takeaway_fail) { described_class.new(messager, wrong_order) }
 
   context 'on initializing' do
-    it 'takes a menu object' do
-      expect(takeaway).to respond_to(:menu)
-    end
 
     it 'takes a messager object' do
-      expect(takeaway).to respond_to(:courier)
+      expect(takeaway).to respond_to(:messager)
+    end
+
+    it 'takes an order object' do
+      expect(takeaway).to respond_to(:order)
     end
   end
 
-  # context 'takes orders' do
-  #   it 'orden contains jamón ibérico when ordered' do
-  #     takeaway.order("jamón ibérico")
-  #     expect()
-  #   end
-  # end
+  context '#complete_order' do
+    it 'fails if price is not correct' do
+      output ="order price not correct, please review"
+      expect { takeaway_fail.complete_order }.to raise_error output
+    end
+  end
 
 end
