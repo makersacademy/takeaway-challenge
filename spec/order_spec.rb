@@ -23,6 +23,10 @@ describe Order do
       subject.add("Pepperoni Pizza", 2)
       expect(subject.my_order).to eq [p_pizza, p_pizza]
     end
+    it "raises an error if the item is not on the menu" do
+      error_message = "This item is not on the menu"
+      expect{subject.add("Escargot", 42)}.to raise_error(error_message)
+    end
   end
 
   describe "#order_cost" do

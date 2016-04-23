@@ -1,16 +1,19 @@
 require_relative "message"
 class Order
 
-  attr_reader :my_order
-
   def initialize(menu, message_class=Message)
     @my_order = []
     @menu = menu
     @message_class = message_class
   end
 
+  def my_order
+    @my_order.dup
+  end
+
   def add(item, number = 1)
-    number.times {my_order << @menu.dishes.find {|dish| dish.name == item }}
+    fail "This item is not on the menu" unless @menu.dishes.any? {|dish| dish.name == item}
+    number.times {@my_order << @menu.dishes.find {|dish| dish.name == item }}
   end
 
   def order_cost
@@ -29,6 +32,7 @@ class Order
   end
 
   private
+
   def not_enough?(pay)
     pay != order_cost
   end
