@@ -14,7 +14,7 @@ class Menu
   end
   
   def contains?(dish)
-    dishes.has_key? dish
+    dishes.key? dish
   end
   
 end

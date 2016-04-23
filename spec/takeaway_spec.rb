@@ -18,6 +18,16 @@ describe Takeaway do
     expect(takeaway.order.dishes).to include "Chicken"
   end
   
+  it "unselects a dish" do
+    takeaway.unselect_dish("Chicken")
+    expect(takeaway.order.dishes).not_to include "Chicken"
+  end
+  
+  it "prints the total" do
+    takeaway.select_dish("Chicken", 3)
+    expect(takeaway.total).to eq 13.5
+  end
+  
   it "raise error if selected dish is not available" do
     expect { takeaway.select_dish("Fish", 3) }.to raise_error Order::ERR_INVALID_ORDER
   end

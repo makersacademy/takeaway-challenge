@@ -1,6 +1,6 @@
 class Order
   
-  ERR_INVALID_ORDER = 'The selected dish is not on the menu'
+  ERR_INVALID_ORDER = 'The selected dish is not on the menu'.freeze
   
   attr_reader :dishes, :total
   
@@ -11,7 +11,7 @@ class Order
   end
   
   def add(dish, qty = 1)
-    raise ERR_INVALID_ORDER unless menu.contains? dish
+    fail ERR_INVALID_ORDER unless menu.contains? dish
     dishes[dish] = qty
   end
   
@@ -30,7 +30,7 @@ class Order
   end
   
   def contains?(dish)
-    dishes.has_key? dish
+    dishes.key? dish
   end
   
   private 
