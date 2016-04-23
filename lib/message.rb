@@ -6,11 +6,10 @@ Dotenv.load
 class Message
   def initialize(del_time)
     @del_time = del_time
-    @client = Twilio::REST::Client.new ENV['TWIL_SID'], ENV['TWIL_AUTH']
   end
 
   def send
-
+    @client = Twilio::REST::Client.new ENV['TWIL_SID'], ENV['TWIL_AUTH']
     @client.account.messages.create(
     	from: ENV['FROM_PHONE'],
     	to: ENV['TO_PHONE'],
