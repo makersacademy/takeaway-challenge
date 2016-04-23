@@ -1,5 +1,84 @@
 Takeaway Challenge
 ==================
+
+This app allows for a take-away restaurant to be created.
+
+Begin by cloning the repo to your PC then run bundle install.
+
+```
+git clone https://github.com/olmesm/takeaway-challenge.git
+cd takeaway-challenge
+bundle
+```
+
+Environmental Variables
+---
+A new `.env` file needs to be added to your takeaway-challenge folder and environment variables need to be added as follows:
+
+```
+# Sign-up at https://www.twilio.com
+# and enter your details below.
+ACCOUNTSID=     # Account ID supplied by Twilio.
+AUTHTOKEN=      # Auth Token supplied by Twilio.
+PERSONAL=       # Your personal mobile number.
+TWILIO=         # Number assigned from Twilio.
+```
+
+Next run the following to append `/.env` to your `.gitignore` file.
+
+```
+echo '/.env' | cat >> .gitignore
+```
+Restaurant
+====
+
+Restaurant consists of four classes.
+  * Menu
+  * Notify
+  * Order
+  * Dish
+
+Dish
+-------
+Each meal is added as a dish instance. the dish is then added to the menu.
+
+`dish1 = Dish.new(name: "Chicken", price: 1)`
+
+Menu
+-------
+The contains a menu of dishes. A dish needs to be initialized then added to the menu.
+
+```
+new_menu = Menu.new
+# dishes can be added as follows, but need to be initialized first
+new_menu.add dish1
+```
+
+Order
+-------
+Needs to be initialized with a menu instance.
+
+`order = Order.new(menu: new_menu)`
+
+Notify
+-------
+Notify will alert the customer that their order has been accepted and is on its way.
+
+This class does not need to be initialized as an instance will be created with the order instance.
+
+Original challenge link
+---
+https://github.com/makersacademy/takeaway-challenge
+
+Challenge on my Github link
+---
+https://github.com/olmesm/takeaway-challenge
+
+Original Readme
+==================
+
+
+
 ```
                             _________
               r==           |       |
@@ -11,7 +90,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -68,7 +147,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
