@@ -27,9 +27,8 @@ class Order
   def basket_summary
    return "basket is empty" if basket.empty?
    summary = ""
-   basket.map { |item, qty| summary += "#{item} x #{qty} = €#{qty*menu.dishes[item]}, " }
-         .join
-
+   basket.each { |item, qty| summary += "#{item} x #{qty} = €#{qty*menu.dishes[item]}, " }
+   summary
   end
 
   private
