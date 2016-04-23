@@ -36,10 +36,21 @@ describe 'User Stories' do
   end
 
 
-# As a customer
-# So that I am reassured that my order will be delivered on time
-# I would like to receive a text such as "Thank you!
-#Your order was placed and will be delivered before 18:52" after I have ordered
-
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you!
+  #Your order was placed and will be delivered before 18:52" after I have ordered
+  it 'confirms order will be delivered with a text message' do
+    dish_tikka = Dish.new(name: "Tikka Masala", price: 7)
+    dish_chow = Dish.new(name: "Chow Mein", price: 6)
+    order = Order.new
+    order.add(dish_tikka, 3)
+    order.add(dish_chow, 2)
+    one_hour = Time.now + 60*60
+    one_hour_display = one_hour.localtime.strftime("%H:%M")
+    msg = "Thank you!"\
+    " Your order was placed and will be delivered before #{one_hour_display}"
+    expect(order.payment(33)).to eq msg
+  end
 
 end

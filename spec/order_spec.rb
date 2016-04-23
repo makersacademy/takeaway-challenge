@@ -20,4 +20,14 @@ describe Order do
     expect{order.payment(100)}.to raise_error err
   end
 
+  it 'confirms order will be delivered with a text message' do
+    order.add(dish_tikka, 3)
+    order.add(dish_chow, 2)
+    one_hour = Time.now + 60*60
+    one_hour_display = one_hour.localtime.strftime("%H:%M")
+    msg = "Thank you!"\
+    " Your order was placed and will be delivered before #{one_hour_display}"
+    expect(order.payment(33)).to eq msg
+  end
+
 end

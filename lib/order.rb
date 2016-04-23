@@ -10,7 +10,10 @@ class Order
 
   def payment(total)
     err = "Unverified order: payment does not match order sum. Change payment."
+    msg = "Thank you!"\
+    " Your order was placed and will be delivered before #{get_time}"
     fail err if total != calculate_price
+    msg
   end
 
   private
@@ -21,6 +24,11 @@ class Order
       order_sum += hash[:dish].price * hash[:quantity]
     end
     order_sum
+  end
+
+  def get_time
+    one_hour = Time.now + 60*60
+    one_hour.localtime.strftime("%H:%M")
   end
 
 end
