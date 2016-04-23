@@ -5,8 +5,9 @@ describe 'User Stories' do
   let(:order) {Order.new}
   let(:some_dishes) {[dish_tikka, dish_chow]}
   let(:list_dishes) do
-    some_dishes.each {|dish| puts"#{dish.name}: £#{dish.price}"}
+    some_dishes.each {|dish| puts "#{dish.name}: £%0.2f" % [dish.price]}
   end
+
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -54,10 +55,3 @@ describe 'User Stories' do
     end
   end
 end
-
-require './lib/menu'
-require './lib/dish'
-dish_tikka = Dish.new(name: "Tikka Masala", price: 7)
-dish_chow = Dish.new(name: "Chow Mein", price: 6)
-menu = Menu.new(dishes: [dish_tikka, dish_chow])
-menu.show_menu

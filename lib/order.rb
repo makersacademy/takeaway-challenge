@@ -1,7 +1,9 @@
+require_relative 'order_calculator'
 class Order
 
-  def initialize
+  def initialize(order_calculator: OrderCalculator.new)
     @dishes_ordered = []
+    @order_calculator = order_calculator
   end
 
   def add(dish, quantity)
@@ -12,27 +14,19 @@ class Order
     err = "Unverified order: total does not match order sum. Change payment."
     msg = "Thank you!"\
     " Your order was placed and will be delivered before #{calculate_time}"
-    fail err if unverified?(total)
+    fail err unless verified?(total)
     msg
   end
 
   private
-
-  def calculate_price
-    order_sum = 0
-    @dishes_ordered.each do |item_hash|
-      order_sum += item_hash[:dish].price * item_hash[:quantity]
-    end
-    order_sum
-  end
 
   def calculate_time
     one_hour = Time.now + 60*60
     one_hour.localtime.strftime("%H:%M")
   end
 
-  def unverified?(total)
-    total != calculate_price
+  def verified?(total)
+    @order_calculator.verified?(total, @dishes_ordered)
   end
 
 end
