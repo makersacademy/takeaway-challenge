@@ -1,7 +1,5 @@
 class Menu
 
-	attr_reader :list
-
 	def initialize(entry)
 		@list = reformat(entry)
 	end
@@ -16,6 +14,10 @@ class Menu
 
 	def list=(new_list)
 		@list = reformat(new_list)
+	end
+
+	def list
+		@list.dup
 	end
 
 end
