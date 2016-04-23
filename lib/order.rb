@@ -16,7 +16,7 @@ class Order
     dishes[dish] = qty
   end
   
-  alias :update :add
+  alias update add
   
   def remove(dish)
     dishes.delete dish if contains?(dish)
@@ -37,7 +37,7 @@ class Order
   def display
     fail ERR_EMPTY_ORDER if dishes.empty?
     dishes.map do |dish, qty|
-      "%s x %d" % [dish, qty]
+      format("%s x %d", dish, qty)
     end.join("\n")
   end
   

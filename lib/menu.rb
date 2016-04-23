@@ -9,7 +9,7 @@ class Menu
   def read_menu
     return "The menu is empty" if dishes.empty?
     dishes.map do |dish, price|
-      "%s: £%.2f" % [dish, price]
+      format("%s: £%.2f", dish, price)
     end.join("\n")
   end
   
