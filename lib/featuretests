@@ -1,0 +1,2 @@
+order = TakeAway.new
+order.read_menu
