@@ -27,4 +27,16 @@ describe Checker do
 		end
 	end
 
+	context '#pass?' do
+		it 'raises an error if the total given is more or less than the correct price for the order' do
+			expect{subject.pass?([4,6].sample,order_valid_items,menu)}.to raise_error
+		end
+		it 'raises an error if the an order item is not on the menu' do
+			expect{subject.pass?(5,order_invalid_items,menu)}.to raise_error
+		end
+		it 'returns true if the total given is correct and the order items are valid' do
+			expect(subject.pass?(5,order_valid_items,menu)).to eq true
+		end
+	end
+
 end
