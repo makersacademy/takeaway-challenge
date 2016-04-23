@@ -1,14 +1,11 @@
 require 'menu'
-require "awesome_print"
 
 describe Menu do
   subject(:menu) { described_class.new }
 
   context 'default key hash'  do
     it "expect to get message for non-found dish " do
-      temp = menu.dishes["hola"]
-      p "hash: #{menu.dishes["croquetas gato"]}"
-      p "not found key #{temp}"
+      temp = menu.dishes["no_esta"]
       expect(menu.dishes[:"bug-maker"]).to eq Menu::DISH_NOT_FOUND
     end
   end
@@ -29,6 +26,24 @@ describe Menu do
     end
     it 'Mr. Waiter: menu, please!' do
       expect(menu.to_s).to eq @message
+    end
+  end
+
+  context '#contains?' do
+    xit 'returns true for tortilla patata' do
+
+    end
+
+    xit 'returns false for bug_makers' do
+
+    end
+  end
+
+  context '#price' do
+    xit 'returns price of croquetas gato' do
+    end
+
+    xit 'returns default message for bug_makers' do
     end
   end
 end
