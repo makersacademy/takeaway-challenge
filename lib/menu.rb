@@ -4,7 +4,7 @@ class Menu
     load_menu
   end
 
-private
+  private
 
   def load_menu
     menu = {}
