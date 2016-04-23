@@ -1,7 +1,9 @@
 class Takeaway
-
+  attr_reader :menu
+  
   def read_menu(menu = Menu)
-    menu.new.read
+    @menu = menu.new
+    @menu.read
   end
 
 end

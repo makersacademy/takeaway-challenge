@@ -9,4 +9,9 @@ class Menu
    puts @menu.dup
   end
 
+  def pick(menu_item)
+    raise "Sorry, that item is not on the menu" if !@menu.include?(menu_item)
+    @menu.select { |key, value| key == menu_item }
+  end
+
 end
