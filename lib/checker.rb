@@ -20,5 +20,11 @@ class Checker
 		end
 	end
 
+	def pass?(total,order,menu)
+		check_items(order,menu)
+		check_price(total,order,menu)
+		true
+	end
+
 
 end
