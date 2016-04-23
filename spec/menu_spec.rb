@@ -10,4 +10,12 @@ describe Menu do
     expect(menu.dishes).to eq dishes
   end
 
+  describe '#select_dish' do
+    
+    it 'returns chosen dish with name and price' do
+      expect(menu.select_dish(:beef_burger)).to eq({ :beef_burger => '1.99' })
+    end
+  
+  end
+
 end

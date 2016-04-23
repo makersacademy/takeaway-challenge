@@ -17,4 +17,10 @@ describe User do
     
   end
   
+  describe '#order' do
+  
+    
+  
+  end
+  
 end
