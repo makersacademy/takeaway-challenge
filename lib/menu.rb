@@ -1,4 +1,5 @@
 class Menu
+  
   attr_reader :dishes
   
   def initialize(dishes)
@@ -15,4 +16,5 @@ class Menu
   def contains?(dish)
     dishes.has_key? dish
   end
+  
 end

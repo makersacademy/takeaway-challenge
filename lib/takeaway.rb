@@ -1,6 +1,6 @@
 class Takeaway
   
-  ERR_INVALID_ORDER = 'The selected dish is not on the menu'
+  attr_reader :order
   
   def initialize(menu, order)
     @menu = menu
@@ -12,7 +12,6 @@ class Takeaway
   end
   
   def select_dish(dish, qty = 1)
-    raise ERR_INVALID_ORDER unless menu.contains? dish
     order.add(dish, qty)
   end
   
@@ -25,5 +24,6 @@ class Takeaway
   end
   
   private
-    attr_reader :menu, :order
+    attr_reader :menu
+    
 end

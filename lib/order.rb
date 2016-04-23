@@ -1,4 +1,5 @@
 class Order
+  
   ERR_INVALID_ORDER = 'The selected dish is not on the menu'
   
   attr_reader :dishes, :total
@@ -33,7 +34,6 @@ class Order
   end
   
   private 
-  
-  attr_reader :menu
+    attr_reader :menu
   
 end
