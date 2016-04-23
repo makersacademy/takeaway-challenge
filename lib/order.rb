@@ -19,5 +19,20 @@ class Order
     @total
   end
 
-  
+  def confirm(pay)
+    pay_err = "You have not paid enough, The total is £#{'%.2f' % order_cost}"
+    fail pay_err if not_enough?(pay)
+    conf_message = "Thankyou for your order, "\
+    "It will be delivered by #{del_time}"
+    conf_message
+  end
+
+  private
+  def not_enough?(pay)
+    pay != order_cost
+  end
+
+  def del_time
+    (Time.now + 3600).strftime("%H:%M")
+  end
 end

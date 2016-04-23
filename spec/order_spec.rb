@@ -31,4 +31,21 @@ describe Order do
       expect(subject.order_cost).to eq 17
     end
   end
+
+  describe "#confirm" do
+    it "returns an error if the payment is not enough" do
+      subject.add("Pepperoni Pizza")
+      subject.add("Margherita Pizza")
+      message = "You have not paid enough, The total is £17.00"
+      expect{subject.confirm(5)}.to raise_error(message)
+    end
+    it "returns a message if the payment is enough" do
+      allow(subject).to receive(:del_time) {"18:00"}
+      subject.add("Pepperoni Pizza")
+      subject.add("Margherita Pizza")
+      conf_message = "Thankyou for your order, "\
+      "It will be delivered by 18:00"
+      expect(subject.confirm(17)).to eq(conf_message)
+    end
+  end
 end
