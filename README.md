@@ -54,6 +54,9 @@ Installation
 => true
 [2] pry(main)> require './lib/menu.rb'
 
+=>
+[3] pry(main)> require './lib/restaurant.rb'
+
 => true
 ```
 
@@ -63,37 +66,57 @@ Classes
 
 **Dish**
 
+Responsible for holding information about dishes.
 Dishes should be initialized with a name. These can be returned via `#name`.
 
 ```
-[3] pry(main)> pad_thai = Dish.new "Pad Thai"
+[4] pry(main)> pad_thai = Dish.new "Pad Thai"
 
 => #<Dish:0x007fd881b25e10
  @name="Pad Thai">
-[4] pry(main)> pad_thai.name
+[5] pry(main)> pad_thai.name
 => "Pad Thai"
 ```
 
 **Menu**
 
+Responsible for associating dishes with prices.
 Dishes and prices can be added to the menu via the `#add` method.
 Dishes can be removed from the menu via the `#remove` method.
 `#view` returns a hash of dishes and prices on the menu.
 
 ```
-[5] pry(main)> menu = Menu.new
+[6] pry(main)> menu = Menu.new
 => #<Menu:0x007fd8828db2f8
  @dish_class=Dish,
  @menu={}>
-[6] pry(main)> menu.add pad_thai, 7
+[7] pry(main)> menu.add pad_thai, 7
 
 => 7
-[7] pry(main)> menu.view
+[8] pry(main)> menu.view
 => {"PAD THAI"=>7}
-[8] pry(main)> menu.remove pad_thai
+[9] pry(main)> menu.remove pad_thai
 
 => 7
-[9] pry(main)> menu.view
+[10] pry(main)> menu.view
 RuntimeError: Menu is empty
 from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.rb:13:in `view'
+```
+
+**Restaurant**
+
+Responsible for displaying the menu to customers.
+Needs to be initialized with an instance of `Menu`.
+The menu can be viewed using `view_menu`.
+
+```
+[11] pry(main)> restaurant = Restaurant.new menu
+
+=> #<Restaurant:0x007ff97c865f10
+ @menu=
+  #<Menu:0x007ff97c0a9858
+   @dish_class=Dish,
+   @menu={"PAD THAI"=>7}>>
+[12] pry(main)> restaurant.view_menu
+=> {"PAD THAI"=>7}
 ```

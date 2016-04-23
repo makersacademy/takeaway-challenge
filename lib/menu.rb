@@ -11,7 +11,7 @@ class Menu
 
   def view
     fail EMPTY_ERR if @menu.empty?
-    @menu
+    @menu.clone
   end
 
   def add dish, price
