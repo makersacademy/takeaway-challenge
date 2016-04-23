@@ -13,6 +13,7 @@ class TakeAway
   end
 
   def select(dish, quantity)
+    fail 'No such dish' unless dishes.include?(dish.to_sym)
     @order.add(dish, quantity)
   end
 
@@ -44,3 +45,5 @@ class TakeAway
   end
 
 end
+
+# +46769439197

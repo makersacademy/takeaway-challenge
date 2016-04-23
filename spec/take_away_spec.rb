@@ -8,13 +8,18 @@ describe TakeAway do
     expect(take_away.dishes).to include :pizza_deluxe
   end
 
-  it 'allows users to select how many dishes to order out of each dish' do
-    order = { hamburger: 1, pizza_deluxe: 2 }
-    take_away.select(:hamburger, 1)
-    take_away.select(:pizza_deluxe, 2)
-    expect(take_away.current_order).to eq order
+  describe '#select' do
+    it 'raises an error if customer tries to add non-existing dish' do
+      message = 'No such dish'
+      expect{ take_away.select(:hand_grenades, 300) }.to raise_exception message
+    end
+    it 'allows users to select how many dishes to order out of each dish' do
+      order = { hamburger: 1, pizza_deluxe: 2 }
+      take_away.select(:hamburger, 1)
+      take_away.select(:pizza_deluxe, 2)
+      expect(take_away.current_order).to eq order
+    end
   end
-
   #TO DO - STUB TIME OBJECT
   describe '#place_order' do
     context 'customer places an order' do
@@ -31,8 +36,9 @@ describe TakeAway do
         take_away.select(:hamburger, 1)
         take_away.select(:pizza_deluxe, 2)
         message = 'Not correct amount'
-        expect{ take_away.place_order(take_away.current_order, 45) }.to raise_error message
+        expect{ take_away.place_order(take_away.current_order, 45) }.to raise_exception message
       end
     end
   end
+
 end
