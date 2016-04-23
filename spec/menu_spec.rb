@@ -1,9 +1,10 @@
 require 'menu'
 
 describe Menu do
+  let(:rand_string) { (0...8).map { (65 + rand(26)).chr }.join }
   let(:dish_class) { double(:dish_class) }
-  let(:dish) { double(:dish, name: (0...8).map { (65 + rand(26)).chr }.join, price: rand(10)) }
-  let(:dish2) { double(:dish, name: (0...8).map { (65 + rand(26)).chr }.join, price: rand(10)) }
+  let(:dish) { double(:dish, name: rand_string, price: rand(10)) }
+  let(:dish2) { double(:dish, name: rand_string.reverse, price: rand(10)) }
   subject(:menu) { described_class.new }
 
   describe '#initialize' do

@@ -1,13 +1,13 @@
 class Menu
 
-  EMPTY_ERR = 'Menu is empty'
-  DUPE_ERR = 'A dish with this name already exists'
-  NO_DISH_ERR = 'This dish isn\'t on the menu'
+  EMPTY_ERR = 'Menu is empty'.freeze
+  DUPE_ERR = 'A dish with this name already exists'.freeze
+  NO_DISH_ERR = 'This dish isn\'t on the menu'.freeze
 
   def initialize dish_class = Dish
     @dish_class = dish_class
-    @dishes = Array.new
-    @menu = Hash.new
+    @dishes = []
+    @menu = {}
   end
 
   def view
@@ -16,7 +16,7 @@ class Menu
   end
 
   def add dish
-    fail DUPE_ERR if @menu.has_key?(dish.name.upcase)
+    fail DUPE_ERR if @menu.key?(dish.name.upcase)
     @dishes << dish
     rebuild_menu
   end
