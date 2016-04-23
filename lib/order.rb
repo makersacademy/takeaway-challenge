@@ -1,10 +1,12 @@
+require_relative "message"
 class Order
 
   attr_reader :my_order
 
-  def initialize(menu)
+  def initialize(menu, message_class=Message)
     @my_order = []
     @menu = menu
+    @message_class = message_class
   end
 
   def add(item, number = 1)
@@ -22,9 +24,8 @@ class Order
   def confirm(pay)
     pay_err = "You have not paid enough, The total is £#{'%.2f' % order_cost}"
     fail pay_err if not_enough?(pay)
-    conf_message = "Thankyou for your order, "\
-    "It will be delivered by #{del_time}"
-    conf_message
+    @message = @message_class.new(del_time)
+    @message.send
   end
 
   private

@@ -4,7 +4,8 @@ describe Order do
   let(:p_pizza) { double(:dish, name: "Pepperoni Pizza", price: 9.50) }
   let(:m_pizza) { double(:dish, name: "Margherita Pizza", price: 7.50) }
   let(:menu) { double(:menu, dishes: [p_pizza, m_pizza] ) }
-  subject(:order) { described_class.new(menu) }
+  let(:message_class) { double(:message_class, send: true, new: true ) }
+  subject(:order) { described_class.new(menu, message_class) }
   describe "#my_order" do
     it "initializes with an empty order list" do
       expect(subject.my_order).to eq []
@@ -43,9 +44,7 @@ describe Order do
       allow(subject).to receive(:del_time) {"18:00"}
       subject.add("Pepperoni Pizza")
       subject.add("Margherita Pizza")
-      conf_message = "Thankyou for your order, "\
-      "It will be delivered by 18:00"
-      expect(subject.confirm(17)).to eq(conf_message)
+      expect(subject).to respond_to(:confirm)
     end
   end
 end

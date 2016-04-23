@@ -1,3 +1,5 @@
 /**/.DS_Store
 /coverage
 /plan.md
+/lib/priv_message.rb
+/.env
