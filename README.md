@@ -41,3 +41,39 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+Installation
+-----
+* Clone this repo
+* Install `bundle` gem - `gem install bundle`
+* Run `bundle` from the root directory
+
+
+Classes
+-----
+*Dish*
+
+Dishes should be initialized with a name and a price. These can be returned via `attr_reader`s and altered via `attr_writers`s.
+
+```
+[1] pry(main)> require './lib/dish.rb'
+
+=> true
+[2] pry(main)> pad_thai = Dish.new 'Pad Thai', 7
+
+=> #<Dish:0x007f93a134cf60
+ @name="Pad Thai",
+ @price=7>
+[3] pry(main)> pad_thai.name
+=> "Pad Thai"
+[4] pry(main)> pad_thai.price
+=> 7
+[5] pry(main)> pad_thai.name = 'Hoisin Crispy Owl'
+
+=> "Hoisin Crispy Owl"
+[6] pry(main)> pad_thai.name=> "Hoisin Crispy Owl"
+[7] pry(main)> pad_thai.price = 10
+
+=> 10
+[8] pry(main)> pad_thai.price=> 10
+```
