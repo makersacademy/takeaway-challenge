@@ -1,7 +1,10 @@
 require 'menu'
 
 describe Menu do
+  subject(:menu) {described_class.new}
 
-  it {is_expected.to respond_to :show_menu }
+  it 'expected to shows menu items' do
+    expect(menu).to respond_to :show_menu
+  end
 
 end
