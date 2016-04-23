@@ -3,13 +3,16 @@ describe 'User Stories' do
   let(:dish_tikka) {Dish.new(name: "Tikka Masala", price: 7)}
   let(:dish_chow) {Dish.new(name: "Chow Mein", price: 6)}
   let(:order) {Order.new}
+  let(:some_dishes) {[dish_tikka, dish_chow]}
+  let(:list_dishes) do
+    some_dishes.each {|dish| puts"#{dish.name}: £#{dish.price}"}
+  end
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
   it 'show a list of dishes and prices to the user' do
-    some_dishes = [dish_tikka, dish_chow]
     menu = Menu.new(dishes: some_dishes)
-    expect{menu.show_menu}.not_to raise_error
+    expect(menu.show_menu).to eq list_dishes
   end
 
   # As a customer
@@ -51,3 +54,10 @@ describe 'User Stories' do
     end
   end
 end
+
+require './lib/menu'
+require './lib/dish'
+dish_tikka = Dish.new(name: "Tikka Masala", price: 7)
+dish_chow = Dish.new(name: "Chow Mein", price: 6)
+menu = Menu.new(dishes: [dish_tikka, dish_chow])
+menu.show_menu
