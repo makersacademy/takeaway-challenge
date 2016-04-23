@@ -13,12 +13,12 @@ describe Menu do
   describe '#select_dish' do
     
     it 'returns chosen dish with name and price' do
-      expect(menu.select_dish('beef burger')).to eq [{ 'beef burger' => '1.99' }]
+      expect(menu.select_dish('beef burger')).to eq({ 'beef burger' => '1.99' })
     end
     
-    it 'can select multiple dishes' do
-      expect(menu.select_dish('beef burger', 2)).to eq [{ 'beef burger' => '1.99' },{ 'beef burger' => '1.99' }]
-    end
+    # it 'can select multiple dishes' do
+    #   expect(menu.select_dish('beef burger', 2)).to eq [{ 'beef burger' => '1.99' },{ 'beef burger' => '1.99' }]
+    # end
     
   end
   

@@ -18,9 +18,6 @@ describe Customer do
   
   describe '#order' do
 
-    it 'stores the order' do
-      customer.order(dish)
-      expect(customer.check_order).to include dish
-    end
+   
   end
 end

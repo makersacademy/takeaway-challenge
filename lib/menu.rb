@@ -6,10 +6,8 @@ class Menu
     @dishes = { 'beef burger' => '1.99',  'cheese burger' => '1.99', 'chicken wings' => '0.49', 'coke' => '0.99' } 
   end
   
-  def select_dish(dish, multiple = 1)
-    array = []
-    multiple.times { array << required_dish(dish) }
-    array
+  def select_dish(dish)
+    required_dish(dish)
   end
   
   def add_dish(name, price)

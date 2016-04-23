@@ -1,32 +1,25 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Customer
-  
-  attr_reader :cost
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
-    @orders = []
-    @cost = 0
+    @order = order
   end
   
   def show_menu
     menu.dishes
   end
   
-  def check_order
-    orders.dup
+  def place_order(dish, quantity = 1)
+    an_order = menu.select_dish(dish)
+    order.take_order(an_order, quantity)
   end
-  
-  def order(dish, quantity = 1)
-    an_order = menu.select_dish(dish, quantity)
-    orders << an_order
-    an_order.each { |a_dish| @cost += a_dish[dish].to_f }
-  end
-  
   
   private
   
-  attr_reader :menu, :orders
+  attr_reader :menu, :order
+  
 
 end
