@@ -5,13 +5,9 @@ require 'pry'
 describe Order do
 
   subject(:order) { described_class.new(menu) }
-  let(:menu) { double :menu, print_menu: [dish] }
+  let(:menu) { double :menu, dishes: [dish] }
   let(:dish) { Dish.new(name: "Pizza", price: 7.99) }
   let(:dish1) { double :dish }
-
-  it 'shows a list of dishes' do
-    expect(order.show_menu).to eq [dish]
-  end
 
   context "when dish not in menu" do
     it 'raises an error' do

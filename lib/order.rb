@@ -7,13 +7,15 @@ class Order
     @selected_dishes = []
   end
 
-  def show_menu   #extract this to Takeaway class?
-    @menu.print_menu
-  end
-
   def select_dish(dish, quantity)
-    fail "The dish is not in the menu" unless show_menu.include?(dish)
+    fail "The dish is not in the menu" unless has_dish?(dish)
     @selected_dishes << dish.quantity = quantity
     dish
   end
+
+  private
+
+    def has_dish?(dish)
+      @menu.dishes.include?(dish)
+    end
 end

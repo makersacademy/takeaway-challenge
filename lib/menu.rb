@@ -1,5 +1,7 @@
 class Menu
 
+  attr_reader :dishes
+
   def initialize(dish = Dish.new)
     @dish = dish
     @dishes = []
@@ -7,7 +9,9 @@ class Menu
 
   def print_menu
     @dishes << @dish
-    @dishes
+    @dishes.map do |dish|
+      "#{dish.args[:name]}: £#{dish.args[:price]}"
+    end.join(", ")
   end
 
 end
