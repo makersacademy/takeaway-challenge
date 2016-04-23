@@ -2,19 +2,18 @@ require 'order'
 describe Order do
   let(:list_dishes) { { "jamon serrano": 15.99, "croquetas gato": 7.99, "tortilla patata": 4.99, "spanish sangria": 7.25 } }
   let(:menu) { double :menu, dishes: list_dishes, price: '€1.00', contains?: true }
-  let(:person) {double :person, name: "Pepito", phone: "123456789"}
   subject(:order) {described_class.new}
   context('when initializing') do
     it 'basket is empty' do
       expect(order.basket).to be_empty
     end
 
-    it 'receives a menu object' do
-      expect(order.menu).to be_an_instance_of Menu
+    it '#complete? is false' do
+      expect(order.complete?).to be false
     end
 
-    it 'receives a person object' do
-      expect(order.person).to be_an_instance_of Person
+    it 'receives a menu object' do
+      expect(order.menu).to be_an_instance_of Menu
     end
   end
 
@@ -48,20 +47,27 @@ describe Order do
         expect(order.basket).to eq({ "spanish sangria": 2 })
       end
     end
+  end
 
-    describe 'when full order passed with total' do
-      xit 'raises error if the total sum is not correct' do
-      end
-
-      xit 'raises error if the product is not listed and total is zero' do
-      end
-
-      xit 'returns the correct message if total is correct' do
-        #but how do we continue processing to sending text etc? Takeaway.process(order)
-      end
+  context('#checkout') do
+    it 'changes status order to ready to be processed' do
+      order.add("jamon serrano")
+      order.checkout
+      expect(order.ready_to_process).to be true
     end
   end
 
-  context('#total') do
+  context('#basket_summary') do
+    it 'returns "basket is empty" if basket empty' do
+      order.basket_summary
+      expect(order.basket_summary).to eq ("basket is empty")
+    end
+
+    it 'returns "jamon serrano" when 1xjamon in basket' do
+      order.add("jamon serrano")
+      p order.basket
+      order.basket_summary
+      expect(order.basket_summary).to eq ("jamon serrano x 1 = €15.99, ")
+    end
   end
 end

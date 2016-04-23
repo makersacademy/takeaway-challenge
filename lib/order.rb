@@ -1,31 +1,45 @@
 class Order
-  attr_reader :basket, :menu, :person
+  attr_reader :basket, :menu, :ready_to_process
 
-  def initialize(menu = Menu.new, person = Person.new)
+  def initialize(menu = Menu.new)
     @menu = menu
-    @person = person
     @basket = Hash.new(0)
+    @ready_to_process = false
   end
 
   def add(*args)
     dish, quantity, customer_total = args
+    return "dish not found" unless menu.contains?(dish)
+    quantity ||= 1
     add_to_basket( dish, quantity )
     confirm_order( dish, quantity, customer_total )
+  end
+
+  def checkout
+    fail "nothing on basket" if basket.empty?
+    @ready_to_process = true
+  end
+
+  def complete?
+    @ready_to_process
+  end
+
+  def basket_summary
+   return "basket is empty" if basket.empty?
+   summary = ""
+   basket.map { |item, qty| summary += "#{item} x #{qty} = €#{qty*menu.dishes[item]}, " }
+         .join
+
   end
 
   private
 
     def add_to_basket( dish, quantity )
-      quantity ||= 1
       basket[dish.to_sym] += quantity
     end
 
     def confirm_order( dish, quantity, customer_total )
-      raise "dish not found" unless menu.contains?(dish)
-      quantity ||= 1
       message = "#{quantity} x #{dish} added to your basket."
-      message += "Validating your order......." if customer_total
-      message
     end
 
 
