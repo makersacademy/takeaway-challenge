@@ -1,0 +1,3 @@
+class OrderItem
+
+end
