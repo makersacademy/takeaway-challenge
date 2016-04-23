@@ -11,8 +11,38 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+## Introduction
+
+## Installation Instructions
+
+## Usage instructions
+
+## Assumptions
+
+* The interface only displays items that are currently available.
+* The kitchen can produce an infinite quantity of dishes.
+
+## Future enhancements
+
+* Currently available dishes have a maximum quantity.  May want to apply this in the interface that only up to a certain quantity may be order through the online system.
+* Better handling when ordered item is not on the menu.
+* Order management when an order is still open in at the counter.
+* The ability to remove items from an order.
+
+## ISSUES
+
+* Major issues with rspec. I simply do not understand how to test for the desired behavior. I need further instruction o the use of rspec. I will get this through online training courses offered by lynda.com and reading the rspec book. The relish documentation is insufficient as a teaching tool and "try different things until it works" is contrary to my learning style.
+* The SMS capability is untested in rspec.
+
+## BUGS
+
+* Too many to count I'm sure. rspec posed a formidable challenge to me (see above).
+
+## IMPRESSIONS
+
+
 
 Instructions
 -------
@@ -68,7 +98,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
