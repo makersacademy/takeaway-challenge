@@ -11,6 +11,10 @@ class Takeaway
     menu.read_menu
   end
   
+  def print_current_order
+    order.display
+  end
+  
   def select_dish(dish, qty = 1)
     order.add(dish, qty)
   end

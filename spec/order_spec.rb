@@ -32,4 +32,13 @@ describe Order do
       expect(order.total).to eq 25.5
     end
   end
+  
+  describe "#display" do
+    it "prints the order in a user friendly way" do
+      order.add("Lamb", 2)
+      order.add("Gambas", 5)
+      printed_order = "Lamb x 2\nGambas x 5"
+      expect(order.display).to eq printed_order
+    end
+  end
 end

@@ -1,6 +1,7 @@
 class Order
   
-  ERR_INVALID_ORDER = 'The selected dish is not on the menu'.freeze
+  ERR_INVALID_ORDER = "The selected dish is not on the menu".freeze
+  ERR_EMPTY_ORDER = "The order is empty".freeze
   
   attr_reader :dishes, :total
   
@@ -31,6 +32,13 @@ class Order
   
   def contains?(dish)
     dishes.key? dish
+  end
+  
+  def display
+    fail ERR_EMPTY_ORDER if dishes.empty?
+    dishes.map do |dish, qty|
+      "%s x %d" % [dish, qty]
+    end.join("\n")
   end
   
   private 
