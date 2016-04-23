@@ -4,7 +4,8 @@ class Menu
   DUPE_ERR = 'A dish with this name already exists'.freeze
   NO_DISH_ERR = 'This dish isn\'t on the menu'.freeze
 
-  def initialize
+  def initialize dish_class = Dish
+    @dish_class = dish_class
     @menu = {}
   end
 
@@ -15,17 +16,17 @@ class Menu
 
   def add dish, price
     fail DUPE_ERR if on_menu?(dish)
-    @menu[dish.upcase] = price
+    @menu[dish.name.upcase] = price
   end
 
   def remove dish
     fail NO_DISH_ERR unless on_menu?(dish)
-    @menu.delete(dish.upcase)
+    @menu.delete(dish.name.upcase)
   end
 
   private
   def on_menu? dish
-    @menu.key?(dish.upcase)
+    @menu.key?(dish.name.upcase)
   end
 
 end

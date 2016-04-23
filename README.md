@@ -60,51 +60,40 @@ Installation
 
 Classes
 -----
+
 **Dish**
 
-Dishes should be initialized with a name. These can be returned via `#name` and `#price` and altered via `#name=` and `#price=`
+Dishes should be initialized with a name. These can be returned via `#name`.
 
 ```
-[1] pry(main)> pad_thai = Dish.new 'Pad Thai', 7
+[3] pry(main)> pad_thai = Dish.new "Pad Thai"
 
-=> #<Dish:0x007f93a134cf60
- @name="Pad Thai",
- @price=7>
-[2] pry(main)> pad_thai.name
+=> #<Dish:0x007fd881b25e10
+ @name="Pad Thai">
+[4] pry(main)> pad_thai.name
 => "Pad Thai"
-[3] pry(main)> pad_thai.price
-=> 7
-[4] pry(main)> pad_thai.name = 'Hoisin Crispy Owl'
-
-=> "Hoisin Crispy Owl"
-[5] pry(main)> pad_thai.name=> "Hoisin Crispy Owl"
-[6] pry(main)> pad_thai.price = 10
-
-=> 10
-[7] pry(main)> pad_thai.price=> 10
 ```
 
 **Menu**
 
-Menus can be initialized with any class which can respond to a `#name` and `#price` method. If nothing is passed, then Dish class will be used be default.
-Dishes can be added to the menu via the `#add` method.
+Dishes and prices can be added to the menu via the `#add` method.
 Dishes can be removed from the menu via the `#remove` method.
-`#view` returns a hash of names and prices of the dishes on the menu.
+`#view` returns a hash of dishes and prices on the menu.
 
 ```
-[1] pry(main)> menu = Menu.new=> #<Menu:0x007ffe321b91e8
+[5] pry(main)> menu = Menu.new
+=> #<Menu:0x007fd8828db2f8
  @dish_class=Dish,
- @dishes=[],
-[2] pry(main)> menu.add pad_thai
-=> [#<Dish:0x007ffe319c4e10
-  @name="Pad Thai",
-  @price=7>]
-[3] pry(main)> menu.view
-=> {"PAD THAI"=>7}
-[4] pry(main)> menu.remove pad_thai
+ @menu={}>
+[6] pry(main)> menu.add pad_thai, 7
 
-=> []
-[5] pry(main)> menu.view
+=> 7
+[7] pry(main)> menu.view
+=> {"PAD THAI"=>7}
+[8] pry(main)> menu.remove pad_thai
+
+=> 7
+[9] pry(main)> menu.view
 RuntimeError: Menu is empty
-from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.rb:14:in `view'
+from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.rb:13:in `view'
 ```

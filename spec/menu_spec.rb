@@ -1,10 +1,22 @@
 require 'menu'
 
 describe Menu do
-  let(:dish) { (0...8).map { (65 + rand(26)).chr }.join }
-  let(:dish2) { (0...8).map { (65 + rand(26)).chr }.join }
+  let(:rand_string) { (0...8).map { (65 + rand(26)).chr }.join }
+  let(:dish_class) { double(:dish_class) }
+  let(:dish) { double(:dish, name: rand_string) }
+  let(:dish2) { double(:dish, name: rand_string.reverse) }
   let(:price) { rand(10) }
   subject(:menu) { described_class.new }
+
+  describe '#initialize' do
+    subject(:menu_class) { described_class }
+    it 'is initialized with 1 argument' do
+      expect(menu_class.new(dish_class)).to be_a menu_class
+    end
+    it 'has an optional argument' do
+      expect(menu_class.new).to be_a menu_class
+    end
+  end
 
   describe '#view' do
     context 'empty menu' do
@@ -17,7 +29,7 @@ describe Menu do
   describe '#add' do
     before { menu.add(dish, price) }
     it 'adds the dish to the menu' do
-      expect(menu.view).to include(dish.upcase => price)
+      expect(menu.view).to include(dish.name.upcase => price)
     end
     context 'adding a duplicate dish' do
       it 'raises an error' do
@@ -36,7 +48,7 @@ describe Menu do
       before { menu.add(dish, price) ; menu.add(dish2, price) }
       it 'removes the item from the menu' do
         menu.remove(dish)
-        expect(menu.view).not_to include(dish.upcase)
+        expect(menu.view).not_to include(dish.name.upcase)
       end
     end
   end
