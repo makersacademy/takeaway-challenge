@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Texter
 
 	def initialize(client=Twilio::REST::Client.new("AC59d366eb0b90cb69be3545ee98da417f","a8c82c2f64ffc1960e07b8ede2744c59"))
