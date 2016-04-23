@@ -1,13 +1,16 @@
 require_relative 'menu'
 
 class Customer
+  
+  attr_reader :cost
 
   def initialize(menu = Menu.new)
     @menu = menu
     @orders = []
+    @cost = 0
   end
   
-  def list_dishes
+  def show_menu
     menu.dishes
   end
   
@@ -16,8 +19,11 @@ class Customer
   end
   
   def order(dish, quantity = 1)
-    orders << menu.select_dish(dish, quantity)
+    an_order = menu.select_dish(dish, quantity)
+    orders << an_order
+    an_order.each { |a_dish| @cost += a_dish[dish].to_f }
   end
+  
   
   private
   

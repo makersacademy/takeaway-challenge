@@ -4,15 +4,15 @@ describe Customer do
 
   subject(:customer) { described_class.new(menu) }
   let(:menu) { double :menu, dishes: nil, select_dish: dish }
-  let(:dish) { double :dish }
+  let(:dish) { double :dish, each: nil }
   
-  it 'responds to list_dishes' do
-    expect(customer).to respond_to(:list_dishes)
+  it 'responds to show_menu' do
+    expect(customer).to respond_to(:show_menu)
   end
   
-  describe '#list_dishes' do
+  describe '#show_menu' do
     it 'lists available dishes with prices' do
-      expect(customer.list_dishes).to eq(menu.dishes)
+      expect(customer.show_menu).to eq(menu.dishes)
     end
   end
   
@@ -22,7 +22,5 @@ describe Customer do
       customer.order(dish)
       expect(customer.check_order).to include dish
     end
-  
   end
-  
 end
