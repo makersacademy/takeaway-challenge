@@ -1,7 +1,7 @@
 describe 'User Stories' do
 
-  let(:dish_tikka) {Dish.new(name: "Tikka Masala", price: 7)}
-  let(:dish_chow) {Dish.new(name: "Chow Mein", price: 6)}
+  let(:dish_tikka) {Dish.new(name: "Tikka Masala", price: 7.95)}
+  let(:dish_chow) {Dish.new(name: "Chow Mein", price: 6.95)}
   let(:order) {Order.new}
   let(:some_dishes) {[dish_tikka, dish_chow]}
   let(:list_dishes) do
@@ -51,7 +51,8 @@ describe 'User Stories' do
       one_hour_display = one_hour.localtime.strftime("%H:%M")
       msg = "Thank you!"\
       " Your order was placed and will be delivered before #{one_hour_display}"
-      expect(order.check_total(33)).to eq msg
+      allow(order).to receive(:send_msg).and_return msg
+      expect(order.check_total(37.75)).to eq msg
     end
   end
 end
