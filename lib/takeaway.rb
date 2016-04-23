@@ -22,8 +22,7 @@ class TakeAway
   end
 
   def place_order(current_order, total_price)
-    @total_price = total_price
-    fail 'Not correct amount' if incorrect_total?
+    fail 'Not correct amount' if total_price != calculate_total
     confirm_order
   end
 
@@ -32,10 +31,6 @@ class TakeAway
   def confirm_order
     t = Time.new + 60 * 60
     "Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!"
-  end
-
-  def incorrect_total?
-    @total_price != calculate_total
   end
 
   def calculate_total
