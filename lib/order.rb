@@ -29,8 +29,7 @@ class Order
     pay_err = "You have not paid enough, "\
     "The total is £#{format('%.2f', order_cost)}"
     fail pay_err if not_enough?(pay)
-    @message = @message_class.new(del_time)
-    @message.send
+    @message_class.new(del_time).send
   end
 
   private

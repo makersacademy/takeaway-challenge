@@ -10,6 +10,7 @@ class Message
   end
 
   def send
+
     @client.account.messages.create(
     	from: ENV['FROM_PHONE'],
     	to: ENV['TO_PHONE'],

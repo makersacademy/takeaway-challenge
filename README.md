@@ -3,7 +3,8 @@ Coveralls
 [![Coverage Status](
 https://coveralls.io/repos/github/OMGDuke/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/OMGDuke/takeaway-challenge?branch=master)
 
-travis-ci
+Travis-ci
+
 [![Build Status](https://travis-ci.org/OMGDuke/takeaway-challenge.svg?branch=master)](https://travis-ci.org/OMGDuke/takeaway-challenge)
 
 
