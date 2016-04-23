@@ -2,9 +2,8 @@ class Dish
 
   attr_accessor :quantity
 
-  def initialize(name, price)
-    @name = name
-    @price = price
+  def initialize(args)
+    @args = args
     @quantity = nil
   end
 end
