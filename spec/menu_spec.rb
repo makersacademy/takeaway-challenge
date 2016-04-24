@@ -8,16 +8,16 @@ describe Menu do
   let(:menu_item) {double :menu_item, name: "name", price: 1}
   let(:menu_item_class) {double :menu_item_class, new: menu_item}
 
-  describe '#list' do
+  describe '#show' do
     it 'starts empty' do
-      expect(menu.list).to be_empty
+      expect(menu.show).to be_empty
     end
 
     context "after items have been added" do
       it "print out item name and price" do
         menu.add "name", 1
         menu_print = "name: 1\n"
-        expect(menu.list).to eq menu_print
+        expect(menu.show).to eq menu_print
       end
     end
   end
@@ -42,7 +42,7 @@ describe Menu do
     it 'removes menu item' do
       menu.add "name", 7
       menu.remove "name"
-      expect(menu.list).not_to include "name"
+      expect(menu.show).not_to include "name"
     end
 
     it 'raises error if not on menu' do

@@ -9,7 +9,7 @@ class Menu
     @menu_item_factory = menu_item_class
   end
 
-  def list
+  def show
     current.inject(''){|sum,item| sum << "#{item.name}: #{item.price}\n"}
   end
 
@@ -41,16 +41,16 @@ class Menu
 end
 
 
-thai = Menu.new
+thai_menu = Menu.new
 
-thai.list
+thai_menu.show
 
-thai.add "kung-po", 7
-thai.add("chop-suey", 5)
+thai_menu.add "kung-po", 7
+thai_menu.add("chop-suey", 5)
 
-p thai.remove "chop-suey"
+p thai_menu.remove "chop-suey"
 
-puts thai.list
+puts thai_menu.show
 # p thai.add "egg phoo yung", 6
 #
 # puts thai.list

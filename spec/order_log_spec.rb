@@ -2,8 +2,6 @@ require 'order_log'
 
 describe OrderLog do
 
-  it {is_expected.to respond_to(:remove).with(1).argument}
-
   let(:menu) {double :menu, get: menu_item}
   let(:menu_item) {double :menu_item, name: "dish", price: 1}
   subject(:order_log) {OrderLog.new(menu)}
@@ -48,15 +46,25 @@ describe OrderLog do
   end
 
   describe '#remove' do
-    before {order_log.add "item"}
+    before {order_log.add "dish"}
     it 'takes item off current order' do
-      order_log.remove "item"
+      order_log.remove "dish"
       expect(order_log.show).to eq ""
     end
 
     it 'takes multiple items off current order' do
-      order_log.add
+      order_log.add "dish"
+      order_log.remove "dish", 2
+      expect(order_log.show).to eq ""
     end
+
+    it 'leaves additional items on current order' do
+      order_log.add "dish"
+      order_log.remove "dish", 1
+      expect(order_log.show).to eq "dish: 1\n"
+    end
+
+
   end
 
   describe '#total' do
