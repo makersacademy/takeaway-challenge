@@ -1,7 +1,14 @@
+# require_relative 'dish'
+
 class Menu
 
   def initialize
-    @menu_items = { 'onion bhaji' => 3.99, 'naan' => 2.99 }
+    @menu_items = {
+      'chicken jalfrezi' => 7.99,
+      'onion bhaji' => 3.99,
+      'naan' => 2.99,
+      'rice' => 1.99
+    }
   end
 
   def show_menu
@@ -9,9 +16,3 @@ class Menu
   end
 
 end
-
-# require_relative 'dish'
-
-  # def add_to_menu(name, price, dish_class = Dish)
-  #   @menu_items << dish_class.new(name, price)
-  # end

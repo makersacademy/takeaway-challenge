@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'message'
 
 class Takeaway
 
@@ -25,7 +26,16 @@ class Takeaway
   end
 
   def total
-    "Order total: £#{@total}"
+    "Order total: £#{@total.round(2)}"
+  end
+
+  def total_to_pay
+    @total
+  end
+
+  def checkout(amount, message_class = Message)
+    fail "You have not paid the correct amount, please try again" unless payment_correct?(amount)
+    message_class.new.send
   end
 
   private
@@ -40,6 +50,10 @@ class Takeaway
 
   def update_total(price)
     @total += price
+  end
+
+  def payment_correct?(amount)
+    amount == @total
   end
 
 end
