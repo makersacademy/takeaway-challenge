@@ -8,12 +8,12 @@ describe Restaurant do
 
   end
 
-  describe '#display_menu' do
-    it 'displays the menu to the customer' do
-      allow(menu_class).to receive(:access)
-      expect(restaurant.display_menu).to eq(menu_class.access)
-    end
-  end
+  # describe '#display_menu' do
+  #   it 'displays the menu to the customer' do
+  #     allow(menu_class).to receive(:access)
+  #     expect(restaurant.display_menu).to eq(menu_class.access)
+  #   end
+  # end
 
   describe '#complete_order' do
     it 'sends a confirmation to the customer' do
