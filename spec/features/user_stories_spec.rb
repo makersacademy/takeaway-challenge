@@ -43,6 +43,15 @@ describe 'User Stories' do
     expect { customer.checkout(9) }.to raise_error('Your expected total amount due is not correct. Please try to checkout again')
   end
 
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+  xit 'sends a text to the customer confirming the order has been placed' do
+    customer = Customer.new
+    customer.order(item: :a, quantity: 1)
+    expect { customer.checkout(10) }.to output('Text message sent')
+  end
 
 
 
