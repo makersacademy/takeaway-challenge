@@ -21,10 +21,10 @@ class Takeaway
     @menu.menu_list.select do |k , v |
     @current_order <<  {k => v} if k == item
     @cost << see_menu[item]
-    total_pay
+    # total_pay
     end
     @current_order
-   end
+  end
 
   def checkout(total_pay)
     @current_order.each do |item|
