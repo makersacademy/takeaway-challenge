@@ -1,22 +1,23 @@
 require 'menu.rb'
 describe Menu do
-  subject(:menu) { described_class.new(dishes) }
-  let(:dishes) do
-    {
-      Margherita: 6.00,
-      Pepperoni: 6.50,
-    }
+  let(:marg_pizza) {double(:marg_pizza, name: 'Margherita', price: 6.00)}
+  let(:pepp_pizza) {double(:pepp_pizza, name: 'Pepperoni', price: 6.50)}
+  let(:list_dishes) do
+    [marg_pizza].each do |dish|
+       "#{dish.name}: £%0.2f" % [dish.price]
+    end
   end
-
-   it 'has some dishes stored' do
-    expect(menu.dishes).to eq(dishes)
-  end
-
+  subject(:menu) { described_class.new(dishes: marg_pizza) }
   it 'prints dishes and prices' do
-    print_dish = "Margherita: £6.00, Pepperoni: £6.50"
-    expect(menu.print).to eq(print_dish)
+
+    expect(menu.print).to eq(list_dishes)
   end
 
+  it 'returns true if dish is on menu' do
+    expect(menu.have_dish?(marg_pizza)).to eq true
+  end
 
-
+  it 'returns false if dish is not on menu' do
+    expect(menu.have_dish?(:pizza)).to eq false
+  end
 end
