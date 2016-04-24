@@ -11,42 +11,135 @@
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Solution
 -------
-This is the attempt made to resolve this exercise.  Object modelling was the first challenge to resolve, and it was a critical one to ensure a good implementation adhering to all the relevant best practices and SOLID principles. It was decided to use the following model:
+This is my attempt to resolve the challenge of this week.
 
-##Classes:
+## Installation
+Clone the repo from GitHub, then run bundle on the root directory.
+
+```
+$ bundle
+```
+Gems used: Gemfile listed below
+
+```
+gem 'rake'
+gem 'rspec'
+gem 'coveralls', require: false
+gem 'capybara'
+gem 'twilio-ruby'
+gem 'dotenv'
+
+```
+Please note that my .env file has not been share for security issues, if you want to check the send text functionality, please setup your own .env file within the root directory, as follows:
+
+```
+TWILIO_ACCOUNT_SID=<your twilio account SID>
+TWILIO_AUTH_TOKEN=<your auth token>
+TWILIO_SOURCE_PHONE=<Twilio phone number provided to you>
+TWILIO_DESTINATION_PHONE=<Phone where you want to receive text msgs>
+```
+you can get a free trial account with Twilio on https://www.twilio.com/
+
+
+## Classes:
+
+The basic object modelling used is as follows:
+
+User --> ContentManager --> Messager -->TakeAway
+                                          |
+                                          |
+                                          v
+                                        Order <-- Menu
+
+## Usage
+
+```
+2.2.3 :001 > c = Customer.new(name: "Sergio", phone: "")
+ => #<Customer:0x0000000101fe68 @name="Sergio", @phone="">
+2.2.3 :002 > cm = ContentManager.new(c)
+ => #<ContentManager:0x00000000ff1888 @customer=#<Customer:0x0000000101fe68 @name="Sergio", @phone="">>
+2.2.3 :003 > m = Messager.new(cm)
+ => #<Messager:0x00000000fb8358 @content_manager=#<ContentManager:0x00000000ff1888 @customer=#<Customer:0x0000000101fe68 @name="Sergio", @phone="">>>
+2.2.3 :004 > t = TakeAway.new(m)
+ => #<TakeAway:0x00000000f86178 @messager=#<Messager:0x00000000fb8358 @content_manager=#<ContentManager:0x00000000ff1888 @customer=#<Customer:0x0000000101fe68 @name="Sergio", @phone="">>>, @menu=nil>
+2.2.3 :005 > o = Order.new(t)
+ => #<Order:0x00000000f81060 @menu=#<Menu:0x00000000f81038 @dishes={:"jamon serrano"=>15.99, :"croquetas gato"=>7.99, :"tortilla patata"=>4.99, :"spanish sangria"=>7.25}>, @takeaway=#<TakeAway:0x00000000f86178 @messager=#<Messager:0x00000000fb8358 @content_manager=#<ContentManager:0x00000000ff1888 @customer=#<Customer:0x0000000101fe68 @name="Sergio", @phone="">>>, @menu=nil>, @basket={}>
+2.2.3 :006 > print o.menu
+Bar El Gato Muerto
+MENU
+jamon serrano :   €15.99
+croquetas gato :  €7.99
+tortilla patata :   €4.99
+spanish sangria :   €7.25
+```
+From here customer can provide a "quick checkout", ordering and item, its quantity, and providing the value of the total order.
+
+```
+2.2.3 :007 > o.add("jamon serrano", 1, 15.99)
+"output is : Order confirmed, thank you! You will receive a text shortly..."
+ => "1 x jamon serrano added to your basket.  Thank you! Your order has been processed. Confirmation SMS sent."
+ ```
+ And the basket should be empty at this stage:
+ ```
+2.2.3 :008 > o.basket_summary
+ => "basket is empty"
+2.2.3 :009 >
+```
+
+The other way of orderin is by adding items without providing the total amount of the order, i.e.
+```
+2.2.3 :009 > o.add("croquetas gato", 4)
+ => "4 x croquetas gato added to your basket."
+2.2.3 :010 > o.total
+ => "Total: 31.96€"
+2.2.3 :011 > o.add("spanish sangria",5)
+"output is : "
+ => "5 x spanish sangria added to your basket"
+2.2.3 :012 > o.basket_summary
+ => "croquetas gato x 4 = €31.96, spanish sangria x 5 = €36.25, "
+2.2.3 :013 > o.total
+ => "Total: 68.21€"
+2.2.3 :014 > o.checkout(68.21)
+ => "Order confirmed, thank you! You will receive a text shortly..."
+```
+
+
+
+
+
 
 ###Menu:  Class that manages storing the menu and accessing to its information
 
-* Attributes: 
-	- dishes (reader).  dishes is a hash to keep track of all the dishes and its prices.  Default value is “dish not found”  
+* Attributes:
+	- dishes (reader).  dishes is a hash to keep track of all the dishes and its prices.  Default value is “dish not found”
 * Methods:
-	- price(dish) : Returns a Fixnum object. Gets in the hash the value containing the price of a dish, or the default value if not found.  
+	- price(dish) : Returns a Fixnum object. Gets in the hash the value containing the price of a dish, or the default value if not found.
 	- contains?:(dish) Returns a Boolean object.  Checks if the dish exists in the hash dishes
 * Class interaction: Menu needs to be injected into class Order to ensure orders can be passed using the available dishes.
 
 ###TakeAway : Class that receives orders when they are complete, and send texts to customers
-* Attributes: 
+* Attributes:
 	- Time ( Time.now() )
 * Methods:
 	- send_text(customer_phone): Returns..? Send texts to customers using details from order
 * Class interation: Order needs to be injected into TakeAway
 
 ###Order : Class that manages customers orders.  It is probably the model core.
-* Attributes: 
+* Attributes:
 	- basket (accessor) non-completed orders status capture in basket
 * Methods:
 	- add(*args): adds a dish to the basket, taking into account quantities and the logic of how customer can ask for dishes. Sets complete? if the entry is of the type qty dish amount as per instructions
 	- total : Returns a Fixnum object. Traverses the current baskets and calculate the current sum
 	- basket_summary: (no args) Provides a summary of the dishes currently in basket, quantity, dishes and cost per group of dishes, e.g. "jamon serrano x4 = £63.96, croquetas gato x3 = £23.97"
 	-checkout: (no args) Requests to complete the order and send it for processing. Check for edge cases if zero items in basket and request to checkout. Calls Takeaway send_text if order ok. Clears current basket. Return not needed?
-* Class interaction: Order is the kernel of the model. It takes a Customer object to get customer details (phone number), a Menu object to get access to dishes and prices, and a Takeaway object to ensure it can call the relevant method in the Takeway to send the text. 
+* Class interaction: Order is the kernel of the model. It takes a Customer object to get customer details (phone number), a Menu object to get access to dishes and prices, and a Takeaway object to ensure it can call the relevant method in the Takeway to send the text.
 
-###Customer: Small class that stores customer name and telephone number.  Probably not required at this stage but for future scalability 
+###Customer: Small class that stores customer name and telephone number.  Probably not required at this stage but for future scalability
 * Attributes: :name, :phone (reader)
 * Methods : none (apart from the attributes automatically generated)
 
@@ -105,7 +198,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
