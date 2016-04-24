@@ -39,18 +39,18 @@ describe Order do
     describe ' adding to basket' do
       it 'adds to basket 1 jamon serrano, when chosen so' do
         order.add("jamon serrano")
-        expect(order.basket).to eq({ "jamon serrano": 1 })
+        expect(order.basket).to eq("jamon serrano": 1)
       end
 
       it 'adds to basket 2 spanish sangria, when chose so' do
         order.add("spanish sangria", 2)
-        expect(order.basket).to eq({ "spanish sangria": 2 })
+        expect(order.basket).to eq("spanish sangria": 2)
       end
 
       it 'adds to basket 1 spanish sangria, then another one, it should have 2' do
         order.add("spanish sangria")
         order.add("spanish sangria")
-        expect(order.basket).to eq({ "spanish sangria": 2 })
+        expect(order.basket).to eq("spanish sangria": 2)
       end
     end
   end
@@ -58,13 +58,13 @@ describe Order do
   context('#basket_summary') do
     it 'returns "basket is empty" if basket empty' do
       order.basket_summary
-      expect(order.basket_summary).to eq ("basket is empty")
+      expect(order.basket_summary).to eq "basket is empty"
     end
 
     it 'returns "jamon serrano" when 1xjamon in basket' do
       order.add("jamon serrano")
       order.basket_summary
-      expect(order.basket_summary).to eq ("jamon serrano x 1 = €15.99, ")
+      expect(order.basket_summary).to eq "jamon serrano x 1 = €15.99, "
     end
   end
 
