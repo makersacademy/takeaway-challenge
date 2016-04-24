@@ -5,12 +5,16 @@ class OrderLog
     @current = []
   end
 
-  def list
+  def show
     current.inject(''){|sum,item| sum << "#{item.name}: #{item.price}\n"}
   end
 
   def add dish, quantity = 1
     quantity.times {@current << @menu.get(dish)}
+  end
+
+  def remove dish
+    @current.delete(@current.find{|item| item.name})
   end
 
   def total
