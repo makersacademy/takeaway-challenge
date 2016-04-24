@@ -10,9 +10,9 @@ class Establishment
 		@menu.list
 	end
 
-	def place_order(total:,order:)
+	def place_order(total:,order:,time:Time.now)
 		if @checker.pass?(total,order,view_menu)
-			@texter.send_confirmation
+			@texter.send_confirmation(time)
 		end
 	end
 
