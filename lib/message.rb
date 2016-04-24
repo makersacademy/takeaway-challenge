@@ -9,7 +9,7 @@ class Message
     @client.account.messages.create(
       from: ENV['FROM_PHONE'],
       to: ENV['TO_PHONE'],
-      body: "Here's a lovely test for you"
+      body: "Thanks for your order; it's on the way"
       )
   end
 
