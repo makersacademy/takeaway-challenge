@@ -21,7 +21,7 @@ class Order
   def basket_summary
    return "basket is empty" if basket.empty?
    summary = ""
-   basket.each { |item, qty| summary += "#{item} x #{qty} = €#{qty*menu.dishes[item]}, " }
+   basket.each { |i, q| summary += "#{i} x #{q} = €#{q*menu.dishes[i]}, " }
    summary
   end
 
@@ -52,7 +52,7 @@ class Order
 
     def acknowledge_order( dish, quantity, customer_total, ack_checkout)
       message = "#{quantity} x #{dish} added to your basket."
-      msg_checkout = " Thank you! Your order has been processed. Confirmation SMS sent."
+      msg_checkout = " Thank you! Your order has been processed. SMS sent."
       ack_checkout ? message + msg_checkout : message
     end
 end

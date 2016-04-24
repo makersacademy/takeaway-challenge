@@ -8,7 +8,8 @@ class TakeAway
   end
 
   def complete_order(amount,customer_price)
-    @amount, @customer_price = amount, customer_price
+    @amount = amount
+    @customer_price = customer_price
     output ="order price not correct, please review"
     fail output unless correct_amount?
     messager.send_text(amount)
