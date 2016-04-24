@@ -7,7 +7,7 @@ class Takeaway
   def initialize(menu, order, notifier)
     @menu = menu
     @order = order.new menu
-    @notifier = notifier
+    @notifier = notifier.new
   end
   
   def print_menu
