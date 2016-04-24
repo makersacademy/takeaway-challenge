@@ -5,10 +5,10 @@ Dotenv.load
 class Message
 
   def initialize
-    account_sid = "AC177be96a7d6992580c6cb6ea91135ca6"
-    auth_token = "21c6dceae18f89be74e334681da93114"
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
     client = Twilio::REST::Client.new account_sid, auth_token
-    @from = "+441277424331"
+    @from = ENV['FROM']
     @twilio = client.account.messages
   end
 
@@ -18,7 +18,7 @@ class Message
       from: @from,
       to: ENV['PHONE_NUMBER'],
       body: message
-      )
+                  )
   end
 
   private

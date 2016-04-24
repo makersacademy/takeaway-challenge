@@ -12,8 +12,6 @@ describe Takeaway do
   let(:basket) { "5 x item1 = £5.0" }
   let(:order) { "#{quantity} x #{item} = £5.0" }
   let(:total) { "Order total: £5.0" }
-  # let(:message) { "Thank you! Your order was placed and will be delivered before 19:00" }
-  # let(:message_class) { double(:message_class, send: message) }
 
   describe '#menu' do
     it 'shows a list of dishes with prices' do
@@ -54,18 +52,6 @@ describe Takeaway do
     it 'shows the total cost as a float' do
       takeaway.order(item, quantity)
       expect(takeaway.total_to_pay).to eq 5.0
-    end
-  end
-
-  describe '#checkout' do
-    it 'raises and error if payment is incorrect' do
-      message = "You have not paid the correct amount, please try again"
-      takeaway.order(item, quantity)
-      expect{takeaway.checkout(2)}.to raise_error message
-    end
-
-    xit 'sends a confirmation message when order is placed' do
-      expect(takeaway.checkout(0, message_class)).to eq message
     end
   end
 

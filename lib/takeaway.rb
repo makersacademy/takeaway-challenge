@@ -33,11 +33,6 @@ class Takeaway
     @total
   end
 
-  def checkout(amount, message_class = Message)
-    fail "You have not paid the correct amount, please try again" unless payment_correct?(amount)
-    message_class.new.send
-  end
-
   private
 
   def on_menu?(item)
