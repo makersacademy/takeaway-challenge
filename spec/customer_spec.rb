@@ -18,7 +18,7 @@ describe Customer do
     it 'increments the total after items are specified' do
       subject.view_menu
       subject.order_items(4, "Pizza")
-      expect(order_total).to eq 12.00
+      expect(subject.order_total).to eq 12.00
     end
 
     it 'calls finalize_order' do
