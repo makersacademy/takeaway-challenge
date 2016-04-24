@@ -6,7 +6,6 @@ describe Messages do
   subject(:messages){described_class.new(number, id, token)}
 
   it 'sends text to a number' do
-    expectation = {1_562_631_7216=>"Nick"}
-    expect(messages.send_message).to eq expectation
+    expect(messages.send_message).to eq "Sent message to Nick"
   end
 end
