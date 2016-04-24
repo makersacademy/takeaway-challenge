@@ -31,7 +31,9 @@ describe Order do
       end
 
       it 'returns the correct mesage for a quick checkout' do
-        output = "1 x spanish sangria added to your basket. Thank you! Your order has been processed. SMS sent."
+        output1 = "1 x spanish sangria added to your basket. "
+        output2 = "Thank you! Your order has been processed. SMS sent."
+        output = output1 + output2
         expect(order.add("spanish sangria",1,7.25)).to eq output
       end
     end

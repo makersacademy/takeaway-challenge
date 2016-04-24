@@ -13,7 +13,7 @@ class Order
     quantity ||= 1
     add_to_basket( dish, quantity )
     output = checkout(customer_total) if customer_total
-    acknowledge_order( dish, quantity, customer_total, output )
+    acknowledge_order( dish, quantity, output )
 
 
   end
@@ -50,7 +50,7 @@ class Order
       basket[item.to_sym] += quantity
     end
 
-    def acknowledge_order( dish, quantity, customer_total, ack_checkout)
+    def acknowledge_order( dish, quantity, ack_checkout)
       message = "#{quantity} x #{dish} added to your basket."
       msg_checkout = " Thank you! Your order has been processed. SMS sent."
       ack_checkout ? message + msg_checkout : message
