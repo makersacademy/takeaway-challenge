@@ -1,5 +1,5 @@
 #require "twilio-ruby"
-require_relative "Menu"
+require_relative "menu"
 
 class Order
   attr_accessor :order
