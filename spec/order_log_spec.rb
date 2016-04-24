@@ -18,7 +18,7 @@ describe OrderLog do
       end
 
       it 'format - "dish: price" on its own line' do
-        msg = "#{menu_item.name}: #{menu_item.price}"
+        msg = "#{menu_item.name}: #{format("£%.2f",menu_item.price)}"
         order_log.add "dish"
         order_log.add "dish"
         expect(order_log.show).to eq "Order:\n#{msg}\n#{msg}\n"
@@ -61,7 +61,7 @@ describe OrderLog do
     it 'leaves additional items on current order' do
       order_log.add "dish"
       order_log.remove "dish", 1
-      expect(order_log.show).to eq "Order:\ndish: 1\n"
+      expect(order_log.show).to eq "Order:\ndish: £1.00\n"
     end
 
 

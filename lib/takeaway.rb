@@ -31,7 +31,7 @@ class Takeaway
     fail "nothing ordered" unless items_ordered?
     fail "Confirm with correct total of #{order_log.total}" unless correct_total? amount
     contact_obj = contact_factory.new
-    contact_obj.send(order_log.show)
+    contact_obj.send("#{order_log.show}\nTotal: #{order_log.total}")
   end
 
   private
