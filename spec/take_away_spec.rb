@@ -2,6 +2,9 @@ require 'takeaway'
 
 describe TakeAway do
   subject(:take_away) { described_class.new }
+  let(:message) { double :message }
+  let(:confirm_order) { double("confirm_order") }
+  let (:t) { Time.new + 60*60 }
 
   it 'presents a list of dishes with prices' do
     expect(take_away.dishes).to include :hamburger
@@ -20,15 +23,14 @@ describe TakeAway do
       expect(take_away.current_order).to eq order
     end
   end
-  #TO DO - STUB TIME OBJECT
+
   describe '#place_order' do
     context 'customer places an order' do
       it 'returns a confirmation of the order' do
         take_away.select(:hamburger, 1)
         take_away.select(:pizza_deluxe, 2)
-        t = Time.new + 60 * 60
-        message = "Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!"
-        expect(take_away.place_order(take_away.current_order, 42)).to eq message
+        message_body = "Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!"
+        expect(take_away.place_order(take_away.current_order, 42)).to eq message_body
       end
     end
     context 'customer places order with wrong total amount' do

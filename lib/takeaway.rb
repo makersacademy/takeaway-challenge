@@ -1,6 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
-
+require_relative 'message'
 
 class TakeAway
 
@@ -9,7 +9,7 @@ class TakeAway
   end
 
   def dishes(menu = Menu.new)
-    menu.each { |item, price| puts "#{item}, price: #{price}" }
+    menu.each { |item, price| puts "#{item}, price: #{price}€" }
   end
 
   def select(dish, quantity)
@@ -23,14 +23,14 @@ class TakeAway
 
   def place_order(current_order, total_price)
     fail 'Not correct amount' if total_price != calculate_total
+    puts 'That is the correct amount, sending confirmation to your cellphone...'
     confirm_order
   end
 
   private
 
-  def confirm_order
-    t = Time.new + 60 * 60
-    "Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!"
+  def confirm_order(message = Message.new, t = Time.new + 60 * 60)
+    message.send("Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!")
   end
 
   def calculate_total
@@ -40,5 +40,3 @@ class TakeAway
   end
 
 end
-
-# +46769439197
