@@ -1,9 +1,10 @@
 class Takeaway
   attr_reader :menu
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new, order = Order.new, messenger = Messenger.new)
     @menu = menu
     @order = order
+    @messenger = messenger
   end
 
   def read_menu
@@ -24,6 +25,10 @@ class Takeaway
 
   def qty_tracker
     @order.qty_tracker
+  end
+
+  def confirm
+    @messenger.confirm
   end
 
 end
