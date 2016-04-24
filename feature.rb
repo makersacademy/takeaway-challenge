@@ -20,26 +20,30 @@ thai_menu.remove "kung-po"
 puts thai_menu.show
 puts
 
+thai_restaurant = Takeaway.new(thai_menu)
 
-fergus = OrderLog.new thai_menu
+p thai_restaurant
 
-puts fergus.show
-puts
-fergus.add "egg phoo yung", 2
-fergus.add "chop-suey", 5
 
-puts fergus.show
-puts
-fergus.remove "egg phoo yung", 1
-
-puts fergus.show
-puts
-
-thai_menu.add "cheese_on_toast", 3.5
-
-fergus.add "cheese_on_toast"
-
-puts fergus.show
-puts
-
-puts fergus.total
+# fergus = OrderLog.new thai_menu
+#
+# puts fergus.show
+# puts
+# fergus.add "egg phoo yung", 2
+# fergus.add "chop-suey", 5
+#
+# puts fergus.show
+# puts
+# fergus.remove "egg phoo yung", 1
+#
+# puts fergus.show
+# puts
+#
+# thai_menu.add "cheese_on_toast", 3.5
+#
+# fergus.add "cheese_on_toast"
+#
+# puts fergus.show
+# puts
+#
+# puts fergus.total
