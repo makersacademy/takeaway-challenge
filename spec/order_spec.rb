@@ -1,5 +1,13 @@
 require 'order'
 
+#make a dummy messenger
+#comlete tests for order
+#tests for message
+#feature tests
+#readme
+#learning_plan x 2
+#blog
+
 describe Order do
 
   let(:shroyu) { double(:menu, dishes: {"Chilli Chicken Ramen" => 7.5, "Duck Gyoza" => 4, "Pepper Squid" => 5.5 } ) }
@@ -10,14 +18,6 @@ describe Order do
       expect(order.my_order).to be_empty
     end
   end
-
-  # describe '#view_menu' do
-  # before { allow(shroyu).to receive(:read).and return shroyu.list }
-  #   it 'shows the menu' do
-  #     list = "Chilli Chicken Ramen - £7.50\nDuck Gyoza - £4.00\nPepper Squid - £5.50\n"
-  #     expect(order.view_menu).to eq list
-  #   end
-  # end
 
   describe '#add' do
     it 'adds dish and quantity to my orders' do
@@ -54,9 +54,26 @@ describe Order do
     it 'returns an error if incorrect amount' do
       order.add("Duck Gyoza", 1)
       order.add("Pepper Squid", 2)
+      order.total
       message = "Incorrect amount"
       expect { order.checkout(11) }.to raise_error message
     end
+  end
+
+  describe '#confirmation' do
+    it 'returns successful' do
+      order.add("Duck Gyoza", 1)
+      order.add("Pepper Squid", 2)
+      order.total
+      order.checkout(15)
+      message = "Order has been placed. We will text you with the delivery time"
+      expect(order.confirm).to eq message
+    end
+
+    # it 'sends a payment confirmation text message' do
+    #   expect(order).to receive(:confirm).with("Thank you! Your order was placed and will be delivered before 15.32")
+    #   order.confirm
+    # end
   end
 
 end

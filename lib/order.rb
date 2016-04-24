@@ -1,21 +1,19 @@
+require_relative 'dish'
 require_relative 'menu'
+require_relative 'message'
 
 class Order
 
   attr_reader :my_order
 
    def initialize(menu)
-     @menu = menu
-     @dishes = menu.dishes
+     @menu = menu.dishes
      @my_order = []
-   end
-
-   def view_menu
-     @menu.read
+     @sum = 0
    end
 
    def add(dish, quantity)
-   raise "Please order something from the menu!" if !(@dishes.include?(dish))
+   raise "Please order something from the menu!" if !(@menu.include?(dish))
    @my_order << {dish => quantity}
    "#{quantity}X #{dish} has been added to your basket"
    end
@@ -24,11 +22,8 @@ class Order
      @basket = ""
      @my_order.each do |item|
        item.each do |dish, quantity|
-            # get price from @menu with dish key * quantity of item
-            price = quantity * @dishes[dish]
-            # convert to 2 decimal place pounds
+            price = quantity * @menu[dish]
             pounds = '%.2f' % price
-            # add to basket string
            @basket << "#{quantity}X #{dish} - £#{pounds}\n"
        end
      end
@@ -36,35 +31,31 @@ class Order
    end
 
    def total
-     @sum = 0
      @my_order.each do |item|
        item.each do |dish, quantity|
-         # get price from @menu with dish key * quantity of item
-         price = quantity * @dishes[dish]
-         # add prices to sum
+         price = quantity * @menu[dish]
          @sum += price
        end
      end
-     # convert to 2 decimal place pounds
      pounds = '%.2f' % @sum
      "Your total is £#{pounds}"
    end
 
    def checkout(amount)
-     raise "Incorrect amount" if amount != @sum
-     confirm if amount == @sum
+     amount_to_pounds = '%.2f' % amount
+     pounds = '%.2f' % @sum
+     raise "Incorrect amount" if amount_to_pounds != pounds
+     confirm if amount_to_pounds == pounds
+   end
+
+   def confirm(message_class = Message)
+   message = message_class.new
+   time = Time.now
+   message.send(time)
+   "Order has been placed. We will text you with the delivery time"
    end
 
   private
   attr_reader :menu, :dishes
-
-  # def confirm(message_class = Messenger)
-  # message = message_class.new
-  # time = Time.now
-  # message.send(time)
-
-  # end
-  #
-
 
 end

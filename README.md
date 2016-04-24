@@ -11,80 +11,106 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
--------
+ ## Introduction
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+ This program simulates a takeaway ordering system that uses Twilio API to send a confirmation text.
 
 
-In code review we'll be hoping to see:
+ ## Features
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+ * List of dishes with prices
+ * View menu
+ * Add items from menu
+ * Check total sum of dishes
+ * View basket
+ * Confirmation text when order confirmed
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
-Notes on Test Coverage
-------------------
+ ## Instructions
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+ Clone this repo:
 
-```
-$ coveralls report
-```
+ `$ git clone git@github.com:sitypop/takeaway-challenge.git`
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+ Change to takeaway-challenge directory, open irb and require the order.rb file:
 
-Build Badge Example
-------------------
+ ```
+ $ cd takeaway-challenge
+ $ irb
+ 2.2.3 :001 > require "./lib/order.rb"
+  => true
+  ```
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+ Now we can cook up some dishes!
+
+  ```
+  2.2.3 :002 > gatwick = Airport.new(20)
+  => #<Airport:0x007fe94b8e70d8 @capacity=20, @planes=[], @weather=#<Weather:0x007fe94b8e7088>>
+ 2.2.3 :003 > heathrow = Airport.new(10)
+  => #<Airport:0x007fe94b8d67b0 @capacity=10, @planes=[], @weather=#<Weather:0x007fe94b8d6738>>
+   ```
+
+ Let's add them to a menu:
+
+ ```
+ 2.2.3 :005 > wagamamas = Menu.new
+  => #<Menu:0x007f9eac1ed5c8 @dishes={}>
+ 2.2.3 :006 > wagamamas.add(ramen)
+  => 8.5
+ 2.2.3 :007 > wagamamas.add(gyoza)
+  => 5
+ 2.2.3 :008 > wagamamas.add(squid)
+  => 6
+ 2.2.3 :010 > wagamamas.read
+  => "Beef Ramen - £8.50\nDuck Gyoza - £5.00\nChilli Squid - £6.00\n"
+  ```
+
+ Now we can add items to our order, view basket and total!
+ ```
+ 2.2.3 :012 > saturday_night = Order.new(wagamamas)
+  => #<Order:0x007f9eac14ae68 @menu={"Beef Ramen"=>8.5, "Duck Gyoza"=>5, "Chilli Squid"=>6}, @my_order=[], @sum=0>
+ 2.2.3 :013 > saturday_night.add("Beef Ramen", 1)
+  => "1X Beef Ramen has been added to your basket"
+ 2.2.3 :014 > satuday_night.add("Chilli Squid", 2)
+  => "2X Chilli Squid has been added to your basket"n>'
+ 2.2.3 :015 > satuday_night.view_basket
+  => "1X Beef Ramen - £8.50\n2X Chilli Squid - £12.00\n"
+ 2.2.3 :016 > satuday_night.total
+  => "Your total is £20.50"
+  ```
+
+Mmm I'm hungry. Now let's checkout, and recieve a text confirmation. Woohoo.
+
+ ```
+ 2.2.3 :017 > satuday_night.checkout(20.50)
+  => "Order has been placed. We will text you with the delivery time"
+  ```
+
+ I have considered edge cases to ensure that you don't add anything to your order that isn't on the menu and pay the correct amount. Duh. 👆
+
+
+ ## Testing
+
+  In your terminal, type `$ rspec` under `takeaway-challenge` directory and it will run all the unit tests in spec files.
+
+  There is also `feature_spec.rb` file which contains all the feature tests for user stories. To solely run these, type the following:
+
+  `$ rspec spec/feature_spec.rb`
+
+
+ ## Tools
+
+
+  * Ruby
+  * RSpec
+  * Twilio API
+
+
+
+ ## Author
+
+
+  Sity Shah
