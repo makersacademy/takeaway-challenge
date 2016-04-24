@@ -16,4 +16,8 @@ class Establishment
 		end
 	end
 
+	def check_orders_received
+		@texter.check_for_orders(self)
+	end
+
 end

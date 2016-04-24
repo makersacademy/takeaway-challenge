@@ -32,4 +32,11 @@ describe Establishment do
 		end
 	end
 
+	context '#check_orders_received' do
+		it 'instructs its texter to check for orders' do
+			expect(texter).to receive(:check_for_orders).with(establishment)
+			establishment.check_orders_received
+		end
+	end
+
 end
