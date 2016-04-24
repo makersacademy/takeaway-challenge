@@ -47,10 +47,12 @@ Takeaway Challenge
  Now we can cook up some dishes!
 
   ```
-  2.2.3 :002 > gatwick = Airport.new(20)
-  => #<Airport:0x007fe94b8e70d8 @capacity=20, @planes=[], @weather=#<Weather:0x007fe94b8e7088>>
- 2.2.3 :003 > heathrow = Airport.new(10)
-  => #<Airport:0x007fe94b8d67b0 @capacity=10, @planes=[], @weather=#<Weather:0x007fe94b8d6738>>
+  2.2.3 :002 > ramen = Dish.new("Beef Ramen", 8.50)
+   => #<Dish:0x007f9ead8290a8 @name="Beef Ramen", @price=8.5>
+  2.2.3 :003 > gyoza = Dish.new("Duck Gyoza", 5)
+   => #<Dish:0x007f9eac21f320 @name="Duck Gyoza", @price=5>
+  2.2.3 :004 > squid = Dish.new("Chilli Squid", 6)
+   => #<Dish:0x007f9eac1fe8c8 @name="Chilli Squid", @price=6>
    ```
 
  Let's add them to a menu:
