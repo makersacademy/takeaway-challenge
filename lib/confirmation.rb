@@ -15,6 +15,8 @@ class Confirmation
 
   def send
     t = (Time.new + (60 * 60)).strftime("%H:%M")
-    @client.account.messages.create(:from => @from, :to => @phone_number, :body => "Order confirmed for customer #{@phone_number}! Due to arrive by #{ t }")
+    @client.account.messages.create(:from => @from, :to => @phone_number, :body => "Order confirmed!")
   end
+
+  # "Order confirmed for customer #{@phone_number}! Due to arrive by #{ t }"
 end
