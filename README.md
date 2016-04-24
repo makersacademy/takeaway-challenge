@@ -84,7 +84,6 @@ Approach and Refactoring
 ------
 * Made three classes: Menu, Order, Message
 * I'll add a fourth class called Takeaway to create a single point of entry for the application, as right now the user has to include both Menu and Order seperately.
-* I'd also ensure all unit tests stubbed out calls to the Twilio message service to prevent spam
 
 Author
 ------
