@@ -13,7 +13,8 @@ class ContentManager
 
   def body_msg(order_cost)
     eta = delivery_time
-    "Hi #{customer.name}, thank you for your order of #{order_cost}€.  Your food will be delivered before #{eta.strftime("%H:%M")}"
+    "Hi #{customer.name}, thank you for your order of #{order_cost}€.
+    Your food will be delivered before #{eta.strftime("%H:%M")}"
   end
 
 

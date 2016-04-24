@@ -6,7 +6,8 @@ class Menu
   HASH_SIZE = 4
 
   def initialize
-    @dishes = { "jamon serrano": 15.99, "croquetas gato": 7.99, "tortilla patata": 4.99, "spanish sangria": 7.25 }
+    @dishes = { "jamon serrano": 15.99,
+      "croquetas gato": 7.99, "tortilla patata": 4.99, "spanish sangria": 7.25 }
     @dishes.default = 0
   end
 
