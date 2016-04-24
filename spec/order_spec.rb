@@ -6,8 +6,8 @@ describe Order do
   let(:dish3) { double(:dish, name: (0...8).map { (65 + rand(26)).chr }.join) }
   let(:quant) { rand(2...10) }
   let(:quant2) { rand(2...10) }
-  let(:price) { rand(10) }
-  let(:price2) { rand(10) }
+  let(:price) { rand(1...10) }
+  let(:price2) { rand(1...10) }
   let(:menu) { double(:menu, view: {dish.name => price, dish2.name => price2}) }
   subject(:order) { described_class.new(menu)}
 

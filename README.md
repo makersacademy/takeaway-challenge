@@ -106,11 +106,12 @@ from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.
 
 **Restaurant**
 
-Responsible for displaying the menu to customers.
+Responsible for displaying facilitating ordering of food.
 Needs to be initialized with an instance of `Menu`.
 The menu can be viewed using `#view_menu`.
 Items can be added to an order via `#order`.
 A summary of the items ordered and the total price can be accessed via `#order_summary`.
+Orders can be confirmed via `#confirm_order`, which will send a confirmation message with a delivery time, and then create a new order.
 
 ```
 [12] pry(main)> restaurant = Restaurant.new menu
@@ -124,6 +125,13 @@ A summary of the items ordered and the total price can be accessed via `#order_s
 
 [15] pry(main)> restaurant.order_summary
 => {:total=>21, "PAD THAI"=>3}
+
+[16] pry(main)> restaurant.confirm_order
+Thanks! Your order will be delivered before 16:40
+=> #<Order:0x007f8694383188 @menu=#<Menu:0x007f869402d880 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order={:total=>0}>
+
+[17] pry(main)> restaurant.order_summary
+=> {:total=>0}
 ```
 
 **Order**
@@ -133,13 +141,3 @@ Needs to be initialized with an instance of `Menu`.
 A quantity of a `Dish` can be added to an order via `#add`.
 A list of each `Dish` and the quantity in the order, along with the total price is returned via `#summary`.
 Should not be used directly, instead, use `Restaurant`.
-```
-[16] pry(main)> order = Order.new menu
-=> #<Order:0x007f9daa8aba48 @menu=#<Menu:0x007f9da997f6f0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order={:total=>0}>
-
-[17] pry(main)> order.add pad_thai, 3
-=> 21
-
-[18] pry(main)> order.summary
-=> {:total=>21, "PAD THAI"=>3}
-```

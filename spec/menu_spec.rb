@@ -5,7 +5,7 @@ describe Menu do
   let(:dish_class) { double(:dish_class) }
   let(:dish) { double(:dish, name: rand_string) }
   let(:dish2) { double(:dish, name: rand_string.reverse) }
-  let(:price) { rand(10) }
+  let(:price) { rand(1...10) }
   subject(:menu) { described_class.new }
 
   describe '#initialize' do
