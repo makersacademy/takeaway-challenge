@@ -3,7 +3,7 @@ class Order
 
   def initialize menu
     @menu = menu
-    @order = {:total => 0}
+    @order = {total: 0}
   end
 
   def add dish, quantity

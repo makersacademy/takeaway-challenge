@@ -9,21 +9,21 @@ describe Restaurant do
   let(:price2) { rand(1...10) }
   let(:menu) { double(:menu, view: {dish => price, dish2 => price}) }
   let(:order_class) { double(:order_class, new: order) }
-  let(:order) { double(:order, summary: {:total => 0}) }
-  let(:messenger_class) { double(:messenger_class, new: messenger) }
+  let(:order) { double(:order, summary: {total: 0}) }
+  let(:mssg_class) { double(:messenger_class, new: messenger) }
   let(:messenger) {double(:messenger, send: Restaurant::CONFIRMATION) }
-  subject(:restaurant) { described_class.new(menu, order_class, messenger_class) }
+  subject(:restaurant) {described_class.new(menu, order_class, mssg_class)}
 
   describe '#initialize' do
-    subject(:restaurant_class) { described_class }
+    subject(:rest_class) { described_class }
     it "is initialized with 3 arguments" do
-      expect(restaurant_class.new(menu, order_class, messenger_class)).to be_a restaurant_class
+      expect(rest_class.new(menu, order_class, mssg_class)).to be_a rest_class
     end
     it 'has optional arguments' do
-      expect(restaurant_class.new(menu)).to be_a restaurant_class
+      expect(rest_class.new(menu)).to be_a rest_class
     end
     it "raises an argument error if no argument is given" do
-      expect{ restaurant_class.new }.to raise_error(ArgumentError)
+      expect{ rest_class.new }.to raise_error(ArgumentError)
     end
   end
 
@@ -50,7 +50,7 @@ describe Restaurant do
 
   describe '#confirm_order' do
     context 'valid order' do
-      let(:summary) { {dish => quant, :total => (quant * price)} }
+      let(:summary) { {dish.name => quant, :total => (quant * price)} }
       it 'sends a confirmation sms' do
         allow(order).to receive(:summary).and_return(summary)
         expect(messenger).to receive(:send)
@@ -63,7 +63,7 @@ describe Restaurant do
       end
     end
     context 'empty order' do
-      let(:summary) { {:total => 0} }
+      let(:summary) { {total: 0} }
       it 'raises an error' do
         allow(order).to receive(:summary).and_return(summary)
         expect{restaurant.confirm_order}.to raise_error(Restaurant::EMPTY_ERR)
