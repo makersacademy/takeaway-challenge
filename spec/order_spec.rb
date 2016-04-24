@@ -14,7 +14,7 @@ describe Order do
     context 'selected dish is available' do
       it 'adds a dish to the basket' do
         order.add('Broccoli', 2)
-        expect(order.basket).to eq({'Broccoli'=>2})
+        expect(order.basket).to eq('Broccoli'=>2)
       end
     end
     context 'selected dish is not available' do
@@ -27,7 +27,7 @@ describe Order do
   describe '#summary' do
     it 'displays ordered dishes and prices' do
     order.add('Broccoli', 1)
-      expect(order.summary).to eq({"Broccoli"=>"5.95"})
+      expect(order.summary).to eq("Broccoli"=>"5.95")
     end
   end
 

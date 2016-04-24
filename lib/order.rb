@@ -1,4 +1,3 @@
-require_relative 'basket'
 require_relative 'menu'
 require_relative 'restaurant'
 require_relative 'messager'
@@ -18,7 +17,7 @@ attr_reader :restaurant_class, :basket
   end
 
   def summary
-    @sum = @basket.keys.zip(menu.map { |k, v| sprintf('%.2f', (@basket[k] * v.to_f)) if @basket.key? k }.compact.reverse).to_h
+    @basket.keys.zip(menu.map { |k, v| sprintf('%.2f', (@basket[k] * v.to_f)) if @basket.key? k }.compact.reverse).to_h
   end
 
   # def to_pay
