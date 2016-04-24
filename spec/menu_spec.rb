@@ -35,11 +35,11 @@ describe Menu do
 
   context '#contains?' do
     it 'tortilla de patata is in the menu' do
-      expect(menu.contains? "tortilla patata").to be true
+      expect(menu.contains?("tortilla patata")).to be true
     end
 
     it 'bug makers is not in the menu' do
-      expect(menu.contains? "bug makers").to be false
+      expect(menu.contains?("bug makers")).to be false
     end
   end
 
