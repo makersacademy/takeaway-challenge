@@ -46,6 +46,7 @@ TWILIO_FROM_PHONE_NUMBER="+441234567890"
 TWILIO_TO_PHONE_NUMBER="+441234567890"
 ```
 Sign up for an account at https://www.twilio.com/try-twilio
+
 Clone the git repo in your chosen directory
 ```
 git clone https://github.com/GeekG1rl/takeaway-challenge.git
@@ -71,6 +72,19 @@ $ irb
  => "Thank you! Your order was placed and will be delivered at 23:23 for £18. \n \n Thanks for your order!"
 2.2.3 :009 >
 ```
+
+Technologies Used
+-------
+* Ruby 2.3.0 
+* Rspec 3.3.2
+* twilio-ruby gem
+* dotenv-rails gem 
+
+Approach and Refactoring
+------
+* Made three classes: Menu, Order, Message
+
+
 Author
 ------
 Mara Wanot
