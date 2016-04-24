@@ -7,7 +7,11 @@ describe Takeaway do
 
   let(:order_log_class) {double :order_log_class, new: order_log}
   let(:order_log) {double :order_log, add: nil, total: 0}
-  subject(:takeaway) {Takeaway.new menu, order_log_class}
+  let(:contact_method_class) {double :contact_method_class, new: contact_obj}
+  let(:contact_obj) {double :contact_obj, send: "msg"}
+
+
+  subject(:takeaway) {Takeaway.new menu, order_log_class, contact_method_class}
 
   context "given name and quantity of a dish" do
     describe "#add_to_order" do
@@ -76,11 +80,18 @@ describe Takeaway do
         expect{takeaway.confirm_order 9}.to raise_error{msg}
       end
 
-      it "calls text if amount == order total" do
+      it "creates a sms obj if amount == order total" do
         msg = "#{order_log.show}"
-        expect(contact_method).to receive(:send).with(msg)
-        takeaway.confirm_order 10, contact_method
+        expect(contact_method_class).to receive(:new)
+        takeaway.confirm_order 10
       end
+
+      it "sends the sms obj with the order details" do
+        msg = order_log.show
+        expect(contact_obj).to receive(:send).with(msg)
+        takeaway.confirm_order 10
+      end
+
     end
   end
 end

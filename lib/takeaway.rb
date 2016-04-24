@@ -1,8 +1,9 @@
 class Takeaway
 
-  def initialize(menu, order_log_class = OrderLog)
+  def initialize(menu, order_log_class = OrderLog, contact_method_class = SMS)
     @menu = menu
     @order_log = order_log_class.new menu
+    @contact_factory = contact_method_class
   end
 
   def show list = 'menu'
@@ -26,14 +27,15 @@ class Takeaway
     "#{order_log.show}\n\nTotal: #{value}\n\n#{confirm}"
   end
 
-  def confirm_order amount, contact_method = Text
+  def confirm_order amount
     fail "nothing ordered" unless items_ordered?
     fail "Confirm with correct total of #{order_log.total}" unless correct_total? amount
-    contact_method.send order_log.show
+    contact_obj = contact_factory.new
+    contact_obj.send(order_log.show)
   end
 
   private
-  attr_reader :order_log, :menu
+  attr_reader :order_log, :menu, :contact_factory
 
   def items_ordered?
     order_log.total != 0
