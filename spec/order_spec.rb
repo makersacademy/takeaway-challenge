@@ -22,15 +22,17 @@ describe Order do
     end
   end
 
-  describe "#total" do
-    it "should take all values of order and work calculate total" do
+  describe "#remove" do
+    it "should remove food from the order" do
       subject.add "Cepelinai"
       subject.add "Balandeliai"
-      expect(subject.total).to eq 11.5
+      expect(subject.remove("Cepelinai")).to eq [{"Balandeliai" => 5.00}]
     end
   end
 
   describe "#checkout" do
-    it "should send a text of the order and total as well as how long it will be"
+    it "should set current_order to empty" do
+      expect(subject.checkout).to eq []
+    end
   end
 end

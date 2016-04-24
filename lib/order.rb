@@ -34,17 +34,16 @@ class Order
   end
 
   def checkout
-    Text.new.send "Your order of #{@current_order} is on it's way! The total is: £#{@total}. It will be delivered by #{time}"
-    length = @current_order.length
-    @current_order.pop(length)
+    Text.new.send "Your order is on it's way! The total is: £#{@total}. It will be delivered by #{time}"
+    @current_order = []
   end
+
+private
 
   def time
     time = Time.now + (1 * 60 * 60)
     time.strftime("%I:%M%p")
   end
-
-  private
 
   def food_included? food
     @menu.dishes.has_key?(food)

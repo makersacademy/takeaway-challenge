@@ -5,4 +5,3 @@ order.add "Koteletai"
 order.add "Koteletai"
 order.add "Burukeliu Sriuba"
 order.view_order
-order.remove "Koteletai"
