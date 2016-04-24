@@ -14,12 +14,12 @@ Takeaway Challenge
 
  ```
 
- ## Introduction
+## Introduction
 
  This program simulates a takeaway ordering system that uses Twilio API to send a confirmation text.
 
 
- ## Features
+## Features
 
  * List of dishes with prices
  * View menu
@@ -29,7 +29,7 @@ Takeaway Challenge
  * Confirmation text when order confirmed
 
 
- ## Instructions
+## Instructions
 
  Clone this repo:
 
@@ -92,7 +92,7 @@ Mmm I'm hungry. Now let's checkout, and recieve a text confirmation. Woohoo.
  I have considered edge cases to ensure that you don't add anything to your order that isn't on the menu and pay the correct amount. Duh. 👆
 
 
- ## Testing
+## Testing
 
   In your terminal, type `$ rspec` under `takeaway-challenge` directory and it will run all the unit tests in spec files.
 
@@ -101,7 +101,7 @@ Mmm I'm hungry. Now let's checkout, and recieve a text confirmation. Woohoo.
   `$ rspec spec/feature_spec.rb`
 
 
- ## Tools
+## Tools
 
 
   * Ruby
@@ -110,7 +110,7 @@ Mmm I'm hungry. Now let's checkout, and recieve a text confirmation. Woohoo.
 
 
 
- ## Author
+## Author
 
 
   Sity Shah
