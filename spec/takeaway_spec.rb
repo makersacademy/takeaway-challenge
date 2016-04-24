@@ -4,6 +4,7 @@ describe TakeAway do
   let(:order){double :order}
   let(:menu){double :menu, display_menu: {"Fried Rice" => 5.99,
     "Chicken Chow Mein" => 7.99, "Cheeseburger" => 6.99, "Pizza" => 8}}
+  let(:text_message){double :messages, send_message: nil}
 
   it 'shows the menu' do
     expect(takeaway.read_menu).to eq menu.display_menu
@@ -16,11 +17,9 @@ describe TakeAway do
   end
 
   it 'confirms order' do
-    current = Time.now
-    t = "#{current.hour + 1}:#{'%02d' % current.min}"
-    message = "Thank you! Your order was placed and will be delivered before #{t}"
+    message = "Your order has been placed"
     allow(order).to receive(:total).and_return(12.99)
-    expect(takeaway.confirm_order(12.99)).to eq message
+    expect(takeaway.confirm_order(12.99, text_message)).to eq message
   end
 
   it 'raises an error if incorrect total' do

@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'messages'
 
 class TakeAway
   attr_reader :menu
@@ -23,10 +24,16 @@ class TakeAway
     @order.order_summary
   end
 
-  def confirm_order(total_confirmation)
-    current = Time.now
-    t = "#{current.hour + 1}:#{'%02d' % current.min}"
+  def confirm_order(total_confirmation, text_message = Messages.new)
     fail "Incorrect total" if total_confirmation != @order.total
-    "Thank you! Your order was placed and will be delivered before #{t}"
+    @text_message = text_message
+    messages
+    "Your order has been placed"
+  end
+
+  private
+
+  def messages
+    @text_message.send_message
   end
 end
