@@ -1,14 +1,12 @@
 require 'menu'
 describe Menu do
-
-  it 'includes a list of dishes and prices'do
-    expect(subject.list).to eq ({})
+  subject(:menu) {described_class.new(dishes)}
+  let(:dishes) do {:chicken => 3, :meatballs => 5.5} end
+  it 'has a list of dishes with prices' do
+    expect(menu.dishes).to eq dishes
   end
 
-  it 'accepts items added to the list' do
-    expect(subject.add("Muna chicken", 3)).to eq ({"Muna chicken" => 3})
+  it 'gives a list of dishes with prices' do
+    expect(menu.list_menu).to eq "chicken: $3, meatballs: $5.5"
   end
-
-  
-
 end

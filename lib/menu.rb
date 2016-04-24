@@ -1,14 +1,12 @@
 class Menu
 
-  attr_reader :list
-
-  def initialize
-    @list = Hash.new {0}
+  def initialize(dishes)
+    @dishes = dishes
   end
 
-  def add (dish, price)
-    @list[dish]=price
-    @list
+  def list_menu
+    list =dishes.map {|dish, price| "#{dish}: $#{price}"}
+    list.join(", ")
   end
-
+  attr_reader :dishes
 end
