@@ -8,7 +8,7 @@ class Menu
   end
 
   def show
-    current.inject(''){|sum,item| sum << "#{item.name}: #{item.price}\n"}
+    current.inject("Menu:\n"){|sum,item| sum << "#{item.name}: #{item.price}\n"}
   end
 
   def add item_name, item_price

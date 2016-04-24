@@ -8,7 +8,7 @@ describe OrderLog do
 
   describe '#show' do
     it 'starts empty' do
-      expect(order_log.show).to be_empty
+      expect(order_log.show).to eq "Order:\n"
     end
 
     context "after a dish has been logged" do
@@ -21,7 +21,7 @@ describe OrderLog do
         msg = "#{menu_item.name}: #{menu_item.price}"
         order_log.add "dish"
         order_log.add "dish"
-        expect(order_log.show).to eq "#{msg}\n#{msg}\n"
+        expect(order_log.show).to eq "Order:\n#{msg}\n#{msg}\n"
       end
     end
   end
@@ -49,19 +49,19 @@ describe OrderLog do
     before {order_log.add "dish"}
     it 'takes item off current order' do
       order_log.remove "dish"
-      expect(order_log.show).to eq ""
+      expect(order_log.show).to eq "Order:\n"
     end
 
     it 'takes multiple items off current order' do
       order_log.add "dish"
       order_log.remove "dish", 2
-      expect(order_log.show).to eq ""
+      expect(order_log.show).to eq "Order:\n"
     end
 
     it 'leaves additional items on current order' do
       order_log.add "dish"
       order_log.remove "dish", 1
-      expect(order_log.show).to eq "dish: 1\n"
+      expect(order_log.show).to eq "Order:\ndish: 1\n"
     end
 
 

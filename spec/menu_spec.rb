@@ -10,13 +10,13 @@ describe Menu do
 
   describe '#show' do
     it 'starts empty' do
-      expect(menu.show).to be_empty
+      expect(menu.show).to eq "Menu:\n"
     end
 
     context "after items have been added" do
       it "print out item name and price" do
         menu.add "name", 1
-        menu_print = "name: 1\n"
+        menu_print = "Menu:\nname: 1\n"
         expect(menu.show).to eq menu_print
       end
     end

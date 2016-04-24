@@ -6,7 +6,7 @@ class OrderLog
   end
 
   def show
-    current.inject(''){|sum,item| sum << "#{item.name}: #{item.price}\n"}
+    current.inject("Order:\n"){|sum,item| sum << "#{item.name}: #{item.price}\n"}
   end
 
   def add dish, quantity = 1
