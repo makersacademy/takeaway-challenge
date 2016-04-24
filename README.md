@@ -66,6 +66,7 @@ take_away = TakeAway.new
 This will immediately enable all the functionality. Once an order is completed it will be saved to TakeAway's order history, and a new instance of Order class is automatically instantiated.
 
 
+![irb feature test](https://github.com/festinalent3/takeaway-challenge/tree/master/images "irb feature test")
 
 
 
