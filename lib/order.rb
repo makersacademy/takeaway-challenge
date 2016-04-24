@@ -30,7 +30,7 @@ class Order
   private
 
   def on_menu?(item)
-    @menu.send_menu.has_key?(item)
+    @menu.send_menu.key?(item)
   end
 
   def delete(item)
@@ -40,7 +40,7 @@ class Order
   end
 
   def item_finder(item)
-    @menu.send_menu.find { |dish| dish[0] == item }
+    @menu.send_menu.detect { |dish| dish[0] == item }
   end
 
   def total_calculator
