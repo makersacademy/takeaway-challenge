@@ -6,11 +6,17 @@ class Texter
 		@client = client
 	end
 
-	def send_confirmation
+	def send_confirmation(time=Time.now)
 		@client.account.messages.create(
 			from: "+441277424334", 
 			to: "+447921046417", 
-			body: "Thank you! Your order was placed successfully and will be delivered an hour from #{Time.now}")
+			body: "Thank you! Your order was placed successfully and will be delivered by #{time_calc(time)}")
+	end
+
+	private
+	
+	def time_calc(time)
+		(time+(60*60)).strftime("%H:%M")
 	end
 
 end

@@ -4,6 +4,16 @@ class Menu
 		@list = reformat(file)
 	end
 
+	def list
+		@list.dup
+	end
+
+	def list=(new_file)
+		@list = reformat(new_file)
+	end
+	
+	private
+	
 	def reformat(file)
 		list = {}
 		File.read(file).split("\n").each do |line|
@@ -18,14 +28,6 @@ class Menu
 
 	def extract_price(line)
 		line[/[0-9.]+/].to_f
-	end
-
-	def list=(new_file)
-		@list = reformat(new_file)
-	end
-
-	def list
-		@list.dup
 	end
 
 end

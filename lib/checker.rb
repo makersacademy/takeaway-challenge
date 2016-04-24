@@ -9,10 +9,7 @@ class Checker
 	end
 
 	def check_price(total,order,menu)
-		price = 0
-		order.each do |item,quant|
-			price += (menu[item][:price] * quant)
-		end
+		price = calculate_price(order,menu)
 		if total > price
 			raise "Sorry, the total price is £#{price}. You have paid £#{total-price} too much! Please try again."
 		elsif total < price
@@ -26,5 +23,14 @@ class Checker
 		true
 	end
 
+	private
+
+	def calculate_price(order,menu)
+		price = 0
+		order.each do |item,quant|
+			price += (menu[item][:price] * quant)
+		end
+		price
+	end
 
 end
