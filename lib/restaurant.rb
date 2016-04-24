@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Restaurant
 
   def initialize
@@ -6,19 +8,19 @@ class Restaurant
         "Rice" => 2,
         "Beer" => 3
     }
-    @order = Hash.new(0)
+    @order = Order.new
   end
 
   def menu
     @menu.clone
   end
 
-  def order
-    @order.clone
+  def show_order
+    @order.show_order
   end
 
   def add_to_order(dish, quantity = 1)
-    @order[dish] += quantity
+    @order.add_to_order(dish, quantity)
   end
 
 end
