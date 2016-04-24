@@ -30,7 +30,7 @@ describe Order do
   describe '#summary' do
     it 'displays ordered dishes and prices' do
       order.add('Broccoli')
-      expect(order.summary).to eq({'Broccoli'=>'5.95'})
+      expect(order.summary).to eq('Broccoli'=>'5.95')
     end
   end
 
@@ -47,7 +47,7 @@ describe Order do
     context 'price is incorrect' do
       it 'raises an error' do
         allow(order).to receive(:correct_price?) {false}
-        expect{order.checkout}.to raise_error('Incorrect price. Order cancelled')
+        expect{order.checkout}.to raise_error 'Incorrect price. Order cancelled'
       end
     end
   end
