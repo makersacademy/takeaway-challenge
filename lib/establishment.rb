@@ -10,7 +10,7 @@ class Establishment
 		@menu.list
 	end
 
-	def place_order(total,order)
+	def place_order(total:,order:)
 		if @checker.pass?(total,order,view_menu)
 			@texter.send_confirmation
 		end
