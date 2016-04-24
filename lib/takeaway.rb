@@ -32,7 +32,7 @@ class Takeaway
   
   def pay(amount = 0)
     fail ERR_INCORRECT_PAYMENT if amount != total
-    notifier.confirm
+    notifier.send_sms
   end
   
   private

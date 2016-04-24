@@ -11,6 +11,7 @@ describe Takeaway do
   let(:printed_menu) { "Chicken: £4.50\nPork: £5.50\nSteak: £9.30" }
   let(:printed_order) { "Chicken x 2\nSteak x 5" }
   let(:notifier) { Notifier.new }
+  let(:twilio_client) { double(:twilio_client) }
     
   it "read the menu" do
     expect(takeaway.print_menu).to eq printed_menu
@@ -54,8 +55,9 @@ describe Takeaway do
     end
     
     it "pays the right amount for the current order" do
+      allow(notifier).to receive(:send_sms).and_return twilio_client
       amount = takeaway.total
-      expect(takeaway.pay(amount)).to eq "msg"
+      expect(takeaway.pay(amount)).to eq twilio_client
     end
     
     it "raises error of wrong amount for the current order" do
