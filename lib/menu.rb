@@ -13,7 +13,7 @@ class Menu
   end
 
   def remove food
-    fail "This food item is not on the menu!" unless @dishes.has_key? food
+    fail "This food item is not on the menu!" unless @dishes.key? food
     @dishes.delete_if { |h| h[food] }
   end
 end

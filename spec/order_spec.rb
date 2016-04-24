@@ -12,13 +12,21 @@ describe Order do
     end
   end
 
+  describe "#view_order" do
+
+    it "should respond with the order and the total" do
+      subject.add "Kotletai"
+      expect(subject.view_order).to eq 'This is your order: [{"Kotletai"=>4.0}] and the total is: £4.0'
+    end
+  end
+
   describe "#add" do
     it "should add a meal to order" do
       expect(subject.add("Balandeliai")).to eq [{"Balandeliai"=>5}]
     end
 
     it "should raise error if trying to add a meal that isn't on the menu" do
-      expect{subject.add("Chicken")}.to raise_error "This food item is not on the menu!"
+      expect{subject.add("Chicken")}.to raise_error "This is not on the menu!"
     end
   end
 
@@ -31,8 +39,13 @@ describe Order do
   end
 
   describe "#checkout" do
-    it "should set current_order to empty" do
+    xit "should access the text class" do
       expect(subject.checkout).to eq []
+    end
+
+    xit "should set @current_order to be empty" do
+      subject.checkout
+      expect(subject.current_order).to be []
     end
   end
 end

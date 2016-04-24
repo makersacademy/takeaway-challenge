@@ -20,7 +20,7 @@ class Order
   end
 
   def add food
-    fail "This food item is not on the menu!" unless food_included? food
+    fail "This is not on the menu!" unless food_included? food
     @menu.dishes.select do |k,v|
       @current_order << {k => v} if k == food
       total
@@ -29,16 +29,18 @@ class Order
   end
 
   def remove food
-    fail "This food item is not on the menu!" unless food_included? food
+    fail "This is not on the menu!" unless food_included? food
     @current_order.delete_if { |h| h[food] }
+    total
+    @current_order
   end
 
   def checkout
-    Text.new.send "Your order is on it's way! The total is: £#{@total}. It will be delivered by #{time}"
+    Text.new.send "Your order is on it's way! Total: £#{@total} It will be delivered by #{time}"
     @current_order = []
   end
 
-private
+  private
 
   def time
     time = Time.now + (1 * 60 * 60)
@@ -46,7 +48,7 @@ private
   end
 
   def food_included? food
-    @menu.dishes.has_key?(food)
+    @menu.dishes.key?(food)
   end
 
   def total
