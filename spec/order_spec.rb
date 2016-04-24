@@ -22,8 +22,8 @@ describe Order do
 
   describe '#add' do
     context 'valid order' do
-      before{ order.add(dish, quant) ; order.add(dish2, quant2) }
-      let(:expected) { (menu.view[dish] * quant) + (menu.view[dish2] * quant2) }
+      before{ order.add(dish, quant) ; order.add(dish2, quant) }
+      let(:expected) { (menu.view[dish.name] + menu.view[dish2.name]) * quant }
       it 'adds the dish to the order' do
         expect(order.summary).to include(dish.name, dish2.name)
       end

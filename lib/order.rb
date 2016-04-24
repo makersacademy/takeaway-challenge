@@ -1,5 +1,5 @@
 class Order
-  MENU_ERR = "Item not on menu"
+  MENU_ERR = 'Item not on menu'.freeze
   def initialize menu
     @menu = menu
     @order = {:total => 0}
