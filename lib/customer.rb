@@ -17,6 +17,15 @@ class Customer
     order.take_order(an_order, quantity)
   end
   
+  def check_order
+    order.check_order
+  end
+  
+  def check_total
+    order.total_cost
+  end
+  
+  
   private
   
   attr_reader :menu, :order

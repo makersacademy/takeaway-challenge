@@ -4,7 +4,7 @@ describe Customer do
 
   subject(:customer) { described_class.new(menu) }
   let(:menu) { double :menu, dishes: nil, select_dish: dish }
-  let(:dish) { double :dish, each: nil }
+  let(:dish) { double :dish }
   
   it 'responds to show_menu' do
     expect(customer).to respond_to(:show_menu)
@@ -16,8 +16,15 @@ describe Customer do
     end
   end
   
-  describe '#order' do
-
-   
+  describe '#place_order' do
+    it 'takes an order with dish and quantity' do
+      expect(customer).to respond_to(:place_order).with(2).arguments
+    end
   end
+
+  it 'can check the total cost of an order' do
+    expect(customer).to respond_to(:check_total)
+  end
+
 end
+
