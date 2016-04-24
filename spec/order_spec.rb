@@ -28,7 +28,6 @@ it 'adds dishes to order' do
   end
 
   it 'verifies order total against the sum of dish prices' do
-      menu.total_order
       expect(order.correct_price?(18.50, dishes_ord)).to eq true
     end
 

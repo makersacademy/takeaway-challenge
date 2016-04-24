@@ -1,12 +1,14 @@
 require_relative 'menu'
 require_relative 'dish'
+require_relative 'messenger'
 
 class Order
   attr_reader :dishes_ord, :menu
 
-  def initialize(a_menu:)
+  def initialize(a_menu:, messenger:)
     @dishes_ord = []
     @menu = a_menu
+    @messenger = messenger
   end
   def add(dish, quantity)
     fail 'Dish is not on menu!' if !on_menu?(dish)
@@ -25,7 +27,14 @@ class Order
    menu.have_dish?(dish)
   end
 
-  def ver_order?(total, dishes_ord)
+  def order_verified?(total, dishes_ord)
     fail 'Wrong total amount for order' unless total == total_order
+    send_message
+   end
+
+   private
+
+   def send_message
+     @messenger.send
    end
 end
