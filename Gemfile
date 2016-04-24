@@ -6,3 +6,4 @@ gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
 gem 'dotenv', :groups => [:development, :test]
+gem 'twilio-ruby'
