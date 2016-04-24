@@ -2,7 +2,8 @@ class Restaurant
 
   def initialize menu, order_class = Order
     @menu = menu
-    @order = order_class.new(menu)
+    @order_class = order_class
+    @order = @order_class.new(@menu)
   end
 
   def view_menu

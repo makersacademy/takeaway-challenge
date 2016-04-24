@@ -127,8 +127,8 @@ Items can be added to an order via `#order`
 Responsible for keeping track of quantities of each dish ordered and calculating the total.
 Needs to be initialized with an instance of `Menu`.
 A quantity of a `Dish` can be added to an order via `#add`
-The dishes in the order can be viewed via `#summary`
-
+A list of dishes in the order is returned via `#summary`
+The total price is returned via `#total`
 ```
 [15] pry(main)> order = Order.new menu
 => #<Order:0x007f849ba7c7f0 @menu=#<Menu:0x007f849b01e7b8 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order=[]>
@@ -138,4 +138,7 @@ The dishes in the order can be viewed via `#summary`
 
 [17] pry(main)> order.summary
 => ["PAD THAI", "PAD THAI", "PAD THAI"]
+
+[18] pry(main)> order.total
+=> 9
 ```
