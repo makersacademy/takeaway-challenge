@@ -13,6 +13,11 @@ class OrderLog
     quantity.times {@current << @menu.get(dish)}
   end
 
+  def total
+    @current.inject(0) {|sum,item| sum += item.price}
+  end
+
+  private
   attr_reader :current
 
 end

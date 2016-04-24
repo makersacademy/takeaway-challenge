@@ -2,15 +2,11 @@ require 'order_log'
 
 describe OrderLog do
 
-  # it {is_expected.to respond_to(:add).with(1).arguments}
+  it {is_expected.to respond_to(:remove)}
 
   let(:menu) {double :menu, get: menu_item}
   let(:menu_item) {double :menu_item, name: "dish", price: 1}
   subject(:order_log) {OrderLog.new(menu)}
-
-  describe "#initalize" do
-
-  end
 
   describe '#list' do
     it 'starts empty' do
@@ -29,9 +25,7 @@ describe OrderLog do
         order_log.add "dish"
         expect(order_log.list).to eq "#{msg}\n#{msg}\n"
       end
-
     end
-
   end
 
   describe '#add' do
@@ -51,12 +45,25 @@ describe OrderLog do
       expect(menu).to receive(:get).with("item").exactly(quantity).times
       order_log.add "item"
     end
-
-    # it 'adds a dish' do
-    #   order_log.add "name"
-    # end
-
   end
+
+  describe '#total' do
+    it 'total for new order is 0' do
+      expect(order_log.total).to eq 0
+    end
+
+    it 'returns current order price' do
+      quantity = 5
+      quantity.times {order_log.add "dish"}
+      expect(order_log.total).to eq menu_item.price * quantity
+    end
+  end
+
+
+
+
+
+
 
 
 end
