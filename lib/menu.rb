@@ -1,3 +1,5 @@
+require_relative 'menu_item'
+
 class Menu
 
   # not all lines covered here - only 86%
@@ -23,6 +25,12 @@ class Menu
     nil
   end
 
+  def get item_name
+    current.each{|item| return item if item.name == item_name}
+    fail "not on menu"
+  end
+
+
   private
   attr_reader :current
 
@@ -31,3 +39,22 @@ class Menu
   end
 
 end
+
+
+thai = Menu.new
+
+thai.list
+
+thai.add "kung-po", 7
+thai.add("chop-suey", 5)
+
+p thai.remove "chop-suey"
+
+puts thai.list
+# p thai.add "egg phoo yung", 6
+#
+# puts thai.list
+# p ""
+#
+# thai.remove "kung-po"
+# puts thai.list

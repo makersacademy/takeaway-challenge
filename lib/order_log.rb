@@ -4,7 +4,7 @@ class OrderLog
     []
   end
 
-  def add item, quantity
+  def add dish, quantity
   end
 
 end

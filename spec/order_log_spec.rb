@@ -6,13 +6,20 @@ describe OrderLog do
 
   subject(:order_log) {OrderLog.new}
 
+  describe "#initalize" do
+
+  end
+
   describe '#list' do
     it 'starts empty' do
       expect(order_log.list).to be_empty
     end
   end
 
-  # describe '#add' do
+  describe '#add' do
+    it 'adds a dish' do
+    end
+  end
 
 
 end
