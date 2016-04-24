@@ -1,90 +1,44 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
+TAKEAWAY CHALLENGE
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Synopsis
+--------
+The programm creates a takeaway app that allows a customer to select dishes from a menu and adds them to the basket. After the price is checked the order is either rejected or confirmed, in the latter case the customer receives an order confirmation via sms. In this approach the restaurant receives the menu from the menu class and displays it to the customer. The customer places the order, once complete and confirmed the order is send back to the restaurant. The restaurant then relies on the messager class to send out the confirmation.
 
 
-In code review we'll be hoping to see:
+Code Example
+------------
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+'''2.2.3 :002 > restaurant = Restaurant.new
+ => #<Restaurant:0x007ff36983e140 @menu_class=#<Menu:0x007ff36983e118>, @messager_class=#<Messager:0x007ff36983e050>>
+2.2.3 :003 > order = Order.new
+ => #<Order:0x007ff3691fd8d0 @restaurant_class=#<Restaurant:0x007ff3691fd830 @menu_class=#<Menu:0x007ff3691fd808>, @messager_class=#<Messager:0x007ff3691fd7e0>>, @basket={}>
+2.2.3 :004 > restaurant.display_menu
+ => {"Crispy Rolls"=>"3.95", "Chicken Soup"=>"4.25", "Pork Dumplings"=>"5.45", "Sweet & Sour"=>"7.45", "Black Bean Beef"=>"7.45", "Crispy Duck"=>"8.95", "Chow Mein"=>"6.45", "Fried Rice"=>"6.45", "Broccoli"=>"5.95"}
+2.2.3 :005 > order.add('Chicken Soup', 2)
+ => 2
+2.2.3 :006 > order.add('Black Bean Beef', 1)
+ => 1
+2.2.3 :007 > order.basket
+ => {"Chicken Soup"=>2, "Black Bean Beef"=>1}
+2.2.3 :008 > order.add('Crispy Duck')
+ => 1
+2.2.3 :009 > order.basket
+ => {"Chicken Soup"=>2, "Black Bean Beef"=>1, "Crispy Duck"=>1}
+2.2.3 :010 > order.summary
+ => {"Chicken Soup"=>"8.95", "Black Bean Beef"=>"7.45", "Crispy Duck"=>"8.50"} '''
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
-Notes on Test Coverage
-------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+Motivation
+----------
+Second weekend challenge, forked from MakersAcademy.
 
-```
-$ coveralls report
-```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+Progress
+--------
+About half of the app is complete. Also ests still need to be refactored.
 
-Build Badge Example
-------------------
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Author
+------
+HannaEb
