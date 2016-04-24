@@ -1,9 +1,9 @@
 require 'order'
 
 describe Order do
-  let (:dish) {double :dish}
-  let (:dish_2) {double :dish_2}
-  let (:menu_instance) {double :menu_instance}
+  let(:dish) {double :dish}
+  let(:dish_2) {double :dish_2}
+  let(:menu_instance) {double :menu_instance}
   subject {described_class.new(menu_instance)}
 
   it{is_expected.to respond_to(:itemised_basket)}
@@ -44,7 +44,7 @@ describe Order do
   describe '#summary' do
     # let(:menu) {double :menu}
     it 'should raise an error if the basket is empty' do
-      allow(menu_instance).to receive(:pick).and_return({:dish_1 => 4})
+      allow(menu_instance).to receive(:pick).and_return(:dish_1 => 4)
       expect{subject.summary}.to raise_error{"There are no items in your basket"}
     end
     # it 'should print the order to the screen' do

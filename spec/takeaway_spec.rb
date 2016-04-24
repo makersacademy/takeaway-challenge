@@ -1,12 +1,12 @@
 require 'takeaway'
 
 describe Takeaway do
-  let (:menu_instance) {double :menu_instance}
-  let (:order_instance) {double :order_instance}
-  let (:messenger_instance) {double :messenger_instance}
-  let (:dish) {double :dish}
-  let (:dish_2) {double :dish_2}
-  let (:text_message) {double :text_message}
+  let(:menu_instance) {double :menu_instance}
+  let(:order_instance) {double :order_instance}
+  let(:messenger_instance) {double :messenger_instance}
+  let(:dish) {double :dish}
+  let(:dish_2) {double :dish_2}
+  let(:text_message) {double :text_message}
   subject {described_class.new(menu_instance, order_instance, messenger_instance)}
 
   it{is_expected.to respond_to(:read_menu)}

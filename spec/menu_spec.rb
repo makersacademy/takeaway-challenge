@@ -24,7 +24,7 @@ describe Menu do
 
   describe '#pick' do
     it 'should return an item from the list of menu options' do
-      expect(subject.pick(:cheese_burger)).to eq({:cheese_burger => 7})
+      expect(subject.pick(:cheese_burger)).to eq(:cheese_burger => 7)
     end
     it 'should raise an error if the item is not on the menu' do
       expect{subject.pick(:avocado)}.to raise_error("Sorry, that item is not on the menu")
