@@ -26,6 +26,21 @@ describe Customer do
   it 'can check the total cost of an order' do
     expect(customer).to respond_to(:check_total)
   end
+  
+  describe '#confirm_order' do  
+    
+    it 'confirms an order and sends a confirmation message' do
+      expect(order).to receive(:text_confirmation)
+      customer.confirm_order
+    end
+    
+    xit 'resets the current order' do
+      customer.place_order('stuff')
+      customer.confirm_order
+      expect(customer.check_order).to be_empty
+    end
+    
+  end
 
 end
 

@@ -25,6 +25,11 @@ class Customer
     order.total_cost
   end
   
+  def confirm_order
+    order.text_confirmation
+    @order = Order.new
+  end
+  
   
   private
   

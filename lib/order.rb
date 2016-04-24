@@ -1,8 +1,11 @@
+require_relative 'messenger'
+
 class Order
   
-  def initialize
+  def initialize( messenger = Messenger.new )
     @trolley = []
     @cost = 0 
+    @messenger = messenger
   end
   
   def take_order(an_order, quantity = 1)
@@ -19,6 +22,10 @@ class Order
     total
   end
 
+  def text_confirmation
+    @messenger.send_text
+  end
+  
   private
   
   attr_reader :trolley, :cost
