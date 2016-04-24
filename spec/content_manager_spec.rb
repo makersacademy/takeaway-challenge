@@ -5,7 +5,7 @@ describe ContentManager do
   subject(:cm) { described_class.new(customer) }
   context('on initialization') do
     it 'responds to customer' do
-    expect(cm).to respond_to (:customer)
+    expect(cm).to respond_to :customer
     end
   end
 
@@ -20,7 +20,7 @@ describe ContentManager do
     end
   end
 
-  context ('#generate_body_msg') do
+  context('#generate_body_msg') do
     it 'message has the cost of the order' do
       msg = "Thank you for your order 4€"
       expect(cm.body_msg(4)).to include ("4€")
