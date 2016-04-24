@@ -21,8 +21,12 @@ attr_reader :list_of_items, :total_price
     fail "price does not match" unless check_total_price(price)
     t = Time.now + (60 * 60)
     t = t.strftime "%H:%M"
+    
+    send_sms_to_user(price, t)
+  end
 
-    @message.send(price, t)
+  def send_sms_to_user(price, time)
+    @message.send(price, time)
   end
 
   private

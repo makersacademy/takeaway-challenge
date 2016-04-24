@@ -34,10 +34,10 @@ describe Order do
       test_order.add_item(:chips, 2)
       expect{order.submit_order(100)}.to raise_error "price does not match"
     end
-    it "tells the user their order has been placed" do
-      test_order = described_class.new
-      test_order.add_item(:chips, 2)
-      expect(test_order.submit_order(7)).to include "Thank you!"
+    it "allow user to send place an order" do
+      order.stub(:send_sms_to_user).and_return(true)
+      order.add_item(:chips, 2)
+      expect(order.submit_order(7)).to eq true
     end
   end
 
