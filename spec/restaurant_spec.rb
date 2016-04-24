@@ -2,10 +2,14 @@ require 'restaurant'
 
 describe Restaurant do
   let(:dish) { double(:dish, name: (0...8).map { (65 + rand(26)).chr }.join) }
-  let(:quantity) { rand(10) }
-  let(:menu) { double(:menu, view: {dish => quantity}) }
+  let(:quant) { rand(2..10) }
+  let(:price) { rand(10) }
+  let(:dish2) { double(:dish, name: (0...8).map { (65 + rand(26)).chr }.join) }
+  let(:quant2) { rand(2..10) }
+  let(:price2) { rand(10) }
+  let(:menu) { double(:menu, view: {dish => price, dish2 => price}) }
   let(:order_class) { double(:order_class, new: order) }
-  let(:order) { double(:order, add: nil) }
+  let(:order) { double(:order) }
   subject(:restaurant) { described_class.new(menu, order_class) }
 
   describe '#initialize' do
@@ -27,10 +31,18 @@ describe Restaurant do
     end
   end
 
+  describe '#order_summary' do
+    let(:summary) { { dish => quant, :total => (quant * price) } }
+    it 'returns the order_summary' do
+      allow(order).to receive(:summary).and_return(summary)
+      expect(restaurant.order_summary).to eq summary
+    end
+  end
+
   describe '#order' do
     it 'adds to the current order' do
-      expect(order).to receive(:add)
-      restaurant.order(dish, quantity)
+      expect(order).to receive(:add).with(dish, quant)
+      restaurant.order(dish, quant)
     end
   end
 end

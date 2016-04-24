@@ -14,4 +14,8 @@ class Restaurant
     @order.add(dish, quantity)
   end
 
+  def order_summary
+    @order.summary
+  end
+
 end

@@ -1,15 +1,13 @@
 class Order
+  MENU_ERR = "Item not on menu"
   def initialize menu
     @menu = menu
-    @order = []
-    @total = 0
+    @order = {:total => 0}
   end
 
-  attr_reader :total
-
   def add dish, quantity
-    quantity.times { @order << dish.name }
-    add_to_total(dish, quantity)
+    fail MENU_ERR unless on_menu? dish
+    add_to_order(dish, quantity)
   end
 
   def summary
@@ -17,8 +15,18 @@ class Order
   end
 
   private
-  def add_to_total dish, quantity
-    @total += (@menu.view[dish] * quantity)
+  def add_to_order dish, quantity
+    @order[dish.name] = 0 unless ordered?(dish)
+    @order[dish.name] += quantity
+    @order[:total] += (@menu.view[dish.name] * quantity)
+  end
+
+  def ordered? dish
+    @order.key?(dish.name)
+  end
+
+  def on_menu? dish
+    !!@menu.view[dish.name]
   end
 
 end

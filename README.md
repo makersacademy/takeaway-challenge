@@ -109,36 +109,37 @@ from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.
 Responsible for displaying the menu to customers.
 Needs to be initialized with an instance of `Menu`.
 The menu can be viewed using `#view_menu`.
-Items can be added to an order via `#order`
+Items can be added to an order via `#order`.
+A summary of the items ordered and the total price can be accessed via `#order_summary`.
 
 ```
 [12] pry(main)> restaurant = Restaurant.new menu
-=> #<Restaurant:0x007ff97c865f10 @menu=#<Menu:0x007ff97c0a9858 @dish_class=Dish, @menu={"PAD THAI"=>7}>>
+=> #<Restaurant:0x007f9daac806f0 @menu=#<Menu:0x007f9da997f6f0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order=#<Order:0x007f9daac806c8 @menu=#<Menu:0x007f9da997f6f0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order={:total=>0}>, @order_class=Order>
 
 [13] pry(main)> restaurant.view_menu
 => {"PAD THAI"=>7}
 
 [14] pry(main)> restaurant.order pad_thai, 3
-=> 3
+=> 21
+
+[15] pry(main)> restaurant.order_summary
+=> {:total=>21, "PAD THAI"=>3}
 ```
 
 **Order**
 
 Responsible for keeping track of quantities of each dish ordered and calculating the total.
 Needs to be initialized with an instance of `Menu`.
-A quantity of a `Dish` can be added to an order via `#add`
-A list of dishes in the order is returned via `#summary`
-The total price is returned via `#total`
+A quantity of a `Dish` can be added to an order via `#add`.
+A list of each `Dish` and the quantity in the order, along with the total price is returned via `#summary`.
+Should not be used directly, instead, use `Restaurant`.
 ```
-[15] pry(main)> order = Order.new menu
-=> #<Order:0x007f849ba7c7f0 @menu=#<Menu:0x007f849b01e7b8 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order=[]>
+[16] pry(main)> order = Order.new menu
+=> #<Order:0x007f9daa8aba48 @menu=#<Menu:0x007f9da997f6f0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order={:total=>0}>
 
-[16] pry(main)> order.add pad_thai, 3
-=> 3
+[17] pry(main)> order.add pad_thai, 3
+=> 21
 
-[17] pry(main)> order.summary
-=> ["PAD THAI", "PAD THAI", "PAD THAI"]
-
-[18] pry(main)> order.total
-=> 9
+[18] pry(main)> order.summary
+=> {:total=>21, "PAD THAI"=>3}
 ```
