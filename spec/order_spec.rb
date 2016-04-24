@@ -17,12 +17,12 @@ describe Order do
   describe "#add" do
 
     it "adds an item to the order" do
-      order.add("Burger", 1)
-      expect(order.order).to eq ([burger])
+      order.add "Burger", 1
+      expect(order.order).to eq ([["Burger", 5]])
     end
 
     it "adds more than one item to the order" do
-      order.add("Burger", 2)
+      order.add "Burger", 2
       expect(order.order).to eq ([["Burger", 5], ["Burger", 5]])
     end
 
@@ -35,18 +35,18 @@ describe Order do
 
   describe "#remove" do
     before(:each) do
-      order.add("Burger", 1)
-      order.add("Pizza", 1)
+      order.add "Burger", 1
+      order.add "Pizza", 1
     end
 
     it "removes an item from the order" do
-      order.remove("Burger", 1)
+      order.remove "Burger", 1
       expect(order.order).to eq ([["Pizza", 8]])
     end
 
     it "removes multiple items from the order" do
-      order.add("Burger", 1)
-      order.remove("Burger", 2)
+      order.add "Burger", 1
+      order.remove "Burger", 2
       expect(order.order).to eq ([["Pizza", 8]])
     end
   end
@@ -54,9 +54,9 @@ describe Order do
   describe "#total" do
 
     it "returns current total of the order" do
-      order.add("Burger", 1)
-      order.add("Pizza", 1)
-      order.add("Burger", 1)
+      order.add "Burger", 1
+      order.add "Pizza", 1
+      order.add "Burger", 1
       message = "Current order total is £18"
       expect(order.total).to eq message
     end

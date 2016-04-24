@@ -1,4 +1,4 @@
-require "twilio-ruby"
+#require "twilio-ruby"
 require_relative "Menu"
 
 class Order
