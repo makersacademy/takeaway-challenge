@@ -8,7 +8,7 @@ class Dish
   end
 
   def print_dish
-    "#{name}: #{price}"
+    "#{name}: $#{price}"
   end
 
 end

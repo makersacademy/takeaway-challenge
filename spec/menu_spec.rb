@@ -4,7 +4,7 @@ require 'menu'
 
 describe Menu do
 
-  subject(:menu) { described_class.new() }
+  subject(:menu) { described_class.new }
   let(:dish) { double(:dish, print_dish: 'dish') }
   let(:dish1) { double(:dish1, print_dish: 'dish1') }
   let(:dish2) { double(:dish2, print_dish: 'dish2') }

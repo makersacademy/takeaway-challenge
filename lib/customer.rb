@@ -1,12 +1,12 @@
 
 class Customer
 
-  def initialize
-
+  def initialize(menu)
+    @menu = menu
   end
 
-  def menu
-
+  def show_menu
+    menu.print_menu
   end
 
   def add(dish, number)
@@ -21,6 +21,8 @@ class Customer
 
   end
 
+  private
 
+  attr_reader :menu
 
 end
