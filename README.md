@@ -36,7 +36,7 @@ Second weekend challenge, forked from MakersAcademy.
 
 Progress
 --------
-About half of the app is complete. Also ests still need to be refactored.
+Missing method in order class and spec. Dotenv also missing. Some tests still need refactoring.
 
 
 Author
