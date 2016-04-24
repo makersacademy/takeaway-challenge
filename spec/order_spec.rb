@@ -1,5 +1,5 @@
 require 'order'
 
-decribe Order do
+describe Order do
 
 end
