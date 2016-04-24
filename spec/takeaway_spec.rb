@@ -18,7 +18,6 @@ describe Takeaway do
     end
     describe '#order' do
       it "adds an item to the order" do
-        allow(takeaway).to receive(:total_pay)
         expect(takeaway.order(:chiken_foo_young)).to eq [{:chiken_foo_young=>4}]
       end
       it "raises an erro if the item is not on the menu" do
