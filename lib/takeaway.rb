@@ -9,12 +9,12 @@ class TakeAway
     @order_history = []
   end
 
-  def dishes(menu = Menu.new)
+  def dishes
     menu.each { |item, price| puts "#{item}, price: #{price}€" }
   end
 
   def select(dish, quantity)
-    fail 'No such dish' unless dishes.include?(dish.to_sym)
+    fail 'No such dish' unless menu.include?(dish.to_sym)
     @order.add(dish, quantity)
   end
 
@@ -34,6 +34,10 @@ class TakeAway
 
   private
 
+  def menu
+    Menu.new
+  end
+
   def confirm_order(message = Message.new, t = Time.new + 60 * 60)
     save_and_reset
     message.send("Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!")
@@ -41,7 +45,7 @@ class TakeAway
 
   def calculate_total
     sum = 0
-    current_order.each { |item, price| sum += dishes[item] * price }
+    current_order.each { |item, price| sum += menu[item] * price }
     sum
   end
 

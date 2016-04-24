@@ -6,7 +6,6 @@ describe Message do
   let (:message_body) { "Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!" }
 
   it 'sends a message confirming the order and that it will bedelivered within one hour' do
-    # allow(message).to receive(:twilio_send).with(message_body).and_return('hello')
     expect(message.send(message_body)).to eq message_body
   end
 
@@ -15,8 +14,4 @@ describe Message do
     message.send(message_body)
   end
 
-  it 'casts an exception in case it did not receive correct information' do
-    stub_const("Message::CUSTOMER", '+46704503916')
-    expect{ message.send(message_body) }.to raise_error
-  end
 end

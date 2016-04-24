@@ -7,7 +7,7 @@ describe TakeAway do
   let (:t) { Time.new + 60*60 }
 
   it 'presents a list of dishes with prices' do
-    expect(take_away.dishes).to include :hamburger
+  #  expect(take_away.dishes).to include :hamburger
     expect(take_away.dishes).to include :pizza_deluxe
   end
 

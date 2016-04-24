@@ -1,7 +1,6 @@
 require './lib/takeaway'
 
 
-
 # Tested class
 take_away = TakeAway.new
 puts
@@ -21,6 +20,20 @@ print take_away.current_order
 puts
 puts
 
-#Scenario #3, user places the order
-puts "SCENARIO #3, user places the order"
-take_away.place_order(34)
+#Scenario #3, user looks at current order
+puts "SCENARIO #3, user looks at current order"
+print take_away.current_order
+puts
+puts
+
+#Scenario #4, user places the order
+puts "SCENARIO #4, user places the order"
+print take_away.place_order(34)
+puts
+puts
+
+#Scenario #5, user sees order history
+puts "SCENARIO #5, user sees order history"
+print take_away.order_history
+puts
+puts
