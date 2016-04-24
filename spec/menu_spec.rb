@@ -6,7 +6,7 @@ describe Menu do
   let(:dish_chow){double(:dish_chow, name: "Chow Mein", price: 6.95)}
   let(:list_dishes) do
     [dish_tikka, dish_chow].each do |dish|
-      puts "#{dish.name}: £%0.2f" % [dish.price]
+      puts format('%s: £%0.2f', dish.name, dish.price)
     end
   end
 

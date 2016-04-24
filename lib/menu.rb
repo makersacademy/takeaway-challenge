@@ -5,7 +5,7 @@ class Menu
   end
 
   def show_menu
-    @dishes.each {|dish| puts "#{dish.name}: £%0.2f" % [dish.price]}
+    @dishes.each {|dish| puts format('%s: £%0.2f', dish.name, dish.price)}
   end
 
   def include_dish?(dish)

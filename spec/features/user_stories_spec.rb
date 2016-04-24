@@ -9,7 +9,7 @@ describe 'User Stories' do
   let(:message_system) {MessageSystem.new}
   let(:some_dishes) {[dish_tikka, dish_chow]}
   let(:list_dishes) do
-    some_dishes.each {|dish| puts "#{dish.name}: £%0.2f" % [dish.price]}
+    some_dishes.each {|dish| puts format('%s: £%0.2f', dish.name, dish.price)}
   end
 
 
@@ -62,7 +62,9 @@ describe 'User Stories' do
       one_hour_display = (Time.now + 60*60).localtime.strftime("%H:%M")
       msg = "Thank you!"\
       " Your order was placed and will be delivered before #{one_hour_display}"
-      allow(order).to receive(:send_msg).and_return msg
+      stub_const("MessageSystem::ACCOUNT_SID", 'AC77308b2f08a6730c203b04f2b5e64d70')
+      stub_const("MessageSystem::FROM", '+15005550006')
+      stub_const("MessageSystem::AUTH_TOKEN", '8871a5c37938ca13b17b561635a1d7ca')
       expect(order.check_total(37.75)).to eq msg
     end
   end
