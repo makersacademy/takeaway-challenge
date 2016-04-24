@@ -19,9 +19,9 @@ describe Restaurant do
     it "is initialized with 3 arguments" do
       expect(rest_class.new(menu, order_class, mssg_class)).to be_a rest_class
     end
-    it 'has optional arguments' do
-      expect(rest_class.new(menu)).to be_a rest_class
-    end
+    # it 'has optional arguments' do
+    #   expect(rest_class.new(menu)).to be_a rest_class
+    # end
     it "raises an argument error if no argument is given" do
       expect{ rest_class.new }.to raise_error(ArgumentError)
     end

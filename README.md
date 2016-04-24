@@ -152,3 +152,7 @@ Needs to be initialized with an instance of `Menu`.
 A quantity of a `Dish` can be added to an order via `#add`.
 A list of each `Dish` and the quantity in the order, along with the total price is returned via `#summary`.
 Should not be used directly, instead, use `Restaurant`.
+
+**TwilioAPI**
+
+Responsible for sending SMS messages via the Twilio API

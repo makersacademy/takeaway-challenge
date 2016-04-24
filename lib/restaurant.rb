@@ -1,5 +1,6 @@
 class Restaurant
-  CONFIRMATION = "Thanks! Your order will be delivered before #{(Time.new + 3600).strftime('%H:%M')}".freeze
+  CONFIRMATION = "Thanks! Your order will be delivered before"+
+  "#{(Time.new + 3600).strftime('%H:%M')}".freeze
   EMPTY_ERR = 'You haven\'t ordered anything'.freeze
 
   def initialize menu, order_class = Order, messenger_class = TwilioAPI

@@ -10,10 +10,10 @@ class TwilioAPI
 
   def send message
     @client.account.messages.create(
-      :from => ENV['FROM'],
-      :to => ENV['TO'],
-      :body => message
-      )
+      from: ENV['FROM'],
+      to: ENV['TO'],
+      body: message
+    )
   end
 
 end
