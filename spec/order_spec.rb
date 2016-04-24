@@ -60,20 +60,20 @@ describe Order do
     end
   end
 
-  describe '#confirmation' do
-    it 'returns successful' do
-      order.add("Duck Gyoza", 1)
-      order.add("Pepper Squid", 2)
-      order.total
-      order.checkout(15)
-      message = "Order has been placed. We will text you with the delivery time"
-      expect(order.confirm).to eq message
-    end
+  # describe '#confirmation' do
+  #   it 'returns successful' do
+  #     order.add("Duck Gyoza", 1)
+  #     order.add("Pepper Squid", 2)
+  #     order.total
+  #     order.checkout(15)
+  #     message = "Order has been placed. We will text you with the delivery time"
+  #     expect(order.confirm).to eq message
+  #   end
 
     # it 'sends a payment confirmation text message' do
     #   expect(order).to receive(:confirm).with("Thank you! Your order was placed and will be delivered before 15.32")
     #   order.confirm
     # end
-  end
+  # end
 
 end
