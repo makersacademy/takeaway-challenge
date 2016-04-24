@@ -8,10 +8,9 @@ describe Menu do
   it{is_expected.to respond_to(:price)}
 
   let(:menu) {double :menu}
-  let(:menu_item) {double :menu_item}
+  let(:dish) {double :dish}
 
   describe '#initialize' do
-
     it 'should create a menu containing food items and prices' do
       expect(subject.menu).to be_a(Hash)
     end

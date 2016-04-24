@@ -9,8 +9,8 @@ class Order
     @itemised_basket.dup
   end
 
-  def select(item, qty = 1)
-    qty.times { @itemised_basket << @menu.pick(item) }
+  def select(dish, qty = 1)
+    qty.times { @itemised_basket << @menu.pick(dish) }
     @itemised_basket[-1]
   end
 
@@ -32,11 +32,11 @@ class Order
     basket_values = @basket.values
     total = 0
     basket_values.each{|price| total += price}
-    index = 0
+    i = 0
     puts "Your order:"
       while basket_keys[index] != nil do
-        puts "#{qty_values[index]} x #{basket_keys[index]} : price £#{basket_values[index]}"
-        index += 1
+        puts "#{qty_values[i]} x #{basket_keys[i]} : price £#{basket_values[i]}"
+        i += 1
       end
     puts "Total = £#{total}"
     puts "Run the method '.confirm' to complete your order."

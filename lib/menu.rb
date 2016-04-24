@@ -9,13 +9,13 @@ class Menu
    puts @menu.dup
   end
 
-  def pick(menu_item)
-    raise "Sorry, that item is not on the menu" if !@menu.include?(menu_item)
-    @menu.select { |key, value| key == menu_item }
+  def pick(dish)
+    raise "Sorry, that item is not on the menu" if !@menu.include?(dish)
+    @menu.select { |key, value| key == dish }
   end
 
-  def price(menu_item)
-    @menu[menu_item]
+  def price(dish)
+    @menu[dish]
   end
 
 end

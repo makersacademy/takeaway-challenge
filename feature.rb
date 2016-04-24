@@ -1,7 +1,4 @@
 require './lib/takeaway.rb'
-require './lib/menu.rb'
-require './lib/order.rb'
-require './lib/messenger.rb'
 
  t = Takeaway.new
  t.read_menu

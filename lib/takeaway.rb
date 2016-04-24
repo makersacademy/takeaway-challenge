@@ -1,3 +1,7 @@
+require './lib/menu.rb'
+require './lib/order.rb'
+require './lib/messenger.rb'
+
 class Takeaway
   attr_reader :menu
 
@@ -11,8 +15,8 @@ class Takeaway
     @menu.read
   end
 
-  def order(item, qty = 1)
-    @order.select(item, qty)
+  def order(dish, qty = 1)
+    @order.select(dish, qty)
   end
 
   def basket
