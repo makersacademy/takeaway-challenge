@@ -16,17 +16,17 @@ class Menu
 
   def add dish, price
     fail DUPE_ERR if on_menu?(dish)
-    @menu[dish.name.upcase] = price
+    @menu[dish.name] = price
   end
 
   def remove dish
     fail NO_DISH_ERR unless on_menu?(dish)
-    @menu.delete(dish.name.upcase)
+    @menu.delete(dish.name)
   end
 
   private
   def on_menu? dish
-    @menu.key?(dish.name.upcase)
+    @menu.key?(dish.name)
   end
 
 end

@@ -54,7 +54,7 @@ Installation
 => true
 [2] pry(main)> require './lib/menu.rb'
 
-=>
+=> true
 [3] pry(main)> require './lib/restaurant.rb'
 
 => true

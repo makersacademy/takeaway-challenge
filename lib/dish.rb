@@ -1,7 +1,7 @@
 class Dish
 
   def initialize name
-    @name = name
+    @name = name.upcase
   end
 
   def name

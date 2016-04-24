@@ -5,7 +5,7 @@ describe Dish do
 
   describe '#name' do
     it 'returns the name' do
-      expect(dish.name).to eq name
+      expect(dish.name).to eq name.upcase
     end
   end
 end

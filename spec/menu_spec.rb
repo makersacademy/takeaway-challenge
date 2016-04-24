@@ -29,7 +29,7 @@ describe Menu do
   describe '#add' do
     before { menu.add(dish, price) }
     it 'adds the dish to the menu' do
-      expect(menu.view).to include(dish.name.upcase => price)
+      expect(menu.view).to include(dish.name => price)
     end
     context 'adding a duplicate dish' do
       it 'raises an error' do
@@ -48,7 +48,7 @@ describe Menu do
       before { menu.add(dish, price) ; menu.add(dish2, price) }
       it 'removes the item from the menu' do
         menu.remove(dish)
-        expect(menu.view).not_to include(dish.name.upcase)
+        expect(menu.view).not_to include(dish.name)
       end
     end
   end
