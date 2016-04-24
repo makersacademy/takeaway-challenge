@@ -64,6 +64,6 @@ Steak: £9.30
 
 After calling the method pay with the right amount, the sms is sent to the customer to confirm that the order was placed. See below:
 
-![Image of Twilio SMS](https://github.com/omajul85/takeaway-challenge/tree/master/docs/twilio_sms.jpg)
+![Image](https://github.com/omajul85/takeaway-challenge/tree/master/docs/twilio_sms.jpg "Twilio SMS")
 
 
