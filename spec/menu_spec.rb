@@ -18,4 +18,8 @@ describe Menu do
 		expect(menu.show).to eq(menu_items)
 	end
 
+	it 'gives the price' do 
+		expect(menu.price(:kurma)).to eq dishes[:kurma]
+	end
+
 end

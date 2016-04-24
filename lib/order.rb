@@ -1,13 +1,21 @@
 class Order
 
-	attr_reader :dishes
+	attr_reader :dishes, :menu
 
-	def initialize
+	def initialize(menu)
+		@menu = menu
 		@dishes = {}
 	end
 
-	def add(dish, quantity)
-		dishes[dish] = quantity
+	def add(dish, number)
+		dishes[dish] = number
+	end
+
+	def order_total
+		total = dishes.map do |dish, number|
+			menu.price(dish) * number
+			end
+			total.inject(:+)
 	end
 
 end

@@ -13,9 +13,14 @@ class Takeaway
 	end
 
 	def select_order(dishes)
-		dishes.each do |dish, quantity|
-			order.add(dish, quantity)
+		dishes.each do |dish, number|
+			order.add(dish, number)
 		end
+		order.order_total
+	end
+
+	def confirm_order
+		"Thank you! Your order was placed and will be delivered before 18:52"
 	end
 
 	private
