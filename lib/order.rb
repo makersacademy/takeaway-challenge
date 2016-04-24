@@ -16,11 +16,6 @@ class Order
 
   end
 
-  def checkout(amount)
-    fail "nothing on basket" if basket.empty?
-    @customer_price = amount
-  end
-
   def basket_summary
    return "basket is empty" if basket.empty?
    summary = ""
@@ -31,6 +26,12 @@ class Order
   def total
     @bill = @basket.reduce(0) { |sum, (item, qty)| sum += qty*menu.dishes[item]}
     "Total: #{bill.round(2)}€"
+  end
+
+  def checkout(amount)
+    fail "nothing on basket" if basket.empty?
+    #takeaway.complete_order(amount, customer_price)
+    @customer_price = amount
   end
 
   private

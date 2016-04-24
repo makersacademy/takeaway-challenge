@@ -2,14 +2,17 @@ class TakeAway
 
   attr_reader :messager, :order
 
-  def initialize(messager = Messager.new, order = Order.new)
+  def initialize(messager = Messager.new)
     @messager = messager
-    @order = order
+    #@order = order
   end
 
-  def complete_order
+  def complete_order(amount,customer_price)
+    @amount, @customer_price = amount, customer_price
     output ="order price not correct, please review"
     fail output unless is_correct_amount?
+    messager.send_text(order.bill)
+    output = "Order confirmed, thank you! You will receive a text shortly..."
   end
 
 
@@ -17,7 +20,7 @@ class TakeAway
   private
 
     def is_correct_amount?
-      order.bill == order.customer_price
+      @amount == @customer_price
     end
 
 end

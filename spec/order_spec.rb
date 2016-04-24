@@ -2,6 +2,7 @@ require 'order'
 describe Order do
   let(:list_dishes) { { "jamon serrano": 15.99, "croquetas gato": 7.99, "tortilla patata": 4.99, "spanish sangria": 7.25 } }
   let(:menu) { double :menu, dishes: list_dishes, price: '€1.00', contains?: true }
+  let(:takeaway) {double :takeaway, complete_order: true }
   subject(:order) {described_class.new}
   context('when initializing') do
     it 'basket is empty' do
@@ -49,13 +50,6 @@ describe Order do
     end
   end
 
-  context('#checkout') do
-    it 'returns 3 if amount given is 3' do
-      order.add("jamon serrano")
-      expect(order.checkout(3)).to eq 3
-    end
-  end
-
   context('#basket_summary') do
     it 'returns "basket is empty" if basket empty' do
       order.basket_summary
@@ -81,6 +75,18 @@ describe Order do
       order.add("tortilla patata", 3)
       order.add("spanish sangria", 2)
       expect(order.total).to eq "Total: 53.45€"
+    end
+  end
+
+  context('#checkout') do
+
+    it 'raises error if basket empty' do
+      expect{ order.checkout(5) }.to raise_error "nothing on basket"
+    end
+
+    it 'launches process order in takeaway' do
+      order.add("jamon serrano")
+      expect(order.checkout(3)).to eq 3
     end
   end
 end

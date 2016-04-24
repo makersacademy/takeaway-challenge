@@ -1,11 +1,21 @@
 require 'dotenv'
+require 'twilio-ruby'
 
 class Messager
 
-  attr_reader :person
+  attr_reader :content_manager
 
-  def initialize(person)
+  def initialize(content_manager)
     Dotenv.load
-    @person = person
+    @content_manager = content_manager
+  end
+
+  def send_text(order_cost)
+    Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+    .messages.create(
+        from: ENV['TWILIO_SOURCE_PHONE'],
+        to: ENV['TWILIO_DESTINATION_PHONE'],
+        body: content_manager.generate_body_msg(order_cost)
+      )
   end
 end

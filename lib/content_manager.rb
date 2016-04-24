@@ -1,13 +1,20 @@
 class ContentManager
 
-  attr_reader :person
+  attr_reader :customer
 
-  def initialize(person)
-    @person = person
+  def initialize(customer)
+    @customer = customer
   end
 
-  def set_eta
+  def delivery_time
     current_time = Time.now
     Time.now + 60*60
   end
+
+  def generate_body_msg(order_cost)
+    eta = delivery_time
+    "Hi #{customer.name}, thank you for your order of #{order_cost}€.  Your food will be delivered before #{eta.strftime("%H:%M")}"
+  end
+
+
 end
