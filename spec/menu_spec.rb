@@ -2,8 +2,13 @@ require 'menu'
 
 describe Menu do
   
-  subject(:menu) { described_class.new }
-  let(:dishes) { { 'beef burger' => '1.99',  'cheese burger' => '1.99', 'chicken wings' => '0.49', 'coke' => '0.99' } }
+  subject(:menu){ described_class.new }
+  let(:dishes){ {
+    'beef burger' => '1.99',
+    'cheese burger' => '1.99',
+    'chicken wings' => '0.49',
+    'coke' => '0.99' 
+    } }
   
   
   it 'contains a list of dishes' do
@@ -29,11 +34,10 @@ describe Menu do
     end
   end
   
-   describe '#remove_dish' do
+  describe '#remove_dish' do
     it 'removes a dish from the menu' do
       menu.remove_dish('beef burger')
       expect(menu.dishes['beef burger']).to eq nil
     end
   end
-
 end

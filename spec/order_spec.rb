@@ -2,10 +2,10 @@ require 'order'
 
 describe Order do
   
-subject(:order) { described_class.new(messenger) }
-let(:an_order) { spy :an_order }
-let(:another_order) { spy :another_order }
-let(:messenger) { double :messenger }
+subject(:order){ described_class.new(messenger) }
+let(:an_order){ spy :an_order }
+let(:another_order){ spy :another_order }
+let(:messenger){ double :messenger }
 
   it 'has somewhere to store orders' do
     expect(order.check_order).to be_an Array
@@ -35,7 +35,7 @@ let(:messenger) { double :messenger }
     
   end
   
-  describe '#total_cost'do
+  describe '#total_cost' do
     it ' shows the current cost of an order' do
       expect(order.total_cost).to eq 0
     end

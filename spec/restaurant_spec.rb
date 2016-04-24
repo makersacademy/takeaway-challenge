@@ -2,11 +2,11 @@ require 'restaurant'
 
 describe Restaurant do
 
-  subject(:restaurant) { described_class.new(menu, order) }
-  let(:menu) { double :menu, dishes: nil, select_dish: dish }
-  let(:order) { double :order, take_order: nil, text_confirmation: nil }
-  let(:order2) { double :order2 }
-  let(:dish) { double :dish }
+  subject(:restaurant){ described_class.new(menu, order) }
+  let(:menu){ double :menu, dishes: nil, select_dish: dish }
+  let(:order){ double :order, take_order: nil, text_confirmation: nil }
+  let(:order2){ double :order2 }
+  let(:dish){ double :dish }
   
   it 'responds to show_menu' do
     expect(restaurant).to respond_to(:show_menu)
