@@ -11,14 +11,14 @@ class Menu
   end
 
   def contains?(dish)
-    dishes.has_key?(dish.to_sym)
+    dishes.key?(dish.to_sym)
   end
 
   def price(dish)
     dishes[dish.to_sym]
   end
 
-  def get_menu
+  def menu
     self.to_s
   end
 

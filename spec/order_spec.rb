@@ -49,7 +49,7 @@ describe Order do
         expect(order.basket).to eq("spanish sangria": 2)
       end
 
-      it 'adds to basket 1 spanish sangria, then another one, it should have 2' do
+      it 'adds to basket 1 item twice, it should have 2' do
         order.add("spanish sangria")
         order.add("spanish sangria")
         expect(order.basket).to eq("spanish sangria": 2)

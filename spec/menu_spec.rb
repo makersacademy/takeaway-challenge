@@ -25,7 +25,7 @@ describe Menu do
       @message = "Bar El Gato Muerto"+"\n"+"MENU" +"\n" + list
     end
     it 'provides menu on screen' do
-      expect(menu.get_menu).to eq @message
+      expect(menu.menu).to eq @message
     end
 
     it 'calls the to_s method' do
