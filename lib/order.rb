@@ -1,6 +1,6 @@
 require_relative 'basket'
-require_relative 'menu' #delete this
-require_relative 'restaurant' #and this
+require_relative 'menu'
+require_relative 'restaurant'
 require_relative 'messager'
 
 class Order
@@ -13,25 +13,28 @@ attr_reader :restaurant_class, :basket
   end
 
   def add(dish, quantity = 1)
-    fail 'Dish not available' unless restaurant_class.display_menu.include?(dish)
+    fail 'Dish not available' unless menu.include?(dish)
     @basket[dish] += quantity
-    puts "#{dish} x#{quantity} added to basket"
   end
 
   def summary
-    @basket.reduce { |sum, dish| sum + dish }
+    @sum = @basket.keys.zip(menu.map { |k, v| sprintf('%.2f', (@basket[k] * v.to_f)) if @basket.key? k }.compact.reverse).to_h
   end
 
-  def to_pay
+  # def to_pay
+  #   @sum.values.inject { |a, b| a += b }
+  # end
 
-  end
+  # def checkout
+  #   fail 'Incorrect price. Order cancelled' unless correct_price?
 
-  def checkout
-    fail 'Incorrect price. Order cancelled' unless correct_price?
-
-  end
+  # end
 
   private
+
+  def menu
+    restaurant_class.display_menu
+  end
 
   def correct_price?(price)
     to_pay == price
