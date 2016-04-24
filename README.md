@@ -50,13 +50,15 @@ Installation
 * In IRB/PRY, require the following files:
 ```
 [1] pry(main)> require './lib/dish.rb'
-
 => true
+
 [2] pry(main)> require './lib/menu.rb'
-
 => true
-[3] pry(main)> require './lib/restaurant.rb'
 
+[3] pry(main)> require './lib/restaurant.rb'
+=> true
+
+[4] pry(main)> require './lib/order.rb'
 => true
 ```
 
@@ -70,11 +72,10 @@ Responsible for holding information about dishes.
 Dishes should be initialized with a name. These can be returned via `#name`.
 
 ```
-[4] pry(main)> pad_thai = Dish.new "Pad Thai"
+[5] pry(main)> pad_thai = Dish.new "Pad Thai"
+=> #<Dish:0x007fd881b25e10 @name="Pad Thai">
 
-=> #<Dish:0x007fd881b25e10
- @name="Pad Thai">
-[5] pry(main)> pad_thai.name
+[6] pry(main)> pad_thai.name
 => "Pad Thai"
 ```
 
@@ -86,19 +87,19 @@ Dishes can be removed from the menu via the `#remove` method.
 `#view` returns a hash of dishes and prices on the menu.
 
 ```
-[6] pry(main)> menu = Menu.new
-=> #<Menu:0x007fd8828db2f8
- @dish_class=Dish,
- @menu={}>
-[7] pry(main)> menu.add pad_thai, 7
+[7] pry(main)> menu = Menu.new
+=> #<Menu:0x007fd8828db2f8 @dish_class=Dish,@menu={}>
 
+[8] pry(main)> menu.add pad_thai, 7
 => 7
-[8] pry(main)> menu.view
+
+[9] pry(main)> menu.view
 => {"PAD THAI"=>7}
-[9] pry(main)> menu.remove pad_thai
 
+[10] pry(main)> menu.remove pad_thai
 => 7
-[10] pry(main)> menu.view
+
+[11] pry(main)> menu.view
 RuntimeError: Menu is empty
 from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.rb:13:in `view'
 ```
@@ -107,16 +108,34 @@ from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.
 
 Responsible for displaying the menu to customers.
 Needs to be initialized with an instance of `Menu`.
-The menu can be viewed using `view_menu`.
+The menu can be viewed using `#view_menu`.
+Items can be added to an order via `#order`
 
 ```
-[11] pry(main)> restaurant = Restaurant.new menu
+[12] pry(main)> restaurant = Restaurant.new menu
+=> #<Restaurant:0x007ff97c865f10 @menu=#<Menu:0x007ff97c0a9858 @dish_class=Dish, @menu={"PAD THAI"=>7}>>
 
-=> #<Restaurant:0x007ff97c865f10
- @menu=
-  #<Menu:0x007ff97c0a9858
-   @dish_class=Dish,
-   @menu={"PAD THAI"=>7}>>
-[12] pry(main)> restaurant.view_menu
+[13] pry(main)> restaurant.view_menu
 => {"PAD THAI"=>7}
+
+[14] pry(main)> restaurant.order pad_thai, 3
+=> 3
+```
+
+**Order**
+
+Responsible for keeping track of quantities of each dish ordered and calculating the total.
+Needs to be initialized with an instance of `Menu`.
+A quantity of a `Dish` can be added to an order via `#add`
+The dishes in the order can be viewed via `#summary`
+
+```
+[15] pry(main)> order = Order.new menu
+=> #<Order:0x007f849ba7c7f0 @menu=#<Menu:0x007f849b01e7b8 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order=[]>
+
+[16] pry(main)> order.add pad_thai, 3
+=> 3
+
+[17] pry(main)> order.summary
+=> ["PAD THAI", "PAD THAI", "PAD THAI"]
 ```
