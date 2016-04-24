@@ -12,13 +12,14 @@ class Order
   end
 
   def total
-    total_items.reduce{|sum, num| sum += num}
+    total_items
   end
 
 private
   def total_items
-    @ordered_dishes.map do |d,q|
+    t = @ordered_dishes.map do |d,q|
     menu.price(d) * q
-  end
+    end
+    t.reduce{|sum, num| sum += num}
   end
 end

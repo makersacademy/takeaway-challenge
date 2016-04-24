@@ -9,7 +9,7 @@ describe Messenger do
                   body: "Thank you! Your order will be delivered by %s"}
                 end
 
-  context 'when the order is delivered' do
+  context 'When the order is delivered' do
     it 'sends a message  with the estimated delivery time' do
       args = {from: config[:from], to: config[:to],
               body: "Thank you! Your order will be delivered by 16:20"}

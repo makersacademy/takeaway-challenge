@@ -1,5 +1,6 @@
 require_relative 'order'
 require_relative 'messenger'
+
 class TakeAway
   attr_reader :menu, :order, :messenger
 
@@ -8,6 +9,7 @@ class TakeAway
     @order = order || Order.new(menu)
     @messenger= messenger || Messenger.new(config)
   end
+
   def show_menu
     menu.list_menu
   end
@@ -24,11 +26,9 @@ class TakeAway
 
 private
 
-def select_dishes(selected_dishes)
-  selected_dishes.each do |dish, quantity|
-    order.add(dish,quantity)
+  def select_dishes(selected_dishes)
+    selected_dishes.each do |dish, quantity|
+      order.add(dish,quantity)
+    end
   end
-end
-
-
 end

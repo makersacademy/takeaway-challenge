@@ -1,7 +1,9 @@
 require 'twilio-ruby'
-TIME = "%H:%M"
+
 class Messenger
  attr_reader :config, :client
+ TIME = "%H:%M"
+
   def initialize (config, client: nil)
     @client = client || Twilio::REST::Client.new(config[:account_sid], config[:auth_token])
     @config = config
