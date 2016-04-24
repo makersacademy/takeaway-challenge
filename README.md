@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/wrumble/airport_challenge.svg?branch=master)](https://travis-ci.org/wrumble/airport_challenge)
-[![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg?branch=wrumble)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=wrumble)
+[![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=mohamedIssaq)
 
 Takeaway Challenge
 ==================
