@@ -1,5 +1,5 @@
-require 'messanger'
-
-describe Messanger do
-  
-end
+# require 'messanger'
+#
+# describe Messanger do
+#
+# end
