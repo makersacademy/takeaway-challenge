@@ -2,7 +2,7 @@ require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
 
-class TwilioSMS
+class TwilioAPI
 
   def initialize
     @client = Twilio::REST::Client.new(ENV['AUTH_SID'], ENV['AUTH_TOKEN'])

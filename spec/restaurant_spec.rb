@@ -9,15 +9,17 @@ describe Restaurant do
   let(:price2) { rand(1...10) }
   let(:menu) { double(:menu, view: {dish => price, dish2 => price}) }
   let(:order_class) { double(:order_class, new: order) }
-  let(:order) { double(:order) }
-  subject(:restaurant) { described_class.new(menu, order_class) }
+  let(:order) { double(:order, summary: {:total => 0}) }
+  let(:messenger_class) { double(:messenger_class, new: messenger) }
+  let(:messenger) {double(:messenger, send: Restaurant::CONFIRMATION) }
+  subject(:restaurant) { described_class.new(menu, order_class, messenger_class) }
 
   describe '#initialize' do
     subject(:restaurant_class) { described_class }
-    it "is initialized with 2 arguments" do
-      expect(restaurant_class.new(menu, order_class)).to be_a restaurant_class
+    it "is initialized with 3 arguments" do
+      expect(restaurant_class.new(menu, order_class, messenger_class)).to be_a restaurant_class
     end
-    it 'has an optional argument' do
+    it 'has optional arguments' do
       expect(restaurant_class.new(menu)).to be_a restaurant_class
     end
     it "raises an argument error if no argument is given" do
@@ -49,9 +51,9 @@ describe Restaurant do
   describe '#confirm_order' do
     context 'valid order' do
       let(:summary) { {dish => quant, :total => (quant * price)} }
-      it 'sends a confirmation message' do
+      it 'sends a confirmation sms' do
         allow(order).to receive(:summary).and_return(summary)
-        expect(STDOUT).to receive(:puts).with(Restaurant::CONFIRMATION)
+        expect(messenger).to receive(:send)
         restaurant.confirm_order
       end
       it 'starts a new order' do

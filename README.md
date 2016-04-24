@@ -69,6 +69,9 @@ AUTH_SID='YOUR TWILIO AUTH_SID'
 
 [4] pry(main)> require './lib/order.rb'
 => true
+
+[5] pry(main)> require './lib/twilio_api.rb'
+=> true
 ```
 
 
@@ -81,10 +84,10 @@ Responsible for holding information about dishes.
 Dishes should be initialized with a name. These can be returned via `#name`.
 
 ```
-[5] pry(main)> pad_thai = Dish.new "Pad Thai"
+[6] pry(main)> pad_thai = Dish.new "Pad Thai"
 => #<Dish:0x007fd881b25e10 @name="Pad Thai">
 
-[6] pry(main)> pad_thai.name
+[7] pry(main)> pad_thai.name
 => "Pad Thai"
 ```
 
@@ -96,19 +99,19 @@ Dishes can be removed from the menu via the `#remove` method.
 `#view` returns a hash of dishes and prices on the menu.
 
 ```
-[7] pry(main)> menu = Menu.new
+[8] pry(main)> menu = Menu.new
 => #<Menu:0x007fd8828db2f8 @dish_class=Dish,@menu={}>
 
-[8] pry(main)> menu.add pad_thai, 7
+[9] pry(main)> menu.add pad_thai, 7
 => 7
 
-[9] pry(main)> menu.view
+[10] pry(main)> menu.view
 => {"PAD THAI"=>7}
 
-[10] pry(main)> menu.remove pad_thai
+[11] pry(main)> menu.remove pad_thai
 => 7
 
-[11] pry(main)> menu.view
+[12] pry(main)> menu.view
 RuntimeError: Menu is empty
 from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.rb:13:in `view'
 ```
@@ -120,24 +123,23 @@ Needs to be initialized with an instance of `Menu`.
 The menu can be viewed using `#view_menu`.
 Items can be added to an order via `#order`.
 A summary of the items ordered and the total price can be accessed via `#order_summary`.
-Orders can be confirmed via `#confirm_order`, which will send a confirmation message with a delivery time, and then create a new order.
+Orders can be confirmed via `#confirm_order`, which will send a confirmation message via SMS with a delivery time, and then create a new order.
 
 ```
-[12] pry(main)> restaurant = Restaurant.new menu
+[13] pry(main)> restaurant = Restaurant.new menu
 => #<Restaurant:0x007f9daac806f0 @menu=#<Menu:0x007f9da997f6f0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order=#<Order:0x007f9daac806c8 @menu=#<Menu:0x007f9da997f6f0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order={:total=>0}>, @order_class=Order>
 
-[13] pry(main)> restaurant.view_menu
+[14] pry(main)> restaurant.view_menu
 => {"PAD THAI"=>7}
 
-[14] pry(main)> restaurant.order pad_thai, 3
+[15] pry(main)> restaurant.order pad_thai, 3
 => 21
 
-[15] pry(main)> restaurant.order_summary
+[16] pry(main)> restaurant.order_summary
 => {:total=>21, "PAD THAI"=>3}
 
-[16] pry(main)> restaurant.confirm_order
-Thanks! Your order will be delivered before 16:40
-=> #<Order:0x007f8694383188 @menu=#<Menu:0x007f869402d880 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order={:total=>0}>
+[17] pry(main)> restaurant.confirm_order
+=> #<Order:0x007fed294373d0 @menu=#<Menu:0x007fed29065db0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order={:total=>0}>
 
 [17] pry(main)> restaurant.order_summary
 => {:total=>0}
