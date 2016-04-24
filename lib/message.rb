@@ -4,6 +4,7 @@ Dotenv.load
 require 'twilio-ruby'
 
 class Message
+  attr_reader :client
 
   def initialize
     account_sid = ENV["TWILIO_ACCOUNT_SID"]
@@ -13,12 +14,9 @@ class Message
   end
 
   def send(price, t)
-
     msg = "Thank you! Your order was placed and will "\
       "be delivered at #{t} for £#{price}. \n \n Thanks for your order!"
-
     twilio_send(msg)
-
     msg
   end
 
@@ -29,5 +27,4 @@ class Message
       body: msg
     )
   end
-
 end
