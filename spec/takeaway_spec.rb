@@ -1,9 +1,12 @@
 require 'takeaway'
+require 'message'
 
 describe TakeAway  do
-	subject(:takeaway) {described_class.new(menu)}
-	let(:menu) {double(:menu, present?: true, print_dish: {"pizza"=>1, "Berger"=>2}) }
-	let(:dishes) { {"pizza"=>1, "Berger"=>2} }
+	subject(:takeaway) {described_class.new(menu,Message.new)}
+	let(:menu) {double(:menu, present?: true, print_dish: {"pizza"=>1, "burger"=>2,"fries"=>1.5}, dishes: dishes) }
+	
+	#let(:menu) {double(:menu, present?: true, print_dish: dishes) }
+	let(:dishes) { {"pizza"=>1, "burger"=>2,"fries"=>1.5} }
 
 	describe '#print_menu' do
 	  it 'returns menu' do
@@ -30,7 +33,29 @@ describe TakeAway  do
 
   	it 'returns content of the basket' do
   		takeaway.place_order("pizza",4)
-  		expect(takeaway.basket_summary).to include 'pizza x4'
+  		takeaway.place_order("burger",3)
+  		print = "pizza x4: £4.00\nburger x3: £6.00\nTotal price: £10.0"
+  		expect(takeaway.basket_summary).to include print
+  	end
+  end
+
+  describe '#reset_order' do
+    it 'empties the basket' do
+      takeaway.place_order("pizza",4)
+  		takeaway.place_order("burger",3)
+      takeaway.reset_order
+      expect(takeaway.basket).to be_empty
+    end
+  end
+
+  describe '#checkout' do
+  	it 'returns empty basket when it is empty' do
+  		expect{takeaway.basket_summary}.to raise_error 'Basket is empty'
+  	end
+
+  	it 'returns wrong total' do
+  		takeaway.place_order("pizza",4)
+  		expect{takeaway.checkout 2}.to raise_error 'Wrong total'
   	end
   end
 

@@ -4,7 +4,8 @@ class Menu
   def initialize
    	@dishes = {
    		"pizza"=>1,
-   		"Berger"=>2
+   		"burger"=>2,
+      "fries"=>1.5
    	}
   end	
 

@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do 
 
 	subject(:menu) {described_class.new}
-	let(:dishes) { {"pizza"=>1, "Berger"=>2}}
+	let(:dishes) { {"pizza"=>1,"burger"=>2,"fries"=>1.5}}
 
 	describe '#print_dish' do
 		it "returns dishes" do

@@ -1,79 +1,20 @@
 require './lib/takeaway.rb'
-require './lib/Menu.rb'
+require './lib/menu.rb'
+require './lib/message.rb'
 
 dishes = {"pizza":4, "burger":2, "fries":1}
 menu = Menu.new
 p menu.print_dish
 
-tw = TakeAway.new(Menu.new)
+tw = TakeAway.new(Menu.new,Message.new)
 tw.print_menu
-tw.place_order('pizza',3)
-p  tw.basket
 y = menu.present? 'pizza'
 
 p y
+tw.place_order('pizza',3)
+tw.place_order('burger',3)
+tw.place_order('fries',5)
+p  tw.basket
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-require './lib/menu.rb'
-require './lib/order.rb'
-
-
-
-#order = Order.new
-
-#order.complete_order
-#order.send_sms(+447817019706,"Thank you for your order:20")
-
-#order.order("pizza", 4)
-#order.order("burger", 4)
-#order.order("fries", 4)
-
-#p order.items
+p tw.basket_summary
 
