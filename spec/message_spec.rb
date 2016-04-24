@@ -4,12 +4,6 @@ require 'twilio-ruby'
 describe Message do
   let(:message) { described_class.new }
 
-  describe "#initialize" do
-    it "creates twilio client" do
-      expect(message.client).not_to be_nil
-    end
-  end
-
   describe "#send" do
     it "sends a message" do
       message.stub(:twilio_send).and_return(true)
