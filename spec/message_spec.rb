@@ -6,7 +6,7 @@ describe Message do
 
 
   describe 'send' do
-    xit 'sends a confirmation message' do
+    it 'sends a confirmation message' do
       allow(message).to receive(:send) { text }
       expect(message.send).to eq text
     end
