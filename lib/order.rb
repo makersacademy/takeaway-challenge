@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'message'
 
 class Order
 attr_reader :list_of_items, :total_price
@@ -6,7 +7,8 @@ attr_reader :list_of_items, :total_price
   def initialize(menu_class = Menu)
     @menu = menu_class.new
     @list_of_items = []
-    @total_price = 0
+    @total_price = 0.00
+    @message = Message.new
   end
 
   def add_item(item, quantity)
@@ -19,7 +21,9 @@ attr_reader :list_of_items, :total_price
     fail "price does not match" unless check_total_price(price)
     t = Time.now + (60 * 60)
     t = t.strftime "%H:%M"
-    "Thank you! Your order was placed and will be delivered at #{t}"
+
+    @message.send("Thank you! Your order was placed and will be delivered at #{t} for £#{price}.")
+    "Message sent."
   end
 
   private

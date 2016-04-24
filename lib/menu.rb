@@ -4,11 +4,11 @@ class Menu
 
   def initialize
     @items = { 
-      burger: 6,
-      chips: 3,
-      wings: 5,
-      curry: 6,
-      pizza: 7
+      burger: 6.50,
+      chips: 3.50,
+      wings: 5.20,
+      curry: 6.70,
+      pizza: 7.90
     }
   end
 

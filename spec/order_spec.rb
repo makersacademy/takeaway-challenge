@@ -22,7 +22,7 @@ describe Order do
     it "updates total price with the new item" do
       test_order = described_class.new
       test_order.add_item(:chips, 2)
-      expect(test_order.total_price). to eq 6
+      expect(test_order.total_price). to eq 7
     end
   end
 
@@ -35,7 +35,7 @@ describe Order do
     it "tells the user their order has been placed" do
       test_order = described_class.new
       test_order.add_item(:chips, 2)
-      expect(test_order.submit_order(6)).to include "Thank you!"
+      expect(test_order.submit_order(7)).to include "Message sent."
     end
   end
 
