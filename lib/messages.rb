@@ -9,7 +9,7 @@ class Messages
     @client = Twilio::REST::Client.new account_sid, auth_token
     @from =  from# Your Twilio number
     current = Time.now
-    @t = sprintf('%d:%02d', current.hour + 1, current.min)
+    @t = format('%d:%02d', current.hour + 1, current.min)
     @friends = {
     +1_562_631_7216 => "Nick"
     }
