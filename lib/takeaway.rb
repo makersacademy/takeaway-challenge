@@ -23,19 +23,15 @@ class TakeAway
     print_total
   end
 
-  def check_payment(payment)
-    fail 'Payment does not match order total!' unless order_total == payment
-  end
-
-  private
-
-  attr_reader :menu
-
   def order_total
     total = 0
     cart.each {|dish,number| total += (price(dish) * number)}
     total
   end
+
+  private
+
+  attr_reader :menu
 
   def price(dish)
     menu.dish_price(dish)

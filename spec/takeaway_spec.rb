@@ -24,14 +24,14 @@ describe TakeAway do
     expect{takeaway.add_item('dish',2)}.to change {takeaway.cart['dish']}.by(2)
   end
 
-  describe '#check_payment' do
+  # describe '#check_payment' do
 
-    it 'raise error if total given does not match the order price total' do
-      message = 'Payment does not match order total!'
-      expect{takeaway.check_payment(20)}.to raise_error message
-    end
+  #   it 'raise error if total given does not match the order price total' do
+  #     message = 'Payment does not match order total!'
+  #     expect{takeaway.check_payment(20)}.to raise_error message
+  #   end
 
-  end
+  # end
 
   describe '#cart_summary' do
 
