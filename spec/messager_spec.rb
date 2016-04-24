@@ -8,6 +8,12 @@ describe Messager do
     expect(messager).to respond_to (:person)
   end
 
-
-
+  context('send text method') do
+    before do
+      allow(messager).to receive(:send_text)
+    end
+    it '#sends an order acknowledge SMS message' do
+      expect(messager)
+    end
+  end
 end
