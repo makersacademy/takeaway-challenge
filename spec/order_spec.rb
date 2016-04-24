@@ -22,4 +22,9 @@ describe Order do
 		expect(order.total).to eq "Your total is £27.00"
 	end
 
+	it "calculate total price" do
+		order.log(number_dishes)
+		expect(order.total).to eq "Your total is £27.00"
+	end
+
 end

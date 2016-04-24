@@ -16,5 +16,8 @@ class Menu
 	def price(dish)
 		dishes[dish]
 	end
+	def price(dish)
+		dishes[dish]
+	end
 
 end
