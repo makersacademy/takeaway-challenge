@@ -11,19 +11,19 @@ class Order
 	end
 
 	def total
-		privte_calculate
-		another_private_display_total
+		private_calculate
+		private_display_total
 	end
 
 	private
 
 	attr_reader :menu
 
-	def privte_calculate
+	def private_calculate
 		@dishes.map {|dish, number| menu.price(dish) * number }.inject(:+)
 	end
 
-	def another_private_display_total
-		format("Your total is £%0.2f", calculate)
+	def private_display_total
+		format("Your total is £%0.2f", private_calculate)
 	end
 end

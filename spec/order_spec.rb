@@ -8,10 +8,12 @@ describe Order do
 	before { allow(menu).to receive(:dish?).with(:bibimbap).and_return(true)}
 	before { allow(menu).to receive(:price).with(:bibimbap).and_return(9.00)}
 	before { allow(menu).to receive(:price).with(:jajangmyun).and_return(9.00)}
+
 	it 'select some number of several available dishes' do
 		order.log(number_dishes)
 		expect(order.dishes).to eq number_dishes
 	end
+
 	it "raises an error when order not in menu" do
 		allow(menu).to receive(:dish?).with(:pie).and_return(false)
 		expect{order.log(pie:1)}.to raise_error "Pie is not in the menu"
@@ -21,10 +23,4 @@ describe Order do
 		order.log(number_dishes)
 		expect(order.total).to eq "Your total is £27.00"
 	end
-
-	it "calculate total price" do
-		order.log(number_dishes)
-		expect(order.total).to eq "Your total is £27.00"
-	end
-
 end
