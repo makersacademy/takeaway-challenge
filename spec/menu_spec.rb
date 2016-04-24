@@ -34,7 +34,7 @@ describe Menu do
     end
 
     it 'returns nil' do
-      expect(menu.add :name, :price).to be_nil
+      expect(menu.add(:name, :price)).to be_nil
     end
   end
 
@@ -51,7 +51,7 @@ describe Menu do
 
     it 'returns nil' do
       menu.add "name", 7
-      expect(menu.remove "name").to be_nil
+      expect(menu.remove("name")).to be_nil
     end
   end
 
@@ -64,7 +64,7 @@ describe Menu do
     end
 
     it 'returns menu item object' do
-      expect(menu.get "name").to eq menu_item
+      expect(menu.get("name")).to eq menu_item
     end
 
     it 'raises error if item not on menu' do

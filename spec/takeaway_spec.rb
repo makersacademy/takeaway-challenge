@@ -79,7 +79,7 @@ describe Takeaway do
       end
 
       it "creates a sms obj if amount == order total" do
-        msg = "#{order_log.show}"
+        msg = order_log.show.to_s
         expect(contact_method_class).to receive(:new)
         takeaway.confirm_order 10
       end

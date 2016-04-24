@@ -33,7 +33,7 @@ class Menu
   attr_reader :current
 
   def on_menu? item_name
-    !!current.find{|item| item.name == item_name}
+    !current.detect{|item| item.name == item_name}.nil?
   end
 
 end

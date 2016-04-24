@@ -11,9 +11,9 @@ class SMS
 
   def send message
     @client.account.messages.create({
-    	:from => ENV['TWIL_NUM'],
-    	:to => ENV['MY_NUM'],
-    	:body => "#{message}\n Will be delivered at: #{@time}",
+    	from: ENV['TWIL_NUM'],
+    	to: ENV['MY_NUM'],
+    	body: "#{message}\n Will be delivered at: #{@time}",
     })
   end
 
