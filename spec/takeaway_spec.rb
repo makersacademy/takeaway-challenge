@@ -2,8 +2,7 @@ require 'takeaway'
 describe TakeAway do
   subject(:takeaway){ described_class.new(menu,order)}
   let(:order){double :order}
-  let(:menu){double :menu, display_menu: {"Fried Rice" => 5.99,
-    "Chicken Chow Mein" => 7.99, "Cheeseburger" => 6.99, "Pizza" => 8}}
+  let(:menu){double :menu, display_menu: {"Fried Rice" => 5.99, "Chicken Chow Mein" => 7.99, "Cheeseburger" => 6.99, "Pizza" => 8}}
   let(:text_message){double :messages, send_message: nil}
 
   it 'shows the menu' do
