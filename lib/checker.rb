@@ -3,7 +3,7 @@ class Checker
 	def check_items(order,menu)
 		order.keys.each do |order_item|
 			unless menu.keys.include?(order_item)
-				raise "Sorry, #{order_item} is not on the menu. Please re-order."
+				raise "Sorry, #{order_item} is not on the menu. Please re-order. (View the menu using .view_menu)"
 			end
 		end
 	end

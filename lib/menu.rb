@@ -1,19 +1,27 @@
 class Menu
 
-	def initialize(entry)
-		@list = reformat(entry)
+	def initialize(file)
+		@list = reformat(file)
 	end
 
-	def reformat(entry)
+	def reformat(file)
 		list = {}
-		entry.each do |item,price|
-			list[item]={price:price}
+		File.read(file).split("\n").each do |line|
+			list[extract_item(line)]={price: extract_price(line)}
 		end
 		list
 	end
 
-	def list=(new_list)
-		@list = reformat(new_list)
+	def extract_item(line)
+		line[/[a-zA-Z ']+/].gsub(' ','_').to_sym
+	end
+
+	def extract_price(line)
+		line[/[0-9.]+/].to_f
+	end
+
+	def list=(new_file)
+		@list = reformat(new_file)
 	end
 
 	def list

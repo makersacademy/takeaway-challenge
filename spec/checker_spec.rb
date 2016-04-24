@@ -8,7 +8,7 @@ describe Checker do
 
 	context '#check_items' do
 		it 'raises an error if the order contains an item not in the menu' do
-			expect{subject.check_items(order_invalid_items,menu)}.to raise_error "Sorry, item10 is not on the menu. Please re-order."
+			expect{subject.check_items(order_invalid_items,menu)}.to raise_error "Sorry, item10 is not on the menu. Please re-order. (View the menu using .view_menu)"
 		end
 		it 'doesn\'t raise an error if all the order items are included in the menu' do
 			expect{subject.check_items(order_valid_items,menu)}.not_to raise_error
