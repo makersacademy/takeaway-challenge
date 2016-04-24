@@ -1,9 +1,15 @@
 class Order
 	
-	attr_reader :total_price
+	attr_reader :total_price,:items
 
 	def initialize
+    @items = Hash.new(0)
+	end
 
+	def order(dish,quantity=1)
+		#basket = [dish xquantity]
+	  "#{quantity}x  #{dish}(s) added to your basket." 
+	   @items[dish] += quantity
 	end
 	 
 	def complete_order(total_price)
