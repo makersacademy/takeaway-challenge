@@ -2,8 +2,8 @@ require 'order'
 describe Order do
   let(:list_dishes) { { "jamon serrano": 15.99, "croquetas gato": 7.99, "tortilla patata": 4.99, "spanish sangria": 7.25 } }
   let(:menu) { double :menu, dishes: list_dishes, price: '€1.00', contains?: true }
-  let(:takeaway) {double :takeaway, complete_order: true }
-  subject(:order) {described_class.new}
+  let(:takeaway) { double :takeaway, complete_order: true}
+  subject(:order) {described_class.new(takeaway, menu)}
   context('when initializing') do
     it 'basket is empty' do
       expect(order.basket).to be_empty
@@ -13,8 +13,8 @@ describe Order do
       expect(order.total).to eq "Total: 0.0€"
     end
 
-    it 'receives a menu object' do
-      expect(order.menu).to be_an_instance_of Menu
+    it 'contains a menu' do
+      expect(order.menu.dishes).to include :"jamon serrano"
     end
   end
 
@@ -28,6 +28,11 @@ describe Order do
       it 'returns the correct message for dish 2 x croquetas gato' do
         output = "2 x croquetas gato added to your basket."
         expect(order.add("croquetas gato",2)).to eq output
+      end
+
+      it 'returns the correct mesage for a quick checkout' do
+        output = "1 x spanish sangria added to your basket. Thank you! Your order has been processed. Confirmation SMS sent."
+        expect(order.add("spanish sangria",1,7.25)).to eq output
       end
     end
 
@@ -86,7 +91,23 @@ describe Order do
 
     it 'launches process order in takeaway' do
       order.add("jamon serrano")
-      expect(order.checkout(3)).to eq 3
+      expect(takeaway).to receive(:complete_order)
+      takeaway.complete_order
+    end
+  end
+
+  context('#clean_up') do
+    it 'empties basket' do
+      order.add("croquetas gato",5)
+      order.clean_up
+      expect(order.basket).to be_empty
+    end
+
+    it 'empties total bill' do
+      order.add("jamon serrano",2)
+      order.add("spanish sangria",3)
+      order.clean_up
+      expect(order.bill).to eq 0
     end
   end
 end

@@ -5,7 +5,7 @@ describe TakeAway do
   let(:basket) { {"jamon serrano": 1, "croquetas gato": 2} }
   let(:basket_wrong_price) { {"jamon serrano": 2, "croquetas gato": 1, "tortilla patata": 1} }
   let(:menu) { double :menu, dishes: list_dishes, contains?: true }
-  let(:messager) { double :messager }
+  let(:messager) { double :messager, send_text: true}
   let(:order) { double :order, menu: menu, dishes: list_dishes, basket: basket, customer_price: 31.97, bill: 31.97}
   let(:wrong_order) { double :order, menu: menu, dishes: list_dishes, basket: basket_wrong_price, bill: 44.96, customer_price: 3.25 }
   subject(:takeaway) {described_class.new(messager)}
@@ -13,12 +13,8 @@ describe TakeAway do
 
   context 'on initializing' do
 
-    it 'takes a messager object' do
+    it 'accepts a messager object' do
       expect(takeaway).to respond_to(:messager)
-    end
-
-    it 'takes an order object' do
-      expect(takeaway).to respond_to(:order)
     end
   end
 
@@ -26,6 +22,11 @@ describe TakeAway do
     it 'fails if price is not correct' do
       output ="order price not correct, please review"
       expect { takeaway_fail.complete_order(1,3) }.to raise_error output
+    end
+
+    it 'returns ack message' do
+      output = "Order confirmed, thank you! You will receive a text shortly..."
+      expect(takeaway.complete_order(1,1)).to eq output
     end
   end
 
