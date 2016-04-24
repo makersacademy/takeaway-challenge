@@ -22,4 +22,8 @@ describe Menu do
 		expect(menu.dish?(:pie)).to be false
 	end
 
+	it "price of dish" do
+		expect(menu.price(:jajangmyun)).to be 9.00
+	end
+
 end

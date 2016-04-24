@@ -9,6 +9,7 @@ class Takeaway
 	end
 	def order_dishes(number_dishes)#number_dishes = {jajangmyun: 1, bibimbap: 2}
 		order.log(number_dishes) #this way order class will calculate the prices
+		order.total
 	end
 
 	private

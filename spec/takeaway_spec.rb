@@ -11,8 +11,9 @@ describe Takeaway do
 		expect(takeaway.display_menu).to eq display_menu
 	end
 
-	# it 'can order the combination of dishes' do
-	# 	allow(order).to receive(:log)
-	# 	takeaway.order_dishes(number_dishes)
-	# end	
+	it 'receive the order total' do #why do i need to test this again?
+		allow(order).to receive(:log) 
+		allow(order).to receive(:total).and_return("Your total is £27.00")
+		expect(takeaway.order_dishes(number_dishes)).to eq("Your total is £27.00")
+	end	
 end
