@@ -9,7 +9,8 @@ describe Message do
   	end
 
 	  it 'sends a payment confirmation text message' do
-	    expect(message).to receive(:send_text).with("Thank you for your order: £20.93")
+	  	time = (Time.now + 60*60).strftime("%H:%M")
+	    expect(message).to receive(:send_text).with("Thank you for your order: £20.93. Expect your food by #{time} ")
 	    message.complete_order(20.93)
 	  end
 	end

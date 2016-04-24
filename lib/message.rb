@@ -1,7 +1,7 @@
 class Message
 
-	def complete_order(total_price)
-    send_text("Thank you for your order: £#{total_price}")
+  def complete_order(total_price)
+    send_text("Thank you for your order: £#{total_price}. Expect your food by #{delivery_time} ")
   end
 
   def send_text(message)
@@ -15,4 +15,9 @@ class Message
 			:body => "#{message}",  
 		})
 	end
+
+	def delivery_time
+		(Time.now + 60*60).strftime("%H:%M")
+  end
+
 end
