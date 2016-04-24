@@ -22,8 +22,7 @@ describe Customer do
 
     it 'can add items from the menu to the customer\'s basket' do
       customer.order(item: :a, quantity: 1)
-      expect(customer.basket).to be_an_instance_of(Array)
-      #change this test to check the basket array includes the correct order
+      expect(customer.basket).to eq [{:a=>10}]
     end
   end
 
