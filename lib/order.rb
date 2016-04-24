@@ -3,13 +3,15 @@ require_relative 'message_system'
 
 class Order
 
-  def initialize(order_calculator: OrderCalculator.new, message_system: MessageSystem.new)
+  def initialize(the_menu:, order_calculator:, message_system:)
     @dishes_ordered = []
     @order_calculator = order_calculator
     @message_system = message_system
+    @menu = the_menu
   end
 
   def add(dish, quantity)
+    fail "Not on menu" unless on_menu?(dish)
     @dishes_ordered << {dish: dish, quantity: quantity}
   end
 
@@ -27,6 +29,10 @@ class Order
 
   def verified?(total)
     @order_calculator.verified?(total, @dishes_ordered)
+  end
+
+  def on_menu?(dish)
+    @menu.include_dish?(dish)
   end
 
 end

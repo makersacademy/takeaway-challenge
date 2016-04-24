@@ -7,10 +7,8 @@ class MessageSystem
   end
 
   def send
-    msg = "Thank you!"\
-    "Your order was placed and will be delivered before #{one_hour_time}"
-    send_message(msg)
-    msg
+    send_message
+    message_body
   end
 
   private
@@ -20,11 +18,16 @@ class MessageSystem
   AUTH_TOKEN = 'b99770f491a112b5020921347daa2aac'
   AUTH_SID = 'AC85db5da11236557f067ad88f4dafdbda'
 
-   def send_message(msg)
+  def message_body
+    "Thank you!"\
+    "Your order was placed and will be delivered before #{one_hour_time}"
+  end
+
+   def send_message
     @client.account.messages.create({
       from:FROM,
       to:TO,
-      body:msg })
+      body:message_body })
     end
 
      def one_hour_time
