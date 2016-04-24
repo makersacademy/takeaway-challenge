@@ -1,14 +1,14 @@
 class Menu
 
-  def display_menu
-    load_menu
+  def access
+    upload
   end
 
   private
 
-  def load_menu
+  def upload
     menu = {}
-    File.open("menu.txt").each_line do | line |
+    File.open("./lib/menu.txt").each_line do | line |
     key, value = line.chomp.split(",")
     menu[key] = value
     end
