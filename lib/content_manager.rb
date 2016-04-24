@@ -11,7 +11,7 @@ class ContentManager
     Time.now + 60*60
   end
 
-  def generate_body_msg(order_cost)
+  def body_msg(order_cost)
     eta = delivery_time
     "Hi #{customer.name}, thank you for your order of #{order_cost}€.  Your food will be delivered before #{eta.strftime("%H:%M")}"
   end

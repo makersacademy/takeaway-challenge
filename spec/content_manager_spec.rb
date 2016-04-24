@@ -23,12 +23,12 @@ describe ContentManager do
   context ('#generate_body_msg') do
     it 'message has the cost of the order' do
       msg = "Thank you for your order 4€"
-      expect(cm.generate_body_msg(4)).to include ("4€")
+      expect(cm.body_msg(4)).to include ("4€")
     end
 
     it 'message has name of the customer' do
       msg= "Hi Sergio, thank you for your order"
-      expect(cm.generate_body_msg(5)).to include(customer.name)
+      expect(cm.body_msg(5)).to include(customer.name)
     end
   end
 end
