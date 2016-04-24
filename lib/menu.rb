@@ -1,13 +1,12 @@
 class Menu
-
   def initialize
     @menu = {
-      "Duck breast with anchovies" => 3.50,
-      "Marmite and cement" => 5.50,
-      "Battery burger" => 4.75,
-      "Panda steak" => 3.96,
-      "Venison sushi" => 2.50,
-      "Anchovies & diesel" => 3.00
+      "duck breast with anchovies" => 3.50,
+      "marmite and cement" => 5.50,
+      "battery burger" => 4.75,
+      "panda steak" => 3.96,
+      "venison sushi" => 2.50,
+      "anchovies & diesel" => 3.00
     }
   end
 
@@ -15,8 +14,15 @@ class Menu
     @menu[item] = price
   end
 
-  def menu
+  def include?(item)
+    @menu.include?(item)
+  end
+
+  def show_menu
     @menu.each{|key,value| puts key,"£#{value}"}
   end
 
+  def menu
+    @menu.dup
+  end
 end

@@ -11,4 +11,15 @@ describe Menu do
       expect(subject.menu).to include(:item_1 => :item_1_price)
     end
   end
+
+  describe '#include?' do
+
+    it 'returns true if item is included in menu' do
+      expect(subject.include?("battery burger")).to be_truthy
+    end
+
+    it 'returns false if item is not included in menu' do
+      expect(subject.include?("apricots")).to be_falsey
+    end
+  end
 end

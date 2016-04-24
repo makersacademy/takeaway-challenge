@@ -36,4 +36,11 @@ describe Order do
       expect(subject.check_total).to eq(quantity * price_per_unit)
     end
   end
+
+  describe '#complete' do
+    it 'returns true if order has been processed' do
+      allow(subject).to receive(:complete).and_return(true)
+      subject.complete?
+    end
+  end
 end

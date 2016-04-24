@@ -1,11 +1,15 @@
-require_relative './lib/takeaway.rb'
+require_relative './lib/restaurant.rb'
+require_relative './lib/menu.rb'
+require_relative './lib/messenger.rb'
+require 'rubygems'
+require 'twilio-ruby'
 
-new_order = Restaurant.new
 
-# p new_order.place_order("baked anchovies",5)
-# p new_order.balance
+# nandos = Restaurant.new
+# p nandos.show_menu
+# p nandos.add_to_menu "baked anchovies",3.99
+# p nandos.show_menu
+# p nandos.add_to_order(2,"baked anchovies")
 
-p new_order.show_menu
-p new_order.add_to_order(3,"sushi")
-p new_order.check_total
-p new_order.check_total
+mess = Messenger.new
+p mess.send_text
