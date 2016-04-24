@@ -16,10 +16,9 @@ class Order
   end
 
 private
-def total_items
-  @ordered_dishes.map do |d,q|
+  def total_items
+    @ordered_dishes.map do |d,q|
     menu.price(d) * q
   end
-end
-
+  end
 end
