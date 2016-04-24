@@ -1,9 +1,11 @@
 require 'order'
 
 describe Order do
-  subject(:order) {described_class.new(
-    the_menu:menu, order_calculator: order_calculator,
-    message_system: message_system)}
+  subject(:order) do
+    described_class.new(the_menu:menu, order_calculator: order_calculator,
+    message_system: message_system)
+  end
+
   let(:menu) {double :menu}
   let(:order_calculator) {double :order_calculator}
   let(:message_system) {double :message_system}

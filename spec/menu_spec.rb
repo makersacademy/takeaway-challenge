@@ -4,6 +4,7 @@ describe Menu do
   subject(:menu) {described_class.new(dishes: [dish_tikka, dish_chow])}
   let(:dish_tikka){double(:dish_tikka, name: "Tikka Masala", price: 7.95)}
   let(:dish_chow){double(:dish_chow, name: "Chow Mein", price: 6.95)}
+  let(:dish) {double :dish}
   let(:list_dishes) do
     [dish_tikka, dish_chow].each do |dish|
       puts format('%s: £%0.2f', dish.name, dish.price)
@@ -23,9 +24,9 @@ describe Menu do
       end
     end
 
-    context 'when dish not avialable on menu' do
+    context 'when dish not available on menu' do
       it 'expects to return false' do
-        expect(menu.include_dish?(double :dish)).to eq false
+        expect(menu.include_dish?(dish)).to eq false
       end
     end
   end

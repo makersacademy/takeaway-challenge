@@ -9,10 +9,10 @@ class MessageSystem
 
   private
 
-  FROM = '+441633530104'
-  TO = '+447743106866'
-  AUTH_TOKEN = 'hidden'
-  ACCOUNT_SID = 'AC85db5da11236557f067ad88f4dafdbda'
+  FROM = '+441633530104'.freeze
+  TO = '+447743106866'.freeze
+  AUTH_TOKEN = 'hidden'.freeze
+  ACCOUNT_SID = 'AC85db5da11236557f067ad88f4dafdbda'.freeze
 
   def message_body
     "Thank you!"\
@@ -20,11 +20,8 @@ class MessageSystem
   end
 
    def send_message
-    @client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
-    @client.account.messages.create({
-      from:FROM,
-      to:TO,
-      body:message_body })
+    client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
+    client.account.messages.create(from:FROM, to:TO, body:message_body)
     end
 
      def one_hour_time
