@@ -5,7 +5,7 @@ require 'pry'
 describe Order do     #less let
 
   subject(:order) { described_class.new(menu) }
-  let(:takeaway) { Takeaway.new(menu: menu, order: order, sms: sms) }
+  let(:takeaway) { Takeaway.new(menu: menu, order: order, sms: sms, config: :config) }
   let(:menu) { double :menu, dishes: [dish, dish2] }
   let(:dish) { Dish.new(name: "Pizza", price: 7.50) }
   let(:dish2) { Dish.new(name: "Soup", price: 3.20) }

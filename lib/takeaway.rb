@@ -4,10 +4,10 @@ require 'sms'
 
 class Takeaway
 
-  def initialize(menu:, order: nil, sms: nil)
+  def initialize(menu:, order: nil, sms: nil, config:)
     @menu = menu
     @order = order || Order.new(menu)
-    @sms = sms || SMS.new
+    @sms = sms || SMS.new(config)
   end
 
   def show_menu
@@ -22,6 +22,8 @@ class Takeaway
 
   private
 
+    attr_reader :sms
+
     def has_dish?(dish)
       @menu.dishes.include?(dish)
     end
@@ -32,5 +34,4 @@ class Takeaway
       @order.selected_dishes << dish
     end
 
-    attr_reader :sms
 end

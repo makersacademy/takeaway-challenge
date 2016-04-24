@@ -13,10 +13,12 @@ describe SMS do
 
   it 'sends a confirmation for the order and estimated time' do
     args = {
-      from: config[:from],
-      to: config[:to],
-      body: "Thank you! Your order was placed and will be delivered before 15:52"
+      from: config['from'],
+      to: config['to'],
+      body: "Thank you! Your order was placed and will be delivered before 15:21"
     }
+
+    allow(Time).to receive(:now).and_return(Time.parse("14:21"))
     expect(messages).to receive(:create).with(args)
     sms.deliver
   end

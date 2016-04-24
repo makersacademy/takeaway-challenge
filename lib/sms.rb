@@ -20,11 +20,10 @@ class SMS
     attr_reader :config, :client
 
     def args
-      # binding.pry
       {
-        from: config[:from],
-        to: config[:to],
-        body: config[:body] % delivery_time
+        from: config['from'],
+        to: config['to'],
+        body: config['body'] % delivery_time
       }
     end
 
