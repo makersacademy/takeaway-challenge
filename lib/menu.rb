@@ -8,12 +8,16 @@ class Menu
     @dishes = []
   end
 
-  def add_dish(new_dish = Dish.new(name,price))
+  def add_new_dish(new_dish = Dish.new(name,price))
     dishes << new_dish
   end
 
   def print_menu
     dishes.each {|dish| puts dish.print_dish}
+  end
+
+  def dish_price(dish_name)
+    dishes.each {|dish| return dish.price if dish.name == dish_name}
   end
 
 end
