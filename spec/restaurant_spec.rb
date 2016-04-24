@@ -8,8 +8,8 @@ describe Restaurant do
 
   describe '#display_menu' do
     it 'displays the menu to the customer' do
-      allow(menu_class).to receive(:access) {{"dish"=>"price"}}
-      expect(restaurant.display_menu).to eq({"dish"=>"price"})
+      allow(menu_class).to receive(:access) {{'dish'=>'price'}}
+      expect(restaurant.display_menu).to eq({'dish'=>'price'})
     end
   end
 

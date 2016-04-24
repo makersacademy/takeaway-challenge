@@ -29,29 +29,35 @@ describe Order do
 
   describe '#summary' do
     it 'displays ordered dishes and prices' do
-      #allow(order).to receive(:basket) {{'Broccoli'=>1}}
       order.add('Broccoli')
-      expect(order.summary).to eq({"Broccoli"=>"5.95"})
+      expect(order.summary).to eq({'Broccoli'=>'5.95'})
     end
   end
 
   # describe '#to_pay' do
   #   it 'calculates the price' do
-  #     expect
-
   #   end
   # end
 
   describe '#checkout' do
     # context 'price is correct' do
     #   it 'sends the order to the restaurant' do
-
     #   end
     # end
-    # context 'price is incorrect' do
-    #   it 'raises an error' do
-    #     expect
-    #   end
-    # end
+    context 'price is incorrect' do
+      it 'raises an error' do
+        allow(order).to receive(:correct_price?) {false}
+        expect{order.checkout}.to raise_error('Incorrect price. Order cancelled')
+      end
+    end
   end
 end
+
+
+
+
+
+
+
+
+

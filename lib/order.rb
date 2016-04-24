@@ -24,10 +24,9 @@ attr_reader :restaurant_class, :basket
   #   @sum.values.inject { |a, b| a += b }
   # end
 
-  # def checkout
-  #   fail 'Incorrect price. Order cancelled' unless correct_price?
-
-  # end
+ def checkout
+    fail 'Incorrect price. Order cancelled' unless correct_price?
+ end
 
   private
 
