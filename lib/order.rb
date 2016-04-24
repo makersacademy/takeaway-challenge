@@ -3,11 +3,11 @@ require_relative 'message_system'
 
 class Order
 
-  def initialize(the_menu:, order_calculator:, message_system:)
+  def initialize(menu:, order_calculator:, message_system:)
     @dishes_ordered = []
     @order_calculator = order_calculator
     @message_system = message_system
-    @menu = the_menu
+    @menu = menu
   end
 
   def add(dish, quantity)

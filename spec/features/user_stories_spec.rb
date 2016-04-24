@@ -5,7 +5,7 @@ describe 'User Stories' do
   let(:dish_random) {Dish.new(name: "Satay", price: 5.95)}
   let(:menu) {Menu.new(dishes: some_dishes)}
   let(:order) do
-    Order.new(the_menu:menu, order_calculator:order_calculator,
+    Order.new(menu:menu, order_calculator:order_calculator,
     message_system:message_system)
   end
   let(:order_calculator) {OrderCalculator.new}
