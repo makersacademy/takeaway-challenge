@@ -15,7 +15,7 @@ describe Menu do
   end
 
   describe '#add' do
-    it 'adds name and price of dish to dishes' do
+    it 'adds name and price of dish to menu' do
       menu.add(ramen)
       expect(menu.dishes).to eq ({"Chilli Chicken Ramen" => 7.50})
     end
@@ -27,7 +27,7 @@ describe Menu do
       menu.add(gyoza)
       menu.add(squid)
       list =
-      "Chilli Chicken Ramen - £7.50. Duck Gyoza - £4.00. Pepper Squid - £5.50. "
+      "Chilli Chicken Ramen - £7.50\nDuck Gyoza - £4.00\nPepper Squid - £5.50\n"
       expect(menu.read).to eq list
     end
   end
