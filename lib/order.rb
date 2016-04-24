@@ -18,8 +18,7 @@ class Order
   end
 
   def total_cost
-    total = cost
-    total
+    total = cost.round(2)
   end
 
   def text_confirmation

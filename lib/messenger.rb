@@ -21,10 +21,3 @@ class Messenger
 
 end
 
-
-#   client.account.messages.create(
-#     :from => +441143031215
-#     :to => +447929842337
-#     :body => "Thank you! Your order was placed and will be delivered before #{delivery_time}"
-#   )
-#   puts "Sent message to #{value}"
