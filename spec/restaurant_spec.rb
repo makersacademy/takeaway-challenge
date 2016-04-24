@@ -6,7 +6,7 @@ describe Restaurant do
   #let (:order) {instance_double :order, ["diet coke",1] }
   context "Method check" do
     it {is_expected.to respond_to :accept_order}
-    it {is_expected.to respond_to :view_menu}
+
 
   end
   describe "#accept_order" do

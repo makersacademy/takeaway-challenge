@@ -3,11 +3,12 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :order
+  attr_reader :order, :checkout
 
   def initialize (menu_class = Menu)
     @menu = menu_class.new
     @order = []
+    @checkout = false
   end
 
   def add_item_qty choice, qty
@@ -23,20 +24,23 @@ class Order
     order.map{|unit,qty,price|  "#{unit} x#{qty} = #{qty*price}"}.join(", ")
   end
 
-  def order_total
-    order.map{|x| x[1]*x[2]}.inject{|acc,x| acc+=x}.round(2)
+  def view_menu
+    @menu.view_menu
   end
 
   def remove_item(index)
     @order.delete_at(index)
   end
 
-  def view_menu
-    @menu.view_menu
+  def checkout_order(total)
+    total == order_total ? @checkout = true : @checkout = false
   end
 
   private
 
+  def order_total
+    order.map{|x| x[1]*x[2]}.inject{|acc,x| acc+=x}.round(2)
+  end
   def check_on_menu?(choice)
     view_menu.key?(choice)
   end

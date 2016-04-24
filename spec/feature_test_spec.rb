@@ -19,8 +19,15 @@ describe 'Feature Test' do
     new_order.add_item_qty("diet coke", 1)
     expect(new_order.basket_summary).to eq "caviar x1 = 99.0, diet coke x1 = 0.99"
   end
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-
-
+  it 'passes the third feature test'do
+    new_order.add_item_qty("diet coke", 1)
+    new_order.add_item_qty("caviar", 1)
+    new_order.add_item_qty("oyster", 1)
+    expect(new_order.order_total).to eq 100.98
+  end
 
 end
