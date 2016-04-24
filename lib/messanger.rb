@@ -1,0 +1,2 @@
+class Messanger
+end

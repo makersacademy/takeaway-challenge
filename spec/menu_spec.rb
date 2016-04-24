@@ -1,11 +1,12 @@
 require 'menu'
 
-descrivbe Menu do
-  subject {described_class.new(menu)}
-  let(:basket) {double :basket}
-  
+describe Menu do
+  subject(:menu) {described_class.new}
+  let(:menu_actual) { double(:dish, name: :chiken_foo_young, price: 4) }
 
-  it "has dishes " do
-
+  describe '#initialize' do
+    it "displays the name of the dishes" do
+      expect(subject.display_menu).to include :chiken_foo_young
+    end
   end
 end
