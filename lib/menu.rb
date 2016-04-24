@@ -12,4 +12,12 @@ class Menu
     @dishes[dish.name] = dish.price
   end
 
+  def read
+    @list = ""
+    @dishes.each do |name, price|
+      @list << "#{name} - £#{'%.2f' % price}. "
+    end
+  @list
+  end
+
 end

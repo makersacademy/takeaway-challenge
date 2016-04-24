@@ -2,7 +2,7 @@ require 'dish'
 
 describe Dish do
 
-  subject(:ramen) { described_class.new("Chilli Chicken Ramen", 7.50) }
+  subject(:ramen) { described_class.new("Chilli Chicken Ramen", 7.5) }
   subject(:no_arguments) { described_class.new }
   subject(:one_argument) { described_class.new("Duck Gyoza") }
 
@@ -23,7 +23,7 @@ describe Dish do
 
   describe '#price' do
     it 'returns the price of a dish' do
-      expect(ramen.price).to eq 7.50
+      expect(ramen.price).to eq 7.5
     end
   end
 
