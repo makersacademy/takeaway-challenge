@@ -15,11 +15,11 @@ describe Order do
     end
   end
 
-  describe "#calculate_total" do
+  # describe "#calculate_total" do
 
-    # it "should get correct price" do
-    #   # do i need to pass the menu, in order to get prices?
-    # end
-  end
+  #   # it "should get correct price" do
+  #   #   # do i need to pass the menu, in order to get prices?
+  #   # end
+  # end
 
 end
