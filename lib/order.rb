@@ -7,8 +7,7 @@ class Order
   
   def take_order(an_order, quantity = 1)
     quantity.times {trolley << an_order}
-    @cost = 0
-    trolley.each { |order| order.each_value {|v| @cost += v.to_f} }
+    ammend_total_cost
   end
   
   def check_order
@@ -24,5 +23,9 @@ class Order
   
   attr_reader :trolley, :cost
   
+  def ammend_total_cost
+    @cost = 0
+    trolley.each { |order| order.each_value {|v| @cost += v.to_f} }
+  end
 
 end

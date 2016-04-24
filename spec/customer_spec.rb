@@ -2,8 +2,9 @@ require 'customer'
 
 describe Customer do
 
-  subject(:customer) { described_class.new(menu) }
+  subject(:customer) { described_class.new(menu, order) }
   let(:menu) { double :menu, dishes: nil, select_dish: dish }
+  let(:order) { double :order }
   let(:dish) { double :dish }
   
   it 'responds to show_menu' do
