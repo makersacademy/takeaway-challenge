@@ -15,7 +15,7 @@ class Messager
     .messages.create(
         from: ENV['TWILIO_SOURCE_PHONE'],
         to: ENV['TWILIO_DESTINATION_PHONE'],
-        body: content_manager.generate_body_msg(order_cost)
+        body: content_manager.body_msg(order_cost)
       )
   end
 end
