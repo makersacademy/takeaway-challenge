@@ -1,4 +1,5 @@
 class TakeAway
+  attr_reader :menu, :order
 
   def initialize (menu:, order: nil)
     @menu = menu
@@ -12,7 +13,10 @@ class TakeAway
     selected_dishes.each do |dish, quantity|
       order.add(dish,quantity)
     end
-
+    order.total
   end
-attr_reader :menu, :order
+
+  def checkout
+    order.total
+  end
 end
