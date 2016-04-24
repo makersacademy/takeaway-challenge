@@ -1,4 +1,4 @@
-require 'menu'
+require 'diner'
 
 describe Diner do
 
