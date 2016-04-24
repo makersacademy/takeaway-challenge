@@ -1,8 +1,7 @@
 require 'order'
 
 describe Order do
-    let(:menu){double :menu, display_menu: {"Fried Rice" => 5.99,
-    "Chicken Chow Mein" => 7.99, "Cheeseburger" => 6.99, "Pizza" => 8}}
+    let(:menu){double :menu, display_menu: {"Fried Rice" => 5.99, "Chicken Chow Mein" => 7.99, "Cheeseburger" => 6.99, "Pizza" => 8}}
     subject(:order){described_class.new menu}
     before(:each) do
       order.order_food("Fried Rice", 2)
