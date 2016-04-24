@@ -40,5 +40,4 @@ class OrderLog
       end
     end
   end
-
 end

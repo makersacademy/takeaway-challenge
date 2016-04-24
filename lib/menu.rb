@@ -1,5 +1,3 @@
-require_relative 'menu_item'
-
 class Menu
 
   # not all lines covered here - only 86%
@@ -39,22 +37,3 @@ class Menu
   end
 
 end
-
-
-thai_menu = Menu.new
-
-thai_menu.show
-
-thai_menu.add "kung-po", 7
-thai_menu.add("chop-suey", 5)
-
-p thai_menu.remove "chop-suey"
-
-puts thai_menu.show
-# p thai.add "egg phoo yung", 6
-#
-# puts thai.list
-# p ""
-#
-# thai.remove "kung-po"
-# puts thai.list

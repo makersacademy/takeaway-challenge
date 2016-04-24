@@ -1,31 +1,45 @@
 require_relative './lib/takeaway'
 require_relative './lib/menu'
+require_relative './lib/order_log'
 require_relative './lib/menu_item'
 
 
-thai = Menu.new
+thai_menu = Menu.new
 
-p thai.list
+puts thai_menu.show
 
-p thai.add "kung-po", 7
-p thai.add "chop-suey", 5
-p thai.add "egg phoo yung", 6
+thai_menu.add "kung-po", 7
+thai_menu.add "chop-suey", 5
+thai_menu.add "egg phoo yung", 6
 
-puts thai.list
-p ""
+puts thai_menu.show
 
-thai.remove "kung-po"
-puts thai.list
+puts
 
-
-
-
-
-chineese = Takeaway.new
-
-p chineese
-
-p chineese.menu #<= should return a hash {item: 1}
+thai_menu.remove "kung-po"
+puts thai_menu.show
+puts
 
 
-p chineese.add_to_order :item, :item2
+fergus = OrderLog.new thai_menu
+
+puts fergus.show
+puts
+fergus.add "egg phoo yung", 2
+fergus.add "chop-suey", 5
+
+puts fergus.show
+puts
+fergus.remove "egg phoo yung", 1
+
+puts fergus.show
+puts
+
+thai_menu.add "cheese_on_toast", 3.5
+
+fergus.add "cheese_on_toast"
+
+puts fergus.show
+puts
+
+puts fergus.total
