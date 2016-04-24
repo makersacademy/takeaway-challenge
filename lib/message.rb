@@ -12,11 +12,21 @@ class Message
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def send(message)
+  def send(price, t)
+
+    msg = "Thank you! Your order was placed and will "\
+      "be delivered at #{t} for £#{price}. \n \n Thanks for your order!"
+
+    twilio_send(msg)
+
+    msg
+  end
+
+  def twilio_send(msg)
     @client.messages.create(
       from: ENV["TWILIO_FROM_PHONE_NUMBER"],
       to: ENV["TWILIO_TO_PHONE_NUMBER"],
-      body: message
+      body: msg
     )
   end
 

@@ -4,11 +4,11 @@ require_relative 'message'
 class Order
 attr_reader :list_of_items, :total_price
 
-  def initialize(menu_class = Menu)
+  def initialize(menu_class = Menu, message_class = Message)
     @menu = menu_class.new
     @list_of_items = []
     @total_price = 0.00
-    @message = Message.new
+    @message = message_class.new
   end
 
   def add_item(item, quantity)
@@ -22,8 +22,7 @@ attr_reader :list_of_items, :total_price
     t = Time.now + (60 * 60)
     t = t.strftime "%H:%M"
 
-    @message.send("Thank you! Your order was placed and will be delivered at #{t} for £#{price}.")
-    "Message sent."
+    @message.send(price, t)
   end
 
   private

@@ -8,7 +8,7 @@ class Menu
       chips: 3.50,
       wings: 5.20,
       curry: 6.70,
-      pizza: 7.90
+      pizza: 7.50
     }
   end
 

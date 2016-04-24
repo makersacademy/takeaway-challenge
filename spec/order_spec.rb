@@ -1,4 +1,6 @@
 require 'order'
+require 'message'
+require 'menu'
 
 describe Order do
   subject(:order){ described_class.new }
@@ -35,7 +37,7 @@ describe Order do
     it "tells the user their order has been placed" do
       test_order = described_class.new
       test_order.add_item(:chips, 2)
-      expect(test_order.submit_order(7)).to include "Message sent."
+      expect(test_order.submit_order(7)).to include "Thank you!"
     end
   end
 
