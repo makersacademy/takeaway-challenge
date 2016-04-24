@@ -12,7 +12,7 @@ class Messages
 
   def send_message
     m = "Thank you! Your order was placed and will be delivered before #{@t}"
-    @client.account.messages.create(from: @from, to: +1_562_631_7216, body: m)
+    @client.account.messages.create(from: @from, to: +1_562_631_721_6, body: m)
     "Sent message to Nick"
   end
 end
