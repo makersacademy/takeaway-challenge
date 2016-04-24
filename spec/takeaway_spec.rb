@@ -4,12 +4,10 @@ describe Takeaway do
 
   let(:menu) { double :menu, get: dish1}
   let(:dish1) { double :dish1, name: "dish1", price: 3.5}
-
   let(:order_log_class) {double :order_log_class, new: order_log}
   let(:order_log) {double :order_log, add: nil, total: 0}
   let(:contact_method_class) {double :contact_method_class, new: contact_obj}
   let(:contact_obj) {double :contact_obj, send: "msg"}
-
 
   subject(:takeaway) {Takeaway.new menu, order_log_class, contact_method_class}
 
@@ -48,12 +46,12 @@ describe Takeaway do
   end
 
   context "no dishes added to order" do
-    describe "checkout" do
+    describe "#checkout" do
       it 'raises eror if no dishes added' do
         expect{takeaway.checkout}.to raise_error{"nothing ordered yet"}
       end
     end
-    describe "confirm_order" do
+    describe "#confirm_order" do
       it 'raises eror if no dishes added' do
         expect{takeaway.confirm_order 10}.to raise_error{"nothing ordered yet"}
       end
@@ -64,7 +62,7 @@ describe Takeaway do
     let(:order_log) {double :order_log, add: nil, show: 'order', total: 10}
     before {takeaway.add_to_order "dish", 3}
 
-    describe "checkout" do
+    describe "#checkout" do
       it "returns string showing order, total and confirm msg" do
         value = format("£%.2f",order_log.total)
         confirm = "To confirm please type 'confirm order' followed by the total"
@@ -73,7 +71,7 @@ describe Takeaway do
       end
     end
 
-    describe "confirm_order" do
+    describe "#confirm_order" do
       let(:contact_method) {double :contact_method}
       it "error if amount != order total" do
         msg = "Confirm with correct total of #{order_log.total}"

@@ -2,6 +2,7 @@ require_relative './lib/takeaway'
 require_relative './lib/menu'
 require_relative './lib/order_log'
 require_relative './lib/menu_item'
+require_relative './lib.sms.rb'
 
 
 thai_menu = Menu.new
