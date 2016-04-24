@@ -1,2 +1,3 @@
 order = TakeAway.new
 order.read_menu
+order.order_food("Fried Rice", 2)
