@@ -21,7 +21,7 @@ class Menu
   private
   
   def required_dish(dish)
-    fail 'Dish is not on the menu: Please make another selection' unless dishes.has_key? dish
+    fail 'Dish is not on the menu: Please make another selection' unless dishes.key? dish
     required_dish = dishes.select { |k,v| k == dish }
   end
 

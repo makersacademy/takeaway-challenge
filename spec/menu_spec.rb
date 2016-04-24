@@ -22,7 +22,8 @@ describe Menu do
     end
     
     it 'should return an error if the dish does not exist' do
-      expect { menu.select_dish('kapow!') }.to raise_error 'Dish is not on the menu: Please make another selection'
+      message = 'Dish is not on the menu: Please make another selection'
+      expect { menu.select_dish('kapow!') }.to raise_error message
     end
     
   end
