@@ -9,13 +9,12 @@ class Customer
   #attr_reader :total
 
   def initialize
-    @diner = Diner.new
-    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
+    # @diner = Diner.new
     @order_total = 0
   end
 
-  def view_menu
-    @diner.print_items
+  def view_menu(diner)
+    diner.print_items
   end
 
   def order_items(quantity, dish)
@@ -28,6 +27,7 @@ class Customer
   end
 
   def confirm_order
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
     @client.account.messages.create({
 	     :from => ENV['RESTAURANT_NUMBER'],
 	     :to => ENV['CUSTOMER_NUMBER'],
