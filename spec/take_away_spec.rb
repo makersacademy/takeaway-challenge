@@ -30,7 +30,7 @@ describe TakeAway do
         take_away.select(:hamburger, 1)
         take_away.select(:pizza_deluxe, 2)
         message_body = "Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!"
-        expect(take_away.place_order(take_away.current_order, 42)).to eq message_body
+        expect(take_away.place_order(42)).to eq message_body
       end
     end
     context 'customer places order with wrong total amount' do
@@ -38,7 +38,7 @@ describe TakeAway do
         take_away.select(:hamburger, 1)
         take_away.select(:pizza_deluxe, 2)
         message = 'Not correct amount'
-        expect{ take_away.place_order(take_away.current_order, 45) }.to raise_exception message
+        expect{ take_away.place_order(45) }.to raise_exception message
       end
     end
   end

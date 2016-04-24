@@ -15,4 +15,8 @@ describe Message do
     message.send(message_body)
   end
 
+  it 'casts an exception in case it did not receive correct information' do
+    stub_const("Message::CUSTOMER", '+46704503916')
+    expect{ message.send(message_body) }.to raise_error
+  end
 end

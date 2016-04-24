@@ -5,7 +5,6 @@ class Message
 
   def send(message_body)
     twilio_send(message_body)
-    message_body
   end
 
   private
@@ -25,7 +24,7 @@ class Message
     rescue Twilio::REST::RequestError => e
       puts e.message
     end
-
+    message_body
   end
 
 end

@@ -23,4 +23,4 @@ puts
 
 #Scenario #3, user places the order
 puts "SCENARIO #3, user places the order"
-take_away.place_order(take_away.current_order, 34)
+take_away.place_order(34)
