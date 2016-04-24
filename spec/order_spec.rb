@@ -7,6 +7,7 @@ require 'order'
 #readme
 #learning_plan x 2
 #blog
+# add remove function
 
 describe Order do
 
