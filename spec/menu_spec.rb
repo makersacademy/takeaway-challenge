@@ -14,4 +14,12 @@ describe Menu do
 		expect(menu.display).to eq(display_menu)
 	end
 
+	it "check if dish on menu" do
+		expect(menu.dish?(:jajangmyun)).to be true
+	end
+
+	it "check if dish not on menu" do
+		expect(menu.dish?(:pie)).to be false
+	end
+
 end

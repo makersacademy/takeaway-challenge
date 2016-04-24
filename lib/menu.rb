@@ -6,5 +6,8 @@ class Menu
 	def display
 		dishes.map{|food,value| "#{food.to_s.capitalize} £%0.2f" % [value]}.join("\n")
 	end
+	def dish?(dish)
+		!!dishes[dish]
+	end
 
 end

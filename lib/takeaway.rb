@@ -8,7 +8,7 @@ class Takeaway
 		menu.display
 	end
 	def order_dishes(number_dishes)#number_dishes = {jajangmyun: 1, bibimbap: 2}
-		number_dishes.each{ |dish, number| order.calculate(dish, number) } #this way order class will calculate the prices
+		order.log(number_dishes) #this way order class will calculate the prices
 	end
 
 	private
