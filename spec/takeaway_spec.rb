@@ -1,6 +1,7 @@
 require 'takeaway'
 describe TakeAway do
-  subject(:takeaway){ described_class.new(menu)}
+  subject(:takeaway){ described_class.new(menu,order)}
+  let(:order){double :order}
   let(:menu){double :menu, display_menu: {"Fried Rice" => 5.99,
     "Chicken Chow Mein" => 7.99, "Cheeseburger" => 6.99, "Pizza" => 8}}
 
@@ -8,24 +9,23 @@ describe TakeAway do
     expect(takeaway.read_menu).to eq menu.display_menu
   end
 
-  it{is_expected.to respond_to(:order_food).with(2).argument}
-
-  it 'takes an order' do
+  it 'confirms order added' do
+    allow(order).to receive(:order_food).with(any_args)
     message = "2 order(s) of Fried Rice added to your cart"
     expect(takeaway.order_food("Fried Rice", 2)).to eq message
   end
 
-  it 'shows a summary of the order' do
-    takeaway.order_food("Fried Rice", 2)
-    takeaway.order_food("Cheeseburger", 1)
-    summary = "Fried Rice x 2 = $#{5.99 * 2}, Cheeseburger x 1 = $6.99"
-    expect(takeaway.order_summary).to eq summary
+  it 'confirms order' do
+    current = Time.now
+    t = "#{current.hour + 1}:#{'%02d' % current.min}"
+    message = "Thank you! Your order was placed and will be delivered before #{t}"
+    allow(order).to receive(:total).and_return(12.99)
+    expect(takeaway.confirm_order(12.99)).to eq message
   end
 
-  it 'displays the total of the order' do
-    takeaway.order_food("Fried Rice", 2)
-    takeaway.order_food("Cheeseburger", 1)
-    expect(takeaway.total).to eq (5.99 * 2) + (6.99)
+  it 'raises an error if incorrect total' do
+    allow(order).to receive(:total).and_return(13.00)
+    expect{takeaway.confirm_order(12.99)}.to raise_error 'Incorrect total'
   end
 
 end
