@@ -1,10 +1,13 @@
 class Takeaway
   
+  ERR_INCORRECT_PAYMENT = "The amount given is incorrect".freeze
+  
   attr_reader :order
   
-  def initialize(menu, order)
+  def initialize(menu, order, notifier)
     @menu = menu
     @order = order.new menu
+    @notifier = notifier
   end
   
   def print_menu
@@ -27,7 +30,12 @@ class Takeaway
     order.total
   end
   
+  def pay(amount = 0)
+    fail ERR_INCORRECT_PAYMENT if amount != total
+    notifier.confirm
+  end
+  
   private
-    attr_reader :menu
+    attr_reader :menu, :notifier
     
 end
