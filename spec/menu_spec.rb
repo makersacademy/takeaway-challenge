@@ -16,6 +16,10 @@ describe Menu do
       expect(menu.select_dish('beef burger')).to eq({ 'beef burger' => '1.99' })
     end
     
+    it 'should return an error if the dish does not exist' do
+      expect { menu.select_dish('kapow!') }.to raise_error 'Dish is not on the menu: Please make another selection'
+    end
+    
     # it 'can select multiple dishes' do
     #   expect(menu.select_dish('beef burger', 2)).to eq [{ 'beef burger' => '1.99' },{ 'beef burger' => '1.99' }]
     # end

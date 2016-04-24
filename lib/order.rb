@@ -7,7 +7,8 @@ class Order
   
   def take_order(an_order, quantity = 1)
     quantity.times {trolley << an_order}
-    trolley.each { |order| order.each {|k,v| cost += v.to_f} }
+    @cost = 0
+    trolley.each { |order| order.each_value {|v| @cost += v.to_f} }
   end
   
   def check_order
