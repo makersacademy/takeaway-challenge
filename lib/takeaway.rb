@@ -1,8 +1,6 @@
 require_relative 'menu'
-require 'rubygems'
-require 'twilio-ruby'
-require 'dotenv'
-Dotenv.load
+# require_relative 'message'
+
 class Takeaway
   attr_reader :menu, :current_order
   def initialize(menu: Menu.new)
@@ -10,6 +8,7 @@ class Takeaway
     @current_order = []
     @cost = []
     @current_total = 0
+    # @message = Message.new
   end
 
   def see_menu
@@ -31,20 +30,12 @@ class Takeaway
     @current_total += see_menu[item.key[0]]
     end
     fail "the total is not correct" if @current_total != total_pay
-    send_sms
+    # Message.new.send_sms "Thank you for the order! It will be de delivered by #{Time.new.hour + 1}:#{Time.new.min}"
   end
 
   private
   def total_pay
     @cost.inject(0){|sum,x| sum + x }
   end
-  def send_sms
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.account.messages.create({
-      :from => from,
-      :to => to,
-      :body => "Thank you for the order! It will be de delivered by #{Time.new.hour + 1}:#{Time.new.min}",
-    })
 
-   end
 end

@@ -1,4 +1,5 @@
 require 'takeaway'
+# require 'twilio-ruby'
 
 describe Takeaway do
   let(:item) {double :item}
