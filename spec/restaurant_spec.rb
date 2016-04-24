@@ -1,19 +1,17 @@
 require 'restaurant'
 
 describe Restaurant do
-  subject(:restaurant) { described_class.new }
-  let(:menu_class) {double :menu_class}
+  let(:menu_class) { double :menu_class }
+  let(:messager_class) { double :messager_class}
+  let(:price) { double :price }
+  subject(:restaurant) { described_class.new(menu_class, messager_class) }
 
-  describe '#initialize' do
-
+  describe '#display_menu' do
+    it 'displays the menu to the customer' do
+      allow(menu_class).to receive(:access) {{"dish"=>"price"}}
+      expect(restaurant.display_menu).to eq({"dish"=>"price"})
+    end
   end
-
-  # describe '#display_menu' do
-  #   it 'displays the menu to the customer' do
-  #     allow(menu_class).to receive(:access)
-  #     expect(restaurant.display_menu).to eq(menu_class.access)
-  #   end
-  # end
 
   describe '#complete_order' do
     it 'sends a confirmation to the customer' do
@@ -23,9 +21,9 @@ describe Restaurant do
 
   describe '#send_text' do
     before {allow(restaurant).to receive(:send_text)}
-    it 'sends confirmation text message to the customer' do
-      expect(restaurant).to receive(:send_text).with('Order confirmed: £37.95')
-      restaurant.complete_order(37.95)
+    it 'sends confirmation message to the customer' do
+      expect(restaurant).to receive(:send_text).with('Order confirmed, expected delivery time 20:01')
+      restaurant.complete_order('20:01')
     end
   end
 

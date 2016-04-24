@@ -1,7 +1,10 @@
 require 'order'
 
 describe Order do
-  let(:menu) { double :menu, price: '£1.00', contains?: true }
+  let(:restaurant_class) { double :restaurant_class }
+  let(:dish) { double :dish }
+  let(:quantity) { double :quantity }
+  let(:menu) { double :menu, dish: 'Broccoli', price: '5,95',contains?: true }
   subject(:order) { described_class.new }
 
   describe '#initialize' do
@@ -26,8 +29,9 @@ describe Order do
 
   describe '#summary' do
     it 'displays ordered dishes and prices' do
-    order.add('Broccoli', 1)
-      expect(order.summary).to eq("Broccoli"=>"5.95")
+      #allow(order).to receive(:basket) {{'Broccoli'=>1}}
+      order.add('Broccoli')
+      expect(order.summary).to eq({"Broccoli"=>"5.95"})
     end
   end
 

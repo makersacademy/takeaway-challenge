@@ -11,8 +11,8 @@ attr_reader :menu_class, :messager_class
     menu_class.access
   end
 
-  def complete_order(price)
-    send_text("Order confirmed: £#{price}")
+  def complete_order(time)
+    send_text("Order confirmed, expected delivery time #{time}")
   end
 
   def send_text(message)
