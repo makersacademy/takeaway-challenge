@@ -9,7 +9,9 @@ describe Takeaway do
 
   it{is_expected.to respond_to(:read_menu)}
   it{is_expected.to respond_to(:order)}
-    it{is_expected.to respond_to(:basket)}
+  it{is_expected.to respond_to(:basket)}
+  it{is_expected.to respond_to(:summary)}
+  it{is_expected.to respond_to(:qty_tracker)}
 
   it 'should be able to read a menu' do
     allow(menu_instance).to receive(:new).and_return(menu_instance)
@@ -22,5 +24,16 @@ describe Takeaway do
     expect(subject.order(menu_item)).to eq(menu_item)
   end
 
-
+  it 'should be able to call the order basket' do
+      allow(order_instance).to receive(:basket).and_return(menu_item)
+      expect(subject.basket).to eq(menu_item)
+  end
+  it 'should be able to call the order summary' do
+    allow(order_instance).to receive(:summary).and_return(menu_item)
+    expect(subject.summary).to eq(menu_item)
+  end
+  it 'should be able to call the qty_tracker' do
+    allow(order_instance).to receive(:qty_tracker).and_return(menu_item)
+    expect(subject.qty_tracker).to eq(menu_item)
+  end
 end

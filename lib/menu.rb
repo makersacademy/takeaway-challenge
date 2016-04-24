@@ -14,4 +14,8 @@ class Menu
     @menu.select { |key, value| key == menu_item }
   end
 
+  def price(menu_item)
+    @menu[menu_item]
+  end
+
 end

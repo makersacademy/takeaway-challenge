@@ -15,7 +15,15 @@ class Takeaway
   end
 
   def basket
-    @order.basket.dup
+    @order.basket
+  end
+
+  def summary
+    @order.summary
+  end
+
+  def qty_tracker
+    @order.qty_tracker
   end
 
 end
