@@ -7,4 +7,11 @@ class Menu
                "Letiniai su varske" => 4.5,
                "Burukeliu Sriuba" => 3.9}
   end
+
+  def add food, price
+
+  end
+
+  def remove food
+  end
 end

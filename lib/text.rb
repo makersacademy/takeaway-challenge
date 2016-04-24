@@ -8,11 +8,11 @@ class Text
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def send
+  def send(message)
     @client.account.messages.create({
     	:from => '+441925320189',
     	:to => '',
-      :body => 'testing'
+      :body => message
     })
   end
 end

@@ -3,7 +3,7 @@ require "order"
 describe Order do
 
   it "order should start empty" do
-    expect(subject.order).to eq []
+    expect(subject.current_order).to eq []
   end
 
   describe "#view_menu" do
