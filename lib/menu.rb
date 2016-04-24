@@ -9,4 +9,8 @@ class Menu
     list =@list_of_dishes.map {|dish, price| "#{dish}: $#{price}"}
     list.join(", ")
   end
+
+  def has_dish?
+    @list_of_dishes.each {|dish, price| @list_of_dishes.has_key?(dish)}
+  end
 end

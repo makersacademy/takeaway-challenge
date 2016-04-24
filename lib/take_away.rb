@@ -1,6 +1,6 @@
 class TakeAway
 
-  def initialize (menu:, order:)
+  def initialize (menu:, order: nil)
     @menu = menu
     @order = order
   end
