@@ -15,7 +15,7 @@ class TakeAway
   end
 
   def order_food(food, quantity)
-    fail "#{food} not available" if !@menu.display_menu[food]
+    fail "#{food} not available" unless @menu.display_menu[food]
     @order.order_food(food, quantity)
     "#{quantity} order(s) of #{food} added to your cart"
   end
@@ -25,7 +25,7 @@ class TakeAway
   end
 
   def confirm_order(total_confirmation, text_message = Messages.new)
-    fail "Incorrect total" if total_confirmation != @order.total
+    fail "Incorrect total" unless total_confirmation == @order.total
     @text_message = text_message
     messages
     @order = Order.new(menu)
