@@ -30,15 +30,13 @@ class Order
 
   def remove food
     fail "This food item is not on the menu!" unless food_included? food
-    @current_order.select do |k,v|
-      @current_order.pop({k => v}) if k == food
-      total
-    end
+    @current_order.delete_if { |h| h[food] }
   end
 
   def checkout
     Text.new.send "Your order of #{@current_order} is on it's way! The total is: £#{@total}. It will be delivered by #{time}"
-    # @current_order.delete!
+    length = @current_order.length
+    @current_order.pop(length)
   end
 
   def time
