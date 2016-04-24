@@ -1,12 +1,23 @@
+require_relative 'order'
+require_relative 'menu'
+
 class Takeaway
 
-  attr_reader :menu
-
-  def initialize(menu:)
+  def initialize(menu = Menu.new, order = nil)
     @menu = menu
+    @order = order || Order.new(menu)
   end
 
-  def show_menu
-    menu.show
+  def print_menu
+    menu.print
   end
+
+  def place_order(dish, quantity)
+    order.add(dish, quantity)
+    order.total_price
+  end
+
+
+  attr_reader :menu, :order
+
 end
