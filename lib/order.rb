@@ -12,4 +12,8 @@ class Order
     @list.dup
   end
 
+  def store_cost(sum)
+    @list.store(:total_price, sum)
+  end
+
 end

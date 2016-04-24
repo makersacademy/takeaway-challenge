@@ -9,4 +9,9 @@ describe Order do
     order.add(:pizza_deluxe, 2)
     expect(order.list).to eq list
   end
+
+  it 'adds total price to finished order' do
+    order.store_cost('sum')
+    expect(order.list).to include(:total_price)
+  end
 end

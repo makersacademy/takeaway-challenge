@@ -50,7 +50,8 @@ class TakeAway
   end
 
   def save_and_reset
-    @order_history << current_order
+    @order.store_cost(calculate_total)
+    @order_history << @order
     @order = Order.new
   end
 
