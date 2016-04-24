@@ -2,7 +2,9 @@ describe 'User Stories' do
 
   let(:dish_tikka) {Dish.new(name: "Tikka Masala", price: 7.95)}
   let(:dish_chow) {Dish.new(name: "Chow Mein", price: 6.95)}
-  let(:order) {Order.new}
+  let(:order) {Order.new(order_calculator: order_calculator, message_system: message_system)}
+  let(:order_calculator) {OrderCalculator.new}
+  let(:message_system) {MessageSystem.new}
   let(:some_dishes) {[dish_tikka, dish_chow]}
   let(:list_dishes) do
     some_dishes.each {|dish| puts "#{dish.name}: £%0.2f" % [dish.price]}
