@@ -14,11 +14,11 @@ describe Restaurant do
 
   describe '#initialize' do
     subject(:restaurant_class) { described_class }
-    it "is initialized with 2 argument" do
+    it "is initialized with 2 arguments" do
       expect(restaurant_class.new(menu, order_class)).to be_a restaurant_class
     end
     it 'has an optional argument' do
-      expect(restaurant_class.new(menu, order_class)).to be_a restaurant_class
+      expect(restaurant_class.new(menu)).to be_a restaurant_class
     end
     it "raises an argument error if no argument is given" do
       expect{ restaurant_class.new }.to raise_error(ArgumentError)

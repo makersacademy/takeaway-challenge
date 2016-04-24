@@ -47,6 +47,15 @@ Installation
 * Clone this repo
 * Install `bundle` gem - `gem install bundle`
 * Run `bundle` from the root directory
+* Sign up for a free [Twilio API](https://www.twilio.com/) account.
+* Create a `.env` file in your root directory with the following content:
+```
+FROM='YOUR TWILIO PHONE NUMBER'
+TO='CUSTOMERS PHONE NUMBER'
+AUTH_TOKEN='YOUR TWILIO AUTH_TOKEN'
+AUTH_SID='YOUR TWILIO AUTH_SID'
+```
+* Add the .env file to your .gitignore file.
 * In IRB/PRY, require the following files:
 ```
 [1] pry(main)> require './lib/dish.rb'
