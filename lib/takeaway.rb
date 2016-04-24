@@ -14,6 +14,7 @@ class TakeAway
   end
 
   def add_item(dish, number = 1)
+    fail 'dish does not exit!' unless dish_in_menu?(dish)
     cart[dish] += number
   end
 
@@ -46,6 +47,10 @@ class TakeAway
 
   def print_total
     puts "total: $#{order_total}"
+  end
+
+  def dish_in_menu?(dish_name)
+    menu.dish_in_menu?(dish_name)
   end
 
 end

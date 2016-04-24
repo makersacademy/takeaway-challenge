@@ -20,4 +20,9 @@ class Menu
     dishes.each {|dish| return dish.price if dish.name == dish_name}
   end
 
+  def dish_in_menu?(dish_name)
+    dishes.each {|dish| return true if dish.name == dish_name}
+    false
+  end
+
 end

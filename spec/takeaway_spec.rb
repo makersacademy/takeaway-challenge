@@ -6,7 +6,9 @@ describe TakeAway do
   let(:menu) { spy(:menu) }
 
   before(:each) do
+    allow(menu).to receive(:dish_in_menu?).with('dish1').and_return(true)
     allow(menu).to receive(:dish_price).with('dish1').and_return(10)
+    allow(menu).to receive(:dish_in_menu?).with('dish2').and_return(true)
     allow(menu).to receive(:dish_price).with('dish2').and_return(15)
     takeaway.add_item('dish1')
     takeaway.add_item('dish2')
@@ -18,6 +20,7 @@ describe TakeAway do
   end
 
   it '#add_item' do
+    allow(menu).to receive(:dish_in_menu?).with('dish').and_return(true)
     expect{takeaway.add_item('dish',2)}.to change {takeaway.cart['dish']}.by(2)
   end
 
