@@ -28,6 +28,10 @@ class TakeAway
     confirm_order
   end
 
+  def order_history
+    @order_history.dup
+  end
+
   private
 
   def confirm_order(message = Message.new, t = Time.new + 60 * 60)
