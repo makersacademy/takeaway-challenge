@@ -4,14 +4,15 @@ class Takeaway
 		@menu = menu
 		@order = order
 	end
-	def display_menu#this will use the command from the menu class to show the menu
+	def display_menu
 		menu.display
 	end
-	def order_dishes(number_dishes)#number_dishes = {jajangmyun: 1, bibimbap: 2}
-		order.log(number_dishes) #this way order class will calculate the prices
+	def order_dishes(number_dishes)
+		order.log(number_dishes) 
+		order.total
 	end
 
 	private
 
-	attr_reader :menu, :order #don't want to show the class
+	attr_reader :menu, :order 
 end
