@@ -5,7 +5,6 @@ Takeaway Challenge
 
 
 
-
 ```
                             _________
               r==           |       |
