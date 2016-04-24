@@ -16,7 +16,7 @@ class Order
   end
 
   def view_order
-    "This is your order: #{@current_order} and the total is: £#{@total}"
+    "Your order: #{@current_order}. Your total: £#{@total}"
   end
 
   def add food

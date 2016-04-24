@@ -1,11 +1,11 @@
 class Menu
   attr_reader :dishes
   def initialize
-    @dishes = {"Kotletai" => 4.00,
-               "Cepelinai" => 6.50,
-               "Balandeliai" => 5.00,
-               "Lietiniai su varske" => 4.50,
-               "Burokeliu Sriuba" => 3.90}
+    @dishes = {"Kotletai" => 4.0,
+               "Cepelinai" => 6.5,
+               "Balandeliai" => 5.0,
+               "Lietiniai su varske" => 4.5,
+               "Burokeliu Sriuba" => 3.9}
   end
 
   def add food, price
