@@ -1,6 +1,6 @@
 Takeaway Challenge
 ==================
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+[![Build Status](https://travis-ci.org/iammatthewward/takeaway-challenge.svg?branch=master)](https://travis-ci.org/iammatthewward/takeaway-challenge)
 ```
                             _________
               r==           |       |
