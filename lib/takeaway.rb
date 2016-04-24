@@ -1,8 +1,8 @@
 require_relative 'menu'
-# require 'rubygems'
-# require 'twilio-ruby'
-# require 'dotenv'
-# Dotenv.load
+require 'rubygems'
+require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 class Takeaway
   attr_reader :menu, :current_order
   def initialize(menu: Menu.new)
