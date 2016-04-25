@@ -23,7 +23,7 @@ Takeaway Challenge
 Task
 -----
 
-This is the second individual challenge for Makers academy, Ronin 2016 Aril cohort.
+This is the second individual challenge for Makers academy, Ronin 2016 April cohort.
 
 My task was to create a program, 'Take away' implementing the following user stories. I have used Twilio
 API to implement text sending functionality needed when confirming an order to a customer.
@@ -46,13 +46,22 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+Set up
+-------------
+
+I am using the [Dotenv gem](https://github.com/bkeepers/dotenv) to protect information from my Twilio account. I have included a .env template file where it is possible to simply replace the variable values with your token, sid, twilio nr and preferred cell phone nr.
+
+Get your free Twilio account[here](https://www.twilio.com/)  
+
+
 Functionality
 -------------
 
-The interface of takeaway allow users to
+The public interface of takeaway allow users to
 * See a menu containing available dishes for takeaway
 * Select what dish/dishes to order and specify their quantity. It is not possible to order something not on the menu
 * Look at their current order
+* Look at the current total price
 * Place the order by specifying the amount to be paid. If the customer gives the wrong amount, they'll be notified immediately
 * Users will also receive a text confirmation of their order after it has been placed
 
@@ -65,6 +74,29 @@ take_away = TakeAway.new
 This will immediately enable all the functionality. Once an order is completed it will be saved to TakeAway's order history, and a new instance of Order class is automatically instantiated.
 
 
+You can then call these methods on take_away:
+
+```
+take_away.dishes #Presents the menu
+
+take_away.select(dish, quantity) #Adds dish and no of dishes to order
+
+take_away.current_order #Shows what is included in the current order
+
+take_away.total_cost #Returns the sum of the items in the current order
+
+take_away.place_order(total_price) #Places the order and sends a text message confirmation
+
+take_away.order_history #Shows past orders including their total cost
+```
+
+
+Food items (dishes) are created within the Menu class, which is simply a class extending Hash. So all menu objects are hashes containing information about the food item and the price of the item.
+
+Text messages are handled by the Message class which implements the Twilio API.
+
+The Order class takes care of order related tasks such as storing current food items to the order and calculating the total cost.
+
 ![irb feature test](https://github.com/festinalent3/takeaway-challenge/blob/master/images/irb.png "irb feature test")
 
 
@@ -72,6 +104,6 @@ This will immediately enable all the functionality. Once an order is completed i
 Notes on Test Coverage
 ------------------
 
-The Messages class handles the calls to the Twilio API. The behavior of this class is tested using the [WebMock gem](https://github.com/bblimke/webmock), blocking all external HTTP requests during the unit testing. Because of Twilio/WebMock dependency issues I have mocked the behaviour of Twilio in the spec_helper.rb:13 file, by passing it a stubbed JSON string needed to resemble a Ruby hash in Twilio.
+The Message class handles the calls to the Twilio API. The behavior of this class is tested using the [WebMock gem](https://github.com/bblimke/webmock), blocking all external HTTP requests during the unit testing. Because of Twilio/WebMock dependency issues I have mocked the behaviour of Twilio in the spec_helper.rb:13 file, by passing it a stubbed JSON string needed to resemble a Ruby hash in Twilio.
 
-Test coverage has been slightly compromised since it is not possible to test 100% of the functionality in the Message class. For example exception handling needs an actual call to Twilio API to be implemented, which is not possible in the unit tests where external HTTP calls have been blocked in favor of not sending text messages.
+Test coverage has been slightly compromised since it is not possible to test 100% of the functionality in the Message class. For example exception handling needs an actual call to Twilio API to be implemented, which is not possible in the unit tests where external HTTP requests have been blocked in favor of not sending text messages.
