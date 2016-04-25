@@ -37,7 +37,7 @@ class Takeaway
 
 		private
 
-		attr_reader :menu, :order, :textmessage
+		attr_reader :menu, :order
 
 		def message
 		"delivery message"
