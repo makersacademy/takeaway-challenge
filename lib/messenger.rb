@@ -1,5 +1,5 @@
-# require 'rubygems'
-# require 'twilio-ruby'
+require 'rubygems'
+require 'twilio-ruby'
 
 class Messenger
   def send_text

@@ -4,24 +4,27 @@ require_relative 'restaurant'
 class Order
 
   def initialize(menu_class = Menu)
-    @menu_class = menu_class
-    @order = {}
+    @menu_class = menu_class.new
+    @orders = {}
     @total = []
-    @complete = false
   end
 
-  def add_to_order(quantity,item)
-    menu_item = @menu_class.menu.select{|key,value|key["#{item}"]}
-    @order[quantity] = menu_item
+  def add_to_order(quantity = 1,item)
+    menu_item = menu.select{|key,value|key[item]}
+    @orders[quantity] = menu_item
     @total << menu_item.values.map{|i|i*quantity}
   end
 
   def show_order
-    @order.dup
+    @orders.dup
   end
 
-  def complete?
-    @order.empty?
+  def menu
+    @menu_class.menu
+  end
+
+  def empty?
+    @orders.empty?
   end
 
   def check_total

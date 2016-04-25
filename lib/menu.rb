@@ -1,4 +1,5 @@
 class Menu
+  attr_accessor :menu
   def initialize
     @menu = {
       "duck breast with anchovies" => 3.50,
@@ -22,7 +23,7 @@ class Menu
     @menu.each{|key,value| puts key,"£#{value}"}
   end
 
-  def menu
+  def menu_select
     @menu.dup
   end
 end
