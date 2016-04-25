@@ -2,4 +2,5 @@ order = TakeAway.new
 order.read_menu
 order.order_food("Fried Rice", 2)
 order.order_summary
+order.total
 order.confirm_order(11.98)

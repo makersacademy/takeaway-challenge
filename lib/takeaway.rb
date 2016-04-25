@@ -32,6 +32,10 @@ class TakeAway
     "Your order has been placed"
   end
 
+  def total
+    "Your total is $#{@order.total}"
+  end
+
   private
 
   def messages

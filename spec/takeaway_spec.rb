@@ -33,6 +33,11 @@ describe TakeAway do
     expect(takeaway.order_summary).to be_empty
   end
 
+  it 'shows total' do
+    allow(order).to receive(:total).and_return(12.99)
+    expect(takeaway.total).to eq "Your total is $#{order.total}"
+  end
+
   it 'raises an error if incorrect total' do
     allow(order).to receive(:total).and_return(13.00)
     expect{takeaway.confirm_order(12.99)}.to raise_error 'Incorrect total'

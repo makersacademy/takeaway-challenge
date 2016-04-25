@@ -1,9 +1,9 @@
 class Messages
   require 'twilio-ruby'
-  SID = "AC28311533392e3cb81b6417d38bca4554".freeze
-  TOKEN = "7da5ff9f79b81398aa379e1e24340c6a".freeze
+  SID = ENV["SID"]
+  TOKEN = ENV["TOKEN"]
 
-  def initialize(from = "+16572206632", account_sid = SID, auth_token = TOKEN)
+  def initialize(from = ENV["TWILIO_NUMBER"], account_sid = SID, auth_token = TOKEN)
     @client = Twilio::REST::Client.new account_sid, auth_token
     @from =  from
     current = Time.now
@@ -12,7 +12,7 @@ class Messages
 
   def send_message
     m = "Thank you! Your order was placed and will be delivered before #{@t}"
-    @client.account.messages.create(from: @from, to: +1_562_631_721_6, body: m)
+    @client.account.messages.create(from: @from, to: ENV["PHONE"], body: m)
     "Sent message to Nick"
   end
 end
