@@ -8,7 +8,7 @@ describe Order do
 
   describe "#view_menu" do
     it "should be able to view the menu while ordering" do
-      expect(subject.view_menu).to eq Menu.new.dishes
+      expect(subject.view_menu).to be_a Hash
     end
   end
 
@@ -43,13 +43,9 @@ describe Order do
   end
 
   describe "#checkout" do
-    it "should access the text class" do
-      expect(subject.checkout).to eq []
-    end
-
     it "should set @current_order to be empty" do
       subject.checkout
-      expect(subject.current_order).to be []
+      expect(subject.current_order).to eq []
     end
   end
 end

@@ -4,9 +4,9 @@ require_relative "./text"
 class Order
   attr_reader :current_order
 
-  def initialize(menu = Menu)
+  def initialize(menu = Menu, text = Text)
     @menu = menu.new
-    @text = Text.new
+    @text = text.new
     @current_order = []
     @total = 0
   end
@@ -36,8 +36,9 @@ class Order
   end
 
   def checkout
-    Text.new.send "Your order is on it's way! Total: £#{@total} It will be delivered by #{time}"
+    @text.send "Your order is on it's way! Total: £#{@total} It will be delivered by #{time}" if !empty?
     @current_order = []
+    total
   end
 
   private
@@ -53,5 +54,9 @@ class Order
 
   def total
     @total = current_order.map{|i| i.values}.flatten.inject(:+)
+  end
+
+  def empty?
+    @current_order.empty?
   end
 end
