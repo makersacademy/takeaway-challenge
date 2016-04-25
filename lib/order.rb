@@ -3,15 +3,16 @@ require_relative 'dish'
 require_relative 'messenger'
 
 class Order
-  attr_reader :dishes_ord, :menu
+  attr_reader :dishes_ord, :menu, :messenger
 
-  def initialize(a_menu:, messenger:)
+  def initialize(menu:, messenger:)
     @dishes_ord = []
-    @menu = a_menu
+    @menu = menu
     @messenger = messenger
   end
+
   def add(dish, quantity)
-    fail 'Dish is not on menu!' if !on_menu?(dish)
+    fail 'Dish is not on menu!' unless on_menu?(dish)
     dishes_ord << {dish: dish, quantity: quantity}
   end
 
@@ -21,20 +22,20 @@ class Order
       order_sum += hash[:dish].price * hash[:quantity]
     end
     order_sum
-    end
+  end
 
   def on_menu?(dish)
    menu.have_dish?(dish)
   end
 
-  def order_verified?(total, dishes_ord)
+  def order_verified?(total)
     fail 'Wrong total amount for order' unless total == total_order
     send_message
-   end
+  end
 
-   private
+private
 
-   def send_message
-     @messenger.send
-   end
+  def send_message
+    @messenger.send
+  end
 end

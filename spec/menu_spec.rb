@@ -1,15 +1,16 @@
 require 'menu.rb'
 describe Menu do
+  subject(:menu) { described_class.new(dishes: marg_pizza) }
   let(:marg_pizza) {double(:marg_pizza, name: 'Margherita', price: 6.00)}
   let(:pepp_pizza) {double(:pepp_pizza, name: 'Pepperoni', price: 6.50)}
   let(:list_dishes) do
     [marg_pizza].each do |dish|
        "#{dish.name}: £%0.2f" % [dish.price]
-    end
+     end
   end
-  subject(:menu) { described_class.new(dishes: marg_pizza) }
-  it 'prints dishes and prices' do
 
+
+  it 'prints dishes and prices' do
     expect(menu.print).to eq(list_dishes)
   end
 
