@@ -20,7 +20,7 @@ class Takeaway
 		order.order_total
 	end
 
-	def confirm_order #should be something like this however I couldn't get it working
+	def confirm_order #couldn't get twilio working
 		#account_sid = "AC328ae31fa3ea52b0e959f91cb768852b"
    		#auth_token = "26b09a22f0ff29abee49033df09f963f"
    		#client = Twilio::REST::Client.new account_sid, auth_token
