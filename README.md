@@ -14,6 +14,8 @@ Takeaway Challenge
  
  ```
 
+My application receives orders as an argument in the .place_order method, not through a separate order class. I have added to my overview (see takeaway_overview in this directory) an idea for an alternative order mechanism which allows the user to start an order and add items to it one by one - this would need to takeaway establishment to have an order object available to it which can store an order hash and return that hash to the establishment when the order is confirmed.
+
 Instructions:
 
 1. Clone this repo and run bundle to install the necessary gems
