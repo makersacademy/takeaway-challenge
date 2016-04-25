@@ -27,7 +27,7 @@ describe Takeaway do
 	context'#confirming order' 
  		it 'sends text to confirm order will be delivered on time' do 
 			expect(takeaway.confirm_order).to eq message
-		end
+	end
 
 			private
 		
