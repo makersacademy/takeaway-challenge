@@ -9,10 +9,10 @@ def send
 
    from = "+441494372428"
 
-   client.account.messages.create(
+   client.account.messages.create({
    									:from => from,
    									:to => "+447824388248", 
   							 		:body => "Order confirmed!"
-  							 		)
+  							 		})
 
 end
