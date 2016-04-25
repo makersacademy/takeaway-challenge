@@ -1,11 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-  # let(:item) {double :item}
   subject(:takeaway) { described_class.new }
-  # let(:menu_list) { {chiken_foo_young: 4, chilli_spicy_chiken: 3}  }
-  # let(:menu) {double :menu, display_menu: {chiken_foo_young: 4}}
-
     describe '#initialize' do
       it "has an empty order at the start" do
         expect(takeaway.current_order).to eq []
@@ -28,12 +24,6 @@ describe Takeaway do
       it "should show the total" do
       takeaway.order(:chiken_foo_young)
       expect(takeaway.total).to eq 4
+      end
     end
-
-    end
-    # describe '#checkout' do
-    #   it "rasise an error if the total is not correct" do
-    #      expect { takeaway.checkout}.to raise_error "the total is not correct"
-    #   end
-    # end
 end
