@@ -35,11 +35,16 @@ total: $75
 ```
 
 ##Classes
--Customer: responsible for starting order, placing order, and keep order history
--TwilioMessenger: responsible for sending the sms to customer
--TakeAway(order): responsible for adding dishes to the cart, showing a summary of the cart, and calculating total price of cart.
--Menu: responsible for printing the menu, provide the price of a dish, and check if a dish is in the menu
--Dish: responsible for storing the name and price of a dish
+*Customer: responsible for starting order, placing order, and keep order history
+
+*TwilioMessenger: responsible for sending the sms to customer
+
+*TakeAway(order): responsible for adding dishes to the cart, showing a summary of the cart, and calculating total price of cart
+
+*Menu: responsible for printing the menu, provide the price of a dish, and check if a dish is in the menu
+
+*Dish: responsible for storing the name and price of a dish
 
 ##Structure of classes
 
+![structure](https://github.com/letianw91/takeaway-challenge/blob/master/structure.png)
