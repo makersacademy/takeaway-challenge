@@ -8,7 +8,7 @@ describe Order do
       expect(order.items).to be_empty
     end
     it 'has a total value of 0' do
-      expect(order.total).to be 0
+      expect(order.total).to be 0.0
     end
   end
 

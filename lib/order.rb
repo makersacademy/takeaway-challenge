@@ -2,7 +2,7 @@ class Order
   LINEWIDTH = 50
   attr_reader :items, :total
 
-  def initialize(total = 0)
+  def initialize(total = 0.0)
     @items = []
     @total = total
   end
