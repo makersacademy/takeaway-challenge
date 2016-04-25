@@ -2,7 +2,8 @@ require 'customer'
 
 describe Customer do
 
-  subject(:customer) { described_class.new('name', 'number') }
+  subject(:customer) { described_class.new('name', 'number', messenger) }
+  let(:messenger) { spy(:messenger) }
   let(:order) { double(:order) }
 
   describe '#place_order' do
@@ -29,6 +30,10 @@ describe Customer do
 
       it 'reset current order to nil' do
         expect(customer.current_order).to be_nil
+      end
+
+      it 'ask messenger to send a message' do
+        expect(messenger).to have_received(:send_message)
       end
 
     end

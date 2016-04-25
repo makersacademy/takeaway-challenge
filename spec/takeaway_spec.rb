@@ -19,9 +19,19 @@ describe TakeAway do
     expect(menu).to have_received(:print_menu)
   end
 
-  it '#add_item' do
-    allow(menu).to receive(:dish_in_menu?).with('dish').and_return(true)
-    expect{takeaway.add_item('dish',2)}.to change {takeaway.cart['dish']}.by(2)
+  describe '#add_item' do
+
+    it '#add_item' do
+      allow(menu).to receive(:dish_in_menu?).with('dish').and_return(true)
+      takeaway.add_item('dish',2)
+      expect(takeaway.cart['dish']).to eq 2
+    end
+
+    it 'cannot add item not in the menu' do
+      allow(menu).to receive(:dish_in_menu?).with('dish').and_return(false)
+      expect{ takeaway.add_item('dish') }.to raise_error 'dish does not exit!'
+    end
+
   end
 
 
@@ -30,6 +40,14 @@ describe TakeAway do
     it 'prints items and prices in the cart and order total' do
       message = "1 X dish1 = $10\n1 X dish2 = $15\ntotal: $25\n"
       expect{takeaway.cart_summary}.to output(message).to_stdout
+    end
+
+  end
+
+  describe '#order_total' do
+
+    it 'calculates order total' do
+      expect(takeaway.order_total).to eq 25
     end
 
   end
