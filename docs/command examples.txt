@@ -1,0 +1,17 @@
+t = TakeAway.new(m)
+o = Order.new(t)
+print o.menu
+o.add("bug-makers")
+o.add("jamon serrano")
+o.add("tortilla patata",4)
+o.basket_summary
+o.total
+
+
+
+c = Customer.new(name: "Sergio", phone: "")
+cm = ContentManager.new(c)
+m = Messager.new(cm)
+t = TakeAway.new(m)
+o = Order.new(t)
+print o.menu

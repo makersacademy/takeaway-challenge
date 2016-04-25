@@ -20,6 +20,7 @@ This is my attempt to resolve the challenge of this week. Full solution provided
 
 ## Installation
 Clone the repo from GitHub, then run bundle on the root directory.
+Ruby v. 2.2.3 used
 
 ```
 $ bundle
