@@ -1,0 +1,12 @@
+CALAMARI £6.65
+GARLIC BREAD £5.65
+BRUSCHETTA £5.35
+LINGUINE £12.95
+PULLED BEEF PASTA £11.95
+Pizza Pepperoni £10.25
+Pizza Margherita £7.95
+Spaghetti Bolognese £9.65
+Carbonara £12.50
+Zucchini £5.00
+Calzone £11.95
+Tiramisu £5.50
