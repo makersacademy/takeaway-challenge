@@ -2,7 +2,7 @@
 require 'takeaway'
 
 describe Takeaway do 
-	subject(:takeaway) {described_class.new(menu: menu, order: order, textmessage: textmessage) }
+	subject(:takeaway) {described_class.new(menu: menu, order: order) }
 	let(:menu) {double :menu, show: printed_menu}
 	let(:order) {double :order, order_total: 14.30}
 	let(:dishes) {{ kurma: 4.80,  madras: 4.50, vindaloo: 5.00}}
@@ -27,12 +27,12 @@ describe Takeaway do
 	context'#confirming order' 
  		it 'sends text to confirm order will be delivered on time' do 
 			expect(takeaway.confirm_order).to eq message
-	end
+		end
 
 			private
 		
 			def message
-				"Thank you! Your order was placed and will be delivered before 18:52"
+				"delivery message"
 			end
 
 end

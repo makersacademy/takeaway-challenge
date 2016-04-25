@@ -36,6 +36,6 @@ class Takeaway
 		attr_reader :menu, :order, :textmessage
 
 		def message
-		"Thank you! Your order was placed and will be delivered before 18:52"
+		"delivery message"
 		end
 end
