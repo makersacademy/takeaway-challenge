@@ -4,7 +4,6 @@ require 'takeaway'
 describe Takeaway do 
 	subject(:takeaway) {described_class.new(menu: menu, order: order, textmessage: textmessage) }
 	let(:menu) {double :menu, show: printed_menu}
-	let(:textmessage) {double :textmessage, deliver: nil}
 	let(:order) {double :order, order_total: 14.30}
 	let(:dishes) {{ kurma: 4.80,  madras: 4.50, vindaloo: 5.00}}
 	let(:printed_menu) {'Chicken Kurma: £4.80'}

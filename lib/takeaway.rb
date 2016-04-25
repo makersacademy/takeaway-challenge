@@ -4,10 +4,9 @@ require_relative 'order'
 #require 'twilio-ruby' rspec breaks when I include these.
 class Takeaway
 
-	def initialize(menu:, order:, textmessage:)
+	def initialize(menu:, order:)
 		@menu = menu
 		@order = order || Order.new
-		@textmessage = textmessage || TextMessage.new
 	end
 
 	def print_menu
@@ -35,7 +34,7 @@ class Takeaway
 		private
 
 		attr_reader :menu, :order, :textmessage
-	
+
 		def message
 		"Thank you! Your order was placed and will be delivered before 18:52"
 		end
