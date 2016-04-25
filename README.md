@@ -21,13 +21,13 @@ Instructions
 2.3.0 :001 > require './lib/takeaway'
  => true
 2.3.0 :002 > t = Takeaway.new
- => #<Takeaway:0x007fd3621b1628 @menu=#<Menu:0x007fd3621b1600 @dishes={"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}>, @order=#<Order:0x007fd3621b1588 @dishes={}, @menu=#<Menu:0x007fd3621b1600 @dishes={"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}>>>
+ => #<Takeaway:0x007fd3621b1628 @menu=#<Menu:0x007fd3621b1600 @dishes={"rice"=>1.00, "chicken"=>4.00, "beef"=>4.0, "duck"=>6.0, "prawn"=>6.00}>, @order=#<Order:0x007fd3621b1588 @dishes={}, @menu=#<Menu:0x007fd3621b1600 @dishes={"rice"=>1.00, "chicken"=>4.00, "beef"=>4.0, "duck"=>6.0, "prawn"=>6.00}>>>
 2.3.0 :003 > t.print_menu
- => "spring roll £0.99, char sui bun £3.99, pork dumpling £2.99, peking duck £7.99, fu-king fried rice £5.99"
-2.3.0 :004 > t.place_order("spring roll", 10)
- => 9.9
-2.3.0 :005 > t.place_order("peking duck", 1)
- => 17.89
+ => "rice £1.00, chicken £4.00, beef £4.0, duck £6.0, prawn £6.00"
+2.3.0 :004 > t.place_order("chicken", 10)
+ => 40.00
+2.3.0 :005 > t.place_order("rice", 1)
+ => 41.00
  ```
 
 User Stories
@@ -55,4 +55,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 My Solution
 -----
 
-I really struggled with this week's challenge and had to reply on using google, the walkthrough and various pull requests to even make sense of what I was trying to do. I am going to spend time on it throughout this week in order to try to improve and take something positive forward.
+I really struggled with this week's challenge and had to reply on using google, the walkthrough and various pull requests to even make sense of what I was trying to do. Due to this I came away from my TDD and jsut tried to make sense of the challenge and how the classes were interacting. I am going to spend time on it during the evenings this week in order to try to improve and take something positive forward.

@@ -2,7 +2,7 @@ class Menu
 
   attr_reader :dishes
 
-  def initialize(dishes = {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99})
+  def initialize(dishes = {"rice"=>1.00, "chicken"=>4.00, "beef"=>4.0, "duck"=>6.0, "prawn"=>6.00})
     @dishes = dishes
   end
 
