@@ -12,15 +12,11 @@ describe Message do
   end
 
   it 'calls twilio_send' do
-    expect(message).to receive(:twilio_send).with(message_body)
-    message.send(message_body)
-
-
-    # message = 'order complete'
-    # twilio_message_body = { from: ENV['TWILIO_PHONE'], to: ENV['TWILIO_DESTINATION_PHONE'], body: message }
-    # allow(@client).to receive_message_chain(:account, :messages, :create).with(twilio_message_body)
-    # expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(@client)
-    # subject.send(message)
+    message = 'order complete'
+    twilio_message_body = { from: ENV['TWILIO_NR'], to: ENV['CUSTOMER_NR'], body: message }
+    allow(@client).to receive_message_chain(:account, :messages, :create).with(twilio_message_body)
+    expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(@client)
+    subject.send(message)
   end
 
 end

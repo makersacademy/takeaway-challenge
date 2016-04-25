@@ -17,7 +17,6 @@ class Message
       message = @client.account.messages.create(:body => message_body,
       :to => ENV['CUSTOMER_NR'],
       :from => ENV['TWILIO_NR'])
-      puts message.sid
     rescue Twilio::REST::RequestError => e
       puts e.message
     end
