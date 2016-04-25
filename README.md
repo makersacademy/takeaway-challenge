@@ -1,5 +1,10 @@
 Takeaway Challenge
 ==================
+
+[![Build Status](https://travis-ci.org/festinalent3/takeaway-challenge.svg?branch=master)](https://travis-ci.org/festinalent3/takeaway-challenge)  [![Coverage Status](https://coveralls.io/repos/github/festinalent3/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/festinalent3/takeaway-challenge?branch=master)
+
+
+
 ```
                             _________
               r==           |       |
@@ -11,24 +16,17 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+This is the second individual challenge for Makers academy, Ronin 2016 April cohort.
+
+My task was to create a program, 'Take away' implementing the following user stories. I have used Twilio
+API to implement text sending functionality needed when confirming an order to a customer.
 
 ```
 As a customer
@@ -48,43 +46,64 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+Set up
+-------------
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+I am using the [Dotenv gem](https://github.com/bkeepers/dotenv) to protect information from my Twilio account. I have included a .env template file where it is possible to simply replace the variable values with your token, sid, twilio nr and preferred cell phone nr.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Get your free Twilio account[here](https://www.twilio.com/)  
 
 
-In code review we'll be hoping to see:
+Functionality
+-------------
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+The public interface of takeaway allow users to
+* See a menu containing available dishes for takeaway
+* Select what dish/dishes to order and specify their quantity. It is not possible to order something not on the menu
+* Look at their current order
+* Look at the current total price
+* Place the order by specifying the amount to be paid. If the customer gives the wrong amount, they'll be notified immediately
+* Users will also receive a text confirmation of their order after it has been placed
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+To create a new take away, simply do the following:
+
+```
+take_away = TakeAway.new
+```
+
+This will immediately enable all the functionality. Once an order is completed it will be saved to TakeAway's order history, and a new instance of Order class is automatically instantiated.
+
+
+You can then call these methods on take_away:
+
+```
+take_away.dishes #Presents the menu
+
+take_away.select(dish, quantity) #Adds dish and no of dishes to order
+
+take_away.current_order #Shows what is included in the current order
+
+take_away.total_cost #Returns the sum of the items in the current order
+
+take_away.place_order(total_price) #Places the order and sends a text message confirmation
+
+take_away.order_history #Shows past orders including their total cost
+```
+
+
+Food items (dishes) are created within the Menu class, which is simply a class extending Hash. So all menu objects are hashes containing information about the food item and the price of the item.
+
+Text messages are handled by the Message class which implements the Twilio API.
+
+The Order class takes care of order related tasks such as storing current food items to the order and calculating the total cost.
+
+![irb feature test](https://github.com/festinalent3/takeaway-challenge/blob/master/images/irb.png "irb feature test")
+
+
 
 Notes on Test Coverage
 ------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+The Message class handles the calls to the Twilio API. The behavior of this class is tested using the [WebMock gem](https://github.com/bblimke/webmock), blocking all external HTTP requests during the unit testing. Because of Twilio/WebMock dependency issues I have mocked the behaviour of Twilio in the spec_helper.rb:13 file, by passing it a stubbed JSON string needed to resemble a Ruby hash in Twilio.
 
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Test coverage has been slightly compromised since it is not possible to test 100% of the functionality in the Message class. For example exception handling needs an actual call to Twilio API to be implemented, which is not possible in the unit tests where external HTTP requests have been blocked in favor of not sending text messages.
