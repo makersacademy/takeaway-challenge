@@ -3,13 +3,13 @@ require 'order'
    subject(:new_order) {Order.new}
    let(:oyster) {double :oyster}
    let(:qty) {double :qty}
+   let(:menu) {{"diet coke"=>0.99, "foie gras"=>18.50, "caviar"=>99.00, "oyster"=>0.99, "champagne"=>50.00}}
    #let(:pizza) {double (menu: "pizza", price: 9.50)}
      context "Method check" do
 
 
     it {is_expected.to respond_to :add_item_qty}
     it {is_expected.to respond_to :order}
-    it {is_expected.to respond_to :order_total}
      it {is_expected.to respond_to :basket_summary}
     it {is_expected.to respond_to :view_menu}
 
@@ -39,14 +39,20 @@ require 'order'
       #     expect(new_order.get_price("diet coke")).to eq 0.99
       #   end
       # end
-      describe '#order_total' do
-        it 'returns the total of the basket' do
-          new_order.add_item_qty("diet coke", 1)
-          new_order.add_item_qty("diet coke", 1)
-          new_order.add_item_qty("diet coke", 1)
-          expect(new_order.order_total).to eq 2.97
-        end
-      end
+      # describe '#order_total' do
+      #   it 'returns the total of the basket' do
+      #     new_order.add_item_qty("diet coke", 1)
+      #     new_order.add_item_qty("diet coke", 1)
+      #     new_order.add_item_qty("diet coke", 1)
+      #     expect(new_order.order_total).to eq 2.97
+      #   end
+      # end
+describe '#view_menu' do
+  it 'views the menu' do
+    expect(new_order.view_menu).to eq menu
+  end
+end
+
       describe '#remove_item' do
         it 'removes an item from the order' do
           new_order.add_item_qty("diet coke", 1)
