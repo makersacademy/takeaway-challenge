@@ -1,90 +1,71 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
+Author: Rahul Ramakrishna
 
-Instructions
--------
+THIS README IS WIP
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+What this repository contains
+-----------------------------
 
-Task
------
+This is my local repository for the Takeaway Challenge, forked from the Makers Academy repo of the same name.
+The challenge has been presented to students in Week 2 of the Maker's Academy course.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The Challenge
+-------------
+The detailed challenge can be found in the README file located here:
+https://github.com/makersacademy/takeaway-challenge/blob/master/README.md
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
+Continuous Integration
+----------------------
+Travis CI has been used to test all stages of the build and the status can be seen here:
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+Modules and classes used
+------------------------
+The solution makes use of the following classes and modules, each stored in a file of the same name:
+- Takeaway (class)
+  -  (public method)
+  -  (public method)
+- Plane (class)
+  - land (public method)
+  - take_off (public method)
+  - docked? (public method)
+- Weather (module)
+  - stormy? (method)
+  - random_outlook (method)
+
+Solution Explained
+------------------
+The following is a brief explanation of the solution:
+- The weather is invoked through a module included in the airport class that generates a random  
+  outlook based on a weekly forecast provided in an array
+- The only methods used in the plane class change the status of landed and are recalled using docked?
+- The airport class uses the functions land_plane and launch_plane to land and take_off a plane
+  respectively. They call upon the weather module to check if it is safe to land or take-off prioring to
+  providing permission to do so.
+- The airport methods also check for the usual guard conditions including whether the airport is full,
+  the plane is already docked or the plane is already airborne
+
+Feature Test
+------------
+You can run the feature test from irb using the following steps:
+- launch an irb terminal from the folder 'lib' in the airport challenge folder
+- run 'ruby airport_feature_test.rb'
+- the feature test is still work in progress and will be expanded upon later
+
+Running the tests from a terminal window
+----------------------------------------
+As the feature test is still work in progress, thorough testing can be carried out using direct access from the
+irb terminal, using the following steps (as a guideline):
+
+[airport_challenge (master)]$ irb
+2.2.3 :001 > require './lib/airport'
+ => true
+2.2.3 :002 > airport = Airport.new
+ => #<Airport:0x007fb9f2841c60 @capacity=20, @docked_planes=[]>
+2.2.3 :003 > plane = Plane.new
+ => #<Plane:0x007fb9f20bcda0 @landed=false>
+2.2.3 :004 > airport.land_plane(plane)
+ => "The plane has successfully landed at the airport"
+
+ The above example shows one of the methods (land_plane) available at the airport. For the sake of brevity, only
+ one example will be shown and you can use the above as a guide to test out the rest of the airport functionality.
+ Happy flying!
