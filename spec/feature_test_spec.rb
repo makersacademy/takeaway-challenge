@@ -46,27 +46,8 @@ describe 'Feature Test' do
     allow(messenger).to receive(:send_order).with(new_order) {message}
     expect(restaurant.deliver).to eq message
   end
-# require './lib/restaurant.rb'
-# nandos=Restaurant.new
-# harry=Order.new
-# john=Order.new
-# john.add_item_qty("diet coke", 8)
-# john.add_item_qty("caviar", 8)
+pry
 
-# harry.add_item_qty("diet coke", 8)
-# harry.add_item_qty("caviar", 8)
-# harry.add_item_qty("oyster", 8)
-# harry.checkout_order(807.84)
-# john.checkout_order(799.92)
-
-# p nandos.accept_order(harry)
-# p nandos.order_accepted
-# p nandos.accept_order(john)
-# p nandos.deliver
-
-# p nandos.deliver
-# p nandos.order_complete
-# p nandos.order_accepted
 
 
 

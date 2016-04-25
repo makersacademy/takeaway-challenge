@@ -11,80 +11,87 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+my interpretation for the solution
+---------------------------------
+I tackled the problem by creating 4 classes.
+Menu class - handles the menu and methods associated constructing a menu hash
+Order class which injects the menu class. It allows users to create an order only of items in the menu. The user can get a basket summary. Once the user has finished creating the order they call checkout with the total for their order.
+Finally there is a restaurants class. It injects Order and Messenger instances. If the order passes the checkout and the variable is set to true. The restaurants can call delivery which sends a text message confirming the order and removes the order from the array.
 
 
-In code review we'll be hoping to see:
+Notes for next release
+---------------------
+I would like to have included the messenger as a module
+The rspec tests need to use more doubles
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+example run
+----------
+[1] pry(main)> require './lib/restaurant.rb'
+=> true
+[2] pry(main)> nandos=Restaurant.new
+=> #<Restaurant:0x007fa7b9b083e0
+ @messenger=#<Messenger:0x007fa7b9b08368>,
+ @order=
+  #<Order:0x007fa7b9b08340
+   @checkout=false,
+   @menu=#<Menu:0x007fa7b9b082a0 @menu={"diet coke"=>0.99, "foie gras"=>18.5, "caviar"=>99.0, "oyster"=>0.99, "champagne"=>50.0}>,
+   @order=[]>,
+ @order_accepted=[]>
+[3] pry(main)> harry=Order.new
+=> #<Order:0x007fa7b9a120d0
+ @checkout=false,
+ @menu=#<Menu:0x007fa7b9a120a8 @menu={"diet coke"=>0.99, "foie gras"=>18.5, "caviar"=>99.0, "oyster"=>0.99, "champagne"=>50.0}>,
+ @order=[]>
+[4] pry(main)> john=Order.new
+=> #<Order:0x007fa7ba8687d8
+ @checkout=false,
+ @menu=#<Menu:0x007fa7ba868788 @menu={"diet coke"=>0.99, "foie gras"=>18.5, "caviar"=>99.0, "oyster"=>0.99, "champagne"=>50.0}>,
+ @order=[]>
+[5] pry(main)> john.add_item_qty("diet coke", 8)
+=> "8x diet coke added to your basket."
+[6] pry(main)> john.add_item_qty("caviar", 8)
+=> "8x caviar added to your basket."
+[7] pry(main)> john.basket_summary
+=> "diet coke x8 = 7.92, caviar x8 = 792.0"
+[8] pry(main)> harry.add_item_qty("diet coke", 8)
+=> "8x diet coke added to your basket."
+[9] pry(main)> harry.add_item_qty("caviar", 8)
+=> "8x caviar added to your basket."
+[10] pry(main)> harry.add_item_qty("oyster", 8)
+=> "8x oyster added to your basket."
+[11] pry(main)> harry.basket_summary
+=> "diet coke x8 = 7.92, caviar x8 = 792.0, oyster x8 = 7.92"
+[12] pry(main)> harry.checkout_order(807.84)
+=> true
+[13] pry(main)> john.checkout_order(799.92)
+=> true
+[14] pry(main)>
+[15] pry(main)> p nandos.accept_order(harry)
+[[["diet coke", 8, 0.99], ["caviar", 8, 99.0], ["oyster", 8, 0.99]]]
+=> [[["diet coke", 8, 0.99], ["caviar", 8, 99.0], ["oyster", 8, 0.99]]]
+[16] pry(main)> p nandos.order_accepted
+[[["diet coke", 8, 0.99], ["caviar", 8, 99.0], ["oyster", 8, 0.99]]]
+=> [[["diet coke", 8, 0.99], ["caviar", 8, 99.0], ["oyster", 8, 0.99]]]
+[17] pry(main)> p nandos.accept_order(john)
+[[["diet coke", 8, 0.99], ["caviar", 8, 99.0], ["oyster", 8, 0.99]], [["diet coke", 8, 0.99], ["caviar", 8, 99.0]]]
+=> [[["diet coke", 8, 0.99], ["caviar", 8, 99.0], ["oyster", 8, 0.99]], [["diet coke", 8, 0.99], ["caviar", 8, 99.0]]]
+[18] pry(main)> p nandos.deliver
+[DEPRECATED] SMS Resource is deprecated. Please use Messages (https://www.twilio.com/docs/api/rest/message)
+<Twilio::REST::SMS::Message @path=/2010-04-01/Accounts/AC6e9aa41dc9b52269f000cfedba11868d/SMS/Messages/SM81d85b8229674b4d840011caf75f8175>
+=> <Twilio::REST::SMS::Message @path=/2010-04-01/Accounts/AC6e9aa41dc9b52269f000cfedba11868d/SMS/Messages/SM81d85b8229674b4d840011caf75f8175>
+[19] pry(main)>
+[20] pry(main)> p nandos.deliver
+[DEPRECATED] SMS Resource is deprecated. Please use Messages (https://www.twilio.com/docs/api/rest/message)
+<Twilio::REST::SMS::Message @path=/2010-04-01/Accounts/AC6e9aa41dc9b52269f000cfedba11868d/SMS/Messages/SM1366e6ad412d498598ef46c2ec95b622>
+=> <Twilio::REST::SMS::Message @path=/2010-04-01/Accounts/AC6e9aa41dc9b52269f000cfedba11868d/SMS/Messages/SM1366e6ad412d498598ef46c2ec95b622>
+[21] pry(main)>
+[22] pry(main)> p nandos.order_accepted
+[]
+=> []
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+author
+------
+harrywynnwilliams@googlemail.com

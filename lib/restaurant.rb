@@ -11,7 +11,7 @@ def initialize(messenger_class = Messenger, order_class = Order)
   @order_accepted = []
 end
 
-
+#refactor accept order
 
   def accept_order(user)
     if user.checkout == true
