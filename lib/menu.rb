@@ -1,5 +1,3 @@
-require "menu"
-
 class Menu
   attr_reader :dishes
 

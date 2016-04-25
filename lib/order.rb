@@ -16,6 +16,7 @@ class Order
     item_totals.inject(:+)
   end
 
+ 
   private
   attr_reader :menu
 
