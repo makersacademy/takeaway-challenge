@@ -1,0 +1,4 @@
+Margherita: 8
+Pepperoni: 10
+Mexican Special: 12
+Tuna and Sweetcorn: 11.5
