@@ -1,12 +1,14 @@
 
 require_relative 'order'
+require_relative 'sms'
 #require 'rubygems' 
 #require 'twilio-ruby' rspec breaks when I include these.
 class Takeaway
 
-	def initialize(menu:, order:)
+	def initialize(menu:, config:, order:, sms: nil)
 		@menu = menu
-		@order = order || Order.new
+		@order = order || Order.new(menu)
+		@sms = sms || SMS.new(config)
 	end
 
 	def print_menu
@@ -14,9 +16,8 @@ class Takeaway
 	end
 
 	def select_order(dishes)
-		dishes.each do |dish, number|
-			order.add(dish, number)
-		end
+		add_dishes(dishes)
+		sms.deliver
 		order.order_total
 	end
 
@@ -29,7 +30,7 @@ class Takeaway
 
    		#client.account.messages.create(
    										#:from => from,
-   										#:to => "+447824388248", 
+   										#:to => "+44782", 
    										#:body => "Order confirmed!"
    										#)
    		message
@@ -37,7 +38,13 @@ class Takeaway
 
 		private
 
-		attr_reader :menu, :order
+		attr_reader :menu, :order, :sms
+
+		def add_dishes(dishes)
+			dishes.each do |dish, number|
+			order.add(dish, number)
+			end
+		end
 
 		def message
 		"delivery message"
