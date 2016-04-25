@@ -2,7 +2,7 @@ This is program is for delivery food at "Nick's Family Restaurant". Enjoy
 
 All prices are in USD because 'Merica
 
-I went to copy the Travis CI badge but I kept getting a 'build error' even though it would show all tests passing. I will continue to work on that and get it to you hopefully before the deadline, if not, sorry.
+I went to copy the Travis CI badge but I kept getting a 'build error' even though it would show all tests passing. I will continue to work on that and get it to you hopefully before the deadline, if not, sorry. For Travis.
 
 Hound issues: The hound wanted me to make the menu line shorter in the tests but it's hard to when the menu has more than 2 items. I left it as is since I didn't feel it was completely realistic to have a menu with one item. I would imagine in the future I could import a file with all the items but for now this will have to suffice.
 
