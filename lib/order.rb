@@ -29,8 +29,13 @@ class Order
     raise "Your basket is empty" unless !@basket.nil?
     data_org
     @basket_values.each{|price| @total += price}
-    @i = 0
     print_to_screen
+  end
+
+  private
+
+  def fetch_qty(key)
+    qty = @basket[key] / @menu.price(key)
   end
 
   def data_org
@@ -38,8 +43,8 @@ class Order
     @qty_values = @qty_tracker.values
     @basket_values = @basket.values
     @total = 0
+    @i = 0
   end
-
 
   def print_to_screen
     puts "Your order:"
@@ -49,12 +54,6 @@ class Order
       end
     puts "Total = £#{@total}"
     puts "Run the method '.confirm' to complete your order."
-  end
-
-  private
-
-  def fetch_qty(key)
-    qty = @basket[key] / @menu.price(key)
   end
 
 end
