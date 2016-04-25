@@ -10,7 +10,7 @@ describe Takeaway do
   let(:order) { Order }
   let(:printed_menu) { "Chicken: £4.50\nPork: £5.50\nSteak: £9.30" }
   let(:printed_order) { "Chicken x 2\nSteak x 5" }
-  let(:notifier) { Notifier }
+  let(:notifier) { double(:notifer, new: nil, send_sms: true) }
   let(:twilio_client) { double(:twilio_client) }
     
   it "read the menu" do
@@ -56,7 +56,6 @@ describe Takeaway do
     
     xit "pays the right amount for the current order" do
       amount = takeaway.total
-      allow(notifier).to receive(:send_sms).and_return true
       expect(takeaway.pay(amount)).to eq true
     end
     
