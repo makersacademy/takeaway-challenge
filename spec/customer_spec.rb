@@ -2,7 +2,7 @@ require 'customer'
 
 describe Customer do
 
-  subject(:customer) { described_class.new('name', 'number', messenger) }
+  subject(:customer) { described_class.new(name:'name', number:'number', messenger: messenger) }
   let(:messenger) { spy(:messenger) }
   let(:order) { double(:order) }
 
@@ -33,7 +33,7 @@ describe Customer do
       end
 
       it 'ask messenger to send a message' do
-        expect(messenger).to have_received(:send_message)
+        expect(messenger).to have_received(:send_message).with('number')
       end
 
     end
