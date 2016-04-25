@@ -26,7 +26,7 @@ describe 'Feature Test' do
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
   # 0.99 , 99 , .99
-  it 'passes the third feature test'do
+  it 'passes the third feature test' do
     new_order.add_item_qty("diet coke", 1)
     new_order.add_item_qty("caviar", 1)
     new_order.add_item_qty("oyster", 1)
@@ -46,12 +46,4 @@ describe 'Feature Test' do
     allow(messenger).to receive(:send_order).with(new_order) {message}
     expect(restaurant.deliver).to eq message
   end
-pry
-
-
-
-
-
-
-
 end
