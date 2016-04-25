@@ -1,37 +1,10 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
+Week 2 Weekend Challenge: Takeaway challenge!
+by Max Provin
 
-Instructions
--------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Take a TDD approach to implementing features based on the following user stories
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
+(_As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
@@ -45,46 +18,42 @@ I would like to check that the total I have been given matches the sum of the va
 
 As a customer
 So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered_)
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+I have approached this weeks challenge in a similar fasion to the previous weeks work, using IRB to design and test the functionality I wanted my program to have and using RSPEC to create unit tests that I then used to drive my written code.
+The newest feature we have been introduced to is the implementation and use of API's which I found hard to create effective tests for. As a result I ended up adding it into my code efectively more through trial and error than in a test driven manner although the end result was still functional and I believe it still adheres to the user stories.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+The following is an example run of the code in terminal (missing line was an error due to typo):
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+2.2.3 :001 > require './lib/restaurant'
+ => true
 
+2.2.3 :002 > dallhas_chicken = Restaurant.new
+ => #<Restaurant:0x007fc1fc27ca20 @menu=#<Menu:0x007fc1fc27c9f8 @dishes={"beef burger"=>"1.99", "cheese burger"=>"1.99", "chicken wings"=>"0.49", "coke"=>"0.99"}>, @order=#<Order:0x007fc1fc27c8e0 @trolley=[], @cost=0, @messenger=#<Messenger:0x007fc1fc27c8b8>>>
 
-In code review we'll be hoping to see:
+2.2.3 :003 > dallhas_chicken.show_menu
+ => {"beef burger"=>"1.99", "cheese burger"=>"1.99", "chicken wings"=>"0.49", "coke"=>"0.99"}
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+2.2.3 :004 > dallhas_chicken.place_order('beef burger')
+ => [{"beef burger"=>"1.99"}]
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+2.2.3 :005 > dallhas_chicken.place_order('gumbo', 2)
+RuntimeError: Dish is not on the menu: Please make another selection
+  from /Users/Luiz/Max/weekend_challenges/takeaway-challenge/lib/menu.rb:24:in `required_dish'
+  from /Users/Luiz/Max/weekend_challenges/takeaway-challenge/lib/menu.rb:10:in `select_dish'
+  from /Users/Luiz/Max/weekend_challenges/takeaway-challenge/lib/restaurant.rb:16:in `place_order'
+  from (irb):5
+  from /Users/Luiz/.rvm/rubies/ruby-2.2.3/bin/irb:15:in `<main>'
 
-Notes on Test Coverage
-------------------
+2.2.3 :006 > dallhas_chicken.place_order('cheese burger', 2)
+ => [{"beef burger"=>"1.99"}, {"cheese burger"=>"1.99"}, {"cheese burger"=>"1.99"}]
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+2.2.3 :007 > dallhas_chicken.place_order('chicken wings', 4)
+ => [{"beef burger"=>"1.99"}, {"cheese burger"=>"1.99"}, {"cheese burger"=>"1.99"}, {"chicken wings"=>"0.49"}, {"chicken wings"=>"0.49"}, {"chicken wings"=>"0.49"}, {"chicken wings"=>"0.49"}]
 
-```
-$ coveralls report
-```
+2.2.3 :009 > dallhas_chicken.check_order
+ => [{"beef burger"=>"1.99"}, {"cheese burger"=>"1.99"}, {"cheese burger"=>"1.99"}, {"chicken wings"=>"0.49"}, {"chicken wings"=>"0.49"}, {"chicken wings"=>"0.49"}, {"chicken wings"=>"0.49"}]
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+2.2.3 :010 > dallhas_chicken.confirm_order
+Sent message to somebody out there
+ => #<Order:0x007fc1fc04ea28 @trolley=[], @cost=0, @messenger=#<Messenger:0x007fc1fc04ea00>>
