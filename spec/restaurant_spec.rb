@@ -51,13 +51,12 @@ describe Restaurant do
   describe '#confirm_order' do
     context 'valid order' do
       let(:summary) { {dish.name => quant, :total => (quant * price)} }
+      before { allow(order).to receive(:summary).and_return(summary) }
       it 'sends a confirmation sms' do
-        allow(order).to receive(:summary).and_return(summary)
         expect(messenger).to receive(:send)
         restaurant.confirm_order
       end
       it 'starts a new order' do
-        allow(order).to receive(:summary).and_return(summary)
         expect(order_class).to receive(:new)
         restaurant.confirm_order
       end
@@ -65,7 +64,6 @@ describe Restaurant do
     context 'empty order' do
       let(:summary) { {total: 0} }
       it 'raises an error' do
-        allow(order).to receive(:summary).and_return(summary)
         expect{restaurant.confirm_order}.to raise_error(Restaurant::EMPTY_ERR)
       end
     end

@@ -1,5 +1,5 @@
 class Restaurant
-  CONFIRMATION = "Thanks! Your order will be delivered before"+
+  CONFIRMATION = "Thanks! Your order will be delivered before "+
   "#{(Time.new + 3600).strftime('%H:%M')}".freeze
   EMPTY_ERR = 'You haven\'t ordered anything'.freeze
 
@@ -14,7 +14,7 @@ class Restaurant
     @menu.view
   end
 
-  def order dish, quantity
+  def order dish, quantity #default quantity = 1
     @order.add(dish, quantity)
   end
 
@@ -28,7 +28,6 @@ class Restaurant
     start_new_order
   end
 
-  private
   def start_new_order
     @order = @order_class.new(@menu)
   end
