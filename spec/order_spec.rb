@@ -1,51 +1,57 @@
 require "order"
 
 describe Order do
+  let(:menu) { double(:menu, dishes: { sriuba: 2, bob: 3 } )}
+  let(:text) { double(:text)}
+  let(:menu_class) { double(:Menu, new: menu) }
+  let(:text_class) { double(:Text, new: text)}
+  subject(:order) { described_class.new(menu: menu_class, text: text_class) }
 
   it "order should start empty" do
-    expect(subject.current_order).to eq []
+    expect(order.current_order).to eq []
   end
 
   describe "#view_menu" do
     it "should be able to view the menu while ordering" do
-      expect(subject.view_menu).to be_a Hash
+      expect(menu).to receive(:dishes)
+      order.view_menu
     end
   end
 
   describe "#view_order" do
 
     it "should respond with the order and the total" do
-      subject.add "Kotletai"
-      expect(subject.view_order).to eq 'Your order: [{"Kotletai"=>4.0}]. Your total: £4.0'
+      order.add :sriuba
+      expect(order.view_order).to eq 'Your order: [{:sriuba=>2}]. Your total: £2'
     end
   end
 
   describe "#add" do
     it "should add a meal to order" do
-      expect(subject.add("Balandeliai")).to eq [{"Balandeliai"=>5}]
+      expect(order.add(:sriuba)).to eq [{:sriuba=>2}]
     end
 
     it "should raise error if trying to add a meal that isn't on the menu" do
-      expect{subject.add("Chicken")}.to raise_error "This is not on the menu!"
+      expect{order.add("Chicken")}.to raise_error "This is not on the menu!"
     end
   end
 
   describe "#remove" do
     it "should remove food from the order" do
-      subject.add "Cepelinai"
-      subject.add "Balandeliai"
-      expect(subject.remove("Cepelinai")).to eq [{"Balandeliai" => 5.00}]
+      order.add :sriuba
+      order.add :bob
+      expect(order.remove(:bob)).to eq [{:sriuba => 2}]
     end
 
     it "should raise error if trying to remove a meal that isn't on the menu" do
-      expect{subject.remove("Chicken")}.to raise_error "This is not on the menu!"
+      expect{order.remove("Chicken")}.to raise_error "This is not on the menu!"
     end
   end
 
   describe "#checkout" do
     it "should set @current_order to be empty" do
-      subject.checkout
-      expect(subject.current_order).to eq []
+      order.checkout
+      expect(order.current_order).to eq []
     end
   end
 end

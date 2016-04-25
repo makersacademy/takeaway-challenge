@@ -4,7 +4,7 @@ require_relative "./text"
 class Order
   attr_reader :current_order
 
-  def initialize(menu = Menu, text = Text)
+  def initialize(menu: Menu, text: Text)
     @menu = menu.new
     @text = text.new
     @current_order = []
@@ -30,13 +30,14 @@ class Order
 
   def remove food
     fail "This is not on the menu!" unless food_included? food
-    @current_order.delete_if { |h| h[food] }
+    @current_order.delete_at(@current_order.find_index({food => @menu.dishes[food]}))
     total
     @current_order
   end
 
+
   def checkout
-    @text.send "Your order is on it's way! Total: £#{@total} It will be delivered by #{time}" if !empty?
+    @text.send "Your order is on it's way! Total: £#{@total} It will be delivered by #{time}" unless empty?
     @current_order = []
     total
   end
