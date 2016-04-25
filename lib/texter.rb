@@ -4,19 +4,19 @@ class Texter
 
 	attr_reader :processed_orders
 
-	def initialize(client=Twilio::REST::Client.new("AC59d366eb0b90cb69be3545ee98da417f","a8c82c2f64ffc1960e07b8ede2744c59"))
+	def initialize(client=Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'],ENV['TWILIO_AUTH_TOKEN']))
 		@client = client
 	end
 
 	def send_confirmation(time=Time.now)
 		@client.account.messages.create(
-			from: "+441277424334", 
-			to: "+447921046417", 
+			from: ENV['TWILIO_FROM'], 
+			to: ENV['TWILIO_TO'],
 			body: "Thank you! Your order was placed successfully and will be delivered by #{time_calc(time)}")
 	end
 
 	def check_for_orders(establishment)
-		@client.account.messages.list(to: '+441277424334').each do |message|
+		@client.account.messages.list(to: ENV['TWILIO_FROM']).each do |message|
 			if message.body != ""
 				order = message.body
 				message.redact
