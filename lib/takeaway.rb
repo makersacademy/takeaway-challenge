@@ -3,11 +3,10 @@ require_relative 'menu'
 
 class Takeaway
   attr_reader :menu, :current_order
-  def initialize(menu: Menu.new)
-    @menu = menu
+  def initialize(menu: Menu)
+    @menu = menu.new
     @current_order = []
     @cost = []
-    @current_total = 0
     # @message = Message.new
   end
 
@@ -19,17 +18,18 @@ class Takeaway
     fail "No such dish here!" unless see_menu.include?(item)
     @menu.menu_list.select do |k , v |
     @current_order <<  {k => v} if k == item
-    @cost << see_menu[item]
+    @cost << v if k == item
     total_pay
     end
     @current_order
   end
 
-  def checkout(total_pay)
-    @current_order.each do |item|
-    @current_total += see_menu[item.key[0]]
-    end
-    fail "the total is not correct" if @current_total != total_pay
+  def total
+    total_pay
+  end
+
+  def checkout
+    fail "the total is not correct" if !total
     # Message.new.send_sms "Thank you for the order! It will be de delivered by #{Time.new.hour + 1}:#{Time.new.min}"
   end
 
