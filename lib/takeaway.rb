@@ -1,6 +1,7 @@
 class Takeaway
   
   ERR_INCORRECT_PAYMENT = "The amount given is incorrect".freeze
+  ERR_EMPTY_ORDER = "The order is empty".freeze
   
   attr_reader :order
   
@@ -32,6 +33,8 @@ class Takeaway
   
   def pay(amount = 0)
     fail ERR_INCORRECT_PAYMENT if amount != total
+    fail ERR_EMPTY_ORDER if order.dishes.empty?
+    order.reset
     notifier.send_sms
   end
   

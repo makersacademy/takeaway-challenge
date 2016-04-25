@@ -41,4 +41,13 @@ describe Order do
       expect(order.display).to eq printed_order
     end
   end
+  
+  describe "#reset" do
+    it "resets the order (empty the dishes hash)" do
+      order.add("Lamb", 2)
+      order.add("Gambas", 5)
+      order.reset
+      expect(order.dishes).to be_empty
+    end
+  end
 end

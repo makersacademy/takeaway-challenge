@@ -41,6 +41,10 @@ class Order
     end.join("\n")
   end
   
+  def reset
+    dishes.map{ |dish, qty| remove dish }
+  end
+  
   private 
     attr_reader :menu
   
