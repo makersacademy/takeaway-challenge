@@ -2,7 +2,7 @@ require_relative 'menu'
 require_relative 'sms'
 
 class Takeaway
-   attr_reader :menu, :bill, :current_order
+   attr :menu, :bill, :current_order
 
   def initialize(menu=Menu)
     @menu = menu.new
@@ -16,11 +16,7 @@ class Takeaway
   end
 
   def my_order
-    @current_order
-  end
-
-  def selected_items(dish, number=1)
-    number.times{ read_menu.select{|k,v| my_order << k if k == dish }}
+    @current_order.join(", ")
   end
 
   def order(dish, number=1)
@@ -42,9 +38,9 @@ class Takeaway
     end
   end
 
-  def checkout
-    shorted_time = (Time.now+3600).strftime("%I:%M%p")
-    @sms.send_text("Your order should arrive at #{shorted_time} with the following items: #{my_order}, with a cost of £#{bill}")
-    "Message sent"
+  private
+
+  def selected_items(dish, number=1)
+    number.times{ read_menu.select{|k,v| current_order << k if k == dish }}
   end
 end

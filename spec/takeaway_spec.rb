@@ -36,14 +36,14 @@ let(:food_message) {"I'm sorry but we do not have Spicy Rice in the menu"}
   describe '#my_order' do
     it 'should return all the dishes that have been ordered' do
       takeaway.order("Spring Roll", 2)
-      expect(takeaway.my_order).to eq(["Spring Roll", "Spring Roll"])
+      expect(takeaway.my_order).to eq("Spring Roll, Spring Roll")
     end
   end
   describe '#remove' do
     it 'should remove a dish in the order' do
       takeaway.order("Spring Roll", 2)
       takeaway.remove('Spring Roll')
-      expect(takeaway.my_order).to eq(["Spring Roll"])
+      expect(takeaway.my_order).to eq("Spring Roll")
     end
   end
   describe '#checkout' do
