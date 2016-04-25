@@ -1,4 +1,6 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class MessageSystem
 
@@ -9,10 +11,10 @@ class MessageSystem
 
   private
 
-  FROM = '+441633530104'.freeze
-  TO = '+447743106866'.freeze
-  AUTH_TOKEN = 'f9ff86d99b4a4abd1150436972652502'.freeze
-  ACCOUNT_SID = 'AC85db5da11236557f067ad88f4dafdbda'.freeze
+  FROM = ENV['TWILIO_FROM'].freeze
+  TO = ENV['TWILIO_TO'].freeze
+  AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN'].freeze
+  ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID'].freeze
 
   def message_body
     "Thank you!"\
