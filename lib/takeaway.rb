@@ -26,19 +26,19 @@ class TakeAway
 	end
 
 	def confirm_order(total)
-		fail "The total amout you have entered is incorrect, please try again." if !verify(total)
+		fail "The total amout you have entered is incorrect, please try again." unless verify(total)
 		@sms_provider.send_message
 		puts 'Confimation message has been sent!'
 	end
 
 	private
 
-		def format_user_total(total)
-			("%.2f" % total).to_s.gsub(".",'').to_i
-		end
+	def format_user_total(total)
+		("%.2f" % total).to_s.gsub(".",'').to_i
+	end
 
-		def verify(total)
-			format_user_total(total).to_i == @order.total.to_i
-		end
+	def verify(total)
+		format_user_total(total).to_i == @order.total.to_i
+	end
 
 end

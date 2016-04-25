@@ -21,16 +21,16 @@ class SMS
 
 	private
 
-		def config
-			{
-				:from => '+441277424446',
-				:to => '+447910033569',
-				:body => DEFAULT_MESSAGE + delivery_time
-			}
-		end
+	def config
+		{
+			:from => '+441277424446',
+			:to => '+447910033569',
+			:body => DEFAULT_MESSAGE + delivery_time
+		}
+	end
 
-		def time
-			Time.new
-		end
+	def time
+		Time.new
+	end
 
 end

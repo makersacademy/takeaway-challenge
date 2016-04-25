@@ -26,15 +26,16 @@ class Order
 	end
 
 	private
-		def empty?
-			@orders.empty?
-		end
+	
+	def empty?
+		@orders.empty?
+	end
 
-		def matches?(dish)
-			@orders[dish]
-		end
+	def matches?(dish)
+		@orders[dish]
+	end
 
-		def print_total
-			Money.new(total, "GBP").format(:symbol => true)
-		end
+	def print_total
+		Money.new(total, "GBP").format(:symbol => true)
+	end
 end
