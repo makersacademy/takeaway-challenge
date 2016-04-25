@@ -21,13 +21,22 @@ describe Order do
 	end
 
 	it 'adds to dishes and their quantities together to give the total' do
-		allow(menu).to receive(:price).with(:kurma).and_return(4.80)
-		allow(menu).to receive(:price).with(:madras).and_return(4.50)
-		allow(menu).to receive(:price).with(:vindaloo).and_return(5.00)
-		order.add(:kurma, 1)
-		order.add(:madras, 1)
-		order.add(:vindaloo, 1)
+		stub
+		create_order
 		total = 14.30
 		expect(order.order_total).to eq total
 	end
+
+	def create_order
+		order.add(:kurma, 1)
+		order.add(:madras, 1)
+		order.add(:vindaloo, 1)
+	end
+
+	def stub
+		allow(menu).to receive(:price).with(:kurma).and_return(4.80)
+		allow(menu).to receive(:price).with(:madras).and_return(4.50)
+		allow(menu).to receive(:price).with(:vindaloo).and_return(5.00)
+	end
+
 end
