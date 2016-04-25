@@ -1,14 +1,5 @@
 require 'order'
 
-#make a dummy messenger
-#comlete tests for order
-#tests for message
-#feature tests
-#readme
-#learning_plan x 2
-#blog
-# add remove function
-
 describe Order do
 
   let(:shroyu) { double(:menu, dishes: {"Chilli Chicken Ramen" => 7.5, "Duck Gyoza" => 4, "Pepper Squid" => 5.5 } ) }

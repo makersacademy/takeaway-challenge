@@ -8,7 +8,7 @@ class Order
 
    def initialize(menu)
      @menu = menu.dishes
-     @my_order = []
+     @my_order = Array.new(0)
      @sum = 0
    end
 
@@ -48,13 +48,13 @@ class Order
      confirm if amount_to_pounds == pounds
    end
 
-   def confirm(message_class = Message)
-   message = message_class.new
-   message.send
-   "Order has been placed. We will text you with the delivery time"
-   end
-
   private
   attr_reader :menu, :dishes
+
+  def confirm(message_class = Message)
+  message = message_class.new
+  message.send
+  "Order has been placed. We will text you with the delivery time"
+  end
 
 end
