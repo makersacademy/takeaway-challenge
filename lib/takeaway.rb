@@ -4,8 +4,7 @@ require_relative 'order'
 class Takeaway
 
 
-  attr_reader :order_items, :order_cost
-  attr_reader :menu
+  attr_reader :order_items, :order_cost, :menu
 
 
   def initialize
@@ -16,7 +15,7 @@ class Takeaway
   end
 
   def menu_list
-    @menu
+    @menu.dup
   end
 
   def place_order item
@@ -30,13 +29,17 @@ class Takeaway
     return "Your order comes to a total of £#{order_total}. To place your order type charge_me(#{order_total})"
   end
 
+  def charge_me cost
+    fail "Not correct total" if cost != @sum
+    @order_sent.send
+  end
+
+  private
+
   def order_total
    @sum = @order_cost.inject(:+)
   end
 
 
-  def charge_me cost
-    fail "Not correct total" if cost != @sum
-    @order_sent.send
-  end
+
 end
