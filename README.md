@@ -1,12 +1,12 @@
 Takeaway Challenge
 ==================
-Come eat with me. at +61740881465 
+Come eat with me. No, not English food. Please.
 -----------------
 [![Build Status](https://travis-ci.org/letianw91/takeaway-challenge.svg?branch=master)](https://travis-ci.org/letianw91/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/github/letianw91/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/letianw91/takeaway-challenge?branch=master)
 
 ##Running example
-```ruby
+```
 2.2.3 :008 > lw = Customer.new("Letian Wang", "+61430990824")
  => #<Customer:0x00000000f46eb0 @name="Letian Wang", @number="+61430990824", @current_order=nil, @order_history=[], @messenger=#<TwilioMessenger:0x00000000f46dc0 @client=<Twilio::REST::Client @account_sid=AC28b49fe674fe72904e325b4618b00b0d>>> 
 2.2.3 :009 > lw.begin_order(TakeAway.new(menu))
@@ -32,4 +32,14 @@ total: $75
 2.2.3 :015 > lw.place_order(75)
  => nil 
 #my phone receives a message at this point
-```                                                                             
+```
+
+##Classes
+-Customer: responsible for starting order, placing order, and keep order history
+-TwilioMessenger: responsible for sending the sms to customer
+-TakeAway(order): responsible for adding dishes to the cart, showing a summary of the cart, and calculating total price of cart.
+-Menu: responsible for printing the menu, provide the price of a dish, and check if a dish is in the menu
+-Dish: responsible for storing the name and price of a dish
+
+##Structure of classes
+

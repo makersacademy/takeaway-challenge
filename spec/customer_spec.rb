@@ -2,7 +2,7 @@ require 'customer'
 
 describe Customer do
 
-  subject(:customer) { described_class.new(name:'name', number:'number', messenger: messenger) }
+  subject(:customer) { described_class.new('name', 'number',  messenger) }
   let(:messenger) { spy(:messenger) }
   let(:order) { double(:order) }
 

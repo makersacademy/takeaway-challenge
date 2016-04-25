@@ -5,7 +5,7 @@ class Customer
 
   attr_reader :order_history, :current_order
 
-  def initialize(name:, number:, messenger: TwilioMessenger.new)
+  def initialize(name, number, messenger = TwilioMessenger.new)
     @name = name
     @number = number
     @current_order = nil
