@@ -23,13 +23,17 @@ class TakeAway
   end
 
   def place_order(total_price)
-    fail 'Not correct amount' if total_price != calculate_total
+    fail 'Not correct amount' if total_price != total_cost
     puts 'That is the correct amount, sending confirmation to your cellphone...'
     confirm_order
   end
 
   def order_history
     @order_history.dup
+  end
+
+  def total_cost
+    @order.calculate_total(menu)
   end
 
   private
@@ -43,14 +47,8 @@ class TakeAway
     message.send("Thank you! Your order will be delivered before #{t.strftime("%H")}:#{t.strftime("%M")}!")
   end
 
-  def calculate_total
-    sum = 0
-    current_order.each { |item, price| sum += menu[item] * price }
-    sum
-  end
-
   def save_and_reset
-    @order.store_cost(calculate_total)
+    @order.store_cost(total_cost)
     @order_history << @order
     @order = Order.new
   end

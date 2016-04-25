@@ -8,8 +8,10 @@ describe TakeAway do
   let (:pizza_price) { 15 }
   let (:hamburger_price) { 12 }
 
-  it 'presents a list of dishes with prices' do
-    expect(take_away.dishes).to include :pizza_deluxe
+  describe '#dishes' do
+    it 'presents a list of dishes with prices' do
+      expect(take_away.dishes).to include :pizza_deluxe
+    end
   end
 
   describe '#select' do
@@ -49,6 +51,13 @@ describe TakeAway do
       take_away.select(:pizza_deluxe, 2)
       take_away.place_order(2*pizza_price)
       expect(take_away.order_history).not_to eq nil
+    end
+  end
+
+  describe '#total_cost' do
+    it 'presents current total of selected food items' do
+      take_away.select(:pizza_deluxe, 2)
+      expect(take_away.total_cost).to eq 2*pizza_price
     end
   end
 
