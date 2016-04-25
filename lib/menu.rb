@@ -2,8 +2,6 @@ require_relative 'dish'
 
 class Menu
 
-  attr_reader :dishes
-
   def initialize
     @dishes = []
   end
@@ -13,16 +11,20 @@ class Menu
   end
 
   def print_menu
-    dishes.each {|dish| puts dish.print_dish}
+    dishes.each {|d| puts "#{d.name}: $#{d.price}"}
   end
 
   def dish_price(dish_name)
-    dishes.each {|dish| return dish.price if dish.name == dish_name}
+    dishes.each {|d| return d.price if d.name == dish_name}
   end
 
   def dish_in_menu?(dish_name)
-    dishes.each {|dish| return true if dish.name == dish_name}
+    dishes.each {|d| return true if d.name == dish_name}
     false
   end
+
+  private
+
+  attr_reader :dishes
 
 end

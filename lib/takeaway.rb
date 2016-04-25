@@ -25,7 +25,7 @@ class TakeAway
 
   def order_total
     total = 0
-    cart.each {|dish,number| total += (price(dish) * number)}
+    cart.each {|d,num| total += (price(d) * num)}
     total
   end
 
@@ -38,7 +38,7 @@ class TakeAway
   end
 
   def print_cart
-    cart.each {|dish, number| puts "#{number} X #{dish} = $#{price(dish) * number}"}
+    cart.each {|d, num| puts "#{num} X #{d} = $#{price(d) * num}"}
   end
 
   def print_total

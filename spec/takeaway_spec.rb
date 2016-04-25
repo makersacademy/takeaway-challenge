@@ -24,19 +24,12 @@ describe TakeAway do
     expect{takeaway.add_item('dish',2)}.to change {takeaway.cart['dish']}.by(2)
   end
 
-  # describe '#check_payment' do
-
-  #   it 'raise error if total given does not match the order price total' do
-  #     message = 'Payment does not match order total!'
-  #     expect{takeaway.check_payment(20)}.to raise_error message
-  #   end
-
-  # end
 
   describe '#cart_summary' do
 
     it 'prints items and prices in the cart and order total' do
-      expect{takeaway.cart_summary}.to output("1 X dish1 = $10\n1 X dish2 = $15\ntotal: $25\n").to_stdout
+      message = "1 X dish1 = $10\n1 X dish2 = $15\ntotal: $25\n"
+      expect{takeaway.cart_summary}.to output(message).to_stdout
     end
 
   end
