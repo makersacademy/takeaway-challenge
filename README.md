@@ -11,8 +11,46 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+
+ Intro
+ -----
+
+ The Takeaway challange stimulates the environment of a takeaway store. You can see a menu, select a number of dishes, find out your total and place and order, after which you will recieve a text message confirming when deliver will occur.
+
+ Notes
+ ------
+ Changes to be made include
+ * ordering multiple items at once.
+ * more tests in order
+ * moving menu to menu class
+ * changes to reduce cognitive load
+ * CONSTANTS
+
+
+Instructions on how to run the program
+----------------------
+
+2.2.3 :001 > require './lib/takeaway'
+ => true
+2.2.3 :002 > t = Takeaway.new
+ => #<Takeaway:0x007fde5327fbd0 @order_items=[], @order_cost=[], @menu={"hamburger"=>5, "cheeseburger"=>6, "fries"=>3, "shake"=>2, "veggieburger"=>5}, @order_sent=#<Order:0x007fde5327fa18>>
+2.2.3 :003 > t.place_order "hamburger"
+ => "You have ordered hamburger at a cost of 5"
+2.2.3 :004 > t.place_order "hamburger"
+ => "You have ordered hamburger at a cost of 5"
+2.2.3 :005 > t.place_order "hamburger"
+ => "You have ordered hamburger at a cost of 5"
+2.2.3 :006 > t.place_order "hamburger"
+ => "You have ordered hamburger at a cost of 5"
+2.2.3 :007 > t.finalize_order
+ => "Your order comes to a total of £20. To place your order type charge_me(20)"
+2.2.3 :008 > t.charge_me(20)
+
+
+
+
 
 Instructions
 -------
@@ -68,7 +106,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
