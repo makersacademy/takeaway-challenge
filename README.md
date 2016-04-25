@@ -1,90 +1,55 @@
 Takeaway Challenge
 ==================
+Come eat with me. No, not English food. Please.
+-----------------
+[![Build Status](https://travis-ci.org/letianw91/takeaway-challenge.svg?branch=master)](https://travis-ci.org/letianw91/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/letianw91/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/letianw91/takeaway-challenge?branch=master)
+
+##Running example
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+2.2.3 :008 > lw = Customer.new("Letian Wang", "+61430990824")
+ => #<Customer:0x00000000f46eb0 @name="Letian Wang", @number="+61430990824", @current_order=nil, @order_history=[], @messenger=#<TwilioMessenger:0x00000000f46dc0 @client=<Twilio::REST::Client @account_sid=AC28b49fe674fe72904e325b4618b00b0d>>> 
+2.2.3 :009 > lw.begin_order(TakeAway.new(menu))
+ => #<TakeAway:0x00000000dca488 @menu=#<Menu:0x000000011b6628 @dishes=[#<Dish:0x000000011d14c8 @name="curry_beef", @price=13>, #<Dish:0x000000011dc698 @name="curry_chicken", @price=12>]>, @cart={}> 
+2.2.3 :010 > lw.current_order.show_menu
+curry_beef: $13
+curry_chicken: $12
+ => [#<Dish:0x000000011d14c8 @name="curry_beef", @price=13>, #<Dish:0x000000011dc698 @name="curry_chicken", @price=12>] 
+2.2.3 :011 > lw.current_order.add_item('curry_chicken',3)
+ => 3 
+2.2.3 :012 > lw.current_order.add_item('curry_beef',3)
+ => 3 
+2.2.3 :013 > lw.current_order.add_item('roasted_snake',3)
+RuntimeError: dish does not exit!
+    from /home/letianw/Projects/weekend _challenges/takeaway-challenge/lib/takeaway.rb:17:in `add_item'
+    from (irb):13
+    from /home/letianw/.rvm/rubies/ruby-2.2.3/bin/irb:11:in `<main>'
+2.2.3 :014 > lw.current_order.cart_summary
+3 X curry_chicken = $36
+3 X curry_beef = $39
+total: $75
+ => nil 
+2.2.3 :015 > lw.place_order(75)
+ => nil 
+#my phone receives a message at this point
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+##Classes
+* Customer: responsible for starting order, placing order, and keep order history
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+* TwilioMessenger: responsible for sending the sms to customer
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* TakeAway(order): responsible for adding dishes to the cart, showing a summary of the cart, and calculating total price of cart
 
+* Menu: responsible for printing the menu, provide the price of a dish, and check if a dish is in the menu
 
-In code review we'll be hoping to see:
+* Dish: responsible for storing the name and price of a dish
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+##Structure of classes
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+![structure](https://github.com/letianw91/takeaway-challenge/blob/master/structure.png)
 
-Notes on Test Coverage
-------------------
+##Problems
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+1. TwilioMessenger class is not properly tested.
+2. TakeAway class is way too coupled with the menu. It relies on the menu to print itself, to get price of individual dishes and to check if a dish name given by customer is legit or not. 
