@@ -45,7 +45,7 @@ describe Order do
     # let(:menu) {double :menu}
     it 'should raise an error if the basket is empty' do
       allow(menu_instance).to receive(:pick).and_return(:dish_1 => 4)
-      expect{subject.summary}.to raise_error{"There are no items in your basket"}
+      expect{subject.summary}.to raise_error{"Your basket is empty"}
     end
     # it 'should print the order to the screen' do
     #

@@ -14,7 +14,7 @@ class Messenger
       :body => "Your order was placed and will be delivered before #{time}." })
   end
 
-private
+  private
 
   def twilio_client
     require 'dotenv'
