@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Message
 
   def complete_order(total_price)

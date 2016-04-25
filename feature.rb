@@ -5,8 +5,8 @@ require './lib/message.rb'
 dishes = {"pizza":4, "burger":2, "fries":1}
 menu = Menu.new
 p menu.print_dish
-
-tw = TakeAway.new(Menu.new,Message.new)
+message = Message.new
+tw = TakeAway.new(menu,message)
 tw.print_menu
 y = menu.present? 'pizza'
 
@@ -18,3 +18,4 @@ p  tw.basket
 
 p tw.basket_summary
 
+p tw.checkout(16.5) 

@@ -36,7 +36,7 @@ class TakeAway
   def checkout(total_price = 0)
   	fail 'Basket is empty' if basket.empty?
     fail 'Wrong total' if total_price != total
-    message.complete_order("Thank you for your order: £#{total_price}")
+    @message.complete_order("Thank you for your order: £#{total_price}")
   end
 
   private
