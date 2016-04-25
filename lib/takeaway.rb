@@ -1,8 +1,8 @@
 
 require_relative 'order'
 require_relative 'sms'
-#require 'rubygems' 
-#require 'twilio-ruby' rspec breaks when I include these.
+require 'rubygems' 
+require 'twilio-ruby' 
 class Takeaway
 
 	def initialize(menu:, config:, order:, sms: nil)
