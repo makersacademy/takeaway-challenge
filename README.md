@@ -16,7 +16,7 @@ Takeaway Challenge
 
 TO EXECUTE PROGRAM
 -----
-Type in `ruby script.rb` into prompt
+Type in `ruby script.rb` into prompt when you are in the /lib folder
 
 `$ ruby script.rb`
 
