@@ -17,4 +17,4 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered.
 
-I have created several different classes to try to stick to the single responsibility principle. The final step is send I textmessange using twilio API however at this point I can't get twilio working.'
+I have created several different classes to try to stick to the single responsibility principle. I have managed to get twilio to send messages from the app.rb. The final step is now to incorporate this into my code.
