@@ -11,23 +11,17 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+[![Build Status](https://travis-ci.org/harrim91/takeaway-challenge.svg?branch=master)](https://travis-ci.org/harrim91/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/harrim91/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/harrim91/takeaway-challenge?branch=master)
 
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
+Makers Academy Week 2 Weekend Challenge
+
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -48,43 +42,117 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+Installation
+-----
+* Clone this repo
+* Install `bundle` gem - `gem install bundle`
+* Run `bundle` from the root directory
+* Sign up for a free [Twilio API](https://www.twilio.com/) account.
+* Create a `.env` file in your root directory with the following content:
+```
+FROM='YOUR TWILIO PHONE NUMBER'
+TO='CUSTOMERS PHONE NUMBER'
+AUTH_TOKEN='YOUR TWILIO AUTH_TOKEN'
+AUTH_SID='YOUR TWILIO AUTH_SID'
+```
+* Add the .env file to your .gitignore file.
+* In IRB/PRY, require the following files:
+```
+[1] pry(main)> require './lib/dish.rb'
+=> true
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+[2] pry(main)> require './lib/menu.rb'
+=> true
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+[3] pry(main)> require './lib/restaurant.rb'
+=> true
+
+[4] pry(main)> require './lib/order.rb'
+=> true
+
+[5] pry(main)> require './lib/twilio_api.rb'
+=> true
+```
 
 
-In code review we'll be hoping to see:
+Classes
+-----
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+**Dish**
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+Responsible for holding information about dishes.
+Dishes should be initialized with a name. These can be returned via `#name`.
 
 ```
-$ coveralls report
+[6] pry(main)> pad_thai = Dish.new "Pad Thai"
+=> #<Dish:0x007fd881b25e10 @name="Pad Thai">
+
+[7] pry(main)> pad_thai.name
+=> "Pad Thai"
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+**Menu**
 
-Build Badge Example
-------------------
+Responsible for associating dishes with prices.
+Dishes and prices can be added to the menu via the `#add` method.
+Dishes can be removed from the menu via the `#remove` method.
+`#view` returns a hash of dishes and prices on the menu.
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+```
+[8] pry(main)> menu = Menu.new
+=> #<Menu:0x007fd8828db2f8 @dish_class=Dish,@menu={}>
+
+[9] pry(main)> menu.add pad_thai, 7
+=> 7
+
+[10] pry(main)> menu.view
+=> {"PAD THAI"=>7}
+
+[11] pry(main)> menu.remove pad_thai
+=> 7
+
+[12] pry(main)> menu.view
+RuntimeError: Menu is empty
+from /Users/michaelharrison/Projects/makers_academy/takeaway-challenge/lib/menu.rb:13:in `view'
+```
+
+**Restaurant**
+
+Responsible for displaying facilitating ordering of food.
+Needs to be initialized with an instance of `Menu`.
+The menu can be viewed using `#view_menu`.
+Items can be added to an order via `#order`.
+A summary of the items ordered and the total price can be accessed via `#order_summary`.
+Orders can be confirmed via `#confirm_order`, which will send a confirmation message via SMS with a delivery time, and then create a new order.
+
+```
+[13] pry(main)> restaurant = Restaurant.new menu
+=> #<Restaurant:0x007f9daac806f0 @menu=#<Menu:0x007f9da997f6f0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order=#<Order:0x007f9daac806c8 @menu=#<Menu:0x007f9da997f6f0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order={:total=>0}>, @order_class=Order>
+
+[14] pry(main)> restaurant.view_menu
+=> {"PAD THAI"=>7}
+
+[15] pry(main)> restaurant.order pad_thai, 3
+=> 21
+
+[16] pry(main)> restaurant.order_summary
+=> {:total=>21, "PAD THAI"=>3}
+
+[17] pry(main)> restaurant.confirm_order
+=> #<Order:0x007fed294373d0 @menu=#<Menu:0x007fed29065db0 @dish_class=Dish, @menu={"PAD THAI"=>7}>, @order={:total=>0}>
+
+[17] pry(main)> restaurant.order_summary
+=> {:total=>0}
+```
+
+**Order**
+
+Responsible for keeping track of quantities of each dish ordered and calculating the total.
+Needs to be initialized with an instance of `Menu`.
+A quantity of a `Dish` can be added to an order via `#add`.
+A list of each `Dish` and the quantity in the order, along with the total price is returned via `#summary`.
+Should not be used directly, instead, use `Restaurant`.
+
+**TwilioAPI**
+
+Responsible for sending SMS messages via the Twilio API
