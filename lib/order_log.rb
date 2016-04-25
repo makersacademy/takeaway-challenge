@@ -6,7 +6,7 @@ class OrderLog
   end
 
   def show
-    current.inject("Order:\n"){|sum,item| sum << "#{item.name}: #{format("£%.2f",item.price)}\n"}
+    current.inject("Order:\n") {|sum,item| sum << print_item(item)}
   end
 
   def add dish, quantity = 1
@@ -25,6 +25,10 @@ class OrderLog
   private
   attr_reader :current
 
+  def print_item item
+    "#{item.name}: #{monatise item.price}\n"
+  end
+
   def add_one dish
     @current << @menu.get(dish)
   end
@@ -37,4 +41,9 @@ class OrderLog
       end
     end
   end
+
+  def monatise value
+    format("£%.2f",value)
+  end
+
 end

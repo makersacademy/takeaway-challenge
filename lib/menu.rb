@@ -1,7 +1,5 @@
 class Menu
 
-  # not all lines covered here - only 86%
-
   def initialize menu_item_class = MenuItem
     @current = []
     @menu_item_factory = menu_item_class

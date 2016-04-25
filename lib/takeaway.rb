@@ -22,17 +22,16 @@ class Takeaway
 
   def checkout
     fail "nothing ordered" unless items_ordered?
-    value = format("£%.2f",order_log.total)
-    confirm = "To confirm please type 'confirm order' followed by the total"
-    "#{order_log.show}\n\nTotal: #{value}\n\n#{confirm}"
+    "#{order_log.show}\n\nTotal: #{monatise order_log.total}\n\n#{confirm_msg}"
   end
 
   def confirm_order amount
     fail "nothing ordered" unless items_ordered?
-    fail "Confirm with correct total of #{order_log.total}" unless correct_total? amount
-    contact_obj = contact_factory.new
-    contact_obj.send("#{order_log.show}\nTotal: #{order_log.total}")
+    fail confirm_failure_msg unless correct_total? amount
+    contact_customer
   end
+
+
 
   private
   attr_reader :order_log, :menu, :contact_factory
@@ -43,6 +42,23 @@ class Takeaway
 
   def correct_total? amount
     amount == order_log.total
+  end
+
+  def monatise value
+    format("£%.2f",value)
+  end
+
+  def confirm_msg
+    "To confirm please type 'confirm order' followed by the total"
+  end
+
+  def confirm_failure_msg
+    "Confirm with correct total of #{monatise order_log.total}"
+  end
+
+  def contact_customer
+    contact_obj = contact_factory.new
+    contact_obj.send("#{order_log.show}\nTotal: #{monatise order_log.total}")
   end
 
 end

@@ -85,7 +85,8 @@ describe Takeaway do
       end
 
       it "sends the sms obj with the order details" do
-        msg = "#{order_log.show}\nTotal: #{order_log.total}"
+        value = format("£%.2f",order_log.total)
+        msg = "#{order_log.show}\nTotal: #{value}"
         expect(contact_obj).to receive(:send).with(msg)
         takeaway.confirm_order 10
       end
