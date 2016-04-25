@@ -1,5 +1,41 @@
 Takeaway Challenge
 ==================
+
+How to use
+------------------
+
+- Create a new menu object
+- Add dishes to the menu using menu.add dish_name, dish_price
+- Remove dishes using menu.remove dish_name
+- Show menu with menu.show
+
+- Create a new takeaway and initialize with a menu
+- Customers can see menu using takeaway.show("menu")
+- Customers can add and remove dishes to their order using add_to_order and
+  remove_from_order with the dish name and the quantity they want to add/remove
+- Customers can see their order using takeaway.show("order")
+
+- When a customer is ready they can .checkout their order. This will show the
+  order, the total and a message on how to confirm payment
+- To confirm the order use takeaway.confirm total_bill. If the correct amount
+  is entered the order is confirmed and a text is sent to the customer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
                             _________
               r==           |       |
@@ -11,7 +47,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -68,7 +104,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
