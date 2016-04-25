@@ -1,5 +1,5 @@
-require_relative './menu'
-require_relative './message'
+require_relative 'menu'
+require_relative 'message'
 
 class Takeaway
   attr_reader :menu, :current_order

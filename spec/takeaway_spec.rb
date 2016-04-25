@@ -1,11 +1,10 @@
 require 'takeaway'
-# require 'twilio-ruby'
 
 describe Takeaway do
-  let(:item) {double :item}
+  # let(:item) {double :item}
   subject(:takeaway) { described_class.new }
-  let(:menu_list) { {chiken_foo_young: 4, chilli_spicy_chiken: 3}  }
-  let(:menu) {double :menu, display_menu: {chiken_foo_young: 4}}
+  # let(:menu_list) { {chiken_foo_young: 4, chilli_spicy_chiken: 3}  }
+  # let(:menu) {double :menu, display_menu: {chiken_foo_young: 4}}
 
     describe '#initialize' do
       it "has an empty order at the start" do
