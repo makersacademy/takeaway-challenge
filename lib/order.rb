@@ -50,8 +50,7 @@ class Order
 
    def confirm(message_class = Message)
    message = message_class.new
-   time = Time.now
-   message.send(time)
+   message.send
    "Order has been placed. We will text you with the delivery time"
    end
 

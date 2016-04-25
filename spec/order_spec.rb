@@ -13,6 +13,7 @@ describe Order do
 
   let(:shroyu) { double(:menu, dishes: {"Chilli Chicken Ramen" => 7.5, "Duck Gyoza" => 4, "Pepper Squid" => 5.5 } ) }
   subject(:order) { described_class.new(shroyu) }
+  let (:message) { double(:message) }
 
   describe '#initialize' do
     it 'is has no orders' do
@@ -62,19 +63,11 @@ describe Order do
   end
 
   # describe '#confirmation' do
-  #   it 'returns successful' do
-  #     order.add("Duck Gyoza", 1)
-  #     order.add("Pepper Squid", 2)
-  #     order.total
-  #     order.checkout(15)
-  #     message = "Order has been placed. We will text you with the delivery time"
-  #     expect(order.confirm).to eq message
+  #   it 'sends a payment confirmation text message' do
+  #     allow(message).to receive(:send).and_return true
+  #     expect(order).to receive(:confirm).with("Thank you! Your order was placed and will be delivered before 15.32")
+  #     order.confirm
   #   end
-
-    # it 'sends a payment confirmation text message' do
-    #   expect(order).to receive(:confirm).with("Thank you! Your order was placed and will be delivered before 15.32")
-    #   order.confirm
-    # end
   # end
 
 end

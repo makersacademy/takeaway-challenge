@@ -21,7 +21,7 @@ text_message = Message.new
   end
 
   context 'User Story 2:' do
-    it 'select some number of several available dishes' do
+    it 'selects some number of several available dishes' do
       saturday_night.add("Beef Ramen", 1)
       saturday_night.add("Chilli Squid", 2)
       basket = "1X Beef Ramen - £8.50\n2X Chilli Squid - £12.00\n"
@@ -36,11 +36,12 @@ text_message = Message.new
   end
 
   # context 'User Story 4:' do
-  #   it 'receive a text after ordering' do
+  #   it 'receives a text after ordering' do
   #     delivery_time = (Time.now + 3600).strftime("%H:%M")
+  #     expect(message).to receive(:send).and_return true
   #     message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
   #     saturday_night.checkout(20.50)
-  #     expect(text_message.send(Time.now)).to eq message
+  #     expect(text_message.send).to eq message
   #   end
   # end
 

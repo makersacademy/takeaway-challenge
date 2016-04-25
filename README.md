@@ -22,7 +22,6 @@ Takeaway Challenge
 ## Features
 
  * List of dishes with prices
- * View menu
  * Add items from menu
  * Check total sum of dishes
  * View basket
