@@ -12,8 +12,9 @@ class Message
     client.account.messages.create(
       from: ENV["TWILIO_FROM_PHONE_NUMBER"],
       to:   ENV["TWILIO_TO_PHONE_NUMBER"],
-      body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 3600).strftime "%H:%M"}"
-      )
+      body: "Thank you! Your order was placed and"\
+            " will be delivered before #{(Time.now + 3600).strftime "%H:%M"}"
+                                  )
   end
 
 

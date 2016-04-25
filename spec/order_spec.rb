@@ -19,12 +19,12 @@ describe Order do
 
     it "adds an item to the order" do
       order.add "Burger", 1
-      expect(order.order).to eq ([["Burger", 5]])
+      expect(order.order).to eq [["Burger", 5]]
     end
 
     it "adds more than one item to the order" do
       order.add "Burger", 2
-      expect(order.order).to eq ([["Burger", 5], ["Burger", 5]])
+      expect(order.order).to eq [["Burger", 5], ["Burger", 5]]
     end
 
     it "raises an error if item not on the menu" do
@@ -42,13 +42,13 @@ describe Order do
 
     it "removes an item from the order" do
       order.remove "Burger", 1
-      expect(order.order).to eq ([["Pizza", 8]])
+      expect(order.order).to eq [["Pizza", 8]]
     end
 
     it "removes multiple items from the order" do
       order.add "Burger", 1
       order.remove "Burger", 2
-      expect(order.order).to eq ([["Pizza", 8]])
+      expect(order.order).to eq [["Pizza", 8]]
     end
   end
 
