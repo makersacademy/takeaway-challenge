@@ -1,5 +1,5 @@
-require_relative 'menu'
-# require_relative 'message'
+require_relative './menu'
+require_relative './message'
 
 class Takeaway
   attr_reader :menu, :current_order
@@ -7,7 +7,6 @@ class Takeaway
     @menu = menu.new
     @current_order = []
     @cost = []
-    # @message = Message.new
   end
 
   def see_menu
@@ -30,7 +29,7 @@ class Takeaway
 
   def checkout
     fail "the total is not correct" if !total
-    # Message.new.send_sms "Thank you for the order! It will be de delivered by #{Time.new.hour + 1}:#{Time.new.min}"
+    Message.new.send_sms "Thank you for the order! It will be de delivered by #{Time.new.hour + 1}:#{Time.new.min}"
   end
 
   private
