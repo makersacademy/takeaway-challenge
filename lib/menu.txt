@@ -1,0 +1,9 @@
+Crispy Rolls,3.95
+Chicken Soup,4.25
+Pork Dumplings,5.45
+Sweet & Sour,7.45
+Black Bean Beef,7.45
+Crispy Duck,8.95
+Chow Mein,6.45
+Fried Rice,6.45
+Broccoli,5.95
