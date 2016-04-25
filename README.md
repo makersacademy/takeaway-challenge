@@ -31,7 +31,8 @@ Feature Test
 -------
 A Margherita pizza dish is created and added to a menu. An instance of messenger is created for an order. The order adds 2 Margherita pizzas and the total of the order is £13.
 
-``` 2.2.3 :005 > marg_pizza = Dish.new(name: 'Margherita', price: 6.50)
+```
+2.2.3 :005 > marg_pizza = Dish.new(name: 'Margherita', price: 6.50)
  => #<Dish:0x007fa851b1b3d0 @name="Margherita", @price=6.5>
 2.2.3 :006 > menu = Menu.new(dishes: marg_pizza)
  => #<Menu:0x007fa851b10de0 @dishes=[#<Dish:0x007fa851b1b3d0 @name="Margherita", @price=6.5>]>
@@ -44,6 +45,7 @@ A Margherita pizza dish is created and added to a menu. An instance of messenger
 2.2.3 :010 > order.total_order
  => 13.0
  ```
+
 
 
 Instructions
