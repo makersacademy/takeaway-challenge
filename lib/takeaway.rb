@@ -1,6 +1,6 @@
 require 'pry'
-require 'order'
-require 'sms'
+require_relative 'order'
+require_relative 'sms'
 
 class Takeaway
 

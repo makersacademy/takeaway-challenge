@@ -4,8 +4,9 @@ require 'yaml'
 describe SMS do 
   subject(:sms) { described_class.new(config, client: client)}
 
-  let(:client) { double :client, messages: messages}
+  let(:client) { double :client, account: account, messages: messages}
   let(:messages) { double :messages }
+  let(:account) { double :account, messages: messages}
 
   let(:config) do
     YAML.load_file('config.yml')
@@ -19,7 +20,7 @@ describe SMS do
     }
 
     allow(Time).to receive(:now).and_return(Time.parse("14:21"))
-    expect(messages).to receive(:create).with(args)
+    expect(client.account.messages).to receive(:create).with(args)
     sms.deliver
   end
 end

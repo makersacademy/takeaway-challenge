@@ -1,6 +1,6 @@
 {
-  account_sid: 'AC1ffb8bca8daf3f94983b324a96a3861a',
-  auth_token: '8548b0bad4fc3d42e1632cce2b7a2a51',
+  account_sid: 'AC08b3a906870b047455fd47f4edf71587',
+  auth_token: '2065af8a307ed31b5cea7ff031f769bb',
   from: "+447481343709",
   to: "+841649129008",
   body: "Thank you! Your order was placed and will be delivered before %s"

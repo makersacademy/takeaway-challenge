@@ -12,7 +12,7 @@ class SMS
   end
 
   def deliver
-    client.messages.create(args)
+    client.account.messages.create(args)
   end
 
   private
