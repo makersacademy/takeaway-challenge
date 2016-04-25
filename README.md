@@ -16,6 +16,9 @@ Takeaway Challenge
 
 Travis CI: 
 ![alt text](https://travis-ci.org/DXTimer/takeaway-challenge.svg?branch=master "Travis CI")
+Coveralls:
+![alt text](https://camo.githubusercontent.com/d9571b66fab636dcf5f1ce5f2fca3fc3ac9d929f/68747470733a2f2f636f766572616c6c732e696f2f6275696c64732f353931343331382f6261646765 "Coveralls")
+
 
 Summary
 -----
