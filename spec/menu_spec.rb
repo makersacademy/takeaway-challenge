@@ -2,7 +2,9 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
+
   let(:menu_content) { "Pollo £10.00" }
+
   before { allow(File).to receive(:open) { menu_content } }
 
   describe "#initialize" do
