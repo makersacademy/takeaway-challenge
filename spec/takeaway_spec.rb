@@ -1,4 +1,3 @@
-require 'pry'
 require 'takeaway'
 
 describe Takeaway do
