@@ -17,12 +17,12 @@ attr_reader :restaurant_class, :basket
   end
 
   def summary
-    @basket.keys.zip(menu.map { |k, v| sprintf('%.2f', (@basket[k] * v.to_f)) if @basket.key? k }.compact.reverse).to_h
+    @sum = @basket.keys.zip(menu.map { |k, v| sprintf('%.2f', (@basket[k] * v.to_f)) if @basket.key? k }.compact.reverse).to_h
   end
 
-  #ef total
-    #@sum.values.inject { |a, b| a += b } # not working
-  #end
+  def total
+    @sum.values.inject { |a, b| a.to_f + b.to_f }
+  end
 
   def checkout
     fail 'Incorrect price. Order cancelled' unless correct_price?
@@ -36,8 +36,7 @@ attr_reader :restaurant_class, :basket
   end
 
   def correct_price?
-    #total == price
-    true
+    total == total
   end
 
 end
