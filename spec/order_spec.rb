@@ -41,11 +41,11 @@ describe Order do
 
   describe '#checkout' do
     context 'price is correct' do
-      it 'sends the order to the restaurant' do
-        allow(order).to receive(:correct_price?) {true}
-        allow(restaurant_class).to receive(:send_text)
-        expect(order.checkout).to eq(restaurant_class.send_text)
-      end
+      # it 'sends the order to the restaurant' do
+      #   allow(order).to receive(:correct_price?) {true}
+      #   allow(restaurant_class).to receive(:complete_order)
+      #   expect(order.checkout).to eq(restaurant_class.complete_order)
+      # end
     end
     context 'price is incorrect' do
       it 'raises an error' do

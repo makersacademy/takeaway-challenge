@@ -1,20 +1,16 @@
-# require 'rubygems'
-# require 'twilio-ruby'
-# require 'dotenv'
-# Dotenv.load
+require 'rubygems'
+require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class Messager
 
-  # def initialize(time)
-  #   @time = time
-  # end
-
-#   def send
-#     #@client = Twilio::REST::Client.new account_sid, auth_token
-# #   @client.account.messages.create({
-# #     :from => '+44XXXXXXXXXX',
-# #     :to => '0044XXXXXXXXXX',
-# #     :body => "Order confirmed, expected delivery time #{time}""
-# #   })
-#   end
+  def send
+    @client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['AUTH_TOKEN']
+    @client.account.messages.create(
+    from: ENV['FROM'],
+    to: ENV['TO'],
+    body: "Order confirmed"
+   )
+   end
 end

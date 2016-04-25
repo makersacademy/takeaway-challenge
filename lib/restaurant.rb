@@ -11,12 +11,7 @@ attr_reader :menu_class, :messager_class
     menu_class.access
   end
 
-  def complete_order(time)
-    send_text("Order confirmed, expected delivery time #{time}")
+  def complete_order
+    messager_class.send
   end
-
-  def send_text
-    # call Twilio API
-  end
-
 end

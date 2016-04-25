@@ -26,7 +26,7 @@ attr_reader :restaurant_class, :basket
 
   def checkout
     fail 'Incorrect price. Order cancelled' unless correct_price?
-    restaurant_class.send_text
+    restaurant_class.complete_order
   end
 
   private
@@ -37,6 +37,7 @@ attr_reader :restaurant_class, :basket
 
   def correct_price?
     #total == price
+    true
   end
 
 end
