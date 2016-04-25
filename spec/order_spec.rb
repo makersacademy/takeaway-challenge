@@ -4,7 +4,7 @@ describe Order do
   let(:restaurant_class) { double :restaurant_class }
   let(:dish) { double :dish }
   let(:quantity) { double :quantity }
-  let(:menu) { double :menu, dish: 'Broccoli', price: '5,95',contains?: true }
+  let(:menu) { double :menu, dish: 'Broccoli', price: '5,95',cinclude?: true }
   subject(:order) { described_class.new }
 
   describe '#initialize' do
@@ -34,16 +34,19 @@ describe Order do
     end
   end
 
-  # describe '#to_pay' do
+  # describe '#total' do
   #   it 'calculates the price' do
   #   end
   # end
 
   describe '#checkout' do
-    # context 'price is correct' do
-    #   it 'sends the order to the restaurant' do
-    #   end
-    # end
+    context 'price is correct' do
+      it 'sends the order to the restaurant' do
+        allow(order).to receive(:correct_price?) {true}
+        allow(restaurant_class).to receive(:send_text)
+        expect(order.checkout).to eq(restaurant_class.send_text)
+      end
+    end
     context 'price is incorrect' do
       it 'raises an error' do
         allow(order).to receive(:correct_price?) {false}
