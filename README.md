@@ -14,22 +14,24 @@ Takeaway Challenge
 
  ```
  Approach
-__________
+-------
+
 
 This challenge is to create a takeaway app, where you can order food and receive a text message saying thank you and when your order will be delivered. It has been written in Ruby and tested with RSpec.
 
 My final design includes classes of Menu, Order, Messenger and Dish. Dishes are added with a name and price and are then added to a menu. An order can add items from the menu with a quantity and which will create a sum of the prices of each item. Once the order has been verified, the customer will receive a text message confirming the order and a delivery time which is one hour from the order confirmation.
 
-Process
-________
+I only had one day to work on this and therefore the project is not finished, as currently there is no order verification and there is an issue with adding more than one dish to a menu.
 
+Process
+-------
 The approach to this challenge has been through many different designs as I changed my interpretation of the User Stories. By approaching the challenge with a mind for avoiding having to extract classes later on, it was difficult to choose which design to use. To begin with, I had a Takeaway and User class but eventually decided that they were not neccessary to my design.
 
 Feature Test
-____________
+-------
 A Margherita pizza dish is created and added to a menu. An instance of messenger is created for an order. The order adds 2 Margherita pizzas and the total of the order is £13.
 
-2.2.3 :005 > marg_pizza = Dish.new(name: 'Margherita', price: 6.50)
+``` 2.2.3 :005 > marg_pizza = Dish.new(name: 'Margherita', price: 6.50)
  => #<Dish:0x007fa851b1b3d0 @name="Margherita", @price=6.5>
 2.2.3 :006 > menu = Menu.new(dishes: marg_pizza)
  => #<Menu:0x007fa851b10de0 @dishes=[#<Dish:0x007fa851b1b3d0 @name="Margherita", @price=6.5>]>
@@ -41,6 +43,7 @@ A Margherita pizza dish is created and added to a menu. An instance of messenger
  => [{:dish=>#<Dish:0x007fa851b1b3d0 @name="Margherita", @price=6.5>, :quantity=>2}]
 2.2.3 :010 > order.total_order
  => 13.0
+ ```
 
 
 Instructions
@@ -52,14 +55,15 @@ Instructions
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday morning
 
+
 Task
 -----
-
+```
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
-```
+
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
