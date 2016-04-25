@@ -9,7 +9,7 @@ describe Menu do
 
   describe "#initialize" do
     it 'opens a file and puts its contents into a menu' do
-      expect(menu.items).to eq [{dish: "Pollo", price: "10.00"}]
+      expect(menu.items).to eq [{dish: "pollo", price: "10.00"}]
     end
   end
 

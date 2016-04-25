@@ -5,8 +5,11 @@ require_relative 'SMS'
 
 class Takeaway
 
-  def initialize(menu: Menu.new.items, order: Order.new, sms: SMS.new)
+  attr_reader :menu
+
+  def initialize(menu: Menu.new, order: Order.new, sms: SMS.new)
     @menu = menu
+    @menu_items = Menu.new.items
     @order = order
     @sms = sms
   end
@@ -17,20 +20,21 @@ class Takeaway
 
   def place_order(dishes)
     add(dishes)
+    order.display
+    puts ("Order Total = £#{order.totals}").rjust(41)
     sms.send
-    order.totals
   end
 
   private
 
-  attr_reader :menu, :order, :sms
+  attr_reader :order, :sms, :menu_items
 
   def add(dishes)
     message = "No such dish on the menu"
     dishes.each do |dish, quantity|
-      fail message unless menu.find { |x| x[:dish] == dish }
-      menu.find do |y|
-        order.add(dish, y[:price], quantity) if y[:dish] == dish
+      fail message unless menu_items.find { |x| x[:dish] == dish.downcase }
+      menu_items.find do |y|
+        order.add(dish, y[:price], quantity) if y[:dish] == dish.downcase
       end
     end
   end

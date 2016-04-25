@@ -6,7 +6,7 @@ class Menu
     @items = []
     menu1 = File.open('./lib/menu.txt').each_line do |line|
       menu_line = {}
-      menu_line[:dish], menu_line[:price] = line.chomp.split(" £")
+      menu_line[:dish], menu_line[:price] = line.chomp.downcase.split(" £")
       @items << menu_line
     end
   end

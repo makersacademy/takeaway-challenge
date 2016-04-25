@@ -16,14 +16,14 @@ https://github.com/makersacademy/takeaway-challenge/blob/master/README.md
 Continuous Integration
 ----------------------
 Travis CI has been used to test all stages of the build and the status can be seen here:
-[![Build Status](https://travis-ci.org/rahulrama/airport_challenge.svg?branch=master)](https://travis-ci.org/rahulrama/airport_challenge)
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 
 Modules and classes used
 ------------------------
 The solution makes use of the following classes and modules, each stored in a file of the same name:
-- Airport (class)
-  - land_plane (public method)
-  - launch_plane (public method)
+- Takeaway (class)
+  -  (public method)
+  -  (public method)
 - Plane (class)
   - land (public method)
   - take_off (public method)

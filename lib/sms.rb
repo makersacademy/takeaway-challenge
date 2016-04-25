@@ -12,7 +12,7 @@ class SMS
       body: "Thank you! Your order was placed and will be delivered before %s"
     }
 
-  def initialize(config, client: nil)
+  def initialize(config = CONFIG, client: nil)
     @client = client || Twilio::REST::Client.new(config[:account_sid],
     config[:auth_token])
     @config = config
@@ -20,6 +20,7 @@ class SMS
 
   def send
     client.messages.create(arguments)
+    puts "Confirmation SMS has been sent to the client"
   end
 
   private
