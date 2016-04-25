@@ -1,12 +1,13 @@
-#require "twilio-ruby"
 require_relative "menu"
+require_relative "message"
 
 class Order
   attr_accessor :order
 
-  def initialize(menu = Menu)
+  def initialize(menu = Menu.new, message = Message.new)
     @order = []
-    @menu = menu.new
+    @menu = menu
+    @message = message
   end
 
   def add(item, quantity = 1)
@@ -25,6 +26,10 @@ class Order
   def total
     total_calculator
     total = "Current order total is £#{@total}"
+  end
+
+  def confirm
+    @message.send
   end
 
   private

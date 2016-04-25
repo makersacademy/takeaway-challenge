@@ -4,7 +4,8 @@ require "menu"
 describe Order do
 
   let(:order) { described_class.new }
-   let(:burger) { double(:burger, ["Burger", 5]) }
+  #let(:burger) { double(:burger, ["Burger", 5]) }
+  #let(:burger) { double(:burger, name: "Burger", price: 5) }
 
   describe "#initialize" do
 

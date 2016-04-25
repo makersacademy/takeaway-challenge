@@ -24,7 +24,7 @@ class Menu
 
     @menu_hash = {
 
-      "Burger" => 5, "Fries" => 2, "Pizza" => 8, "Drink" => 1,
+      "Burger" => 5, "Chips" => 2, "Pizza" => 8, "Drink" => 1,
     }
 
   end
