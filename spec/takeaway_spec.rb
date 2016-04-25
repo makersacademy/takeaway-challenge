@@ -1,7 +1,11 @@
+require 'pry'
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new }
+  let(:menu) { double(:menu, menu_list: { chicken: 3 }) }
+  let(:menu_class) { double(:Menu, new: menu)}
+  subject(:takeaway) { described_class.new(menu: menu_class)}
+
     describe '#initialize' do
       it "has an empty order at the start" do
         expect(takeaway.current_order).to eq []
@@ -9,12 +13,13 @@ describe Takeaway do
     end
     describe '#see_menu' do
       it "shows the menu" do
-        expect(takeaway.see_menu).to be_a Hash
+        takeaway.see_menu
+        expect(menu).to have_received(:menu_list)
       end
     end
     describe '#order' do
       it "adds an item to the order" do
-        expect(takeaway.order(:chiken_foo_young)).to eq [{:chiken_foo_young=>4}]
+        expect(takeaway.order(:chicken)).to eq [{:chicken=>3}]
       end
       it "raises an erro if the item is not on the menu" do
         expect{takeaway.order(:foo)}.to raise_error "No such dish here!"
@@ -22,8 +27,8 @@ describe Takeaway do
     end
     describe '#total' do
       it "should show the total" do
-      takeaway.order(:chiken_foo_young)
-      expect(takeaway.total).to eq 4
+      takeaway.order(:chicken)
+      expect(takeaway.total).to eq 3
       end
     end
 end
