@@ -15,6 +15,7 @@ Takeaway Challenge
  ```
  Folder tree
  
+ ```
  ├── lib
 │   ├── menu.rb
 │   ├── messenger.rb
@@ -26,6 +27,7 @@ Takeaway Challenge
     ├── order_spec.rb
     ├── spec_helper.rb
     └── take_away_spec.rb
+```
 
 Description
 -----------
