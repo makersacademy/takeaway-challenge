@@ -29,6 +29,7 @@ The rspec tests need to use more doubles
 
 example run
 ----------
+```
 [1] pry(main)> require './lib/restaurant.rb'
 => true
 [2] pry(main)> nandos=Restaurant.new
@@ -91,7 +92,7 @@ example run
 [22] pry(main)> p nandos.order_accepted
 []
 => []
-
+```
 author
 ------
 harrywynnwilliams@googlemail.com

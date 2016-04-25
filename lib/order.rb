@@ -13,10 +13,10 @@ class Order
 
   def add_item_qty choice, qty
    raise "item not available" unless check_on_menu?(choice)
-    price = get_price(choice) #adds the price to the order
-    order << [choice,qty,price]
-    "#{qty}x #{choice} added to your basket."
-  end
+      price = get_price(choice) #adds the price to the order
+      order << [choice,qty,price]
+      "#{qty}x #{choice} added to your basket."
+    end
 
   def basket_summary
     #accesses the order variable which is initialized in the object where the order is stored
