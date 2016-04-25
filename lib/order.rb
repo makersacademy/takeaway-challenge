@@ -33,7 +33,7 @@ class Order
     send_message
   end
 
-private
+  private
 
   def send_message
     @messenger.send

@@ -17,8 +17,7 @@ class Messenger
     AUTH_TOKEN = "b52119878d1bc77173d4aa85117f77f3".freeze
 
   def body
-    "Thankyou"\
-    "We have received your order, it will be delived at #{time_hour}"
+    "Thankyou, we have received your order, it will be delived at #{time_hour}"
   end
 
   def send_message

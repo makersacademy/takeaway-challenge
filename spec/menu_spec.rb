@@ -6,7 +6,7 @@ describe Menu do
   let(:list_dishes) do
     [marg_pizza].each do |dish|
        "#{dish.name}: £%0.2f" % [dish.price]
-     end
+    end
   end
 
 

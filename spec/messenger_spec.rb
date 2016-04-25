@@ -3,8 +3,7 @@ describe Messenger do
   subject(:messenger) {described_class.new}
   let(:time_hour) {(hour = Time.now + 60*60).localtime.strftime("%H:%M")}
   let(:body) do
-    "Thankyou"\
-    "We have received your order, it will be delived at #{time_hour}"
+    "Thankyou, we have received your order, it will be delived at #{time_hour}"
   end
   it 'sends message to confirm order' do
     stub_const('Messenger::ACCOUNT_SID',"ACd876ef2e031b1244ad45dbdd3b450231")
