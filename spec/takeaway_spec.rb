@@ -40,7 +40,7 @@ describe TakeAway do
 
   it 'raises an error if incorrect total' do
     allow(order).to receive(:total).and_return(13.00)
-    expect{takeaway.confirm_order(12.99)}.to raise_error 'Incorrect total'
+    expect{takeaway.confirm_order(12.99,text_message)}.to raise_error 'Incorrect total'
   end
 
 end
