@@ -15,5 +15,4 @@ friends.each do |key, value|
     :from => from,
     :to => key,
     :body => "Thank you! Your order was placed and will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}")
-  puts "Sent message to #{value}"
 end

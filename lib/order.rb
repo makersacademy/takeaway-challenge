@@ -8,7 +8,7 @@ class Order
 	end
 
 	def add(dish, number)
-		dishes[dish] = number
+		@dishes[dish] = number
 	end
 
 	def order_total
