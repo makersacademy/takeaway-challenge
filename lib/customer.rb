@@ -20,9 +20,9 @@ class Customer
   def order_items(quantity, dish)
     @diner.menu.each {
       |item, price| if dish.capitalize == item then @order_total += price*quantity end
-      }
+    }
     @order_total = ('%.2f' % order_total).to_i
-    puts "Okay, #{quantity} orders of #{dish}. That will be £#{@order_total}. If that sounds right, confirm using confirm_order!"
+    puts "#{quantity} orders of #{dish}. That will be £#{@order_total}. If that sounds right, confirm using confirm_order!"
   end
 
   def confirm_order
