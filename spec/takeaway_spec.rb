@@ -24,6 +24,13 @@ describe Takeaway do
         expect{takeaway.order(:foo)}.to raise_error "No such dish here!"
       end
     end
+    describe '#total' do
+      it "should show the total" do
+      takeaway.order(:chiken_foo_young)
+      expect(takeaway.total).to eq 4
+    end
+
+    end
     # describe '#checkout' do
     #   it "rasise an error if the total is not correct" do
     #      expect { takeaway.checkout}.to raise_error "the total is not correct"
