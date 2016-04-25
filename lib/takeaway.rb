@@ -1,27 +1,29 @@
-require_relative 'menu'
+#require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
 
-  attr_reader :order
+  attr_reader :order_items, :order_cost
   attr_reader :menu
 
 
-def initialize
-  @order_items = []
-  @order_cost = []
-  @menu = {"hamburger" => 5, "cheeseburger" => 6, "fries" => 3, "shake" => 2, "veggieburger" => 5}
-end
+  def initialize
+    @order_items = []
+    @order_cost = []
+    @menu = {"hamburger" => 5, "cheeseburger" => 6, "fries" => 3, "shake" => 2, "veggieburger" => 5}
+    @order_sent = Order.new
+  end
 
-def menu_list
- @menu
-end
+  def menu_list
+    @menu
+  end
 
-def place_order item
-  fail "Menu doesn't include this item" if !@menu.has_key?(item)
-  @order_items <<   item
-  @order_cost << @menu[item]
-return "You have ordered #{item} at a cost of #{@menu[item]}"
+  def place_order item
+    fail "Menu doesn't include this item" if !@menu.has_key?(item)
+    @order_items <<   item
+    @order_cost << @menu[item]
+    return "You have ordered #{item} at a cost of #{@menu[item]}"
   end
 
   def finalize_order
@@ -29,12 +31,12 @@ return "You have ordered #{item} at a cost of #{@menu[item]}"
   end
 
   def order_total
-   @order_cost.inject(0){|sum,x| sum + x }
- end
- def charge_me()
- end
+   @sum = @order_cost.inject(:+)
+  end
 
 
-
-
+  def charge_me cost
+    fail "Not correct total" if cost != @sum
+    @order_sent.send
+  end
 end
