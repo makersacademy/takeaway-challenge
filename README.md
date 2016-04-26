@@ -1,6 +1,9 @@
 ﻿
 
-[![Build Status](https://travis-ci.org/tigretoncio/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tigretoncio/takeaway-challenge)[![Coverage Status](https://coveralls.io/repos/github/tigretoncio/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/tigretoncio/takeaway-challenge?branch=master)
+[![Build Status](https://travis-ci.org/tigretoncio/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tigretoncio/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/tigretoncio/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/tigretoncio/takeaway-challenge?branch=master)
+
+ [![Coverage Status](https://coveralls.io/repos/github/missamynicholson/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/missamynicholson/takeaway-challenge?branch=master)
 Takeaway Challenge
 ==================
 ```
