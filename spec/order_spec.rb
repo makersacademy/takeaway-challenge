@@ -53,12 +53,14 @@ describe Order do
     end
   end
 
-  # describe '#confirmation' do
-  #   it 'sends a payment confirmation text message' do
-  #     allow(message).to receive(:send).and_return true
-  #     expect(order).to receive(:confirm).with("Thank you! Your order was placed and will be delivered before 15.32")
-  #     order.confirm
-  #   end
-  # end
+  describe '#confirmation' do
+    it 'sends a payment confirmation text message' do
+      allow(message).to receive(:send).and_return true
+      order.add("Duck Gyoza", 1)
+      order.add("Pepper Squid", 2)
+      order.total
+      expect(order.checkout(15)).to eq "Order has been placed. We will text you with the delivery time"
+    end
+  end
 
 end

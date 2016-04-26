@@ -13,7 +13,7 @@ class Order
    end
 
    def add(dish, quantity)
-   raise "Please order something from the menu!" if !(@menu.include?(dish))
+   raise "Please order something from the menu!" unless @menu.include?(dish)
    @my_order << {dish => quantity}
    "#{quantity}X #{dish} has been added to your basket"
    end
@@ -41,7 +41,8 @@ class Order
    end
 
    def checkout(amount)
-     raise "Incorrect amount" if amount != @sum
+     raise "Incorrect amount" unless amount == @sum
+     confirm if amount == @sum
    end
 
   private
