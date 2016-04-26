@@ -47,7 +47,7 @@ TWILIO_DESTINATION_PHONE=<Phone where you want to receive text msgs>
 you can get a free trial account with Twilio on https://www.twilio.com/
 
 
-## Classes:
+## Object modelling
 
 The basic object modelling used is as follows:
 
