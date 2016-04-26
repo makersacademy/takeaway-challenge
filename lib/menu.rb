@@ -1,5 +1,5 @@
 class Menu
-  attr_accessor :menu
+
   def initialize
     @menu = {
       "duck breast with anchovies" => 3.50,
@@ -11,7 +11,7 @@ class Menu
     }
   end
 
-  def add_to_menu(item,price)
+  def add(item,price)
     @menu[item] = price
   end
 
@@ -19,7 +19,7 @@ class Menu
     @menu.include?(item)
   end
 
-  def show_menu
+  def show_menu #return string (format menu)
     @menu.each{|key,value| puts key,"£#{value}"}
   end
 

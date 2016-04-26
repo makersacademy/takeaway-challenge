@@ -2,32 +2,35 @@ require_relative 'menu'
 require_relative 'restaurant'
 
 class Order
-
-  def initialize(menu_class = Menu)
-    @menu_class = menu_class.new
+  attr_reader :orders
+  def initialize(menu = Menu)
+    @menu = menu
     @orders = {}
     @total = []
   end
 
-  def add_to_order(quantity = 1,item)
+  def add(quantity = 1,item)
+    fail "No such item!" unless @menu.include?(item)
     menu_item = menu.select{|key,value|key[item]}
     @orders[quantity] = menu_item
     @total << menu_item.values.map{|i|i*quantity}
+    "#{quantity} X #{item} added to basket"
   end
 
   def show_order
-    @orders.dup
+    fail "No order created" if empty?
+    @orders
   end
 
-  def menu
-    @menu_class.menu
+  def check_total
+    @total.flatten.reduce(:+)
   end
 
   def empty?
     @orders.empty?
   end
 
-  def check_total
-    @total.flatten.reduce(:+)
+  def menu
+    @menu.menu_select
   end
 end

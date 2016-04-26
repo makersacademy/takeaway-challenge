@@ -1,4 +1,5 @@
 require 'messenger'
+require 'dotenv'
 
 describe Messenger do
 

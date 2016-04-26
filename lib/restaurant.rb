@@ -4,10 +4,8 @@ require_relative 'messenger'
 
 class Restaurant
 
-  attr_accessor :complete
-
-  def initialize(order_class = Order, menu = Menu.new, messenger = Messenger.new)
-    @order_class = order_class.new
+  def initialize(order_class = Order, menu = Menu, messenger = Messenger.new)
+    @order_class = order_class
     @menu = menu
     @messenger = messenger
   end
@@ -17,30 +15,28 @@ class Restaurant
   end
 
   def add_to_menu(item,price)
-    @menu.add_to_menu(item,price)
-  end
-
-  def add_to_order(quantity = 1,item)
-    fail "No such item!" unless include?(item)
-    @order_class.add_to_order(quantity,item)
-    "#{quantity} X #{item} added to basket"
+    @menu.add(item,price)
   end
 
   def show_order
-    fail "No order created" if @order_class.empty?
-    @order_class.show_order.each
+    @order_class.show_order
   end
 
   def check_total
-    @order_class.check_total
-  end
-
-  def include?(item)
-    @menu.include?(item)
+    "£#{@order_class.check_total}"
   end
 
   def checkout(amount)
-    fail "Amount is not correct" unless amount == check_total
+    fail "Amount is not correct" unless correct_total?
     @messenger.send_text
+  end
+
+  private
+  def correct_total?
+    amount == number_total
+  end
+
+  def number_total
+    @order_class.check_total
   end
 end
