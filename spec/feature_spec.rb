@@ -35,14 +35,14 @@ text_message = Message.new
     end
   end
 
-  # context 'User Story 4:' do
-  #   it 'receives a text after ordering' do
-  #     delivery_time = (Time.now + 3600).strftime("%H:%M")
-  #     expect(message).to receive(:send).and_return true
-  #     message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
-  #     saturday_night.checkout(20.50)
-  #     expect(text_message.send).to eq message
-  #   end
-  # end
+  context 'User Story 4:' do
+    it 'receives a text after ordering' do
+      delivery_time = (Time.now + 3600).strftime("%H:%M")
+      allow(text_message).to receive(:send).and_return true
+      message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+      saturday_night.checkout(20.50)
+      expect(text_message.send).to eq true
+    end
+  end
 
 end

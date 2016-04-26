@@ -14,7 +14,7 @@ describe Message do
 
     it 'calls twilio_send' do
       expect(message).to receive(:send).and_return true
-      message.send(message_body)
+      message.send
     end
   end
 end

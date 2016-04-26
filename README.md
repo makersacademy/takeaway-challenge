@@ -90,7 +90,27 @@ Mmm I'm hungry. Now let's checkout, and recieve a text confirmation. Woohoo.
   => "Order has been placed. We will text you with the delivery time"
   ```
 
- I have considered edge cases to ensure that you don't add anything to your order that isn't on the menu and pay the correct amount. Duh. 👆
+ I have considered edge cases to ensure that you don't add anything to your order that isn't on the menu and pay the correct amount.
+
+## How to use dotenv
+
+I used dotenv to protect sensitive data such as Twilio tokens and personal phone numbers. To install the gem, simply type in your terminal:
+
+`$ gem install dotenv`
+
+Create a .env file in the main directory of your project:
+
+`touch .env`
+
+Then input your Twilio account details into your .env file:
+
+```
+ACC_SID="type_in_your_twilio_account"
+AUTH="type_in_your_twilio_auth_token"
+TWILIO_NUMBER="type_in_your_twilio_number"
+RECEIVER_NUMBER="type_in_receivers_number"
+```
+In your application, replace exposed sensitive data with, for example, ENV["AUTH"]. Also make sure to add .env to .gitignore so that it does not get uploaded onto Github.
 
 
 ## Testing

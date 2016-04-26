@@ -19,15 +19,15 @@ class Order
    end
 
    def view_basket
-     @basket = ""
+     basket = ""
      @my_order.each do |item|
        item.each do |dish, quantity|
             price = quantity * @menu[dish]
             pounds = '%.2f' % price
-           @basket << "#{quantity}X #{dish} - £#{pounds}\n"
+           basket << "#{quantity}X #{dish} - £#{pounds}\n"
        end
      end
-     @basket
+     basket
    end
 
    def total
@@ -37,24 +37,24 @@ class Order
          @sum += price
        end
      end
-     pounds = '%.2f' % @sum
-     "Your total is £#{pounds}"
+     @total = "Your total is £#{amount_in_pounds}"
    end
 
    def checkout(amount)
-     amount_to_pounds = '%.2f' % amount
-     pounds = '%.2f' % @sum
-     raise "Incorrect amount" if amount_to_pounds != pounds
-     confirm if amount_to_pounds == pounds
+     raise "Incorrect amount" if amount != @sum
    end
 
   private
   attr_reader :menu, :dishes
 
-  def confirm(message_class = Message)
-  message = message_class.new
+
+  def confirm(message = Message.new)
   message.send
   "Order has been placed. We will text you with the delivery time"
+  end
+
+  def amount_in_pounds
+    '%.2f' % @sum
   end
 
 end
