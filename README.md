@@ -1,4 +1,7 @@
-﻿Takeaway Challenge
+﻿
+
+[![Build Status](https://travis-ci.org/tigretoncio/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tigretoncio/takeaway-challenge)[![Coverage Status](https://coveralls.io/repos/github/tigretoncio/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/tigretoncio/takeaway-challenge?branch=master)
+Takeaway Challenge
 ==================
 ```
     Sergio Enrech Trillo    _________
