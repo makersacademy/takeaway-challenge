@@ -10,21 +10,22 @@ attr_reader :order_accepted
     @order = order_class.new
     @order_accepted = []
   end
+
   def accept_order(user)
-    if user.checkout == true
-     "order accepted"
-     @order_accepted << user.order
-   else
-    "order not accepted please try again"
-    end
+   raise "order not accepted please try again" unless user_checked_out? user
+    "order accepted"
+    @order_accepted << user.order
   end
 
 
   def deliver
     confirm_order(order_complete)
   end
+  private
+    def user_checked_out? (object)
+    object.checkout
+  end
 
- private
   def confirm_order(confirmed_order)
     @messenger.send_order(confirmed_order.object_id)
   end
@@ -34,3 +35,10 @@ attr_reader :order_accepted
     @order_accepted.shift
   end
 end
+
+# r = Restaurant.new
+# harry = Order.new
+# harry.add_item_qty("diet coke", 8)
+# p harry.checkout_order(7.92)
+# p r.accept_order(harry)
+# p r.user_checked_out?(harry)
