@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  let(:menu) {double(:menu, is_included?: true)}
+  let(:menu) {double(:menu)}
   let(:messenger) {double(:messenger)}
   subject(:order) {described_class.new(menu)}
 
@@ -19,9 +19,14 @@ describe Order do
 
   describe '#add_to_order' do
     it 'adds quantity and item to order' do
-      allow(menu).to receive(:menu_select)
+      allow(menu).to receive(:menu_select).and_return({"venison sushi" => 2.5})
       subject.add(5,"venison sushi")
       expect(subject.show_order).to eq({5=>{"venison sushi"=>2.5}})
+    end
+
+    it 'raises error if item not on menu' do
+      allow(subject).to receive(:included?).and_return false
+      expect{subject.add("steak")}.to raise_error "No such item!"
     end
   end
 
@@ -30,8 +35,10 @@ describe Order do
       quantity = 2
       item = "venison sushi"
       price_per_unit = 2.50
-      subject.add(quantity,item)
-      expect(subject.check_total).to eq(quantity * price_per_unit)
+      allow(menu).to receive(:menu_select).and_return({"venison sushi" => 2.5})
+      allow(subject).to receive(:included?).and_return true
+      subject.add(2,"venison sushi")
+      expect(subject.check_total).to eq(5)
     end
   end
 end
