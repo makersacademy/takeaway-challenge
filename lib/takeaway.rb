@@ -1,13 +1,10 @@
-require './lib/menu.rb'
-require './lib/order.rb'
-require './lib/messenger.rb'
-
 class Takeaway
-  attr_reader :menu
+  attr_reader :menu, :current_order
 
-  def initialize(menu = Menu.new, order = Order.new, messenger = Messenger.new)
+  def initialize(menu = Menu.new, current_order = Order, messenger = Messenger.new)
     @menu = menu
-    @order = order
+    @current_order = current_order.new
+    @order_class = current_order
     @messenger = messenger
   end
 
@@ -16,23 +13,26 @@ class Takeaway
   end
 
   def order(dish, qty = 1)
-    @order.select(dish, qty)
+    @current_order.select(dish, qty)
   end
 
   def basket
-    @order.basket
+    @current_order.basket
   end
 
   def summary
-    @order.summary
-  end
-
-  def qty_tracker
-    @order.qty_tracker
+    @current_order.summary
   end
 
   def confirm
     @messenger.confirm
+    @current_order = @order_class.new
   end
+
+private
+
+    def qty_tracker
+      @order.qty_tracker
+    end
 
 end

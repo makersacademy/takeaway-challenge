@@ -2,19 +2,12 @@ require 'menu'
 
 describe Menu do
 
-  it{is_expected.to respond_to(:menu)}
   it{is_expected.to respond_to(:read)}
   it{is_expected.to respond_to(:pick)}
   it{is_expected.to respond_to(:price)}
 
   let(:menu) {double :menu}
   let(:dish) {double :dish}
-
-  describe '#initialize' do
-    it 'should create a menu containing food items and prices' do
-      expect(subject.menu).to be_a(Hash)
-    end
-  end
 
   describe '#read' do
     it 'should display the menu options' do

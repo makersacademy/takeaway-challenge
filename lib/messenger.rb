@@ -10,7 +10,7 @@ class Messenger
   def confirm
     @client.create({
       :from => '+441344567662',
-      :to => @my_phone,
+      :to => ENV['MY_PHONE'],
       :body => "Your order was placed and will be delivered before #{time}." })
   end
 
