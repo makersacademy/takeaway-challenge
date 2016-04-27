@@ -2,9 +2,9 @@ require 'order'
 
 describe Order do
 
-  let(:order) {double(:order)}
-  let(:menu) {double(:menu)}
+  let(:menu) {double(:menu, is_included?: true)}
   let(:messenger) {double(:messenger)}
+  subject(:order) {described_class.new(menu)}
 
   context 'new order initialized' do
     it 'starts with empty order' do
@@ -19,6 +19,7 @@ describe Order do
 
   describe '#add_to_order' do
     it 'adds quantity and item to order' do
+      allow(menu).to receive(:menu_select)
       subject.add(5,"venison sushi")
       expect(subject.show_order).to eq({5=>{"venison sushi"=>2.5}})
     end

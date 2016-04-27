@@ -15,11 +15,11 @@ describe Menu do
   describe '#include?' do
 
     it 'returns true if item is included in menu' do
-      expect(subject.include?("battery burger")).to be_truthy
+      expect(subject.is_included?("battery burger")).to be_truthy
     end
 
     it 'returns false if item is not included in menu' do
-      expect(subject.include?("apricots")).to be_falsey
+      expect(subject.is_included?("apricots")).to be_falsey
     end
   end
 end

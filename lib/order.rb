@@ -10,8 +10,8 @@ class Order
   end
 
   def add(quantity = 1,item)
-    fail "No such item!" unless @menu.include?(item)
-    menu_item = menu.select{|key,value|key[item]}
+    fail "No such item!" unless @menu.is_included?(item)
+    menu_item = menu_select.find_all{|key,value|key[item]}
     @orders[quantity] = menu_item
     @total << menu_item.values.map{|i|i*quantity}
     "#{quantity} X #{item} added to basket"
@@ -30,7 +30,7 @@ class Order
     @orders.empty?
   end
 
-  def menu
+  def menu_select
     @menu.menu_select
   end
 end

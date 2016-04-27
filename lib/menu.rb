@@ -1,5 +1,5 @@
 class Menu
-
+  attr_reader :menu
   def initialize
     @menu = {
       "duck breast with anchovies" => 3.50,
@@ -15,7 +15,7 @@ class Menu
     @menu[item] = price
   end
 
-  def include?(item)
+  def is_included?(item)
     @menu.include?(item)
   end
 
