@@ -11,10 +11,12 @@ describe Restaurant do
   end
   describe "#accept_order" do
     it 'should accept the order' do
-      #test_order.instance_variable_set(:checkout, true)
 
-      allow(test_order).to receive(:user_checked_out?).with(test_order).and_return true
-            #allow(test_order).to receive(:checkout).and_return true
+
+     # allow(test_order).to receive(:user_checked_out?).with(test_order).and_return true
+
+            #allow(test_order).to receive(:check_out).with('args').and_return true
+
       restaurant.accept_order(test_order)
 
       expect(restaurant.order_accepted).to include test_order

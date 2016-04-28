@@ -52,13 +52,13 @@ describe Order do
         new_order.add_item_qty("diet coke", 1)
         new_order.add_item_qty("diet coke", 1)
         new_order.checkout_order(1.98)
-        expect(new_order.checkout).to be_truthy
+        expect(new_order.checked_out).to be_truthy
       end
       it 'does not checkout if the totals do not match' do
         new_order.add_item_qty("diet coke", 1)
         new_order.add_item_qty("diet coke", 1)
         new_order.checkout_order(1.99)
-        expect(new_order.checkout).to be_falsey
+        expect(new_order.checked_out).to be_falsey
       end
     end
 end

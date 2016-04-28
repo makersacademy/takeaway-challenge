@@ -3,12 +3,12 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :order, :checkout
+  attr_reader :order, :checked_out
 
   def initialize (menu_class = Menu)
     @menu = menu_class.new
     @order = []
-    @checkout = false
+    @checked_out = false
   end
 
   def add_item_qty choice, qty
@@ -33,7 +33,7 @@ class Order
   end
 
   def checkout_order(total)
-    total == order_total ? @checkout = true : @checkout = false
+    total == order_total ? @checked_out = true : @checked_out = false
   end
 
   private

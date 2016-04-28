@@ -5,15 +5,15 @@ require_relative 'order'
 
 class Restaurant
 attr_reader :order_accepted
-  def initialize(messenger_class = Messenger, order_class = Order)
+  def initialize(messenger_class = Messenger)#, order_class = Order)
     @messenger = messenger_class.new
-    @order = order_class.new
     @order_accepted = []
   end
 
-  def accept_order(user)
-   raise "order not accepted please try again" unless user_checked_out? user
-    "order accepted"
+  def accept_order(user, order_class=Order)
+    @order = order_class
+   #raise "order not accepted please try again" unless user_checked_out? user
+    #{}"order accepted"
     @order_accepted << user.order
   end
 
@@ -22,8 +22,8 @@ attr_reader :order_accepted
     confirm_order(order_complete)
   end
   private
-    def user_checked_out? (object)
-    object.checkout
+    def user_checked_out?(object)
+    object.checked_out
   end
 
   def confirm_order(confirmed_order)
