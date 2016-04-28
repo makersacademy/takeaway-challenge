@@ -11,15 +11,19 @@ describe Restaurant do
   end
   describe "#accept_order" do
     it 'should accept the order' do
-
-
-     # allow(test_order).to receive(:user_checked_out?).with(test_order).and_return true
-
-            #allow(test_order).to receive(:check_out).with('args').and_return true
-
+      allow(test_order).to receive(:user_checked_out?).with(test_order).and_return true
+      allow(test_order).to receive(:order).and_return test_order
       restaurant.accept_order(test_order)
-
       expect(restaurant.order_accepted).to include test_order
+    end
+  end
+  describe "#order_complete" do
+    it 'removes the first order from the array' do
+      allow(test_order).to receive(:user_checked_out?).with(test_order).and_return true
+      allow(test_order).to receive(:order).and_return test_order
+      restaurant.accept_order(test_order)
+      restaurant.order_complete
+      expect(restaurant.order_accepted).to_not include test_order
     end
   end
 end

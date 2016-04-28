@@ -21,6 +21,10 @@ attr_reader :order_accepted
   def deliver
     confirm_order(order_complete)
   end
+
+  def order_complete
+    @order_accepted.shift
+  end
   private
     def user_checked_out?(object)
     object.checked_out
@@ -31,9 +35,7 @@ attr_reader :order_accepted
   end
 
 
-  def order_complete
-    @order_accepted.shift
-  end
+
 end
 
 # r = Restaurant.new
