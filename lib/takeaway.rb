@@ -9,7 +9,6 @@ class Takeaway
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
     @order = order
-    neat_list
   end
 
   def print_menu
@@ -18,9 +17,14 @@ class Takeaway
   end
 
   def select
-    choices = select_sort
-    @selection = TTY::Prompt.new.multi_select("Select food?", choices)
-    @order.items(@selection)
+    @prompt = TTY::Prompt.new
+    @selection = @prompt.multi_select("Select food items below:", select_sort)
+    another_selection
+    @order.sum_items(@selection)
+  end
+
+  def print_receipt
+    @order.receipt
   end
 
   private
@@ -35,6 +39,12 @@ class Takeaway
       array << "#{@menu.list.keys[i]}: #{@menu.list.values[i]}"
     end
     array
+  end
+
+  def another_selection
+    while @prompt.yes?('Would you like to order more items?')
+      @selection.concat(@prompt.multi_select("Select food?", select_sort))
+    end
   end
 
 end

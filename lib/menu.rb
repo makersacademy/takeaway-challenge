@@ -1,4 +1,3 @@
-require_relative './takeaway.rb'
 require 'net/http'
 require 'json'
 
