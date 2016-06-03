@@ -7,8 +7,9 @@ class Order
 
   def sum_items(array)
     @selected_items = array
-    values = array.map{ |string| string.scan(/£(.+)$/) }
-    @total = '%.2f' % values.flatten.map(&:to_f).reduce(0, :+)
+    values = array.map{ |string| string.scan(/([-]*\d+.\d+)$/) }.flatten
+    fail message if values.any? {|value| value.to_f < 0}
+    @total = '%.2f' % values.map(&:to_f).reduce(0, :+)
   end
 
   def receipt
@@ -22,7 +23,7 @@ class Order
     @receipt = <<-EOM
 
     The Fat Duck Restaurant
-    #{@selected_items.to_yaml}
+    #{@selected_items.sort.to_yaml}
     Total: #{('£'+@total).to_yaml}
 
     Thank you! Your order was placed and
@@ -33,7 +34,12 @@ class Order
 
     EOM
   end
+
+  def message
+    "Error! Sum total is incorrect!"
+  end
 end
+
 
 
 
