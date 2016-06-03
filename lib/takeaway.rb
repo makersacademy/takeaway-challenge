@@ -11,9 +11,8 @@ class Takeaway
     @order = order
   end
 
-  def print_menu
-    puts "#{neat_list}"
-    neat_list
+  def menu
+    @menu.list.to_yaml
   end
 
   def select
@@ -23,15 +22,11 @@ class Takeaway
     @order.sum_items(@selection)
   end
 
-  def print_receipt
+  def receipt
     @order.receipt
   end
 
   private
-
-  def neat_list
-    neat_list = @menu.list.to_yaml
-  end
 
   def select_sort
     array = []

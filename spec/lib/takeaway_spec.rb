@@ -6,7 +6,7 @@ describe Takeaway do
 
   describe '#print_receipt' do
     it 'it has a menu' do
-      expect(takeaway.print_menu).to eq "---\ntest: '2'\n"
+      expect(takeaway.menu).to eq "---\ntest: '2'\n"
     end
   end
 

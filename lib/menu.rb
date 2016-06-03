@@ -1,5 +1,8 @@
 require 'net/http'
 require 'json'
+require 'dotenv'
+Dotenv.load
+
 
 class Menu
 
@@ -11,7 +14,7 @@ class Menu
 
   private
 
-  KEY = '6c28ebd31abd7d19ae5899fd425b8509'
+  KEY = ENV['FOOD_API_KEY']
 
   def self.build
     @food_prices = []
@@ -34,7 +37,5 @@ class Menu
     Hash[*Hash[*@food_prices].sort.flatten]
   end
 end
-
-
 
 
