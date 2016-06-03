@@ -25,6 +25,9 @@ class Order
 
   private
 
+  #CURRENTLY EXPERIMENTING, a couple of class extractions needed here
+  #potentially a receipt and text class.
+
   def formatted_receipt
     @receipt = <<-EOM
 
