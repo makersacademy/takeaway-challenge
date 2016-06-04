@@ -6,4 +6,8 @@ class Menu
   def show
     @menu
   end
+
+  def select(item, quantity=1)
+    fail 'unknown item inputted, please enter an item on the menu' if !(@menu.include? item)
+  end
 end

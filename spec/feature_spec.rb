@@ -11,8 +11,11 @@ describe 'Feature' do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  # it 'so I can order a meal, I want to select from available dishes' do
-  #   menu.select('chips').to eq '1 chips added to the basket'
-  # end
+  it 'so I can order a meal, I want to select from available dishes' do
+    menu = Menu.new
+    menu.select('chips')
+    menu.select('milkshake', 3)
+    expect{menu.select('cake')}.to raise_error 'unknown item inputted, please enter an item on the menu'
+  end
 
 end
