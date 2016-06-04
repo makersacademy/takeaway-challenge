@@ -8,3 +8,5 @@ marlon = Customer.new(menu)
 marlon.choose("rice", 3)
 marlon.choose("bread", 5)
 p marlon.order.balance
+marlon.order.confirm(8)
+marlon.see_menu

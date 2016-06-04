@@ -15,6 +15,14 @@ class Order
     add_to_balance(item, quantity)
   end
 
+  def confirm(money)
+    if money == @balance
+      Messenger.new.send
+    else
+      p "Incorrect total"
+    end
+  end
+
   private
 
   def add_to_balance(item, quantity)

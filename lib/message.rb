@@ -1,1 +1,0 @@
-#sends message to customer
