@@ -1,10 +1,10 @@
-require_relative './menu.rb'
-require_relative './order.rb'
+require_relative 'menu'
+require_relative 'order'
 require 'tty-prompt'
 require 'yaml'
 
 
-class Takeaway
+class MenuSelector
 
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu

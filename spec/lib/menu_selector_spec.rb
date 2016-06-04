@@ -1,6 +1,6 @@
-require 'takeaway'
+require 'menu_selector'
 
-describe Takeaway do
+describe MenuSelector do
   subject(:takeaway) { described_class.new(menu) }
   let(:menu) { double(:menu, list: {"test" => '2'}) }
 
