@@ -23,10 +23,12 @@ describe Order do
   end
 
   describe '#add' do
-    it "adds to the order" do
-      order = Order.new('milkshake',2)
-      p "#{order.view['milkshake']}"
-      expect{order.add(milkshake(2))}.to change{order.view['milkshake']}.by(2)
+    it "adds a new item to the order" do
+      order.add('oreos',1)
+      expect(order.view).to include('oreos' => 1)
+    end
+    it "increases the quantity of an existing item" do
+      expect{order.add('milkshake',2)}.to change{order.view['milkshake']}.by(2)
     end
   end
 end

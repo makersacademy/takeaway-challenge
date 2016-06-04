@@ -7,18 +7,21 @@ class Order
 
   def add(item, quantity=1)
     check_input(item)
-    return @order[item] += quantity if @order[item]
-    @order = {item => quantity}
+    return order[item] += quantity if order[item]
+    @order[item] = quantity
   end
 
   def view
-    @order
+    order
   end
 
   def place
+    Calculator.new(@order)
   end
 
   private
+
+  attr_reader :order
 
   def check_input(item)
     fail 'unknown item inputted, please enter an item on the menu' if check_menu(item) == false
