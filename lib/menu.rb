@@ -1,5 +1,7 @@
 class Menu
 
+  attr_reader :menu
+
   def initialize
       @title = "chinese delivery"
       @menu = {
@@ -15,7 +17,7 @@ class Menu
     menu_string = ""
     @menu.each do |number,dish|
        dish.each do |dish,price|
-        menu_string << ("#{number} : #{dish} = #{price} " + "\n")
+        menu_string << ("#{number} : #{dish} = #{price}" + "\n")
         end
       end
       return menu_string
@@ -23,7 +25,3 @@ class Menu
 
 
 end
-
-chinese = Menu.new
-
- print chinese.list

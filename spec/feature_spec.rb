@@ -8,7 +8,7 @@ describe 'Feature Test' do
     chinese = Menu.new
     chinese.list
     order = Order.new
-    order.add_item("item")
+    order.add_item(1)
     order.view_order
     order.check_total
     order.place_order
