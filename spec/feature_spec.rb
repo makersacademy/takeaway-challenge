@@ -26,7 +26,7 @@ describe 'Feature' do
     menu = Menu.new
     menu.show
     order = Order.new('milkshake', 1)
-    order.add('oreo', 2)
+    order.add('oreos', 2)
     order.place
     #storage
     #calculator

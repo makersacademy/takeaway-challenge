@@ -7,7 +7,7 @@ class Order
 
   def add(item, quantity=1)
     check_input(item)
-    return @order += {item => quantity} if @order[item]
+    return @order[item] += quantity if @order[item]
     @order = {item => quantity}
   end
 
