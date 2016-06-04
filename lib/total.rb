@@ -15,6 +15,7 @@ class Total
         @total += (item[1] * menu.menu_card[item[0]])
       end
     end
+    @total
   end
 
   def show_total
