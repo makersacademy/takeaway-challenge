@@ -21,7 +21,7 @@ class Menu
   end
 
   def has_item?(item)
-    menu_card.has_key?(item)
+    menu_card.key?(item)
   end
 
   private :pretty_print_menu

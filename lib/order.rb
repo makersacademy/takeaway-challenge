@@ -7,7 +7,7 @@ class Order
 
   def add(item, number)
     menu_object = Menu.new
-    if !(menu_object.has_item?(item))
+    if !menu_object.has_item?(item)
       puts "Sorry this item is not present in the menu :("
       @order_made
     else
