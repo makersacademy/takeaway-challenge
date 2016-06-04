@@ -22,9 +22,8 @@ describe Order do
 
     it 'displays the current order with a subtotal' do
       order.add_item(1)
-      expect(order.view_order).to eq 'Items: Won Ton Soup
-
-      Total: 8'
+      order.add_item(2)
+      expect(order.view_order).to eq "Items: Won Ton Soup = 8, Chilli Chicken = 6, Total: 14"
     end
   end
 
