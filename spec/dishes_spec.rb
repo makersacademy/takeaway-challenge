@@ -11,4 +11,5 @@ describe Dish do
     expect(dish.price).to eq(4.50)
   end
 
+  
 end

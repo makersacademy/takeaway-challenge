@@ -3,15 +3,15 @@ class Dish
   attr_reader :item
 
   def initialize(name, price)
-    @item = { :name => name, :price => price }
+    @dish = { name: name, price: price }
   end
 
   def name
-    @item[:name]
+    @dish[:name]
   end
 
   def price
-    @item[:price]
+    @dish[:price]
   end
 
 end
