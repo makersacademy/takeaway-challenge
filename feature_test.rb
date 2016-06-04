@@ -16,4 +16,12 @@ order = Order.new
 order.add("pork", 7)
 order.add("duck", 2)
 order.add("chicken", 6)
-order.order_made
+
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+order = Order.new
+order.add("pork", 7)
+order.add("chicken", 6)
+total = Total.new(order)
+total.show_total()

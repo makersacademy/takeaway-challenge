@@ -1,4 +1,5 @@
 require './lib/order'
+require './lib/total'
 
 class Menu
   attr_reader :menu_card
