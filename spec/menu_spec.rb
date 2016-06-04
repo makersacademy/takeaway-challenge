@@ -1,4 +1,4 @@
-require 'menu'
+
 
 describe Menu do
   it 'should display the complete menu' do

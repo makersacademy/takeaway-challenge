@@ -1,3 +1,5 @@
+require './lib/order'
+
 class Menu
   attr_reader :menu_card
   def initialize
@@ -16,6 +18,10 @@ class Menu
     menu_card.each do |key,value|
       puts "#{key} : #{value}£"
     end
+  end
+
+  def has_item?(item)
+    menu_card.has_key?(item)
   end
 
   private :pretty_print_menu
