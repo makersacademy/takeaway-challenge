@@ -5,6 +5,7 @@ describe Order do
 
   describe 'responds to' do
     it {is_expected.to respond_to(:add).with(2).arguments}
+    it {is_expected.to respond_to(:place)}
   end
 
   it "accepts an item from the menu and a quantity" do
@@ -22,8 +23,10 @@ describe Order do
   end
 
   describe '#add' do
-    xit "" do
-
+    it "adds to the order" do
+      order = Order.new('milkshake',2)
+      p "#{order.view['milkshake']}"
+      expect{order.add(milkshake(2))}.to change{order.view['milkshake']}.by(2)
     end
   end
 end
