@@ -11,6 +11,4 @@ mushypeas = Dish.new("Mushy Peas", 1.50)
 
 pieshop = Menu.new("Pie Shop Menu")
 
-pieshop.add_to_menu(chickenstew)
-
-pieshop.show_menu
+pieshop.add_to_menu(chickenstew, beefpie, leekpie, vegie, fishpie, chips, mushypeas)

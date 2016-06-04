@@ -11,8 +11,8 @@ class Menu
     @menu << args
   end
 
-  def remove_from_menu(dish)
-    @menu.delete(dish)
+  def remove_from_menu(*args)
+    @menu.delete(args)
   end
 
   def show_menu
