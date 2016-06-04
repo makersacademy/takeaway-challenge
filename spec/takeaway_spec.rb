@@ -16,11 +16,10 @@ describe Takeaway do
     it "responds to #select_food" do
       expect(takeaway).to respond_to(:select_food).with(1).arguments
     end
-  end
 
     it "returns the menu selection on input" do
        expect(takeaway.select_food).to include("Fish and Chips")
+    end
   end
-
 
 end
