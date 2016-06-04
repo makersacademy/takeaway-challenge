@@ -23,7 +23,7 @@ class MenuSelector
   end
 
   def receipt
-    @order.receipt
+    @order.send_receipt
   end
 
   private

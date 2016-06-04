@@ -16,10 +16,10 @@ describe Order do
     end
   end
 
-  describe '#receipt' do
-    it 'returns a receipt' do
+  describe '#send_receipt' do
+    it 'send items to receipt class to get receipt' do
       order.sum_items(array)
-      expect(order.receipt).to respond_to(:split)
+      expect(order.send_receipt).to respond_to(:split)
     end
   end
 end
