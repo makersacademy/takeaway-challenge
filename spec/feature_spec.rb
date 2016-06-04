@@ -13,8 +13,8 @@ describe 'Feature' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   it 'so I can order a meal, I want to select from available dishes' do
-    Order.new('chips')
-    Order.new('milkshake', 3)
+    order = Order.new('chips')
+    order.add('milkshake', 3)
     expect{Order.new('cake')}.to raise_error 'unknown item inputted, please enter an item on the menu'
   end
   # As a customer
