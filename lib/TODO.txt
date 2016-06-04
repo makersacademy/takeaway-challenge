@@ -1,0 +1,9 @@
+#TODO list for takeaway challenge:
+
+1. Pass returns menu selection test - line 20 takeaway_spec
+2. User Story 3: TDD Multiple selections in takeaway_spec
+3. Extract any further classes + REFACTOR
+4. Twilio to work
+5. User Story 4: Twilio interaction
+6. README.md + Clear up code / Hound violations / coveralls 98%+
+7. Additional task
