@@ -3,7 +3,7 @@ require 'printer'
 describe Printer do
 
   subject(:printer){ described_class.new }
-  let (:menu){double :menu}
+  let(:menu) {double :menu}
 
   describe "#print" do
 
