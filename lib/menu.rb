@@ -1,3 +1,4 @@
+require_relative 'food_list_formatter'
 require 'net/http'
 require 'json'
 require 'dotenv'
@@ -17,9 +18,8 @@ class Menu
   KEY = ENV['FOOD_API_KEY']
 
   def self.build
-    @food_prices = []
-    @parsed_json = add_data
-    data_sort
+    formatter = FoodListFormatter.new(add_data)
+    formatter.convert_sterling
   end
 
   def self.add_data
@@ -28,14 +28,8 @@ class Menu
     response = Net::HTTP.get(uri)
     JSON.parse(response)
   end
-
-  def self.data_sort
-    0.upto(30) do |i|
-      @food_prices << @parsed_json[i]['name']
-      @food_prices << "£#{ '%.2f' % [@parsed_json[i]['portion'].to_i * 1.2] }"
-    end
-    Hash[*Hash[*@food_prices].sort.flatten]
-  end
 end
+
+
 
 
