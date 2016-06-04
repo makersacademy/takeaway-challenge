@@ -16,3 +16,4 @@ order = Order.new
 order.add("pork", 7)
 order.add("duck", 2)
 order.add("chicken", 6)
+order.order_made
