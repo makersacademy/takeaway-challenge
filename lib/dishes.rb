@@ -1,15 +1,17 @@
 class Dish
 
-  attr_reader :menu
+  attr_reader :item
 
-  def initialize
-    @menu = { chicken: 3, pork: 4, tuna: 2, salmon: 3, beef: 5 }
+  def initialize(name, price)
+    @item = { :name => name, :price => price }
   end
 
-  def show_list
-    @menu.each do | item, price|
-      puts "#{item}: £#{price}"
-    end
+  def name
+    @item[:name]
+  end
+
+  def price
+    @item[:price]
   end
 
 end
