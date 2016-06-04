@@ -10,10 +10,12 @@ describe Order do
     end
   end
 
-  describe '#total'
-  it 'totals the items in the order' do
-    order.add_item(1)
-    expect(order.total).to eq 8
+  describe '#total' do
+
+    it 'totals the items in the order' do
+      order.add_item(1)
+      expect(order.total).to eq 8
+    end
   end
 
   describe '#view_order' do

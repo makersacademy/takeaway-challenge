@@ -17,11 +17,11 @@ class Order
   def total
     count = 0
     order.each do |order_line|
-      order_line.inject do |sum, item|
-
+      order_line.each do |item|
+      count += item[1]
       end
     end
-
+   return count
   end
 
   def view_order
@@ -36,5 +36,6 @@ order = Order.new
 
 order.add_item(1)
 order.add_item(2)
+p order.order
 p order.total
 
