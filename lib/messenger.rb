@@ -1,23 +1,18 @@
 #sends message to customer
-require 'twilio-ruby'
+class Messenger
 
-
-# class Messenger
-#
-#   account_sid = "{{ aAC30b9000efac4bc5220d635af980a7564 }}"
-#   auth_token = "{{ 8f9a5ba6f0a69b3e911942a76aeef4d5 }}"
-#
-#   @client = Twilio::REST::Client.new account_sid, auth_token
-#
-#   @client.messages.create(
-#   from: '+447545253288',
-#   to: '+447545253288',
-#   body: 'Hey there!'
-# )
+  require 'twilio-ruby'
 
   def send
-    p "order confirmed, expected deliver in one hour. Thank you."
+    account_sid = 'AC30b9000efac4bc5220d635af980a7564'
+    auth_token = '8f9a5ba6f0a69b3e911942a76aeef4d5'
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.account.messages.create({
+    :from => '+442870032048',
+    :to => '+447545253088',
+    :body =>
+    "Order Received. Estimated delivery time: #{Time.now.hour + 1}:#{ Time.now.min }. Thank you."
+    })
   end
-
-
 end
