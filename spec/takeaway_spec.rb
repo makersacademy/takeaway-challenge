@@ -2,21 +2,25 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) {Takeaway.new}
+  subject(:takeaway) { described_class.new }
+  let(:meal1) {double "Fish and Chips" }
 
   describe "#view_menu" do
-    it "responds to #view_menu" do
-      expect(takeaway).to respond_to :view_menu
-    end
-  
     it "prints out the menu on request" do
-    expect(takeaway.view_menu).to include("Fish and Chips")
+    expect(takeaway.view_menu).to eq MENU
     end
 
   end
 
+  describe "#select_food" do
+    it "responds to #select_food" do
+      expect(takeaway).to respond_to(:select_food).with(1).arguments
+    end
+  end
 
+    it "returns the menu selection on input" do
+       expect(takeaway.select_food).to include("Fish and Chips")
+  end
 
 
 end
-
