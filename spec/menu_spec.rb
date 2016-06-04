@@ -4,8 +4,8 @@ describe Menu do
   subject(:menu) { described_class.new }
   describe 'responds to' do
     it { is_expected.to respond_to :show }
-    it { is_expected.to respond_to(:select).with(1).argument }
-    it { is_expected.to respond_to(:select).with(2).arguments }
+    it { is_expected.to respond_to(:order).with(1).argument }
+    it { is_expected.to respond_to(:order).with(2).arguments }
   end
 
   describe '#show' do
@@ -14,10 +14,10 @@ describe Menu do
     end
   end
 
-  describe '#select' do
-    context 'when an unknown item is selected'
+  describe '#order' do
+    context 'when an unknown item is ordered'
       it 'raises an error' do
-        expect{menu.select('cake')}.to raise_error 'unknown item inputted, please enter an item on the menu'
+        expect{menu.order('cake')}.to raise_error 'unknown item inputted, please enter an item on the menu'
       end
   end
 end
