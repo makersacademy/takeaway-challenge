@@ -11,4 +11,11 @@ describe Customer do
         expect(customer).to respond_to(:see_menu)
     end
   end
+
+  describe "choose" do
+
+    it "should respond to order with 2 arguments" do
+      expect(customer).to respond_to(:choose).with(2).arguments
+    end
+  end
 end
