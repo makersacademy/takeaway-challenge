@@ -1,5 +1,5 @@
-#keeps account of order
 require_relative 'messenger'
+
 class Order
 
   attr_reader :order, :total_price
@@ -17,7 +17,11 @@ class Order
   end
 
   def confirm(amount)
-    amount == @total ? Messenger.new.send : print {"Incorrect Total"}
+    if amount == @total_price
+       Messenger.new.send
+    else
+       print "Incorrect Total"
+    end
   end
 
   private

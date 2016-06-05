@@ -1,4 +1,3 @@
-#sends message to customer
 class Messenger
 
   require 'twilio-ruby'
@@ -10,9 +9,9 @@ class Messenger
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.account.messages.create({
     :from => '+442870032048',
-    :to => '+44754523288',
+    :to => '+447545253288',
     :body =>
-    "Order Received. Estimated delivery time: #{delivery_time }. Thank you."
+    "Order received. Estimated delivery_time #{delivery_time}. Thank you."
     })
   end
 

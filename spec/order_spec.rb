@@ -17,7 +17,7 @@ describe Order do
 
     it "should update order" do
       order.select("rice", 1)
-      expect(order.order).to eq(["rice" => 1])
+      expect(order.order).to eq({"rice" => 1})
     end
 
     it "should update total price" do

@@ -1,5 +1,3 @@
-#prints menu
-
 class Printer
 
   def print(hash)

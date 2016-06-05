@@ -1,6 +1,5 @@
-#gets food from menu
-require './lib/printer.rb'
-require './lib/order.rb'
+require_relative 'printer.rb'
+require_relative 'order.rb'
 
 class Customer
 
