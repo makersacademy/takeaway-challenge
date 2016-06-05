@@ -1,10 +1,11 @@
-require_relative "menu"
+# require_relative "menu"
+require "./data/menu_list"
 
 # Understands how to handle a shopping basket
 class Order
   attr_reader :basket, :menu
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = MENU)
     @menu = menu
     @basket = []
   end
@@ -25,7 +26,7 @@ class Order
   private
 
   def find_item_price(name)
-    @menu.items[name.to_sym]
+    @menu[name.to_sym]
   end
 
 end

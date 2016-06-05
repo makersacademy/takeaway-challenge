@@ -1,4 +1,5 @@
 require_relative "order"
+require_relative "message"
 
 # Understands how to take orders from the customer
 class Takeaway
@@ -8,7 +9,7 @@ class Takeaway
   end
 
   def menu
-    current_order.menu.items.dup
+    current_order.menu.dup
   end
 
   def total
@@ -26,7 +27,7 @@ class Takeaway
 
   def checkout
     fail "Nothing to check out!" if empty?
-    charge_customer; @current_order = Order.new
+    complete_order
     basket
   end
 
@@ -35,10 +36,20 @@ class Takeaway
   attr_reader :current_order
 
   def empty?
-    current_order.empty?
+    basket.empty?
   end
 
   def charge_customer
     @profit += total
+  end
+
+  def generate_message(message = Message.new)
+    message.generate
+  end
+
+  def complete_order
+    charge_customer
+    puts generate_message
+    @current_order = Order.new
   end
 end

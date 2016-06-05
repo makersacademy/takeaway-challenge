@@ -1,8 +1,7 @@
 require "order"
-require "menu"
 
 describe Order do
-  let(:menu) { instance_double(Menu, items: { "Espresso": 2 }) }
+  let(:menu) { { "Espresso": 2 } }
   subject { described_class.new(menu) }
 
   describe "#update_basket" do
