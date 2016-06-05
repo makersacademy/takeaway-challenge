@@ -28,4 +28,5 @@ class SMS
   def delivery_time
     (Time.now + 60 * 60).strftime(TIME_FORMAT)
   end
+
 end
