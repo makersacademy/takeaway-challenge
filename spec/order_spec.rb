@@ -8,16 +8,15 @@ describe Order do
 
   let(:customer_order) do
     {
-      "spring roll"=>0.99,
-      "char sui bun"=>3.99
+      chicken: 2,
+      fish: 1
     }
   end
 
-
   describe '#add' do
     it 'adds a dish to an order' do
-      order.add "spring roll", 0.99
-      order.add "char sui bun", 3.99
+      order.add(:chicken, 2)
+      order.add(:fish, 1)
       expect(order.customer_order).to eq(customer_order)
     end
   end
