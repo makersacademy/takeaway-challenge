@@ -4,9 +4,10 @@ class Menu
 	attr_reader :menu
 
 	MENU = {"Chicken rice" => 5,
-					  "Steak frites" => 6,
+					  "Steak frites" => 8,
 					  "Red prawn curry" => 7,
 					"Burger" => 5,
+					"Fries" => 2,
 					"Spaghetti bolognese" => 6}
 
 	def initialize(menu = MENU)
@@ -27,4 +28,5 @@ class Menu
 		raise "#{item.capitalize} is not on the menu!" unless menu.key?(item.capitalize)
 		true
 	end
+	
 end	

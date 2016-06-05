@@ -19,7 +19,9 @@ describe Menu do
 	describe '#price' do
 		it 'shows the price of the item' do
 			expect(subject.price("Burger")).to eq 5
-			expect(subject.price("Steak frites")).to eq 6
+			expect(subject.price("Steak frites")).to eq 8
+			expect(subject.price("Fries")).to eq 2
+			expect(subject.price("Chicken rice")).to eq 5
 		end
 	end
 
