@@ -1,18 +1,17 @@
 require 'order'
 
 describe Order do
-  subject(:order) { described_class.new('milkshake',2)}
+  subject(:order) { described_class.new('cake',2)}
 
   describe 'responds to' do
     it {is_expected.to respond_to(:add).with(2).arguments}
     it {is_expected.to respond_to(:place)}
-    it {is_expected.to respond_to(:accept)}
+    it {is_expected.to respond_to(:confirm)}
     it {is_expected.to respond_to(:deduct)}
-
   end
 
   it "accepts an item from the menu and a quantity" do
-    expect{Order.new('milkshake', 4)}.not_to raise_error
+    expect{Order.new('cake', 4)}.not_to raise_error
   end
   context 'when no quantity is inputted' do
     it 'should assume a default input of 1' do
@@ -21,7 +20,7 @@ describe Order do
   end
   context 'when an unknown item is ordered' do
     it 'raises an error' do
-      expect{Order.new('cake', 4)}.to raise_error 'unknown item inputted, please enter an item on the menu'
+      expect{Order.new('matress', 4)}.to raise_error 'unknown item inputted, please enter an item on the menu'
     end
   end
 
@@ -31,13 +30,13 @@ describe Order do
       expect(order.view).to include('oreo' => 1)
     end
     it "increases the quantity of an existing item" do
-      expect{order.add('milkshake',2)}.to change{order.view['milkshake']}.by(2)
+      expect{order.add('cake',2)}.to change{order.view['cake']}.by(2)
     end
   end
 
   describe '#deduct' do
     it 'deducts from the order' do
-      expect{order.deduct('milkshake',1)}.to change{order.view['milkshake']}.by(-1)
+      expect{order.deduct('cake',1)}.to change{order.view['cake']}.by(-1)
     end
     context "when trying to deduct an unordered item" do
       it 'returns an error' do

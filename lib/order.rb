@@ -1,5 +1,5 @@
 require_relative 'calculator'
-
+require_relative 'texter'
 
 class Order
 
@@ -32,12 +32,12 @@ class Order
     calculator.summerize
   end
 
-  def accept
-    time = Time.now + 7200
-    #text = Text.new
-    #text.message
-    #@order = nil
-    # p "Your confirmation should be along shortly!"
+  def confirm
+    time = Time.now + 3600
+    text = Texter.new
+    text.message(time)
+    @order = nil
+    p "Your confirmation should be along shortly!"
   end
 
   private

@@ -6,13 +6,19 @@ class Checkout
   end
 
   def order_summery
-    p "Your Order"
-    p "Item     Quantity"
-    @order.map{|k,v| p "#{k}       #{v}"}
-    puts
-    p "Order Total: £#{@total_price}"
-    p "#{@total_price}"
-    puts
-    p "confirm your order to continue, or add and subtract to your order until you're happy :)!"
+    p "*****'---------------'******"
+    p "****'                  '****"
+    p "**'                      '**"
+    p "*'                        '*"
+    p "*        Your Order        *"
+    p "*'========================'*"
+    p "*     Item     Quantity   . *"
+    p "*'========================'*"
+    @order.map{|k,v| p ".       #{k}      #{v}        ."}
+    p "*'========================'*"
+    p "       Order Total: £#{@total_price}      "
+    p "*'                        '*"
+    p "**'                      '**"
+    p "******'---------------'*****"
   end
 end

@@ -29,7 +29,7 @@ describe Calculator do
       end
     end
     context 'when two oreo costing £3 and one milkshae costing £2 is inputted' do
-      subject(:calculator) { described_class.new({'oreo' => 2, 'milkshake' => 1}) }
+      subject(:calculator) { described_class.new({'oreo' => 2, 'cake' => 1}) }
       it 'should sum to 8' do
         expect(calculator.sum_price).to eq 8
       end
