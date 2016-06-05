@@ -1,6 +1,5 @@
 describe Total do
-
-
+  
   describe '#calculate_total' do
     it 'calculates the total' do
       order = Order.new
