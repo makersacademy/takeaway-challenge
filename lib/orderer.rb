@@ -1,38 +1,40 @@
 class Orderer
 
-  attr_reader :menu, :ordered
+  attr_reader :list, :ordered
 
-  def initialize(menu = [], messenger)
-    @menu = menu.freeze
-    @ordered = {}
+  def initialize(list = [], messenger)
+    @list = list.freeze
+    @ordered = Hash.new(0)
     @messenger = messenger
   end
-
-  def show_all_dishes
-    all = ""
-    menu.each_with_index do |dish, i|
-      all << "#{ i }: #{ dish }\n"
-    end
-    all
-  end
   
-  def order(dish_id, amount)
-    ordered[menu[dish_id]] = ( ordered[menu[dish_id]] || 0 ) + amount
+  def order(obj_id, quantity)
+    ordered[list[obj_id]] += quantity
+  end
+
+  def show_all
+    list.each_with_index.inject(""){ |sum, (obj, i)| sum  << "#{ i }: #{ obj }\n" }
   end
 
   def show_order
-    total = 0.0
-    ordered.inject(""){ |sum, (dish, amount)|
-      total += dish.price * amount
-      sum << "#{ dish }:\tx#{ amount }\tSubtotal:\t#{ dish.price * amount }"
-    } + "\nTotal: #{ total }"
+    ordered.inject(""){ |sum, (obj, quantity)| sum + obj.subtotal_line(quantity) } + total_line
   end
   
   def order_total
-    ordered.inject(0){ |sum, (dish, amount)| sum + (dish.price * amount) }
+    ordered.inject(0){ |sum, (obj, quantity)| sum + obj.subtotal(quantity) }
   end
 
   def confirm
     @messenger.send(show_order)
+  end
+  
+  private
+  
+  def order_line(obj, quantity)
+    obj.subtotal_line
+  end
+
+  def total_line
+    "\nTotal: #{ order_total }"
   end
 end

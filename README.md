@@ -1,3 +1,62 @@
+Takeaway Challenge Complete
+===========================
+
+An Orderer object takes 2 arguments to initialize:
+an array of Dish objects and a Messenger object
+```
+array_of_dishes = Chinese_Restaurant.new.menu
+messenger = Messenger.new
+o = Orderer.new( array_of_dishes, messenger )
+```
+
+Orderer objects respond to the following interface:
+```
+o.show_all
+# => line formatted string showing menu
+o.order( object_id_as_shown_in_#show_all, quantity )
+# => inputs order for object identified by id, and returns total quantity ordered
+o.show_order
+# => line formatted string showing total order
+o.confirm
+# => confirms the order by sending #send(#show_order) to messenger
+```
+
+A Dish object takes 2 or 3 arguments to initialize
+```
+name_string = "Chow mein"
+price_number = 4.99
+optional_currency_char = "$" # default set to £ if no arg is passed
+d = Dish.new( name_string, price_number, optional_currency_char )
+```
+
+Dish objects respond to the following interface:
+```
+dish.name
+  # => returns the name
+dish.price
+  # => returns the price
+dish.to_s
+  # => returns a string showing name and price
+dish.subtotal(quantity)
+  # => returns the subtotal given a quantity
+dish.subtotal_line(quantity)
+  # => returns a string showing the dish and the subtotal
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Takeaway Challenge
 ==================
 ```
