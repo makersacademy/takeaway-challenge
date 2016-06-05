@@ -40,6 +40,7 @@ class MenuSelector
     while @prompt.yes?('Would you like to order more items?')
       @selection.concat(@prompt.multi_select("Select food?", select_sort))
     end
+    @selection
   end
 
 end

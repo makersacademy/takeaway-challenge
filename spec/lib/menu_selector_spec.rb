@@ -1,8 +1,9 @@
 require 'menu_selector'
+require 'stringio'
 
 describe MenuSelector do
   subject(:selector) { described_class.new(menu,order) }
-  let(:order) { double(:order, send_receipt: "receipt")}
+  let(:order) { double(:order, send_receipt: "receipt", sum_items: "1.00")}
   let(:menu) { double(:menu, list: {"test" => '2'}) }
 
   describe '#menu' do
@@ -11,11 +12,14 @@ describe MenuSelector do
     end
   end
 
-  # describe '#select' do
-  #   it 'allows user to select from menu' do
-  #     expect(takeaway.select).to respond_to(:chars)
-  #   end
-  # end
+  describe '#select' do
+     before(:each) do
+      $stdin = StringIO.new("\rn")
+     end
+    it 'allows user to select from menu' do
+      expect(selector.select).to eq "1.00"
+    end
+  end
 
   describe '#receipt' do
     it 'should return a receipt' do
