@@ -17,16 +17,28 @@ class Takeaway
     menu.view_menu
   end
 
-  def order(item, quantity)
+  def order(item, quantity = 1)
+    fail "Sorry '#{item}' is not an item on the menu" if view_menu.include?(item.to_sym) == false
+    @current_order[item] = quantity
     add_to_total(item,quantity)
     "4x #{item} added to basket, current total: #{total}"
   end
 
+  def basket
+    basket_string_constructor
+  end
+
   private
 
-  attr_reader current_order
+  attr_reader :current_order
 
   def add_to_total(item,quantity)
     quantity.times {@total += menu.view_menu[item.to_sym]}
+  end
+
+  def basket_string_constructor
+    return_string = ''
+    current_order.each{ |x, y| return_string << "#{y}x #{x} (@#{view_menu[x.to_sym]} each), "}
+    return_string + "current total: #{total}"
   end
 end

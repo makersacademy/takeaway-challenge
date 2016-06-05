@@ -27,7 +27,11 @@ describe Takeaway do
     it 'adds correct number of items to basket' do
       takeaway.order("chips", 4)
       takeaway.order("fish", 2)
-      expect(takeaway.basket).to eq ("4x chips, 2x fish, current total: 15.94")
+      expect(takeaway.basket).to eq ("4x chips (@1.99 each), 2x fish (@3.99 each), current total: 15.94")
+    end
+
+    it 'returns error if dish does not match any item menu' do
+      expect{takeaway.order("dogfood")}.to raise_error ("Sorry 'dogfood' is not an item on the menu")
     end
   end
 end
