@@ -1,8 +1,8 @@
 # Takeaway Challenge
 
-Weekend 2 Challenge: Created a program that allows a customer to view a menu, order dishes, and receive a text confirmation upon confirming their order using the Twilio API.
+Weekend 2 Challenge: Created a program that allows a customer to view a menu, order dishes, and receive a text confirmation upon confirming their order using the Twilio API. (See Makers Academy brief & user stories below.)
 
-## My Solution
+## How to Use
 
 ```
 1. Clone this repo to your local machine
