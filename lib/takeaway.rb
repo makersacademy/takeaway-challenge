@@ -5,10 +5,9 @@ require_relative 'message'
 class Takeaway
 
 
-  def initialize(message = Message.new)
+  def initialize
     @shopping_basket = []
     @bill = []
-    @message = message
   end
 
   def view_menu
@@ -30,7 +29,8 @@ class Takeaway
   end
 
   def confirm_order
-   @message.send_text
+   message = Message.new
+   message.send_text
   end
 
   private
