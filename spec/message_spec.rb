@@ -11,7 +11,7 @@ describe Message do
   end
 
   before do
-    allow(subject).to receive(:send_message).and_return(str)
+    allow(subject).to receive(:client_send)
   end
 
   describe "#send_message" do
