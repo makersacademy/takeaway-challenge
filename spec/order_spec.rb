@@ -27,7 +27,19 @@ describe Order do
     end
   end
 
+  describe '#checkout' do
+    it 'should successfully checkout if called with correct total' do
+      order.add_item(1)
+      order.add_item(2)
+      expect(order.checkout(14)).to eq "Thank you your order has been placed"
+    end
 
+    it 'should raise an error if called with incorrect total' do
+      order.add_item(1)
+      order.add_item(2)
+      expect{order.checkout(13)}.to raise_error("Error - the total is incorrect")
+    end
+  end
 end
 
 

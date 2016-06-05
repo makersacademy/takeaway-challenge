@@ -35,16 +35,13 @@ class Order
     return order_string
   end
 
+  def checkout(total)
+    fail "Error - the total is incorrect" if total != self.total
+    "Thank you your order has been placed"
+  end
+
   private
 
   attr_reader :menu
 end
-
-order = Order.new
-
-order.add_item(1)
-order.add_item(2)
-p order.order
-p order.total
-p order.view_order
 
