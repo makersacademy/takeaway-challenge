@@ -11,12 +11,12 @@ module TakeAway
   def self.order(total, *entries)
     order = Order.new
     entries.each do |entry|
-      entry[:quantity].times{ order.add_item(MENU[entry[:item_n]-1]) }
+      entry[:quantity].times{ order.add_item(MENU[entry[:item_n]]) }
     end
     fail PRICE_ERROR if order.total != total
   end 
 
-  PRICE_ERROR = 'Cannot place order: total provided is incorrect' 
+  PRICE_ERROR = 'Cannot place order: total provided is incorrect'.freeze
 
   MENU = [{ description: 'Roast pork',       price: 15 },
           { description: 'Steamed broccoli', price:  3 },  

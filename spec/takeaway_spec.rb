@@ -1,8 +1,8 @@
 describe TakeAway do
 
   subject(:takeaway) { described_class }
-  let(:select1) { {item_n: 1, quantity: 1} }
-  let(:select2) { {item_n: 2, quantity: 1} }
+  let(:select1) { {item_n: 0, quantity: 1} }
+  let(:select2) { {item_n: 1, quantity: 1} }
 
   describe ':show_menu' do
     it 'is a class method of TakeAway' do

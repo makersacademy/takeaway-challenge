@@ -20,12 +20,12 @@ describe MenuParser do
             { description: 'Steamed broccoli', price:  3 },  
             { description: 'Roasted spinach',  price:  8 }].freeze
 
-  STRING_MENU_1 = "1 - Roast pork - £15\n"\
-                  "2 - Steamed broccoli - £3\n"\
-                  "3 - Roasted spinach - £8\n"\
-                  "4 - Smelly fruit - £12\n".freeze
+  STRING_MENU_1 = "0 - Roast pork - £15\n"\
+                  "1 - Steamed broccoli - £3\n"\
+                  "2 - Roasted spinach - £8\n"\
+                  "3 - Smelly fruit - £12\n".freeze
 
-  STRING_MENU_2 = "1 - Roast pork - £15\n"\
-                  "2 - Steamed broccoli - £3\n"\
-                  "3 - Roasted spinach - £8\n".freeze
+  STRING_MENU_2 = "0 - Roast pork - £15\n"\
+                  "1 - Steamed broccoli - £3\n"\
+                  "2 - Roasted spinach - £8\n".freeze
 end 
