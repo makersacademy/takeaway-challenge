@@ -29,7 +29,7 @@ include Twilio
   end
 
   def num_items
-    @total_items = @order.inject(0) { |sum, (item, qty)| sum + qty }
+    @total_items = @order.inject(0) { |sum, (_, qty)| sum + qty }
   end
 
   def confirmation
