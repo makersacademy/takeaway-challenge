@@ -30,6 +30,7 @@ describe Takeaway do
     describe "#checkout" do
       before do
         allow(subject).to receive(:empty?).and_return(true)
+        allow(subject).to receive(:send_message)
       end
 
       it "should raise an error if there's nothing to check out" do
@@ -66,6 +67,7 @@ describe Takeaway do
       before do
         allow(order).to receive(:calculate_total).and_return(0)
         allow(subject).to receive(:empty?).and_return(false)
+        allow(subject).to receive(:send_message)
       end
 
       it "should reset the order by clearing the basket" do

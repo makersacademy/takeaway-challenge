@@ -10,9 +10,13 @@ describe Message do
     "at #{ delivery_time.strftime('%I:%M%P') }"
   end
 
-  describe "#generate" do
-    it "should generate a new message string" do
-      expect(subject.generate(total)).to eq(str)
+  before do
+    allow(subject).to receive(:send_message).and_return(str)
+  end
+
+  describe "#send_message" do
+    it "should return a new message string" do
+      expect(subject.send_message(total)).to eq(str)
     end
   end
 end

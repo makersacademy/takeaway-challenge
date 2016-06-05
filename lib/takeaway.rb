@@ -43,12 +43,12 @@ class Takeaway
     @profit += total
   end
 
-  def generate_message(message = Message.new)
-    message.generate(total)
+  def send_message(message = Message.new)
+    message.send_message(total)
   end
 
   def complete_order
-    msg = generate_message
+    msg = send_message
     @current_order = Order.new
     msg
   end

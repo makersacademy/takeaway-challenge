@@ -73,7 +73,7 @@ cafe.total
 # => 8
 ```
 
-Completing an order (returns basket):
+Completing an order:
 ```ruby
 cafe.checkout
 # => "Thank you! Your order came to £8. Our baristas are new, so expect your drinks at 03:49pm
