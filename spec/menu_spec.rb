@@ -9,8 +9,8 @@ describe Menu do
 
 
   context '#display' do
-    it 'displays the menu' do
-      expect{menu.display}.to output(Menu::MENU).to_stdout 
+    it 'returns the menu' do
+      expect(menu.display).to eq(Menu::MENU)
     end
   end
 
@@ -28,20 +28,16 @@ describe Menu do
 
 
   context '#check_order' do
-    it 'returns the appropriate message showing dishes and total cost' do
-      allow(order).to receive(:add_dishes)
-      menu.choose_dishes([1,1],[3, 2])
-      allow(order).to receive(:show_dishes) {order.dishes}
-      expect(menu.check_order).to eq("Chicken Fried Rice x 1 : \u00A3 5\nStir-Fried Noodles x 2 : \u00A3 14\nTotal Price: \u00A319")
+    it 'checks that menu responds to #check_order' do
+      expect(menu).to respond_to(:check_order)
     end
   end
 
-  context '#close_order' do
+
+  context '#place_order' do
     it 'responds to #close_order' do
-      expect(menu).to respond_to(:close_order)
+      expect(menu).to respond_to(:place_order)
     end
   end
-
-
 
 end

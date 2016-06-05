@@ -1,4 +1,5 @@
-require 'twilio-ruby'
+# require 'rubygems'
+# require 'twilio-ruby'
 
 class Order
 
@@ -26,21 +27,26 @@ class Order
 
     
 
-    account_sid = 'ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
+    # account_sid = 'AC5a0ec0b92a0c1d9afafa12aa99484109'
+    # auth_token = '1f2b5fadaed64b3b4b1459830aeeb229'
 
-    # # set up a client to talk to the Twilio REST API
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    # # # # set up a client to talk to the Twilio REST API
+    # @client = Twilio::REST::Client.new account_sid, auth_token
 
-    # # alternatively, you can preconfigure the client like so
-    # Twilio.configure do |config|
-    #   config.account_sid = account_sid
-    #   config.auth_token = auth_token
-    # end
+    # # # alternatively, you can preconfigure the client like so
+    # # Twilio.configure do |config|
+    # #   config.account_sid = account_sid
+    # #   config.auth_token = auth_token
+    # # end
 
-    # # and then you can create a new client without parameters
-    # @client = Twilio::REST::Client.new
+    # # # and then you can create a new client without parameters
+    # # @client = Twilio::REST::Client.new
 
+    # @client.messages.create(
+    #   from: '+15005555006',
+    #   to: '+447733366818',
+    #   body: 'Hey there!'
+    # )
 
 
 
@@ -49,7 +55,7 @@ class Order
 
 end
 
-order = Order.new
-order.add_dishes([[1,1], [3, 2], [1,1]])
-p order.place_order
+# order = Order.new
+# order.add_dishes([[1,1], [3, 2], [1,1]])
+# p order.place_order
 
