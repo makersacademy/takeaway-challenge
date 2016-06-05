@@ -36,6 +36,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 ## Interface
+The expected interface for a customer to use is `irb` or `pry`. The following notes and accompanying code explain how to interact with the program.
 
 Getting Started:
 ```ruby
@@ -53,7 +54,7 @@ cafe.menu
 # => {:Espresso=>2, :Americano=>3 }
 ```
 
-Adding items (returns basket):
+Adding items to the basket (returns updated basket):
 ```ruby
 # cafe.add_to_basket(name, quantity)
 cafe.add_to_basket("Espresso")
@@ -78,3 +79,12 @@ Completing an order:
 cafe.checkout
 # => "Thank you! Your order came to £8. Our baristas are new, so expect your drinks at 03:49pm
 ```
+
+## Twilio Text Alerts
+The baristas are still in training, so it takes them 60 minutes to make the coffees :joy:. Because of this, the cafe needs to keep the customers updated via text message once they have checked out their order.
+
+This program uses the `twilio-ruby` gem to send the texts. In order for them to work, the following environment variables need to be set, either in `.bash_profile` or using the `dotenv` gem:
+- `TWILIO_SID` - Twilio Account SID
+- `TWILIO_KEY` - Twilio Auth Token
+- `TWILIO_NUM` - Twilio-verified phone number for sending messages
+- `MOBILE_NUM` - Phone number for receiving messages
