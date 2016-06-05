@@ -4,7 +4,7 @@ describe TakeAway do
   subject(:take_away) { described_class.new }
 
   before do
-    allow(take_away).to receive(:gets).and_return("2 pizza, 3 Wrap")
+    allow(take_away).to receive(:gets).and_return("2-pizza, 3-Wrap")
   end
 
   describe "#show_menu" do
@@ -17,6 +17,8 @@ describe TakeAway do
     it 'lets select a number of dishes for an order' do
       expect(take_away).to respond_to :take_order
     end
+
+
   end
 
   describe "#order_price" do

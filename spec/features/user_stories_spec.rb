@@ -3,7 +3,7 @@ describe "User Stories" do
   subject(:take_away) { TakeAway.new }
 
   before do
-    allow(take_away).to receive(:gets).and_return("2 pizza, 3 Wrap")
+    allow(take_away).to receive(:gets).and_return("2-pizza, 3-Wrap")
   end
   # As a customer
   # So that I can check if I want to order something
@@ -25,7 +25,6 @@ describe "User Stories" do
    it 'So I can check the order is correct, it gives me the total price' do
      take_away.take_order
      expect { take_away.order_price }.not_to raise_error
-
    end
   # As a customer
   # So that I am reassured that my order will be delivered on time
