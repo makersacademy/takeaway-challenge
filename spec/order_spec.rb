@@ -6,7 +6,7 @@ let(:order) {described_class.new}
 
 
   describe "responds to" do
-    it { is_expected.to respond_to(:total_bill) }
+
     it { is_expected.to respond_to(:place_order).with(1).argument }
     it { is_expected.to respond_to(:show_menu)}
   end
