@@ -3,12 +3,26 @@ require 'order'
 describe Order do
 
   subject(:order) { described_class.new(menu) }
-  let(:menu) { double :menu}
+  let(:menu) { {"rice" => 1, "pasta" => 1, "bread" => 1,} }
 
   describe "#select" do
 
     it "should respond to select with 2 arguments" do
       expect(order).to respond_to(:select).with(2).arguments
+    end
+
+    it "should raise error if dish is not on the menu" do
+      expect{order.select("chicken", 3)}.to raise_error("Not on the menu.")
+    end
+
+    it "should update order" do
+      order.select("rice", 1)
+      expect(order.order).to eq(["rice" => 1])
+    end
+
+    it "should update total price" do
+      order.select("rice", 1)
+      expect(order.total_price).to eq(1)
     end
   end
 
@@ -18,10 +32,5 @@ describe Order do
       expect(order).to respond_to(:select).with(2).arguments
     end
 
-    # it "should return true if money equals balance" do
-    #   allow(order).to receive(:select){2}
-    #   expect(order.confirm(2)).to eq(true)
-    # end
   end
-
 end

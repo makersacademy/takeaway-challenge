@@ -2,8 +2,8 @@
 
 class Printer
 
-  def print(menu)
-    menu.each {|k,v| p "#{k}: £#{v}"}
+  def print(hash)
+    hash.each { |dish, price| p "%s: £%.2f" % [dish.capitalize, price] }
   end
-
+  
 end

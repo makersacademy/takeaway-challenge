@@ -2,13 +2,16 @@
 
 class Order
 
+  attr_reader :order, :total_price
+
   def initialize(menu)
     @menu = menu
     @order = []
-    @total = 0
+    @total_price = 0
   end
 
   def select(item, quantity)
+    fail "Not on the menu." unless @menu.include?(item)
     @order << {item => quantity}
     add_to_balance(item, quantity)
   end
@@ -21,8 +24,8 @@ class Order
 
   def add_to_balance(item, quantity)
     quantity.times do
-      @total += @menu[item]
+      @total_price += @menu[item]
     end
-  end
 
+  end
 end

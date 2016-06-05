@@ -4,9 +4,10 @@ require './lib/order.rb'
 
 class Customer
 
+  DEFAULT_MENU = {"rice" => 1, "pasta" => 1, "bread" => 1,}
   attr_reader :order
 
-  def initialize(menu)
+  def initialize(menu = DEFAULT_MENU)
     @printer = Printer.new
     @order = Order.new(menu)
     @menu = menu
