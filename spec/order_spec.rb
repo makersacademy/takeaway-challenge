@@ -48,7 +48,8 @@ describe Order do
 
 			it 'sends a text to the customer' do
 			  expect(messenger).to respond_to :send_text
-		  end
+			end
+
 	end
 
 end

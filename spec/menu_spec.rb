@@ -22,6 +22,15 @@ let(:menu) {described_class.new}
 
 	end
 
+	context '#food_list' do
 
+		it 'allows you to see the food list' do
+
+			menu.add_to_menu(:horse, 2.00)
+			expect(menu.food_list).to include :horse
+
+		end
+
+	end
 
 end

@@ -21,4 +21,4 @@ lazana.order_item("poppadum", 10)
 
 p lazana.see_basket
 
-# lazana.complete_order
+lazana.complete_order
