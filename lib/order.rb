@@ -1,6 +1,7 @@
 class Order
 
   def initialize
+    @current_order = Array.new
   end
 
   def add

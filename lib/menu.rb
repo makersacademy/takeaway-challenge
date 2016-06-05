@@ -15,8 +15,11 @@ class Menu
     'Sympaty'       => 1.00,
     'Close'         => 1.00,
     'Confort'       => 1.00,
-  }
+  }.freeze
 
-  def show
+  def to_s
+    MENU.each do |key, value|
+      "#{key}: £#{'%.02f' % value}"
+    end
   end
 end
