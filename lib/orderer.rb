@@ -2,7 +2,7 @@ class Orderer
 
   attr_reader :list, :ordered
 
-  def initialize(list = [], messenger)
+  def initialize(list, messenger)
     @list = list.freeze
     @ordered = Hash.new(0)
     @messenger = messenger
@@ -30,10 +30,6 @@ class Orderer
   
   private
   
-  def order_line(obj, quantity)
-    obj.subtotal_line
-  end
-
   def total_line
     "\nTotal: #{ order_total }"
   end
