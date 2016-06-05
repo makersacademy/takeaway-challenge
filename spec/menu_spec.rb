@@ -26,4 +26,9 @@ describe Menu do
   it "confirms if an item is not on the menu" do
     expect(menu.has_item?(:fish)).to be false
   end
+
+  it "knows the price of items" do
+    expect(menu.price(:burger)). to eq(items[:burger])
+  end
+
 end

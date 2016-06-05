@@ -15,4 +15,8 @@ attr_reader :items
   def has_item?(item)
     !items[item].nil?
   end
+
+  def price(item)
+    items[item]
+  end
 end
