@@ -2,6 +2,7 @@ require 'order'
 
 describe Order do
   let(:order) { Order.new('Stephen Dawes', 123_456, 'pieshop') }
+  let(:total_cost) { 9 }
 
 
   it 'should have a name' do
@@ -27,8 +28,8 @@ describe Order do
   end
 
   it 'add the total cost of the items' do
-    # order.add_to_order("Chicken Pie", 2)
-    # expect(order.total_cost).to 9
+    order.add_to_order("Chicken Pie", 2)
+    expect(order.total_cost).to eq(total_cost)
   end
 
   it 'adds the total number of items in order' do

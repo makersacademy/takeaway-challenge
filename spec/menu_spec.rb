@@ -2,8 +2,12 @@ require 'menu'
 
 describe Menu do
   let(:menu_object) { Menu.new("Menu 1") }
-  let(:menu_list) { Menu.new.show_menu}
+  let(:menu_list) { [] }
   let(:dish) { double :dish, name: "Chicken Stew", price: 4.50}
+
+  it 'has a list of dishes with prices' do
+    expect(menu_object.show_menu).to eq(menu_list)
+  end
 
   it 'should have a name' do
     expect(menu_object.name).to eq("Menu 1")
@@ -20,6 +24,7 @@ describe Menu do
     expect(menu_object.menu.count).to eq(0)
   end
 
-  
+
+
 
 end
