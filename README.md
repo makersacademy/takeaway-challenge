@@ -10,8 +10,24 @@
 <ol>
 <li>Fork repo to your own GitHub account</li>
 <li>Clone repository to your system and create a local repository</li>
-<li>Use RVM to to either use/install Ruby version 2.3.1; e.g. ```rvm use ruby-2.3.1``` or ```rvm install ruby-2.3.1``` </li>
-<li>run ```bundle install```; run ```gem install bundler``` if you don't have Bundler!</li>
+<li>Use RVM to to either use/install Ruby version 2.3.1; e.g. 
+```
+rvm use ruby-2.3.1
+``` 
+or 
+```
+rvm install ruby-2.3.1
+``` 
+</li>
+<li>run 
+```
+bundle install
+```
+; run 
+```
+gem install bundler
+``` 
+if you don't have Bundler!</li>
 </ol>
 
 ## Program Outline
