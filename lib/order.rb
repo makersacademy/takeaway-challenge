@@ -18,10 +18,20 @@ class Order
     @total = '%.2f' % values.map(&:to_f).reduce(0, :+)
   end
 
-  def send_receipt
-    @timed_receipt = TimedReceipt.new @selected_items, @total
-    send_order_to_text
+  def send_receipt(receipt_doc: nil)
+    @timed_receipt = receipt_doc || TimedReceipt.new(@selected_items, @total)
     @timed_receipt.receipt
+  end
+
+  def send_order_to_text(text_doc: nil)
+    text = text_doc || Text.new({
+      account_sid: ENV['TWILIO_ACCOUNT_SID'],
+      auth_token: ENV['TWILIO_AUTH_TOKEN'],
+      from: ENV['TWILIO_NUMBER'],
+      to: ENV['MY_NUMBER'],
+      body: @timed_receipt.receipt
+    })
+    text.send_text
   end
 
   private
@@ -34,16 +44,6 @@ class Order
     user_selected_items.map{ |item| item.scan(/([-]*\d+.\d+)$/) }.flatten
   end
 
-  def send_order_to_text
-    text = Text.new({
-      account_sid: ENV['TWILIO_ACCOUNT_SID'],
-      auth_token: ENV['TWILIO_AUTH_TOKEN'],
-      from: ENV['TWILIO_NUMBER'],
-      to: ENV['MY_NUMBER'],
-      body: @timed_receipt.receipt
-    })
-    text.send_text
-  end
 end
 
 

@@ -26,6 +26,10 @@ class MenuSelector
     @order.send_receipt
   end
 
+  def text
+    @order.send_order_to_text
+  end
+
   private
 
   def select_sort
