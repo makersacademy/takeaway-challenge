@@ -2,9 +2,10 @@
 
 
 MENU = [
-   { name: "Fish and Chips", price: 5.50 },
-   { name: "Sunday Lunch", price: 12 },
-   { name: "Haggis", price: 6 },
-   { name: "Tuna and Pasta", price: 4.50 },
-   { name: "Doughnuts", price: 3 }
+    ( "WELCOME TO FINE DINING CUISINE" ),
+    { food: "Fish and Chips", price: 5.50 },
+    { food: "Sunday Lunch", price: 12 },
+    { food: "Haggis", price: 6 },
+    { food: "Tuna and Pasta", price: 4.50 },
+    { food: "Doughnuts", price: 3 }
   ].freeze
