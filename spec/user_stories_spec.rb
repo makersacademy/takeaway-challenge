@@ -4,6 +4,9 @@ require 'takeaway'
 
 describe 'user stories' do
 
+	let(:item) { double(:item) }
+	let(:qty) { double(:qty) }
+
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
@@ -22,7 +25,7 @@ describe 'user stories' do
 		menu = Menu.new
 		takeaway = Takeaway.new
 		order = Order.new
-		expect { takeaway.add_item }.not_to raise_error
+		expect { takeaway.add_item(item, qty) }.not_to raise_error
 	end
 
 end
