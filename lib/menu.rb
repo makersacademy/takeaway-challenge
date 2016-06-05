@@ -38,4 +38,8 @@ class Menu
     # false and vice versa.
   end
 
+  def price(dish)
+    dishes[dish]
+  end
+
 end

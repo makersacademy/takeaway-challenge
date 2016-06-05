@@ -1,4 +1,4 @@
-# Allows customer to place order
+# Takeaway functionality: print menu and place an order
 
 require 'order'
 
@@ -17,6 +17,7 @@ class Takeaway
     dishes.each { |dish, quantity |
       order.add(dish, quantity)
     }
+    order.total
   end
 
   private

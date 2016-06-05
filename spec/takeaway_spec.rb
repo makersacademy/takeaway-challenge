@@ -17,7 +17,7 @@ describe Takeaway do
   # "printed_menu", which is defined below as the specific string output we
   # would like to see the print method return.
   let(:printed_menu) { "Pizza: 9.99" }
-  let(:order) { double(:order) }
+  let(:order) { instance_double("Order", total: 12.98) }
   let(:dishes) { {pizza: 9.99, burger: 2.99} }
 
   describe "#print_menu" do
@@ -40,6 +40,14 @@ describe Takeaway do
   #   in the hash that represent the ordered dishes) on a takeaway object that
   #   the order object receives 2 calls to its "add" method
   #
+    end
+  end
+
+  describe "#total" do
+    it "knows the order total" do
+      allow(order).to receive(:add)
+      total = takeaway.place_order(dishes)
+      expect(total).to eq(12.98)
     end
   end
 end

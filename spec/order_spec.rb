@@ -25,6 +25,10 @@ describe Order do
     allow(menu).to receive(:has_dish?).with(:pizza).and_return(true)
     allow(menu).to receive(:has_dish?).with(:burger).and_return(true)
     allow(menu).to receive(:has_dish?).with(:chips).and_return(true)
+
+    allow(menu).to receive(:price).with(:pizza).and_return(9.99)
+    allow(menu).to receive(:price).with(:burger).and_return(2.99)
+    allow(menu).to receive(:price).with(:chips).and_return(1.99)
   end
   # Before block executes pre-determined code before and after each example
   # that follows after it.
@@ -40,9 +44,7 @@ describe Order do
 
   describe "#add" do
     it "selects several dishes from the menu" do
-      order.add(:pizza, 9.99)
-      order.add(:burger, 2.99)
-      order.add(:chips, 1.99)
+      create_order
   # The above simulates calling the "add" method three times on an instance of
   # the order class with the given arguments.
       expect(order.dishes).to eq(dishes)
@@ -60,4 +62,21 @@ describe Order do
       expect { order.add(:chowmein, 1.99) }.to raise_error NoItemERROR, "Chowmein is not on the menu!"
     end
   end
+
+  describe "#order" do
+    it "calculates the total for the order" do
+      order.add(:pizza, 2)
+      order.add(:burger, 1)
+      order.add(:chips, 3)
+      total = 28.94
+      expect(order.total).to eq(total)
+    end
+  end
+
+end
+
+def create_order
+  order.add(:pizza, 9.99)
+  order.add(:burger, 2.99)
+  order.add(:chips, 1.99)
 end
