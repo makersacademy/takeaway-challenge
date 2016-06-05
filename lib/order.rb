@@ -10,6 +10,13 @@ class Order
   end
 
   def add(item, quantity)
+    raise 'Dish not available' unless @menu.has_dish?(item)
     @customer_order[item] = quantity
+  end
+
+  private
+
+  def has_dish?
+    !menu[item].nil?
   end
 end

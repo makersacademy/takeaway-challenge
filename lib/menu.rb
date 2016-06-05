@@ -4,9 +4,9 @@ class Menu
 
   def initialize
     @dishes = {
-                "spring roll"=>0.99,
-                "char sui bun"=>3.99,
-                "pork dumpling"=>2.99
+                "chicken"=>4.99,
+                "fish"=>3.99,
+                "veg"=>2.99
               }
   end
 
