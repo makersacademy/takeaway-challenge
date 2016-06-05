@@ -6,6 +6,9 @@ class Checkout
   end
 
   def order_summery
+  end
+
+  def order_summery_pretty
     p "*****'---------------'******"
     p "****'                  '****"
     p "**'                      '**"

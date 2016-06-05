@@ -33,7 +33,7 @@ class Order
   end
 
   def confirm
-    time = Time.now + 3600
+    time = get_time
     text = Texter.new
     text.message(time)
     @order = nil
@@ -43,6 +43,10 @@ class Order
   private
 
   attr_reader :order
+
+  def get_time
+    Time.now + 3600
+  end
 
   def check_input(item)
     fail 'unknown item inputted, please enter an item on the menu' if check_menu(item) == false
