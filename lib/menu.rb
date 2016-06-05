@@ -13,4 +13,8 @@ class Menu
 		end.join(", ")
 	end
 
+	def has_item?(item)
+		list.include?(item)
+	end
+
 end

@@ -18,4 +18,9 @@ end
 		expect(menu.show).to eq(shown_menu)
 	end
 
+	it "checks if an item is on the menu" do
+		expect(menu.has_item?(:Pizza)).to be true
+		expect(menu.has_item?(:Chicken)).to be false
+
+	end
 end
