@@ -1,4 +1,11 @@
 require_relative 'menu'
+<<<<<<< HEAD
+=======
+require_relative 'messenger'
+require 'dotenv'
+Dotenv.load
+
+>>>>>>> 898e39b... added env
 
 class Takeaway
   attr_reader :menu, :total
