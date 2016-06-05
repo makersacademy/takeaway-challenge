@@ -28,6 +28,12 @@ Run irb (`irb`).
 Import TakeAway (`require './lib/takeaway'`).
 
 Import SmsInterface (`require './lib/sms_interface'`).
+
 Type `TakeAway.show_menu` to see what is on the menu.
+
 Place an order using this syntax: `TakeAway.order(15, '+4477....', {item_n: 3, quantity: 1}, {item_n: 1, quantity: 1})`, whereby 15 is the total cost of the order, followed by telephone number, followed by one hash per item, including item number and quantity.
 
+##Potential improvements
+The SmsInterface shoud be injected as a dependency into the TakeAway module (this is not the case currently).
+
+The next feature is to allow users to place orders directly from the phone.
