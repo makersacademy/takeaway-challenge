@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class.new(menu) }
-  let(:menu) { double(:menu, price: {"chips" => 3}) }
+  let(:menu) { double(:menu) }
   let(:dish) { double(:dish) }
   let(:quantity) { double(:quantity) }
 
@@ -32,6 +32,8 @@ describe Order do
         "============================================================\n"\
         "                                        Total cost: £   9.00"
       order.add("chips",3)
+      allow(menu).to receive(:price).with("chips") { 3 }
+      p order.items
       expect(order.summary).to eq summary
     end
   end
