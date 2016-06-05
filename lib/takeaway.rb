@@ -21,7 +21,7 @@ class Takeaway
 	end
 
 	def checkout
-		p "Your total is £#{@order.total}. Please type 'order.confirm' to confirm your order."
+		p "Your total is £#{@order.total}. Please use '#confirm_order' to confirm your order."
 	end
 
 

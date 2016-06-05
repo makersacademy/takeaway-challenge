@@ -5,7 +5,6 @@ class Order
 	def initialize(menu = JapaneseMenu.new)
 		@menu = menu
 		@order = Hash.new(0)
-		@order_total = 0
 	end
 
 	def add(item, quantity)
@@ -19,10 +18,9 @@ class Order
 	end
 
 	def total
-		@order.map do |item, quantity|
-			@order_total += (@menu.price(item) * quantity)
-			@order_total.reduce(:+)
-		end
+		@order_total = 0
+		@order.each {|item, quantity| @order_total += (@menu.price(item) * quantity)}
+		@order_total
 	end
 
 end
