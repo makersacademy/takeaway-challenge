@@ -38,13 +38,13 @@ describe Takeaway do
       end
     end
 
-    describe "#add" do
+    describe "#add_to_basket" do
       before do
         allow(order).to receive(:update_basket)
       end
 
       it "should return the basket items" do
-        subject.add("Espresso", 2)
+        subject.add_to_basket("Espresso", 2)
         expect(subject.basket).to eq(["Espresso", "Espresso"])
       end
     end

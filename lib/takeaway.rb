@@ -19,7 +19,7 @@ class Takeaway
     current_order.basket
   end
 
-  def add(name, quantity = 1)
+  def add_to_basket(name, quantity = 1)
     current_order.update_basket(name, quantity)
     basket
   end

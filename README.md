@@ -55,9 +55,9 @@ cafe.menu
 
 Adding items (returns basket):
 ```ruby
-# cafe.add(name, quantity)
-cafe.add("Espresso")
-cafe.add("Americano", 2)
+# cafe.add_to_basket(name, quantity)
+cafe.add_to_basket("Espresso")
+cafe.add_to_basket("Americano", 2)
 # => ["Espresso", "Americano", "Americano"]
 ```
 
