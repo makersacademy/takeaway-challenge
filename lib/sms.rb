@@ -1,6 +1,7 @@
 require "twilio-ruby"
 
 class SMS
+
   TIME_FORMAT = "%H:%M"
 
   def initialize(config, client: nil)
@@ -12,6 +13,10 @@ class SMS
     client.messages.create(message_args)
   end
 
+  private
+
+  attr_reader :client, :config
+
   def message_args
     {
       from: config[:from],
@@ -20,12 +25,7 @@ class SMS
     }
   end
 
-  private
-
-  attr_reader :client, :config
-
   def delivery_time
     (Time.now + 60 * 60).strftime(TIME_FORMAT)
   end
-
 end

@@ -2,6 +2,7 @@
 
 require_relative "takeaway"
 require_relative "menu"
+require_relative "sms"
 
 class Order
 
