@@ -2,11 +2,13 @@ require 'takeaway'
 
 describe Takeaway do
 
-	subject(:takeaway) {described_class.new(menu, order)}
+	subject(:takeaway) {described_class.new(menu, order, sms_class)}
 	let(:menu) {double :menu}
-	let(:order) {double :order, add: ()}
+	let(:order) {double :order, add: (), total: (10)}
 	let(:item) {double :item}
 	let(:quantity) {double :quantity}
+	let(:sms_class) {double :sms_class, new: sms}
+	let(:sms) {double :sms}
 	
 	describe '#view_menu' do
 		it 'allows customer to view menu' do
@@ -33,9 +35,22 @@ describe Takeaway do
 	describe '#checkout' do
 		it 'allows customer to check total' do
 			takeaway.add_to_order(item, quantity)
-			expect(order).to receive(:total)
+			expect(order).to receive(:total).twice
 			takeaway.checkout
-	end
+		end
 	end
 
+	describe 'confirm_order' do
+		it 'raises error if wrong amount entered' do
+			takeaway.add_to_order(item, quantity)
+			message = 'Incorrect amount! Please try again.'
+			expect{takeaway.confirm_order('£5')}.to raise_error message
+		end
+		it 'sends an sms if correct amount entered' do
+			takeaway.add_to_order(item, quantity)
+			expect(sms_class).to receive(:new)
+			takeaway.confirm_order('£10')
+		end
+	end
+	
 end

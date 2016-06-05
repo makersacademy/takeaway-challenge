@@ -17,8 +17,13 @@ class JapaneseMenu
 		end
 	end
 
-	def price (item)
+	def price(item)
 		@menu[item]
+	end
+
+	def has_item?(item)
+		raise "#{item.capitalize} is not on the menu!" unless @menu.has_key?(item)
+		true
 	end
 
 end

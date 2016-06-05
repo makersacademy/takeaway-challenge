@@ -8,10 +8,12 @@ class Order
 	end
 
 	def add(item, quantity)
+		@menu.has_item?(item)
 		@order[item] += quantity
 	end
 
 	def view
+		raise "Your order is empty!" if @order.empty?
 		@order.map do |item, quantity|
 			p "#{item} x #{quantity}"
 		end	

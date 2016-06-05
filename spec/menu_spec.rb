@@ -16,4 +16,11 @@ describe JapaneseMenu do
 		end
 	end
 
+	describe '#has_item?' do
+		it 'raises an error if item is not on menu' do
+			message = "Abc is not on the menu!"
+			expect{menu.has_item?("abc")}.to raise_error message
+		end
+	end
+
 end
