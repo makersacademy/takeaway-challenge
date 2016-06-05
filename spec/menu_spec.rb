@@ -14,7 +14,7 @@ describe Menu do
     expect(menu.items).to eq (items)
   end
 
-  it "prints a menu with items and prices"do
+  it "prints a menu with items and prices" do
     printed_menu = "Burger £1.99, Chips £1.00"
     expect(menu.show).to eq (printed_menu)
   end
