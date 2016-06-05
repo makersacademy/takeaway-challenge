@@ -3,9 +3,10 @@ require 'takeaway'
 describe Takeaway do
     
   subject(:takeaway) { described_class.new }
-  let(:meal1) { 1 }
-  let(:meal2) { 2 }
-  let(:user_input) { double (user_input) }
+  let(:meal1) { 0 }
+  let(:meal2) { 1 }
+  let(:amount) { 1 }
+  let(:user_input) { double user_input }
 
   describe "#view_menu" do
     it "prints out the menu on request" do
@@ -21,19 +22,20 @@ describe Takeaway do
     end
 
     it "returns the menu selection on input" do
-        expect(takeaway).to receive(:gets).and_return(meal1)
-        expect(takeaway.select_food).to eq MENU[1]
+        expect(takeaway).to receive(:gets).and_return(meal1, amount)
+        expect(takeaway.select_food).to eq MENU[0]
     end
   end
   
-  describe "#view_order" do
+  describe "#show_bill" do
 
     it "returns a total of the food inside the basket" do
-        expect(takeaway).to receive(:gets).and_return(meal1)
+        expect(takeaway).to receive(:gets).and_return(meal1, amount)
         takeaway.select_food
-        expect(takeaway).to receive(:gets).and_return(meal2)
+        expect(takeaway).to receive(:gets).and_return(meal2, amount)
         takeaway.select_food
-        expect(takeaway.view_order).to eq 17.5
+        takeaway.view_order
+        expect(takeaway.show_bill).to eq 17.5
     end
   end
 end

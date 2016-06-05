@@ -1,5 +1,4 @@
 #TODO list for takeaway challenge:
-2. Billing and calculation
 3. Extract any further classes + REFACTOR
 4. Twilio to work
 5. User Story 4: Twilio interaction

@@ -2,7 +2,6 @@
 
 
 MENU = [
-    ( "WELCOME TO FINE DINING CUISINE" ),
     { food: "Fish and Chips", price: 5.50 },
     { food: "Sunday Lunch", price: 12 },
     { food: "Haggis", price: 6 },
