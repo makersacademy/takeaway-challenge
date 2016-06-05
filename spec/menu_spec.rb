@@ -17,11 +17,11 @@ describe Menu do
   # modifying the menu class.
   end
 
-  # Tests the :dishes reader method
   describe "#dishes" do
     it "has a list of dishes with prices" do
       expect(menu.dishes).to eq(dishes)
     end
+  # Tests the :dishes reader method
   end
 
   describe "#print" do
@@ -37,14 +37,21 @@ describe Menu do
     it "tells if a dish is on the menu" do
       expect(menu.has_dish?(:pizza)).to be true
     end
+  # Tests that "has_dish?" instance method of Menu class confirms when a
+  # food item IS included in dishes hash.
     it "tells if a dish is on NOT on the menu" do
       expect(menu.has_dish?(:chowmein)).to be false
     end
+  # Tests that "has_dish?" instance method of Menu class confirms when a food
+  # item is NOT included in dishes hash.
   end
 
   describe "#price" do
     it "calculates a price" do
       expect(menu.price(:pizza)).to eq(dishes[:pizza])
     end
+  # Tests that the "price" instance method of Menu class calculates the price of
+  # a food item using hash look up with the food item (the key) returning the
+  # corresponding price (the value)
   end
 end

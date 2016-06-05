@@ -24,6 +24,9 @@ describe Takeaway do
     it "displays menu with the dishes and prices" do
       expect(takeaway.print_menu).to eq(printed_menu)
     end
+  # Tests that the "print_menu" instance method of the Menu class prints the
+  # dishes stored in the dishes variable (i.e. the menu itmes for a particular
+  # takeaway restaurant).
   end
 
   describe "#place_order" do

@@ -1,11 +1,17 @@
 # Menu functionality: stores menu, prints menu & checks if item on menu
 
+require_relative "takeaway"
+require_relative "order"
+
 class Menu
 
   attr_reader :dishes
 
   def initialize(dishes)
     @dishes = dishes
+  # Initializes new instance of Menu class, taking one parameter, a hash of
+  # dishes and prices, which will be the menu, e.g. in the format {pizza: 9.99,
+  # burger: 2.99, chips: 1.99}.
   end
 
   def print
@@ -40,6 +46,8 @@ class Menu
 
   def price(dish)
     dishes[dish]
+   # Looks up the price of a dish in the dishes hash using the dish title as the
+   # key, where the price is the corresponding value.
   end
 
 end

@@ -1,6 +1,5 @@
-# Takeaway functionality: print menu and place an order
-
-require 'order'
+require_relative "menu"
+require_relative "order"
 
 class Takeaway
 
@@ -11,18 +10,22 @@ class Takeaway
 
   def print_menu
     menu.print
+  # Calls the instance method "print" from the Menu class on the value of the
+  # menu variable.
   end
 
   def place_order(dishes)
     dishes.each { |dish, quantity |
       order.add(dish, quantity)
     }
+  #
     order.total
+  # Calls the instance method "total" from the Order class on the value of
+  # the order variable.
   end
 
   private
 
   attr_reader :menu, :order
-  # Delegation used here to delegate menu function to menu object
 
 end
