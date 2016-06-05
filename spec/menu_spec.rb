@@ -3,6 +3,6 @@ require 'menu'
 describe Menu do 
 	# it { should respond_to(:view) }
 	it 'returns menu' do 
-		expect(subject.view).to eq " 1:\t Pizza \t £7.99 \n 2:\t Prawn toast \t £1.5 \n 3:\t Butter chicken \t £3 \n 4:\t The kebab \t £4.9 \n 5:\t The burger \t £3.7 \n 6:\t Sushi \t £5 \n 7:\t Pasta \t £8 \n 8:\t Chicken tikka masala \t £4.5 \n 9:\t Crispy aromatic duck \t £5.75 \n10:\t Chow mein \t £2.99 \n11:\t Ice cream \t £3 \n12:\t Beer \t £2 \n"
+		expect(subject.view).to eq "No.\tPrice\t\tDish \n 1:\t£7.99\t-\tPizza \n 2:\t£1.50\t-\tPrawn toast \n 3:\t£3.00\t-\tButter chicken \n 4:\t£4.90\t-\tThe kebab \n 5:\t£3.70\t-\tThe burger \n 6:\t£5.00\t-\tSushi \n 7:\t£8.00\t-\tPasta \n 8:\t£4.50\t-\tChicken tikka masala \n 9:\t£5.75\t-\tCrispy aromatic duck \n10:\t£2.99\t-\tChow mein \n11:\t£3.00\t-\tIce cream \n12:\t£2.00\t-\tBeer \n"
 	end
 end
