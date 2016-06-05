@@ -28,7 +28,7 @@ class Takeaway
 
 	def confirm_order(total)
 		raise 'Incorrect amount! Please try again.' unless total == "£#{@order.total}"
-		message = "Thank you! Your order was placed and will be delivered before #{(Time.new + 3600).strftime("%H:%M")}"
+		message = "Thank you! Your order was placed and will be delivered before #{(Time.new + 3600).strftime("%H:%M")}."
 		@contact_method_class.new.send(message)
 	end
 

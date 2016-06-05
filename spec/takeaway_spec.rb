@@ -8,7 +8,7 @@ describe Takeaway do
 	let(:item) {double :item}
 	let(:quantity) {double :quantity}
 	let(:sms_class) {double :sms_class, new: sms}
-	let(:sms) {double :sms}
+	let(:sms) {double :sms, send: ()}
 	
 	describe '#view_menu' do
 		it 'allows customer to view menu' do

@@ -11,7 +11,7 @@ describe SMS do
 	describe '#send' do
 		it 'sends an sms' do
 			expect(messages).to receive(:create)
-			sms.send(message, phone_number)
+			sms.send(message)
 		end
 	end
 
