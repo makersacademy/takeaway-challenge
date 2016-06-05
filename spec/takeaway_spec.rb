@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(menu: menu, order: order) }
+  subject(:takeaway) { described_class.new(menu: menu, order: order, sms: sms, config: {}) }
   # The subject is the test subject.  Here we define subject as a newly
   # instantiated instance of the class under test, in this case the Takeaway
   # class.  Our test subject here takes ONE parameter, a menu double.  This is
@@ -18,7 +18,12 @@ describe Takeaway do
   # would like to see the print method return.
   let(:printed_menu) { "Pizza: 9.99" }
   let(:order) { instance_double("Order", total: 12.98) }
+  let(:sms) { instance_double("SMS", deliver: nil) }
   let(:dishes) { {pizza: 9.99, burger: 2.99} }
+
+  before do
+    allow(order).to receive(:add)
+  end
 
   describe "#print_menu" do
     it "displays menu with the dishes and prices" do
@@ -48,9 +53,14 @@ describe Takeaway do
 
   describe "#total" do
     it "knows the order total" do
-      allow(order).to receive(:add)
       total = takeaway.place_order(dishes)
       expect(total).to eq(12.98)
     end
   end
+
+  it "sends an SMS when the order has been placed" do
+    expect(sms).to receive(:deliver)
+    takeaway.place_order(dishes)
+  end
+
 end
