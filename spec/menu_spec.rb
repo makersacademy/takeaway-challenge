@@ -9,7 +9,7 @@ describe Menu do
 
   describe '#show' do
     it 'shows a menu' do
-      expect(menu.show).to include('chips' => '£1', 'oreos' => '£3', 'milkshake' => '£2')
+      expect(menu.show).to include('chips' => 1, 'oreos' => 3, 'milkshake' => 2)
     end
   end
 end

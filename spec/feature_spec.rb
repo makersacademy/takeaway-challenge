@@ -7,7 +7,7 @@ describe 'Feature' do
   # I would like to see a list of dishes with prices
   it 'so I decide to order, I want to see the menu' do
     menu = Menu.new
-    expect(menu.show).to include('chips' => '£1', 'oreos' => '£3', 'milkshake' => '£2')
+    expect(menu.show).to include('chips' => 1, 'oreos' => 3, 'milkshake' => 2)
   end
   # As a customer
   # So that I can order the meal I want
@@ -28,10 +28,20 @@ describe 'Feature' do
     order = Order.new('milkshake', 1)
     order.add('oreos', 2)
     order.place
-    #storage
+    #caclulator.sum_quantity
+    #calculator.sum_price
     #calculator
-    #p checkout
+    # checkout = Checkout.new(order, )
+    #Your Order:
+    # Item    Quantity   Price  Total_Price
+    # oreoes     3        3         9
+    # Milkshake  1        2         2
 
+    #Order Total                    11
+    # checkout.accept
+    # checkout.reject
+    # checkout.confirm
+    # checkout.reject
   end
 
 end

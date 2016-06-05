@@ -6,6 +6,9 @@ describe Order do
   describe 'responds to' do
     it {is_expected.to respond_to(:add).with(2).arguments}
     it {is_expected.to respond_to(:place)}
+    it {is_expected.to respond_to(:accept)}
+    it {is_expected.to respond_to(:reject)}
+
   end
 
   it "accepts an item from the menu and a quantity" do

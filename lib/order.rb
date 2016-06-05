@@ -1,12 +1,15 @@
+require_relative 'calculator'
+
 class Order
 
   def initialize(item, quantity=1)
     check_input(item)
-    @order = {item => quantity}
+    @order = {item => quantity} if !(@order)
   end
 
   def add(item, quantity=1)
     check_input(item)
+    @order = {item => quantity} if !(@order)
     return order[item] += quantity if order[item]
     @order[item] = quantity
   end
@@ -16,9 +19,17 @@ class Order
   end
 
   def place
-    Calculator.new(@order)
+    calculator = Calculator.new(@order)
+    calculator.sum_quantity
+    calculator.sum_price
+    calculator.summerize
   end
 
+  def accept
+  end
+
+  def reject
+  end
   private
 
   attr_reader :order
