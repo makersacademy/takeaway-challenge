@@ -10,7 +10,7 @@ class Messenger
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.account.messages.create({
     :from => '+442870032048',
-    :to => '+447545253288',
+    :to => '+44754523288',
     :body =>
     "Order Received. Estimated delivery time: #{delivery_time }. Thank you."
     })
@@ -23,5 +23,3 @@ class Messenger
   end
 
 end
-
-Messenger.new.send

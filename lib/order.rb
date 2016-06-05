@@ -6,13 +6,13 @@ class Order
 
   def initialize(menu)
     @menu = menu
-    @order = []
+    @order = {}
     @total_price = 0
   end
 
   def select(item, quantity)
     fail "#{item.capitalize} is not on the menu." unless @menu.include?(item)
-    @order << {item => quantity}
+    @order.include?(item) ? @order[item] += quantity : @order[item] = quantity
     add_to_balance(item, quantity)
   end
 
