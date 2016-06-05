@@ -14,6 +14,7 @@ class Order
 	def add_to_order(item, qty)
 		@ordered_items << [item, qty]
 		@running_total += @menu_list[item] * qty
+		"Added #{qty} x #{item} to order. Current total: £#{sprintf('%.2f', @running_total)}"
 	end
 
 	def confirm_order
@@ -21,7 +22,6 @@ class Order
 		messenger = @messenger_class.new(@running_total)
 		messenger.send_text
 	end
-
 
  	def total_correct?
 		ordered_items.map {|x,y|	@menu_list[x] * y}.inject(0, :+) == @running_total

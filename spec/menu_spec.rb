@@ -4,12 +4,24 @@ describe Menu do
 
 let(:menu) {described_class.new}
 
-context '#show_menu' do
+	context '#show_menu' do
 
-	it 'shows a list of available items on the menu' do
-		expect(menu.show_menu).to respond_to :each	end
+		it 'shows a list of available items on the menu' do
+			expect(menu.show_menu).to respond_to :each	
+		end
 
-end
+	end
+
+	context '#add_to_menu' do
+
+		it 'allows you to add to the menu' do
+			menu.add_to_menu(:fish, 2.00)
+			expect(menu.food_list).to include :fish
+
+		end
+
+	end
+
 
 
 end

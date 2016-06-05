@@ -2,15 +2,14 @@
 
 class Menu
 
+	attr_reader :food_list
+
 	def initialize
-		@food_list = { 
-			chicken_korma: 4.50, 
-			lamb_madras: 5.00,
-			prawn_jalfrezi: 6.00,
-			keema_naan: 2.00,
-			poppadum: 0.50,
-			dodgy_omlette: 3.00
-		}
+		@food_list = {}
+	end
+
+	def add_to_menu(item,price)
+		@food_list[item] = price
 	end
 
 	def show_menu
@@ -18,9 +17,5 @@ class Menu
 			p "#{k.to_s.capitalize} is £#{sprintf('%.2f', v)}" 
 		end
 	end
-
-	private
-
-	attr_reader :food_list
 
 end

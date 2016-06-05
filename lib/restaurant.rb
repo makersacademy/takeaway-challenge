@@ -30,7 +30,7 @@ class Restaurant
 		order.total_correct?
 	end
 
-	def show_order
+	def see_basket
 		order.ordered_items
 	end
 
