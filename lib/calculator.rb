@@ -12,12 +12,7 @@ class Calculator
 
   def sum_price
     @total_price = access_menu.map { |k, v| v * @order[k] if @order.key? k }.compact.inject(:+)
-    # total_price = menu.map { |k, v| v * order[k] if order.key? k }
   end
-
-  # def sum_quantity
-  #   @quantity = @order.values.inject(:+) if @order
-  # end
 
   private
 
