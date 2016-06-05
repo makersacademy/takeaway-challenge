@@ -21,7 +21,7 @@ class Total
 
   def show_total
     calculate_total
-    "Total amount: #{@total}"
+    "Total amount: #{@total}£"
   end
 
 
