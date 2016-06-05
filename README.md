@@ -1,5 +1,8 @@
 Takeaway Challenge
 ==================
+
+Weekend Challenge No. 2. See below for Makers Academy brief.
+
 ```
                             _________
               r==           |       |
@@ -14,10 +17,13 @@ Takeaway Challenge
  
  ```
 
+
+
 ####Master branch build status: 
-![](https://travis-ci.org/[riyapabari]/MovingHelper.svg?branch=master)
+https://travis-ci.org/riyapabari/takeaway-challenge.svg?branch=master
 
-
+Makers Academy Brief
+-------
 
 Instructions
 -------
