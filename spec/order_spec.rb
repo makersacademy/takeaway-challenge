@@ -1,7 +1,7 @@
 require 'order'
 
 describe Order do
-  let(:order) { Order.new('Stephen Dawes', 123456, 'pieshop') }
+  let(:order) { Order.new('Stephen Dawes', 123_456, 'pieshop') }
 
 
   it 'should have a name' do
@@ -9,7 +9,7 @@ describe Order do
   end
 
   it 'should have a number' do
-    expect(order.cust_number).to eq(123456)
+    expect(order.cust_number).to eq(123_456)
   end
 
   it 'should have a menu' do
@@ -17,13 +17,22 @@ describe Order do
   end
 
   it 'should raise an error if item is not on the menu' do
-    order.add_to_order("Chicken")
+    order.add_to_order("Chicken", 2)
     expect {order.add_order}.to raise_error 'Item not on menu!'
   end
 
   it 'should add item to a customer order array' do
-    order.add_to_order("Chicken Pie")
+    order.add_to_order("Chicken Pie", 2)
     expect(order.order).to include("Chicken Pie")
+  end
+
+  it 'add the total cost of the items' do
+    order.add_to_order("Chicken Pie", 2)
+    expect(order.total_cost).to 9
+  end
+
+  it 'adds the total number of items in order ' do
+    
   end
 
 end

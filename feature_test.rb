@@ -1,6 +1,6 @@
 require_relative './lib/dishes'
 require_relative './lib/menu'
-require_relative './lib/order'
+require_relative './lib/order' 
 
 chicken = Dish.new("Chicken Pie", 4.50)
 beef = Dish.new("Beef & Ale Pie", 5.00)
@@ -24,4 +24,6 @@ pieshop.show_menu
 
 steves_order = Order.new("Stephen Dawes", 07734, pieshop)
 
-steves_order.add_to_order("Chicken Pie")
+steves_order.add_to_order("Chicken Pie", 2)
+steves_order.add_to_order("Beef & Ale Pie", 1)
+steves_order.add_to_order("Chips", 3)
