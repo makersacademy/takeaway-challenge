@@ -1,5 +1,6 @@
 require_relative 'menu_builder'
 require_relative 'sum_items'
+require_relative 'text_logs'
 require 'tty-prompt'
 require 'yaml'
 

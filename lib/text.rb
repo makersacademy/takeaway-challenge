@@ -15,7 +15,7 @@ class Text
 
   private
 
-  attr_reader :client, :config, :receipt
+  attr_reader :client, :config
 
   CONFIG_HASH = {
       account_sid: ENV['TWILIO_ACCOUNT_SID'],
