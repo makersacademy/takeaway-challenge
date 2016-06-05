@@ -33,7 +33,7 @@ class Menu
 
     @contents.each do |item, price|
     output +=
-      "#{ item.ljust(33) } £#{ format("%.2f",price(item)).rjust(5) }\n"
+      "#{ item.ljust(33) } £#{ format("%.2f",price).rjust(5) }\n"
     end
 
     output += "="*40 + "\n"

@@ -37,7 +37,7 @@ class Order
   private
 
     def price(item)
-      @menu.price[item]
+      @menu.price(item)
     end
 
     def total_price
