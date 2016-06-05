@@ -6,7 +6,8 @@ class Menu
 	MENU = {"Chicken rice" => 5,
 					  "Steak frites" => 6,
 					  "Red prawn curry" => 7,
-					"Burger" => 5}
+					"Burger" => 5,
+					"Spaghetti bolognese" => 6}
 
 	def initialize(menu = MENU)
 		@menu = menu
@@ -14,11 +15,16 @@ class Menu
 
 	def print
 		@menu.each do |item, price|
-			p "#{item} £#{price}"
+			p "#{item} : £#{price}"
 		end
 	end 
 
 	def price(item)
 		@menu[item]
 	end
-end 
+
+	def has_item?(item)
+		raise "#{item.capitalize} is not on the menu!" unless menu.key?(item.capitalize)
+		true
+	end
+end	
