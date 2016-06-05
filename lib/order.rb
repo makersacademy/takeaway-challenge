@@ -9,7 +9,7 @@ class Order
     @customer_order = {}
   end
 
-  def add(item, quanitity)
-    @customer_order[item] = quanitity
+  def add(item, quantity)
+    @customer_order[item] = quantity
   end
 end
