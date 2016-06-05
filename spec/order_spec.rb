@@ -2,31 +2,27 @@ require 'order'
 
 describe Order do
 
-  let(:menu) {{'item' => 1.11}}
+  let(:menu) {{'item1'=>1.11, 'item2'=>2.22}}
   let(:item) {:item}
   subject(:order) {described_class.new(menu)}
 
   describe '#add' do
-    it 'add item from menu' do
-      order.add('item')
-      expect(order.status).to eq [menu]
+    it 'returns confirmation message' do
+      expect(order.add('item1', 3)).to eq "3x item1(s) added to our order!"
     end
   end
 
-  describe '#status' do
-    it 'show order status' do
+  describe '#trolley' do
+    it 'shows trolley' do
+      order.add('item1', 3); order.add('item2', 3)
+      expect(order.trolley).to eq "3x item1(s) = £3.33, 3x item2(s) = £6.66"
     end
   end
 
 end
 
-# describe Order do
-#   let(:menu) { double :menu, price: '£1.00', contains?: true }
-#   subject(:order) { described_class.new(menu) }
-#
 #   it 'order total to be sum of items added' do
 #     order.add('Pizza')
 #     order.add('Pizza')
 #     expect(order.total).to eq '£2.00'
 #   end
-# end
