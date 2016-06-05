@@ -2,15 +2,21 @@
 
 class Menu
 
-  attr_reader :data
+  attr_reader :dishes
 
-  def initialize(menu = MENU)
-    @data = menu
+  def initialize
+    @dishes = DISHES
+  end
+
+  def view_menu
+  	printout = ""
+  	dishes.each { |key, value| printout << "#{key}, £#{sprintf('%.2f', value)}\n" }
+  	printout
   end
 
   private 
 
-  MENU = {"Pilau Rice" => 2.20,
+  DISHES = {"Pilau Rice" => 2.20,
              "Egg Fried Rice" => 2.50}
 
 end

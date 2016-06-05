@@ -1,6 +1,6 @@
 # how I want my interface to interact
 
-require 'Takeaway'
+require 'takeaway'
 
 
 hox = Takeaway.new
