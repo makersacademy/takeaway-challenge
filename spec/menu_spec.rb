@@ -6,7 +6,7 @@ describe Menu do
 
 	describe 'responses' do
 
-		 it { should respond_to(:menu) }
+		 it { should respond_to(:data) }
 
 	end
 

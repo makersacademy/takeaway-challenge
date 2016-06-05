@@ -3,16 +3,21 @@ require_relative 'menu'
 # Controller class
 class Takeaway
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new) #, order = Order.new)
     @menu = menu
   end
 
   def menu
-    @menu.menu.each { |x| p "#{x[:name]}, £#{sprintf('%.2f', x[:price])}" }
+    @menu.data.each { |key, value| "#{key}, £#{sprintf('%.2f', value)}" }
   end
 
-  def place_order
 
+
+
+  def basket
+    #lists order (1x Pilau Rice £2.40, 2x Egg Fried Rice £2.30)
+    #shows total as calculated
   end
+
 
 end
