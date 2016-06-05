@@ -22,7 +22,7 @@ describe 'Features' do
   #I would like to be able to select some number of several available dishes
   describe 'A customer selects a number of available dishes' do
     it 'Takeaway.order allows the user to place an order' do
-      expect { TakeAway.order(18, select1, select2) }.not_to raise_error
+      expect { TakeAway.order(18, '+447733362000', select1, select2) }.not_to raise_error
     end
   end
 
@@ -34,7 +34,19 @@ describe 'Features' do
   describe 'A customer provides the wrong total' do
     it 'TakeAway.order raises an error' do
       price_error = TakeAway::PRICE_ERROR
-      expect {TakeAway.order(19, select1, select2)}.to raise_error(price_error)
+      expect {TakeAway.order(19, '+447733362000', select1, select2)}.to raise_error(price_error)
     end
   end
+
+  #As a customer
+  #So that I am reassured that my order will be delivered on time
+  #I would like to receive a text such as "Thank you! Your order was 
+  #placed and will be delivered before 18:52" after I have ordered
+  describe 'A customer selects a number of available dishes' do
+    it 'Takeaway.order sends a text message to the number provided via API' do 
+      expect_any_instance_of(SmsInterface).to receive(:send_text) 
+      TakeAway.order(18, '+447733362000', select1, select2)
+    end 
+  end
+  
 end 
