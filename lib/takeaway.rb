@@ -6,10 +6,8 @@ module TakeAway
     Display.output(menu_string)
   end
 
-  private
-
   MENU = [{ description: 'Roast pork',       price: 15 },
           { description: 'Steamed broccoli', price:  3 },  
           { description: 'Roasted spinach',  price:  8 },  
-          { description: 'Smelly fruit',     price: 12 }]  
+          { description: 'Smelly fruit',     price: 12 }].freeze
 end 

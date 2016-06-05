@@ -14,18 +14,18 @@ describe MenuParser do
   MENU_1 = [{ description: 'Roast pork',       price: 15 },
             { description: 'Steamed broccoli', price:  3 },  
             { description: 'Roasted spinach',  price:  8 },  
-            { description: 'Smelly fruit',     price: 12 }]
+            { description: 'Smelly fruit',     price: 12 }].freeze
 
   MENU_2 = [{ description: 'Roast pork',       price: 15 },
             { description: 'Steamed broccoli', price:  3 },  
-            { description: 'Roasted spinach',  price:  8 }]  
+            { description: 'Roasted spinach',  price:  8 }].freeze
 
-  STRING_MENU_1 = "1 - Roast pork - £15\n" +
-                  "2 - Steamed broccoli - £3\n" +
-                  "3 - Roasted spinach - £8\n" +
+  STRING_MENU_1 = "1 - Roast pork - £15\n"\
+                  "2 - Steamed broccoli - £3\n"\
+                  "3 - Roasted spinach - £8\n"\
                   "4 - Smelly fruit - £12\n"
 
-  STRING_MENU_2 = "1 - Roast pork - £15\n" +
-                  "2 - Steamed broccoli - £3\n" +
+  STRING_MENU_2 = "1 - Roast pork - £15\n"\
+                  "2 - Steamed broccoli - £3\n"\
                   "3 - Roasted spinach - £8\n"
 end 
