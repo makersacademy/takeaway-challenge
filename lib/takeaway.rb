@@ -43,7 +43,7 @@ attr_reader :total_bill, :order
   def order_breakdown(total_price)
 		string = "You have ordered: "
 		order.basket.each {|food, amount| string = string + "#{amount} x #{food}(s) = £#{menu.display[food.to_sym] * amount}\n"}
-		string = string + "The total is: £#{total_price}."
+		string += "The total is: £#{total_price}."
 	end
 
 end
