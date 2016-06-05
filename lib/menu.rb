@@ -10,4 +10,7 @@ class Menu
     @dishes << dish
   end
 
+  def has_dish?(dish)
+    dishes.include?(dish)
+  end
 end

@@ -11,4 +11,19 @@ describe Menu do
       end
     end
   end
+
+  describe '#has_dish?' do
+    context 'when dish isn\'t available to order' do
+      it 'returns false' do
+        expect(subject.has_dish?(dish)).to eq false
+      end
+    end
+
+    context 'when dish is available to order' do
+      it 'returns true' do
+        subject.add(dish)
+        expect(subject.has_dish?(dish)).to eq true
+      end
+    end
+  end
 end
