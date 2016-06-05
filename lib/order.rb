@@ -2,28 +2,30 @@ require_relative "menu"
 
 # Understands how to handle a shopping basket
 class Order
-  attr_reader :shopping_basket, :menu
+  attr_reader :basket, :menu
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @shopping_basket = []
+    @basket = []
   end
 
-  def reset_order
-    @shopping_basket = []
-  end
-
-  def add_item(item, quantity = 1)
+  def add_to_order(name, quantity = 1)
+    fail "Item not found" unless find_item_price(name)
     quantity.times do
-      symbol = item.to_sym
-      @shopping_basket << { name: symbol, price: menu.drinks[symbol] }
+      @basket << name
     end
   end
 
   def calculate_total
-    fail "Empty Basket" if shopping_basket.empty?
-    shopping_basket.map do |item|
-      item[:price]
+    basket.map do |name|
+      find_item_price(name)
     end.reduce(0, :+)
   end
+
+  private
+
+  def find_item_price(name)
+    @menu.items[name.to_sym]
+  end
+
 end
