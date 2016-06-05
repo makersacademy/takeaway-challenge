@@ -13,9 +13,9 @@ Takeaway Challenge
        ':..:'                ':..:'
  
  ```
-Welcome to Toby's Takeout!
+#Welcome to Toby's Takeout!
 
-Instructions
+#Instructions
 -------
 
 Customers will only be interacting with the restaurant in this program.
@@ -26,22 +26,22 @@ Then create a new restaurant with your menu as the only argument.
 
 This will allow the consumer to interect with your restaurant.
 
-Classes are:
-Restaurant
-This handles all user interaction via:
-#show_menu
-#order_item(item,qty)
-#see_basket
-#total_correct?
-#complete_order
+#Classes are:
+##Restaurant
+###This handles all user interaction via:
+- #show_menu
+- #order_item(item,qty)
+- #see_basket
+- #total_correct?
+- #complete_order
 
-Menu
+##Menu
 Stores the menu
 
-Order
+##Order
 Each instance is an order
 
-Messenger
+##Messenger
 Handles the texting to the customer
 
 Enjoy!!!
