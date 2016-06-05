@@ -1,6 +1,7 @@
 Takeaway Challenge
 =================
-Travis says..... ![travis build status](https://travis-ci.org/kennbarr/airport_challenge.svg?branch=master)
+![travis build status](https://travis-ci.org/kennbarr/takeaway-challenge.svg?branch=master)
+![coveralls %](https://camo.githubusercontent.com/4737694e90d77508f7479936da33cefdf92ee345/68747470733a2f2f636f766572616c6c732e696f2f6275696c64732f363436393534302f6261646765)
 
 ```
     __
@@ -125,3 +126,4 @@ cheeseburger                         £ 4.00     2   £   8.00
 $ irb
 2.3.1 :006 > takeaway.complete_order
 ```
+![sms](http://www.kennethbarrett.com//sms.jpg)
