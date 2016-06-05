@@ -13,7 +13,7 @@ class Message
     client.messages.create(delivery_message)
   end
 
-private
+  private
 
   attr_reader :client, :config, :message
 
@@ -22,8 +22,8 @@ private
     auth_token: ENV['TWILIO_AUTH'],
     from: ENV['TWILIO_NUMBER'],
     to: ENV['MY_NUMBER'],
-    body: "Thank you for your order.  "
-  }
+    body: "Thank you! Your order will be delivered before "
+  }.freeze
 
   def delivery_message
   {
@@ -34,7 +34,7 @@ private
   end
 
   def est_delivery_time
-   "It will be delivered by " +  (Time.now + (60*60) ).to_s
+   (Time.now + (60*60) ).to_s
   end
 
 end
