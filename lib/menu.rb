@@ -1,3 +1,5 @@
+# Allows customer to print menu list
+
 class Menu
 
   attr_reader :dishes
@@ -22,13 +24,20 @@ class Menu
     # string as follows:
     #
     # => "%s" interpolates the key (i.e. the dish title), which has been
-    #     converted to a string and capitalized by "title.to_s.capitalize".  
+    #     converted to a string and capitalized by "title.to_s.capitalize".
     #
     # = > "£%.2f" interpolates the value (i.e. the price) and formats into £
     #     with two decimal places.
     #
     printed_menu = "Pizza £9.99, Burger £2.99, Chips £1.99"
 
+  end
+
+  def has_dish?(dish)
+    !!dishes[dish]
+    # Looks up dishes hash using whatever argument is passed in for the dish
+    # parameter as the hash key.  If that hash key is not present it will return
+    # false and vice versa.
   end
 
 end
