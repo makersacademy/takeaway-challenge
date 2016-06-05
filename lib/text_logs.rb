@@ -29,7 +29,7 @@ class TextLogs
   def decypher_texts(client=nil)
     @received = []
     @selection.each do |sms|
-      @received << client || [sms.from, sms.body]
+      @received << [sms.from, sms.body]
       @received << "----------------------"
     end
   end
