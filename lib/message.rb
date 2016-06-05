@@ -6,11 +6,7 @@ class Message
     auth: ENV['TWILIO_KEY'],
     from: ENV['TWILIO_NUM'],
     to: ENV['MOBILE_NUM']
-  }
-
-  def initialize(client = Twilio::REST::Client.new(CONF[:sid], CONF[:auth]))
-    @twilio = client
-  end
+  }.freeze
 
   def send_message(total = 0)
     client_send(message = generate_message(total))
@@ -18,8 +14,6 @@ class Message
   end
 
   private
-
-  attr_reader :twilio
 
   def delivery_time
     Time.new + 3600
@@ -32,7 +26,7 @@ class Message
   end
 
   def client_send(message)
-    twilio.messages.create(
+    Twilio::REST::Client.new(CONF[:sid], CONF[:auth]).messages.create(
       from: CONF[:from],
       to: CONF[:to],
       body: message
