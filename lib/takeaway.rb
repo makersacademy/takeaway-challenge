@@ -12,7 +12,7 @@ class Takeaway
 		@menu.display_menu
 	end
 
-	def add_item(item, qty)
+	def add_item(item, qty = 0)
 		@order.add(item, qty)
 	end
 

@@ -4,8 +4,8 @@ class Order
 		@order = Hash.new(0)
 	end
 
-	def add(item, qty)
-		@order[item] = qty
+	def add(item, qty = 0)
+		@order[item] += qty
 	end
 
 	def include?(item)
