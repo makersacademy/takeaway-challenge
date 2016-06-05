@@ -10,12 +10,18 @@ class Calculator
     checkout.order_summery
   end
 
-  def sum_quantity
-    @quantity = @order.values.inject(:+) if @order
+  def sum_price
+    @total_price = access_menu.map { |k, v| v * @order[k] if @order.key? k }.compact.inject(:+)
+    # total_price = menu.map { |k, v| v * order[k] if order.key? k }
   end
 
-  def sum_price
-    @total_price = Menu.new.show.map { |k, v| v * @order[k] if @order.key? k }.compact.inject(:+)
-    # total_price = menu.map { |k, v| v * order[k] if order.key? k }
+  # def sum_quantity
+  #   @quantity = @order.values.inject(:+) if @order
+  # end
+
+  private
+
+  def access_menu
+    Menu.new.show
   end
 end

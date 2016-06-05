@@ -1,17 +1,25 @@
 require_relative 'calculator'
 
+
 class Order
 
   def initialize(item, quantity=1)
     check_input(item)
-    @order = {item => quantity} if !(@order)
+    @order = {item => quantity} if !(order)
   end
 
   def add(item, quantity=1)
     check_input(item)
-    @order = {item => quantity} if !(@order)
+    @order = {item => quantity} if !(order)
     return order[item] += quantity if order[item]
-    @order[item] = quantity
+    order[item] = quantity
+  end
+
+  def deduct(item, quantity=1)
+    fail "You have not yet ordered anything!" if !(order)
+    check_input(item)
+    fail "You have not yet ordered any #{item}" if !(order[item])
+    return order[item] -= quantity if order[item]
   end
 
   def view
@@ -20,16 +28,18 @@ class Order
 
   def place
     calculator = Calculator.new(@order)
-    calculator.sum_quantity
     calculator.sum_price
     calculator.summerize
   end
 
   def accept
+    time = Time.now + 7200
+    #text = Text.new
+    #text.message
+    #@order = nil
+    # p "Your confirmation should be along shortly!"
   end
 
-  def reject
-  end
   private
 
   attr_reader :order

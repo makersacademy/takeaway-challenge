@@ -7,7 +7,7 @@ describe 'Feature' do
   # I would like to see a list of dishes with prices
   it 'so I decide to order, I want to see the menu' do
     menu = Menu.new
-    expect(menu.show).to include('chips' => 1, 'oreos' => 3, 'milkshake' => 2)
+    expect(menu.show).to include('chips' => 1, 'oreo' => 3, 'milkshake' => 2)
   end
   # As a customer
   # So that I can order the meal I want
@@ -26,22 +26,17 @@ describe 'Feature' do
     menu = Menu.new
     menu.show
     order = Order.new('milkshake', 1)
-    order.add('oreos', 2)
+    order.add('oreo', 2)
     order.place
-    #caclulator.sum_quantity
-    #calculator.sum_price
-    #calculator
-    # checkout = Checkout.new(order, )
-    #Your Order:
-    # Item    Quantity   Price  Total_Price
-    # oreoes     3        3         9
-    # Milkshake  1        2         2
-
-    #Order Total                    11
-    # checkout.accept
-    # checkout.reject
-    # checkout.confirm
-    # checkout.reject
+    order.add('oreo', 3)
+    order.deduct('oreo',1)
+  end
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed
+  # and will be delivered before 18:52" after I have ordered
+  it "so I know the delivery time, I would like to recieve a text" do
+    #text to be recieved
   end
 
 end

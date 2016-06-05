@@ -7,7 +7,7 @@ describe Order do
     it {is_expected.to respond_to(:add).with(2).arguments}
     it {is_expected.to respond_to(:place)}
     it {is_expected.to respond_to(:accept)}
-    it {is_expected.to respond_to(:reject)}
+    it {is_expected.to respond_to(:deduct)}
 
   end
 
@@ -27,11 +27,22 @@ describe Order do
 
   describe '#add' do
     it "adds a new item to the order" do
-      order.add('oreos',1)
-      expect(order.view).to include('oreos' => 1)
+      order.add('oreo',1)
+      expect(order.view).to include('oreo' => 1)
     end
     it "increases the quantity of an existing item" do
       expect{order.add('milkshake',2)}.to change{order.view['milkshake']}.by(2)
+    end
+  end
+
+  describe '#deduct' do
+    it 'deducts from the order' do
+      expect{order.deduct('milkshake',1)}.to change{order.view['milkshake']}.by(-1)
+    end
+    context "when trying to deduct an unordered item" do
+      it 'returns an error' do
+        expect{order.deduct('oreo')}.to raise_error "You have not yet ordered any oreo"
+      end
     end
   end
 end
