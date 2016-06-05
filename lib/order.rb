@@ -5,21 +5,20 @@ class Order
 
   def initialize(item, quantity=1)
     check_input(item)
-    @order = {item => quantity} if !(order)
+    create_new_order(item, quantity) if no_order_exists?
   end
 
   def add(item, quantity=1)
     check_input(item)
-    @order = {item => quantity} if !(order)
-    return order[item] += quantity if order[item]
+    return order[item] += quantity if in_basket?(item)
     order[item] = quantity
   end
 
   def deduct(item, quantity=1)
-    fail "You have not yet ordered anything!" if !(order)
+    fail "You have not yet ordered anything!" if no_order_exists?
     check_input(item)
     fail "You have not yet ordered any #{item}" if !(order[item])
-    order[item] -= quantity if order[item]
+    order[item] -= quantity if in_basket?(item)
   end
 
   def view
@@ -33,19 +32,30 @@ class Order
   end
 
   def confirm
-    time = get_time
-    text = Texter.new
-    text.message(time)
+    get_time
+    Texter.new.message(time)
     @order = nil
     p "Your confirmation should be along shortly!"
   end
 
   private
 
-  attr_reader :order
+  attr_reader :order, :time
+
+  def in_basket?(item)
+    order[item]
+  end
+
+  def no_order_exists?
+    !(order)
+  end
+
+  def create_new_order(item, quantity)
+    @order = {item => quantity}
+  end
 
   def get_time
-    Time.now + 3600
+    @time = Time.now + 3600
   end
 
   def check_input(item)

@@ -15,7 +15,6 @@ class Texter
       :to => '+447883339743',
       :body => "Thank you! Your order was placed and will be delivered before #{time}",
     })
-    p "Your text confirmation is on it's way!"
   end
 
 end
