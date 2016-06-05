@@ -25,14 +25,18 @@ class Takeaway
   end
 
   def checkout
-    charge_customer
-    @current_order = Order.new
+    fail "Nothing to check out!" if empty?
+    charge_customer; @current_order = Order.new
     basket
   end
 
   private
 
   attr_reader :current_order
+
+  def empty?
+    current_order.empty?
+  end
 
   def charge_customer
     @profit += total

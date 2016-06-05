@@ -27,7 +27,21 @@ describe Takeaway do
     end
   end
 
-  context "basket is not empty" do
+  context "when basket is empty" do
+    describe "#checkout" do
+      before do
+        allow(subject).to receive(:empty?).and_return(true)
+      end
+
+      it "should raise an error if there's nothing to check out" do
+        expect do
+          subject.checkout
+        end.to raise_error("Nothing to check out!")
+      end
+    end
+  end
+
+  context "when basket is not empty" do
     before do
       allow(order).to receive(:basket).and_return(["Espresso", "Espresso"])
     end
@@ -52,6 +66,7 @@ describe Takeaway do
     describe "#checkout" do
       before do
         allow(order).to receive(:calculate_total).and_return(0)
+        allow(subject).to receive(:empty?).and_return(false)
       end
 
       it "should reset the order by clearing the basket" do
