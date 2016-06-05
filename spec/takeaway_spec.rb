@@ -23,7 +23,7 @@ describe Takeaway do
 
     it "returns the menu selection on input" do
         expect(takeaway).to receive(:gets).and_return(meal1, amount)
-        expect(takeaway.select_food).to eq MENU[0]
+        expect(takeaway.select_food).to eq "You have added #{MENU[0][:food]} to the basket"
     end
   end
   
@@ -35,7 +35,7 @@ describe Takeaway do
         expect(takeaway).to receive(:gets).and_return(meal2, amount)
         takeaway.select_food
         takeaway.view_order
-        expect(takeaway.show_bill).to eq 17.5
+        expect(takeaway.show_bill).to eq "Your bill is: £17.5"
     end
   end
 end
