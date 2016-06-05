@@ -2,11 +2,23 @@
 
 Weekend 2 Challenge: Created a program that allows a customer to view a menu, order dishes, and receive a text confirmation upon confirming their order using the Twilio API.
 
+## My Solution
 
+```
+1. Clone this repo to your local machine
+2. Run 'gem install bundle' if you don't have bundle already
+3. Run 'bundle'
+3. Run 'irb'
+4. Require './lib/takeaway'
+5. To initialize your takeaway: takeaway = Takeaway.new
+6. To view the menu: takeaway.view_menu (hope you like Japanese!)
+7. To add a dish to your order: takeaway.add_to_order("edamame", 2)
+8. To view your order: takeaway.view_order
+9. To checkout: takeaway.checkout
+10. To confirm your order: takeaway.confirm_order('£3')
+11. You should receive a text shortly.. bon appetit!
 
-
-
-
+```
 
 [![Build Status](https://travis-ci.org/riyapabari/takeaway-challenge.svg?branch=master)](https://travis-ci.org/riyapabari/takeaway-challenge)
 
