@@ -25,3 +25,13 @@ order.add("pork", 7)
 order.add("chicken", 6)
 total = Total.new(order)
 total.show_total()
+
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+order = Order.new
+order.add("pork", 7)
+order.add("chicken", 6)
+total = Total.new(order)
+total.show_total
+send_sms

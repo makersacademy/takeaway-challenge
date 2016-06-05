@@ -1,3 +1,4 @@
+def send_sms
 require 'rubygems' # not necessary with ruby 1.9 but included for completeness
 require 'twilio-ruby'
 
@@ -22,3 +23,4 @@ auth_token = '851cc308540c2c915c40c16e3267114f'
   to: '+447404042962',
   body: "Thank you! Your order was placed and will be delivered before #{Time.now + (60 * 60)}",
 })
+end

@@ -1,3 +1,4 @@
+require './lib/send_sms'
 class Total
 
   attr_reader :total
@@ -20,7 +21,8 @@ class Total
 
   def show_total
     calculate_total
-    "Total amount: #{@total}"
+    return "Total amount: #{@total}"
   end
+
 
 end

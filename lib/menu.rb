@@ -5,6 +5,13 @@ class Menu
   attr_reader :menu_card
   def initialize
     @menu_card = {
+      "tea" => 1,
+      "naan" => 1,
+      "biryani" => 4,
+      "dosa" => 3,
+      "masala papad" => 3,
+      "chicken soup" => 2,
+      "mushroom soup" => 2,
       "chicken" => 3,
       "fish" => 2,
       "pork" => 3}.freeze
