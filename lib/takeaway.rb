@@ -6,6 +6,10 @@ module TakeAway
     Display.output(menu_string)
   end
 
+  def self.order(total, *dishes)
+  end 
+
+
   MENU = [{ description: 'Roast pork',       price: 15 },
           { description: 'Steamed broccoli', price:  3 },  
           { description: 'Roasted spinach',  price:  8 },  

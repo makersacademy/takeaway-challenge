@@ -18,8 +18,8 @@ describe 'Features' do
   #So that I can order the meal I want
   #I would like to be able to select some number of several available dishes
   describe 'A customer selects a number of available dishes' do
-    xit 'Takeaway.order allows the user to order' do
-      expect { TakeAway.order(44, [3,5], [2,1])}.not_to raise_error
+    it 'Takeaway.order allows the user to place an order' do
+      expect { TakeAway.order(44, [[3,5], [2,1]]) }.not_to raise_error
     end
   end
 end 
