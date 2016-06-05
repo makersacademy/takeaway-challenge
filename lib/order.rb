@@ -19,7 +19,7 @@ class Order
     fail "You have not yet ordered anything!" if !(order)
     check_input(item)
     fail "You have not yet ordered any #{item}" if !(order[item])
-    return order[item] -= quantity if order[item]
+    order[item] -= quantity if order[item]
   end
 
   def view
