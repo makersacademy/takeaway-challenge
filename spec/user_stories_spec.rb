@@ -14,5 +14,15 @@ describe 'user stories' do
 		expect { takeaway.read_menu }.not_to raise_error
 	end
 
+# As a customer
+# So that I can order the meal I want
+# I would like to be able to select some number of several available dishes
+
+	it "so we can order a meal, we select several available dishes from the menu" do
+		menu = Menu.new
+		takeaway = Takeaway.new
+		expect { takeaway.order }.not_to raise_error
+	end
+
 end
 
