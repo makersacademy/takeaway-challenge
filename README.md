@@ -69,7 +69,7 @@ chinese = Takeaway.new
      @dishes={"Pilau Rice"=>2.2, "Egg Fried Rice"=>2.5}>>>
 
 chinese.basket
-RuntimeError: Nothing in basket
+=> RuntimeError: Nothing in basket
 
 chinese.menu
 => "Pilau Rice, £2.20\nEgg Fried Rice, £2.50\n"
@@ -93,11 +93,3 @@ chinese.basket
 => RuntimeError: Nothing in basket
 ```
 Note the checkout sends a test SMS that only sends to my mobile phone.
-
-
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
