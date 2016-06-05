@@ -9,7 +9,12 @@ describe Messenger do
   before {allow(Twilio::REST::Client).to receive(:new) {client}}
 
   describe '#send' do
-    it 'sends messages to tel numbers' do
+
+    it "responds to send" do
+      expect(messenger).to respond_to(:send)
+    end
+
+    xit "sends messages to tel numbers" do
       allow(client).to receive_message_chain('account.messages.create')
       expect(messenger.send).to eq "Your message was successfully sent"
     end
