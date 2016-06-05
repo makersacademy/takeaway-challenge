@@ -18,9 +18,7 @@ module TakeAway
       entry[:quantity].times{ order.add_item(MENU[entry[:item_n]]) }
     end
 
-    input_total_is_correct = order.total == total
-
-    if input_total_is_correct
+    if order.total == total
       latest_delivery = (Time.now + 60*60).strftime('%R')
       text_msg = "Thank you! Your order was placed and 
                   will be delivered before #{latest_delivery}".freeze
