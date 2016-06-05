@@ -15,3 +15,19 @@ The requirement is for a take-away system, using IRB as interface, and integrati
 This program is intended to be run on a ruby REPL or ruby script.
 
 ##Installation
+Install [bundler] (http://bundler.io/)
+
+From bash, clone this repo to your computer using `git clone`.
+
+Run bundler (`bundle`).
+
+Navigate to the project directory (`cd takeaway-challenge`).
+
+Run irb (`irb`).
+
+Import TakeAway (`require './lib/takeaway'`).
+
+Import SmsInterface (`require './lib/sms_interface'`).
+Type `TakeAway.show_menu` to see what is on the menu.
+Place an order using this syntax: `TakeAway.order(15, '+4477....', {item_n: 3, quantity: 1}, {item_n: 1, quantity: 1})`, whereby 15 is the total cost of the order, followed by telephone number, followed by one hash per item, including item number and quantity.
+
