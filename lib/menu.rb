@@ -12,4 +12,6 @@ class Menu
     @menu
   end
 
+
+
 end
