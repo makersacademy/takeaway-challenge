@@ -12,7 +12,7 @@ class Order
   end
 
   def remove(dish)
-    @items.each { |entry, qty| @items.delete(entry) if entry == dish }
+    @items.each { |entry, _| @items.delete(entry) if entry == dish }
   end
 
   def has?(dish)
@@ -20,16 +20,18 @@ class Order
   end
 
   def summary
-    output = "Order Summary\n#{ "="*60 }\nDish#{ " "*32 } Price   Qty"+
-    "       Total\n" + "-"*60 + "\n"
+    output = "Order Summary\n#{ "="*60 }\nDish#{ " "*32 }  Price   Qty"\
+             "      Total\n" + "-"*60 + "\n"
 
     @items.each do |item, qty|
-    output += "#{ item.to_s.ljust(35) } £#{ ("%.2f"%price(item)).rjust(5) } "+
-    "#{ qty.to_s.rjust(5) }    £#{ ("%.2f"%(price(item)*qty)).rjust(7) }\n"
+    output +=
+      "#{ item.ljust(36) } £#{ format("%.2f",price(item)).rjust(5) } "\
+      "#{ qty.to_s.rjust(5) }   £#{ format("%.2f",price(item)*qty).rjust(7) }\n"
     end
 
-    output += "="*60 + "\n" +
-    "Total cost: £#{ ("%.2f"%total_price).rjust(7) }".rjust(60)
+    output +=
+      "="*60 + "\n" +
+      "Total cost: £#{ format("%.2f",total_price).rjust(7) }".rjust(60)
   end
 
   private

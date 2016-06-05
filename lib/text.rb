@@ -9,10 +9,10 @@ class Text
 
   def self.confirmation
     @client.account.messages.create({
-      :from => '+441183241614',
-      :to => '+447429013393',
-    	:body => "Thank you! Your order was placed and will be delivered before #{
-      "%02d"%((Time.now.hour+1)%24)}:#{"%02d"%(Time.now.min)}",
+      from: '+441183241614',
+      to: '+447429013393',
+    	body: "Thank you! Your order was placed and will be delivered before #{
+      format("%02d",(Time.now.hour+1)%24) }:#{ format("%02d",Time.now.min) }",
     })
     "confirmation message sent"
   end

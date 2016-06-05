@@ -7,13 +7,13 @@ describe Menu do
   context "Regular information retrieval" do
     describe "#price" do
       it "returns the price of a dish" do
-        expect(menu.price(:hamburger)).to eq 3
+        expect(menu.price("hamburger")).to eq 3
       end
     end
 
     describe "#has?" do
       it "returns true if item on menu" do
-        expect(menu.has?(:chips)).to eq true
+        expect(menu.has?("chips")).to eq true
       end
     end
 
@@ -39,21 +39,21 @@ describe Menu do
   context "Menu alteration" do
     describe "#remove_item" do
       it "removes a dish" do
-        menu.remove_item(:chips)
-        expect(menu.has?(:chips)).to eq false
+        menu.remove_item("chips")
+        expect(menu.has?("chips")).to eq false
       end
     end
 
     describe "#remove_item" do
       it "raises error when removing dish not on menu" do
-        expect { menu.remove_item(:squid) }.to raise_error "squid not on menu"
+        expect { menu.remove_item("squid") }.to raise_error "squid not on menu"
       end
     end
 
     describe "#add_item" do
       it "adds dish to menu" do
-        menu.add_item(:squid,5)
-        expect(menu.has?(:squid)).to eq true
+        menu.add_item("squid",5)
+        expect(menu.has?("squid")).to eq true
       end
     end
   end

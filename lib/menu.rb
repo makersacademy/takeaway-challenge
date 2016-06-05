@@ -1,13 +1,13 @@
 class Menu
 
   def initialize
-    @contents = { :hamburger => 3,
-                  :cheeseburger => 4,
-                  :'quarter pounder' => 6,
-                  :'curry chips' => 3,
-                  :'chips' => 2,
-                  :'chicken wrap' => 4,
-                  :'veggie burger' => 5,
+    @contents = { "hamburger" => 3,
+                  "cheeseburger" => 4,
+                  "quarter pounder" => 6,
+                  "curry chips" => 3,
+                  "chips" => 2,
+                  "chicken wrap" => 4,
+                  "veggie burger" => 5,
                 }
   end
 
@@ -32,7 +32,8 @@ class Menu
     output = "Menu\n#{ "="*40 }\nDish#{ " "*30 } Price\n" + "-"*40 + "\n"
 
     @contents.each do |item, price|
-    output += "#{ item.to_s.ljust(33) } £#{ ("%.2f"%price(item)).rjust(5) }\n"
+    output +=
+      "#{ item.ljust(33) } £#{ format("%.2f",price(item)).rjust(5) }\n"
     end
 
     output += "="*40 + "\n"

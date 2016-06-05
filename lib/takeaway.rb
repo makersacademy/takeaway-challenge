@@ -13,15 +13,15 @@ class TakeAway
   end
 
   def order
-    dish = get_dish
+    dish = input_dish
     message = "#{ dish } not on menu! Check spelling and retry."
     fail message unless @menu.has?(dish)
-    @order.add(dish, get_quantity(dish))
+    @order.add(dish, input_quantity)
     view_order
   end
 
   def remove
-    dish = get_dish
+    dish = input_dish
     fail "#{dish} hasn't been ordered" unless @order.has?(dish)
     @order.remove(dish)
     view_order
@@ -38,12 +38,12 @@ class TakeAway
 
   private
 
-    def get_dish
+    def input_dish
       puts "Enter dish: "
-      gets.chomp.downcase.to_sym
+      gets.chomp.downcase
     end
 
-    def get_quantity(dish)
+    def input_quantity
       puts "How many would you like?"
       gets.chomp.to_i
     end

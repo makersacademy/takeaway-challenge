@@ -18,8 +18,8 @@ describe TakeAway do
 
     describe "#order" do
       it "passes a dish to the add method of Order" do
-        allow(takeaway).to receive(:get_dish) { dish }
-        allow(takeaway).to receive(:get_quantity) { quantity }
+        allow(takeaway).to receive(:input_dish) { dish }
+        allow(takeaway).to receive(:input_quantity) { quantity }
         expect(order).to receive(:add).with(dish,quantity)
         takeaway.order
       end
@@ -27,7 +27,7 @@ describe TakeAway do
 
     describe "#remove" do
       it "passes a dish to the remove method of Order" do
-        allow(takeaway).to receive(:get_dish) { dish }
+        allow(takeaway).to receive(:input_dish) { dish }
         expect(order).to receive(:remove).with(dish)
         takeaway.remove
       end
@@ -53,7 +53,7 @@ describe TakeAway do
 
     describe "#order" do
       it "raises error when order not on menu" do
-        allow(takeaway).to receive(:get_dish) { dish }
+        allow(takeaway).to receive(:input_dish) { dish }
         allow(menu).to receive(:has?) { false }
         message = "#{ dish } not on menu! Check spelling and retry."
         expect { takeaway.order }.to raise_error message
@@ -62,7 +62,7 @@ describe TakeAway do
 
     describe "#remove" do
       it "raises error when removing item not ordered" do
-        allow(takeaway).to receive(:get_dish) { dish }
+        allow(takeaway).to receive(:input_dish) { dish }
         allow(order).to receive(:has?) { false }
         message = "#{dish} hasn't been ordered"
         expect { takeaway.remove }.to raise_error message
