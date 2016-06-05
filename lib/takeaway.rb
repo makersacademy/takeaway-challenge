@@ -1,7 +1,9 @@
+# controller / interface
+
 require_relative 'menu'
 require_relative 'order'
 
-# Controller class
+
 class Takeaway
 
   def initialize

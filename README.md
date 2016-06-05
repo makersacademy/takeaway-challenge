@@ -37,14 +37,16 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-My approach
+Coding approach
 -----
 
-Program design, split out Menu class (which is essentially access to data), Order class performs most actions on the menu, and stores the items ordered in the basket. Checkout stores all orders, resets the basket and sends the text message via Twilio.
+TDD using RSpec
 
-TDD approach
+I tried to design the program using Single Responsibility Principle, but ended up with more than I would like inside the `Order` class in particular. If I had more time available I would have extracted that probably into a basket and checkout class, and maybe an Orders class for storing all orders (not currently a requirement in the user stories).
 
+I stored the menu hash in a class of it's own as a constant.
 
+When running `order.checkout` it confirms the amount in the CLI, resets the basket and sends a confirmation text message via Twilio.
 
 
 Running the program
@@ -81,23 +83,15 @@ chinese.basket
 chinese.total
 => "Total: £4.40"
 
+chinese.checkout
+=> "Order received, Total: £4.40"
 
-
-
-
-
-
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
+chinese.basket
+=> RuntimeError: Nothing in basket
 ```
-$ coveralls report
-```
+Note the checkout sends a test SMS that only sends to my mobile phone.
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+
 
 Build Badge Example
 ------------------
