@@ -23,17 +23,16 @@ describe Order do
 
   describe "#summary" do
     it "summarises the order and shows the total cost" do
-      summary = "Order Summary\n" +
-      "============================================================\n"+
-      "Dish                                 Price   Qty       Total\n"+
-      "------------------------------------------------------------\n"+
-      "chips                               £ 3.00     3    £   9.00\n"+
-      "============================================================\n"+
+      summary =
+      "Order Summary\n"\
+      "============================================================\n"\
+      "Dish                                 Price   Qty       Total\n"\
+      "------------------------------------------------------------\n"\
+      "chips                               £ 3.00     3    £   9.00\n"\
+      "============================================================\n"\
       "                                        Total cost: £   9.00"
       order.add(:chips,3)
       expect(order.summary).to eq summary
     end
   end
-
-
 end

@@ -42,10 +42,11 @@ describe TakeAway do
 
     describe "#complete_order" do
       it "completes the order" do
-        #tbc
+        allow(Text).to receive(:confirmation) { nil }
+        allow(Order).to receive(:new).with(menu)
+        takeaway.complete_order
       end
     end
-
   end
 
   context "Clumsy customer" do
@@ -67,9 +68,5 @@ describe TakeAway do
         expect { takeaway.remove }.to raise_error message
       end
     end
-
   end
-
-
-
 end

@@ -19,17 +19,17 @@ describe Menu do
 
     describe "#display" do
       it "returns formatted menu" do
-        output = "Menu\n"+
-                 "========================================\n" +
-                 "Dish                               Price\n" +
-                 "----------------------------------------\n" +
-                 "hamburger                         £ 3.00\n" +
-                 "cheeseburger                      £ 4.00\n" +
-                 "quarter pounder                   £ 6.00\n" +
-                 "curry chips                       £ 3.00\n" +
-                 "chips                             £ 2.00\n" +
-                 "chicken wrap                      £ 4.00\n" +
-                 "veggie burger                     £ 5.00\n" +
+        output = "Menu\n"\
+                 "========================================\n"\
+                 "Dish                               Price\n"\
+                 "----------------------------------------\n"\
+                 "hamburger                         £ 3.00\n"\
+                 "cheeseburger                      £ 4.00\n"\
+                 "quarter pounder                   £ 6.00\n"\
+                 "curry chips                       £ 3.00\n"\
+                 "chips                             £ 2.00\n"\
+                 "chicken wrap                      £ 4.00\n"\
+                 "veggie burger                     £ 5.00\n"\
                  "========================================\n"
         expect(menu.display).to eq output
       end
