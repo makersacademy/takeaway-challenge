@@ -5,6 +5,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new }
   let(:meal1) { 0 }
   let(:meal2) { 1 }
+  let(:error_meal) { 9 }
   let(:amount) { 1 }
   let(:user_input) { double user_input }
 
@@ -16,6 +17,12 @@ describe Takeaway do
   end
 
   describe "#select_food" do
+    
+    it "raises an error if out of bounds" do
+       error_message = "This choice is outside the boundaries of time and space"
+       expect(takeaway).to receive(:gets).and_return(error_meal)
+       expect{takeaway.select_food}.to raise_error(error_message)
+    end
 
     it "responds to #select_food" do
         expect(takeaway).to respond_to(:select_food)

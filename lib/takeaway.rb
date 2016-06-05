@@ -44,19 +44,24 @@ class Takeaway
   end
  
   def customer_order_message
-    welcome_message
+    p welcome_message
     @user_input = gets.to_i
-    quantity_check
+    raise raise_message if @user_input > MENU.length
+    p quantity_check
     amount = gets.to_i
     amount.times { @shopping_basket << MENU[user_input] }
   end
  
   def welcome_message
-   p "Please place our order: "
+   "Please place your order: "
   end
 
   def quantity_check
-   p "How many would you like: "
+   "How many would you like: "
+  end
+
+  def raise_message
+    "This choice is outside the boundaries of time and space"
   end
 
   def add_to_the_basket
