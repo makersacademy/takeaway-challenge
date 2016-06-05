@@ -18,7 +18,11 @@ describe "User Stories" do
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
-  #
+   it 'So I can check the order is correct, it gives me the total price' do
+     take_away = TakeAway.new
+     allow(take_away).to receive(:take_order).and_return(["TEST", "3 Wrap"])
+     p take_away.take_order
+   end
   # As a customer
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as

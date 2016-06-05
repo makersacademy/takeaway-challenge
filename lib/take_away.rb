@@ -1,24 +1,25 @@
 require_relative 'menu'
 
+#Knows about the menu and gets orders
+
 class TakeAway
 
-  def initialize
-    @menu = [{:name => "Pasta", :price => 10},
-             {:name => "Pizza", :price => 15},
-             {:name => "Wrap", :price => 8},
-             {:name => "Muffin", :price => 4}]
+  def initialize(menu = Menu.build_default_menu)
+    @menu = menu
     @order = nil
   end
 
   def show_menu
-    puts @menu
+    @menu.print_menu
   end
 
   def take_order
-    @order = gets.chomp
-    @order = @order.split(',')
+    @order = gets.chomp.split(',')
     @order.collect! { |x| x.strip  }
     p @order
   end
+
+
+
 
 end
