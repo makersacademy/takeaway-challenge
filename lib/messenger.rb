@@ -14,7 +14,7 @@ class Messenger
 		@client.account.messages.create({
 			:from => '+441327552064', 
 			:to => '+447708605799', 
-			:body => "Your order totalling #{@total} will be with you at #{Time.now.hour + 1}:#{ Time.now.min }. Thank you for the order.",  
+			:body => "Your order totalling £#{sprintf('%.2f', @total)} will be with you at #{(Time.now + 3600 ).strftime("%H:%M")}. Thank you for the order.",  
 		}) 
 
 	end
