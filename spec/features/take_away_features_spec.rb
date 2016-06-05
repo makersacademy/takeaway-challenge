@@ -2,6 +2,7 @@ describe 'Features' do
 
   let(:select1) { {item_n: 0, quantity: 1} }
   let(:select2) { {item_n: 1, quantity: 1} }
+  let(:tel_n) { '+447733362000' }
 
   #As a customer
   #So that I can check if I want to order something
@@ -22,7 +23,7 @@ describe 'Features' do
   #I would like to be able to select some number of several available dishes
   describe 'A customer selects a number of available dishes' do
     it 'Takeaway.order allows the user to place an order' do
-      expect { TakeAway.order(18, '+447733362000', select1, select2) }.not_to raise_error
+      expect { TakeAway.order(18, tel_n, select1, select2) }.not_to raise_error
     end
   end
 
@@ -33,8 +34,8 @@ describe 'Features' do
   #matches the sum of the various dishes in my order 
   describe 'A customer provides the wrong total' do
     it 'TakeAway.order raises an error' do
-      price_error = TakeAway::PRICE_ERROR
-      expect {TakeAway.order(19, '+447733362000', select1, select2)}.to raise_error(price_error)
+      error = TakeAway::PRICE_ERROR
+      expect {TakeAway.order(19, tel_n, select1, select2)}.to raise_error(error)
     end
   end
 
@@ -45,7 +46,7 @@ describe 'Features' do
   describe 'A customer selects a number of available dishes' do
     it 'Takeaway.order sends a text message to the number provided via API' do 
       expect_any_instance_of(SmsInterface).to receive(:send_text) 
-      TakeAway.order(18, '+447733362000', select1, select2)
+      TakeAway.order(18, tel_n, select1, select2)
     end 
   end
   
