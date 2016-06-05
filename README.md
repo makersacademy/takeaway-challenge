@@ -6,19 +6,20 @@ an array of Dish objects and a Messenger object
 ```
 array_of_dishes = Chinese_Restaurant.new.menu
 messenger = Messenger.new
+  # must take #send("message_string")
 o = Orderer.new( array_of_dishes, messenger )
 ```
 
 Orderer objects respond to the following interface:
 ```
 o.show_all
-# => line formatted string showing menu
+  # => line formatted string showing menu
 o.order( object_id_as_shown_in_#show_all, quantity )
-# => inputs order for object identified by id, and returns total quantity ordered
+  # => inputs order for object identified by id, and returns total quantity ordered
 o.show_order
-# => line formatted string showing total order
+  # => line formatted string showing total order
 o.confirm
-# => confirms the order by sending #send(#show_order) to messenger
+  # => confirms the order by sending #send(#show_order) to messenger
 ```
 
 A Dish object takes 2 or 3 arguments to initialize
