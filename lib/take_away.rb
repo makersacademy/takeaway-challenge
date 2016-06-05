@@ -1,14 +1,17 @@
+require 'twilio-ruby'
 require_relative 'menu'
 require_relative 'order_parser'
+require_relative 'messenger'
 
 #Knows about the menu and gets orders
 
 class TakeAway
 
-  def initialize(menu = Menu.build_default_menu, parser_class = OrderParser)
+  def initialize(menu = Menu.build_default_menu, parser_class = OrderParser, messenger_class = Messenger)
     @menu = menu
     @order = nil
     @parser_class = parser_class
+    @messenger_class = messenger_class
   end
 
   def show_menu
@@ -18,16 +21,24 @@ class TakeAway
   def take_order
     @parser_class.input_instructions
     @order = @parser_class.parse(gets)
+    send_message
   end
 
   def order_price
     @menu.price_total(@order)
   end
 
-  private
 
 
 
+private
+
+  def send_message
+    messenger = @messenger_class.new
+    body = "Thank you! The total amout due for your order is #{order_price} and it will be delivered before #{Time.now} "
+    messenger.set_message("Restaurant", "+447756242388", body)
+    messenger.send_message
+ end
 
 
 

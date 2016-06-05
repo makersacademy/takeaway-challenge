@@ -5,6 +5,8 @@ describe TakeAway do
 
   before do
     allow(take_away).to receive(:gets).and_return("2-pizza, 3-Wrap")
+    allow(take_away).to receive(:send_message)
+
   end
 
   describe "#show_menu" do

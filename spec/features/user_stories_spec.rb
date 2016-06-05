@@ -4,6 +4,7 @@ describe "User Stories" do
 
   before do
     allow(take_away).to receive(:gets).and_return("2-pizza, 3-Wrap")
+    allow(take_away).to receive(:send_message)
   end
   # As a customer
   # So that I can check if I want to order something
