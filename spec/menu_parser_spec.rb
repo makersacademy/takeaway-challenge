@@ -23,9 +23,9 @@ describe MenuParser do
   STRING_MENU_1 = "1 - Roast pork - £15\n"\
                   "2 - Steamed broccoli - £3\n"\
                   "3 - Roasted spinach - £8\n"\
-                  "4 - Smelly fruit - £12\n"
+                  "4 - Smelly fruit - £12\n".freeze
 
   STRING_MENU_2 = "1 - Roast pork - £15\n"\
                   "2 - Steamed broccoli - £3\n"\
-                  "3 - Roasted spinach - £8\n"
+                  "3 - Roasted spinach - £8\n".freeze
 end 
