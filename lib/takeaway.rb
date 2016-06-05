@@ -27,8 +27,8 @@ class Takeaway
 
   def checkout
     fail "Nothing to check out!" if empty?
+    charge_customer
     complete_order
-    basket
   end
 
   private
@@ -44,12 +44,12 @@ class Takeaway
   end
 
   def generate_message(message = Message.new)
-    message.generate
+    message.generate(total)
   end
 
   def complete_order
-    charge_customer
-    puts generate_message
+    msg = generate_message
     @current_order = Order.new
+    msg
   end
 end

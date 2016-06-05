@@ -1,6 +1,5 @@
 require "takeaway"
 require "order"
-require "./data/menu_list"
 
 describe Takeaway do
   let(:menu) { double(:menu) }

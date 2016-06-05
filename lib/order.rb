@@ -1,4 +1,3 @@
-# require_relative "menu"
 require "./data/menu_list"
 
 # Understands how to handle a shopping basket
