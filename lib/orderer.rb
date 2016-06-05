@@ -13,11 +13,15 @@ class Orderer
   end
 
   def show_all
-    list.each_with_index.inject(""){ |sum, (obj, i)| sum  << "#{ i }: #{ obj }\n" }
+    result = first_line
+    result << list.each_with_index.inject(""){ |sum, (obj, i)| sum  << "#{ i }: #{ obj }\n" }
+    result << end_line
   end
 
   def show_order
-    ordered.inject(""){ |sum, (obj, quantity)| sum + obj.subtotal_line(quantity) } + total_line
+    result = first_line
+    result << ordered.inject(""){ |sum, (obj, quantity)| sum + obj.subtotal_line(quantity) + "\n" }
+    result << total_line
   end
   
   def order_total
@@ -31,6 +35,14 @@ class Orderer
   private
   
   def total_line
-    "\nTotal: #{ order_total }"
+    "\nTotal: #{ order_total }\n" + end_line
+  end
+
+  def first_line
+    "\n---------------------\n"
+  end
+
+  def end_line
+    "\n---------------------\n"
   end
 end

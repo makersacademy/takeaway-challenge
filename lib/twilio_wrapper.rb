@@ -19,5 +19,5 @@ class TwilioWrapper
     @client.account.messages.create(  from: FROM, 
                                       to: TO, 
                                       body: body ) 
-  end:
+  end
 end
