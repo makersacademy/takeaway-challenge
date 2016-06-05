@@ -9,7 +9,7 @@ class Order
     @basket = []
   end
 
-  def add_to_order(name, quantity = 1)
+  def update_basket(name, quantity = 1)
     fail "Item not found" unless find_item_price(name)
     quantity.times do
       @basket << name

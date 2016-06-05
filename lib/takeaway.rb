@@ -1,9 +1,9 @@
 require_relative "order"
 
 # Understands how to take orders from the customer
-class CoffeeShop
-  def initialize(current_order = Order)
-    @current_order = current_order.new
+class Takeaway
+  def initialize(current_order = Order.new)
+    @current_order = current_order
     @profit = 0
   end
 
@@ -20,12 +20,14 @@ class CoffeeShop
   end
 
   def add(name, quantity = 1)
-    current_order.add_to_order(name, quantity)
+    current_order.update_basket(name, quantity)
+    basket
   end
 
   def checkout
     charge_customer
     @current_order = Order.new
+    basket
   end
 
   private
