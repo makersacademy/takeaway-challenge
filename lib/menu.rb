@@ -1,18 +1,24 @@
 class Menu
 
-	attr_reader :food_list, :drinks_list
 
-	def initialize 
-		@food_list = {"Chicken rice" => 5,
+	attr_reader :menu
+
+	MENU = {"Chicken rice" => 5,
 					  "Steak frites" => 6,
-					  "Red prawn curry" => 7
-					}
-		@drinks_list = {"Tea" => 3,
-						"Espresso" => 2,
-						"Flat White" => 2.5}
+					  "Red prawn curry" => 7,
+					"Burger" => 5}
+
+	def initialize(menu = MENU)
+		@menu = menu
 	end
 
-	def print_list
-		p @food_list
+	def print
+		@menu.each do |item, price|
+			p "#{item} £#{price}"
+		end
 	end 
+
+	def price(item)
+		@menu[item]
+	end
 end 
