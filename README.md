@@ -14,6 +14,11 @@ Takeaway Challenge
  
  ```
 
+####Master branch build status: 
+![](https://travis-ci.org/[riyapabari]/MovingHelper.svg?branch=master)
+
+
+
 Instructions
 -------
 
