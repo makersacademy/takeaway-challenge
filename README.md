@@ -1,5 +1,8 @@
 Takeaway Challenge
 ==================
+
+[![Build Status](https://travis-ci.org/gtormiston/takeaway-challenge.svg?branch=master)](https://travis-ci.org/gtormiston/takeaway-challenge)
+
 ```
                             _________
               r==           |       |
