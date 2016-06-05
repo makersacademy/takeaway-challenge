@@ -1,6 +1,6 @@
 require_relative "menu"
 require_relative "order"
-require "sms"
+require_relative "sms"
 
 class Takeaway
 
