@@ -22,13 +22,4 @@ let(:restaurant) { described_class.new(new_menu, order) }
 
 	end
 
-
-	context '#show_menu' do
-
-		it 'returns the menu' do
-			expect(restaurant.show_menu).to eq ({ food1: 1, food2: 2})
-		end
-
-	end
-
 end

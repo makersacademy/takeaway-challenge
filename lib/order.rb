@@ -22,9 +22,9 @@ class Order
 		messenger.send_text
 	end
 
-	def total_correct?
+
+ 	def total_correct?
 		ordered_items.map {|x,y|	@menu_list[x] * y}.inject(0, :+) == @running_total
 	end
-
 
 end

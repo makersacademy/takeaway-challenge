@@ -6,8 +6,6 @@ require_relative 'messenger'
 
 class Restaurant
 
-	attr_reader :order
-
 	def initialize(menu = Menu.new, order = nil)
 		@menu = menu
 		@order = order
@@ -37,6 +35,8 @@ class Restaurant
 	end
 
 	private
+
+	attr_reader :order
 
 	def open_order
 		@order = Order.new(@menu.food_list)

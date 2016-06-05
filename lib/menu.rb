@@ -2,8 +2,6 @@
 
 class Menu
 
-	attr_reader :food_list
-
 	def initialize
 		@food_list = { 
 			chicken_korma: 4.50, 
@@ -20,5 +18,9 @@ class Menu
 			p "#{k.to_s.capitalize} is £#{sprintf('%.2f', v)}" 
 		end
 	end
+
+	private
+
+	attr_reader :food_list
 
 end
