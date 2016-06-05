@@ -1,4 +1,4 @@
-require_relative 'menu'
+require_relative 'menu_builder'
 require_relative 'sum_items'
 require 'tty-prompt'
 require 'yaml'
@@ -6,7 +6,7 @@ require 'yaml'
 
 class MenuSelector
 
-  def initialize(menu = Menu.new, order = SumItems.new)
+  def initialize(menu = MenuBuilder.new, order = SumItems.new)
     @menu = menu
     @order = order
   end

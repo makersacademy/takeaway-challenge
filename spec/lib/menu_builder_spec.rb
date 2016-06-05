@@ -1,6 +1,6 @@
-require 'menu'
+require 'menu_builder'
 
-describe Menu do
+describe MenuBuilder do
   subject(:menu) { described_class.new([["list"]]) }
 
   describe '#list' do

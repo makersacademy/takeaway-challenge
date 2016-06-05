@@ -5,11 +5,11 @@ require 'dotenv'
 Dotenv.load
 
 
-class Menu
+class MenuBuilder
 
   attr_reader :list
 
-  def initialize(list = Menu.build)
+  def initialize(list = MenuBuilder.build)
     @list = list
   end
 
