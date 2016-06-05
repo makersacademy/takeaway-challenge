@@ -24,6 +24,11 @@ describe Customer do
     it "should respond to order with 2 arguments" do
       expect(customer).to respond_to(:choose).with(2).arguments
     end
+  end
 
-  end  
+  describe "pay" do
+    it "should respond to order with 1 argument" do
+      expect(customer).to respond_to(:pay).with(1).arguments
+    end
+  end
 end

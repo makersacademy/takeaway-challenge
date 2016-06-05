@@ -12,7 +12,7 @@ describe Order do
     end
 
     it "should raise error if dish is not on the menu" do
-      expect{order.select("chicken", 3)}.to raise_error("Not on the menu.")
+      expect{order.select("chicken", 3)}.to raise_error("Chicken is not on the menu.")
     end
 
     it "should update order" do

@@ -1,5 +1,5 @@
 #keeps account of order
-
+require_relative 'messenger'
 class Order
 
   attr_reader :order, :total_price
@@ -11,13 +11,13 @@ class Order
   end
 
   def select(item, quantity)
-    fail "Not on the menu." unless @menu.include?(item)
+    fail "#{item.capitalize} is not on the menu." unless @menu.include?(item)
     @order << {item => quantity}
     add_to_balance(item, quantity)
   end
 
-  def confirm(money)
-    money == @total ? Messenger.new.send : print {"Incorrect Total"}
+  def confirm(amount)
+    amount == @total ? Messenger.new.send : print {"Incorrect Total"}
   end
 
   private
@@ -26,6 +26,5 @@ class Order
     quantity.times do
       @total_price += @menu[item]
     end
-
   end
 end

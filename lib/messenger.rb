@@ -12,7 +12,16 @@ class Messenger
     :from => '+442870032048',
     :to => '+447545253288',
     :body =>
-    "Order Received. Estimated delivery time: #{Time.now.hour + 1}:#{ Time.now.min }. Thank you."
+    "Order Received. Estimated delivery time: #{delivery_time }. Thank you."
     })
   end
+
+  private
+
+  def delivery_time
+    (Time.now + 3600).strftime("%H:%M")
+  end
+
 end
+
+Messenger.new.send
