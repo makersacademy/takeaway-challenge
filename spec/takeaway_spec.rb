@@ -34,4 +34,19 @@ describe Takeaway do
       expect{takeaway.order("dogfood")}.to raise_error ("Sorry 'dogfood' is not an item on the menu")
     end
   end
+
+  describe '#basket' do
+    it 'returns string containing basket contents' do
+      takeaway.order("chips", 4)
+      takeaway.order("fish", 2)
+      expect(takeaway.basket).to eq ("4x chips (@1.99 each), 2x fish (@3.99 each), current total: 15.94")
+    end
+  end
+  
+  describe '#total' do
+    it 'returns total value of order' do
+      takeaway.order("chips", 4)
+      expect(takeaway.total).to eq 7.96
+    end
+  end
 end
