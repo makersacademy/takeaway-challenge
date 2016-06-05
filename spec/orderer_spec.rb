@@ -2,14 +2,20 @@ require 'orderer'
 
 describe Orderer do
 
-  DISH1_NAME = 'Chicken Chow Mein'
-  DISH1_PRICE = 5.4
-  DISH2_NAME = 'Beef Chow Mein'
-  DISH2_PRICE = 7.7
   subject(:subject){ described_class.new(restaurant.menu, messenger) }
   let(:restaurant) { double(:restaurant, menu: [dish1, dish2]) }
-  let(:dish1) { double(:dish1, name: DISH1_NAME, price: DISH1_PRICE , to_s: "string1", subtotal: 4, subtotal_line: "string3") }
-  let(:dish2) { double(:dish2, name: DISH2_NAME, price: DISH2_PRICE , to_s: "string2", subtotal: 4, subtotal_line: "string4") }
+  let(:dish1) { double(:dish1, 
+                        name: 'Chicken Chow Mein', 
+                        price: 5.4, 
+                        to_s: "string1", 
+                        subtotal: 4, 
+                        subtotal_line: "string3") }
+  let(:dish2) { double(:dish2, 
+                        name: 'Beef Chow Mein', 
+                        price: 7.3, 
+                        to_s: "string2", 
+                        subtotal: 4, 
+                        subtotal_line: "string4") }
   
   let(:messenger) { double(:messenger, send: true) }
   
@@ -30,7 +36,7 @@ describe Orderer do
       expect(subject.order(0, quant2)).to be(quant1+quant2)
     end
     it 'changes the whole order' do
-      expect{ subject.order(0, rand(5..10)) }.to change{ subject.order_total }.by(dish1.subtotal)
+      expect{ subject.order(0,10) }.to change{ subject.order_total }.by(dish1.subtotal)
     end
   end
 
