@@ -13,8 +13,8 @@ class Menu
 	end
 
 	def show_menu
-		@food_list.each do |k,v|
-			p "#{k.to_s.capitalize} is £#{sprintf('%.2f', v)}" 
+		@food_list.map do |k,v|
+			"#{k.to_s.capitalize} is £#{sprintf('%.2f', v)}" 
 		end
 	end
 

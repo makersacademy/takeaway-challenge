@@ -31,7 +31,7 @@ describe Order do
 
 	end
 
-	context '#confirm_order' do
+	context '#total_correct?' do
 
 		it 'checks if running total = correct total' do
 
@@ -42,6 +42,13 @@ describe Order do
 
 		end
 
+	end
+
+	context '#confirm_order' do
+
+			it 'sends a text to the customer' do
+			  expect(messenger).to respond_to :send_text
+		  end
 	end
 
 end

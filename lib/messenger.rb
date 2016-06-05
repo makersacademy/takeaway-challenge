@@ -2,6 +2,8 @@
 
 require 'rubygems' # not necessary with ruby 1.9 but included for completeness 
 require 'twilio-ruby' 
+require 'dotenv'
+Dotenv.load
 
 class Messenger
 
@@ -10,12 +12,12 @@ class Messenger
   end
 
 	def send_text
-		account_sid = 'AC785b40a22bde0086eebd26d91cb57831' 
-		auth_token = '5f3b4192e7f0fccd93e81805d0f73693' 
+		account_sid = ENV['ACCSID']
+		auth_token = ENV['AUTHTOK']
 		@client = Twilio::REST::Client.new account_sid, auth_token 
 		@client.account.messages.create({
-			:from => '+441327552064', 
-			:to => '+447708605799', 
+			:from => ENV['TWILNUM'],
+			:to => ENV['MYNUM'], 
 			:body => "Your order totalling £#{sprintf('%.2f', @total)} will be with you at #{(Time.now + 3600 ).strftime("%H:%M")}. Thank you for the order.",  
 		}) 
 
