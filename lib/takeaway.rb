@@ -3,7 +3,7 @@ require 'sms'
 
 class Takeaway
 
-  def initialize(menu:, order: nil, sms: sms)
+  def initialize(menu:, order: order, sms: sms, config: config)
     @menu = menu
     @order = order || Order.new(menu)
     @sms = sms || SMS.new
