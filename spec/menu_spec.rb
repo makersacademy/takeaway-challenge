@@ -18,4 +18,12 @@ describe Menu do
     printed_menu = "Burger £1.99, Chicken £1.00"
     expect(menu.show).to eq(printed_menu)
   end
+
+  it "confirms whether an item is on the menu" do
+    expect(menu.has_item?(:chicken)).to be true
+  end
+
+  it "confirms if an item is not on the menu" do
+    expect(menu.has_item?(:fish)).to be false
+  end
 end

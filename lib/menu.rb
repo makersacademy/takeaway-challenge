@@ -11,4 +11,8 @@ attr_reader :items
       "%s £%.2f" % [item.to_s.capitalize, price]
     end.join(", ")
   end
+
+  def has_item?(item)
+    !items[item].nil?
+  end
 end
