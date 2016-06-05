@@ -3,7 +3,6 @@ require 'order'
 describe Order do
 
   let(:menu) {{'item1'=>1.11, 'item2'=>2.22}}
-  let(:item) {:item}
   subject(:order) {described_class.new(menu)}
 
   describe '#add' do
@@ -19,10 +18,22 @@ describe Order do
     end
   end
 
-end
+  describe '#total' do
+    it 'sum amount of items added' do
+      order.add('item1', 3); order.add('item2', 3)
+      expect(order.total).to eq '£9.99'
+    end
+  end
 
-#   it 'order total to be sum of items added' do
-#     order.add('Pizza')
-#     order.add('Pizza')
-#     expect(order.total).to eq '£2.00'
-#   end
+  describe '#checkout' do
+    it 'checkout and reset order status' do
+      order.add('item1', 3); order.add('item2', 3)
+      order.checkout(9.99)
+      expect(order.status).to eq []
+    end
+
+    it 'fails if amount not equal total' do
+      expect{order.checkout(9.99)}.to raise_error "wrong amount"
+    end
+  end
+end

@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :menu, :status, :trolley
+  attr_reader :menu, :status
 
   def initialize(menu = Menu::MENU_LIST)
     @menu = menu
@@ -15,18 +15,27 @@ class Order
 
   def trolley
     printer = []
-    @status.each do |i|
-      printer << "#{@status.count(i)}x #{i.keys[0]}(s) = £#{i.values[0] * @status.count(i)}"
-    end
+    status.each {|i| printer << "#{status.count(i)}x #{i.keys[0]}(s) = £#{i.values[0] * status.count(i)}"}
     printer.uniq.join(", ")
     # ...to be improved
   end
 
-  def checkout
+  def total
+    "£#{calculator}"
+    # ..to be improved
+  end
+
+  def checkout(amount)
+    fail "wrong amount" if amount != calculator
+    @status = []
+  end
+
+  private
+
+  def calculator
+    i = 0
+    status.each {|h| i += h.values[0]}
+    i.round(2)
   end
 
 end
-
-# def order_total
-# ...
-# end

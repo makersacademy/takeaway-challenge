@@ -6,7 +6,7 @@ describe 'FEATURE TEST:' do
     t.menu
   end
 
-  it 'places takeaway order' do
+  it 'places takeaway order and checks out' do
     t = Order.new
     t.menu
     t.add 'Love'
@@ -15,8 +15,7 @@ describe 'FEATURE TEST:' do
     t.trolley
     t.add 'Touch', 3
     t.trolley
-    # t.total
-    #  => "Total: £12.93"
-    # t.checkout(12.93)
+    t.total
+    # t.checkout(28.50)
   end
 end
