@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/Alex-Swann/takeaway-challenge.svg?branch=master)](https://travis-ci.org/Alex-Swann/takeaway-challenge)
 
+[![Coverage Status](https://coveralls.io/repos/github/Alex-Swann/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/Alex-Swann/takeaway-challenge?branch=master)
+
 Takeaway Challenge
 ==================
 ```
@@ -86,8 +88,3 @@ $ coveralls report
 
 This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
 
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
