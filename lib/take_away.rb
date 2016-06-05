@@ -35,7 +35,8 @@ private
 
   def send_message
     messenger = @messenger_class.new
-    body = "Thank you! The total amout due for your order is #{order_price} and it will be delivered before #{Time.now} "
+    time = Time.now + 3600
+    body = "Thank you! The total amout due for your order is #{order_price} and it will be delivered before #{time.hour}:#{time.min} "
     messenger.set_message("Restaurant", "+447756242388", body)
     messenger.send_message
  end
