@@ -16,7 +16,10 @@ class Order
     @total += @menu.view_menu[dish] * quantity
   end
 
-  def check_total
+  def check_order
+    current_order.map {|dish, qty| @menu.view_menu[dish] * qty}.inject(0, :+) == @total
+    "Your total checks out."
   end
 
 end
+

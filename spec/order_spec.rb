@@ -11,8 +11,8 @@ describe Order do
     expect(subject).to respond_to(:add_dish).with(2).arguments
   end
 
-  it 'responds to check_total' do
-    expect(subject).to respond_to(:check_total)
+  it 'responds to check_order' do
+    expect(subject).to respond_to(:check_order)
   end
 
     describe "#add_dish" do
@@ -24,4 +24,13 @@ describe Order do
       end
     end
 
+    describe "#check_order" do
+      it "checks if total matches menu prices" do
+        total = order.add_dish("Pudweiser", 1)
+        expect(total).to eq 4
+      end
+      it "returns confirmation message" do
+        expect(subject.check_order).to eq "Your total checks out."
+      end
+    end
 end
