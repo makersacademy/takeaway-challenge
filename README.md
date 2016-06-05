@@ -1,3 +1,31 @@
+[![Build Status](https://travis-ci.org/a-mellor/takeaway-challenge.svg?branch=master)](https://travis-ci.org/a-mellor/takeaway-challenge)
+
+[![Coverage Status](https://coveralls.io/repos/a-mellor/takeaway-challenge/badge.png)](https://coveralls.io/r/a-mellor/takeaway-challenge)
+
+
+User Instructions
+```
+In 'irb'
+Require './lib/takeaway'
+Initialize a new menu
+  menu = Menu.new
+Initialize a new takeaway with the menu
+  takeaway = TakeAway.new(menu)
+Initialize an order
+  order = Order.new
+To view the menu
+  takeaway.see_menu
+To add items
+  order.add(item, quantity)
+To view order
+  order.customer_order
+```
+
+I need to add to this to include -
+Stop food that is not on the menu being ordered.
+Calculate the cost of the order
+Implement the SMS functionality to confirm an order
+
 Takeaway Challenge
 ==================
 ```
@@ -11,7 +39,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +97,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 

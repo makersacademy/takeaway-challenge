@@ -30,4 +30,13 @@ describe Order do
       expect{ order.add(:beef, 1) }.to raise_error('Dish not available')
     end
   end
+
+  describe '#total' do
+    it 'calculates the overall cost of the order' do
+      order.add(:chicken, 2)
+      order.add(:fish, 1)
+      total = 15.00
+      expect(order.total).to eq(total)
+    end
+  end
 end

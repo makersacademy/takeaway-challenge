@@ -1,12 +1,14 @@
+require_relative 'order'
+
 class Menu
 
   attr_reader :dishes
 
   def initialize
     @dishes = {
-                "chicken"=>4.99,
-                "fish"=>3.99,
-                "veg"=>2.99
+                "chicken" => 4.50,
+                "fish" => 5.00,
+                "veg" => 6.50
               }
   end
 

@@ -10,11 +10,16 @@ class Order
   end
 
   def add(item, quantity)
-    raise 'Dish not available' unless @menu.has_dish?(item)
+    # raise 'Dish not available' unless @menu.has_dish?(item)
     @customer_order[item] = quantity
   end
 
-  private
+  def total
+    customer_order.map do |item, quantity| menu.price(item) * quantity
+    end
+  end
+
+  # private
 
   def has_dish?
     !menu[item].nil?
