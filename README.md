@@ -1,3 +1,16 @@
+<h1>Makers Academy Week 2 Challenge. Takeaway-Challenge</h1>
+
+As part of the Makers Academy Week 2 challenges, I had to write a program to print a menu, displaying items and prices, to allow a user to choose some number of the available items, to confirm the total and to send a text to them confirming delivery. Full instructions for the challenge can be found below. 
+
+<h2>Learning Points</h2>
+
+After spending two days on this, I am now watching through the video to show how it might be compelted by a professional. I have already begin to think that my methodology was all wrong, and the fundamental error was creating individual items as their own object, as I subsequently passed objects into an array, and then tried to abstract and iterate over an array of objects, which contained item name and price within a hash. It got very complicated (for me) and although I still need to work on my RSpec testing a lot, some of these would not work due to undefined methods, contained deep within the object abstraction. 
+
+Although complicated, I learnt a lot from this and will look to do things differently in the future. I will work through the video tutorial and get some ideas of a better way to impliment this. I was pleased that I got Twilio working though and dispite being over complicated, my program worked. Dependencies, classes, RSPec still has a lot to be desired though and I need to work on this! 
+
+
+
+
 Takeaway Challenge
 ==================
 ```
