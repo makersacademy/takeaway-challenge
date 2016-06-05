@@ -1,11 +1,11 @@
 require 'menu'
 
 describe Menu do
-  subject(:menu) { described_class.new }
+  subject(:menu) { described_class.new([["list"]]) }
 
   describe '#list' do
-    it 'contains a hash list' do
-      expect(menu.list).to respond_to(:each)
+    it 'contains a list' do
+      expect(menu.list).to eq [["list"]]
     end
     it 'each item has key/value pairs' do
       expect(menu.list).to all( be_an(Array) )
