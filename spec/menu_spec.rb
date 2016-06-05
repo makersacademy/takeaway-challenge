@@ -2,12 +2,14 @@ require 'menu'
 
 describe Menu do
 
-  let(:to_s) {double(:to_s)}
-  subject(:menu) {described_class.new}
+  let(:menu_list) {Menu::MENU_LIST}
+  subject(:menu_class) {described_class.new}
 
-  describe '#to_s' do
-    it 'displays the menu' do
-      expect(menu).to respond_to :to_s
+    # it 'has menu' do
+    #   expect(menu_class.menu).to eq menu_list
+    # end
+
+    it "has 14 items on the menu" do
+      expect(menu_list.size).to eq(14)
     end
-  end
 end

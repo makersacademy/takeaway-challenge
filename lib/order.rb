@@ -1,16 +1,25 @@
 class Order
 
-  def initialize
-    @current_order = Array.new
+  attr_reader :menu, :status
+
+  def initialize(menu = Menu::MENU_LIST)
+    @menu = menu
+    @status = []
   end
 
-  def add
+  def add(item, quantity = 1)
+    quantity.times {@status << @menu.select {|k,v| k == item}}
+    "#{quantity}x #{item}(s) added to our order!"
   end
 
-  def status
+  def trolley
   end
 
-  def end
+  def checkout
   end
 
 end
+
+# def order_total
+# ...
+# end
