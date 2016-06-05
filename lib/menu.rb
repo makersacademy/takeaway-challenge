@@ -1,3 +1,5 @@
+
+#Knows about the list of dishes
 class Menu
 
   def initialize(dishes)
