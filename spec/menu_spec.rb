@@ -9,7 +9,7 @@ describe Menu do
 		}
 	end
 
-	it 'lists the different dishes and prices' do
+	it 'records the different dishes and prices' do
 		expect(menu.dishes).to eq(dishes)
 	end
 	it 'prints out the list of dishes and prices' do
