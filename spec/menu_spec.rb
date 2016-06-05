@@ -18,23 +18,27 @@ describe Menu do
   end
 
   # Tests the :dishes reader method
-  it "has a list of dishes with prices" do
-    expect(menu.dishes).to eq(dishes)
+  describe "#dishes" do
+    it "has a list of dishes with prices" do
+      expect(menu.dishes).to eq(dishes)
+    end
   end
 
+  describe "#print" do
+    it "prints a list of dishes with prices" do
+      printed_menu = "Pizza £9.99, Burger £2.99, Chips £1.99"
+      expect(menu.print).to eq(printed_menu)
+    end
   # Checks the print method prints the hash of dishes and prices in a human
   # readable format, i.e. in the format specified by printed_menu
-  it "prints a list of dishes with prices" do
-    printed_menu = "Pizza £9.99, Burger £2.99, Chips £1.99"
-    expect(menu.print).to eq(printed_menu)
   end
 
-  it "tells if a dish is on the menu" do
-    expect(menu.has_dish?(:pizza)).to be true
+  describe "#has_dish?" do
+    it "tells if a dish is on the menu" do
+      expect(menu.has_dish?(:pizza)).to be true
+    end
+    it "tells if a dish is on NOT on the menu" do
+      expect(menu.has_dish?(:chowmein)).to be false
+    end
   end
-
-  it "tells if a dish is on NOT on the menu" do
-    expect(menu.has_dish?(:chowmein)).to be false
-  end
-
 end

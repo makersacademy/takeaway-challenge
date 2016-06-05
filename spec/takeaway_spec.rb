@@ -20,13 +20,26 @@ describe Takeaway do
   let(:order) { double(:order) }
   let(:dishes) { {pizza: 9.99, burger: 2.99} }
 
-  it "displays menu with the dishes and prices" do
-    expect(takeaway.print_menu).to eq(printed_menu)
+  describe "#print_menu" do
+    it "displays menu with the dishes and prices" do
+      expect(takeaway.print_menu).to eq(printed_menu)
+    end
   end
 
-  it "can order some number of serveral available dishes" do
-    expect(order).to receive(:add).twice
-    takeaway.place_order(dishes)
+  describe "#place_order" do
+    it "can order some number of serveral available dishes" do
+      expect(order).to receive(:add).twice
+      takeaway.place_order(dishes)
+  # Tests that when we order 2 dishes that the order object's add method is
+  # called twice.  The set-up for this test is as follows:
+  #
+  # 1) We create a dishes object on line 21 above and set its value to a hash
+  #   with the key value pairs set out therein.
+  # 2) We then use expect(order).to receive(:add).twice to check that when
+  #   we call "place_order" method with dishes as the argument (i.e. the items
+  #   in the hash that represent the ordered dishes) on a takeaway object that
+  #   the order object receives 2 calls to its "add" method
+  #
+    end
   end
-
 end

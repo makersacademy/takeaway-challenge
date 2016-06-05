@@ -1,4 +1,4 @@
-# Saves a customer's order
+# Order functionality: stores a customer's order
 class Order
 
   attr_reader :dishes
@@ -12,10 +12,6 @@ class Order
     fail NoItemERROR, "#{dish.capitalize} is not on the menu!" unless menu.has_dish?(dish)
     dishes[dish] = quantity
   end
-
-  # def has_dish?
-  #
-  # end
 
   private
 

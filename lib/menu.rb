@@ -1,4 +1,4 @@
-# Allows customer to print menu list
+# Menu functionality: stores menu, prints menu & checks if item on menu
 
 class Menu
 
@@ -29,8 +29,6 @@ class Menu
     # = > "£%.2f" interpolates the value (i.e. the price) and formats into £
     #     with two decimal places.
     #
-    printed_menu = "Pizza £9.99, Burger £2.99, Chips £1.99"
-
   end
 
   def has_dish?(dish)
