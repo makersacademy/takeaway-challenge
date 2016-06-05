@@ -1,7 +1,7 @@
-require 'order'
+require 'sum_items'
 
 
-describe Order do
+describe SumItems do
   subject(:order) { described_class.new }
   let(:array) { ["food £4.32","other £5.34","more £2.34"] }
   let(:naughty_array) { ["food £-4.32","other £-5.34","more £-2.34"] }

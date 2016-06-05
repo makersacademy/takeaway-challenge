@@ -12,7 +12,7 @@ describe Text do
       auth_token: "23fds",
       from: "+123",
       to: "+234",
-      body: "Thank you! Your order will be delivered before #{(Time.now+(60*60)).strftime('%r')}"
+      body: "Thank you! Your order will be delivered before "
     }
   end
 
@@ -20,7 +20,7 @@ describe Text do
     args = {
       from: config[:from],
       to: config[:to],
-      body: "Thank you! Your order will be delivered before #{(Time.now+(60*60)).strftime('%r')}"
+      body: config[:body] + (Time.now+(60*60)).strftime('%r')
     }
     sms.send_text
     expect(messages).to have_received(:create).with(args)

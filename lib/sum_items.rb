@@ -4,7 +4,7 @@ require 'dotenv'
 Dotenv.load
 
 
-class Order
+class SumItems
 
   def initialize
     @total = ''
@@ -19,18 +19,12 @@ class Order
   end
 
   def send_receipt(receipt_doc: nil)
-    @timed_receipt = receipt_doc || TimedReceipt.new(@selected_items, @total)
-    @timed_receipt.receipt
+    timed_receipt = receipt_doc || TimedReceipt.new(@selected_items, @total)
+    timed_receipt.receipt
   end
 
   def send_order_to_text(text_doc: nil)
-    text = text_doc || Text.new({
-      account_sid: ENV['TWILIO_ACCOUNT_SID'],
-      auth_token: ENV['TWILIO_AUTH_TOKEN'],
-      from: ENV['TWILIO_NUMBER'],
-      to: ENV['MY_NUMBER'],
-      body: @timed_receipt.receipt
-    })
+    text = text_doc || Text.new
     text.send_text
   end
 

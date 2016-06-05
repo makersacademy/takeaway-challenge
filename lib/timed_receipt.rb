@@ -1,6 +1,6 @@
 
 class TimedReceipt
-  def initialize(selected_items,total)
+  def initialize(selected_items, total)
     @selected_items = selected_items
     @total = total
   end
