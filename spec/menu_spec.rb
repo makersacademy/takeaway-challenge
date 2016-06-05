@@ -4,8 +4,8 @@ describe Menu do
 
 subject(:menu) {described_class.new(list)}
 let(:list) do
-	{ Cheese_Cake: 4,
-		Shake: 4.5}
+	{ Pizza: 4,
+		Green_Shake: 4.5}
 end
 
 
@@ -14,7 +14,7 @@ end
 	end
 
 	it "shows the list of dishes and prices" do
-		shown_menu = "Cheese Cake £4, Shake £4.5"
+		shown_menu = "Pizza £4, Green Shake £4.5"
 		expect(menu.show).to eq(shown_menu)
 	end
 
