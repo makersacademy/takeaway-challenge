@@ -31,4 +31,17 @@ describe Order do
 
 	end
 
+	context '#confirm_order' do
+
+		it 'raises an error if the running total does not equal the expected price' do
+
+			order.add_to_order(:food1,1)
+			order.add_to_order(:food2,2)
+
+			expect{order.confirm_order}.not_to raise_error
+
+		end
+
+	end
+
 end

@@ -1,6 +1,8 @@
 # it interacts with the customer
 
 require_relative 'menu'
+require_relative 'order'
+require_relative 'messenger'
 
 class Restaurant
 
@@ -17,6 +19,11 @@ class Restaurant
 		fail "This item is not on the menu" unless menu_include?(item)
 		open_order if @order == nil
 		@order.add_to_order(item, qty)
+	end
+
+	def complete_order
+		@order.confirm_order
+		@order = nil
 	end
 
 	private
