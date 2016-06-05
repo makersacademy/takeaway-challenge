@@ -2,6 +2,10 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/awye765/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/awye765/takeaway-challenge?branch=master) [![Build Status](https://travis-ci.org/awye765/takeaway-challenge.svg?branch=master)](https://travis-ci.org/awye765/takeaway-challenge)
 
+<p align="center">
+  <img src="https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiavYPn5JDNAhXFC8AKHWbjBm0QjRwIBw&url=https%3A%2F%2Fwww.primarytreasurechest.com%2Frole-play%2Frole-play-areas%2Frestaurants%2Ffast-food-takeaway.html&bvm=bv.123664746,d.ZGg&psig=AFQjCNHwUtBL4xN4F8v9Fk3By7L5X-Ie5g&ust=1465212465485481">
+</p>
+
 <h2>Project Aim</h2>
 
 To create a basic application in Ruby that fulfils the following user stories:
