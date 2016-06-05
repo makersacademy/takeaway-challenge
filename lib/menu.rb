@@ -15,4 +15,8 @@ class Menu
 		STANDARD_MENU
 	end
 
+	def item_price(item)
+		@menu[item]
+	end
+
 end

@@ -20,4 +20,8 @@ class Takeaway
 		@order.include?(item)
 	end
 
+	def total_price
+		p "The price of your order is £#{@order.order_total}"
+	end
+
 end
