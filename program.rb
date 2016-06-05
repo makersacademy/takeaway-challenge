@@ -19,7 +19,7 @@ if response == "yes"
           new_customer.choose(dish, number)
         end
       end
-      p "That will be £#{new_customer.order.total_price}. Is that ok?"
+      p "That will be £#{'%.2f' % new_customer.order.total_price.round}. Is that ok?"
       response = gets.chomp.downcase
       if response == "yes"
         new_customer.pay(new_customer.order.total_price)

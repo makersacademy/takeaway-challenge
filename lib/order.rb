@@ -7,7 +7,7 @@ class Order
   def initialize(menu)
     @menu = menu
     @order = {}
-    @total_price = 0
+    @total_price = 0.00
   end
 
   def select(item, quantity)
