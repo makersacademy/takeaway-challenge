@@ -2,6 +2,8 @@
 
 class Menu
 
+	attr_reader :food_list
+
 	def initialize
 		@food_list = { 
 			chicken_korma: 4.50, 
@@ -14,7 +16,9 @@ class Menu
 	end
 
 	def show_menu
-		@food_list.dup
+		@food_list.each do |k,v|
+			p "#{k.to_s.capitalize} is £#{sprintf('%.2f', v)}" 
+		end
 	end
 
 end

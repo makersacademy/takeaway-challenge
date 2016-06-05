@@ -3,8 +3,8 @@ require 'order'
 describe Order do
 	
 	let(:menu_list) { { food1: 1, food2: 2} }
-
-	let(:order) { described_class.new(menu_list) }
+	let(:messenger) { double(:messenger, new: true, send_text: true) }
+	let(:order) { described_class.new(menu_list,messenger) }
 
 	context '#menu_list' do
 		it 'initializes with a menu list' do
@@ -33,12 +33,12 @@ describe Order do
 
 	context '#confirm_order' do
 
-		it 'raises an error if the running total does not equal the expected price' do
+		it 'checks if running total = correct total' do
 
 			order.add_to_order(:food1,1)
 			order.add_to_order(:food2,2)
 
-			expect{order.confirm_order}.not_to raise_error
+			expect(order.total_correct?).to eq true
 
 		end
 

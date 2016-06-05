@@ -6,6 +6,8 @@ require_relative 'messenger'
 
 class Restaurant
 
+	attr_reader :order
+
 	def initialize(menu = Menu.new, order = nil)
 		@menu = menu
 		@order = order
@@ -18,7 +20,7 @@ class Restaurant
 	def order_item(item, qty = 1)
 		fail "This item is not on the menu" unless menu_include?(item)
 		open_order if @order == nil
-		@order.add_to_order(item, qty)
+		@order.add_to_order(item.downcase.to_sym, qty)
 	end
 
 	def complete_order
@@ -26,18 +28,22 @@ class Restaurant
 		@order = nil
 	end
 
+	def total_correct?
+		order.total_correct?
+	end
+
+	def show_order
+		order.ordered_items
+	end
+
 	private
 
 	def open_order
-		@order = Order.new(@menu.show_menu)
-	end
-
-	def print(item,qty)
-		"You have ordered #{qty} #{item} at a price of £#{@menu.show_menu[item] * qty}"
+		@order = Order.new(@menu.food_list)
 	end
 
 	def menu_include?(item)
-		@menu.show_menu.include?(item)
+		@menu.food_list.include?(item.downcase.to_sym)
 	end
 
 end

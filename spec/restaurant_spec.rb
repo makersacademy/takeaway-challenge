@@ -2,7 +2,7 @@ require 'restaurant'
 
 describe Restaurant do
 
-let(:new_menu) { double(:new_menu, :show_menu => { food1: 1, food2: 2}) }
+let(:new_menu) { double(:new_menu, :show_menu => { food1: 1, food2: 2}, :food_list => { food1: 1, food2: 2}) }
 let(:order) { double(:order, :ordered_items => []) }
 let(:restaurant) { described_class.new(new_menu, order) }
 
@@ -21,4 +21,14 @@ let(:restaurant) { described_class.new(new_menu, order) }
 		end
 
 	end
+
+
+	context '#show_menu' do
+
+		it 'returns the menu' do
+			expect(restaurant.show_menu).to eq ({ food1: 1, food2: 2})
+		end
+
+	end
+
 end
