@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class TakeAway
 
   def initialize(menu)
@@ -11,5 +13,5 @@ class TakeAway
   private
 
   attr_reader :menu
-  
+
 end
