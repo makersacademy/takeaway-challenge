@@ -2,19 +2,12 @@ require_relative 'menu'
 
 class Takeaway
 
-	attr_reader :selection
-
-	def initialize
-		@selection = {}
+	def initialize(menu = Menu.new)
+		@menu = menu
 	end
 
 	def read_menu
-		menu = Menu.new
-		menu.display_menu
-	end
-
-	def order
-		selection
+		@menu.display_menu
 	end
 
 end

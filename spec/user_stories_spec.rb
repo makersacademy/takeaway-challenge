@@ -21,7 +21,8 @@ describe 'user stories' do
 	it "so we can order a meal, we select several available dishes from the menu" do
 		menu = Menu.new
 		takeaway = Takeaway.new
-		expect { takeaway.order }.not_to raise_error
+		order = Order.new
+		expect { takeaway.add_item }.not_to raise_error
 	end
 
 end
