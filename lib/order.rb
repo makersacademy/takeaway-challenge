@@ -1,3 +1,6 @@
+require_relative 'menu'
+require_relative 'confirmation'
+
 class Order
 
   attr_reader :menu, :status

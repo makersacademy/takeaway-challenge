@@ -18,4 +18,10 @@ describe 'FEATURE TEST:' do
     t.total
     # t.checkout(28.50)
   end
+
+  it 'test text' do
+    c = Confirmation.new(1.0)
+    p c.complete_order
+
+  end
 end
