@@ -1,6 +1,7 @@
 # Takeaway Challenge
 
 [![Build Status](https://travis-ci.org/riyapabari/takeaway-challenge.svg?branch=master)](https://travis-ci.org/riyapabari/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/riyapabari/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/riyapabari/takeaway-challenge?branch=master)
 
 
 Weekend 2 Challenge: Created a program that allows a customer to view a menu, order dishes, and receive a text confirmation upon confirming their order using the Twilio API. (See Makers Academy brief & user stories below.)
