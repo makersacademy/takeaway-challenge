@@ -1,6 +1,4 @@
 require 'confirmation'
-<<<<<<< HEAD
-=======
 
 describe Confirmation do
 
@@ -12,4 +10,3 @@ describe Confirmation do
     expect(confirmation.complete_order).to eq time
   end
 end
->>>>>>> 094df10... add sms confirmation 'gitignore'
