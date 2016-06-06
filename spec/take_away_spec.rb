@@ -26,7 +26,7 @@ describe TakeAway do
   describe "#order_price" do
     it 'returns the total price of my order' do
       take_away.take_order
-      expect(subject.order_price).to eq 54
+      expect(subject.price).to eq 54
     end
   end
 

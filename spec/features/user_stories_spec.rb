@@ -25,7 +25,7 @@ describe "User Stories" do
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
    it 'So I can check the order is correct, it gives me the total price' do
      take_away.take_order
-     expect { take_away.order_price }.not_to raise_error
+     expect { take_away.price }.not_to raise_error
    end
   # As a customer
   # So that I am reassured that my order will be delivered on time

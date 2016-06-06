@@ -2,6 +2,8 @@
 #Knows about the list of dishes, with their names and prices
 class Menu
 
+  attr_reader :dishes
+
   def initialize(dishes)
     @dishes = dishes
   end
@@ -36,8 +38,8 @@ class Menu
     total
   end
 
-private
 
-  attr_reader :dishes
+
+
 
 end
