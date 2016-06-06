@@ -12,8 +12,8 @@ class Takeaway
   def send_text
     init_twilio
     @client.messages.create(
-      from: '+441357464040',
-      to: '+447900411146',
+      from: ENV['twilio_number'],
+      to: ENV['my_number'],
       body: "Your order is complete. You will receive your food at #{time_plus_one}."
     )
   end
