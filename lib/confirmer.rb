@@ -7,7 +7,7 @@ class Confirmer
 
   end
 
-  def check total
+  def check
     puts "Are you happy with your order?"
 
     options = ["yes","no"]

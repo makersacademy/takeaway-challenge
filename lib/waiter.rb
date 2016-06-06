@@ -13,14 +13,14 @@ class Waiter
 
       while response != "finalize order"
 
-        if !menu.include?response
+        if !menu.include?response.capitalize
           puts "Sorry we do not offer #{response}, would you like anything else from our menu?"
           puts 'Or write "finalize order" to proceed with the order'
           response = gets.chomp
         else
           puts "How many #{response} portions would you like?"
           numbers = gets.chomp
-          @selection[response] = numbers.to_i
+          @selection[response.capitalize] = numbers.to_i
           puts "Would you like to order anything else?"
           puts "Write \"finalize order \" to submit your final order"
           response = gets.chomp

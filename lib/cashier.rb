@@ -28,7 +28,7 @@ class Cashier
     puts ""
 
     puts("Total".ljust(line_width/2) + ("£"+@total.to_s).rjust(line_width/2))
-    confirmer.check(@total)
+    confirmer.check
   end
 
 private
