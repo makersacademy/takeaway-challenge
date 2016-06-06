@@ -4,15 +4,20 @@ describe Order do
 
   subject(:order) {described_class.new}
   let(:menu) {double (:menu)}
+  let(:message) {double(:message)}
 
   it { is_expected.to have_attributes(:current_order => [], :total => 0) }
 
-  it 'responds to add_dish' do
+  it "responds to add_dish" do
     expect(subject).to respond_to(:add_dish).with(2).arguments
   end
 
-  it 'responds to check_order' do
+  it "responds to check_order" do
     expect(subject).to respond_to(:check_order)
+  end
+
+  it "responds to place_order" do
+    expect(subject).to respond_to(:place_order)
   end
 
     describe "#add_dish" do
@@ -33,4 +38,26 @@ describe Order do
         expect(subject.check_order).to eq "Your total checks out."
       end
     end
+
+    describe "#place_order" do
+      it "returns confirmation message" do
+        expect(subject.place_order).to eq "Thank you for your order."
+      end
+    end
+
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

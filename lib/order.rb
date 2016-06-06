@@ -1,13 +1,15 @@
 require_relative 'menu'
+require_relative 'message'
 
 class Order
 
   attr_reader :menu, :current_order, :total
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, message = Message.new)
     @menu = menu
     @current_order = []
     @total = 0
+    @message = message
   end
 
   def add_dish(dish, quantity = 1)
@@ -21,5 +23,9 @@ class Order
     "Your total checks out."
   end
 
+  def place_order
+    @message.send
+    "Thank you for your order."
+  end
 end
 
