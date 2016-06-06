@@ -4,7 +4,6 @@ class Confirmer
 
   def initialize(texter = Texter.new)
     @texter = texter
-
   end
 
   def check
@@ -17,7 +16,7 @@ class Confirmer
       choice = gets.chomp
     end
 
-    choice == "yes" ? texter.send_confirmation : "Your mum"
+    choice == "yes" ? @texter.send_confirmation : "Your order has been cancelled"
 
     "Thank you"
 

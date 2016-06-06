@@ -20,8 +20,6 @@ class Waiter
         else
           puts "How many #{response} portions would you like?"
           numbers = gets.chomp
-          puts "Please, write a number" if numbers.to_i != numbers
-          numbers = gets.chomp
           @selection[response.capitalize] = numbers.to_i
           puts "Would you like to order anything else?"
           puts "Write \"finalize order \" to submit your final order"
