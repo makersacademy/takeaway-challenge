@@ -1,3 +1,0 @@
-#TODO list for takeaway challenge:
-3. Extract any further classes + REFACTOR
-6. README.md + Clear up code / Hound violations / coveralls 98%+
