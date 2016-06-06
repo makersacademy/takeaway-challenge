@@ -1,15 +1,35 @@
-# As a customer
-# So that I can check if I want to order something
-# I would like to see a list of dishes with prices
 require 'menu'
 
 describe Menu do
-	subject(:menu) { described_class.new }
-
-it 'should have a list of dishes with prices' do
-	expect(menu.list).to eq ({"salad": 3, "burger": 6, "sandwich": 4, "wrap": 5, "chicken": 6, "chips": 3, "soda": 1})
-
-end 
 
 
-end 
+	describe "#menu" do
+		it "should respond to each" do
+			expect(subject.menu).to respond_to(:each)
+		end
+	end 
+
+
+	describe '#print menu' do
+		it "should print the menu" do
+			expect(subject.print).to eq Menu::MENU
+		end 
+	end 	
+
+	describe '#price' do
+		it 'shows the price of the item' do
+			expect(subject.price("Salad")).to eq 4
+			expect(subject.price("Burger")).to eq 5
+			expect(subject.price("Chips")).to eq 3
+			expect(subject.price("Soda")).to eq 1
+		end
+	end
+
+	describe "#has_item?" do
+		it "checks if the item is on the menu and raises error if it isn't" do
+			message = "Sushi is not available!"
+			expect {subject.has_item?('sushi')}.to raise_error message
+		end 
+	end
+
+end

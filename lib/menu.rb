@@ -1,17 +1,30 @@
-# As a customer
-# So that I can check if I want to order something
-# I would like to see a list of dishes with prices
-
-
 class Menu
 
-Dishes = {"salad": 3, "burger": 6, "sandwich": 4, "wrap": 5, "chicken": 6, "chips": 3, "soda": 1}
 
+	attr_reader :menu
 
-def list
-Dishes
-end 
+	MENU = {"Salad" => 4,
+			"Burger" => 5,
+			"Chips" => 3,
+			"Soda" => 1}
 
-end 
+	def initialize(menu = MENU)
+		@menu = menu
+	end
 
+	def print
+		@menu.each do |item, price|
+			p "#{item} : $#{price}"
+		end
+	end 
 
+	def price(item)
+		@menu[item]
+	end
+
+	def has_item?(item)
+		raise "#{item.capitalize} is not available!" unless menu.key?(item.capitalize)
+		true
+	end
+	
+end	
