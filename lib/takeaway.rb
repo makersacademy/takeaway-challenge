@@ -6,7 +6,7 @@ Dotenv.load
 
 
 class Takeaway
-  
+
   attr_reader :menu, :total
 
   def initialize(menu = Menu.new,messenger = Messenger.new)
@@ -28,7 +28,7 @@ class Takeaway
     item_check(item)
     add_item_to_order(item,quantity)
     add_to_total(item,quantity)
-    "4x #{item} added to basket, current total: #{total}"
+    "#{quantity}x #{item} added to basket, current total: #{total}"
   end
 
   def basket
