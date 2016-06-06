@@ -31,7 +31,7 @@ The interface for the program allows you to create a menu from an API containing
 9. For text functionality to work, create a hidden <code>.env</code> file to store your SID and Auth token for Twilio.
 10. To see logs of text sent to the takeaway from customer's mobile, instantiate a log object: <code>log = TextLogs.new</code>
 11. You will need to ping Twilio for its logs to be sent to you <code>log.run_logs</code>
-12. Then lastly, you can print a log of all orders requested by customers: <code>log.received;</code>
+12. Then lastly, you can print a log of all orders requested by customers: <code>puts log.received;</code>
 
 ## User Stories
 ```
