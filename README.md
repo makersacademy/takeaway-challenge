@@ -28,6 +28,7 @@ To solve this challenge, I did decide to create five different classes:
 - Texter class : whose responsibility is to send an sms confirmation
 
 ===================================================
+There is a weakness in the testing, as I couldn't find yet a way to mock the responses of the user correctly.
 
 Here is an example of how the program runs:
 

@@ -2,7 +2,6 @@ require_relative 'waiter'
 
 class TakeAway
 
-
   def initialize(waiter = Waiter.new)
     @waiter = waiter
   end
