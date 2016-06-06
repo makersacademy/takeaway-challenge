@@ -5,7 +5,7 @@ class Takeaway
 		@order = order
 	end
 	def show_menu
-		menu.print
+		menu.show
 	end
 	def selector(dishes)
 		dishes.each do |dish, quantity|

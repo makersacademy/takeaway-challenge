@@ -9,8 +9,10 @@ describe Order do
         }
     end
     
-    it 'allows user to select dishes from the menu'
-    order.add(:pizza, 3)
-    order.add(:nuggets, 1)
-    expect(order.dishes).to eq(dishes)
+    it 'allows user to select dishes from the menu' do
+        order.add(:pizza, 3)
+        order.add(:nuggets, 1)
+        expect(order.dishes).to eq(dishes)
+    end
+
 end

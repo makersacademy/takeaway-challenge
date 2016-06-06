@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 	subject(:takeaway) {described_class.new(menu: menu, order: order)}
-	let(:menu) { double(:menu, print: printed_menu) }
+	let(:menu) { double(:menu, show: printed_menu) }
 	let(:printed_menu) {"Pizza: £14.00"}
 	let(:dishes) {{pizza: 2, nuggets: 4}}
 	let(:order) {double(:order)}
