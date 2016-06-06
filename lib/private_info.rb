@@ -1,8 +1,0 @@
-class PrivateInfo
-
-SID = 'AC30b9000efac4bc5220d635af980a7564'
-TOKEN = '8f9a5ba6f0a69b3e911942a76aeef4d5'
-FROM = '+442870032048'
-TO = '+447545253288'
-
-end
