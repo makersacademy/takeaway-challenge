@@ -9,9 +9,7 @@ class Menu
   end
 
   def view_menu
-  	printout = ""
-  	dishes.each { |key, value| printout << "#{key}, £#{sprintf('%.2f', value)}\n" }
-  	printout
+  	dishes.map { |key, value| "#{key}, £#{sprintf('%.2f', value)}\n" }.join('')
   end
 
   private 

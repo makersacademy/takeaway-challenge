@@ -16,5 +16,4 @@ class Confirm
                                      to: '+447809148347',
                                      body: "Thank you! Your order was placed and will be delivered before #{estimate}"})
   end
-
 end

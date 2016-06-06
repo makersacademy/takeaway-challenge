@@ -10,22 +10,14 @@ class Order
   end
 
   def add(dish)
-    raise "That dish isn't on the menu, please try again." if !@menu.dishes.include?(dish)
+    raise "That dish isn't on the menu, please try again." if missing_from_menu(dish)
     @basket << dish
-    quantity = @basket.count(dish)
-    "#{quantity}x #{dish}, £#{ sprintf('%.2f', (@menu.dishes[dish] * quantity))} - added to your basket"
-  end
-
-  def basket
-    check_basket
-    @basket.sort
+    basket_confirmation(dish)
   end
 
   def view_basket
     check_basket
-    printout = ""
-    item_count.each {|key,value| printout << "#{value}x #{key}, £#{sprintf('%.2f', value * @menu.dishes[key])}\n" }
-    printout
+    pretty_print_basket
   end
 
   def total
@@ -44,6 +36,7 @@ class Order
     "Order received, #{final}"
   end
 
+
   private
 
   def check_basket
@@ -57,5 +50,23 @@ class Order
   def reset_basket
     @basket = []
   end
+
+  def missing_from_menu(dish)
+	!@menu.dishes.include?(dish)
+  end
+
+  def basket_quantity(dish)
+  	 @basket.count(dish)
+  end
+
+  def basket_confirmation(dish)
+  	 "#{basket_quantity(dish)}x #{dish}, £#{ sprintf('%.2f', (@menu.dishes[dish] * basket_quantity(dish)))} - added to your basket"
+  end
+
+  def pretty_print_basket
+  	item_count.map {|key,value| "#{value}x #{key}, £#{sprintf('%.2f', value * @menu.dishes[key])}\n" }.join('')
+  end
+
+
 
 end
