@@ -25,8 +25,8 @@ class Message
     "at #{ delivery_time.strftime('%I:%M%P') }"
   end
 
-  def client_send(message)
-    Twilio::REST::Client.new(CONF[:sid], CONF[:auth]).messages.create(
+  def client_send(message, client = Twilio::REST::Client)
+    client.new(CONF[:sid], CONF[:auth]).messages.create(
       from: CONF[:from],
       to: CONF[:to],
       body: message
