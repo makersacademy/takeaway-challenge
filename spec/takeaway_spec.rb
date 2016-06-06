@@ -6,7 +6,6 @@ describe Takeaway do
 
 	subject(:takeaway) { described_class.new }
 
-	let(:item) { double(:item) }
 	let(:menu) { double(:menu, item_price: {"veggie" => 4.00}) }
 
 	it "can list a menu of items and prices" do
@@ -16,8 +15,8 @@ describe Takeaway do
 	describe '#add_item' do
 
 		it "adds item to order" do
-			takeaway.add_item(item, 2)
-			expect(takeaway.include?(item)).to eq true 
+			takeaway.add_item("veggie", 2)
+			expect(takeaway.include?("veggie")).to eq true 
 		end
 
 	end
