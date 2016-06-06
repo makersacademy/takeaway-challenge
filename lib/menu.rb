@@ -12,7 +12,7 @@ class Menu
 		@menu = menu
 	end
 
-	def print
+	def print_menu
 		@menu.each do |item, price|
 			p "#{item} : $#{price}"
 		end

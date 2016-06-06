@@ -12,7 +12,7 @@ describe Menu do
 
 	describe '#print menu' do
 		it "should print the menu" do
-			expect(subject.print).to eq Menu::MENU
+			expect(subject.print_menu).to eq Menu::MENU
 		end 
 	end 	
 
