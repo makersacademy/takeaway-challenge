@@ -44,7 +44,7 @@ class CheckOrder
     end
 
     def client_response
-      gets.chomp
+      @client_response = gets.chomp
     end
 
     def authorization_check
