@@ -20,6 +20,6 @@ auth_token = '73b3a8dc74f665c39dc46bf3970fdf22'
     })
 
   end
-private attr_reader :client
+
 
 end
