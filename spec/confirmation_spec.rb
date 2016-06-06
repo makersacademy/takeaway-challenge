@@ -6,7 +6,7 @@ describe Confirmation do
   let(:time) {double :time}
   subject(:confirmation) { described_class.new(amount) }
 
-  it 'sends confirmation text message' do
-    expect(confirmation.complete_order).to eq time
-  end
+  # it 'sends confirmation text message' do
+  #   expect(confirmation.complete_order).to eq time
+  # end
 end

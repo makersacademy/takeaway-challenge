@@ -21,7 +21,7 @@ describe 'FEATURE TEST:' do
 
   it 'test text' do
     c = Confirmation.new(1.0)
-    p c.complete_order
+    # p c.complete_order
 
   end
 end
