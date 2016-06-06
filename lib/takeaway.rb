@@ -13,7 +13,7 @@ class Takeaway
     @menu = menu
     @messenger = messenger
     @total = 0
-    @current_order = {}
+    @current_order = Hash.new(0)
   end
 
   def add_menu_items(hash)
@@ -37,7 +37,7 @@ class Takeaway
 
   def checkout
     messenger.send_message
-    @current_order = {}
+    @current_order = Hash.new(0)
     @total = 0
     "Thank you! Your order was placed and will be delivered before #{(Time.now + (3600)).strftime("%R")}."
   end
@@ -51,7 +51,7 @@ class Takeaway
   end
 
   def add_item_to_order(item, quantity)
-    @current_order[item] = quantity
+    @current_order[item] += quantity
   end
 
   def add_to_total(item,quantity)
