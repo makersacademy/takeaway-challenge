@@ -1,8 +1,6 @@
 class Messenger
 
   require 'twilio-ruby'
-  require 'dotenv'
-  Dotenv.load
   require_relative 'private_info.rb'
 
   def initialize
