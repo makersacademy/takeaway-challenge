@@ -7,7 +7,7 @@ This is the second weekend challenge here at [Makers Academy] (http://www.makers
 
 ##The brief
 
-Can be found [here] (https://github.com/andreamazza89/airport_challenge/blob/master/README.md).
+Can be found [here] (https://github.com/makersacademy/takeaway-challenge).
 
 The requirement is for a take-away system, using IRB as interface, and integrating with [Twilio's API] (https://www.twilio.com/) for text messaging. If time allows, the brief includes a bonus requirement for the interface to be solely sms-based.
 
