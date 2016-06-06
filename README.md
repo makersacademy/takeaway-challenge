@@ -14,6 +14,23 @@
 <li>Run <code>bundle install</code>. If this fails, then run <code>gem install bundler</code> if you don't have Bundler!</li>
 </ol>
 
+## How to Use
+-------
+1. Run <code>'irb'</code> or <code>'pry'</code>
+2. From root directory of repo, <code>require './lib/menu_selector.rb'</code>
+3. To initialize your takeaway: <code>order = MenuSelector.new;</code> (N.B. semi-colon at end suppresses return values if you want!)
+4. To view the menu: <code>puts order.menu;</code>
+5. To select from the menu: <code>order.select</code>
+6. The select function uses TTY-Prompt, use up/down arrow keys to move between menu items, space to select/deselect, and enter to confirm.
+7. To view a receipt of your order: <code>puts order.receipt;</code>
+8. To have a text of your order sent: <code>order.text</code>
+9. For text functionality to work, create a hidden <code>.env</code> file to store your SID and Auth token for Twilio.
+10. To see logs of text sent to the takeaway from customer's mobile instantiate a log object: <code>log = TextLogs.new</code>
+11. You will need to get Twilio to return it's inbound SMS first <code>log.run_logs</code>
+12. Then lastly, you can print the log orders out by any customers: <code>log.received;</code>
+
+
+
 ## Program Outline
 -------
 The interface for the program allows you to create a menu from an API containing food and price values using MenuBuilder. From this the MenuSelector selects items the user wants from the created list which are sent to SumItems to calculate a total. This total and the items selected can be used to create a receipt. A text confirmation can also be sent using the Twilio gem.
