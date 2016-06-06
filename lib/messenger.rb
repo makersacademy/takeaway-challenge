@@ -27,5 +27,3 @@ class Messenger
   end
 
 end
-
-Messenger.new.send
