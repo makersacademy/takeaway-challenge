@@ -17,11 +17,7 @@ class Order
   end
 
   def confirm(amount)
-    if amount == @total_price
-       Messenger.new.send
-    else
-       print "Incorrect Total"
-    end
+    amount == @total_price ? Messenger.new.send : print {"Incorrect Total"}
   end
 
   private
@@ -32,3 +28,5 @@ class Order
     end
   end
 end
+
+Order.new(:menu).confirm(0)
