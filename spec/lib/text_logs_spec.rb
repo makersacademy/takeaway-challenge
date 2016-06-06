@@ -6,7 +6,7 @@ describe TextLogs do
     each: [1,2,3,4],
     from: [],
     body: [])
-end
+  end
 
 
   describe '#run_logs' do
