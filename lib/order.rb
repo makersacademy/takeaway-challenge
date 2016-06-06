@@ -5,7 +5,7 @@ require_relative 'boolean_input'
 class Order
 
 	include Boolean_input
-
+attr_reader :order, :total
 	def initialize menu, *args
 		@order = []
 		@total = 0
