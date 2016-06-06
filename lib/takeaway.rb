@@ -6,10 +6,12 @@ Dotenv.load
 
 
 class Takeaway
+  
   attr_reader :menu, :total
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new,messenger = Messenger.new)
     @menu = menu
+    @messenger = messenger
     @total = 0
     @current_order = {}
   end
@@ -33,9 +35,16 @@ class Takeaway
     basket_string_constructor
   end
 
+  def checkout
+    messenger.send_message
+    @current_order = {}
+    @total = 0
+    "Thank you! Your order was placed and will be delivered before #{(Time.now + (3600)).strftime("%R")}."
+  end
+
   private
 
-  attr_reader :current_order
+  attr_reader :current_order, :messenger
 
   def item_check(item)
     fail "Sorry '#{item}' is not an item on the menu" if view_menu.include?(item.to_sym) == false

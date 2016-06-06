@@ -2,8 +2,9 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) {described_class.new(menu)}
+  subject(:takeaway) {described_class.new(menu,messenger)}
   let(:menu) {double :menu, view_menu: {fish: 3.99, chips: 1.99}}
+  let(:messenger) {double :messenger, send_message: "message sent"}
 
   describe '#view_menu' do
     it 'return the contents of the menu to the console' do
@@ -42,11 +43,30 @@ describe Takeaway do
       expect(takeaway.basket).to eq ("4x chips (@1.99 each), 2x fish (@3.99 each), current total: 15.94")
     end
   end
-  
+
   describe '#total' do
     it 'returns total value of order' do
       takeaway.order("chips", 4)
       expect(takeaway.total).to eq 7.96
+    end
+  end
+
+  describe '#checkout' do
+    it 'sends message' do
+      takeaway.order("chips", 4)
+      expect(messenger).to receive(:send_message)
+      takeaway.checkout
+    end
+
+    it 'resets current_order & total' do
+      takeaway.order("chips", 4)
+      takeaway.checkout
+      expect(takeaway.basket).to eq "current total: 0"
+    end
+
+    it 'returns confirmation string' do
+      takeaway.order("chips", 4)
+      expect(takeaway.checkout).to eq   "Thank you! Your order was placed and will be delivered before #{(Time.now + (3600)).strftime("%R")}."
     end
   end
 end
