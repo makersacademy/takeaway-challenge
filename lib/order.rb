@@ -21,7 +21,7 @@ class Order
 
   private
 
-  attr_reader :shopping_basket, :bill, :customer_order, :user_input, :order
+  attr_reader :shopping_basket, :bill, :customer_order, :user_input, :order, :amount
 
   def display_current_order
     shopping_basket.each{ |food| bill << food[:price] }
@@ -34,7 +34,7 @@ class Order
     @user_input = gets.to_i
     fail raise_message if @user_input > MENU.length
     p quantity_check
-    amount = gets.to_i
+    @amount = gets.to_i
     amount.times { @shopping_basket << MENU[user_input] }
   end
  
@@ -51,7 +51,7 @@ class Order
   end
  
   def add_to_the_basket
-    "You have added #{ MENU[@user_input][:food] } to the basket"
+    "You have added #{ @amount } x #{ MENU[@user_input][:food] } to the basket"
   end
  
   def bill_total
