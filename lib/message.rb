@@ -1,5 +1,6 @@
 require 'twilio-ruby'
 
+# Understands how to generate an SMS update
 class Message
   CONF = {
     sid: ENV['TWILIO_SID'],
