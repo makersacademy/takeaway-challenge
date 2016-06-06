@@ -22,7 +22,7 @@ class Order
 		puts "The total price is: #{get_total}"
 		send = yn("Would you like to confirm your order?" )
 		if send
-			Send_message.new("Your order of #{get_order} will be arriving soon")
+			Send_message.new("Your order of #{get_order} will be arriving with in #{rand(10)} min")
 			send
 		end
 		send

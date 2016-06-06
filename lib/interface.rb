@@ -10,9 +10,22 @@ class Interface
 		@menu = Menu.new
 		run
 	end
-	def get_number(display_message)
+	def get_number(display_message, limit=false)
 		puts display_message
-		gets.to_i
+		num = gets.to_i
+		if limit
+			if num > 0 && num < 13
+				return num
+			else
+				puts "Choices are between 1 and 12"
+				get_number(display_message, limit)
+			end
+		elsif num > 0
+			return num
+		else
+			puts "Choice must be more than 1"
+			get_number(display_message, limit)
+		end
 	end
 
 	def still_ordering?
@@ -24,7 +37,7 @@ class Interface
 		@ordering = true
 		@orderArray = []
 		while @ordering
-			dish = get_number("Please enter a dish:")
+			dish = get_number("Please enter a dish:", true)
 			quantity = get_number("Please enter how many:")
 			@orderArray << [dish, quantity]
 			@ordering = still_ordering?
@@ -34,7 +47,7 @@ class Interface
 	def run
 		puts "⌒°(ᴖ◡ᴖ)°⌒  Takeaway ⌒°(ᴖ◡ᴖ)°⌒"
 		select_order
-		order = Order.new(menu, @orderArray)
+		order = Order.new(@menu, @orderArray)
 		if order.confirm_order
 			abort("Thank you, your order is on the way!")
 		else
