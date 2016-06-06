@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/andreamazza89/takeaway-challenge.svg?branch=master)](https://travis-ci.org/andreamazza89/takeaway-challenge.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/andreamazza89/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/andreamazza89/takeaway-challenge?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/andreamazza89/airport_challenge/badge.svg?branch=master)](https://coveralls.io/github/andreamazza89/airport_challenge?branch=master)
 
 #Takeaway challenge
 
