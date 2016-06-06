@@ -44,3 +44,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 <h2>Instructions</h2>
 
 [To be updated immediately prior to project completion]
+
+<h3>Notes</h3>
+
+Based on <a href="https://www.youtube.com/watch?v=mgiJKdH9x8c">this walkthrough video</a> and <a href="https://github.com/makersacademy/takeaway-exemplar">the accompanying exemplar code</a>.
