@@ -36,6 +36,9 @@ Summary
 * Stores menu details
 * Has add/remove methods allowing the menu to be altered
 * Displays the current menu when requested
+ 
+######Text
+* Sends confirmation sms to phone
 
 Sample Interface
 -------
@@ -43,7 +46,8 @@ Sample Interface
 ######Can view the menu to decide what to order
 ```
 $ irb
-2.3.1 :001 > takeaway.view_menu
+2.3.1 :001 > takeaway = TakeAway.new
+2.3.1 :002 > takeaway.view_menu
 Menu
 ========================================
 Dish                               Price
@@ -61,7 +65,7 @@ veggie burger                     £ 5.00
 ######Items can be ordered, order summary displayed after each addition
 ```
 $ irb
-2.3.1 :002 > takeaway.order
+2.3.1 :003 > takeaway.order
 Enter dish:
 hamburger
 How many would you like?
@@ -74,7 +78,7 @@ hamburger                            £ 3.00     2   £   6.00
 ============================================================
                                         Total cost: £   6.00
 
-2.3.1 :003 > takeaway.order
+2.3.1 :004 > takeaway.order
 
 Enter dish:
 chips
@@ -89,7 +93,7 @@ chips                                £ 2.00     1   £   2.00
 ============================================================
                                         Total cost: £   8.00
 
-2.3.1 :004 > takeaway.order
+2.3.1 :005 > takeaway.order
 Enter dish:
 cheeseburger
 How many would you like?
@@ -108,7 +112,7 @@ cheeseburger                         £ 4.00     2   £   8.00
 ######Can remove dishes from order
 ```
 $ irb
-2.3.1 :005 > takeaway.remove
+2.3.1 :006 > takeaway.remove
 Enter dish:
 hamburger
 Order Summary
@@ -124,6 +128,6 @@ cheeseburger                         £ 4.00     2   £   8.00
 ######Sends confirmation text on order completion
 ```
 $ irb
-2.3.1 :006 > takeaway.complete_order
+2.3.1 :007 > takeaway.complete_order
 ```
 ![sms](http://www.kennethbarrett.com//sms.jpg)
