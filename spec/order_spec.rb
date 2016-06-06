@@ -46,7 +46,7 @@ describe Order do
   describe '#finalise' do
     context 'takeaway is informed of order' do
       it 'sends instruction to Takeaway' do
-        expect(takeaway).to receive(:send_text)
+        expect(takeaway).to receive(:complete)
         subject.finalise(takeaway)
       end
     end

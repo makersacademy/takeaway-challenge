@@ -18,6 +18,6 @@ class Order
   end
 
   def finalise(takeaway = Takeaway.new)
-    takeaway.send_text
+    takeaway.complete
   end
 end

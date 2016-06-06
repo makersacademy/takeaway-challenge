@@ -16,5 +16,10 @@ describe Takeaway do
       end
     end
   end
-  
+
+  it 'sends a text message to confirm order' do
+    expect(subject).to receive(:send_text)
+    subject.complete
+  end
+
 end

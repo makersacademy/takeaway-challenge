@@ -9,6 +9,10 @@ class Takeaway
     @auth_token = auth_token
   end
 
+  def complete
+    send_text
+  end
+
   def send_text
     init_twilio
     @client.messages.create(
