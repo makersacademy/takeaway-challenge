@@ -1,3 +1,4 @@
+# Standard module for getting yes or no answers :)
 module Boolean_input
 	def yn initial_message, fail_message=nil
 		puts initial_message + " (Y/N)"

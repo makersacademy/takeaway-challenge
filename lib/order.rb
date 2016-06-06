@@ -1,3 +1,4 @@
+# Make order and then confirm order to send sms
 require_relative 'menu'
 require_relative 'send_message'
 require_relative 'boolean_input'
@@ -22,7 +23,7 @@ attr_reader :order, :total
 		puts "The total price is: #{get_total}"
 		send = yn("Would you like to confirm your order?" )
 		if send
-			Send_message.new("Your order of #{get_order} will be arriving with in #{rand(10)} min")
+			Send_message.new("Your order of #{get_order} will be arriving within #{(rand(10)+1)*10} min")
 			send
 		end
 		send

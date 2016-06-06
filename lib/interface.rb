@@ -1,3 +1,4 @@
+# This sort of runs the whole program, by prompting the user
 require_relative 'menu'
 require_relative 'order'
 require_relative 'send_message'

@@ -1,3 +1,4 @@
+# This holds the menu and displays it all pretty in the command line
 class Menu
 	attr_reader :dishes
 	
