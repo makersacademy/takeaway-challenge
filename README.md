@@ -2,12 +2,18 @@
 
 Weekend 2 Challenge: Created a program that allows a customer to view a menu, order dishes, and receive a text confirmation upon confirming their order using the Twilio API. (See Makers Academy brief & user stories below.)
 
+## Installation Instructions
+
+1. Clone repo to your local machine
+2. Install Ruby version 2.3.1 if you don't have it already: `rvm install ruby-2.3.1`
+3. Use RVM to use Ruby version 2.3.1: `rvm 2.3.1`
+3. Run `gem install bundle` if you don't have bundle already
+4. Run `bundle`
+
 ## How to Use
 
 ```
-1. Clone this repo to your local machine
-2. Run 'gem install bundle' if you don't have bundle already
-3. Run 'bundle'
+
 3. Run 'irb'
 4. Require './lib/takeaway'
 5. To initialize your takeaway: takeaway = Takeaway.new
