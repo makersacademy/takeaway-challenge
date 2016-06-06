@@ -1,5 +1,8 @@
 # Takeaway Challenge
 
+[![Build Status](https://travis-ci.org/riyapabari/takeaway-challenge.svg?branch=master)](https://travis-ci.org/riyapabari/takeaway-challenge)
+
+
 Weekend 2 Challenge: Created a program that allows a customer to view a menu, order dishes, and receive a text confirmation upon confirming their order using the Twilio API. (See Makers Academy brief & user stories below.)
 
 ## Installation Instructions
@@ -12,28 +15,21 @@ Weekend 2 Challenge: Created a program that allows a customer to view a menu, or
 
 ## How to Use
 
-```
-
-3. Run 'irb'
-4. Require './lib/takeaway'
-5. To initialize your takeaway: takeaway = Takeaway.new
-6. To view the menu: takeaway.view_menu (hope you like Japanese!)
-7. To add a dish to your order: takeaway.add_to_order("edamame", 2)
-8. To view your order: takeaway.view_order
-9. To checkout: takeaway.checkout
-10. To confirm your order: takeaway.confirm_order('£3')
-11. You should receive a text shortly.. bon appetit!
-
-```
-
-[![Build Status](https://travis-ci.org/riyapabari/takeaway-challenge.svg?branch=master)](https://travis-ci.org/riyapabari/takeaway-challenge)
-
+1. Run `irb`
+2. Require `./lib/takeaway`
+3. To initialize your takeaway: `takeaway = Takeaway.new`
+4. To view the menu: `takeaway.view_menu` (hope you like Japanese!)
+5. To add a dish to your order: `takeaway.add_to_order("edamame", 2)`
+6. To view your order: `takeaway.view_order`
+7. To checkout: `takeaway.checkout`
+8. To confirm your order: `takeaway.confirm_order('£3')`
+9. You should receive a text shortly.. bon appetit!
 
 ## Makers Academy Brief
 
-### Task
+### User Stories
 
-* Write a Takeaway program with the following user stories:
+Write a Takeaway program with the following user stories:
 
 ```
 As a customer
