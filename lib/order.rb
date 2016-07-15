@@ -5,11 +5,18 @@ class Order
   end
 
   def show_menu
-    # This will call menu.show_list
     menu
+  end
+
+  def select_dishes(id:, quantity:)
+  end
+
+  def confirm_total(total_amount:)
+    total_amount
   end
 
   private
   attr_reader :menu
+
 
 end
