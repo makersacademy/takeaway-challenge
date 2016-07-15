@@ -5,11 +5,11 @@ class Takeaway
   end
 
   def print_menu
-    "Margherita: £6.50"
+    menu.print
   end
 
   private
 
   attr_reader :menu
-  
+
 end

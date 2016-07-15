@@ -3,9 +3,10 @@ require 'takeaway'
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu) }
 
-  let(:menu) { double :menu }
-  
+  let(:menu) { double(:menu, print: print_menu) }
+  let(:print_menu) { "Margherita: £6.50" }
+
   it 'should print the menu with prices' do
-    expect(takeaway.print_menu).to eq ("Margherita: £6.50")
+    expect(takeaway.print_menu).to eq (print_menu)
   end
 end
