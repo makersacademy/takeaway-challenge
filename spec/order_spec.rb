@@ -7,7 +7,7 @@ describe Order do
   subject(:order) { Order.new }
 
   it 'shows a list of dishes available with prices' do
-    allow(order).to receive(:read_menu) { menu }
+    allow(order).to receive(:read_csv) { menu }
     expect(order.show_list).to eq menu
   end
 end

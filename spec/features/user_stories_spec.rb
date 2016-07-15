@@ -6,7 +6,7 @@ describe 'User Stories' do
       menu = {:chicken_tikka => 6.95, :butter_chiken => 6.45,
               :paneer_tikka => 8.45}
       order = Order.new
-      allow(order).to receive(:read_menu) { menu }
+      allow(order).to receive(:read_csv) { menu }
       expect(order.show_list).to eq menu
     end
     # As a customer
