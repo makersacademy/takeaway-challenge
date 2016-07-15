@@ -5,9 +5,8 @@ describe 'User Stories' do
     it 'shows a list of dishes with prices' do
       menu = {:chicken_tikka => 6.95, :butter_chiken => 6.45,
               :paneer_tikka => 8.45}
-      order = Order.new
-      allow(order).to receive(:read_csv) { menu }
-      expect(order.show_list).to eq menu
+      order = Order.new(menu: menu)
+      expect(order.show_menu).to eq menu
     end
     # As a customer
     # So that I can order the meal I want
