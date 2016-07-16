@@ -7,7 +7,7 @@ attr_reader :food
   end
 
   def print_list
-    food.map {|item, price| "%s: £%.2f" % [item.to_s.capitalize, price]}.join
+    food.map {|item, price| "%s: £%.2f" % [item.to_s.capitalize, price]}.join(", ")
   end
 
 end
