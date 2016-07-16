@@ -2,14 +2,14 @@ require 'menu'
 
 describe Menu do
 
-let(:food) do
+let(:items) do
     { :margherita => 6.5 }
   end
-let(:menu) { described_class.new(food) }
+let(:menu) { described_class.new(items) }
 
-  describe '#food' do
-    it 'should contain a list of the menu food' do
-      expect(menu.food).to eq(food)
+  describe '#items' do
+    it 'should contain a list of the menu items' do
+      expect(menu.items).to eq(items)
     end
   end
 
