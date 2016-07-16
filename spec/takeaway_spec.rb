@@ -39,6 +39,9 @@ describe TakeAway do
       takeaway.order(:dish)
       expect(takeaway.basket[0]).to eq :dish => 2
     end
+    it "confirms the order" do
+      expect(takeaway.order(:dish, 3)).to eq "3x dish(s) added to your basket."
+    end
   end
 
   describe "#see_basket" do
@@ -54,6 +57,8 @@ describe TakeAway do
       expect(takeaway.see_basket).to eq takeaway.basket
     end
   end
+
+  describe ""
 
 end
 

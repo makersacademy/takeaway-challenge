@@ -21,9 +21,9 @@ class TakeAway
   end
 
   def order(dish, number=1)
-    @number = number
-    @new_dish = @menu.select {|k, v| k==dish}
-    add_order
+    new_dish = @menu.select {|k, v| k==dish}
+    add_order(new_dish, number)
+    "#{number}x #{dish}(s) added to your basket."
   end
 
   def see_basket
@@ -32,9 +32,8 @@ class TakeAway
 
   private
 
-  def add_order
-    @number.times{@basket.push(@new_dish)}
+  def add_order(new_dish, number)
+    number.times{@basket.push(new_dish)}
   end
-
 
 end
