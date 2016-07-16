@@ -1,4 +1,4 @@
-https://travis-ci.org/hannako/takeaway-challenge.svg?branch=master
+[![Travis build status](https://travis-ci.org/hannako/takeaway-challenge.svg?branch=master)
 
 [![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=mohamedIssaq)
 
@@ -6,6 +6,8 @@ https://travis-ci.org/hannako/takeaway-challenge.svg?branch=master
 
 Takeaway Challenge
 ==================
+
+Makers Academy week two challenge, to write a takeaway program with the following user stories:
 ```
                             _________
               r==           |       |
@@ -20,7 +22,6 @@ Takeaway Challenge
 
  ```
 -----
-Makers Academy week two challenge, to write a takeaway program with the following user stories:
 
 ```
 As a customer
