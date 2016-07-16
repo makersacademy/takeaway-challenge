@@ -8,8 +8,8 @@ describe Takeaway do
 
     it {is_expected.to respond_to(:menu)}
 
-    it 'shows a list of dishes with prices' do
-      expect(subject.menu).to be_a(Hash)
+    it 'creates a new instance of menu instantiation' do
+      expect(subject.menu).to be_an_instance_of(Menu)
     end
 
   end
@@ -33,18 +33,9 @@ describe Takeaway do
     end
 
     it 'stores selection in basket' do
-      expect{subject.select_dish("Edamame",3)}.to change{subject.basket.size}.by(1)
+      expect{subject.select_dish("Edamame",3)}.to change{subject.basket.items.size}.by(1)
     end
 
-  end
-
-  describe '#basket' do
-    it 'sums the total of all items' do
-      subject.select_dish("Edamame",1)
-      subject.select_dish("Nettle Soup",2)
-      subject.select_dish("Bento Box",1)
-      expect(subject.basket_total).to eq(12.60)
-    end
   end
 
 end

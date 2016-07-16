@@ -1,34 +1,31 @@
+require_relative 'basket'
+require_relative 'menu'
+
 class Takeaway
 
-  attr_reader :menu, :basket, :basket_total
+  attr_reader :menu, :basket
 
   def initialize
-    @menu = {"Chicken Gyoza" => 4.20,
-             "Katsu Curry & Rice" => 8.50,
-             "Nettle Soup" => 2.00,
-             "Bento Box" => 5.60,
-             "Edamame" => 3.00,}
-    @basket = []
-    @basket_total = 0
+    @menu = Menu.new
+    @basket = Basket.new
   end
 
   def select_dish(item,quantity=1)
-    raise "'#{item}' is not on our menu." unless item_exists?(item)
-    add_selection_to_basket(item,quantity)
-    quantity == 1 ? s = '' : s = 's'
-    quantity == 1 ? ve = 's' : ve = 've'
-    "#{quantity} order#{s} of '#{item}' ha#{ve} been added to your basket."
+    raise "'#{item}' is not on our menu." unless on_menu?(item)
+    @basket.add(name: item, quantity: quantity, price:  (@menu.menu[item]*quantity)) # must be better way to do this?
+    selection_confirmation_message(item,quantity)
   end
 
   private
 
-  def item_exists?(item)
-    @menu.has_key?(item)
+  def selection_confirmation_message(item,quantity)
+    quantity == 1 ? s = '' : s = 's' #refactor later / ugly af
+    quantity == 1 ? ve = 's' : ve = 've'
+    "#{quantity} order#{s} of '#{item}' ha#{ve} been added to your basket."
   end
 
-  def add_selection_to_basket(item,quantity)
-    @basket << {name: item, quantity: quantity, price: (@menu[item]*quantity)}
-    @basket_total += @basket.last[:price]
+  def on_menu?(item)  #extract?
+    @menu.item_exists?(item)
   end
 
 end
