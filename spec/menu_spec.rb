@@ -10,7 +10,9 @@ describe Menu do
       end
   end
 
-  it "has a list of items" do
-
+  it "has a list of menu items" do
+    expect(menu.item_list).to include(:balti => 5.00, vindaloo: 4.50)
   end
+
+
 end
