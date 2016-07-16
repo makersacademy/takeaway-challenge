@@ -2,7 +2,7 @@ require_relative "menu"
 
 class Takeaway
 
-  attr_reader :basket, :menu
+  attr_reader :basket, :menu, :total
 
   def initialize
     @basket = {}
@@ -14,12 +14,19 @@ class Takeaway
   end
 
   def order(item, quantity = 1)
-    fail "Sorry, that item is not on the menu" unless check_menu(item)
+    fail "Sorry, that item is not on the menu" unless check_menu(item.capitalize)
     @basket.store(item, quantity)
     confirm(item, quantity)
   end
 
-  def order_total
+  def total
+    @total = 0
+    @menu.each do |key, value|
+      if @basket.has_key?(key)
+        @total += (@basket[key] * value)
+      end
+    end
+    @total
   end
 
   private

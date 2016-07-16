@@ -33,14 +33,14 @@ describe Takeaway do
     end
   end
 
-  describe '#order_total' do
+  describe '#total' do
     before do
       takeaway.order("Omlette")
       takeaway.order("Pancakes", 2)
     end
-    #it 'returns the total price of the order' do
-    #  expect(takeaway.order_total).to(eq(20))
-    #end
+    it 'returns the total price of the order' do
+      expect(takeaway.total).to(eq(20))
+    end
   end
 
 end
