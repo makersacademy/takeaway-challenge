@@ -5,7 +5,7 @@ describe Takeaway do
 
   describe '#show_menu' do
     it 'displays a menu to a customer' do
-      expect(takeaway.show_menu).to be_an_instance_of Menu
+      expect(takeaway.show_menu).to eq []
     end
   end
 
