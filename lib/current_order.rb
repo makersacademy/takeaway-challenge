@@ -28,7 +28,7 @@ class CurrentOrder
         end
       end
     end
-    "#{str} Order Total : £#{order_total.to_s}"
+    "#{str} Order Total : £#{order_total}"
   end
 
   def reset_order!
@@ -40,7 +40,7 @@ class CurrentOrder
 
   def calc_total selection, quantity
     price = ''
-    @menu.menu.each {|hsh| price = hsh[selection] if hsh.has_key? selection}
+    @menu.menu.each {|hsh| price = hsh[selection] if hsh.key? selection}
     quantity.times {@total += price.to_f}
   end
 

@@ -34,13 +34,13 @@ class Takeaway
 
   def invalid_entry? selection
     @menu.menu.each do |hash_entry|
-      return false if hash_entry.has_key? selection
+      return false if hash_entry.key? selection
     end
     true
   end
 
   def order_not_placed?
-    @order.customer_order.length == 0
+    @order.customer_order.empty?
   end
 
 end

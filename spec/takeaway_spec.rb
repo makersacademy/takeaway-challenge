@@ -21,7 +21,7 @@ describe Takeaway do
 
     it 'rejects an invalid entry' do
       message = "Sorry, we don't currently offer that dish"
-      expect(subject.place_order 'Marshmallow').to eq message
+      expect(subject.place_order('Marshmallow')).to eq message
     end
 
     it 'has a method to view an order' do

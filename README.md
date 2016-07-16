@@ -4,9 +4,9 @@
 <br>
 Takeaway is a small program written in **Ruby** and comprised of the four classes _Takeaway_, _Menu_, _CurrentOrder_ & _Checkout_. The takeaway class acts as an interface for the other three which all supply helper functionality to it. The takeaway class is light and simply invokes the other three at the appropriate times. The checkout class uses the **Twilio** gem to send a text message confirming an order using the Twilio API.
 
-The challenge is a fun way to learn about Single Responsibility!!!!!!!!!
+The challenge is a fun way to learn about single responsibility, class extraction, dependency injection and encapsulation. It also demonstrated how nice Ruby's gem system is for setting up an API call.
 
-The following user stories were provided by *Makers Academy* as a starting point for the project.
+The following user stories were provided by **Makers Academy** as a starting point for the project.
 
 ## _The User Stories &mdash;_
 
@@ -53,9 +53,25 @@ From there the following commands are available :<br>
 
 ## _Feature Tests &mdash;_
 
-    irb || pry goes here...
+    [2] pry(main)> shop = Takeaway.new
+    [3] pry(main)> shop.view_menu
+    => "Pasta, Price : £4.50 // Garlic Bread, Price : £2.50 // Pizza, Price : £5.00 // Olives, Price : £1.50 // Ice cream, Price : £3.00 // Lemonade, Price : £1.00 // "
+    [4] pry(main)> shop.place_order 'Marshmallow'
+    => "Sorry, we don't currently offer that dish"
+    [5] pry(main)> shop.checkout
+    => "Sorry, you haven't placed an order yet!"
+    [6] pry(main)> shop.place_order 'Garlic Bread'
+    => 1
+    [7] pry(main)> shop.place_order 'Lemonade', 2
+    => 2
+    [8] pry(main)> shop.view_order
+    => "Garlic Bread, Quantity : 1 // Lemonade, Quantity : 2 //  Order Total : £4.5"
+    [9] pry(main)> shop.checkout
+    ## A text is dispatched by Twilio with a delivery ETA ##
 
 ## _Future Features &mdash;_
 
 - More user control such as the ability to amend quantities, remove items or clear the basket.
 - Allow the program to receive orders via text.
+- Use two decimal place rounding when displaying order totals for better readability.
+- Improve test coverage and enhance unit test credibility.

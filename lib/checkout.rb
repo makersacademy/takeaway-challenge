@@ -12,7 +12,7 @@ class Checkout
     time = Time.now + 3600
     delivery_time = time.strftime "%H:%M"
     message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
-    @client.messages.create(from: '+441608610069', to: '+447592076164', body: "#{message}")
+    @client.messages.create(from: '+441608610069', to: '+447592076164', body: message)
   end
 
 end
