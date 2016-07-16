@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
@@ -14,6 +15,7 @@ class Takeaway
   end
 
   def order(food)
+    new_order = Order.new(food)
     @current_order.push(food)
     @ordertotal += menu[food]
   end
