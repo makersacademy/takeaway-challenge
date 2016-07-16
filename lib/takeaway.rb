@@ -1,6 +1,7 @@
 class Takeaway
 
-  def menu
+  def menu_array
+    menu_array = []
   end
 
 end

@@ -2,6 +2,9 @@ require 'takeaway'
 
 describe Takeaway do
 
-    it{ is_expected.to respond_to(:menu) }
-
+  describe "#menu_array" do
+    it "is an array" do
+      expect(subject.menu_array).to be_an_instance_of(Array)
+    end
+  end
 end
