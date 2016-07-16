@@ -24,17 +24,29 @@ describe TakeAway do
   end
 
   describe "#order" do
+    before (:each) do
+      takeaway.menu = {:dish => 2}
+    end
     it "adds one ordered dish to basket as default" do
       takeaway.order(:dish)
-      expect(takeaway.basket).to eq [:dish]
+      expect(takeaway.basket).to eq [{:dish => 2}]
     end
     it "adds multiple ordered dishes to basket" do
       takeaway.order(:dish, 3)
-      expect(takeaway.basket).to eq [:dish, :dish, :dish]
+      expect(takeaway.basket).to eq [{:dish => 2}, {:dish => 2}, {:dish => 2}]
+    end
+    it "assigns prices to ordered dishes" do
+      takeaway.order(:dish)
+      expect(takeaway.basket[0]).to eq :dish => 2
     end
   end
-
+  
 end
+
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+
 
 # As a customer
 # So that I can check if I want to order something
