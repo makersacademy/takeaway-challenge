@@ -24,12 +24,13 @@ describe TakeAway do
   end
 
   describe "#order" do
-    it "allows customer to make an order" do
-      expect(takeaway).to respond_to(:order).with(1).argument
-    end
-    it "adds an ordered dish to basket" do
+    it "adds one ordered dish to basket as default" do
       takeaway.order(:dish)
       expect(takeaway.basket).to eq [:dish]
+    end
+    it "adds multiple ordered dishes to basket" do
+      takeaway.order(:dish, 3)
+      expect(takeaway.basket).to eq [:dish, :dish, :dish]
     end
   end
 
@@ -52,5 +53,7 @@ end
 # feature test 2
 # takeaway = TakeAway.new
 # takeaway.see_menu
-# takeaway.order(wonton_soup)
-# takeaway.basket = {wonton_soup => 2}
+# takeaway.order(:wonton_soup)
+# takeaway.basket = [:wonton_soup]
+# takeaway.order(:spring_roll, 5)
+# takeaway.basket = [:wonton_soup, :spring_roll, :spring_roll, :spring_roll, :spring_roll, :spring_roll]

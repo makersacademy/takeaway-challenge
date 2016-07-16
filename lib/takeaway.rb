@@ -7,7 +7,7 @@ class TakeAway
 
     @menu = {
       :wonton_soup => 2,
-      :spring_rolls => 2,
+      :spring_roll => 2,
       :kung_po => 5,
       :fried_squid => 6,
       :chow_mein => 9,
@@ -19,8 +19,8 @@ class TakeAway
     @menu
   end
 
-  def order(dish)
-    @basket << dish
+  def order(dish, number=1)
+    number.times{@basket.push(dish)}
   end
 
 end
