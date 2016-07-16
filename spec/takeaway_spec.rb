@@ -15,4 +15,9 @@ describe Takeaway do
     expect(subject.order).not_to be_empty
   end
 
+  it 'adds item prices to subtotal' do
+    subject.check_order
+    expect(subject.check_order).to eq
+  end
+
 end
