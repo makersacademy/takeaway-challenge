@@ -44,6 +44,8 @@ class Menu
     end
   end
 
+  private
+  
   def dots(dish)
     '.' * (50 - dish.length)
   end
