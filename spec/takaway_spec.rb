@@ -1,30 +1,43 @@
 require 'takeaway'
-require 'menu'
 
 describe TakeAway do
 
- describe '#menu' do
-   it { is_expected.to respond_to(:show_menu) }
-   it 'should show the menu' do
-     menu = Menu.new
-   expect(menu.items).to include("Crocodile burger" => 14.25)
- end
- end
+ subject(:new_order) {described_class.new}
 
- describe '#order' do
-   it { is_expected.to respond_to(:take_order) }
-   it 'checks the dish is on the menu' do
-     order = TakeAway.new
-     expect{order.take_order("hamburger")}.to raise_error "Sorry, that item is not on the menu"
-   end
+ let(:menu) { double(:menu, dishes: { 'Mealworm_Croquettes' => 1.20 }) }
+ let(:dish) { 'Mealworm_Croquettes' }
+ let(:quantity) { 2 }
 
+  describe '#show menu' do
+    # As a customer
+    # So that I can check if I want to order something
+    # I would like to see a list of dishes with prices
+    it 'can show the user the menu' do
+        expect(new_order.show_menu).to include(
+          "Mealworm Croquettes" => 1.20,
+          "Larve Paprika Crisps" => 1.50,
+          "Crunchy Chicken Claw" => 2.40,
+          "Zingy Zebra Bites" => 3.80,
+          "Springbok rolls" => 4.30,
+          "Buffalow salad" => 10.20,
+          "Ostrich steak" => 13.55,
+          "Crocodile burger" => 14.25,
+          "Kangaroo con carne" => 15.20,
+          "Python soup" => 17.50,
+          "Pufferfish cakes" => 21.50,
+        )
+      end
+    end
 
-   end
+  describe '#select dishes' do
+    # As a customer
+    # So that I can new_order the meal I want
+    # I would like to be able to select some number of several available dishes
+    it 'raises error if user selects unavailable item' do
+      message = "Sorry this item is not on the menu"
+      expect{new_order.take_order("something")}.to raise_error message
 
-it {is_expected.to respond_to(:include?) }
-it { is_expected.to respond_to(:order_summary) }
-it { is_expected.to respond_to(:order_total) }
-it { is_expected.to respond_to(:checkout) }
-it { is_expected.to respond_to(:confirmed?) }
+    end
 
+end
 end
