@@ -1,14 +1,15 @@
 class Takeaway
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :basket_total
 
   def initialize
     @menu = {"Chicken Gyoza" => 4.20,
              "Katsu Curry & Rice" => 8.50,
              "Nettle Soup" => 2.00,
-             "Sushi Roll" => 5.60,
+             "Bento Box" => 5.60,
              "Edamame" => 3.00,}
     @basket = []
+    @basket_total = 0
   end
 
   def select_dish(item,quantity=1)
@@ -27,6 +28,7 @@ class Takeaway
 
   def add_selection_to_basket(item,quantity)
     @basket << {name: item, quantity: quantity, price: (@menu[item]*quantity)}
+    @basket_total += @basket.last[:price]
   end
 
 end

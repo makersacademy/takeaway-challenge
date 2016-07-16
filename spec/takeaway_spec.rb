@@ -38,4 +38,13 @@ describe Takeaway do
 
   end
 
+  describe '#basket' do
+    it 'sums the total of all items' do
+      subject.select_dish("Edamame",1)
+      subject.select_dish("Nettle Soup",2)
+      subject.select_dish("Bento Box",1)
+      expect(subject.basket_total).to eq(12.60)
+    end
+  end
+
 end
