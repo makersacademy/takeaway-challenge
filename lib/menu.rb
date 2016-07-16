@@ -22,11 +22,11 @@ MENU = {
   end
 
   def has_dish(dish)
-    MENU.has_key?(dish)
+    @menu.has_key?(dish)
   end
 
   def dish_price(dish)
-    MENU.values_at(dish).last
+    @menu.values_at(dish).last
   end
 
 end
