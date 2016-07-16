@@ -55,22 +55,47 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-## Domain model ##
+## Domain models ##
 
-| Objects   |  Messages |
+### #1
+
+| Objects   |  Messages |  
 |    ---    |    ---    |
-|      |   |
-|           |   |
-|    |     |
-|           |  |
-|  |  |
+| Customer  |    see    |
+| List/Menu |           |
 
----
-######  ←  →
+#####  Customer ← see → List
 
-###### ←  →
+### #2
 
----
+| Objects   |  Messages |  
+|    ---    |    ---    |
+|           |           |
+|           |           |
+|           |           |
+
+#####   ← →
+
+### #3
+
+| Objects   |  Messages |  
+|    ---    |    ---    |
+|           |           |
+|           |           |
+|           |           |
+
+#####   ← →
+
+### #4
+
+| Objects   |  Messages |  
+|    ---    |    ---    |
+|           |           |
+|           |           |
+|           |           |
+
+#####   ← →
+
 
 
 ## Learning objectives ##
