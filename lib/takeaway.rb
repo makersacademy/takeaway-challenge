@@ -6,4 +6,8 @@ class Takeaway
     @order = []
   end
 
+  def print_menu
+    "Menu"
+  end
+
 end
