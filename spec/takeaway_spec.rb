@@ -28,7 +28,11 @@ describe Takeaway do
       expect(subject.select_dish("Edamame")).to eq "1 order of 'Edamame' has been added to your basket."
     end
 
-    it 'stores selections in basket' do
+    it 'raises an error is item doesnt exist in menu' do
+      expect{subject.select_dish("Won Ton Soup")}.to raise_error "'Won Ton Soup' is not on our menu."
+    end
+
+    it 'stores selection in basket' do
       expect{subject.select_dish("Edamame",3)}.to change{subject.basket.size}.by(1)
     end
 
