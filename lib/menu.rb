@@ -7,7 +7,11 @@ class Menu
   end
 
   def display
-    list
+    count = 1
+    @list.each do |food, price|
+      "#{count}. #{food} #{price}"
+      count += 1
+    end
   end
 
   def add_item(food,price)
