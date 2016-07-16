@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class Takeaway
 
   def initialize
@@ -6,14 +8,13 @@ class Takeaway
   end
 
   def restaurant_list
-    puts "This is a list of the restaurants you may order from"
-    puts "Type the name of the restaurant you would like to see the menu of"
-    puts @restaurants
+    "This is our list of restaurants #{@restaurants}"
   end
 
   def restaurant_choice(name)
     fail "Sorry we don't serve #{name} yet" unless @restaurants.include? name
 #change fail to some form of error
+    Menu.new
     name
   end
 end
