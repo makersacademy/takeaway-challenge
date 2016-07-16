@@ -18,4 +18,9 @@ class TakeAway
     @basket.add(dish, quantity)
     "#{quantity}x #{dish}(s) added to your basket."
   end
+
+  def summary
+    @basket.order_summary
+  end
+
 end

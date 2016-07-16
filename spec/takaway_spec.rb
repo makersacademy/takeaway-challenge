@@ -4,9 +4,9 @@ describe TakeAway do
 
  subject(:new_order) {described_class.new}
 
- let(:menu) { double(:menu, dishes: { 'Mealworm_Croquettes' => 1.20 }) }
- let(:dish) { 'Mealworm_Croquettes' }
- let(:quantity) { 2 }
+ # let(:menu) { double(:menu, dishes: { 'Mealworm_Croquettes' => 1.20 }) }
+ # let(:dish) { 'Mealworm_Croquettes' }
+ # let(:quantity) { 2 }
 
   describe '#show menu' do
     # As a customer
@@ -36,8 +36,14 @@ describe TakeAway do
     it 'raises error if user selects unavailable item' do
       message = "Sorry this item is not on the menu"
       expect{new_order.take_order("something")}.to raise_error message
-
     end
 
-end
+  end
+  #
+  describe '#basket' do
+    it 'shows the summary of the basket' do
+      new_order.take_order("Mealworm Croquettes", 2)
+      expect(new_order.summary).to eq("2: Mealworm Croquettes")
+    end
+  end
 end

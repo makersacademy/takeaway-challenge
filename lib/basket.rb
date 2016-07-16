@@ -11,4 +11,10 @@ class Basket
   def add(dish, quantity)
     @basket[dish] += quantity
   end
+
+  def order_summary
+    @basket.each do |dish, quantity|
+      return "#{quantity}: #{dish}"
+    end
+  end
 end
