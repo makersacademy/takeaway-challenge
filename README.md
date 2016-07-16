@@ -68,13 +68,12 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ### #2
 
-| Objects   |  Messages |  
-|    ---    |    ---    |
-|           |           |
-|           |           |
-|           |           |
+| Objects   |  Messages    |  
+|    ---    |    ---       |
+| Customer  | select/order |
+|   Dishes  |              |
 
-#####   ← →
+#####   Customer ← select/order → Dishes
 
 ### #3
 

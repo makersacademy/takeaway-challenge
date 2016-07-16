@@ -1,8 +1,10 @@
 class TakeAway
 
-  attr_reader :menu
+  attr_reader :menu, :basket
 
   def initialize
+    @basket = []
+
     @menu = {
       :wonton_soup => 2,
       :spring_rolls => 2,
@@ -17,9 +19,8 @@ class TakeAway
     @menu
   end
 
-end
+  def order(dish)
+    @basket << dish
+  end
 
-# feature test
-# takeaway = TakeAway.new
-# takeaway.see_menu
-# #returns hash - list of food with prices
+end
