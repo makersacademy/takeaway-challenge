@@ -16,12 +16,12 @@ class TakeAway
 
   def take_order(dish, quantity=1)
     fail "Sorry this item is not on the menu" if @menu.dishes[dish].nil?
-    order.add(dish, quantity)
+    @order.add(dish, quantity)
     "#{quantity}x #{dish}(s) added to your basket."
   end
 
   def summary
-    order.order_summary
+    return order.order_summary
   end
 
   def total_cost
