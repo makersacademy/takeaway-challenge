@@ -1,4 +1,4 @@
-# _**Takeaway Challenge**_
+# **_Takeaway Challenge_**
 [![Build Status](https://travis-ci.org/benjamin-white/takeaway-challenge.svg?branch=master)](https://travis-ci.org/benjamin-white/takeaway-challenge)
 
 <br>
@@ -31,12 +31,12 @@ The following user stories were provided by *Makers Academy* as a starting point
 Objects  | Messages
 ------------- | -------------
 Shop | *request_menu*
-|  *place_order*
-| *view_basket*
+  |  *place_order*
+  | *view_basket*
 Menu  | *build_menu*
 Order  |  *create_order*
-|  *calc_total*
-|  *display_order*
+  |  *calc_total*
+  |  *display_order*
 Basket  |  *confirm*
   | *reset_order*
 
@@ -45,7 +45,7 @@ Basket  |  *confirm*
 - The program works with Ruby and the Twilio gem ``` gem install twilio ``` or ``` bundle install ``` if you have bundler.<br>
 Once installed the program is run from the command line inside the project directory, simply ``` require './lib/takeaway' ``` from an irb or pry prompt.
 - Then create an object to hold an instance of ``` Takeaway.new ```<br>
-From there the following commands are available :
+From there the following commands are available :<br>
   - ```.view_menu``` to see the current list of delights.
   - ```.place_order``` to add an item to your order. Supply a second integer argument if you want to add more than one.
   - ```.view_order``` to view the items currently in your order and the total price of the order.
