@@ -1,6 +1,7 @@
-require 'basket'
+require 'order'
+require 'menu'
 
-describe Basket do
+describe Order do
  subject(:order) { described_class.new }
 
   it 'adds orders into an order log' do
@@ -15,4 +16,5 @@ describe Basket do
     order.add("Mealworm Croquettes", 2)
     expect(order.order_summary).to eq("2: Mealworm Croquettes")
   end
+
 end

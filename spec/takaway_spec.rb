@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'menu'
 
 describe TakeAway do
 
@@ -46,4 +47,15 @@ describe TakeAway do
       expect(new_order.summary).to eq("2: Mealworm Croquettes")
     end
   end
+
+  describe '#total cost' do
+    # So that I can verify that my order is correct
+    # I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+    it 'shows the total cost in basket' do
+      new_order.take_order("Mealworm Croquettes", 2)
+      expect(new_order.total_cost).to eq("Your total bill comes to: £2.4")
+    end
+  end
+
 end

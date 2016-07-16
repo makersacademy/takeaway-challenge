@@ -1,8 +1,8 @@
+require_relative 'menu'
 
+class Order
 
-class Basket
-
-  attr_reader :basket
+  attr_reader :basket, :total
 
   def initialize
     @basket = Hash.new(0)
@@ -16,5 +16,12 @@ class Basket
     @basket.each do |dish, quantity|
       return "#{quantity}: #{dish}"
     end
+  end
+
+
+  def cost(menu)
+    @total = []
+    basket.each{ |dish, quantity| @total << (menu.dishes[dish]* quantity) }
+    (total.inject(:+))
   end
 end
