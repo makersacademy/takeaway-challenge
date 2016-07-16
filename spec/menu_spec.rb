@@ -10,9 +10,13 @@ describe Menu do
       end
   end
 
-  it "has a list of menu items" do
-    expect(menu.item_list).to include(:balti => 5.00, vindaloo: 4.50)
+    it "has a list of menu items" do
+      expect(menu.item_list).to include(:balti => 5.00, vindaloo: 4.50)
   end
 
-
+  describe "#print_menu" do
+    it "prints out a list of menu items and their prices" do
+      expect(menu.print_menu).to eq "balti £5.0 , vindaloo £4.5"
+    end
+  end
 end
