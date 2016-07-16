@@ -1,4 +1,4 @@
-require 'twilio-ruby'
+# require 'twilio-ruby'
 
 class Checkout
 
