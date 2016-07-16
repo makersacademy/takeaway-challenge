@@ -280,7 +280,7 @@ It's easy to overlook responsibilities and end up with a class that does too muc
 
 ```ruby
 def add_to_order(item)
-...
+... 
 end
 
 def order_total

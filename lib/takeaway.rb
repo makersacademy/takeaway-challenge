@@ -1,7 +1,7 @@
 class TakeAway
 
-  attr_reader :menu, :basket
-  attr_writer :menu
+  attr_reader :basket
+  attr_accessor :menu
 
   def initialize
     @basket = []
@@ -21,13 +21,20 @@ class TakeAway
   end
 
   def order(dish, number=1)
-    # check if dish is a menu key
-    # if it is, save the key and value as new_dish
-    # push new_dish to the basket
-    new_dish = @menu.select {|k, v| k==dish}
-    number.times{@basket.push(new_dish)}
+    @number = number
+    @new_dish = @menu.select {|k, v| k==dish}
+    add_order
+  end
+
+  def see_basket
+    @basket
+  end
+
+  private
+
+  def add_order
+    @number.times{@basket.push(@new_dish)}
   end
 
 
-  
 end

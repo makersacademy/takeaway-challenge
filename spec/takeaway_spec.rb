@@ -40,7 +40,21 @@ describe TakeAway do
       expect(takeaway.basket[0]).to eq :dish => 2
     end
   end
-  
+
+  describe "#see_basket" do
+    before (:each) do
+      takeaway.menu = {:dish => 2}
+      takeaway.order(:dish)
+    end
+    it "allows customer to see the basket" do
+      expect(takeaway).to respond_to(:see_basket)
+    end
+
+    it "displays the basket" do
+      expect(takeaway.see_basket).to eq takeaway.basket
+    end
+  end
+
 end
 
 # As a customer
