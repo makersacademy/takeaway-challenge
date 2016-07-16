@@ -43,4 +43,14 @@ describe Takeaway do
     end
   end
 
+  describe '#place_order' do
+    before do
+      takeaway.order("Omlette")
+      takeaway.order("Pancakes", 2)
+    end
+    it 'confirms that the order has been placed' do
+      expect(takeaway.place_order).to(eq("Thank you, your order has been placed and will be delivered by #{(Time.now + (60*60)).strftime("%H:%M")}"))
+    end
+  end
+
 end

@@ -7,6 +7,7 @@ class Takeaway
   def initialize
     @basket = {}
     @menu = Menu.new.menu
+    @total = 0
   end
 
   def print_menu
@@ -14,19 +15,23 @@ class Takeaway
   end
 
   def order(item, quantity = 1)
-    fail "Sorry, that item is not on the menu" unless check_menu(item.capitalize)
+    item = item.capitalize
+    fail "Sorry, that item is not on the menu" unless check_menu(item)
     @basket.store(item, quantity)
     confirm(item, quantity)
   end
 
   def total
-    @total = 0
     @menu.each do |key, value|
       if @basket.has_key?(key)
         @total += (@basket[key] * value)
       end
     end
     @total
+  end
+
+  def place_order
+    "Thank you, your order has been placed and will be delivered by #{delivery_time}"
   end
 
   private
@@ -37,6 +42,10 @@ class Takeaway
 
   def confirm(item, quantity)
     "#{quantity} #{item} has been added to your basket"
+  end
+
+  def delivery_time
+    (Time.now + (60*60)).strftime("%H:%M")
   end
 
 end
