@@ -10,7 +10,7 @@ class Order
   def select(order)
     fail "Bad order! Check your maths." if !correct?(order)
     Confirm.new.send_text
-    p "Good job! Order success."
+    "Good job! Order success."
   end
 
   private

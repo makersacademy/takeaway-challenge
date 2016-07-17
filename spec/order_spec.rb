@@ -6,7 +6,7 @@ describe Order do
   let(:bad_order) { [{"Satay" => 1, "Cendol" => 2 }, 22.00] }
 
   describe "#select" do
-    it 'raises an error when we input the incorrect sum' do
+    it 'raises an error if we order incorrectly' do
       expect{subject.select(bad_order)}.to raise_error("Bad order! Check your maths.")
     end
     it 'confirms a correct order has been placed' do

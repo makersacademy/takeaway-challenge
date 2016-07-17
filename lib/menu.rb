@@ -2,9 +2,9 @@ class Menu
 
   attr_reader :dishes
 
-  # The dishes in the menu should be symbols. The menu should
-  # also be in a separate file (/database). For now, they are left
-  # as string for friendlier output from the view method.
+  # The dishes in the menu should be symbols. The menu should also be in a
+  # separate file (/database). For now, they are left as strings for friendlier
+  # output from the view method.
   def initialize
     @dishes = { "Satay" => 7.99,
               "Rojak" => 7.99,
