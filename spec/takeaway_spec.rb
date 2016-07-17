@@ -14,10 +14,6 @@ describe TakeAway do
   end
 
   describe "#see_menu" do
-    it "allows customer to see the menu" do
-      expect(takeaway).to respond_to(:see_menu)
-    end
-
     it "displays the menu list" do
       expect(takeaway.see_menu).to eq takeaway.menu
     end
@@ -49,10 +45,6 @@ describe TakeAway do
       takeaway.menu = {:dish => 2.99}
       takeaway.order(:dish)
     end
-    it "allows customer to see the basket" do
-      expect(takeaway).to respond_to(:see_basket)
-    end
-
     it "displays the basket" do
       expect(takeaway.see_basket).to eq takeaway.basket
     end
@@ -76,9 +68,6 @@ describe TakeAway do
   context "correct payment is made" do
 
     describe "#checkout" do
-      it "allows customer to pay a specific amount" do
-        expect(takeaway).to respond_to(:checkout).with(1).argument
-      end
       it "confirms payment and delivery time" do
         time = Time.now + (60 * 60)
         time = time.strftime('%H:%M')
@@ -92,23 +81,20 @@ describe TakeAway do
       it "sends a payment confirmation text message" do
         expect(takeaway).to respond_to(:send_text).with(1).argument
       end
-      # it "includes a message within the text" do
-      #   client = double(:client)
-      #   message = "Thank you for your payment of £7."
-      #   twilio_message_body = {from: ENV['TWILIO_NUMBER'], to: ENV['TWILIO_MY_NUMBER'], body: message}
-      #   allow(client).to receive_message_chain(:messages, :create).with(twilio_message_body)
-      #   expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(client)
-      #   subject.send_text(message)
-      # end
+      it "includes a message within the text" do
+        client = double(:client)
+        message = "Thank you for your payment of £7."
+        twilio_message_body = {from: ENV['TWILIO_NUMBER'], to: ENV['TWILIO_MY_NUMBER'], body: message}
+        allow(client).to receive_message_chain(:messages, :create).with(twilio_message_body)
+        expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(client)
+        subject.send_text(message)
+      end
     end
   end
 
   context "incorrect payment is made" do
 
     describe "#checkout" do
-      it "allows customer to pay a specific amount" do
-        expect(takeaway).to respond_to(:checkout).with(1).argument
-      end
       it "returns an error if payment is incorrect" do
         takeaway.basket_total = 7
         message = "Please pay the correct amount of £7."

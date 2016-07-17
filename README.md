@@ -1,7 +1,7 @@
 # **Takeaway Challenge**
 ==================
 
-This is a ruby program that simulates a takeaway order service in which users can order food from a menu and receive a text confirmation for its delivery.
+This is a ruby program that simulates a takeaway order service in which users can order food from a menu and receive a text confirmation with an estimated delivery time.
 
 ```
                             _________
@@ -16,25 +16,6 @@ This is a ruby program that simulates a takeaway order service in which users ca
        ':..:'                ':..:'
 
  ```
-
-## Instructions
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
 ## User stories
 
 ```
@@ -99,6 +80,10 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Learning objectives ##
 
+* OOP
+* SRP
+* Class extraction
+* Dependency injection
 
 ## Demonstration in IRB ##
 
@@ -131,11 +116,27 @@ RuntimeError: Please pay the correct amount of £11.96.
  => "Thank you for your payment of £11.96. Your food will be delivered before 22:52."
 
 ```
+![twilio text](https://cloud.githubusercontent.com/assets/18379191/16903101/f5b89ddc-4c6b-11e6-978e-3d19de6058b5.PNG)
 
 ## What I learned: ##
 
+* How to work with hashes nested in an array using the select. and reduce. methods.
+* Dotenv can be used to protect private information.
+* How to incorporate API's into my code.
+* More about private methods and when to use them such as with predicative methods (eg.is_correct?).
+* Solidified my knowledge of the TDD workflow.
+* Calling methods from within methods so that they only have a single responsibility.
 
 ## What I struggled with: ##
 
+* Doubles
+* Stubbing out the #send_text method whilst keeping my #checkout test.
+* I am still struggling with class extraction but most of all dependency injection and when to use it.
+ 
 
 ## Outlook ##
+
+* My code is extremely inefficient and messy at the moment. My goal was to write all the code and get the program working before refactoring with class extraction and dependency injection.
+* However, I am struggling to work out which classes toe xtract first and how to move their methods and tests out of the TakeAway files.
+* I will need to extract a lot of the code into Order and Messenger classes with perhaps a Menu case in case the menu changes at a restaurant. At the moment, there are a lot of order methods and it would be ideal for them to be in their own Order class to simplify the TakeAway class and follow SRP.
+* I will therefore need to inject these classes into the initialise method of TakeAway so that new Order and Messenger instances are created upon "dragon" creation.
