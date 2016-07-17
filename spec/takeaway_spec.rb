@@ -2,6 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
+  let(:message) { double(:message) }
 
   it { is_expected.to(respond_to(:print_menu)) }
   it { is_expected.to(respond_to(:order)) }
@@ -48,8 +49,9 @@ describe Takeaway do
       takeaway.order("Omlette")
       takeaway.order("Pancakes", 2)
     end
-    it 'confirms that the order has been placed' do
-      expect(takeaway.place_order).to(eq("Thank you, your order has been placed and will be delivered by #{(Time.now + (60*60)).strftime("%H:%M")}"))
+    it 'sends a text message confirming the order' do
+      expect(message).to(receive(:send_message))
+      takeaway.place_order(message)
     end
   end
 

@@ -9,7 +9,7 @@ class Takeaway
     @basket = {}
     @menu = Menu.new.menu
     @total = 0
-    @message = TextMessage.new
+    #@message = TextMessage.new
   end
 
   def print_menu
@@ -32,14 +32,10 @@ class Takeaway
     @total
   end
 
-  def place_order
-    content = confirmation
-    @message.send_message(content)
+  def place_order(message = TextMessage.new)
+    message.send_message(confirmation)
   end
 
-  def confirmation
-    "Thank you, your order has been placed and will be delivered by #{delivery_time}"
-  end
 
   private
 
@@ -52,7 +48,12 @@ class Takeaway
   end
 
   def delivery_time
-    (Time.now + (60*60)).strftime("%H:%M")
+    (Time.now + (60 * 60)).strftime("%H:%M")
   end
+
+  def confirmation
+    "Thank you, your order has been placed and will be delivered by #{delivery_time}"
+  end
+
 
 end
