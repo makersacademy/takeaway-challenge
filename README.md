@@ -132,7 +132,7 @@ RuntimeError: Please pay the correct amount of £11.96.
 * Doubles
 * Stubbing out the #send_text method whilst keeping my #checkout test.
 * I am still struggling with class extraction but most of all dependency injection and when to use it.
- 
+
 
 ## Outlook ##
 
