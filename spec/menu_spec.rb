@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  
+
   subject(:menu) { Menu.new }
 
   context '#display_menu' do

@@ -17,10 +17,6 @@ describe Takeaway do
       expect(takeaway.show_menu).to eq(menu.display_menu)
     end
   end
-
-  # context '#place_order' do
-  #
-  # end
 end
 
 
