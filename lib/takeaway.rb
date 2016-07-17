@@ -1,11 +1,13 @@
 require_relative 'menu'
 require_relative 'basket'
+require_relative 'sms'
 
 class Takeaway
 
-  def initialize(menu = Menu.new, basket = Basket.new)
+  def initialize(menu = Menu.new, basket = Basket.new, sms = Sms.new)
     @menu = menu
     @basket = basket
+    @sms = sms
   end
 
   def read_menu
@@ -24,6 +26,10 @@ class Takeaway
 
   def total
     @basket.total
+  end
+
+  def confirm_order
+    @sms.deliver
   end
 
   private
