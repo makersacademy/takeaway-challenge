@@ -36,16 +36,16 @@ describe Basket do
   end
 
   describe '#clear' do
+
+    before(:example) {subject.add(item)}
+
     it 'resets the item_count' do
-      subject.add(item)
       expect{subject.clear}.to change{subject.item_count}.from(3).to(0)
     end
     it 'clears the total price' do
-      subject.add(item)
       expect{subject.clear}.to change{subject.total_price}.from(6.00).to(0)
     end
     it 'clears the items' do
-      subject.add(item)
       subject.clear
       expect(subject.items).to be_empty
     end
