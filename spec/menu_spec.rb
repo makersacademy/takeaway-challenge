@@ -7,6 +7,9 @@ subject(:menu) { described_class.new}
       expect(menu).to respond_to(:display_menu)
     end
 
+    it "select some number of several dishes" do
+      expect(menu).to respond_to(:select_dishes).with(2).arguments
+    end
 end
 #   let(:dish_no)    { double :dish_no }
 #   let(:dish_name)  { double :dish_name }

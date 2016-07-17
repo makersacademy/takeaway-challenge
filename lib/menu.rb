@@ -3,6 +3,8 @@ class Menu
   def display_menu
   end
 
+  def select_dishes(dish, quantity)
+  end
 end
 
 
