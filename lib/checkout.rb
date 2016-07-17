@@ -1,6 +1,11 @@
 require_relative 'texter'
 
 class Checkout
+
+  def initialize
+    @texter = Texter.new
+  end
+
   def do
     thank_you_message
     send_message(get_number)
@@ -16,6 +21,6 @@ class Checkout
   end
 
   def send_message(number)
-  Texter.text(number)
+  @texter.text(number)
   end
 end

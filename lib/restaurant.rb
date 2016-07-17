@@ -9,16 +9,24 @@ attr_reader :menu, :basket
   end
 
   def show_menu
+    puts "MENU".center(50, '=')
     list(menu.dishes)
   end
 
   def show_basket
+    puts "YOUR BASKET".center(50, '=')
     list(basket.dishes)
-    puts "£#{basket.total}".rjust(50)
+    puts "TOTAL: £#{basket.total}".rjust(50)
   end
 
   def select_item(index)
-    basket.add menu.dishes[(index.to_i-1)]
+    item = menu.dishes[(index.to_i-1)]
+    basket.add item
+    puts "#{item.name} added to basket."
+  end
+
+  def new_order
+    @basket = Basket.new
   end
 
 private

@@ -1,15 +1,12 @@
 require 'twilio-ruby'
 
 class Texter
-  def self.text(number)
 
-   account_sid = 'AC4aae672be2a82fc5580e5401a6ade1a3'
-   auth_token = '715791741fc525d16ae00a40b8dd0114'
-   twilio_number = '+447481345653'
-   confirmation = "Thank you, your order will be delivered by 18:52."
+  def initialize
+    @client = Twilio::REST::Client.new account_sid, auth_token
+  end
 
-   @client = Twilio::REST::Client.new account_sid, auth_token
-
+  def text(number)
    @client.account.messages.create(
    from: twilio_number,
    to: number,
@@ -17,4 +14,21 @@ class Texter
    )
  end
 
+private
+
+ def confirmation
+   "Thank you, your order will be delivered by 18:52."
+ end
+
+
+  def account_sid
+    'AC4aae672be2a82fc5580e5401a6ade1a3'
+  end
+  def auth_token
+    '715791741fc525d16ae00a40b8dd0114'
+  end
+
+  def twilio_number
+    '+447481345653'
+  end
 end

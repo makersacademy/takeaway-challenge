@@ -9,6 +9,7 @@ class Takeaway
   end
 
   def order
+    @restaurant.new_order
     select_items
     @restaurant.show_basket
     correct? ? checkout : order
@@ -31,6 +32,7 @@ class Takeaway
     if answer == 'y'
       true
     elsif answer == 'n'
+      puts "Lets start again!"
       false
     else
       puts 'Not a valid response.'
@@ -43,3 +45,6 @@ class Takeaway
   end
 
 end
+
+jacks = Takeaway.new
+jacks.order
