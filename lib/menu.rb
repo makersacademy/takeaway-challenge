@@ -1,13 +1,16 @@
 class Menu
 
-attr_reader :items
+attr_reader :menu_items
 
-  def initialize(items)
-    @items = items
+  def initialize(menu_items)
+    @menu_items = {
+              :margherita => 6.5,
+              :hawaiian => 6.7,
+            }
   end
 
   def print_list
-    items.map {|item, price| "%s: £%.2f" % [item.to_s.capitalize, price]}.join(", ")
+    menu_items.map {|item, price| "%s: £%.2f" % [item.to_s.capitalize, price]}.join(", ")
   end
 
 end

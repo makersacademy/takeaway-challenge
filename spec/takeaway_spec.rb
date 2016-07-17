@@ -5,6 +5,8 @@ describe Takeaway do
 
   let(:menu) { double(:menu, print: print_menu) }
   let(:print_menu) { "Margherita: £6.50" }
+  let(:margherita) { double :margherita }
+  let(:romana) { double :romana }
 
 
   describe '#print_menu' do
@@ -13,8 +15,10 @@ describe Takeaway do
     end
   end
 
-  describe '#place_order' do
-    it 'should order a selection of available dishes'
+  describe '#add_item' do
+    it 'should add a selected item to the basket' do
+      
+    end
   end
 
 end
