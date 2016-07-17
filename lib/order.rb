@@ -14,7 +14,6 @@ def add(dish, quantity)
 end
 
 def total
-
 item_total.inject(:+)
 
 end
