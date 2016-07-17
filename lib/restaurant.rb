@@ -17,7 +17,7 @@ class Restaurant
     dishes.each do |dish, qty|
       order.add(dish, qty)
     end
-
+    order.total
   end
 
 private

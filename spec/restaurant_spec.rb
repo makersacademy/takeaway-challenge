@@ -4,7 +4,7 @@ require "order"
 describe Restaurant do
 
   let(:restaurant) {described_class.new(menu: menu, order: order)}
-  let(:order) {double(:order)}
+  let(:order) {double(:order, total: 17)}
   let(:menu) { double(:menu, print_m: printed_menu) }
   let(:printed_menu) { "Fish: $5.00" }
 
@@ -24,6 +24,10 @@ describe Restaurant do
       restaurant.place_order(dishes_to_order)
     end
 
-
+    it "can calculate the order total" do
+      allow(order).to receive(:add)
+      total = restaurant.place_order(dishes_to_order)
+      expect(total).to eq(17)
+    end
 
 end

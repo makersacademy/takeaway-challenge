@@ -28,4 +28,8 @@ describe Menu do
     expect(menu.dish_exists?(:lamb)).to be false
   end
 
+  it "calculates the price of total orders" do
+    expect(menu.price(:chicken)).to eq(dishes_list[:chicken])
+  end
+
 end
