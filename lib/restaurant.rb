@@ -1,10 +1,13 @@
+require_relative 'menu'
+require_relative 'message'
 
 class Restaurant
 
-  attr_reader :menu, :order, :basket, :subtotals
+  attr_reader :message, :menu, :order, :basket, :subtotals
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, message = Message.new)
     @menu = menu
+    @message = message
     @order = {}
     @subtotals = []
     @basket = []
@@ -28,6 +31,12 @@ class Restaurant
     "Total: £#{@total}"
   end
 
+  def checkout(payment)
+    @payment = payment
+    message.send_confirmation
+  end
+
+
 private
 
   def subtotal(dish,quantity)
@@ -37,7 +46,7 @@ private
   def calculate_total
     order.each do |dish,quantity|
       subtotals << (subtotal(dish,quantity))
-      @total = sum_and_round(subtotals)
+      @total = (sum_and_round(subtotals))
     end
   end
 
@@ -51,5 +60,8 @@ private
   def sum_and_round(subtotal)
     "%.2f" % (subtotal.reduce(:+))
   end
+
+
+
 
 end
