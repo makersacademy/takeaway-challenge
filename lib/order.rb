@@ -1,33 +1,27 @@
 require_relative 'menu'
+require_relative 'confirm'
 
 class Order
 
   def initialize
-    @menu = Menu.new
+    @dish_list = Menu.new.dishes
   end
 
   def select(order)
     fail "Bad order! Check your maths." if !correct?(order)
-    "Good job!"
+    Confirm.new.send_text
+    p "Good job! Order success."
   end
+
+  private
 
   def correct?(order)
     sum = order[-1]
     order_hash = order[0]
     total = order_hash.keys.inject(0) do |cost, key|
-      cost + order_hash[key] * @menu.menu[key]
+      cost + order_hash[key] * @dish_list[key]
     end
     sum == total ? true : false
   end
 
 end
-
-=begin
-
-a = 0
-orders.each do |dish, number|
-  a += number
-end
-a
-
-=end

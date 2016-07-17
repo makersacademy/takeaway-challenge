@@ -1,11 +1,12 @@
 class Menu
 
-  # Do we need this?
-  attr_reader :menu
+  attr_reader :dishes
 
+  # The dishes in the menu should be symbols. The menu should
+  # also be in a separate file (/database). For now, they are left
+  # as string for friendlier output from the view method.
   def initialize
-    # add in loads of symbols here
-    @menu = { "Satay" => 7.99,
+    @dishes = { "Satay" => 7.99,
               "Rojak" => 7.99,
               "Chee Cheong Fun" => 7.99,
               "Nasi Goreng" => 10.99,
@@ -13,7 +14,7 @@ class Menu
               "Nasi Campur" => 11.99,
               "Nasi Dagang" => 10.99,
               "Mee Goreng" => 9.99,
-              "Mee Rebus" =>8.99,
+              "Mee Rebus" => 8.99,
               "Hokkien Mee" => 9.99,
               "Nasi Kandar" => 10.99,
               "Charsiew Rice" => 10.99,
@@ -40,7 +41,7 @@ class Menu
   end
 
   def view
-    menu.each do |dish, price|
+    dishes.each do |dish, price|
       puts "#{dish}" + dots(dish) + "£#{price}"
     end
   end
@@ -50,6 +51,5 @@ class Menu
   def dots(dish)
     '.' * (50 - dish.length)
   end
-
 
 end

@@ -2,8 +2,8 @@ require 'menu'
 
 describe Menu do
 
-  it 'should be able to view contents of menu' do
-    expect(subject.view).to eq subject.menu
+  it 'allows user to view contents of menu' do
+    expect(subject.view).to eq subject.dishes
   end
 
 end
