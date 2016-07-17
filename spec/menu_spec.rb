@@ -2,8 +2,8 @@ require 'menu'
 
 describe Menu do
 subject(:menu) {described_class.new}
-let(:dish1) {double :dish, name: "pad thai", price: 5}
-let(:dish2) {double :dish, name: "chicken curry", price: 7}
+let(:dish1) {double :dish, name: "Pad Thai", price: 5}
+let(:dish2) {double :dish, name: "Dumplings", price: 6}
 
 
 describe '#add_dish' do
