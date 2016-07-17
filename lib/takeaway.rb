@@ -10,7 +10,8 @@ class Takeaway
     @selection = {}
   end
 
-  def select_item(item, quantity)
+  def select_item(item, quantity = 1)
+    raise "Item not on menu" if list_menu[item] == nil
     @selection[item] = quantity
   end
 
@@ -25,8 +26,7 @@ class Takeaway
   end
 
   def confirm_order(value)
-    message = "Order not confirmed, please check your total and try again."
-    raise message if calculate_total != value
+    check_order(value)
     send_text
     @selection = {}
     "Order confirmed"
@@ -46,7 +46,13 @@ class Takeaway
 
   def delivery_time
     time = Time.new
-    (time.hour+1).to_s + ":" + (sprintf('%2.2d',time.min))
+    (time.hour+1).to_s + ":" + sprintf('%2.2d',time.min)
+  end
+
+  def check_order(value)
+    raise "You have not selected any items" if selection == {}
+    message = "Order not confirmed, please check your total and try again."
+    raise message if calculate_total != value
   end
 
 end

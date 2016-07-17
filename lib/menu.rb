@@ -19,7 +19,8 @@ class Menu
 
   def load_menu(menu_file)
     CSV.foreach(menu_file) do |line|
-      item, price = line[0], line[1]
+      item = line[0]
+      price = line[1]
       add_to_menu(item, price)
     end
   end

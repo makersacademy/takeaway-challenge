@@ -10,9 +10,9 @@ class TwilioMessanger
 
   def message(message_body)
     @client.account.messages.create({
-        :to => ENV['TWILIO_MY_NUMBER'],
-        :from => ENV['TWILIO_NUMBER'],
-        :body => message_body,
+        to: ENV['TWILIO_MY_NUMBER'],
+        from: ENV['TWILIO_NUMBER'],
+        body: message_body,
     })
   end
 
