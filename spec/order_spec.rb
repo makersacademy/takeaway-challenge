@@ -1,35 +1,44 @@
 require 'order'
 
 describe Order do
-  let(:menu){double :menu, :dish_list => {"pizza"=>3}}
+  let(:dish_list){{"pizza"=>3.00}}
+  let(:order){described_class.new(dish_list)}
 
-  context 'ordering dish'do
-    it 'adds dish to order' do
-      subject.add_to_order("pizza",2)
-      expect(subject.basket).to eq "pizza" => 2
+  context '#on initialize' do
+    it 'the current total is 0' do
+      expect(order.current_total).to be 0
     end
-    it 'updates the quantity value of existing food' do
-      subject.add_to_order("burger",2)
-      subject.add_to_order("burger",4)
-      expect(subject.basket).to eq "burger" => 6
-    end
-    it 'sets quantity to 1 by default' do
-      subject.add_to_order("chips")
-      expect(subject.basket).to eq "chips" => 1
-    end
-    it 'raises an error when dish not on menu' do
-      expect{subject.add_to_order("cheese")}.to raise_error 'No such dish on menu'
+
+    it 'the basket is empty' do
+      expect(order.basket).to be_empty
     end
   end
 
-  context 'order total' do
+  context '#ordering dish'do
+    it 'adds dish to order' do
+      order.add_to_order("pizza",2)
+      expect(order.basket).to eq "pizza" => 2
+    end
+    it 'updates the quantity value of existing food' do
+      order.add_to_order("pizza",2)
+      order.add_to_order("pizza",4)
+      expect(order.basket).to include "pizza" => 6
+    end
+    it 'sets quantity to 1 by default' do
+      order.add_to_order("pizza")
+      expect(order.basket).to eq "pizza" => 1
+    end
+  end
+
+  context '#order total' do
     it 'calculates current total' do
-      subject.add_to_order("pizza")
-      expect(subject.current_total).to eq 3
+      order.add_to_order("pizza")
+      expect(order.current_total).to eq 3.00
     end
     it 'calculates total' do
-      subject.add_to_order("pizza",5)
-      expect(subject.current_total).to eq 15
+      order.add_to_order("pizza",5)
+      order.add_to_order("pizza",3)
+      expect(order.current_total).to eq 24.00
     end
   end
 
