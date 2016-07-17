@@ -51,3 +51,14 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Credit
 -------
 Used [Sophie Gill](https://github.com/soph-g/takeaway-challenge/blob/master/lib/takeaway.rb)'s `#total` method for adding the total of basket.
+
+```
+def total
+  @menu.dishes.each do |dish, quantity|
+    if @basket.key?(dish)
+      @total += (@basket[dish] * quantity)
+    end
+  end
+  @total
+end
+```
