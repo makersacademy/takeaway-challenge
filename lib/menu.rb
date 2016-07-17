@@ -7,7 +7,7 @@ class Menu
     @dishes = YAML.load(File.read(filepath))
   end
 
-private
+  private
 
   def default_filepath
     File.dirname(__FILE__)+'/../docs/dishes.yml'

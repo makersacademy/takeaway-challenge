@@ -4,8 +4,9 @@ describe Restaurant do
   let(:subject) {described_class.new}
   let(:dish_a) {double(:dish, name: 'name_a', price: '050')}
   let(:dish_b) {double(:dish, name: 'name_b', price: '100')}
-  let(:menu) {double(:menu, dishes: [dish_a, dish_b])}
-  let(:basket) {double(:basket, dishes: [dish_b, dish_a], total: '1.50', add: nil)}
+  let(:menu) {double(:menu, dishes: dish_arr)}
+  let(:dish_arr) {[dish_a, dish_b]}
+  let(:basket) {double(:basket, dishes: dish_arr, total: '1.50', add: nil)}
 
   it{is_expected.to respond_to(:show_menu)}
   it{is_expected.to respond_to(:show_basket)}
@@ -20,7 +21,7 @@ describe Restaurant do
 
   describe '#menu' do
     it 'has a menu' do
-      expect(subject.menu).to eq  menu
+      expect(subject.menu).to eq menu
     end
   end
 
@@ -43,7 +44,7 @@ describe Restaurant do
   end
 
   describe '#select_item' do
-    it 'asks menu for dishes'do
+    it 'asks menu for dishes' do
       expect(menu).to receive(:dishes)
       subject.select_item('1')
     end

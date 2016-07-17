@@ -29,7 +29,7 @@ attr_reader :menu, :basket
     @basket = Basket.new
   end
 
-private
+  private
 
   def added_confirmation(item)
     puts "#{item.name} added to basket."
@@ -52,7 +52,7 @@ private
       amount = d.price.dup
       print "#{i}.".center(5)
       print d.name.ljust(30,'.')
-      print  "£#{amount.insert(-3, '.')}".rjust(15,'.') + "\n"
+      print "£#{amount.insert(-3, '.')}".rjust(15,'.') + "\n"
     end
   end
 end

@@ -15,5 +15,5 @@ describe Texter do
     expect(account).to receive(:messages)
     expect(messages).to receive(:create)
     subject.text(number)
-    end
+  end
 end

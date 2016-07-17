@@ -12,9 +12,9 @@ class Texter
    to: number,
    body: confirmation
    )
- end
+  end
 
-private
+ private
 
  def confirmation
    time = Time.now + 60*60
