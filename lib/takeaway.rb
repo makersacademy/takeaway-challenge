@@ -1,11 +1,13 @@
 require_relative 'menu'
 require_relative 'basket'
+require_relative 'confirmation'
 
 class Takeaway
 
   def initialize(menu = Menu.new)
     @basket = Basket.new
     @menu = menu
+    @confirmation = Confirmation.new
   end
 
   def read_menu
@@ -32,7 +34,8 @@ class Takeaway
 
   def checkout(total)
     fail 'Please enter the correct total to checkout' if total != @basket.total
-    puts "Your order has been received!"
+    @confirmation.send_SMS
+    puts "Order complete. Confirmation on its way!"
   end
 
 end

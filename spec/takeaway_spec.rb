@@ -39,7 +39,8 @@ describe Takeaway do
     end
 
     it 'prints a success message if added to basket' do
-      expect(STDOUT).to receive(:puts).with("1 x Fried Rice added to your order!")
+      message = "1 x Fried Rice added to your order!"
+      expect(STDOUT).to receive(:puts).with(message)
       subject.order("Fried Rice", 1)
     end
   end
