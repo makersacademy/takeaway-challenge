@@ -12,4 +12,11 @@ describe Takeaway do
       expect(takeaway.chosen_items).to be_empty
     end
   end
+
+  describe '#order_selection' do
+
+    it 'raises an error if an item is not on the menu' do
+      expect{ takeaway.order_selection(:chicken, 2)}.to raise_error 'item not on menu'
+    end
+  end
 end

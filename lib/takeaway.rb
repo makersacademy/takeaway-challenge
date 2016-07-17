@@ -9,4 +9,9 @@ class Takeaway
     @chosen_items = Hash.new(0)
   end
 
+  def order_selection(item, quantity)
+    fail 'item not on menu' unless @menu_class.view_menu.include?(item)
+    chosen_items[item] = quantity
+  end
+
 end
