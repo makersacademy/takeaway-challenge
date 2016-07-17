@@ -1,4 +1,5 @@
 require_relative "menu"
+require_relative "text_message"
 
 class Takeaway
 
@@ -8,6 +9,7 @@ class Takeaway
     @basket = {}
     @menu = Menu.new.menu
     @total = 0
+    @message = TextMessage.new
   end
 
   def print_menu
@@ -31,6 +33,11 @@ class Takeaway
   end
 
   def place_order
+    content = confirmation
+    @message.send_message(content)
+  end
+
+  def confirmation
     "Thank you, your order has been placed and will be delivered by #{delivery_time}"
   end
 
