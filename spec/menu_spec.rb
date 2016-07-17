@@ -22,6 +22,14 @@ end
     expect(menu.print_this).to eq(printed_menu)
   end
 
+  it 'has the item on the menu' do
+    expect(menu.has_dish?(:Chicken)).to be(true)
+  end
+
+  it 'has not the item on the menu' do
+    expect(menu.has_dish?(:Bananas)).to be(false)
+  end
+
 
 
 end

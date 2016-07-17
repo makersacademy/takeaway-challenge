@@ -12,8 +12,8 @@ def print_this
   end.join(", ")
 end
 
-
-
-
+def has_dish?(dish)
+  !dishes[dish].nil?
+end
 
 end
