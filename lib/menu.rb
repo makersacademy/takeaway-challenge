@@ -9,6 +9,4 @@ class Menu
     printed_menu = dishes.map { |item, price|  "#{item.to_s.capitalize} £#{price}"}
     printed_menu.join(", ")
   end
-
-
 end
