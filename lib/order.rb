@@ -1,14 +1,14 @@
 class Order
-  attr_accessor :dish, :quantity, :order
+  attr_accessor :dish, :quantity, :order, :line
 
-  def initialize(dish = nil,quantity = nil )
+  def initialize(dish = nil,quantity = 0 )
     @dish = dish
     @quantity = quantity
-    @order = []
+    @order = [{dish => quantity}]
   end
 
-  def add_to_order
-    quantity.times {order << dish}
+  def add_to_order(dish,quantity)
+    @line = {dish => quantity}
+    order << line
   end
-
 end
