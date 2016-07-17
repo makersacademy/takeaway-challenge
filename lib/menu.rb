@@ -10,10 +10,12 @@ class Menu
   end
 
   def display_menu
-    @menu.dup
+    menu.dup
   end
 
   private
+
+  attr_reader :menu
 
   def load_menu(menu_file)
     CSV.foreach(menu_file) do |line|

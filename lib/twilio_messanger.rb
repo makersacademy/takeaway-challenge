@@ -10,3 +10,15 @@
 #     :from => '<FromNumber>',
 #     :body => '<BodyText>',
 # })
+
+#
+# TWILIO_ACCOUNT_SID = '####'
+# TWILIO_AUTH_TOKEN = '####'
+# TWILIO_NUMBER = '+44####'
+# TWILIO_MY_NUMBER = '+44####'
+
+#
+# like this in the class responsible for the api call: ENV['TWILIO_ACCOUNT_SID']
+# so account_sid = ENV['TWILIO_ACCOUNT_SID']
+# and in the .env file TWILIO_ACCOUNT_SID = ‘my sid'
+# gitignore the env file
