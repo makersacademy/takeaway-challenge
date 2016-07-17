@@ -5,10 +5,11 @@ Dotenv.load
 class TextService
 
   def initialize
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_ACCOUNT_AUTH']
+    api_sid = ENV.fetch('TWILIO_ACCOUNT_SID')
+    api_auth = ENV.fetch('TWILIO_ACCOUNT_AUTH')
 
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new(
+      api_sid, api_auth,)
   end
 
   def send_sms(message)
@@ -17,11 +18,9 @@ class TextService
       to: ENV['TWILIO_TO_NUM'],
       body: message
     )
-
   end
 
   private
-
   attr_reader :client
 
 end
