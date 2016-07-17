@@ -20,7 +20,6 @@ class Takeaway
     @order.total
   end
 
-
   def complete(price)
     @order.complete(price)
   end
