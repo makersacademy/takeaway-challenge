@@ -1,14 +1,17 @@
 require_relative 'order'
-
+require_relative 'menu'
 
 class Takeaway
 
+  def initialize
+    @order = Order.new
+  end
+
   def print_menu
-    @menu.print_menu
+    @order.menu.print_menu
   end
 
   def place_an_order(dish, qnty = 1)
-    @order = Order.new if @order.nil?
     @order.place_an_order(dish, qnty)
   end
 

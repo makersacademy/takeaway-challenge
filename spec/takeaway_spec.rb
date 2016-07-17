@@ -1,8 +1,13 @@
 require 'takeaway'
 
 describe Takeaway do
-
+  let(:menu) { double :menu, price: 1}
   let(:subject) {described_class.new}
+
+describe '#print_menu' do
+  it 'displays a menu' do
+    expect(subject.print_menu).to be_a(Hash)
+    end
 
 describe "#place_an_order" do
   it { is_expected.to respond_to(:place_an_order).with(2).argument }
@@ -45,4 +50,7 @@ describe '#complete' do
 
 end
 
+
+
+end
 end

@@ -4,7 +4,7 @@ require_relative 'notifier'
 
 class Order
 
-  attr_reader :basket
+  attr_reader :basket, :menu
 
   def initialize(menu = Menu.new)
     @menu = menu
