@@ -10,7 +10,7 @@ class Basket
      @basket["#{item} x #{num}"] = cost*num
   end
 
-  def total
+  def sum
   @basket.values.inject(0) { |a, b| a + b }
   end
 

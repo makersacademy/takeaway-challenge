@@ -32,7 +32,7 @@ class Takeaway
   end
 
   def total
-    @value = @basket.total.round(2)
+    @value = @basket.sum.round(2)
     puts "Your total order cost is £#{value}"
   end
 
