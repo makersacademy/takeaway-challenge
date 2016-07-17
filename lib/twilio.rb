@@ -1,13 +1,23 @@
+require 'dotenv'
 require 'twilio-ruby'
 
-# To find these visit https://www.twilio.com/user/account
-account_sid = "AC276309d1decc64ab1c661277bc41770f"
-auth_token = "7ef700ed280f03e5c673a569fc377fd2"
+Dotenv.load
 
-@client = Twilio::REST::Client.new account_sid, auth_token
+Twilio.configure do |config|
+  config.account_sid = ENV['TWILIO_ACCOUNT_SID']
+  config.auth_token = ENV['TWILIO_AUTH_TOKEN']
+end
 
-@message = @client.messages.create(
-  to: "+13216851234",
-  from: "+11212856445",
-  body: "Hello!"
-)
+@client = Twilio::REST::Client.new
+
+from = "+441212856445"
+to=  { "+447535949272" => "Alex Saunders" }
+
+to.each do |key, value|
+  @message = @client.account.messages.create(
+    :from => from,
+    :to => key,
+    :body => "Hello #{value}! Testing, 1..2..3"
+    )
+puts "Sent message to #{value}"
+end
