@@ -1,6 +1,6 @@
 require_relative 'menu'
 require_relative 'basket'
-require_relative 'reminder'
+require_relative 'notifier'
 
 class Order
 
@@ -9,7 +9,7 @@ class Order
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = Basket.new
-    @remainder = Reminder.new
+    @notifier = Notifier.new
   end
 
   def place_an_order(dish, qnty)
@@ -32,7 +32,7 @@ class Order
   def complete(price)
     fail "The sum is incorrect" if !correct_price? price
     msg = "Thank you! Your order was placed and will be delivered before #{plus_hour_time}"
-    @reminder.send_msg(msg)
+    @notifier.send_msg(msg)
     @basket.basket = {}
   end
 
@@ -43,7 +43,7 @@ class Order
   end
 
   def added_to_basket(dish, qnty)
-    "<#{dish} x #{qnty} x £#{@menu.menu[dish]}0> added to your basket"
+    "<#{dish} x #{qnty} x £#{@menu.menu[@dish]}0> added to your basket"
   end
 
   def display_total
