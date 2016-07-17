@@ -80,6 +80,17 @@ describe Takeaway do
         subject.checkout(subject.menu[item])
       end
 
+      let(:client) { double :client }
+      it "can send text" do
+        subject.add_item(item)
+        time = (Time.now + (60 * 60)).strftime("%H:%M")
+        message = "Thank you! Your order was placed and will be delivered before #{time}"
+        twilio_message_body = { from: ENV['TWILIO_FROM_NUMBER'], to: ENV['TWILIO_TO_NUMBER'], body: message }
+        allow(client).to receive_message_chain(:messages, :create).with(twilio_message_body)
+        expect(Twilio::REST::Client).to receive(:new).with(ENV['ACC_SID'], ENV['AUTH_TOKEN']).and_return(client)
+        subject.checkout(subject.menu[item])
+      end
+
     end
 
   end
