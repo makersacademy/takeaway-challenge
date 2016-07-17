@@ -1,9 +1,10 @@
 require 'takeaway'
 
 describe Takeaway do
+  subject(:takeaway) { described_class.new }
 
-  it 'should have a takeaway menu' do
-    expect(subject.display_menu).to be nil
+  it 'displays the menu' do
+    expect(takeaway).to respond_to(:display_menu)
   end
 
 end

@@ -1,7 +1,9 @@
 class Order
 
-  def new_order
-    your_order = []
+  attr_reader :new_order
+
+  def initialize
+    @new_order = []
   end
 
 end
