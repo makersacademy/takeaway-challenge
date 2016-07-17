@@ -6,8 +6,6 @@ describe TextService do
   time = time.strftime('%-H:%M')
   msg = "Thank you! Your order was placed and will be delivered before #{time}"
 
-  it 'sends a message' do
-    subject.send_sms(msg)
-  end
+  it{ is_expected.to respond_to (:send_sms) }
 
 end
