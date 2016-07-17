@@ -6,7 +6,7 @@ class Menu
   end
 
   def print_dishes
-    printed_menu = dishes.map { |item, price|  "#{item.to_s.capitalize} £#{price}"}
+    printed_menu = dishes.map { |item, price|  "%s £%.2f" % [item.to_s.capitalize, price]}
     printed_menu.join(", ")
   end
 end

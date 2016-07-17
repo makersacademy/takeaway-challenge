@@ -9,7 +9,7 @@ describe Menu do
   end
 
   it "Prints a list of items and their prices" do
-    printed_menu = "Wonton £2.0, Chowmein £3.5"
+    printed_menu = "Wonton £2.00, Chowmein £3.50"
     expect(menu.print_dishes).to eq printed_menu
   end
 end
