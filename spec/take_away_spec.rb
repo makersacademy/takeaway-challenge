@@ -3,7 +3,7 @@ require 'take_away'
 describe TakeAway do
 
 subject(:take_away) { described_class.new(menu: menu) }
-let(:menu) { double(:menu, print: printed_menu) }
+let(:menu) { double(:menu, print_this: printed_menu) }
 let(:printed_menu) { "Fries: 5£" }
 
 
