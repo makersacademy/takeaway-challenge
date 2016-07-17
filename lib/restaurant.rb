@@ -8,7 +8,7 @@ class Restaurant
     @basket = Basket.new
   end
 r
-  def prnt(obj)
-    page_format(obj.dishes)
+  def show(obj)
+    item_printer(obj.dishes)
   end
 end

@@ -7,10 +7,6 @@ class Menu
     @dishes = YAML.load(File.read(filepath))
   end
 
-  def pick(selection)
-    @dishes[(selection-1)].dup
-  end
-
 private
 
   def default_filepath
