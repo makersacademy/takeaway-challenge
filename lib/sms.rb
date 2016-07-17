@@ -3,15 +3,17 @@ require 'twilio-ruby'
 class SMS
 
   def initialize
-    @account_sid = 'AC2eceeea86b06eed17190d9840ae50980'
-    @auth_token = 'fdab8fbf039aa182fab7ca673c8d9a09'
+    @account_sid = ENV['TWILIO_ACCOUNT_SID']
+    @auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @to_number = ENV['TWILIO_TO_NUMBER']
+    @from_number = ENV['TWILIO_FROM_NUMBER']
   end
 
   def delivery_message
     @client = ::Twilio::REST::Client.new account_sid, auth_token
     @client.messages.create(
-      from: '+441594372032',
-      to: '+447717004167',
+      from: from_number,
+      to: to_number,
       body: "Your order of has been received and should be with you at #{delivery_time}",
     )
   end
@@ -22,6 +24,6 @@ class SMS
 
 private
 
-  attr_reader :account_sid, :auth_token
+  attr_reader :account_sid, :auth_token, :to_number, :from_number
 
 end

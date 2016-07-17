@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
 
-  let(:menu) { described_class.new(menu_item) }
+  let(:menu) { described_class.new }
   let(:menu_item) do
       { :margherita => 6.5 }
     end

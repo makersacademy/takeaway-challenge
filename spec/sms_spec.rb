@@ -12,11 +12,7 @@ describe SMS do
   end
 
   it 'sends an SMS message' do
-  expect(subject).to respond_to(:delivery_message)
-end
-
-  xit "should send an sms confirming delivery_time" do
-    expect(sms.delivery_message).to have_received(:create)
+    expect(subject).to respond_to(:delivery_message)
   end
 
 end
