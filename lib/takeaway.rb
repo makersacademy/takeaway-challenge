@@ -34,7 +34,7 @@ class Takeaway
 
   def checkout(total)
     fail 'Please enter the correct total to checkout' if total != @basket.total
-    @confirmation.send_SMS
+    @confirmation.send_sms
     puts "Order complete. Confirmation on its way!"
   end
 

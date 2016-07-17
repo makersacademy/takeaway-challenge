@@ -65,7 +65,8 @@ describe Takeaway do
 
     it 'should successfully checkout when total is correct' do
       subject.order("Fried Rice", 1)
-      expect(STDOUT).to receive(:puts).with("Your order has been received!")
+      message = "Order complete. Confirmation on its way!"
+      expect(STDOUT).to receive(:puts).with(message)
       subject.checkout(3)
     end
   end
