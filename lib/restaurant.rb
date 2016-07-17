@@ -4,6 +4,14 @@ class Restaurant
 
   attr_reader :menu
 
+  def initialize
+    welcome
+  end
+
+  def welcome
+    puts "Welcome to the Thai Cottage".center(500)
+  end
+
   def view_menu
     create_menu
     puts "=======Starters========".center(500)

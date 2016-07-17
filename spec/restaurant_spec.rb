@@ -4,6 +4,16 @@ describe Restaurant do
   #let(:restaurant) {double :restaurant}
   restaurant = Restaurant.new
   it { is_expected.to respond_to :view_menu}
+  it { is_expected.to respond_to :welcome}
+
+
+describe '#welcome' do
+  context 'when a customers comes to restaurant application' do
+    it 'welcomes them' do
+      expect{restaurant.welcome}.to output("Welcome to the Thai Cottage\n").to_stdout
+    end
+  end
+end
 
 describe '#menu' do
   context 'when customer asks for a menu' do
