@@ -6,14 +6,7 @@ class Basket
   end
 
   def add_dish(dish, number)
-    @basket.has_key?(dish) ? @basket[dish] += number : @basket[dish] = number
-  end
-
-  def read_order
-    @basket.each do |key, value|
-      puts "#{key} x #{value} : £#{Menu::DISHES[key]*value}"
-    end
-      puts "TOTAL : £#{total}"
+    @basket.key?(dish) ? @basket[dish] += number : @basket[dish] = number
   end
 
   def total

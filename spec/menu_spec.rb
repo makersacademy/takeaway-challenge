@@ -21,7 +21,7 @@ describe Menu do
       expect(STDOUT).to receive(:puts).with("Lemon Chicken: £5")
       expect(STDOUT).to receive(:puts).with("Chilli Beef: £6")
       subject.list
-      end
+    end
   end
 
 end

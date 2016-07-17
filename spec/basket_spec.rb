@@ -21,16 +21,6 @@ describe '.add_dish' do
   end
 end
 
-describe '.read_order' do
-  it 'prints out a list of dishes and prices' do
-    subject.add_dish("Fried Rice", 2)
-    subject.add_dish("Chilli Beef", 1)
-    expect(STDOUT).to receive(:puts).with("Fried Rice x 2 : £6")
-    expect(STDOUT).to receive(:puts).with("Chilli Beef x 1 : £6")
-    expect(STDOUT).to receive(:puts).with("TOTAL : £12")
-    subject.read_order
-  end
-end
 
 describe '.total' do
   it 'calculates the correct total' do
