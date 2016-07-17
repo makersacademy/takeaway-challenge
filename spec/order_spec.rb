@@ -3,23 +3,27 @@ require 'order'
 describe Order do
   it{is_expected.to respond_to(:customer_order)}
   it{is_expected.to respond_to(:get_order)}
-  #subject {Order.new}
+  subject {Order.new}
 
-  #escribe '#get_order' do
+  describe '#get_order' do
 
-  #  before do
-  #    allow(subject).to receive(:gets).and_return("PhadThai")
-  #  end
+   before{@input = 'PhadThai'}
+   let(:dish){StringIO.new @input}
+      #allow($stdin).to receive(:gets).and_return("PhadThai")
+      #allow(STDIN).to receive(:read).and_return("PhadThai", "1", "/n")
+      #allow($stdout).to receive(:write)
+#
+      #require 'stringio'
+      #input = StringIO.new
+      #order = Order.new
+      #order.get_order
+      #input.seek(1)
+      #assert_equal "PhadThai\n", input.read
+    #end
 
-  #  context 'when a customer places an order' do
-  #    it 'asks what the customer would like' do
-  #      expect{subject.get_order}.to output("What would you like to order?\nTo finish, just press enter twice\n").to_stdout
-  #    end
-
-      #it 'captures what the customer ordered' do
-        #subject.get_order
-        #expect(subject.customer_order).to eq ['PhadThai']
-  #    #end
-  #  end
-  #end
+  it 'captures what the customer ordered' do
+    subject.get_order
+    expect(subject.customer_order).to eq ['PhadThai']
+  end
+  end
 end
