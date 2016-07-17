@@ -36,12 +36,15 @@ class Takeaway
     puts "Your total order cost is £#{value}"
   end
 
-  def place_order(cost)
-    fail "Payment incorrect" if cost != @value
+  def place_order(payment)
+    fail "Payment incorrect" unless check_payment(payment)
     @client.messages.create(
   from: '+441530382051',
   to: '+447943961785',
   body: "Your order for £#{value}, has been placed and will arrive before #{Time.new + 1*60*60} " )
   end
 
+  def check_payment(payment)
+    payment == @value
+  end
 end

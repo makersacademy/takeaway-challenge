@@ -74,4 +74,26 @@ describe Takeaway do
       expect{subject.total}.to output("Your total order cost is £#{:value}\n").to_stdout
     end
   end
+
+  describe 'place_order' do
+
+    context 'payment matches order value' do
+
+      it 'confirms order has been placed and gives delivery time' do
+        allow(subject).to receive(:check_payment).and_return(true)
+        allow(subject.client).to receive(:messages)
+        allow(subject.client.messages).to receive(:create).and_return("Your order for £#{:value}, has been placed and will arrive before #{Time.new + 1*60*60} " )
+        expect(subject.place_order(:payment)).to eq("Your order for £#{:value}, has been placed and will arrive before #{Time.new + 1*60*60} " )
+      end
+    end
+
+
+    context 'payment does not match order value' do
+
+      it 'will raise an error if payment is incorrect' do
+        allow(subject).to receive(:check_payment).and_return(false)
+        expect{subject.place_order(:payment)}.to raise_error "Payment incorrect"
+      end
+    end
+  end
 end
