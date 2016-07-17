@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/arukomp/takeaway-challenge.svg?branch=master)](https://travis-ci.org/arukomp/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 
