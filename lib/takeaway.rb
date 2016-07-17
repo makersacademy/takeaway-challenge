@@ -1,38 +1,35 @@
 require_relative 'menu'
+require_relative 'basket'
 
 class Takeaway
-attr_reader :basket
 
-def initialize(menu = Menu.new)
-  @basket = {}
-  @menu = menu
-end
-
-def read_menu
-  @menu.list
-end
-
-def order(dish, number = 1)
-  fail "#{dish} is not on the menu. Sorry!" unless @menu.contain?(dish)
-  fail "Order value must be more than 0" if number < 1
-  @basket.has_key?(dish) ? @basket[dish] += number : @basket[dish] = number
-  puts "#{number} x #{dish} added to your order!"
-end
-
-def check_order
-  @basket.each do |key, value|
-    puts "#{key} x #{value} : £#{Menu::DISHES[key]*value}"
+  def initialize(menu = Menu.new)
+    @basket = Basket.new
+    @menu = menu
   end
-    puts "TOTAL : £#{total}"
-end
 
-def total
-  @basket.inject(0) { |sum, (dish,quantity)| sum + Menu::DISHES[dish]*quantity }
-end
+  def read_menu
+    @menu.list
+  end
 
-def checkout(total_price)
-  fail 'Please enter the correct total to checkout' if total_price != total
-  puts "Your order has been received!"
-end
+  def order(dish, number = 1)
+    fail "#{dish} is not on the menu. Sorry!" unless @menu.contain?(dish)
+    fail "Order value must be more than 0" if number < 1
+    @basket.add_dish(dish, number)
+    puts "#{number} x #{dish} added to your order!"
+  end
+
+  def check_order
+    @basket.read_order
+  end
+
+  def total
+    @basket.total
+  end
+
+  def checkout(total)
+    fail 'Please enter the correct total to checkout' if total != @basket.total
+    puts "Your order has been received!"
+  end
 
 end
