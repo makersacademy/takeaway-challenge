@@ -1,6 +1,6 @@
 class Menu
 
-
+  attr_reader :menu_hash
 
   def initialize
     @menu_hash = {
