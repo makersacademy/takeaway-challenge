@@ -7,6 +7,11 @@ describe Takeaway do
   let(:dish){double :dish}
   let(:confirmation){double :confirmation}
 
+  before do
+    allow($stdout).to receive(:write)
+    allow(confirmation).to receive(:send_sms)
+  end
+
   describe '.initialize' do
     it 'creates a new instance of the Menu class' do
       expect(Menu).to receive(:new)
@@ -69,10 +74,6 @@ describe Takeaway do
     it 'should fail if the order is less than 1' do
       message = 'Please order before checking out..'
       expect{subject.checkout(0)}.to raise_error message
-    end
-
-    before do
-      allow(confirmation).to receive(:send_sms)
     end
 
     it 'should successfully checkout when total is correct' do
