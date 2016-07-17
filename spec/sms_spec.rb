@@ -13,6 +13,7 @@ describe Sms do
 
   describe '#send' do
     it 'sends a confirmation text' do
+      # skip 'untill i figure how to not get a text everytime...'
       expect{subject.send}.to change{subject.sent}.from(false).to(true)
     end
   end
