@@ -58,17 +58,9 @@ describe TakeAway do
     end
   end
 
-  describe "#basket_prices" do
-    it "gives a list of basket prices" do
-      takeaway.basket = {:dish => 2.99}, {:dish2 => 5.99}
-      expect(takeaway.basket_prices).to eq [2.99, 5.99]
-    end
-  end
-
   describe "#basket_total" do
     it "gives the total price of the basket" do
       takeaway.basket = {:dish => 2.99}, {:dish2 => 5.99}
-      takeaway.basket_prices
       expect(takeaway.basket_total).to eq 8.98
     end
   end
@@ -78,6 +70,16 @@ describe TakeAway do
       takeaway.basket = {:dish => 2.99}, {:dish2 => 5.99}
       expect(takeaway.basket_summary).to eq "Total = £8.98, Basket = [{:dish=>2.99}, {:dish2=>5.99}]"
     end
+  end
+
+  describe "#checkout" do
+    it "allows customer to pay a specific amount" do
+      expect(takeaway).to respond_to(:checkout).with(1).argument
+    end
+    # it "raises an error if amount payed is not correct" do
+    #
+    #   expect(takeaway.checkout(2.25))
+    # end
   end
 
 
@@ -109,3 +111,10 @@ end
 # takeaway.basket = [:wonton_soup]
 # takeaway.order(:spring_roll, 5)
 # takeaway.basket = [:wonton_soup, :spring_roll, :spring_roll, :spring_roll, :spring_roll, :spring_roll]
+
+# feature test 3
+# takeaway = TakeAway.new
+# takeaway.see_menu
+# takeaway.order(:spring_roll)
+# takeaway.basket_summary = "Total = £2.99, Basket = [{:spring_roll=>2.99}]"
+# takeaway.checkout(2.50) = "Please pay the correct amount of £2.99"

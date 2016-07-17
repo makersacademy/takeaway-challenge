@@ -29,17 +29,17 @@ class TakeAway
     @basket
   end
 
-  def basket_prices
-    @basket_prices = @basket.flat_map(&:values)
-  end
-
   def basket_total
-    @basket_prices.reduce { |sum, price| sum + price }
+    basket_prices = @basket.flat_map(&:values)
+    @basket_total = basket_prices.reduce { |sum, price| sum + price }
   end
 
   def basket_summary
-    basket_prices
-    "Total = £#{basket_total}, Basket = #{@basket}"
+    basket_total
+    "Total = £#{@basket_total}, Basket = #{@basket}"
+  end
+
+  def checkout(amount)
   end
 
   private
