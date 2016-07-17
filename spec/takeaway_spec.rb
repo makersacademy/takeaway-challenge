@@ -7,7 +7,7 @@ describe Takeaway do
 describe '#print_menu' do
   it 'displays a menu' do
     expect(subject.print_menu).to be_a(Hash)
-    end
+  end
 
 describe "#place_an_order" do
   it { is_expected.to respond_to(:place_an_order).with(2).argument }
