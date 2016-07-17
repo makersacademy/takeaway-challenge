@@ -15,18 +15,15 @@ describe Menu do
   end
 
   describe 'Basket' do
-    let(:item1) { double("item1",
-                         is_a?: Dish,
-                         name: "Fries",
-                         price: 1.49) }
-    let(:item2) { double("item2",
-                         is_a?: Dish,
-                         name: "Cheeseburger",
-                         price: 0.99) }
-    let(:item3) { double("item3",
-                         is_a?: Dish,
-                         name: "Non-existant",
-                         price: 99.99) }
+    let(:item1) do
+      double("item1", is_a?: Dish, name: "Fries", price: 1.49)
+    end
+    let(:item2) do
+      double("item2", is_a?: Dish, name: "Cheeseburger", price: 0.99)
+    end
+    let(:item3) do
+      double("item3", is_a?: Dish, name: "Non-existant", price: 99.99)
+    end
     let(:menu) { [item1, item2] }
 
     it 'exists' do

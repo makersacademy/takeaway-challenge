@@ -14,28 +14,34 @@ class Menu
   end
 
   def add_item(item)
-    raise "This dish does not exist in the menu!" if !show_menu.include?(item)
+    message = "This dish does not exist in the menu!"
+    raise message unless show_menu.include?(item)
     @basket << item
   end
 
   def remove_item(item)
-    raise "This dish does not exist in your basket!" if !basket.include?(item)
+    message = "This dish does not exist in your basket!"
+    raise message unless basket.include?(item)
     @basket.delete_at(@basket.index(item))
   end
 
   private
 
   def read_menu_file(menu_file)
-    list = []
-    if File.exists?(menu_file)
-      File.open(menu_file, 'r') do |file|
-        file.each_line do |line|
-          line = line.chomp.split(',')
-          list << Dish.new(name: line[0], price: line[1].to_f)
-        end
-      end
+    if File.exist?(menu_file)
+      parse_menu_file(menu_file)
     else
-      list << Dish.new(name: "The menu is unavailable at the moment", price: 0)
+      [Dish.new(name: "The menu is unavailable at the moment", price: 0)]
+    end
+  end
+
+  def parse_menu_file(menu_file)
+    list = []
+    File.open(menu_file, 'r') do |file|
+      file.each_line do |line|
+        line = line.chomp.split(',')
+        list << Dish.new(name: line[0], price: line[1].to_f)
+      end
     end
     list
   end
