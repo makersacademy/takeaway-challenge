@@ -1,14 +1,17 @@
 require_relative 'csv_reader'
 require_relative 'order'
+require_relative 'text_service'
 
 class Takeaway
 
   DEFAULT_MENU = "#{Dir.pwd}/lib/dishes.csv"
 
   def initialize(order: Order.new,
+                 sms: TextService.new,
                  csv: CsvReader.new(file: DEFAULT_MENU))
     @csv = csv
     @order = order
+    @sms = sms
     get_menu
   end
 
@@ -38,7 +41,7 @@ class Takeaway
   private
 
   attr_accessor :order_complete
-  attr_reader :csv, :order, :menu
+  attr_reader :csv, :order, :menu, :sms
 
   def round_total(total)
     sprintf('%.2f', total).to_f
@@ -64,13 +67,17 @@ class Takeaway
     raise "Order already processed" if order_complete
     self.order_complete = true
     empty_basket
-    "Thank you! Your order was placed and will be delivered before " +
-    "#{get_delivery_time}"
+    sms.send_sms(get_delivery_message)
   end
 
   def get_delivery_time
     time = Time.now + (1 * 60 * 60)
     time.strftime('%-H:%M')
+  end
+
+  def get_delivery_message
+    "Thank you! Your order was placed and will be delivered before " +
+    "#{get_delivery_time}"
   end
 
 end

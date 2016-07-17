@@ -11,8 +11,9 @@ describe Takeaway do
 
   let(:csv) { double('CsvReader') }
   let(:order) { double('Order') }
+  let(:sms) { double('TextService') }
 
-  subject(:takeaway) { described_class.new(order: order, csv: csv) }
+  subject(:takeaway) { described_class.new(order: order, sms: sms, csv: csv) }
 
   before do
     allow(order).to receive(:select_dish) { default_total }
@@ -20,6 +21,7 @@ describe Takeaway do
     allow(csv).to receive(:menu) { example_menu }
     allow(order).to receive(:total) { default_total }
     allow(order).to receive(:clear_basket)
+    allow(sms).to receive(:send_sms)
   end
 
   it 'Menu csv should exist' do
@@ -54,9 +56,10 @@ describe Takeaway do
   end
 
   describe '#confirm_total' do
-    it 'matches the sum for various dishes in order' do
+    it 'sends message to TextService' do
       takeaway.add_to_order("Chips")
-      expect(takeaway.confirm_total(default_total)).to eq msg
+      expect(sms).to receive(:send_sms).with(msg)
+      takeaway.confirm_total(default_total)
     end
 
     it 'raises error if nothing in basket' do
