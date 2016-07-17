@@ -44,7 +44,8 @@ class TakeAway
 
   def checkout(amount)
     raise "Please pay the correct amount of £#{@basket_total}." if !is_correct?(amount)
-    message = "Thank you for your payment of £#{amount}."
+    message = "Thank you for your payment of £#{amount}." +
+    " Your food will be delivered before #{delivery_time}."
     send_text(message)
   end
 
@@ -60,6 +61,11 @@ class TakeAway
       body: message
       )
     message
+  end
+
+  def delivery_time
+    time = Time.now + (60 * 60)
+    time.strftime('%H:%M')
   end
 
   private

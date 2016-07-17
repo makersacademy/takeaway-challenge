@@ -79,9 +79,11 @@ describe TakeAway do
       it "allows customer to pay a specific amount" do
         expect(takeaway).to respond_to(:checkout).with(1).argument
       end
-      it "confirms payment" do
+      it "confirms payment and delivery time" do
+        time = Time.now + (60 * 60)
+        time = time.strftime('%H:%M')
         takeaway.basket_total = 7
-        confirmation = "Thank you for your payment of £7."
+        confirmation = "Thank you for your payment of £7. Your food will be delivered before #{time}."
         expect(takeaway.checkout(7)).to eq confirmation
       end
     end
