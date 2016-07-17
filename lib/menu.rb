@@ -13,5 +13,5 @@ class Menu
   def item_exists?(item)
     @menu.has_key?(item)
   end
-  
+
 end

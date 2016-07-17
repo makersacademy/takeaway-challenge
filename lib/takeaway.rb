@@ -11,7 +11,7 @@ class Takeaway
   end
 
   def select_dish(item,quantity=1)
-    raise "'#{item}' is not on our menu." unless on_menu?(item)
+    raise no_item_error(item) unless on_menu?(item)
     @basket.add(name: item, quantity: quantity, price:  (@menu.menu[item]*quantity)) # must be better way to do this?
     selection_confirmation_message(item,quantity)
   end
@@ -26,6 +26,10 @@ class Takeaway
 
   def on_menu?(item)  #extract?
     @menu.item_exists?(item)
+  end
+
+  def no_item_error(item)
+    "'#{item}' is not on our menu."
   end
 
 end
