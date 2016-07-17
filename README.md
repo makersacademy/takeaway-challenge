@@ -64,7 +64,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Customer  |    see    |
 | List/Menu |           |
 
-#####  Customer ← see → List
+#####  Customer → see → List
 
 ### #2
 
@@ -73,17 +73,17 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Customer  | select/order |
 |   Dishes  |              |
 
-#####   Customer ← select/order → Dishes
+#####   Customer → select/order → Dishes
 
 ### #3
 
-| Objects   |  Messages |  
-|    ---    |    ---    |
-|           |           |
-|           |           |
-|           |           |
+| Objects   |  Messages   |  
+|    ---    |    ---      |
+| Customer  |  checkout   |
+|   Sum     | is_correct? |
+|  Total    |             |
 
-#####   ← →
+#####  Customer → checkout → Sum → is_correct? ← true || false ← (Total == Sum)?
 
 ### #4
 

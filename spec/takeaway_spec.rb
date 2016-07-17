@@ -66,20 +66,27 @@ describe TakeAway do
   end
 
   describe "#basket_summary" do
-    it "displays the menu list" do
+    it "displays the basket and total price" do
       takeaway.basket = {:dish => 2.99}, {:dish2 => 5.99}
       expect(takeaway.basket_summary).to eq "Total = £8.98, Basket = [{:dish=>2.99}, {:dish2=>5.99}]"
     end
   end
 
-  describe "#checkout" do
-    it "allows customer to pay a specific amount" do
-      expect(takeaway).to respond_to(:checkout).with(1).argument
+  context "correct payment is made" do
+
+    describe "#checkout" do
+      it "allows customer to pay a specific amount" do
+        expect(takeaway).to respond_to(:checkout).with(1).argument
+      end
+      it "confirms payment" do
+        takeaway.basket_total = 7
+        expect(takeaway.checkout(7)).to eq "Thank you for your payment of £7"
+      end
     end
-    # it "raises an error if amount payed is not correct" do
-    #
-    #   expect(takeaway.checkout(2.25))
-    # end
+  end
+
+  context "incorrect payment is made" do
+
   end
 
 

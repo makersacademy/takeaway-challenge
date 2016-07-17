@@ -1,6 +1,6 @@
 class TakeAway
 
-  attr_accessor :menu, :basket
+  attr_accessor :menu, :basket, :basket_total
 
   def initialize
     @basket = []
@@ -40,6 +40,8 @@ class TakeAway
   end
 
   def checkout(amount)
+    "Thank you for your payment of £#{amount}"
+    #raise "Please pay the correct amount of £#{@basket_total}" if amount != @basket_total
   end
 
   private
