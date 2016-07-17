@@ -6,7 +6,10 @@ class Restaurant
 
   def view_menu
     create_menu
-    @menu
+    puts "=======Starters========".center(500)
+    @menu.print_starters
+    puts "=======Main Courses=======".center(500)
+    @menu.print_main_courses
   end
 
 private
