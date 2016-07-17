@@ -22,7 +22,7 @@ class Takeaway
     @sms = Sms.new(@basket.total_price)
     @sms.send
     @basket.clear
-    "Your order has been placed you should receive a confirmation text within a few moments."
+    order_placed_message
   end
 
   private
@@ -47,6 +47,10 @@ class Takeaway
 
   def no_items_in_basket?
     @basket.items.length < 1
+  end
+
+  def order_placed_message
+    "Your order has been placed you should receive a confirmation text within a few moments."
   end
 
 end
