@@ -2,7 +2,7 @@ require 'takeaway'
 describe Takeaway do
   let(:takeaway) { described_class.new }
   let(:list) { Takeaway::LIST }
-  let(:order_quantities) { {"mushy peas" => 1, "kebab" => 1, "fish" => 1, "chips" => 2} }
+  let(:order_quantities) { {mushypeas: 1, kebab: 1, fish: 1, chips: 2} }
 
   describe '#show_menu' do
     it 'provides a list of dishes with prices' do

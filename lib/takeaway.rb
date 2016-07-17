@@ -3,7 +3,7 @@ require './twilio-keys.rb'
 
 class Takeaway
   attr_reader :order_quantities, :my_total
-  LIST = {"mushy peas" => 2, "kebab" => 4, "fish" => 4, "chips" => 3}
+  LIST = {mushypeas: 2, kebab: 4, fish: 4, chips: 3}
 
   def show_menu
     LIST.each {|food, price| puts "#{food}: #{price} "}
