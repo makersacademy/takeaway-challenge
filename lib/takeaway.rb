@@ -1,18 +1,18 @@
 require_relative 'menu'
 
 class Takeaway
+attr_reader  :total_price
+  def initialize(menu = Menu.new)
+    @menu = menu
+    @basket = {}
+  end
 
-def initialize(menu = Menu.new)
-  @menu = menu
-  @basket = {}
-end
-
-def place_an_order(dish, qnty = 1)
+  def place_an_order(dish, qnty = 1)
     fail 'Item is not listed in the menu' if !@menu.menu.has_key? dish
-   @basket[dish].nil? ?   @basket[dish] = qnty : @basket[dish] += qnty
+   @basket[dish].nil? ? @basket[dish] = qnty : @basket[dish] += qnty
 
     "<#{dish} x #{qnty} x £#{@menu.menu[dish]}0> added to your basket"
-end
+  end
 
   def basket
     message = "Items in your basket:"
@@ -21,7 +21,12 @@ end
 
   def total
     price = @basket.map{|k,v| @basket[k] * @menu.menu[k]}
-    "Total is £#{price.inject(&:+).round(2)}0"
+    @total_price = price.inject(&:+).round(2)
+    "Total is £#{@total_price}0"
+  end
+
+  def correct_price? price
+    price == @total_price
   end
 
 end
