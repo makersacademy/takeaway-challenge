@@ -4,6 +4,9 @@ class Menu
   def initialize(dishes)
     @dishes = dishes
   end
+  def has_dish?(dish)
+    dishes.include?(dish)
+  end
 
   def print_dishes
     printed_menu = dishes.map { |item, price|  "%s £%.2f" % [item.to_s.capitalize, price]}
