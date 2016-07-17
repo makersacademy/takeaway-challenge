@@ -4,8 +4,8 @@ class Reminder
 
   def send_msg(text)
 
-    @account_sid = 'ACcfcd4b583188c4f2de642b2c3b956321'
-    @auth_token  = '030d60038fb2840cf20971db3a693e14'
+    @account_sid = 'ACXXXXXXXXXXXX'
+    @auth_token  = '0XXXXXXXXXXXXX'
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 
     @client.messages.create(
