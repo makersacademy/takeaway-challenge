@@ -2,13 +2,25 @@ require 'csv'
 require_relative 'dish'
 
 class Menu
+  attr_reader :basket
 
   def initialize(menu_file = nil)
     @menu = read_menu_file(menu_file)
+    @basket = []
   end
 
   def show_menu
     @menu
+  end
+
+  def add_item(item)
+    raise "This dish does not exist in the menu!" if !show_menu.include?(item)
+    @basket << item
+  end
+
+  def remove_item(item)
+    raise "This dish does not exist in your basket!" if !basket.include?(item)
+    @basket.delete_at(@basket.index(item))
   end
 
   private
@@ -23,7 +35,7 @@ class Menu
         end
       end
     else
-      list << {name: "The menu is unavailable at the moment", price: 0}
+      list << Dish.new(name: "The menu is unavailable at the moment", price: 0)
     end
     list
   end
