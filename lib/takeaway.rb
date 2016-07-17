@@ -1,23 +1,19 @@
+require_relative 'menu'
+
 class Takeaway
 
-def initialize
-  @menu = {
-    "King Prawn Noodles" => 5.80,
-    "Chicken Fried Rice" => 3.90,
-    "Beef Fried Rice" => 3.90,
-    "Duck Fried Rice" => 5.60
-  }
+def initialize(menu = Menu.new)
+  @menu = menu
   @basket = []
 end
 
-  def print_menu
-    @menu.each{|k,v| puts "#{k} - £#{v}0"}
-  end
 
-  def place_an_order(dish, qnty)
-    @basket << {dish => qnty}
 
-  end
+def place_an_order(dish, qnty = 1)
+    fail 'Item is not listed in the menu' if !@menu.menu.has_key? dish
+    @basket[dish] += qnty
+    "<#{dish} x #{qnty}> added to your basket"
+end
 
   def basket
     message = "Items in your basket:"
