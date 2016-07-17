@@ -21,14 +21,14 @@ describe '#basket' do
 
   it 'stores an order' do
     subject.place_an_order("King Prawn Noodles", 5)
-    expect(subject.basket).to eq "{\"King Prawn Noodles\"=>5}"
-    subject.basket
+    expect(subject.display_basket).to eq "{\"King Prawn Noodles\"=>5}"
+    subject.display_basket
   end
   it 'can stores a number of orders' do
    subject.place_an_order("Beef Fried Rice")
    subject.place_an_order("Beef Fried Rice", 2)
-   expect(subject.basket).to eq "{\"Beef Fried Rice\"=>3}"
-   subject.basket
+   expect(subject.display_basket).to eq "{\"Beef Fried Rice\"=>3}"
+   subject.display_basket
   end
 
   it 'displays total' do
