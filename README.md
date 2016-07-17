@@ -97,50 +97,41 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 #####   Customer ← receive ← Text
 
 
-## Feature test examples
-
-feature test 1
-```
-takeaway = TakeAway.new
-takeaway.see_menu
-#returns hash - list of food with prices
-```
-feature test 2
-```
-takeaway = TakeAway.new
-takeaway.see_menu
-takeaway.order(:wonton_soup)
-takeaway.basket = [:wonton_soup]
-takeaway.order(:spring_roll, 5)
-takeaway.basket = [:wonton_soup, :spring_roll, :spring_roll, :spring_roll, :spring_roll, :spring_roll]
-```
-feature test 3
-```
-takeaway = TakeAway.new
-takeaway.see_menu
-takeaway.order(:spring_roll)
-takeaway.basket_summary = "Total = £2.99, Basket = [{:spring_roll=>2.99}]"
-takeaway.checkout(2.50) = "Please pay the correct amount of £2.99"
-takeaway.checkout(2.99) = "Thank you for your payment of £2.99"
-```
-feature test 4
-```
-takeaway = TakeAway.new
-takeaway.see_menu
-takeaway.order(:spring_roll)
-takeaway.basket_summary = "Total = £2.99, Basket = [{:spring_roll=>2.99}]"
-takeaway.checkout(2.99) = "Thank you for your payment of £2.99"
-                          "Your food will be delivered before 22:18"
-```
-
 ## Learning objectives ##
 
 
 ## Demonstration in IRB ##
 
 ```
+2.3.1 :001 > dragon = TakeAway.new
+ => #<TakeAway:0x000000026fc1b8 @basket=[], @menu={:wonton_soup=>2.99, :spring_roll=>2.99, :kung_po=>5.99, :fried_squid=>6.99, :chow_mein=>9.99, :roasted_duck=>9.99}>
+
+2.3.1 :002 > dragon.see_menu
+ => {:wonton_soup=>2.99, :spring_roll=>2.99, :kung_po=>5.99, :fried_squid=>6.99, :chow_mein=>9.99, :roasted_duck=>9.99}
+
+2.3.1 :003 > dragon.order(:wonton_soup)
+ => "1x wonton_soup(s) added to your basket."
+
+2.3.1 :004 > dragon.order(:spring_roll, 3)
+ => "3x spring_roll(s) added to your basket."
+
+2.3.1 :005 > dragon.see_basket
+ => [{:wonton_soup=>2.99}, {:spring_roll=>2.99}, {:spring_roll=>2.99}, {:spring_roll=>2.99}]
+
+2.3.1 :006 > dragon.basket_summary
+ => "Total = £11.96, Basket = [{:wonton_soup=>2.99}, {:spring_roll=>2.99}, {:spring_roll=>2.99}, {:spring_roll=>2.99}]"
+
+2.3.1 :007 > dragon.checkout(11.45)
+RuntimeError: Please pay the correct amount of £11.96.
+	from /home/richard/Documents/Projects/takeaway-challenge/lib/takeaway.rb:46:in `checkout'
+	from (irb):7
+	from /home/richard/.rvm/rubies/ruby-2.3.1/bin/irb:11:in `<main>'
+
+2.3.1 :008 > dragon.checkout(11.96)
+ => "Thank you for your payment of £11.96. Your food will be delivered before 22:52."
 
 ```
+
 ## What I learned: ##
 
 
