@@ -11,6 +11,8 @@ class Checkout
     send_message(get_number)
   end
 
+private
+
   def thank_you_message
     "Thank you for your order!"
   end
