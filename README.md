@@ -19,13 +19,13 @@ Notes
 * Configure your Twilio details before running anything!
 * To configure, you must:
   * Create ```app_env_vars.rb``` in the file-path: ```./config/initializers/```
-  * edit ```app_env_vars.rb``` to include:
+  * Edit ```app_env_vars.rb``` to include:
 
-```
-ENV['ACCOUNT_SID'] = 'YOUR_TWILIO_SID'
-ENV['AUTH_TOKEN'] = 'YOUR_TWILIO_TOKEN'
-ENV['TWILIO_NUM'] = 'YOUR_TWILIO_PHONE_NUMBER'
-```
+  ```
+  ENV['ACCOUNT_SID'] = 'YOUR_TWILIO_SID'
+  ENV['AUTH_TOKEN'] = 'YOUR_TWILIO_TOKEN'
+  ENV['TWILIO_NUM'] = 'YOUR_TWILIO_PHONE_NUMBER'
+  ```
 
 Instructions
 -------
