@@ -8,12 +8,6 @@ describe Takeaway do
   it { is_expected.to(respond_to(:order)) }
   it { is_expected.to(respond_to(:order)) }
 
-  #describe '#print_menu' do
-  #  it 'displays a list of menu items' do
-  #    expect(takeaway.menu).to(receive(print_menu))
-  #    takeaway.show_menu
-  #  end
-  #end
 
   describe '#order' do
     it 'checks that the item ordered is on the menu' do
