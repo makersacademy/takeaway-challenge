@@ -6,12 +6,12 @@ class TakeAway
     @basket = []
 
     @menu = {
-      :wonton_soup => 2,
-      :spring_roll => 2,
-      :kung_po => 5,
-      :fried_squid => 6,
-      :chow_mein => 9,
-      :roasted_duck => 9
+      :wonton_soup => 2.99,
+      :spring_roll => 2.99,
+      :kung_po => 5.99,
+      :fried_squid => 6.99,
+      :chow_mein => 9.99,
+      :roasted_duck => 9.99
     }
   end
 
@@ -35,6 +35,11 @@ class TakeAway
 
   def basket_total
     @basket_prices.reduce { |sum, price| sum + price }
+  end
+
+  def basket_summary
+    basket_prices
+    "Total = £#{basket_total}, Basket = #{@basket}"
   end
 
   private

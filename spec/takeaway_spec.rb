@@ -25,19 +25,19 @@ describe TakeAway do
 
   describe "#order" do
     before (:each) do
-      takeaway.menu = {:dish => 2}
+      takeaway.menu = {:dish => 2.99}
     end
     it "adds one ordered dish to basket as default" do
       takeaway.order(:dish)
-      expect(takeaway.basket).to eq [{:dish => 2}]
+      expect(takeaway.basket).to eq [{:dish => 2.99}]
     end
     it "adds multiple ordered dishes to basket" do
       takeaway.order(:dish, 3)
-      expect(takeaway.basket).to eq [{:dish => 2}, {:dish => 2}, {:dish => 2}]
+      expect(takeaway.basket).to eq [{:dish => 2.99}, {:dish => 2.99}, {:dish => 2.99}]
     end
     it "assigns prices to ordered dishes" do
       takeaway.order(:dish)
-      expect(takeaway.basket[0]).to eq :dish => 2
+      expect(takeaway.basket[0]).to eq :dish => 2.99
     end
     it "confirms the order" do
       expect(takeaway.order(:dish, 3)).to eq "3x dish(s) added to your basket."
@@ -46,7 +46,7 @@ describe TakeAway do
 
   describe "#see_basket" do
     before (:each) do
-      takeaway.menu = {:dish => 2}
+      takeaway.menu = {:dish => 2.99}
       takeaway.order(:dish)
     end
     it "allows customer to see the basket" do
@@ -60,16 +60,23 @@ describe TakeAway do
 
   describe "#basket_prices" do
     it "gives a list of basket prices" do
-      takeaway.basket = {:dish => 2}, {:dish2 => 5}
-      expect(takeaway.basket_prices).to eq [2, 5]
+      takeaway.basket = {:dish => 2.99}, {:dish2 => 5.99}
+      expect(takeaway.basket_prices).to eq [2.99, 5.99]
     end
   end
 
-  describe "basket_total" do
+  describe "#basket_total" do
     it "gives the total price of the basket" do
-      takeaway.basket = {:dish => 2}, {:dish2 => 5}
+      takeaway.basket = {:dish => 2.99}, {:dish2 => 5.99}
       takeaway.basket_prices
-      expect(takeaway.basket_total).to eq 7
+      expect(takeaway.basket_total).to eq 8.98
+    end
+  end
+
+  describe "#basket_summary" do
+    it "displays the menu list" do
+      takeaway.basket = {:dish => 2.99}, {:dish2 => 5.99}
+      expect(takeaway.basket_summary).to eq "Total = £8.98, Basket = [{:dish=>2.99}, {:dish2=>5.99}]"
     end
   end
 
