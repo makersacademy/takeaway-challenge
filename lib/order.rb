@@ -21,5 +21,3 @@ class Order
   end
 
 end
-
-#For some reason, when cost method is give a variable which represents an array, it doesn't like it. And yet, when give an array directly, it's fine
