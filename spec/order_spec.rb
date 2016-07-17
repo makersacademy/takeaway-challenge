@@ -10,4 +10,9 @@ describe Order do
     expect(order.basket).to have_value(1)
   end
 
+  it 'raises and error if dish not on the menu' do
+    order.add_dish("Chicken", 1)
+    expect{order.add_dish("Fish", 1)}.to raise_error "That dish is not on the menu"
+  end
+
 end
