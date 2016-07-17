@@ -1,4 +1,5 @@
 require_relative 'restaurant'
+require_relative 'sms'
 
 class Order
   attr_reader :customer
@@ -8,15 +9,6 @@ class Order
     @restaurant = restaurant
     @customer = customer
     @order = []
-  end
-
-  def show_order
-    @order.each do |item|
-      item.each do |name, price|
-        puts "#{name} - £#{price}"
-      end
-    end
-    puts "Total - #{calculate_bill}"
   end
 
   def show_menu
@@ -36,6 +28,17 @@ class Order
   end
 
   private
+  # smells
+  def show_order
+    @order.each do |item|
+      item.each do |name, price|
+        puts "#{name} - £#{price}"
+      end
+    end
+    puts "Total - #{calculate_bill}"
+  end
+
+  # stinks
   def calculate_bill
     bill = 0
     @order.each do |item|
@@ -53,5 +56,11 @@ class Order
       reply = gets.chomp
       reply.downcase!
     end
+    send_text if reply == 'y'
+  end
+
+  def send_text
+    message = SMS.new(@customer.phone)
+    message.send_message
   end
 end

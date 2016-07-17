@@ -7,7 +7,6 @@ class Customer
     @name = name
     @address = address
     @phone = phone
-    @order = nil
   end
 
   def new_order(restaurant)
