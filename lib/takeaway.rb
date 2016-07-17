@@ -28,7 +28,8 @@ class Takeaway
   def text
     client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
     time = Time.new
-    hour = time.hour
+    hour = time.hour+1
+    hour = 0 if hour == 24
     minute = time.min
 
     client.account.messages.create(
