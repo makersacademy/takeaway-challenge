@@ -50,7 +50,6 @@ class Takeaway
   end
 
   def confirm_order
-    fail "Missing Twilio environment variables!" if ENV['ACC_SID'].nil?
     @client = Twilio::REST::Client.new ENV['ACC_SID'], ENV['AUTH_TOKEN']
     time = (Time.now + (60 * 60)).strftime("%H:%M")
     @client.messages.create(
