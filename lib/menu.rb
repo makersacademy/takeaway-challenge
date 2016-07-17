@@ -1,6 +1,5 @@
 class Menu
 
-
   MENU_ITEMS =
      {
         Steak: 12.00,
@@ -13,6 +12,4 @@ class Menu
   def view_menu
     MENU_ITEMS
   end
-
-
 end

@@ -4,7 +4,7 @@ describe Takeaway do
 
   subject(:takeaway) { described_class.new }
 
-  let(:menu_class) { double :menu_class }
+  let(:menu) { double :menu }
 
   describe '#initialize' do
 
@@ -35,5 +35,12 @@ describe Takeaway do
     end
   end
 
-  
+  describe '#order_total' do
+
+    it 'shows the total for the order' do
+      takeaway.order_selection( :Sandwich, 2)
+      takeaway.order_selection( :Lemonade, 2)
+      expect(takeaway.order_total).to eq '$12.50'
+    end
+  end
 end
