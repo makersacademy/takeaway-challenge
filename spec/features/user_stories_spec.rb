@@ -1,9 +1,10 @@
 require 'restaurant'
+require 'menu'
 
 describe 'User Stories' do
 
   subject(:restaurant) { Restaurant.new(menu,message) }
-  let(:menu) { double(:menu, print_menu: "rice: £1.00", find_cost: 3.50) }
+  subject (:menu) { Menu.new }
   let(:message) {double(:message, send_confirmation: "Thank you! Your order was placed and will be delivered before 18:52")}
 
   # As a customer
@@ -13,7 +14,7 @@ describe 'User Stories' do
   context 'So a customer can decide to place an order' do
 
     it 'has a menu with dishes and price' do
-      expect(restaurant.show_menu).to eq "rice: £1.00"
+      expect(restaurant.show_menu).to eq "Chicken: £3.50, Noodles: £3.50, Salad: £4.00, Cake: £2.50"
     end
 
   end
@@ -23,14 +24,14 @@ describe 'User Stories' do
   context 'So a customer can add dishes to their basket' do
 
     it 'allows single dishes to be selected' do
-      restaurant.order_dish(dish: "chicken",quantity: 2)
-      expect(restaurant.order).to eq({"chicken" => 2})
+      restaurant.order_dish(dish: "Chicken",quantity: 2)
+      expect(restaurant.order).to eq({"Chicken" => 2})
     end
 
     it 'allows multiple dishes to be selected' do
-      restaurant.order_dish(dish: "chicken",quantity: 2)
+      restaurant.order_dish(dish: "Chicken",quantity: 2)
       restaurant.order_dish(dish: "Noodles",quantity: 4)
-      expect(restaurant.order).to eq({"chicken" => 2, "Noodles" => 4})
+      expect(restaurant.order).to eq({"Chicken" => 2, "Noodles" => 4})
     end
 
   end
@@ -42,11 +43,11 @@ describe 'User Stories' do
     # matches the sum of the various dishes in my order
     before do
       restaurant.order_dish(dish: "Noodles",quantity: 4)
-      restaurant.order_dish(dish: "chicken",quantity: 2)
+      restaurant.order_dish(dish: "Chicken",quantity: 2)
     end
 
     it "they can check what's in their basket" do
-      expect(restaurant.view_basket).to eq "Noodles x 4 = £14.00 chicken x 2 = £7.00"
+      expect(restaurant.view_basket).to eq "Noodles x 4 = £14.00 Chicken x 2 = £7.00"
     end
 
     it "they can see their total bill" do
