@@ -2,6 +2,7 @@ require_relative 'menu'
 require_relative 'basket'
 require 'twilio-ruby'
 
+
 class Takeaway
 
   attr_reader :menu, :basket, :client, :value
@@ -16,16 +17,22 @@ class Takeaway
   end
 
   def show_menu
-    @menu.list
+    puts @menu.list
+
   end
 
-  def add_item(item, qty=1)
+  def add_to_basket(item, qty=1)
+    fail "Item not on menu" unless check_item(item)
      @basket.add_item(item, @menu.list[item], qty)
      puts "#{qty} #{item} added to your order"
   end
 
+  def check_item(item)
+    @menu.list.has_key? item
+  end
+
   def total
-    @value = @basket.total
+    @value = @basket.total.round(2)
     puts "Your total order cost is £#{value}"
   end
 
