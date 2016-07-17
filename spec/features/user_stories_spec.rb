@@ -1,4 +1,4 @@
-
+require 'takeaway'
 
 
 
@@ -6,12 +6,20 @@ describe 'user stories' do
 
   it 'as a customer, I can see a list of dishes with prices' do
       takeaway = Takeaway.new
-
       expect(takeaway.read_menu).to include({ "chips" => 1.00 })
   end
 
+  it 'as a customer, I can select from available dishes' do
+    takeaway = Takeaway.new
+    expect{takeaway.add("chips", 2)}.not_to raise_error
+  end
 
-
+  it 'as a customer, I can check the total' do
+    takeaway = Takeaway.new
+    takeaway.add("cheeseburger", 3)
+    correct_total_message = "£15.00 is the correct total"
+    expect(takeaway.check_total(15)).to eq(correct_total_message)
+  end
 
 end
 
