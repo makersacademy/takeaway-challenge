@@ -1,6 +1,8 @@
 require_relative 'dish'
 
 class Menu
+  attr_reader :menu_items
+
   def initialize
     @menu_items = {}
   end
@@ -9,7 +11,7 @@ class Menu
     @menu_items[dish.name] = dish.price
   end
 
-  def menu_items
+  def print_menu
     @menu_items.each do |item, price|
       puts "#{item} - £#{price}"
     end

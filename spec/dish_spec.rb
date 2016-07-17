@@ -1,13 +1,13 @@
 require 'dish'
 
 describe Dish do
-  subject(:dish) { described_class.new("fish", 14) }
+  subject(:fish) { described_class.new(:Salmon, 14.99) }
 
   it 'knows its name' do
-    expect(dish.name).to eq("fish")
+    expect(fish.name).to eq(:Salmon)
   end
 
   it 'knows its price' do
-    expect(dish.price).to eq(14)
+    expect(fish.price).to eq(14.99)
   end
 end

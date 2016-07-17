@@ -1,9 +1,5 @@
-require './lib/take_away'
 require './lib/customer'
 
-puts "*****************************************"
-puts "Creating restaurant"
-p grub = TakeAway.new
 puts "*****************************************"
 puts "Creating dishes"
 p slug_soup = Dish.new("Slug Soup", 4.99)
@@ -23,9 +19,33 @@ menu.add_dish(moth_saute)
 menu.add_dish(braised_beetle)
 menu.add_dish(spider_pie)
 menu.add_dish(maggot_burger)
-menu.menu_items
+p menu
 puts "*****************************************"
 puts "Creating a customer"
 jason = Customer.new("Jason", "50 Commercial St, London E1 6LT", "07522253914")
 p jason
 puts "*****************************************"
+puts "Creating restaurant"
+p grub = Restaurant.new(menu)
+puts "*****************************************"
+puts "Creating a new takeaway order"
+p jason.new_order(grub)
+puts "*****************************************"
+puts "View restaurant menu"
+jason.view_menu
+puts "*****************************************"
+puts "Add items to order"
+puts "jason.order_item(Slug Soup, 1)"
+puts "jason.order_item(Braised Stag Beetle, 2)"
+puts "jason.order_item(Minced Taratula Pie, 3)"
+puts "jason.order_item(Maggot Burger, 4)"
+jason.order_item("Slug Soup", 1)
+jason.order_item("Braised Stag Beetle", 2)
+jason.order_item("Minced Taratula Pie", 3)
+jason.order_item("Maggot Burger", 4)
+puts "*****************************************"
+puts "View ordered items"
+jason.view_order
+puts "*****************************************"
+puts "Complete order"
+jason.complete_order

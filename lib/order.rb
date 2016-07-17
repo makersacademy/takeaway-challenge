@@ -1,36 +1,57 @@
-require_relative 'menu'
+require_relative 'restaurant'
 
 class Order
-  attr_reader :order
   attr_reader :customer
+  attr_reader :order
 
-  def initialize(customer)
+  def initialize(customer, restaurant)
+    @restaurant = restaurant
     @customer = customer
     @order = []
-    @menu = Menu.new
-    @bill = 0
+  end
+
+  def show_order
+    @order.each do |item|
+      item.each do |name, price|
+        puts "#{name} - £#{price}"
+      end
+    end
+    puts "Total - #{calculate_bill}"
   end
 
   def show_menu
-    @menu.menu_items
+    @restaurant.show_menu
   end
 
   def add_to_order(item, quantity)
     quantity.times do
-      @order << item
+      @order << @restaurant.order_item(item)
     end
   end
 
-  def bill
-    calculate_bill
+  def complete_order
+    puts "You ordered:"
+    show_order
+    confirmation
   end
 
   private
   def calculate_bill
+    bill = 0
     @order.each do |item|
       item.each do |name, price|
-        @bill += price
+        bill += price
       end
+    end
+    bill.round(2)
+  end
+
+  def confirmation
+    reply = nil
+    until reply == 'y' || reply == 'n'
+      puts "Confirm? (Y/N)"
+      reply = gets.chomp
+      reply.downcase!
     end
   end
 end
