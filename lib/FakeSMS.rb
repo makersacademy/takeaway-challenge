@@ -1,4 +1,4 @@
-  class SMSClient
+  class SmsClient
 
     def initialize
       @client = Twilio::REST::Client.new(
@@ -10,5 +10,5 @@
     def send_message(from:, to:, body:)
       @client.messages.create(from: from, to: to, body: body)
     end
-    
+
   end
