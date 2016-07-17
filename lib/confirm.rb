@@ -24,8 +24,7 @@ class Confirm
   end
 
   def delivery_time(current_time)
-    plus_hour = current_time + 3600
-    plus_hour.strftime('%H') + ":" + plus_hour.strftime('%M')
+    (current_time.hour + 1).to_s + ":" + current_time.min.to_s
   end
 
 end

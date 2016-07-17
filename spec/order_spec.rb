@@ -2,8 +2,8 @@ require 'order'
 
 describe Order do
 
-  let(:good_order) { [{"Satay" => 1, "Cendol" => 2 }, 21.97] }
-  let(:bad_order) { [{"Satay" => 1, "Cendol" => 2 }, 22.00] }
+  let(:good_order) { [{:satay => 1, :cendol => 2 }, 21.97] }
+  let(:bad_order) { [{:satay => 1, :cendol => 2 }, 22.00] }
 
   describe "#select" do
     it 'raises an error if we order incorrectly' do
