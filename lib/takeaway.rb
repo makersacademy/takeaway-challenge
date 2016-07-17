@@ -14,7 +14,7 @@ class Takeaway
     @menu.print_menu
   end
 
-  def order(dish, quantity)
+  def add_to_basket(dish, quantity)
     fail "Sorry, this is not on the menu" unless on_menu?(dish)
     @basket.add(dish, quantity)
     "#{quantity}x #{dish}(s) added to your basket."
@@ -30,6 +30,7 @@ class Takeaway
 
   def confirm_order
     @sms.deliver
+    "Your order has been confirmed."
   end
 
   private

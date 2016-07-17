@@ -20,8 +20,8 @@ describe Takeaway do
     p takeaway = Takeaway.new
     p "takeaway.read_menu"
     p takeaway.read_menu
-    p "takeaway.order('uni', 2)"
-    p takeaway.order("uni", 2)
+    p "takeaway.add_to_basket('uni', 2)"
+    p takeaway.add_to_basket("uni", 2)
     p "takeaway.basket"
     p takeaway.basket
   end
@@ -33,12 +33,22 @@ describe Takeaway do
     p takeaway = Takeaway.new
     p "takeaway.read_menu"
     p takeaway.read_menu
-    p "takeaway.order('sashimi', 4)"
-    p takeaway.order("sashimi", 4)
+    p "takeaway.add_to_basket('sashimi', 4)"
+    p takeaway.add_to_basket("sashimi", 4)
     p "takeaway.basket"
     p takeaway.basket
   end
   # # As a customer
   # # So that I am reassured that my order will be delivered on time
   # # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  it 'so I can be assured that my order will be delivered on time, I would like
+  to receive a text confirming the delivery time' do
+  p "takeaway = Takeaway.new"
+  p takeaway = Takeaway.new
+  p "takeaway.add_to_basket('sashimi', 4)"
+  p takeaway.add_to_basket("sashimi", 4)
+  p "takeaway.confirm_order"
+  p takeaway.confirm_order
+  end
+
 end

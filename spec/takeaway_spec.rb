@@ -13,13 +13,13 @@ describe Takeaway do
     end
   end
 
-  describe '#order' do
+  describe '#add_to_basket' do
     it 'should raise an error if the dish is not on menu' do
-      expect{takeaway.order("burger", 4)}.to raise_error "Sorry, this is not on the menu"
+      expect{takeaway.add_to_basket("burger", 4)}.to raise_error "Sorry, this is not on the menu"
     end
     it 'should confirm what has been added to basket' do
       expect(basket).to receive(:add)
-      expect(takeaway.order("sashimi", 2)).to eq("2x sashimi(s) added to your basket.")
+      expect(takeaway.add_to_basket("sashimi", 2)).to eq("2x sashimi(s) added to your basket.")
     end
   end
 
@@ -27,7 +27,7 @@ describe Takeaway do
     it 'should send an SMS to confirm the order' do
       expect(basket).to receive(:add)
       # expect(sms).to receive(:deliver)
-      takeaway.order("sashimi", 3)
+      takeaway.add_to_basket("sashimi", 3)
       takeaway.confirm_order
     end
   end
