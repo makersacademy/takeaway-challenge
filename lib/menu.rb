@@ -1,10 +1,8 @@
-# $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'csv'
 
 class Menu
 
   def initialize(menu_file = 'lib/menus/kingkebab.csv')
-    # @menu_file = menu_file
     @menu = {}
     load_menu(menu_file)
   end
