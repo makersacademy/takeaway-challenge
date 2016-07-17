@@ -10,7 +10,7 @@ describe Takeaway do
   end
 
   it 'allows customers to place an order' do
-    subject.add_item("pelmeni")
+    subject.add_item('pelmeni', 2)
     expect(subject.order).to be_a(Hash)
     expect(subject.order).not_to be_empty
   end
@@ -20,9 +20,14 @@ describe Takeaway do
     expect(Menu::TODAYS_MENU.has_key?(:vodka)).to eq true
   end
 
-  it 'adds item prices to subtotal' do
-    subject.check_order
-    expect(subject.check_order).to eq
+  it 'raises an error when item is not on the menu' do
+    expect{subject.add_item('foo', 2)}.to raise_error "Sorry, we do not have this on our menu"
+  end
+
+  it 'adds item prices to total' do
+    subject.add_item('pelmeni', 1)
+    subject.add_item('vodka', 2)
+    expect(subject.order_total).to eq 10
   end
 
 end

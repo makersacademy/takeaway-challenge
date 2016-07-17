@@ -11,28 +11,20 @@ class Takeaway
     Menu::TODAYS_MENU
   end
 
-  def add_item(item)
+  def add_item(item, quantity)
     if Menu::TODAYS_MENU.has_key?(item.to_sym)
-      @order.store(:item, item)
-      how_many
-    else check_spelling
+      @order[item.to_sym] = quantity
+      "We have added #{quantity} #{item}s to your order"
+    else not_on_menu
     end
   end
 
-  def check_spelling
-    puts "Please make sure that we have it on our menu. Here it is:"
-    Menu::TODAYS_MENU
+  def not_on_menu
+    fail "Sorry, we do not have this on our menu"
   end
 
-  def how_many
-    puts "Great choice! How many of these do you want?"
-    item_quantity = gets.chomp
-    @order.store(:quantity, item_quantity.to_i)
-    puts "We have added #{@order[:quantity]} #{@order[:item]}s to your order"
-  end
-
-  def check_order
-
+  def order_total
+    @order
   end
 
 end
