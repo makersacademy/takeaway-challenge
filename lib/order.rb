@@ -16,12 +16,18 @@ class Order
   private
 
   def correct?(order)
-    sum = order[-1]
-    order_hash = order[0]
-    total = order_hash.keys.inject(0) do |cost, key|
-      cost + order_hash[key] * @dish_list[key]
+    total = order_hash(order).keys.inject(0) do |cost, key|
+      cost + order_hash(order)[key] * @dish_list[key]
     end
-    sum == total ? true : false
+    sum(order) == total ? true : false
+  end
+
+  def sum(order)
+    order[-1]
+  end
+
+  def order_hash(order)
+    order[0]
   end
 
 end
