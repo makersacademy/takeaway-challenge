@@ -31,4 +31,18 @@ describe Order do
     end
 
   end
+
+  describe '#prints the order receipt' do
+
+    it { is_expected.to respond_to(:print_basket) }
+
+  end
+
+  describe '#sends a txt confirmation' do
+
+    it { is_expected.to respond_to(:confirm_order) }
+
+  end
+
+
 end
