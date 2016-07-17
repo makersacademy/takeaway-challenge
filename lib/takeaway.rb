@@ -37,7 +37,7 @@ class Takeaway
   end
 
   def checkout(payment)
-    fail 'Please enter the correct total to checkout' if payment != @basket.total
+    fail 'Please enter the correct payment total' if payment != @basket.total
     fail 'Please order before checking out..' if @basket.total == 0
     confirm_checkout
   end

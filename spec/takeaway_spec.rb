@@ -60,7 +60,7 @@ describe Takeaway do
   describe '.checkout' do
     it 'should fail if payment is not equal to basket total' do
       subject.order("Fried Rice", 1)
-      message = 'Please enter the correct total to checkout'
+      message = 'Please enter the correct payment total'
       expect{subject.checkout(5)}.to raise_error message
     end
 
