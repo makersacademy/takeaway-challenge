@@ -3,9 +3,9 @@ require 'sms'
 
 class Takeaway
 
-  def initialize(menu: )
+  def initialize(menu: , sms: nil)
     @menu = menu
-
+    @sms = sms || SMS.new
   end
 
   def print_menu

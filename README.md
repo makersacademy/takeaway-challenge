@@ -14,6 +14,9 @@ Takeaway Challenge
 
  ```
 
+ [![Build Status](https://travis-ci.org/lukecartledge/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lukecartledge/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
 Instructions
 -----
 
@@ -61,7 +64,3 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
