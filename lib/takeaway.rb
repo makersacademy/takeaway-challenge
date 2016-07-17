@@ -8,8 +8,6 @@ class Takeaway
   def initialize
     @basket = {}
     @menu = Menu.new.menu
-    #@total = 0
-    #@message = TextMessage.new
   end
 
   def show_menu
@@ -37,7 +35,6 @@ class Takeaway
   def place_order(message = TextMessage.new)
     message.send_message(confirmation)
   end
-
 
   private
 
