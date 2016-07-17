@@ -1,9 +1,9 @@
 class Order
   attr_accessor :dish, :quantity, :order
 
-  def initialize
-    @dish = ""
-    @quantity = 0
+  def initialize(dish = nil,quantity = nil )
+    @dish = dish
+    @quantity = quantity
     @order = []
   end
 
