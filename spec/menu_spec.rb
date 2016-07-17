@@ -12,7 +12,6 @@ describe '#add_dish' do
     menu.add_dish(dish2)
     expect(menu.dishes).to include(dish1, dish2)
   end
-
 end
 
 

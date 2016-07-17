@@ -4,7 +4,6 @@ describe Takeaway do
   subject(:takeaway) {described_class.new}
   let(:dish1) {double :dish, name: "Pad Thai", price: 5}
   let(:dish2) {double :dish, name: "Dumplings", price: 6}
-  let(:text) {double :text}
 
   describe '#show_menu' do
     it 'displays a menu to a customer' do
@@ -20,13 +19,10 @@ describe Takeaway do
         expect(takeaway.check_total).to eq "Your order will cost £11"
       end
     end
+    context 'no orders have been placed' do
+      it 'will return a total of 0' do
+      expect(takeaway.check_total).to eq "Your order will cost £0"
+    end
   end
-
-#describe '#confirm_order' do
-#  it 'sends a payment confirmation text message' do
-#    allow(confirm_order).to receive(:send_text).and_return "Thanks!"
-#    expect(takeaway.confirm_order).to eq "Thanks!"
-#  end
-#end
-
+  end
 end

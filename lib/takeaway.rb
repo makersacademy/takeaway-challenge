@@ -23,7 +23,9 @@ attr_reader :menu, :customer_order
   end
 
   def confirm_order
-   @text.send_text("Thanks! Your order of #{@customer_order.order_summary} has been placed, will cost £#{@customer_order.total_bill} and will be delivered by #{@customer_order.delivery_time}")
+   @text.send_text("Thanks! Your order of #{@customer_order.order_summary}
+   has been placed, will cost £#{@customer_order.total_bill}
+   and will be delivered by #{@customer_order.delivery_time}")
   end
 
 end

@@ -18,12 +18,7 @@ end
 
 def order_summary
   summary = ""
-  @current_order.each_with_index do |dish,index|
-    if index == @current_order.size - 1
-      summary += dish.name
-    else summary += dish.name + ", and "
-    end
-  end
+  build summary
   summary
 end
 
@@ -43,6 +38,15 @@ def find_total_bill
     @total_bill += dish.price
   end
   @total_bill
+end
+
+def build_summary
+  @current_order.each_with_index do |dish,index|
+    if index == @current_order.size - 1
+      summary += dish.name
+    else summary += dish.name + ", and "
+    end
+  end
 end
 
 end
