@@ -67,5 +67,10 @@ describe Takeaway do
     it 'raises error if incorrect total provided' do
       expect { takeaway.confirm_total(100) }.to raise_error('Incorrect total provided')
     end
+
+    it 'raises error if order already processed' do
+      takeaway.confirm_total(default_total)
+      expect { takeaway.confirm_total(default_total) }.to raise_error('Order already processed')
+    end
   end
 end
