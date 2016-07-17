@@ -7,7 +7,6 @@ describe Takeaway do
   let(:dish){double :dish}
 
   describe '.initialize' do
-
     it 'creates a new instance of the Menu class' do
       expect(Menu).to receive(:new)
       Takeaway.new
@@ -20,10 +19,12 @@ describe Takeaway do
   end
 
   describe '.read_menu' do
-    it 'prints out the list of dishes' do
-      takeaway = Takeaway.new(menu)
-      expect(menu).to receive(:list)
-      takeaway.read_menu
+    it 'should print out the list of dishes' do
+      expect(STDOUT).to receive(:puts).with("10 Hot Wings: £4")
+      expect(STDOUT).to receive(:puts).with("Fried Rice: £3")
+      expect(STDOUT).to receive(:puts).with("Lemon Chicken: £5")
+      expect(STDOUT).to receive(:puts).with("Chilli Beef: £6")
+      subject.read_menu
     end
   end
 
@@ -57,10 +58,15 @@ describe Takeaway do
   end
 
   describe '.checkout' do
-    it 'should fail if the order is less than 1' do
+    it 'should fail if payment is not equal to basket total' do
       subject.order("Fried Rice", 1)
       message = 'Please enter the correct total to checkout'
       expect{subject.checkout(5)}.to raise_error message
+    end
+
+    it 'should fail if the order is less than 1' do
+      message = 'Please order before checking out..'
+      expect{subject.checkout(0)}.to raise_error message
     end
 
     it 'should successfully checkout when total is correct' do

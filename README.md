@@ -16,36 +16,48 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+ The Task
+ -----
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+ Write a Takeaway program that reads out a menu, takes and checks orders. When a customer wants to confirm their order, they need to enter the current payment amount and they'll be sent a text confirmation using Twilio.
 
-Task
------
+ You can see the full brief and user stories [here](https://github.com/JAstbury/takeaway-challenge).
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+ How to Use
+ -----
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+ 1. Clone the repo to your local machine
+ 2. Run ‘bundle install'
+ 3. Run IRB or Pry
+ 4. Require './lib/takeaway'
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+ Create a new takeaway:
+ ```ruby
+ perfect_pizza = Takeaway.new
+ ```
+ See what's for eatin':
+ ```ruby
+ perfect_pizza.read_menu
+ ```
+ Order from the menu (dish & quantity):
+ ```ruby
+ perfect_pizza("10 Hot Wings", 2)
+ ```
+ Check your order:
+ ```ruby
+ perfect_pizza.check_order
+ ```
+ Check your order total:
+ ```ruby
+ perfect_pizza.total
+ ```
+ Confirm your order and input payment amount:
+ ```ruby
+ perfect_pizza.checkout(8)
+ ```
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+ My Approach
+ -----
+ I first started creating the program with just two classes: Takeaway and Menu. Having a separate menu class means that a new menu could be swapped in easily. Having built up more of the program, I then extracted some functionality from restaurant into a new Basket class. This means that the Restaurant class is only concerned with interacting with the user e.g. printing out the menu, accepting an order and passing it to the Basket class.
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+ The text confirmation is up and running but seems to be sending more than one text at the moment so this is something that I still need to solve!

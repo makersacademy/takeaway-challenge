@@ -11,10 +11,4 @@ class Menu
     DISHES.key?(dish)
   end
 
-  def list
-    DISHES.each do |key, value|
-      puts "#{key}: £#{value}"
-    end
-  end
-
 end

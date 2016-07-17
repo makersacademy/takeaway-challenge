@@ -16,7 +16,7 @@ class Confirmation
     @client.account.messages.create(
       from: '441580392065',
       to: '07976504440',
-      body: "Thank you! Your order was placed and will be delivered before #{delivery_time}."
+      body: "Thank you! Your order will be delivered before #{delivery_time}."
     )
   end
 

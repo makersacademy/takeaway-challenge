@@ -4,19 +4,23 @@ require_relative 'confirmation'
 
 class Takeaway
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, confirmation = Confirmation.new)
     @basket = Basket.new
     @menu = menu
-    @confirmation = Confirmation.new
+    @confirmation = confirmation
   end
 
   def read_menu
-    @menu.list
+    Menu::DISHES.each { |key, value| puts "#{key}: £#{value}" }
   end
 
   def order(dish, number = 1)
     fail "#{dish} is not on the menu. Sorry!" unless @menu.contain?(dish)
     fail "Order value must be more than 0" if number < 1
+    confirm_order(dish, number)
+  end
+
+  def confirm_order(dish, number)
     @basket.add_dish(dish, number)
     puts "#{number} x #{dish} added to your order!"
   end
@@ -32,8 +36,13 @@ class Takeaway
     @basket.total
   end
 
-  def checkout(total)
-    fail 'Please enter the correct total to checkout' if total != @basket.total
+  def checkout(payment)
+    fail 'Please enter the correct total to checkout' if payment != @basket.total
+    fail 'Please order before checking out..' if @basket.total == 0
+    confirm_checkout
+  end
+
+  def confirm_checkout
     @confirmation.send_sms
     puts "Order complete. Confirmation on its way!"
   end

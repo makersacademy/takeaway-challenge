@@ -21,7 +21,6 @@ describe '.add_dish' do
   end
 end
 
-
 describe '.total' do
   it 'calculates the correct total' do
     subject.add_dish("Fried Rice", 2)
