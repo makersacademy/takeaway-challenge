@@ -3,24 +3,22 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :ordertotal, :current_order
+  attr_reader :menu, :new_order, :price
 
   def initialize
-    @ordertotal = 0
-    @current_order = []
+    @menu = Menu.new.menu
   end
 
-  def menu
-    menu = Menu.new.menu
-  end
-
-  def order(food)
-    new_order = Order.new(food)
-    @current_order.push(food)
-    @ordertotal += menu[food]
+  def order(price, *food)
+    @food = food
+    @new_order = Order.new(food)
+    @price = new_order.current_order
+    raise "That price doesn't match the food order" if price != @price
+    complete
   end
 
   def complete
-    "#{@current_order}, #{@ordertotal}"
+    puts "You have selected #{@food.join(", ")}, totally #{@price}, complete?"
   end
+
 end

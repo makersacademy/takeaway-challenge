@@ -9,22 +9,4 @@ describe Takeaway do
     expect(subject.order(:Chicken_Burger)).to eq 4
   end
 
-  it "returns a list of orders" do
-    subject.order(:Chicken_Burger)
-    subject.order(:Chips)
-    expect(subject.current_order).to eq ([:Chicken_Burger, :Chips])
-  end
-
-  it "calcuates order total" do
-    subject.order(:Chicken_Burger)
-    subject.order(:Chips)
-    expect(subject.ordertotal).to eq 5.5
-  end
-
-  it "return a list of orders and total price on completion" do
-    subject.order(:Chicken_Burger)
-    subject.order(:Chips)
-    expect(subject.complete).to eq ("#{subject.current_order}, #{subject.ordertotal}")
-  end
-
 end

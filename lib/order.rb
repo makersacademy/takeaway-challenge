@@ -1,22 +1,11 @@
 require_relative 'menu'
 class Order
 
-  attr_reader :food_ordered, :current_total, :menu, :current_total
+  attr_reader :current_order
 
-  def initialize(*food)
-    @menu = Menu.new.menu
-    order(food)
-  end
-
-  def order(food)
-    @food_ordered = food
-  end
-
-  def cost(food)
+  def initialize(food)
     @current_order = 0
-    food.each do |item|
-      @current_order = @current_order + Menu.new.menu[item]
-    end
+    food.each { |item| @current_order = @current_order + Menu.new.menu[item] }
     @current_order
   end
 
