@@ -68,7 +68,8 @@ describe TakeAway do
   describe "#basket_summary" do
     it "displays the basket and total price" do
       takeaway.basket = {:dish => 2.99}, {:dish2 => 5.99}
-      expect(takeaway.basket_summary).to eq "Total = £8.98, Basket = [{:dish=>2.99}, {:dish2=>5.99}]"
+      summary = "Total = £8.98, Basket = [{:dish=>2.99}, {:dish2=>5.99}]"
+      expect(takeaway.basket_summary).to eq summary
     end
   end
 

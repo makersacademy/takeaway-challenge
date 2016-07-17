@@ -40,17 +40,18 @@ class TakeAway
   end
 
   def checkout(amount)
-    if amount == @basket_total
-      "Thank you for your payment of £#{amount}"
-    else
-    raise "Please pay the correct amount of £#{@basket_total}"
-    end
+    raise "Please pay the correct amount of £#{@basket_total}" if !is_correct?(amount)
+    "Thank you for your payment of £#{amount}"
   end
 
   private
 
   def add_order(new_dish, number)
     number.times{@basket.push(new_dish)}
+  end
+
+  def is_correct?(amount)
+    amount == @basket_total
   end
 
 end
