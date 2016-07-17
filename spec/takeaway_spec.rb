@@ -9,4 +9,9 @@ describe Takeaway do
     expect(takeaway.display_menu).to include menu
   end
 
+  it 'add dish to order' do
+    takeaway.place_order("Chicken", 1)
+    expect(takeaway.order.basket).to have_key("Chicken")
+  end
+
 end
