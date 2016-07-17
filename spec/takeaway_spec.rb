@@ -1,13 +1,13 @@
 require 'takeaway'
 
 describe Takeaway do
-  # let(:subject) {described_class.new}
+
   it { is_expected.to respond_to(:confirm_order) }
 
   it 'displays a menu' do
     expect(subject.list_menu).to be_a(Hash)
   end
-  #
+
   context 'the user can' do
 
     before  do
@@ -26,7 +26,8 @@ describe Takeaway do
 
     it 'confirm the order' do
       allow(subject).to receive(:list_menu).and_return({'burger'=>2})
-      expect(subject.confirm_order(8)).to eq 'confirmed'
+      allow(subject).to receive(:send_text)
+      expect(subject.confirm_order(8)).to eq 'Order confirmed'
     end
 
     it 'returns an error when the user confirmes the incorrect total' do

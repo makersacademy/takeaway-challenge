@@ -1,24 +1,19 @@
-# require 'twilio-ruby' # put your own credentials here
-# account_sid = '<AccountSid>'
-# auth_token = '<AuthToken>'
-#
-# # set up a client to talk to the Twilio REST API
-# @client = Twilio::REST::Client.new account_sid, auth_token
-#
-# @client.account.messages.create({
-#     :to => '<ToNumber>',
-#     :from => '<FromNumber>',
-#     :body => '<BodyText>',
-# })
+require 'twilio-ruby'
 
-#
-# TWILIO_ACCOUNT_SID = '####'
-# TWILIO_AUTH_TOKEN = '####'
-# TWILIO_NUMBER = '+44####'
-# TWILIO_MY_NUMBER = '+44####'
+class TwilioMessanger
 
-#
-# like this in the class responsible for the api call: ENV['TWILIO_ACCOUNT_SID']
-# so account_sid = ENV['TWILIO_ACCOUNT_SID']
-# and in the .env file TWILIO_ACCOUNT_SID = ‘my sid'
-# gitignore the env file
+  def initialize
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new account_sid, auth_token
+  end
+
+  def message(message_body)
+    @client.account.messages.create({
+        :to => ENV['TWILIO_MY_NUMBER'],
+        :from => ENV['TWILIO_NUMBER'],
+        :body => message_body,
+    })
+  end
+
+end
