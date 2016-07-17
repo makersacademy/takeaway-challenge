@@ -20,5 +20,12 @@ describe Menu do
     expect(menu.print_m).to eq(printed_menu)
   end
 
+  it "checks if dish is on the menu"do
+    expect(menu.dish_exists?(:chicken)).to be true
+  end
+
+  it "checks if dish is not on the menu"do
+    expect(menu.dish_exists?(:lamb)).to be false
+  end
 
 end
