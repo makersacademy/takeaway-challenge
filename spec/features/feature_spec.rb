@@ -1,5 +1,6 @@
 require './lib/menu'
 require './lib/dish'
+require './lib/order'
 
 dish1 = Dish.new(data: {name: "Burger", price: 10})
 dish2 = Dish.new(data: {name: "Chicken", price: 5})
@@ -11,8 +12,11 @@ menu.add(dish1)
 menu.add(dish2)
 menu.add(dish3)
 
-menu.read_menu.each_with_index{ |dish, index| puts "Dish ##{index+1}: #{dish.name} - £#{dish.price}\n" }
+order = Order.new(menu: menu)
 
-menu.order(dish1, 3)
+order.read_menu.each{ |dish| puts "#{dish.get_name} - £#{dish.get_price}"}
+order.select_dish("Chicken", 3)
 
-menu.basket_summary
+p order.basket_summary
+
+p order.check_total
