@@ -2,14 +2,19 @@ require_relative 'menu'
 require_relative 'basket'
 
 class Restaurant
-
+attr_reader :menu, :basket
   def initialize
     @menu = Menu.new
     @basket = Basket.new
   end
 
-  def show(obj)
-    list(obj.dishes)
+  def show_menu
+    list(menu.dishes)
+  end
+
+  def show_basket
+    list(basket.dishes)
+    puts basket.total
   end
 
 private
