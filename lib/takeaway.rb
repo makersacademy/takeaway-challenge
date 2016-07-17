@@ -13,7 +13,7 @@ class Takeaway
 
   def select_dish(item,quantity=1)
     raise not_on_menu_error(item) unless on_menu?(item)
-    @basket.add(name: item, quantity: quantity, price:  (@menu.menu[item]*quantity)) # must be better way to do this?
+    add_selection_to_basket(item,quantity)
     selection_confirmation_message(item,quantity)
   end
 
@@ -51,6 +51,10 @@ class Takeaway
 
   def order_placed_message
     "Your order has been placed you should receive a confirmation text within a few moments."
+  end
+
+  def add_selection_to_basket(item,quantity)
+    @basket.add(name: item, quantity: quantity, price:  (@menu.menu[item]*quantity))
   end
 
 end
