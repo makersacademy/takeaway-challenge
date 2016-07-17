@@ -1,21 +1,27 @@
-require "menu"
+require 'menu'
 
 describe Menu do
 
-subject(:menu) {Menu.new}
-let(:available_menu) { double(:available_menu) }
+subject(:menu) { described_class.new(dishes) }
 
-  it 'initializes the menu upon creating' do
-    expect(menu.available_menu).to eq available_menu
+let(:dishes) do
+{
+  Chicken: 3.50,
+  Fries: 5.50,
+  Bikini: 2.44
+}
+
+
+end
+
+  it "contains the dishes with correspoding prices" do
+    expect(menu.dishes).to eq(dishes)
   end
-  let :available_menu do
-      [
-        { name: 'Burger', price: 10.95 },
-        { name: 'Pizza', price: 14.00 },
-        { name: 'Salad', price: 7.60 },
-        { name: 'fries', price: 2.90 }
-      ]
-    end
+
+  it 'puts the list of dishes with correspoding prices' do
+    printed_menu = "Chicken: £3.50, Fries: £5.50, Bikini: £2.44"
+    expect(menu.print).to eq(printed_menu)
+  end
 
 
 

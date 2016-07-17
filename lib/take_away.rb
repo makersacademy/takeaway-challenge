@@ -1,13 +1,17 @@
 class TakeAway
 
-attr_accessor :available_menu
+attr_reader :menu
 
-def initialize
-  @available_menu = []
+
+def initialize(menu: nil)
+  @menu = menu
+
 end
 
-def show_menu
-@menu = Menu.new
+
+
+def print_menu
+menu.print
 end
 
 
