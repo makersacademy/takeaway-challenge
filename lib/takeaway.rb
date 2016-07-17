@@ -11,7 +11,7 @@ class Takeaway
   end
 
   def read_menu
-    Menu::DISHES.each { |key, value| puts "#{key}: £#{value}" }
+    Menu::DISHES.each { |key, value| puts "#{key}: £#{'%.2f' % value}" }
   end
 
   def order(dish, number = 1)
@@ -27,13 +27,13 @@ class Takeaway
 
   def check_order
     @basket.basket.each do |key, value|
-      puts "#{key} x #{value} : £#{(Menu::DISHES[key]*value)}"
+      puts "#{key} x #{value} : £#{'%.2f' % (Menu::DISHES[key]*value)}"
     end
-      puts "TOTAL : £#{total}"
+      puts "TOTAL : £#{'%.2f' % @basket.total}"
   end
 
   def total
-    @basket.total
+    puts "£" + '%.2f' % @basket.total
   end
 
   def checkout(payment)

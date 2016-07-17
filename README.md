@@ -53,7 +53,7 @@ perfect_pizza.total
 ```
 Confirm your order and input payment amount:
 ```ruby
-perfect_pizza.checkout(8)
+perfect_pizza.checkout(8.00)
 ```
 
 My Approach

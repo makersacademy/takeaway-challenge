@@ -1,10 +1,11 @@
 class Menu
 
   DISHES = {
-    "Lemon Chicken" => 5,
-    "Fried Rice" => 3,
-    "Chilli Beef" => 6,
-    "10 Hot Wings" => 4
+    "Pepperoni Passion Pizza" => 6.75,
+    "Mighty Meaty Pizza" => 7.25,
+    "Chips n' Cheese" => 3.00,
+    "10 Hot Wings" => 4.00,
+    "Deep-fried Mars bar" => 2.50
   }.freeze
 
   def contain?(dish)
