@@ -12,6 +12,7 @@ describe Takeaway do
   it 'add dish to order' do
     takeaway.place_order("Chicken", 1)
     expect(takeaway.order.basket).to have_key("Chicken")
+    expect(takeaway.order.basket).to have_value(1)
   end
 
 end
