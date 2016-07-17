@@ -9,4 +9,8 @@ attr_reader :dishes
   def add(dish)
     @dishes << dish
   end
+
+  def total
+    @dishes.inject(0) {|t, d| t += d.price.to_i}.to_s.insert(-3, '.')
+  end
 end
