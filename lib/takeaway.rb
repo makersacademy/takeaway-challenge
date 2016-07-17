@@ -18,14 +18,14 @@ class Takeaway
 
   def order(item, quantity = 1)
     item = item.capitalize
-    fail "Sorry, that item is not on the menu" unless check_menu(item)
+    fail item_error unless check_menu(item)
     @basket.store(item, quantity)
     confirm(item, quantity)
   end
 
   def total
     @menu.each do |key, value|
-      if @basket.has_key?(key)
+      if @basket.key?(key)
         @total += (@basket[key] * value)
       end
     end
@@ -40,7 +40,7 @@ class Takeaway
   private
 
   def check_menu(item)
-    @menu.has_key?(item)
+    @menu.key?(item)
   end
 
   def confirm(item, quantity)
@@ -52,7 +52,11 @@ class Takeaway
   end
 
   def confirmation
-    "Thank you, your order has been placed and will be delivered by #{delivery_time}"
+    "Thank you, your order will be delivered by #{delivery_time}"
+  end
+
+  def item_error
+    "Sorry, that item is not on the menu"
   end
 
 
