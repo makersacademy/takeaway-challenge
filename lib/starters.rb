@@ -3,6 +3,7 @@ class Starters
 
 def initialize
   @starters = []
+  self.list
 end
 
 def list
