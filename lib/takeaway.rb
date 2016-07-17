@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load
+
 class TakeAway
 
   attr_accessor :menu, :basket, :basket_total
@@ -40,8 +43,23 @@ class TakeAway
   end
 
   def checkout(amount)
-    raise "Please pay the correct amount of £#{@basket_total}" if !is_correct?(amount)
-    "Thank you for your payment of £#{amount}"
+    raise "Please pay the correct amount of £#{@basket_total}." if !is_correct?(amount)
+    message = "Thank you for your payment of £#{amount}."
+    send_text(message)
+  end
+
+  def send_text(message)
+    require 'rubygems' # not necessary with ruby 1.9 but included for completeness
+    require 'twilio-ruby'
+    # set up a client to talk to the Twilio REST API
+    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+
+    @client.messages.create(
+      from: ENV['TWILIO_NUMBER'],
+      to: ENV['TWILIO_MY_NUMBER'],
+      body: message
+      )
+    message
   end
 
   private
@@ -55,3 +73,12 @@ class TakeAway
   end
 
 end
+
+=begin
+
+dragon = TakeAway.new
+dragon.order(:spring_roll)
+dragon.basket_summary
+dragon.checkout(2.99)
+
+=end

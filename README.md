@@ -87,13 +87,16 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ### #4
 
-| Objects   |  Messages |  
-|    ---    |    ---    |
-|           |           |
-|           |           |
-|           |           |
+| Objects   |  Messages     |  
+|    ---    |    ---        |
+| Customer  |finalise_order |
+|           |  receive      |
+|   Text    |      send     |
 
-#####   ← →
+#####   Customer → finalise_order → send_text
+#####   Customer ← receive ← Text
+
+
 
 
 

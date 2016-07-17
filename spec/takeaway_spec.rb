@@ -81,7 +81,22 @@ describe TakeAway do
       end
       it "confirms payment" do
         takeaway.basket_total = 7
-        expect(takeaway.checkout(7)).to eq "Thank you for your payment of £7"
+        confirmation = "Thank you for your payment of £7."
+        expect(takeaway.checkout(7)).to eq confirmation
+      end
+    end
+
+    describe "#send_text"do
+      it "sends a payment confirmation text message" do
+        expect(takeaway).to respond_to(:send_text).with(1).argument
+      end
+      it "includes a message within the text" do
+        client = double(:client)
+        message = "Thank you for your payment of £7."
+        twilio_message_body = {from: ENV['TWILIO_NUMBER'], to: ENV['TWILIO_MY_NUMBER'], body: message}
+        allow(client).to receive_message_chain(:messages, :create).with(twilio_message_body)
+        expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(client)
+        subject.send_text(message)
       end
     end
   end
@@ -94,20 +109,17 @@ describe TakeAway do
       end
       it "returns an error if payment is incorrect" do
         takeaway.basket_total = 7
-        message = "Please pay the correct amount of £7"
+        message = "Please pay the correct amount of £7."
         expect{takeaway.checkout(5)}.to raise_error(message)
       end
     end
-
   end
-
-
 end
 
-# As a customer
-# So that I can verify that my order is correct
-# I would like to check that the total I have been given matches the sum of the various dishes in my order
 
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 # As a customer
 # So that I can check if I want to order something
@@ -117,6 +129,9 @@ end
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
 
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
 
 # feature test 1
 # takeaway = TakeAway.new
@@ -137,3 +152,12 @@ end
 # takeaway.order(:spring_roll)
 # takeaway.basket_summary = "Total = £2.99, Basket = [{:spring_roll=>2.99}]"
 # takeaway.checkout(2.50) = "Please pay the correct amount of £2.99"
+# takeaway.checkout(2.99) = "Thank you for your payment of £2.99"
+
+# feature test 4
+# # takeaway = TakeAway.new
+# # takeaway.see_menu
+# # takeaway.order(:spring_roll)
+# # takeaway.basket_summary = "Total = £2.99, Basket = [{:spring_roll=>2.99}]"
+# takeaway.checkout(2.99) = "Thank you for your payment of £2.99"
+#                           "A text has been sent to you as confirmation"
