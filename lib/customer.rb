@@ -1,7 +1,7 @@
 require_relative 'order'
 
 class Customer
-  attr_reader :name, :address, :phone
+  attr_reader :name, :address, :phone, :order
 
   def initialize(name, address, phone)
     @name = name

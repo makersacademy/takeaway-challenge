@@ -14,4 +14,11 @@ describe Customer do
   it 'knows its telephone' do
     expect(customer.phone).to eq("07522253914")
   end
+
+  describe '#new_order' do
+    it 'creates a new order' do
+      customer.new_order(:restaurant)
+      expect(customer.order).to be_instance_of(Order)
+    end
+  end
 end
