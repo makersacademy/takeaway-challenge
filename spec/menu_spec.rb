@@ -1,10 +1,9 @@
 require 'menu.rb'
-
 describe Menu do
-    
-    it 'has an item list' do
-        menu = Menu.new.dish_list
-        expect(menu).to eq dish_list
-    end    
+
+    it 'shows the whole Menu' do
+        menu = Menu.new
+        expect(menu.dish_list).to eq ({:"Bruschetta"=> 2.00,:"Spaghetti Pomodoro"=> 5.00,:"Almond Cake"=> 4.00})
+    end
     
 end
