@@ -15,7 +15,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 User stories used to build this code:
@@ -45,7 +45,7 @@ Note; the walkthrough guidance advised asking the customer for the total and onl
 ```shell
 require './lib/takeaway'
 t = Takeaway.new
-t.menu #will show menu list
+t.show_menu #will show menu list
 t.order("item", quantity) #place an order by giving the item name and the quantity. Defaults to 1 if no quantity is given
 t.basket #shows the current order
 t.total #shows the total price for the order
@@ -53,7 +53,7 @@ t.place_order #will send a text message to the test number
 ```
 ## Approach ##
 
-I decided to make the menu and ordering functionality as simple as possible, to allow time to focus on setting up the text messaging functionality. If I had more time I would have worked on the formatting of the printed menu, and using gets to capture order items and quantities. Test coverage dropped to 95% on implementation of Twilio, as I am not sure how to write tests for this functionality.
+I decided to make the menu and ordering functionality as simple as possible, to allow time to focus on setting up the text messaging functionality. If I had more time I would have worked on using gets to capture order items and quantities, and making sure all edge cases were covered. Test coverage dropped to 95% on implementation of Twilio, I am not sure how to write tests for this functionality.
 
 ## Library ##
 
@@ -61,9 +61,8 @@ I decided to make the menu and ordering functionality as simple as possible, to 
   - takeaway.rb
   - menu.rb
   - text_message.rb
- 
+
 ./spec/
   - takeaway_spec.rb
   - menu_spec.rb
   - text_message_spec.rb
-

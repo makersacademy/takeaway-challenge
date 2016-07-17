@@ -3,17 +3,20 @@ require_relative "text_message"
 
 class Takeaway
 
-  attr_reader :basket, :menu, :total
+  attr_reader :basket, :menu
 
   def initialize
     @basket = {}
     @menu = Menu.new.menu
-    @total = 0
+    #@total = 0
     #@message = TextMessage.new
   end
 
-  def print_menu
-    @menu
+  def show_menu
+    menu.each do |item, key|
+      print item.ljust(20)
+      puts "£#{key}".rjust(20)
+    end
   end
 
   def order(item, quantity = 1)
@@ -24,12 +27,11 @@ class Takeaway
   end
 
   def total
-    @menu.each do |key, value|
-      if @basket.key?(key)
-        @total += (@basket[key] * value)
-      end
+    total = 0
+    basket.each do |key, value|
+      total += (value * menu[key])
     end
-    @total
+    total
   end
 
   def place_order(message = TextMessage.new)
@@ -58,6 +60,5 @@ class Takeaway
   def item_error
     "Sorry, that item is not on the menu"
   end
-
 
 end

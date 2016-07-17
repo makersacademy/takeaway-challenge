@@ -3,15 +3,17 @@ require 'takeaway'
 describe Takeaway do
   subject(:takeaway) { described_class.new }
   let(:message) { double(:message) }
+  let(:menu) { double(:menu) }
 
-  it { is_expected.to(respond_to(:print_menu)) }
+  it { is_expected.to(respond_to(:order)) }
   it { is_expected.to(respond_to(:order)) }
 
-  describe '#print_menu' do
-    it 'displays a list of menu items' do
-      expect(takeaway.print_menu).to(be_a(Hash))
-    end
-  end
+  #describe '#print_menu' do
+  #  it 'displays a list of menu items' do
+  #    expect(takeaway.menu).to(receive(print_menu))
+  #    takeaway.show_menu
+  #  end
+  #end
 
   describe '#order' do
     it 'checks that the item ordered is on the menu' do
@@ -34,7 +36,7 @@ describe Takeaway do
     end
   end
 
-  describe '#total' do
+  describe '#basket_total' do
     before do
       takeaway.order("Omlette")
       takeaway.order("Pancakes", 2)
