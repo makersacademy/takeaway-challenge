@@ -1,5 +1,6 @@
 class Menu
 
+  # Do we need this?
   attr_reader :menu
 
   def initialize
@@ -45,7 +46,7 @@ class Menu
   end
 
   private
-  
+
   def dots(dish)
     '.' * (50 - dish.length)
   end

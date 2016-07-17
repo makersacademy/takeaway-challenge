@@ -2,8 +2,8 @@ require 'order'
 
 describe Order do
 
-  let(:good_order) { [{"Satay" => 1, "Cendol" => 2 }, 14.98] }
-  let(:bad_order) { [{"Satay" => 1, "Cendol" => 2 }, 14.99] }
+  let(:good_order) { [{"Satay" => 1, "Cendol" => 2 }, 21.97] }
+  let(:bad_order) { [{"Satay" => 1, "Cendol" => 2 }, 22.00] }
 
   # Do we want a context for this??
 
