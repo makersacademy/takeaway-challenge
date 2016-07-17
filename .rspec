@@ -1,2 +1,3 @@
+--pattern spec/*_spec.rb
 --color --format documentation
 --require spec_helper
