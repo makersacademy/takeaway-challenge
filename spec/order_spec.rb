@@ -14,7 +14,7 @@ describe Order do
     end
   end
 
-  context '#ordering dish'do
+  context '#ordering dish' do
     it 'adds dish to order' do
       order.add_to_order("pizza",2)
       expect(order.basket).to eq "pizza" => 2
