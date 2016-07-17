@@ -90,10 +90,10 @@ describe Takeaway do
                                 to: ENV['TWILIO_TO_NUMBER'],
                                 body: message }
         allow(client).to receive_message_chain(:messages, :create).
-                      with(twilio_message_body)
+          with(twilio_message_body)
         expect(Twilio::REST::Client).to receive(:new).
-                      with(ENV['ACC_SID'], ENV['AUTH_TOKEN']).
-                      and_return(client)
+          with(ENV['ACC_SID'], ENV['AUTH_TOKEN']).
+          and_return(client)
         subject.checkout(subject.menu[item])
       end
 
