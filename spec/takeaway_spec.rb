@@ -38,4 +38,10 @@ describe Takeaway do
 
   end
 
+  describe '#place_order' do
+
+  it 'raises an error if no items are in the basket' do
+    expect{subject.place_order}.to raise_error 'You must select atleast one item before placing an order.'
+  end
+
 end
