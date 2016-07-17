@@ -1,12 +1,13 @@
 require 'twilio-ruby'
+require './config/initializers/app_env_vars'
 
 class SMS
   def initialize(number)
-    account_sid = 'AC06389294e20e72f37dfd4469ff5ad2f9'
-    auth_token = '499b41a6ce32b602047a3fa465f27e6c'
+    account_sid = ENV["ACCOUNT_SID"]
+    auth_token = ENV["AUTH_TOKEN"]
     @number = number
     @client = Twilio::REST::Client.new(account_sid, auth_token)
-    @from = "+441599312016" #my twliio phone number
+    @from = ENV["TWILIO_NUM"]
   end
 
   def send_message
@@ -20,17 +21,4 @@ class SMS
   end
 end
 
-# require 'twilio-ruby'
-#
-# # put your own credentials here
-# account_sid = 'AC06389294e20e72f37dfd4469ff5ad2f9'
-# auth_token = '499b41a6ce32b602047a3fa465f27e6c'
-#
-# # set up a client to talk to the Twilio REST API
-# @client = Twilio::REST::Client.new account_sid, auth_token
-#
-# @client.account.messages.create(
-#   from: '+441599312016',
-#   to: '+447522253914',
-#   body: 'Robot invasion! Reply back with any sightings.'
-# )
+#  form: https://www.twilio.com/docs/quickstart/ruby/programmable-sms#send-sms
