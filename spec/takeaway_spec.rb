@@ -32,7 +32,7 @@ describe '#basket' do
     subject.place_an_order("Beef Fried Rice")
     subject.place_an_order("King Prawn Noodles", 3)
     expect(subject.total).to eq "Total is £21.30"
- end
+  end
 end
 
 describe '#complete' do
