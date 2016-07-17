@@ -10,13 +10,13 @@ describe Takeaway do
 
   it 'returns an error if the order selection is empty' do
     message = "You have not selected any items"
-    allow(subject).to receive(:list_menu).and_return({'burger'=>2})
+    allow(subject).to receive(:list_menu).and_return 'burger'=>2
     expect{subject.confirm_order(8)}.to raise_error message
   end
 
   it 'returns an error if the selected item is not on the menu' do
     message = "Item not on menu"
-    allow(subject).to receive(:list_menu).and_return({'burger'=>2})
+    allow(subject).to receive(:list_menu).and_return 'burger'=>2
     expect{subject.select_item('asdf')}.to raise_error message
   end
 

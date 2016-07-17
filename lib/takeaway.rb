@@ -11,7 +11,7 @@ class Takeaway
   end
 
   def select_item(item, quantity = 1)
-    raise "Item not on menu" if list_menu[item] == nil
+    fail "Item not on menu" if list_menu[item].nil?
     @selection[item] = quantity
   end
 
@@ -50,9 +50,9 @@ class Takeaway
   end
 
   def check_order(value)
-    raise "You have not selected any items" if selection == {}
+    fail "You have not selected any items" if selection == {}
     message = "Order not confirmed, please check your total and try again."
-    raise message if calculate_total != value
+    fail message if calculate_total != value
   end
 
 end

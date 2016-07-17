@@ -9,11 +9,11 @@ class TwilioMessanger
   end
 
   def message(message_body)
-    @client.account.messages.create({
+    @client.account.messages.create(
         to: ENV['TWILIO_MY_NUMBER'],
         from: ENV['TWILIO_NUMBER'],
         body: message_body,
-    })
+    )
   end
 
 end
