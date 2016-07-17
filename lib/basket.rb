@@ -11,7 +11,7 @@ class Basket
   def add(item)
     @item_count += item[:quantity]
     @items << item
-    @total_price = item[:price]
+    @total_price += item[:price]
   end
 
 end
