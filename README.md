@@ -19,7 +19,7 @@ Takeaway Challenge
 
  ```
 
-This week we were challenged to write a short command line takeaway program in which users could select dishes from a menu, add them to their basket, and combined with the Twilio API, receive a text message once they placed their chosen order.
+This week we were challenged to write a short command line program in which users could select dishes from a menu, add them to their basket, and combined with the Twilio API, receive a text message once they had placed their order.
 
 User Stories
 -----
