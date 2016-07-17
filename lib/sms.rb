@@ -1,20 +1,20 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class SMS
 
   def initialize
     @account_sid = ENV['TWILIO_ACCOUNT_SID']
     @auth_token = ENV['TWILIO_AUTH_TOKEN']
-    @to_number = ENV['TWILIO_TO_NUMBER']
-    @from_number = ENV['TWILIO_FROM_NUMBER']
   end
 
   def delivery_message
-    @client = ::Twilio::REST::Client.new account_sid, auth_token
+    @client = ::Twilio::REST::Client.new(ENV['TWILIO_AUTH_TOKEN'], ENV['TWILIO_ACCOUNT_SID'])
     @client.messages.create(
-      from: from_number,
-      to: to_number,
-      body: "Your order of has been received and should be with you at #{delivery_time}",
+      from: ENV['TWILIO_TO_NUMBER'],
+      to: ENV['TWILIO_FROM_NUMBER'],
+      body: "Your order of has been received and should be with you before #{delivery_time}",
     )
   end
 
@@ -24,6 +24,6 @@ class SMS
 
 private
 
-  attr_reader :account_sid, :auth_token, :to_number, :from_number
+  attr_reader :account_sid, :auth_token, :client
 
 end
