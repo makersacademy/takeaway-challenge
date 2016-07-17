@@ -1,22 +1,45 @@
 class Order
 
-  def initialize(menu: Dishes.new)
-    @menu = menu
+  attr_reader :basket, :total
+
+  def initialize()
+    @total = 0
+    @basket = Hash.new
   end
 
-  def show_menu
-    menu
+  def select_dish(dish:, quantity:, price:)
+    @dish = dish
+    @quantity = quantity
+    @price = price
+    already_in_basket? ? update_basket : add_to_basket
+    update_total
   end
 
-  def select_dishes(id:, quantity:)
-  end
-
-  def confirm_total(total_amount:)
-    total_amount
+  def clear_basket
+    self.basket.clear
+    self.total = 0
   end
 
   private
-  attr_reader :menu
 
+  attr_writer :basket, :total
+  attr_reader :dish, :quantity, :price
+
+  def already_in_basket?
+    basket.include? dish
+  end
+
+  def update_basket
+    self.basket[dish] += quantity
+  end
+
+  def add_to_basket
+    self.basket.store(dish, quantity)
+  end
+
+  def update_total
+    self.total += (price * quantity)
+    nil
+  end
 
 end
