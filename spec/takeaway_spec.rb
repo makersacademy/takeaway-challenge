@@ -20,9 +20,20 @@ describe Takeaway do
     end
 
     it 'adds ordered items to the chosen items hash' do
-      order_hash = { sandwich: 2 }
-      takeaway.order_selection( :sandwich, 2 )
+      order_hash = { Sandwich: 2 }
+      takeaway.order_selection( :Sandwich, 2 )
       expect(takeaway.chosen_items).to eq order_hash
     end
   end
+
+  describe '#order_summary' do
+
+    it 'returns a summary of the order' do
+      takeaway.order_selection( :Sandwich, 2)
+      takeaway.order_selection( :Lemonade, 2)
+      expect(takeaway.order_summary).to eq "Sandwich x 2 = $10.00, Lemonade x 2 = $2.50"
+    end
+  end
+
+  
 end

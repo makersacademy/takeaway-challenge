@@ -14,4 +14,16 @@ class Takeaway
     chosen_items[item] = quantity
   end
 
+  def order_summary
+    order_calc
+  end
+
+  private
+
+  def order_calc
+    chosen_items.map do |item, quantity|
+      "#{item} x #{quantity} = $#{menu_class.view_menu[item] * quantity}0"
+    end.join(', ')
+  end
+
 end
