@@ -1,4 +1,6 @@
 require_relative 'menu'
+require_relative 'remainder'
+
 
 class Takeaway
 
@@ -6,6 +8,7 @@ class Takeaway
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = {}
+    @reminder = Reminder.new
   end
 
   def place_an_order(dish, qnty = 1)
@@ -26,8 +29,18 @@ class Takeaway
     "Total is £#{@total_price}0"
   end
 
-  def correct_price? price
-    price == @total_price
-  end
+
+def complete(price)
+  fail "The sum is incorrect" if !correct_price? price
+  time = (Time.now + 3600).strftime("%H:%M")
+  msg = "Thank you! Your order was placed and will be delivered before #{time}"
+  @reminder.send_msg(msg)
+end
+
+private
+
+def correct_price?(price)
+  price == @total_price
+end
 
 end
