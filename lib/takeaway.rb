@@ -1,5 +1,6 @@
 require_relative 'basket'
 require_relative 'menu'
+require_relative 'sms'
 
 class Takeaway
 
@@ -11,9 +12,17 @@ class Takeaway
   end
 
   def select_dish(item,quantity=1)
-    raise no_item_error(item) unless on_menu?(item)
+    raise not_on_menu_error(item) unless on_menu?(item)
     @basket.add(name: item, quantity: quantity, price:  (@menu.menu[item]*quantity)) # must be better way to do this?
     selection_confirmation_message(item,quantity)
+  end
+
+  def place_order
+    raise no_item_error if no_items_in_basket?
+    @sms = Sms.new(@basket.total_price)
+    @sms.send
+    @basket.clear
+    "Your order has been placed you should receive a confirmation text within a few moments."
   end
 
   private
@@ -28,8 +37,16 @@ class Takeaway
     @menu.item_exists?(item)
   end
 
-  def no_item_error(item)
+  def not_on_menu_error(item)
     "'#{item}' is not on our menu."
+  end
+
+  def no_item_error
+    'You must select atleast one item before placing an order.'
+  end
+
+  def no_items_in_basket?
+    @basket.items.length < 1
   end
 
 end
