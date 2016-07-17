@@ -9,20 +9,20 @@ attr_reader :menu, :basket
   end
 
   def show_menu
-    puts "MENU".center(50, '=')
+    menu_title
     list(menu.dishes)
   end
 
   def show_basket
-    puts "YOUR BASKET".center(50, '=')
+    basket_title
     list(basket.dishes)
-    puts "TOTAL: £#{basket.total}".rjust(50)
+    basket_total
   end
 
   def select_item(index)
     item = menu.dishes[(index.to_i-1)]
     basket.add item
-    puts "#{item.name} added to basket."
+    added_confirmation(item)
   end
 
   def new_order
@@ -30,6 +30,22 @@ attr_reader :menu, :basket
   end
 
 private
+
+  def added_confirmation(item)
+    puts "#{item.name} added to basket."
+  end
+
+  def basket_total
+    puts "TOTAL: £#{basket.total}".rjust(50)
+  end
+
+  def basket_title
+    puts "YOUR BASKET".center(50, '=')
+  end
+
+  def menu_title
+    puts "MENU".center(50, '=')
+  end
 
   def list(arr)
     arr.each.with_index(1) do |d,i|
