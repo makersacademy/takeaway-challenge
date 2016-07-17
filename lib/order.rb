@@ -16,6 +16,17 @@ def place_order(*dish)
   find_total_bill
 end
 
+def order_summary
+  summary = ""
+  @current_order.each_with_index do |dish,index|
+    if index == @current_order.size - 1
+      summary += dish.name
+    else summary += dish.name + ", and "
+    end
+  end
+  summary
+end
+
 private
 
 def find_order_time
@@ -23,7 +34,7 @@ def find_order_time
 end
 
 def find_delivery_time
-  @delivery_time = @order_time + (30*60)
+  @delivery_time = @order_time + (60*60)
   @delivery_time = "#{'%02d' % delivery_time.hour}:#{'%02d' % delivery_time.min}"
 end
 
