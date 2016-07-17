@@ -2,9 +2,10 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject {described_class.new}
+  subject {described_class.new(Menu.new, confirmation)}
   let(:menu){double :menu, new: dish, list: dish}
   let(:dish){double :dish}
+  let(:confirmation){double :confirmation}
 
   describe '.initialize' do
     it 'creates a new instance of the Menu class' do
@@ -58,24 +59,36 @@ describe Takeaway do
     end
   end
 
-  # describe '.checkout' do
-  #   it 'should fail if payment is not equal to basket total' do
-  #     subject.order('Deep-fried Mars bar', 1)
-  #     message = 'Please enter the correct payment total'
-  #     expect{subject.checkout(1)}.to raise_error message
-  #   end
-  #
-  #   it 'should fail if the order is less than 1' do
-  #     message = 'Please order before checking out..'
-  #     expect{subject.checkout(0)}.to raise_error message
-  #   end
-  #
-  #   it 'should successfully checkout when total is correct' do
-  #     subject.order("Mighty Meaty Pizza", 1)
-  #     message = "Order complete. Confirmation on its way!"
-  #     expect(STDOUT).to receive(:puts).with(message)
-  #     subject.checkout(7.25)
-  #   end
-  # end
+  describe '.checkout' do
+    it 'should fail if payment is not equal to basket total' do
+      subject.order('Deep-fried Mars bar', 1)
+      message = 'Please enter the correct payment total'
+      expect{subject.checkout(1)}.to raise_error message
+    end
+
+    it 'should fail if the order is less than 1' do
+      message = 'Please order before checking out..'
+      expect{subject.checkout(0)}.to raise_error message
+    end
+
+    before do
+      allow(confirmation).to receive(:send_sms)
+    end
+
+    it 'should successfully checkout when total is correct' do
+      subject.order("Mighty Meaty Pizza", 1)
+      message = "Order complete. Confirmation on its way!"
+      expect(STDOUT).to receive(:puts).with(message)
+      subject.checkout(7.25)
+    end
+
+    it 'sends a payment confirmation text message' do
+      t = Time.new + 3600
+      delivery_time = t.strftime("%I:%M%p")
+      subject.order("Mighty Meaty Pizza", 1)
+      expect(confirmation).to receive(:send_sms)
+      subject.checkout(7.25)
+    end
+  end
 
 end
