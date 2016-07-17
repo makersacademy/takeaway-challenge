@@ -1,7 +1,6 @@
 class TakeAway
 
-  attr_reader :basket
-  attr_accessor :menu
+  attr_accessor :menu, :basket
 
   def initialize
     @basket = []
@@ -16,18 +15,26 @@ class TakeAway
     }
   end
 
-  def see_menu
-    @menu
-  end
-
   def order(dish, number=1)
     new_dish = @menu.select {|k, v| k==dish}
     add_order(new_dish, number)
     "#{number}x #{dish}(s) added to your basket."
   end
 
+  def see_menu
+    @menu
+  end
+
   def see_basket
     @basket
+  end
+
+  def basket_prices
+    @basket_prices = @basket.flat_map(&:values)
+  end
+
+  def basket_total
+    @basket_prices.reduce { |sum, price| sum + price }
   end
 
   private

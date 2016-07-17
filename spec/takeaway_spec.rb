@@ -58,7 +58,21 @@ describe TakeAway do
     end
   end
 
-  describe ""
+  describe "#basket_prices" do
+    it "gives a list of basket prices" do
+      takeaway.basket = {:dish => 2}, {:dish2 => 5}
+      expect(takeaway.basket_prices).to eq [2, 5]
+    end
+  end
+
+  describe "basket_total" do
+    it "gives the total price of the basket" do
+      takeaway.basket = {:dish => 2}, {:dish2 => 5}
+      takeaway.basket_prices
+      expect(takeaway.basket_total).to eq 7
+    end
+  end
+
 
 end
 
