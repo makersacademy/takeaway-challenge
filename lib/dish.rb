@@ -1,4 +1,5 @@
 class Dish
+
 private
 	attr_reader :name, :price
 public

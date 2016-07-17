@@ -15,8 +15,12 @@ menu.add(dish3)
 order = Order.new(menu: menu)
 
 order.read_menu.each{ |dish| puts "#{dish.get_name} - £#{dish.get_price}"}
+
+order.select_dish("Burger", 2)
 order.select_dish("Chicken", 3)
+order.select_dish("Lobster", 1)
 
 p order.basket_summary
 
-p order.check_total
+# order.place_order(50)
+puts order.place_order(55)
