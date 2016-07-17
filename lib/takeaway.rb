@@ -13,7 +13,7 @@ class Takeaway
   end
 
   def menu
-    {"rice" => 1.49, "pizza" => 3.79, "cheeseburder" => 0.99, "pepsi" => 0.89}
+    {"rice" => 1.49, "pizza" => 3.79, "cheeseburger" => 0.99, "pepsi" => 0.89}
   end
 
   def add_item(item, quantity = 1)
@@ -50,6 +50,7 @@ class Takeaway
   end
 
   def confirm_order
+    fail "Missing Twilio environment variables!" if ENV['ACC_SID'].nil?
     @client = Twilio::REST::Client.new ENV['ACC_SID'], ENV['AUTH_TOKEN']
     time = (Time.now + (60 * 60)).strftime("%H:%M")
     @client.messages.create(
