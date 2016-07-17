@@ -97,8 +97,41 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 #####   Customer ← receive ← Text
 
 
+## Feature test examples
 
-
+feature test 1
+```
+takeaway = TakeAway.new
+takeaway.see_menu
+#returns hash - list of food with prices
+```
+feature test 2
+```
+takeaway = TakeAway.new
+takeaway.see_menu
+takeaway.order(:wonton_soup)
+takeaway.basket = [:wonton_soup]
+takeaway.order(:spring_roll, 5)
+takeaway.basket = [:wonton_soup, :spring_roll, :spring_roll, :spring_roll, :spring_roll, :spring_roll]
+```
+feature test 3
+```
+takeaway = TakeAway.new
+takeaway.see_menu
+takeaway.order(:spring_roll)
+takeaway.basket_summary = "Total = £2.99, Basket = [{:spring_roll=>2.99}]"
+takeaway.checkout(2.50) = "Please pay the correct amount of £2.99"
+takeaway.checkout(2.99) = "Thank you for your payment of £2.99"
+```
+feature test 4
+```
+takeaway = TakeAway.new
+takeaway.see_menu
+takeaway.order(:spring_roll)
+takeaway.basket_summary = "Total = £2.99, Basket = [{:spring_roll=>2.99}]"
+takeaway.checkout(2.99) = "Thank you for your payment of £2.99"
+                          "Your food will be delivered before 22:18"
+```
 
 ## Learning objectives ##
 

@@ -50,11 +50,9 @@ class TakeAway
   end
 
   def send_text(message)
-    require 'rubygems' # not necessary with ruby 1.9 but included for completeness
+    require 'rubygems'
     require 'twilio-ruby'
-    # set up a client to talk to the Twilio REST API
     @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-
     @client.messages.create(
       from: ENV['TWILIO_NUMBER'],
       to: ENV['TWILIO_MY_NUMBER'],
@@ -79,12 +77,3 @@ class TakeAway
   end
 
 end
-
-=begin
-
-dragon = TakeAway.new
-dragon.order(:spring_roll)
-dragon.basket_summary
-dragon.checkout(2.99)
-
-=end
