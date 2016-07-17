@@ -1,14 +1,15 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'text'
 require 'twilio-ruby'
 
 class Takeaway
+attr_reader :menu, :customer_order
 
-  attr_reader :menu, :customer_order
-
-  def initialize(menu = Menu.new, customer_order = Order.new)
+  def initialize(menu = Menu.new, customer_order = Order.new, text = Text.new)
     @menu = menu
     @customer_order = customer_order
+    @text = text
   end
 
   def show_menu
@@ -22,22 +23,7 @@ class Takeaway
   end
 
   def confirm_order
-   send_text("Thanks! Your order has been placed, will cost £#{@customer_order.total_bill} and will be delivered by #{@customer_order.delivery_time}")
+   text.send_text("Thanks! Your order has been placed, will cost £#{@customer_order.total_bill} and will be delivered by #{@customer_order.delivery_time}")
   end
-
-private
-
- def send_text(message)
-   # put your own credentials here
-   account_sid = 'AC65ae21135d2364a4ad045bd634c4c82f'
-   auth_token = '0f4c6c42987696a3b1ab8f6298330650'
-   # set up a client to talk to the Twilio REST API
-   @client = Twilio::REST::Client.new account_sid, auth_token
-   @client.account.messages.create(
-     from: '+441620282038',
-     to: '+447934491522',
-     body: message
-   )
-   end
 
 end
