@@ -7,8 +7,19 @@ class Restaurant
     @menu = Menu.new
     @basket = Basket.new
   end
-r
+
   def show(obj)
-    item_printer(obj.dishes)
+    list(obj.dishes)
+  end
+
+private
+
+  def list(arr)
+    arr.each.with_index(1) do |d,i|
+      amount = d.price.dup
+      print "#{i}.".center(5)
+      print d.name.ljust(30,'.')
+      print  "£#{amount.insert(-3, '.')}".rjust(15,'.') + "\n"
+    end
   end
 end
