@@ -20,11 +20,13 @@ The following user stories were provided by **Makers Academy** as a starting poi
 
     As a customer
     So that I can verify that my order is correct
-    I would like to check that the total I have been given matches the sum of the     various dishes in my order
+    I would like to check that the total I have been given matches the sum of
+    the various dishes in my order
 
     As a customer
     So that I am reassured that my order will be delivered on time
-    I would like to receive a text such as "Thank you! Your order was placed and     will be delivered before 18:52" after I have ordered
+    I would like to receive a text such as "Thank you! Your order was placed
+    and will be delivered before 18:52" after I have ordered
 
 ## _Domain Model &mdash;_
 
@@ -42,7 +44,7 @@ Basket  |  *confirm*
 
 ## _Usage Instructions &mdash;_
 
-- The program works with Ruby and the Twilio gem ``` gem install twilio ``` or ``` bundle install ``` if you have bundler.<br>
+- The program works with Ruby and the Twilio gem ``` gem install twilio-ruby ``` or ``` bundle install ``` if you have bundler.<br>
 Once installed the program is run from the command line inside the project directory, simply ``` require './lib/takeaway' ``` from an irb or pry prompt.
 - Then create an object to hold an instance of ``` Takeaway.new ```<br>
 From there the following commands are available :<br>

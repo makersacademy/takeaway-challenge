@@ -7,8 +7,6 @@ describe Menu do
     it 'prints to output the menu items and prices' do
     expect(subject.show_menu).to be_a String
     end
-
-    #matches regex formatting?
-
+    
   end
 end
