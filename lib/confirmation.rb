@@ -7,10 +7,6 @@ class Confirmation
     t.strftime("%I:%M%p")
   end
 
-  def delivery_message
-    "Thank you! Your order will be delivered before #{delivery_time}"
-  end
-
   def send_sms
     account_sid = 'AC951a12c5042b401c761036d015fc86ff'
     auth_token = 'a252b704db9b66f594ee16a754ecb567'
@@ -20,7 +16,7 @@ class Confirmation
     @client.account.messages.create(
       from: '441580392065',
       to: '07976504440',
-      body: delivery_message
+      body: "Thank you! Your order will be delivered before #{delivery_time}"
     )
   end
 

@@ -1,5 +1,5 @@
 class Basket
-  attr_reader :basket
+  attr_accessor :basket
 
   def initialize
     @basket = {}
@@ -11,6 +11,10 @@ class Basket
 
   def total
     @basket.inject(0) {|sum, (dish,quantity)| sum + Menu::DISHES[dish]*quantity}
+  end
+
+  def empty
+    @basket = {}
   end
 
 end
