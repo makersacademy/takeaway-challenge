@@ -54,10 +54,9 @@ class Takeaway
     @client = Twilio::REST::Client.new ENV['ACC_SID'], ENV['AUTH_TOKEN']
     time = (Time.now + (60 * 60)).strftime("%H:%M")
     @client.messages.create(
-        from: ENV['TWILIO_FROM_NUMBER'],
-        to: ENV['TWILIO_TO_NUMBER'],
+        from: ENV['TWILIO_FROM_NUMBER'], to: ENV['TWILIO_TO_NUMBER'],
         body: "Thank you! Your order was placed and will be delivered " \
-                 "before #{time}",
+                 "before #{time}"
     )
     "Payment successful! You will receive a text message shortly to confirm" \
     " the order."
