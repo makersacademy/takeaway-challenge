@@ -14,13 +14,11 @@ attr_reader :menu, :basket
 
   def show_basket
     list(basket.dishes)
-    puts basket.total
+    puts "£#{basket.total}".rjust(50)
   end
 
-  def select_item
-    show_menu
-    index = gets.chomp.to_i
-    basket.add menu.dishes[(index-1)]
+  def select_item(index)
+    basket.add menu.dishes[(index.to_i-1)]
   end
 
 private
@@ -32,11 +30,5 @@ private
       print d.name.ljust(30,'.')
       print  "£#{amount.insert(-3, '.')}".rjust(15,'.') + "\n"
     end
-  end
-
-  def get_index
-    input = STDIN.gets.chomp
-    return input.to_i if input.is_a?(Integer)
-    get_index
   end
 end
