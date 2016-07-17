@@ -9,11 +9,11 @@ class Menu
   end
 
   def display
-    return dish_list.each {|food, price| "#{food.capitalize} £#{price}"}
+    dish_list.each {|food, price| "#{food.capitalize} £#{price}"}
   end
 
   def add_to_menu(food,price)
-    fail 'Dish already exists' if dish_list.has_key?(food)
+    fail 'Dish already exists' if dish_list.key?(food)
     dish_list.store(food,price)
   end
 end

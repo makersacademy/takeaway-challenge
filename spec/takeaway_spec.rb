@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:order){double :order}#, :basket => {"pizza"=>1}}
+  let(:order){double :order}
   let(:menu){double :menu, :display => "#{:food} £#{:price}",
                            :dish_list => {"pizza"=>3.00}}
   let(:message){double :message}

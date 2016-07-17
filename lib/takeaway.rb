@@ -18,12 +18,12 @@ class Takeaway
 
   def order(food,quantity=1)
     fail 'No such dish on menu' unless on_menu?(food)
-    @order = Order.new(@menu.dish_list) if @order == nil
+    @order = Order.new(@menu.dish_list) if @order.nil?
     @order.add_to_order(food,quantity)
   end
 
   def basket_summary
-    @order == nil ? "Basket empty" : @order.basket
+    @order.nil? ? "Basket empty" : @order.basket
   end
 
   def total
@@ -31,7 +31,7 @@ class Takeaway
   end
 
   def confirm_order
-    fail 'No orders have been added' if @order == nil
+    fail 'No orders have been added' if @order.nil?
     @message.send_text if price_is_correct?
   end
 

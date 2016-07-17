@@ -12,12 +12,12 @@ class Order
   def add_to_order(food,quantity=1)
     basket[food] += quantity
     calculate_total(food,quantity)
-    "#{quantity}x #{food}(s) added to your basket. Current total: £#{current_total}."
+    "#{quantity} x #{food}(s) added to your basket. Total: £#{current_total}."
   end
-  
+
   # def current_basket
-  #   @basket.map {|dish, qty| "#{dish.capitalize} x #{qty}"} unless @basket.empty?
-  #   "Total: £#{current_total}"
+  #  @basket.map {|dish, qty|"#{dish.capitalize} x #{qty}"}unless @basket.empty?
+  #  "Total: £#{current_total}"
   # end
 
   def total_price_of_basket
