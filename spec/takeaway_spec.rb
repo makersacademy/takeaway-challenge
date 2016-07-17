@@ -3,9 +3,6 @@ require 'takeaway'
 describe Takeaway do
 
   let(:subject) {described_class.new}
-  let (:dish) {double :dish}
-  let (:qnty) {double :qnty}
-  let (:send_msg) {double :send_msg}
 
 describe "#place_an_order" do
   it { is_expected.to respond_to(:place_an_order).with(2).argument }
@@ -25,16 +22,16 @@ describe '#basket' do
     subject.display_basket
   end
   it 'can stores a number of orders' do
-   subject.place_an_order("Beef Fried Rice")
-   subject.place_an_order("Beef Fried Rice", 2)
-   expect(subject.display_basket).to eq "{\"Beef Fried Rice\"=>3}"
-   subject.display_basket
+    subject.place_an_order("Beef Fried Rice")
+    subject.place_an_order("Beef Fried Rice", 2)
+    expect(subject.display_basket).to eq "{\"Beef Fried Rice\"=>3}"
+    subject.display_basket
   end
 
   it 'displays total' do
-   subject.place_an_order("Beef Fried Rice")
-   subject.place_an_order("King Prawn Noodles", 3)
-   expect(subject.total).to eq "Total is £21.30"
+    subject.place_an_order("Beef Fried Rice")
+    subject.place_an_order("King Prawn Noodles", 3)
+    expect(subject.total).to eq "Total is £21.30"
  end
 end
 

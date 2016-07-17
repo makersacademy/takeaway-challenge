@@ -11,6 +11,6 @@ attr_accessor :basket
 
   def display_basket
     message = "Items in your basket:"
-    "#{@basket.each{|k,v| puts "#{message} #{k} x #{v} x £#{@menu.menu[k]}0"}}"
+    (@basket.each{|k,v|puts "#{message} #{k} x #{v} x £#{@menu.menu[k]}0"}).to_s
   end
 end
