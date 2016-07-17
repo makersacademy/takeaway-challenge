@@ -20,11 +20,6 @@ class Takeaway
     confirm_order(dish, number)
   end
 
-  def confirm_order(dish, number)
-    @basket.add_dish(dish, number)
-    puts "#{number} x #{dish} added to your order!"
-  end
-
   def check_order
     @basket.basket.each do |key, value|
       puts "#{key} x #{value} : £#{'%.2f' % (Menu::DISHES[key]*value)}"
@@ -41,6 +36,13 @@ class Takeaway
     fail 'Please order before checking out..' if @basket.total == 0
     confirm_checkout
     @basket.empty
+  end
+
+  private
+
+  def confirm_order(dish, number)
+    @basket.add_dish(dish, number)
+    puts "#{number} x #{dish} added to your order!"
   end
 
   def confirm_checkout
