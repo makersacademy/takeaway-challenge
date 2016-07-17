@@ -1,3 +1,5 @@
+require_relative 'texter'
+
 class Checkout
   def do
     thank_you_message
@@ -14,6 +16,6 @@ class Checkout
   end
 
   def send_message(number)
-  puts  "sending message to #{number}"
+  Texter.text(number)
   end
 end
