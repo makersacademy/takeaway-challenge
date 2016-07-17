@@ -40,8 +40,11 @@ class TakeAway
   end
 
   def checkout(amount)
-    "Thank you for your payment of £#{amount}"
-    #raise "Please pay the correct amount of £#{@basket_total}" if amount != @basket_total
+    if amount == @basket_total
+      "Thank you for your payment of £#{amount}"
+    else
+    raise "Please pay the correct amount of £#{@basket_total}"
+    end
   end
 
   private

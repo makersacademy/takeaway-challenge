@@ -87,6 +87,17 @@ describe TakeAway do
 
   context "incorrect payment is made" do
 
+    describe "#checkout" do
+      it "allows customer to pay a specific amount" do
+        expect(takeaway).to respond_to(:checkout).with(1).argument
+      end
+      it "returns an error if payment is incorrect" do
+        takeaway.basket_total = 7
+        message = "Please pay the correct amount of £7"
+        expect{takeaway.checkout(5)}.to raise_error(message)
+      end
+    end
+
   end
 
 
