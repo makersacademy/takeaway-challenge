@@ -1,4 +1,5 @@
 require 'order'
+require 'menu'
 
 describe Order do
 
@@ -18,6 +19,14 @@ it 'raises an error message when the chosen dish is not available from the menu'
   expect { order.add(:banana,4) }.to raise_error "Banana is not on the menu"
 end
 
+it 'calculates the total of the order' do
+  allow(menu).to receive(:has_dish?).and_return(true)
+  allow(menu).to receive(:price).with(:chicken).and_return(3.50)
+  order.add(:chicken, 3)
+  total = 10.50
+  expect(order.total).to eq(total)
+
+end
 
 
 

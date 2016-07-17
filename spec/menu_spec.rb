@@ -30,6 +30,9 @@ end
     expect(menu.has_dish?(:Bananas)).to be(false)
   end
 
+  it 'gives the price of the dish' do
+    expect(menu.price(:chicken)).to eq(dishes[:chicken])
+  end
 
 
 end

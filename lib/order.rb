@@ -13,8 +13,22 @@ def add(dish, quantity)
   dishes[dish] = quantity
 end
 
+def total
+
+item_total.inject(:+)
+
+end
 
 
 attr_reader :menu
+
+private
+def item_total
+dishes.map do |dish, quantity|
+menu.price(dish) * quantity
+end
+
+end
+
 
 end

@@ -10,15 +10,15 @@ def initialize(menu: menu, order: nil)
 end
 
 def print_menu
-menu.print_this
+  menu.print_this
 end
 
 def place_order(dishes)
   dishes.each do |dish, quantity|
     order.add(dish,quantity)
   end
+    order.total
 end
-
 
 
 
