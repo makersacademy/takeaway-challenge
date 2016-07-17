@@ -1,7 +1,8 @@
 require_relative 'menu'
 
 class Takeaway
-attr_reader  :total_price
+
+
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = {}

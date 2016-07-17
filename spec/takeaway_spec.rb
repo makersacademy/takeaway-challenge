@@ -10,11 +10,11 @@ describe Takeaway do
 describe "#place_an_order" do
   it { is_expected.to respond_to(:place_an_order).with(2).argument }
   it 'raises an error if dish is not listed in the menu' do
-    message = 'Item is not listed in the menu'
-    expect{subject.place_an_order(:dish, :qnty)}.to raise_error message
+        message = 'Item is not listed in the menu'
+        expect{subject.place_an_order(:dish, :qnty)}.to raise_error message
 
   end
-  end
+end
 
 
 describe '#basket' do
