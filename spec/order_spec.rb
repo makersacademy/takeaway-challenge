@@ -15,4 +15,11 @@ describe Order do
     expect{order.add_dish("Fish", 1)}.to raise_error "That dish is not on the menu"
   end
 
+  it 'total of all dishes in @basket' do
+    order.add_dish("Chicken", 1)
+    order.add_dish("Beef", 1)
+    order.add_dish("Veg", 1)
+    expect(order.total).to eq(13.0)
+  end
+
 end
