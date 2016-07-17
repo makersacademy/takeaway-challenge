@@ -1,8 +1,9 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu: menu) }
-  let(:menu) { double(:menu, print: printed_menu) }
+  let(:menu) { double(:menu, print_menu: printed_menu, dishes: "sashimi") }
+  subject(:takeaway) { described_class.new(menu, basket) }
+  let(:basket) { double(:basket) }
   let(:printed_menu) { "sashimi: £4" }
 
   describe '#read_menu' do
@@ -11,6 +12,22 @@ describe Takeaway do
     end
   end
 
+  describe '#order' do
+    it 'should raise an error if the dish is not on menu' do
+      expect{takeaway.order("burger", 4)}.to raise_error "Sorry, this is not on the menu"
+    end
+    it 'should confirm what has been added to basket' do
+      expect(basket).to receive(:add)
+      expect(takeaway.order("sashimi", 2)).to eq("2x sashimi(s) added to your basket.")
+    end
+  end
+
+  describe '#confirm_order' do
+    xit 'should send an SMS to confirm the order' do
+      takeaway.order("sashimi", 3)
+
+    end
+  end
 
 
 end

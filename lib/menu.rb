@@ -1,8 +1,14 @@
 class Menu
   attr_reader :dishes
 
-  def initialize(dishes)
-    @dishes = dishes
+    MENU = {
+      "sashimi" => 5,
+      "tempura" => 4,
+      "uni" => 4
+    }
+
+  def initialize
+    @dishes = MENU
   end
 
   def print_menu
@@ -13,27 +19,3 @@ class Menu
 
 
 end
-
-
-
-
-
-
-# class Menu
-# attr_reader :dishes
-#
-#   MENU = {
-#     :sashimi => 5,
-#     :tempura => 4,
-#     :uni => 4
-#   }
-#
-#   def initialize
-#     @dishes = MENU
-#   end
-#
-#   def menu_list
-#       @dishes.each { |item, price| "#{item}: £#{price}, " }
-#   end
-#
-# end

@@ -1,11 +1,8 @@
 require 'menu'
 
 describe Menu do
-  subject(:menu) { described_class.new(dishes) }
-  let(:dishes) { {
-    sashimi: 5,
-    tempura: 4
-    } }
+  subject(:menu) { described_class.new }
+  let(:dishes) { Menu::MENU }
 
   describe '#dishes' do
     it 'has a list of dishes with prices' do
@@ -15,7 +12,7 @@ describe Menu do
 
   describe '#print' do
     it 'prints a list of dishes with prices' do
-      printed_menu = "Sashimi: £5, Tempura: £4"
+      printed_menu = "Sashimi: £5, Tempura: £4, Uni: £4"
       expect(menu.print_menu).to eq(printed_menu)
     end
   end
