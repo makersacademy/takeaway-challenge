@@ -19,15 +19,22 @@ describe "#place_an_order" do
 
 describe '#basket' do
 
-#   it 'stores an order' do
-#     subject.place_an_order(:dish, :qnty)
-#     expect(subject.basket).to eq "Items in your basket: #{[{:dish => :qnty}]}"
-# end
-#  it 'can stores a number of orders' do
-#    subject.place_an_order(:dish, :qnty)
-#    subject.place_an_order(:dish, :qnty)
-#    message = "Items in your basket: #{[{:dish => :qnty}, {:dish=>:qnty}]}"
-#    expect(subject.basket).to eq message
-#  end
+  it 'stores an order' do
+    subject.place_an_order("King Prawn Noodles", 5)
+    expect(subject.basket).to eq "{\"King Prawn Noodles\"=>5}"
+    subject.basket
+end
+ it 'can stores a number of orders' do
+   subject.place_an_order("Beef Fried Rice")
+   subject.place_an_order("Beef Fried Rice", 2)
+   expect(subject.basket).to eq "{\"Beef Fried Rice\"=>3}"
+   subject.basket
+ end
+
+ it 'displays total' do
+   subject.place_an_order("Beef Fried Rice")
+   subject.place_an_order("King Prawn Noodles", 3)
+   expect(subject.total).to eq "Total is £21.30"
+ end
 end
 end
