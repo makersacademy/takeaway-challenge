@@ -33,6 +33,10 @@ Require the application in irb.
 $ irb
 $ 2.3.1 :001 > require './lib/takeaway'
 ```
+Load custom CSV with dishes and prices (optional).
+```
+$ 2.3.1 :002 > takeaway = Takeaway.new(csv: CsvReader.new(file: "filename.csv"))
+```
 
 Usage Example
 -------
