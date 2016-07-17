@@ -9,6 +9,7 @@ class Order
   end
 
   def add_dish(dish, quantity)
+    dish = dish.capitalize
     fail "That dish is not on the menu" if !@menu.dishes.key?(dish)
     @basket.store(dish, quantity)
   end
