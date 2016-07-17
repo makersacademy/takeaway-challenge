@@ -8,7 +8,7 @@ describe MainCourse do
       context 'when starters are created' do
         it 'holds a list of main courses and prices in a hash' do
           puts "=================#{subject.main_course}================"
-          expect(subject.main_course).to include("PhadThai" => "£9.50")
+          expect(subject.main_course).to include("PhadThai" => "9.50")
         end
         end
   end

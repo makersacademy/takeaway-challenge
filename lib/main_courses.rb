@@ -8,7 +8,7 @@ class MainCourse
 
   def list
     CSV.open("/Users/thadycondon/Documents/Projects/takeaway-challenge/lib/main_courses.csv", :row_sep => :auto, :col_sep => ",") do |dishes|
-    dishes.each { |dish, price| @main_course << {dish => price} }
+    dishes.each { |dish, price| @main_course << {dish => price}}
   end
 end
 

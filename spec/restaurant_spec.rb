@@ -8,9 +8,8 @@ describe Restaurant do
   it { is_expected.to respond_to :menu}
   it { is_expected.to respond_to :place_order}
   it { is_expected.to respond_to :order}
-
-
-
+  it { is_expected.to respond_to :customer_order}
+  it { is_expected.to respond_to :bill}
 
 
 describe '#welcome' do
@@ -30,7 +29,7 @@ describe '#menu' do
   end
 end
 
-describe '#order' do
+describe '#place_order' do
   context 'when customer wants to order' do
     it 'creates an order' do
       subject.place_order
@@ -38,5 +37,16 @@ describe '#order' do
     end
   end
 end
+
+  describe '#order_value' do
+    let(:customer_order) {double = :customer_order, "PhadThai", "SpringRolls"}
+    context 'when customer has ordered' do
+      it 'creates a total value summary' do
+        subject.place_order
+        expect(subject.order_value).to eq "£13.50"
+      end
+    end
+end
+
 
 end

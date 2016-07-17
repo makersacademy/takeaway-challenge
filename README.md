@@ -74,7 +74,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 |Order|sent_confirmation|
 |Delivery|deliver|
 
-
++441639262037
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
