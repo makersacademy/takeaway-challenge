@@ -16,9 +16,9 @@ class Order
   end
 
   def total
-    @menu.dishes.each do |dish, price|
+    @menu.dishes.each do |dish, quantity|
       if @basket.key?(dish)
-        @total += (@basket[dish] * price)
+        @total += (@basket[dish] * quantity)
       end
     end
     @total
