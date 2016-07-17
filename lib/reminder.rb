@@ -10,7 +10,7 @@ class Reminder
 
     @client.messages.create(
     from: '+441412804523',
-    to:   '+447398710678',
+    to:   '+447810968754',
     body: text)
 
   end
