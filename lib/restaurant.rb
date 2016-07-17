@@ -6,7 +6,7 @@ class Restaurant
 
   def initialize(menu:, order: nil)
     @menu = menu
-    @order = order || Order.new
+    @order = order || Order.new(menu)
   end
 
   def print_menu
@@ -17,7 +17,7 @@ class Restaurant
     dishes.each do |dish, qty|
       order.add(dish, qty)
     end
-
+    order.total
   end
 
 private
