@@ -6,5 +6,4 @@ describe Menu do
     expect(subject.view).to eq subject.menu
   end
 
-  
 end
