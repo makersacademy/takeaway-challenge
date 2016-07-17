@@ -1,7 +1,7 @@
 require_relative 'menu'
 
 class Takeaway
-  attr_reader :basket
+attr_reader :basket
 
 def initialize(menu = Menu.new)
   @basket = {}
@@ -15,7 +15,7 @@ end
 def order(dish, number = 1)
   fail "#{dish} is not on the menu. Sorry!" unless @menu.contain?(dish)
   fail "Order value must be more than 0" if number < 1
-  @basket[dish] = number
+  @basket.has_key?(dish) ? @basket[dish] += number : @basket[dish] = number
   puts "#{number} x #{dish} added to your order!"
 end
 
@@ -31,7 +31,7 @@ def total
 end
 
 def checkout(total_price)
-  fail 'Not currect total' if total_price != total
+  fail 'Please enter the correct total to checkout' if total_price != total
   puts "Your order has been received!"
 end
 
