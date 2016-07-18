@@ -1,12 +1,14 @@
+require 'menu'
+
 class Order
 
   def initialize
     @new_order = Menu.new
-    @ordered = []
+    @ordered = {}
   end
 
-  def selection(item, qty)
-    @ordered << { item => qty }
+  def select_item(item, qty)
+    @ordered
   end
 
   def total_cost

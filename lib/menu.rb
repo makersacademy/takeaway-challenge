@@ -13,7 +13,8 @@ class Menu
 
   def menu_load(menu_list)
     CSV.foreach(menu_list) do |row|
-      item, cost = row[0], row[1]
+      item = row[0]
+      cost = row[1]
       menu_add(item, cost)
     end
   end
