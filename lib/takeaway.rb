@@ -6,9 +6,10 @@ class Takeaway
 
   attr_reader :order
 
-  def initialize menu=Menu.new, order=CurrentOrder.new
+  def initialize menu=Menu.new, order=CurrentOrder.new, checkout=Checkout.new
     @menu = menu
     @order = order
+    @checkout = checkout
   end
 
   def view_menu
@@ -26,8 +27,7 @@ class Takeaway
 
   def checkout
     return "Sorry, you haven't placed an order yet!" if order_not_placed?
-    checkout = Checkout.new
-    order.reset_order! if checkout.confirm_order
+    order.reset_order! if @checkout.confirm_order
   end
 
   private

@@ -1,9 +1,13 @@
+require 'json'
+
 class Menu
 
   attr_reader :menu
 
-  def initialize
-    @menu = current_menu
+  def initialize menu_file="C:/cygwin64#{Dir.pwd}/lib/menu.json"
+    @json_obj = File.read menu_file
+    @menu = []
+    build_menu
   end
 
   def show_menu
@@ -18,13 +22,8 @@ class Menu
 
   private
 
-  def current_menu
-    [{'Pasta' => '4.50'},
-     {'Garlic Bread' => '2.50'},
-     {'Pizza' => '5.00'},
-     {'Olives' => '1.50'},
-     {'Ice cream' => '3.00'},
-     {'Lemonade' => '1.00'}]
+  def build_menu
+    menu << JSON.parse(@json_obj)
   end
 
 end
