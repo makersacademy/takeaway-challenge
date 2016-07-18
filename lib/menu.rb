@@ -18,19 +18,19 @@ class Menu
 
   def display_menu
     template = "Dish No. - %{dish_no}  Dish Name - %{dish_name}  Dish Price - £%{dish_price}"
-    string_menu = MENU.each { |dish| puts template % dish }
+    string_menu = CHINESE_MENU.each { |dish| puts template % dish }
     CHINESE_MENU
   end
 
   def select_dish(dish_no, quantity)
     order = { dish: nil, quantity: nil }
-    order[:dish] = MENU[dish_no - 1]
+    order[:dish] = CHINESE_MENU[dish_no - 1]
     order[:quantity] = quantity
     @meal << order
   end
 
   def order_total
-    order_total = meal.map {|element| element[:dish][:dish_price] * element[:quantity]}.reduce(0, :+)
+    @order_total = meal.map {|element| element[:dish][:dish_price] * element[:quantity]}.reduce(0, :+)
   end
 
   def order_meal(order_total)
