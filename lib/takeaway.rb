@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
 
@@ -50,9 +52,10 @@ class TakeAway
   end
 
   def send_text(message)
-    require 'rubygems'
-    require 'twilio-ruby'
-    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+    api_sid = ENV.fetch('TWILIO_ACCOUNT_SID')
+    api_auth = ENV.fetch('TWILIO_AUTH_TOKEN')
+
+    @client = Twilio::REST::Client.new(api_sid, api_auth,)
     @client.messages.create(
       from: ENV['TWILIO_NUMBER'],
       to: ENV['TWILIO_MY_NUMBER'],
