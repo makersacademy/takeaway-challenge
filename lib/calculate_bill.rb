@@ -60,7 +60,4 @@ class CalculateBill
     @confirmation = Confirmation.new(@customer_order, '%.2f' % @total_value)
   end
 
-
-
-
 end

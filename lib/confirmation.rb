@@ -17,7 +17,7 @@ class Confirmation
   end
 
   def send_confirmation
-    require_relative 'send_sms'
+    #require_relative 'send_sms'
   end
 
 end

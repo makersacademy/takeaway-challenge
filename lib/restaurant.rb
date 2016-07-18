@@ -34,7 +34,7 @@ class Restaurant
     @total_value = @bill.calculate_total
   end
 
-  
+
 
 private
 
