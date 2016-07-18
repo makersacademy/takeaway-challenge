@@ -5,6 +5,10 @@ class Restaurant
     @menu = menu
   end
 
+  def add_menu(menu)
+    @menu = menu
+  end
+
   def show_menu
     @menu.print_menu
   end

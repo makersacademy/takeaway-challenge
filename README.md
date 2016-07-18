@@ -21,11 +21,12 @@ Notes
   * Create ```app_env_vars.rb``` in the file-path: ```./config/initializers/```
   * Edit ```app_env_vars.rb``` to include:
 
-    ```
-    ENV['ACCOUNT_SID'] = 'YOUR_TWILIO_SID'
-    ENV['AUTH_TOKEN'] = 'YOUR_TWILIO_TOKEN'
-    ENV['TWILIO_NUM'] = 'YOUR_TWILIO_PHONE_NUMBER'
-    ```
+```
+ENV['ACCOUNT_SID'] = 'YOUR_TWILIO_SID'
+ENV['AUTH_TOKEN'] = 'YOUR_TWILIO_TOKEN'
+ENV['TWILIO_NUM'] = 'YOUR_TWILIO_PHONE_NUMBER'
+```
+
 Usage
 -------
 * Inspect ```./spec/feature_tests.rb``` to see proper Usage
@@ -36,6 +37,16 @@ Usage
 
 Instructions
 -------
+* First create dishes
+* Add dishes to menu
+* Create a restaurant
+* Add a menu to the restaurant using restaurant.add_menu(menu)
+* Create a new customer
+* Customer creates a new order at restaurant using customer.new_order(restaurant)
+* Use customer to order/view items
+
+
+----------------
 
 * Challenge time: rest of the day and weekend, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
