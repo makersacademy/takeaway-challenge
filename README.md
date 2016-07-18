@@ -39,7 +39,7 @@ Build status
 
 [![Build Status](https://travis-ci.org/6eff/takeaway-challenge.svg?branch=master)](https://travis-ci.org/6eff/takeaway-challenge)
 
-[![Coverage Status](https://coveralls.io/repos/github/6eff/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/6eff/takeaway-challenge?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/6eff/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/6eff/takeaway-challenge?branch=master)  please click on badge to see updated info if `unknown`
 
 
 ***NOTE
