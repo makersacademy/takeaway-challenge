@@ -1,5 +1,4 @@
 require_relative 'calculate_bill'
-#require_relative 'send_sms'
 class Confirmation
 
   attr_reader :customer_order, :total_value

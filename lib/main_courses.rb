@@ -1,5 +1,7 @@
+require 'csv'
+
 class MainCourse
-  attr_reader :main_course
+  attr_reader :main_course, :list
 
   def initialize
     @main_course = []

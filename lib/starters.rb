@@ -1,5 +1,7 @@
+require 'csv'
+
 class Starters
-  attr_accessor :starters
+  attr_reader :list, :starters
 
 def initialize
   @starters = []
