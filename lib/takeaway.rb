@@ -21,14 +21,7 @@ class Takeaway
     order.store(item,quantity)
   end
 
-  def view_order
-    print_basket
-  end
 
-  def total_cost
-    calculate_total
-    "Total: £#{@total}"
-  end
 
   def place_order
 
@@ -39,26 +32,6 @@ class Takeaway
 
   attr_reader :menu
 
-  def print_basket
-    order.each do |item,quantity|
-    basket << "#{item} x #{quantity} = £#{"%.2f" % (subtotal(item,quantity))}"
-    @basket_details = basket.join(" ")
-    end
-  end
-
-  def subtotal(item,quantity)
-  menu.find_item_cost(item) * quantity
-  end
-
-  def calculate_total
-    order.each do |item,quantity|
-      subtotals << (subtotal(item,quantity))
-      @total = sum(subtotals)
-    end
-  end
-
-  def sum(subtotal)
-      "%.2f" % (subtotal.reduce(:+))
-  end
+  
 
 end

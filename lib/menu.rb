@@ -15,9 +15,6 @@ attr_reader :menu_items
     }
   end
 
-  def find_item_cost(item)
-    menu_items[item]
-  end
 
   def print_list
     menu_items.map {|item, price| "%s: £%.2f" % [item.to_s.capitalize, price]}.join(", ")
