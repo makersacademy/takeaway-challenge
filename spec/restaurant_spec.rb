@@ -10,9 +10,6 @@ describe Restaurant do
   it { is_expected.to respond_to :customer_order}
   it { is_expected.to respond_to :bill}
 
-  before do
-    allow($stdout).to receive(:write)
-  end
 
 
 describe '#welcome' do
