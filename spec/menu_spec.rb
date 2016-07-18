@@ -10,5 +10,9 @@ describe Menu do
       dishes = Menu::DISHES
       expect(menu.dishes).to include dishes
     end
+    it 'calculates the price of the dishes' do
+      dishes = { "Jalfrezi" => 5.99, "Naan" => 1 }
+      expect(menu.price("Naan")).to eq(dishes["Naan"])
+    end
   end
 end

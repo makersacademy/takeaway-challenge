@@ -8,11 +8,23 @@ class Takeaway
   end
 
   def read_menu
-    @menu.dishes
+    menu.dishes
   end
 
   def order(dish, quantity = 1)
+    fail 'Sorry, this dish is currently not on the menu' if not_available?(dish)
     puts "#{quantity}x #{dish}(s) added to your basket."
     @order.add(dish, quantity = 1)
   end
+
+  def total
+    puts "Total: £#{@order.total}"
+  end
+
+private
+
+def not_available?(dish)
+  return true if menu.dishes[dish].nil?
+end
+
 end
