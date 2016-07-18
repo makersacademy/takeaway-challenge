@@ -1,20 +1,26 @@
 require_relative 'menu'
+require_relative 'order'
+require_relative 'messenger'
 
 class Takeaway
 
   def initialize
-    @restaurants = ["Health food Haven"]
-    restaurant_list
+    @menu = Menu.new
+    @order = Order.new
+    @message = Messenger.new
   end
 
-  def restaurant_list
-    "This is our list of restaurants #{@restaurants}"
+  def menu
+    @menu.show_menu
   end
 
-  def restaurant_choice(name)
-    fail "Sorry we don't serve #{name} yet" unless @restaurants.include? name
-#change fail to some form of error
-    Menu.new
-    name
+  def order
+    @order.add_to_basket(name, quantity)
+    @order.total
+  end
+
+  def checkout
+    charge
+    message.send_message
   end
 end

@@ -1,17 +1,37 @@
 require "takeaway"
+require "menu"
 
 describe Takeaway do
-let(:restaurant_name) { ("Health food Haven") }
+  let(:menu) { ("Celery Cupcakes, 2.95, Lacto-Free Milk, 1.95, Fat-Free Butter, 3.5") }
 
-   it{  is_expected.to respond_to :restaurant_list}
+  describe "#show_menu" do
 
-   describe '#restaurant_choice' do
-     it "collects the user input for the restaurant" do
-       expect(subject.restaurant_choice(restaurant_name)).to eq restaurant_name
-     end
-     it "rejects restaurants that are not yet serviced" do
-       expect{subject.restaurant_choice("McDonalds")}.to raise_error "Sorry we don't serve McDonalds yet"
-     end
-   end
+    it "shows the menu" do
+      expect(subject.menu).to eq menu
+    end
+  end
 
+  describe "#total" do
+
+    it "should return a number as the basket total price" do
+      expect(subject.total).to be_an Integer
+    end
+  end
+
+  describe "#checkout" do
+
+    it "should raise an error if there's nothing to check out" do
+      expect(subject.checkout).to raise_error"You have not added any items to your basket"
+    end
+  end
+
+
+
+  describe "#order" do
+
+    it "returns the basket items" do
+      subject.order("Celery Cupcake", 2)
+      expect(subject.basket).to eq(["Celery Cupcake", "Celery Cupcake"])
+    end
+  end
 end

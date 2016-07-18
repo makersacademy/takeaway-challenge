@@ -1,23 +1,29 @@
 require_relative 'takeaway'
+require_relative 'order'
+
 class Menu
 
-  attr_reader :order, :takeaway
+  attr_reader :menu_list
 
   def initialize
-    @menu_list = {"Banana Smoothie" => 2.95}
+    @menu_list = {"Celery Cupcakes" => 2.95,
+                "Lacto-Free Milk" => 1.95,
+                "Fat-Free Butter" => 3.50}
   end
 
-  def menu
-    return @menu_list
+  def show_menu
+    @menu_list.flatten.join(", ")
   end
 
   def make_an_order(confirm)
-  #  return "Would you like to order from this restaurant, or return to the restaurant list"
+  #Would you like to order from this restaurant
     case confirm
     when 'yes'
       @order = Order.new
+      @order
     when 'no'
       @takeaway = Takeaway.new
+      @takeaway
     end
   end
 end
