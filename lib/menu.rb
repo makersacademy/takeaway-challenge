@@ -1,15 +1,17 @@
 class Menu
 
-attr_accessor :list_of_dishes
+attr_reader :list_of_dishes
 
-  def initialize
-    @list_of_dishes = {balti: 5.00, vindaloo: 4.50}
+  def initialize(list_of_dishes)
+    @list_of_dishes = list_of_dishes
   end
 
   def print_menu
-    list_of_dishes.map {|key,value| "#{key} £#{value}"}.join(" , ")
+    list_of_dishes.map do |title, price|
+      "%s £%.2f" % [title.to_s.capitalize, price]
+    end.join(", ")
   end
 end
-
-
-private
+#
+#
+# private

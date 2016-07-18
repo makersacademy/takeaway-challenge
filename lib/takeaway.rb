@@ -1,5 +1,7 @@
 require_relative "menu"
 
+
+
 class Takeaway
 
   def initialize(menu:)
@@ -7,7 +9,9 @@ class Takeaway
   end
 
   def print_menu
-    menu.print
+    dishes.map do |title,price|
+      "$s £.2f" % [title.to_s.capitalize, price]
+    end
   end
 
 private
