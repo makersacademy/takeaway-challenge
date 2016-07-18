@@ -1,7 +1,7 @@
 require 'coveralls'
 Coveralls.wear!
 require 'capybara/rspec'
-require 'pry'
+# require 'pry'
 require 'webmock/rspec'
 require 'vcr'
 
