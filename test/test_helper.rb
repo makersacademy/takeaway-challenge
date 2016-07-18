@@ -1,2 +1,2 @@
 require 'webmock/test_unit'
-require 'webmock/minitest'
+# require 'webmock/minitest'

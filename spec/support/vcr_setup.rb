@@ -6,5 +6,5 @@ VCR.configure do |c|
 end
 VCR.configure do |c|
   c.hook_into                :webmock
-  c.cassette_library_dir     = 'cassettes'
+  c.cassette_library_dir     = 'vcr_cassettes'
 end

@@ -1,5 +1,6 @@
 # =begin
 require 'spec_helper'
+require 'support/vcr_setup.rb'
 
 feature 'twilio confirmation message' do
   scenario 'user receives order confirmation sms' do

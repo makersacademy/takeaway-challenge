@@ -1,16 +1,19 @@
 require 'coveralls'
 Coveralls.wear!
 require 'capybara/rspec'
-# require 'pry'
+require 'pry'
 require 'webmock/rspec'
 require 'vcr'
+require 'support/vcr_setup'
+require 'dotenv'
+Dotenv.load
 
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.allow_http_connections_when_no_cassette = true
-  c.filter_sensitive_data("TAC12576d9d4444042d6f5bc1d8b3075ada") {ENV['TWILIO_ACCOUNT_SID']}
-  c.filter_sensitive_data("e312e0de7ef6b7eb933dc78c3329122b"){ENV['TWILIO_AUTH_TOKEN']}
+  c.filter_sensitive_data("<TWILIO_ACCOUNT_SID>") {ENV['TWILIO_ACCOUNT_SID']}
+  c.filter_sensitive_data("<TWILIO_AUTH_TOKEN>"){ENV['TWILIO_AUTH_TOKEN']}
   c.hook_into :webmock
 end
 
