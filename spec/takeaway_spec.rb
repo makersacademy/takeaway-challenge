@@ -2,14 +2,20 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new }
+  subject(:takeaway) { described_class.new(menu) }
+  let(:menu) do { chicken: 3.99, chips: 2.99 } end
 
   it "has a default empty order" do
-    expect(takeaway.order).to be_empty
+    expect(takeaway.order_list).to be_empty
   end
 
-  it "displays menu" do
-    expect(takeaway.print_menu).to eq "Menu"
+  it "adds selected dish to order" do
+    takeaway.order("chips", 2)
+    expect(takeaway.order_list).to include ("2x chips: 5.98")
+  end
+
+  it "raises an error when selected dish is not in menu" do
+    expect { takeaway.order("wather") }.to raise_error "Wrong item selected!"
   end
 
 end
