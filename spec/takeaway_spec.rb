@@ -2,11 +2,17 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
-  let(:message) { double(:message) }
   let(:menu) { double(:menu) }
+  let(:message) { double(:message) }
 
-  it { is_expected.to(respond_to(:order)) }
-  it { is_expected.to(respond_to(:order)) }
+
+  describe '#show_menu' do
+    it 'prints the menu' do
+      takeaway = Takeaway.new(menu)
+      expect(menu).to(receive(:print_menu))
+      takeaway.show_menu
+    end
+  end
 
 
   describe '#order' do

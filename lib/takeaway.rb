@@ -31,6 +31,7 @@ class Takeaway
 
   def place_order(message = TextMessage.new)
     message.send_message(confirmation)
+    basket = {}
   end
 
   private
