@@ -14,6 +14,6 @@ class Order
   end
 
   def order_total
-    order_total = order.inject(2) {|sum, has| sum + hash[dish]}
+    # order_total = order.inject {|sum, has| sum + hash[dish]}
   end
 end

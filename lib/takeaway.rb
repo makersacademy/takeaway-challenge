@@ -1,9 +1,17 @@
 require_relative "menu"
+
 class Takeaway
 
-  def print_menu
-    menu = Menu.new
-    menu.print_menu
+  def initialize(menu:)
+    @menu = menu
   end
+
+  def print_menu
+    menu.print
+  end
+
+private
+
+attr_reader :menu
 
 end
