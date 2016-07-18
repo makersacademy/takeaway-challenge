@@ -14,14 +14,16 @@ let(:message) {double(:message, send_confirmation: "Thank you! Your order was pl
   end
 
   context 'So a customer can add to their basket' do
+    before do
+      restaurant.order_dish(dish: "chicken",quantity: 2)
+    end
 
     it 'allows single dishes to be placed' do
-      restaurant.order_dish(dish: "chicken",quantity: 2)
       expect(restaurant.order).to eq({"chicken" => 2})
     end
 
     it 'allows multiple dishes to be selected' do
-      restaurant.order_dish(dish: "chicken",quantity: 2)
+
       restaurant.order_dish(dish: "Noodles",quantity: 4)
       expect(restaurant.order).to eq({"chicken" => 2, "Noodles" => 4})
     end

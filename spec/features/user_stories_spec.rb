@@ -22,14 +22,15 @@ describe 'User Stories' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   context 'So a customer can add dishes to their basket' do
+    before do
+      restaurant.order_dish(dish: "Chicken",quantity: 2)
+    end
 
     it 'allows single dishes to be selected' do
-      restaurant.order_dish(dish: "Chicken",quantity: 2)
       expect(restaurant.order).to eq({"Chicken" => 2})
     end
 
     it 'allows multiple dishes to be selected' do
-      restaurant.order_dish(dish: "Chicken",quantity: 2)
       restaurant.order_dish(dish: "Noodles",quantity: 4)
       expect(restaurant.order).to eq({"Chicken" => 2, "Noodles" => 4})
     end
