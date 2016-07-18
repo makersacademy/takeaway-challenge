@@ -12,7 +12,7 @@ class Takeaway
   def order(price, *food)
     @new_order = Order.new(food)
     @price = @new_order.current_order
-    raise "That price doesn't match the food order" if price != @price
+    fail "That price doesn't match the food order" if price != @price
     @new_order.complete
   end
 

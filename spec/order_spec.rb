@@ -1,8 +1,7 @@
 require 'order'
 
 describe Order do
-  #let(:food) {double(:food => 1)}
-  before (:each) do
+  before(:each) do
     @order = Order.new([:Chicken_Burger, :Chips])
   end
   it "totals up the price of the order" do

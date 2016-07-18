@@ -10,7 +10,7 @@ class Order
 
   def total_up(food)
     @current_order = 0
-    food.each { |item| @current_order = @current_order + Menu.new.menu[item] }
+    food.each { |item| @current_order += Menu.new.menu[item] }
     @current_order
   end
 
