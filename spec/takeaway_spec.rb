@@ -1,24 +1,33 @@
-require 'takeaway'
+require "takeaway"
 
 describe Takeaway do
-  it 'respodns to #show_menu' do
-    expect(subject).to respond_to(:show_menu)
-  end
-  describe '#show_menu' do
-    let(:menu) { {:dish => :price} }
-    specify { expect{subject.show_menu}.to output("#{:dish}.....#{menu[:dish]}\n").to_stdout}
-  end
+  subject(:takeaway) { described_class.new(menu: menu, order: order) }
 
-  describe "#order" do
-    let(:dish) {double :dish}
-    let(:number) {double :number}
-    it 'accepts dish and number as arguments' do
-      expect(subject).to respond_to(:order).with(2).arguments
-    end
+  let(:menu) { double(:menu, print: printed_menu) }
+  let(:order) { instance_double("Order", total: 15.50) }
+  let(:printed_menu) { "Chicken: £3.50" }
 
-    it "returns order made" do
-      expect(subject.order(dish, number)).to eq [[number, dish]]
-    end
+  let(:dishes) { {chicken: 2, fish: 1} }
+
+  before do
+    allow(order).to receive(:add)
   end
 
+  it "shows the menu with the dishes and prices" do
+    expect(takeaway.print_menu).to eq(printed_menu)
+  end
+
+  it "can order some number of several available dishes" do
+    expect(order).to receive(:add).twice
+    takeaway.place_order(dishes)
+  end
+
+  it "knows the order total" do
+    total = takeaway.place_order(dishes)
+    expect(total).to eq(15.50)
+  end
+
+  xit "sends an SMS when the order has been placed" do
+    
+  end
 end

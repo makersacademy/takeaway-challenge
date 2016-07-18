@@ -1,16 +1,28 @@
+require "./lib/order"
+require "./lib/send_sms"
+
 class Takeaway
-attr_reader :order_made
-  def initialize
-    @order_made = []
-    @menu = {:dish => "price"}
+  def initialize(menu:, order: nil)
+    @menu = menu
+    @order = order || Order.new(menu)
   end
 
-  def show_menu
-    @menu.each { |k, v| puts "#{k}.....#{v}" }
+  def print_menu
+    menu.print
   end
 
-  def order dish, number
-    @order_made << [number, dish]
+  def place_order(dishes)
+    add_dishes(dishes)
+    order.total
   end
 
+  private
+
+  attr_reader :menu, :order
+
+  def add_dishes(dishes)
+    dishes.each do |dish, quantity|
+      order.add(dish, quantity)
+    end
+  end
 end
