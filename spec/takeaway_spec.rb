@@ -4,10 +4,12 @@ require 'current_order'
 describe Takeaway do
 
   let(:takeaway) { described_class.new }
+  let(:menu) { double :menu }
 
   context 'when viewing' do
 
     it 'has a list of dishes and prices to be viewed' do
+      allow(menu).to receive(:show_menu).and_return true
       expect(takeaway.view_menu).to_not be_nil
     end
 

@@ -21,13 +21,13 @@ class Takeaway
   end
 
   def view_order
-    @order.view_order
+    order.view_order
   end
 
   def checkout
     return "Sorry, you haven't placed an order yet!" if order_not_placed?
     checkout = Checkout.new
-    @order.reset_order! if checkout.confirm_order
+    order.reset_order! if checkout.confirm_order
   end
 
   private
@@ -40,7 +40,7 @@ class Takeaway
   end
 
   def order_not_placed?
-    @order.customer_order.empty?
+    order.customer_order.empty?
   end
 
 end
