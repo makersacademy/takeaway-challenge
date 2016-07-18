@@ -4,7 +4,7 @@ class Menu
 
   attr_reader :menu
 
-  def initialize menu_file="C:/cygwin64#{Dir.pwd}/lib/menu.json"
+  def initialize menu_file="#{Dir.pwd}/lib/menu.json"
     @json_obj = File.read menu_file
     @menu = []
     build_menu
