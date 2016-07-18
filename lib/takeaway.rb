@@ -9,19 +9,19 @@ class Takeaway
     @menu = menu
   end
 
-  def order(dish_name, quantity=1)
-    fail "Wrong item selected!" unless in_menu?(dish_name)
-     @order_list << "#{quantity}x #{dish_name.to_sym}: #{quantity*(@menu[dish_name.to_sym])}"
+  def order(name, qty=1)
+    fail "Wrong item selected!" unless in_menu?(name)
+     @order_list << "#{qty}x #{name.to_sym}: #{qty*(@menu[name.to_sym])}"
   end
 
   private
 
-  def get_dish(dish_name)
-    @menu.select { |name| dish_name.to_sym == name }
+  def get_dish(name)
+    @menu.select { |dish_name| name.to_sym == name }
   end
 
-  def in_menu?(dish_name)
-    @menu.include? dish_name.to_sym
+  def in_menu?(name)
+    @menu.include? name.to_sym
   end
 
 end
