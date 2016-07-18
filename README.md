@@ -35,4 +35,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 
-The program is fully functional and has comprehensive test coverage.From here I would like to have fully tested the SMS function. Ideally, I would have constructed the tests before implementing this functionality. It would also have been nice to reduce the number of public methods in the program, particularly in the 'takeaway' class.
+The program is fully functional and has comprehensive test coverage. From here I would like to have fully tested the SMS function. Ideally, I would have constructed the tests before implementing this functionality. It would also have been nice to reduce the number of public methods in the program, particularly in the 'takeaway' class.
