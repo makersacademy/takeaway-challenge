@@ -17,8 +17,8 @@ describe 'user stories' do
   it 'as a customer, I can check the total' do
     takeaway = Takeaway.new
     takeaway.add("cheeseburger", 3)
-    correct_total_message = "£15.00 is the correct total"
-    expect(takeaway.check_total(15)).to eq(correct_total_message)
+    correct_total_message = "The correct total is £15.00."
+    expect(takeaway.check_total).to eq(correct_total_message)
   end
 
 end

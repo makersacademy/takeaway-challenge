@@ -5,7 +5,7 @@ describe Order do
 
   context 'initialize' do
     it 'contains an empty list' do
-      expect(order.items).to eq({})
+      expect(order.basket).to eq({})
     end
 
     it 'starts with a total of 0' do
@@ -14,16 +14,12 @@ describe Order do
   end
 
   context '#add' do
-    it 'can respond to add' do
-      expect(order).to respond_to(:add).with(3).arguments
-    end
-
-    it 'can add items to the list' do
+    it 'adds items to the basket' do
       order.add("chips", 1.00, 2)
-      expect(order.items).to include("chips" => 2)
+      expect(order.basket).to include("chips" => 2)
     end
 
-    it 'increments the total' do
+    it 'keeps track of the total' do
       order.add("chips", 1.00, 3)
       expect(order.total).to eq(3)
     end

@@ -3,32 +3,36 @@ require 'takeaway'
 describe Takeaway do
   subject(:takeaway) { described_class.new }
   let(:order) { double :order, :add => 0 }
-  #let(:menu) { double :menu }
+  let(:text) {double :text}
 
-  it 'can display a menu' do
+  it 'displays the menu' do
     expect(takeaway.read_menu).to include({ "chips" => 1.00 })
   end
 
-  it 'can add items to an order' do
-    takeaway.add("chips", 2)#allow(order).to receive(:add)
-    expect(takeaway.view_order).to eq({"chips" => 2})
-
+  it 'passes items to the order basket' do
+    takeaway.add("chips", 2)
+    message = "Your basket contains: {\"chips\"=>2}"
+    expect(takeaway.view_order).to eq(message)
   end
 
-  context 'order total is correct' do
-    it 'gives the correct total' do
-      takeaway.add("coke", 2)
-      takeaway.add("chips", 1)
-      expect(takeaway.check_total(2.4)).to eq("£2.40 is the correct total")
-    end
+  it 'returns the correct total' do
+    takeaway.add("coke", 2)
+    takeaway.add("chips", 1)
+    expect(takeaway.check_total).to eq("The correct total is £2.40.")
   end
 
-  context 'order total is wrong' do
-    it 'raises error' do
-      takeaway.add("coke", 2)
-      takeaway.add("chips", 1)
-      expect(takeaway.check_total(3.5)).to eq("Wrong total: I have £2.40")
-    end
-  end
+  # context 'confirming the order' do
+  #   before do
+  #     allow(takeaway).to receive(:send_text)
+  #   end
+  #
+  #   it 'sends an SMS confirmation' do
+  #     takeaway.add("coke", 2)
+  #     takeaway.add("chips", 1)
+  #     expect(takeaway).to receive(:send_text)
+  #     takeaway.confirm_order(2.40)
+  #   end
+  # end
+
 
 end
