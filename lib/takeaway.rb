@@ -16,10 +16,6 @@ class Takeaway
 
   private
 
-  def get_dish(name)
-    @menu.select { |dish_name| name.to_sym == name }
-  end
-
   def in_menu?(name)
     @menu.include? name.to_sym
   end
