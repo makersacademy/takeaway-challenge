@@ -39,6 +39,8 @@ Build status
 
 [![Build Status](https://travis-ci.org/6eff/takeaway-challenge.svg?branch=master)](https://travis-ci.org/6eff/takeaway-challenge)
 
+[![Coverage Status](https://coveralls.io/repos/github/6eff/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/6eff/takeaway-challenge?branch=master)
+
 
 ***NOTE
 SMS integration is in `send_sms` file. Method not yet stubbed, thus was commented out and isn't used, to prevent sending unnecessary text messages. 
