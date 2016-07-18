@@ -21,10 +21,10 @@ class Takeaway
     puts "Total: £#{@order.total}"
   end
 
-private
+  private
 
-def not_available?(dish)
-  return true if menu.dishes[dish].nil?
-end
+  def not_available?(dish)
+    return true if menu.dishes[dish].nil?
+  end
 
 end

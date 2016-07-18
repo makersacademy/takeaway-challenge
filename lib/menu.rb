@@ -3,7 +3,7 @@ class Menu
             "Tikka"=> 4.99,
             "Balti"=> 5.49,
             "Butter Chicken"=> 12,
-            "Naan"=> 1}
+            "Naan"=> 1}.freeze
 
   attr_reader :dishes
   def initialize

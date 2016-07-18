@@ -15,9 +15,10 @@ class Order
     basket_total.inject(:+)
   end
 
-private
-def basket_total
-  @basket.map { |order, quantity| @menu.price(order) * quantity }
-end
+  private
+
+  def basket_total
+    @basket.map { |order, quantity| @menu.price(order) * quantity }
+  end
 
 end
