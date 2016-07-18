@@ -17,6 +17,8 @@ Takeaway Challenge              [![Build Status](https://travis-ci.org/nomi811/t
 Author Nomi Vos
   * with the help of various sources
 
+  * I went through this challenge three times.  The first time, (project branch) I followed along with the YouTube video, then I did it again (project2 branch) with the help of my code from the video, the third time (project3 branch) I tried to come up with a different way, and used various sources to figure it out.  I learned new things each time.
+
 
 Instructions
 -------
