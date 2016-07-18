@@ -2,6 +2,12 @@ require 'twilio-ruby'
 
 class TextMessage
 
+  def message(confirmation)
+    send_message(confirmation)
+  end
+
+  private
+  
   def send_message(confirmation)
 
     account_sid = 'AC89d6c3870f2c469426d3bd7eb918733c'

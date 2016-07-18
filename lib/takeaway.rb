@@ -5,16 +5,13 @@ class Takeaway
 
   attr_reader :basket, :menu
 
-  def initialize
+  def initialize(menu = Menu.new)
     @basket = {}
-    @menu = Menu.new.menu
+    @menu = menu
   end
 
   def show_menu
-    menu.each do |item, key|
-      print item.ljust(20)
-      puts "£#{key}".rjust(20)
-    end
+    menu.print_menu
   end
 
   def order(item, quantity = 1)
@@ -27,7 +24,7 @@ class Takeaway
   def total
     total = 0
     basket.each do |key, value|
-      total += (value * menu[key])
+      total += (value * menu.read[key])
     end
     total
   end
@@ -39,7 +36,7 @@ class Takeaway
   private
 
   def check_menu(item)
-    @menu.key?(item)
+    menu.read.key?(item)
   end
 
   def confirm(item, quantity)
