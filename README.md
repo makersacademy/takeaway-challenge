@@ -37,7 +37,7 @@ Load custom CSV with dishes and prices (optional).
 ```
 $ 2.3.1 :002 > takeaway = Takeaway.new(csv: CsvReader.new(file: "filename.csv"))
 ```
-Twilio API: Will require free account with API key which needs to be added to the text_service.rb
+Twilio API: Will require free account with API key which needs to be added to the .env file in the root directory.
 ```
 https://www.twilio.com/try-twilio
 ```
