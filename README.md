@@ -33,7 +33,7 @@ Usage
 * Creation of objects in order:
   * Dishes > Menu > Restaurant > Order > Customer
 * Customer creates an order > Order contains restaurant dishes > Restaurant contains menu > Menu contains dishes
-*                           > Order creates SMS request > SMS sends text message
+* Order creates SMS request > SMS sends text message
 
 Instructions
 -------
