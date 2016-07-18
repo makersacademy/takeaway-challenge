@@ -1,6 +1,7 @@
 #MENU
 require 'twilio-ruby'
-
+require 'dotenv'
+Dotenv.load
 require_relative 'order'
 
 class Menu
@@ -61,20 +62,20 @@ class Menu
     selection_string = "\nType in your selection or press 'q' to go back to main menu"
     selection = "1"
     until selection == "q" do
-      puts selection_string
-      selection = gets.chomp
       if selection.to_i >= 1 && selection.to_i <= @number
         puts selection_string
         selection = gets.chomp
-        choose_dish(selection.to_i)
-      else puts @sorry
+        choose_dish(selection.to_i - 1) if selection.to_i != "q"
+      else
+        puts @sorry
+        break
       end
     end
     main_menu
   end
 
   def choose_dish(dish_selection)
-    @chosen_dishes << @chosen_menu[dish_selection - 1]
+    @chosen_dishes << @chosen_menu[dish_selection]
   end
 
   def total_price
@@ -104,14 +105,14 @@ class Menu
 
   def send_text_message
     time = Time.new + 3600
-    account_sid = "AC1f7a0fa785c565ffb6ff77a824821182"
-    auth_token = "5ea7c644a055348dac4c1acf1d6fdf18"
+    account_sid = ENV.fetch('TWILIO_ACCOUNT_SID')
+    auth_token = ENV.fetch('TWILIO_ACCOUNT_AUTH')
 
     @twilio_client = Twilio::REST::Client.new account_sid, auth_token
 
     @twilio_client.account.sms.messages.create(
-      :from => "+441638640084",
-      :to => "+447775611177",
+      :from => ENV['TWILIO_FROM_NUM'],
+      :to => ENV['TWILIO_TO_NUM'],
       :body => "Thank you for your order. It will be delivered by #{time.strftime("%H:%M")}")
   end
 
