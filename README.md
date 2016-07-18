@@ -15,7 +15,7 @@ Takeaway Challenge
  ```
 
  [![Build Status](https://travis-ci.org/lukecartledge/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lukecartledge/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/lukecartledge/takeaway-challenge/badge.png)](https://coveralls.io/r/lukecartledge/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=mohamedIssaq)
 
 Instructions
 -----
