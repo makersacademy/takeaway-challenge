@@ -16,11 +16,17 @@ class Takeaway
 
   def order
     @order.add_to_basket(name, quantity)
+  end
+
+  def total
     @order.total
   end
 
   def checkout
-    charge
+    charge(@order)
+  end
+
+  def message_confirmation
     message.send_message
   end
 end
