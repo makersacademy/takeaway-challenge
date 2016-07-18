@@ -29,10 +29,11 @@ describe Order do
 #   context '2x rice @1.95 have been ordered' do
 #   it 'shows quantity, dish and total price for dishes' do
 #   subject.add(dish, quantity)
-#   expect(subject.show_order).to eq order2
+#   expect(subject.show_order).to output(order2).to_stdout
 #   end
 #   end
 # end
+
 
   describe 'order_exists' do
     context 'an order has been placed' do

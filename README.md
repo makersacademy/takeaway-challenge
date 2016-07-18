@@ -57,4 +57,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 If I had more time, I would move some of the order methods currently in the TakeAway class and put them in the order class. Also, I'd reafactor some of my code in the Order class as it smells bad.
 
-Build Badges
+[![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg)](https://coveralls.io/github/makersacademy/takeaway-challenge)
