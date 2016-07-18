@@ -1,9 +1,10 @@
 require "menu"
 class Order
 
-  attr_reader :pizza,
+  attr_reader :pizza, :menu
 
   def initialize
+    @menu = Menu.new
     @basket = {}
   end
 
@@ -15,7 +16,7 @@ class Order
   private
 
   def price(item, quantity)
-    Menu.list[item]*quantity
+    menu.pizza[item]*quantity
   end
 
 end
