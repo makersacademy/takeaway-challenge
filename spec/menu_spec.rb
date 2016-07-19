@@ -6,6 +6,8 @@ describe Menu do
   it{is_expected.to respond_to :main_course}
   it{is_expected.to respond_to :main_course_list}
   it{is_expected.to respond_to :create_starters_list}
+  it{is_expected.to respond_to :create_full_menu}
+
 
 describe '#initialize' do
 

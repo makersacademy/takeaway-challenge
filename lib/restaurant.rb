@@ -9,6 +9,7 @@ class Restaurant
 
   def initialize
     welcome
+    @menu = Menu.new
     @total_value = 0
   end
 
@@ -17,7 +18,6 @@ class Restaurant
   end
 
   def view_menu
-    create_menu
     puts "=======Starters========".center(500)
     @menu.print_starters
     puts "=======Main Courses=======".center(500)
@@ -38,9 +38,8 @@ class Restaurant
 
 private
 
-  def create_menu
-    @menu = Menu.new
-  end
+#  def create_menu
+#  end
 
   def create_order
     @order = Order.new

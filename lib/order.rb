@@ -1,9 +1,10 @@
 class Order
 
-attr_accessor :customer_order
+attr_accessor :customer_order, :menu
 
   def initialize
-    @customer_order = []
+    @customer_order = {}
+    @menu = Menu.new
     get_order
   end
 
@@ -13,11 +14,14 @@ attr_accessor :customer_order
     @dish = gets.chomp
     until @dish.empty? do
       puts "How many #{@dish}'s would you like"
-      quantity = gets.chomp.to_i
-      quantity.times {@customer_order << @dish}
+      qty = gets.chomp.to_i
+      @total = @menu.full_menu[@dish].to_i * qty
+      @customer_order.merge!(:dish => @dish, :qty => qty, :total => @total)
       puts "Next dish"
       @dish = gets.chomp
     end
   end
+
+
 
 end

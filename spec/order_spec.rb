@@ -21,6 +21,8 @@ describe Order do
       #assert_equal "PhadThai\n", input.read
     #end
 
+
+
   it 'captures what the customer ordered' do
     subject.get_order
     expect(subject.customer_order).to eq ['PhadThai']
