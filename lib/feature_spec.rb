@@ -15,5 +15,5 @@ puts thai_cottage.place_order
 puts "View order basket"
 puts thai_cottage.customer_order
 
-#puts "Returns price of single dish"
-#puts thai_cottage.order_value
+puts "Returns value of order"
+puts thai_cottage.total_value

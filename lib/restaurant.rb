@@ -29,17 +29,9 @@ class Restaurant
     @customer_order = @order.customer_order
   end
 
-  def order_value
-    creates_calculate_bill
-    @total_value = @bill.calculate_total
-  end
-
 
 
 private
-
-#  def create_menu
-#  end
 
   def create_order
     @order = Order.new
