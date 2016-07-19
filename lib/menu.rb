@@ -28,7 +28,7 @@ attr_accessor :starters,:starters_list, :main_course, :main_course_list, :full_m
   def print_starters
     int = 0
     @starters_list.each do |dish, value|
-      puts "#{int + 1}. #{dish} ---> £#{value} ".center(500)
+      puts "#{int + 1}. #{dish} ---> £#{'%.2f' % value} ".center(500)
       int += 1
     end
   end
@@ -36,7 +36,7 @@ attr_accessor :starters,:starters_list, :main_course, :main_course_list, :full_m
   def print_main_courses
     int = 0
     @main_course_list.each do |dish, value|
-      puts "#{int + (starters_list.count + 1)}. #{dish} ---> £#{value} ".center(500)
+      puts "#{int + (starters_list.count + 1)}. #{dish} ---> £#{'%.2f' % value} ".center(500)
       int += 1
     end
   end
