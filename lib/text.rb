@@ -1,9 +1,10 @@
 require 'twilio-ruby'
-require './twilio_keys.rb'
+require 'dotenv'
+Dotenv.load
 
 class Text
   def initialize
-    @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
   end
 
   def message
@@ -12,8 +13,8 @@ class Text
     hour = 0 if hour == 24
     minute = time.min
     @client.account.messages.create(
-      :from => MY_TWILIO_NUMBER,
-      :to => NUMBER_TO_SEND,
+      :from => ENV['MY_TWILIO_NUMBER'],
+      :to => ENV['NUMBER_TO_SEND'],
       :body => "Thank you! Your order was placed and will be delivered before #{hour}:#{minute}"
     )
     "Sent message!"
