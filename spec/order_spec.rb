@@ -1,10 +1,9 @@
- require 'order'
-# require 'menu'
-#
+require 'order'
+
 describe Order do
   subject(:order) { described_class.new(menu) }
 
-  let(:menu) { double(:menu) }
+  let(:menu) { instance_double("Menu") }
 
   let(:dishes) do
     {
@@ -28,10 +27,4 @@ describe Order do
     allow(menu).to receive(:has_dish?).with(:chips).and_return(false)
     expect { order.add_to_order(:chips, 2)}.to raise_error NoItemError, "Chips not on the menu"
   end
-#
-#   it 'calculates a total sales value' do
-#     new_order.add_to_order("Balti", 4)
-#     new_order.add_to_order("Vindaloo",2)
-#     expect(new_order.order_total).to eq 29.0
-#   end
  end

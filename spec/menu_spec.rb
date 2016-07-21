@@ -11,14 +11,21 @@ describe Menu do
     }
   end
 
-    it "has a list of menu items, with prices" do
-      expect(menu.list_of_dishes).to eq(list_of_dishes)
+  it "has a list of menu items, with prices" do
+    expect(menu.list_of_dishes).to eq(list_of_dishes)
+  end
+
+  it "prints out a list of menu dishes and their prices" do
+    printed_menu = "Balti £5.00, Vindaloo £4.50"
+    expect(menu.print_menu).to eq(printed_menu)
+  end
+
+  it "tells if a dish is on the menu" do
+    expect(menu.has_dish?(:balti)).to be true
+  end
+
+    it "tells if a dish is not on the menu" do
+      expect(menu.has_dish?(:chips)).to be false
     end
 
-
-
-    it "prints out a list of menu dishes and their prices" do
-      printed_menu = "Balti £5.00, Vindaloo £4.50"
-      expect(menu.print_menu).to eq(printed_menu)
-    end
 end
