@@ -40,7 +40,7 @@ attr_accessor :customer_order, :menu, :total_value
   end
 
   def send_confirmation
-    #require_relative 'send_sms'
+    require_relative 'send_sms'
   end
 
 end

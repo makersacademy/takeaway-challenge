@@ -8,7 +8,6 @@ describe Menu do
   it{is_expected.to respond_to :create_starters_list}
   it{is_expected.to respond_to :create_full_menu}
 
-
 describe '#initialize' do
 
     subject {Menu.new}
@@ -28,13 +27,13 @@ describe '#initialize' do
   context 'when menu is created' do
     it 'creats a new starters list' do
       @new_starters = Starters.new
-      allow(@new_starters).to receive(:list).and_return({"SpringRolls" => "4.00"})
+      allow(@new_starters).to receive(:list).and_return({"SpringRolls" => 4.0})
       expect(subject.starters_list).to include(@new_starters.list)
     end
 
     it 'creats a new main course list' do
       @new_main_course = MainCourse.new
-      allow(@new_main_course).to receive(:list).and_return({"PhadThai" => "9.50"})
+      allow(@new_main_course).to receive(:list).and_return({"PhadThai" => 9.5})
       expect(subject.main_course_list).to include(@new_main_course.list)
     end
   end
