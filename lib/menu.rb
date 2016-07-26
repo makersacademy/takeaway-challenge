@@ -12,6 +12,10 @@ class Menu
     DISHES.key?(dish)
   end
 
+  def self.price(dish)
+    Menu::DISHES[dish]
+  end
+
   def list
     Menu::DISHES.each { |key, value| puts "#{key}: £#{'%.2f' % value}" }
   end

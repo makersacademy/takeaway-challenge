@@ -10,13 +10,13 @@ class Basket
   end
 
   def list
-    basket.each do |key, value|
-      puts "#{key} x #{value} : £#{'%.2f' % (Menu::DISHES[key]*value)}"
+    basket.each do |dish, number|
+      puts "#{dish} x #{number} : £#{'%.2f' % (Menu.price(dish)*number)}"
     end
   end
 
   def total
-    @basket.inject(0) {|sum, (dish,quantity)| sum + Menu::DISHES[dish]*quantity}
+    @basket.inject(0) {|sum, (dish,quantity)| sum + Menu.price(dish)*quantity}
   end
 
   def empty

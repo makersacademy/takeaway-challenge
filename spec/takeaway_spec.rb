@@ -42,7 +42,7 @@ describe Takeaway do
     end
 
     it 'should fail if dish is not on the menu' do
-      message = "Carbonara is not on the menu. Sorry!"
+      message = "Not on the menu. Sorry!"
       expect{subject.order("Carbonara", 1)}.to raise_error message
     end
 

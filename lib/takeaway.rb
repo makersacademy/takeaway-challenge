@@ -4,6 +4,13 @@ require_relative 'confirmation'
 
 class Takeaway
 
+  ERROR = {
+      no_dish: "Not on the menu. Sorry!",
+      zero_order: "Order value must be more than 0",
+      wrong_total: 'Please enter the correct payment total',
+      no_order: 'Please order before checking out..'
+    }.freeze
+
   def initialize(menu = Menu.new, confirmation = Confirmation.new)
     @basket = Basket.new
     @menu = menu
@@ -15,8 +22,8 @@ class Takeaway
   end
 
   def order(dish, number = 1)
-    fail "#{dish} is not on the menu. Sorry!" unless @menu.contain?(dish)
-    fail "Order value must be more than 0" if number < 1
+    fail ERROR[:no_dish] unless @menu.contain?(dish)
+    fail ERROR[:zero_order] if number < 1
     confirm_order(dish, number)
   end
 
@@ -30,8 +37,8 @@ class Takeaway
   end
 
   def checkout(payment)
-    fail 'Please enter the correct payment total' if payment != @basket.total
-    fail 'Please order before checking out..' if @basket.total == 0
+    fail ERROR[:wrong_total] if payment != @basket.total
+    fail ERROR[:no_order] if @basket.total == 0
     confirm_checkout
     @basket.empty
   end
