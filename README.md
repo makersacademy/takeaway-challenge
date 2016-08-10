@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/a-mellor/takeaway-challenge.svg?branch=master)](https://travis-ci.org/a-mellor/takeaway-challenge)
-
 [![Coverage Status](https://coveralls.io/repos/a-mellor/takeaway-challenge/badge.png)](https://coveralls.io/r/a-mellor/takeaway-challenge)
 
 

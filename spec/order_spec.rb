@@ -31,7 +31,7 @@ describe Order do
     end
   end
 
-  describe '#total' do
+  xdescribe '#total' do
     it 'calculates the overall cost of the order' do
       order.add(:chicken, 2)
       order.add(:fish, 1)
