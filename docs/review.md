@@ -3,6 +3,8 @@ Welcome to the code review for Takeaway Challenge!  Again, don't worry - you are
 
 If you don't feel comfortable giving technical feedback at this stage, try going through this guide with your reviewee and review the code together.
 
+Please use [this form](https://goo.gl/forms/kl8BCIwaEqu9G0Nx2) to tick off where your reviewee has successfully avoided these issues!  This form helps us get an overall picture of how the whole cohort is doing - it's not an assessment of an individual student.
+
 # Step 0: Checkout and Run tests
 
 Please checkout your reviewee's code and run their tests. Read the code and try some manual feature tests in IRB. How easy is it to understand the structure of their code? How readable is their code? Did you need to make any cognitive leaps to 'get it'?
