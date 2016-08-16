@@ -17,6 +17,7 @@ GEM
     docile (1.1.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.1.1)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     json (1.8.3)
@@ -67,6 +68,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   coveralls
+  dotenv
   rake
   rspec
 
@@ -74,4 +76,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.0
+   1.12.5
