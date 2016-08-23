@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+#Takeaway Challenge#
+--------------------
 ```
                             _________
               r==           |       |
@@ -11,25 +11,40 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
--------
+##Instructions##
+----------------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* There are 4 classes: Takeaway, Order, Message and menu
+* Main class: Takeaway - used by customers
+* The menu can can modified in the Menu class
+
+Example in irb:
+--------
+```
+2.3.1 :001 > require './lib/takeaway'
+ => true
+2.3.1 :002 > t = Takeaway.new
+ => #<Takeaway:0x007fb7f2aeb760 @message=#<Message:0x007fb7f2aeb6c0>, @menu=#<Menu:0x007fb7f2aeb738 @dish_list={"pizza"=>3.0, "burger"=>
+2.0, "chips"=>1.0}>, @order=nil>
+2.3.1 :003 > t.display_menu
+ => {"pizza"=>3.0, "burger"=>2.0, "chips"=>1.0}
+2.3.1 :004 > t.order "burger"
+ => "1x burger(s) added to your basket. Current total: £2.0."
+2.3.1 :005 > t.order "pizza", 4
+ => "4x pizza(s) added to your basket. Current total: £14.0."
+2.3.1 :006 > t.order "chips", 2
+ => "2x chips(s) added to your basket. Current total: £16.0."
+2.3.1 :007 > t.basket_summary
+ => {"burger"=>1, "pizza"=>4, "chips"=>2}
+2.3.1 :008 > t.total
+ => "Total: £16.0"
+ ```
 
 Task
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
 ```
 As a customer
 So that I can check if I want to order something
@@ -47,45 +62,3 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
