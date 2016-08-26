@@ -1,5 +1,6 @@
-class Order
+require 'menu.rb'
 
+class Order
   def initialize
     @order = {} # structure should be {dish => quantity}
   end
@@ -14,8 +15,9 @@ class Order
 
   def order_total
     total = 0
-    @order.each_value do |value|
-      total += |value|
+    menu = Menu.new
+    @order.each do |dish, quantity|
+      total += (quantity * menu.dish_price[dish])
     end
     total
   end
