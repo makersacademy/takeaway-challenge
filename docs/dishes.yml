@@ -1,0 +1,46 @@
+---
+- !ruby/object:Dish
+  name: Salmon Nigiri
+  price: '250'
+- !ruby/object:Dish
+  name: Yellow-fin Tuna Nigiri
+  price: '300'
+- !ruby/object:Dish
+  name: Tamagoyaki Nigiri
+  price: '195'
+- !ruby/object:Dish
+  name: Salmon Sashimi
+  price: '350'
+- !ruby/object:Dish
+  name: Yellow-fin Tuna Sashimi
+  price: '450'
+- !ruby/object:Dish
+  name: Avacado Hosomaki
+  price: '300'
+- !ruby/object:Dish
+  name: Umeboshi Hosomaki
+  price: '250'
+- !ruby/object:Dish
+  name: California Roll
+  price: '300'
+- !ruby/object:Dish
+  name: Soy Sauce
+  price: '050'
+- !ruby/object:Dish
+  name: Wasabi
+  price: '050'
+- !ruby/object:Dish
+  name: Pickled Ginger
+  price: '040'
+- !ruby/object:Dish
+  name: Pepsi
+  price: '120'
+- !ruby/object:Dish
+  name: Pepsi Max
+  price: '120'
+- !ruby/object:Dish
+  name: Tango
+  price: '120'
+- !ruby/object:Dish
+  name: Aloe Vera
+  price: '120'
