@@ -4,8 +4,10 @@ require 'csv'
 
 class Menu
 
-  def initialize
+  def initialize(aFile='menu.csv')
     @items_list = {}
+    @aFile = aFile
+    load_list
   end
 
   def return_list
@@ -16,7 +18,7 @@ class Menu
     items_list[name]
   end
 
-  def load_list(aFile='menu.csv')
+  def load_list(aFile=@aFile)
     loaded_list = {}
     CSV.foreach(aFile, headers: true) do |row|
         loaded_list[row["item"]] = row["price"].to_f
