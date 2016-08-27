@@ -1,9 +1,7 @@
 # README
 
 ![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)
-![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq)](https://coveralls.io/github/makersacademy/takeaway-challenge?branch=mohamedIssaq)
-
-## Install Instructions
+![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg?branch=mohamedIssaq)
 
 To install these files from Github:
 1. Fork this repo, and clone to your local machine.
