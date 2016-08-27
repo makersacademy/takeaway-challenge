@@ -7,7 +7,6 @@ class Menu
   def initialize(aFile='menu.csv')
     @items_list = {}
     @aFile = aFile
-    load_list
   end
 
   def return_list
