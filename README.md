@@ -12,7 +12,7 @@ To install these files from Github:
 4. Sign up for a free account at www.twilio.com.
 5. In toms_takeaway.rb you will need to update the ENV variables with your account information.
 6. Run IRB -r './toms_takeaway.rb'
-7. Rspec tests can be found at Rspec spec
+7. RSpec tests can be found at Rspec spec
 
 ## Approach to Solution
 
@@ -38,7 +38,7 @@ From toms_takeaway.rb:
 In IRB:
 
 ```
-tomstuamacbook2:takeaway-challenge Tom$ irb -r './toms_takeaway.rb'
+$ irb -r './toms_takeaway.rb'
 Welcome to Tom's Takeaway!
 Your takeaway can be accessed on the variable - TomsTakeaway
 Use .show_menu to view menu.
