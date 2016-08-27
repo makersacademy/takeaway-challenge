@@ -19,7 +19,7 @@ This blog post explores this further: (https://tomstuart92.github.io/TomsTakeawa
 The interface class is only responsible for accepting input from users and delegating to other classes.
 The menu class is responsible for displaying understanding which items are on the menu.
 The order class is responsible for aggregating items for the user to purchase.
-The adapter class is responsible for the interaction of the core code with the Twilio API. It is the only untested class.
+The adapter class is responsible for the interaction of the core code with the Twilio API.
 
 I have focused on ensuring minimal dependencies between my classes.
 This was done using dependency injection, and limiting the number of public methods.
@@ -44,6 +44,7 @@ Use .new_order to start a new order.
 Use .order with the item name to add item to order.
 Use .review_order to view a summary of the order.
 Use .checkout to checkout.
+Use .check_mobile_orders to fill any waiting mobile orders.
 ------------------------------------------------------------
 2.3.1 :001 > TomsTakeaway.show_menu
 Here is the menu:

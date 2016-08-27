@@ -24,7 +24,7 @@ class Adapter
       messages.each do |message|
         inbound << [message.from, message.body]
       end
-    inbound.select{ |f| f != twilio_number }
+    inbound.select{ |f,_b| f != twilio_number }
   end
 
   def update_messages

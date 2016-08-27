@@ -54,7 +54,7 @@ class Interface
 
   def create_message_online(amount)
     time = (Time.now + (60 * 60)).strftime('at %I:%M%p')
-    "Your order of #{amount}AUD will be delivered #{time}."
+    "Your order for #{amount}AUD will be delivered #{time}."
   end
 
   def create_message_text
@@ -80,7 +80,7 @@ class Interface
   end
 
   def parse_orders(order_body)
-    order_body.split(', ').each do |item|
+    order_body[1].split(', ').each do |item|
       arr = item.split('-')
       order(arr[0],arr[1].to_i)
     end

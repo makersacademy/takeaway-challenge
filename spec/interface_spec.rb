@@ -14,7 +14,7 @@ describe Interface do
   let(:adapter) do
     double(:adapter,
     send_sms: nil,
-    download_inbound_messages: ['+999','peking duck-2'],
+    download_inbound_messages: [['+999','peking duck-2']],
     update_messages: nil)
   end
 
@@ -111,6 +111,9 @@ describe Interface do
       end
       it 'Gets valid orders from adapter' do
         expect(adapter).to have_received(:download_inbound_messages)
+      end
+      it 'Sends order confirmation' do
+        expect(adapter).to have_received(:send_sms)
       end
       it 'Resets current_order' do
         expect(interface.instance_variable_get(:@current_order)).to be_nil
