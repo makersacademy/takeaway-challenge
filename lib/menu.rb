@@ -10,4 +10,8 @@ class Menu
     @dishes
   end
 
+  def select_dishes(index)
+
+  end
+
 end
