@@ -9,8 +9,14 @@ describe Menu do
       msg = 'This item is not on the menu'
       expect{menu.check_menu("Pizza")}.to raise_error msg
     end
-    it 'returns menu item if the item is on the menu' do
-      expect(menu.check_menu("Beef Burger")).to eq "Beef Burger"
+    it 'returns nil if the item is on the menu' do
+      expect(menu.check_menu("Beef Burger")).to eq nil
+    end
+  end
+
+  describe '.price' do
+    it 'returns the price of a menu item' do
+      expect(menu.price("Special Burger")).to eq 12.5
     end
   end
 

@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double :menu, check_menu: item }
+  let(:menu) { double :menu, check_menu: item , price: 10 }
   let(:item) { double :dish }
 
   describe '.view_menu' do
@@ -26,5 +26,16 @@ describe Takeaway do
       expect(takeaway.basket).to eq({ item => 2 })
     end
   end
+
+  describe '.calculate_total' do
+    it 'returns zero when there is nothing in the basket' do
+      expect(takeaway.calculate_total).to eq 0
+    end
+    it 'returns the sum of the items in the basket' do
+      takeaway.add_to_order(item, 2)
+      expect(takeaway.calculate_total).to eq 20
+    end
+  end
+
 
 end

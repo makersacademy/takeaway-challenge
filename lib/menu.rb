@@ -16,7 +16,10 @@ class Menu
 
   def check_menu(item)
     fail 'This item is not on the menu' unless @menu.has_key? item
-    item
+  end
+
+  def price(item)
+    @menu[item]
   end
 
 end

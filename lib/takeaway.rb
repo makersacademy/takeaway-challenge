@@ -7,6 +7,7 @@ class Takeaway
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = Hash.new(0)
+    @total = 0
   end
 
   def view_menu
@@ -18,5 +19,11 @@ class Takeaway
     @basket[item] += qty
   end
 
+  def calculate_total
+    @basket.each do | item, qty |
+      @total += (qty * @menu.price(item))
+    end
+    @total
+  end
 
 end
