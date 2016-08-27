@@ -1,9 +1,10 @@
 require 'takeaway'
+require 'stringio'
 
 describe Takeaway do
 
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double :menu, check_menu: item , price: 10 }
+  let(:menu) { double :menu, check_menu: "Beef Burger" , price: 8.5 }
   let(:item) { double :dish }
 
   describe '.view_menu' do
@@ -27,15 +28,22 @@ describe Takeaway do
     end
   end
 
-  describe '.calculate_total' do
-    it 'returns zero when there is nothing in the basket' do
-      expect(takeaway.calculate_total).to eq 0
-    end
-    it 'returns the sum of the items in the basket' do
-      takeaway.add_to_order(item, 2)
-      expect(takeaway.calculate_total).to eq 20
-    end
-  end
+  describe '.review_order' do
 
+    before do
+      $stdout = StringIO.new
+    end
+
+    after(:all) do
+      $stdout = STDOUT
+    end
+
+    it 'should print out order and subtotals' do
+      takeaway.add_to_order("Beef Burger", 2)
+      takeaway.review_order
+      expect($stdout.string).to match("Beef Burger x 2: £17.0\nTotal: £17.0")
+    end
+
+  end
 
 end
