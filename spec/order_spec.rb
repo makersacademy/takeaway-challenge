@@ -16,5 +16,11 @@ describe Order do
     expect(subject.current_order).not_to include({"I DONT EXIST" => 3})
   end
 
-  
+  it 'calculates total' do
+    subject.add_to_order("Miso Soup", 2)
+    subject.add_to_order("Chef Special Miso", 1)
+    expect(subject.calculate_total).to eq(11.5)
+  end
+
+
 end

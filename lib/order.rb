@@ -19,17 +19,18 @@ class Order
     order_list
   end
 
+  def calculate_total
+    total = 0
+    @order_list.each do |item,qty|
+      total += menu_list.get_price(item) * qty
+    end
+    total
+  end
 
 private
 
   attr_reader :menu_list, :order_list
 
 
-  # def calculate_total
-  #   total = 0
-  #   @order_list.each do |item,qty|
-  #     total += menu_list.get_price(item) * qty
-  #   end
-  #   total
-  # end
+
 end
