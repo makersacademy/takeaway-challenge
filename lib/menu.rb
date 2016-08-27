@@ -1,3 +1,5 @@
+# => Knows everything about menu
+
 require 'csv'
 
 class Menu
@@ -6,15 +8,15 @@ class Menu
     @items_list = {}
   end
 
-  def print_list
+  def return_list
     items_list
   end
 
-  def get_item(name)
+  def get_price(name)
     items_list[name]
   end
 
-  def load_list(aFile)
+  def load_list(aFile='menu.csv')
     loaded_list = {}
     CSV.foreach(aFile, headers: true) do |row|
         loaded_list[row["item"]] = row["price"].to_f
