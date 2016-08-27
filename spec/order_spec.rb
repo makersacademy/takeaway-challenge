@@ -23,7 +23,7 @@ describe 'basic functionality' do
   end
 
   it 'allows to place order as described in the README' do
-    subject.place_order({"Miso Soup": 2},7)
+    subject.place_order("Miso Soup:2",7)
     expect(delivery).to have_received(despatch)
   end
 end

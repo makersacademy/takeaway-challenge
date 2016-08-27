@@ -1,5 +1,6 @@
 require_relative 'menu'
 
+
 class Order
 
   def initialize(menu=Menu)
@@ -25,6 +26,25 @@ class Order
       total += menu_list.get_price(item) * qty
     end
     total
+  end
+
+  def place_order(list,total)
+    items = list.split(',')
+
+    while !!items[-1]
+      line = items.delete_at(-1).split(':')
+      puts line[0]
+      puts line[-1].to_i
+      add_to_order(line[0],line[-1].to_i)
+
+    end
+
+    calculate_total == total ? despatch_order : fail("Your total was incorrect, the order is rejected!")
+
+  end
+
+  def despatch_order
+
   end
 
 private
