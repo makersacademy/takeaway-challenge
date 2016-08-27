@@ -9,7 +9,9 @@ describe Menu do
     expect(subject.print_list).to include("miso soup" => 3.50)
   end
 
-
+  it 'returns selected item' do
+    expect(subject.get_item("miso soup")).to eq(3.50)
+  end
 
 
 end
