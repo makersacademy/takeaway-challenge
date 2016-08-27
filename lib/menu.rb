@@ -7,11 +7,14 @@ class Menu
   end
 
   def display_dishes
-    @dishes
+    dishes.each_with_index do |(key,value),index|
+      print "#{index}: #{value}"
+    end
+
   end
 
   def select_dishes(index)
-
+    @selected_dishes = {}
   end
 
 end
