@@ -3,8 +3,10 @@ require 'takeaway'
 describe Takeaway do
 
   subject(:takeaway) { described_class.new(Menu.new)}
-  let(:Menu) { double :Menu, new: menu }
-  let(:menu) { double :menu }
+  # let(:menu_class) { double :menu_class, new: menu }
+  # let(:menu) { double :menu }
+  let(:basket_class) { double :basket_class, new: basket }
+  let(:basket) { double :basket, add_dish: nil}
 
   describe '#read_menu' do
     it 'prints out the list of dishes from the menu' do
@@ -17,6 +19,14 @@ describe Takeaway do
         "Prawn Sundae" => 6.75
       )
     end
+  end
+
+  describe '#add' do
+    it 'prints an error message if dish not on menu' do
+      message = 'Sorry, that\'s not on the menu'
+      expect{takeaway.add("cake")}.to raise_error message
+    end
+
   end
 
 end

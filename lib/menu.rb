@@ -1,5 +1,7 @@
 class Menu
 
+attr_reader :dishes
+
   MENU_ITEMS = {
     "Banana Chowder" =>  5.45,
     "Hedgeree" => 7.65,
