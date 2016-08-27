@@ -3,7 +3,6 @@ require_relative 'menu'
 # Understands how to aggregate food items from a menu
 class Order
 
-  attr_reader :total
   def initialize(menu = Menu.new)
     @basket = Hash.new(0)
     @menu = menu
