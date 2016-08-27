@@ -1,9 +1,10 @@
 # Takeaway Challenge
+[![Build Status](https://travis-ci.org/lsewilson/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lsewilson/takeaway-challenge)
 
 ## Description
 
 
-## Instructions 
+## Instructions
 
 ## Classes
 

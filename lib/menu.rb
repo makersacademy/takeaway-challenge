@@ -1,21 +1,22 @@
 
 class Menu
 
-  MENU = {  "Beef Burger" => 8.5 ,
-            "Cheese Burger" => 9.00 ,
-            "Honest Burger" => 10.50 ,
-            "Tribute Burger" => 10.50 ,
-            "Special Burger" => 12.50 ,
-            "Chicken Burger" => 9.5 ,
-            "Fritter Burger" => 7.50 ,
-            "Onion Rings" => 3.50 ,
-            "Coleslaw" => 3.00 ,
-            "House Salad" => 3.00 }
+  def initialize
+    @menu = { "Beef Burger" => 8.5 ,
+              "Cheese Burger" => 9 ,
+              "Honest Burger" => 10.5 ,
+              "Tribute Burger" => 10.5 ,
+              "Special Burger" => 12.5 ,
+              "Chicken Burger" => 9.5 ,
+              "Fritter Burger" => 7.5 ,
+              "Onion Rings" => 3.5 ,
+              "Coleslaw" => 3 ,
+              "House Salad" => 3 }
+  end
 
-  def format_menu
-    MENU.each { |item, price|
-      "#{item}: £#{price}"
-    }
+  def check_menu(item)
+    fail 'This item is not on the menu' unless @menu.has_key? item
+    item
   end
 
 end
