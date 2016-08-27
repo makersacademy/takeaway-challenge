@@ -1,5 +1,6 @@
 require_relative 'menu'
 
+# Understands how to aggregate food items from a menu
 class Order
   def initialize(menu = Menu.new)
     @basket = Hash.new(0)
@@ -28,7 +29,6 @@ class Order
     basket.each do |i, q, s|
       puts "#{i.capitalize} x #{q} : $#{s.round(2)}"
     end
-    puts "Total = $#{basket.map{|i,j,k| k}.inject(:+)}"
+    puts "Total = $#{basket.map { |_i, _j, k| k }.inject(:+)}"
   end
-
 end
