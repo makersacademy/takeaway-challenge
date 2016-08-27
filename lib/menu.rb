@@ -14,7 +14,9 @@ class Menu
   end
 
   def show_dishes
-    @dishes
+    @dishes.each.with_index(1) do |(dish,price),index|
+      puts "#{index}. #{dish} - £#{price}"
+    end
   end
 
 end
