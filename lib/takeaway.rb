@@ -7,7 +7,7 @@ class Takeaway
   end
 
   def read_menu
-    menu.show
+    menu.show_dishes
   end
 
   private
