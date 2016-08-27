@@ -18,8 +18,6 @@ describe Restaurant do
       quantity: 50
     }
   }}
-  let(:order_class) {double :order_class, new: new_order}
-  let(:new_order) {double :new_order, start_order: nil}
 
   describe "#initialize" do
 
@@ -43,23 +41,51 @@ describe Restaurant do
 
   describe "#create_new_order" do
 
+    let(:order_class) {double :order_class, new: new_order}
+    let(:new_order) {double :new_order, start_order: nil, sum: 39, list: [[:chicken,1],[:spinach,3],[:potatoes,2]]}
+    
     before(:each) do
-      @sum = 34
+      @sum = 39
       @list = [[:chicken,1],[:spinach,3],[:potatoes,2]]
-      subject.create_new_order(@list,@sum)
     end
+
+    it 'should create new Order object and send it the selected dishes' do
+      subject.create_new_order(@list,@sum)
+      expect(new_order).to have_received(start_order).with(@list,@sum)
+    end
+
+  end
+
+  describe '#confirm_order' do
 
     it 'should raise an error if total does not match correct sum of dishes' do
       expect{subject.create_new_order(@list,@sum)}.to raise_error "Wrong total!"
     end
 
-    xit 'should create new Order object and send it the selected dishes' do
-      subject.create_new_order(@list,@sum)
-      expect(new_order).to have_received(start_order).with(@list,@sum)
-    end
-
     it 'should create new Message object and send it a confirm instruction' do
 
+    end
+
+  end
+
+  describe '#close_order' do
+
+    let(:order_class) {double :order_class, new: new_order}
+    let(:new_order2) {double :new_order, start_order: nil, sum: 34, list: [[:chicken,1],[:spinach,3],[:potatoes,2]]}
+
+    before(:each) do
+      @sum = 34
+      @list = [[:chicken,1],[:spinach,3],[:potatoes,2]]
+      subject.create_new_order(@list,@sum)
+      subject.close_order
+    end
+
+    it 'should update the order history' do
+      expect(subject.order_history).to include new_order2
+    end
+
+    it 'should reset current order to nil' do
+      expect(subject.current_order).to eq nil
     end
 
   end
