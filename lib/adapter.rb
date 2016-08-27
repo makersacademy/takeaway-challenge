@@ -18,14 +18,14 @@ class Adapter
     )
   end
 
-  def get_inbound_messages
+  def download_inbound_messages
     client = Twilio::REST::Client.new sid, token
     inbound = []
     messages = client.account.messages.list
       messages.each do |message|
         inbound << [message.from, message.body]
       end
-    inbound.select{ |f, m| f != ENV['TWILIO_NUMBER'] }
+    inbound.select{ |f| f != ENV['TWILIO_NUMBER'] }
   end
 
   def update_messages
@@ -35,7 +35,7 @@ class Adapter
     messages.each{|message| to_delete << message.sid}
     to_delete.each do |sid|
       message = client.account.messages.get(sid)
-      message.redact()
+      message.redact
     end
   end
 

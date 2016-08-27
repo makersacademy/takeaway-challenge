@@ -3,8 +3,20 @@ require 'interface'
 describe Interface do
   let(:menu) { double(:menu) }
   let(:order_class) { double(:order_class, new: order_instance) }
-  let(:order_instance) { double(:order, add_to_order: nil, review_order: nil, checkout: nil) }
-  let(:adapter) { double(:adapter, send_sms: nil, get_inbound_messages: ['+999','peking duck-2'], update_messages: nil) }
+
+  let(:order_instance) do
+    double(:order,
+    add_to_order: nil,
+    review_order: nil,
+    checkout: nil)
+  end
+
+  let(:adapter) do
+    double(:adapter,
+    send_sms: nil,
+    download_inbound_messages: ['+999','peking duck-2'],
+    update_messages: nil)
+  end
 
   let(:options_hash) { { menu: menu, order: order_class, adapter: adapter } }
   subject(:interface) { described_class.new(options_hash) }
@@ -41,23 +53,25 @@ describe Interface do
         expect(order_class).to have_received(:new).with(menu)
       end
       it 'Saves the new order' do
-        expect(interface.instance_variable_get(:@current_order)).to eq order_instance
+        current_order = interface.instance_variable_get(:@current_order)
+        expect(current_order).to eq order_instance
       end
     end
 
     describe '#order' do
       it 'Raises error if no open order' do
-        expect { interface.order('Spring Rolls') }.to raise_error 'Please start a new order'
+        err = 'Please start a new order'
+        expect { interface.order('Spring Rolls') }.to raise_error err
       end
       it 'Delegates ordering to order class - with single item' do
         interface.new_order
         interface.order('Spring Rolls')
-        expect(order_instance).to have_received(:add_to_order).with('Spring Rolls', 1)
+        expect(order_instance).to have_received(:add_to_order)
       end
       it 'Delegates ordering to order class - with quantity of item' do
         interface.new_order
         interface.order('Spring Rolls', 4)
-        expect(order_instance).to have_received(:add_to_order).with('Spring Rolls', 4)
+        expect(order_instance).to have_received(:add_to_order)
       end
     end
 
@@ -96,7 +110,7 @@ describe Interface do
         interface.check_mobile_orders
       end
       it 'Gets valid orders from adapter' do
-        expect(adapter).to have_received(:get_inbound_messages)
+        expect(adapter).to have_received(:download_inbound_messages)
       end
       it 'Resets current_order' do
         expect(interface.instance_variable_get(:@current_order)).to be_nil

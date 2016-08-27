@@ -38,7 +38,7 @@ class Interface
   end
 
   def check_mobile_orders #needs tests
-    valid_orders = get_valid_orders
+    valid_orders = find_valid_orders
     execute_orders(valid_orders)
     @adapter.update_messages
     puts "#{valid_orders.length} valid order(s) received and completed."
@@ -52,17 +52,16 @@ class Interface
 
   def create_message_online(amount)
     time = (Time.now + (60 * 60)).strftime('at %I:%M%p')
-    "Your order of #{amount}AUD will be delivered #{time}"
+    "Your order of #{amount}AUD will be delivered #{time}."
   end
 
   def create_message_text
     time = (Time.now + (60 * 60)).strftime('at %I:%M%p')
-    "Thank you for your mobile order. It will be delivered #{time}"
+    "Thank you for your mobile order. It will be delivered #{time}."
   end
 
   def execute_orders(valid_orders)
     valid_orders.each do |order|
-      order
       new_order
       parse_orders(order[1])
       @adapter.send_sms(create_message_text)
@@ -70,8 +69,8 @@ class Interface
     end
   end
 
-  def get_valid_orders
-    @adapter.get_inbound_messages.select{|_f, b| b =~ /\w+-\d+/}
+  def find_valid_orders
+    @adapter.download_inbound_messages.select{|_f, b| b =~ /\w+-\d+/}
   end
 
   def reset_current_order

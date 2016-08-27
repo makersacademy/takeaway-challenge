@@ -2,7 +2,11 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class.new(menu) }
-  let(:menu) { double(:menu, check_price: 0.99, calculate_subtotal: [['Spring Rolls', 10, 9.90]]) }
+  let(:menu) do
+    double(:menu,
+    check_price: 0.99,
+    calculate_subtotal: [['Spring Rolls', 10, 9.90]])
+  end
 
   before do
     allow(STDOUT).to receive(:puts)
@@ -43,7 +47,8 @@ describe Order do
 
   describe '#review_order' do
     it 'Delegates subtotal to menu' do
-      expect(menu).to receive(:calculate_subtotal).with(order.instance_variable_get(:@basket))
+      var = order.instance_variable_get(:@basket)
+      expect(menu).to receive(:calculate_subtotal).with(var)
       order.review_order
     end
     specify { expect { order.review_order }.to output.to_stdout }
@@ -52,15 +57,16 @@ describe Order do
   describe '#checkout' do
     before do
       order.add_to_order('Spring Rolls', 10)
+      @err = 'Please review payment amount'
     end
     it 'Checks payment_amount is equal to total' do
       expect { order.checkout(9.90) }.not_to raise_error
     end
     it 'Raises flag if payment is insufficient' do
-      expect { order.checkout(1.00) }.to raise_error 'Please review payment amount'
+      expect { order.checkout(1.00) }.to raise_error @err
     end
     it 'Raises flag if payment is too big' do
-      expect { order.checkout(100.00) }.to raise_error 'Please review payment amount'
+      expect { order.checkout(100.00) }.to raise_error @err
     end
     specify { expect { order.checkout(9.90) }.to output.to_stdout }
   end

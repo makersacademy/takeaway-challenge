@@ -22,11 +22,14 @@ class Order
   end
 
   def checkout(payment_amount)
-    fail 'Please review payment amount' unless @total.round(2) == payment_amount.round(2)
+    fail 'Please review payment amount' unless check_payment(payment_amount)
     puts 'Thank you for your order.'
   end
 
   private
+  def check_payment(payment)
+    @total.round(2) == payment.round(2)
+  end
 
   def output_review(basket)
     basket.each do |i, q, s|
