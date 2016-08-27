@@ -38,7 +38,7 @@ describe Order do
     it 'Adds price to total' do
       order.add_to_order('Spring Rolls')
       expect(order.instance_variable_get(:@total)).to eq 0.99
-    endr
+    end
   end
 
   describe '#review_order' do
