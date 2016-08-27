@@ -30,7 +30,8 @@ class Interface
   end
 
   def checkout(payment_amount = 0)
-    @current_order.checkout(payment_amount) if current_order?
+    current_order?
+    @current_order.checkout(payment_amount)
     @current_order = nil
   end
 
