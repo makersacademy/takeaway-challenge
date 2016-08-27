@@ -1,10 +1,10 @@
-require_relative 'menu'
+require_relative 'selection'
 
 class FoodOrder
-  attr_reader :order, :quantity, :price
+  attr_reader :selection, :quantity, :price
 
-  def initialize(order, quantity, price)
-    @order = order
+  def initialize(selection, quantity, price)
+    @selection = selection
     @quantity = quantity
     @price = price
   end
