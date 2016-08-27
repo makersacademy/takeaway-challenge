@@ -26,7 +26,6 @@ class Dishes
 
   def available_dishes
     dishes
-    # dishes.each{ |key| key.select { |name, price, quantity| quantity > 0}}
   end
 
   def check_sum(list, sum)

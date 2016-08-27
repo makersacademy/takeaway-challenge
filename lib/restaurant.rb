@@ -2,38 +2,32 @@
 
 require_relative 'dishes'
 require_relative 'order'
+require_relative 'dispatcher'
 
 class Restaurant
 
-  attr_reader :dishes, :current_order, :order, :order_history
+  attr_reader :dishes, :dispatcher, :list, :sum, :current_order
 
-  def initialize(dishes = Dishes, order = Order)
-    @order = order
-    @current_order = nil
-    @order_history = []
-    @dishes = dishes.new
+  def initialize(dishes = Dishes.new, dispatcher = Dispatcher.new)
+    @dishes = dishes
+    @dispatcher = dispatcher
+    @current_order = dispatcher.current_order
+    @list = [[:chicken,1],[:spinach,3],[:potatoes,2]]
+    @sum = 34
   end
 
   def available_dishes
     dishes.dishes
   end
 
-  def create_new_order(list, sum)
-    @current_order = order.new
-    current_order.start_order(list, sum)
+  def place_order
+    dispatcher.create_new_order(list,sum)
   end
 
   def confirm_order
-    fail "Wrong total!" if dishes.check_sum(current_order.list,current_order.sum) == false
-    current_order.confirm_order
+    fail "Wrong total!" if dishes.check_sum(list, sum) == false
+    dispatcher.current_order.confirm_order
     text_message.send(current_order)
   end
-
-  def close_order
-    order_history << current_order
-    @current_order = nil
-  end
-
-  # restaurant checks the sum with dishes
 
 end
