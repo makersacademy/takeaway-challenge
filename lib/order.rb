@@ -1,11 +1,12 @@
 require_relative 'menu'
-
+require_relative 'despatch'
 
 class Order
 
-  def initialize(menu=Menu)
+  def initialize(menu=Menu,despatch=Despatch)
     @menu_list = menu.new
     @order_list = {}
+    @despatch = despatch
   end
 
   def print_menu
@@ -30,21 +31,16 @@ class Order
 
   def place_order(list,total)
     items = list.split(',')
-
     while !!items[-1]
       line = items.delete_at(-1).split(':')
-      puts line[0]
-      puts line[-1].to_i
       add_to_order(line[0],line[-1].to_i)
-
     end
-
     calculate_total == total ? despatch_order : fail("Your total was incorrect, the order is rejected!")
-
   end
 
   def despatch_order
-
+    order_despatcher = @despatch.new
+    order_despatcher.send_order
   end
 
 private
