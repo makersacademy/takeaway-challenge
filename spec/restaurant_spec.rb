@@ -18,6 +18,20 @@ describe Restaurant do
       quantity: 50
     }
   }}
+  let(:order_class) {double :order_class, new: new_order}
+  let(:new_order) {double :new_order, start_order: nil}
+
+  describe "#initialize" do
+
+    it 'should create a new dishes object' do
+      expect(subject.dishes.dishes).to eq test_dishes.dishes
+    end
+
+    it 'should set the current order to nil' do
+      expect(subject.current_order).to eq nil
+    end
+
+  end
 
   describe "#avilable_dishes" do
 
@@ -27,14 +41,21 @@ describe Restaurant do
 
   end
 
-  describe "#place_order" do
+  describe "#create_new_order" do
 
-    it 'should raise an error if total does not match correct sum of dishes' do
-
+    before(:each) do
+      @sum = 34
+      @list = [[:chicken,1],[:spinach,3],[:potatoes,2]]
+      subject.create_new_order(@list,@sum)
     end
 
-    it 'should create new Order object and send it the selected dishes' do
-      # except(order).to have_received(new_order).with(dishes)
+    it 'should raise an error if total does not match correct sum of dishes' do
+      expect{subject.create_new_order(@list,@sum)}.to raise_error "Wrong total!"
+    end
+
+    xit 'should create new Order object and send it the selected dishes' do
+      subject.create_new_order(@list,@sum)
+      expect(new_order).to have_received(start_order).with(@list,@sum)
     end
 
     it 'should create new Message object and send it a confirm instruction' do

@@ -5,7 +5,6 @@ class Dishes
   attr_reader :dishes, :order
 
   def initialize
-    @order = nil
     @dishes = {
       chicken: { name: "Rotisserie chicken",
         price: 15,
@@ -30,14 +29,18 @@ class Dishes
     # dishes.each{ |key| key.select { |name, price, quantity| quantity > 0}}
   end
 
-  def check_sum
-    order.sum == order_sum  ? true : false
+  def check_sum(list, sum)
+    sum == calculate_order_sum(list) ? true : false
   end
 
   private
 
-  def order_sum
-    sum = []
+  def calculate_order_sum(list)
+    sum = 0
+    list.each do |item, quantity|
+      sum += dishes[item][:price] * quantity
+    end
+    sum
   end
 
 end

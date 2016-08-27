@@ -1,7 +1,6 @@
 require 'order'
 
 describe Order do
-  let(:order1) {double :order, status: "Checking sum", sum: 36, list: [["chicken",1],["spinach",3],["potatoes",2]]}
 
   describe "initilize" do
 
@@ -21,13 +20,18 @@ describe Order do
 
   describe "start_order" do
 
-    it 'should store a list of items ordered in order_list' do
-      subject.start_order(order1)
-      expect(subject.list).to eq order1.list
+    before(:each) do
+      @sum = 36
+      @list = ["chicken",1],["spinach",3],["potatoes",2]
+    end
+
+    it 'should store a list of items ordered in list' do
+      subject.start_order(@list,@sum)
+      expect(subject.list).to eq [[["chicken",1],["spinach",3],["potatoes",2]]]
     end
 
     it 'should store a sum in the sum variable' do
-      subject.start_order(order1)
+      subject.start_order(@list,@sum)
       expect(subject.sum).to eq 36
     end
 
@@ -36,7 +40,7 @@ describe Order do
   describe "confirm_order" do
 
     it 'should set status to confirmed' do
-      subject.confirm(order1)
+      subject.confirm_order
       expect(subject.status).to eq "Confirmed"
     end
   end

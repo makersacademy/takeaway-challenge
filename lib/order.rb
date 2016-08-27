@@ -10,9 +10,9 @@ class Order
     @sum = 0
   end
 
-  def start_order(customer_order)
-    @sum = customer_order.sum
-    @list = customer_order.list
+  def start_order(list, sum)
+    @list.push(list)
+    @sum += sum
     @status = "Checking sum"
   end
 
