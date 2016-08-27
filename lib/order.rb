@@ -11,6 +11,7 @@ class Order
   def add_to_order(item, quantity = 1)
     @total += @menu.check_price(item) * quantity
     @basket[item.capitalize] += quantity
+    "Added #{quantity} #{item.capitalize}(s) to your order."
   end
 
   def review_order
@@ -19,7 +20,7 @@ class Order
   end
 
   def checkout(payment_amount)
-    raise 'Please review payment amount' unless @total == payment_amount
+    raise 'Please review payment amount' unless @total.round(2) == payment_amount.round(2)
     puts 'Thank you for your order.'
   end
 
@@ -29,6 +30,6 @@ class Order
     basket.each do |i, q, s|
       puts "#{i.capitalize} x #{q} : $#{s.round(2)}"
     end
-    puts "Total = $#{basket.map { |_i, _j, k| k }.inject(:+)}"
+    puts "Total = $#{basket.map { |_i, _j, k| k }.inject(:+).round(2)}"
   end
 end

@@ -6,7 +6,9 @@ class Menu
 
   def show_menu
     puts 'Here is the menu:'
-    puts menu
+    menu.each do |item, price|
+      puts "#{item.capitalize} - $#{price}"
+    end
   end
 
   def check_price(item)

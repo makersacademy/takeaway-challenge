@@ -49,18 +49,19 @@ Use .checkout to checkout.
 ------------------------------------------------------------
 2.3.1 :001 > TomsTakeaway.show_menu
 Here is the menu:
-{"spring roll"=>0.99, "peking duck"=>7.99}
- => nil
+Spring roll - $0.99
+Peking duck - $7.99
+ => {"spring roll"=>0.99, "peking duck"=>7.99} r
 2.3.1 :002 > TomsTakeaway.new_order
  => #<Order:0x007f89b8a69638 @basket={}, @menu=#<Menu:0x007f89b8abb5f0 @menu={"spring roll"=>0.99, "peking duck"=>7.99}>, @total=0>
 2.3.1 :003 > TomsTakeaway.order('spring roll')
- => 1
+ => "Added 1 Spring roll(s) to your order."
 2.3.1 :004 > TomsTakeaway.order('spring roll')
- => 2
+ => "Added 1 Spring roll(s) to your order."
 2.3.1 :005 > TomsTakeaway.order('spring roll')
- => 3
+ => "Added 1 Spring roll(s) to your order."
 2.3.1 :006 > TomsTakeaway.order('peking duck', 3)
- => 3
+ => "Added 3 Peking duck(s) to your order."
 2.3.1 :007 > TomsTakeaway.review_order
 Spring roll x 3 : $2.97
 Peking duck x 3 : $23.97
