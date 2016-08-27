@@ -49,7 +49,7 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Max: 7
 
-# ************** Enabled ************** 
+# ************** Enabled **************
 
 Style/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
@@ -568,7 +568,7 @@ Style/WhileUntilDo:
   Description: 'Checks for redundant do after while or until.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-multiline-while-do'
   Enabled: true
-# enable for later challenge 
+# enable for later challenge
 
   # Align ends correctly.
 Lint/EndAlignment:
@@ -749,7 +749,7 @@ Metrics/PerceivedComplexity:
                  human reader.
   Enabled: true
 
-# ************** Disabled ************** 
+# ************** Disabled **************
 
 Style/EmptyLinesAroundClassBody:
   Description: Keeps track of empty lines around class bodies.
@@ -757,7 +757,7 @@ Style/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines
   SupportedStyles:
   - empty_lines
-  - no_empty_lines  
+  - no_empty_lines
 
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
@@ -941,7 +941,7 @@ Style/SingleLineMethods:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-single-line-methods'
   Enabled: false
 
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Description: >-
                  Checks that exactly one space is used between a method name
                  and the first argument for method calls without parentheses.
@@ -1065,7 +1065,7 @@ Style/TrailingBlankLines:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#newline-eof'
   Enabled: false
 
-Style/TrailingComma:
+Style/TrailingCommaInLiteral:
   Description: 'Checks for trailing comma in parameter lists and literals.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
   Enabled: false
@@ -1097,10 +1097,6 @@ Rails/Date:
   Description: >-
                   Checks the correct usage of date aware methods,
                   such as Date.today, Date.current etc.
-  Enabled: false
-
-Rails/DefaultScope:
-  Description: 'Checks if the argument passed to default_scope is a block.'
   Enabled: false
 
 Rails/Delegate:
