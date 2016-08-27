@@ -10,8 +10,8 @@ To install these files from Github:
 2. Run the command gem install bundle (if you don't have bundle already) from the cloned file location.
 3. When the installation completes, run bundle.
 4. Sign up for a free account at www.twilio.com.
-5. In toms_takeaway.rb you will need to update the ENV variables with your account information.
-6. Run IRB -r './toms_takeaway.rb'
+5. In toms_takeaway2.rb you will need to update the ENV variables with your account information.
+6. Run IRB -r './toms_takeaway2.rb'
 7. RSpec tests can be found at Rspec spec
 
 ## Approach to Solution

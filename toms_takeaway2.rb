@@ -2,10 +2,10 @@ require './lib/interface.rb'
 require './lib/menu.rb'
 require './lib/adapter.rb'
 
-ENV['TWILIO_ACCOUNT_SID'] = #Insert your twilio account credentials
-ENV['TWILIO_AUTH_TOKEN'] = #Insert your twilio account credentials
-ENV['TWILIO_NUMBER'] = #Insert your twilio account credentials
-ENV['TEST_NUMBER'] = #Insert the number you wish to contact
+# ENV['TWILIO_ACCOUNT_SID'] = Insert your twilio account credentials
+# ENV['TWILIO_AUTH_TOKEN'] = Insert your twilio account credentials
+# ENV['TWILIO_NUMBER'] = Insert your twilio account credentials
+# ENV['TEST_NUMBER'] = Insert the number you wish to contact
 
 TomsTakeaway = Interface.new({})
 
