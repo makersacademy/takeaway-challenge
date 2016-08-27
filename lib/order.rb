@@ -2,6 +2,8 @@ require_relative 'menu'
 
 # Understands how to aggregate food items from a menu
 class Order
+
+  attr_reader :total
   def initialize(menu = Menu.new)
     @basket = Hash.new(0)
     @menu = menu
@@ -20,7 +22,7 @@ class Order
   end
 
   def checkout(payment_amount)
-    raise 'Please review payment amount' unless @total.round(2) == payment_amount.round(2)
+    fail 'Please review payment amount' unless @total.round(2) == payment_amount.round(2)
     puts 'Thank you for your order.'
   end
 

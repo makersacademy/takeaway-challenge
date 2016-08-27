@@ -12,7 +12,7 @@ class Menu
   end
 
   def check_price(item)
-    raise 'Item not on menu' unless match_item(item)
+    fail 'Item not on menu' unless match_item(item)
     match_item(item)
   end
 

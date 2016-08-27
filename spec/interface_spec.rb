@@ -4,7 +4,7 @@ describe Interface do
   let(:menu) { double(:menu) }
   let(:order_class) { double(:order_class, new: order_instance) }
   let(:order_instance) { double(:order, add_to_order: nil, review_order: nil, checkout: nil) }
-  let(:adapter) { double(:adapter, send_sms: nil) }
+  let(:adapter) { double(:adapter, send_sms: nil, get_inbound_messages: ['+999','peking duck-2'], update_messages: nil) }
 
   let(:options_hash) { { menu: menu, order: order_class, adapter: adapter } }
   subject(:interface) { described_class.new(options_hash) }
@@ -87,6 +87,24 @@ describe Interface do
       it 'Delegates sms notification to adapter class' do
         expect(adapter).to have_received(:send_sms)
       end
+    end
+  end
+
+  context 'Filling mobile orders' do
+    describe '#check_mobile_orders' do
+      before do
+        interface.check_mobile_orders
+      end
+      it 'Gets valid orders from adapter' do
+        expect(adapter).to have_received(:get_inbound_messages)
+      end
+      it 'Resets current_order' do
+        expect(interface.instance_variable_get(:@current_order)).to be_nil
+      end
+      it 'Delegates message update to adapter' do
+        expect(adapter).to have_received(:update_messages)
+      end
+      specify { expect { interface.check_mobile_orders }.to output.to_stdout }
     end
   end
 end
