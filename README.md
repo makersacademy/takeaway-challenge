@@ -1,6 +1,6 @@
 # README
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)
+[!Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
 
 ## Install Instructions

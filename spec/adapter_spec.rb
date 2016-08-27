@@ -22,7 +22,8 @@ describe Adapter do
 
   describe '#download_inbound_messages' do
     before do
-      allow(client).to receive_message_chain(:account, :messages, :list).and_return([message])
+      chain = [:account, :messages, :list]
+      allow(client).to receive_message_chain(chain).and_return([message])
     end
 
     it 'Passes #account.messages.list to client API' do
@@ -37,8 +38,10 @@ describe Adapter do
 
   describe '#update_messages' do
     before do
-      allow(client).to receive_message_chain(:account, :messages, :list).and_return([message])
-      allow(client).to receive_message_chain(:account, :messages, :get).and_return(message)
+      list_chain = [:account, :messages, :list]
+      get_chain = [:account, :messages, :get]
+      allow(client).to receive_message_chain(list_chain).and_return([message])
+      allow(client).to receive_message_chain(get_chain).and_return(message)
     end
     it 'Passes #account.messages.list to client API' do
       expect(client).to receive_message_chain(:account, :messages, :list)
