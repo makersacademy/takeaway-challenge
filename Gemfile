@@ -5,3 +5,5 @@ gem 'rake'
 gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
+gem 'twilio-ruby'
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
