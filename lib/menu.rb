@@ -3,18 +3,22 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = {dish: 'food', price: 1}
+    @dishes = { chicken: 5,
+                chips: 2,
+                burger: 5,
+                fish: 5,
+                steak: 6 }
   end
 
   def display_dishes
     dishes.each_with_index do |(key,value),index|
-      print "#{index}: #{value}"
-    end
+      puts "#{index +1}) #{key}:  #{value} "
+  end
 
   end
 
   def select_dishes(index)
-    @selected_dishes = {}
+
   end
 
 end
