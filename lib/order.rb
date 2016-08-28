@@ -1,9 +1,12 @@
 require_relative 'menu'
 
+#attr_reader :basket
+
 class Order
 
   def initialize(menu_class: Menu)
     @menu_class = menu_class
+    @basket = []
   end
 
   def begin_order
@@ -16,6 +19,10 @@ class Order
     puts "What dish would you like?"
     puts "you can choose from the following:"
     puts
+  end
+
+  def record_order
+    choice = gets.chomp
   end
 
   private
