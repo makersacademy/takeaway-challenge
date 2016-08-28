@@ -16,7 +16,9 @@ describe Order do
     end
 
     it "accepts user input for dish choice" do
-       expect(subject.basket[-1]).to include chow_mein
+      allow(subject).to receive(:gets).and_return(chow_mein)
+      subject.record_order
+      expect(subject.basket[-1]).to include chow_mein
      end
 
   end

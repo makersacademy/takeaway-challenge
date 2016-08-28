@@ -1,8 +1,6 @@
 require_relative 'menu'
-
-#attr_reader :basket
-
 class Order
+  attr_reader :basket
 
   def initialize(menu_class: Menu)
     @menu_class = menu_class
@@ -23,6 +21,7 @@ class Order
 
   def record_order
     choice = gets.chomp
+    @basket << choice
   end
 
   private
