@@ -6,10 +6,10 @@ describe SMSConfirmation do
   let(:messages) { double :messages }
 
 
-  describe '.send_text' do
-    it 'sends a text' do
+  describe '.send_msg' do
+    it 'sends a message' do
       expect(messages).to receive(:create)
-      sms.send_text("Rspec Test")
+      sms.send_msg("Rspec Test")
     end
   end
 end

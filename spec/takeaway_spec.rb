@@ -56,6 +56,7 @@ describe Takeaway do
       takeaway.add_to_order("Beef Burger")
       expect{takeaway.checkout(8.5)}.not_to raise_error
     end
+
   end
 
 end
