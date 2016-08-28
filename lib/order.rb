@@ -1,13 +1,22 @@
 class Order
 #let customers order a takeaway
-  def initialize(items)
-    @items = items
+  def initialize(checkout = {}, menu = Menu.new)
+    @checkout = checkout
+    @menu = menu
+    @total_price = 0
   end
 
-  def place_order(items)
-    items.each do |item, quantity|
-      order.add(item, quantity)
-    end
+  # def place_order(item, quantity)
+  #     fail "No such dish, please select from the menu" if dish_exists?
+  #     checkout.store(item, quantity)
+  # end
+
+  private
+
+  attr_reader :checkout
+
+  def dish_exists?
+
   end
 
 end
