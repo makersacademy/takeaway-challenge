@@ -1,10 +1,12 @@
-# => Knows everything about despatching orders
+# => Knows everything about communication with the customer
 require 'twilio-ruby'
+require_relative 'order'
 class Despatch
 
   def initialize(twilio_client=Twilio::REST::Client)
     account_sid = 'AC76807998c792abd7e12cb8e95689f27f'
     @client = twilio_client.new(account_sid, ENV["TWILIO_TOKEN"])
+    @incoming_messages = []
   end
 
   def send_order

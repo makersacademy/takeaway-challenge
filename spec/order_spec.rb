@@ -17,12 +17,7 @@ describe 'basic functionality' do
     expect(subject.current_order).to include({"Miso Soup" => 3})
   end
 
-  it 'calculates total' do
-    subject.add_to_order("Miso Soup", 2)
-    expect(subject.calculate_total).to eq(7)
-  end
-
-  it 'allows to place order as described in the README' do
+  it 'allows to place order as described in the user stories' do
     subject.place_order("Miso Soup:2",7)
     expect(despatch).to have_received(:send_order)
   end

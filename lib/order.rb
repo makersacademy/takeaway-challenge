@@ -13,23 +13,8 @@ class Order
     menu_list.return_list.each{|item, price| puts "#{item} £#{price}\n"}
   end
 
-  def add_to_order(item,qty)
-    @order_list[item] = qty if menu_list.get_price(item) != nil
-  end
-
-  def current_order
-    order_list
-  end
-
-  def calculate_total
-    total = 0
-    @order_list.each do |item,qty|
-      total += menu_list.get_price(item) * qty
-    end
-    total
-  end
-
   def place_order(list,total)
+    reset_list
     items = list.split(',')
     while !!items[-1]
       line = items.delete_at(-1).split(':')
@@ -41,12 +26,31 @@ class Order
   def despatch_order
     order_despatcher = @despatch.new
     order_despatcher.send_order
+    reset_list
+  end
+
+  def current_order
+    order_list
+  end
+  
+  def add_to_order(item,qty)
+    @order_list[item] = qty if menu_list.get_price(item) != nil
   end
 
 private
 
   attr_reader :menu_list, :order_list
 
+  def reset_list
+    @order_list = Hash.new
+  end
 
+  def calculate_total
+    total = 0
+    order_list.each do |item,qty|
+      total += menu_list.get_price(item) * qty
+    end
+    total
+  end
 
 end

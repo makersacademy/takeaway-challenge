@@ -1,5 +1,4 @@
 # => Knows everything about menu
-
 require 'csv'
 
 class Menu
