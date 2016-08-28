@@ -3,6 +3,7 @@ require 'menu'
 
 
 describe Order do
+
   subject(:order) { described_class.new }
   let(:item) { double(:item) }
 
@@ -11,7 +12,6 @@ describe Order do
       order.order_item(:chicken)
     end
     it "stores chosen item to hash" do
-
      expect(order.basket).to(have_key(:chicken))
     end
   end
@@ -22,5 +22,12 @@ describe Order do
     end
   end
 
-
+  describe '#total_price' do
+    before do
+      order.order_item(:wings, 3)
+    end
+    it 'adds the prices of various items' do
+      expect(order.total_price).to eq 36
+    end
+  end
 end
