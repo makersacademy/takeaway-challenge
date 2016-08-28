@@ -8,7 +8,7 @@ describe Order do
 
   describe '#order_item' do
     before do
-      order.order_item("chicken")
+      order.order_item(:chicken)
     end
     it "stores chosen item to hash" do
 
