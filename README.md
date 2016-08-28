@@ -1,34 +1,10 @@
-Takeaway Challenge
+Takeaway Challenge: README
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
 
-Instructions
--------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
+User stories
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The program implements the following user stories:
 
 ```
 As a customer
@@ -48,44 +24,68 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Approach to the challenge
+-----
+The program is divided into 3 classes:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* Menu - class that knows everything about the menu. Loads list of available dishes from the 'menu.csv' file. File can be changed upon initialization.
+* Despatch - class responsible for communication with customer through text messages and estimating time of delivery (set +1 hour now)
+* Order - class that knows everything about the order. It prints menu, takes an order from the customer, calculates total, validates the order and process the order for despatch.
 
 
-In code review we'll be hoping to see:
+Instructions for use
+-----
+The following commands executed will test the program:
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+export TWILIO_TOKEN="***VALID TOKEN HERE***"
+export MY_NUMBER="***VALID PHONE NUMBER HERE***"
 
 ```
-$ coveralls report
+2.3.1 :001 > require './lib/order'
+ => true
+2.3.1 :002 > o=Order.new
+ => #<Order:0x007f7fe30f44b0 @menu_list=#<Menu:0x007f7fe30f4460 @items_list={"Miso Soup"=>3.5, "Chef Special Miso"=>4.5, "Chilli Squid"=>4.95, "Whole Soft Shell Crab"=>5.95, "Takoyaki Octopus Balls 5 Pieces"=>4.95, "King Prawn Katsu 5 Pieces"=>4.95, "Vegetable Spring Rolls 12 Pieces"=>3.95, "Sweet Pumpk in 3 Pieces"=>3.95, "Kimchi Chicken"=>5.95, "Tofu Katsu"=>3.95, "Deep Fried Salmon Kimchi"=>5.95, "Salmon Hoso Maki"=>3.25, "Tuna Hoso Maki"=>3.5, "Sea Bass Hoso Maki"=>3.25, "Prawn Hoso Maki"=>3.5, "Eel with Cucumber Hoso Maki"=>3.95, "Cucumber Hoso Maki"=>2.25, "Avocado Hoso Maki"=>2.25, "Red Pepper Hoso Maki"=>2.25, "Kani Hoso Maki White crab meat"=>3.25}, @aFile="menu.csv">, @order_list={}, @despatch=Despatch>
+2.3.1 :003 > o.print_menu
+Miso Soup £3.5
+Chef Special Miso £4.5
+Chilli Squid £4.95
+Whole Soft Shell Crab £5.95
+Takoyaki Octopus Balls 5 Pieces £4.95
+King Prawn Katsu 5 Pieces £4.95
+Vegetable Spring Rolls 12 Pieces £3.95
+Sweet Pumpk in 3 Pieces £3.95
+Kimchi Chicken £5.95
+Tofu Katsu £3.95
+Deep Fried Salmon Kimchi £5.95
+Salmon Hoso Maki £3.25
+Tuna Hoso Maki £3.5
+Sea Bass Hoso Maki £3.25
+Prawn Hoso Maki £3.5
+Eel with Cucumber Hoso Maki £3.95
+Cucumber Hoso Maki £2.25
+Avocado Hoso Maki £2.25
+Red Pepper Hoso Maki £2.25
+Kani Hoso Maki White crab meat £3.25
+ => {"Miso Soup"=>3.5, "Chef Special Miso"=>4.5, "Chilli Squid"=>4.95, "Whole Soft Shell Crab"=>5.95, "Takoyaki Octopus Balls 5 Pieces"=>4.95, "King Prawn Katsu 5 Pieces"=>4.95, "Vegetable Spring Rolls 12 Pieces"=>3.95, "Sweet Pumpk in 3 Pieces"=>3.95, "Kimchi Chicken"=>5.95, "Tofu Katsu"=>3.95, "Deep Fried Salmon Kimchi"=>5.95, "Salmon Hoso Maki"=>3.25, "Tuna Hoso Maki"=>3.5, "Sea Bass Hoso Maki"=>3.25, "Prawn Hoso Maki"=>3.5, "Eel with Cucumber Hoso Maki"=>3.95, "Cucumber Hoso Maki"=>2.25, "Avocado Hoso Maki"=>2.25, "Red Pepper Hoso Maki"=>2.25, "Kani Hoso Maki White crab meat"=>3.25}
+2.3.1 :004 > o.place_order("Miso Soup:1,Prawn Hoso Maki:2",10.50)
+The order is now complete. ETA: 16:27
+ => {}
+2.3.1 :005 > o.place_order("Miso Soup:1,Prawn Hoso Maki:2",10)
+RuntimeError: Your total was incorrect, the order is rejected!
+	from /Users/dev/Google Drive/Projects/wk2/takeaway-challenge/lib/order.rb:39:in `place_order'
+	from (irb):5
+	from /Users/dev/.rvm/rubies/ruby-2.3.1/bin/irb:11:in `<main>'
+2.3.1 :006 > o.place_order("Miso Soup:1,Prawn Maki:2",10.50)
+RuntimeError: Your total was incorrect, the order is rejected!
+	from /Users/dev/Google Drive/Projects/wk2/takeaway-challenge/lib/order.rb:39:in `place_order'
+	from (irb):6
+	from /Users/dev/.rvm/rubies/ruby-2.3.1/bin/irb:11:in `<main>'
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
 
-Build Badge Example
-------------------
+Tests
+-----
+All RSpec test use double and stubs to ensure independence from other classes and changing environment.
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Redundant RSpec test were removed
