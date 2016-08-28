@@ -14,22 +14,26 @@ describe Restaurant do
 
   describe '#order_food' do
 
-  xit 'allows customer to order food on menu' do
-    expect(subject.order_food()).to
+  it 'allows customer to order food on menu' do
+    expect(restaurant.order_food("Rice")).to eq("Thank you for your order: 1 => Rice.")
   end
 
   it 'returns error if item not on menu' do
     expect{restaurant.order_food("sausages")}.to raise_error("That is not on the menu")
+  end
+
+  it 'adds item to order' do
+    restaurant.order_food("Rice")
+    expect(restaurant.order).to(have_key("Rice"))
+  end
+
+
+  it '#total_price' do
+    restaurant.order_food("Rice", 7)
+    expect(restaurant.confirm_total_price).to eq("Your order comes to 14")
 
   end
 
-  xit 'shows the price' do
-
-  end
-
- xit 'confirms the order and price' do
-
- end
 
  end
 
