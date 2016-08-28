@@ -11,23 +11,14 @@ describe Menu do
      end
    end
 
-   context '#dish_quantity' do
-     it 'returns the correct number of dishes left for a given dish' do
-       expect(subject.dish_quantity("Bangers & Mash")).to eq(9)
+   context 'has_dish' do
+     it 'returns false if the dish is not on the menu' do
+       expect(subject.has_dish?("Cat")).to be false
      end
 
-     it 'returns the correct number of dishes left for a given dish' do
-       expect(subject.dish_quantity("Chicken Tika")).to eq(8)
+     it 'returns true if the dish is on the menu' do
+       expect(subject.has_dish?("Pizza")).to be true
      end
    end
 
-   context '#dish_available' do
-     it 'returns true if the dish is still available' do
-       expect(subject.dish_available?("Bangers & Mash")).to be true
-     end
-
-     it 'returns false if the dish is not available' do
-       expect(subject.dish_available?("Dish 5")).to be false
-     end
-   end
 end

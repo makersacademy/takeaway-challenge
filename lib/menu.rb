@@ -1,27 +1,27 @@
 require 'CSV'
 class Menu #understands the food items on the menu
+  attr_reader :dishes
+
   def initialize
-    @dishes = {"Bangers & Mash" => {price: 6.99, available: 9}, #load from csv?
-              "Chicken Tika" => {price: 7.99, available: 8},
-              "Chili Con Carne" => {price: 9.49, available: 9},
-              "Dish 4" => {price: 2.99, available: 0},
-              "Dish 5" => {price: 6.99, available: 0},
-              "Dish 6" => {price: 4.99, available: 9}}
+    # csv_path = '/Users/James/desktop/makers/takeaway-challenge/resources/Dishes.csv'
+    # dishes = CSV.read(csv_path)
+    load_dishes
+  end
+
+  def load_dishes
+    @dishes = {"Bangers & Mash" => 6.99, #load from csv?
+              "Chicken Tika" => 7.99,
+              "Chili Con Carne" => 9.49,
+              "Pizza" => 2.99,
+              "Dish 5" => 6.99,
+              "Dish 6" => 4.99}
   end
 
   def dish_price(dish)
-    dishes[dish][:price]
+    dishes[dish]
   end
 
-  def dish_quantity(dish)
-    dishes[dish][:available]
+  def has_dish?(dish)
+    dishes.has_key?(dish)
   end
-
-  def dish_available?(dish)
-    dishes[dish][:available] != 0 ? true : false #in ruby 0 == true : (
-  end
-
-  private
-  
-  attr_reader :dishes
 end

@@ -3,18 +3,14 @@ require_relative 'menu.rb'
 class Order
   attr_reader :order
 
-  def initialize
+  def initialize(menu)
     @order = {} # structure should be {dish => quantity}
+    @menu = menu
   end
 
-  def add_to_order(dish, quantity)]
-    menu = Menu.new
-
-    number_available = menu.
-
-    quantity.times do
-    end
-    order[dish] = quantity
+  def add_to_order(dish, quantity)
+    fail if menu.has_dish?(dish) == false
+    @order[dish] = quantity
   end
 
   def remove_from_order(dish)
@@ -23,10 +19,12 @@ class Order
 
   def order_total
     total = 0
-    menu = Menu.new
     order.each do |dish, quantity|
       total += (quantity * menu.dish_price(dish))
     end
     total
   end
+
+  private
+    attr_reader :menu
 end
