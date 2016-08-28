@@ -25,10 +25,20 @@ describe '#order' do
       expect(takeaway.basket).to(have_value(2))
     end
 
+  end
+
+describe '#total' do
+
+  before do
+      takeaway.order("nasty noodles",4)
+    end
+
+    it 'can compile a subtotal' do
+      expect(takeaway.subtotal).to eq [[4, "nasty noodles", 35.80]]
+    end
+
     it 'calculates the total bill' do
-    takeaway.order("nasty noodles",3)
-    takeaway.order("rancid rice",3)
-    expect(takeaway.total).to eq 38.70
+      expect(takeaway.total).to eq 35.80
     end
 
   end
