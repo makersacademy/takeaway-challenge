@@ -25,6 +25,12 @@ describe '#order' do
       expect(takeaway.basket).to(have_value(2))
     end
 
+    it 'calculates the total bill' do
+    takeaway.order("nasty noodles",3)
+    takeaway.order("rancid rice",3)
+    expect(takeaway.total).to eq 38.70
+    end
+
   end
 
 end

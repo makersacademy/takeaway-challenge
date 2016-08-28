@@ -24,4 +24,8 @@ class Menu
     items.key?(item)
   end
 
+  def check_price(item)
+    items[item]
+  end
+
 end
