@@ -9,9 +9,9 @@ class Restaurant
   end
 
   def print_menu
-    puts "*Welcome to ChickenShawp, choose from our menu:*"
-    menu.dishes.each do |dish|
-      puts "#{dish[:name]}, #{dish[:price]}"
+    puts "*Welcome to MrShakes, choose from our menu:*"
+    menu.dishes.each do |dish, price|
+      puts "#{dish}, #{price}"
     end
   end
 end
