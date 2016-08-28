@@ -4,24 +4,15 @@ attr_reader :list
 
 
   def initialize
-    @list = [
-      { "King's o Wings" => 15},
-      {"Poulet Hermite" => 3},
-      {"Jack' Very Best" => 5}
-    ]
+    @list = { wings: 12,
+              chicken: 9,
+              special: 15}
   end
 
   def print_menu
-    puts "Welcome to Jack's Wack".center(70)
-    puts ""
-    @list.each do |item|
-      item.each do |k, v|
-          puts "#{k}: £#{v} (Delivery included)".center(70)
-        end
+    puts "+++MENU+++".center(70)
+    @list.each do |k, v|
+          puts "#{k}: £#{v}".center(70)
       end
-
   end
-
-
-
 end

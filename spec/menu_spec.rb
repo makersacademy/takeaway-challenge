@@ -1,16 +1,10 @@
-require "menu"
+require 'menu'
 
 describe Menu do
-
-subject(:menu) {described_class.new}
-let (:list) {double :list}
+  subject(:menu) { described_class.new }
 
   describe '#print_menu' do
-
-    it "prints the menu" do
-      expect(menu.print_menu).to_not be nil
-    end
-
+    specify { expect { menu.print_menu }.to output.to_stdout }
   end
 
 
