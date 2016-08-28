@@ -16,7 +16,14 @@ describe Order do
   describe "#add_item" do
     it "adds an item to the entire order" do
       order.add_item(dish1, 2)
-      expect(order.instance_variable_get(:@order_content)).to be_include({dish: dish1, quantity: 2})
+      expect(order.instance_variable_get(:@order_content)).to be_include(dish1)
+    end
+
+    it "groups the same dishes into one item" do
+      order.add_item(dish1, 2)
+      order.add_item(dish1, 1)
+      sum_value = order.instance_variable_get(:@order_content)[dish1][:sum]
+      expect(sum_value).to eq 5.97
     end
 
   end
@@ -47,4 +54,22 @@ describe Order do
       expect{order.checkout_order(2.99)}.to raise_error(RuntimeError)
     end
   end
+
+  describe "#total" do
+    it "returns the total value of the current order" do
+      order.add_item(dish2, 3)
+      order.add_item(dish1, 2)
+      expect(order.total).to eq 10.31
+    end
+  end
+
+
+  describe "#order_summary" do
+    it "returns the summary of the current order" do
+      order.add_item(dish1, 2)
+      order.add_item(dish2, 3)
+      expect(order.order_summary).to eq("Pizza x2 = 3.98\nBurger x3 = 6.33")
+    end
+  end
+
 end

@@ -12,7 +12,7 @@ class Restaurant
   end
 
   def show_menu
-    menu_class.get_menu
+    menu_class.menu
   end
 
   def add_item(dish_id, quantity)
@@ -26,12 +26,13 @@ class Restaurant
   end
 
   def total
-    #receives an array of sums per product
-    order_log_class.total.inject(:+)
+    #receives the total value of the current order
+    order_log_class.total
   end
 
   def checkout(amount)
     order_log_class.checkout_order(amount)
+    send_text_message
   end
 
   private
@@ -44,5 +45,8 @@ class Restaurant
 
   def dish_available?(dish_id)
     show_menu.include?(dish_id)
+  end
+
+  def send_text_message
   end
 end

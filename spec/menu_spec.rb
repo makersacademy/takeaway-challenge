@@ -6,8 +6,8 @@ describe Menu do
 
   describe "#get_menu" do
     it "returns a copy of the original menu" do
-      menu_copy = menu.get_menu
-      expect(menu.instance_variable_get(:@menu)).to eq menu_copy
+      menu_copy = menu.menu
+      expect(menu.instance_variable_get(:@menu_content)).to eq menu_copy
     end
   end
 end

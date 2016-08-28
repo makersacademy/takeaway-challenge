@@ -9,18 +9,29 @@ class OrderLog
   end
 
   def start_order
+    fail "Current order must be completed before starting a new one" if current_order
     @current_order = order
   end
 
   def add_item(dish, quantity)
+    validate_request
     @current_order.add_item(dish, quantity)
     "#{view_confirmation(dish.name, quantity)} been added to your basket"
   end
 
+  def order_summary
+    validate_request
+    current_order.order_summary
+  end
+
   def checkout_order(amount)
-    fail "Checkout amount is not correct, order is not completed" unless checkout_amount_valid?(amount)
-    @order_history << current_order
-    @current_order = nil
+    validate_request
+    fail "Checkout amount is not correct" unless checkout_amount_valid?(amount)
+    finish_order(amount)
+  end
+
+  def total
+    @current_order.total
   end
 
   private
@@ -34,10 +45,20 @@ class OrderLog
   end
 
   def checkout_amount_valid?(amount)
-    @current_order.total == amount
+    total == amount
   end
 
   def order
     order_class.new
+  end
+
+  def finish_order(amount)
+    current_order.checkout_order(amount)
+    @order_history << current_order
+    @current_order = nil
+  end
+
+  def validate_request
+    start_order unless current_order
   end
 end

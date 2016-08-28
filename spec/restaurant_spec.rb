@@ -9,8 +9,8 @@ describe Restaurant do
   let(:dish2) {double :dish}
 
   before(:each) do
-    allow(menu).to receive(:get_menu) { {1012 => dish1, 1013 => dish2} }
-    allow(order_log).to receive(:total) {[5.97, 4.22]}
+    allow(menu).to receive(:menu) { {1012 => dish1, 1013 => dish2} }
+    allow(order_log).to receive(:total) {10.19}
     allow(order_log).to receive(:add_item)
     allow(order_log).to receive(:start_order)
     allow(dish1).to receive(:name) {"Pizza"}
@@ -25,11 +25,12 @@ describe Restaurant do
       expect(order_log).to receive(:start_order)
       restaurant.start_order
     end
+
   end
 
   describe "#show_menu" do
-    it "calls the the #get_menu on Menu" do
-      expect(menu).to receive(:get_menu)
+    it "calls the the #menu on Menu" do
+      expect(menu).to receive(:menu)
       restaurant.show_menu
     end
   end
