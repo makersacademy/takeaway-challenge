@@ -23,6 +23,4 @@ class Menu
   end
 
 
-
-
 end
