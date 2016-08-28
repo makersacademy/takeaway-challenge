@@ -2,9 +2,9 @@ require 'order'
 
 describe Order do
 
-  subject(:order) {described_class.new(checkout: checkout, menu: menu)}
+  subject(:order) {described_class.new(menu)}
 
-  let(:burger) {double :burger}
+  let(:menu) {double :menu}
   let(:items) do {
           "venison pie" => 8,
           "vegan platter" => 7
@@ -18,8 +18,8 @@ describe Order do
   end
 
   it 'does not allow non-menu items to be added' do
-    error_msg = "No such dish, please select from the menu"
-    expect {order.place_order(burger, 1)}.to raise_error error_msg
+    allow(menu).to receive(:has_item?).with(:burger).and_return false
+    expect {order.add_item(:burger, 1)}.to raise_error NoItemError, "No such dish"
   end
 
 end

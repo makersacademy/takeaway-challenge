@@ -1,22 +1,23 @@
+require 'menu'
+
 class Order
 #let customers order a takeaway
-  def initialize(checkout = {}, menu = Menu.new)
-    @checkout = checkout
+attr_reader :basket, :menu
+
+  def initialize(menu)
+    @basket = {}
     @menu = menu
-    @total_price = 0
   end
 
-  # def place_order(item, quantity)
-  #     fail "No such dish, please select from the menu" if dish_exists?
-  #     checkout.store(item, quantity)
-  # end
-
-  private
-
-  attr_reader :checkout
-
-  def dish_exists?
-
+  def add_item(item, quantity)
+    fail NoItemError, "No such dish" unless menu.has_item?(item)
+    basket[item] = quantity
   end
+
+  # private
+  #
+  # attr_reader :menu
 
 end
+
+class NoItemError < StandardError; end
