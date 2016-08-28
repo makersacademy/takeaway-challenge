@@ -26,13 +26,12 @@ describe Order do
     end
   end
 
-  # describe '#summary' do
-  #   it 'provides a summary of current order' do
-  #     order.add_dish(1, 'Hedgeree')
-  #     order.add_dish(1, 'Banana Chowder')
-  #     order.summary
-  #     expect(STDOUT).to include('Hedgeree x 2 = £15.3')
-  #   end
-  # end
+  describe '#summary' do
+    it 'provides a summary of current order' do
+      expect(STDOUT).to receive(:puts).with('Hedgeree x 1 = £7.65')
+      expect(STDOUT).to receive(:puts).with('Total = £7.65')
+      order.summary
+    end
+  end
 
 end
