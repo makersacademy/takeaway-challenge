@@ -23,6 +23,10 @@ class Takeaway
     calculate_total
   end
 
+  def checkout(payment)
+    fail 'Please enter correct payment amount' unless check(payment)
+  end
+
   private
 
   def subtotals
@@ -33,11 +37,14 @@ class Takeaway
   end
 
   def calculate_total
-    total = 0
-    @basket.each do | item, qty |
-      total += (qty * @menu.price(item))
-    end
-    puts "Total: £#{total}"
+    @total = @basket.reduce {|sum, (item, qty)|
+      sum + (qty * @menu.price(item))}
+    puts "Total: £#{@total}"
+  end
+
+  def check(payment)
+    calculate_total
+    @total == payment
   end
 
 end

@@ -46,4 +46,16 @@ describe Takeaway do
 
   end
 
+  describe '.checkout' do
+    it 'raises error if payment does not match total' do
+      takeaway.add_to_order("Beef Burger", 2)
+      msg = "Please enter correct payment amount"
+      expect{takeaway.checkout(2)}.to raise_error msg
+    end
+    it 'does not raise error if payment matches total' do
+      takeaway.add_to_order("Beef Burger")
+      expect{takeaway.checkout(8.5)}.not_to raise_error
+    end
+  end
+
 end
