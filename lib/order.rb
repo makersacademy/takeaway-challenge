@@ -21,7 +21,17 @@ class Order
   end
 
   def total_price
-    calcul_total.inject(:+)
+  calcul_total.inject(:+)
+  end
+
+  def print_total
+   str = "You ordered "
+   @basket.each do |k, v|
+     str << "#{v.to_i} "
+     str << "#{k.to_s}"
+     str << " ** "
+    end
+    str << "Total is #{total_price}"
   end
 
   private
@@ -29,6 +39,6 @@ class Order
     @basket.map do |k, v|
       v * menu.list[k]
     end
-  end 
+  end
 
 end
