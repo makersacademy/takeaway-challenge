@@ -18,6 +18,7 @@ describe 'user feature tests' do
  it 'selects dishes from the menu' do
    menu = Menu.new
    menu.display_dishes
-   expect{menu.select_dishes(1)}.not_to raise_error
+   order = Order.new
+   expect{order.select_dishes("chicken", 2)}.not_to raise_error
  end
 end

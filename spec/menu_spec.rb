@@ -6,14 +6,7 @@ describe Menu do
 
   describe '#display_dishes' do
     it 'displays a list of dishes with prices' do
-      expect(menu.display_dishes).to include ({chicken: 5})
-    end
-  end
-
-  describe '#select_dishes' do
-    it 'selects dishes from the list' do
-    menu.display_dishes
-      expect(menu).to respond_to(:select_dishes).with(1).argument
+      expect(menu.display_dishes).to include ({"chicken" => 5})
     end
   end
 end
