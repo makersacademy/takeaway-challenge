@@ -70,10 +70,6 @@ $ irb
  => 1
 2.3.1 :006 > order.add_to_order("Coleslaws", 1)
 RuntimeError: This item is not on the menu
-	from /Users/laurawilson/MakersAcademy/Projects/takeaway-challenge/lib/menu.rb:20:in `check_menu'
-	from /Users/laurawilson/MakersAcademy/Projects/takeaway-challenge/lib/takeaway.rb:18:in `add_to_order'
-	from (irb):6
-	from /Users/laurawilson/.rvm/rubies/ruby-2.3.1/bin/irb:11:in `<main>'
 2.3.1 :007 > order.add_to_order("Coleslaw", 1)
  => 1
 2.3.1 :008 > order.review_order
@@ -86,10 +82,6 @@ Total: £38.0
 2.3.1 :009 > order.checkout(28)
 Total: £38.0
 RuntimeError: Please enter correct payment amount
-	from /Users/laurawilson/MakersAcademy/Projects/takeaway-challenge/lib/takeaway.rb:28:in `checkout'
-	from (irb):9
-	from /Users/laurawilson/.rvm/rubies/ruby-2.3.1/bin/irb:11:in `<main>'
 2.3.1 :010 > order.checkout(38)
 Total: £38.0
- => <Twilio::REST::Message @path=/2010-04-01/Accounts/ACf23bf4250138c442df5b550e7b57cb09/Messages/SM363a1078e2c740de81888086b7c7a306>
  ```
