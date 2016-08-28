@@ -2,8 +2,6 @@
 require 'twilio-ruby'
 class Despatch
 
-# => `export SOME_API_KEY="qwerty123456"`in Ruby as `ENV["SOME_API_KEY"]`
-
   def initialize(twilio_client=Twilio::REST::Client)
     account_sid = 'AC76807998c792abd7e12cb8e95689f27f'
     @client = twilio_client.new(account_sid, ENV["TWILIO_TOKEN"])
@@ -26,7 +24,5 @@ class Despatch
       body: "Thank you! Your order was placed and will be delivered before #{estimate_eta}."
       )
   end
-
-
 
 end
