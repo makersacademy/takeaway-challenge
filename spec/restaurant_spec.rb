@@ -47,9 +47,10 @@ describe Restaurant do
 
   describe "check_order" do
     ### Can't get this passing
-    it "prints the current order in a clean format" do
+    it "returns the current order" do
       restaurant.add_order("Burger")
-      expect(restaurant.check_order).to output.to_stdout "Burger"
+      restaurant.check_order
+      expect(restaurant.basket).to eq({"Burger" =>1})
     end
 
     it "increases the total by the amount of the added item" do
@@ -63,5 +64,14 @@ describe Restaurant do
       expect(restaurant.total).to eq 5
     end
     end
+
+    # describe "complete_order" do
+    #   it " states what time the order was completed" do
+    #   restaurant.add_order("Burger", 2)
+    #   time = Time.now
+    #   time += 1*60*60
+    #   expect(restaurant.complete_order).to eq "Your order will be delivered by #{time.strftime("%H:%M")}"
+    #   end
+    # end
   end
 end

@@ -1,14 +1,17 @@
 #Understands a customers order
 require_relative 'menu'
+require_relative 'sms'
+
 
 class Restaurant
 
-  attr_reader :basket, :total
+  attr_reader :basket, :total, :sms
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sms = Sms.new)
     @menu = menu
     @basket = {}
     @total = 0
+    @sms = sms
   end
 
   def print_menu
@@ -35,4 +38,11 @@ class Restaurant
     end
     puts "Total: £#{@total}"
     end
+
+  def complete_order
+    time = Time.new
+    add_hour = time + 1*60*60
+    delivery_time = add_hour.strftime("%H:%M")
+    @sms.send_confirmation_sms(delivery_time)
+  end
 end
