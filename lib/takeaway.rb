@@ -1,11 +1,11 @@
 require_relative 'menu'
-require_relative 'basket'
+require_relative 'order'
 
 class Takeaway
 
-  def initialize(menu = Menu.new, basket = Basket.new)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
-    @basket = basket
+    @order = order
   end
 
   def read_menu
@@ -14,7 +14,7 @@ class Takeaway
 
   def add(dish)
     fail 'Sorry, that\'s not on the menu' unless menu.dishes[dish]
-    basket.add_dish(dish)
+    order.add_dish(dish)
   end
 
   private
