@@ -46,14 +46,22 @@ describe Restaurant do
   end
 
   describe "check_order" do
-    it "returns the current basket order" do
-      restaurant.add_order("Burger")
-      expect(restaurant.check_order).to eq({"Burger" => 1})
-    end
-
+    ### Can't get this passing
     it "prints the current order in a clean format" do
       restaurant.add_order("Burger")
-      expect(restaurant.check_order).to include "Burger"
+      expect(restaurant.check_order).to output.to_stdout "Burger"
+    end
+
+    it "increases the total by the amount of the added item" do
+      restaurant.add_order("Burger")
+      expect{restaurant.add_order("Burger")}.to change{restaurant.total}.by 2.5
+    end
+
+    describe "total" do
+    it "adds the price of the dish added to the order (and calculates quantity) " do
+      restaurant.add_order("Burger", 2)
+      expect(restaurant.total).to eq 5
+    end
     end
   end
 end

@@ -3,11 +3,12 @@ require_relative 'menu'
 
 class Restaurant
 
-  attr_reader :basket
+  attr_reader :basket, :total
 
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = {}
+    @total = 0
   end
 
   def print_menu
@@ -24,12 +25,14 @@ class Restaurant
   def add_order(item, quantity=1)
     @menu.dish_on_menu(item)
     @basket[item] = quantity
+    @total += @menu.price(item)*quantity
   end
 
   def check_order
     puts "Here's a summary of your order:".center(25)
     basket.each do |dish, quantity|
-      puts "#{quantity}x #{dish.ljust(10)}"
+      puts "#{quantity}x #{dish.ljust(10)} (£#{@menu.price(dish)*quantity})"
     end
-  end
+    puts "Total: £#{@total}"
+    end
 end
