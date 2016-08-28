@@ -1,5 +1,4 @@
 require 'twilio-ruby'
-require './lib/order.rb'
 
 class Text
 
