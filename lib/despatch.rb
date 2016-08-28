@@ -1,3 +1,4 @@
+# => Knows everything about despatching orders
 require 'twilio-ruby'
 class Despatch
 
@@ -9,7 +10,8 @@ class Despatch
   end
 
   def send_order
-
+    send_text
+    puts "The order is now complete. ETA: #{estimate_eta}"
   end
 
   def estimate_eta
@@ -24,5 +26,7 @@ class Despatch
       body: "Thank you! Your order was placed and will be delivered before #{estimate_eta}."
       )
   end
+
+
 
 end

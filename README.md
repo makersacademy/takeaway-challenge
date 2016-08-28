@@ -26,6 +26,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 
+export TWILIO_TOKEN="94cd75fb8a7f116ef986bc64fe9be1f4"
+export MY_NUMBER="+447437080558"
 
 
 
@@ -38,7 +40,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
   otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
 
-  
+
   * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
   * Use the twilio-ruby gem to access the API
   * Use the Gemfile to manage your gems
