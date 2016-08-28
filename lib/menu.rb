@@ -13,4 +13,10 @@ class Menu
     @items = items
   end
 
+  def show_items
+    items.each do |item, price|
+      puts item.ljust(20) + price.to_s.rjust(20)
+    end
+  end
+
 end
