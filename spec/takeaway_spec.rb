@@ -20,9 +20,13 @@ describe Takeaway do
   describe '#add' do
     it 'prints an error message if dish not on menu' do
       message = 'Sorry, that\'s not on the menu'
-      expect{takeaway.add("cake")}.to raise_error message
+      expect{takeaway.add('cake')}.to raise_error message
     end
 
+    it 'prints success message if item added' do
+      expect(STDOUT).to receive(:puts).with('Hedgeree has been added to your basket')
+      takeaway.add('Hedgeree')
+    end
   end
 
 end

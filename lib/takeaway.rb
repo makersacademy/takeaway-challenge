@@ -14,11 +14,16 @@ class Takeaway
 
   def add(number=1, dish)
     fail 'Sorry, that\'s not on the menu' unless menu.dishes[dish]
-    @order.add_dish(number, dish)
+    order.add_dish(number, dish)
+    puts "#{dish} has been added to your basket"
+  end
+
+  def summary
+    order.summary
   end
 
   private
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :order
 
 end
