@@ -1,5 +1,7 @@
 class Menu
 
+  attr_reader :menu
+
   def initialize
     @menu =
     {"Spring Rolls" => 3,
@@ -8,4 +10,19 @@ class Menu
       "Thai Green Curry" => 8,
        "Rice" => 2}
   end
+
+
+  def print_menu
+    menu.each do |menu, price|
+      puts "#{menu}"
+  end
+  end
+
+  def print_price(item)
+    menu[item]
+  end
+
+
+
+
 end
