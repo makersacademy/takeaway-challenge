@@ -6,8 +6,8 @@ attr_reader :basket
     @basket = {}
   end
 
-  def add_dish(dish)
-    !!@basket[dish] ? @basket[dish] += 1 : @basket[dish] = 1
+  def add_dish(number, dish)
+    !!@basket[dish] ? @basket[dish] += number : @basket[dish] = number
   end
 
 end

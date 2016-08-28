@@ -8,13 +8,13 @@ class Takeaway
     @order = order
   end
 
-  def read_menu
+  def show_menu
     menu.show_dishes
   end
 
-  def add(dish)
+  def add(number=1, dish)
     fail 'Sorry, that\'s not on the menu' unless menu.dishes[dish]
-    order.add_dish(dish)
+    @order.add_dish(number, dish)
   end
 
   private
