@@ -49,7 +49,7 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Max: 7
 
-# ************** Enabled ************** 
+# ************** Enabled **************
 
 Style/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
@@ -520,6 +520,16 @@ Style/SymbolProc:
   Description: 'Use symbols as procs instead of blocks when possible.'
   Enabled: true
 
+Style/TrailingCommaInArguments:
+  Description: 'Checks for trailing comma in argument lists.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-params-comma'
+  Enabled: true
+
+Style/TrailingCommaInLiteral:
+  Description: 'Checks for trailing comma in array and hash literals.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
+  Enabled: true
+
 Style/TrivialAccessors:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#attr_family'
   Enabled: true
@@ -568,7 +578,7 @@ Style/WhileUntilDo:
   Description: 'Checks for redundant do after while or until.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-multiline-while-do'
   Enabled: true
-# enable for later challenge 
+# enable for later challenge
 
   # Align ends correctly.
 Lint/EndAlignment:
@@ -749,7 +759,7 @@ Metrics/PerceivedComplexity:
                  human reader.
   Enabled: true
 
-# ************** Disabled ************** 
+# ************** Disabled **************
 
 Style/EmptyLinesAroundClassBody:
   Description: Keeps track of empty lines around class bodies.
@@ -757,7 +767,7 @@ Style/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines
   SupportedStyles:
   - empty_lines
-  - no_empty_lines  
+  - no_empty_lines
 
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
