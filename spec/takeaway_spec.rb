@@ -27,7 +27,7 @@ describe '#order' do
 
   end
 
-describe '#total' do
+  describe '#total' do
 
   before do
       takeaway.order("nasty noodles",4)

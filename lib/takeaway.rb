@@ -1,5 +1,4 @@
 require_relative 'menu'
-require 'date'
 
 class Takeaway
 
@@ -24,7 +23,7 @@ attr_reader :menu, :basket, :subtotal
     basket.each do |item, quantity|
       total += (quantity * (menu.check_price(item)))
     end
-    total
+    total.round(2)
   end
 
   def check_order
@@ -36,7 +35,7 @@ attr_reader :menu, :basket, :subtotal
 
   def complete_order
     confirm_bill
-    confirm_time
+    delivery_confirmation
     @basket = nil
   end
 
@@ -54,6 +53,14 @@ private
     subtotal.each do |quantity, item, price|
       puts "You have ordered #{quantity} #{item} for a total £#{price}"
     end
+  end
+
+  def delivery_time
+    (Time.now + (60 * 60)).strftime("%H:%M")
+  end
+
+  def delivery_confirmation
+    puts "Your order will be delivered at #{delivery_time}"
   end
 
 end
