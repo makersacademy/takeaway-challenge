@@ -16,7 +16,7 @@ describe Italian do
       :Pannacotta => 4.99,
       :Tiramisu => 4.99,
       :Wine => 12.99,
-      :Coke => 2.50
+      :Coke => 2.49
     })
   end
 end
