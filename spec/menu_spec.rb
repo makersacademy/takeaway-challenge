@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-
+  let(:CSV) {double :CSV}
   subject(:menu) {described_class.new}
 
   describe "#get_menu" do

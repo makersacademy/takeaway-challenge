@@ -1,10 +1,12 @@
 require_relative "dish"
+require "csv"
 
 class Menu
-
-  def initialize
-    @menu_content = {1012 => Dish.new(1012, "Pizza", 1.99),
-      1013 => Dish.new(1013, "Burger", 2.11)}
+  FILENAME = './lib/menu.csv'
+  def initialize(filename = FILENAME)
+    @filename = filename
+    @menu_content = {}
+    load_menu
   end
 
   def menu
@@ -13,5 +15,14 @@ class Menu
 
   private
 
-  attr_reader :menu_content
+  attr_reader :menu_content, :filename
+
+  def load_menu
+    CSV.foreach(filename) do |row|
+      @menu_content[row[0].to_i] = Dish.new(row[0].to_i, row[1], row[2].to_f)
+    end
+  rescue
+    puts "File doesn't exist. Failed to load file."
+  end
+
 end

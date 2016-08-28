@@ -13,12 +13,13 @@ describe Restaurant do
     allow(order_log).to receive(:total) {10.19}
     allow(order_log).to receive(:add_item)
     allow(order_log).to receive(:start_order)
+    allow(order_log).to receive(:checkout_order)
     allow(dish1).to receive(:name) {"Pizza"}
     allow(dish1).to receive(:price) {1.99}
     allow(dish2).to receive(:name) {"Burger"}
     allow(dish2).to receive(:price) {2.11}
+    allow(restaurant).to receive(:send_text_message)
   end
-
 
   describe "#start_order" do
     it "calls the start_order method on the order_log" do
@@ -80,10 +81,13 @@ describe Restaurant do
       expect(order_log).to receive(:checkout_order).with(11.11)
       restaurant.checkout(11.11)
     end
-  end
 
-  describe "#send_text_message" do
-    it "do something"
+    it "sends confirmation text message" do
+      t = Time.now + 60 * 60
+      message = "Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}."
+      restaurant.add_item(1012, 3)
+      expect(restaurant).to receive(:send_text_message).with(message)
+      restaurant.checkout(5.97)
+    end
   end
-
 end

@@ -1,10 +1,17 @@
 require_relative "menu.rb"
 require_relative "order_log.rb"
+require_relative "takeaway"
+require 'twilio-ruby'
 
 class Restaurant
+  include TakeAway
+
   def initialize(menu_class = Menu.new, order_log_class = OrderLog.new)
     @menu_class = menu_class
     @order_log_class = order_log_class
+    account_sid = ENV['TWILIO_ACC_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
   def start_order
@@ -32,7 +39,7 @@ class Restaurant
 
   def checkout(amount)
     order_log_class.checkout_order(amount)
-    send_text_message
+    send_text_message(compose_text_body)
   end
 
   private
@@ -47,6 +54,16 @@ class Restaurant
     show_menu.include?(dish_id)
   end
 
-  def send_text_message
+  def compose_text_body
+    t = Time.now + (60 * 60)
+    "Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}."
+  end
+
+  def send_text_message(message)
+    @message = @client.messages.create({
+      to: ENV['TWILIO_PHONE_NR'],
+      from: ENV['TWILIO_PHONE_NR'],
+      body: message
+    })
   end
 end
