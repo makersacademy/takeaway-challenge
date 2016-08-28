@@ -26,11 +26,10 @@ attr_reader :menu, :basket, :subtotal
     total.round(2)
   end
 
-  def check_order
-    puts "Would you like to check your order y/n"
-    reply = gets.chomp
-    if reply == 'y' then itemised_subtotal
-    else complete_order end
+  def itemised
+    subtotal.each do |quantity, item, price|
+      puts "You have ordered #{quantity} #{item} for a total £#{price}"
+    end
   end
 
   def complete_order
@@ -47,12 +46,6 @@ private
 
   def confirm_bill
     puts "That will be £#{total} please."
-  end
-
-  def itemised_subtotal
-    subtotal.each do |quantity, item, price|
-      puts "You have ordered #{quantity} #{item} for a total £#{price}"
-    end
   end
 
   def delivery_time
