@@ -19,7 +19,7 @@ class SMSConfirmation
   private
 
   def message
-    est_time = Time.new + 60*60
+    est_time = (Time.new + 60*60).strftime("%H:%M")
     "Thank you! Your order was placed and will be delivered before #{est_time}"
   end
 

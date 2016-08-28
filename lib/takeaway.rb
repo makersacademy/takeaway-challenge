@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'sms_confirmation'
 
 class Takeaway
 
@@ -10,7 +11,7 @@ class Takeaway
   end
 
   def view_menu
-    @menu
+    @menu.dishes
   end
 
   def add_to_order(item, qty = 1)
@@ -23,8 +24,9 @@ class Takeaway
     calculate_total
   end
 
-  def checkout(payment)
+  def checkout(payment, conf_method = SMSConfirmation.new)
     fail 'Please enter correct payment amount' unless check(payment)
+    conf_method.send_msg
   end
 
   private

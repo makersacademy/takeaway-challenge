@@ -1,8 +1,10 @@
 
 class Menu
 
+  attr_reader :dishes
+
   def initialize
-    @menu = { "Beef Burger" => 8.5 ,
+    @dishes = { "Beef Burger" => 8.5 ,
               "Cheese Burger" => 9 ,
               "Honest Burger" => 10.5 ,
               "Tribute Burger" => 10.5 ,
@@ -15,11 +17,11 @@ class Menu
   end
 
   def check_menu(item)
-    fail 'This item is not on the menu' unless @menu.has_key? item
+    fail 'This item is not on the menu' unless @dishes.has_key? item
   end
 
   def price(item)
-    @menu[item]
+    @dishes[item]
   end
 
 end
