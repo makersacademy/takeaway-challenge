@@ -24,20 +24,23 @@ describe Takeaway do
   end
 
   describe '#checkout' do
+
+   let(:conf) { double :confirmation, send_message: "Order placed"}
+
     it 'raises error if price does not match total' do
       takeaway.add(2, 'Hedgeree')
       message = 'Please enter the correct payment amount'
-      expect{takeaway.checkout(5)}.to raise_error message
+      expect{takeaway.checkout(5, conf)}.to raise_error message
     end
 
     it 'does not raise error if price matches total' do
       takeaway.add(2, 'Hedgeree')
-      expect{takeaway.checkout(15.3)}.to_not raise_error
+      expect{takeaway.checkout(15.3, conf)}.to_not raise_error
     end
 
     it 'raises error if no order' do
       message = 'Nothing in basket'
-      expect{takeaway.checkout(1)}.to raise_error message
+      expect{takeaway.checkout(1, conf)}.to raise_error message
     end
 
   end

@@ -19,7 +19,11 @@ class Confirmation
   private
 
   def message
-    "Your order has been placed and will be with you in one hour"
+    "Your order has been placed and will be with you before #{expected_time}"
+  end
+
+  def expected_time
+    (Time.now + 60*60).strftime("%H:%M")
   end
 
 end
