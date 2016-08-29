@@ -17,7 +17,7 @@ class Menu
   end
 
   def check_menu(item)
-    fail 'This item is not on the menu' unless @dishes.has_key? item
+    fail 'This item is not on the menu' unless @dishes.key? item
   end
 
   def price(item)

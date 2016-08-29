@@ -39,7 +39,7 @@ class Takeaway
   end
 
   def calculate_total
-    @total = @basket.reduce(0) do |sum, (item, qty)|
+    @total = @basket.inject(0) do |sum, (item, qty)|
       sum + (qty * @menu.price(item))
     end
     puts "Total: £#{@total}"

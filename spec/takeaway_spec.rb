@@ -4,8 +4,7 @@ require 'stringio'
 describe Takeaway do
 
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double :menu, check_menu: "Beef Burger" , price: 8.5,
-               dishes: {"Beef Burger" => 8.5} }
+  let(:menu) { double :menu, check_menu: "Beef Burger" , price: 8.5, dishes: {"Beef Burger" => 8.5} }
   let(:item) { double :dish }
 
   describe '.view_menu' do
@@ -44,14 +43,17 @@ describe Takeaway do
   end
 
   describe '.checkout' do
+
+    let(:sms) { double :method , send_msg: "Message sent"}
+
     it 'raises error if payment does not match total' do
       takeaway.add_to_order("Beef Burger", 2)
       msg = "Please enter correct payment amount"
-      expect{takeaway.checkout(2)}.to raise_error msg
+      expect{takeaway.checkout(2, sms)}.to raise_error msg
     end
     it 'does not raise error if payment matches total' do
       takeaway.add_to_order("Beef Burger")
-      expect{takeaway.checkout(8.5)}.not_to raise_error
+      expect{takeaway.checkout(8.5, sms)}.not_to raise_error
     end
 
   end
