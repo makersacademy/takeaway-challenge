@@ -28,11 +28,9 @@ To get this working locally, do the following:
 * In IRB type:
 
 ```
-
-* require './lib/restaurant.rb'
-* myPizzaJoint = Restaurant.new
-* myPizzaJoint.take_order
-
+1)  require './lib/restaurant.rb'
+2)  myPizzaJoint = Restaurant.new
+3)  myPizzaJoint.take_order
 ```
 
 Enjoy your meal!

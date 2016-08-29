@@ -36,7 +36,6 @@ class Restaurant
   private
 
   def greet_customer
-    # system "clear"
     puts
     puts "Hello this is the Chicken Shop!"
     puts "I'm ready to take your order."

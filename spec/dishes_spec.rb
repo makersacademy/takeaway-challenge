@@ -13,7 +13,7 @@ describe Dishes do
 
   end
 
-  describe 'check_sum' do
+  describe '#check_sum' do
 
     before(:each) do
       @sum = 34

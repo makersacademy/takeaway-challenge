@@ -20,8 +20,4 @@ class Order
     @status = "Confirmed"
   end
 
-  # Do I need the following?
-  # need a method here to check prices and set status to "in progress"
-  # need to pass back a confirmation to the Restaurant
-
 end
