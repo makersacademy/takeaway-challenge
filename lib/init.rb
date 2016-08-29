@@ -1,6 +1,7 @@
 require_relative 'selection'
 require_relative 'price_calc'
 require 'date'
+require_relative '../sms'
 
 puts "Welcome to this awesome Takeaway experience"
 puts "Here is our Menu"
@@ -11,7 +12,7 @@ case choice
 when 'yes'
   calc = PriceCalculator.new(order)
   calc.calculate
-  puts "Order successfully placed! Expect delivery before #{Time.now + 1*60**2}"
+  Sms.new.send_sms
   puts "Would you like a receipt to check the charge is correct?"
   receipt = gets.chomp.downcase
   case receipt
