@@ -1,4 +1,4 @@
-require 'order'
+require 'takeaway'
 
 describe Takeaway do
 
@@ -32,6 +32,13 @@ describe Takeaway do
         takeaway.add_order("pizza", 2)
         msg = "Your calculation is not correct"
         expect{takeaway.complete_order(1)}.to raise_error(msg)
+      end
+
+      it 'should send a confirmation text when order is completed' do
+        allow(takeaway).to receive(:send_text)
+        allow(takeaway).to receive(:is_correct_amount?).and_return(true)
+        # expect(takeaway).to receive(:send_text)
+        takeaway.complete_order(20.93)
       end
     end
 end

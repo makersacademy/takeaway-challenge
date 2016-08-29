@@ -1,17 +1,17 @@
 require_relative 'menu'
 require_relative 'order'
-require_relative 'sms'
+require_relative 'text'
 
 #handles the orders from the menu
 class Takeaway
 
-attr_reader :menu, :order, :eachtotal, :sms
+attr_reader :menu, :order, :eachtotal, :text
 
   def initialize(menu: Menu.new)
     @menu = menu
     @order = nil
     @eachtotal = []
-    @sms = sms
+    @text = nil
   end
 
   def read_menu
@@ -40,7 +40,9 @@ attr_reader :menu, :order, :eachtotal, :sms
 
   def complete_order(price)
     fail "Your calculation is not correct" if is_correct_amount?(price) == false
-    @sms = Sms.new(price)
+    # "Your order totalling #{price} is confirmed!"
+    @text = Text.new
+    @text.send_text
   end
 
 
