@@ -1,13 +1,15 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Takeaway
 
-attr_reader :menu, :basket, :subtotal
+attr_reader :menu, :basket, :subtotal, :sms
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sms = MessageSender)
     @menu = menu
     @basket = {}
     @subtotal = []
+    @sms = sms
   end
 
   def order(item, quantity = 1)
@@ -34,7 +36,7 @@ attr_reader :menu, :basket, :subtotal
 
   def complete_order
     confirm_bill
-    delivery_confirmation
+    sms.new
     @basket = nil
   end
 
@@ -46,14 +48,6 @@ private
 
   def confirm_bill
     puts "That will be £#{total} please."
-  end
-
-  def delivery_time
-    (Time.now + (60 * 60)).strftime("%H:%M")
-  end
-
-  def delivery_confirmation
-    puts "Your order will be delivered at #{delivery_time}"
   end
 
 end
