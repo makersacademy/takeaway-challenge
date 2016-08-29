@@ -13,9 +13,9 @@ attr_reader :basket
 
   def summary
     basket.each do |dish, quantity|
-      puts "#{dish} x #{quantity} = £#{menu.dishes[dish]*quantity}"
+      puts "#{dish} x #{quantity} = £#{'%.2f' % (menu.dishes[dish]*quantity)}"
     end
-    puts "Total = £#{total}"
+    puts "Total = £#{'%.2f' % total}"
   end
 
   def total
