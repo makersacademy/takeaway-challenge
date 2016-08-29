@@ -4,6 +4,7 @@ describe Order do
 
 subject(:order) {described_class.new}
 let(:menu) {double :menu}
+let(:confirm_order) { double :confirm_order }
 
 
   describe '#select_dishes' do
@@ -29,9 +30,18 @@ let(:menu) {double :menu}
     it 'displays the current price of the order' do
       order.select_dishes("chips",2)
       order.select_dishes("steak",2)
+    end
+  end
 
+  describe '#confirm order' do
 
+    it 'confirms the order by sending a text to the users phone' do
+      order.select_dishes("chips", 2)
+      order.select_dishes("burger", 2)
+      expect(order.confirm_order).to eq true
     end
 
+
   end
+
 end

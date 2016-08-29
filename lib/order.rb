@@ -1,12 +1,14 @@
 #Understands how to select dishes
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 
-  attr_reader :selected_dishes, :total, :menu
+  attr_reader :selected_dishes, :total, :menu, :text
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, text = Text.new)
     @menu = menu
+    @text = text
     @selected_dishes = Hash.new(0)
     @total = 0
   end
@@ -20,5 +22,9 @@ class Order
       @total += (quantity * (menu.price_check(dish)))
     end
     @total
+  end
+
+  def confirm_order
+    total == total ? @text.send_text : total_price
   end
 end
