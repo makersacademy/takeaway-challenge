@@ -8,18 +8,18 @@ attr_reader :basket
   end
 
   def add_dish(quantity, dish)
-    @basket[dish] += quantity
+    basket[dish] += quantity
   end
 
   def summary
-    @basket.each do |dish, quantity|
+    basket.each do |dish, quantity|
       puts "#{dish} x #{quantity} = £#{menu.dishes[dish]*quantity}"
     end
     puts "Total = £#{total}"
   end
 
   def total
-    @basket.inject(0) do |sum, (dish, quantity)|
+    basket.inject(0) do |sum, (dish, quantity)|
       sum + menu.dishes[dish]*quantity
     end
   end

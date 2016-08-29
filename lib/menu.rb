@@ -15,14 +15,20 @@ attr_reader :dishes
     @dishes = MENU_ITEMS
   end
 
-  def show_dishes 
-    @dishes.each.with_index(1) do |(dish,price),index|
+  def show_dishes
+    dishes.each.with_index(1) do |(dish,price),index|
       puts "#{index}. #{dish} - £#{price}"
     end
   end
 
+  def check_dish(dish)
+    fail 'Sorry, that\'s not on the menu' unless contains?(dish)
+  end
+
+  private
+
   def contains?(dish)
-    dishes[dish]
+    !!dishes[dish]
   end
 
 end

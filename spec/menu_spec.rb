@@ -4,7 +4,7 @@ describe Menu do
 
   subject(:menu) { described_class.new }
 
-  describe '#show' do
+  describe '#show_dishes' do
     it 'returns a list of dishes and prices' do
       expect(menu.show_dishes).to include(
         'Banana Chowder' =>  5.45,
@@ -14,6 +14,13 @@ describe Menu do
         'Smoked Goat Tart' => 6.75,
         'Prawn Sundae' => 6.75
       )
+    end
+  end
+
+  describe '#check_dish?' do
+    it 'prints an error message if dish not on menu' do
+      message = 'Sorry, that\'s not on the menu'
+      expect{menu.check_dish('cake')}.to raise_error message
     end
   end
 

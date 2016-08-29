@@ -3,9 +3,9 @@ require_relative 'order'
 
 class Takeaway
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new)
     @menu = menu
-    @order = order
+    @order = Order.new
   end
 
   def show_menu
@@ -13,7 +13,7 @@ class Takeaway
   end
 
   def add(number=1, dish)
-    fail 'Sorry, that\'s not on the menu' unless menu.contains?(dish)
+    menu.check_dish(dish)
     add_to_basket(number, dish)
   end
 
