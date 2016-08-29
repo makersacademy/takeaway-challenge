@@ -1,4 +1,6 @@
 # Understands how to hold menu options
+require_relative "main"
+require_relative "basket"
 
 class Italian
 
