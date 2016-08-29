@@ -4,6 +4,7 @@ describe Takeaway do
 
   subject(:takeaway) { described_class.new(menu)}
   let(:menu) { double :menu, show_dishes: {'Banana Chowder' =>  5.45} }
+  let(:conf) { double :confirmation, send_message: "Order placed"}
 
   before(:each) do
     allow(menu).to receive(:contains?) {true}
@@ -17,18 +18,21 @@ describe Takeaway do
 
   describe '#add' do
     it 'prints success message if item added' do
-      allow(menu).to receive(:contains?) {true}
       expect(STDOUT).to receive(:puts).with('Hedgeree has been added to your basket')
       takeaway.add('Hedgeree')
+    end
+
+    it 'raises error if item not on menu' do
+      allow(menu).to receive(:contains?) {false}
+      message = 'Sorry, that\'s not on the menu'
+      expect{takeaway.add('cake')}.to raise_error message
     end
   end
 
   describe '#checkout' do
 
-   let(:conf) { double :confirmation, send_message: "Order placed"}
-
     it 'raises error if price does not match total' do
-      takeaway.add(2, 'Hedgeree')
+      takeaway.add('Hedgeree')
       message = 'Please enter the correct payment amount'
       expect{takeaway.checkout(5, conf)}.to raise_error message
     end
