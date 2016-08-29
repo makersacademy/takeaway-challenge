@@ -1,11 +1,10 @@
 require_relative 'menu'
 class Order
-  attr_reader :basket, :end_price
+  attr_reader :basket, :end_price, :absolute_total
 
   def initialize(menu_class: Menu)
     @menu_class = menu_class.new
     @basket = []
-    @end_price = 0
   end
 
   def begin_order
@@ -15,9 +14,12 @@ class Order
   end
 
   def total
+    absolute_total = 0
+    end_price = 0
     @basket.each do |hash|
       hash.each do |key, value|
-      @end_price + @end_price + value.to_i
+      end_price = end_price + value.to_i
+      @absolute_total = end_price
     end
   end
   end

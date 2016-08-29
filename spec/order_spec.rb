@@ -26,8 +26,9 @@ describe Order do
   describe "#finishing order" do
 
     it "totals the contents of the basket" do
-      allow(subject).to receive(:basket).and_return([{chow_mein => 5.50}, {chow_mein => 5.50}])
-      expect(subject.total).to eq 11
+      allow(subject).to receive(:basket).and_return([chow_mein, chow_mein])
+      subject.total
+      expect(subject.absolute_total).to eq 11
     end
 
   end
