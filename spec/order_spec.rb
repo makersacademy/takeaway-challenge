@@ -2,9 +2,9 @@ require 'order'
 
 describe Order do
 
-  let(:order){ described_class.new(meals_list) }
-
-  let(:meals_list){ {"beer"=>3.00} }
+  let(:order) { described_class.new(menu) }
+  let(:menu) { double :menu, meals_list: {"beer"=>3.00} }
+  #let(:meals_list){ {"beer"=>3.00} }
 
   context '#ordering dish' do
 

@@ -6,11 +6,11 @@ class Menu
 
   def initialize
     @meals_list = {
-      "nachos": 5.00,
-      "ribs": 6.00,
-      "chilli": 4.00,
-      "burger": 4.00,
-      "sundae": 3.00
+      "nachos"=>5.00,
+      "ribs"=>6.00,
+      "chilli"=>4.00,
+      "burger"=>4.00,
+      "sundae"=>3.00
     }
   end
 
@@ -21,7 +21,8 @@ class Menu
   end
 
   def has_meal?(meal)
-    meals_list.include?(meal)
+    puts "things"
+    meals_list.has_key?(meal.downcase)
   end
 
 end
