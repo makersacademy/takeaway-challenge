@@ -1,11 +1,9 @@
 require 'twilio-ruby'
 
-
-
 class Text
 
   def send_text
-    delivery_time = Time.new (60 * 60)
+    delivery_time = Time.new + (60 * 60)
     account_id = ENV["TWILIO_ACCOUNT_ID"]
     account_auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
