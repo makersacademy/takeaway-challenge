@@ -25,11 +25,6 @@ let(:menu) {double :menu}
       order.select_dishes("chips",2)
       expect(order.total_price).to eq 4
     end
-
-    it 'displays the current price of the order' do
-      order.select_dishes("chips",2)
-      order.select_dishes("steak",2)
-    end
   end
 
   describe '#confirm order' do
@@ -42,7 +37,8 @@ let(:menu) {double :menu}
     it 'allows user to know that a text will be sent' do
       order.select_dishes("chips", 2)
       order.select_dishes("burger", 2)
-      expect(order.confirm_order).to eq "Thank you, your delivery time will be sent by text shortly"
+      msg = "Thank you, your delivery time will be sent by text shortly"
+      expect(order.confirm_order).to eq msg
 
     end
 

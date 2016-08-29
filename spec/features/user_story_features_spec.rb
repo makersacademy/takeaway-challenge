@@ -38,27 +38,13 @@ describe 'user feature tests' do
  #I have been given matches the sum of the various dishes in my order
 
  describe 'checking the total price of the order' do
-       it 'displays the total price of the order' do
-       t = Takeaway.new
-       t.add("chicken", 2)
-       t.add("steak", 2)
-       t.add("chips", 2)
-       expect(t.order_price).to eq "Your total order price is £26"
-   end
- end
 
-
-
-#As a customer
-#So that I am reassured that my order will be delivered on time
-#I would like to receive a text such as
-#"Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-
-  describe 'Confirmation of the order' do
-
-    it 'confirms the order has been placed' do
-
+   it 'displays the total price of the order' do
+     t = Takeaway.new
+     t.add("chicken", 2)
+     t.add("steak", 2)
+     t.add("chips", 2)
+     expect(t.order_price).to eq "Your total order price is £26"
     end
-
   end
 end

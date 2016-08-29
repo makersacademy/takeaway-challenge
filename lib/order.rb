@@ -25,12 +25,8 @@ class Order
     @total
   end
 
-  def amount?(price)
-    price == total_price
-  end
-
   def confirm_order
-    total == total ? @text.send_text : total_price
+    total_price == total ? @text.send_text : total_price
     "Thank you, your delivery time will be sent by text shortly"
   end
 end

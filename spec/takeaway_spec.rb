@@ -11,7 +11,7 @@ describe Takeaway do
   end
 
   it 'shows a list of available dishes' do
-    expect(takeaway.show_menu).to include ({"chips" => 2})
+    expect(takeaway.show_menu).to include({"chips" => 2})
   end
 
   it 'raises an error if a dish is not available' do
@@ -42,7 +42,9 @@ describe Takeaway do
     allow(:send_text).to receive(:delivery_time)
     takeaway.add("chips",2)
     takeaway.add("burger",2)
-    expect(takeaway).to receive(:send_text).with("Thank you! Your order was placed and will be delivered at #{delivery_time}")
+    expect(takeaway).to receive(:send_text).with(msg)
+    msg = "Thank you! Your order was placed and
+           will be delivered at #{delivery_time}"
     takeaway.order_confirmation
   end
 end
