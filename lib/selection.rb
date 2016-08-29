@@ -20,7 +20,6 @@ include Menu
       p 'next selection?'
       selection = STDIN.gets.chomp.downcase
     end
-    p order
     order
   end
 

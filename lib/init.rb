@@ -20,9 +20,7 @@ when 'yes'
     calc.receipt
   end
 when 'no'
-  puts "Welcome to this awesome Takeaway experience"
-  puts "Here is our Menu"
-  order = Selection.new.select_items
+  puts "Bye!"
 end
 
 
