@@ -3,13 +3,13 @@ require_relative 'text'
 
 class Takeaway
 
-attr_reader :menu, :basket, :subtotal, :sms
+attr_reader :menu, :basket, :subtotal
 
-  def initialize(menu = Menu.new, sms = MessageSender)
+  def initialize(menu = Menu.new, text_class = Text)
     @menu = menu
     @basket = {}
     @subtotal = []
-    @sms = sms
+    @text_class = text_class
   end
 
   def order(item, quantity = 1)
@@ -17,7 +17,7 @@ attr_reader :menu, :basket, :subtotal, :sms
     fail 'Not a menu item!' unless menu.on_menu?(item)
     basket.store(item, quantity)
     confirm_order(item, quantity)
-    @subtotal << [quantity, item, (quantity * @menu.items[item])]
+    @subtotal << [quantity, item, (quantity * @menu.items[item]).round(2)]
   end
 
   def total
@@ -30,13 +30,14 @@ attr_reader :menu, :basket, :subtotal, :sms
 
   def itemised
     subtotal.each do |quantity, item, price|
-      puts "You have ordered #{quantity} #{item} for a total £#{price}"
+      puts "You have ordered #{quantity} #{item} for a total £#{price.round(2)}"
     end
+      puts "Your total bill is £#{total}."
   end
 
   def complete_order
     confirm_bill
-    sms.new
+    @text_class.new.send_message
     @basket = nil
   end
 
@@ -47,7 +48,8 @@ private
   end
 
   def confirm_bill
-    puts "That will be £#{total} please."
+    puts "Your account has been debited £#{total}."
+    puts "Delivery confirmation will now be sent to you via SMS."
   end
 
 end

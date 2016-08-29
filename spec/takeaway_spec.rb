@@ -4,7 +4,7 @@ describe Takeaway do
 
 subject(:takeaway) { described_class.new }
 
-describe '#order' do
+  describe '#order' do
 
     it 'checks that the item is on the menu' do
       expect{takeaway.order("Non-menu item")}.to(raise_error("Not a menu item!"))
@@ -29,7 +29,7 @@ describe '#order' do
 
   describe '#total' do
 
-  before do
+    before do
       takeaway.order("nasty noodles",4)
     end
 
