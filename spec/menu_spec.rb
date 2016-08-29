@@ -17,10 +17,13 @@ describe Menu do
     end
   end
 
-  describe '#check_dish?' do
-    it 'prints an error message if dish not on menu' do
-      message = 'Sorry, that\'s not on the menu'
-      expect{menu.check_dish('cake')}.to raise_error message
+  describe '#contains?' do
+    it 'returns false if dish not on menu' do
+      expect(menu.contains?('cake')).to be false
+    end
+
+    it 'returns true if dish on menu' do
+      expect(menu.contains?('Hedgeree')).to be true
     end
   end
 

@@ -6,7 +6,7 @@ describe Takeaway do
   let(:menu) { double :menu, show_dishes: {'Banana Chowder' =>  5.45} }
 
   before(:each) do
-    allow(menu).to receive(:check_dish)
+    allow(menu).to receive(:contains?) {true}
   end
 
   describe '#show_menu' do
@@ -16,12 +16,8 @@ describe Takeaway do
   end
 
   describe '#add' do
-    # it 'checks whether dish is on the menu' do
-    #   takeaway.add('cake')
-    #   expect(menu).to receive(:check_dish)
-    # end
-
     it 'prints success message if item added' do
+      allow(menu).to receive(:contains?) {true}
       expect(STDOUT).to receive(:puts).with('Hedgeree has been added to your basket')
       takeaway.add('Hedgeree')
     end

@@ -13,7 +13,7 @@ class Takeaway
   end
 
   def add(number=1, dish)
-    menu.check_dish(dish)
+    fail 'Sorry, that\'s not on the menu' unless menu.contains?(dish)
     add_to_basket(number, dish)
   end
 

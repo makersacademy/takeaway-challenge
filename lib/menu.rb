@@ -21,12 +21,6 @@ attr_reader :dishes
     end
   end
 
-  def check_dish(dish)
-    fail 'Sorry, that\'s not on the menu' unless contains?(dish)
-  end
-
-  private
-
   def contains?(dish)
     !!dishes[dish]
   end
