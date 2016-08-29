@@ -17,4 +17,14 @@ class Takeaway
     menu.display_dishes
   end
 
+  def add(dish, quantity)
+    fail 'That dish is not available' unless show_menu.include?(dish)
+    order.select_dishes(dish, quantity)
+  end
+
+  def view_order
+    view = order.selected_dishes
+    "Your selected dishes are #{view}"
+  end
+
 end

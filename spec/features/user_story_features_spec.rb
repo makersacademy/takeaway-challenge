@@ -1,5 +1,6 @@
 require 'menu'
 require 'order'
+require 'takeaway'
 
 describe 'user feature tests' do
 
@@ -9,8 +10,8 @@ describe 'user feature tests' do
   describe 'list of available dishes' do
 
    it 'so that I can order something, display a list of dishes with prices' do
-     menu = Menu.new
-     expect{menu.display_dishes}.not_to raise_error
+     t = Takeaway.new
+     expect{t.show_menu}.not_to raise_error
    end
  end
 
@@ -19,10 +20,15 @@ describe 'user feature tests' do
  #I would like to be able to select some number of several available dishes
   describe 'selecting dishes from a menu' do
    it 'selects dishes from the menu' do
-     menu = Menu.new
-     menu.display_dishes
-     order = Order.new
-     expect{order.select_dishes("chicken", 2)}.not_to raise_error
+     t = Takeaway.new
+     t.show_menu
+     expect{t.add("chicken", 2)}.not_to raise_error
+   end
+
+   it 'raises an error if an unknown dish is chosen' do
+     t = Takeaway.new
+     t.show_menu
+     expect{t.add("rice", 2)}.to raise_error
    end
  end
 
@@ -31,16 +37,7 @@ describe 'user feature tests' do
  #I would like to check that the total
  #I have been given matches the sum of the various dishes in my order
 
- describe 'checking the total price of the order' do
-       it 'displays the total price of the order' do
-       menu = Menu.new
-       order = Order.new
-       order.select_dishes("chicken", 2)
-       order.select_dishes("steak", 2)
-       order.select_dishes("chips", 2)
-       expect(order.total_price).to eq 26
-   end
- end
+ 
 
 
 
@@ -52,12 +49,8 @@ describe 'user feature tests' do
   describe 'Confirmation of the order' do
 
     it 'confirms the order has been placed' do
-      
+
     end
 
   end
-
-
-
-
 end
