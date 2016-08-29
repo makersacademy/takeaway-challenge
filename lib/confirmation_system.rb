@@ -10,7 +10,7 @@ class ConfirmationSystem
   end
 
   def send(message = sms_message)
-    @client.account.messages.create(
+    @client.messages.create(
     from: ENV['TWILIO'],
     to: ENV['CUSTOMER'],
     body: message)

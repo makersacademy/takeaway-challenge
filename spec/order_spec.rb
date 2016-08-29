@@ -2,10 +2,10 @@ require 'order'
 
 describe Order do
 
-  subject(:order) {described_class.new(menu, messaging_system_class)}
+  subject(:order) {described_class.new(menu, msg_system_class)}
   let(:menu) {double(:menu, get_price: 6)}
-  let(:messaging_system_class) {double(:messaging_system_class, new: messaging_system)}
-  let(:messaging_system) {double(:messaging_system, send: nil)}
+  let(:msg_system_class) {double(:msg_system_class, new: msg_system)}
+  let(:msg_system) {double(:msg_system, send: nil)}
   let(:margherita) {double(:margherita)}
   let(:pepperoni) {double(:pepperoni)}
   let(:hawaiian) {double(:hawaiian)}
@@ -60,7 +60,7 @@ describe Order do
 
   describe '#confirm' do
     it 'instantiates a confirmation' do
-      expect(messaging_system_class).to receive(:new)
+      expect(msg_system_class).to receive(:new)
       order.confirm
     end
   end
