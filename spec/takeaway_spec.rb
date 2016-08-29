@@ -27,4 +27,23 @@ describe Takeaway do
     end
   end
 
+  describe '#checkout' do
+    it 'raises error if price does not match total' do
+      takeaway.add(2, 'Hedgeree')
+      message = 'Please enter the correct payment amount'
+      expect{takeaway.checkout(5)}.to raise_error message
+    end
+
+    it 'does not raise error if price matches total' do
+      takeaway.add(2, 'Hedgeree')
+      expect{takeaway.checkout(15.3)}.to_not raise_error
+    end
+
+    it 'raises error if no order' do
+      message = 'Nothing in basket'
+      expect{takeaway.checkout(1)}.to raise_error message
+    end
+
+  end
+
 end

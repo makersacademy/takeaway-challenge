@@ -21,6 +21,11 @@ class Takeaway
     order.summary
   end
 
+  def checkout(payment)
+    fail 'Nothing in basket' if order.empty?
+    fail 'Please enter the correct payment amount' if payment != order.total
+  end
+
   private
 
   def add_to_basket(number, dish)
