@@ -19,9 +19,11 @@ attr_reader :order_class, :current_order
   def order_food(item, quantity = 1)
     @current_order.select_dish(item, quantity)
   end
-  # def checkout(amount)
-  #   order.order_summary
-  # end
+
+  def checkout(amount)
+    fail if amount != @current_order.order_summary
+    @current_order.order_summary
+  end
 
   # def complete_order
   #   price = order.order_summary

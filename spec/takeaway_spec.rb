@@ -10,7 +10,7 @@ describe Takeaway do
   let(:order_class){double :order_class, new: order}
   let(:order) {double :order, select_dish: true, order_summary: 18, basket: {dish => quantity}, check_menu: true}
   let(:menu) {double :menu}
-  let(:dish) {double :dish}
+  let(:dish) {double :dish, to_sym: :dish}
   let(:quantity) {double :quantity}
 
   describe '#start_order' do
@@ -27,4 +27,24 @@ describe Takeaway do
     end
   end
 
+  describe '#checkout - to pay, payment amount entered' do
+    before do
+      takeaway.start_order
+      takeaway.order_food(dish, quantity)
+      allow(takeaway.current_order).to receive(:select_dish).and_return(true)
+    end
+    it 'should show order summary' do
+      expect(takeaway.current_order).to receive(:order_summary)
+      takeaway.checkout(20)
+    end
+    it 'should raise error message if amounts do not match' do
+      msg = "Payment amount does not match total"
+      expect {takeaway.checkout(10)}.to raise_error(msg)
+    end
+
+    # it 'delegate to Confirmation SMS if amount verified versus total' do
+    #   takeaway.checkout(18)
+    #   expect(confirmation).to receive(:create_message)
+    # end
+  end
 end
