@@ -26,4 +26,8 @@ describe Basket do
     expect(basket.current_basket).to eq({:Olives=>2.99})
   end
 
+  it "reesponds to basket status" do
+    expect(basket).to respond_to(:basket_status)
+  end
+
 end

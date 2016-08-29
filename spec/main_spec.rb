@@ -35,7 +35,14 @@ describe Main do
     it "recognises select_dish method" do
       expect(user).to respond_to(:select_dish)
     end
+  end
 
+  it "recognises ability to view basket" do
+    expect(user).to respond_to(:view_basket)
+  end
+
+  it "recognises ability to place order" do
+    expect(user).to respond_to(:place_order)
   end
 
 end
