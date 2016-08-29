@@ -1,20 +1,17 @@
-require_relative 'menu'
-
+#understands how to make an order by selecting items from user input
 class Selection
-include Menu
+  attr_reader :calc
 
-  def initialize
+  def initialize(calc=PriceCalculator)
+    @calc = calc.new(select_items)
   end
 
   def select_items
-    prompt = "These are the available dishes #{Menu::MENU}, please make your selection. Return twice to quit"
-    quant_msg = "How many of these would you like?"
-    STDOUT.puts prompt
     order = []
     selection = STDIN.gets.chomp.downcase
 
     while !selection.empty?
-      puts quant_msg
+      puts "How many?"
       quantity = STDIN.gets.chomp.downcase
       order << {food: selection, quantity: quantity}
       p 'next selection?'

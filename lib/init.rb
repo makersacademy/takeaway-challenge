@@ -1,24 +1,19 @@
 require_relative 'selection'
 require_relative 'price_calc'
-require 'date'
 require_relative '../sms'
 
 puts "Welcome to this awesome Takeaway experience"
-puts "Here is our Menu"
-order = Selection.new.select_items
+puts "These are the available dishes #{Menu::MENU}, please make your selection. Return twice to quit"
+sel = Selection.new
+order = sel.select_items
 puts "Would you like to checkout this order? (yes/no)"
 choice = gets.chomp.downcase
 case choice
 when 'yes'
-  calc = PriceCalculator.new(order)
-  calc.calculate
+  sel.calc.calculate
   Sms.new.send_sms
-  puts "Would you like a receipt to check the charge is correct?"
-  receipt = gets.chomp.downcase
-  case receipt
-  when'yes'
-    calc.receipt
-  end
+  puts "Here is your receipt, expect an order confirmation text message"
+  sel.calc.receipt
 when 'no'
   puts "Bye!"
 end
