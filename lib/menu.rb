@@ -6,11 +6,11 @@ class Menu
 
   def initialize
     @meals_list = {
-      "nachos"=>5.00,
-      "ribs"=>6.00,
-      "chilli"=>4.00,
-      "burger"=>4.00,
-      "sundae"=>3.00
+      "nachos": 5.00,
+      "ribs": 6.00,
+      "chilli": 4.00,
+      "burger": 4.00,
+      "sundae": 3.00
     }
   end
 

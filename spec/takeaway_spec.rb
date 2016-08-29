@@ -2,9 +2,10 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(menu: menu)}
+  let(:takeaway) { described_class.new(menu)}
 
-  let(:menu) { double :menu, print_menu: printed_options }
+  let(:menu) { double :menu, print_menu: printed_options,
+                             meals_list: {"nachos": 5.00}}
   let(:printed_options) {["Tacos £3.50"]}
   let(:order) { double :order }
 
@@ -19,12 +20,12 @@ describe Takeaway do
   context '#place_order' do
 
     it 'raises an error when a meal is not on the menu' do
-      allow(menu).to receive(:has_meal?).with(any_args).and_return(false)
+      allow(menu).to receive(:has_meal?).and_return(false)
       expect{ takeaway.place_order("beer") }.to raise_error "Beer is not on the menu"
     end
 
     it 'can order any number of meals' do
-      allow(menu).to receive(:has_meal?) { :true }
+      allow(menu).to receive(:has_meal?).and_return(true)
       expect(order).to receive(:add_meals).twice
       takeaway.place_order("nachos")
       takeaway.place_order("ribs")
@@ -37,7 +38,7 @@ describe Takeaway do
   it 'shows what meals are in your basket' do
     allow(menu).to receive(:has_meal?).and_return(true)
     takeaway.place_order("nachos")
-    expect(takeaway.basket_contents).to eq "nachos"=>1
+    expect(takeaway.basket_contents).to eq "nachos":1
   end
 
   it 'returns message of empty basket if empty' do

@@ -39,8 +39,4 @@ private
     @order.order_total == @order.basket_total
   end
 
-  # def has_meal?(meal)
-  #   @menu.meals_list.include?(meal)
-  # end
-
 end
