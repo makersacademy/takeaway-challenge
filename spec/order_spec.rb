@@ -2,8 +2,10 @@ require 'order'
 
 describe Order do
 
-  subject(:order) {described_class.new(menu)}
+  subject(:order) {described_class.new(menu, messaging_system_class)}
   let(:menu) {double(:menu, get_price: 6)}
+  let(:messaging_system_class) {double(:messaging_system_class, new: messaging_system)}
+  let(:messaging_system) {double(:messaging_system, send: nil)}
   let(:margherita) {double(:margherita)}
   let(:pepperoni) {double(:pepperoni)}
   let(:hawaiian) {double(:hawaiian)}
@@ -54,5 +56,16 @@ describe Order do
       msg = 'Item not in basket'
       expect {order.remove(hawaiian)}.to raise_error msg
     end
+  end
+
+  describe '#confirm' do
+    it 'instantiates a confirmation' do
+      expect(messaging_system_class).to receive(:new)
+      order.confirm
+    end
+  end
+
+  describe '#show_basket' do
+    specify{expect{order.show_basket}.to output.to_stdout}
   end
 end

@@ -2,8 +2,15 @@ require 'menu'
 
 describe Menu do
   subject(:menu) {described_class.new}
+
+  describe '#initialization' do
+    it 'has a list of items' do
+      expect(menu.instance_variable_get(:@items)).to include "Margherita"
+    end
+  end
+
   describe '#show' do
-      specify{expect{menu.show}.to output.to_stdout}
+    specify{expect{menu.show}.to output.to_stdout}
   end
 
   describe '#get_price' do
