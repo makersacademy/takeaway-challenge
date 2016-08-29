@@ -16,5 +16,7 @@ def items
   }
 end
 
-
+def price(item)
+  items[item]
+end
 end
