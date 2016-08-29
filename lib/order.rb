@@ -31,9 +31,10 @@ attr_reader :menu
   private
 
   attr_reader :basket
-
+  
   def check_menu(item)
     fail "Not on the menu" if !(menu.list).include?(item.to_sym)
+    true
   end
 
   def total
