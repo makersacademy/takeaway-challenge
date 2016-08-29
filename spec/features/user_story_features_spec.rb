@@ -52,8 +52,7 @@ describe 'user feature tests' do
   describe 'Confirmation of the order' do
 
     it 'confirms the order has been placed' do
-
-
+      
     end
 
   end
