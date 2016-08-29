@@ -16,12 +16,6 @@ To install these files from Github:
 
 We use the dot-env gem to track environment variables. In order for the text messaging functionality to work you will need to update the variables in the .env file to match your own Twilio account information. This information can be found on your dashboard.
 
-## To do
-- Business and presentation logic has been cleanly separated menu - to_s instead of show
-- ENV variables and the [dotenv gem](https://github.com/bkeepers/dotenv)
-- The README has clear instructions on handling env vars, e.g. points to a .env.example file etc.
-- Blog post?
-
 ## Approach to Solution
 
 This blog post explores this further: (https://tomstuart92.github.io/TomsTakeaway/)

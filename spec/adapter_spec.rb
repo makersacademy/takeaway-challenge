@@ -15,7 +15,7 @@ describe Adapter do
   describe '#send_sms' do
     it 'Passes #account.messages.create to client API' do
       allow(client).to receive_message_chain(:account, :messages, :create)
-      expect(client).to receive(:account)
+      expect(client).to receive_message_chain(:account, :messages, :create)
       adapter.send_sms('Hello')
     end
   end
@@ -25,9 +25,8 @@ describe Adapter do
       chain = [:account, :messages, :list]
       allow(client).to receive_message_chain(chain).and_return([message])
     end
-
     it 'Passes #account.messages.list to client API' do
-      expect(client).to receive(:account)
+      expect(client).to receive_message_chain(:account, :messages, :list)
       adapter.download_inbound_messages
     end
     it 'Iterates to select inbound messages' do

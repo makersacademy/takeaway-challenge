@@ -4,7 +4,7 @@ class Menu
     @menu = { 'spring roll' => 0.99, 'peking duck' => 7.99 }
   end
 
-  def show_menu
+  def to_s
     puts 'Here is the menu:'
     menu.each do |item, price|
       puts "#{item.capitalize} - $#{price}"

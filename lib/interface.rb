@@ -13,7 +13,7 @@ class Interface
   end
 
   def show_menu
-    menu.show_menu
+    puts menu
   end
 
   def new_order

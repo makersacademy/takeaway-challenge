@@ -4,7 +4,7 @@ describe Menu do
   subject(:menu) { described_class.new }
 
   describe '#print_menu' do
-    specify { expect { menu.show_menu }.to output.to_stdout }
+    specify { expect { puts menu }.to output.to_stdout }
   end
 
   describe '#check_price' do

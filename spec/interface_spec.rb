@@ -38,10 +38,7 @@ describe Interface do
   end
 
   context 'Delegates to Menu class' do
-    it 'Tells Menu to Print Menu' do
-      expect(menu).to receive(:show_menu)
-      interface.show_menu
-    end
+      specify { expect { interface.show_menu }.to output.to_stdout }
   end
 
   context 'Creating an order' do
