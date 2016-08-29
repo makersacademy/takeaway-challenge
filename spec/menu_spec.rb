@@ -11,6 +11,12 @@ subject(:menu) { described_class.new }
     end
   end
 
+  describe '#has_meal?' do
+    it 'checks whether a meal exits on meals_list' do
+      expect(menu.has_meal?("nachos")).to eq true
+    end
+  end
+
 
 
 end
