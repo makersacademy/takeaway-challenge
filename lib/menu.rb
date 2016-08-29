@@ -17,4 +17,8 @@ class Menu
       puts "#{index +1}) #{key}:  #{value} "
     end
   end
+
+  def price_check(dish)
+    dishes[dish]
+  end
 end

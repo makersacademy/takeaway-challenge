@@ -22,7 +22,7 @@ describe 'user feature tests' do
      menu = Menu.new
      menu.display_dishes
      order = Order.new
-     expect{order.select_dishes("chicken", 2, 4)}.not_to raise_error
+     expect{order.select_dishes("chicken", 2)}.not_to raise_error
    end
  end
 
@@ -35,10 +35,10 @@ describe 'user feature tests' do
        it 'displays the total price of the order' do
        menu = Menu.new
        order = Order.new
-       order.select_dishes("chicken", 5, 2)
-       order.select_dishes("steak", 5, 2)
-       order.select_dishes("chips", 2, 3)
-       expect(order.total).to eq 26
+       order.select_dishes("chicken", 2)
+       order.select_dishes("steak", 2)
+       order.select_dishes("chips", 2)
+       expect(order.total_price).to eq 26
    end
  end
 
@@ -52,7 +52,7 @@ describe 'user feature tests' do
   describe 'Confirmation of the order' do
 
     it 'confirms the order has been placed' do
-      
+
 
     end
 
