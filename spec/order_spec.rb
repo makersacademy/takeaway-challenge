@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   let(:order) { described_class.new(menu) }
-  let(:menu) { double :menu, meals_list: {"beer"=>3.00} }
+  let(:menu) { double :menu, meals_list: {"beer"=>3.00, "wine"=>4.00} }
 
   context '#ordering dish' do
 
@@ -36,6 +36,14 @@ describe Order do
       order.add_meals("beer",5)
       order.add_meals("beer",3)
       expect(order.current_total).to eq 24.00
+    end
+  end
+
+  describe '#basket_total' do
+    it 'totals the cost of the basket and is used to check price_is_correct' do
+      order.add_meals("beer",2)
+      order.add_meals("wine",2)
+      expect(order.basket_total).to eq 14.00
     end
   end
 
