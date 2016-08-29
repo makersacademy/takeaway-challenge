@@ -1,91 +1,116 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
+# Takeaway Challenge
+[![Build Status](https://travis-ci.org/lsewilson/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lsewilson/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/lsewilson/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/lsewilson/takeaway-challenge?branch=master)
 
-Instructions
--------
+## Description
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This program is a simulation of a restaurant takeaway system, where a customer can order food from a specified menu and expect to receive the correct charge for the food.
+The customer can confirm the order by entering the correct payment amount and will receive a confirmation text via Twilio.
 
-Task
------
+## Set Up Instructions
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+1. Clone the repo.
+2. Install the relevant gems by running 'bundle install'.
+3. Update .env.example file with your Twilio account information and rename file as .env.
+4. Require 'takeaway.rb' in IRB or Pry.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+## How to use
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+1. Create a new takeway order.
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+    `order = Takeaway.new`
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+2. View the takeaway menu.
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+    `order.view_menu`
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+3. Add items to the order.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+    `order.add_to_order("Cheese Burger", 2)`
 
+    `order.add_to_order("Onion Rings", 1)`
 
-In code review we'll be hoping to see:
+4. Review order to find out order total.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+    `order.review_order`
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+5. Checkout and pay for order.
 
-Notes on Test Coverage
-------------------
+    `order.checkout(21.50)`
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+6. Receive confirmation text via Twilio!
+
+## Feature Test
 
 ```
-$ coveralls report
+$ irb
+2.3.1 :001 > require './lib/takeaway'
+ => true
+2.3.1 :002 > order = Takeaway.new
+ => #<Takeaway:0x007fed49230378 @menu=#<Menu:0x007fed49230350 @dishes={"Beef Burger"=>8.5, "Cheese Burger"=>9, "Honest Burger"=>10.5, "Tribute Burger"=>10.5, "Special Burger"=>12.5, "Chicken Burger"=>9.5, "Fritter Burger"=>7.5, "Onion Rings"=>3.5, "Coleslaw"=>3, "House Salad"=>3}>, @basket={}>
+2.3.1 :003 > order.add_to_order("Honest Burger")
+ => 1
+2.3.1 :004 > order.add_to_order("Tribute Burger", 2)
+ => 2
+2.3.1 :005 > order.add_to_order("Onion Rings", 1)
+ => 1
+2.3.1 :006 > order.add_to_order("Coleslaws", 1)
+RuntimeError: This item is not on the menu
+2.3.1 :007 > order.add_to_order("Coleslaw", 1)
+ => 1
+2.3.1 :008 > order.review_order
+Honest Burger x 1: £10.5
+Tribute Burger x 2: £21.0
+Onion Rings x 1: £3.5
+Coleslaw x 1: £3
+Total: £38.0
+ => nil
+2.3.1 :009 > order.checkout(28)
+Total: £38.0
+RuntimeError: Please enter correct payment amount
+2.3.1 :010 > order.checkout(38)
+Total: £38.0
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
 
-Build Badge Example
-------------------
+## More Information
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+### Classes
+
+There are three classes used in this program.
+
+1. Takeaway
+2. Menu
+3. SMSConfirmation
+
+#### 1. Takeaway
+
+* Properties
+
+  * `menu` the menu that is initialized with the takeaway.
+  * `basket` all the items selected in the order
+  * `total` the total cost of the items in the order
+
+* Methods
+
+  * `view_menu` allows the user to view formatted menu
+  * `add_to_order` allows the user to add items to their basket
+  * `review_order` allows the user to view an order summary and check subtotals and totals
+  * `checkout` allows user to pay for order and fails if payment amount does not equal basket total. Triggers new confirmation text if payment is accepted.
+
+#### 2. Menu
+
+* Properties
+
+  * `menu` a hash of all menu items and their prices
+
+* Methods
+
+  * `check_menu` raises an error if the user tries to add an invalid item to their basket
+  * `price` returns the price of a menu item
+
+#### 3. SMSConfirmation
+
+* Methods
+
+  * `send_text` sends a given message to a customer telephone number from a Twilio account.
