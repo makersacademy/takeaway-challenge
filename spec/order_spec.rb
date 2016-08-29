@@ -24,14 +24,13 @@ describe Order do
       expect{order.select_dish(dish)}.to raise_error("Not on the menu")
     end
   end
-  context '#checkout -> show basket and total price' do
+  context '#order_summary -> show basket and total price' do
     before do
       allow(order).to receive(:check_menu).and_return(true)
       order.select_dish("Pepperoni",2)
     end
     it 'totals the order' do
-      expect(order).to receive(:total)
-      order.checkout
+      expect(order.order_summary).to eq 18
     end
   end
 end

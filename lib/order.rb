@@ -18,13 +18,14 @@ attr_reader :menu
     basket.dup
   end
 
-  def checkout
+  def order_summary
     puts "Your basket is as follows:"
     basket.each do |item, quantity|
       price = menu.list[item]
       puts "#{item} x#{quantity} @ £#{price} each"
     end
     puts "Your total is £#{total}"
+    total
   end
 
   private
