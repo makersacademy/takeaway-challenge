@@ -3,7 +3,7 @@ class Order
   attr_reader :basket
 
   def initialize(menu_class: Menu)
-    @menu_class = menu_class
+    @menu_class = menu_class.new
     @basket = []
   end
 
@@ -20,18 +20,26 @@ class Order
   end
 
   def record_order
-    choice = gets.chomp
-    @basket << choice
+    make_selection
   end
 
   private
 
   def display_dishes
-    @menu_class.new.dishes.each do |dish,price|
+    @menu_class.dishes.each do |dish,price|
       puts "#{dish} £#{price}"
-      puts
     end
   end
 
+  def make_selection
+    puts "Enter your choice..."
+    choice = gets.chomp.to_s
+    puts "How many would you like?"
+    number = gets.chomp.to_i
+        number.times do
+        @basket << @menu_class.dishes.select do |dish, price| dish == choice
+        end
+    end
+  end
 
 end
