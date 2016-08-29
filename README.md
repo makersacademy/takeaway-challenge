@@ -96,6 +96,7 @@ Working through the solution
 1: Map out classes (I currently expect) and possible class methods
 
 | Objects  | Messages |
+| ---------|----------|
 | Takeaway |          |
 | Menu     | show_list   |
 |          | valid?      |
