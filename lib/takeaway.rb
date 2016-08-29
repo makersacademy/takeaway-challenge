@@ -1,15 +1,17 @@
 #Understands the process of ordering a takeaway
 
 require_relative 'menu'
+require_relative 'sms'
 
 class Takeaway
 
   attr_reader :menu, :total
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sms_class = Text)
     @menu = menu
     @basket = {}
     @total = 0
+    @sms = sms_class
   end
 
   def get_menu
@@ -27,5 +29,10 @@ class Takeaway
     end
     @total
   end
+
+  def confirmation_text
+    @sms.new.send_text
+  end
+
 
 end
