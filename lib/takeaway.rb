@@ -21,7 +21,10 @@ class Takeaway
   end
 
   def order_total
-    @basket
+    @basket.each do |food, price|
+      total += (@menu.price_checker(food) * price)
+    end
+    total
   end
 
 end

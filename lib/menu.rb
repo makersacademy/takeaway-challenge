@@ -1,4 +1,4 @@
-#Understands how to print a menu
+#Understands how to price food
 
 require_relative 'takeaway'
 
@@ -18,7 +18,7 @@ class Menu
     @menu.has_key?(food)
   end
 
-  def price_checker
+  def price_checker(food)
     @menu[food]
   end
 

@@ -6,7 +6,7 @@ describe Takeaway do
 
   context '#print_menu' do
     it 'will allow user to view the menu' do
-      expect(subject
+  
     end
   end
 
