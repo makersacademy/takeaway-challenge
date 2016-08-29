@@ -22,19 +22,10 @@ attr_reader :menu
     puts "Your basket is as follows:"
     basket.each do |item, quantity|
       price = menu.list[item]
-      puts "#{item} x#{quantity} @ £#{price} each"
+      puts "#{item} pizza x#{quantity} @ £#{price} each"
     end
     puts "Your total is £#{total}"
     total
-  end
-
-  private
-
-  attr_reader :basket
-  
-  def check_menu(item)
-    fail "Not on the menu" if !(menu.list).include?(item.to_sym)
-    true
   end
 
   def total
@@ -44,6 +35,15 @@ attr_reader :menu
       @sum += (price * quantity)
     end
     @sum
+  end
+
+  private
+
+  attr_reader :basket
+
+  def check_menu(item)
+    fail "Not on the menu" if !(menu.list).include?(item.to_sym)
+    true
   end
 
 end

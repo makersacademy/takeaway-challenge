@@ -21,13 +21,14 @@ attr_reader :order_class, :current_order
   end
 
   def checkout(amount)
-    fail if amount != @current_order.order_summary
+    fail "Payment amount doesn't equal the total" if amount_not_match?(amount)
     @current_order.order_summary
   end
 
-  # def complete_order
-  #   price = order.order_summary
-  #   verify.check_total(price)
-  # end
+private
+
+  def amount_not_match?(amount)
+    amount != @current_order.total
+  end
 
 end
