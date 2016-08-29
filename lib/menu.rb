@@ -10,8 +10,16 @@ class Menu
 
   def print_menu
     @menu.each do |food, price|
-      puts "#{food.capitalize} -------- £#{price}"
+      puts ("#{food.capitalize} -------- £#{price}").center(20)
     end
+  end
+
+  def included?(food)
+    @menu.has_key?(food)
+  end
+
+  def price_checker
+    @menu[food]
   end
 
 end
