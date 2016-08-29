@@ -7,8 +7,8 @@ class Confirmation
 ACC_SID = ENV["TWILIO_ACC_SID"]
 AUTH_TOKEN = ENV["TWILIO_AUTH_TOKEN"]
 
-  def initialize
-    @client = Twilio::REST::Client.new(ACC_SID, AUTH_TOKEN)
+  def initialize(client = Twilio::REST::Client.new(ACC_SID, AUTH_TOKEN))
+    @client = client
   end
 
   def send_message
