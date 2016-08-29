@@ -1,10 +1,15 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
+require 'twilio-ruby'
 class User_input
+  attr_reader :time
 
-  def initialize(menu_class: Menu, order_class: Order)
+  def initialize(menu_class: Menu, order_class: Order, sms: Sms)
     @order_class = order_class.new
     @menu_class = menu_class
+    @sms_class = sms
+    @time = Time.now
   end
 
   def begin
@@ -20,7 +25,11 @@ class User_input
   end
 
   def display_total
-    puts "We believe your total to be"
-    @order_class.total
+    puts "We believe your total to be £#{@order_class.total.to_f}"
+    @sms_class.new.send_confirmation_sms(@time + 1*60*60)
+
+  end
+
+  def send_sms
   end
 end

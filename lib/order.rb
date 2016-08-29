@@ -16,17 +16,17 @@ class Order
   def total
     @count = 0
     while @count < basket.length
-      absolute_total = 0
-      end_price = 0
+      absolute_total = 0.to_f
+      end_price = 0.00.to_f
       @basket.each do |hash|
         hash.each do |key, value|
-          end_price = end_price + value.to_i.round(2)
-          @absolute_total = end_price.round(2)
+          end_price = end_price + value.to_f.to_i.to_f
+          @absolute_total = end_price.to_f
           @count += 1
           end
         end
       end
-      @absolute_total.round(2)
+      @absolute_total.to_f
   end
 
   def order_greeting
@@ -49,7 +49,7 @@ class Order
   end
 
   def make_selection
-    while user_input = gets.chomp.to_s # loop while getting user input
+    while user_input = gets.chomp.to_s
       case user_input
       when ""
         return

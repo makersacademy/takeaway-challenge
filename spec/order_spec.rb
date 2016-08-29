@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   subject(:order) {described_class.new}
-  let(:chow_mein) {{"Chow Mein"=>5.55}}
+  let(:chow_mein) {{"Chow Mein"=>5.85}}
   let(:basket) {[chow_mein, chow_mein]}
   # subject(:order) { described_class.new(menu_class: menu_class) }
   # let(:chow_mein) {{"Chow Mein"=> 5.5}}
