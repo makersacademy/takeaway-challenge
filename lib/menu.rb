@@ -1,4 +1,6 @@
 class Menu
+  attr_reader :items
+
   def initialize
     @items = {"Margherita" => 6,
       "Pepperoni" => 7,
@@ -8,16 +10,14 @@ class Menu
   end
 
   def show
-    puts items
+    index = 1
+    items.each {|item, price| puts "#{index}. #{item} - #{price}"
+      index += 1}
   end
 
   def get_price(item)
     fail 'This item is not currently on our menu' if !items.include?(item)
     items[item]
   end
-
-  private
-
-  attr_reader :items
 
 end
