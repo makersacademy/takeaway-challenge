@@ -99,7 +99,7 @@ Working through the solution
 | ---------|----------|
 | Takeaway |     ?    |
 | Menu     | show_list   |
-|          | valid?      |
+|          | on_menu?      |
 | Order    | select_dish |
 |          | checkout    |
 | Verify   | sum_total   |
@@ -126,7 +126,7 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-3: Make Takeaway "parent" class, delegating ordering, verification and confirmation. Order delegates/injects Menu 
+3: Make Takeaway "parent" class, delegating ordering, verification and confirmation. Order delegates/injects Menu
 
 4: Feature Test functionality
 
