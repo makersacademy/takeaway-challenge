@@ -10,4 +10,12 @@ class Menu
       items.map { |item,price| "%s £%.2f" [item.to_s, price] }.join(", ")
   end
 
+  def has_item?(item)
+    !!items[item]
+  end
+
+  def price(item)
+  items[item]
+  end
+
 end

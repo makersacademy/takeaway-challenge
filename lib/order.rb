@@ -2,7 +2,7 @@ require 'menu'
 
 class Order
 #let customers order a takeaway
-attr_reader :basket, :menu
+attr_reader :basket
 
   def initialize(menu)
     @basket = {}
@@ -14,10 +14,17 @@ attr_reader :basket, :menu
     basket[item] = quantity
   end
 
-  # private
-  #
-  # attr_reader :menu
+  def total
+    calculate_price.reduce(:+)
+  end
 
+  private
+
+  attr_reader :menu
+
+  def calculate_price
+    items.map {|item, quantity| menu.price(item) * quantity}
+  end
 end
 
 class NoItemError < StandardError; end
