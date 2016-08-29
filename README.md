@@ -93,10 +93,9 @@ Build Badge Example
 Working through the solution
 ============================
 
-1. Map out classes (I currently expect) and possible class methods
+1: Map out classes (I currently expect) and possible class methods
 
 | Objects  | Messages |
-----------------------
 | Takeaway |          |
 | Menu     | show_list   |
 |          | valid?      |
@@ -105,7 +104,7 @@ Working through the solution
 | Verify   | sum_total   |
 | Confirmation | send_text |
 
-2. Revisit user Stories
+2: Revisit user Stories
 
 ##User Stories
 
@@ -127,7 +126,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-3. Feature Test functionality
+3: Feature Test functionality
 
 ```
 irb
