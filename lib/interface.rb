@@ -17,6 +17,7 @@ class Interface
     puts "Other options:"
     puts "6. Remove items"
     puts "7. Checkout"
+    puts "8. Exit"
     selection = gets.chomp
     process(selection)
   end
@@ -66,6 +67,8 @@ class Interface
         remove_menu
       when "7"
         checkout
+      when "8"
+        exit
       else
         puts "I'm not sure which option you wanted! - please enter a number"
         main_menu

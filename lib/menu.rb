@@ -11,7 +11,7 @@ class Menu
 
   def show
     index = 1
-    items.each {|item, price| puts "#{index}. #{item} - #{price}"
+    items.each {|item, price| puts "#{index}. #{item} - £#{price}"
       index += 1}
   end
 

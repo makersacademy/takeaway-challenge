@@ -39,6 +39,8 @@ class Order
     basket.each {|item, quantity|
       puts "#{item}" if quantity == 1
       puts "#{item} x #{quantity}" if quantity > 1}
+    puts ""
+    puts "£#{@subtotal}"
   end
 
   private
