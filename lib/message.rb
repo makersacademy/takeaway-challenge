@@ -22,7 +22,7 @@ class Message
     )
   end
 
-  def set_phone_number(number)
+  def store_phone_number(number)
     @phone_number = number
   end
 

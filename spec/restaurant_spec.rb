@@ -2,28 +2,20 @@ require 'restaurant'
 
 describe Restaurant do
 
-  subject(:restaurant) { described_class.new(dishes_class.new, dispatcher_class.new) }
-  let(:dishes_class) {double :dishes_class, new: test_dishes}
-  let(:dispatcher_class) {double :dispatcher_class, new: dispatcher}
+  describe "#initialize" do
 
-  let(:test_dishes) {double :test_dishes, check_sum: true, dishes: {
-    chicken: { name: "Rotisserie chicken",
-      price: 15,
-      quantity: 10
-    },
-    spinach: {
-      name: "Wilted spinach",
-      price: 3,
-      quantity: 80
-    }, potatoes: {
-      name: "Roasted potatoes",
-      price: 5,
-      quantity: 50
-    }
-  }}
-  let(:order2) {double :order2, status: "Confirmed"}
-  let (:dispatcher) {double :dispatcher, current_order: nil, create_new_order: nil}
+    it 'should create an empty list' do
+      expect(subject.list).to be_empty
+    end
 
+    it 'should set the sum to 0' do
+      expect(subject.sum).to eq 0
+    end
 
+    it 'should create an empty phone number' do
+      expect(subject.phone_number).to be_empty
+    end
+
+  end
 
 end

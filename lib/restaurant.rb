@@ -24,13 +24,9 @@ class Restaurant
     what_would_you_like
     order_more
     how_much
-    get_phone_number
-    puts
-    puts "Okay, let me place your order and confirm it"
+    ask_for_phone_number
     place_order
     confirm_order
-    puts "I've sent you a text to confirm you order!"
-    puts "Thank you from the Chicken Shop!"
   end
 
   private
@@ -42,16 +38,14 @@ class Restaurant
     puts
     puts "Tonight we have the following dishes:"
     puts
-    available_dishes.each_value { |dish|
-      puts "#{dish[:name]}, $#{dish[:price]}"
-    }
+    available_dishes.each_value {|dish| puts "#{dish[:name]}, $#{dish[:price]}"}
     puts
   end
 
   def what_would_you_like
     puts "What would you like to order?"
     dish = gets.chomp.downcase.to_sym
-    if available_dishes.has_key?(dish)
+    if available_dishes.key?(dish)
       puts "How many would you like?"
       quantity = gets.chomp.to_i
     else
@@ -76,20 +70,24 @@ class Restaurant
     @sum = sum
   end
 
-  def get_phone_number
-    puts "And finally, please give me your number (e.g. +44..) so that I can keep you updated"
+  def ask_for_phone_number
+    puts "And finally, please give me your number (e.g. +44..)"
     number = gets.chomp
-    message.set_phone_number(number)
+    message.store_phone_number(number)
   end
 
   def place_order
+    puts
+    puts "Okay, let me place your order and confirm it"
     dispatcher.create_new_order(list,sum)
   end
 
   def confirm_order
-    raise "Wrong total!" if dishes.check_sum(list, sum) == false
+    fail "Wrong total!" if dishes.check_sum(list, sum) == false
     dispatcher.current_order.confirm_order
     message.send_confirmation
+    puts "I've sent you a text to confirm you order!"
+    puts "Thank you from the Chicken Shop!"
   end
 
   def available_dishes
