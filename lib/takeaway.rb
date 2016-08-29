@@ -2,15 +2,13 @@ require_relative 'menu'
 require_relative 'order'
 require_relative 'text'
 
-
 class Takeaway
 
-  attr_reader :menu, :order, :text
+  attr_reader :menu, :order
 
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
     @order = order
-    @text = Text.new
   end
 
   def show_menu
@@ -31,4 +29,7 @@ class Takeaway
     "Your total order price is £#{order.total_price}"
   end
 
+  def order_confirmation
+    order.confirm_order
+  end
 end
