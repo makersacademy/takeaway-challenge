@@ -17,26 +17,16 @@ The customer can confirm the order by entering the correct payment amount and wi
 ## How to use
 
 1. Create a new takeway order.
-
-`order = Takeaway.new`
-
+    `order = Takeaway.new`
 2. View the takeaway menu.
-
-`order.view_menu`
-
+    `order.view_menu`
 3. Add items to the order.
-
-`order.add_to_order("Cheese Burger", 2)`
-`order.add_to_order("Onion Rings", 1)`
-
+    `order.add_to_order("Cheese Burger", 2)`
+    `order.add_to_order("Onion Rings", 1)`
 4. Review order to find out order total.
-
-`order.review_order`
-
+    `order.review_order`
 5. Checkout and pay for order.
-
-`order.checkout(21.50)`
-
+    `order.checkout(21.50)`
 6. Receive confirmation text via Twilio!
 
 ## Feature Test
