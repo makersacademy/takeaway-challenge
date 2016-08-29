@@ -25,6 +25,14 @@ To get this working locally, do the following:
 
 * Fork this repo & clone it
 * Run `bundle` (and `gem install bundler` if you haven't already installed it)
-* Type `ruby get_takeaway.rb`
+* In IRB type:
 
-Enjoy!
+```
+
+* require './lib/restaurant.rb'
+* myPizzaJoint = Restaurant.new
+* myPizzaJoint.take_order
+
+```
+
+Enjoy your meal!
