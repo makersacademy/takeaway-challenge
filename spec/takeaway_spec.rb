@@ -8,6 +8,7 @@ describe Takeaway do
                              meals_list: {"nachos"=> 5.00}}
   let(:printed_options) {["Tacos £3.50"]}
   let(:order) { double :order }
+  let(:message) { double :message }
 
     describe '#show_menu' do
 
@@ -66,6 +67,11 @@ describe Takeaway do
       describe '#confirm_order' do
       it 'raises an error if no order placed' do
         expect{ takeaway.confirm_order }.to raise_error 'No orders have been added'
+      end
+
+      it 'sends a message if order is correct' do
+        expect(message).to receive(:send_text)
+        message.send_text("test")
       end
     end
 
