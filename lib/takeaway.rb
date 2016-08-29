@@ -1,4 +1,4 @@
-#Understands the process of ordering a takeawy
+#Understands the process of ordering a takeaway
 
 require_relative 'menu'
 
@@ -9,6 +9,7 @@ class Takeaway
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = {}
+    @total = 0
   end
 
   def get_menu
@@ -22,9 +23,9 @@ class Takeaway
 
   def order_total
     @basket.each do |food, price|
-      total += (@menu.price_checker(food) * price)
+      @total += ((@menu.price_checker(food)) * price)
     end
-    total
+    @total
   end
 
 end
