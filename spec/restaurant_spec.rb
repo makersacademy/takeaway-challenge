@@ -8,7 +8,7 @@ describe Restaurant do
   describe '#display_menu' do
   it 'prints menu' do
     menu = Menu.new
-    expect(subject.display_menu).to include ("Thai Green Curry")
+    expect(menu.display_menu).to include("Thai Green Curry")
   end
   end
 
