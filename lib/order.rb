@@ -8,7 +8,6 @@ class Order
   end
 
   def add(item)
-    item.capitalize!
     @subtotal += @menu.get_price(item)
     if basket.include?(item)
       basket[item] += 1
@@ -18,7 +17,6 @@ class Order
   end
 
   def remove(item)
-    item.capitalize!
     fail 'Item not in basket' if basket[item].nil?
     if basket[item] == 1
       basket.delete(item)
