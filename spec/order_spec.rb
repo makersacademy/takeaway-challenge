@@ -39,4 +39,10 @@ describe Order do
     end
   end
 
+  describe '#basket_empty' do
+    it 'checks whether basket is empty' do
+      expect(order.basket_empty?).to eq true
+    end
+  end
+
 end
