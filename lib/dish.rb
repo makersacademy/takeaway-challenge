@@ -1,3 +1,4 @@
+#understands the attributes of a dish
 class Dish
 
   def initialize(dish_id, name, price)

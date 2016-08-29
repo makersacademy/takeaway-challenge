@@ -1,3 +1,4 @@
+#understands the orders stored in order history
 require_relative "order"
 
 class OrderLog
@@ -8,29 +9,29 @@ class OrderLog
     @order_history = []
   end
 
-  def start_order
+  def start_order #creates a new order and assigns it to current order
     fail "Current order must be completed before starting a new one" if current_order
     @current_order = order
   end
 
-  def add_item(dish, quantity)
+  def add_item(dish, quantity) #add new item to the current order
     validate_request
     @current_order.add_item(dish, quantity)
-    "#{view_confirmation(dish.name, quantity)} been added to your basket"
+    "#{conf_message(dish.name, quantity)} been added to your basket"
   end
 
-  def order_summary
+  def order_summary #returns summary of the current order
     validate_request
     current_order.order_summary
   end
 
-  def checkout_order(amount)
+  def checkout_order(amount) #checks out the order
     validate_request
-    fail "Checkout amount is not correct" unless checkout_amount_valid?(amount)
     finish_order(amount)
   end
 
-  def total
+  def total #returns the total value of the current order
+    validate_request
     @current_order.total
   end
 
@@ -38,17 +39,13 @@ class OrderLog
 
   attr_reader :order_class, :current_order
 
-  def view_confirmation(name, quantity)
+  def conf_message(name, quantity)
     if quantity == 1 then "#{quantity}x #{name.downcase} has"
     else "#{quantity}x #{name.downcase}s have"
     end
   end
 
-  def checkout_amount_valid?(amount)
-    total == amount
-  end
-
-  def order
+  def order #creates a new order
     order_class.new
   end
 
@@ -58,7 +55,7 @@ class OrderLog
     @current_order = nil
   end
 
-  def validate_request
+  def validate_request #calls start_order emethod is there is no current order
     start_order unless current_order
   end
 end

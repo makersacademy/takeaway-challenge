@@ -4,19 +4,12 @@ describe OrderLog do
 
   subject(:order_log) {described_class.new}
   let(:Order) {double :Order }
-  let(:order) { double :order }
-  let(:dish1) { double :dish }
-  let(:dish2) { double :dish2 }
+  let(:order) { double(:order, add_item: nil, total: 3.98, checkout_order: nil) }
+  let(:dish1) { double(:dish, name: "Pizza", price: 1.99) }
+  let(:dish2) { double(:dish, name: "Burger", price: 2.11) }
 
   before(:each) do
     allow(Order).to receive(:new) {order}
-    allow(order).to receive(:add_item) {nil}
-    allow(order).to receive(:total) {3.98}
-    allow(order).to receive(:checkout_order)
-    allow(dish1).to receive(:name) {"Pizza"}
-    allow(dish1).to receive(:price) {1.99}
-    allow(dish2).to receive(:name) {"Burger"}
-    allow(dish2).to receive(:price) {2.11}
     order_log.start_order
   end
 
@@ -44,6 +37,13 @@ describe OrderLog do
     end
   end
 
+  describe "#order_summary" do
+    it "calls the order_summary on the order" do
+      expect(order).to receive(:order_summary)
+      order_log.order_summary
+    end
+  end
+
   describe "#checkout_order" do
     before(:each) do
       order_log.add_item(dish1, 2)
@@ -52,10 +52,6 @@ describe OrderLog do
     it "passes the amount to the order" do
       expect(order).to receive(:checkout_order).with(3.98)
       order_log.checkout_order(3.98)
-    end
-
-    it "raises error if the received amount is different, than total" do
-      expect{order_log.checkout_order(3.01)}.to raise_error(RuntimeError)
     end
 
     it "records the completed order in the order history" do
@@ -77,10 +73,4 @@ describe OrderLog do
     end
   end
 
-  describe "#order_summary" do
-    it "calls the order_summary on the order" do
-      expect(order).to receive(:order_summary)
-      order_log.order_summary
-    end
-  end
 end
