@@ -67,12 +67,6 @@ describe TakeAway do
       expect(order_log).to receive(:total)
       restaurant.total
     end
-
-    it "returns the sum of the current order" do
-      restaurant.add_item(1012, 3)
-      restaurant.add_item(1013, 2)
-      expect(restaurant.total).to eq 10.19
-    end
   end
 
   describe "#checkout" do

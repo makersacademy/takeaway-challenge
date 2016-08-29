@@ -20,7 +20,7 @@ class Menu
 
   def load_menu
     #load content of menu.csv and creates dish objects
-    CSV.foreach(filename) do |row|
+    CSV.foreach(@filename) do |row|
       @menu_content[row[0].to_i] = Dish.new(row[0].to_i, row[1], row[2].to_f)
     end
   rescue

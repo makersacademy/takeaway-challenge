@@ -1,3 +1,4 @@
+#understands the client interactions
 require_relative "menu.rb"
 require_relative "order_log.rb"
 require 'twilio-ruby'
@@ -31,7 +32,7 @@ class TakeAway
   end
 
   def total #returns the total value of the current order
-    order_log_class.total
+    "Total: £#{order_log_class.total}"
   end
 
   def checkout(amount) #check out current order and send sms if completed
@@ -59,8 +60,8 @@ class TakeAway
 
   def send_text_message(message) #sends text message
     @message = @client.messages.create(
-      to: ENV['TWILIO_PHONE_NR'],
-      from: ENV['TWILIO_PHONE_NR'],
+      to: ENV['TWILIO_PHONE_NR_TO'],
+      from: ENV['TWILIO_PHONE_NR_FROM'],
       body: message
     )
   end
