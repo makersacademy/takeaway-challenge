@@ -5,9 +5,9 @@ require_relative 'message'
 
 class Takeaway
 
-attr_reader :menu, :order #maybe these should be private
+  attr_reader :menu, :order #maybe these should be private
 
-  def initialize(menu = Menu.new, order = Order.new(menu), message = Message.new)
+  def initialize(menu = Menu.new,order = Order.new(menu),message = Message.new)
     @message = message
     @menu = menu
     @order = order
@@ -27,13 +27,13 @@ attr_reader :menu, :order #maybe these should be private
     @order.basket_empty? ? "Basket is empty" : @order.basket
   end
 
-   def confirm_order
-     fail 'No orders have been added' if @order.basket_empty?
+  def confirm_order
+    fail 'No orders have been added' if @order.basket_empty?
     @message.send_text if price_is_correct?
-   end
+  end
 
 
-private
+  private
 
   def price_is_correct?
     @order.current_total == @order.basket_total

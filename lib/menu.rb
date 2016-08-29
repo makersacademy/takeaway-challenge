@@ -21,8 +21,7 @@ class Menu
   end
 
   def has_meal?(meal)
-    puts "things"
-    meals_list.has_key?(meal.downcase)
+    meals_list.key?(meal)
   end
 
 end

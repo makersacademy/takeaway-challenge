@@ -11,7 +11,8 @@ attr_reader :basket, :current_total, :meals_list
   def add_meals(meal,quantity=1)
     basket[meal.downcase] += quantity
     order_total(meal,quantity)
-     "#{quantity} x #{meal}(s) added to your basket. Total: £#{@current_total}."
+    total = sprintf('%.2f', @current_total)
+     "#{quantity} x #{meal}(s) added to your basket. Total: £#{total}."
   end
 
   def basket_total
@@ -23,7 +24,7 @@ attr_reader :basket, :current_total, :meals_list
     @basket.empty?
   end
 
-private
+  private
 
   def order_total(meal,quantity)
     total = @menu.meals_list[meal.downcase] * quantity
