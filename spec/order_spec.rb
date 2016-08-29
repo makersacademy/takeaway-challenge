@@ -3,8 +3,13 @@ require 'order'
 describe Order do
 
   subject(:order) {described_class.new}
-  let(:chow_mein) {"Chow Mein"}
+  let(:chow_mein) {{"Chow Mein"=>5.55}}
   let(:basket) {[chow_mein, chow_mein]}
+  # subject(:order) { described_class.new(menu_class: menu_class) }
+  # let(:chow_mein) {{"Chow Mein"=> 5.5}}
+  # let(:basket) {[chow_mein, chow_mein]}
+  # let(:menu) {double :menu, chow_mein: chow_mein, chow_mein: chow_mein}
+  # let(:menu_class) {double :menu_class, new: menu}
 
   describe "#choosing a dish" do
 
@@ -17,7 +22,6 @@ describe Order do
     end
 
   end
-  
   let(:basket) {[chow_mein, chow_mein]}
   describe "#finishing order" do
 
@@ -27,7 +31,7 @@ describe Order do
 
 
     xit "totals the order" do
-      expect(subject.total).to eq 10
+      expect(subject.total).to eq 11.10
     end
 
   end

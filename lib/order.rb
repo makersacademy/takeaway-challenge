@@ -10,7 +10,6 @@ class Order
   def begin_order
     order_greeting
     display_dishes
-    record_order
 
   end
 
@@ -21,13 +20,13 @@ class Order
       end_price = 0
       @basket.each do |hash|
         hash.each do |key, value|
-          end_price = end_price + value.to_i
-          @absolute_total = end_price
+          end_price = end_price + value.to_i.round(2)
+          @absolute_total = end_price.round(2)
           @count += 1
           end
         end
       end
-      @absolute_total
+      @absolute_total.round(2)
   end
 
   def order_greeting
