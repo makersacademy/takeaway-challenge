@@ -1,6 +1,6 @@
 # Takeaway Challenge
 [![Build Status](https://travis-ci.org/lsewilson/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lsewilson/takeaway-challenge)
-
+[![Coverage Status](https://coveralls.io/repos/github/lsewilson/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/lsewilson/takeaway-challenge?branch=master)
 
 ## Description
 
@@ -27,6 +27,7 @@ The customer can confirm the order by entering the correct payment amount and wi
 3. Add items to the order.
 
     `order.add_to_order("Cheese Burger", 2)`
+
     `order.add_to_order("Onion Rings", 1)`
 
 4. Review order to find out order total.
