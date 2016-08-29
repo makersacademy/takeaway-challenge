@@ -5,7 +5,6 @@ class ConfirmationSystem
 
   def initialize(client = Twilio::REST::Client.new(ENV['SID'], ENV['TOKEN']))
     @client = client
-    @message = sms_message
   end
 
   def send(message = sms_message)
