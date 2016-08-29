@@ -6,6 +6,10 @@ describe Takeaway do
   let(:order_confirmation) {double :order_confirmation}
   let(:text) {double :text}
 
+  before do
+    allow(takeaway).to receive(:send_text)
+  end
+
   it 'shows a list of available dishes' do
     expect(takeaway.show_menu).to include ({"chips" => 2})
   end
@@ -29,10 +33,16 @@ describe Takeaway do
 
   end
 
+  it 'confirms the order price' do
+    takeaway.add("chips", 2)
+    expect(takeaway.amount?(4)).to eq true
+  end
+
   it 'sends a text once confirming the order' do
-    allow(:order_confirmation).to receive(:text)
+    allow(:send_text).to receive(:delivery_time)
     takeaway.add("chips",2)
     takeaway.add("burger",2)
-    expect(takeaway.order_confirmation).not_to raise_error
+    expect(takeaway).to receive(:send_text).with("Thank you! Your order was placed and will be delivered at #{delivery_time}")
+    takeaway.order_confirmation
   end
 end

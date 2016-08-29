@@ -53,7 +53,6 @@ let(:menu) {double :menu}
       expect(order.confirm_order).to receive(text.send_text)
     end
 
-
   end
 
 end

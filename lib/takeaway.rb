@@ -29,6 +29,15 @@ class Takeaway
     "Your total order price is £#{order.total_price}"
   end
 
+  def amount?(price)
+    price == order.total_price
+  end
+
+  def check_order_price(price)
+    order.amount?
+  end
+
+
   def order_confirmation
     order.confirm_order
   end
