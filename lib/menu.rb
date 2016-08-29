@@ -13,13 +13,6 @@ class Menu
     @items = items
   end
 
-  def show_items
-    items.each do |item, price|
-      puts item.capitalize.ljust(20)
-      + price.to_s.capitalize.rjust(20)
-    end
-  end
-
   def on_menu?(item)
     items.key?(item)
   end

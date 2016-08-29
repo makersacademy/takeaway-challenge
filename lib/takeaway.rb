@@ -12,6 +12,13 @@ attr_reader :menu, :basket, :subtotal
     @text_class = text_class
   end
 
+  def show_menu
+    Menu::ITEMS.each do |item, price|
+      puts item.capitalize.ljust(20)
+      + price.to_s.capitalize.rjust(20)
+    end
+  end
+
   def order(item, quantity = 1)
     item = item.downcase
     fail 'Not a menu item!' unless menu.on_menu?(item)
@@ -20,19 +27,19 @@ attr_reader :menu, :basket, :subtotal
     @subtotal << [quantity, item, (quantity * @menu.items[item]).round(2)]
   end
 
+  def itemise
+    subtotal.each do |quantity, item, price|
+      puts "You have ordered #{quantity} #{item} for a total £#{price.round(2)}"
+    end
+      puts "Your total bill is £#{total}."
+  end
+
   def total
     total = 0
     basket.each do |item, quantity|
       total += (quantity * (menu.check_price(item)))
     end
     total.round(2)
-  end
-
-  def itemised
-    subtotal.each do |quantity, item, price|
-      puts "You have ordered #{quantity} #{item} for a total £#{price.round(2)}"
-    end
-      puts "Your total bill is £#{total}."
   end
 
   def complete_order

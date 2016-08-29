@@ -8,7 +8,4 @@ subject(:menu) { described_class.new }
     expect(menu.items).to include ("nasty noodles")
   end
 
-  it 'should show the menu items' do
-    expect(menu.show_items).to include ("nasty noodles")
-  end
 end

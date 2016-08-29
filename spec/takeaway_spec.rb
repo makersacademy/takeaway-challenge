@@ -6,6 +6,12 @@ subject(:takeaway) { described_class.new }
 
   describe '#order' do
 
+    it 'should show the menu items' do
+      expect(takeaway.show_menu).to include ("nasty noodles")
+    end
+
+  end
+
     it 'checks that the item is on the menu' do
       expect{takeaway.order("Non-menu item")}.to(raise_error("Not a menu item!"))
     end
@@ -25,12 +31,10 @@ subject(:takeaway) { described_class.new }
       expect(takeaway.basket).to(have_value(2))
     end
 
-  end
-
   describe '#total' do
 
     before do
-      takeaway.order("nasty noodles",4)
+      takeaway.order("nasty noodles", 4)
     end
 
     it 'can compile a subtotal' do
