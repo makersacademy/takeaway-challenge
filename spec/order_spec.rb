@@ -12,5 +12,10 @@ let(:menu) {double :menu}
       menu.display_dishes
       expect(order).to respond_to(:select_dishes).with(2).arguments
     end
+
+    it 'adds dishes to selected dishes' do
+      order.select_dishes("chips",2)
+      expect(order.selected_dishes).to include("chips"=>2)
+    end
   end
 end
