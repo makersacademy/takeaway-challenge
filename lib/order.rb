@@ -1,27 +1,46 @@
 # Understands the order process
 require_relative 'menu'
+require_relative 'messenger'
 
 class Order
 
-attr_reader :list_of_order
+attr_reader :basket, :messenger
 
-  def initialize
-    @list_of_order = Hash.new
+  def initialize(messenger = Messenger)
+    @basket = Hash.new
     @menu = Menu.new
+    @messenger = messenger
+  end
+
+  def view_menu
+    @menu.view_menu
   end
 
   def add_dish(dish, quantity)
     fail 'This dish is not available' unless check_menu?(dish)
-    if @list_of_order.key?(dish)
-      @list_of_order[dish] += quantity
+    if @basket.key?(dish)
+      @basket[dish] += quantity
     else
-        @list_of_order[dish] = quantity
+        @basket[dish] = quantity
     end
-    print "You have added #{quantity}x #{dish} to your basket."
+    print "You have added #{quantity}x #{dish}(s) to your basket."
   end
 
+  def check_total
+    price = 0
+    @basket.each {|dish, quantity|
+      price += @menu.view_menu[dish] * quantity
+    }
+    price
+  end
+
+  def compare_price(customer_price)
+    fail "Price error" unless self.check_total == customer_price
+    @messenger.confirm_order
+  end
+
+private
   def check_menu?(dish)
     @menu.view_menu.key?(dish)
   end
-
 end
