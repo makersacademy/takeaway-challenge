@@ -33,4 +33,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Initial design
 -----
 
-![alt-text][takeaway-challenge/Screen Shot 2016-08-28 at 13.59.36.png] 
+![alt-text](takeaway-challenge/Screen Shot 2016-08-28 at 13.59.36.png)
