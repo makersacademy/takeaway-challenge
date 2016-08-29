@@ -8,9 +8,19 @@ To install these files from Github:
 2. Run the command gem install bundle (if you don't have bundle already) from the cloned file location.
 3. When the installation completes, run bundle.
 4. Sign up for a free account at www.twilio.com.
-5. In toms_takeaway2.rb you will need to update the ENV variables with your account information.
-6. Run IRB -r './toms_takeaway2.rb'
+5. Read the below section on setting up your environment.
+6. Run IRB -r './toms_takeaway.rb'.
 7. RSpec tests can be found at Rspec spec
+
+## Environment variables
+
+We use the dot-env gem to track environment variables. In order for the text messaging functionality to work you will need to update the variables in the .env file to match your own Twilio account information. This information can be found on your dashboard.
+
+## To do
+- Business and presentation logic has been cleanly separated menu - to_s instead of show
+- ENV variables and the [dotenv gem](https://github.com/bkeepers/dotenv)
+- The README has clear instructions on handling env vars, e.g. points to a .env.example file etc.
+- Blog post?
 
 ## Approach to Solution
 
