@@ -52,6 +52,7 @@ describe Takeaway do
     end
 
     context '#basket is empty' do
+
       before do
         allow(order).to receive(:basket_empty?).and_return(true)
       end
@@ -63,10 +64,10 @@ describe Takeaway do
       end
 
       describe '#confirm_order' do
-        it 'raises an error if no order placed' do
-          expect{ takeaway.confirm_order }.to raise_error 'No orders have been added'
-        end
+      it 'raises an error if no order placed' do
+        expect{ takeaway.confirm_order }.to raise_error 'No orders have been added'
       end
     end
 
   end
+end

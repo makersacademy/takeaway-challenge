@@ -1,4 +1,6 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class Message
 
@@ -10,13 +12,13 @@ class Message
   end
 
   def send_text
-    account_sid = "AC4f30143cf5eccea4c0f4cb53848159b0"
-    auth_token = "dafdda535cb4838d43f2fd45e9988591"
+    account_sid = ENV['SID']
+    auth_token = ENV['TOKEN']
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     @message = @client.messages.create(
-    to: "+447761719320",
-    from: "+441903680359",
+    to: ENV['MY_NUMBER'],
+    from: ENV['TWILIO_NUMBER'],
     body: "Your order was placed and will be delivered before #{delivery_time}")
   end
 

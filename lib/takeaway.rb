@@ -36,7 +36,7 @@ attr_reader :menu, :order #maybe these should be private
 private
 
   def price_is_correct?
-    @order.order_total == @order.basket_total
+    @order.current_total == @order.basket_total
   end
 
 end
