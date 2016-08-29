@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'confirmation'
 
 class Takeaway
 
@@ -21,9 +22,10 @@ class Takeaway
     order.summary
   end
 
-  def checkout(payment)
+  def checkout(payment, confirmation = Confirmation.new)
     fail 'Nothing in basket' if order.empty?
     fail 'Please enter the correct payment amount' if payment != order.total
+    confirmation.send_message
   end
 
   private
