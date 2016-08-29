@@ -40,7 +40,25 @@ describe 'user feature tests' do
        order.select_dishes("chips", 2, 3)
        expect(order.total).to eq 26
    end
-
-
  end
+
+
+
+#As a customer
+#So that I am reassured that my order will be delivered on time
+#I would like to receive a text such as
+#"Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+  describe 'Confirmation of the order' do
+
+    it 'confirms the order has been placed' do
+      
+
+    end
+
+  end
+
+
+
+
 end
