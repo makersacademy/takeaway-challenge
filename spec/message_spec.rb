@@ -10,13 +10,16 @@ describe Message do
 
   end
 
-  # describe "#send_confirmation" do
-  #
-  #   it 'should send a text message' do
-  #     subject.send_confirmation
-  #     expect(message).to receive(:create)
-  #   end
-  # end
+  describe "#send_confirmation" do
+
+    subject(:takeaway) { described_class.new }
+
+    it 'sends a payment confirmation text message' do
+      expect(takeaway).to receive(:send_confirmation)
+      takeaway.send_confirmation
+    end
+
+  end
 
   describe '#store_phone_number' do
 
