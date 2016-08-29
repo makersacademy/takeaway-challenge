@@ -4,7 +4,7 @@ require_relative 'menu'
 
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :total
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -17,11 +17,11 @@ class Takeaway
   end
 
   def select_food(food, amount)
-    fail "This item is not on the menu" if @menu.included?(food) == false
+    raise "This item is not on the menu" if @menu.included?(food) == false
     @basket[food] = amount
   end
 
-  def order_total
+  def checkout
     @basket.each do |food, price|
       @total += ((@menu.price_checker(food)) * price)
     end
