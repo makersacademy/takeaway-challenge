@@ -38,9 +38,5 @@ describe Order do
       full_order.remove_from_order("Bangers & Mash")
       expect(full_order.order).to eq({"Chicken Tika"=>2, "Pizza"=>4})
     end
-
-    xit 'raises an error if you try to remove food not on the order' do
-      #not sure if this is a necissary test.
-    end
   end
 end
