@@ -35,14 +35,7 @@ describe Main do
     it "recognises select_dish method" do
       expect(user).to respond_to(:select_dish)
     end
-  end
 
-  context "#view_basket" do
-
-    it "should return contents of basket" do
-      user.select_dish("Olives")
-      expect(user.view_basket).to eq({:Olives=>2.99})
-    end
   end
 
 end

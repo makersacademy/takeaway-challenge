@@ -1,6 +1,7 @@
 #Understands responsibility to manage inital section of customer journey
 require_relative "italian"
 require_relative "basket"
+require_relative "Text"
 
 class Main
 
@@ -23,18 +24,11 @@ class Main
   end
 
   def view_basket
-    @basket.current_basket.each do |item, price|
-      puts "#{item}: £#{price}"
-    end
-    puts "Total: £#{basket_total}"
+    @basket.basket_status
   end
 
-  def basket_total
-    @total = 0.00
-    @basket.current_basket.each do |item,price|
-      @total += price
-    end
-    @total
+  def place_order
+    Text.new.send
   end
 
 end
