@@ -27,4 +27,8 @@ class Takeaway
     "Your selected dishes are #{view}"
   end
 
+  def order_price
+    "Your total order price is £#{order.total_price}"
+  end
+
 end

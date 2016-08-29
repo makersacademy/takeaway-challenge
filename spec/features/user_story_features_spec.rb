@@ -37,7 +37,15 @@ describe 'user feature tests' do
  #I would like to check that the total
  #I have been given matches the sum of the various dishes in my order
 
- 
+ describe 'checking the total price of the order' do
+       it 'displays the total price of the order' do
+       t = Takeaway.new
+       t.add("chicken", 2)
+       t.add("steak", 2)
+       t.add("chips", 2)
+       expect(t.order_price).to eq "Your total order price is £26"
+   end
+ end
 
 
 

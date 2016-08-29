@@ -17,7 +17,13 @@ describe Takeaway do
     takeaway.add("chips",2)
     msg = "Your selected dishes are {\"chips\"=>2}"
     expect(takeaway.view_order).to eq msg
-
   end
 
+  it 'shows the total price of the order' do
+  takeaway.add("chips",2)
+  takeaway.add("burger",2)
+  msg = "Your total order price is £14"
+  expect(takeaway.order_price).to eq msg
+
+  end
 end
