@@ -10,12 +10,12 @@ attr_reader :list
 
   def show_list
     puts "Pizza options are "
-    list.each {|k,v| puts "#{k}: £#{v}"}
+    list.each {|item,price| puts "#{item}: £#{price}"}
   end
 
-  def on_menu?(item)
-    fail "Not on the menu" if !@list.include?(item.to_sym.capitalize)
-    true
+  def price(item)
+    fail "Not on the menu" if !list.include?(item.to_sym)
+    list[item.to_sym]
   end
 
 end

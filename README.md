@@ -97,11 +97,12 @@ Working through the solution
 
 | Objects  | Messages |
 | ---------|----------|
-| Takeaway |     ?    |
-| Menu     | show_list   |
-|          | on_menu?      |
-| Order    | select_dish |
+| Takeaway | start_order |
 |          | checkout    |
+|          | send_confirm|
+| Order    | select_dish |
+|          | check_menu  |
+| Menu     | show_list   |
 | Verify   | sum_total   |
 | Confirmation | send_text |
 
@@ -131,5 +132,16 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 4: Feature Test functionality
 
 ```
-irb
+003 > require './lib/order'
+ => true
+2.3.1 :004 > order = Order.new
+ => #<Order:0x007fb1fb0151d0 @basket={}, @menu=#<Menu:0x007fb1fb0151a8 @list={:Margerita=>5, :Napolitan=>7, :Pepperoni=>9}>>
+2.3.1 :005 > order.menu.show_list
+Pizza options are
+Margerita: £5
+Napolitan: £7
+Pepperoni: £9
+ => {:Margerita=>5, :Napolitan=>7, :Pepperoni=>9}
+2.3.1 :006 > order.select_dish("Pepperoni",3)
+ => 3
 ```

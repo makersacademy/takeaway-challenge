@@ -2,22 +2,36 @@ require 'order'
 
 describe Order do
   subject(:order) {described_class.new}
-  let(:menu_class) {double :menu_class, new: menu, on_menu?: true}
+  let(:menu_class) {double :menu_class, new: menu}
   let(:menu) {double :menu}
-  let(:dish) {double :dish}
+  let(:dish) {double :dish, to_sym: :dish}
 
-  # it 'initializing an order should inject menu' do
-  #   expect(menu_class).to receive(:new)
-  #   order
-  # end
-  describe '#select_dish' do
-    it 'can select specific item' do
-      order.select_dish(dish)
-      expect(order.basket).to include dish
+  context '#select item (when dish is on the menu)' do
+    before do
+      allow(order).to receive(:check_menu).and_return(true)
     end
-    it 'checks if item on menu list' do
-      expect(menu).to receive(:on_menu?).with(dish)
+    it 'can select a specific item' do
       order.select_dish(dish)
+      expect(order.show_basket).to(have_key(:dish))
+    end
+    it 'can select a specified amount of item' do
+      order.select_dish(dish,2)
+      expect(order.show_basket).to(have_value(2))
+    end
+  end
+  describe 'error messages' do
+    it '#select item -> raise error (if is not on the menu)' do
+      expect{order.select_dish(dish)}.to raise_error("Not on the menu")
+    end
+  end
+  context '#checkout -> show basket and total price' do
+    before do
+      allow(order).to receive(:check_menu).and_return(true)
+      order.select_dish("Pepperoni",2)
+    end
+    it 'totals the order' do
+      expect(order).to receive(:total)
+      order.checkout
     end
   end
 end

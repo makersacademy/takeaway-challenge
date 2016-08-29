@@ -3,14 +3,15 @@ require 'menu'
 describe Menu do
   subject(:menu) {described_class.new}
 
-  it 'list should contain items and prices' do
-    expect(menu.list).to_not be_nil
-  end
   it '#show_list should display list' do
     expect{menu.show_list}.to output.to_stdout
   end
-  it 'raises error if not included in list' do
-    item = "example".to_sym.capitalize
-    expect{menu.on_menu?(item)}.to raise_error("Not on the menu")
+  context '#price function' do
+    it 'show price of a specified menu item' do
+      expect(menu.price("Pepperoni")).to eq 9
+    end
+    it 'raise error if item selected is not on the menu' do
+      expect{menu.price("test")}.to raise_error("Not on the menu")
+    end
   end
 end
