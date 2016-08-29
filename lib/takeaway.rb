@@ -13,9 +13,9 @@ class Takeaway
     menu.show_dishes
   end
 
-  def add(number=1, dish)
+  def add(dish, number=1)
     fail 'Sorry, that\'s not on the menu' unless menu.contains?(dish)
-    add_to_basket(number, dish)
+    add_to_basket(dish, number)
   end
 
   def summary
@@ -30,8 +30,8 @@ class Takeaway
 
   private
 
-  def add_to_basket(number, dish)
-    order.add_dish(number, dish)
+  def add_to_basket(dish, number)
+    order.add_dish(dish, number)
     puts "#{dish} has been added to your basket"
   end
 

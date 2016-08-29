@@ -5,7 +5,7 @@ describe Order do
   subject(:order) { described_class.new }
 
   before(:each) do
-    order.add_dish(1, 'Hedgeree')
+    order.add_dish('Hedgeree', 1)
   end
 
   describe '#add_dish' do
@@ -14,14 +14,14 @@ describe Order do
     end
 
     it 'adds correct number of dishes to basket' do
-      order.add_dish(2, 'Hedgeree')
+      order.add_dish('Hedgeree', 2)
       expect(order.basket['Hedgeree']).to eq 3
     end
   end
 
   describe '#total' do
     it 'sums all items in basket' do
-      order.add_dish(1, 'Hedgeree')
+      order.add_dish('Hedgeree', 1)
       expect(order.total).to eq 15.3
     end
   end

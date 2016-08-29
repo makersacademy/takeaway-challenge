@@ -13,12 +13,13 @@ describe Takeaway do
   describe '#show_menu' do
     it 'prints out the list of dishes from the menu' do
       expect(takeaway.show_menu).to include('Banana Chowder' =>  5.45)
-      end
+    end
   end
 
   describe '#add' do
     it 'prints success message if item added' do
-      expect(STDOUT).to receive(:puts).with('Hedgeree has been added to your basket')
+      message = 'Hedgeree has been added to your basket'
+      expect(STDOUT).to receive(:puts).with message
       takeaway.add('Hedgeree')
     end
 
@@ -26,6 +27,12 @@ describe Takeaway do
       allow(menu).to receive(:contains?) {false}
       message = 'Sorry, that\'s not on the menu'
       expect{takeaway.add('cake')}.to raise_error message
+    end
+  end
+
+  describe '#summary' do
+    it 'summarises basket_summary contents' do
+
     end
   end
 
@@ -38,7 +45,7 @@ describe Takeaway do
     end
 
     it 'does not raise error if price matches total' do
-      takeaway.add(2, 'Hedgeree')
+      takeaway.add('Hedgeree', 2)
       expect{takeaway.checkout(15.3, conf)}.to_not raise_error
     end
 
@@ -46,7 +53,6 @@ describe Takeaway do
       message = 'Nothing in basket'
       expect{takeaway.checkout(1, conf)}.to raise_error message
     end
-
   end
 
 end

@@ -4,8 +4,11 @@ Dotenv.load
 
 class Confirmation
 
+ACC_SID = ENV["TWILIO_ACC_SID"]
+AUTH_TOKEN = ENV["TWILIO_AUTH_TOKEN"]
+
   def initialize
-    @client = Twilio::REST::Client.new(ENV["TWILIO_ACC_SID"],ENV["TWILIO_AUTH_TOKEN"])
+    @client = Twilio::REST::Client.new(ACC_SID, AUTH_TOKEN)
   end
 
   def send_message

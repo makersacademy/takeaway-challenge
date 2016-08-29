@@ -9,7 +9,7 @@ attr_reader :dishes
     'Mackerel Muffins' => 3.75,
     'Smoked Goat Tart' => 6.75,
     'Prawn Sundae' => 6.75
-  }
+  }.freeze
 
   def initialize
     @dishes = MENU_ITEMS
