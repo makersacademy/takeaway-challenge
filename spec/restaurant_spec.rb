@@ -26,7 +26,7 @@ it 'returns quantity of dishes you ordered' do
 end
 
 it 'returns your order total' do
-  menu = Menu.new
+  
   restaurant.select("boquerones")
   expect(restaurant.bill_total).to eq 5
 end

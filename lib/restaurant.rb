@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text'
 class Restaurant
 
 attr_reader :order_cart, :total_dishes, :menu
@@ -21,8 +22,8 @@ def total_dishes
   order_cart.length
 end
 
-def bill_total(things)
-  (things.price(@order_cart))
+def bill_total
+  (menu.price(@order_cart.pop))
 end
 
 def order
@@ -30,7 +31,8 @@ def order
   an_hour = 60*60
   t = Time.new + an_hour
   g = (t.hour).to_s + ":" + t.min.to_s
-  "Thank you! Your order was placed and will be delivered before " + g
+  message = "Thank you! Your order was placed and will be delivered before " + g
+
 end
 
 end
