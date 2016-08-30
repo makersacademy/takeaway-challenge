@@ -7,7 +7,6 @@ class UserInterface
   def initialize
     @menu = Menu.new
     @order = Order.new(menu) #maybe move to order start?
-    initialize_message
     interactive_menu
   end
 
@@ -17,6 +16,7 @@ class UserInterface
   end
 
   def interactive_menu
+    initialize_message
     loop do
       print_options
       selection = gets.chomp
@@ -100,7 +100,6 @@ class UserInterface
     order_arrival_time = Time.now + 60*60 #60 seconds * 60 mins == 1 hour
     confirmation_message = SMS.new
     confirmation_message.order_confirmation_sms(@customer_number, order_arrival_time)
-    puts "Your order will be with you at aprox #{order_arrival_time}."
   end
 
 private

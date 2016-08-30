@@ -3,9 +3,8 @@ require 'twilio-ruby'
 class SMS
   def initialize
     @account_sid = 'AC39af99827892e269cb7e72ecee580f94'
-    @auth_token = '6c2f4f76b620e20fb9fbf89d16d62fe2'
-    @twillo_number = "+44 1422 400686"
-
+    @auth_token = File.read('/Users/James/desktop/twilio_auth.txt')
+    @twillo_number = File.read('/Users/James/desktop/twilio_number.txt')
     @client = Twilio::REST::Client.new @account_sid, @auth_token
   end
 
