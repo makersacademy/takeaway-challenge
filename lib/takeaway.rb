@@ -14,8 +14,7 @@ attr_reader :menu, :basket, :subtotal
 
   def show_menu
     Menu::ITEMS.each do |item, price|
-      puts item.capitalize.ljust(20)
-      + price.to_s.capitalize.rjust(20)
+      puts item.capitalize.ljust(20) + price.to_s.capitalize.rjust(20)
     end
   end
 
