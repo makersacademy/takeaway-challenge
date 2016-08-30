@@ -11,7 +11,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +69,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
@@ -89,3 +89,37 @@ Build Badge Example
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+Developer's Notes
+--------
+
+The system is designed for a customer to be able to order what s/he prefers with ease. The customer can see the whole menu, add any of them to his order, check the basket and the total amount. If the total amount is correct, s/he can complete the order by entering the total correct amount as argument and receives a confirmation SMS with the expected time of the delivery.
+
+Below you can find the summary of possible actions to be done by a customer.
+
+
+
+
+[1] pry(main)> require './lib/takeaway.rb'
+=> true
+[2] pry(main)> t = Takeaway.new
+=> #<Takeaway:0x007fb5a1af0380
+ @eachtotal=[],
+ @menu=
+  #<Menu:0x007fb5a1af0358 @dishes={"pizza"=>3.0, "soup"=>2.0, "fanta"=>1.0}>,
+ @order=nil,
+ @text=nil>
+[3] pry(main)> t.read_menu
+=> {"pizza"=>3.0, "soup"=>2.0, "fanta"=>1.0}
+[4] pry(main)> t.add_order('pizza' , 3)
+=> [9.0]
+[5] pry(main)> t.add_order('soup' , 2)
+=> [9.0, 4.0]
+[6] pry(main)> t.add_order('fanta' , 1)
+=> [9.0, 4.0, 1.0]
+[7] pry(main)> t.basket_summary
+=> {"pizza"=>3, "soup"=>2, "fanta"=>1}
+[8] pry(main)> t.total
+=> 14.0
+[9] pry(main)> t.complete_order(14)
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/AC217e8d0f6ba2f17a919459b439a11048/Messages/SM7080317484af4b02abb7815a7948b685>
