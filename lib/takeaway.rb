@@ -17,7 +17,7 @@ class Takeaway
     menu.print_menu
   end
 
-  def place_order (meal,quantity=1)
+  def place_order(meal,quantity=1)
     message = "#{meal.capitalize} is not on the menu"
     fail message unless menu.has_meal?(meal)
     @order.add_meals(meal,quantity)

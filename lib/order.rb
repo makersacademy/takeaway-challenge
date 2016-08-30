@@ -2,13 +2,13 @@ class Order
 
 attr_reader :basket, :current_total, :meals_list
 
-  def initialize (menu)
+  def initialize(menu)
     @menu = menu
     @basket = Hash.new(0)
     @current_total = 0
   end
 
-  def add_meals (meal,quantity=1)
+  def add_meals(meal,quantity=1)
     basket[meal.downcase] += quantity
     order_total(meal,quantity)
     total = sprintf('%.2f', @current_total)

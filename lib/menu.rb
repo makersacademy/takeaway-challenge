@@ -20,7 +20,7 @@ class Menu
     end
   end
 
-  def has_meal? (meal)
+  def has_meal?(meal)
     meals_list.key?(meal)
   end
 
