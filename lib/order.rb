@@ -7,9 +7,7 @@ class Order
 
   attr_reader :selected_dishes, :total, :menu, :text
 
-  def initialize(menu = Menu.new, text = Text.new)
-    @menu = menu
-    @text = text
+  def initialize
     @selected_dishes = Hash.new(0)
     @total = 0
   end
@@ -20,13 +18,10 @@ class Order
 
   def total_price
     selected_dishes.each do |dish, quantity|
-      @total += (quantity * (menu.price_check(dish)))
+      @total += (quantity * (Menu.new.price_check(dish)))
     end
     @total
   end
 
-  def confirm_order
-    total_price == total ? @text.send_text : total_price
-    "Thank you, your delivery time will be sent by text shortly"
-  end
+
 end

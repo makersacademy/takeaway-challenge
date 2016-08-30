@@ -27,28 +27,4 @@ let(:menu) {double :menu}
     end
   end
 
-  describe '#confirm order' do
-        #texts incorrectly stubbed
-
-    let(:confirm_order) {double :confirm_order}
-    let(:text) {double :text}
-    let(:send_text) {double :send_text}
-
-    it 'allows user to know that a text will be sent' do
-      order.select_dishes("chips", 2)
-      order.select_dishes("burger", 2)
-      msg = "Thank you, your delivery time will be sent by text shortly"
-      expect(order.confirm_order).to eq msg
-
-    end
-
-    xit 'confirms the order by sending a text to the users phone' do
-      allow(:text).to receive(:send_text)
-      order.select_dishes("chips", 2)
-      order.select_dishes("burger", 2)
-      expect(order.confirm_order).to receive(text.send_text)
-    end
-
-  end
-
 end

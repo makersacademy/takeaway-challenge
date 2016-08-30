@@ -4,11 +4,12 @@ require_relative 'text'
 
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :text
 
-  def initialize(menu = Menu.new, order = Order.new)
-    @menu = menu
-    @order = order
+  def initialize(menu = Menu, order = Order, text = Text)
+    @menu = menu.new
+    @order = order.new
+    @text = text
   end
 
   def show_menu
@@ -33,7 +34,10 @@ class Takeaway
     price == order.total_price
   end
 
-  def order_confirmation
-    order.confirm_order
+  def confirm_order
+    order.total_price == order.total ? @text.new.send_text : order.total_price
+    "Thank you, your delivery time will be sent by text shortly"
   end
+
+
 end

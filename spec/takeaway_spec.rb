@@ -3,8 +3,6 @@ require 'takeaway'
 describe Takeaway do
 
   subject(:takeaway) {described_class.new}
-  let(:order_confirmation) {double :order_confirmation}
-  let(:text) {double :text}
 
   before do
     allow(takeaway).to receive(:send_text)
@@ -37,4 +35,5 @@ describe Takeaway do
     takeaway.add("chips", 2)
     expect(takeaway.amount?(4)).to eq true
   end
+
 end
