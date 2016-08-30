@@ -4,3 +4,9 @@ before_install:
 - sed -i '2d' Gemfile
 
 script: bundle exec rspec spec
+
+env:
+- TWILIO_SID=ABCDEFG
+- TWILIO_KEY=12345
+- TWILIO_NUM=+44000
+- MOBILE_NUM=+44000
