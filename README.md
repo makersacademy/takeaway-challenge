@@ -11,11 +11,42 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+
+Notes
+-------
+* Configure your Twilio details before running anything!
+* To configure, you must:
+  * Create ```app_env_vars.rb``` in the file-path: ```./config/initializers/```
+  * Edit ```app_env_vars.rb``` to include:
+
+```
+ENV['ACCOUNT_SID'] = 'YOUR_TWILIO_SID'
+ENV['AUTH_TOKEN'] = 'YOUR_TWILIO_TOKEN'
+ENV['TWILIO_NUM'] = 'YOUR_TWILIO_PHONE_NUMBER'
+```
+
+Usage
+-------
+* Inspect ```./spec/feature_tests.rb``` to see proper Usage
+* Creation of objects in order:
+  * Dishes > Menu > Restaurant > Order > Customer
+* Customer creates an order > Order contains restaurant dishes > Restaurant contains menu > Menu contains dishes
+* Order creates SMS request > SMS sends text message
 
 Instructions
 -------
+* First create dishes
+* Add dishes to menu
+* Create a restaurant
+* Add a menu to the restaurant using restaurant.add_menu(menu)
+* Create a new customer
+* Customer creates a new order at restaurant using customer.new_order(restaurant)
+* Use customer to order/view items
+
+
+----------------
 
 * Challenge time: rest of the day and weekend, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
@@ -69,7 +100,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
