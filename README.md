@@ -1,4 +1,4 @@
-Takeaway Challenge
+Takeaway Challenge              [![Build Status](https://travis-ci.org/nomi811/takeaway-challenge.svg?branch=project3)](https://travis-ci.org/nomi811/takeaway-challenge)
 ==================
 ```
                             _________
@@ -11,8 +11,14 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+
+Author Nomi Vos
+  * with the help of various sources
+
+  * I went through this challenge three times.  The first time, (project branch) I followed along with the YouTube video, then I did it again (project2 branch) with the help of my code from the video, the third time (project3 branch) I tried to come up with a different way, and used various sources to figure it out.  I learned new things each time.
+
 
 Instructions
 -------
@@ -69,7 +75,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
