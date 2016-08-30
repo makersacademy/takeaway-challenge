@@ -6,10 +6,10 @@ checkout -> check total i.e. create Verify instance
 send_confirm -> send SMS i.e. create Confirmation instance
 =end
 describe Takeaway do
-  subject(:takeaway) {described_class.new}
+  subject(:takeaway) {described_class.new(order_class)}
   let(:order_class){double :order_class, new: order}
-  let(:order) {double :order, select_dish: true, order_summary: 18, basket: {dish => quantity}, check_menu: true}
-  let(:menu) {double :menu}
+  let(:order) {double :order, total: 20, select_dish: true, order_summary: 20, basket: {dish => quantity}, check_menu: true, menu: menu}
+  let(:menu) {double :menu, show_list: nil}
   let(:dish) {double :dish, to_sym: :dish}
   let(:quantity) {double :quantity}
 
@@ -38,7 +38,7 @@ describe Takeaway do
       takeaway.checkout(20)
     end
     it 'should raise error message if amounts do not match' do
-      msg = "Payment amount does not match total"
+      msg = "Payment amount doesn't equal the total"
       expect {takeaway.checkout(10)}.to raise_error(msg)
     end
 

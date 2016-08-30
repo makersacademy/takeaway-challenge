@@ -10,7 +10,7 @@ attr_reader :menu
 
   def select_dish(dish, amount = 1)
     check_menu(dish)
-    basket[dish.to_sym] = amount
+    basket[dish.to_sym] += amount
     puts "#{amount} #{dish} pizza#{amount == 1 ? "" : "s"} added to your basket"
   end
 
@@ -29,8 +29,8 @@ attr_reader :menu
   end
 
   def total
+    @sum = 0
     basket.each do |item, quantity|
-      @sum = 0
       price = menu.list[item]
       @sum += (price * quantity)
     end
