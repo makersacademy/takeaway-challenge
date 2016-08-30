@@ -4,7 +4,7 @@ class Order
 attr_reader :menu
 
   def initialize(menu = Menu.new)
-    @basket = Hash.new(1)
+    @basket = Hash.new(0)
     @menu = menu
   end
 
