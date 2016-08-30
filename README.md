@@ -26,6 +26,8 @@ Instructions
 Task
 -----
 
+I worked partly with my brother (abdullamahmood) on this challenge.
+
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
@@ -46,6 +48,7 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
 ```
 
 * Hints on functionality to implement:
