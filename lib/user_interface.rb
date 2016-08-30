@@ -91,7 +91,7 @@ class UserInterface
     puts "Below is your order confirmation."
     puts "Address: #{@customer_address}"
     puts "Phone Number: #{@customer_number}"
-    puts @order
+    puts "Your order total is #{@order.order_total}."
 
     send_confirmation_sms(@customer_number)
   end
