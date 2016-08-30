@@ -37,14 +37,4 @@ describe Takeaway do
     takeaway.add("chips", 2)
     expect(takeaway.amount?(4)).to eq true
   end
-
-  it 'sends a text once confirming the order' do
-    allow(:send_text).to receive(:delivery_time)
-    takeaway.add("chips",2)
-    takeaway.add("burger",2)
-    expect(takeaway).to receive(:send_text).with(msg)
-    msg = "Thank you! Your order was placed and
-           will be delivered at #{delivery_time}"
-    takeaway.order_confirmation
-  end
 end
