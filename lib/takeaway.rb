@@ -7,7 +7,7 @@ class Takeaway
 
   attr_reader :menu, :order #maybe these should be private
 
-  def initialize(menu = Menu.new,order = Order.new(menu),message = Message.new)
+  def initialize (menu = Menu.new,order = Order.new(menu),message = Message.new)
     @message = message
     @menu = menu
     @order = order
@@ -17,7 +17,7 @@ class Takeaway
     menu.print_menu
   end
 
-  def place_order(meal,quantity=1)
+  def place_order (meal,quantity=1)
     message = "#{meal.capitalize} is not on the menu"
     fail message unless menu.has_meal?(meal)
     @order.add_meals(meal,quantity)

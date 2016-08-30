@@ -2,13 +2,13 @@ class Order
 
 attr_reader :basket, :current_total, :meals_list
 
-  def initialize(menu)
+  def initialize (menu)
     @menu = menu
     @basket = Hash.new(0)
     @current_total = 0
   end
 
-  def add_meals(meal,quantity=1)
+  def add_meals (meal,quantity=1)
     basket[meal.downcase] += quantity
     order_total(meal,quantity)
     total = sprintf('%.2f', @current_total)
@@ -23,7 +23,7 @@ attr_reader :basket, :current_total, :meals_list
   def basket_summary
     fail "Basket empty" if basket_empty?
     basket.map do |food, quantity|
-      "#{quantity} x #{food.to_s}(s) added to your basket"
+      "#{quantity} x #{food}(s) added to your basket"
     end.join(", ")
 
   end
