@@ -1,19 +1,23 @@
 #understands how to send confirmation text to user.
 require "twilio-ruby"
+require "dotenv"
+Dotenv.load
 
 class Text
 
-  account_sid = 'AC2723fb5c4f19b473c1f85cefc11d2725'
-  auth_token = 'd35887688b544de66778208213323523'
+  ACCOUNT_SID = ENV['ACCOUNT_SID']
+  AUTH_TOKEN = ENV['AUTH_TOKEN']
 
-  @client = Twilio::REST::Client.new account_sid, auth_token
+  def initialize
+    @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
+  end
 
   def send
-    @client.account.messages.create({
-      :to => ENV["TWILIO_TEXT_NUMBER"],
+    @client.messages.create(
+      :to => ENV["NUMBER"],
       :from => '+441613751649', #Twilio provided number
-      :body => message,
-      })
+      :body => message
+      )
   end
 
   private

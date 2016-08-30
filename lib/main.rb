@@ -1,7 +1,7 @@
 #Understands responsibility to manage inital section of customer journey
 require_relative "italian"
 require_relative "basket"
-require_relative "Text"
+require_relative "text"
 
 class Main
 
