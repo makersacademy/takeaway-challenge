@@ -5,6 +5,7 @@ class Order
 
   def initialize(menu)
     @order = {} # structure should be {dish => quantity}
+    @order = Hash.new(0)
     @menu = menu
   end
 

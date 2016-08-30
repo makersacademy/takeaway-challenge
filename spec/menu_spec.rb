@@ -20,5 +20,4 @@ describe Menu do
        expect(subject.has_dish?("Pizza")).to be true
      end
    end
-
 end

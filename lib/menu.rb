@@ -1,4 +1,3 @@
-require 'CSV'
 class Menu #understands the food items on the menu
   attr_reader :dishes
 
