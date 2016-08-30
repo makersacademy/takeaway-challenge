@@ -13,6 +13,7 @@ describe TakeAway do
   before(:each) do
     allow(order_log).to receive(:start_order)
     allow(order_log).to receive(:checkout_order)
+    allow(menu).to receive(:load_menu)
     allow(client).to receive_message_chain(:messages, :create)
   end
 

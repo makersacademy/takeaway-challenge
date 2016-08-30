@@ -8,6 +8,7 @@ class TakeAway
   def initialize(menu_class = Menu.new, order_log_class = OrderLog.new, twilio = Twilio::REST::Client)
     @twilio = twilio
     @menu_class = menu_class
+    @menu_class.load_menu
     @order_log_class = order_log_class
     account_sid, auth_token = ENV['TWILIO_ACC_SID'], ENV['TWILIO_AUTH_TOKEN']
     @client = @twilio.new(account_sid, auth_token)

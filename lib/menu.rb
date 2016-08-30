@@ -7,24 +7,24 @@ class Menu
   def initialize(filename = FILENAME)
     @filename = filename
     @menu_content = Hash.new(0)
-    load_menu #loads input file at creation of menu instance
   end
 
   def menu
     menu_content.dup #returns a copy of the menu
   end
 
-  private
-
-  attr_reader :menu_content, :filename
-
-  def load_menu
+  def load_menu(filename = @filename)
     #load content of menu.csv and creates dish objects
-    CSV.foreach(@filename) do |row|
-      @menu_content[row[0].to_i] = Dish.new(row[0].to_i, row[1], row[2].to_f)
+    CSV.foreach(filename) do |row|
+      id, price = row[0].to_i, row[2].to_f.round(2)
+      @menu_content[id] = Dish.new(id, row[1], price)
     end
   rescue
-    puts "File doesn't exist. Failed to load file."
+    "File doesn't exist. Failed to load file."
   end
+
+  private
+
+  attr_reader :menu_content
 
 end

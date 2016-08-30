@@ -9,7 +9,7 @@ class Order
 
   #add dish with quantity and sum to the order
   def add_item(dish, quantity)
-    sum = dish.price * quantity #sum is calculated
+    sum = (dish.price.to_f * quantity).round(2) #sum is calculated
     finish_adding_item(dish, quantity, sum)
   end
 
@@ -29,14 +29,14 @@ class Order
 
   def total #returns total value of the order
     return 0 if order_content.empty?
-    order_content.to_a.map { |elem| elem[1][:sum] }.inject(:+)
+    order_content.to_a.map { |elem| elem[1][:sum] }.inject(:+).round(2)
   end
 
   private
   attr_reader :checkout_value, :order_content
 
   def summary_message(elem) #returns message content to the summary
-    "#{elem[0].name} x#{elem[1][:quantity]} = #{elem[1][:sum]}"
+    "#{elem[0].name} x#{elem[1][:quantity]} = £#{elem[1][:sum]}"
   end
 
   def finish_adding_item(dish, quantity, sum)

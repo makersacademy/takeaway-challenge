@@ -72,7 +72,7 @@ describe Order do
     it "returns the summary of the current order" do
       order.add_item(dish1, 2)
       order.add_item(dish2, 3)
-      expect(order.order_summary).to eq("Pizza x2 = 3.98, Burger x3 = 6.33")
+      expect(order.order_summary).to eq("Pizza x2 = £3.98, Burger x3 = £6.33")
     end
   end
 
