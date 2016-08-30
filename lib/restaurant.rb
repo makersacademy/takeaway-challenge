@@ -26,9 +26,8 @@ attr_reader :order_cart, :total_dishes, :menu, :total
 
   def order
     fail "You submitted an empty order" if @order_cart == []
-    an_hour = 60*60
-    t = Time.new + an_hour
-    g = (t.hour).to_s + ":" + t.min.to_s
+    t = Time.new + 60*60
+    g = t.strftime("%H:%M")
     message = "Thank you! Your order was placed and will be delivered before " + g
 
   end
