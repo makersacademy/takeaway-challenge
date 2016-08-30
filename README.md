@@ -42,5 +42,9 @@ that returns the price of the menu item put in.
 The restaurant class contains the methods that pull information from the menu and text class, and therefore has the ability to store dishes in an array, and when the order function is used, will call
 the send(message) method from the Text class and send a sms detailing the arrival time of food.
 
-Improvements and Known Issues:
--
+Future Improvements and Known Issues:
+-Send(message) method does not return a zero before minutes
+-Use of magic numbers for testing prices
+-Incomplete mocks and stubs in rspec tests
+-Addition of injection method
+-Turn order cart from Array into Hash

@@ -3,9 +3,6 @@ class Menu
 
 attr_reader :items
 
-def initialize
-end
-
 def items
   {"boquerones" => 5,
     "shishito peppers" => 4,

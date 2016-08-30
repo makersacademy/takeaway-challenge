@@ -26,9 +26,9 @@ it 'returns quantity of dishes you ordered' do
 end
 
 it 'returns your order total' do
-  
+  restaurant.select("shishito peppers")
   restaurant.select("boquerones")
-  expect(restaurant.bill_total).to eq 5
+  expect(restaurant.total).to eq 9
 end
 
 it 'will not let you order something not on the menu' do
