@@ -11,7 +11,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +69,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
@@ -89,3 +89,21 @@ Build Badge Example
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+
+I built this program based around the Takeaway class which delegates all responsibility.  It asks the Menu class to display the menu, it asks the Order class to add orders, provide summaries and calculate the order and finally it asks the Message class to send a confirmation text.
+
+An example of a user story
+
+[1] pry(main)> require './lib/takeaway.rb'
+=> true
+[2] pry(main)> t = Takeaway.new
+=> #<Takeaway:0x007fcee18707a0
+[3] pry(main)> t.place_order "chilli", 2
+=> "2 x chilli(s) added to your basket. Total: £8.00."
+[4] pry(main)> t.place_order "ribs"
+=> "1 x ribs(s) added to your basket. Total: £14.00."
+[5] pry(main)> t.basket_contents
+=> "2 x chilli(s) added to your basket, 1 x ribs(s) added to your basket"
+[6] pry(main)> t.confirm_order
+"A text message will be sent confirming your order time"

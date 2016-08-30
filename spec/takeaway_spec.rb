@@ -44,31 +44,16 @@ describe Takeaway do
 
       describe '#basket contents' do
         it 'shows what meals are in your basket' do
-          allow(order).to receive(:basket_empty?).and_return(false)
-          allow(order).to receive(:basket).and_return("nachos"=> 1)
-          takeaway.place_order("nachos")
-          expect(takeaway.basket_contents).to eq "nachos"=> 1
+          expect(order).to receive(:basket_summary)
+          takeaway.basket_contents
         end
       end
     end
 
-    context '#basket is empty' do
-
-      before do
-        allow(order).to receive(:basket_empty?).and_return(true)
-      end
-
-      describe '#basket_contents' do
-
-        it 'returns message of empty basket if empty' do
-          expect(takeaway.basket_contents).to eq "Basket is empty"
-        end
-
-      end
-
       describe '#confirm_order' do
 
         it 'raises an error if no order placed' do
+          allow(order).to receive(:basket_empty?).and_return(true)
           message = 'No orders have been added'
           expect{ takeaway.confirm_order }.to raise_error message
         end
@@ -77,8 +62,7 @@ describe Takeaway do
           expect(message).to receive(:send_text)
           message.send_text("test")
         end
-
       end
 
-    end
+
 end

@@ -24,11 +24,13 @@ class Takeaway
   end
 
   def basket_contents
-    @order.basket_empty? ? "Basket is empty" : @order.basket
+    @order.basket_summary
   end
+
 
   def confirm_order
     fail 'No orders have been added' if @order.basket_empty?
+    p  "A text message will be sent confirming your order time"
     @message.send_text if price_is_correct?
   end
 

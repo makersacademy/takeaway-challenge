@@ -20,8 +20,16 @@ attr_reader :basket, :current_total, :meals_list
     meal_total.inject(:+)
   end
 
+  def basket_summary
+    fail "Basket empty" if basket_empty?
+    basket.map do |food, quantity|
+      "#{quantity} x #{food.to_s}(s) added to your basket"
+    end.join(", ")
+
+  end
+
   def basket_empty?
-    @basket.empty?
+    basket.empty?
   end
 
   private

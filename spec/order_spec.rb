@@ -47,6 +47,17 @@ describe Order do
     end
   end
 
+  describe '#basket_summary' do
+    it 'provides a summary of items in basket' do
+      order.add_meals("beer",2)
+      expect(order.basket_summary).to eq "2 x beer(s) added to your basket"
+    end
+
+    it 'raises error if basket empty' do
+      expect{ order.basket_summary }.to raise_error "Basket empty"
+    end
+  end
+
   describe '#basket_empty' do
     it 'checks whether basket is empty' do
       expect(order.basket_empty?).to eq true
