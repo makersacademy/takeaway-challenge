@@ -1,0 +1,3 @@
+export PATH="/home/liskowsky/.rvm/gems/ruby-2.3.1/bin:/home/liskowsky/.rvm/gems/ruby-2.3.1@global/bin:/home/liskowsky/.rvm/rubies/ruby-2.3.1/bin:/home/liskowsky/.rvm/bin:$PATH"
+export GEM_PATH="/home/liskowsky/.rvm/gems/ruby-2.3.1:/home/liskowsky/.rvm/gems/ruby-2.3.1@global:/home/liskowsky/Projects/MA/takeaway-challenge/vendor/bundle/ruby/2.3.1"
+export GEM_HOME="/home/liskowsky/Projects/MA/takeaway-challenge/vendor/bundle/ruby/2.3.1"

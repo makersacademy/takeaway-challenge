@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if
+  [[ -s "/home/liskowsky/Projects/MA/takeaway-challenge/vendor/bundle/ruby/2.3.1/environment" ]]
+then
+  source "/home/liskowsky/Projects/MA/takeaway-challenge/vendor/bundle/ruby/2.3.1/environment"
+  exec testrb "$@"
+else
+  echo "ERROR: Missing RVM environment file: '/home/liskowsky/Projects/MA/takeaway-challenge/vendor/bundle/ruby/2.3.1/environment'" >&2
+  exit 1
+fi
