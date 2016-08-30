@@ -5,17 +5,14 @@ Dotenv.load
 
 class Text
 
-  ACCOUNT_SID = ENV['ACCOUNT_SID']
-  AUTH_TOKEN = ENV['AUTH_TOKEN']
-
-  def initialize
-    @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
+  def initialize(twilio_client = Twilio::REST::Client)
+    @client = twilio_client.new(ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"])
   end
 
   def send
     @client.messages.create(
       :to => ENV["NUMBER"],
-      :from => '+441613751649', #Twilio provided number
+      :from => '+447481344824', #Twilio provided number
       :body => message
       )
   end

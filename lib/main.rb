@@ -9,7 +9,8 @@ class Main
 
   menus = ["Italian"]
 
-  def initialize
+  def initialize(text = Text.new)
+    @text = text
     @basket = Basket.new
   end
 
@@ -28,7 +29,7 @@ class Main
   end
 
   def place_order
-    Text.new.send
+    @text.send
   end
 
 end
