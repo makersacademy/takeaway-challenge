@@ -1,3 +1,20 @@
+Interface instructions
+
+Using IRB
+Create a new takeaway with Takeaway.new then use the following commands
+
+takeaway.read_menu - lists menu
+takeaway.order_item(item) -adds item to an order
+takeaway.summary - summarises order so far
+takeaway.total - shows total price for order
+takeaway.checkout(total) - places order if ordr total is correct otherwise throws error
+
+
+
+
+
+
+
 Takeaway Challenge
 ==================
 ```
@@ -11,7 +28,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +86,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
