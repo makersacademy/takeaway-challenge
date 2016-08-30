@@ -115,6 +115,12 @@ RuntimeError: Checkout amount is not correct
 The following test cases pass the unit test:
 
 ```
+Dish
+  #initialize
+    stores the dish ID properly
+    stores the name of the dish properly
+    stores the price of the dish properly
+
 Menu
   #initialize
     passes the filename/path to the #foreach method
