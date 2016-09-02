@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 require 'dotenv'
 
-class Sms
+class Dispatch
 Dotenv.load
 
   def send_sms
