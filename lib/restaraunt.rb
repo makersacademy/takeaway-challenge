@@ -10,14 +10,12 @@ class Restaraunt
   end
 
   def check_menu
-    p Menu::MENU
+    Menu::MENU
   end
 
   def select_dishes(array_of_dishes_and_quantities, expected_price)
     order = array_of_dishes_and_quantities
-      puts order
     Order.new(order, expected_price).checkout
   end
-
 
 end

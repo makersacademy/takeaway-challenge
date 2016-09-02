@@ -25,5 +25,6 @@ class PriceCalculator
   def price_expectations_checker
     diff = @expected_price - calculate
     p "Your expected price was different from our calculate price by £#{diff}"
+    0
   end
 end
