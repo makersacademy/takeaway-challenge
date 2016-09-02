@@ -14,13 +14,8 @@ class Restaraunt
   end
 
   def select_dishes(array_of_dishes_and_quantities, expected_price)
-    order = []
-    items = array_of_dishes_and_quantities
-    items.each do |pair|
-      pair.each do |dish|
-        order << dish
-        end
-      end
+    order = array_of_dishes_and_quantities
+      puts order
     Order.new(order, expected_price).checkout
   end
 

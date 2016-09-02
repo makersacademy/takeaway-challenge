@@ -12,9 +12,7 @@ class PriceCalculator
   def calculate
     total = 0
     @order.each do |hash|
-      total +=
-      (Menu::MENU[hash[:food]].to_f)
-      *(hash[:quantity].to_f)
+      total += (Menu::MENU[hash[0]].to_f)*(hash[1].to_f)
       #lookup the price for each ordered food in the menu and multiply it by quantity ordered
     end
     total
