@@ -13,7 +13,13 @@ class Menu
   end
 
   def full_list
-    item.each { |x, y| puts "Dish: #{x} Price: #{y}"}
+    item.each { |x, y| puts "Dish: #{x}\nPrice: #{y}"}
   end
+
+  def on_list?(input)
+    raise "Choice not availble" if !@item.include?(input)
+    true
+  end
+
 
 end
