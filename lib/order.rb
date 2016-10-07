@@ -9,8 +9,8 @@ class Order
     @menu = Menu.new
   end
 
-  def select_item(food)
-    @put_in_basket << food
+  def select_item(item)
+    @put_in_basket << item
   end
 
 end

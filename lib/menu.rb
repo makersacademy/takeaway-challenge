@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :item
+  attr_reader :item, :full_list
 
   def initialize
     @item = {

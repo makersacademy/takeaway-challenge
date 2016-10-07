@@ -2,14 +2,20 @@ require 'order'
 
 describe Order do
 
-  let(:order) {described_class.new}
-  let(:food){double(:food)}
+  subject(:order) {described_class.new}
+  let(:item){double(:price)}
+  let(:price){double(:price)}
 
 
   describe "#select_item" do
-    it 'allows for each item to be selected' do
-      order.select_item(food)
-      expect(order.put_in_basket).to include food
+    it 'allows for each food item to be selected' do
+      order.select_item(item)
+      expect(order.put_in_basket).to include item
+    end
+
+    it 'displays price in the basket' do
+      order.select_item(price)
+      expect(order.put_in_basket).to include price
     end
   end
 
