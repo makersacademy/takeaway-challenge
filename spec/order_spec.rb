@@ -9,7 +9,23 @@ describe Order do
   describe "#add" do
     it "should add dishes to order" do
       subject.add(dish)
-      expect(subject.summary).to eq [dish]
+      expect(subject.selections).to eq [dish]
     end
   end
+
+  # describe "#summary" do
+  #   it "should summarise the order so far" do
+  #     subject.add(dish)
+  #     expect(subject.summary).to include "Pasta"
+  #   end
+  # end
+
+  describe "total_price" do
+    it "should sum the order price" do
+      subject.add(dish)
+      subject.add(dish)
+      expect(subject.total_price).to eq 7.00
+    end
+  end
+
 end
