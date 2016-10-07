@@ -3,13 +3,15 @@ $dishes = [
 {name: "Pizza", price: 2.40}
 ]
 
+require_relative 'order'
+
 class Menu
   attr_reader :selections
 
   def initialize(menu, order_class = Order)
     @menu = menu
     @selections = []
-    @order_class = order_class
+    @order = order_class.new
   end
 
   # def user_interface
@@ -26,10 +28,13 @@ class Menu
   def select_dish(choice)
     $dishes.each do |dish|
       @selections << dish if dish[:name].downcase == choice.downcase
+      @order.add(dish) if dish[:name].downcase == choice.downcase
     end
-    @selections
   end
 
+  def confirm_order
+
+  end
 
 
 
