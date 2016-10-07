@@ -1,6 +1,14 @@
-class Takeaway
+#require_relative 'menu'
 
-def menu
-  p "Tandoori £5.00"
+class Takeaway
+  attr_reader :menu
+
+def initialize(menu = nil)
+  @menu = menu
 end
+
+def create_menu(food)
+  @menu = food
+end
+
 end
