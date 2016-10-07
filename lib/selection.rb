@@ -17,4 +17,22 @@ class Selection
     end
   end
 
+  def review
+    price = menu.values
+    idx = 0
+    quantity.each do |q|
+      puts "#{dishes[idx]} @ £#{price[idx]} | #{q} unit | £#{q * price[idx]}"
+      idx += 1
+    end
+      puts "Total sum = £#{calculate_sum(quantity)}"
+  end
+
+  private
+
+  def calculate_sum (quantity_record)
+    sum = (menu.values).zip(quantity_record)
+    sum = sum.map{ |price, quantity| price * quantity}
+    sum = sum.reduce(:+)
+  end
+
 end

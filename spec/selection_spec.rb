@@ -30,4 +30,31 @@ describe Selection do
     end
   end
 
+  describe "#quantity" do
+    it "stores required quantity for all items" do
+      subject.select
+      # Enter 1, 2, 3 into command line when prompted for quantity
+      expect(subject.quantity).to eq [1,2,3]
+    end
+  end
+
+  describe "#review" do
+    it { is_expected.to respond_to :review }
+
+    xit "gets total sum from the private sum method" do
+      allow(subject).to receive(:quantity).and_return [1,1,0]
+      expect(subject.review).to include 18
+    end
+
+    it "prints order summary for review", :focus do
+      order_summary = "Thai_green_curry @ £9 | 1 unit | £9\nAubergine_teriyaki @ £9 | 0 unit | £0\nMushroom_risotto @ £8 | 0 unit | £0\nTotal sum = £9\n" 
+      allow(subject).to receive(:quantity).and_return [1,0,0]
+      expect{subject.review}.to output(order_summary).to_stdout
+    end
+
+    it "raises error if customer thinks the sum is incorrect" do
+
+    end
+  end
+
 end
