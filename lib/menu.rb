@@ -2,13 +2,14 @@ require_relative 'takeaway'
 
 class Menu
 
-attr_reader :menu
+attr_reader :dishes
 
   def initialize
     #think about importing dishes(csv?) later but get everthing else working for now
-    @dishes = {'Hamburger':    '£4.50',
-               'Cheeseburger': '£5.00'
-    }
+    @dishes = {'Hamburger': '£4.50',
+               'Cheeseburger': '£5.00',
+               'Hot dog': '£3.50',
+               'Fries': '£2.00',}
   end
 
   def show
