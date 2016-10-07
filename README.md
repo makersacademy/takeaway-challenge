@@ -1,3 +1,18 @@
+My approach to solving the challenge:
+#Pro-tip: work on this while letting your sub-conscious work on those trickier coding problems :-)
+
+
+
+
+GEMS REQUIRED FOR THIS PROGRAM:
+twilio-ruby
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Takeaway Challenge
 ==================
 ```
