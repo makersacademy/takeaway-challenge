@@ -9,5 +9,5 @@ auth_token = '901c21df552c5cfcf478c47b4aa310e3'
 @client.account.messages.create(
   from: '+441493202211',
   to: '+447759548193',
-  body: 'Robot invasion! Reply back with any sightings.'
+  body: 'Thank you! Your order was placed and will be delivered before #{to do}.' #to replace with correct time
 )
