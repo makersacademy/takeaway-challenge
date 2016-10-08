@@ -5,8 +5,15 @@ class DishSelection
 
   def initialize
     @food_menu = {
-      1 => [:dish_1, 5],
-      2 => [:dish_2, 4],
+      1 => ["ISKENDER KEBAB", 9.50],
+      2 => ["ALI NAZIK", 9.50],
+      3 => ["HALEP KEBAB", 9.50],
+      4 => ["YOGURTLU LAMB SHISH", 9.50],
+      5 => ["YOGURTLU ADANA", 9.50],
+      6 => ["YOGURTLU CHICKEN SHISH", 9.50],
+      7 => ["LAMB SARMA BEYTI", 10.00],
+      8 => ["CHICKEN SARMA BEYTI", 10.00],
+      9 => ["AUBERGINE KEBAB", 9.00],
       }
 
       @order = []
