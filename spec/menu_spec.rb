@@ -2,7 +2,11 @@ require 'menu'
 
 describe Menu do
 
-  subject(:menu) { described_class.new('/Users/malinnaleach/Programs/takeaway-challenge/lib/test.csv')}
+  before do
+    @filepath = '/Users/malinnaleach/Programs/takeaway-challenge/lib/test.csv'
+  end
+
+  subject(:menu) { described_class.new(@filepath)}
 
   it 'should load dishes from a CSV' do
     expect(menu.dishes[0].name).to eq "Margherita"

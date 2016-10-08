@@ -12,7 +12,7 @@ class Menu
 
   def load_dishes
     CSV.foreach(@filepath) do |row|
-      @dishes << Dish.new(row[0],row[1])
+      @dishes << Dish.new(row[0],row[1].to_f)
     end
   end
 
