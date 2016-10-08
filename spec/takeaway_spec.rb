@@ -24,8 +24,17 @@ describe Takeaway do
 
     it 'should try to import dishes from a file if it exists' do
       allow(File).to receive(:exist?).with(filename).and_return true
-      expect(subject).to receive(:import_dishes_from).with(filename)
+      expect(CSV).to receive(:foreach).with(filename)
       subject.load_dishes(filename)
+    end
+  end
+
+  describe '#add_dish' do
+    let(:dish_data) { ['Soft shell crab', '6.0'] }
+
+    it 'should add dish item to the dishes menu' do
+      subject.add_dish(dish_data)
+      expect(subject.dishes.last).to eq({name: dish_data[0], price: dish_data[1]})
     end
   end
 end
