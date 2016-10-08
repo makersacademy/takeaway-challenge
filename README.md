@@ -2,10 +2,22 @@ My approach to solving the challenge:
 #Pro-tip: work on this while letting your sub-conscious work on those trickier coding problems :-)
 
 
-
-
 GEMS REQUIRED FOR THIS PROGRAM:
 twilio-ruby
+This gem allows the application to send the final order total to my mobile phone.
+
+
+WALKTHROUGH:
+require './lib/takeaway'
+thai = TakeAway.new
+thai.read_menu                
+thai.order "spring roll", 3           # 3 x spring roll(s) added to your order.
+thai.order "peking duck", 4           # 4 x peking duck(s) added to your order.
+thai.order "xxx"                      # That item is not on the menu.
+thai.summary                          # "spring roll" x 3 = £2.97, "peking duck" x 4 = £31.96
+thai.total                            # Total: £34.93
+thai.checkout(10)                     # Your order total does not match the calculated total
+thai.checkout(34.93)                  # Sends text message to my phone.
 
 
 

@@ -2,7 +2,7 @@ require_relative 'messager'
 
 class TakeAway
   
-  attr_reader :read_menu, :menu, :item, :order, :orders, :tot, :messager       #, :menu  
+  attr_reader :read_menu, :menu, :item, :order, :orders, :messager      
   
   def initialize(messager = Messager.new)
     @messager = messager
@@ -28,7 +28,7 @@ class TakeAway
       output_arr = []
       counts.each{|key,val| 
       	key.each{|k,v|
-      	output_arr << "\"#{k}\" x #{val} = £#{key[k] * val}"
+      	output_arr << "\"#{k}\" x #{val} = £#{(key[k] * val).round(2)}"
       	}
       }	
       print output_arr.join(", ")
@@ -38,12 +38,10 @@ class TakeAway
     @tot = 0
     orders.each{ |item| item.each_value{|v| @tot += v} }
     @tot = @tot.round(2)
-    print "Total: £#{tot}"
+    print "Total: £#{@tot}"
   end
   
   def checkout(value)
-    #puts "@tot is #{@tot}"            #remove this!!!
-    #puts "'value' is #{value}"          #remove this!!!
     print "Your order total does not match the calculated total" if @tot != value
     complete_order(value) if  @tot == value
   end
