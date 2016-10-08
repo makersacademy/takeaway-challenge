@@ -2,7 +2,7 @@ require 'order_line'
 
 describe OrderLine do
 
-  let(:dish) {double("Dish") }
+  let(:dish) { double("Dish") }
   @quantity = 2
   subject(:line) { described_class.new(:dish, @quantity) }
 
