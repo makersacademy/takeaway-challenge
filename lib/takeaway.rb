@@ -1,4 +1,6 @@
 require_relative 'menu'
+require_relative 'orders'
+
 
 class Takeaway
 
@@ -7,12 +9,11 @@ class Takeaway
   def initialize
     @menu_choice = {}
     @quantity_total = []
-    # customer_choice
   end
 
-  def show_menu
-    Menu::MENU.each { |item, price| "#{item}, #{price}"}
-  end
+  # def show_menu
+  #   Menu::MENU.each { |item, price| "#{item}, #{price}"}
+  # end
 
   def select_item
     while @item != "exit" do
