@@ -9,7 +9,7 @@ describe Takeaway do
   end
 
   it "displays a menu" do
-    expect(takeaway.menu).to receive(:display)
+    expect(takeaway.menu).to receive(:show)
     takeaway.display_menu
   end
 

@@ -48,7 +48,7 @@ describe Order do
     order.add(dish, 2)
     order.add(dish3)
     order.add(dish2)
-    expect(order.receipt).to eq "You ordered:\n2 x Chicken Teriyaki £10\n1 x Pad Thai £5\n1 x Ramen £7\nfor a total of £22"
+    expect(order.receipt).to eq "\nYou ordered:\n2 x Chicken Teriyaki     £10\n1 x Pad Thai             £5\n1 x Ramen                £7\nfor a total of           £22\n"
   end
 
   it "can be placed by passing in an amount of money" do

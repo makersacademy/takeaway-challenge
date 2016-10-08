@@ -2,6 +2,8 @@ class Order
 
   attr_reader :total_price, :items
 
+  MAX_NAME_LENGTH = 20
+
   def initialize
     @total_price = 0
     @items = []
@@ -23,9 +25,9 @@ class Order
   end
 
   def receipt
-    output = "You ordered:\n"
-    @items.uniq.each {|item| output += "#{@items.count(item)} x #{item.name} £#{item.price*@items.count(item)}\n"}
-    output += "for a total of £#{@total_price}"
+    output = "\nYou ordered:\n"
+    @items.uniq.each {|item| output += "#{@items.count(item)} x #{item.name.ljust(MAX_NAME_LENGTH,' ')} £#{item.price*@items.count(item)}\n"}
+    output += "for a total of".ljust(MAX_NAME_LENGTH + 5,' ') + "£#{@total_price}\n"
   end
 
   def place(payment)

@@ -1,4 +1,4 @@
-require 'dish'
+require_relative 'dish'
 
 class Menu
 
@@ -14,8 +14,8 @@ class Menu
   end
 
   def show
-    output = ''
+    output = "\nMENU\n"
     @dishes.each {|dish| output += "#{dish.name.ljust(MAX_NAME_LENGTH,' ')} £#{dish.price}\n"}
-    output
+    output += "\n"
   end
 end

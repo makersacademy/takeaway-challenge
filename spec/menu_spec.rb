@@ -9,8 +9,9 @@ describe Menu do
             {name: "Chocolate ice cream", price: 2}]
 
   it "can be displayed in a nice format" do
-    output = ''
+    output = "\nMENU\n"
     DISHES.each {|dish| output += "#{dish[:name].ljust(Menu::MAX_NAME_LENGTH,' ')} £#{dish[:price]}\n"}
+    output += "\n"
     expect(menu.show).to eq output
   end
 

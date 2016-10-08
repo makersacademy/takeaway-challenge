@@ -1,5 +1,5 @@
-require 'menu'
-require 'order'
+require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
@@ -14,7 +14,7 @@ class Takeaway
   end
 
   def display_menu
-    @menu.display
+    @menu.show
   end
 
   def create_order
