@@ -1,4 +1,5 @@
 require 'takeaway' 
+require 'messager'
 
 describe TakeAway do
   subject(:takeaway) { described_class.new }
@@ -40,6 +41,15 @@ describe TakeAway do
     
     it "checks that the balance submitted is correct" do
       #expect(takeaway.checkout(34.93)).to eq true       #Don't understand why this doesn't work!!!!!!!!!
+    end
+    
+    before do
+      allow(takeaway).to receive(:send_text)
+    end
+  
+    it 'sends a payment confirmation text message' do
+      expect(takeaway).to receive(:send_text).with("Thank you for your order. Total price: £34.93")
+      takeaway.complete_order(34.93)
     end
   end
 

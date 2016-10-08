@@ -1,8 +1,11 @@
+require_relative 'messager'
+
 class TakeAway
   
-  attr_reader :read_menu, :menu, :item, :order, :orders, :tot       #, :menu  
+  attr_reader :read_menu, :menu, :item, :order, :orders, :tot, :messager       #, :menu  
   
-  def initialize
+  def initialize(messager = Messager.new)
+    @messager = messager
     @orders = []
     @menu = {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}
   end
@@ -16,7 +19,7 @@ class TakeAway
     print :"That item is not on the menu.\n" unless on_menu?(item) 
     (qty.times {add_item(item)}) if on_menu?(item)
     print "#{qty} x #{item}(s) added to your order.\n" if on_menu?(item)
-    print "Use '.summary' to show your order. Use '.total' to show the total cost.\n"
+    print "Use '.summary' to show your order. Use '.total' to show the total cost. Use '.checkout(val)' to submit your order.\n"
   end
   
   def summary
@@ -39,18 +42,19 @@ class TakeAway
   end
   
   def checkout(value)
-    puts "@tot is #{@tot}"            #remove this!!!
-    puts "'value' is #{value}"          #remove this!!!
-    @tot == value
+    #puts "@tot is #{@tot}"            #remove this!!!
+    #puts "'value' is #{value}"          #remove this!!!
+    print "Your order total does not match the calculated total" if @tot != value
+    complete_order(value) if  @tot == value
   end
   
-  # def complete_order
-  #   send_text("Thank you for your order: £#{total_price}")
-  # end
+  def complete_order(total_price)
+    send_text("Thank you for your order. Total price: £#{total_price}")
+  end
 
-  # def send_text(message)
-  #   # this method calls the Twilio API
-  # end
+  def send_text(message)
+    @messager.send_message(message)
+  end
   
   
   private
@@ -67,7 +71,7 @@ class TakeAway
 end
 
 #=begin
-#require './lib/takeaway'
+# require './lib/takeaway'
 # thai = TakeAway.new
 # puts thai.read_menu                
 # thai.order "spring roll", 3
@@ -75,10 +79,12 @@ end
 #           #thai.order "spring roll"
 #           #thai.order "fu-king fried rice",3
 # puts thai.order "xxx"
+# puts thai
+# print thai.inspect
 # puts thai.summary
 # puts thai.total
-# puts thai.checkout(34.93)
 # puts thai.tot
-# puts thai
-#print thai.inspect
+# puts thai.checkout(34.93)
+
+
 #=end
