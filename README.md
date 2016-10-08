@@ -99,3 +99,9 @@ October 08, 2016
 - Installed ruby-2.3.1
 - Installed and initialized the makersinit gem
 - Installed and runned `bundle` to ensure all gems are present for this project
+
+
+## FIRST USER STORY
+- The user, a customer wants to check a list of dishes with prices.
+- A takeaway class is required to offer the customer with dish options
+- takeaway_spec file created to test for the takeaway class
