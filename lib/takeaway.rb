@@ -1,6 +1,6 @@
-require 'restaurant'
-require 'menu'
-require 'user'
+# require 'restaurant'
+require_relative 'menu'
+require_relative 'user'
 
 class Takeaway
 
@@ -16,7 +16,7 @@ attr_reader :menu, :order
   end
 
   def place_order
-    
+
     #if number provided == to counts_items_in_order
     # sends_order_to_restaurant
     # else, fail "I'm sorry, but your number of items did not

@@ -1,6 +1,6 @@
-require 'restaurant'
-require 'menu'
-require 'takeaway'
+require_relative 'restaurant'
+require_relative 'menu'
+require_relative 'takeaway'
 
 class User
 
