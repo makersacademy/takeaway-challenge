@@ -1,38 +1,40 @@
-require "order"
+require 'order'
 
 describe Order do
-  MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 }
+  let(:menu) { double :menu, :list => { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 } }
+  subject (:order) { described_class.new(menu) }
 
-  let(:menu) { double :menu, :list => MENU }
-  let(:selection) { double :select => "selection" }
-  subject(:order) { described_class.new(menu) }
 
-  it "preloads a chosen menu when instantiated" do
-    order = Order.new(menu)
-    expect(subject.menu).to be menu
-  end
+  VEGETARIAN_MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 }
 
-  describe "#view_menu" do
-    it "shows the menu" do
-      formatted_menu = "1. Thai_green_curry -- £9\n2. Aubergine_teriyaki -- £9\n3. Mushroom_risotto -- £8\n"
-      allow(menu).to receive(:print_menu).and_return formatted_menu
-      expect(subject.view_menu).to eq formatted_menu
+  describe "initialize" do
+    it "selection is empty by default" do
+      expect(subject.basket).to be_empty
+    end
+
+    it "has preloaded menu - dish and price" do
+      expect(subject.menu).to eq VEGETARIAN_MENU
     end
   end
 
-  describe "#select_items" do
-    it "starts a selection process by instantiating a selection" do
-      subject.select_items(selection)
-      expect(subject.selection).to eq selection
+
+  describe "#add" do
+    it "allows customer to select item and quantity" do
+      expect(subject).to respond_to(:add).with(2).argument
+    end
+
+    it "stores selection" do
+      sample_selection = { Thai_green_curry: 4 }
+      subject.add("Thai_green_curry", 4)
+      expect(subject.basket).to eq sample_selection
     end
   end
 
-  describe "#review" do
-    it "creates a review process by starting calling review function" do
-      subject.select_items(selection)
-      allow(selection).to receive(:review).and_return 3
-      subject.review
-      expect(subject.review).to eq 3
+  describe "#print_order" do
+    it "prints order summary for review" do
+      order_summary = "Thai_green_curry x 1 = £9\nTotal sum = £9\n"
+      allow(subject).to receive(:basket).and_return({Thai_green_curry: 1})
+      expect{subject.print_order}.to output(order_summary).to_stdout
     end
   end
 

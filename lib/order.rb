@@ -1,24 +1,35 @@
 require_relative 'menu'
-require_relative 'selection'
 
 class Order
-  attr_reader :menu, :selection
+  attr_reader :menu, :dishes, :quantity, :sum, :basket
 
-  def initialize (menu = Menu.new)
-    @menu = menu
+  def initialize(order_menu)
+    @menu = order_menu.list
+    @basket = {}
+    @sum = 0
   end
 
-  def view_menu
-    menu.print_menu
+  def add(dish, quantity)
+    if basket.has_key?(dish.to_sym)
+      basket[dish.to_sym] = basket[dish.to_sym] + 1
+    else
+      basket[dish.to_sym] = quantity
+    end
   end
 
-  def select_items(selection = Selection.new(menu))
-    @selection = selection
-    selection.select
+  def print_order
+    basket.each do | dish, quantity |
+      puts "#{dish} x #{quantity} = £#{quantity * menu[dish]}"
+    end
+      puts "Total sum = £#{calculate_sum}"
   end
 
-  def review
-    selection.review 
-  end
+  private
 
+  def calculate_sum
+    basket.each do | dish, quantity |
+      @sum += menu[dish] * quantity
+    end
+    sum
+  end
 end

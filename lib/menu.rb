@@ -13,7 +13,6 @@ class Menu
       puts "#{idx}. #{dish.capitalize} -- £#{price}"
       idx += 1
     end
-
   end
 
 end
