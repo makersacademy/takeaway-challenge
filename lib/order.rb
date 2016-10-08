@@ -1,30 +1,28 @@
 require_relative 'menu'
 
 class Order
-  attr_reader :menu, :dishes, :quantity, :sum, :basket
+  attr_reader :sum, :basket, :menu
 
   def initialize(order_menu)
     @menu = order_menu.list
-    @basket = {}
+    @basket = Hash.new(0)
     @sum = 0
   end
 
   def add(dish, quantity)
-    if basket.has_key?(dish.to_sym)
-      basket[dish.to_sym] = basket[dish.to_sym] + 1
-    else
-      basket[dish.to_sym] = quantity
-    end
+      basket[dish.to_sym] += quantity
   end
 
   def print_order
     basket.each do | dish, quantity |
       puts "#{dish} x #{quantity} = £#{quantity * menu[dish]}"
     end
-      puts "Total sum = £#{calculate_sum}"
+    puts "Total sum = £#{calculate_sum}"
   end
 
   private
+
+  attr_reader :dishes, :quantity
 
   def calculate_sum
     basket.each do | dish, quantity |

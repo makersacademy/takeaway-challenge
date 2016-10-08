@@ -1,20 +1,26 @@
 require "takeaway"
 
 describe TakeAway do
+
   MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 }
 
   let(:menu) { double :menu, :list => MENU }
   let(:order) { double :order, :add => "4 Thai_green_curry added to basket" }
-  subject(:takeaway) { described_class.new(menu, order) }
+  let (:text) { double :text }
+  subject(:takeaway) { described_class.new(menu, order, text) }
 
   it "preloads a chosen menu when instantiated" do
-    takeaway = TakeAway.new(menu)
     expect(subject.menu).to be menu
   end
 
   it "has the order feature ready" do
     expect(subject.order).to eq order
   end
+
+  it "initialize an empty text" do
+    expect(subject.text).to eq text
+  end
+
 
   describe "#view_menu" do
     it "shows the menu" do
@@ -39,20 +45,18 @@ describe TakeAway do
   end
 
   describe "#checkout" do
-    it "raises error if sum entered by customer is incorrect" do
+    before do
+      allow(text).to receive(:send_message).with("Thank you! Your order was placed and will be delivered by #{(Time.new + 3600).strftime("%H:%M")}")
       allow(order).to receive(:sum).and_return 18
-      expect{subject.checkout(10)}.to raise_error "Incorrect sum entered"
-    end
-  end
-
-  describe "#confirmation" do
-    it "send sms confirmation to the customer" do
-
     end
 
-    it "has expected delivery time in the text" do
+    it "tells customer order has been completed" do
+      expect(subject.checkout(18)).to eq "Order has been completed"
     end
 
+    it "raises error if sum entered by customer is incorrect" do
+      expect{subject.checkout(10)}.to raise_error "Incorrect payment received"
+    end
   end
 
 end
