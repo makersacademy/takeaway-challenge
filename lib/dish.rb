@@ -8,4 +8,8 @@ class Dish
 		@number = number
 	end
 
+	def add_to(menu)
+		menu.dishes[number] = self
+	end
+
 end

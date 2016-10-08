@@ -8,10 +8,6 @@ class Menu
 		@dishes = {}
 	end
 
-	def add(dish)
-		@dishes[dish.number] = dish
-	end
-
 	def list
 		@dishes.each do |number, dish|
 				puts "-----\n #{number}.#{dish.name}\n £#{dish.price}"
