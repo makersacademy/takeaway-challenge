@@ -29,9 +29,8 @@ class Order
 		client.account.messages.create({
 			:from => +441143032672,
 			:to => +447891139631,
-			:body => "your food will be here at #{Time.new + 3600}",
+			:body => "Your food will arrive at #{Time.new.hour+1}:#{Time.new.min}",
 		})
 		puts "message sent successfully"
-		puts "text sent"
 	end
 end
