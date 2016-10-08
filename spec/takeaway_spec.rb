@@ -5,8 +5,18 @@ describe Takeaway do
 
     context '#menu' do
 
-      it 'expects takeaway to have a menu' do
-        expect(takeaway).to respond_to :menu
+      it {is_expected.to respond_to :menu}
+
+      it {is_expected.to respond_to :list_menu}
+
+      # it 'expects menu to be an array' do
+      #   both versions failing... wtf
+      #   expect(:menu).to be_an_array
+      #   expect(:menu).to be_kind_of(Array)
+      # end
+
+      it 'is expected to list the contents of the menu' do
+        expect(takeaway.list_menu).to eq(takeaway.menu)
       end
 
     end
@@ -14,3 +24,7 @@ describe Takeaway do
 end
 
 # it {is_expected.to respond_to :land}
+
+# respond_to(:land).with(1).argument
+
+# { actual }.to output("some output").to_stdout
