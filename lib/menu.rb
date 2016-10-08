@@ -4,8 +4,10 @@ $dishes = [
 ]
 
 require_relative 'order'
+require_relative 'list_module'
 
 class Menu
+  include List
   attr_reader :selections
 
   def initialize(menu, order_class = Order)
@@ -20,9 +22,7 @@ class Menu
   # end
 
   def view
-    @menu.each_with_index do |dish, i|
-      puts "#{i+1}: #{dish[:name]} costs #{dish[:price]}"
-    end
+    list_dishes(@menu)
   end
 
   def select_dish(choice)

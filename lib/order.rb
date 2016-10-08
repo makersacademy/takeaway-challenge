@@ -1,4 +1,7 @@
+require_relative 'list_module'
+
 class Order
+  include List
   attr_reader
 
   def initialize
@@ -16,10 +19,8 @@ class Order
 
   def summary
     puts "You have ordered the following #{@selections.count} items:\n\n"
-    @selections.each_with_index do |dish, i|
-      puts "#{i+1}: #{dish[:name]}, cost #{dish[:price]}"
-    end
-    puts "\n\nTotal price is #{@price}"
+    list_dishes(@selections)
+    "\n\nTotal price is #{price}"
   end
 
   def total_price
