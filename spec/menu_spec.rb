@@ -1,27 +1,13 @@
-class Menu
-  attr_reader :list
-
-  def initialize
-    @list = [Dish.new]
-  end
-
-end
-
-class Dish
-  attr_reader :price
-
-  def initialize
-    @price = 5
-  end
-end
+require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
 
-  it 'has a list of items with prices' do
-    expect(menu.list.length).to eq 1
-    expect(menu.list.first).to be_a Dish
-    expect(menu.list.first.price).to eq 5
+  it 'has a list of dishes with prices' do
+    expect(menu.items.length).to eq 2
+    expect(menu.items.first).to be_a Dish
+    expect(menu.items.first.price).to eq 5
+    expect(menu.items.first.name).to eq "pie"
   end
 
 end
