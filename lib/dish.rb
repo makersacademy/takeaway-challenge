@@ -1,10 +1,11 @@
 class Dish
 
-	attr_reader :name, :price
+	attr_reader :name, :price, :number
 
-	def initialize(name, price)
+	def initialize(name, number, price)
 		@name = name
 		@price = price
+		@number = number
 	end
 
 end

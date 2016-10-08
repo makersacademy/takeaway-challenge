@@ -5,17 +5,16 @@ class Menu
 	attr_reader :dishes
 
 	def initialize
-		@dishes = []
+		@dishes = {}
 	end
 
-
-	def add_dish(dish)
-		@dishes << dish
+	def add(dish)
+		@dishes[dish.number] = dish
 	end
 
-	def list_dishes
-		@dishes.each do |d|
-				puts "-----\n #{d.name}\n £#{d.price}"
+	def list
+		@dishes.each do |number, dish|
+				puts "-----\n #{number}.#{dish.name}\n £#{dish.price}"
 		end
 	end
 
