@@ -29,6 +29,7 @@ class Takeaway
   ###################################################
 
   def interface
+
       puts "*** Welcome to the takeaway ***"
       puts "Select from the following options:"
       puts "To view the menu, press 1"

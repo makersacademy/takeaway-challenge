@@ -2,5 +2,6 @@ require 'order'
 
 describe Order do
 
-  describe
+  describe '#initialize' do
+    it 'receives a menu on'
 end

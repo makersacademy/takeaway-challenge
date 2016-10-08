@@ -5,84 +5,89 @@ class Order
   require 'ap'
   require 'twilio-ruby'
 
-  def initialize(menu)
+  def initialize(menu, interface, validation_class = Validation)
     @menu = menu
+    @validation_class = validation_class
+    @interface = interface
     @orders_array = []
     @current_selection = []
     @running_total = 0
   end
 
-  def select_dish
-    @menu.print_menu
-    puts "Enter the number of the dish you'd like to order"
-    puts "When you're finished, type 'done'"
-    puts "If you've changed your mind, type 'exit'"
-    dish_selection = gets.chomp
-    validate_selection(dish_selection)
-  end
-
   def validate_selection(dish_selection)
-    case dish_selection
-    when "done" then order_summary(@orders_array)
-    when "exit" then puts "Thank you, goodbye"
+    if dish_selection == "exit"
+      puts "Thank you, goodbye"
       exit
+    elsif dish_selection.to_i > 0
+      if dish_selection.to_i <= @menu.menu.length
+        @current_selection << dish_selection.to_i
+        @interface.select_quantity
+      else
+        invalid_input
+      end
     else
-      dish_selection = dish_selection.to_i
-      select_quantity(dish_selection)
-      @menu[dish_selection]
+      invalid_input
     end
   end
 
-  def select_quantity(dish_selection)
-    puts "How many would you like?"
-    dish_quantity = gets.chomp.to_i
-    calculate_subtotal(dish_selection, dish_quantity)
+  def invalid_input
+    puts "Not a valid input"
+    @interface.select_dish
   end
 
-  def calculate_subtotal(dish_selection, dish_quantity)
-    selection_cost = dish_quantity * @menu.prices[dish_selection].to_f
+  def validate_quantity(dish_quantity)
+    if dish_quantity > 10
+      puts "Please enter a value between 1 and 10"
+      @interface.select_quantity
+    else
+      @current_selection << dish_quantity
+      calculate_subtotal
+    end
+  end
+
+  def evaluate_input(selection)
+    case selection
+    when "1"
+      @interface.select_dish
+    when "2"
+      order_summary
+    else
+      "Not a valid input"
+      @interface.add_or_review
+    end
+  end
+
+  def calculate_subtotal
+    selection_cost = @current_selection[1] * @menu.prices[@current_selection[0]].to_f
     calculate_running_total(selection_cost)
-    build_current_selection_array(dish_quantity, dish_selection, selection_cost)
+    @current_selection << selection_cost
+    calculate_running_total(selection_cost)
+    build_orders_array
   end
 
   def calculate_running_total(selection_cost)
     @running_total += selection_cost
   end
 
-  def build_current_selection_array(dish_quantity, dish_selection, selection_cost)
-    @current_selection << dish_quantity
-    @current_selection << dish_selection
-    @current_selection << selection_cost
-    build_orders_array
-  end
-
   def build_orders_array
     @orders_array << @current_selection
-    return_order(@current_selection)
+    return_order
   end
 
-
-  def return_order(current_selection)
-    puts "So thats #{current_selecton[0]} x #{@menu.menu[current_selecton[1]]} costing £#{current_selecton[2].round(3)}"
+  def return_order
+    puts "So thats #{@current_selection[1]} x #{@menu.menu[@current_selection[0]]} costing £#{@current_selection[2].round(3)}"
     @current_selection = []
-    select_dish
+    @interface.add_or_review
   end
 
-  def order_summary(orders_array)
+  def order_summary
     puts "ORDER SUMMARY:"
-    orders_array.each_with_index do |x,index|
+    @orders_array.each_with_index do |x,index|
       puts "#{index + 1}. #{x[0]} x #{@menu.menu[x[1]]}: £#{x[2]}"
     end
     puts "-----------"
     puts "TOTAL: £#{@running_total}"
-    confirm_order
-  end
-
-  def confirm_order
-    puts "To confirm, press 'y'"
-    puts "To redo the order, press 'n'"
-    confirmation = gets.chomp
-    confirmed?(confirmation)
+    @interface.confirm_order
   end
 
   def confirmed?(confirmation)
@@ -90,12 +95,17 @@ class Order
       send_confirmation
     elsif confirmation == "n"
       @orders_array = []
-      @running_totl = 0
-      select_dish #spawn new instance of order
+      @running_total = 0
+      @interface.select_dish #spawn new instance of order
     else
       puts "Not a valid entry, try again"
-      confirm_order
+      @interface.confirm_order
     end
+  end
+
+  def send_confirmation
+    puts "We have received your order, it will be with you shortly!"
+    exit
   end
 
 end

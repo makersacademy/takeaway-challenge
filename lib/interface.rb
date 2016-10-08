@@ -24,8 +24,8 @@ class Interface
       when "1"
         @menu.print_menu
       when "2"
-        @order = @order.new(@menu)
-        @order.select_dish
+        @order = @order.new(@menu, self)
+        select_dish
       when "3"
         puts "Thank you, goodbye!"
         exit
@@ -35,7 +35,32 @@ class Interface
     end
   end
 
+  def select_dish
+    @menu.print_menu
+    puts "Enter the number of the dish you'd like to order"
+    puts "If you've changed your mind, type 'exit'"
+    dish_selection = gets.chomp
+    @order.validate_selection(dish_selection)
+  end
 
+  def select_quantity
+    puts "How many would you like?"
+    dish_quantity = gets.chomp.to_i
+    @order.validate_quantity(dish_quantity)
+  end
 
+  def add_or_review
+    puts "To add to the order, press 1"
+    puts "To review and confirm the order, press 2"
+    selection = gets.chomp
+    @order.evaluate_input(selection)
+  end
+
+  def confirm_order
+    puts "To confirm, press 'y'"
+    puts "To redo the order, press 'n'"
+    confirmation = gets.chomp
+    @order.confirmed?(confirmation)
+  end
 
 end
