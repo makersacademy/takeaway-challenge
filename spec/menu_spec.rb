@@ -14,4 +14,11 @@ describe Menu do
     end
   end
 
+  describe "#list_menu" do
+    it "prints out each item with name and price" do
+      expect(STDOUT).to receive(:puts). exactly(menu.menu_list.count).times
+      menu.list_menu
+    end
+  end
+
 end

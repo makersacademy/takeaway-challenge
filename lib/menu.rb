@@ -9,4 +9,9 @@ class Menu
                   {item: 4, name: "BBQ", price: 11},
                   {item: 5, name: "Hawaiian", price: 8}]
   end
+
+  def list_menu
+    @menu_list.each {|key| puts "#{key[:item]}. #{key[:name]} : £#{key[:price]}"}
+  end
+
 end

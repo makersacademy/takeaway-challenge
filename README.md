@@ -112,4 +112,5 @@ October 08, 2016
 
 ## SECOND USER STORY
 - A new Order class is created to allow selection of items from the menu list
-- new spec file for order and Order class 
+- new spec file for order and Order class
+- for each order, the menu will be required for selection of items

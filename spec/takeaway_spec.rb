@@ -8,13 +8,13 @@ describe Takeaway do
   context 'class of instance' do
 
     it " creates an instance of the class" do
-      expect(takeaway.class).to eq(Takeaway)
+      expect(takeaway).to be_instance_of(Takeaway)
     end
   end
 
   describe "#see_menu" do
 
-    it "lists to the user the menu" do
+    it "lists the menu to the user" do
     expect(takeaway.see_menu).to eq(menu.menu_list)
     end
   end
