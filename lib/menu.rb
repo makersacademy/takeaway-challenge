@@ -1,12 +1,7 @@
 class Menu
 
-attr_reader :item, :prices
 
-def initialize(item, price)
-  @item = item
-  @price = price
-end
-
-
+  MENU =  {"Chicken" => 1.00,
+          "Madras" => 2.00}
 
 end

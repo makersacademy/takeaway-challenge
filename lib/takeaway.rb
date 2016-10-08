@@ -1,4 +1,4 @@
-#require_relative 'menu'
+require_relative 'menu'
 
 class Takeaway
   attr_reader :menu
@@ -13,7 +13,7 @@ class Takeaway
   end
 
   def show_menu
-    menu.each { |item, price| "#{item}, #{price}"}
+    Menu::MENU.each { |item, price| "#{item}, #{price}"}
   end
 
   def customer_choice
@@ -33,6 +33,7 @@ class Takeaway
 
   def select_quantity
     puts "How many portions would you like?"
+    @quantity = @quantity
     @quantity = gets.chomp
   end
 
@@ -42,6 +43,7 @@ class Takeaway
 
   def show_order
     p @menu_choice
+    "You have ordered #{@menu_choice.count} different dishes and a total of  #{@menu_choice.values.inject(:+)} dishes."
   end
 
 end
