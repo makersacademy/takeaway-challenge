@@ -8,15 +8,57 @@ class Order
   end
 
   def add(item, quantity =1)
-    quantity.times {@items << item}
+    quantity.times do
+      add_item(item)
+      increment_total_price(item.price)
+    end
   end
 
   def remove(item, quanity =1)
     quanity.times do
       return unless @items.include?(item)
-      @items.delete_at(@items.index(item))
+      remove_item(item)
+      decrement_total_price(item.price)
     end
   end
+
+  def receipt
+    output = "You ordered:\n"
+    @items.uniq.each {|item| output += "#{@items.count(item)} x #{item.name} £#{item.price*@items.count(item)}\n"}
+    output += "for a total of £#{@total_price}"
+  end
+
+  def place(payment)
+    payment < @total_price ? "That's not enough money, please try again" : confirm_order(payment)
+  end
+
+  def text
+    #send text
+  end
+
+  private
+
+  def add_item(item)
+    @items << item
+  end
+
+  def remove_item(item)
+    @items.delete_at(@items.index(item))
+  end
+
+  def increment_total_price(amount)
+    @total_price += amount
+  end
+
+  def decrement_total_price(amount)
+    @total_price -= amount
+  end
+
+  def confirm_order(payment)
+    text
+    "Thank you for the tip!" if payment > @total_price
+  end
+
 
 
 end

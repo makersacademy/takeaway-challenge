@@ -44,11 +44,11 @@ describe Order do
     expect(order.total_price).to eq 10
   end
 
-  it "shows a reciept with the ordered dishes (name + price) and the total price" do
+  it "shows a receipt with the ordered dishes (name + price) and the total price" do
     order.add(dish, 2)
     order.add(dish3)
     order.add(dish2)
-    expect(order.print_reciept).to eq "You ordered 2 x Chicken Teriyaki (£5), 1 x Pad Thai (£5) and 1 x Ramen (£7) for a total of £17"
+    expect(order.receipt).to eq "You ordered:\n2 x Chicken Teriyaki £10\n1 x Pad Thai £5\n1 x Ramen £7\nfor a total of £22"
   end
 
   it "can be placed by passing in an amount of money" do
@@ -57,10 +57,23 @@ describe Order do
 
   it "is only confirmed if the correct amount of money was given when placing the order" do
     order.add(dish,2)
-    expect(order.place(6)).to eq "That's not enough money"
+    expect(order.place(6)).to eq "That's not enough money, please try again"
+  end
+
+  it "accepts even the most ridiculous tips" do
+    order.add(dish,2)
+    expect(order.place(15)).to eq "Thank you for the tip!"
   end
 
   it "sends a text upon confirmation" do
-    expect(order).to respond_to(:text)
+    order.add(dish,2)
+    expect(order).to receive(:text)
+    order.place(10)
+  end
+
+  it "doesn't send a text if payment was not right" do
+    order.add(dish,2)
+    expect(order).not_to receive(:text)
+    order.place(7)
   end
 end

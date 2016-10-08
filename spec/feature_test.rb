@@ -17,13 +17,13 @@ order.add(menu.dishes[1],2)
 order.add(menu.dishes[2],3)
 
 #print the reciept
-order.print_reciept
+puts order.receipt
 
 #removing smth from the order
 order.remove(menu.dishes[2],2)
 
 #print the reciept
-order.print_reciept
+puts order.receipt
 
 #place the order with too little money
 order.place(1)
