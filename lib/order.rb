@@ -41,13 +41,18 @@ class Order
   def order_summary
     puts "ORDER SUMMARY:"
     @orders_array.each_with_index do |x,index|
-      puts "#{index + 1}. #{x[0]} x #{@menu.menu[x[1]]}: £#{x[2]}"
+      puts "#{index + 1}. #{x[1]} x #{@menu.menu[x[0]]}: £#{x[2]}"
     end
     puts "-----------"
     puts "TOTAL: £#{@running_total}"
     @interface.confirm_order
   end
 
+  def reset_order
+    @orders_array = []
+    @running_total = 0
+    @interface.select_dish #spawn new instance of order
+  end
 
   def send_confirmation
     puts "We have received your order, it will be with you shortly!"

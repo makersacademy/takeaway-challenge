@@ -52,15 +52,18 @@ class Interface
   end
 
   def add_or_review
-    puts "To add to the order, press 1"
-    puts "To review and confirm the order, press 2"
+    puts "To continue, please select one of the following options:"
+    puts "1: Add to the order"
+    puts "2: Review and confirm the order"
     selection = gets.chomp
     @validation.evaluate_input(selection)
   end
 
   def confirm_order
-    puts "To confirm, press 'y'"
-    puts "To redo the order, press 'n'"
+    puts "To continue, please select one of the following options:"
+    puts "1: Confirm the order"
+    puts "2: Delete the order and start again"
+    puts "3: Cancel the order"
     confirmation = gets.chomp
     @validation.confirmed?(confirmation)
   end
