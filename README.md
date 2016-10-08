@@ -1,4 +1,4 @@
-Takeaway Challenge https://travis-ci.org/lauraweston/takeaway-challenge.svg?branch=master
+Takeaway Challenge [![Build Status](https://travis-ci.org/lauraweston/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lauraweston/takeaway-challenge)
 ==================
 ```
                             _________
