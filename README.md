@@ -109,3 +109,7 @@ October 08, 2016
 - takeaway_spec file created to test for the takeaway class
 - see_menu method that will list the menu to the user
 - the menu is a new class that is initialized with an array of different dishes stored in hashes
+
+## SECOND USER STORY
+- A new Order class is created to allow selection of items from the menu list
+- new spec file for order and Order class 
