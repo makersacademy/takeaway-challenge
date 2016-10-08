@@ -24,8 +24,8 @@ class TakeAway
     order.print_order
   end
 
-  def checkout(total_sum)
-    raise "Incorrect payment received" if total_sum != order.sum
+  def checkout(payment)
+    raise "Incorrect payment received" if payment != order.sum
     confirmation
   end
 

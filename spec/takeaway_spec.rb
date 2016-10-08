@@ -4,9 +4,9 @@ describe TakeAway do
 
   MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 }
 
-  let(:menu) { double :menu, :list => MENU }
-  let(:order) { double :order, :add => "4 Thai_green_curry added to basket" }
-  let (:text) { double :text }
+  let(:menu)  { double :menu, :list => MENU }
+  let(:order) { double :order }
+  let(:text)  { double :text }
   subject(:takeaway) { described_class.new(menu, order, text) }
 
   it "preloads a chosen menu when instantiated" do
@@ -21,10 +21,9 @@ describe TakeAway do
     expect(subject.text).to eq text
   end
 
-
   describe "#view_menu" do
     it "shows the menu" do
-      formatted_menu = "1. Thai_green_curry -- £9\n2. Aubergine_teriyaki -- £9\n3. Mushroom_risotto -- £8\n"
+      formatted_menu = "Thai_green_curry -- £9\nAubergine_teriyaki -- £9\nMushroom_risotto -- £8\n"
       allow(menu).to receive(:print_menu).and_return formatted_menu
       expect(subject.view_menu).to eq formatted_menu
     end
@@ -32,13 +31,13 @@ describe TakeAway do
 
   describe "#add" do
     it "add selection to basket" do
+      allow(order).to receive(:add)
       expect(subject.add("Thai_green_curry", 4)).to eq "4 x Thai_green_curry added to basket"
     end
   end
 
   describe "#review" do
     it "allows customer to review order" do
-      subject.add("Thai_green_curry", 4)
       allow(order).to receive(:print_order).and_return "selections"
       expect(subject.review).to eq "selections"
     end

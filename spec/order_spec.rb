@@ -4,7 +4,6 @@ describe Order do
   let(:menu) { double :menu, :list => { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 } }
   subject (:order) { described_class.new(menu) }
 
-
   VEGETARIAN_MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 }
 
   describe "initialize" do
