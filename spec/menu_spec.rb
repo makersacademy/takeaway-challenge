@@ -8,7 +8,7 @@ describe Menu do
   end
 
   it 'prints the menu' do
-    expect(STDOUT).to receive(:puts).exactly(11).times
+    expect(STDOUT).to receive(:puts).exactly(menu.menu.count).times
     subject.see_menu
   end
 end

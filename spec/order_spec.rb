@@ -15,7 +15,7 @@ describe Order do
 
   describe '#show_menu' do
     it 'should show the customer the menu' do
-      expect(STDOUT).to receive(:puts).exactly(11).times
+      expect(STDOUT).to receive(:puts).exactly(new_order.menu.menu.count).times
       new_order.show_menu
     end
   end
@@ -27,7 +27,7 @@ describe Order do
 
     it 'should allow the customer to select a menu item' do
       new_order.select_item(1)
-      expect(new_order.selection).to include({name: "Milano", price: 19.99})
+      expect(new_order.selection).to include({num: 1, name: "Milano", price: 19.99})
     end
   end
 
@@ -39,6 +39,41 @@ describe Order do
     it 'should puts the current order to the output' do
       expect(STDOUT).to receive(:puts).exactly(new_order.selection.count).times
       new_order.show_order
+    end
+  end
+
+  describe '#total_price' do
+    before do
+      new_order.select_item(1)
+      new_order.select_item(5)
+      new_order.select_item(3)
+      new_order.select_item(11)
+    end
+
+    it 'records total order' do
+      expect(new_order.order_price).to eq(new_order.order_price)
+    end
+
+    it 'shows customer their total order price' do
+      expect(STDOUT).to receive(:puts).once
+      new_order.total_price
+    end
+  end
+
+  describe '#order_summary' do
+    before do
+      new_order.select_item(1)
+      new_order.select_item(6)
+    end
+
+    it 'should give a summary of the order' do
+      expect(new_order).to receive(:total_price)
+      new_order.order_summary
+    end
+
+    it 'should give the total price of the order also' do
+      expect(new_order).to receive(:show_order)
+      new_order.order_summary
     end
   end
 
