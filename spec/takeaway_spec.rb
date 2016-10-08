@@ -1,29 +1,35 @@
 require "takeaway"
-#require "menu"
+require "menu"
 
 describe Takeaway do
   let(:takeaway) { (Takeaway.new) }
 
 
   it "shows a list of dishes with prices" do
-    takeaway
-    expect(takeaway.show_menu).to eq takeaway.menu
+
+    expect(takeaway.show_menu).to eq Menu::MENU
   end
-
-
+  it 'should be able to add_items to takeaway' do
+    #@takeaway = takeaway
+    #@takeaway.stub(:gets) {"chicken\n"}
+    #@takeaway.stub(:gets) {"3\n"}
+    #@takeaway.stub(:gets) {"exit\n"}
+    #expect(takeaway.select_item).to eq "menu choice"
+    takeaway.add_items("Chicken", 3)
+    expect(takeaway.order_count).to eq 3
+  end
+  #
   it "should be able to select a number of available dishes" do
-    takeaway.customer_choice
-  expect(takeaway.show_order).to eq customer_choice
+    takeaway.add_items("Chicken", 3)
+    expect(takeaway.menu_choice.first).to eq ["Chicken", 3]
   end
+
+
+  # it "will raise an error if the total order number does not match the sum of the various dishes in the customer order"
+    #expect{ subject.touch_in(:entry_station) }.to raise_error "Insufficient funds"
+
 
 end
-
-
-
-#   So that I can verify that my order is correct
-# I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-
 
 # As a customer
 # So that I am reassured that my order will be delivered on time

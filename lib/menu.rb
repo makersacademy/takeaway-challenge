@@ -1,7 +1,5 @@
 class Menu
 
-
-  MENU =  {"Chicken" => 1.00,
-          "Madras" => 2.00}
+  MENU = {"Chicken" => 5.00, "Madras" => 6.00, "Nan Bread" => 2.50, "Cobra" => 4.00}
 
 end

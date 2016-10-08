@@ -1,49 +1,46 @@
 require_relative 'menu'
 
 class Takeaway
-  attr_reader :menu
-  attr_accessor :menu_selection
+
+  attr_accessor :menu_choice
 
   def initialize
     @menu_choice = {}
-    @menu = {
-      "Chicken" => 1.00,
-      "Madras" => 2.00
-    }
+    @quantity_total = []
+    # customer_choice
   end
 
   def show_menu
     Menu::MENU.each { |item, price| "#{item}, #{price}"}
   end
 
-  def customer_choice
-    @item = ""
-      while @item != "exit"
-        select_item
-        break if @item == "exit"
-        select_quantity
-        add_items
-      end
-  end
-
   def select_item
-    puts "Please type in your order or 'exit' to finish."
-    @item = gets.chomp
+    while @item != "exit" do
+      puts "Please type in your order or 'exit' to finish."
+      @item = gets.chomp
+      return if @item == "exit"
+      puts "How many portions would you like?"
+      @quantity = gets.chomp.to_i
+      @quantity_total << @quantity
+      add_items(@item, @quantity)
+    end
+    @menu_choice
   end
 
-  def select_quantity
-    puts "How many portions would you like?"
-    @quantity = @quantity
-    @quantity = gets.chomp
+  def add_items(item, quantity)
+    raise "error" unless Menu::MENU.include?(item)
+    @menu_choice[item] = quantity
+    puts "Item added"
   end
 
-  def add_items
-    @menu_choice[@item] = @quantity
+  def order_count
+    @total_count = @menu_choice.values.inject(:+)
   end
 
   def show_order
     p @menu_choice
-    "You have ordered #{@menu_choice.count} different dishes and a total of  #{@menu_choice.values.inject(:+)} dishes."
+    "You have ordered #{@menu_choice.count} different types of dish and #{order_count} dishes in total."
   end
+
 
 end
