@@ -10,4 +10,11 @@ describe Menu do
       menu.read_menu('dishes.csv')
     end
   end
+
+  describe '#print_menu' do
+    it 'prints a list of dishes and their prices' do
+      expect(subject).to receive(:print_menu)
+      subject.print_menu
+    end
+  end
 end

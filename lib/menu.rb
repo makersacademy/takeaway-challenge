@@ -12,4 +12,9 @@ class Menu
     @menu = CSV.read(file).each {|arr| Hash[ keys.zip(arr) ]}
   end
 
+  def print_menu
+    @menu.each do |array|
+      puts array.join
+    end
+  end
 end
