@@ -1,11 +1,11 @@
 class Menu
 
   def initialize
-    @menu = []
+    @menu = {"Sabich" => 6, "Houmous" => 4, "Baba Ganoush" => 4, "Salona" => 8, "Shashuka" => 9, "Tabbouleh" => 5}
   end
 
   def display
-  print @menu
+  print @menu.map.with_index(1) { |x, i| [i, x] }
   end
 
 end
