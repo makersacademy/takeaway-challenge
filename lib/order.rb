@@ -1,12 +1,11 @@
-require_relative 'list_module'
+require_relative './list_module'
 
 class Order
   include List
-  attr_reader
+  attr_reader :selections
 
   def initialize
     @selections = []
-    @price = 0
   end
 
   def add(dish)
@@ -20,14 +19,21 @@ class Order
   def summary
     puts "You have ordered the following #{@selections.count} items:\n\n"
     list_dishes(@selections)
-    "\n\nTotal price is #{price}"
+    "\n\nTotal bill is #{total_bill}"
   end
 
-  def total_price
+  def bill
+    puts total_bill
+  end
+
+private
+
+  def total_bill
+    @bill = 0
     @selections.each do |dish|
-      @price += dish[:price]
+      @bill += dish[:price]
     end
-    @price
+    @bill
   end
 
 

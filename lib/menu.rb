@@ -8,35 +8,24 @@ require_relative 'list_module'
 
 class Menu
   include List
-  attr_reader :selections
+  attr_reader :selections, :order
 
-  def initialize(menu, order_class = Order)
+  def initialize(menu, order_object)
     @menu = menu
     @selections = []
-    @order = order_class.new
+    @order = order_object
   end
-
-  # def user_interface
-  #   puts "What would you like to do?\n\n"
-  #   while true
-  # end
 
   def view
     list_dishes(@menu)
   end
 
-  def select_dish(choice)
-    $dishes.each do |dish|
+  def add_dish_to_order(choice)
+    @menu.each do |dish|
       @selections << dish if dish[:name].downcase == choice.downcase
       @order.add(dish) if dish[:name].downcase == choice.downcase
     end
   end
-
-  def confirm_order
-
-  end
-
-
 
 
 end

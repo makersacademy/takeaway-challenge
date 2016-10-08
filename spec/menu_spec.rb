@@ -5,13 +5,12 @@ describe Menu do
   {name: "Pasta", price: 3.50},
   {name: "Pizza", price: 2.40}
   ]
+
   subject {described_class.new(dishes)}
 
+  it {is_expected.to respond_to :view }
 
-
-  it {is_expected.to respond_to :view}
-
-  it {is_expected.to respond_to :select_dish}
+  it {is_expected.to respond_to :add_dish_to_order }
 
   describe "#view" do
     it "outputs dishes in a format" do
@@ -22,20 +21,20 @@ describe Menu do
 
   describe "#select" do
     before(:each) do
-      subject.select_dish("Pasta")
+      subject.add_dish_to_order("Pasta")
     end
     it "selects a dish and stores in selections" do
       expect(subject.selections).to include dishes[0]
     end
 
     it "should select several separate dishes" do
-      subject.select_dish("pizza")
+      subject.add_dish_to_order("pizza")
       expect(subject.selections).to include dishes[0], dishes[1]
     end
 
     it "should order several of the same dish" do
-      subject.select_dish("Pasta")
-      subject.select_dish("Pasta")
+      subject.add_dish_to_order("Pasta")
+      subject.add_dish_to_order("Pasta")
       expect(subject.selections).to include dishes[0], dishes[0], dishes[0]
     end
   end

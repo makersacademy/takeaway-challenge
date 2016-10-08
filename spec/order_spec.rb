@@ -20,11 +20,11 @@ describe Order do
   #   end
   # end
 
-  describe "total_price" do
-    it "should sum the order price" do
+  describe "total_bill" do
+    it "should sum the order bill" do
       subject.add(dish)
       subject.add(dish)
-      expect(subject.total_price).to eq (2*dish[:price])
+      expect(subject.total_bill).to eq (2*dish[:price])
     end
   end
 
