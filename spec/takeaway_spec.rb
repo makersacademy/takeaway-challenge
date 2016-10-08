@@ -2,9 +2,8 @@ require 'takeaway'
 
 describe TakeAway do
   subject(:takeaway) { described_class.new }
-  let(:item){double :item}
-  #before do
- #end
+  #let(:item){double :item}
+
   
   it "responds to the show_menu method" do
     expect(subject).to respond_to(:show_menu)     #.with (1).argument
@@ -16,11 +15,8 @@ describe TakeAway do
   end
   
   it "adds an item to the orders array" do
-    item = "spring roll"
-    #allow{{takeaway.order(item)}.to be true
-    #allow(takeaway).to receive(takeaway.order(:item)) { true }
+    item = "spring roll"        #This will fail if the menu changes
     expect{takeaway.order(item)}.to change{takeaway.orders.length}.by(+1)
-    puts takeaway.orders.length
   end
   
   

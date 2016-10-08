@@ -12,20 +12,28 @@ class TakeAway
   end
   
   def order(item)
-    if menu[item]
-      orders <<  menu.select { |k, v| k[item] }       
-    else
-      print :"That item is not on the menu."
-    end
-    
+    print :"That item is not on the menu." unless on_menu?(item) 
+    add_item(item) if on_menu?(item)      
+  end
+  
+  private
+  
+  def add_item(item)
+    orders <<  menu.select { |k, v| k[item] }
+  end
+  
+  def on_menu?(item)
+    menu[item]
   end
   
   
 end
 
-
 thai = TakeAway.new
 thai.show_menu
 thai.order "spring roll"
-#thai.order "xxx"
+thai.order "peking duck"
+thai.order "spring roll"
+thai.order "xxx"
 print thai.inspect
+
