@@ -9,10 +9,15 @@ describe Order do
 
 	subject(:order) {described_class.new(menu)}
 
-	it 'can select a number of dishes' do
+	def select_dishes
 		order.select(chow_mein.number)
 		order.select(pasta.number)
-		expect(order.food).to include(chow_mein, pasta)
+		order.select(pasta.number)
+	end
+
+	it 'can select a number of dishes' do
+		select_dishes
+		expect(order.food).to include(chow_mein => 1, pasta => 2)
 	end
 
 	it 'raises an error if unknown dish number is given' do
@@ -20,10 +25,9 @@ describe Order do
 	end
 
 	it 'gives a total' do
-		order.select(chow_mein.number)
-		order.select(pasta.number)
+		select_dishes
 		order.calculate_total
-		expect(order.total).to eq(chow_mein.price + pasta.price)
+		expect(order.total).to eq(chow_mein.price + 2*pasta.price)
 	end
 
 end

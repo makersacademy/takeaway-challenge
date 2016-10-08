@@ -6,19 +6,22 @@ class Order
 
 	def initialize(menu)
 		@menu = menu.dishes
-		@food = []
+		@food = {}
 		@total = 0
 	end
 
 	def select(dish_number)
-		raise 'We do not have a dish with that number!' if @menu[dish_number] == nil
-		@food << @menu[dish_number]
+		dish = @menu[dish_number]
+		raise 'We do not have a dish with that number!' if dish == nil
+		if @food.keys.include?(dish)
+			@food[dish] += 1
+		else
+			@food[dish] = 1
+		end
 	end
 
 	def calculate_total
-		@food.each do |dish|
-			@total += dish.price
-		end
+		@food.each { |dish, quantity| @total += quantity*dish.price }
 	end
 
 end
