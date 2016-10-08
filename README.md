@@ -99,9 +99,13 @@ October 08, 2016
 - Installed ruby-2.3.1
 - Installed and initialized the makersinit gem
 - Installed and runned `bundle` to ensure all gems are present for this project
+- The twilio gem was included in the Gemfile and installed
+- User (me) signed up for an account
 
 
 ## FIRST USER STORY
 - The user, a customer wants to check a list of dishes with prices.
 - A takeaway class is required to offer the customer with dish options
 - takeaway_spec file created to test for the takeaway class
+- see_menu method that will list the menu to the user
+- the menu is a new class that is initialized with an array of different dishes stored in hashes
