@@ -1,5 +1,6 @@
-Takeaway Challenge [![Build Status](https://travis-ci.org/lauraweston/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lauraweston/takeaway-challenge)
+Takeaway Challenge 
 ==================
+[![Build Status](https://travis-ci.org/lauraweston/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lauraweston/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/lauraweston/takeaway-challenge/badge.png)](https://coveralls.io/r/lauraweston/takeaway-challenge)
 ```
                             _________
               r==           |       |
@@ -83,9 +84,3 @@ $ coveralls report
 ```
 
 This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
