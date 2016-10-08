@@ -1,12 +1,13 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'validation'
 
 class Interface
 
-  def initialize(order_class = Order)
+  def initialize(order_class = Order, validation_class = Validation)
     @menu = Menu.new
     @order = order_class
-
+    @validation = validation_class
   end
 
   require 'ap'
@@ -25,6 +26,7 @@ class Interface
         @menu.print_menu
       when "2"
         @order = @order.new(@menu, self)
+        @validation = @validation.new(@order, @menu, self)
         select_dish
       when "3"
         puts "Thank you, goodbye!"
@@ -40,27 +42,27 @@ class Interface
     puts "Enter the number of the dish you'd like to order"
     puts "If you've changed your mind, type 'exit'"
     dish_selection = gets.chomp
-    @order.validate_selection(dish_selection)
+    @validation.validate_selection(dish_selection)
   end
 
   def select_quantity
     puts "How many would you like?"
     dish_quantity = gets.chomp.to_i
-    @order.validate_quantity(dish_quantity)
+    @validation.validate_quantity(dish_quantity)
   end
 
   def add_or_review
     puts "To add to the order, press 1"
     puts "To review and confirm the order, press 2"
     selection = gets.chomp
-    @order.evaluate_input(selection)
+    @validation.evaluate_input(selection)
   end
 
   def confirm_order
     puts "To confirm, press 'y'"
     puts "To redo the order, press 'n'"
     confirmation = gets.chomp
-    @order.confirmed?(confirmation)
+    @validation.confirmed?(confirmation)
   end
 
 end
