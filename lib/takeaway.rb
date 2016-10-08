@@ -11,10 +11,6 @@ class Takeaway
     @quantity_total = []
   end
 
-  # def show_menu
-  #   Menu::MENU.each { |item, price| "#{item}, #{price}"}
-  # end
-
   def select_item
     while @item != "exit" do
       puts "Please type in your order or 'exit' to finish."
@@ -29,7 +25,7 @@ class Takeaway
   end
 
   def add_items(item, quantity)
-    raise "Ooops, that item is not available" unless Menu::MENU.include?(item)
+    fail "Ooops, that item is not available" unless Menu::MENU.include?(item)
     @menu_choice[item] = quantity
     puts "Item added"
   end

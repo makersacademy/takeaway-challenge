@@ -3,6 +3,7 @@
 #
 # class Orders
 #
+#
 #   def order_count
 #     @total_count = @menu_choice.values.inject(:+)
 #   end

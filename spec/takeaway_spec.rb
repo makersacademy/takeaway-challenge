@@ -20,10 +20,10 @@ describe Takeaway do
       expect(takeaway.order_count). to eq 3
     end
 
-    # it "will raise an error if a non-available item is chosen" do
-    #    takeaway.add_items("Chicken", 3)
-    #    expect(takeaway.add_items("Beef", 2)).to raise_error "Ooops, that item is not available"
-    #  end
+    it "will raise an error if a non-available item is chosen" do
+       takeaway.add_items("Chicken", 3)
+       expect{takeaway.add_items("Beef", 2)}.to raise_error "Ooops, that item is not available"
+     end
   end
 
 
