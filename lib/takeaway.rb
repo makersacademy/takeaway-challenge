@@ -28,7 +28,7 @@ class Takeaway
   end
 
   def add_items(item, quantity)
-    raise "error" unless Menu::MENU.include?(item)
+    raise "Ooops, that item is not available" unless Menu::MENU.include?(item)
     @menu_choice[item] = quantity
     puts "Item added"
   end
