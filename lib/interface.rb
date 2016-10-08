@@ -13,6 +13,7 @@ class Interface
   require 'twilio-ruby'
 
   def main_menu
+    loop do
       puts "*** Welcome to the takeaway ***"
       puts "Select from the following options:"
       puts "To view the menu, press 1"
@@ -30,6 +31,7 @@ class Interface
         exit
       else
         "Please try again"
+      end
     end
   end
 
