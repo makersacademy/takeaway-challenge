@@ -15,9 +15,10 @@ class Order
 
   def print_order
     basket.each do | dish, quantity |
-      puts "#{dish} x #{quantity} = £#{quantity * menu[dish]}"
+      puts "#{dish} x #{quantity}".ljust(25) + "£#{quantity * menu[dish]}".rjust(25)
     end
-    puts "Total sum = £#{calculate_sum}"
+
+    puts "Total sum".ljust(25) + "£#{calculate_sum}".rjust(25)
   end
 
   private

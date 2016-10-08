@@ -8,7 +8,7 @@ describe Menu do
   end
 
  it "prints the list of dishes and prices" do
-   content = "Thai_green_curry -- £9\nAubergine_teriyaki -- £9\nMushroom_risotto -- £8\n"
-   expect{subject.print_menu}.to output(content).to_stdout
+     formatted_menu = "Thai_green_curry                                £9\nAubergine_teriyaki                              £9\nMushroom_risotto                                £8\nButternut_rotolo                                £9\nThali                                          £11\nSmoky_bean_burger                               £7\n"
+   expect{subject.print_menu}.to output(formatted_menu).to_stdout
  end
 end

@@ -2,9 +2,9 @@ require "takeaway"
 
 describe TakeAway do
 
-  MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 }
+  VEGETARIAN_MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8, Butternut_rotolo: 9, Thali: 11, Smoky_bean_burger: 7 }
 
-  let(:menu)  { double :menu, :list => MENU }
+  let(:menu)  { double :menu, :list => VEGETARIAN_MENU}
   let(:order) { double :order }
   let(:text)  { double :text }
   subject(:takeaway) { described_class.new(menu, order, text) }
@@ -23,7 +23,7 @@ describe TakeAway do
 
   describe "#view_menu" do
     it "shows the menu" do
-      formatted_menu = "Thai_green_curry -- £9\nAubergine_teriyaki -- £9\nMushroom_risotto -- £8\n"
+      formatted_menu = "Thai_green_curry                      £9\nAubergine_teriyaki                    £9\nMushroom_risotto                      £8\nButternut_rotolo                      £9\nThali                                £11\nSmoky_bean_burger                     £7\n"
       allow(menu).to receive(:print_menu).and_return formatted_menu
       expect(subject.view_menu).to eq formatted_menu
     end

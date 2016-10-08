@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
 ```
                             _________
               r==           |       |
@@ -11,81 +11,87 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+A simple terminal app which allows customers to make takeaway orders.
 
-Instructions
--------
+Features currently included are:
+- [x] View menu
+- [x] Select items
+- [x] Review order
+- [x] Checkout order
+- [x] Receive order confirmation with delivery time on text
+- [ ] Place order via text message (optional)
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
+## Installation
 
 * Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Clone repo to your local machine by running **git clone SSH** in your terminal
+* Inside *takeaway-challenge* folder, install required gems using bundler by running **gem install bundler** and **bundle install**
+* To start using the app, run **irb** and **require './lib/takeaway'** - see screenshot below
+* To run tests type **rspec**
+
+## Code example in irb
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+➜  takeaway-challenge git:(master) ✗ irb
+2.3.1 :001 > require './lib/takeaway'
+ => true
+2.3.1 :002 > t = TakeAway.new
+ => #<TakeAway:0x007ffb7c319938 @menu=#<Menu:0x007ffb7c3198e8 @list={:Thai_green_curry=>9, :Aubergine_teriyaki=>9, :Mushroom_risotto=>8, :Butternut_rotolo=>9, :Thali=>11, :Smoky_bean_burger=>7}>, @order=#<Order:0x007ffb7c319898 @menu={:Thai_green_curry=>9, :Aubergine_teriyaki=>9, :Mushroom_risotto=>8, :Butternut_rotolo=>9, :Thali=>11, :Smoky_bean_burger=>7}, @basket={}, @sum=0>, @text=#<Text:0x007ffb7c3197f8>>
+2.3.1 :003 > t.view_menu
+Thai_green_curry                                £9
+Aubergine_teriyaki                              £9
+Mushroom_risotto                                £8
+Butternut_rotolo                                £9
+Thali                                          £11
+Smoky_bean_burger                               £7
+ => {:Thai_green_curry=>9, :Aubergine_teriyaki=>9, :Mushroom_risotto=>8, :Butternut_rotolo=>9, :Thali=>11, :Smoky_bean_burger=>7}
+2.3.1 :004 > t.add("Thai_green_curry", 3)
+ => "3 x Thai_green_curry added to basket"
+2.3.1 :005 > t.add("Thali", 1)
+ => "1 x Thali added to basket"
+2.3.1 :006 > t.add("Smoky_bean_burger", 2)
+ => "2 x Smoky_bean_burger added to basket"
+2.3.1 :007 > t.review
+Thai_green_curry x 3                           £27
+Thali x 1                                      £11
+Smoky_bean_burger x 2                          £14
+Total sum                                      £52
+ => nil
+2.3.1 :008 > t.checkout(52)
+ => "Order has been completed"
+2.3.1 :009 > 
 
 ```
-$ coveralls report
+## Test example in terminal
+
+```
+➜  takeaway-challenge git:(master) ✗ rspec
+[Coveralls] Set up the SimpleCov formatter.
+[Coveralls] Using SimpleCov's default settings.
+
+Menu
+  has a list of dishes and prices
+  prints the list of dishes and prices
+
+Order
+  initialize
+    selection is empty by default
+    has preloaded menu - dish and price
+  #add
+    allows customer to select item and quantity
+    stores selection
+  #print_order
+    prints order summary for review
+
+ ...
+
+Finished in 0.02099 seconds (files took 0.5134 seconds to load)
+15 examples, 0 failures
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
+## Build Badge
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)

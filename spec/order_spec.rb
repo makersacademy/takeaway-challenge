@@ -1,10 +1,11 @@
 require 'order'
 
 describe Order do
-  let(:menu) { double :menu, :list => { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 } }
+  VEGETARIAN_MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8, Butternut_rotolo: 9, Thali: 11, Smoky_bean_burger: 7 }
+
+  let(:menu) { double :menu, :list => VEGETARIAN_MENU }
   subject (:order) { described_class.new(menu) }
 
-  VEGETARIAN_MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8 }
 
   describe "initialize" do
     it "selection is empty by default" do
@@ -31,7 +32,7 @@ describe Order do
 
   describe "#print_order" do
     it "prints order summary for review" do
-      order_summary = "Thai_green_curry x 1 = £9\nTotal sum = £9\n"
+      order_summary = "Thai_green_curry x 1                            £9\nTotal sum                                       £9\n"
       allow(subject).to receive(:basket).and_return({Thai_green_curry: 1})
       expect{subject.print_order}.to output(order_summary).to_stdout
     end
