@@ -5,7 +5,7 @@ class Menu
   end
 
   def display
-  print @menu.map.with_index(1) { |x, i| [i, x] }
+  print @menu.map{ |x, i| [i, x] }
   end
 
 end
