@@ -1,6 +1,6 @@
 class TakeAway
   
-  attr_reader :read_menu, :menu, :item, :order, :orders       #, :menu  
+  attr_reader :read_menu, :menu, :item, :order, :orders, :tot       #, :menu  
   
   def initialize
     @orders = []
@@ -32,10 +32,26 @@ class TakeAway
   end
   
   def total
-    tot = 0
-    orders.each{ |item| item.each_value{|v| tot += v} }
-    print "Total: £#{tot.round(2)}"
+    @tot = 0
+    orders.each{ |item| item.each_value{|v| @tot += v} }
+    @tot = @tot.round(2)
+    print "Total: £#{tot}"
   end
+  
+  def checkout(value)
+    puts "@tot is #{@tot}"            #remove this!!!
+    puts "'value' is #{value}"          #remove this!!!
+    @tot == value
+  end
+  
+  # def complete_order
+  #   send_text("Thank you for your order: £#{total_price}")
+  # end
+
+  # def send_text(message)
+  #   # this method calls the Twilio API
+  # end
+  
   
   private
   
@@ -50,16 +66,19 @@ class TakeAway
   
 end
 
-=begin
+#=begin
 #require './lib/takeaway'
-thai = TakeAway.new
-thai.read_menu
-thai.order "spring roll"
-thai.order "peking duck", 2
-thai.order "spring roll"
-thai.order "fu-king fried rice",3
-thai.order "xxx"
-thai.summary
-thai.total
-print thai.inspect
-=end
+# thai = TakeAway.new
+# puts thai.read_menu                
+# thai.order "spring roll", 3
+# thai.order "peking duck", 4
+#           #thai.order "spring roll"
+#           #thai.order "fu-king fried rice",3
+# puts thai.order "xxx"
+# puts thai.summary
+# puts thai.total
+# puts thai.checkout(34.93)
+# puts thai.tot
+# puts thai
+#print thai.inspect
+#=end
