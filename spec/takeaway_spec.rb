@@ -6,17 +6,17 @@ describe Takeaway do
 
 
   it "shows a list of dishes with prices" do
-    takeaway = Takeaway.new("food")
-    expect(subject.create_menu("food")).to eq takeaway.menu
+    takeaway
+    expect(takeaway.show_menu).to eq takeaway.menu
   end
 
 
-
-
-  # it "should be able to select a number of available dishes" do
-  #   expect(subject.choice).to eq "madras 6.00"
-  # end
+  it "should be able to select a number of available dishes" do
+    takeaway.customer_choice
+  expect(takeaway.show_order).to eq customer_choice
   end
+
+end
 
 
 
