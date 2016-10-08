@@ -18,6 +18,13 @@ class Order
     @selection << @menu.menu[item_number - 1]
   end
 
+  def order_summary
+    show_order
+    total_price
+  end
+
+  private
+
   def show_order
     count = 0
     @selection.each {|item| count += 1; puts "#{count}. #{item[:name]} : £#{item[:price]}" }
@@ -26,10 +33,5 @@ class Order
   def total_price
     @order_price = @selection.map{|item| item[:price]}.inject(:+).round(2)
     puts "Your order total is £#{@order_price}"
-  end
-
-  def order_summary
-    show_order
-    total_price
   end
 end

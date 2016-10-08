@@ -31,18 +31,7 @@ describe Order do
     end
   end
 
-  describe '#show order' do
-    before do
-      new_order.select_item(1)
-      new_order.select_item(5)
-    end
-    it 'should puts the current order to the output' do
-      expect(STDOUT).to receive(:puts).exactly(new_order.selection.count).times
-      new_order.show_order
-    end
-  end
-
-  describe '#total_price' do
+  describe '#order_summary' do
     before do
       new_order.select_item(1)
       new_order.select_item(5)
@@ -52,18 +41,6 @@ describe Order do
 
     it 'records total order' do
       expect(new_order.order_price).to eq(new_order.order_price)
-    end
-
-    it 'shows customer their total order price' do
-      expect(STDOUT).to receive(:puts).once
-      new_order.total_price
-    end
-  end
-
-  describe '#order_summary' do
-    before do
-      new_order.select_item(1)
-      new_order.select_item(6)
     end
 
     it 'should give a summary of the order' do
