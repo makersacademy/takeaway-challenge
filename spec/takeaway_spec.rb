@@ -1,9 +1,9 @@
 require 'takeaway'
-require 'menu'
 
 describe Takeaway do
   subject(:takeaway) {described_class.new}
   let(:menu) {Menu.new}
+  let(:new_order) {Order.new}
 
 
 
@@ -14,9 +14,26 @@ describe Takeaway do
   end
 
   describe "#order" do
-    it "respondes to the order method"do
-      expect(takeaway).to respond_to(:order)
+    it "starts a new order" do
+      expect(takeaway.start_order).to eq(new_order.order)
+    end
+
+    it "adds the chicken dish to the order" do
+      expect(takeaway.add_chicken).to eq(new_order.add_chicken)
+    end
+
+    it "add the lamb dish to the order" do
+      expect(takeaway.add_lamb).to eq(new_order.add_lamb)
+    end
+
+    it "add the beef dish to the order" do
+      expect(takeaway.add_beef).to eq(new_order.add_beef)
+    end
+
+    it "checks the order" do
+      takeaway.add_beef
+      new_order.add_beef
+      expect(takeaway.check_order).to eq(new_order.check_order)
     end
   end
-
 end
