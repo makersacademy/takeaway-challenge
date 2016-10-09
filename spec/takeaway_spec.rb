@@ -4,7 +4,7 @@ describe Takeaway do
 
   let(:filename) { 'menu.csv' }
   let(:dish_list) { DishList.new(Dish) }
-  let(:order) { Order.new }
+  let(:order) { double :order }
   subject { described_class.new(dish_list: dish_list, order: order) }
 
   describe 'initialization' do
@@ -14,19 +14,17 @@ describe Takeaway do
     it 'can be initialized with a new order' do
       expect(subject.order).to eq order
     end
+    it 'has no placed orders' do
+      expect(subject.placed_orders).to be_empty
+    end
   end
 
   describe '#load_dishes' do
     let (:false_filename) { 'some.csv' }
 
-    it 'should check if file exists' do
-      expect(File).to receive(:exist?).with(filename)
-      subject.load_dishes(filename)
-    end
-
     it 'should return error message when file doesnt exist' do
       allow(File).to receive(:exist?).with(false_filename).and_return false
-      expect(subject.load_dishes(false_filename)).to eq "File '#{false_filename}' not found!"
+      expect{subject.load_dishes(false_filename)}.to raise_error "File '#{false_filename}' not found!"
     end
 
     it 'should try to read the CSV data' do
@@ -55,7 +53,8 @@ describe Takeaway do
 
     describe '#add_dish' do
       it 'should add the selected dish to the order' do
-        expect {subject.add_dish(id)}.to change{order.items.count}.by(1)
+        expect(order).to receive(:add_item)
+        subject.add_dish(id)
       end
 
       it 'should raise error when id is out of range of available dishes' do
@@ -69,8 +68,8 @@ describe Takeaway do
 
     describe '#remove_dish' do
       it 'should remove the selected dish from the order' do
-        subject.add_dish(id)
-        expect {subject.remove_dish(id)}.to change{subject.order.items.count}.by(-1)
+        expect(order).to receive(:remove_item)
+        subject.remove_dish(id)
       end
 
       it 'should raise error when id is out of range of available dishes' do
@@ -86,6 +85,40 @@ describe Takeaway do
       it 'should get the sum total of the order' do
         expect(order).to receive(:total)
         subject.order_total
+      end
+    end
+
+    describe '#place_order' do
+      let(:dish) { dish_list.select_dish(1) }
+
+      it 'should raise an error if no items added to the order' do
+        expect{described_class.new.place_order}.to raise_error "You haven't added any items to your order"
+      end
+
+      before do
+        allow(order).to receive(:add_item)
+        allow(order).to receive(:items).and_return [{item: dish, quantity: 1}]
+        subject.add_dish 1
+        allow(subject).to receive(:send_confirmation_SMS)
+      end
+
+      it 'should save the order' do
+        subject.place_order
+        expect(subject.placed_orders).to include order
+      end
+
+      it 'should send a confirmation SMS' do
+        expect(subject).to receive(:send_confirmation_SMS)
+        subject.place_order
+      end
+
+      it 'create a new order' do
+        subject.place_order
+        expect(subject.order).not_to eq order
+      end
+
+      it 'should return a confirmation' do
+        expect(subject.place_order).to eq "Order placed successfully!"
       end
     end
   end
