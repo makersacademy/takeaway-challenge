@@ -15,12 +15,7 @@ class TakeAway
   def change_menu(file)
     @menu_obj = Menu.new(file)
   end
-  
-  # def read_menu                         #(menu = {"spring roll"=>0.99})       
-  #   menu.each{|k,v| puts "#{k} £#{v}"}
-  #   print "Use '.order(food_description)' to add items.\n"
-  # end
-  
+
   def read_menu
     @menu_obj.read_menu
   end
@@ -60,22 +55,16 @@ class TakeAway
     send_text("Thank you for your order. Total price: £#{total_price}")
   end
 
+
+  
+  private
   def send_text(message)
     @messager.send_message(message)
   end
   
-  
-  private
-  
   def add_item(item)
-    #orders <<  menu.select { |k, v| k[item] }
-    orders << @menu_obj.get_details(item)       #returns a string value for amount which I can't use.       
+    orders << @menu_obj.get_details(item)       
   end
-  
-  # def contains?(item)
-  #   menu[item]
-  # end
-  
   
 end
 

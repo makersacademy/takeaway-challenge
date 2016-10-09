@@ -1,5 +1,6 @@
 require 'takeaway' 
 require 'messager'
+require 'menu'
 
 describe TakeAway do
   subject(:takeaway) { described_class.new }
