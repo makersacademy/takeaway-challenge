@@ -2,7 +2,7 @@ require 'takeaway'
 require 'order_item'
 require 'menu'
 
-describe 'Takeaway integration', :unit => false do
+describe 'Takeaway integration', :integration => true do
   subject(:takeaway) do
     sms = SmsNotifier.new
     menu = Menu.new
