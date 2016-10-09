@@ -49,9 +49,14 @@ class Order
   def ask_for_order
       puts "Please enter the dish number you wish to order"
       @ordered_dish_number = gets.chomp.to_i
-      puts "How many of this dish do you wish to order?"
-      @quantity = gets.chomp.to_i
-      retrieve_dish_from_menu
+      if @menu.valid_dish_number(@ordered_dish_number) == nil
+        puts "This is not valid dish number"
+        ask_for_order
+      else
+        puts "How many of this dish do you wish to order?"
+        @quantity = gets.chomp.to_i
+        retrieve_dish_from_menu
+      end
   end
 
   def retrieve_dish_from_menu
@@ -68,17 +73,25 @@ class Order
 
   def ask_for_further_dish
       puts "Would you like to order an other dish?"
-      other_order = gets.chomp.downcase
-      while other_order == "yes"
+      answer = gets.chomp.downcase
+      while answer == "yes"
       ask_for_order
       end
-      summary
+      if answer == "no" then summary
+      else
+      not_a_valid_choice
+      ask_for_further_dish
+      end
   end
 
   def confirm
     puts "Would you like to confirm this order?"
     confirm = gets.chomp.downcase
-    confirm == "yes" ? send_sms : exit
+    if confirm == "yes" then send_sms elsif confirm == "no" then exit
+    else
+       not_a_valid_choice
+       confirm
+    end
   end
 
     def set_to_nil
@@ -103,5 +116,9 @@ class Order
         exit
     end
 
-  private :set_to_nil, :summary, :total_amount, :send_sms, :retrieve_dish_from_menu
+    def not_a_valid_choice
+      puts "This is not a valide choice, type 'yes' or 'no'"
+    end
+
+  private :set_to_nil, :summary, :total_amount, :send_sms, :retrieve_dish_from_menu, :add_dish_to_order, :not_a_valid_choice
 end

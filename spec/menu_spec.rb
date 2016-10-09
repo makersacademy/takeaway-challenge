@@ -20,4 +20,9 @@ describe Menu do
       end
     end
 
+    describe "#valid_dish_number" do
+      it "check if the dish number entered by the customer is valid" do
+        expect(subject.valid_dish_number(111)).to eq({dish_category: 'Dessert:', dish_number: 111, dish: 'tart', price: 7})
+      end
+    end
   end

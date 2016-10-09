@@ -1,5 +1,6 @@
 class Menu
 attr_reader :current_menu
+
   def initialize
     @current_menu = [
       {dish_category: 'Main course:', dish_number: 11, dish: 'pizza', price: 10},
@@ -22,6 +23,10 @@ attr_reader :current_menu
     " number: #{dish[:dish_number]}"]
     puts dish_data.join(" ")
     end
+  end
+
+  def valid_dish_number(number)
+    @current_menu.detect {|dish| dish[:dish_number] == number }
   end
 
 end
