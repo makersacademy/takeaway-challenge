@@ -48,6 +48,19 @@ describe Order do
     end
   end
 
+  describe 'calculate_subtotal' do
+    it 'calculates the price of the current_selection' do
+      allow(interface).to receive(:select_quantity).and_return "5"
+      allow(interface).to receive(:add_or_review)
+      allow(menu).to receive(:prices).and_return "5"
+      allow(menu).to receive(:menu). and_return "2"
+      subject.add_dish(5)
+      subject.add_quantity(1)
+      subject.calculate_subtotal
+      expect(subject.current_selection.last).to eq 5
+    end
+  end
+
   # describe '#calculate_subtotal' do
   #   it 'calculates the the cost a single item request (dish * quantity)' do
   #     expect

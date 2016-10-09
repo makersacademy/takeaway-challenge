@@ -5,7 +5,7 @@ class Order
   require 'ap'
   require 'twilio-ruby'
 
-  attr_reader :orders_array, :current_selection, :running_total
+  attr_reader :orders_array, :current_selection, :running_total, :selection_cost
 
   def initialize(menu, interface)
     @menu = menu
@@ -17,7 +17,7 @@ class Order
 
   def add_dish(dish_selection)
     @current_selection << dish_selection.to_i
-    @interface.select_quantity
+    # @interface.select_quantity
   end
 
   def add_quantity(dish_quantity)
@@ -27,10 +27,10 @@ class Order
 
   def calculate_subtotal
     selection_cost = @current_selection[1] * @menu.prices[@current_selection[0]].to_f
-    calculate_running_total(selection_cost)
+    # calculate_running_total(selection_cost)
     @current_selection << selection_cost
-    calculate_running_total(selection_cost)
-    build_orders_array
+    # calculate_running_total(selection_cost)
+    # build_orders_array
   end
 
   def order_summary
