@@ -12,6 +12,7 @@ class Interface
   end
 
   def build_menu_display
+    @menu.load_dishes
     @menu.dishes.each_with_index do |dish, index|
       @menu_array << "#{index + 1}. #{dish.name}  £#{'%.2f' % [dish.price]}"
     end

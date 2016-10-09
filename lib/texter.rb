@@ -1,11 +1,13 @@
 require 'twilio-ruby'
+require 'dotenv'
 
 class Texter
   def initialize
-    @twilio_phone = "1133203273"
-    @customer_phone = "7899877238"
-    @twilio_sid = "AC39ab6016fda768cc8f0ead6f313370ca"
-    @twilio_token = "31582c1fc17eebcd2554a4eca9bc6dd9"
+    Dotenv.load
+    @twilio_phone = ENV['T_PHONE']
+    @customer_phone = ENV['MY_PHONE']
+    @twilio_sid = ENV['SID']
+    @twilio_token = ENV['TOKEN']
     delivery_time
     send_message
   end

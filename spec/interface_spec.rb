@@ -6,11 +6,11 @@ describe Interface do
     @filepath = '/Users/malinnaleach/Programs/takeaway-challenge/lib/test.csv'
   end
 
-  subject(:interface) {described_class.new(@filepath)}
-
-  it 'should show menu' do
-    expect(interface.menu_array).to eq ["1. Margherita  £5.95"]
-  end
+  # subject(:interface) {described_class.new(@filepath)}
+  #
+  # it 'should show menu' do
+  #   expect(interface.menu_array).to eq ["1. Margherita  £5.95"]
+  # end
 
   # it 'should build an order based on user input' do
   #   allow(interface).to receive(:user_dish).and_return(1)

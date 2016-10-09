@@ -7,13 +7,18 @@ class Menu
   def initialize(filepath)
     @filepath = filepath
     @dishes = []
-    load_dishes
   end
 
   def load_dishes
     CSV.foreach(@filepath) do |row|
-      @dishes << Dish.new(row[0],row[1].to_f)
+      @dishes << create_dish(row[0],row[1].to_f)
     end
+  end
+
+  private
+
+  def create_dish(name,price)
+    Dish.new(name,price)
   end
 
 end
