@@ -1,3 +1,5 @@
+[https://travis-ci.org/fmlharrison/takeaway-challenge.svg?branch=master]
+
 #Takeaway Challenge#
 
 ##Week 2 - Weekend Challenge##
@@ -68,5 +70,3 @@ How to test
 `git clone https://github.com/codepreneur/takeaway
 cd takeaway
 rspec`
-
-https://travis-ci.org/fmlharrison/takeaway-challenge.svg?branch=master
