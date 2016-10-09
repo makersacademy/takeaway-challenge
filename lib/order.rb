@@ -3,7 +3,7 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :menu, :list_of_dishes, :order_amount, :ordered_dish_number, :price, :name
+  #attr_reader :menu, :list_of_dishes, :order_amount, :ordered_dish_number, :price, :name
 
   def initialize
     @list_of_dishes = []
@@ -60,6 +60,7 @@ class Order
         puts "How many of this dish do you wish to order?"
         @quantity = gets.chomp.to_i
         retrieve_dish_from_menu
+        ask_for_further_dish
       end
   end
 
@@ -124,5 +125,5 @@ class Order
       puts "This is not a valide choice, type 'yes' or 'no'"
     end
 
-  private :set_to_nil, :summary, :total_amount, :send_sms, :retrieve_dish_from_menu, :add_dish_to_order, :not_a_valid_choice
+  private :summary, :total_amount, :send_sms, :retrieve_dish_from_menu, :add_dish_to_order, :not_a_valid_choice
 end

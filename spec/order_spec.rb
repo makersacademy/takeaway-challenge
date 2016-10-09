@@ -5,9 +5,15 @@ describe Order do
 
   before :each do
     allow(order).to receive(:see_menu)
+    allow(order).to receive(:add_dish_to_order)
+    allow(order).to receive(:set_to_nil)
     allow(order).to receive(:confirm)
     allow(order).to receive (:retrieve_dish_from_menu)
     allow(order).to receive(:list_of_dishes)
+    allow(order).to receive(:quantity)
+    allow(order).to receive(:menu)
+    allow(order).to receive(:order_amount)
+    allow(order).to receive(:ordered_dish_number)
     allow(order).to receive(:ask_if_sms_order).and_return(:ask_for_order)
     allow(order).to receive(:ask_if_want_to_order).and_return(:ask_if_sms_order)
     allow(order).to receive(:see_menu).and_return(:ask_if_want_to_order)
@@ -15,6 +21,19 @@ describe Order do
     allow(order).to receive(:ask_for_further_dish)
     allow(order).to receive(:send_sms)
     allow(order).to receive(:sms_order)
+  end
+
+  describe "#initialize" do
+        it "starts with an empty list of dishes" do
+          expect(order.list_of_dishes).to be nil
+        end
+        it "starts with an order amount equal to 0" do
+          expect(order.order_amount).to eq nil
+        end
+        it "creates a new instance of Menu" do
+          menu = Menu.new
+          expect(menu).to be_a_kind_of Menu
+        end
   end
 
   describe "#see_menu" do
@@ -84,4 +103,12 @@ describe Order do
         end
       end
 
+  describe "#set_to_nil" do
+        it "set ordered_dish_number and quantity to nil" do
+          order.set_to_nil
+          expect(order.ordered_dish_number).to be nil
+          expect(order.quantity).to be nil
+        end
   end
+
+end
