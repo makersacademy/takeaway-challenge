@@ -1,11 +1,10 @@
 require_relative 'order'
 require_relative 'menu'
-require_relative 'messenger'
 
 class Restaurant
   attr_reader :order
 
-  def initialize(menu, messenger = Messenger.new)
+  def initialize(menu, messenger = nil)
     @menu = menu
     @menu.read_menu
     @messenger = messenger
@@ -32,7 +31,9 @@ class Restaurant
   end
 
   def finalize_order
-    @messenger.send_message(order_total)
+    unless @messenger.nil?
+      @messenger.send_message(order_total)
+    end
     @order = nil
   end
 end
