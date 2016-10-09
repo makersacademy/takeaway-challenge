@@ -23,8 +23,9 @@ class Takeaway
     (items << total).join(", ")
   end
 
-  def checkout(amount)
-    fail "You haven't ordered any items" if order.empty?
+  def checkout(amount = 0)
+    fail "You haven't ordered any items!" if order.empty?
+    fail "Please pay the correct amount!" if amount != total_cost
   end
 
   private

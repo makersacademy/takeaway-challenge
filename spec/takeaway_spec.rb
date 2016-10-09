@@ -62,16 +62,33 @@ describe Takeaway do
     end
   end
 
-  context "placing an order" do
+  context "checking out an order" do
     it "raises an error if no items have been ordered" do
-      expect { takeaway.checkout(5) }.to raise_error "You haven't ordered any items"
+      expect { takeaway.checkout(5) }.to raise_error "You haven't ordered any items!"
     end
+
+    it "raises an error if no amount is given" do
+      pie = Dish.new("pie", 5)
+      allow(menu).to receive(:order).with("pie").and_return pie
+      takeaway.order_item("pie")
+
+      expect { takeaway.checkout }.to raise_error "Please pay the correct amount!"
+    end
+
+    it "raises an error if the wrong amount is given" do
+      pie = Dish.new("pie", 5)
+      allow(menu).to receive(:order).with("pie").and_return pie
+      takeaway.order_item("pie")
+
+      expect { takeaway.checkout(2) }.to raise_error "Please pay the correct amount!"
+      expect { takeaway.checkout(6) }.to raise_error "Please pay the correct amount!"
+    end
+
     # it "checks out an order when given the correct amount" do
     #   time = Time.now + 1
     #   expect(takeaway.checkout(amount)).to eq "Thank you! Your order was placed and will be delivered before #{time}"
     # end
-    #it "raises an error if no amount is given"
-    #it "raises an error if the wrong amount is given"
+
   end
 
 end
