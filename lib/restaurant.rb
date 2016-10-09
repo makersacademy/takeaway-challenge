@@ -1,5 +1,7 @@
 require 'twilio-ruby'
 require_relative 'order'
+require 'dotenv'
+Dotenv.load
 
 class Restaurant
 
@@ -53,15 +55,15 @@ class Restaurant
   end
 
   def sms_confirmation
-  account_sid = 'ACab16b231b23f5dd790289caff2a2a4c5'
-  auth_token = 'bf18aa8b4b682c58afc1c7d0af19fceb'
+  account_sid = ENV['ACCOUNT_SID']
+  auth_token = ENV['AUTH_TOKEN']
 
   # set up a client to talk to the Twilio REST API
   @client = Twilio::REST::Client.new account_sid, auth_token
 
   @client.account.messages.create({
-    :from => '+441202286177',
-    :to => '+447842659215',
+    :from => ENV['TWILIO_NUMBER'],
+    :to => ENV['CUSTOMER_NUMBER'],
     :body => "Thank you! Your order was placed and will be delivered before #{order.delivery_time}"
   })
   end
