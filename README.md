@@ -1,3 +1,4 @@
+travis-ci [https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master]
 Takeaway Challenge
 ==================
 ```
