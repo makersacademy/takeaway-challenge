@@ -22,10 +22,7 @@ class Order
 	end
 
 	def send_text
-		account_sid = "AC37b7fb5464abe5ce0c6a32c92aaf46d4"
-		auth_token = "0ec9a2d40f4b090496f74e7bbb4396f4"
-
-		client = Twilio::REST::Client.new(account_sid, auth_token)
+		client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
 		client.account.messages.create({
 			:from => +441143032672,
 			:to => +447891139631,
@@ -33,4 +30,4 @@ class Order
 		})
 		puts "message sent successfully"
 	end
-end
+end 

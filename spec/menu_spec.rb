@@ -20,5 +20,4 @@ describe Menu do
 			expect(subject.send(:create_dishes)).to be_an(Array).and include(Dish)
 		end
 	end
-
 end
