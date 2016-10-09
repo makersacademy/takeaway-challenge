@@ -1,7 +1,7 @@
 Takeaway Challenge
 ==================
 
-Couldn't work out how to test text without sending them. 
+Couldn't work out how to test text without sending them.
 
 ```ruby
 [1] pry(main)> require './lib/order'
@@ -22,16 +22,10 @@ Total of order is 15.00
 => {:chicken=>10, :rice=>5}
 [7] pry(main)> order.confirm_order(10)
 RuntimeError: wrong amount
-from /Users/elizabethwicks/Documents/Makers/takeway/takeaway-challenge/lib/order.rb:30:in `confirm_order'
-[8] pry(main)> order.confirm_order(15.00)
-RuntimeError: wrong amount
-from /Users/elizabethwicks/Documents/Makers/takeway/takeaway-challenge/lib/order.rb:30:in `confirm_order'
-[9] pry(main)> order.confirm_order(15)
-RuntimeError: wrong amount
-from /Users/elizabethwicks/Documents/Makers/takeway/takeaway-challenge/lib/order.rb:30:in `confirm_order'
-[10] pry(main)> order.confirm_order("15.00")
+from /Users/elizabethwicks/Documents/Makers/takeway/takeaway-challenge/lib/order.rb:30:in "confirm_order"
+[8] pry(main)> order.confirm_order("15.00")
 => "Order sent"
-[11] pry(main)>
+[9] pry(main)>
 
 ```
 
@@ -61,7 +55,7 @@ from /Users/elizabethwicks/Documents/Makers/takeway/takeaway-challenge/lib/order
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -119,7 +113,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
