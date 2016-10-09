@@ -2,8 +2,7 @@ require "csv"
 require_relative 'dish_list'
 require_relative 'dish'
 require_relative 'order'
-require "twilio-ruby"
-require "envyable"
+require_relative 'sms'
 
 class Takeaway
 
@@ -15,7 +14,7 @@ class Takeaway
     @placed_orders = []
   end
 
-  def load_dishes(filename)
+  def load_dishes(filename='menu.csv')
     if File.exist?(filename)
       CSV.foreach(filename) { |data| dish_list.add_dish(data) }
     else
@@ -48,7 +47,7 @@ class Takeaway
   def place_order
     fail "You haven't added any items to your order" if order.items.empty?
     @placed_orders << order
-    send_confirmation_SMS
+    send_confirmation_sms
     @order = Order.new
     confirmation_text
   end
@@ -57,22 +56,16 @@ class Takeaway
     @placed_orders.dup
   end
 
-  private
-
-  def send_confirmation_SMS
-    Envyable.load('./config/env.yml', 'development')
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
-
-    client = Twilio::REST::Client.new account_sid, auth_token
-
-    params = {:body => confirmation_text, :to => "+447751703401", :from => "+441143032291"}
-    client.account.messages.create(params)
+  def confirmation_text
+    h = Time.now.hour
+    delivery_time = "#{h==23 ? 0 : h+1}:#{Time.now.min}"
+    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
   end
 
-  def confirmation_text
-    delivery_time = "#{Time.now.hour+1}:#{Time.now.min}"
-    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+  private
+
+  def send_confirmation_sms
+    SMS.new(confirmation_text, "+447751703401").send_sms
   end
 
   def fail_if_wrong_id(id)

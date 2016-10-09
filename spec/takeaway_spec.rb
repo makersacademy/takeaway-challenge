@@ -99,7 +99,7 @@ describe Takeaway do
         allow(order).to receive(:add_item)
         allow(order).to receive(:items).and_return [{item: dish, quantity: 1}]
         subject.add_dish 1
-        allow(subject).to receive(:send_confirmation_SMS)
+        allow(subject).to receive(:send_confirmation_sms)
       end
 
       it 'should save the order' do
@@ -108,7 +108,7 @@ describe Takeaway do
       end
 
       it 'should send a confirmation SMS' do
-        expect(subject).to receive(:send_confirmation_SMS)
+        expect(subject).to receive(:send_confirmation_sms)
         subject.place_order
       end
 
@@ -118,7 +118,8 @@ describe Takeaway do
       end
 
       it 'should return a confirmation text' do
-        delivery_time = "#{Time.now.hour+1}:#{Time.now.min}"
+        h = Time.now.hour
+        delivery_time = "#{h==23 ? 0 : h+1}:#{Time.now.min}"
         text = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
         expect(subject.place_order).to eq text
       end
