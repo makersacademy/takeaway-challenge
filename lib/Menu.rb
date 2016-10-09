@@ -1,7 +1,7 @@
 class Menu
 
   def initialize
-    @menu = {"taco"=>1.00, "burrito"=>1.50, "chips"=>1.00, "queso"=> 0.50, "guacamole"=>0.50}
+    @menu = {"Taco"=>1.00, "Burrito"=>1.50, "Chips"=>1.00, "Queso"=> 0.50, "Guacamole"=>0.50}
   end
 
   def show_menu
