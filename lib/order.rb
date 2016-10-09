@@ -3,6 +3,7 @@ class Order
   attr_reader :total_price, :items
 
   MAX_NAME_LENGTH = 20
+  DELIVERY_TIME = 30
 
   def initialize
     @total_price = 0
@@ -35,7 +36,10 @@ class Order
   end
 
   def text
-    #send text
+    t = delivery_time
+    message = "Thank you for your order! Estimated delivery time: #{t.hour}:#{t.min.round(-1)}"
+    text = Text.new(message)
+    text.send
   end
 
   private
@@ -59,6 +63,10 @@ class Order
   def confirm_order(payment)
     text
     "Thank you for the tip!" if payment > @total_price
+  end
+
+  def delivery_time
+    Time.new + DELIVERY_TIME*60
   end
 
 
