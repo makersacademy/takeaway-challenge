@@ -10,4 +10,8 @@ describe Checkout do
     end
   end
 
+  describe "#start_order" do
+    xit ''
+  end
+
 end
