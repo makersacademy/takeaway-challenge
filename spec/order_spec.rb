@@ -13,15 +13,9 @@ describe Order do
       expect(subject.basket.count).to eq 0
     end
 
-    it 'returns a Menu object' do
-      expect(subject.menu).to be_an_instance_of Menu
-    end
-
     it 'returns an array of menu items' do
-      expect(subject.menu.list).to be_an_instance_of Array
+      expect(subject.menu).to be_an_instance_of Array
     end
-
-
   end
 
   describe '#add_item' do
@@ -31,7 +25,7 @@ describe Order do
     end
 
     before do
-      subject.add_item("Chicken Teriyaki")
+      subject.add_item(subject.menu[1])
     end
 
     it 'adds an item to the basket' do
@@ -43,9 +37,8 @@ describe Order do
     end
 
     it 'adds the quantity specified' do
-      subject.add_item("Tuna Sashimi", 4)
+      subject.add_item(subject.menu[2], 4)
       expect(subject.basket.last[:quantity]).to eq 4
     end
-
   end
 end

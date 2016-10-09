@@ -16,10 +16,5 @@ describe Menu do
     it 'returns a Float to represent the price of a dish' do
       expect(subject.list.first.price).to be_an_instance_of Float
     end
-
-    # it 'adds creates an Order object' do
-    #   expect(subject.order).to be_an_instance_of Order
-    # end
-
   end
 end

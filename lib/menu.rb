@@ -12,17 +12,11 @@ class Menu
               dish.new("Chicken Katsu Curry", 7.95),
               dish.new("Yellow Tail Sashimi", 5.95),
               dish.new("Salmon Sashimi", 5.95),
-              dish.new("Tuni Sashimi", 5.95),
+              dish.new("Tuna Sashimi", 5.95),
               dish.new("Cucumber Maki", 1.95),
               dish.new("Miso Soup", 1.50),
               dish.new("Boiled Rice", 1.95),
               dish.new("Asahi", 3.75),
               dish.new("Hot Sake", 5.75) ]
-    # @order = order
   end
-
-  # def add_to_order(item, quantity = 1)
-  #   @order.add_item(item, quantity)
-  # end
-
 end
