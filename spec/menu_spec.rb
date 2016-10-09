@@ -10,4 +10,7 @@ describe Menu do
     expect(menu.items.first.name).to eq "pie"
   end
 
+  it 'return a dish when ordered' do
+    expect(menu.order("pie")).to have_attributes(name: "pie")
+  end
 end
