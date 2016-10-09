@@ -1,4 +1,5 @@
 require 'order_menu'
+
 describe OrderMenu do
 
   subject(:order) {described_class.new}

@@ -21,7 +21,7 @@ class DishSelection
 
   def print_options_menu
     show_food_menu
-    puts "Please type the numbers of the dishes you would to add to your order"
+    puts "\nPlease type the numbers of the dishes you would to add to your order"
     puts "seperate the numbers with spaces, and press enter when finished"
     puts "eg. 1 2 3 4"
     get_selection
