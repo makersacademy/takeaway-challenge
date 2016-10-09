@@ -1,13 +1,16 @@
+require_relative 'menu'
+
 class Order
 
-  attr_reader :list
+  attr_reader :basket, :menu
 
-  def initialize
-    @list = []
+  def initialize(item_class = Menu)
+    @menu = item_class.new
+    @basket = []
   end
 
   def add_item(item, quantity = 1)
-    @list << {item: item, quantity: quantity}
+    @basket << {item: item, quantity: quantity}
   end
 
 end
