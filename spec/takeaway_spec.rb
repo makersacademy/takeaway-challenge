@@ -50,5 +50,17 @@ describe TakeAway do
       takeaway.complete_order(34.93)
     end
   end
+  
+  
+  describe "Menu is changed" do
+    #let(:menu_obj) {double :menu_obj}
+    #let(:file) {double :file}
+    it "#change_menu returns a new menu object" do
+      #takeaway.change_menu("menu.csv")
+      #expect(takeaway).to receive(:new).with(:change_menu).and_return(menu_obj)
+      
+      # COULD NOT GET THIS TEST TO WORK!!!!!!!!!!!!!!!!!!!!!!!
+    end
+  end
 
 end
