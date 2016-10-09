@@ -2,7 +2,6 @@ require 'coveralls'
 Coveralls.wear!
 require 'capybara/rspec'
 
-require 'menu'
 require "restaurant"
 
 RSpec.configure do |config|
