@@ -18,7 +18,17 @@ class Takeaway
   end
 
   def show_order
-    order_system.show_order
+    order_system.order_list.each do |item|
+      puts "#{item[1][0]} x #{item[0]} £#{item[1][1]}"
+    end
+  end
+
+  def show_total
+    puts "Total: £#{order_system.order_total}"
+  end
+
+  def confirm(amount)
+    raise "Does not match total, order not placed" if order_system.order_total != amount
   end
 
 end

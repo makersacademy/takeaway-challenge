@@ -5,7 +5,7 @@ describe OrderSystem do
   let(:menu) { double(:menu) }
 
   before :each do
-    allow(menu).to receive(:list).and_return({:"Chicken Curry" => 4.99})
+    allow(menu).to receive(:list).and_return({:"Chicken Curry" => 4.99, :Chips => 1.99})
     @item = order_system.menu.list.first[0]
     order_system.place_order(@item, 2)
   end
@@ -23,10 +23,13 @@ describe OrderSystem do
     end
   end
 
-  describe "#show_order" do
+  describe "#order_total" do
     context "when called" do
-      it "outputs a list of items in the order_list array" do
-        expect(order_system.show_order).to eq order_system.order_list
+      it "returns a sum of all items in order_list" do
+        total = 15.95
+        item2 = order_system.menu.list.to_a.last[0]
+        order_system.place_order(item2, 3)
+        expect(order_system.order_total).to eq total
       end
     end
   end
