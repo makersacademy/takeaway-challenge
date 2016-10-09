@@ -17,7 +17,7 @@ describe Order do
 									order.select(pasta.number)
 									order.select(chow_mein.number)
 									order.select(pasta.number)
-									order.calculate_total 
+									order.place(+447000000000)
 								end
 
 	subject(:order) {described_class.new(takeaway)}
@@ -30,17 +30,20 @@ describe Order do
 		expect{order.select(0)}.to raise_error "We do not have a dish with that number!"
 	end
 
-	it 'gives a total' do
-		expect(order.total).to eq(2*chow_mein.price + 3*pasta.price)
-	end
+	describe '#place' do
 
-	it 'sends the order to the takeaway' do
-		expect(order.place(+447000000000)).to eq(takeaway.place(order))
-	end
+		it 'gives a total' do
+			expect(order.total).to eq(2*chow_mein.price + 3*pasta.price)
+		end
 
-	it 'provides a phone number when placing an order' do
-		order.place(+447000000000)
-		expect(order.phone_number).to eq(+447000000000)
+		it 'sends the order to the takeaway' do
+			expect(order.place(+447000000000)).to eq(takeaway.place(order))
+		end
+
+		it 'provides a phone number when placing an order' do
+			expect(order.phone_number).to eq(+447000000000)
+		end
+
 	end
 
 end

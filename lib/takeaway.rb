@@ -1,14 +1,18 @@
+require_relative 'order'
+require_relative 'menu'
+require_relative 'phone'
+
 class Takeaway
 
 	attr_reader :orders, :menu
 
 	DELIVERY_TIME = 30*60
 
-	def initialize(menu)
+	def initialize(menu, takeaway_number = "+441163263609")
 		@orders = Array.new
 		@menu = menu
 		time = Time.now + DELIVERY_TIME
-		@phone = Phone.new("+441163263609", "Thank you! Your order was placed and will be delivered #{time.strftime("before %I:%M%p")}")
+		@phone = Phone.new(takeaway_number, "Thank you! Your order was placed and will be delivered #{time.strftime("before %I:%M%p")}")
 	end
 
 	def place(order)

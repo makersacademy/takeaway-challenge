@@ -17,13 +17,15 @@ class Order
 		@food.keys.include?(dish) ? @food[dish] += 1 : @food[dish] = 1
 	end
 
-	def calculate_total
-		@food.each { |dish, quantity| @total += quantity*dish.price }
-	end
-
 	def place(phone_number)
+		calculate_total
 		@phone_number = phone_number
 		@takeaway.place(self)		
 	end
 	
+	private
+
+	def calculate_total
+		@food.each { |dish, quantity| @total += quantity*dish.price }
+	end
 end
