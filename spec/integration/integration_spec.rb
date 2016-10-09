@@ -1,6 +1,7 @@
 require 'takeaway'
 require 'order_item'
 require 'menu'
+require 'sms_notifier'
 
 describe 'Takeaway integration', :integration => true do
   subject(:takeaway) do
