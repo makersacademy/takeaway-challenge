@@ -1,5 +1,6 @@
 Takeaway Challenge
 ==================
+[![Build Status](https://travis-ci.org/lauraweston/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lauraweston/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/lauraweston/takeaway-challenge/badge.png)](https://coveralls.io/r/lauraweston/takeaway-challenge)
 ```
                             _________
               r==           |       |
@@ -11,7 +12,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +70,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
@@ -84,8 +85,51 @@ $ coveralls report
 
 This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
 
-Build Badge Example
-------------------
+Solution
+--------
+Usage:
+- Register for twilio account
+- Update constants in ```/lib/twilio_credentials.rb``` as below:
+```
+class TwilioCredentials
+  ACCOUNT_SID = <insert account id>
+  AUTH_TOKEN = <insert auth token>
+  FROM = <twilio number>
+  TO = <mobile number>
+end
+```
+RSpec tests:   
+- Travis CI is set up to exclude the integration tests so as to avoid calling Twilio API. Twilio API is mocked in unit tests.
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Example in irb:
+```
+2.3.1 :005 > menu = Menu.new
+ => #<Menu:0x007fecb42e47a0 @items=[#<Dish:0x007fecb42e4728 @name="pie", @price=5>, #<Dish:0x007fecb42e46d8 @name="pizza", @price=6>]>
+2.3.1 :006 > order = Order.new
+ => #<Order:0x007fecb42d6b00 @items=[]>
+2.3.1 :007 > sms = SmsNotifier.new
+ => #<SmsNotifier:0x007fecb42ce950>
+2.3.1 :008 > takeaway = Takeaway.new(menu, order, Time, sms)
+ => #<Takeaway:0x007fecb42afb18 @menu=#<Menu:0x007fecb42e47a0 @items=[#<Dish:0x007fecb42e4728 @name="pie", @price=5>, #<Dish:0x007fecb42e46d8 @name="pizza", @price=6>]>, @order=#<Order:0x007fecb42d6b00 @items=[]>, @sms_notifier=#<SmsNotifier:0x007fecb42ce950>, @time=Time>
+2.3.1 :009 > takeaway.view_menu
+ => [#<Dish:0x007fecb42e4728 @name="pie", @price=5>, #<Dish:0x007fecb42e46d8 @name="pizza", @price=6>]
+2.3.1 :010 > takeaway.order_item("pizza")
+ => #<OrderItem:0x007fecb429e908 @item=#<Dish:0x007fecb42e46d8 @name="pizza", @price=6>, @quantity=1>
+2.3.1 :011 > takeaway.order_item("pie", 4)
+ => #<OrderItem:0x007fecb514e930 @item=#<Dish:0x007fecb42e4728 @name="pie", @price=5>, @quantity=4>
+2.3.1 :012 > takeaway.order_item("noodles", 3)
+RuntimeError: Please select an item from the menu.
+       	from /Users/lauraweston/code/makers/week-2/takeaway-challenge/lib/menu.rb:12:in `order'
+       	from /Users/lauraweston/code/makers/week-2/takeaway-challenge/lib/takeaway.rb:16:in `order_item'
+       	from (irb):12
+       	from /Users/lauraweston/.rvm/rubies/ruby-2.3.1/bin/irb:11:in `<main>'
+2.3.1 :013 > takeaway.review_order
+ => "1 x pizza: £6, 4 x pie: £20, Order total: £26"
+2.3.1 :014 > takeaway.checkout(10)
+RuntimeError: Please pay the correct amount!
+       	from /Users/lauraweston/code/makers/week-2/takeaway-challenge/lib/takeaway.rb:28:in `checkout'
+       	from (irb):14
+       	from /Users/lauraweston/.rvm/rubies/ruby-2.3.1/bin/irb:11:in `<main>'
+2.3.1 :015 > takeaway.checkout(26)
+ => "Thank you! Your order was placed and will be delivered before 23:27."
+ ```
