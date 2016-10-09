@@ -20,6 +20,12 @@ describe Order do
     it 'should return the order item' do
       expect(subject.add_item(dish, 1)).to eq order_item
     end
+    it 'should update selected items quantity when already added' do
+      subject.add_item(dish, 1)
+      subject.add_item(dish, 1)
+      updated_dish_item = { item: dish, quantity: 2 }
+      expect(subject.items).to include updated_dish_item
+    end
   end
 
   context 'ordering 3 different dishes' do
