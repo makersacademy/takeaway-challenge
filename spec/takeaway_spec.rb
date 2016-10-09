@@ -35,4 +35,10 @@ describe Takeaway do
     end
   end
 
+  describe '#confirm_order' do
+    it "raises an error when no items have been selected" do
+      expect{takeaway.confirm_order}.to raise_error "Your checkout basket is empty"
+    end
+  end
+
 end

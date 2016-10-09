@@ -4,14 +4,12 @@ require_relative 'sms'
 
 class Takeaway
 
-  attr_reader :see_menu, :order, :checkout_pricer
+  attr_reader :see_menu, :order
 
   def initialize
     @menu =  Menu.new
     @order = Order.new
     @sms = Sms.new
-    message_to_user
-
   end
 
   def see_menu
@@ -26,10 +24,6 @@ class Takeaway
 
   def checkout_price
     @order.total_price
-  end
-
-  def message_to_user
-    puts "Welcome to our Takeaway app!"
   end
 
   def confirm_order
