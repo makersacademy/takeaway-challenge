@@ -1,12 +1,13 @@
-require "interface"
+require "interface.rb"
 
 describe Interface do
 
   let(:menu) {double(:menu)}
   let(:order_class) {double(:order_class, new: order_instance)}
   let(:order_instance) {double(:order, add_to_order: nil, review_order: nil, checkout: nil)}
+  let(:adapter) { double(:adapter, send_sms: nil, get_inbound_messages: ["+123", "Taco-4"], update_messages: nil) }
 
-  let (:options_hash) {{menu: menu, order: order_class}}
+  let (:options_hash) {{menu: menu, order: order_class, adapter: adapter}}
   subject(:interface) {described_class.new(options_hash)}
 
   before do
@@ -17,6 +18,7 @@ describe Interface do
     it "Saves a menu when initialized" do
       expect(interface.instance_variable_get(:@menu)).to eq menu
     end
+  end
 
     it "Saves the order class when initialized" do
       expect(interface.instance_variable_get(:@order_class)).to eq order_class
@@ -29,8 +31,8 @@ describe Interface do
 
 context "moves to the Menu class" do
   it "Tells the Menu to print menu"  do
-    expect(menu).to receive (:show_menu)
-    interface.show_menu
+    expect(@menu).to receive (:show_menu)
+    # interface.show_menu
   end
 end
 
@@ -38,6 +40,7 @@ context "Beginning an order" do
   describe "#new_order" do
     before do
       interface.new_order
+    end
   end
 
   it "Sends the menu to the order instance" do
@@ -45,7 +48,7 @@ context "Beginning an order" do
   end
 
   it "Saves the new order" do
-    expect(interface.instance_variable_get(:@current_order)).to eq order_instance
+   expect(interface.instance_variable_get(:@current_order)).to eq order_instance
   end
 end
 
@@ -65,6 +68,7 @@ describe "#order" do
     interface.order("Taco", 3)
     expect(order_instance).to have_received(:add_to_order).with("Taco", 3)
   end
+end
 
   describe "#review_order" do
     before do
@@ -93,6 +97,25 @@ describe "#order" do
       end
     end
   end
-end
-end
-end
+
+context "Filling mobile orders" do
+  describe "#check_mobile_orders" do
+    before do
+      interface.check_mobile_orders
+    end
+
+    it "Gets valid orders from adapter" do
+      expect(adapter).to have_received(:get_inbound_messages)
+    end
+
+    it "Resents the current_order" do
+      expect(interface.instance_variable_get(:@current_order)).to be_nil
+    end
+
+    it "Delegates teh message updated to the adapter" do
+      expect(adapter).to have_received(:update_messages)
+    end
+
+    specify { expect {interface.check_mobile_orders}.to output.to_stdout}
+  end
+end 

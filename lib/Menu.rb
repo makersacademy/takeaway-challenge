@@ -12,7 +12,7 @@ end
   end
 
   def check_price(item)
-    raise "This item is not available" unless match_item(item)
+    fail "This item is not available" unless match_item(item)
     match_item(item)
   end
 

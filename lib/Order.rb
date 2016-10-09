@@ -1,6 +1,9 @@
 require_relative 'menu'
 
 class Order
+
+  attr_reader :total
+
   def initialize(menu = Menu.new)
     @cart = Hash.new(0)
     @menu = menu
@@ -19,13 +22,7 @@ class Order
   end
 
   def checkout(payment_amount)
-    raise "Please review your payment" unless @total.round(2) == payment_amount.round(2)
+    fail "Please review your payment" unless @total.round(2) == payment_amount.round(2)
     puts "Thank you for your order! Enjoy your meal!"
   end
-
-  cart.each do |i, q, s|
-    puts "#{i.capitalize} x #{q} : £#{s.round(2)}"
-  end
-
-  puts "Total = £#{cart.map { |_i, _j, k| k }.inject(:+).round(2)}"
 end 
