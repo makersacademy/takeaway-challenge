@@ -7,10 +7,11 @@ class Order
   end
 
   def confirm_total
+    total = 0
     order.each do |item|
-      item.each do |dish|
-        print dish
-      end
+      price = item.last.to_f
+      total += price
     end
+    total
   end
 end
