@@ -17,20 +17,20 @@ class Order
 
   def add_dish(dish_selection)
     @current_selection << dish_selection.to_i
-    # @interface.select_quantity
+    @interface.select_quantity
   end
 
   def add_quantity(dish_quantity)
     @current_selection << dish_quantity
-    # calculate_subtotal
+    #  calculate_subtotal
   end
 
   def calculate_subtotal
-    selection_cost = @current_selection[1] * @menu.prices[@current_selection[0]].to_f
-    # calculate_running_total(selection_cost)
+    selection_cost = @current_selection[1] * @menu.prices[@current_selection[0]]
     @current_selection << selection_cost
-    # calculate_running_total(selection_cost)
-    # build_orders_array
+    calculate_running_total(selection_cost)
+    build_orders_array
+    selection_cost
   end
 
   def order_summary
@@ -42,8 +42,9 @@ class Order
     puts "TOTAL: £#{@running_total}"
     @interface.confirm_order
   end
-
+#
   def reset_order
+    @current_selection = []
     @orders_array = []
     @running_total = 0
     @interface.select_dish #spawn new instance of order
