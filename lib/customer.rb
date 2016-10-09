@@ -26,6 +26,7 @@ class Customer
 
   def confirm_order
     @order_created = Order.new(pending_order)
+    @order_created.print_order
   end
 
   def print_total
