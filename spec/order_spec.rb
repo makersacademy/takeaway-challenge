@@ -1,12 +1,13 @@
 require "order_system"
-require "menu"
 
 describe OrderSystem do
-  subject(:order_system) { described_class.new(Menu.new) }
+  subject(:order_system) { described_class.new(menu) }
+  let(:menu) { double(:menu) }
 
   describe "#order" do
     context "when give an item and quantity" do
       before :each do
+        allow(menu).to receive(:list).and_return({:"Chicken Curry" => 4.99})
         @item = order_system.menu.list.first[0]
         order_system.place_order(@item, 2)
       end
