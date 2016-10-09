@@ -26,10 +26,11 @@ class Customer
 
   def confirm_order
     @order_created = Order.new(pending_order)
-    @order_created.print_order
-  end
-
-  def print_total
     @order_created.confirm_total
+    # puts "The total for your order is £#{@order_created.confirm_total.total}."
   end
+#
+#   def print_total
+#     @order_created.confirm_total
+#   end
 end
