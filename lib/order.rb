@@ -2,10 +2,11 @@ require_relative 'menu'
 
 class Order 
 
-	attr_reader :food, :total
+	attr_reader :food, :total, :phone_number
 
-	def initialize(menu)
-		@menu = menu.dishes
+	def initialize(takeaway)
+		@takeaway = takeaway
+		@menu = @takeaway.menu.dishes
 		@food = {}
 		@total = 0
 	end
@@ -20,26 +21,10 @@ class Order
 		@food.each { |dish, quantity| @total += quantity*dish.price }
 	end
 
-	def place
-		puts "Order Placed:"
-		@food.each do |dish, quantity| 
-			puts "#{quantity} - #{dish.name}"
-		end
-		puts "Order Total: £#{total}"
+	def place(phone_number)
+		@phone_number = phone_number
+		@takeaway.place(self)		
 	end
 
-	# def place
-	# 	puts "Order placed:"
 	
-	#   puts "Order Total: #{order.total}"
-	# 	send_text
-	# end
-
-	# def send_text
-	# 	@client.messages.create(
-	#   from: '+447572283141',
-	#   to: '+447572283141',
-	#   body: "Thank you! Your order was placed and will be delivered before 18:52")
-	# end
-
 end
