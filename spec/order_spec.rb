@@ -4,7 +4,7 @@ describe Order do
 
   subject(:order) {described_class.new}
   let(:list){double(:list)}
-  let(:dish1){double("dish", dish: "Chinese", price: 7.5)}
+  let(:dish1){double :dish, to_sym: :dish1}
   let(:dish2){double("dish", dish: "Indian", price: 8.0)}
   let(:item){double :item}
   let(:quantity){double :quantity}
@@ -15,13 +15,13 @@ describe Order do
   describe "#select_item" do
     it 'allows for each food item to be selected' do
       order.select_item(dish1)
-      expect(order.basket).to include dish1
+      expect(order.basket).to include dish1.to_sym
     end
 
 
     it 'can choose a certain item' do
       order.select_item(dish1)
-      expect(order.basket).to have_key(dish1)
+      expect(order.basket).to have_key(dish1.to_sym)
     end
 
     # can't figure this one out
@@ -53,7 +53,8 @@ describe Order do
     end
 
     it 'outputs selected items' do
-      expect(order.confirm).to eq("Total cost: #{@your_order}")
+      order.select_item(dish1, 1)
+      expect(order.confirm).to be("Total cost: #{@your_order}")
     end
   end
 

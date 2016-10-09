@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'checkout'
 
 class Order
 
@@ -10,7 +11,7 @@ class Order
   end
 
   def select_item(item, quantity=1)
-    basket[item] += quantity
+    basket[item.to_sym] = quantity
     puts "#{quantity} x #{item} has been added to your basket"
   end
 
@@ -19,18 +20,19 @@ class Order
   end
 
   def confirm
+    puts "Your selection is: "
     basket.each do |item, quantity|
-      price = menu.list[item]
-      "Your selection is: #{item} x #{quantity} = #{price} per dish"
+      price = menu.item[item]
+      puts "#{quantity} x #{item} = £#{price} per dish"
     end
-    "Total cost: #{your_order}"
+    puts "Total cost: £#{your_order}"
   end
 
 
   def your_order
     basket.each do |item, quantity|
       @sum = 0
-      price = menu.list[item]
+      price = menu.item[item]
       @sum += (price * quantity)
     end
     @sum

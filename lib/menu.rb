@@ -13,12 +13,12 @@ class Menu
   end
 
   def full_list
-    item.each { |dish, price| puts "Dish: #{dish}\nPrice: #{price}"}
+    item.each { |dish, price| puts "Dish: #{dish}\nPrice: £#{price}"}
   end
 
   def on_list?(input)
     raise "Choice not availble" if !item.include?(input)
-    true
+    item[input.to_sym]
   end
 
 
