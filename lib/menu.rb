@@ -12,10 +12,11 @@ def initialize
 end
 
 def view_menu
-  @dishes.each {|item, price| puts "#{item}: #{price}"}
+  @dishes.each{|dish, price| puts "#{dish} -- £#{price}"}
+  [@dishes]
 end
 
-def add_dish_to_menu(item, price=0)
+def add_item_to_menu(item, price=0)
   @dishes[item] = 0 unless @dishes[price]
   @dishes[item] += price
 end
