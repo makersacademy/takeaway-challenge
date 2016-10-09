@@ -5,4 +5,8 @@ class OrderItem
     @item = item
     @quantity = quantity
   end
+
+  def cost
+    item.price * quantity
+  end
 end
