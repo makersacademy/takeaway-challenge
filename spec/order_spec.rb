@@ -2,8 +2,7 @@ require 'order'
 
 describe Order do
 
-  order = Order.new
-
+  subject(:order){ described_class.new }
 
   it "Ensures the current order is empty to start with" do
     expect(order.current_order).to be_empty
@@ -13,20 +12,16 @@ describe Order do
     expect(order.total_price).to eq 0
   end
 
+  it "Shows the order total" do
+    order.add_item(1)
+    order.add_item(2)
+    expect(order.order_cost).to eq "Total price: 7"
+  end
+
   it "Checks that fries have been added to the current_order" do
-    order.add_item("fries",3)
-    expect(order.current_order).to include {"fries"}
+    order = Order.new
+    order.add_item(2)
+    expect(order.current_order).to eq [{:dish=>2, :name=>"burger", :price=>4}]
   end
-
-  before do
-    allow(order).to receive(:send_text)
-  end
-
-  it 'Sends a delivery confirmation message' do
-    delivery = (Time.now + 3600).strftime("%H:%M")
-    expect(order).to receive(:send_text).with("Thank you for your order; your food will be delivered by #{delivery}")
-    order.send_text("Thank you for your order; your food will be delivered by #{delivery}")
-  end
-
 
 end
