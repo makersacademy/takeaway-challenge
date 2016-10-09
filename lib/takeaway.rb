@@ -3,11 +3,12 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :see_menu, :order, :checkout_price
+  attr_reader :see_menu, :order, :checkout_pricer
 
   def initialize
     @menu =  Menu.new
     @order = Order.new
+    message_to_user
   end
 
   def see_menu
@@ -24,6 +25,8 @@ class Takeaway
     @order.total_price
   end
 
-
+  def message_to_user
+    puts "Welcome to our Takeaway app!"
+  end
 
 end
