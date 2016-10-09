@@ -7,9 +7,7 @@ auth_token = 'd0751fad28cac67c7231ffe72d06afb1'
 
 from = "+441344231766" # Your Twilio number
 
-friends = {
-"+447482639626" => "Laurent"
-}
+friends = {"+447482639626" => "Laurent"}
 friends.each do |key, value|
   @client.account.messages.create(
     :from => from,

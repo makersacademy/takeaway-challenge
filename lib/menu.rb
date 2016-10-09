@@ -18,7 +18,8 @@ attr_reader :current_menu
 
   def print_menu
     @current_menu.each do |dish|
-    dish_data = [dish[:dish_category], dish[:dish], "£#{dish[:price]}", " number: #{dish[:dish_number]}"]
+    dish_data = [dish[:dish_category], dish[:dish], "£#{dish[:price]}",
+    " number: #{dish[:dish_number]}"]
     puts dish_data.join(" ")
     end
   end
