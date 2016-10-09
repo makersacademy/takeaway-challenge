@@ -36,7 +36,11 @@ class Order
   def ask_if_sms_order
     puts "Would you like to order via sms?"
     answer = gets.chomp.downcase
-    answer == "yes" ? sms_order : ask_for_order
+    if answer == "yes" then sms_order elsif answer == "no" then ask_for_order
+    else
+       not_a_valid_choice
+       ask_if_sms_order
+    end
   end
 
   def sms_order
