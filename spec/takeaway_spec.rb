@@ -4,6 +4,12 @@ require "menu"
 describe Takeaway do
   let(:takeaway) { (Takeaway.new) }
 
+  context "show_menu" do
+    it "shows a list of dishes with prices" do
+      expect(takeaway.show_menu).to eq takeaway.hash_menu
+    end
+  end
+
   context "add_items" do
     it 'will be able to add_items to takeaway order' do
       takeaway.add_items("Chicken", 3)
@@ -26,8 +32,17 @@ describe Takeaway do
      end
   end
 
+  context "get_overall_price" do
+    it "will calculate the correct overall order price" do
+      takeaway.add_items("Chicken", 3)
+      takeaway.add_items("Cobra", 5)
+      expect(takeaway.total_price). to eq 35
+    end
+  end
+
 
 end
+
 
 # As a customer
 # So that I am reassured that my order will be delivered on time
