@@ -1,4 +1,4 @@
-Takeaway Challenge 
+Takeaway Challenge
 ==================
 [![Build Status](https://travis-ci.org/lauraweston/takeaway-challenge.svg?branch=master)](https://travis-ci.org/lauraweston/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/lauraweston/takeaway-challenge/badge.png)](https://coveralls.io/r/lauraweston/takeaway-challenge)
 ```
@@ -84,3 +84,19 @@ $ coveralls report
 ```
 
 This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+
+Solution
+--------
+Usage:
+- Register for twilio account
+- Create ```twilio_credentials.rb``` in ```/lib``` as below:
+```
+class TwilioCredentials
+  ACCOUNT_SID = <insert account id>
+  AUTH_TOKEN = <insert auth token>
+  FROM = <twilio number>
+  TO = <phone number>
+end
+```
+RSpec tests:
+Travis CI is set up to exclude the integration tests so as to avoid calling Twilio API. Twilio API is mocked in unit tests.

@@ -1,4 +1,4 @@
-require 'sms_notifier'
+require 'order_item'
 
 class Takeaway
   def initialize(menu, time, sms_notifier)
