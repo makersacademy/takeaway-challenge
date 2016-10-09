@@ -50,3 +50,9 @@ end
 class Confirmation
   def send_text
   end
+
+  Features to test/build
+  1. Create a dish
+  2. View menu
+
+  
