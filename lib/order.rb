@@ -55,8 +55,6 @@ class Order
     confirm == "yes" ? send_sms : exit
   end
 
-  private
-
     def set_to_nil
         @ordered_dish_number = nil; @quantity = nil
         ask_for_further_dish
@@ -78,4 +76,6 @@ class Order
         require_relative 'send_sms'
         exit
     end
+
+  private :set_to_nil, :summary, :total_amount, :send_sms
 end
