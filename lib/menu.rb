@@ -19,7 +19,11 @@ class Menu
     @dishes[dish].to_f.round(2)
   end
 
-  def print_menu
-    puts @dishes
+  def to_s
+    result = ''
+    @dishes.each do |dish, price|
+      result += "#{dish} - #{price}\n"
+    end
+    result
   end
 end
