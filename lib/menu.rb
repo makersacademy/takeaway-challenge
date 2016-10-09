@@ -23,13 +23,13 @@ class Menu
     print "Use '.order(food_description)' to add items.\n"
   end
   
-  def contains?(item)
-    !!menu[item]
-  end
+    def contains?(item)
+      !!menu[item]
+    end
   
-  def get_details(item)           
-    menu.select { |k, v| k[item] }    
-  end
+    def get_details(item)           
+      menu.select { |k, v| k[item] }    
+    end
   
   private
   
