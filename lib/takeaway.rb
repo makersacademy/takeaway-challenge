@@ -2,7 +2,7 @@ require_relative "menu"
 require_relative "order_system"
 
 class Takeaway
-  attr_reader :menu
+  attr_reader :menu, :order_system
 
   def initialize
     @menu = Menu.new
