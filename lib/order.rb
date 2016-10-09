@@ -25,7 +25,6 @@ class Order
 
   def bill
     puts total_bill
-    total_bill
   end
 
   def confirm_order
