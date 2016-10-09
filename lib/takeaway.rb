@@ -1,5 +1,4 @@
-require 'order_item'
-require 'order'
+require_relative "order_item"
 
 class Takeaway
   def initialize(menu, order, time, sms_notifier)

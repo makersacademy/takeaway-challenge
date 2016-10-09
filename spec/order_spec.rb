@@ -1,4 +1,4 @@
-require 'order'
+require "order"
 
 describe Order do
   let(:pie) { Dish.new("pie", 5) }

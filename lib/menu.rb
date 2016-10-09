@@ -8,6 +8,8 @@ class Menu
   end
 
   def order(selection)
-    items.select { |item| item.name == selection }.first
+    order = items.select { |item| item.name == selection }.first
+    fail "Please select an item from the menu." if order.nil?
+    order
   end
 end
