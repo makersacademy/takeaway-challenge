@@ -23,4 +23,10 @@ describe Basket do
     expect(basket.view_basket).to eq({:chicken => 10})
   end
 
+  it "empties basket after order" do
+    basket.add_to_basket("chicken")
+    expect(basket.empty).to eq({})
+  end
+
+
 end

@@ -29,6 +29,7 @@ class Order
   def confirm_order (total)
   fail "wrong amount" if  total != @basket.total
   @text.send
+  @basket.empty
   "Order sent"
 
   end

@@ -28,6 +28,9 @@ def total
   "%.2f" % @total
 end
 
+def empty
+  @cart.clear
+end
 
 
 end

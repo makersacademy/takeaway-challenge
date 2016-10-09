@@ -25,7 +25,7 @@ describe Order do
       expect{order.confirm_order(8)}.to raise_error("wrong amount")
     end
 
-    it "returns confirmation"do
+    it "returns confirmation" do
       expect{order.confirm_order(10).to eq("Order sent")}
     end
   end
