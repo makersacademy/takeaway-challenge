@@ -1,4 +1,4 @@
-require 'rubygems'
+#require 'rubygems'
 require 'twilio-ruby'
 class SendMessage
 
@@ -13,6 +13,6 @@ class SendMessage
       :to => '+447542672130',
       :body => 'Your meal is on its way and will arrive in one hour'
       })
-  end
 
+    end
 end
