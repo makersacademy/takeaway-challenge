@@ -18,4 +18,6 @@ describe Menu do
  {:dish=>4, :name=>"shake", :price=>2.5}]
   end
 
+  it { should respond_to :dishes }
+
 end
