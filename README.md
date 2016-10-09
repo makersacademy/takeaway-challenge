@@ -29,5 +29,5 @@ t.order                   # spy upon the order items
 t.place_order             # place_order and send me a confirmation sms :D
 ```
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge/builds/166291323)](https://travis-ci.org/makersacademy/takeaway-challenge/builds/166291323)
-[![Coverage Status](https://coveralls.io/builds/8255233)](https://coveralls.io/builds/8255233)
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/builds/8255307/badge)]https://coveralls.io/builds/8255307)
