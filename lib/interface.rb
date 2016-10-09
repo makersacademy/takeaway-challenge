@@ -11,24 +11,25 @@ class Interface
     user_interaction
   end
 
-  def user_interaction
-    welcome
-    build_order
-    show_order
-  end
-
   def build_menu_display
     @menu.dishes.each_with_index do |dish, index|
       @menu_array << "#{index + 1}. #{dish.name}  £#{'%.2f' % [dish.price]}"
     end
   end
 
-    def welcome
-    puts
-    puts "Welcome to Malinna's Tasty Takeaway"
-    puts
-    puts "~~~~~  MENU  ~~~~~"
+  def user_interaction
+    welcome
+    build_order
+    show_order
+  end
+
+  def welcome
+    file_reader('/Users/malinnaleach/Programs/takeaway-challenge/lib/welcome.txt')
     display(@menu_array)
+  end
+
+  def file_reader(filepath)
+    File.open(filepath) {|f| puts f.read}
   end
 
   def display(array)
@@ -48,9 +49,7 @@ class Interface
   end
 
   def input_request
-    puts
-    puts "Please enter the number of the dish you would like,"
-    puts "or press return to finish your order."
+    file_reader('/Users/malinnaleach/Programs/takeaway-challenge/lib/input_request.txt')
     print ">> "
   end
 
@@ -60,13 +59,10 @@ class Interface
   end
 
   def show_order
-    puts
-    puts "Order summary:"
+    puts "\nOrder summary:"
     display(@order.order_display)
-    puts
-    puts "Total number of dishes:  #{@order.dish_qty}"
+    puts "\nTotal number of dishes:  #{@order.dish_qty}"
     puts "Total cost of your order:  £#{'%.2f' % [@order.total_cost]}"
-    puts
   end
 
 end

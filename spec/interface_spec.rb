@@ -19,8 +19,8 @@ describe Interface do
   #   expect(interface.order.total_cost).to eq 5.95 * 3
   # end
 
-  it 'should show order' do
-    allow(interface).to receive(:order.).and_return(1)
-  end
+  # it 'should show order' do
+  #   allow(interface).to receive(:order.).and_return(1)
+  # end
 
 end
