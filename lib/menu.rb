@@ -13,7 +13,7 @@ class Menu
   end
 
   def full_list
-    item.each { |x, y| puts "Dish: #{x}\nPrice: #{y}"}
+    item.each { |dish, price| puts "Dish: #{dish}\nPrice: #{price}"}
   end
 
   def on_list?(input)
