@@ -17,15 +17,6 @@ class Customer
 
   def select_dish
     puts "Please enter a menu choice:"
-    # Class goes here that captures input
-    # it has this method
-    # def grabInput
-    # selection = gets.chomp.to_i
-    # end
-    #
-    # so you can write this below
-    # selection = OrderGrabber.grabInput
-    # add_to_order(selection)
     selection = gets.chomp.to_i
     add_to_order(selection)
   end
