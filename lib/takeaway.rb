@@ -4,6 +4,7 @@ require_relative 'menu'
 
 class Takeaway
 
+
 def initialize
   @order = Order.new
   @message = Message.new
