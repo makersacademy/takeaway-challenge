@@ -11,6 +11,13 @@ describe Order do
     expect(order.total_prize).to eq(0)
   end
 
+  it "reports the total prize of the current order" do
+    order.add_chicken
+    order.check_order
+    expect(order.order).to eq([{dish: "Chicken and rice", prize: 3.50},
+    {total: "£3.5"}])
+  end
+
   describe "#add_chicken" do
     it "adds the chicken dish to the order array" do
       order.add_chicken

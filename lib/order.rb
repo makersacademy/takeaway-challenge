@@ -24,7 +24,7 @@ class Order
   end
 
   def check_order
-    @order << {total: "#{@total_prize}"}
+    @order << {total: "£#{@total_prize}"}
     @order
   end
 

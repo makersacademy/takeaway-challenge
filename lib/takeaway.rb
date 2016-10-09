@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
 
 class Takeaway
   attr_reader :menu
@@ -35,5 +36,10 @@ class Takeaway
 
   def check_order
     @new_order.check_order if @new_order != nil
+  end
+
+  def submit_order
+    @sms = SMS.new(config)
+    @sms.deliver
   end
 end

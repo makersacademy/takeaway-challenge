@@ -1,15 +1,21 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) {described_class.new}
-  let(:menu) {Menu.new}
+  subject(:takeaway) { described_class.new }
+  let(:menu) { double(:menu, dishes_list: dishes) }
+  let(:dishes) do
+    [{dish: "Chicken and rice", prize: 3.50},
+    {dish: "Lamb and rice", prize: 4.0},
+    {dish: "Beef and rice", prize: 4.50}]
+  end
   let(:new_order) {Order.new}
+  let(:sms) { instance_double("SMS", deliver: nil) }
 
 
 
   describe "#print_menu" do
     it "prints the menu" do
-      expect(takeaway.print_menu).to eq(menu.dishes_list)
+      expect(takeaway.print_menu).to eq(dishes)
     end
   end
 
@@ -34,6 +40,10 @@ describe Takeaway do
       takeaway.add_beef
       new_order.add_beef
       expect(takeaway.check_order).to eq(new_order.check_order)
+    end
+
+    it "sends an sms when the order is submitted" do
+      expect(takeaway).to respond_to(:submit_order)
     end
   end
 end
