@@ -19,7 +19,6 @@ def add_item(dish, quantity=0)
 end
 
 
-
 def send_text
   @message.send
 end

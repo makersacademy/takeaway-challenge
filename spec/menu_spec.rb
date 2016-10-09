@@ -12,12 +12,10 @@ describe Menu do
   end
 
   it "Should allow customers to view the menu" do
-    expect(menu.view_menu).to eq [{"kebab"=>3, "burger"=>4, "fries"=>2, "shake"=>2.5}]
-  end
-
-  it "Should allow items to be added to it" do
-    menu.add_item_to_menu("wrap", 3)
-    expect(menu.dishes.length).to eq 5
+    expect(menu.view_menu).to eq [{:dish=>1, :name=>"kebab", :price=>3},
+ {:dish=>2, :name=>"burger", :price=>4},
+ {:dish=>3, :name=>"fries", :price=>2},
+ {:dish=>4, :name=>"shake", :price=>2.5}]
   end
 
 end

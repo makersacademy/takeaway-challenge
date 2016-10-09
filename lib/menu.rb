@@ -3,22 +3,16 @@ class Menu
 attr_reader :dishes
 
 def initialize
-  @dishes = {
-    "kebab" => 3,
-    "burger" => 4,
-    "fries" => 2,
-    "shake" => 2.5
-  }
+  @dishes = [{dish: 1, name: "kebab", price: 3},
+             {dish: 2, name: "burger", price: 4},
+             {dish: 3, name: "fries", price: 2},
+             {dish: 4, name: "shake", price: 2.5}
+  ]
 end
 
 def view_menu
-  @dishes.each{|dish, price| puts "#{dish} -- £#{price}"}
-  [@dishes]
+  @dishes.each{|dish| puts "#{dish[:dish]}: #{dish[:name]} -- £#{dish[:price]}"}
 end
 
-def add_item_to_menu(item, price=0)
-  @dishes[item] = 0 unless dishes[price]
-  @dishes[item] += price
-end
 
 end
