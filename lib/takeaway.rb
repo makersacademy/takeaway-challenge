@@ -52,7 +52,7 @@ class TakeAway
   end
   
   def complete_order(total_price)
-    send_text("Thank you for your order. Total price: £#{total_price}")
+    send_text("Thank you for your order. Total price: £#{total_price}. You will receive it by #{expected_delivery_time}")
   end
   
   def send_text(message)
@@ -60,6 +60,10 @@ class TakeAway
   end
   
   private
+  def expected_delivery_time
+    t = Time.new + 3600
+    '%02d' % t.hour + ":" +  '%02d' % t.min
+  end
   
   def add_item(item)
     orders << @menu_obj.get_details(item)       

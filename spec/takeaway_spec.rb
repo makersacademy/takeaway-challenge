@@ -46,7 +46,7 @@ describe TakeAway do
     end
     
     it 'sends a payment confirmation text message' do
-      expect(takeaway).to receive(:send_text).with("Thank you for your order. Total price: £34.93")
+      expect(takeaway).to receive(:send_text).with(/Thank you for your order. Total price: £34.93/)
       takeaway.complete_order(34.93)
     end
   end
