@@ -1,7 +1,10 @@
 require_relative "menu"
 require_relative "order_system"
+require_relative "my_twilio"
 
 class Takeaway
+  include MyTwilio
+
   attr_reader :menu, :order_system
 
   def initialize
@@ -29,6 +32,19 @@ class Takeaway
 
   def confirm(amount)
     raise "Does not match total, order not placed" if order_system.order_total != amount
+    send_message
+  end
+
+  private
+
+  def send_message
+    @time = Time.new
+    @time += 30 * 60
+    client.account.messages.create({
+      from: "447400376220",
+      to: "4407852878326",
+      body: "Thank you! Your order was placed and will be delivered before #{@time.strftime("%H:%M")}"
+    })
   end
 
 end
