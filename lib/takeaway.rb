@@ -19,7 +19,7 @@ class Takeaway
     items = order.collect do |item|
       "#{item.quantity} x #{item.item.name}: £#{item.cost}"
     end
-    total = "Total: £#{total_cost}"
+    total = "Order total: £#{total_cost}"
     (items << total).join(", ")
   end
 
@@ -27,7 +27,7 @@ class Takeaway
   attr_reader :menu, :order
 
   def total_cost
-    order.collect { |item| item.cost }.reduce(:+)
+    order.collect { |item| item.cost }.reduce(0, :+)
   end
 
 end
