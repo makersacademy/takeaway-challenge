@@ -76,8 +76,12 @@ Choose a dish by passing its menu number to the method.
 
 ### Checking the Total Cost
 
-TBC
-
+```
+2.3.1 :010 > order.check
+Here's your order so far:
+3 - Chicken Pasta
+Order Total: £0
+```
 ### Placing the Order
 
 The program uses Twilio to send a text message to the specified phone number confirming the order.

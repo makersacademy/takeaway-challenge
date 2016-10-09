@@ -30,6 +30,17 @@ describe Order do
 		expect{order.select(0)}.to raise_error "We do not have a dish with that number!"
 	end
 
+	it 'does not raise an error if known dish number is given' do
+		expect{order.select(52)}.to_not raise_error
+	end
+
+	it 'can check an order' do
+		expect{ order.check }.to output("Here's your order so far:\n" +
+																		"2 - #{chow_mein.name}\n" +
+																		"3 - #{pasta.name}\n" +
+									"Order Total: £#{2*chow_mein.price + 3*pasta.price}\n").to_stdout
+	end
+
 	describe '#place' do
 
 		it 'gives a total' do

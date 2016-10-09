@@ -18,10 +18,11 @@ class Order
 	end
 
 	def check
-		calculate_total
-		puts "Order Total: #{order.total}"
-		@food.each do 
-			puts ""
+		puts "Here's your order so far:"
+		@food.each do |dish, quantity| 
+			puts "#{quantity} - #{dish.name}"
+		end
+		puts "Order Total: £#{total}"
 	end
 
 	def place(phone_number)
