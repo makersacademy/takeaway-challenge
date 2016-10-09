@@ -7,12 +7,8 @@ describe Customer do
 
   describe 'initialization' do
     it 'will have no order stored' do
-      expect(subject.order).to be_empty
+      expect(subject.pending_order).to be_empty
     end
-  end
-
-  it 'will allow customer to select from the menu' do
-    expect(subject.select_dish).to eq selection
   end
 
   it 'will allow customer to add selection to their order' do

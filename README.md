@@ -52,12 +52,19 @@ Outcome
 -------
 Testing this weekend went out the window (blaming a weekend in London for this one).
 
-I have no guard clauses, few very tests, no mocks.
+What I was able to do:
 
-Given time, here are the things I would like to do:
+- Create Menu class to load a menu from a csv file.
+- Create Customer class to allow a customer to select dishes and add it to an order.
+- Create Order class to receive an incoming order and total it up.
+- Create ConfirmationTextSender class which used the Twilio API to send text confirmation to the user.
+
+What I wasn't able to do (yet - could do this with more time):
 
 - Create a 'helper' class that mocks user input and tests it.
 - Create guard clauses that throw errors when user inputs incorrect dish.
 - Currently dishes are listed by number but I can implement functionality to type the name of the dish in and do a search for that item.
 - Allow ConfirmationTextSender to send the full order to the customer.
 - Allow the user to send orders via text.
+- Couldn't get rspec to load. Possibly something to do with the twilio gem. Rspec runs when twilio is required, but will not work in irb. Rspec fails when twilio-ruby is required, however this does work in irb.
+- Generally tidy it up a lot. 

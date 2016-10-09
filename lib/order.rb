@@ -1,3 +1,5 @@
+require 'confirmation_text_sender'
+
 class Order
 
   attr_reader :order, :total
