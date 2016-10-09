@@ -1,4 +1,8 @@
 require_relative './dish_selection'
+require_relative './send_sms'
+require 'dotenv'
+Dotenv.load
+
 class OrderMenu
 
   def initialize
@@ -6,10 +10,15 @@ class OrderMenu
   end
 
   def option_menu
-    puts "Availible dishses: #{availible_dishes}"
+    puts "Availible dishses:"
+    puts ""
+    puts "    -_-_-_-_-_-_-"
+    availible_dishes
+    puts "    _-_-_-_-_-_-_"
+    puts ""
     puts "press 1 to make a new order"
     puts "press 2 to view order and total"
-    puts "press 3 to confirm and place order"
+    puts "press 3 place order"
     puts "press 4 to exit"
   end
 
@@ -27,7 +36,7 @@ class OrderMenu
     when "2"
       view_order
     when "3"
-      # place order
+      place_order
     when "4"
       exit
     else
@@ -37,7 +46,7 @@ class OrderMenu
 
   def availible_dishes
     DishSelection.new.food_menu.each_value do
-      |value| puts "#{value[0]}, £#{value[1]}0"
+      |value| puts " #{value[0]}, £#{value[1]}0"
     end
   end
 
@@ -62,4 +71,10 @@ class OrderMenu
     @order.each { |x| total += x[1] }
     total
   end
+
+  def place_order
+    SendSms.new.message_customer
+    puts "Your order has been placed"
+  end
+
 end

@@ -32,7 +32,7 @@ class DishSelection
   end
 
   def show_food_menu
-    puts @food_menu
+    @food_menu.each {|key, value| puts " #{key} - #{value[0]}....£#{value[1]}0" }
   end
 
   def select_dish(selection)
