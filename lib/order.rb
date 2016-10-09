@@ -2,10 +2,10 @@ class Order
 
   attr_reader :order, :total
 
-  def initialize(order)
+  def initialize(order, text_confirm_order = ConfirmationTextSender.new)
     @order = order
     @total = 0
-    @text_confirm_order = ConfirmationTextSender.new
+    @text_confirm_order = text_confirm_order
   end
 
   def confirm_order

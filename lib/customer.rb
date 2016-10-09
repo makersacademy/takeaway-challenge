@@ -21,12 +21,14 @@ class Customer
     add_to_order(selection)
   end
 
-  def add_to_order(selection)
-    pending_order << @menu.menu[selection]
-  end
-
   def confirm_order
     @order_created = Order.new(pending_order)
     @order_created.confirm_order
+  end
+
+  private
+
+  def add_to_order(selection)
+    pending_order << @menu.menu[selection]
   end
 end

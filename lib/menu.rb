@@ -8,5 +8,4 @@ class Menu
     @menu = CSV.read("./lib/menu.csv")
   end
 
-
 end
