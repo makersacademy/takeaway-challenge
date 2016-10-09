@@ -19,4 +19,12 @@ describe Menu do
     printed_menu = "Lasagne £4.5, Risotto £5.0, Margerita £5.5"
     expect(menu.print_dishes).to eq(printed_menu)
   end
+
+  it "returns when a dish is on the menu" do
+    expect(menu.in_menu?(:lasagne)).to be true
+  end
+
+  it "returns when a dish is NOT on the menu" do
+    expect(menu.in_menu?(:paella)).to be false
+  end
 end
