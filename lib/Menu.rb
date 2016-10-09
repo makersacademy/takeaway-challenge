@@ -6,7 +6,8 @@ class Menu
 
   def show_menu
     puts "See the menu:"
-    puts @menu
+    menu.each do |item, price|
+      puts "#{item.capitalize} - £#{price}"
   end
 
   def check_price(item)
@@ -18,7 +19,7 @@ class Menu
     output = []
     cart.each do |item, quantity|
       output << [item, quantity, match_item(item) * quantity]
-    end
+  end
 
     output
   end
@@ -30,4 +31,5 @@ attr_reader :menu
 def match_item(item)
   menu[item]
 end
+  end
 end

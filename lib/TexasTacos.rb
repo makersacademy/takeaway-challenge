@@ -1,4 +1,4 @@
-require 'Menu'.#!/usr/bin/env ruby -wKU
+require 'Menu'#!/usr/bin/env ruby -wKU
 
 menu = Menu.new
 order = Order.new
