@@ -9,7 +9,7 @@ describe TakeAway do
 
   
   it "responds to the show_menu method" do
-    expect(subject).to respond_to(:read_menu)     #.with (1).argument
+    expect(subject).to respond_to(:read_menu)    
   end
   
   it "responds to the order method" do
@@ -19,12 +19,12 @@ describe TakeAway do
   describe "makes an order" do
   
     it "adds a single item to the orders array" do
-      item = "spring roll"        #This will fail if the menu changes
+      item = "spring roll"        # This will fail if the test menu in the spec folder changes
       expect{takeaway.order(item)}.to change{takeaway.orders.length}.by(+1)
     end
     
     it "adds a number of items to the orders array" do
-      item = "spring roll"        #This will fail if the menu changes
+      item = "spring roll"        # This will fail if the test menu in the spec folder changes
       expect{takeaway.order(item,3)}.to change{takeaway.orders.length}.by(+3)
     end
   end
@@ -38,11 +38,11 @@ describe TakeAway do
     end
     
     it "should produce the correct total" do
-      expect{(takeaway.total).to output('Total: £34.93').to_stdout }
+      expect { takeaway.total }.to output("Total: £34.93").to_stdout
     end
     
     it "checks that the balance submitted is correct" do
-      #expect(takeaway.checkout(34.93)).to eq true       #Don't understand why this doesn't work!!!!!!!!!
+      expect{takeaway.checkout(999)}.to output('Your order total does not match the calculated total').to_stdout 
     end
     
     it 'sends a payment confirmation text message' do

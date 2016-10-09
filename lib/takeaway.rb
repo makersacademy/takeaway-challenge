@@ -51,14 +51,14 @@ class TakeAway
     complete_order(value) if  @tot == value
   end
   
+  def complete_order(total_price)
+    send_text("Thank you for your order. Total price: £#{total_price}")
+  end
+  
   def send_text(message)
     @messager.send_message(message)
   end
   
-  def complete_order(total_price)
-    send_text("Thank you for your order. Total price: £#{total_price}")
-  end
-
   private
   
   def add_item(item)
