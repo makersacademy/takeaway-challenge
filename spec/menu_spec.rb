@@ -4,6 +4,10 @@ describe Menu do
 
   subject(:menu) {described_class.new}
 
+  it " creates an instance of the class" do
+    expect(menu).to be_instance_of(Menu)
+  end
+
   describe "#initialize" do
     it "holds an array of hashes with separate menu items" do
       expect(menu.menu_list).to eq([{item: 1, name: "American", price: 10},

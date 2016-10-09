@@ -1,4 +1,5 @@
 require 'order'
+require 'menu'
 
 describe Order do
 
@@ -19,6 +20,23 @@ describe Order do
 
     it "has zero order total" do
       expect(order.order_total).to be(0)
+    end
+  end
+
+  describe '#select_dish' do
+    it "receives an argument, the item number" do
+      expect(order).to respond_to(:select_dish).with(1).argument
+    end
+
+    it 'given item number as argument, include dish hash in current_order' do
+      order.select_dish(1)
+      expect(order.current_order).not_to be_empty
+    end
+
+    it 'select a number of dishes' do
+      order.select_dish(2)
+      order.select_dish(3)
+      expect(order.current_order.size).to be 2
     end
   end
 

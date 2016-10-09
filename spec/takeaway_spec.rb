@@ -5,11 +5,8 @@ describe Takeaway do
   subject(:takeaway) {described_class.new}
   let(:menu) {Menu.new}
 
-  context 'class of instance' do
-
-    it " creates an instance of the class" do
-      expect(takeaway).to be_instance_of(Takeaway)
-    end
+  it " creates an instance of the class" do
+    expect(takeaway).to be_instance_of(Takeaway)
   end
 
   describe "#see_menu" do

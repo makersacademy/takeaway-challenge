@@ -114,3 +114,5 @@ October 08, 2016
 - A new Order class is created to allow selection of items from the menu list
 - new spec file for order and Order class
 - for each order, the menu will be required for selection of items
+- initially, the order has 0 total to pay and no items in the selection(current_order)
+- select_dishes method will accept the item number as an argument in order to include dish in the selection of items

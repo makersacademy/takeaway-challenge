@@ -14,6 +14,10 @@ class Takeaway
     @menu.menu_list
   end
 
+  # def make_an_order
+  #   @order = Order.new
+  # end
+
 
 
 end
