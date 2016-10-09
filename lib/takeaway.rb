@@ -1,10 +1,12 @@
 require_relative 'messager'
+require_relative 'menu'
 
 class TakeAway
   
   attr_reader :read_menu, :menu, :item, :order, :orders, :messager      
   
-  def initialize(messager = Messager.new)
+  def initialize(menu = Menu.new, messager = Messager.new)
+    @menu1 = menu
     @messager = messager
     @orders = []
     @menu = {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}
@@ -70,19 +72,18 @@ end
 
 #=begin
 # require './lib/takeaway'
-# thai = TakeAway.new
-# puts thai.read_menu                
-# thai.order "spring roll", 3
-# thai.order "peking duck", 4
-#           #thai.order "spring roll"
-#           #thai.order "fu-king fried rice",3
-# puts thai.order "xxx"
-# puts thai
-# print thai.inspect
-# puts thai.summary
-# puts thai.total
-# puts thai.tot
-# puts thai.checkout(34.93)
+thai = TakeAway.new
+puts thai.read_menu                
+thai.order "spring roll", 3
+thai.order "peking duck", 4
+          #thai.order "spring roll"
+          #thai.order "fu-king fried rice",3
+puts thai.order "xxx"
+puts thai
+print thai.inspect
+puts thai.summary
+puts thai.total
+puts thai.checkout(34.92)
 
 
 #=end
