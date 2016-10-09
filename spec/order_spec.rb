@@ -12,21 +12,39 @@ require 'order'
 
       describe '#add_to_basket' do
 
-        it 'adds and item to the basket' do
-          order.add_to_basket(item, 2)
+        it 'adds items to the basket' do
+          order.add_to_basket(item, 1)
           expect(order.basket).to include item
         end
       end
 
-      describe '#calculate_total' do
-        it 'returns zero with an empty basket' do
-          expect(order.calculate_total).to eq 0
+      describe '#review_order' do
+
+        before do
+          $stdout = StringIO.new
         end
 
-        it 'returns total sum of all items in basket' do
-          order.add_to_basket(item, 2)
-          expect(order.calculate_total).to eq 20
+        after(:all) do
+          $stdout = STDOUT
         end
+
+        it 'prints out the final order and total' do
+          order.add_to_basket('pasta', 1)
+          order.review_order
+          expect($stdout.string).to match("1 x pasta: £10")
+          end
+        end
+
+      describe '#checkout' do
+
+        let(:text) { double :text , send_msg: "Message sent"}
+
+          it 'raises error if payment does not match total' do
+            order.add_to_basket('pasta', 1)
+            message = 'Please enter correct amount'
+            expect{order.checkout(1, text)}.to raise_error message
+          end
+
       end
-      
+
   end

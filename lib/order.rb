@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 
@@ -7,7 +8,6 @@ class Order
     def initialize(menu = Menu.new)
       @menu = menu
       @basket = Hash.new(0)
-      @total = 0
     end
 
     def show_menu
@@ -19,10 +19,35 @@ class Order
       @basket[item] += num
     end
 
-    def calculate_total
-      @basket.each do |item, num|
-        @total += (num * @menu.price(item))
-      end
-      @total
+    def review_order
+      order_total
+      calculate_total
     end
+
+    def checkout(payment, conf_method = Text.new)
+      fail 'Please enter correct amount' unless validate(payment)
+      conf_method.send_msg
+    end
+
+    private
+
+    def order_total
+      @basket.each do |item, num|
+        subtotal = num * @menu.price(item)
+        puts "#{num} x #{item}: £#{subtotal}"
+      end
+    end
+
+    def calculate_total
+      @total = @basket.inject(0) do |sum, (item, num)|
+        sum + (num * @menu.price(item))
+      end
+      puts "Total: £#{@total}"
+    end
+
+    def validate(payment)
+      calculate_total
+      @total == payment
+    end
+
 end
