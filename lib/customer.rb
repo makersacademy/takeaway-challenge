@@ -1,26 +1,30 @@
-# require_relative 'menu'
+require_relative 'order'
+require_relative 'menu'
 require 'csv'
 
 class Customer
 
-  attr_reader :order
+  attr_reader :menu
+  attr_accessor :new_order, :pending_order, :selection
 
   def initialize
-    @order = order
-  end
-
-  def menu
-    file = CSV.read("./lib/menu.csv")
-    puts file
-    puts "Here are the menu items."
+    @pending_order = []
+    @menu = Menu.new
+    @new_order = nil
+    @selection = selection
   end
 
   def new_order
-    puts "Please enter a menu choice: "
-    @order = gets.chomp.to_i
-    I want to take the meal that customer has selected,
-    scan the csv document for that meal.
-    if it exists, add that meal to the order.
+    puts "Please enter a menu choice:"
+    @selection = gets.chomp.to_i
+    create_order(@selection)
   end
 
+  def create_order(selection)
+    @pending_order << @menu.menu[selection]
+  end
+
+  def confirm_order
+    @new_order = Order.new(@pending_order)
+  end
 end
