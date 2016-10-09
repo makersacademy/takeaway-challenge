@@ -4,7 +4,7 @@ require_relative 'validation'
 
 class Interface
 
-  def initialize(order_class = Order, validation_class = Validation)
+  def initialize(order_class = Order, validation_class = Validation, menu = Menu)
     @menu = Menu.new
     @order = order_class
     @validation = validation_class
@@ -17,17 +17,17 @@ class Interface
     loop do
       puts "*** Welcome to the takeaway ***"
       puts "Select from the following options:"
-      puts "To view the menu, press 1"
-      puts "To make an order, press 2"
-      puts "To exit, press 3"
+      puts "1: View the menu"
+      puts "2: Make an order"
+      puts "3: Exit"
       selection = gets.chomp
       case selection
       when "1"
         @menu.print_menu
       when "2"
         order_instance
-        validation_instance # commented outh attempt at dependency inversion
-        select_dish
+        validation_instance # commented out attempt at dependency inversion
+        @interface.select_dish
       when "3"
         terminate
       else
@@ -35,6 +35,7 @@ class Interface
       end
     end
   end
+
 
   def select_dish
     @menu.print_menu
@@ -44,24 +45,10 @@ class Interface
     @validation.validate_selection(dish_selection)
   end
 
-  def invalid_entry(input)
-    puts "Not a valid #{input}, please try again"
-    if input == "dish"
-      select_dish
-    elsif input == "quantity"
-      select_quantity
-    end
-  end
-
   def select_quantity
     puts "How many would you like?"
     dish_quantity = gets.chomp.to_i
     @validation.validate_quantity(dish_quantity)
-  end
-
-  def invalid_quantity
-    puts "Please enter a value between 1 and 10"
-    select_quantity
   end
 
   def return_order
@@ -75,6 +62,16 @@ class Interface
     puts "2: Review and confirm the order"
     selection = gets.chomp
     @validation.evaluate_input(selection)
+  end
+
+  def order_summary
+    puts "ORDER SUMMARY:"
+    @orders_array.each_with_index do |x,index|
+      puts "#{index + 1}. #{x[1]} x #{@menu.menu[x[0]]}: £#{x[2]}"
+    end
+    puts "-----------"
+    puts "TOTAL: £#{@running_total}"
+    confirm_order
   end
 
   def confirm_order
@@ -94,7 +91,7 @@ class Interface
   private
 
   def order_instance
-    @order = @order.new(@menu,self) #@order ||=
+    @order = @order.new(@menu, self) #@order ||=
   end
 
   def validation_instance

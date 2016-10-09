@@ -17,27 +17,36 @@ class Validation
       if dish_selection.to_i <= @menu.menu.length
       @order.add_dish(dish_selection)
       else
-        @interface.invalid_entry("dish")
+        invalid_entry("dish")
       end
     else
-      @interface.invalid_entry("dish")
+      invalid_entry("dish")
     end
   end
 
   def validate_quantity(dish_quantity)
     if dish_quantity > 10
-      @interface.invalid_entry("quantity")
+      invalid_entry("quantity")
     else
       @order.add_quantity(dish_quantity)
+    end
+  end
+
+  def invalid_entry(input)
+    puts "Not a valid #{input}, please try again"
+    if input == "dish"
+      select_dish
+    elsif input == "quantity"
+      select_quantity
     end
   end
 
   def evaluate_input(selection)
     case selection
     when "1" then @interface.select_dish
-    when "2" then @order.order_summary
+    when "2" then @interface.order_summary
     else
-      "Not a valid input"
+      puts "Not a valid input"
       @interface.add_or_review
     end
   end
