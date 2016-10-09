@@ -37,9 +37,12 @@ class Takeaway
 
   private
 
-  def send_message
+  def delivery_time
     @time = Time.new
     @time += 30 * 60
+  end
+
+  def send_message
     client.account.messages.create({
       from: "447400376220",
       to: "4407852878326",

@@ -6,4 +6,7 @@ module MyTwilio
     auth_token = '509ec97348dcdd4473594be3bb7583a5'
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
+  def dog
+
+  end
 end
