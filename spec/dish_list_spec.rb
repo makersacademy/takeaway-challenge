@@ -35,4 +35,12 @@ describe DishList do
       expect(subject.to_s).to eq "1.  Fries                          2.00\n"
     end
   end
+
+  describe '#select_dish' do
+    it 'should select and return a dish by given id' do
+      allow(dish_class).to receive(:new).with(dish_data_hash).and_return dish
+      subject.add_dish(dish_data)
+      expect(subject.select_dish(1)).to eq dish
+    end
+  end
 end

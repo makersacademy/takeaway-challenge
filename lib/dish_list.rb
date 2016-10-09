@@ -14,6 +14,10 @@ class DishList
     @dishes.dup
   end
 
+  def select_dish(id)
+    dishes[id-1] # -1 as printed menu starts from 1 rather than 0 
+  end
+
   def to_s
     str = ''
     dishes.each_with_index do |dish, id|

@@ -4,10 +4,11 @@ require_relative 'dish'
 
 class Takeaway
 
-  attr_reader :dish_list
+  attr_reader :dish_list, :order
 
-  def initialize(dish_list = DishList.new(Dish))
-    @dish_list = dish_list
+  def initialize( args = {dish_list: DishList.new(Dish), order: Order.new} )
+    @dish_list = args[:dish_list]
+    @order     = args[:order]
   end
 
   def load_dishes(filename)
@@ -20,5 +21,15 @@ class Takeaway
 
   def menu
     puts dish_list
+  end
+
+  def add_dish(id)
+    dish = dish_list.select_dish(id)
+    order.add_item(dish)
+  end
+
+  def remove_dish(id)
+    dish = dish_list.select_dish(id)
+    order.remove_item(dish)
   end
 end
