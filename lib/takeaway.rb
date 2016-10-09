@@ -1,8 +1,9 @@
 require_relative 'menu'
+require_relative 'calculate'
 
 class Takeaway
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :current_basket, :calculate
 
   def initialize
     @menu = Menu.new
@@ -13,9 +14,13 @@ class Takeaway
     @menu.print_menu
   end
 
-  def order(menu_item, amount=1)
-    individual_item = {:item => menu_item, :amount => amount}
+  def add(menu_item, amount=1)
+    individual_item = {menu_item => amount}
     @basket << individual_item
+  end
+
+  def show_basket
+    @basket.each {|hash| hash.each {|k,v| print "#{v} x #{k}" }}
   end
 
 end

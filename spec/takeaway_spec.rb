@@ -17,15 +17,22 @@ describe Takeaway do
     end
   end
 
-  describe '#order' do
+  describe '#add' do
+
     it 'lets me select some number of several available dishes' do
-      expect(takeaway).to respond_to(:order).with(2).arguments
+      expect(takeaway).to respond_to(:add).with(2).arguments
     end
 
     it 'adds order to basket' do
-      takeaway.order('tacos')
+      takeaway.add('tacos')
       expect(takeaway.basket).not_to be_empty
     end
   end
 
+  describe '#show_basket' do
+    it 'lets me view my current basket' do
+      takeaway.add('tacos')
+      expect(takeaway.show_basket).to eq([{"tacos"=>1}])
+    end
+  end
 end

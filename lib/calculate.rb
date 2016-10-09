@@ -1,10 +1,12 @@
 require_relative 'takeaway'
+require_relative 'menu'
 
 class Calculate
 
-  def calculate_total
+  def initialize
+    @total = []
   end
 
-  def total_sum? # check total matches sum of all ordered dishes. predicate method
+  def total_sum?
   end
 end
