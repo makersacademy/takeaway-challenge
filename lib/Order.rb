@@ -11,4 +11,15 @@ class Order
     @total += @menu.check_price(item) * quantity
     @cart[item.capitalize] += quantity
   end
+
+  def review_order
+    subtotal = @menu.calculate_subtotal(@cart)
+    output_review(subtotal)
+  end
+
+  def checkout(payment_amount)
+    raise "Please review your payment" unless @total == payment_amount
+    puts "Thank you for your order! Enjoy your meal!"
+  end
+  
 end
