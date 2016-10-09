@@ -63,13 +63,17 @@ class Order
 
   def build_orders_array
     @orders_array << @current_selection
-    return_order
+    reset_current_selection
+    @interface.return_order
+  end
+
+  def reset_current_selection
+    @current_selection = []
   end
 
   def return_order
     puts "So that's #{@current_selection[1]} x #{@menu.menu[@current_selection[0]]} costing £#{@current_selection[2].round(3)}"
-    @current_selection = []
-    @interface.add_or_review
+    add_or_review
   end
 
 end

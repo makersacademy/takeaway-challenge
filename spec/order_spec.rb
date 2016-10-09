@@ -80,6 +80,8 @@ describe Order do
     it 'calculates the price of the current_selection' do
       allow(interface).to receive(:select_quantity).and_return "5"
       allow(interface).to receive(:add_or_review)
+      allow(interface).to receive(:add_or_review)
+      allow(interface).to receive(:return_order)
       # allow(menu).to receive(:prices).and_return "5"
       # allow(menu).to receive(:menu). and_return "2"
       subject.add_dish(5)
@@ -115,6 +117,7 @@ end
     it 'allows for multiple dishes to be stored in the orders array' do
       allow(interface).to receive(:select_quantity).and_return "5"
       allow(interface).to receive(:add_or_review)
+      allow(interface).to receive(:return_order)
       # allow(menu).to receive(:prices).and_return "5"
       # allow(menu).to receive(:menu)
       subject.add_dish(5)

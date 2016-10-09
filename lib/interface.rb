@@ -64,6 +64,11 @@ class Interface
     select_quantity
   end
 
+  def return_order
+    puts "So that's #{@current_selection[1]} x #{@menu.menu[@current_selection[0]]} costing £#{@current_selection[2].round(3)}"
+    add_or_review
+  end
+
   def add_or_review
     puts "To continue, please select one of the following options:"
     puts "1: Add to the order"
