@@ -1,5 +1,8 @@
 require 'customer'
 
+# create a class that mocks user input and test it
+# helper class whose job is to capture input
+# wherever it is that you're capturing input, it has a dependancy on that class
 describe Customer do
 
   subject(:customer) { described_class.new }
@@ -9,7 +12,6 @@ describe Customer do
     it 'will have no order stored' do
       expect(subject.order). to be_empty
     end
- #
   end
   # it 'will display a list of dishes with prices' do
   #   expect(subject.menu). to eq(puts "Here are the menu items.")
