@@ -1,11 +1,13 @@
 require "order"
+require "text"
 
 class Takeaway
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :text
 
-  def initialize(menu:, order: nil)
+  def initialize(menu:, order: nil, text: nil)
     @menu = menu
-    @order = order || Order.new
+    @order = order || Order.new(menu)
+    @text = text || Text.new
   end
 
   def print_menu
@@ -13,11 +15,16 @@ class Takeaway
   end
 
   def place_order(dishes)
-    dishes.each do |title, quantity|
-      order.add(title, quantity)
-    end
+    lookup_dishes(dishes)
+    text.deliver
     order.total
   end
+
+def lookup_dishes(dishes)
+  dishes.each do |title, quantity|
+    order.add(title, quantity)
+  end
+end
 
 
 end
