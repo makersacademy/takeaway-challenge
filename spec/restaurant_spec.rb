@@ -50,4 +50,11 @@ context "Printing, calculating, completing and verifying order"
    expect{restaurant.print_order}.to output(y).to_stdout
   end
 
+context "Clears order"
+
+  it "can set order back to blank" do
+  restaurant.clears_order
+  expect(restaurant.takeaway_order).to eq []
+  end
+
 end
