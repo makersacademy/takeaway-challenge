@@ -1,6 +1,7 @@
 require 'takeaway' 
 require 'messager'
 require 'menu'
+Dir.chdir(File.dirname(__FILE__))
 
 describe TakeAway do
   subject(:takeaway) { described_class.new }

@@ -68,20 +68,20 @@ class TakeAway
   
 end
 
-#=begin
-# require './lib/takeaway'
-menu = Menu.new("menu1.csv")
-thai = TakeAway.new(menu)
-thai.change_menu("menu.csv")
-thai.read_menu                
-thai.order "spring roll", 3
-thai.order "peking duck", 4
-puts thai.order "xxx"
-puts thai
-print thai.inspect
-puts thai.summary
-puts thai.total
-puts thai.checkout(34.92)
+# #=begin
+# # require './lib/takeaway'
+# menu = Menu.new("menu1.csv")
+# thai = TakeAway.new(menu)
+# thai.change_menu("menu.csv")
+# thai.read_menu                
+# thai.order "spring roll", 3
+# thai.order "peking duck", 4
+# puts thai.order "xxx"
+# puts thai
+# print thai.inspect
+# puts thai.summary
+# puts thai.total
+# puts thai.checkout(34.92)
 
 
 #=end
