@@ -7,7 +7,13 @@ class OrderSystem
   end
 
   def place_order(item, quantity)
-    @order_list[item.to_sym] = total_price(item, quantity)
+    @order_list[item.to_sym] = [quantity, total_price(item, quantity)]
+  end
+
+  def show_order
+    order_list.each do |item|
+      puts "#{item[1][0]} x #{item[0]} #{item[1][1]}"
+    end
   end
 
   private

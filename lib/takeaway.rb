@@ -17,4 +17,8 @@ class Takeaway
     order_system.place_order(item, quanitity)
   end
 
+  def show_order
+    order_system.show_order
+  end
+
 end
