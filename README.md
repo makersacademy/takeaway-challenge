@@ -10,8 +10,6 @@ Takeaway ordering system that allows a user to see and order meals.
 
 * **MyTwilio (my_twilio.rb)** - Stores details for Twilio integration to send SMS confirmation.
 
-[![Build Status](https://travis-ci.org/JG075/takeaway-challenge.svg?branch=master)](https://travis-ci.org/JG075/takeaway-challenge)
-
 ## Setup ##
 
 To run the program:
@@ -53,3 +51,6 @@ Total: £29.91
  => nil
 2.3.1 :008 > takeaway.confirm(29.91)
 ```
+
+[![Build Status](https://travis-ci.org/JG075/takeaway-challenge.svg?branch=master)](https://travis-ci.org/JG075/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg)](https://coveralls.io/github/makersacademy/takeaway-challenge)
