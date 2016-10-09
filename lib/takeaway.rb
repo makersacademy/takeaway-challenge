@@ -29,9 +29,9 @@ class Takeaway
     @current_order.view_cost
   end
 
-  def checkout
+  def checkout(number)
     @current_order.full_order
-    @messenger.send(@current_order.finalize_order_message)
+    @messenger.send_text(@current_order.finalize_order_message, number)
     @current_order = nil
   end
 
