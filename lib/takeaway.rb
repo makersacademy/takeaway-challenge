@@ -23,6 +23,10 @@ class Takeaway
     (items << total).join(", ")
   end
 
+  def checkout(amount)
+    fail "You haven't ordered any items" if order.empty?
+  end
+
   private
   attr_reader :menu, :order
 
