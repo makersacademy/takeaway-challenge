@@ -20,12 +20,12 @@ describe Order do
     end
 
     it 'can record the orders' do
-
       quantity = 1
       order.place_order(order1, quantity)
       expect(order.orderlist).to eq [order1]
     end
   end
+
   context '#check order' do
 
     it 'gets price gets the price from menu * quantity' do

@@ -1,5 +1,5 @@
 class Order
-  attr_reader :orderlist, :total, :quantity
+  attr_reader :orderlist, :total
   attr_accessor :customer_order_sum, :quantity, :price
 
   def initialize

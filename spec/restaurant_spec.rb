@@ -35,6 +35,8 @@ describe Restaurant do
   context '#verify_order' do
     before do
       allow(order1).to receive(:[]).with(:price).and_return(order1.price)
+      message = "Thank you! Your order was placed and will be delivered before #{restaurant.order.delivery_time}"
+      allow(restaurant).to receive(:sms_confirmation).and_return(message)
     end
 
     it 'updates the order verification method in order' do
@@ -49,9 +51,9 @@ describe Restaurant do
   context '#confirm_order' do
     before do
       allow(order1).to receive(:[]).with(:price).and_return(order1.price)
+      message = "Thank you! Your order was placed and will be delivered before #{restaurant.order.delivery_time}"
+      allow(restaurant).to receive(:sms_confirmation).and_return(message)
     end
-
-    #customer_order_sum = 47
 
     it 'raises an error if verification failed' do
       quantity = 1
