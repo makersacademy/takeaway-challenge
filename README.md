@@ -11,7 +11,7 @@ Setup environment
 Git clone - https://github.com/kathwath/takeaway-challenge.git
 
 Gemfile contains:
-ruby '2.3.1'
+ruby '2.3.0'
 
 gem 'twilio-ruby'
 gem 'rake'
