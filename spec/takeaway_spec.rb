@@ -49,18 +49,36 @@ describe Takeaway do
       end
     end
 
+
+    let(:id) { 1 }
+    let(:out_id) { dish_list.dishes.count + 1 }
+
     describe '#add_dish' do
-      let(:id) { 1 }
       it 'should add the selected dish to the order' do
         expect {subject.add_dish(id)}.to change{order.items.count}.by(1)
+      end
+
+      it 'should raise error when id is out of range of available dishes' do
+        expect { subject.add_dish(out_id) }.to raise_error "Wrong ID! Please, select dishes from 1 to #{dish_list.dishes.count}"
+      end
+
+      it 'should raise error when quantity is <1' do
+        expect { subject.add_dish(id, 0) }.to raise_error "Wrong quantity! Quantity should be 1 or more"
       end
     end
 
     describe '#remove_dish' do
-      let(:id) { 1 }
       it 'should remove the selected dish from the order' do
         subject.add_dish(id)
         expect {subject.remove_dish(id)}.to change{subject.order.items.count}.by(-1)
+      end
+
+      it 'should raise error when id is out of range of available dishes' do
+        expect { subject.remove_dish(out_id) }.to raise_error "Wrong ID! Please, select dishes from 1 to #{dish_list.dishes.count}"
+      end
+
+      it 'should raise error when quantity is <1' do
+        expect { subject.remove_dish(id, 0) }.to raise_error "Wrong quantity! Quantity should be 1 or more"
       end
     end
 
