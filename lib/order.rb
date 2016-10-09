@@ -18,4 +18,6 @@ class Order
     @order_total = @current_order.map { |dish| dish[:price]}.inject(:+)
     "Total price: #{@order_total}"
   end
+
+
 end

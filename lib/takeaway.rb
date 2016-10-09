@@ -20,4 +20,12 @@ def add_to_order(dish)
   @order.current_order
 end
 
+def total_cost
+  @order.order_cost
+end
+
+def send_text
+  @message.send
+end
+
 end
