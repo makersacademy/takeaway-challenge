@@ -44,6 +44,9 @@ describe Order do
         it "ask the customer for the order details" do
           expect(@output.string).to  eq("Please enter the dish number you wish to order")
         end
+        it "get the dish number from the customer" do
+          expect(@input.string).to eq("111")
+        end
   end
 
   describe "#ask_for_further_dish" do

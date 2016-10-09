@@ -12,7 +12,7 @@ class Order
     see_menu
   end
 
-  def see_menu#(stdout: $stdout, stdin: $stdin)
+  def see_menu
     puts "Would you like to look at the menu?"
     @menu.print_menu if gets.chomp == "yes"
     ask_if_want_to_order

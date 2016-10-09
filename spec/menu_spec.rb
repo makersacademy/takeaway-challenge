@@ -14,4 +14,10 @@ describe Menu do
       end
     end
 
+    describe "#print_menu" do
+      it "print the current menu onto the screen" do
+        expect(subject.print_menu).to include({:dish_category=>"Drink:", :dish_number=>1112, :dish=>"wine", :price=>6})
+      end
+    end
+
   end
