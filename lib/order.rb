@@ -34,7 +34,7 @@ def checkout(total)
   @restaurant.confirm_order(total)
 end
 
-
+private
 
 def calculate_total
     @basket.each { |item, quantity| @total += (item.price * quantity) }
