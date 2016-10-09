@@ -16,8 +16,8 @@ class Takeaway
     menu.print_menu
   end
 
-  def order(item, quanitity)
-    order_system.place_order(item, quanitity)
+  def order(item, quantity)
+    order_system.place_order(item, quantity)
   end
 
   def show_order
