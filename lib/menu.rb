@@ -1,5 +1,6 @@
 require 'csv'
 
+
 class Menu
   
   attr_reader :menu     
@@ -30,7 +31,6 @@ class Menu
     menu.select { |k, v| k[item] }    
   end
   
-  
   def to_s
     'the menu is empty'   # menu = Menu.new,  puts menu, to_s is called by default when `puts`ing an object in Ruby
   end
@@ -45,7 +45,7 @@ end
 
 
 # menu = Menu.new
-# #menu = Menu.new("menu1.csv")
+# menu = Menu.new("menu1.csv")
 # #menu.load_menu("menu.csv")
 # menu.load_menu("menu1.csv")
 #                       #puts menu.get_details("peking duck")
@@ -54,3 +54,5 @@ end
 # puts menu.menu
 # menu.read_menu
 # puts menu.contains?("pork dumpling")
+
+

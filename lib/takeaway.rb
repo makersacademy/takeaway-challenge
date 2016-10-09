@@ -3,7 +3,7 @@ require_relative 'menu'
 
 class TakeAway
   
-  attr_reader :read_menu, :menu, :item, :order, :orders, :messager      
+  attr_reader :read_menu, :menu, :orders, :messager      
   
   def initialize(menu = Menu.new, messager = Messager.new)
     @menu_obj = menu
@@ -51,16 +51,15 @@ class TakeAway
     complete_order(value) if  @tot == value
   end
   
+  def send_text(message)
+    @messager.send_message(message)
+  end
+  
   def complete_order(total_price)
     send_text("Thank you for your order. Total price: £#{total_price}")
   end
 
-
-  
   private
-  def send_text(message)
-    @messager.send_message(message)
-  end
   
   def add_item(item)
     orders << @menu_obj.get_details(item)       
@@ -82,6 +81,8 @@ end
 # puts thai.summary
 # puts thai.total
 # puts thai.checkout(34.92)
-
+# puts thai.menu
+# puts menu.get_details("BRESSE DUCK")
+# puts menu.contains?("NATIVE LOBSTER")
 
 #=end

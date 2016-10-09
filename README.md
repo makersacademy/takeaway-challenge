@@ -1,5 +1,12 @@
-My approach to solving the challenge:
-#Pro-tip: work on this while letting your sub-conscious work on those trickier coding problems :-)
+NOTES
+TakeAway exist independantly of the menu that is used.
+Takeaway instance requires a menu and so does Menu instance. 
+A default csv menu file is loaded into the new Menu instance but this can be changed
+or the new Menu instance can be instantiated with another csv menu file.
+The menu displayed by a Menu instance or by the Takeaway instance (via the Menu instance) can be changed 
+without changing either of these 2 classes.
+Messager is used to send a text message to my mobile phone.
+Restaurant inherits from TakeAway class so can use "Restaurant.new" or "TakeAway.new".
 
 
 GEMS REQUIRED FOR THIS PROGRAM:
@@ -10,18 +17,29 @@ This gem allows the application to send the final order total to my mobile phone
 WALKTHROUGH:
 require './lib/takeaway'
 thai = TakeAway.new
-thai.read_menu                
+thai.read_menu                        # Displays the menu
+thai.change_menu "menu1.csv"          # Can change to another menu (mid order) from a csv file.
 thai.order "spring roll", 3           # 3 x spring roll(s) added to your order.
 thai.order "peking duck", 4           # 4 x peking duck(s) added to your order.
 thai.order "xxx"                      # That item is not on the menu.
 thai.summary                          # "spring roll" x 3 = £2.97, "peking duck" x 4 = £31.96
 thai.total                            # Total: £34.93
 thai.checkout(10)                     # Your order total does not match the calculated total
-thai.checkout(34.93)                  # Sends text message to my phone.
+thai.checkout(34.93)                  # Sends text message to my phone if the totals match.
 
+Menu can be used on it's own.
+fastfoodmenu = Menu.new               # Created with default menu
+fastfoodmenu = Menu.new("menu1.csv")  # Created using a specific menu
+fastfoodmenu.read_menu
 
-
-
+Menu object can also be loaded into restaurant/takeaway
+menu = Menu.new("menu1.csv")
+menu.load_menu("menu.csv")            # Menu load file can be changed from Menu object.
+thai = TakeAway.new(menu)             # A menu can be passed directly to a takeaway.
+thai.menu                             # Shows the menu as a hash.
+thai.readme                           # Shows the menu in a readable form.
+puts menu.get_details("peking duck")  # Returns a hash of the item and the price if it is in the menu.
+puts menu.contains?("pork dumpling")  # Returns a boolean if that item is in the menu.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
