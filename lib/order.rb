@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'message'
 
 class Order
 
@@ -8,7 +9,7 @@ def initialize
   @current_order = {}
   @total_price = 0
   @menu = Menu.new
-  @dishes = dishes
+  @message = Message.new
 end
 
 def add_item(dish, quantity=0)
@@ -17,6 +18,11 @@ def add_item(dish, quantity=0)
   puts "You have added #{quantity} x #{dish}(s) to your order"
 end
 
+
+
+def send_text
+  @message.send
+end
 
 
 end

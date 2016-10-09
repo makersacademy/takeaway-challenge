@@ -18,5 +18,15 @@ describe Order do
     expect(order.current_order).to include {"fries"}
   end
 
+  before do
+    allow(order).to receive(:send_text)
+  end
+
+  it 'Sends a delivery confirmation message' do
+    delivery = (Time.now + 3600).strftime("%H:%M")
+    expect(order).to receive(:send_text).with("Thank you for your order; your food will be delivered by #{delivery}")
+    order.send_text("Thank you for your order; your food will be delivered by #{delivery}")
+  end
+
 
 end
