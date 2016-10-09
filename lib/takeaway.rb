@@ -1,11 +1,10 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'text'
-#require_relative 'price_calculator'
 require_relative 'menu'
 
 require 'rubygems'
-#require 'twilio-ruby'
+require 'twilio-ruby'
 
 class Takeaway
 
@@ -16,14 +15,13 @@ attr_accessor :menu_choice, :quantity_total, :total_count
     @menu_choice = {}
     @quantity_total = []
     @total_count = 0
-
   end
 
   def select_item
-    while @item != "exit" do
-      puts "Please type in your order or 'exit' to finish."
+    while @item != "finish" do
+      puts "Please type in your order or 'finish' to complete your order."
       @item = gets.chomp
-      return if @item == "exit"
+      return if @item == "finish"
       puts "How many portions would you like?"
       @quantity = gets.chomp.to_i
       @quantity_total << @quantity
@@ -41,23 +39,18 @@ attr_accessor :menu_choice, :quantity_total, :total_count
     @total_count = @menu_choice.values.inject(:+)
   end
 
-  # def confirm_order
-  #   total_price
-  #   puts "The items ordered are #{@order_list}\n"
-  #   puts "The overall price is £#{@overall_price}0 \n"
-  #   puts "Enter 'yes' if you are happy to proceed"
-  #   answer = gets.chomp
-  #   (answer == "yes" || answer == "Yes") ? payment : return
-  # end
+  def confirm_order
+    total_price
+    puts "The items ordered are #{menu_choice}\n"
+    puts "The overall price is £#{@overall_price}0 \n"
+    puts "Enter 'yes' to comnplete order"
+    answer = gets.chomp
+    (answer == "yes" || answer == "Yes") ? payment : return
+  end
 
-  # def payment
-  #   puts "Please check and confirm the payment amount:"
-  #   payment = gets.chomp
-  #     if payment.to_f == @overall_price
-  #       send_text
-  #     else puts "Ooops, something has gone wrong. Please enter the correct amount:"
-  #       confirm_order
-  #     end
-  # end
+  def payment
+        send_text
+        confirm_order
+  end
 
 end
