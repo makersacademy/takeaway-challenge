@@ -14,14 +14,36 @@ class Order
 
   def see_menu
     puts "Would you like to look at the menu?"
-    @menu.print_menu if gets.chomp == "yes"
+    answer = gets.chomp
+    case answer
+    when "yes"
+    @menu.print_menu
     ask_if_want_to_order
+    when "no"
+    ask_if_want_to_order
+    else
+    puts "This is not a valide choice, type 'yes' or 'no'"
+    see_menu
+    end
   end
 
   def ask_if_want_to_order
     puts "Would you like to order a dish?"
     order = gets.chomp.downcase
-    ask_for_order if order == "yes"
+    order == "yes" ? ask_if_sms_order : exit
+  end
+
+  def ask_if_sms_order
+    puts "Would you like to order via sms?"
+    answer = gets.chomp.downcase
+    answer == "yes" ? sms_order : ask_for_order
+  end
+
+  def sms_order
+    puts "Please send an sms message to : +441344231766, with the dish(es) number(s) and quantity.\n
+    If you are not registerd with us, please send as well your full name and delivery adress.\n
+    Thank you"
+    exit
   end
 
   def ask_for_order
@@ -33,10 +55,14 @@ class Order
   end
 
   def retrieve_dish_from_menu
-    dish_ordered = @menu.select_a_dish(@ordered_dish_number)
-    dish_ordered[:quantity] = @quantity
-    dish_ordered[:total] = @quantity * (dish_ordered[:price])
-    @list_of_dishes << dish_ordered
+    dish = @menu.select_a_dish(@ordered_dish_number)
+    dish[:quantity] = @quantity
+    dish[:total] = @quantity * (dish[:price])
+    add_dish_to_order(dish)
+  end
+
+  def add_dish_to_order(dish)
+    @list_of_dishes << dish
     set_to_nil
   end
 
@@ -77,5 +103,5 @@ class Order
         exit
     end
 
-  private :set_to_nil, :summary, :total_amount, :send_sms
+  private :set_to_nil, :summary, :total_amount, :send_sms, :retrieve_dish_from_menu
 end

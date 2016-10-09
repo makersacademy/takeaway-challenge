@@ -1,37 +1,54 @@
 require 'order'
 
 describe Order do
-  let(:order) {double :order}
+  let(:order) { double :order }
+
   before :each do
     allow(order).to receive(:see_menu)
     allow(order).to receive(:confirm)
+    allow(order).to receive (:retrieve_dish_from_menu)
     allow(order).to receive(:list_of_dishes)
-    allow(order).to receive(:ask_if_want_to_order).and_return(:ask_for_order)
+    allow(order).to receive(:ask_if_sms_order).and_return(:ask_for_order)
+    allow(order).to receive(:ask_if_want_to_order).and_return(:ask_if_sms_order)
     allow(order).to receive(:see_menu).and_return(:ask_if_want_to_order)
     allow(order).to receive(:ask_for_order)
     allow(order).to receive(:ask_for_further_dish)
     allow(order).to receive(:send_sms)
+    allow(order).to receive(:sms_order)
   end
 
   describe "#see_menu" do
-    before do
+        it "asks the customer if they want to see the menu" do
           @input = StringIO.new("yes")
           @output = StringIO.new("Would you like to look at the menu?")
           order.see_menu
-    end
-        it "asks the customer if they want to see the menu" do
-          expect(@output.string).to  eq("Would you like to look at the menu?")
+            expect(@output.string).to  eq("Would you like to look at the menu?")
         end
   end
 
   describe "#ask_if_want_to_order" do
-    before do
+        it "asks the customer wants to order " do
           @input = StringIO.new("yes")
           @output = StringIO.new("Would you like to order a dish?")
           order.ask_if_want_to_order
-    end
-        it "asks the customer wants to order " do
-          expect(@output.string).to  eq("Would you like to order a dish?")
+            expect(@output.string).to  eq("Would you like to order a dish?")
+        end
+  end
+
+  describe "#ask_if_sms_order" do
+        it "asks the customer if they want to order via sms" do
+          @input = StringIO.new("yes")
+          @output = StringIO.new("Would you like to order via sms?")
+          order.ask_if_sms_order
+            expect(@output.string).to eq("Would you like to order via sms?")
+        end
+  end
+
+  describe "#sms_order" do
+        it "gives instructions for ordering via sms" do
+          @output = StringIO.new("Instructions for sms order")
+          order.sms_order
+            expect(@output.string).to eq("Instructions for sms order")
         end
   end
 
@@ -42,32 +59,29 @@ describe Order do
           order.ask_for_order
     end
         it "ask the customer for the order details" do
-          expect(@output.string).to  eq("Please enter the dish number you wish to order")
+            expect(@output.string).to  eq("Please enter the dish number you wish to order")
         end
         it "get the dish number from the customer" do
-          expect(@input.string).to eq("111")
+            expect(@input.string).to eq("111")
         end
   end
 
   describe "#ask_for_further_dish" do
-    before do
+        it "asks the customer if they want to order further dishes" do
           @input = StringIO.new("yes")
           @output = StringIO.new("Would you like to order an other dish?")
           order.ask_for_further_dish
-    end
-        it "asks the customer if they want to order further dishes" do
-          expect(@output.string).to  eq("Would you like to order an other dish?")
+            expect(@output.string).to  eq("Would you like to order an other dish?")
         end
   end
 
   describe "#confirm" do
-    before do
+        it "asks the customer to confim the order" do
           @input = StringIO.new("yes")
           @output = StringIO.new("Would you like to confirm this order?")
           order.confirm
-    end
-        it "asks the customer to confim the order" do
-          expect(@output.string).to  eq("Would you like to confirm this order?")
+            expect(@output.string).to  eq("Would you like to confirm this order?")
         end
       end
+
   end
