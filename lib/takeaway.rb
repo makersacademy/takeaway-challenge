@@ -1,7 +1,13 @@
 class Takeaway
 
+  attr_reader :menu
+
+  def initialize(menu)
+    @menu = menu
+  end
+
   def show_menu
-    "Doner Kebab: £4.00"
+    menu.show
   end
 
 end
