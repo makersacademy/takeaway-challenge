@@ -21,10 +21,18 @@ describe Takeaway do
       expect(takeaway).to respond_to(:make_an_order).with(1).argument
     end
 
-    # it "adds the item hash into the order selection" do
-    #  takeaway.make_an_order(1)
-    #  expect(order.current_order).not_to be_empty
-    # end
+    it "adds the item hash into the order selection" do
+     takeaway.make_an_order(1)
+     expect(takeaway.order.current_order).not_to be_empty
+    end
+  end
+
+  describe '#checkout_price' do
+    it "calculates to total price of selected items" do
+      takeaway.make_an_order(3)
+      takeaway.make_an_order(4)
+      expect(takeaway.checkout_price).to eq takeaway.order.total_price
+    end
   end
 
 end

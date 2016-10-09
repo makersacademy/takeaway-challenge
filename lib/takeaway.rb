@@ -3,7 +3,7 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :see_menu, :order
+  attr_reader :see_menu, :order, :checkout_price
 
   def initialize
     @menu =  Menu.new
@@ -18,6 +18,10 @@ class Takeaway
     @order.select_dish(item)
     puts "You have selected #{@menu.menu_list[item - 1]}"
     @order.current_order
+  end
+
+  def checkout_price
+    @order.total_price
   end
 
 

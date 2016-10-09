@@ -43,7 +43,7 @@ describe Order do
     it "calculates the total price of selected items" do
       order.select_dish(3)
       order.select_dish(4)
-      expect(order.total_price).to eq 23
+      expect(order.total_price).to eq "Total price of order at checkout: 23"
     end
 
   end

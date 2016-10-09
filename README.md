@@ -119,3 +119,4 @@ October 08, 2016
 
 ## THIRD USER STORY
 - in the order class, using the map method, calculated the total price by adding the price from each hash in the selection array
+- implementing the checkout_price method in takeaway class to call the method from the order class
