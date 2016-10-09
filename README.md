@@ -1,10 +1,12 @@
-Welcome to Malinna's Tasty Takeaways!
+#Welcome to Malinna's Tasty Takeaway!
+
+##Getting started
 
 This takeaway service is designed to run on Terminal without using IRB.  Just type the command below from within the project folder:
 
 ruby ./lib/start_here.rb
 
-Here is an example of how the programme should run:
+##Worked example
 
 ??> ruby ./lib/start_here.rb
 
@@ -23,13 +25,13 @@ Welcome to Malinna's Tasty Takeaway
 
 Please enter the number of the dish you would like,
 or press return to finish your order.
->> 4
+4
 Please enter the quantity of Pollo Piccante you would like
->> 2
+2
 
 Please enter the number of the dish you would like,
 or press return to finish your order.
->>
+
 
 Order summary:
 Dish:  Pollo Piccante        Quantity:  2
@@ -38,5 +40,6 @@ Total number of dishes:  2
 Total cost of your order:  £15.10
 
 Please input 'OK' to proceed or 'end' to cancel
->> OK
+OK
+
 Thank you for your order.  Text confirmation has been sent.
