@@ -2,9 +2,8 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:margherita) { double :dish, price:5 }
-  let(:diavola) { double :dish, price:6 }
-  let(:pazza) { double :dish, price:22 }
+  let(:biscottini) {Dish.new("Biscottini", 4)}
+  let(:penne) {Dish.new("Penne con la sabbia", 3)}
 
   # describe "#see_menu" do
   #   it 'should print the menu on the screen' do
@@ -12,11 +11,19 @@ describe Takeaway do
   #   end
   # end
 
-  # describe "#add" do
-  #   it "should add the price of the item to the total amount" do
-  #     expect{subject.add(margherita)}.to change{ subject.total }.by 5
-  #   end
-  # end
+  describe "#add" do
+    it "should add the price of the item to the total amount" do
+      @quantity = 1
+      expect{subject.add(penne)}.to change{ subject.total }.by 3
+    end
+
+    it "should add the price of the item to the total amount" do
+      @quantity = 1
+      expect{subject.add(penne)}.to change{ subject.total }.by 9
+    end
+
+  end
+
 
   # describe "set_quantity" do
   #   it "should set the quantity of the item" do

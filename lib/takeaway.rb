@@ -8,7 +8,7 @@ class Takeaway
   #menu should contain the dishes available
   #order should store temporary dishes
 
-  attr_reader :order, :total, :menu
+  attr_reader :order, :total, :menu, :quantity
 
   def initialize(order = Order.new, menu = Menu.new )
     @order = order
@@ -17,10 +17,21 @@ class Takeaway
   end
 
   def add(dish)
-    order.add(dish)
+    set_quantity
+    @quantity.times {order.add(dish)}
+    charge
+  end
+
+  def set_quantity
+    @quantity = gets.chomp.to_i
   end
 
   def remove(dish)
   end
 
+  private
+
+  def charge
+    @total += (order.price) * @quantity
+  end
 end

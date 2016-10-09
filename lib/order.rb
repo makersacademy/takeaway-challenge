@@ -9,7 +9,7 @@ class Order
 
   def add(dish)
     # @dish = dish.name
-    # @price = dish[:price]
+    @price = dish.price
     @order << {dish: dish.name ,price: dish.price}
   end
 #
