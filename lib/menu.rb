@@ -15,7 +15,7 @@ attr_reader :print_menu, :todays_menu
 
     def print_menu
 
-      puts "#{todays_menu}"
+      #puts "#{todays_menu}"
 
       puts todays_menu.collect { |p| "#{p[:pizza]} pizza, Price £#{p[:price]}"}
 
