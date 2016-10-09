@@ -16,13 +16,18 @@ class Takeaway
   end
 
   def review_order
-    summary = order.collect do |item|
+    items = order.collect do |item|
       "#{item.quantity} x #{item.item.name}: £#{item.cost}"
     end
-    summary.join(", ")
+    total = "Total: £#{total_cost}"
+    (items << total).join(", ")
   end
 
   private
   attr_reader :menu, :order
+
+  def total_cost
+    order.collect { |item| item.cost }.reduce(:+)
+  end
 
 end

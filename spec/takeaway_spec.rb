@@ -17,7 +17,7 @@ describe Takeaway do
       allow(menu).to receive(:order).with("pie").and_return pie
     end
 
-    it 'orders an item from the menu', :focus do
+    it 'orders an item from the menu' do
       expect(takeaway.order_item("pie").item).to eq pie
     end
 
@@ -35,17 +35,17 @@ describe Takeaway do
       allow(menu).to receive(:order).with("pizza").and_return pizza
       allow(menu).to receive(:order).with("chips").and_return chips
     end
-    it 'shows an ordered item and the cost' do
+    it 'shows an ordered item with cost and total cost' do
       takeaway.order_item("pie")
 
-      expect(takeaway.review_order).to eq "1 x pie: £5"
+      expect(takeaway.review_order).to eq "1 x pie: £5, Total: £5"
     end
 
     it 'shows all ordered items and costs' do
       takeaway.order_item("pie")
       takeaway.order_item("pizza")
 
-      expect(takeaway.review_order).to eq "1 x pie: £5, 1 x pizza: £6"
+      expect(takeaway.review_order).to eq "1 x pie: £5, 1 x pizza: £6, Total: £11"
     end
 
     it 'shows all ordered items with different quantities and total costs' do
@@ -53,7 +53,7 @@ describe Takeaway do
       takeaway.order_item("pizza", 2)
       takeaway.order_item("chips", 3)
 
-      expect(takeaway.review_order).to eq "1 x pie: £5, 2 x pizza: £12, 3 x chips: £9"
+      expect(takeaway.review_order).to eq "1 x pie: £5, 2 x pizza: £12, 3 x chips: £9, Total: £26"
     end
   end
 
