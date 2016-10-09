@@ -5,28 +5,20 @@ class Interface
   def initialize(filepath)
     @menu = Menu.new(filepath)
     @order = Order.new
-    @menu_array = []
     @order_array = []
-    build_menu_display
-    user_interaction
-  end
-
-  def build_menu_display
-    @menu.load_dishes
-    @menu.dishes.each_with_index do |dish, index|
-      @menu_array << "#{index + 1}. #{dish.name}  £#{'%.2f' % [dish.price]}"
-    end
+    @menu.build_menu_display
   end
 
   def user_interaction
     welcome
     build_order
     show_order
+    order_confirm
   end
 
   def welcome
     file_reader('/Users/malinnaleach/Programs/takeaway-challenge/lib/welcome.txt')
-    display(@menu_array)
+    display(@menu.menu_array)
   end
 
   def file_reader(filepath)
@@ -64,6 +56,29 @@ class Interface
     display(@order.order_display)
     puts "\nTotal number of dishes:  #{@order.dish_qty}"
     puts "Total cost of your order:  £#{'%.2f' % [@order.total_cost]}"
+  end
+
+  def order_confirm
+    loop do
+      puts "\nPlease input 'OK' to proceed or 'end' to cancel"
+      print ">> "
+      input = gets.chomp
+      if input == "OK"
+        puts "\nThank you for your order.  Text confirmation has been sent."
+        puts
+        send_text
+        break
+      elsif input == "end"
+        puts "No worries, please come again.\n"
+        exit
+      end
+    end
+  end
+
+  private
+
+  def send_text
+    Texter.new
   end
 
 end

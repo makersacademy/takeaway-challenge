@@ -4,23 +4,20 @@ describe Interface do
 
   before do
     @filepath = '/Users/malinnaleach/Programs/takeaway-challenge/lib/test.csv'
+    @text = '/Users/malinnaleach/Programs/takeaway-challenge/lib/test.txt'
+    @test_array = ["test"]
   end
 
-  # subject(:interface) {described_class.new(@filepath)}
-  #
-  # it 'should show menu' do
-  #   expect(interface.menu_array).to eq ["1. Margherita  £5.95"]
-  # end
+  subject(:interface) {described_class.new(@filepath)}
 
-  # it 'should build an order based on user input' do
-  #   allow(interface).to receive(:user_dish).and_return(1)
-  #   allow(interface).to receive(:user_quantity).and_return(3)
-  #   interface.build_order
-  #   expect(interface.order.total_cost).to eq 5.95 * 3
-  # end
+  it 'should be able to output text from file' do
+    expect(STDOUT).to receive(:puts).with("Testing testing\n")
+    interface.file_reader(@text)
+  end
 
-  # it 'should show order' do
-  #   allow(interface).to receive(:order.).and_return(1)
-  # end
+  it 'shoud be able to output text from an array' do
+    expect(STDOUT).to receive(:puts).with("test")
+    interface.display(@test_array)
+  end
 
 end

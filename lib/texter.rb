@@ -17,7 +17,7 @@ class Texter
     @twilio_client.account.messages.create(
       :from => @twilio_phone,
       :to => @customer_phone,
-      :body => "Thank you for ordering from Malinna's Tasty Takeaways! Your order will be delivered before #{@time}"
+      :body => "Thank you for ordering from Malinna's Tasty Takeaways! Your order will be delivered before #{@time}."
     )
   end
 
