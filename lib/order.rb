@@ -16,6 +16,7 @@ class Order
   end
 
   def add_dish(dish_selection)
+    @current_selection = []
     @current_selection << dish_selection.to_i
     @interface.select_quantity
   end
@@ -25,17 +26,19 @@ class Order
     unit_price_lookup
   end
 
-  def unit_price_lookup
-    unit_price = @menu.prices[@current_selection[0]]
-    calculate_subtotal(unit_price)
+  def return_order
+    puts "So that's #{@current_selection[1]} x #{@menu.menu[@current_selection[0]]} costing £#{@current_selection[2].round(3)}"
+    @interface.add_or_review
   end
 
-  def calculate_subtotal(unit_price)
-    selection_cost = @current_selection[1] * unit_price
-    @current_selection << selection_cost
-    calculate_running_total(selection_cost)
-    build_orders_array
-    selection_cost
+  def order_summary
+    puts "ORDER SUMMARY:"
+    @orders_array.each_with_index do |x,index|
+      puts "#{index + 1}. #{x[1]} x #{@menu.menu[x[0]]}: £#{x[2]}"
+    end
+    puts "-----------"
+    puts "TOTAL: £#{@running_total}"
+    @interface.confirm_order
   end
 
   def reset_order
@@ -60,20 +63,32 @@ class Order
     @interface.main_menu
   end
 
+
   private
+
+  def unit_price_lookup
+    unit_price = @menu.prices[@current_selection[0]]
+    calculate_subtotal(unit_price)
+  end
+
+  def calculate_subtotal(unit_price)
+    selection_cost = @current_selection[1] * unit_price
+    @current_selection << selection_cost
+    calculate_running_total(selection_cost)
+    build_orders_array
+  end
 
   def calculate_running_total(selection_cost) # this isn't working properly
     @running_total += selection_cost
+    build_orders_array
   end
+
 
   def build_orders_array
     @orders_array << @current_selection
-    reset_current_selection
-    @interface.return_order
+    ap orders_array
+    return_order
   end
 
-  def reset_current_selection
-    @current_selection = []
-  end
 
 end

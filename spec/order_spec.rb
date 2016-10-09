@@ -33,6 +33,7 @@ describe Order do
   describe 'add_quantity' do
     it 'adds a quantity to the current order array' do
       allow(interface).to receive(:select_quantity).and_return "5"
+      allow(interface).to receive(:add_or_review)
       allow(interface).to receive(:return_order)
       subject.add_dish(1)
       subject.add_quantity(5)
@@ -46,22 +47,30 @@ describe Order do
       allow(interface).to receive(:add_or_review)
       allow(interface).to receive(:return_order)
     end
-    it 'looks in the menu for the price of a dish' do
-      subject.add_dish(5)
-      subject.add_quantity(1)
-      expect(menu.prices[subject.current_selection[0]]).to eq 5.50
-    end
-
     it "uses the provided quantity to base its calculation" do
       subject.add_dish(5)
       subject.add_quantity(6)
       expect(subject.current_selection[1]).to eq 6
     end
+    # it 'calculates the price of the current_selection' do
+    #   unit_price = 5.5
+    #   subject.add_dish(5)
+    #   subject.add_quantity(2)
+    #   subject.unit_price_lookup
+    #   expect(subject.calculate_subtotal(unit_price)).to eq 11
+    # end
+  end
 
-    it 'calculates the price of the current_selection' do
+  describe '#unit_price_lookup' do
+    before do
+      allow(interface).to receive(:select_quantity).and_return "5"
+      allow(interface).to receive(:add_or_review)
+      allow(interface).to receive(:return_order)
+    end
+    it 'looks in the menu for the price of a dish' do
       subject.add_dish(5)
       subject.add_quantity(1)
-      expect(subject.calculate_subtotal(dish_quantity)).to eq 5.5
+      expect(menu.prices[subject.current_selection[0]]).to eq 5.50
     end
   end
 
@@ -86,18 +95,20 @@ describe Order do
 end
 
   context 'selecting more than one dish' do
-    it 'allows for multiple dishes to be stored in the orders array' do
-      allow(interface).to receive(:select_quantity).and_return "5"
-      allow(interface).to receive(:add_or_review)
-      allow(interface).to receive(:return_order)
-      subject.add_dish(5)
-      subject.add_quantity(1)
-      subject.calculate_subtotal
-      subject.add_dish(2)
-      subject.add_quantity(3)
-      subject.calculate_subtotal
-      expect(subject.orders_array.count).to eq 2
-    end
+    before do
+
+    allow(interface).to receive(:select_quantity).and_return "5"
+    allow(interface).to receive(:add_or_review)
+    allow(interface).to receive(:return_order)
+  end
+    # it 'allows for multiple dishes to be stored in the orders array' do
+    #       unit_price = 5
+    #   subject.add_dish(5)
+    #   subject.build_orders_array
+    #   subject.add_dish(2)
+    #   subject.build_orders_array
+    #   expect(subject.orders_array.count).to eq 2
+    # end
 
   end
 

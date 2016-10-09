@@ -27,7 +27,7 @@ class Interface
       when "2"
         order_instance
         validation_instance # commented out attempt at dependency inversion
-        @interface.select_dish
+        select_dish
       when "3"
         terminate
       else
@@ -51,27 +51,12 @@ class Interface
     @validation.validate_quantity(dish_quantity)
   end
 
-  def return_order
-    puts "So that's #{@current_selection[1]} x #{@menu.menu[@current_selection[0]]} costing £#{@current_selection[2].round(3)}"
-    add_or_review
-  end
-
   def add_or_review
     puts "To continue, please select one of the following options:"
     puts "1: Add to the order"
     puts "2: Review and confirm the order"
     selection = gets.chomp
     @validation.evaluate_input(selection)
-  end
-
-  def order_summary
-    puts "ORDER SUMMARY:"
-    @orders_array.each_with_index do |x,index|
-      puts "#{index + 1}. #{x[1]} x #{@menu.menu[x[0]]}: £#{x[2]}"
-    end
-    puts "-----------"
-    puts "TOTAL: £#{@running_total}"
-    confirm_order
   end
 
   def confirm_order

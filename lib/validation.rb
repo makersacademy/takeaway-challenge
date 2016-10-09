@@ -44,7 +44,7 @@ class Validation
   def evaluate_input(selection)
     case selection
     when "1" then @interface.select_dish
-    when "2" then @interface.order_summary
+    when "2" then @order.order_summary
     else
       puts "Not a valid input"
       @interface.add_or_review
