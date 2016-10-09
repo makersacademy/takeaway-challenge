@@ -37,5 +37,6 @@ class Order
 
   def total_price
     @order_price = @selection.map{|item| item[:price]}.inject(:+).round(2)
+    puts "Your order total is £#{@order_price}"
   end
 end
