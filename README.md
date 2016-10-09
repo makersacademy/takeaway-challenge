@@ -1,9 +1,9 @@
+[![Build Status](https://travis-ci.org/kathwath/takeaway-challenge.svg?branch=master)](https://travis-ci.org/kathwath/takeaway-challenge)
 
 [![Coverage Status](https://coveralls.io/repos/github/kathwath/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/kathwath/takeaway-challenge?branch=master)
 
 Takeaway Challenge - Week 2
-==================
-
+=======
 
 Setup environment
 -------
