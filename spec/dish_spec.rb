@@ -1,6 +1,6 @@
 require 'Dish'
 describe Dish do
-  subject(:dish){described_class.new(name: "Hamburger", price: 15)}
+  subject(:dish){described_class.new(name = "Hamburger", price = 15)}
   it 'knows its name' do
     expect(dish.name).to eq("Hamburger")
   end
