@@ -19,9 +19,6 @@ Instructions
 
 My personal solution of my second weekend challenge at [Makers Academy](http://www.makersacademy.com/).
 
-Task
------
-
 * The repo @ Makers has been forked and cloned
 ```
 $ git clone https://github.com/manuciao/takeaway-challenge.git
