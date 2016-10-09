@@ -25,6 +25,5 @@ class Order
 		@phone_number = phone_number
 		@takeaway.place(self)		
 	end
-
 	
 end

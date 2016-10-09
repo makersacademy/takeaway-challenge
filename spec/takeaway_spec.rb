@@ -22,16 +22,13 @@ describe Takeaway do
 	describe '#place' do
 		before(:each) do
 										allow(order).to receive(:food).and_return({chow_mein => 3, pasta => 2})
-										allow(order).to receive(:phone_number).and_return(+447000000000)
+										allow(order).to receive(:phone_number).and_return(+447572283141)
 									end
 		it 'places an order' do
 			takeaway.place(order)
 			expect(takeaway.orders).to include(order.food)
 		end
 
-		it 'sends a text message to confirm order' do
-			expect(takeaway.place(order)).to eq(takeaway.send_text(order.phone_number))
-		end
 	end
 
 end
