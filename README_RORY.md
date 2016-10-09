@@ -18,3 +18,7 @@ expect(takeaway.array).to eq []
 (first two seem like they really should work...)
 UPDATE
 This only worked with my empty test array. When applied to a not empty array it failed. error: 'expected to respond to `array?`'
+
+QUESTIONS
+
+How do I test whether a hash contains  a key rather than key value pairs?

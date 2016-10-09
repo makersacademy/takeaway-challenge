@@ -9,9 +9,7 @@ describe Takeaway do
 
       it {is_expected.to respond_to :list_menu}
 
-      # it 'expects menu to be an array' do
-      #   expect(takeaway.menu).to be_an_array
-      # end
+
 
       it 'is expected to list the contents of the menu' do
         expect(takeaway.list_menu).to eq(takeaway.menu)
@@ -24,6 +22,12 @@ describe Takeaway do
     end
 
 end
+
+# it 'expects menu to be an array' do
+#   expect(takeaway.menu).to be_an_array
+# end
+
+# Borrowed examples
 
 # nclude entry: station, exit: nil
 
