@@ -17,7 +17,7 @@ class Menu
   end
 
   def on_list?(input)
-    raise "Choice not availble" if !@item.include?(input)
+    raise "Choice not availble" if !item.include?(input)
     true
   end
 

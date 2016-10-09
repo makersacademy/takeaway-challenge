@@ -3,10 +3,13 @@ require 'order'
 describe Order do
 
   subject(:order) {described_class.new}
-  let(:item_list){double :item_list, new: list, on_list?: true}
   let(:list){double(:list)}
-  let(:dish1) {double("dish", dish: "Chinese", price: 7.5)}
-  let(:dish2) {double("dish", dish: "Indian", price: 8.0)}
+  let(:dish1){double("dish", dish: "Chinese", price: 7.5)}
+  let(:dish2){double("dish", dish: "Indian", price: 8.0)}
+  let(:item){double :item}
+  let(:quantity){double :quantity}
+  let(:price){double :price}
+  let(:your_order){double :your_order}
 
 
   describe "#select_item" do
@@ -21,7 +24,7 @@ describe Order do
       expect(order.basket).to have_key(dish1)
     end
 
-    # can't figure this one out currently, will come back to it
+    # can't figure this one out
     xit 'can select multiple items' do
       order.select_item(dish1)
       order.select_item(dish2)
@@ -47,6 +50,16 @@ describe Order do
     it 'shows items selected' do
       expect(order).to receive(:your_order)
       order.confirm
+    end
+
+    it 'outputs selected items' do
+      expect(order.confirm).to eq("Total cost: #{@your_order}")
+    end
+  end
+
+  describe "#your_order" do
+    it 'total the cost of items selected' do
+      expect(order.your_order).to eq @sum
     end
   end
 
