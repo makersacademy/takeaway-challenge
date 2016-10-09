@@ -50,13 +50,14 @@ describe Interface do
 
 	describe '#add_items_to_order' do
 
-		let(:order) { double(:order, current_order: [])}
+		#let(:order) { double(:order, current_order: [])}
 
 		it 'updates the current orders items' do
-			initial_count = subject.current_order.count
-			subject.add_items_to_order(order,[1,2])
-			expect(subject.current_order.count).to be > initial_count
+			#allow(order).to receive(:update_order)
+			order = subject.new_order
+			initial_count = order.current_order.count
+			subject.add_items_to_order(order,"1 2")
+			expect(order.current_order.count).to be > initial_count
 		end
-
 	end
 end
