@@ -1,4 +1,5 @@
 class Menu
+end
 
   def initialize
     @menu = {"Taco"=>1.00, "Burrito"=>1.50, "Chips"=>1.00, "Queso"=> 0.50, "Guacamole"=>1.00}
@@ -32,4 +33,3 @@ def match_item(item)
   menu[item]
 end
   end
-end

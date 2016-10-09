@@ -1,8 +1,13 @@
-require 'Menu'#!/usr/bin/env ruby -wKU
+require "./lib/Menu.rb"
+require "./lib/Adapter.rb"
+require "./lib/Interface.rb"
 
-menu = Menu.new
-order = Order.new
-TexasTacos = Interface.new(menu: menu, order: order)
+ENV['TWILIO_ACCOUNT_SID']
+ENV['TWILIO_AUTH_TOKEN']
+ENV['TWILIO_NUMBER']
+ENV['TEST_NUMBER']
+
+TexasTacos = Interface.new({})
 
 puts "Your takeaway is available with teh variable TexasTacos"
 puts ".show.menu shows you the menu"
