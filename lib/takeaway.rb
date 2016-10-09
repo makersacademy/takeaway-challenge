@@ -5,16 +5,17 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :order
+  attr_reader :order, :message
 
   def new_order
     @order = Order.new
   end
 
   def place_order
-    @order.order_summary
     fail "The total order price is different from the dishes on the order" if correct_total? == false
-    @message = Message.new.send_message
+    @order.order_summary
+    @message = Message.new
+    @message.send_message
   end
 
   private

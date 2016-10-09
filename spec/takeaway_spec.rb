@@ -23,7 +23,8 @@ describe Takeaway do
       takeaway.order.select_item(menu_item1.menu[:num])
     end
 
-    it 'show the order info' do
+    it 'show the order info and place order' do
+      allow(takeaway.message).to receive_messages(send_message: true) # I think this is the way to stub the twilio so it doesn't send a message but it is not working.
       allow(takeaway.order).to receive(:order_price) {56.97}
       expect(takeaway.order).to receive(:order_summary)
       takeaway.place_order
