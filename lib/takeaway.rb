@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
 
 class Takeaway
 
@@ -8,7 +9,9 @@ class Takeaway
   def initialize
     @menu =  Menu.new
     @order = Order.new
+    @sms = Sms.new
     message_to_user
+
   end
 
   def see_menu
@@ -27,6 +30,11 @@ class Takeaway
 
   def message_to_user
     puts "Welcome to our Takeaway app!"
+  end
+
+  def confirm_order
+    raise "Your checkout basket is empty" if @order.current_order.empty?
+    @sms.send
   end
 
 end
