@@ -12,7 +12,7 @@ attr_reader :menu
   end
 
   def confirm_order(total)
-    @messager.send("Thanks for your order. That's #{total}")
+    @messager.send("Thanks for your order. That's £#{total}")
   end
 
 

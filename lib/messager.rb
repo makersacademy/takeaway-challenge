@@ -6,8 +6,8 @@ Envyable.load('./config/env.yml', 'development')
 class Messager
 
   def initialize
-    account_sid = ENV['AC842c9dfef20893dd473b1c70e2f4130c']
-    auth_token = ENV['5f5c38a7a38d8a7367ad97880c787243']
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
