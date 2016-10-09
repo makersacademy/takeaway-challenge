@@ -32,7 +32,7 @@ describe Order do
 
   it 'should add to order display array' do
     order.add(order_line)
-    expect(order.order_display).to eq ["Dish:  Margherita  Quantity:  2"]
+    expect(order.order_display).to eq ["Dish:  Margherita            Quantity:  2"]
   end
 
 end

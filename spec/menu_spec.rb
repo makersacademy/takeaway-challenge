@@ -25,7 +25,7 @@ describe Menu do
 
   it 'should build the array to display the menu' do
     menu.menu_display
-    expect(menu.menu_array[0]).to eq "1. Margherita  £5.95"
+    expect(menu.menu_array[0]).to eq "1. Margherita            £5.95"
   end
 
 end

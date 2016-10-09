@@ -11,7 +11,7 @@ class Interface
 
   def user_interaction
     welcome
-    build_order
+    build_order(@menu, @order)
     show_order
     order_confirm
   end
@@ -29,15 +29,17 @@ class Interface
     array.each {|string| puts string}
   end
 
-  def build_order
+  private
+
+  def build_order(menu, order)
     loop do
       input_request
-      input = gets.chomp
+      input = user_input
       break if input.empty?
-      dish = @menu.dishes[input.to_i - 1]
+      dish = menu.dishes[input.to_i - 1]
       quantity_request(dish.name)
-      quantity = gets.chomp.to_i
-      @order.add(OrderLine.new(dish, quantity))
+      quantity = quantity_input
+      order.add(create_order_line(dish, quantity))
     end
   end
 
@@ -75,10 +77,20 @@ class Interface
     end
   end
 
-  private
-
   def send_text
     Texter.new
+  end
+
+  def user_input
+    gets.chomp
+  end
+
+  def quantity_input
+    user_input.to_i
+  end
+
+  def create_order_line(dish, quantity)
+    OrderLine.new(dish, quantity)
   end
 
 end
