@@ -19,8 +19,4 @@ class Menu
               dish.new("Asahi", 3.75),
               dish.new("Hot Sake", 5.75)]
   end
-
-  def add_to_order(item, quantity)
-
-  end
 end

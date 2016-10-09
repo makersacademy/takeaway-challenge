@@ -54,5 +54,11 @@ class Confirmation
   Features to test/build
   1. Create a dish
   2. View menu
+  3. Add item to order
 
+  What would an order look like?
+
+  order = Order.new
+  order.add_item("Chicken Teriyaki", 1)
+  order.add_item("Tuna Sashimi", 1)
   

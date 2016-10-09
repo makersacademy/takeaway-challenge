@@ -17,11 +17,4 @@ describe Menu do
     end
   end
 
-  describe '#add_to_order' do
-
-    it 'responds to two arguments' do
-      expect(subject).to respond_to(:add_to_order).with(2).arguments
-    end
-
-  end
 end
