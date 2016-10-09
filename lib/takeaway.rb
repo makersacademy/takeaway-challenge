@@ -1,7 +1,7 @@
 require_relative 'menu'
-require_relative 'orders'
+require_relative 'order'
 require_relative 'text'
-require_relative 'price_calculator'
+#require_relative 'price_calculator'
 require_relative 'menu'
 
 require 'rubygems'
@@ -9,7 +9,7 @@ require 'rubygems'
 
 class Takeaway
 
-include Text, PriceCalculator, Menu
+include Text, Order, Menu
 attr_accessor :menu_choice, :quantity_total, :total_count
 
   def initialize
@@ -41,23 +41,23 @@ attr_accessor :menu_choice, :quantity_total, :total_count
     @total_count = @menu_choice.values.inject(:+)
   end
 
-  def confirm_order
-    total_price
-    puts "The items ordered are #{@order_list}\n"
-    puts "The overall price is £#{@overall_price}0 \n"
-    puts "Enter 'yes' if you are happy to proceed"
-    answer = gets.chomp
-    (answer == "yes" || answer == "Yes") ? payment : return
-  end
+  # def confirm_order
+  #   total_price
+  #   puts "The items ordered are #{@order_list}\n"
+  #   puts "The overall price is £#{@overall_price}0 \n"
+  #   puts "Enter 'yes' if you are happy to proceed"
+  #   answer = gets.chomp
+  #   (answer == "yes" || answer == "Yes") ? payment : return
+  # end
 
-  def payment
-    puts "Please check and confirm the payment amount:"
-    payment = gets.chomp
-      if payment.to_f == @overall_price
-        send_text
-      else puts "Ooops, something has gone wrong. Please enter the correct amount:"
-        confirm_order
-      end
-  end
+  # def payment
+  #   puts "Please check and confirm the payment amount:"
+  #   payment = gets.chomp
+  #     if payment.to_f == @overall_price
+  #       send_text
+  #     else puts "Ooops, something has gone wrong. Please enter the correct amount:"
+  #       confirm_order
+  #     end
+  # end
 
 end
