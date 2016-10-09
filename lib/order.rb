@@ -13,6 +13,19 @@ class Order
     options[option] += quantity
   end
 
+
+  def total
+    option_total.inject(:+)
+  end
+
+  private
+
+  def option_total
+    options.collect do |option, quantity|
+      menu.price(option) * quantity
+    end
+  end
+
 end
 
 class NoOptionError < StandardError; end

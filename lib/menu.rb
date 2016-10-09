@@ -16,4 +16,13 @@ class Menu
       "#{names.to_s.capitalize} £#{"%.2f" % [prices]}"
     end.join(", ")
   end
+
+  def has_option?(option)
+    !options[option].nil?
+  end
+
+  def price(option)
+    options[option]
+  end
+
 end

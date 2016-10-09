@@ -7,6 +7,9 @@ describe Order do
 
 
   before do
+    allow(menu).to receive(:price).with(:doner).and_return(4.00)
+    allow(menu).to receive(:price).with(:shish).and_return(3.50)
+
     allow(menu).to receive(:has_option?).with(:doner).and_return(true)
     allow(menu).to receive(:has_option?).with(:shish).and_return(true)
   end
@@ -21,4 +24,12 @@ describe Order do
     allow(menu).to receive(:has_option?).with(:chicken).and_return(false)
     expect { order.add(:chicken, 1) }.to raise_error NoOptionError, "Chicken is not on the menu."
   end
+
+  it 'adds up the total for the order' do
+    order.add(:doner, 1)
+    order.add(:shish, 2)
+    total = 11.00
+    expect(order.total).to eq(total)
+  end
+
 end

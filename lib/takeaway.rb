@@ -17,5 +17,8 @@ class Takeaway
     options.each do |option, quantity|
       order.add(option, quantity)
     end
+    order.total
   end
+
+  
 end
