@@ -3,9 +3,8 @@ require_relative 'menu'
 class Order
   attr_reader :items
 
-  def initialize(menu = Menu.new)
+  def initialize(menu)
     @items = Hash.new(0)
-    @total = 0
     @menu = menu
   end
 

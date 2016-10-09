@@ -11,7 +11,7 @@ class Menu
   end
 
   def has_dish?(dish)
-    raise "Sorry, we don\'t have #{dish} in our menu" if @dishes.has_key?(dish) == false
+    raise "Sorry, we don't have #{dish} in our menu" if @dishes.has_key?(dish) == false
     @dishes.has_key?(dish)
   end
 
