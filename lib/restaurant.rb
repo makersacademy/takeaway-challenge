@@ -1,13 +1,29 @@
-require 'rubygems'
-require 'twilio-ruby'
+require_relative 'menu'
 
-account_sid = 'AC63a8e0474ebbe1536675960e55c8c7d6'
-auth_token = 'b09fe6ca6eadeec97e3a28411aa7b5d2'
+class Restaurant
 
-@client = Twilio::REST::Client.new account_sid, auth_token
+  attr_reader :menu
 
-@client.messages.create(
-  to: '+447962022211', #send message to customer (me)
-  from: '+441143032776', #twilio number
-  body: 'Thank you! Your order was placed and will be delivered before XXX'
-)
+  def initialize
+    @menu = Menu.new
+  end
+
+  def show_menu
+    @menu.menu_list
+  end
+
+end
+
+# require 'rubygems'
+# require 'twilio-ruby'
+#
+# account_sid = 'AC63a8e0474ebbe1536675960e55c8c7d6'
+# auth_token = 'b09fe6ca6eadeec97e3a28411aa7b5d2'
+#
+# @client = Twilio::REST::Client.new account_sid, auth_token
+#
+# @client.messages.create(
+#   to: '+447962022211', #send message to customer (me)
+#   from: '+441143032776', #twilio number
+#   body: 'Thank you! Your order was placed and will be delivered before XXX'
+# )
