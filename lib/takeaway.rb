@@ -20,7 +20,7 @@ class Takeaway
   end
 
   def show_basket
-    @basket.each {|hash| hash.each {|k,v| print "#{v} x #{k}" }}
+    @basket.each {|hash| hash.each {|k,v| print "#{v} x #{k} " }}
   end
 
 end
