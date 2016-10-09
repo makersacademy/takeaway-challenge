@@ -21,8 +21,8 @@ describe Takeaway do
     end
 
     it 'orders a given quantity of an item from the menu' do
-      menu_items = [Dish.new("pie", 5), Dish.new("pizza", 6), Dish.new("chips", 2)]
-      allow(menu).to receive(:order).and_return menu_items.first
+      pie = Dish.new("pie", 5)
+      allow(menu).to receive(:order).and_return pie
       takeaway = Takeaway.new(menu)
 
       expect(takeaway.order_item("pie", 2).quantity).to eq 2
@@ -30,22 +30,40 @@ describe Takeaway do
   end
 
   context 'reviewing an order' do
-    it 'shows an ordered item with quantity and cost' do
-      menu_items = [Dish.new("pie", 5), Dish.new("pizza", 6), Dish.new("chips", 2)]
-      allow(menu).to receive(:order).and_return menu_items.first
+    it 'shows an ordered item and the cost' do
+      pie = Dish.new("pie", 5)
+      allow(menu).to receive(:order).and_return pie
       takeaway = Takeaway.new(menu)
-      order_item = takeaway.order_item("pie")
+      takeaway.order_item("pie")
 
       expect(takeaway.review_order).to eq "1 x pie: £5"
     end
 
-    it 'shows all ordered items with quantities and costs' do
-      menu = Menu.new
+    it 'shows all ordered items and costs' do
+      pie = Dish.new("pie", 5)
+      pizza = Dish.new("pizza", 6)
+      allow(menu).to receive(:order).with("pie").and_return pie
+      allow(menu).to receive(:order).with("pizza").and_return pizza
       takeaway = Takeaway.new(menu)
-      pie = takeaway.order_item("pie")
-      pizza = takeaway.order_item("pizza")
+      takeaway.order_item("pie")
+      takeaway.order_item("pizza")
 
       expect(takeaway.review_order).to eq "1 x pie: £5, 1 x pizza: £6"
+    end
+
+    it 'shows all ordered items with different quantities and total costs' do
+      pie = Dish.new("pie", 5)
+      pizza = Dish.new("pizza", 6)
+      chips = Dish.new("chips", 3)
+      allow(menu).to receive(:order).with("pie").and_return pie
+      allow(menu).to receive(:order).with("pizza").and_return pizza
+      allow(menu).to receive(:order).with("chips").and_return chips
+      takeaway = Takeaway.new(menu)
+      takeaway.order_item("pie")
+      takeaway.order_item("pizza", 2)
+      takeaway.order_item("chips", 3)
+
+      expect(takeaway.review_order).to eq "1 x pie: £5, 2 x pizza: £12, 3 x chips: £9"
     end
   end
 
