@@ -14,10 +14,6 @@ class SMS
     @number_to = number_to
   end
 
-  def env_loaded?
-    !@account_sid.nil? && !@auth_token.nil? && !@our_number.nil?
-  end
-
   def send_sms
     client = Twilio::REST::Client.new @account_sid, @auth_token
 
