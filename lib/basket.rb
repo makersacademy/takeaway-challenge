@@ -10,13 +10,13 @@ def initialize
 end
 
 def add_to_basket(item)
-  menu = Restaurant.new
-  fail "Not on the menu!!!!!" if !menu.menu.has_key?(item.to_sym)
-  cart[item.to_sym] = menu.menu[item.to_sym]
+  restaurant = Restaurant.new
+  fail "Not on the menu!!!!!" if !restaurant.menu.has_key?(item.to_sym)
+  cart[item.to_sym] = restaurant.menu[item.to_sym]
 end
 
 def view_basket
-  puts "Total of order is #{total}"
+  puts "Total of order is £#{total}"
   cart
 end
 
