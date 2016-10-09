@@ -30,16 +30,16 @@ describe Order do
 
   describe '#checkout' do
     before do
-      subject.add_item(pasta, 3)
-      allow(:restaurant).to receive(:checkout).with(15)
+      allow(menu).to receive(:select_by_name).with('pasta').and_return(pasta)
+      subject.add_item('pasta', 3)
     end
     it 'can calculate the total in basket and confirm' do
-      expect(restaurant).to receive(:checkout).with(15)
+      expect(restaurant).to receive(:confirm_order).with(15)
       subject.checkout(15)
     end
 
     it 'can raise an error if total is incorrect' do
-      expect{checkout(85)}.to raise_error "wrong total!"
+      expect{subject.checkout(85)}.to raise_error 'you put the wrong total in!'
     end
   end
 

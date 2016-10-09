@@ -31,13 +31,13 @@ end
 
 def checkout(total)
   fail 'you put the wrong total in!' if total != calculate_total
-  restaurant.confirm_order
+  @restaurant.confirm_order(total)
 end
 
 
 
 def calculate_total
-    @basket.each { |item, quantity| @total += item.price * quantity }
+    @basket.each { |item, quantity| @total += (item.price * quantity) }
     @total
 end
 

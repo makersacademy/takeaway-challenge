@@ -8,14 +8,11 @@ attr_reader :menu
 
   def initialize(menu = Menu.new)
     @menu = menu
+    @messager = Messager.new
   end
 
-
-  def confirm_order
-    send_message
-  end
-
-  def send_message
+  def confirm_order(total)
+    @messager.send("Thanks for your order. That's #{total}")
   end
 
 
