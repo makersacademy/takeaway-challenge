@@ -11,7 +11,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +69,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
@@ -89,3 +89,37 @@ Build Badge Example
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+-----------------------
+############# Dionysis Kastellanis #############
+October 08, 2016
+
+- Forked the repo on my personal Github account
+- Cloned it on my makers macbook in "/Users/Dio22/Makers_Academy/Weekend_Challenges/Week2_takeaway_challenge"
+- Installed ruby-2.3.1
+- Installed and initialized the makersinit gem
+- Installed and runned `bundle` to ensure all gems are present for this project
+- The twilio gem was included in the Gemfile and installed
+- User (me) signed up for an account
+
+
+## FIRST USER STORY
+- The user, a customer wants to check a list of dishes with prices.
+- A takeaway class is required to offer the customer with dish options
+- takeaway_spec file created to test for the takeaway class
+- see_menu method that will list the menu to the user
+- the menu is a new class that is initialized with an array of different dishes stored in hashes
+
+## SECOND USER STORY
+- A new Order class is created to allow selection of items from the menu list
+- new spec file for order and Order class
+- for each order, the menu will be required for selection of items
+- initially, the order has 0 total to pay and no items in the selection(current_order)
+- select_dishes method will accept the item number as an argument in order to include dish in the selection of items
+
+## THIRD USER STORY
+- in the order class, using the map method, calculated the total price by adding the price from each hash in the selection array
+- implementing the checkout_price method in takeaway class to call the method from the order class
+
+## FOURTH USER STORY
+- when the order is placed, a text message will be sent to the user
