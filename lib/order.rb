@@ -25,7 +25,7 @@ class Order
 
   def view_cost(cost = calculate_total)
     fail 'Total cost £0: basket empty' if cost == 0
-    "Total cost: £#{cost}"
+    "Total cost: £#{cost.to_f}"
   end
 
   def full_order

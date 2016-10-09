@@ -31,8 +31,12 @@ class Takeaway
 
   def checkout(number)
     @current_order.full_order
-    @messenger.send_text(@current_order.finalize_order_message, number)
+    send_text(number)
     @current_order = nil
+  end
+
+  def send_text(number)
+    @messenger.send_text(@current_order.finalize_order_message, number)
   end
 
   private
