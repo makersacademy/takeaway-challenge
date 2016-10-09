@@ -89,7 +89,7 @@ Solution
 --------
 Usage:
 - Register for twilio account
-- Create ```twilio_credentials.rb``` in ```/lib``` as below:
+- Update constants in ```/lib/twilio_credentials.rb``` as below:
 ```
 class TwilioCredentials
   ACCOUNT_SID = <insert account id>
@@ -98,8 +98,8 @@ class TwilioCredentials
   TO = <mobile number>
 end
 ```
-RSpec tests:
-Travis CI is set up to exclude the integration tests so as to avoid calling Twilio API. Twilio API is mocked in unit tests.
+RSpec tests:   
+- Travis CI is set up to exclude the integration tests so as to avoid calling Twilio API. Twilio API is mocked in unit tests.
 
 Example in irb:
 ```
