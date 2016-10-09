@@ -1,7 +1,11 @@
+require 'sms_notifier'
+
 class Takeaway
-  def initialize(menu)
+  def initialize(menu, time, sms_notifier)
     @menu = menu
     @order = []
+    @sms_notifier = sms_notifier
+    @time = time
   end
 
   def view_menu
@@ -26,15 +30,18 @@ class Takeaway
   def checkout(amount = 0)
     fail "You haven't ordered any items!" if order.empty?
     fail "Please pay the correct amount!" if amount != total_cost
-    delivery_time = (Time.now + 3600).strftime("%k:%M")
-    "Thank you! Your order was placed and will be delivered before #{delivery_time}."
+    delivery_time = (time.now + 3600).strftime("%k:%M")
+    message = "Thank you! Your order was placed and will be delivered before #{delivery_time}."
+    sms_notifier.send(message)
+    message
   end
 
   private
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :sms_notifier, :time
 
   def total_cost
     order.collect { |item| item.cost }.reduce(0, :+)
   end
+
 
 end
