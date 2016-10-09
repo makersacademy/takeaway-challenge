@@ -12,32 +12,23 @@ class Validation
 
   def validate_selection(dish_selection)
     if dish_selection == "exit"
-      puts "Thank you, goodbye"
-      exit
+      @interface.terminate
     elsif dish_selection.to_i > 0
       if dish_selection.to_i <= @menu.menu.length
-        @order.current_selection << dish_selection.to_i
-        @interface.select_quantity
+      @order.add_dish(dish_selection)
       else
-        invalid_input
+        @interface.invalid_entry("dish")
       end
     else
-      invalid_input
+      @interface.invalid_entry("dish")
     end
-  end
-
-  def invalid_input
-    puts "Not a valid input"
-    @interface.select_dish
   end
 
   def validate_quantity(dish_quantity)
     if dish_quantity > 10
-      puts "Please enter a value between 1 and 10"
-      @interface.select_quantity
+      @interface.invalid_entry("quantity")
     else
-      @order.current_selection << dish_quantity
-      @order.calculate_subtotal
+      @order.add_quantity(dish_quantity)
     end
   end
 

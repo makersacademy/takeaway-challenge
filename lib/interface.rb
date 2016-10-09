@@ -25,12 +25,11 @@ class Interface
       when "1"
         @menu.print_menu
       when "2"
-        @order = @order.new(@menu, self)
-        @validation = @validation.new(@order, @menu, self)
+        order_instance
+        validation_instance # commented outh attempt at dependency inversion
         select_dish
       when "3"
-        puts "Thank you, goodbye!"
-        exit
+        terminate
       else
         "Please try again"
       end
@@ -45,10 +44,24 @@ class Interface
     @validation.validate_selection(dish_selection)
   end
 
+  def invalid_entry(input)
+    puts "Not a valid #{input}, please try again"
+    if input == "dish"
+      select_dish
+    elsif input == "quantity"
+      select_quantity
+    end
+  end
+
   def select_quantity
     puts "How many would you like?"
     dish_quantity = gets.chomp.to_i
     @validation.validate_quantity(dish_quantity)
+  end
+
+  def invalid_quantity
+    puts "Please enter a value between 1 and 10"
+    select_quantity
   end
 
   def add_or_review
@@ -66,6 +79,21 @@ class Interface
     puts "3: Cancel the order"
     confirmation = gets.chomp
     @validation.confirmed?(confirmation)
+  end
+
+  def terminate
+    puts "Thank you, goodbye"
+    exit
+  end
+
+  private
+
+  def order_instance
+    @order = @order.new(@menu,self) #@order ||=
+  end
+
+  def validation_instance
+    @validation = @validation.new(@order, @menu, self) #@validation ||=
   end
 
 end

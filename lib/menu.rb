@@ -12,7 +12,8 @@ class Menu
       2 => "Pork Rendang (£5.50)",
       3 => "Pad Thai (£6.90)",
       4 => "Chicken Parmo (£4.50)",
-      5 => "Paneer Korma (£5.50)"
+      5 => "Paneer Korma (£5.50)",
+      6 => "Onion Bahji (£2.50)"
     }
 
     @prices = {
@@ -20,7 +21,8 @@ class Menu
       2 => 5.50,
       3 => 6.90,
       4 => 4.50,
-      5 => 5.50
+      5 => 5.50,
+      6 => 2.50
     }
 
   end
