@@ -1,13 +1,13 @@
-require 'menu'
+require 'restaurant'
 
-describe Menu do
+describe Restaurant do
 
-  subject(:menu) {Menu.new}
+  subject(:restaurant) {Restaurant.new}
 
-  context "creating a new instance of menu" do
+  context "has menu in it" do
 
      it "returns hash of menu with prices" do
-       expect(menu).to respond_to(:see_menu)
+       expect(restaurant).to respond_to(:menu)
      end
 
    end
