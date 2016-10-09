@@ -26,6 +26,8 @@ class Takeaway
   def checkout(amount = 0)
     fail "You haven't ordered any items!" if order.empty?
     fail "Please pay the correct amount!" if amount != total_cost
+    delivery_time = (Time.now + 3600).strftime("%k:%M")
+    "Thank you! Your order was placed and will be delivered before #{delivery_time}."
   end
 
   private

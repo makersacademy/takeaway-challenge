@@ -84,10 +84,13 @@ describe Takeaway do
       expect { takeaway.checkout(6) }.to raise_error "Please pay the correct amount!"
     end
 
-    # it "checks out an order when given the correct amount" do
-    #   time = Time.now + 1
-    #   expect(takeaway.checkout(amount)).to eq "Thank you! Your order was placed and will be delivered before #{time}"
-    # end
+    it "checks out an order when given the correct amount" do
+      pie = Dish.new("pie", 5)
+      allow(menu).to receive(:order).with("pie").and_return pie
+      time = (Time.now + 3600).strftime("%k:%M")
+      takeaway.order_item("pie")
+      expect(takeaway.checkout(5)).to eq "Thank you! Your order was placed and will be delivered before #{time}."
+    end
 
   end
 
