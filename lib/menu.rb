@@ -1,4 +1,7 @@
+require 'csv'
+
 class Menu
+
   attr_reader :dishes
 
   def initialize(dishes)
@@ -13,5 +16,9 @@ class Menu
 
   def has_dish?(dish)
     !dishes[dish].nil?
+  end
+
+  def price(dish)
+    dishes[dish]
   end
 end
