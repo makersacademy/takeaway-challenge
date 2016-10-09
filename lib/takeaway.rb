@@ -19,7 +19,7 @@ class Takeaway
   end
 
   def create_order
-    @order = Order.new(Credentials.new)
+    @order = Order.new(Credentials)
   end
 
 end

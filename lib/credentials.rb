@@ -1,18 +1,18 @@
-class Credentials
+module Credentials
 
-  ACCOUNT_SID = '<your Twilio account SID>'
-  AUTH_TOKEN = '<your Twilio authentication token'
-  SENDER_NUMBER = '<your Twilio phone number>'
+  ACCOUNT_SID = ''
+  AUTH_TOKEN = ''
+  SENDER_NUMBER = ''
 
-  def acc_sid
+  def self.acc_sid
     ACCOUNT_SID
   end
 
-  def auth_token
+  def self.auth_token
     AUTH_TOKEN
   end
 
-  def sender
+  def self.sender
     SENDER_NUMBER
   end
 end
