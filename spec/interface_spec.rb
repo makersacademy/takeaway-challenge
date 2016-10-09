@@ -1,6 +1,7 @@
 require 'interface.rb'
 require 'menu.rb'
 
+
 describe Interface do
   subject (:interface) { described_class.new }
   let(:menu) { Menu.new }
@@ -26,6 +27,16 @@ describe Interface do
     context "when called"do
       it "should add something to the order object" do
         expect{interface.add_to_order(pizza)}.to change{interface.order.length}.by(1)
+      end
+    end
+  end
+
+  describe "#calculate-order"do
+    context "when called" do
+      it "should call return the total of the order" do
+        interface.add_to_order("pizza")
+        interface.add_to_order("cake")
+        expect{interface.calculate_order}.to change {interface.order_total}.by(8.50)
       end
     end
   end
