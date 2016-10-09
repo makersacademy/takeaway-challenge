@@ -22,3 +22,7 @@ This only worked with my empty test array. When applied to a not empty array it 
 QUESTIONS
 
 How do I test whether a hash contains  a key rather than key value pairs?
+
+
+For each hash pair in the order, I want to check whether the food type matches a food type in the menu.
+If it does I want to multiply the quantity by the price.
