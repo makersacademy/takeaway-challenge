@@ -26,10 +26,10 @@ Features currently included are:
 ## Installation
 
 * Fork this repo
-* Clone repo to your local machine by running **git clone SSH** in your terminal
-* Inside *takeaway-challenge* folder, install required gems using bundler by running **gem install bundler** and **bundle install**
+* Clone repo to your local machine by typing **git clone SSH** in your terminal
+* Inside *takeaway-challenge* folder, install required gems using Bundler, type **gem install bundler** and **bundle install**
 * To start using the app, run **irb** and **require './lib/takeaway'** - see screenshot below
-* To run tests type **rspec**
+* To run tests type **rspec** in the terminal
 
 ## Code example in irb
 
