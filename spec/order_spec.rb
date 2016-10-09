@@ -54,4 +54,19 @@ describe Order do
     end
   end
 
+  context 'giving quantaties of items in the order' do
+    before do
+      new_order.select_item(1)
+      new_order.select_item(5)
+      new_order.select_item(1)
+      new_order.select_item(1)
+      new_order.order_summary
+
+    end
+
+    it 'should give the quanteties of the items orded' do
+      expect(new_order.ordered_selection.values).to include(3)
+    end
+  end
+
 end

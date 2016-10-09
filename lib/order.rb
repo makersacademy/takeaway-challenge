@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :menu, :selection, :order_price, :order_total
+  attr_reader :menu, :selection, :order_price, :order_total, :ordered_selection
 
   def initialize
     @menu = Menu.new
@@ -25,9 +25,14 @@ class Order
 
   private
 
+  def sort_order
+    @selection = @selection.sort_by {|item| item[:num]}
+    @ordered_selection = @selection.each_with_object(Hash.new(0)) { |item,counts| counts[item] += 1 }
+  end
+
   def show_order
-    count = 0
-    @selection.each {|item| count += 1; puts "#{count}. #{item[:name]} : £#{item[:price]}" }
+    sort_order
+    @ordered_selection.to_a.each {|item,count| puts "#{count} x #{item[:name]} : #{item[:price]}" }
   end
 
   def total_price
