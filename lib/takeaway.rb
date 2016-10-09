@@ -1,39 +1,31 @@
-# require 'restaurant'
+require_relative 'restaurant'
 require_relative 'menu'
-require_relative 'user'
+
 
 class Takeaway
 
-attr_reader :menu, :order
+  attr_reader :menu, :order, :current_order
 
   def initialize
-    @order = []
+    @current_order = []
+    @menu = Menu.new
   end
 
-
-  def take_away_menu
-    @menu.menu_list
+  def add_to_current_order(num)
+    @current_order << @menu.menu_list[num - 1]
   end
 
-  def place_order
-
-    #if number provided == to counts_items_in_order
-    # sends_order_to_restaurant
-    # else, fail "I'm sorry, but your number of items did not
-    # match your expect number. Please try again"
-
+  def pretty_print_order
+    count = 1
+    puts "Your order is:"
+      @current_order.each do |item|
+        puts "#{count} #{item[:name]} - £#{item[:price]}"
+        count += 1
+      end
   end
 
-
-  def counts_items_in_order
-    @order.count
+  def clears_current_order
+    @current_order = []
   end
-
-
-
- def sends_order_to_restaurant
-   @takeaway_order << @order
- end
-
 
 end
