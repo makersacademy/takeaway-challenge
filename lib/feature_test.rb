@@ -1,39 +1,39 @@
-require_relative 'takeaway'
+require_relative "takeaway"
 
 takeaway = Takeaway.new
 
-#Welcome
+# Welcome
 puts takeaway.enter
 # See menu
 puts takeaway.display_menu
-#Save menu for ease of use
+# Save menu for ease of use
 menu = takeaway.menu
-#Create an order
+# Create an order
 order = takeaway.create_order
 
-#Add smth to the order
+# Add smth to the order
 order.add(menu.dishes[0])
-#Check it got added
+# Check it got added
 order.items
 
-#Add more things to the order
-order.add(menu.dishes[1],2)
-#Check they got added
+# Add more things to the order
+order.add(menu.dishes[1], 2)
+# Check they got added
 order.items
-#Order even more stuff
-order.add(menu.dishes[2],3)
+# Order even more stuff
+order.add(menu.dishes[2], 3)
 
-#print the reciept
+# print the reciept
 puts order.receipt
 
-#removing smth from the order
-order.remove(menu.dishes[2],2)
+# removing smth from the order
+order.remove(menu.dishes[2], 2)
 
-#print the reciept
+# print the reciept
 puts order.receipt
 
-#place the order with too little money
+# place the order with too little money
 order.place(1)
 
-#place the order with the correct sum and a tip
+# place the order with the correct sum and a tip
 order.place(order.total_price + 5)

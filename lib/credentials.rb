@@ -1,8 +1,8 @@
 module Credentials
 
-  ACCOUNT_SID = ''
-  AUTH_TOKEN = ''
-  SENDER_NUMBER = ''
+  ACCOUNT_SID = ""
+  AUTH_TOKEN = ""
+  SENDER_NUMBER = ""
 
   def self.acc_sid
     ACCOUNT_SID

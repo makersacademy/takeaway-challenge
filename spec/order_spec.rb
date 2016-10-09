@@ -1,11 +1,12 @@
-require 'order'
+require "order"
 
 describe Order do
-  subject(:order) {described_class.new(credentials)}
-  let(:credentials) {double("credentials", :acc_sid => 'AC7323b7093be74631798dd01275d5a5eb', :auth_token => '60f9f1ff1becf749a8a43fb305fed625', :sender => '+15005550006')}
-  let(:dish) {double("dish", :name => "Chicken Teriyaki", :price => 5)}
-  let(:dish2) {double("dish2", :name => "Ramen", :price => 7)}
-  let(:dish3) {double("dish3", :name => "Pad Thai", :price => 5)}
+  subject(:order) { described_class.new(credentials) }
+  let(:credentials) { double("credentials", :acc_sid => 'AC7323b7093be74631798dd01275d5a5eb',
+                     :auth_token => '60f9f1ff1becf749a8a43fb305fed625', :sender => '+15005550006') }
+  let(:dish) { double("dish", :name => "Chicken Teriyaki", :price => 5) }
+  let(:dish2) { double("dish2", :name => "Ramen", :price => 7) }
+  let(:dish3) { double("dish3", :name => "Pad Thai", :price => 5) }
 
   it "initialises with a total price sum of 0" do
     expect(order.total_price).to eq 0
@@ -57,33 +58,31 @@ describe Order do
   end
 
   it "is only confirmed if the correct amount of money was given when placing the order" do
-    order.add(dish,2)
+    order.add(dish, 2)
     expect(order.place(6)).to eq "That's not enough money, please try again"
   end
 
   it "accepts even the most ridiculous tips" do
-    order.add(dish,2)
+    order.add(dish, 2)
     expect(order.place(15)).to eq "Thank you for the tip!"
   end
 
   it "sends a text upon confirmation" do
-    order.add(dish,2)
+    order.add(dish, 2)
     expect(order).to receive(:text)
     order.place(10)
   end
 
   it "doesn't send a text if payment was not right" do
-    order.add(dish,2)
+    order.add(dish, 2)
     expect(order).not_to receive(:text)
     order.place(7)
   end
 
-  it 'calculates the delivery time based on a standard delivery duration' do
-    order.add(dish,2)
+  it "calculates the delivery time based on a standard delivery duration" do
+    order.add(dish, 2)
     order.place(10)
-    expect(order.estimated_delivery_time.hour).to eq((Time.new + Order::DELIVERY_TIME*60).hour)
-    expect(order.estimated_delivery_time.min.round(-1)).to eq((Time.new + Order::DELIVERY_TIME*60).min.round(-1))
+    expect(order.estimated_delivery_time.hour).to eq((Time.new + Order::DELIVERY_TIME * 60).hour)
+    expect(order.estimated_delivery_time.min.round(-1)).to eq((Time.new + Order::DELIVERY_TIME * 60).min.round(-1))
   end
-
-
 end

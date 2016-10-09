@@ -1,4 +1,4 @@
-require_relative 'text'
+require_relative "text"
 
 class Order
 
@@ -30,8 +30,8 @@ class Order
 
   def receipt
     output = "\nYou ordered:\n"
-    @items.uniq.each {|item| output += "#{@items.count(item)} x #{item.name.ljust(MAX_NAME_LENGTH,' ')} £#{item.price*@items.count(item)}\n"}
-    output += "for a total of".ljust(MAX_NAME_LENGTH + 5,' ') + "£#{@total_price}\n"
+    @items.uniq.each {|item| output += "#{@items.count(item)} x #{item.name.ljust(MAX_NAME_LENGTH, ' ')} £#{item.price * @items.count(item)}\n"}
+    output += "for a total of".ljust(MAX_NAME_LENGTH + 5, ' ') + "£#{@total_price}\n"
   end
 
   def place(payment)
@@ -67,7 +67,7 @@ class Order
   end
 
   def delivery_time
-    @estimated_delivery_time = Time.new + DELIVERY_TIME*60
+    @estimated_delivery_time = Time.new + DELIVERY_TIME * 60
   end
 
   def text
@@ -75,5 +75,4 @@ class Order
     text = Text.new(message, @credentials)
     text.send_text
   end
-
 end

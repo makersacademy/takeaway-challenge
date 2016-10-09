@@ -1,6 +1,6 @@
-require_relative 'menu'
-require_relative 'order'
-require_relative 'credentials'
+require_relative "menu"
+require_relative "order"
+require_relative "credentials"
 
 class Takeaway
 
@@ -21,5 +21,4 @@ class Takeaway
   def create_order
     @order = Order.new(Credentials)
   end
-
 end

@@ -1,9 +1,9 @@
 class Text
-  require 'twilio-ruby'
+  require "twilio-ruby"
 
   attr_reader :to, :from, :message
 
-  def initialize(message, credentials, to ='+447593476456')
+  def initialize(message, credentials, to ="+447593476456")
     @from = credentials.sender
     @to = to
     @message = message
@@ -18,5 +18,4 @@ class Text
       :body => @message,
     })
   end
-
 end

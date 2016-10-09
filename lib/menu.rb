@@ -1,4 +1,4 @@
-require_relative 'dish'
+require_relative "dish"
 
 class Menu
 
@@ -6,7 +6,8 @@ class Menu
 
   MAX_NAME_LENGTH = 30
 
-  def initialize(dishes =[Dish.new("Chicken Teriyaki", 5), Dish.new("Ramen", 7), Dish.new("Pad Thai", 5), Dish.new("Chocolate ice cream", 2)])
+  def initialize(dishes =[Dish.new("Chicken Teriyaki", 5), Dish.new("Ramen", 7), Dish.new("Pad Thai", 5),
+                          Dish.new("Chocolate ice cream", 2)])
     @dishes = dishes
   end
 
