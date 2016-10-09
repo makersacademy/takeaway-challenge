@@ -1,5 +1,5 @@
 require_relative 'menu'
-require_relative 'make_call'
+#require_relative 'make_call'
 
 
 class Order
@@ -20,13 +20,15 @@ attr_reader :order, :phone_number, :order, :cust_order
         puts "#{@menu.print_menu}"
     end
 
-    def order
-        puts "... please select your pizza and press enter"
-        @order = gets.chomp
-        while   @order != ''
-        @cust_order << @order
-        end
-        puts "Your order is #{cust_order}"
+    def place_order
+          puts "... please select your pizza and press enter"
+          order = STDIN.gets.chomp
+          while !order.empty? do
+          @cust_order << order
+          puts "please choose another pizza or enter to finish your oder"
+          order = gets.chomp
+          end
+          puts "Your order is #{cust_order}"
     end
 
     def confirm_order
