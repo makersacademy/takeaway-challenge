@@ -31,10 +31,6 @@ class Menu
     menu.select { |k, v| k[item] }    
   end
   
-  def to_s
-    'the menu is empty'   # menu = Menu.new,  puts menu, to_s is called by default when `puts`ing an object in Ruby
-  end
-  
   private
   
   def load_items(item,price)
