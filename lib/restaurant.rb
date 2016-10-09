@@ -23,11 +23,13 @@ class Restaurant
   end
 
   def take_orders(order, quantity)
+    clear_previous_order
     @order.place_order(order, quantity)
   end
 
   def verify_order(customer_order_sum)
     order.verify_order(customer_order_sum)
+    confirm_order
   end
 
   def confirm_order
@@ -37,7 +39,6 @@ class Restaurant
   end
 
   def close_order
-    clear_previous_order
     sms_confirmation
   end
 

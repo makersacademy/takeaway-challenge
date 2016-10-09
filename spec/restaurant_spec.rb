@@ -19,6 +19,10 @@ describe Restaurant do
       restaurant.menu = menu
       expect(restaurant.show_menu).to eq menu
     end
+
+    it 'creates a menu' do
+      expect(restaurant.create_menu).to eq restaurant.menu
+    end
   end
 
   context '#take order' do
@@ -28,18 +32,26 @@ describe Restaurant do
     end
   end
 
+  context '#verify_order' do
+    before do
+      allow(order1).to receive(:[]).with(:price).and_return(order1.price)
+    end
+
+    it 'updates the order verification method in order' do
+      customer_order_sum = 24
+      quantity = 2
+      restaurant.take_orders(order1, quantity)
+      restaurant.verify_order(customer_order_sum)
+      expect(restaurant.order.customer_order_sum).to eq customer_order_sum
+    end
+  end
+
   context '#confirm_order' do
     before do
       allow(order1).to receive(:[]).with(:price).and_return(order1.price)
     end
 
-    customer_order_sum = 47
-
-    it 'updates the order verification method in order' do
-      quantity = 2
-      restaurant.take_orders(order1, quantity)
-      expect(restaurant.verify_order(customer_order_sum)).to eq restaurant.order.customer_order_sum
-    end
+    #customer_order_sum = 47
 
     it 'raises an error if verification failed' do
       quantity = 1
@@ -47,7 +59,5 @@ describe Restaurant do
       restaurant.take_orders(order1, quantity)
       expect{ restaurant.confirm_order }.to raise_error('Verification failed, sums not matching')
     end
-
   end
-
 end
