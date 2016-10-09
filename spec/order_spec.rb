@@ -1,7 +1,8 @@
 require 'order'
 
 describe Order do
-  subject(:order) {described_class.new}
+  subject(:order) {described_class.new(credentials)}
+  let(:credentials) {double("credentials", :acc_sid => 'AC7323b7093be74631798dd01275d5a5eb', :auth_token => '60f9f1ff1becf749a8a43fb305fed625', :sender => '+15005550006')}
   let(:dish) {double("dish", :name => "Chicken Teriyaki", :price => 5)}
   let(:dish2) {double("dish2", :name => "Ramen", :price => 7)}
   let(:dish3) {double("dish3", :name => "Pad Thai", :price => 5)}
