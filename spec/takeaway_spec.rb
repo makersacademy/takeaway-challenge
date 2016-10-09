@@ -9,11 +9,11 @@ describe Takeaway do
 
   let(:dishes) { { burger: 2, steak: 1 } }
 
-  it 'will show a menu with dishes and prices' do
+  it "will show a menu with dishes and prices" do
     expect(takeaway.print_menu).to eq(printed_menu)
   end
 
-  it 'can order some number of several available dishes' do
+  it "can order some number of several available dishes" do
     expect(order).to receive(:add).twice
     takeaway.place_order(dishes)
   end
