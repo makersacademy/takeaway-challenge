@@ -10,7 +10,7 @@ class Takeaway
 
 	def initialize(menu, takeaway_number = "+441163263609")
 		@orders = Array.new
-		@menu = menu
+		@menu = menu.list
 		time = Time.now + DELIVERY_TIME
 		@phone = Phone.new(takeaway_number, "Thank you! Your order was placed and will be delivered #{time.strftime("before %I:%M%p")}")
 	end

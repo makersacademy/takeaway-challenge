@@ -17,6 +17,13 @@ class Order
 		@food.keys.include?(dish) ? @food[dish] += 1 : @food[dish] = 1
 	end
 
+	def check
+		calculate_total
+		puts "Order Total: #{order.total}"
+		@food.each do 
+			puts ""
+	end
+
 	def place(phone_number)
 		calculate_total
 		@phone_number = phone_number
