@@ -1,9 +1,7 @@
-
+require 'CSV'
 
 class Menu
 
-  require 'CSV'
-  
   attr_reader :dishes, :filepath
 
   def initialize(filepath)
