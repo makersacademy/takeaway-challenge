@@ -4,8 +4,9 @@ class Order
   include List
   attr_reader :selections
 
-  def initialize
+  def initialize(messenger=SMS)
     @selections = []
+    @messenger = messenger
   end
 
   def add(dish)
@@ -19,11 +20,16 @@ class Order
   def summary
     puts "You have ordered the following #{@selections.count} items:\n\n"
     list_dishes(@selections)
-    "\n\nTotal bill is #{total_bill}"
+    "\n\nTotal bill is #{bill}"
   end
 
   def bill
     puts total_bill
+    total_bill
+  end
+
+  def confirm_order
+    @messenger.send(confirmation)
   end
 
 private
@@ -34,6 +40,11 @@ private
       @bill += dish[:price]
     end
     @bill
+  end
+
+  def confirmation
+    time=Time.new
+    "Thank you! Your order was placed and will be delivered before #{time.hour+1}:#{time.min}."
   end
 
 

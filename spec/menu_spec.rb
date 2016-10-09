@@ -5,8 +5,8 @@ describe Menu do
   {name: "Pasta", price: 3.50},
   {name: "Pizza", price: 2.40}
   ]
-
-  subject {described_class.new(dishes)}
+  order=Order.new
+  subject {described_class.new(dishes,order)}
 
   it {is_expected.to respond_to :view }
 
@@ -23,27 +23,18 @@ describe Menu do
     before(:each) do
       subject.add_dish_to_order("Pasta")
     end
-    it "selects a dish and stores in selections" do
-      expect(subject.selections).to include dishes[0]
-    end
 
     it "should select several separate dishes" do
-      subject.add_dish_to_order("pizza")
-      expect(subject.selections).to include dishes[0], dishes[1]
+      expect(subject.add_dish_to_order("pizza")).to include dishes[0], dishes[1]
     end
 
     it "should order several of the same dish" do
       subject.add_dish_to_order("Pasta")
-      subject.add_dish_to_order("Pasta")
-      expect(subject.selections).to include dishes[0], dishes[0], dishes[0]
+      expect(subject.add_dish_to_order("Pasta")).to include dishes[0], dishes[0], dishes[0]
     end
   end
 
-  describe "#order" do
-    it "should create an order class" do
 
-    end
-  end
 
 
 

@@ -5,14 +5,14 @@ $dishes = [
 
 require_relative 'order'
 require_relative 'list_module'
+require_relative 'sms'
 
 class Menu
   include List
   attr_reader :selections, :order
 
-  def initialize(menu, order_object)
+  def initialize(menu, order_object=Order)
     @menu = menu
-    @selections = []
     @order = order_object
   end
 
@@ -22,7 +22,6 @@ class Menu
 
   def add_dish_to_order(choice)
     @menu.each do |dish|
-      @selections << dish if dish[:name].downcase == choice.downcase
       @order.add(dish) if dish[:name].downcase == choice.downcase
     end
   end

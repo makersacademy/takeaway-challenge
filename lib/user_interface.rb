@@ -4,14 +4,16 @@ $dishes = [
 ]
 require_relative 'order'
 require_relative 'menu'
+require_relative 'sms'
 
 class UserInterface
 
   attr_reader :choices
 
-  def initialize(menu_class=Menu, order_class=Order)
-    @choices = ["view menu", "select dish", "view order summary", "confirm", "bill subtotal", "quit"]
-    @order = order_class.new
+  def initialize(menu_class=Menu, order_class=Order, sms_class=SMS)
+    @choices = ["view menu", "select dish", "view order summary", "confirm order", "bill subtotal", "quit"]
+    @messenger = sms_class.new
+    @order = order_class.new(@messenger)
     @menu = menu_class.new($dishes, @order)
   end
 
@@ -62,6 +64,8 @@ class UserInterface
       @order.summary
     when "bill subtotal"
       @order.bill
+    when "confirm order"
+      @order.confirm_order
     when "quit"
       :quit
     end

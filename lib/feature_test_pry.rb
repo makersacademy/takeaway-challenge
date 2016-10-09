@@ -1,13 +1,12 @@
 require_relative 'lib/menu'
-require_relative 'lib/order'
 
 dishes = [
 {name: "Pasta", price: 3.50},
 {name: "Pizza", price: 2.40}
 ]
 
-order=Order.new
-menu = Menu.new(dishes, order)
+
+menu = Menu.new(dishes)
 menu.view
 
 
