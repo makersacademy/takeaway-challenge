@@ -13,11 +13,13 @@ describe Order do
 		order.select(chow_mein.number)
 		order.select(pasta.number)
 		order.select(pasta.number)
+		order.select(chow_mein.number)
+		order.select(pasta.number)
 	end
 
 	it 'can select a number of dishes' do
 		select_dishes
-		expect(order.food).to include(chow_mein => 1, pasta => 2)
+		expect(order.food).to include(chow_mein => 2, pasta => 3)
 	end
 
 	it 'raises an error if unknown dish number is given' do
@@ -27,7 +29,7 @@ describe Order do
 	it 'gives a total' do
 		select_dishes
 		order.calculate_total
-		expect(order.total).to eq(chow_mein.price + 2*pasta.price)
+		expect(order.total).to eq(2*chow_mein.price + 3*pasta.price)
 	end
 
 end

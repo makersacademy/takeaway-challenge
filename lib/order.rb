@@ -12,12 +12,8 @@ class Order
 
 	def select(dish_number)
 		dish = @menu[dish_number]
-		raise 'We do not have a dish with that number!' if dish == nil
-		if @food.keys.include?(dish)
-			@food[dish] += 1
-		else
-			@food[dish] = 1
-		end
+		raise 'We do not have a dish with that number!' unless dish
+		@food.keys.include?(dish) ? @food[dish] += 1 : @food[dish] = 1
 	end
 
 	def calculate_total
