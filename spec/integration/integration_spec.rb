@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'order'
 require 'order_item'
 require 'menu'
 require 'sms_notifier'
@@ -7,7 +8,8 @@ describe 'Takeaway integration', :integration => true do
   subject(:takeaway) do
     sms = SmsNotifier.new
     menu = Menu.new
-    Takeaway.new(menu, Time, sms)
+    order = Order.new
+    Takeaway.new(menu, order, Time, sms)
   end
 
   it 'has menu with a list of dishes and prices' do

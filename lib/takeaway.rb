@@ -2,9 +2,9 @@ require 'order_item'
 require 'order'
 
 class Takeaway
-  def initialize(menu, time, sms_notifier)
+  def initialize(menu, order, time, sms_notifier)
     @menu = menu
-    @order = Order.new
+    @order = order
     @sms_notifier = sms_notifier
     @time = time
   end
