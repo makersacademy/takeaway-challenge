@@ -17,7 +17,7 @@ describe Text do
   end
 
   it "can be sent" do
-    expect(text).to respond_to(:send)
+    expect(text.send_text).to be_truthy
   end
 
 end

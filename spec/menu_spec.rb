@@ -16,6 +16,6 @@ describe Menu do
   end
 
   it "has a list of dishes" do
-    expect(menu.dishes).to_not be nil
+    expect(menu.dishes).to include a_kind_of Dish
   end
 end

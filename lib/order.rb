@@ -2,7 +2,7 @@ require_relative 'text'
 
 class Order
 
-  attr_reader :total_price, :items
+  attr_reader :total_price, :items, :estimated_delivery_time
 
   MAX_NAME_LENGTH = 20
   DELIVERY_TIME = 30
@@ -38,12 +38,6 @@ class Order
     payment < @total_price ? "That's not enough money, please try again" : confirm_order(payment)
   end
 
-  def text(delivery_time_estimate)
-    message = "Thank you for your order! Estimated delivery time: #{delivery_time_estimate.hour}:#{delivery_time_estimate.min.round(-1)}"
-    text = Text.new(message, @credentials)
-    text.send
-  end
-
   private
 
   def add_item(item)
@@ -63,14 +57,23 @@ class Order
   end
 
   def confirm_order(payment)
-    text(delivery_time)
+    delivery_time
+    text
+    tip?(payment)
+  end
+
+  def tip?(payment)
     "Thank you for the tip!" if payment > @total_price
   end
 
   def delivery_time
-    Time.new + DELIVERY_TIME*60
+    @estimated_delivery_time = Time.new + DELIVERY_TIME*60
   end
 
-
+  def text
+    message = "Thank you for your order! Estimated delivery time: #{@estimated_delivery_time.hour}:#{@estimated_delivery_time.min.round(-1)}"
+    text = Text.new(message, @credentials)
+    text.send_text
+  end
 
 end

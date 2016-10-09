@@ -3,7 +3,7 @@ class Text
 
   attr_reader :to, :from, :message
 
-  def initialize(message, credentials, to ='+447598776122')
+  def initialize(message, credentials, to ='+447593476456')
     @from = credentials.sender
     @to = to
     @message = message
@@ -11,7 +11,7 @@ class Text
     @client = Twilio::REST::Client.new credentials.acc_sid, credentials.auth_token
   end
 
-  def send
+  def send_text
     @client.account.messages.create({
       :to => @to,
       :from => @from,

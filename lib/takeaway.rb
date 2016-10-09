@@ -6,8 +6,8 @@ class Takeaway
 
   attr_reader :menu, :order
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu =Menu.new)
+    @menu = menu
   end
 
   def enter

@@ -77,4 +77,13 @@ describe Order do
     expect(order).not_to receive(:text)
     order.place(7)
   end
+
+  it 'calculates the delivery time based on a standard delivery duration' do
+    order.add(dish,2)
+    order.place(10)
+    expect(order.estimated_delivery_time.hour).to eq((Time.new + Order::DELIVERY_TIME*60).hour)
+    expect(order.estimated_delivery_time.min.round(-1)).to eq((Time.new + Order::DELIVERY_TIME*60).min.round(-1))
+  end
+
+
 end

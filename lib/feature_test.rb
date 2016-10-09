@@ -35,5 +35,5 @@ puts order.receipt
 #place the order with too little money
 order.place(1)
 
-#place the order with the correct sum
-order.place(order.total_price)
+#place the order with the correct sum and a tip
+order.place(order.total_price + 5)
