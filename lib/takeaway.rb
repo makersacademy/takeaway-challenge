@@ -33,4 +33,8 @@ class Takeaway
     dish = dish_list.select_dish(id)
     order.remove_item(dish)
   end
+
+  def order_total
+    order.total
+  end
 end

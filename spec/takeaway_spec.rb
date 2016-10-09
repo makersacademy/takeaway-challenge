@@ -64,5 +64,11 @@ describe Takeaway do
       end
     end
 
+    describe '#order_total' do
+      it 'should get the sum total of the order' do
+        expect(order).to receive(:total)
+        subject.order_total
+      end
+    end
   end
 end
