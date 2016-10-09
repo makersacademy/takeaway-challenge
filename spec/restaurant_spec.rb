@@ -5,7 +5,7 @@ describe Restaurant do
   subject(:restaurant) {
     dishes = [['Tiramisu', '4.50'], ['Gelato', '3.50']]
     allow(CSV).to receive(:read).with('dishes.csv') { dishes }
-    described_class.new(Menu.new)
+    described_class.new(Menu.new('dishes.csv'))
   }
 
   describe '#add_to_order' do

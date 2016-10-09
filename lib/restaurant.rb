@@ -6,7 +6,7 @@ class Restaurant
 
   def initialize(menu)
     @menu = menu
-    @menu.read_menu('dishes.csv')
+    @menu.read_menu
   end
 
   def see_menu

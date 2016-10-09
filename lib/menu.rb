@@ -2,12 +2,13 @@ require 'csv'
 require_relative 'order'
 
 class Menu
-  def initialize
+  def initialize(file)
     @dishes = {}
+    @file = file
   end
 
-  def read_menu(file)
-    @dishes = CSV.read(file).to_h
+  def read_menu
+    @dishes = CSV.read(@file).to_h
   end
 
   def has_dish?(dish)
