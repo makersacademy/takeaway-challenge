@@ -17,7 +17,7 @@ def view_menu
 end
 
 def add_item_to_menu(item, price=0)
-  @dishes[item] = 0 unless @dishes[price]
+  @dishes[item] = 0 unless dishes[price]
   @dishes[item] += price
 end
 

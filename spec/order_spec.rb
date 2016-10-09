@@ -14,7 +14,7 @@ describe Order do
   end
 
   it "Checks that fries have been added to the current_order" do
-    order.add_item("fries",1)
+    order.add_item("fries",3)
     expect(order.current_order).to include {"fries"}
   end
 
