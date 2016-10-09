@@ -31,11 +31,22 @@ describe Takeaway do
   end
 
   describe "#confirm" do
+    before :each do
+      @item = takeaway.menu.list.first
+      takeaway.order(@item[0], 1)
+    end
+
     context "when given an incorrect amount" do
       it "raises an error" do
-        item = takeaway.menu.list.first[0]
-        takeaway.order(item, 1)
         expect{takeaway.confirm(0.01)}.to raise_error "Does not match total, order not placed"
+      end
+    end
+
+    context "when given a correct amount" do
+      it "calls send_message" do
+        allow(takeaway).to receive(:send_message)
+        expect(takeaway).to receive(:send_message)
+        takeaway.confirm(@item[1])
       end
     end
   end
