@@ -71,9 +71,4 @@ class Order
     @current_selection = []
   end
 
-  def return_order
-    puts "So that's #{@current_selection[1]} x #{@menu.menu[@current_selection[0]]} costing £#{@current_selection[2].round(3)}"
-    add_or_review
-  end
-
 end
