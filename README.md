@@ -61,7 +61,7 @@ Total sum                                      £52
  => nil
 2.3.1 :008 > t.checkout(52)
  => "Order has been completed"
-2.3.1 :009 > 
+2.3.1 :009 >
 
 ```
 ## Test example in terminal
@@ -88,7 +88,7 @@ Order
  ...
 
 Finished in 0.02099 seconds (files took 0.5134 seconds to load)
-15 examples, 0 failures
+20 examples, 0 failures
 ```
 
 ## Build Badge

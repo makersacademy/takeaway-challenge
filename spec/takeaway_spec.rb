@@ -2,8 +2,6 @@ require "takeaway"
 
 describe TakeAway do
 
-  VEGETARIAN_MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8, Butternut_rotolo: 9, Thali: 11, Smoky_bean_burger: 7 }
-
   let(:menu)  { double :menu, :list => VEGETARIAN_MENU}
   let(:order) { double :order }
   let(:text)  { double :text }

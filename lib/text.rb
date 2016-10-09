@@ -2,18 +2,25 @@ require 'sinatra'
 require 'twilio-ruby'
 
 class Text
+  attr_reader :client, :message, :customer_mobile
 
-  def send_message(message)
-    account_sid = 'ACc640281be37f4406d87815bf22bc7d33'
-    auth_token = '8d4fec8704977e0cf1551088fe6c4a3f'
+  def initialize(message, customer_mobile)
+    @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
+    @message = message
+    @customer_mobile = customer_mobile
+  end
 
-    @client = Twilio::REST::Client.new account_sid, auth_token
-
-    @client.account.messages.create({
+  def send_message
+    client.account.messages.create({
       :from => '+441143032484',
-      :to => '+447857134614',
-      :body => "#{message}",
+      :to => customer_mobile,
+      :body => message,
       })
   end
+
+  private
+  
+  ACCOUNT_SID= 'ACc640281be37f4406d87815bf22bc7d33'
+  AUTH_TOKEN = '8d4fec8704977e0cf1551088fe6c4a3f'
 
 end

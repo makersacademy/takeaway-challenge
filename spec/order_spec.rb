@@ -1,6 +1,7 @@
 require 'order'
 
 describe Order do
+
   VEGETARIAN_MENU = { Thai_green_curry: 9, Aubergine_teriyaki: 9, Mushroom_risotto: 8, Butternut_rotolo: 9, Thali: 11, Smoky_bean_burger: 7 }
 
   let(:menu) { double :menu, :list => VEGETARIAN_MENU }
@@ -23,6 +24,10 @@ describe Order do
       expect(subject).to respond_to(:add).with(2).argument
     end
 
+    it "notifies customer if an invalid dish has been requested" do
+      expect(subject.add("ice-cream", 2)).to eq "Sorry, ice-cream is not on our menu"
+    end
+
     it "stores selection" do
       sample_selection = { Thai_green_curry: 4 }
       subject.add("Thai_green_curry", 4)
@@ -32,9 +37,9 @@ describe Order do
 
   describe "#print_order" do
     it "prints order summary for review" do
-      order_summary = "Thai_green_curry x 1                            £9\nTotal sum                                       £9\n"
+      formatted_order_summary = "Thai_green_curry x 1                            £9\nTotal sum                                       £9\n"
       allow(subject).to receive(:basket).and_return({Thai_green_curry: 1})
-      expect{subject.print_order}.to output(order_summary).to_stdout
+      expect{subject.print_order}.to output(formatted_order_summary).to_stdout
     end
   end
 
