@@ -10,8 +10,12 @@ class Order
   end
 
   def add(dish, quantity)
-      basket[dish.to_sym] += quantity if menu.has_key?(dish.to_sym)
+    if @menu.has_key?(dish.to_sym)
+      basket[dish.to_sym] += quantity
+      "#{quantity} x #{dish} added to basket"
+    else
       "Sorry, #{dish} is not on our menu"
+    end
   end
 
   def print_order

@@ -24,6 +24,10 @@ describe Order do
       expect(subject).to respond_to(:add).with(2).argument
     end
 
+    it "add selection to basket if dish is available" do
+      expect(subject.add("Thai_green_curry", 4)).to eq "4 x Thai_green_curry added to basket"
+    end
+
     it "notifies customer if an invalid dish has been requested" do
       expect(subject.add("ice-cream", 2)).to eq "Sorry, ice-cream is not on our menu"
     end

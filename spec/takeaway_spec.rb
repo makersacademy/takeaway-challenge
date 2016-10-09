@@ -29,7 +29,7 @@ describe TakeAway do
 
   describe "#add" do
     it "add selection to basket" do
-      allow(order).to receive(:add)
+      allow(order).to receive(:add).and_return "4 x Thai_green_curry added to basket"
       expect(subject.add("Thai_green_curry", 4)).to eq "4 x Thai_green_curry added to basket"
     end
   end
@@ -42,17 +42,16 @@ describe TakeAway do
   end
 
   describe "#checkout" do
-    before do
-      allow(text).to receive(:send_message).with("Thank you! Your order was placed and will be delivered by #{(Time.new + 3600).strftime("%H:%M")}")
-      allow(order).to receive(:sum).and_return 18
-    end
-
-    it "tells customer order has been completed" do
-      expect(subject.checkout(18)).to eq "Order has been completed"
-    end
-
     it "raises error if sum entered by customer is incorrect" do
+      allow(order).to receive(:sum).and_return 18
       expect{subject.checkout(10)}.to raise_error "Incorrect payment received"
+    end
+  end
+
+  describe "#confirmation" do
+    it "confirms the order has been completed" do
+      allow(text).to receive(:send_message).with("Thank you! Your order was placed and will be delivered by #{(Time.new + 3600).strftime("%H:%M")}", '+44')
+      expect(subject.confirmation('+44')).to eq "Order has been completed"
     end
   end
 

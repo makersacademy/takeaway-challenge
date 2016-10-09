@@ -17,7 +17,6 @@ class TakeAway
 
   def add(dish, quantity)
     order.add(dish, quantity)
-    "#{quantity} x #{dish} added to basket"
   end
 
   def review
@@ -26,19 +25,19 @@ class TakeAway
 
   def checkout(payment)
     raise "Incorrect payment received" if payment != order.sum
-    confirmation
+    "Payment received"
   end
 
-private
-  attr_reader :time
-
-  def confirmation
-    text.send_message("Thank you! Your order was placed and will be delivered by #{time}")
+  def confirmation(message = MESSAGE, customer_mobile)
+    text.send_message(message,customer_mobile)
     return "Order has been completed"
   end
 
-  def time
-    time_in_an_hour = Time.new + 3600
-    time_in_an_hour.strftime("%H:%M")
-  end
+private
+
+  time_in_an_hour = Time.new + 3600
+  time = time_in_an_hour.strftime("%H:%M")
+
+  MESSAGE = "Thank you! Your order was placed and will be delivered by #{time}"
+
 end
