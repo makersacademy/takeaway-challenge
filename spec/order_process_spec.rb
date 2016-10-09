@@ -13,7 +13,7 @@ describe OrderProcess do
 
   # create anew order ready to be filled
   # - empty array to be filled
-  it { is_expected.to have_atttributes(order: [])}
+  it { is_expected.to have_atttributes(:order)}
 
 
   # import selected dishes from the dish selection process
