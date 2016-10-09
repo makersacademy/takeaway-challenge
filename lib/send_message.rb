@@ -1,4 +1,3 @@
-#require 'rubygems'
 require 'twilio-ruby'
 class SendMessage
 
@@ -11,7 +10,7 @@ class SendMessage
     @client.account.messages.create({
       :from => '+441143032463',
       :to => '+447542672130',
-      :body => 'Your meal is on its way and will arrive in one hour'
+      :body => "Your meal is on its way and will arrive at #{Time.now + 1*60*60}."
       })
 
     end
