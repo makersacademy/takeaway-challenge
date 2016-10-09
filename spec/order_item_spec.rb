@@ -3,6 +3,11 @@ require 'order_item'
 describe OrderItem do
   let(:dish) { double :dish }
 
+  it 'must have an item' do
+    order_item = OrderItem.new(dish)
+    expect(order_item.item).not_to be nil
+  end
+
   context 'given an item without a quantity' do
     subject(:order_item) { described_class.new(dish) }
 
