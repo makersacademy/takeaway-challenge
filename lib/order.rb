@@ -1,27 +1,39 @@
 require_relative "menu"
+require_relative "sms"
+require_relative "time"
+require_relative "basket"
+
 class Order
 
-
-attr_reader :full_menu, :order
+attr_reader :full_menu, :basket, :total
 
 def initialize
   @full_menu = Menu.new
-  @order=[]
+  @basket=Basket.new
+  @time=Time.new
 end
 
 def view_menu
- @full_menu.menu.menu.each_with_index do |item, index|
-  puts "#{index+1}. #{item[:pizza]}: £#{item[:price]}"
- end
+ @full_menu.print_menu
 end
 
 def add_dish(number, quantity)
-  @added = {:item => @full_menu.menu[number-1][:pizza], :quantity => quantity, :cost => @full_menu.menu[number-1][:price] }
-  @order << @added
+  raise "Sorry that dish isn't available" if @full_menu.menu.length < (number-1)
+  @basket.in_basket(number, quantity)
 end
 
-def order_calculator
-  @order.each {|item| @total_price = item[:quantity]*item[:cost]}
+
+def show_order
+  @basket.open_basket
+end
+
+def total_price
+  @basket.sum_basket
+end
+
+def place_order
+  message = Sms.new
+  message.send_text("Thank you! Your order was placed and will be delivered before #{@time.time}")
 end
 
 
