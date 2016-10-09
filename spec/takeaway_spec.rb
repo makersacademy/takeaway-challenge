@@ -25,6 +25,8 @@ describe Takeaway do
 										allow(order).to receive(:phone_number).and_return(+447572283141)
 									end
 		it 'places an order' do
+			allow(takeaway).to receive(:send_text)
+			expect(takeaway).to receive(:send_text).with(+447572283141)
 			takeaway.place(order)
 			expect(takeaway.orders).to include(order.food)
 		end
