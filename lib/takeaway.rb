@@ -50,7 +50,7 @@ class Takeaway
     @placed_orders << order
     send_confirmation_SMS
     @order = Order.new
-    "Order placed successfully!"
+    confirmation_text
   end
 
   def placed_orders

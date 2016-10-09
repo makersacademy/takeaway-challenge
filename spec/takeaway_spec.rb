@@ -117,8 +117,10 @@ describe Takeaway do
         expect(subject.order).not_to eq order
       end
 
-      it 'should return a confirmation' do
-        expect(subject.place_order).to eq "Order placed successfully!"
+      it 'should return a confirmation text' do
+        delivery_time = "#{Time.now.hour+1}:#{Time.now.min}"
+        text = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+        expect(subject.place_order).to eq text
       end
     end
   end
