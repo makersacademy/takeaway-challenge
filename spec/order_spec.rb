@@ -1,5 +1,4 @@
 require 'order'
-require 'menu'
 
 describe Order do
 
@@ -38,6 +37,15 @@ describe Order do
       order.select_dish(3)
       expect(order.current_order.size).to be 2
     end
+  end
+
+  describe '#total_price' do
+    it "calculates the total price of selected items" do
+      order.select_dish(3)
+      order.select_dish(4)
+      expect(order.total_price).to eq 23
+    end
+
   end
 
 

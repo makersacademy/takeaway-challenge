@@ -116,3 +116,6 @@ October 08, 2016
 - for each order, the menu will be required for selection of items
 - initially, the order has 0 total to pay and no items in the selection(current_order)
 - select_dishes method will accept the item number as an argument in order to include dish in the selection of items
+
+## THIRD USER STORY
+- in the order class, using the map method, calculated the total price by adding the price from each hash in the selection array

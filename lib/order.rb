@@ -14,4 +14,9 @@ class Order
     @current_order << @menu.menu_list[item - 1]
   end
 
+  def total_price
+    @order_total = @current_order.map { |hash| hash[:price]}.inject(:+)
+    "Total price of order at checkout: #{@order_total}"
+  end
+
 end
