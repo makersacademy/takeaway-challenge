@@ -17,4 +17,8 @@ class Takeaway
       "File '#{filename}' not found!"
     end
   end
+
+  def menu
+    puts dish_list
+  end
 end

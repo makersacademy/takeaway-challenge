@@ -35,4 +35,11 @@ describe Takeaway do
     end
   end
 
+  describe '#menu' do
+    it 'should print the menu on the screen' do
+      expect(STDOUT).to receive(:puts).with(dish_list)
+      subject.menu
+    end
+  end
+
 end
