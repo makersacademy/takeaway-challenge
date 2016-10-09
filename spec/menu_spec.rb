@@ -27,4 +27,9 @@ describe Menu do
   it "returns when a dish is NOT on the menu" do
     expect(menu.in_menu?(:paella)).to be false
   end
+
+  it "returns the price of each meal" do
+    expect(menu.price(:lasagne)).to eq(dishes[:lasagne])
+  end
+
 end
