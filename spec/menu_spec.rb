@@ -8,7 +8,7 @@ describe Menu do
   end
 
   describe "#check_price(item)" do
-    it "returns the price if the item is available" do
+    it "Returns the price if the item is available" do
       expect(menu.check_price("Taco")).to eq 1.00
     end
 

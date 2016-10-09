@@ -22,7 +22,7 @@ describe Interface do
       expect(interface.instance_variable_get(:@order_class)).to eq order_class
     end
 
-    it "does not have a current order when initialized" do
+    it "Does not have a current order when initialized" do
       expect(interface.instance_variable_get(:@current_order)).to be_nil
     end
   end
@@ -40,7 +40,7 @@ context "Beginning an order" do
       interface.new_order
   end
 
-  it "send the menu to the order instance" do
+  it "Sends the menu to the order instance" do
     expect(order_class).to have_received(:new).with(menu)
   end
 
@@ -54,13 +54,13 @@ describe "#order" do
     expect{interface.order("Taco")}.to raise_error "Please begin your order"
   end
 
-  it "delegates ordering one item to the order class" do
+  it "Delegates ordering only one item to the order class" do
     interface.new_order
     interface.order("Taco")
     expect(order_instance).to have_received(:add_to_order).with("Taco", 1)
   end
 
-  it "delegates ordering multiple items to the order class" do
+  it "Delegates ordering multiple items to the order class" do
     interface.new_order
     interface.order("Taco", 3)
     expect(order_instance).to have_received(:add_to_order).with("Taco", 3)
@@ -72,7 +72,7 @@ describe "#order" do
       interface.order("Taco", 3)
     end
 
-    it "delegates reviewing the order to the order instance" do
+    it "Delegates reviewing the order to the order instance" do
       interface.review_order
       expect(order_instance).to have_received(:review_order)
     end
@@ -84,11 +84,11 @@ describe "#order" do
         interface.checkout(3.00)
       end
 
-      it "delegates completing an order to the order_instance" do
+      it "Delegates completing an order to the order instance" do
         expect(order_instance).to have_received(:checkout)
       end
 
-      it "places the current_order back to nil" do
+      it "Places the current order back to nil" do
         expect(interface.instance_variable_get(:@current_order)).to be_nil
       end
     end
