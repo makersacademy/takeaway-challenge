@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'message'
 
 class Order
 
@@ -24,6 +25,8 @@ class Order
   end
 
   def confirm_order
+    message = Message.new
+    message.send_text
     "Thank you for placing your order. A text message will be sent to you shortly confirming your delivery time."
   end
 
