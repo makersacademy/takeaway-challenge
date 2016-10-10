@@ -4,11 +4,11 @@ require 'menu'
 describe Order do
 
 
-   let(:interface) {double(:interface)}
+  let(:interface) {double(:interface)}
 
-   subject{described_class.new(Menu.new, interface)}
+  subject{described_class.new(Menu.new, interface)}
 
-   menu = Menu.new
+  menu = Menu.new
 
   describe '#initialize' do
     it 'contains an empty order array' do
@@ -104,18 +104,18 @@ describe Order do
     it 'resets the orders array' do
       expect(subject.orders_array).to eq []
     end
-  it 'resets the running_total value' do
-    expect(subject.running_total).to eq 0
+    it 'resets the running_total value' do
+      expect(subject.running_total).to eq 0
+    end
   end
-end
 
   context 'selecting more than one dish' do
     before do
 
-    allow(interface).to receive(:select_quantity).and_return "5"
-    allow(interface).to receive(:add_or_review)
-    allow(interface).to receive(:return_order)
-  end
+      allow(interface).to receive(:select_quantity).and_return "5"
+      allow(interface).to receive(:add_or_review)
+      allow(interface).to receive(:return_order)
+    end
     # it 'allows for multiple dishes to be stored in the orders array' do
     #       unit_price = 5
     #   subject.add_dish(5)
@@ -124,7 +124,6 @@ end
     #   subject.build_orders_array
     #   expect(subject.orders_array.count).to eq 2
     # end
-
   end
 
 end

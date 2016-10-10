@@ -9,13 +9,13 @@ class Validation
     @menu = menu
     @interface = interface
   end
-
+  
   def validate_selection(dish_selection)
     if dish_selection == "exit"
       @interface.terminate
     elsif dish_selection.to_i > 0
       if dish_selection.to_i <= @menu.menu.length
-      @order.add_dish(dish_selection)
+        @order.add_dish(dish_selection)
       else
         invalid_entry("dish")
       end
@@ -54,7 +54,7 @@ class Validation
   def confirmed?(confirmation)
     case confirmation
     when "1" then @order.send_confirmation
-    when "2"then @order.reset_order #possibly create new isntance of order
+    when "2"then @order.reset_order
     when "3" then exit
     else
       puts "Not a valid entry, try again"
