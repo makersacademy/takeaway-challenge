@@ -4,7 +4,7 @@ require_relative 'text.rb'
 class Order
 
   def initialize(takeaway = Takeaway.new)
-    @basket = {}
+    @basket = Hash.new(0)
     @total = 0
     @takeaway = takeaway
   end
