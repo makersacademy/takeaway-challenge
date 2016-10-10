@@ -39,6 +39,7 @@ class Takeaway
   end
 
   def submit_order
+    @new_order.check_order
     @sms = SMS.new(config)
     @sms.deliver
   end
