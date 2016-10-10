@@ -29,8 +29,6 @@ class Interface
     array.each {|string| puts string}
   end
 
-  private
-
   def build_order(menu, order)
     loop do
       input_request
@@ -42,6 +40,8 @@ class Interface
       order.add(create_order_line(dish, quantity))
     end
   end
+
+  private
 
   def input_request
     file_reader('/Users/malinnaleach/Programs/takeaway-challenge/lib/input_request.txt')
