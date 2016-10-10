@@ -45,13 +45,10 @@ describe Order do
       expect(new_order.order_price).to eq(new_order.order_price)
     end
 
-    it 'should give a summary of the order' do
+    it 'should give a summary of the order with price' do
       expect(new_order).to receive(:show_order)
-      new_order.order_summary
-    end
-
-    it 'should give the total price of the order also' do
       expect(new_order).to receive(:total_price)
+      expect(new_order).to receive(:print_total)
       new_order.order_summary
     end
   end

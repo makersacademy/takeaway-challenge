@@ -4,8 +4,8 @@ class Order
 
   attr_reader :menu, :selection, :order_price, :order_total, :ordered_selection
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu = Menu.new)
+    @menu = menu
     @selection = []
     @order_price = 0
   end
@@ -21,6 +21,11 @@ class Order
   def order_summary
     show_order
     total_price
+    print_total
+  end
+
+  def correct_total?
+    @selection.map{|item| item[:price]}.inject(:+).round(2) == @order_price
   end
 
   private
@@ -37,6 +42,9 @@ class Order
 
   def total_price
     @order_price = @selection.map{|item| item[:price]}.inject(:+).round(2)
+  end
+
+  def print_total
     puts "Your order total is £#{@order_price}"
   end
 end
