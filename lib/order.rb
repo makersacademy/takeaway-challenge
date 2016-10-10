@@ -1,4 +1,5 @@
 require_relative 'menu'
+require 'twilio-ruby'
 
 class Order
 
@@ -9,11 +10,13 @@ class Order
     @basket = []
     @total = 0
     @confirmed = false
+    time = (Time.now+(60*60))
+    @confirmation_text = "Thank you! Your order was placed and will be delivered before #{time.strftime("%H")}:#{time.strftime("%M")}. You ordered:"
   end
 
   def add_item(item, quantity = 1)
     check_exists(item)
-    puts "You ordered #{quantity} portion(s) of #{item}"
+    @confirmation_text += " #{quantity} portion(s) of #{item},"
     retrieve_price(item)
     recalculate_total(quantity)
     basket << {item: item, quantity: quantity}
@@ -28,7 +31,7 @@ class Order
   end
 
   def confirm
-    @confirmed = true
+    confirm_and_text
   end
 
   private
@@ -51,6 +54,17 @@ class Order
   def recalculate_total(quantity)
     @total += @item_cost * quantity
     @item_cost = 0
-    puts "Order cost: #{@total}"
+  end
+
+  def confirm_and_text
+    account_sid = "AC9260c0d2e30d8e0ed7b71f2206744564"
+    auth_token = "1a3ecd829703c63b70836734592ce643"
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    text = "#{@confirmation_text} and the total comes to £#{@total}"
+    message = @client.account.messages.create(:body => text,
+        :to => "+447973628682",
+        :from => "+441634540313")
+    message.sid
+    @confirmed = true
   end
 end

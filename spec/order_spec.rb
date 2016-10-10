@@ -74,11 +74,21 @@ describe Order do
 
   describe '#confirm' do
 
+    before do
+      subject.add_item("Salmon Teriyaki", 1)
+      subject.add_item("Pork Karaage", 1)
+      subject.add_item("Chicken Katsu Curry", 1)
+      subject.add_item("Salmon Sashimi", 2)
+      subject.add_item("Tuna Sashimi", 2)
+      subject.add_item("Cucumber Maki", 1)
+      subject.add_item("Boiled Rice", 3)
+      subject.add_item("Hot Sake", 4)
+      subject.add_item("Asahi", 4)
+    end
+
     it 'sets confirmation status to true' do
       subject.confirm
       expect(subject).to be_confirmed
     end
-
   end
-
 end

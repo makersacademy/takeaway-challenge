@@ -11,8 +11,17 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+
+My Approach
+--------
+
+I started this one pretty late! My approach was to think of the domain model first. From that I decided to create classes for Dish, Menu and Order. I then implemented it in a TDD style, one small feature/unit at a time.
+
+I ran out of time, otherwise a clean up may have included extracting the order confirmation from Order. I also haven't used a single mock, nor attempted to unit test the text message facility.
+
+In terms of features, I also haven't implemented the ability to remove items from the basket once added, but this could easily be done. It may have been nice too to develop a user interface for the system.
 
 Instructions
 -------
@@ -69,7 +78,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
