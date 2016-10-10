@@ -4,7 +4,7 @@ require "text"
 class Takeaway
   attr_reader :menu, :order, :text
 
-  def initialize(menu:, order: nil, text: nil)
+  def initialize(menu: Menu.new, order: nil, text: nil)
     @menu = menu
     @order = order || Order.new(menu)
     @text = text || Text.new
@@ -20,11 +20,10 @@ class Takeaway
     order.total
   end
 
-def lookup_dishes(dishes)
-  dishes.each do |title, quantity|
-    order.add(title, quantity)
+  def lookup_dishes(dishes)
+    dishes.each do |title, quantity|
+      order.add(title, quantity)
+    end
   end
-end
-
 
 end

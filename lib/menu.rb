@@ -10,7 +10,7 @@ class Menu
   end
 
   def in_menu?(title)
-    !!dishes[title]
+    !!dishes[title] 
   end
 
   def price(title)

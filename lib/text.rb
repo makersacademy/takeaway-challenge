@@ -1,7 +1,10 @@
 require "twilio-ruby"
+require "dotenv"
 
 class Text
 TIME = "%H:%M"
+
+Dotenv.load
 
 attr_reader :client
 
