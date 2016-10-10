@@ -17,4 +17,11 @@ describe Menu do
       expect(subject.list.first.price).to be_an_instance_of Float
     end
   end
+
+  describe '#print' do
+
+    it 'returns an Array' do
+      expect(subject.print).to be_an_instance_of Array
+    end
+  end
 end

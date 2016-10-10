@@ -4,27 +4,42 @@ class Order
 
   attr_reader :basket, :menu
 
-  def initialize(item_class = Menu)
-    @menu = item_class.new.list
+  def initialize(menu = Menu.new)
+    @menu = menu
     @basket = []
     @total = 0
   end
 
-  def add_item(item, price, quantity = 1)
-    basket << {item: item, price: price, quantity: quantity}
+  def add_item(item, quantity = 1)
+    check_item(item)
+    retrieve_price(item)
+    basket << {item: item, quantity: quantity}
+    recalculate_total(quantity)
   end
 
   def total
-    calculate_total
     @total
   end
 
   private
 
-  def calculate_total
-    @total = 0
-    basket.each do |item|
-      @total += item[:price] * item[:quantity]
+  def check_item(item)
+    item_found = false
+    @menu.list.each do |x|
+      if x.name == item
+        item_found = true
+      end
     end
+    fail "Item on not on the menu" unless item_found
+  end
+
+  def retrieve_price(item)
+    item_to_find = @menu.list.select { |y| y.name == item }
+    @item_cost = item_to_find[0].price
+  end
+
+  def recalculate_total(quantity)
+    @total += @item_cost * quantity
+    @item_cost = 0
   end
 end

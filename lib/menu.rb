@@ -19,4 +19,15 @@ class Menu
               dish.new("Asahi", 3.75),
               dish.new("Hot Sake", 5.75) ]
   end
+
+  def print
+    count = 1
+    puts "*** Hello and welcome to Fujiwama! ***".center(53)
+    puts "*** These are the items on our menu today. ***".center(53)
+    puts
+    @list.each do |item|
+      puts "#{count.to_s.ljust(3)} #{item.name.ljust(19)} #{item.price.to_s.rjust(5)}"
+      count += 1
+    end
+  end
 end
