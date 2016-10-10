@@ -30,7 +30,11 @@ class Order
   def ask_if_want_to_order
     puts "Would you like to order a dish?"
     order = gets.chomp.downcase
-    order == "yes" ? ask_if_sms_order : exit
+    if order == "yes" then ask_if_sms_order elsif order == "no" then exit
+    else
+      not_a_valid_choice
+      ask_if_want_to_order
+    end
   end
 
   def ask_if_sms_order
@@ -106,7 +110,7 @@ class Order
 
     def summary
       summary = ""
-      @list_of_dishes.each { |dish| summary << "#{dish[:quantity]} #{dish[:dish]}(s), £#{(dish[:price]) * (dish[:quantity])} \n"}
+      @list_of_dishes.each { |dish| summary << "#{dish[:quantity]} #{dish[:dish]}(s), £#{(dish[:total])} \n"}
       puts "Your order is: \n" + summary + "For a total of £#{total_amount}"
       confirm
     end

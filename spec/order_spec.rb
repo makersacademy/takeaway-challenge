@@ -2,8 +2,9 @@ require 'order'
 
 describe Order do
   let(:order) { double :order }
-
+  let(:menu) {double :menu}
   before :each do
+    allow(menu).to receive(:print_menu)
     allow(order).to receive(:see_menu)
     allow(order).to receive(:add_dish_to_order)
     allow(order).to receive(:set_to_nil)
@@ -41,7 +42,7 @@ describe Order do
           @input = StringIO.new("yes")
           @output = StringIO.new("Would you like to look at the menu?")
           order.see_menu
-            expect(@output.string).to  eq("Would you like to look at the menu?")
+            expect(@output.string).to eq("Would you like to look at the menu?")
         end
   end
 
@@ -50,7 +51,7 @@ describe Order do
           @input = StringIO.new("yes")
           @output = StringIO.new("Would you like to order a dish?")
           order.ask_if_want_to_order
-            expect(@output.string).to  eq("Would you like to order a dish?")
+            expect(@output.string).to eq("Would you like to order a dish?")
         end
   end
 
