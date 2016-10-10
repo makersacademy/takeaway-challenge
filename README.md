@@ -1,5 +1,12 @@
 Takeaway Challenge
 ==================
+
+I'm not particularly satisfied with the completed Takeaway programme. The Takeaway class is far too large. I tried to create a separate Order class but could not get the methods / variables to interact.
+The user experience is poor and disjointed.
+Edge cases have not been adequately addressed.
+To add to the misery, I spent most of the weekend creating this monstrosity.
+
+
 ```
                             _________
               r==           |       |
@@ -11,7 +18,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +76,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
