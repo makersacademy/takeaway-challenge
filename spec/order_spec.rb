@@ -10,18 +10,19 @@ describe Order do
   let(:quantity){double :quantity}
   let(:price){double :price}
   let(:your_order){double :your_order}
+  let(:basket){double :basket}
 
 
   describe "#select_item" do
     it 'allows for each food item to be selected' do
       order.select_item(dish1)
-      expect(order.basket).to include dish1.to_sym
+      expect(order.basket).to include dish1
     end
 
 
     it 'can choose a certain item' do
       order.select_item(dish1)
-      expect(order.basket).to have_key(dish1.to_sym)
+      expect(order.basket).to have_key(dish1)
     end
 
     # can't figure this one out
@@ -39,12 +40,6 @@ describe Order do
     end
   end
 
-  describe "#in_basket" do
-    it 'outputs what is in the basket' do
-      order.select_item(dish1, 2)
-      expect{order.in_basket}.to output.to_stdout
-    end
-  end
 
   describe "#confirm" do
     it 'shows items selected' do
@@ -52,9 +47,19 @@ describe Order do
       order.confirm
     end
 
+    it 'outputs selected dish price' do
+      expect(dish2.price).to eq 8.0
+    end
+
+    # cannot get this one to work - undefined method `*' for nil:NilClass
+    xit 'outputs quantity of selected items' do
+      order.select_item(dish1, 1)
+      expect(order.confirm).to eq "#{quantity} x #{item} = £#{price} per dish"
+    end
+
     # cannot get this one to work - undefined method `*' for nil:NilClass
     xit 'outputs selected items' do
-      order.select_item(dish1, 1)
+      order.select_item(dish1.to_sym, 1)
       expect(order.confirm).to eq "Total cost: £#{your_order}"
     end
   end

@@ -18,4 +18,13 @@ describe Message do
       expect(message.body).to eq :body
     end
   end
+
+  describe "stub api" do
+    xit 'returns text message' do
+      client = double('client', :to => 'to', :from => 'from', :body => 'body')
+      # allow(client).to receive(send_message).and_return(message)
+      response = Message.new(client).get_message
+      expect(response).to eq message
+    end
+  end
 end

@@ -11,23 +11,23 @@ class Order
   end
 
   def select_item(item, quantity=1)
-    basket[item.to_sym] = quantity
+    basket[item] = quantity
     puts "#{quantity} x #{item} has been added to your basket"
-  end
-
-  def in_basket
-    p basket[0]
   end
 
   def confirm
     puts "Your selection is: "
     basket.each do |item, quantity|
-      price = menu.item[item]
-      puts "#{quantity} x #{item} = £#{price} per dish"
+      @price = menu.item[item]
+      puts "#{quantity} x #{item} = £#{@price} per dish"
     end
     puts "Total cost: £#{your_order}"
   end
 
+
+  # def your_order
+  #   @basket.each { |quantity| @price * quantity }
+  # end
 
   def your_order
     basket.each do |item, quantity|
