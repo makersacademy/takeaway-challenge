@@ -1,0 +1,2 @@
+class BasketSummary
+end 

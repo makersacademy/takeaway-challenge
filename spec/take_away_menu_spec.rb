@@ -1,4 +1,7 @@
 require 'take_away_menu'
+# require 'order'
+
+require 'take_away_menu'
 require 'order'
 
 describe TakeAwayMenu do
@@ -8,11 +11,7 @@ describe TakeAwayMenu do
     expect(menu).to respond_to :list_dishes
   end
 
-  it "has 2 items on the menu" do
-    expect(subject.items.length).to eq(5)
-  end
-
-  it 'has 4 items on the menu' do
+  it 'has 5 items on the menu' do
     expect(subject.items.length).to eq(5)
   end
 
@@ -22,3 +21,15 @@ describe TakeAwayMenu do
    end
 
 end
+
+# describe Takeaway do
+#   subject(:takeaway) {described_class.new(menu: menu)}
+#
+#   let(:menu) {double(:menu, print: printed_menu)}
+#   let(:printed_menu){'pasta: £5.00'}
+#
+#   it 'shows the menu with the dishes and prices' do
+#     expect(takeaway.print_menu).to eq(printed_menu)
+#   end
+#
+# end
