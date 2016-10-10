@@ -12,13 +12,13 @@ This program works through 5 class objects:
 
 Item: Food objects with name and price instance variables - taken from a yml file
 
-Menu: This has the instance variable @items which stores the items in the yml file and
+Menu: This has the instance variable @items which stores the items in the yml file. It also has a method select_by_name, which called through our Order class allows us to select an item with a string, as opposed to the object id.
 
 Order: This is the main interface for checking the menu and ordering items into a hash called 'basket'. Upon checkout, it also adds up the total of the goods ordered, and checks that you're putting in the right money
 
 Restaurant: This composes the message that gets sent through to the Messager...
 
-Messager: This contains the twilio API info and the functionality to send the message from the restaurant. I have had to remove some of this as I didn't get enough time to figure out how to keep the personal info secret, and therefore I have left it broken.
+Messager: This contains the twilio API info and the functionality to send the message from the restaurant.
 
 
 

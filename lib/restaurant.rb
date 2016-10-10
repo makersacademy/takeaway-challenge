@@ -4,7 +4,7 @@ require_relative 'messager'
 
 class Restaurant
 
-attr_reader :menu
+attr_reader :menu, :messager
 
   def initialize(menu = Menu.new)
     @menu = menu

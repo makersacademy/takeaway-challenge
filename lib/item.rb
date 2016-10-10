@@ -1,6 +1,5 @@
 require_relative 'menu'
 
-
 class Item
 
 attr_reader :name, :price
