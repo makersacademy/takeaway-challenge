@@ -1,7 +1,7 @@
 require 'sms'
 
 describe SMS do
-  subject(:sms) { described_class.new(config, client: client) }
+  subject(:sms) { described_class.new}
 
   let(:client) { double(:client, messages: messages) }
   let(:messages) {double(:messages)}
