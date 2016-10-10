@@ -24,25 +24,10 @@ describe Takeaway do
   end
 
   describe "#basket_summary" do
-
+    it "should print the order" do
+      subject.add(penne)
+      expect{subject.basket_summary}.to output("Your order: \nPenne con la sabbia x 1 = 3£ ").to_stdout
+    end
   end
-
-  # describe "#remove" do
-  #   it "should remove item from the order class" do
-  #
-  #   end
-  #
-  #   it "should remove the amount from the total" do
-  #     expect{subject.remove(margherita)}.to change{ subject.total }.by -5
-  #   end
-  # end
-  #
-  # describe "total" do
-  #   it "should return the total amount" do
-  #     subject.add(pazza)
-  #     expect(subject.total).to eq(22)
-  #   end
-  # end
-
 
 end

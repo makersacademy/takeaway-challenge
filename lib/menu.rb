@@ -6,10 +6,7 @@ class Menu
     @menu = [{dish: "cianfrusaglie alla rinfusa", price: 3}, {dish: "raudi accesi", price: 3}, {dish: "fragole alla carbonara", price: 14}]
   end
 
-  def to_s
-    'the menu is empty'
+  def entry(dish = Dish.new)
+    @menu << {dish: dish.name, price: dish.price}
   end
-  # def entry(dish = Dish.new)
-  #   @menu << {dish: dish.name, price: dish.price}
-  # end
 end
