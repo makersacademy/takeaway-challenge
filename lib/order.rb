@@ -31,7 +31,7 @@ attr_reader :selection
 
   def confirmation
     message = SMSConfirmation.new
-    message.send(confirmation_message)
+    message.sendsms(confirmation_message)
   end
 
   private

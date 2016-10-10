@@ -9,7 +9,7 @@ class SMSConfirmation
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def send(confirmation)
+  def sendsms(confirmation)
     @client.account.messages.create(
     from: '+441493202211',
     to: '+447759548193',
