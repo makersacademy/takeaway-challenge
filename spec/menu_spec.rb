@@ -6,7 +6,7 @@ describe Menu do
   let(:chinese_menu) { double :chinese_menu }
 
   describe 'loading menu methods' do
-
+    
     it 'should make @chippy_menu have value if successfully loaded' do
       chippy_menu = subject.load_chippy_menu
       expect(chippy_menu).to_not be_empty
