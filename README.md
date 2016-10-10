@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fmlharrison/takeaway-challenge.svg?branch=master)](https://travis-ci.org/fmlharrison/takeaway-challenge)
+
 #Takeaway Challenge#
 
 Interface in use:
@@ -129,7 +131,6 @@ require ./lib/takeaway.rb
 ```
 
 How to test
-[status badge](https://travis-ci.org/fmlharrison/takeaway-challenge.svg?branch=master)
 ```
 git clone https://github.com/codepreneur/takeaway
 cd takeaway
