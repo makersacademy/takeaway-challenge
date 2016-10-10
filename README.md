@@ -14,9 +14,9 @@ Takeaway Challenge
 
 ```
 
-Used coach walkthrough heavily as a best practice example as weekend proved too busy!  
+Used coach walkthrough heavily as a best practice example as weekend proved too busy! 3/4 user stories complete.  
 
-TODO: Return to complete user story 4 and attempt again with my own solution. 
+TODO: Return to complete user story 4 and attempt again with my own solution.
 
 ```
 As a customer
