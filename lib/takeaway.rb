@@ -72,7 +72,7 @@ class TakeAway
 end
 
 # #=begin
-# # require './lib/takeaway'
+# require './lib/takeaway'
 # menu = Menu.new("menu1.csv")
 # thai = TakeAway.new(menu)
 # thai.change_menu("menu.csv")

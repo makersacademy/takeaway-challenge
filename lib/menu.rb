@@ -41,7 +41,7 @@ end
 
 
 # menu = Menu.new
-# menu = Menu.new("menu1.csv")
+# menu = Menu.new("menu.csv")
 # #menu.load_menu("menu.csv")
 # menu.load_menu("menu1.csv")
 #                       #puts menu.get_details("peking duck")
