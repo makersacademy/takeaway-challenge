@@ -1,5 +1,3 @@
-https://travis-ci.org/abeddow91/takeaway-challenge.svg?branch=master
-
 [![Build Status](https://travis-ci.org/abeddow91/takeaway-challenge.svg?branch=master)](https://travis-ci.org/abeddow91/takeaway-challenge)
 
 Takeaway Challenge
