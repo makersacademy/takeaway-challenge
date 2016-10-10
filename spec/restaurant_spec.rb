@@ -1,4 +1,5 @@
 require 'restaurant'
+#require 'yaml'
 
 describe Restaurant do
 
@@ -43,7 +44,7 @@ describe Restaurant do
       expect{ subject.add_to_order('Balti') }.to raise_error "Balti isn't available"
     end
 
-    it 'will add a dish even if not enetered as a symbol' do
+    it 'will add a dish even if not formatted correctly' do
       subject.add_to_order("RicE")
       expect(subject.order).to include(name: 'Rice', price: 1.50)
     end

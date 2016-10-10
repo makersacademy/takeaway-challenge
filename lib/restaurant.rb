@@ -1,5 +1,6 @@
 require_relative 'menu'
 require 'twilio-ruby'
+#require 'yaml'
 
 class Restaurant
 
@@ -11,7 +12,7 @@ class Restaurant
   end
 
   def display_menu
-   @menu.show_menu.each do |k|
+  @menu.show_menu.each do |k|
      "#{k}"
    end
   end
