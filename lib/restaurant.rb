@@ -1,3 +1,6 @@
+require 'envyable'
+require 'twilio-ruby'
+
 class Restaurant
 
   def initialize
@@ -41,6 +44,12 @@ class Restaurant
     "Your total is £#{@total}"
   end
 
+  def place_order
+    # puts "Enter your phone number:"
+    # phone = gets.chomp.to_i
+    sms_confirmation
+  end
+
   private
 
   def greeting
@@ -53,5 +62,22 @@ class Restaurant
 
   def finish
     @final_order = @current_order.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+  end
+
+  def sms_confirmation
+    Envyable.load('config/env.yml')
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    to_number = ENV['TO_NUMBER']
+    from_number = ENV['FROM_NUMBER']
+
+    # set up a client to talk to the Twilio REST API
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    @client.account.messages.create({
+      :to => to_number,
+      :from => from_number,
+      :body => 'Thank you! Your order was placed and will be delivered before 18:00',
+      })
   end
 end
