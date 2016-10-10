@@ -61,7 +61,7 @@ What I was able to do:
 
 What I wasn't able to do (yet - could do this with more time):
 
-- Create a 'helper' class that mocks user input and tests it.
+- Need to mock user input.
 - Create guard clauses that throw errors when user inputs incorrect dish.
 - Currently dishes are listed by number but I can implement functionality to type the name of the dish in and do a search for that item.
 - Allow ConfirmationTextSender to send the full order to the customer.
