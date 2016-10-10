@@ -24,7 +24,7 @@ class Order
   end
 
   def bill
-    puts total_bill
+    total_bill
   end
 
   def confirm_order

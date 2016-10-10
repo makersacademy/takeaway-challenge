@@ -63,7 +63,7 @@ class UserInterface
     when "view order summary"
       @order.summary
     when "bill subtotal"
-      @order.bill
+      puts @order.bill
     when "confirm order"
       @order.confirm_order
     when "quit"

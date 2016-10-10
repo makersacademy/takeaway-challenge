@@ -26,7 +26,7 @@ describe Order do
     it "should sum the order bill" do
       subject.add(dish)
       subject.add(dish)
-      expect(subject.bill).to include (2*dish[:price])
+      expect(subject.bill).to eq (2*dish[:price])
     end
   end
 
