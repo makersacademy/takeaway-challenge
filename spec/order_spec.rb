@@ -41,6 +41,11 @@ describe Order do
 									"Order Total: £#{2*chow_mein.price + 3*pasta.price}\n").to_stdout
 	end
 
+	it 'can check an order and then place the order without doubling the total' do
+		order.check
+		order.place(+447000000000)
+		expect(order.total).to eq(2*chow_mein.price + 3*pasta.price)
+	end
 	describe '#place' do
 
 		it 'gives a total' do
