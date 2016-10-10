@@ -8,10 +8,11 @@ class Order
     @menu = menu
     @basket = []
     @total = 0
+    @confirmed = false
   end
 
   def add_item(item, quantity = 1)
-    check_item(item)
+    check_exists(item)
     retrieve_price(item)
     basket << {item: item, quantity: quantity}
     recalculate_total(quantity)
@@ -21,9 +22,17 @@ class Order
     @total
   end
 
+  def confirmed?
+    @confirmed
+  end
+
+  def confirm
+    @confirmed = true
+  end
+
   private
 
-  def check_item(item)
+  def check_exists(item)
     item_found = false
     @menu.list.each do |x|
       if x.name == item

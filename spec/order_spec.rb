@@ -20,6 +20,15 @@ describe Order do
     it 'returns an array of menu items' do
       expect(subject.menu.list).to be_an_instance_of Array
     end
+
+    it 'sets total to 0 by default' do
+      expect(subject.total).to eq 0
+    end
+
+    it 'sets confirmation status as false by default' do
+      expect(subject).not_to be_confirmed
+    end
+
   end
 
   describe '#add_item' do
@@ -62,4 +71,14 @@ describe Order do
       expect(subject.total).to eq 55.95
     end
   end
+
+  describe '#confirm' do
+
+    it 'sets confirmation status to true' do
+      subject.confirm
+      expect(subject).to be_confirmed
+    end
+
+  end
+
 end
