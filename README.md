@@ -14,9 +14,9 @@ Takeaway Challenge
 
 ```
 
-Used coach walkthrough heavily as a best practice example as weekend proved too busy! 3/4 user stories complete.  
+Refactor During Week 3 
 
-TODO: Return to complete user story 4 and attempt again with my own solution.
+TODO: Implement & Test User Stories 1 - 4 below:
 
 ```
 As a customer
