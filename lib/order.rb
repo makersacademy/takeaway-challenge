@@ -45,21 +45,21 @@ class Order
     @current_selection = []
     @orders_array = []
     @running_total = 0
-    @interface.select_dish #spawn new instance of order
+    @interface.select_dish
   end
 
   def send_confirmation
     an_hours_time = Time.now + 3600
     an_hours_time = an_hours_time.strftime("%H:%M")
     puts "We have received your order! It will be with you by #{an_hours_time}"
-    account_sid = 'ACdd3bf2c71d0a35779cb6f8b3d2425165'
-    auth_token = 'a3c0e71366cde8ec7e4efd4b58a901bd'
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.account.messages.create({
-    	:from => 'ACdd3bf2c71d0a35779cb6f8b3d2425165',
-    	:to => +447479782492,
-    	:body => "We have received your order! It will be with you by #{an_hours_time}"
-    })
+    # account_sid = 'ACdd3bf2c71d0a35779cb6f8b3d2425165'
+    # auth_token = 'a3c0e71366cde8ec7e4efd4b58a901bd'
+    # @client = Twilio::REST::Client.new account_sid, auth_token
+    # @client.account.messages.create({
+    # 	:from => +441163263729,
+    # 	:to => +447479782492,
+    # 	:body => "We have received your order! It will be with you by #{an_hours_time}"
+    # })
     @interface.main_menu
   end
 
@@ -83,10 +83,8 @@ class Order
     build_orders_array
   end
 
-
   def build_orders_array
     @orders_array << @current_selection
-    ap orders_array
     return_order
   end
 

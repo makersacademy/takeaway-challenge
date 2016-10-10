@@ -61,6 +61,21 @@ describe Order do
     # end
   end
 
+  describe '#return_order' do
+    before do
+      allow(interface).to receive(:select_quantity).and_return "5"
+      allow(interface).to receive(:add_or_review)
+      allow(interface).to receive(:return_order)
+    end
+    it 'displays the full cost of the order' do
+      subject.add_dish(6)
+      subject.add_quantity(1)
+      subject.add_dish(1)
+      subject.add_quantity(1)
+      expect(subject.running_total).to eq 9.25
+    end
+  end
+
   describe '#unit_price_lookup' do
     before do
       allow(interface).to receive(:select_quantity).and_return "5"
