@@ -1,45 +1,21 @@
 class Order
-  attr_reader :dish, :price, :order
+  attr_reader :dish, :price, :order, :quantity
 
-  def initialize
+  def initialize()
     @order = []
     @price
     @dish
   end
 
-  def add(dish)
-    # @dish = dish.name
+  def add(dish, quantity = 1)
+    @quantity = quantity
     @price = dish.price
-    @order << {dish: dish.name ,price: dish.price}
+    @order << {dish: dish.name ,price: dish.price, quantity: @quantity}
   end
-#
-#   def finish(station)
-#     @exit_station = station
-#     register({exit_station: @exit_station})
-#     log
-#     reset
-#   end
-#
-#   def journeys
-#     @journeys.dup
-#   end
-#
-#   def log
-#     @journeys << @current_journey
-#   end
-#
-#   def reset
-#     @current_journey = []
-#   end
-#
-#   def register(station)
-#     @current_journey <<  station
-#   end
-#
-# private
-#
-#   def current_journey
-#     @current_journey || self.start(station)
-#   end
+
+  # def set_quantity
+  #   puts "enter the desired quantity: "
+  #   @quantity = gets.chomp.to_i
+  # end
 
 end

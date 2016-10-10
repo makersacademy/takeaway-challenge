@@ -2,34 +2,30 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:biscottini) {Dish.new("Biscottini", 4)}
+  let(:order) {Order.new}
   let(:penne) {Dish.new("Penne con la sabbia", 3)}
+  let(:menu) {double(:menu, menu: print_menu)}
+  # let(:print_menu) {dish: "cianfrusaglie alla rinfusa", price: 3}, {dish: "raudi accesi", price: 3}, {dish: "fragole alla carbonara", price: 14}
 
-  # describe "#see_menu" do
-  #   it 'should print the menu on the screen' do
-  #     expect{subject.see_menu}.to eq()
-  #   end
-  # end
+  describe "#see_menu" do
+    it 'should print the menu on the screen' do
+      expect(subject.see_menu).to include({dish: "cianfrusaglie alla rinfusa", price: 3})
+    end
+  end
 
   describe "#add" do
     it "should add the price of the item to the total amount" do
-      @quantity = 1
       expect{subject.add(penne)}.to change{ subject.total }.by 3
     end
 
     it "should add the price of the item to the total amount" do
-      @quantity = 1
-      expect{subject.add(penne)}.to change{ subject.total }.by 9
+      expect{subject.add(penne, 3)}.to change{ subject.total }.by 9
     end
-
   end
 
+  describe "#basket_summary" do
 
-  # describe "set_quantity" do
-  #   it "should set the quantity of the item" do
-  #
-  #   end
-  # end
+  end
 
   # describe "#remove" do
   #   it "should remove item from the order class" do
