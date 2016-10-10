@@ -57,7 +57,7 @@ class Order
   end
 
   def confirm_order(payment)
-    delivery_time
+    @estimated_delivery_time = delivery_time
     text
     tip?(payment)
   end
@@ -67,7 +67,7 @@ class Order
   end
 
   def delivery_time
-    @estimated_delivery_time = Time.new + DELIVERY_TIME * 60
+    Time.new + DELIVERY_TIME * 60
   end
 
   def text

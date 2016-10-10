@@ -3,7 +3,7 @@ class Text
 
   attr_reader :to, :from, :message
 
-  def initialize(message, credentials, to ="+447593476456")
+  def initialize(message, credentials, to =ENV['TO'])
     @from = credentials.sender
     @to = to
     @message = message

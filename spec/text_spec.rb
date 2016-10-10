@@ -2,8 +2,8 @@ require 'text'
 
 describe Text do
   subject(:text) { described_class.new("Order confirmed", credentials) }
-  let(:credentials) { double("credentials", :acc_sid => "AC7323b7093be74631798dd01275d5a5eb",
-                            :auth_token => "60f9f1ff1becf749a8a43fb305fed625", :sender => "+15005550006")}
+  let(:credentials) { double("credentials", :acc_sid => ENV['ACCOUNT_SID_TEST'],
+                     :auth_token => ENV['AUTH_TOKEN_TEST'], :sender => ENV['SENDER_NUMBER_TEST']) }
 
   it "has a sender's number" do
     expect(text.to).not_to be nil
