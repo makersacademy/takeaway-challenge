@@ -5,16 +5,14 @@ Dir.chdir(File.dirname(__FILE__))
 
 describe TakeAway do
   subject(:takeaway) { described_class.new }
-  #let(:item){double :item}
 
+  # it "responds to the show_menu method" do
+  #   expect(subject).to respond_to(:read_menu)    
+  # end
   
-  it "responds to the show_menu method" do
-    expect(subject).to respond_to(:read_menu)    
-  end
-  
-  it "responds to the order method" do
-    expect(subject).to respond_to(:order).with(2).arguments
-  end
+  # it "responds to the order method" do
+  #   expect(subject).to respond_to(:order).with(2).arguments
+  # end
   
   describe "makes an order" do
   
@@ -49,6 +47,11 @@ describe TakeAway do
       expect(takeaway).to receive(:send_text).with(/Thank you for your order. Total price: £34.93/)
       takeaway.complete_order(34.93)
     end
+    
+    it 'responds to the send_text method' do
+      expect(subject).to respond_to(:send_text).with(1).argument
+    end
+    
   end
   
   
