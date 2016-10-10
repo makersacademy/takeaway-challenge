@@ -14,7 +14,7 @@ class SMS
   def deliver
     client.messages.create(
     from: '+441163263088',
-    to: '+447400230230',
+    to: '+447400230000',
     body: "Thank you! Your order was placed and will be delivered before 18:52"
     )
   end
