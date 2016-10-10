@@ -10,7 +10,7 @@ describe Menu do
 
   describe "#read_menu" do
     it "prints the dishes from the loaded menu" do
-      expect(menu.dishes).to include({"pasta"=>10})
+      expect(menu.dishes).to include("pasta"=>10)
     end
   end
 
