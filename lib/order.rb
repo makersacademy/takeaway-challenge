@@ -13,9 +13,10 @@ class Order
 
   def add_item(item, quantity = 1)
     check_exists(item)
+    puts "You ordered #{quantity} portion(s) of #{item}"
     retrieve_price(item)
-    basket << {item: item, quantity: quantity}
     recalculate_total(quantity)
+    basket << {item: item, quantity: quantity}
   end
 
   def total
@@ -50,5 +51,6 @@ class Order
   def recalculate_total(quantity)
     @total += @item_cost * quantity
     @item_cost = 0
+    puts "Order cost: #{@total}"
   end
 end
