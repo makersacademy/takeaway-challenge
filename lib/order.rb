@@ -17,13 +17,13 @@ class Order
     answer = gets.chomp
     case answer
     when "yes"
-    @menu.print_menu
-    ask_if_want_to_order
+      @menu.print_menu
+      ask_if_want_to_order
     when "no"
-    ask_if_want_to_order
+      ask_if_want_to_order
     else
-    puts "This is not a valide choice, type 'yes' or 'no'"
-    see_menu
+      puts "This is not a valide choice, type 'yes' or 'no'"
+      see_menu
     end
   end
 
@@ -42,8 +42,8 @@ class Order
     answer = gets.chomp.downcase
     if answer == "yes" then sms_order elsif answer == "no" then ask_for_order
     else
-       not_a_valid_choice
-       ask_if_sms_order
+      not_a_valid_choice
+      ask_if_sms_order
     end
   end
 
@@ -55,17 +55,17 @@ class Order
   end
 
   def ask_for_order
-      puts "Please enter the dish number you wish to order"
-      @ordered_dish_number = gets.chomp.to_i
-      if @menu.valid_dish_number(@ordered_dish_number) == nil
-        puts "This is not valid dish number"
-        ask_for_order
-      else
-        puts "How many of this dish do you wish to order?"
-        @quantity = gets.chomp.to_i
-        retrieve_dish_from_menu
-        ask_for_further_dish
-      end
+    puts "Please enter the dish number you wish to order"
+    @ordered_dish_number = gets.chomp.to_i
+    if @menu.valid_dish_number(@ordered_dish_number) == nil
+      puts "This is not valid dish number"
+      ask_for_order
+    else
+      puts "How many of this dish do you wish to order?"
+      @quantity = gets.chomp.to_i
+      retrieve_dish_from_menu
+      ask_for_further_dish
+    end
   end
 
   def retrieve_dish_from_menu
@@ -81,16 +81,16 @@ class Order
   end
 
   def ask_for_further_dish
-      puts "Would you like to order an other dish?"
-      answer = gets.chomp.downcase
-      while answer == "yes"
+    puts "Would you like to order an other dish?"
+    answer = gets.chomp.downcase
+    while answer == "yes"
       ask_for_order
-      end
-      if answer == "no" then summary
-      else
+    end
+    if answer == "no" then summary
+    else
       not_a_valid_choice
       ask_for_further_dish
-      end
+    end
   end
 
   def confirm
@@ -98,36 +98,36 @@ class Order
     confirm = gets.chomp.downcase
     if confirm == "yes" then send_sms elsif confirm == "no" then exit
     else
-       not_a_valid_choice
-       confirm
+      not_a_valid_choice
+      confirm
     end
   end
 
-    def set_to_nil
-        @ordered_dish_number = nil; @quantity = nil
-        ask_for_further_dish
-    end
+  def set_to_nil
+    @ordered_dish_number = nil; @quantity = nil
+    ask_for_further_dish
+  end
 
-    def summary
-      summary = ""
-      @list_of_dishes.each { |dish| summary << "#{dish[:quantity]} #{dish[:dish]}(s), £#{(dish[:total])} \n"}
-      puts "Your order is: \n" + summary + "For a total of £#{total_amount}"
-      confirm
-    end
+  def summary
+    summary = ""
+    @list_of_dishes.each { |dish| summary << "#{dish[:quantity]} #{dish[:dish]}(s), £#{(dish[:total])} \n"}
+    puts "Your order is: \n" + summary + "For a total of £#{total_amount}"
+    confirm
+  end
 
-    def total_amount
-      array = @list_of_dishes.map{|x| x[:total]}
-      array.inject(0, :+)
-    end
+  def total_amount
+    array = @list_of_dishes.map{|x| x[:total]}
+    array.inject(0, :+)
+  end
 
-    def send_sms
-        require_relative 'send_sms'
-        exit
-    end
+  def send_sms
+    require_relative 'send_sms'
+    exit
+  end
 
-    def not_a_valid_choice
-      puts "This is not a valide choice, type 'yes' or 'no'"
-    end
+  def not_a_valid_choice
+    puts "This is not a valide choice, type 'yes' or 'no'"
+  end
 
   private :summary, :total_amount, :send_sms, :retrieve_dish_from_menu, :add_dish_to_order, :not_a_valid_choice
 end

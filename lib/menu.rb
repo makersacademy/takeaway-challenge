@@ -1,5 +1,5 @@
 class Menu
-attr_reader :current_menu
+  attr_reader :current_menu
 
   def initialize
     @current_menu = [
@@ -9,7 +9,7 @@ attr_reader :current_menu
       {dish_category: 'Dessert:', dish_number: 111, dish: 'tart', price: 7},
       {dish_category: 'Drink:', dish_number: 1111, dish: 'water', price: 4},
       {dish_category: 'Drink:', dish_number: 1112, dish: 'wine', price: 6}
-      ]
+    ]
   end
 
 
@@ -19,9 +19,9 @@ attr_reader :current_menu
 
   def print_menu
     @current_menu.each do |dish|
-    dish_data = [dish[:dish_category], dish[:dish], "£#{dish[:price]}",
-    " number: #{dish[:dish_number]}"]
-    puts dish_data.join(" ")
+      dish_data = [dish[:dish_category], dish[:dish], "£#{dish[:price]}",
+      " number: #{dish[:dish_number]}"]
+      puts dish_data.join(" ")
     end
   end
 

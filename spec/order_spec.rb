@@ -25,91 +25,91 @@ describe Order do
   end
 
   describe "#initialize" do
-        it "starts with an empty list of dishes" do
-          expect(order.list_of_dishes).to be nil
-        end
-        it "starts with an order amount equal to 0" do
-          expect(order.order_amount).to eq nil
-        end
-        it "creates a new instance of Menu" do
-          menu = Menu.new
-          expect(menu).to be_a_kind_of Menu
-        end
+    it "starts with an empty list of dishes" do
+      expect(order.list_of_dishes).to be nil
+    end
+    it "starts with an order amount equal to 0" do
+      expect(order.order_amount).to eq nil
+    end
+    it "creates a new instance of Menu" do
+      menu = Menu.new
+      expect(menu).to be_a_kind_of Menu
+    end
   end
 
   describe "#see_menu" do
-        it "asks the customer if they want to see the menu" do
-          @input = StringIO.new("yes")
-          @output = StringIO.new("Would you like to look at the menu?")
-          order.see_menu
-            expect(@output.string).to eq("Would you like to look at the menu?")
-        end
+    it "asks the customer if they want to see the menu" do
+      @input = StringIO.new("yes")
+      @output = StringIO.new("Would you like to look at the menu?")
+      order.see_menu
+      expect(@output.string).to eq("Would you like to look at the menu?")
+    end
   end
 
   describe "#ask_if_want_to_order" do
-        it "asks the customer wants to order " do
-          @input = StringIO.new("yes")
-          @output = StringIO.new("Would you like to order a dish?")
-          order.ask_if_want_to_order
-            expect(@output.string).to eq("Would you like to order a dish?")
-        end
+    it "asks the customer wants to order " do
+      @input = StringIO.new("yes")
+      @output = StringIO.new("Would you like to order a dish?")
+      order.ask_if_want_to_order
+      expect(@output.string).to eq("Would you like to order a dish?")
+    end
   end
 
   describe "#ask_if_sms_order" do
-        it "asks the customer if they want to order via sms" do
-          @input = StringIO.new("yes")
-          @output = StringIO.new("Would you like to order via sms?")
-          order.ask_if_sms_order
-            expect(@output.string).to eq("Would you like to order via sms?")
-        end
+    it "asks the customer if they want to order via sms" do
+      @input = StringIO.new("yes")
+      @output = StringIO.new("Would you like to order via sms?")
+      order.ask_if_sms_order
+      expect(@output.string).to eq("Would you like to order via sms?")
+    end
   end
 
   describe "#sms_order" do
-        it "gives instructions for ordering via sms" do
-          @output = StringIO.new("Instructions for sms order")
-          order.sms_order
-            expect(@output.string).to eq("Instructions for sms order")
-        end
+    it "gives instructions for ordering via sms" do
+      @output = StringIO.new("Instructions for sms order")
+      order.sms_order
+      expect(@output.string).to eq("Instructions for sms order")
+    end
   end
 
   describe "#ask_for_order" do
     before do
-          @input = StringIO.new("111")
-          @output = StringIO.new("Please enter the dish number you wish to order")
-          order.ask_for_order
+      @input = StringIO.new("111")
+      @output = StringIO.new("Please enter the dish number you wish to order")
+      order.ask_for_order
     end
-        it "ask the customer for the order details" do
-            expect(@output.string).to  eq("Please enter the dish number you wish to order")
-        end
-        it "get the dish number from the customer" do
-            expect(@input.string).to eq("111")
-        end
+    it "ask the customer for the order details" do
+      expect(@output.string).to  eq("Please enter the dish number you wish to order")
+    end
+    it "get the dish number from the customer" do
+      expect(@input.string).to eq("111")
+    end
   end
 
   describe "#ask_for_further_dish" do
-        it "asks the customer if they want to order further dishes" do
-          @input = StringIO.new("yes")
-          @output = StringIO.new("Would you like to order an other dish?")
-          order.ask_for_further_dish
-            expect(@output.string).to  eq("Would you like to order an other dish?")
-        end
+    it "asks the customer if they want to order further dishes" do
+      @input = StringIO.new("yes")
+      @output = StringIO.new("Would you like to order an other dish?")
+      order.ask_for_further_dish
+      expect(@output.string).to  eq("Would you like to order an other dish?")
+    end
   end
 
   describe "#confirm" do
-        it "asks the customer to confim the order" do
-          @input = StringIO.new("yes")
-          @output = StringIO.new("Would you like to confirm this order?")
-          order.confirm
-            expect(@output.string).to  eq("Would you like to confirm this order?")
-        end
-      end
+    it "asks the customer to confim the order" do
+      @input = StringIO.new("yes")
+      @output = StringIO.new("Would you like to confirm this order?")
+      order.confirm
+      expect(@output.string).to  eq("Would you like to confirm this order?")
+    end
+  end
 
   describe "#set_to_nil" do
-        it "set ordered_dish_number and quantity to nil" do
-          order.set_to_nil
-          expect(order.ordered_dish_number).to be nil
-          expect(order.quantity).to be nil
-        end
+    it "set ordered_dish_number and quantity to nil" do
+      order.set_to_nil
+      expect(order.ordered_dish_number).to be nil
+      expect(order.quantity).to be nil
+    end
   end
 
 end
