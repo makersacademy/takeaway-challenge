@@ -16,6 +16,11 @@ attr_reader :selection
     quantity.times {@selection << dish}
   end
 
+  def remove_dish(dish)
+    fail 'That dish is not in the order' unless @selection.include?(dish)
+    @selection.delete(dish)
+  end
+
   def total_price
     @bill = 0
     @selection.each do |dish|

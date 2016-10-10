@@ -23,6 +23,16 @@ describe Order do
       end
     end
 
+    describe '#remove_dish' do
+      it 'removes dish from the array' do
+        my_order.add_dish(burger, 1)
+        my_order.add_dish(salad, 1)
+        my_order.remove_dish(salad)
+        expect(my_order.selection).not_to include(salad)
+      end
+    end
+
+
     describe '#total_price' do
       it 'calculates total price of order' do
         my_order.add_dish(salad, 2)
