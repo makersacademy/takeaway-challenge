@@ -11,11 +11,43 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
 -------
+Annas-MacBook-Pro-2:takeaway-challenge anna$ irb
+2.3.1 :001 > require './lib/order'
+ => true
+2.3.1 :002 > take_away = Order.new
+ => #<Order:0x007fafb9025f88 @full_menu=#<Menu:0x007fafb9025f10 @menu=[{:pizza=>"Margherita", :price=>8}, {:pizza=>"Napolitana", :price=>10}, {:pizza=>"Fiorentina", :price=>8}, {:pizza=>"Funghi", :price=>9}, {:pizza=>"Siciliana", :price=>9}, {:pizza=>"American", :price=>7}, {:pizza=>"Hawaiian", :price=>8}, {:pizza=>"Vegetarian", :price=>9}, {:pizza=>"Pollo", :price=>10}, {:pizza=>"Carne", :price=>10}]>, @basket=#<Basket:0x007fafb9025e70 @basket=[], @total=0, @full_menu=#<Menu:0x007fafb9025088 @menu=[{:pizza=>"Margherita", :price=>8}, {:pizza=>"Napolitana", :price=>10}, {:pizza=>"Fiorentina", :price=>8}, {:pizza=>"Funghi", :price=>9}, {:pizza=>"Siciliana", :price=>9}, {:pizza=>"American", :price=>7}, {:pizza=>"Hawaiian", :price=>8}, {:pizza=>"Vegetarian", :price=>9}, {:pizza=>"Pollo", :price=>10}, {:pizza=>"Carne", :price=>10}]>>, @time=2016-10-10 09:40:31 +0100>
+2.3.1 :003 > take_away.view_menu
+1. Margherita: £8
+2. Napolitana: £10
+3. Fiorentina: £8
+4. Funghi: £9
+5. Siciliana: £9
+6. American: £7
+7. Hawaiian: £8
+8. Vegetarian: £9
+9. Pollo: £10
+10. Carne: £10
+ => [{:pizza=>"Margherita", :price=>8}, {:pizza=>"Napolitana", :price=>10}, {:pizza=>"Fiorentina", :price=>8}, {:pizza=>"Funghi", :price=>9}, {:pizza=>"Siciliana", :price=>9}, {:pizza=>"American", :price=>7}, {:pizza=>"Hawaiian", :price=>8}, {:pizza=>"Vegetarian", :price=>9}, {:pizza=>"Pollo", :price=>10}, {:pizza=>"Carne", :price=>10}]
+2.3.1 :004 > take_away.add_dish(3,2)
+ => [{:item=>"Fiorentina", :quantity=>2, :cost=>8}]
+2.3.1 :005 > take_away.add_dish(5,1)
+ => [{:item=>"Fiorentina", :quantity=>2, :cost=>8}, {:item=>"Siciliana", :quantity=>1, :cost=>9}]
+2.3.1 :006 > take_away.show_order
+2x Fiorentina : £8
+1x Siciliana : £9
+ => [{:item=>"Fiorentina", :quantity=>2, :cost=>8}, {:item=>"Siciliana", :quantity=>1, :cost=>9}]
+2.3.1 :007 > take_away.total_price
+Your total is £25
+ => nil
+2.3.1 :008 > take_away.place_order
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/ACd44dda7420b82fa1b3e447079ac40f41/Messages/SMd2955ecf90544c64b5616e5b4e1612ec>
+
+ -------------------
 
 * Challenge time: rest of the day and weekend, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
@@ -69,7 +101,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
