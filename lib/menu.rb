@@ -9,11 +9,13 @@ class Menu
 
   def load_chippy_menu
     @chippy_menu = YAML.load_file('lib/chippy_menu.yml')
+    puts "\nFish and Chips! Good choice\n"
     display_menu(@chippy_menu)
   end
 
   def load_chinese_menu
     @chinese_menu = YAML.load_file('lib/chinese_menu.yml')
+    puts "\nChinese food! Good choice\n"
     display_menu(@chinese_menu)
   end
 
