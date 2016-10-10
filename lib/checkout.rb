@@ -12,7 +12,8 @@ class Checkout
   end
 
 
-  def message
+  def completed_order(message = Message.new)
+    message.send_message
     "Your order will be delivered before #{Time.now + 1}."
   end
 

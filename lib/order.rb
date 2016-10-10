@@ -12,22 +12,19 @@ class Order
 
   def select_item(item, quantity=1)
     basket[item] = quantity
-    puts "#{quantity} x #{item} has been added to your basket"
+    "#{quantity} x #{item} has been added to your basket"
   end
 
   def confirm
-    puts "Your selection is: "
+    "Your selection is: "
     basket.each do |item, quantity|
       @price = menu.item[item]
-      puts "#{quantity} x #{item} = £#{@price} per dish"
+      "#{quantity} x #{item} = £#{@price} per dish"
     end
-    puts "Total cost: £#{your_order}"
+    your_order
   end
 
-
-  # def your_order
-  #   @basket.each { |quantity| @price * quantity }
-  # end
+private
 
   def your_order
     basket.each do |item, quantity|
@@ -35,8 +32,13 @@ class Order
       price = menu.item[item]
       @sum += (price * quantity)
     end
-    @sum
+    "Total cost: £#{@sum}"
   end
+
+  # def your_order
+  #   @basket.each { |quantity| @price * quantity }
+  # end
+
 
   # cannot get this method to work in select_item
   # def added_to_basket

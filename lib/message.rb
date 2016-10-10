@@ -1,6 +1,7 @@
 class Message
 
 require 'twilio-ruby'
+require 'sinatra'
 
 attr_reader :to, :from, :body, :delivery
 

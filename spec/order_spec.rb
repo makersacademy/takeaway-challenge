@@ -52,21 +52,16 @@ describe Order do
     end
 
     # cannot get this one to work - undefined method `*' for nil:NilClass
-    xit 'outputs quantity of selected items' do
+    it 'outputs quantity of selected items' do
       order.select_item(dish1, 1)
       expect(order.confirm).to eq "#{quantity} x #{item} = £#{price} per dish"
     end
 
-    # cannot get this one to work - undefined method `*' for nil:NilClass
-    xit 'outputs selected items' do
-      order.select_item(dish1.to_sym, 1)
-      expect(order.confirm).to eq "Total cost: £#{your_order}"
-    end
   end
 
   describe "#your_order" do
     it 'total the cost of items selected' do
-      expect(order.your_order).to eq @sum
+      expect(order.confirm).to eq "Total cost: £#{@sum}"
     end
   end
 
