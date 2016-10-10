@@ -2,7 +2,6 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new('dishes.csv') }
-  let (:dish) { double :dish }
 
   describe '#read_menu' do
     it 'reads the file' do
