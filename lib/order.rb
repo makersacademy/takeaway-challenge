@@ -29,6 +29,8 @@ attr_reader :selection
     message.send(confirmation_message)
   end
 
+  private
+
   def confirmation_message
     hours_time = Time.new + 60*60
     "Thank you! Your order was placed and will be delivered before #{hours_time.strftime('%H:%M')}"
