@@ -1,4 +1,6 @@
-#DISCLAIMER - I needed to lift much of this wording from other projects as I needed help activating Twilio within the takeaway project
+
+require 'rubygems'
+require 'twilio-ruby'
 require 'envyable'
 Envyable.load('./config/env.yml', 'development')
 
@@ -20,10 +22,10 @@ def account_id
 end
 
 def message
-  message = @client.account.messages.create(
-      :body => "Thank you! Your order was placed and will be delivered before 18:52",
-      :to => "+*******",   # Replace with your phone number
-      :from => "+44******")  # Replace with your Twilio number
+  message = @client.account.messages.create({
+      body: "Thank you! Your order was placed and will be delivered before 18:52",
+      to:  "+447866489230",   # Replace with your phone number
+      from:  "+441432233208"})  # Replace with your Twilio number
 
 puts message.sid
 end

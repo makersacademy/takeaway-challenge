@@ -40,7 +40,6 @@ describe Takeaway do
     end
   end
 
-
 end
 
 
