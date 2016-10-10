@@ -24,6 +24,7 @@ end
 
 def message
 time = Time.now + (60*60)
+time = "#{time.hour}:#{time.min}"
 "Thank you! Your order was placed and will be delivered before #{time}"
 end
 

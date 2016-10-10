@@ -12,7 +12,6 @@ class Order
       @text = Text.new
   end
 
-
   def see_menu
     restaurant.menu
   end
@@ -20,7 +19,6 @@ class Order
   def add_meal(item)
     basket.add_to_basket(item)
   end
-
 
   def view_basket
     basket.view_basket

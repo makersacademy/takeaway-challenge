@@ -25,7 +25,7 @@ def empty
 end
 
 def total
-  total = 0.00
+  total = 0
   cart.each do |item, price|
   total += price
   end
