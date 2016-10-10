@@ -53,14 +53,10 @@ describe TakeAway do
   
   
   describe "Menu is changed" do
-    #let(:menu_obj) {double :menu_obj}
-    #let(:file) {double :file}
     it "#change_menu returns a new menu object" do
-      #takeaway.change_menu("menu.csv")
-      #expect(takeaway).to receive(:new).with(:change_menu).and_return(menu_obj)
-      
-      # COULD NOT GET THIS TEST TO WORK!!!!!!!!!!!!!!!!!!!!!!!
+      takeaway.change_menu("menu1.csv")
+      expect { takeaway.read_menu }.to output(/ROAST GROUSE/).to_stdout
     end
   end
-
+  
 end
