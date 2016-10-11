@@ -2,22 +2,18 @@ class Menu
   
   def dishes
     {:Fries => 2,
-     :Pizza => 4,
+     :Pizza => 5,
      :Burger => 3,
-     :Cola => 1}
+     :Kebab => 4}
   end
+end  
 
-  def print_menu
+=begin
+  This method is to be included on takeaway.rb (once created), as opposed to menu.rb!
+  
+  def view_menu
     dishes.each_with_index do | (item, price), index |
-      puts "#{index + 1}: #{item} | Cost: £#{price}"  
+    puts "#{index + 1}: #{item} | Cost: £#{price}"  
     end
   end
-end
-
-
-  ##ef available?(item)
-      #"This item is available to order!" if dishes.include? item.capitalize
- #end
-#end
-
-  
+=end
