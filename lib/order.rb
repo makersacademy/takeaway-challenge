@@ -11,15 +11,15 @@ class Order
    
   def add_to_order(item)
     if menu.dishes.has_key?(item.to_sym) then @order[item.to_sym] = menu.dishes[item.to_sym]   # This is convoluted & messy, but I had a tough time pushing existing keys and values inside a hash.
-    puts "Total order cost: £#{total_cost}"
+    "Total order cost: £#{total_cost}"
     elsif
     fail "#{item} is not available - please select a different item."
     end
   end
   
   def place_order(price)
-    fail "You have entered an incorrect amount." unless price == total_cost
-    puts "Thank you, your order was successful!" 
+    fail "You have entered an incorrect amount." unless price == total_cost 
+    puts "Thank you, your order was successful!"                                      # I have further plans to remove the puts once I implement the text messaging feature. 
     clear_order
   end
   

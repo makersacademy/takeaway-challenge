@@ -13,7 +13,7 @@ end
   
   def view_menu
     dishes.each_with_index do | (item, price), index |
-    puts "#{index + 1}: #{item} | Cost: £#{price}"  
+    "#{index + 1}: #{item} | Cost: £#{price}"  
     end
   end
 =end
