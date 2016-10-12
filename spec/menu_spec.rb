@@ -13,4 +13,11 @@ describe Menu do
       expect(menu.dishes).to be_an_instance_of Hash
     end
   end
+  
+  describe '#view_menu' do
+    
+    it 'allows a potential customer to view the menu' do
+      expect(menu.view_menu).to include(:Pizza => 5, :Burger => 3)
+    end
+  end
 end

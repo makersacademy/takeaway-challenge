@@ -6,14 +6,10 @@ class Menu
      :Burger => 3,
      :Kebab => 4}
   end
-end  
-
-=begin
-  This method is to be included on takeaway.rb (once created), as opposed to menu.rb!
-  
-  def view_menu
+                                        # If I had more time, I would have put the view_menu method inside a takeaway/restaurant class.
+  def view_menu                         # I realise this method is a tad pointless as it stands...
     dishes.each_with_index do | (item, price), index |
-    "#{index + 1}: #{item} | Cost: £#{price}"  
+    "#{index + 1}: #{item} | Cost: £#{price}"
     end
   end
-=end
+end
