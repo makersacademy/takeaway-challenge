@@ -3,13 +3,14 @@ require 'order'
 describe Order do
   subject(:order) { (Order.new) }
   
-  before :each do
-    order.add_to_order("Pizza")
-  end
+  #before :each do
+    #order.add_to_order("Pizza")
+  #end
   
   describe '#add_to_order' do
     
     it 'should add items from the menu to the empty order hash' do
+      order.add_to_order("Pizza")
       expect(order.basket).to include(:Pizza => 5)
     end
     
@@ -22,10 +23,12 @@ describe Order do
   describe '#place_order' do
   
     it 'should return an empty hash confirming that the order was successful' do
+      order.add_to_order("Pizza")
       expect(order.place_order(5)).to eq order.clear_order            # Unsure on this test.
     end
     
     it 'should return an error if the price does not match the order total' do
+      order.add_to_order("Pizza")
       expect{ order.place_order(4) }.to raise_error "Please check the sum of your basket and try again."
     end
   end
@@ -33,6 +36,7 @@ describe Order do
   describe '#clear_order' do
     
     it 'should clear the hash of all existing items' do
+      order.add_to_order("Pizza")
       order.clear_order
       expect(order.basket).to be_empty
     end
