@@ -16,9 +16,9 @@ describe Menu do
   end
 
   describe '#list_dishes' do
-    
-
+    it 'shows a list of dishes' do
+      expect(menu.list_dishes).to eq "Sushi: £4.00, Shashimi: £5.00"
+    end
   end
-
 
 end
