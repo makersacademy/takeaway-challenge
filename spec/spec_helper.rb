@@ -2,7 +2,8 @@ require 'coveralls'
 Coveralls.wear!
 require 'capybara/rspec'
 
-require "restaurant"
+require 'restaurant'
+require 'sms'
 
 RSpec.configure do |config|
   # Use color in STDOUT
