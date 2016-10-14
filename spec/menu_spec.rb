@@ -1,8 +1,6 @@
 require "spec_helper"
 
 describe Menu do
-  let(:list_of_dishes) {Array.new}
-  # subject(:menu) { subject.new }
 
   describe '#dishes' do
     it 'subject respond_to intstruction' do
@@ -10,8 +8,20 @@ describe Menu do
     end
 
     it 'should return the menu' do
-      test_menu = described_class.new(:list_of_dishes)
-      expect(test_menu.dishes).to eq(:list_of_dishes)
+      test_menu = described_class.new
+      expect(test_menu.dishes).to eq YAML.load_file('menu.yml')
+    end
+  end
+
+  describe '#number_of_dishes' do
+    it 'returns the number of dishes' do
+      expect(subject.number_of_dishes).to eq(6)
+    end
+  end
+
+  describe '#select()' do
+    it 'selects item' do
+      expect(subject.select(1,2)).to eq({dish: "Doubles",price: 4.0,quantity: 2} )
     end
   end
 end

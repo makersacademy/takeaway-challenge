@@ -2,16 +2,18 @@ require 'yaml'
 
 class Menu
 
-  DEF_MENU = [{dish: 'fries', price: 1.0}, {dish: 'fish', price: 1.5}]
+  # DEF_MENU = [{dish: 'fries', price: 1.0}, {dish: 'fish', price: 1.5}]
 
-  def initialize(menu = DEF_MENU)
-    @menu = menu
+  def initialize(file_name = 'menu.yml')
+    @menu = YAML.load_file(file_name)
+    # @menu = YAML::load File.read menu
+    # @menu = YAML.load(File.open("menu.yml"))
   end
 
   def print
     k=1
     @menu.each do |item|
-      puts "#{k}. #{item[:dish]} ... £#{item[:price]} "
+      puts "#{k}. #{item[:dish]} ... £#{'%.2f' % item[:price]} "
       k+=1
     end
   end

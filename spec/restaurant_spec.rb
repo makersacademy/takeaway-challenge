@@ -10,11 +10,6 @@ describe Restaurant do
     it 'returns and error if quantity is not a number' do
       expect {subject.select(1,"1")}.to raise_error "You entered an invalid quantity. Enter a number for the quantity"
     end
-
-    it 'takes users order for correct inputs' do
-      subject.select(1,2)
-      expect(subject.select(2,1)).to eq([{:dish=>"fries", :price=>1.0, :quantity=>2}, {:dish=>"fish", :price=>1.5, :quantity=>1}])
-    end
   end
 
   describe '#cart' do
@@ -24,7 +19,7 @@ describe Restaurant do
 
     it 'returns the contents of the cart' do
       subject.select(1,2)
-      expect(subject.cart).to eq([{:dish=>"fries", :price=>1.0, :quantity=>2}])
+      expect(subject.cart).to eq([{:dish=>"Doubles", :price=>4.0, :quantity=>2}])
     end
   end
 end
