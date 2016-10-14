@@ -5,6 +5,7 @@ require 'capybara/rspec'
 require 'restaurant'
 require 'sms'
 require 'menu'
+require "cart"
 
 RSpec.configure do |config|
   # Use color in STDOUT
