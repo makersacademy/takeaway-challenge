@@ -2,13 +2,29 @@
 
 class Menu
 
-  @default_menu = [{dish: 'fries', price: 1.0}, {dish: 'fish', price: 1.5}]
+  DEF_MENU = [{dish: 'fries', price: 1.0}, {dish: 'fish', price: 1.5}]
 
-  def initialize(menu = @default_menu)
-    @menu = default_menu
+  def initialize(menu = DEF_MENU)
+    @menu = menu
+  end
+
+  def print
+    k=1
+    @menu.each do |item|
+      puts "#{k}. #{item[:dish]} ... £#{item[:price]} "
+      k+=1
+    end
   end
 
   def dishes
-    # @menu
+    @menu
+  end
+
+  def number_of_dishes
+    @menu.dup.length
+  end
+
+  def select(item_number, amt)
+    {dish: @menu[item_number-1][:dish], price: @menu[item_number-1][:price], quantity: amt}
   end
 end

@@ -1,11 +1,12 @@
 require 'envyable'
 require 'twilio-ruby'
 require_relative './sms'
+require_relative './menu'
 
 class Restaurant
 
   def initialize
-    @menu = [{dish: 'fries', price: 1.0}, {dish: 'fish', price: 1.5}]
+    @menu = Menu.new #[{dish: 'fries', price: 1.0}, {dish: 'fish', price: 1.5}]
     @current_order = Array.new
     @total = 0
     #TODO add option to initialize with yaml file
@@ -13,21 +14,15 @@ class Restaurant
 
   def read_menu
     greeting
-
-    k=1
-    @menu.each do |item|
-      puts "#{k}. #{item[:dish]} ... £#{item[:price]} "
-      k+=1
-    end
-
+    @menu.print
     instructions
   end
 
   def select(item_number, amt =1)
-    fail "You entered a number that does not corespond to our menu :( Please try again." if (item_number -1) > @menu.length
+    fail "You entered a number that does not corespond to our menu :( Please try again." if (item_number -1) > @menu.number_of_dishes
     fail "You entered an invalid quantity. Enter a number for the quantity" if !amt.is_a?(Numeric)
-    selection = {dish: @menu[item_number-1][:dish], price: @menu[item_number-1][:price], quantity: amt}
-    @current_order << selection
+    # selection = {dish: @menu.dishes[item_number-1][:dish], price: @menu[item_number-1][:price], quantity: amt}
+    @current_order << @menu.select(item_number,amt)
   end
 
   def cart
