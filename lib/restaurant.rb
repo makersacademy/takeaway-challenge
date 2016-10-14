@@ -7,7 +7,8 @@ class Restaurant
 
   def initialize
     @menu = Menu.new #[{dish: 'fries', price: 1.0}, {dish: 'fish', price: 1.5}]
-    @current_order = Array.new
+    @cart = Cart.new
+    # @current_order = Cart.new
     @total = 0
     #TODO add option to initialize with yaml file
   end
@@ -21,15 +22,16 @@ class Restaurant
   def select(item_number, amt =1)
     fail "You entered a number that does not corespond to our menu :( Please try again." if (item_number -1) > @menu.number_of_dishes
     fail "You entered an invalid quantity. Enter a number for the quantity" if !amt.is_a?(Numeric)
-    # selection = {dish: @menu.dishes[item_number-1][:dish], price: @menu[item_number-1][:price], quantity: amt}
-    @current_order << @menu.select(item_number,amt)
+    @cart.add(@menu.select(item_number,amt))
   end
 
   def cart
-    puts "Your cart has the following:"
-    @current_order.each do |selection|
-      puts "#{selection[:quantity]} x #{selection[:dish]} = £#{selection[:quantity]*selection[:price]}"
-    end
+    # puts "Your cart has the following:"
+    # @current_order.each do |selection|
+    #   puts "#{selection[:quantity]} x #{selection[:dish]} = £#{selection[:quantity]*selection[:price]}"
+    # end
+
+
   end
 
   def total
