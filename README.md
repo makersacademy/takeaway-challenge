@@ -17,25 +17,42 @@ Takeaway Challenge [![Build Status](https://travis-ci.org/amaalali/takeaway-chal
 Usage Test
 -------
 
-```sh
+```
 [1] pry(main)> require './lib/restaurant'
 => true
 [2] pry(main)> bobs = Restaurant.new
-=> #<Restaurant:0x007fc9899bf0f0 @current_order=[], @menu=[{:dish=>"fries", :price=>1.0}, {:dish=>"fish", :price=>1.5}], @total=0>
+=> #<Restaurant:0x007fee11870698
+ @cart=#<Cart:0x007fee118485d0 @current_order=[]>,
+ @menu=
+  #<Menu:0x007fee118705f8
+   @menu=
+    [{:dish=>"Doubles", :price=>4.0},
+     {:dish=>"Callaloo", :price=>1.0},
+     {:dish=>"Curry duck", :price=>1.75},
+     {:dish=>"Chips", :price=>3.0},
+     {:dish=>"Fried Fish", :price=>5.5},
+     {:dish=>"Water", :price=>10.0}]>,
+ @total=0>
 [3] pry(main)> bobs.read_menu
-1. fries ... £1.0
-2. fish ... £1.5
+1. Doubles ... £4.00
+2. Callaloo ... £1.00
+3. Curry duck ... £1.75
+4. Chips ... £3.00
+5. Fried Fish ... £5.50
+6. Water ... £10.00
 => "To add an item to your cart type 'resturant_name.select(item_number, quantity)'"
-[4] pry(main)> bobs.select(1,3)
-=> [{:dish=>"fries", :price=>1.0, :quantity=>3}]
-[5] pry(main)> bobs.select(2,1)
-=> [{:dish=>"fries", :price=>1.0, :quantity=>3}, {:dish=>"fish", :price=>1.5, :quantity=>1}]
-[6] pry(main)> bobs.cart
-Your cart has the following:
-3 x fries = £3.0
-1 x fish = £1.5
-=> [{:dish=>"fries", :price=>1.0, :quantity=>3}, {:dish=>"fish", :price=>1.5, :quantity=>1}]
+[4] pry(main)> bobs.select(1,2)
+=> [{:dish=>"Doubles", :price=>4.0, :quantity=>2}]
+[5] pry(main)> bobs.select(2,3)
+=> [{:dish=>"Doubles", :price=>4.0, :quantity=>2}, {:dish=>"Callaloo", :price=>1.0, :quantity=>3}]
+[6] pry(main)> bobs.select(6,1)
+=> [{:dish=>"Doubles", :price=>4.0, :quantity=>2}, {:dish=>"Callaloo", :price=>1.0, :quantity=>3}, {:dish=>"Water", :price=>10.0, :quantity=>1}]
 [7] pry(main)> bobs.total
-=> "Your total is £4.5"
-[8] pry(main)> bobs.place_order
+=> "Your total is £21.00"
+[8] pry(main)> bobs.cart
+=> [{:dish=>"Doubles", :price=>4.0, :quantity=>2}, {:dish=>"Callaloo", :price=>1.0, :quantity=>3}, {:dish=>"Water", :price=>10.0, :quantity=>1}]
+[9] pry(main)> bobs.total
+=> "Your total is £21.00"
+[10] pry(main)> bobs.place_order```
+
 ```
