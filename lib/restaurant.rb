@@ -2,13 +2,13 @@ require 'envyable'
 require 'twilio-ruby'
 require_relative './sms'
 require_relative './menu'
+require_relative './cart'
 
 class Restaurant
 
   def initialize
     @menu = Menu.new #[{dish: 'fries', price: 1.0}, {dish: 'fish', price: 1.5}]
     @cart = Cart.new
-    # @current_order = Cart.new
     @total = 0
     #TODO add option to initialize with yaml file
   end
@@ -26,24 +26,16 @@ class Restaurant
   end
 
   def cart
-    # puts "Your cart has the following:"
-    # @current_order.each do |selection|
-    #   puts "#{selection[:quantity]} x #{selection[:dish]} = £#{selection[:quantity]*selection[:price]}"
-    # end
-
-
+    fail "Cart is empty" if @cart.is_empty?
+    @cart.check
   end
 
   def total
-    @total = 0
-    @current_order.each do |selection|
-      @total += selection[:quantity]*selection[:price]
-    end
-    "Your total is £#{@total}"
+    @cart.total
   end
 
   def place_order
-    confirm_order
+    Sms.send
   end
 
   private
@@ -54,13 +46,5 @@ class Restaurant
 
   def instructions
     "To add an item to your cart type 'resturant_name.select(item_number, quantity)'"
-  end
-
-  def finish
-    @final_order = @current_order.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
-  end
-
-  def confirm_order
-    Sms.send
   end
 end
