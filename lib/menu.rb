@@ -8,7 +8,7 @@ class Menu
   end
 
   def read_menu
-    puts @dishes
+    @dishes
   end
 
   private

@@ -1,7 +1,7 @@
 *Takeaway Challenge*
 Elizabeth Venner
 
-* I started but did not complete the third user story. I planned to make a calculate_total private method which woud then be called in show_basket
+* I started but did not complete the third user story. I planned to make a calculate_total private method which would then be called in show_basket
 
 * For the fourth user story, I had decided to use a separate 'Message' class in which I would write the code for sending the text, then simply call this in the confirm_order method of the Order class.
 

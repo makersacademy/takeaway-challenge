@@ -6,7 +6,7 @@ describe Order do
 
   describe "attributes" do
     it "initializes with an empty basket" do
-    expect(order.basket).to eq([])
+    expect(order.basket).to eq({})
     end
 
     it "initializes with an empty basket summary" do
@@ -19,14 +19,14 @@ describe Order do
       expect{order.add_item("peas", 2)}.to raise_error "We're sorry, that isn't on the menu."
     end
 
-    it "pushes the dish and price as a hash to an array" do
+    it "pushes the dish and quantity as a hash to an array" do
       order.add_item("pasta")
-      expect(order.basket).to eq([{"pasta"=>10}])
+      expect(order.basket).to eq({"pasta"=>1})
     end
 
     it "pushes the dish and price as a hash to an array multiple times" do
       order.add_item("icecream", 2)
-      expect(order.basket).to eq ([{"icecream"=>4}, {"icecream"=>4}])
+      expect(order.basket).to eq({"icecream"=>2})
     end
 
     it "tells the user the item and quantity which has been added" do
@@ -34,14 +34,18 @@ describe Order do
     end
   end
 
-  describe "#show_basket" do
-    before (:example) do
+  describe "#print_order" do
+    before do
       order.add_item("pasta", 2)
       order.add_item("salad", 1)
       order.add_item("icecream", 4)
     end
     it "prints the contents of the basket" do
-      expect(order.show_basket).to eq "2 x pasta = £20.00, 1 x salad = £4.00, 4 x icecream = £16.00,"
+      expect(order.basket_contents).to eq "2 x pasta = £20, 1 x salad = £4, 4 x icecream = £16"
+    end
+
+    it "returns the price of contents in the basket" do
+      expect(order.print_order).to eq "£40"
     end
   end
 
