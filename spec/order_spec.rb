@@ -9,8 +9,8 @@ describe Order do
  end
 
 context 'Initialize' do
-  it "Begins with an empty cart" do
-    expect(order.instance_variable_get(:@cart)).to be_empty
+  it "Begins with an empty basket" do
+    expect(order.instance_variable_get(:@basket)).to be_empty
   end
   it "Shows a menu to place the order" do
     expect(order.instance_variable_get(:@menu)).to eq menu
@@ -18,25 +18,25 @@ context 'Initialize' do
 end
 
 describe '#order' do
-  it "Allows customer to select a dish and add it to their cart" do
+  it "Allows customer to select a dish and add it to their basket" do
     order.add_to_order("Taco")
-    expect(order.instance_variable_get(:@cart)).to eq({"Taco"=>1.00})
+    expect(order.instance_variable_get(:@basket)).to eq({"Taco"=>1.00})
 end
 
-  it "Adds the quantity of a selected item to the cart" do
+  it "Adds the quantity of a selected item to the basket" do
     order.add_to_order("Taco", 2)
-    expect(order.instance_variable_get(:@cart)).to eq({"Taco" => 2})
+    expect(order.instance_variable_get(:@basket)).to eq({"Taco" => 2})
   end
 
   it "Makes sure to list the same items together" do
     order.add_to_order("Taco")
     order.add_to_order("Taco", 3)
-    expect(order.instance_variable_get(:@cart)).to eq ({"Taco"=> 4})
+    expect(order.instance_variable_get(:@basket)).to eq ({"Taco"=> 4})
   end
 
   it "Checks that items are on the menu" do
     expect(menu).to receive(:check_price).with("Taco")
-    order.add_to_order("Taco")
+    expect(order.add_to_order("Taco"))
   end
 
   it "Adds an item's price to the subtotal" do
