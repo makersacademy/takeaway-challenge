@@ -6,22 +6,25 @@ Dotenv.load
 class Message
 
   def initialize
-    account_sid = ENV['ACCOUNT_SID']
-    auth_token = ENV['AUTH_TOKEN']
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
   end
 
   def send_text(to)
     @client.messages.create(
     to: to,
     from: ENV['NUMBER_FROM'],
-    body: "Thank you! Your order was placed and will be delivered before #{Time.new + (60 * 60)}."
+    body: "Your order will be delivered before #{time} on #{date}."
     )
   end
 
-  # def time
-  #   time_new = Time.new
-  #   @time_in_hour = time_new + (60 * 60)
-  #   @time_in_hour
-  # end
+  private
+
+  def time
+    (Time.new + (60 * 60)).strftime('%H:%M')
+  end
+
+  def date
+    Time.new.strftime('%d %b %Y')
+  end
+
 end

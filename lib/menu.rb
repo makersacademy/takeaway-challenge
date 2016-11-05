@@ -17,7 +17,7 @@ class Menu
     file = File.open(filename, "r")
     file.readlines.each do |line|
       dish, price = line.chomp.split(',')
-      @dishes.merge!dish.to_s => price.to_i
+      @dishes[dish.to_sym] = price.to_i
     end
     file.close
   end

@@ -12,7 +12,7 @@ class Order
   end
 
   def add_item(item, quantity=1)
-    raise "We're sorry, that isn't on the menu." if !@menu.dishes.has_key?(item)
+    fail "We're sorry, that isn't on the menu." unless @menu.dishes.key?(item)
     @basket[item] += quantity
     @basket_summary << "#{quantity} x #{item} = £#{quantity * @menu.dishes[item]}.00,"
     "#{quantity} x #{item} added to your basket"
@@ -25,7 +25,7 @@ class Order
 
   def confirm_order(number)
     send_text(number)
-    "Thank you for placing your order. A text message will be sent to you shortly confirming your delivery time."
+    "Thank you for placing your order."
   end
 
   def send_text(number)
