@@ -3,11 +3,18 @@ require 'message'
 describe Message do
   subject("message") {described_class.new}
 
-  xdescribe "#send_text" do
+  it {is_expected.to respond_to :send_text}
 
-    it "sends a text message to the customer" do
+  before do
+    allow(message).to receive(:send_text)
+  end
+
+  describe "#send_text" do
+
+    xit "sends a text message to the customer" do
+      expect(message).to receive(:send_text)
       message.send_text
-      expect(message.send_text).to
     end
+
   end
 end

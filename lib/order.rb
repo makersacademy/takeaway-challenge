@@ -23,13 +23,15 @@ class Order
     total
   end
 
-  def confirm_order
-    message = Message.new
-    message.send_text
+  def confirm_order(number)
+    send_text(number)
     "Thank you for placing your order. A text message will be sent to you shortly confirming your delivery time."
   end
 
-
+  def send_text(number)
+    message = Message.new
+    message.send_text(number)
+  end
 
   def basket_contents
     @receipt = ""

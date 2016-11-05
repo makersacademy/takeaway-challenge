@@ -1,4 +1,6 @@
 require 'order'
+require 'dotenv'
+Dotenv.load
 
 describe Order do
 
@@ -50,8 +52,12 @@ describe Order do
   end
 
   describe "#confirm_order" do
+    # before do
+    #   allow(order).to receive(:send_text)
+    # end
     it "outputs a string saying a text message will be sent" do
-      expect(order.confirm_order).to eq "Thank you for placing your order. A text message will be sent to you shortly confirming your delivery time."
+      # expect(order).to receive(:send_text).with(ENV['NUMBER_TO'])
+      expect(order.confirm_order(ENV['NUMBER_TO'])).to eq "Thank you for placing your order. A text message will be sent to you shortly confirming your delivery time."
     end
 
   end
