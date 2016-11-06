@@ -1,8 +1,16 @@
-*Takeaway Challenge*
+#Takeaway Challenge#
 Elizabeth Venner
 
-***How to use***
+###How to use###
 
+Fork and clone this repo.
+
+Ensure you have Ruby and IRB installed on your computer.
+
+Open the command line and irb and follow the instructions below.
+In order to get a text message confirming your delivery time, you will need to pass your telephone number as an argument to confirm_order, in the format exampled below on line 008.
+
+```
 2.3.1 :001 > require './lib/takeaway'
  => true
 2.3.1 :002 > t = Takeaway.new
@@ -23,3 +31,4 @@ Total: £38.00
  => nil
 2.3.1 :008 > t.confirm_order(+441234554321)
  => "Thank you for placing your order."
+ ```
