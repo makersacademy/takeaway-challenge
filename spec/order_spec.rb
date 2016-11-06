@@ -11,8 +11,8 @@ describe Order do
     expect(order.basket).to eq({})
     end
 
-    it "initializes with an empty basket summary" do
-    expect(order.basket_summary).to eq([])
+    it "initializes with an empty basket hash" do
+    expect(order.basket).to eq({})
     end
   end
 
@@ -43,11 +43,7 @@ describe Order do
       order.add_item(:icecream, 4)
     end
     it "prints the contents of the basket" do
-      expect(order.basket_contents).to eq "2 x pasta = £20, 1 x salad = £4, 4 x icecream = £16"
-    end
-
-    it "returns the price of contents in the basket" do
-      expect(order.print_order).to eq "£40"
+      expect(order.print_order).to eq "2 x pasta = £20, 1 x salad = £4, 4 x icecream = £16\nTotal: £40"
     end
   end
 
