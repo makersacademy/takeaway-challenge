@@ -25,26 +25,25 @@ class Order
     "Thank you for placing your order."
   end
 
+
+  private
+
   def send_text(number)
     message = Message.new
     message.send_text(number)
   end
 
-  private
-
   def basket_contents
-    @receipt = ""
-    @basket.each do |k, v|
-    @receipt << "#{v} x #{k} = £#{v * menu.dishes[k]}, "
-    end
-    @receipt.slice!(-2..-1)
-    @receipt
+    receipt = ""
+    @basket.each {|k, v| receipt << "#{v} x #{k} = £#{'%0.2f' % (v * menu.dishes[k].to_f)}, "}
+    receipt.slice!(-2..-1)
+    receipt
   end
 
   def total
     total = 0
-    @basket.each {|k, v| total += v * menu.dishes[k]}
-    total
+    @basket.each {|k, v| total += v * menu.dishes[k].to_f}
+    '%0.2f' % total.to_s
   end
 
 end

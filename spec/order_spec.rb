@@ -43,7 +43,7 @@ describe Order do
       order.add_item(:icecream, 4)
     end
     it "prints the contents of the basket" do
-      expect(order.print_order).to eq "2 x pasta = £20, 1 x salad = £4, 4 x icecream = £16\nTotal: £40"
+      expect(order.print_order).to eq "2 x pasta = £20.00, 1 x salad = £4.00, 4 x icecream = £16.00\nTotal: £40.00"
     end
   end
 
