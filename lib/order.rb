@@ -10,21 +10,16 @@ class Order
     @basket = Hash.new(0)
   end
 
-  def add_item(item, quantity=1)
+  def add_item(item, quantity)
     fail "We're sorry, that isn't on the menu." unless @menu.dishes.key?(item)
     @basket[item] += quantity
+    p @basket
     "#{quantity} x #{item} added to your basket"
   end
 
   def print_order
     "#{basket_contents}\nTotal: £#{total}"
   end
-
-  def confirm_order(number)
-    send_text(number)
-    "Thank you for placing your order."
-  end
-
 
   private
 
