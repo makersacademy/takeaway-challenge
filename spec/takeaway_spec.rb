@@ -2,10 +2,10 @@ require 'takeaway'
 
 describe Takeaway do
 
-  # let( :meals ){ double :meals }
+  let( :menu ){ double :menu }
 
-  it 'pulls a menu from the Meals class' do
-    expect(subject.menu).to eq(meals.menu_list)
+  it 'pulls a menu from the Menu class' do
+    expect(subject.menu).to eq(menu.menu_list)
   end
 
 

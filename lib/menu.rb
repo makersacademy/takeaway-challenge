@@ -1,10 +1,11 @@
+#Allows meals to be made and added to menu.
+
+
 require_relative 'takeaway.rb'
 
-#Allows meals to be made and added to menu
+class Menu
 
-class menu
-
-  attr_accessor :menu_list
+  attr_accessor :menu_list, :meal_description
 
   def initialize
     @menu_list = []
@@ -13,13 +14,14 @@ class menu
   def add_meal(meal, price)
     @meal = meal
     @price = price
-    meal_description = {:meal => @meal, :price => @price}
-    @menu_list << meal_description
+    @meal_description = {:meal => @meal, :price => @price}
+    menu_list << @meal_description
   end
 
-  def select_meal(dish)
-    @menu_list.find {[:meal] == dish}
+  def menu
+    self.menu_list
   end
+
 
 
 end
