@@ -1,6 +1,6 @@
 require_relative 'dishes_list'
 
-class Menu
+class DishesMenu
 
 attr_reader :list_of_dishes
 LINE_WIDTH = 80
