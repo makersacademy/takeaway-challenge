@@ -6,14 +6,16 @@ describe Takeaway do
 
   subject(:takeaway) {described_class.new(menu_klass, order_klass)}
   let(:menu_klass) {double :menu_klass, new: menu}
-  let(:menu) {double :menu, print: menu_list}
-  let(:menu_list) {"1. Green Curry £8"}
+  let(:menu) {double :menu, print: print_list, list: menu_list}
+  let(:print_list) {"Curry £9"}
+  let(:menu_list) {{"Curry" => 9}}
   let(:order) {double :order}
   let(:order_klass) {double :order_klass, new: order}
 
+
   describe '#view_menu' do
     it 'prints the menu to the screen' do
-      expect(subject.view_menu).to eq menu_list
+      expect(subject.view_menu).to eq print_list
     end
   end
 
@@ -26,21 +28,13 @@ describe Takeaway do
 
   end
 
-  describe '#add_to_basket' do
+  describe '#add' do
 
-    it 'raises an error if not a valid item number' do
-      expect(subject.add_to_basket(2))
+    it 'adds items to the order' do
+      expect(subject.order).to receive(:add)
+      subject.add("Curry",1)
     end
 
-
-
-    end
-
-
-
-
-
-
-
+  end
 
 end

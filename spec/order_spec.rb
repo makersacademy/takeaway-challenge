@@ -4,7 +4,7 @@ describe Order do
 
   subject(:order) {described_class.new(menu)}
   let(:menu) {double :menu, list: menu_list}
-  let(:menu_list) {[{:item_number=>1, :dish=>"Green Curry", :price=>9}]}
+  let(:menu_list) {{"Curry" => 9}}
 
   describe '#basket' do
 
@@ -16,10 +16,17 @@ describe Order do
 
   describe '#add' do
 
+
+    it 'raises an error if not a valid item' do
+      allow(menu).to receive(:does_not_contain?).with("Apple").and_return(true)
+      expect{subject.add("Apple",1)}.to raise_error 'Not a valid choice'
+    end
+
     it 'adds items to the basket' do
-      subject.add(1,1)
-      subject.add(1,2)
-      basket = {1 => 3}
+      allow(menu).to receive(:does_not_contain?).with("Curry").and_return(false)
+      subject.add("Curry",1)
+      subject.add("Curry",2)
+      basket = {"Curry" => 3}
       expect(subject.basket).to eq basket
     end
 

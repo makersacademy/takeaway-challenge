@@ -20,4 +20,8 @@ class Takeaway
     @order = order_klass.new(menu)
   end
 
+  def add(item,quantity=1)
+    order.add(item,quantity)
+  end
+
 end

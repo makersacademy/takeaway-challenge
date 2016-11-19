@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class Order
 
   attr_reader :menu
@@ -8,20 +10,12 @@ class Order
     @basket = {}
   end
 
-  def add(item_number, quantity)
-    menu.list.each do |item|
-      increase_basket(item_number,quantity) if item[:item_number] == item_number
-    end
-  end
-
-
-  private
-
-  def increase_basket(item_number,quantity)
-    if basket[item_number]
-      basket[item_number] = basket[item_number] + quantity
+  def add(dish, quantity)
+    fail "Not a valid choice" if menu.does_not_contain?(dish)
+    if basket[dish]
+      basket[dish] = basket[dish] + quantity
     else
-      basket[item_number] = quantity
+      basket[dish] = quantity
     end
   end
 

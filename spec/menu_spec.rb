@@ -5,10 +5,21 @@ describe Menu do
   describe '#print' do
 
     it 'prints out the menu' do
-      menu = "1. Green Curry £9\n2. Red Curry £9\n3. Stir Fry £7\n4. Pad Thai £6\n5. Chicken Wings £4\n6. Spring Rolls £4\n7. Tom Yum Soup £5\n"
+      menu = "Curry £9\nBurger £8\nPizza £10\nNoodles £5\nChicken £5\nKebab £6\n"
       expect { subject.print }.to output(menu).to_stdout
     end
 
   end
+
+  describe '#does_not_contain?' do
+
+    it 'returns true when passed a dish not in the list' do
+      expect(subject.does_not_contain?("Apples")).to eq true
+    end
+
+  end
+
+
+
 
 end
