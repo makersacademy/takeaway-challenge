@@ -37,7 +37,7 @@ describe Order do
       order.add_to_basket({:item=>"pizza", :price=>4, :qty=>3})
       order.add_to_basket({:item=>"spag_bol", :price=>6, :qty=>3})
       order.add_to_basket({:item=>"chips", :price=>3, :qty=>1})
-      expect(order.calculate_total).to eq 33
+      expect(order.calculate_total).to eq "Total = £33"
     end
 
   end

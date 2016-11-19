@@ -15,7 +15,7 @@ class Order
 
   def calculate_total
     self.basket.each { |item| self.total += (item[:price] * item[:qty]) }
-    self.total
+    "Total = £#{self.total}"
   end
 
   def place_order
