@@ -20,21 +20,22 @@ describe Takeaway do
   end
 
   context 'when ordering' do
-    it 'if no quantity is given the default quantity of 1 will be given' do
+    before(:each) do
       allow(Menu::MENU).to receive(:has_key?).and_return(true)
+    end
+
+    it 'if no quantity is given the default quantity of 1 will be given' do
       takeaway.add_item(item)
       expect(takeaway.items.has_value?(1)).to eq true
     end
 
     it 'adds your chosen item to items' do
-      allow(Menu::MENU).to receive(:has_key?).and_return(true)
       takeaway.add_item(item, 1)
       allow(menu_hash).to receive(:has_key?).and_return(true)
       expect(takeaway.items.empty?).to eq false
     end
 
     it 'increments the quantity of the item if the same item has been added more than once' do
-      allow(Menu::MENU).to receive(:has_key?).and_return(true)
       takeaway.add_item(item, 1)
       takeaway.add_item(item, 1)
       expect(takeaway.items.has_value?(2)).to eq true
