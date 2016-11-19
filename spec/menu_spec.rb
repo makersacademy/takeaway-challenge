@@ -2,7 +2,8 @@ require 'menu'
 
 describe Menu do
   subject(:menu) {described_class.new}
-  let(:dish) {double(:dish)}
+  let(:menu_item) {double(:menu_item)}
+  let(:menu_item2) {double(:menu_item2)}
 
   describe "When instantiated" do
     it "should have a default name" do
@@ -11,15 +12,24 @@ describe Menu do
   end
 
   describe "When handling dishes" do
-    before(:each) {menu.add_dish(dish)}
+    before(:each) {menu.add(menu_item)}
+
+    #allow(item2).to receive(:amount).and_return(2)
 
     it "should be able to add a dish to the menu" do
-      expect(menu.dishes.count).to eq 1
+      expect(menu.menu_items.count).to eq 1
     end
 
     it "should be able to delete a dish from the menu" do
-      menu.delete_dish(dish)
-      expect(menu.dishes.count).to eq 0
+      menu.delete(menu_item)
+      expect(menu.menu_items.count).to eq 0
+    end
+
+    it "should only show available dishes" do
+      menu.add(menu_item2)
+      allow(menu_item).to receive(:amount).and_return(2)
+      allow(menu_item2).to receive(:amount).and_return(0)
+      expect(menu.available_items.count).to eq 1
     end
   end
 

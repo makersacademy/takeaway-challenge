@@ -1,27 +1,27 @@
-require_relative "dish.rb"
+require_relative "menu_item.rb"
 
-#Manages the dishes
+#Manages the menu items
 class Menu
 
-attr_reader :name, :dishes
+attr_reader :name, :menu_items
 
 
 DEFAULT_NAME = "Best London Curry House"
   def initialize(name = DEFAULT_NAME)
     @name = name
-    @dishes = []
+    @menu_items = []
   end
 
-  def add_dish(dish)
-    dishes << dish
+  def add(menu_item)
+    menu_items << menu_item
   end
 
-  def delete_dish(dish)
-    dishes.delete(dish)
+  def delete(menu_item)
+    menu_items.delete(menu_item)
   end
 
-  def show_menu
-    dishes.each_with_index {|dish, index| puts "#{index + 1}. #{dish.name} £#{dish.price}"}
+  def available_items
+    menu_items.select {|item| item.amount > 0}
   end
 
 end
