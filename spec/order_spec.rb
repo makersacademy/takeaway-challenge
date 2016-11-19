@@ -16,8 +16,8 @@ it "should add the selection to the order" do
   expect(order.shopping_cart).to eq ([{ :burrito => 2 }])
 end
 
-it "should let the customer review their entire order" do
-  expect(order.review_order).to eq("")
+it "should get the price of each item in the order" do
+  expect(order.get_price).to eq("2 x burrito at £6 = £12")
 end
 
 

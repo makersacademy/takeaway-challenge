@@ -17,17 +17,14 @@ class Order
     @shopping_cart << @selection
   end
 
-  # def review_order
-  #  "Your selection is: "
-  #   shopping_cart.each do |number, quantity|
-  #    number = @menu.menu_items[number]
-  #    "#{quantity} x #{@menu.menu_items[name].to_s} = £#{@menu.menu_items[price].to_s} per dish"
-  #  end
-  #
-  #  def iterate_over_order
-  #    @menu.menu_items
-  #  end
- # end
+  def get_price
+    @shopping_cart.each do |food_item|
+      food_item.each do |item, quantity|
+        @price = menu.menu_items[item]
+        return "#{quantity} x #{item.to_s} at £#{@price} = £#{@price * quantity}"
+      end
+    end
+  end
 
 
 
