@@ -32,6 +32,10 @@ describe Order do
       expect(order.add_item("duck")).to eq({:duck => 1})
     end
 
+    it "should raise error if item item is not on restuarant's menu" do
+      expect{order.add_item("sheep")}.to raise_error "Error: sheep not found on menu"
+    end
+
   end
 
   context "initializing" do

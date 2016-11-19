@@ -9,12 +9,13 @@ class Order
   end
 
   def add_item(item)
-    @in_progress[item.to_sym] += 1 if item_on_menu?(item.to_sym)
+    raise "Error: #{item} not found on menu" if item_not_on_menu?(item.to_sym)
+    @in_progress[item.to_sym] += 1
     @in_progress
   end
 
-  def item_on_menu?(item)
-    Menu::MENU.key?(item)
+  def item_not_on_menu?(item)
+    !Menu::MENU.key?(item)
   end
 
 
