@@ -12,6 +12,10 @@ add to current order from within order method
 
 refactored adding of new order to private bill method
 
+adds third argument to method order for entering in total expected bill
+
+dealt with edge case of orders less than 1 with new error message
+
 
 ==================
 ```

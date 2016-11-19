@@ -14,10 +14,6 @@ describe Order do
 
     it { is_expected.to respond_to(:order).with(3).argument }
 
-    # it 'should return the price of an item when selected' do
-    #   expect(subject.order(:pizza)).to eq "£9"
-    # end
-
     it 'should return the pizza and the amount ordered when 1 pizza is ordered' do
       expect(subject.order("margherita", 1, 9)).to eq "You have ordered 1 margherita(s)."
     end
@@ -30,17 +26,23 @@ describe Order do
 
   context "tests storing of order" do
 
-    it { is_expected.to respond_to :current_order }
+    it { is_expected.to respond_to :current_order_price }
 
     it "should return 9 when 1 margherita is ordered" do
       subject.order("margherita", 1, 9)
-      expect(subject.current_order).to eq 9
+      expect(subject.current_order_price).to eq 9
     end
 
     it "should return 19 when 1 pizza and 1 pepperoni are ordered" do
       subject.order("margherita", 1, 9)
       subject.order("pepperoni", 1, 10)
-      expect(subject.current_order).to eq 19
+      expect(subject.current_order_price).to eq 19
+    end
+
+    it "should work when more than 1 item is ordered" do
+      subject.order("margherita", 1, 9)
+      subject.order("pepperoni", 2, 20)
+      expect(subject.current_order_price).to eq 29
     end
 
     it "should return error when less than 1 item is ordered" do
@@ -48,6 +50,31 @@ describe Order do
     end
 
   end
+
+  context "#expected_total" do
+
+    it { is_expected.to respond_to :expected_total }
+
+    it "Should return message when order is finished" do
+      subject.order("margherita", 1, 9)
+      expect(subject.expected_total(9)).to eq "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before 18:52"
+    end
+
+    it "should show other message if total is incorrect" do
+      subject.order("margherita", 1, 9)
+      expect(subject.expected_total(10)).to eq "Your total is wrong, perhaps you need to do some remedial Maths classes."
+    end
+
+  end
+
+  # context "time for time" do
+  #
+  #   it { is_expected.to respond_to :time }
+  #
+  #   # it "should show the time" do
+  #   #   e
+  #
+  # end
 
 
 end
