@@ -27,6 +27,10 @@ describe Menu do
     it 'should not allow items to be added that are not on the menu' do
       expect{menu.add_to_basket(incorrect_item)}.to raise_error("Item not on the menu")
     end
+    it 'should calculate the total price for multiple items' do
+      menu.add_to_basket(:bacon_sandwich, 2)
+      expect(menu.basket[:bacon_sandwich]).to eq ["Quantity: 2, Total price: 8"]
+    end
   end
 
 end
