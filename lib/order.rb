@@ -1,9 +1,10 @@
 class Order
 
-attr_reader :list_of_dishes
+attr_reader :list_of_dishes, :current_order
 
   def initialize
     @list_of_dishes = { :pizza => "£9" }
+    @current_order
   end
 
   # def list_of_dishes

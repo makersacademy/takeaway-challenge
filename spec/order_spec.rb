@@ -24,5 +24,11 @@ describe Order do
 
   end
 
+  context "tests storing of order" do
+
+    it { is_expected.to respond_to :current_order }
+
+  end
+
 
 end
