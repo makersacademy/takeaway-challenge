@@ -25,6 +25,11 @@ class Order
     total
   end
 
+  private
+    def reset_order
+      @added_dishes = []
+    end
+
 
 
 

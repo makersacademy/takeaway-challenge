@@ -13,6 +13,7 @@ describe Order do
     it "should save the items" do
       expect(order.add("chicken",5)).to eq [["chicken",5]]
     end
+
     it "should raise an error if the dish is not in the menu" do
       expect{order.add("duck",2)}.to raise_error "The dish is not on the menu."
     end
