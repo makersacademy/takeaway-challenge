@@ -16,4 +16,8 @@ class Order
     self.total
   end
 
+  def place_order
+
+  end
+
 end

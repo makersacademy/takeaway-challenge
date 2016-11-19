@@ -28,9 +28,6 @@ describe Order do
 
   end
 
-# I would like to check that the total I have been given
-# matches the sum of the various dishes in my order
-
   context 'Calculate Total' do
 
     it 'calculates total cost' do
@@ -38,6 +35,14 @@ describe Order do
       order.add_to_basket({:item=>"spag_bol", :price=>6, :qty=>3})
       order.add_to_basket({:item=>"chips", :price=>3, :qty=>1})
       expect(order.calculate_total).to eq 33
+    end
+
+  end
+
+  context 'Confirm Order' do
+
+    it 'responds to place order method' do
+      expect(order).to respond_to(:place_order)
     end
 
   end
