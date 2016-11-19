@@ -17,6 +17,7 @@ attr_reader :options, :new_order
 
   def select_pizza
     order = options.select {|k,v| k == :pizza}
+    new_order << order
   end
 
   # def select_meal(dish)

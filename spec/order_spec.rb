@@ -10,4 +10,8 @@ describe Order do
     expect(subject.select_pizza).to eq({:pizza=>2.99})
   end
 
+  it 'puts selections in new order list' do
+    expect(subject.select_pizza).to change{subject.new_order}
+  end
+
 end
