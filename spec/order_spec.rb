@@ -22,10 +22,9 @@ describe Order do
   end
 
   context "View ordered dishes" do
-
     it "should count duplicate dishes and return in a list" do
       allow(order).to receive(:selected_dishes) {[{"Chicken Adobo"=>4.5}, {"Chicken Adobo"=>4.5}]}
-      expect(order.view_order).to eq({"Chicken Adobo"=>9.0})
+      expect(order.view_order).to eq({"Chicken Adobo"=>2})
     end
 
   end

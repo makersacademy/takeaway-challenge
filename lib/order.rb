@@ -16,7 +16,7 @@ attr_reader :selected_dishes
   def view_order
     result = Hash.new(0)
     selected_dishes.each do |subhash|
-      subhash.each {|dish, value| result[dish] += value}
+      subhash.each {|dish, value| result[dish] += 1}
     end
     result
   end
