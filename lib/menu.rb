@@ -11,9 +11,14 @@ class Menu
   end
 
   def add_to_basket(item)
+    fail "Item not on the menu" unless on_menu?(item)
     self.basket[item] = self.list[item.to_sym]
   end
 
+  private
+  def on_menu?(item)
+    self.list.include?(item)
+  end
 
 
 end

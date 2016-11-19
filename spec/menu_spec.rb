@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
   subject(:menu) {described_class.new}
-  let(:item) {double :item}
+  let(:incorrect_item) {double :incorrect_item}
 
   context "menu items" do
     it 'should initialize with a list hash' do
@@ -15,14 +15,17 @@ describe Menu do
 
   describe "#add_to_basket" do
     before do
-      allow(item).to receive(:to_sym)
+      allow(incorrect_item).to receive(:to_sym)
     end
     it 'should respond to add_to_basket' do
       expect(menu).to respond_to(:add_to_basket).with(1).argument
     end
     it 'should add an item to the basket' do
-        menu.add_to_basket(item)
-        expect(menu.basket).to include(item)
+        menu.add_to_basket(:bacon_sandwich)
+        expect(menu.basket).to include(:bacon_sandwich)
+    end
+    it 'should not allow items to be added that are not on the menu' do
+      expect{menu.add_to_basket(incorrect_item)}.to raise_error("Item not on the menu")
     end
   end
 
