@@ -5,7 +5,7 @@ describe Takeaway do
 subject(:takeaway){described_class.new(order_klass)}
 let(:order_klass){double :order_klass, :new => placed_order}
 let(:placed_order){double :placed_order, :selected_dishes => [],
-  :view_order => {}, :total_cost => ""}
+  :view_order => {}, :total_cost => "", :confirm_order => {}}
 
   context "The available dishes" do
     it "should have a list of all dishes and their prices" do
@@ -58,6 +58,14 @@ let(:placed_order){double :placed_order, :selected_dishes => [],
       takeaway.place_new_order
       allow(placed_order).to receive(:total_cost) {"£13.5"}
       expect(takeaway.total_cost).to eq placed_order.total_cost
+    end
+  end
+
+  context "Confirming order" do
+    it "should list out dishes, quantity and total cost" do
+      takeaway.place_new_order
+      allow(placed_order).to receive(:confirm_order) {{"Chicken Adobo"=>2, "Total cost"=>"£9.0"}}
+      expect(takeaway.confirm_order).to eq placed_order.confirm_order
     end
   end
 

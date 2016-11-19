@@ -3,7 +3,7 @@ require './lib/order.rb'
 #allows customer to place an order
 class Takeaway
 
-attr_reader :all_dishes, :placed_order, :order
+attr_reader :all_dishes, :order, :placed_order
 
 ALL_DISHES = {1 => {"Chicken Adobo" => 4.50},
 2 => {"Pancit Bihon" => 4.50},
@@ -42,6 +42,10 @@ ALL_DISHES = {1 => {"Chicken Adobo" => 4.50},
 
   def total_cost
     placed_order.total_cost
+  end
+
+  def confirm_order
+    placed_order.confirm_order
   end
 
 

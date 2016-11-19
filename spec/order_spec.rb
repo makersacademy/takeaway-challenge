@@ -24,9 +24,19 @@ describe Order do
   context "View ordered dishes" do
     it "should count duplicate dishes and return in a list" do
       allow(order).to receive(:selected_dishes) {[{"Chicken Adobo"=>4.5}, {"Chicken Adobo"=>4.5}]}
-      expect(order.view_order).to eq({"Chicken Adobo"=>2})
+      expect(order.view_order).to eq({{"Chicken Adobo"=>4.5}=>2})
+    end
+  end
+
+  context "Confirming order" do
+    it "should be able to confirm order, showing all dishes and total cost" do
+      allow(order).to receive(:selected_dishes) {[{"Chicken Adobo"=>4.5}, {"Chicken Adobo"=>4.5}]}
+      expect(order.confirm_order).to eq({"Chicken Adobo"=>2, "Total cost"=>"£9.0"})
     end
 
+    it "should raise error if no selected dishes" do
+      expect{order.confirm_order}.to raise_error("No dishes selected.")
+    end
   end
 
 end
