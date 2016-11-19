@@ -1,5 +1,6 @@
 require './lib/takeaway'
 require './lib/menu'
+require './lib/messager'
 
 class Order
 
@@ -9,6 +10,7 @@ def initialize
   @menu_klass = Menu.new
   @basket = []
   @total = 0
+  @messager = Messager.new
 end
 
 def make_order(hash)
@@ -22,6 +24,7 @@ def make_order(hash)
   end
   end
   @basket
+  @messager.send_message
 end
 
 def complete_order
@@ -31,6 +34,8 @@ def complete_order
   end
   end
 end
+
+
 
 
 
