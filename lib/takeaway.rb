@@ -4,9 +4,9 @@ class Takeaway
 
   include SMS
 
-  def accept_order
-    "Order has been accepted"
-    send_sms
+  def accept_order(total)
+    "Thank you for your order: £" + total.to_s
+    #send_sms
   end
 
 end

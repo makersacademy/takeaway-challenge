@@ -19,7 +19,7 @@ class Order
   end
 
   def place_order
-    Takeaway.new.accept_order
+    Takeaway.new.accept_order(self.total)
     "Order has been placed"
   end
 
