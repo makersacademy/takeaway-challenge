@@ -56,4 +56,5 @@ Your basket contains:
  => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC897f510f4d323f75fa515d37af48e0a8/Messages/SM7e1c25fdb9d741d49ab7efc6498600c3>
  ```
  * And that will send a confirmation text to (my) phone!
- 
+
+[![Build Status](https://travis-ci.org/GeorgeSeeger/takeaway-challenge.svg?branch=master)](https://travis-ci.org/GeorgeSeeger/takeaway-challenge)
