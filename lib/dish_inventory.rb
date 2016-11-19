@@ -1,5 +1,7 @@
 # The dish inventory will store a list of all the available dish objects
 require_relative 'dish'
+require_relative 'order'
+require_relative 'order_manager'
 
 class DishInventory
 
