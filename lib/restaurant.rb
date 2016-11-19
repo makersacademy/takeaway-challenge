@@ -6,12 +6,18 @@ class Restaurant
   attr_reader :name, :menu, :orders
   attr_accessor :order
 
+
   DEFAULT_NAME = "Top 5"
   def initialize(name = DEFAULT_NAME, menu_klass = Menu)
     @name = name
     @menu = menu_klass.new
     @order
     @orders = []
+  end
+
+  def add_dish(name, price = 10, amount = 1, dish_klass = Dish)
+    dish = dish_klass.new(name, price)
+    menu.create(dish, amount)
   end
 
   def start_order(order_klass = Order)

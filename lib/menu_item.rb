@@ -6,14 +6,9 @@ class MenuItem
 
   attr_accessor :dish, :amount
 
-  def initialize
-    @dish
-    @amount
-  end
-
-  def add(dish, amount = DEFAULT_AMOUNT)
-    self.dish = dish
-    self.amount = amount
+  def initialize(dish, amount = DEFAULT_AMOUNT)
+    @dish = dish
+    @amount = amount
   end
 
   def available?

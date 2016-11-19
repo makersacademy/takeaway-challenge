@@ -4,17 +4,21 @@ require_relative "menu_item.rb"
 class Menu
 
 attr_reader :menu_items
+attr_accessor :menu_item
 
   def initialize()
     @menu_items = []
+    @menu_item
   end
 
-  def add(menu_item)
+  def create(dish, amount = 1, menu_item_klass = MenuItem)
+    self.menu_item = menu_item_klass.new(dish, amount)
+    add_to_menu
+  end
+
+  def add_to_menu
     menu_items << menu_item
-  end
-
-  def delete(menu_item)
-    menu_items.delete(menu_item)
+    self.menu_item = nil
   end
 
   def available_dishes
