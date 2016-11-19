@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :list
+  attr_reader :list, :basket
   def initialize
     @list = {
       bacon_sandwich: 4,
@@ -7,6 +7,13 @@ class Menu
       poached_eggs: 4,
       toast: 1
     }
+    @basket = Hash.new(0)
   end
+
+  def add_to_basket(item)
+    self.basket[item] = self.list[item.to_sym]
+  end
+
+
 
 end
