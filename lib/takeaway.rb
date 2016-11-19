@@ -21,6 +21,7 @@ class Takeaway
   def show_basket
     menu.basket
   end
+  
   def show_price
     "£#{menu.grand_total}"
   end

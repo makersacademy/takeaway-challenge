@@ -17,6 +17,11 @@ class Menu
     add_to_total(total(item, number))
   end
 
+  def checkout(total)
+    fail "Incorrect total. Please double-check." unless correct_total?(total)
+    true
+  end
+
   private
   attr_writer :grand_total
   def on_menu?(item)
@@ -31,5 +36,7 @@ class Menu
      self.grand_total += amount
    end
 
-
+   def correct_total?(amount)
+     amount == self.grand_total
+   end
 end

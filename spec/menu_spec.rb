@@ -32,5 +32,19 @@ describe Menu do
       expect(menu.basket[:bacon_sandwich]).to eq ["Quantity: 2, Total price: 8"]
     end
   end
+  describe '#checkout' do
+    before do
+      menu.add_to_basket(:bacon_sandwich)
+    end
+    it 'should take a price as an argument' do
+      expect(menu).to respond_to(:checkout).with(1).argument
+    end
+    it 'should return true if the price matches the grand total' do
+      expect(menu.checkout(4)).to be true
+    end
+    it 'should return false if the price does not match the grand total' do
+      expect{menu.checkout(3)}.to raise_error("Incorrect total. Please double-check.")
+    end
+  end
 
 end
