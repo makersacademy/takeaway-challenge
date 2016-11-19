@@ -2,6 +2,16 @@ Takeaway Challenge
 
 Started by adding list_of_dishes method that showed a hash of the dishes available.
 
+Added order method with no argument
+Added 1 argument
+Added two arguments
+
+adds current order variable make it equal zero
+starts on initialize and accessor method
+add to current order from within order method
+
+refactored adding of new order to private bill method
+
 
 ==================
 ```

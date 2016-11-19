@@ -11,7 +11,7 @@ attr_reader :list_of_dishes, :current_order
   #   { :pizza => 9 }
   # end
 
-  def order(order, quantity)
+  def order(order, quantity, total)
     bill(order, quantity)
     "You have ordered #{quantity} #{order}(s)."
   end
