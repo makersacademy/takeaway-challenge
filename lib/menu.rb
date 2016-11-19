@@ -11,7 +11,7 @@ module Menu
 		{ :item => "Fries", :cost => "£1.50" },
 		{ :item => "Ice Cream", :cost => "£3.99" } ]
 
-	def display_menu
+	def view_menu
 		MENU
 	end
 
