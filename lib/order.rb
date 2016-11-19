@@ -10,8 +10,8 @@ attr_reader :list_of_dishes
   #   { :pizza => 9 }
   # end
 
-  def order(order)
-    "You have ordered #{order}."
+  def order(order, quantity)
+    "You have ordered #{quantity} #{order}."
   end
 
 
