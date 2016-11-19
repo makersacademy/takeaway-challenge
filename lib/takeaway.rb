@@ -8,11 +8,13 @@ MENU = { ":Margarita" => 12,
 ":Bacon bbq chicken" => 18,
 ":Chicken sausage deluxe" => 18,}
 
-attr_reader :menu
+attr_reader :menu,:order
 
   def initialize
     @menu = MENU
+    @order = nil
   end
+
 
 
 end
