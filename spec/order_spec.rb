@@ -25,6 +25,10 @@ describe Order do
 			expect(order.basket).to eq ([{:number=>2, :item=>"Pepperoni Pizza", :cost=>"£6.99"}])
 		end
 
+		it 'is expected to give the order total' do
+			expect(order.create_order).to eq "£6.99"
+		end
+
 	end
 
 end

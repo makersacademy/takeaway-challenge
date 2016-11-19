@@ -16,6 +16,9 @@ class Takeaway
 		@order.create_order
 	end
 
+	def checkout
+	end
+
 	private
 
 		def new_order

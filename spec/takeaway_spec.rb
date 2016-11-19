@@ -11,6 +11,8 @@ describe Takeaway do
 
 	it { is_expected.to respond_to(:view_menu) }
 
+	it { is_expected.to respond_to(:checkout) }
+
 	describe '#place_order' do
 
 		it 'should create a new order' do
