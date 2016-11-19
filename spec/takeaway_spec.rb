@@ -14,10 +14,6 @@ describe Takeaway do
     expect{takeaway.show_menu}.to output.to_stdout
   end
 
-  it { is_expected.to respond_to(:items) }
-
-  it { is_expected.to respond_to(:add_item).with(2).arguments }
-
   it 'adds your chosen item to items' do
     takeaway.add_item(item, quantity)
     expect(takeaway.items.empty?).to eq false
