@@ -2,7 +2,7 @@ require_relative 'menu.rb'
 
 class Takeaway
 
-  attr_reader :menu, :items, :expected_total
+  attr_reader :menu, :items, :total_estimate
 
   def initialize
     @menu = Menu.new
@@ -23,8 +23,8 @@ class Takeaway
     end
   end
 
-  def expected_total(expected_total)
-    @expected_total = expected_total
+  def expected_total(total_estimate)
+    @total_estimate = total_estimate
   end
 
 end
