@@ -7,8 +7,12 @@ attr_accessor :menu
     @menu = []
   end
 
-  def meal_price(amount)
-    amount = 1
+  def meal_price(price)
+    price = 1
+  end
+
+  def new_dish(meal)
+    @meal = meal
   end
 
 end
