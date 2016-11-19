@@ -102,7 +102,6 @@ How to Use
  @menu_list={"spag_bol"=>6, "pizza"=>4},
  @order=#<Order:0x007fd463201a18 @basket=[], @total=0>>
 ```
-
 2. User adds desired items from the menu into a basket
 ```
 ᚹᚱᛘ ᛬ menu.select_item("pizza", 3)
