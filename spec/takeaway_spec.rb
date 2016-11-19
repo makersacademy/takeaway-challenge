@@ -14,7 +14,8 @@ describe Takeaway do
 	describe '#place_order' do
 
 		it 'should create a new order' do
-			expect(takeaway.place_order).to eq order
+			allow(order).to receive(:create_order)
+			expect(takeaway.place_order).to eq order.create_order
 		end
 
 	end

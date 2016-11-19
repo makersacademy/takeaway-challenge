@@ -13,6 +13,7 @@ class Takeaway
 
 	def place_order
 		new_order
+		@order.create_order
 	end
 
 	private
