@@ -21,7 +21,7 @@ class Order
     @shopping_cart.each do |food_item|
       food_item.each do |item, quantity|
         @price = menu.menu_items[item]
-        return "#{quantity} x #{item.to_s} at £#{@price} = £#{@price * quantity}"
+        p "#{quantity} x #{item.to_s} at £#{@price} = £#{@price * quantity}"
       end
     end
   end

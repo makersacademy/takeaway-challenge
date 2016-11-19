@@ -17,7 +17,7 @@ it "should add the selection to the order" do
 end
 
 it "should get the price of each item in the order" do
-  expect(order.get_price).to eq("2 x burrito at £6 = £12")
+  expect{order.get_price}.to output.to_stdout
 end
 
 
