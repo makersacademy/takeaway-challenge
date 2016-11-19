@@ -6,6 +6,7 @@ describe Takeaway do
   let(:menu_hash) { double(:menu_hash) }
   let(:item) { double(:item) }
   let(:unavailable_item) { double(:unavailable_item) }
+  let(:expected_total) { double(:expected_total) }
 
   it 'receives a menu object when created' do
     expect(takeaway.menu).not_to be_nil
@@ -42,7 +43,6 @@ describe Takeaway do
     end
 
     context 'raising errors if item or quantity invalid' do
-
       it 'raises an error if quantity is less than 1' do
         allow(Menu::MENU).to receive(:has_key?).and_return(true)
         expect { takeaway.add_item(item, -10) }.to raise_error('Quantity cannot be less than 1')
@@ -51,6 +51,12 @@ describe Takeaway do
       it 'raises an error if you try to add something that is not on the menu' do
         allow(Menu::MENU).to receive(:has_key?).and_return(false)
         expect { takeaway.add_item(unavailable_item, 1) }.to raise_error('This item is not on the menu, please choose something else')
+      end
+    end
+
+    context 'calculating total for order' do
+      it 'stores the expected total' do
+        expect(takeaway.expected_total(1)).not_to be_nil
       end
     end
   end
