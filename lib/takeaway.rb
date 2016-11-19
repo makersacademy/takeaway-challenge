@@ -1,30 +1,26 @@
 require_relative 'order.rb'
+require_relative 'sms.rb'
+require 'dotenv'
+Dotenv.load
 
 class Takeaway
-MENU = { "Margarita" => 12,
-"The special" => 18,
-"Chicago classic"  => 18,
-"Meat & more meat" => 19,
-"Fresh spinach" => 14,
-"Super veggie" => 18,
-"Bacon bbq chicken" => 18,
-"Chicken sausage deluxe" => 18,}
 
-attr_reader :menu,:order
+attr_reader :order
 
   def initialize
-    @menu = MENU
+    @sms = Sms.new
     @order = Order.new
   end
 
-  def add_food(item)
-    message = ("Sorry, that item isn't on the menu")
-    raise message if !on_menu?(item)
-    @order.list[item] == nil ? @order.list[item] = 1 : @order.list[item] += 1
+  def place_order(customer_order)
+      @order.place_order(customer_order)
+      send_sms(@order.sms_message)
   end
 
-  def on_menu?(item)
-    @menu.has_key?(item)
+private
+
+  def send_sms(message)
+    @sms.send_message(message)
   end
 
 end
