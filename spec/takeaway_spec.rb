@@ -5,7 +5,7 @@ describe Takeaway do
   let( :menu ){ double :menu }
 
   it 'pulls a menu from the Menu class' do
-    expect(subject.menu).to eq(menu.menu_list)
+    expect(subject.menu).to eq({:pizza => 2.99, :thai => 4.55, :mexican => 5.25})
   end
 
 
