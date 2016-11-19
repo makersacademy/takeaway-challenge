@@ -12,16 +12,15 @@ attr_reader :list_of_dishes, :current_order
   # end
 
   def order(order, quantity)
-    @current_order += list_of_dishes[order].times{quantity}
-
+    bill(order, quantity)
     "You have ordered #{quantity} #{order}(s)."
   end
 
 
 private
 
-  def bill
-
+  def bill(order, quantity)
+    @current_order += list_of_dishes[order].times{quantity}
   end
 
 end
