@@ -19,9 +19,14 @@ describe Menu do
 
 
   context "When the method available_dishes is called" do
-    it "should show only available dishes" do
-      allow(dishes).to receive(:all_dishes).and_return([{:name => food1, :price => price1, :availability => true},{:name => food2, :price => price2, :availability => false}])
-      expect(menu.available_dishes(dishes)).to eq(["#[Double :food1] - £#[Double :price1]"])
+    it "should show only available dishes within an array" do
+      allow(dishes).to receive(:all_dishes).and_return([{:name => food1, :price => price1, :availability => true},{:name => food2, :price => price2, :availability => false}, {:name => food3, :price => price3, :availability => true}])
+      expect(menu.output_dishes(dishes)).to eq(["#[Double :food1] - £#[Double :price1]","#[Double :food3] - £#[Double :price3]"])
+    end
+  end
+  context "when select_dishes is called" do
+    it "should allow the user to select any amount of dishes they like and return them" do
+      expect(menu.select_dishes).to eq(["#[Double :food3] - £#[Double :price3]"])
     end
   end
 end

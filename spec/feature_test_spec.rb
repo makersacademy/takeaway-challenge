@@ -26,7 +26,11 @@ end
 
   context "I would like to be able to select some number of several available dishes" do
     it "available dishes to be shown" do
-      expect(@menu.available_dishes(@dishes1)).to eq ["Pasta - £3", "Pizza - £6"]
+      expect(@menu.output_dishes(@dishes1)).to eq ["Pasta - £3", "Pizza - £6"]
+    end
+
+    it "selected dishes to be shown" do
+      expect(@menu.selected_dishes(2)).to eq ["Pizza - £6"]
     end
   end
 
