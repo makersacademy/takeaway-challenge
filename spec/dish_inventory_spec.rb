@@ -23,4 +23,12 @@ describe DishInventory do
 
   end
 
+  describe "removing a dish from the inventory" do
+    it "when a dish has been ordered it should be removed from the inventory" do
+      dish_inventory.add_dish(dish)
+      dish_inventory.remove_dish(dish)
+      expect(dish_inventory.dishes).not_to include dish
+    end
+  end
+
 end

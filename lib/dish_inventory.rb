@@ -12,4 +12,8 @@ class DishInventory
     dishes << dish
   end
 
+  def remove_dish(dish)
+    dishes.pop
+  end
+
 end
