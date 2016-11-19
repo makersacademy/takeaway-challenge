@@ -9,9 +9,8 @@ class Order
 
   def select_items(number, quantity)
     @selection = { number: number, quantity: quantity }
-    add_selection_to_order
     output_selection
-    @selection = { number: nil, quantity: nil }
+    add_selection_to_order
   end
 
   def add_selection_to_order
@@ -19,7 +18,11 @@ class Order
   end
 
   def output_selection
-    "You have selected #{selection[:number].to_s} order(s) of number #{selection[:number].to_s}"
+    "You have selected #{selection[:quantity].to_s} order(s) of number #{selection[:number].to_s}"
+  end
+
+  def clear_selection
+    @selection = { number: nil, quantity: nil }
   end
 
 end
