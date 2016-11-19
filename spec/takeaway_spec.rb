@@ -15,6 +15,12 @@ describe Takeaway do
       expect(subject).to respond_to(:order)
     end
 
+    it 'should allow the customer to add food to thier order' do
+      food = "The special"
+      subject.add_food(food)
+      expect(subject.order).to eq [food]
+    end
+
   end
 
 end

@@ -12,7 +12,11 @@ attr_reader :menu,:order
 
   def initialize
     @menu = MENU
-    @order = nil
+    @order = []
+  end
+
+  def add_food(item)
+    @order << item
   end
 
 
