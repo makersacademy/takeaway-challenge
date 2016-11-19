@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
@@ -10,8 +11,14 @@ class Takeaway
 		@order_klass = order_klass
 	end
 
-	def new_order
-		@order = order_klass.new
+	def place_order
+		new_order
 	end
+
+	private
+
+		def new_order
+			@order = order_klass.new
+		end
 
 end
