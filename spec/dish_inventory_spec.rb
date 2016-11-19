@@ -29,6 +29,10 @@ describe DishInventory do
       dish_inventory.remove_dish(dish)
       expect(dish_inventory.dishes).not_to include dish
     end
+
+    it "should raise an error if the dish is not avalaible in the inventory" do
+      expect{dish_inventory.remove_dish(dish)}.to raise_error "Sorry this item is out of stock"
+    end
   end
 
 end

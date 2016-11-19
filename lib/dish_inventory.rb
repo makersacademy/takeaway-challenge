@@ -13,6 +13,7 @@ class DishInventory
   end
 
   def remove_dish(dish)
+    raise "Sorry this item is out of stock" if !dishes.include?(dish)
     dishes.pop
   end
 
