@@ -15,7 +15,11 @@ describe Takeaway do
     # end
 
     it 'saves dishes with their prices' do
-      expect(subject.add_meal("meal", 2)).to eq( {:meal => "meal", :price => 2} )
+      expect(subject.add_meal("meal", 2)).to eq( [{:meal => "meal", :price => 2}] )
+    end
+
+    it 'adds new meals to the menu' do
+      expect{subject.add_meal("meal", 2.0)}.to change{subject.menu}
     end
 
 end
