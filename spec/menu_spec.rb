@@ -56,6 +56,11 @@ describe Menu do
       expect(menu.current_selection).to eq ({:item=>"pizza", :price=>4, :qty=>3})
     end
 
+    it 'adds a default quantity if no quantity is given' do
+      menu.select_item("pizza")
+      expect(menu.current_selection).to eq ({:item=>"pizza", :price=>4, :qty=>Menu::DEFAULT_QUANTITY})
+    end
+
   end
 
   context 'Check if valid item' do

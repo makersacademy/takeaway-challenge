@@ -4,6 +4,8 @@ class Menu
 
   attr_accessor :menu_list, :order, :current_selection
 
+  DEFAULT_QUANTITY = 1
+
   def initialize(klass)
     @order = klass.new
     @current_selection = {}
@@ -17,7 +19,7 @@ class Menu
     self.menu_list
   end
 
-  def select_item(item, quantity)
+  def select_item(item, quantity = DEFAULT_QUANTITY)
     return "Not a valid item" if !in_menu?(item)
     @current_selection = {}
     self.current_selection[:item] = item
