@@ -3,6 +3,8 @@ require "restaurant"
 describe Restaurant do
   subject(:restaurant) {described_class.new}
   let(:dish) {double(:dish)}
+  let(:order) {double(:order)}
+
   describe "when instantiated" do
     it "should have a default name" do
       expect(restaurant.name).to eq Restaurant::DEFAULT_NAME
@@ -19,8 +21,19 @@ describe Restaurant do
 
   describe "when managing orders" do
     it "should be able to start an order" do
-      restaurant.add_to_order
+      restaurant.start_order
       expect(restaurant.order).not_to be_nil
+    end
+
+    it "should be able to add a dish to the order" do
+      restaurant.start_order
+      restaurant.add_to_order(dish, 5)
+      expect(restaurant.order.items.count).to eq 1
+    end
+
+    it "should be able to finish an order" do
+      restaurant.finish_order(order)
+      expect(restaurant.orders.count).to eq 1
     end
   end
 
