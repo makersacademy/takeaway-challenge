@@ -4,4 +4,7 @@ class Order
     { :pizza => 9 }
   end
 
+  def order(order)
+  end
+
 end
