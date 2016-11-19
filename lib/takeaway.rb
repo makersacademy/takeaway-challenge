@@ -1,26 +1,16 @@
+require_relative 'meals.rb'
+
 class Takeaway
 
-attr_reader
-attr_accessor :menu
+    attr_accessor :meals
 
-  def initialize
-    @menu = []
+    def initialize
+      @meals = Meals.new
+    end
+
+  def menu
+    #In Meals class I add dishes to menu_list array with a method called add_meal. I want to read this data in this menu method in the Takeaway class but it won't work. I get an empty array no matter what. 
+    meals.menu_list
   end
-
-  # def meal_price(price)
-  #   price = 1
-  # end
-  #
-  # def new_dish(meal)
-  #   @meal = meal
-  # end
-
-  def add_meal(meal, price)
-    @meal = meal
-    @price = price
-    meal_description = {:meal => @meal, :price => @price}
-    @menu << meal_description
-  end
-
 
 end
