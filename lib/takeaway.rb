@@ -15,4 +15,11 @@ attr_accessor :menu
     @meal = meal
   end
 
+  def add_meal(meal, price)
+    @meal = meal
+    @price = price
+    {:meal => @meal, :price => @price}
+  end
+
+
 end
