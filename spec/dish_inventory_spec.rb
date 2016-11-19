@@ -5,6 +5,7 @@ describe DishInventory do
   let (:dish_inventory) {described_class.new}
   let (:dish) {double :dish}
   let (:dish1) {double :dish1}
+  let (:dish2) {double :dish2}
 
 
   describe "Storing a list of dish objects" do
@@ -27,8 +28,17 @@ describe DishInventory do
   describe "removing a dish from the inventory" do
     it "when a dish has been ordered it should be removed from the inventory" do
       dish_inventory.add_dish(dish)
-      dish_inventory.remove_dish(dish)
-      expect(dish_inventory.dishes).not_to include dish
+      dish_inventory.add_dish(dish1)
+      dish_inventory.add_dish(dish2)
+      dish_inventory.remove_dish(dish1)
+      expect(dish_inventory.dishes).not_to include dish1
+    end
+
+    it "removing a dish returns the same dish from the dishes array" do
+      dish_inventory.add_dish(dish)
+      dish_inventory.add_dish(dish1)
+      dish_inventory.add_dish(dish2)
+      expect(dish_inventory.remove_dish(dish1)).to eq dish1
     end
 
     it "should raise an error if the inventory is empty" do

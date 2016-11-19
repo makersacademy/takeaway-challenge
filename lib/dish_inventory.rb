@@ -16,7 +16,7 @@ class DishInventory
   def remove_dish(dish)
     raise "Sorry the inventory is empty" if dishes.empty?
     raise "Sorry this item is out of stock" if !dishes.include?(dish)
-    dishes.pop
+    dishes.delete(dish)
   end
 
 end
