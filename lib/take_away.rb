@@ -1,17 +1,30 @@
 class TakeAway
 
-  def menu
-    dishes = [{chicken: 5}, {beef: 6}, {pork: 7}]
+  attr_reader :menu
+
+  def initialize(menu_klass,order_klass)
+    @menu = menu_klass.new
+    @order = order
   end
 
-  def order(*args)
+  def order(*args, total)
+    total_value = 0
     string = ""
     args.each_slice(2) do |name,number|
       menu.each do |dish|
-        string << "#{number} dish(es) of #{name} " if dish.include?(name.to_sym)
+         if dish.include?(name.to_sym)
+           total_value += dish[name.to_sym] * number
+           string << "#{number} dish(es) of #{name} "
+         end
       end
     end
-    "You ordered " + string 
+    total_value
+    raise "Incorrect total value." if total != total_value
+    "You ordered " + string
   end
+
+  private
+
+
 
 end
