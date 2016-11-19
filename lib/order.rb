@@ -20,6 +20,7 @@ class Order
 
   def place_order
     Takeaway.new.accept_order
+    "Order has been placed"
   end
 
 end

@@ -48,6 +48,10 @@ describe Order do
       expect(order).to respond_to(:place_order)
     end
 
+    it 'confirms that order has been placed' do
+      expect(order.place_order).to eq "Order has been placed"
+    end
+
   end
 
 end

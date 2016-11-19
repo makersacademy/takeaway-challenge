@@ -25,8 +25,8 @@ class Menu
     self.current_selection[:item] = item
     self.current_selection[:price] = self.menu_list[item]
     self.current_selection[:qty] = quantity
-
     @order.add_to_basket(self.current_selection)
+    "#{quantity}x #{item} added to your basket"
   end
 
   def in_menu?(item)

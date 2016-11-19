@@ -61,6 +61,10 @@ describe Menu do
       expect(menu.current_selection).to eq ({:item=>"pizza", :price=>4, :qty=>Menu::DEFAULT_QUANTITY})
     end
 
+    it 'confirms items that have been added to basket' do
+      expect(menu.select_item("pizza", 3)).to eq "3x pizza added to your basket"
+    end
+    
   end
 
   context 'Check if valid item' do
