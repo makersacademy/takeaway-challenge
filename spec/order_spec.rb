@@ -10,19 +10,21 @@ describe Order do
 
 	it { is_expected.to respond_to(:create_order) }
 
+	describe '#create_order' do
 
-	before do
-		$stdin = StringIO.new("2\n1\n\n")
+		before do
+			$stdin = StringIO.new("2\n1\n\n")
+		end
+
+		after do
+			$stdin = STDIN
+		end
+
+		it 'is expected to add items to the basket' do
+			order.create_order
+			expect(order.basket).to eq ([{:number=>2, :item=>"Pepperoni Pizza", :cost=>"£6.99"}])
+		end
+
 	end
-
-	after do
-		$stdin = STDIN
-	end
-
-	it 'is expected to add items to the basket' do
-		order.create_order
-		expect(order.basket).to eq ([{:number=>2, :item=>"Pepperoni Pizza", :cost=>"£6.99"}])
-	end
-
 
 end
