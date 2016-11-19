@@ -25,6 +25,8 @@ class Restaurant
     orders << order
   end
 
-
+  def reset_order
+    self.order = nil
+  end
 
 end

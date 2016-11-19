@@ -1,0 +1,5 @@
+describe OrderTotal do
+
+
+
+end

@@ -3,7 +3,7 @@ require_relative "menu_item.rb"
 #Manages the menu items
 class Menu
 
-attr_reader :name, :menu_items
+attr_reader :menu_items
 
   def initialize()
     @menu_items = []
@@ -20,5 +20,6 @@ attr_reader :name, :menu_items
   def available_dishes
     menu_items.select {|item| item.available?}
   end
+
 
 end

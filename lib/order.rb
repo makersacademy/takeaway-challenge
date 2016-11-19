@@ -4,8 +4,9 @@ class Order
 
   attr_reader :items
 
-  def initialize
+  def initialize(order_total_klass = OrderTotal)
     @items = []
+    @price = 
   end
 
   def add_order_item(dish, amount, order_item_klass = OrderItem)

@@ -35,6 +35,12 @@ describe Restaurant do
       restaurant.finish_order(order)
       expect(restaurant.orders.count).to eq 1
     end
+
+    it "resets the current order" do
+      restaurant.start_order
+      restaurant.reset_order
+      expect(restaurant.order).to be_nil
+    end
   end
 
 end
