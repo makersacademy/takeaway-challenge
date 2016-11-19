@@ -12,6 +12,7 @@ attr_reader :list_of_dishes, :current_order
   # end
 
   def order(order, quantity, total)
+    fail "Cannot add item(s): total is incorrect." if total != list_of_dishes[order].times {quantity}
     bill(order, quantity)
     "You have ordered #{quantity} #{order}(s)."
   end
