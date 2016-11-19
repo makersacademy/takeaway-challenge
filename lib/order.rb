@@ -2,10 +2,9 @@ require './lib/takeaway.rb'
 
 class Order
 
-  attr_accessor :basket, :total, :takeaway
+  attr_accessor :basket, :total
 
-  def initialize(klass)
-    @takeaway = klass.new
+  def initialize
     @basket = []
     @total = 0
   end
@@ -15,7 +14,8 @@ class Order
   end
 
   def place_order
-    @takeaway.accept_order(self.total)
+    calculate_total
+    Takeaway.new(SMS).accept_order(self.total)
     "Order has been placed"
   end
 

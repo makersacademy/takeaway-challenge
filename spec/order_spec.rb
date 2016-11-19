@@ -2,13 +2,11 @@ require './lib/order'
 
 describe Order do
 
-  let(:order) { described_class.new(takeaway) }
-  let(:klass) { double(:klass) }
+  let(:order) { described_class.new }
   let(:current_selection) { double(:current_selection) }
   let(:takeaway) { double(:takeaway) }
 
   before do
-    allow(takeaway).to receive(:new).and_return takeaway
     allow(takeaway).to receive(:accept_order)
   end
 
@@ -20,10 +18,6 @@ describe Order do
 
     it 'creates a total of zero on initialization' do
       expect(order.total).to eq 0
-    end
-
-    it 'accepts a takeaway object on initialization' do
-      expect(order.takeaway).to eq takeaway
     end
 
   end

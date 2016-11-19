@@ -7,11 +7,12 @@ class Menu
   DEFAULT_QUANTITY = 1
 
   def initialize(klass)
-    @order = klass.new
+    @order = klass.new(klass)
     @current_selection = {}
     @menu_list = {
-      "spag_bol" => 6,
-      "pizza" => 4
+      "Spag_Bol" => 6.5,
+      "Pizza" => 4,
+      "Chips" => 2.75
     }
   end
 
@@ -29,12 +30,10 @@ class Menu
     "#{quantity}x #{item} added to your basket"
   end
 
-  private 
+  private
 
   def in_menu?(item)
     self.menu_list.has_key?(item)
   end
-
-
 
 end
