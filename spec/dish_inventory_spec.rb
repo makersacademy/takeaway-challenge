@@ -4,6 +4,8 @@ describe DishInventory do
 
   let (:dish_inventory) {described_class.new}
   let (:dish) {double :dish}
+  let (:dish_name) {double :dish_name}
+  let (:dish_price) {double :dish_price}
 
 
   describe "Storing a list of dish objects" do
@@ -33,6 +35,13 @@ describe DishInventory do
     it "should raise an error if the dish is not avalaible in the inventory" do
       expect{dish_inventory.remove_dish(dish)}.to raise_error "Sorry this item is out of stock"
     end
+
   end
+
+  # describe "displaying inventory" do
+  #   it "should present its inventory with name and price of goods in its stock" do
+  #     expect(dish_inventory.show_inventory).to include({name: dish_name, price: dish_price})
+  #   end
+  # end
 
 end
