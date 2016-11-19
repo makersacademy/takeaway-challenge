@@ -9,7 +9,7 @@ require 'menu'
     end
 
     it 'should initialize with an empty order hash' do
-      expect(takeaway.order).to be_empty
+      expect(takeaway.basket).to be_empty
     end
 
     it 'should access the menu from the Menu class' do
@@ -29,4 +29,17 @@ require 'menu'
       expect(takeaway.show_basket).to eq menu.basket
       end
     end
+    describe "#order" do
+      it 'should add an order to the menu basket' do
+        takeaway.order("bacon_sandwich")
+        expect(takeaway.basket).to include "bacon_sandwich"
+      end
+    end
+    describe "#show_price" do
+      it 'should show the grand_total' do
+        takeaway.order("bacon_sandwich")
+        expect(takeaway.show_price).to eq "£4"
+      end
+    end
+
 end

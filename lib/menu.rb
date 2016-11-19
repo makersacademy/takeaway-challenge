@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :list, :basket
+  attr_reader :list, :basket, :grand_total
   def initialize
     @list = {
       bacon_sandwich: 4,
@@ -8,21 +8,28 @@ class Menu
       toast: 1
     }
     @basket = Hash.new(0)
+    @grand_total = 0
   end
 
   def add_to_basket(item, number = 1)
     fail "Item not on the menu" unless on_menu?(item)
-    self.basket[item] = ["Quantity: #{number}, Total price: #{total(number, self.list[item.to_sym])}"]
+    self.basket[item] = ["Quantity: #{number}, Total price: #{total(item, number)}"]
+    add_to_total(total(item, number))
   end
 
   private
+  attr_writer :grand_total
   def on_menu?(item)
     self.list.include?(item.to_sym)
   end
 
-  def total(quantity, item)
-    quantity * item
+  def total(item, number = 1)
+     self.list[item.to_sym] * number
   end
+
+   def add_to_total(amount)
+     self.grand_total += amount
+   end
 
 
 end
