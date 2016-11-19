@@ -16,4 +16,8 @@ class MenuItem
     self.amount = amount
   end
 
+  def available?
+    amount > 0
+  end
+
 end

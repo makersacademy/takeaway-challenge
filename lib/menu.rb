@@ -5,10 +5,7 @@ class Menu
 
 attr_reader :name, :menu_items
 
-
-DEFAULT_NAME = "Best London Curry House"
-  def initialize(name = DEFAULT_NAME)
-    @name = name
+  def initialize()
     @menu_items = []
   end
 
@@ -20,8 +17,8 @@ DEFAULT_NAME = "Best London Curry House"
     menu_items.delete(menu_item)
   end
 
-  def available_items
-    menu_items.select {|item| item.amount > 0}
+  def available_dishes
+    menu_items.select {|item| item.available?}
   end
 
 end

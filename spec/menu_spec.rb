@@ -5,16 +5,8 @@ describe Menu do
   let(:menu_item) {double(:menu_item)}
   let(:menu_item2) {double(:menu_item2)}
 
-  describe "When instantiated" do
-    it "should have a default name" do
-      expect(menu.name).to eq Menu::DEFAULT_NAME
-    end
-  end
-
   describe "When handling dishes" do
     before(:each) {menu.add(menu_item)}
-
-    #allow(item2).to receive(:amount).and_return(2)
 
     it "should be able to add a dish to the menu" do
       expect(menu.menu_items.count).to eq 1
@@ -27,9 +19,9 @@ describe Menu do
 
     it "should only show available dishes" do
       menu.add(menu_item2)
-      allow(menu_item).to receive(:amount).and_return(2)
-      allow(menu_item2).to receive(:amount).and_return(0)
-      expect(menu.available_items.count).to eq 1
+      allow(menu_item).to receive(:available?).and_return(true)
+      allow(menu_item2).to receive(:available?).and_return(false)
+      expect(menu.available_dishes.count).to eq 1
     end
   end
 
