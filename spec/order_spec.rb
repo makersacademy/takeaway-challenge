@@ -8,10 +8,11 @@ describe Order do
     expect(order.selection).to eq({ number: 1, quantity: 2 })
   end
 
-  # it "should allow the user to input an item" do
-  #   allow(order).to receive(:item_selection) {1}
-  #   expect { order.select_items }.to output("1").to_stdout
-  # end
+it "should add the selection to the order" do
+  order.select_items(1,2)
+  order.add_selection_to_order
+  expect(order.shopping_cart).to eq ([{ number: 1, quantity: 2 }])
+end
 
 
 end
