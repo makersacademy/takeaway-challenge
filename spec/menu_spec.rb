@@ -1,8 +1,8 @@
 require 'menu'
 
 describe DishesMenu do
-  let(:dishlist) { [{:dish=>:v, :price=>:v},
-                    {:dish=>:v, :price=>:v}] }
+  let(:dishlist) { [{:dish=>:v, :price=>4},
+                    {:dish=>:v, :price=>3}] }
   subject(:menu) { described_class.new(dishlist) }
 
   it "loads a list of dishes on initialization" do

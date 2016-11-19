@@ -3,8 +3,8 @@ require 'interface'
 describe Interface do
   # let(:dishes_menu) { class_double "DishesMenu" }
   let(:name) { double(:name) }
-  let(:dish_list) { [{:dish=>:v, :price=>:v},
-                    {:dish=>:v, :price=>:v}] }
+  let(:dish_list) { [{:dish=>:v, :price=>4},
+                    {:dish=>:v, :price=>3}] }
   subject(:interface) { described_class.new(name, DishesMenu, dish_list)}
 
   it "Welcomes the user" do
