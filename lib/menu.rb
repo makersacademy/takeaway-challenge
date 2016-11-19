@@ -1,6 +1,5 @@
-require_relative "order"
-
 class Menu
+  # Holds everything related to the resturaunt's menu
 
   attr_reader :menu_items
 
@@ -20,7 +19,7 @@ end
 
   def list_menu
        @menu_items.collect do |k,v|
-        puts "#{k}        £#{v}"
+        "#{k}        £#{v}"
      end
   end
 
