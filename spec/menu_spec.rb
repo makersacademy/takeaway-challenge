@@ -56,15 +56,18 @@ describe Menu do
       expect(menu.current_selection).to eq ({:item=>"pizza", :price=>4, :qty=>3})
     end
 
-    it 'indicates when an item is not in the menu' do
-      expect(menu.in_menu?("Peas")).to eq false
-    end
-
-    it 'indicates when an item is on the menu' do
-      expect(menu.in_menu?("spag_bol")).to eq true
-    end
-
   end
 
+  context 'Check if valid item' do
+
+      it 'indicates when an item is not in the menu' do
+        expect(menu.in_menu?("Peas")).to eq false
+      end
+
+      it 'indicates when an item is on the menu' do
+        expect(menu.in_menu?("spag_bol")).to eq true
+      end
+
+  end
 
 end

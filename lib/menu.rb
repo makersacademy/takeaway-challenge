@@ -1,3 +1,5 @@
+require './lib/order'
+
 class Menu
 
   attr_accessor :menu_list, :order, :current_selection

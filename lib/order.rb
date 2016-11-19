@@ -1,3 +1,5 @@
+require './lib/takeaway.rb'
+
 class Order
 
   attr_accessor :basket, :total
@@ -17,7 +19,7 @@ class Order
   end
 
   def place_order
-
+    Takeaway.new.accept_order
   end
 
 end

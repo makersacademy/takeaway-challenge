@@ -4,6 +4,9 @@ describe Order do
 
   let(:order) { described_class.new }
   let(:current_selection) { double(:current_selection) }
+  let(:takeaway) { double(:takeaway) }
+
+  before { allow(takeaway).to receive(:accept_order) }
 
   context 'Initialization' do
 
@@ -39,7 +42,7 @@ describe Order do
 
   end
 
-  context 'Confirm Order' do
+  context 'Place Order' do
 
     it 'responds to place order method' do
       expect(order).to respond_to(:place_order)
