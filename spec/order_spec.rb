@@ -6,8 +6,8 @@ describe Order do
     expect(subject.see_options).to eq([])
   end
 
-  it 'allows the user to select meals' do
-    expect(subject.select_meal("meal")).to change{subject.new_order}
+  it 'allows the user to select pizza' do
+    expect(subject.select_pizza).to eq({:pizza=>2.99})
   end
 
 end

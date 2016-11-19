@@ -4,7 +4,7 @@ require_relative 'order.rb'
 
 class Menu
 
-  attr_accessor :menu_list, :meal_description
+  attr_accessor :menu_list
 
   def initialize
     @menu_list = {:pizza => 2.99, :thai => 4.55, :mexican => 5.25}
