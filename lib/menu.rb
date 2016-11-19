@@ -5,8 +5,8 @@ class Menu
   def initialize(klass)
     @order = klass.new
     @menu_list = {
-      :spag_bol => 6,
-      :pizza => 4
+      "spag_bol" => 6,
+      "pizza" => 4
     }
   end
 
@@ -15,8 +15,12 @@ class Menu
   end
 
   def select_item(item)
-    @order = Order.new
+    # return "Not a valid item" if
     @order.add_to_basket(item)
+  end
+
+  def in_menu?(item)
+    self.menu_list.has_key?(item)
   end
 
 

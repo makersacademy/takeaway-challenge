@@ -28,7 +28,7 @@ describe Menu do
     end
 
     it "can present a price against a dish" do
-      expect(menu.menu_list[:spag_bol]).to eq 6
+      expect(menu.menu_list["spag_bol"]).to eq 6
     end
 
   end
@@ -37,6 +37,14 @@ describe Menu do
 
     it "can select an item to add to basket" do
       expect(menu).to respond_to(:select_item)
+    end
+
+    it "indicates when an item is not in the menu" do
+      expect(menu.in_menu?("Peas")).to eq false
+    end
+
+    it "indicates when an item is on the menu" do
+      expect(menu.in_menu?("spag_bol")).to eq true
     end
 
   end
