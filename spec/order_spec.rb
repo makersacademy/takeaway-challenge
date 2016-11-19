@@ -5,6 +5,7 @@ describe Order do
   let(:order)     { described_class.new }
   let(:item)      { double(:item) }
   let(:quantity)  { double(:quantity) }
+  let(:price)     { double(:price) }
 
   context 'Basket' do
 
@@ -15,8 +16,8 @@ describe Order do
     it { is_expected.to respond_to(:add_to_basket) }
 
     it 'allows users to add items to basket' do
-      order.add_to_basket(item, quantity)
-      expect(order.basket).to eq [item, quantity]
+      order.add_to_basket(item, price, quantity)
+      expect(order.basket).to eq [item, price, quantity]
     end
 
   end
