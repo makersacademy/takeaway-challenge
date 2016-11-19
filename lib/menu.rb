@@ -1,8 +1,9 @@
 class Menu
 
-  attr_accessor :menu_list
+  attr_accessor :menu_list, :order
 
-  def initialize
+  def initialize(klass)
+    @order = klass.new
     @menu_list = {
       :spag_bol => 6,
       :pizza => 4
@@ -12,6 +13,12 @@ class Menu
   def view_menu
     self.menu_list
   end
+
+  def select_item(item)
+    @order = Order.new
+    @order.add_to_basket(item)
+  end
+
 
 
 end
