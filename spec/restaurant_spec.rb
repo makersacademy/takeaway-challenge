@@ -8,7 +8,13 @@ describe Restaurant do
     end
 
     it "should have an empty menu" do
-      
+      expect(restaurant.menu).to be_empty
+    end
+  end
+
+  describe "when handling the menu" do
+    it "should be able to add a dish" do
+
     end
   end
 
