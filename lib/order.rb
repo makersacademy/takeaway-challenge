@@ -6,8 +6,8 @@ class Order
     @basket = []
   end
 
-  def add_to_basket(item)
-    self.basket << item
+  def add_to_basket(item, quantity)
+    self.basket << item << quantity
   end
 
 end

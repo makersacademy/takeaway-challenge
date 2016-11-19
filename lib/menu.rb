@@ -14,9 +14,9 @@ class Menu
     self.menu_list
   end
 
-  def select_item(item)
-    # return "Not a valid item" if
-    @order.add_to_basket(item)
+  def select_item(item, quantity)
+    return "Not a valid item" if !in_menu?(item)
+    @order.add_to_basket(item, quantity)
   end
 
   def in_menu?(item)
