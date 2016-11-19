@@ -20,16 +20,25 @@ describe Order do
     expect{order.get_price}.to output.to_stdout
   end
 
-  it "should keep track of the prices" do
-    order.get_price
-    expect(order.prices).to eq([12])
-  end
+  context "#get_price" do
+    before do
+      order.get_price
+    end
 
-  it "should sum the totals of the orders" do
-    order.get_price
-    order.total_price
-    expect(order.total).to eq 12
-  end
+    it "should keep track of the prices" do
+      expect(order.prices).to eq([12])
+    end
 
+    it "should sum the totals of the orders" do
+      order.calculate_total_price
+      expect(order.total).to eq 12
+    end
+
+    it "should display to total price" do
+      order.calculate_total_price
+      expect(order.display_total_price).to eq "Your total is £12"
+    end
+
+  end
 
 end

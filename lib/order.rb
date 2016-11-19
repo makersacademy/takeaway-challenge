@@ -28,8 +28,12 @@ class Order
     end
   end
 
-  def total_price
+  def calculate_total_price
     @total = @prices.reduce { |memo, sum| memo += sum }
+  end
+
+  def display_total_price
+    return "Your total is £#{@total}"
   end
 
 end
