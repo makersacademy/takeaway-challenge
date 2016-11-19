@@ -29,6 +29,8 @@ class Menu
     "#{quantity}x #{item} added to your basket"
   end
 
+  private 
+
   def in_menu?(item)
     self.menu_list.has_key?(item)
   end

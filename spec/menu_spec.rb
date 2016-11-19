@@ -64,19 +64,19 @@ describe Menu do
     it 'confirms items that have been added to basket' do
       expect(menu.select_item("pizza", 3)).to eq "3x pizza added to your basket"
     end
-    
-  end
-
-  context 'Check if valid item' do
-
-      it 'indicates when an item is not in the menu' do
-        expect(menu.in_menu?("Peas")).to eq false
-      end
-
-      it 'indicates when an item is on the menu' do
-        expect(menu.in_menu?("spag_bol")).to eq true
-      end
 
   end
+
+  # context 'Check if valid item' do
+  #
+  #     it 'indicates when an item is not in the menu' do
+  #       expect(menu.in_menu?("Peas")).to eq false
+  #     end
+  # 
+  #     it 'indicates when an item is on the menu' do
+  #       expect(menu.in_menu?("spag_bol")).to eq true
+  #     end
+  #
+  # end
 
 end
