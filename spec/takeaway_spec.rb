@@ -18,8 +18,22 @@ describe Takeaway do
     it 'should allow the customer to add food to thier order' do
       food = "The special"
       subject.add_food(food)
-      expect(subject.order).to eq [food]
+      expect(subject.order.list).to eq ({food=>1})
     end
+
+    it 'should prevent the customer from adding food not on the menu' do
+      food = "The Big Mac"
+      message = ("Sorry, that item isn't on the menu")
+      expect{subject.add_food(food)}.to raise_error message
+    end
+
+
+    it 'should allow the customer to order 2 of the same item' do
+      2.times{food = "The special"
+      subject.add_food(food)}
+      expect(subject.order.list).to eq({"The special" => 2})
+    end
+
 
   end
 
