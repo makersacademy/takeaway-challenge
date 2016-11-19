@@ -1,4 +1,4 @@
-require_relative 'meals.rb'
+require_relative 'menu.rb'
 
 class Takeaway
 
@@ -9,7 +9,7 @@ class Takeaway
     end
 
   def menu
-    #In Meals class I add dishes to menu_list array with a method called add_meal. I want to read this data in this menu method in the Takeaway class but it won't work. I get an empty array no matter what. 
+    #In Meals class I add dishes to menu_list array with a method called add_meal. I want to read this data in this menu method in the Takeaway class but it won't work. I get an empty array no matter what.
     meals.menu_list
   end
 

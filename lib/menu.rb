@@ -2,7 +2,7 @@ require_relative 'takeaway.rb'
 
 #Allows meals to be made and added to menu
 
-class Meals
+class menu
 
   attr_accessor :menu_list
 
@@ -17,6 +17,9 @@ class Meals
     @menu_list << meal_description
   end
 
+  def select_meal(dish)
+    @menu_list.find {[:meal] == dish}
+  end
 
 
 end
