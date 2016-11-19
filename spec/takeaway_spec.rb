@@ -13,7 +13,7 @@ require 'menu'
     end
 
     it 'should access the menu from the Menu class' do
-      expect(takeaway.menu).to include(scrambled_eggs: 5)
+      expect(takeaway.menu.list).to include(scrambled_eggs: 5)
     end
 
     describe "#see_menu" do
@@ -21,4 +21,12 @@ require 'menu'
         expect(takeaway.see_menu).to include(scrambled_eggs: 5)
       end
   end
+    describe "#show_basket" do
+      before do
+        allow(menu).to receive(:basket).and_return({})
+      end
+      it 'should show the current basket' do
+      expect(takeaway.show_basket).to eq menu.basket
+      end
+    end
 end

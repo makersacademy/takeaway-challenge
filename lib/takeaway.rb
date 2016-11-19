@@ -5,13 +5,17 @@ class Takeaway
 
   def initialize(menu = Menu.new)
     @order = {}
-    @menu = menu.list
+    @menu = menu
   end
 
   def see_menu
-    @menu.each do |item, price|
+    @menu.list.each do |item, price|
       puts "#{item}, £#{price}"
     end
+  end
+
+  def show_basket
+    menu.basket
   end
 
 end
