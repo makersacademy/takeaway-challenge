@@ -20,7 +20,7 @@ describe Takeaway do
     expect{takeaway.show_menu}.to output.to_stdout
   end
 
-  context 'ordering' do
+  context 'when ordering' do
     it 'if no quantity is given the default quantity of 1 will be given' do
       takeaway.add_item(item)
       expect(takeaway.items.has_value?(1)).to eq true
@@ -36,6 +36,10 @@ describe Takeaway do
       takeaway.add_item(item, 1)
       takeaway.add_item(item, 1)
       expect(takeaway.items.has_value?(2)).to eq true
+    end
+
+    it 'raises an error if quantity is a less than 0' do
+      expect { takeaway.add_item(item, -10) }.to raise_error('Quantity must be more than 0')
     end
 
     # it 'raises an error if you try to add something that is not on the menu' do
