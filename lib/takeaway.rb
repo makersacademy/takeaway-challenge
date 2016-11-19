@@ -14,7 +14,7 @@ class Takeaway
   end
 
   def add_item(item, quantity = 1)
-    #raise 'This item is not on the menu, please choose something else' if !Menu::MENU.has_key?(item)
+    # raise 'This item is not on the menu, please choose something else' if !Menu::MENU.has_key?(item)
     raise 'Quantity must be more than 0' if quantity <= 0
     if @items.has_key?(item)
       @items[item] += quantity
