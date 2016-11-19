@@ -1,4 +1,4 @@
-require 'sms_alert'
+require 'SMS_alert'
 
 describe SMS do
   subject(:sms){ described_class }
