@@ -7,11 +7,8 @@ attr_reader :list_of_dishes, :current_order
     @current_order = 0
   end
 
-  # def list_of_dishes
-  #   { :pizza => 9 }
-  # end
-
   def order(order, quantity, total)
+    fail "Cannot add item(s): quantity is less than one." if quantity < 1
     fail "Cannot add item(s): total is incorrect." if total != list_of_dishes[order].times {quantity}
     bill(order, quantity)
     "You have ordered #{quantity} #{order}(s)."

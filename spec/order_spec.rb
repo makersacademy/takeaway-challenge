@@ -43,6 +43,10 @@ describe Order do
       expect(subject.current_order).to eq 19
     end
 
+    it "should return error when less than 1 item is ordered" do
+      expect{subject.order("margherita", 0, 2)}.to raise_error "Cannot add item(s): quantity is less than one."
+    end
+
   end
 
 
