@@ -13,8 +13,13 @@ class Takeaway
     menu.show_menu
   end
 
-  def add_item(item, quantity)
-    items[item] = quantity
+  def add_item(item, quantity = 1)
+    #raise 'This item is not on the menu, please choose something else' if !Menu::MENU.has_key?(item)
+    if @items.has_key?(item)
+      @items[item] += quantity
+    else
+      @items[item] = quantity
+    end
   end
-
+  
 end
