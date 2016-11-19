@@ -12,16 +12,16 @@ class Order
 
 	def create_order
 		puts "Please enter an item number:"
-		item = STDIN.gets.chomp
+		item = $stdin.gets.chomp
 
 		while !item.empty? do
 			puts "Please enter quantity:"
-			quantity = STDIN.gets.chomp
+			quantity = $stdin.gets.chomp
 			add_to_basket(item, quantity)
 			view_basket
 			puts "Please enter an item number:"
 			puts "(To complete order, leave blank and press return)"
-			item = STDIN.gets.chomp
+			item = $stdin.gets.chomp
 		end
 	end
 
