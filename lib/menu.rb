@@ -1,9 +1,9 @@
 class Menu
 
-  attr_reader :menu
+  attr_reader :list
 
   def initialize
-    @menu = [
+    @list = [
       {number: 1, dish: "Green Curry", price: 9 },
       {number: 2, dish: "Red Curry", price: 9 },
       {number: 3, dish: "Stir Fry", price: 7 },
@@ -13,8 +13,8 @@ class Menu
       {number: 7, dish: "Tom Yum Soup", price: 5 }]
   end
 
-  def view
-    menu.each do |item|
+  def print
+    list.each do |item|
       puts "#{item[:number]}. #{item[:dish]} £#{item[:price]}"
     end
   end
