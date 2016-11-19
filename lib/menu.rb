@@ -17,7 +17,7 @@ class Menu
 
   private
   def on_menu?(item)
-    self.list.include?(item)
+    self.list.include?(item.to_sym)
   end
 
 
