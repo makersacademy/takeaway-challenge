@@ -1,4 +1,5 @@
 require_relative "order.rb"
+require_relative "order_total.rb"
 
 #Will be placing and checking out orders
 class Restaurant
@@ -17,12 +18,14 @@ class Restaurant
     self.order = order_klass.new
   end
 
-  def add_to_order(dish, amount)
-    order.add_order_item(dish, amount)
+  def order_status
+    puts "You have selected:"
+    order.items.each {|item| puts "#{item.amount} #{item.dish.name}: #{order.order_total} pounds" }
   end
 
   def finish_order(order)
     orders << order
+    reset_order
   end
 
   def reset_order

@@ -25,12 +25,6 @@ describe Restaurant do
       expect(restaurant.order).not_to be_nil
     end
 
-    it "should be able to add a dish to the order" do
-      restaurant.start_order
-      restaurant.add_to_order(dish, 5)
-      expect(restaurant.order.items.count).to eq 1
-    end
-
     it "should be able to finish an order" do
       restaurant.finish_order(order)
       expect(restaurant.orders.count).to eq 1

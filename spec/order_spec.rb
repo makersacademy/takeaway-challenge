@@ -7,8 +7,8 @@ describe Order do
       expect(order.items.count).to eq 0
     end
 
-    it "should be able to add a item to the order" do
-      order.add_order_item(dish, 5)
+    it "should be able to add an item to the order" do
+      order.add_item(dish, 5)
       expect(order.items.count).to eq 1
     end
   end

@@ -9,4 +9,8 @@ class OrderItem
     @amount = amount
   end
 
+  def price
+    dish.price
+  end
+
 end
