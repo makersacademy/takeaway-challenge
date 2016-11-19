@@ -14,6 +14,10 @@ class Takeaway
     end
   end
 
+  def checkout(amount)
+    menu.checkout(amount)
+  end
+
   def order(item, number = 1)
     menu.add_to_basket(item, number)
   end
@@ -21,7 +25,7 @@ class Takeaway
   def show_basket
     menu.basket
   end
-  
+
   def show_price
     "£#{menu.grand_total}"
   end

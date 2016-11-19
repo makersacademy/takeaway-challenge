@@ -41,5 +41,11 @@ require 'menu'
         expect(takeaway.show_price).to eq "£4"
       end
     end
+    describe "#checkout" do
+      it 'should call the menu checkout method' do
+        takeaway.order("bacon_sandwich")
+        expect(takeaway.checkout(4)).to eq true
+        end
+    end
 
 end
