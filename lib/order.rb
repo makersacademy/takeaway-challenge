@@ -6,9 +6,9 @@ class Order
 
 attr_reader :options, :new_order
 
-  def initialize
+  def initialize(klass)
     @new_order = []
-    @options = Menu.new.menu_list
+    @options = klass.new.menu_list
   end
 
   def see_options
@@ -20,9 +20,15 @@ attr_reader :options, :new_order
     new_order << order
   end
 
-  # def select_meal(dish)
-  #   dish =
-  # end
+  def select_thai
+    order = options.select {|k,v| k == :thai}
+    new_order << order
+  end
+
+  def select_mexican
+    order = options.select {|k,v| k == :mexican}
+    new_order << order
+  end
 
 
 end
