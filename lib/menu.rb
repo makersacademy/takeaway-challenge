@@ -29,14 +29,14 @@ class Menu
   end
 
   def total(item, number = 1)
-     self.list[item.to_sym] * number
+    self.list[item.to_sym] * number
   end
 
-   def add_to_total(amount)
-     self.grand_total += amount
-   end
+  def add_to_total(amount)
+    self.grand_total += amount
+  end
 
-   def correct_total?(amount)
-     amount == self.grand_total
-   end
+  def correct_total?(amount)
+    amount == self.grand_total
+  end
 end
