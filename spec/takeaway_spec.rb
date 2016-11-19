@@ -8,7 +8,7 @@ describe Takeaway do
   let(:menu_klass) {double :menu_klass, new: menu}
   let(:menu) {double :menu, print: print_list, list: menu_list}
   let(:print_list) {"Curry £9"}
-  let(:menu_list) {{"Curry" => 9}}
+  let(:menu_list) {{"Curry" => 9, "Burger" => 8}}
   let(:order) {double :order}
   let(:order_klass) {double :order_klass, new: order}
 
@@ -31,10 +31,18 @@ describe Takeaway do
   describe '#add' do
 
     it 'adds items to the order' do
+      subject.begin_order
       expect(subject.order).to receive(:add)
       subject.add("Curry",1)
     end
 
   end
+
+
+
+
+
+
+
 
 end

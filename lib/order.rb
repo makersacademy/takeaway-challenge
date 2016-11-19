@@ -19,4 +19,12 @@ class Order
     end
   end
 
+  def total
+    total = 0
+    basket.each do |dish,quantity|
+      total += quantity * menu.list[dish]
+    end
+    total
+  end
+
 end
