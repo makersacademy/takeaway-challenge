@@ -1,6 +1,6 @@
 class Order
 
-attr_reader :list_of_dishes, :current_order_price
+attr_reader :list_of_dishes, :current_order_price, :time
 
   def initialize
     @list_of_dishes = { "margherita" => 9, "pepperoni" => 10 }
@@ -15,7 +15,7 @@ attr_reader :list_of_dishes, :current_order_price
   end
 
   def expected_total(total)
-    total == @current_order_price? "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before 18:52" : "Your total is wrong, perhaps you need to do some remedial Maths classes."
+    total == @current_order_price? "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before #{Time.now.strftime("%H").to_i+1}:#{Time.now.strftime("%M")}" : "Your total is wrong, perhaps you need to do some remedial Maths classes."
   end
 
 

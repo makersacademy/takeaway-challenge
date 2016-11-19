@@ -57,7 +57,7 @@ describe Order do
 
     it "Should return message when order is finished" do
       subject.order("margherita", 1, 9)
-      expect(subject.expected_total(9)).to eq "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before 18:52"
+      expect(subject.expected_total(9)).to eq "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before #{Time.now.strftime("%H").to_i+1}:#{Time.now.strftime("%M")}"
     end
 
     it "should show other message if total is incorrect" do
@@ -71,9 +71,9 @@ describe Order do
   #
   #   it { is_expected.to respond_to :time }
   #
-  #   # it "should show the time" do
-  #   #   e
-  #
+  # #   # it "should show the time" do
+  # #   #   e
+  # #
   # end
 
 
