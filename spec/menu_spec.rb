@@ -8,14 +8,7 @@ describe Menu do
       expect(menu.list).to be_instance_of Hash
     end
     it 'should have a list of foods' do
-      expect(menu.list).to include(:scrambled_eggs)
+      expect(menu.list).to include(:toast)
     end
   end
-  describe "#see_menu" do
-    it 'should show the customer the menu' do
-      expect(menu.see_menu).to include(scrambled_eggs: 5)
-    end
-  end
-
-
 end

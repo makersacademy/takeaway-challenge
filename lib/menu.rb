@@ -6,15 +6,7 @@ class Menu
       scrambled_eggs: 5,
       poached_eggs: 4,
       toast: 1
-
-
-
     }
   end
 
-  def see_menu
-    self.list.each do |item, price|
-      puts "#{item}, £#{price}"
-    end
-  end
 end
