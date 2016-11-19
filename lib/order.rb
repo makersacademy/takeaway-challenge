@@ -3,7 +3,7 @@ class Order
 attr_reader :list_of_dishes, :current_order
 
   def initialize
-    @list_of_dishes = { "pizza" => 9, "pepperoni" => 10 }
+    @list_of_dishes = { "margherita" => 9, "pepperoni" => 10 }
     @current_order = 0
   end
 
