@@ -1,3 +1,6 @@
+require_relative "menu"
+require_relative "confirmation"
+
 class Order
 
   attr_reader :selection, :shopping_cart, :menu, :prices, :total
@@ -33,7 +36,19 @@ class Order
   end
 
   def display_total_price
+    raise "An error has occurred. Please try again" if @total != @prices.reduce { |memo, sum| memo += sum }
     return "Your total is £#{@total}"
   end
+
+
+  def confirm_message
+    "Do you want to confirm this order?"
+  end
+
+  def confirm(answer)
+    raise "You have cancelled your order. Please try again" if answer.downcase != "yes"
+    Confirmation.new
+  end
+
 
 end

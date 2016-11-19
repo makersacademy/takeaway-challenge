@@ -1,5 +1,3 @@
-require_relative "order"
-
 class Menu
 
   attr_reader :menu_items
