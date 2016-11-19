@@ -11,7 +11,7 @@ module SMS
     @client.account.messages.create({
       :from => '+441287244058',
       :to => '+447511560230',
-      :body => 'Thank you! Your order was placed and will be delivered before 18:52',
+      :body => 'Thank you! Your order was placed and will be delivered before ' + (Time.now + 3600).to_s,
     })
 
   end
