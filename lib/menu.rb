@@ -4,4 +4,7 @@ class Menu
     @list = {}
   end
 
+  def see_menu
+    self.list
+  end
 end
