@@ -1,9 +1,10 @@
 class Menu
 
-  attr_accessor :menu_list, :order
+  attr_accessor :menu_list, :order, :current_selection
 
   def initialize(klass)
     @order = klass.new
+    @current_selection = {}
     @menu_list = {
       "spag_bol" => 6,
       "pizza" => 4
@@ -16,7 +17,12 @@ class Menu
 
   def select_item(item, quantity)
     return "Not a valid item" if !in_menu?(item)
-    @order.add_to_basket(item, self.menu_list[item], quantity)
+    @current_selection = {}
+    self.current_selection[:item] = item
+    self.current_selection[:price] = self.menu_list[item]
+    self.current_selection[:qty] = quantity
+
+    @order.add_to_basket(self.current_selection)
   end
 
   def in_menu?(item)

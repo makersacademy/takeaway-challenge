@@ -6,8 +6,12 @@ describe Menu do
   let(:menu)  { described_class.new(order) }
   let(:klass) { double(:klass) }
   let(:order) { double(:order) }
+  let(:quantity) { double(:quantity) }
 
-  before { allow(order).to receive(:new).and_return order }
+  before do
+    allow(order).to receive(:new).and_return order
+    allow(order).to receive(:add_to_basket)
+  end
 
   context 'Initialization' do
 
@@ -17,6 +21,10 @@ describe Menu do
 
     it 'accepts order object on initialization' do
       expect(menu.order).to eq order
+    end
+
+    it 'creates an empty current selection' do
+      expect(menu.current_selection).to eq ({})
     end
 
   end
@@ -40,7 +48,12 @@ describe Menu do
     end
 
     it 'returns "Not a valid item" if not in menu' do
-      expect(menu.select_item("Peas", 3)).to eq "Not a valid item"
+      expect(menu.select_item("Peas", quantity)).to eq "Not a valid item"
+    end
+
+    it 'can add item, price and quantity to current selection' do
+      menu.select_item("pizza", 3)
+      expect(menu.current_selection).to eq ({:item=>"pizza", :price=>4, :qty=>3})
     end
 
     it 'indicates when an item is not in the menu' do
