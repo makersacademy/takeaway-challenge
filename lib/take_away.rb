@@ -1,30 +1,19 @@
+require_relative "order"
+
 class TakeAway
 
-  attr_reader :menu
-
-  def initialize(menu_klass,order_klass)
-    @menu = menu_klass.new
-    @order = order
+  def initialize(order_klass)
+    @order = order_klass.new(Menu)
   end
 
-  def order(*args, total)
-    total_value = 0
-    string = ""
-    args.each_slice(2) do |name,number|
-      menu.each do |dish|
-         if dish.include?(name.to_sym)
-           total_value += dish[name.to_sym] * number
-           string << "#{number} dish(es) of #{name} "
-         end
-      end
-    end
-    total_value
-    raise "Incorrect total value." if total != total_value
-    "You ordered " + string
+  def menu
+    @order.menu
   end
 
-  private
-
+  def add_to_basket(dish,number)
+    
+    "You added #{number} x #{dish} to the basket."
+  end
 
 
 end
