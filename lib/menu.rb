@@ -13,6 +13,8 @@ class Menu
   end
 
   def see_menu
-    self.list
+    self.list.each do |item, price|
+      puts "#{item}, £#{price}"
+    end
   end
 end

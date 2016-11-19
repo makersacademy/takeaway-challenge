@@ -13,7 +13,7 @@ describe Menu do
   end
   describe "#see_menu" do
     it 'should show the customer the menu' do
-      expect(menu.see_menu).to eq menu.list
+      expect(menu.see_menu).to include(scrambled_eggs: 5)
     end
   end
 
