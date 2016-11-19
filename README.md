@@ -93,7 +93,45 @@ Build Badge Example
 How to Use
 ------------------
 1. User views the menu
+```
+ᚹᚱᛘ ᛬ require './lib/menu'
+=> true
+ᚹᚱᛘ ᛬ menu = Menu.new(Order)
+=> #<Menu:0x007fd463201a40
+ @current_selection={},
+ @menu_list={"spag_bol"=>6, "pizza"=>4},
+ @order=#<Order:0x007fd463201a18 @basket=[], @total=0>>
+```
+
 2. User adds desired items from the menu into a basket
-3. Upon checkout, basket is converted into an order
-4. Order is accepted at takeaway
-5. Takeaway sends SMS notification
+```
+ᚹᚱᛘ ᛬ menu.select_item("pizza", 3)
+=> [{:item=>"pizza", :price=>4, :qty=>3}]
+ᚹᚱᛘ ᛬ menu.select_item("spag_bol")
+=> [{:item=>"pizza", :price=>4, :qty=>3}, {:item=>"spag_bol", :price=>6, :qty=>1}]
+```
+3. User can view items in their order
+```
+ᚹᚱᛘ ᛬ menu.order
+=> #<Order:0x007fd463201a18
+ @basket=
+  [{:item=>"pizza", :price=>4, :qty=>3},
+   {:item=>"spag_bol", :price=>6, :qty=>1}],
+ @total=0>
+```
+
+4. Order total is calculated
+```
+ᚹᚱᛘ ᛬ menu.order.calculate_total
+=> 18
+```
+
+5. Order is placed and accepted at the takeaway
+```
+ᚹᚱᛘ ᛬ menu.order.place_order
+```
+
+6. Takeaway sends SMS notification
+```
+=> <Twilio::REST::Message ....
+```
