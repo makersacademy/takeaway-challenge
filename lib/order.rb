@@ -1,15 +1,15 @@
 class Order
 
-  attr_reader :selection, :shopping_cart
+  attr_reader :selection, :shopping_cart, :menu
 
   def initialize
-    @selection = { number: nil, quantity: nil }
+    @selection = {}
     @shopping_cart = []
+    @menu = Menu.new
   end
 
-  def select_items(number, quantity)
-    @selection = { number: number, quantity: quantity }
-    output_selection
+  def select_items(item, quantity)
+    @selection = { item => quantity }
     add_selection_to_order
   end
 
@@ -17,12 +17,18 @@ class Order
     @shopping_cart << @selection
   end
 
-  def output_selection
-    "You have selected #{selection[:quantity].to_s} order(s) of number #{selection[:number].to_s}"
-  end
+  # def review_order
+  #  "Your selection is: "
+  #   shopping_cart.each do |number, quantity|
+  #    number = @menu.menu_items[number]
+  #    "#{quantity} x #{@menu.menu_items[name].to_s} = £#{@menu.menu_items[price].to_s} per dish"
+  #  end
+  #
+  #  def iterate_over_order
+  #    @menu.menu_items
+  #  end
+ # end
 
-  def clear_selection
-    @selection = { number: nil, quantity: nil }
-  end
+
 
 end
