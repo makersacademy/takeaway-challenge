@@ -5,8 +5,8 @@ class DishesMenu
 attr_reader :list_of_dishes
 LINE_WIDTH = 80
 
-  def initialize(list)
-    @list_of_dishes = list
+  def initialize(dish_list)
+    @list_of_dishes = dish_list
   end
 
   def format_list
@@ -22,7 +22,7 @@ LINE_WIDTH = 80
       end
       n += 1
     end
-    formatted
+    formatted += "\n"
   end
 
   def show_dishes

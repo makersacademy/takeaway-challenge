@@ -2,20 +2,45 @@ require_relative 'menu'
 
 class Interface
 
-  def initialize(name, dishes_menu)
-    @menu = dishes_menu.new
+  attr_accessor :dishes_menu
+
+  def initialize(name, dishes_menu, dish_list)
+    @dishes_menu = dishes_menu.new(dish_list)
     @name = name
   end
 
   def welcome
-    print "Welcome to #{name}, if you are hungry you came to the right place!"
+    print "Welcome to #{name}, if you are hungry you came to the right place!\n\n"
   end
 
   def actions_menu
-    "Input '1' to see our dishes menu.\n
+    print "    Input '1' to see our dishes menu.\n
     Input '2' to place an order.\n
     Input '3' to check the status of your order.\n
-    Input '4' to exit."
+    Input '9' to exit.\n"
+  end
+
+  def get_answer
+    answer = gets.chomp
+  end
+
+  def execute_action(answer)
+    case answer
+    when "1"; self.dishes_menu.show_dishes
+    when "2"; puts "ordering be here soon\n"
+    when "3"; puts "order status be here soon\n"
+    when "9"; puts "See you next time!"
+      exit
+    else puts "Please choose a number corresponding to your preferred action"
+    end
+  end
+
+  def interact
+    welcome
+    loop do
+      actions_menu
+      execute_action(get_answer)
+    end
   end
 
   private
