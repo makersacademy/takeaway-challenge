@@ -7,7 +7,7 @@ describe Order do
   it {is_expected.to respond_to :list_of_dishes}
 
   it 'should respond with a hash' do
-    expect(subject.list_of_dishes).to include( :pizza => "£9" )
+    expect(subject.list_of_dishes).to include("pizza" => 9)
   end
 
   context '#order' do
@@ -19,7 +19,7 @@ describe Order do
     # end
 
     it 'should return the pizza and the amount ordered when 1 pizza is ordered' do
-      expect(subject.order("pizza", 1)).to eq "You have ordered 1 pizza."
+      expect(subject.order("pizza", 1)).to eq "You have ordered 1 pizza(s)."
     end
 
   end
@@ -27,6 +27,11 @@ describe Order do
   context "tests storing of order" do
 
     it { is_expected.to respond_to :current_order }
+
+    it "should return the number 9 when 1 pizza is ordered" do
+      subject.order("pizza", 1)
+      expect(subject.current_order).to eq 9
+    end
 
   end
 

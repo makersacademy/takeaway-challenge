@@ -3,7 +3,7 @@ class Order
 attr_reader :list_of_dishes, :current_order
 
   def initialize
-    @list_of_dishes = { :pizza => "£9" }
+    @list_of_dishes = { "pizza" => 9, "peperroni" => 10 }
     @current_order
   end
 
@@ -12,13 +12,16 @@ attr_reader :list_of_dishes, :current_order
   # end
 
   def order(order, quantity)
-    "You have ordered #{quantity} #{order}."
+    @current_order
+
+    "You have ordered #{quantity} #{order}(s)."
   end
 
 
 private
 
   def bill
+
   end
 
 end
