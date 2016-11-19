@@ -5,6 +5,7 @@ before(:all) do
   @dishes1.add_dish("Pasta",3,true)
   @dishes1.add_dish("Pizza",6,true)
   @dishes1.add_dish("Fish and Chips", 4,false)
+  @menu = Menu.new
 end
 
 # As a customer
@@ -23,8 +24,10 @@ end
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
 
-
-
-
+  context "I would like to be able to select some number of several available dishes" do
+    it "available dishes to be shown" do
+      expect(@menu.available_dishes(@dishes1)).to eq ["Pasta - £3", "Pizza - £6"]
+    end
+  end
 
 end
