@@ -24,9 +24,7 @@ attr_reader :selected_dishes
   def confirm_order
     check_for_error
     result = Hash.new(0)
-    selected_dishes.each do |subhash|
-      subhash.each {|dish, value| result[dish] += 1}
-    end
+    selected_dishes.each {|subhash| subhash.each {|dish, value| result[dish] += 1}}
     result["Total cost"] = total_cost
     result
   end

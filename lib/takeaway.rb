@@ -36,16 +36,24 @@ ALL_DISHES = {1 => {"Chicken Adobo" => 4.50},
   end
 
   def check_order
-    raise "No order has been made." if placed_order == nil
+    check_for_error
     placed_order.view_order
   end
 
   def total_cost
+    check_for_error
     placed_order.total_cost
   end
 
   def confirm_order
+    check_for_error
     placed_order.confirm_order
+  end
+
+private
+
+  def check_for_error
+    raise "No order has been made." if placed_order == nil
   end
 
 

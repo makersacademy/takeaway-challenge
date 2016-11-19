@@ -67,6 +67,10 @@ let(:placed_order){double :placed_order, :selected_dishes => [],
       allow(placed_order).to receive(:confirm_order) {{"Chicken Adobo"=>2, "Total cost"=>"£9.0"}}
       expect(takeaway.confirm_order).to eq placed_order.confirm_order
     end
+
+    it "should raise error if no order has been made" do
+      expect{takeaway.confirm_order}.to raise_error("No order has been made.")
+    end
   end
 
 end
