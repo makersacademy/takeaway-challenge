@@ -11,14 +11,13 @@ describe Menu do
   end
 
   describe "When handling dishes" do
+    before(:each) {menu.add_dish(dish)}
 
     it "should be able to add a dish to the menu" do
-      menu.add_dish(dish)
       expect(menu.dishes.count).to eq 1
     end
 
     it "should be able to delete a dish from the menu" do
-      menu.add_dish(dish)
       menu.delete_dish(dish)
       expect(menu.dishes.count).to eq 0
     end

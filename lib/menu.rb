@@ -20,4 +20,8 @@ DEFAULT_NAME = "Best London Curry House"
     dishes.delete(dish)
   end
 
+  def show_menu
+    dishes.each_with_index {|dish, index| puts "#{index + 1}. #{dish.name} £#{dish.price}"}
+  end
+
 end
