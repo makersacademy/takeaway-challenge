@@ -3,7 +3,7 @@ class Order
 attr_reader :list_of_dishes, :current_order
 
   def initialize
-    @list_of_dishes = { "pizza" => 9, "pepperroni" => 10 }
+    @list_of_dishes = { "pizza" => 9, "pepperoni" => 10 }
     @current_order = 0
   end
 
@@ -20,7 +20,7 @@ attr_reader :list_of_dishes, :current_order
 private
 
   def bill(order, quantity)
-    @current_order += list_of_dishes[order].times{quantity}
+    @current_order += list_of_dishes[order].times {quantity}
   end
 
 end
