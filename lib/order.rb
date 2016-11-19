@@ -9,7 +9,7 @@ class Order
   end
 
   def select_items(item, quantity)
-    @selection = { item => quantity }
+    @selection = { item.to_sym => quantity }
     add_selection_to_order
   end
 

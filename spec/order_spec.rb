@@ -8,12 +8,12 @@ describe Order do
   end
 
   it "should allow a customer to order a number of items" do
-    expect(order.selection).to eq({ "burrito" => 2 })
+    expect(order.selection).to eq({ :burrito => 2 })
   end
 
 
 it "should add the selection to the order" do
-  expect(order.shopping_cart).to eq ([{ "burrito" => 2 }])
+  expect(order.shopping_cart).to eq ([{ :burrito => 2 }])
 end
 
 it "should let the customer review their entire order" do
