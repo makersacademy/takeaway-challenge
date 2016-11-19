@@ -14,13 +14,26 @@ class Order
     @in_progress
   end
 
-  def item_not_on_menu?(item)
-    !Menu::MENU.key?(item)
+  def price
+    total = 0
+    @in_progress.each_pair do | item, count|
+      total += count * Menu::MENU[item]
+    end
+    total
   end
 
+  def breakdown
+    @breakdown = Hash.new
+  end
 
-  def make
+  def confirm
     @in_progress
+  end
+
+  private
+
+  def item_not_on_menu?(item)
+    !Menu::MENU.key?(item)
   end
 
 end
