@@ -9,7 +9,7 @@ describe Takeaway do
   let(:menu) {double :menu, print: print_list, list: menu_list}
   let(:print_list) {"Curry £9"}
   let(:menu_list) {{"Curry" => 9, "Burger" => 8}}
-  let(:order) {double :order}
+  let(:order) {double :order, total: 17}
   let(:order_klass) {double :order_klass, new: order}
 
 
@@ -38,11 +38,25 @@ describe Takeaway do
 
   end
 
+  describe '#check_price' do
+
+    it 'returns true if price matches sum of dishes in order' do
+      subject.begin_order
+      allow(order).to receive(:total).and_return(17)
+      expect(subject.price_correct?(17)).to eq true
+    end
+
+    it 'returns false if price does not match sum of dishes in order' do
+      subject.begin_order
+      allow(order).to receive(:total).and_return(17)
+      expect(subject.price_correct?(18)).to eq false
+    end
 
 
 
 
 
 
+end
 
 end

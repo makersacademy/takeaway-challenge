@@ -24,6 +24,12 @@ class Takeaway
     order.add(item,quantity)
   end
 
-  
+  def price_correct?(price)
+    price == order.total
+  end
+
+  def place_order(price)
+    fail "Price is incorrect" if price_correct?(price)
+  end
 
 end
