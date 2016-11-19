@@ -1,6 +1,18 @@
 class Menu
-  def menu
-    pizza = {
+
+
+
+  def print_menu
+    puts "===================="
+    puts "The Menu".center(20)
+    puts "===================="
+    puts ""
+    puts pizza.map{ |pizza,price| "#{pizza} = #{price}" }
+    puts ""
+  end
+
+  def pizza
+    {
       "Marinara" => 5.95,
       "Margherita" => 7.50,
       "Boscaoilia" => 8.95,
@@ -15,4 +27,6 @@ class Menu
       "San Daniele" => 11.95
     }
   end
+
+
 end
