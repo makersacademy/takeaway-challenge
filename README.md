@@ -30,7 +30,7 @@ take_away.checkout(10)
 ```
 
 ### Classes and Methods
- class **TakeAway(Order,SMS)**
+#### class **TakeAway(Order,SMS)**
  * menu - displays a list of dishes with prices
  * add_to_basket(dish,number)
    + the *dish* will come as a string
@@ -38,18 +38,18 @@ take_away.checkout(10)
    + it will check if the introduced price matches the total price of the dishes ordered and raises an error if they don't match.
    + sends a confirmation sms to the user
 
- class **Order** - has a Menu object injected
+#### class **Order** - has a Menu object injected
  * menu
  * add(dish,number)
  * total
 
- class **SMS**
+#### class **SMS**
  * new_client
   * creates a new Twilio client
  * text_message
   * send a custom text message to the user
 
- class **Menu** - contains a hash with dishes and prices
+#### class **Menu** - contains a hash with dishes and prices
  * add (dish,price)
   * insert the dish as a string
  * remove_dish(dish)
