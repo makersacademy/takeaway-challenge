@@ -7,16 +7,18 @@ class SMS
 			.messages.create(
 				from: ENV['TWILIO_PHONE'],
 				to: ENV['TWILIO_DESTINATION_PHONE'],
-				body: self.message(total)
+				body: message(total)
 			)
 	end
 
-	def message(total)
-		"Thank you. Received payment of £%.2f. Your order will be delivered by #{self.delivery_time}" % total
-	end
-	
-	def delivery_time
-		(Time.now + 60 * 60).strftime("%H:%M")
-	end
+	private
+
+		def message(total)
+			"Thank you. Received payment of £%.2f. Your order will be delivered by #{delivery_time}" % total
+		end
+		
+		def delivery_time
+			(Time.now + 60 * 60).strftime("%H:%M")
+		end
 
 end
