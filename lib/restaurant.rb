@@ -12,7 +12,7 @@ class Restaurant
     puts "The Menu".center(20)
     puts "===================="
     puts ""
-    puts pizza.map{ |pizza,price| "#{pizza} = #{price}" }
+    puts pizza.map{ |pizza,price| "#{pizza}: #{price}" }
     puts ""
   end
 
