@@ -1,8 +1,11 @@
 class Order
+attr_accessor :selection
 
-attr_reader :menu
+def initialize
+  @selection = []
+end
 
-  def menu
+def menu
     @menu = {
       cheeseburger: "£8.50",
       fries: "£3.75"
@@ -14,7 +17,7 @@ attr_reader :menu
   end
 
   def select_dish(choice)
-      "#{choice}: #{menu[choice.to_sym]}"
+    @selection << "#{choice}: #{menu[choice.to_sym]}"
   end
 
 end

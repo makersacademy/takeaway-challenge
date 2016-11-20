@@ -14,17 +14,21 @@ describe Order do
     expect(order.menu).to eq(menu)
   end
 
-  # cannot get below test to work properly
   it "allows the selection of a dish" do
     selection = order.select_dish("cheeseburger")
-    expect(selection).to eq("cheeseburger: £8.50")
+    expect(selection).to eq(["cheeseburger: £8.50"])
   end
 
-  # cannot get below test to work
-  # it "prints a list of dishes with prices" do
-  #   expect(subject.print_menu).to eq("Cheeseburger: £8.50
-  #   Fries: £3.75"
-  #   )
-  # end
+  it "saves the selecion of all dishes" do
+    order.select_dish("fries")
+    order.select_dish("cheeseburger")
+    expect(order.selection).to eq(["fries: £3.75", "cheeseburger: £8.50"])
+  end
+
+  xit "prints a list of dishes with prices" do
+    expect(subject.print_menu).to ("Cheeseburger: £8.50
+    Fries: £3.75"
+    )
+  end
 
 end
