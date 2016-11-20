@@ -3,7 +3,7 @@ require "twilio-ruby"
 
 class TakeawayShop
 
-  attr_reader :menu, :customer
+  attr_reader :menu, :customer, :message
 
   def take_order( order )
     @customer = order
@@ -15,16 +15,8 @@ class TakeawayShop
   end
 
   def send_text
-    account_sid = "AC98d4d8428ec27f9c5e9c52ade6acbd57"
-    auth_token = "3572043c9ef43ce6e26fd44136962f93"
-    client = Twilio::REST::Client.new(account_sid, auth_token)
-    from = "+441278393079"
-    to = "#{ @customer.phone }"
-    client.account.sms.messages.create(
-      :from => from,
-      :to => to,
-      :body => "Thank you! Your order was placed and will be delivered before #{ @order_time.hour + 1 }:#{ @order_time.min }"
-    )
+    @message = "Thank you! Your order was placed and will be delivered before #{ @order_time.hour + 1 }:#{ @order_time.min }"
+    twilio_sms_sending_process
   end
 
 private
@@ -42,6 +34,19 @@ private
         total_price += @menu[item]
     end
     "[ total: £#{ total_price } ]"
+  end
+
+  def twilio_sms_sending_process
+    account_sid = "AC98d4d8428ec27f9c5e9c52ade6acbd57"
+    auth_token = "3572043c9ef43ce6e26fd44136962f93"
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+    from = "+441278393079"
+    to = "#{ @customer.phone }"
+    client.account.sms.messages.create(
+      :from => from,
+      :to => to,
+      :body => @message
+    )
   end
 
 end
