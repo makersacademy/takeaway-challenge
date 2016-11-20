@@ -11,7 +11,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -31,21 +31,29 @@ Task
 * Write a Takeaway program with the following user stories:
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+[1] pry(main)> require'./lib/takeaway'
+=> true
+[2] pry(main)> takeaway = Takeaway.new(Menu,Order,SMS)
+=> #<Takeaway:0x007fb1b22daa08
+ @menu=#<Menu:0x007fb1b22da9e0 @list={"Curry"=>9, "Burger"=>8, "Pizza"=>10, "Noodles"=>5, "Chicken"=>5, "Kebab"=>6}>,
+ @order_klass=Order,
+ @sms=#<SMS:0x007fb1b22da990 @client=<Twilio::REST::Client @account_sid=ACb887cc19fc9926f36fd0812f733c588a>>>
+[3] pry(main)> takeaway.view_menu
+Curry £9
+Burger £8
+Pizza £10
+Noodles £5
+Chicken £5
+Kebab £6
+=> {"Curry"=>9, "Burger"=>8, "Pizza"=>10, "Noodles"=>5, "Chicken"=>5, "Kebab"=>6}
+[4] pry(main)> takeaway.begin_order
+=> #<Order:0x007fb1b21b9610 @basket={}, @menu=#<Menu:0x007fb1b22da9e0 @list={"Curry"=>9, "Burger"=>8, "Pizza"=>10, "Noodles"=>5, "Chicken"=>5, "Kebab"=>6}>>
+[5] pry(main)> takeaway.add("Burger",1)
+=> 1
+[6] pry(main)> takeaway.place_order(8)
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/ACb887cc19fc9926f36fd0812f733c588a/Messages/SM056f63e311484e06a34a8ccc3c1f5d8f>
+[7] pry(main)> quit
+[chriscooper:...rs/week2/takeaway-challenge]$
 ```
 
 * Hints on functionality to implement:
@@ -69,7 +77,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
