@@ -3,7 +3,6 @@ require 'takeaway'
 describe Takeaway do
 
   subject(:takeaway) { described_class.new }
-  let(:menu_hash) { double(:menu_hash) }
   let(:item) { double(:item) }
   let(:unavailable_item) { double(:unavailable_item) }
   let(:expected_total) { double(:expected_total) }
@@ -32,7 +31,6 @@ describe Takeaway do
 
     it 'adds your chosen item to items' do
       takeaway.add_item(item, 1)
-      allow(menu_hash).to receive(:has_key?).and_return(true)
       expect(takeaway.items.empty?).to eq false
     end
 
@@ -55,7 +53,14 @@ describe Takeaway do
     end
 
     context 'calculating total for order' do
-      it { is_expected.to respond_to(:total) }
+      it { is_expected.to respond_to(:show_total) }
+
+      # it 'shows the correct total' do
+      #   allow(Menu::MENU).to receive(:has_key?).and_return(true)
+      #   takeaway.add_item(item, 1)
+      #   allow(takeaway).to receive(:calc_total).and_return(1)
+      #   expect(takeaway.show_total).to eq 1
+      # end
 
       it { is_expected.to respond_to(:pay).with(1).argument }
 

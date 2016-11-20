@@ -3,7 +3,7 @@ require_relative 'sms.rb'
 
 class Takeaway
 
-  attr_reader :menu, :items, :expected_total, :total
+  attr_reader :menu, :items, :expected_total
 
   def initialize(menu_klass = Menu)
     @menu = menu_klass.new
@@ -22,6 +22,11 @@ class Takeaway
     else
       @items[item] = quantity
     end
+  end
+
+  def show_total
+    calc_total
+    @total
   end
 
   def pay(expected_total)
