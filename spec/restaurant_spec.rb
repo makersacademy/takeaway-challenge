@@ -19,33 +19,36 @@ describe Restaurant do
     end
   end
 
+  describe "when checking order status" do
+    it "should return en error when there is no order" do
+      expect{restaurant.order_status}.to raise_error("No order has been placed")
+    end
+  end
+
   describe "when managing orders" do
+    before do
+    allow(restaurant).to receive(:send_confirmation)
+    allow(restaurant).to receive(:order_status)
+    end
+
     it "should be able to start an order" do
-      restaurant.start_order
+      restaurant.add_dish(dish)
+      restaurant.add_to_order(1)
       expect(restaurant.order).not_to be_nil
     end
 
-    before do
-    allow(restaurant).to receive(:send_confirmation)
-    end
-
     it "should be able to finish an order" do
-      restaurant.start_order
       restaurant.add_dish(dish)
+      restaurant.add_to_order(1)
       restaurant.finish_order
       expect(restaurant.orders.count).to eq 1
     end
 
     it "resets the current order" do
-      restaurant.start_order
+      restaurant.add_dish(dish)
+      restaurant.add_to_order(1)
       restaurant.reset_order
       expect(restaurant.order).to be_nil
-    end
-
-    context "when checking order status" do
-      it "should return en error when there is no order" do
-        expect{restaurant.order_status}.to raise_error("No order has been placed")
-      end
     end
 
   end

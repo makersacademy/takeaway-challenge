@@ -19,11 +19,8 @@ class Restaurant
     menu.create(dish_klass.new(name, price), amount)
   end
 
-  def start_order(order_klass = Order)
-    self.order = order_klass.new
-  end
-
-  def add_to_order(number, amount)
+  def add_to_order(number, amount = 1)
+    current_order
     dish = menu.menu_items[number - 1].dish
     order.add_item(dish, amount)
     order_status
@@ -53,6 +50,13 @@ class Restaurant
   end
 
   private
+  def start_order(order_klass = Order)
+    self.order = order_klass.new
+  end
+
+  def current_order
+    order || start_order
+  end
 
   def send_confirmation
     order.confirm.send_confirmation(order_message)
