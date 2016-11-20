@@ -3,23 +3,18 @@ require_relative 'dish'
 
 class Menu
   attr_reader :list
+  attr_accessor :dishes
 
   def initialize()
-    @list = []
-    @selected_dishes = Hash.new(0)
+    @dishes = []
   end
 
   def read_menu
-    @list
-  end
-
-  def select(dish,quantity = 1)
-    @selected_dishes[dish] += quantity
-    return @selected_dishes
+    @dishes
   end
 
   def add(dish)
-    (@list.include?(dish))? @list : @list << dish 
+    (@dishes.include?(dish))? @dishes : @dishes << dish
   end
 
 end

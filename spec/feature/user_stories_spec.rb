@@ -1,18 +1,24 @@
 require 'menu'
 require 'dish'
+require 'basket'
 
 describe "User stories" do
   let(:menu) { Menu.new }
-  dish_name = "char sui bun"
-  number = 1
-  price = 3.99
-  let(:dish) { Dish.new(dish_name, price)}
+  let(:basket) { Basket.new(menu.dishes) }
 
-  describe "Order" do
+  describe "basket" do
 
-    it "selects some number of several available dishes" do
-      selected_dishes= menu.select(dish,number)
-      expect(selected_dishes).to include({dish=>number})
+    it "adds selected dishes" do
+      pizza = Dish.new("Pizza", 2)
+      amok = Dish.new("Amok", 4)
+      salad = Dish.new("Salad",2)
+      menu.add(pizza)
+      menu.add(amok)
+      menu.add(salad)
+      basket.add(pizza)
+      basket.add(amok,2)
+      basket_list = basket.add(salad,3)
+      expect(basket_list).to include({amok=>2})
     end
 
   end
