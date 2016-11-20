@@ -1,3 +1,6 @@
+require_relative 'order'
+require_relative 'menu'
+
 class Takeaway
 
 attr_reader :order
@@ -15,6 +18,7 @@ attr_reader :order
     dishes.map do |dish, quantity|
       order.add(dish, quantity)
     end
+    order.total
   end
 
   private

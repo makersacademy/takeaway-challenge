@@ -26,4 +26,8 @@ end
   it 'should be able to check dishes not on the menu' do
     expect(menu.has_dish?(:burger)).to eq false
   end
+
+  it ' should work out the price of items' do
+    expect(menu.price(:hawaiian)).to eq(dishes[:hawaiian])
+  end
 end
