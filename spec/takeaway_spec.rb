@@ -12,6 +12,10 @@ describe Takeaway do
   let(:sms_klass) {double :sms_klass, new: sms}
   let(:sms) {double :sms, send: nil}
 
+  before do
+    subject.begin_order
+  end
+
 
   describe '#view_menu' do
     it 'prints the menu to the screen' do
@@ -22,7 +26,6 @@ describe Takeaway do
   describe '#begin_order' do
 
     it 'creates a new order' do
-      subject.begin_order
       expect(subject.order).to eq order
     end
 
@@ -31,24 +34,20 @@ describe Takeaway do
   describe '#add' do
 
     it 'adds items to the order' do
-      subject.begin_order
       expect(subject.order).to receive(:add)
       subject.add("Curry",1)
     end
 
   end
 
-
   describe '#place_order' do
 
     it '#raises error if price is incorrect' do
-      subject.begin_order
       allow(order).to receive(:total).and_return(17)
       expect{subject.place_order(18)}.to raise_error 'Price is incorrect'
     end
 
     it '#sends confirmation sms if price is correct' do
-      subject.begin_order
       allow(order).to receive(:total).and_return(17)
       expect(sms).to receive(:send)
       subject.place_order(17)

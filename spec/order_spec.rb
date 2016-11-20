@@ -6,9 +6,9 @@ describe Order do
   let(:menu) {double :menu, list: menu_list}
   let(:menu_list) {{"Curry" => 9, "Burger" => 8}}
 
-  describe '#basket' do
+  describe '#initialization' do
 
-    it 'is empty to begin with' do
+    it 'basket is empty to begin with' do
       expect(subject.basket).to be_empty
     end
 
@@ -16,10 +16,9 @@ describe Order do
 
   describe '#add' do
 
-
-    it 'raises an error if not a valid item' do
+    it 'raises an error if not an invalid item is entered' do
       allow(menu).to receive(:does_not_contain?).with("Apple").and_return(true)
-      expect{subject.add("Apple",1)}.to raise_error 'Not a valid choice'
+      expect{subject.add("Apple",1)}.to raise_error 'Not on the menu'
     end
 
     it 'adds items to the basket' do
@@ -43,7 +42,5 @@ describe Order do
     end
 
   end
-
-
 
 end
