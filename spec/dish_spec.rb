@@ -9,5 +9,5 @@ describe Dish do
     expect(dish.name).to eq "Amok"
     expect(dish.price).to eq 3
   end
-  
+
 end

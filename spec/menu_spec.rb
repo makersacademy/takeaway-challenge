@@ -20,10 +20,4 @@ describe Menu do
     expect(menu_list.count).to eq 1
   end
 
-  # it "selects number of several available dishes" do
-  #   quantity = 2
-  #   selected_dishes= menu.select(dish,quantity)
-  #   expect(selected_dishes).to include({dish=>quantity})
-  # end
-
 end

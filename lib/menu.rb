@@ -1,6 +1,3 @@
-
-require_relative 'dish'
-
 class Menu
   attr_reader :list
   attr_accessor :dishes
