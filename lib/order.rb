@@ -12,8 +12,11 @@ class Order
   end
 
   def total_price
-    return 0 if current_order.empty?
-    13.5
+    total = 0
+    current_order.each do |order|
+        total += order[:dish].price * order[:quantity]
+    end
+    total
   end
 
   def invalid_quantity?(quantity)

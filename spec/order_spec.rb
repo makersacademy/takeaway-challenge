@@ -29,19 +29,31 @@ describe Order do
 
     describe "calculating the total cost of the order" do
 
+      before do
+        allow(dish).to receive(:name).and_return "Chilli Corn Carne"
+        allow(dish).to receive(:price).and_return 4.5
+        allow(dish2).to receive(:name).and_return "Pad Thai"
+        allow(dish2).to receive(:price).and_return 5.5
+      end
+
       it "should return zero if no order is added" do
         expect(order.total_price).to eq 0
       end
 
       it "should return the total for order with one dish" do
-        allow(dish).to receive(:name).and_return "Chilli Corn Carne"
-        allow(dish).to receive(:price).and_return 4.5
         order.add_dish(dish, 3)
         expect(order.total_price).to eq 13.5
       end
 
+      it "should return a different total if the there is a different dish with the same quantity" do
+        order.add_dish(dish2,3)
+        expect(order.total_price).to eq 16.5
+      end
+
       it "should return the total for order of more than " do
-        
+        order.add_dish(dish,4)
+        order.add_dish(dish2, 2)
+        expect(order.total_price).to eq 29
       end
     end
 
