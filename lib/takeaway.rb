@@ -23,6 +23,18 @@ class Takeaway
     end
   end
 
+  def pay(expected_total)
+    calc_total
+    @expected_total = expected_total
+    raise 'This is the incorrect total, please try again' if @expected_total != @total
+  end
+
+  def complete_order
+
+  end
+
+  private
+
   def calc_total
     prices = []
     @items.each do |item, quantity|
@@ -31,15 +43,6 @@ class Takeaway
       end
     end
     @total = prices.reduce(:+)
-  end
-
-  def pay(expected_total)
-    @expected_total = expected_total
-    raise 'This is the incorrect total, please try again' if @expected_total != @total
-  end
-
-  def complete_order
-
   end
 
 end

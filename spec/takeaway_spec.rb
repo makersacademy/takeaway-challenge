@@ -59,12 +59,6 @@ describe Takeaway do
 
       it { is_expected.to respond_to(:total) }
 
-      # it 'calculates the correct total' do
-      #   takeaway.add_item(item, 1)
-      #   takeaway.calc_total
-      #   expect(takeaway.total).not_to be_nil
-      # end
-
       # it 'allows you to pay by accepting the expected total' do
       #   takeaway.add_item(item, 1)
       #   allow(takeaway).to receive(:total).and_return(1)
