@@ -16,7 +16,7 @@ class Order
   end
 
   def add_to_order(item_number)
-    @order_items << self.menu.display[item_number - 1]
+    @order_items << self.menu.menu_items[item_number - 1]
   end
 
   def display_order
@@ -25,11 +25,14 @@ class Order
   end
 
   def order_sum
-    item_prices = @order_items.map{|x| x[:price]}
-    item_prices.inject(@order_sum) {|sum, x| sum + x}
+    item_prices = @order_items.map{|item| item[:price]}
+    order_sum = item_prices.inject(@order_sum) {|sum, item| sum + item}
+    order_sum
   end
 
-  def correct_total?
+  def is_correct_amount?(price)
+    message = puts "Your order is ready to be delivered"
+    return message if order_sum.round(2) == price
   end
 
 end
