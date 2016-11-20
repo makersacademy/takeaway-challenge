@@ -19,4 +19,21 @@ describe Takeaway do
 
 	end
 
+	describe '#pay' do
+
+		it 'expects an order to have been created before you can pay' do
+			message = "Order has not been created."
+			expect{(takeaway.pay(6.99))}.to raise_error message
+		end
+
+		it 'expects payment total to be correct' do
+			allow(order).to receive(:add).with(1, 1)
+			takeaway.place_order(1, 1)
+			allow(order).to receive(:order_total) { 6.99 }
+			message = "Payment amount is incorrect."
+			expect{(takeaway.pay(5.99))}.to raise_error message
+		end
+
+	end
+
 end

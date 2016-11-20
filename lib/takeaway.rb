@@ -22,8 +22,9 @@ class Takeaway
 		@order.basket << "Total: £#{@order.order_total}"
 	end
 
-	def pay
-		total = @order.order_total
+	def pay(total)
+		raise "Order has not been created." if @order == nil
+		raise "Payment amount is incorrect." if total != @order.order_total
 		@checkout.process_payment(total)
 	end
 
