@@ -1,6 +1,9 @@
 class Menu
 
+  attr_reader :order
 
+  def initialize
+  end
 
   def print_menu
     puts "===================="
@@ -26,6 +29,10 @@ class Menu
       "Calzone Ripieno" => 11.45,
       "San Daniele" => 11.95
     }
+  end
+
+  def place_order(dishes)
+    @order = dishes
   end
 
 
