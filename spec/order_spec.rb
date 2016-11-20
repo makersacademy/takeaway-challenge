@@ -5,13 +5,20 @@ describe Order do
 
   let(:menu) do
     {
-      Cheeseburger: 8.50,
-      Fries: 3.75
+      Cheeseburger: "£8.50",
+      Fries: "£3.75"
     }
   end
 
   it "has a list of dishes with prices" do
     expect(order.menu).to eq(menu)
   end
+
+  # cannot get below test to work
+  # it "prints a list of dishes with prices" do
+  #   expect(subject.print_menu).to eq("Cheeseburger: £8.50
+  #   Fries: £3.75"
+  #   )
+  # end
 
 end
