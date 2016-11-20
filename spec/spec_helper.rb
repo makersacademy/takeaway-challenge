@@ -1,5 +1,7 @@
 require 'coveralls'
+require 'dotenv'
 Coveralls.wear!
+Dotenv.load
 require 'capybara/rspec'
 # FRIENDLY NAME
 # take_away
