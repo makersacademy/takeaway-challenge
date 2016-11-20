@@ -5,7 +5,7 @@ class Message
 
   def text
     # delivery_time = Time.now + (3600)
-    # 
+    #
     # account_sid = "AC3cfdffd043d2ad9ad31516f46690499e"
     # auth_token = "bb85005e7205713451e05fe49588764f"
     # client = Twilio::REST::Client.new account_sid, auth_token

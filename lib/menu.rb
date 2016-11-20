@@ -1,4 +1,3 @@
-
 class Menu
 
 attr_accessor :list_of_dishes

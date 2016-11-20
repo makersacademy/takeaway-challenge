@@ -2,6 +2,9 @@ require 'order'
 
 describe Order do
 
+  subject(:order) { described_class.new }
+  let(:menu) { double :menu }
+
   context '#initialize' do
 
     it "current_order_price should return 0 at start" do
@@ -17,6 +20,7 @@ describe Order do
   context 'tests #order is working' do
 
     it 'should return the pizza and the amount ordered when 1 pizza is ordered' do
+      # allow(order).to receive(:menu_check).and_return({ "margherita" => 9, "pepperoni" => 10, "americano" => 11 })
       expect(subject.order("margherita", 1)).to eq "You have ordered 1 margherita(s)."
     end
 
@@ -29,6 +33,7 @@ describe Order do
     end
 
     it "should return an error when item is not entered correctly" do
+      # allow(order).to receive(:menu_check).and_return({ "margherita" => 9, "pepperoni" => 10, "americano" => 11 })
       expect{subject.order("marg", 9)}.to raise_error "Cannot store order: no such item exists."
     end
 
@@ -37,6 +42,7 @@ describe Order do
   context "tests #bill is working" do
 
     before do
+    # allow(order).to receive(:menu_check).and_return({ "margherita" => 9, "pepperoni" => 10, "americano" => 11 })
       subject.order("margherita", 1)
     end
 
@@ -58,11 +64,13 @@ describe Order do
 
   context "#expected_total" do
 
-  before do
-    subject.order("margherita", 1)
-  end
+  # before do
+    # allow(order).to receive(:menu_check).and_return({ "margherita" => 9, "pepperoni" => 10, "americano" => 11 })
+  # end
 
     it "should return message when order is finished" do
+      # allow(order).to receive(:text_message).and_return("Thank you for your order. A text message confirming the order is on its way.")
+      subject.order("margherita", 1)
       expect(subject.expected_total(9)).to eq "Thank you for your order. A text message confirming the order is on its way."
     end
 
