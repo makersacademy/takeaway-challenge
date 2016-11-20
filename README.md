@@ -39,6 +39,8 @@ TROUBLESHOOTING
   Dynamic Menu
     I tried to have my Menu class work so that new meal items would be added into a dynamically updated array. I created .add_meal(meal, price) method which created a hash and put it into the menu_list array. This worked fine within the class; BUT when I tried to access the populated menu list in Takeaway and Order classes for selecting items it always populated an empty array. I realized after being driven nuts that this is because the class always created a brand new version of my Menu class, which didn’t have a populated list (of course!!). After a couple hours I scratched the idea in favor of getting on with the project. My final solution was a hard coded menu list in an array.
 
+  TWILIO
+    I successfully signed up activated number and sent myself a text from Twilio interface. gem install twilio-ruby appeared to work. However upon testing it didn't seem like the gem installed properly and I couldn't get it to work from my code. I attempted a few fixes but ran out of time.
 
 
 CHALLENGE INSTRUCTIONS....
