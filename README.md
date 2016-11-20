@@ -33,6 +33,8 @@ You've orderd 3 items.
 BBQ Pizza  £8.5
 Pepperoni  £9.0
 Diet Coke  £1.7
- => "[ total: £19.2 ]"
+ => "[ total: £19.2 ]"'
 2.3.1 :007 > domino_pizza.send_text
+ => #this command will send a text to valid phones on Twilio API with this message
+    #"Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 19:37(1hour plus when you ordered)"
 ```
