@@ -22,11 +22,14 @@ describe Order do
     it 'calculates a total' do
       expect(order1.calculate_total).to eq 27.45
     end
-    it 'sends a message if order is successful' do
-      order1.check_payment
-      delivery_time = (Time.new + 360).strftime("%H:%M")
-      expect(order1.send_message).to eq "Thank you! Your order will be delivered before #{delivery_time}"
+    it 'calculates a delivery time an hour from now' do
+      expect(order1.delivery_time).to eq (Time.new + 360).strftime("%H:%M")
     end
+    # it 'sends a message if order is successful' do
+    #   order1.check_payment
+    #   delivery_time = (Time.new + 360).strftime("%H:%M")
+    #   expect(order1.send_message).to eq "Thank you! Your order will be delivered before #{delivery_time}"
+    # end
   end
 
   context 'incorrect payment' do

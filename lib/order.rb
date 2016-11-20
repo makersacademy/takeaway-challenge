@@ -1,3 +1,5 @@
+require_relative 'send_sms'
+
 class Order
 
   attr_reader :meal, :payment, :menu
@@ -22,9 +24,14 @@ class Order
     payment == calculate_total
   end
 
+  def delivery_time
+    (Time.new + 360).strftime("%H:%M")
+  end
+
   def send_message
-    delivery_time = (Time.new + 360).strftime("%H:%M")
-    "Thank you! Your order will be delivered before #{delivery_time}"
+    message = "Thank you! Your order will be delivered before #{delivery_time}"
+    SendSMS.new(message)
+    message
   end
 
 

@@ -7,10 +7,17 @@ class SendSMS
   auth_token = 'f7661c36cdf63b2eb157551fbcc18c26'
   @client = Twilio::REST::Client.new account_sid, auth_token
 
-  @client.account.messages.create({
-    :from => +441289466014,
-    :to => +447771864895,
-    :body => "Thank you for your order!"
-  })
+  def initialize(message)
+    @message = message
+    send_message
+  end
+
+  def send_message
+    @client.account.messages.create({
+      :from => +441289466014,
+      :to => +447771864895,
+      :body => @message
+    })
+  end
 
 end
