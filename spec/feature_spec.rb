@@ -40,6 +40,10 @@ describe "User Stories" do
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 	it 'should send user a text message to confirm payment and delivery' do
+		allow(ENV).to receive(:[]).with("TWILIO_ACCOUNT_SID").and_return("a123")
+		allow(ENV).to receive(:[]).with("TWILIO_AUTH_TOKEN").and_return("a456")
+		allow(ENV).to receive(:[]).with("TWILIO_PHONE").and_return("+789")
+		allow(ENV).to receive(:[]).with("TWILIO_DESTINATION_PHONE").and_return("+012")
 		takeaway = Takeaway.new(SMS, Order)
 		takeaway.place_order(2, 1)
     	VCR.use_cassette('twilio') do
