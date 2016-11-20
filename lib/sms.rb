@@ -1,3 +1,5 @@
+#enables sending a text message
+
 require 'twilio-ruby'
 require 'date'
 

@@ -5,7 +5,7 @@ require './lib/sms.rb'
 
 class Takeaway
 
-attr_reader :all_dishes, :order, :placed_order
+attr_reader :view_menu, :order, :placed_order
 
   ALL_DISHES = {1 => {"Chicken Adobo" => 4.50},
   2 => {"Pancit Bihon" => 4.50},
@@ -18,23 +18,14 @@ attr_reader :all_dishes, :order, :placed_order
   }
 
   def initialize(order_klass)
-    @all_dishes = ALL_DISHES
+    @view_menu = ALL_DISHES
     @order = order_klass
-    @placed_order = nil
-  end
-
-  def view_menu
-    all_dishes
   end
 
   def select(dish_number, quantity)
-    raise "Sorry, please pick an available dish option (1-8)" if all_dishes[dish_number] == nil
-    raise "You have not generated a new order to add to yet." if placed_order == nil
-    quantity.times {placed_order.selected_dishes << all_dishes[dish_number]}
-  end
-
-  def place_new_order
-    @placed_order = order.new
+    place_new_order if placed_order == nil
+    raise "Sorry, please pick an available dish option (1-8)" if view_menu[dish_number] == nil
+    quantity.times {placed_order.selected_dishes << view_menu[dish_number]}
   end
 
   def check_order
@@ -56,6 +47,14 @@ private
 
   def check_for_error
     raise "No order has been made." if placed_order == nil
+  end
+
+  def placed_order
+    @placed_order
+  end
+
+  def place_new_order
+    @placed_order = order.new
   end
 
 end

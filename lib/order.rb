@@ -1,4 +1,4 @@
-#manages the order
+#manages the order's selected dishes
 
 class Order
 
@@ -37,9 +37,6 @@ private
     "£#{total.inject(:+)}"
   end
 
-  def selected_dishes
-    @selected_dishes
-  end
 
 
 

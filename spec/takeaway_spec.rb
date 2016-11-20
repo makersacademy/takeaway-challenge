@@ -10,17 +10,7 @@ let(:SMS) {double :SMS}
 
   context "The available dishes" do
     it "should have a list of all dishes and their prices" do
-      expect(takeaway.all_dishes).to eq Takeaway::ALL_DISHES
-    end
-
-    it "should be able to view menu" do
-      expect(takeaway.view_menu).to eq takeaway.all_dishes
-    end
-  end
-
-  context "Placing a new order" do
-    it "should generate a new order" do
-      expect(takeaway.place_new_order).to eq placed_order
+      expect(takeaway.view_menu).to eq Takeaway::ALL_DISHES
     end
   end
 
@@ -29,34 +19,29 @@ let(:SMS) {double :SMS}
       expect(takeaway).to respond_to(:select).with(2).arguments
     end
 
+    it "should add dishes to Order if a dish has already been selected" do
+      takeaway.select(1, 2)
+      takeaway.select(2, 1)
+      expect(placed_order.selected_dishes).to eq([{"Chicken Adobo"=>4.5}, {"Chicken Adobo"=>4.5}, {"Pancit Bihon"=> 4.5}])
+    end
+
     it "should add to order when customer selects a dish after generating new order" do
-      takeaway.place_new_order
       takeaway.select(1, 2)
       expect(placed_order.selected_dishes).to eq([{"Chicken Adobo"=>4.5}, {"Chicken Adobo"=>4.5}])
     end
 
-    it "should raise error if a new order hasn't been generated" do
-      expect{takeaway.select(1, 2)}.to raise_error("You have not generated a new order to add to yet.")
-    end
-
     it "should raise error if dish is not available" do
-      takeaway.place_new_order
       expect{takeaway.select("Something", 1)}.to raise_error("Sorry, please pick an available dish option (1-8)")
     end
   end
 
   context "Checking order" do
-    it "should be an empty hash when nothing has been selected" do
-      takeaway.place_new_order
-      expect(takeaway.check_order).to eq({})
-    end
-
     it "should raise error if no order has been made" do
       expect{takeaway.check_order}.to raise_error("No order has been made.")
     end
 
     it "shoud list out dishes, quantity and total cost" do
-      takeaway.place_new_order
+      takeaway.select(1, 2)
       allow(placed_order).to receive(:view_order) {{"Chicken Adobo"=>2, "Total cost"=>"£9.0"}}
       expect(takeaway.check_order).to eq placed_order.view_order
     end
@@ -66,9 +51,9 @@ let(:SMS) {double :SMS}
     it "should raise error if no order has been made" do
       expect{takeaway.total_cost}.to raise_error("No order has been made.")
     end
-    
+
     it "should return the total cost of everything ordered" do
-      takeaway.place_new_order
+      takeaway.select(1, 2)
       allow(placed_order).to receive(:total_cost) {"£13.5"}
       expect(takeaway.total_cost).to eq placed_order.total_cost
     end
@@ -80,7 +65,7 @@ let(:SMS) {double :SMS}
     end
 
     it "should confirm message is sent" do
-      takeaway.place_new_order
+      takeaway.select(1,2)
       message = "Thank you for your order"
       allow(SMS).to receive(:send_message) {message}
       expect(takeaway.confirm_order).to eq("Thank you for your order")
