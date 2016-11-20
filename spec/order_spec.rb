@@ -14,8 +14,6 @@ describe Order do
 
   context "tests storing of order" do
 
-    it { is_expected.to respond_to :current_order_price }
-
     it "should return 9 when 1 margherita is ordered" do
       subject.order("margherita", 1)
       expect(subject.current_order_price).to eq 9
@@ -45,7 +43,7 @@ describe Order do
 
     it "Should return message when order is finished" do
       subject.order("margherita", 1)
-      expect(subject.expected_total(9)).to eq "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before #{Time.now.strftime("%H").to_i+1}:#{Time.now.strftime("%M")}"
+      expect(subject.expected_total(9)).to eq "Thank you for your order. A text message confirming the order is on its way."
     end
 
     it "should show other message if total is incorrect" do

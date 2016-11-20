@@ -21,7 +21,7 @@ class Message
           :to => number,
           :body => "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before  #{delivery_time.strftime('%H:%M')}.")
       end
-    "A text message confirming the order is on its way."
+    "Thank you for your order. A text message confirming the order is on its way."
   end
 
 end
