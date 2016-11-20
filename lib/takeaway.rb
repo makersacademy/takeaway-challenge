@@ -4,9 +4,9 @@ require './lib/text'
 
 
 class TakeAway
-attr_reader :my_order
+  attr_reader :my_order
   def initialize(order_klass = Order, text_klass = Text)
-    @menu ={burger: 10,  salad: 5, drink: 2}
+    @menu = {burger: 10,  salad: 5, drink: 2}
     @order = order_klass
     @text = text_klass
     @my_order = {}
@@ -26,8 +26,9 @@ attr_reader :my_order
 
   def place_order
       new_order = @order.new(@my_order)
-
+      new_order.confirm
       confirmation_text = @text.new.send
+
   end
 
 end

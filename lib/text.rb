@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 
 class Text
-  
+
 
   def initialize
     account_sid = 'AC9bc4be7b933cfb2b94b756dbfe0ad930'
@@ -16,6 +16,7 @@ class Text
       :body => message})
   end
 
+private
   def message
     "Your order will be delivered before #{delivery_time}"
   end

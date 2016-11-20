@@ -6,6 +6,13 @@ class Order
     @my_order = my_order
   end
 
+  def confirm
+    bucket
+    total
+  end
+
+private
+
   def bucket
     @my_order.each do |dish, details|
       print "#{details[:portions]} portions of #{dish} for #{details[:price]} pounds each"
@@ -20,10 +27,7 @@ class Order
     amount
   end
 
-  def confirm
-    bucket
-    total
-  end
+
 
 
 end
