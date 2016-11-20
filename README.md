@@ -77,3 +77,4 @@ To confirm your order and receive a text confirmation - `#confirm order`
 **Future changes to implement:**
 * Implement the ability to place an order via text message.
 * Update SMS stubbing - Learn how to manage network stubbing with VCR to ensure automated CI systems will avoid sending unwanted texts
+* Add Customer user interaction, e.g. ask for specific dish number and quantity to make it more clear, ask for mobile number for the text confirmation.
