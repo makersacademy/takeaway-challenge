@@ -12,7 +12,7 @@ describe Order do
   end
 
   it "should has orders" do
-    expect( order.order ).to eq [ order1, order2 ]
+    expect( order.order ).to eq [ order1, order2   ]
   end
 
 end

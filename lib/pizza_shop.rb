@@ -1,4 +1,5 @@
 require_relative "takeaway_shop.rb"
+require_relative "order.rb"
 
 class PizzaShop < TakeawayShop
 
