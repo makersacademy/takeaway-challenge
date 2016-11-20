@@ -34,7 +34,7 @@ class Menu
     add_to_menu("Sweet and Sour Soup", 3.49)
     add_to_menu("Chicken Sechuan", 5.99)
     add_to_menu("Diet Coke", 1.99)
-    add_to_menu("Sparklin Water", 1.12)
+    add_to_menu("Sparkling Water", 1.12)
     add_to_menu("Poppy Mochi", 3.99)
     add_to_menu("Red Beans Mochi", 3.89)
     add_to_menu("Rice Noodles", 2.99)

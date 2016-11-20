@@ -10,13 +10,13 @@ describe Order do
       expect(order.order_items).to eq []
     end
 
-    it 'can read the items from the menu' do
+    xit 'can read the items from the menu' do
       expect(order.read_menu).to eq menu.display
     end
 
-    # it 'can add items from the menu to the order' do
-    #
-    # end
+    it 'can add items from the menu to the order' do
+
+    end
 
   end
 end
