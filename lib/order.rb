@@ -1,42 +1,48 @@
-require './lib/takeaway'
 require './lib/menu'
 require './lib/messager'
 
 class Order
 
-  attr_reader :basket, :total
+  attr_reader :basket, :total, :messager
 
-def initialize
-  @menu_klass = Menu.new
-  @basket = []
-  @total = 0
-  @messager = Messager.new
-end
+  def initialize(menu_klass)
+    @menu_klass = menu_klass
+    @basket = []
+    @total = 0
+    @messager = Messager.new
+  end
 
-def make_order(hash)
-  hash.each do |order,amount|
-    amount.times do
-  (@menu_klass.menu.each do |food,price|
-    if food == order
-      @basket << {food => price}
+  def make_order(hash)
+    hash.each do |order,amount|
+      amount.times do
+        (@menu_klass.menu.each do |food,price|
+          if food == order
+            self.basket << {food => price}
+          end
+        end)
+      end
     end
-  end)
+    @messager.message
+    basket_summary
   end
+
+  def complete_order
+    self.basket.each do |instance|
+      instance.each do |food,price|
+        @total += price
+      end
+    end
   end
-  @basket
-  @messager.send_message
-end
 
-def complete_order
-  @basket.each do |instance|
-  instance.each do |food,price|
-  @total += price
+  def checkout(price)
+    fail "That is not the right total" if price != @total
+    @messager.message
   end
+
+  private
+
+  def basket_summary
+    self.basket
   end
-end
-
-
-
-
 
 end
