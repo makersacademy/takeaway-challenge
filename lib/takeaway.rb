@@ -5,8 +5,8 @@ class Takeaway
 
   attr_reader :menu, :items, :expected_total, :total
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu_klass = Menu)
+    @menu = menu_klass.new
     @items = {}
   end
 
@@ -43,8 +43,9 @@ class Takeaway
     @total = prices.reduce(:+)
   end
 
-  def text_confirmation
-    Sms.new
+  def text_confirmation(sms_klass = Sms)
+    sms = sms_klass.new
+    sms.send_confirmation
     puts 'Your order has been received and you will receive a text confirmation shortly'
   end
 
