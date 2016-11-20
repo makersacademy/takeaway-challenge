@@ -2,9 +2,16 @@ require "./lib/order"
 
 describe Order do
   subject(:order) {described_class.new}
+  let(:menu) {double(:menu)}
 
   before do
     order.select_items("burrito", 2)
+  end
+
+  it "should have a start method, that welcomes the customer and lists the menu" do
+    allow(menu).to receive(:welcome) {"Welcome to Dan's Mexican Resturaunt."}
+    allow(menu).to receive(:list_menu) {[nil, nil, nil, nil]}
+    expect(order.start).to eq([nil, nil, nil, nil])
   end
 
   it "should allow a customer to order a number of items" do
@@ -34,7 +41,7 @@ describe Order do
         order.calculate_total_price * 2
         expect{(order.display_total_price).to raise_error("An error has occurred. Please try again")}
       end
-  
+
 
 
 
