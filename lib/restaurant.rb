@@ -23,6 +23,11 @@ class Restaurant
     self.order = order_klass.new
   end
 
+  def add_to_order(number, amount)
+    dish = menu.menu_items[number - 1].dish
+    order.add_item(dish, amount)
+  end
+
   def finish_order
     order_status
     send_confirmation
@@ -42,6 +47,14 @@ class Restaurant
     menu.available_dishes.each_with_index {|item, index| puts "#{index + 1}. #{item.dish.name}"}
   end
 
+
+
+  def reset_order
+    self.order = nil
+  end
+
+  private
+
   def send_confirmation
     order.confirm.send_confirmation(order_message)
   end
@@ -53,12 +66,6 @@ class Restaurant
   def time
     delivery = Time.new + (60 * 60)
   end
-
-  def reset_order
-    self.order = nil
-  end
-
-  private
 
   def no_order_placed?
     order.nil?
