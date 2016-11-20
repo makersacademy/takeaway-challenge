@@ -55,9 +55,29 @@ describe Takeaway do
     end
 
     context 'calculating total for order' do
-      it 'stores the expected total' do
-        expect(takeaway.expected_total(1)).not_to be_nil
+      it { is_expected.to respond_to(:calc_total) }
+
+      it { is_expected.to respond_to(:total) }
+
+      # it 'calculates the correct total' do
+      #   takeaway.add_item(item, 1)
+      #   takeaway.calc_total
+      #   expect(takeaway.total).not_to be_nil
+      # end
+
+      # it 'allows you to pay by accepting the expected total' do
+      #   takeaway.add_item(item, 1)
+      #   allow(takeaway).to receive(:total).and_return(1)
+      #   takeaway.pay(1)
+      #   expect(takeaway.expected_total).to eq 1
+      # end
+
+      it 'raises and error if the incorrect total is entered' do
+        allow(takeaway).to receive(:total).and_return(1)
+        expect { takeaway.pay(2) }.to raise_error('This is the incorrect total, please try again')
       end
+
+      it {is_expected.to respond_to(:complete_order)}
     end
   end
 end

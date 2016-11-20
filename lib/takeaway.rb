@@ -2,7 +2,7 @@ require_relative 'menu.rb'
 
 class Takeaway
 
-  attr_reader :menu, :items, :total_estimate
+  attr_reader :menu, :items, :expected_total, :total
 
   def initialize
     @menu = Menu.new
@@ -23,8 +23,23 @@ class Takeaway
     end
   end
 
-  def expected_total(total_estimate)
-    @total_estimate = total_estimate
+  def calc_total
+    prices = []
+    @items.each do |item, quantity|
+      Menu::MENU.each do |dish, price|
+        prices << quantity * price if item == dish
+      end
+    end
+    @total = prices.reduce(:+)
+  end
+
+  def pay(expected_total)
+    @expected_total = expected_total
+    raise 'This is the incorrect total, please try again' if @expected_total != @total
+  end
+
+  def complete_order
+
   end
 
 end
