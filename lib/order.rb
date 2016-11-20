@@ -5,7 +5,7 @@ attr_reader :list_of_dishes, :current_order_price, :time
   def initialize
     @list_of_dishes = { "margherita" => 9, "pepperoni" => 10 }
     @current_order_price = 0
-  end
+ end
 
   def order(order, quantity, total)
     fail "Cannot add item(s): quantity is less than one." if quantity < 1
