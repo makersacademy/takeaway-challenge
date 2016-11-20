@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  subject(:order) {described_class.new(Menu)}
+  subject(:order) {described_class.new(Menu, Delivery)}
 
   it "shows menu options from Menu class" do
     expect(order.see_options).to eq({:pizza => 2.99, :thai => 4.55, :mexican => 5.25})

@@ -1,13 +1,15 @@
 # Allows customer to select and add dishes to new order
 require_relative 'menu.rb'
+require_relative 'delivery'
 
 class Order
 
-attr_reader :options, :new_order
+attr_reader :options, :new_order, :delivery
 
-  def initialize(klass)
+  def initialize(klass1, klass2)
     @new_order = []
-    @options = klass.new.menu_list
+    @options = klass1.new.menu_list
+    @delivery = klass2.new
   end
 
   def see_options
@@ -33,6 +35,8 @@ attr_reader :options, :new_order
     new_order.flat_map(&:values).inject(:+)
   end
 
-
+  def delivery_message
+    delivery.delivery_text #not working twilio gem didn't install properly.
+  end
 
 end
