@@ -24,13 +24,12 @@ class Order
     @order_items
   end
 
-  def correct_total?
-    @order_items.map{|x| x[:price]}
+  def order_sum
+    item_prices = @order_items.map{|x| x[:price]}
+    item_prices.inject(@order_sum) {|sum, x| sum + x}
   end
 
-  def total
-    @order_price <<
-    self.order_items
+  def correct_total?
   end
 
 end
