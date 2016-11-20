@@ -2,7 +2,7 @@
 require "take_away"
 
 describe TakeAway do
-  subject(:take_away) {described_class.new(Order)}
+  subject(:take_away) {described_class.new(Order,SMS)}
 
   context "when #menu it" do
     it "should respond to menu" do
@@ -28,14 +28,11 @@ describe TakeAway do
         take_away.add_to_basket("pork",5)
         expect(take_away.check_price(60)).to eq true
       end
-  end
+    end
+    context "when #finalize_order" do
+
+
+
+    end
+
 end
-
-
-
-# it "should return a list of dishes with the number of dishes ordered" do
-#   expect(take_away.order("chicken",2,10)).to eq "You ordered 2 dish(es) of chicken "
-# end
-# it "should raise an error if the price introduced is different than the total price of the dishes" do
-#   expect{take_away.order("chicken",2,11)}.to raise_error "Incorrect total value."
-# end

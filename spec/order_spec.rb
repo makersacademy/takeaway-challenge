@@ -1,7 +1,7 @@
 require "order"
 
 describe Order do
-  subject(:order) {described_class.new(Menu)}
+  subject(:order) {described_class.new  }
 
   it "should have menu method that displays a list of dishes with prices" do
     expect(order.menu).to eq ({chicken:5, beef:6, pork: 7})

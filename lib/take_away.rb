@@ -1,9 +1,13 @@
+require 'dotenv'
+Dotenv.load
 require_relative "order"
+require_relative 'sms.rb'
 
 class TakeAway
 
-  def initialize(order_klass)
-    @order = order_klass.new(Menu)
+  def initialize(order_klass,sms_klass)
+    @order = order_klass.new()
+    @sms = sms_klass.new
   end
 
   def menu
@@ -23,5 +27,13 @@ class TakeAway
     @order.total
   end
 
+  def checkout(value)
+    @order.reset_order
+    send_message("Your order will arrive at #{Time.now.hour+1}:#{Time.now.min}")
+  end
+
+  def send_message(message)
+    @sms.text_message(message)
+  end
 
 end

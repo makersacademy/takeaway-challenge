@@ -3,8 +3,8 @@ require_relative "menu"
 class Order
 
 
-  def initialize(menu_klass)
-    @menu = menu_klass.new
+  def initialize(menu = Menu.new)
+    @menu = menu
     @added_dishes = []
   end
 
@@ -25,10 +25,9 @@ class Order
     total
   end
 
-  private
-    def reset_order
-      @added_dishes = []
-    end
+  def reset_order
+    @added_dishes = []
+  end
 
 
 
