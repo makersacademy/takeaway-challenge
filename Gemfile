@@ -5,5 +5,4 @@ gem 'rake'
 gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
-require 'twilio-ruby'
-gem 'twilio-ruby', '~> 4.11.1'
+gem 'twilio-ruby'
