@@ -2,7 +2,7 @@ require_relative 'order'
 
 class Restaurant
 
-  attr_reader :meal, :order
+  attr_reader :new_order
 
   def initialize
   end
@@ -34,8 +34,7 @@ class Restaurant
   end
 
   def place_order(meal)
-    @meal = meal
-    @order = Order.new(meal)
+    @new_order = Order.new(meal)
   end
 
 

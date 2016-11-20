@@ -3,6 +3,7 @@ require 'restaurant'
 describe Restaurant do
 
   let(:restaurant) {described_class.new}
+  example_order = { "Diavola" => 1, "Capricosa" => 2 }
 
   it 'shows the list of pizzas' do
     expect{restaurant.print_menu}.to output(restaurant.print_menu).to_stdout
@@ -17,10 +18,9 @@ describe Restaurant do
     expect(restaurant).to respond_to :place_order
   end
 
-  it 'saves an order' do
-    new_order = { "Diavola" => 1, "Capricosa" => 2 }
-    restaurant.place_order(new_order)
-    expect(restaurant.meal).to eq new_order
+  it 'creates a new Order' do
+    restaurant.place_order(example_order)
+    expect(restaurant.new_order.meal).to eq example_order
   end
 
 end
