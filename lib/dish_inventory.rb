@@ -2,7 +2,7 @@
 require_relative 'dish'
 require_relative 'order'
 require_relative 'order_manager'
-require_relative 'twilio'
+require_relative 'sms_sender'
 
 class DishInventory
 

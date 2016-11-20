@@ -5,6 +5,7 @@ describe OrderManager do
   let ( :order_manager) {described_class.new(DishInventory.new)}
   let (:order) {double :order}
   let (:payment) {double :payment}
+  let (:message) {double :message}
 
 
   describe "New instance of order manager" do
@@ -25,11 +26,6 @@ describe OrderManager do
         expect(order_manager).to respond_to(:submit_order).with(2).arguments
       end
 
-      it "should return a success message if the payment given equals the total cost of the order." do
-        allow(order).to receive(:total_cost).and_return payment
-        expect(order_manager.submit_order(order,payment)).to eq "Success"
-      end
-
       it "should raise an error if the payment given does not equal the total cost of the order" do
         allow(order).to receive(:total_cost).and_return !payment
         expect{order_manager.submit_order(order,payment)}.to raise_error "This total is not correct"
@@ -41,6 +37,17 @@ describe OrderManager do
 
       it "should respond to is_payment_correct with two arguments " do
         expect(order_manager).to respond_to(:is_payment_correct?).with(2).argument
+      end
+    end
+
+    describe "Sending SMS" do
+      before do
+        allow(order).to receive(:total_cost).and_return payment
+      end
+      
+      it "Message cannot be sent if sms permission is not granted" do
+        allow(order_manager).to receive(:granted_permission?).and_return false
+        expect(order_manager.submit_order(order,payment)).to eq "Message not sent"
       end
     end
 
