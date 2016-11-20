@@ -1,14 +1,19 @@
 class Menu
   attr_reader :list, :basket, :grand_total
+
+  MENU = {
+          bacon_sandwich: 4,
+          scrambled_eggs: 5,
+          poached_eggs: 4,
+          toast: 1
+  }
   def initialize
-    @list = {
-      bacon_sandwich: 4,
-      scrambled_eggs: 5,
-      poached_eggs: 4,
-      toast: 1
-    }
     @basket = Hash.new(0)
     @grand_total = 0
+  end
+
+  def menu
+    MENU
   end
 
   def add_to_basket(item, number = 1)
@@ -24,12 +29,13 @@ class Menu
 
   private
   attr_writer :grand_total
+
   def on_menu?(item)
-    self.list.include?(item.to_sym)
+    self.menu.include?(item.to_sym)
   end
 
   def total(item, number = 1)
-    self.list[item.to_sym] * number
+    self.menu[item.to_sym] * number
   end
 
   def add_to_total(amount)

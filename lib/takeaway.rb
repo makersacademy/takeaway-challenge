@@ -9,7 +9,7 @@ class Takeaway
   end
 
   def see_menu
-    @menu.list.each do |item, price|
+    @menu.menu.each do |item, price|
       puts "#{item}, £#{price}"
     end
   end

@@ -13,7 +13,7 @@ describe Takeaway do
   end
 
   it 'should access the menu from the Menu class' do
-    expect(takeaway.menu.list).to include(scrambled_eggs: 5)
+    expect(takeaway.menu.menu).to include(scrambled_eggs: 5)
   end
 
   describe "#see_menu" do

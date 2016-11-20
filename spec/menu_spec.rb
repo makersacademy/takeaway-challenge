@@ -1,15 +1,15 @@
 require 'menu'
 
 describe Menu do
-  subject(:menu) {described_class.new}
+  let(:menu) {described_class.new}
   let(:incorrect_item) {double :incorrect_item}
 
   context "menu items" do
-    it 'should initialize with a list hash' do
-      expect(menu.list).to be_instance_of Hash
+    it 'should be a hash' do
+      expect(menu.menu).to be_instance_of Hash
     end
     it 'should have a list of foods' do
-      expect(menu.list).to include(:toast)
+      expect(menu.menu).to include(:toast)
     end
   end
 
