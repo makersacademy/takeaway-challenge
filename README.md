@@ -94,29 +94,25 @@ How to Use
 -------
 
 ```
-Amandas-MBP:takeaway-challenge amanda$ pry
+Amandas-MacBook-Pro:takeaway-challenge amanda$ pry
 😺 require './lib/takeaway.rb'
 => true
 😺 takeaway = Takeaway.new
-=> #<Takeaway:0x007f9faaa30c18 @items={}, @menu=#<Menu:0x007f9faaa30bf0>>
-😺 takeaway.show_menu
-pepperoni                  £10
-vegetable                   £8
-margherita                  £8
-garlic bread                £3
-chips                       £3
-coca-cola                   £2
-=> {"pepperoni"=>10, "vegetable"=>8, "margherita"=>8, "garlic bread"=>3, "chips"=>3, "coca-cola"=>2}
-😺 takeaway.add_item('vegetable')
-=> 1
+=> #<Takeaway:0x007fec53804c78 @items={}, @menu=#<Menu:0x007fec53804c50>>
 😺 takeaway.add_item('pepperoni')
 => 1
 😺 takeaway.add_item('chips', 2)
 => 2
+😺 takeaway.add_item('garlic bread')
+=> 1
+😺 takeaway.add_item('coca-cola')
+=> 1
 😺 takeaway.items
-=> {"vegetable"=>1, "pepperoni"=>1, "chips"=>2}
-😺 takeaway.pay(24)
+=> {"pepperoni"=>1, "chips"=>2, "garlic bread"=>1, "coca-cola"=>1}
+😺 takeaway.show_total
+=> 21
+😺 takeaway.pay(21)
 Your order has been received and you will receive a text confirmation shortly
 => nil
-😺 exit
+😺
 ```
