@@ -6,6 +6,8 @@ describe Takeaway do
 	let(:sms_klass) { double(:sms_klass) }
 	let(:order_klass) { double(:order_klass, new: order) }
 	let(:order) { double(:order) }
+	let(:sms_klass) { double(:sms_klass, new: sms) }
+	let(:sms) { double(:sms) }
 
 	describe '#place_order' do
 

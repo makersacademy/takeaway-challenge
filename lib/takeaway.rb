@@ -29,7 +29,7 @@ class Takeaway
 		raise "Order has not been created." if @order == nil
 		raise "Payment amount is incorrect." if total != @order.order_total
 		send_confirmation(total)
-		@order = nil
+		close_order
 	end
 
 	private
@@ -45,6 +45,10 @@ class Takeaway
 		def send_confirmation(total)
 			new_sms
 			@sms.send(total)
+		end
+
+		def close_order
+			@order = nil
 		end
 
 end
