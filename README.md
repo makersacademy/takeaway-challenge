@@ -1,11 +1,9 @@
-README: TEAKO (ti-ka) WARFIELD-GRAHAM
-
-STATUS OF TAKEAWAY APP:
+README: TEAKO WARFIELD-GRAHAM
 
 GOALS OF CLASSES CREATED
     1- Takeaway Class Goal: Allow customers to view menu
 
-    2- Menu Class Goal: Populate the menu utilized by other classes to view and select meal items and caluclate prices
+    2- Menu Class Goal: Populate the menu utilized by other classes to view, select, and calculate meals/prices
 
     3- Order Class Goal: Allow customer to select and add dishes to a new order
 
@@ -14,32 +12,32 @@ GOALS OF CLASSES CREATED
 WHAT WORKS?/STATUS OF APP
 
 Functionality currently allows
-  • A menu to be viewed with meal options and prices
-    (takeaway = Takeaway.new > takeaway.menu)
+    • A menu to be viewed with meal options and prices
+      (cafe = Takeaway.new > cafe.menu)
 
-  • Menu items to be selected and placed in a new order list
-  (order = Order.new > order.select_pizza)
+    • Menu items to be selected and placed in a new order list
+    (order = Order.new > order.select_pizza)
 
-  • An accurate calculation of the order total
-    (order.order_total)
+    • An accurate calculation of the order total
+      (order.order_total)
 
-  • A reminder of the menu options during order phase
-    (order.options)
+    • A reminder of the menu options during order phase
+      (order.options)
 
-  • A new delivery time to be assigned
-    (order.receive_order)
+    • A new delivery time to be assigned
+      (order.receive_order)
 
 
 WHAT IS IN PROGRESS...
 
-  • Dynamically populated menu that allows new items to be added on-the-fly instead of hard-coded (see troubleshooting section below)
+    • Dynamically populated menu that allows new items to be added on-the-fly instead of hard-coded (see troubleshooting section below)
 
-  • Delivery text message providing time. (Working on proper install of twilio gem)
+    • Delivery text message providing time. (Working on proper install of twilio gem)
 
 TROUBLESHOOTING
 
-Dynamic Menu
-  I tried to have my Menu class work so that new meal items would be added into a dynamically updated array. I created .add_meal(meal, price) which created a hash and popped that option into the menu_list array. This worked fine within the class. BUT when I tried to access the populated menu list in Takeaway and Order classes for selecting items it always populated an empty array. I realized after being driven nuts that this is because the class always created a brand new version of my Menu class, of which, didn’t have a populated list (of course!!). After a couple hours I scratched the idea in favor of getting on with the project. My final solution was a hard coded menu list in an array.
+  Dynamic Menu
+    I tried to have my Menu class work so that new meal items would be added into a dynamically updated array. I created .add_meal(meal, price) method which created a hash and put it into the menu_list array. This worked fine within the class; BUT when I tried to access the populated menu list in Takeaway and Order classes for selecting items it always populated an empty array. I realized after being driven nuts that this is because the class always created a brand new version of my Menu class, which didn’t have a populated list (of course!!). After a couple hours I scratched the idea in favor of getting on with the project. My final solution was a hard coded menu list in an array.
 
 
 

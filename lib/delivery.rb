@@ -3,10 +3,14 @@
 
 class Delivery
 
-  attr_reader :delivery_time
+  # attr_reader :delivery_time
+  #
+  # def initalize
+  #   @delivery_time = Time.new + 1*60*60
+  # end
 
-  def initalize
-    @delivery_time = Time.now + 1*60*60
+  def delivery_time
+    order_time = Time.new + 1*60*60
   end
 
   def delivery_text

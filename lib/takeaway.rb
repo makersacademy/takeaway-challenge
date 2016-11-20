@@ -4,11 +4,10 @@ require_relative 'menu.rb'
 
 class Takeaway
 
-    attr_accessor :meals, :menu
+    attr_accessor :menu
 
-    def initialize
-      @meals = Menu.new
-      @menu = meals.menu_list
+    def initialize(klass)
+      @menu = klass.new.menu_list
     end
 
 end
