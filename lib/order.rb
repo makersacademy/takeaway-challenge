@@ -2,8 +2,10 @@ require_relative 'dishes_list'
 
 class Order
 
-attr_reader :dishes_list
-attr_reader :total, :ordered_dishes
+  LINE_WIDTH = 80
+
+  attr_reader :dishes_list
+  attr_reader :total, :ordered_dishes
 
   def initialize(dishes_list)
     @dishes_list = dishes_list
@@ -11,34 +13,40 @@ attr_reader :total, :ordered_dishes
     @ordered_dishes = []
   end
 
-  def which_dish
-    puts "Please choose index number of the dish you would like to order."
-    dish = gets.chomp.to_i
-  end
 
-  def how_many
-    puts "How many portions of this dish would you like to order?"
-    quantity = gets.chomp.to_i
-  end
-
-  def price(dish, quantity)
-    price = (dishes_list[dish - 1])[:price] * quantity
+  def add(dish, quantity)
+    price = calculate(dish, quantity)
     add_to_ordered(dish, quantity, price)
     self.total += price
   end
 
-  def more?
-    gets.chomp == "yes"
+  def format_order
+    formatted = "YOUR ORDER:".center(LINE_WIDTH) + "\n\n"
+    n = 1
+    ordered_dishes.each do |dish|
+      dish.each do |k, v|
+        case k
+        when :dish; formatted += "#{n}. #{v}".ljust(LINE_WIDTH/2)
+        when :price; formatted += "£#{v}"
+        when :quantity; formatted += " x #{v}"
+        when :total; formatted += "= £#{v}".rjust(LINE_WIDTH/2) + "\n"
+        end
+      end
+      n += 1
+    end
+    formatted += "TOTAL:  £#{total}".rjust(LINE_WIDTH) + "\n\n"
   end
 
-  def ordering_menu
-    price(which_dish, how_many)
-    puts "Would you like to add any more dishes? (yes/no)"
-    ordering_menu if more?
+  def show_order
+    print format_order
   end
 
   private
   attr_writer :total, :ordered_dishes
+
+  def calculate(dish, quantity)
+    (dishes_list[dish - 1])[:price] * quantity
+  end
 
   def add_to_ordered(dish, quantity, price)
     self.ordered_dishes << ((dishes_list[dish - 1]).merge({:quantity=>quantity, :total=>price }))

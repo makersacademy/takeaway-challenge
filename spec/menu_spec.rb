@@ -10,7 +10,8 @@ describe DishesMenu do
   end
 
   it "formats list of dishes" do
-    expect(menu.format_list).to be_a(String)
+    list = "                           LIST OF AVAILABLE DISHES:                            \n\n1. v                                                                          £4\n2. v                                                                          £3\n\n"
+    expect(menu.format_list).to eq list
   end
 
   it "displays a list of dishes and prices" do

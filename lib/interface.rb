@@ -4,10 +4,12 @@ class Interface
 
   attr_accessor :dishes_menu, :order
 
-  def initialize(name, dishes_menu, dish_list, order)
+  def initialize(name, dishes_menu, dish_list, order, take_away)
     @dishes_menu = dishes_menu.new(dish_list)
     @order = order.new(dish_list)
     @name = name
+    @take_away = take_away
+
   end
 
   def welcome
@@ -25,10 +27,19 @@ class Interface
     answer = gets.chomp
   end
 
+  def place_order
+    self.order.ordering_menu
+    puts "Is your order complete? (yes/no)"
+    if gets.chomp == "no"; self.order.ordering_menu
+    elsif gets.chomp == "yes"; self.take_away.new(order)
+    else
+    end
+  end
+
   def execute_action(answer)
     case answer
     when "1"; self.dishes_menu.show_dishes
-    when "2"; self.order.order
+    when "2"; place_order
     when "3"; puts "order status be here soon\n"
     when "9"; puts "See you next time!"
       exit
