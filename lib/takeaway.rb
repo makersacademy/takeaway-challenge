@@ -9,7 +9,9 @@ class Takeaway
   def read_menu
   end
 
-  def order(item, amount)
+  def order(dish_number, amount=1)
+    @order_items.map do ||
+    end
   end
 
   def is_correct_amount?(price)
@@ -24,7 +26,7 @@ class Takeaway
     is_correct_amount?(price)
     send_text("Swell. Thank you for your order. The total price: #{total_price}")
   end
-  
+
 
   def send_text(message)
     Twilio::REST::Client.new(ENV['ACbdceab5ffb3a83df647d818777df3c91'], ENV['83e3752f9614e4a7ee27122213d23401'])

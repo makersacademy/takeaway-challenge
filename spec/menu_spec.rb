@@ -15,4 +15,5 @@ describe Menu do
       expect(menu.add_to_menu(food,price)).to eq [{food => price}]
     end
   end
+  
 end

@@ -12,6 +12,7 @@ class Menu
   end
 
   def display
+    create_menu
     list_length = @items.length
     puts "The menu:".center(50)
     puts "---------".center(50)
