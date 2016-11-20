@@ -38,7 +38,16 @@ subject(:takeaway) {described_class.new}
 
   describe '#total_price' do
     it 'should sum the price of dishes' do
-      expect(subject.total_price([1,2,3])).to eq 13.97
+      dishes = subject.select_dishes([1,2,3])
+      expect(subject.calculate_price(dishes)).to eq 13.97
+    end
+  end
+
+  describe '#place_order' do
+    it 'should place the order' do
+      selected = subject.select_dishes([1,2,3])
+      total = subject.calculate_price(selected)
+      expect(subject.place_order([1,2,3])).to eq 'Your order was placed and the total amount is £13.97'
     end
   end
 

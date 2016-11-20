@@ -23,25 +23,25 @@ attr_accessor :select_dishes
   def select_dishes(dish_number_array)
     dishes_array = []
     for dish_number in dish_number_array
-      dish = menu[dish_number]
+      dish = select_dish(dish_number)
       dishes_array << dish
     end
     dishes_array
   end
 
-  def total_price(dish_number_array)
-    dishes_array = []
-    for dish_number in dish_number_array
-      dish = menu[dish_number]
-      dishes_array << dish
-    end
-    dishes_array
+  def calculate_price(dishes_array)
     total_price = []
     for dish in dishes_array
       price = dish.price
       total_price << price
     end
       total_price.inject(0, &:+)
-
   end
+
+  def place_order(dish_numbers_to_order)
+    dishes_array  = select_dishes(dish_numbers_to_order)
+    total_price = calculate_price(dishes_array)
+    "Your order was placed and the total amount is £#{total_price}"
+  end
+
 end
