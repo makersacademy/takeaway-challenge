@@ -12,7 +12,6 @@ attr_reader :list_of_dishes, :current_order_price, :menu
 
   def order(item, quantity)
     fail "Cannot add item(s): quantity is less than one." if quantity < 1
-    # fail "Cannot add item(s): total is incorrect." if total != list_of_dishes[item] * quantity
     bill(item, quantity)
     "You have ordered #{quantity} #{item}(s)."
   end
@@ -22,7 +21,7 @@ attr_reader :list_of_dishes, :current_order_price, :menu
   end
 
 
-# private
+private
 
   def bill(item, quantity)
     @current_order_price += list_of_dishes[item] * quantity

@@ -14,10 +14,6 @@ describe Order do
       expect(subject.order("margherita", 1)).to eq "You have ordered 1 margherita(s)."
     end
 
-    # it "should give error if total is not correct" do
-    #   expect{subject.order("margherita", 1)}.to raise_error "Cannot add item(s): total is incorrect."
-    # end
-
   end
 
   context "tests storing of order" do
