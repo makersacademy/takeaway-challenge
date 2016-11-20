@@ -12,15 +12,11 @@ class Message
 
     from = "+441772441327"
 
-    customers = {"+447588686168" => "Me"}
-
-
-      customers.each do |number, name|
-        client.account.messages.create(
-          :from => from,
-          :to => number,
-          :body => "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before  #{delivery_time.strftime('%H:%M')}.")
-      end
+    number = "+447588686168"
+    client.account.messages.create(
+      :from => from,
+      :to => number,
+      :body => "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before  #{delivery_time.strftime('%H:%M')}.")
     "Thank you for your order. A text message confirming the order is on its way."
   end
 

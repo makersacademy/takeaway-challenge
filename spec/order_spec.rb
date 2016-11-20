@@ -2,8 +2,6 @@ require 'order'
 
 describe Order do
 
-# subject(:order) { described_class.new}
-
   context '#order' do
 
     it 'should return the pizza and the amount ordered when 1 pizza is ordered' do
