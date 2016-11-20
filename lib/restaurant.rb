@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Restaurant
 
   attr_reader :order
@@ -31,8 +33,8 @@ class Restaurant
     }
   end
 
-  def place_order(dishes)
-    @order = dishes
+  def place_order(meal)
+    @order = meal
   end
 
 
