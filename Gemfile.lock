@@ -76,7 +76,7 @@ DEPENDENCIES
   coveralls
   rake
   rspec
-  twilio-ruby
+  twilio-ruby (~> 4.11.1)
 
 RUBY VERSION
    ruby 2.3.1p112
