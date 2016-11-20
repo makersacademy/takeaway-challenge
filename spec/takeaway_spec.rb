@@ -10,11 +10,22 @@ describe Takeaway do
 
 	describe '#place_order' do
 
-		it { is_expected.to respond_to(:place_order).with(2).arguments }
-
 		it 'should add items to the order' do
+			allow(order).to receive(:basket)
 			expect(order).to receive(:add).with(1, 1)
 			takeaway.place_order(1, 1)
+		end
+
+	end
+
+	describe '#check_total' do
+
+		it 'displays the total of the current order' do
+			allow(order).to receive(:add).with(1, 1)
+			allow(order).to receive(:basket)
+			takeaway.place_order(1, 1)
+			allow(order).to receive(:order_total) { 5.99 }
+			expect(takeaway.check_total).to eq "Total: £5.99"
 		end
 
 	end
@@ -28,6 +39,7 @@ describe Takeaway do
 
 		it 'expects payment total to be correct' do
 			allow(order).to receive(:add).with(1, 1)
+			allow(order).to receive(:basket)
 			takeaway.place_order(1, 1)
 			allow(order).to receive(:order_total) { 6.99 }
 			message = "Payment amount is incorrect."

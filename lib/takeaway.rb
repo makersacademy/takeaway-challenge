@@ -16,10 +16,11 @@ class Takeaway
 	def place_order(number, quantity)
 		new_order if @order == nil
 		@order.add(number, quantity)
+		@order.basket
 	end
 
-	def check_order
-		@order.basket << "Total: £#{@order.order_total}"
+	def check_total
+		"Total: £#{@order.order_total}"
 	end
 
 	def pay(total)

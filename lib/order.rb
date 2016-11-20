@@ -16,7 +16,7 @@ class Order
 	end
 
 	def order_total
-		total = 0
+		total = 0.00
 		@basket.each { | item |
 			cost = item[:cost].sub(/£/, '').to_f
 			total += cost
