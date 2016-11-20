@@ -21,13 +21,15 @@ class Order
 
   def display_order
     puts "Your order has the following items: "
-    @order_items
+    self.order_items.each do |item|
+        puts "#{item[:num]}. #{item[:dish]}" + "...£#{item[:price]}"
+    end
   end
 
   def order_sum
     item_prices = @order_items.map{|item| item[:price]}
     order_sum = item_prices.inject(@order_sum) {|sum, item| sum + item}
-    order_sum
+    order_sum.round(2)
   end
 
   def is_correct_amount?(price)

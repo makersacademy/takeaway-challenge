@@ -7,13 +7,13 @@ class Takeaway
   AUTH_TOKEN = '83e3752f9614e4a7ee27122213d23401'
   ACCOUNT_SID = 'ACbdceab5ffb3a83df647d818777df3c91'
   TWILIO_PHONE = '+441290366057'
-  My_PHONE = '+447460161991'
+  MY_PHONE = '+447460161991'
 
-  attr_reader :order
+  attr_reader :order, :order_price
 
   def initialize(order = Order.new)
     @order = order
-    @client = Twilio::REST::Client.new(ENV[ACCOUNT_SID], ENV[AUTH_TOKEN])
+    @client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
   end
 
   def is_correct_amount?(price)
@@ -25,18 +25,14 @@ class Takeaway
     self.order.display_order
   end
 
-  def complete_order
-    send_text("Swell. Thank you for your order. The total price: #{total_price}")
+  def order_price
+    self.order.order_sum
   end
 
 
   def send_text
-    message = "Thanks, your order arrives before #{Time.new}"
-    @client.messages.create(
-        from: ENV[TIWLIO_PHONE],
-        to: ENV[MY_PHONE],
-        body: message)
+    message = "Thanks, your order arrives before #{Time.new + 60*60}. Your order: #{basket_summary}, You will need to pay: #{@order_price}"
+    @client.account.messages.create({from: TWILIO_PHONE, to: MY_PHONE, body: message})
   end
-
 
 end
