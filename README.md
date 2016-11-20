@@ -20,7 +20,7 @@ The Take Away application is part of a weekend challenge at the Makers Academy i
 
 The application allows a user to build a take away restaurant and add dishes to its menu and control the incoming orders.
 
-A customer will be given a list of available dishes and the restaurant is able to take orders and add dishes to its order. The customer will be able get an order status and make sure everything is correct according to the order. The customer will be given an overview of the order and the total of the order. Further the customer will be sent a text message confirming the order and time of delivery which will be 1 hour after the order has been placed.
+A customer will be given a list of available dishes and the restaurant is able to take orders and add dishes to its order. The customer will be able get an order status with an overview of the selected dishes and the total cost of the order. At the checkout the customer will be sent a text message confirming the order and time of delivery which will be 1 hour after the order has been placed.
 
 The application has an integrated text message confirmation system that uses the Twilio API.
 
