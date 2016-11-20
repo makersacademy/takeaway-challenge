@@ -7,8 +7,8 @@ describe Menu do
 
     it { is_expected.to respond_to :list_of_dishes }
 
-    it 'should respond with a hash' do
-      expect(subject.list_of_dishes).to include("margherita" => 9)
+    it 'should respond with a hash of dishses' do
+      expect(subject.list_of_dishes).to include("margherita" => 9, "pepperoni" => 10, "americano" => 11)
     end
 
   end

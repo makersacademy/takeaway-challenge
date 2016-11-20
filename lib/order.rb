@@ -3,7 +3,7 @@ require_relative './message'
 
 class Order
 
-attr_reader :current_order_price, :menu
+attr_reader :current_order_price, :menu, :message
 
   def initialize
     @current_order_price = 0
@@ -13,6 +13,7 @@ attr_reader :current_order_price, :menu
 
   def order(item, quantity)
     fail "Cannot add item(s): quantity is less than one." if quantity < 1
+    fail "Cannot store order: no such item exists." if menu.list_of_dishes[item] == nil
     bill(item, quantity)
     "You have ordered #{quantity} #{item}(s)."
   end
