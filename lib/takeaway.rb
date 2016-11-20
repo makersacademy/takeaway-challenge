@@ -1,5 +1,6 @@
 require_relative "order"
 require_relative "menu"
+require_relative "checkout"
 
 class Takeaway
 

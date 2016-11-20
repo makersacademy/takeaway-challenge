@@ -6,7 +6,6 @@ class Order
   def initialize(takeaway)
     @order = []
     @takeaway = takeaway
-    @order_number = order_number
   end
 
   def add_item(number, takeaway)
@@ -14,7 +13,7 @@ class Order
   end
 
   def customer_input(takeaway)
-    takeaway.menu.each{ |a| puts"#{a}/n" }
+    takeaway.menu.each{ |a| puts"#{a}" }
 
     puts "Type in the menu number for your order. Type 0 to complete your order"
 
@@ -26,7 +25,6 @@ class Order
       break if gets.chomp == "0"
     end
   end
-
 
 
 end
