@@ -9,13 +9,13 @@ class Confirmation
     @account = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def send_confirmation(message)
+  def send_confirmation(phone_number)
+    time = Time.new + (60 * 60)
     @account.messages.create(
       from: '+442033223757',
-      to: '+447711581360',
-      body: message
+      to: phone_number,
+      body: "Your food is being cooked and will be delivered at #{time.strftime('%H:%M')}."
     )
   end
-
 
 end

@@ -1,3 +1,4 @@
+require_relative "dish.rb"
 #
 class OrderItem
 

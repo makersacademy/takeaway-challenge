@@ -27,9 +27,9 @@ class Restaurant
     order_status
   end
 
-  def finish_order
+  def finish_order(phone_number)
     order_status
-    send_confirmation
+    send_confirmation(phone_number)
     orders << self.order
     reset_order
   end
@@ -59,17 +59,8 @@ class Restaurant
     order || start_order
   end
 
-  def send_confirmation
-    order.confirm.send_confirmation(order_message)
-  end
-
-  def order_message
-    "Your food is being cooked and will be delivered at #{time}."
-  end
-
-  def time
-    time = Time.new + (60 * 60)
-    time.strftime('%H:%M')
+  def send_confirmation(phone_number)
+    order.confirm.send_confirmation(phone_number)
   end
 
   def no_order_placed?

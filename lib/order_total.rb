@@ -12,7 +12,7 @@ class OrderTotal
   end
 
   def item_total(item)
-    item.price * item.amount
+    item.dish.price * item.amount
   end
 
 
