@@ -1,43 +1,33 @@
 
 class Menu
 
-  attr_reader :items
+  attr_reader :menu_items
 
   def initialize
-    @items = []
+    @menu_items = [
+      {num: 1, dish: "Chicken Soup", price: 3.45},
+      {num: 2, dish: "Spicy Hamburger", price: 8.99},
+      {num: 3, dish: "Spaghetti Bolognese", price: 7.65},
+      {num: 4, dish: "Spring Salad", price: 4.55},
+      {num: 5, dish: "Spring Rolls", price: 3.69},
+      {num: 6, dish: "Sweet and Sour Soup", price: 3.49},
+      {num: 7, dish: "Chicken Sechuan", price: 5.99},
+      {num: 8, dish: "Diet Coke", price: 1.99},
+      {num: 9, dish: "Sparkling Water", price: 1.12},
+      {num: 10, dish: "Poppy Mochi", price: 3.99},
+      {num: 11, dish: "Red Beans Mochi", price: 3.89},
+      {num: 12, dish: "Rice Noodles", price: 2.99}
+    ]
   end
 
-  def add_to_menu(food, price)
-    self.items << {food => price}
-  end
 
   def display
-    create_menu
-    list_length = @items.length
     puts "The menu:".center(50)
     puts "---------".center(50)
     puts "Food name ------------------------- price".center(50)
     puts ""
-    self.items.each_with_index do |item, index|
-        item.each do |n, k|
-          puts " #{index + 1}. #{n}".ljust(25) + "...£#{k}".rjust(25)
-        end
-      end
+    self.menu_items.each do |item|
+        puts "#{item[:num]}. #{item[:dish]}".ljust(25) + "...£#{item[:price]}".rjust(25)
     end
-
-  def create_menu
-    add_to_menu("Chicken Soup", 3.45)
-    add_to_menu("Spicy Hamburger", 8.99)
-    add_to_menu("Spaghetti Bolognese", 7.65)
-    add_to_menu("Spring Salad", 4.55)
-    add_to_menu("Spring Rolls", 3.69)
-    add_to_menu("Sweet and Sour Soup", 3.49)
-    add_to_menu("Chicken Sechuan", 5.99)
-    add_to_menu("Diet Coke", 1.99)
-    add_to_menu("Sparkling Water", 1.12)
-    add_to_menu("Poppy Mochi", 3.99)
-    add_to_menu("Red Beans Mochi", 3.89)
-    add_to_menu("Rice Noodles", 2.99)
   end
-
 end
