@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2010-04-01/Accounts/AC3cfdffd043d2ad9ad31516f46690499e/Messages.json
+    body:
+      encoding: US-ASCII
+      string: From=%2B441772441327&To=%2B447588686168&Body=Thank+you%21+Your+order+was+placed+and+is+being+delivered+by+our+best+directionally+challenged+learner+driver.+It+will+be+delivered+before++20%3A31.
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/4.13.0 (ruby/x86_64-darwin14 2.3.1-p112)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic QUMzY2ZkZmZkMDQzZDJhZDlhZDMxNTE2ZjQ2NjkwNDk5ZTpiYjg1MDA1ZTcyMDU3MTM0NTFlMDVmZTQ5NTg4NzY0Zg==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 20 Nov 2016 19:31:03 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Request-Duration:
+      - '0.352'
+      Twilio-Request-Id:
+      - RQ2f92b1765b96494286197cd490420f59
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '948'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SMedc298df07c84f67b631544125c7cb57", "date_created": "Sun,
+        20 Nov 2016 19:31:02 +0000", "date_updated": "Sun, 20 Nov 2016 19:31:02 +0000",
+        "date_sent": null, "account_sid": "AC3cfdffd043d2ad9ad31516f46690499e", "to":
+        "+447588686168", "from": "+441772441327", "messaging_service_sid": null, "body":
+        "Sent from your Twilio trial account - Thank you! Your order was placed and
+        is being delivered by our best directionally challenged learner driver. It
+        will be delivered before  20:31.", "status": "queued", "num_segments": "2",
+        "num_media": "0", "direction": "outbound-api", "api_version": "2010-04-01",
+        "price": null, "price_unit": "USD", "error_code": null, "error_message": null,
+        "uri": "/2010-04-01/Accounts/AC3cfdffd043d2ad9ad31516f46690499e/Messages/SMedc298df07c84f67b631544125c7cb57.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/AC3cfdffd043d2ad9ad31516f46690499e/Messages/SMedc298df07c84f67b631544125c7cb57/Media.json"}}'
+    http_version: 
+  recorded_at: Sun, 20 Nov 2016 19:31:03 GMT
+recorded_with: VCR 3.0.3
