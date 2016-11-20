@@ -6,6 +6,7 @@ subject(:takeaway){described_class.new(order_klass)}
 let(:order_klass){double :order_klass, :new => placed_order}
 let(:placed_order){double :placed_order, :selected_dishes => [],
   :view_order => {}, :total_cost => "", :confirm_order => {}}
+let(:SMS) {double :SMS}
 
   context "The available dishes" do
     it "should have a list of all dishes and their prices" do
@@ -45,7 +46,7 @@ let(:placed_order){double :placed_order, :selected_dishes => [],
   end
 
   context "Checking order" do
-    it "should be able to view all selected dishes" do
+    it "should be an empty hash when nothing has been selected" do
       takeaway.place_new_order
       expect(takeaway.check_order).to eq({})
     end
@@ -54,6 +55,18 @@ let(:placed_order){double :placed_order, :selected_dishes => [],
       expect{takeaway.check_order}.to raise_error("No order has been made.")
     end
 
+    it "shoud list out dishes, quantity and total cost" do
+      takeaway.place_new_order
+      allow(placed_order).to receive(:view_order) {{"Chicken Adobo"=>2, "Total cost"=>"£9.0"}}
+      expect(takeaway.check_order).to eq placed_order.view_order
+    end
+  end
+
+  context "checking cost of order" do
+    it "should raise error if no order has been made" do
+      expect{takeaway.total_cost}.to raise_error("No order has been made.")
+    end
+    
     it "should return the total cost of everything ordered" do
       takeaway.place_new_order
       allow(placed_order).to receive(:total_cost) {"£13.5"}
@@ -62,14 +75,15 @@ let(:placed_order){double :placed_order, :selected_dishes => [],
   end
 
   context "Confirming order" do
-    it "should list out dishes, quantity and total cost" do
-      takeaway.place_new_order
-      allow(placed_order).to receive(:confirm_order) {{"Chicken Adobo"=>2, "Total cost"=>"£9.0"}}
-      expect(takeaway.confirm_order).to eq placed_order.confirm_order
-    end
-
     it "should raise error if no order has been made" do
       expect{takeaway.confirm_order}.to raise_error("No order has been made.")
+    end
+
+    it "should confirm message is sent" do
+      takeaway.place_new_order
+      message = "Thank you for your order"
+      allow(SMS).to receive(:send_message) {message}
+      expect(takeaway.confirm_order).to eq("Thank you for your order")
     end
   end
 

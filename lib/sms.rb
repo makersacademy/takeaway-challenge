@@ -14,11 +14,16 @@ module SMS
     :to => '+447825069388',
     :body => message
     )
+  self.confirm_message
   end
 
 private
   def self.delivery_time
     @time = (Time.now + 60*60).strftime('%H:%M')
+  end
+
+  def self.confirm_message
+    "You should receive a text message confirming your order and delivery time."
   end
 
 end

@@ -49,7 +49,7 @@ attr_reader :all_dishes, :order, :placed_order
 
   def confirm_order
     check_for_error
-    placed_order.confirm_order
+    SMS.send_message
   end
 
 private
