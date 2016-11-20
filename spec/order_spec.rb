@@ -6,6 +6,7 @@ describe Order do
 
   before do
     order.select_items("burrito", 2)
+
   end
 
   it "should have a start method, that welcomes the customer and lists the menu" do
@@ -32,15 +33,15 @@ describe Order do
       order.get_price
     end
 
-      it "should display to total price" do
-        order.calculate_total_price
-        expect(order.display_total_price).to eq "Your total is £12"
-      end
+    it "should display to total price" do
+      order.calculate_total_price
+      expect(order.display_total_price).to eq "Your total is £12"
+    end
 
-      it "should raise an error if the total is incorrect" do
-        order.calculate_total_price * 2
-        expect{(order.display_total_price).to raise_error("An error has occurred. Please try again")}
-      end
+    it "should raise an error if the total is incorrect" do
+      order.calculate_total_price * 2
+      expect{(order.display_total_price).to raise_error("An error has occurred. Please try again")}
+    end
 
 
 

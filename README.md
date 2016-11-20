@@ -18,13 +18,13 @@ Completed 20 November 2016
 Instructions
 -------
 
-* Require ./lib/order.rb in IRB or Pry
-* Create a new order (order = Order.new)
-* Start the order (order.start)
-* Select the items and quantities you want to order (order.select_items("burrito", 2) order.select_items("corn", 1) order.select_items("tacos", 2) *you can order as many items as you want*
-* Get the price of your order separated by item (order.get_price)
-* Confirm your order (order.confirm("yes")), or don't (order.confirm("no")), but then you'll miss out on delicious Mexican food
-* Finally, complete your order. (order.confirmation.complete_order)
+* ``require ""./lib/order.rb"`` in IRB or Pry
+* Create a new order ``order = Order.new``
+* Start the order ``order.start``
+* Select the items and quantities you want to order ``order.select_items("burrito", 2) order.select_items("corn", 1) order.select_items("tacos", 2)`` *you can order as many items as you want*
+* Get the price of your order separated by item ``order.get_price``
+* Confirm your order ``order.confirm("yes")``, or don't ``order.confirm("no")``, but then you'll miss out on delicious Mexican food!
+* Finally, complete your order ``order.confirmation.complete_order`` and you (well, I), will receive a text message.
 
 The Task as described
 -------
