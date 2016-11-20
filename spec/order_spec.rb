@@ -10,7 +10,7 @@ describe Order do
       expect(order.ordered_dishes).to eq []
     end
 
-    it "initializes with total equaling to 0" do
+    it "initializes with sum total equaling to 0" do
       expect(order.total).to eq 0
     end
   end
@@ -28,7 +28,8 @@ describe Order do
 
     it "Updates total by calculated price" do
       order.add(1, 2)
-      expect(order.total).to eq 8
+      order.add(2, 2)
+      expect(order.total).to eq 14
     end
 
     it "Adds ordered dish and price to the array" do
@@ -49,6 +50,13 @@ describe Order do
       order.add(1, 3)
       order.add(2, 4)
       expect(order.correct?).to be true
+    end
+  end
+  describe "#remove" do
+    it "removes unwanted dishes from the order" do
+      order.add(1, 3)
+      order.remove_ordered(1)
+      expect(order.ordered_dishes).to eq ([])
     end
   end
 end

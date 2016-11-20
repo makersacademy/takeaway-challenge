@@ -4,8 +4,7 @@ class Order
 
   LINE_WIDTH = 60
 
-  attr_reader :dishes_list
-  attr_reader :total, :ordered_dishes
+  attr_reader :dishes_list, :total, :ordered_dishes
 
   def initialize(dishes_list)
     @dishes_list = dishes_list
@@ -15,7 +14,7 @@ class Order
 
 
   def add(dish, quantity)
-    raise "Cannot add. No such dish on the menu." if doesnt_exist?(dish)
+    raise "Cannot add. No such dish on the menu." if doesnt_exist?(dishes_list, dish)
     price = calculate(dish, quantity)
     add_to_ordered(dish, quantity, price)
     self.total += price
@@ -31,6 +30,11 @@ class Order
     total == calculated_total
   end
 
+  def remove_ordered(dish_index_from_order)
+    raise "Cannot add. No such dish in your order." if doesnt_exist?(ordered_dishes, dish_index_from_order)
+    ordered_dishes.delete_at(dish_index_from_order - 1)
+  end
+
   private
   attr_writer :total, :ordered_dishes
 
@@ -42,8 +46,8 @@ class Order
     self.ordered_dishes << ((dishes_list[dish - 1]).merge({:quantity=>quantity, :total=>price }))
   end
 
-  def doesnt_exist?(dish)
-    (dishes_list[dish - 1]) == nil
+  def doesnt_exist?(list, dish)
+    (list[dish - 1]) == nil
   end
 
   def format_order

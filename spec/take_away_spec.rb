@@ -2,19 +2,19 @@ require 'take_away'
 
 describe TakeAway do
 let(:order) {Class.new}
-let(:number) {7443191545}
 subject(:take_away) { described_class.new }
 
   it "lets user place order" do
     VCR.use_cassette('twilio') do
-      take_away.place(order, number)
-      expect(take_away.order).not_to be(nil)
+      take_away.place(order)
+      expect(take_away.order).to be(order)
     end
   end
 
-  it "sends a confirmation by text message" do
+  it "records when order was placed" do
     VCR.use_cassette('twilio') do
-      expect((take_away.place(order, number)).to_s).to include("Twilio")
+      take_away.place(order)
+      expect(take_away.time).to be_kind_of(Time)
     end
   end
 

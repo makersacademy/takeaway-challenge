@@ -3,7 +3,7 @@ require 'twilio-ruby'
 
 class TakeAway
 
-  attr_accessor :order, :client, :time
+  attr_reader :order, :client, :time
 
   def initialize
     @order = nil
@@ -13,17 +13,22 @@ class TakeAway
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def place(order, number)
+  def place(order)
     self.order = order
     self.time = Time.new
-    send_text(number)
+    message = "Your order will be delivered by #{time + (60*60)}"
+    send_text(message)
   end
 
-  def send_text(number)
-    self.client.account.messages.create(
-      from: '+441274288495',
-      to: "+44#{number}",
-      body: "Your order will be delivered by #{time + (60*60)}"
-    )
-  end
+  private
+attr_writer :order, :client, :time
+
+def send_text(message)
+  self.client.account.messages.create(
+    from: '+441274288495',
+    to: "+44#{7443191545}",
+    body: message
+  )
+end
+
 end
