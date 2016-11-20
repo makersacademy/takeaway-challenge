@@ -36,4 +36,10 @@ subject(:takeaway) {described_class.new}
     end
   end
 
+  describe '#total_price' do
+    it 'should sum the price of dishes' do
+      expect(subject.total_price([1,2,3])).to eq 13.97
+    end
+  end
+
 end

@@ -11,6 +11,7 @@ attr_accessor :select_dishes
     dish3 = Dish.new("Fried Wok", 4.99)
     dish4 = Dish.new("Fried Rice", 5.99)
     dish5 = Dish.new("Greens", 2.99)
+    dish6 = Dish.new("Empanadas", 9.99)
 
     @menu = [dish1, dish2, dish3, dish4, dish5]
   end
@@ -28,4 +29,19 @@ attr_accessor :select_dishes
     dishes_array
   end
 
+  def total_price(dish_number_array)
+    dishes_array = []
+    for dish_number in dish_number_array
+      dish = menu[dish_number]
+      dishes_array << dish
+    end
+    dishes_array
+    total_price = []
+    for dish in dishes_array
+      price = dish.price
+      total_price << price
+    end
+      total_price.inject(0, &:+)
+
+  end
 end
