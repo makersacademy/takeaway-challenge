@@ -1,5 +1,4 @@
 # Allows customer to select and add dishes to new order
-
 require_relative 'menu.rb'
 
 class Order
