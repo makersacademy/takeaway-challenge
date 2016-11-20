@@ -11,5 +11,9 @@ describe Order do
       order.add_item(dish, 5)
       expect(order.items.count).to eq 1
     end
+
+    it "should be able to calculate the total" do
+      expect(order).to respond_to(:order_total)
+    end
   end
 end

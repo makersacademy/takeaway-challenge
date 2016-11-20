@@ -11,8 +11,6 @@ class OrderTotal
     self.total = sum
   end
 
-  private
-
   def item_total(item)
     item.price * item.amount
   end
