@@ -28,7 +28,12 @@ attr_reader :options, :new_order
   def select_mexican
     order = options.select {|k,v| k == :mexican}
     new_order << order
+    end
+
+  def order_total
+    new_order.flat_map(&:values).inject(:+)
   end
+
 
 
 end
