@@ -20,7 +20,7 @@ describe Restaurant do
   it 'saves an order' do
     new_order = { "Diavola" => 1, "Capricosa" => 2 }
     restaurant.place_order(new_order)
-    expect(restaurant.order).to eq new_order
+    expect(restaurant.meal).to eq new_order
   end
 
 end
