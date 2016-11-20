@@ -30,7 +30,7 @@ end
     end
 
     it "selected dishes to be shown" do
-      expect(@menu.selected_dishes(2)).to eq ["Pizza - £6"]
+      expect(@menu.select_dish(@dishes1,1)).to eq([{:name => "Pasta", :price => 3, :availability => true}])
     end
   end
 

@@ -25,8 +25,9 @@ describe Menu do
     end
   end
   context "when select_dishes is called" do
-    it "should allow the user to select any amount of dishes they like and return them" do
-      expect(menu.select_dishes).to eq(["#[Double :food3] - £#[Double :price3]"])
+    it "should push a dish from the menu into an array" do
+      allow(dishes).to receive(:all_dishes).and_return([{:name => food1, :price => price1, :availability => true},{:name => food2, :price => price2, :availability => false}, {:name => food3, :price => price3, :availability => true}])
+      expect(menu.select_dish(dishes,2)).to eq([{:name => food3, :price => price3, :availability => true}])
     end
   end
 end
