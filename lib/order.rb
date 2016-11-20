@@ -1,11 +1,19 @@
 class Order
-attr_accessor :selection
+attr_accessor :list_of_dishes
 
-def initialize
-  @selection = []
-end
+  def initialize
+    @list_of_dishes = []
+  end
 
-def menu
+  def select_dish(amount, choice)
+    while amount != 0
+      @list_of_dishes << "#{choice}: #{menu[choice.to_sym]}"
+      amount -= 1
+    end
+    @list_of_dishes
+  end
+
+  def menu
     @menu = {
       cheeseburger: "£8.50",
       fries: "£3.75"
@@ -14,10 +22,6 @@ def menu
 
   def print_menu
     menu.each {|key, value| puts "#{key}: #{value}" }
-  end
-
-  def select_dish(choice)
-    @selection << "#{choice}: #{menu[choice.to_sym]}"
   end
 
 end
