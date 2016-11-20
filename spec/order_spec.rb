@@ -8,25 +8,20 @@ describe Order do
 		expect(order.basket).to eq []
 	end
 
-	it { is_expected.to respond_to(:create_order) }
+	describe '#add' do
 
-	describe '#create_order' do
-
-		before do
-			$stdin = StringIO.new("2\n1\n\n")
+		it 'expects items from the menu to be added to the basket' do
+			order.add(1, 1)
+			expect(order.basket).to eq [{:number=>1, :item=>"Cheese Pizza", :cost=>"£5.99"}]
 		end
 
-		after do
-			$stdin = STDIN
-		end
+	end
 
-		it 'is expected to add items to the basket' do
-			order.create_order
-			expect(order.basket).to eq ([{:number=>2, :item=>"Pepperoni Pizza", :cost=>"£6.99"}])
-		end
+	describe '#order_total' do
 
-		it 'is expected to give the order total' do
-			expect(order.create_order).to eq "£6.99"
+		it 'is expected to calculate the order total' do
+			order.add(1, 2)
+			expect(order.order_total).to eq 11.98
 		end
 
 	end
