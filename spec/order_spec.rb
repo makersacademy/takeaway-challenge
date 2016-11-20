@@ -3,9 +3,10 @@ require "order"
 
 describe Order do
 
+let (:order){Order.new(:takeaway)}
 
   it "should respond to add item" do
-    expect(subject).to respond_to(:add_item)
+    expect(order).to respond_to(:add_item)
   end
 
   it "should respond to a menu item request with an array" do
@@ -13,11 +14,18 @@ describe Order do
     expect(takeaway).to receive(:menu_item).with(:number).and_return(Array)
   # takeaway = Takeaway.new
   # takeaway.add_menu_items(menu)
-    subject.add_item(:number, takeaway)
+    order.add_item(:number, takeaway)
   end
 
   it "should show the items that are in the order" do
-    expect(subject.order).to be_an(Array)
+    expect(order.order).to be_an(Array)
   end
+
+  it "should respond to customer_input" do
+    expect(order).to respond_to(:customer_input)
+  end
+
+
+
 
 end
