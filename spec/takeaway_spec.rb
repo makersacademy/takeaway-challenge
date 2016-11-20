@@ -1,5 +1,6 @@
 require 'takeaway'
 require 'menu'
+require 'order'
 describe Takeaway do
   subject(:takeaway) { described_class.new }
   let(:menu) {double :menu}

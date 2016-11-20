@@ -9,7 +9,6 @@ class Order
     @grand_total = 0
   end
 
-
   def add_to_basket(item, number = 1)
     fail "Item not on the menu" unless on_menu?(item)
     self.basket[item] = ["Quantity: #{number}, Total price: #{total(item, number)}"]

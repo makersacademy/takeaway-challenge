@@ -6,7 +6,7 @@ describe Menu do
 
   context "menu items" do
     it 'should be a hash' do
-      expect(menu.menu).to be_instance_of Hash
+      expect(Menu::MENU).to be_instance_of Hash
     end
     it 'should show the list of foods' do
       expect(menu.menu).to include(:margherita)

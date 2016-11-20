@@ -16,10 +16,10 @@ describe Order do
     end
   end
   context "menu" do
-  it 'should be able to access the menu' do
-    expect(order.menu).to eq Menu::MENU
+    it 'should be able to access the menu' do
+      expect(order.menu).to eq Menu::MENU
+    end
   end
-end
   describe "#add to basket" do
     before do
       allow(incorrect_item).to receive(:to_sym)
@@ -50,7 +50,4 @@ end
       expect{order.checkout(10)}.to raise_error("Incorrect total. Please double-check.")
     end
   end
-
-
-
 end

@@ -7,6 +7,7 @@ class Menu
           four_seasons: 7,
           garlic_bread: 3,
           olives: 2 }
+
   def menu
     MENU
   end
