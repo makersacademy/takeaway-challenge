@@ -15,6 +15,14 @@ Takeaway Challenge
  ```
 
 Instructions
+
+- PizzaShop & SushiShop Class are inheritance of TakeawayShop Class
+  Therefore only set own menu, you can use the TakeawayShop functions.
+- In Takeawayshop class use Twilio API to send texts to customers
+
+How to use
+
+Pizza takeaway shop
 -------
 ```sh
 2.3.1 :001 > require './lib/pizza_shop.rb'
@@ -27,7 +35,7 @@ Instructions
 
 2.3.1 :003 > domino_pizza.menu
  => {"Margherita"=>7.0, "BBQ Pizza"=>8.5, "Pepperoni"=>9.0,
-     "Hawaiian"=>8.5, "Garlic Bread"=>1.95, "Fresh Salada"=>1.5, "Diet Coke"=>1.7}
+     "Hawaiian"=>8.5, "Garlic Bread"=>1.95, "Fresh Salad"=>1.5, "Diet Coke"=>1.7}
 
 2.3.1 :004 > order = Order.new( "phone number", "BBQ Pizza", "Pepperoni", "Diet Coke" )
  => # <Order:0x007f8088aab008 @phone="phone number", @order=["BBQ Pizza", "Pepperoni", "Diet Coke"]>
@@ -49,4 +57,40 @@ DEPRECATED] SMS Resource is deprecated. Please use Messages (https://www.twilio.
 # this command will send a text to valid phones on Twilio API with this message below:
 # "Sent from your Twilio trial account -
 #  Thank you! Your order was placed and will be delivered before 22:23(1hour plus when you ordered)"
+```
+
+Sushi takeaway shop
+-------
+```sh
+2.3.1 :001 > require './lib/sushi_shop.rb'
+ => true
+
+2.3.1 :002 > sushiya = SushiShop.new
+ => # <SushiShop:0x007fde948c74e8
+    # @menu={"Tuna"=>3.0, "Eel"=>5.0, "Egg"=>1.5, "Salmon"=>3.5, "Sea weed"=>1.95, "Sake"=>9.5, "Miso soup"=>1.0}>
+
+2.3.1 :003 > sushiya.menu
+ => {"Tuna"=>3.0, "Eal"=>5.0, "Egg"=>1.5, "Salmon"=>3.5, "Sea weed"=>1.95, "Sake"=>9.5, "Miso soup"=>1.0}
+
+2.3.1 :004 > order = Order.new( "phone number", "Tuna", "Salmon", "Sake", "Miso soup" )
+ => # <Order:0x007fde9489ec78 @phone="phone number", @order=["Tuna", "Salmon", "Sake", "Miso soup"]>
+
+2.3.1 :005 > sushiya.take_order( order )
+ => 2016-11-20 23:47:01 +0000
+
+2.3.1 :006 > sushiya.confirm_order
+"You've orderd 4 items.
+----------------------
+Tuna  £3.0
+Salmon  £3.5
+Sake  £9.5
+Miso soup  £1.0
+ => "[ total: £17.0 ]""
+
+2.3.1 :007 > sushiya.send_text
+DEPRECATED] SMS Resource is deprecated. Please use Messages (https://www.twilio.com/docs/api/rest/message)
+=> <Twilio::REST::SMS::Message @path=/2010-04-01/Accounts/AC98d4d8428ec27f9c5e9c52ade6acbd57/SMS/Messages/SM77923448bb5b471ca58eb1e2111eed51>
+# this command will send a text to valid phones on Twilio API with this message below:
+# "Sent from your Twilio trial account -
+#  Thank you! Your order was placed and will be delivered before 24:47(1hour plus when you ordered)"
 ```
