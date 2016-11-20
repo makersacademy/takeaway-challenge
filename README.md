@@ -14,14 +14,19 @@ Takeaway Challenge
 
  ```
 
-Instructions
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+
+Install
 -------
 
 * Fork this repo and clone to your machine
 * Run the command `gem install bundler` (if you don't have bundler already).
 * Run the command `bundle install` to install the required gems.
 * Open up `irb` or `pry` to begin using the Takeaway system!
+
+Instructions
 -----
+
 Begin by initializing a new Takeaway object.
 
 To view the menu - `#view_menu`.
@@ -35,6 +40,7 @@ To check what you have ordered with the prices, quantity and total cost - `#chec
 To check just the total cost - `#total_price`
 
 To confirm your order and receive a text confirmation - `#confirm order`
+
 -----
 **Example pry transcript**
 ```
