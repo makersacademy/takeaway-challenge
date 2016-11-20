@@ -20,6 +20,10 @@ class Order
     amount
   end
 
+  def confirm
+    bucket
+    total
+  end
 
 
 end

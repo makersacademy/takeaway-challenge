@@ -9,6 +9,7 @@ describe Order do
   subject(:order2) {described_class.new(second_order)}
 
   context "to check the what's ordered" do
+
     it "returns the order" do
       expect(order1.bucket).to eq( {:burger=>{:portions=>1, :price=>10}})
     end
@@ -23,8 +24,8 @@ describe Order do
     end
   end
 
-
-
-
+  it " confirms the bucket and total" do
+      expect(order1.confirm).to eq 10
+  end
 
 end
