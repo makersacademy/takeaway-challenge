@@ -10,9 +10,12 @@ describe "#print_menu" do
   end
 end
 
-  # it "should allow a customer to place an order" do
-  #   expect(takeaway.place_order("Pizza")).to eq({ "Pizza" => 10})
-  # end
+describe "#place order" do
+  it "should allow a customer to place an order" do
+    expect(takeaway.place_order("Pizza", 1, 10)).to eq("You have ordered 1 portion of Pizza at a total cost of £10")
+  end
+end
+
 
 
 end
