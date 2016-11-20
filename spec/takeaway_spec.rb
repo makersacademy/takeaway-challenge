@@ -7,11 +7,14 @@ describe Takeaway do
   let(:klass2) { double(:klass2) }
   let(:menu) { double(:menu) }
   let(:order) { double(:order) }
+  let(:item) { double(:item) }
+  let(:qty) { double(:qty) }
 
   before do
     allow(menu).to receive(:new).and_return menu
     allow(order).to receive(:new).and_return order
     allow(menu).to receive(:menu_list).and_return ({"Spag_Bol" => 6.5, "Pizza" => 4, "Chips" => 2.75})
+    allow(order).to receive(:basket)
   end
 
   context 'Initialization' do
@@ -23,7 +26,15 @@ describe Takeaway do
     it 'accepts an Order object on initialization' do
       expect(takeaway.order).to eq order
     end
-    
+
+  end
+
+  context 'Selection' do
+
+    it 'returns "Not a valid item" when passed "Peas"' do
+      expect(takeaway.select_item("Peas")).to eq "Not a valid item"
+    end
+
   end
 
   context 'Check if valid item' do
@@ -38,6 +49,14 @@ describe Takeaway do
 
   end
 
+  context 'Basket' do
+
+    it 'is expected to respond to add_to_basket' do
+      expect(takeaway).to respond_to(:add_to_basket)
+    end
+
+  end
+
   context 'Calculate Total' do
 
     it 'calculates total cost' do
@@ -46,19 +65,6 @@ describe Takeaway do
 
   end
 
-  # context 'Validating Order' do
-  #
-  #   it 'returns "Not a valid item" if item is not in menu' do
-  #
-  #
-  #   end
-  #
-  #   it 'raises an error when total provided does not match total calculated' do
-  #   message = "Incorrect total"
-  #
-  #   end
-  #
-  # end
 
   # context 'Accepting Order' do
   #

@@ -4,23 +4,27 @@ require './lib/SMS'
 
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :current_selection
 
   include SMS
+
+  DEFAULT_QUANTITY = 1
 
   def initialize(klass1, klass2)
     @menu = klass1.new
     @order = klass2.new
   end
 
-  # def validate_order
-  #   return "Not a valid item" if !in_menu?(item)
-  #   raise("Incorrect total") if
-  # end
+  def select_item(item, quantity = DEFAULT_QUANTITY)
+    return "Not a valid item" if !in_menu?(item)
+    "#{quantity}x #{item} added to your basket"
+  end
 
+  def add_to_basket(item, quantity)
+    @order.basket << {:item=>item, :qty=>qty}
+  end
 
-
-  def accept_order(basket, total)
+  def accept_order(total)
     puts "Thank you for your order: £" + total.to_s
     #send_sms
   end
@@ -32,5 +36,7 @@ class Takeaway
   def calculate_total(basket)
     basket.each.inject(0) { |sum, line| sum + (@menu.menu_list[line[:item]] * line[:qty])}
   end
+
+
 
 end
