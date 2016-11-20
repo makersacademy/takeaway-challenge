@@ -2,11 +2,20 @@ require './lib/takeaway'
 
 class Order
 
-  attr_accessor :basket#, :total
+  attr_accessor :basket, :current_selection
+
+  DEFAULT_QUANTITY = 1
 
   def initialize
     @basket = []
-    #@total = 0
+  end
+
+  def select_item(item, quantity = DEFAULT_QUANTITY)
+    @current_selection = {}
+    self.current_selection[:item] = item
+    self.current_selection[:qty] = quantity
+    add_to_basket(self.current_selection)
+    "#{quantity}x #{item} added to your basket"
   end
 
   def add_to_basket(current_selection)
@@ -14,15 +23,7 @@ class Order
   end
 
   def place_order
-    calculate_total
-    Takeaway.new(SMS).accept_order(self.total)
-  end
-
-  #private
-
-  def calculate_total
-    self.basket.reduce { |sum, item| sum + (item[:price] * item[:qty]) }
-    puts "Total = £#{sum}"
+    Takeaway.new(SMS).accept_order(self.basket, total)
   end
 
 end

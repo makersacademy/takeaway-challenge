@@ -3,7 +3,6 @@ require './lib/order'
 describe Order do
 
   let(:order) { described_class.new }
-  let(:current_selection) { double(:current_selection) }
   let(:takeaway) { double(:takeaway) }
 
   before do
@@ -16,40 +15,43 @@ describe Order do
       expect(order.basket).to eq []
     end
 
-    # it 'creates a total of zero on initialization' do
-    #   expect(order.total).to eq 0
+    # it 'creates an empty current selection' do
+    #   expect(menu.current_selection).to eq ({})
     # end
+
+  end
+
+  context 'Selection' do
+
+    it 'can add item, price and quantity to current selection' do
+      order.select_item("Pizza", 3)
+      expect(order.current_selection).to eq ({:item=>"Pizza", :qty=>3})
+    end
+
+    it 'adds a default quantity if no quantity is given' do
+      order.select_item("Pizza")
+      expect(order.current_selection).to eq ({:item=>"Pizza", :qty=>Order::DEFAULT_QUANTITY})
+    end
+
+    it 'confirms items that have been added to basket' do
+      expect(order.select_item("Pizza", 3)).to eq "3x Pizza added to your basket"
+    end
 
   end
 
   context 'Basket' do
 
     it 'allows users to add items to basket' do
-      order.add_to_basket(current_selection)
-      expect(order.basket).to eq [current_selection]
+      order.select_item("Pizza")
+      expect(order.basket).to eq [{:item=>"Pizza", :qty=>1}]
     end
 
   end
-
-  # context 'Calculate Total' do
-  #
-  #   it 'calculates total cost' do
-  #     order.add_to_basket({:item=>"pizza", :price=>4, :qty=>3})
-  #     order.add_to_basket({:item=>"spag_bol", :price=>6, :qty=>3})
-  #     order.add_to_basket({:item=>"chips", :price=>3, :qty=>1})
-  #     expect(order.calculate_total).to eq "Total = £33"
-  #   end
-  #
-  # end
 
   context 'Place Order' do
 
     it 'responds to place order method' do
       expect(order).to respond_to(:place_order)
-    end
-
-    it 'confirms that order has been placed' do
-      expect(order.place_order).to eq "Order has been placed"
     end
 
   end
