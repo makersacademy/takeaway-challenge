@@ -3,7 +3,7 @@ require_relative "confirmation"
 
 class Order
 
-  attr_reader :selection, :shopping_cart, :menu, :prices, :total
+  attr_reader :selection, :shopping_cart, :menu, :prices, :total, :confirmation
 
   def initialize
     @selection = {}
@@ -47,7 +47,7 @@ class Order
 
   def confirm(answer)
     raise "You have cancelled your order. Please try again" if answer.downcase != "yes"
-    Confirmation.new
+    @confirmation = Confirmation.new
   end
 
 
