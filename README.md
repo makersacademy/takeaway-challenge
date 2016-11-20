@@ -3,6 +3,7 @@ Firstly I looked to create a takeaway test and class, with each new object I pla
 
 GREEN / RED keep going untill all green.
 
+did need a lot of help__ Sam Morgan work helped
 
 
 Takeaway Challenge
