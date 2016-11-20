@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :meal, :payment
+  attr_reader :meal, :payment, :menu
 
   def initialize(menu, meal)
     @menu = menu
@@ -8,13 +8,13 @@ class Order
     @payment = meal[1]
   end
 
-  # def calculate_total
-  #   total = 0
-  #   meal.each do |pizza, quantity|
-  #     total += @menu[pizza] * quantity
-  #   end
-  #   total
-  # end
+  def calculate_total
+    total = 0
+    meal.each do |pizza, quantity|
+      total += menu[pizza] * quantity
+    end
+    total
+  end
 
 
 

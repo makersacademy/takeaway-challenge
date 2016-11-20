@@ -14,13 +14,10 @@ describe Restaurant do
     expect(restaurant.pizza["Capagnola"]).to eq 9.95
   end
 
-  it 'responds to place order' do
-    expect(restaurant).to respond_to :place_order
-  end
-
   it 'creates a new Order' do
-    restaurant.place_order(example_order)
+    restaurant.create_order(example_order)
     expect(restaurant.new_order.meal).to eq({ "Diavola" => 1, "Capricosa" => 2 })
   end
+
 
 end

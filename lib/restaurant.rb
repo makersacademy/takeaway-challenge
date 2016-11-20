@@ -34,9 +34,10 @@ class Restaurant
     }
   end
 
-  def place_order(meal)
+  def create_order(meal)
     @new_order = Order.new(menu, meal)
   end
+  
 
 
 end
