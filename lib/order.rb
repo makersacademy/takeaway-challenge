@@ -5,10 +5,10 @@ class Order
 
   attr_reader :selection, :shopping_cart, :menu, :prices, :total, :confirmation
 
-  def initialize
+  def initialize(menu = Menu.new)
     @selection = {}
     @shopping_cart = []
-    @menu = Menu.new
+    @menu = menu
     @prices = []
   end
 
@@ -20,6 +20,7 @@ class Order
   def select_items(item, quantity)
     @selection = { item.to_sym => quantity }
     add_selection_to_order
+    return "#{quantity} x #{item}(s) added to your shopping cart"
   end
 
   def add_selection_to_order
@@ -55,9 +56,9 @@ class Order
     "Do you want to confirm this order?"
   end
 
-  def confirm(answer)
+  def confirm(answer, confirmation = Confirmation.new)
     raise "You have cancelled your order. Please try again" if answer.downcase != "yes"
-    @confirmation = Confirmation.new
+    @confirmation = confirmation
   end
 
 
