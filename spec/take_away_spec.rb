@@ -32,7 +32,6 @@ describe TakeAway do
     context "when #finalize_order" do
 
 
-
     end
 
 end
