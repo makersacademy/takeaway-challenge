@@ -18,7 +18,7 @@ describe Takeaway do
 
   describe "#see_menu" do
     it 'should show the customer the menu' do
-      expect(takeaway.see_menu).to include(scrambled_eggs: 5)
+      expect{takeaway.see_menu}.to output.to_stdout
     end
   end
   describe "#show_basket" do
