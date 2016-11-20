@@ -32,6 +32,11 @@ end
     it "selected dishes to be shown" do
       expect(@menu.select_dish(@dishes1,1)).to eq([{:name => "Pasta", :price => 3, :availability => true}])
     end
+
+    it "convert selected dishes to price" do
+      
+      expect(@menu.convert_selected_dishes_to_price).to eq [:price => 3]
+    end
   end
 
 end

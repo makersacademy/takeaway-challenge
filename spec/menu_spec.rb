@@ -30,4 +30,13 @@ describe Menu do
       expect(menu.select_dish(dishes,2)).to eq([{:name => food3, :price => price3, :availability => true}])
     end
   end
+  context "when convert dishes" do
+    it "should convert dish to price" do
+      allow(dishes).to receive(:all_dishes).and_return([{:name => food1, :price => price1, :availability => true},{:name => food2, :price => price2, :availability => false}, {:name => food3, :price => price3, :availability => true}])
+      menu.select_dish(dishes,1)
+      menu.select_dish(dishes,2)
+      expect(menu.convert_selected_dishes_to_price).to eq [{:price => price1},{:price => price3}]
+    end
+  end
+
 end

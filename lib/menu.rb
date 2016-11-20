@@ -23,6 +23,13 @@ class Menu
 
     end
 
+    def convert_selected_dishes_to_price
+      @selected_dishes.map{|x|x.reject {|key,value| [:name,:availability].include?(key)}}
+
+    end
+
+
+
 
     private
 
