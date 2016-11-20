@@ -25,7 +25,7 @@ Functionality currently allows
       (order.options)
 
     • A new delivery time to be assigned
-      (order.receive_order)
+      (order.delivery_time)
 
 
 WHAT IS IN PROGRESS...

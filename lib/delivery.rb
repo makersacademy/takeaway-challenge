@@ -9,7 +9,7 @@ class Delivery
   #   @delivery_time = Time.new + 1*60*60
   # end
 
-  def delivery_time
+  def receive_order
     order_time = Time.new + 1*60*60
   end
 
