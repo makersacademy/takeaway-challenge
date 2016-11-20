@@ -30,4 +30,16 @@ describe TakeAway do
     expect(takeaway.basket_summary).to eq "spring roll x4 = £3.96, pork dumpling x3 = £8.97"
   end
 
+  it "adds multiple orders" do
+    takeaway.order 'spring roll', 4
+    takeaway.add 'pork dumpling', 3
+    expect(takeaway.basket_summary).to eq "spring roll x4 = £3.96, pork dumpling x3 = £8.97"
+  end
+
+  it "shows the total of the order" do
+    takeaway.order 'spring roll', 4
+    takeaway.add 'pork dumpling', 3
+    expect(takeaway.total).to eq 12.93
+  end
+
 end

@@ -40,4 +40,10 @@ class TakeAway
     "#{quantity}x #{dish_name}(s) added to your basket."
   end
 
+  def total
+    sum = 0
+    basket_items = @basket.summary
+    basket_items.collect{|basket_item| basket_item.sub_total}.reduce(:+)
+  end
+
 end
