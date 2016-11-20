@@ -22,6 +22,9 @@ class Order
     payment == calculate_total
   end
 
+  def send_message
+    "Thank you for your order!"
+  end
 
 
 end
