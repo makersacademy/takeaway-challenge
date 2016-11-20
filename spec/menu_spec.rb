@@ -1,26 +1,14 @@
 require './lib/menu'
-require './lib/order'
 
 describe Menu do
 
-  let(:menu)  { described_class.new(order) }
-  let(:klass) { double(:klass) }
-  let(:order) { double(:order) }
+  let(:menu)  { described_class.new }
   let(:quantity) { double(:quantity) }
-
-  before do
-    allow(order).to receive(:new).and_return order
-    allow(order).to receive(:add_to_basket)
-  end
 
   context 'Initialization' do
 
     it 'initializes with a list of food' do
       expect(menu.menu_list).not_to be_empty
-    end
-
-    it 'accepts order object on initialization' do
-      expect(menu.order).to eq order
     end
 
     it 'creates an empty current selection' do
@@ -42,10 +30,6 @@ describe Menu do
   end
 
   context 'Selection' do
-
-    it 'can select an item to add to basket' do
-      expect(menu).to respond_to(:select_item)
-    end
 
     it 'returns "Not a valid item" if not in menu' do
       expect(menu.select_item("Peas", quantity)).to eq "Not a valid item"

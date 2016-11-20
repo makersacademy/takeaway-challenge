@@ -16,9 +16,9 @@ describe Order do
       expect(order.basket).to eq []
     end
 
-    it 'creates a total of zero on initialization' do
-      expect(order.total).to eq 0
-    end
+    # it 'creates a total of zero on initialization' do
+    #   expect(order.total).to eq 0
+    # end
 
   end
 

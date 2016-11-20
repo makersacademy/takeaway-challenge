@@ -6,8 +6,7 @@ class Menu
 
   DEFAULT_QUANTITY = 1
 
-  def initialize(klass)
-    @order = klass.new(klass)
+  def initialize
     @current_selection = {}
     @menu_list = {
       "Spag_Bol" => 6.5,
@@ -26,7 +25,6 @@ class Menu
     self.current_selection[:item] = item
     self.current_selection[:price] = self.menu_list[item]
     self.current_selection[:qty] = quantity
-    @order.add_to_basket(self.current_selection)
     "#{quantity}x #{item} added to your basket"
   end
 

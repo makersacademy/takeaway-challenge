@@ -9,10 +9,9 @@ class Takeaway
     @message_type = klass
   end
 
-
   def accept_order(total)
-    "Thank you for your order: £" + total.to_s
-    #@message_type.new.send_sms
+    puts "Thank you for your order: £" + total.to_s
+    #send_sms
   end
 
 end
