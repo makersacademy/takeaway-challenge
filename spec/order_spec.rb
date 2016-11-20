@@ -4,10 +4,6 @@ describe Order do
 
 # subject(:order) { described_class.new}
 
-  it 'should respond with a hash' do
-    expect(subject.list_of_dishes).to include("margherita" => 9)
-  end
-
   context '#order' do
 
     it 'should return the pizza and the amount ordered when 1 pizza is ordered' do

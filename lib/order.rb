@@ -5,7 +5,7 @@ class Order
 attr_reader :list_of_dishes, :current_order_price, :menu
 
   def initialize
-    @list_of_dishes = { "margherita" => 9, "pepperoni" => 10 }
+
     @current_order_price = 0
     @menu = Menu.new
  end
@@ -24,7 +24,7 @@ attr_reader :list_of_dishes, :current_order_price, :menu
 private
 
   def bill(item, quantity)
-    @current_order_price += list_of_dishes[item] * quantity
+    @current_order_price += menu.list_of_dishes[item] * quantity
   end
 
 end
