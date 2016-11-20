@@ -17,9 +17,16 @@ class Takeaway
     }
   end
 
-  def add_to_basket(dish)
-    self.order << dish
-    return "One #{dish} added to basket"
+  def place_order(dish, number=1)
+    number.times do
+      self.order << dish
+    end
+    return "#{number}x #{dish} added to basket"
   end
+
+  def sum
+    
+  end
+
 
 end
