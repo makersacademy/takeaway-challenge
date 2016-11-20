@@ -36,17 +36,17 @@ How to use the applicaton
 To run the program require the dependencies.rb file.
 
 * Create your take away restaurant
-  my_restaurant = Restaurant.new
+  ``my_restaurant = Restaurant.new``
 * Start adding dishes with name, price and available amount to your menu
-  my_restaurant.add_dish("Name of your dish", 12, 5)
+  ``my_restaurant.add_dish("Name of your dish", 12, 5)``
 * Show the customer the menu with available dishes
-  my_restaurant.show_menu
+  ``my_restaurant.show_menu``
 * Add to an order by choosing dish number from the menu and amount
-  restaurant.add_to_order(1, 3)
+  ``restaurant.add_to_order(1, 3)``
 * Let the customer get an order status
-  restaurant.order_status
+  ``restaurant.order_status``
 * Checkout the order and send a text message confirmation to the customer
-  restaurant.finish_order("Customer's phone number")
+  ``restaurant.finish_order("Customer's phone number")``
 
 Areas to improve
 -----
