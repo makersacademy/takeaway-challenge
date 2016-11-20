@@ -1,10 +1,9 @@
 require './lib/menu'
-require './lib/order'
 require './lib/SMS'
 
 class Takeaway
 
-  attr_reader :menu, :order, :current_selection
+  attr_reader :menu, :order, :basket
 
   include SMS
 
@@ -13,6 +12,7 @@ class Takeaway
   def initialize(klass1, klass2)
     @menu = klass1.new
     @order = klass2.new
+    @basket = []
   end
 
   def select_item(item, quantity = DEFAULT_QUANTITY)
@@ -21,7 +21,7 @@ class Takeaway
   end
 
   def add_to_basket(item, quantity)
-    @order.basket << {:item=>item, :qty=>qty}
+    @basket << {:item=>item, :qty=>quantity}
   end
 
   def accept_order(total)

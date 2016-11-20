@@ -14,7 +14,6 @@ describe Takeaway do
     allow(menu).to receive(:new).and_return menu
     allow(order).to receive(:new).and_return order
     allow(menu).to receive(:menu_list).and_return ({"Spag_Bol" => 6.5, "Pizza" => 4, "Chips" => 2.75})
-    allow(order).to receive(:basket)
   end
 
   context 'Initialization' do
@@ -25,6 +24,10 @@ describe Takeaway do
 
     it 'accepts an Order object on initialization' do
       expect(takeaway.order).to eq order
+    end
+
+    it 'creates an empty basket on creation' do
+      expect(takeaway.basket).to eq []
     end
 
   end
@@ -53,6 +56,11 @@ describe Takeaway do
 
     it 'is expected to respond to add_to_basket' do
       expect(takeaway).to respond_to(:add_to_basket)
+    end
+
+    it 'is expected to add a line item to a basket' do
+      takeaway.add_to_basket(item, qty)
+      expect(takeaway.basket).to eq [{:item=>item, :qty=>qty}]
     end
 
   end
