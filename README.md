@@ -107,8 +107,10 @@ How to Use
 
 2. User views the menu
  ```
- ᚹᚱᛘ ᛬ t.menu.view_menu
-=> {"Spag_Bol"=>6.5, "Pizza"=>4, "Chips"=>2.75}
+ᚹᚱᛘ ᛬ t.menu.view_menu
+Spag_Bol 6.50
+Pizza 4.00
+Chips 2.75
 ```
 
 3. User selects items to add to their basket
