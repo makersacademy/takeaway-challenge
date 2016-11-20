@@ -19,7 +19,7 @@ attr_reader :current_order_price, :menu, :message
   end
 
   def expected_total(total)
-    total == @current_order_price? @message.text : "Your total is wrong: please enter the correct total."
+    total == @current_order_price? message.text : "Your total is wrong: please enter the correct total."
   end
 
 
