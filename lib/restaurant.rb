@@ -26,6 +26,7 @@ class Restaurant
   def add_to_order(number, amount)
     dish = menu.menu_items[number - 1].dish
     order.add_item(dish, amount)
+    order_status
   end
 
   def finish_order
@@ -47,8 +48,6 @@ class Restaurant
     menu.available_dishes.each_with_index {|item, index| puts "#{index + 1}. #{item.dish.name}"}
   end
 
-
-
   def reset_order
     self.order = nil
   end
@@ -60,11 +59,12 @@ class Restaurant
   end
 
   def order_message
-    "Your food is being cooked and will be delivered at #{time.hour}:#{time.min}."
+    "Your food is being cooked and will be delivered at #{time}."
   end
 
   def time
-    delivery = Time.new + (60 * 60)
+    time = Time.new + (60 * 60)
+    time.strftime('%H:%M')
   end
 
   def no_order_placed?
