@@ -2,10 +2,12 @@ class Menu
   attr_reader :list, :basket, :grand_total
 
   MENU = {
-          bacon_sandwich: 4,
-          scrambled_eggs: 5,
-          poached_eggs: 4,
-          toast: 1
+          margherita: 6,
+          pepperoni: 8,
+          hawaiian: 7,
+          four_seasons: 7,
+          garlic_bread: 3,
+          olives: 2
   }
   def initialize
     @basket = Hash.new(0)

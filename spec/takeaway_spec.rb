@@ -5,7 +5,7 @@ describe Takeaway do
   let(:menu) {double :menu}
 
   before do
-    allow(menu).to receive(:list).and_return(scrambled_eggs: 5)
+    allow(menu).to receive(:menu).and_return(margherita: 6)
   end
 
   it 'should initialize with an empty order hash' do
@@ -13,7 +13,7 @@ describe Takeaway do
   end
 
   it 'should access the menu from the Menu class' do
-    expect(takeaway.menu.menu).to include(scrambled_eggs: 5)
+    expect(takeaway.menu.menu).to include(margherita: 6)
   end
 
   describe "#see_menu" do
@@ -31,20 +31,20 @@ describe Takeaway do
   end
   describe "#order" do
     it 'should add an order to the menu basket' do
-      takeaway.order("bacon_sandwich")
-      expect(takeaway.basket).to include "bacon_sandwich"
+      takeaway.order("margherita")
+      expect(takeaway.basket).to include "margherita"
     end
   end
   describe "#show_price" do
     it 'should show the grand_total' do
-      takeaway.order("bacon_sandwich")
-      expect(takeaway.show_price).to eq "£4"
+      takeaway.order("margherita")
+      expect(takeaway.show_price).to eq "£6"
     end
   end
   describe "#checkout" do
     it 'should call the menu checkout method' do
-      takeaway.order("bacon_sandwich")
-      expect(takeaway.checkout(4)).to eq true
+      takeaway.order("margherita")
+      expect(takeaway.checkout(6)).to eq true
     end
   end
 
