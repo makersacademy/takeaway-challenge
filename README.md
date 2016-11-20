@@ -15,11 +15,13 @@ The phone numbers and authentication id's are saved in ENV variables that are lo
 take_away = TakeAway.new(Order, SMS)
 ```
 4. See an available menu of dishes with prices.
-```pry(main)> take_away.menu
+```
+pry(main)> take_away.menu
 => {:chicken=>5, :beef=>6, :pork=>7}
 ```
 5. Add a dish and the quantity to basket.
-```pry(main)> take_away.add_to_basket("chicken",2)
+```
+pry(main)> take_away.add_to_basket("chicken",2)
 => "You added 2 x chicken to the basket."
 ```
 6. To checkout the order, give the total price as argument and if it matches the total price of the dishes, the app will send an sms with the time of the delivery.
