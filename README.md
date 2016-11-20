@@ -11,24 +11,75 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
+Task
 -------
+Order the food you like.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This program allows you to see a menu, order food, calculate the price and then send a message to indicate that the order is on its way  
+
+IRB
+-----
+Courtneys-MBP:takeaway-challenge courtneyosborn$ pry
+[1] pry(main)> require './lib/order.rb'
+=> true
+[2] pry(main)> order = Order.new(Menu)
+=> #<Order:0x007f9a344f4338 @current_order=nil, @menu_class=Menu>
+[3] pry(main)> order.see_menu
+=> #<Menu:0x007f9a344a63e0
+ @our_menu=
+  [{:number1=>1, :starter1=>:soup, :price=>5},
+   {:number2=>2, :starter2=>:mussels, :price=>7},
+   {:number3=>3, :starter3=>:carpaccio, :price=>6},
+   {:number4=>4, :main1=>:steak, :price=>12},
+   {:number5=>5, :main2=>:chicken, :price=>11},
+   {:number6=>6, :main3=>:salad, :price=>10},
+   {:number7=>7, :dessert1=>:milktart, :price=>6},
+   {:number8=>8, :dessert2=>:cheesecake, :price=>7},
+   {:number9=>9, :dessert3=>:tiramisu, :price=>7},
+   {:number10=>10, :drinks1=>:wine, :price=>8},
+   {:number11=>11, :drinks2=>:beer, :price=>5},
+   {:number11=>12, :drinks3=>:coke, :price=>3}],
+ @users_order=[]>
+[4] pry(main)> order.order_food(3,3)
+=> [{:number3=>3, :starter3=>:carpaccio, :price=>6}, {:number3=>3, :starter3=>:carpaccio, :price=>6}, {:number3=>3, :starter3=>:carpaccio, :price=>6}]
+[5] pry(main)> order.order_food(4,1)
+=> [{:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number4=>4, :main1=>:steak, :price=>12}]
+[6] pry(main)> order.order_food(5,1)
+=> [{:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number4=>4, :main1=>:steak, :price=>12},
+ {:number5=>5, :main2=>:chicken, :price=>11}]
+[7] pry(main)> order.order_food(6,1)
+=> [{:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number4=>4, :main1=>:steak, :price=>12},
+ {:number5=>5, :main2=>:chicken, :price=>11},
+ {:number6=>6, :main3=>:salad, :price=>10}]
+[8] pry(main)> order.order_food(10,3)
+=> [{:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number3=>3, :starter3=>:carpaccio, :price=>6},
+ {:number4=>4, :main1=>:steak, :price=>12},
+ {:number5=>5, :main2=>:chicken, :price=>11},
+ {:number6=>6, :main3=>:salad, :price=>10},
+ {:number10=>10, :drinks1=>:wine, :price=>8},
+ {:number10=>10, :drinks1=>:wine, :price=>8},
+ {:number10=>10, :drinks1=>:wine, :price=>8}]
+[12] pry(main)> order.calculate_price
+=> "The total cost is £75"
+[16] pry(main)> order.send_sms("Your order is on its way")
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/AC931d30987b9634469ecc155be9841575/Messages/SM82585e84b85f46ccb859da922a15ddf9>
 
 Task
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -47,45 +98,3 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
