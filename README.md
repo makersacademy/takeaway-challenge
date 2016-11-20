@@ -11,7 +11,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +69,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
@@ -89,3 +89,49 @@ Build Badge Example
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+How to Use
+------------------
+1. User finds takeaway restaurant
+```
+ᚹᚱᛘ ᛬ require './lib/takeaway'
+=> true
+ᚹᚱᛘ ᛬ t = Takeaway.new(Menu, SMS)
+=> #<Takeaway:0x007fe01a3ef2e0
+ @basket=[],
+ @menu=
+  #<Menu:0x007fe01a3ef290
+   @menu_list={"Spag_Bol"=>6.5, "Pizza"=>4, "Chips"=>2.75}>,
+ @message_type=SMS>
+```
+
+2. User views the menu
+ ```
+ᚹᚱᛘ ᛬ t.menu.view_menu
+Spag_Bol 6.50
+Pizza 4.00
+Chips 2.75
+```
+
+3. User selects items to add to their basket
+```
+ᚹᚱᛘ ᛬ t.select_item("Pizza")
+=> "1x Pizza added to your basket"
+ᚹᚱᛘ ᛬ t.select_item("Chips", 3)
+=> "3x Chips added to your basket"
+```
+
+4. User views items in their basket
+```
+ᚹᚱᛘ ᛬ t.view_basket
+1x Pizza @ £4.00
+3x Chips @ £2.75
+```
+
+5. User confirms order with correct total
+```
+ᚹᚱᛘ ᛬ t.confirm_order(12.25)
+=> "Thank you for your order: £12.25"
+```
+
+6. User is sent an SMS confirmation message
