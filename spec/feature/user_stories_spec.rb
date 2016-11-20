@@ -30,7 +30,6 @@ describe "User stories" do
 
     it "summarizes basket with sub total price" do
       basket_item_list = basket.summary
-      p basket_item_list
       expect(basket_item_list.count).to eq 1
       expect(basket_item_list.first.name).to eq "Amok"
       expect(basket_item_list.first.quantity).to eq 2
