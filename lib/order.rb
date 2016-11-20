@@ -23,7 +23,8 @@ class Order
   end
 
   def send_message
-    "Thank you for your order!"
+    delivery_time = (Time.new + 360).strftime("%H:%M")
+    "Thank you! Your order will be delivered before #{delivery_time}"
   end
 
 

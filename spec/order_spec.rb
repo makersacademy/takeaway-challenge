@@ -24,7 +24,8 @@ describe Order do
     end
     it 'sends a message if order is successful' do
       order1.check_payment
-      expect(order1.send_message).to eq "Thank you for your order!"
+      delivery_time = (Time.new + 360).strftime("%H:%M")
+      expect(order1.send_message).to eq "Thank you! Your order will be delivered before #{delivery_time}"
     end
   end
 
