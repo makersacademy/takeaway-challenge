@@ -1,4 +1,5 @@
 require_relative 'menu.rb'
+require_relative 'sms.rb'
 
 class Takeaway
 
@@ -27,10 +28,7 @@ class Takeaway
     calc_total
     @expected_total = expected_total
     raise 'This is the incorrect total, please try again' if @expected_total != @total
-  end
-
-  def complete_order
-
+    text_confirmation
   end
 
   private
@@ -43,6 +41,11 @@ class Takeaway
       end
     end
     @total = prices.reduce(:+)
+  end
+
+  def text_confirmation
+    Sms.new
+    puts 'Your order has been received and you will receive a text confirmation shortly'
   end
 
 end

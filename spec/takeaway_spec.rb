@@ -55,11 +55,12 @@ describe Takeaway do
     end
 
     context 'calculating total for order' do
-      it { is_expected.to respond_to(:calc_total) }
-
       it { is_expected.to respond_to(:total) }
 
+      it { is_expected.to respond_to(:pay).with(1).argument }
+
       # it 'allows you to pay by accepting the expected total' do
+      #   allow(Menu::MENU).to receive(:has_key?).and_return(true)
       #   takeaway.add_item(item, 1)
       #   allow(takeaway).to receive(:total).and_return(1)
       #   takeaway.pay(1)
@@ -70,8 +71,6 @@ describe Takeaway do
         allow(takeaway).to receive(:total).and_return(1)
         expect { takeaway.pay(2) }.to raise_error('This is the incorrect total, please try again')
       end
-
-      it {is_expected.to respond_to(:complete_order)}
     end
   end
 end
