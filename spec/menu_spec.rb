@@ -18,4 +18,12 @@ end
     printed_menu = "Hawaiian £9.99, Margherita £7.99"
     expect(menu.print_menu).to eq(printed_menu)
   end
+
+  it 'should be able to check dishes are on menu' do
+    expect(menu.has_dish?(:hawaiian)).to eq true
+  end
+
+  it 'should be able to check dishes not on the menu' do
+    expect(menu.has_dish?(:burger)).to eq false
+  end
 end

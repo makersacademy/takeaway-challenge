@@ -17,4 +17,5 @@ describe Takeaway do
     expect(order).to receive(:add).twice
     takeaway.order_takeaway(dishes)
   end
+
 end

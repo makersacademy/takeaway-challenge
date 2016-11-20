@@ -11,4 +11,8 @@ attr_reader :dishes
       "%s £%.2f" % [dish.to_s.capitalize, price]
     end.join(', ')
   end
+
+  def has_dish?(dish)
+      !!dishes[dish]
+  end
 end
