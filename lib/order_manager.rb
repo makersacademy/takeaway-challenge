@@ -20,6 +20,8 @@ def create_order(order = Order)
   order.new
 end
 
+private
+
 def is_payment_correct?(order,payment)
   order.total_cost == payment
 end
@@ -29,6 +31,8 @@ def send_confirmation(communication = SMSSender, message)
   sender.send_message(message, "+447944749585")
   "Message sent"
 end
+
+
 
 def granted_permission?
   true

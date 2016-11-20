@@ -33,18 +33,11 @@ describe OrderManager do
 
     end
 
-    describe "Order Verification" do
-
-      it "should respond to is_payment_correct with two arguments " do
-        expect(order_manager).to respond_to(:is_payment_correct?).with(2).argument
-      end
-    end
-
     describe "Sending SMS" do
       before do
         allow(order).to receive(:total_cost).and_return payment
       end
-      
+
       it "Message cannot be sent if sms permission is not granted" do
         allow(order_manager).to receive(:granted_permission?).and_return false
         expect(order_manager.submit_order(order,payment)).to eq "Message not sent"

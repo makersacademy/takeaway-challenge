@@ -11,16 +11,19 @@ class Order
     current_order << {dish: dish, quantity: quantity}
   end
 
-  def total_price
+
+  def total_cost
     total = 0
     current_order.each { |order| total += order[:dish].price * order[:quantity] }
     total
   end
 
+
+
+  private
+
   def invalid_quantity?(quantity)
    !(quantity.is_a? Integer) || quantity == 0
   end
-
-
 
 end
