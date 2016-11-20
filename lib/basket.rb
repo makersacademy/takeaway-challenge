@@ -1,5 +1,5 @@
 class Basket
-  def initialize(available_dishes)
+  def initialize(available_dishes=nil)
     @dishes = available_dishes
     @basket_list = Hash.new(0)
   end

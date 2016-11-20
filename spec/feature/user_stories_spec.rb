@@ -30,10 +30,11 @@ describe "User stories" do
 
     it "summarizes basket with sub total price" do
       basket_item_list = basket.summary
+      sub_total_price  = basket_item_list.first.price * basket_item_list.first.quantity
       expect(basket_item_list.count).to eq 1
       expect(basket_item_list.first.name).to eq "Amok"
       expect(basket_item_list.first.quantity).to eq 2
-      expect(basket_item_list.first.sub_total).to eq 8
+      expect(basket_item_list.first.sub_total).to eq sub_total_price
     end
 
   end

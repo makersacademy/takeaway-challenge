@@ -13,6 +13,10 @@ class BasketItem
     @quantity
   end
 
+  def price
+    @dish.price
+  end
+
   def sub_total
     @dish.price * @quantity
   end
