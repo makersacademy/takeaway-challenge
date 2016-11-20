@@ -55,14 +55,5 @@ describe Order do
 
   end
 
-  # context "time for time" do
-  #
-  #   it { is_expected.to respond_to :time }
-  #
-  # #   # it "should show the time" do
-  # #   #   e
-  # #
-  # end
-
 
 end
