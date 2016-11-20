@@ -28,12 +28,18 @@ class TakeAway
   end
 
   def checkout(value)
-    @order.reset_order
+    raise "The price doesn't match: enter the correct value." unless check_price(value)
+    reset_order
     send_message("Your order will arrive at #{Time.now.hour+1}:#{Time.now.min}")
   end
 
   def send_message(message)
     @sms.text_message(message)
   end
+
+  def reset_order
+    @order.reset_order
+  end
+
 
 end

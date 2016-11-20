@@ -32,10 +32,10 @@ describe "User Stories" do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   it "should confirm the order with a text message" do
-    t = Time.now
     take_away = TakeAway.new(Order,SMS)
+    allow(take_away).to receive(:send_message).and_return "Your order will arrive at 17:22."
     take_away.add_to_basket("chicken",5)
     take_away.add_to_basket("pork",5)
-    # expect(take_away.confirm_order(60)).to be eq "Thank you! Your order was placed and will be delivered before 23:57"
+    expect(take_away.checkout(60)).to eq "Your order will arrive at 17:22."
   end
 end

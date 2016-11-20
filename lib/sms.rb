@@ -15,5 +15,6 @@ class SMS
       :to => ENV['MY_NUMBER'],
       :body => message,
       })
+    end
+
   end
-end

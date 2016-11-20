@@ -25,5 +25,11 @@ describe Order do
       expect(order.total).to eq 25
     end
   end
+  context "when #reset it" do
+    it "should remove all dishes from the added_dishes array" do
+      order.add("chicken",5)
+      expect(order.reset_order).to eq []  
+    end
+  end
 
 end
