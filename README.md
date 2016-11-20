@@ -33,7 +33,7 @@ Notes
 =====
 Twilio Setup
 ------------
-The SMS class I have created uses environment variables. These have been set up using dotenv-rails, which requires a .env file in the repository. This .env file requires the following environmental variables:
+The SMS class I have created uses environment variables. These have been set up using dotenv-rails, which requires a .env file in the repository. This .env file includes the following environmental variables:
 * TWILIO_ACCOUNT_SID='twilio account sid'
 * TWILIO_AUTH_TOKEN='twilio auth token'
 * TWILIO_PHONE='twilio phone number'
@@ -67,14 +67,14 @@ The takeaway is initialized with the SMS and Order classes. Orders are placed by
 
 (Yes, my Pry has a turtle. Adding that was the highlight of my week, so enjoy!)
 ```
- 🐢  ᛬ require './lib/takeaway.rb'
+ 🐢  : require './lib/takeaway.rb'
 => true
- 🐢  ᛬ takeaway = Takeaway.new(SMS, Order)
+ 🐢  : takeaway = Takeaway.new(SMS, Order)
 => #<Takeaway:0x007f87c9bd3aa0 @order_klass=Order, @sms_klass=SMS>
- 🐢  ᛬ takeaway.place_order(9,2)
+ 🐢  : takeaway.place_order(9,2)
 => [{:number=>9, :item=>"Fries", :cost=>"£1.50"},
  {:number=>9, :item=>"Fries", :cost=>"£1.50"}]
- 🐢  ᛬ takeaway.pay(3.00)
+ 🐢  : takeaway.pay(3.00)
 => nil
 ```
 
@@ -83,4 +83,4 @@ This led to my phone receiving the following text message:
 Sent from your Twilio trial account - Thank you. Received payment of £3.00. Your order will be delivered by 19:08
 ```
 
-Travis CI status badge [![Build Status](https://travis-ci.org/kwilson541/takeaway_challenge.svg?branch=master)](https://travis-ci.org/kwilson541/takeaway_challenge)
+Travis CI status badge [![Build Status](https://travis-ci.org/kwilson541/takeaway-challenge.svg?branch=master)](https://travis-ci.org/kwilson541/takeaway-challenge)
