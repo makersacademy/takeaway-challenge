@@ -16,6 +16,12 @@ describe Order do
   end
 
   context "adding dish and quantity to order" do
+
+    it "Raises error if dish not on the menu" do
+      message = "Cannot add. No such dish on the menu."
+      expect {order.add(3, 1)}.to raise_error(message)
+    end
+
     it "Calculates the price" do
       expect(order.add(1, 2)).to eq 8
     end
@@ -31,16 +37,18 @@ describe Order do
     end
   end
 
-  context "showing formatted order summary" do
-    it "formats order" do
+  context "order summary" do
+    it "shows formatted order summary" do
       order.add(1, 3)
-      table = "                                  YOUR ORDER:                                   \n\n1. v                                    £4 x 3                                   = £12\n                                                                     TOTAL:  £12\n\n"
-      expect(order.format_order).to eq table
+      table = "                        YOUR ORDER:                         \n\n1. v  £4 x 3                                           = £12\n                                                 TOTAL:  £12\n\n"
+      expect {order.show_order}.to output(table).to_stdout
     end
 
-    it "shows order" do
-      expect {order.show_order}.to output(order.format_order).to_stdout
+
+    it "lets user check if total sum correct" do
+      order.add(1, 3)
+      order.add(2, 4)
+      expect(order.correct?).to be true
     end
   end
-
 end

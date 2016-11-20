@@ -10,7 +10,7 @@ describe DishesMenu do
   end
 
   it "formats list of dishes" do
-    list = "                           LIST OF AVAILABLE DISHES:                            \n\n1. v                                                                          £4\n2. v                                                                          £3\n\n"
+    list = "                 LIST OF AVAILABLE DISHES:                  \n\n1. v                                                      £4\n2. v                                                      £3\n\n"
     expect(menu.format_list).to eq list
   end
 
