@@ -15,7 +15,7 @@ end
 def submit_order(order,payment)
   raise "This total is not correct" if !is_payment_correct?(order,payment)
   # send_sms
-  true
+  "Success"
 end
 
 def create_order(order = Order)
@@ -23,7 +23,7 @@ def create_order(order = Order)
 end
 
 def is_payment_correct?(order,payment)
-  true
+  order.total_cost == payment
 end
 
 def send_sms

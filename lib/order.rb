@@ -13,9 +13,7 @@ class Order
 
   def total_price
     total = 0
-    current_order.each do |order|
-        total += order[:dish].price * order[:quantity]
-    end
+    current_order.each { |order| total += order[:dish].price * order[:quantity] }
     total
   end
 

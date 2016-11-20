@@ -19,27 +19,26 @@ describe OrderManager do
     end
   end
 
-  describe "During the order" do
-    it "should see the current order "
-  end
-
     describe "Submitting an order" do
 
       it "should respond to submit_order with one argument" do
         expect(order_manager).to respond_to(:submit_order).with(2).arguments
       end
 
-      it "should submit an order" do
-        order_manager.submit_order(order,payment)
-        expect(order_manager.order).to eq order_manager.order
+      it "should return a success message if the payment given equals the total cost of the order." do
+        allow(order).to receive(:total_cost).and_return payment
+        expect(order_manager.submit_order(order,payment)).to eq "Success"
       end
 
-
+      it "should raise an error if the payment given does not equal the total cost of the order" do
+        allow(order).to receive(:total_cost).and_return !payment
+        expect{order_manager.submit_order(order,payment)}.to raise_error "This total is not correct"
+      end
 
     end
 
     describe "Order Verification" do
-      
+
       it "should respond to is_payment_correct with two arguments " do
         expect(order_manager).to respond_to(:is_payment_correct?).with(2).argument
       end
