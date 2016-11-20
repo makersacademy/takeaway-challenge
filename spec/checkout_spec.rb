@@ -11,8 +11,8 @@ describe Checkout do
       expect(subject).to respond_to(:view_basket)
     end
 
-    it "should return a list of the final basket" do
-    expect(subject.view_basket).to be_an(Array)
+    xit "should return a list of the final basket" do
+    expect(subject.view_basket(:order)).to be_an(Array)
     end
 
     it "should respond to pay" do

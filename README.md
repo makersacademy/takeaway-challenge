@@ -11,8 +11,116 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+
+## Simon's walk through
+
+
+### Aims for the takeaway_challenge
+
+The takeaway lets a user view the menu, place and order, check their basket and pay for their food.
+
+### Steps for setting up
+
+To set up the app we need to add the following commands to Pry:
+
+[simon:~/projects/takeaway_challenge]$ pry                                   (sunday✱)
+####[1] pry(main)> require './lib/takeaway.rb'
+=> true
+####[[2] pry(main)> menu = Menu.new
+=> #<Menu:0x007f84120eaf68
+ @menu_items=
+  [[1, "Margerita pizza       ", 5.5],
+   [2, "Pepperoni pizza       ", 6.5],
+   [3, "Quatro Staggioni Pizza", 6.5],
+   [4, "Donner Kebab          ", 3.5],
+   [5, "Cheeseburger          ", 5.0]]>
+####[[3] pry(main)> takeaway = Takeaway.new
+=> #<Takeaway:0x007f8411c0fd18>
+####[[4] pry(main)> takeaway.add_menu_items(menu)
+=> [[1, "Margerita pizza       ", 5.5],
+ [2, "Pepperoni pizza       ", 6.5],
+ [3, "Quatro Staggioni Pizza", 6.5],
+ [4, "Donner Kebab          ", 3.5],
+ [5, "Cheeseburger          ", 5.0]]
+####[[5] pry(main)> order = Order.new(takeaway)
+=> #<Order:0x007f8411afda60
+ @order=[],
+ @takeaway=
+  #<Takeaway:0x007f8411c0fd18
+   @menu=
+    [[1, "Margerita pizza       ", 5.5],
+     [2, "Pepperoni pizza       ", 6.5],
+     [3, "Quatro Staggioni Pizza", 6.5],
+     [4, "Donner Kebab          ", 3.5],
+     [5, "Cheeseburger          ", 5.0]]>>
+####[[6] pry(main)> checkout = Checkout.new
+=> #<Checkout:0x007f841192fa30 @total=0>
+
+
+###Placing an order
+
+To place an order you can do the following:
+
+####[7] pry(main)> order.customer_input(takeaway)
+This step brings up the menu in the terminal and asks the user to add their order. The user can type in the number of the item they like. If they want an item twice they type their item twice. Type 0 to complete the order.
+
+(It's a little different from the spec. It's quicker to add the order.)
+
+####[7] pry(main)> order.customer_input(takeaway)
+[1, "Margerita pizza       ", 5.5]
+[2, "Pepperoni pizza       ", 6.5]
+[3, "Quatro Staggioni Pizza", 6.5]
+[4, "Donner Kebab          ", 3.5]
+[5, "Cheeseburger          ", 5.0]
+Type in the menu number for your order. Type 0 to complete your order
+####1
+[1, "Margerita pizza       ", 5.5]
+Type in the menu number for your order. Type 0 to complete your order
+
+####2
+[1, "Margerita pizza       ", 5.5]
+[2, "Pepperoni pizza       ", 6.5]
+Type in the menu number for your order. Type 0 to complete your order
+
+####4
+[1, "Margerita pizza       ", 5.5]
+[2, "Pepperoni pizza       ", 6.5]
+[4, "Donner Kebab          ", 3.5]
+Type in the menu number for your order. Type 0 to complete your order
+
+####4
+[1, "Margerita pizza       ", 5.5]
+[2, "Pepperoni pizza       ", 6.5]
+[4, "Donner Kebab          ", 3.5]
+[4, "Donner Kebab          ", 3.5]
+Type in the menu number for your order. Type 0 to complete your order
+0
+=> nil
+[8] pry(main)>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Instructions
 -------
@@ -69,7 +177,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 

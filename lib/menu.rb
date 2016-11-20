@@ -2,15 +2,13 @@ require_relative "order"
 
 class Menu
 
-  attr_reader :menu_items
+  attr_reader :menu
 
   def initialize
-    @menu_items
-    add_menu_items
+    @menu = menu_items
   end
 
-  def add_menu_items
-    @menu_items =
+  def menu_items
     [
     [1, "Margerita pizza       ", 5.50],
     [2, "Pepperoni pizza       ", 6.50],

@@ -11,13 +11,11 @@ it "should respond to add menu items" do
 end
 
 it "should be able to add an array of menu items" do
-  menu = Menu.new
-  expect(subject.add_menu_items(menu)).to be_an(Array)
+  expect(subject.add_menu_items).to be_an(Array)
 end
 
 it "should return a menu item" do
-  menu = Menu.new
-  subject.add_menu_items(menu)
+  subject.add_menu_items
   expect(subject.menu[1]).to be_an(Array)
 end
 
