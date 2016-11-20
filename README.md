@@ -1,34 +1,39 @@
-Takeaway Challenge
+#### Takeaway Challenge  
+
+## "Pierozki"
 ==================
 ```
                             _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
+              r==           |   <3  |
+           _  //            |  Pier |   ))))
+          |_)//(''''':      |  ozki |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
        .:'//.   \ \=|   \ /  .:'':./    )))))
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
--------
+ ==================
+ Welcome to "Pierozki", a take-away serving Polish vegan cuisine.
+ Warning!!! Seriously delicious!
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+ This project is a simulation of a take-away service I prepared as a part of web development course at Makers Academy, London.  
+ 
+ It lets you:
+ - see a menu of available dishes,
+ - create an order,
+ - add multiple portions of dishes to your order
+ - see order
+ - check if the order sum total is correct
+ - remove unwanted items from your order
+ - place an order (and get a confirmation text message wit ETA of your order!)   
 
-Task
------
+ ==================
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+User stories covered:  
 
 ```
 As a customer
@@ -48,44 +53,56 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+### How to use:
+-----
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+* Fork this repo
+* Run the command 'bundle' in the project directory to ensure you have all the gems
+* Enter following commands in irb/pry:  
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
+- To see available dishes (pay attention to index numbers of dishes, you will need them for ordering):  
 ```
-$ coveralls report
+require './lib/menu'
+menu = DishesMenu.new
+menu.show_dishes
+```   
+
+- To create an order:   
 ```
+require './lib/take_away'
+my_order = Order.new
+```  
+
+- To add dishes to your order:  
+```
+order.add(dish_index, quantity)
+```   
+
+- To see your order:  
+```
+order.show_order
+```   
+
+- To remove a position from your order enter following command with dish index as shown on your order (not on the menu!):  
+```
+order.remove(dish_index_from_order)
+```  
+
+- To check if your total is correct:  
+```
+order.correct?
+```   
+
+- To place your order:  
+```
+delivery = TakeAway.new
+delivery.place(my_order)
+```   
+Number specified in send_text private method will receive a text message with order confirmation and ETA. This code can be easily updated to accept any number as an argument, but then it would need a premium Twilio account to operate.
+
+
 
 This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
 
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+[![Build Status](https://travis-ci.org/CrystalPea/takeaway-challenge.svg?branch=master)](https://travis-ci.org/CrystalPea/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/CrystalPea/takeaway-challenge/badge.png)](https://coveralls.io/r/CrystalPea/takeaway-challenge)
