@@ -5,7 +5,8 @@ before(:all) do
   @dishes1.add_dish("Curry",3,true)
   @dishes1.add_dish("Steak & Chips",25,true)
   @dishes1.add_dish("Chicken Dippers", 4,false)
-  @menu = Menu.new
+  dishes121 = @dishes1
+  @menu = Menu.new(dishes121)
 end
 
 # As a customer

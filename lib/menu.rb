@@ -9,6 +9,9 @@ class Menu
       @dishes = dishes
     end
 
+    def print_menu
+    return  (@dishes.all_dishes).each{|x|x.map{|key, value| puts "#{key} - £#{value}"}}
+    end
 
     def available_dishes(choice)
     available =(@dishes.list).map{|hash|hash.select{|key,value| return true if key == choice}}
