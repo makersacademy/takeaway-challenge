@@ -2,10 +2,11 @@ require_relative 'menu'
 
 class Interface
 
-  attr_accessor :dishes_menu
+  attr_accessor :dishes_menu, :order
 
-  def initialize(name, dishes_menu, dish_list)
+  def initialize(name, dishes_menu, dish_list, order)
     @dishes_menu = dishes_menu.new(dish_list)
+    @order = order.new(dish_list)
     @name = name
   end
 
@@ -27,7 +28,7 @@ class Interface
   def execute_action(answer)
     case answer
     when "1"; self.dishes_menu.show_dishes
-    when "2"; puts "ordering be here soon\n"
+    when "2"; self.order.order
     when "3"; puts "order status be here soon\n"
     when "9"; puts "See you next time!"
       exit

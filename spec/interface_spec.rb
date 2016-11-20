@@ -5,7 +5,7 @@ describe Interface do
   let(:name) { double(:name) }
   let(:dish_list) { [{:dish=>:v, :price=>4},
                     {:dish=>:v, :price=>3}] }
-  subject(:interface) { described_class.new(name, DishesMenu, dish_list)}
+  subject(:interface) { described_class.new(name, DishesMenu, dish_list, Order)}
 
   it "Welcomes the user" do
     message = "Welcome to #{name}, if you are hungry you came to the right place!\n\n"

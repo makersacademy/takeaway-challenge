@@ -1,9 +1,14 @@
+require_relative 'dishes_list'
+
 class Order
 
 attr_reader :dishes_list
+attr_reader :total, :ordered_dishes
 
   def initialize(dishes_list)
     @dishes_list = dishes_list
+    @total = 0
+    @ordered_dishes = []
   end
 
   def which_dish
@@ -17,17 +22,26 @@ attr_reader :dishes_list
   end
 
   def price(dish, quantity)
-    (dishes_list[dish - 1])[:price] * quantity
+    price = (dishes_list[dish - 1])[:price] * quantity
+    add_to_ordered(dish, quantity, price)
+    self.total += price
+  end
+
+  def more?
+    gets.chomp == "yes"
   end
 
   def ordering_menu
-    loop do
     price(which_dish, how_many)
     puts "Would you like to add any more dishes? (yes/no)"
-      answer = gets.chomp
-      break if answer == no
-    end
+    ordering_menu if more?
   end
 
+  private
+  attr_writer :total, :ordered_dishes
+
+  def add_to_ordered(dish, quantity, price)
+    self.ordered_dishes << ((dishes_list[dish - 1]).merge({:quantity=>quantity, :total=>price }))
+  end
 
 end
