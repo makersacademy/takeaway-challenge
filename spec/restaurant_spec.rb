@@ -26,31 +26,37 @@ describe Restaurant do
   end
 
   describe "when managing orders" do
+    before(:each) {restaurant.add_dish(dish)}
+
     before do
     allow(restaurant).to receive(:send_confirmation)
     allow(restaurant).to receive(:order_status)
     end
 
     it "should be able to start an order" do
-      restaurant.add_dish(dish)
       restaurant.add_to_order(1)
       expect(restaurant.order).not_to be_nil
     end
 
     it "should be able to finish an order" do
-      restaurant.add_dish(dish)
       restaurant.add_to_order(1)
       restaurant.finish_order
       expect(restaurant.orders.count).to eq 1
     end
 
     it "resets the current order" do
-      restaurant.add_dish(dish)
       restaurant.add_to_order(1)
       restaurant.reset_order
       expect(restaurant.order).to be_nil
     end
 
+    it "should be able to give an order status" do
+      expect(restaurant).to respond_to(:order_status)
+    end
+
+    it "should be able to show the menu" do
+      expect(restaurant).to respond_to(:show_menu)
+    end
   end
 
 end
