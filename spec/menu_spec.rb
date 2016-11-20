@@ -9,7 +9,7 @@ subject(:menu) { described_class.new(dishes) }
       margherita: 7.99
 
     }
-end
+  end
   it 'should show a list of dishes and prices' do
     expect(menu.dishes).to eq(dishes)
   end
