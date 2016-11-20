@@ -11,7 +11,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +69,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
@@ -89,3 +89,34 @@ Build Badge Example
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+How to Use
+-------
+
+```
+Amandas-MBP:takeaway-challenge amanda$ pry
+😺᛬ require './lib/takeaway.rb'
+=> true
+😺᛬ takeaway = Takeaway.new
+=> #<Takeaway:0x007f9faaa30c18 @items={}, @menu=#<Menu:0x007f9faaa30bf0>>
+😺᛬ takeaway.show_menu
+pepperoni                  £10
+vegetable                   £8
+margherita                  £8
+garlic bread                £3
+chips                       £3
+coca-cola                   £2
+=> {"pepperoni"=>10, "vegetable"=>8, "margherita"=>8, "garlic bread"=>3, "chips"=>3, "coca-cola"=>2}
+😺᛬ takeaway.add_item('vegetable')
+=> 1
+😺᛬ takeaway.add_item('pepperoni')
+=> 1
+😺᛬ takeaway.add_item('chips', 2)
+=> 2
+😺᛬ takeaway.items
+=> {"vegetable"=>1, "pepperoni"=>1, "chips"=>2}
+😺᛬ takeaway.pay(24)
+Your order has been received and you will receive a text confirmation shortly
+=> nil
+😺᛬ exit
+```
