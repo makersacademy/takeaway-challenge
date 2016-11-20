@@ -1,8 +1,8 @@
+#user interface for a takeaway order system
+
 require_relative 'menu'
 require_relative 'order'
 require_relative 'sms'
-
-
 
 class Takeaway
 
@@ -27,18 +27,20 @@ class Takeaway
     order.add(item,quantity)
   end
 
-  def price_correct?(price)
-    price == order.total
-  end
 
   def place_order(price)
     fail "Price is incorrect" if !price_correct?(price)
     send_sms
   end
 
+  private
+
+  def price_correct?(price)
+    price == order.total
+  end
+
   def send_sms
     sms.send
   end
-
 
 end

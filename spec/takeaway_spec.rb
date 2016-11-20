@@ -1,7 +1,5 @@
 require 'takeaway'
 
-#user interface for a takeaway order system
-
 describe Takeaway do
 
   subject(:takeaway) {described_class.new(menu_klass, order_klass, sms_klass)}
@@ -9,8 +7,8 @@ describe Takeaway do
   let(:menu) {double :menu, print: print_list, list: menu_list}
   let(:print_list) {"Curry £9"}
   let(:menu_list) {{"Curry" => 9, "Burger" => 8}}
-  let(:order) {double :order, total: 17}
   let(:order_klass) {double :order_klass, new: order}
+  let(:order) {double :order, total: 17}
   let(:sms_klass) {double :sms_klass, new: sms}
   let(:sms) {double :sms, send: nil}
 
@@ -40,30 +38,22 @@ describe Takeaway do
 
   end
 
-  describe '#check_price' do
 
-    it 'returns true if price matches sum of dishes in order' do
+  describe '#place_order' do
+
+    it '#raises error if price is incorrect' do
       subject.begin_order
       allow(order).to receive(:total).and_return(17)
-      expect(subject.price_correct?(17)).to eq true
+      expect{subject.place_order(18)}.to raise_error 'Price is incorrect'
     end
 
-    it 'returns false if price does not match sum of dishes in order' do
+    it '#sends confirmation sms if price is correct' do
       subject.begin_order
       allow(order).to receive(:total).and_return(17)
-      expect(subject.price_correct?(18)).to eq false
+      expect(sms).to receive(:send)
+      subject.place_order(17)
     end
 
-    # describe '#place_order' do
-    #
-    #   it '#raises error if price is incorrect' do
-    #     subject.begin_order
-
-
-
-
-
-
-end
+  end
 
 end
