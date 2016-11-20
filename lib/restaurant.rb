@@ -1,4 +1,4 @@
-class Menu
+class Restaurant
 
   attr_reader :order
 
