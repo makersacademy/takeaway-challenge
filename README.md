@@ -50,7 +50,7 @@ take_away.checkout(10)
         * send a custom text message to the user
 
   class **Menu** - contains a hash with dishes and prices
-    * add (dish,price)
+   * add (dish,price)
         * insert the dish as a string
     * remove_dish(dish)
         * insert the dish as a string
