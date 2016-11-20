@@ -1,4 +1,9 @@
+require 'twilio-ruby'
+require 'dotenv'
+
 class TakeAway
+
+  Dotenv.load
 
   def initialize
     @menu = default_menu
@@ -55,7 +60,12 @@ class TakeAway
   end
 
   def send_text(text)
-    #Twilio API
+    client = Twilio::REST::Client.new(ENV['twilio_SID'],ENV['twilio_AUTH'])
+    client.messages.create(
+      from: "[+441288255082]",
+      to: ENV['number'],
+      body: text
+    )
   end
 
 end
