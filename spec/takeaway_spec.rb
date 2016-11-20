@@ -2,6 +2,11 @@ require 'takeaway'
 
 describe TakeAway do
   subject(:takeaway) {described_class.new}
+  before do
+    takeaway.order 'spring roll'
+    takeaway.order 'spring roll'
+    takeaway.order 'spring roll', 4
+  end
 
   it "shows the menu list" do
     menu_list = {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}
@@ -14,32 +19,41 @@ describe TakeAway do
   end
 
   it "takes the order summary" do
-    takeaway.order 'spring roll', 4
     expect(takeaway.basket_summary).to eq "spring roll x4 = £3.96"
   end
   it "doesn't take the same order " do
-    takeaway.order 'spring roll'
-    takeaway.order 'spring roll'
-    takeaway.order 'spring roll', 4
     expect(takeaway.basket_summary).to eq "spring roll x4 = £3.96"
   end
 
   it "adds multiple orders" do
-    takeaway.order 'spring roll', 4
     takeaway.add 'pork dumpling', 3
     expect(takeaway.basket_summary).to eq "spring roll x4 = £3.96, pork dumpling x3 = £8.97"
   end
 
   it "adds multiple orders" do
-    takeaway.order 'spring roll', 4
     takeaway.add 'pork dumpling', 3
     expect(takeaway.basket_summary).to eq "spring roll x4 = £3.96, pork dumpling x3 = £8.97"
   end
 
   it "shows the total of the order" do
-    takeaway.order 'spring roll', 4
     takeaway.add 'pork dumpling', 3
     expect(takeaway.total).to eq 12.93
+  end
+
+  context "checking out" do
+    it "checkouts the order" do
+      takeaway.basket_summary
+      takeaway.add 'pork dumpling', 3
+      total = takeaway.total
+      expect(takeaway.checkout(12.93)).to eq nil
+    end
+    it "raises an error if the total is not correct " do
+      takeaway.basket_summary
+      takeaway.add 'pork dumpling', 3
+      total = takeaway.total
+      expect{takeaway.checkout(12)}.to raise_error("The total is not correct.")
+    end
+
   end
 
 end

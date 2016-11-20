@@ -5,7 +5,7 @@ require 'basket_item'
 
 describe "User stories" do
   let(:menu) { Menu.new }
-  let(:basket) { Basket.new(menu.dishes) }
+  let(:basket) { Basket.new}
   let(:pizza) {Dish.new("Pizza", 2)}
   let(:amok) {Dish.new("Amok", 4)}
   let(:salad) {salad = Dish.new("Salad",2)}

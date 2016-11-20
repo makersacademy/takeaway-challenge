@@ -2,7 +2,7 @@ class TakeAway
 
   def initialize
     @menu = default_menu
-    @basket = Basket.new()
+    @basket = Basket.new
   end
 
   def default_menu
@@ -16,23 +16,19 @@ class TakeAway
   end
 
   def read_menu
-    menu_hash = Hash.new(0)
-    @menu.dishes.each do |dish|
-    menu_hash.store("#{dish.name}", dish.price)
-    end
+    menu_hash = Hash.new
+    @menu.dishes.each{ |dish| menu_hash.store("#{dish.name}", dish.price)}
     return menu_hash
   end
 
   def order(dish_name, quantity = 1)
-    @basket = Basket.new()
+    @basket = Basket.new
     add(dish_name, quantity)
   end
 
   def basket_summary
     basket_items = @basket.summary
-    (basket_items.collect do |basket_item|
-      "#{basket_item.name} x#{basket_item.quantity} = £#{basket_item.sub_total}"
-    end).join(', ')
+    basket_items.collect{|basket_item| "#{basket_item.name} x#{basket_item.quantity} = £#{basket_item.sub_total}"}.join(', ')
   end
 
   def add(dish_name, quantity = 1)
@@ -41,9 +37,18 @@ class TakeAway
   end
 
   def total
-    sum = 0
     basket_items = @basket.summary
     basket_items.collect{|basket_item| basket_item.sub_total}.reduce(:+)
+  end
+
+  def checkout(total_price)
+    raise "The total is not correct." unless is_correct_amount?(total_price)
+  end
+
+  private
+
+  def is_correct_amount?(total_price)
+    self.total == total_price
   end
 
 end
