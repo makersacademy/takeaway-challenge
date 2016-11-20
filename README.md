@@ -14,25 +14,25 @@ Takeaway Challenge
 
  ```
 
- My solution to the Takeaway Challenge. A program which allows a customer to see a menu, make an order and receive a SMS confirmation through use of the Twilio API. This is the Makers Academy homework challenge for week 2.
+My solution to the Takeaway Challenge. A program which allows a customer to see a menu, make an order and receive a SMS confirmation through use of the Twilio API. This is the Makers Academy homework challenge for week 2.
 
- Objectives
- ---------
+Objectives
+---------
 
- Continue to learn object-oriented programming and test driven development
- Learn about using an API
+Continue to learn object-oriented programming and test driven development
+Learn about using an API
 
 
- Technologies used
- ------------------
+Technologies used
+------------------
 
- * Ruby
- * RSpec
- * Git
- * Twilio
+* Ruby
+* RSpec
+* Git
+* Twilio
 
- How to run it
- ---------------
+How to run it
+---------------
 
 ```
 [1] pry(main)> require'./lib/takeaway'
