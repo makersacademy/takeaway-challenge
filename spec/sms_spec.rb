@@ -6,6 +6,6 @@ describe Sms do
   let(:client) { double :client }
   let(:delivery_time) { double :delivery_time }
 
-
+  
 
 end
