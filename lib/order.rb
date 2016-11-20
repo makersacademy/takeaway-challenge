@@ -1,13 +1,14 @@
 require_relative './menu'
+require_relative './message'
 
 class Order
 
-attr_reader :list_of_dishes, :current_order_price, :menu
+attr_reader :current_order_price, :menu
 
   def initialize
-
     @current_order_price = 0
     @menu = Menu.new
+    @message = Message.new
  end
 
   def order(item, quantity)
@@ -17,7 +18,7 @@ attr_reader :list_of_dishes, :current_order_price, :menu
   end
 
   def expected_total(total)
-    total == @current_order_price? "Thank you! Your order was placed and is being delivered by our best directionally challenged learner driver. It will be delivered before #{Time.now.strftime("%H").to_i+1}:#{Time.now.strftime("%M")}" : "Your total is wrong: please enter the correct total."
+    total == @current_order_price? @message.text : "Your total is wrong: please enter the correct total."
   end
 
 
