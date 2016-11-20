@@ -18,11 +18,6 @@ class Takeaway
     add_to_basket(item, quantity)
   end
 
-  def add_to_basket(item, quantity)
-    self.basket << {:item=>item, :qty=>quantity}
-    "#{quantity}x #{item} added to your basket"
-  end
-
   def view_basket
     @basket.each { |line| puts "#{line[:qty]}x #{line[:item]} @ £" + "%.2f" % @menu.menu_list[line[:item]] }
   end
@@ -31,6 +26,13 @@ class Takeaway
     return "Incorrect Total" if total != calculate_total
     send_confirmation_message('Thank you! Your order was placed and will be delivered before ' + (Time.now + 3600).strftime("%R"))
     "Thank you for your order: £" + "%.2f" % total
+  end
+
+  private
+
+  def add_to_basket(item, quantity)
+    self.basket << {:item=>item, :qty=>quantity}
+    "#{quantity}x #{item} added to your basket"
   end
 
   def send_confirmation_message(message)
@@ -44,7 +46,5 @@ class Takeaway
   def calculate_total
     self.basket.each.inject(0) { |sum, line| sum + (@menu.menu_list[line[:item]] * line[:qty])}
   end
-
-
 
 end

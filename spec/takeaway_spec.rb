@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:takeaway) { described_class.new(menu, order, sms) }
+  let(:takeaway) { described_class.new(menu, sms) }
   let(:klass1) { double(:klass1) }
   let(:klass2) { double(:klass2) }
   let(:menu) { double(:menu) }
@@ -12,7 +12,6 @@ describe Takeaway do
 
   before do
     allow(menu).to receive(:new).and_return menu
-    allow(order).to receive(:new).and_return order
     allow(sms).to receive(:new).and_return sms
     allow(menu).to receive(:menu_list).and_return ({"Spag_Bol" => 6.5, "Pizza" => 4, "Chips" => 2.75})
     allow(sms).to receive(:send_sms)
@@ -22,10 +21,6 @@ describe Takeaway do
 
     it 'accepts a Menu object on initialization' do
       expect(takeaway.menu).to eq menu
-    end
-
-    it 'accepts an Order object on initialization' do
-      expect(takeaway.order).to eq order
     end
 
     it 'accepts a Message Type object on initalization' do
@@ -46,50 +41,11 @@ describe Takeaway do
 
   end
 
-  context 'Check if valid item' do
-
-      it 'indicates when an item is not in the menu' do
-        expect(takeaway.in_menu?("Peas")).to eq false
-      end
-
-      it 'indicates when an item is on the menu' do
-        expect(takeaway.in_menu?("Spag_Bol")).to eq true
-      end
-
-  end
-
-  context 'Add to Basket' do
-
-    it 'is expected to respond to add_to_basket' do
-      expect(takeaway).to respond_to(:add_to_basket)
-    end
-
-    it 'is expected to add a line item to a basket' do
-      takeaway.add_to_basket(item, qty)
-      expect(takeaway.basket).to eq [{:item=>item, :qty=>qty}]
-    end
-
-    it 'returns confirmation message when adding items to basket' do
-      expect(takeaway.add_to_basket("Pizza", 3)).to eq "3x Pizza added to your basket"
-    end
-
-  end
-
   context 'View Basket' do
 
     it 'can let a customer review their basket' do
       takeaway.select_item("Pizza", 3)
       expect(takeaway.view_basket).to eq takeaway.basket
-    end
-
-  end
-
-  context 'Calculate Total' do
-
-    it 'calculates total cost' do
-      takeaway.select_item("Pizza", 3)
-      takeaway.select_item("Chips")
-      expect(takeaway.calculate_total).to eq 14.75
     end
 
   end
@@ -103,19 +59,48 @@ describe Takeaway do
 
     it 'thanks the customer for their order' do
       takeaway.select_item("Pizza", 3)
-      expect(takeaway.confirm_order(12)).to eq "Thank you for your order: £12"
+      expect(takeaway.confirm_order(12)).to eq "Thank you for your order: £12.00"
     end
 
   end
 
-  # context 'Send confirmation message' do
+  # context 'Add to Basket' do
   #
-  #   it 'sends a payment confirmation text message' do
-  #     expect(takeaway.send_confirmation_message("Dude")).to eq "Dude"
+  #   it 'is expected to respond to add_to_basket' do
+  #     expect(takeaway).to respond_to(:add_to_basket)
+  #   end
+  #
+  #   it 'is expected to add a line item to a basket' do
+  #     takeaway.add_to_basket(item, qty)
+  #     expect(takeaway.basket).to eq [{:item=>item, :qty=>qty}]
+  #   end
+  #
+  #   it 'returns confirmation message when adding items to basket' do
+  #     expect(takeaway.add_to_basket("Pizza", 3)).to eq "3x Pizza added to your basket"
   #   end
   #
   # end
-
-
-
+  #
+  # context 'Check if valid item' do
+  #
+  #   it 'indicates when an item is not in the menu' do
+  #     expect(takeaway.in_menu?("Peas")).to eq false
+  #   end
+  #
+  #   it 'indicates when an item is on the menu' do
+  #     expect(takeaway.in_menu?("Spag_Bol")).to eq true
+  #   end
+  #
+  # end
+  #
+  # context 'Calculate Total' do
+  #
+  #   it 'calculates total cost' do
+  #     takeaway.select_item("Pizza", 3)
+  #     takeaway.select_item("Chips")
+  #     expect(takeaway.calculate_total).to eq 14.75
+  #   end
+  #
+  # end
+  #
 end
