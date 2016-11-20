@@ -5,9 +5,7 @@ describe Takeaway do
   let(:takeaway) { described_class.new(menu, order, sms) }
   let(:klass1) { double(:klass1) }
   let(:klass2) { double(:klass2) }
-  let(:klass3) { double(:klass3) }
   let(:menu) { double(:menu) }
-  let(:order) { double(:order) }
   let(:sms) { double(:sms) }
   let(:item) { double(:item) }
   let(:qty) { double(:qty) }

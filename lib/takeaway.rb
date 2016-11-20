@@ -7,10 +7,9 @@ class Takeaway
 
   DEFAULT_QUANTITY = 1
 
-  def initialize(klass1, klass2, klass3)
+  def initialize(klass1, klass2)
     @menu = klass1.new
-    @order = klass2.new
-    @message_type = klass3.new
+    @message_type = klass2
     @basket = []
   end
 
@@ -25,17 +24,17 @@ class Takeaway
   end
 
   def view_basket
-    @basket.each { |line| "#{line[:qty]}x #{line[:item]}}" }
+    @basket.each { |line| puts "#{line[:qty]}x #{line[:item]} @ £" + "%.2f" % @menu.menu_list[line[:item]] }
   end
 
   def confirm_order(total)
     return "Incorrect Total" if total != calculate_total
-    send_confirmation_message('Thank you! Your order was placed and will be delivered before ' + (Time.now + 3600).to_s)
-    "Thank you for your order: £" + total.to_s
+    send_confirmation_message('Thank you! Your order was placed and will be delivered before ' + (Time.now + 3600).strftime("%R"))
+    "Thank you for your order: £" + "%.2f" % total
   end
 
   def send_confirmation_message(message)
-    @message_type.send_sms(message)
+    @message_type.new.send_sms(message)
   end
 
   def in_menu?(item)

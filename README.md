@@ -92,45 +92,44 @@ Build Badge Example
 
 How to Use
 ------------------
-1. User views the menu
+1. User finds takeaway restaurant
 ```
-ᚹᚱᛘ ᛬ require './lib/menu'
+ᚹᚱᛘ ᛬ require './lib/takeaway'
 => true
-ᚹᚱᛘ ᛬ menu = Menu.new(Order)
-=> #<Menu:0x007fd463201a40
- @current_selection={},
- @menu_list={"spag_bol"=>6, "pizza"=>4},
- @order=#<Order:0x007fd463201a18 @basket=[], @total=0>>
-```
-2. User adds desired items from the menu into a basket
-```
-ᚹᚱᛘ ᛬ menu.select_item("pizza", 3)
-=> [{:item=>"pizza", :price=>4, :qty=>3}]
-ᚹᚱᛘ ᛬ menu.select_item("spag_bol")
-=> [{:item=>"pizza", :price=>4, :qty=>3}, {:item=>"spag_bol", :price=>6, :qty=>1}]
-```
-3. User can view items in their order
-```
-ᚹᚱᛘ ᛬ menu.order
-=> #<Order:0x007fd463201a18
- @basket=
-  [{:item=>"pizza", :price=>4, :qty=>3},
-   {:item=>"spag_bol", :price=>6, :qty=>1}],
- @total=0>
+ᚹᚱᛘ ᛬ t = Takeaway.new(Menu, SMS)
+=> #<Takeaway:0x007fe01a3ef2e0
+ @basket=[],
+ @menu=
+  #<Menu:0x007fe01a3ef290
+   @menu_list={"Spag_Bol"=>6.5, "Pizza"=>4, "Chips"=>2.75}>,
+ @message_type=SMS>
 ```
 
-4. Order total is calculated
-```
-ᚹᚱᛘ ᛬ menu.order.calculate_total
-=> 18
-```
-
-5. Order is placed and accepted at the takeaway
-```
-ᚹᚱᛘ ᛬ menu.order.place_order
+2. User views the menu
+ ```
+ ᚹᚱᛘ ᛬ t.menu.view_menu
+=> {"Spag_Bol"=>6.5, "Pizza"=>4, "Chips"=>2.75}
 ```
 
-6. Takeaway sends SMS notification
+3. User selects items to add to their basket
 ```
-=> <Twilio::REST::Message ....
+ᚹᚱᛘ ᛬ t.select_item("Pizza")
+=> "1x Pizza added to your basket"
+ᚹᚱᛘ ᛬ t.select_item("Chips", 3)
+=> "3x Chips added to your basket"
 ```
+
+4. User views items in their basket
+```
+ᚹᚱᛘ ᛬ t.view_basket
+1x Pizza @ £4.00
+3x Chips @ £2.75
+```
+
+5. User confirms order with correct total
+```
+ᚹᚱᛘ ᛬ t.confirm_order(12.25)
+=> "Thank you for your order: £12.25"
+```
+
+6. User is sent an SMS confirmation message

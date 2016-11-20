@@ -11,7 +11,7 @@ class Menu
   end
 
   def view_menu
-    self.menu_list
+    self.menu_list.each { |k,v| puts "#{k} " + "%.2f" % v }
   end
 
 end
