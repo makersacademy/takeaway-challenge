@@ -3,7 +3,7 @@ require "twilio-ruby"
 
 class TakeawayShop
 
-  attr_reader :menu, :order
+  attr_reader :menu, :customer
 
   def take_order( order )
     @customer = order

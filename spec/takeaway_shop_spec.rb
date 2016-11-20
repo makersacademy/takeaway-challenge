@@ -17,16 +17,26 @@ describe TakeawayShop do
     it { is_expected.to respond_to :menu }
   end
 
-  context "#take_orders" do
+  context "#customer" do
+    it { is_expected.to respond_to :customer }
 
+    it "should equal order and custumer" do
+      shop.take_order( order1 )
+      expect( shop.customer ).to eq order1
+    end
+  end
+
+  context "#take_orders" do
     it { is_expected.to respond_to( :take_order ).with(1).argument }
 
+    it "should record the time when taken a order " do
+      allow( Time ).to receive( :now ).and_return( "15:00" )
+      expect( shop.take_order( order1 )).to eq "15:00"
+    end
   end
 
   context "#send_text" do
-
     it { is_expected.to respond_to :send_text }
-
   end
 
 end
