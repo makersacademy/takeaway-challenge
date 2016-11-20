@@ -1,5 +1,6 @@
 require 'sms'
 require "twilio-ruby"
+require '.env'
 describe SMS do
   subject(:sms) { described_class.new(config, client: client) }
 
@@ -8,8 +9,8 @@ describe SMS do
 
   let(:config) do
     {
-      account_sid: "AC1e23ec21dbfbe55dca0adb3687afdfe0",
-      auth_token: '612c426da5038b7a02cc2e7786143f8d',
+      account_sid: ACCOUNT_SID,
+      auth_token: AUTH_TOKEN,
       from: "+441782454810",
       to:   "+44702602704",
       body: "Thank you! Your order will be delivered before %s"

@@ -3,10 +3,10 @@ require_relative 'menu'
 require_relative 'sms'
 
 class Takeaway
-  
-  def initialize(menu:, order: nil, sms: nil)
-  @sms = sms || SMS.new
-  @menu = menu || Menu.new
+
+  def initialize(menu:, order: nil, sms: nil, config: {} )
+  @sms = sms || SMS.new(config)
+  @menu = menu 
   @order = order || Order.new(menu)
   end
 
