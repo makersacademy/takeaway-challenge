@@ -5,95 +5,67 @@ describe Order do
                       {:dish=>:v, :price=>3}] }
   subject(:order) { described_class.new(dishlist) }
 
-  context "initialization" do
+  describe "#initialize" do
     it "has an empty array of ordered dishes at initialization" do
-      expect(order.ordered_dishes).to eq []
+      expect(order.basket).to eq []
     end
 
-    it "initializes with total equaling to 0" do
+    it "initializes with sum total equaling to 0" do
       expect(order.total).to eq 0
     end
   end
 
-  context "User chooses dish number" do
-    before do
-      $stdin = StringIO.new("1")
+  describe "#add" do
+
+    it "Raises error if dish not on the menu" do
+      message = "Cannot add. No such dish on the menu."
+      expect {order.add(3, 1)}.to raise_error(NoItemError, message)
     end
 
-    after do
-      $stdin = STDIN
-    end
-
-    it "Asks for a dish number" do
-      message = "Please choose index number of the dish you would like to order.\n"
-      expect {order.which_dish}.to output(message).to_stdout
-    end
-
-    it "Lets user enter a dish number" do
-      expect(order.which_dish).to eq 1
-    end
-  end
-
-  context "User chooses number of portions" do
-    before do
-      $stdin = StringIO.new("2")
-    end
-
-    after do
-      $stdin = STDIN
-    end
-
-    it "Asks for a number of portions" do
-      message = "How many portions of this dish would you like to order?\n"
-      expect {order.how_many}.to output(message).to_stdout
-    end
-
-    it "Lets uder enter number of portions" do
-      expect(order.how_many).to eq 2
-    end
-  end
-
-  context "after dish and quantity added" do
     it "Calculates the price" do
-      expect(order.price(1, 2)).to eq 8
+      expect(order.add(1, 2)).to eq 8
     end
 
     it "Updates total by calculated price" do
-      order.price(1, 2)
-      expect(order.total).to eq 8
+      order.add(1, 2)
+      order.add(2, 2)
+      expect(order.total).to eq 14
     end
 
     it "Adds ordered dish and price to the array" do
       array = [{ :dish=>:v, :price=>4, :quantity=>3, :total=>12 }]
-      expect { order.price(1, 3) }.to change { order.ordered_dishes }.by(array)
+      expect { order.add(1, 3) }.to change { order.basket }.by(array)
     end
   end
 
-  describe "#ordering_menu" do
-
-    before do
-      $stdin = StringIO.new("no")
+  context "order summary" do
+    it "shows formatted order summary" do
+      order.add(1, 3)
+      table = "                        YOUR ORDER:                         \n\n1. v  £4 x 3                                           = £12\n                                                 TOTAL:  £12\n\n"
+      expect(order.format_order).to eq(table)
     end
 
-    after do
-      $stdin = STDIN
+
+    it "lets user check if total sum correct" do
+      order.add(1, 3)
+      order.add(2, 4)
+      expect(order.correct?).to be true
     end
 
-    it "Asks if user would like to add more positions to the order" do
-      allow(order).to receive(:price) { 8 }
-      allow(order).to receive(:which_dish) { 1 }
-      allow(order).to receive(:how_many) { 2 }
-      message = "Would you like to add any more dishes? (yes/no)\n"
-      expect {order.ordering_menu}.to output(message).to_stdout
-    end
-
-    it "Gets and interprets answer from the user" do
-      expect(order.more?).to eq false
+    it "can check if empty" do
+      expect(order.empty?).to eq true
     end
   end
+  describe "#remove" do
+    it "removes unwanted dishes from the order" do
+      order.add(1, 3)
+      order.remove_items(1)
+      expect(order.basket).to eq ([])
+    end
 
-  # it "shows order" do
-  #   expect {order.show_order}.to output(String).to_stdout
-  # end
-
+    it "raises error if no such dish in order" do
+      message = "Cannot remove. No such dish in your order."
+      expect { order.remove_items(1) }.to raise_error(NoItemError, message)
+    end
+  end
 end
