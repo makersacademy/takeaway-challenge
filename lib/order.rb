@@ -9,10 +9,11 @@ class Order
     @grand_total = 0
   end
 
-  def add_to_basket(item, number = 1)
+  def add_to_basket(item, quantity = 1)
     fail "Item not on the menu" unless on_menu?(item)
-    self.basket[item] = ["Quantity: #{number}, Total price: #{total(item, number)}"]
-    add_to_total(total(item, number))
+    self.basket[item] = quantity if self.basket.include? item == false
+    self.basket[item] += quantity
+    add_to_total(total(item, quantity))
   end
 
   def checkout(total)

@@ -1,9 +1,11 @@
 require 'takeaway'
 require 'menu'
 require 'order'
+
 describe Takeaway do
   subject(:takeaway) { described_class.new }
-  let(:menu) {double :menu}
+  let(:menu) { double :menu }
+  let(:sms) { double :sms }
 
   before do
     allow(menu).to receive(:menu).and_return(margherita: 6)
@@ -43,10 +45,18 @@ describe Takeaway do
     end
   end
   describe "#checkout" do
-    it 'should call the order checkout method' do
-      takeaway.add_to_basket("margherita")
-      expect(takeaway.checkout(6)).to eq true
+      before do
+        takeaway.add_to_basket("margherita")
+        #allow(sms).to receive(:send_confirmation).and_return("message sent")
+      end
+    it 'should call order checkout method' do
+      expect(takeaway).to respond_to(:checkout)
     end
+    it 'should send a text confirmation' do
+      allow(takeaway).to receive(:send_confirmation).and_return("Message sent")
+      expect(takeaway.checkout(6)).to eq("Message sent")
+    end
+
   end
 
 end

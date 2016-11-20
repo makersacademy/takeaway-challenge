@@ -33,7 +33,7 @@ describe Order do
     end
     it 'should calculate the total price for multiple items' do
       order.add_to_basket(:margherita, 2)
-      expect(order.basket[:margherita]).to eq ["Quantity: 2, Total price: 12"]
+      expect(order.basket[:margherita]).to eq 2
     end
   end
   describe "#checkout" do
