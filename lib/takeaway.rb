@@ -1,15 +1,15 @@
 require_relative 'menu'
 require_relative 'order'
-require_relative 'checkout'
+require_relative 'sms'
 
 class Takeaway
 
-	attr_reader :order_klass, :checkout
+	attr_reader :order_klass, :sms_klass
 
 	include Menu
 
-	def initialize(checkout_klass, order_klass)
-		@checkout = checkout_klass.new
+	def initialize(sms_klass, order_klass)
+		@sms_klass = sms_klass
 		@order_klass = order_klass
 	end
 
@@ -26,13 +26,18 @@ class Takeaway
 	def pay(total)
 		raise "Order has not been created." if @order == nil
 		raise "Payment amount is incorrect." if total != @order.order_total
-		@checkout.process_payment(total)
+		new_sms
+		@order = nil
 	end
 
 	private
 
 		def new_order
 			@order = order_klass.new
+		end
+
+		def new_sms
+			@sms = sms_class.new
 		end
 
 end

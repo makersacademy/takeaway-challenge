@@ -2,9 +2,8 @@ require 'takeaway'
 
 describe Takeaway do
 
-	subject(:takeaway) { described_class.new(checkout_klass, order_klass) }
-	let(:checkout_klass) { double(:checkout_klass, new: checkout) }
-	let(:checkout) { double(:checkout) }
+	subject(:takeaway) { described_class.new(sms_klass, order_klass) }
+	let(:sms_klass) { double(:sms_klass) }
 	let(:order_klass) { double(:order_klass, new: order) }
 	let(:order) { double(:order) }
 
