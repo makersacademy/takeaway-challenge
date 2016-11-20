@@ -1,3 +1,4 @@
+# contains the sms sending functionality by creating a new Twilio client and sending a custom message.
 require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load

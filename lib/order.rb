@@ -1,7 +1,7 @@
+# this class is responsible for showing a menu, adding dishes with quantitites to an array, calculating the total price of dishes and reseting the ordered dishes array.
 require_relative "menu"
 
 class Order
-
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -28,26 +28,5 @@ class Order
   def reset_order
     @added_dishes = []
   end
-
-
-
-
+  
 end
-
-
-
-# def order(*args, total)
-#   total_value = 0
-#   string = ""
-#   args.each_slice(2) do |name,number|
-#     menu.each do |dish|
-#        if dish.include?(name.to_sym)
-#          total_value += dish[name.to_sym] * number
-#          string << "#{number} dish(es) of #{name} "
-#        end
-#     end
-#   end
-#   total_value
-#   raise "Incorrect total value." if total != total_value
-#   "You ordered " + string
-# end

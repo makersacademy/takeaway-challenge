@@ -1,3 +1,4 @@
+# this class is responsible for displaying a menu, adding dishes with quantities and finalizing the order by sending an sms.
 require 'dotenv'
 Dotenv.load
 require_relative "order"
@@ -33,13 +34,15 @@ class TakeAway
     send_message("Your order will arrive at #{Time.now.hour+1}:#{Time.now.min}")
   end
 
-  def send_message(message)
-    @sms.text_message(message)
-  end
+  private
 
-  def reset_order
-    @order.reset_order
-  end
+    def send_message(message)
+      @sms.text_message(message)
+    end
+
+    def reset_order
+      @order.reset_order
+    end
 
 
 end
