@@ -1,91 +1,65 @@
-Takeaway Challenge
+Takeaway Challenge [![Build Status](https://travis-ci.org/TudorTacal/takeaway-challenge.svg?branch=master)](https://travis-ci.org/TudorTacal/takeaway-challenge)
 ==================
+This project is our second weekend challenge at Makers Academy coding bootcamp.
+
+Takeaway is a **command line app** and represents a food ordering system. It uses [Twilio's](https://www.twilio.com) API for text messaging to send a sms to the user at checkout.
+
+The phone numbers and authentication id's are saved in ENV variables that are loaded at startup.
+
+### Installation and Use
+
+1. To run the program first run **bundle install**.
+2. Open pry/irb and **require "./lib/take_away.rb"**.
+3. Create a new TakeAway object that takes 2 arguments: Order and SMS.
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+take_away = TakeAway.new(Order, SMS)
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+* See an available menu of dishes with prices.
 
 ```
-$ coveralls report
+pry(main)> take_away.menu
+=> {:chicken=>5, :beef=>6, :pork=>7}
+```
+* Add a dish and the quantity to basket.
+```
+pry(main)> take_away.add_to_basket("chicken",2)
+=> "You added 2 x chicken to the basket."
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+* To checkout the order, give the total price as argument and if it matches the total price of the dishes, the app will send an sms with the time of the delivery.
 
-Build Badge Example
-------------------
+```
+take_away.checkout(10)
+```
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+### Classes and Methods
+#### class **TakeAway(Order,SMS)**
+ * menu - displays a list of dishes with prices
+ * add_to_basket(dish,number)
+   + the *dish* will come as a string
+ * checkout(price)
+   + it will check if the introduced price matches the total price of the dishes ordered and raises an error if they don't match.
+   + sends a confirmation sms to the user
+
+#### class **Order** - has a Menu object injected
+ * menu
+ * add(dish,number)
+ * total
+
+#### class **SMS**
+ * new_client
+  * creates a new Twilio client
+ * text_message
+  * send a custom text message to the user
+
+#### class **Menu** - contains a hash with dishes and prices
+ * add (dish,price)
+  * insert the dish as a string
+ * remove_dish(dish)
+  * insert the dish as a string
+
+This repository was cloned from https://github.com/makersacademy/takeaway-challenge
+
+### Contacts
+tudor.tacal@gmail.com
