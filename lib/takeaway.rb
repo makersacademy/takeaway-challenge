@@ -7,7 +7,7 @@ class Takeaway
 
   def initialize(menu_klass = Menu)
     @menu = menu_klass.new
-    @items = {}
+    @items = Hash.new(0)
   end
 
   def show_menu
@@ -17,11 +17,7 @@ class Takeaway
   def add_item(item, quantity = 1)
     raise 'This item is not on the menu, please choose something else' if !Menu::MENU.has_key?(item)
     raise 'Quantity cannot be less than 1' if quantity < 1
-    if @items.has_key?(item)
-      @items[item] += quantity
-    else
-      @items[item] = quantity
-    end
+    @items[item] += quantity
   end
 
   def show_total
