@@ -3,6 +3,7 @@ require 'takeaway'
 describe TakeAway do
 
   subject (:takeaway) {described_class.new}
+  let (:twilio) {double :twilio}
 
   describe '#view_menu' do
     it 'should respond to view_menu' do
@@ -51,7 +52,6 @@ describe TakeAway do
       takeaway.order("cheese")
       expect(takeaway.check_total).to eq 10
     end
-
   end
 
 end
