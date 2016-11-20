@@ -1,6 +1,24 @@
-# class Takeaway
+require 'menu'
+
+class Takeaway
+
+attr_reader :menu
+
+  def initialize
+    @menu = Menu.new
+  end
+
+  def print_menu
+    menu.menu_list
+  end
+
+
+
+
+
+#   def place_order(dishes, quantity)
+#     puts "Hello, what would you like to order?
+#     The options are #{@menu_list}"
+#   end
 #
-# def menu_list
-# end
-#
-# end
+end

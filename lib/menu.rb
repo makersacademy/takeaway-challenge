@@ -10,5 +10,5 @@ attr_reader :menu_list
       "Pickled egg" => 2
     }
   end
-
+  
 end
