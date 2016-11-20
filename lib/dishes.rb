@@ -2,17 +2,18 @@
 
 class Dishes
 
+attr_reader :list
+
 def initialize
-  @list = []
+  @list = [{"Pizza" => 5},
+    {"Pasta" => 3},
+  {"Macaroni and Cheese" => 2}]
 end
 
 
 
   def add_dish(name, price, availability)
-    @name = name
-    @price = price
-    @availability = availability
-    dish_info = {:name => @name, :price => @price, :availability => @availability}
+    dish_info = {name => price}
     @list << dish_info
   end
 

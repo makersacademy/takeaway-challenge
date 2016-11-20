@@ -8,6 +8,8 @@ let(:food2) {double (:food2)}
 let(:price1) {double (:price1)}
 let(:price2) {double (:price2)}
 
+
+
     context "when all_dishes is called" do
 
 
@@ -15,7 +17,7 @@ let(:price2) {double (:price2)}
 
     context "when add a dish is called" do
       it " the dish should be added" do
-        expect(dishes.add_dish(food1, price1, true)).to eq [{:name => food1, :price => price1, :availability => true}]
+        expect(dishes.add_dish(food1, price1, true)).to eq [{"Pizza" => 5},{"Pasta" => 3},{"Macaroni and Cheese" => 2},{food1 => price1}]
       end
     end
 
@@ -23,7 +25,7 @@ let(:price2) {double (:price2)}
       it "all of the dishes should be shown" do
         dishes.add_dish(food1, price1, true)
         dishes.add_dish(food2, price2, false)
-        expect(dishes.all_dishes).to eq [{:name => food1, :price => price1, :availability => true},{:name => food2, :price => price2, :availability => false}]
+        expect(dishes.all_dishes).to eq [{"Pizza" => 5}, {"Pasta" => 3}, {"Macaroni and Cheese" => 2},{food1 => price1},{food2 => price2}]
       end
     end
 

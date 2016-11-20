@@ -3,43 +3,17 @@ require_relative 'dishes'
 
 
 class Menu
-    attr_reader :selected_dishes
+    attr_reader :selected_dishes, :quantity
 
-    def initialize
-      @selected_dishes = []
-    end
-
-    def output_dishes(dishes)
-      wo_index = available_dishes(dishes).collect do |dish|
-        "#{dish[:name]} - £#{dish[:price]}"
-      end
-      w_index =wo_index.each_with_index{|dish,index| "#{index+1}. #{dish}"}
-    end
-
-    def select_dish(dishes,number)
-      @selected_dishes << available_dishes(dishes)[number-1]
-
-   #### ^^^^ selects the index of the hash in available_dishes
-
-    end
-
-    def convert_selected_dishes_to_price
-      @selected_dishes.map{|x|x.reject {|key,value| [:name,:availability].include?(key)}}
-
+    def initialize(dishes)
+      @dishes = dishes
     end
 
 
-
-
-    private
-
-    def available_dishes(dishes)
-        available_with_nils = dishes.all_dishes.collect{|dish| dish if dish[:availability] == true}
-        available_no_nils = available_with_nils.compact
-        return available_no_nils
+    def available_dishes(choice)
+    available =(@dishes.list).map{|hash|hash.select{|key,value| return true if key == choice}}
+    if available != true then available = false end
+    return available
     end
 
-    def get_something
-      gets.chomp
-    end
 end
