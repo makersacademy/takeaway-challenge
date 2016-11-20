@@ -20,6 +20,13 @@ Instructions
 * Fork this repo and clone the files to your own project directory.
 * From the command  run ``` bundle install ``` This will add all the necessary gemfiles to the project directory to ensure you can run the files.
 
+Below are the four classes used in the project outlined with their responsibilities:
+
+- Dish: responsible for new instances of dishes. There are two readable properties; the name of the dish and its price.
+- DishInventory: responsible for storing dish objects. Dishes can be added or removed from the inventory.
+- Order: responsible for adding dishes and their quantity. Also keeps track of the total cost of the current order.
+- OrderManager: responsible for producing new orders, and submitting finished orders, verifying if the customer has paid the correct amount.
+
 ```
 $ irb
 [1] > dish = Dish.new("chicken tikka masala",4.2)
