@@ -19,25 +19,5 @@ describe PizzaShop do
     ( shop.menu ).each_value{ | value | price = value }
     expect( price ).to be_kind_of( Float )
   end
-
-  context "check the inheritance from TakeawayShop class" do
-
-    context "#take_orders" do
-
-      it { is_expected.to respond_to( :take_orders ).with(1).argument }
-
-      it "take several orders" do
-       shop.take_orders( order1 )
-       shop.take_orders( order2 )
-       expect( shop.orders ).to eq [ order1, order2 ]
-      end
-
-      it "should return message" do
-        expect( shop.take_orders( order1 )).to be_kind_of(String)
-      end
-
-    end
-
-  end
-
+  
 end

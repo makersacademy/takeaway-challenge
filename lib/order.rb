@@ -1,9 +1,9 @@
 class Order
 
-  attr_reader :customer_info, :order
+  attr_reader :phone, :order
 
-  def initialize( customer, *order )
-    @customer_info = customer
+  def initialize( phone_number, *order )
+    @phone = phone_number
     @order = order
   end
 

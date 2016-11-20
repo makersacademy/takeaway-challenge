@@ -9,7 +9,7 @@ describe TakeawayShop do
   before( :each ) do
     allow( order1 ).to receive_message_chain( :order, :size ).and_return( 1 )
     allow( order1 ).to receive_message_chain( :order, :each )
-    allow( order2 ).to receive_message_chain( :order, :size ).and_return( 1 )
+    allow( order2 ).to receive_message_chain( :order, :size ).and_return( 2 )
     allow( order2 ).to receive_message_chain( :order, :each )
   end
 
@@ -19,17 +19,13 @@ describe TakeawayShop do
 
   context "#take_orders" do
 
-    it { is_expected.to respond_to( :take_orders ).with(1).argument }
+    it { is_expected.to respond_to( :take_order ).with(1).argument }
 
-    it "take several orders" do
-     shop.take_orders( order1 )
-     shop.take_orders( order2 )
-     expect( shop.orders ).to eq [ order1, order2 ]
-    end
+  end
 
-    it "should return message" do
-      expect( shop.take_orders( order1 )).to be_kind_of(String)
-    end
+  context "#send_text" do
+
+    it { is_expected.to respond_to :send_text }
 
   end
 
