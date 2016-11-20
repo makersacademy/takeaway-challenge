@@ -6,6 +6,7 @@ describe TakeAway do
     takeaway.order 'spring roll'
     takeaway.order 'spring roll'
     takeaway.order 'spring roll', 4
+    allow(takeaway).to receive(:send_text)
   end
 
   it "shows the menu list" do
@@ -41,17 +42,25 @@ describe TakeAway do
   end
 
   context "checking out" do
-    it "checkouts the order" do
+
+    before do
       takeaway.basket_summary
       takeaway.add 'pork dumpling', 3
       total = takeaway.total
+    end
+
+    it "checkouts the order" do
       expect(takeaway.checkout(12.93)).to eq nil
     end
     it "raises an error if the total is not correct " do
-      takeaway.basket_summary
-      takeaway.add 'pork dumpling', 3
-      total = takeaway.total
       expect{takeaway.checkout(12)}.to raise_error("The total is not correct.")
+    end
+
+    it "sends a payment confirmation text message" do
+      t = (Time.now + 1*60*60)
+      allow(takeaway).to receive(:send_text).with("Thank you for your order: £#{takeaway.total}. It will be delivered before #{t.hour}:#{t.min}")
+      takeaway.checkout(12.93)
+      expect(takeaway).to have_received(:send_text).with("Thank you for your order: £#{takeaway.total}. It will be delivered before #{t.hour}:#{t.min}")
     end
 
   end

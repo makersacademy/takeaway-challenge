@@ -43,12 +43,19 @@ class TakeAway
 
   def checkout(total_price)
     raise "The total is not correct." unless is_correct_amount?(total_price)
+    delivery_time = (Time.now + 1*60*60)
+    send_text("Thank you for your order: £#{total}. It will be delivered before #{delivery_time.hour}:#{delivery_time.min}")
   end
+
 
   private
 
   def is_correct_amount?(total_price)
     self.total == total_price
+  end
+
+  def send_text(text)
+    #Twilio API
   end
 
 end
