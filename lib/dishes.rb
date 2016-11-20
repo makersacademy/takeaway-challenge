@@ -12,7 +12,7 @@ end
 
 
 
-  def add_dish(name, price, availability)
+  def add_dish(name, price)
     dish_info = {name => price}
     @list << dish_info
   end
