@@ -1,6 +1,8 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'sms'
+require 'dotenv'
+Dotenv.load
 
 class Takeaway
 
@@ -20,7 +22,7 @@ class Takeaway
 	end
 
 	def check_total
-		"Total: £#{@order.order_total}"
+		"Total: £%.2f" % @order.order_total
 	end
 
 	def pay(total)

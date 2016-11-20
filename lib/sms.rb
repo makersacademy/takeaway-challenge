@@ -1,25 +1,22 @@
 require 'twilio-ruby' 
  
 class SMS
-
-	def initialize
-		@account_sid = 'AC1f2d7b6fbd574ce29dcb1c8671a94908' 
-		@auth_token = 'b825496c19f566086515ee13415eb30c'
-		@client = Twilio::REST::Client.new @account_sid, @auth_token 
-	end
  
 	def send(total)
-		@client.account.messages.create({
-			:from => '+442033228961', 
-			:to => '+447511111735', 
-			:body => "Thank you. Received payment of £#{total}. Your order will be delivered by #{self.delivery_time}", 
-		})
+		Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+			.messages.create(
+				from: ENV['TWILIO_PHONE'],
+				to: ENV['TWILIO_DESTINATION_PHONE'],
+				body: self.message(total)
+			)
 	end
 
-	private
-
-		def delivery_time
-			(Time.now + 60 * 60).strftime("%H:%M")
-		end
+	def message(total)
+		"Thank you. Received payment of £%.2f. Your order will be delivered by #{self.delivery_time}" % total
+	end
+	
+	def delivery_time
+		(Time.now + 60 * 60).strftime("%H:%M")
+	end
 
 end
