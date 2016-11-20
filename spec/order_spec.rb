@@ -5,6 +5,7 @@ describe Order do
 
   let(:menu1) {double :menu1}
   let(:order1) { described_class.new( menu1, [ { "Diavola" => 1, "Capricosa" => 2 }, 27.45 ] ) }
+  let(:order2) { described_class.new( menu1, [ { "Diavola" => 1, "Capricosa" => 2 }, 25.00 ] ) }
 
   it 'stores dishes and their quantities' do
     expect(order1.meal).to eq( { "Diavola" => 1, "Capricosa" => 2 }  )
@@ -18,6 +19,12 @@ describe Order do
     allow(order1).to receive(:menu).and_return({ "Diavola" => 8.95, "Capricosa" => 9.25 })
     expect(order1.calculate_total).to eq 27.45
   end
+
+  it 'raises an error if the payment does not match the cost' do
+    allow(order2).to receive(:menu).and_return({ "Diavola" => 8.95, "Capricosa" => 9.25 })
+    expect{order2.check_payment}.to raise_error("Incorrect payment amount")
+  end
+
 
 
 end

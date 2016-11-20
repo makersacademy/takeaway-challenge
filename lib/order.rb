@@ -10,10 +10,16 @@ class Order
 
   def calculate_total
     total = 0
-    meal.each do |pizza, quantity|
-      total += menu[pizza] * quantity
-    end
+    meal.each{|pizza, quantity| total += menu[pizza] * quantity}
     total
+  end
+
+  def check_payment
+    fail "Incorrect payment amount" unless payment_correct?
+  end
+
+  def payment_correct?
+    payment == calculate_total
   end
 
 
