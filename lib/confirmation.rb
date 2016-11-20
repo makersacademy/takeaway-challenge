@@ -2,6 +2,7 @@ require 'twilio-ruby'
 require_relative "order"
 
 class Confirmation
+  # Sends a confirmation text message
 
   attr_reader :time
 

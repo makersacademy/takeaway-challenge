@@ -3,15 +3,16 @@ require "./lib/order"
 describe Order do
   subject(:order) {described_class.new}
   let(:menu) {double(:menu)}
+  let(:confirmation) {double{:confirmation}}
 
   before do
     order.select_items("burrito", 2)
-
   end
 
   it "should have a start method, that welcomes the customer and lists the menu" do
     allow(menu).to receive(:welcome) {"Welcome to Dan's Mexican Resturaunt."}
     allow(menu).to receive(:list_menu) {[nil, nil, nil, nil]}
+    allow(order).to receive(:start) {[nil, nil, nil, nil]}
     expect(order.start).to eq([nil, nil, nil, nil])
   end
 
@@ -43,9 +44,6 @@ describe Order do
       expect{(order.display_total_price).to raise_error("An error has occurred. Please try again")}
     end
 
-
-
-
     it "should keep track of the prices" do
       expect(order.prices).to eq([12])
     end
@@ -61,9 +59,8 @@ describe Order do
     end
 
     it "should cacel the order if the user does not confirm it" do
-      expect{confirm.with("no").to raise_error "You have cancelled your order. Please try again"}
+      expect{order.confirm("no").to raise_error "You have cancelled your order. Please try again"}
     end
-
 
   end
 end

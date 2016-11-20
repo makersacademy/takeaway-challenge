@@ -2,6 +2,7 @@ require_relative "menu"
 require_relative "confirmation"
 
 class Order
+  # Allows the customer to place an order
 
   attr_reader :selection, :shopping_cart, :menu, :prices, :total, :confirmation
 
@@ -38,8 +39,6 @@ class Order
     calculate_total_price
     p display_total_price
     p confirm_message
-
-
   end
 
   def calculate_total_price

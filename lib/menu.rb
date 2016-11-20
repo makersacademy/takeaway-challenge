@@ -1,4 +1,5 @@
 class Menu
+  # Holds everything related to the resturaunt's menu
 
   attr_reader :menu_items
 
