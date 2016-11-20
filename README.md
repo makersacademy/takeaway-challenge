@@ -1,3 +1,52 @@
+README: TEAKO (ti-ka) WARFIELD-GRAHAM
+
+STATUS OF TAKEAWAY APP:
+
+GOALS OF CLASSES CREATED
+    1- Takeaway Class Goal: Allow customers to view menu
+
+    2- Menu Class Goal: Populate the menu utilized by other classes to view and select meal items and caluclate prices
+
+    3- Order Class Goal: Allow customer to select and add dishes to a new order
+
+    4- Delivery Class Goal: To populate the message and time of delivery sent via text to customer cell phone
+
+WHAT WORKS?/STATUS OF APP
+
+Functionality currently allows
+  • A menu to be viewed with meal options and prices
+    (takeaway = Takeaway.new > takeaway.menu)
+
+  • Menu items to be selected and placed in a new order list
+  (order = Order.new > order.select_pizza)
+
+  • An accurate calculation of the order total
+    (order.order_total)
+
+  • A reminder of the menu options during order phase
+    (order.options)
+
+  • A new delivery time to be assigned
+    (order.receive_order)
+
+
+WHAT IS IN PROGRESS...
+
+  • Dynamically populated menu that allows new items to be added on-the-fly instead of hard-coded (see troubleshooting section below)
+
+  • Delivery text message providing time. (Working on proper install of twilio gem)
+
+TROUBLESHOOTING
+
+Dynamic Menu
+  I tried to have my Menu class work so that new meal items would be added into a dynamically updated array. I created .add_meal(meal, price) which created a hash and popped that option into the menu_list array. This worked fine within the class. BUT when I tried to access the populated menu list in Takeaway and Order classes for selecting items it always populated an empty array. I realized after being driven nuts that this is because the class always created a brand new version of my Menu class, of which, didn’t have a populated list (of course!!). After a couple hours I scratched the idea in favor of getting on with the project. My final solution was a hard coded menu list in an array.
+
+
+
+CHALLENGE INSTRUCTIONS....
+
+
+
 Takeaway Challenge
 ==================
 ```
@@ -11,7 +60,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +118,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 

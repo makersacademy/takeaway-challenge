@@ -39,4 +39,8 @@ attr_reader :options, :new_order, :delivery
     delivery.delivery_text #not working twilio gem didn't install properly.
   end
 
+  def receive_order
+    delivery.delivery_time
+  end
+
 end

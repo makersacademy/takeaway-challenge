@@ -1,4 +1,5 @@
-# require_relative 'twilio-ruby'
+# Goal: Allow customers to receive a message confirmation on their order providing a delivery time.
+
 
 class Delivery
 
