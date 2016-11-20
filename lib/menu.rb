@@ -19,10 +19,13 @@ attr_accessor :select_dishes
     @menu[dish_number]
   end
 
-  # def select_dishes(dish_number_array)
-  #   for dish_number in dish_number_array
-  #     select_dish(dish_number)
-  #   end
-  # end
+  def select_dishes(dish_number_array)
+    dishes_array = []
+    for dish_number in dish_number_array
+      dish = menu[dish_number]
+      dishes_array << dish
+    end
+    dishes_array
+  end
 
 end

@@ -28,12 +28,12 @@ subject(:takeaway) {described_class.new}
 
   end
 
-  describe '#selected' do
+  describe '#select_dishes' do
     it { is_expected.to respond_to(:select_dishes) }
 
-    # it 'should select a number of dishes' do
-    #   expect([subject.select_dishes([3,2])]).to eq [subject.dish_number_array]
-    # end
+    it 'should select a number of dishes' do
+      expect(subject.select_dishes([1,2,3,4])).to eq [subject.menu[1], subject.menu[2], subject.menu[3], subject.menu[4]]
+    end
   end
 
 end
