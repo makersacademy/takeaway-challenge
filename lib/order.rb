@@ -34,6 +34,11 @@ class Order
         @prices << @price
       end
     end
+    calculate_total_price
+    p display_total_price
+    p confirm_message
+
+
   end
 
   def calculate_total_price
