@@ -13,7 +13,7 @@ describe Takeaway do
   end
 
   it 'should access the menu from the Menu class' do
-    expect(takeaway.menu.menu).to include(margherita: 6)
+    expect(takeaway.menu).to include(margherita: 6)
   end
 
   describe "#see_menu" do
@@ -29,21 +29,21 @@ describe Takeaway do
       expect(takeaway.show_basket).to eq menu.basket
     end
   end
-  describe "#order" do
-    it 'should add an order to the menu basket' do
-      takeaway.order("margherita")
+  describe "#add_to_basket" do
+    it 'should add an order to the basket' do
+      takeaway.add_to_basket("margherita")
       expect(takeaway.basket).to include "margherita"
     end
   end
   describe "#show_price" do
     it 'should show the grand_total' do
-      takeaway.order("margherita")
+      takeaway.add_to_basket("margherita")
       expect(takeaway.show_price).to eq "£6"
     end
   end
   describe "#checkout" do
-    it 'should call the menu checkout method' do
-      takeaway.order("margherita")
+    it 'should call the order checkout method' do
+      takeaway.add_to_basket("margherita")
       expect(takeaway.checkout(6)).to eq true
     end
   end
