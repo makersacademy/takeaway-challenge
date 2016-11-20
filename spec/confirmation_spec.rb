@@ -9,7 +9,7 @@ describe Confirmation do
     end
 
     it "should be able to send confirmations" do
-      expect(confirmation).to respond_to(:send_confirmation).with(2).argument
+      expect(confirmation).to respond_to(:send_confirmation).with(1).argument
     end
   end
 end
