@@ -1,25 +1,29 @@
 require './lib/menu'
+require './lib/order'
 require './lib/SMS'
 
 class Takeaway
 
-  attr_reader :menu, :order, :message_type, :basket
+  attr_reader :menu, :order, :message_type
 
   DEFAULT_QUANTITY = 1
 
   def initialize(klass1, klass2)
     @menu = klass1.new
     @message_type = klass2
-    @basket = []
+  end
+
+  def view_menu
+    @menu.menu_list.each { |k,v| puts "#{k} " + "%.2f" % v }
+  end
+
+  def create_order
+    @order = Order.new
   end
 
   def select_item(item, quantity = DEFAULT_QUANTITY)
     return "Not a valid item" if !in_menu?(item)
     add_to_basket(item, quantity)
-  end
-
-  def view_basket
-    @basket.each { |line| puts "#{line[:qty]}x #{line[:item]} @ £" + "%.2f" % @menu.menu_list[line[:item]] }
   end
 
   def confirm_order(total)
@@ -28,10 +32,10 @@ class Takeaway
     "Thank you for your order: £" + "%.2f" % total
   end
 
-  private
+  #private
 
   def add_to_basket(item, quantity)
-    self.basket << {:item=>item, :qty=>quantity}
+    @order.basket << {:item=>item, :qty=>quantity}
     "#{quantity}x #{item} added to your basket"
   end
 
@@ -44,7 +48,7 @@ class Takeaway
   end
 
   def calculate_total
-    self.basket.each.inject(0) { |sum, line| sum + (@menu.menu_list[line[:item]] * line[:qty])}
+    @order.basket.each.inject(0) { |sum, line| sum + (@menu.menu_list[line[:item]] * line[:qty])}
   end
 
 end

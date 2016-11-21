@@ -27,8 +27,25 @@ describe Takeaway do
       expect(takeaway.message_type).to eq sms
     end
 
-    it 'creates an empty basket on creation' do
-      expect(takeaway.basket).to eq []
+  end
+
+  context 'View Menu' do
+
+    it 'can present a user with the list of food' do
+      expect(takeaway.view_menu).to eq menu.menu_list
+    end
+
+    it 'can present a price against a dish' do
+      expect(takeaway.view_menu['Spag_Bol']).to eq 6.5
+    end
+
+  end
+
+  context 'Create Order' do
+
+    it 'can create a new order' do
+      takeaway.create_order
+      expect(takeaway.order).to be_an_instance_of(Order)
     end
 
   end
@@ -41,25 +58,19 @@ describe Takeaway do
 
   end
 
-  context 'View Basket' do
-
-    it 'can let a customer review their basket' do
-      takeaway.select_item("Pizza", 3)
-      expect(takeaway.view_basket).to eq takeaway.basket
-    end
-
-  end
-
   context 'Confirm Order' do
 
-    it 'returns "Incorrect Total" when passed wrong total' do
+    before(:each) do
+      takeaway.create_order
       takeaway.select_item("Pizza")
+    end
+
+    it 'returns "Incorrect Total" when passed wrong total' do
       expect(takeaway.confirm_order(6)).to eq "Incorrect Total"
     end
 
-    it 'thanks the customer for their order' do
-      takeaway.select_item("Pizza", 3)
-      expect(takeaway.confirm_order(12)).to eq "Thank you for your order: £12.00"
+    it 'thanks the customer for their order when passed correct total' do
+      expect(takeaway.confirm_order(4)).to eq "Thank you for your order: £4.00"
     end
 
   end
