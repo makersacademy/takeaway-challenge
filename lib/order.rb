@@ -15,7 +15,7 @@ class Order
 
   def start
     puts @menu.welcome
-    @menu.list_menu
+    puts @menu.list_menu
   end
 
   def select_items(item, quantity)
@@ -32,13 +32,17 @@ class Order
     @shopping_cart.each do |food_item|
       food_item.each do |item, quantity|
         @price = menu.menu_items[item]
-        p "#{quantity} x #{item.to_s} at £#{@price} = £#{@price *= quantity}"
+        puts "#{quantity} x #{item.to_s} at £#{@price} = £#{@price *= quantity}"
         @prices << @price
       end
     end
+  end
+
+  def price_calculation
+    puts get_price
     calculate_total_price
-    p display_total_price
-    p confirm_message
+    puts display_total_price
+    puts confirm_message
   end
 
   def calculate_total_price

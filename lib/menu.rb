@@ -19,7 +19,7 @@ end
 
   def list_menu
        @menu_items.collect do |k,v|
-        puts "#{k}        £#{v}"
+        "#{k}        £#{v}"
      end
   end
 

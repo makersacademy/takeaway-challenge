@@ -1,9 +1,9 @@
 require "./lib/order"
 
 describe Order do
-  subject(:order) {described_class.new}
-  let(:menu) {double(:menu)}
-  let(:confirmation) {double{:confirmation}}
+  subject(:order) { described_class.new }
+  let(:menu) { double(:menu) }
+  let(:confirmation) { double{:confirmation} }
 
   before do
     order.select_items("burrito", 2)
@@ -26,12 +26,13 @@ describe Order do
   end
 
   it "should get the price of each item in the order" do
-    expect{order.get_price}.to output.to_stdout
+    expect(order.get_price).to eq([{:burrito=>2}])
   end
 
-  context "#get_price" do
+  context "#price_calculation" do
     before do
       order.get_price
+      order.calculate_total_price
     end
 
     it "should display to total price" do

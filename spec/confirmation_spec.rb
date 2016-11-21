@@ -1,7 +1,7 @@
 require "./lib/confirmation"
 
 describe Confirmation do
-  subject(:confirmation) {described_class.new}
+  subject(:confirmation) { described_class.new }
 
   before do
     allow(confirmation).to receive(:send_message) {"Thank you! Your order was placed and will be delivered before 8:00pm"}
