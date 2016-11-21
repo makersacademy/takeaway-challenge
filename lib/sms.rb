@@ -3,8 +3,8 @@ require 'twilio-ruby'
 class SMS
  
 	def send(total)
-		Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-			.messages.create(
+		client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+		client.messages.create(
 				from: ENV['TWILIO_PHONE'],
 				to: ENV['TWILIO_DESTINATION_PHONE'],
 				body: message(total)

@@ -39,16 +39,20 @@ describe "User Stories" do
 # As a customer
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+	let(:client) { double(:client, messages: messages) }
+	let(:messages) { double(:messages) }
+	let(:delivery_time) { double(:delivery_time) }
+
 	it 'should send user a text message to confirm payment and delivery' do
-		allow(ENV).to receive(:[]).with("TWILIO_ACCOUNT_SID").and_return("a123")
-		allow(ENV).to receive(:[]).with("TWILIO_AUTH_TOKEN").and_return("a456")
-		allow(ENV).to receive(:[]).with("TWILIO_PHONE").and_return("+789")
-		allow(ENV).to receive(:[]).with("TWILIO_DESTINATION_PHONE").and_return("+012")
+		message = "Thank you. Received payment of £6.99. Your order will be delivered by 17:25"
+	  	client_arguments = {from: ENV['TWILIO_PHONE'], to: ENV['TWILIO_DESTINATION_PHONE'], body: message }
+	  	allow(messages).to receive(:create).with client_arguments
+	  	allow(Time).to receive(:now).and_return(Time.parse("16:25"))
+	  	expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(client)
+		
 		takeaway = Takeaway.new(SMS, Order)
 		takeaway.place_order(2, 1)
-    	VCR.use_cassette('twilio') do
-    		takeaway.pay(6.99)
-    	end
+    	takeaway.pay(6.99)
 	end
 
 end
