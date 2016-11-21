@@ -2,33 +2,32 @@
 
 require './lib/order.rb'
 require './lib/sms.rb'
+require './lib/menu.rb'
 require 'dotenv'
 Dotenv.load
 
 class Takeaway
 
-attr_reader :view_menu, :order, :placed_order, :text
+attr_reader :menu, :order, :placed_order, :text
 
-  ALL_DISHES = {1 => {"Chicken Adobo" => 4.50},
-  2 => {"Pancit Bihon" => 4.50},
-  3 => {"Pancit Canton" => 4.50},
-  4 => {"Sizziling Pork Sisig" => 5.00},
-  5 => {"Pork Sinigang" => 5.00},
-  6 => {"Sizziling Beef Sisig" => 4.50},
-  7 => {"Stir Fried Vegetables" => 3.50},
-  8 => {"Rice and Lechon" => 5.50}
-  }
-
-  def initialize(order_klass, sms_klass)
-    @view_menu = ALL_DISHES
+  def initialize(order_klass, sms_klass, menu_klass)
+    @menu = menu_klass.new
     @order = order_klass
     @text = sms_klass.new
   end
 
-  def select(dish_number, quantity)
+  def select(dish_number, quantity = 1)
     place_new_order if placed_order == nil
-    raise "Sorry, please pick an available dish option (1-8)" if view_menu[dish_number] == nil
-    quantity.times {placed_order.selected_dishes << view_menu[dish_number]}
+    raise "Sorry, please pick an available dish option (1-8)" if dish(dish_number) == nil
+    quantity.times {placed_order.selected_dishes << dish(dish_number)}
+  end
+
+  def view_menu
+    menu.view_menu
+  end
+
+  def dish(dish_number)
+    menu.view_menu[dish_number]
   end
 
   def check_order

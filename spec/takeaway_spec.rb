@@ -2,9 +2,12 @@ require './lib/takeaway.rb'
 
 describe Takeaway do
 
-subject(:takeaway){described_class.new(order_klass, sms_klass)}
+subject(:takeaway){described_class.new(order_klass, sms_klass, menu_klass)}
 let(:order_klass){double :order_klass, :new => placed_order}
 let(:sms_klass){double :sms_klass, :new => text}
+let(:menu_klass){double :menu_klass, :new => menu}
+let(:menu){double :menu, :view_menu => {1 => {"Chicken Adobo" => 4.50},
+2 => {"Pancit Bihon" => 4.50}}}
 let(:text){double :text, :send_message => ""}
 let(:placed_order){double :placed_order, :selected_dishes => [],
   :view_order => {}, :total_cost => "", :confirm_order => {}}
@@ -12,7 +15,7 @@ let(:SMS) {double :SMS}
 
   context "The available dishes" do
     it "should have a list of all dishes and their prices" do
-      expect(takeaway.view_menu).to eq Takeaway::ALL_DISHES
+      expect(takeaway.view_menu).to eq menu.view_menu
     end
   end
 
