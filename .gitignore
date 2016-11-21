@@ -1,2 +1,5 @@
 /**/.DS_Store
 /coverage
+/setup.rb
+/fixtures/vcr_cassettes/twilio.yml
+.env
