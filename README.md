@@ -164,5 +164,9 @@ Your order has the following items:
 ### Text confirmation:
 See here: https://github.com/Unicornelia/takeaway-challenge/blob/master/Screenshot_20161121-170850.jpg
 
+## Env variables
+
+All environment variables are saved into a safe .env file and added to gitignore, therefore not presented on github and kept in line with privacy settings
+
 Build:
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
