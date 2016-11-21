@@ -113,7 +113,31 @@ PAID! Please come again!!
 
 Note - Currently an additional cheeseburger is added when the user completes their order. I would like to remove this.
 
+##Things I would like to update
 
+There are plenty of changes I would like to make to this project...
+
+
+###The rogue cheeseburger
+
+When I complete an order or give text that does not correspond to a menu item the takeaway currently adds a cheeseburger to the order. This is quite funny in a way - it's like the takeaway forces everyone to have an extra cheeseburger.
+
+It's a simple Ruby thing that I should be able to fix. Something not right with my loop.
+
+
+###Instance variables for order and checkout included in takeaway
+
+On Sunday I started thinking about how I could get the takeaway to create the order and the checkout from a method. This seemed like a much better idea that calling everything manually in Pry.
+
+I started down this road and then got really confused with passing objects to classes.
+
+I think I'll need to run through this with Roi. Basically, I don't understand why I can't add a local variable to the method that calls a new Object. It complains when I do this. So I've got Order and Checkout variables within the takeaway class. WHich I'm pretty sure is wrong : (
+
+My test coverage is around 50%. This looks awful but it's because I didn't know how to test methods that output to the console. These are my two biggest methods. I'd like to fix this up today.
+
+Finally, there is a method in takeaway that does several things. It does the order and the checkout. This should be split into smaller methods.
+
+So plenty to fix up. 
 
 
 
