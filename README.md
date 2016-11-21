@@ -68,7 +68,14 @@ Getting Started
 -----
 This project uses [Twilio](https://www.twilio.com/) to send SMS notifications. To use this project, you'll need a Twilio account with the ability to send SMSes.
 
-Twilio account credentials are hardcoded into the notification sending class. You'll need to change them to use yours instead.
+Twilio account credentials are drawn in from your environment variables and loaded using the dotenv gem. You'll need to add the following to your `.env` file, which you should place in the root directory of this project and add to your `.gitignore`:
+
+```
+TWILIO_ACCOUNT_SID=<your account sid>
+TWILIO_AUTH_TOKEN=<your account auth token>
+TWILIO_PHONE=<your twilio sms sending number>
+TWILIO_DESTINATION_PHONE=<the phone number you'd like to receive notifications on>
+```
 
 Then run `./lib/order.rb` to start using the app. An example of how to use the app follows:
 
