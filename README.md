@@ -34,13 +34,18 @@ How to run it
 [2] pry(main)> order = Order.new
 => #<Order:0x007ff25a38a0c8
  @current_order_price=0,
+ @items={},
  @menu=#<Menu:0x007ff25a38a078 @list_of_dishes={"margherita"=>9, "pepperoni"=>10, "americano"=>11}>,
  @message=#<Message:0x007ff25a38a028>>
 [3] pry(main)> order.order("pepperoni", 1)
 => "You have ordered 1 pepperoni(s)."
-[4] pry(main)> order.expected_total(10)
+[4] pry(main)> order.items
+=> {"pepperoni"=>1}
+[5] pry(main)> order.current_order_price
+=> 10
+[6] pry(main)> order.expected_total(10)
 => "Thank you for your order. A text message confirming the order is on its way."
-[5] pry(main)>
+[7] pry(main)>
 
 ```
 ==================
