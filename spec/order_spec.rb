@@ -34,9 +34,10 @@ describe Order do
   describe '#total' do
 
     it 'returns the total cost of the order' do
-      allow(menu).to receive(:dishes).and_return(menu_list)
       allow(menu).to receive(:does_not_contain?).with(:curry).and_return(false)
       allow(menu).to receive(:does_not_contain?).with(:burger).and_return(false)
+      allow(menu).to receive(:price).with(:curry).and_return(9)
+      allow(menu).to receive(:price).with(:burger).and_return(8)
       subject.add(:curry,2)
       subject.add(:burger,3)
       expect(subject.total).to eq 42

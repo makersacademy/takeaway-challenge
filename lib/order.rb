@@ -15,11 +15,12 @@ class Order
   end
 
   def total
-    total = 0
-      basket.each do |dish,quantity|
-        total += quantity * menu.dishes[dish]
-      end
-    total
+    # total = 0
+    #   basket.each do |dish,quantity|
+    #     total += quantity * menu.dishes[dish]
+    #   end
+    # total
+    item_totals.inject(:+)
   end
 
   private
@@ -28,6 +29,12 @@ class Order
 
   def increase_basket(dish, quantity)
     basket[dish] = (basket[dish] ? basket[dish] : 0) + quantity
+  end
+
+  def item_totals
+    basket.map do |dish,quantity|
+      quantity * menu.price(dish)
+    end
   end
 
 end

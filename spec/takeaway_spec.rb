@@ -8,7 +8,7 @@ describe Takeaway do
   let(:printed_list) {"Chicken £3.50, Burger £4.90"}
   let(:menu_list) {{"Curry" => 9, "Burger" => 8}}
   let(:order_klass) {double :order_klass, new: order}
-  let(:order) {double :order, total: 17}
+  let(:order) {instance_double "Order", total: 17}
   let(:sms_klass) {double :sms_klass, new: sms}
   let(:sms) {double :sms, send: nil}
 

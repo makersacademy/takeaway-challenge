@@ -13,7 +13,11 @@ class Menu
   end
 
   def does_not_contain?(dish)
-    !list[dish]
+    !dishes[dish]
+  end
+
+  def price(dish)
+    dishes[dish]
   end
 
 end
