@@ -2,22 +2,33 @@ require 'restaurant'
 
 describe Restaurant do
 
-  let(:restaurant) {described_class.new}
-  example_order = [ { "Diavola" => 1, "Capricosa" => 2 }, 27.45 ]
+  let(:restaurant) {described_class.new(Order)}
+  let(:printed_menu) {"pizza: £10\nburger: £5\ncoke: £1\n"}
+  example_order = {}
 
-  it 'shows the list of pizzas' do
-    expect{restaurant.print_menu}.to output(restaurant.print_menu).to_stdout
+  it 'shows the menu' do
+    expect{restaurant.print_menu}.to output(printed_menu).to_stdout
   end
 
-  it 'returns a the price of a pizza' do
-    expect(restaurant.pizza["Marinara"]).to eq 5.95
-    expect(restaurant.pizza["Capagnola"]).to eq 9.95
+  it 'returns a the price of an item' do
+    expect(restaurant.menu[:pizza]).to eq 10
+    expect(restaurant.menu[:burger]).to eq 5
   end
 
-  it 'creates a new Order' do
-    restaurant.create_order(example_order)
-    expect(restaurant.new_order.meal).to eq({ "Diavola" => 1, "Capricosa" => 2 })
+  it 'has an empty basket to begin with' do
+    expect(restaurant.basket).to be_empty
   end
+
+  it "can add items to the basket" do
+    restaurant.add_to_basket("pizza")
+    expect(restaurant.basket).to eq ({pizza: 1})
+  end
+
+  it "can add multiple items to the basket" do
+    3.times{restaurant.add_to_basket("pizza")}
+    expect(restaurant.basket).to eq ({pizza: 3})
+  end
+
 
 
 end

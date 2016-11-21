@@ -2,42 +2,33 @@ require_relative 'order'
 
 class Restaurant
 
-  attr_reader :new_order, :menu
+  attr_reader :new_order, :menu, :basket
 
-  def initialize
-    @menu = pizza
+  def initialize(order_klass)
+    @menu = menu
+    @basket = Hash.new(0)
   end
 
   def print_menu
-    puts "===================="
-    puts "The Menu".center(20)
-    puts "===================="
-    puts ""
-    puts pizza.map{ |pizza,price| "#{pizza}: #{price}" }
-    puts ""
+    puts menu.map{ |food,price| "#{food}: £#{price}" }
   end
 
-  def pizza
+  def menu
     {
-      "Marinara" => 5.95,
-      "Margherita" => 7.50,
-      "Boscaoilia" => 8.95,
-      "Diavola" => 8.95,
-      "Napoli" => 8.95,
-      "Capriccosa" => 9.25,
-      "Tartufata" => 9.95,
-      "Capagnola" => 9.95,
-      "Margherita Parmigiana" => 10.45,
-      "Salsiccia & Friarieli" => 10.95,
-      "Calzone Ripieno" => 11.45,
-      "San Daniele" => 11.95
+      pizza: 10,
+      burger: 5,
+      coke: 1
     }
   end
 
-  def create_order(meal)
-    @new_order = Order.new(menu, meal)
+  def add_to_basket(input)
+    basket[input.to_sym] += 1
   end
-  
+
+
+  def place_order(meal)
+  end
+
 
 
 end

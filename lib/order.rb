@@ -12,7 +12,9 @@ class Order
 
   def calculate_total
     total = 0
-    meal.each{|pizza, quantity| total += menu[pizza] * quantity}
+    meal.each do |pizza, quantity|
+      total += (menu[pizza] * quantity)
+    end
     total
   end
 
@@ -25,12 +27,12 @@ class Order
   end
 
   def delivery_time
-    (Time.new + 360).strftime("%H:%M")
+    (Time.new + 3600).strftime("%H:%M")
   end
 
   def send_message
     message = "Thank you! Your order will be delivered before #{delivery_time}"
-    SendSMS.new(message)
+    # SendSMS.new(message)
     message
   end
 
