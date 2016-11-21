@@ -20,7 +20,7 @@ The Take Away application is the second weekend challenge at the Makers Academy 
 
 The application is a command line app that allows a user to build a takeaway restaurant and add dishes to its menu and control the incoming orders.
 
-A customer will be given a list of available dishes and the restaurant is able to take orders and add dishes to its order. The customer will be able get an order status with an overview of the selected dishes and the total cost of the order. At the checkout the customer will be sent a text message confirming the order and time of delivery which will be 1 hour after the order has been placed.
+A customer will be given a list of available dishes and the restaurant is able to take orders and add dishes to its order. The customer will be given an order status with an overview of the selected dishes and the total cost of the order. At the checkout the customer will be sent a text message confirming the order and time of delivery which will be 1 hour after the order has been placed.
 
 The application has an integrated text message confirmation system that uses the Twilio API. To be able to make the Twilio API to work add your Twilio account information to the confirmation.rb file.
 
