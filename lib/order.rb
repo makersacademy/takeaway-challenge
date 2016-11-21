@@ -17,7 +17,7 @@ class Order
   def total
     total = 0
       basket.each do |dish,quantity|
-        total += quantity * menu.list[dish]
+        total += quantity * menu.dishes[dish]
       end
     total
   end
