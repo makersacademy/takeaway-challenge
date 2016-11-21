@@ -1,4 +1,6 @@
 require_relative 'mms_messages.rb'
+require "dotenv"
+Dotenv.load
 
 class Checkout
 
@@ -27,7 +29,7 @@ class Checkout
     payment = gets.chomp.to_f
     if payment == @total
       puts "PAID! Please come again!!"
-      @confirmation_message.send_message("+447966155030", "Thank you! Your order was placed and will be delivered by #{delivery_time}")
+      @confirmation_message.send_sms("Thank you! Your order was placed and will be delivered by #{delivery_time}")
     else
       raise "Error: Wrong amount. No food for you."
     end

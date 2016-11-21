@@ -124,6 +124,8 @@ When I complete an order or give text that does not correspond to a menu item th
 
 It's a simple Ruby thing that I should be able to fix. Something not right with my loop.
 
+I looked into this with Jenna. The problem is that when we add items to the menu we do not check for numbers out of range of the menu or for 0. Also, adding zero puts in a menu item of 0-1 which is -1 so returns the last value in the array. 
+
 
 ###Instance variables for order and checkout included in takeaway
 
@@ -137,7 +139,7 @@ My test coverage is around 50%. This looks awful but it's because I didn't know 
 
 Finally, there is a method in takeaway that does several things. It does the order and the checkout. This should be split into smaller methods.
 
-So plenty to fix up. 
+So plenty to fix up.
 
 
 
