@@ -16,13 +16,12 @@ Takeaway Challenge
 
 - PizzaShop & SushiShop Class inherit TakeawayShop Class.  
   Therefore they only have their own menu inside their class, they just call TakeawayShop's functions.
-- Takeawayshop class use Twilio API to send texts to customers
+- Twilio API to send texts to customers.
 
 
 ###[ How to set Twilio API ]
 
-- First, you'll need to register for it. It’s free.  
-  [Twilio]: https://www.twilio.com
+- First, you'll need to register for it. It’s free. => [Twilio](https://www.twilio.com)
 - Get a phone number( first one is free ) for your Twilio API.
 - Follow the instruction below;
 
@@ -36,8 +35,13 @@ Takeaway Challenge
 
 ###[ Instructions ]
 
-Pizza takeaway shop
--------
+```
+========  
+\:@ "@ /
+ \ @,:/   Pizza takeaway shop
+  \",/
+   \/
+```
 ```sh
 2.3.1 :001 > require './lib/pizza_shop.rb'
  => true
@@ -76,9 +80,10 @@ DEPRECATED] SMS Resource is deprecated. Please use Messages (https://www.twilio.
 # "Sent from your Twilio trial account -
 #  Thank you! Your order was placed and will be delivered before 22:23(1hour plus when you ordered)"
 ```
-
-Sushi takeaway shop
 -------
+```
+     Sushi takeaway shop
+```
 ```sh
 2.3.1 :001 > require './lib/sushi_shop.rb'
  => true
