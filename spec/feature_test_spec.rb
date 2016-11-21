@@ -34,7 +34,8 @@ end
 
   context "I would like to be able to select some number of several available dishes" do
     it "expects store all valid dishes" do
-      expect(@order.add_to_order("Curry")).to eq(["Curry",3])
+      @order.add_to_order("Curry",4)
+      expect(@order.orders).to eq({"Curry" => 4})
     end
   end
 

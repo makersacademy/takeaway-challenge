@@ -1,5 +1,6 @@
 #Responsible for showing available dishes to select from.
 require_relative 'dishes'
+require_relative 'order'
 
 
 class Menu
