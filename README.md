@@ -49,7 +49,7 @@ To set up the app we need to add the following commands to Pry:
 
 This loads in the project files.
 It then starts a new takeaway.
-The menu is loaded into the takeaway from a separate menu file.
+The menu is loaded into the takeaway from a separate menu.rb file.
 
 
 ###Placing an order
