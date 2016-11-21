@@ -11,6 +11,11 @@ class MenuItem
     @amount = amount
   end
 
+  def deduct(amount_ordered)
+    fail "There's only 4 left" if amount_ordered > self.amount
+    self.amount -= amount_ordered
+  end
+
   def available?
     amount > 0
   end

@@ -23,6 +23,7 @@ class Restaurant
 
   def add_to_order(number, amount = 1)
     current_order
+    menu.menu_items[number - 1].deduct(amount)
     dish = menu.menu_items[number - 1].dish
     order.add_item(dish, amount)
     order_status
