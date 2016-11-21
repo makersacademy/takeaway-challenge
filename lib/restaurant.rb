@@ -25,9 +25,10 @@ class Restaurant
     basket[input.to_sym] += 1
   end
 
-
-  def place_order(meal)
+  def show_basket
+    basket.each{|item, quantity| puts "#{quantity} #{item.to_s}#{quantity>1 ? 's' : ''}"}
   end
+
 
 
 
