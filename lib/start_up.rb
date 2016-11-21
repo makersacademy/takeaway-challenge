@@ -1,6 +1,8 @@
 require './lib/takeaway.rb'
 
+class Start
 
+  
 menu = Menu.new
 takeaway = Takeaway.new
 takeaway.add_menu_items(menu)

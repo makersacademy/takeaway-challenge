@@ -4,7 +4,7 @@ require_relative "checkout"
 
 class Takeaway
 
-attr_reader :menu, :order, :takeaway, :checkout
+  attr_reader :menu, :order, :takeaway, :checkout
 
   def initialize
     @menu_klass
@@ -30,11 +30,11 @@ attr_reader :menu, :order, :takeaway, :checkout
     display_menu
     puts
     loop do
-    puts "Type in the menu number for your order. Type 0 to complete your order"
-    number = gets.chomp.to_i
-    @order.order << menu_item(number)
-    @order.display
-    break if number == 0
+      puts "Type in the menu number for your order. Type 0 to complete your order"
+      number = gets.chomp.to_i
+      @order.order << menu_item(number)
+      @order.display
+      break if number == 0
     end
     @checkout = Checkout.new
     @checkout.set_order(@order)
@@ -45,13 +45,5 @@ attr_reader :menu, :order, :takeaway, :checkout
   def display_menu
     @menu.each{ |a| puts"#{a}/n" }
   end
-
-    #   add_item(n, takeaway)
-
-    #   puts "Type in the menu number for your order. Type 0 to complete your order"
-    #   break if gets.chomp == "0"
-    # end
-  #end
-
 
 end

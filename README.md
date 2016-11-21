@@ -19,92 +19,99 @@ Takeaway Challenge
 
 ### Aims for the takeaway_challenge
 
-The takeaway lets a user view the menu, place and order, check their basket and pay for their food.
+The takeaway lets a user view the menu, place and order, check their basket and pay for their food. The user receives a text message when the order is placed.
 
 ### Steps for setting up
 
 To set up the app we need to add the following commands to Pry:
 
 [simon:~/projects/takeaway_challenge]$ pry                                   (sunday✱)
-####[1] pry(main)> require './lib/takeaway.rb'
+
+####[[1] pry(main)> require './lib/takeaway.rb'
 => true
-####[[2] pry(main)> menu = Menu.new
-=> #<Menu:0x007f84120eaf68
- @menu_items=
+####[2] pry(main)> takeaway = Takeaway.new
+=> #<Takeaway:0x007fc77a113c28
+ @menu=
   [[1, "Margerita pizza       ", 5.5],
    [2, "Pepperoni pizza       ", 6.5],
    [3, "Quatro Staggioni Pizza", 6.5],
    [4, "Donner Kebab          ", 3.5],
-   [5, "Cheeseburger          ", 5.0]]>
-####[[3] pry(main)> takeaway = Takeaway.new
-=> #<Takeaway:0x007f8411c0fd18>
-####[[4] pry(main)> takeaway.add_menu_items(menu)
-=> [[1, "Margerita pizza       ", 5.5],
- [2, "Pepperoni pizza       ", 6.5],
- [3, "Quatro Staggioni Pizza", 6.5],
- [4, "Donner Kebab          ", 3.5],
- [5, "Cheeseburger          ", 5.0]]
-####[[5] pry(main)> order = Order.new(takeaway)
-=> #<Order:0x007f8411afda60
- @order=[],
- @takeaway=
-  #<Takeaway:0x007f8411c0fd18
+   [5, "Cheeseburger          ", 5.0]],
+ @menu_klass=
+  #<Menu:0x007fc77a113bd8
    @menu=
     [[1, "Margerita pizza       ", 5.5],
      [2, "Pepperoni pizza       ", 6.5],
      [3, "Quatro Staggioni Pizza", 6.5],
      [4, "Donner Kebab          ", 3.5],
      [5, "Cheeseburger          ", 5.0]]>>
-####[[6] pry(main)> checkout = Checkout.new
-=> #<Checkout:0x007f841192fa30 @total=0>
+[3] pry(main)>
+
+This loads in the project files.
+It then starts a new takeaway.
+The menu is loaded into the takeaway from a separate menu file.
 
 
 ###Placing an order
 
 To place an order you can do the following:
 
-####[7] pry(main)> order.customer_input(takeaway)
-This step brings up the menu in the terminal and asks the user to add their order. The user can type in the number of the item they like. If they want an item twice they type their item twice. Type 0 to complete the order.
+####[3] pry(main)> takeaway.new_customer
+Welcome to my takeaway! Please look at the menu
 
-(It's a little different from the spec. It's quicker to add the order.)
+[1, "Margerita pizza       ", 5.5]/n
+[2, "Pepperoni pizza       ", 6.5]/n
+[3, "Quatro Staggioni Pizza", 6.5]/n
+[4, "Donner Kebab          ", 3.5]/n
+[5, "Cheeseburger          ", 5.0]/n
 
-####[7] pry(main)> order.customer_input(takeaway)
+Type in the menu number for your order. Type 0 to complete your order
+
+
+This starts the customer interaction.
+The customer can add menu items by typing the menu number.
+E.g. 1, 2, 3, 4
+As they type in the items they want, the order is displayed for the customer to see.
+
+1
+[1, "Margerita pizza       ", 5.5]
+Type in the menu number for your order. Type 0 to complete your order
+2
+[1, "Margerita pizza       ", 5.5]
+[2, "Pepperoni pizza       ", 6.5]
+Type in the menu number for your order. Type 0 to complete your order
+3
 [1, "Margerita pizza       ", 5.5]
 [2, "Pepperoni pizza       ", 6.5]
 [3, "Quatro Staggioni Pizza", 6.5]
-[4, "Donner Kebab          ", 3.5]
-[5, "Cheeseburger          ", 5.0]
-Type in the menu number for your order. Type 0 to complete your order
-####1
-[1, "Margerita pizza       ", 5.5]
 Type in the menu number for your order. Type 0 to complete your order
 
-####2
-[1, "Margerita pizza       ", 5.5]
-[2, "Pepperoni pizza       ", 6.5]
-Type in the menu number for your order. Type 0 to complete your order
+Note - Currently, unrecognized entries are always added as a cheeseburger. I would like to have added a feature so unrecognized are removed from the list.
 
-####4
-[1, "Margerita pizza       ", 5.5]
-[2, "Pepperoni pizza       ", 6.5]
-[4, "Donner Kebab          ", 3.5]
-Type in the menu number for your order. Type 0 to complete your order
 
-####4
-[1, "Margerita pizza       ", 5.5]
-[2, "Pepperoni pizza       ", 6.5]
-[4, "Donner Kebab          ", 3.5]
-[4, "Donner Kebab          ", 3.5]
+####Completing the order and paying
+
+When the customer types 0 the order is completed.
+This shows the price.
+The customer is asked to add the price again.
+If they type in exactly the price the order is completed and a text message is sent.
+
+
 Type in the menu number for your order. Type 0 to complete your order
 0
-=> nil
-[8] pry(main)>
+[1, "Margerita pizza       ", 5.5]
+[2, "Pepperoni pizza       ", 6.5]
+[3, "Quatro Staggioni Pizza", 6.5]
+[5, "Cheeseburger          ", 5.0]
 
+Your total bill is £23.5
+To pay your bill, please type in the total of 23.5.
+23.5
+PAID! Please come again!!
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/AC67a8668352fe266e4a97871ce36e7ec8/Messages/SM1673f36db41441d899e65c1087b7a893>
+[4] pry(main)>
 
-
-
-
-
+Note - Currently an additional cheeseburger is added when the user completes their order. I would like to remove this.
 
 
 
