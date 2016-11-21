@@ -1,11 +1,20 @@
 class Menu
 
-attr_reader :menu, :order_klass
+attr_reader :dishes
 
-def initialize
-  @menu = {"bread" => 1,"jellyfish" => 5,"sandwich" => 3}
-  @order_klass = order_klass
-end
+  def initialize(dishes)
+  @dishes = dishes
+  end
+
+  def print
+    dishes.map do |title, price|
+      "%s £%.2f" % [title.to_s.capitalize, price]
+    end.join(", ")
+  end
+
+  def has_dish?(dish)
+    !dishes[dish].nil?
+  end
 
 
 end
