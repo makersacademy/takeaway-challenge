@@ -11,8 +11,8 @@ attr_accessor :menu_item
     @menu_item
   end
 
-  def create(dish, amount = 1, menu_item_klass = MenuItem)
-    self.menu_item = menu_item_klass.new(dish, amount)
+  def create(name, price, amount, menu_item_klass = MenuItem)
+    self.menu_item = menu_item_klass.new(name, price, amount)
     add_to_menu
   end
 

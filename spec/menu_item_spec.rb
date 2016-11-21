@@ -2,12 +2,9 @@ require "menu_item"
 
 describe MenuItem do
   let(:dish) {double(:dish)}
-  subject(:menu_item) {described_class.new(dish)}
-
+  subject(:menu_item) {described_class.new("name", 10)}
+  let(:item2) {described_class.new("name", 10, 0)}
   describe "when instantiated" do
-    it "should have a dish" do
-      expect(menu_item).to be_instance_of(MenuItem)
-    end
 
     it "there should be a default amount" do
       expect(menu_item.amount).to eq MenuItem::DEFAULT_AMOUNT
@@ -21,8 +18,7 @@ describe MenuItem do
     end
 
     it "should return false if there are no available" do
-      item = MenuItem.new(dish, 0)
-      expect(item.available?).to be false
+      expect(item2.available?).to be false
     end
   end
 

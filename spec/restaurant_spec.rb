@@ -26,7 +26,7 @@ describe Restaurant do
   end
 
   describe "when managing orders" do
-    before(:each) {restaurant.add_dish(dish)}
+    before(:each) {restaurant.add_dish("name")}
 
     before do
     allow(restaurant).to receive(:send_confirmation)

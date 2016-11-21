@@ -16,8 +16,8 @@ class Restaurant
     @orders = []
   end
 
-  def add_dish(name, price = 10, amount = 1, dish_klass = Dish)
-    menu.create(dish_klass.new(name, price), amount)
+  def add_dish(name, price = 10, amount = 1)
+    menu.create(name, price, amount)
   end
 
   def add_to_order(number, amount = 1)

@@ -6,8 +6,8 @@ class MenuItem
 
   attr_accessor :dish, :amount
 
-  def initialize(dish_klass, amount = DEFAULT_AMOUNT)
-    @dish = dish_klass
+  def initialize(name, price, amount = DEFAULT_AMOUNT,  dish_klass = Dish)
+    @dish = dish_klass.new(name, price)
     @amount = amount
   end
 
