@@ -1,11 +1,13 @@
 require_relative 'order.rb'
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class MessageSender
 
   def initialize
-    account_sid = 'ACca07befab205cff0cdc9e3e9d51d38be'
-    auth_token  = '0d0bffe91cbe1e3da9aa2a506ed2771a'
+    account_sid = ENV['account_sid']
+    auth_token  = ENV['auth_token']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 

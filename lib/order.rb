@@ -5,11 +5,10 @@ class Order
 
   attr_reader :in_progress
 
-  MENU = Menu::MENU
-
-  def initialize
+  def initialize(menu_class = Menu)
     @in_progress = Hash.new(0)
-    @breakdown = Hash.new
+    @breakdown =  Hash.new
+    @menu = menu_class.new
     @confirmation_message = MessageSender.new
   end
 
@@ -22,14 +21,14 @@ class Order
   def price
     total = 0
     @in_progress.each_pair do | item, count|
-      total += count * MENU[item]
+      total += count * @menu.read[item]
     end
     "£#{total}"
   end
 
   def breakdown
     @in_progress.each_pair do |item, count|
-      @breakdown[item] = "#{count}x £#{MENU[item]}"
+      @breakdown[item] = "#{count}x £#{@menu.read[item]}"
     end
     @breakdown
   end
@@ -43,7 +42,7 @@ class Order
   private
 
   def item_not_on_menu?(item)
-    !MENU.key?(item)
+    !@menu.read.key?(item)
   end
 
   def order_empty?
