@@ -39,7 +39,7 @@ describe OrderManager do
       end
 
       it "Message cannot be sent if sms permission is not granted" do
-        allow(order_manager).to receive(:granted_permission?).and_return true
+        allow(order_manager).to receive(:granted_permission?).and_return false
         expect(order_manager.submit_order(order,payment)).to eq "Message not sent"
       end
     end

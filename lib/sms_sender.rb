@@ -3,7 +3,6 @@ require 'dotenv'
 
 class SMSSender
 
-
   def send_message(message)
 
     Dotenv.load
