@@ -1,16 +1,25 @@
-require './lib/menu'
-require './lib/order'
+require 'order'
 class TakeAway
 
-attr_reader :menu_klass, :basket, :total
-
-  def initialize(menu_klass)
-    @menu_klass = menu_klass
-    @basket = Hash.new
+  def initialize(menu:, order: nil)
+    @menu = menu
+    @order = order || Order.new
   end
 
-  def read_menu
-    @menu_klass.menu
+  def print_menu
+    menu.print
   end
+
+  def place_order(dishes)
+    dishes.each do |dish, quantity|
+      order.add(dish, quantity)
+    end
+  
+  end
+
+
+  private
+
+  attr_reader :menu, :order
 
 end
