@@ -15,11 +15,6 @@ class Order
   end
 
   def total
-    # total = 0
-    #   basket.each do |dish,quantity|
-    #     total += quantity * menu.dishes[dish]
-    #   end
-    # total
     item_totals.inject(:+)
   end
 

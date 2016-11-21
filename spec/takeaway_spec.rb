@@ -2,20 +2,18 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) {described_class.new(menu: menu, order: order_klass, sms: sms)}
+  subject(:takeaway) {described_class.new(menu: menu, config: {}, order_klass: order_klass, sms: sms)}
   let(:menu_klass) {double :menu_klass, new: menu}
   let(:menu) {double :menu, print: printed_list, list: menu_list}
   let(:printed_list) {"Chicken £3.50, Burger £4.90"}
   let(:menu_list) {{"Curry" => 9, "Burger" => 8}}
   let(:order_klass) {double :order_klass, new: order}
   let(:order) {instance_double "Order", total: 17}
-  let(:sms_klass) {double :sms_klass, new: sms}
   let(:sms) {double :sms, send: nil}
 
   before do
     subject.begin_order
   end
-
 
   describe '#view_menu' do
     it 'prints the menu to the screen' do

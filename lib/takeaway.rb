@@ -3,16 +3,18 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'sms'
+require 'dotenv'
+Dotenv.load
 
 class Takeaway
 
   attr_reader :menu, :order_klass, :sms
   attr_accessor :order
 
-  def initialize(menu: , order: , sms: )
+  def initialize(menu: , config: , order_klass: , sms: nil)
     @menu = menu
-    @order_klass = order
-    @sms = sms
+    @order_klass = order_klass
+    @sms = sms || SMS.new(config)
   end
 
   def view_menu
