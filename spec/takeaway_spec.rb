@@ -7,6 +7,7 @@ describe Takeaway do
   let(:klass2) { double(:klass2) }
   let(:menu) { double(:menu) }
   let(:sms) { double(:sms) }
+  let(:order) { double(:order) }
   let(:item) { double(:item) }
   let(:qty) { double(:qty) }
 
@@ -63,6 +64,7 @@ describe Takeaway do
     before(:each) do
       takeaway.create_order
       takeaway.select_item("Pizza")
+      allow(order).to receive(:calculate_total).and_return 4
     end
 
     it 'returns "Incorrect Total" when passed wrong total' do
@@ -100,16 +102,6 @@ describe Takeaway do
   #
   #   it 'indicates when an item is on the menu' do
   #     expect(takeaway.in_menu?("Spag_Bol")).to eq true
-  #   end
-  #
-  # end
-  #
-  # context 'Calculate Total' do
-  #
-  #   it 'calculates total cost' do
-  #     takeaway.select_item("Pizza", 3)
-  #     takeaway.select_item("Chips")
-  #     expect(takeaway.calculate_total).to eq 14.75
   #   end
   #
   # end

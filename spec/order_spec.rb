@@ -2,30 +2,24 @@ require './lib/order'
 
 describe Order do
 
+  let(:order) { described_class.new }
   let(:takeaway) { double(:takeaway) }
-  let(:menu) { double(:menu) }
 
   context 'Initialization' do
 
-      it 'creates an empty basket on creation' do
-        expect(subject.basket).to eq []
-      end
-
-  end
-
-  context 'View Basket' do
-
-    it 'can let a customer review their basket' do
-      allow(takeaway).to receive(:select_item).and_return(Hash)
-      expect(subject.view_basket).to eq subject.basket
+    it 'creates an empty basket on creation' do
+      expect(order.basket).to eq []
     end
 
   end
 
+  context 'Calculate Total' do
 
+    it 'calculates total cost' do
+      order.basket = [{:item=>"Pizza", :qty=>3, :price=>4}]
+      expect(order.calculate_total).to eq 12
+    end
 
-
-
-
+  end
 
 end

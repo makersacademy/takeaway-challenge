@@ -1,6 +1,8 @@
 require './lib/menu'
 require './lib/order'
 require './lib/SMS'
+require 'dotenv'
+Dotenv.load
 
 class Takeaway
 
@@ -27,15 +29,15 @@ class Takeaway
   end
 
   def confirm_order(total)
-    return "Incorrect Total" if total != calculate_total
-    send_confirmation_message('Thank you! Your order was placed and will be delivered before ' + (Time.now + 3600).strftime("%R"))
-    "Thank you for your order: £" + "%.2f" % total
+    return "Incorrect Total" if total != @order.calculate_total
+    #send_confirmation_message('Thank you! Your order was placed and will be delivered before ' + (Time.now + 3600).strftime("%R"))
+    return "Thank you for your order: £" + "%.2f" % total
   end
 
   #private
 
   def add_to_basket(item, quantity)
-    @order.basket << {:item=>item, :qty=>quantity}
+    @order.basket << {:item=>item, :qty=>quantity, :price=>@menu.menu_list[item]}
     "#{quantity}x #{item} added to your basket"
   end
 
@@ -45,10 +47,6 @@ class Takeaway
 
   def in_menu?(item)
     @menu.menu_list.has_key?(item)
-  end
-
-  def calculate_total
-    @order.basket.each.inject(0) { |sum, line| sum + (@menu.menu_list[line[:item]] * line[:qty])}
   end
 
 end
