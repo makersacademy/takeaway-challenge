@@ -1,17 +1,20 @@
 require 'twilio-ruby'
+require 'dotenv'
+
+Dotenv.load
 
 class SMS
 
   def send_sms(message)
 
-    account_sid = 'AC839344f8069f9e1e8f960c1bd8c2710f'
-    auth_token = 'b59bcffa4b7681207e7ad15c2e272560'
+    account_sid = ENV[ACCOUNT_SID]
+    auth_token = ENV[AUTH_TOKEN]
 
     @client = Twilio::REST::Client.new account_sid, auth_token
 
     @client.account.messages.create(
       :from => '+442033224884',
-      :to => '+447807833267',
+      :to => ENV[NUMBER],
       :body => message
     )
 

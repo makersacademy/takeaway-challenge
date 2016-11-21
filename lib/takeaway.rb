@@ -22,7 +22,7 @@ class Takeaway
   end
 
   def view_order
-    @order.each { |line| puts "#{line[:qty]}x #{line[:item]} @ £" % @menu.menu_items[line[:item]] }
+    @order.each { |line| puts "#{line[:qty]}x #{line[:item]}" }
   end
 
   def calculate_total

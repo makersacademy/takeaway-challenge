@@ -1,4 +1,5 @@
 require 'sms'
+require 'dotenv'
 
 describe SMS do
 

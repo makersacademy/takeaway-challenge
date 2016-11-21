@@ -7,3 +7,4 @@ gem 'coveralls', require: false
 gem 'capybara'
 gem 'pry'
 gem 'twilio-ruby', '~> 4.11.1'
+gem 'dotenv'
