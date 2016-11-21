@@ -35,16 +35,14 @@ describe TakeawayShop do
     end
   end
 
-  context "#send_text" do
-    it { is_expected.to respond_to :send_text }
+  context "#create_message" do
+    it { is_expected.to respond_to :create_message }
 
     it "should send a text to tell the time for delivery( plus 1 hour from taking the order )" do
-      allow( shop ).to receive( :twilio_sms_sending_process )
       order_hour = Time.now.hour + 1
       order_mins = Time.now.min
       shop.take_order( order1 )
-      shop.send_text
-      expect( shop.message ).to eq "Thank you! Your order was placed and will be delivered before #{ order_hour }:#{ order_mins }"
+      expect( shop.create_message ).to eq "Thank you! Your order was placed and will be delivered before #{ order_hour }:#{ order_mins }"
     end
 
   end

@@ -8,7 +8,7 @@ describe Order do
   let( :order2 ){ double :order }
 
   it "should has customer info" do
-    expect( order.phone ).to eq phone_number
+    expect( order.phone_number ).to eq phone_number
   end
 
   it "should has orders" do

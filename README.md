@@ -20,6 +20,19 @@ Takeaway Challenge
 
 
 #Instructions
+[ how to set Twilio API ]
+
+- First, you'll need to register for it. It’s free.
+- Get a phone number( first one is free ) for your Twilio API.
+- Follow the instruction below;
+-------
+```sh
+2.3.1 :001 > require "./lib/twilio_api.rb"
+ => true
+2.3.1 :002 > my_twilio = TwilioAPI.new( "account_sid", "auth_token", "twilio_phone_number" )
+ => #<TwilioAPI:0x007ffe99339808 @twilio_phone_number="twilio_phone_number", @client=<Twilio::REST::Client @account_sid=account_sid>>
+```
+
 
 Pizza takeaway shop
 -------
@@ -50,9 +63,13 @@ Pepperoni  £9.0
 Diet Coke  £1.7
  => "[ total: £19.2 ]""
 
-2.3.1 :007 > domino_pizza.send_text
+ 2.3.1 :007 > message = domino_pizza.create_message
+  => "Thank you! Your order was placed and will be delivered before 22:23"
+
+ 2.3.1 :008 > my_twilio.send_text( order.phone_number , message )
+
 DEPRECATED] SMS Resource is deprecated. Please use Messages (https://www.twilio.com/docs/api/rest/message)
-=> <Twilio::REST::SMS::Message @path=/2010-04-01/Accounts/AC98d4d8428ec27f9c5e9c52ade6acbd57/SMS/Messages/SM77923448bb5b471ca58eb1e2111eed51>
+=> <Twilio::REST::SMS::Message @path=/2010-04-01/Accounts/....>
 # this command will send a text to valid phones on Twilio API with this message below:
 # "Sent from your Twilio trial account -
 #  Thank you! Your order was placed and will be delivered before 22:23(1hour plus when you ordered)"
@@ -88,9 +105,12 @@ Sake  £9.5
 Miso soup  £1.0
  => "[ total: £17.0 ]""
 
-2.3.1 :007 > sushiya.send_text
+2.3.1 :007 > message = domino_pizza.create_message
+=> "Thank you! Your order was placed and will be delivered before 24:47"
+
+2.3.1 :008 > my_twilio.send_text( order.phone_number , message )
 DEPRECATED] SMS Resource is deprecated. Please use Messages (https://www.twilio.com/docs/api/rest/message)
-=> <Twilio::REST::SMS::Message @path=/2010-04-01/Accounts/AC98d4d8428ec27f9c5e9c52ade6acbd57/SMS/Messages/SM77923448bb5b471ca58eb1e2111eed51>
+=> <Twilio::REST::SMS::Message @path=/2010-04-01/Accounts/....>
 # this command will send a text to valid phones on Twilio API with this message below:
 # "Sent from your Twilio trial account -
 #  Thank you! Your order was placed and will be delivered before 24:47(1hour plus when you ordered)"
