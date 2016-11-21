@@ -5,7 +5,7 @@ let(:sms) { double (:sms) }
 
 before do
   allow(subject).to receive(:send_text)
-  
+
 end
 
 subject(:takeaway) {described_class.new}
@@ -20,34 +20,6 @@ subject(:takeaway) {described_class.new}
     end
   end
 
-  describe '#select_dish' do
-
-    it { is_expected.to respond_to(:select_dish).with(1).argument }
-
-    it 'selects 1 dish from menu' do
-      expect(subject.select_dish(3)).to eq subject.menu[3]
-    end
-
-    it 'selects different dishes from menu' do
-
-    end
-
-  end
-
-  describe '#select_dishes' do
-    it { is_expected.to respond_to(:select_dishes) }
-
-    it 'should select a number of dishes' do
-      expect(subject.select_dishes([0,1,2,3,4])).to eq [subject.menu[0], subject.menu[1], subject.menu[2], subject.menu[3], subject.menu[4]]
-    end
-  end
-
-  describe '#total_price' do
-    it 'should sum the price of dishes' do
-      dishes = subject.select_dishes([1,2,3])
-      expect(subject.calculate_price(dishes)).to eq 13.97
-    end
-  end
 
   describe '#place_order' do
     it 'should place the order' do
