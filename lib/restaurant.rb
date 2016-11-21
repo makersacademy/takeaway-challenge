@@ -5,7 +5,7 @@ require_relative "order_total.rb"
 #Main engine room for the take away app. Will be placing and checking out orders
 class Restaurant
   attr_reader :name, :menu, :orders
-  attr_accessor :order
+  attr_accessor :order, :current_menu_item
 
 
   DEFAULT_NAME = "Top 5"
@@ -14,6 +14,7 @@ class Restaurant
     @menu = menu_klass.new
     @order
     @orders = []
+    @current_menu_item
   end
 
   def add_dish(name, price = 10, amount = 1)
@@ -23,9 +24,7 @@ class Restaurant
 
   def add_to_order(number, amount = 1)
     current_order
-    menu.menu_items[number - 1].deduct(amount)
-    dish = menu.menu_items[number - 1].dish
-    order.add_item(dish, amount)
+    add_dish_to_order(number, amount)
     order_status
   end
 
@@ -53,6 +52,13 @@ class Restaurant
   end
 
   private
+
+  def add_dish_to_order(number, amount)
+    self.current_menu_item = menu.available_dishes[number - 1]
+    current_menu_item.deduct(amount)
+    order.add_item(self.current_menu_item.dish, amount)
+  end
+
   def start_order(order_klass = Order)
     self.order = order_klass.new
   end
