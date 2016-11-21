@@ -3,28 +3,30 @@ require_relative 'send_sms'
 
 class Order
 
-  attr_reader :meal, :payment, :menu
+  attr_reader :basket, :menu
 
-  def initialize(basket, menu_klass, payment, sms_klass = SendSMS)
+  def initialize (menu_klass, sms_klass = SendSMS)
     @menu = menu_klass.list
     @sms = sms_klass
-    @meal = basket
-    @payment = payment
+    @basket = Hash.new(0)
+  end
+
+  def add_to_basket(input)
+    basket[input.to_sym] += 1
   end
 
   def calculate_total
-    total = 0
-    meal.each do |pizza, quantity|
-      total += (menu[pizza] * quantity)
-    end
-    total
+    basket.map do |pizza, quantity|
+      menu[pizza] * quantity
+    end.inject(:+)
   end
 
-  def check_payment
-    fail "Incorrect payment amount" unless payment_correct?
+  def check_payment(payment)
+    fail "Incorrect payment amount" unless payment_correct?(payment)
+    send_message
   end
 
-  def payment_correct?
+  def payment_correct?(payment)
     payment == calculate_total
   end
 
