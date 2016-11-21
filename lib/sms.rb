@@ -3,28 +3,26 @@
 require 'twilio-ruby'
 require 'date'
 
-module SMS
+class Sms
 
-  ACCOUNT_SID = 'AC9dce0a05165a925f9021ddc445ccd961'
-  AUTH_TOKEN = '0bbc67f9bad2bf369d2bec4e1c5f525e'
-
-  def self.send_message
-  client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
-  message = "Thank you! Your order was placed and will be delivered before #{SMS.delivery_time}."
+  def send_message
+  client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+  message = "Thank you! Your order was placed and will be delivered before #{delivery_time}."
   client.account.messages.create(
-    :from => '+441289466028',
-    :to => '+447825069388',
+    :from => ENV['TWILIO_PHONE'],
+    :to => ENV['TWILIO_DESTINATION_PHONE'],
     :body => message
     )
-  self.confirm_message
+  confirm_message
   end
 
 private
-  def self.delivery_time
-    @time = (Time.now + 60*60).strftime('%H:%M')
+  def delivery_time
+    hour = 60*60
+    (Time.now + hour).strftime('%H:%M')
   end
 
-  def self.confirm_message
+  def confirm_message
     "You should receive a text message confirming your order and delivery time."
   end
 

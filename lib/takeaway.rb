@@ -2,10 +2,12 @@
 
 require './lib/order.rb'
 require './lib/sms.rb'
+require 'dotenv'
+Dotenv.load
 
 class Takeaway
 
-attr_reader :view_menu, :order, :placed_order
+attr_reader :view_menu, :order, :placed_order, :text
 
   ALL_DISHES = {1 => {"Chicken Adobo" => 4.50},
   2 => {"Pancit Bihon" => 4.50},
@@ -17,9 +19,10 @@ attr_reader :view_menu, :order, :placed_order
   8 => {"Rice and Lechon" => 5.50}
   }
 
-  def initialize(order_klass)
+  def initialize(order_klass, sms_klass)
     @view_menu = ALL_DISHES
     @order = order_klass
+    @text = sms_klass.new
   end
 
   def select(dish_number, quantity)
@@ -40,7 +43,7 @@ attr_reader :view_menu, :order, :placed_order
 
   def confirm_order
     check_for_error
-    SMS.send_message
+    text.send_message
   end
 
 private
