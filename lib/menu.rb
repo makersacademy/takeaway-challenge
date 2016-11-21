@@ -14,9 +14,6 @@ class Menu
     end
 
     def available_dishes(choice)
-    available =(@dishes.list).map{|hash|hash.select{|key,value| return true if key == choice}}
-    if available != true then available = false end
-    return available
+      self.dishes.list.any?{|item| item.include?(choice)}
     end
-
 end

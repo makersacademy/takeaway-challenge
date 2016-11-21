@@ -17,11 +17,12 @@ end
 
    context "I would like to see a list of dishes with prices" do
      it "expects all dishes to be shown" do
-       expect(@dishes1.all_dishes).to eq [{"Pizza" => 5},
-       {"Pasta" => 3},
-       {"Macaroni and Cheese" => 2},
-       {"Curry" => 3},{"Steak & Chips" => 25},
-       {"Chicken Dippers" => 4}]
+       expect(@dishes1.all_dishes).to eq({"Pizza" => 5,
+       "Pasta" => 3,
+       "Macaroni and Cheese" => 2,
+       "Curry" => 3,
+       "Steak & Chips" => 25,
+       "Chicken Dippers" => 4})
      end
    end
 
@@ -33,7 +34,7 @@ end
 
   context "I would like to be able to select some number of several available dishes" do
     it "expects store all valid dishes" do
-      expect(@order.add_to_order("Curry")).to eq([[{"Curry"=>3}]])
+      expect(@order.add_to_order("Curry")).to eq(["Curry",3])
     end
   end
 
