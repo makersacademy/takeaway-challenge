@@ -21,6 +21,10 @@ describe Order do
 
     it { is_expected.to respond_to :message }
 
+    it 'shoudld respond to #items with an empty hash' do
+      expect(subject.items).to eq Hash.new
+    end
+
   end
 
   context 'tests #order is working' do
@@ -28,6 +32,11 @@ describe Order do
     it 'should return the pizza and the amount ordered when 1 pizza is ordered' do
       # allow(order).to receive(:menu_check).and_return({ "margherita" => 9, "pepperoni" => 10, "americano" => 11 })
       expect(subject.order("margherita", 1)).to eq "You have ordered 1 margherita(s)."
+    end
+
+    it 'should store items and their quantity in #items' do
+      subject.order("margherita", 1)
+      expect(subject.items.has_value?(1)).to eq true
     end
 
   end
