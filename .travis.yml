@@ -1,6 +1,7 @@
-rvm: '2.2.3'
-
+rvm: 2.2.3
 before_install:
 - sed -i '2d' Gemfile
-
 script: bundle exec rspec spec
+env:
+  matrix:
+    secure: g6d5TeMbhYu/n15xq3+FL05+x8/pcSsWWxnoaIMHhImprxKbmxMMhzT63aEBV2ZiSVkiyw+9ha2e7pw+MToE3JpJvOj4seVuvn7Ja3Gh7FaYTPW/PxzeUuf4l+lgEgCNiXrwIINSokwW+aNyftioWwtWrc00bSZrJfdEe4J27P3jI+z/6yjaiwpyhplcWuF0HDJLU9pgI42v1GDFefyaMsTj+tQ2rb+IQ274tljKCSGRA/Tbpbz9Y5YdfIXvGso52p3eZtXYVNgrVRr3cRUlAxTRynKwn4ttADUtXt4NzPdsD1Tb+1jfif31TOgNRsWxhrQirDYV4j44tSNh3weTkzxojVT+E6f+f2rZgVCj0Te+8rhCamV4sJKM/7SWOLAYFt6D8/qY6AQ0vqYjVan4qgXcFBVOGOnWYqsEDWshZHC3d3rpeRU0Y8sZejJYHpmhuOt6HBQ21JTu20f9QZC3FS7XhzNGDhvvNpDVKz01C6A0xjDxYRddBLGv78pPHrN/hr/UCuTaU7/h6TjM+dhyEGSGJ/zD8JNbCkZcjOdwjLe376TAYVUuEmsWRUWnG2gwdzP9hOUOKPTNy1V91R4YpABg9uGDIoXBCNlJV/Dj1aWkVG78MaxZE2GeHxanJgrMDZASMMTQqZfRCsZkFyrN+VpkUs2YY6dxXfNBtU2Ji+Q=
