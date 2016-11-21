@@ -1,7 +1,9 @@
+https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master
 First of all I read the four user stories, in which I decided to approach the first three in my usual manner through diagramming relation ships, how methods would connect each object and finally what each object should be responsible for allowing a clear direction. The last user story was going to take some research so assumed that I would get to that point and worry about it then.
 Firstly I looked to create a takeaway test and class, with each new object I plan to double new objects and stub their methods to get outputs I desire, I will then check this by creating an instance double which will actually check for these methods and move to another object. This will give me clear direction, each new object will have clear responsibilities already set out in front of them, and methods with desired logic clearly already specified.
 
 GREEN / RED keep going untill all green.
+
 
 did need a lot of help__ Sam Morgan work helped
 

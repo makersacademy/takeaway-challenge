@@ -1,9 +1,10 @@
+require_relative 'menu'
 class Order
 
 attr_reader :dishes
 
-  def initialize(menu)
-    @menu = menu
+  def initialize(menu_klass)
+    @menu = menu_klass.new
     @dishes = {}
   end
 
@@ -25,6 +26,5 @@ attr_reader :dishes
     private
 
     attr_reader :menu
-
 
 end

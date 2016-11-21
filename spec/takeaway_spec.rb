@@ -5,7 +5,7 @@ describe Takeaway do
 
   let(:menu) { double(:menu, print: printed_menu) }
   let(:order) { instance_double('Order', total: 27.97) }
-  let(:sms) { instance_double("SMS", deliver: nil) }
+  let(:sms) { instance_double("SMS", send_text: nil) }
   let(:printed_menu) { "Hawaiian: £9.99" }
 
   let(:dishes) {  {hawaiian: 2, margherita: 1} }
@@ -28,7 +28,7 @@ describe Takeaway do
     expect(total).to eq(27.97)
   end
   it 'should send an sms when order is place' do
-    expect(sms).to receive(:deliver)
+    expect(sms).to receive(:send_text)
     takeaway.order_takeaway(dishes)
   end
 end

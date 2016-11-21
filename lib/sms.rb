@@ -1,27 +1,18 @@
+require 'twilio-ruby'
 class SMS
+  ACCOUNT_SID = 'AC1e23ec21dbfbe55dca0adb3687afdfe0'
+  AUTH_TOKEN = '612c426da5038b7a02cc2e7786143f8d'
+  TWILIO_PHONE = '+441782454810'
+  RECEIVER = '+447702602704'
 
-  TIME_FORMAT = "%H:%M"
-
-    def initialize(config, client: nil)
-      @client = client || Twilio::REST::Client.new(config[:account_sid], config[:auth_token])
-      @config = config
+    def initialize
+      @client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
     end
 
-    def deliver
-      client.messages.create(message_args)
-    end
-    private
-
-    attr_reader :client, :config
-    def message_args
-      {
-        from: config[:from],
-        to: config[:to],
-        body: config[:body] % delivery_time
-      }
+    def send_text
+      time = (Time.now + 60 * 60)
+      message = "Thank you! Your order will be delivered before #{time}"
+      @client.account.messages.create({ from: TWILIO_PHONE, to: RECEIVER, body: message  })
     end
 
-    def delivery_time
-      (Time.now + 60 * 60).strftime(TIME_FORMAT)
-    end
 end
