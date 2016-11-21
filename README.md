@@ -16,7 +16,7 @@ Take Away application
 
 Introduction
 -------
-The Take Away application is part of a weekend challenge at the Makers Academy in London. I built my application with and OOP approach and the intent was to extract as many objects that I could identify in to its own ruby classes.
+The Take Away application is part of a weekend challenge at the Makers Academy in London. I built my application with and OOP approach and the intent was to extract as many objects that I could identify.
 
 The application allows a user to build a take away restaurant and add dishes to its menu and control the incoming orders.
 
