@@ -46,10 +46,11 @@ class Restaurant
     puts "Welcome to #{name}"
     menu.available_dishes.each_with_index {|item, index| puts "#{index + 1}. #{item.dish.name}"}
   end
-
+  
   def reset_order
     self.order = nil
   end
+
 
   private
 
@@ -57,6 +58,7 @@ class Restaurant
     self.current_menu_item = menu.available_dishes[number - 1]
     current_menu_item.deduct(amount)
     order.add_item(self.current_menu_item.dish, amount)
+    self.current_menu_item = nil
   end
 
   def start_order(order_klass = Order)

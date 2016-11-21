@@ -46,7 +46,7 @@ To run the program require the dependencies.rb file from the project directory.
 * Let the customer get an order status
   ``my_restaurant.order_status``
 * Checkout the order and send a text message confirmation to the customer
-  ``restaurant.finish_order("Customer's phone number")``
+  ``restaurant.finish_order``
 
 Areas to improve
 -----
