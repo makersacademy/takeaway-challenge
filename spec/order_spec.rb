@@ -16,7 +16,7 @@ describe Order do
 
   describe '#add' do
 
-    it 'raises an error if not an invalid item is entered' do
+    it 'raises an error if an invalid item is entered' do
       allow(menu).to receive(:does_not_contain?).with("Apple").and_return(true)
       expect{subject.add("Apple",1)}.to raise_error 'Not on the menu'
     end

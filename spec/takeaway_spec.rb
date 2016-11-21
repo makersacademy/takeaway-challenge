@@ -2,10 +2,10 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) {described_class.new(menu_klass, order_klass, sms_klass)}
+  subject(:takeaway) {described_class.new(menu: menu, order_klass, sms_klass)}
   let(:menu_klass) {double :menu_klass, new: menu}
-  let(:menu) {double :menu, print: print_list, list: menu_list}
-  let(:print_list) {"Curry £9"}
+  let(:menu) {double :menu, print: printed_list, list: menu_list}
+  let(:printed_list) {"Chicken £3.50, Burger £4.90"}
   let(:menu_list) {{"Curry" => 9, "Burger" => 8}}
   let(:order_klass) {double :order_klass, new: order}
   let(:order) {double :order, total: 17}
@@ -19,7 +19,7 @@ describe Takeaway do
 
   describe '#view_menu' do
     it 'prints the menu to the screen' do
-      expect(subject.view_menu).to eq print_list
+      expect(subject.view_menu).to eq printed_list
     end
   end
 

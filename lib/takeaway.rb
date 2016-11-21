@@ -9,8 +9,8 @@ class Takeaway
   attr_reader :menu, :order_klass, :sms
   attr_accessor :order
 
-  def initialize(menu_klass, order_klass, sms_klass)
-    @menu = menu_klass.new
+  def initialize(menu: , order_klass, sms_klass)
+    @menu = menu
     @order_klass = order_klass
     @sms = sms_klass.new
   end

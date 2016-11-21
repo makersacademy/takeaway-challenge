@@ -1,22 +1,15 @@
 class Menu
 
-  attr_reader :list
+  attr_reader :dishes
 
-  def initialize
-    @list = {
-      "Curry" => 9,
-      "Burger" => 8,
-      "Pizza" => 10,
-      "Noodles" => 5,
-      "Chicken" => 5,
-      "Kebab" => 6
-    }
+  def initialize(dishes)
+    @dishes = dishes
   end
 
   def print
-    list.each do |dish,price|
-      puts "#{dish} £#{price}"
-    end
+    dishes.map do |dish,price|
+      "%s £%.2f" % [dish.to_s.capitalize, price]
+    end.join(", ")
   end
 
   def does_not_contain?(dish)
