@@ -22,6 +22,6 @@ class MessageSender
   private
 
   def twilio_number
-    twilio_number = '+441287244036'
+    twilio_number = ENV['twilio_number']
   end
 end
