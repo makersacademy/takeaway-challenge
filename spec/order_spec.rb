@@ -3,24 +3,20 @@ require 'order'
 
 describe Order do
 
-  let(:menu1) {double :menu1}
-  let(:order1) { described_class.new( menu1, [ { "Diavola" => 1, "Capriccosa" => 2 }, 27.45 ] ) }
-  let(:order2) { described_class.new( menu1, [ { "Diavola" => 1, "Capriccosa" => 2 }, 25.00 ] ) }
+  let(:menu_class) { double "Menu", list: menu} #Menu.list => menu
+  let(:menu) do {pizza: 10, burger: 5, coke: 1} end
+
+  let(:order1) { described_class.new({pizza: 2, coke: 1}, menu_class, 21) } #correct payment
+  let(:order2) { described_class.new({pizza: 1, burger: 1}, menu_class, 1) } #incorrect payment
 
   it 'stores dishes and their quantities' do
-    expect(order1.meal).to eq( { "Diavola" => 1, "Capriccosa" => 2 }  )
+    expect(order1.meal).to eq( {pizza: 2, coke: 1} )
   end
 
-  it 'stores the customer payment' do
-    expect(order1.payment).to eq 27.45
-  end
 
   context 'correct payment' do
-    before do
-      allow(order1).to receive(:menu).and_return({ "Diavola" => 8.95, "Capriccosa" => 9.25 })
-    end
     it 'calculates a total' do
-      expect(order1.calculate_total).to eq 27.45
+      expect(order1.calculate_total).to eq 21
     end
     it 'calculates a delivery time an hour from now' do
       an_hour_from_now = (Time.new + 3600).strftime("%H:%M")
@@ -34,9 +30,6 @@ describe Order do
   end
 
   context 'incorrect payment' do
-    before do
-      allow(order2).to receive(:menu).and_return({ "Diavola" => 8.95, "Capriccosa" => 9.25 })
-    end
     it 'raises an error if the payment does not match the cost' do
       expect{order2.check_payment}.to raise_error("Incorrect payment amount")
     end

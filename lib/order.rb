@@ -1,13 +1,14 @@
+
 require_relative 'send_sms'
 
 class Order
 
   attr_reader :meal, :payment, :menu
 
-  def initialize(menu, meal)
-    @menu = menu
-    @meal = meal[0]
-    @payment = meal[1]
+  def initialize(basket, menu_klass, payment)
+    @menu = menu_klass.list
+    @meal = basket
+    @payment = payment
   end
 
   def calculate_total

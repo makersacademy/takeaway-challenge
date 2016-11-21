@@ -2,11 +2,17 @@ require 'restaurant'
 
 describe Restaurant do
 
-  let(:restaurant) {described_class.new(Order)}
+  let(:restaurant) {described_class.new(order_class, menu_class)}
   let(:printed_menu) {"pizza: £10\nburger: £5\ncoke: £1\n"}
-  example_order = {}
   let(:printed_basket) {"1 pizza\n"}
   let(:printed_multiple) {"2 pizzas\n1 coke\n"}
+
+  let(:menu_class) { double "Menu", list: menu} #Menu.list => menu
+  let(:menu) do {pizza: 10, burger: 5, coke: 1} end
+
+  let(:order_class) { double "Order", new: order } #Order.new => order
+  let(:order) {double :order }
+
 
   it 'shows the menu' do
     expect{restaurant.print_menu}.to output(printed_menu).to_stdout
@@ -28,7 +34,8 @@ describe Restaurant do
 
   it "can add multiple items to the basket" do
     3.times{restaurant.add_to_basket("pizza")}
-    expect(restaurant.basket).to eq ({pizza: 3})
+    restaurant.add_to_basket("coke")
+    expect(restaurant.basket).to eq ({pizza: 3, coke: 1})
   end
 
   it "prints the basket" do
@@ -40,6 +47,13 @@ describe Restaurant do
     2.times{restaurant.add_to_basket("pizza")}
     restaurant.add_to_basket("coke")
     expect{restaurant.show_basket}.to output(printed_multiple).to_stdout
+  end
+
+  it "places a new order" do
+    expect(order_class).to receive(:new).with({pizza: 2, coke:1}, menu_class, 21)
+    2.times{restaurant.add_to_basket("pizza")}
+    restaurant.add_to_basket("coke")
+    restaurant.checkout(21)
   end
 
 
