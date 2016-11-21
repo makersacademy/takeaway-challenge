@@ -5,9 +5,9 @@ class Order
 
 attr_reader :current_order_price, :menu, :message, :items
 
-  def initialize
+  def initialize(menu_klass)
     @current_order_price = 0
-    @menu = Menu.new
+    @menu = menu_klass.new
     @message = Message.new
     @items = Hash.new(0)
  end

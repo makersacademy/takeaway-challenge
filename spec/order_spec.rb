@@ -2,13 +2,13 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { described_class.new }
+  subject(:order) { described_class.new(menu) }
   let(:menu) { double(:menu) }
 
   before do
     allow(menu).to receive(:new).and_return menu
     allow(order).to receive(:text_message).and_return ("Thank you for your order. A text message confirming the order is on its way.")
-    allow(menu).to receive(:list_of_items).and_return ({ "margherita" => 9, "pepperoni" => 10, "americano" => 11 })
+    allow(menu).to receive(:list_of_dishes).and_return ({ "margherita" => 9, "pepperoni" => 10, "americano" => 11 })
   end
 
   context '#initialize' do
