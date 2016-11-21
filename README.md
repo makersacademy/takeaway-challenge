@@ -14,8 +14,8 @@ Takeaway Challenge
 
  ```
 
-- PizzaShop & SushiShop Class are inheritance of TakeawayShop Class\n
-  Therefore only set own menu, you can use the TakeawayShop functions.
+- PizzaShop & SushiShop Class inherit TakeawayShop Class.
+  Therefore they only have their own menu inside their class, they just call TakeawayShop's functions.
 - Takeawayshop class use Twilio API to send texts to customers
 
 
