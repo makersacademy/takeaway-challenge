@@ -36,6 +36,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 Approach
 -------
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg)](https://coveralls.io/github/makersacademy/takeaway-challenge)
 
 I created four classes to create my solution to this challenge:
 
