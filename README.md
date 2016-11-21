@@ -1,5 +1,5 @@
 Takeaway Challenge
-==================
+
 ```
                             _________
               r==           |       |
@@ -11,81 +11,65 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+This is a simulation that mimics a restaurant takeaway service. Multiple dishes can be ordered. This is the Makers Academy weekend challenge for the second week.
 
-Instructions
--------
+Technologies used
+---------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Ruby
+* Git
+* Rspec
+* Twilio
+* VCR
+* Webmock
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+How to run it
+---------------
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+[1] pry(main)> require './lib/order'
+=> true
+[2] pry(main)> order = Order.new
+=> #<Order:0x007ff25a38a0c8
+ @current_order_price=0,
+ @items={},
+ @menu=#<Menu:0x007ff25a38a078 @list_of_dishes={"margherita"=>9, "pepperoni"=>10, "americano"=>11}>,
+ @message=#<Message:0x007ff25a38a028>>
+[3] pry(main)> order.order("pepperoni", 1)
+=> "You have ordered 1 pepperoni(s)."
+[4] pry(main)> order.items
+=> {"pepperoni"=>1}
+[5] pry(main)> order.current_order_price
+=> 10
+[6] pry(main)> order.expected_total(10)
+=> "Thank you for your order. A text message confirming the order is on its way."
+[7] pry(main)>
 
 ```
-$ coveralls report
-```
+==================
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+Features
+---------
+* Menu of multiple items
+* Order by quantity
+* Method for calculating bill
+* Text message confirmation
 
-Build Badge Example
-------------------
+Approach to solving
+---------
+1. Started by adding list_of_dishes method that showed a hash of the dishes available.
+2. Added order method with two arguments, one for dish the other for quantity
+3. Added current order price variable that starts at zero to initialize
+4. Refactored code by adding a private bill method to calculate total
+5. Dealt with edge cases for orders of less than 1 item and menu items that do not match
+6. Added Menu class that contains list of dishes
+7. Created Message class that sends text message confirmation
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+Further work to do
+---------
+
+There are considerable problems with some of the doubles that need to be fixed in the order_spec
+I

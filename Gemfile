@@ -5,3 +5,7 @@ gem 'rake'
 gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
+gem 'twilio-ruby'
+gem 'vcr'
+gem 'webmock'
+gem 'dotenv'
