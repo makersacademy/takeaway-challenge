@@ -30,7 +30,7 @@ end
   end
 
   it "sends an sms when the order has been placed" do
-    expect(sms.to receive(:deliver))
+    expect(sms).to receive(:deliver)
     takeaway.place_order(dishes)
   end
 

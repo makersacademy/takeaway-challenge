@@ -5,7 +5,7 @@ class TakeAway
   def initialize(menu:, config:, order: nil, sms: nil)
     @menu = menu
     @order = order || Order.new(menu)
-    @sms = sms || SMS.new(config)
+    @sms = sms || SMS.new
   end
 
   def print_menu
