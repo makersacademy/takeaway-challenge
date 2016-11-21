@@ -15,7 +15,7 @@ private
 
   def bucket
     @my_order.each do |dish, details|
-      print "#{details[:portions]} portions of #{dish} for #{details[:price]} pounds each"
+      "#{details[:portions]} portions of #{dish} for #{details[:price]} pounds each"
     end
   end
 

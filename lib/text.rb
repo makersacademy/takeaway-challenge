@@ -4,15 +4,15 @@ class Text
 
 
   def initialize
-    account_sid = 'AC9bc4be7b933cfb2b94b756dbfe0ad930'
-    auth_token = 'fed92318d72ef7a953103d59f79ae29f'
+    account_sid = ENV['SID']
+    auth_token = ENV['blah']
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
   def send
     @client.account.messages.create({
       :from => '+441292388059',
-      :to => '+4407426033051',
+      :to => ENV['pn'],
       :body => message})
   end
 
