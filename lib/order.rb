@@ -2,29 +2,23 @@ require_relative 'SMS_alert.rb'
 
 class Order
 
-  attr_reader :basket
+  attr_reader :basket, :menu
 
-  MENU = {pizza: 10,
-          ice_cream: 5.55,
-          garlic_bread: 2.99}
-
-  def initialize(sms_Klass)
+  def initialize(sms_Klass, menu: nil)
     @basket = Hash.new(0)
     @sms = sms_Klass
+    @menu = menu || Menu.hash
   end
 
-  def menu
-    MENU
-  end
 
   def add_to_basket(item, number = 1)
-    fail "Sorry, we don't have #{item}" if !MENU.has_key?(item.to_sym)
+    fail "Sorry, we don't have #{item}" if !menu.has_key?(item.to_sym)
     basket[item.to_sym] += number
   end
 
   def total
     basket.keys.map do |food|
-      MENU[food]*basket[food]
+      menu[food]*basket[food]
     end.reduce(:+)
   end
 

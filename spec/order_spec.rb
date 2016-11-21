@@ -7,6 +7,12 @@ describe Order do
   let(:ice_cream) { "ice_cream" }
   let(:sms) { double :SMS_class, send_message: 0 }
 
+  let(:menu) do double "Menu", list:
+    {pizza: 10,
+    ice_cream: 5.55,
+    garlic_bread: 2.99}
+  end
+
   it "should have a menu" do
     expect(order.menu).to be_kind_of Hash
   end

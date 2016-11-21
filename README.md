@@ -54,5 +54,18 @@ How to Use
    => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC897f510f4d323f75fa515d37af48e0a8/Messages/SM7e1c25fdb9d741d49ab7efc6498600c3>
 
   ```
-  
+
+  Set Up
+  --------
+
+  * create a ```.env``` file and fill in the following fields
+  ```
+  TWILIO_ACCOUNT_SID = "<account sid>"
+    TWILIO_AUTH_TOKEN = "<auth token>"
+
+    MY_TWILIO_NUMBER = "<your twilio number>"
+    MY_PHONE_NUMBER = "<your phone number>"
+  ```
+
+
 [![Build Status](https://travis-ci.org/GeorgeSeeger/takeaway-challenge.svg?branch=master)](https://travis-ci.org/GeorgeSeeger/takeaway-challenge)
