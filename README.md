@@ -14,14 +14,15 @@ Takeaway Challenge
 
  ```
 
-- PizzaShop & SushiShop Class inherit TakeawayShop Class.
+- PizzaShop & SushiShop Class inherit TakeawayShop Class.  
   Therefore they only have their own menu inside their class, they just call TakeawayShop's functions.
 - Takeawayshop class use Twilio API to send texts to customers
 
 
-#[ How to set Twilio API ]
+*[ How to set Twilio API ]*
 
-- First, you'll need to register for it. It’s free.
+- First, you'll need to register for it. It’s free.  
+  [Twilio]: https://www.twilio.com "Twilio"
 - Get a phone number( first one is free ) for your Twilio API.
 - Follow the instruction below;
 
@@ -33,7 +34,8 @@ Takeaway Challenge
  => #<TwilioAPI:0x007ffe99339808 @twilio_phone_number="twilio_phone_number", @client=<Twilio::REST::Client @account_sid=account_sid>>
 ```
 
-#[ Instructions ]
+*[ Instructions ]*
+
 Pizza takeaway shop
 -------
 ```sh
