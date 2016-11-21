@@ -20,11 +20,7 @@ private
   end
 
   def total
-    amount = 0
-    @my_order.each do |dish, details|
-      amount += details[:price] * details[:portions]
-    end
-    amount
+    (@my_order.collect { |dish, details| details[:price] * details[:portions]}).reduce(:+)
   end
 
 

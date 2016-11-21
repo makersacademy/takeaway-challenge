@@ -13,6 +13,7 @@ class TakeAway
   end
 
   def read_menu
+    #refactor - take the p out
     @menu.each { |k,v| p " #{k} for #{v} pounds. "}
   end
 
@@ -22,6 +23,7 @@ class TakeAway
     @my_order[dish] = {portions: 0, price: dish_price } if not @my_order[dish]
     @my_order[dish][:portions] += dish_portions
     @my_order
+    #bucket.add
   end
 
   def place_order

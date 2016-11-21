@@ -1,18 +1,20 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class Text
 
 
   def initialize
     account_sid = ENV['SID']
-    auth_token = ENV['blah']
+    auth_token = ENV['AUTH']
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
   def send
     @client.account.messages.create({
       :from => '+441292388059',
-      :to => ENV['pn'],
+      :to => ENV['number'],
       :body => message})
   end
 

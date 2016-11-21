@@ -6,4 +6,6 @@ describe Text do
   it "sends a confirmation text" do
     expect(text).to respond_to(:send)
   end
+
+  
 end
