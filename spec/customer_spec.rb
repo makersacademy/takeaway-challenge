@@ -2,7 +2,7 @@ require 'customer'
 
 describe Customer do
 
-  let(:customer) {described_class.new(Order)}
+  subject(:customer) {described_class.new(Order)}
   let(:current_order) { double(:order) }
   let(:send_message) { double(:send_message) }
 
@@ -25,7 +25,7 @@ describe Customer do
     customer.new_order
     customer.place_order(3,2,2)
     customer.current_order.add_cost_to_order
-    expect(customer.finish_order("phone number", send_message)).to eq("text sent")
+    expect(customer.finish_order(send_message)).to eq("text sent")
   end
 
   it 'should show the current order' do

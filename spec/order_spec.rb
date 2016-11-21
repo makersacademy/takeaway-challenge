@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  let(:order) { described_class.new }
+  subject(:order) { described_class.new }
   let(:order_total) { double(:order_total) }
 
   it 'should initialize with instance of menu' do

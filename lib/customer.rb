@@ -16,14 +16,14 @@ class Customer
     self.current_order.take(*order_numbers)
   end
 
-  def finish_order(phone_number, send_message_klass = SendMessage.new)
+  def finish_order(send_message_klass = SendMessage.new)
     show_current_order
-    send_text(phone_number, send_message_klass)
+    send_text(send_message_klass)
   end
 
   private
-  def send_text(phone_number, send_message_klass)
-    send_message_klass.send(phone_number)
+  def send_text(send_message_klass)
+    send_message_klass.send
   end
 
   def show_current_order
