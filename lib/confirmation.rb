@@ -7,17 +7,15 @@ class Confirmation
   attr_reader :time
 
   def initialize
-    account_sid = 'AC388d941b9fda6bd8669648cfe03dc9e0'
-    auth_token = 'c80382e571d3b4415c7111a572bbbf96'
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
     @time = (Time.now + 3600).strftime("%H:%M%p")
   end
 
 
   def send_message(message)
     @client.messages.create(
-    from: '+447403927326',
-    to: '+447397510122',
+    from: ENV['TWILIO_PHONE'],
+    to: ENV['TWILIO_DESTINATION_PHONE'],
     body: message
     )
   end

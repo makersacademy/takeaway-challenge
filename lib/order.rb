@@ -1,5 +1,7 @@
 require_relative "menu"
 require_relative "confirmation"
+require 'dotenv'
+Dotenv.load
 
 class Order
   # Allows the customer to place an order
@@ -46,7 +48,7 @@ class Order
   end
 
   def calculate_total_price
-    @total = @prices.reduce { |memo, sum| memo += sum }
+    @total = @prices.inject { |memo, sum| memo += sum }
   end
 
   def display_total_price
