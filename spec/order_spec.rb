@@ -3,7 +3,13 @@ require 'order'
 describe Order do
 
   subject(:order) { described_class.new }
-  let(:menu) { double :menu }
+  let(:menu) { double(:menu) }
+
+  before do
+    allow(menu).to receive(:new).and_return menu
+    allow(order).to receive(:text_message).and_return ("Thank you for your order. A text message confirming the order is on its way.")
+    allow(menu).to receive(:list_of_items).and_return ({ "margherita" => 9, "pepperoni" => 10, "americano" => 11 })
+  end
 
   context '#initialize' do
 
@@ -64,15 +70,11 @@ describe Order do
 
   context "#expected_total" do
 
-  # before do
-    # allow(order).to receive(:menu_check).and_return({ "margherita" => 9, "pepperoni" => 10, "americano" => 11 })
-  # end
 
-    # it "should return message when order is finished" do
-    #   # allow(order).to receive(:text_message).and_return("Thank you for your order. A text message confirming the order is on its way.")
-    #   subject.order("margherita", 1)
-    #   expect(subject.expected_total(9)).to eq "Thank you for your order. A text message confirming the order is on its way."
-    # end
+
+    it "should return confirmation message when text sent" do
+      expect(subject.expected_total(0)).to eq "Thank you for your order. A text message confirming the order is on its way."
+    end
 
     it "should show other message if total is incorrect" do
       expect(subject.expected_total(10)).to eq "Your total is wrong: please enter the correct total."
