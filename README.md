@@ -11,24 +11,11 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
+User Stories
 -------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -48,44 +35,138 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
+* Functionality to implement:
+  * Have a list of dishes with prices
   * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
+  * The text sending functionality should be implemented using Twilio API.
+  * Twilio-ruby gem to access the API
+  * Gemfile to manage your gems
+  * Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
   * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## Feature tests
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+### Menu
+```
+ᚹᚱᛘ ᛬ require './lib/menu'
+=> true
+ᚹᚱᛘ ᛬ menu = Menu.new
+=> #<Menu:0x007f914a17c9a0
+ @menu_items=
+  [{:num=>1, :dish=>"Chicken Soup", :price=>3.45},
+   {:num=>2, :dish=>"Spicy Hamburger", :price=>8.99},
+   {:num=>3, :dish=>"Spaghetti Bolognese", :price=>7.65},
+   {:num=>4, :dish=>"Spring Salad", :price=>4.55},
+   {:num=>5, :dish=>"Spring Rolls", :price=>3.69},
+   {:num=>6, :dish=>"Sweet and Sour Soup", :price=>3.49},
+   {:num=>7, :dish=>"Chicken Sechuan", :price=>5.99},
+   {:num=>8, :dish=>"Diet Coke", :price=>1.99},
+   {:num=>9, :dish=>"Sparkling Water", :price=>1.12},
+   {:num=>10, :dish=>"Poppy Mochi", :price=>3.99},
+   {:num=>11, :dish=>"Red Beans Mochi", :price=>3.89},
+   {:num=>12, :dish=>"Rice Noodles", :price=>2.99}]>
+ᚹᚱᛘ ᛬ menu.display
+                    The menu:
+                    ---------
+    Food name ------------------------- price
 
+1. Chicken Soup                           ...£3.45
+2. Spicy Hamburger                        ...£8.99
+3. Spaghetti Bolognese                    ...£7.65
+4. Spring Salad                           ...£4.55
+5. Spring Rolls                           ...£3.69
+6. Sweet and Sour Soup                    ...£3.49
+7. Chicken Sechuan                        ...£5.99
+8. Diet Coke                              ...£1.99
+9. Sparkling Water                        ...£1.12
+10. Poppy Mochi                           ...£3.99
+11. Red Beans Mochi                       ...£3.89
+12. Rice Noodles                          ...£2.99
+```
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+### Order
 
 ```
-$ coveralls report
+ᚹᚱᛘ ᛬ require './lib/order'
+=> true
+ᚹᚱᛘ ᛬ order = Order.new(Menu)
+=> #<Order:0x007fe875033e68
+ @menu=
+  #<Menu:0x007fe875033df0
+   @menu_items=
+    [{:num=>1, :dish=>"Chicken Soup", :price=>3.45},
+     {:num=>2, :dish=>"Spicy Hamburger", :price=>8.99},
+     {:num=>3, :dish=>"Spaghetti Bolognese", :price=>7.65},
+     {:num=>4, :dish=>"Spring Salad", :price=>4.55},
+     {:num=>5, :dish=>"Spring Rolls", :price=>3.69},
+     {:num=>6, :dish=>"Sweet and Sour Soup", :price=>3.49},
+     {:num=>7, :dish=>"Chicken Sechuan", :price=>5.99},
+     {:num=>8, :dish=>"Diet Coke", :price=>1.99},
+     {:num=>9, :dish=>"Sparkling Water", :price=>1.12},
+     {:num=>10, :dish=>"Poppy Mochi", :price=>3.99},
+     {:num=>11, :dish=>"Red Beans Mochi", :price=>3.89},
+     {:num=>12, :dish=>"Rice Noodles", :price=>2.99}]>,
+ @order_items=[],
+ @order_sum=0>
+ᚹᚱᛘ ᛬ order.add_to_order(1)
+=> [{:num=>1, :dish=>"Chicken Soup", :price=>3.45}]
+ᚹᚱᛘ ᛬ order.add_to_order(2)
+=> [{:num=>1, :dish=>"Chicken Soup", :price=>3.45}, {:num=>2, :dish=>"Spicy Hamburger", :price=>8.99}]
+ᚹᚱᛘ ᛬ order.order_sum
+=> 12.44
+ᚹᚱᛘ ᛬ order.is_correct_amount?(12.44)
+=> true
+```
+### Takeaway and sending texts
+
+```
+ᚹᚱᛘ ᛬ require './lib/takeaway'
+=> true
+ᚹᚱᛘ ᛬ t = Takeaway.new(Order)
+=> #<Takeaway:0x007f813a388318
+ @order=
+  #<Order:0x007f813a3882c8
+   @menu=
+    #<Menu:0x007f813a388070
+     @menu_items=
+      [{:num=>1, :dish=>"Chicken Soup", :price=>3.45},
+       {:num=>2, :dish=>"Spicy Hamburger", :price=>8.99},
+       {:num=>3, :dish=>"Spaghetti Bolognese", :price=>7.65},
+       {:num=>4, :dish=>"Spring Salad", :price=>4.55},
+       {:num=>5, :dish=>"Spring Rolls", :price=>3.69},
+       {:num=>6, :dish=>"Sweet and Sour Soup", :price=>3.49},
+       {:num=>7, :dish=>"Chicken Sechuan", :price=>5.99},
+       {:num=>8, :dish=>"Diet Coke", :price=>1.99},
+       {:num=>9, :dish=>"Sparkling Water", :price=>1.12},
+       {:num=>10, :dish=>"Poppy Mochi", :price=>3.99},
+       {:num=>11, :dish=>"Red Beans Mochi", :price=>3.89},
+       {:num=>12, :dish=>"Rice Noodles", :price=>2.99}]>,
+   @order_items=[],
+   @order_sum=0>>
+ᚹᚱᛘ ᛬ t.order.add_to_order(2)
+=> [{:num=>2, :dish=>"Spicy Hamburger", :price=>8.99}]
+ᚹᚱᛘ ᛬ t.order.add_to_order(3)
+=> [{:num=>2, :dish=>"Spicy Hamburger", :price=>8.99}, {:num=>3, :dish=>"Spaghetti Bolognese", :price=>7.65}]
+ᚹᚱᛘ ᛬ t.basket_summary
+Your order has the following items:
+2. Spicy Hamburger...£8.99
+3. Spaghetti Bolognese...£7.65
+=> [{:num=>2, :dish=>"Spicy Hamburger", :price=>8.99}, {:num=>3, :dish=>"Spaghetti Bolognese", :price=>7.65}]
+ᚹᚱᛘ ᛬ t.order_price
+=> 16.64
+ᚹᚱᛘ ᛬ t.send_text
+Your order has the following items:
+2. Spicy Hamburger...£8.99
+3. Spaghetti Bolognese...£7.65
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/..../Messages/...>
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+### Text confirmation:
+See here: https://github.com/Unicornelia/takeaway-challenge/blob/master/Screenshot_20161121-170850.jpg
 
-Build Badge Example
-------------------
+## Env variables
 
+All environment variables are saved into a safe .env file and added to gitignore, therefore not presented on github and kept in line with privacy settings
+
+Build:
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
