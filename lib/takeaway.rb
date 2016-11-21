@@ -3,21 +3,22 @@ require_relative 'sms.rb'
 
 class Takeaway
 
-  attr_reader :menu, :items, :expected_total
+  attr_reader :items
 
-  def initialize(menu_klass = Menu)
+  def initialize(menu_klass, sms_klass)
+    @sms_klass = sms_klass
     @menu = menu_klass.new
     @items = Hash.new(0)
   end
 
   def show_menu
-    menu.show_menu
+    menu.print_menu
   end
 
   def add_item(item, quantity = 1)
-    raise 'This item is not on the menu, please choose something else' if !Menu::MENU.has_key?(item)
+    raise 'This item is not on the menu, please choose something else' if !menu.has_item?(item)
     raise 'Quantity cannot be less than 1' if quantity < 1
-    @items[item] += quantity
+    self.items[item] += quantity
   end
 
   def show_total
@@ -27,27 +28,28 @@ class Takeaway
 
   def pay(expected_total)
     calc_total
-    @expected_total = expected_total
-    raise 'This is the incorrect total, please try again' if @expected_total != @total
+    raise 'This is the incorrect total, please try again' if expected_total != @total
     text_confirmation
   end
 
   private
 
+  attr_reader :menu
+
   def calc_total
     prices = []
-    @items.each do |item, quantity|
-      Menu::MENU.each do |dish, price|
+    self.items.each do |item, quantity|
+      menu.dishes.each do |dish, price|
         prices << quantity * price if item == dish
       end
     end
     @total = prices.reduce(:+)
   end
 
-  def text_confirmation(sms_klass = Sms)
-    sms = sms_klass.new
+  def text_confirmation
+    sms = @sms_klass.new
     sms.send_confirmation
-    puts 'Your order has been received and you will receive a text confirmation shortly'
+    'Your order has been received and you will receive a text confirmation shortly'
   end
 
 end
