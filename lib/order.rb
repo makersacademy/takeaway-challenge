@@ -10,7 +10,7 @@ class Order
   end
 
   def add(dish, quantity)
-    fail "Not on the menu" if menu.does_not_contain?(dish)
+    fail NoItemError, "Not on the menu" if menu.does_not_contain?(dish)
     increase_basket(dish, quantity)
   end
 
@@ -31,3 +31,5 @@ class Order
   end
 
 end
+
+class NoItemError < StandardError; end
