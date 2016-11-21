@@ -11,7 +11,6 @@ class Takeaway
 
   def initialize(order_klass)
     @order = order_klass.new(Menu)
-    @client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
   end
 
   def basket_summary
@@ -24,8 +23,13 @@ class Takeaway
 
 
   def send_text
+    client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
     time = Time.new + 60*60
     message = "Thanks, your order arrives before #{time}. Your order: #{basket_summary}, You will need to pay: #{order_price}"
-    @client.account.messages.create({from: TWILIO_PHONE, to: MY_PHONE, body: message})
+    client.messages.create(
+      from: ENV['TWILIO_PHONE'],
+      to: ENV['MY_PHONE'], 
+      body: message
+      )
   end
 end
