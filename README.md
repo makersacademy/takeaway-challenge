@@ -117,6 +117,52 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ᚹᚱᛘ ᛬ order.is_correct_amount?(12.44)
 => true
 ```
+### Takeaway and sending texts
+
+```
+ᚹᚱᛘ ᛬ require './lib/takeaway'
+=> true
+ᚹᚱᛘ ᛬ t = Takeaway.new(Order)
+=> #<Takeaway:0x007f813a388318
+ @order=
+  #<Order:0x007f813a3882c8
+   @menu=
+    #<Menu:0x007f813a388070
+     @menu_items=
+      [{:num=>1, :dish=>"Chicken Soup", :price=>3.45},
+       {:num=>2, :dish=>"Spicy Hamburger", :price=>8.99},
+       {:num=>3, :dish=>"Spaghetti Bolognese", :price=>7.65},
+       {:num=>4, :dish=>"Spring Salad", :price=>4.55},
+       {:num=>5, :dish=>"Spring Rolls", :price=>3.69},
+       {:num=>6, :dish=>"Sweet and Sour Soup", :price=>3.49},
+       {:num=>7, :dish=>"Chicken Sechuan", :price=>5.99},
+       {:num=>8, :dish=>"Diet Coke", :price=>1.99},
+       {:num=>9, :dish=>"Sparkling Water", :price=>1.12},
+       {:num=>10, :dish=>"Poppy Mochi", :price=>3.99},
+       {:num=>11, :dish=>"Red Beans Mochi", :price=>3.89},
+       {:num=>12, :dish=>"Rice Noodles", :price=>2.99}]>,
+   @order_items=[],
+   @order_sum=0>>
+ᚹᚱᛘ ᛬ t.order.add_to_order(2)
+=> [{:num=>2, :dish=>"Spicy Hamburger", :price=>8.99}]
+ᚹᚱᛘ ᛬ t.order.add_to_order(3)
+=> [{:num=>2, :dish=>"Spicy Hamburger", :price=>8.99}, {:num=>3, :dish=>"Spaghetti Bolognese", :price=>7.65}]
+ᚹᚱᛘ ᛬ t.basket_summary
+Your order has the following items:
+2. Spicy Hamburger...£8.99
+3. Spaghetti Bolognese...£7.65
+=> [{:num=>2, :dish=>"Spicy Hamburger", :price=>8.99}, {:num=>3, :dish=>"Spaghetti Bolognese", :price=>7.65}]
+ᚹᚱᛘ ᛬ t.order_price
+=> 16.64
+ᚹᚱᛘ ᛬ t.send_text
+Your order has the following items:
+2. Spicy Hamburger...£8.99
+3. Spaghetti Bolognese...£7.65
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/..../Messages/...>
+```
+
+### Text confirmation:
+See here.
 
 Build:
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
