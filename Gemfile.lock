@@ -22,6 +22,9 @@ GEM
     docile (1.1.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
     hashdiff (0.3.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -86,6 +89,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   coveralls
+  dotenv
   rake
   rspec
   twilio-ruby
