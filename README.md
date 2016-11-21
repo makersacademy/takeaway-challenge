@@ -11,8 +11,149 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+
+## Simon's walk through
+
+
+### Aims for the takeaway_challenge
+
+The takeaway lets a user view the menu, place and order, check their basket and pay for their food. The user receives a text message when the order is placed.
+
+### Steps for setting up
+
+To set up the app we need to add the following commands to Pry:
+
+[simon:~/projects/takeaway_challenge]$ pry                                   (sunday✱)
+
+####[[1] pry(main)> require './lib/takeaway.rb'
+=> true
+####[2] pry(main)> takeaway = Takeaway.new
+=> #<Takeaway:0x007fc77a113c28
+ @menu=
+  [[1, "Margerita pizza       ", 5.5],
+   [2, "Pepperoni pizza       ", 6.5],
+   [3, "Quatro Staggioni Pizza", 6.5],
+   [4, "Donner Kebab          ", 3.5],
+   [5, "Cheeseburger          ", 5.0]],
+ @menu_klass=
+  #<Menu:0x007fc77a113bd8
+   @menu=
+    [[1, "Margerita pizza       ", 5.5],
+     [2, "Pepperoni pizza       ", 6.5],
+     [3, "Quatro Staggioni Pizza", 6.5],
+     [4, "Donner Kebab          ", 3.5],
+     [5, "Cheeseburger          ", 5.0]]>>
+[3] pry(main)>
+
+This loads in the project files.
+It then starts a new takeaway.
+The menu is loaded into the takeaway from a separate menu.rb file.
+
+
+###Placing an order
+
+To place an order you can do the following:
+
+####[3] pry(main)> takeaway.new_customer
+Welcome to my takeaway! Please look at the menu
+
+[1, "Margerita pizza       ", 5.5]/n
+[2, "Pepperoni pizza       ", 6.5]/n
+[3, "Quatro Staggioni Pizza", 6.5]/n
+[4, "Donner Kebab          ", 3.5]/n
+[5, "Cheeseburger          ", 5.0]/n
+
+Type in the menu number for your order. Type 0 to complete your order
+
+
+This starts the customer interaction.
+The customer can add menu items by typing the menu number.
+E.g. 1, 2, 3, 4
+As they type in the items they want, the order is displayed for the customer to see.
+
+1
+[1, "Margerita pizza       ", 5.5]
+Type in the menu number for your order. Type 0 to complete your order
+2
+[1, "Margerita pizza       ", 5.5]
+[2, "Pepperoni pizza       ", 6.5]
+Type in the menu number for your order. Type 0 to complete your order
+3
+[1, "Margerita pizza       ", 5.5]
+[2, "Pepperoni pizza       ", 6.5]
+[3, "Quatro Staggioni Pizza", 6.5]
+Type in the menu number for your order. Type 0 to complete your order
+
+Note - Currently, unrecognized entries are always added as a cheeseburger. I would like to have added a feature so unrecognized are removed from the list.
+
+
+####Completing the order and paying
+
+When the customer types 0 the order is completed.
+This shows the price.
+The customer is asked to add the price again.
+If they type in exactly the price the order is completed and a text message is sent.
+
+
+Type in the menu number for your order. Type 0 to complete your order
+0
+[1, "Margerita pizza       ", 5.5]
+[2, "Pepperoni pizza       ", 6.5]
+[3, "Quatro Staggioni Pizza", 6.5]
+[5, "Cheeseburger          ", 5.0]
+
+Your total bill is £23.5
+To pay your bill, please type in the total of 23.5.
+23.5
+PAID! Please come again!!
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/AC67a8668352fe266e4a97871ce36e7ec8/Messages/SM1673f36db41441d899e65c1087b7a893>
+[4] pry(main)>
+
+Note - Currently an additional cheeseburger is added when the user completes their order. I would like to remove this.
+
+##Things I would like to update
+
+There are plenty of changes I would like to make to this project...
+
+
+###The rogue cheeseburger
+
+When I complete an order or give text that does not correspond to a menu item the takeaway currently adds a cheeseburger to the order. This is quite funny in a way - it's like the takeaway forces everyone to have an extra cheeseburger.
+
+It's a simple Ruby thing that I should be able to fix. Something not right with my loop.
+
+I looked into this with Jenna. The problem is that when we add items to the menu we do not check for numbers out of range of the menu or for 0. Also, adding zero puts in a menu item of 0-1 which is -1 so returns the last value in the array. 
+
+
+###Instance variables for order and checkout included in takeaway
+
+On Sunday I started thinking about how I could get the takeaway to create the order and the checkout from a method. This seemed like a much better idea that calling everything manually in Pry.
+
+I started down this road and then got really confused with passing objects to classes.
+
+I think I'll need to run through this with Roi. Basically, I don't understand why I can't add a local variable to the method that calls a new Object. It complains when I do this. So I've got Order and Checkout variables within the takeaway class. WHich I'm pretty sure is wrong : (
+
+My test coverage is around 50%. This looks awful but it's because I didn't know how to test methods that output to the console. These are my two biggest methods. I'd like to fix this up today.
+
+Finally, there is a method in takeaway that does several things. It does the order and the checkout. This should be split into smaller methods.
+
+So plenty to fix up.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Instructions
 -------
@@ -69,7 +210,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
