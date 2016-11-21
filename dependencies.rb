@@ -1,0 +1,7 @@
+require "./lib/dish.rb"
+require "./lib/menu.rb"
+require "./lib/menu_item.rb"
+require "./lib/order_item.rb"
+require "./lib/order.rb"
+require "./lib/restaurant.rb"
+require "./lib/order_total.rb"
