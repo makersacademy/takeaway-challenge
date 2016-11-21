@@ -34,10 +34,14 @@ describe Order do
     expect(order.verify_order(17.00)).to eq true
   end
 
-  xit "prints a list of dishes with prices" do
-    expect(subject.print_menu).to eq("cheeseburger: £8.50
-    fries: £3.75"
+  it "prints a list of dishes with prices" do
+    expect(subject.print_menu).to eq("cheeseburger: £8.50, fries: £3.75"
     )
   end
+
+  it "sends a confirmation text message" do
+      expect(order).to receive(:send_text).with("Thank you! Your order was placed and will be delivered before 13:32")
+      order.complete_order
+    end
 
 end

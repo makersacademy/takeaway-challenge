@@ -1,3 +1,6 @@
+# should know what the customer wants to order, including the total cost of the order
+require_relative "send_text"
+
 class Order
 attr_accessor :list_of_dishes, :menu
 
@@ -22,7 +25,7 @@ attr_accessor :list_of_dishes, :menu
 
   def print_menu
     printed_menu = menu.map { |dish, price| "#{dish}: £#{price}" }
-    printed_menu.each { |dish_with_price| puts dish_with_price }
+    printed_menu.join(", ")
   end
 
   def verify_order(total_cost)
@@ -35,6 +38,5 @@ attr_accessor :list_of_dishes, :menu
       true
     end
   end
-
 
 end
