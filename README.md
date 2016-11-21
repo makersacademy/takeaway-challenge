@@ -46,7 +46,7 @@ Takeaway serves as the main class, and point of entry - it loads a menu on creat
 
 How to Use
 ------------------
-#1. User finds takeaway restaurant
+#####1. User finds takeaway restaurant
 ```
 ᚹᚱᛘ ᛬ require './lib/takeaway'
 => true
@@ -59,7 +59,7 @@ How to Use
  @message_type=SMS>
 ```
 
-#2. User views the menu
+#####2. User views the menu
  ```
 ᚹᚱᛘ ᛬ t.menu.view_menu
 Spag_Bol 6.50
@@ -67,7 +67,7 @@ Pizza 4.00
 Chips 2.75
 ```
 
-#3. User selects items to add to their basket
+#####3. User selects items to add to their basket
 ```
 ᚹᚱᛘ ᛬ t.select_item("Pizza")
 => "1x Pizza added to your basket"
@@ -75,7 +75,7 @@ Chips 2.75
 => "3x Chips added to your basket"
 ```
 
-#4. User views items in their basket
+#####4. User views items in their basket
 ```
 ᚹᚱᛘ ᛬ t.view_basket
 1x Pizza @ £4.00
@@ -83,10 +83,10 @@ Chips 2.75
 Total: £12.25
 ```
 
-#5. User confirms order with correct total
+#####5. User confirms order with correct total
 ```
 ᚹᚱᛘ ᛬ t.confirm_order(12.25)
 => "Thank you for your order: £12.25"
 ```
 
-#6. User is sent an SMS confirmation message
+#####6. User is sent an SMS confirmation message
