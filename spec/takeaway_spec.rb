@@ -4,8 +4,8 @@ describe Takeaway do
 
 subject(:takeaway){described_class.new(order_klass, sms_klass)}
 let(:order_klass){double :order_klass, :new => placed_order}
-let(:sms_klass){double :sms_klass, :new => text, :send_message => ""}
-let(:text){double :text}
+let(:sms_klass){double :sms_klass, :new => text}
+let(:text){double :text, :send_message => ""}
 let(:placed_order){double :placed_order, :selected_dishes => [],
   :view_order => {}, :total_cost => "", :confirm_order => {}}
 let(:SMS) {double :SMS}
@@ -69,7 +69,7 @@ let(:SMS) {double :SMS}
     it "should confirm message is sent" do
       takeaway.select(1,2)
       message = "Thank you for your order"
-      allow(sms_klass).to receive(:send_message) {message}
+      allow(text).to receive(:send_message) {message}
       expect(takeaway.confirm_order).to eq("Thank you for your order")
     end
   end

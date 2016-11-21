@@ -5,7 +5,6 @@ Dotenv.load
 describe Sms do
 
 let(:client) { double :client }
-
 let(:delivery_time) { (Time.now + 60*60).strftime('%H:%M') }
 
 #let(:takeaway) {double :takeaway}

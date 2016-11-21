@@ -26,14 +26,14 @@ private
 
   def dishes_with_total
     result = Hash.new(0)
-    selected_dishes.each {|hash| result[hash] += 1}
+    selected_dishes.each {|dish| result[dish] += 1}
     result["Total cost:"] = total_cost
     result
   end
 
   def total_cost_as_string
     total = []
-    selected_dishes.each {|subhash| subhash.each {|dish, value| total << value}}
+    selected_dishes.each {|dish_with_value| dish_with_value.each {|dish, value| total << value}}
     "£#{total.inject(:+)}"
   end
 
