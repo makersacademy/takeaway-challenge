@@ -2,7 +2,7 @@ require 'dish_inventory'
 
 describe DishInventory do
 
-  let (:dish_inventory) {described_class.new}
+  subject (:dish_inventory) {described_class.new}
   let (:dish) {double :dish}
   let (:dish1) {double :dish1}
   let (:dish2) {double :dish2}

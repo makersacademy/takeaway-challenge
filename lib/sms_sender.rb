@@ -1,11 +1,16 @@
 require 'twilio-ruby'
+require 'dotenv'
 
 class SMSSender
 
-  def send_message(message,customer_number)
-    account_sid = "ACdbd0b7d68c85ff8d0eba3d54846c8223"
-    auth_token = "1f5b562d6ae3a16f303420d3aec7fd7d"
-    twilio_number = "+441291606004"
+
+  def send_message(message)
+
+    Dotenv.load
+    account_sid = ENV["account_sid"]
+    auth_token = ENV["auth_token"]
+    twilio_number = ENV["twilio_number"]
+    customer_number = ENV["phone_number"]
 
       @client = Twilio::REST::Client.new account_sid, auth_token
       @client.account.messages.create(:body => message,

@@ -22,10 +22,12 @@ Instructions
 
 Below are the four classes used in the project outlined with their responsibilities:
 
-- Dish: responsible for new instances of dishes. There are two readable properties; the name of the dish and its price.
-- DishInventory: responsible for storing dish objects. Dishes can be added or removed from the inventory.
-- Order: responsible for adding dishes and their quantity. Also keeps track of the total cost of the current order.
-- OrderManager: responsible for producing new orders, and submitting finished orders, verifying if the customer has paid the correct amount.
+- **Dish**: responsible for new instances of dishes. There are two readable properties; the name of the dish and its price.
+- **DishInventory**: responsible for storing dish objects. Dishes can be added or removed from the inventory.
+- **Order**: responsible for adding dishes and their quantity. Also keeps track of the total cost of the current order.
+- **OrderManager**: responsible for producing new orders, and submitting finished orders, verifying if the customer has paid the correct amount.
+
+Run the following in a REPL
 
 ```
 $ irb
@@ -46,8 +48,6 @@ $ irb
  => "Message sent"
 ```
 
+Further Features
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+* Implement the ability to place orders via text message.

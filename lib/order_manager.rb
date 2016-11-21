@@ -28,7 +28,7 @@ end
 
 def send_confirmation(communication = SMSSender, message)
   sender = communication.new
-  sender.send_message(message, "+447944749585")
+  sender.send_message(message)
   "Message sent"
 end
 

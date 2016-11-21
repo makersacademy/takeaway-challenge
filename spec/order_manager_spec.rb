@@ -2,7 +2,7 @@ require 'order_manager'
 
 describe OrderManager do
 
-  let ( :order_manager) {described_class.new(DishInventory.new)}
+  subject( :order_manager) {described_class.new(DishInventory.new)}
   let (:order) {double :order}
   let (:payment) {double :payment}
   let (:message) {double :message}
@@ -39,7 +39,7 @@ describe OrderManager do
       end
 
       it "Message cannot be sent if sms permission is not granted" do
-        allow(order_manager).to receive(:granted_permission?).and_return false
+        allow(order_manager).to receive(:granted_permission?).and_return true
         expect(order_manager.submit_order(order,payment)).to eq "Message not sent"
       end
     end
