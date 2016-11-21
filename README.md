@@ -162,7 +162,7 @@ Your order has the following items:
 ```
 
 ### Text confirmation:
-See here.
+See here: https://github.com/Unicornelia/takeaway-challenge/blob/master/Screenshot_20161121-170850.jpg
 
 Build:
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
