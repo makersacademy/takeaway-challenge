@@ -18,6 +18,7 @@ class Restaurant
 
   def add_dish(name, price = 10, amount = 1)
     menu.create(name, price, amount)
+    "#{name} added to menu"
   end
 
   def add_to_order(number, amount = 1)
@@ -27,9 +28,9 @@ class Restaurant
     order_status
   end
 
-  def finish_order(phone_number)
+  def finish_order
     order_status
-    send_confirmation(phone_number)
+    send_confirmation
     orders << self.order
     reset_order
   end
@@ -59,8 +60,8 @@ class Restaurant
     order || start_order
   end
 
-  def send_confirmation(phone_number)
-    order.confirm.send_confirmation(phone_number)
+  def send_confirmation
+    order.confirm.send_confirmation
   end
 
   def no_order_placed?
