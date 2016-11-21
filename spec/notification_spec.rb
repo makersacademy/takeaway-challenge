@@ -30,16 +30,17 @@ describe Notification do
       expect(notification.summarise_order).to eq summary
     end
 
-    describe '#client' do
-
-      it 'initializes with a Twilio client' do
-        expect(notification.client).to eq client
-      end
-
-    end
 
   end
 
+  describe '#client' do
+
+    it 'initializes with a Twilio client' do
+      expect(notification.client).to eq client
+    end
+
+  end
+  
   describe '#send_sms' do
 
     it "sends the message" do
