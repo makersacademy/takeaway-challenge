@@ -19,12 +19,12 @@ Takeaway Challenge
 - Takeawayshop class use Twilio API to send texts to customers
 
 
-#Instructions
-[ how to set Twilio API ]
+#[ How to set Twilio API ]
 
 - First, you'll need to register for it. It’s free.
 - Get a phone number( first one is free ) for your Twilio API.
 - Follow the instruction below;
+
 -------
 ```sh
 2.3.1 :001 > require "./lib/twilio_api.rb"
@@ -33,7 +33,7 @@ Takeaway Challenge
  => #<TwilioAPI:0x007ffe99339808 @twilio_phone_number="twilio_phone_number", @client=<Twilio::REST::Client @account_sid=account_sid>>
 ```
 
-
+#[ Instructions ]
 Pizza takeaway shop
 -------
 ```sh
