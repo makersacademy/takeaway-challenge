@@ -1,4 +1,5 @@
 require_relative 'dish'
+require_relative 'REST'
 
 class TakeawayMenu
 
@@ -38,10 +39,16 @@ attr_accessor :select_dishes
       total_price.inject(0, &:+)
   end
 
+  def send_text(message)
+    phone = SMS.new
+    phone.send_sms(message)
+  end
+
   def place_order(dish_numbers_to_order)
     dishes_array  = select_dishes(dish_numbers_to_order)
     total_price = calculate_price(dishes_array)
-    "Your order was placed and the total amount is £#{total_price}"
+    send_text("Your order was placed and the total amount is £#{total_price} and will arrive by " + (Time.now + 3600).strftime("%R"))
+    'Thank you for your order'
   end
 
 end

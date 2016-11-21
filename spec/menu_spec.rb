@@ -1,6 +1,12 @@
 require 'menu'
 
 describe TakeawayMenu do
+let(:sms) { double (:sms) }
+
+before do
+  allow(subject).to receive(:send_text)
+  
+end
 
 subject(:takeaway) {described_class.new}
   describe '#initialize' do
@@ -32,7 +38,7 @@ subject(:takeaway) {described_class.new}
     it { is_expected.to respond_to(:select_dishes) }
 
     it 'should select a number of dishes' do
-      expect(subject.select_dishes([1,2,3,4])).to eq [subject.menu[1], subject.menu[2], subject.menu[3], subject.menu[4]]
+      expect(subject.select_dishes([0,1,2,3,4])).to eq [subject.menu[0], subject.menu[1], subject.menu[2], subject.menu[3], subject.menu[4]]
     end
   end
 
@@ -47,7 +53,7 @@ subject(:takeaway) {described_class.new}
     it 'should place the order' do
       selected = subject.select_dishes([1,2,3])
       total = subject.calculate_price(selected)
-      expect(subject.place_order([1,2,3])).to eq 'Your order was placed and the total amount is £13.97'
+      expect(subject.place_order([1,2,3])).to eq 'Thank you for your order'
     end
   end
 
