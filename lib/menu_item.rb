@@ -12,7 +12,7 @@ class MenuItem
   end
 
   def deduct(amount_ordered)
-    fail "There's only 4 left" if amount_ordered > self.amount
+    fail "There's only #{self.amount} left" if amount_ordered > self.amount
     self.amount -= amount_ordered
   end
 
