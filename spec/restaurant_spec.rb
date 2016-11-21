@@ -40,7 +40,7 @@ describe Restaurant do
 
     it "should be able to finish an order" do
       restaurant.add_to_order(1)
-      restaurant.finish_order("")
+      restaurant.finish_order
       expect(restaurant.orders.count).to eq 1
     end
 
