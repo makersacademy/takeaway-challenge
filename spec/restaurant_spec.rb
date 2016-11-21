@@ -56,6 +56,13 @@ describe Restaurant do
     restaurant.checkout(21)
   end
 
+  it "prints the calculated total" do
+    allow(order).to receive(:calculate_total).and_return(21)
+    2.times{restaurant.add_to_basket("pizza")}
+    restaurant.add_to_basket("coke")
+    expect {restaurant.print_total}.to output("Your total is £21.00\n").to_stdout
+  end
+
 
 
 

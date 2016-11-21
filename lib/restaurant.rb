@@ -9,7 +9,6 @@ class Restaurant
     @order_klass = order_klass
     @menu_klass = menu_klass
     @menu = menu_klass.list
-    @order
     @basket = Hash.new(0)
   end
 
@@ -29,8 +28,14 @@ class Restaurant
     @order = order_klass.new(basket, menu_klass, payment)
   end
 
+  def print_total
+    checkout(0)
+    total = order.calculate_total
+    puts "Your total is £%.2f" % total
+  end
+
   private
-  attr_reader :order_klass, :menu_klass
+  attr_reader :order_klass, :menu_klass, :order
 
 
 

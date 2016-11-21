@@ -5,8 +5,9 @@ class Order
 
   attr_reader :meal, :payment, :menu
 
-  def initialize(basket, menu_klass, payment)
+  def initialize(basket, menu_klass, payment, sms_klass = SendSMS)
     @menu = menu_klass.list
+    @sms = sms_klass
     @meal = basket
     @payment = payment
   end
@@ -33,9 +34,12 @@ class Order
 
   def send_message
     message = "Thank you! Your order will be delivered before #{delivery_time}"
-    # SendSMS.new(message)
+    sms.new(message)
     message
   end
+
+  private
+  attr_reader :sms
 
 
 end

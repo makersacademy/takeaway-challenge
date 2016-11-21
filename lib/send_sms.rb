@@ -1,12 +1,14 @@
 require 'rubygems'
 require 'twilio-ruby'
+require 'dotenv'
 
 class SendSMS
 
-  account_sid = 'AC7be338ea330fcbf4b96ebff31884cbf7'
-  auth_token = 'f7661c36cdf63b2eb157551fbcc18c26'
 
   def initialize(message)
+    Dotenv.load
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
     @client = Twilio::REST::Client.new account_sid, auth_token
     @message = message
     send_message
@@ -14,8 +16,8 @@ class SendSMS
 
   def send_message
     @client.account.messages.create({
-      :from => +441289466014,
-      :to => +447771864895,
+      :from => ENV["PHONE_NUMBER_FROM"],
+      :to => ENV["PHONE_NUMBER_TO"],
       :body => @message
     })
   end
