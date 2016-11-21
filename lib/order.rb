@@ -11,7 +11,7 @@ attr_reader :current_order_price, :menu, :message
     @message = Message.new
  end
 
-  def order(item, quantity)
+  def order(item, quantity = 1)
     fail "Cannot add item(s): quantity is less than one." if quantity < 1
     fail "Cannot store order: no such item exists." if menu.list_of_dishes[item] == nil
     bill(item, quantity)
