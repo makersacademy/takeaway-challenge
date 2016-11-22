@@ -1,13 +1,17 @@
 # Manage the orders of the customer
 
-class OrderManager
+class Takeaway
 
-  attr_reader :inventory
+  attr_reader :menu
   attr_accessor :order
 
 
-def initialize(inventory)
-  @inventory = inventory
+def initialize(menu)
+  @menu = menu
+end
+
+def show_menu
+  menu.print_menu 
 end
 
 def submit_order(order,payment)

@@ -1,10 +1,11 @@
 # The dish inventory will store a list of all the available dish objects
+
 require_relative 'dish'
 require_relative 'order'
-require_relative 'order_manager'
+require_relative 'takeaway'
 require_relative 'sms_sender'
 
-class DishInventory
+class Menu
 
   attr_reader :dishes
 
@@ -18,8 +19,10 @@ class DishInventory
 
   def remove_dish(dish)
     raise "Sorry the inventory is empty" if dishes.empty?
-    raise "Sorry this item is out of stock" if !dishes.include?(dish)
     dishes.delete(dish)
+  end
+
+  def has_dish?
   end
 
 end
