@@ -1,6 +1,9 @@
-rvm: '2.2.3'
+sudo: false
 
 before_install:
-- sed -i '2d' Gemfile
+  - gem update --system
+  - gem --version
 
-script: bundle exec rspec spec
+env:
+  matrix:
+    secure: vIOSvsAxSaWl2RMYHdkukdVmiO5LmpHFP8McCWw8bC25Mf79ACkTKLoU9//S+wAOqyLgTglocjUrKN9Xu/Ve80c8Kqibcunikx5v969te8EUrt+YIFc5oxoAD8ksjrNJ5JsT/W3tq2IiV2drOkPekI4QYwwH/FWybd41V1eXN7iXgjhkWSrVYxH13exxzKQnmDV2pb48lqEThsMnOsxeZTK50rtkU7VxnRi0AZtkHWZuQu2z/aZmtrjNH+gTHA7JTSTUiYVMetvWhjeEdpgZ0OrVrYgVFyDHlXvnQ4VU0vu0KOxih6BG5atSKB06VZ+tzAErcXDXWX5VC39vjNVQexoQBOctaxVhjKS14g1vCT1kLwQpz/71rk/ivEreXySdPDTHrjWS/dmYzsl4dKhz3w84YeXXduiCKIBQa83wP0jIj8fo8cnKXm4UYlQkAs+/mTFRKNJ+qbAoyhiNGhOe7mvcMbVx/WHMvFfNLNXXy1dw/DqOvMh+1V9SFUTCPyqOHgD0KcsmShIH2rBSb0P32gqIz9J/mqTotGY9Ig1poeUSeMFe7mIx/Y5FnpQPkFL8ivQMqwtHGN1IXxMDnfqYiYHKeEQ4EVy6UNJSWy02HFbz5bnFA/glC0glk1QADlZzluim+MCezn9Y5Dvv65Hpe9nrybz5BoHnIJUAUgUpv1c=
