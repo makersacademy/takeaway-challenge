@@ -1,3 +1,4 @@
+  #calculates order total
 class OrderTotal
 
   attr_accessor :total_cost

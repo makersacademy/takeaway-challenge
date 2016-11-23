@@ -1,3 +1,4 @@
+  #place orders
 class Customer
 
   attr_reader :order, :current_order

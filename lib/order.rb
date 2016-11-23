@@ -1,3 +1,4 @@
+  #takes order
 class Order
 
   attr_reader :menu, :order, :order_total, :order_cost, :grouped_dishes, :dish_count

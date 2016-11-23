@@ -1,3 +1,4 @@
+  #shows menu
 class Menu
 
   MENU = [{"0. Chicken RUBY Murry" => 5},
