@@ -82,7 +82,10 @@ DEPRECATED] SMS Resource is deprecated. Please use Messages (https://www.twilio.
 ```
 -------
 ```
-     Sushi takeaway shop
+  __;;;;   _ <><
+/ @     \/ /  ~   Sushi takeaway shop
+\√__)P__/\_\ ~
+       <><   
 ```
 ```sh
 2.3.1 :001 > require './lib/sushi_shop.rb'
