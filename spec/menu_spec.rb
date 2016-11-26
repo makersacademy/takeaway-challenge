@@ -2,7 +2,7 @@ require './lib/menu'
 
 describe Menu do
 
-  let(:menu)  { described_class.new }
+  let(:menu)  { described_class.new({:Pizza=>4, :Spag_Bol=>6.5, :Chips=>2.75}) }
   let(:quantity) { double(:quantity) }
 
   context 'Initialization' do
@@ -20,7 +20,7 @@ describe Menu do
     end
 
     it 'can present a price against a dish' do
-      expect(menu.view_menu['Spag_Bol']).to eq 6.5
+      expect(menu.view_menu[:Spag_Bol]).to eq 6.5
     end
 
   end
