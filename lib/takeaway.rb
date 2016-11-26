@@ -15,10 +15,6 @@ class Takeaway
     @message_type = klass2
   end
 
-  def view_menu
-    @menu.menu_list.each { |k,v| puts "#{k} " + "%.2f" % v }
-  end
-
   def create_order
     @order = Order.new
   end
