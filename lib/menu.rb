@@ -7,7 +7,15 @@ class Menu
   end
 
   def view_menu
-    @menu_list.each { |k,v| puts "#{k} " + "%.2f" % v }
+    menu_list.each { |k,v| puts "#{k} " + "%.2f" % v }
+  end
+
+  def in_menu?(item)
+    menu_list.has_key?(item)
+  end
+
+  def check_price(item)
+    menu_list[item]
   end
 
 end

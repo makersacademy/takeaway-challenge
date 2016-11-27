@@ -2,9 +2,10 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:takeaway) { described_class.new(menu, sms) }
+  let(:takeaway) { described_class.new(menu, sms, order) }
   let(:klass1) { double(:klass1) }
   let(:klass2) { double(:klass2) }
+  let(:klass3) { double(:klass3) }
   let(:menu) { double(:menu) }
   let(:sms) { double(:sms) }
   let(:order) { double(:order) }
@@ -14,6 +15,8 @@ describe Takeaway do
   before do
     allow(menu).to receive(:new).and_return menu
     allow(sms).to receive(:new).and_return sms
+    allow(order).to receive(:new).and_return order
+    allow(order).to receive(:new).and_return order
     allow(menu).to receive(:menu_list).and_return ({"Spag_Bol" => 6.5, "Pizza" => 4, "Chips" => 2.75})
     allow(sms).to receive(:send_sms)
   end
@@ -30,11 +33,20 @@ describe Takeaway do
 
   end
 
+  context 'View Order' do
+
+    it 'allows a user to read from the menu' do
+      allow(menu).to receive(:view_menu).and_return ({"Spag_Bol" => 6.5, "Pizza" => 4, "Chips" => 2.75})
+      expect(takeaway.read_menu).not_to be nil
+    end
+
+  end
+
   context 'Create Order' do
 
     it 'can create a new order' do
       takeaway.create_order
-      expect(takeaway.order).to be_an_instance_of(Order)
+      expect(takeaway.order).to eq order
     end
 
   end
@@ -42,6 +54,7 @@ describe Takeaway do
   context 'Selection' do
 
     it 'returns "Not a valid item" when passed "Peas"' do
+      allow(menu).to receive(:in_menu?).and_return false
       expect(takeaway.select_item("Peas")).to eq "Not a valid item"
     end
 
@@ -50,9 +63,7 @@ describe Takeaway do
   context 'Confirm Order' do
 
     before(:each) do
-      takeaway.create_order
-      takeaway.select_item("Pizza")
-      allow(order).to receive(:calculate_total).and_return 4
+      allow(takeaway.order).to receive(:calculate_total).and_return 4
     end
 
     it 'returns "Incorrect Total" when passed wrong total' do
@@ -81,17 +92,6 @@ describe Takeaway do
   #   end
   #
   # end
-  #
-  # context 'Check if valid item' do
-  #
-  #   it 'indicates when an item is not in the menu' do
-  #     expect(takeaway.in_menu?("Peas")).to eq false
-  #   end
-  #
-  #   it 'indicates when an item is on the menu' do
-  #     expect(takeaway.in_menu?("Spag_Bol")).to eq true
-  #   end
-  #
-  # end
+
   #
 end

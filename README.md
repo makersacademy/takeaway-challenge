@@ -16,7 +16,7 @@ Takeaway Challenge
 
 Purpose
 ------------------
-A takeaway app, that allows customers to view food options from a menu, place an order and receive an SMS confirming their order
+A takeaway app, that allows customers to view food options from a menu, place an order and receive an SMS confirming their order.
 
 
 User Stories
@@ -46,22 +46,30 @@ Takeaway serves as the main class, and point of entry - it loads a menu on creat
 
 How to Use
 ------------------
-#####1. User finds takeaway restaurant
+#####0. Menu is created for the restaurant
 ```
 ᚹᚱᛘ ᛬ require './lib/takeaway'
 => true
-ᚹᚱᛘ ᛬ t = Takeaway.new(Menu, SMS)
-=> #<Takeaway:0x007fe01a3ef2e0
- @basket=[],
+ᚹᚱᛘ ᛬ dishes = {"Spag_Bol"=>6.5, "Pizza"=>4, "Chips"=>2.75}
+=> {"Spag_Bol"=>6.5, "Pizza"=>4, "Chips"=>2.75}
+ᚹᚱᛘ ᛬ menu = Menu.new(dishes)
+=> #<Menu:0x007fd59b988910
+ @menu_list={"Spag_Bol"=>6.5, "Pizza"=>4, "Chips"=>2.75}
+ ```
+
+#####1. User finds takeaway restaurant
+```
+ᚹᚱᛘ ᛬ t = Takeaway.new(menu, SMS)
+=> #<Takeaway:0x007fd59b192e40
  @menu=
-  #<Menu:0x007fe01a3ef290
+  #<Menu:0x007fd59b988910
    @menu_list={"Spag_Bol"=>6.5, "Pizza"=>4, "Chips"=>2.75}>,
  @message_type=SMS>
 ```
 
 #####2. User views the menu
  ```
-ᚹᚱᛘ ᛬ t.menu.view_menu
+ᚹᚱᛘ ᛬ t.read_menu
 Spag_Bol 6.50
 Pizza 4.00
 Chips 2.75

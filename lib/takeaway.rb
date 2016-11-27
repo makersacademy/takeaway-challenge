@@ -10,17 +10,22 @@ class Takeaway
 
   DEFAULT_QUANTITY = 1
 
-  def initialize(klass1, klass2)
-    @menu = klass1.new
+  def initialize(klass1, klass2, klass3)
+    @menu = klass1
     @message_type = klass2
+    @order = klass3
+  end
+
+  def read_menu
+    @menu.view_menu
   end
 
   def create_order
-    @order = Order.new
+    @order.new
   end
 
   def select_item(item, quantity = DEFAULT_QUANTITY)
-    return "Not a valid item" if !in_menu?(item)
+    return "Not a valid item" if !@menu.in_menu?(item)
     add_to_basket(item, quantity)
   end
 
@@ -30,10 +35,10 @@ class Takeaway
     return "Thank you for your order: £" + "%.2f" % total
   end
 
-  #private
+  private
 
   def add_to_basket(item, quantity)
-    @order.basket << {:item=>item, :qty=>quantity, :price=>@menu.menu_list[item]}
+
     "#{quantity}x #{item} added to your basket"
   end
 
@@ -41,8 +46,5 @@ class Takeaway
     @message_type.new.send_sms(message)
   end
 
-  def in_menu?(item)
-    @menu.menu_list.has_key?(item)
-  end
 
 end
