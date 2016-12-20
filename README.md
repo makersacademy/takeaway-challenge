@@ -14,78 +14,129 @@ Takeaway Challenge
  
  ```
 
-Instructions
--------
+Description
+===========
+This is the Week 2 weekend challenge from Makers Academy. The challenge was to design a takeaway to the following specification:
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Allow customers to view a Takeaway menu
+* Allow customers to order dishes from this menu
+* Allow customers to check the order total
+* Allow customers to receive a text message after paying for their order. This message should include a delivery time and confirmation of the order total.
 
-Task
------
+The project consists of a Takeaway, Order, and SMS class, and a Menu module which is required by the Takeaway and Order classes.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Technologies
+============
+* Code was written in Ruby
+* Testing was done using RSpec
+* Coveralls has been used to assess test coverage
+* Travis CI has been used to check build status
+* Twilio API has been used for sending SMS messages
+* DotEnv has been used to store environment variables
 
+How to Install
+==============
+1. Fork this repo
+2. Clone the forked repo to your local machine
+2. Run the command `gem install bundle` (if you don't have bundle already)
+3. When the installation completes, run `bundle`
+
+How to Use
+==========
+1. Open a terminal and navigate to the project folder
+2. Run `irb` or `pry` (I prefer to use Pry)
+3. Require `./lib/takeaway`
+4. Start Ordering!
+
+Notes
+=====
+Twilio Setup
+------------
+The SMS class I have created uses environment variables. These have been set up using dotenv, which requires a .env file in the root of the repository. This .env file includes the following environmental variables:
+* TWILIO_ACCOUNT_SID='twilio account sid'
+* TWILIO_AUTH_TOKEN='twilio auth token'
+* TWILIO_PHONE='twilio phone number'
+* TWILIO_DESTINATION_PHONE='number of phone to receive texts'
+
+The .env file will need to be created and include the variables listed above in order for you to receive text messages using this program.
+
+You can set up a free Twilio account [here](https://www.twilio.com/).
+You can find further information on dotenv [here](https://www.twilio.com/blog/2015/02/managing-development-environment-variables-across-multiple-ruby-applications.html)
+
+Menu Module
+-----------
+As there was no requirement to have the ability to create or edit a menu, the menu in this project is static and has been created as a module. If this project were to be extended and require the ability for new takeaway instances to create their own menus, I would convert Menu to a class with additional methods such as:
+* `#add_item` - to add a dish to the menu, including its cost
+* `#remove_item` - to remove a dish from the menu
+* `#change_item_cost` - to edit the price of the item
+
+I would also like to refactor the code so that the Order class does not have any dependency on the Menu module. At the moment, the Order class puts menu items in to the basket by receiving the item number from the Takeaway class, and finding the correct item from the Menu module using this number.
+
+TDD
+---
+While every effort was taken to follow the TDD cycle, using external API for the first time meant that I had no idea where to start with unit testing! Ultimately the SMS test was implemented after the code was written, using doubles so that no text messages would be sent when tests are run.
+
+Example Order
+=============
+
+Creating a new takeaway. The takeaway is initialized with the SMS and Order classes.
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+ 🐢 : require './lib/takeaway.rb'
+=> true
+ 🐢 : takeaway = Takeaway.new(SMS, Order)
+=> #<Takeaway:0x007fcc54968228 @order_klass=Order, @sms_klass=SMS>
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
+Viewing the menu
 ```
-$ coveralls report
+ 🐢 : takeaway.view_menu
+=> [{:number=>1, :item=>"Cheese Pizza", :cost=>"£5.99"},
+ {:number=>2, :item=>"Pepperoni Pizza", :cost=>"£6.99"},
+ {:number=>3, :item=>"Vegetarian Pizza", :cost=>"£6.99"},
+ {:number=>4, :item=>"Hawaiian Pizza", :cost=>"£6.99"},
+ {:number=>5, :item=>"Chicken Burger", :cost=>"£3.50"},
+ {:number=>6, :item=>"Beef Burger", :cost=>"£3.50"},
+ {:number=>7, :item=>"Garlic Bread", :cost=>"£2.99"},
+ {:number=>8, :item=>"Onion Rings", :cost=>"£1.99"},
+ {:number=>9, :item=>"Fries", :cost=>"£1.50"},
+ {:number=>10, :item=>"Ice Cream", :cost=>"£3.99"}]
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+Order items by specifying the menu number and quantity you wish to purchase
+```
+ 🐢 : takeaway.place_order(5, 2)
+=> [{:number=>5, :item=>"Chicken Burger", :cost=>"£3.50"},
+ {:number=>5, :item=>"Chicken Burger", :cost=>"£3.50"}]
+ 🐢 : takeaway.place_order(9, 2)
+=> [{:number=>5, :item=>"Chicken Burger", :cost=>"£3.50"},
+ {:number=>5, :item=>"Chicken Burger", :cost=>"£3.50"},
+ {:number=>9, :item=>"Fries", :cost=>"£1.50"},
+ {:number=>9, :item=>"Fries", :cost=>"£1.50"}]
+```
 
-Build Badge Example
-------------------
+Try to pay the wrong amount for your order!
+```
+ 🐢 : takeaway.pay(8.00)
+RuntimeError: Payment amount is incorrect.
+```
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Check the cost of your order
+```
+ 🐢 : takeaway.check_total
+=> "Total: £10.00"
+```
+
+Pay the correct amount for your order
+```
+ 🐢 : takeaway.pay(10.00)
+=> nil
+```
+
+This led to my phone receiving the following text message:
+```
+Sent from your Twilio trial account - Thank you. Received payment of £10.00. Your order will be delivered by 17:01
+```
+
+Optional: If you wish to run the tests for this project, enter `rspec` into your command line. If you wish to view the test coverage, enter `coveralls report` into your command line.
+
+Travis CI status badge [![Build Status](https://travis-ci.org/kwilson541/takeaway-challenge.svg?branch=master)](https://travis-ci.org/kwilson541/takeaway-challenge)
