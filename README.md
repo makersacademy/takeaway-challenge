@@ -1,18 +1,77 @@
 ## Takeaway Challenge ##
 
-The goal of the challenge was to write a takeaway program which would have functionality specified in user stories. This functionality included being able to see a list of dishes with prices, place an order, check the total cost of the dishes and receive a text confirming your order.
+#### What is it? ####
+
+A functioning takeaway which allows the customer to place an order and receive text confirmation.
 
 #### My Approach ####
 
-This was the first time I had attempted designing a program from a message based perspective as opposed to an object based one. After some time spent diagramming I decided that would be 5 classes required for this project, a Customer, a Menu, an Order, an Order Total and a Message class.
+After some time spent diagramming I decided that would be 5 classes required for this project, a Customer, a Menu, an Order, an Order Total and a Message class. I decided that I would shield the customer class as much as possible from the rest of the workings of the app making everything pass through an Order class which is created upon the creation of a customer using dependency injection.
 
 #### How it works ####
-Open a REPL and follow these commands to see basic functionality. There is a file called quick_require.rb located in the lib directory which will require all of the other files for time saving purposes.
-![Alt text](./screen_shot_how_to_takeaway.png)
 
+1. Clone this repo
+2. If don't have bundler already run 'gem install bundler'
+3. run 'bundle'
+4. open a REPL and follow the example
+![Alt text](./take_away_screenshot.png)
 
+#### Retrospective ####
+
+Looking back at this project it is immediately clear that 'Dish' should have been a separate object. It is also clear that the structure of my model is not as good as past me thought. The fact that someone making an order would have to put down the same dish multiple times if they wanted more than one rather than having a simple option to give quantities is a great example of something that should/needs to be improved. A big positive for me looking at this project after having read my retrospective from the 'Airport Challenge' (the challenge before this one) is that the instance variables look much better, the only problem is that I used an accessor in my order total class which needs to be split into a reader for the public methods and a writer for the private ones.
 
 ==================
+#### Original Spec ####
+
+Challenge time: rest of the day and weekend, until Monday 9am
+Feel free to use google, your notes, books, etc. but work on your own
+If you refer to the solution of another coach or student, please put a link to that in your README
+If you have a partial solution, still check in a partial solution
+You must submit a pull request to this repo with your code by 9am Monday morning
+Task
+
+Fork this repo
+Run the command 'bundle' in the project directory to ensure you have all the gems
+Write a Takeaway program with the following user stories:
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+Hints on functionality to implement:
+
+Ensure you have a list of dishes with prices
+Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
+The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
+Use the twilio-ruby gem to access the API
+Use the Gemfile to manage your gems
+Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
+However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Advanced! (have a go if you're feeling adventurous):
+
+Implement the ability to place orders via text message.
+A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+
+Finally submit a pull request before Monday at 9am with your solution or partial solution. However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+In code review we'll be hoping to see:
+
+All tests passing
+High Test coverage (>95% is good)
+The code is elegant: every class has a clear responsibility, methods are short etc.
+
 ```
                             _________
               r==           |       |
