@@ -2,8 +2,8 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) {described_class.new(menu)}
   let (:menu) {double(:menu, print_menu: printed_menu)}
+  subject(:takeaway) {described_class.new(menu)}
   let (:order) {double :order}
   let (:payment) {double :payment}
   let (:message) {double :message}
@@ -19,11 +19,6 @@ describe "Printing out the menu" do
   end
 end
 
-  describe "creating a new order" do
-    it "should have a method that creates a new order instance" do
-      expect(takeaway.create_order).to be_instance_of (Order)
-    end
-  end
 
     describe "Submitting an order" do
 
@@ -33,7 +28,7 @@ end
 
       it "should return a string that confirms the price of order" do
         allow(order).to receive(:total_cost).and_return payment
-        expect(takeaway.submit_order(order,payment)).to eq "The total cost is"
+        expect(takeaway.submit_order(order,payment)).to eq "Message sent"
       end
 
       it "should raise an error if the payment given does not equal the total cost of the order" do

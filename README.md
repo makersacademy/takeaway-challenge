@@ -52,7 +52,7 @@ Approach and Technologies used
 
 * Unit testing using RSpec.
 
-* Twilio API client for SMS service.
+* Twilio API client for SMS service. Read the documentation [here](https://www.twilio.com/docs/api/rest/sending-messages) 
 
 * DOTENV variables to hide user token credentials.
 
@@ -62,6 +62,8 @@ Below are the four classes used in the project outlined with their responsibilit
 - **Menu**: responsible for storing dish objects. Dishes can be added or removed from the menu.
 - **Order**: responsible for adding dishes and their quantity. Also keeps track of the total cost of the current order.
 - **Takeaway**: responsible for producing new orders, and submitting finished orders, verifying if the customer has paid the correct amount.
+
+One challenge to overcome was making sure Twilio sms messages are not sent during tests. Overcame this challenge by creating a ```granted_permission?``` method which decided whether the Twilio message could be sent. The default is set to true, so stubbing this response to false ensures texts are not sent.  
 
 Instructions and Installation
 =============================

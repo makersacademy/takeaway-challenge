@@ -8,11 +8,20 @@ describe Menu do
   let (:dish2) {double :dish2}
 
 
-  describe "Displaying the menu" do
-    it "print will return the string object of menu" do
-      expect(menu.print_menu).to eq ""
+
+  context "Inventory starts empty" do
+
+    it "should raise an error if the inventory is empty" do
+      expect{menu.remove_dish(dish)}.to raise_error "Sorry the inventory is empty"
     end
+
+    it "should raise an error if the dish is not avalaible in the inventory" do
+      menu.add_dish(dish)
+      expect{menu.remove_dish(dish1)}.to raise_error "Sorry this item is out of stock"
+    end
+
   end
+
 
   describe "Storing a list of dish objects" do
 
@@ -31,6 +40,7 @@ describe Menu do
 
   end
 
+
   describe "removing a dish from the inventory" do
 
     context "Inventory has three dishes" do
@@ -48,19 +58,6 @@ describe Menu do
 
       it "removing a dish returns the same dish from the dishes array" do
         expect(menu.remove_dish(dish1)).to eq dish1
-      end
-
-    end
-
-    context "Inventory starts empty" do
-
-      it "should raise an error if the inventory is empty" do
-        expect{menu.remove_dish(dish)}.to raise_error "Sorry the inventory is empty"
-      end
-
-      it "should raise an error if the dish is not avalaible in the inventory" do
-        menu.add_dish(dish)
-        expect{menu.remove_dish(dish1)}.to raise_error "Sorry this item is out of stock"
       end
 
     end

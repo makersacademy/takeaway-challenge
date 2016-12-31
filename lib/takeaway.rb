@@ -8,10 +8,11 @@ class Takeaway
 
 def initialize(menu)
   @menu = menu
+  @order = Order
 end
 
 def show_menu
-  menu.print_menu 
+  menu.print_menu
 end
 
 def submit_order(order,payment)
@@ -20,7 +21,7 @@ def submit_order(order,payment)
   "Message not sent"
 end
 
-def create_order(order = Order)
+def create_order
   order.new
 end
 
@@ -35,8 +36,6 @@ def send_confirmation(communication = SMSSender, message)
   sender.send_message(message)
   "Message sent"
 end
-
-
 
 def granted_permission?
   true
