@@ -1,5 +1,9 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
+[![Build Status](https://travis-ci.org/aabolade/takeaway-challenge.svg?branch=master)](https://travis-ci.org/aabolade/ttakeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/aabolade/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/aabolade/takeaway-challenge?branch=master)
+
+
 ```
                             _________
               r==           |       |
@@ -11,24 +15,16 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
--------
+Features
+========
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the order is placed successfully, the customer is sent a text message, such as "Thank you! Your order was placed and will be delivered before  6.22pm".
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+User Stories
+============
 
 ```
 As a customer
@@ -45,47 +41,58 @@ I would like to check that the total I have been given matches the sum of the va
 
 As a customer
 So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 6.52pm" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Approach and Technologies used
+==============================
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* Code written in Ruby.
 
+* Unit testing using RSpec.
 
-In code review we'll be hoping to see:
+* Twilio API client for SMS service. Read the documentation [here](https://www.twilio.com/docs/api/rest/sending-messages) 
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* DOTENV variables to hide user token credentials.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Below are the four classes used in the project outlined with their responsibilities:
 
-Notes on Test Coverage
-------------------
+- **Dish**: responsible for new instances of dishes. There are two readable properties; the name of the dish and its price.
+- **Menu**: responsible for storing dish objects. Dishes can be added or removed from the menu.
+- **Order**: responsible for adding dishes and their quantity. Also keeps track of the total cost of the current order.
+- **Takeaway**: responsible for producing new orders, and submitting finished orders, verifying if the customer has paid the correct amount.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+One challenge to overcome was making sure Twilio sms messages are not sent during tests. Overcame this challenge by creating a ```granted_permission?``` method which decided whether the Twilio message could be sent. The default is set to true, so stubbing this response to false ensures texts are not sent.  
+
+Instructions and Installation
+=============================
+
+* Fork this repo and clone the files to your own project directory.
+* From the command  run ``` bundle install ``` This will add all the necessary gemfiles to the project directory to ensure you can run the files.
+
+Run the following in a REPL
 
 ```
-$ coveralls report
+$ irb
+[1] > dish = Dish.new("chicken tikka masala",4.2)
+[2] > stock = DishInventory.new
+ => #<DishInventory:0x007fb9c125ae90 @dishes=[]>
+[3] > stock.add_dish(dish)
+ => [#<Dish:0x007fb9c12b00e8 @name="chicken tikka masala", @price=4.2>]
+ [4] > manager = OrderManager.new(stock)
+ => #<OrderManager:0x007fb9c191a0c8 @inventory=#<DishInventory:0x007fb9c125ae90 @dishes=[#<Dish:0x007fb9c12b00e8 @name="chicken tikka masala", @price=4.2>, #<Dish:0x007fb9c194bf88 @name="Pad Thai", @price=1.2>, #<Dish:0x007fb9c1941628 @name="Sushi", @price=4.4>, #<Dish:0x007fb9c128a848 @name="Fish and Chips", @price=5.2>, #<Dish:0x007fb9c12794a8 @name="Nandos", @price=5.2>, #<Dish:0x007fb9c1268298 @name="Dominoes", @price=5.3>]>>
+ [5] > order = manager.create_order
+ => #<Order:0x007fb9c1910988 @current_order=[]>
+ [6] > order.add_dish(dish2,3)
+ => [{:dish=>#<Dish:0x007fb9c194bf88 @name="Pad Thai", @price=1.2>, :quantity=>3}]
+[7] > order.add_dish(dish4,2)
+ => [{:dish=>#<Dish:0x007fb9c194bf88 @name="Pad Thai", @price=1.2>, :quantity=>3}, {:dish=>#<Dish:0x007fb9c128a848 @name="Fish and Chips", @price=5.2>, :quantity=>2}]
+[8] > manager.submit_order(order,14)
+ => "Message sent"
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+Further Features to Implement
+=============================
 
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+* Implement the ability to place orders via text message.
