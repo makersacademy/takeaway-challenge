@@ -1,5 +1,6 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
+
 ```
                             _________
               r==           |       |
@@ -14,18 +15,56 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+Features
+========
 
-* Fork this repo and clone the files to your own project directory.
-* From the command  run ``` bundle install ``` This will add all the necessary gemfiles to the project directory to ensure you can run the files.
+Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the order is placed successfully, the customer is sent a text message, such as "Thank you! Your order was placed and will be delivered before  6.22pm".
+
+User Stories
+============
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 6.52pm" after I have ordered
+```
+
+
+Approach and Technologies used
+==============================
+
+* Code written in Ruby.
+
+* Unit testing using RSpec.
+
+* Twilio API client for SMS service.
+
+* DOTENV variables to hide user token credentials.
 
 Below are the four classes used in the project outlined with their responsibilities:
 
 - **Dish**: responsible for new instances of dishes. There are two readable properties; the name of the dish and its price.
-- **DishInventory**: responsible for storing dish objects. Dishes can be added or removed from the inventory.
+- **Menu**: responsible for storing dish objects. Dishes can be added or removed from the menu.
 - **Order**: responsible for adding dishes and their quantity. Also keeps track of the total cost of the current order.
-- **OrderManager**: responsible for producing new orders, and submitting finished orders, verifying if the customer has paid the correct amount.
+- **Takeaway**: responsible for producing new orders, and submitting finished orders, verifying if the customer has paid the correct amount.
+
+Instructions and Installation
+=============================
+
+* Fork this repo and clone the files to your own project directory.
+* From the command  run ``` bundle install ``` This will add all the necessary gemfiles to the project directory to ensure you can run the files.
 
 Run the following in a REPL
 
@@ -48,6 +87,7 @@ $ irb
  => "Message sent"
 ```
 
-Further Features
+Further Features to Implement
+=============================
 
 * Implement the ability to place orders via text message.
