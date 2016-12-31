@@ -22,6 +22,10 @@ end
 
     describe "Submitting an order" do
 
+      before do
+        allow(takeaway).to receive(:granted_permission?).and_return false
+      end
+
       it "should respond to submit_order with one argument" do
         expect(takeaway).to respond_to(:submit_order).with(2).arguments
       end
@@ -36,17 +40,6 @@ end
         expect{takeaway.submit_order(order,payment)}.to raise_error "This total is not correct"
       end
 
-    end
-
-    describe "Sending SMS" do
-      before do
-        allow(order).to receive(:total_cost).and_return payment
-      end
-
-      it "Message cannot be sent if sms permission is not granted" do
-        allow(takeaway).to receive(:granted_permission?).and_return false
-        expect(takeaway.submit_order(order,payment)).to eq "Message not sent"
-      end
     end
 
 end

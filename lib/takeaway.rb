@@ -17,8 +17,7 @@ end
 
 def submit_order(order,payment)
   raise "This total is not correct" if !is_payment_correct?(order,payment)
-  return send_confirmation(message) if granted_permission?
-  "Message not sent"
+  send_confirmation(message)
 end
 
 def create_order
@@ -33,7 +32,7 @@ end
 
 def send_confirmation(communication = SMSSender, message)
   sender = communication.new
-  sender.send_message(message)
+  sender.send_message(message) if granted_permission?
   "Message sent"
 end
 
