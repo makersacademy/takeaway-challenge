@@ -1,5 +1,8 @@
 # Takeaway Challenge
 
+[![Build Status](https://travis-ci.org/aabolade/takeaway-challenge.svg?branch=master)](https://travis-ci.org/aabolade/ttakeaway-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/aabolade/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/aabolade/takeaway-challenge?branch=master)
+
 
 ```
                             _________
