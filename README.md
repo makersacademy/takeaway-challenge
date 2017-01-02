@@ -104,8 +104,7 @@ Courtneys-MBP:takeaway-challenge courtneyosborn$ pry
 ```
 [7] pry(main)> order.send_sms("Your order is on its way")
 => <Twilio::REST::Message
-```
-``` @path=/2010-04-01/Accounts/AC931d30987b9634469ecc155be9841575/Messages/SM82585e84b85f46ccb859da922a15ddf9>
+@path=/2010-04-01/Accounts/AC931d30987b9634469ecc155be9841575/Messages/SM82585e84b85f46ccb859da922a15ddf9>
 ```
 
 Full Instructions: Task Set Out To Complete
