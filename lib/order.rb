@@ -9,7 +9,7 @@ class Order
   end
 
   def add_dish(dish_number, quantity)
-    ordered_dishes[dish_number] = quantity
+    ordered_dishes[find_dish(dish_number)] = quantity
   end
 
   def expected_total(total)
@@ -19,7 +19,6 @@ class Order
   private
 
   def find_dish(dish_number)
-    # dish = @takeaway.menu
-
+    dish = @menu.dishes[(dish_number - 1)]
   end
 end

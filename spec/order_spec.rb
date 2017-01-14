@@ -22,7 +22,8 @@ describe Order do
 
   describe "#add_dish" do
     before(:each) do
-      order.add_dish(pepperoni, 3)
+      allow(menu).to receive(:dishes) { [pepperoni, hawaiian, meat_feast] }
+      order.add_dish(1, 3)
     end
     it "adds a dish as a key to dishes hash" do
       expect(order.ordered_dishes).to have_key(pepperoni)
