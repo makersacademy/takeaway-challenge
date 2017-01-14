@@ -8,7 +8,7 @@ class Order
   end
 
   def add_dish(dish, quantity)
-
+    dishes[dish] = quantity
   end
 
 end

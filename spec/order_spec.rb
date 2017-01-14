@@ -3,6 +3,9 @@ require "order.rb"
 describe Order do
 
   subject(:order)  { described_class.new }
+  let(:pepperoni) { instance_double("Dish") }
+  let(:hawaiian) { instance_double("Dish") }
+  let(:meat_feast) { instance_double("Dish") }
 
   describe "#initialize" do
     it { is_expected.to respond_to(:dishes) }
@@ -15,7 +18,16 @@ describe Order do
   end
 
   describe "#add_dish" do
-    it { is_expected.to respond_to(:add_dish).with(2).arguments }
+    before(:each) do
+      order.add_dish(pepperoni, 3)
+    end
+    it "adds a dish as a key to dishes hash" do
+      expect(order.dishes).to have_key(pepperoni)
+    end
+    it "adds quantity as a value to dish key" do
+      expect(order.dishes[pepperoni]).to eq 3
+    end
+
   end
 
 end
