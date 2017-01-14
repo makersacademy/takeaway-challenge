@@ -1,5 +1,9 @@
 require 'takeaway'
 
 describe Takeaway do
-  it { is_expected.to respond_to(:view_menu).with(1).argument }
+  subject(:takeaway) { described_class.new }
+
+  it 'Allows takeaway to view menu' do
+    expect(takeaway).to respond_to(:view_menu).with(0).argument
+  end
 end

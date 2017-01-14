@@ -1,5 +1,4 @@
 require 'takeaway'
-require 'menu'
 
 
 describe 'These are the user stories' do
@@ -7,12 +6,10 @@ describe 'These are the user stories' do
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
-    it 'To see a menu from the takeaway' do
-    takeaway = Takeaway.new
-    menu = Menu.new
-    expect { takeaway.view_menu(menu) }.not_to raise_error
-
-end
+  it 'To see a menu from the takeaway' do
+  takeaway = Takeaway.new
+  expect { takeaway.view_menu }.not_to raise_error
+  end
 end
 # As a customer
 # So that I can order the meal I want
