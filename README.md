@@ -1,5 +1,5 @@
 # Takeaway Challenge
-### [Makers Academy] (http://www.makersacademy.com) - Week 2 Solo Weekend Project
+### [Makers Academy] (http://www.makersacademy.com) - Week 2 Solo Weekend Project [![JavaScript Style Guide: Good Parts](https://camo.githubusercontent.com/c85bd9ed833f4beabdb09a95a6cc1de03fe2324a/68747470733a2f2f636f766572616c6c732e696f2f6275696c64732f393536363138302f6261646765)](https://github.com/adrianeyre/takeaway-challenge)
 ```
                             _________
               r==           |       |
@@ -66,5 +66,30 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## <a name="Usage">Usage</a>
 
-[![Build Status](https://travis-ci.org/adrianeyre/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/adrianeyre/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+* Create a `.env` file in the applicaion root
+```ruby
+account_sid = <YOUR SID>
+auth_token = <YOUR TOKEN>
+from = <YOU FROM NUMBER>
+to = <YOUR TO NUMBER>
+```
+
+* Test the applicaion in IRB
+```shell
+$ require "./lib/order.rb"
+=> true
+
+$ order = Order.new
+=> #<Order:0x007fea9d992890 @menu=#<Menu:0x007fea9d992868 @output_menu=#<Output_Menu:0x007fea9d9927f0>, @menu=[{:item=>"Item 1", :price=>1.5}, {:item=>"Item 2", :price=>2.5}, {:item=>"Item 3", :price=>1.0}]>, @order=[], @total=0.0>
+
+$ order.add_item({item: "Item 1", quantity: 1})
+=> 1.5
+
+$ order.check_order
+=> [{:item=>"Item 1", :quantity=>1}]
+
+$ order.total
+=> 1.5
+
+$ order.complete_order
+```
