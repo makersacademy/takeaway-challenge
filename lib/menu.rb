@@ -1,5 +1,4 @@
 class Menu
-
   def initialize menu_item_class
     @menu_items = []
     @menu_item_class = menu_item_class
@@ -14,6 +13,5 @@ class Menu
   end
 
   private
-  
   attr_reader :menu_item_class
 end

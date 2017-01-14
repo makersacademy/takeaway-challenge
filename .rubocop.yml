@@ -229,9 +229,9 @@ Style/FlipFlop:
   Description: 'Checks for flip flops'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-flip-flops'
   Enabled: true
-  
+
 Style/FileName:
-  Enabled: false
+  Enabled: true
 
 Style/For:
   Description: 'Checks use of for or each in multiline loops.'

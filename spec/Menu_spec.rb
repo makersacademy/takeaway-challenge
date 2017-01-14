@@ -12,7 +12,7 @@ describe Menu do
     end
   end
   describe "#menu_items" do
-    it "should return the immutable list of menu items..." do
+    it "should return the immutable list of menu items" do
       subject.menu_items << 5
       expect(subject.menu_items).not_to include 5
     end
