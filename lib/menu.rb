@@ -6,12 +6,21 @@ class Menu
 
   def initialize(output_menu = Output_Menu.new)
     @output_menu = output_menu
-    @menu = [{item: "Item 1", price: 1.50},
-             {item: "Item 2", price: 2.50}]
+    @menu = []
+    read_menu_file
   end
 
   def display_menu
     @output_menu.display(menu)
+  end
+
+  private
+
+  def read_menu_file
+    File.readlines("./lib/menu.txt").each do |line|
+      item, price = line.split(":")
+      @menu << {item: item, price: price.to_f}
+    end
   end
 
 end
