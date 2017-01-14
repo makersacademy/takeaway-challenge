@@ -28,10 +28,15 @@ class Order
   end
 
   def complete_order
-    send_message
+    send_message if order_exists?
   end
 
   private
+
+  def order_exists?
+    return true if @order != []
+    raise "You have not given any items to order"
+  end
 
   def item_exists?
     menu.menu.each {|menu_item| return true if menu_item[:item] == item[:item]}

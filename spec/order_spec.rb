@@ -23,4 +23,16 @@ describe Order do
     end
   end
 
+  it "Raises an error if you try and complete an empty order" do
+    error = "You have not given any items to order"
+    expect { order.complete_order }.to raise_error error
+  end
+
+  it "Sends a text message once the orer has been completed" do
+    allow(order).to receive(:complete_order).and_return(true)
+    item1 = {item:"Item 1" , quantity: 2}
+    order.add_item(item1)
+    expect(order.complete_order).to eq true
+  end
+
 end

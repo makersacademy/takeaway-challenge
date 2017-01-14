@@ -21,6 +21,7 @@ class Menu
       item, price = line.split(":")
       @menu << {item: item, price: price.to_f}
     end
+    @menu
   end
 
 end

@@ -52,7 +52,10 @@ describe "User Stories" do
     # I would like to receive a text such as "Thank you! Your order was
     # placed and will be delivered before 18:52" after I have ordered
     it "Place order and send text message" do
-      
+      allow(order).to receive(:complete_order).and_return(true)
+      item1 = {item:"Item 1" , quantity: 2}
+      order.add_item(item1)
+      expect(order.complete_order).to eq true
     end
   end
 end
