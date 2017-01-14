@@ -24,11 +24,11 @@ Domain model:
 |----------------------|:-----------------------------------------------:|:------------------------------------:|
 |Customer              |                                                 |                                      |
 |**Dishes**            |                                                 |name, price                           |
-|**Menu**              |see_menu_list, select_dishes                     |                                      |
+|**Menu**              |see_dishes, select_dishes                        |                                      |
 |**Order**             |check_order, place_order, confirmation_text      |quantity, expected_delivery, verified |
 
 Messages:
-- see_menu_list
+- see_dishes
 - select_dishes
 - check_order
 - place_order
