@@ -11,6 +11,16 @@ describe Order do
       order.add_item(item)
       expect(order.check_order).to include(item)
     end
+
+    it "Check that the total is correct" do
+      allow(order).to receive(:check_price).and_return(10.0)
+      allow(order).to receive(:item_exists?).and_return(true)
+      item1 = {item:"Item 1" , quantity: 1}
+      order.add_item(item1)
+      item2 = {item:"Item 2" , quantity: 1}
+      order.add_item(item2)
+      expect(order.total).to eq 20
+    end
   end
 
   context "Item doesn't exist" do

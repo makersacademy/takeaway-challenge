@@ -21,12 +21,6 @@ class Order
     order
   end
 
-  def check_total
-    order.each do |menu_item|
-      puts menu_item
-    end
-  end
-
   def complete_order
     send_message if order_exists?
   end
