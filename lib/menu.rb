@@ -10,6 +10,10 @@ class Menu
     @dishes[name] = price
   end
 
+  def contains?(dish)
+    @dishes.has_key?(dish)
+  end
+
   def to_s
     @dishes.inspect
   end

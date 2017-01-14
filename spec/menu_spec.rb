@@ -22,4 +22,11 @@ describe Menu do
     end
   end
 
+  describe '#contains?' do
+    it 'checks whether a given dish exists in dishes list' do
+      menu.add_dish("Risotto con funghi porcini", 4.25)
+      expect(menu.contains?("Risotto con funghi porcini")).to be true
+    end
+  end
+
 end
