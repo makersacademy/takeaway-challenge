@@ -3,16 +3,22 @@ require "order"
 describe Order do
   subject(:order) {described_class.new}
 
-  it "Be able to add a dish" do
-    item = {item:"Curry" , quantity: 1}
-    order.add_item(item)
-    expect(order.check_order).to include(item)
+  context "Item exists" do
+    it "Be able to add a dish" do
+      allow(order).to receive(:item_exists?).and_return(true)
+      item = {item:"Item" , quantity: 1}
+      order.add_item(item)
+      expect(order.check_order).to include(item)
+    end
   end
 
-  it "Raises an error if the dish does not exist" do
-    item = {item:"MADE UP!" , quantity: 1}
-    error = "Item does not exist: Please select a different item"
-    expect { order.add_item(item) }.to raise_error error
+  context "Item doesn't exist" do
+    it "Raises an error if the dish does not exist" do
+      allow(order).to receive(:item_exists?).and_return(false)
+      item = {item:"Item" , quantity: 1}
+      error = "Item does not exist: Please select a different item"
+      expect { order.add_item(item) }.to raise_error error
+    end
   end
 
 end
