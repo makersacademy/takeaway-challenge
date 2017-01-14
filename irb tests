@@ -1,0 +1,4 @@
+require './lib/takeaway'
+takeaway = Takeaway.new
+takeaway.add_dish("dish1", 5)
+takeaway.show_menu
