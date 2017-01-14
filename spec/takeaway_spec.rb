@@ -4,7 +4,7 @@ describe Takeaway do
 
   let(:menu) { instance_double("Menu") }
 
-  subject(:takeaway) { described_class.new(Menu) }
+  subject(:takeaway) { described_class.new(menu) }
 
   describe "#initialize" do
     it { is_expected.to respond_to(:menu) }
