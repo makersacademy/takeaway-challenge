@@ -1,3 +1,7 @@
+require 'menu'
+require 'order'
+require 'dish'
+
 describe 'Takeaway' do
 
   it 'should allow my customer to see a list of dishes with prices' do
