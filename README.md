@@ -88,5 +88,8 @@ $ order.add_item({item: "Item 1", quantity: 1})
 $ order.check_order
 => [{:item=>"Item 1", :quantity=>1}]
 
+$ order.total
+=> 1.5
+
 $ order.complete_order
 ```
