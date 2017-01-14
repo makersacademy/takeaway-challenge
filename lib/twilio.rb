@@ -2,7 +2,6 @@ require 'twilio-ruby'
 require 'dotenv'
 Dotenv.load
 
-
 module Send_Message
 
   private
