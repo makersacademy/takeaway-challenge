@@ -13,7 +13,10 @@ attr_reader :menu_object, :order_array
   end
 
   def show_menu
-    @menu_object.show_menu_array
+    @menu_object.show_menu_array.each do |x|
+      puts "#{x[:name]} : £#{x[:price]}"
+    end
+    
   end
 
 # order will use the index of menu_array
