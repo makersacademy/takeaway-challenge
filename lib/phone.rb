@@ -1,5 +1,5 @@
 require 'dotenv'
-class Phone
+module Phone
   def initialize
     Dotenv.load
   end
