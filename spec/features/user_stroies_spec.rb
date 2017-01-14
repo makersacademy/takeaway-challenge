@@ -1,13 +1,19 @@
-require 'takeaway.rb'
-describe 'These are the user stories'
+require 'takeaway'
+require 'menu'
+
+
+describe 'These are the user stories' do
 
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
-  it 'To see a menu from the takeaway' do
+    it 'To see a menu from the takeaway' do
     takeaway = Takeaway.new
     menu = Menu.new
-  end
+    expect { takeaway.view_menu(menu) }.not_to raise_error
+
+end
+end
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes

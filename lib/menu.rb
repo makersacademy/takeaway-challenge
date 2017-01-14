@@ -1,3 +1,4 @@
-class menu
+class Menu
 
+  menu = Menu.new
 end
