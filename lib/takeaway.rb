@@ -7,10 +7,11 @@ class Takeaway
 
   attr_reader :menu
 
-  def initialize(menu, lister_module=MenuLister, order_class=Order)
+  def initialize(menu, lister_module=MenuLister, order_class=Order, order_total_checker = OrderTotalChecker)
     @menu = menu
     @lister = lister_module
     @order_class = order_class
+    @order_total_checker = order_total_checker
   end
 
   def show_menu
@@ -18,7 +19,7 @@ class Takeaway
   end
 
   def place_order(order)
-    
+    raise "Your expected total order cost is wrong!" unless @order_total_checker.check_total(order)
   end
 
   def new_order

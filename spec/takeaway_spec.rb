@@ -12,7 +12,7 @@ describe Takeaway do
   let(:order_total_checker) { class_double("OrderTotalChecker") }
   let(:order_class) { class_double("Order") }
 
-  subject(:takeaway) { described_class.new(menu, menu_lister, order_class) }
+  subject(:takeaway) { described_class.new(menu, menu_lister, order_class, order_total_checker) }
   before(:each) do
     allow(order_class).to receive(:new) { order }
     allow(menu_lister).to receive(:list) { {1 => pepperoni, 2 => hawaiian, 3 => meat_feast} }
@@ -30,9 +30,23 @@ describe Takeaway do
   end
 
   describe "#place_order" do
-    it { is_expected.to respond_to(:place_order).with(1).argument }
     it "raises error if expected order total is wrong" do
-
+      allow(order_total_checker).to receive(:check_total) { false }
+      allow(pepperoni).to receive(:price) { 5 }
+      allow(hawaiian).to receive(:price) { 10 }
+      allow(meat_feast).to receive(:price) { 15 }
+      allow(order).to receive(:ordered_dishes) { { pepperoni => 3, hawaiian => 2, meat_feast => 4 } }
+      allow(order).to receive(:expected_order_total) { 9000 }
+      expect{takeaway.place_order(order)}.to raise_error(RuntimeError, "Your expected total order cost is wrong!")
+    end
+    it "prints confirmation message if order total check passes" do
+      allow(order_total_checker).to receive(:check_total) { true }
+      allow(pepperoni).to receive(:price) { 5 }
+      allow(hawaiian).to receive(:price) { 10 }
+      allow(meat_feast).to receive(:price) { 15 }
+      allow(order).to receive(:ordered_dishes) { { pepperoni => 3, hawaiian => 2, meat_feast => 4 } }
+      allow(order).to receive(:expected_order_total) { 95 }
+      expect{takeaway.place_order(order)}.to output 
     end
   end
 
