@@ -6,7 +6,7 @@ describe Dish do
   subject(:dish) {described_class.new}
   subject(:dish_info) {described_class.new(name,price)}
 
-  it 'creates instance of a class' do
+  it 'creates an instance of a class' do
     expect(dish).to be_a(Dish)
   end
 
