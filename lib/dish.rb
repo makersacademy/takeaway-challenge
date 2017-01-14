@@ -4,7 +4,6 @@ class Dish
   def initialize(name, price)
     @name = name
     @price = price
-    #add to CSV file
   end
-
+  
 end
