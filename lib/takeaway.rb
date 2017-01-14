@@ -18,7 +18,7 @@ attr_reader :menu_object, :order_array
 
 # order will use the index of menu_array
 # to decide which dishes to order
-  def order(order)
+  def add_to_order(order)
     order_array = []
     order_array = order.split(",").map(&:to_i)
     order_array.each do |x|
@@ -29,5 +29,18 @@ attr_reader :menu_object, :order_array
       }
     end
     @ordered
+  end
+
+  def basket
+    @ordered
+  end
+
+  def total_basket
+    total_basket = 0
+    @ordered.each do |x|
+      total_basket = total_basket + x[:price]
+    end
+    @total_basket
+    return "Your total - £#{total_basket}"
   end
 end

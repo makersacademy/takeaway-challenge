@@ -1,4 +1,4 @@
-Takeaway Challenge weekend challenge by Ben Vaughan-Jones
+Takeaway Challenge by Ben Vaughan-Jones
 =========================================================
 ```
                             _________
@@ -43,18 +43,21 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+IRB
+----
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+irb(main):001:0> require './lib/takeaway'
+=> true
+irb(main):002:0> takeaway = Takeaway.new
+=> #<Takeaway:0x007fdcf2072818 @menu_object=#<Menu:0x007fdcf20727c8 @menu_array=[]>, @ordered=[]>
+irb(main):003:0> takeaway.add_dish("dish1", 5)
+=> [{:name=>"dish1", :price=>5}]
+irb(main):004:0> takeaway.add_dish("dish2", 2)
+=> [{:name=>"dish1", :price=>5}, {:name=>"dish2", :price=>2}]
+irb(main):005:0> takeaway.add_dish("dish3", 4)
+=> [{:name=>"dish1", :price=>5}, {:name=>"dish2", :price=>2}, {:name=>"dish3", :price=>4}]
+irb(main):006:0> takeaway.show_menu
+=> [{:name=>"dish1", :price=>5}, {:name=>"dish2", :price=>2}, {:name=>"dish3", :price=>4}]
+irb(main):007:0> takeaway.order("1,3")
+=> [{:name=>"dish1", :price=>5}, {:name=>"dish3", :price=>4}]
+irb(main):008:0>

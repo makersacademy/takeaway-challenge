@@ -19,13 +19,20 @@ describe 'User Stories -' do
     takeaway.add_dish("Dish1", 5)
     takeaway.add_dish("Dish2", 2)
     takeaway.add_dish("Dish3", 4)
-    expect(takeaway.order("1,3")).to eq([{:name => "Dish1", :price => 5}, {:name => "Dish3", :price => 4}])
+    expect(takeaway.add_to_order("1,3")).to eq([{:name => "Dish1", :price => 5}, {:name => "Dish3", :price => 4}])
   end
 
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
-#
+ it 'customer can verify order the total will be added up' do
+   takeaway.add_dish("Dish1", 5)
+   takeaway.add_dish("Dish2", 2)
+   takeaway.add_dish("Dish3", 4)
+   takeaway.add_to_order("1,3")
+   expect(takeaway.total_basket).to eq ("Your total - £9")
+ end
+
 # As a customer
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
