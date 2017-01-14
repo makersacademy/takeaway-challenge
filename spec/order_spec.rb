@@ -7,7 +7,7 @@ describe Order do
   end
 
   it 'should return the number of items in order when calling method check' do
-    expect { subject.check }.to eq(2)
+    expect(subject.check).to eq(2)
   end
 
 end
