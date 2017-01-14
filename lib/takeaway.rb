@@ -1,19 +1,19 @@
+require_relative 'menu'
+
 class Takeaway
-attr_reader :menu, :name, :price
+attr_reader :menu_object
+# , :menu_array
 
   def initialize
-    @menu = []
-  end
-
-  def show_menu
-    @menu
+    @menu_object = Menu.new
   end
 
   def add_dish(name, price)
-    dish = Hash.new
-    dish[:name] = name
-    dish[:price] = price
-    @menu << dish
+    @menu_object.add(name, price)
+  end
+
+  def show_menu
+    @menu_object.show_menu_array
   end
 
 end
