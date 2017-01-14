@@ -1,5 +1,6 @@
 require './lib/dish.rb'
 require './lib/order.rb'
+require 'twilio-ruby'
 
 class Menu
 
@@ -23,7 +24,7 @@ class Menu
     basket = Order.new
     assign_dishes(basket, dishes)
     fail "You've entered #{basket.check} dishes rather than the #{total} that you expected!" if total != basket.check
-    basket
+    basket.place_order
   end
 
   private
