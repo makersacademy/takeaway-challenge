@@ -39,7 +39,7 @@ describe Order do
   end
 
   it "Sends a text message once the orer has been completed" do
-    #allow(order).to receive(:complete_order).and_return(true)
+    allow(order).to receive(:complete_order).and_return(true)
     item1 = {item:"Item 1" , quantity: 2}
     order.add_item(item1)
     expect(order.complete_order).to eq true
