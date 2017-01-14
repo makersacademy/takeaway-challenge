@@ -1,7 +1,7 @@
 module Menu
 
   def read_menu
-    menu = {
+    dishes = {
       "Deluxe kebab box"=>7.99,
       "Chicken Kebab"=>4.50,
       "Shish Kebab"=>4.00,
