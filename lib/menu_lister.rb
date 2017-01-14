@@ -1,6 +1,6 @@
-module MenuPrinter
+module MenuLister
 
-  def self.print_menu(menu)
+  def self.list(menu)
     list_hash = create_hash(menu)
   end
 
