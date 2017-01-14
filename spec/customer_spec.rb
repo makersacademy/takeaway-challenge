@@ -13,7 +13,7 @@ describe Customer do
   context 'see_menu' do
     it 'can request to see a menu' do
       is_expected.to respond_to(:see_menu).with(1).argument
-    end    
+    end
   end
 
 end
