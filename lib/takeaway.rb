@@ -2,7 +2,9 @@ require 'menu'
 
 class Takeaway
 
-describe 'takeaway'
+def view_menu
+
+end
 
 
 end
