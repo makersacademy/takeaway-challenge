@@ -12,8 +12,8 @@ describe Order do
     it "saves the menu to @menu" do
       expect(order.menu).to eq menu
     end
-    it "creates an empty dishes hash" do
-      expect(order.dishes).to be_empty
+    it "creates an empty ordered dishes hash" do
+      expect(order.ordered_dishes).to be_empty
     end
     it "sets order total to 0" do
       expect(order.total).to be_zero
@@ -25,10 +25,10 @@ describe Order do
       order.add_dish(pepperoni, 3)
     end
     it "adds a dish as a key to dishes hash" do
-      expect(order.dishes).to have_key(pepperoni)
+      expect(order.ordered_dishes).to have_key(pepperoni)
     end
     it "adds quantity as a value to dish key" do
-      expect(order.dishes[pepperoni]).to eq 3
+      expect(order.ordered_dishes[pepperoni]).to eq 3
     end
   end
 
