@@ -7,7 +7,9 @@ describe Order do
   end
 
   it 'should return the number of items in order when calling method check' do
-    expect( subject.check ).to eq(2)
+    takeaway = Menu.new
+    order = takeaway.select_dishes('Spaghetti Carbonara', 'Calzone')
+    expect( order.check ).to eq(2)
   end
 
 end
