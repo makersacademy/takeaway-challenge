@@ -9,7 +9,6 @@ describe MenuPrinter do
   let(:meat_feast) { instance_double("Dish") }
   let(:dishes) { [pepperoni, hawaiian, meat_feast] }
 
-
   describe "#print_menu" do
     before(:each) do
       allow(menu).to receive(:dishes) { dishes }
@@ -22,6 +21,5 @@ describe MenuPrinter do
       expect(printer.print_menu(menu)).to include(1 => pepperoni, 2 => hawaiian, 3 => meat_feast)
     end
   end
-
 
 end
