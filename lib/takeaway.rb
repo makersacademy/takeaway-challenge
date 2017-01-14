@@ -2,13 +2,13 @@ require_relative 'menu'
 
 class Takeaway
 
-attr_reader :order
+attr_reader :order, :price, :current_order
 
   def initialize
      @menu = nil
-     @bill = []
-     @order = []
-     @order_total = nil
+     @price = []
+     @current_order = []
+
   end
 
   def show_menu
@@ -18,9 +18,16 @@ attr_reader :order
   def place_order(selection, quantity)
 
     if @menu.has_key?(selection)
-    @bill << [quantity * @menu[selection]]
-    @order << {selection => quantity}
+    @price << [quantity * @menu[selection].to_f]
+    running_total = quantity * @menu[selection]
+    @current_order << {:Selection => selection, :Quantity => quantity, :Total => running_total}
     end
+  end
+
+  def basket
+
+
+
   end
 
   def to_pay
@@ -32,7 +39,7 @@ private
 attr_reader :total
 
   def total
-    @order_total = @bill.inject(:+)
+    @order_total = @price.inject(:+)
     @order_total.inject(:+)
   end
 end
