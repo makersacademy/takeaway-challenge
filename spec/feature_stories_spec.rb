@@ -46,5 +46,13 @@ describe "User Stories" do
       order.add_item(item2)
       expect(order.total).to eq 5.5
     end
+
+    # As a customer
+    # So that I am reassured that my order will be delivered on time
+    # I would like to receive a text such as "Thank you! Your order was
+    # placed and will be delivered before 18:52" after I have ordered
+    it "Place order and send text message" do
+      
+    end
   end
 end
