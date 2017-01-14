@@ -10,9 +10,9 @@ class Takeaway
     @basket = []
   end
 
-  def order(item)
-    @basket << add_to_order(item)
-    "#{item} has been added to your basket"
+  def order(item, number=1)
+    number.times{@basket << add_to_order(item)}
+    "#{number} x #{item} added to basket"
   end
 
 
