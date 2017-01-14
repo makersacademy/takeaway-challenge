@@ -1,8 +1,10 @@
 class Dish
-  attr_accessor :name, :price
+  attr_accessor :name, :ingredients, :price, :type
 
-  def initialize(name = nil, price = nil)
+  def initialize(name = nil, ingredients = nil, price = nil, type = nil)
     @name = name
+    @ingredients = ingredients
     @price = price
+    @type = type
   end
 end
