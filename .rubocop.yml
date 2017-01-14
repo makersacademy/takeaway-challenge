@@ -3,6 +3,7 @@ AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
   RunRailsCops: false
+  TargetRubyVersion: 2.3
 
 # currently not working on hound
 # inherit_from:
@@ -1065,10 +1066,6 @@ Style/TrailingBlankLines:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#newline-eof'
   Enabled: false
 
-Style/TrailingComma:
-  Description: 'Checks for trailing comma in parameter lists and literals.'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
-  Enabled: false
 
 Style/TrailingWhitespace:
   Description: 'Avoid trailing whitespace.'
@@ -1099,9 +1096,6 @@ Rails/Date:
                   such as Date.today, Date.current etc.
   Enabled: false
 
-Rails/DefaultScope:
-  Description: 'Checks if the argument passed to default_scope is a block.'
-  Enabled: false
 
 Rails/Delegate:
   Description: 'Prefer delegate method for delegations.'
