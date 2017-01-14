@@ -83,6 +83,9 @@ $ require "./lib/order.rb"
 $ order = Order.new
 => #<Order:0x007fea9d992890 @menu=#<Menu:0x007fea9d992868 @output_menu=#<Output_Menu:0x007fea9d9927f0>, @menu=[{:item=>"Item 1", :price=>1.5}, {:item=>"Item 2", :price=>2.5}, {:item=>"Item 3", :price=>1.0}]>, @order=[], @total=0.0>
 
+$ order.menu.display_menu
+=> [{:item=>"Item 1", :price=>1.5}, {:item=>"Item 2", :price=>2.5}, {:item=>"Item 3", :price=>1.0}]
+
 $ order.add_item({item: "Item 1", quantity: 1})
 => 1.5
 
