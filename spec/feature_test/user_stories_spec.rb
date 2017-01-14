@@ -17,7 +17,12 @@ describe "User Stories" do
 #   As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
-
+  context "so I can make an order" do
+    it "returns my selection of dishes" do
+      takeaway.select("Fish and Chips" * 2)
+      expect{takeaway.selection}.to eq [{dish: "Fish and Chips", amount: 2}]
+    end
+  end
 
 
 end
