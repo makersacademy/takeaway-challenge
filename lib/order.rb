@@ -42,12 +42,13 @@ class Order
   end
 
   def check_price(new_item)
-    unit = 0.0
+    unit = 0.0 ; quantity = 0
     menu.menu.each do |menu_item|
       next unless menu_item[:item] == new_item[:item]
       unit = menu_item[:price]
+      quantity = new_item[:quantity]
     end
-    unit
+    unit * quantity
   end
 
 end

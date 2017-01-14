@@ -28,9 +28,9 @@ describe "User Stories" do
     # So that I can order the meal I want
     # I would like to be able to select some number of several available dishes
     it "Be able to selct some dishes" do
-      item1 = {item:"Item 1" , quantity: 1}
+      item1 = {item:"Item 1" , quantity: 2}
       order.add_item(item1)
-      item2 = {item:"Item 2" , quantity: 1}
+      item2 = {item:"Item 2" , quantity: 2}
       order.add_item(item2)
       expect(order.check_order).to include(item1 && item2)
     end
