@@ -12,6 +12,10 @@ class Order
     @total = 0.0
   end
 
+  def display_menu
+    @menu.menu
+  end
+
   def add_item(item)
     @item = item
     item_exists? ? add(item) : item_doesnt_exist
@@ -28,7 +32,7 @@ class Order
   private
 
   def order_exists?
-    return true if @order != []
+    return true if order != []
     raise "You have not given any items to order"
   end
 
@@ -44,7 +48,7 @@ class Order
   def add(new_item)
     @order << item
     unit = check_price(new_item)
-    @total += unit
+    @total = (@total + unit).round(2)
   end
 
   def check_price(new_item)

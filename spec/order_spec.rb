@@ -3,6 +3,8 @@ require "order"
 describe Order do
   subject(:order) {described_class.new}
 
+
+
   context "Item exists" do
     describe "#check_order" do
       it "Be able to add a dish" do
@@ -50,6 +52,7 @@ describe Order do
   end
 
   context "Completed orders" do
+
     describe "#complete_order" do
       it "Raises an error if order empty" do
         error = "You have not given any items to order"
@@ -58,6 +61,7 @@ describe Order do
 
       it "Sends a text message on completion" do
         allow(order).to receive(:complete_order).and_return(true)
+        allow(order).to receive(:item_exists?).and_return(true)
         item1 = {item:"Item 1" , quantity: 2}
         order.add_item(item1)
         expect(order.complete_order).to eq true
