@@ -19,13 +19,10 @@ class Menu
     price_list.map { |item| "#{item.name} (£#{item.price})"}.join("; ")
   end
 
-  def select_dishes(*dishes)
+  def select_dishes(*dishes, total)
     basket = Order.new
-    dishes.each { |dish|
-      list.each { |item|
-        basket.add(item) if item.name == dish
-      }
-    }
+    assign_dishes(basket, dishes)
+    fail "You've entered #{basket.check} dishes rather than the #{total} that you expected!" if total != basket.check
     basket
   end
 
@@ -33,6 +30,12 @@ class Menu
 
   def price_list
     @list.dup
+  end
+
+  def assign_dishes(order, dishes)
+    dishes.each { |dish|
+      list.each { |item| order.add(item) if item.name == dish }
+    }
   end
 
 end
