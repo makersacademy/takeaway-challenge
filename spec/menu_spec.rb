@@ -20,4 +20,13 @@ describe Menu do
     end
   end
 
+  context 'print_menu' do
+    it 'prints menu to stout' do
+      expect { menu.print_menu }.to output.to_stdout
+    end
+    it 'loads a menu from the file to dishes' do
+      expect(menu.dishes).to be_a(Hash)
+    end
+  end
+
 end

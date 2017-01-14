@@ -7,8 +7,8 @@ describe 'Feature tests for User Stories' do
 
 it 'I can see the list of dishes with prices' do
   customer = Customer.new
-  customer.see_menu
   # expect to print a formatted menu in the command line
+  expect { customer.see_menu }.to output.to_stdout
 end
 
 # As a customer
