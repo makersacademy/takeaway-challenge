@@ -3,6 +3,7 @@ ruby '2.3.1'
 
 gem 'capybara'
 gem 'coveralls', require: false
+gem 'money'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', '~> 0.46.0', require: false

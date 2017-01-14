@@ -16,4 +16,15 @@ describe Takeaway do
     end
   end
 
+  context 'Order' do
+  let(:takeaway) { described_class.new }
+
+    describe '#total' do
+      it 'Should return a total price in pounds sterling' do
+        takeaway.order("Chips")
+        expect(takeaway.total).to eq "Total: £2.50"
+      end
+    end
+  end
+
 end
