@@ -3,8 +3,6 @@ require "order"
 describe Order do
   subject(:order) {described_class.new}
 
-
-
   context "Item exists" do
     describe "#check_order" do
       it "Be able to add a dish" do
@@ -35,6 +33,12 @@ describe Order do
         item1 = {item:"Item 1" , quantity: 2}
         order.add_item(item1)
         expect(order.total).to eq 3.0
+      end
+    end
+
+    describe "#display_menu" do
+      it "Displays 'Chicken Tikka Masala'" do
+        expect(order.display_menu).to include({:item=>"Chicken Tikka Masala", :price=>6.85})
       end
     end
   end
