@@ -28,14 +28,15 @@ describe Menu do
   end
 
   describe '#printing_the_menu' do
-    before do
+    it 'prints a list of dishes with prices' do
       menu.add_dish(dish)
       menu.add_dish(dish2)
-    end
-
-    it 'prints a list of dishes with prices' do
       expect(menu.print_menu).to eq menu.dishes
     end
 
+    it 'raises an error if menu is empty' do
+      message = "There are no dishes on the menu"
+      expect{ menu.print_menu }.to raise_error message
+    end
   end
 end

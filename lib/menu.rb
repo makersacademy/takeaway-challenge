@@ -12,6 +12,7 @@ class Menu
   end
 
   def print_menu
+    raise "There are no dishes on the menu" if @dishes.empty?
     @dishes
   end
 end
