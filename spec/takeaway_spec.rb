@@ -25,7 +25,7 @@ describe Takeaway do
   end
 
   describe "#place_order" do
-    it { is_expected.to respond_to(:place_order) }
+    it { is_expected.to respond_to(:place_order).with(1).argument }
   end
 
   describe "#new_order" do

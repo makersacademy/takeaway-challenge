@@ -17,8 +17,8 @@ class Takeaway
     print @lister.list(@menu)
   end
 
-  def place_order
-
+  def place_order(order)
+    
   end
 
   def new_order
