@@ -10,17 +10,15 @@ subject(:takeaway){described_class.new}
 	end
 
 	describe '#order' do
-		context 'should make a new order' do
-			it 'return total of one item' do
-			expect(takeaway.order("Pepperoni Pizza")).to eq 6
-			end
-			it 'return total of two different items' do
-			takeaway.order("Pepperoni Pizza")
-			expect(takeaway.order("American Hot Pizza")).to eq 12.5
-			end
-			it 'return total of two identical items' do
-			expect(takeaway.order("Pepperoni Pizza", 2)).to eq 12
-			end
+		it 'return total of one item' do
+		expect(takeaway.order("Pepperoni Pizza")).to eq 6
+		end
+		it 'return total of two different items' do
+		takeaway.order("Pepperoni Pizza")
+		expect(takeaway.order("American Hot Pizza")).to eq 12.5
+		end
+		it 'return total of two identical items' do
+		expect(takeaway.order("Pepperoni Pizza", 2)).to eq 12
 		end
 	end
 

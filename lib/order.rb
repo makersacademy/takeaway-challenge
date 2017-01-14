@@ -13,7 +13,8 @@ attr_accessor :items
 		sum+= value
 		end
 		end
-		return sum
+		sum
 	end
+
 
 end
