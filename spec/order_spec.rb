@@ -19,4 +19,11 @@ describe Order do
     end
   end
 
+  context 'print_order' do
+    it 'prints menu to stout' do
+      # order.total
+      # expect { order.print_order }.to output.to_stdout
+    end
+  end
+
 end
