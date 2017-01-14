@@ -7,3 +7,4 @@ gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
 gem 'twilio-ruby'
+gem 'dotenv', '~> 2.1', '>= 2.1.1'

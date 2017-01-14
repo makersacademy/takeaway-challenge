@@ -1,5 +1,4 @@
 require 'twilio-ruby'
-require 'account_details'
 
 module Send_Message
 
