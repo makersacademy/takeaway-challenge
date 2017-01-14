@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+### [Makers Academy] (http://www.makersacademy.com) - Week 2 Solo Weekend Project [![JavaScript Style Guide: Good Parts](https://camo.githubusercontent.com/c85bd9ed833f4beabdb09a95a6cc1de03fe2324a/68747470733a2f2f636f766572616c6c732e696f2f6275696c64732f393536363138302f6261646765)](https://github.com/adrianeyre/takeaway-challenge)
 ```
                             _________
               r==           |       |
@@ -13,23 +13,39 @@ Takeaway Challenge
        ':..:'                ':..:'
  
  ```
+## Index
+* [Gems Used] (#GEMS)
+* [Installtion] (#Install)
+* [User Stories] (#US)
+* [Usage] (#Usage)
+ 
+## <a name="GEMS">Gems Used</a>
+```ruby
+gem 'rake'
+gem 'rspec'
+gem 'coveralls', require: false
+gem 'capybara'
+gem 'twilio-ruby'
+```
 
-Instructions
--------
+## <a name="Install">Installation</a>
+The Takeaway Challenge is ran on Ruby version : 2.3.1
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* To change Ruby versions
+```shell
+$ rvm 2.3.1
+```
+* To install Ruby 2.3.1
+```shell
+$ rvm install ruby-2.3.1
+```
+* To install Gems
+```shell
+$ gem install bundle
+$ bundle
+```
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+## <a name="US">User Stories</a>
 ```
 As a customer
 So that I can check if I want to order something
@@ -48,44 +64,32 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## <a name="Usage">Usage</a>
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
+* Create a `.env` file in the applicaion root
+```ruby
+account_sid = <YOUR SID>
+auth_token = <YOUR TOKEN>
+from = <YOU FROM NUMBER>
+to = <YOUR TO NUMBER>
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+* Test the applicaion in IRB
+```shell
+$ require "./lib/order.rb"
+=> true
 
-Build Badge Example
-------------------
+$ order = Order.new
+=> #<Order:0x007fea9d992890 @menu=#<Menu:0x007fea9d992868 @output_menu=#<Output_Menu:0x007fea9d9927f0>, @menu=[{:item=>"Item 1", :price=>1.5}, {:item=>"Item 2", :price=>2.5}, {:item=>"Item 3", :price=>1.0}]>, @order=[], @total=0.0>
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+$ order.add_item({item: "Item 1", quantity: 1})
+=> 1.5
+
+$ order.check_order
+=> [{:item=>"Item 1", :quantity=>1}]
+
+$ order.total
+=> 1.5
+
+$ order.complete_order
+```
