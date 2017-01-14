@@ -16,7 +16,7 @@ describe Order do
       expect(order.ordered_dishes).to be_empty
     end
     it "sets order total to 0" do
-      expect(order.total).to be_zero
+      expect(order.expected_order_total).to be_zero
     end
   end
 
@@ -35,9 +35,9 @@ describe Order do
 
   describe "#expected_total" do
     it { is_expected.to respond_to(:expected_total).with(1).argument }
-    it "saves expected total to @total" do
+    it "saves expected total to @expected_total" do
       order.expected_total(5)
-      expect(order.total).to eq 5
+      expect(order.expected_order_total).to eq 5
     end
   end
 

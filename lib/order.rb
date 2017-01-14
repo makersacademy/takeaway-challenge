@@ -1,10 +1,10 @@
 class Order
 
-  attr_reader :ordered_dishes, :total, :menu
+  attr_reader :ordered_dishes, :expected_order_total, :menu
 
   def initialize(menu)
     @ordered_dishes = {}
-    @total = 0
+    @expected_order_total = 0
     @menu = menu
   end
 
@@ -13,7 +13,7 @@ class Order
   end
 
   def expected_total(total)
-    @total = total
+    @expected_order_total = total
   end
 
   private
