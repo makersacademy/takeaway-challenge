@@ -1,6 +1,9 @@
 require_relative "menu"
+require_relative "twilio"
 
 class Order
+  include Send_Message
+
   attr_reader :menu, :order, :item, :total
 
   def initialize(menu = Menu.new)
@@ -22,6 +25,10 @@ class Order
     order.each do |menu_item|
       puts menu_item
     end
+  end
+
+  def complete_order
+    send_message
   end
 
   private
@@ -51,4 +58,8 @@ class Order
     unit * quantity
   end
 
+  def send_message
+    time = (Time.now + 1*60*60).strftime("%H:%M")
+    send_text_message("Thank you! Your order was placed and will be delivered before #{time}")
+  end
 end
