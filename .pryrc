@@ -1,1 +1,1 @@
-require './lib/menu'
+require './lib/restaurant'

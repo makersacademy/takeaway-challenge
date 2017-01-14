@@ -1,6 +1,6 @@
-require './lib/menu'
+require './lib/restaurant'
 
-describe Menu do
+describe Restaurant do
   # subject(:menu_list) { described_class.new }
 
   # expect(subject.journeys).to include { {start: entry_station, end: exit_station} }

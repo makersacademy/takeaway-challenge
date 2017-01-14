@@ -1,4 +1,4 @@
-class Menu
+class Restaurant
 
   def menu_list
     a = {
