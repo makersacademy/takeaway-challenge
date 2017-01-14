@@ -28,25 +28,25 @@ describe Order do
 
   describe '#cancel' do
     it "cancels order" do
-
+      subject.add("rice", 2)
+      subject.add("veg curry", 2)
+      subject.cancel
+      expect(subject.basket).to eq({})
     end
   end
 
-  describe '#place' do
-    it "submits order" do
-
+  describe '#buy' do
+    it "confirms to customer" do
+      subject.add("rice", 2)
+      subject.add("veg curry", 2)
+      msg = "Thank you. Your order was placed and will be delivered before "
+      expect(subject.buy).to include(msg)
     end
   end
 
-  describe '#show' do
+  describe '#view' do
     it "displays order" do
-
-    end
-  end
-
-  describe '#confirm_to_customer' do
-    it "confirms order has been placed" do
-
+      expect(subject).to respond_to(:view).with(0).arguments
     end
   end
 

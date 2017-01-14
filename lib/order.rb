@@ -1,15 +1,22 @@
 require_relative 'menu'
+require_relative 'delivery'
+
+=begin
+format output strings
+extract basket object
+=end
 
 class Order
 
   attr_reader :basket, :menu
 
   def initialize
-    @basket = {}
+    @basket = {} # TODO will init nil once extracted to be an object
     @menu = Menu.new
   end
 
   def add(dish, qty)
+    # TODO create basket object if not existing here
     raise not_on_menu_msg unless menu.has?(dish)
     add_to_basket(dish, qty)
   end
@@ -17,6 +24,20 @@ class Order
   def remove(dish)
     raise not_in_basket_msg unless basket.key?(dish)
     remove_from_basket(dish)
+  end
+
+  def cancel
+    @basket  = {}
+  end
+
+  def buy
+    confirmation_msg + delivery_time
+  end
+
+  def view
+    display_header
+    display_basket
+    display_total
   end
 
   private
@@ -27,6 +48,33 @@ class Order
 
   def not_in_basket_msg
     "You have not ordered this item"
+  end
+
+  def confirmation_msg
+    "Thank you. Your order was placed and will be delivered before "
+  end
+
+  def delivery_time
+    "#{(Time.now.hour + 1).modulo(24)}:#{Time.now.min}."
+  end
+
+  def display_header
+    print "\nYOUR ORDER\n\n"
+    printf("%-20s %5s %8s\n","ITEM","QTY","PRICE")
+  end
+
+  def display_basket
+    basket.each { |k,v| printf("%-20s %5d %8.2f \n", k, v, menu.items[k]) }
+  end
+
+  def display_total
+    printf("\n%-10s %6.2f\n\n", "TOTAL = ", total)
+  end
+
+  def total
+    t = 0.00
+    basket.each_key { |k| t = t + basket[k] * menu.items[k] }
+    t
   end
 
   def in_basket?(dish)

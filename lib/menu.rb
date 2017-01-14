@@ -21,7 +21,6 @@ class Menu
   def show
     display_header
     display_items
-    display_footer
   end
 
   def has?(item)
@@ -32,15 +31,14 @@ class Menu
 
   def display_header
     print "\nTAKEAWAY MENU\n\n"
-    print "ITEM              PRICE\n"
+    printf("%-20s %8s \n", "ITEM", "PRICE")
   end
 
-  #TODO use printf
   def display_items
-    items.each { |k,v| print "#{k}    £#{v}\n" }
-  end
-
-  def display_footer
+    items.each do |k,v|
+      printf("%-20s %8.2f\n",k,v)
+    end
     print "\n"
   end
+
 end
