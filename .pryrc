@@ -1,7 +1,6 @@
-require './lib/twilio.rb'
+require './lib/meal.rb'
 
-message = @client.account.messages.create(:body => "Hello from Ruby",
-  :to => "+447970670390",
-  :from => "+441133205565")
+meal = Meal.new
+restaurant = Restaurant.new
 
-  puts message.sid
+#meal.select_dishes(restaurant, dish)

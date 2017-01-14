@@ -2,14 +2,16 @@ require_relative 'dish'
 
 class Restaurant
 
+  attr_reader :dishes
+
   def initialize
     @dishes = []
     default_dishes
   end
 
-  def dishes
-    @dishes.dup
-  end
+  # def dishes
+  #   @dishes.dup
+  # end
 
   def add_dish(name, price)
     name = Dish.new(name, price)
