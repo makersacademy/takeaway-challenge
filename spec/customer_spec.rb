@@ -11,8 +11,8 @@ describe Customer do
   end
 
   context 'see_menu' do
-    it 'can request to see a menu' do
-      is_expected.to respond_to(:see_menu).with(1).argument
+    it 'prints menu upon request' do
+      expect { customer.see_menu }.to output.to_stdout
     end
   end
 
