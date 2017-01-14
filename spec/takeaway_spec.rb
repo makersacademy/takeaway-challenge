@@ -32,10 +32,10 @@ describe Takeaway do
     it "returns an order object" do
       expect(takeaway.new_order).to be_a(Order)
     end
-    it "passes the takeaway object to :takeaway" do
-      allow(order).to receive(:takeaway) { takeaway }
+    it "passes the menu object to order's :menu" do
+      allow(order).to receive(:menu) { menu }
       takeaway.new_order
-      expect(order.takeaway).to eq takeaway
+      expect(order.menu).to eq menu
     end
   end
 

@@ -5,12 +5,12 @@ describe Order do
   let(:pepperoni) { instance_double("Dish") }
   let(:hawaiian) { instance_double("Dish") }
   let(:meat_feast) { instance_double("Dish") }
-  let(:takeaway) { instance_double("Takeaway") }
-  subject(:order)  { described_class.new(takeaway) }
+  let(:menu) { instance_double("Menu") }
+  subject(:order)  { described_class.new(menu) }
 
   describe "#initialize" do
-    it "saves the takeaway to @takeaway" do
-      expect(order.takeaway).to eq takeaway
+    it "saves the menu to @menu" do
+      expect(order.menu).to eq menu
     end
     it "creates an empty dishes hash" do
       expect(order.dishes).to be_empty
