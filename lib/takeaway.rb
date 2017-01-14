@@ -22,7 +22,7 @@ class Takeaway
   end
 
   def new_order
-    @order_class.new
+    @order_class.new(self)
   end
 
 end

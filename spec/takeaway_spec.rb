@@ -29,9 +29,13 @@ describe Takeaway do
   end
 
   describe "#new_order" do
-    it { is_expected.to respond_to(:new_order) }
     it "returns an order object" do
       expect(takeaway.new_order).to be_a(Order)
+    end
+    it "passes the takeaway object to :takeaway" do
+      allow(order).to receive(:takeaway) { takeaway }
+      takeaway.new_order
+      expect(order.takeaway).to eq takeaway
     end
   end
 

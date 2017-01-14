@@ -2,13 +2,16 @@ require "order.rb"
 
 describe Order do
 
-  subject(:order)  { described_class.new }
   let(:pepperoni) { instance_double("Dish") }
   let(:hawaiian) { instance_double("Dish") }
   let(:meat_feast) { instance_double("Dish") }
+  let(:takeaway) { instance_double("Takeaway") }
+  subject(:order)  { described_class.new(takeaway) }
 
   describe "#initialize" do
-    it { is_expected.to respond_to(:dishes) }
+    it "saves the takeaway to @takeaway" do
+      expect(order.takeaway).to eq takeaway
+    end
     it "creates an empty dishes hash" do
       expect(order.dishes).to be_empty
     end
