@@ -16,4 +16,8 @@ describe Customer do
     end
   end
 
+  context 'place_order' do
+    it { is_expected.to respond_to(:place_order).with(1).argument }
+  end
+
 end
