@@ -1,4 +1,7 @@
 require './lib/takeaway'
 takeaway = Takeaway.new
 takeaway.add_dish("dish1", 5)
+takeaway.add_dish("dish2", 2)
+takeaway.add_dish("dish3", 4)
 takeaway.show_menu
+takeaway.order("1,3")

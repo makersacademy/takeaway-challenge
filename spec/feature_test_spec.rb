@@ -1,5 +1,5 @@
 
-describe 'User Stories' do
+describe 'User Stories -' do
 
   let(:takeaway)  { Takeaway.new }
 
@@ -15,7 +15,12 @@ describe 'User Stories' do
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
-
+  it 'customer will be able to select a few dishes from several available' do
+    takeaway.add_dish("Dish1", 5)
+    takeaway.add_dish("Dish2", 2)
+    takeaway.add_dish("Dish3", 4)
+    expect(takeaway.order("1,3")).to eq([{:name => "Dish1", :price => 5}, {:name => "Dish3", :price => 4}])
+  end
 
 # As a customer
 # So that I can verify that my order is correct

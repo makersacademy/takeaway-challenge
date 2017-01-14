@@ -23,4 +23,15 @@ describe Takeaway do
       expect(subject.show_menu).to include(:name => "Dish1", :price => 5)
     end
   end
+  describe '#order' do
+    it 'should respond to order'do
+      expect(subject).to respond_to(:order).with(1).arguments
+    end
+    it 'should add a number of dishes ordered to order_array' do
+      subject.add_dish("Dish1", 5)
+      subject.add_dish("Dish2", 2)
+      subject.add_dish("Dish3", 4)
+      expect(subject.order("1,3")).to eq([{:name => "Dish1", :price => 5}, {:name => "Dish3", :price => 4}])
+    end
+  end
 end
