@@ -10,7 +10,6 @@ describe OrderTotalChecker do
 
 
   describe "#check_total" do
-    it { is_expected.to respond_to(:check_total).with(1).argument }
     it "returns true if expected_order_total is correct" do
       allow(pepperoni).to receive(:price) { 5 }
       allow(hawaiian).to receive(:price) { 10 }
@@ -19,6 +18,13 @@ describe OrderTotalChecker do
       allow(order).to receive(:expected_order_total) { 95 }
       expect(ordertotalchecker.check_total(order)).to be true
     end
+    it "returns false if expected_order_total is incorrect" do
+      allow(pepperoni).to receive(:price) { 5 }
+      allow(hawaiian).to receive(:price) { 10 }
+      allow(meat_feast).to receive(:price) { 15 }
+      allow(order).to receive(:ordered_dishes) { { pepperoni => 3, hawaiian => 2, meat_feast => 4 } }
+      allow(order).to receive(:expected_order_total) { 9000 }
+      expect(ordertotalchecker.check_total(order)).to be false
+    end
   end
-
 end
