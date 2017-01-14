@@ -27,7 +27,14 @@ describe Order do
     it "adds quantity as a value to dish key" do
       expect(order.dishes[pepperoni]).to eq 3
     end
+  end
 
+  describe "#expected_total" do
+    it { is_expected.to respond_to(:expected_total).with(1).argument }
+    it "saves expected total to @total" do
+      order.expected_total(5)
+      expect(order.total).to eq 5
+    end
   end
 
 end

@@ -11,4 +11,8 @@ class Order
     dishes[dish] = quantity
   end
 
+  def expected_total(total)
+    @total = total
+  end
+
 end
