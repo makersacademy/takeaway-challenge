@@ -1,5 +1,6 @@
 require_relative 'menu'
 
+
 class Takeaway
 
 attr_reader :order, :price, :current_order
@@ -12,8 +13,8 @@ attr_reader :order, :price, :current_order
   end
 
   def show_menu
-    @menu = Menu.new.dishes
-  end
+     @menu = Menu.new.dishes
+   end
 
   def place_order(selection, quantity)
 
