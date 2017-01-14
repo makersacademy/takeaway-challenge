@@ -1,9 +1,9 @@
-module UiOutput
+module PrettyFormat
 
-  def pretty_output(quisine)
+  def pretty_format(menu)
     item_number = 0
     puts "\n"
-    quisine.each do |k,v|
+    menu.each do |k,v|
       puts "#{item_number += 1}. #{k.to_s}: £#{sprintf "%.2f", v.to_s}"
     end
   end

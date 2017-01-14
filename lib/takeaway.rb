@@ -1,20 +1,23 @@
-require_relative 'ui_output'
+require_relative 'pretty_format'
 require_relative 'menu'
 
 class Takeaway
 
   include Menu
-  include UiOutput
+  include PrettyFormat
 
-  def initialize(menu = ALL)
-    welcome
-    @menu = pretty_output(menu)
+  def initialize
+    puts "\nWelcome to Shirt and Thai!\n\nPlease take a look at our menu:"
+    menu
   end
 
-  def welcome
-    puts "Welcome to Shirt and Thai! Please look at the menu and make your selection"
+  def menu
+    pretty_format(MENU)
   end
 
 end
 
-m = Takeaway.new
+# require 'pry'
+# binding.pry
+# m = Takeaway.new
+# m.view_menu

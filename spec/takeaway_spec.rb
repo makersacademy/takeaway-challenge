@@ -1,14 +1,14 @@
 require 'takeaway'
 
 describe Takeaway do
-
-  context '#welcome' do
-    it 'displays a welcome message to customers' do
-      takeaway = Takeaway.new
-      expect { takeaway.welcome }.to output("Welcome to Shirt and Thai! Please look at the menu and make your selection\n").to_stdout
-    end
+  it 'displays a welcome message to customers' do
+    expect { subject }.to output("\nWelcome to Shirt and Thai!\n\nPlease take a look at our menu:").to_stdout
   end
-  it 'can display a list of dishes to the user' do
-    expect{subject.pretty_output(Takeaway::ALL)}.to output.to_stdout
+  it 'displays a menu to the user' do
+    expect { subject.menu }.to output(pretty_format(MENU)).to_stdout
+  end
+  it '#user_selection' do
+    allow(subject).to receive(:user_selection).and_return(subject.interpreter(anything))
+    expect(subject.user_selection).to eq subject.interpreter(anything)
   end
 end
