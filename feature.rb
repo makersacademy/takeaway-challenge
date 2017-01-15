@@ -2,10 +2,10 @@
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
 
-require './lib/Menu'
+require './lib/menu'
 require './lib/items_selection'
 
-foodbuddy = FoodBuddy.new
+foodbuddy = Menu.new
 choice = Select_items.new
 choice.input_items
 # As a customer

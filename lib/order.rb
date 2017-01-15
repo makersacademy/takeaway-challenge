@@ -1,6 +1,6 @@
 class order
 
-customer_order = { id:, items:[],total: }
+customer_order = { id:, @items:[],total: }
 
 
 def create_order

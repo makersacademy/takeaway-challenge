@@ -1,22 +1,11 @@
-# require 'rubygems'
-# require 'twilio-ruby'
-# require 'sinatra'
-#
-# get '/' do
-#     'Hello World! Currently running version ' + Twilio::VERSION + \
-#         ' of the twilio-ruby library.'
-# end
 
 require 'twilio-ruby'
-
-# put your own credentials here
-account_sid = 'ACd269071956b7538a177d6059116803da'
-auth_token = 'aeb50fc58ca87617b2ccbbe9eaedd2b7'
-
+Dotenv.load
 # set up a client to talk to the Twilio REST API
 @client = Twilio::REST::Client.new (
-ENV['TWILIO_ACCOUNT_SID'],
-ENV['TWILIO_AUTH_TOKEN']
+ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID'],
+AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
+PHONE_NUMBER = ENV['MOBILE_NUMBER']
 
 @client.account.messages.create({
   :from => ENV['TWILIO_PHONE_NUMBER'],

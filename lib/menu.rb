@@ -1,12 +1,14 @@
 require './lib/menuhash'
+require './lib/items_selection'
 class Menu
+ header = ' '
 
   def initialize
     menuhash = Foodbuddy.new
-    puts "Comfortingly good for you - FoodBuddy weekday menu"
+    header =  "Comfortingly good for you - FoodBuddy weekday menu"
+    puts header
     puts "--------------------------------------------------"
     puts (menuhash.list).each{|key, value| puts "#{key} @ £ #{value.round(2)}"}
-    puts "Press return when ready to enter order"
   end
 end
 #create formatting / title and ordering info etc
