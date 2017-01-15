@@ -9,20 +9,20 @@ describe Order do
     end
     it "adds item to order" do
       subject.add("rice", 2)
-      expect(subject.basket).to include { {"rice"=>2} }
+      expect(subject.basket.items).to include { {"rice"=>2} }
     end
   end
 
   describe '#remove' do
     it "raises error if item not ordered" do
       msg = "You have not ordered this item"
-      expect { subject.remove("eggs") }.to raise_error(msg)
+      expect { subject.remove("eggs", 1) }.to raise_error(msg)
     end
     it "removes item from order" do
       subject.add("rice", 2)
       subject.add("veg curry", 2)
-      subject.remove("rice")
-      expect(subject.basket).to eq({"veg curry"=>2})
+      subject.remove("rice", 2)
+      expect(subject.basket.items).to eq({"veg curry"=>2})
     end
   end
 
@@ -31,7 +31,7 @@ describe Order do
       subject.add("rice", 2)
       subject.add("veg curry", 2)
       subject.cancel
-      expect(subject.basket).to eq({})
+      expect(subject.basket).to be_a Basket
     end
   end
 
