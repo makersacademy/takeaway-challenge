@@ -34,6 +34,8 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 ## Feature Tests
+
+* Ensure you have a list of dishes with prices
 #### Menu
 ```
 [1] pry(main)> require './lib/menu'
@@ -69,9 +71,66 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 10.Hokkaido                               ...EUR 6.5
 11.Shapu Salad                            ...EUR 4.0
 ```
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
+* Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
+#### Order Sum
+```
+[1] pry(main)> require './lib/order'
+=> true
+[2] pry(main)> order = Order.new(Menu)
+=> #<Order:0x007fdb220f8d68
+ @menu=
+  #<Menu:0x007fdb220f8d40
+   @menu_items=
+    [{:no=>"1.000000", :dish=>"Yase Soup", :price=>2.55},
+     {:no=>"02", :dish=>"Wan Tan Soup", :price=>3.25},
+     {:no=>"03", :dish=>"Tori Mushi", :price=>3.05},
+     {:no=>"04", :dish=>"Tom Yam Soup", :price=>4.55},
+     {:no=>"05", :dish=>"Tori Yam Soup", :price=>3.55},
+     {:no=>"06", :dish=>"Umami Soup", :price=>4.55},
+     {:no=>"07", :dish=>"Beef Tatar", :price=>5.85},
+     {:no=>"08", :dish=>"Moyashi Salad", :price=>3.05},
+     {:no=>"09", :dish=>"Kimchi Salad", :price=>3.45},
+     {:no=>"10", :dish=>"Hokkaido", :price=>6.55},
+     {:no=>"11", :dish=>"Shapu Salad", :price=>4.05}]>,
+ @order_items=[],
+ @order_sum=0>
+[3] pry(main)> order.add_dish(1)
+=> [{:no=>"1.000000", :dish=>"Yase Soup", :price=>2.55}]
+[4] pry(main)> exit
+➜  takeaway-challenge git:(master) ✗ prey
+zsh: command not found: prey
+➜  takeaway-challenge git:(master) ✗ pry
+[1] pry(main)> require './lib/order'
+=> true
+[2] pry(main)> order = Order.new(Menu)
+=> #<Order:0x007fe620264cc0
+ @menu=
+  #<Menu:0x007fe620264c98
+   @menu_items=
+    [{:no=>"01", :dish=>"Yase Soup", :price=>2.55},
+     {:no=>"02", :dish=>"Wan Tan Soup", :price=>3.25},
+     {:no=>"03", :dish=>"Tori Mushi", :price=>3.05},
+     {:no=>"04", :dish=>"Tom Yam Soup", :price=>4.55},
+     {:no=>"05", :dish=>"Tori Yam Soup", :price=>3.55},
+     {:no=>"06", :dish=>"Umami Soup", :price=>4.55},
+     {:no=>"07", :dish=>"Beef Tatar", :price=>5.85},
+     {:no=>"08", :dish=>"Moyashi Salad", :price=>3.05},
+     {:no=>"09", :dish=>"Kimchi Salad", :price=>3.45},
+     {:no=>"10", :dish=>"Hokkaido", :price=>6.55},
+     {:no=>"11", :dish=>"Shapu Salad", :price=>4.05}]>,
+ @order_items=[],
+ @order_sum=0>
+[3] pry(main)> order.add_dish(1)
+=> [{:no=>"01", :dish=>"Yase Soup", :price=>2.55}]
+[4] pry(main)> order.add_dish(2)
+=> [{:no=>"01", :dish=>"Yase Soup", :price=>2.55},
+ {:no=>"02", :dish=>"Wan Tan Soup", :price=>3.25}]
+[5] pry(main)> order.order_sum
+=> "5.80"
+```
+
+  
+
   * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
   * Use the twilio-ruby gem to access the API
   * Use the Gemfile to manage your gems
