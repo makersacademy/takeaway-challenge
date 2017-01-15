@@ -32,8 +32,8 @@ it 'customer can see the order details with prices' do
   take_away.read_menu
   order_hash = { 1 => 3, 6 => 2, 9 => 1}
   take_away.place_order(order_hash)
-  take_away.basket_summary
-  expect { take_away.basket_summary }.to output.to_stdout
+  take_away.order_details
+  expect { take_away.order_details }.to output.to_stdout
 end
 
 # As a customer
@@ -45,7 +45,7 @@ it 'when order send customer recieves a text message with time and order total a
   order_hash = { 1 => 3, 6 => 2, 9 => 1}
   take_away.place_order(order_hash)
   message = "Thank you! Your order for the total amount if $85 was placed and will be delivered before 18:52"
-  # expect { customer }.to receive_a(text_message)
+  # expect { customer }.to receive_a(text_message) on his phone
 end
 
 

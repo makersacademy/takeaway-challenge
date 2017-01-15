@@ -17,9 +17,18 @@ describe TakeAway do
     end
   end
 
-  context 'place_order_interface' do
-    it { is_expected.to respond_to(:place_order_interface).with(0).arguments}
+  context 'add to order' do
+    it 'prints what was added to the order' do
+      expect { take_away.read_menu }.to output.to_stdout
+    end
+    it 'stores value to order_hash' do
+      expect {take_away.add_to_order(1,1)}.to change{take_away.order_hash.length}.by(1)
+    end
   end
+
+  # context 'place_order_interface' do
+  #   it { is_expected.to respond_to(:place_order_interface).with(0).arguments}
+  # end
 
   context 'place_order' do
     let(:order_hash) { double :order_hash }
@@ -35,17 +44,17 @@ describe TakeAway do
     end
   end
 
-  context 'basket_summary' do
+  context 'order_details' do
     it 'prints order upon request' do
       take_away.read_menu
       # write proper test later on
       order_hash = { 1 => 3, 6 => 2, 9 => 1}
       take_away.place_order(order_hash)
-      expect { take_away.basket_summary }.to output.to_stdout
+      expect { take_away.order_details }.to output.to_stdout
     end
     it 'raises an error if order was not ordered' do
       message = "Order can't be found: looks like it hasn't been placed yet. Please place the order first."
-      expect { take_away.basket_summary }.to raise_error(message)
+      expect { take_away.order_details }.to raise_error(message)
     end
   end
 
