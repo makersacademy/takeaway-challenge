@@ -1,19 +1,15 @@
 require './lib/dish.rb'
 require './lib/order.rb'
-require 'twilio-ruby'
+
+require 'csv'
 
 class Menu
 
   attr_reader :list
 
   def initialize
-    @list = [
-      Dish.new('Margherita Pizza', 8.45),
-      Dish.new('Spaghetti Carbonara', 10.75),
-      Dish.new('Calzone', 12.45),
-      Dish.new('Spaghetti Bolognese', 9.95),
-      Dish.new('Caprese Salad', 4.35)
-    ]
+    @list = []
+    load_from_file
   end
 
   def see_dishes
@@ -29,6 +25,14 @@ class Menu
   end
 
   private
+
+  def load_from_file(filename = './data/menu_list.csv')
+    CSV.foreach(filename) do |row|
+      name = row[0]
+      price = row[1]
+      @list.push(Dish.new(name, price.to_f))
+    end
+  end
 
   def price_list
     @list.dup
