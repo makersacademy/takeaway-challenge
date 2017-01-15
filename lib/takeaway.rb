@@ -1,5 +1,5 @@
-require_relative 'pretty_format'
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
@@ -7,12 +7,23 @@ class Takeaway
   include PrettyFormat
 
   def initialize
-    puts "\nWelcome to Shirt and Thai!\n\nPlease take a look at our menu:"
+    puts "\nWelcome to Shirt and Thai!\n"
     menu
   end
 
+  def order(dish, quantity, total_cost)
+    @order ||= Order.new
+    @order.add(dish, quantity, total_cost)
+    menu
+    basket
+  end
+
   def menu
-    pretty_format(MENU)
+    pretty_format(ALL_DISHES)
+  end
+
+  def basket
+    pretty_format(@order.basket, @order.total)
   end
 
 end

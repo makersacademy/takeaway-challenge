@@ -1,11 +1,13 @@
 module PrettyFormat
 
-  def pretty_format(menu)
+  def pretty_format(hash, total=nil)
     item_number = 0
     puts "\n"
-    menu.each do |k,v|
-      puts "#{item_number += 1}. #{k.to_s}: £#{sprintf "%.2f", v.to_s}"
+    hash.each do |k,v|
+      puts total ? "#{item_number += 1}. #{k.to_s}: Quantity - #{v.to_s}" : "#{item_number += 1}. #{k.to_s}: £#{sprintf "%.2f", v.to_s}"
     end
+    puts "\nTotal = £#{sprintf "%.2f", total}" if total
+    puts "\n"
   end
 
 end
