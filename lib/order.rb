@@ -1,10 +1,10 @@
 require_relative 'menu'
-require_relative 'delivery'
+require_relative 'delivery' # TODO delete?
+require_relative 'basket'
 
-=begin
-format output strings
-extract basket object
-=end
+ #TODO extract basket obj:
+ # can add and remove items. Basket can say if is in basket and how many
+ # calculating order remains with Order
 
 class Order
 

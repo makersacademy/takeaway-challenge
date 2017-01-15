@@ -4,7 +4,7 @@ describe Menu do
 
   describe '#show' do
     it 'displays menu items' do
-      expect(subject.show).to eq(nil)
+      expect(subject).to respond_to(:show).with(0).arguments
     end
   end
 
