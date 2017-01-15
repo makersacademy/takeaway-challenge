@@ -22,4 +22,8 @@ class TakeAway
     basket
   end
 
+  def charge
+    order.calc_total
+  end
+
 end

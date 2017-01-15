@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  let(:menu) { {"Burger"=> 8 }}
+  let(:menu) {{"Burger"=>8}}
   subject(:order) { described_class.new(menu) }
 
   describe "#add" do
@@ -18,5 +18,13 @@ describe Order do
     end
   end
 
+
+  describe "#calculate_total" do
+    it 'checks if order total is the sum of items added' do
+      order.add("Burger")
+      order.add("Burger")
+      expect(order.calc_total).to eq 16
+    end
+  end
 
 end

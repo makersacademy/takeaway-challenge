@@ -20,4 +20,13 @@ describe TakeAway do
         expect(takeaway.basket).to eq({"Salad"=>3})
       end
     end
+
+    describe "#charge" do
+      before do
+        allow(order).to receive(:calc_total)
+      end
+      it "returns an integer represeting an amount to pay " do
+        expect(takeaway.charge).to be_integer
+      end
+    end
 end
