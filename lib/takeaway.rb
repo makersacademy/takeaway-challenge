@@ -21,6 +21,14 @@ attr_reader :menu , :basket
     # result
     puts "You have ordered:"
     result.each {|item, num | puts "#{item} x #{num}" }
+    # 
+    # # Trying to compare the item in the result against the same item in the menu, if they are the same, multiply by quantity so that subtotal = dish and new_price
+    #
+    # # result.each {|item, num | if item == { basket.each |dish, quantity | dish } puts "yes"  }
+    # puts "Subtotal is:"
+    # subtotal = Hash.new(0)
+    # result.each {|dish, quantity | result[dish] == menu.select {|i, v | subtotal = result[quantity] * menu[v] } }
+
   end
 
 
