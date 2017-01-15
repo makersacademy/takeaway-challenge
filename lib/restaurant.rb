@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 require_relative 'menu'
 require_relative 'order'
 
@@ -8,17 +9,22 @@ class Restaurant
   def initialize(takeaway, menu = Menu.new)
     @menu = menu
     @takeaway = takeaway
-    # @current_order = takeaway.order
+    @client = Twilio::REST::Client.new ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]
   end
 
   def checkout_order(amount)
     fail 'Insufficient payment! Please retry.' if amount < @takeaway.order.calc_total
-    @takeaway.reset # @current_order.deliver - should happen before reset, but it is out of scope.
+    @takeaway.reset
     send_message
   end
 
   def send_message
-    message = "Thank you for your custom! Your order will be delivered before #{Time.now.strftime("%R")}."
+    @client.account.messages.create(
+      from: ENV["TWILIO_FROM_NO"],
+      to: ENV["TWILIO_TO_NO"],
+      body: "Thank you for your custom! Your order will be delivered before #{(Time.now + 3600).strftime("%R")}."
+    )
+    message = "Thanks. Check your mobile for the delivery time!"
   end
 
 end

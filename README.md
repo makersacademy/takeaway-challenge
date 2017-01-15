@@ -1,4 +1,4 @@
-Takeaway Challenge ![Travis build status](https://travis-ci.org/sliute/takeaway-challenge.svg?branch=master)
+Takeaway Challenge ![Travis build status](https://travis-ci.org/sliute/takeaway-challenge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/sliute/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/sliute/takeaway-challenge?branch=master)
 ==================
 
 Task
@@ -104,7 +104,19 @@ from /Users/stefanliute/Projects/takeaway-challenge/lib/restaurant.rb:15:in `che
 [2] pry(main)> t.pay(18.65)
 => "Thank you for your custom! Your order will be delivered before 15:51."
   ```
-  * Twilio...
+  * Set up a free Twilio account. Added the relevant gems to the project (twilio-ruby and sinatra). Stored the Twilio account SID, auth_token, from and to numbers in environment variables and used the latter in the Ruby code to protect privacy.
+  * Restaurant#send_message now uses the TWILIO API via twilio-ruby to send an actual text message to the user's mobile number. It also sends a command-line message to advise the user to check their mobile.
+  * Unit-tested by stubbing the twilio-ruby gem.
+  * PRY now reads:
+  ```
+  $ pry
+[1] pry(main)> t.pay(12)
+RuntimeError: Insufficient payment! Please retry.
+from /Users/stefanliute/Projects/takeaway-challenge/lib/restaurant.rb:16:in `checkout_order'
+[2] pry(main)> t.pay(18.65)
+=> "Thanks. Check your mobile for the delivery time!"
+  ```
+
 
 Issues
 -----
@@ -113,6 +125,7 @@ Issues
 2. Story 02:
   * Nothing new so far (apart from privacy).
 3. Story 03:
-  * Nothing new so far.
+  * Some of my tests and methods use very long chains (up to 4 elements).
 4. Story 04:
-  * Restaurant#checkout_order is lazy and greedy. It will gladly take any amount above the order's total.
+  * Restaurant#checkout_order is lazy and greedy. It will gladly take any amount above the order's total, give no change and no warning of overpayment!
+  * I wonder if I should have kept all of Restaurant's functionality inside of Takeaway. I separated the two so that Takeaway acts more like an interface and Restaurant acts more like a counterpart. In other words, I tried to make everything more like in real life.
