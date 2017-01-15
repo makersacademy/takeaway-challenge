@@ -3,7 +3,7 @@ require_relative 'message'
 
 class TakeAway
   attr_reader :items
-  attr_reader :checkout
+  
 
 
   def initialize(message = Message.new)
@@ -17,6 +17,7 @@ class TakeAway
   end
 
   def order(dish, quantity=1)
+    raise "#{dish} not found, select the right dish name" if !read_menu.include?(dish)
      add_dish(dish,quantity)
     "#{quantity}x #{dish}(s) added to your basket."
   end

@@ -1,8 +1,9 @@
 class Message
-  
+
   require 'rubygems'
   require 'twilio-ruby'
   require 'dotenv'
+  Dotenv.load
 
 
   def send_text(message)

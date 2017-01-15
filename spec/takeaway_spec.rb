@@ -11,6 +11,11 @@ describe '#read_menu' do
 end
 
   describe '#order' do
+    it 'raise an error if wrong dish name is entered' do
+      error = "curry not found, select the right dish name"
+      expect {subject.order("curry",3)}.to raise_error error
+    end
+
     it 'return a message of quantity and dish added to basket' do
       expect(subject.order("Steak", 3)).to eq "3x Steak(s) added to your basket."
     end
