@@ -25,6 +25,7 @@ class Menu
     assign_dishes(basket, dishes)
     fail "You've entered #{basket.check} dishes rather than the #{total} that you expected!" if total != basket.check
     basket.place_order
+    return basket
   end
 
   private
