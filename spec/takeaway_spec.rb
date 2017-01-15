@@ -16,14 +16,16 @@ describe Takeaway do
         # expect(subject).to respond_to(:order).with(1).argument
         expect(subject).to respond_to(:order).with(2).argument
       end
-      # it "throws an error if the dish is not on menu" do
-      #    dish = "whatever"
-      #   expect{subject.order(dish)}.to raise_error "Not on the menu, please try again"
-      # end
-      # it "adds the dish to the basket" do
-      #   dish = "Pizza"
-      #    expect{ subject.order(dish) }.to change{ subject.basket }.by [dish]
-      # end
+      it "throws an error if the dish is not on menu" do
+         dish = "whatever"
+         quantity = 1
+        expect{subject.order(dish, quantity)}.to raise_error "Not on the menu, please try again"
+      end
+      it "adds the dish to the basket" do
+        dish = "Pizza"
+        quantity = 1
+         expect{ subject.order(dish, quantity) }.to change{ subject.basket }#.by {(dish => quantity)}
+      end
     end
   end
 
