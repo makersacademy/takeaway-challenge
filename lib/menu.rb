@@ -25,12 +25,12 @@ class Menu
     @items << menu_item_class.new(args)
   end
 
-  def to_s (printer_module = menu_printer)
+  def to_s printer_module = menu_printer
     printer_module.to_string self
   end
 
   def get_item item
-    output =  get_item_by_ID item   if item.class == Fixnum
+    output =  get_item_by_id item   if item.class == Fixnum
     output =  get_item_by_name item if item.class == String
     raise "item not found: #{item}" if output.nil?
     output
@@ -42,7 +42,7 @@ class Menu
   attr_reader :menu_loader
   attr_reader :menu_file
 
-  def get_item_by_ID item
+  def get_item_by_id item
     items[item-1]
   end
 
@@ -58,6 +58,6 @@ class Menu
   end
 
   def generate_menu
-    menu_loader.load (self)
+    menu_loader.load self
   end
 end

@@ -1,9 +1,11 @@
 require "menu_item"
 describe MenuItem do
   describe "#creation " do
-    let(:test_hash) {{name:       "spring rolls",
-                      price:      500,
-                      description:"what ever is in em, i like it!"}}
+    let(:test_hash) do
+      {name:       "spring rolls",
+      price:      500,
+      description:"what ever is in em, i like it!"}
+    end
     subject{described_class.new test_hash}
     context "passed a good hash" do
       it "should have a name" do

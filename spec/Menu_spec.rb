@@ -7,9 +7,12 @@ describe Menu do
   let(:menu_loader)     {double :menu_loader,load: nil}
   let(:menu_printer)    {double :menu_printer,to_string: nil}
 
-  let(:args) {{menu_printer: menu_printer,
-               menu_loader: menu_loader,
-               menu_item_class: menu_item_class}}
+  let(:args) do
+    {menu_printer: menu_printer,
+    menu_loader: menu_loader,
+    menu_item_class: menu_item_class}
+  end
+
   subject{described_class.new args}
 
   describe "#creation" do
@@ -44,7 +47,8 @@ describe Menu do
       expect(subject.get_item(item_name)).to eq menu_item
     end
     it "should raise if given a bad ID or name" do
-      expect{subject.get_item(2)}.to raise_error(RuntimeError,"item not found: 2")
+      message = "item not found: 2"
+      expect{subject.get_item(2)}.to raise_error(RuntimeError, message)
     end
   end
   describe "#to_s" do

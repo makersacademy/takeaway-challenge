@@ -1,5 +1,5 @@
-require "./lib/core_ext/Fixnum"
-describe Fixnum do
+require "./lib/core_ext/integer"
+describe Integer do
   describe "#to_pounds_and_pence" do
     subject{543}
     it "converts 543 to £5.43" do

@@ -1,7 +1,7 @@
 #understands storing the chosen items and adding up the prices
 require_relative "Menu"
 require_relative "Printer"
-require "./lib/core_ext/Fixnum"
+require "./lib/core_ext/integer"
 
 class Basket
   def initialize menu = Menu.new
