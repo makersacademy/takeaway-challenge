@@ -21,9 +21,18 @@ add_dish : it takes 2 arguments,dish and quantity. This method is private and it
 
 - **Menu class**  
 The menu class hold the list of dishes and their prices. This is the class which allows the class TakeAway method read_menu to display the menu.
- 
+
 - **Message class**  
 The message class handle the confirmation message sent to the customer when the order is complete. I have used export command to add the twilio account sid, token, phone number to my environment so that I can protect my account information.
+
+- **How to use this program?**
+1. Create a new instance of class TakeAway  
+2. Read the menu  
+3. Order the dish you like  
+4. View your order basket or/and order more if you want to    
+5. Find out how it will cost you  
+6. Enter your own total  
+7. You receive a confirmation if the total you enter matches the program's one, otherwise you recieve an error that the prices do not match.  
 
 
 - irb test example
