@@ -5,3 +5,7 @@ gem 'rake'
 gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
+
+group :development, :test do
+   gem 'pry-byebug'
+end
