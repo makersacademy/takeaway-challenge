@@ -26,4 +26,9 @@ describe Menu do
     end
   end
 
+  describe '#' do
+    it 'checks if a dish is on the menu' do
+      expect(menu.has_dish?(:dumplings)).to be true
+    end
+  end
 end
