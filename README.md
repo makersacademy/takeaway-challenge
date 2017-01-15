@@ -184,6 +184,6 @@ You have placed your order, total: $64.
 Build Badges
 ------------------
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+[![Build Status](https://travis-ci.org/kateloschinina/takeaway-challenge)](https://travis-ci.org/kateloschinina/takeaway-challenge)
 
 [![Coverage Status](https://coveralls.io/repos/github/kateloschinina/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/kateloschinina/takeaway-challenge?branch=master)
