@@ -25,6 +25,17 @@ end
 
 def view_total
   @total = @basket.total
+  "The current total of your basket is £#{("%.2f" % @total)}"
+end
+
+def print_summary
+  puts "Your basket currently contains:"
+  @basket.selected_items.each do | item |
+    item.each do |dish, quantity|
+      puts "#{dish}\t £#{quantity}"
+    end
+  end
+  puts "\nTotal:\t £#{("%.2f" % @total)}"
 end
 
 

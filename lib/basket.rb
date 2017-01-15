@@ -8,7 +8,7 @@ class Basket
   def initialize(menu)
     @available_items = menu
     @selected_items = []
-    @total = 0
+    @total = 0.00
   end
 
   def add_item(dish, quantity)
