@@ -9,7 +9,7 @@ Progress = halfway through the 3rd user story.
 * >> require "./lib/takeaway.rb"
 * => true
 * >> t = Takeaway.new
-* => #<Takeaway:0x007f863a810c50 @menu={"Pizza"=>6, "Curry"=>4, "Chips"=>2}, @basket=[]>
+* => <Takeaway:0x007f863a810c50 @menu={"Pizza"=>6, "Curry"=>4, "Chips"=>2}, @basket=[]>
 * >> t.order "Curry", 1
 * "1 x Curry added to your basket!"
 * => "1 x Curry added to your basket!"
