@@ -14,7 +14,7 @@ class Takeaway
     @printer = args[:printer_module] || ArrayPrinter
     @order_class = args[:order_class] || Order
     @order_total_checker = args[:order_total_checker] || OrderTotalChecker
-    @sms_messager = args[:sms_messager] || SMSMessager
+    @sms_messager = (args[:sms_messager] || SMSMessager).new
   end
 
   def show_menu

@@ -12,7 +12,7 @@ class SMSMessager
     client.messages.create(
       from: '+441133206073',
       to: '07934024245',
-      body: 'Hey there!'
+      body: message
     )
   end
 
