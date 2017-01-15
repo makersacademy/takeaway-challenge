@@ -26,7 +26,6 @@ describe "Feature tests" do
   # I would like to be able to select some number of several available dishes
   it 'so customer can order, select dishes and store selection' do
     expect{order.dishes << {dish: menu.dishes[0], quantity: 2}}.not_to raise_error
-    expect{order.dishes << {dish: menu.dishes[1], quantity: 1}}.not_to raise_error
   end
 
   # As a customer

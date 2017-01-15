@@ -3,8 +3,8 @@ require 'twilio-configure'
 # In order to use this class you need a twilio-configure.rb
 # file in the lookup path of require storing:
 # module TwilioConfigure
-# ACCOUNT = account_id
-# TOKEN = token_number
+#   ACCOUNT = 'account_id'
+#   TOKEN = 'token_number'
 # end
 
 class TwilioHelper
