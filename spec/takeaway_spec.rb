@@ -56,6 +56,7 @@ describe Takeaway do
       expect{takeaway.checkout}.to raise_error "No items in basket"
     end
     it 'Completes checkout if items in basket' do
+      expect(STDIN).to receive(:gets).and_return("+44000000000")
       message = "Thank you for your order"
       takeaway.order "chips"
       expect(takeaway).to receive(:send_sms).with("Thank you for your order")
