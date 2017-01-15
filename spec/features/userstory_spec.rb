@@ -21,4 +21,14 @@ it 'should allow the user to select meals' do
   expect { takeaway.order_meal(dish, quantity)}.to_not raise_error
 end
 
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+it 'should show an itemised total price list' do
+  list = List.new
+  list.add_dish(dish, price)
+  takeaway = Takeaway.new(list)
+  expect { takeaway.show_price}.to_not raise_error
+end
+
 end
