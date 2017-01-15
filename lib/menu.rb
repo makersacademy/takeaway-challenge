@@ -1,6 +1,6 @@
 class Menu
 
-attr_reader :dishes
+attr_reader :dishes, :items
 
   def initialize
     @items = Array.new
@@ -14,8 +14,11 @@ attr_reader :dishes
   end
 
   def show_items
+    n = 0
     @items.each do |name,price|
-      puts "#{name}     £#{price}"
+      n += 1
+      puts "#{n} #{name}, £#{price}"
     end
   end
+
 end
