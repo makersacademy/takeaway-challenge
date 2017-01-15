@@ -18,9 +18,12 @@ end
 
 def finalise_order(confirm_total)
   raise wrong_amount_confirmed_message if confirm_total != @total_cost
-  !order_complete
+  @order_complete = true
 end
 
+def complete?
+  @order_complete
+end
 
 private
 
@@ -33,16 +36,3 @@ def add_order_cost(price, qty)
 end
 
 end
-
-#
-# def print_order
-#   items = []
-#   prices = []
-#   qty = []
-#   @current_order.each { |k, v| items << k.name.capitalize }
-#   @current_order.each { |k, v| prices << k.price}
-#   @current_order.each { |k, v| qty << v }
-#   print items
-#   print prices
-#   print qty
-# end

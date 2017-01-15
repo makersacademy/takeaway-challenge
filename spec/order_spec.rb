@@ -49,5 +49,12 @@ describe Order do
     end
   end
 
+  describe '#complete?' do
+    it "returns the current value of order_complete" do
+      order2.finalise_order(27.8)
+      expect(order2.complete?).to eq true
+    end
+  end
+
 
 end

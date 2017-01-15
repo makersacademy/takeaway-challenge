@@ -8,18 +8,9 @@ class Restaurant
     @order = order
   end
 
-  # def finalise_out_order()
-
-  # attr_reader :menu_list, :ordered_items
-  #
-  # def initialize(menu_list = {})
-
-  # end
-  #
-  # def order(*items)
-  #   @ordered_items = items
-  # end
-  #
+  def confirm_order
+    @order.order_complete == true ? 1 : 2
+  end
 
 
 end
