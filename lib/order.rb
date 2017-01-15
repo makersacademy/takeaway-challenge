@@ -8,8 +8,8 @@ class Order
 
   attr_reader :items
 
-  def initialize
-    @items = []
+  def initialize(items = [])
+    @items = items
     @client = Twilio::REST::Client.new 'ACe711baf45d2e9fe21e2d2ad8d8858108', 'e1d08802b3957ec5da9f470f19e61f11'
   end
 
