@@ -6,14 +6,22 @@ This challenge requires us to build a program so that customer can order a takea
 
 - **TakeAway class**
 New instance of this class is always instantiated with an instance of the Message class, the Menu class and an empty items hash.Under this class I have the following methods :  
-- read_menu : it returns the list of dishes and their prices.    
-- order : it is called with 2 arguments, a dish name and the quantity. it rely on a private method add_dish to add the dish and the quantity to the items hash and output a confirmation message.  
-- basket_summary : it returns a string made of all the active orders dish name and their quantity.      
-- total_price : it calculate the price of the order using the quantity and the dish price ordered then output a confirmation of the total.  
-- complete_order : it takes a number as argument, this number represents the total price the customer came up with. If the customer total is different from the checkout price, an error is raised, otherwise a confirmation text message is sent to the customer with the total price and delivery time.  
-- add_dish : it takes 2 arguments,dish and quantity. This method is private and it allows the method order to keep track of what is ordered.  
+
+read_menu : it returns the list of dishes and their prices.
+
+order : it is called with 2 arguments, a dish name and the quantity. it rely on a private method add_dish to add the dish and the quantity to the items hash and output a confirmation message.
+
+basket_summary : it returns a string made of all the active orders dish name and their quantity.
+
+total_price : it calculate the price of the order using the quantity and the dish price ordered then output a confirmation of the total.  
+
+complete_order : it takes a number as argument, this number represents the total price the customer came up with. If the customer total is different from the checkout price, an error is raised, otherwise a confirmation text message is sent to the customer with the total price and delivery time.
+
+add_dish : it takes 2 arguments,dish and quantity. This method is private and it allows the method order to keep track of what is ordered.  
+
 - **Menu class**  
-The menu class hold the list of dishes and their prices. This is the class which allows the class TakeAway method read_menu to display the menu.  
+The menu class hold the list of dishes and their prices. This is the class which allows the class TakeAway method read_menu to display the menu.
+ 
 - **Message class**  
 The message class handle the confirmation message sent to the customer when the order is complete. I have used export command to add the twilio account sid, token, phone number to my environment so that I can protect my account information.
 
