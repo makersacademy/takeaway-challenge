@@ -5,7 +5,6 @@ describe Order do
 subject(:order) { Order.new }
 let(:quantity) { double :quantity }
 let(:dish) { double :dish }
-let(:price) { double :price }
 
   it "should create an order" do
     order.add(dish, quantity)
