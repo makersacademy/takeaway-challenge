@@ -28,11 +28,11 @@ class Takeaway
 
   def confirmation_text
     # Your Account SID from www.twilio.com/console
-    client = Twilio::REST::Client.new(ENV[account_sid], ENV[auth_token])
+    client = Twilio::REST::Client.new(ENV['Acc_sid'], ENV['auth_token'])
     message = "Thank you! Your order was placed and will be delivered before #{@time}"
     client.message.create(
-      from: ENV["Twilio"],
-      to: ENV["Me"],
+      from: ENV["Twilio_no"],
+      to: ENV["Tel_no"],
       body: message
       )
   end
