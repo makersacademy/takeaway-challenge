@@ -1,3 +1,6 @@
+
+ BUILD STATUS: ![alt text](https://travis-ci.org/olwend/takeaway-challenge.svg?branch=master)
+
 Takeaway Challenge
 ==================
 ```
