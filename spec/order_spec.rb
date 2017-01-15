@@ -25,4 +25,10 @@ describe Order do
       expect(order.select_dishes(restaurant, "dish")).to include(dish)
     end
   end
+
+  describe "#confirm" do
+    xit "confirms the order has been accepted via text" do
+      expect(order.confirm).to eq
+    end
+  end
 end
