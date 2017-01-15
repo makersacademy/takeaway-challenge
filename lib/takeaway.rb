@@ -9,9 +9,7 @@ attr_reader :price, :current_order
   def initialize(menu:, config:, order: nil, sms: nil)
      @menu = menu
      @order = order || Order.new(menu)
-     @sms = sms || Sms.new
-    #  @price = []
-    #  @current_order = []
+     @sms = sms || SMS.new
 
   end
 
@@ -21,30 +19,15 @@ attr_reader :price, :current_order
     sms.deliver
     order.total
   end
-  # def show_menu
-  #    @menu = Menu.new.dishes
-  #  end
-
-  # def place_order(selection, quantity)
-  #
-  #   if @menu.has_key?(selection)
-  #   @price << [quantity * @menu[selection].to_f]
-  #   running_total = quantity * @menu[selection]
-  #   @current_order << {:Selection => selection, :Quantity => quantity, :Total => running_total}
-  #   end
-  # end
 
   def list_dishes
     menu.show_menu
   end
 
-  def to_pay
-    total
-  end
 
 private
 
-attr_reader :menu, :order, :total, :sms
+attr_reader :menu, :order, :sms
 
 
   def add_dishes(dishes)
@@ -53,8 +36,4 @@ attr_reader :menu, :order, :total, :sms
     end
   end
 
-  def total
-    @order_total = @price.inject(:+)
-    @order_total.inject(:+)
-  end
 end
