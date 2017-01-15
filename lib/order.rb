@@ -1,6 +1,8 @@
 require './lib/dish.rb'
 require './lib/menu.rb'
+
 require 'twilio-ruby'
+require 'time'
 
 class Order
 
@@ -20,10 +22,12 @@ class Order
   end
 
   def place_order
+    current_time = Time.new
+    message = "Thank you! Your order was placed at #{current_time.hour}:#{current_time.min} and will be delivered in half an hour."
     @client.messages.create(
       from: '+441133205194',
       to: '+447719198784',
-      body: 'Thank you! Your order was placed and will be delivered before 18:52'
+      body: message
     )
   end
 
