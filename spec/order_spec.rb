@@ -29,7 +29,7 @@ describe Order do
       restaurant = Restaurant.new
       restaurant.menu.dishes << dish
       order.select_dishes(restaurant, "dish")
-      expect(order.dishes).to include(dish)
+      expect(order.basket).to include(dish)
     end
   end
 
@@ -66,7 +66,7 @@ describe Order do
       restaurant.menu.dishes << dish
       order.select_dishes(restaurant, "dish")
       order.delete_meal
-      expect(order.dishes).to be_empty
+      expect(order.basket).to be_empty
     end
   end
 end

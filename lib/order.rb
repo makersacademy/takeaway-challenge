@@ -2,12 +2,12 @@ require_relative 'meal'
 require_relative 'text'
 
 class Order
-  attr_reader :dishes
+  attr_reader :basket
 
   def initialize(meal = Meal.new, text = Text.new)
     @meal = meal
     @text = text
-    @dishes = []
+    @basket = []
   end
 
   def view_dishes(restaurant)
@@ -15,7 +15,7 @@ class Order
   end
 
   def select_dishes(restaurant, *dishes)
-    @dishes = @meal.select_dishes(restaurant, *dishes)
+    @basket = @meal.select_dishes(restaurant, *dishes)
   end
 
   def price
@@ -29,7 +29,7 @@ class Order
 
   def delete_meal
     @meal.delete_meal
-    @dishes = []
+    @basket = []
   end
 
 private
