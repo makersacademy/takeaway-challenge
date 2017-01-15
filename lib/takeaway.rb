@@ -3,7 +3,7 @@ class Takeaway
 attr_reader :menu , :basket
 
   def initialize
-    @menu = {"Pizza"=> 6, "Curry"=> 4, "Chips"=> 2}
+    @menu = {"Pizza"=> 6.0, "Curry"=> 4.0, "Chips"=> 2.0}
     @basket = []
   end
 
@@ -21,13 +21,13 @@ attr_reader :menu , :basket
     # result
     puts "You have ordered:"
     result.each {|item, num | puts "#{item} x #{num}" }
-    # 
-    # # Trying to compare the item in the result against the same item in the menu, if they are the same, multiply by quantity so that subtotal = dish and new_price
-    #
-    # # result.each {|item, num | if item == { basket.each |dish, quantity | dish } puts "yes"  }
-    # puts "Subtotal is:"
-    # subtotal = Hash.new(0)
-    # result.each {|dish, quantity | result[dish] == menu.select {|i, v | subtotal = result[quantity] * menu[v] } }
+
+    subtotal = Hash.new(0)
+    result.each {|i,n| menu.each {|a,b| subtotal[i] = n * b if i == a } }
+    puts subtotal
+
+    puts "The subtotal is:"
+    subtotal.each {|dishes, price | puts "#{dishes} : £#{price}" }
 
   end
 
