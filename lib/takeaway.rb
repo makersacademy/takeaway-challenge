@@ -2,6 +2,7 @@ require_relative "menu.rb"
 require_relative "dish.rb"
 require_relative "menu_lister.rb"
 require_relative "order.rb"
+require_relative "order_total_checker.rb"
 
 class Takeaway
 
@@ -20,6 +21,7 @@ class Takeaway
 
   def place_order(order)
     raise "Your expected total order cost is wrong!" unless @order_total_checker.check_total(order)
+    print "Your order has been accepted, you will receive a text message confirmaton shortly!"
   end
 
   def new_order

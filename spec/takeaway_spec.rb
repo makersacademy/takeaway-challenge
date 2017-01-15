@@ -46,7 +46,8 @@ describe Takeaway do
       allow(meat_feast).to receive(:price) { 15 }
       allow(order).to receive(:ordered_dishes) { { pepperoni => 3, hawaiian => 2, meat_feast => 4 } }
       allow(order).to receive(:expected_order_total) { 95 }
-      expect{takeaway.place_order(order)}.to output 
+      message = "Your order has been accepted, you will receive a text message confirmaton shortly!"
+      expect{takeaway.place_order(order)}.to output(message).to_stdout 
     end
   end
 
