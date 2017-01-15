@@ -4,7 +4,7 @@ require 'dotenv'
 class Messenger
 
 
-  def send_message(message)
+  def send(message)
 
     Dotenv.load
         account_sid = ENV["TWILIO_ACCOUNT_SID"]
