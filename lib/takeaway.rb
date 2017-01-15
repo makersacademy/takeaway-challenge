@@ -35,7 +35,7 @@ class Takeaway
     puts "\nThank you for your order!\n\nORDER DETAILS:\n"
     basket
     puts "You should receive an SMS message shortly confirming your order\n\n"
-    send(account_sid, auth_token, twilio_phone, customer_phone)
+    get_sms_details
   end
 
   private
