@@ -24,7 +24,7 @@ private
   def client_send(message, client = Twilio::REST::Client)
     client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account.messages.create(
     :body => @message,
-    :to => "+447970670390",
-    :from => "+441133205565")
+    :to => ENV['TO_NUMBER'],
+    :from => ENV['TWILIO_NUM'])
   end
 end
