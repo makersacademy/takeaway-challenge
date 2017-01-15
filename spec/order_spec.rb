@@ -1,4 +1,5 @@
 require 'order'
+require 'message'
 
 describe Order do
   let(:dishes) do { lasagna: 4.50, pizza: 7.50, steak: 17.50 } end

@@ -1,3 +1,5 @@
+require 'message'
+
 class Order
 
 attr_reader :dishes, :current_order
@@ -5,6 +7,7 @@ attr_reader :dishes, :current_order
   def initialize(dishes)
     @dishes = dishes
     @current_order = {}
+    @message = Message.new
   end
 
   def select_dish(dish, num)
@@ -18,8 +21,9 @@ attr_reader :dishes, :current_order
   end
 
   def confirm_total(user_total)
-  raise "Your total is not correct. Enter #{total} to process the order." unless user_total == total
-  true
+    raise "Your total is not correct. Enter #{total} to process the order." unless user_total == total
+    @message.send
+    true
   end
 
 end
