@@ -4,7 +4,8 @@ describe Dish do
 
   let(:price) { 4.99 }
   let(:name) { "Pepperoni pizza" }
-  subject(:dish) { described_class.new(name, price) }
+  let(:args) {{ :name => name, :price => price }}
+  subject(:dish) { described_class.new(args) }
 
  describe "#name" do
    it "returns the name" do
