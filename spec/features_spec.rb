@@ -33,12 +33,15 @@ describe "Feature tests" do
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
   # Place the order by giving the list of dishes, their quantities and a number that should be the exact total.
-  it 'so customer can order, check order total match sum of dishes prices' do
+  it 'so customer can order, place the order by giving list of dishes, their quantities and a number that should be the exact total' do
     order.dishes += [
       {dish: menu.dishes[0], quantity: 2},
       {dish: menu.dishes[1], quantity: 1}
     ]
-    expect(order.total).to eq 42
+    restaurant = Restaurant.new
+    restaurant.twiliohelper = TwilioHelper.new(send_sms_for_real: false)
+    expect{restaurant.confirm(order.dishes,42)}.not_to raise_error
+    expect{restaurant.confirm(order.dishes,30)}.to raise_error 'Cannot place order: total is wrong'
   end
 
   # As a customer
@@ -51,6 +54,6 @@ describe "Feature tests" do
     restaurant = Restaurant.new
     restaurant.twiliohelper = TwilioHelper.new(send_sms_for_real: false)
     # restaurant.twiliohelper = TwilioHelper.new
-    expect{restaurant.confirm}.not_to raise_error
+    expect{restaurant.confirm(order.dishes,42)}.not_to raise_error
   end
 end
