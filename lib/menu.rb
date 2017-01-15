@@ -30,9 +30,7 @@ class Menu
     printf("%-20s %8s \n", "ITEM", "PRICE")
   end
   def display_items
-    items.each do |k,v|
-      printf("%-20s %8.2f\n",k,v)
-    end
+    items.each { |k,v| printf("%-20s %8.2f\n",k,v) }
     print "\n"
   end
 end

@@ -8,18 +8,18 @@ class Order
     @menu = Menu.new
   end
   def add(item, qty)
-    raise not_on_menu_msg unless menu.has?(item)
+    raise not_on_menu_error unless menu.has?(item)
     basket.add(item, qty)
   end
   def remove(item, qty)
-    raise not_in_basket_msg unless basket.has?(item)
+    raise not_in_basket_error unless basket.has?(item)
     basket.remove(item, qty)
   end
   def cancel
     @basket  = Basket.new
   end
   def buy
-    confirmation_msg + delivery_time
+    print "#{confirmation_msg} #{delivery_time}\n\n"
   end
   def view
     display_header
@@ -28,17 +28,17 @@ class Order
   end
 
   private
-  def not_on_menu_msg
+  def not_on_menu_error
     "The requested item is not on the menu"
   end
-  def not_in_basket_msg
+  def not_in_basket_error
     "You have not ordered this item"
   end
   def confirmation_msg
-    "Thank you. Your order was placed and will be delivered before "
+    "Thank you. Your order was placed and will be delivered before"
   end
   def delivery_time
-    "#{(Time.now.hour + 1).modulo(24)}:#{Time.now.min}."
+    "#{(Time.now.hour + 1).modulo(24)}:#{Time.now.min}"
   end
   def display_header
     print "\nYOUR ORDER\n\n"

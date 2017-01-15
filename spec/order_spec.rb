@@ -39,8 +39,7 @@ describe Order do
     it "confirms to customer" do
       subject.add("rice", 2)
       subject.add("veg curry", 2)
-      msg = "Thank you. Your order was placed and will be delivered before "
-      expect(subject.buy).to include(msg)
+      expect(subject).to respond_to(:buy).with(0).arguments
     end
   end
 
