@@ -15,3 +15,6 @@ lomito = Dish.new(:lomito, 12.75)
 
 menu1 = Menu.new(choripan, lomito, milanesa, empanada)
 menu2 = Menu.new(empanada, milanesa)
+
+
+order = Order.new(menu1)

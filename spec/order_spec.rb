@@ -12,8 +12,14 @@ describe Order do
   describe '#initialize' do
     it "loads the menu class" do
       expect(order.menu).to eq menu1
-
     end
+  end
+
+  describe '#add_dish' do
+    it "responds to add_dish with 2 arguemnts" do
+      expect(order).to respond_to(:add_dish).with(2).arguments
+    end
+    # expect(order).to respond_to(:add_dish).with(2).arguments
   end
 
 
