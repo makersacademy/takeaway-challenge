@@ -14,9 +14,9 @@
 #     end
 #
 #   end
-#
-#   describe '#order' do
 # 
+#   describe '#order' do
+#
 #     it "allows to order an item from the menu_list" do
 #       expect(subject.order :choripan ).to eq [:choripan]
 #

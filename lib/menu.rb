@@ -6,9 +6,7 @@ class Menu
 
   def initialize(*dish_items)
     @menu_items = {}
-    dish_items.each do |item|
-        menu_items[item.name] = item.price
-    end
+    dish_items.each { |item| menu_items[item.name] = item.price }
   end
 
   # def print_menu
