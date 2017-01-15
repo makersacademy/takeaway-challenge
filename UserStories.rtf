@@ -26,3 +26,18 @@ OBJECTS | MESSAGES
 customer  |
 list of dishes  |  see
 prices  |
+
+
+to use:
+  add a dish by:
+    <dishname> = Dish.new("<dishname>", <price number>)
+  add it to menu:
+    <menuname> = Menu.new
+    <menuname>.add_dish(<dishname>)
+  show dishes on menu:
+    <menuname>.show_items
+  to order:
+    <ordername> = Order.new
+    <ordername>.add_to_order(<dishname>)
+  to show order:
+    <ordername>.show_order

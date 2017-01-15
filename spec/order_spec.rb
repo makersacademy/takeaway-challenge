@@ -1,3 +1,4 @@
+=begin
 require 'order.rb'
 
 describe Order do
@@ -39,3 +40,4 @@ subject(:order) {Order.new}
   end
 
 end
+=end

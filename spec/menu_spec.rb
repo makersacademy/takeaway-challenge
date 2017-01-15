@@ -22,7 +22,12 @@ describe Menu do
     dish = Dish.new('noodles', 5)
     menu.add_dish(dish)
     it 'displays the menu' do
-      expect(menu.show_items).to eq([["Noodles", 5]])
+      expect(menu.show_items).to eq([["Noodles", 5], ["Dumplings", 3]])
+    end
+    dish1 = Dish.new('dumplings', 3)
+    menu.add_dish(dish1)
+    it 'displays a longer menu' do
+      expect(menu.show_items).to eq([["Noodles", 5], ["Dumplings", 3]])
     end
   end
 
