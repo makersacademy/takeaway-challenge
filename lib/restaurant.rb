@@ -6,7 +6,7 @@ class Restaurant
 
   def initialize
 
-    @menu = [{"fried rice" => "5 Pounds"}, {"beef-stew" => "4 Pounds"}]
+    @menu = [{"fried-rice" => "5 Pounds"}, {"beef-stew" => "4 Pounds"}]
     @order =[]
     @count = 0
     @mailer = Email_conf.new
@@ -21,7 +21,9 @@ class Restaurant
   end
 
   def order_items(item,number)
-    order << {dish: item, size: number}
+    dishes = menu.map{|key|key.keys}.flatten
+    order << {dish: item, size: number} if dishes.include?(item)
+    puts "this dish does not exist" if !dishes.include?(item)
   end
 
   def finish_order(total,phone_number = "447795556112")
@@ -29,9 +31,9 @@ class Restaurant
     order.each do |items| items.each do |k,v| @count += v.to_i end end
     raise "the total given does not equal the dishes ordered" if total != count
     puts "you have ordered #{count} dishes"
-    mailer.send_text("Your order will be delivered before #{time.hour}:#{time.min}",phone_number)
+    mailer.send_text("Your order will be delivered before #{sprintf '%02d',time.hour}:#{sprintf'%02d',time.min}",phone_number)
     @order = []
   end
-
+  
 
 end
