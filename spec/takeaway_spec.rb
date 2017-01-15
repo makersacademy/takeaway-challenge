@@ -3,6 +3,8 @@ require 'takeaway'
 describe Takeaway do
   let(:checkout) { instance_double("Checkout", :basket => {[:"Tempura Mixed Vegetables"]=>3, [:"Spicy Prawn Cracker"]=>3}, :total => 20.4) }
   let(:current_order) { double("current_order", :basket => {}, :total => 0) }
+  let(:takeaway) { Takeaway.new }
+
   it 'displays a welcome message to customers' do
     expect { subject }.to output.to_stdout
   end
@@ -20,15 +22,26 @@ describe Takeaway do
     subject.order(2,3,11.7)
     expect{subject.basket}.to output.to_stdout
   end
-  it 'allows the user to confirm that they have finished ordering' do
-    expect(subject).to respond_to(:finish)
+  it 'allows the user to confirm that they have checkouted ordering' do
+    expect(subject).to respond_to(:checkout)
   end
   it 'raises an error if the user tries to checkout with no items in the basket' do
-    expect{subject.finish}.to raise_error "Your basket is currently empty"
+    expect{subject.checkout}.to raise_error "Your basket is currently empty"
   end
-  it 'allows the user to finish ordering and start the checkout if they have items in the basket' do
-    # allow(STDIN).to receive(:gets).and_return(anything)
-    # subject.order(2,3,11.7)
-    # expect(subject.finish).not_to raise_error
+  it 'allows the user to checkout ordering and checkout if they have items in the basket' do
+    allow(subject).to receive(:send) { "SMS sent" }
+    subject.order(2,3,11.7)
+    expect{subject.checkout}.not_to raise_error
+  end
+  it 'gives a confirmation message to the user' do
+    allow(subject).to receive(:send) { "SMS sent" }
+    subject.order(2,3,11.7)
+    expect { subject.checkout }.to output.to_stdout
+  end
+  it 'receives the twilio details to send a text message' do
+    expect(subject).to respond_to(:checkout).with(4).arguments
+  end
+  it 'sends a confirmation text message' do
+    expect(subject).to respond_to(:send)
   end
 end

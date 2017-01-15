@@ -1,12 +1,11 @@
 require_relative 'menu'
 require_relative 'pretty_format'
 require_relative 'order'
-require_relative 'checkout'
+require_relative 'send_sms'
 
 class Takeaway
 
-  # attr_reader :current_order
-
+  include SMS
   include Menu
   include PrettyFormat
 
@@ -27,13 +26,16 @@ class Takeaway
   end
 
   def basket
-    puts "\nCURRENT BASKET:\n"
+    puts "\nBASKET:\n"
     pretty_format(@current_order.basket, @current_order.total)
   end
 
-  def finish
+  def checkout(account_sid=nil, auth_token=nil, twilio_phone=nil, customer_phone=nil)
     raise "Your basket is currently empty" if !@current_order
-    @checkout = Checkout.new(@current_order.basket, @current_order.total)
+    puts "\nThank you for your order!\n\nORDER DETAILS:\n"
+    basket
+    puts "You should receive an SMS message shortly confirming your order\n\n"
+    send(account_sid, auth_token, twilio_phone, customer_phone)
   end
 
   private
