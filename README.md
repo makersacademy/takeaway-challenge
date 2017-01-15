@@ -17,8 +17,8 @@ Takeaway Challenge
  My Approach
  -------
 
- * Reading user stories I draw a domain modeling table with objects and messages. My first thought was to implement a class List and a class Dish not to have the list of dishes hard coded in the List class (thinking about the owner of the Takeaway and how he would then need to add and delete dishes etc.). After a while I changed my mind thought: it wasn't a required feature. So I just added a hash to @dishes in the List class.
- 
+ * Reading user stories I draw a domain modeling table with objects and messages. My first thought was to implement a class List and a class Dish not to have the list of dishes hard coded in the List class (thinking about the owner of the Takeaway adding and deleting dishes etc.). After a while I changed my mind: it wasn't a required feature. So I just added a hash to @dishes in the List class. Then refactored: dishes (hash) can be given as an argument initializing the List class.
+
  * Feel free to use google, your notes, books, etc. but work on your own
  * If you refer to the solution of another coach or student, please put a link to that in your README
  * If you have a partial solution, **still check in a partial solution**

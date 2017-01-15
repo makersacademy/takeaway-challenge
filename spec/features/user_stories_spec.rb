@@ -13,8 +13,12 @@ describe 'User stories' do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  xit "select a number of dishes" do
-    expect(order.select_dishes(name, quantity)).to eq
+  it "select a number of dishes" do
+    dishes = {lasagna: 4.50, pizza: 7.50, steak: 17.50}
+    order = Order.new(dishes)
+    order.select_dish(:pizza, 1)
+    order.select_dish(:lasagna, 3)
+    expect(order.current_order).to include(:pizza, :lasagna) 
   end
 
 end
