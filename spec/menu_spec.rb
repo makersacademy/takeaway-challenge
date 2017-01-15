@@ -12,6 +12,13 @@ describe Menu do
         expect(menu.dishes).to eq(dishes)
     end
     
+    it 'can check if a dish is on the menu' do
+        dish = :lamb_rogan_josh
+        wrong_dish = :big_mac
+        expect(menu.on_menu?(dish)).to eq true
+        expect(menu.on_menu?(wrong_dish)).to eq false
+    end
+    
     it 'can print a list of dishes' do
         expect(menu.print_dishes).to eq(print_dishes)
     end

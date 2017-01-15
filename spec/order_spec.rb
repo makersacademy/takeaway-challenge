@@ -4,6 +4,12 @@ describe Order do
     
     subject(:order) {described_class.new}
     
+    it 'can\'t add dishes that aren\'t on the menu' do
+        wrong_order = "Lamb Rogan Josh 1, Big Mac 3"
+        error = "Big Mac is not on the menu"
+        expect{order.add(wrong_order)}.to raise_error error
+    end
+    
     context 'has been passed an order' do
         
         before do
@@ -22,3 +28,9 @@ describe Order do
         end
     end
 end
+
+# Edge cases
+#
+#Over writing orders?
+#increasing quantity?
+#misspelt orders?

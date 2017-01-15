@@ -1,4 +1,8 @@
+require_relative 'dish_to_string'
+
 class Order
+    
+    include DishToString
     
     attr_reader :current_order
     
@@ -8,9 +12,12 @@ class Order
     end
     
     def add(user_order)
-        dishes = user_order.split(', ')
-        dishes.each do |dish|
-            dish_to_hash(dish)
+        orders = user_order.split(', ')
+        orders.each do |order|
+            order_hash = order_to_hash(order)
+            error_msg = "#{dish_to_string(order_hash[:dish])} is not on the menu"
+            raise error_msg unless menu.on_menu?(order_hash[:dish])
+            current_order[order_hash[:dish]] = order_hash[:quantity]
         end
     end
     
@@ -18,7 +25,7 @@ class Order
         "Your order total is: £#{add_total.to_s.gsub(/\d{2}\z/) { |m| '.' + m }}"
     end
     
-    private
+    #private
     
     attr_reader :menu
     
@@ -28,10 +35,13 @@ class Order
         end.inject(:+)
     end
     
-    def dish_to_hash(dish)
-        dish.scan(/(.+)(\s)(\d+)/) do |dish, space, quantity|
+    def order_to_hash(order)
+        order_hash = {}
+        order.scan(/(.+)(\s)(\d+)/) do |dish, space, quantity|
             dish = dish.downcase.gsub(' ', '_').to_sym
-            current_order[dish] = quantity.to_i
+            order_hash[:dish] = dish 
+            order_hash[:quantity] = quantity.to_i
         end
+        order_hash
     end
 end
