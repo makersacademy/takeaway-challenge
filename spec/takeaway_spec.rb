@@ -1,9 +1,11 @@
-require 'takeaway'
+require "takeaway"
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu: menu, order: order) }
+  subject(:takeaway) { described_class.new(menu: menu, order: order, messenger: messenger) }
   let(:menu) { double(:menu, print: printed_menu) }
   let(:order) { instance_double("Order", total: 18.50) }
+  let(:messenger) { instance_double("Messenger", send_message: nil) }
+
 
   let(:printed_menu) { "soup, £3.50" }
   let(:dishes) { {dumplings: 3, soup: 1} }
@@ -27,5 +29,12 @@ describe Takeaway do
     end
   end
 
+  describe '#send_delivery_message' do
+    it 'sends a text to confirm the order' do
+      allow(order).to receive(:add)
+      expect(messenger).to receive(:send_message)
+      takeaway.select_dishes(dishes)
+    end
+  end
 
 end

@@ -1,15 +1,12 @@
-require 'messenger'
+require "messenger"
 
 describe Messenger do
   subject(:messenger) { described_class.new }
 
-  before do
-    allow(messenger).to receive(:send_message)
-  end
-
-  it 'sends a payment confirmation text message' do
-    expect(messenger).to receive(:send_message).with("Thank you for your order - will be with you shortly")
-    messenger.send_message("Thank you for your order - will be with you shortly")
+  describe '#send_delivery_message' do
+    it 'sends a payment confirmation text message' do
+      expect(messenger).to respond_to(:send_message).with(1).argument
+    end
   end
 
 end
