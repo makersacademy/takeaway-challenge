@@ -11,7 +11,12 @@ describe Takeaway do
   let(:array_printer) { class_double("ArrayPrinter") }
   let(:order_total_checker) { class_double("OrderTotalChecker") }
   let(:order_class) { class_double("Order") }
-  let(:args) { {:menu => menu, :printer_module => array_printer, :order_class => order_class, :order_total_checker => order_total_checker} }
+  let(:sms_messager) { instance_double("SMSMessager") }
+  let(:args) { {:menu => menu,
+                :printer_module => array_printer,
+                :order_class => order_class,
+                :order_total_checker => order_total_checker,
+                :sms_messager => sms_messager} }
   subject(:takeaway) { described_class.new(args) }
   before(:each) do
     allow(order_class).to receive(:new) { order }
@@ -35,6 +40,7 @@ describe Takeaway do
       allow(hawaiian).to receive(:price) { 10 }
       allow(meat_feast).to receive(:price) { 15 }
       allow(order).to receive(:ordered_dishes) { { pepperoni => 3, hawaiian => 2, meat_feast => 4 } }
+      allow(sms_messager).to receive(:message)
     end
     it "raises error if expected order total is wrong" do
       allow(order_total_checker).to receive(:check_total) { false }

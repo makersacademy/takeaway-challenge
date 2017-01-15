@@ -1,6 +1,19 @@
-require 'twilio-ruby'
+require_relative "twilio_client.rb"
 
-module SMSMessager
+class SMSMessager
 
+  attr_reader :client
+
+  def initialize
+    @client = TwilioClient.new.client
+  end
+
+  def message(message)
+    client.messages.create(
+      from: '+441133206073',
+      to: '07934024245',
+      body: 'Hey there!'
+    )
+  end
 
 end
