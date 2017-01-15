@@ -43,8 +43,7 @@ private
   end
 
   def send_text(message)
-    sender = SMS.new
-    sender.send_sms(message)
+    SMS.new.send_sms(message)
   end
 
 end
