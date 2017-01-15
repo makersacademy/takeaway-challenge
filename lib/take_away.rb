@@ -9,19 +9,19 @@ class TakeAway
   attr_reader :order, :order_hash
 
   def initialize(filename = 'menu.csv')
-    @menu_hash = Menu.new(filename).dishes
+    load_menu_from_the_file(filename)
     @order_hash = Hash.new 0
   end
 
   def read_menu(filename = 'menu.csv')
-    menu = Menu.new(filename)
-    menu.print_menu
-    @menu_hash = menu.dishes
+    load_menu_from_the_file(filename)
+    @menu.print_menu
   end
 
   def add_to_order(menu_number, quantity)
+    is_dish_on_the_menu?(menu_number)
+    update_order(menu_number, quantity)
     puts "#{quantity}x #{@menu_hash[menu_number].name}(s) added to your busket."
-    @order_hash.key?(menu_number) ? @order_hash[key] += quantity : @order_hash.store(menu_number,quantity)
   end
 
   def place_order(order_hash = @order_hash)
@@ -36,6 +36,19 @@ class TakeAway
   end
 
   private
+
+  def is_dish_on_the_menu?(menu_number)
+    raise "Please select dish from the menu" unless @menu.dishes.key?(menu_number)
+  end
+
+  def update_order(menu_number, quantity)
+    @order_hash.key?(menu_number) ? @order_hash[key] += quantity : @order_hash.store(menu_number,quantity)
+  end
+
+  def load_menu_from_the_file(filename)
+    @menu = Menu.new(filename)
+    @menu_hash = @menu.dishes
+  end
 
   def finalize_order
     SMS.new(@order.total).send_sms

@@ -2,9 +2,9 @@ require 'order'
 
 describe Order do
 
-  let(:order_hash) { double :order_hash }
-  let(:menu) { double :menu }
-  subject(:order) { described_class.new(order_hash,menu) }
+  let(:order_hash) { { 1 => 3, 6 => 2, 9 => 1} }
+  let(:menu_hash) { Menu.new.dishes }
+  subject(:order) { described_class.new(order_hash,menu_hash) }
 
   describe 'class' do
     it 'creates an insatnce of Order class' do
@@ -15,14 +15,13 @@ describe Order do
   describe '#total' do
     it { is_expected.to respond_to(:total).with(0).arguments }
     it 'calculates total cost of order' do
-      # ??? How to test for it properly?
+      expect(order.total).to eq(85)
     end
   end
 
   describe '#print_order' do
     it 'prints order to stout' do
-      # order.total
-      # expect { order.print_order }.to output.to_stdout
+      expect { order.print_order }.to output.to_stdout
     end
   end
 

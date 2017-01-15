@@ -12,7 +12,7 @@ describe Dish do
     expect(dish).to be_a(Dish)
   end
 
-  context 'name' do
+  describe '#name' do
     let(:new_name) {double :new_name}
     it 'stores dish name' do
       expect(dish_info.name).to eq(name)
@@ -23,7 +23,7 @@ describe Dish do
     end
   end
 
-  context 'ingredients' do
+  describe '#ingredients' do
     let(:new_ingredients) { double :new_ingredients }
     it 'stores dish ingredients' do
       expect(dish_info.ingredients).to eq(ingredients)
@@ -34,7 +34,7 @@ describe Dish do
     end
   end
 
-  context 'price' do
+  describe '#price' do
     let(:new_price) { double :new_price }
     it 'stores dish price' do
       expect(dish_info.price).to eq(price)
@@ -45,7 +45,7 @@ describe Dish do
     end
   end
 
-  context 'type' do
+  describe '#type' do
     let(:new_type) { double :new_type }
     it 'stores dish type' do
       expect(dish_info.type).to eq(type)

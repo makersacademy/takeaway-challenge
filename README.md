@@ -103,40 +103,85 @@ Customer    Menu    Order     Dish    Message
 ```
 
 
-Solution
+Suggested usage
 -----
-
-
-
-
-
-
-
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
 ```
-$ coveralls report
+[1] pry(main)> take_away = TakeAway.new
+[2] pry(main)> take_away.read_menu
+                  Momofuku Noodle Bar, NY
+                     -----------------
+
+                           Daily
+
+                1:  Wild Scallop Crudo, $17
+               beets, horseradish, olive oil
+
+            2:  Black Winter Truffle Ramen, $48
+             Périgord truffles, egg yolk, Hozon
+
+              3:  Smothered Katsu Chicken, $24
+            pickled green beans, shiitake gravy
+
+                 4:  Brussels Sprouts, $14
+                   miso, chili, pine nuts
+
+                            Buns
+
+                      5:  Shrimp, $13
+           spicy mayo, pickled red onion, iceberg
+
+                     6:  Shiitake, $13
+                 hoisin, scallion, cucumber
+
+                 7:  Chicken Meatball, $13
+              jalapeño, iceberg, paprika mayo
+
+                      8:  Brisket, $13
+          horseradish, pickled red onion, cucumber
+
+                        Small Plates
+
+                    9:  Swiss Chard, $8
+           Asian pear, sesame, kimchi vinaigrette
+
+                  10:  Spicy Cucumber, $8
+                scallion, togarashi, almonds
+
+               11:  Smoked Chicken Wings, $15
+              pickled chili, garlic, scallion
+
+               12:  BBQ Pork Belly Ssäm, $17
+                    lettuce cups, kimchi
+[3] pry(main)> take_away.add_to_order(6,1)
+1x Shiitake(s) added to your busket.
+=> nil
+[4] pry(main)> take_away.add_to_order(1,3)
+3x Wild Scallop Crudo(s) added to your busket.
+=> nil
+[5] pry(main)> take_away.add_to_order(16,1)
+RuntimeError: Please select dish from the menu
+[6] pry(main)> take_away.order_details
+RuntimeError: Order can't be found: looks like it hasn't been placed yet. Please place the order first.
+from
+[7] pry(main)> take_away.place_order
+The From phone number +4411332062011 is not a valid, SMS-capable inbound phone number or short code for your account.
+You have placed your order, total: $64.
+=> 64
+[8] pry(main)> take_away.order_details
+                   Details of your order:
+                     -----------------
+
+                  Shiitake, $13 x 1 = $13
+
+             Wild Scallop Crudo, $17 x 3 = $51
+
+                         Total: $64
+                 Thank you for your order!
+
+=> nil
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
+Build Badges
 ------------------
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)

@@ -48,9 +48,7 @@ describe TakeAway do
   end
 
   describe '#order_details' do
-    let(:order_hash) do
-      { 1 => 3, 6 => 2, 9 => 1}
-    end
+    let(:order_hash) { { 1 => 3, 6 => 2, 9 => 1} }
     let (:message) { double :message }
     it 'prints order upon request' do
       allow(message).to receive(:send_sms).and_return(true)

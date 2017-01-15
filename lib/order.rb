@@ -6,7 +6,7 @@ class Order
 
   def initialize(order_hash, menu_hash)
     @order_hash = order_hash
-    @menu = menu_hash
+    @menu_hash = menu_hash
     @order_hash.is_a?(Hash) ? @total = total : @total = "n/a"
   end
 
@@ -24,10 +24,9 @@ class Order
 
   def items_total
     @order_hash.map do |key,value|
-      @menu[key].price * value
+      @menu_hash[key].price * value
     end
   end
-
 
   def print_header(output_width)
     puts "Details of your order:".center(output_width),
@@ -37,8 +36,8 @@ class Order
 
   def print_body(output_width)
     @order_hash.each do |key,value|
-      name = @menu[key].name
-      price = @menu[key].price
+      name = @menu_hash[key].name
+      price = @menu_hash[key].price
       puts "#{name}, $#{price} x #{value} = $#{price*value}".center(output_width),
       ""
     end
@@ -49,6 +48,5 @@ class Order
     "Thank you for your order!".center(output_width),
     ""
   end
-
 
 end
