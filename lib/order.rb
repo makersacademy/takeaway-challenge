@@ -25,7 +25,7 @@ class Order
         "Your order total is: £#{add_total.to_s.gsub(/\d{2}\z/) { |m| '.' + m }}"
     end
     
-    #private
+    private
     
     attr_reader :menu
     

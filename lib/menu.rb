@@ -6,7 +6,9 @@ class Menu
     
     attr_reader :dishes
     
-    def initialize(dishes_file = './lib/dishes.txt')
+    DISHES_FILE = './lib/dishes.txt'
+    
+    def initialize(dishes_file = DISHES_FILE)
         @dishes = {}
         create_dishes_hash(dishes_file)
     end
