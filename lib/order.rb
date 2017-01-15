@@ -33,7 +33,7 @@ class Order
   end
 
   def checkout
-    puts "Your order has been accepted, you will receive a text message confirmation shortly!"
+    sms_messager.message("Your order is confimed and will be ordered before #{time_in_one_hour}")
     @ordered
   end
 

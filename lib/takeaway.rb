@@ -1,7 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
 
-
 class Takeaway
 attr_reader :menu_object, :order_array
 
