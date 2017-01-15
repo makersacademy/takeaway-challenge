@@ -35,7 +35,7 @@ class Takeaway
     puts "\nThank you for your order!\n\nORDER DETAILS:\n"
     basket
     puts "You should receive an SMS message shortly confirming your order\n\n"
-    get_sms_details
+    send
   end
 
   private
