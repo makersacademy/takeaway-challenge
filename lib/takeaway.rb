@@ -13,10 +13,11 @@ attr_reader :menu_object, :order_array
   end
 
   def show_menu
+    raise "No dishes available: Please add dishes to the menu" if @menu_object.show_menu_array.empty?
     @menu_object.show_menu_array.each do |x|
       puts "#{x[:name]} : £#{x[:price]}"
     end
-    
+
   end
 
 # order will use the index of menu_array
@@ -35,6 +36,7 @@ attr_reader :menu_object, :order_array
   end
 
   def basket
+    raise "No Dishes Selected: Please add a dish to your order" if @ordered.empty?
     @ordered
   end
 
@@ -45,5 +47,10 @@ attr_reader :menu_object, :order_array
     end
     @total_basket
     return "Your total - £#{total_basket}"
+  end
+
+  def checkout
+    puts "Your order has been accepted, you will receive a text message confirmaton shortly!"
+    @ordered
   end
 end
