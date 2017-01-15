@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'message'
 
 class TakeAway
 
@@ -27,6 +28,8 @@ class TakeAway
   def place_order(order_hash)
     error_if_no_order_info(order_hash)
     @order = Order.new(order_hash, @menu_hash)
+    m = Message.new(@order.total)
+    m.send_sms
     @order.total
   end
 

@@ -6,3 +6,6 @@ gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
 gem 'pry'
+gem 'sinatra'
+gem 'twilio-ruby'
+gem 'jwt', '<=1.2'

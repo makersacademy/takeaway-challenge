@@ -15,7 +15,6 @@ class Order
     @order_hash.each do |key,value|
       total += @menu[key].price * value
     end
-    puts "Thank you for your order: £#{total}"
     total
   end
 

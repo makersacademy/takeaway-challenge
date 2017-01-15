@@ -64,7 +64,7 @@ Approach to solving the challenge
 
 > Customer -> can select from Menu and **place Order** (receive total amount and confirmation text message back)
 
->  - Customer -> will receive text Message "Thank you! Your order for the total amount if £[x] was placed and will be delivered before 18:52"
+>  - Customer -> will receive text Message "Thank you! Your order for the total amount of £[x] was placed and will be delivered before 18:52"
 
 > Order = list of *selected* Dishes, their quantities, total amount
 
