@@ -28,5 +28,16 @@ class Order
 
   def double_check(total_price)
     return true if order_sum == total_price
-  end 
+  end
+
+  def view_order
+    if @order_items.size == 0
+      @order_items = '0.00'
+    else
+      puts "Your order includes the following: "
+      self.order_items.each do |item|
+        puts "#{item[:no]}. #{item[:dish]}" + "...EUR #{item[:price]}"
+      end
+    end
+  end
 end

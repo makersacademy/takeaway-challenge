@@ -97,32 +97,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
  @order_items=[],
  @order_sum=0>
 [3] pry(main)> order.add_dish(1)
-=> [{:no=>"1.000000", :dish=>"Yase Soup", :price=>2.55}]
-[4] pry(main)> exit
-➜  takeaway-challenge git:(master) ✗ prey
-zsh: command not found: prey
-➜  takeaway-challenge git:(master) ✗ pry
-[1] pry(main)> require './lib/order'
-=> true
-[2] pry(main)> order = Order.new(Menu)
-=> #<Order:0x007fe620264cc0
- @menu=
-  #<Menu:0x007fe620264c98
-   @menu_items=
-    [{:no=>"01", :dish=>"Yase Soup", :price=>2.55},
-     {:no=>"02", :dish=>"Wan Tan Soup", :price=>3.25},
-     {:no=>"03", :dish=>"Tori Mushi", :price=>3.05},
-     {:no=>"04", :dish=>"Tom Yam Soup", :price=>4.55},
-     {:no=>"05", :dish=>"Tori Yam Soup", :price=>3.55},
-     {:no=>"06", :dish=>"Umami Soup", :price=>4.55},
-     {:no=>"07", :dish=>"Beef Tatar", :price=>5.85},
-     {:no=>"08", :dish=>"Moyashi Salad", :price=>3.05},
-     {:no=>"09", :dish=>"Kimchi Salad", :price=>3.45},
-     {:no=>"10", :dish=>"Hokkaido", :price=>6.55},
-     {:no=>"11", :dish=>"Shapu Salad", :price=>4.05}]>,
- @order_items=[],
- @order_sum=0>
-[3] pry(main)> order.add_dish(1)
 => [{:no=>"01", :dish=>"Yase Soup", :price=>2.55}]
 [4] pry(main)> order.add_dish(2)
 => [{:no=>"01", :dish=>"Yase Soup", :price=>2.55},
