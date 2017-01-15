@@ -41,8 +41,8 @@ end
 
 def the_message(client, time)
   client.messages.create(
-    to: "+353 86 350 9027",
-    from: "+353 86 180 2719",
+    to: ENV["TO"],
+    from: ENV["FROM"],
     body: "Your order has been placed and will arrive at approx. #{time}"
   )
 end
