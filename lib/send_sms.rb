@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 
 class SMS
-	def send_sms
+	def send_sms(total)
 	account_sid = "AC9fe864dc6d88faab1607dccba36ba0b4"
 	int_1 = "91d0211d058f1975"
 	int_2 = "7b141c928f25cf7b"
@@ -18,7 +18,7 @@ class SMS
 	    @client.account.messages.create({
 	        :to => to_num,
 	        :from => from,
-	        :body => "Thank you! Your order was placed and will be delivered before #{deliver_time}" })
+	        :body => "Thank you! Your order was placed, total #{total} and will be delivered before #{deliver_time}" })
 	end
 
 end
