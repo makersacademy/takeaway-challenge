@@ -16,10 +16,10 @@ describe Order do
   end
 
   describe '#add_dish' do
-    it "responds to add_dish with 2 arguemnts" do
-      expect(order).to respond_to(:add_dish).with(2).arguments
+    it "adds the dish and qty to order hash" do
+      order.add_dish(choripan, 2)
+      expect(order.order).to include choripan
     end
-    # expect(order).to respond_to(:add_dish).with(2).arguments
   end
 
 
