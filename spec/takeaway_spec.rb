@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   context 'Menu' do
-  let(:takeaway) { described_class.new }
+    let(:takeaway) { described_class.new }
 
     it 'Should be able to call #read_menu method from Menu' do
       expect(takeaway.read_menu).to respond_to(:read_menu)
@@ -35,25 +35,33 @@ describe Takeaway do
       end
     end
   end
+
   describe '#send_sms' do
-  let(:takeaway) { described_class.new}
+    let(:takeaway) { described_class.new}
 
     before do
       takeaway.order "chips"
       allow(takeaway).to receive(:send_sms)
-      #allow_message_expectations_on_nil
     end
     it 'Sends an sms to confirm order' do
-      message = "Thank you for your order"
       expect(takeaway).to receive(:send_sms).with("Thank you for your order")
       takeaway.send_sms("Thank you for your order")
     end
   end
+
   describe "#checkout" do
-  let(:takeaway) { described_class.new}
+    let(:takeaway) { described_class.new}
+
     it 'Raises an error if no items added to basket the checkout process' do
       expect{takeaway.checkout}.to raise_error "No items in basket"
     end
+    it 'Completes checkout if items in basket' do
+      message = "Thank you for your order"
+      takeaway.order "chips"
+      expect(takeaway).to receive(:send_sms).with("Thank you for your order")
+      takeaway.checkout
+    end
+
   end
 
 end

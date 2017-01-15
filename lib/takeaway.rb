@@ -27,7 +27,7 @@ class Takeaway
 
   def checkout
     fail "No items in basket" if @basket.empty?
-    puts "#{total} - Please enter phone number and press enter order"
+    puts "#{total}, Please enter mobile number and press enter/return to order"
     @user = $stdin.gets.chomp
     @message = "Thank you for your order"
     send_sms(message)

@@ -1,5 +1,6 @@
 require 'twilio-ruby'
 
+private
 module SMS
   def send_sms(_message)
     account_sid = "AC5e9caa7cfc49df6c213aab630094cdd8"
