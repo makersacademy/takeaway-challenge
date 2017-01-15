@@ -55,4 +55,15 @@ describe Meal do
       expect(meal.total_price).to eq(total)
     end
   end
+
+  describe "#delete_meal" do
+    it "deletes the meal" do
+      restaurant = Restaurant.new
+      restaurant.menu.dishes << dish
+      restaurant.menu.dishes << dish2
+      meal.select_dishes(restaurant, "dish", "dish2")
+      meal.delete_meal
+      expect(meal.selected_dishes).to be_empty
+    end
+  end
 end

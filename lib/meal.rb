@@ -22,6 +22,7 @@ class Meal
 
   def view_prices
     raise "No Dishes Selected" if @selected_dishes.empty?
+    @prices = []
     @selected_dishes.each do |item|
       @prices << item.price
     end
@@ -29,9 +30,13 @@ class Meal
   end
 
   def total_price
+    @total_price = 0
     view_prices
     @prices.each {|price| @total_price += price}
     @total_price
   end
 
+  def delete_meal
+    @selected_dishes = []
+  end
 end

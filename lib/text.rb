@@ -7,12 +7,11 @@ class Text
 
   def initialize
     Envyable.load('./config/env.yml', 'development')
-    @message = 0
   end
 
   def send_message(total = 0)
     client_send(@message = generate_message(total))
-    return @message
+    @message
   end
 
 private
@@ -20,7 +19,6 @@ private
   def generate_message(total = 0)
     "Thank you! Your order came to £#{total}. "\
     "You can expect your delivery at #{(Time.new + 3600).strftime('%I:%M%P')}"
-    #reformat strftime
   end
 
   def client_send(message, client = Twilio::REST::Client)

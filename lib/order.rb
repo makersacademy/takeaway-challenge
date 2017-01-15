@@ -7,6 +7,7 @@ class Order
   def initialize(meal = Meal.new, text = Text.new)
     @meal = meal
     @text = text
+    @dishes = []
   end
 
   def view_dishes(restaurant)
@@ -21,18 +22,19 @@ class Order
     @meal.total_price
   end
 
-  # def verify_order
-  # end
-
   def complete_order(price)
-    @text.send_message(price) if is_correct_amount?(price)
+    raise "Sorry, please confirm your order price" unless correct_amount?(price)
+    @text.send_message(price)
+  end
+
+  def delete_meal
+    @meal.delete_meal
+    @dishes = []
   end
 
 private
 
-  def is_correct_amount?(price)
+  def correct_amount?(price)
     @meal.total_price == price
   end
-
-
 end

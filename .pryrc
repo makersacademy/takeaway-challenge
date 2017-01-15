@@ -12,6 +12,7 @@
 # text = Text.new
 # text.send_message
 
-require './lib/restaurant.rb'
+require './lib/order.rb'
 res = Restaurant.new
-res.create_new_menu("test")
+order = Order.new
+order.select_dishes(res, "chicken_tikka", "orange_juice")
