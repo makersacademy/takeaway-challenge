@@ -1,3 +1,10 @@
+step 1: takeaway menu.
+
+New Class Takeaway
+First I set up a method to print the takeaway menu with a list of items and their prices. From my understanding, i thought it would be a good idea to delagate this into a new method Menu, which held the menus in a hash within an array and also printed the menu. As this was delageted to a new class, i set the reader to private as Takeaway was not interested in this, it just needed to get menu to do so.
+
+I also wanted menu to take control of the printing of the dishes on the menu, I therefore gave it a method to print the dishes into a string of dishes and prices.
+
 Takeaway Challenge
 ==================
 ```
@@ -11,7 +18,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +76,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
