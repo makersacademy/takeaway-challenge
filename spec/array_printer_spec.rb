@@ -12,12 +12,18 @@ describe ArrayPrinter do
   describe "#print" do
     before(:each) do
       allow(menu).to receive(:dishes) { dishes }
+      allow(pepperoni).to receive(:price) { 5 }
+      allow(hawaiian).to receive(:price) { 10 }
+      allow(meat_feast).to receive(:price) { 15 }
+      allow(pepperoni).to receive(:name) { "Pepperoni Pizza" }
+      allow(hawaiian).to receive(:name) { "Hawaiian Pizza" }
+      allow(meat_feast).to receive(:name) { "Meat Feast Pizza" }
     end
-    it "creates a hash" do
-      expect(printer.print(menu)).to be_a(Hash)
+    it "creates a string" do
+      expect{printer.print_array(menu.dishes)}.to output.to_stdout
     end
-    it "places dish objects in hash with keys 1..n" do
-      expect(printer.print(menu)).to include(1 => pepperoni, 2 => hawaiian, 3 => meat_feast)
+    it "places array items in string listed 1..n" do
+      expect{printer.print_array(menu.dishes)}.to output("1. #{pepperoni.name} #{pepperoni.price}\n2. #{hawaiian.name} #{hawaiian.price}\n3. #{meat_feast.name} #{meat_feast.price}").to_stdout
     end
   end
 

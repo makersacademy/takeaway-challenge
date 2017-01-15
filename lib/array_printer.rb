@@ -1,13 +1,13 @@
 module ArrayPrinter
 
-  def self.print(menu)
-    list_hash = create_hash(menu)
+  def self.print_array(array)
+    print stringify(array)
   end
 
   private
 
-  def self.create_hash(menu)
-    Hash[(menu.dishes.map.with_index { |dish, idx| [(idx +1), dish] })]
+  def self.stringify(array)
+    array.map.with_index { |item, idx| "#{idx + 1}. #{item.name} #{item.price}" }.join("\n")
   end
 
 end

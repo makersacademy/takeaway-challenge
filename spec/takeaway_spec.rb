@@ -15,7 +15,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(args) }
   before(:each) do
     allow(order_class).to receive(:new) { order }
-    allow(array_printer).to receive(:print) { {1 => pepperoni, 2 => hawaiian, 3 => meat_feast} }
+    allow(array_printer).to receive(:print_array) { print "string" }
   end
   describe "#initialize" do
     it { is_expected.to respond_to(:menu) }
@@ -23,9 +23,9 @@ describe Takeaway do
 
   describe "#show_menu" do
     it { is_expected.to respond_to(:show_menu) }
-    it "prints a hash list of the dishes in the menu" do
+    it "results in a printed string from the printer_module" do
       allow(menu).to receive(:dishes) { [pepperoni, hawaiian, meat_feast] }
-      expect{takeaway.show_menu}.to output({1 => pepperoni, 2 => hawaiian, 3 => meat_feast}.to_s).to_stdout
+      expect{takeaway.show_menu}.to output("string").to_stdout
     end
   end
 

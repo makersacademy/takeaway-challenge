@@ -16,7 +16,7 @@ class Takeaway
   end
 
   def show_menu
-    print printer.print(menu)
+    printer.print_array(menu.dishes)
   end
 
   def place_order(order)
