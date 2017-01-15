@@ -7,6 +7,7 @@ describe MenuItem do
       description:"what ever is in em, i like it!"}
     end
     subject{described_class.new test_hash}
+    
     context "passed a good hash" do
       it "should have a name" do
         expect(subject.name).to eq test_hash[:name]
@@ -18,6 +19,7 @@ describe MenuItem do
         expect(subject.price).to eq test_hash[:price]
       end
     end
+
     context "passed a bad hash" do
       it "should raise if passed a hash with no name" do
         hash = {price: 500}
@@ -31,5 +33,6 @@ describe MenuItem do
         expect{described_class.new hash}.to raise_error message
       end
     end
+
   end
 end

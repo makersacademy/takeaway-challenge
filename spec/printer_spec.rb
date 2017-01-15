@@ -14,6 +14,7 @@ describe Printer do
     price: 222
   end
   let(:menu_class){double :menu_class,items: [menu_item,menu_item2]}
+
   describe "printing a list of the menu items" do
     it "prints an individual_item" do
       desired_result =
@@ -21,6 +22,7 @@ describe Printer do
       expect(subject.item_to_string(menu_item, 1)).to eq desired_result
     end
   end
+
   describe "prints the full list of items" do
     before(:each){subject.to_string menu_class}
 

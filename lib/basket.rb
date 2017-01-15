@@ -5,7 +5,7 @@ require_relative "phone"
 require "./lib/core_ext/integer"
 
 class Basket
-  def initialize args
+  def initialize args = {}
     args = defaults.merge(args)
     @contents = []
     @menu     = args[:menu]
@@ -26,9 +26,9 @@ class Basket
   end
 
   def finish_order amount, phone_number
-    fail "incorrect amount given" if amount != total
-    fail "empty basket!" if items.empty?
-    phone.send_confirmation_text (phone_number)
+    raise "incorrect amount given" if amount != total
+    raise "empty basket!" if items.empty?
+    phone.send_confirmation_text phone_number
   end
 
   def to_s

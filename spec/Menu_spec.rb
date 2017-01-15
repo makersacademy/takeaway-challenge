@@ -20,12 +20,14 @@ describe Menu do
       expect(subject.items.size).to eq 0
     end
   end
+
   describe "#items" do
     it "should return the immutable list of menu items" do
       subject.items << 5
       expect(subject.items).not_to include 5
     end
   end
+
   describe "#add_to_menu" do
     it "should add an item of the right class to the menu" do
       subject.add_to_menu menu_item_hash
@@ -36,6 +38,7 @@ describe Menu do
       expect(subject.items).to include menu_item
     end
   end
+
   describe "#get_item" do
     before(:each){subject.add_to_menu menu_item_hash}
     it "should get by ID" do
@@ -51,10 +54,12 @@ describe Menu do
       expect{subject.get_item(2)}.to raise_error(RuntimeError, message)
     end
   end
+
   describe "#to_s" do
     it "should try to call it's printer module " do
       subject.to_s
       expect(menu_printer).to have_received(:to_string).with(subject)
     end
   end
+  
 end

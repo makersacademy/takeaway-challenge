@@ -32,7 +32,7 @@ class Menu
   def get_item item
     output =  get_item_by_id item   if item.class == Fixnum
     output =  get_item_by_name item if item.class == String
-    fail "item not found: #{item}" if output.nil?
+    raise"item not found: #{item}" if output.nil?
     output
   end
 

@@ -14,6 +14,7 @@ describe Customer do
       expect(subject.basket).to eq basket
     end
   end
+
   describe "#add_item" do
     it "should add items to basket" do
       allow(basket).to receive(:add)
@@ -21,6 +22,15 @@ describe Customer do
       expect(subject.basket).to have_received(:add).with(item)
     end
   end
+
+  describe "#view_basket" do
+    it "should try to print basket" do
+      allow(basket).to receive(:to_s)
+      subject.view_basket
+      expect(subject.basket).to have_received(:to_s)
+    end
+  end
+
   describe "#finish_order" do
     it "should finish the order taking total as an arg" do
       allow(basket).to receive(:finish_order)
@@ -29,4 +39,5 @@ describe Customer do
       expect(subject.basket).to have_received(:finish_order).with(500,phone_num)
     end
   end
+
 end

@@ -1,4 +1,3 @@
 /**/.DS_Store
 /coverage
-/lib/twilio.env
-/twilio.env
+/.env

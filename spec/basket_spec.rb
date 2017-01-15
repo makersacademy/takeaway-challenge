@@ -9,17 +9,20 @@ describe Basket do
   let(:item_3) {double :menu_item,price: 195}
   let(:args)   {{phone: phone,printer: printer, menu: menu}}
   subject{described_class.new args}
+
   describe "#creation " do
     it "should start with an empty array" do
       expect(subject.items.size).to eq 0
     end
   end
+
   describe "#items " do
     it "should return an immutable array" do
       subject.items << 5
       expect(subject.items).not_to include 5
     end
   end
+
   describe "#add_item" do
     it "should add items" do
       allow(menu).to receive(:get_item).and_return menu_item
@@ -34,6 +37,7 @@ describe Basket do
       expect(subject.total).to eq 300
     end
   end
+
   describe "#finish_order" do
     let(:phone_number){double :phone_number}
     it "should fail if given a bad total" do
@@ -51,9 +55,11 @@ describe Basket do
       expect(phone).to have_received(:send_confirmation_text).with(phone_number)
     end
   end
+
   describe "#to_s" do
     it "should be able to print itself out" do
       expect{subject.to_s}.not_to raise_error
     end
   end
+
 end
