@@ -1,21 +1,21 @@
-- name: "spring rolls"
-  description: "amazing"
-  price: 210
+- :name: "spring rolls"
+  :description: "amazing"
+  :price: 210
 
-- name: "crispy duck"
-  description : "godly"
-  price: 450
+- :name: "crispy duck"
+  :description: "godly"
+  :price: 450
 
-- name: "chicken Chow mein"
-  description: "bit boring don't you think?"
-  price: 110
+- :name: "chicken Chow mein"
+  :description: "bit boring don't you think?"
+  :price: 110
 
-- name: "Won Ton Soup"
-  price: 150
+- :name: "Won Ton Soup"
+  :price: 150
 
-- name: "Ok chicken"
-  price: 250
+- :name: "Ok chicken"
+  :price: 250
 
-- name: "great chicken"
-  description: "now you're talking"
-  price: 525
+- :name: "great chicken"
+  :description: "now you're talking"
+  :price: 525
