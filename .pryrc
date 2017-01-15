@@ -2,6 +2,7 @@ require './lib/restaurant'
 require './lib/dish'
 require './lib/menu'
 require './lib/order'
+require_relative 'sms'
 
 
 

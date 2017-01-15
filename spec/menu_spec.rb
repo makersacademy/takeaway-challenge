@@ -1,5 +1,4 @@
 require './lib/menu'
-require './lib/dish'
 
 choripan = Dish.new(:choripan, 5.95)
 milanesa = Dish.new(:milanesa, 7.95)
