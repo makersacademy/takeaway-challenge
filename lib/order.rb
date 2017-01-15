@@ -1,5 +1,4 @@
 require_relative 'menu'
-#require_relative 'delivery'
 require_relative 'basket'
 
 class Order
@@ -55,7 +54,7 @@ class Order
   end
   def total
     t = 0.00
-    basket.items.each_key { |k| t = t + basket.items[k] * menu.items[k] }
+    basket.items.each_key { |k| t += basket.items[k] * menu.items[k] }
     t
   end
 end

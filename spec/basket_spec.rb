@@ -2,7 +2,7 @@ require 'basket'
 
 describe Basket do
 
-  describe "add" do
+  describe "#add" do
     it "adds to basket" do
       subject.add("i1",2)
       subject.add("i2",4)
@@ -11,7 +11,7 @@ describe Basket do
     end
   end
 
-  describe "remove" do
+  describe "#remove" do
     it "raises error if not in basket" do
       subject.add("i1",3)
       subject.add("i2",4)

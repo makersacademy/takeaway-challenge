@@ -1,6 +1,5 @@
 class Menu
   attr_reader :items
-
   def initialize
     @items = {
       "veg curry"=>8.00,
@@ -17,28 +16,23 @@ class Menu
       "rice"=>3.00
     }
   end
-
   def show
     display_header
     display_items
   end
-
   def has?(item)
     items.key?(item)
   end
 
   private
-
   def display_header
     print "\nTAKEAWAY MENU\n\n"
     printf("%-20s %8s \n", "ITEM", "PRICE")
   end
-
   def display_items
     items.each do |k,v|
       printf("%-20s %8.2f\n",k,v)
     end
     print "\n"
   end
-
 end
