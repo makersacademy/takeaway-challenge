@@ -51,7 +51,15 @@ describe Takeaway do
       takeaway.add("Risotto con funghi porcini", 2)
       expect(order).to respond_to(:summarise)
     end
+  end
 
+  describe '#total' do
+    before do
+      allow(order).to receive(:calc_total)
+    end
+    it 'instructs order to calculate total' do
+      expect(order).to respond_to(:calc_total)
+    end
   end
 
 end

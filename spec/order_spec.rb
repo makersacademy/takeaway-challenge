@@ -38,7 +38,21 @@ describe Order do
     end
     it 'lists items with quantity and total prices' do
       order.summarise
-      expect(order.summary).to eq "Risotto con funghi porcini x3 = £12.75\nTomato and basil soup x2 = £5.9\n"
+      expect(order.summarise).to eq "Risotto con funghi porcini x3 = £12.75\nTomato and basil soup x2 = £5.9\n"
+    end
+  end
+
+  describe '#calc_total' do
+    before 'adds dishes to the menu' do
+      order.takeaway.menu.add_dish("Risotto con funghi porcini", 4.25)
+      order.takeaway.menu.add_dish("Tomato and basil soup", 2.95)
+    end
+    before 'adds items to the order' do
+      order.add_item("Risotto con funghi porcini", 3)
+      order.add_item("Tomato and basil soup", 2)
+    end
+    it 'calculates order total' do
+      expect(order.calc_total).to eq 18.65
     end
   end
 

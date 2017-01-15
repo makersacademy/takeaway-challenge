@@ -47,10 +47,10 @@ $ irb -r './lib/takeaway.rb'
  => nil
 ```
 2. Story 02:
-  * Wrote feature & unit tests for Takeaway#add method that adds an item to the order by providing a dish name and an optional quantity.
-  * The #add method calls a private #add_to_order method, which adds it to the order but has a guard clause that checks for the respective dish to exist in the menu
+  * Wrote feature & unit tests for Takeaway#add method that instructs the order to #add_item by providing a dish name and an optional quantity.
+  * The #add method has a guard clause that checks for the respective dish to exist in the menu
   * The order is an instance of a distinct __Order__ class. Wrote feature & unit tests for this class, too. Takeaway now also initializes with an empty `order`.
-  * Orders initialize with the `takeaway` that created them. They have an empty `items` hash. They also have an Order#add_item method that adds an item to their items hash.
+  * Orders initialize with the `takeaway` that created them. They have an empty `items` hash. They have an Order#add_item method that adds an item to their items hash. Feature- & unit-tested for all these.
   * The story in PRY (with a .pryrc file that requires all necessary files and adds the same items to the menu) is now:
   ```
   $ pry
@@ -65,11 +65,35 @@ $ irb -r './lib/takeaway.rb'
   from /Users/stefanliute/Projects/takeaway-challenge/lib/takeaway.rb:20:in `add_to_order'
   [4] pry(main)>
   ```
-
+3. Story 03
+  * Wrote feature & unit tests for Takeaway#order_summary and Takeaway#total methods.
+  * Takeaway#order_summary instructs the order to #summarise and has a guard clause that makes sure there is something in the order to summarise.
+  * Takeaway#total instructs the order to #calc_total and turns that number into a £-prefixed string even if the order is empty - no guard clause here.
+  * Order#summarise generates a string by reducing `items` to a string with lines each containing a dish, its quantity and the resulting price.
+  * Order#calc_total calculates a total (number) by reducing `items` to a total price that sums individual item prices (menu price * quantity)
+  * PRY goes like this (with a .pryrc file that requires what's needed, adds dishes to the menu, then adds a few items to the takeaway's order):
+  ```
+  $ pry
+  [1] pry(main)> t.order_summary
+  => "Risotto con funghi porcini x3 = £12.75\n" + "Tomato and basil soup x2 = £5.9\n"
+  [2] pry(main)> t.total
+  => "£18.65"
+  ```
+  * With nothing added to the order, #order_summary raises an error, while #total is zero:
+  ```
+  $ pry
+[1] pry(main)> t.order_summary
+RuntimeError: Sorry, but you have no items in your order to summarise
+from /Users/stefanliute/Projects/takeaway-challenge/lib/takeaway.rb:20:in `order_summary'
+[2] pry(main)> t.total
+=> "£0"
+  ```
 
 Issues
 -----
 1. Story 01:
   * At this point, the customer can add dishes to the menu if they knew they can. This is actually the restaurant manager's job. In the future, I need to make new Menu objects import their dishes from a separate file and eliminate the public #add_dish method.
 2. Story 02:
-  * nothing I can see so far.
+  * Nothing new so far (apart from privacy).
+3. Story 03:
+  * Nothing new so far.

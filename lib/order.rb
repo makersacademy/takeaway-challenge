@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :items, :takeaway, :summary
+  attr_reader :items, :takeaway
 
   def initialize(takeaway)
     @items = Hash.new(0)
@@ -12,11 +12,11 @@ class Order
   end
 
   def summarise
-    @summary = ""
-    @items.each_key do |dish|
-      summary << "#{dish} x#{@items[dish]} = £#{@takeaway.menu.dishes[dish] * @items[dish]}\n"
-    end
-    @summary
+    @items.reduce("") { |memo, (key, val)| memo += "#{key} x#{val} = £#{@takeaway.menu.dishes[key] * val}\n"}
+  end
+
+  def calc_total
+    @items.reduce(0) { |memo, (key, val)| memo += @takeaway.menu.dishes[key] * val }
   end
 
 end

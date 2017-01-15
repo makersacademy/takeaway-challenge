@@ -21,4 +21,8 @@ class Takeaway
     @order.summarise
   end
 
+  def total
+    '£' + @order.calc_total.to_s
+  end
+
 end
