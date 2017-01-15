@@ -20,13 +20,20 @@ describe "User Stories" do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   context "So I can order dishes" do
+
     it "allows me to select dishes and amount" do
       dish1 = "Fish and Chips"
       dish2 = "Shephards Pie"
       takeaway.add_to_order(dish1, 2)
       takeaway.add_to_order(dish2)
       expect(takeaway.order).to eq ({dish1 => 2, dish2 => 1})
+      expect(takeaway.view_order).to eq ["2x #{dish1}: £15.98", "1x #{dish2}: £5.99"]
+    end
+    it "raises an error when I try to add a dish that doesn't exist" do
+      message = "Cannot add to order: dish doesn't exist"
+      expect{takeaway.add_to_order(:non_existant_dish)}.to raise_error message
     end
   end
+
 
 end
