@@ -1,30 +1,23 @@
-require_relative 'dish'
+require_relative 'menu'
 
 class Restaurant
 
-  attr_reader :dishes
+  attr_reader :menu
 
-  def initialize
-    @dishes = []
-    default_dishes
+  def initialize(menu = Menu.new(Dish))
+    @menu = menu
   end
 
-  # def dishes
-  #   @dishes.dup
-  # end
-
-  def add_dish(name, price)
-    name = Dish.new(name, price)
-    @dishes << name
+  def display
+    @menu.dishes
   end
 
-  def default_dishes
-    chicken_tikka = Dish.new("chicken_tikka", 5)
-    @dishes << chicken_tikka
-    orange_juice = Dish.new("orange_juice", 2)
-    @dishes << orange_juice
-    onion_bhaji = Dish.new("onion_bhaji", 3)
-    @dishes << onion_bhaji
+  def add_dish(name, price, menu = @menu)
+    @menu.add_dish(name, price)
   end
 
+  def create_new_menu(name)
+    @name = Menu.new(Dish)
+    name
+  end
 end

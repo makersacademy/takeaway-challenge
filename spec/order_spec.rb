@@ -8,12 +8,13 @@ describe Order do
   before do
     allow(dish).to receive(:name){"dish"}
     allow(dish).to receive(:price){1}
+    allow(order).to receive(:complete_order)
   end
 
   describe "#view_dishes" do
     it "displays dishes at a specified restaurant" do
       restaurant = Restaurant.new
-      restaurant.dishes << dish
+      restaurant.menu.dishes << dish
       expect(order.view_dishes(restaurant)).to include(dish)
     end
   end
@@ -21,14 +22,18 @@ describe Order do
   describe "#select_dishes" do
     it "selects dishes at a specified restaurant" do
       restaurant = Restaurant.new
-      restaurant.dishes << dish
+      restaurant.menu.dishes << dish
       expect(order.select_dishes(restaurant, "dish")).to include(dish)
     end
   end
 
-  describe "#confirm" do
-    xit "confirms the order has been accepted via text" do
-      expect(order.confirm).to eq
+  describe "#complete_order" do
+    it "confirms the order has been accepted via text" do
+      expect(order).to receive(:complete_order).with(1)
+      restaurant = Restaurant.new
+      restaurant.menu.dishes << dish
+      order.select_dishes(restaurant, "dish")
+      order.complete_order(1)
     end
   end
 end

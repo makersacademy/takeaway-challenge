@@ -2,7 +2,7 @@ require 'meal'
 require 'restaurant'
 
 describe Meal do
-  subject(:meal){ described_class.new("") }
+  subject(:meal){ described_class.new }
   let(:dish){instance_double("Dish")}
   let(:dish2){instance_double("Dish")}
 
@@ -18,13 +18,13 @@ describe Meal do
 
   describe "#select_dishes" do
     it "selects a dish" do
-      restaurant.dishes << dish
+      restaurant.menu.dishes << dish
       expect(meal.select_dishes(restaurant, "dish")).to include(dish)
     end
     it "selects multiple dishes" do
       restaurant = Restaurant.new
-      restaurant.dishes << dish
-      restaurant.dishes << dish2
+      restaurant.menu.dishes << dish
+      restaurant.menu.dishes << dish2
       expect(meal.select_dishes(restaurant, "dish", "dish2")).to include(dish, dish2)
     end
     it "raises an error if no dishes selected" do
@@ -35,8 +35,8 @@ describe Meal do
   describe "#view_prices" do
     it "shows the selected meal's prices" do
       restaurant = Restaurant.new
-      restaurant.dishes << dish
-      restaurant.dishes << dish2
+      restaurant.menu.dishes << dish
+      restaurant.menu.dishes << dish2
       meal.select_dishes(restaurant, "dish", "dish2")
       expect(meal.view_prices).to include(dish.price, dish2.price)
     end
@@ -48,8 +48,8 @@ describe Meal do
   describe "#total_price" do
     it "shows the selected meal's total price" do
       restaurant = Restaurant.new
-      restaurant.dishes << dish
-      restaurant.dishes << dish2
+      restaurant.menu.dishes << dish
+      restaurant.menu.dishes << dish2
       meal.select_dishes(restaurant, "dish", "dish2")
       total = dish.price + dish2.price
       expect(meal.total_price).to eq(total)

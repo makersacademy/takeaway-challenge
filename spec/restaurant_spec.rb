@@ -6,24 +6,21 @@ describe Restaurant do
   name = "test"
   price = 5
 
-  it {should respond_to(:dishes).with(0).argument}
-
-  describe "#default_dishes" do
-    it "checks a restaurant is initialized with a default set of dishes" do
-      expect(restaurant.dishes[0].name).to include("chicken_tikka")
-    end
-  end
-
   describe "#add_dish" do
     it 'adds a dish to the dishes array' do
-      expect{restaurant.add_dish(name, price)}.to change{restaurant.dishes.length}.by 1
+      expect{restaurant.add_dish(name, price)}.to change{restaurant.menu.dishes.length}.by 1
     end
   end
 
   describe "#dishes" do
     it "can display the dishes at a certain restaurant" do
-      expect(restaurant.dishes).to include(Dish)
+      expect(restaurant.display).to include(Dish)
     end
   end
 
+  describe "#create_new_menu" do
+    it "can create a new menu with a name" do
+      expect(restaurant.create_new_menu("test")).to eq("test")
+    end
+  end
 end

@@ -2,8 +2,7 @@ require_relative 'restaurant'
 
 class Meal
 
-  def initialize(order)
-    @order = order
+  def initialize()
     @prices = []
     @selected_dishes = []
     @total_price = 0
@@ -16,7 +15,7 @@ class Meal
 
     dish_list = dishes.flatten.map{|dish| dish.to_s}
 
-    @selected_dishes = restaurant.dishes.select do |item|
+    @selected_dishes = restaurant.display.select do |item|
       dish_list.include?(item.name)
     end
   end
