@@ -6,23 +6,25 @@ Progress = halfway through the 3rd user story.
 
 ##Expected output
 
-* >> require "./lib/takeaway.rb"
-* => true
-* >> t = Takeaway.new
-* => <Takeaway:0x007f863a810c50 @menu={"Pizza"=>6, "Curry"=>4, "Chips"=>2}, @basket=[]>
-* >> t.order "Curry", 1
-* "1 x Curry added to your basket!"
-* => "1 x Curry added to your basket!"
-* >> t.order "Pizza", 1
-* "1 x Pizza added to your basket!"
-* => "1 x Pizza added to your basket!"
-* >> t.order "Curry", 1
-* "1 x Curry added to your basket!"
-* => "1 x Curry added to your basket!"
-* >> t.order_summary
-* You have ordered:
-* Curry x 2
-* Pizza x 1
+~~~~
+>> require "./lib/takeaway.rb"
+=> true
+>> t = Takeaway.new
+=> <Takeaway:0x007f863a810c50 @menu={"Pizza"=>6, "Curry"=>4, "Chips"=>2}, @basket=[]>
+>> t.order "Curry", 1
+ "1 x Curry added to your basket!"
+ => "1 x Curry added to your basket!"
+ >> t.order "Pizza", 1
+ "1 x Pizza added to your basket!"
+ => "1 x Pizza added to your basket!"
+ >> t.order "Curry", 1
+ "1 x Curry added to your basket!"
+ => "1 x Curry added to your basket!"
+ >> t.order_summary
+ You have ordered:
+ Curry x 2
+ Pizza x 1
+~~~~
 
 ## User Stories
 As a customer
