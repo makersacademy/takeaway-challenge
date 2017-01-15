@@ -19,6 +19,6 @@ class Order
   private
 
   def find_dish(dish_number)
-    dish = @menu.dishes[(dish_number - 1)]
+    dish = menu.dishes[(dish_number - 1)]
   end
 end
