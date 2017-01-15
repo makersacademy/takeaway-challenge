@@ -10,7 +10,7 @@ describe Menu do
 
   describe '#initialize' do
     it "initializes a hash which includes dishes and prices" do
-      expect(menu1.menu).to include { {:choripan=>5.95, :milanesa=>7.95} }
+      expect(menu1.menu_items).to include { {:choripan=>5.95, :milanesa=>7.95} }
     end
 
   end

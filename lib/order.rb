@@ -10,18 +10,15 @@ def initialize(menu)
   @total_price = 0
 end
 
-def add_dish(dish, qty)
-  @order[dish] = qty
-  # add_order_price
+def add_item(dish, qty = 1)
+  @order[dish].to_i == 0 ? @order[dish] = qty : @order[dish] = @order[dish].to_i + qty
+  add_order_price(dish.price, qty)
 end
+
+private
 
 def add_order_price(price, qty)
-  puts @order[dish]
-  # @total_price += @order
-end
-
-def total_price
-  @total_price
+  @total_price += price * qty
 end
 
 end
