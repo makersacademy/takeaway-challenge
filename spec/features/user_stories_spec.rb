@@ -3,7 +3,7 @@ describe "User Stories" do
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  it 'so that orders can be placed, take an order from the menu' do
+  it 'so that orders can be placed, show menu' do
     t = Takeaway.new
     expect { t.dishes }.not_to raise_error
   end
