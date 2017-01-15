@@ -1,8 +1,14 @@
 class Menu
-  attr_reader :items
+  attr_reader :dishes
 
   def initialize
-    @items = [{"Fish and Chips"=>7.99}, {"Shephards Pie" => 5.99}, {"Burger" => 6.99}]
+    @dishes = {"Fish and Chips"=>7.99, "Shephards Pie" => 5.99, "Burger" => 6.99}
+  end
+
+  def print
+    dishes.map do |dish, price|
+      p "#{dish}; £#{price}"
+    end
   end
 
 end

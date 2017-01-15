@@ -3,8 +3,9 @@ require 'takeaway'
 describe "User Stories" do
   let(:takeaway) { TakeAway.new }
   let(:menu) { Menu.new }
-  let (:menu_items) { menu.items }
+  let(:menu_items) { menu.print }
   let(:non_existant_dish) {double :dish}
+
 
   # As a customer
   # So that I can check if I want to order something
@@ -15,21 +16,17 @@ describe "User Stories" do
     end
   end
 
-# As a customer
-# So that I can order the meal I want
-# I would like to be able to select some number of several available dishes
-  context "so I can make an order" do
-    it "I can add items to my order" do
-      takeaway.add_to_order("Fish and Chips", 2)
-      expect{takeaway.add_to_order("Fish and Chips", 1)}.to change(takeaway, :order)
-      # expect(takeaway.view_order).to eq [{"Fish and Chips" => 3}]
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
+  context "So I can order dishes" do
+    it "allows me to select dishes and amount" do
+      dish1 = "Fish and Chips"
+      dish2 = "Shephards Pie"
+      takeaway.add_to_order(dish1, 2)
+      takeaway.add_to_order(dish2)
+      expect(takeaway.order).to eq ({dish1 => 2, dish2 => 1})
     end
-    it "I cannot add items that don't exist to my order" do
-      message = "Cannot add to order: that dish is not on the menu"
-      expect{takeaway.add_to_order(non_existant_dish, 1)}.to raise_error message
-    end
-
   end
-
 
 end

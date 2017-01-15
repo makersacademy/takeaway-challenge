@@ -1,34 +1,21 @@
 require_relative 'menu'
 
 class TakeAway
+  attr_reader :menu, :order
 
   def initialize
     @menu = Menu.new
-    @order = []
+    @order = Hash.new(0)
   end
 
   def view_menu
-    menu.items
+    menu.print
   end
 
   def add_to_order(dish, amount = 1)
-    raise "Cannot add to order: that dish is not on the menu" unless dish_exist?(dish)
-    amount.times {order << dish}
-    "#{amount} #{dish} added to order"
+    order[dish] = amount
   end
-
-  # def view_order
-  #   order.each do |item|
-  #     @basket << { item => (order.count(item)) }
-  #   end
-  #   basket.uniq
-  # end
 
   private
-  attr_reader :menu, :order
-
-  def dish_exist?(dish)
-    view_menu.any? {|hash| hash[dish]}
-  end
 
 end
