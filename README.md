@@ -66,3 +66,4 @@ Given more time, there'd be a couple more features I'd like to implement.
 * A way to pass in multiple orders, and then using a confirm_order method to pass it
 * Instead of overwriting orders, increase the quantity when passed in again
 * Presenting a list of options for possible misspelt orders
+* Refactoring of the Order class, specifically the add method
