@@ -1,13 +1,15 @@
+[![Coverage Status](https://coveralls.io/repos/github/shezdev/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/shezdev/takeaway-challenge?branch=master)
+
 #Takeaway Challenge
 ==================
-## progress is halfway through the 3rd user story.
+Progress = halfway through the 3rd user story.
 
 ##Expected output
 
->> require "./lib/takeaway.rb"
-=> true
->> t = Takeaway.new
-=> #<Takeaway:0x007f863a810c50 @menu={"Pizza"=>6, "Curry"=>4, "Chips"=>2}, @basket=[]>
+* >> require "./lib/takeaway.rb"
+* => true
+* >> t = Takeaway.new
+* => #<Takeaway:0x007f863a810c50 @menu={"Pizza"=>6, "Curry"=>4, "Chips"=>2}, @basket=[]>
 >> t.order "Curry", 1
 "1 x Curry added to your basket!"
 => "1 x Curry added to your basket!"
