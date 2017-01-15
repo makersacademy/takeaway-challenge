@@ -26,9 +26,15 @@ describe Menu do
     end
   end
 
-  describe '#' do
+  describe '#has_dish?' do
     it 'checks if a dish is on the menu' do
       expect(menu.has_dish?(:dumplings)).to be true
+    end
+  end
+
+  describe '#price' do
+    it 'calculats the price' do
+      expect(menu.price(:dumplings)).to eq(dishes[:dumplings])
     end
   end
 end

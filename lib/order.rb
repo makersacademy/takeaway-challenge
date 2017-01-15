@@ -12,4 +12,15 @@ class Order
     dishes[dish] += quantity
   end
 
+  def total
+    dish_sum.inject(:+)
+  end
+
+  private
+
+  def dish_sum
+    dishes.map do |dish, quantity|
+      menu.price(dish) * quantity
+    end
+  end
 end

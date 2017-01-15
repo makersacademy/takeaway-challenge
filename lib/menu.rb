@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :dishes
+  attr_reader :dishes, :price
 
   def initialize(dishes)
     @dishes = dishes
@@ -14,6 +14,10 @@ class Menu
 
   def has_dish?(dish)
     !dishes[dish].nil?
+  end
+
+  def price(dish)
+    dishes[dish]
   end
 
 end
