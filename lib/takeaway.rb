@@ -1,7 +1,11 @@
 require_relative 'menu'
+require_relative 'pretty_format'
 require_relative 'order'
+require_relative 'checkout'
 
 class Takeaway
+
+  # attr_reader :current_order
 
   include Menu
   include PrettyFormat
@@ -17,14 +21,19 @@ class Takeaway
 
   def order(dish, quantity, total_cost)
     raise "Total cost given does not match calculated order total" if order_error?(dish, quantity, total_cost)
-    @order ||= Order.new
-    @order.add(dish, quantity)
+    @current_order ||= Order.new
+    @current_order.add(dish, quantity)
     confirm_add
   end
 
   def basket
-    puts "CURRENT BASKET:\n"
-    pretty_format(@order.basket, @order.total)
+    puts "\nCURRENT BASKET:\n"
+    pretty_format(@current_order.basket, @current_order.total)
+  end
+
+  def finish
+    raise "Your basket is currently empty" if !@current_order
+    @checkout = Checkout.new(@current_order.basket, @current_order.total)
   end
 
   private
@@ -35,7 +44,7 @@ class Takeaway
 
   def confirm_add
     menu
-    puts "Item(s) successfully added to basket\n\n"
+    puts "Item(s) successfully added to basket\n"
     basket
   end
 

@@ -28,7 +28,7 @@ RSpec.configure do |config|
     # Redirect stderr and stdout
     $stderr = File.open(File::NULL, "w")
     $stdout = File.open(File::NULL, "w")
-    $stdin = File.open(File::NULL, "w+")
+    # $stdin = File.open(File::NULL, "r")
   end
   config.after(:all) do
     $stderr = original_stderr

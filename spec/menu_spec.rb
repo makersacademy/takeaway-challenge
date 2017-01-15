@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  context 'ALL' do
+  context 'ALL_DISHES' do
     it 'has a list of all dishes' do
       expect(Menu::ALL_DISHES).not_to be_nil
     end
