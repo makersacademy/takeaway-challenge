@@ -5,30 +5,28 @@ class Takeaway
 
 attr_reader :order, :price, :current_order
 
-  def initialize
-     @menu = nil
-     @price = []
-     @current_order = []
+  def initialize(menu:)
+     @menu = menu
+    #  @price = []
+    #  @current_order = []
 
   end
 
-  def show_menu
-     @menu = Menu.new.dishes
-   end
+  # def show_menu
+  #    @menu = Menu.new.dishes
+  #  end
 
-  def place_order(selection, quantity)
+  # def place_order(selection, quantity)
+  #
+  #   if @menu.has_key?(selection)
+  #   @price << [quantity * @menu[selection].to_f]
+  #   running_total = quantity * @menu[selection]
+  #   @current_order << {:Selection => selection, :Quantity => quantity, :Total => running_total}
+  #   end
+  # end
 
-    if @menu.has_key?(selection)
-    @price << [quantity * @menu[selection].to_f]
-    running_total = quantity * @menu[selection]
-    @current_order << {:Selection => selection, :Quantity => quantity, :Total => running_total}
-    end
-  end
-
-  def basket
-
-
-
+  def list_dishes
+    menu.show_menu
   end
 
   def to_pay
@@ -37,7 +35,7 @@ attr_reader :order, :price, :current_order
 
 private
 
-attr_reader :total
+attr_reader :menu, :total
 
   def total
     @order_total = @price.inject(:+)
