@@ -9,6 +9,11 @@ Write a Takeaway program with the specified user stories.
 Completed except didn't attempt to implement text message confirmation.
 Preferred to use available time to review the week's work instead.
 
+To do:
+* DRY tests
+* Review use of rspec
+* twilio txt message functionality
+
 ## User Stories
 
 ```
