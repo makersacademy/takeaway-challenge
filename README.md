@@ -1,3 +1,36 @@
+step 1: takeaway menu.
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+New Class Takeaway
+First I set up a method to print the takeaway menu with a list of items and their prices. From my understanding, i thought it would be a good idea to delagate this into a new method Menu, which held the menus in a hash within an array and also printed the menu. As this was delageted to a new class, i set the reader to private as Takeaway was not interested in this, it just needed to get menu to do so.
+
+
+step 2: Selecting item from the menu and the amount
+
+I also wanted menu to take control of the printing of the dishes on the menu, I therefore gave it a method to print the dishes into a string of dishes and prices.
+
+
+This was another example where i used delegation. I did not want the Takeaway class to manage this process so delageted this to an order class. This class would add dishes to an array and the amount(portions) for that order. I wanted the tests to make sure that the program would add dishes ordered from the menu to the order and the number or dishes for each menu item. I also thought it important that the user could not select dishes that were not on the menu, I built in a fail into the add method to fail if an item was not on the menu. This threw up errors as i already had items on the menu but it was erroring for each, i resloved this with a true/false method has_dish? and added a before block to allow these 2 items to pass.
+
+Step 3:
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+The statement seamed simple, I had to create a total amount price for the order placed and check it matches the total for the items ordered.
+
+I began first by creating a test for the order class to total the items ordered and return a value. I created a totals method which injected the totals of each item and their amount into an array then adding them together. this worked by adding a private method 'item_totals' and multiplying the dish ordered by the number ordered. When I ran rspec it threw up errors in the takeaway_spec and menu_spec. I had to then implement tests in each to calculate the dishes ordered and the amount of each dish ordered. I came out with a working addition method which will need to be amended to included a £ sign infront of amount.
+
+
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
 Takeaway Challenge
 ==================
 ```
@@ -11,7 +44,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +102,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
