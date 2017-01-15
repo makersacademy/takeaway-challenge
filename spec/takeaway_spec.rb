@@ -11,15 +11,17 @@ describe Takeaway do
   let(:array_printer) { class_double("ArrayPrinter") }
   let(:order_total_checker) { class_double("OrderTotalChecker") }
   let(:order_class) { class_double("Order") }
+  let(:sms_messager_class) { class_double("SMSMessager") }
   let(:sms_messager) { instance_double("SMSMessager") }
   let(:args) { {:menu => menu,
                 :printer_module => array_printer,
                 :order_class => order_class,
                 :order_total_checker => order_total_checker,
-                :sms_messager => sms_messager} }
+                :sms_messager => sms_messager_class} }
   subject(:takeaway) { described_class.new(args) }
   before(:each) do
     allow(order_class).to receive(:new) { order }
+    allow(sms_messager_class).to receive(:new) { sms_messager }
     allow(array_printer).to receive(:print_array) { print "string" }
   end
   describe "#initialize" do
