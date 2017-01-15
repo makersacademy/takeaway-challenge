@@ -15,6 +15,12 @@ attr_reader :menu , :basket
   end
 
   def order_summary
+    # p "this is the order"
+    result = Hash.new(0)
+    @basket.each {|i| i.each { |item, num | result[item] += num } }
+    # result
+    puts "You have ordered:"
+    result.each {|item, num | puts "#{item} x #{num}" }
   end
 
 
