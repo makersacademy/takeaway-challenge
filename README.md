@@ -57,72 +57,44 @@ I approached the challenge by creating the follow domain objects:
 
 Which operate within this domain model:
 
+![Domain Model](https://github.com/rkclark/takeaway-challenge/blob/master/img/Takeaway_domain_model.png)
 
-The `Takeaway`
+The `Takeaway` module is the engine of the program and the primary point of user interaction. It will display the takeaway menu and allow a new `Order` to be created. Dishes can be added to this order along with an expected total. The `Order` is then placed via the `Takeaway`, which generates a command line as well as text message confirmation.
 
-I initially understood the challenge to only require one airport. For that reason, I created Weather such that no instances of it are required, it is a class module only. Since weather is generated randomly, and is not saved, it didn't think it was necessary to have it based on creating instances. Once I understood the challenge required multiple airports I did consider changing this, but even if weather instances were used, it would still be generated randomly and the functionality would be the same. However, it would be good for the system to be able to report the weather at a given location (i.e. as a future user story).
+All of the modules were written using TDD, and a spec file exists for each one. I've used verified doubles extensively as well as stubbed methods.
 
-All of the modules were written using TDD, and a spec file exists for each one. I've used verified doubles extensively as well as stubbed methods. The project reports 99.6% test coverage with Coveralls.
+The project reports 100% test coverage with Coveralls except for the SMSReceiver module which is still in development.
 
-Problems
------
-
-There is significant repeated code in the spec files, in particular `plane_spec.rb`. This tends to be where instance doubles are being used. While I was able to create a method `set_sunny` to provide my `Weather` class double to my tests, I was not able to achieve a similar solution for instance doubles. Whenever I tried to lift an instance double outside an `it` statement I received errors.
-
-As a priority learning objective I would like to understand this better, as I am sure there will be a way to implement this in a DRY fashion.
-
-*Note: there are some comments in `plane_spec.rb` that point to where I was having this problem.*
 
 Usage
 -----
 
-The project contains a .pryrc file that will require the relevant files, create five instances of `Plane` and three instances of `Airport` for easier feature testing.
+The project contains a .pryrc file that will require the relevant files and assign a new `Takeaway` instance to `takeaway` with a `Menu` containing three instances of `Dish`.
 
-Where `plane` is an instance of `Plane` and `airport` is an instance of `Airport`, the following commands can be used:
-- `plane.land(airport)` (instruct plane to land at airport)
-- `plane.take_off(airport)` (instruct plane to take off from airport)
-- `plane.airborne` (see if plane is airborne)
-- `airport.capacity` (see airport capacity)
-- `airport.planes` (see planes docked at airport)
-- `airport.full?` (see if airport is full)
-- `Weather.sunny?` (see randomly generated weather - true is sunny, false is stormy)
+Where `takeaway` is an instance of `Takeaway` and `order` is an instance of `Order`, the following commands can then be used:
+- `takeaway.show_menu` (show takeaway menu)
+- `takeaway.new_order` (return a new order)
+- `order.add_dish(number, quantity)` (add a dish to the order, where number is the dish number as shown in the takeaway menu, and quantity is the desired quantity)
+- `order.expected_total(total)` (adds the expected total to the order)
+- `takeaway.place_order(order)` (places the order at the takeaway)
 
 Here is an example pry session showing program usage:
 
 ```
-17:32:04  rickclark@Ricks-MBP  ~/Doc…nts/Makers/airport_challenge   master ●  pry                                                  2.2.3
-You have 5 planes: plane_1, plane_2, plane_3, plane_4, plane_5
-and 3 airports: paris (capacity 3), london (capacity 1), frankfurt (capacity 3)
-[1] pry(main)> plane_1.land(london)
-=> "Plane has landed in sunny weather at London"
-[2] pry(main)> london.full?
-=> true
-[3] pry(main)> london.planes
-=> [#<Plane:0x007fefedc9d698 @airborne=false>]
-[4] pry(main)> london.capacity
-=> 1
-[5] pry(main)> plane_2.land(london)
-RuntimeError: Cannot land - airport is full!
-from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:11:in `land'
-[6] pry(main)> plane_1.take_off(london)
-=> "Plane has taken off from London"
-[7] pry(main)> plane_2.land(frankfurt)
-RuntimeError: Cannot land - weather is stormy!
-from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:10:in `land'
-[8] pry(main)> plane_2.land(frankfurt)
-=> "Plane has landed in sunny weather at Frankfurt"
-[9] pry(main)> plane_3.land(frankfurt)
-RuntimeError: Cannot land - weather is stormy!
-from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:10:in `land'
-[10] pry(main)> plane_3.land(frankfurt)
-=> "Plane has landed in sunny weather at Frankfurt"
-[11] pry(main)> plane_4.land(frankfurt)
-RuntimeError: Cannot land - weather is stormy!
-from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:10:in `land'
-[12] pry(main)> plane_4.land(frankfurt)
-=> "Plane has landed in sunny weather at Frankfurt"
-[13] pry(main)> plane_4.take_off(london)
-RuntimeError: Cannot take off - am not landed at London!
-from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:18:in `take_off'
-[14] pry(main)> plane_4.take_off(frankfurt)
-=> "Plane has taken off from Frankfurt"
+[1] pry(main)> takeaway.show_menu
+1. Pepperoni pizza 7.0
+2. Hawaiian pizza 9.0
+3. Meat Feast pizza 8.0=> nil
+[2] pry(main)> order = takeaway.new_order;
+[3] pry(main)> order.add_dish(1,2);
+[4] pry(main)> order.add_dish(2,1);
+[5] pry(main)> order.expected_total(23);
+[6] pry(main)> order.ordered_dishes
+=> {#<Dish:0x007ff81433b508 @name="Pepperoni pizza", @price=7.0>=>2, #<Dish:0x007ff81433b490 @name="Hawaiian pizza", @price=9.0>=>1}
+[7] pry(main)> takeaway.place_order(order)
+Your order has been accepted, you will receive a text message confirmaton shortly!=> <Twilio::REST::Message @path=/2010-04-01/Accounts/AC80bb171e8ce5d212877da1b83da3217d/Messages/SM979faf10a45c482e80ac2910ad9768a5>
+[8] pry(main)> order.expected_total(24);
+[9] pry(main)> takeaway.place_order(order)
+RuntimeError: Your expected total order cost is wrong!
+from /Users/rickclark/Documents/Makers/takeaway-challenge/lib/takeaway.rb:25:in `place_order'
+```
