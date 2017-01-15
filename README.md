@@ -11,24 +11,10 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
+
  ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## User Stories
 
 ```
 As a customer
@@ -47,7 +33,42 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+## Feature Tests
+#### Menu
+```
+[1] pry(main)> require './lib/menu'
+=> true
+[2] pry(main)> menu = Menu.new
+=> #<Menu:0x007f9adf4c4cb8
+ @menu_items=
+  [{:no=>"01", :dish=>"Yase Soup", :price=>2.5},
+   {:no=>"02", :dish=>"Wan Tan Soup", :price=>3.2},
+   {:no=>"03", :dish=>"Tori Mushi", :price=>3.0},
+   {:no=>"04", :dish=>"Tom Yam Soup", :price=>4.5},
+   {:no=>"05", :dish=>"Tori Yam Soup", :price=>3.5},
+   {:no=>"06", :dish=>"Umami Soup", :price=>4.5},
+   {:no=>"07", :dish=>"Beef Tatar", :price=>5.8},
+   {:no=>"08", :dish=>"Moyashi Salad", :price=>3.0},
+   {:no=>"09", :dish=>"Kimchi Salad", :price=>3.4},
+   {:no=>"10", :dish=>"Hokkaido", :price=>6.5},
+   {:no=>"11", :dish=>"Shapu Salad", :price=>4.0}]>
+[3] pry(main)> menu.view
+                   Yume's menu                    
+                   -----------                    
+  Food name ------------------------------ price  
 
+01.Yase Soup                              ...EUR 2.5
+02.Wan Tan Soup                           ...EUR 3.2
+03.Tori Mushi                             ...EUR 3.0
+04.Tom Yam Soup                           ...EUR 4.5
+05.Tori Yam Soup                          ...EUR 3.5
+06.Umami Soup                             ...EUR 4.5
+07.Beef Tatar                             ...EUR 5.8
+08.Moyashi Salad                          ...EUR 3.0
+09.Kimchi Salad                           ...EUR 3.4
+10.Hokkaido                               ...EUR 6.5
+11.Shapu Salad                            ...EUR 4.0
+```
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
@@ -69,7 +90,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 

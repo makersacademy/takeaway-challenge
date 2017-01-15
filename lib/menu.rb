@@ -19,12 +19,12 @@ class Menu
   end
 
   def view
-    puts "The menu:".center(50)
-    puts "---------".center(50)
-    puts "Food name --------------------- price".center(50)
+    puts "Yume's menu".center(50)
+    puts "-----------".center(50)
+    puts "Food name ------------------------------ price".center(50)
     puts ""
     self.menu_items.each do |item|
-      puts "#{item[:no]}.#{item[:dish]}".ljust(25) + "...EUR #{item[:price]}".rjust(25)
+      puts "#{item[:no]}.#{item[:dish]}".ljust(26) + "...EUR #{item[:price]}".rjust(26)
     end
   end
 end
