@@ -7,9 +7,10 @@ describe TakeAway do
   subject(:takeaway) {described_class.new}
 
 
-  describe "#read_menu" do
-    it "checks if the menu can be read" do
-    expect(takeaway).to respond_to(:read_menu)
-  end
-  end
+    it "reads the menu" do
+      t = TakeAway.new
+      expect(takeaway.menu).to eq MENU
+    end
+
+ 
 end
