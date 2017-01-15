@@ -2,10 +2,13 @@ require_relative 'dish'
 
 class Menu
 
-  attr_reader :dish_items
+  attr_reader :menu
 
   def initialize(*dish_items)
-    @dish_items = dish_items
+    @menu = {}
+    dish_items.each do |item|
+        menu[item.name] = item.price
+    end
   end
 
   # def print_menu
