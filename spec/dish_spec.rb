@@ -17,7 +17,7 @@ describe Dish do
     it 'stores dish name' do
       expect(dish_info.name).to eq(name)
     end
-    it 'can change name' do
+    it 'name can be changed' do
       dish_info.name = new_name
       expect(dish_info.name).to eq(new_name)
     end
@@ -28,7 +28,7 @@ describe Dish do
     it 'stores dish ingredients' do
       expect(dish_info.ingredients).to eq(ingredients)
     end
-    it 'can change ingredients' do
+    it 'ingredients can be changed' do
       dish_info.ingredients = new_ingredients
       expect(dish_info.ingredients).to eq(new_ingredients)
     end
@@ -39,7 +39,7 @@ describe Dish do
     it 'stores dish price' do
       expect(dish_info.price).to eq(price)
     end
-    it 'can change price' do
+    it 'price can be changed' do
       dish_info.price = new_price
       expect(dish_info.price).to eq(new_price)
     end
@@ -50,7 +50,7 @@ describe Dish do
     it 'stores dish type' do
       expect(dish_info.type).to eq(type)
     end
-    it 'can change type' do
+    it 'type can be changed' do
       dish_info.type = new_type
       expect(dish_info.type).to eq(new_type)
     end

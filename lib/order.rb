@@ -11,11 +11,7 @@ class Order
   end
 
   def total
-    total = 0
-    @order_hash.each do |key,value|
-      total += @menu[key].price * value
-    end
-    total
+    items_total.inject(:+)
   end
 
   def print_order(output_width = OUTPUT_WIDTH)
@@ -25,6 +21,13 @@ class Order
   end
 
   private
+
+  def items_total
+    @order_hash.map do |key,value|
+      @menu[key].price * value
+    end
+  end
+
 
   def print_header(output_width)
     puts "Details of your order:".center(output_width),
