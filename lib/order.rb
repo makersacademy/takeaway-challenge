@@ -2,6 +2,7 @@ require 'twilio-ruby'
 
 class Order
   attr_reader :current_order
+
   def initialize
     @current_order = []
   end
@@ -33,7 +34,7 @@ def place(given_total)
 end
 
 def get_time
-  new_time = "#{Time.now.hour+1}:#{Time.now.min}"
+  new_time = "#{Time.now.hour+1}:#{'%02d' % Time.now.min}"
   other_new_time = "00:#{Time.now.min}"
   Time.now.hour!=24 ? new_time : other_new_time
 end
