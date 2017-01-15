@@ -1,6 +1,7 @@
 require 'menu'
 
 describe Menu do
+
   subject(:menu) { described_class.new(dishes) }
 
   let(:dishes) do
@@ -26,6 +27,10 @@ describe Menu do
 
   it 'checks if a dish is not on the menu' do
     expect(menu.has_dish?(:fish)).to be false
+  end
+
+  it 'Calculates the price for items ordered' do
+    expect(menu.price(:lamb)).to eq(dishes[:lamb])
   end
 
 end

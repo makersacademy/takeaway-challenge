@@ -14,6 +14,7 @@ def place_order(dishes)
   dishes.each do |dish, amount|
     order.add(dish, amount)
   end
+  order.total
 end
 
 
