@@ -48,8 +48,9 @@ describe "Feature tests" do
     order.dishes << {dish: menu.dishes[0], quantity: 2}
     order.dishes << {dish: menu.dishes[1], quantity: 1}
     ##### TURN ON THE NEXT LINE IF NOT REALLY SENDING AN SMS, THE ONE AFTER IF SENDING IT FOR REAL
-    # order.twiliohelper = twiliohelper.new(send_sms_for_real: false)
-    order.twiliohelper = TwilioHelper.new
-    expect{order.confirm}.not_to raise_error
+    restaurant = Restaurant.new
+    restaurant.twiliohelper = TwilioHelper.new(send_sms_for_real: false)
+    # restaurant.twiliohelper = TwilioHelper.new
+    expect{restaurant.confirm}.not_to raise_error
   end
 end
