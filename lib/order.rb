@@ -22,13 +22,18 @@ class Order
   end
 
   def place_order
-    current_time = Time.new
-    message = "Thank you! Your order was placed at #{current_time.hour}:#{current_time.min} and will be delivered in half an hour."
     @client.messages.create(
       from: '+441133205194',
       to: '+447719198784',
-      body: message
+      body: confirmation_message
     )
+  end
+
+  private
+
+  def confirmation_message
+    current_time = Time.new
+    message = "Thank you! Your order was placed at #{current_time.hour}:#{current_time.min} and will be delivered in half an hour."
   end
 
 end
