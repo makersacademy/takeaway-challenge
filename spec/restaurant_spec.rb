@@ -45,7 +45,7 @@ describe Restaurant do
       message = "Thank you for your custom! Your order will be delivered before #{(Time.now + 3600).strftime("%R")}."
       twilio_message_body = { from: ENV["TWILIO_FROM_NO"], to: ENV["TWILIO_TO_NO"], body: message }
       allow(client).to receive_message_chain(:account, :messages, :create).with(twilio_message_body)
-      expect(Twilio::REST::Client).to receive(:new).with(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]).twice.and_return(client)
+      expect(Twilio::REST::Client).to receive(:new).with(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]).and_return(client)
       restaurant.send_message
     end
   end
