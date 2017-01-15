@@ -1,27 +1,26 @@
-# require './lib/restaurant'
-#
-# describe Restaurant do
-#
-#   # subject(:menu_list) { described_class.new }
-#
-#   describe '#menu_list' do
-#
-#     it "is a hash which includes a key" do
-#       expect(subject.menu_list).to have_key(:choripan)
-#     end
-#     it "is a hash of dishes with their prices" do
-#       expect(subject.menu_list).to include { {:choripan=>7.95} }
-#     end
-#
-#   end
-# 
-#   describe '#order' do
-#
-#     it "allows to order an item from the menu_list" do
-#       expect(subject.order :choripan ).to eq [:choripan]
-#
-#     end
-#
-#   end
-#
-# end
+require 'restaurant'
+
+describe Restaurant do
+
+  choripan = Dish.new(:choripan, 5.95)
+  milanesa = Dish.new(:milanesa, 7.95)
+  menu1 = Menu.new(choripan, milanesa)
+  order = Order.new(menu1)
+  moo = Restaurant.new(order)
+
+  let(:restaurant) { instance_double("restaurant") }
+
+
+  describe '#initialize' do
+    it "creates a new restaurant with an order parameter" do
+      expect(moo.order).to eq order
+    end
+  end
+
+  describe '#confirm_order' do
+    it "does not send the message if order is not complete" do
+      expect(moo.confirm_order).to eq nil
+    end
+  end
+
+end
