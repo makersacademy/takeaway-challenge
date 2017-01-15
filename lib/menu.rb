@@ -22,8 +22,8 @@ class Menu
 
   def select_dishes(*dishes, total)
     basket = Order.new
-    assign_dishes(basket, dishes)
-    fail "You've entered #{basket.check} dishes rather than the #{total} that you expected!" if total != basket.check
+    assign_dishes(dishes, basket)
+    fail error_message(total, basket) if !dishes_correct?(total, basket)
     basket.place_order
     return basket
   end
@@ -34,10 +34,18 @@ class Menu
     @list.dup
   end
 
-  def assign_dishes(order, dishes)
+  def assign_dishes(dishes, order)
     dishes.each { |dish|
       list.each { |item| order.add(item) if item.name == dish }
     }
+  end
+
+  def dishes_correct?(total, order)
+    total == order.check
+  end
+
+  def error_message(total, basket)
+    "You've entered #{basket.check} dishes rather than the #{total} that you expected!"
   end
 
 end
