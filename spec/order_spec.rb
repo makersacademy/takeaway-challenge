@@ -50,14 +50,15 @@ describe Order do
 
  describe '#place' do
    it 'error checks total given' do
-   dish1 = instance_double(Dish, :description => "Soup", :price => 1.00)
-   dish2 = instance_double(Dish, :description => "Rice", :price => 0.50)
-   list = List.new
-   list.add(dish1)
-   list.add(dish2)
-   order.add(list, 1, 2)
-   expect{order.place(4.00)}.to raise_error("Order total incorrect. Current total is #{order.total}")
-   expect{order.place(2.00)}.not_to raise_error
+    expect(subject).to receive(:the_message)
+    dish1 = instance_double(Dish, :description => "Soup", :price => 1.00)
+    dish2 = instance_double(Dish, :description => "Rice", :price => 0.50)
+    list = List.new
+    list.add(dish1)
+    list.add(dish2)
+    order.add(list, 1, 2)
+    expect{order.place(4.00)}.to raise_error("Order total incorrect. Current total is #{order.total}")
+    expect{order.place(2.00)}.not_to raise_error
  end
 end
 

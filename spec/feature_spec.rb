@@ -53,6 +53,7 @@ describe 'placing an order' do
     list.add(dish2)
     order = Order.new
     order.add(list, 1, 1)
+    expect(order).to receive(:the_message)
     order.place(3.00)
   end
 end
