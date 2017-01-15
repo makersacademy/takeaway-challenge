@@ -1,15 +1,15 @@
 #understands holding menu items together as a menu
 require_relative "menu_item"
-require_relative "menu_printer"
+require_relative "printer"
 require_relative "menu_loader"
 require "yaml"
 
 class Menu
   attr_reader :menu_location
-  
+
   def initialize args = {}
     args = defaults.merge(args)
-    @menu_items = []
+    @items      = []
     @menu_item_class = args[:menu_item_class]
     @menu_printer    = args[:menu_printer]
     @menu_loader     = args[:menu_loader]
@@ -17,16 +17,23 @@ class Menu
     generate_menu
   end
 
-  def menu_items
-    @menu_items.dup
+  def items
+    @items.dup
   end
 
   def add_to_menu args
-    @menu_items << menu_item_class.new(args)
+    @items << menu_item_class.new(args)
   end
 
   def to_s (printer_module = menu_printer)
-    printer_module.to_s
+    printer_module.to_string self
+  end
+
+  def get_item item
+    output =  get_item_by_ID item   if item.class == Fixnum
+    output =  get_item_by_name item if item.class == String
+    raise "item not found: #{item}" if output.nil?
+    output
   end
 
   private
@@ -35,10 +42,17 @@ class Menu
   attr_reader :menu_loader
   attr_reader :menu_file
 
+  def get_item_by_ID item
+    items[item-1]
+  end
+
+  def get_item_by_name item
+    items.select{|menu_item| menu_item.name == item}[0]
+  end
 
   def defaults
     {menu_item_class: MenuItem,
-     menu_printer:    MenuPrinter,
+     menu_printer:    Printer,
      menu_loader:     MenuLoader,
      menu_location:   "./lib/menu.yml"}
   end

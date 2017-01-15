@@ -5,7 +5,7 @@ describe Menu do
   let(:menu_item_hash)  {double :menu_item_hash}
   let(:menu_item)       {double :menu_item}
   let(:menu_loader)     {double :menu_loader,load: nil}
-  let(:menu_printer)    {double :menu_printer}
+  let(:menu_printer)    {double :menu_printer,to_string: nil}
 
   let(:args) {{menu_printer: menu_printer,
                menu_loader: menu_loader,
@@ -14,13 +14,13 @@ describe Menu do
 
   describe "#creation" do
     it "should have empty menu" do
-      expect(subject.menu_items.size).to eq 0
+      expect(subject.items.size).to eq 0
     end
   end
-  describe "#menu_items" do
+  describe "#items" do
     it "should return the immutable list of menu items" do
-      subject.menu_items << 5
-      expect(subject.menu_items).not_to include 5
+      subject.items << 5
+      expect(subject.items).not_to include 5
     end
   end
   describe "#add_to_menu" do
@@ -30,9 +30,27 @@ describe Menu do
     end
     it "should be the same one we added" do
       subject.add_to_menu menu_item_hash
-      expect(subject.menu_items).to include menu_item
+      expect(subject.items).to include menu_item
     end
   end
-  describe "to_s" do
+  describe "#get_item" do
+    before(:each){subject.add_to_menu menu_item_hash}
+    it "should get by ID" do
+      expect(subject.get_item(1)).to eq menu_item
+    end
+    it "should get by name" do
+      item_name = "spring rolls"
+      allow(menu_item).to receive(:name).and_return(item_name)
+      expect(subject.get_item(item_name)).to eq menu_item
+    end
+    it "should raise if given a bad ID or name" do
+      expect{subject.get_item(2)}.to raise_error(RuntimeError,"item not found: 2")
+    end
+  end
+  describe "#to_s" do
+    it "should try to call it's printer module " do
+      subject.to_s
+      expect(menu_printer).to have_received(:to_string).with(subject)
+    end
   end
 end
