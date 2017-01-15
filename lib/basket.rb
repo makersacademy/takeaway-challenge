@@ -3,30 +3,34 @@ require_relative 'takeaway'
 
 class Basket
 
-  attr_reader :available_items, :selected_items
+  attr_reader :available_items, :selected_items, :total
 
   def initialize(menu)
     @available_items = menu
     @selected_items = []
+    @total = 0
   end
 
-  def add_item(item_num)
-    select_dish(item_num)
+  def add_item(dish, quantity)
+    select_dish(dish, quantity)
   end
 
   private
 
-  def select_dish(item_num)
-    @available_items.each.with_index(1) do | item, index|
-      raise dish_not_available if item_num < 1 || item_num > available_items.length
-      if item_num == index
-        @selected_items.push(item)
-      end
+  def select_dish(dish, num)
+    selection = @available_items.detect { |item| item[dish]}
+    raise "Cannot add dish: This dish is unavailable" if selection == nil
+    num.times do
+      @selected_items.push(selection)
+      update_total(selection)
     end
+    "#{num} #{dish}(s) have been added to your basket"
   end
 
-  def dish_not_available
-      "Cannot select this dish: this dish is not available"
-  end
+  private
+
+    def update_total(item)
+        item.each_value {|value| @total += value}
+    end
 
 end

@@ -3,24 +3,35 @@ require_relative 'basket'
 
 class TakeAway
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :total
 
 def initialize
   @menu = Menu.new
   @basket = Basket.new(@menu.items)
+  @total = 0
 end
 
 def view_menu
   @menu.view_menu
 end
 
-def order(item_num)
-  basket.add_item(item_num)
+def order(dish, quantity = 1)
+  basket.add_item(dish, quantity)
 end
 
 def view_basket
-  basket.selected_items
+  @basket.selected_items
 end
 
+def view_total
+  @total = @basket.total
+end
+
+
+private
+
+  def state_total
+    "The current total of your order is £#{@total}"
+  end
 
 end
