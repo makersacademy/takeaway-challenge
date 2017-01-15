@@ -1,4 +1,4 @@
-require 'customer'
+require 'take_away'
 
 describe 'Feature tests for User Stories' do
 # As a customer
@@ -6,9 +6,9 @@ describe 'Feature tests for User Stories' do
 # I would like to see a list of dishes with prices
 
 it 'customer can see the list of dishes with prices' do
-  customer = Customer.new
+  take_away = TakeAway.new
   # expect to print a formatted menu in the command line
-  expect { customer.see_menu }.to output.to_stdout
+  expect { take_away.read_menu }.to output.to_stdout
 end
 
 # As a customer
@@ -16,10 +16,10 @@ end
 # I would like to be able to select some number of several available dishes
 
 it 'customer can place an order with selected number of items' do
-  customer = Customer.new
-  customer.see_menu
+  take_away = TakeAway.new
+  take_away.read_menu
   order_hash = { 1 => 3, 6 => 2, 9 => 1}
-  total = customer.place_order(order_hash)
+  total = take_away.place_order(order_hash)
   expect(total).to eq(85)
 end
 
@@ -28,16 +28,25 @@ end
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
 it 'customer can see the order details with prices' do
-  customer = Customer.new
-  customer.see_menu
+  take_away = TakeAway.new
+  take_away.read_menu
   order_hash = { 1 => 3, 6 => 2, 9 => 1}
-  customer.place_order(order_hash)
-  customer.see_order
-  expect { customer.see_order }.to output.to_stdout
+  take_away.place_order(order_hash)
+  take_away.basket_summary
+  expect { take_away.basket_summary }.to output.to_stdout
 end
 
 # As a customer
 # So that I am reassured that my order will be delivered on time
-# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+# I would like to receive a text such as "Thank you! Your order for the total amount if $[x] was placed and will be delivered before 18:52" after I have ordered
+
+it 'when order send customer recieves a text message with time and order total amount' do
+  take_away = TakeAway.new
+  order_hash = { 1 => 3, 6 => 2, 9 => 1}
+  take_away.place_order(order_hash)
+  message = "Thank you! Your order for the total amount if $85 was placed and will be delivered before 18:52"
+  # expect { customer }.to receive_a(text_message)
+end
+
 
 end

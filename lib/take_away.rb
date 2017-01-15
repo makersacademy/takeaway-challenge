@@ -1,7 +1,7 @@
 require_relative 'menu'
 require_relative 'order'
 
-class Customer
+class TakeAway
 
   MAX_QUANTITY = 20
 
@@ -10,9 +10,10 @@ class Customer
   def initialize(filename = 'menu.csv')
     menu = Menu.new(filename)
     @menu_hash = menu.dishes
+    @order_hash = Hash.new
   end
 
-  def see_menu(filename = 'menu.csv')
+  def read_menu(filename = 'menu.csv')
     menu = Menu.new(filename)
     menu.print_menu
     @menu_hash = menu.dishes
@@ -29,7 +30,7 @@ class Customer
     @order.total
   end
 
-  def see_order
+  def basket_summary
     error_if_order_not_placed
     @order.print_order
   end
