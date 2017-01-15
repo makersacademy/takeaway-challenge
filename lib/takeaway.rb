@@ -1,22 +1,22 @@
 require_relative "menu.rb"
 require_relative "dish.rb"
-require_relative "menu_lister.rb"
+require_relative "array_printer.rb"
 require_relative "order.rb"
 require_relative "order_total_checker.rb"
 
 class Takeaway
 
-  attr_reader :menu, :lister, :order_class, :order_total_checker
+  attr_reader :menu, :printer, :order_class, :order_total_checker
 
   def initialize(args)
     @menu = args[:menu]
-    @lister = args[:lister_module] || MenuLister
+    @printer = args[:printer_module] || ArrayPrinter
     @order_class = args[:order_class] || Order
     @order_total_checker = args[:order_total_checker] || OrderTotalChecker
   end
 
   def show_menu
-    print lister.list(menu)
+    print printer.list(menu)
   end
 
   def place_order(order)

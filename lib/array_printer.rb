@@ -1,4 +1,4 @@
-module MenuLister
+module ArrayPrinter
 
   def self.list(menu)
     list_hash = create_hash(menu)

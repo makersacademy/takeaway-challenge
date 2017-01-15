@@ -8,14 +8,14 @@ describe Takeaway do
   let(:meat_feast) { instance_double("Dish") }
   let(:dishes) { [pepperoni, hawaiian, meat_feast] }
   let(:order) { instance_double("Order") }
-  let(:menu_lister) { class_double("MenuLister") }
+  let(:array_printer) { class_double("ArrayPrinter") }
   let(:order_total_checker) { class_double("OrderTotalChecker") }
   let(:order_class) { class_double("Order") }
-  let(:args) { {:menu => menu, :lister_module => menu_lister, :order_class => order_class, :order_total_checker => order_total_checker} }
+  let(:args) { {:menu => menu, :printer_module => array_printer, :order_class => order_class, :order_total_checker => order_total_checker} }
   subject(:takeaway) { described_class.new(args) }
   before(:each) do
     allow(order_class).to receive(:new) { order }
-    allow(menu_lister).to receive(:list) { {1 => pepperoni, 2 => hawaiian, 3 => meat_feast} }
+    allow(array_printer).to receive(:list) { {1 => pepperoni, 2 => hawaiian, 3 => meat_feast} }
   end
   describe "#initialize" do
     it { is_expected.to respond_to(:menu) }

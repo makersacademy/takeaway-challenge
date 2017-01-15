@@ -1,6 +1,6 @@
-require "menu_lister"
+require "array_printer"
 
-describe MenuLister do
+describe ArrayPrinter do
 
   subject(:printer) { described_class }
   let(:menu) { instance_double("Menu") }
