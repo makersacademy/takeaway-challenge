@@ -1,63 +1,55 @@
+require 'twilio-ruby'
 require_relative 'menu'
 require_relative 'basket'
-require 'twilio-ruby'
-require 'time'
+require_relative 'messenger'
 
 class TakeAway
 
-  attr_reader :menu, :basket, :total
+  attr_reader :menu, :basket, :total_price, :messenger
 
-def initialize
+def initialize(messenger = Messenger.new)
   @menu = Menu.new
   @basket = Basket.new(@menu.items)
-  @total = 0
+  @total_price = 0
+  @messenger = messenger
 end
 
 def view_menu
-  @menu.view_menu
+  menu.view_menu
 end
 
 def order(dish, quantity = 1)
   basket.add_item(dish, quantity)
+  @total = basket.total
 end
 
 def view_basket
-  @basket.selected_items
+  basket.selected_items
 end
 
 def view_total
-  @total = @basket.total
-  "The current total of your basket is £#{("%.2f" % @total)}"
+  "The current total is £#{("%.2f" % basket.total)}"
 end
 
 def print_summary
   puts "Your basket currently contains:"
-  @basket.selected_items.each do | item |
+  basket.selected_items.each do | item |
     item.each do |dish, quantity|
       puts "#{dish}\t £#{quantity}"
     end
   end
-  puts "\nTotal:\t £#{("%.2f" % @total)}"
+  puts "\nTotal:\t £#{("%.2f" % total_price)}"
 end
 
 def confirm_order
-  send_message
+  delivery_time = (Time.now + (60*60)).strftime("%H:%M")
+  @messenger.send_message("Thank you! Your order was placed and will be delivered before #{delivery_time}")
 end
 
 private
 
   def state_total
-    "The current total of your order is £#{@total}"
-  end
-
-  def send_message
-    client = Twilio::REST::Client.new("AC733e80d8eb5305704027651938977331", "dcefc4c1240246c8199c00577dee0116")
-    delivery_time = (Time.now + (60*60)).strftime("%H:%M")
-    client.messages.create(
-      from: "+441133205947",
-      to: "+447921613637",
-      body: "Thank you! Your order was placed and will be delivered before #{delivery_time}"
-    )
+    "The current total of your order is £#{@total_price}"
   end
 
 end

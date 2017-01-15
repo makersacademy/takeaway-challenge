@@ -1,5 +1,6 @@
-require_relative 'menu'
+require_relative 'takeaway'
 require_relative 'basket'
+require 'twilio-ruby'
 
 class Menu
 
@@ -9,7 +10,6 @@ class Menu
 
   def initialize
     @items = []
-    import_items
   end
 
   def view_menu
@@ -28,6 +28,7 @@ class Menu
   private
 
   def format_menu
+    raise "There are no dishes currently available" if items.length == 0
     @items.each.with_index(1) do | item, index|
       item.each do |name, price|
         puts "#{index}".ljust(20) + "#{name}".center(20) + "£#{price}".rjust(20)
@@ -42,6 +43,4 @@ class Menu
       @items.push({name => ("%.2f" % price).to_f})
     end
   end
-
-
 end
