@@ -23,6 +23,9 @@ class Menu
   def has?(item)
     items.key?(item)
   end
+  def price(item)
+    items[item]
+  end
 
   private
   def display_header

@@ -45,16 +45,16 @@ class Order
     printf("%-20s %5s %8s\n","ITEM","QTY","PRICE")
   end
   def display_basket
-    basket.items.each do |k,v|
-      printf("%-20s %5d %8.2f \n", k, v, menu.items[k])
+    basket.each_item do |item, qty|
+      printf("%-20s %5d %8.2f \n", item, qty, menu.price(item))
     end
   end
   def display_total
     printf("\n%-10s %6.2f\n\n", "TOTAL = ", total)
   end
   def total
-    t = 0.00
-    basket.items.each_key { |k| t += basket.items[k] * menu.items[k] }
-    t
+    tot = 0.00
+    basket.each_item {|item| tot += basket.qty(item) * menu.price(item)}
+    tot
   end
 end

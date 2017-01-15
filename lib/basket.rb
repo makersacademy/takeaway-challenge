@@ -13,7 +13,13 @@ class Basket
   def has?(item)
     items.include?(item)
   end
-  
+  def qty(item)
+    items[item]
+  end
+  def each_item(&b)
+    items.each {|item, qty| b.call(item, qty)}
+  end
+
   private
   def item_missing_error
     "Item is not in basket"
