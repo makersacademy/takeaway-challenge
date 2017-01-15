@@ -13,9 +13,11 @@ describe "User Stories" do
   # # I would like to be able to select some number of several available dishes
   # # NB. Place the order by giving the list of dishes, their quantities and a number that should be the exact total.
   it "so a customer can select available dishes, allow a customer to place an order" do
-    t = Takeaway.new
-    dish = "whatever"
-    expect { t.order(dish) }.to raise_error
+  #   t = Takeaway.new
+  #   dish = "Pizza"
+  #   t.order(dish)
+  #   expect { t.order(dish) }.to raise_error
+  #   # expect{t.order(dish)}.to have_key(:menu)
   end
 
 end # of user stories describe block
