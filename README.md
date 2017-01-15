@@ -1,9 +1,21 @@
 step 1: takeaway menu.
 
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
 New Class Takeaway
 First I set up a method to print the takeaway menu with a list of items and their prices. From my understanding, i thought it would be a good idea to delagate this into a new method Menu, which held the menus in a hash within an array and also printed the menu. As this was delageted to a new class, i set the reader to private as Takeaway was not interested in this, it just needed to get menu to do so.
 
 I also wanted menu to take control of the printing of the dishes on the menu, I therefore gave it a method to print the dishes into a string of dishes and prices.
+
+step 2: Selecting item from the menu and the amount
+
+This was another example where i used delegation. I did not want the Takeaway class to manage this process so delageted this to an order class. This class would add dishes to an array and the amount(portions) for that order. I wanted the tests to make sure that the program would add dishes ordered from the menu to the order and the number or dishes for each menu item. I also thought it important that the user could not select dishes that were not on the menu, I built in a fail into the add method to fail if an item was not on the menu. This threw up errors as i already had items on the menu but it was erroring for each, i resloved this with a true/false method has_dish? and added a before block to allow these 2 items to pass.
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
 
 Takeaway Challenge
 ==================
