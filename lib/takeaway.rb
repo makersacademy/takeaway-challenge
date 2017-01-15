@@ -3,15 +3,22 @@ require_relative 'menu'
 
 class Takeaway
 
-attr_reader :order, :price, :current_order
+attr_reader :price, :current_order
 
-  def initialize(menu:)
+  def initialize(menu:, order: nil)
      @menu = menu
+     @order = order
     #  @price = []
     #  @current_order = []
 
   end
 
+
+  def place_order(dishes)
+    dishes.each do |dish, quantity|
+      order.add(dish, quantity)
+    end
+  end
   # def show_menu
   #    @menu = Menu.new.dishes
   #  end
@@ -35,7 +42,7 @@ attr_reader :order, :price, :current_order
 
 private
 
-attr_reader :menu, :total
+attr_reader :menu, :order, :total
 
   def total
     @order_total = @price.inject(:+)

@@ -1,31 +1,22 @@
 
 class Order
 
- attr_reader :order, :current_order, :price
+  attr_reader :dishes
 
-  def initialize(menu = Menu.new.dishes)
+  def initialize(menu)
+    @dishes = {}
     @menu = menu
-    @price = []
-    @current_order = []
   end
 
-
-  def place_order(selection, quantity)
-
-    if @menu.has_key?(selection)
-    @price << [quantity * @menu[selection].to_f]
-    running_total = quantity * @menu[selection]
-    @current_order << {:Selection => selection, :Quantity => quantity, :Total => running_total}
-    end
+  def add(dish, quantity)
+    fail NoItemError, "#{dish.capitalize} is not on the menu!" unless menu.has_dish?(dish)
+    dishes[dish] = quantity
   end
 
-  private
+private
 
-  attr_reader :total
-
-    def total
-      @order_total = @price.inject(:+)
-      @order_total.inject(:+)
-    end
+attr_reader :menu
 
 end
+
+class NoItemError < StandardError; end
