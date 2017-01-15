@@ -11,8 +11,18 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+
+ My Approach
+ -------
+
+ * Reading user stories I draw a domain modeling table with objects and messages. My first thought was to implement a class List and a class Dish not to have the list of dishes hard coded in the List class (thinking about the owner of the Takeaway and how he would then need to add and delete dishes etc.). After a while I changed my mind thought: it wasn't a required feature. So I just added a hash to @dishes in the List class.
+ 
+ * Feel free to use google, your notes, books, etc. but work on your own
+ * If you refer to the solution of another coach or student, please put a link to that in your README
+ * If you have a partial solution, **still check in a partial solution**
+ * You must submit a pull request to this repo with your code by 9am Monday morning
 
 Instructions
 -------
@@ -69,7 +79,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 

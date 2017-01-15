@@ -3,8 +3,8 @@ class List
 
 attr_reader :dishes
 
-  def initialize
-    @dishes = {lasagna: 4.50, pizza: 7.50, steak: 17.50}
+  def initialize(dishes)
+    @dishes = dishes
   end
 
   def show_dishes
