@@ -27,7 +27,7 @@ Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://t
 [8] pry(main)> t.total_price
 => "Total: £57.46"
 [9] pry(main)> t.complete_order(52)
-RuntimeError: The total price does not match
+RuntimeError: The total you enter does not match checkout
 from /Users/Basile/Desktop/makers_2017/projects/takeaway-challenge/lib/takeaway.rb:34:in `complete_order'
 [10] pry(main)> t.complete_order(57.46)
 => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC8223672aa600138e595e1fbfe22ca710/Messages/SMfa84e767c18a41499cad77023453ab28>
