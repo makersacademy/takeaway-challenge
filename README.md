@@ -14,9 +14,6 @@ Takeaway Challenge
 
  ```
 
-Domain Model
--------
-
 Usage
 -----
 - Given an instance of the class List (which contains an array of instances of the class Dish)
@@ -26,6 +23,7 @@ Usage
 - Read the current order using .read
 - Place the order using .place(sum_of_money)
 - The order will only process if the sum_of_money equals the total price of the order
+- You will receive a text message confirming your order and delivery time
 
 Example
 -----
