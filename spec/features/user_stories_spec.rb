@@ -16,14 +16,19 @@ describe "User Stories" do
     t = Takeaway.new
     dish = "Pizza"
     quantity = 1
-    t.order(dish, quantity)
-    expect{t.order(dish, quantity)}.to change{ t.basket }
+      expect{t.order(dish, quantity)}.to change{ t.basket }
   end
 
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+  it "so a customer can view their order summary" do
+    t = Takeaway.new
+    dish = "Pizza"
+    quantity = 1
+    t.order(dish, quantity)
+      expect { t.order_summary }.not_to raise_error
+  end
 
 
 

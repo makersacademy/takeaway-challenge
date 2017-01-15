@@ -12,6 +12,7 @@ end
     raise not_on_menu_msg if !@menu.has_key?(dish)
     # @basket << dish
      @basket << {dish => quantity}
+     p "#{quantity} x #{dish} added to your basket!"
   end
 
   def not_on_menu_msg

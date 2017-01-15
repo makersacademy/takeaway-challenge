@@ -29,5 +29,14 @@ describe Takeaway do
     end
   end
 
+  describe "#order_summary" do
+    context "when requested" do
+      it "doesn't throw an error" do
+         expect { subject.order_summary }.not_to raise_error
+      end
+    end
+  end
+
+
 
 end
