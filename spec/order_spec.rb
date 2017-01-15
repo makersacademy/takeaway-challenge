@@ -58,8 +58,7 @@ describe Order do
    order.add(list, 1, 2)
    expect{order.place(4.00)}.to raise_error("Order total incorrect. Current total is #{order.total}")
    expect{order.place(2.00)}.not_to raise_error
-
-
+ end
 end
-end
+
 end
