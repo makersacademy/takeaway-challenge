@@ -15,6 +15,10 @@ describe Takeaway do
         # expect { subject.order }.not_to raise_error
         expect(subject).to respond_to(:order).with(1).argument
       end
+      it "throws an error if the dish is not on menu" do
+        dish = "whatever"
+        expect{subject.order(dish)}.to raise_error "Not on the menu, please try again"
+      end
     end
   end
 

@@ -14,8 +14,8 @@ describe "User Stories" do
   # # NB. Place the order by giving the list of dishes, their quantities and a number that should be the exact total.
   it "so a customer can select available dishes, allow a customer to place an order" do
     t = Takeaway.new
-    dish = "pizza"
-    expect { t.order(dish) }.not_to raise_error
+    dish = "whatever"
+    expect { t.order(dish) }.to raise_error
   end
 
 end # of user stories describe block
