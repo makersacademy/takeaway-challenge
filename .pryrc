@@ -6,4 +6,4 @@ meat_feast = Dish.new("Meat Feast pizza", 8.00)
 
 menu = Menu.new(pepperoni, hawaiian, meat_feast)
 
-takeaway = Takeaway.new(menu, MenuLister)
+takeaway = Takeaway.new(:menu => menu, :lister_module => MenuLister, :order_class => Order, :order_total_checker => OrderTotalChecker)

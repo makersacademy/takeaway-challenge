@@ -6,26 +6,26 @@ require_relative "order_total_checker.rb"
 
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :lister, :order_class, :order_total_checker
 
-  def initialize(menu, lister_module=MenuLister, order_class=Order, order_total_checker = OrderTotalChecker)
-    @menu = menu
-    @lister = lister_module
-    @order_class = order_class
-    @order_total_checker = order_total_checker
+  def initialize(args)
+    @menu = args[:menu]
+    @lister = args[:lister_module] || MenuLister
+    @order_class = args[:order_class] || Order
+    @order_total_checker = args[:order_total_checker] || OrderTotalChecker
   end
 
   def show_menu
-    print @lister.list(@menu)
+    print lister.list(menu)
   end
 
   def place_order(order)
-    raise "Your expected total order cost is wrong!" unless @order_total_checker.check_total(order)
+    raise "Your expected total order cost is wrong!" unless order_total_checker.check_total(order)
     print "Your order has been accepted, you will receive a text message confirmaton shortly!"
   end
 
   def new_order
-    @order_class.new(@menu)
+    order_class.new(menu)
   end
 
 end
