@@ -50,7 +50,7 @@ describe Order do
 
  describe '#place' do
    it 'error checks total given' do
-    # expect(subject).to receive(:the_message)
+    expect(subject).to receive(:the_message)
     dish1 = instance_double(Dish, :description => "Soup", :price => 1.00)
     dish2 = instance_double(Dish, :description => "Rice", :price => 0.50)
     list = List.new

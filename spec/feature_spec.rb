@@ -52,7 +52,7 @@ describe 'making a list of dishes' do
     list.add(dish1)
     order = Order.new
     order.add(list, 1, 1)
-    # expect(order).to receive(:the_message)
+    expect(order).to receive(:the_message)
     order.place(3.00)
   end
 
