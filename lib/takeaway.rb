@@ -14,7 +14,7 @@ class Takeaway
     @printer = args[:printer_module] || ArrayPrinter
     @order_class = args[:order_class] || Order
     @order_total_checker = args[:order_total_checker] || OrderTotalChecker
-    @sms_messager = (args[:sms_messager] || SMSMessager).new
+    @sms_messager = (args[:sms_messager] || SMSMessager).new(:twilio_client_class => (args[:twilio_client] || TwilioClient ))
   end
 
   def show_menu

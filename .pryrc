@@ -6,4 +6,9 @@ meat_feast = Dish.new(:name => "Meat Feast pizza", :price => 8.00)
 
 menu = Menu.new(pepperoni, hawaiian, meat_feast)
 
-takeaway = Takeaway.new(:menu => menu, :printer_module => ArrayPrinter, :order_class => Order, :order_total_checker => OrderTotalChecker)
+takeaway = Takeaway.new(:menu => menu,
+                        :printer_module => ArrayPrinter,
+                        :order_class => Order,
+                        :order_total_checker => OrderTotalChecker,
+                        :sms_messager => SMSMessager,
+                        :twilio_client => TwilioClient)

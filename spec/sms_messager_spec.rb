@@ -6,7 +6,7 @@ describe SMSMessager do
   let(:test_client_instance) { double("TestTwilioClient") }
   let(:test_client) { double("TestClient") }
   let(:messages) { double("Messages") }
-  subject(:sms_messager) { described_class.new(test_twilio_client_class) }
+  subject(:sms_messager) { described_class.new(:twilio_client_class => test_twilio_client_class) }
 
   describe "#message" do
     it "calls to TwilioClient without raising error" do
