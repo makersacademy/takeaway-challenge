@@ -8,9 +8,6 @@ class Menu
     @dishes = dishes
   end
 
-  def has_dish?(dish)
-    !dishes[dish].nil?
-  end
   # def dish_list
   # dishes_and_prices = {
   #   "seaweed" => 6.20,
@@ -25,5 +22,13 @@ class Menu
     dishes.map do |dish, price|
       "%s £%.2f" % [dish.to_s.capitalize, price]
     end.join(", ")
+  end
+
+  def has_dish?(dish)
+    !dishes[dish].nil?
+  end
+
+  def price(dish)
+    dishes[dish]
   end
 end

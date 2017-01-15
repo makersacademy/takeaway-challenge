@@ -18,6 +18,7 @@ attr_reader :price, :current_order
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
     end
+    order.total
   end
   # def show_menu
   #    @menu = Menu.new.dishes

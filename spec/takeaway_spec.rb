@@ -6,7 +6,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order)}
   let(:menu) { double(:menu, show_menu: print_menu) }
   let(:print_menu) { "Spring rolls £1.50" }
-  let(:order) { double(:order) }
+  let(:order) { instance_double("Order", total: 15.50) }
   let(:dishes) {{chicken: 2, fish:1, beef: 4 }}
 
   # let(:menu) { double :menu, dishes: {"seaweed" => 1.20} }
@@ -23,6 +23,13 @@ describe Takeaway do
     expect(order).to receive(:add).at_least(:once)
     takeaway.place_order(dishes)
   end
+
+  it "knows the order total" do
+    expect(order).to receive(:add).at_least(:once)
+    total = takeaway.place_order(dishes)
+    expect(total).to eq(15.50)
+  end
+
   # it "order takes two arguments" do
   #   expect(takeaway).to respond_to(:place_order).with(2).arguments
   # end
