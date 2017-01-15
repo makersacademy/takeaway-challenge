@@ -1,10 +1,12 @@
 require_relative 'meal'
+require_relative 'text'
 
 class Order
   attr_reader :dishes
 
   def initialize
     @meal = Meal.new(self)
+    @text = Text.new
   end
 
   def view_dishes(restaurant)
@@ -23,7 +25,7 @@ class Order
   # end
 
   def confirm
-    exec("ruby ./lib/text.rb")
+    @text.send_message(@meal.total_price)
   end
 
 end
