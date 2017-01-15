@@ -14,19 +14,8 @@ Takeaway Challenge
 
  ```
 
+[![Build Status](https://travis-ci.org/rkclark/takeaway-challenge.svg?branch=master)](https://travis-ci.org/rkclark/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/github/rkclark/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/rkclark/takeaway-challenge?branch=master)
-
-
-
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
 -----
@@ -53,44 +42,87 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Approach
+-----
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+I approached the challenge by creating the follow domain objects:
+- `Takeaway`
+- `Order`
+- `Dish`
+- `ArrayPrinter`
+- `OrderTotalChecker`
+- `SMSMessager`
+- `TwilioClient`
+- `SMSReceiver`
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Which operate within this domain model:
 
 
-In code review we'll be hoping to see:
+The `Takeaway`
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+I initially understood the challenge to only require one airport. For that reason, I created Weather such that no instances of it are required, it is a class module only. Since weather is generated randomly, and is not saved, it didn't think it was necessary to have it based on creating instances. Once I understood the challenge required multiple airports I did consider changing this, but even if weather instances were used, it would still be generated randomly and the functionality would be the same. However, it would be good for the system to be able to report the weather at a given location (i.e. as a future user story).
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+All of the modules were written using TDD, and a spec file exists for each one. I've used verified doubles extensively as well as stubbed methods. The project reports 99.6% test coverage with Coveralls.
 
-Notes on Test Coverage
-------------------
+Problems
+-----
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+There is significant repeated code in the spec files, in particular `plane_spec.rb`. This tends to be where instance doubles are being used. While I was able to create a method `set_sunny` to provide my `Weather` class double to my tests, I was not able to achieve a similar solution for instance doubles. Whenever I tried to lift an instance double outside an `it` statement I received errors.
+
+As a priority learning objective I would like to understand this better, as I am sure there will be a way to implement this in a DRY fashion.
+
+*Note: there are some comments in `plane_spec.rb` that point to where I was having this problem.*
+
+Usage
+-----
+
+The project contains a .pryrc file that will require the relevant files, create five instances of `Plane` and three instances of `Airport` for easier feature testing.
+
+Where `plane` is an instance of `Plane` and `airport` is an instance of `Airport`, the following commands can be used:
+- `plane.land(airport)` (instruct plane to land at airport)
+- `plane.take_off(airport)` (instruct plane to take off from airport)
+- `plane.airborne` (see if plane is airborne)
+- `airport.capacity` (see airport capacity)
+- `airport.planes` (see planes docked at airport)
+- `airport.full?` (see if airport is full)
+- `Weather.sunny?` (see randomly generated weather - true is sunny, false is stormy)
+
+Here is an example pry session showing program usage:
 
 ```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+17:32:04  rickclark@Ricks-MBP  ~/Doc…nts/Makers/airport_challenge   master ●  pry                                                  2.2.3
+You have 5 planes: plane_1, plane_2, plane_3, plane_4, plane_5
+and 3 airports: paris (capacity 3), london (capacity 1), frankfurt (capacity 3)
+[1] pry(main)> plane_1.land(london)
+=> "Plane has landed in sunny weather at London"
+[2] pry(main)> london.full?
+=> true
+[3] pry(main)> london.planes
+=> [#<Plane:0x007fefedc9d698 @airborne=false>]
+[4] pry(main)> london.capacity
+=> 1
+[5] pry(main)> plane_2.land(london)
+RuntimeError: Cannot land - airport is full!
+from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:11:in `land'
+[6] pry(main)> plane_1.take_off(london)
+=> "Plane has taken off from London"
+[7] pry(main)> plane_2.land(frankfurt)
+RuntimeError: Cannot land - weather is stormy!
+from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:10:in `land'
+[8] pry(main)> plane_2.land(frankfurt)
+=> "Plane has landed in sunny weather at Frankfurt"
+[9] pry(main)> plane_3.land(frankfurt)
+RuntimeError: Cannot land - weather is stormy!
+from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:10:in `land'
+[10] pry(main)> plane_3.land(frankfurt)
+=> "Plane has landed in sunny weather at Frankfurt"
+[11] pry(main)> plane_4.land(frankfurt)
+RuntimeError: Cannot land - weather is stormy!
+from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:10:in `land'
+[12] pry(main)> plane_4.land(frankfurt)
+=> "Plane has landed in sunny weather at Frankfurt"
+[13] pry(main)> plane_4.take_off(london)
+RuntimeError: Cannot take off - am not landed at London!
+from /Users/rickclark/Documents/Makers/airport_challenge/lib/plane.rb:18:in `take_off'
+[14] pry(main)> plane_4.take_off(frankfurt)
+=> "Plane has taken off from Frankfurt"
