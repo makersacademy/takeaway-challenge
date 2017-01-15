@@ -32,6 +32,8 @@ Example
 list = List.new
 list.add(Dish.new("Soup", 3.00))
 list.add(Dish.new("Salad", 4.99))
+list.print
+
 order = Order.new
 order.add(list, 1, 1)         => adds the list item 1 (soup) in quantity 1 to order
 order.total
