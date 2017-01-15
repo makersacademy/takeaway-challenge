@@ -47,3 +47,12 @@ Detailing my steps:
 #### Step 11: Extending menu list to load from a CSV
 - Again, it didn't seem very DRY for the menu instance variable to by a long array. If the menu was the length of a normal menu this would be very repetitive at the top of the menu class.
 - Decided to implement so that the instance variable loads on initialisation of the menu class from a csv of dishes and their prices. A new dish object is created on instantiation of menu for each row in the csv.
+
+#### Step 12: Extending tests to use stubs and doubles
+- Currently, my test coverage (although high according to Coveralls) is not very sophisticated and is not using doubles as specified in the additional hints and tips in the instructions.
+- I'm now going to extend my tests to make sure that my entire programme is working exactly as expected.
+
+#### Step 13: Using keyword arguments in select_dishes
+- Currently, variable quantities for selected dishes is not possible. If you wanted to order three of the same dish, you'd just have to write it out three times.
+- Using keyword arguments along with the splat operator, should allow users to interact with the programme this way.
+- It is suggested that this sort of functionality should be implemented in the additional hints and tips
