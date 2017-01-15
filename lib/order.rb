@@ -12,4 +12,12 @@ attr_reader :dishes, :current_order
     "You added #{num} #{dish} to your order."
   end
 
+  def total
+    (dishes.keys & current_order.keys).map {|d| dishes[d] * current_order[d]}.inject(:+)
+  end
+
+  def verify_total(user_total)
+    user_total == total ? true : false
+  end
+
 end
