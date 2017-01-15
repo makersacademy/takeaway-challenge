@@ -12,7 +12,8 @@ describe Takeaway do
   describe "#order" do
     context "when requested" do
       it "can order food" do
-        expect { subject.order }.not_to raise_error
+        # expect { subject.order }.not_to raise_error
+        expect(subject).to respond_to(:order).with(1).argument
       end
     end
   end
