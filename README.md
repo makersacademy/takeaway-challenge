@@ -88,6 +88,23 @@ from /Users/stefanliute/Projects/takeaway-challenge/lib/takeaway.rb:20:in `order
 [2] pry(main)> t.total
 => "£0"
   ```
+4. Story 04
+  * Created __Restaurant__ class. Restaurant objects now initializes & holds the menu.
+  * For simplicity's sake, there's just one restaurant that the takeaway automatically initializes. When doing so, the takeaway imports a menu from that restaurant.
+  * Takeaway#pay allows the user to pay for their order by providing an amount and instructs the restaurant to #checkout_order.
+  * Restaurant#checkout_order instructs the takeaway to #reset its order to empty and has a guard clause ensuring the provided amount covers the order's #calc_total.
+  * Restaurant#checkout_order then sends a confirmation message via the #send_message method. For now, this simply displays the required message in IRB/PRY.
+  * Takeaway#reset sets the order to a new Order object (which is, by default, empty)
+  * Feature- and unit-tested for everything above. The PRY story now adds:
+  ```
+  $ pry
+[1] pry(main)> t.pay(10)
+RuntimeError: Insufficient payment! Please retry.
+from /Users/stefanliute/Projects/takeaway-challenge/lib/restaurant.rb:15:in `checkout_order'
+[2] pry(main)> t.pay(18.65)
+=> "Thank you for your custom! Your order will be delivered before 15:51."
+  ```
+  * Twilio...
 
 Issues
 -----
@@ -97,3 +114,5 @@ Issues
   * Nothing new so far (apart from privacy).
 3. Story 03:
   * Nothing new so far.
+4. Story 04:
+  * Restaurant#checkout_order is lazy and greedy. It will gladly take any amount above the order's total.

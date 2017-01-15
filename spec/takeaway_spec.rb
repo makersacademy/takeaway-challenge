@@ -2,7 +2,6 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
-  let(:menu) { instance_double("Menu") }
   let(:order) { instance_double("Order") }
 
   context "testing #new on class" do
@@ -11,8 +10,8 @@ describe Takeaway do
   end
 
   describe '#initialize' do
-    it 'with a menu object' do
-      expect(takeaway.menu).to be_a(Menu)
+    it 'with a restaurant object' do
+      expect(takeaway.restaurant).to be_a(Restaurant)
     end
     it 'with an order object' do
       expect(takeaway.order).to be_a(Order)
@@ -59,6 +58,27 @@ describe Takeaway do
     end
     it 'instructs order to calculate total' do
       expect(order).to respond_to(:calc_total)
+    end
+  end
+
+  describe '#reset' do
+    it 'resets order to empty' do
+      takeaway.reset
+      expect(takeaway.order.items).to be_empty
+    end
+  end
+
+  describe '#pay' do
+    context 'with a restaurant double' do
+      let(:restaurant_dbl) { instance_double("Restaurant") }
+
+      before do
+        allow(restaurant_dbl).to receive(:checkout_order)
+      end
+
+      it 'instructs restaurant to checkout with given amount' do
+        expect(restaurant_dbl).to respond_to(:checkout_order)
+      end
     end
   end
 
