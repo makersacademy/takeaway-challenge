@@ -13,7 +13,7 @@ describe Order do
 		end
 
 		it 'the total price should be zero' do
-			expect(order.total).to eq 0
+			expect(order.total).to eq 0.00
 		end
 
 	end

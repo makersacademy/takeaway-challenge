@@ -4,7 +4,9 @@ describe Takeaway do
 
 	subject (:takeaway)	{ described_class.new(menu) }
 	let (:menu)			{ double(:menu, print_menu: "printed", items: {"pizza" => 7.99}) }
-	
+	let (:send_sms)		{ double(:send_sms) }
+
+
 	it 'has a menu' do
 		expect(takeaway.view_menu).to eq menu.print_menu
 	end
@@ -45,6 +47,18 @@ describe Takeaway do
 			expect(takeaway.check_order).to include("pizza")
 		end
  
+	end
+
+	describe '#place_order' do
+		before (:each) do
+			allow(takeaway).to receive(:send_sms).and_return(true)
+		end
+
+		it 'creates an SMS' do
+		    expect(takeaway.send_sms).to eq true
+		end
+		
+
 	end
 	
 end
