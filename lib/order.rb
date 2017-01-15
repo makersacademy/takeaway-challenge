@@ -25,4 +25,8 @@ class Order
     order_total = dish_prices.inject(@order_sum) { |sum, item| sum + item }
     '%.02f' % order_total
   end
+
+  def double_check(total_price)
+    return true if order_sum == total_price
+  end 
 end

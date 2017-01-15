@@ -29,5 +29,11 @@ describe Order do
       order.add_dish(1)
       expect(order.order_sum).to eq '2.55'
     end
+
+    it 'double checks the final price' do
+      order.add_dish(1)
+      order.order_sum
+      expect(order.double_check('2.55')).to eq true 
+    end
   end
 end

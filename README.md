@@ -36,6 +36,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ## Feature Tests
 
 * Ensure you have a list of dishes with prices
+
 #### Menu
 ```
 [1] pry(main)> require './lib/menu'
@@ -72,6 +73,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 11.Shapu Salad                            ...EUR 4.0
 ```
 * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
+
 #### Order Sum
 ```
 [1] pry(main)> require './lib/order'
@@ -126,10 +128,12 @@ zsh: command not found: prey
 => [{:no=>"01", :dish=>"Yase Soup", :price=>2.55},
  {:no=>"02", :dish=>"Wan Tan Soup", :price=>3.25}]
 [5] pry(main)> order.order_sum
-=> "5.80"
+=> "5.80" # I really wanted to have it with 2 decimals, just like in the menu...
+[6] pry(main)> order.double_check("5.80")
+=> true
 ```
 
-  
+
 
   * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
   * Use the twilio-ruby gem to access the API
