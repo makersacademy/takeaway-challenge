@@ -1,6 +1,8 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'sms'
+require 'dotenv'
+Dotenv.load
 
 class Takeaway
   attr_reader :basket, :total, :user, :message
@@ -27,7 +29,8 @@ class Takeaway
 
   def checkout
     fail "No items in basket" if @basket.empty?
-    puts "#{total}, Please enter mobile number and press enter/return to order"
+    puts "Total cost of order: £#{format('%.02f', (@total.to_f / 100))}, \n
+    Please enter mobile number and press enter/return to order"
     @user = $stdin.gets.chomp
     @message = "Thank you for your order"
     send_sms(message)

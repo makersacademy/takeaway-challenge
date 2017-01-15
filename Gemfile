@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
+gem 'dotenv'
 ruby '2.3.1'
-
 gem 'capybara'
 gem 'coveralls', require: false
 gem 'rake'
