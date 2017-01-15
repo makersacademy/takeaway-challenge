@@ -12,7 +12,7 @@ describe Takeaway do
       expect{takeaway.order("Pizza")}.to change{takeaway.basket.size}.by(1)
     end
     it 'Should raise an error if item not on menu' do
-      expect{takeaway.order("test")}.to raise_error "Item not available"
+      expect{takeaway.order("test")}.to raise_error "Item not on menu"
     end
   end
 
@@ -33,6 +33,26 @@ describe Takeaway do
         takeaway.order "Chips"
         expect(takeaway.basket_summary).to eq [{"CHIPS"=>250}]
       end
+    end
+  end
+  describe '#send_sms' do
+  let(:takeaway) { described_class.new}
+
+    before do
+      takeaway.order "chips"
+      allow(takeaway).to receive(:send_sms)
+      #allow_message_expectations_on_nil
+    end
+    it 'Sends an sms to confirm order' do
+      message = "Thank you for your order"
+      expect(takeaway).to receive(:send_sms).with("Thank you for your order")
+      takeaway.send_sms("Thank you for your order")
+    end
+  end
+  describe "#checkout" do
+  let(:takeaway) { described_class.new}
+    it 'Raises an error if no items added to basket the checkout process' do
+      expect{takeaway.checkout}.to raise_error "No items in basket"
     end
   end
 

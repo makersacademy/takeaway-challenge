@@ -1,5 +1,12 @@
 module Menu
 
+  def read_menu
+    menu_list.each do |item, price|
+      puts "#{item} = £#{format('%.02f', (price.to_f / 100))}"
+    end
+  end
+
+  private
 
   def menu_list
     dishes = {
@@ -12,12 +19,6 @@ module Menu
       "COLESLAW"=>99,
       "BBQ BEANS"=>99
     }
-  end
-
-  def read_menu
-    menu_list.each do |item, price|
-      puts "#{item} = £#{format('%.02f', (price.to_f / 100))}"
-    end
   end
 
 

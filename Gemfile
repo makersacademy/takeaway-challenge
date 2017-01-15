@@ -6,3 +6,4 @@ gem 'coveralls', require: false
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', '~> 0.46.0', require: false
+gem 'twilio-ruby'

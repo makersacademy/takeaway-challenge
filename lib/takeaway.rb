@@ -1,9 +1,10 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
 
 class Takeaway
-  attr_reader :basket, :total
-  include Menu, Order
+  attr_reader :basket, :total, :user, :message
+  include Menu, Order, SMS
 
   def initialize
     @basket = []
@@ -22,6 +23,14 @@ class Takeaway
   def basket_summary
     return "No items added" if @basket.empty?
     format_basket
+  end
+
+  def checkout
+    fail "No items in basket" if @basket.empty?
+    puts "#{total} - Please enter phone number and press enter order"
+    @user = $stdin.gets.chomp
+    @message = "Thank you for your order"
+    send_sms(message)
   end
 
 

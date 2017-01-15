@@ -4,7 +4,7 @@ module Order
 
   def add_to_order(item)
     item = item.upcase
-    fail "Item not available" unless menu_list.include? item
+    fail "Item not on menu" unless menu_list.include? item
     {item => read_menu[item]}
   end
 
