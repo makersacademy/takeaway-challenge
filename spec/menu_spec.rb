@@ -9,8 +9,8 @@ menu1 = Menu.new(choripan, milanesa)
 describe Menu do
 
   describe '#initialize' do
-    it "initializes an array which includes dish objects" do
-      expect(menu1.dish_items).to include(choripan, milanesa)
+    it "initializes a hash which includes dishes and prices" do
+      expect(menu1.menu).to include { {:choripan=>5.95, :milanesa=>7.95} }
     end
 
   end
