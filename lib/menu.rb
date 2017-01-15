@@ -1,7 +1,7 @@
 class Menu
 
 	def list
-	dishes = 	{"Pepperoni Pizza" => 6.00,
+	dishes 	= 	{"Pepperoni Pizza" => 6.00,
 				"American Hot Pizza" => 6.50, 
 				"Four Season Pizza" => 7.50,
 				"Double Pepperoni Pizza" => 8.50,

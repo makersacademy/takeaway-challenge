@@ -32,11 +32,11 @@ class Takeaway
 		send_text("Thank you for your order: £#{total}")
 	end
 
+private
+
 	def send_text(message)
 		SMS.new.send_sms(message)
 	end
-
-private
 
 	def total
 		sprintf('%.2f',@order.price.to_s)
