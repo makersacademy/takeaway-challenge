@@ -30,9 +30,9 @@ The message class handle the confirmation message sent to the customer when the 
 2. Read the menu  
 3. Order the dish you like  
 4. View your order basket or/and order more if you want to    
-5. Find out how it will cost you  
+5. Find out how much it will cost you  
 6. Enter your own total  
-7. You receive a confirmation if the total you enter matches the program's one, otherwise you recieve an error that the prices do not match.  
+7. A confirmation text message is sent to the registered phone number if the total you enter matches the program's one, otherwise you recieve an error that the prices do not match.  
 
 
 - irb test example
