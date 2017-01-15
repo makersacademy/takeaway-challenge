@@ -29,6 +29,8 @@ attr_reader :menu , :basket
     puts "The subtotal is:"
     subtotal.each {|dishes, price | puts "#{dishes} : £#{price}" }
 
+    # puts "The Total is:"
+    # subtotal.sum
   end
 
 
