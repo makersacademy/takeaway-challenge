@@ -28,4 +28,19 @@ describe "User stories" do
     takeaway = TakeAway.new
     expect {takeaway.view_total}.not_to raise_error
   end
+
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and
+  # will be delivered before 18:52" after I have ordered
+  it "allows the user to place the order" do
+    takeaway = Takeaway.new
+    expect{takeaway.confirm_order}.not_to raise_error
+  end
+
+  it "sends a SMS message to the user confirming that their order has been placed and confirming the time it will be ready" do
+    
+  end
+
+
 end

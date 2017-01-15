@@ -25,8 +25,6 @@ class Menu
     get_csv_info(filename)
   end
 
-
-
   private
 
   def format_menu
