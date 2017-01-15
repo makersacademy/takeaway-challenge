@@ -8,8 +8,7 @@ class Menu
   attr_reader :list
 
   def initialize
-    @list = []
-    load_from_file
+    @list = []; load_from_file
   end
 
   def see_dishes
