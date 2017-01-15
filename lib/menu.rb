@@ -1,14 +1,20 @@
 class Menu
 
+	attr_reader :items
+
 	def initialize
-		@menu = {
-				 	'garlic bread' => '£2.50',
-				 	'pizza'		   => '£7.00'	
+		@items = {
+				"garlic bread" => 2.99,
+				"pizza" => 7.99
 				}
 	end
 
 	def print_menu
-		puts @menu.map{|k,v| "#{k}: #{v}"}.join(",\n")
+		@items.map{|k,v| "#{k} : £#{v.round(2)}"}.join(",\n")
 	end
+
+	private
+
+
 
 end
