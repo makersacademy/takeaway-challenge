@@ -2,11 +2,12 @@ require_relative 'menu'
 require_relative 'order'
 
 class Takeaway
-  attr_reader :basket
+  attr_reader :basket, :total
   include Menu, Order
 
   def initialize
     @basket = []
+    @total = 0
   end
 
   def order(item, number=1)
@@ -15,18 +16,12 @@ class Takeaway
   end
 
   def total
-    @total = 0
-    @basket.each {|x| x.each {|_key, value| @total += value}}
-    "Total: £#{format('%.02f', (@total.to_f / 100))}"
+    calculate_total
   end
 
   def basket_summary
     return "No items added" if @basket.empty?
-    basket.each do |addeditem|
-      addeditem.each do |item, price|
-        puts "#{item} = £#{format('%.02f', (price.to_f / 100))}"
-      end
-    end
+    format_basket
   end
 
 
