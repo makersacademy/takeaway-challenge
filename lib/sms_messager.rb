@@ -4,8 +4,8 @@ class SMSMessager
 
   attr_reader :client
 
-  def initialize
-    @client = TwilioClient.new.client
+  def initialize(twilio_client_class)
+    @client = (twilio_client_class || TwilioClient).new.client
   end
 
   def message(message)

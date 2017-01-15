@@ -11,17 +11,19 @@ describe Takeaway do
   let(:array_printer) { class_double("ArrayPrinter") }
   let(:order_total_checker) { class_double("OrderTotalChecker") }
   let(:order_class) { class_double("Order") }
-  let(:sms_messager_class) { class_double("SMSMessager") }
-  let(:sms_messager) { instance_double("SMSMessager") }
+  let(:test_sms_messager_class) { double("SMSMessagerTest") }
+  let(:test_sms_messager) { double("SMSMessagerTest") }
+  let(:twilio_client) { double("TwilioClient") }
+  let(:twilio_client_messages) { double("Messages") }
   let(:args) { {:menu => menu,
                 :printer_module => array_printer,
                 :order_class => order_class,
                 :order_total_checker => order_total_checker,
-                :sms_messager => sms_messager_class} }
+                :sms_messager => test_sms_messager_class} }
   subject(:takeaway) { described_class.new(args) }
   before(:each) do
     allow(order_class).to receive(:new) { order }
-    allow(sms_messager_class).to receive(:new) { sms_messager }
+    allow(test_sms_messager_class).to receive(:new) { test_sms_messager }
     allow(array_printer).to receive(:print_array) { print "string" }
   end
   describe "#initialize" do
@@ -42,7 +44,10 @@ describe Takeaway do
       allow(hawaiian).to receive(:price) { 10 }
       allow(meat_feast).to receive(:price) { 15 }
       allow(order).to receive(:ordered_dishes) { { pepperoni => 3, hawaiian => 2, meat_feast => 4 } }
-      allow(sms_messager).to receive(:message)
+      allow(test_sms_messager).to receive(:message) { true }
+      allow(test_sms_messager).to receive(:client) { twilio_client }
+      allow(twilio_client).to receive(:messages) { twilio_client_messages }
+      allow(twilio_client_messages).to receive(:create) { true }
     end
     it "raises error if expected order total is wrong" do
       allow(order_total_checker).to receive(:check_total) { false }
