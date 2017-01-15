@@ -14,6 +14,8 @@ Takeaway Challenge
 
  ```
 
+https://travis-ci.org/laurenrosie/takeaway-challenge.svg?branch=master
+
 Usage
 -----
 - Given an instance of the class List (which contains an array of instances of the class Dish)
