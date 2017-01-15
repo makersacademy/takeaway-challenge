@@ -1,3 +1,9 @@
+Questions:
+------------------
+- How do you stub an object instantiated locally inside a method?
+- How do you use keyword arguments with the splat operator?
+
+
 Detailing my steps:
 ------------------
 
