@@ -18,14 +18,14 @@ Takeaway Challenge
 
 
 
- Instructions
+# My Approach
  -------
 
  * Reading user stories I draw a domain modeling table with objects and messages. My first thought was to implement a class List and a class Dish not to have the list of dishes hard coded in the List class (thinking about the owner of the Takeaway adding and deleting dishes etc.). After a while I changed my mind: it wasn't a required feature. So I just added a hash to @dishes in the List class. Then refactored: dishes (hash) can be given as an argument initializing the List class.
 
  * **User Story n.2** I initialized an Order class with the same list. Not sure about SRP: shouldn't the data be stored only in one place? Thinking about dependencies injection.
 
- * **User Story n.3** Implemented a total method and a confirm_total method that takes the total given by the user as an argument (not sure why the user shouldn't trust the total returned by the terminal). ```order.confirm_total``` processes the order and leads to the next step.
+ * **User Story n.3** Implemented a confirm_total method that takes the total given by the user as an argument and compares it with the output of a total method (not sure why the user shouldn't trust the total returned by the terminal). ```order.confirm_total``` processes the order and leads to the next step.
 
 
 

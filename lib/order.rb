@@ -1,4 +1,5 @@
 class Order
+
 attr_reader :dishes, :current_order
 
   def initialize(dishes)
