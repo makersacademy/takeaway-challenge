@@ -28,7 +28,7 @@ describe 'User stories' do
     order = Order.new(dishes)
     order.select_dish(:pizza, 1)
     order.select_dish(:lasagna, 3)
-    expect(order.verify_total(21)).to eq true
+    expect(order.confirm_total(21)).to eq true
 
   end
 end

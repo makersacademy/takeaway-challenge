@@ -16,8 +16,9 @@ attr_reader :dishes, :current_order
     (dishes.keys & current_order.keys).map {|d| dishes[d] * current_order[d]}.inject(:+)
   end
 
-  def verify_total(user_total)
-    user_total == total ? true : false
+  def confirm_total(user_total)
+  raise "Your total is not correct. Enter #{total} to process the order." unless user_total == total
+  true
   end
 
 end
