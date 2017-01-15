@@ -2,7 +2,6 @@ require 'message'
 
 describe Message do
   let(:client) { double :client }
-  it {is_expected.to respond_to(:send_text).with(1)}
 
   it 'can send a text' do
     message = 'order complete'
