@@ -17,6 +17,10 @@ describe Order do
   end
 
   describe '#adding dishes to your basket' do
+    before do
+      allow(dish).to receive(:name).and_return("Edamame")
+      allow(dish).to receive(:price).and_return(3.50)
+    end
     it 'adds an item to the basket' do
       order.add_item(dish, Order::DEFAULT_QUANTITY)
       expect((order.basket).length).to eq 1
@@ -32,20 +36,19 @@ describe Order do
     end
 
     it 'calculates the total cost; 1 item, DEFAULT_QUANTITY' do
-      order.add_item(dish, Order::DEFAULT_QUANTITY)
-      expect{ order.update_basket_total }.to change{ order.basket_total }.by(3.50)
+      expect{ order.add_item(dish, Order::DEFAULT_QUANTITY) }.to change{ order.basket_total }.by(3.50)
     end
 
     it 'calculates the total cost; 2 items, both DEFAULT_QUANTITY' do
       order.add_item(dish, Order::DEFAULT_QUANTITY)
       order.add_item(dish2, Order::DEFAULT_QUANTITY)
-      expect{ order.update_basket_total }.to change{ order.basket_total }.by(9.00)
+      expect(order.basket_total).to eq(9.00)
     end
 
     it 'calculates the total cost; 2 items of different quantities' do
       order.add_item(dish, 2)
       order.add_item(dish2, 3)
-      expect{ order.update_basket_total }.to change{ order.basket_total }.by(23.50)
+      expect(order.basket_total).to eq(23.50)
     end
   end
 end
