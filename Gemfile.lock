@@ -76,6 +76,7 @@ DEPENDENCIES
   coveralls
   rake
   rspec
+  simplecov
   twilio-ruby
 
 RUBY VERSION
