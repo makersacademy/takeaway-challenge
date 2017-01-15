@@ -24,7 +24,6 @@ class Takeaway
   end
 
   def show_price
-    # check user order against list price and multiply by user order quantity
     @check_arr = []
     @user_order.each_pair do |key, value|
       multiple = value[0] * value[1]
@@ -34,6 +33,9 @@ class Takeaway
   end
 
   def show_order_list
-
+    @user_order.each_pair do |key, value|
+      puts "#{value[0]} #{key} price: #{value[0] * value[1]}"
+    end
+    print "Total: #{@total_price}"
   end
 end
