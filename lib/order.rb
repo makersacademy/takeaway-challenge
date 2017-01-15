@@ -13,6 +13,7 @@ class Order
     dish = {name=> quantity}
     @basket.push(dish)
     add_to_total(name, quantity)
+    "#{quantity} x #{name.name} added to your basket"
   end
 
 private

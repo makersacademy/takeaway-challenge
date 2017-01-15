@@ -20,11 +20,19 @@ describe Order do
     before do
       allow(dish).to receive(:name).and_return("Edamame")
       allow(dish).to receive(:price).and_return(3.50)
+
     end
+
     it 'adds an item to the basket' do
       order.add_item(dish, Order::DEFAULT_QUANTITY)
       expect((order.basket).length).to eq 1
     end
+
+    it 'outputs message after adding an item to your basket' do
+      order.add_item(dish, Order::DEFAULT_QUANTITY)
+      expect(order.add_item(dish, Order::DEFAULT_QUANTITY)).to eq("1 x Edamame added to your basket")
+    end
+
   end
 
   describe '#calculating cost of order' do

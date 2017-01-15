@@ -6,6 +6,7 @@ describe Takeaway do
   subject(:takeaway) {described_class.new(menu)}
   let(:order) {double :order}
   let(:dish) {double :dish}
+  let(:sms) {double :sms}
 
   describe '#view menu' do
     it 'view_menu method returns list of dishes' do
@@ -39,6 +40,8 @@ describe Takeaway do
     before do
       allow(dish).to receive(:name).and_return("Edamame")
       allow(dish).to receive(:price).and_return(3.50)
+      allow(takeaway).to receive(:send_text)
+      allow(sms).to receive(:send_sms).with("Thank you! Your order...")
     end
 
     it 'raises error if payment total and order total do not tally' do
@@ -49,10 +52,11 @@ describe Takeaway do
       expect{ takeaway.place_order }.to raise_error message
     end
 
-    it 'confirms order after placing it' do
+    it 'confirms order after placing it by sending a text' do
+      allow(takeaway).to receive(:send_text).with("Thank you! Your order...")
       takeaway.create_order
       takeaway.order.add_item(dish, Order::DEFAULT_QUANTITY)
-      expect(takeaway.place_order).to eq ("Thank you for your order")
+      takeaway.place_order
     end
 
   end
