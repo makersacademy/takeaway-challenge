@@ -23,23 +23,23 @@ describe "Feature tests" do
     dishes_list << Dish.new("Lasagne in bianco broccoli e salsiccia",12)
     menu.dishes += dishes_list
     order = Order.new
-    expect{order.dishes << {dish: menu.dishes[1], quantity: 2}}.not_to raise_error
-    expect{order.dishes << {dish: menu.dishes[2], quantity: 1}}.not_to raise_error
+    expect{order.dishes << {dish: menu.dishes[0], quantity: 2}}.not_to raise_error
+    expect{order.dishes << {dish: menu.dishes[1], quantity: 1}}.not_to raise_error
   end
 
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
-  xit 'so customer can order, check order total match sum of dishes prices' do
+  it 'so customer can order, check order total match sum of dishes prices' do
     menu = Menu.new
     dishes_list = []
     dishes_list << Dish.new("Linguine alla carbonara col tartufo",15)
     dishes_list << Dish.new("Lasagne in bianco broccoli e salsiccia",12)
     menu.dishes += dishes_list
     order = Order.new
-    order.dishes << {dish: menu.dishes[1], quantity: 2}
-    order.dishes << {dish: menu.dishes[2], quantity: 1}
-
+    order.dishes << {dish: menu.dishes[0], quantity: 2}
+    order.dishes << {dish: menu.dishes[1], quantity: 1}
+    expect(order.total).to eq 42
   end
   # As a customer
   # So that I am reassured that my order will be delivered on time
