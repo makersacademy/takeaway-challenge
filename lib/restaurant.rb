@@ -6,7 +6,7 @@ class Restaurant
 
   def initialize
 
-    @menu = [{"fried-rice" => "5 Pounds"}, {"beef-stew" => "4 Pounds"}]
+    @menu = [{"fried-rice" => "£ 5"}, {"beef-stew" => "£ 4"},{"lemon-meringue" => "£ 3"},{"assorted-chocolates" => "£ 3"}]
     @order =[]
     @count = 0
     @mailer = Email_conf.new
@@ -16,7 +16,10 @@ class Restaurant
 
   def display_menu
 
-    p menu
+    menu.each do |items| items.each do |k,v|
+      p "Dish: #{k} ----- Price: #{v}"
+    end
+    end
 
   end
 
@@ -31,9 +34,13 @@ class Restaurant
     order.each do |items| items.each do |k,v| @count += v.to_i end end
     raise "the total given does not equal the dishes ordered" if total != count
     puts "you have ordered #{count} dishes"
-    mailer.send_text("Your order will be delivered before #{sprintf '%02d',time.hour}:#{sprintf'%02d',time.min}",phone_number)
+    send(phone_number = "447795556112")
     @order = []
   end
-  
+
+  def send(phone_number)
+      #mailer.send_text("Your order will be delivered before #{sprintf '%02d',time.hour}:#{sprintf'%02d',time.min}",phone_number)
+  end
+
 
 end
