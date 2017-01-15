@@ -10,7 +10,7 @@ attr_accessor :items, :summary
 	def list_summary(item,quantity)
 		item.map do |key,value|
 		price = sprintf('%.2f', value*quantity)
-		@summary += " #{key} x #{quantity} = #{price} |"
+		@summary += " #{key} x #{quantity} = £#{price} |"
 		end
 	end
 

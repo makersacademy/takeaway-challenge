@@ -13,9 +13,9 @@ class SMS
 	deliver_time = (Time.now+3600).to_s[11..15]
 
 
-	    @client = Twilio::REST::Client.new account_sid, auth_token 
+	@client = Twilio::REST::Client.new account_sid, auth_token 
 
-	    @client.account.messages.create({
+	@client.account.messages.create({
 	        :to => to_num,
 	        :from => from,
 	        :body => "Thank you! Your order was placed, total #{total} and will be delivered before #{deliver_time}" })

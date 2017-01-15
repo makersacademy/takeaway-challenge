@@ -43,7 +43,7 @@ private
 	end
 
 	def selected_dishes(item)
-	list.select { |k,v| k == item }
+		list.select { |k,v| k == item }
 	end
 
 	

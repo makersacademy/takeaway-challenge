@@ -25,7 +25,7 @@ subject(:takeaway){described_class.new}
 	describe '#order_summary' do
 		it 'should return a summary' do
 		takeaway.order("Pepperoni Pizza", 2)
-		expect(takeaway.order_summary).to eq "Pepperoni Pizza x 2 = 12.0 "
+		expect(takeaway.order_summary).to eq " Pepperoni Pizza x 2 = £12.00 |"
 		end
 	end
 
