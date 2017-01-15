@@ -13,8 +13,4 @@ class Menu
 		@items.map{|k,v| "#{k} : £#{v.round(2)}"}.join(",\n")
 	end
 
-	private
-
-
-
 end

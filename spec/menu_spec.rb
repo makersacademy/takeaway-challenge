@@ -9,9 +9,6 @@ describe Menu do
 					"pizza" => 7.99
 				}
 				end	
-	
-	
-
 
 	it {is_expected.to respond_to(:print_menu)}
 
