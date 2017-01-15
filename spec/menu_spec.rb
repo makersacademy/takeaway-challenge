@@ -19,5 +19,12 @@ describe Menu do
       expect(menu.print_menu).to eq(menu_choices)
     end
 
+    it "tells if a dish is on the menu" do
+      expect(menu.has_dish?("spring rolls")).to be true
+    end
+
+    it "tells if a dish is not on the menu" do
+      expect(menu.has_dish?("crispy seaweed")).to be false 
+    end
 
 end

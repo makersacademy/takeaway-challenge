@@ -8,6 +8,9 @@ class Menu
     @dishes = dishes
   end
 
+  def has_dish?(dish)
+    !dishes[dish].nil?
+  end
   # def dish_list
   # dishes_and_prices = {
   #   "seaweed" => 6.20,
