@@ -1,16 +1,23 @@
 require 'takeaway'
 
 describe TakeAway do
-  # As a customer
-  # So that I can check if I want to order something
-  # I would like to see a list of dishes with prices
+  let(:menu) {double(:menu)}
+  let(:order) { instance_double(Order) }
   subject(:takeaway) {described_class.new}
 
-
-    it "reads the menu" do
-      t = TakeAway.new
-      expect(takeaway.menu).to eq MENU
+    describe "#see menu" do
+      it "should allow to see the menu" do
+        expect(takeaway.see_menu).to include(MENU.to_s)
+      end
     end
 
- 
+    describe "#select" do
+      before do
+        allow(order).to receive(:add)
+      end
+      it "returns the basket items" do
+        takeaway.select("Salad", 3)
+        expect(takeaway.basket).to eq({"Salad"=>3})
+      end
+    end
 end
