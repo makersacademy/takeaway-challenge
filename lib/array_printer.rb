@@ -1,6 +1,6 @@
 module ArrayPrinter
 
-  def self.list(menu)
+  def self.print(menu)
     list_hash = create_hash(menu)
   end
 

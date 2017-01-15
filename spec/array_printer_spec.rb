@@ -9,15 +9,15 @@ describe ArrayPrinter do
   let(:meat_feast) { instance_double("Dish") }
   let(:dishes) { [pepperoni, hawaiian, meat_feast] }
 
-  describe "#list" do
+  describe "#print" do
     before(:each) do
       allow(menu).to receive(:dishes) { dishes }
     end
     it "creates a hash" do
-      expect(printer.list(menu)).to be_a(Hash)
+      expect(printer.print(menu)).to be_a(Hash)
     end
     it "places dish objects in hash with keys 1..n" do
-      expect(printer.list(menu)).to include(1 => pepperoni, 2 => hawaiian, 3 => meat_feast)
+      expect(printer.print(menu)).to include(1 => pepperoni, 2 => hawaiian, 3 => meat_feast)
     end
   end
 

@@ -15,7 +15,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(args) }
   before(:each) do
     allow(order_class).to receive(:new) { order }
-    allow(array_printer).to receive(:list) { {1 => pepperoni, 2 => hawaiian, 3 => meat_feast} }
+    allow(array_printer).to receive(:print) { {1 => pepperoni, 2 => hawaiian, 3 => meat_feast} }
   end
   describe "#initialize" do
     it { is_expected.to respond_to(:menu) }
