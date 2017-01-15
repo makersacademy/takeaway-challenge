@@ -29,31 +29,31 @@ describe Takeaway do
       expect(subject.add_to_order("1,3")).to eq([{:name => "Dish1", :price => 5}, {:name => "Dish3", :price => 4}])
     end
   end
-  describe '#basket' do
-    it { is_expected.to respond_to(:basket) }
-    it 'should show the items in the basket from the ordered array' do
+  describe '#order_basket' do
+    it { is_expected.to respond_to(:order_basket) }
+    it 'should show the items in the order_basket from the ordered array' do
       subject.add_to_order("1, 3")
-      expect(subject.basket).to eq([{:name => "Dish1", :price => 5}, {:name => "Dish3", :price => 4}])
+      expect(subject.order_basket).to eq([{:name => "Dish1", :price => 5}, {:name => "Dish3", :price => 4}])
     end
   end
-  describe '#total_basket' do
-      it { is_expected.to respond_to(:total_basket) }
+  describe '#total_order' do
+      it { is_expected.to respond_to(:total_order) }
       it 'should add up the total price of dishes ordered' do
         takeaway.add_dish("Dish1", 5)
         takeaway.add_dish("Dish2", 2)
         takeaway.add_dish("Dish3", 4)
         takeaway.add_to_order("1,3")
-        expect(takeaway.total_basket).to eq ("Your total - £9")
+        expect(takeaway.total_order).to eq ("Your total - £9")
     end
   end
-  describe "#checkout" do
-    it { is_expected.to respond_to(:checkout) }
+  describe "#order_checkout" do
+    it { is_expected.to respond_to(:order_checkout) }
     it 'should output the correct values for ordered' do
       takeaway.add_dish("Dish1", 5)
       takeaway.add_dish("Dish2", 2)
       takeaway.add_dish("Dish3", 4)
       takeaway.add_to_order("1,3")
-      expect(takeaway.checkout).to eq ([{:name => "Dish1", :price => 5}, {:name => "Dish3", :price => 4}])
+      expect(takeaway.order_checkout).to eq ([{:name => "Dish1", :price => 5}, {:name => "Dish3", :price => 4}])
     end
   end
 end

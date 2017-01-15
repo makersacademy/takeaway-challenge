@@ -1,11 +1,13 @@
 require_relative 'menu'
+require_relative 'order'
+
 
 class Takeaway
 attr_reader :menu_object, :order_array
 
   def initialize
     @menu_object = Menu.new
-    @ordered = []
+    @order_object = Order.new
   end
 
   def add_dish(name, price)
@@ -17,40 +19,22 @@ attr_reader :menu_object, :order_array
     @menu_object.show_menu_array.each do |x|
       puts "#{x[:name]} : £#{x[:price]}"
     end
-
   end
 
-# order will use the index of menu_array
-# to decide which dishes to order
   def add_to_order(order)
-    order_array = []
-    order_array = order.split(",").map(&:to_i)
-    order_array.each do |x|
-      show_menu.each_with_index { |val, index|
-        if (x - 1 == index)
-          @ordered << val
-        end
-      }
-    end
-    @ordered
+    @order_object.add(order, show_menu)
   end
 
-  def basket
-    raise "No Dishes Selected: Please add a dish to your order" if @ordered.empty?
-    @ordered
+  def order_basket
+    @order_object.basket
   end
 
-  def total_basket
-    total_basket = 0
-    @ordered.each do |x|
-      total_basket = total_basket + x[:price]
-    end
-    @total_basket
-    return "Your total - £#{total_basket}"
+  def total_order
+    @order_object.total
   end
 
-  def checkout
-    puts "Your order has been accepted, you will receive a text message confirmaton shortly!"
-    @ordered
+  def order_checkout
+    @order_object.checkout
   end
+
 end

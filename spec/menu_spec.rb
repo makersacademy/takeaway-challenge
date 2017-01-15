@@ -16,4 +16,5 @@ describe Menu do
       expect(subject.show_menu_array).to eq([{:name => "Dish1", :price => 5}])
     end
   end
+
 end

@@ -30,7 +30,7 @@ describe 'User Stories -' do
    takeaway.add_dish("Dish2", 2)
    takeaway.add_dish("Dish3", 4)
    takeaway.add_to_order("1,3")
-   expect(takeaway.total_basket).to eq ("Your total - £9")
+   expect(takeaway.total_order).to eq ("Your total - £9")
  end
 
 # As a customer
