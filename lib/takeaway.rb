@@ -8,9 +8,10 @@ def initialize
 
 end
 
-  def order(dish)
+  def order(dish, quantity)
     raise not_on_menu_msg if !@menu.has_key?(dish)
-    @basket << dish
+    # @basket << dish
+    @basket << {dish => quantity}
   end
 
   def not_on_menu_msg
