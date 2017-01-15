@@ -6,5 +6,6 @@
   takeaway.show_menu
   takeaway.add_to_order("1,3")
   takeaway.add_to_order("3")
-  takeaway.basket
-  takeaway.total_basket
+  takeaway.order_basket
+  takeaway.total_order
+  takeaway.order_checkout

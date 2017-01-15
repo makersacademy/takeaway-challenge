@@ -33,7 +33,7 @@ class Order
   end
 
   def checkout
-    puts "Your order has been accepted, you will receive a text message confirmaton shortly!"
+    puts "Your order has been accepted, you will receive a text message confirmation shortly!"
     @ordered
   end
 
