@@ -1,4 +1,4 @@
-require 'message'
+require './lib/message'
 
 class Order
 

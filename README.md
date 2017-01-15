@@ -27,8 +27,9 @@ Takeaway Challenge
 
  * **User Story n.3** Implemented a confirm_total method that takes the total given by the user as an argument and compares it with the output of a total method (not sure why the user shouldn't trust the total returned by the terminal). ```order.confirm_total``` processes the order and leads to the next step.
 
- * **User Story n.4** Added gem 'twilio-ruby' to Gemfile. Created a Message class managing Twilio API. Working on RSpec with doubles and - possibly - arguments, not to get sms every time I run tests. 
+ * **User Story n.4** Added gem 'twilio-ruby' to Gemfile. Created a Message class managing Twilio API. Worked on RSpec with doubles not to get sms every time I run tests.
 
+  * **Still refactoring** (RSpec!!) and trying to understand properly dependencies injection and how API work.
 
 
 
