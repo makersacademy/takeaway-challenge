@@ -11,15 +11,14 @@ class Takeaway
   end
 
   def add(dish, quantity = 1)
-    add_to_order(dish, quantity)
-  end
-
-  private
-
-  def add_to_order(dish, quantity)
     fail "Sorry, we don't have #{dish} in our menu." unless @menu.dishes.has_key?(dish)
     @order.add_item(dish, quantity)
-    p "You added #{quantity} #{dish}(s) to your order."
+    "You added #{quantity} #{dish}(s) to your order."
+  end
+
+  def order_summary
+    fail "Sorry, but you have no items in your order to summarise" if @order.items.empty?
+    @order.summarise
   end
 
 end

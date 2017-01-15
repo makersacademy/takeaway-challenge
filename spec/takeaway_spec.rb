@@ -19,14 +19,39 @@ describe Takeaway do
     end
   end
 
-  # describe '#add' do (moved to add_to_order)
-  #   before do
-  #     allow(order).to receive(:add_item)
-  #   end
-  #   it 'adds one dish (and optional quantity) to order' do
-  #     takeaway.add("Risotto con funghi porcini", 2)
-  #     expect(order).to respond_to(:add_item)
-  #   end
-  # end
+  describe '#add' do
+    before do
+      takeaway.menu.add_dish("Risotto con funghi porcini", 4.25)
+      allow(order).to receive(:add_item)
+    end
+
+    it 'raises error message if item not in menu' do
+      message = "Sorry, we don't have Farfale in our menu."
+      expect { takeaway.add("Farfale", 3) }.to raise_error(message)
+    end
+
+    it 'instructs order to #add_item if item exists in menu' do
+      takeaway.add("Risotto con funghi porcini", 2)
+      expect(order).to respond_to(:add_item)
+    end
+  end
+
+  describe '#order_summary' do
+    before do
+      takeaway.menu.add_dish("Risotto con funghi porcini", 4.25)
+      allow(order).to receive(:summarise)
+    end
+
+    it 'raises error message if the order is empty' do
+      message = "Sorry, but you have no items in your order to summarise"
+      expect { takeaway.order_summary }.to raise_error(message)
+    end
+
+    it 'instructs order to summarise if it has items' do
+      takeaway.add("Risotto con funghi porcini", 2)
+      expect(order).to respond_to(:summarise)
+    end
+
+  end
 
 end
