@@ -1,5 +1,5 @@
 class Foodbuddy
-#would decompose this to be accessed by order as well for prices
+#to be accessed by order for prices
 
 attr_reader :list, :id
 
@@ -24,7 +24,8 @@ end
 def remove_dish(dish)
   @list.delete(dish)
 end
-# @ ID  = list [:ID]
+# to initialize
+#@ ID  = list [:ID]
 # @name    = list [:name]
 # @price   = list [:price]
 #

@@ -1,7 +1,9 @@
 class Order
 
-customer_order = { id:, @items:[],total: }
+def initialize
+  customer_order = { id:, @items:[],total: }
 
+end
 
 def create_order
 

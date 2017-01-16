@@ -11,4 +11,3 @@ class Menu
     puts (menuhash.list).each{|key, value| puts "#{key} @ £ #{value.round(2)}"}
   end
 end
-#create formatting / title and ordering info etc
