@@ -1,4 +1,4 @@
-require "Menu_Loader"
+require "menu_loader"
 describe MenuLoader do
   let(:yaml) {double :YAML, load: [{name: "plain noodles", price: 400}]}
   let(:menu) {double :menu, menu_location: "nil", add_to_menu: nil}
