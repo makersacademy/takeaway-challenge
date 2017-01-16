@@ -2,7 +2,7 @@ require_relative 'menu'
 require_relative 'order'
 
 class Customer
-  attr_reader :pre_order, :orders, :estimated_amount, :calculated_amount, :pre_order_status
+  attr_reader :pre_order, :estimated_amount, :calculated_amount, :pre_order_status, :order, :menu
 
   def initialize(name = "Pedro", phone_number = "+4407342229369")
     @name = name
@@ -10,10 +10,12 @@ class Customer
     @estimated_amount = 0
     @calculated_amount = 0
     @pre_order_status = false
+    @menu
   end
 
   def look_menu(menu = Menu.new)
-    menu.printer
+    @menu = menu
+    @menu.printer
   end
 
   def choose_dishes(pre_order = [], estimated_amount)
@@ -27,7 +29,7 @@ class Customer
     @order = Order.new(@pre_order)
     @calculated_amount = @order.calculate_total
   end
-  
+
   def amount_check?
     calculate_amount
     @estimated_amount == @calculated_amount

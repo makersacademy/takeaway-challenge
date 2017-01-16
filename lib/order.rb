@@ -21,6 +21,6 @@ class Order
     timestamp = Time.now
     delivery_time = (timestamp + 3600).strftime("%H:%M")
     message_body = "Thank you #{customer_name}! Your order was placed and will be delivered before #{delivery_time}"
-    @message.send_message(customer_phone_number, message_body)
+    #@message.send_message(customer_phone_number, message_body)
   end
 end

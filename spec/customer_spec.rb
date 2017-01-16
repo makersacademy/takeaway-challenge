@@ -2,7 +2,8 @@ require 'customer'
 
 describe Customer do
   subject(:customer){ described_class.new }
-  let(:order){ double(:order) }
+  let(:menu){ double('menu') }
+  let(:order){ double('order') }
   before :each do
     Menu.send(:remove_const, "FILENAME")
     Menu::FILENAME = "./lib/list_dishes_test.csv"
@@ -14,7 +15,10 @@ describe Customer do
     end
 
     it 'tests printer' do
-      expect(customer.look_menu.length).to eq(8)
+      allow(customer.menu).to receive(:printer).and_return("test")
+      # allow(customer).to receive(:menu).and_return(menu)
+      # allow(customer).to receive(:look_menu)
+      expect(customer.look_menu(menu)).to eq("test")
     end
   end
 
@@ -51,15 +55,11 @@ describe Customer do
     it {is_expected.to respond_to(:place_order)}
 
     it 'creates a new order' do
-      dishes = [ ["Supa Minestrone", 3],
-                  ["Margherita", 3],
-                  ["Pepperoni", 4]
-                ]
-      estimated_amount = 10
-      customer.choose_dishes(dishes, estimated_amount)
-      customer.calculate_amount
+      message_body = ""
+      allow(customer.order).to receive(:confirmation).and_return(message_body)
+      allow(customer).to receive(:no_pre_order_error_condition).and_return(nil)
       allow(customer).to receive(:amount_check?).and_return(true)
-      expect{ customer.place_order }.not_to raise_error
+      expect(customer.place_order).to eq(message_body)
     end
 
     it 'raise error if total is incorrect' do
