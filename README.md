@@ -97,10 +97,12 @@ I created 4 classes to adhere to single responsiblity principle
 3. order.rb
 4. send_sms.rb
 
-Below is the domain model 
+Below is the domain model:
+
+
 |Object                |Message         |  
 | :-------------:      |:-------------: |
-|Customer|                              |
+|Customer              |               |
 |Takeaway              |list_menu?      |
 |Menu                  |list_menu       |
 |Order                 |order           |
