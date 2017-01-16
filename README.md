@@ -18,11 +18,11 @@ Takeaway Challenge
 ```
 As a customer
 So that I can check if I want to order something
-I would like to see a list of dishes with prices
+I would like to see a list of dishes with prices _DONE_
 
 As a customer
 So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+I would like to be able to select some number of several available dishes _DONE_
 
 As a customer
 So that I can verify that my order is correct
@@ -30,10 +30,10 @@ I would like to check that the total I have been given matches the sum of the va
 
 As a customer
 So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered _TEXT RECEIVED BUT CODE FOR 3 NOT DONE SO IT IS GENERIC_
 ```
 I went wrong on this challenge, getting caught up in user input, then losing time in trying to get rspec working for gets.chomp.
-It is incomplete. 
+It is incomplete as order selection and creation need a rewrite.
 
 Instructions - to demo stories 1 & 2 in irb
 -------------
@@ -75,4 +75,7 @@ Please enter menu number of your choice
 To finish order, hit return twice
 
  => [{:id=>"3", :quantity=>"4"}, {:id=>"2", :quantity=>"4"}, {:id=>"1", :quantity=>"5"}] 
-`
+ 
+ To send the text run command line
+ `ruby twilio_test.rb`
+
