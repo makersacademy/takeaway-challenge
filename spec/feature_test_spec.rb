@@ -21,7 +21,7 @@ describe 'Feature tests for User Stories' do
     let (:order_hash) { { 1 => 3, 6 => 2, 9 => 1} }
     it 'customer can place an order with selected number of items' do
       take_away = TakeAway.new
-      allow(message).to receive(:send_sms).and_return(true)
+      allow(take_away).to receive(:send_sms)
       total = take_away.place_order(order_hash)
       expect(total).to eq(85)
     end
@@ -35,7 +35,7 @@ describe 'Feature tests for User Stories' do
     let (:order_hash) { { 1 => 3, 6 => 2, 9 => 1} }
     it 'customer can see details of the order with prices' do
       take_away = TakeAway.new
-      allow(message).to receive(:send_sms).and_return(true)
+      allow(take_away).to receive(:send_sms)
       take_away.place_order(order_hash)
       take_away.order_details
       expect { take_away.order_details }.to output.to_stdout
@@ -49,6 +49,7 @@ describe 'Feature tests for User Stories' do
     let (:order_hash) { { 1 => 3, 6 => 2, 9 => 1} }
     it 'when order send customer recieves a text message with time and order total amount' do
       take_away = TakeAway.new
+      allow(take_away).to receive(:send_sms)
       take_away.place_order(order_hash)
       message = "Thank you! Your order for the total amount if $85 was placed and will be delivered before 18:52"
       # expect { customer }.to receive_a(text_message) on his phone

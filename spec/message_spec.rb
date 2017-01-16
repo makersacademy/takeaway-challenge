@@ -8,7 +8,7 @@ describe SMS do
     expect(sms).to be_a(SMS)
   end
 
-  it 'sends sms' do
-    # how can we check that message was send???
+  it '#sends sms' do
+    expect(sms).to respond_to(:send_sms).with(0).argument
   end
 end

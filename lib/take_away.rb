@@ -9,11 +9,12 @@ class TakeAway
   attr_reader :order, :order_hash
 
   def initialize(filename = 'menu.csv')
+    @filename = filename
     load_menu_from_the_file(filename)
     @order_hash = Hash.new 0
   end
 
-  def read_menu(filename = 'menu.csv')
+  def read_menu(filename = @filename)
     load_menu_from_the_file(filename)
     @menu.print_menu
   end
@@ -37,6 +38,16 @@ class TakeAway
 
   private
 
+  def finalize_order
+    send_sms
+    puts "You have placed your order, total: $#{@order.total}."
+    @order.total
+  end
+
+  def send_sms
+    SMS.new(@order.total).send_sms
+  end
+
   def is_dish_on_the_menu?(menu_number)
     raise "Please select dish from the menu" unless @menu.dishes.key?(menu_number)
   end
@@ -48,12 +59,6 @@ class TakeAway
   def load_menu_from_the_file(filename)
     @menu = Menu.new(filename)
     @menu_hash = @menu.dishes
-  end
-
-  def finalize_order
-    SMS.new(@order.total).send_sms
-    puts "You have placed your order, total: $#{@order.total}."
-    @order.total
   end
 
   def error_if_no_order_info(order_hash)

@@ -9,3 +9,4 @@ gem 'pry'
 gem 'sinatra'
 gem 'twilio-ruby'
 gem 'jwt', '<=1.2'
+gem 'dotenv-rails', :groups => [:development, :test]

@@ -25,13 +25,11 @@ describe TakeAway do
     end
   end
 
-  # context 'place_order_interface' do
-  #   it { is_expected.to respond_to(:place_order_interface).with(0).arguments}
-  # end
-
   describe '#place_order' do
     let(:order_hash) { double :order_hash }
-    let (:message) { double :message }
+    before do
+      allow(take_away).to receive(:finalize_order)
+    end
     it { is_expected.to respond_to(:place_order).with(1).argument }
     it 'saves an order' do
       # Figure out how to test!
@@ -40,7 +38,6 @@ describe TakeAway do
     end
     context 'when trying to place order without info about order' do
       it 'raises an error' do
-        allow(message).to receive(:send_sms).and_return(true)
         message = "Can't place order without information about the order: please provide what you would like to order in acceptable format."
         expect {take_away.place_order(nil)}.to raise_error(message)
       end
@@ -49,9 +46,10 @@ describe TakeAway do
 
   describe '#order_details' do
     let(:order_hash) { { 1 => 3, 6 => 2, 9 => 1} }
-    let (:message) { double :message }
+    before do
+      allow(take_away).to receive(:finalize_order)
+    end
     it 'prints order upon request' do
-      allow(message).to receive(:send_sms).and_return(true)
       take_away.place_order(order_hash)
       expect { take_away.order_details }.to output.to_stdout
     end
