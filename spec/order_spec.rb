@@ -1,9 +1,9 @@
-=begin
+
 require 'order.rb'
 
 describe Order do
 
-subject(:order) {Order.new}
+subject(:order) {described_class.new}
 
   describe 'initialize' do
     it 'creates an instance of Order' do
@@ -27,17 +27,15 @@ subject(:order) {Order.new}
   end
 
   describe '#show_order' do
+    noodles = Dish.new('noodles', 5)
+    dumplings = Dish.new('dumplings', 3)
     it 'shows an empty order' do
       expect(order.show_order).to eq(nil)
     end
-    noodles = Dish.new('noodles', 5)
-    dumplings = Dish.new('dumplings', 3)
-    order.add_to_order(dumplings)
-    order.add_to_order(noodles)
     it 'shows an order' do
-      expect(order.show_order).to eq("1 Dumplings")
+      subject.add_to_order(dumplings)
+      expect{subject.show_order}.to output("1 Dumplings" + "\n"  "YOUR TOTAL IS £3\n").to_stdout
     end
   end
 
 end
-=end
