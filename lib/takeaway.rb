@@ -2,15 +2,17 @@ require_relative 'menu'
 require_relative 'pretty_format'
 require_relative 'order'
 require_relative 'send_sms'
+require_relative 'terminal_io'
 
 class Takeaway
 
   include SMS
   include Menu
   include PrettyFormat
+  include TerminalIO
 
   def initialize
-    puts "\nWelcome to Shirt and Thai!\n"
+    welcome
     menu
   end
 
@@ -26,15 +28,14 @@ class Takeaway
   end
 
   def basket
-    puts "\nBASKET:\n"
+    basket_title
     pretty_format(@current_order.basket, @current_order.total)
   end
 
   def checkout
     raise "Your basket is currently empty" if !@current_order
-    puts "\nThank you for your order!\n\nORDER DETAILS:\n"
     basket
-    puts "You should receive an SMS message shortly confirming your order\n\n"
+    confirm_sms
     send
   end
 
@@ -46,7 +47,7 @@ class Takeaway
 
   def confirm_add
     menu
-    puts "Item(s) successfully added to basket\n"
+    confirm_add_title
     basket
   end
 

@@ -7,9 +7,7 @@ module SMS
   end
 
   def send
-    print "Please input your phone number: "
-    phone = gets.chomp
-    phone.gsub!(/^0/, "44")
+    phone = phone_request.gsub!(/^0/, "44")
     account_sid = "#{hex_to_bin('41433536366534663736333866346531316136356665373761363661613762343233')}"
     auth_token = "#{hex_to_bin('3537636238356135306432643663623037663332653034386662353830323133')}"
 
