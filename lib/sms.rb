@@ -19,7 +19,7 @@ class SMS
 
   def send_message
     time = get_time
-    client = Twilio::REST::Client.new( "AC3dc8f9d2b8b60c1e6cc4ccbb9ebc83f7","d450981a93efaa355c231db9bcf35c0e")
+    client = Twilio::REST::Client.new( ENV["ID1"],ENV["ID2"])
     the_message(client, time)
   end
 end
