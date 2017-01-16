@@ -17,4 +17,6 @@ describe SMSReceiver do
   #     expect{sms_messager.message("message string")}.not_to raise_error
   #   end
   # end
+
+
 end

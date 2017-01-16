@@ -10,8 +10,8 @@ class SMSMessager
 
   def message(message)
     client.messages.create(
-      from: '+441133206073',
-      to: '07934024245',
+      from: ENV['TWILIO_FROM'],
+      to: ENV['TWILIO_TO'],
       body: message
     )
   end

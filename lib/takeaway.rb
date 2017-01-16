@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load
+
 require_relative "menu.rb"
 require_relative "dish.rb"
 require_relative "array_printer.rb"
