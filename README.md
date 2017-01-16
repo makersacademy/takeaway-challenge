@@ -89,3 +89,46 @@ Build Badge Example
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+##Jaycee Cheong's approach
+I created 4 classes to adhere to single responsiblity principle 
+1. takeaway.rb
+2. menu.rb
+3. order.rb
+4. send_sms.rb
+
+Below is the domain model 
+|Object                |Message         |  
+| :-------------:      |:-------------: |
+|Customer|                              |
+|Takeaway              |list_menu?      |
+|Menu                  |list_menu       |
+|Order                 |order           |
+|SMS                   |send_sms        |
+
+
+##How to use
+
+1) On your terminal , clone the project and run the command `gem install bundle` (if you don't have bundle already)
+
+2) Once the installation completes, run `bundle`
+
+3) On your terminal, run irb and below is an example of how to use the program
+
+```
+Jaycee:takeaway-challenge Jaycee$ irb
+2.3.1 :001 > require './lib/takeaway.rb'
+ => true 
+2.3.1 :002 > hut = Takeaway.new
+ => #<Takeaway:0x007fe97227a188 @menu=#<Menu:0x007fe97227a160>, @order=#<Order:0x007fe97227a138 @items=[], @summary="">> 
+2.3.1 :003 > hut.list
+ => {"Pepperoni Pizza"=>6.0, "American Hot Pizza"=>6.5, "Four Season Pizza"=>7.5, "Double Pepperoni Pizza"=>8.5, "Garlic Bread Starter"=>3.5, "Coca-cola 350ml can"=>0.9, "Fanta 350ml can"=>0.9} 
+2.3.1 :004 > hut.order "Pepperoni Pizza", 2
+ => "2 x Pepperoni Pizza(s) added to basket" 
+2.3.1 :005 > hut.complete_order
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC9fe864dc6d88faab1607dccba36ba0b4/Messages/SMd06abc05826e4708b68788f74283c895> 
+2.3.1 :006 > #SMS received with message "Thank you for your order: £12.00 and will be delivered before 10:03
+```
+
+Currently the complete order command (line #005) will send a text message to a test mobile number, please update the to_num to your test mobile number in send_sms.rb 
+
