@@ -10,11 +10,15 @@ class SMS
 
   def send_sms
     triger_twilio_sms
-    rescue Twilio::REST::RequestError => e
-    puts e.message
+    prints_error_if_any
   end
 
   private
+
+  def prints_error_if_any
+    rescue Twilio::REST::RequestError => e
+    puts e.message
+  end
 
   def connect_to_twilio_client
     Dotenv.load

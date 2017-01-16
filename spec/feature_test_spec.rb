@@ -17,7 +17,6 @@ describe 'Feature tests for User Stories' do
     # As a customer
     # So that I can order the meal I want
     # I would like to be able to select some number of several available dishes
-    let (:message) { instance_double "SMS" }
     let (:order_hash) { { 1 => 3, 6 => 2, 9 => 1} }
     it 'customer can place an order with selected number of items' do
       take_away = TakeAway.new
@@ -31,7 +30,6 @@ describe 'Feature tests for User Stories' do
     # As a customer
     # So that I can verify that my order is correct
     # I would like to check that the total I have been given matches the sum of the various dishes in my order
-    let (:message) { instance_double "SMS" }
     let (:order_hash) { { 1 => 3, 6 => 2, 9 => 1} }
     it 'customer can see details of the order with prices' do
       take_away = TakeAway.new
