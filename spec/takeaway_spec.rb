@@ -41,7 +41,11 @@ describe Takeaway do
   it 'receives the twilio details to send a text message' do
     expect(subject).to respond_to(:checkout).with(4).arguments
   end
+  it 'converts binary to hex' do
+    expect(subject.hex_to_bin('343431')).to eq '441'
+  end
   it 'sends a confirmation text message' do
-    expect(subject).to respond_to(:send)
+    allow(subject).to receive(:send).and_return nil
+    expect(subject.send).to eq nil
   end
 end
