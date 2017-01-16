@@ -18,3 +18,4 @@ let(:dishes) do
     expect(menu.print).to eq(print_menu)
   end
 end
+end
