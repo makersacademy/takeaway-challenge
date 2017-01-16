@@ -29,8 +29,10 @@ attr_reader :menu , :basket
     puts "The subtotal is:"
     subtotal.each {|dishes, price | puts "#{dishes} : £#{price}" }
 
-    # puts "The Total is:"
-    # subtotal.sum
+    puts "The Total is:"
+
+    total = subtotal.inject(0) { |sum, tuple| sum += tuple[1] }
+
   end
 
 
