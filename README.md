@@ -35,42 +35,34 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 The software is made of 4 classes: Restaurant, Menu, Order and Dish
 
-This is what RSpec report:
-Dish
-  .new
-    will be initialized with 2 parameters
-  #name
-    returns the name of the dish
-  #price
-    returns the price of the dish
+The domain model is:
+
+Dish  
+- .new: will be initialized with 2 parameters
+- #name: returns the name of the dish
+- #price: returns the price of the dish
 
 Menu
-  #dishes
-    stores an array of dishes
-  #list_dishes
-    returns a string with all the dishes and they are price
+- #dishes: stores an array of dishes
+- #list_dishes: returns a string with all the dishes and they are price
 
 Order
-  #dishes
-    stores selected dishes
-  #total
-    calculate and return the total of the order
+- #dishes: stores selected dishes
+- #total: calculate and return the total of the order
 
 Restaurant
-  should respond to #twiliohelper
-  #confirm
-    triggers the confirmation process
+- #twiliohelper: stores a TwilioHelper object
+- #confirm: triggers the confirmation process
 
 TwilioHelper
-  when testing
-    it returns the message
-  when not testing
-    it sends the message and returns it for confirmation (PENDING: Temporarily skipped with xit)
+- #send: it sends the message and returns it for confirmation (PENDING: Temporarily skipped with xit)
 
 Twilio has to be setted up by creating a file lib/twilio-configure.rb like this:
+```ruby
 module TwilioConfigure
   ACCOUNT = 'account_id'
   TOKEN = 'token_number'
 end
+```
 
 The spec/feature_spec.rb file was used for BDD, so refer to it for instructions on how to use this code and its possibilities
