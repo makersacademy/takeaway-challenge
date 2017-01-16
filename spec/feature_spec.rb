@@ -35,15 +35,4 @@ describe 'making a list of dishes' do
       expect{order.place(4.00)}.to raise_error("Order total incorrect. Current total is #{order.total}")
   end
 
-
-  it 'can error check order total' do
-    list.add(dish1)
-    list.add(dish2)
-    list.add(dish1)
-    order.add(list, 1, 1)
-    # expect(order).to receive(:the_message)
-    order.place(3.00)
-  end
-
-
 end
