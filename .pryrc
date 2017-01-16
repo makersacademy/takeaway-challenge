@@ -20,3 +20,5 @@ order1.add_item(lomito)
 order1.add_item(empanada, 6)
 
 moo = Restaurant.new(order1)
+
+moo.order.current_order
