@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require_relative 'sms'
 
 class Order
   attr_reader :current_order
@@ -8,10 +9,8 @@ class Order
   end
 
   def add(list, dish, quantity)
-    hash = {dish: list.get(dish), quantity: quantity}
-    @current_order << hash
+    @current_order << {dish: list.get(dish), quantity: quantity}
   end
-
 
   def total
     sum = 0
@@ -30,28 +29,7 @@ class Order
   def place(given_total)
     error_message = "Order total incorrect. Current total is #{self.total}"
     raise error_message if given_total != self.total
-    send_message
+    SMS.new.send_message
   end
-
-  def get_time
-    new_time = "#{Time.now.hour+1}:#{'%02d' % Time.now.min}"
-    other_new_time = "00:#{Time.now.min}"
-    Time.now.hour!=24 ? new_time : other_new_time
-  end
-
-  def the_message(client, time)
-  client.messages.create(
-    to: ENV["TO"],
-    from: ENV["FROM"],
-    body: "Your order has been placed and will arrive at approx. #{time}"
-  )
-  end
-
-  def send_message
-    time = get_time
-    client = Twilio::REST::Client.new( "AC3dc8f9d2b8b60c1e6cc4ccbb9ebc83f7","d450981a93efaa355c231db9bcf35c0e")
-    the_message(client, time)
-  end
-
 
 end

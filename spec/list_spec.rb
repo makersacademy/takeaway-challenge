@@ -4,6 +4,7 @@ describe List do
     # subject(:list){described_class.new}
   let(:list){List.new}
   let(:dish){instance_double(Dish)}
+
   it "has an empty array of dishes upon creation" do
     expect(list.dishes).to eq []
   end

@@ -2,7 +2,11 @@ require './lib/list.rb'
 require './lib/dish.rb'
 
 describe Order do
+
   subject(:order){described_class.new}
+  let(:list){List.new}
+  let(:dish1){instance_double(Dish, :description => "Soup", :price => 1.00)}
+  let(:dish2){instance_double(Dish, :description => "rice", :price => 0.50)}
 
   it 'has an attribute current_order initialized to an empty array' do
     expect(order.current_order).to eq []
@@ -13,9 +17,6 @@ describe Order do
       expect(order).to respond_to(:add).with(3).argument
     end
     it 'add hash describing dish order to current_order' do
-      dish1 = instance_double(Dish, :description => "Soup", :price => 1.00)
-      dish2 = instance_double(Dish, :description => "Rice", :price => 0.50)
-      list = List.new
       list.add(dish1)
       list.add(dish2)
       order.add(list, 1, 2)
@@ -25,10 +26,6 @@ describe Order do
 
   describe '#total' do
     it 'returns the current order total' do
-      dish1 = instance_double(Dish, :description => "Soup", :price => 1.00)
-      dish2 = instance_double(Dish, :description => "Rice", :price => 0.50)
-      list = List.new
-      list = List.new
       list.add(dish1)
       list.add(dish2)
       order.add(list, 1, 2)
@@ -38,9 +35,6 @@ describe Order do
 
   describe '#read' do
     it 'returns the orders' do
-    dish1 = instance_double(Dish, :description => "Soup", :price => 1.00)
-    dish2 = instance_double(Dish, :description => "Rice", :price => 0.50)
-    list = List.new
     list.add(dish1)
     list.add(dish2)
     order.add(list, 1, 2)
@@ -50,10 +44,7 @@ describe Order do
 
  describe '#place' do
    it 'error checks total given' do
-    expect(subject).to receive(:the_message)
-    dish1 = instance_double(Dish, :description => "Soup", :price => 1.00)
-    dish2 = instance_double(Dish, :description => "Rice", :price => 0.50)
-    list = List.new
+    # expect(subject).to receive(:the_message)
     list.add(dish1)
     list.add(dish2)
     order.add(list, 1, 2)
