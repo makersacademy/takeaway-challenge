@@ -13,4 +13,6 @@ describe Messenger do
     messenger.send("This is a test with a double and a stub.")
   end
 
+
+
 end

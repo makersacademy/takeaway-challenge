@@ -11,8 +11,7 @@ def initialize(menu)
 end
 
 def add_item(dish, qty = 1)
-  @current_order[dish].to_i == 0 ? @current_order[dish] = qty :
-  @current_order[dish] = @current_order[dish].to_i + qty
+  @current_order[dish].to_i == 0 ? @current_order[dish] = qty : @current_order[dish] += qty
   add_order_cost(dish.price, qty)
 end
 
