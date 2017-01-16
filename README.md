@@ -67,41 +67,36 @@ This program uses the ```twilio-ruby``` gem to send order confirmation texts. In
 
 Interface
 -----
-Initializing a restaurant:  
 ```
-cafe = Restaurant.new
-```
-
-Initializing a order:  
-```
-order = Order.new
-```
-
-Finding out the restaurant's dishes:  
-```
-order.view_dishes(cafe)
-```
-
-Adding items to the basket (returns updated basket):  
-```
-# order.select_dishes(restaurant, *dishes)
-order.select_dishes(cafe, "orange_juice")
-```
-
-Viewing current basket:  
-```
-order.basket
+2.3.1 :002 > cafe = Restaurant.new
+ => #<Restaurant:0x007fa78a02da80 @menu=#<Menu:0x007fa78a02da58 @dishes=[#<Dish:0x007fa78a02d9e0 @name="chicken_tikka", @price=5>, #<Dish:0x007fa78a02d918 @name="orange_juice", @price=2>, #<Dish:0x007fa78a02d8a0 @name="onion_bhaji", @price=3>], @dish_class=Dish>>
+2.3.1 :003 > order = Order.new
+ => #<Order:0x007fa78a27edc0 @meal=#<Meal:0x007fa78a27ed98 @prices=[], @selected_dishes=[], @total_price=0>, @text=#<Text:0x007fa78a27ed20>, @basket=[]>
+2.3.1 :004 > order.view_dishes(cafe)
+ => [#<Dish:0x007fa78a02d9e0 @name="chicken_tikka", @price=5>, #<Dish:0x007fa78a02d918 @name="orange_juice", @price=2>, #<Dish:0x007fa78a02d8a0 @name="onion_bhaji", @price=3>]
+2.3.1 :005 > #order.select_dishes(restaurant, *dishes)
+2.3.1 :006 >   order.select_dishes(cafe, "orange_juice")
+ => [#<Dish:0x007fa78a02d918 @name="orange_juice", @price=2>]
+2.3.1 :007 > order.delete_meal
+ => []
+2.3.1 :008 > order.select_dishes(cafe, "orange_juice", "chicken_tikka")
+ => [#<Dish:0x007fa78a02d9e0 @name="chicken_tikka", @price=5>, #<Dish:0x007fa78a02d918 @name="orange_juice", @price=2>]
+2.3.1 :009 > order.price
+ => 7
+2.3.1 :010 > order.basket
+ => [#<Dish:0x007fa78a02d9e0 @name="chicken_tikka", @price=5>, #<Dish:0x007fa78a02d918 @name="orange_juice", @price=2>]
+2.3.1 :011 > #order.checkout(price)
+2.3.1 :012 >   order.checkout(7)
+ => "Thank you! Your order came to £7. You can expect your delivery at 11:10am"
+2.3.1 :013 >
 ```
 
-Viewing total cost of basket:  
-```
-order.price
-```
-
-Completing an order:
-```
-order.checkout(price)
-```
+Further Developments
+-----
+* Add feature so multiple quantities of a dish can be purchased with active stock count
+* Ability to order via text
+* Discounts
+* Sample menu stored in a database
 
 Contributors
 -----
