@@ -1,5 +1,6 @@
 
 require 'twilio-ruby'
+require 'dotenv'
 Dotenv.load
 # set up a client to talk to the Twilio REST API
 @client = Twilio::REST::Client.new (
