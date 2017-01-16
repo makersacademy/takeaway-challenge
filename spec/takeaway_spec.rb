@@ -22,7 +22,7 @@ describe Takeaway do
     describe '#total' do
       it 'Should return a total price in pounds sterling' do
         takeaway.order("Chips")
-        expect(takeaway.total).to eq "Total: £2.50"
+        expect(takeaway.total).to eq puts "Total: £2.50"
       end
     end
     describe '#basket_summary' do
@@ -59,8 +59,8 @@ describe Takeaway do
       expect(STDIN).to receive(:gets).and_return("+44000000000")
       message = "Thank you for your order"
       takeaway.order "chips"
-      expect(takeaway).to receive(:send_sms).with("Thank you for your order")
-      takeaway.checkout
+      expect(takeaway).to receive(:send_sms).and_return("Thanks for your order")
+      expect{takeaway.checkout}.to raise_error SystemExit
     end
 
   end

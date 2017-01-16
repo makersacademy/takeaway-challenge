@@ -1,7 +1,7 @@
 module Menu
 
   def read_menu
-    menu = menu_list.each do |item, price|
+    menu_list.each do |item, price|
       puts "#{item} = £#{format('%.02f', (price.to_f / 100))}"
     end
   end
