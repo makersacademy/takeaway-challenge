@@ -29,5 +29,5 @@ describe Menu do
 
     it "calculates a price" do
     expect(menu.price("crispy seaweed")).to eq(dishes["crispy seaweed"])
-    end
+  end 
 end
