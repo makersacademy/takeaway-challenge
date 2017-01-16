@@ -36,7 +36,6 @@ describe Takeaway do
   describe '#show_price' do
     it 'should show a total price for the order' do
        expect(takeaway).to respond_to(:show_price)
-
        takeaway.order_meal("Burger",2)
        takeaway.show_price
        expect(takeaway.total_price).to eq 10

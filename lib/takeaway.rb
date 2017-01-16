@@ -1,10 +1,12 @@
 require_relative 'list'
+require_relative 'printer'
 require 'twilio-ruby'
 
 class Takeaway
 
-  attr_reader :user_order, :check_arr
+  attr_reader :user_order
   attr_accessor :total_price
+  include Printer
 
   def initialize(list)
     @menu = list.dish_list
@@ -24,21 +26,7 @@ class Takeaway
       end
   end
 
-  def show_price
-    @check_arr = []
-    @user_order.each_pair do |key, value|
-      multiple = value[0] * value[1]
-      check_arr.push multiple
-    end
-    @total_price = @check_arr.inject(0){|x,y| x + y}
-  end
 
-  def show_order_list
-    @user_order.each_pair do |key, value|
-      puts "#{value[0]} #{key} price: #{value[0] * value[1]}"
-    end
-    "Total: #{@total_price}"
-  end
 
   def send_message(twilio_number, phone_number)
     account_sid = "ACc75b72a0ddcf8149871f9d29e2d6a35f"
