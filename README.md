@@ -164,7 +164,7 @@ RuntimeError: Please select dish from the menu
 RuntimeError: Order can't be found: looks like it hasn't been placed yet. Please place the order first.
 from
 [7] pry(main)> take_away.place_order
-!!! SMS is being send to the phone
+!!! SMS is being sent to the phone
 You have placed your order, total: $64.
 => 64
 [8] pry(main)> take_away.order_details
