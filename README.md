@@ -14,7 +14,7 @@ Takeaway Challenge
 
  ```
 
-https://travis-ci.org/laurenrosie/takeaway-challenge.svg?branch=master
+[![Build Status] (https://travis-ci.org/laurenrosie/takeaway-challenge.svg?branch=master)](https://travis-ci.org/laurenrosie/takeaway-challenge)
 
 Usage
 -----
