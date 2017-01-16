@@ -164,7 +164,7 @@ RuntimeError: Please select dish from the menu
 RuntimeError: Order can't be found: looks like it hasn't been placed yet. Please place the order first.
 from
 [7] pry(main)> take_away.place_order
-The From phone number +4411332062011 is not a valid, SMS-capable inbound phone number or short code for your account.
+!!! SMS is being send to the phone
 You have placed your order, total: $64.
 => 64
 [8] pry(main)> take_away.order_details
