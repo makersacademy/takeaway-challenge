@@ -1,6 +1,6 @@
 Takeaway Challenge
 ==================
-[![Build Status](https://travis-ci.org/tamarlehmann/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tamarlehmann/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/github/makersacademy/takeaway-challenge/pull/608)
+[![Build Status](https://travis-ci.org/tamarlehmann/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tamarlehmann/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/tamarlehmann/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/tamarlehmann/takeaway-challenge?branch=master)
 
 ```
                             _________
@@ -53,6 +53,9 @@ Technologies Used
 
 Solution Approach
 -----
+
+* TBC
+
 
 Installation and Using the App
 -----
