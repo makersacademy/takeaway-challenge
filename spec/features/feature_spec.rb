@@ -28,7 +28,7 @@ let(:menu) { double :menu }
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
   it "should be able to check the total returned matches the sum of the dishes" do
-    
+    #WIP
   end
 
 end

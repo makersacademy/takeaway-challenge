@@ -19,16 +19,20 @@ class Takeaway
   def place_order(dish, quantity)
     invalid_order(dish)
     completed? ? return : @order = Order.new
-    @order.add(dish, quantity)
+    order.add(dish, quantity)
   end
 
   def invalid_order(dish)
     raise "Invalid order" if !get_menu.include?(dish)
   end
 
+  def basket_summary
+    @order.basket
+  end
+
 private
 
-  attr_reader :menu
+  attr_reader :menu, :order
 
 def completed?
   @completed
