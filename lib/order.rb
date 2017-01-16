@@ -3,6 +3,9 @@ require './lib/menu.rb'
 
 require 'twilio-ruby'
 require 'time'
+require 'dotenv'
+
+Dotenv.load
 
 class Order
 
@@ -10,7 +13,7 @@ class Order
 
   def initialize(items = [])
     @items = items
-    @client = Twilio::REST::Client.new 'ACe711baf45d2e9fe21e2d2ad8d8858108', 'e1d08802b3957ec5da9f470f19e61f11'
+    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
   end
 
   def add(dish)
