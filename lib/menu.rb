@@ -1,7 +1,6 @@
 require_relative 'dish'
 
 class Menu
-
   attr_reader :dishes
 
   def initialize(dish_class)
@@ -18,11 +17,11 @@ class Menu
   private
 
   def default_dishes
-    chicken_tikka = @dish_class.new("chicken_tikka", 5)
+    chicken_tikka = @dish_class.new('chicken_tikka', 5)
     @dishes << chicken_tikka
-    orange_juice = @dish_class.new("orange_juice", 2)
+    orange_juice = @dish_class.new('orange_juice', 2)
     @dishes << orange_juice
-    onion_bhaji = @dish_class.new("onion_bhaji", 3)
+    onion_bhaji = @dish_class.new('onion_bhaji', 3)
     @dishes << onion_bhaji
   end
 end

@@ -31,13 +31,12 @@ class Order
     @text.send_message(price)
   end
 
-
   def delete_meal
     @meal.delete_meal
     @basket = []
   end
 
-private
+  private
 
   def correct_amount?(price)
     @meal.total_price == price
