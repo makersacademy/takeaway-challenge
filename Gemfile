@@ -6,7 +6,3 @@ gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
 gem 'twilio-ruby'
-
-group :development, :test do
-   gem 'pry-byebug'
-end
