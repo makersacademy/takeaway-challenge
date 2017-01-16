@@ -1,11 +1,11 @@
-require 'order'
+require './lib/order'
 
 describe Order do
 
-  context '#stores order' do
+  context '#add' do
     it 'stores order into hash' do
       order = Order.new
-      expect{order.add("Cake, 3")}.to change { order.list.count }.by 1
+      expect(order.list.length).to eq 0
     end
   end
 
