@@ -115,7 +115,17 @@ Below is the domain model:
 
 2) Once the installation completes, run `bundle`
 
-3) On your terminal, run irb and below is an example of how to use the program
+3) Create a file called ".env" in your 
+
+4) Edit the file with
+```
+ACCOUNT_SID = Your Twilio Account SID
+AUTH_TOKEN = Your Twilio Auth Token
+PHONE_NUMBER= The phone number to receive the sms (string format)
+TWILIO_NUMBER = Your Twilio number to send the sms (string format)
+```
+
+5) On your terminal, run irb and below is an example of how to use the program
 
 ```
 Jaycee:takeaway-challenge Jaycee$ irb
@@ -127,10 +137,14 @@ Jaycee:takeaway-challenge Jaycee$ irb
  => {"Pepperoni Pizza"=>6.0, "American Hot Pizza"=>6.5, "Four Season Pizza"=>7.5, "Double Pepperoni Pizza"=>8.5, "Garlic Bread Starter"=>3.5, "Coca-cola 350ml can"=>0.9, "Fanta 350ml can"=>0.9} 
 2.3.1 :004 > hut.order "Pepperoni Pizza", 2
  => "2 x Pepperoni Pizza(s) added to basket" 
-2.3.1 :005 > hut.complete_order
+2.3.1 :005 > hut.order_summary
+ => " 2 x Pepperoni Pizza(s) = £12.00 | " 
+2.3.1 :006 > hut.check_total
+ => "£12.00"
+2.3.1 :007 > hut.complete_order
  => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC9fe864dc6d88faab1607dccba36ba0b4/Messages/SMd06abc05826e4708b68788f74283c895> 
-2.3.1 :006 > #SMS received with message "Thank you for your order: £12.00 and will be delivered before 10:03
+ #SMS received with message "Thank you for your order: £12.00 and will be delivered before 10:03
 ```
 
-Currently the complete order command (line #005) will send a text message to a test mobile number, please update the to_num to your test mobile number in send_sms.rb 
+Currently the complete order command (line #007) will send a text message to a test mobile number, please update the to_num to your test mobile number in send_sms.rb 
 
