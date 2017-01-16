@@ -8,8 +8,8 @@ require './lib/dish'
 describe 'making a list of dishes' do
 
     let(:list){List.new}
-    let(:dish1){instance_double(Dish, :description => "Soup", :price => 3.00)}
-    let(:dish2){instance_double(Dish, :description => "beef", :price => 5.00)}
+    let(:dish1){instance_double(Dish, :description => :Soup, :price => 3.00)}
+    let(:dish2){instance_double(Dish, :description => :Beef, :price => 5.00)}
     let(:order){Order.new}
 
     it 'can make a list and add dishes to it, then read it' do
@@ -41,7 +41,7 @@ describe 'making a list of dishes' do
     list.add(dish2)
     list.add(dish1)
     order.add(list, 1, 1)
-    expect(order).to receive(:the_message)
+    # expect(order).to receive(:the_message)
     order.place(3.00)
   end
 
