@@ -5,7 +5,6 @@ class Meal
   def initialize()
     @prices = []
     @selected_dishes = []
-    @total_price = 0
   end
 
   attr_reader :selected_dishes
@@ -30,10 +29,8 @@ class Meal
   end
 
   def total_price
-    @total_price = 0
     view_prices
-    @prices.each {|price| @total_price += price}
-    @total_price
+    @prices.reduce {|sum, item| sum + item}
   end
 
   def delete_meal

@@ -4,9 +4,6 @@ describe Text do
 
   let(:text){instance_double("Text")}
 
-    str = "Thank you! Your order came to £10. "\
-    "You can expect your delivery at #{(Time.new + 3600).strftime('%I:%M%P')}"
-
   describe "#send_message" do
     it "sends a confirmation text" do
       allow(text).to receive(:send_message)

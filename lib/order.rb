@@ -24,8 +24,13 @@ class Order
 
   def checkout(price)
     raise "Sorry, please confirm your order price" unless correct_amount?(price)
+    send_text(price)
+  end
+
+  def send_text(price)
     @text.send_message(price)
   end
+
 
   def delete_meal
     @meal.delete_meal

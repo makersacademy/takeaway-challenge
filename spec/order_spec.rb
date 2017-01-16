@@ -43,7 +43,7 @@ describe Order do
   end
   describe "#checkout" do
     it "confirms the order has been accepted via text" do
-      expect(order).to receive(:checkout).with(1)
+      expect(order).to receive(:send_text).with(1)
       restaurant = Restaurant.new
       restaurant.menu.dishes << dish
       order.select_dishes(restaurant, "dish")

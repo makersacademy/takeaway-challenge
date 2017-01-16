@@ -88,7 +88,6 @@ Interface
 2.3.1 :011 > #order.checkout(price)
 2.3.1 :012 >   order.checkout(7)
  => "Thank you! Your order came to £7. You can expect your delivery at 11:10am"
-2.3.1 :013 >
 ```
 
 Further Developments
