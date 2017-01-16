@@ -3,7 +3,7 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  MFM |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -11,81 +11,55 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
+The idea of this project was to simulate a takeaway. The user would be able to view the menu. Specify which items they would like from the menu and then finalise their order. When the order was placed a text message would be sent using the Twilio API.
+# Issues faced
 
-Instructions
--------
+I found this challenge difficult. After creating my initial domain models I struggled to write the tests for the classes I thought should exist in rspec.
+ Initially I had stored the menu items in an array of hashes (I know right?) which made working with any of the menu items incredibly difficult. There were a few other illogical leaps I made that proved almost impossible to implement in the way that I had originally written my code.After getting as far as User story 2 and spending a long time writing and testing code that had trapped me in a corner I decided the best course of action would be to look at the Makers Academy example and the example video.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+After looking at the arrangement of the classes and the methods within those classes I had a better idea of how this challenge should have been approached and was able to re-write my code although it drew most of the basic functions from the example below.
 
-Task
------
+https://www.youtube.com/watch?v=mgiJKdH9x8c
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+https://github.com/makersacademy/takeaway-exemplar/blob/master/lib/menu.rb
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+# Domain models
+I'll add these at a later date.
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+# Classes
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+- TakeAway
+- Menu
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+# How to use
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+At this point, you can view the menu with the view_menu method. Add items to your order with the add_to_order method which takes a dish and an amount. If just the dish is specified, the default amount is set to 1. You can view your current order with the view_order method. This returns the dish, amount and the total of that specific dish (e.g dish price * amount of dish).
 
 ```
-$ coveralls report
+  USERs-MacBook-Air-3:takeaway-challenge Mike$ pry
+  You have created takeaway
+  [1] pry(main)> takeaway.view_menu
+  "Fish and Chips; £7.99"
+  "Shephards Pie; £5.99"
+  "Burger; £6.99"
+  => ["Fish and Chips; £7.99", "Shephards Pie; £5.99", "Burger; £6.99"]
+  [2] pry(main)> takeaway.add_to_order("Fish and chips", 5)
+  RuntimeError: Cannot add to order: dish doesn't exist
+  from /Users/Mike/Google Drive/Projects/takeaway-challenge/takeaway-challenge/lib/takeaway.rb:16:in `add_to_order'
+  [3] pry(main)> takeaway.add_to_order("Fish and Chips", 5)
+  => 5
+  [4] pry(main)> takeaway.add_to_order("Burger", 5)
+  => 5
+  [5] pry(main)> takeaway.view_order
+  "5x Fish and Chips: £39.95"
+  "5x Burger: £34.95"
+  => ["5x Fish and Chips: £39.95", "5x Burger: £34.95"]
+  [6] pry(main)>
 ```
+# Future intentions
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+Looking at my domain models and the way the classes are set up it seems like it would be a good idea to pull the order methods out and create an Order class. Because a lot of my program was re-written, my rspec test aren't great. After implementing the basic functionality I would like to refactor both my rspec tests and my written code.
 
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+I will spend the rest of this week finishing the project as aI am very interested in working with the Twilio API.
