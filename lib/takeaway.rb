@@ -21,11 +21,8 @@ class Takeaway
   end
 
   def order_meal(dish, quantity)
-      if @menu.has_key?(dish)
+      raise "Item not in list" unless @menu.has_key?(dish)
         user_order[dish] = [quantity, @menu[dish]]
-      else
-        raise "Item not in list"
-      end
   end
 
 end
