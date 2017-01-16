@@ -8,7 +8,7 @@ class SMS
   def the_message(client, time)
   client.messages.create(
     to: ENV["TO"],
-    from: ENV["FROM"],
+    from: "+353 86 180 2719",
     body: "Your order has been placed and will arrive at approx. #{time}"
   )
   end

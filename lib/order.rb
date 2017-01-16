@@ -1,23 +1,17 @@
 require 'twilio-ruby'
 require './lib/sms'
 class Order
-  attr_reader :current_order, :sms
+  attr_reader :current_order, :sms, :total
 
   def initialize
     @current_order = []
     @sms = SMS.new
+    @total = 0
   end
 
   def add(list, dish, quantity)
     @current_order << {dish: list.get(dish), quantity: quantity}
-  end
-
-  def total
-    sum = 0
-    current_order.each do |hash|
-      sum += hash[:dish].price*hash[:quantity]
-    end
-    sum
+    @total += list.get(dish).price*quantity
   end
 
   def read
