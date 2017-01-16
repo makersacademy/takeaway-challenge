@@ -30,7 +30,7 @@ class Takeaway
     pretty_format(@current_order.basket, @current_order.total)
   end
 
-  def checkout(account_sid=nil, auth_token=nil, twilio_phone=nil, customer_phone=nil)
+  def checkout
     raise "Your basket is currently empty" if !@current_order
     puts "\nThank you for your order!\n\nORDER DETAILS:\n"
     basket

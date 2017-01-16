@@ -40,6 +40,7 @@ feedme.order(2, 3, 11.70)
 feedme.order(11, 1, 7.95)
 feedme.order(17, 1, 8.95)
 feedme.order(20, 2, 5.90)
+feedme.basket
 feedme.checkout
 
 ```

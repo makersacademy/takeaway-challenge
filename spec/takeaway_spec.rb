@@ -38,9 +38,6 @@ describe Takeaway do
     subject.order(2,3,11.7)
     expect { subject.checkout }.to output.to_stdout
   end
-  it 'receives the twilio details to send a text message' do
-    expect(subject).to respond_to(:checkout).with(4).arguments
-  end
   it 'converts binary to hex' do
     expect(subject.hex_to_bin('343431')).to eq '441'
   end
