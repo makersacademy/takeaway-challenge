@@ -34,6 +34,11 @@ describe Takeaway do
         expect(takeaway.basket_summary).to eq [{"CHIPS"=>250}]
       end
     end
+    describe "#clear_basket" do
+      it 'Should clear the basket' do
+        expect(takeaway.clear_basket).to eq []
+      end
+    end
   end
 
   describe '#send_sms' do
