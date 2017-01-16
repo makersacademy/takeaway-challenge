@@ -1,6 +1,6 @@
 Takeaway Challenge
 ==================
-[![Build Status](https://travis-ci.org/makersacademy/airport_challenge.svg?branch=master)](https://travis-ci.org/makersacademy/airport_challenge)
+[![Build Status](https://travis-ci.org/mbgimot/takeaway-challenge.svg?branch=master)](https://travis-ci.org/mbgimot/takeaway-challenge)
 ```
                             _________
               r==           |       |
