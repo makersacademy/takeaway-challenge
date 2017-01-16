@@ -22,7 +22,7 @@ class Order
     @meal.total_price
   end
 
-  def complete_order(price)
+  def checkout(price)
     raise "Sorry, please confirm your order price" unless correct_amount?(price)
     @text.send_message(price)
   end

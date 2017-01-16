@@ -41,13 +41,13 @@ describe Order do
       expect(order.price).to eq(1)
     end
   end
-  describe "#complete_order" do
+  describe "#checkout" do
     it "confirms the order has been accepted via text" do
-      expect(order).to receive(:complete_order).with(1)
+      expect(order).to receive(:checkout).with(1)
       restaurant = Restaurant.new
       restaurant.menu.dishes << dish
       order.select_dishes(restaurant, "dish")
-      order.complete_order(1)
+      order.checkout(1)
     end
     it "doesn't complete the order if the price is not verified" do
       error = "Sorry, please confirm your order price"
@@ -55,7 +55,7 @@ describe Order do
       restaurant.menu.dishes << dish
       order = Order.new
       order.select_dishes(restaurant, "dish")
-      expect{order.complete_order(3)}.to raise_error(error)
+      expect{order.checkout(3)}.to raise_error(error)
     end
 
   end
