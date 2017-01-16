@@ -2,8 +2,6 @@
 require './lib/order'
 require './lib/list'
 require './lib/dish'
-#Make a list and add dishes to it
-
 
 describe 'making a list of dishes' do
 
