@@ -20,14 +20,4 @@ describe Order do
       expect(order.total).to eq 42
     end
   end
-  #
-  # describe '#confirm' do
-  #   it 'triggers the confirmation process' do
-  #     order.dishes << {dish: dish_carbonara, quantity: 2}
-  #     order.dishes << {dish: dish_lasagna, quantity: 1}
-  #     order.twiliohelper = twiliohelper
-  #     allow(twiliohelper).to receive(:send){"Thank you! Your order was placed and will be delivered before #{(Time.new + 60*60).strftime("%H:%M")}"}
-  #     expect(order.confirm).to eq "Thank you! Your order was placed and will be delivered before #{(Time.new + 60*60).strftime("%H:%M")}"
-  #   end
-  # end
 end

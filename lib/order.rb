@@ -1,5 +1,5 @@
 class Order
-  attr_accessor :dishes, :twiliohelper
+  attr_accessor :dishes
 
   def initialize
     @dishes = []

@@ -49,8 +49,8 @@ describe "Feature tests" do
   it 'so customer receive order confirmation, send sms with confirmation text' do
     order.dishes << {dish: menu.dishes[0], quantity: 2}
     order.dishes << {dish: menu.dishes[1], quantity: 1}
-    ##### TURN ON THE NEXT LINE IF NOT REALLY SENDING AN SMS, THE ONE AFTER IF SENDING IT FOR REAL
     restaurant = Restaurant.new
+    ##### TURN ON THE NEXT LINE IF NOT REALLY SENDING AN SMS, THE ONE AFTER IF SENDING IT FOR REAL
     restaurant.twiliohelper = TwilioHelper.new(send_sms_for_real: false)
     # restaurant.twiliohelper = TwilioHelper.new
     expect{restaurant.confirm(order.dishes,42)}.not_to raise_error
