@@ -17,7 +17,7 @@ class SMSReceiver
 
   def access_messages
     client.account.messages.list.each do |message|
-      puts message.body
+      # puts message.body
       # puts message.date_created
       @received_messages << message.body if DateTime.parse(message.date_created).to_time > date_filter
       # puts DateTime.parse(message.date_created).to_time

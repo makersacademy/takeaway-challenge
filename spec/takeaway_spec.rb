@@ -11,7 +11,7 @@ describe Takeaway do
   let(:array_printer) { class_double("ArrayPrinter") }
   let(:order_total_checker) { class_double("OrderTotalChecker") }
   let(:order_class) { class_double("Order") }
-  let(:test_sms_messager_class) { double("SMSMessagerTest") }
+  let(:test_sms_messager_class) { double("SMSMessagerTestClass") }
   let(:test_sms_messager) { double("SMSMessagerTest") }
   let(:twilio_client) { double("TwilioClient") }
   let(:twilio_client_messages) { double("Messages") }
