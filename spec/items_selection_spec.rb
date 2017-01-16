@@ -2,10 +2,6 @@ require './lib/items_selection'
 
 
   describe Select_items do
-       before(:each) do
-          choice = Select_items.new
-          choice.items << {id: 2, quantity: 4}
-        end
 
         it "fills array with menu choice" do
           choice = Select_items.new
