@@ -1,5 +1,58 @@
-Takeaway Challenge
+[![Coverage Status](https://coveralls.io/repos/github/shezdev/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/shezdev/takeaway-challenge?branch=master)
+
+#Takeaway Challenge
 ==================
+Progress = Finished the 3rd user story.
+
+##Expected output
+
+~~~~
+>> require "./lib/takeaway.rb"
+=> true
+>> t = Takeaway.new
+=> #<Takeaway:0x007f990aa43580 @menu={"Pizza"=>6.0, "Curry"=>4.0, "Chips"=>2.0}, @basket=[]>
+>> t.order "Curry", 1
+"1 x Curry added to your basket!"
+=> "1 x Curry added to your basket!"
+>> t.order "Pizza", 1
+"1 x Pizza added to your basket!"
+=> "1 x Pizza added to your basket!"
+>> t.order "Curry", 1
+"1 x Curry added to your basket!"
+=> "1 x Curry added to your basket!"
+>> t
+=> #<Takeaway:0x007f990aa43580 @menu={"Pizza"=>6.0, "Curry"=>4.0, "Chips"=>2.0}, @basket=[{"Curry"=>1}, {"Pizza"=>1}, {"Curry"=>1}]>
+>> t.order_summary
+You have ordered:
+Curry x 2
+Pizza x 1
+{"Curry"=>8.0, "Pizza"=>6.0}
+The subtotal is:
+Curry : £8.0
+Pizza : £6.0
+=> {"Curry"=>8.0, "Pizza"=>6.0}
+The Total is:
+ => 14.0
+~~~~
+
+## User Stories
+~~~~
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+~~~~
 ```
                             _________
               r==           |       |
@@ -11,7 +64,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +122,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
