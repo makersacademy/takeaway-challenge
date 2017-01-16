@@ -44,7 +44,7 @@ describe Order do
 
  describe '#place' do
    it 'error checks total given' do
-    # expect(subject).to receive(:the_message)
+    expect(order).to receive(:the_message)
     list.add(dish1)
     list.add(dish2)
     order.add(list, 1, 2)
