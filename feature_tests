@@ -1,20 +1,18 @@
 clear
 irb
-require './lib/customer.rb'
-customer = Customer.new
-customer.look_menu
-customer.calculate_amount
-customer.choose_dishes([["Supa Minestrone", 1],["Pizza margherita", 2]],25)
-customer.calculate_amount
-customer.verify_order
-customer.no_pre_order_error_condition
-customer.amount_check?
+require './lib/restaurant.rb'
+rest = Restaurant.new
+rest.look_menu
+rest.calculate_amount
+rest.choose_items("Supa Minestrone", 1)
+rest.choose_items("Pizza margherita", 2)
+rest.estimated_amount = 25
+rest.place_order
 
 
 
 
-require './lib/bill.rb'
-bill = Bill.new
-order = [["Supa Minestrone", 1], ["Margherita", 2]]
-menu = [["Supa Minestrone", 1], ["Margherita", 1], ["Pepperoni", 1]]
-bill.calculate(order)
+
+require './lib/order.rb'
+order = Order.new
+order.calculate_amount

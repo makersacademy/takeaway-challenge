@@ -12,7 +12,7 @@ class Menu
       file.readlines.each do |line|
         list_unit = []
         dish, price = line.chomp.split(',')
-        list_unit = [dish, price.to_i]
+        list_unit = {:dish => dish, :price => price.to_i}
         get_dish(list_unit)
       end
     end

@@ -99,14 +99,14 @@ Order  | receive a text such as "Thank you! Your order was placed and will be de
 ##Diagram
 
 ```
-Customer              Menu              Order                 Bill            OrderTracker
--------------------------------------------------------------------------------------------
+Restaurant              Menu            Order             Messenger
+-------------------------------------------------------------------
 
    - ask -------------->
    - select dishes ---->
    - place order ------------------------->
-                                          <------- Given total -
+   <------------------------- Given total -
    - order detailed total ---------------->
-   - ask feedback ---------------------------------------------------------------->
-   <---------------------------------------------------------------- send message -
+   - ask feedback ------------------------------------------>
+   <------------------------------------------ send message -
 ```
