@@ -1,0 +1,18 @@
+clear
+irb
+require './lib/restaurant.rb'
+rest = Restaurant.new
+rest.look_menu
+rest.calculate_amount
+rest.choose_items("Supa Minestrone", 1)
+rest.choose_items("Pizza margherita", 2)
+rest.estimated_amount = 25
+rest.place_order
+
+
+
+
+
+require './lib/order.rb'
+order = Order.new
+order.calculate_amount
