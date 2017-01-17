@@ -6,7 +6,6 @@ TEST_MESSAGE = "Text Message"
 describe Order do
   subject(:order){described_class.new(ITEMS_LIST)}
   let(:message){double("message")}
-
   before :each do
     Menu.send(:remove_const, "FILENAME")
     Menu::FILENAME = "./lib/list_dishes_test.csv"
@@ -25,7 +24,6 @@ describe Order do
     it {is_expected.to respond_to(:confirmation)}
 
     it 'confirms the order with a sms' do
-      p "HERE ****", order.message
       allow(order.message).to receive(:send_message).and_return(TEST_MESSAGE)
       expect(order.confirmation).to eq(TEST_MESSAGE)
     end

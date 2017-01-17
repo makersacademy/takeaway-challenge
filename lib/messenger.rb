@@ -2,7 +2,7 @@ require 'twilio-ruby'
 require_relative 'credentials'
 
 class Messenger
-
+  
   def send_message(text)
     client = Twilio::REST::Client.new(
       Credentials::ACCOUNT_SID,
