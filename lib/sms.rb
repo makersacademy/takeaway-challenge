@@ -21,15 +21,13 @@ class SMS
     )
   end
 
-  def confirmation_message(current_time = @time)
-    time_stamp = current_time.strftime("%H:%M")
-    message = "Thank you! Your order was placed at #{time_stamp} and will be delivered in half an hour."
-  end
-
   # ------------------- PUBLIC INTERFACE (visible to Order) -------------------
 
   private
 
-
+  def confirmation_message(current_time = @time)
+    time_stamp = current_time.strftime("%H:%M")
+    message = "Thank you! Your order was placed at #{time_stamp} and will be delivered in half an hour."
+  end
 
 end

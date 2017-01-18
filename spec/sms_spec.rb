@@ -1,9 +1,7 @@
 require 'sms'
 
 describe SMS do
-  let(:time) do
-    double("Time")
-  end
+  let(:time) { double("Time") }
 
   it 'should return the right message' do
     allow(time).to receive(:strftime).and_return("17:52")
