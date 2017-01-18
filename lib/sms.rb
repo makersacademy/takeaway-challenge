@@ -6,7 +6,8 @@ Dotenv.load
 
 class SMS
 
-  def initialize
+  def initialize(time = Time.now)
+    @time = time
     @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
   end
 
@@ -20,14 +21,15 @@ class SMS
     )
   end
 
+  def confirmation_message(current_time = @time)
+    time_stamp = current_time.strftime("%H:%M")
+    message = "Thank you! Your order was placed at #{time_stamp} and will be delivered in half an hour."
+  end
+
   # ------------------- PUBLIC INTERFACE (visible to Order) -------------------
 
   private
 
-  def confirmation_message
-    current_time = Time.new
-    time_stamp = current_time.strftime("%H:%M")
-    message = "Thank you! Your order was placed at #{time_stamp} and will be delivered in half an hour."
-  end
+
 
 end

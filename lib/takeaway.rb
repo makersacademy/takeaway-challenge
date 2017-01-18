@@ -2,12 +2,10 @@ require './lib/menu.rb'
 require './lib/order.rb'
 
 class Takeaway
-
-  attr_reader :basket
-
-  def initialize
-    @menu = Menu.new
-    @basket = nil
+  
+  def initialize(menu = Menu.new, basket = nil)
+    @menu = menu
+    @basket = basket
   end
 
   # ------------------------------- USER INTERFACE -------------------------------
@@ -35,6 +33,6 @@ class Takeaway
 
   private
 
-  attr_reader :menu
+  attr_reader :menu, :basket
 
 end
