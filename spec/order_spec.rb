@@ -1,22 +1,22 @@
 require 'order'
 
-ITEMS_LIST = [{:dish=>"Supa Minestrone", :qty=>3}, {:dish=>"Margherita", :qty=>3}]
+ITEMS_LIST = [  {:dish=>"Supa Minestrone", :qty=>3},
+                {:dish=>"Margherita", :qty=>3} ]
+UNIT_PRICES = [ {:dish=>"Supa Minestrone", :price=>1},
+                {:dish=>"Margherita", :price=>1} ]
 TEST_MESSAGE = "Text Message"
 
 describe Order do
-  subject(:order){described_class.new(ITEMS_LIST)}
   let(:message){double("message")}
-  before :each do
-    Menu.send(:remove_const, "FILENAME")
-    Menu::FILENAME = "./lib/list_dishes_test.csv"
-  end
+  let(:menu){double("menu")}
+  subject(:order){described_class.new(ITEMS_LIST, message, menu)}
 
   describe '#calculate_total' do
     it {is_expected.to respond_to(:calculate_total)}
 
     it 'calculates order total amount' do
-      order.calculate_total
-      expect(order.calculated_amount).to eq(6)
+      allow(menu).to receive(:printer).and_return(UNIT_PRICES)
+      expect(order.calculate_total).to eq(6)
     end
   end
 
@@ -24,8 +24,8 @@ describe Order do
     it {is_expected.to respond_to(:confirmation)}
 
     it 'confirms the order with a sms' do
-      allow(order.message).to receive(:send_message).and_return(TEST_MESSAGE)
-      expect(order.confirmation).to eq(TEST_MESSAGE)
+      expect(message).to receive(:send_message)
+      order.confirmation
     end
   end
 end

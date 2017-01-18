@@ -1,5 +1,5 @@
 require 'twilio-ruby'
-# require_relative 'credentials'
+require_relative 'credentials'
 
 class Messenger
 

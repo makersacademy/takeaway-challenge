@@ -17,9 +17,9 @@ class Restaurant
     pre_order <<  {:dish => dish, :qty => qty}
   end
 
-  def calculate_amount
+  def calculate_amount(order = Order.new(pre_order))
     check_items
-    @order = Order.new(@pre_order)
+    @order = order
     @calculated_amount = @order.calculate_total
   end
 
