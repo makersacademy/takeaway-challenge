@@ -10,13 +10,17 @@ class SMS
     @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
   end
 
+  # ------------------- PUBLIC INTERFACE (visible to Order) -------------------
+
   def send_text
     @client.messages.create(
-      from: '+441133205194',
-      to: '+447719198784',
+      from: ENV['TWILIO_MOBILE'],
+      to: ENV['CUSTOMER_MOBILE'],
       body: confirmation_message
     )
   end
+
+  # ------------------- PUBLIC INTERFACE (visible to Order) -------------------
 
   private
 

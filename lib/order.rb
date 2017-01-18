@@ -10,6 +10,8 @@ class Order
     @messenger = SMS.new
   end
 
+  # ------------------- PUBLIC INTERFACE (visible to Takeaway) -------------------
+
   def assign_dishes(dishes)
     dishes.each { |dish|
       menu.each { |item| add(item) if item.name == dish }
@@ -27,6 +29,8 @@ class Order
   def confirm_order
     messenger.send_text
   end
+
+  # ------------------- PUBLIC INTERFACE (visible to Takeaway) -------------------
 
   private
 

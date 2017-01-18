@@ -10,9 +10,13 @@ class Menu
     @list = []; load_from_file
   end
 
+  # ------------------- PUBLIC INTERFACE (visible to Takeaway) -------------------
+
   def see_dishes
     price_list.map { |item| "#{item.name} (£#{item.price})"}.join("; ")
   end
+
+  # ------------------- PUBLIC INTERFACE (visible to Takeaway) -------------------
 
   private
 
