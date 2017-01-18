@@ -2,15 +2,17 @@ require './lib/menu.rb'
 require './lib/order.rb'
 
 class Takeaway
-  
+
+  attr_reader :menu, :basket
+
   def initialize(menu = Menu.new, basket = nil)
-    @menu = menu
+    @menu   = menu
     @basket = basket
   end
 
   # ------------------------------- USER INTERFACE -------------------------------
 
-  def see_menu
+  def see_menu(menu = @menu)
     menu.see_dishes
   end
 
@@ -20,19 +22,15 @@ class Takeaway
     basket.check_quantity(expected_total)
   end
 
-  def view_order
+  def view_order(basket = @basket)
     basket.see_order
   end
 
-  def place_order
+  def place_order(basket = @basket)
     basket.confirm_order
     @basket = nil
   end
 
   # ------------------------------- USER INTERFACE -------------------------------
-
-  private
-
-  attr_reader :menu, :basket
 
 end
