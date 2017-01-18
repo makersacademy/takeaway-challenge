@@ -13,7 +13,7 @@ class Menu
   end
 
   def load_menu(filename = @filename)
-    file_not_exist?(filename)
+    assert_file_exists!(filename)
     load_data_into_hash(filename)
   end
 
@@ -28,12 +28,12 @@ class Menu
     @dishes = Hash.new
     CSV.foreach(filename) do |row|
       dish = Dish.new
-      dish.name, dish.ingredients, dish.price, dish.type  = row[0], row[1], row[2].to_i, row[3]
+      dish.name, dish.ingredients, dish.price, dish.category  = row[0], row[1], row[2].to_i, row[3]
       @dishes.store(@dishes.length+1,dish)
     end
   end
 
-  def file_not_exist?(filename)
+  def assert_file_exists!(filename)
     message = "Cannot open file: there is no file with this name. Please try another filename."
     raise message if !File.exists?(filename)
   end
@@ -45,13 +45,17 @@ class Menu
   end
 
   def print_body(output_width)
-    @dishes.each do |key,value|
-      puts "#{value.type}".center(output_width),
-      "" if @dishes[key-1].nil? or (value.type != @dishes[key-1].type)
-      puts "#{key}:  #{value.name}, $#{value.price}".center(output_width),
-      "#{value.ingredients}".center(output_width),
+    @dishes.each do |key,dish|
+      puts "#{dish.category}".center(output_width),
+      "" if if_new_categry_print_its_name(key,dish)
+      puts "#{key}:  #{dish.name}, $#{dish.price}".center(output_width),
+      "#{dish.ingredients}".center(output_width),
       ""
     end
+  end
+
+  def if_new_categry_print_its_name(key,dish)
+    @dishes[key-1].nil? or (dish.category != @dishes[key-1].category)
   end
 
 end

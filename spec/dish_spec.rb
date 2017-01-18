@@ -4,9 +4,9 @@ describe Dish do
   let(:name) { double :name }
   let(:ingredients) { double :ingredients }
   let(:price) { double :price }
-  let(:type) { double :type }
+  let(:category) { double :category }
   subject(:dish) {described_class.new}
-  subject(:dish_info) {described_class.new(name,ingredients,price,type)}
+  subject(:dish_info) {described_class.new(name,ingredients,price,category)}
 
   it 'creates an instance of a class' do
     expect(dish).to be_a(Dish)
@@ -45,14 +45,14 @@ describe Dish do
     end
   end
 
-  describe '#type' do
-    let(:new_type) { double :new_type }
-    it 'stores dish type' do
-      expect(dish_info.type).to eq(type)
+  describe '#category' do
+    let(:new_category) { double :new_category }
+    it 'stores dish category' do
+      expect(dish_info.category).to eq(category)
     end
-    it 'type can be changed' do
-      dish_info.type = new_type
-      expect(dish_info.type).to eq(new_type)
+    it 'category can be changed' do
+      dish_info.category = new_category
+      expect(dish_info.category).to eq(new_category)
     end
   end
 

@@ -17,46 +17,31 @@ describe TakeAway do
   end
 
   describe '#add_to_order' do
-    it 'stores added items to order_hash' do
-      expect {take_away.add_to_order(1,1)}.to change{take_away.order_hash.length}.by(1)
-    end
     it 'prints items that were added to the order' do
-      expect { take_away.read_menu }.to output.to_stdout
+      expect { take_away.add_to_order(1,1) }.to output.to_stdout
     end
-  end
-
-  describe '#place_order' do
-    let(:order_hash) { double :order_hash }
-    before do
-      allow(take_away).to receive(:finalize_order)
-    end
-    it { is_expected.to respond_to(:place_order).with(1).argument }
-    it 'saves an order' do
-      # Figure out how to test!
-      # (take_away.order).stub(:total) { "total" }
-      # expect(customer.order).to eq("total")
-    end
-    context 'when trying to place order without info about order' do
-      it 'raises an error' do
-        message = "Can't place order without information about the order: please provide what you would like to order in acceptable format."
-        expect {take_away.place_order(nil)}.to raise_error(message)
+    context 'if dish is not on menu' do
+      it 'raises an error ' do
+        message = "Please select dish from the menu."
+        expect { take_away.add_to_order(40,2) }.to raise_error(message)
       end
     end
   end
 
-  describe '#order_details' do
+  describe '#place_order' do
+    let(:order) { double :order}
+    it { is_expected.to respond_to(:place_order).with(0).argument }
+  end
+
+  describe '#show_order_details' do
     let(:order_hash) { { 1 => 3, 6 => 2, 9 => 1} }
     before do
       allow(take_away).to receive(:finalize_order)
     end
-    it 'prints order upon request' do
-      take_away.place_order(order_hash)
-      expect { take_away.order_details }.to output.to_stdout
-    end
     context 'if order was not placed' do
       it 'raises an error ' do
-        message = "Order can't be found: looks like it hasn't been placed yet. Please place the order first."
-        expect { take_away.order_details }.to raise_error(message)
+        message = "Order can't be found: looks like nothing has been ordered yet. Please add to the order first."
+        expect { take_away.show_order_details }.to raise_error(message)
       end
     end
   end

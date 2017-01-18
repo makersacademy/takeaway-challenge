@@ -6,73 +6,54 @@ class TakeAway
 
   MAX_QUANTITY = 20
 
-  attr_reader :order, :order_hash
+  attr_reader :order
 
   def initialize(filename = 'menu.csv')
     @filename = filename
-    load_menu_from_the_file(filename)
-    @order_hash = Hash.new 0
+    load_menu_from_file(filename)
+    @order = Order.new
   end
 
   def read_menu(filename = @filename)
-    load_menu_from_the_file(filename)
+    load_menu_from_file(filename)
     @menu.print_menu
   end
 
   def add_to_order(menu_number, quantity)
-    is_dish_on_the_menu?(menu_number)
-    update_order(menu_number, quantity)
-    puts "#{quantity}x #{@menu_hash[menu_number].name}(s) added to your busket."
+    asserts_dish_on_menu!(menu_number)
+    @order.add_hash_to_order({menu_number => quantity})
+    menu_hash = @menu.dishes
+    puts "#{quantity}x #{menu_hash[menu_number].name}(s) added to your busket."
   end
 
-  def place_order(order_hash = @order_hash)
-    error_if_no_order_info(order_hash)
-    @order = Order.new(order_hash, @menu_hash)
-    finalize_order
+  def place_order
+    @order.finalize_order
   end
 
-  def order_details
-    error_if_order_not_placed
+  def show_order_details
+    asserts_order_placed!
     @order.print_order
   end
 
   private
 
-  def finalize_order
-    send_sms
-    puts "You have placed your order, total: $#{@order.total}."
-    @order.total
+  def asserts_dish_on_menu!(menu_number)
+    menu_hash = @menu.dishes
+    raise "Please select dish from the menu." if menu_hash.length < menu_number
   end
 
-  def send_sms
-    SMS.new(@order.total).send_sms
-  end
-
-  def is_dish_on_the_menu?(menu_number)
-    raise "Please select dish from the menu" unless @menu.dishes.key?(menu_number)
-  end
-
-  def update_order(menu_number, quantity)
-    @order_hash.key?(menu_number) ? @order_hash[key] += quantity : @order_hash.store(menu_number,quantity)
-  end
-
-  def load_menu_from_the_file(filename)
+  def load_menu_from_file(filename)
     @menu = Menu.new(filename)
-    @menu_hash = @menu.dishes
   end
 
-  def error_if_no_order_info(order_hash)
-    raise "Can't place order without information about the order: please provide what you would like to order in acceptable format." if !order_hash
-  end
-
-  def error_if_order_not_placed
-    raise "Order can't be found: looks like it hasn't been placed yet. Please place the order first." if !@order
+  def asserts_order_placed!
+    raise "Order can't be found: looks like nothing has been ordered yet. Please add to the order first." if @order.total == nil
   end
 
 end
 
 # def communication_with_the_customer
-#   order_hash = Hash.new
+#   order_information = Hash.new
 #   puts "What would you like to order? Type in the number of a dish from the menu."
 #   number = gets.chomp.to_i
 #   while number != -1
@@ -88,8 +69,10 @@ end
 #     end
 #     puts "Would you like anything else? Type '-1' if you are done"
 #     puts "Otherwise type in the number of a dish from the menu."
-#     order_hash.store(number,quantity)
+#     order_information.store(number,quantity)
 #     number = gets.chomp.to_i
 #   end
-#   order_hash
+#   order_information
 # end
+
+# http://stackoverflow.com/questions/29323771/rspec-test-for-a-method-that-contains-gets-chomp
