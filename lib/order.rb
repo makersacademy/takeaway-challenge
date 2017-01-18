@@ -16,12 +16,12 @@ class Order
     }
   end
 
-  def order_quantity
-    items.length
+  def check_quantity(expected_total)
+    fail error_message(expected_total) if !quantity_correct?(expected_total)
   end
 
-  def quantity_correct?(expected_total)
-    expected_total == order_quantity
+  def see_order
+    order_contents.map { |item| "#{item.name} (£#{item.price})"}.join("; ")
   end
 
   def confirm_order
@@ -37,6 +37,18 @@ class Order
 
   def add(dish)
     @items << dish
+  end
+
+  def quantity_correct?(expected_total)
+    items.length == expected_total
+  end
+
+  def error_message(expected_total)
+    "You've entered #{items.length} dishes rather than the #{expected_total} that you expected!"
+  end
+
+  def order_contents
+    @items.dup
   end
 
 end

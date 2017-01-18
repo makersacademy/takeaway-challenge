@@ -19,7 +19,11 @@ class Takeaway
   def select_dishes(*dishes, expected_total)
     @basket = Order.new
     @basket.assign_dishes(dishes)
-    fail error_message(basket, expected_total) if !basket.quantity_correct?(expected_total)
+    basket.check_quantity(expected_total)
+  end
+
+  def view_order
+    basket.see_order
   end
 
   def place_order
@@ -32,9 +36,5 @@ class Takeaway
   private
 
   attr_reader :menu
-
-  def error_message(basket, expected_total)
-    "You've entered #{basket.order_quantity} dishes rather than the #{expected_total} that you expected!"
-  end
 
 end
