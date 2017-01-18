@@ -2,17 +2,26 @@ require 'menu'
 
 describe Menu do
 
-  subject(:takeaway) { described_class.new }
+  # --------------------------------- NAMED SUBJECT ----------------------------------
+
+  subject(:menu) { described_class.new }
+
+  # -------------------------------- MOCKING/STUBBING --------------------------------
+
+  before(:each) {
+    @menu_list = "Margherita Pizza (£8.45); Spaghetti Carbonara (£10.75); Calzone (£12.45); Spaghetti Bolognese (£9.95); Caprese Salad (£4.35); King Prawn Linguine (£12.95); Italian Hot Pizza (£10.25); Chicken Ceasar Salar (£10.5); Lasagne (£10.95); Mushroom Risotto (£11.95); Penne Arrabbiata (£9.95); Salad Nicoise (£5.65)"
+  }
 
   it 'should respond to the method see_dishes' do
-    expect(takeaway).to respond_to(:see_dishes)
+    expect(menu).to respond_to(:see_dishes)
   end
 
-  it 'should respond to the method select_dishes' do
-    expect(takeaway).to respond_to(:select_dishes)
+  it 'should return a string when calling the method see_dishes' do
+    expect(menu.see_dishes).to be_a_kind_of(String)
   end
 
-  it 'should raise an error if the wrong number of dishes is entered' do
-    expect { takeaway.select_dishes("Calzone", "Margherita Pizza", 1) }.to raise_error("You've entered 2 dishes rather than the 1 that you expected!")
+  it 'should return a string of dishes when calling see_dishes' do
+    expect(menu.see_dishes).to eq(@menu_list)
   end
+
 end
