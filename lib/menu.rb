@@ -6,8 +6,8 @@ class Menu
 
   attr_reader :list
 
-  def initialize
-    @list = []; load_from_file
+  def initialize(list = [])
+    @list = list; load_from_file
   end
 
   # ------------------- PUBLIC INTERFACE (visible to Takeaway) -------------------
