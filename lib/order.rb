@@ -5,9 +5,9 @@ class Order
 
   attr_reader :items, :messenger
 
-  def initialize(items = [])
+  def initialize(items = [], messenger = SMS.new)
     @items = items
-    @messenger = SMS.new
+    @messenger = messenger
   end
 
   # ------------------- PUBLIC INTERFACE (visible to Takeaway) -------------------
@@ -26,7 +26,7 @@ class Order
     order_contents.map { |item| "#{item.name} (£#{item.price})"}.join("; ")
   end
 
-  def confirm_order
+  def confirm_order(messenger = @messenger)
     messenger.send_text
   end
 
