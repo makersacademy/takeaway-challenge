@@ -1,43 +1,42 @@
-require './lib/dish.rb'
+require './lib/sms.rb'
 require './lib/menu.rb'
-
-require 'twilio-ruby'
-require 'time'
-require 'dotenv'
-
-Dotenv.load
 
 class Order
 
-  attr_reader :items
+  attr_reader :items, :messenger
 
   def initialize(items = [])
     @items = items
-    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+    @messenger = SMS.new
   end
 
-  def add(dish)
-    @items << dish
+  def assign_dishes(dishes)
+    dishes.each { |dish|
+      menu.each { |item| add(item) if item.name == dish }
+    }
   end
 
-  def check
+  def order_quantity
     items.length
   end
 
-  def place_order
-    @client.messages.create(
-      from: '+441133205194',
-      to: '+447719198784',
-      body: confirmation_message
-    )
+  def quantity_correct?(expected_total)
+    expected_total == order_quantity
+  end
+
+  def confirm_order
+    messenger.send_text
   end
 
   private
 
-  def confirmation_message
-    current_time = Time.new
-    time_stamp = current_time.strftime("%H:%M")
-    message = "Thank you! Your order was placed at #{time_stamp} and will be delivered in half an hour."
+  def menu
+    menu = Menu.new
+    menu.list
+  end
+
+  def add(dish)
+    @items << dish
   end
 
 end
