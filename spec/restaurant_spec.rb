@@ -61,7 +61,9 @@ describe Restaurant do
     it {is_expected.to respond_to(:amount_check?)}
 
     it 'Checks if calculations are well executaded' do
-      allow(restaurant).to receive(:calculate_amount).and_return(12)
+      allow(order).to receive(:calculate_total).and_return(12)
+      restaurant.calculate_amount
+      restaurant.estimated_amount = 12
       expect(restaurant).to be_amount_check
     end
   end
@@ -70,8 +72,8 @@ describe Restaurant do
     it {is_expected.to respond_to(:place_order)}
 
     it 'Raises error if total is incorrect' do
-      allow(restaurant).to receive(:calculated_amount).and_return(12)
-      allow(restaurant).to receive(:estimated_amount).and_return(0)
+      allow(order).to receive(:calculate_total).and_return(6)
+      restaurant.calculate_amount
       expect{ restaurant.place_order }.to raise_error("Incorrect sum")
     end
   end
