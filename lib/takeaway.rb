@@ -1,12 +1,13 @@
 require_relative 'menu'
 require_relative 'order'
+require 'money'
 
 
 class Takeaway
 
   attr_reader :completed
 
-  def initialize(menu = Menu.new, order = nil)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
     @completed = false
     @order = order
@@ -17,25 +18,24 @@ class Takeaway
   end
 
   def place_order(dish, quantity)
-    invalid_order(dish)
-    completed? ? return : @order = Order.new
-    order.add(dish, quantity)
-  end
-
-  def invalid_order(dish)
-    raise "Invalid order" if !get_menu.include?(dish)
+    return if completed?
+    @order.add(dish, quantity)
   end
 
   def basket_summary
-    @order.basket
+    print_basket_summary(@order.basket)
   end
 
 private
 
-  attr_reader :menu, :order
+attr_reader :menu, :order
 
 def completed?
   @completed
+end
+
+def print_basket_summary(basket)
+  basket.map { |elem| "#{elem[0].to_s.capitalize} x#{elem[1]} = #{Money.new(elem[2], "GBP", I18n.config.available_locales = :en).format(:symbol => true)}"}.join(", ")
 end
 
 

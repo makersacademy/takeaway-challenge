@@ -1,5 +1,6 @@
 require 'takeaway'
 
+
 describe "Takeaway" do
 
 subject(:takeaway) { Takeaway.new(menu, order) }
@@ -7,7 +8,7 @@ let(:menu) { double :menu, print_menu: nil }
 let(:dish) { double :dish }
 let(:quantity) { double :quantity }
 let(:order) { double :order, add: nil }
-let(:totals_summary) { double :totals_summary }
+let(:summary) { "Chicken x#{quantity} = £11.00" }
 
   describe "#creation" do
 
@@ -25,35 +26,23 @@ let(:totals_summary) { double :totals_summary }
 
   describe "#place_order" do
 
-    context "when order placed properly" do
+    context "when order is not complete" do
 
-      it "should print out the new order" do
-        returned_menu = subject.get_menu
-        allow(returned_menu).to receive(:include?).with(dish).and_return(true)
-        allow(subject).to receive(:competed?).and_return(true)
-        allow(Order).to receive(:new).and_return(order)
+      it "should place an order" do
+        allow(subject).to receive(:completed?).and_return(false)
         subject.place_order(dish, quantity)
         expect(order).to have_received(:add).with(dish, quantity)
       end
+    end
+  end
 
-      # it "should calcuate the total cost per dish ordered" do
-      #   returned_menu = subject.get_menu
-      #   allow(returned_menu).to receive(:include?).with(dish).and_return(true)
-      #   allow(subject).to receive(:competed?).and_return(true)
-      #   allow(Order).to receive(:new).and_return(order)
-      #   subject.place_order(dish, quantity)
-      #   expect(subject.basket_summary).to eq totals_summary
-      # end
+  describe "#basket_summary" do
 
+    it "should print out a summary of the basket" do
+      allow(order).to receive(:basket).and_return([["Chicken",quantity,1100]])
+      takeaway.place_order("Chicken",quantity)
+      expect(takeaway.basket_summary).to eq summary
     end
 
-    context "when order placed incorrectly" do
-
-      it "should raise an error" do
-        returned_menu = subject.get_menu
-        allow(returned_menu).to receive(:include?).with(:garbage).and_return(false)
-        expect {subject.place_order(:garbage, quantity)}.to raise_error "Invalid order"
-      end
-    end
   end
 end
