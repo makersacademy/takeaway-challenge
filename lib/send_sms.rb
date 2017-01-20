@@ -1,17 +1,19 @@
 require 'twilio-ruby'
 require_relative 'undisclosed'
 
-#these are the account credentials
-account_sid = Undisclosed::ACCOUNT_SID
-auth_token = Undisclosed::AUTH_TOKEN
+module Twilio
 
-#set up a client to talk to the Twilio Rest API
-@client = Twilio::REST::Client.new account_sid, auth_token
+  ACCOUNT_SID = Undisclosed::ACCOUNT_SID
+  AUTH_TOKEN = Undisclosed::AUTH_TOKEN
 
-@client.account.messages.create(
-    :from => Undisclosed::TWILIO_NO,
-    :to => Undisclosed::MY_NO,
-    :body => "Hey there!"
-  )
+  def Twilio.send_sms(value)
 
-puts "Message has been sent"
+    client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
+
+    client.account.messages.create(
+        :from => Undisclosed::TWILIO_NO,
+        :to => Undisclosed::MY_NO,
+        :body => "The total to pay is #{value}. Your food will arrive in 30 mins."
+      )
+  end
+end

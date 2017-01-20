@@ -9,6 +9,7 @@ let(:dish) { double :dish }
 let(:quantity) { double :quantity }
 let(:order) { double :order, add: nil }
 let(:summary) { "Chicken x#{quantity} = £11.00" }
+let(:calc_total) { 1100 }
 
   describe "#creation" do
 
@@ -43,6 +44,14 @@ let(:summary) { "Chicken x#{quantity} = £11.00" }
       takeaway.place_order("Chicken",quantity)
       expect(takeaway.basket_summary).to eq summary
     end
-
   end
+
+  # describe "#checkout" do
+  #   it "should calculate a total amount payable" do
+  #     allow(subject).to receive(:completed?).and_return(false)
+  #     takeaway.place_order("Chicken",2)
+  #     expect(takeaway.checkout).to eq "Total: £11.00"
+  #   end
+  #
+  # end
 end

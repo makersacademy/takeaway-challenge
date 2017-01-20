@@ -1,9 +1,11 @@
 require_relative 'menu'
 require_relative 'order'
 require 'money'
-
+require_relative 'send_sms'
 
 class Takeaway
+
+include Twilio
 
   attr_reader :completed
 
@@ -18,12 +20,20 @@ class Takeaway
   end
 
   def place_order(dish, quantity)
-    return if completed?
+    @order = Order.new if completed?
+    @completed = false
     @order.add(dish, quantity)
   end
 
   def basket_summary
     print_basket_summary(@order.basket)
+  end
+
+  def checkout
+    @completed = true
+    total = money_format(calc_total)
+    Twilio.send_sms(total)
+    "Total: #{total}"
   end
 
 private
@@ -35,7 +45,15 @@ def completed?
 end
 
 def print_basket_summary(basket)
-  basket.map { |elem| "#{elem[0].to_s.capitalize} x#{elem[1]} = #{Money.new(elem[2], "GBP", I18n.config.available_locales = :en).format(:symbol => true)}"}.join(", ")
+  basket.map { |elem| "#{elem[0].to_s.capitalize} x#{elem[1]} = #{money_format(elem[2])}"}.join(", ")
+end
+
+def calc_total
+  @order.basket.flatten.select.with_index(1) { |elem, index| (index %3).zero? }.reduce(:+)
+end
+
+def money_format(amount)
+  Money.new(amount, "GBP", I18n.config.available_locales = :en).format(:symbol => true)
 end
 
 
