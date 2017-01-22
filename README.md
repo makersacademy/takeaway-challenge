@@ -1,11 +1,16 @@
 Takeaway Challenge
 ==================
 
-Task
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg)](https://coveralls.io/github/makersacademy/takeaway-challenge)
+
+The Task
 ---
 
-Test
-----
+My Approach to the Task
+---
 
-Test2
------
+Installing the APP
+---
+
+Using the APP
+---
