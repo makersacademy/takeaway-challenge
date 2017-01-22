@@ -17,7 +17,7 @@ Takeaway Challenge
 
  ```
 
- The Task
+ ## The Task
  -----
  ```
  As a customer
@@ -117,10 +117,3 @@ Phone receives text message as confirmation:
 The total is £30.45.
 It will be arriving at 23:44."
  ```
-
- Further Developments
- -----
-
-
- Contributors
- -----
