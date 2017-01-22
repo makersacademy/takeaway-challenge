@@ -56,13 +56,13 @@ $ gem install bundle
 $ bundle install
 ```
 
-Load the app in IRB
-```
-irb
-```
-
 Using the APP
 ---
+Load the app in IRB
+```
+$ irb
+```
+
 ```
 2.3.1 :001 > require './lib/restaurant'
 => true
