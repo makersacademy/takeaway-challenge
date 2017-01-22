@@ -17,7 +17,7 @@ Takeaway Challenge
 
  ```
 
- ###The Task###
+ The Task
  -----
  ```
  As a customer
