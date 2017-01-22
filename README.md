@@ -1,5 +1,4 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg)](https://coveralls.io/github/makersacademy/takeaway-challenge)
 
@@ -17,8 +16,7 @@ Takeaway Challenge
 
  ```
 
-The Task
----
+## The Task
 ```
 As a customer
 So that I can check if I want to order something
@@ -38,11 +36,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
  [Link to Makers Academy's instructions](https://github.com/dylanrhodius/takeaway-challenge/blob/master/MA_Instructions.md)
 
-My Approach to the Task
----
+## My Approach to the Task
 
-Installing the APP
----
+## Installing the APP
 Clone the repository from [GitHub](https://github.com/dylanrhodius/takeaway-challenge) and then move into that repository.
 
 ```
@@ -56,8 +52,7 @@ $ gem install bundle
 $ bundle install
 ```
 
-Using the APP
----
+## Using the APP
 Load the app in IRB
 ```
 $ irb
