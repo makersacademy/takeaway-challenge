@@ -1,7 +1,7 @@
 Takeaway Challenge
 ==================
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/dylanrhodius/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/dylanrhodius/takeaway-challenge?branch=master)
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg)](https://coveralls.io/github/makersacademy/takeaway-challenge)
 
 ```
                             _________
@@ -17,7 +17,7 @@ Takeaway Challenge
 
  ```
 
- ## The Task
+ The Task
  -----
  ```
  As a customer
