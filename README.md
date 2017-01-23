@@ -116,14 +116,13 @@ You can see the full task and instructions given to us in [CONTRIBUTING.md](take
  * Currently, my test coverage (although high according to Coveralls) is not very sophisticated and is not using doubles as specified in the additional hints and tips in the instructions.
  * I'm now going to extend my tests to make sure that my entire programme is working exactly as expected.
 
-* **Using keyword arguments in select_dishes**
-  * Currently, variable quantities for selected dishes is not possible. If you wanted to order three of the same dish, you'd just have to write it out three times.
-  * Using keyword arguments along with the splat operator, should allow users to interact with the programme this way.
-  * It is suggested that this sort of functionality should be implemented in the additional hints and tips
-
 
 ### Ideas for extension
 
 Below is a list of ideas that would have been nice to implement with more time:
 * **Stubbing twilio in Rspec**
   * Key area that would like to develop is to improve my mocking of the SMS class to make better use of stubs and increase the test coverage in this class
+* **Using keyword arguments in select_dishes**
+  * Currently, variable quantities for selected dishes is not possible. If you wanted to order three of the same dish, you'd just have to write it out three times.
+  * Using keyword arguments along with the splat operator, should allow users to interact with the programme this way.
+  * It is suggested that this sort of functionality should be implemented in the additional hints and tips
