@@ -17,6 +17,7 @@
  ```
 
 ## The Task
+The aim of this challenge was to re-create a takeaway company.
 ```
 As a customer
 So that I can check if I want to order something
@@ -36,7 +37,18 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
  [Link to Makers Academy's instructions](https://github.com/dylanrhodius/takeaway-challenge/blob/master/MA_Instructions.md)
 
-## My Approach to the Task
+## The Approach
+
+It was assumed that the application would be implemented in the takeaway's backend software system, and thus a user interface was not created but rather the code to support said user system.
+The application was developed following TDD principles.
+In this application, several classes were created:
+* `Dish`
+* `Menu`
+* `Order`
+* `Restaurant`
+* `Messenger`
+The app allows to create several instances of a dish object in order to create different dishes with their respective prices. These dishes and price hashes are then initialised and hence loaded into a menu. At this point the user can choose to make different menus composed of different dishes (to allow for week/weekend menus). A new restaurant instance can then initialise different orders (with different menus), and add dish items to said orders. To close the order, the total price needs to be confirmed. If the right price is given, the order is confirmed and closed, at which point a confirmation text message is sent.
+
 
 ## Installing the APP
 Clone the repository from [GitHub](https://github.com/dylanrhodius/takeaway-challenge) and then move into that repository.
