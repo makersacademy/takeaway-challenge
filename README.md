@@ -47,6 +47,7 @@ In this application, several classes were created:
 * `Order`
 * `Restaurant`
 * `Messenger`
+
 The app allows to create several instances of a dish object in order to create different dishes with their respective prices. These dishes and price hashes are then initialised and hence loaded into a menu. At this point the user can choose to make different menus composed of different dishes (to allow for week/weekend menus). A new restaurant instance can then initialise different orders (with different menus), and add dish items to said orders. To close the order, the total price needs to be confirmed. If the right price is given, the order is confirmed and closed, at which point a confirmation text message is sent.
 
 
