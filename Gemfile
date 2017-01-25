@@ -8,3 +8,4 @@ gem 'coveralls', require: false
 gem 'capybara'
 gem 'twilio-ruby'
 gem 'pry'
+gem 'dotenv'
