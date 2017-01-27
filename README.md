@@ -38,9 +38,9 @@ Takeaway Challenge
 
 Running the Program
 -----
-* Clone this repo then run the command 'bundle install' in the project directory to ensure you have all the gems
-* Open up 'IRB' or 'PRY' and run the commands below
-* In the final command `checkout`, User will also receive a text using the Twilio API 
+* Clone this repo then run the command `bundle install` in the project directory to ensure you have all the gems
+* Open up `IRB` or `PRY` and run the commands below
+* In the final command `checkout`, User will also receive a text using the Twilio API
 
 ```
 2.3.1 :002 > t = Takeaway.new
