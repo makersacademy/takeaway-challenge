@@ -38,9 +38,11 @@ Takeaway Challenge
 
 Running the Program
 -----
-* Clone this repo then run the command `bundle install` in the project directory to ensure you have all the gems
-* Open up `IRB` or `PRY` and run the commands below
-* In the final command `checkout`, User will also receive a text using the Twilio API
+* Clone this repo then type then type `cd takeaway-challenge`
+* Type the command `bundle install` in the `takeaway-challenge` project directory to ensure you have all the gems installed
+* Open up `IRB` or `PRY` and `require` in the code by typing `require './lib/takeaway'`
+* Type the commands in the extract below
+* Note: in the final command `t.checkout`, User can receive a text using the Twilio API
 
 ```
 2.3.1 :002 > t = Takeaway.new
