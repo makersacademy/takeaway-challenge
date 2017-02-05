@@ -56,16 +56,13 @@ Comfortingly good for you - FoodBuddy weekday menu
 
 4.Quinoa frittata @ £ 4.99  
 
-```
-```
-2. Create Select_items instance and input choice
-
 2.3.1 :007 > choice = Select_items.new
  => #<Select_items:0x007fa6831b2048 @items=[]>
  
 2.3.1 :008 > choice.input_items
 Please enter menu number of your choice
     e.g. 0 for Greek-style roast fish
+    
 To finish order, hit return twice
 3
 Thankyou now enter quantity wanted
@@ -87,9 +84,8 @@ Please enter menu number of your choice
 To finish order, hit return twice
 
  => [{:id=>"3", :quantity=>"4"}, {:id=>"2", :quantity=>"4"}, {:id=>"1", :quantity=>"5"}]
- ```
- ```
-3. Process order
+
+
 
 4. Send confirmation SMS -  To send the text run command line
  `ruby twilio_test.rb`
