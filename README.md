@@ -11,8 +11,8 @@ After some time spent diagramming I decided that would be 5 classes required for
 #### How it works ####
 
 1. Clone this repo
-2. If don't have bundler already run 'gem install bundler'
-3. run 'bundle'
+2. If don't have bundler already run `gem install bundler`
+3. run `bundle`
 4. open a REPL and follow the example
 ![Alt text](./take_away_screenshot.png)
 
