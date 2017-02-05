@@ -22,6 +22,10 @@ Takeaway Challenge
 So that I can check if I want to order something
 I would like to see a list of dishes with prices _DONE_
 
+* As a restauranteur
+So that I can plan menus
+I want to be able to add and remove dishes _DONE_
+
 * As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes _DONE_
