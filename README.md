@@ -46,11 +46,16 @@ Instructions - to demo stories 1 & 2 in irb
 ```
 Comfortingly good for you - FoodBuddy weekday menu
 --------------------------------------------------
-0.Greek-style roast fish @ £ 4.59
-1.Pea falafels with minty couscous salad @ £ 3.59
-2.Mixed bean chilli with wedges @ £ 4.09
-3.Crab & Sweetcorn chowder @ £ 4.59
-4.Quinoa frittata @ £ 4.99
+0.Greek-style roast fish @ £ 4.59  
+
+1.Pea falafels with minty couscous salad @ £ 3.59  
+
+2.Mixed bean chilli with wedges @ £ 4.09  
+
+3.Crab & Sweetcorn chowder @ £ 4.59  
+
+4.Quinoa frittata @ £ 4.99  
+
 ```
 2. Create Select_items instance and input choice
 ```
