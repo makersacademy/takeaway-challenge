@@ -16,10 +16,6 @@ After some time spent diagramming I decided that would be 5 classes required for
 4. open a REPL and follow the example
 ![Alt text](./take_away_screenshot.png)
 
-#### Retrospective ####
-
-Looking back at this project it is immediately clear that 'Dish' should have been a separate object. It is also clear that the structure of my model is not as good as past me thought. The fact that someone making an order would have to put down the same dish multiple times if they wanted more than one rather than having a simple option to give quantities is a great example of something that should/needs to be improved. A big positive for me looking at this project after having read my retrospective from the 'Airport Challenge' (the challenge before this one) is that the instance variables look much better, the only problem is that I used an accessor in my order total class which needs to be split into a reader for the public methods and a writer for the private ones.
-
 ==================
 #### Original Spec ####
 
