@@ -17,8 +17,7 @@ Takeaway Challenge
 
 ```
 ![Domain Model][logo]
-[logo]:https://github.com/olwend/takeaway-challenge/Takeaway.png
-
+[logo]:https://github.com/olwend/takeaway-challenge/blob/master/Takeaway.png
 * As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices _DONE_
