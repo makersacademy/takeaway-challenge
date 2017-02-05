@@ -43,7 +43,7 @@ Instructions - to demo stories 1 & 2 in irb
  => true
  1. View menu
 2.3.1 :002 > menu = Menu.new
-```
+
 Comfortingly good for you - FoodBuddy weekday menu
 --------------------------------------------------
 0.Greek-style roast fish @ £ 4.59  
@@ -84,9 +84,8 @@ Please enter menu number of your choice
 To finish order, hit return twice
 
  => [{:id=>"3", :quantity=>"4"}, {:id=>"2", :quantity=>"4"}, {:id=>"1", :quantity=>"5"}]
-
-
+ ```
 
 4. Send confirmation SMS -  To send the text run command line
  `ruby twilio_test.rb`
- ```
+
