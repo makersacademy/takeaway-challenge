@@ -1,9 +1,10 @@
+#manages the menu, is to be accessed by order for prices and menu for display
 class Foodbuddy
-#to be accessed by order for prices
+
 
 attr_reader :list, :id
 
-#key is name, value is price
+#key is name, value is price enhancement is to read file for contents
 def initialize
  @list = {"0.Greek-style roast fish" => 4.59,
                   "1.Pea falafels with minty couscous salad" => 3.59,
@@ -16,11 +17,11 @@ def list_to_array
    @id = @list.to_a
 end
 
-#test.add_dishes("Mango Quorn Curry", 5.95)
+#test.add_dish("Mango Quorn Curry", 5.95)
 def add_dish(dish, money)
   @list.store(dish, money)
 end
-#test.remove_dishes("Greek-style roast fish")
+#test.remove_dish("Greek-style roast fish")
 def remove_dish(dish)
   @list.delete(dish)
 end

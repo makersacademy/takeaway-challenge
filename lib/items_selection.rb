@@ -15,8 +15,8 @@ class Select_items
     id = gets.chomp
     while !id.empty? do
     puts "Thankyou now enter quantity wanted"
-    quantity = gets.chomp
-    @items << {id: id, quantity: quantity}
+    q = gets.chomp
+    @items << {id: id, q: q}
     puts "Please enter menu number of your choice
     e.g. 0 for Greek-style roast fish"
     puts "To finish order, hit return twice"
