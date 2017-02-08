@@ -59,7 +59,7 @@ Run Tests
 
 IRB
 -----
-Courtneys-MBP:takeaway-challenge courtneyosborn$ pry
+takeaway-challenge git:(master) pry
 
 ```
 [1] pry(main)> require './lib/order.rb'
@@ -87,9 +87,9 @@ Courtneys-MBP:takeaway-challenge courtneyosborn$ pry
 {:number10=>10, :drinks1=>:wine, :price=>8},
 {:number11=>11, :drinks2=>:beer, :price=>5},
 {:number11=>12, :drinks3=>:coke, :price=>3}],
-```
-```
 @users_order=[]>
+```
+```
 [4] pry(main)> order.order_food(3,3)
 => {:number3=>3, :main1=>:steak, :price=>12, :quantity=>3}
 ```
