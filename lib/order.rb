@@ -16,7 +16,7 @@ class Order
   end
 
   private
-  
+
   def dish_totals
     dishes.map do |dish, amount|
       menu.price(dish) * amount
