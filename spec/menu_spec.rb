@@ -37,12 +37,12 @@ describe Menu do
     end
   end
 
-  # describe "#begin_order" do
-  #   it "creates a new order" do
-  #     menu.begin_order
-  #     expect(menu.current_order).to not_be nil
-  #   end
-  # end
+  describe "#begin_order" do
+    it "creates a new order" do
+      menu.begin_order
+      expect(menu.current_order).not_to be nil
+    end
+  end
 
   # describe "#select_dish" do
   #   it "adds the selected dish to the order" do

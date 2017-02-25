@@ -1,10 +1,11 @@
 require_relative 'dish'
+require_relative 'order'
 
 class Menu
 
   require 'csv'
 
-  attr_reader :list
+  attr_reader :list, :current_order
 
   def initialize
     @list = []
@@ -22,8 +23,9 @@ class Menu
     end
   end
 
-  # def begin_order
-  # end
+  def begin_order
+    @current_order = Order.new
+  end
 
   def select_dish(dish)
   end
