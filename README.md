@@ -20,6 +20,6 @@ Usage
 Running tests
 =============
 
-Author/Pair Partners
+Author
 ====================
 Albert Yanit
