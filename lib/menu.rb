@@ -15,7 +15,6 @@ class Menu
       { :dish => "Risotto mare", :price => 12.50 },
       { :dish => "Homemade tiramisu", :price => 5 }
     ]
-    @order = []
   end
 
   def print_menu

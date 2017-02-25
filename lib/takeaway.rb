@@ -31,8 +31,7 @@ class Takeaway
   end
 
   def confirm_order
-    puts "Thank you for your order!"
-    # sends text
+    @messenger.send_confirmation("Thank you for your order! It will be delivered in 1 hour.")
   end
 
 end

@@ -26,6 +26,7 @@ describe Takeaway do
       expect(subject).to respond_to(:show_total)
     end
 
+
     it "should show the list of dishes and calculate the total amount" do
       expect(subject.show_total).to eq subject.total
     end

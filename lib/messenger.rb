@@ -12,7 +12,7 @@ class Messenger
     @client.messages.create({
       :from => '+441698313049',
       :to => '+447731933555',
-      :body => 'This is the ship that made the Kessel Run in fourteen parsecs?',
+      :body => message,
     })
 
   end
