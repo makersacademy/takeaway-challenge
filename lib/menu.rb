@@ -46,6 +46,7 @@ class Takeaway
 
   def confirm_order
     puts "Thank you for your order!"
+    # sends text
   end
 
 end

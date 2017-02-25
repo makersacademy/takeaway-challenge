@@ -3,10 +3,10 @@ require './lib/takeaway.rb'
 
 takeaway = Takeaway.new
 
-menu.show_menu
+takeaway.show_menu
 
-menu.select_dishes
+takeaway.select_dishes
 
-menu.show_total
+takeaway.show_total
 
-menu.confirm_order
+takeaway.confirm_order
