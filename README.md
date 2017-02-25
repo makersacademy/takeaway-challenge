@@ -1,4 +1,4 @@
-Takeaway Challenge
+Takeaway Challenge  <a href='https://coveralls.io/github/ayanit1/takeaway-challenge?branch=master'><img src='https://coveralls.io/repos/github/ayanit1/takeaway-challenge/badge.svg?branch=master' alt='Coverage Status' /></a> <a href="https://travis-ci.org/ayanit1/airport_challenge"><img src="https://travis-ci.org/ayanit1/airport_challenge.svg?branch=master"></a>
 ==================
 
 Synopsis
