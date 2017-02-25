@@ -1,4 +1,4 @@
-class Menu
+class Takeaway
 
   attr_reader :menu, :order
 
@@ -42,6 +42,10 @@ class Menu
       total += item[:price]
     end
     puts "TOTAL: £#{total}".center(40)
+  end
+
+  def confirm_order
+    puts "Thank you for your order!"
   end
 
 end
