@@ -3,12 +3,13 @@ require_relative 'messenger'
 
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :total
 
   def initialize
     @menu = Menu.new
     @order = []
     @messenger = Messenger.new
+    @total = 0
   end
 
   def show_menu
@@ -20,13 +21,13 @@ class Takeaway
   end
 
   def show_total
-    total = 0
     puts "YOUR ORDER:".center(40)
     @order.each_with_index do |item, index|
       puts "#{index + 1}. #{item[:dish]}, £#{item[:price]}"
-      total += item[:price]
+      @total += item[:price]
     end
-    puts "TOTAL: £#{total}".center(40)
+    puts "TOTAL: £#{@total}".center(40)
+    total
   end
 
   def confirm_order
