@@ -8,5 +8,10 @@ describe Takeaway do
     end
   end
 
+  context '#make_an_order' do
+    it "should create a new order based on menu" do
+      expect(subject.make_an_order).to_not eq nil
+    end
+  end
 
 end

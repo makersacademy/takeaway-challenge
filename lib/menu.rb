@@ -32,6 +32,7 @@ class Menu
       @order << @menu[dish_number.to_i - 1]
       dish_number = gets.chomp
     end
+    @order
   end
 
   def show_total
