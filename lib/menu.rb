@@ -25,14 +25,4 @@ class Menu
     end
   end
 
-  def select_dishes
-    # puts "Please select a dish, hit enter twice to finish"
-    dish_number = 5
-    while dish_number != ""
-      @order << @menu[dish_number.to_i - 1]
-      dish_number = 3
-    end
-    @order
-  end
-
 end

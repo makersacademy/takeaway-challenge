@@ -7,7 +7,7 @@ class Takeaway
 
   def initialize
     @menu = Menu.new
-    @order = nil
+    @order = []
     @messenger = Messenger.new
   end
 
@@ -15,8 +15,8 @@ class Takeaway
     @menu.print_menu
   end
 
-  def make_an_order
-    @order = @menu.select_dishes
+  def make_an_order(dish_number)
+    @order << @menu.menu[dish_number.to_i - 1]
   end
 
   def show_total
