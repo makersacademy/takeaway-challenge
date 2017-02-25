@@ -14,10 +14,4 @@ describe Menu do
     end
   end
 
-  context "#select" do
-    it "should respond to select_dishes method" do
-      expect(subject).to respond_to(:show_total)
-    end
-  end
-
 end

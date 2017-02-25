@@ -26,28 +26,13 @@ class Menu
   end
 
   def select_dishes
-    puts "Please select a dish, hit enter twice to finish"
-    dish_number = gets.chomp
+    # puts "Please select a dish, hit enter twice to finish"
+    dish_number = 5
     while dish_number != ""
       @order << @menu[dish_number.to_i - 1]
-      dish_number = gets.chomp
+      dish_number = 3
     end
     @order
-  end
-
-  def show_total
-    total = 0
-    puts "YOUR ORDER:".center(40)
-    @order.each_with_index do |item, index|
-      puts "#{index + 1}. #{item[:dish]}, £#{item[:price]}"
-      total += item[:price]
-    end
-    puts "TOTAL: £#{total}".center(40)
-  end
-
-  def confirm_order
-    puts "Thank you for your order!"
-    # sends text
   end
 
 end

@@ -8,9 +8,16 @@ describe Takeaway do
     end
   end
 
-  context '#make_an_order' do
-    it "should create a new order based on menu" do
-      expect(subject.make_an_order).to_not eq nil
+  # context '#make_an_order' do
+  #   it "should create a new order based on menu" do
+  #     subject.make_an_order
+  #     expect(subject.order).to_not eq nil
+  #   end
+  # end
+
+  context "#select" do
+    it "should respond to select_dishes method" do
+      expect(subject).to respond_to(:show_total)
     end
   end
 
