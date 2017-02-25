@@ -11,7 +11,7 @@ class Messenger
 
     @client.messages.create({
       :from => '+441698313049',
-      :to => '+447731933555',
+      :to => '+447731xxxxxxx',
       :body => message,
     })
 
