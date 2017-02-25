@@ -6,8 +6,7 @@ describe "TakeAway Challenge" do
   # I would like to see a list of dishes with prices
 
   it "Customer should be able to view a list of dishes and prices" do
-    menu = [{name: :lamp_chops, price: 7.0},{name: :chicken_karahi, price: 7.5},{name: :naan, price: 2.95}]
-    expect(indian_resturant.show_menu).to eq menu
+    expect(indian_resturant.show_menu).to_not be_empty
   end
 
   # As a customer

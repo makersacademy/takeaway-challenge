@@ -1,3 +1,5 @@
+require 'json'
+
 class Resturant
 
   def initialize(menu = Menu, order_template = Order, printer = Printer)
@@ -7,7 +9,7 @@ class Resturant
   end
 
   def show_menu
-    menu
+    JSON.pretty_generate menu
   end
 
   def add_to_cart(dish_info)
