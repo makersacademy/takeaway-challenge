@@ -19,4 +19,8 @@ describe Menu do
     printed_menu = "Pancakes: £4.00, Waffles: £5.50, Sandwich: £6.00"
     expect(menu.print_menu).to eq(printed_menu)
   end
+
+  it 'calculates price' do
+    expect(menu.price(:pancakes)).to eq(dishes[:pancakes])
+  end
 end
