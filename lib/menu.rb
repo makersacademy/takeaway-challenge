@@ -18,7 +18,7 @@ class Menu
     @order = []
   end
 
-  def show_menu
+  def print_menu
     puts "MENU".center(40)
     @menu.each_with_index do |item, index|
       puts "#{index + 1}. #{item[:dish]}, £#{item[:price]}"
