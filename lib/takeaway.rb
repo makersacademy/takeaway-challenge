@@ -16,7 +16,7 @@ class Takeaway
   end
 
   def make_an_order(dish_number = 5)
-    @order << @menu.menu[dish_number.to_i - 1]
+    @order << @menu.select_dishes(dish_number)
   end
 
   def show_total
