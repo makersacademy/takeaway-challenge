@@ -25,7 +25,8 @@ class Menu
   end
 
   def select_dishes(dish_number)
-    @menu[dish_number.to_i - 1]
+    dish = @menu[dish_number.to_i - 1]
+    dish
   end
 
 end
