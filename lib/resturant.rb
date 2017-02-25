@@ -7,4 +7,8 @@ class Resturant
   def show_menu
     @menu
   end
+
+  def choose(dish)
+    
+  end
 end
