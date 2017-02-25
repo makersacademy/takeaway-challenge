@@ -1,12 +1,8 @@
-require './lib/menu.rb'
+require './lib/takeaway.rb'
 
+adesso = Takeaway.new
 
-menu = Menu.new
-
-menu.show_menu
-
-menu.select_dishes
-
-menu.show_total
-
-menu.confirm_order
+adesso.show_menu
+adesso.make_an_order(1)
+adesso.make_an_order(10)
+adesso.show_total

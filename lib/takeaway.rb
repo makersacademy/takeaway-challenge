@@ -15,7 +15,7 @@ class Takeaway
     @menu.print_menu
   end
 
-  def make_an_order(dish_number)
+  def make_an_order(dish_number = 5)
     @order << @menu.menu[dish_number.to_i - 1]
   end
 
