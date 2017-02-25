@@ -23,8 +23,16 @@ class Resturant
   def confirm_order(cust_total)
     fail "Sorry, Please place an order first" if current_order == nil
     total = current_order.calculate_total
-    fail "The totals don't seem to match: We calculated it as " if cust_total != total
-    printer.display_bill(current_order.details, total)
+      if cust_total == total
+        print_bill
+      else
+       fail "Discrepency in bill amount: Please print bill to verify your order and total"
+     end
+  end
+
+  def print_bill
+    fail "Sorry, Please place an order first" if current_order == nil
+    printer.display_bill(current_order.details, current_order.calculate_total)
   end
 
   private

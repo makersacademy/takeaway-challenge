@@ -30,15 +30,36 @@ describe Resturant do
   end
 
   context "#confirm_order" do
-    it "displays the order and total" do
+    it "sends SMS once order confirmed" do
       resturant.add_to_cart(name: :lamp_chops, quantity: 1)
       resturant.add_to_cart(name: :naan, quantity: 2)
+      # expect(messenger_service).to receive(:send_SMS)
+      # resturant.confirm_order(12.9)
       expect(resturant.confirm_order(12.9)).to eq "1. Lamp_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
     end
 
     it "raises an error if called before placing an order" do
       error_message = "Sorry, Please place an order first"
       expect{resturant.confirm_order(12)}.to raise_error error_message
+    end
+
+    it "raises error if there is a discrepency with total" do
+      error_message = "Discrepency in bill amount: Please print bill to verify your order and total"
+      resturant.add_to_cart(name: :lamp_chops, quantity: 1)
+      expect{resturant.confirm_order(5)}.to raise_error error_message
+    end
+  end
+
+  context "#print_bill" do
+    it "prints the bill if customer wants to check" do
+      resturant.add_to_cart(name: :lamp_chops, quantity: 1)
+      resturant.add_to_cart(name: :naan, quantity: 2)
+      expect(resturant.print_bill).to eq "1. Lamp_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
+    end
+
+    it "raises error when called before placing an order" do
+      error_message = "Sorry, Please place an order first"
+      expect{resturant.print_bill}.to raise_error error_message
     end
   end
 end
