@@ -1,3 +1,5 @@
+require_relative 'dish'
+
 class Menu
 
   require 'csv'
@@ -18,6 +20,15 @@ class Menu
       name, description, price, type = line
       @list << {:name => name, :description => description, :price => price, :type => type}
     end
+  end
+
+  # def begin_order
+  # end
+
+  def select_dish(dish)
+  end
+
+  def view_order
   end
 
 end
