@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :menu
+  attr_reader :menu, :order
 
   def initialize
     @menu = [
@@ -15,12 +15,30 @@ class Menu
       { :dish => "Risotto mare",:price => 12.50 },
       { :dish => "Homemade tiramisu",:price => 5 }
     ]
+    @order = []
   end
 
   def show_menu
     puts "MENU".center(40)
     @menu.each_with_index do |item, index|
       puts "#{index + 1}. #{item[:dish]}, £#{item[:price]}"
+    end
+  end
+
+  def select_dishes
+    puts "Please select a dish, hit enter twice to finish"
+    dish = gets.chomp
+    @order << dish
+    while dish != ""
+      dish = gets.chomp
+      @order << dish
+    end
+  end
+
+  def order_total
+    puts "Your order:"
+    @order.each_with_index do |item, index|
+      puts @order
     end
   end
 
