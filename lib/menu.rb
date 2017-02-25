@@ -11,9 +11,9 @@ class Menu
       { :dish => "Mixed leaf sald", :price => 3.2 },
       { :dish => "Sliced fresh tomato with mozarella", :price => 7.5 },
       { :dish => "Margherita", :price => 6.9 },
-      { :dish => "Rigatoni al pomodoro",:price => 7 },
-      { :dish => "Risotto mare",:price => 12.50 },
-      { :dish => "Homemade tiramisu",:price => 5 }
+      { :dish => "Rigatoni al pomodoro", :price => 7 },
+      { :dish => "Risotto mare", :price => 12.50 },
+      { :dish => "Homemade tiramisu", :price => 5 }
     ]
     @order = []
   end
@@ -28,14 +28,13 @@ class Menu
   def select_dishes
     puts "Please select a dish, hit enter twice to finish"
     dish_number = gets.chomp
-    @order << @menu[dish_number.to_i - 1]
     while dish_number != ""
-      dish_number = gets.chomp
       @order << @menu[dish_number.to_i - 1]
+      dish_number = gets.chomp
     end
   end
 
-  def order_total
+  def show_total
     total = 0
     puts "YOUR ORDER:".center(40)
     @order.each_with_index do |item, index|

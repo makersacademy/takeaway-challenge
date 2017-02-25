@@ -6,4 +6,4 @@ menu.show_menu
 
 menu.select_dishes
 
-menu.order_total
+menu.show_total
