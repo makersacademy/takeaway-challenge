@@ -18,8 +18,8 @@ class Menu
 
   def load_menu (filename = 'menu.csv')
     CSV.foreach(filename) do |line|
-      name, description, price, type = line
-      @list << {:name => name, :description => description, :price => price, :type => type}
+      number, name, description, price, type = line
+      @list << {:number => number.to_i, :name => name, :description => description, :price => price, :type => type}
     end
   end
 
@@ -27,10 +27,10 @@ class Menu
     @current_order = Order.new
   end
 
-  def select_dish(dish)
-  end
+  # def select_dish(dish)
+  # end
 
-  def view_order
-  end
+  # def view_order
+  # end
 
 end

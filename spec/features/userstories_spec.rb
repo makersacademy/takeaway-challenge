@@ -3,7 +3,7 @@ require 'dish'
 
 menu = Menu.new
 menu.load_menu
-dish = Dish.new("Margherita", menu)
+dish = Dish.new(3, menu)
 
 # As a customer
 # So that I can check if I want to order something
@@ -18,9 +18,9 @@ menu.view_price_list # Allows the user to view the menu, which contains dish, de
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
 
-# menu = Menu.new
-# menu.load_menu
-# menu.begin_order
+menu = Menu.new
+menu.load_menu
+menu.begin_order
 # menu.select_dish(dish) # Creates an instance of selected dish with quantity and adds to order
 # menu.view_order
 

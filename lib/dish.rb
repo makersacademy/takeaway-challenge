@@ -4,19 +4,20 @@ class Dish
 
   attr_reader :name, :price, :details
 
-  def initialize(name, menu)
+  def initialize(number, menu)
+    @number = number
     @name = name
-    @price = get_price(name, menu)
+    @price = get_price(number, menu)
   end
 
-  def get_price(name, menu)
-    get_details(name, menu)
+  def get_price(number, menu)
+    get_details(number, menu)
     @details[:price]
   end
 
-  def get_details(name, menu)
+  def get_details(number, menu)
     @details = menu.list.detect{ |dish|
-      dish[:name] == name
+      dish[:number] == number
     }
   end
 

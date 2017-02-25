@@ -47,7 +47,7 @@ describe Menu do
   # describe "#select_dish" do
   #   it "adds the selected dish to the order" do
   #     menu.select_dish(dish)
-  #     expect(menu.order.view_order).to contain(dish)
+  #     expect(menu.current_order).to contain(dish)
   #   end
   # end
 
