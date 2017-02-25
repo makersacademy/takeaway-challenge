@@ -17,8 +17,11 @@ describe Menu do
 
   end
 
-
-
-
+  describe "#load_menu" do
+    it "loads dishes from menu.csv" do
+      menu.load_menu
+      expect(menu.list.count).to eq 21
+    end
+  end
 
 end
