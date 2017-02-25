@@ -1,11 +1,12 @@
+require_relative 'dish'
+require 'csv'
+
 class Menu
 
-  def initialize
+  def initialize(dish_class)
     @dishes = []
-  end
-
-  def add(item)
-    @dishes << item
+    @dish_class = dish_class
+    load_dishes
   end
 
   def print_menu
@@ -18,6 +19,18 @@ class Menu
 
   def print_dish(dish)
     "#{dish.name}: £#{dish.price}"
+  end
+
+  private
+
+  def load_dishes
+    CSV.foreach(File.path(File.dirname(Dir.pwd) + '/takeaway-challenge/assets/menu.csv')) do |row|
+      @dishes.add(dish_class.new(name: row[0], price: row[1]))
+    end
+  end
+
+  def add(item)
+    @dishes << item
   end
 
 end
