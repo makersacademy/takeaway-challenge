@@ -1,7 +1,8 @@
 require 'take_away'
 
 describe TakeAway do
-
+subject(:takeaway){described_class.new(menu)}
+let(:menu) { (:menu) }
 	context 'order validation' do
 		it 'confirm the dish name' do
 
@@ -38,7 +39,7 @@ describe TakeAway do
 
 		end
 		it 'confirm the text message sent' do
-			
+
 		end
 
 
