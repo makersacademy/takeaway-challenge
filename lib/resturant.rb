@@ -2,10 +2,11 @@ require 'json'
 
 class Resturant
 
-  def initialize(menu = Menu, order_template = Order, printer = Printer)
+  def initialize(menu = Menu, order_template = Order, printer = Printer, messenger = MessengerService)
     @menu = menu.new.dishes
     @order_template = order_template
     @printer = printer.new
+    @messenger = messenger.new
   end
 
   def show_menu
@@ -24,7 +25,7 @@ class Resturant
     fail "Sorry, Please place an order first" if current_order == nil
     total = current_order.calculate_total
       if cust_total == total
-        print_bill
+        messenger.send_SMS
       else
        fail "Discrepency in bill amount: Please print bill to verify your order and total"
      end
@@ -36,5 +37,5 @@ class Resturant
   end
 
   private
-  attr_reader :order_template, :current_order, :menu, :printer
+  attr_reader :order_template, :current_order, :menu, :printer, :messenger
 end

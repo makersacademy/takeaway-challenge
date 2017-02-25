@@ -1,6 +1,6 @@
 describe "TakeAway Challenge" do
-  subject(:indian_resturant) {Resturant.new}
-  let(:messenger_service) {double(:messenger_service)}
+  let(:messenger_service) {spy(:messenger_service)}
+  subject(:indian_resturant) {Resturant.new(Menu,Order,Printer, messenger_service)}
 
   # As a customer
   # So that I can check if I want to order something
@@ -27,7 +27,7 @@ describe "TakeAway Challenge" do
   it "Customer can check that total given is sum of prices of dishes in his/her order" do
     indian_resturant.add_to_cart(name: :lamp_chops, quantity: 1)
     indian_resturant.add_to_cart(name: :naan, quantity: 2)
-    expect(indian_resturant.confirm_order(12.9)).to eq "1. Lamp_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
+    expect(indian_resturant.print_bill).to eq "1. Lamp_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
   end
 
   # As a customer
@@ -37,8 +37,8 @@ describe "TakeAway Challenge" do
   it "Customer receives an SMS when order is confirmed" do
     indian_resturant.add_to_cart(name: :lamp_chops, quantity: 1)
     indian_resturant.add_to_cart(name: :naan, quantity: 2)
-    # expect(messenger_service).to receive(:send_SMS)
-    # indian_resturant.confirm_order(12.9)
+    expect(messenger_service).to receive(:send_SMS)
+    indian_resturant.confirm_order(12.9)
   end
 
 end
