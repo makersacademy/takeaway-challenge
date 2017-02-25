@@ -92,3 +92,5 @@ Build Badge Example
 
 Issues I encountered
 ------------------
+* How to test that a file has been loaded. Is there another way than menu.list.count?
+* How to test that the output is correct when lengthy.

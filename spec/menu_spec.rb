@@ -24,4 +24,12 @@ describe Menu do
     end
   end
 
+  describe "#view_price_list" do
+    it "displays the list of dishes" do
+      menu.load_menu
+      expect { menu.view_price_list }.to output.to_stdout
+    end
+  end
+
+
 end

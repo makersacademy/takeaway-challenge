@@ -9,6 +9,8 @@ class Menu
   end
 
   def view_price_list
+    @list.each { |item|
+      puts "#{item[:name]} - £#{item[:price]}" }
   end
 
   def load_menu (filename = 'menu.csv')
