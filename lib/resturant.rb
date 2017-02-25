@@ -20,9 +20,10 @@ class Resturant
     current_order.add({name: item[:name],price: item[:price], quantity: dish_info[:quantity]})
   end
 
-  def cheque_please
+  def confirm_order(cust_total)
     fail "Sorry, Please place an order first" if current_order == nil
     total = current_order.calculate_total
+    fail "The totals don't seem to match: We calculated it as " if cust_total != total
     printer.display_bill(current_order.details, total)
   end
 

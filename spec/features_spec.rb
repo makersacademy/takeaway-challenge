@@ -26,6 +26,6 @@ describe "TakeAway Challenge" do
   it "Customer can check that total given is sum of prices of dishes in his/her order" do
     indian_resturant.add_to_cart(name: :lamp_chops, quantity: 1)
     indian_resturant.add_to_cart(name: :naan, quantity: 2)
-    expect(indian_resturant.cheque_please).to eq "1. Lamp_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
+    expect(indian_resturant.confirm_order(12.9)).to eq "1. Lamp_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
   end
 end
