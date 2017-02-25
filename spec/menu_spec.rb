@@ -1,6 +1,6 @@
-require 'Takeaway'
+require 'menu'
 
-describe Takeaway do
+describe Menu do
 
   context "#show_menu" do
     it "should respond to method show_menu" do

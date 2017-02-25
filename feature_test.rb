@@ -1,12 +1,12 @@
-require './lib/takeaway.rb'
+require './lib/menu.rb'
 
 
-takeaway = Takeaway.new
+menu = Menu.new
 
-takeaway.show_menu
+menu.show_menu
 
-takeaway.select_dishes
+menu.select_dishes
 
-takeaway.show_total
+menu.show_total
 
-takeaway.confirm_order
+menu.confirm_order

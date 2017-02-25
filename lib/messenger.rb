@@ -1,4 +1,4 @@
-Class Messenger
+class Messenger
 
   require 'twilio-ruby'
 
