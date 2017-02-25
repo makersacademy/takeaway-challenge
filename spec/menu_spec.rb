@@ -44,12 +44,12 @@ describe Menu do
     end
   end
 
-  # describe "#select_dish" do
-  #   it "adds the selected dish to the order" do
-  #     menu.select_dish(dish)
-  #     expect(menu.current_order).to contain(dish)
-  #   end
-  # end
+  describe "#select_dish" do
+    it "adds the selected dish to the order" do
+      menu.select_dish(dish)
+      expect(menu.current_order).to contain(dish)
+    end
+  end
 
 end
 
