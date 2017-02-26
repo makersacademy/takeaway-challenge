@@ -1,17 +1,17 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'text'
 
 class Takeaway
 
   attr_reader :order, :menu, :total
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order = Order.new, text = Text.new)
     @menu = menu
-    @order = Order.new
+    @order = order
+    @text = text
     @total = 0
-    # puts "Welcome to the takeaway ordering application."
-    # puts "Type \"<OBJECT_NAME>.show_menu\" to view the menu."
-    # puts "Type \"<OBJECT_NAME>.place_order(dish, portions)\" to order."
+    # puts "Type \"<OBJECT_NAME>.instructions\" for ordering instructions."
   end
 
   def show_menu
@@ -28,19 +28,25 @@ class Takeaway
       item_cost = dish_count * menu.the_menu[dish_name] # PORTIONS * COST
       @total += item_cost
     end
-    @total
   end
 
   def place_order(expected)
+    calculate_total if @total == 0
     total_matches_expected?(expected)
-    # SEND TEXT YO
+    @text.send
   end
+
+  # def instructions
+  #   puts "Type \"<OBJECT_NAME>.show_menu\" to view the menu."
+  #   puts "Type \"<OBJECT_NAME>.choose_dish(dish, number of portions)\" to add a dish to your order."
+  #   puts "Type \"<OBJECT_NAME>.place_order(expected order cost)\" to finalise your order. "
+  # end
 
   private
   def total_matches_expected?(expected)
     raise "Your expected cost differs to the total cost of #{@total}" unless expected == @total
   end
-  
+
   def check_item_exists(dish)
     raise "Item not on menu." unless menu.the_menu.key?(dish)
   end

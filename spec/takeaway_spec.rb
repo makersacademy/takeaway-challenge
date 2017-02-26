@@ -9,6 +9,8 @@ describe Takeaway, :t do
     allow(menu).to receive_messages(print_menu: @the_menu.each_with_index do |(key, val), ind|
       "#{ind+1}: #{key} -- £#{val}"
     end)
+    text_message = "Your order should arrive at #{(Time.now + (60*60)).strftime('%H:%M')}"
+    allow(takeaway).to receive(:send).with(text_message)
   end
 
   describe "#show_menu" do
@@ -35,7 +37,8 @@ describe Takeaway, :t do
     it "calculates the total order cost" do
       takeaway.choose_dish("Charsui pork", 2)
       takeaway.choose_dish("Drink", 3)
-      expect(takeaway.calculate_total).to eq(13)
+      takeaway.calculate_total
+      expect(takeaway.total).to eq(13)
     end
   end
 
