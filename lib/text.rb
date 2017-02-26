@@ -5,15 +5,13 @@ class Text
 
   def initialize(client = Twilio::REST::Client)
     Dotenv.load
-    # account_sid = ENV['TWILIO_ACCOUNT_SID']
-    # auth_token = ENV['TWILIO_AUTH_TOKEN']
-    # to_number = ENV['TO_PHONE']
-    # from_number = ENV['FROM_PHONE']
-    @client = client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @client = client.new(account_sid, auth_token)
   end
 
   def send
-    @client.account.messages.create({
+    @client.messages.create({
         :to => ENV['TO_PHONE'],
         :from => ENV['FROM_PHONE'],
         :body => "Your order should arrive by #{plus_one_hour}",
