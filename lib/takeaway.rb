@@ -43,7 +43,7 @@ class Takeaway
 
   def confirm_order(messenger)
     raise "Please make an order!" if @total == 0
-    messenger.send_confirmation("Thank you for your order! It will be delivered in 1 hour.")
+    messenger.send_confirmation("Thank you for your order! It will be delivered around #{Time.new.hour + 1}.#{Time.new.min}")
   end
 
 end
