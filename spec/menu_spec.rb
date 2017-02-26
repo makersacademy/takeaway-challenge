@@ -35,7 +35,7 @@ describe Menu do
       end
     end
 
-    describe "#proceed_to_checkout" do
+    describe "#checkout and place order" do
       before :each do
         menu.select_dish(3)
         menu.select_dish(1)
@@ -44,6 +44,7 @@ describe Menu do
       it "gets the total and shows the items in the basket" do
         expect{menu.proceed_to_checkout}.to output.to_stdout
       end
+
     end
   end
 end

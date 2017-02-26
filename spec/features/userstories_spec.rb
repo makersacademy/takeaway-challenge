@@ -7,7 +7,6 @@ require 'dish'
 menu = Menu.new # Menu loads available dishes from CSV file and saves to variable @list
 menu.view_menu # Allows the user to view the menu, which contains dish, description, and price
 
-
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
@@ -25,7 +24,13 @@ menu.select_dish(3)
 menu.select_dish(1)
 menu.proceed_to_checkout # Shows item list and total
 
-
 # As a customer
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+menu = Menu.new
+menu.begin_order
+menu.select_dish(3)
+menu.select_dish(1)
+menu.proceed_to_checkout
+# menu.place_order # Should confirm "order placed" and send a text message confirmation

@@ -22,6 +22,4 @@ describe Dish do
     end
   end
 
-
-
 end

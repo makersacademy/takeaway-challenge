@@ -1,3 +1,5 @@
+require_relative "sms"
+
 class Order
 
   attr_reader :basket
@@ -26,6 +28,9 @@ class Order
     puts "Total: £#{get_total}"
   end
 
+  def place_order
+    send_text
+  end
 
   private
 
@@ -52,6 +57,10 @@ class Order
 
   def create_dish(number, menu)
     Dish.new(number, menu)
+  end
+
+  def send_text
+    SMS.new.send_text
   end
 
 end

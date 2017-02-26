@@ -93,4 +93,6 @@ Build Badge Example
 Issues I encountered
 ------------------
 * How to test that a file has been loaded. Is there another way than menu.list.count?
-* How to test that the output is correct when lengthy.
+* How to test that the output is correct when lengthy - is it enough to test that it outputs to STDOUT?
+* How to store dish objects - currently creating object, then storing values and quantity in hash rather than the actual object.
+* If this were to be extended, for example, to customise each dish, would be better to store dish objects.

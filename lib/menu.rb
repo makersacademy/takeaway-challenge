@@ -1,5 +1,6 @@
 require_relative 'dish'
 require_relative 'order'
+require_relative 'sms'
 
 class Menu
 
@@ -30,6 +31,9 @@ class Menu
     current_order.print_basket
   end
 
+  def place_order
+    current_order.place_order
+  end
 
   private
 
