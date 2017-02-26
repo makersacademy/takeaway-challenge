@@ -4,7 +4,7 @@ subject(:menu){ described_class.new(dishes) }
   let(:dishes) { {donner: 1.99, chicken_tikka: 2.99 } }
 
 
-    it 'validates the dish name with price is present' do
+    it 'validates the dish name with price' do
       expect(menu.dishes).to eq([dishes])
     end
 
