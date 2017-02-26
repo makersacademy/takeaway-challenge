@@ -42,4 +42,20 @@ describe '#review_order' do
   end
 end
 
+describe '#checkout' do
+
+  let(:sms) { double :method, send_msg: "Message sent" }
+
+  it 'raises error if payment does not match total' do
+    takeaway.add_to_order("Burger", 4)
+    msg = "Please enter correct payment amount"
+    expect{takeaway.checkout(4,sms)}.to raise_error msg
+  end
+  it 'does not raise error if payment matches total' do
+    takeaway.add_to_order("Burger")
+    expect{takeaway.checkout(7.0, sms)}.not_to raise_error
+  end
+end
+
+
 end
