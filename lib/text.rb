@@ -1,9 +1,10 @@
 require 'twilio-ruby'
-require 'dotenv/load'
+require 'dotenv'
 
 class Text
 
   def initialize(client = Twilio::REST::Client)
+    Dotenv.load
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     to_number = ENV['TO_PHONE']
