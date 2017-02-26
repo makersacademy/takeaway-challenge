@@ -33,7 +33,7 @@ describe Resturant do
     it "sends SMS once order confirmed" do
       resturant.add_to_cart(name: :lamp_chops, quantity: 1)
       resturant.add_to_cart(name: :naan, quantity: 2)
-      expect(messenger_service).to receive(:send_SMS)
+      expect(messenger_service).to receive(:send_SMS).once
       resturant.confirm_order(12.9)
     end
 
@@ -45,6 +45,7 @@ describe Resturant do
     it "raises error if there is a discrepency with total" do
       error_message = "Discrepency in bill amount: Please print bill to verify your order and total"
       resturant.add_to_cart(name: :lamp_chops, quantity: 1)
+      expect(messenger_service).to_not receive(:send_SMS)
       expect{resturant.confirm_order(5)}.to raise_error error_message
     end
   end
