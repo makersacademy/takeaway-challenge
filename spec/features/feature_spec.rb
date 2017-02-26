@@ -14,10 +14,9 @@ p takeaway.order
 
 p takeaway.calculate_total # => 19
 
-p takeaway.place_order(19)
+# p takeaway.place_order(19) # SENDS TEXT
 
 
 
 
 puts "----- END FEATURE TEST -----"
-puts puts
