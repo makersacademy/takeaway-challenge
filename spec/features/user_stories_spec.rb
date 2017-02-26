@@ -2,9 +2,9 @@ describe 'User Stories' do
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  it 'opens a menu so users can see a list of dishes and prices' do
-    order = Order.new
-    expect { order.display_menu }.not_to raise_error
+  it 'the restaurant can show users a menu with dishes and prices' do
+    restaurant = Restaurant.new
+    expect { restaurant.display_menu }.not_to raise_error
   end
 
   # As a customer

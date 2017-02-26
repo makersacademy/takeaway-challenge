@@ -3,10 +3,6 @@ require 'order'
 describe Order do
   subject(:order) {described_class.new}
 
-  it 'responds to #display_menu' do
-    expect(order).to respond_to(:display_menu)
-  end
-
   it 'responds to #add_item with one arg' do
     expect(order).to respond_to(:add_item).with(1).argument
   end
