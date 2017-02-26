@@ -48,6 +48,5 @@ describe Customer do
       expect(customer.identification).to eq identification
     end
 
-
   end
 end

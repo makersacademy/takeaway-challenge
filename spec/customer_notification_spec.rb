@@ -1,16 +1,15 @@
 require 'customer_notification'
 require 'twilio_client'
+require 'email_client'
 
 describe CustomerNotification do
-  let(:customer) {double :customer, phone_number: "07730655323", name: "Joe Maidman"}
   let(:order) {double :order, total_bill: 50, time_placed: Time.now}
   let(:body) {"Thank you for your order #{customer.name}!
   It will be delivered before #{(order.time_placed + (60 * 60)).strftime('%r')}"}
 
-
-
   context 'When customer has a SMS notification type' do
-  subject(:notification) {described_class.new(customer, order, TwilioClient.new)}
+  let(:customer) {double :customer, phone_number: "07730655323", name: "Joe Maidman", method: TwilioClient.new}
+  subject(:notification) {described_class.new(customer, order)}
 
     describe '#order'  do
       it 'has an order' do
@@ -47,7 +46,8 @@ describe CustomerNotification do
   end
 
   context 'When customer has a Email notification type' do
-  subject(:notification) {described_class.new(customer, order, EmailClient.new)}
+  let(:customer) {double :customer, phone_number: "07730655323", name: "Joe Maidman", method: EmailClient.new}
+  subject(:notification) {described_class.new(customer, order)}
 
     describe '#order'  do
       it 'has an order' do
@@ -82,8 +82,5 @@ describe CustomerNotification do
     # end
 
   end
-
-
-
 
 end

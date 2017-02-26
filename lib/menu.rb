@@ -1,4 +1,11 @@
 require_relative 'dish'
+require_relative 'bill'
+require_relative 'customer'
+require_relative 'customer_notification'
+require_relative 'email_client'
+require_relative 'order_item'
+require_relative 'order'
+require_relative 'twilio_client'
 require 'csv'
 
 class Menu

@@ -1,4 +1,3 @@
-
 describe TwilioClient do
 
   subject(:client) {described_class.new}
