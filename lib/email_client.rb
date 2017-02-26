@@ -15,8 +15,8 @@ class EmailClient
 
   def notify(body)
     mail = Mail.new do
-      to 'joemaidman@gmail.com'
-      from 'joemaidman@gmail.com'
+      to ENV['DUMMY_EMAIL']
+      from ENV['GM_UN']
       subject "#{ENV['REST_NAME']} - Thank you for ordering!"
       body body
     end
