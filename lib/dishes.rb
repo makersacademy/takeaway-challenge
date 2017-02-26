@@ -7,11 +7,9 @@ class Dishes
 
   def print_dishes
     @dishes.map do |item, price|
-        "#{item}: £#{'%.2f' % price}"
+      "#{item}: £#{'%.2f' % price}"
     end
   end
-
-  private
 
   def add_dish(item, price)
     @dishes[item] = price
