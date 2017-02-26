@@ -25,6 +25,8 @@ GEM
       multi_xml (>= 0.5.2)
     json (1.8.3)
     jwt (1.5.6)
+    mail (2.6.4)
+      mime-types (>= 1.16, < 4)
     mime-types (2.6.1)
     mini_portile (0.6.2)
     multi_json (1.12.1)
@@ -49,6 +51,8 @@ GEM
     rspec-expectations (3.3.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
+    rspec-mail-matchers (0.0.1)
+      rspec-expectations (> 2.11)
     rspec-mocks (3.3.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
@@ -82,8 +86,10 @@ DEPENDENCIES
   capybara
   coveralls
   dotenv
+  mail
   rake
   rspec
+  rspec-mail-matchers
   twilio
   twilio-ruby
 

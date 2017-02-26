@@ -1,4 +1,5 @@
 require 'dotenv/load'
+require 'twilio_client'
 
 class TwilioClient
 

@@ -10,7 +10,7 @@ class Menu
   end
 
   def print_menu
-    @items.map.with_index {|item,index| "#{index +1}. #{print_item(item)}"}
+    @items.map.with_index {|item,index| "#{index + 1}. #{print_item(item)}"}
   end
 
   def items
