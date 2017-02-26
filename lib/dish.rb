@@ -2,6 +2,7 @@ require_relative 'menu'
 
 class Dish
 
+  DEFAULT_QUANTITY = 1
   attr_reader :details, :item
 
   def initialize(number, menu)
@@ -20,7 +21,7 @@ class Dish
     item = {}
     item[:name] = details[:name]
     item[:price] = details[:price].to_f.round(2)
-    item[:quantity] = 1
+    item[:quantity] = DEFAULT_QUANTITY
     item
   end
 end
