@@ -27,11 +27,11 @@ describe Order do
 
     it 'can check bill' do
       order.order_received('Spring rolls', 2)
-      expect(order.check_bill).to eq "The bill is currently £#{order.bill}."
+      expect(order.check_bill).to eq "The bill is currently £5.00."
     end
 
     xit 'raises an error if bill does not have same value as combined selection price', :focus => true do
-      allow(order).to receive(:bill) { 30 }
+      order.order_received('Spring rolls', 12)
       expect{order.check_total}.to raise_error "There is an error - your bill is not the same as the item cost."
     end
   end
@@ -47,7 +47,7 @@ describe Order do
     end
 
     it 'is saved to a string' do
-      expect(order.string_summary).to eq "Spring rolls x 1: £2.50"
+      expect(order.string_summary).to eq " Spring rolls x 1: £2.50 |"
     end
 
   end

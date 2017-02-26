@@ -16,11 +16,13 @@ class Order
   end
 
   def check_bill
-    "The bill is currently £#{@bill}."
+    to_two_decimals = sprintf('%.2f', @bill)
+    "The bill is currently £#{to_two_decimals}."
   end
 
   def check_total
     raise "There is an error - your bill is not the same as the item cost." unless bill_correct?
+    check_bill
   end
 
   private
@@ -48,7 +50,7 @@ class Order
     @menu.food_options.each do | dish, cost |
       if dish == food_order
         cost = sprintf( "%0.02f", cost * quantity)
-        @string_summary = "#{dish} x #{quantity}: £#{cost}"
+        @string_summary += " #{dish} x #{quantity}: £#{cost} |"
       end
     end
   end

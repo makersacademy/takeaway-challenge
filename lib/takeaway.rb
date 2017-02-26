@@ -2,7 +2,7 @@ require_relative 'order'
 require_relative 'menu'
 require_relative 'text_confirmation'
 
-class Restaurant
+class Takeaway
 
   def initialize(menu = Menu.new, order = Order.new, text_confirmation = TextConfirmation.new)
     @menu = menu
@@ -19,14 +19,17 @@ class Restaurant
   end
 
   def order_summary
-    @order.current_order
+    @order.string_summary
   end
 
   def place_order
-    @text_confirmation.order_finished(@order.current_order)
-    #Following comment introduced whilst trying to fix a failing test,
-    #Test is failing whilst adding new functionality: sending text.
-    #"Your order will arrive at #{time.hour + 1}.#{time.min}"
+    send_text("Thank you for your order: £#{@order.bill}")
+  end
+
+  private
+
+  def send_text(order_total)
+    @text_confirmation.order_finished(order_total)
   end
 
 end
