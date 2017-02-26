@@ -12,10 +12,10 @@ describe 'User Stories' do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  xit 'so a customer can get the meal they want, they can order a number of dishes' do
+  it 'so a customer can get the meal they want, they can order a number of dishes' do
     restaurant = Restaurant.new
     restaurant.make_selection('Spring rolls')
-    expect(restaurant.order.current_order).to include 'Spring rolls'
+    expect(restaurant.order_summary[0]).to include 'Spring rolls'
   end
 
   # As a customer
