@@ -1,30 +1,45 @@
 require 'menu'
 
 describe Menu do
+  test_menu_path = File.expand_path("../../assets/menu_test.csv", __FILE__)
+  let(:item_one) {double :item_one, name: "Chowmein", price: 5}
+  let(:item_output) {"Chowmein: £5"}
+  let(:menu_output) {["1. Chicken Curry: £5", "2. Fried Rice: £3", "3. Prawn Crackers: £3"]}
+  subject(:menu) {described_class.new(Dish)}
 
-  let(:dish_one) {double :dish_one, name: "Chowmein", price: 5}
-  let(:dish_two) {double :dish_two, name: "Fried rice", price: 5}
-  let(:dish_three) {double :dish_three, name: "Prawn crackers", price: 5}
-  let(:dish_output) {"Chowmein: £5"}
-  let(:menu_output) {["1. Chowmein: £5", "2. Fried rice: £5"]}
-  subject(:menu) {described_class.new}
-
-  describe '.items' do
-
-    it 'should add an item to the menu' do
-      menu.add(dish_one)
-      expect(menu.dishes).to include dish_one
+  context 'when the menu is set to empty' do
+    before do
+      menu.clear_items
+      allow(menu).to receive(:load_path).and_return(test_menu_path)
     end
 
-    it 'returns the details of a single dish' do
-      menu.add(dish_one)
-      expect(menu.print_dish(dish_one)).to eq dish_output
+    describe '.items' do
+
+      it 'should add an item to the menu' do
+        menu.add(item_one)
+        expect(menu.items).to include item_one
+      end
+
+      it 'should clear all items from items' do
+        menu.add(item_one)
+        menu.clear_items
+        expect(menu.items.length).to eq 0
+      end
+
     end
 
-    it 'returns the details of all dishes' do
-      menu.add(dish_one)
-      menu.add(dish_two)
-      expect(menu.print_menu).to eq menu_output
+    describe '.print' do
+      it 'returns the details of a single item' do
+        menu.add(item_one)
+        expect(menu.print_item(item_one)).to eq item_output
+      end
+    end
+
+    describe '.print_menu' do
+      it 'returns the details of all items' do
+        menu.load_items
+        expect(menu.print_menu).to eq menu_output
+      end
     end
 
   end

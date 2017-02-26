@@ -3,34 +3,42 @@ require 'csv'
 
 class Menu
 
-  def initialize(dish_class)
-    @dishes = []
-    @dish_class = dish_class
-    load_dishes
+  def initialize(item_class)
+    @items = []
+    @item_class = item_class
+    load_items
   end
 
   def print_menu
-    @dishes.map.with_index {|dish,index| "#{index +1}. #{print_dish(dish)}"}
+    @items.map.with_index {|item,index| "#{index +1}. #{print_item(item)}"}
   end
 
-  def dishes
-    @dishes
+  def items
+    @items
   end
 
-  def print_dish(dish)
-    "#{dish.name}: £#{dish.price}"
+  def print_item(item)
+    "#{item.name}: £#{item.price}"
   end
 
-  private
-
-  def load_dishes
-    CSV.foreach(File.path(File.dirname(Dir.pwd) + '/takeaway-challenge/assets/menu.csv')) do |row|
-      @dishes.add(dish_class.new(name: row[0], price: row[1]))
+  def load_items
+    clear_items
+    CSV.foreach(File.path(load_path)) do |row|
+      add(@item_class.new(name: row[0], price: row[1]))
     end
   end
 
   def add(item)
-    @dishes << item
+    @items << item
+  end
+
+  def clear_items
+    @items = []
+  end
+
+  def load_path
+    File.expand_path("../../assets/menu.csv", __FILE__)
+
   end
 
 end

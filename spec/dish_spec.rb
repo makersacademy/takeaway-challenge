@@ -4,7 +4,7 @@ describe Dish do
 
   let(:name) {"Chow mein"}
   let(:price) {5}
-  subject(:dish) {described_class.new(name, price)}
+  subject(:dish) {described_class.new(name: name, price: price)}
 
   describe '#name' do
     it 'should return a name' do
