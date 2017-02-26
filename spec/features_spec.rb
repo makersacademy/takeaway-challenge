@@ -37,7 +37,7 @@ describe "TakeAway Challenge" do
   it "Customer receives an SMS when order is confirmed" do
     indian_resturant.add_to_cart(name: :lamp_chops, quantity: 1)
     indian_resturant.add_to_cart(name: :naan, quantity: 2)
-    expect(messenger_service).to receive(:send_SMS)
+    expect(messenger_service).to receive(:send_SMS).once
     indian_resturant.confirm_order(12.9)
   end
 
