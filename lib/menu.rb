@@ -1,11 +1,19 @@
 class Menu
-  attr_reader :menu
 
-  def initialize
-    @menu = []
+  attr_reader :dishes
+
+  def initialize(dishes = [])
+    @dishes = dishes
   end
 
-  def add_items(item, price)
-    @menu << {key: @menu.size + 1, name: item, price: price}
+  def add_dish(item, price)
+    @dishes << {calculate_key => [item, price]}
   end
+
+  private
+
+  def calculate_key
+    @dishes.size + 1
+  end
+
 end
