@@ -11,11 +11,14 @@ I first began reading all the material given to me and set up my workstation, me
 Struggles faced
 ===============
 - Dependancy injection. Getting my feature test to work
+- Doing things in a TDD way
+
 
 
 Progression / Things I would want to improve
 ============================================
-- 
+- Use symbols for dishes or have a key to refer to
+- Dislike returning strings
 
 Usage
 ==========
