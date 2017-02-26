@@ -1,9 +1,32 @@
 Takeaway Challenge
 ==================
 
-!!!NOT FINISHED!!!
-
 * Run feature_test.rb to see system is working.
+
+You should see this output:
+
+MENU                  
+1. Olives and sun-dried tomatos, £2
+2. Soup of the day, £4.5
+3. Fried calamari with homemade dressing, £6.8
+4. Oven baked goat cheese, £7.5
+5. Mixed leaf salad, £3.2
+6. Sliced fresh tomato with mozarella, £7.5
+7. Margherita, £6.9
+8. Rigatoni al pomodoro, £7
+9. Risotto mare, £12.5
+10. Homemade tiramisu, £5
+
+You added Fried calamari with homemade dressing.
+
+You added Homemade tiramisu.
+
+YOUR ORDER:               
+1. Fried calamari with homemade dressing, £6.8
+2. Homemade tiramisu, £5
+TOTAL: £11.8              
+Confirmation's been sent
+
 
 
 ```
