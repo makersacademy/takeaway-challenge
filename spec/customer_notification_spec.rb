@@ -8,7 +8,7 @@ describe CustomerNotification do
   It will be delivered before #{(order.time_placed + (60 * 60)).strftime('%r')}"}
 
   context 'When customer has a SMS notification type' do
-  let(:customer) {double :customer, phone_number: "07730655323", name: "Joe Maidman", method: TwilioClient.new}
+  let(:customer) {double :customer, phone_number: "123456", name: "Joe Blogs", method: TwilioClient.new}
   subject(:notification) {described_class.new(customer, order)}
 
     describe '#order'  do
