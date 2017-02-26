@@ -9,9 +9,5 @@ describe Menu, :c do
     it "holds a menu" do
       expect(menu.restaurant_menu).to eq(test_menu)
     end
-
-    it "prints the menu" do
-      expect(menu.print_menu(test_menu)).to eq(test_menu)
-    end
   end
 end

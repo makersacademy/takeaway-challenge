@@ -11,12 +11,8 @@ describe Order do
   end
 
   describe "#store_order", :st do
-    it "stores the order in a hash" do
+    it "increases hash size with new orders" do
       expect{order.store_order("Charsui pork", 3)}.to change{order.current_order.length}.by(1)
     end
   end
-
-  # describe "#" do
-  #
-  # end
 end

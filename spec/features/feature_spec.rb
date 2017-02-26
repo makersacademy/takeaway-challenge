@@ -6,7 +6,8 @@ takeaway = Takeaway.new
 
 takeaway.show_menu
 
-# orderconsole.place_order
+takeaway.place_order("Charsui pork", 2)
+
 
 
 

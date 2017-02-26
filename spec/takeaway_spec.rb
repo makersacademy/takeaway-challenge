@@ -20,4 +20,18 @@ describe Takeaway, :t do
     end
   end
 
+  describe "#calculate_total" do
+    before do
+      the_menu = {"Charsui pork" => 5, "Choisum" => 3, "Drink" => 1}
+      allow(menu).to receive_messages(restaurant_menu: the_menu)
+      this_order = {"Charsui pork" => 2, "Drink" => 3}
+      # => 2*5 + 3*1 = 13
+    end
+    it "calculates the total order cost" do
+      takeaway.place_order("Charsui pork", 2)
+      takeaway.place_order("Drink", 3)
+      expect(takeaway.calculate_total).to eq(13)
+    end
+  end
+
 end

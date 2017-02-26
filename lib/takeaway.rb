@@ -15,12 +15,25 @@ class Takeaway
 
   def show_menu
     # puts "Please pick your desired dishes from the following options:"
-    @menu.restaurant_menu
+    menu.restaurant_menu.each_with_index do |(key, val), ind|
+      puts "#{ind+1}: #{key} -- £#{val}"
+    end
   end
 
   def place_order(dish, portions = 1)
-    @order.store_order(dish, portions)
-    @order.current_order
+    order.store_order(dish, portions)
+    order.current_order
+  end
+
+  def calculate_total
+    total = 0
+    order.current_order.each do |key, val|
+      if menu.restaurant_menu[key]
+        item_cost = val * menu.restaurant_menu[key]
+        total += item_cost
+      end
+    end
+    total
   end
 
 end
