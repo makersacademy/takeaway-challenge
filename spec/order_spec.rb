@@ -49,14 +49,14 @@ require 'order'
   it 'should add the totals of the orders' do
     expect(order.total).to eq(20)
   end
-  #
-  # it 'should give the user an option to confirm' do
-  #   expect(order.confirm_alert).to eq("The total order will be scheduled for delivery. Do you wish to continue?")
-  # end
-  #
-  # it 'should cancel the order if the user wishes to cancel' do
-  #   expect{order.confirm("no")}.to raise_error "Your order was cancelled"
-  # end
+
+  it 'should give the user an option to confirm' do
+    expect(order.confirm_alert).to eq("The total order will be scheduled for delivery. Do you wish to continue?")
+  end
+  
+  it 'should cancel the order if the user wishes to cancel' do
+    expect{order.confirm("no")}.to raise_error "Your order was cancelled"
+  end
 
 end
 
