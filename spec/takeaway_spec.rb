@@ -11,6 +11,12 @@ describe Takeaway do
       expect(subject).to respond_to(:show_menu)
     end
 
+    it "should print given list of dishes" do
+      list = [{ :dish => "Soup of the day", :price => 4.5 }]
+      expect(STDOUT).to receive(:puts).with('1. Soup of the day, £4.5')
+      subject.print_dishes(list)
+    end
+
   end
 
   context '#order' do
