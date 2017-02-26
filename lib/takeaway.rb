@@ -29,8 +29,7 @@ class Takeaway
 
   def select_dish(dish_number = 5)
     dish = @menu.select_dishes(dish_number)
-    @order.order << dish
-    puts "\nYou added #{dish[:dish]}."
+    order.add_dish(dish)
     @order.order
   end
 

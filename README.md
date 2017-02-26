@@ -3,9 +3,8 @@ Takeaway Challenge
 
 * Run feature_test.rb to see system is working.
 
-You should see this output:
-
-MENU                  
+ruby feature_test.rb
+                  MENU                  
 1. Olives and sun-dried tomatos, £2
 2. Soup of the day, £4.5
 3. Fried calamari with homemade dressing, £6.8
@@ -20,12 +19,11 @@ MENU
 You added Fried calamari with homemade dressing.
 
 You added Homemade tiramisu.
-
-YOUR ORDER:               
+              YOUR ORDER:               
 1. Fried calamari with homemade dressing, £6.8
 2. Homemade tiramisu, £5
-TOTAL: £11.8              
-Confirmation's been sent
+              TOTAL: £11.8              
+Confirmation has been sent
 
 
 

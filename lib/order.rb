@@ -16,4 +16,9 @@ class Order
     @total
   end
 
+  def add_dish(dish)
+    @order << dish
+    puts "\nYou added #{dish[:dish]}."
+  end
+
 end
