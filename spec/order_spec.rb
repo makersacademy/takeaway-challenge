@@ -11,8 +11,4 @@ describe Order do
     expect(order).to respond_to(:display_order_summary)
   end
 
-  it 'sends a confirmation text' do
-    expect(order).to respond_to(:confirm)
-  end
-
 end

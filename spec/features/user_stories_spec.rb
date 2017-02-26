@@ -3,7 +3,7 @@ describe 'User Stories' do
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
   it 'the restaurant can show users a menu with dishes and prices' do
-    restaurant = Restaurant.new
+    restaurant = Restaurant.new('El Sombrero')
     expect { restaurant.display_menu }.not_to raise_error
   end
 
@@ -27,8 +27,8 @@ describe 'User Stories' do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   it 'sends a order confirmation text' do
-    order = Order.new
-    expect { order.confirm }.not_to raise_error
+    restaurant = Restaurant.new('El Sombrero')
+    expect { restaurant.confirm }.not_to raise_error
   end
 
 end

@@ -6,7 +6,4 @@ class Order
   def display_order_summary
   end
 
-  def confirm
-  end
-
 end
