@@ -9,6 +9,8 @@ class Text
     send_SMS("Thank you! Your order was placed and will be delivered before #{Time.now + (60*60)}. Total price: £#{total_price}")
   end
 
+  private
+
   def send_SMS(message)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']

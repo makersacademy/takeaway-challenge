@@ -1,8 +1,7 @@
 require_relative 'order'
 require_relative 'menu'
 require_relative 'text'
-require 'rubygems'
-require 'twilio-ruby'
+require 'dotenv'
 
 class Restaurant
 

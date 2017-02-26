@@ -21,6 +21,8 @@ attr_reader :order, :total
     "Your total is: £#{sprintf('%.2f', @total)}"
   end
 
+  private
+
   def item_exists?
     @menu.any? {|hash| hash[:dish].upcase == @item.upcase }
   end
