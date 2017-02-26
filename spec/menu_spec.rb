@@ -9,7 +9,11 @@ describe Menu do
       expect(menu).to respond_to(:print).with(0).arguments
     end
 
-    it 'formats a CSV file' do
+    it 'converts the CSV into a readable format for the customer' do
+      expect(menu.print).to be_an_instance_of String
+    end
+
+    it 'formats a CSV file for the program' do
       expect(menu.format_menu).to be_an_instance_of Array
     end
 

@@ -28,8 +28,8 @@ class Restaurant
     @order.display_order_summary
   end
 
-  def complete_order(total_price, phone_number)
-    Text.new.confirmation(total_price, phone_number)
+  def complete_order(phone_number)
+    Text.new.confirmation(@order.total, phone_number)
   end
 
 end

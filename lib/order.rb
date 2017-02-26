@@ -1,6 +1,6 @@
 class Order
 
-attr_reader :order
+attr_reader :order, :total
 
   def initialize(menu)
     @menu = menu
@@ -15,9 +15,10 @@ attr_reader :order
   end
 
   def display_order_summary
-    "Thank you. We're just fetching your order summary..."
+    puts "Thank you. We're just fetching your order summary..."
     present_summary
-    "Your total is: £#{sprintf('%.2f', calculate_total)}"
+    @total = calculate_total
+    puts "Your total is: £#{sprintf('%.2f', @total)}"
   end
 
   def item_exists?
@@ -30,7 +31,7 @@ attr_reader :order
 
   def present_summary
     @order.each do |item|
-      "#{item[0][:dish].upcase} x #{item[0][:quantity]} = #{item[0][:price].to_f * item[0][:quantity].to_f}"
+      puts "#{item[0][:dish].upcase} x #{item[0][:quantity]} = #{item[0][:price].to_f * item[0][:quantity].to_f}"
     end
   end
 
