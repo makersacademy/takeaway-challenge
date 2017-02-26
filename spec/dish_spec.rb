@@ -2,7 +2,7 @@ require 'dish'
 
 describe Dish do
 
-  let(:name) {"Chow mein"}
+  let(:name) {"Ham & Pineapple"}
   let(:price) {5}
   subject(:dish) {described_class.new(name: name, price: price)}
 

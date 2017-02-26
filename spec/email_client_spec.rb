@@ -10,7 +10,7 @@ describe EmailClient do
     end
   end
 
-  # These tests will actually send an email!!
+  #WARNING!!! These tests will actually send an email!!
   # describe "sending an email" do
   #
   # Mail.defaults do

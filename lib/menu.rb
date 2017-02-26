@@ -6,6 +6,7 @@ require_relative 'email_client'
 require_relative 'order_item'
 require_relative 'order'
 require_relative 'twilio_client'
+require 'dotenv/load'
 require 'csv'
 
 class Menu

@@ -33,7 +33,7 @@ class Order
   end
 
   def print_item(item)
-    "#{item.name}: X#{item.quantity}\n"
+    "#{item.name}: x#{item.quantity}\n"
   end
 
   def total(calculator)

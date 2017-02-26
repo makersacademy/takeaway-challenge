@@ -2,9 +2,9 @@ require 'menu'
 
 describe Menu do
   test_menu_path = File.expand_path("../../assets/menu_test.csv", __FILE__)
-  let(:item_one) {double :item_one, name: "Chowmein", price: 5}
-  let(:item_output) {"Chowmein: £5"}
-  let(:menu_output) {["1. Chicken Curry: £5", "2. Fried Rice: £3", "3. Prawn Crackers: £3"]}
+  let(:item_one) {double :item_one, name: "Pepperoni", price: 5}
+  let(:item_output) {"Pepperoni: £5"}
+  let(:menu_output) {["1. Margherita: £8", "2. Pepperoni: £10", "3. Ham & Pineapple: £12"]}
   subject(:menu) {described_class.new(Dish)}
 
   context 'when the menu is set to empty' do

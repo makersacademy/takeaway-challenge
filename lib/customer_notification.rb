@@ -1,5 +1,3 @@
-require 'twilio-ruby'
-
 class CustomerNotification
 
   attr_reader :customer, :order
