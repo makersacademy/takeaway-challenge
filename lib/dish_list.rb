@@ -14,6 +14,10 @@ class DishList
       @all_dishes << dish
     end
 
+    def new_order
+      @checkout_basket = []
+    end
+
     def add_dish_to_basket(dish)
       @checkout_basket << dish
       @total_price += dish.price

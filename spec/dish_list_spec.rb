@@ -47,5 +47,12 @@ describe DishList do
       subject.add_dish_to_basket(test_dish)
       expect(subject.total_price).to eq 6.00
     end
+
+    it 'adds a dish from the dish list to the checkout_basket' do
+      test_dish = Dish.new("Chicken Korma", 6.00)
+      subject.add_dish_to_list(test_dish)
+      subject.add_dish_to_basket(subject.all_dishes[-1])
+      expect(subject.checkout_basket[-1]).to eq test_dish
+    end
   end
 end
