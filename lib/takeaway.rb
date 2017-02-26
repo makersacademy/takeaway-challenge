@@ -12,8 +12,15 @@ class Takeaway
   end
 
   def show_menu
-    @menu.print_menu
+    print_dishes(@menu)
   end
+
+  # def print_menu
+  #   puts "MENU".center(40)
+  #   @menu.each_with_index do |item, index|
+  #     puts "#{index + 1}. #{item[:dish]}, £#{item[:price]}"
+  #   end
+  # end
 
   def print_dishes(list)
     list.each_with_index do |item, index|
