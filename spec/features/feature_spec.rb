@@ -1,10 +1,14 @@
-require_relative '../../lib/orderconsole'
+require_relative '../../lib/takeaway'
 
 puts "----- FEATURE TEST -----"
 
-orderconsole = OrderConsole.new
+takeaway = Takeaway.new
 
-orderconsole.show_menu
+takeaway.show_menu
+
+# orderconsole.place_order
+
+
 
 
 # user inputs:
@@ -12,7 +16,6 @@ orderconsole.show_menu
 # expected total: 13
 
 
-# menu.each { |k, v| puts "#{k} - £#{v}" }
 
 
 puts "----- END FEATURE TEST -----"
