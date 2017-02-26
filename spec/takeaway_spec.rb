@@ -3,6 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   let(:menu) { double :menu }
+  let(:messenger) { double :messenger }
 
   context '#show_menu' do
 
@@ -35,9 +36,14 @@ describe Takeaway do
   context '#confirm_order' do
 
     it "should send a confirmation" do
-      messenger = double("messenger")
       allow(messenger).to receive(:send_confirmation).and_return("Confirmation's been sent")
+      subject.make_an_order
+      subject.calculate_total
       expect(subject.confirm_order(messenger)).to eq "Confirmation's been sent"
+    end
+
+    it "should raise an error if the total is 0" do
+      expect{subject.confirm_order(messenger)}.to raise_error "Please make an order!"
     end
 
   end
