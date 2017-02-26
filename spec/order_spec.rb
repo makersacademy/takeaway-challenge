@@ -24,8 +24,7 @@ before do
 end
 
   it 'can order some number of several available dishes' do
-  order.add(:edamame, 2)
-  order.add(:salmon_roll, 1)
+   create_order
   expect(order.dishes).to eq(dishes)
   end
 
@@ -35,10 +34,14 @@ end
 end
 
  it 'calculates total for the order' do
-   order.add(:edamame, 2)
-   order.add(:salmon_roll, 1)
+   create_order
    total = 8.70
    expect(order.total).to eq(total)
-
  end
+
+ def create_order
+   order.add(:edamame, 2)
+   order.add(:salmon_roll, 1)
+ end
+
 end
