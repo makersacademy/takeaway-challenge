@@ -1,6 +1,6 @@
-require 'menu'
-require 'order'
-require 'csv'
+require_relative 'order'
+require_relative 'menu'
+require_relative 'text'
 
 class Restaurant
 
@@ -18,11 +18,16 @@ class Restaurant
     @menu ? @menu.print : "No menu exists. Please contact the restaurant"
   end
 
-  def create_order
-    Order.new
+  def create_order(customer_name)
+    @order = Order.new(@menu.format_menu, customer_name)
   end
 
-  def confirm
+  def display_order_summary
+    @order.display_order_summary
+  end
+
+  def confirm(phone_number)
+    Text.new.send_SMS(phone_number)
   end
 
 end
