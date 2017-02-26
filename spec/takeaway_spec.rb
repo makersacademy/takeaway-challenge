@@ -21,20 +21,13 @@ describe Takeaway do
 
   context '#order' do
     before(:each) do
-      subject.make_an_order(2)
-      subject.make_an_order(5)
-    end
-
-    it "should create a list of dishes" do
-      expect(subject.order.count).to eq 2
+      subject.make_a_new_order
+      subject.select_dish(2)
+      subject.select_dish(5)
     end
 
     it "should respond to show_total method" do
       expect(subject).to respond_to(:show_total)
-    end
-
-    it "should calculate the total amount" do
-      expect(subject.calculate_total).to eq subject.total
     end
 
   end
@@ -43,8 +36,8 @@ describe Takeaway do
 
     it "should send a confirmation" do
       allow(messenger).to receive(:send_confirmation).and_return("Confirmation's been sent")
-      subject.make_an_order
-      subject.calculate_total
+      subject.make_a_new_order
+      subject.select_dish(2)
       expect(subject.confirm_order(messenger)).to eq "Confirmation's been sent"
     end
 
