@@ -1,5 +1,5 @@
-require 'twilio-ruby'
-require 'dotenv'
+# require 'twilio-ruby'
+# require 'dotenv'
 
 class SMSConfirmation
 
