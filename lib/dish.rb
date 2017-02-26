@@ -2,26 +2,10 @@ require_relative 'menu'
 
 class Dish
 
-  attr_reader :name, :price, :details, :item
+  attr_reader :details, :item
 
   def initialize(number, menu)
-    @number = number
-    @price = get_price(number, menu)
-    @name = get_name(number, menu)
-  end
-
-  def create_item
-    @item = details.delete(:number)
-  end
-
-  def get_name(number, menu)
-    get_details(number, menu)
-    @details[:name]
-  end
-
-  def get_price(number, menu)
-    get_details(number, menu)
-    @details[:price].to_f
+    @item = create_item(number, menu)
   end
 
   def get_details(number, menu)
@@ -29,12 +13,14 @@ class Dish
       dish[:number] == number }
   end
 
-  def checkout
+  private
+
+  def create_item(number, menu)
+    get_details(number, menu)
+    item = {}
+    item[:name] = details[:name]
+    item[:price] = details[:price].to_f.round(2)
+    item[:quantity] = 1
+    item
   end
-
-  # def get_name_and_price
-  #   {name => price}
-  # end
-
-
 end
