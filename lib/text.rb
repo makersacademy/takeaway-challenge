@@ -3,17 +3,19 @@ require 'dotenv/load'
 
 class Text
 
-  def initialize
+  def initialize(client = Twilio::REST::Client)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    to_number = ENV['TO_PHONE']
+    from_number = ENV['FROM_PHONE']
+    @client = client.new(account_sid, auth_token)
   end
 
   def send
     @client.account.messages.create({
-        :to => ENV['TO_PHONE'],
-        :from => ENV['FROM_PHONE'],
-        :body => "Your order should arrive at #{plus_one_hour}",
+        :to => to_number,
+        :from => from_number,
+        :body => "Your order should arrive by #{plus_one_hour}",
     })
     puts "Confirmation text message has been sent."
   end
