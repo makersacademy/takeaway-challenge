@@ -15,24 +15,29 @@ class Takeaway
   end
 
   def show_menu
-    # puts "Please pick your desired dishes from the following options:"
-    menu.restaurant_menu.each_with_index do |(key, val), ind|
-      puts "#{ind+1}: #{key} -- £#{val}"
-    end
+    menu.print_menu
   end
 
   def place_order(dish, portions = 1)
-    raise "Item not on menu." unless menu.restaurant_menu.key?(dish)
+    check_item_exists(dish)
     order.store_order(dish, portions)
-    order.current_order
   end
 
   def calculate_total
     order.current_order.each do |key, val|
-      item_cost = val * menu.restaurant_menu[key] # TIMES PORTIONS BY COST
+      item_cost = val * menu.the_menu[key] # PORTIONS * COST
       @total += item_cost
     end
     @total
+  end
+
+  def total_matches_expected?(expected)
+    expected == @total
+  end
+
+  private
+  def check_item_exists(dish)
+    raise "Item not on menu." unless menu.the_menu.key?(dish)
   end
 
 end
