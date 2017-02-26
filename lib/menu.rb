@@ -32,6 +32,8 @@ class Menu
   end
 
   def proceed_to_checkout
+    current_order.get_total
+    
   end
 
 end

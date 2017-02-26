@@ -1,10 +1,9 @@
 class Order
 
-  attr_reader :basket, :items
+  attr_reader :basket
 
   def initialize
-    @basket = {}
-    @items = []
+    @basket = []
   end
 
   # def add_dish(number, menu)
@@ -20,24 +19,34 @@ class Order
   def add_dish(number, menu)
     dish = Dish.new(number, menu)
     name = dish.name
-    if items.any? {|item|
-      item[:name] == name
-      item[:quantity] += 1}
+    if already_in_basket?(name)
+      basket.each {|item|
+        if item[:name] == name
+          item[:quantity] += 1
+        end
+      }
     else
       price = dish.price
       item = {}
       item[:name] = name
       item[:price] = price
       item[:quantity] = 1
-      @items << item
+      @basket << item
     end
   end
 
-  # def get_total
-  #   basket.each { |item, quantity|
-  #     item
-  #   }
-  # end
+  def already_in_basket?(name)
+    basket.any? {|item|
+      item[:name] == name}
+  end
+
+  def get_total
+    total = 0
+    basket.each { |item|
+      total += (item[:price] * item[:quantity])
+    }
+    total
+  end
   #
   # def view_basket
   # end

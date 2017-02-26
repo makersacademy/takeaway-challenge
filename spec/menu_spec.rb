@@ -51,17 +51,20 @@ describe Menu do
     describe "#select_dish" do
       it "adds the selected dish to the order" do
         menu.select_dish(3)
-        expect(menu.current_order.items).to eq([{:name => "Margherita", :price => 8.95, :quantity => 1}])
+        expect(menu.current_order.basket).to eq([{:name => "Margherita", :price => 8.95, :quantity => 1}])
       end
     end
 
-    # describe "#proceed_to_checkout" do
-    #   it "gets the total and shows the items in the basket" do
-    #     menu.select_dish(3)
-    #     menu.select_dish(1)
-    #     expect(menu.proceed_to_checkout).to eq(21.90)
-    #   end
-    # end
+    describe "#proceed_to_checkout" do
+      before :each do
+        menu.select_dish(3)
+        menu.select_dish(1)
+      end
+      it "gets the total and shows the items in the basket" do
+        expect(menu.proceed_to_checkout).to eq(21.90)
+      end
+
+    end
   end
   end
 
