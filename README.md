@@ -1,7 +1,7 @@
 Takeaway Challenge
 ==================
 
-!!!NOT FINISHED!
+!!!NOT FINISHED!!!
 
 * Run feature_test.rb to see system is working.
 
