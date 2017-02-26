@@ -1,18 +1,30 @@
 require 'order'
 
 describe Order do
-  subject(:order) {described_class.new}
+  subject(:order) {described_class.new(menu)}
 
-  let(:make_order) do
-    { vegetable_spring_roll: 4.80}
+  let(:menu) {double(:menu)}
+  let(:dishes) do
+    {
+      edamame: 2,
+      salmon_roll: 1
+    }
   end
 
-  it 'customer can make an order' do
-   expect(subject.make_order) to eq (make_order)
-  end
-
+before do
+  allow(menu).to receive(:has_dish?).with(:edamame).and_return(true)
+  allow(menu).to receive(:has_dish?).with(:vegetable_spring_roll).and_return(true)
+  allow(menu).to receive(:has_dish?).with(:salmon_roll).and_return(true)
 end
 
+  it 'can order some number of several available dishes' do
+  order.add(:edamame, 2)
+  order.add(:salmon_roll, 1)
+  expect(order.dishes).to eq(dishes)
+  end
 
-#
-# I would like to be able to select some number of several available dishes
+  it 'doesn/t allow items to be added that are not on the menu' do
+    allow(menu).to receive(:has_dish?).with(:tuna).and_return(false)
+   expect { order.add(:tuna, 3) }.to raise_error NoItemError, "Tuna is not on the menu!"
+end
+end
