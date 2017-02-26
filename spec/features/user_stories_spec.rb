@@ -1,4 +1,7 @@
 describe 'User Stories' do
+
+  let(:filename){double :filename}
+
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices

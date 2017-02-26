@@ -12,13 +12,23 @@ describe Restaurant do
 
   describe 'is responsible for its own menu' do
 
+    it 'can create a menu' do
+      expect(restaurant.create_menu(double :filename)).to be_an_instance_of Menu
+    end
+
     it 'can display a menu' do
       expect(restaurant).to respond_to(:display_menu)
     end
 
-    it 'can read a csv file' do
-      expect(restaurant.display_menu).to 
-    end
+
+
+    # let(:file){double :file}
+    # it 'can read a csv file' do
+    #   File.stub(:open).and_return(file)
+    #
+    #   # allow(file).to receive(:open).and_return(file)
+    #   expect(restaurant.display_menu(file)).to eq file
+    # end
 
   end
 
