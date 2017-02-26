@@ -1,10 +1,12 @@
-require_relative 'order'
 require_relative 'menu'
 
 class Takeaway
 
-def initialize
-  @menu = Menu.new
+attr_reader :basket
+
+def initialize(menu=Menu.new)
+  @basket = Hash.new(0)
+  @menu = menu
 end
 
 def see_menu
