@@ -1,6 +1,8 @@
 require_relative 'order'
 require_relative 'menu'
 require_relative 'text'
+require 'rubygems'
+require 'twilio-ruby'
 
 class Restaurant
 
@@ -18,16 +20,16 @@ class Restaurant
     @menu ? @menu.print : "No menu exists. Please contact the restaurant"
   end
 
-  def create_order(customer_name)
-    @order = Order.new(@menu.format_menu, customer_name)
+  def create_order
+    @order = Order.new(@menu.format_menu)
   end
 
-  def display_order_summary
+  def display_order
     @order.display_order_summary
   end
 
-  def confirm(phone_number)
-    Text.new.send_SMS(phone_number)
+  def complete_order(total_price, phone_number)
+    Text.new.confirmation(total_price, phone_number)
   end
 
 end

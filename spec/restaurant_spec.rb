@@ -4,6 +4,7 @@ describe Restaurant do
   subject(:restaurant) {described_class.new('El Sombrero')}
 
   describe 'initialization' do
+
     it 'knows its own name' do
       expect(restaurant.name).to eq 'El Sombrero'
     end
@@ -29,6 +30,7 @@ describe Restaurant do
     end
 
     it 'creates a new instance of an Order' do
+      restaurant.create_menu('./lib/menu.csv')
       expect(restaurant.create_order).to be_an_instance_of Order
     end
 
@@ -36,10 +38,10 @@ describe Restaurant do
 
   describe 'is responsible for confirming order' do
 
-    it 'sends a confirmation text' do
-      expect(restaurant).to respond_to(:confirm)
+    it 'triggers a new confirmation text' do
+      expect(restaurant).to respond_to(:complete_order)
     end
 
   end
 
-end
+  end
