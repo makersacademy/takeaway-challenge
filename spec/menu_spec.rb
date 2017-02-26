@@ -4,7 +4,7 @@ require './lib/dishes'
 describe Menu do
   subject(:dishes) { Dishes.new(menu_item) }
   subject(:menu) { described_class.new(dishes) }
-  
+
   let (:menu_item) do
     { Pizza: 7.99,
       Pasta: 5.50 }

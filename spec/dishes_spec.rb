@@ -2,10 +2,7 @@ require 'dishes'
 
 describe Dishes do
   subject(:dishes) { described_class.new(menu_item) }
-  let (:menu_item) do
-    { Pizza: 7.99,
-      Pasta: 5.50 }
-  end
+  let(:menu_item) { {"Pizza" => 7.99, "Pasta" => 5.50} }
   let(:example_dish) {:example_dish}
 
   it 'has dishes with prices' do
@@ -20,6 +17,10 @@ describe Dishes do
   it 'prints the list of dishes with prices' do
     printed_menu = "Pizza: £7.99", "Pasta: £5.50"
     expect(dishes.print_dishes).to eq printed_menu
+  end
+
+  it 'checks that a dish is on the menu' do
+    expect(dishes.in_stock?('Pizza')).to eq true
   end
 
 end

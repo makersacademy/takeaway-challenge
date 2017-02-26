@@ -14,4 +14,8 @@ class Dishes
   def add_dish(item, price)
     @dishes[item] = price
   end
+
+  def in_stock?(dish)
+    @dishes.any? {|item, price| item == dish}
+  end
 end
