@@ -1,19 +1,12 @@
+require './lib/dishes'
+
 class Menu
-  attr_reader :dishes
 
-  def initialize
-    @dishes = []
-  end
-
-  def add_dish(item, price)
-    @dishes << {item => price}
+  def initialize(dishes = Dishes)
+    @dishes = dishes
   end
 
   def print_menu
-    @dishes.map do |dish|
-      dish.each do |item, price|
-        return "#{item}: £#{price}"
-      end
-    end
+    @dishes.print_dishes
   end
 end
