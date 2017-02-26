@@ -1,8 +1,10 @@
 
 class Order
   attr_reader :dishes, :menu, :display, :total
+  
 
   def initialize(menu)
+
     @dishes = Hash.new(0)
     @menu = menu
     @total = 0
