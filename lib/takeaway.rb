@@ -2,11 +2,12 @@ require 'order'
 
 class Takeaway
 
-attr_reader :menu, :order
+attr_reader :menu, :order, :message
 
-  def initialize(menu:, order: nil)
+  def initialize(menu:, order: nil, message: nil)
     @menu = menu
-    @order = order || Order.new
+    @order = order || Order.new(menu)
+    @message = message
   end
 
   def show_menu
@@ -17,6 +18,7 @@ attr_reader :menu, :order
     dishes.each do |dish, amount|
     order.add(dish, amount)
     end
+    message.deliver
     order.total
   end
 end
