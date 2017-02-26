@@ -15,6 +15,12 @@ class Takeaway
     @menu.print_menu
   end
 
+  def print_dishes(list)
+    list.each_with_index do |item, index|
+      puts "#{index + 1}. #{item[:dish]}, £#{item[:price]}"
+    end
+  end
+
   def make_an_order(dish_number = 5)
     dish = @menu.select_dishes(dish_number)
     @order << dish
@@ -30,9 +36,7 @@ class Takeaway
 
   def show_total
     puts "YOUR ORDER:".center(40)
-    @order.each_with_index do |item, index|
-      puts "#{index + 1}. #{item[:dish]}, £#{item[:price]}"
-    end
+    print_dishes(@order)
     puts "TOTAL: £#{@total}".center(40)
   end
 
