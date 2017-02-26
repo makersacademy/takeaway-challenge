@@ -17,35 +17,36 @@ describe Takeaway, :t do
     end
   end
 
-  describe "#place_order" do
+  describe "#choose_dish" do
     it "records the user's choices" do
       dish = "Choisum"
       portions = 3
-      takeaway.place_order(dish, portions)
+      takeaway.choose_dish(dish, portions)
       expect(takeaway.order.current_order).to eq({dish => portions})
     end
 
     it "doesn't allow an unknown dish to be ordered" do
       message = "Item not on menu."
-      expect{takeaway.place_order("Pizza")}.to raise_error(message)
+      expect{takeaway.choose_dish("Pizza")}.to raise_error(message)
     end
   end
 
   describe "#calculate_total" do
     it "calculates the total order cost" do
-      takeaway.place_order("Charsui pork", 2)
-      takeaway.place_order("Drink", 3)
+      takeaway.choose_dish("Charsui pork", 2)
+      takeaway.choose_dish("Drink", 3)
       expect(takeaway.calculate_total).to eq(13)
     end
   end
 
   describe "#check_order_cost" do
     it "checks the calculated total against the user's expected total" do
-      takeaway.place_order("Charsui pork", 2)
-      takeaway.place_order("Drink", 3)
+      takeaway.choose_dish("Charsui pork", 10)
+      takeaway.choose_dish("Drink", 5)
       takeaway.calculate_total
-      expected = 13
-      expect(takeaway.total_matches_expected?(expected)).to be(true)
+      expected_cost = 1
+      p message = "Your expected cost differs to the total cost of #{takeaway.total}"
+      expect{takeaway.place_order(expected_cost)}.to raise_error(message)
     end
   end
 
