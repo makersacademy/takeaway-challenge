@@ -40,7 +40,7 @@ Approach
 I created three classes: 
 - Takeaway: used to show menu and place order
 - Menu: used to print the menu
-- Order: used to select dishes and place order
+- Order: used to select dishes and calculate total
 - Message: used to send message to customer with estimated delivery time implemented with Twilio API
 
 Usage 
