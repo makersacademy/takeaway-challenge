@@ -7,7 +7,7 @@ attr_reader :menu
   end
 
   def show_menu
-    menu.print
+    menu.to_string
   end
 
 end
