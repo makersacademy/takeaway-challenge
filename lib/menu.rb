@@ -2,7 +2,7 @@ require 'csv'
 
 class Menu
 
-attr_reader :menu
+attr_accessor :menu
 
   def initialize(file)
     @file = file
@@ -13,7 +13,7 @@ attr_reader :menu
     CSV.foreach(@file,:headers => true).map do |row|
       @menu << "#{$.-1}. #{row['Dish'].upcase}: #{row['Description']} (#{row['Price']})"
     end
-    puts @menu.join("\n")
+    @menu = @menu.join("\n")
   end
 
   def format_menu

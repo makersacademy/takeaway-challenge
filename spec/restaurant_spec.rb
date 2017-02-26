@@ -33,7 +33,7 @@ describe Restaurant do
       restaurant.create_menu('./lib/menu.csv')
       expect(restaurant.create_order).to be_an_instance_of Order
     end
-
+      
   end
 
   describe 'is responsible for confirming order' do
@@ -44,4 +44,4 @@ describe Restaurant do
 
   end
 
-  end
+end

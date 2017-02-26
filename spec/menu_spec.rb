@@ -2,6 +2,7 @@ require 'menu'
 
 describe Menu do
 
+
   subject(:menu){described_class.new('./lib/menu.csv')}
   let(:restaurant){ Restaurant.new('Lucky Dragon') }
 
@@ -10,19 +11,12 @@ describe Menu do
     end
 
     it 'converts the CSV into a readable format for the customer' do
-      expect(menu.print).to be_an_instance_of String
+      menu.print
+      expect(menu.menu).to be_an_instance_of String
     end
 
     it 'formats a CSV file for the program' do
       expect(menu.format_menu).to be_an_instance_of Array
     end
-
-  # let(:file){double :file}
-  # it 'can read a csv file' do
-  #   File.stub(:open).and_return(file)
-  #
-  #   # allow(file).to receive(:open).and_return(file)
-  #   expect(restaurant.display_menu(file)).to eq file
-  # end
 
 end

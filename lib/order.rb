@@ -18,7 +18,7 @@ attr_reader :order, :total
     puts "Thank you. We're just fetching your order summary..."
     present_summary
     @total = calculate_total
-    puts "Your total is: £#{sprintf('%.2f', @total)}"
+    "Your total is: £#{sprintf('%.2f', @total)}"
   end
 
   def item_exists?
