@@ -1,3 +1,6 @@
+# require 'order'
+# require 'menu'
+
 class TakeAway
   attr_reader :menu, :order
   def initialize(menu, order)
@@ -13,6 +16,9 @@ class TakeAway
     dishes.each do |dish, quantity|
       order.place_order(dish,quantity)
     end
+    order.order_total
   end
+
+
 
 end
