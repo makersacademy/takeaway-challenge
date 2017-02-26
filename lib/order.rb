@@ -22,6 +22,7 @@ class Order
   end
 
   def print_basket
+    empty_basket_message
     puts "Your basket contains:"
     basket.each {|item|
       puts "#{item[:name]} (£#{item[:price]}) - #{item[:quantity]}"}
@@ -29,10 +30,15 @@ class Order
   end
 
   def place_order
+    empty_basket_message
     send_text
   end
 
   private
+
+  def empty_basket_message
+    fail "Basket is empty" if basket.empty?
+  end
 
   def already_in_basket?(name)
     basket.any? {|item|

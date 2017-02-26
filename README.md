@@ -24,7 +24,7 @@ Instructions
 ---------------
 * menu = Menu.new   # Menu loads available dishes from CSV file and saves to variable 'list'
 * menu.view_menu  # Allows the user to view the menu, which contains dish, description, and price
-* menu.begin_order  # Creates new order object
+* menu.create_order  # Creates new order object
 * menu.select_dish(3) # Order creates an instance of selected dish and adds to order
 * menu.proceed_to_checkout #  Shows item list and sums total
 * menu.place_order  # Confirms "order placed" and sends a text message confirmation with delivery time

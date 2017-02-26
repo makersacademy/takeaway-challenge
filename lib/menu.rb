@@ -15,15 +15,17 @@ class Menu
 
   def view_menu
     @list.each { |item|
-      puts "#{item[:name]} - £#{item[:price]}" }
+      puts "#{item[:number]}. #{item[:name]} - £#{item[:price]}"
+      puts "#{item[:description]}"}
     return
   end
 
-  def begin_order
+  def create_order
     @current_order = Order.new
   end
 
   def select_dish(number)
+    fail "Please create an order before selecting dishes" if !@current_order
     current_order.add_dish(number, self)
   end
 
