@@ -20,16 +20,6 @@ describe Restaurant do
       expect(restaurant).to respond_to(:display_menu)
     end
 
-
-
-    # let(:file){double :file}
-    # it 'can read a csv file' do
-    #   File.stub(:open).and_return(file)
-    #
-    #   # allow(file).to receive(:open).and_return(file)
-    #   expect(restaurant.display_menu(file)).to eq file
-    # end
-
   end
 
   describe 'is responsible for creating new orders' do
