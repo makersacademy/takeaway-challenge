@@ -6,15 +6,16 @@ require 'order'
   let(:menu) { double(:menu) }
   let(:confirmation) { double(:confirmation)}
 
+
   before do
     order.select_order("Koreanbbq", 2)
   end
 
   it 'introduces a start function which presents the menu' do
     allow(menu).to receive(:introduction) {"Welcome to MA Takeaway. Please order from our tasty selection of dishes!"}
-    allow(menu).to receive(:show_menu) {[0, 0, 0, 0, 0]}
-    allow(order).to receive(:start) {[0, 0, 0, 0, 0]}
-    expect(order.start).to eq([0, 0, 0, 0, 0])
+    allow(menu).to receive(:show_menu) {[nil, nil, nil, nil, nil]}
+    allow(order).to receive(:start) {[nil, nil, nil, nil, nil]}
+    expect(order.start).to eq([nil, nil, nil, nil, nil])
   end
 
   it 'should let a customer order any number of items' do
@@ -32,29 +33,26 @@ require 'order'
   describe '#Calculating prices' do
 
   context '#Calculating price' do
-  # before do
-  #   order.get_price
-  #   order.calculate_price
-  # end
+  before do
+    order.get_price
+    order.calculate_price
+  end
 
   it 'should display the total price' do
-    order.calculate_price
     expect(order.display_total_price).to eq("The total cost of your order is £20")
   end
-  # 
+  #
   # it 'should raise an error if the total is incorrect' do
   #   order.calculate_price * 2
   #   expect{ (order.display_total_price).to raise_error("Something has gone wrong, please try again")}
   # end
 
   it 'should keep a history of orders' do
-    order.calculate_price
     expect(order.total).to eq(20)
   end
 
   it 'should add the totals of the orders' do
-    order.calculate_price
-    expect(order.total).to eq 20
+    expect(order.total).to eq(20)
   end
 
   it 'should give the user an option to confirm' do

@@ -2,4 +2,9 @@ require 'confirmation'
 
 describe Confirmation do
 
-end 
+  subject(:confirmation) { described_class.new }
+
+  before do
+    allow(confirmation).to receive(:message) {"Your order has been placed and "}
+  end
+end

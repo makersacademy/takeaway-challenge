@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'confirmation'
 
 class Order
 
@@ -37,26 +38,27 @@ class Order
   end
 
   def calculate_price
-    puts get_price
+    #puts get_price
     total_price
     puts display_total_price
     puts confirm_alert
   end
 
   def total_price
-    @total = @prices.inject { |accum_value, sum| accum_value += sum }
+    @total = @prices.inject { |accum_value, element| accum_value += element }
   end
 
   def display_total_price
-    raise "Something has gone wrong, please try again" if @total != @prices.inject { |accum_value, sum| accum_value += sum }
+    raise "Something has gone wrong, please try again" if @total != @prices.inject { |accum_value, element| accum_value += element }
     return "The total cost of your order is £#{@total}"
   end
-
-
 
   def confirm_alert
     "The total order will be scheduled for delivery. Do you wish to continue?"
   end
+
+  private
+
   #
   # <<<<<< HEAD
   #   def confirm(answer, confirmation = Confirmation.new)
