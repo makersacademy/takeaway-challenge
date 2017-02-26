@@ -41,12 +41,7 @@ require 'order'
   it 'should display the total price' do
     expect(order.display_total_price).to eq("The total cost of your order is £20")
   end
-  #
-  # it 'should raise an error if the total is incorrect' do
-  #   order.calculate_price * 2
-  #   expect{ (order.display_total_price).to raise_error("Something has gone wrong, please try again")}
-  # end
-
+  
   it 'should keep a history of orders' do
     expect(order.total).to eq(20)
   end

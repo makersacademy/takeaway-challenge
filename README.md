@@ -1,4 +1,10 @@
 Takeaway Challenge
+
+## Weekend Challenge
+
+## Week Two
+
+##Completed on 26th February 2017
 ==================
 ```
                             _________
@@ -11,25 +17,19 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
-Instructions
--------
+## Instructions
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+- require './lib/order' in IRB
+- Create a new order `order = Order.new`
+- Now we will display what is available `order.start`
+- Choose from the orders listed `order.select_order("Koreanbbq", 3)`
+- Get the price of the order! `order.get_price`
+- Calculate the total price of your order! `order.calculate_price`
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+### Creating software for a Makers Academy Takeaway!
 ```
 As a customer
 So that I can check if I want to order something
@@ -69,7 +69,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 

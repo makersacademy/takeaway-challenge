@@ -4,11 +4,11 @@ class Menu
 
   def initialize
     @dishes = {
-      Koreanbbq: 10,
-      Burger: 7,
-      KFC: 7,
-      Sushi: 10,
-      Ribs: 8
+      :Koreanbbq => 10,
+      :Burger => 7,
+      :KFC => 7,
+      :Sushi => 10,
+      :Ribs => 8
     }
   end
 

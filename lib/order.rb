@@ -1,5 +1,7 @@
 require_relative 'menu'
 require_relative 'confirmation'
+require 'dotenv'
+Dotenv.load
 
 class Order
 
@@ -23,10 +25,6 @@ class Order
     return "#{amount} x #{item} added to your order!"
   end
 
-  def add_to_orders
-    @orders << @selection
-  end
-
   def get_price
     @orders.each do |order|
     order.each do |item, amount|
@@ -38,7 +36,6 @@ class Order
   end
 
   def calculate_price
-    #puts get_price
     total_price
     puts display_total_price
     puts confirm_alert
@@ -57,17 +54,15 @@ class Order
     "The total order will be scheduled for delivery. Do you wish to continue?"
   end
 
+  def confirm(answer, confirmation = Confirmation.new)
+    raise "Your order was cancelled" if answer.downcase != "yes"
+    @confirmation = confirmation
+  end
+
   private
 
-  #
-  # <<<<<< HEAD
-  #   def confirm(answer, confirmation = Confirmation.new)
-  #     raise "Your order was cancelled" if answer.downcase != "yes"
-  #     @confirmation = confirmation
-  # ------
-  #   def confirm(answer)
-  #     raise "Your order was cancelled" if answer.downcase != "yes"
-  #     Confirmation.new
-  # end
+  def add_to_orders
+    @orders << @selection
+  end
 
 end
