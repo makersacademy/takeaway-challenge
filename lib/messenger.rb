@@ -17,7 +17,7 @@ class Messenger
       :body => message,
     })
 
-    "Confirmation's been sent"
+    puts "Confirmation's been sent"
 
   end
 

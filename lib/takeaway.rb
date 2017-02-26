@@ -13,6 +13,7 @@ class Takeaway
   end
 
   def show_menu
+    puts "MENU".center(40)
     print_dishes(@menu.menu)
   end
 
