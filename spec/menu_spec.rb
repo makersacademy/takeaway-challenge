@@ -1,12 +1,15 @@
 require 'menu'
+require 'restaurant'
 
 describe Menu do
-  subject(:menu) { described_class.new }
+  let(:restaurant) { Restaurant.new }
+  subject(:menu) { described_class.new(restaurant) }
 
-  describe "Showing list of dishes to user" do
-    let(:dish) { double("tofu") }
-    it "adds a dish to the menu list" do
-      expect(menu.add(dish)).to include {dish}
-    end
-  end
+  # describe "Viewing the menu" do
+  #
+  #   it "shows the dishes from the restaurant" do
+  #     menu.view
+  #     expect(STDOUT).to receive(:puts).with(list)
+  #   end
+  # end
 end
