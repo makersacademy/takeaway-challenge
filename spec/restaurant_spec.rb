@@ -16,6 +16,10 @@ describe Restaurant do
       expect(restaurant).to respond_to(:display_menu)
     end
 
+    it 'can read a csv file' do
+      expect(restaurant.display_menu).to 
+    end
+
   end
 
   describe 'is responsible for creating new orders' do
