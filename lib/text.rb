@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'twilio-ruby'
 
+
 class Text
 
   def confirmation(total_price, phone_number)
@@ -9,13 +10,13 @@ class Text
   end
 
   def send_SMS(message)
-    account_sid = 'AC69064164571cfd340c23429315dab09d'
-    auth_token = 'ea1d61a5bad892e013f212a72b6af4df'
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
 
     @client = Twilio::REST::Client.new account_sid, auth_token
 
     @client.account.messages.create({
-      :from => '+441303720111',
+      :from => ENV['FROM_PHONE'],
       :to => @phone_number,
       :body => message,
     })
