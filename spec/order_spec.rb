@@ -23,36 +23,36 @@ describe Order do
       order.add_dish(3, menu)
     end
 
-  describe "#add_dish" do
-    it "saves the dish and quantity" do
-      expect(order.basket).to eq([{:name => "Margherita", :price => 8.95, :quantity => 1}])
+    describe "#add_dish" do
+      it "saves the dish and quantity" do
+        expect(order.basket).to eq([{:name => "Margherita", :price => 8.95, :quantity => 1}])
+      end
+
+      it "adds 1 to the dish quantity if the selected dish is already in the basket" do
+        order.add_dish(3, menu)
+        expect(order.basket).to eq([{:name => "Margherita", :price => 8.95, :quantity => 2}])
+      end
+
+      it "adds multiple dishes" do
+        order.add_dish(1, menu)
+        expect(order.basket).to eq([{:name => "Margherita", :price => 8.95, :quantity => 1}, {:name => "Antipasti", :price => 12.95, :quantity => 1}])
+      end
     end
 
-    it "adds 1 to the dish quantity if the selected dish is already in the basket" do
-      order.add_dish(3, menu)
-      expect(order.basket).to eq([{:name => "Margherita", :price => 8.95, :quantity => 2}])
+    describe "#get_total" do
+      it "gets the total of all items in basket" do
+        order.add_dish(1, menu)
+        expect(order.get_total).to eq(21.90)
+      end
     end
 
-    it "adds multiple dishes" do
-      order.add_dish(1, menu)
-      expect(order.basket).to eq([{:name => "Margherita", :price => 8.95, :quantity => 1}, {:name => "Antipasti", :price => 12.95, :quantity => 1}])
+    describe "#place_order" do
+      it "confirms order has been placed and send a text message" do
+        allow(order).to receive(:send_text).and_return(message)
+        expect(order.place_order).to eq(message)
+      end
     end
   end
-
-  describe "#get_total" do
-    it "gets the total of all items in basket" do
-      order.add_dish(1, menu)
-      expect(order.get_total).to eq(21.90)
-    end
-  end
-
-  describe "#place_order" do
-    it "confirms order has been placed and send a text message" do
-      allow(order).to receive(:send_text).and_return(message)
-      expect(order.place_order).to eq(message)
-    end
-  end
-end
 
 
 end
