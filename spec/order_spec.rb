@@ -37,7 +37,7 @@ describe Order do
   it 'the price calculation returns a number' do
     item = "Enchiladas Verdes"
     order.add_items(item, 2)
-    expect(order.calculate_total).to eq 15.9
+    expect(order.calculate_total).to be_a_kind_of Float
   end
 
 end

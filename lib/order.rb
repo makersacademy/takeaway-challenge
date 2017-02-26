@@ -21,6 +21,12 @@ attr_reader :order, :total
     "Your total is: £#{sprintf('%.2f', @total)}"
   end
 
+  def calculate_total
+    @order.inject(0) do |sum, hash|
+      sum + (hash[0][:price].to_f * hash[0][:quantity].to_f)
+    end
+  end
+
   private
 
   def item_exists?
@@ -37,10 +43,6 @@ attr_reader :order, :total
     end
   end
 
-  def calculate_total
-    @order.inject(0) do |sum, hash|
-      sum + (hash[0][:price].to_f * hash[0][:quantity].to_f)
-    end
-  end
+
 
 end
