@@ -7,13 +7,7 @@ class Menu
   end
 
   def add_dish(item, price)
-    @dishes << {calculate_key => [item, price]}
-  end
-
-  private
-
-  def calculate_key
-    @dishes.size + 1
+    @dishes << {item => price}
   end
 
 end

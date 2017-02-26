@@ -9,7 +9,9 @@ class Takeaway
   end
 
   def print_menu
-    (menu.dishes).map {|key,value|"#{key}. #{value[0]} £#{value[1]}"}.join(',')
+    (menu.dishes).map do |items|
+      items.map {|key,value| "#{key}: £#{value}"}
+    end.join(",")
   end
 
 end
