@@ -24,7 +24,7 @@ class Restaurant
 
   def place_order
     @text_confirmation.order_finished(@order.current_order)
-    #Following comment introduced whilst trying to fix a failing text,
+    #Following comment introduced whilst trying to fix a failing test,
     #Test is failing whilst adding new functionality: sending text.
     #"Your order will arrive at #{time.hour + 1}.#{time.min}"
   end

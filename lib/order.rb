@@ -1,11 +1,12 @@
 class Order
 
-  attr_reader :current_order, :bill
+  attr_reader :current_order, :bill, :string_summary
 
   def initialize
     @menu = Menu.new
     @current_order = []
     @bill = 0
+    @string_summary = ''
   end
 
   def order_received(food_order, quantity)
@@ -19,7 +20,7 @@ class Order
   end
 
   def check_total
-
+    raise "There is an error - your bill is not the same as the item cost." unless bill_correct?
   end
 
   private
@@ -29,6 +30,11 @@ class Order
   end
 
   def save_order(food_order, quantity)
+    array_save_order(food_order, quantity)
+    string_save_order(food_order, quantity)
+  end
+
+  def array_save_order(food_order, quantity)
     @menu.food_options.each do | dish, cost |
       if dish == food_order
           cost = cost * quantity
@@ -37,5 +43,25 @@ class Order
       end
     end
   end
+
+  def string_save_order(food_order, quantity)
+    @menu.food_options.each do | dish, cost |
+      if dish == food_order
+        cost = sprintf( "%0.02f", cost * quantity)
+        @string_summary = "#{dish} x #{quantity}: £#{cost}"
+      end
+    end
+  end
+
+  def bill_correct?
+    running_total = 0
+    @current_order.each do |search_hash|
+      search_hash.each do |dish, cost|
+       running_total += cost
+    end
+  end
+    @bill == running_total
+  end
+
 
 end
