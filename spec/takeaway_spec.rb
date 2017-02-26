@@ -1,37 +1,32 @@
 require 'takeaway'
-require 'order'
-require 'menu'
-require 'dish'
+# require 'stringio'
 
 describe Takeaway do
 
-  # # let (:menu) {double ("Menu")}
-  # subject(:takeaway) {described_class.new}
-  #
-  # it { is_expected.to respond_to(:see_menu) }
-  #
-  # it 'should respond to see_menu' do
-  #   expect(takeaway).to respond_to(:see_menu)
-  # end
-  #
-  # describe '#see_menu' do
-  #   it 'displays menu' do
-  #     expect(takeaway.see_menu).to be_a_kind_of(Array)
-  #   end
-  #
-  #   it 'displays menu' do
-  #     menu = Menu.new
-  #     expect(takeaway.see_menu).to eq menu.display
-  #   end
-  # end
-  #
-  # it { is_expected.to respond_to(:select_dishes)}
-  #
-  # describe '#select_dishes' do
-  #   it 'selects dishes' do
-  #
-  #     expect(takeaway.select_dishes("Pizza", "Burger")).to eq (["Pizza", "Burger"])
-  #   end
-  # end
+  subject(:takeaway) { described_class.new(menu) }
+  let(:menu) { double :menu, check_menu: "Burger", price: 7, dishes: {"Burger" => 7} }
+  let(:item) { double :dish }
+
+describe '#view_menu' do
+  it 'returns the menu' do
+    expect(takeaway.view_menu).to eq({"Burger" => 7})
+  end
+end
+
+describe '#add_to_order' do
+  it 'adds a menu item to the order' do
+    takeaway.add_to_order(item)
+    expect(takeaway.basket).to include item
+  end
+  it 'adds multiple items to the order' do
+    takeaway.add_to_order(item, 4)
+    expect(takeaway.basket).to include item
+  end
+  it 'collects items of the same type' do
+    2.times {takeaway.add_to_order(item)}
+    expect(takeaway.basket).to eq({ item => 2 })
+  end
+end
+
 
 end
