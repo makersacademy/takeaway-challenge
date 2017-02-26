@@ -7,7 +7,7 @@ class Menu
   end
 
   def print
-      CSV.foreach(@file,:headers => true) do |row|
+    CSV.foreach(@file,:headers => true).map do |row|
       puts "#{$.-1}. #{row['Dish'].upcase}: #{row['Description']} (#{row['Price']})"
     end
   end
