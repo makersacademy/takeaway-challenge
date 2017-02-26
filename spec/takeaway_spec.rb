@@ -1,10 +1,10 @@
 require 'takeaway'
-# require 'stringio'
+require 'stringio'
 
 describe Takeaway do
 
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double :menu, check_menu: "Burger", price: 7, dishes: {"Burger" => 7} }
+  let(:menu) { double :menu, check_menu: "Burger", price: 7.0, dishes: {"Burger" => 7.0} }
   let(:item) { double :dish }
 
 describe '#view_menu' do
@@ -28,5 +28,18 @@ describe '#add_to_order' do
   end
 end
 
+describe '#review_order' do
+  before do
+    $stdout = StringIO.new
+  end
+  after(:all) do
+    $stdout = STDOUT
+  end
+  it 'should print out order and subtotals' do
+    takeaway.add_to_order("Burger", 2)
+    takeaway.review_order
+    expect($stdout.string).to match("Burger x 2: £14.0\nTotal: £14.0")
+  end
+end
 
 end

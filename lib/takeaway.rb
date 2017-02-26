@@ -1,4 +1,5 @@
 require_relative 'menu'
+# require_relative 'sms_confirmation'
 
 class Takeaway
 
@@ -23,10 +24,10 @@ def review_order
   calculate_total
 end
 
-# def checkout(payment, conf_method = SMSConfirmation.new)
-#   fail 'Please enter correct payment amount' unless check(payment)
-#   conf_method.send_msg
-# end
+def checkout(payment, conf_method = SMSConfirmation.new)
+  fail 'Please enter correct payment amount' unless check(payment)
+  conf_method.send_msg
+end
 
 
 private
@@ -45,9 +46,9 @@ def calculate_total
   puts "Total: £#{@total}"
 end
 
-# def check(payment)
-#   calculate_total
-#   @total == payment
-# end
+def check(payment)
+  calculate_total
+  @total == payment
+end
 
 end
