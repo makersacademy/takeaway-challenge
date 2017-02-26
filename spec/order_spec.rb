@@ -18,12 +18,12 @@ describe Order do
   describe "#add_dish" do
     it "saves the dish and quantity" do
       order.add_dish(3, menu)
-      expect(order.basket).to eq({"Margherita" => 1})
+      expect(order.items).to eq([{:name => "Margherita", :price => 8.95, :quantity => 1}])
     end
 
     it "adds 1 to the dish quantity if the selected dish is already in the basket" do
       2.times {order.add_dish(3, menu)}
-      expect(order.basket).to eq({"Margherita" => 2})
+      expect(order.items).to eq([{:name => "Margherita", :price => 8.95, :quantity => 2}])
     end
   end
 

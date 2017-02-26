@@ -25,39 +25,46 @@ describe Menu do
       menu.load_menu
     end
 
-  describe "#load_menu" do
-    it "loads dishes from menu.csv" do
-      expect(menu.list.count).to eq 21
+    describe "#load_menu" do
+      it "loads dishes from menu.csv" do
+        expect(menu.list.count).to eq 21
+      end
     end
+
+    describe "#view_price_list" do
+      it "displays the list of dishes" do
+        expect { menu.view_price_list }.to output.to_stdout
+      end
+    end
+
+    context "adding an order" do
+      before :each do
+        menu.begin_order
+      end
+
+    describe "#begin_order" do
+      it "creates a new order" do
+        expect(menu.current_order).not_to be nil
+      end
+    end
+
+    describe "#select_dish" do
+      it "adds the selected dish to the order" do
+        menu.select_dish(3)
+        expect(menu.current_order.items).to eq([{:name => "Margherita", :price => 8.95, :quantity => 1}])
+      end
+    end
+
+    # describe "#proceed_to_checkout" do
+    #   it "gets the total and shows the items in the basket" do
+    #     menu.select_dish(3)
+    #     menu.select_dish(1)
+    #     expect(menu.proceed_to_checkout).to eq(21.90)
+    #   end
+    # end
+  end
   end
 
-  describe "#view_price_list" do
-    it "displays the list of dishes" do
-      expect { menu.view_price_list }.to output.to_stdout
-    end
-  end
-
-  describe "#begin_order" do
-    it "creates a new order" do
-      menu.begin_order
-      expect(menu.current_order).not_to be nil
-    end
-  end
-
-  # describe "#select_dish" do
-# let(:order) {double(:order)}
-# allow(:order)
-
-
-
-  #   it "adds the selected dish to the order" do
-  #     menu.begin_order
-  #     menu.select_dish(3)
-  #     expect(menu.current_order.basket).to eq([{"Margherita" => 1}])
-  #   end
-  # end
-
-end
 
 
 

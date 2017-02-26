@@ -17,12 +17,15 @@ class Dish
 
   def get_price(number, menu)
     get_details(number, menu)
-    @details[:price]
+    @details[:price].to_f
   end
 
   def get_details(number, menu)
     @details = menu.list.detect{ |dish|
       dish[:number] == number }
+  end
+
+  def checkout
   end
 
   # def get_name_and_price

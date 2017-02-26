@@ -27,11 +27,11 @@ class Menu
     @current_order = Order.new
   end
 
-  # def select_dish(number)
-  #   current_order.add_dish(number, self)
-  # end
+  def select_dish(number)
+    current_order.add_dish(number, self)
+  end
 
-  # def view_order
-  # end
+  def proceed_to_checkout
+  end
 
 end
