@@ -6,16 +6,6 @@ class Order
     @basket = []
   end
 
-  # def add_dish(number, menu)
-  #   dish = Dish.new(number, menu)
-  #   name = dish.get_name(number, menu)
-  #   if basket.key?(name)
-  #     basket[name] += 1
-  #   else
-  #     basket[name] = 1
-  #   end
-  # end
-
   def add_dish(number, menu)
     dish = Dish.new(number, menu)
     name = dish.name
@@ -47,8 +37,13 @@ class Order
     }
     total
   end
-  #
-  # def view_basket
-  # end
+
+  def print_basket
+    puts "Your basket contains:"
+    basket.each {|item|
+      puts "#{item[:name]} (£#{item[:price]}) - #{item[:quantity]}"}
+    total = get_total
+    puts "Total: #{total}"
+  end
 
 end

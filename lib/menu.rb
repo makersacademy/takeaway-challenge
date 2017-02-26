@@ -32,8 +32,7 @@ class Menu
   end
 
   def proceed_to_checkout
-    current_order.get_total
-    
+    current_order.print_basket
   end
 
 end
