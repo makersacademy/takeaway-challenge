@@ -16,20 +16,21 @@ Takeaway Challenge
 
 Introduction
 -------
-The second weekend challenge at Makers Academy. This project
+This project emulates the ordering infrastructure of a take-away restaurant, allowing users to view the menu, add items to their order and confirmation that an order has been placed, either by SMS (twilio api) or email (SMTP).
 
 Example Usage
 -----
+The main directory provides a 
 
 Motivation
 -----
+This project was created for the second weekend challenge at Makers Academy and is designed to address four user stories (see below). It has been designed using a test-driven approach,
 
 Gems/Libraries
 -----
-1. twilio
-2. twilio-ruby
-3.
-4. <a href="https://github.com/mikel/mail">mail</a>
+1. <a href="https://github.com/twilio/twilio-ruby">twilio-ruby</a> (by twilio)
+2. <a href="https://github.com/mikel/mail">mail</a> (by mikel)
+3. <a href="https://github.com/bkeepers/dotenv"</a> (by bkeepers)
 
 Set-up
 -----
