@@ -23,8 +23,8 @@ class Menu
 
   def load_items
     clear_items
-    CSV.foreach(File.path(load_path)) do |row|
-      add(@item_class.new(name: row[0], price: row[1]))
+    CSV.foreach(File.path(load_path), headers: true) do |row|
+      add(@item_class.new(name: row["name"], price: row["price"]))
     end
   end
 
