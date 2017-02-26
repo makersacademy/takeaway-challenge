@@ -27,14 +27,14 @@ class Order
   end
 
   def get_price
-    @orders.each do |dishes|
-      dishes.each do |item, amount|
-        @price = menu.dishes[amount]
-    puts "#{amount} x #{item.to_sym} at £#{@price} = (£#{@price *= amount})"
-      @prices << @price
-    end
+    @orders.each do |order|
+    order.each do |item, amount|
+    @price = menu.dishes[item]
+    puts "#{amount} x #{item.to_sym} at £#{@price} each = £#{@price *= amount}"
+    @prices << @price
   end
-end
+  end
+  end
 
   def calculate_price
     puts get_price
@@ -43,11 +43,15 @@ end
     puts confirm_alert
   end
 
-  private
-
-  def is_correct_amount?(price)
-    total_price == price
+  def total_price
+    @total = @prices.inject { |accum_value, sum| accum_value += sum }
   end
+
+  def display_total_price
+    raise "Something has gone wrong, please try again" if @total != @prices.inject { |accum_value, sum| accum_value += sum }
+    return "The total cost of your order is £#{@total}"
+  end
+
 
 
   def confirm_alert

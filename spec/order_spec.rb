@@ -24,4 +24,48 @@ require 'order'
   it 'should add the selection to the order' do
     expect(order.orders).to eq ([{ :Koreanbbq => 2 }])
   end
+
+  it 'should get the price of each item in the order' do
+    expect(order.get_price).to eq([{:Koreanbbq => 2}])
+  end
+
+  describe '#Calculating prices' do
+
+  context '#Calculating price' do
+  # before do
+  #   order.get_price
+  #   order.calculate_price
+  # end
+
+  it 'should display the total price' do
+    order.calculate_price
+    expect(order.display_total_price).to eq("The total cost of your order is £20")
+  end
+  # 
+  # it 'should raise an error if the total is incorrect' do
+  #   order.calculate_price * 2
+  #   expect{ (order.display_total_price).to raise_error("Something has gone wrong, please try again")}
+  # end
+
+  it 'should keep a history of orders' do
+    order.calculate_price
+    expect(order.total).to eq(20)
+  end
+
+  it 'should add the totals of the orders' do
+    order.calculate_price
+    expect(order.total).to eq 20
+  end
+
+  it 'should give the user an option to confirm' do
+    expect(order.confirm_alert).to eq("The total order will be scheduled for delivery. Do you wish to continue?")
+  end
+
+  it 'should cancel the order if the user wishes to cancel' do
+    expect{order.confirm("no")}.to raise_error "Your order was cancelled"
+  end
+
+end
+
+end
 end
