@@ -19,6 +19,7 @@ describe Dish do
   describe "#get_details" do
     it "gets the correct details" do
       expect(dish.get_details(3, menu)).to eq({:number => 3, :name => "Margherita", :price => 8.95})
+      p dish.item
     end
   end
 
