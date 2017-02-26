@@ -20,8 +20,20 @@ describe Dish do
     it "gets the correct details" do
       expect(dish.get_details(3, menu)).to eq({:number => 3, :name => "Margherita", :price => 8.95})
     end
-
   end
+
+  describe "#get_name" do
+    it "gets the correct name" do
+      expect(dish.get_name(3, menu)).to eq "Margherita"
+    end
+  end
+
+  # describe "#get_name_and_price" do
+  #   it "gets the correct name" do
+  #     expect(dish.get_name_and_price).to eq ({"Margherita" => 8.95})
+  #   end
+  # end
+
 
 
 end

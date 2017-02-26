@@ -6,8 +6,13 @@ class Dish
 
   def initialize(number, menu)
     @number = number
-    @name = name
     @price = get_price(number, menu)
+    @name = get_name(number, menu)
+  end
+
+  def get_name(number, menu)
+    get_details(number, menu)
+    @details[:name]
   end
 
   def get_price(number, menu)
@@ -17,11 +22,12 @@ class Dish
 
   def get_details(number, menu)
     @details = menu.list.detect{ |dish|
-      dish[:number] == number
-    }
+      dish[:number] == number }
   end
 
-
+  # def get_name_and_price
+  #   {name => price}
+  # end
 
 
 end

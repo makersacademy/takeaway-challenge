@@ -21,8 +21,8 @@ menu.view_price_list # Allows the user to view the menu, which contains dish, de
 menu = Menu.new
 menu.load_menu
 menu.begin_order
-# menu.select_dish(dish) # Creates an instance of selected dish with quantity and adds to order
-# menu.view_order
+# menu.select_dish(3) # Creates an instance of selected dish with quantity and adds to order
+menu.current_order.basket
 
 # As a customer
 # So that I can verify that my order is correct

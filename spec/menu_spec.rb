@@ -6,7 +6,7 @@ describe Menu do
   subject(:menu) { described_class.new }
   let(:menu_file) { 'menu.csv' }
   let(:dish) { double(:dish) }
-  # let(:order) {double(:order)}
+
 
 
   it { is_expected.to respond_to(:load_menu)}
@@ -44,12 +44,18 @@ describe Menu do
     end
   end
 
-  describe "#select_dish" do
-    it "adds the selected dish to the order" do
-      menu.select_dish(dish)
-      expect(menu.current_order).to contain(dish)
-    end
-  end
+  # describe "#select_dish" do
+# let(:order) {double(:order)}
+# allow(:order)
+
+
+
+  #   it "adds the selected dish to the order" do
+  #     menu.begin_order
+  #     menu.select_dish(3)
+  #     expect(menu.current_order.basket).to eq([{"Margherita" => 1}])
+  #   end
+  # end
 
 end
 
