@@ -17,7 +17,7 @@ describe "TakeAway Challenge" do
   it "Customer should be able to select dishes and quantity" do
     expect{indian_resturant.add_to_cart(name: :chicken_karahi, quantity: 1)}.to_not raise_error
     error_message = "Please provide a hash with ':name' and ':quantity' as keys"
-    expect{indian_resturant.add_to_cart(name: :lamp_chops)}.to raise_error error_message
+    expect{indian_resturant.add_to_cart(name: :lamb_chops)}.to raise_error error_message
   end
 
   # As a customer
@@ -25,9 +25,9 @@ describe "TakeAway Challenge" do
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
   it "Customer can check that total given is sum of prices of dishes in his/her order" do
-    indian_resturant.add_to_cart(name: :lamp_chops, quantity: 1)
+    indian_resturant.add_to_cart(name: :lamb_chops, quantity: 1)
     indian_resturant.add_to_cart(name: :naan, quantity: 2)
-    expect(indian_resturant.print_bill).to eq "1. Lamp_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
+    expect(indian_resturant.print_bill).to eq "1. Lamb_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
   end
 
   # As a customer
@@ -35,7 +35,7 @@ describe "TakeAway Challenge" do
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
   it "Customer receives an SMS when order is confirmed" do
-    indian_resturant.add_to_cart(name: :lamp_chops, quantity: 1)
+    indian_resturant.add_to_cart(name: :lamb_chops, quantity: 1)
     indian_resturant.add_to_cart(name: :naan, quantity: 2)
     expect(messenger_service).to receive(:send_SMS).once
     indian_resturant.confirm_order(12.9)

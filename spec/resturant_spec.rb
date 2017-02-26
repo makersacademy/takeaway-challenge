@@ -13,7 +13,7 @@ describe Resturant do
   context "#add_to_cart" do
 
     it "allows customer to choose a dish and quantity" do
-      expect{resturant.add_to_cart(name: :lamp_chops, quantity: 1)}.to_not raise_error
+      expect{resturant.add_to_cart(name: :lamb_chops, quantity: 1)}.to_not raise_error
     end
 
     it "raises an error if name or quantity is missing" do
@@ -31,7 +31,7 @@ describe Resturant do
 
   context "#confirm_order" do
     it "sends SMS once order confirmed" do
-      resturant.add_to_cart(name: :lamp_chops, quantity: 1)
+      resturant.add_to_cart(name: :lamb_chops, quantity: 1)
       resturant.add_to_cart(name: :naan, quantity: 2)
       expect(messenger_service).to receive(:send_SMS).once
       resturant.confirm_order(12.9)
@@ -44,7 +44,7 @@ describe Resturant do
 
     it "raises error if there is a discrepency with total" do
       error_message = "Discrepency in bill amount: Please print bill to verify your order and total"
-      resturant.add_to_cart(name: :lamp_chops, quantity: 1)
+      resturant.add_to_cart(name: :lamb_chops, quantity: 1)
       expect(messenger_service).to_not receive(:send_SMS)
       expect{resturant.confirm_order(5)}.to raise_error error_message
     end
@@ -52,9 +52,9 @@ describe Resturant do
 
   context "#print_bill" do
     it "prints the bill if customer wants to check" do
-      resturant.add_to_cart(name: :lamp_chops, quantity: 1)
+      resturant.add_to_cart(name: :lamb_chops, quantity: 1)
       resturant.add_to_cart(name: :naan, quantity: 2)
-      expect(resturant.print_bill).to eq "1. Lamp_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
+      expect(resturant.print_bill).to eq "1. Lamb_chops\t1 Qty\t£7.0 EA\n2. Naan\t2 Qty\t£2.95 EA\nYour total is £12.90."
     end
 
     it "raises error when called before placing an order" do

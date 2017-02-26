@@ -6,7 +6,7 @@ describe MessengerService do
 
   context "#send_SMS" do
     before do
-      indian_resturant.add_to_cart(name: :lamp_chops, quantity: 1)
+      indian_resturant.add_to_cart(name: :lamb_chops, quantity: 1)
       indian_resturant.add_to_cart(name: :naan, quantity: 2)
     end
 
