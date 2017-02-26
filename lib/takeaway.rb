@@ -8,7 +8,7 @@ class Takeaway
   def initialize
     @menu = Menu.new
     @order = []
-    @messenger = Messenger.new
+    # @messenger = Messenger.new
     @total = 0
   end
 
@@ -30,8 +30,8 @@ class Takeaway
     total
   end
 
-  def confirm_order
-    @messenger.send_confirmation("Thank you for your order! It will be delivered in 1 hour.")
+  def confirm_order(messenger)
+    messenger.send_confirmation("Thank you for your order! It will be delivered in 1 hour.")
   end
 
 end
