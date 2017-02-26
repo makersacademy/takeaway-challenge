@@ -50,5 +50,3 @@ Usage
 Status
 -----
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-
-[![Coverage Status](https://coveralls.io/repos/github/Noora-q/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/Noora-q/takeaway-challenge?branch=master)
