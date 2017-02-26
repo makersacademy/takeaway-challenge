@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   let(:menu) { double :menu }
-  
+
   context '#show_menu' do
 
     it "should respond to show_menu method" do
@@ -27,7 +27,7 @@ describe Takeaway do
     end
 
     it "should calculate the total amount" do
-      expect(subject.show_total).to eq subject.total
+      expect(subject.calculate_total).to eq subject.total
     end
 
   end
