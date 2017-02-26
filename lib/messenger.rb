@@ -11,9 +11,11 @@ class Messenger
 
     @client.messages.create({
       :from => '+441698313049',
-      :to => '+447731xxxxxxx',
+      :to => '+447731933555',
       :body => message,
     })
+
+    "Confirmation's been sent"
 
   end
 
