@@ -1,5 +1,5 @@
 require_relative 'menu'
-# require_relative 'sms_confirmation'
+require_relative 'sms_confirmation'
 
 class Takeaway
 
