@@ -8,6 +8,7 @@ class Takeaway
   def initialize(menu = Menu.new)
     @menu = menu
     @order = Order.new
+    @total = 0
     # puts "Welcome to the takeaway ordering application."
     # puts "Type \"<OBJECT_NAME>.show_menu\" to view the menu."
     # puts "Type \"<OBJECT_NAME>.place_order(dish, portions)\" to order."
@@ -21,19 +22,17 @@ class Takeaway
   end
 
   def place_order(dish, portions = 1)
+    raise "Item not on menu." unless menu.restaurant_menu.key?(dish)
     order.store_order(dish, portions)
     order.current_order
   end
 
   def calculate_total
-    total = 0
     order.current_order.each do |key, val|
-      if menu.restaurant_menu[key]
-        item_cost = val * menu.restaurant_menu[key]
-        total += item_cost
-      end
+      item_cost = val * menu.restaurant_menu[key] # TIMES PORTIONS BY COST
+      @total += item_cost
     end
-    total
+    @total
   end
 
 end
