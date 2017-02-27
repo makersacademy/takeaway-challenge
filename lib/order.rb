@@ -23,8 +23,7 @@ class Order
   def print_basket
     empty_basket_message
     puts "Your basket contains:"
-    basket.each {|dish|
-      puts "#{dish.details[:name]} - (£#{dish.details[:price]})"}
+    basket_summary
     puts "Total: £#{get_total}"
   end
 
@@ -34,6 +33,11 @@ class Order
   end
 
   private
+
+  def basket_summary
+    basket.each {|dish|
+      puts "#{dish.details[:name]} - (£#{dish.details[:price]})"}
+  end
 
   def empty_basket_message
     fail "Basket is empty" if basket.empty?
