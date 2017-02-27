@@ -35,11 +35,11 @@ Learning Outcomes
 
 Future Improvements
 -----
-- remove items from an order
-- save an order history for each customer
-- reorder a previously placed order
-- add an address location for an order
-- add order stages (e.g.preparing, out for delivery) and update the customer
+- Remove items from an order
+- Save an order history for each customer
+- Reorder a previously placed order
+- Add an address location for an order
+- Add order stages (e.g.preparing, out for delivery) and update the customer
 
 Design
 -----
