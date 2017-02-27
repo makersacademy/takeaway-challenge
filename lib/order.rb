@@ -23,7 +23,7 @@ class Order
 
   def subtotal
     @items.each do |item|
-      puts "#{item[:dish[:food]]} - £#{item[:dish[:price]]} - #{item[:quantity]} "
+      puts "#{item[:dish][:food]}: £#{item[:dish][:price]} x#{item[:quantity]} "
     end
     "Current total: £#{calculate_total}"
   end
