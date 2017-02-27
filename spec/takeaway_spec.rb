@@ -32,7 +32,7 @@ describe Takeaway do
   describe '#clear_basket' do
     it 'clears the basket' do
       takeaway.add_to_basket("Burger Meal", 2)
-      expect { takeaway.clear_basket }.to change{ takeaway.basket }.to ([])
+      expect { takeaway.clear_basket }.to change{ takeaway.basket }.to Array.new
     end
   end
 end

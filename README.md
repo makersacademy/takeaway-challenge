@@ -31,8 +31,8 @@ I first began reading all the material given to me and set up my workstation, me
 
 Struggles faced
 ===============
-- Dependancy injection. Getting my feature test to work
-- Doing things in a TDD way
+- Dependancy injection.
+- Doing things in a TDD way, more specifically towards the Twilio api
 - Getting my build to pass Travis CI
 - Writing tests for the message class
 
@@ -48,6 +48,8 @@ Progression / Things I would want to improve
 - Better tests
 - Refactoring
 - Learning how to use coveralls as a reference
+- stub texting class. Didn't quite have time
+- Use Rubocop to analyse code violations
 
 Usage
 ==========

@@ -8,8 +8,8 @@ class Takeaway
 
   def initialize (menu = Menu.new, send_message = Message.new)
     @menu = menu
-    @basket = []
     @send_message = send_message
+    @basket = []
   end
 
   def print_menu
