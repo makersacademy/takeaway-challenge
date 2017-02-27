@@ -1,7 +1,11 @@
+[![Coverage Status](https://coveralls.io/repos/github/makersacademy/takeaway-challenge/badge.svg)](https://coveralls.io/github/makersacademy/takeaway-challenge)
+
+[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 
-‘’’
+```
 irb
 :001 > require './lib/takeaway'
 :002 > takeaway = Takeaway.new
@@ -19,4 +23,14 @@ irb
 :008 > takeaway.calculate_total
 :009 > takeaway.place_order(19)
 Confirmation text message has been sent.
-‘’’
+```
+
+I have a menu, order, takeaway and text message class. If I had more time I would maybe have added a calculator class, as this feels like a separate object to the takeaway ordering interface.
+
+Menu is responsible for printing the menu it holds.
+Order is responsible for storing the current order.
+Text is responsible for sending the confirmation text message.
+Takeaway is responsible for the user's interaction and calculation of the total cost.
+
+
+Currently the user calls takeaway.calculate_total method, but if this is not explicitly called it will be called when the order is placed and the user passes in the expected total cost. The user can check the total at any time after this method is called by calling takeaway.total.
