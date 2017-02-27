@@ -3,8 +3,8 @@ require 'dotenv'
 
 class Text
 
-  def initialize(client = Twilio::REST::Client)
-    Dotenv.load
+  def initialize(client = Twilio::REST::Client, env = '~/Desktop/Makers/Weekend_Challenges/week-2/.env')
+    Dotenv.load(env)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     @client = client.new(account_sid, auth_token)
