@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'text_confirmation'
 
 describe 'User Stories' do
   # As a customer
@@ -26,10 +27,9 @@ describe 'User Stories' do
   # As a customer
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-  xit 'so a customer can be assured their meal will be delivered on time, they receive a text' do
+  it 'so a customer can be assured their meal will be delivered on time, they receive a text' do
     text_confirmation = TextConfirmation.new
-    allow(text_confirmation).to receive(:send_message)
-    expect(text_confirmation).to receive(:send_message).with("Thank you! Your order was placed and will be delivered before 18:52.")
+    expect(text_confirmation).to receive(:send_message)
     text_confirmation.order_finished
   end
 end

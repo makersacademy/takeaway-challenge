@@ -9,20 +9,16 @@ class Order
     @string_summary = ''
   end
 
-  def order_received(food_order, quantity)
+  def order_received(food_order, quantity = 1 )
     raise "There is no #{food_order} available on the menu" unless on_menu?(food_order)
     save_order(food_order, quantity)
     "Order received for #{quantity} #{food_order}."
   end
 
-  def check_bill
-    to_two_decimals = sprintf('%.2f', @bill)
-    "The bill is currently £#{to_two_decimals}."
-  end
-
   def check_total
     raise "There is an error - your bill is not the same as the item cost." unless bill_correct?
-    check_bill
+    to_two_decimals = sprintf('%.2f', @bill)
+    "The bill is currently £#{to_two_decimals}."
   end
 
   private
@@ -40,7 +36,7 @@ class Order
     @menu.food_options.each do | dish, cost |
       if dish == food_order
           cost = cost * quantity
-          @bill += cost
+          @bill += cost #needs to be purely functional - is saving to an instance variable and will cause problems in the future!
           @current_order << { dish => cost }
       end
     end

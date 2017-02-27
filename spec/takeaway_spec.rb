@@ -11,14 +11,13 @@ describe Takeaway do
 
   it { is_expected.to respond_to(:make_selection).with(2).arguments }
 
-  #introduce stubs here to fake an order
   it 'is expected to return order summary on request' do
     takeaway.make_selection('Spring rolls', 2)
     takeaway.make_selection('Pho')
     expect(takeaway.order_summary).to eq order.string_summary
   end
 
-  describe '#place_order', :focus => true do
+  describe '#place_order' do
 
     before :each do
       allow(takeaway).to receive(:send_text)

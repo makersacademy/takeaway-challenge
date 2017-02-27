@@ -22,13 +22,17 @@ class Takeaway
     @order.string_summary
   end
 
+  def check_total
+    @order.check_total
+  end
+
   def place_order
     send_text("Thank you for your order: £#{@order.bill}")
   end
 
   private
 
-  def send_text(order_total)
+  def send_text(value)
     @text_confirmation.order_finished
   end
 
