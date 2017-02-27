@@ -1,0 +1,7 @@
+
+
+require './lib/order.rb'
+o = Order.new
+o.confirmation_text
+
+exec($0)
