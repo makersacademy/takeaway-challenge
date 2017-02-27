@@ -10,6 +10,8 @@ describe EmailClient do
     end
   end
 
+
+
   #WARNING!!! These tests will actually send an email!!
   # describe "sending an email" do
   #
