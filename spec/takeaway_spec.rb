@@ -22,5 +22,10 @@ describe Takeaway do
     end
   end
 
-  
+  describe '#confirm_meal' do
+    it 'confirms the meal to customer' do
+      takeaway.add_to_basket("Burger Meal", 2)
+      expect(takeaway.confirm_meal).to eq ("Confirmed order: 2x Burger Meal, Total cost: £14")
+    end
+  end
 end

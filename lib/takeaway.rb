@@ -26,8 +26,8 @@ class Takeaway
   def confirm_meal
     total_items = @basket.map { |order| "#{order[1]}x #{order[0]}" }.join(",")
     total_cost = @basket.collect { |order| order[2] }.inject(:+)
-    print "Confirmed order: #{total_items}, Total cost: £#{total_cost}"
     send_message.txt_confirmation
+    return "Confirmed order: #{total_items}, Total cost: £#{total_cost}"
   end
 
   def clear_basket

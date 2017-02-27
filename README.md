@@ -46,6 +46,8 @@ Progression / Things I would want to improve
 - Create a customer database for all customers
 - Guard conditions and extreme values
 - Better tests
+- Refactoring
+- Learning how to use coveralls as a reference
 
 Usage
 ==========
