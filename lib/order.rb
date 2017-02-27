@@ -12,4 +12,14 @@ attr_reader :items, :menu
     items[item] = quantity
   end
 
+  def total_amount
+    total_number_of_items.inject(:+)
+  end
+
+  def total_number_of_items
+    items.map do |item, quantity|
+      menu.price(item) * quantity
+    end
+  end
+
 end

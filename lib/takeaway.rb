@@ -17,6 +17,9 @@ attr_reader :menu, :order
     items.each do |item, quantity|
       order.add_item(item, quantity)
     end
-
+    order.total_amount
   end
+
+
+
 end

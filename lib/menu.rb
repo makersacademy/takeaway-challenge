@@ -15,4 +15,8 @@ attr_reader :items
     !!items[item]
   end
 
+  def price(item)
+    items[item]
+  end
+  
 end

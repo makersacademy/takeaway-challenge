@@ -19,7 +19,14 @@ end
 
   it 'checks if item is on the menu' do
     expect(menu.has_item?(:Yummy)).to be true
+  end
+
+  it 'checks if item is not on the menu' do
     expect(menu.has_item?(:Yucky)).to be false
+  end
+
+  it 'calculates the price' do
+    expect(menu.price(:Yummy)).to eq(items[:Yummy])
 
   end
 end
