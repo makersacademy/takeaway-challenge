@@ -11,7 +11,6 @@ class Takeaway
     @order = order
     @text = text
     @total = 0
-    # puts "Type \"<OBJECT_NAME>.instructions\" for ordering instructions."
   end
 
   def show_menu
@@ -24,10 +23,9 @@ class Takeaway
   end
 
   def calculate_total
-    order.current_order.each do |dish_name, dish_count|
-      item_cost = dish_count * menu.the_menu[dish_name] # PORTIONS * COST
-      @total += item_cost
-    end
+    @total = order.current_order.map do |dish_name, dish_count|
+      dish_count * menu.the_menu[dish_name]
+    end.reduce(:+)
   end
 
   def place_order(expected)
@@ -35,12 +33,6 @@ class Takeaway
     total_matches_expected?(expected)
     @text.send
   end
-
-  # def instructions
-  #   puts "Type \"<OBJECT_NAME>.show_menu\" to view the menu."
-  #   puts "Type \"<OBJECT_NAME>.choose_dish(dish, number of portions)\" to add a dish to your order."
-  #   puts "Type \"<OBJECT_NAME>.place_order(expected order cost)\" to finalise your order. "
-  # end
 
   private
   def total_matches_expected?(expected)
