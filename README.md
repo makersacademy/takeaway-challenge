@@ -1,4 +1,4 @@
-Takeaway Challenge
+# Takeaway Challenge
 
 ## Weekend Challenge
 
@@ -47,18 +47,18 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+## Down below is an example of how the program is used.
+
 ```
-[1] pry(main)> require './lib/order'
+pry(main)> require './lib/order'
 => true
-[2] pry(main)> order = Order.new
+pry(main)> order = Order.new
 => #<Order:0x007f8f6f1baa20
- @menu=
-  #<Menu:0x007f8f6f1ba9f8
-   @dishes={:Koreanbbq=>10, :Burger=>7, :KFC=>7, :Sushi=>10, :Ribs=>8}>,
- @orders=[],
- @prices=[],
- @selection={}>
-[3] pry(main)> order.start
+ @menu= #<Menu:0x007f8f6f1ba9f8
+ @dishes={:Koreanbbq=>10, :Burger=>7, :KFC=>7, :Sushi=>10, :Ribs=>8}>,
+ @orders=[], @prices=[], @selection={}>
+pry(main)> order.start
 Welcome to MA Takeaway. Please order from our tasty selection of dishes!
      Koreanbbq       £10      
        Burger       £7        
@@ -66,47 +66,26 @@ Welcome to MA Takeaway. Please order from our tasty selection of dishes!
        Sushi       £10        
         Ribs       £8         
 
-[4] pry(main)> order.select_order("Koreanbbq", 3)
+pry(main)> order.select_order("Koreanbbq", 3)
 => "3 x Koreanbbq added to your order!"
-[5] pry(main)> order.get_price
+pry(main)> order.get_price
 3 x Koreanbbq at £10 each = £30
 => [{:Koreanbbq=>3}]
-[6] pry(main)> order.calculate_price
+pry(main)> order.calculate_price
 The total cost of your order is £30
 The total order will be scheduled for delivery. Do you wish to continue?
 => nil
-[7] pry(main)> order.confirm("yes")
+pry(main)> order.confirm("yes")
 => #<Confirmation:0x007f8f709a0798
- @client=
-  <Twilio::REST::Client @account_sid=*******,
- @time="22:48">
+@client= <Twilio::REST::Client @account_sid=*******, @time="22:48">
  ```
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+## Struggles
 
+- To begin starting the challenge at first was tricky, as there were many options to decide how to start creating the program. This consists of using a Domain Model and implementing classes and methods into the program.
 
-In code review we'll be hoping to see:
+- Writing specific tests for the program, such as knowing how to test if the functionality of the API was working.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+- Implementing the Twilio API was new to me, therefore I made it a mission to learn how it is incorporated into a program.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+- Creating a program in the most object oriented way possible, which consisted of following the DRY and Single responsibility principle.
