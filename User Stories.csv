@@ -1,0 +1,7 @@
+Object,Messages
+Customer,
+Dishes,be a list
+Dish,have a price
+Meal,be orderable
+Total,sum a meal's dishes prices
+Text,be sent to customer
