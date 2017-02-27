@@ -1,35 +1,12 @@
-Takeaway Challenge
+Takeaway Challenge  <a href='https://coveralls.io/github/ayanit1/takeaway-challenge?branch=master'><img src='https://coveralls.io/repos/github/ayanit1/takeaway-challenge/badge.svg?branch=master' alt='Coverage Status' /></a> <a href="https://travis-ci.org/ayanit1/airport_challenge"><img src="https://travis-ci.org/ayanit1/airport_challenge.svg?branch=master"></a>
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
 
-Instructions
--------
+Synopsis
+========
+For our weekend challenge at Makers Academy we were asked to create a program model based around a takeaway. As guideline we were given a set of user stories to complete the challenge.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+User Stories
+============
 ```
 As a customer
 So that I can check if I want to order something
@@ -48,44 +25,59 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+My Approach
+===========
+I first began reading all the material given to me and set up my workstation, meaning setting up files/folders and gems(particularly Travis CI and Coveralls, enabling them to be activated and looking at this particular build). Based on the user stories I then began to just draw a mock domain model to see potentially what classes could potentially be involved. Then after I focussed on the user stories one by one and created the program in a test development way.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Struggles faced
+===============
+- Dependancy injection.
+- Doing things in a TDD way, more specifically towards the Twilio api
+- Getting my build to pass Travis CI
+- Writing tests for the message class
 
 
-In code review we'll be hoping to see:
+Progression / Things I would want to improve
+============================================
+- Use symbols for dishes or have a key to refer to
+- Dislike returning strings
+- Make the Menu more easy to edit i.e. delete items, change price etc
+- Possible implementation for the use of CSV files to have different sets of menus
+- Create a customer database for all customers
+- Guard conditions and extreme values
+- Better tests
+- Refactoring
+- Learning how to use coveralls as a reference
+- stub texting class. Didn't quite have time
+- Use Rubocop to analyse code violations
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
+Usage
+==========
+- run in irb
 
 ```
-$ coveralls report
-```
+2.3.1 :001 > require './lib/takeaway'
+ => true
+2.3.1 :002 > menu = Menu.new
+ => #<Menu:0x007ff851bda2d0 @dishes=[]>
+2.3.1 :003 > takeaway = Takeaway.new(menu)
+ => #<Takeaway:0x007ff851bc8e40 @menu=#<Menu:0x007ff851bda2d0 @dishes=[]>, @basket=[], @send_message=#<Message:0x007ff851bc8e18 @accountSID="ACd46c2d4277327ad9014d8e9b3a16a9b9", @authToken="5a9ab4edfcba1c5f111a502df2312228", @client=<Twilio::REST::Client @account_sid=ACd46c2d4277327ad9014d8e9b3a16a9b9>, @from="+441315103569", @customer={"+447595939340"=>"Albert Yanit"}>>
+2.3.1 :004 > menu.add_dish("Burger Meal", 7)
+ => [{"Burger Meal"=>7}]
+2.3.1 :005 > menu.add_dish("Lobster Meal", 10)
+ => [{"Burger Meal"=>7}, {"Lobster Meal"=>10}]
+2.3.1 :006 > takeaway.print_menu
+ => "Burger Meal: £7,Lobster Meal: £10"
+2.3.1 :007 > takeaway.add_to_basket("Lobster Meal", 2)
+Lobster Meal x 2 costs £20 => [["Lobster Meal", 2, 20]]
+2.3.1 :008 > takeaway.confirm_meal
+Confirmed order: 2x Lobster Meal, Total cost: £20 Sent message to Albert Yanit
+ => {"+44**********"=>"Albert Yanit"}
+ ```
+Running tests
+=============
+- Use ```rspec``` in parent directory
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+Author
+====================
+Albert Yanit
