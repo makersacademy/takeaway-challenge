@@ -1,9 +1,10 @@
 require_relative "menu"
+require_relative "message"
 require 'twilio-ruby'
 
 class Takeaway
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :send_message
 
   def initialize (menu = Menu.new, send_message = Message.new)
     @menu = menu
@@ -22,15 +23,15 @@ class Takeaway
       items[item]
     end
     cost = (arr[0][item]) * quantity
-    "#{item} x #{quantity} costs £#{cost}"
+    print "#{item} x #{quantity} costs £#{cost}"
     @basket << [item, quantity, cost]
   end
 
   def confirm_meal
     total_items = @basket.map {|order| "#{order[1]}x #{order[0]}"}.join(",")
     total_cost = @basket.collect {|order| order[2]}.inject(:+)
-    "Confirmed order: #{total_items}, Total cost: £#{total_cost}"
-    @send_message
+    print "Confirmed order: #{total_items}, Total cost: £#{total_cost}"
+    send_message.txt_confirmation
   end
 
   private
