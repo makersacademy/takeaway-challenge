@@ -7,7 +7,7 @@ describe Order do
     expect{order.choose_dishes([6, 2], 3)}.to raise_error "No such item on menu. Please re-order."
   end
 
-  xit "prints the order to the screen" do
+  it "prints the order to the screen" do
     expect{order.choose_dishes([1, 2], [2, 2], 15)}.to output("2 x Tandoori Chicken = 7.0\n2 x Lamb Madras = 8.0\nTotal = 15.0\nIs this correct? (y | n)\n").to_stdout
   end
 

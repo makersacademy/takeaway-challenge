@@ -1,5 +1,5 @@
 require 'dishes'
-require'calculator'
+require 'calculator'
 require 'order'
 
 class Total < Calculator
