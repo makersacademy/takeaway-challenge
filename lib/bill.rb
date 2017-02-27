@@ -12,7 +12,6 @@ class Bill
   private
   def get_price(name)
     selected_items = @menu.items.select {|item| item.name.include? name}
-    raise "Item not found in menu!" if selected_items.empty?
     selected_items.last.price
   end
 

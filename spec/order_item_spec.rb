@@ -12,7 +12,7 @@ describe OrderItem do
     end
   end
 
-  describe 'quantity' do
+  describe '#quantity' do
     it 'should return a quantity' do
       expect(item.quantity).to eq quantity
     end

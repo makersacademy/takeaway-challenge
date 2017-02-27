@@ -2,14 +2,17 @@ class Order
 
   attr_reader :items, :time_placed
 
-  def initialize(customer)
+  def initialize(customer, menu)
     @items = []
     @complete = false
     @customer = customer
+    @menu = menu
   end
 
-  def add(item)
-    @items << item
+  def add(item_add)
+    selected_items = @menu.items.select {|item| item.name.include? item_add.name}
+    raise "Item not found in menu!" if selected_items.empty?
+    @items << item_add
   end
 
   def send

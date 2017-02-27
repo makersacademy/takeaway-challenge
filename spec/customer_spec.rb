@@ -12,15 +12,15 @@ describe Customer do
       allow(customer).to receive(:notify_method).and_return(sms_method)
     end
 
-    it 'has a name' do
+    it 'has a #name' do
       expect(customer.name).to eq name
     end
 
-    it 'has a SMS notify method' do
+    it 'has a #notify_method' do
       expect(customer.notify_method).to eq sms_method
     end
 
-    it 'has a notify identification' do
+    it 'has a #identification' do
       expect(customer.identification).to eq identification
     end
 
@@ -36,15 +36,15 @@ describe Customer do
       allow(customer).to receive(:notify_method).and_return(email_method)
     end
 
-    it 'has a name' do
+    it 'has a #name' do
       expect(customer.name).to eq name
     end
 
-    it 'has a Email notify method' do
+    it 'has a Email #notify_method' do
       expect(customer.notify_method).to eq email_method
     end
 
-    it 'has a notify identification' do
+    it 'has a #identification' do
       expect(customer.identification).to eq identification
     end
 

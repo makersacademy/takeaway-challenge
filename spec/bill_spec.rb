@@ -17,11 +17,12 @@ describe Bill do
 
     subject(:bill) {described_class.new(menu)}
 
-    it 'calculates the bill correctly' do
-      allow(menu_item_one).to receive(:price) {5}
-      expect(bill.total(order)).to eq bill_total
+    describe '.total' do
+      it 'calculates the bill correctly' do
+        allow(menu_item_one).to receive(:price) {5}
+        expect(bill.total(order)).to eq bill_total
+      end
     end
-
   end
 
 end
