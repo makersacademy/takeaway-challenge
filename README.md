@@ -1,5 +1,32 @@
 Takeaway Challenge
 ==================
+
+* Run feature_test.rb to see system is working.
+
+ruby feature_test.rb
+                  MENU                  
+1. Olives and sun-dried tomatos, £2
+2. Soup of the day, £4.5
+3. Fried calamari with homemade dressing, £6.8
+4. Oven baked goat cheese, £7.5
+5. Mixed leaf salad, £3.2
+6. Sliced fresh tomato with mozarella, £7.5
+7. Margherita, £6.9
+8. Rigatoni al pomodoro, £7
+9. Risotto mare, £12.5
+10. Homemade tiramisu, £5
+
+You added Fried calamari with homemade dressing.
+
+You added Homemade tiramisu.
+              YOUR ORDER:               
+1. Fried calamari with homemade dressing, £6.8
+2. Homemade tiramisu, £5
+              TOTAL: £11.8              
+Confirmation has been sent
+
+
+
 ```
                             _________
               r==           |       |
@@ -11,7 +38,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -69,7 +96,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
