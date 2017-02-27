@@ -47,8 +47,8 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-```[1] pry(main)> require './lib/order'
+```
+[1] pry(main)> require './lib/order'
 => true
 [2] pry(main)> order = Order.new
 => #<Order:0x007f8f6f1baa20
@@ -79,7 +79,8 @@ The total order will be scheduled for delivery. Do you wish to continue?
 => #<Confirmation:0x007f8f709a0798
  @client=
   <Twilio::REST::Client @account_sid=*******,
- @time="22:48">```
+ @time="22:48">
+ ```
 
 * A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
 * Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
