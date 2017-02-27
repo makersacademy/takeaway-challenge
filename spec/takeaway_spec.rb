@@ -28,4 +28,11 @@ describe Takeaway do
       expect(takeaway.confirm_meal).to eq ("Confirmed order: 2x Burger Meal, Total cost: £14")
     end
   end
+
+  describe '#clear_basket' do
+    it 'clears the basket' do
+      takeaway.add_to_basket("Burger Meal", 2)
+      expect { takeaway.clear_basket }.to change{ takeaway.basket }.to ([])
+    end
+  end
 end
