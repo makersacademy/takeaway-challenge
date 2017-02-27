@@ -6,8 +6,8 @@ class Takeaway
 
   attr_reader :menu, :order, :order_history
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu = Menu.new)
+    @menu = menu
     @order = nil
     @order_history = []
   end
