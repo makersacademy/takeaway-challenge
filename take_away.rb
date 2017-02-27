@@ -49,11 +49,10 @@ class TakeAway
     contact_details = gets.chomp
     puts "Thanks!"
     @customer = Customer.new(name: name, method: method, identification: contact_details)
-    @order = Order.new(@customer)
+    @order = Order.new(@customer, @menu)
   end
 
   def show_menu_get_order
-    print_ui_menu
     option = ""
     while option != "finish" do
       print_ui_menu
@@ -100,7 +99,7 @@ class TakeAway
   def say_bye
     puts "Goodbye, thank you for ordering! Come again soon!"
     puts File.read(load_path)
-    
+
   end
 
   def load_path

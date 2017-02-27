@@ -46,7 +46,6 @@ class Menu
 
   def load_path
     File.expand_path("../../assets/menu.csv", __FILE__)
-
   end
 
 end

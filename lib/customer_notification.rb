@@ -1,6 +1,6 @@
 class CustomerNotification
 
-  attr_reader :customer, :order
+  attr_reader :customer, :order, :client
 
   def initialize(customer, order)
     @customer = customer

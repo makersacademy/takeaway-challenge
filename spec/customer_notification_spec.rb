@@ -3,7 +3,7 @@ require 'twilio_client'
 require 'email_client'
 
 describe CustomerNotification do
-  let(:order) {double :order, total_bill: 50, time_placed: Time.now}
+  let(:order) {double :order, total_bill: 50, time_placed: Time.now, print_order: "something"}
   let(:body) {"Thank you for your order #{customer.name}!
   It will be delivered before #{(order.time_placed + (60 * 60)).strftime('%r')}"}
 
@@ -28,7 +28,8 @@ describe CustomerNotification do
 
     describe '.notify' do
       it 'sends a notification' do
-        expect(notification).to respond_to(:notify)
+        expect(notification.client).to receive(:notify).with("something")
+        notification.notify
       end
     end
 
@@ -70,7 +71,8 @@ describe CustomerNotification do
 
     describe '.notify' do
       it 'sends a notification' do
-        expect(notification).to respond_to(:notify)
+        expect(notification.client).to receive(:notify).with("something")
+        notification.notify
       end
     end
 
