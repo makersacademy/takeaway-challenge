@@ -9,6 +9,6 @@ class Menu
   end
 
   def view
-  puts @restaurant.menu # Formatting could be nicer
+  @restaurant.menu.dup # Formatting could be nicer
   end
 end

@@ -11,7 +11,7 @@ describe Order do
     before do
       allow(restaurant).to receive(:menu).and_return([
         stir_fry_double,
-        { :food => 'peanuts', :price => '5' }
+        { :food => 'peanuts', :price => '5' },
         ])
     end
     let(:current_order_double) do
