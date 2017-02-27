@@ -1,8 +1,6 @@
 # Add items for menu - done
 # Remove items from menu - done
 # Set prices - done
-# Receives final order
-# Confirms order received by text
 require_relative 'menu'
 require 'CSV'
 

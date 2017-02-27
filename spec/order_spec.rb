@@ -30,10 +30,6 @@ describe Order do
       it "provides the selected dishes and subtotal" do
         expect(order.subtotal).to eq "Current total: £20"
       end
-
-      # it "finalises user order" do
-      #   expect(order.final).to eq
-      # end
     end
   end
 end

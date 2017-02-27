@@ -2,8 +2,7 @@
 # User can select multiple copies of item - done
 # Stores user order - done
 # Returns current item total - done
-# Generates order number
-# Passes complete order to restaurant
+# Confirms order by text
 require_relative 'restaurant'
 
 class Order
