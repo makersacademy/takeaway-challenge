@@ -15,4 +15,12 @@ describe Takeaway do
       expect(takeaway.print_menu).to eq "Burger Meal: £7,Lobster Meal: £10"
     end
   end
+
+  describe '#add_to_basket' do
+    it 'adds to basket' do
+      expect { takeaway.add_to_basket("Burger Meal", 2) }.to change { takeaway.basket }.to ([["Burger Meal", 2, 14]])
+    end
+  end
+
+  
 end

@@ -34,6 +34,7 @@ Struggles faced
 - Dependancy injection. Getting my feature test to work
 - Doing things in a TDD way
 - Getting my build to pass Travis CI
+- Writing tests for the message class
 
 
 Progression / Things I would want to improve
