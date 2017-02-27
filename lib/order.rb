@@ -29,6 +29,7 @@ class Order
 
   def place_order
     empty_basket_message
+    confirmation_message
     send_text
   end
 
@@ -43,6 +44,10 @@ class Order
     fail "Basket is empty" if basket.empty?
   end
 
+  def confirmation_message
+    puts "Thank you. Your order has been placed. You will shortly receive a text confirming your delivery time."
+  end
+
   def create_dish(number, menu)
     Dish.new(number, menu)
   end
@@ -52,17 +57,3 @@ class Order
   end
 
 end
-
-
-
-
-
-#INJECT - you can inject classes and instances
-# e.g. to inject class do
-#   def initialize (order = Order)
-#   end
-#
-#   then can do order.new later
-
-
-# (ENV['TWILIO_ACCOUNT_SID'], ENV([AUTHTOK]))

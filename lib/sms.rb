@@ -5,7 +5,7 @@ class SMS
 
   def send_text
     Dotenv.load
-    @client = Twilio::REST::Client.new ENV[TWILIO_ACCOUNT_SID], ENV[TWILIO_AUTH_TOKEN]
+    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     @client.messages.create(
       from: "+441633530244",
       to: "+447847470091",

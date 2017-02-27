@@ -12,7 +12,7 @@ class Dish
   def get_details(number, menu)
     @details = menu.list.detect{ |dish|
       dish[:number] == number }
-    @details[:price] = @details[:price].to_f.round(2)
-    @details
+    details[:price] = details[:price].to_f.round(2)
+    details
   end
 end

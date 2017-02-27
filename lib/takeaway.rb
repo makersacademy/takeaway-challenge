@@ -11,6 +11,10 @@ class Takeaway
     @menu = Menu.new
   end
 
+  def load_different_menu(filename)
+    menu.load_menu(filename)
+  end
+
   def view_menu
     menu.view_menu
   end
