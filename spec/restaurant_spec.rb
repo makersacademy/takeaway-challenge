@@ -8,7 +8,6 @@ describe Restaurant do
     let(:price) { "£9" }
 
     context "editing the menu" do
-      # subject { restaurant.create(food, price) }
       let(:dish) { {food => price} }
       it "adds a dish to the menu list" do
         expect(restaurant.add_item_to_menu(food, price)).to include {dish}
