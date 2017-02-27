@@ -2,7 +2,7 @@
 # Remove items from menu - done
 # Set prices - done
 require_relative 'menu'
-# require 'CSV'
+require 'CSV'
 
 class Restaurant
   attr_reader :menu
