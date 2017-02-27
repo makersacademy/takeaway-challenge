@@ -16,6 +16,7 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.5)
     domain_name (0.5.24)
+      envyable (= 1.2.0)
       unf (>= 0.0.5, < 1.0.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -67,6 +68,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   coveralls
+  envyable
   kernel
   rake
   rspec
