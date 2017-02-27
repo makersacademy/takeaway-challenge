@@ -1,17 +1,24 @@
-require_relative 'dishes'
+require 'dishes'
+require 'total'
+require 'calculator'
 
-class Order
+class Order < Calculator
   include Dishes
 
-  def choose_dishes(*order, total)
-    arr = []
-    order.each do |meal_and_price|
-      raise "No such item on menu. Please re-order." if meal_and_price[0] > dish_list.size
-      subtotal = dish_list[(meal_and_price[0])-1].values[0].to_f * meal_and_price[1]
-      arr << subtotal
-      total = arr.reduce(:+)
-      puts "#{meal_and_price[1]} x #{dish_list[meal_and_price[0]-1].keys[0]} = #{subtotal}"
-    end
-    print "Total = #{total}\nIs this correct?"
+  attr_accessor :verify_order, :user_total, :order
+
+  def choose_dishes(*order, user_total)
+    @user_total, @order = user_total, order
+    shift_to_calculator()
+    total()
   end
+
+  def verify_order
+    @dish_number <= dish_list.size && @dish_number > 0
+  end
+
+  def total
+    Total.new(order, user_total)
+  end
+
 end
