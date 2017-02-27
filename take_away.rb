@@ -98,7 +98,9 @@ class TakeAway
   end
 
   def say_bye
-    puts "Goodbye, thank you for visiting! Come again soon!"
+    puts "Goodbye, thank you for ordering! Come again soon!"
+    puts File.read(load_path)
+    
   end
 
   def load_path
