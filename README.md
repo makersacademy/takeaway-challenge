@@ -1,5 +1,6 @@
 Takeaway Challenge
 ==================
+[![Build Status](https://travis-ci.org/nryn/takeaway-challenge.svg?branch=master)](https://travis-ci.org/nryn/takeaway-challenge)
 ```
                             _________
               r==           |       |
