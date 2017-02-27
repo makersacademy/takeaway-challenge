@@ -10,6 +10,7 @@ describe Order do
 
   before :each do
     allow(menu).to receive(:list).and_return([{:number => 3, :name => "Margherita", :price => 8.95}, {:number => 1, :name => "Antipasti", :price => 12.95}])
+    # allow(order).to receive(:add_dish_obj).with(3, menu).and_return(order.list << dish)
   end
 
   describe "defaults" do
@@ -27,6 +28,7 @@ describe Order do
       it "saves the dish and quantity" do
         expect(order.basket).to eq([{:name => "Margherita", :price => 8.95, :quantity => 1}])
       end
+
 
       it "adds 1 to the dish quantity if the selected dish is already in the basket" do
         order.add_dish(3, menu)
@@ -56,3 +58,13 @@ describe Order do
 
 
 end
+
+
+# it "adds dish objects to list" do
+#   order.add_dish_obj(3, menu)
+#   expect(order.list).to eq([dish])
+# end
+# it "object adds 1 to the dish quantity if the selected dish is already in the basket" do
+#   order.add_dish_obj(3, menu)
+#   expect(order.basket).to eq([{:name => "Margherita", :price => 8.95, :quantity => 2}])
+# end

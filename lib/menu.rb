@@ -20,24 +20,6 @@ class Menu
     return
   end
 
-  def create_order
-    @current_order = Order.new
-  end
-
-  def select_dish(number)
-    fail "Please create an order before selecting dishes" if !@current_order
-    current_order.add_dish(number, self)
-  end
-
-  def proceed_to_checkout
-    current_order.print_basket
-  end
-
-  def place_order
-    current_order.place_order
-  end
-
-  private
 
   def load_menu (filename = 'menu.csv')
     CSV.foreach(filename) do |line|

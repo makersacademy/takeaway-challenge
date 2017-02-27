@@ -2,7 +2,7 @@ require_relative "sms"
 
 class Order
 
-  attr_reader :basket
+  attr_reader :basket, :list
 
   def initialize
     @basket = []
@@ -70,3 +70,44 @@ class Order
   end
 
 end
+
+
+# def get_names
+#   basket.map { |dish| dish[name] }.uniq
+# end
+#
+# def get_quantities
+#   quantity = Hash.new(0)
+#   display = []
+#   list.each { |dish|
+#       quantity[:(dish[:name])] += 1
+#         display << {dish[:name], dish[:price], dish[:quantity]
+#     }
+# end
+
+# def show_basket
+#
+#   puts "Your basket contains:"
+#   basket.each {|item|
+#     puts "#{item[:name]} (£#{item[:price]}) - #{item[:quantity]}"}
+#   puts "Total: £#{get_total}"
+# end
+
+# def add_dish_obj(number, menu)
+#   dish = create_dish(number, menu)
+#   name = dish.item[:name]
+#   @list << dish
+# end
+
+# @list = []
+
+
+#INJECT - you can inject classes and instances
+# e.g. to inject class do
+#   def initialize (order = Order)
+#   end
+#
+#   then can do order.new later
+
+
+# (ENV['TWILIO_ACCOUNT_SID'], ENV([AUTHTOK]))
