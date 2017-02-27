@@ -14,7 +14,7 @@ class Restaurant
   end
 
   def add_item_to_menu(food, price)
-    # Raise error if try to add identitcal key-value pair more than once
+    # Add an error here if try to add identitcal key-value pair more than once
     @menu << { :food => food, :price => price }
   end
 

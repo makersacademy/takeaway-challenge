@@ -8,14 +8,14 @@ describe Order do
     let(:stir_fry_double) do
       { :food => 'stir-fry', :price => '10' }
     end
-    let(:current_order_double) do
-      [stir_fry_double, stir_fry_double]
-    end
     before do
       allow(restaurant).to receive(:menu).and_return([
         stir_fry_double,
-        { :food => 'peanuts', :price => '5' },
-      ])
+        { :food => 'peanuts', :price => '5' }
+        ])
+    end
+    let(:current_order_double) do
+      [{:dish => stir_fry_double, :quantity => 2}]
     end
 
     it "allows user to specify selection for order" do

@@ -9,22 +9,6 @@ class Menu
   end
 
   def view
-  puts @restaurant.menu # format nicer later
+  puts @restaurant.menu # Formatting could be nicer
   end
-
-  # def select(food)
-  #     @restaurant.menu.select do |item|
-  #     item[:food] == food
-  #   end
-  # end
-  #
-  # def selection(food, amount)
-  #   # order = amount.times.collect do
-  #     order = self.select(food)
-  #   # end
-  #   @order << order * amount
-  #   @order.flatten!
-  # end
-
-
 end

@@ -14,17 +14,16 @@ class Order
     @items = []
   end
 
-  def selection(food, quantity) # Would be better with a key value pair for quantity
+  def selection(food, quantity)
     dish = @restaurant.menu.select do |item|
       item[:food] == food
     end
-    @items << dish * quantity
-    @items.flatten!
+    @items << { dish: dish[0], quantity: quantity}
   end
 
   def subtotal
     @items.each do |item|
-      "#{item[:food]} - £#{item[:price]}" # Would be better not to duplicate dish
+      puts "#{item[:dish[:food]]} - £#{item[:dish[:price]]} - #{item[:quantity]} "
     end
     "Current total: £#{calculate_total}"
   end
@@ -33,8 +32,8 @@ class Order
 
   def calculate_total
     to_calc = items.map do |item|
-      item[:price].to_i
+      (item[:dish][:price].to_i) * item[:quantity]
     end
-    to_calc.reduce(:+)
+    to_calc[0]
   end
 end
