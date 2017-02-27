@@ -31,7 +31,16 @@ describe Meal do
       meal.add_dish(Dish.new("One Pound Fish",1.00))
       meal.add_dish(Dish.new("Four Pound Fish",4.00))
       meal.add_dish(Dish.new("Fourty Pence Fish",0.40))
-      expect(meal.total_cost).to eq 5.40
+      expect(meal.total_cost).to eq "£5.40"
+    end
+  end
+
+  describe '#clear_meal' do
+    it 'removes all items in the meal' do
+      meal.add_dish(Dish.new("One Pound Fish",1.00))
+      meal.add_dish(Dish.new("Four Pound Fish",4.00))
+      meal.add_dish(Dish.new("Fourty Pence Fish",0.40))
+      expect{ meal.clear_meal }.to change{ meal.items.length }.by -3
     end
   end
 

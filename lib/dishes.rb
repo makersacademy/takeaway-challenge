@@ -1,4 +1,4 @@
-require 'dish.rb'
+require_relative './dish.rb'
 
 class Dishes
 
@@ -17,8 +17,7 @@ class Dishes
   def import_dishes_from_file(file)
     File.foreach(file) do |line|
       name, price = line.chomp.split(",")
-      dish = Dish.new(name, price)
-      @list << dish
+      @list << Dish.new(name, '%.2f' % price)
     end
   end
 
