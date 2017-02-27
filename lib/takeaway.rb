@@ -12,9 +12,9 @@ class Takeaway
     @order_history = []
   end
 
-  def show_menu
+  def show_menu(menu = @menu.menu)
     puts "MENU".center(40)
-    print_dishes(@menu.menu)
+    print_dishes(menu)
   end
 
   def make_a_new_order
