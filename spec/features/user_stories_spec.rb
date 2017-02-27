@@ -1,5 +1,6 @@
 require 'takeaway'
 require 'menu'
+require 'message'
 
 describe 'User Stories' do
   # As a customer
