@@ -1,6 +1,6 @@
-require 'dishes'
-require 'total'
-require 'calculator'
+require_relative 'dishes'
+require_relative 'total'
+require_relative 'calculator'
 
 class Order < Calculator
   include Dishes

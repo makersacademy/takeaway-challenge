@@ -36,7 +36,6 @@ private
     print_total()
   end
 
-
   def print_subtotal
       puts "#{dishes[1]} x #{dish_list[dishes[0]-1].keys[0]} = #{@subtotal}"
   end

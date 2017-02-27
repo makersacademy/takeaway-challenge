@@ -5,9 +5,11 @@ require 'order'
 class Total < Calculator
   include Dishes
 
-  attr_reader :user_selection, :user_total
+  attr_reader :user_selection, :pick
 
   def initialize(*user_selection)
+    pick = user_selection.last
+#    @pick = pick
     @user_selection = user_selection
   end
 
@@ -16,6 +18,7 @@ class Total < Calculator
   end
 
   def totals_equal?
+  p  pick
     true
   end
 

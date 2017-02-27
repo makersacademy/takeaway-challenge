@@ -14,5 +14,3 @@ describe Order do
   it "raises an error if the user selects incorrectly" do
     expect{order.choose_dishes([3000, 2], [2, 2], 15)}.to raise_error "No such item on menu. Please re-order."
   end
-
-end

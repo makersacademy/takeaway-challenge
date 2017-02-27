@@ -17,9 +17,9 @@ describe "Feature Tests/User Stories" do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  xit "allows dishes to be selected from the menu" do
+  it "allows dishes to be selected from the menu" do
     order = Order.new
-    expect{order.choose_dishes([1, 2], [2, 2], 15)}.to output("2 x Tandoori Chicken = 7.0\n2 x Lamb Madras = 8.0\nTotal = 15.0\nIs this correct?").to_stdout
+    expect{order.choose_dishes([1, 2], [2, 2], 15)}.to output("2 x Tandoori Chicken = 7.0\n2 x Lamb Madras = 8.0\nTotal = 15.0\nIs this correct? (y | n)\n").to_stdout
   end
   # As a customer
   # So that I can verify that my order is correct

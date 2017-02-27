@@ -11,3 +11,8 @@ PROBLEMS
  - I also underestimated the amount of time I needed to work on this challenge, making the mistake
 
  - I couldn't figure out how to test my Dishes module.
+
+
+ OVERVIEW
+
+ I totally used the Chicago-style of testing without realising, which of course means I'm less likely to use Doubles. This week I will need to implement the London-style and finally wrap my head around Doubles once and for all.
