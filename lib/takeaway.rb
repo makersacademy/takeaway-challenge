@@ -29,7 +29,7 @@ class Takeaway
   private
 
   def send_text(order_total)
-    @text_confirmation.order_finished(order_total)
+    @text_confirmation.order_finished
   end
 
 end
