@@ -16,15 +16,12 @@ Takeaway Challenge
 
 Introduction
 -------
-This project emulates the ordering infrastructure of a take-away restaurant via the terminal. Users can view the menu, add items to an order, place an order and will confirmation that an order has been placed, either by SMS (twilio api) or email (SMTP).
+This project emulates the ordering infrastructure of a take-away restaurant via the bash terminal. Users can view a menu, add items from the menu to an order, total an order and place an order and receive confirmation that an order has been placed, either by SMS (twilio api) or email (SMTP). This project was created for the second weekend challenge at Makers Academy and is designed to address four user stories (see below).
 
 Example Usage / Set-up
 -----
 The main directory provides a
 
-Motivation
------
-This project was created for the second weekend challenge at Makers Academy and is designed to address four user stories (see below). It has been designed using a test-driven approach,
 
 Gems
 -----
@@ -34,13 +31,19 @@ Gems
 
 Learning Outcomes
 -----
+- TDD
 
 Future Improvements
 -----
+- remove items from an order
+- save an order history for each customer
+- reorder a previously placed order
+- add an address location for an order
+- add order stages (e.g.preparing, out for delivery) and update the customer
 
 Design
 -----
-This program addresses the following user stories
+This program addresses the following user stories:
 
 ```
 As a customer
