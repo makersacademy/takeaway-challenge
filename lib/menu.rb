@@ -9,8 +9,10 @@ attr_reader :items
     items.map do |item, price|
       "#{item}: £#{'%.02f' % price}"
     end.join(", ")
-
   end
 
+  def has_item?(item)
+    !!items[item]
+  end
 
 end

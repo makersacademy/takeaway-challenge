@@ -16,4 +16,10 @@ end
     printed_menu = "Yummy: £2.00, Tasty: £3.50"
     expect(menu.to_string).to eq(printed_menu)
   end
+
+  it 'checks if item is on the menu' do
+    expect(menu.has_item?(:Yummy)).to be true
+    expect(menu.has_item?(:Yucky)).to be false
+
+  end
 end
