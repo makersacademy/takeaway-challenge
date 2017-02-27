@@ -42,8 +42,10 @@ Progression / Things I would want to improve
 - Use symbols for dishes or have a key to refer to
 - Dislike returning strings
 - Make the Menu more easy to edit i.e. delete items, change price etc
-- Possible implementation for the use of CSV files to possibly have different sets of menus
-- Create a customer database along for all customers
+- Possible implementation for the use of CSV files to have different sets of menus
+- Create a customer database for all customers
+- Guard conditions and extreme values
+- Better tests
 
 Usage
 ==========

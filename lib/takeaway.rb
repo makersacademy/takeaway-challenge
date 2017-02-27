@@ -30,6 +30,10 @@ class Takeaway
     send_message.txt_confirmation
   end
 
+  def clear_basket
+    @basket =[]
+  end
+
   private
 
   def full_menu
