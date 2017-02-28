@@ -14,8 +14,7 @@ Maker's Weekend Challenge 2: Takeaway Challenge
 
  ```
 
-Task
--------------
+## Task
 
 * Write a Takeaway program with the following user stories:
 
@@ -37,14 +36,12 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 ## Approach
--------------
 
 To tackle the above task, I took the user stories above and created a domain model which set out 4 classes: Takeaway, Menu, Order and TextConfirmation. Takeaway delegated methods and tasks to each of the other classes to fulfil the user stories.
 
 The user stories are tested in the feature_spec.rb.
 
 ## How to run
--------------
 
 ```
 2.3.1 :002 > takeaway = Takeaway.new
@@ -61,7 +58,6 @@ The user stories are tested in the feature_spec.rb.
 ```
 
 ## Limitations/Improvements
--------------
 
 - I would implement greater testing of behaviours, rather than states.
 - I would make improvements to checking the bill against running total - currently there is an error raised if the bill does not equal total price of items. However, there is no way for the customer to check the bill against their own calculations.
