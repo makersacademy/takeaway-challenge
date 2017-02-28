@@ -17,8 +17,6 @@ Maker's Weekend Challenge 2: Takeaway Challenge
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -42,7 +40,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 To tackle the above task, I took the user stories above and created a domain model which set out 4 classes: Takeaway, Menu, Order and TextConfirmation. Takeaway delegated methods and tasks to each of the other classes to fulfil the user stories.
 
-I attempted to set up feature tests fulfilling the above user stories in their own spec (feature_spec.rb). I understood this is best practice, however, found some limitations in my approach which meant the feature tests did not all pass/are not all active. Given more time I would go over this to ensure they pass.
+The user stories are tested in the feature_spec.rb.
 
 ## How to run
 
@@ -62,6 +60,6 @@ I attempted to set up feature tests fulfilling the above user stories in their o
 
 ## Limitations/Improvements
 
-- I would implement greater testing of behaviours, rather than states
-- I would make improvements to checking the bill against running total
-- Ensure numbers are rounded to two decimals to reflect real-life currency
+- I would implement greater testing of behaviours, rather than states.
+- I would make improvements to checking the bill against running total - currently there is an error raised if the bill does not equal total price of items. However, there is no way for the customer to check the bill against their own calculations.
+- I would ensure numbers are rounded to two decimals to reflect real-life currency.

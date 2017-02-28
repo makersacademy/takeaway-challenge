@@ -22,7 +22,11 @@ describe 'User Stories' do
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+  it 'so a customer can verify their order, they can check the total' do
+    takeaway = Takeaway.new
+    takeaway.make_selection('Spring rolls')
+    expect(takeaway.check_total).to eq "The bill is currently £2.50."
+  end
 
   # As a customer
   # So that I am reassured that my order will be delivered on time
