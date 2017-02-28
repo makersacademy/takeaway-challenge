@@ -21,13 +21,13 @@ describe MessengerService do
   #   let(:client) {double(:client)}
   #
   #   before do
-  #     allow(client).to receive(:new){client}
-  #     allow(client).to receive_message_chain(:account, :messages,:create)
+  #     allow(client).to receive(:new).with('sid','token').and_return(client)
   #     messenger_service = MessengerService.new(client)
+  #     allow(client).to receive_message_chain(:account, :messages,:create).with('from','to','body')
   #   end
   #
   #   it "can change the client being used at initialisation" do
-  #     expect(client).to receive_message_chain(:account, :messages, :create)
+  #     expect(client).to receive_message_chain(:account, :messages, :create).with('from','to','body')
   #     messenger_service.send_SMS
   #   end
   #
