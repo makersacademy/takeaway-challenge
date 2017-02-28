@@ -30,11 +30,26 @@ describe Resturant do
   end
 
   context "#confirm_order" do
-    it "sends SMS once order confirmed" do
-      resturant.add_to_cart(name: :lamb_chops, quantity: 1)
-      resturant.add_to_cart(name: :naan, quantity: 2)
-      expect(messenger_service).to receive(:send_SMS).once
-      resturant.confirm_order(12.9)
+
+    context "Places order when no discrepency" do
+
+      before do
+        resturant.add_to_cart(name: :lamb_chops, quantity: 1)
+        resturant.add_to_cart(name: :naan, quantity: 2)
+      end
+
+      it "sends SMS once order confirmed" do
+        expect(messenger_service).to receive(:send_SMS).once
+        resturant.confirm_order(12.9)
+      end
+
+      it "Once payment is done, it paves the way for a new order" do
+        resturant.confirm_order(12.9) # to nil the previous order
+        resturant.add_to_cart(name: :lamb_chops, quantity: 1)
+        expect(messenger_service).to receive(:send_SMS).once
+        resturant.confirm_order(7)
+      end
+
     end
 
     it "raises an error if called before placing an order" do
@@ -48,6 +63,7 @@ describe Resturant do
       expect(messenger_service).to_not receive(:send_SMS)
       expect{resturant.confirm_order(5)}.to raise_error error_message
     end
+
   end
 
   context "#print_bill" do

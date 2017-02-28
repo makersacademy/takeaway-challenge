@@ -26,6 +26,7 @@ class Resturant
     total = current_order.calculate_total
       if cust_total == total
         messenger.send_SMS
+        @current_order = nil
       else
        fail "Discrepency in bill amount: Please print bill to verify your order and total"
      end
