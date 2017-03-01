@@ -7,5 +7,4 @@ gem 'coveralls', require: false
 gem 'capybara'
 gem 'dotenv'
 gem 'twilio-ruby'
-gem 'ngrok'
-gem 'sinatra', '1.1.0'
+# gem 'sinatra', '1.1.0'
