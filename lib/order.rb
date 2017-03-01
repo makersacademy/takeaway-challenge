@@ -43,6 +43,4 @@ attr_reader :order, :total
     end
   end
 
-
-
 end

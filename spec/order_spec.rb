@@ -2,10 +2,10 @@ require 'order'
 require 'menu'
 
 describe Order do
+
   let(:menu){Menu.new('./lib/menu.csv').format_menu}
   subject(:order) {described_class.new(menu)}
   let(:restaurant){ Restaurant.new('El Sombrero')}
-
 
   it 'responds to #add_items with one arg' do
     expect(order).to respond_to(:add_items)

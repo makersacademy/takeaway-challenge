@@ -1,14 +1,12 @@
 require 'rubygems'
 require 'twilio-ruby'
 
-
 class Text
 
   def confirmation(total_price, phone_number)
     @phone_number = phone_number
     send_SMS("Thank you! Your order was placed and will be delivered before #{Time.now + (60*60)}. Total price: £#{total_price}")
   end
-
 
   def send_SMS(message)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
