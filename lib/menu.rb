@@ -11,9 +11,9 @@ attr_accessor :menu
 
   def print
     CSV.foreach(@file,:headers => true).map do |row|
-      @menu << "#{$.-1}. #{row['Dish'].upcase}: #{row['Description']} (#{row['Price']})"
+      @menu << "#{$.-1}. #{row['Dish'].upcase}: #{row['Description']} (#{row['Price']})\n"
     end
-    @menu = @menu.join("\n")
+    @menu.join(",")
   end
 
   def format_menu

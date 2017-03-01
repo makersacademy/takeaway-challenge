@@ -23,7 +23,7 @@ attr_reader :order, :total
 
   def calculate_total
     @order.inject(0) do |sum, hash|
-      sum + (hash[0][:price].to_f * hash[0][:quantity].to_f)
+      sum + (hash[:price].to_f * hash[:quantity].to_f)
     end
   end
 
@@ -34,12 +34,12 @@ attr_reader :order, :total
   end
 
   def item_info
-    @menu.select { |hash| hash[:quantity] = @quantity if hash[:dish].upcase == @item.upcase }
+    @menu.select { |hash| hash[:quantity] = @quantity if hash[:dish].upcase == @item.upcase }.last
   end
 
   def present_summary
     @order.each do |item|
-      puts "#{item[0][:dish].upcase} x #{item[0][:quantity]} = #{item[0][:price].to_f * item[0][:quantity].to_f}"
+      puts "#{item[:dish].upcase} x #{item[:quantity]} = #{item[:price].to_f * item[:quantity].to_f}"
     end
   end
 
