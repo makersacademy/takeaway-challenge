@@ -1,10 +1,10 @@
-#Takeaway Challenge
+# Takeaway Challenge
 [![Coverage Status](https://coveralls.io/repos/github/tvfb85/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/tvfb85/takeaway-challenge?branch=master) [![Build Status](https://travis-ci.org/tvfb85/takeaway-challenge.svg?branch=master)](https://travis-ci.org/tvfb85/takeaway-challenge)
 ==================
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |       |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -15,10 +15,11 @@
 
  ```
 
- About this project
- ---------
 
-*Task:* write a takeaway program which meets the requirements of the following user stories:
+About this project
+---------
+
+**Task:** Write a takeaway program which meets the requirements of the following user stories:
 
 ```
 As a customer
@@ -38,11 +39,12 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-Method
+
+Usage
 ---------
 Using a TDD approach, the design of the takeaway program evolved starting with an initial Restaurant class.
 
-The Restaurant class delegates responsibility of its menu to a Menu class, responding to the function '/create_menu' as indicated below:
+The Restaurant class delegates responsibility of its menu to a Menu class, responding to the function *'create_menu'* as indicated below:
 
 ```
 2.3.1 :001 > require './lib/restaurant'
@@ -67,15 +69,13 @@ The Menu class accepts a CSV file upon initialization, which can be printed in a
 14. ENCHILADAS VERDES: baked vegetable tortillas in green salsa topped with melted cheese (7.95)
 ```
 
-This enables the user to see a list of dishes and prices, thus fulfilling the first user story.
-
-To create an order, call the restaurant's '/create order' function:
+To instantiate a new Order, call the restaurant's *'create order'* function:
 
 ```
 2.3.1 :005 > myOrder = restaurant.create_order
 ```
 
-This instantiates a new Order class. Items from the menu can be added using the '/add_items' function, passing in the *item name* and *quantity*, like so:
+Items from the menu can be added to this instance of an Order using *'add_items'*, passing in the **item name** and **quantity**, like so:
 
 ```
 2.3.1 :006 > myOrder.add_items('Nachos', 3)
@@ -89,7 +89,7 @@ The code prevents items not listed on the menu from being added:
 RuntimeError: We didn't recognise that, try again
 ```
 
-Call the '/display_order' function on the restaurant to see an itemised summary and calculated price:
+Call the *'display_order'* function on the restaurant to see an itemised summary:
 
 ```
 2.3.1 :009 > restaurant.display_order
@@ -99,14 +99,13 @@ TACOS CAMARONES x 1 = 3.50
  => "Your total is: £23.00"
 ```
 
-If happy with the calculation, the order can be placed:
+If happy with the price calculation, the order can be placed:
 
 ```
 2.3.1 :011 > restaurant.complete_order(+44xxxxxxxxx)
  ```
 
-This will trigger an SMS confirmation implemented using the Twilio API.
-
+This action will trigger an SMS confirmation, which has been implemented using the Twilio API.
 
 
 This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.

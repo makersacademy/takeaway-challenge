@@ -7,4 +7,3 @@ gem 'coveralls', require: false
 gem 'capybara'
 gem 'dotenv'
 gem 'twilio-ruby'
-# gem 'sinatra', '1.1.0'
