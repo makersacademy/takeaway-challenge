@@ -24,6 +24,14 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+## How to Use
+```
+$ git clone https://github.com/sliute/takeaway-challenge.git
+$ cd takeaway-challenge
+$ rspec
+$ pry
+```
+
 Progress
 -----
 
