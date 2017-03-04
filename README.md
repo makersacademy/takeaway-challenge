@@ -1,33 +1,9 @@
-Takeaway Challenge
+Takeaway Challenge ![Travis build status](https://travis-ci.org/sliute/takeaway-challenge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/sliute/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/sliute/takeaway-challenge?branch=master)
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
- 
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -48,44 +24,116 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
+## How to Use
 ```
-$ coveralls report
+$ git clone https://github.com/sliute/takeaway-challenge.git
+$ cd takeaway-challenge
+$ rspec
+$ pry
 ```
 
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
+Progress
+-----
 
-Build Badge Example
-------------------
+1. Story 01:
+  * Wrote feature & unit tests for __Takeaway__ class whose objects #initialize with a `menu`.
+  * Made the menu an instance of a distinct __Menu__ class. Wrote feature & unit tests for this class, too.
+  * Menus #initialize with an empty `dishes` array. The user can manually #add_dish by providing a name (string) and a price (number), in this order. This is a temporary solution (meant just for the restaurant manager's use, not for the customer's) before I make menus import their dishes from an external file.
+  * Here's how the story unfolds in IRB now:
+```
+$ irb -r './lib/takeaway.rb'
+ :001 > t = Takeaway.new
+ => #<Takeaway:0x007f8528849a40 @menu=#<Menu:0x007f8528849900 @dishes={}>>
+ :002 > t.menu.add_dish("Risotto con funghi porcini", 4.25)
+ => 4.25
+ :003 > t.menu.add_dish("Tomato and basil soup", 2.95)
+ => 2.95
+ :004 > t.menu.add_dish("Pizza Margherita", 5.30)
+ => 5.3
+ :005 > puts t.menu
+{"Risotto con funghi porcini"=>4.25, "Tomato and basil soup"=>2.95, "Pizza Margherita"=>5.3}
+ => nil
+```
+2. Story 02:
+  * Wrote feature & unit tests for Takeaway#add method that instructs the order to #add_item by providing a dish name and an optional quantity.
+  * The #add method has a guard clause that checks for the respective dish to exist in the menu
+  * The order is an instance of a distinct __Order__ class. Wrote feature & unit tests for this class, too. Takeaway now also initializes with an empty `order`.
+  * Orders initialize with the `takeaway` that created them. They have an empty `items` hash. They have an Order#add_item method that adds an item to their items hash. Feature- & unit-tested for all these.
+  * The story in PRY (with a .pryrc file that requires all necessary files and adds the same items to the menu) is now:
+  ```
+  $ pry
+  [1] pry(main)> t.menu
+  => #<Menu:0x007fbf69a50840
+   @dishes={"Risotto con funghi porcini"=>4.25, "Tomato and basil soup"=>2.95, "Pizza Margherita"=>5.3}>
+  [2] pry(main)> t.add("Risotto con funghi porcini", 2)
+  "You added 2 Risotto con funghi porcini(s) to your order."
+  => "You added 2 Risotto con funghi porcini(s) to your order."
+  [3] pry(main)> t.add("Farfale", 3)
+  RuntimeError: Sorry, we don't have Farfale in our menu.
+  from /Users/stefanliute/Projects/takeaway-challenge/lib/takeaway.rb:20:in `add_to_order'
+  [4] pry(main)>
+  ```
+3. Story 03
+  * Wrote feature & unit tests for Takeaway#order_summary and Takeaway#total methods.
+  * Takeaway#order_summary instructs the order to #summarise and has a guard clause that makes sure there is something in the order to summarise.
+  * Takeaway#total instructs the order to #calc_total and turns that number into a £-prefixed string even if the order is empty - no guard clause here.
+  * Order#summarise generates a string by reducing `items` to a string with lines each containing a dish, its quantity and the resulting price.
+  * Order#calc_total calculates a total (number) by reducing `items` to a total price that sums individual item prices (menu price * quantity)
+  * PRY goes like this (with a .pryrc file that requires what's needed, adds dishes to the menu, then adds a few items to the takeaway's order):
+  ```
+  $ pry
+  [1] pry(main)> t.order_summary
+  => "Risotto con funghi porcini x3 = £12.75\n" + "Tomato and basil soup x2 = £5.9\n"
+  [2] pry(main)> t.total
+  => "£18.65"
+  ```
+  * With nothing added to the order, #order_summary raises an error, while #total is zero:
+  ```
+  $ pry
+[1] pry(main)> t.order_summary
+RuntimeError: Sorry, but you have no items in your order to summarise
+from /Users/stefanliute/Projects/takeaway-challenge/lib/takeaway.rb:20:in `order_summary'
+[2] pry(main)> t.total
+=> "£0"
+  ```
+4. Story 04
+  * Created __Restaurant__ class. Restaurant objects now initializes & holds the menu.
+  * For simplicity's sake, there's just one restaurant that the takeaway automatically initializes. When doing so, the takeaway imports a menu from that restaurant.
+  * Takeaway#pay allows the user to pay for their order by providing an amount and instructs the restaurant to #checkout_order.
+  * Restaurant#checkout_order instructs the takeaway to #reset its order to empty and has a guard clause ensuring the provided amount covers the order's #calc_total.
+  * Restaurant#checkout_order then sends a confirmation message via the #send_message method. For now, this simply displays the required message in IRB/PRY.
+  * Takeaway#reset sets the order to a new Order object (which is, by default, empty)
+  * Feature- and unit-tested for everything above. The PRY story now adds:
+  ```
+  $ pry
+[1] pry(main)> t.pay(10)
+RuntimeError: Insufficient payment! Please retry.
+from /Users/stefanliute/Projects/takeaway-challenge/lib/restaurant.rb:15:in `checkout_order'
+[2] pry(main)> t.pay(18.65)
+=> "Thank you for your custom! Your order will be delivered before 15:51."
+  ```
+  * Set up a free Twilio account. Added the relevant gems to the project (twilio-ruby and sinatra). Stored the Twilio account SID, auth_token, from and to numbers in environment variables and used the latter in the Ruby code to protect privacy.
+  * Restaurant#send_message now uses the TWILIO API via twilio-ruby to send an actual text message to the user's mobile number. It also sends a command-line message to advise the user to check their mobile.
+  * Unit-tested by stubbing the twilio-ruby gem.
+  * PRY now reads:
+  ```
+  $ pry
+[1] pry(main)> t.pay(12)
+RuntimeError: Insufficient payment! Please retry.
+from /Users/stefanliute/Projects/takeaway-challenge/lib/restaurant.rb:16:in `checkout_order'
+[2] pry(main)> t.pay(18.65)
+=> "Thanks. Check your mobile for the delivery time!"
+  ```
 
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+Issues
+-----
+1. Story 01:
+  * At this point, the customer can add dishes to the menu if they knew they can. This is actually the restaurant manager's job. In the future, I need to make new Menu objects import their dishes from a separate file and eliminate the public #add_dish method.
+2. Story 02:
+  * Nothing new so far (apart from privacy).
+3. Story 03:
+  * Some of my tests and methods use very long chains (up to 4 elements).
+4. Story 04:
+  * Restaurant#checkout_order is lazy and greedy. It will gladly take any amount above the order's total, give no change and no warning of overpayment!
+  * I wonder if I should have kept all of Restaurant's functionality inside of Takeaway. I separated the two so that Takeaway acts more like an interface and Restaurant acts more like a counterpart. In other words, I tried to make everything more like in real life.
