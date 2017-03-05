@@ -45,7 +45,7 @@ I created three classes:
 
 Usage 
 -----
-
+![Image usage in irb](https://github.com/Noora-q/takeaway-challenge/blob/master/Twilio%20usage.png)
 
 Status
 -----
