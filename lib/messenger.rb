@@ -4,10 +4,10 @@ require_relative 'takeaway'
 class Messenger
 
   def send_message(message)
-    client = Twilio::REST::Client.new("AC733e80d8eb5305704027651938977331", "dcefc4c1240246c8199c00577dee0116")
+    client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
     client.messages.create(
-      from: "+441133205947",
-      to: "+447921613637",
+      from: ENV['TWILIO_NUMBER'],
+      to: ENV['TWILIO_PHONE_NUMBER'],
       body: message
     )
   end

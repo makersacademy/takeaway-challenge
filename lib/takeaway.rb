@@ -32,13 +32,14 @@ def view_total
 end
 
 def print_summary
+  @total_price = basket.total
   puts "Your basket currently contains:"
   basket.selected_items.each do | item |
     item.each do |dish, quantity|
       puts "#{dish}\t £#{quantity}"
     end
   end
-  puts "\nTotal:\t £#{("%.2f" % total_price)}"
+  puts "\nTotal:\t £#{("%.2f" % @total_price)}"
 end
 
 def confirm_order

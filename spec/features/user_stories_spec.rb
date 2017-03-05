@@ -33,7 +33,7 @@ describe "User stories" do
   # will be delivered before 18:52" after I have ordered
   describe "confirming order and sending confirmation SMS" do
     before(:each) do
-      allow(takeaway).to receive (:send_message)
+      allow(takeaway).to receive(:send_message)
 
       it "allows the user to place the order" do
         expect{takeaway.confirm_order}.not_to raise_error
