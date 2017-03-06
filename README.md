@@ -73,6 +73,10 @@ cd takeaway-challenge
 rvm 2.3.1
 bundle
 ```
+* run tests
+```shell
+$ rspec
+```
 * run the application in irb
 ```shell
 $ irb
