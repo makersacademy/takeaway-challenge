@@ -24,13 +24,26 @@
 * [Twilio (for SMS order confirmation)](https://www.twilio.com/)
 
 ## Jump To
+* [User Stories](#user-stories)
 * [Installation](#install)
 * [Usage](#usage)
 * [Tests](#tests)
 
 ## The Brief
 
-Write a Takeaway program in Ruby with the following user stories:
+Write a Takeaway program in Ruby, using the twilio-ruby gem for SMS order confirmation.
+
+***Hints on functionality to implement:***
+
+* Ensure you have a list of dishes with prices
+* Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
+* The text sending functionality should be implemented using Twilio API.
+* Use the twilio-ruby gem to access the API
+* Use the Gemfile to manage your gems
+* Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
+* However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+
+## <a name="user-stories">User Stories</a>
 
 ```
  As a customer
