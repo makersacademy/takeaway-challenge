@@ -107,7 +107,7 @@ DEPENDENCIES
   twilio-ruby
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   1.13.7
+   1.14.5
