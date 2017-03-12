@@ -21,6 +21,7 @@
 ## Technologies
 * [Ruby v2.3.3](https://www.ruby-lang.org/en/)
 * [Rspec](http://rspec.info/)
+* [Twilio (for SMS order confirmation)](https://www.twilio.com/)
 
 ## Jump To
 * [Installation](#install)
