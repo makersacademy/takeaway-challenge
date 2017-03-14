@@ -1,7 +1,7 @@
 # Takeaway Challenge
 ### Makers Academy Weekend Challenge No.2
 
-[![Build Status](https://travis-ci.org/KatHicks/takeaway-challenge.svg?branch=master)](https://travis-ci.org/KatHicks/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/KatHicks/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/KatHicks/takeaway-challenge?branch=master)
+[![Build Status](https://travis-ci.org/KatHicks/takeaway-challenge.svg?branch=master)](https://travis-ci.org/KatHicks/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/KatHicks/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/KatHicks/takeaway-challenge?branch=master) [![Code Climate](https://codeclimate.com/github/KatHicks/takeaway-challenge/badges/gpa.svg)](https://codeclimate.com/github/KatHicks/takeaway-challenge)
 
 ### Instructions
 
