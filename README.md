@@ -100,9 +100,9 @@ You can see the full task and instructions given to us in [CONTRIBUTING.md](take
     * Note that this functionality was added in to the order class and select_dishes delegates confirming the order to the order class
 
 * **Added an exception to select_dishes**
- * Now that all the features/user stories have technically been satisfied, I've moved onto extending the code based on the additional hints and tips (see README.md)
- * Added an exception to the select_dishes method based on the check method - so that if the number of selected dishes is not the same total quantity as the user expected (based on the method arguments), then an error is raised.
- * Adding this feature meant that some refactoring of the tests was needed to take into account the new argument required in the select_dishes method
+  * Now that all the features/user stories have technically been satisfied, I've moved onto extending the code based on the additional hints and tips (see README.md)
+  * Added an exception to the select_dishes method based on the check method - so that if the number of selected dishes is not the same total quantity as the user expected (based on the method arguments), then an error is raised.
+  * Adding this feature meant that some refactoring of the tests was needed to take into account the new argument required in the select_dishes method
 
 * **Extending confirmation text to use time stamp**
   * I'm now moving on to further extending my code beyond that exactly specified in the user stories. It is a good learning opportunity for me to try new things out based on my ideas.
