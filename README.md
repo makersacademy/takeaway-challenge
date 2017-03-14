@@ -113,8 +113,8 @@ You can see the full task and instructions given to us in [CONTRIBUTING.md](take
   * Decided to implement so that the instance variable loads on initialisation of the menu class from a csv of dishes and their prices. A new dish object is created on instantiation of menu for each row in the csv.
 
 * **Extending tests to use stubs and doubles**
- * Currently, my test coverage (although high according to Coveralls) is not very sophisticated and is not using doubles as specified in the additional hints and tips in the instructions.
- * I'm now going to extend my tests to make sure that my entire programme is working exactly as expected.
+  * Currently, my test coverage (although high according to Coveralls) is not very sophisticated and is not using doubles as specified in the additional hints and tips in the instructions.
+  * I'm now going to extend my tests to make sure that my entire programme is working exactly as expected.
 
 
 ### Ideas for extension
