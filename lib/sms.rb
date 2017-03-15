@@ -30,15 +30,3 @@ class SMS
     (Time.now + 60 * 60).strftime(TIME_FORMAT)
   end
 end
-#
-# @@sid = 'ACc5df2096377e1e7750a741f1b7070c0e'
-# @@token = '1eaaf670414f471ef367ef34aa2f4f8b'
-# @@twilio_number = '+441543624322'
-#
-
-#
-#  def confirmation
-#    @client.messages.create(from: @@twilio_number, to: "+447970000218", body: "Your order has been placed.")
-
-
- # end
