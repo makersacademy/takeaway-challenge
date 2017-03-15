@@ -6,5 +6,5 @@ gem 'envyable'
 gem 'rspec'
 gem 'coveralls', require: false
 gem 'capybara'
-gem 'kernel'
-# gem 'twilio-ruby'
+# gem 'kernel'
+gem 'twilio-ruby'
