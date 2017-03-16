@@ -8,8 +8,4 @@ class Customer
     @identification = identification
   end
 
-  def send_order(order)
-    order.send(self)
-  end
-
 end

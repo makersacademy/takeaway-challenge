@@ -1,4 +1,4 @@
-Takeaway Challenge
+Takeaway Challenge [![Build Status](https://travis-ci.org/joemaidman/takeaway-challenge.svg?branch=master)](https://travis-ci.org/joemaidman/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/joemaidman/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/joemaidman/takeaway-challenge?branch=master)
 ==================
 ```
                             ___________

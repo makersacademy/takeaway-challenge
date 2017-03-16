@@ -1,4 +1,3 @@
-require_relative 'dish'
 require_relative 'bill'
 require_relative 'customer'
 require_relative 'customer_notification'
@@ -11,14 +10,16 @@ require 'csv'
 
 class Menu
 
-  def initialize(item_class)
+  def initialize(item_class = OrderItem)
     @items = []
     @item_class = item_class
     load_items
   end
 
   def print_menu
-    @items.map.with_index {|item,index| "#{index + 1}. #{print_item(item)}"}
+    out = ""
+    @items.map.with_index {|item,index| out << "#{index + 1}. #{print_item(item)}"}
+    out
   end
 
   def items
@@ -30,8 +31,8 @@ class Menu
   end
 
   def load_items
-    clear_items
-    CSV.foreach(File.path(load_path), headers: true) do |row|
+    clear_menu
+    CSV.foreach(File.path(menu_file_path), headers: true) do |row|
       add(@item_class.new(name: row["name"], price: row["price"]))
     end
   end
@@ -40,11 +41,11 @@ class Menu
     @items << item
   end
 
-  def clear_items
+  def clear_menu
     @items = []
   end
 
-  def load_path
+  def menu_file_path
     File.expand_path("../../assets/menu.csv", __FILE__)
   end
 

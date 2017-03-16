@@ -1,6 +1,5 @@
 # Note, this is not part of the main project. It serves as a user interface to test the application in the terminal
 require 'dotenv/load'
-require './lib/dish'
 require'./lib/bill'
 require './lib/customer'
 require './lib/customer_notification'
@@ -14,7 +13,7 @@ require 'csv'
 class TakeAway
 
   def initialize
-    @menu = Menu.new(Dish)
+    @menu = Menu.new(OrderItem)
     @bill = Bill.new(@menu)
     greet
     get_customer_details

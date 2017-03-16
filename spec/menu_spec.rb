@@ -3,14 +3,16 @@ require 'menu'
 describe Menu do
   test_menu_path = File.expand_path("../../assets/menu_test.csv", __FILE__)
   let(:item_one) {double :item_one, name: "Pepperoni", price: 5}
+  #let(:order_item_class) {class_double("OrderItem", new: OrderItem}
   let(:item_output) {"Pepperoni: £5"}
   let(:menu_output) {["1. Margherita: £8", "2. Pepperoni: £10", "3. Ham & Pineapple: £12"]}
-  subject(:menu) {described_class.new(Dish)}
+  subject(:menu) {described_class.new(OrderItem)}
 
-  context 'when the menu is set to empty' do
+
+  context 'using the test menu' do
     before do
-      menu.clear_items
-      allow(menu).to receive(:load_path).and_return(test_menu_path)
+        menu.clear_menu
+        allow(menu).to receive(:menu_file_path).and_return(test_menu_path)
     end
 
     describe '.items' do
@@ -22,7 +24,7 @@ describe Menu do
 
       it 'should clear all items from items' do
         menu.add(item_one)
-        menu.clear_items
+        menu.clear_menu
         expect(menu.items.length).to eq 0
       end
 

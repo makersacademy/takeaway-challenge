@@ -18,4 +18,10 @@ describe OrderItem do
     end
   end
 
+  describe '#price' do
+    it 'should return a price of zero when not initialized with a price' do
+      expect(item.price).to eq 0
+    end
+  end
+
 end

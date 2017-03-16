@@ -10,9 +10,7 @@ class CustomerNotification
   end
 
   def notify
-    @client.notify("Thank you for your order #{@customer.name}!
-    It will be delivered before #{(@order.time_placed + (60 * 60)).strftime('%r')}
-
+    @client.notify("Thank you for your order #{@customer.name}! It will be delivered before #{(@order.time_placed + (60 * 60)).strftime('%r')}
     Here is a summary:
     #{@order.print_order}")
     @sent = true

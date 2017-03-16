@@ -11,9 +11,9 @@ class TwilioClient
 
   def notify(body)
     @client.messages.create(
-    from: @TWIL_NUM,
-    to: @CUST_NUM,
-    body: body
+      from: @TWIL_NUM,
+      to: @CUST_NUM,
+      body: body
     )
   end
 

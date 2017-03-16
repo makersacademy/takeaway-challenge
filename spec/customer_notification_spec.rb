@@ -28,8 +28,8 @@ describe CustomerNotification do
 
     describe '.notify' do
       it 'sends a notification' do
-        expect(notification.client).to receive(:notify).with("something")
-        notification.notify
+        allow(dummy_twilio).to receive(:notify).and_return(true)
+        expect(notification.notify).to eq true
       end
     end
 
@@ -54,7 +54,10 @@ describe CustomerNotification do
   end
 
   context 'When customer has a Email notification type' do
-    let(:customer) {double :customer, phone_number: "07730655323", name: "Joe Maidman", method: EmailClient.new}
+    # The two lines below is required to live test the Email functionality
+    # let(:customer) {double :customer, phone_number: "123456", name: "Joe Blogs", method: EmailClient.new}
+    let(:dummy_email) {double :dummy_email}
+    let(:customer) {double :customer, phone_number: "07730655323", name: "Joe Maidman", method: dummy_email}
     subject(:notification) {described_class.new(customer, order)}
 
     describe '#order'  do
@@ -71,8 +74,8 @@ describe CustomerNotification do
 
     describe '.notify' do
       it 'sends a notification' do
-        expect(notification.client).to receive(:notify).with("something")
-        notification.notify
+        allow(dummy_email).to receive(:notify).and_return(true)
+        expect(notification.notify).to eq true
       end
     end
 
@@ -88,7 +91,7 @@ describe CustomerNotification do
       end
     end
 
-    #Note that this test actually sends an Email!!
+    # Note that this test actually sends an Email!!
     # describe '.sent?' do
     #   it 'returns true afer notification sent' do
     #     notification.notify
