@@ -45,17 +45,44 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Technologies Used
 -----
 
-* Code written in Ruby.
-* Tests written in RSpec.
-* Twilio API for sending SMS confirmation.
-* DOTENV variables for hiding credentials.
-
-
-Solution Approach
------
-
-* TBC
-
+* Ruby
+* RSpec
+* Twilio API for sending SMS confirmation
+* DOTENV variables for hiding credentials
 
 Installation and Using the App
 -----
+
+* Fork and clone this repo
+* Run `bundle` to ensure all required gems exist
+* Open `irb` to interact with the application:
+
+```
+2.3.3 :001 > require './lib/takeaway.rb'
+ => true
+2.3.3 :002 > pizza = Dish.new("Pizza", 5)
+ => #<Dish:0x007ff5a3215778 @name="Pizza", @price=5>
+2.3.3 :003 > pasta = Dish.new("Pasta", 4)
+ => #<Dish:0x007ff5a3205490 @name="Pasta", @price=4>
+2.3.3 :004 > menu = Menu.new
+ => #<Menu:0x007ff5a31ec530 @dishes=[]>
+2.3.3 :005 > menu.add_dish(pizza)
+ => [#<Dish:0x007ff5a3215778 @name="Pizza", @price=5>]
+2.3.3 :006 > menu.add_dish(pasta)
+ => [#<Dish:0x007ff5a3215778 @name="Pizza", @price=5>, #<Dish:0x007ff5a3205490 @name="Pasta", @price=4>]
+2.3.3 :007 > takeaway = Takeaway.new(menu)
+ => #<Takeaway:0x007ff5a32ae0e0 @menu=#<Menu:0x007ff5a31ec530 @dishes=[#<Dish:0x007ff5a3215778 @name="Pizza", @price=5>, #<Dish:0x007ff5a3205490 @name="Pasta", @price=4>]>, @order=nil, @payment_total=0>
+2.3.3 :008 > takeaway.create_order
+ => #<Order:0x007ff5a328df20 @basket=[], @basket_total=0>
+2.3.3 :009 > takeaway.order.add_item(pasta, 3)
+ => "3 x Pasta added to your basket"
+2.3.3 :010 > takeaway.order.add_item(pizza, 2)
+ => "2 x Pizza added to your basket"
+2.3.3 :011 > takeaway.place_order
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC14af48c223dba6efb2dbd0fe1b5eb900/Messages/SMec39e5280b174e3ba524e105a22b9f23>
+
+```
+
+Running the Tests
+-----
+* In the root directory run `$ rspec`. The test suite will run in the command line.
