@@ -7,7 +7,7 @@
 
 We were given from the end of the day on Friday until 9am on Monday to complete the challenge.
 
-Decided to significantly refactor my tests following the code review and a workshop on doubles so that my unit testing follows the London-School of testing.
+* Decided to significantly refactor my tests following the code review and a workshop on doubles so that my unit testing follows the London School of Testing.
 
 ### Task
 
