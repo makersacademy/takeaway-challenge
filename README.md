@@ -5,19 +5,27 @@ Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://t
 This challenge requires us to build a program so that customer can order a takeaway. My approach to this challenge is to create 3 different classes.
 
 - **TakeAway class**
-New instance of this class is always instantiated with an instance of the Message class, the Menu class and an empty items hash.Under this class I have the following methods :  
+New instance of this class is always instantiated with an instance of the Message class, the Menu class and an empty items hash.
 
-read_menu : it returns the list of dishes and their prices.
+Under this class I have the following methods:    
 
-order : it is called with 2 arguments, a dish name and the quantity. it rely on a private method add_dish to add the dish and the quantity to the items hash and output a confirmation message.
+read_menu:
+it returns the list of dishes and their prices.  
 
-basket_summary : it returns a string made of all the active orders dish name and their quantity.
+order:
+it is called with 2 arguments, a dish name and the quantity. it rely on a private method add_dish to add the dish and the quantity to the items hash and output a confirmation message.
 
-total_price : it calculate the price of the order using the quantity and the dish price ordered then output a confirmation of the total.  
+basket_summary:
+it returns a string made of all the active orders dish name and their quantity.
 
-complete_order : it takes a number as argument, this number represents the total price the customer came up with. If the customer total is different from the checkout price, an error is raised, otherwise a confirmation text message is sent to the customer with the total price and delivery time.
+method total_price:
+ it calculate the price of the order using the quantity and the dish price ordered then output a confirmation of the total.  
 
-add_dish : it takes 2 arguments,dish and quantity. This method is private and it allows the method order to keep track of what is ordered.  
+complete_order:
+it takes a number as argument, this number represents the total price the customer came up with. If the customer total is different from the checkout price, an error is raised, otherwise a confirmation text message is sent to the customer with the total price and delivery time.
+
+add_dish:
+it takes 2 arguments,dish and quantity. This method is private and it allows the method order to keep track of what is ordered.  
 
 - **Menu class**  
 The menu class hold the list of dishes and their prices. This is the class which allows the class TakeAway method read_menu to display the menu.
