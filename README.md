@@ -34,9 +34,9 @@ The message class handle the confirmation message sent to the customer when the 
 6. Enter your own total  
 7. A confirmation text message is sent to the registered phone number if the total you enter matches the program's one, otherwise you receive an error that the prices do not match.  
 
-**Folders content**
-The main code resides in folder lib
-The test code can be found in spec
+**Folders content**  
+- The main code resides in folder lib  
+- The test code can be found in spec
 
 **Gem used in this challenge**
 ```ruby
