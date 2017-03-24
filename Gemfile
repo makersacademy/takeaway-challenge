@@ -7,3 +7,4 @@ gem 'coveralls', require: false
 gem 'capybara'
 gem 'rubocop'
 gem 'simplecov', require: false, group: :test
+gem 'twilio-ruby', '~> 4.11.1'
