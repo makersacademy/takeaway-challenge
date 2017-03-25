@@ -25,8 +25,8 @@ describe TakeAway do
   end
 
   describe '#checkout' do
-    xit 'raises an error if input value is wrong' do
-      takeaway.total = 3.99
+    it 'raises an error if input value is wrong' do
+      total = 3.99
       expect{takeaway.checkout(4.99)}.to raise_error("Checkout total incorrect")
     end
   end

@@ -2,6 +2,7 @@ require_relative 'menu'
 require_relative 'order'
 require_relative 'message'
 
+#takeaway system user interface
 class TakeAway
 
   attr_reader :basket, :menu, :order, :message
@@ -11,14 +12,14 @@ class TakeAway
     @menu = Menu.new
   end
 
-  def read_menu
-    menu.dishes
+  def view_menu
+    menu.view
   end
 
   def add(item, quantity = 1)
     @order = Order.new(menu)
     quantity.times { basket << order.add(item) }
-    puts "#{quantity}x #{item} added to your basket."
+    item_added(item, quantity)
   end
 
   def total
@@ -33,6 +34,11 @@ class TakeAway
   end
 
   private
+
+  def item_added(item, quantity)
+    puts "#{quantity}x #{item} added to your basket."
+    basket
+  end
 
   def price_correct?(amount)
     amount == total
