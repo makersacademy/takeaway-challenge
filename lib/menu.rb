@@ -11,5 +11,4 @@ class Menu
       "%s - £%.2f" % [dish.to_s.gsub("_", " "), price]
     end.join(", ")
   end
-
 end

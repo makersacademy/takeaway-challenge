@@ -15,14 +15,14 @@ describe Takeaway do
   end
 
   describe '#place_order(order)' do
+
     it 'takes an order or a certain quantity' do
-      expect(takeaway.place_order(fake_order)).to include fake_order
+      expect(order).to receive(:add)
+      takeaway.place_order(fake_order)
     end
 
-    it 'gives a total for current_order' do
-      expect(takeaway.place_order(fake_order)).to eq "Order placed: Your total is £13.50"
-    end
+    # it 'gives a total for current_order' do
+    #   expect(takeaway.place_order(fake_order)).to eq "Order placed: Your total is £13.50"
+    # end
   end
-
-
 end

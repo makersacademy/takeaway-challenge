@@ -1,9 +1,10 @@
+require_relative 'order'
 # Takeaway class responsible for controling the order
 class Takeaway
 
-  def initialize(menu:, order:)
+  def initialize(menu:, order: nil)
     @menu = menu
-    @order = order
+    @order = (order || Order.new)
   end
 
   def show_menu
@@ -11,7 +12,9 @@ class Takeaway
   end
 
   def place_order(current_order)
-    current_order
+    current_order.each do |dish, quantity|
+      order.add(dish, quantity)
+    end
   end
 
   private
