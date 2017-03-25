@@ -1,4 +1,4 @@
-# Takeaway class responsible for
+# Takeaway class responsible for controling the order
 class Takeaway
 
   def initialize(menu:)
@@ -7,6 +7,10 @@ class Takeaway
 
   def show_menu
     menu.print_menu
+  end
+
+  def place_order(order)
+    order
   end
 
   private

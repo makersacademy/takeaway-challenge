@@ -1,3 +1,4 @@
+# Menu class responsible for printing the menu with dishes and prices
 class Menu
   attr_reader :dishes
 
