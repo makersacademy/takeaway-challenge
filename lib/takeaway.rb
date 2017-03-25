@@ -1,9 +1,10 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'message'
 
 class TakeAway
 
-  attr_reader :basket, :menu, :order
+  attr_reader :basket, :menu, :order, :message
 
   def initialize
     @basket = []
@@ -23,7 +24,18 @@ class TakeAway
   def total
     order.nil? ? total=0.00 : total=order.calc(basket)
     puts "Total: £#{total}"
-    total
+    @total = total
+  end
+
+  def checkout(amount)
+    fail "Checkout total incorrect" if !price_correct?(amount)
+    Message.new
+  end
+
+  private
+
+  def price_correct?(amount)
+    amount == total
   end
 
 end
