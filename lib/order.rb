@@ -22,9 +22,16 @@ attr_reader :basket
     end
   end
 
+  def delete_item(item_number)
+    item = basket[item_number-1]
+    self.basket.delete(item)
+  end
+
 private
 
 attr_writer :basket
+
+
 
 end
 

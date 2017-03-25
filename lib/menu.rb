@@ -30,6 +30,9 @@ attr_reader :menu, :new_order, :selected_item
     @new_order.show_basket
   end
 
+  def remove_item(item_number)
+    @new_order.delete_item(item_number)
+  end
 
 
 
