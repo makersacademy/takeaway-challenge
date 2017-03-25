@@ -3,7 +3,7 @@ require_relative 'order'
 
 class TakeAway
 
-  attr_reader :basket, :menu, :new_order
+  attr_reader :basket, :menu, :order
 
   def initialize
     @basket = []
@@ -14,14 +14,14 @@ class TakeAway
     menu.dishes
   end
 
-  def order(item, quantity=1)
-    @new_order = Order.new(menu)
-    quantity.times { basket << new_order.add(item) }
-    puts "#{quantity}x #{item}(s) added to your basket."
+  def add(item, quantity = 1)
+    @order = Order.new(menu)
+    quantity.times { basket << order.add(item) }
+    puts "#{quantity}x #{item} added to your basket."
   end
 
   def total
-    new_order.nil? ? 0.00 : new_order.calculate_total(basket)
+    order.nil? ? 0.00 : order.calc(basket)
   end
 
 end

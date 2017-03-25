@@ -13,7 +13,7 @@ class Order
     item
   end
 
-  def calculate_total(basket)
+  def calc(basket)
     total = 0.00
     basket.each do |item|
       itemcost = menu.dishes[item]
