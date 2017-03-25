@@ -3,11 +3,9 @@ require './lib/order.rb'
 
 menu = Menu.new
 menu.open
-menu.new_order
-menu.add_item(1)
-menu.add_item(2)
-menu.add_item(3)
-menu.add_item(4)
-menu.basket
+menu.create_new_order
+menu.select_item(1)
+menu.select_item(3)
+menu.new_order.show_basket
 
 order = Order.new

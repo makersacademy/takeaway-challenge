@@ -15,6 +15,13 @@ attr_reader :basket
     basket << item
   end
 
+  def show_basket
+    basket = basket.sort_by { |basket| basket[:price] }
+    basket.each_with_index do |basket, index|
+      puts "#{index + 1}. #{basket[:item]}, £#{basket[:price]}"
+    end
+  end
+
 private
 
 attr_writer :basket

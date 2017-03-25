@@ -1,15 +1,14 @@
 class Menu
 # class responsible for loading and showing menu
-
 require_relative 'order'
 
-attr_reader :menu
+attr_reader :menu, :new_order, :selected_item
 
   def initialize(order_class: Order)
     @menu = []
     @order_class = order_class
+    @selected_item
   end
-
 
   def open
     load_menu
@@ -18,18 +17,18 @@ attr_reader :menu
     end
   end
 
-  def add_item(item_number)
-    item = menu[item_number-1]
+  def select_item(item_number)
+    item = item_by_number(item_number)
     @new_order.add_item(item)
   end
 
-  def new_order
+  def create_new_order
     @new_order = @order_class.new
   end
 
 private
 
-attr_writer :menu
+attr_writer :menu, :selected_item
 
   def load_menu(filename = "./lib/menu.csv")
     file = File.open(filename, "r")
@@ -38,6 +37,10 @@ attr_writer :menu
       @menu << {item: item, price: price}
     end
     file.close
+  end
+
+  def item_by_number(item_number)
+    menu[item_number-1]
   end
 
 end
