@@ -11,8 +11,15 @@ describe TakeAway do
   end
 
   describe '#order' do
-    it 'takes 1 argument' do
-      expect(takeaway).to respond_to(:order).with(1).argument
+    it 'takes 2 arguments' do
+      expect(takeaway).to respond_to(:order).with(2).argument
+    end
+  end
+
+  describe '#total_price' do
+    it 'calculates the total price of the basket' do
+      allow(takeaway).to receive(:basket) {["Pizza"]}
+      expect(takeaway.total).to eq 9.99
     end
   end
 end
