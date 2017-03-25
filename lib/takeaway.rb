@@ -21,7 +21,9 @@ class TakeAway
   end
 
   def total
-    order.nil? ? 0.00 : order.calc(basket)
+    order.nil? ? total=0.00 : total=order.calc(basket)
+    puts "Total: £#{total}"
+    total
   end
 
 end

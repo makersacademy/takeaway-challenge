@@ -3,7 +3,8 @@ require 'takeaway'
 describe TakeAway do
   subject(:takeaway) { described_class.new }
   let(:item) { double :item }
-  let(:new_order) { double :new_order }
+  let(:order) { double :order }
+  let(:menu) { double :menu }
 
   describe '#initialize' do
     it 'has an empty basket' do
@@ -13,14 +14,13 @@ describe TakeAway do
 
   describe '#order' do
     it 'takes 2 arguments' do
-      expect(takeaway).to respond_to(:order).with(2).argument
+      expect(takeaway).to respond_to(:add).with(2).argument
     end
   end
 
   describe '#total' do
-    it 'calculates the total price of the basket' do
-      allow(takeaway).to receive(:basket) {["Pizza"]}
-      expect(takeaway.total).to eq 9.99
+    it 'when empty is 0.00' do
+      expect(takeaway.total).to eq 0.00
     end
   end
 end
