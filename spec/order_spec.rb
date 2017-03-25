@@ -45,6 +45,11 @@ describe Order do
       subject.add("Hamburger", 3)
       expect{subject.place_order(3)}.to raise_error "Order total is 15.0. You expected 3."
     end
+
+    it 'returns a message saying the order has been placed' do
+      subject.add("Hamburger", 3)
+      expect(subject.place_order(15.0)).to eq "Your order has been placed!"
+    end
   end
 
 end

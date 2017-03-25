@@ -26,7 +26,7 @@ class Order
     total_order_cost
     message = "Order total is #{total_order_cost}. You expected #{cost}."
     fail message if cost != total_order_cost
-    puts "Your order has been placed!" 
+    "Your order has been placed!" 
   end
 
   private
