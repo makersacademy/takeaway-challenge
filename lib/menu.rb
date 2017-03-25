@@ -7,11 +7,11 @@ class Menu
   end
 
   def dishes
-    {"Cheeseburger" => 6.00,
-    "Hamburger" => 5.00,
-    "Pizza" => 7.00,
-    "Milkshake" => 3.00,
-    "Burrito" => 6.00}
+    {"Cheeseburger" => 6,
+    "Hamburger" => 5,
+    "Pizza" => 7,
+    "Milkshake" => 3,
+    "Burrito" => 6}
   end
 
 

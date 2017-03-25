@@ -25,16 +25,14 @@ class Takeaway
 
   def place_order(cost)
     total_order_cost
-    message = "Order total is #{total_order_cost}. You expected #{cost}."
-    fail message if cost != total_order_cost
-    "Your order has been placed!"
+    one_hour_ahead = DateTime.now + (1/24.0)
+    fail_message = "Order total is £#{total_order_cost}. You expected £#{cost}."
+    message = "Thank you! Your order costs £#{total_order_cost} and will be delivered before #{one_hour_ahead.strftime "%H: %M"}"
+    fail fail_message if cost != total_order_cost
+    send_sms(message)
   end
 
-
-  private
-  attr_writer :dishes, :total_order
-  attr_reader :send_text
-  def send_text
+  def send_sms(message)
     account_sid = 'AC033ff5fd1ab50ecf84e702ae695c4053'
     auth_token = '74465a4227537a433741dd0749629b3a'
     client = Twilio::REST::Client.new account_sid, auth_token
@@ -42,8 +40,13 @@ class Takeaway
     client.messages.create(
     from: ['+441256830268'],
     to: ['+447515356421'],
-    body: "Here is the first message from Ruby!"
+    body: message
     )
-    puts 'Confirmation SMS sent.'
+
   end
+
+  private
+  attr_writer :dishes, :total_order
+
+
 end
