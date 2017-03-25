@@ -15,7 +15,7 @@ class Menu
     puts "======================="
     puts "Dish: Price"
     dishes.each do |value|
-      puts value[:dish] + ": £" + value[:price].to_s
+      puts value[:number].to_s + ". " + value[:dish] + ": £" + value[:price].to_s
     end
   end
 
