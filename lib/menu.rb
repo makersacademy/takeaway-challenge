@@ -1,6 +1,7 @@
 # contains a list of all available dishes for selection
 
 require './lib/dish.rb'
+require './lib/cart.rb'
 
 class Menu
 
