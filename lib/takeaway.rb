@@ -21,11 +21,7 @@ class TakeAway
   end
 
   def total
-    if new_order.nil?
-      0.00
-    else
-      new_order.calculate_total(basket)
-    end
+    new_order.nil? ? 0.00 : new_order.calculate_total(basket)
   end
 
 end
