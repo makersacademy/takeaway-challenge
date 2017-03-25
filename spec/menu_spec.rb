@@ -39,4 +39,19 @@ describe Menu do
     end
   end
 
+  describe 'on_menu?'do
+    before(:example) do
+      dummy_menu = [{food: "Lasagne"},{food: "Chicken"}]
+      allow(menu).to receive(:view) {dummy_menu}
+    end
+
+    it 'returns true if item is on menu' do
+      expect(menu.on_menu?("Lasagne")).to eq(true)
+    end
+
+    it 'returns false if item is not on menu' do
+      expect(menu.on_menu?("Cheese")).to eq(false)
+    end
+  end
+
 end

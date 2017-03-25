@@ -17,9 +17,12 @@ class Menu
       restaurant_array << menu_entry_maker(food,price)
     end
     restaurant_array
-
   end
 
+  def on_menu?(menu_item)
+    menu_search = view.select {|item| item[:food] == menu_item}
+    !menu_search.empty?
+  end
 
   def view
     menu.dup

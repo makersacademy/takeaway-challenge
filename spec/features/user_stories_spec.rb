@@ -6,8 +6,13 @@
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
-
-
+# order = Order.new
+# order.add(lasagne,2)
+# expect error
+# order.add(hot,1)
+# order.current_order
+# order.current_total
+# order.remove(lasagne,2)
 
 # As a customer
 # So that I can verify that my order is correct
