@@ -2,14 +2,15 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) {described_class.new}
-  let(:menu) {double :menu}
+  let(:menu) {Menu.new}
 
-  context 'when making an order' do
-    it 'displays a menu' do
-  	  expect(takeaway.view(menu)).to eq menu
-    end
 
+  describe '#view' do
+	  context 'when making an order' do
+	    it 'displays a menu' do
+	  	  expect(takeaway.view_menu).to eq menu.dishes
+	    end
+	  end
   end
-
 
 end
