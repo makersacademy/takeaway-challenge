@@ -13,7 +13,10 @@ class Menu
     puts "   Mann Fang Lowe Co.  "
     puts "23 Creators St., London"
     puts "======================="
-    dishes
+    puts "Dish: Price"
+    dishes.each do |value|
+      puts value[:dish] + ": £" + value[:price].to_s
+    end
   end
 
 end
