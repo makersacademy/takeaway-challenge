@@ -1,8 +1,12 @@
 class Order
 
-attr_reader :current
+attr_reader :basket
 
   def initialize
-    @current = []
+    @basket = []
+  end
+
+  def add(dish, amount)
+    basket << { dish: dish, amount: amount }
   end
 end

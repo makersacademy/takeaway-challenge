@@ -6,7 +6,7 @@ class Takeaway
   attr_reader :order
 
   def initialize(menu = CSV.read("./lib/Nandos.csv"))
-    @load_menu = menu
+    @menu_file = menu
     @menu = change_data_type
   end
 
@@ -15,14 +15,20 @@ class Takeaway
   end
 
   def select_dish(dish, amount)
-    @order = Order.new
+    @order = Order.new if complete?
+    order.add(dish, amount)
     "#{amount}x #{dish} added to your basket"
   end
 
+  def complete?
+    !order
+  end
+
+
   private
-  attr_reader :load_menu, :menu
+  attr_reader :menu_file, :menu
 
   def change_data_type
-    load_menu.map { |option| ({option[0] => option[1]}) }
+    menu_file.map { |option| ({option[0] => option[1]}) }
   end
 end
