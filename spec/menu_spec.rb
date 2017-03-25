@@ -7,7 +7,7 @@ describe Menu do
   let(:price) { double(:price) }
 
   describe '#view' do
-    it 'has a non -empty menu' do
+    it 'has a non - empty menu' do
       expect(menu.view).not_to be_empty
     end
 
@@ -32,4 +32,11 @@ describe Menu do
     end
 
   end
+
+  describe '#load_csv' do
+    it 'menu loads something from csv file' do
+      expect(menu.load_csv).not_to be_empty
+    end
+  end
+
 end
