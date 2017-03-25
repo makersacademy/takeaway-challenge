@@ -1,6 +1,6 @@
-require 'order'
+require 'takeaway'
 
-describe Order do
+describe Takeaway do
   let(:item) {double(:item)}
   let(:dish) {{"Hamburger" => 5.00}}
 
