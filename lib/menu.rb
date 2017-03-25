@@ -1,9 +1,12 @@
 class Menu
+  CSV_MENU_FILEPATH = './menu.csv'
+  def initialize
+    @menu = ["Test"]
+
+  end
 
   def view
-    [
-      Hash.new(nil)
-    ]
+    menu.dup
   end
 
   def menu_entry_maker(food,price)
@@ -11,7 +14,8 @@ class Menu
       food: food,
       price: price
     }
-
   end
 
+  private
+  attr_reader :menu
 end

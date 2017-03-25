@@ -2,13 +2,11 @@ require 'menu'
 
 describe Menu do
 
-  subject(:menu) {described_class.new}
-  let(:food) {double(:food)}
-  let(:price) {double(:price)}
-  #let(:menu_entry) {menu.menu_entry_maker(food,price)}
+  subject(:menu) { described_class.new }
+  let(:food) { double(:food) }
+  let(:price) { double(:price) }
 
   describe '#view' do
-
     it 'has a non -empty menu' do
       expect(menu.view).not_to be_empty
     end
@@ -19,10 +17,10 @@ describe Menu do
 
   end
 
-  describe '#menu_wrapper' do
+  describe '#menu_entry_maker' do
 
     before(:example) do
-      @menu_entry = menu.menu_entry_maker(food,price)
+      @menu_entry = menu.menu_entry_maker(food, price)
     end
 
     it 'creates a hash with food key' do
