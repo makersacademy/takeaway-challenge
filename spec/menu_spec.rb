@@ -1,5 +1,5 @@
-require 'dishes'
-describe Dishes do
+require 'menu'
+describe Menu do
 # This class allows you to create and view dishes
 let(:dish) {double(:dish)}
 let(:name) {double(:name)}

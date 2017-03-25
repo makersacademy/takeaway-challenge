@@ -1,4 +1,4 @@
-class Dishes
+class Menu
 
   def initialize
   @dishes = []
