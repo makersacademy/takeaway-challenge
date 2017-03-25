@@ -19,7 +19,7 @@ class Order
       itemcost = menu.dishes[item]
       total += itemcost
     end
-    total
+    total.round(2)
   end
 
 end

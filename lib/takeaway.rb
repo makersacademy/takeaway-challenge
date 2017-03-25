@@ -8,7 +8,6 @@ class TakeAway
   def initialize
     @basket = []
     @menu = Menu.new
-    @new_order = Order.new(menu)
   end
 
   def read_menu
@@ -16,15 +15,17 @@ class TakeAway
   end
 
   def order(item, quantity=1)
-    quantity.times do
-      basket << new_order.add(item)
-    end
+    @new_order = Order.new(menu)
+    quantity.times { basket << new_order.add(item) }
     puts "#{quantity}x #{item}(s) added to your basket."
   end
 
   def total
-    new_order.calculate_total(basket)
+    if new_order.nil?
+      0.00
+    else
+      new_order.calculate_total(basket)
+    end
   end
 
-  private
 end
