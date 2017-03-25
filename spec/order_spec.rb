@@ -12,7 +12,7 @@ describe Order do
   describe '#add(current_order)' do
     it 'adds current order to the order'do
       order.add(fake_dish, 2)
-      expect(order.dishes.last).to eq fake_order
+      expect(order.dishes).to eq fake_order
     end
   end
 end
