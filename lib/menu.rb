@@ -5,10 +5,10 @@ class Menu
     @dishes = dishes
   end
 
-  def show_menu
-    dishes.map do |name, price|
-      "%s - £%.2f" % [name.to_s.gsub("_", " "), price]
-    end
+  def print_menu
+    dishes.map do |dish, price|
+      "%s - £%.2f" % [dish.to_s.gsub("_", " "), price]
+    end.join(", ")
   end
 
 end

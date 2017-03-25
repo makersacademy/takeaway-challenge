@@ -1,12 +1,12 @@
+# Takeaway class responsible for
 class Takeaway
-
 
   def initialize(menu:)
     @menu = menu
   end
 
-  def print_menu
-    menu.show_menu
+  def show_menu
+    menu.print_menu
   end
 
   private
