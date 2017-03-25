@@ -16,7 +16,7 @@ attr_reader :basket
   end
 
   def show_basket
-    basket = basket.sort_by { |basket| basket[:price] }
+    self.basket = basket.sort_by{ |basket| basket[:price] }
     basket.each_with_index do |basket, index|
       puts "#{index + 1}. #{basket[:item]}, £#{basket[:price]}"
     end

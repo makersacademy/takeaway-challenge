@@ -10,6 +10,10 @@ attr_reader :menu, :new_order, :selected_item
     @selected_item
   end
 
+  def create_new_order
+    @new_order = @order_class.new
+  end
+
   def open
     load_menu
     menu.each_with_index do |menu, index|
@@ -18,13 +22,17 @@ attr_reader :menu, :new_order, :selected_item
   end
 
   def select_item(item_number)
-    item = item_by_number(item_number)
-    @new_order.add_item(item)
+    item_by_number(item_number)
+    @new_order.add_item(@selected_item)
   end
 
-  def create_new_order
-    @new_order = @order_class.new
+  def review_order
+    @new_order.show_basket
   end
+
+
+
+
 
 private
 
@@ -40,7 +48,7 @@ attr_writer :menu, :selected_item
   end
 
   def item_by_number(item_number)
-    menu[item_number-1]
+    @selected_item = menu[item_number-1]
   end
 
 end
