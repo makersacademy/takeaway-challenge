@@ -18,7 +18,17 @@ class Order
     dishes
   end
 
+  def total_order_cost
+    total_order.flat_map(&:values).inject(:+)
+  end
+
+  def place_order(cost)
+    total_order_cost
+    message = "Order total is #{total_order_cost}. You expected #{cost}."
+    fail message if cost != total_order_cost
+    puts "Your order has been placed!" 
+  end
+
   private
   attr_writer :dishes, :total_order
-  attr_reader
 end

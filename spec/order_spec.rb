@@ -26,9 +26,25 @@ describe Order do
     end
   end
 
-  describe '#view_items' do
+  describe '#view_dishes' do
     it 'should list all available items and prices' do
       expect(subject.view_dishes).to eq subject.dishes
     end
   end
+
+  describe '#total_order_cost' do
+    it 'returns the total cost of the order' do
+      cost = dish["Hamburger"] * 3
+      subject.add("Hamburger", 3)
+      expect(subject.total_order_cost).to eq(cost)
+    end
+  end
+
+  describe '#place_order' do
+    it 'checks whether expected total is equal to actual total' do
+      subject.add("Hamburger", 3)
+      expect{subject.place_order(3)}.to raise_error "Order total is 15.0. You expected 3."
+    end
+  end
+
 end
