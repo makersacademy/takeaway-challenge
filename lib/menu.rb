@@ -6,13 +6,13 @@ class Menu
 
 
   def initialize
-    @menu = load_csv
     @csv_file = File.absolute_path(CSV_FILENAME)
+    @menu = load_csv
   end
 
   def load_csv
     restaurant_array = []
-    CSV.foreach(f) do |row|
+    CSV.foreach(csv_file) do |row|
       food, price = row
       restaurant_array << menu_entry_maker(food,price)
     end
@@ -33,5 +33,5 @@ class Menu
   end
 
   private
-  attr_reader :menu :file
+  attr_reader :menu, :csv_file
 end
