@@ -1,4 +1,5 @@
 require_relative 'order'
+require_relative 'confirmation_text'
 # Takeaway class responsible for controling the order
 class Takeaway
 
