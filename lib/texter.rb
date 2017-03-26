@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require 'twilio-ruby'
 require_relative 'time_function'
 
@@ -6,14 +7,12 @@ class Texter
   attr_reader :client
 
   def initialize
-    account_sid = 'AC6612e0baf00f044822ca233dcccb24b6'
-    auth_token = 'ad10c6c767e5ff7b3d501e41f21fd607'
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
   end
 
   def send_message(number)
     @client.messages.create(
-      from: '+441530382009',
+      from: ENV['TWILIO_PHONE_NUMBER'],
       to: "+#{number}",
       body: "Your order was placed and will be delivered before #{TimeFunction.new.time_plus_one_hour}. Thank you! 🍖"
     )
