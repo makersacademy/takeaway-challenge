@@ -8,6 +8,12 @@ describe Takeaway do
   let(:amount) {:amount}
   it { is_expected.to respond_to(:place_order).with(2).arguments }
   let(:basket) { {dish_name: dish, price: price, amount: amount} }
+  let(:checkout) {:checkout}
+  let(:total) {total}
+
+  before do
+    allow(takeaway).to receive(:send_text)
+  end
 
   describe '#view' do
 		context 'when making an order' do
@@ -38,6 +44,36 @@ describe Takeaway do
   	  	expect(takeaway.orders).to eq [basket]
   	  end
   	end	
-  end 
+  end
+
+  # describe '#checkout' do
+  # 	context 'when checking out' do
+	 #  	context 'when calculating order' do
+	 #  		xit 'calculates order' do
+	 #  		  takeaway.add_to_orders(dish, price, amount)
+	 #        takeaway.checkout
+	 #  		  expect(checkout.calculate_order).to eq total
+	 #  		end
+	 #  	end
+  #   end
+  # end 
+
+  # describe '#calculate_order' do
+  #   context 'when calculating orders' do
+  #     xit 'calculates total' do
+  #     	expect(takeaway.checkout).to eq total
+  #     end
+  #   end
+  # end 
+
+  describe '#complete_order' do
+    context 'when confirming order' do
+	  	it 'sends payment confirmation message' do
+	  		expect(takeaway).to receive(:send_text).with("Thank you for your order: £#{takeaway.total}")
+	  	  takeaway.complete_order
+	  	end
+  	end
+  end
+
 
 end
