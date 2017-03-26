@@ -3,9 +3,6 @@ require 'customer'
 describe Customer do
 
   subject {Customer.new(12345)}
-  let(:food_item) {double :food_item}
-
-  it { is_expected.to be_instance_of(Customer)}
 
   describe '#view_menu' do
     it 'displays menu to user' do
