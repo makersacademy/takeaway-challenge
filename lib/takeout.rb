@@ -13,8 +13,7 @@ class Takeout
 
   def order(key)
     @my_order = Order.new if my_order == nil
-    dish = menu.dishes[key]
-    my_order.add_dish(dish)
+    my_order.add_dish(menu.dishes[key])
   end
 
   def total
