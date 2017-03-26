@@ -1,7 +1,8 @@
 ## Approach / Lessons learned
-- mapped out functions 
+- initially mapped out functions 
 - diagrammed flowchart of functions 
 - decided to use Menu as user interface 
+- lesson learned - work on one thing / class at a time. Can always extract and refactor later. 
 
 ## Classes
 ### Menu
@@ -20,11 +21,11 @@
 - \#add_item
 - \#remove_item
 
-### Order_Total
+### (Order_Total)
 - \#calculate_total
 - \#current_order
 
-### Confirm_Order 
+### (Confirm_Order)
 - \#confirm
 - \#write_order(csv) 
 - \#send_text
@@ -32,7 +33,7 @@
 ## Features
   * [x] See a list of dishes with prices
   * [x] Select some number of several available dishes
-  * [ ] Check that the total I have been given matches the sum of the various dishes in my order
+  * [x] Check that the total I have been given matches the sum of the various dishes in my order
   * [ ] receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   
 ## Bonus Features
