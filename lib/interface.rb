@@ -1,4 +1,8 @@
+require_relative 'twilio'
+
 class Interface
+
+  include TextMessage
 
   attr_reader :order, :menu
 
@@ -13,6 +17,10 @@ class Interface
 
   def ordering(dish_number)
     order.ordering(dish_number)
+  end
+
+  def place_order
+    send_message
   end
 
 

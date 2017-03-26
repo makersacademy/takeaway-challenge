@@ -13,13 +13,13 @@ class Order
   end
 
   def total_amount
-    @total = 0
-    selection.each { |dish| @total += dish.dish_price }
-    @total
+    self.total = 0
+    selection.each { |dish| self.total += dish.dish_price }
+    total
   end
-
 
   private
 
+  attr_writer :total
 
 end
