@@ -30,8 +30,8 @@ class Order
   end
 
   def expected_order_price_incorrect?(expected_cost)
-    expected_cost != current_total.to_i
-    #MYSTERY: SOMETIMES CURRENT TOTAL OUTPUTS A STRING
+    expected_cost != current_total
+    
   end
 
   private

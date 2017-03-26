@@ -14,6 +14,7 @@ class Menu
     restaurant_array = []
     CSV.foreach(csv_file) do |row|
       food, price = row
+      price = price.to_i
       restaurant_array << menu_entry_maker(food,price)
     end
     restaurant_array

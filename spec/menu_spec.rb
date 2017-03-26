@@ -59,7 +59,6 @@ describe Menu do
 
   describe 'on_menu?'do
     before(:example) do
-      #dummy_menu = [{food: "Lasagne"},{food: "Chicken"}]
       allow(menu).to receive(:view) {dummy_menu}
     end
 
