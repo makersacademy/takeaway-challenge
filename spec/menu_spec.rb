@@ -31,6 +31,6 @@ describe Menu do
   end
 
   it 'checks #price(dish) returns correct value' do
-    expect(menu.price(dish)).to eq '%.2f' % 4.50
+    expect(menu.price(dish)).to eq 4.50
   end
 end

@@ -34,6 +34,6 @@ describe Order do
 
   it 'calculates just the integer value of total' do
     order.add(fake_dish, 3)
-    expect(order.dish_total).to eq '%.2f' % 13.50
+    expect(order.total_value).to eq "%.2f" % 13.50
   end
 end

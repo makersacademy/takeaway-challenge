@@ -17,6 +17,6 @@ class Menu
   end
 
   def price(dish)
-    '%.2f' % dishes[dish]
+    dishes[dish]
   end
 end

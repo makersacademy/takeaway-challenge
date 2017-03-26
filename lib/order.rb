@@ -10,20 +10,23 @@ class Order
 
   def add(dish, quantity)
     raise "Can't place order, #{dish} isn't on the menu" unless menu.has_dish?(dish)
-    dishes.merge! dish => quantity
-    # dishes[dish] = quantity
+    # dishes.merge! dish => quantity
+    dishes[dish] = quantity
   end
 
   def total
-    return "Order placed: Your total is £#{dish_total}"
+    return "Order placed: Your total is £#{total_value}"
   end
 
-  def dish_total
-    total = 0.00
+  def dish_totals
     dishes.map do |dish, quantity|
-      total += (menu.price(dish) * quantity)
+      menu.price(dish) * quantity
     end
-    '%.2f' % total
+  end
+
+
+  def total_value
+    "%.2f" % (dish_totals.inject(:+))
   end
 
   private
