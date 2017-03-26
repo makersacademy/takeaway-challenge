@@ -4,6 +4,7 @@ describe Order do
   subject(:order) { described_class.new }
   let(:dish) { double(:dish) }
   let(:amount) { double(:amount) }
+  let(:price) { double(:price) }
 
 
   it 'initializes with an empty array' do
@@ -12,8 +13,9 @@ describe Order do
 
   describe '#add' do
     it 'adds the last entry to the basket' do
-      order.add(dish, amount)
-      expect(order.basket.last).to eq ({dish: dish, amount: amount})
+      allow(price).to receive(:*)
+      order.add(dish, price, amount)
+      expect(order.basket.last.count).to eq 4
     end
   end
 

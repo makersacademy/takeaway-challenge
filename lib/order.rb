@@ -6,7 +6,9 @@ attr_reader :basket
     @basket = []
   end
 
-  def add(dish, amount)
-    basket << { dish: dish, amount: amount }
+  def add(dish, price, amount)
+    basket << { dish: dish, unit_price: price, amount: amount, selection_price: price*amount }
   end
+
+  def 
 end
