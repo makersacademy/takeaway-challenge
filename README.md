@@ -40,7 +40,7 @@ I would like to be able to select several available dishes
 So that I can order the meal I want
 
 As a customer
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+I would like to check that the total I have been given matches the sum of the various dishes in my current order
 So that I can verify that my order is correct
 
 As a customer
