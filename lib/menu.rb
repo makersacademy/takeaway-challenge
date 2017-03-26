@@ -1,8 +1,11 @@
 class Menu
-# class responsible for loading and showing menu
-require_relative 'order'
 
-attr_reader :menu, :new_order, :selected_item
+# class responsible for loading and showing menu
+
+require_relative 'order'
+require_relative 'confirm'
+
+attr_reader :menu, :new_order, :selected_item, :test
 
   def initialize(order_class: Order)
     @menu = []
@@ -52,13 +55,13 @@ attr_reader :menu, :new_order, :selected_item
     puts "Y/N?"
     answer = gets.chomp.capitalize
     if answer == "Y"
-      "#text"
+      confirm = Confirm.new
+      confirm.send
+      "Your order has been placed and you will receive a text confirmation shortly."
     else
       "Your order has not been placed."
     end
   end
-
-
 
 
 private

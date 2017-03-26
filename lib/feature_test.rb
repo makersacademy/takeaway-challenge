@@ -16,3 +16,7 @@ menu.confirm_order
 menu.new_order.basket.total
 
 order = Order.new
+
+require './test'
+confirm = Confirm.new
+confirm.send
