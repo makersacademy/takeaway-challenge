@@ -1,2 +1,2 @@
-require './lib/new_order'
-int = Interface.new
+require './lib/takeaway'
+ta = Takeaway.new

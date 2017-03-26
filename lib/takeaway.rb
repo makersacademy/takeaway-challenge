@@ -2,6 +2,7 @@
 
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
 
 class Takeaway
 
@@ -13,20 +14,16 @@ class Takeaway
     total_correct?
   end
 
-  private
-
-  def welcome
-    puts greeting_message
-    puts menu.display
-    @order = Order.new
-    order.take_order
+  def greeting_message
+    message = "Greetings, Welcome to Ruby Sushi!"
   end
 
   def total_correct?
     breakdown
     answer = gets.chomp.downcase
     if answer == "y"
-      true
+      sms = Sms.new
+      sms.confirmation_sms
     elsif answer == "n"
       incorrect
     else
@@ -45,6 +42,15 @@ class Takeaway
     answer == "n" ? Takeaway.new : exit
   end
 
+  private
+
+  def welcome
+    puts greeting_message
+    puts menu.display
+    @order = Order.new
+    order.take_order
+  end
+
   def breakdown
     puts "--------------"
     puts "Your order:"
@@ -52,10 +58,6 @@ class Takeaway
     order.items.each {|k,v| puts "#{v}x #{k} @ £#{menu.dishes[k]}"}
     puts "Total: £#{order.total}"
     puts "Is this correct? (y/n)"
-  end
-
-  def greeting_message
-    message = "Greetings, Welcome to Ruby Sushi!"
   end
 
 end
