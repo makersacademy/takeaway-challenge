@@ -27,4 +27,10 @@ describe Takeaway do
       takeaway.select_dish(dish, amount)
     end
   end
+
+  describe 'confirm' do
+    it 'confirms that the total price is correct' do
+      
+    end
+  end
 end
