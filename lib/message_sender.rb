@@ -10,6 +10,14 @@ class MessageSender
     @client = Twilio::REST::Client.new @account_sid, @auth_token
   end
 
+  def message_generate
+    time = Time.new
+    hour = time.strftime('%H')
+    mins = time.strftime('%M')
+    hour = hour.to_i + 1
+    "Thank you! Your order was placed and will be delivered before #{hour}:#{mins}"
+  end
+
   def send_message(text)
 
     from = SensitiveInfo::FROM
@@ -24,7 +32,6 @@ class MessageSender
     )
 
   end
-  private
 
 
 end

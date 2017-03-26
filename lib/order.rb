@@ -31,7 +31,7 @@ class Order
 
   def expected_order_price_incorrect?(expected_cost)
     expected_cost != current_total
-    
+
   end
 
   private
