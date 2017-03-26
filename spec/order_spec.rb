@@ -18,7 +18,7 @@ let(:menu) { double :menu, :food_options => {"Corn on the Cob" => 1.50}}
     end
 
     it "can't add a food that isn't on the menu" do
-      expect(order.select_food("Pie", 1)).to raise_error "Sorry, Pie isn't on the menu!"
+      expect{order.select_food("Pie", 1)}.to raise_error "Sorry, Pie isn't on the menu!"
     end
   end
 end
