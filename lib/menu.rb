@@ -15,4 +15,8 @@ class Menu
   def has_dish?(dish)
     dishes.include?(dish) ? true : false
   end
+
+  def price(dish)
+    '%.2f' % dishes[dish]
+  end
 end
