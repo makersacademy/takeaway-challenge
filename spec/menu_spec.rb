@@ -2,36 +2,20 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
-  # let(:mains)
+  let(:dishes) { {lasagna: 10, burger: 5} }
 
-  describe 'mains' do
-    it 'has a list of main dishes' do
-      expect(menu.mains).to eq(mains)
-    end
-
-    it "let's you add item to list of main dishes" do
-      menu.add_main("Salad", "7")
-      expect(menu.mains).to include( {name: "Salad", price: "£7"} )
-    end
+  it 'has a menu' do
+    expect(dishes).to eq (dishes)
   end
 
-  describe '#show_menu' do
-    it 'shows mains' do
-      expect(menu.show_mains).to include ( {name: "Lasagna", price: "£10"} )
-    end
-    it 'shows desserts' do
-      expect(menu.show_desserts).to include ( {name: "Icecream", price: "£5"} )
-    end
+  it 'shows the list of dishes' do
+    dishes = "lasagna: 10, burger: 5"
+    expect(menu.show_dishes).to eq(dishes)
   end
 
-  describe 'desserts' do
-    it 'should initialize with a list of desserts' do
-      expect(menu.desserts).to include( {name: "Icecream", price: "£5"} )
-    end
-
-    it 'let\'s you add item to list of desserts' do
-      menu.add_dessert("Waffles", "8")
-      expect(menu.desserts).to include( {name: "Waffles", price: "£8"} )
-    end
+  it 'lets user add dish' do
+    menu.add_dish('salad', 5)
+    expect(menu.dishes).to have_key(:salad)
   end
+
 end
