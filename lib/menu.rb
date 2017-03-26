@@ -2,6 +2,8 @@ require_relative 'dish'
 
 class Menu
 
+  attr_reader :dishes 
+
 def initialize(filename)
   @dishes = {}
   key = 1
@@ -17,7 +19,7 @@ end
 
 def list_of_dishes
   @dishes.each do |x,y|
-    puts "#{x}.#{y.name}".ljust(20) + "#{y.price}".rjust(20) 
+    puts "#{x}.#{y.name}".ljust(20) + "#{y.price}".rjust(20)
   end
 end
 

@@ -5,11 +5,11 @@ describe Takeout do
 
 subject(:takeout) { described_class.new }
 
-  describe '#menu' do
+describe '#order' do
+  it 'stores the customer orders' do
     
   end
-
-
+end
 
 
 
