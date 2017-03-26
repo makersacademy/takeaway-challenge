@@ -14,6 +14,7 @@
 # order.current_total
 # order.remove(lasagne,2)
 
+#menu.order_total(list_of_correct_names)
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order

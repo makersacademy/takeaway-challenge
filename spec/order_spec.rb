@@ -3,6 +3,7 @@ require 'order'
 describe Order do
 
   subject(:order) { described_class.new }
+  let (:sample_order) { ["Lasagne","Lasagne"] }
 
   describe '#view' do
 
@@ -26,6 +27,15 @@ describe Order do
 
 
 
+  end
+
+  describe '#current_total' do
+    it 'calls order_cost on a menu Class' do
+
+      expect(subject.menu).to receive(:order_cost)
+      subject.current_total
+
+    end
   end
 
 

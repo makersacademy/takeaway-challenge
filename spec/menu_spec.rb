@@ -6,6 +6,10 @@ describe Menu do
   let(:food) { double(:food) }
   let(:price) { double(:price) }
 
+  let(:sample_order1) {[ "Lasagne", "Chicken" ]}
+  let(:sample_order2) { ["Lasagne", "Lasagne"] }
+  let(:dummy_menu) { [{food: "Lasagne", price: 10 }, {food: "Chicken", price: 5}] }
+
   describe '#view' do
     it 'has a non - empty menu' do
       expect(menu.view).not_to be_empty
@@ -13,6 +17,19 @@ describe Menu do
 
     it 'is a type of array' do
       expect(menu.view).to be_a(Array)
+    end
+
+  end
+
+  describe '#order_cost' do
+    it 'finds the price of each item and then adds to a cumulative sum' do
+      allow(menu).to receive(:view) { dummy_menu }
+      expect(menu.order_cost(sample_order1)).to eq(15)
+    end
+
+    it 'finds the price of each item and then adds to a cumulative sum' do
+      allow(menu).to receive(:view) { dummy_menu }
+      expect(menu.order_cost(sample_order2)).to eq(20)
     end
 
   end
@@ -33,6 +50,7 @@ describe Menu do
 
   end
 
+
   describe '#load_csv' do
     it 'menu loads something from csv file' do
       expect(menu.load_csv).not_to be_empty
@@ -41,7 +59,7 @@ describe Menu do
 
   describe 'on_menu?'do
     before(:example) do
-      dummy_menu = [{food: "Lasagne"},{food: "Chicken"}]
+      #dummy_menu = [{food: "Lasagne"},{food: "Chicken"}]
       allow(menu).to receive(:view) {dummy_menu}
     end
 

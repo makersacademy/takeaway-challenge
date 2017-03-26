@@ -28,6 +28,18 @@ class Menu
     menu.dup
   end
 
+  def order_cost(order)
+    total = order.map {|item| get_price(item)}
+    total.reduce(:+)
+  end
+
+  def get_price(food)
+    menu = view
+    menu.each do |entry|
+      return entry[:price] if food == entry[:food]
+    end
+  end
+
   def menu_entry_maker(food,price)
     {
       food: food,
