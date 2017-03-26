@@ -26,10 +26,10 @@ class Takeaway
   end
 
   def place_order(cost)
+    @sms = SMS.new
     fail_message = "Order total is £#{total_order_cost}. You expected £#{cost}."
     message = "Thank you! Your order costs £#{total_order_cost} and will be delivered before #{one_hour_ahead.strftime "%H:%M"}"
     fail fail_message if cost != total_order_cost
-    @sms = SMS.new
     sms.send_sms(message)
     message
   end
