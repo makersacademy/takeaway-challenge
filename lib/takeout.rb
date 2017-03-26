@@ -14,7 +14,6 @@ class Takeout
   def order(key)
     dish = menu.dishes[key]
     my_order.add_dish(dish)
-    # self.total += dish.price
   end
 
   def total
@@ -36,9 +35,5 @@ class Takeout
       body: 'Payment successful.  Your order should be with you soon.'
     )
   end
-
-  private
-
-  attr_writer :total
 
 end
