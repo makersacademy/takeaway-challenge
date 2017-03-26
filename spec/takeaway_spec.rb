@@ -47,15 +47,5 @@ describe Takeaway do
     end
   end
 
-  describe '#send_sms' do
-
-      it 'sends an actual SMS' do
-        VCR.use_cassette('twilio') do
-          subject.add("Hamburger", 3)
-          subject.place_order(15)
-        end
-      end
-  end
-
 
 end
