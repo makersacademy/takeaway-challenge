@@ -1,7 +1,7 @@
-class Menu
+class Menu #stores the available items
 
   def list_items
-    {"pizza" => 5, "soup" => 2}
+    {"pizza" => 4.99, "soup" => 1.99}
   end
 
 end

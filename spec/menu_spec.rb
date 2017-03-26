@@ -8,7 +8,7 @@ describe Menu do
 subject(:menu) {described_class.new}
 
   it "stores the items on the menu, and their prices" do
-    expect(menu.list_items).to eq ({"pizza" => 5, "soup" => 2})
+    expect(menu.list_items).to eq ({"pizza" => 4.99, "soup" => 1.99})
   end
 
 end
