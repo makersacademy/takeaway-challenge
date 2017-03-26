@@ -7,9 +7,7 @@ class Menu
   end
 
   def show_dishes
-    dishes.map do |dish, price|
-      "#{dish}: #{price}"
-    end.join(", ")
+    dishes.map { |dish, price| "#{dish}: #{price}" }.join(", ")
   end
 
   def add_dish(dish, price)
