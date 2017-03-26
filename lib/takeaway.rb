@@ -16,6 +16,12 @@ class Takeaway
     order.add(dish, price, amount)
   end
 
+  def checkout
+    order.confirm
+    puts "Would you like to place the order? (Y/N)"
+    raise "Apologies for getting your order wrong." if $stdin.gets =~ /[n,N]/
+  end
+
   private
   attr_reader :restaurant
 

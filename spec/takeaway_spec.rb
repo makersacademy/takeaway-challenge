@@ -6,31 +6,26 @@ describe Takeaway do
   let(:dish) { double(:dish) }
   let(:amount) { double(:amount) }
   let(:price) { double(:price) }
-  before { $stdin = StringIO.new("Nandos")}
-
 
   describe '#select_dish' do
-
-    # it 'returns the selected dish' do
-    #   expect(takeaway.select_dish(dish, amount)). to eq "#{amount}x #{dish} added to your basket"
-    # end
-
-    # it 'creates a new order' do
-    #   takeaway.select_dish(dish, amount)
-    #   expect(takeaway.order).to be_truthy
-    # end
+    before { $stdin = StringIO.new("Nandos")}
 
     it 'sends the dish and amount to the order' do
-      # takeaway.select_dish(dish, amount)
       allow(takeaway).to receive(:get_price) {price}
       expect(takeaway.order).to receive(:add).with(dish, price, amount)
       takeaway.select_dish(dish, amount)
     end
   end
 
-  describe 'confirm' do
-    it 'confirms that the total price is correct' do
-      
+  describe 'checkout' do
+
+    context 'when the order is not right' do
+      it 'raises an error' do
+        $stdin = StringIO.new("Nandos")
+        takeaway
+        $stdin = StringIO.new("N")
+        expect{takeaway.checkout}.to raise_error "Apologies for getting your order wrong."
+      end
     end
   end
 end

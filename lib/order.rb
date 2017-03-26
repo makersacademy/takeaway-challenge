@@ -1,6 +1,6 @@
 class Order
 
-attr_reader :basket
+  LINE_CENTER = 100
 
   def initialize
     @basket = []
@@ -10,13 +10,20 @@ attr_reader :basket
     basket << { dish: dish, unit_price: price, amount: amount, selection_price: price*amount }
   end
 
+  def confirm
+    basket.each { |selection| puts ("#{selection[:amount]}x #{selection[:dish]}  £#{selection[:unit_price]}").center(LINE_CENTER)}
+    puts ("----------------------------").center(LINE_CENTER)
+    puts ("Total: £#{total}").center(LINE_CENTER)
+  end
+
+  def get_basket
+    basket.dup
+  end
+
+  private
+  attr_reader :basket
   def total
     basket.map { |selection| selection[:selection_price]}.inject(:+)
   end
 
-  def confirm
-    basket.each { |selection| puts ("#{selection[:amount]}x #{selection[:dish]}  £#{selection[:unit_price]}").center(100)}
-    puts ("----------------------------").center(100)
-    puts ("Total: £#{total}").center(100)
-  end
 end
