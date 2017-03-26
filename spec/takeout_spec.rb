@@ -15,7 +15,7 @@ end
 describe '#total' do
   it 'calaculates the order total' do
     takeout.order(1)
-    expect(takeout.total).to eq 1.50
+    expect(takeout.order.total).to eq 1.50
   end
 end
 

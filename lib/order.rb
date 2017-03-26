@@ -1,3 +1,4 @@
+require_relative 'dish'
 
 class Order
   #stores the ordered dishes, and can calculate the total cost.
