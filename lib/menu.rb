@@ -2,21 +2,23 @@ require_relative 'dish'
 
 class Menu
 
-  attr_reader :list_of_dishes
-
-def initialize
-  @list_of_dishes = []
-end
-
-def load(filename)
-opened_menu_file = File.open(filename, 'r')
-opened_menu_file.readlines.each do |line|
-  name, price = line.chomp.split(',')
-  dish = Dish.new(name,price)
-  @list_of_dishes << dish
-end
+def initialize(filename)
+  @dishes = {}
+  key = 1
+  opened_menu_file = File.open(filename, 'r')
+  opened_menu_file.readlines.each do |line|
+    name, price = line.chomp.split(',')
+    dish = Dish.new(name,price)
+    @dishes[key] = dish
+    key += 1
+  end
 opened_menu_file.close
 end
 
+def list_of_dishes
+  @dishes.each do |x,y|
+    puts "#{x}.#{y.name}".ljust(20) + "#{y.price}".rjust(20) 
+  end
+end
 
-end 
+end
