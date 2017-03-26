@@ -1,18 +1,18 @@
 class Interface
 
-  attr_reader :menu, :selection
+  attr_reader :order, :menu
 
   def initialize
     @menu = Menu.new
-    @selection = []
+    @order = Order.new(@menu)
   end
 
   def view_menu
     menu.board
   end
 
-  def choice(argument)
-    selection << view[argument - 1]
+  def ordering(dish_number)
+    order.ordering(dish_number)
   end
 
 

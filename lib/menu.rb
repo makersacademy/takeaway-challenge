@@ -1,14 +1,13 @@
 class Menu
 
-  def board
-    [["Boeuf Bourguignon", 8,50], ["Croque Monsieur", 4,50]]
+  attr_reader :board
+
+  def initialize
+    @board = []
+  end
+
+  def add_dish(dish)
+    board << dish
   end
 
 end
-
-
-
-# croque monsieur
-# boeuf bourguignon
-# pot au feu
-# hachis parmentier
