@@ -1,5 +1,4 @@
-require_relative 'menu'
-
+# adds item to the basket and calculates the total of the order
 class Order
 
   attr_reader :menu
@@ -21,5 +20,4 @@ class Order
     end
     total.round(2)
   end
-
 end

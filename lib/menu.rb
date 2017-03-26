@@ -1,3 +1,4 @@
+# Stores the Menu and checks if items exist
 class Menu
 
   attr_reader :dishes

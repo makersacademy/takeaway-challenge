@@ -44,5 +44,4 @@ class TakeAway
   def price_correct?(amount)
     amount == total
   end
-
 end

@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'twilio-ruby'
 
+# uses the Twilio API to send confirmation text
 class Sms
 
   def send(amount)
@@ -11,7 +12,7 @@ class Sms
     from = "+441158243897" # Your Twilio number
     to = "+447545968261"
 
-    delivery_time = (Time.now + 3600).strftime('%H:%M')
+    time = delivery_time
     amount = amount
 
     client.account.messages.create(
@@ -22,4 +23,9 @@ class Sms
     puts "SMS successfully sent"
   end
 
+  private
+
+  def delivery_time
+    (Time.now + 3600).strftime('%H:%M')
+  end
 end
