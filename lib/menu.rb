@@ -1,11 +1,12 @@
 #displays a list of dishes with prices
+require 'smarter_csv'
 
 class Menu
 
   attr_reader :dishes
 
   def initialize
-    @dishes = {"edamame" => 2, "kaiso" => 4, "maki" => 4, "nigiri" => 3}
+    @dishes = parse
   end
 
   def display
@@ -16,6 +17,15 @@ class Menu
       puts "#{k.capitalize}: £#{v}"
     end
     puts "--------------"
+  end
+
+  private
+
+  def parse
+    data = SmarterCSV.process('./rubysushi.csv')
+    dishes = {}
+    data.each {|v| dishes[v[:plate]] = v[:price]}
+    dishes
   end
 
 end
