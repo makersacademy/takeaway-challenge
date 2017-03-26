@@ -11,4 +11,6 @@ menu.review_order
 menu.remove_item(1)
 menu.review_order
 
+menu.new_order.basket.total
+
 order = Order.new

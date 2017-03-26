@@ -27,6 +27,10 @@ attr_reader :basket
     self.basket.delete(item)
   end
 
+  def total
+    basket.map { |basket| basket[:price].to_i }.reduce(:+)
+  end
+
 private
 
 attr_writer :basket
