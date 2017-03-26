@@ -35,7 +35,7 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-I first broke down using domain modelling. My resulting models were then converted into failing feature tests, then translated into RSpec as failing unit tests. Following that, I wrote my code.
+I first broke down the user stories using domain modelling. My resulting models were then converted into failing feature tests, then translated into RSpec as failing unit tests. Following that, I wrote my code.
 
 I aimed to complete this challenge by using a test-driven approach, using manual feature tests within PRY and automated unit tests using RSpec.
 
@@ -107,5 +107,3 @@ Functional representation:
 | Order                    | take_order          |
 | Calculator                  | total_order            |
 | Text                    | send_text        |
-
-Diagram of communication between objects and messages:

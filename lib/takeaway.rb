@@ -22,14 +22,21 @@ class Takeaway
     breakdown
     answer = gets.chomp.downcase
     if answer == "y"
-      sms = Sms.new
-      sms.confirmation_sms
+      correct
     elsif answer == "n"
       incorrect
     else
       puts "Input invalid: please select 'y' for yes or 'n' for no"
       total_correct?
     end
+  end
+
+  private
+
+  def correct
+    sms = Sms.new
+    sms.confirmation_sms
+    puts "Thank you for visiting Ruby Sushi! We have sent a confirmation text for your order."
   end
 
   def incorrect
@@ -39,10 +46,8 @@ class Takeaway
       puts "Input invalid: Press 'n' to start a new order or 'q' to quit"
       answer = gets.chomp.downcase
     end
-    answer == "n" ? Takeaway.new : exit
+    answer == "n" ? Takeaway.new : abort("Thank you for visiting Ruby Sushi!")
   end
-
-  private
 
   def welcome
     puts greeting_message
@@ -55,7 +60,7 @@ class Takeaway
     puts "--------------"
     puts "Your order:"
     puts "--------------"
-    order.items.each {|k,v| puts "#{v}x #{k} @ £#{menu.dishes[k]}"}
+    order.items.each {|k,v| puts "#{v}x #{k.capitalize} @ £#{menu.dishes[k]}"}
     puts "Total: £#{order.total}"
     puts "Is this correct? (y/n)"
   end

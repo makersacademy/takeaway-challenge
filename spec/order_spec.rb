@@ -7,14 +7,14 @@ describe Order do
     it 'calls the take_order method' do
       expect(order).to respond_to(:take_order)
     end
-
-    it 'expects the order total to be calculated correctly'
-
-
-    it 'stops when done is entered'
-
-    it 'doesnt accept a dish that doesnt exist'
-
+    # 
+    # it 'expects the order total to be calculated correctly'
+    #
+    #
+    # it 'stops when done is entered'
+    #
+    # it 'doesnt accept a dish that doesnt exist'
+    #
 
 
   end

@@ -11,6 +11,6 @@ TWILIO_AUTH_TOKEN = "6a0b2df144dc5cccb6e9c60810686645"
     client.messages.create(
     from: "+441872672068",
     to: "+447716898344",
-    body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 60*60).strftime("%H:%M")}")
+    body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 60*60).strftime("%H:%M")} 🍣")
   end
 end

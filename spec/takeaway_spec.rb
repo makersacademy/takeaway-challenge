@@ -1,6 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
+  #subject(:takeaway) {described_class.new}
   subject(:takeaway) {described_class.new}
 
   describe '#initialize' do
