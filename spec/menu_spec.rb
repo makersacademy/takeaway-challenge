@@ -18,4 +18,6 @@ describe Menu do
     fake_menu = "Katsu Chicken Wrap - £4.50, Roast and Toast Small Box - £3.99, Roast and Toast Big Boy Box - £4.99"
     expect(menu.print_menu).to eq fake_menu
   end
+
+  it {is_expected.to respond_to(menu.has_dish?).with(1).argument}
 end
