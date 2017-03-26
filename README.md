@@ -11,7 +11,7 @@ Takeaway Challenge
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
- 
+
  ```
 
 Instructions
@@ -32,20 +32,20 @@ Task
 
 ```
 As a customer
-So that I can check if I want to order something
 I would like to see a list of dishes with prices
+So that I can check if I want to order something
 
 As a customer
+I would like to be able to select several available dishes
 So that I can order the meal I want
-I would like to be able to select some number of several available dishes
 
 As a customer
+I would like to check that the total I have been given matches the sum of the various dishes in my current order
 So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
 
 As a customer
-So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+So that I am reassured that my order will be delivered on time
 ```
 
 * Hints on functionality to implement:
@@ -69,7 +69,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
