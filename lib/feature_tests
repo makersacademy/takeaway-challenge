@@ -1,2 +1,2 @@
 require './lib/new_order'
-ord = New_Order.new
+int = Interface.new

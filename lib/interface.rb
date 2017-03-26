@@ -17,7 +17,7 @@ class Interface
     puts menu.display
     order = Order.new
     order.take_order
-    puts order.items
+    puts order.total
   end
 
   private
