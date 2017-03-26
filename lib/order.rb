@@ -2,6 +2,8 @@ require_relative 'menu'
 
 class Order
 
+  #adds items onto the current_order and tallies up the total
+
   attr_reader :current_order, :menu, :running_total
 
   def initialize

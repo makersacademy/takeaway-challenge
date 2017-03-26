@@ -1,5 +1,7 @@
 class Menu
 
+  #displays the items on the menu
+
   attr_reader :options
 
   def options
