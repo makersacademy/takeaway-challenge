@@ -1,5 +1,8 @@
 # Allows the user to confirm their selections before sending it.
 
+# require 'Time'
+require './lib/message_sender.rb'
+
 class Order
 
   def initialize
@@ -11,6 +14,14 @@ class Order
   attr_reader :summary, :total_price, :confirmed
 
 
+  def send
+    if confirmed?
+      message = "Thank you! Your order has been sent and will be delivered at #{get_delivery_time}"
+      notify(message)
+    else
+      "Cannot send order: please confirm you order before sending"
+    end
+  end
 
   def confirm
     print_order
@@ -55,6 +66,19 @@ class Order
      total_price
    end
 
+   def get_delivery_time
+     delivery_time = DeliveryTime.new
+     delivery_time.calculate
+   end
+
+   def notify(message)
+     MessageSender.send_message(
+     self.object_id, Information::TO, message)
+      "Confirmation text sent"
+    end
+
+
 
   attr_writer :total_price, :confirmed
+  attr_reader :time
 end

@@ -1,11 +1,13 @@
-# require '/lib/cart.rb'
-# require './lib/order.rb'
+require 'Time'
+
 
 describe Order do
-
   let(:order) {described_class.new}
   let(:cart) {double :cart}
   let(:selected_dish) {{:name => "Vindaloo", :price => 8, :quantity => 2}}
+  let(:message_sender) {double :message_sender, :send_message => "Confirmation text sent"}
+  let(:order_id) {order.object_id}
+
 
   # describe '#initialize' do
   #   it 'should create an order form based on the hash given by the cart' do
@@ -37,6 +39,29 @@ describe Order do
       allow(order).to receive(:confirmed).and_return(true)
       allow(order).to receive(:gets).and_return("Y\n")
       expect{order.confirm}.to output("You have ordered:\nThe total is £0\nConfirm order? (Y/N)\nThank you for confirming your order. You can now send it.\n").to_stdout
+    end
+
+    it 'should raise an exception if the user does not confirm their order' do
+      allow(order).to receive(:confirmed).and_return(false)
+      allow(order).to receive(:gets).and_return("N\n")
+      expect{order.confirm}.to raise_error("Cannot confirm order: user confirmation required.")
+    end
+
+  end
+
+  describe '#send' do
+    @fake_time = Time.parse("22:00")
+    let(:message) {"Thank you! Your order has been sent and will be delivered at "}
+
+    it 'allows the user to send their confirmed order and get a confirmation message' do
+
+      delivery_time = double("delivery_time", :time => @fake_time)
+      allow(delivery_time).to receive(:calculate).and_return(@fake_time)
+      allow(order).to receive(:get_delivery_time).and_return(delivery_time.calculate)
+      allow(order).to receive(:confirmed?).and_return(true)
+      allow(order).to receive(:notify).with(message).and_return("Confirmation text sent")
+      expect(order.send).to eq ("Confirmation text sent")
+
     end
 
   end
