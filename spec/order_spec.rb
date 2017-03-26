@@ -23,4 +23,22 @@ describe Order do
     end
   end
 
+  describe '#print_order' do
+    it 'should allow users to see a list of the dishes they have selected and the total price' do
+      allow(cart).to receive(:basket).and_return(selected_dish)
+      allow(cart).to receive(:checkout).and_return(order.summary << (cart.basket))
+      expect {order.print_order}.to output("You have ordered:\nVindaloo x2\nThe total is £16\n").to_stdout
+    end
+  end
+
+  describe '#confirm' do
+
+    it 'should allow the user to confirm their order' do
+      allow(order).to receive(:confirmed).and_return(true)
+      allow(order).to receive(:gets).and_return("Y\n")
+      expect{order.confirm}.to output("You have ordered:\nThe total is £0\nConfirm order? (Y/N)\nThank you for confirming your order. You can now send it.\n").to_stdout
+    end
+
+  end
+
 end
