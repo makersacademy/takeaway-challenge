@@ -29,7 +29,7 @@ describe Order do
 
   it 'calculates order total' do
     order.add(fake_dish, 3)
-    expect(order.total).to eq "Order placed: Your total is £13.50"
+    expect(order.total).to eq "Thank you, order placed: Your total is £13.50"
   end
 
   it 'calculates just the integer value of total' do

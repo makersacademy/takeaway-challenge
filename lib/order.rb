@@ -15,7 +15,7 @@ class Order
   end
 
   def total
-    return "Order placed: Your total is £#{total_value}"
+    return "Thank you, order placed: Your total is £#{total_value}"
   end
 
   def dish_totals
