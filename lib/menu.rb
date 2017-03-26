@@ -9,10 +9,7 @@ class Menu
   end
 
   def dishes
-	  @raw_dish_database = { dim_sum: 2, 
-  	    fried_rice: 3,
-  	    crispy_chicken: 4,
-  	    pepper_squid: 5 }
+	  @raw_dish_database = { "Dim sum"=>2, "Fried rice"=>3, "Crispy chicken"=>4, "Pepper squid"=>5 }
 	end
 
 end
