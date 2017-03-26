@@ -53,4 +53,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 => <Twilio::REST::Message @path=/2010-04-01/Accounts/TWILIO_ACCOUNT_SID/Messages/TWILIO_AUTH_TOKEN>
 ```
 
-To find out which environment variables you need to run this visit `.env_sample`.
+To find out which environment variables you need to run this visit `.env_sample`. As I used `.env` to keep my keys secure I have failed Makers Travis CI build but passed my own. A fix would be to add my keys to my public files but this is not safe. 
