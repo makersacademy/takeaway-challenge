@@ -1,5 +1,7 @@
 require_relative 'menu'
 
+#Order collectes the customers order and details
+
 class Order
 
   attr_reader :items, :payment, :mobile_number
@@ -39,6 +41,6 @@ class Order
 
   private
 
-  attr_writer :items, :payment, :mobile_number
+  attr_writer :payment, :mobile_number
 
 end

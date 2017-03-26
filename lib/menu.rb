@@ -1,5 +1,7 @@
 class Menu
 
+  #Menu displays the items and prices available
+
   attr_reader :list
 
   def initialize

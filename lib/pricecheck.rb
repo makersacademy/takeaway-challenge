@@ -1,5 +1,7 @@
 require_relative 'order'
 
+#Pricecheck verifies if the payment amount and total are the same
+
 class PriceCheck
 
   attr_reader :total, :menu

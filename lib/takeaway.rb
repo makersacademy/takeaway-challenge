@@ -1,17 +1,28 @@
 require_relative 'pricecheck'
 require_relative 'sms'
 
-menu = Menu.new
-order = Order.new
-pricecheck = PriceCheck.new
+#Takeaway collates functionality to receive and confirm order
 
+class Takeaway
 
-menu.display
-order.input
-order.total(menu)
-pricecheck.sum(order, menu)
+attr_reader :menu, :order, :pricecheck
 
-fail "incorrect payment amount" if !pricecheck.verify(order)
+def initialize
+  @menu = Menu.new
+  @order = Order.new
+  @pricecheck = PriceCheck.new
+end
 
-puts "Thanks for your order! Your confirmation has been sent."
-Sms.text(order.mobile_number)
+def place_order
+  menu.display
+  order.input
+  order.total(menu)
+  pricecheck.sum(order, menu)
+
+  fail "incorrect payment amount" if !pricecheck.verify(order)
+
+  Sms.text(order.mobile_number)
+  puts "Thanks for your order! Your confirmation has been sent."
+end
+
+end
