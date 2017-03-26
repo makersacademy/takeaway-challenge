@@ -5,6 +5,7 @@ describe TakeAway do
   let(:item) { double :item }
   let(:order) { double :order }
   let(:menu) { double :menu }
+  let(:printed_menu) {"Hamburger £3.99, Pizza £9.99, Fish and Chips £4.99, Curry £5.99, Deep Fried Mars Bar £0.99, Coke Zero £1.99"}
 
   describe '#initialize' do
     it 'has an empty basket' do
@@ -12,7 +13,13 @@ describe TakeAway do
     end
   end
 
-  describe '#order' do
+  describe '#view_menu' do
+    it 'prints menu to user' do
+      expect(takeaway.view_menu).to eq printed_menu
+    end
+  end
+
+  describe '#add' do
     it 'takes 2 arguments' do
       expect(takeaway).to respond_to(:add).with(2).argument
     end
