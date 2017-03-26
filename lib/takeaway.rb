@@ -5,15 +5,17 @@
 
 require_relative 'menu'
 require_relative 'order'
+require 'twilio-ruby'
+require 'envyable'
+Envyable.load('./config/env.yml', 'development')
 
 class TakeAway
 
-  attr_reader :menu, :basket, :new_order, :item
+  attr_reader :menu, :new_order, :message, :total
 
 def initialize(menu = Menu.new)
   @menu = menu
   @new_order = Order.new(menu)
-  @basket = []
 end
 
   def show_menu
@@ -22,45 +24,46 @@ end
 
   def add(dish, quantity=1)
     self.new_order.add(dish, quantity)
-    quantity.times { basket << new_order.add(dish) }
     "#{quantity}x #{dish} added to your basket"
   end
 
-  def checkout(price)
-    if price_match?(price)
-      #{ send message }
-      calculate_total
+  def checkout(total)
+    if price_match?(total)
+      # calculate_total
+      "Thank you for your order, Total: £#{total}"
+      # send_text("Thank you for your order: £#{total}")
     else
       "Price doesn't match total"
     end
   end
 
-  def calculate_total
-    total = new_order.total_price(basket)
-    puts "Total £#{total}"
-    total
+
+  #TODO currently in test
+  # Twilo api
+  def send_text(message)
+
+    to = params["to"]
+    message = params["body"]
+    client = Twilio::REST::Client.new(
+    ENV["TWILIO_ACCOUNT_SID"],
+    ENV["TWILIO_AUTH_TOKEN"]
+    )
+
+    client.message.create(
+      to: to,
+      from: "Takeaway",
+      body: message
+    )
   end
 
 
-  #send message to complete_order
-  # def complete_order
-  # end
   private
 
-  attr_writer :item
   attr_writer :menu, :new_order
 
-  def price_match?(price)
-    price.to_f == self.new_order.total_price(basket)
+  def price_match?(total)
+    total.to_f == self.new_order.total_price
   end
-
-  # def confirm_order(my_selection, £total)
-  #   order.amount_due?
-  #   # by giving the list of dishes, their quantities
-  #   # and a number that should be the exact total.
-  #   price_match?
-  # end
-
 
 
 end

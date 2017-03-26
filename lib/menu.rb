@@ -9,7 +9,12 @@ class Menu
   end
 
   def contain_item?(dish)
-    self.dishes.include?(dish)
+    self.dishes.include?(dish) ? true : "#{dish} not available in menu"
   end
+
+  def dish_price(dish)
+    self.dishes[dish]
+  end
+
 
 end

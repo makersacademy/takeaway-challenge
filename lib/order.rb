@@ -4,28 +4,31 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :total, :menu
+  attr_reader :total, :menu, :basket
 
   def initialize(menu)
     @menu = menu
+    @basket = Hash.new(0)
   end
 
   def add(dish, quantity=1)
-    raise "#{dish} not available in menu" unless menu.contain_item?(dish)
+    @basket[dish] += quantity
     dish
   end
 
-  def total_price(basket)
-    total = 0.00
-    basket.each do |item|
-      total += menu.dishes[item]
-    end
+  def total_price
+    total =
+    @basket.inject(0) { |acc, item| acc + (menu.dishes[item.first] * item.last) }
     total.round(2)
+    # @basket.sum{ |dish, quantity| quantity * menu.dishes[dish] }
   end
+
+
+
 
   private
 
-  attr_writer :item
+  attr_writer :basket
 
 
 end

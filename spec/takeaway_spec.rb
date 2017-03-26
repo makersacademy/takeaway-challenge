@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe TakeAway do
   subject(:takeaway) { described_class.new }
-  let(:menu) { double :menu}
+  let(:menu) { double :menu }
   let(:dish) { double :dish }
   let(:quantity) { double :quantity }
   let(:price) { double :price }
@@ -20,8 +20,7 @@ describe TakeAway do
       expect(takeaway).to respond_to(:add).with(2).arguments
     end
 
-    xit 'should confirm added' do
-      allow(menu).to receive(:contain_item?) {true}
+    it 'should confirm item added' do
       expect(takeaway.add(dish, quantity)).to eq "#{quantity}x #{dish} added to your basket"
     end
   end
@@ -31,7 +30,8 @@ describe TakeAway do
       # allow(:takeaway).to receive(:price_match?) { true }
     end
 
-    xit 'should give total if prices match' do
+#TODO
+    it 'should give total if prices match' do
       allow(menu).to receive(:dishes).and_return ({:Pizza => 10})
       takeaway.add(:Pizza)
       expect(takeaway.checkout(50)).to eq 50
@@ -42,12 +42,20 @@ describe TakeAway do
     end
   end
 
-  describe '#calculate_total' do
-    it 'should return total figure' do
-      takeaway.add("Pizza", 2)
-      expect(takeaway.calculate_total).to eq 20
-    end
+
+  before do
+    allow(takeaway).to receive(:send_text)
   end
 
+  xit 'sends a payment confirmation text message' do
+    expect(takeaway).to receive(:send_text).with("Thank you for your order: £20.93")
+    takeaway.complete_order(20.93)
+  end
+
+  describe '#send_message' do
+    xit 'should send a text to customer' do
+      expect(takeaway.send_message).to eq "Your order will be delivered"
+    end
+  end
 
 end
