@@ -1,4 +1,3 @@
 /**/.DS_Store
 /coverage
-
-./lib/private_info.rb
+private_details.rb
