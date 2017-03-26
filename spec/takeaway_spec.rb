@@ -1,15 +1,8 @@
 require 'takeaway'
-require 'webmock/rspec'
 
 describe Takeaway do
   let(:item) {double(:item)}
   let(:dish) {{"Hamburger" => 5}}
-
-  before do
-    stub_request(:post, "https://api.twilio.com/2010-04-01/Accounts/AC033ff5fd1ab50ecf84e702ae695c4053/Messages.json").
-     with(:body => {"Body"=>"This can contain anything.", "From"=>"+441256830268", "To"=>"+447515356421"},).
-     to_return(:body => "")
-  end
 
   describe '#items' do
     it 'contains items initially' do
@@ -52,15 +45,17 @@ describe Takeaway do
       subject.add("Hamburger", 3)
       expect{subject.place_order(3)}.to raise_error "Order total is £15. You expected £3."
     end
-
-    context 'send SMS' do
-      it 'sends an SMS if order is successful' do
-        subject.add("Hamburger", 3)
-        one_hour_ahead = DateTime.now + (1/24.0)
-        expect(subject).to receive(:send_sms).with("Thank you! Your order costs £15 and will be delivered before #{one_hour_ahead.strftime "%H:%M"}")
-        subject.place_order(15)
-      end
-    end
   end
+
+  describe '#send_sms' do
+
+      it 'sends an actual SMS' do
+        VCR.use_cassette('twilio') do
+          subject.add("Hamburger", 3)
+          subject.place_order(15)
+        end
+      end
+  end
+
 
 end
