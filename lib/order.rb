@@ -1,14 +1,19 @@
-#Contains the details of the order and 
+#Contains the details of the order and calculates the total price
 class Order
 
-  LINE_CENTER = 100
+  LINE_CENTER = 115
 
   def initialize
     @basket = []
   end
 
   def add(dish, price, amount)
-    basket << { dish: dish, unit_price: price, amount: amount, selection_price: price*amount }
+    basket << {
+      dish: dish,
+      unit_price: price,
+      amount: amount,
+      selection_price: price*amount
+    }
   end
 
   def confirm
@@ -22,7 +27,9 @@ class Order
   end
 
   private
+
   attr_reader :basket
+
   def total
     basket.map { |selection| selection[:selection_price]}.inject(:+)
   end

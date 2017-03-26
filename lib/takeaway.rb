@@ -21,7 +21,7 @@ class Takeaway
     order.confirm
     puts "Would you like to place the order? (Y/N)"
     raise "Apologies for getting your order wrong." if $stdin.gets =~ /[n,N]/
-    SMS.new.send_message
+    # SMS.new.send_message
     order = nil
   end
 
