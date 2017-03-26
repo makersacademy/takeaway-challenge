@@ -30,7 +30,8 @@ class TakeAway
 
   def checkout(amount)
     fail "Checkout total incorrect" if !price_correct?(amount)
-    Sms.new.send
+    sms = Sms.new
+    sms.send(amount)
   end
 
   private
