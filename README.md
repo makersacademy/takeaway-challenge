@@ -39,7 +39,11 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 My Approach
 -----------
 
-My approach to this challenge consists in creating a takeaway as a main hub that imports a menu. The takeaway can be a restaurant that potentially has a selection of menus to choose from, and the user can view any of these menus.  
+My approach to this challenge consists in creating a takeaway as a main hub that imports a menu. The takeaway can be a restaurant that potentially has a selection of menus to choose from, and the user can view any of these menus.
+
+The client can place orders, select a custom amount of available dishes and receive information of order status. The client then can progress to checkout where the total of the order will be calculated. 
+
+When completing the order, the client receives a text message confirming order with a total. 
 
 Instructions to run, type in Pry or Irb:  
   
@@ -60,4 +64,4 @@ Instructions to run, type in Pry or Irb:
 => [{:dish_name=>"Dim sum", :price=>2, :amount=>3}, {:dish_name=>"Dim sum", :price=>2, :amount=>3}]
 [6] pry(main)> t.complete_order
 ```
->client will receive a message with confirmation of the total of the total<
+>The client will receive a message, confirming order and the total<
