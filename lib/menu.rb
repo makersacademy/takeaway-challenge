@@ -1,8 +1,9 @@
 require_relative 'dish'
 
 class Menu
+  #loads a list of dishes from a CSV file, and can print a legible list of these dishes.
 
-  attr_reader :dishes 
+  attr_reader :dishes
 
 def initialize(filename)
   @dishes = {}

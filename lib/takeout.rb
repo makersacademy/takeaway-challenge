@@ -1,8 +1,10 @@
 require_relative 'menu'
+require_relative 'order'
+require 'twilio-ruby'
 
 class Takeout
 
-  attr_reader :menu, :total, :my_order
+  attr_reader :menu, :my_order
 
   def initialize
     @menu = Menu.new('menu.csv')
@@ -15,9 +17,32 @@ class Takeout
   end
 
   def order(key)
-    @my_order << menu.dishes[key]
+    my_order << menu.dishes[key]
   end
 
+  def show_my_order
+    my_order.each do |dish|
+      puts "#{dish.name}".ljust(20) + "#{dish.price}".rjust(20)
+    end
+  end
 
+  def total
+    my_order.each do |dish|
+      @total += dish.price
+    end
+    @total
+  end
+
+  def pay(sum)
+    raise 'Wrong amount.' if sum.to_f != @total
+    account_sid = 'AC0c20791b57048ba5c24cfa1d05a52a59'
+    auth_token = 'd7b307c5d1866ecf46228e35a13cc527'
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.account.messages.create(
+      from: '+441202237841',
+      to: '+447717022447',
+      body: 'Payment successful.  Your order should be with you soon.'
+    )
+  end
 
 end

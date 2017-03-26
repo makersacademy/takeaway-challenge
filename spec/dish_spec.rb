@@ -16,6 +16,6 @@ describe '#price' do
   it 'tells you the price of the dish' do
     expect(dish.price).to eq 1.50
   end
-end 
+end
 
 end
