@@ -15,22 +15,19 @@ describe TakeAway do
   describe "#order" do
     it "places order of 2 items into basket" do
       t.order("soup", quantity)
-      expect(t.basket.items).to eq [{"soup" => quantity}]
+      expect(t.basket).to eq [{"soup" => quantity}]
     end
 
     it "raises error if non-menu item ordered" do
       expect{t.order("sldkfjx", quantity)}.to raise_error "That item is not on the menu. Try another dish."
     end
-
-    xit "tells the user that their item was added to the basket" do
-      t.order("soup", quantity)
-      expect(STDOUT).to receive(:puts).with("#{quantity}x soup(s) added to your basket.")
-    end
   end
 
   describe "#basket_summary" do
     it "returns a summary of the items in basket" do
-      expect(t.basket_summary)
+      t.order("soup", 4)
+      t.order("pizza", 2)
+      expect(t.basket_summary).to eq ("soup x 4 = £7.96, pizza x 2 = £9.98")
     end
   end
 end

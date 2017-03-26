@@ -1,14 +1,13 @@
 require_relative 'menu'
-require_relative 'basket'
 
-class TakeAway #the user interface
+class TakeAway #stores the items in basket
   attr_reader :basket, :menu
   attr_writer :basket
 
 
-  def initialize(menu = Menu.new, basket = Basket.new)
+  def initialize(menu = Menu.new)
     @menu = menu
-    @basket = basket
+    @basket = []
   end
 
   def read_menu
@@ -18,11 +17,17 @@ class TakeAway #the user interface
   def order(item, quantity = 1)
     raise "That item is not on the menu. Try another dish." unless menu.list_items.key?(item)
     notify(item, quantity)
-    basket.items << {item => quantity}
+    basket << {item => quantity}
   end
 
+  def basket_summary
+    basket.collect { |order| "#{order.keys.pop} x #{order.values.pop} = £#{order.values.pop * menu.list_items[order.keys.pop]}" }.join(", ")
+  end
+
+  private
+
   def notify(item, quantity)
-    puts "#{quantity}x #{item}(s) added to your basket."
+    "#{quantity}x #{item}(s) added to your basket."
   end
 
 end
