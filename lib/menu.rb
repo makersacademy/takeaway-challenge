@@ -9,6 +9,7 @@ class Menu
   def display
     puts "Menu:"
     list.each {|i, d| puts "#{i}: £#{d}"}
+    puts ""
   end
 
 end

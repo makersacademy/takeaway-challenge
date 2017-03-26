@@ -10,8 +10,6 @@ order.input
 order.total(menu)
 pricecheck.sum(order, menu)
 
-fail "incorrect payment amount" if pricecheck.verify(order) == true
+fail "incorrect payment amount" if !pricecheck.verify(order)
 
 puts "You have ordered successfully!"
-
-puts

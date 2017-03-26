@@ -22,13 +22,14 @@ class Order
       break if item == ""
       puts "Please enter quantity"
       quantity = gets.chomp
-      items[item] = quantity_to_i
+      items[item] = quantity.to_i
     end
   end
 
   def total(menu)
     puts "Your order comes to:"
     items.each {|i, q| puts "#{q} #{i}s at £#{menu.list[i]} each"}
+    puts ""
     puts "Please enter the payment amount"
     self.payment = gets.chomp.to_i
     puts "Please enter your mobile number"
