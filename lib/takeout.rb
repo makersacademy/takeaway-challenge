@@ -1,15 +1,19 @@
+
 require_relative 'menu'
 require_relative 'order'
 require_relative 'order_log'
 require 'twilio-ruby'
+require_relative 'twilio'
 
 class Takeout
 
-  attr_reader :menu, :my_order, :previous_orders
+  attr_reader :menu, :my_order, :previous_orders, :private_data
 
   def initialize(foodfile = 'ratties_picnic.csv')
     @menu = Menu.new(foodfile)
     @previous_orders = {}
+    @order_log = OrderLog.new
+    @private_data = PrivateData.new
   end
 
   def order(key)
@@ -27,12 +31,12 @@ class Takeout
 
   def pay(sum)
     raise 'Wrong amount.' if sum.to_f != my_order.total
-    account_sid = 'AC0c20791b57048ba5c24cfa1d05a52a59'
-    auth_token = 'd7b307c5d1866ecf46228e35a13cc527'
+    account_sid = private_data.account_sid
+    auth_token = private_data.auth_token
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.account.messages.create(
-      from: '+441202237841',
-      to: '+447717022447',
+      from: private_data.twilio_number,
+      to: private_data.my_number,
       body: 'Payment successful.  Your order should be with you soon.'
     )
     previous_orders[Time.now] = my_order

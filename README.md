@@ -42,18 +42,18 @@ In IRB
 
 2.3.1 :001 > require './lib/takeout'  
  => true  
-2.3.1 :002 > takeout = Takeout.new('ratties_picnic.csv')  
-=> #<Takeout:0x007fbfe1b59f48 @menu=#<Menu:0x007fbfe1b59f20 @dishes={1=>#<Dish:0x007fbfe1b59908 @name="Cold chicken", @price=1.5>, 2=>#<Dish:0x007fbfe1b597a0 @name="Cold tongue", @price=1.5>, 3=>#<Dish:0x007fbfe1b596b0 @name="Cold ham", @price=1.9>}>, @previous_orders={}>
-2.3.1 :003 > takeout.menu
-=> #<Menu:0x007fbfe1b59f20 @dishes={1=>#<Dish:0x007fbfe1b59908 @name="Cold chicken", @price=1.5>, 2=>#<Dish:0x007fbfe1b597a0 @name="Cold tongue", @price=1.5>, 3=>#<Dish:0x007fbfe1b596b0 @name="Cold ham", @price=1.9>}>  
-2.3.1 :004 > takeout.order(2)
-=> 1.5
-2.3.1 :005 > takeout.order(1)
-=> 3.0
-2.3.1 :006 > takeout.my_order
-=> #<Order:0x007fbfe1bab618 @dishes=[#<Dish:0x007fbfe1b597a0 @name="Cold tongue", @price=1.5>, #<Dish:0x007fbfe1b59908 @name="Cold chicken", @price=1.5>], @total=3.0>
-2.3.1 :007 > takeout.total
-=> 3.0
-2.3.1 :008 > takeout.pay(3)
+2.3.1 :002 > takeout = Takeout.new('ratties_picnic.csv')    
+=> #<Takeout:0x007fbfe1b59f48 @menu=#<Menu:0x007fbfe1b59f20 @dishes={1=>#<Dish:0x007fbfe1b59908 @name="Cold chicken", @price=1.5>, 2=>#<Dish:0x007fbfe1b597a0 @name="Cold tongue", @price=1.5>, 3=>#<Dish:0x007fbfe1b596b0 @name="Cold ham", @price=1.9>}>, @previous_orders={}>  
+2.3.1 :003 > takeout.menu  
+=> #<Menu:0x007fbfe1b59f20 @dishes={1=>#<Dish:0x007fbfe1b59908 @name="Cold chicken", @price=1.5>, 2=>#<Dish:0x007fbfe1b597a0 @name="Cold tongue", @price=1.5>, 3=>#<Dish:0x007fbfe1b596b0 @name="Cold ham", @price=1.9>}>    
+2.3.1 :004 > takeout.order(2)  
+=> 1.5  
+2.3.1 :005 > takeout.order(1)  
+=> 3.0  
+2.3.1 :006 > takeout.my_order  
+=> #<Order:0x007fbfe1bab618 @dishes=[#<Dish:0x007fbfe1b597a0 @name="Cold tongue", @price=1.5>, #<Dish:0x007fbfe1b59908 @name="Cold chicken", @price=1.5>], @total=3.0>  
+2.3.1 :007 > takeout.total  
+=> 3.0  
+2.3.1 :008 > takeout.pay(3)  
 
 and so on!

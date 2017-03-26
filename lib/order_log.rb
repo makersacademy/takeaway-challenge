@@ -8,6 +8,6 @@ end
 
 def record_order(order)
   previous_orders << order
-end 
+end
 
 end
