@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require_relative 'time_function'
 
 class Texter
 
@@ -10,13 +11,11 @@ class Texter
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def send_message
-    #Your new Phone Number is +441530382009
-
+  def send_message(number)
     @client.messages.create(
       from: '+441530382009',
-      to: '+447710669803',
-      body: 'Your order was placed and will be delivered before (TIME SHIZZ). Thank you! 🍖'
+      to: "+#{number}",
+      body: "Your order was placed and will be delivered before #{TimeFunction.new.time_plus_one_hour}. Thank you! 🍖"
     )
   end
 end
