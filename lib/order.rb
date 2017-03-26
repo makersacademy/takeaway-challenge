@@ -15,7 +15,15 @@ class Order
   end
 
   def total
+    return "Order placed: Your total is £#{dish_total}"
+  end
 
+  def dish_total
+    total = 0.00
+    dishes.map do |dish, quantity|
+      total += (menu.price(dish) * quantity)
+    end
+    '%.2f' % total
   end
 
   private

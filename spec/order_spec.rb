@@ -12,6 +12,7 @@ describe Order do
 
   before do
     allow(menu).to receive(:has_dish?).with(fake_dish).and_return(true)
+    allow(menu).to receive(:price).with(fake_dish).and_return(4.50)
   end
 
   describe '#add(dish, quantities)' do
@@ -29,5 +30,10 @@ describe Order do
   it 'calculates order total' do
     order.add(fake_dish, 3)
     expect(order.total).to eq "Order placed: Your total is £13.50"
+  end
+
+  it 'calculates just the integer value of total' do
+    order.add(fake_dish, 3)
+    expect(order.dish_total).to eq '%.2f' % 13.50
   end
 end
