@@ -6,6 +6,7 @@ describe TakeAway do
   let(:order) { double :order }
   let(:menu) { double :menu }
   let(:printed_menu) {"Hamburger £3.99, Pizza £9.99, Fish and Chips £4.99, Curry £5.99, Deep Fried Mars Bar £0.99, Coke Zero £1.99"}
+  let(:sms) { double :sms }
 
   describe '#initialize' do
     it 'has an empty basket' do

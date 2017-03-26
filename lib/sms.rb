@@ -23,8 +23,6 @@ class Sms
     puts "SMS successfully sent"
   end
 
-  private
-
   def delivery_time
     (Time.now + 3600).strftime('%H:%M')
   end
