@@ -3,7 +3,7 @@
 require_relative 'menu'
 require_relative 'order'
 
-class Interface
+class Takeaway
 
   attr_reader :menu, :order
 

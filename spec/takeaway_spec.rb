@@ -1,18 +1,18 @@
-require 'interface'
+require 'takeaway'
 
-describe Interface do
-  subject(:interface) {described_class.new}
+describe Takeaway do
+  subject(:takeaway) {described_class.new}
 
   describe '#initialize' do
     it 'initializes with an instance of menu' do
-      expect(interface.menu).to be_truthy
+      expect(takeaway.menu).to be_truthy
     end
   end
 
   describe '#greeting_message' do
     it 'returns greeting message' do
       message = "Greetings, Welcome to Ruby Sushi!"
-      expect(interface.greeting_message).to eq message
+      expect(takeaway.greeting_message).to eq message
     end
   end
 
