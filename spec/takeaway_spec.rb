@@ -7,9 +7,8 @@ describe Takeaway do
 
   before do
     stub_request(:post, "https://api.twilio.com/2010-04-01/Accounts/AC033ff5fd1ab50ecf84e702ae695c4053/Messages.json").
-     with(:body => {"Body"=>"Thank you! Your order costs £15 and will be delivered before 18:52", "From"=>"+441256830268", "To"=>"+447515356421"},
-      :headers => {'Accept'=>'application/json', 'Accept-Charset'=>'utf-8', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic QUMwMzNmZjVmZDFhYjUwZWNmODRlNzAyYWU2OTVjNDA1Mzo3NDQ2NWE0MjI3NTM3YTQzMzc0MWRkMDc0OTYyOWIzYQ==', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'twilio-ruby/4.13.0 (ruby/x86_64-darwin16 2.3.1-p112)'}).
-     to_return(:status => 200, :body => "", :headers => {})
+     with(:body => {"Body"=>"This can contain anything.", "From"=>"+441256830268", "To"=>"+447515356421"},).
+     to_return(:body => "")
   end
 
   describe '#items' do
@@ -57,7 +56,8 @@ describe Takeaway do
     context 'send SMS' do
       it 'sends an SMS if order is successful' do
         subject.add("Hamburger", 3)
-        expect(subject).to receive(:send_sms)
+        one_hour_ahead = DateTime.now + (1/24.0)
+        expect(subject).to receive(:send_sms).with("Thank you! Your order costs £15 and will be delivered before #{one_hour_ahead.strftime "%H:%M"}")
         subject.place_order(15)
       end
     end
