@@ -10,11 +10,11 @@ describe Order do
     }
   end
 
+  before do
+    allow(menu).to receive(:has_dish?).with(fake_dish).and_return(true)
+  end
 
   describe '#add(dish, quantities)' do
-    before do
-      allow(menu).to receive(:has_dish?).with(fake_dish).and_return(true)
-    end
     it 'adds current order to the order'do
       order.add(fake_dish, 2)
       expect(order.dishes).to eq fake_order
@@ -24,5 +24,10 @@ describe Order do
       allow(menu).to receive(:has_dish?).with(:tomatos).and_return(false)
       expect{order.add(:tomatos, 1)}.to raise_error("Can't place order, #{:tomatos} isn't on the menu")
     end
+  end
+
+  it 'calculates order total' do
+    order.add(fake_dish, 3)
+    expect(order.total).to eq "Order placed: Your total is £13.50"
   end
 end

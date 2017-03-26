@@ -24,7 +24,7 @@ describe Takeaway do
 
     it 'returns total for current order upon #place_order' do
       allow(order).to receive(:add)
-      #allow(order).to receive(:total).and_return("Order placed: Your total is £13.50")
+      allow(order).to receive(:total).and_return("Order placed: Your total is £13.50")
       expect(takeaway.place_order(fake_order)).to eq "Order placed: Your total is £13.50"
     end
   end

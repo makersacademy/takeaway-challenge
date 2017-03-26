@@ -14,6 +14,10 @@ class Order
     # dishes[dish] = quantity
   end
 
+  def total
+
+  end
+
   private
   attr_reader :menu
 
