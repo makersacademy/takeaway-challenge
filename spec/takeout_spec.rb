@@ -5,11 +5,14 @@ describe Takeout do
 
 subject(:takeout) { described_class.new }
 
-  describe '#menu_array' do
+  describe '#menu' do
     it 'returns an array containing dishes and prices' do
-      expect(takeout.menu_array).to include ({:dish=>"Cold chicken", :price=>" 1.50"})
+      expect(takeout.menu).to include ({dish: "Cold chicken", price: " 1.50"})
     end
   end
+
+
+
 
 
 end

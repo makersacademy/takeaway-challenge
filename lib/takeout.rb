@@ -1,19 +1,24 @@
 class Takeout
 
-  attr_reader :menu_array
+  attr_reader :menu, :my_order, :total
 
   def initialize
-    @menu_array = []
+    @menu = []
     opened_menu_file = File.open('menu.csv', 'r')
     opened_menu_file.readlines.each do |line|
       dish, price = line.chomp.split(',')
-      @menu_array << {dish: dish, price: price}
+      menu << {dish: dish, price: price}
     end
     opened_menu_file.close
+
+    @my_order = []
+    @total = 0
   end
 
-  def menu
-    
+  
+
+  def order
+
   end
 
 
