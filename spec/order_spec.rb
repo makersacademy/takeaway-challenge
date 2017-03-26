@@ -2,6 +2,7 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class = Order.new }
+  let (:payment) { double :payment }
 
   describe "#initialize" do
     it "So that I can order the meal I want, initialize order with empty basket" do
@@ -40,8 +41,10 @@ describe Order do
 
       it "So that I can verify customer payment, check that total is 0 when payment complete" do
         order.add_items("Pizza", 3)
+        allow(order).to receive(:confirmation) {false}
         order.payment(24.0)
         expect(order.total).to eq 0
       end
     end
+
   end

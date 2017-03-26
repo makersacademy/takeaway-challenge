@@ -1,9 +1,12 @@
 # Receives order, calculates price and returns total sum
 require './lib/menu.rb'
+require './lib/text.rb'
+
 
 class Order
   attr_reader :basket, :total
   attr_writer :basket, :total
+  
   def initialize
     @basket = []
     @total = 0
@@ -36,9 +39,16 @@ class Order
   def payment(amount)
     if amount == @total
       @total = 0
-      "Payment complete: Thank you for your order! Enjoy!"
+      confirmation
     else
       raise "Incorrect payment amount: Total amount is: £#{@total}"
     end
+  end
+
+  private
+
+  def confirmation
+    twilio = Text.new
+    twilio.send_text_confirmation
   end
 end

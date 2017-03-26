@@ -1,6 +1,7 @@
-Takeaway Challenge
+# Takeaway Challenge
 
-Attempt on the Takeaway Challenge. 
+### Takeaway application which a number of features including: show menu, ordering from the menu,
+### basket, payment and text confirmation.
 
 Takeaway Challenge
 ==================

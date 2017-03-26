@@ -10,13 +10,14 @@
 |             |                   |order         |
 |             |                   |basket_summary|
 |             |                   |total         |
+|             |                   |checkout      |
 |Order        |Basket             |              |
 |             |Total              |              |
 |             |Menu               |              |
 |             |                   |add_items     |
 |             |                   |basket        |
 |             |                   |total        ||
-
+|             |                   |payment      ||
 
 
 ## Domains Models
@@ -92,3 +93,25 @@ I would like to check that the total I have been given **matches the sum** of th
 ### Messages:
 1. Takeaway => Use checkout function to take payment
 2. Takeaway => Check payment matches the total, else raise error
+
+
+## User Story 4
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+### Nouns:
+As a **customer**
+So that I am reassured that my order will be delivered on time
+I would like to receive a **text** such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+### Verbs:
+As a customer
+So that I am **reassured** that my order will be delivered on time
+I would like to **receive** a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+### Objects:
+1. User (customer)
+2. Text
+3. Order = Confirmation
+### Messages:
+1. Text => Send text Message
+2. Order => Confirmation when payment has been made
