@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'sms'
 # Allows customer to place an order
 class Order
 
@@ -26,6 +27,10 @@ class Order
     total = 0
     selection.each { |item| total += item[:price] }
     total
+  end
+
+  def confirm
+    SMS.new.send
   end
 
   private
