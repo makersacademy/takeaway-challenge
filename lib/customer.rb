@@ -18,16 +18,24 @@ class Customer
   end
 
   def select_item(food_item)
-    @order.save_order_items(Menu::MENU_ITEMS.select{|item| item[:food_item] == food_item}[0])
+    @order.save_order_items(Menu::MENU_ITEMS.select { |item| item[:food_item] == food_item}[0])
   end
 
   def place_order(list_of_items, total_cost)
-    #{"chips": 2, "goujons": 5}
+    items_to_order(list_of_items)
+    confirm_order_text(total_cost)
+  end
+
+  private
+
+  def items_to_order(list_of_items)
     list_of_items.each do |food_item, quantity|
       quantity.times { select_item(food_item.to_s) }
     end
-    if @order.check_order_total(total_cost)
-      Texter.new.send_message(@phone_number)
-    end
+  end
+
+  def confirm_order_text(total_cost)
+    return unless @order.check_order_total(total_cost)
+    Texter.new.send_message(@phone_number)
   end
 end

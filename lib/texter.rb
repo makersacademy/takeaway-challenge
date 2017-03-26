@@ -1,8 +1,8 @@
 require 'twilio-ruby'
 require_relative 'time_function'
 
+# class is responsible for sending texts to customers
 class Texter
-
   attr_reader :client
 
   def initialize

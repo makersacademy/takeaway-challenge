@@ -23,4 +23,11 @@ describe Customer do
       expect(Menu::MENU_ITEMS).to eq(:chips)
     end
   end
+
+  describe '#place_order' do
+    it 'allows order to be placed and confirmed' do
+      expect_any_instance_of(Texter).to receive(:send_message)
+      subject.place_order({"Chips": 1}, 1.5)
+    end
+  end
 end
