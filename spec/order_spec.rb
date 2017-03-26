@@ -25,6 +25,12 @@ describe Order do
       expect(order.view.length).to eq(order_size)
     end
 
+    it 'prevents non-menu items being added to order'do
+
+      expect {order.add("Jibberish", 1)}.to raise_error("Not on menu")
+
+    end
+
 
 
   end
@@ -36,6 +42,27 @@ describe Order do
       subject.current_total
 
     end
+  end
+
+  describe '#place_order' do
+
+    before(:example) do
+      order.add("Lasagne", 1)
+
+    end
+    it 'raises error if confirmation cost does not match order cost' do
+      expect { order.place_order(20) }.to raise_error("Expected price does not match order price")
+    end
+
+    it 'current_order should be empty after order is placed' do
+      order.place_order(10)
+      expect(order.view).to be_empty
+
+    end
+  end
+
+  describe '#message_generate' do
+
   end
 
 
