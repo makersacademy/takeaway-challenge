@@ -64,4 +64,4 @@ Instructions to run, type in Pry or Irb:
 => [{:dish_name=>"Dim sum", :price=>2, :amount=>3}, {:dish_name=>"Dim sum", :price=>2, :amount=>3}]
 [6] pry(main)> t.complete_order
 ```
->The client will receive a message, confirming order and the total<
+>The client will receive a message, confirming order and the total
