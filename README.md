@@ -32,20 +32,20 @@ Task
 
 ```
 As a customer
-So that I can check if I want to order something
 I would like to see a list of dishes with prices
+So that I can check if I want to order something
 
 As a customer
+I would like to be able to select several available dishes
 So that I can order the meal I want
-I would like to be able to select some number of several available dishes
 
 As a customer
-So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+So that I can verify that my order is correct
 
 As a customer
-So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+So that I am reassured that my order will be delivered on time
 ```
 
 * Hints on functionality to implement:
@@ -89,18 +89,3 @@ Build Badge Example
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
-
-
-### My class design approach
-
-
-| **Objects**  | **Messages**        |
-|--------------|---------------------|
-| Menu         | dishes              |
-|              | dish_price          |
-|              | available           |
-| OrderBuilder | my_order            |
-|              | order_total         |
-|              | validate_total      |
-|              | place_order         |
-| Order        | fulfil_order        |
