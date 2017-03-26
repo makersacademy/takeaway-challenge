@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'stringio'
 
 describe Takeaway do
 
