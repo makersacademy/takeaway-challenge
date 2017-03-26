@@ -18,7 +18,9 @@ def place_order
   order.input
   order.total(menu)
   pricecheck.sum(order, menu)
+end
 
+def submit_confirmation
   fail "incorrect payment amount" if !pricecheck.verify(order)
 
   Sms.text(order.mobile_number)
