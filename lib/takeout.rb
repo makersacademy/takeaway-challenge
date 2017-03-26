@@ -4,20 +4,21 @@ require 'twilio-ruby'
 
 class Takeout
 
-  attr_reader :menu, :my_order
+  attr_reader :menu, :my_order, :previous_orders
 
-  def initialize
-    @menu = Menu.new('menu.csv')
-    @my_order = Order.new
+  def initialize(foodfile = 'ratties_picnic.csv')
+    @menu = Menu.new(foodfile)
+    @previous_orders = {}
   end
 
   def order(key)
+    @my_order = Order.new if my_order == nil
     dish = menu.dishes[key]
     my_order.add_dish(dish)
   end
 
   def total
-    my_order.total
+    my_order == nil ? 0 : my_order.total
   end
 
   def list_of_dishes
@@ -34,6 +35,12 @@ class Takeout
       to: '+447717022447',
       body: 'Payment successful.  Your order should be with you soon.'
     )
+    previous_orders[Time.now] = my_order
+    self.my_order = nil
   end
+
+  private
+
+  attr_writer :my_order
 
 end
