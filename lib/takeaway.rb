@@ -19,4 +19,9 @@ class Takeaway
   def add_food_to_order(food, quantity = 1)
     order.select_food(food, quantity)
   end
+
+  def show_order
+    order.current_order_string + "Total = #{order.running_total.to_s}"
+  end
+
 end
