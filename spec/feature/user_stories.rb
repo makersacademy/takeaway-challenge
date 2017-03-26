@@ -8,5 +8,15 @@ describe user-stories do
     menu = Menu.new
     expect (menu.mains).not_to raise_error
   end
-  
+
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
+  it 'so i can order, i want to select several dishes'
+    takeaway = Takeaway.new
+    menu = Menu.new
+    order = Order.new
+    expect { takeaway.place_order }.not_to raise_error
+  end
+
 end
