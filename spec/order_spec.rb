@@ -13,6 +13,8 @@ let(:price) { double :price }
 it { is_expected.to respond_to(:add_item) }
 it { is_expected.to respond_to(:show_basket) }
 it { is_expected.to respond_to(:delete_item) }
+it { is_expected.to respond_to(:total) }
+it { is_expected.to respond_to(:summary) }
 
   describe '#add_item' do
     it 'adds a menu item to the basket' do

@@ -1,14 +1,13 @@
 class Order
-require_relative 'menu'
 
-# class responsible for taking and holding order from user
-# selects items from menu to order
-# removes unwanted items from basket
+# class responsible for adding and
+# removing items from basket
 
 attr_reader :basket
 
   def initialize
     @basket = []
+    @total
   end
 
   def add_item(item)
@@ -28,12 +27,16 @@ attr_reader :basket
   end
 
   def total
-    basket.map { |basket| basket[:price].to_i }.reduce(:+)
+    self.total = basket.map { |basket| basket[:price].to_i }.reduce(:+)
+  end
+
+  def summary
+    "You have #{basket.count} items totalling £#{total} in your basket."
   end
 
 private
 
-attr_writer :basket
+attr_writer :basket, :total
 
 
 

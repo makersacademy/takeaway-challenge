@@ -16,9 +16,13 @@ attr_reader :menu, :new_order, :selected_item
 
   def open
     load_menu
+    puts "============"
+    puts "MENU"
+    puts "============"
     menu.each_with_index do |menu, index|
       puts "#{index + 1}. #{menu[:item]}, £#{menu[:price]}"
     end
+    puts "============"
   end
 
   def select_item(item_number)
@@ -26,12 +30,32 @@ attr_reader :menu, :new_order, :selected_item
     @new_order.add_item(@selected_item)
   end
 
-  def review_order
-    @new_order.show_basket
-  end
-
   def remove_item(item_number)
     @new_order.delete_item(item_number)
+  end
+
+  def review_order
+    puts "============"
+    puts "YOUR BASKET"
+    puts "============"
+    @new_order.summary
+    puts "============"
+    @new_order.show_basket
+    puts "============"
+  end
+
+  def confirm_order
+    puts "============"
+    puts "Please check your basket below and confirm you would like this to be delievered"
+    review_order
+    puts "============"
+    puts "Y/N?"
+    answer = gets.chomp.capitalize
+    if answer == "Y"
+      "#text"
+    else
+      "Your order has not been placed."
+    end
   end
 
 
