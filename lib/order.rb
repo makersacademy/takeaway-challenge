@@ -9,7 +9,7 @@ class Order
   attr_writer :total
 
   def initialize
-    @items = []
+    @items = {}
     @total = 0
   end
 
@@ -22,6 +22,7 @@ class Order
       print "Quantity: "
       quantity = gets.chomp.to_i
       add_to_order(dish, quantity)
+      calculate(dish, quantity)
     end
   end
 
@@ -29,12 +30,11 @@ class Order
 
   def calculate(dish, quantity)
     menu = Menu.new
-    puts menu.dishes
     self.total += menu.dishes[dish] * quantity
   end
 
   def add_to_order(dish, quantity)
-    items << {dish => quantity}
+    items[dish] = quantity
   end
 
 
