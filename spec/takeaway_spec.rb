@@ -49,11 +49,6 @@ describe Takeaway do
 
   describe '#sms' do
     it {is_expected.to respond_to(:sms)}
-    describe '#sms.send_sms' do
-      it 'returns the message' do
-        expect(:sms.send_sms).to eq message
-      end
-    end
   end
 
 
