@@ -1,5 +1,6 @@
-# Stores the quantity and details of the dishes selected
-require './lib/dish.rb'
+# Allows users to select dishes from menu in a quantity they specify
+
+require './lib/menu.rb'
 
 class Cart
 
@@ -17,9 +18,17 @@ class Cart
     return selection
   end
 
-  def add_to_basket(dish, quantity)
-    selection = select_dish(dish, quantity)
+  def add_to_basket(dish_number, quantity)
+    selection = select_dish(dish_number, quantity)
     basket.push(selection)
+  end
+
+  def checkout
+    order = Order.new
+    basket.each do |dish|
+      order.summary << dish
+    end
+    order
   end
 
 

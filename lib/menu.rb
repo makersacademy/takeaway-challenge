@@ -15,4 +15,9 @@ class Menu
     list.push(dish)
   end
 
+  def choice(number)
+    dish = list[number - 1]
+    return dish
+  end
+
 end

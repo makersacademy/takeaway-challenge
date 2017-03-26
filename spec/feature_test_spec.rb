@@ -29,4 +29,13 @@ let(:cart) {Cart.new}
         {:name => "Pepperoni Pizza", :price => 7, :quantity => 2}])
   end
 
+#   As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  # it 'allows the user to confirm their order before placing it' do
+  #
+  #
+  # end
+
 end
