@@ -14,7 +14,7 @@ class Order
   end
 
   def take_order
-    puts "What would you like to order?"
+    puts "What would you like to order? Enter 'done' when you are happy with your selection"
     loop do
       print "Dish: "
       dish = gets.chomp.downcase

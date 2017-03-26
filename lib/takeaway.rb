@@ -28,11 +28,21 @@ class Takeaway
     if answer == "y"
       true
     elsif answer == "n"
-      false
+      incorrect
     else
       puts "Input invalid: please select 'y' for yes or 'n' for no"
       total_correct?
     end
+  end
+
+  def incorrect
+    puts "Press 'n' to start a new order or 'q' to quit"
+    answer = gets.chomp.downcase
+    until answer == "n" || answer == "q"
+      puts "Input invalid: Press 'n' to start a new order or 'q' to quit"
+      answer = gets.chomp.downcase
+    end
+    answer == "n" ? Takeaway.new : exit
   end
 
   def breakdown
