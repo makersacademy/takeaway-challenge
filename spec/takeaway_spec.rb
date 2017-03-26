@@ -9,4 +9,8 @@ describe Takeaway do
       expect(takeaway.read_menu).to eq Menu.new.options
     end
   end
+
+  it { is_expected.to respond_to(:add_food_to_order).with(2).arguments }
+
+
 end

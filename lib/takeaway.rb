@@ -3,13 +3,20 @@ require_relative 'menu'
 
 class Takeaway
 
-  attr_reader :menu
+  #In charge of everything and delegating responsibilites to smaller classes!
 
-  def initialize(menu = Menu.new)
+  attr_reader :menu, :order
+
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
+    @order = order
   end
 
   def read_menu
     menu.options
+  end
+
+  def add_food_to_order(food, quantity = 1)
+    order.select_food(food, quantity)
   end
 end
