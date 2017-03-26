@@ -4,31 +4,29 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :total, :menu, :basket
+  attr_reader :total, :menu, :items
 
   def initialize(menu)
     @menu = menu
-    @basket = Hash.new(0)
+    @items = Hash.new(0)
   end
 
+  # add dishes if they already in hash
   def add(dish, quantity=1)
-    @basket[dish] += quantity
+    @items[dish] += quantity
     dish
   end
 
   def total_price
     total =
-    @basket.inject(0) { |acc, item| acc + (menu.dishes[item.first] * item.last) }
+    @items.inject(0) { |acc, item| acc + (self.menu.dishes[item.first] * item.last) }
     total.round(2)
-    # @basket.sum{ |dish, quantity| quantity * menu.dishes[dish] }
+    # @items.sum{ |dish, quantity| quantity * menu.dishes[dish] }
   end
-
-
 
 
   private
 
-  attr_writer :basket
-
+  attr_writer :items
 
 end

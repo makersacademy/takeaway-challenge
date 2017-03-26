@@ -3,23 +3,23 @@ require 'order'
 describe Order do
   subject(:order) { described_class.new(menu) }
   let(:menu) { double :menu }
-  let(:dishes) { double :dishes, price: 1, contains?: true }
+  let(:dishes) { {"Pizza" => 10} }
   let(:dish) { double :dish }
   let(:quantity) { double :quantity }
 
   describe '#add' do
     it 'should add selection to basket' do
       order.add(dish)
-      expect(order.basket).to include dish
+      expect(order.items).to include dish
     end
   end
 
 
   describe '#total_price' do
-    it 'order total to be sum of items added' do
-      order.add(dishes, 1)
-      order.add(dishes, 1)
-      expect(order.total_price).to eq 20
+    xit 'order total to be sum of items added' do
+      cost = dishes["Pizza"] * 2
+      order.add("Pizza", 2)
+      expect(order.total_price).to eq cost
     end
   end
   # describe '#amount_due?' do

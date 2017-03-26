@@ -4,7 +4,8 @@ describe TakeAway do
   subject(:takeaway) { described_class.new }
   let(:menu) { double :menu }
   let(:dish) { double :dish }
-  let(:quantity) { double :quantity }
+  # quanitity error ":quantity can't be coerced into Fixnum"
+  # let(:quantity) { double :quantity }
   let(:price) { double :price }
 
 
@@ -21,6 +22,7 @@ describe TakeAway do
     end
 
     it 'should confirm item added' do
+      quantity = 2
       expect(takeaway.add(dish, quantity)).to eq "#{quantity}x #{dish} added to your basket"
     end
   end
