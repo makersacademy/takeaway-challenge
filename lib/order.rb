@@ -3,14 +3,15 @@ require_relative 'menu'
 class Order
   attr_reader :dishes
 
-  def initialize(menu: menu)
+  def initialize(menu:)
     @menu = menu
     @dishes = {}
   end
 
   def add(dish, quantity)
     raise "Can't place order, #{dish} isn't on the menu" unless menu.has_dish?(dish)
-    dishes[dish] = quantity
+    dishes.merge! dish => quantity
+    # dishes[dish] = quantity
   end
 
   private

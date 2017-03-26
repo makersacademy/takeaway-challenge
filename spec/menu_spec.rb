@@ -10,6 +10,9 @@ describe Menu do
     }
   end
 
+  let(:dish) {:Katsu_Chicken_Wrap}
+  let(:dish3) {:tomatos}
+
   it 'has a list of dishes'do
     expect(menu.dishes).to eq dishes
   end
@@ -19,5 +22,11 @@ describe Menu do
     expect(menu.print_menu).to eq fake_menu
   end
 
-  it {is_expected.to respond_to(menu.has_dish?).with(1).argument}
+  it 'checks dish is on menu' do
+    expect(menu.has_dish?(dish)).to eq true
+  end
+
+  it 'checks dish isn\'t on menu' do
+    expect(menu.has_dish?(dish3)).to eq false
+  end
 end

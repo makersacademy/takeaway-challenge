@@ -21,8 +21,8 @@ describe Takeaway do
       takeaway.place_order(fake_order)
     end
 
-    # it 'gives a total for current_order' do
-    #   expect(takeaway.place_order(fake_order)).to eq "Order placed: Your total is £13.50"
+    # it 'checks given total for current_order' do
+    #   expect(takeaway/order?.????(fake_order)).to eq "Order placed: Your total is £13.50"
     # end
   end
 end
