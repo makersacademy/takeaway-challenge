@@ -1,14 +1,31 @@
-# Select menu items, quantities and places order.
+# Select menu items, quantities and place order.
+require './lib/menu.rb'
+require './lib/order.rb'
 
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :order
 
   def initialize
-    @menu = {"Pizza"=>8.00, "Nachos"=>6.00, "Beer"=>3.00}
+    @menu = Menu.new
+    @order = Order.new
   end
 
   def read_menu
-    @menu
+    @menu.read_menu # TESTED
   end
+
+  def order(item, quantity = 1)
+    @order.add_items(item, quantity)
+    "#{quantity}x #{item}(s) added to your basket." # TESTED
+  end
+
+  def basket_summary
+    @order.basket
+  end
+
+  def total
+    "Your total order is: £#{@order.total}"
+  end
+
 end

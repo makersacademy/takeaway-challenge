@@ -2,9 +2,23 @@
 
 | **Objects** | **Initialize**    | **Messages**
 |-------------|-------------------|--------------|
-| Menu        | List              |              |
-|             |                   |display       |
-|             |                   |select       ||
+| Menu        | Dishes            |              |
+|             |                   |read_menu     |
+|Takeaway     |Menu               |              |
+|             |Order              |              |
+|             |                   |read_menu     |
+|             |                   |order         |
+|             |                   |basket_summary|
+|             |                   |total         |
+|Order        |Basket             |              |
+|             |Total              |              |
+|             |Menu               |              |
+|             |                   |add_items     |
+|             |                   |basket        |
+|             |                   |total        ||
+
+
+
 ## Domains Models
 
 ## User Story 1
@@ -41,8 +55,16 @@ So that I can **order** the meal I want
 I would like to be able to **select** some number of several available dishes
 ### Objects:
 1. User (customer)
-2. Menu
+2. Takeaway
+3. Menu
+4. Order
 
 ### Messages:
-1. Order => Create order: Add food items and quantity.
-2. Order => Look up price, times by quantity and add to sum 
+1. Takeaway => Add food items and quantity.
+2. Takeaway => Return feedback message.
+3. Takeaway => Return basket summary.
+4. Takeaway => Return total cost.
+
+5. Order => Check if items exist on menu, else return error message.
+6. Order => If item exist, add to basket, with quantity, unit cost and calculated total cost.
+7. Order => Add all items to total cost.
