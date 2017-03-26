@@ -1,4 +1,5 @@
 require_relative 'pricecheck'
+require_relative 'sms'
 
 menu = Menu.new
 order = Order.new
@@ -12,4 +13,5 @@ pricecheck.sum(order, menu)
 
 fail "incorrect payment amount" if !pricecheck.verify(order)
 
-puts "You have ordered successfully!"
+puts "Thanks for your order! Your confirmation has been sent."
+Sms.text(order.mobile_number)
