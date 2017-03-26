@@ -17,7 +17,7 @@ Takeaway Challenge
 Task
 -----
 
-* Write a Takeaway program with the following user stories:
+Write a Takeaway program with the following user stories:
 
 ```
 As a customer
