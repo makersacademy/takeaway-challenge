@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'order_log'
 require 'twilio-ruby'
 
 class Takeout
