@@ -30,4 +30,12 @@ describe Takeaway do
         expect(takeaway.total).to eq "Your total order is: £48.0"
       end
     end
+
+    describe "#checkout" do
+      it "So that I can pay for my order, check that total is 0 after completed payment" do
+        takeaway.order("Pizza", 3)
+        takeaway.checkout(24.0)
+        expect(takeaway.total).to eq "Your total order is: £0"
+      end
+    end
   end

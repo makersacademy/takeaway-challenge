@@ -31,4 +31,17 @@ describe Order do
       expect{order.add_items("Pizza", 4)}.to change {order.total}.by 32.00
       end
     end
+
+    describe "#payment" do
+      it "So that I can verify customer payment, raise error if incorrect amount" do
+        order.add_items("Pizza", 3)
+        expect{order.payment(20.0)}.to raise_error "Incorrect payment amount: Total amount is: £24.0"
+      end
+
+      it "So that I can verify customer payment, check that total is 0 when payment complete" do
+        order.add_items("Pizza", 3)
+        order.payment(24.0)
+        expect(order.total).to eq 0
+      end
+    end
   end

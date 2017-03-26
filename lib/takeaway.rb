@@ -28,4 +28,8 @@ class Takeaway
     "Your total order is: £#{@order.total}"
   end
 
+  def checkout(amount)
+    @order.payment(amount)
+  end
+
 end

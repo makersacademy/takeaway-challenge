@@ -53,6 +53,7 @@ I would like to be able to select some **number of several available dishes**
 As a customer
 So that I can **order** the meal I want
 I would like to be able to **select** some number of several available dishes
+
 ### Objects:
 1. User (customer)
 2. Takeaway
@@ -68,3 +69,26 @@ I would like to be able to **select** some number of several available dishes
 5. Order => Check if items exist on menu, else return error message.
 6. Order => If item exist, add to basket, with quantity, unit cost and calculated total cost.
 7. Order => Add all items to total cost.
+
+## Domains Models
+
+## User Story 3
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+### Nouns:
+As a **customer**
+So that I can verify that my **order** is correct
+I would like to check that the **total** I have been given matches the sum of the various dishes in my **order**
+### Verbs:
+As a customer
+So that I can **verify** that my order is correct
+I would like to check that the total I have been given **matches the sum** of the various dishes in my order
+### Objects:
+1. User (customer)
+2. Takeaway
+3.
+### Messages:
+1. Takeaway => Use checkout function to take payment
+2. Takeaway => Check payment matches the total, else raise error

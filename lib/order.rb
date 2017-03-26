@@ -33,4 +33,12 @@ class Order
     @total
   end
 
+  def payment(amount)
+    if amount == @total
+      @total = 0
+      "Payment complete: Thank you for your order! Enjoy!"
+    else
+      raise "Incorrect payment amount: Total amount is: £#{@total}"
+    end
+  end
 end
