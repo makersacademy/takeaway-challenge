@@ -1,5 +1,6 @@
 require_relative 'order'
 require_relative 'restaurant'
+require_relative 'sms'
 
 class Takeaway
 
@@ -20,10 +21,13 @@ class Takeaway
     order.confirm
     puts "Would you like to place the order? (Y/N)"
     raise "Apologies for getting your order wrong." if $stdin.gets =~ /[n,N]/
+    SMS.new.send_message
+    order = nil
   end
 
   private
   attr_reader :restaurant
+  attr_writer :order
 
   def complete?
     !order

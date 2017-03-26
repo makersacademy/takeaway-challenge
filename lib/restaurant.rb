@@ -5,7 +5,7 @@ class Restaurant
   attr_reader :list, :menu
 
   def initialize
-    @list = [:nandos]
+    @list = [:nandos, :mcdonalds]
     @menu = {}
     print_list
   end
@@ -27,14 +27,21 @@ class Restaurant
   def load_menu(option)
     case option
     when "Nandos"
-      CSV.foreach("./lib/Nandos.csv", converters: :numeric) { |option| menu[option[0]] = option[1] }
+      load_file('./lib/Nandos.csv')
+      print_menu
+    when "Mcdonalds"
+      load_file('./lib/McDonalds.csv')
       print_menu
     end
   end
 
+  def load_file(path)
+    CSV.foreach(path, converters: :numeric) { |option| menu[option[0]] = option[1] }
+  end
+
   def print_menu
     puts "Here are today's specials:"
-    menu.each { |key, value| puts ("#{key}, #{value}").center(100)}
+    menu.each { |key, value| puts ("#{key}, #{value}").rjust(200)}
   end
 
 end

@@ -1,3 +1,4 @@
+#Contains the details of the order and 
 class Order
 
   LINE_CENTER = 100
