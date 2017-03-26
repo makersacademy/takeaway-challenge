@@ -1,11 +1,11 @@
 require_relative 'menu'
 require_relative 'order'
-require_relative 'message'
+require_relative 'sms'
 
 #takeaway system user interface
 class TakeAway
 
-  attr_reader :basket, :menu, :order, :message
+  attr_reader :basket, :menu, :order
 
   def initialize
     @basket = []
@@ -30,7 +30,7 @@ class TakeAway
 
   def checkout(amount)
     fail "Checkout total incorrect" if !price_correct?(amount)
-    Message.new
+    Sms.new.send
   end
 
   private
