@@ -20,4 +20,14 @@ class Menu
     return dish
   end
 
+  def print_menu
+    count = 1
+    puts "----------"
+    list.each do |dish|
+      puts "#{count}. #{dish.name}, £#{dish.price}"
+      count += 1
+    end
+    puts "----------"
+  end
+
 end

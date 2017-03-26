@@ -1,6 +1,5 @@
 # Allows the user to confirm their selections before sending it.
 
-# require 'Time'
 require './lib/message_sender.rb'
 
 class Order
@@ -28,7 +27,7 @@ class Order
     puts "Confirm order? (Y/N)"
     gets_confirmation
     raise "Cannot confirm order: user confirmation required." unless confirmed?
-    puts "Thank you for confirming your order. You can now send it."
+    puts "Thank you for confirming your order."
    end
 
    def total
@@ -39,7 +38,7 @@ class Order
       total
       puts "You have ordered:"
       summary.each do |dish|
-        puts "#{dish[:name]} x#{dish[:quantity]}"
+        puts "#{dish[:name]} @£#{dish[:price]} x#{dish[:quantity]}"
       end
       puts "The total is £#{total_price}"
     end
@@ -74,7 +73,7 @@ class Order
    def notify(message)
      MessageSender.send_message(
      self.object_id, Information::TO, message)
-      "Confirmation text sent"
+      puts "Confirmation text sent"
     end
 
 

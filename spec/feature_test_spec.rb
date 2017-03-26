@@ -42,13 +42,13 @@ let(:order) {Order.new}
     order = cart.checkout
     allow(order).to receive(:confirmed).and_return(true)
     allow(order).to receive(:gets).and_return("Y\n")
-    expect{order.confirm}.to output("You have ordered:\nVindaloo x1\nPepperoni Pizza x2\nThe total is £22\nConfirm order? (Y/N)\nThank you for confirming your order. You can now send it.\n").to_stdout
+    expect{order.confirm}.to output("You have ordered:\nVindaloo @£8 x1\nPepperoni Pizza @£7 x2\nThe total is £22\nConfirm order? (Y/N)\nThank you for confirming your order.\n").to_stdout
   end
 
 
 # #   As a customer
 # # So that I am reassured that my order will be delivered on time
 # # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-  
+
 
 end
