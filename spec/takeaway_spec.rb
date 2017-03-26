@@ -18,11 +18,14 @@ describe Takeaway do
 
     it 'takes an order or a certain quantity' do
       expect(order).to receive(:add)
+      allow(order).to receive(:total).and_return(nil)
       takeaway.place_order(fake_order)
     end
 
-    # it 'checks given total for current_order' do
-    #   expect(takeaway/order?.????(fake_order)).to eq "Order placed: Your total is £13.50"
-    # end
+    it 'returns total for current order upon #place_order' do
+      allow(order).to receive(:add)
+      #allow(order).to receive(:total).and_return("Order placed: Your total is £13.50")
+      expect(takeaway.place_order(fake_order)).to eq "Order placed: Your total is £13.50"
+    end
   end
 end

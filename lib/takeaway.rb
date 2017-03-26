@@ -14,7 +14,9 @@ class Takeaway
   def place_order(current_order)
     current_order.each do |dish, quantity|
       order.add(dish, quantity)
+      # order.total
     end
+    order.total
   end
 
   private
