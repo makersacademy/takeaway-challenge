@@ -12,9 +12,9 @@ class Takeout
     @total = 0
   end
 
-  def list_of_dishes
-    menu.list_of_dishes
-  end
+  # def list_of_dishes
+  #   menu.list_of_dishes
+  # end
 
   def order(key)
     dish = menu.dishes[key]
@@ -22,11 +22,11 @@ class Takeout
     self.total += dish.price
   end
 
-  def show_my_order
-    my_order.each do |dish|
-      puts "#{dish.name}".ljust(20) + "#{dish.price}".rjust(20)
-    end
-  end
+  # def show_my_order
+  #   my_order.each do |dish|
+  #     puts "#{dish.name}".ljust(20) + "#{dish.price}".rjust(20)
+  #   end
+  # end
 
   def pay(sum)
     raise 'Wrong amount.' if sum.to_f != total

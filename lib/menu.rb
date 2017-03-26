@@ -1,7 +1,7 @@
 require_relative 'dish'
 
 class Menu
-  #loads a list of dishes from a CSV file, and can print a legible list of these dishes.
+  #loads a list of dishes from a CSV file
 
   attr_reader :dishes
 
@@ -18,10 +18,10 @@ def initialize(filename)
 opened_menu_file.close
 end
 
-def list_of_dishes
-  @dishes.each do |x,y|
-    puts "#{x}.#{y.name}".ljust(20) + "#{y.price}".rjust(20)
-  end
-end
+# def list_of_dishes
+#   @dishes.each do |x,y|
+#     puts "#{x}.#{y.name}".ljust(20) + "#{y.price}".rjust(20)
+#   end
+# end
 
 end

@@ -12,10 +12,10 @@ describe Order do
     end
   end
 
-  
-
-  describe '#total_cost' do
+  describe '#total' do
     it 'returns the total cost of the order' do
+      order.add_dish(dish)
+      expect(order.total).to eq 1.50
     end
   end
 
