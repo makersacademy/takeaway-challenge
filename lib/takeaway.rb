@@ -25,8 +25,15 @@ class TakeAway #stores the items in basket
     basket.collect { |order| "#{order.keys.pop} x #{order.values.pop} = £#{order.values.pop * menu.list_items[order.keys.pop]}" }.join(", ")
   end
 
+  # def total
+  #   z = []
+  #   read_menu.each_pair { |k,v| z.push basket.find {|item| item[k] }[k] * v}
+  #   "Total: £#{z.reduce(:+).round(2)}"
+  # end
+
   def total
-    basket.reduce { |order| order.values}
+    total = (basket.collect {|order| order.values.pop * menu.list_items[order.keys.pop]}).reduce(:+).round(2)
+    "Total: £#{total}"
   end
 
   private

@@ -35,7 +35,7 @@ describe TakeAway do
     it "returns the total cost of items in basket" do
       t.order("soup", 4)
       t.order("pizza", 2)
-      expect(t.total).to eq 17.94
+      expect(t.total).to eq "Total: £17.94"
     end
   end
 end
