@@ -1,5 +1,6 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
+![Travis CI](https://travis-ci.org/kittysquee/takeaway-challenge.svg?branch=master)
 ```
                             _________
               r==           |       |
