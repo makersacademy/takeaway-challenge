@@ -7,6 +7,12 @@ describe Order do
   # let(:input) { 1 }
 
   describe '#add' do
+    let(:quantity) { 3 }
+    let(:selection) {[
+      {:dish=>"Chop Sooy, With White Mushrooms", :price => 2 },
+      {:dish=>"Chop Sooy, With White Mushrooms", :price => 2 },
+      {:dish=>"Chop Sooy, With White Mushrooms", :price => 2 }
+    ]}
 
     context 'input is valid' do
 
@@ -18,13 +24,9 @@ describe Order do
         $stdin = STDIN
       end
 
-      it 'retrieves user input and selects the corresponding dish' do
-        expect(order.add).to eq [{:dish=>"Chop Sooy, With White Mushrooms", :price => 2 }]
-      end
-
-      it "to the order list" do
-        order.add
-        expect(order.selection).to include({:dish=>"Chop Sooy, With White Mushrooms", :price => 2 })
+      it "adds a number of available dishes to the order list" do
+        order.add(quantity)
+        expect(order.selection).to eq selection
       end
 
     end
@@ -40,7 +42,7 @@ describe Order do
       end
 
       it "raises error if user input is not on the menu" do
-        expect{order.add}.to raise_error "Invalid selection: please select a number between 1 and 22"
+        expect{order.add(quantity)}.to raise_error "Invalid selection: please select a number between 1 and 22"
       end
 
     end

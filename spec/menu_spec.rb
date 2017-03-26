@@ -9,7 +9,7 @@ describe Menu do
   end
 
   it 'displays a list of dishes with prices' do
-    expect( menu.view ).to eq SmarterCSV.process('./Mann_Fang_Lowe_Menu.csv')
+    expect(menu.view).to eq SmarterCSV.process('./Mann_Fang_Lowe_Menu.csv')
   end
 
 end

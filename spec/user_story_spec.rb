@@ -3,7 +3,13 @@ describe 'User Stories' do
 
   let(:order) { Order.new }
   let(:menu) { Menu.new }
-  let(:gets) { 1 }
+  let(:quantity) { 3 }
+  let(:selection) { [
+    {:dish=>"Chop Sooy, With White Mushrooms", :price => 2 },
+    {:dish=>"Chop Sooy, With White Mushrooms", :price => 2 },
+    {:dish=>"Chop Sooy, With White Mushrooms", :price => 2 }
+  ]
+  }
 
   before do
     $stdin = StringIO.new("1")
@@ -11,7 +17,7 @@ describe 'User Stories' do
   after do
     $stdin = STDIN
   end
-  
+
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -23,7 +29,8 @@ describe 'User Stories' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   it 'allows a customer to select a number of available dishes' do
-    expect(order.add).to eq [{:dish=>"Chop Sooy, With White Mushrooms", :price => 2 }]
+    order.add(quantity)
+    expect(order.selection).to eq selection
   end
 
   # As a customer
