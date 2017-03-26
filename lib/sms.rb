@@ -10,7 +10,7 @@ class SMS
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def send_message(number)
+  def send_message
     @client.account.messages.create({
         :to => +447564233072,
         :from => +441173254145,
