@@ -4,7 +4,7 @@ require 'twilio-ruby'
 
 class Takeout
 
-  attr_reader :menu, :my_order
+  attr_reader :menu, :my_order, :total
 
   def initialize
     @menu = Menu.new('menu.csv')
@@ -17,7 +17,9 @@ class Takeout
   end
 
   def order(key)
+    dish = menu.dishes[key]
     my_order << menu.dishes[key]
+    self.total += dish.price
   end
 
   def show_my_order
@@ -26,15 +28,8 @@ class Takeout
     end
   end
 
-  def total
-    my_order.each do |dish|
-      @total += dish.price
-    end
-    @total
-  end
-
   def pay(sum)
-    raise 'Wrong amount.' if sum.to_f != @total
+    raise 'Wrong amount.' if sum.to_f != total
     account_sid = 'AC0c20791b57048ba5c24cfa1d05a52a59'
     auth_token = 'd7b307c5d1866ecf46228e35a13cc527'
     @client = Twilio::REST::Client.new account_sid, auth_token
@@ -44,5 +39,9 @@ class Takeout
       body: 'Payment successful.  Your order should be with you soon.'
     )
   end
+
+  private
+
+  attr_writer :total
 
 end
