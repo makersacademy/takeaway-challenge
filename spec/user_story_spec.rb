@@ -5,9 +5,9 @@ describe 'User Stories' do
   let(:menu) { Menu.new }
   let(:quantity) { 3 }
   let(:selection) { [
-    {:dish=>"Chop Sooy, With White Mushrooms", :price => 2 },
-    {:dish=>"Chop Sooy, With White Mushrooms", :price => 2 },
-    {:dish=>"Chop Sooy, With White Mushrooms", :price => 2 }
+    {:dish=>"Chop Sooy, With White Mushrooms", :price => 2.50 },
+    {:dish=>"Chop Sooy, With White Mushrooms", :price => 2.50 },
+    {:dish=>"Chop Sooy, With White Mushrooms", :price => 2.50 }
   ]
   }
 
@@ -36,6 +36,12 @@ describe 'User Stories' do
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  it 'allows user to verify order by checking the total against the sum of the dishes selected' do
+    total = 7.50
+    order.add(quantity)
+    expect(order.total).to eq total
+
+  end
 
   # As a customer
   # So that I am reassured that my order will be delivered on time
