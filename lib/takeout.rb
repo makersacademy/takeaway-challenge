@@ -31,14 +31,8 @@ class Takeout
 
   def pay(sum)
     raise 'Wrong amount.' if sum.to_f != my_order.total
-    account_sid = private_data.account_sid
-    auth_token = private_data.auth_token
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.account.messages.create(
-      from: private_data.twilio_number,
-      to: private_data.my_number,
-      body: 'Payment successful.  Your order should be with you soon.'
-    )
+    private_data.send_text('Payment successful.  Your order should be with you soon.')
+    puts 'Order received!  You should receive a confirmation text shortly.'
     previous_orders[Time.now] = my_order
     self.my_order = nil
   end
