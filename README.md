@@ -9,9 +9,7 @@ I broke the challenge down into its User Stories and tried to tackle them one at
 [1] pry(main)> require './lib/takeaway'
 => true
 [2] pry(main)> takeaway = TakeAway.new
-=> #<TakeAway:0x007ffa6b0ea228
- @basket=[],
- @menu=#<Menu:0x007ffa6b0ea138 @dishes={"Hamburger"=>3.99, "Pizza"=>9.99, "Fish and Chips"=>4.99, "Curry"=>5.99, "Deep Fried Mars Bar"=>0.99, "Coke Zero"=>1.99}>>
+=> #<TakeAway:0x007fb6aa859180 @basket=[], @menu=#<Menu:0x007fb6aa859130 @dishes={"Hamburger"=>3.99, "Pizza"=>9.99, "Fish and Chips"=>4.99, "Curry"=>5.99, "Deep Fried Mars Bar"=>0.99, "Coke Zero"=>1.99}>>
 [3] pry(main)> takeaway.view_menu
 => "Hamburger £3.99, Pizza £9.99, Fish and Chips £4.99, Curry £5.99, Deep Fried Mars Bar £0.99, Coke Zero £1.99"
 [4] pry(main)> takeaway.add("Fish and Chips",2)
@@ -26,4 +24,6 @@ Total: £11.97
 [7] pry(main)> takeaway.checkout(11.97)
 Total: £11.97
 SMS successfully sent
+=> nil
+[8] pry(main)> exit
 ```
