@@ -38,4 +38,13 @@ describe TakeAway do
       expect(t.total).to eq "Total: £17.94"
     end
   end
+
+  describe  "#place_order" do
+    it "sends SMS to customer" do
+      cost = 17.94
+      expect(t.place_order(cost)).to eq message
+    end
+  end
+
+
 end

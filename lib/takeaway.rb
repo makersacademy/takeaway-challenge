@@ -1,8 +1,10 @@
 require_relative 'menu'
+require_relative 'sms'
 require 'twilio-ruby'
+require 'time'
 
 class TakeAway #stores the items in basket
-  attr_reader :basket, :menu
+  attr_reader :basket, :menu, :total
   attr_writer :basket
 
 
@@ -19,8 +21,19 @@ class TakeAway #stores the items in basket
     raise "That item is not on the menu. Try another dish." unless menu.list_items.key?(item)
     confirm_to_user(item, quantity)
     delete_duplicate(item)
+    # order_item()
     basket << {item => quantity}
   end
+
+  def place_order(cost)
+    sms = SMS.new
+    fail_message = "You expected your order to cost #{cost}. It actually costs #{@total}. Please try ordering again."
+    fail fail_message if cost != @total
+    message = "Thank you. Your order costs £#{@total} and will be delivered at #{time_now.strftime "%H:%M"}."
+    sms.send_sms(message)
+    message
+  end
+
 
 
   def basket_summary
@@ -34,23 +47,14 @@ class TakeAway #stores the items in basket
   # end
 
   def total
-    total = (basket.collect {|order| order.values.pop * menu.list_items[order.keys.pop]}).reduce(:+).round(2)
-    "Total: £#{total}"
-  end
-
-  def twillz
-    account_sid = "ACe4e7f5d6667945e5486bd07a9be8168e" # Your Account SID from www.twilio.com/console
-    auth_token = "{{ f3b554ecf44c9d3b2d56c282a570b97c }}"   # Your Auth Token from www.twilio.com/console
-
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    message = @client.account.messages.create(:body => "Hi, it's Colin!!!",
-        :to => "+447933724561",    # Replace with your phone number
-        :from => "+441618507364")  # Replace with your Twilio number
-
-    puts message.sid
+    @total = (basket.collect {|order| order.values.pop * menu.list_items[order.keys.pop]}).reduce(:+).round(2)
+    "Total: £#{@total}"
   end
 
   private
+  def time_now
+    DateTime.now + 1/24.0
+  end
 
   def delete_duplicate(item)
     basket.delete_if { |i| i.include? item }
