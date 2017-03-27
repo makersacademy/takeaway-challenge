@@ -7,8 +7,6 @@ describe Takeaway do
   let(:dish) { double(:dish) }
   let(:amount) { double(:amount) }
   let(:price) { double(:price) }
-  let(:sms) { double(:sms, send_message: "")}
-  let(:sms_class) {double :sms_class, new: sms}
 
   describe '#select_dish' do
     before { $stdin = StringIO.new("Nandos")}
@@ -35,7 +33,7 @@ describe Takeaway do
 
     context 'when the order is correct' do
       it 'sends a confirmation message' do
-        expect(takeaway).to receive_message_chain(:sms_class, :send_message)
+        expect(SMS). to receive(:send_message)
         takeaway.checkout
       end
     end

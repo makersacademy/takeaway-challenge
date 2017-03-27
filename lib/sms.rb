@@ -1,14 +1,14 @@
 require 'twilio-ruby'
 require 'dotenv/load'
 
-class SMS
+module SMS
 
-  def initialize
+  # def initialize
     @client = Twilio::REST::Client.new(
     ENV["TWILIO_ACCOUNT_SID"],
     ENV["TWILIO_AUTH_TOKEN"]
     )
-  end
+  # end
 
   def send_message
     client.account.messages.create(
