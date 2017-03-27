@@ -12,6 +12,7 @@ describe SMS do
       from: "+333",
       to: "+444",
       body: "Thank you, loyal customer! Your order has been successfully placed.\nEstimated Delivery Time: #{Time.now + (60*60)}"
+    }
   end
 
   it 'sends an SMS to confirm the order' do

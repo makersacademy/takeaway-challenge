@@ -1,8 +1,9 @@
 
 describe 'User Stories' do
-
+  let(:takeaway) { Takaway.new}
   let(:order) { Order.new }
   let(:menu) { Menu.new }
+  let(:dish_number) { 1 }
   let(:quantity) { 3 }
   let(:selection) { [
     {:dish=>"Chop Sooy, With White Mushrooms", :price => 2.50 },
@@ -29,7 +30,7 @@ describe 'User Stories' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   it 'allows a customer to select a number of available dishes' do
-    order.add(quantity)
+    order.add(dish_number, quantity)
     expect(order.selection).to eq selection
   end
 
@@ -38,7 +39,7 @@ describe 'User Stories' do
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
   it 'allows user to verify order by checking the total against the sum of the dishes selected' do
     total = 7.50
-    order.add(quantity)
+    order.add(dish_number, quantity)
     expect(order.total).to eq total
 
   end

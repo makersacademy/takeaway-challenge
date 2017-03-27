@@ -7,3 +7,4 @@ gem 'coveralls', require: false
 gem 'capybara'
 gem 'smarter_csv'
 gem 'twilio-ruby'
+gem 'pry'

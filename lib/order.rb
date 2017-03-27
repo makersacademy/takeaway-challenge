@@ -1,20 +1,18 @@
 require_relative 'menu'
-require_relative 'sms'
-# Allows customer to place an order
+# Allows customer to select dishes and review order
 class Order
 
-  attr_reader :selection, :lookup
+  attr_reader :selection, :lookup, :total
   def initialize
     @selection = []
     @menu = Menu.new.dishes
   end
 
-  def add(quantity)
-    input = $stdin.gets.chomp
-    raise "Invalid selection: please select a number between 1 and " + menu[-1][:number].to_s  unless input.to_i.between?(1, menu[-1][:number])
-    lookup = menu.select { |item| item[:number].to_s == input}
+  def add(dish_number, quantity)
+    raise "Invalid selection: please select a number between 1 and " + menu[-1][:number].to_s  unless dish_number.to_i.between?(1, menu[-1][:number])
+    lookup = menu.select { |item| item[:number].to_s == dish_number.to_s}
     addition = lookup[0].select {|key, value| [:dish, :price].include?(key) }
-    quantity.times { self.selection << addition }
+    quantity.to_i.times { self.selection << addition }
   end
 
   def review
@@ -27,10 +25,6 @@ class Order
     total = 0
     selection.each { |item| total += item[:price] }
     total
-  end
-
-  def confirm
-    SMS.new.send
   end
 
   private
