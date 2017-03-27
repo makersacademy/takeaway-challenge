@@ -16,7 +16,7 @@ class Takeaway
   end
 
   def select_dish(dish, amount)
-    # @order = Order.new if complete?
+    @order = Order.new if complete?
     price = get_price(dish)
     order.add(dish, price, amount)
   end
