@@ -1,2 +1,5 @@
 /**/.DS_Store
 /coverage
+/lib/administrators.yml
+/lib/sensitive_info.csv
+/lib/sensitive_info.rb
