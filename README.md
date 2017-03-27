@@ -59,7 +59,7 @@ $ bundle install
 
 ### Example of use
 
-To make an order, then take it off again in IRB:
+To create an order in a REPL:
 
 ```
 $ pry
