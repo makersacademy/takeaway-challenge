@@ -7,8 +7,6 @@ describe Order do
 
   a = {:title => 'ROCK', :type => :main, :food => :fish, :price => 5.6}
   b = {:title => 'PLAICE', :type => :main, :food => :fish,:price =>	5.6}
-  c = {:title => 'HADDOCK', :type => :main,	:food => :fish,:price => 5.6}
-
 
   it { is_expected.to respond_to(:basket) }
 
