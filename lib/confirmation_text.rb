@@ -1,6 +1,7 @@
 require 'twilio-ruby'
 require_relative '../private_details.rb'
 
+# Class responsible for sending confirmation text
 class ConfirmationText
 
   def initialize(client: nil, details: Details.new)

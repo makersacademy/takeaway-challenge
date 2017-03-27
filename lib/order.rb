@@ -10,7 +10,6 @@ class Order
 
   def add(dish, quantity)
     raise "Can't place order, #{dish} isn't on the menu" unless menu.has_dish?(dish)
-    # dishes.merge! dish => quantity
     dishes[dish] = quantity
   end
 

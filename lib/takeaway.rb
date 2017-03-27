@@ -13,16 +13,19 @@ class Takeaway
     menu.print_menu
   end
 
-  def place_order(current_order)#, total)
-    current_order.each do |dish, quantity|
-      order.add(dish, quantity)
-    end
-    #fail "Order could not be placed: total given doesn't match sum of dishes given" if order.total != total
+  def place_order(current_order)
+    add_items(current_order)
     confirmation_text.send_text
     order.total
   end
 
   private
   attr_reader :menu, :order, :confirmation_text
+
+  def add_items(current_order)
+    current_order.each do |dish, quantity|
+      order.add(dish, quantity)
+    end
+  end
 
 end

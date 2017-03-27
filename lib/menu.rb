@@ -13,7 +13,7 @@ class Menu
   end
 
   def has_dish?(dish)
-    dishes.include?(dish) ? true : false
+    dishes.include?(dish)
   end
 
   def price(dish)
