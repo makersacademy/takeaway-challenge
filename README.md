@@ -5,7 +5,7 @@ Work done for the week 2 challenge for [Makers Academy](http://www.makersacademy
 I broke the challenge down into its User Stories and tried to tackle them one at a time. I was more aware about splitting responsibilities into classes. I struggled mostly with writing rspec tests.
 
 ## Example app usage in irb
-```
+```sh
 [1] pry(main)> require './lib/takeaway'
 => true
 [2] pry(main)> takeaway = TakeAway.new
