@@ -7,10 +7,10 @@ class Takeaway
 
 attr_reader :menu, :order, :pricecheck
 
-def initialize
-  @menu = Menu.new
-  @order = Order.new
-  @pricecheck = PriceCheck.new
+def initialize (menu = Menu.new, order = Order.new, pricecheck = PriceCheck.new)
+  @menu = menu
+  @order = order
+  @pricecheck = pricecheck
 end
 
 def place_order

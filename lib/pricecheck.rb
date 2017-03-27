@@ -11,7 +11,7 @@ class PriceCheck
   end
 
   def sum(order, menu)
-    order.items.each { |i, q| self.total += (menu.list[i])*q }
+    order.items.each { |item, quantity| self.total += (menu.list[item])*quantity }
     total
   end
 
