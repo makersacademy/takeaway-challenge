@@ -56,12 +56,12 @@ Instructions to run, type in Pry or Irb:
 [4] feedme.place_order("Dim sum", 3)
 => 3x Dim sum added to basket
 => [{:dish_name=>"Dim sum", :price=>2, :amount=>3}]
-[5] pry(main)> t.place_order("Dim sum", 3)
+[5] pry(main)> feedme.place_order("Dim sum", 3)
 => 3x Dim sum added to basket
 => [{:dish_name=>"Dim sum", :price=>2, :amount=>3}, {:dish_name=>"Dim sum", :price=>2, :amount=>3}]
 [6] pry(main)> feedme.checkout
 => Your total is £24
 => [{:dish_name=>"Dim sum", :price=>2, :amount=>3}, {:dish_name=>"Dim sum", :price=>2, :amount=>3}]
-[6] pry(main)> t.complete_order
+[7] pry(main)> feedme.complete_order
 ```
 >The client will receive a message, confirming order and the total
