@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class TakeAway
 
   def initialize(menu:, order: nil)
@@ -13,9 +15,9 @@ class TakeAway
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
     end
+    order.total
   end
 
-private
-attr_reader :menu, :order
-
+  private
+  attr_reader :menu, :order
 end

@@ -12,4 +12,8 @@ attr_reader :dishes
     end.join(", ")
   end
 
+  def price(dish)
+    dishes[dish]
+  end
+
 end

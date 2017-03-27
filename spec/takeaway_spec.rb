@@ -6,7 +6,7 @@ describe TakeAway do
   let(:menu) { double(:menu, print: printed_menu) }
   let(:printed_menu) { "Samosa: 6.50" }
 
-  let(:order) { double(:order) }
+  let(:order) { instance_double("Order", total: 10) }
   let(:dishes) { {samosa: 1, naan: 5} }
 
 
@@ -18,14 +18,11 @@ describe TakeAway do
     expect(order).to receive(:add).twice
     takeaway.place_order(dishes)
   end
-end
 
-  # describe "#food" do
-  #   allow(food).to receive(:food).and_return(food)
-  # end
-  #
-  # describe "order" do
-  #   it 'allows a user to add food to an order' do
-  #     allow(takeaway.order(food)).to receive(:food).and_return(order)
-  #   end
-  # end
+  it 'shows the price of the dish' do
+    allow(order).to receive(:add)
+    amount = takeaway.sum(dishes)
+    expect(amount).to eq(10)
+  end
+
+end

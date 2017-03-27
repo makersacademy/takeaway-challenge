@@ -18,4 +18,8 @@ end
     printed_menu = "Samosa: 6.50, Naan: 2.50"
     expect(menu.print).to eq(printed_menu)
   end
+
+  it "sums a price" do
+    expect(menu.price(:samosa)).to eq(dishes[:samosa])
+  end
 end
