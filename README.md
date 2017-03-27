@@ -29,11 +29,11 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+
 
 
 **How to run:**
-
+```
 [1] pry(main)> require './lib/takeaway'
 => true
 [2] pry(main)> dishes = {
@@ -51,5 +51,5 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 [7] pry(main)> takeaway.place_order(Katsu_Chicken_Wrap: 5)
 => "Your total is £22.50"
-
+```
 **My process:**
