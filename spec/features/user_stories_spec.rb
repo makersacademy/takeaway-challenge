@@ -1,16 +1,7 @@
 describe 'User stories' do
   let(:takeaway) {Takeaway.new}
   let(:menu) {Menu.new}
-  let(:checkout) {:checkout}
-  let(:added_to_basket) {:added_to_basket}
-  let(:raw_dish_database) { { "Dim sum"=>2, "Fried rice"=>3, "Crispy chicken"=>4, "Pepper squid"=>5 } } 
-  let(:dish) {:dish}
-  let(:number) {:number}
-  let(:dish) {:dish}
-  let(:price) {:price}
-  let(:amount) {:amount}
-  let(:basket) { {dish_name: dish, price: price, amount: amount} }
-  let(:total) {:total} 
+  let(:total) {6}
 
   before do
     allow(takeaway).to receive(:send_text)
@@ -21,12 +12,15 @@ describe 'User stories' do
 	# I would like to see a list of dishes with prices
 	context 'when making an order' do
 	  it 'displays a menu' do
+	  	menu = Menu.new
+	  	dishes = { "Dim sum"=>2, "Fried rice"=>3, "Crispy chicken"=>4, "Pepper squid"=>5 }
 	  	expect(takeaway.view_menu).to eq menu.dishes
 	  end
   end
 
   context 'when displaying menu' do
 	  it 'contains the list of dishes and prices' do
+	  	raw_dish_database = { "Dim sum"=>2, "Fried rice"=>3, "Crispy chicken"=>4, "Pepper squid"=>5 }
 	    expect(menu.dishes).to eq raw_dish_database
 	  end
 	end
@@ -35,29 +29,32 @@ describe 'User stories' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   context 'when placing an order' do
-  	context 'when checking basket' do
-      it 'displays empty orders if no orders added' do
-      	expect(takeaway.orders).to be_empty
-      end
+    it 'displays empty orders if no orders added' do
+    	expect(takeaway.orders).to be_empty
+    end
 
-  	  it 'displays selected orders' do
-  	  	takeaway.add_to_orders(dish, price, amount)
-  	  	expect(takeaway.orders).to eq [basket]
-  	  end
-  	end
+	  it 'displays selected orders' do
+	  	basket = {dish_name: "Dim sum", price: 2, amount: 3}
+	  	takeaway.add_to_orders("Dim sum", 2, 3)
+	  	expect(takeaway.orders).to eq [basket]
+	  end
+
+    it 'selects some number of several available dishes' do
+  		basket = {dish_name: "Dim sum", price: 2, amount: 3}
+      expect(takeaway.place_order("Dim sum", 3)).to eq [basket]
+    end
   end
 
 	# As a customer
 	# So that I can verify that my order is correct
 	# I would like to check that the total I have been given matches the sum of the various dishes in my order
-  # context 'when checking out' do
-  #   it 'checks out the total' do
-	 #    takeaway.add_to_orders(dish, price, amount)
-	 #    allow(takeaway).to receive(:checkout).and_return :total
-	 #  	expect(takeaway.checkout).not_to be_empty
-	 #  end
-  # end
-
+  context 'when checking out' do
+		it 'checks out the total' do
+  		takeaway.add_to_orders("Dim sum", 2, 3)
+  		takeaway.checkout
+  		expect(takeaway.total).to eq 6
+    end
+  end
 
 	# So that I am reassured that my order will be delivered on time
 	# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
