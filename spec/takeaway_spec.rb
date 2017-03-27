@@ -45,24 +45,14 @@ describe Takeaway do
   	  end
   	end	
   end
-
+  
   # describe '#checkout' do
   # 	context 'when checking out' do
-	 #  	context 'when calculating order' do
-	 #  		xit 'calculates order' do
-	 #  		  takeaway.add_to_orders(dish, price, amount)
-	 #        takeaway.checkout
-	 #  		  expect(checkout.calculate_order).to eq total
-	 #  		end
-	 #  	end
-  #   end
-  # end 
-
-  # describe '#calculate_order' do
-  #   context 'when calculating orders' do
-  #     xit 'calculates total' do
-  #     	expect(takeaway.checkout).to eq total
-  #     end
+  #     it 'checks out the total' do
+	 #  		takeaway.add_to_orders(dish, price, amount)
+	 #      allow(takeaway).to receive(:checkout).and_return :total
+	 #  		expect(takeaway.checkout).not_to be_empty
+	 #    end
   #   end
   # end 
 
