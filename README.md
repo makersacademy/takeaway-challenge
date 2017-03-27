@@ -1,7 +1,59 @@
 # Takeaway Challenge
 
-### Takeaway application which a number of features including: show menu, ordering from the menu,
-### basket, payment and text confirmation.
+Takeaway order application which allows customers to order dishes and quantities from a menu, see basket and total cost, checkout, make payment and receive an order confirmation text.
+
+### Key features:
+- Shows menu with a list of dishes and prices
+- Allows for orders from the menu, specifying dishes and quantity
+- Adds items and quantities to the basket
+- Shows basket summary including item, quantity, unit price and total price
+- Shows total price of the order
+- Allows customer to checkout and make a payment
+- Customer receives text confirmation that order will be received one hour after the time of the order
+
+### To install:
+1. In the appropriate directory, git clone https://github.com/connie-reinholdsson/takeaway-challenge.git
+
+2. Run IRB or PRY
+3. Input './lib/takeaway.rb'
+4. Input name and set it to a new takeaway order: 'connie = Takeaway.new'
+4. List of commands to use the programme:
+
+
+- Display menu: connie.read_menu
+- Order items: connie.order("Nachos", 3)
+- Order more items: connie.order("Pizza", 4)
+- See basket: connie.basket_summary
+- See total: connie.total
+- Checkout (has to be the same as total): c connie.checkout(50)
+
+Receive text confirmation.
+
+
+## Class Design Approach
+
+| **Objects** | **Initialize**    | **Messages**
+|-------------|-------------------|--------------|
+| Menu        | Dishes            |              |
+|             |                   |read_menu     |
+|Takeaway     |Menu               |              |
+|             |Order              |              |
+|             |                   |read_menu     |
+|             |                   |order         |
+|             |                   |basket_summary|
+|             |                   |total         |
+|             |                   |checkout      |
+|Order        |Basket             |              |
+|             |Total              |              |
+|             |Menu               |              |
+|             |                   |add_items     |
+|             |                   |basket        |
+|             |                   |total         |
+|             |                   |payment       |
+|             |                   |confirmation ||
+
+
+
 
 Takeaway Challenge
 ==================

@@ -13,5 +13,4 @@ message = @client.account.messages.create(:body => "Thank you! Your order was pl
 
 puts message.sid
   end
-
 end

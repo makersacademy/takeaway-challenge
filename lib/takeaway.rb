@@ -12,7 +12,7 @@ class Takeaway
   end
 
   def read_menu
-    @menu.read_menu # TESTED
+    @menu.read_menu
   end
 
   def order(item, quantity = 1)

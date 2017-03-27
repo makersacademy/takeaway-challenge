@@ -6,7 +6,7 @@ describe Order do
 
   describe "#initialize" do
     it "So that I can order the meal I want, initialize order with empty basket" do
-      expect(order.basket).to eq []
+      expect(order.basket).to eq ""
     end
 
     it "So that I can order the meal I want, initialize order with 0 balance" do
@@ -23,7 +23,7 @@ describe Order do
     describe "#basket" do
       it "So that I can order the meal I want, checks order is added to the basket" do
         order.add_items("Pizza", 4)
-        expect(order.basket).to eq ["4x Pizza(s), Unit price: 8.0, Total price: 32.0"]
+        expect(order.basket).to eq "4x Pizza(s), Unit price: 8.0, Total price: 32.0"
       end
     end
 
@@ -46,5 +46,4 @@ describe Order do
         expect(order.total).to eq 0
       end
     end
-
   end

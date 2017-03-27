@@ -6,7 +6,7 @@ require './lib/text.rb'
 class Order
   attr_reader :basket, :total
   attr_writer :basket, :total
-  
+
   def initialize
     @basket = []
     @total = 0
@@ -29,7 +29,7 @@ class Order
   def basket
     @basket.map do |arr|
     "#{arr[1]}x #{arr[0]}(s), Unit price: #{arr[2]}, Total price: #{arr[3]}"
-    end
+  end.join( )
   end
 
   def total

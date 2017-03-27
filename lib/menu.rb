@@ -9,4 +9,5 @@ class Menu
   def read_menu
     @dishes
   end
+
 end

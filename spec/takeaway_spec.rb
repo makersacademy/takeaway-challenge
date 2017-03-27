@@ -19,7 +19,7 @@ describe Takeaway do
     describe "#basket_summary" do
       it "So that I can order the meal I want, check basket_summary returns my orders" do
         takeaway.order("Pizza", 3)
-        expect(takeaway.basket_summary).to eq ["3x Pizza(s), Unit price: 8.0, Total price: 24.0"]
+        expect(takeaway.basket_summary).to eq "3x Pizza(s), Unit price: 8.0, Total price: 24.0"
       end
     end
 
@@ -30,5 +30,4 @@ describe Takeaway do
         expect(takeaway.total).to eq "Your total order is: £48.0"
       end
     end
-
   end
