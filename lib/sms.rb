@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 class SMS
 
   def send_sms(message)

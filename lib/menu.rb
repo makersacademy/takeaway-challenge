@@ -14,5 +14,11 @@ class Menu
     "Burrito" => 6}
   end
 
+  def view
+    dishes.map do |name, price|
+      "%s £%.2f" % [name.to_s.capitalize, price]
+    end.join(", ")
+  end
+
 
 end
