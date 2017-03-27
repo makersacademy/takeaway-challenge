@@ -51,12 +51,11 @@ describe 'User stories' do
 	# So that I can verify that my order is correct
 	# I would like to check that the total I have been given matches the sum of the various dishes in my order
   # context 'when checking out' do
-  # 	context 'when calculating order' do
-  # 		xit 'calculates order' do
-  # 		  takeaway.add_to_orders(dish, price, amount)
-  # 		  expect(takeaway.checkout).to eq total
-  # 		end
-  # 	end
+  #   it 'checks out the total' do
+	 #    takeaway.add_to_orders(dish, price, amount)
+	 #    allow(takeaway).to receive(:checkout).and_return :total
+	 #  	expect(takeaway.checkout).not_to be_empty
+	 #  end
   # end
 
 
