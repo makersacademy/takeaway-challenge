@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :dishes, :sum, :add
+  attr_reader :dishes
 
   def initialize(menu)
     @dishes = {}
@@ -8,20 +8,23 @@ class Order
   end
 
   def add(dish, quantity)
+    fail NoItemError, "#{dish.capitalize} is not an option." unless menu.has_dish?(dish)
     dishes[dish] = quantity
   end
 
-  def sum
-    total_amount.inject(:+)
+  def total
+    item_totals.inject(:+)
   end
 
   private
   attr_reader :menu
 
-  def total_amount(dishes)
+  def item_totals
     dishes.map do |dish, quantity|
       menu.price(dish) * quantity
     end
   end
 
 end
+
+class NoItemError < StandardError; end

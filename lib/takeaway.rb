@@ -7,7 +7,7 @@ class TakeAway
     @order = order || Order.new
   end
 
-  def read_menu
+  def print_menu
     menu.print
   end
 
