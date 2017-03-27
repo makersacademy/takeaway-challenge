@@ -35,6 +35,16 @@ describe Order do
   it 'should report the correct total' do
     expect(order.payment).to eq 22
   end
+end
+
+describe '#get_number' do
+  before do
+    allow(order).to receive(:gets).and_return("tofu\n", "4\n", "seitan\n", "2\n", "")
+    order.input
+    allow(order).to receive(:gets).and_return("22\n", "a number")
+    order.total(menu)
+    order.get_number
+  end
 
   it 'should return the correct number' do
     expect(order.mobile_number).to eq 'a number'

@@ -1,8 +1,10 @@
 require_relative 'menu'
+require_relative 'language'
 
 #Order collectes the customers order and details
 
 class Order
+
 
   attr_reader :items, :payment, :mobile_number
 
@@ -13,28 +15,28 @@ class Order
   end
 
   def input
-    puts "Please enter item"
+    Language.request_dish
     item = gets.chomp
-    puts "Please enter quantity"
+    Language.request_quantity
     quantity = gets.chomp
     items[item] = quantity.to_i
     while true
-      puts "Please enter item"
+      Language.request_dish
       item = gets.chomp
       break if item == ""
-      puts "Please enter quantity"
+      Language.request_quantity
       quantity = gets.chomp
       items[item] = quantity.to_i
     end
   end
 
   def total(menu)
-    puts "Your order comes to:"
-    items.each {|i, q| puts "#{q} #{i}s at £#{menu.list[i]} each"}
-    puts ""
-    puts "Please enter the payment amount"
+    Language.confirm(items, menu)
     self.payment = gets.chomp.to_i
-    puts "Please enter your mobile number"
+  end
+
+  def get_number
+    Language.number
     self.mobile_number = gets.chomp
   end
 
