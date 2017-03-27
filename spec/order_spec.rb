@@ -19,6 +19,12 @@ describe Order do
     end
   end
 
-
+  describe '#reset' do
+    it 'resets the dishes to empty' do
+      order.add_dish(dish)
+      order.reset
+      expect(order.dishes).to eq []
+    end
+  end
 
 end

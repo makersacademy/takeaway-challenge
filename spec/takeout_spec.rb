@@ -4,7 +4,11 @@ require 'takeout'
 describe Takeout do
 
 subject(:takeout) { described_class.new }
-# let(:dish) {double :dish}
+let(:chicken) {double :dish}
+let (:menu) do {
+  1 => chicken
+}
+end
 
 describe '#order' do
   it 'stores the customer orders' do
@@ -20,10 +24,10 @@ describe '#total' do
   end
 end
 
-describe '#list_of_dishes' do
+describe '#basket' do
   it 'returns a list of dishes ordered' do
     takeout.order(1)
-    expect(takeout.list_of_dishes).to eq [takeout.menu.dishes[1]]
+    expect(takeout.basket).to eq [takeout.menu.dishes[1]]
   end
 end
 

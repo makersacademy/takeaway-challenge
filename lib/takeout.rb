@@ -2,43 +2,46 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'order_log'
-require 'twilio-ruby'
 require_relative 'twilio'
 
 class Takeout
 
-  attr_reader :menu, :my_order, :previous_orders, :private_data
+  attr_reader :menu, :my_order, :private_data, :order_log
 
   def initialize(foodfile = 'ratties_picnic.csv')
-    @menu = Menu.new(foodfile)
-    @previous_orders = {}
+    @menu = Menu.new(foodfile).dishes
     @order_log = OrderLog.new
     @private_data = PrivateData.new
+    @my_order = Order.new
   end
 
   def order(key)
-    @my_order = Order.new if my_order == nil
-    my_order.add_dish(menu.dishes[key])
+    my_order.add_dish(menu[key])
   end
 
   def total
-    my_order == nil ? 0 : my_order.total
+    my_order.total
   end
 
-  def list_of_dishes
+  def basket
     my_order.dishes
   end
 
   def pay(sum)
+    raise 'Nothing ordered yet!' if my_order.dishes.empty?
     raise 'Wrong amount.' if sum.to_f != my_order.total
     private_data.send_text('Payment successful.  Your order should be with you soon.')
-    puts 'Order received!  You should receive a confirmation text shortly.'
-    previous_orders[Time.now] = my_order
-    self.my_order = nil
+    puts 'Order received!'
+    complete_order
   end
 
   private
 
   attr_writer :my_order
+
+  def complete_order
+    order_log.record_order(my_order)
+    my_order.reset
+  end
 
 end

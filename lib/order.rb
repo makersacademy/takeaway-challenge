@@ -12,10 +12,12 @@ class Order
     self.total += dish.price
   end
 
+  def reset
+    @dishes = []
+  end
+
   private
 
-  attr_writer :total
-
-
+  attr_writer :total, :dishes 
 
 end
