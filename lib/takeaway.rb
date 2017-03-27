@@ -1,34 +1,44 @@
+#This class is the user interface for a takeaway order system
+require_relative 'menu'
+require_relative 'order'
+require_relative 'sms'
+
 class Takeaway
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :order_class, :sms
+  attr_accessor :order
 
-  def initialize(menu_class, order_class)
-    @menu = menu.New
-    @basket = []
+  def initialize(:menu, :order_class, :config, sms: nil)
+    @menu = menu
+    @order_class = order_class
+    @sms = sms || Sms.new(config)
   end
 
   def read_menu
-    menu
+    menu.print
   end
 
-  def order(dish)
-    basket << dish
+  def begin_order
+    @order = order_class.new(menu)
   end
 
-  def view_basket
-    basket
+  def add(item, quantity=1)
+    order.add(item, quantity)
   end
 
-  def total
-    basket.each {|dish| dish.price }
+  def place_order(price)
+    fail "Price is incorrect" if !price_correct?(price)
+    send_sms
+  end
 
   private
 
-  attr_writer :basket
+  def price_correct?(price)
+    price == order.total
+  end
 
-  def dish_price_totals
-    basket.map do |dish|
-      dish.price
+  def send_sms
+    sms.send
   end
 
 end
