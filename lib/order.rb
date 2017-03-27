@@ -8,7 +8,7 @@ class Order
   end
 
   def add(item)
-    fail "#{item} does't exist on the menu" if menu.does_not_contain?(item)
+    fail "#{item} doesn't exist on the menu" if menu.does_not_contain?(item)
     item
   end
 
