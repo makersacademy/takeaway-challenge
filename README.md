@@ -34,3 +34,8 @@ Takeaway is responsible for the user's interaction and calculation of the total 
 
 
 Currently the user calls takeaway.calculate_total method, but if this is not explicitly called it will be called when the order is placed and the user passes in the expected total cost. The user can check the total at any time after this method is called by calling takeaway.total.
+
+
+Technologies used:
+- Ruby
+- Twilio (an SMS ruby gem)
