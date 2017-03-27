@@ -6,18 +6,19 @@ class Takeaway
 
   ORDER_TOTAL = @total
 
-	attr_reader :import_menu, :view_menu, :orders, :basket, :dish, :amount, :price, :checkout, :amount_total, :price_total, :total
+	attr_reader :import_menu, :view_menu, :orders, :basket, :dish, :amount, :price, :checkout, :total
 
 	def initialize
     @view_menu
     @orders = []
     @dish
     @amount
+    @total
 	end
 
 	def view_menu
 		@import_menu = Menu.new
-		menu = self.import_menu.dishes
+		menu = import_menu.dishes
 	end
 
 	def place_order(dish, amount)
@@ -26,7 +27,7 @@ class Takeaway
 		  @dish = dish
 		  @amount = amount
 		  @price = view_menu[dish]
-		  self.add_to_orders(dish, price, amount)
+		  add_to_orders(dish, price, amount)
 		end
 	end
 
@@ -35,15 +36,18 @@ class Takeaway
 	end
 
 	def checkout
-    @amount_total = self.orders.inject(0) {|sum, hash| sum + hash[:amount]}
-		@price_total = self.orders.inject(0) {|sum, hash| sum + hash[:price]}
-		@total = (self.amount_total) * (self.price_total)
-		puts "Your total is £#{self.total}"
-		@orders
+    amount_total = orders.inject(0) {|sum, hash| sum + hash[:amount]}
+		price_total = orders.inject(0) {|sum, hash| sum + hash[:price]}
+		@total = (amount_total) * (price_total)
+		puts "Your total is £#{total}"
+	end
+
+	def total
+		@total
 	end
 
   def complete_order
-  	send_text("Thank you for your order: £#{self.total}")
+  	send_text("Thank you for your order: £#{total}")
   end
 
   def send_text(complete_order)
