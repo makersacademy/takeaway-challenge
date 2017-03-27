@@ -18,7 +18,7 @@ class Customer
   end
 
   def select_item(food_item)
-    @order.save_order_items(Menu::MENU_ITEMS.select { |item| item[:food_item] == food_item}[0])
+    order.save_order_items(Menu::MENU_ITEMS.select { |item| item[:food_item] == food_item}[0])
   end
 
   def place_order(list_of_items, total_cost)
@@ -35,7 +35,7 @@ class Customer
   end
 
   def confirm_order_text(total_cost)
-    return unless @order.check_order_total(total_cost)
-    Texter.new.send_message(@phone_number)
+    return unless order.check_order_total(total_cost)
+    Texter.new.send_message(phone_number)
   end
 end
