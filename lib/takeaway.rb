@@ -1,7 +1,9 @@
 require_relative 'order'
 require_relative 'restaurant'
 require_relative 'sms'
+require_relative 'fake_sms'
 include SMS
+include FakeSms
 
 
 class Takeaway
