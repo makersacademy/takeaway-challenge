@@ -1,5 +1,6 @@
 #displays a list of dishes with prices
 require 'smarter_csv'
+require 'words'
 
 class Menu
 
@@ -10,13 +11,11 @@ class Menu
   end
 
   def display
-    puts "--------------"
-    puts "Todays's Menu:"
-    puts "--------------"
-    dishes.each do |k,v|
-      puts "#{k.capitalize}: £#{v}"
+    Words.menu_header
+    dishes.each do |plate,price|
+      puts "#{plate.capitalize}: £#{price}"
     end
-    puts "--------------"
+    Words.line
   end
 
   private
@@ -24,7 +23,7 @@ class Menu
   def parse
     data = SmarterCSV.process('./rubysushi.csv')
     dishes = {}
-    data.each {|v| dishes[v[:plate]] = v[:price]}
+    data.each {|dish| dishes[dish[:plate]] = dish[:price]}
     dishes
   end
 
