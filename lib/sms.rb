@@ -1,6 +1,6 @@
 require 'twilio-ruby'
 class SMS
-
+# This class sends an sms
   def send_sms(message)
     account_sid = 'AC033ff5fd1ab50ecf84e702ae695c4053'
     auth_token = '74465a4227537a433741dd0749629b3a'

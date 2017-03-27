@@ -1,5 +1,5 @@
 class Menu
-
+# This class holds the dishes within the menu
   attr_reader :dishes
 
   def initialize
