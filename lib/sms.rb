@@ -3,9 +3,9 @@ require_relative 'sms_config'
 # Sends SMS to customer to confirm order
 class SMS
 
-  def initialize(config = Config.new.config)
+  def initialize(config = Config.new.config, client:nil)
     @config = config
-    @client = Twilio::REST::Client.new(config[:account_sid],config[:auth_token])
+    @client = client || Twilio::REST::Client.new(config[:account_sid],config[:auth_token])
   end
 
   def send
