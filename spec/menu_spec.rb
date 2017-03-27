@@ -3,11 +3,13 @@ require 'menu'
 describe Menu do
 subject(:menu) { described_class.new }
 
+# let(:printed_menu) { double :printed_menu }
 let(:order) { double :order }
 let(:order_class) { double :order_class, new: order }
 let(:item) { double :item }
-let(:price) {double :price }
+let(:price) { double :price }
 let(:an_item) { double :an_item, :item => item, :price => price }
+let(:confirm) { double :confirm }
 
 it { is_expected.to respond_to(:open) }
 it { is_expected.to respond_to(:create_new_order) }
@@ -15,6 +17,12 @@ it { is_expected.to respond_to(:select_item).with(1).argument }
 it { is_expected.to respond_to(:remove_item).with(1).argument }
 it { is_expected.to respond_to(:review_order) }
 it { is_expected.to respond_to(:confirm_order) }
+
+  describe '#open' do
+    # it 'shows the menu with dishes and prices' do
+    #   expect(menu.open).to eq(printed_menu)
+    # end
+  end
 
   describe '#select_item' do
     it 'selects a menu item by item_number' do
@@ -43,6 +51,14 @@ it { is_expected.to respond_to(:confirm_order) }
     end
   end
 
+  describe '#confirm_order' do
+    context 'if answer == Y' do
+      it 'sends SMS' do
+        
+      end
+    end
+
+  end
 
 
 end

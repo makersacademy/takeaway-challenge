@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
-twilio-ruby '4.11.1'
 
 gem 'rake'
 gem 'rspec'
