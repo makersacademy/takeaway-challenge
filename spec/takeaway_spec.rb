@@ -19,4 +19,9 @@ describe Takeaway do
     expect(takeaway.new_order).to be_a(Order)
   end
 
+  it 'adds item to new order' do
+    takeaway.add_to_order("Burger")
+    expect(takeaway.order.items[0]).to be_a(Dish)
+  end
+
 end

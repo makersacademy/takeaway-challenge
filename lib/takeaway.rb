@@ -1,6 +1,6 @@
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :order
 
   def initialize
     @menu = Menu.new.dishes
@@ -13,7 +13,16 @@ class Takeaway
   end
 
   def new_order
-    @order = Order.new 
+    @order = Order.new
+  end
+
+  def add_to_order(dish_to_add)
+    order = new_order
+    menu.each do |dish|
+      if dish.name == dish_to_add
+        order.items << dish
+      end
+    end
   end
 
 end
