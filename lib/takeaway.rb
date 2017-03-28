@@ -12,4 +12,8 @@ class Takeaway
     end
   end
 
+  def new_order
+    @order = Order.new 
+  end
+
 end

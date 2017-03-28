@@ -15,4 +15,8 @@ describe Takeaway do
     expect(takeaway.show_menu).to include burger
   end
 
+  it 'creates a new, empty order' do
+    expect(takeaway.new_order).to be_a(Order)
+  end
+
 end
