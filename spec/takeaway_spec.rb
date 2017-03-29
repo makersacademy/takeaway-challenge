@@ -16,7 +16,7 @@ describe Takeaway do
   end
 
   it 'creates a new, empty order' do
-    expect(takeaway.new_order).to be_a(Order)
+    expect(takeaway.order).to be_a(Order)
   end
 
   it 'adds item to new order' do
@@ -24,4 +24,15 @@ describe Takeaway do
     expect(takeaway.order.items[0]).to be_a(Dish)
   end
 
+  it 'updates total in order when adding dishes' do
+    3.times { takeaway.add_to_order("Burger") }
+    2.times { takeaway.add_to_order("Salad") }
+    expect(takeaway.order.total).to eq 36
+  end 
+
+  it 'adds total sum to the order' do
+    takeaway.sum_total(takeaway.menu[1])
+    takeaway.sum_total(takeaway.menu[2])
+    expect(takeaway.order.total).to eq 14
+  end
 end

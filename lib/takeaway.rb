@@ -4,6 +4,7 @@ class Takeaway
 
   def initialize
     @menu = Menu.new.dishes
+    @order = Order.new
   end
 
   def show_menu
@@ -12,17 +13,17 @@ class Takeaway
     end
   end
 
-  def new_order
-    @order = Order.new
-  end
-
   def add_to_order(dish_to_add)
-    order = new_order
     menu.each do |dish|
       if dish.name == dish_to_add
-        order.items << dish
-      end
+      order.items << dish and
+        sum_total(dish)
+      end 
     end
+  end
+
+  def sum_total(dish)
+    order.total += dish.price
   end
 
 end
