@@ -15,10 +15,7 @@ class Takeaway
 
   def add_to_order(dish_to_add)
     menu.each do |dish|
-      if dish.name == dish_to_add
-      order.items << dish and
-        sum_total(dish)
-      end 
+      order.items << dish && sum_total(dish) if dish.name == dish_to_add 
     end
   end
 

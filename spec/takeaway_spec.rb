@@ -28,11 +28,13 @@ describe Takeaway do
     3.times { takeaway.add_to_order("Burger") }
     2.times { takeaway.add_to_order("Salad") }
     expect(takeaway.order.total).to eq 36
-  end 
+  end
 
   it 'adds total sum to the order' do
     takeaway.sum_total(takeaway.menu[1])
     takeaway.sum_total(takeaway.menu[2])
     expect(takeaway.order.total).to eq 14
   end
+
+
 end
