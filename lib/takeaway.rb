@@ -1,10 +1,11 @@
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :text
 
   def initialize
     @menu = Menu.new.dishes
     @order = Order.new
+    @text = Text.new
   end
 
   def show_menu
@@ -15,12 +16,16 @@ class Takeaway
 
   def add_to_order(dish_to_add)
     menu.each do |dish|
-      order.items << dish && sum_total(dish) if dish.name == dish_to_add 
+      (order.items << dish) if dish.name == dish_to_add
     end
   end
 
-  def sum_total(dish)
-    order.total += dish.price
+  def send_order
+    text.send_text
+    self.order = Order.new
   end
 
+  private
+
+  attr_writer :order
 end

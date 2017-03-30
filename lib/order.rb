@@ -1,12 +1,14 @@
 require_relative 'menu'
 class Order
 
-  attr_reader :items, :total
-  attr_writer :total
-
+  attr_reader :items
+  
   def initialize
     @items = []
-    @total = 0
+  end
+
+  def total
+    items.inject(0) { |sum, dish| sum + dish.price }
   end
 
 end

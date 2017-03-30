@@ -30,11 +30,10 @@ describe Takeaway do
     expect(takeaway.order.total).to eq 36
   end
 
-  it 'adds total sum to the order' do
-    takeaway.sum_total(takeaway.menu[1])
-    takeaway.sum_total(takeaway.menu[2])
-    expect(takeaway.order.total).to eq 14
-  end
-
+  it 'resets order after sending confirmation-text' do
+    takeaway.add_to_order("Salad")
+    takeaway.send_order
+    expect(takeaway.order.items).to eq []
+  end 
 
 end
