@@ -5,8 +5,8 @@
 Takeaway Challenge
 ==================
 
+In irb:
 ```
-irb
 :001 > require './lib/takeaway'
 :002 > takeaway = Takeaway.new
  => #<Takeaway:0x007fd390885390 @menu=#<Menu:0x007fd390885318 @the_menu={"Charsui pork"=>5, "Choisum"=>3, "Drink"=>1}>, @order=#<Order:0x007fd3908852a0 @current_order={}>, @text=#<Text:0x007fd390885228 @client=<Twilio::REST::Client @account_sid=ACd1e035e18219b4a2e47ed7c7e7e69deb>>, @total=0>
