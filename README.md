@@ -46,7 +46,7 @@ $ rspec
 $ coveralls report
 ```
 
-**Gem used in this project:
+**Gem used in this project:**
 ```ruby
 gem 'rake'
 gem 'rspec'
