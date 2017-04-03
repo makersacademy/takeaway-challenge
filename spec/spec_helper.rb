@@ -3,12 +3,14 @@ Coveralls.wear!
 require 'capybara/rspec'
 require 'vcr'
 require 'webmock'
+require 'envyable'
+Envyable.load('./config/env.yml')
 
 TWILIO_VARS = []
-TWILIO_VARS << 'AC033ff5fd1ab50ecf84e702ae695c4053'
-TWILIO_VARS << '74465a4227537a433741dd0749629b3a'
+TWILIO_VARS << ENV['ACCOUNT_SID']
+TWILIO_VARS << ENV['AUTH_TOKEN']
 TWILIO_VARS << '+441256830268'
-TWILIO_VARS << '+447515356421'
+TWILIO_VARS << ENV['PHONE_NUMBER']
 
 VCR.configure do |config|
   config.cassette_library_dir = "fixtures/vcr_cassettes"
