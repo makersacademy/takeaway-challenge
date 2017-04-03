@@ -26,14 +26,14 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 $ git clone https://github.com/BasileKoko/takeaway-challenge
 $ cd takeaway-challenge
 $ pry
-$ require './lib/takeaway'
-$ takeaway = TakeAway.new
-$ takeaway.read_menu
-$ takeaway.order("Curry", 2)
-$ takeaway.order("Soup", 3)
-$ takeaway.basket_summary
-$ takeaway.total_price
-$ takeaway.complete_order(57.46)
+pry(main)> require './lib/takeaway'
+pry(main)> takeaway = TakeAway.new
+pry(main)> takeaway.read_menu
+pry(main)> takeaway.order("Curry", 2)
+pry(main)> takeaway.order("Soup", 3)
+pry(main)> takeaway.basket_summary
+pry(main)> takeaway.total_price
+pry(main)> takeaway.complete_order(57.46)
 
 ```
 **To run Test**
