@@ -166,3 +166,5 @@ Total: £26.0
 2.3.1 :008 > kfc.confirm
  => <Twilio::REST::Message @path=/2010-04-01/Accounts/ACf19c3f9c599c7dde16aa88eb8e471d33/Messages/SMa181b75380e641b5a7a1204c1a05a501>
 ```
+Below is an example of the text confirmation that is distributed.
+![Imgur](http://i.imgur.com/HU6zjbO.jpg)
