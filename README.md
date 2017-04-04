@@ -15,10 +15,10 @@
  
  ```
 ## Index
-* [Gems Used] (#GEMS)
-* [Installtion] (#Install)
-* [User Stories] (#US)
-* [Usage] (#Usage)
+* [Gems Used](#GEMS)
+* [Installtion](#Install)
+* [User Stories](#US)
+* [Usage](#Usage)
  
 ## <a name="GEMS">Gems Used</a>
 ```ruby
