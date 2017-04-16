@@ -2,6 +2,19 @@
 
 Takeaway Challenge (Makers Academy - Week 2 weekend challenge)
 ==================
+```
+                            _________
+              r==           |       |
+           _  //            |F O O D|   ))))
+          |_)//(''''':      |       |
+            //  \_____:_____.-------D     )))))
+           //   | ===  |   /        \
+       .:'//.   \ \=|   \ /  .:'':./    )))))
+      :' // ':   \ \ ''..'--:'-.. ':
+      '. '' .'    \:.....:--'.-'' .'
+       ':..:'                ':..:'
+ 
+ ```
 
 This challenge was to design a system (using TDD in RSpec and an object oriented design in Ruby) where a user could order various dishes from a restaurant menu and receive a text confirming the order.
 
