@@ -89,3 +89,11 @@ Build Badge Example
 
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 [![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+
+
+##H1 Domain Model
+
+Customer wants to order a meal from a list of dishes with prices; wants to select some number of available dishes. Customer then wants to verify the order is correct by checking the total given matches the sum of the various dishes. Customer wants the order delivered on time (withing of hour) with confirmation via text message.
+
+Classes: customer, meal, dishes, prices, total price, delivery confirmation
+Methods: place order, select, verify/check, sum/add, receive text
