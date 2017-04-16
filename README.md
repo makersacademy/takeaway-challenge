@@ -36,13 +36,13 @@ In irb:
 :008 > takeaway.calculate_total
 :009 > takeaway.place_order(19)
 Confirmation text message has been sent.
-```
+``` 
 
 The encapsulation of classes is as follows:  
-Menu is responsible for printing the menu it holds.  
-Order is responsible for storing the current order.  
-Takeaway is responsible for the user's interaction and calculation of the total cost.  
-Text is responsible for sending the confirmation text message.  
+-- Menu is responsible for printing the menu it holds.  
+-- Order is responsible for storing the current order.  
+-- Takeaway is responsible for the user's interaction and calculation of the total cost.  
+-- Text is responsible for sending the confirmation text message.  
 
 
 Currently the user calls takeaway.calculate_total method, but if this is not explicitly called it will be called when the order is placed and the user passes in the expected total cost. The user can check the total at any time after this method is called by calling takeaway.total.  
