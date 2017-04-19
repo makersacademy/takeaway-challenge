@@ -1,0 +1,19 @@
+Crispy Chicken Strips,4
+BBQ Wings,4
+Spicy Wings,3
+09" Margherita,3
+12" Margherita,4
+09" Peri Peri Special,5
+12" Peri Peri Special,7
+09" Meat Feast,5
+12" Meat Feast,7
+Chicken Fillet Burger,3.29
+Mountain Burger,3.59
+Cheeseburger,1.99
+Spicy Wrap,3.69
+Peri Peri Wrap,3.99
+Vegetable Wrap,2.99
+Apple Pie,1.29
+1.5L Pepsi,1.99
+1.5L Diet Pepsi,1.99
+0.33L 7up,0.8
