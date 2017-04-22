@@ -13,15 +13,6 @@ describe Takeaway do
     end
 
     describe '#order' do
-      it 'responds to order' do
-        expect(t).to respond_to(:order).with(2).arguments
-      end
-
-      # it 'stores more than one item in a basket' do
-      #   t.order(food, 1)
-      #   t.order(food, 1)
-      #   expect(t.basket).to include food
-      # end
 
       context 'stores multiples'
         it 'stores two of one type' do
