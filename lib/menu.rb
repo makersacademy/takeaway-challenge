@@ -1,4 +1,4 @@
-class Takeaway
+class Menu
 
   attr_reader :menu
 
