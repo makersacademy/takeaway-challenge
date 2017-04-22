@@ -41,8 +41,6 @@ class List
   def print_header
     puts "Menu Items".upcase.center($line_width)
     print "\n"
-    # headers like name/price could go here
-    # print "\n"
     print ("-" * $line_width)
     print "\n"
   end

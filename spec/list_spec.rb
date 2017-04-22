@@ -11,12 +11,12 @@ describe List do
       list.view_items("test_list.csv")
     end
 
-    it 'calls #build_menu_item' do
+    it 'builds menu items' do
       expect(list).to receive(:build_menu_item).at_least(:once)
       list.view_items("test_list.csv")
     end
 
-    it 'calls #print_menu' do
+    it 'prints menu items' do
       expect(list).to receive(:print_menu)
       list.view_items("test_list.csv")
     end
