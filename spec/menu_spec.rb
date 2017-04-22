@@ -1,8 +1,15 @@
-# def save_students
-#   file = File.open("students.csv", "w")
-#   @students.each do |student|
-#     student_data = [student[:name], student[:cohort], hobby[:hobby], pob[:pob], height[:height]]
-#     file.puts student_data.join(",")
-#   end
-#   file.close
-# end
+require 'menu'
+
+describe Menu do
+
+  before { subject.load_menu('test_menu.csv') }
+
+  it 'has a menu array' do
+    expect(subject.menu).to be_a(Array)
+  end
+
+  it 'gets a CSV file' do
+    expect(subject.menu).to eq [{ 'Test' => 1.50 }]
+  end
+
+end
