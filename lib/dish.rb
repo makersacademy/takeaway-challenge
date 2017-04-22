@@ -1,5 +1,7 @@
 class Dish
 
+  attr_reader :name, :price
+
   def initialize(name, price)
     @name = name
     @price = price
@@ -8,8 +10,5 @@ class Dish
   def present
     { name => [price, 1] }
   end
-
-  private
-  attr_reader :name, :price
 
 end
