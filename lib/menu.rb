@@ -8,7 +8,7 @@ class Menu
   end
 
   def display
-    puts "Our current menu:"
+    puts "Our current menu"
     @items.each { |item, price| puts "#{item} - #{price}" }
   end
 end
