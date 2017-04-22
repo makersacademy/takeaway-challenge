@@ -28,4 +28,14 @@ describe Order do
     end
   end
 
+  describe '#confirm_total' do
+    it 'should not raise error if amount is correct' do
+      expect { subject.confirm_total(1) }.to raise_error "Sum is not equal to total amount."
+    end
+
+    it 'should not raise error if amount is correct' do
+      expect(subject.confirm_total(0)).to eq "Amount is correct."
+    end
+  end
+
 end

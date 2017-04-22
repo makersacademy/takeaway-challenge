@@ -28,7 +28,13 @@ class Order
   def total_price
     prices = []
     @trolley.each { |choices| choices.each { |_, price| prices << price[1..-1].to_i } }
+    return 0 if prices.empty?
     prices.reduce(:+)
+  end
+
+  def confirm_total(amount)
+    raise "Sum is not equal to total amount." if amount != total_price
+    "Amount is correct."
   end
 
   def place_order
