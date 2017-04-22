@@ -2,7 +2,8 @@ require 'CSV'
 class List
 
   def view_items(file="takeawaylist.csv")
-    CSV.open(file, "w") do
+    CSV.foreach(file) do |row|
+      build_menu_item(row)
     end
   end
 
