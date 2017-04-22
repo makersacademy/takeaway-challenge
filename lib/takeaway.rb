@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Takeaway
 
-  attr_reader :menu, :food_item, :basket
+  attr_reader :menu, :basket
 
   def initialize
     @menu = Menu.new
@@ -13,13 +13,8 @@ class Takeaway
     menu.list_dishes
   end
 
-  def order(item)
-    self.food_item = item
-    self.basket << item
+  def order(item, quantity=1)
+    quantity.times {self.basket << item }
   end
-
-
-  private
-  attr_writer :food_item
 
 end
