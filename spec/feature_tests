@@ -1,7 +1,5 @@
 exit
 clear && pry
 load './lib/takeaway.rb'
-menu = Menu.new
-menu.load_menu
-printer = Printer.new
-printer.nice_print(menu)
+takeaway = Takeaway.new
+takeaway.show_menu

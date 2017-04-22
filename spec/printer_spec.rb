@@ -2,7 +2,7 @@ require 'printer'
 
 describe Printer do
 
-  let(:menu) { double :menu, menu: [{ 'Test' => 1.50 }]}
+  let(:menu) { [{ 'Test' => 1.50 }] }
 
   it 'prints menu items nicely' do
     printer = described_class.new(menu)

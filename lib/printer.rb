@@ -1,7 +1,7 @@
-# understands how to print out text for user
+# understands how to present text for user
 
 class Printer
-attr_reader :printed_menu
+  attr_reader :printed_menu
 
   def initialize(menu)
     @printed_menu = []
@@ -9,7 +9,7 @@ attr_reader :printed_menu
   end
 
   def nice_print(menu)
-    menu.menu.each_with_index do |item, index|
+    menu.each_with_index do |item, index|
       make_nice_string(item, index)
       @printed_menu << @nice_string
     end

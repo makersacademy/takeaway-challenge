@@ -3,11 +3,12 @@
 class Menu
   attr_reader :menu
 
-  def initialize
+  def initialize(cuisine = 'turkish')
     @menu = []
+    load_menu("#{cuisine}_menu.csv")
   end
 
-  def load_menu(filename = 'menu_list.csv')
+  def load_menu(filename)
     file = File.open(filename, 'r')
     menu_to_hash(file)
     file.close
