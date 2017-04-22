@@ -18,11 +18,8 @@ class Restaurant
   end
 
   def order(item)
-    if @menu.has_key?(item)
-      @total << @menu.values_at(item)
-      @orders << item
-    else raise "Item not on the menu."
-    end
+    @total << @menu.values_at(item) && @orders << item if @menu.has_key?(item)
+    raise "Item not on the menu." if !@menu.has_key?(item)
   end
 
   def total_price
