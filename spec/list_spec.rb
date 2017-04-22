@@ -36,22 +36,20 @@ describe List do
       end
     end
 
-    it 'prints input instructions' do
-      expect(list).to receive(:print_input_instructions)
-      list.select_items
+    context 'input is incorrectly formatted' do
+      it 'throws error if comma is missing' do
+        expect { list.select_items('Margherita x3 $18') }.to raise_error(RuntimeError, "Input formatted incorrectly")
+      end
+      it 'throws error if $ is missing' do
+        expect { list.select_items('Margherita x3, 18') }.to raise_error(RuntimeError, "Input formatted incorrectly")
+      end
+      it 'throws error if number is missing' do
+        expect { list.select_items('Margherita, $6') }.to raise_error(RuntimeError, "Input formatted incorrectly")
+      end
+      it 'passes if input is correct' do
+        expect { list.select_items('Margherita x3, $18') }.to_not raise_error
+      end
     end
-
-    it 'collects user input' do
-      allow($stdin).to receive(:gets).and_return('coachella')
-      expect(list).to receive(:collect_input)
-      list.select_items
-    end
-
-    it 'throws error if input is incorrectly formatted' do
-      allow($stdin).to receive(:gets).and_return('Margherita x3 18')
-      expect { list.select_items }.to raise_error("Error: Input formatted incorrectly")
-    end
-      
       
   end
 
