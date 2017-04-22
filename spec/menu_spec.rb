@@ -16,4 +16,11 @@ let(:order){ {'formule1' => 2, 'drink' => 2} }
    end
   end
 
+  describe '#checkout?' do
+    it 'raises an error if the inputed total is not equal to the real total' do
+       expect (subject.checkout?).to raise_error 'The total sum is not correct'
+    end
+    end
+  end
+
 end

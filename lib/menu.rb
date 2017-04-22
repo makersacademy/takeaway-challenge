@@ -16,14 +16,25 @@ attr_reader :order
 
   def select(dishes = [], quants = [], total)
     @order = dishes.zip quants
-    @total = total 
+    @total = total
+  end
 
-  #   @order.each do |dish, quant|
-  #       LIST_OF_DISHES[dish]*quant
-  #     end
+  def correct_total
+    tot = 0
+    @order.each do |dish, quant|
+       tot=tot + LIST_OF_DISHES[dish]*quant
+    end
+    tot
+  end
+
+  # def checkout?
+  #   fail 'The total sum is not correct' if @total != LIST_OF_DISHES.values*@quants
+  #   true
+  # end
+
+  #
   #
   #   @total = LIST_OF_DISHES[dishes]*@quants
-  end
 
   #select from the menu
   #check if the total sum is right

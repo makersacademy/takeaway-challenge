@@ -23,7 +23,10 @@ expected to print a constant.
 
 4. I added a select method with 3 arguments - an array of dishes from the menu,
 an array of quantities, and a total. The method puts the two arrays into a hash called
-order, which is an instance variable of the Menu class. In Rspec, the expectation is   
+order, which is an instance variable of the Menu class. In Rspec, I tested if a hardcoded
+order (a hash) has its keys (dishes) included in the LIST_OF_DISHES.
+
+5.   
 
 ________________________________________________________________________
  ```
