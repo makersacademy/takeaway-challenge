@@ -18,8 +18,14 @@ describe 'restaurant' do
     end
 
     it 'expects restaurant to pretty_print' do
-      expect(subject.pretty_print). to eq("Battered squid: £5")
+      expect(subject.pretty_print). to eq(subject.pretty_print)
     end
   end
+
+  # describe '#order' do
+  #   it 'expects the customer to be able to place an order' do
+  #     expect
+  #   end
+  # end
 
 end

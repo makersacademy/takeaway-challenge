@@ -3,13 +3,12 @@ class Restaurant
   attr_reader :menu
 
   def initialize
-    @menu = [{"Battered squid" => 5}, {"Rump steak" => 16}, {"Chips" => 2}, {"Merlot" => 5}]
+    @menu = {"Battered squid" => 5, "Rump steak" => 16, "Chips" => 2, "Merlot" => 5}
   end
 
   def pretty_print
-    return @menu.each do |a|
-      a.each { |k, v| "#{k}: £#{v}" }
-    end
+    @menu.each { |k, v| puts "#{k}: £#{v}" }
+
   end
 
   def show_menu
