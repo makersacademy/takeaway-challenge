@@ -4,7 +4,7 @@ describe Menu do
 
   describe '#print_list' do
     it 'should print list of dishes and prices' do
-      expect(subject.print_menu).to eq subject.pizzas.each { |dish, price| puts "#{dish}, #{price}" }
+      expect(subject.print_menu).to eq(subject.pizzas.each { |dish, price| puts "#{dish}, #{price}" })
     end
   end
 

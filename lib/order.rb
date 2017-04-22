@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'sms'
 
 class Order
 
@@ -9,21 +10,29 @@ class Order
     @trolley = []
   end
 
-  def place_order(number)
+  def add_to_order(number)
     choice = menu.pizzas.values[number - 1]
     @trolley << choice
   end
 
   def view_order
     puts "Your Order:"
-    @trolley.each_with_index { |choices, i| choices.each { |dish, price| puts "#{i+1}. #{dish}, #{price}" } }
+    @trolley.each_with_index do |choices, i|
+      choices.each do |dish, price|
+        puts "#{i + 1}. #{dish}, #{price}"
+      end
+    end
     puts "Total: $#{total_price}"
   end
 
   def total_price
     prices = []
-    @trolley.each { |choices| choices.each { |dish, price| prices << price[1..-1].to_i } }
+    @trolley.each { |choices| choices.each { |_, price| prices << price[1..-1].to_i } }
     prices.reduce(:+)
+  end
+
+  def place_order
+    Sms.new.send_message
   end
 
 end

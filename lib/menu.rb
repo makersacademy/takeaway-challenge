@@ -4,12 +4,11 @@ class Menu
 
   def initialize
     @pizzas = {
-      "1": {Mozzarela: "$4"},
-      "2": {Mushrooms: "$6"},
-      "3": {Ham: "$5"},
-      "4": {Rocket: "$8"},
-      "5": {Calabresa: "$7"}
-    }
+      :"1" => { Mozzarela: "$4" },
+      :"2" => { Mushrooms: "$6" },
+      :"3" => { Ham: "$5" },
+      :"4" => { Rocket: "$8" },
+      :"5" => { Calabresa: "$7" } }
   end
 
   def print_header
