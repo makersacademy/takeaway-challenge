@@ -17,9 +17,7 @@ class Checkout
   end
 
   def order_print(order)
-    order.each_with_index do |item, index|
-      make_order_string(item, index)
-    end
+    order.each { |item| make_order_string(item) }
   end
 
   def make_order_string(item)
