@@ -2,15 +2,19 @@ require './lib/takeaway'
 
 describe Takeaway do
   alias_method :takeaway, :subject
-  let(:dishes) { Takeaway::DISHES }
+  let(:menu) { Takeaway::MENU }
+  let(:dish) { double dish }
 
   it 'has a list of dishes stored as constant' do
-    expect(takeaway.list_dishes).to eq dishes
+    expect(takeaway.read_menu).to eq menu
   end
 
   describe '#order' do
     it 'prints confirmation of order added to basket' do
-      expect(takeaway.order('Pho')).to eq "1x pho(s) added to basket"
+      expect(takeaway.order('pho')).to eq "1x pho(s) added to basket"
+    end
+    it 'raises error if dish doesn\'t exist' do
+      expect{ takeaway.order('pizza') }.to raise_error "Unfortunatley pizza isn't available"
     end
   end
 

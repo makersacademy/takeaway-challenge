@@ -1,7 +1,10 @@
 class Order
 
-  def add(dish)
-
+  def initialize(menu = nil)
+    @menu = menu
   end
 
+  def add(dish)
+  end
+  
 end
