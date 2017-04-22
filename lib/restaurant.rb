@@ -10,7 +10,7 @@ class Restaurant
     "chish_n_fips" => 1,
     "spring_rolls" => 2 }
 
-  attr_reader :menu
+  attr_reader :menu, :basket
 
   def initialize
     @menu = MENU

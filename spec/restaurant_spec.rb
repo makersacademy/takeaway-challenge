@@ -20,6 +20,15 @@ describe Restaurant do
     it 'checks if the dish is available' do
       expect(subject.dish_available?('chips')).to be(true)
     end
+
+    it "has an empty basket by default" do
+      expect(subject.basket).to eq []
+    end
+
+    it 'adds your order to basket' do
+      subject.order('chips')
+      expect{subject.order('chips')}.to change(subject.basket.length).by(1)
+    end
   end
-  
+
 end
