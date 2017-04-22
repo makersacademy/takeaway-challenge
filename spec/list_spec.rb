@@ -3,6 +3,7 @@ require 'CSV'
 
 describe List do
   subject(:list) { described_class.new }
+
   describe '#view_items' do
     let(:csv) { class_double("CSV") }
     before(:context) do
@@ -22,6 +23,12 @@ describe List do
       list.view_items("test_list.csv")
     end
 
+    it 'reads #menu_items' do
+      expect(list).to receive(:print_menu_items)
+      list.view_items("test_list.csv")
+    end
+
     after(:context) { File.delete("test_list.csv") }
   end
+
 end
