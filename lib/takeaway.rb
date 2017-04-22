@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Takeaway
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :subtotal
 
   def initialize
     @menu = Menu.new
@@ -19,7 +19,16 @@ class Takeaway
   end
 
   def verify_order(total)
-    basket.map { |item| menu.dishes[item] }.reduce(:+)
+    calculate_subtotal
+    raise 'Conflict in total cost' if total != subtotal
+    subtotal
+  end
+
+  private
+  attr_writer :subtotal
+
+  def calculate_subtotal
+    self.subtotal = basket.map { |item| menu.dishes[item] }.reduce(:+)
   end
 
 end

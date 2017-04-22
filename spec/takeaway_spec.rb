@@ -30,10 +30,16 @@ describe Takeaway do
     end
 
     context 'checks cost of ordering Brains' do
+      before { t.order('Brains') }
+
       it 'calculates order total' do
-        t.order('Brains')
         expect(t.verify_order(5)).to eq 5
       end
+
+      it 'raises error if #verify_order arg not eq to basket value' do
+        expect { t.verify_order(10) }.to raise_error "Conflict in total cost"
+      end
     end
+
   end
 end
