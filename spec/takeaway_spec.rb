@@ -6,4 +6,5 @@ describe Takeaway do
   it 'creates instance of Takeaway class' do
     expect(takeaway).to eq(takeaway)
   end
+  
 end

@@ -1,0 +1,2 @@
+class Print
+end
