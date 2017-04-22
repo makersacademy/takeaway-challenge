@@ -12,10 +12,14 @@ describe Restaurant do
     it 'adds an item to your order' do
       expect(subject.order("dumplings")).to eq "Added 1 x dumplings to your order."
     end
+
     it 'raises an error if the dish is not on the menu' do
-      expect { subject.order("shoe laces").to raise_error "We are all out of shoe laces! What else would you like?" } 
+      expect { subject.order("shoe laces").to raise_error "We are all out of shoe laces! What else would you like?" }
+    end
+
+    it 'checks if the dish is available' do
+      expect(subject.dish_available?('chips')).to be(true)
     end
   end
-
-
+  
 end
