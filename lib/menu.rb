@@ -8,4 +8,8 @@ class Menu
         
     end
     
+    def add_dish(dish, price)
+        
+    end
+    
 end
