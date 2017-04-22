@@ -4,8 +4,9 @@ class Restaurant
 
   def initialize
     @menu = {"Battered squid" => 5, "Rump steak" => 16, "Chips" => 2, "Merlot" => 5}
-    @orders = []
     @total = []
+    @orders = []
+    @orders_checked = []
   end
 
   def pretty_print
@@ -18,13 +19,18 @@ class Restaurant
 
   def order(item)
     if @menu.has_key?(item)
-      @orders << item
       @total << @menu.values_at(item)
+      @orders << item
     else raise "Item not on the menu."
     end
   end
 
   def total_price
     @total.flatten.inject(:+)
+  end
+
+  def check_total
+    @orders.each { |a| @orders_checked << @menu.values_at(a) }
+    @orders_checked.flatten.inject(:+)
   end
 end
