@@ -1,10 +1,14 @@
 require './lib/print'
 require './lib/order'
 
-class Takeaway
+class Restaurant
   MENU = { :pho => 5.99, :curry => 3.99, :noodles => 5.99, :wings => 4.99, :beer => 2.99, :wine => 8.99 }
   PRINT = Print.new
   ORDER = Order.new(MENU)
+
+  def initialize(argument)
+    @argument = argument
+  end
 
   def read_menu
     PRINT.print_menu(MENU)
