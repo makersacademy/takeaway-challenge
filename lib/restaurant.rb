@@ -10,12 +10,12 @@ class Restaurant
     "chish_n_fips" => 1,
     "spring_rolls" => 2 }
 
-  attr_reader :menu, :basket, :total
+  attr_reader :menu, :basket, :subtotal
 
   def initialize
     @menu = MENU
     @basket = []
-    @total = 0
+    @subtotal = []
   end
 
   def read_menu
@@ -29,14 +29,17 @@ class Restaurant
   def order(dish, amount)
     if dish_available?(dish)
       amount.times {@basket << dish}
-      return "Added 1 x #{dish} to your order."
+      return "Added #{amount} #{dish}(s) to your order."
     else
-      return "We are all out of #{dish}! What else would you like?"
+      return "We are all out of #{dish}(s)! What else would you like?"
     end
   end
 
-  def check_total
-    @menu.select { |dish, price|  }
+  def get_total
+    @basket.each { |dish| @subtotal << @menu.values_at(dish) }
+    @subtotal.flatten.inject(:+)
+    a = @subtotal.flatten.inject(:+)
+    p "Your subtotal is #{a}"
   end
 
 end
