@@ -22,10 +22,18 @@ describe 'restaurant' do
     end
   end
 
-  # describe '#order' do
-  #   it 'expects the customer to be able to place an order' do
-  #     expect
-  #   end
-  # end
+  describe '#order' do
+    it 'tests response to the order method' do
+      expect(subject).to respond_to(:order)
+    end
+    it 'expects the customer to be able to place an order' do
+      subject.order("Battered squid")
+      expect(subject.orders).to include ("Battered squid")
+    end
+
+    it 'expects to raise an error' do
+      expect {subject.order("bacon") }.to raise_error "Item not on the menu."
+    end
+  end
 
 end
