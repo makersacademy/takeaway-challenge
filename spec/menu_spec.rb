@@ -1,8 +1,8 @@
 require 'menu'
 
 describe Menu do
-
-let(:order){ {'formule1' => 2, 'drink' => 2} }
+  subject {described_class.new}
+  let(:order){ {'formule1' => 2, 'drink' => 2} }
 
   describe '#print' do
     it 'print the menu' do
@@ -16,11 +16,17 @@ let(:order){ {'formule1' => 2, 'drink' => 2} }
    end
   end
 
-  describe '#checkout?' do
+  describe '#checkout' do
     it 'raises an error if the inputed total is not equal to the real total' do
-       expect (subject.checkout?).to raise_error 'The total sum is not correct'
+       subject.select(['formule1', 'formule2', 'drink'], [1,1,2], 32)
+       expect{subject.checkout}.to raise_error('The sum is incorrect!')
     end
+
+    it 'moves on if the inputed total is equal to the real total' do
+      subject.select(['formule1', 'formule2', 'drink'], [1,1,2], 35)
+      expect(subject.checkout).to include 'Thank you! Your order was placed and will be delivered before 18:52'
     end
+
   end
 
 end

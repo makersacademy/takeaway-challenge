@@ -3,11 +3,11 @@ class Menu
 
 LIST_OF_DISHES = { 'formule1' => 10, 'formule2' => 15, 'formule3' => 20, 'drink' => 5 }
 
-attr_reader :order
+attr_reader :order, :total
 
    def initialize
      @order={}
-     @total
+     @total=0
    end
 
   def print
@@ -21,23 +21,13 @@ attr_reader :order
 
   def correct_total
     tot = 0
-    @order.each do |dish, quant|
-       tot=tot + LIST_OF_DISHES[dish]*quant
-    end
+    @order.each {|dish, quant| tot = tot + LIST_OF_DISHES[dish]*quant}
     tot
   end
 
-  # def checkout?
-  #   fail 'The total sum is not correct' if @total != LIST_OF_DISHES.values*@quants
-  #   true
-  # end
-
-  #
-  #
-  #   @total = LIST_OF_DISHES[dishes]*@quants
-
-  #select from the menu
-  #check if the total sum is right
-  #send confirmation text
+  def checkout
+    fail 'The sum is incorrect!' if @total != correct_total
+    return 'Thank you! Your order was placed and will be delivered before 18:52'
+  end
 
 end
