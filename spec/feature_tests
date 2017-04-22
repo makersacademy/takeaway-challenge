@@ -3,3 +3,4 @@ clear && pry
 load './lib/takeaway.rb'
 takeaway = Takeaway.new
 takeaway.show_menu
+8.times { takeaway.order(rand(1..takeaway.takeaway_menu.count))}
