@@ -21,10 +21,14 @@ describe Takeaway do
   end
 
   describe '#add_to_order' do
+    it 'starts a new order if no current order' do
+      expect(menu).to receive(:dishes) { [:item] }
+      subject.add_to_order(1)
+      expect(subject.current_order).to be_instance_of(Order)
+    end
     it 'adds items on menu to order' do
       expect(menu).to receive(:dishes) { [:item] }
       subject.add_to_order(1)
-      expect(subject.order).to eq [:item]
     end
   end
 
@@ -33,6 +37,27 @@ describe Takeaway do
       expect(menu).to receive(:dishes) { [{ item: :item, price: 5 }] }
       subject.add_to_order(1)
       expect(subject.check_order).to eq 5
+    end
+  end
+
+  describe '#new_order' do
+    it 'creates a new order' do
+      subject.new_order
+      expect(subject.current_order).to be_instance_of(Order)
+    end
+  end
+
+  describe '#end_order' do
+    it 'sets current_order to nil' do
+      subject.new_order
+      subject.end_order
+      expect(subject.current_order).to be_nil
+    end
+  end
+
+  describe '#place_order' do
+    xit 'confirms order was placed by text message' do
+
     end
   end
 
