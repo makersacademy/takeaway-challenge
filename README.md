@@ -12,9 +12,10 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
-My approach to the Takeaway challenge (user stories, instructions and resources bellow):
-1. Domain model based on user stories: I need a Menu class that can print a menu, can
-place an order, checks of the total sum is correct, sends and sms to confirm the order
+My approach to the Takeaway challenge (user stories, instructions and resources
+bellow):
+1. Domain model based on user stories: I need a Menu class that can print a menu,
+can place an order, checks of the total sum is correct, sends and sms to confirm the order
 
 2. I created a constant LIST_OF_DISHES, a hash of dishes and prices
 
@@ -26,7 +27,10 @@ an array of quantities, and a total. The method puts the two arrays into a hash 
 order, which is an instance variable of the Menu class. In Rspec, I tested if a hardcoded
 order (a hash) has its keys (dishes) included in the LIST_OF_DISHES.
 
-5.   
+5. For user story 3, I added a correct_total method, adding all dishes in the
+order multiplied by the number of items.
+
+6. For the same story, I added a method checkout, which fails if the total sum is wrong and moves on if the total sum is correct.      
 
 ________________________________________________________________________
  ```
