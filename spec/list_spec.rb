@@ -12,7 +12,7 @@ describe List do
       end
     end
     it 'tells CSV to open list' do
-      expect(csv).to receive(:open).with("test_list.csv", "w") 
+      expect(CSV).to receive(:open).with("test_list.csv", "w") 
       list.view_items("test_list.csv")
     end
     after(:example) { File.delete("test_list.csv") }
