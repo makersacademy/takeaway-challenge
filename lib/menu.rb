@@ -1,0 +1,19 @@
+class Menu
+
+  attr_reader :menu_items
+
+  def initialize
+    @menu_items = {
+    Hamburger: 4.00,
+    Cheeseburger: 4.50,
+    Hot_Dog: 3.50,
+    Mac_n_Cheese: 3.00,
+    Fries: 2.00,
+    Onion_Rings: 2.00,
+    Salad: 2.00,
+    Milkshake: 2.50,
+    Soda: 1.50
+    }
+  end
+
+end
