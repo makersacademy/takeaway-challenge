@@ -6,7 +6,7 @@ class Menu
   def initialize
     @menu = []
   end
-  
+
   def load_menu(filename = 'menu_list.csv')
     file = File.open(filename, 'r')
     menu_to_hash(file)
