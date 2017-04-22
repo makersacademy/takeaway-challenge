@@ -1,12 +1,14 @@
 require './lib/restaurant'
+require './lib/menu'
 
 describe Restaurant do
   alias_method :restaurant, :subject
-  let(:menu) { Restaurant::MENU }
+  let(:menu) { double :menu }
   let(:dish) { double :dish }
 
-  it 'has a list of dishes stored as constant' do
-    expect(restaurant.read_menu).to eq menu
+  it 'lists dishes from given menu' do
+    menu = Menu.new
+    expect(restaurant.read_menu).to eq menu.cuisine
   end
 
   describe '#order' do
