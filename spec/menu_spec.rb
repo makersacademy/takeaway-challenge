@@ -11,4 +11,11 @@ describe Menu do
             expect(subject.dishes).to be_empty
         end
     end
+    
+    describe '#add_dish' do
+        it 'Stores new dishes in the dishes array as a hash' do
+            subject.add_dish("Hash Browns", 4.50)
+            expect(subject.dishes).to include( {:dish => "Hash Browns", :price => 4.50} )
+        end
+    end
 end
