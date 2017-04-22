@@ -1,11 +1,11 @@
 class OrderListCalculator
 
-  def self.calculate(orderlist)
+  def self.calculate(array)
     total = 0
-      orderlist.contents.each do |order|
-        total += order.price
+      array.each do |dish|
+        total += dish.price
       end
-    [orderlist.length, total]
+    [array.length, total]
   end
 
 end

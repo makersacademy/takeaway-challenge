@@ -12,4 +12,7 @@ class Orderlist
     @contents
   end
 
+  private
+  attr_reader :contents
+
 end
