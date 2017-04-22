@@ -14,7 +14,12 @@ class Takeaway
   end
 
   def order(item, quantity=1)
-    quantity.times {self.basket << item }
+    fail 'Item not available' if !menu.dishes.has_key?(item)
+    quantity.times {basket << item }
+  end
+
+  def verify_order(total)
+    basket.map { |item| menu.dishes[item] }.reduce(:+)
   end
 
 end
