@@ -8,6 +8,7 @@ class Order
   end
 
   def select_dish(from_menu)
+    raise 'That is not on the menu'
   end
 
 end
