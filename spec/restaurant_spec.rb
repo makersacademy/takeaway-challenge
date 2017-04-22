@@ -9,12 +9,13 @@ describe Restaurant do
   end
 
   describe '#order' do
+
     it 'adds an item to your order' do
-      expect(subject.order("dumplings")).to eq "Added 1 x dumplings to your order."
+      expect(subject.order("dumplings",1)).to eq "Added 1 x dumplings to your order."
     end
 
     it 'raises an error if the dish is not on the menu' do
-      expect { subject.order("shoe laces").to raise_error "We are all out of shoe laces! What else would you like?" }
+      expect { subject.order("shoe laces", 1).to raise_error "We are all out of shoe laces! What else would you like?" }
     end
 
     it 'checks if the dish is available' do
@@ -25,10 +26,20 @@ describe Restaurant do
       expect(subject.basket).to eq []
     end
 
-    it 'adds your order to basket' do
-      subject.order('chips')
-      expect{subject.order('chips')}.to change(subject.basket.length).by(1)
+    it "total price is 0 by default" do
+      expect(subject.total).to eq 0
     end
+
+    it 'adds your order to basket' do
+      subject.order('chips',1)
+      expect(subject.basket).to include('chips')
+    end
+
+    # it 'adds up the total order value' do
+    #   subject.order('chips')
+    #   expect(subject.total).to eq 2
+    # end
+
   end
 
 end
