@@ -1,5 +1,6 @@
 ## Notes
 * Ability to select variety of cuisine (Pizza, Indian or Turkish) - POLYMORPHISM
+
 (NB - Default is Turkish)
 * Run feature_test.rb for an automated, random output
 * Testing can be done using FakeTextMessage class to prevent text messages
@@ -9,9 +10,6 @@ takeaway.pay(71.44,FakeTextMessage.new)
 * rspec test coverage is low on TextMessage class to avoid triggering messages
 * No isolated unit testing on Takeaway class as it is responsible for very little functionality
 * Rubocop clean, rspecs green
-
-Twilio number +441691700044
-
 
 #### REPL example
 
