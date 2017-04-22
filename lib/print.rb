@@ -10,4 +10,8 @@ class Print
     return "1x #{dish.downcase}(s) added to basket"
   end
 
+  def dish_unavailable(dish)
+    return "Unfortunatley #{dish} isn't available"
+  end
+
 end
