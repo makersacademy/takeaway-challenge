@@ -11,6 +11,10 @@ describe Order do
       not_on_menu = !Takeaway::MENU
       expect { order.select_dish(not_on_menu) }.to raise_error 'That item is not on the menu'
     end
-    
+    it 'adds chosen food to #order_items' do
+      from_menu = Takeaway::MENU.sample
+      order.select_dish(from_menu)
+      expect(@order_items).to include(from_menu)
+    end
   end
 end

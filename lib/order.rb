@@ -1,6 +1,7 @@
 require_relative 'takeaway'
 
 class Order
+  attr_writer :order_items
 
   def initialize
     @order_items = []
@@ -9,6 +10,7 @@ class Order
 
   def select_dish(from_menu)
     raise 'That item is not on the menu' unless Takeaway::MENU.include?(from_menu)
+    @order_items << from_menu
   end
 
 end
