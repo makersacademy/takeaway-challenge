@@ -27,7 +27,6 @@ describe List do
     after(:context) { File.delete("test_list.csv") }
   end
 
-  it {is_expected.to respond_to(:select_items)}
   describe '#select_items' do
     before(:context) do
       File.open("test_list.csv", "w") do |file|
@@ -35,6 +34,7 @@ describe List do
         file.puts "Trois fromages, 8"
       end
     end
+    before(:example) { list.view_items("test_list.csv") }
 
     context 'input is incorrectly formatted' do
       it 'throws error if comma is missing' do
@@ -49,6 +49,14 @@ describe List do
       it 'passes if input is correct' do
         expect { list.select_items('Margherita x3, $18') }.to_not raise_error
       end
+    end
+
+    it 'throws error if item is not on menu' do
+      expect { list.select_items('Margarita x3, $18') }.to raise_error(RuntimeError, "Item entered that is not listed on menu")
+    end
+        
+    it 'does not throw error if item is on menu' do
+      expect { list.select_items('Margherita x3, $18') }.to_not raise_error
     end
       
   end
