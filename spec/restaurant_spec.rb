@@ -36,4 +36,15 @@ describe 'restaurant' do
     end
   end
 
+  describe '#check_total' do
+    it 'tests response to total_price method' do
+      expect(subject).to respond_to(:total_price)
+    end
+
+    it 'expects total_price to return a sum' do
+      subject.order("Merlot")
+      subject.order("Battered squid")
+      expect(subject.total_price).to eq(10)
+    end
+  end
 end

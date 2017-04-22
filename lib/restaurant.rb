@@ -10,7 +10,6 @@ class Restaurant
 
   def pretty_print
     @menu.each { |k, v| puts "#{k}: £#{v}" }
-
   end
 
   def show_menu
@@ -20,9 +19,12 @@ class Restaurant
   def order(item)
     if @menu.has_key?(item)
       @orders << item
-      # @total << @orders.values_at(item)
+      @total << @menu.values_at(item)
     else raise "Item not on the menu."
     end
   end
 
+  def total_price
+    @total.flatten.inject(:+)
+  end
 end
