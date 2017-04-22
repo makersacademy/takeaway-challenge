@@ -1,3 +1,6 @@
 class Takeaway
 
-end 
+  def menu
+  end 
+
+end
