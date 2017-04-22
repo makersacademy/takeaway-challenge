@@ -12,6 +12,20 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
+My approach to the Takeaway challenge (user stories, instructions and resources bellow):
+1. Domain model based on user stories: I need a Menu class that can print a menu, can
+place an order, checks of the total sum is correct, sends and sms to confirm the order
+
+2. I created a constant LIST_OF_DISHES, a hash of dishes and prices
+
+3. I added simple print method, that prints the menu and price - in rspec, it is  
+expected to print a constant.
+
+4. I added a select method with 3 arguments - an array of dishes from the menu,
+an array of quantities, and a total. The method puts the two arrays into a hash called
+order, which is an instance variable of the Menu class. In Rspec, the expectation is   
+
+________________________________________________________________________
  ```
 
 Instructions
