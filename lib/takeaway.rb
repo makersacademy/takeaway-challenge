@@ -2,6 +2,8 @@ class Takeaway
 
   attr_reader :menu
 
+  MENU = :pizza, :chips, :kebab, :burger, :sushi, :fried_chicken
+
   def initialize
     @menu = {
       :pizza => 5.00,

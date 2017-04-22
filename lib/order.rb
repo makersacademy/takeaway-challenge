@@ -8,7 +8,7 @@ class Order
   end
 
   def select_dish(from_menu)
-    raise 'That is not on the menu'
+    raise 'That item is not on the menu' unless Takeaway::MENU.include?(from_menu)
   end
 
 end
