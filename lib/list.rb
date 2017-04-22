@@ -17,6 +17,7 @@ class List
   def select_items(user_input)
     check_input_formatting(user_input)
     check_items_are_on_menu(user_input)
+    check_order_total(user_input)
   end
 
   private
@@ -30,7 +31,7 @@ class List
   def build_menu_item(row)
     name = row[0]
     price = row[1]
-    menu_items << ListItem.new({name: name, price: price})
+    menu_items << ListItem.new({name: name.to_s, price: price.to_i})
   end
 
   def reset_menu_items
@@ -70,9 +71,26 @@ class List
 
   def check_items_are_on_menu(user_input)
     user_input = user_input.split(/, /)
+    #refactor regexps into methods with clear, explanatory names
     item_names = user_input[0..-2].collect { |menu_item| menu_item.match(/([A-Za-z ]+(?= x\d+))/); $1 }
-    menu_names = menu_items.collect { |menu_item| menu_item.name }
+    menu_names = @menu_items.collect { |menu_item| menu_item.name }
     item_names.each { |name| raise RuntimeError, "Item entered that is not listed on menu" unless menu_names.include?(name) }
   end 
+
+  def check_order_total(user_input)
+    user_input = user_input.split(/, /)
+    cost_entered = user_input[-1].scan(/\d+/)[0].to_i
+    user_input = user_input[0..-2].collect { |menu_item| menu_item.match(/([A-Za-z ]+(?= x(\d+)))/); {name: $1, quantity: $2} }
+    item_costs = user_input.collect do |menu_item|
+      @menu_items.collect do |item|
+        item.price * menu_item[:quantity].to_i if item.name == menu_item[:name]
+      end
+    end
+    item_costs = item_costs.flatten
+    item_costs.delete(nil)
+    item_costs = item_costs.reduce(&:+)
+    raise RuntimeError, "Incorrect order price entered" unless item_costs == cost_entered 
+    cost_entered
+  end
 
 end

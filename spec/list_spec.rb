@@ -59,6 +59,14 @@ describe List do
       expect { list.select_items('Margherita x3, $18') }.to_not raise_error
     end
 
+    it 'throws error if sum cost of order is incorrect' do
+      expect { list.select_items('Margherita x3, $16') }.to raise_error(RuntimeError, "Incorrect order price entered")
+    end
+      
+    it 'does not error if sum cost of order is correct' do
+      expect { list.select_items('Margherita x3, Trois fromages x1, $26') }.to_not raise_error
+    end
+
     after(:context) { File.delete("test_list.csv") }
       
   end
