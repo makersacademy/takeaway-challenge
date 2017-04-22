@@ -1,7 +1,8 @@
+require "./lib/order.rb"
+
 class Takeaway
 
   def menu
-
     {
       :chicken_balti => 6.50,
       :vegetable_biryani => 6,
@@ -12,7 +13,6 @@ class Takeaway
       :plain_naan => 1.50,
       :pilau_rice => 2
     }
-    
   end
 
 end
