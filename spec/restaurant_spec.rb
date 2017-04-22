@@ -3,7 +3,7 @@ require './lib/restaurant'
 describe Restaurant do
   alias_method :restaurant, :subject
   let(:menu) { Restaurant::MENU }
-  let(:dish) { double dish }
+  let(:dish) { double :dish }
 
   it 'has a list of dishes stored as constant' do
     expect(restaurant.read_menu).to eq menu
