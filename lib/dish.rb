@@ -6,7 +6,7 @@ class Dish
   end
 
   def present
-    { name => price }
+    { name => [price, 1] }
   end
 
   private
