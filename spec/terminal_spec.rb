@@ -5,7 +5,9 @@ describe '#view_menu' do
   it {is_expected.to respond_to(:view_menu)}
 end
 
-describe '#order' do
-  it {is_expected.to respond_to(:order)}
+describe '#add_to_order' do
+  it {is_expected.to respond_to(:add_to_order)}
 end
+
+
 end

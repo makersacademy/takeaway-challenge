@@ -8,14 +8,14 @@ class OrderSelection
     @cart = []
   end
 
-  def add_item(item)
+  def add_item(item,quantity)
     raise "item does not exist" if !@menu.key?(:"#{item}")
-  @cart.push(item)
+    quantity.times {@cart.push(item)}
   end
 
-  def remove_item(item)
-    raise "item does not exist" if !@cart.include?(item)
-    @cart.delete(item)
-end
+  def remove_item(item,quantity)
+    raise "Amount not available for removal" if @cart.count(item) < quantity
+    quantity.times {@cart.delete_at(@cart.index(item))}
+  end
 
 end

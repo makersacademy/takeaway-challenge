@@ -15,26 +15,27 @@ RSpec.describe OrderSelection do
 
   describe '#add_item' do
     it 'adds food to cart' do
-      subject.add_item('kebab')
-      expect(subject.cart).to eq ['kebab']
+      subject.add_item('kebab',2)
+      expect(subject.cart).to eq ['kebab','kebab']
     end
 
     it 'rasies error if the item does not exist' do
-      expect {subject.add_item('kebabsgs')}.to raise_error "item does not exist"
+      expect {subject.add_item('kebabsgs',1)}.to raise_error "item does not exist"
     end
   end
 
   describe '#remove_item' do
     it 'removes food from cart' do
-      subject.add_item('kebab')
-      subject.remove_item('kebab')
+      subject.add_item('kebab',2)
+      subject.remove_item('kebab',2)
       expect(subject.cart).to eq []
     end
 
-    it 'raises error if the item does not exist' do
-      expect {subject.remove_item('kebab')}.to raise_error "item does not exist"
-end
-end
+    it 'raises error if number of item does not exist' do
+      subject.add_item('kebab',1)
+      expect {subject.remove_item('kebab',2)}.to raise_error "Amount not available for removal"
+    end
+  end
 
 
 end
