@@ -1,8 +1,14 @@
 require_relative 'menu'
 class Restaurant
+  attr_reader :menu
+
+  def initialize
+    @menu = [{"Battered squid" => 5}, {"Rump steak" => 16}, {"Chips" => 2}, {"Merlot" => 5}]
+  end
+
 
   def show_menu
-    Menu.new.menu
+    @menu
   end
 
 end
