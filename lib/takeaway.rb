@@ -20,7 +20,7 @@ class Takeaway
   end
 
   def order(item_ref)
-    @basket.add(@takeaway_menu[item_ref - 1])
+    @basket.add(@takeaway_menu[item_ref])
   end
 
   def checkout

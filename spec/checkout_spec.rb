@@ -2,7 +2,8 @@ require 'checkout'
 
 describe Checkout do
   let(:basket) { double :basket, current_order: [{ 'Test' => 1.5 },
-    { 'Test' => 1.5 }, { 'another' => 4 }], total_cost: 7 }
+    { 'Test' => 1.5 }, { 'another' => 4 }], total_cost: 7
+  }
 
   context 'completing order' do
 

@@ -5,7 +5,7 @@ require 'twilio-ruby'
 class TextMessage
 
   def paid(payment)
-    eta = (Time.now + (60*60)).strftime("%H:%M")
+    eta = (Time.now + (60 * 60)).strftime("%H:%M")
     account_sid = 'AC3af590b092146a66c518bf8de91d7679'
     auth_token = 'a227210a2d9e9a23a576747a36868d9f'
 

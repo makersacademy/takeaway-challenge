@@ -9,7 +9,7 @@ describe Menu do
   end
 
   it 'gets a CSV file' do
-    expect(test_menu.menu).to eq [{ 'Test' => 1.50 }]
+    expect(test_menu.menu).to eq ["-------TEST MENU-------", { "Test" => 1.5 }]
   end
 
 end

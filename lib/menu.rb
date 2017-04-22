@@ -4,7 +4,7 @@ class Menu
   attr_reader :menu
 
   def initialize(cuisine = 'turkish')
-    @menu = []
+    @menu = ["-------#{cuisine.upcase} MENU-------"]
     load_menu("#{cuisine}_menu.csv")
   end
 

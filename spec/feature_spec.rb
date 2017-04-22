@@ -15,7 +15,8 @@ describe Takeaway do
 
     describe 'Menu creation' do
       it 'can get a #menu' do
-        expect(test_takeaway.takeaway_menu).to eq [{ 'Test' => 1.50 }]
+        expect(test_takeaway.takeaway_menu).to eq ["-------TEST MENU-------",
+          { "Test" => 1.5 }]
       end
 
     end
