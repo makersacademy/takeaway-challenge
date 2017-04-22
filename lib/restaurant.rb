@@ -33,4 +33,5 @@ class Restaurant
     @orders.each { |a| @orders_checked << @menu.values_at(a) }
     @orders_checked.flatten.inject(:+)
   end
+
 end
