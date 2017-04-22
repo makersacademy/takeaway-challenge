@@ -14,7 +14,15 @@ class Takeaway
   end
 
   def add_to_order(item)
-    @order << @menu.dishes[item-1]
+    @order << @menu.dishes[item - 1]
+  end
+
+  def check_order
+    @total = 0
+    @order.each do |item|
+      @total += item[:price]
+    end
+    @total
   end
 
 end
