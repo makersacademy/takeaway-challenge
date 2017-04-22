@@ -63,6 +63,8 @@ GEM
       hirb
       simplecov
     simplecov-html (0.10.0)
+    sinatra (1.0)
+      rack (>= 1.0)
     twilio-ruby (4.13.0)
       builder (>= 2.1.2)
       jwt (~> 1.0)
@@ -81,6 +83,7 @@ DEPENDENCIES
   rubocop
   simplecov
   simplecov-console
+  sinatra
   twilio-ruby
 
 RUBY VERSION

@@ -1,5 +1,5 @@
 # Chicago style
-# unit test on Takeaway mainly redundant as _
+# London style unit test on Takeaway mainly redundant
 # Takeaway class mostly calls other classes
 
 require 'takeaway'
@@ -11,6 +11,7 @@ describe Takeaway do
     let(:printer) { double :printer }
 
     test_takeaway = described_class.new('Test')
+    fake_text = FakeTextMessage.new
 
     describe 'Menu creation' do
       it 'can get a #menu' do
@@ -35,6 +36,10 @@ describe Takeaway do
     describe '#pay' do
       it 'checks that the total and amount paid match' do
         expect { test_takeaway.pay(0) }.to raise_error 'You have paid the wrong amount.'
+      end
+      it 'takes payment and send a text' do
+        test_takeaway.pay(3, fake_text)
+        expect(fake_text.confirmed).to eq("PAID")
       end
     end
 

@@ -1,7 +1,8 @@
 require 'checkout'
 
 describe Checkout do
-  let(:basket) { double :basket, current_order: [{ 'Test' => 1.5 }, { 'Test' => 1.5 }, { 'another' => 4 }], total_cost: 7 }
+  let(:basket) { double :basket, current_order: [{ 'Test' => 1.5 },
+    { 'Test' => 1.5 }, { 'another' => 4 }], total_cost: 7 }
 
   context 'completing order' do
 
@@ -12,7 +13,9 @@ describe Checkout do
     end
     it 'makes it look nice' do
       checkout = described_class.new(basket)
-      test_array = ['-------------------------', "Your Order:", '-------------------------', "2x Test (£1.50)", "1x another (£4.00)", ['-------------------------', "Total: £7.00", '-------------------------']]
+      test_array = ['-------------------------', "Your Order:",
+      '-------------------------', "2x Test (£1.50)", "1x another (£4.00)",
+      ['-------------------------', "Total: £7.00", '-------------------------']]
       expect(checkout.final_summary).to eq test_array
     end
   end

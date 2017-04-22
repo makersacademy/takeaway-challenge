@@ -5,6 +5,7 @@ require_relative 'menu_printer'
 require_relative 'basket'
 require_relative 'checkout'
 require_relative 'text'
+require_relative 'test'
 
 class Takeaway
   attr_reader :takeaway_menu, :basket, :checkout
@@ -28,9 +29,9 @@ class Takeaway
     puts @checkout.final_summary
   end
 
-  def pay(payment)
+  def pay(payment, text_message = TextMessage.new)
     fail "You have paid the wrong amount." if ('%.2f' % payment) != ('%.2f' % basket.total_cost)
-    TextMessage.new(payment)
+    text_message.paid(payment)
     puts "Your order will be confirmed by text message. Thank you."
   end
 

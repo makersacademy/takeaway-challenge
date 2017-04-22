@@ -1,4 +1,4 @@
-# understands how to present text for user
+# understands how to present menu for user
 
 class MenuPrinter
   attr_reader :printed_menu
