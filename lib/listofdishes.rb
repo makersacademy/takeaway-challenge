@@ -1,16 +1,18 @@
 class ListOfDishes
 
-  def initialize(array)
-    @list_of_dishes = array
+  def initialize(array_of_hashes)
+    @list_of_dishes = Hash.new
+    merge_function(array_of_hashes)
+  end
+
+  def merge_function(array_of_hashes)
+    array_of_hashes.each do |dish|
+    @list_of_dishes.merge!(dish)
+    end
   end
 
   def print_list
-    string = ''
-    list_of_dishes.each_with_index do |dish, index|
-      string += "#{dish.name} - #{dish.price}"
-      string += "\n" if index < list_of_dishes.length-1
-    end
-    string
+    list_of_dishes.map { |name, price| "#{name} - #{price}" }.join("\n")
   end
 
   private

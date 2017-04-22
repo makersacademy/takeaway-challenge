@@ -7,4 +7,8 @@ class Dish
     @price = price
   end
 
+  def present
+    { name: name, price: price }
+  end
+
 end

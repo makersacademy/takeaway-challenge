@@ -3,6 +3,7 @@ require 'orderlistcalculator'
 describe OrderListCalculator do
 
   let (:orderlistcalculator) { described_class }
+  
   let(:dish_1) { double :dish, name: 'Fruit basket', price: 10.99 }
   let(:dish_2) { double :dish, name: 'Salad Nicoise', price: 14.99 }
   let(:orderlist) { double :orderlist, contents: [dish_1, dish_2] }

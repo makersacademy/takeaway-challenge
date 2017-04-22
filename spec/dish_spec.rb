@@ -20,5 +20,9 @@ describe Dish do
     expect(dish.price).to eq 10.99
   end
 
+  it 'formats itself into a hash' do
+    hash = {name: dish.name, price: dish.price}
+    expect(dish.present).to eq hash
+  end
 
 end
