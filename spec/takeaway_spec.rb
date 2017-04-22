@@ -14,7 +14,7 @@ describe Takeaway do
       expect(takeaway.order('pho')).to eq "1x pho(s) added to basket"
     end
     it 'raises error if dish doesn\'t exist' do
-      expect{ takeaway.order('pizza') }.to raise_error "Unfortunatley pizza isn't available"
+      expect { takeaway.order('pizza') }.to raise_error "Unfortunatley pizza isn't available"
     end
   end
 

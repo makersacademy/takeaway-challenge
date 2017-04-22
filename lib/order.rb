@@ -5,6 +5,11 @@ class Order
   end
 
   def add(dish)
+    total(dish)
   end
-  
+
+  def total(dish)
+    price_of_dish = @menu[dish]
+  end
+
 end

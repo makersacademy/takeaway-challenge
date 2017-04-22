@@ -1,7 +1,7 @@
 class Print
 
-  def print_menu(dish)
-    dish.each do |dish, price|
+  def print_menu(dishes)
+    dishes.each do |dish, price|
       print "#{dish.to_s.capitalize}, £#{price}\n"
     end
   end
