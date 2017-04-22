@@ -1,9 +1,11 @@
-class Takeaway
+require './lib/print'
 
-  DISHES = { :beef_pho => 5.99, :vegatable_pho => 3.99, :noodles => 5.99, :chicken_wings => 4.99 }
+class Takeaway
+  DISHES = { :pho => 5.99, :curry => 3.99, :noodles => 5.99, :chicken_wings => 4.99 }
+  PRINT = Print.new
 
   def list_of_dishes
-    DISHES
+    PRINT.print_dishes(DISHES)
   end
 
 end
