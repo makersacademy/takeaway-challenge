@@ -1,13 +1,25 @@
 Twilio number +441691700044
 
-#### Functional Representation
+#### REPL example
 
-Objects  | Messages
-------------- | -------------
-Menu  | show
-Order  | add_item
-text  | send_sms
-
+```
+[1] pry(main)> load './lib/takeaway.rb'
+=> true
+[2] pry(main)> takeaway = Takeaway.new
+=> #<Takeaway:0x007fd75397dd80
+ @takeaway_menu=
+  [{"Chicken Shish"=>9.5},
+   {"Lamb Shish"=>10.5},
+   {"Mixed Shish"=>12.0},
+   {"Lamb Kofte"=>11.5},
+   {"Chicken Beyti"=>10.5}]>
+[3] pry(main)> takeaway.show_menu
+1. Chicken Shish (£9.50)
+2. Lamb Shish (£10.50)
+3. Mixed Shish (£12.00)
+4. Lamb Kofte (£11.50)
+5. Chicken Beyti (£10.50)
+```
 
 Takeaway Challenge
 ==================

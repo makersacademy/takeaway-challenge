@@ -18,7 +18,7 @@ class Printer
   def make_nice_string(item, index)
     food = item.keys.join
     price = item.values.join
-    @nice_string = "#{(index + 1).to_i}. #{food} (£#{price}0)"
+    @nice_string = "#{(index + 1).to_i}. #{food} (£#{'%.2f' % price})"
   end
 
 end
