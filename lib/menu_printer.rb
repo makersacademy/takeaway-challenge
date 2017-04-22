@@ -1,12 +1,14 @@
 # understands how to present text for user
 
-class Printer
+class MenuPrinter
   attr_reader :printed_menu
 
   def initialize(menu)
     @printed_menu = []
     nice_print(menu)
   end
+
+  private
 
   def nice_print(menu)
     menu.each_with_index do |item, index|

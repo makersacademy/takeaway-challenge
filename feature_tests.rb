@@ -1,10 +1,9 @@
-exit
-clear && pry
+
 load './lib/takeaway.rb'
 takeaway = Takeaway.new
 takeaway.show_menu
-takeaway.checkout
 rand(5..10).times { takeaway.order(rand(1..takeaway.takeaway_menu.count))}
 takeaway.basket
 takeaway.checkout
-takeaway.pay(
+money = takeaway.basket.total_cost
+takeaway.pay(money)
