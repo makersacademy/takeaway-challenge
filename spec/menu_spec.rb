@@ -5,8 +5,10 @@ describe Menu do
   describe '#list_dishes' do
     it { is_expected.to respond_to :list_dishes }
 
-    it 'returns a dish' do
-      expect(menu.list_dishes).to include 'Brains'
+    context do
+      it 'returns Brains from menu' do
+        expect(menu.list_dishes).to include 'Brains'
+      end
     end
 
   end
