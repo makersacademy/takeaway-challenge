@@ -1,9 +1,24 @@
-require 'order'
+require 'dish'
 
-describe Order do
+describe Dish do
 
-it { is_expected.to respond_to(:description) }
+  let(:order) { described_class.new("Salad Nicoise", 10.99) }
 
-it { is_expected.to respond_to(:price) } 
+  it 'responds to description' do
+    expect(order).to respond_to(:description)
+  end
+
+  it 'responds to price' do
+    expect(order).to respond_to(:price)
+  end
+
+  it 'knows it\'s description' do
+    expect(order.description).to eq "Salad Nicoise"
+  end
+
+  it 'knows it\'s to price' do
+    expect(order.price).to eq 10.99
+  end
+
 
 end
