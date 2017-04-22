@@ -32,9 +32,27 @@ describe List do
     before(:context) do
       File.open("test_list.csv", "w") do |file|
         file.puts "Margherita, 6"
-        file.puts "Trois Fromages, 8"
+        file.puts "Trois fromages, 8"
       end
     end
+
+    it 'prints input instructions' do
+      expect(list).to receive(:print_input_instructions)
+      list.select_items
+    end
+
+    it 'collects user input' do
+      allow($stdin).to receive(:gets).and_return('coachella')
+      expect(list).to receive(:collect_input)
+      list.select_items
+    end
+
+    it 'throws error if input is incorrectly formatted' do
+      allow($stdin).to receive(:gets).and_return('Margherita x3 18')
+      expect { list.select_items }.to raise_error("Error: Input formatted incorrectly")
+    end
+      
+      
   end
 
 

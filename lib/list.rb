@@ -15,11 +15,14 @@ class List
   end
 
   def select_items
+    print_input_instructions
+    collect_input
+    check_input_formatting
   end
 
   private
 
-  attr_accessor :menu_items
+  attr_accessor :menu_items, :user_input
 
   def load_csv(file)
     CSV.foreach(file) { |row| build_menu_item(row) }
@@ -58,6 +61,24 @@ class List
 
   def print_footer
     puts ("-" * $line_width)
+  end
+
+  def print_input_instructions
+    puts "Please input your order in the following format:"
+    puts "(item_name ) x(number), (item2_name) x(number), $(total_price)"
+    puts "e.g. to order two Margheritas and three Trois fromages, please input:"
+    puts "Margherita x2, Trois fromages x3, $36"
+  end
+
+  def collect_input
+    self.user_input = $stdin.gets.chomp
+  end
+
+  def check_input_formatting
+    user_input = user_input.split(/, /)
+    user_input[0..-2].each { |menu_item| raise_error "Error: Input formatted incorrectly" unless /[A-Za-z]+ x\d+/.match(menu_item) }
+    raise_error "Error: Input formatted incorrectly" unless /\$\d+/.match(user_input[-1])
+
   end
 
 end
