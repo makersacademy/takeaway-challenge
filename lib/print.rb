@@ -6,12 +6,20 @@ class Print
     end
   end
 
-  def add_to_basket(dish)
-    return "1x #{dish.downcase}(s) added to basket"
+  def add_to_basket(dish, quantity = 1)
+    return "#{quantity}x #{dish.downcase}(s) added to basket"
   end
 
-  def dish_unavailable(dish)
-    return "Unfortunatley #{dish} isn't available"
+  def unavailable(dish)
+    return "Unfortunately #{dish} isn't available"
+  end
+
+  def view_basket(items, menu)
+    print "Basket:\n"
+    items.each do |dish, quantity|
+      price = menu.cuisine[dish] * quantity
+      print "#{quantity}x #{dish}(s) = £#{price}\n"
+    end
   end
 
 end

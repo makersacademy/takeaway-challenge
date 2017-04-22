@@ -3,7 +3,6 @@ require './lib/menu'
 
 describe Restaurant do
   alias_method :restaurant, :subject
-  let(:menu) { double :menu }
   let(:dish) { double :dish }
 
   it 'lists dishes from given menu' do
@@ -16,7 +15,17 @@ describe Restaurant do
       expect(restaurant.order('pho')).to eq "1x pho(s) added to basket"
     end
     it 'raises error if dish doesn\'t exist' do
-      expect { restaurant.order('pizza') }.to raise_error "Unfortunatley pizza isn't available"
+      expect { restaurant.order('pizza') }.to raise_error "Unfortunately pizza isn't available"
+    end
+  end
+  
+  describe '#basket' do
+    let(:basket_summary) { {"pho"=>1, "noodles"=>3} }
+
+    it 'returns basket summary' do
+      restaurant.order('pho')
+      restaurant.order('noodles', 3)
+      expect(restaurant.basket).to eq basket_summary
     end
   end
 

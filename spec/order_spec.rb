@@ -6,5 +6,6 @@ describe Order do
   let(:menu) { Restaurant::MENU }
 
   it { is_expected.to respond_to(:add).with(1).argument }
+  it { is_expected.to respond_to(:basket) }
 
 end
