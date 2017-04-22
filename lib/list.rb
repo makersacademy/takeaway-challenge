@@ -14,6 +14,9 @@ class List
     print_menu
   end
 
+  def select_items
+  end
+
   private
 
   attr_accessor :menu_items

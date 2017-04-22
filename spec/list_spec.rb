@@ -27,4 +27,15 @@ describe List do
     after(:context) { File.delete("test_list.csv") }
   end
 
+  it {is_expected.to respond_to(:select_items)}
+  describe '#select_items' do
+    before(:context) do
+      File.open("test_list.csv", "w") do |file|
+        file.puts "Margherita, 6"
+        file.puts "Trois Fromages, 8"
+      end
+    end
+  end
+
+
 end
