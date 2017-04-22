@@ -2,7 +2,7 @@ require 'orderlist'
 
 describe Orderlist do
 
-  let(:orderlist){ described_class.new }
+  let(:orderlist) { described_class.new }
   let(:dish) { double :dish, name: 'Fruit basket', price: 10.99 }
 
   it 'retains orders' do

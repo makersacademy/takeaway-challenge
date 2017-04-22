@@ -1,7 +1,7 @@
 class Orderlist
 
   def initialize
-  @contents = []
+    @contents = []
   end
 
   def add(order)

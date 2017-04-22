@@ -5,17 +5,22 @@ class ListOfDishes
     merge_function(array_of_hashes)
   end
 
-  def merge_function(array_of_hashes)
-    array_of_hashes.each do |dish|
-    @list_of_dishes.merge!(dish)
-    end
+  def print_list
+    list_of_dishes.map { |name, price| "#{name}" + " " + "-" + " " + "#{price}" }.join("\n")
   end
 
-  def print_list
-    list_of_dishes.map { |name, price| "#{name} - #{price}" }.join("\n")
+  def add(hash)
+    @list_of_dishes.merge!(hash)
   end
 
   private
+
   attr_reader :list_of_dishes
+
+  def merge_function(array_of_hashes)
+    array_of_hashes.each do |dish|
+      @list_of_dishes.merge!(dish)
+    end
+  end
 
 end
