@@ -58,6 +58,8 @@ describe List do
     it 'does not throw error if item is on menu' do
       expect { list.select_items('Margherita x3, $18') }.to_not raise_error
     end
+
+    after(:context) { File.delete("test_list.csv") }
       
   end
 
