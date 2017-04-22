@@ -9,7 +9,7 @@ class Menu
  end
 
  def read_menu
-
+   p @menu
  end
 
 end
