@@ -4,15 +4,16 @@ class Checkout
   attr_reader :summarised_order, :final_summary
 
   def initialize(basket)
-    @final_summary = ['----------','Your Order:','----------']
+    line = '-------------------------'
+    @final_summary = [line, 'Your Order:', line]
     order_print(summarise_order(basket))
-    @final_summary << ['----------',"Total: £#{'%.2f' % basket.total_cost}",'----------']
+    @final_summary << [line, "Total: £#{'%.2f' % basket.total_cost}", line]
   end
 
   def summarise_order(basket)
     @summarised_order = Hash.new 0
     order = basket.current_order
-    order.each_with_object(@summarised_order) { |food,counts| counts[food] += 1 }
+    order.each_with_object(@summarised_order) { |food, counts| counts[food] += 1 }
   end
 
   def order_print(order)
@@ -21,7 +22,7 @@ class Checkout
     end
   end
 
-  def make_order_string(item, index)
+  def make_order_string(item)
     food = item[0].keys.join
     price = item[0].values.join
     count = item[1]

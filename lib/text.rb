@@ -1,7 +1,7 @@
 
 class TextMessage
 
-def initialize(payment)
-end
+  def initialize(payment)
+  end
 
 end
