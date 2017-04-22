@@ -1,11 +1,9 @@
 require 'list'
-require 'CSV'
 
 describe List do
   subject(:list) { described_class.new }
 
   describe '#view_items' do
-    let(:csv) { class_double("CSV") }
     before(:context) do
       File.open("test_list.csv", "w") do |file|
         file.puts "Margherita, 6"
@@ -13,8 +11,8 @@ describe List do
       end
     end
 
-    it 'tells CSV to open list' do
-      expect(CSV).to receive(:foreach).with("test_list.csv") 
+    it 'resets menu items' do
+      expect(list).to receive(:reset_menu_items)
       list.view_items("test_list.csv")
     end
 
@@ -23,10 +21,12 @@ describe List do
       list.view_items("test_list.csv")
     end
 
-    it 'reads #menu_items' do
+    it 'calls #print_menu_items' do
       expect(list).to receive(:print_menu_items)
       list.view_items("test_list.csv")
     end
+
+    specify { expect { list.view_items("test_list.csv") }.to output('Margherita 6').to_stdout }
 
     after(:context) { File.delete("test_list.csv") }
   end
