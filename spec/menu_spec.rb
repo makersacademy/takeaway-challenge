@@ -20,14 +20,18 @@ describe Menu do
   describe '#checkout' do
 
     it 'raises an error if the inputed total is not equal to the real total' do
-       subject.select(['formule1', 'formule2', 'drink'], [1,1,2], 32)
+       subject.select('formule1', 1, 10)
+       subject.select('drink', 2, 11)
        expect{subject.checkout}.to raise_error('The sum is incorrect!')
     end
 
-    before { allow(subject).to receive(:send) }
+    before do
+      subject.select('formule1', 1, 10)
+      subject.select('formule2', 1, 15)
+      allow(subject.sms).to receive(:send)
+    end
     it 'sends text if the total is correct' do
-      subject.select(['formule1', 'formule2', 'drink'], [1,1,2], 35)
-      expect(subject).to receive(:send).with('Thank you! Your order was placed and will be delivered in one hour')
+      expect(subject.sms).to receive(:send).with('Thank you! Your order is confirmed, it will arrive in an hour!')
       subject.checkout
       end
     end
