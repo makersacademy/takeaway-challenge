@@ -32,25 +32,20 @@ class Takeaway
     send_message
   end
 
-  # def abc
-  #   puts 'enter your phone number'
-  #   a = gets.chomp
-  # end
-
   private
 
   def delivery_time
     @time = Time.new
-    @time += 30 * 60
+    @time += 40 * 60
   end
 
   def send_message
     delivery_time
-    puts 'enter your phone number'
-    a = gets.chomp
+    puts 'Please enter your phone number to receive delivery updates(e.g.:44xxxx):'
+    client_phone_number = gets.chomp
     client.account.messages.create({
       from: "+441740582009",
-      to:   a,
+      to:   client_phone_number,
       body: "Thank you for your order! Delivery will arrive before #{@time.strftime("%H:%M")} today."
     })
   end
