@@ -22,13 +22,13 @@ describe Order do
       subject.add_to_order(1)
       subject.add_to_order(2)
       subject.add_to_order(3)
-      message = "Your Order:\n1. Mozzarela, $4\n2. Mushrooms, $6\n3. Ham, $5\nTotal: $15\n"
+      message = "Your Order:\nMozzarela, $4...............x1\nMushrooms, $6...............x1\nHam, $5.....................x1\n                    Total: $15\n"
       expect { subject.view_order }.to output(message).to_stdout
     end
   end
 
   describe '#confirm_total' do
-    it 'should not raise error if amount is correct' do
+    it 'should raise error if amount is incorrect' do
       expect { subject.confirm_total(1) }.to raise_error "Sum is not equal to total amount."
     end
 

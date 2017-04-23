@@ -20,6 +20,7 @@ class Menu
     @pizzas.each do |num, option|
       option.each { |dish, price| puts "#{num}. #{dish}, #{price}" }
     end
+    "Choose your pizzas!"
   end
 
 end

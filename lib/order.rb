@@ -3,7 +3,7 @@ require_relative 'sms'
 
 class Order
 
-  attr_reader :trolley, :menu
+  attr_reader :trolley, :menu, :quantity
 
   def initialize
     @menu = Menu.new
@@ -17,14 +17,21 @@ class Order
     "#{choice.keys[0]} pizza added."
   end
 
+  def counts_dishes
+    @quantity = Hash.new(0)
+    @trolley.each { |elem| @quantity[elem] += 1 }
+  end
+
   def view_order
     puts "Your Order:"
-    @trolley.each_with_index do |choices, i|
+    line = 30
+    counts_dishes
+    @quantity.each do |choices, count|
       choices.each do |dish, price|
-        puts "#{i + 1}. #{dish}, #{price}"
+        puts "#{dish}, #{price}".ljust(line / 2, ".") + "x#{count}".rjust(line / 2, ".")
       end
     end
-    puts "Total: $#{total_price}"
+    puts "Total: $#{total_price}".rjust(line)
   end
 
   def total_price
