@@ -1,10 +1,9 @@
 ## Takeaway Challenge
-==================
+
 Second weekend challenge of Makers Academy. In this challenge we are required to build software for a takeaway system. The text sending functionality is implemented using Twilio API.
 
 
 ## User stories
------
 
 ```
 As a customer
@@ -25,7 +24,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 ## Functionality
--------------
 
 * Has a list of dishes with prices
 * Places order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method raises an error, otherwise the customer is sent a text saying that the oder was placed successfully and that it it will be delivered 30 minutes from now.
@@ -33,7 +31,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * Uses the twilio-ruby gem to access the API
 
 ## Running
--------------
+
 IRB usage
 
 ```
