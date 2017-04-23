@@ -2,9 +2,10 @@ require 'order'
 
 class Restaurant
 
-  def initialize(menu:, order: nil)
+  def initialize(menu:, config:, order: nil, sms: nil)
     @menu = menu
-    @order = order || Order.new
+    @order = order || Order.new(menu)
+    @sms = sms || SMS.new(config)
   end
 
   def show_menu
@@ -12,14 +13,19 @@ class Restaurant
   end
 
   def place_order(menu_items)
-    menu_items.each do |item, quantity|
-      order.add(item, quantity)
-    end
+    add_items(menu_items)
+    sms.deliver
     order.total
   end
 
   private
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :sms
+
+  def add_items(menu_items)
+    menu_items.each do |item, quantity|
+      order.add(item, quantity)
+    end
+  end
 
 end
