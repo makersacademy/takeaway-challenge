@@ -1,13 +1,19 @@
 require_relative 'list'
+require_relative 'waiter'
 
 class Restaurant
 
   def initialize
     @menu = List.new
+    @waiter = Waiter.new
   end
 
-  def view_menu(menu_file = nil)
-    menu_file.nil? ? menu.view_items : menu.view_items(menu_file)
+  def view_menu(file = nil)
+    file.nil? ? menu.view_items : menu.view_items(file)
+  end
+
+  def place_order(order)
+    waiter.place_order(order)
   end
 
 

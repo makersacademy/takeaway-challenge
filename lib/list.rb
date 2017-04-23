@@ -1,6 +1,7 @@
 require 'CSV'
 require 'twilio-ruby'
 require_relative 'list_item'
+
 class List
 
   def initialize
