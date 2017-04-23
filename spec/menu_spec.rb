@@ -16,7 +16,7 @@ describe Menu do
     expect { menu.remove(dish_2) }.to change { menu.list_of_dishes.count }.from(2).to(1)
   end
 
-  it 'cannot lose dishes that it does not contain' do
+  it 'cannot relinquish dishes that it does not contain' do
     message = "Menu does not contain that dish"
     expect { menu.remove(dish_3) }.to raise_error message
   end
