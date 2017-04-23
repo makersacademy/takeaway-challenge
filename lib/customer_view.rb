@@ -2,7 +2,7 @@
 require 'menu'
 require 'order'
 
-class View
+class CustomerView
 
 	def	initialize
 		#@menu = nil
