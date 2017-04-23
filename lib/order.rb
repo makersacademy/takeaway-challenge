@@ -10,12 +10,15 @@ class Order
     @print.add_to_basket(dish, quantity)
   end
 
-  def basket(menu)
-    @print.view_basket(@items, menu)
-  end
-
   def total(input)
     input
+  end
+
+  def basket(menu)
+    @items.each do |dish, quantity|
+      price = menu.cuisine[dish] * quantity
+      @print.view_basket(quantity, dish, price)
+    end
   end
 
 end

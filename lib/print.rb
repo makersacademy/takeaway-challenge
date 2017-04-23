@@ -14,12 +14,8 @@ class Print
     return "Unfortunately #{dish} isn't available"
   end
 
-  def view_basket(items, menu)
-    print "Basket:\n"
-    items.each do |dish, quantity|
-      price = menu.cuisine[dish] * quantity
-      print "#{quantity}x #{dish}(s) = £#{price}\n"
-    end
+  def view_basket(quantity, dish, price)
+    print "#{quantity}x #{dish}(s) = £#{price}\n"
   end
 
 end
