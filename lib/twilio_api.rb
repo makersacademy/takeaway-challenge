@@ -15,7 +15,7 @@ class TwilioAPI
     @client.account.messages.create(
     from: '+441513290112',
     to: '+447446009876',
-    body: "#{time}"
+    body: "Thank you! Your order was placed and should be with you around #{time}"
     )
   end
 

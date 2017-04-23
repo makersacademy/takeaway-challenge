@@ -14,10 +14,10 @@ describe Restaurant do
   context 'adds order to basket' do
 
     before { restaurant.order('noodles') }
-    before { restaurant.order('pho', 2) }
+    before { restaurant.order('ramen', 2) }
 
     describe '#basket' do
-      let(:basket_summary) { { "pho" => 2, "noodles" => 1 } }
+      let(:basket_summary) { { "ramen" => 2, "noodles" => 1 } }
 
       it 'returns basket summary' do
         expect(restaurant.basket).to eq basket_summary
@@ -43,7 +43,7 @@ describe Restaurant do
 
   describe '#order' do
     it 'prints confirmation of order added to basket' do
-      expect(restaurant.order('pho')).to eq "1x pho(s) added to basket"
+      expect(restaurant.order('ramen')).to eq "1x ramen(s) added to basket"
     end
     it 'raises error if dish doesn\'t exist' do
       expect { restaurant.order('pizza') }.to raise_error "Unfortunately pizza isn't available"
