@@ -1,5 +1,4 @@
 require 'restaurant'
-# require 'fake-sms'
 
 describe 'restaurant' do
   subject { Restaurant.new }

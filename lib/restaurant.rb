@@ -1,4 +1,3 @@
-require_relative 'menu'
 require_relative 'text'
 require_relative 'print'
 
