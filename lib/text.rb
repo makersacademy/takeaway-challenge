@@ -8,6 +8,7 @@ class TextMessage
     @eta = (Time.now + (60 * 60)).strftime("%H:%M")
     @text_body = "Your payment of £#{'%.2f' % payment} has been accepted.
 Your food should be with you by #{@eta}. Enjoy your meal"
+    send_text
   end
 
   private
