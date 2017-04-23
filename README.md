@@ -56,7 +56,6 @@ RuntimeError: Sum is not equal to total amount.
 from /Users/Fasolin/Projects/takeaway-challenge/lib/order.rb:36:in `confirm_total'
 [10] pry(main)> order.checkout(171)
 SM6fcf5e749b2c4e1382d5ae3c050de9a8
-=> []
 => "Order confirmed. Check your phone for delivery details."
 [12] pry(main)> order.trolley
 => []
