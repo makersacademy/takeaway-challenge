@@ -51,14 +51,13 @@ Ham, $5.....................x1
 Rocket, $8..................x1
                    Total: $171
 => nil
-[9] pry(main)> order.confirm_total(15)
+[9] pry(main)> order.checkout(15)
 RuntimeError: Sum is not equal to total amount.
 from /Users/Fasolin/Projects/takeaway-challenge/lib/order.rb:36:in `confirm_total'
-[10] pry(main)> order.confirm_total(17)
-=> "Amount is correct."
-[11] pry(main)> order.place_order
+[10] pry(main)> order.checkout(171)
 SM6fcf5e749b2c4e1382d5ae3c050de9a8
 => []
+=> "Order confirmed. Check your phone for delivery details."
 [12] pry(main)> order.trolley
 => []
 ```
