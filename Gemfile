@@ -10,7 +10,7 @@ group :test, :development do
   gem 'reek'
   gem 'rspec'
   gem 'rubocop'
-  gem 'simplecov', require: false, group: :test
-  gem 'simplecov-console', require: false, group: :test
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
   gem 'twilio-ruby'
 end
