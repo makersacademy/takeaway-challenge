@@ -1,4 +1,5 @@
 require 'order.rb'
+require 'text_notifier'
 
 describe Order do
   let(:dish) { :pesto }
@@ -14,7 +15,6 @@ describe Order do
     context 'when a customer types in a dish from the dishes list' do
 
       it 'adds a dish' do
-        # allow(dish).to receive(:to_sym).and_return(:pesto)
         subject.add_dish(dish)
         expect(subject.summary).to include { dish }
       end
@@ -56,13 +56,22 @@ describe Order do
     end
 
     context 'when the minimum order total is met' do
-      it 'sends an SMS and returns a thank you message' do
-        subject.add_dish(dish)
-        subject.add_dish(dish)
-        subject.add_dish(dish)
-        subject.add_dish(dish)
+      before do
+        4.times { subject.add_dish(dish) }
+      end
+
+      it 'returns a thank you message' do
+        allow(subject).to receive(:send_sms_confirmation)
         message = 'Thank you for ordering with us! You will receive a confirmation SMS shortly.'
         expect(subject.check_out).to eq message
+      end
+
+      it 'sends confirmation in sms' do
+        time = Time.now + 3600
+        body = "Thank you! Your order has been placed and will be delivered before #{time.strftime("%H:%M")}"
+        recipient = "+4407456777596"
+        expect(TextNotifier).to receive(:send_sms).with(recipient, body)
+        subject.check_out
       end
     end
   end

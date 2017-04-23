@@ -18,7 +18,7 @@ This repository contains a software which manages takeaway orders from a restaur
 
 ## My approach
 
-In my TDD I opted on initialising a few instance variables as empty arrays for new objects of the Order class (my_dishes, total, delivery_fee and my_order respectively). None of them are attribute readers as I do not want my customers to be able to manipulate the data.
+In my TDD I opted creating an Order and a TextNotifier class. I have also decided that the instance variables of the Order class shall not be readable, however the user can check their order via the method 'summary'. Please see further down for instructions on how to use the program. 
 
 ## Project status
 This project covers the user stories from User Story 1 to 4 - please check the file 'user_stories.txt' for more info.
@@ -56,7 +56,7 @@ Remove a dish:
 See order summary:
 `order.summary` -
 Check out the order:
-`order.check_out` - sends an SMS with 1 hour estimated delivery time or returns an error if minimum amount spent is less than 15.
+`order.check_out` - sends an SMS with 1 hour estimated delivery time or returns an error if minimum amount spent is less than 20.
 
 ## Running tests
 
