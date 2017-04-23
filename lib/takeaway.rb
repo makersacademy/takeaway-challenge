@@ -1,8 +1,9 @@
 require_relative "menu"
 require_relative "order"
-
+require_relative 'twilio'
 
 class Takeaway
+  include Twilio
   attr_reader :menu, :order_system
 
   def initialize
@@ -23,7 +24,7 @@ class Takeaway
   end
 
   def show_total
-    puts "Total: £#{order_system.total_order}"
+    puts "Total price of delivery is: £#{order_system.total_order}"
   end
 
   def confirm(amount)
@@ -31,19 +32,27 @@ class Takeaway
     send_message
   end
 
+  # def abc
+  #   puts 'enter your phone number'
+  #   a = gets.chomp
+  # end
+
   private
 
-  def time_of_delivery
-      @time = Time.new
-      @time += 30 * 60
+  def delivery_time
+    @time = Time.new
+    @time += 30 * 60
   end
 
-   def send_message
-      client.account.messages.create({
-        from: "441740582009",
-        to:   "447481475183",
-        body: "Thank you! Your order was placed and will be delivered before #{@time.strftime("%H:%M")}"
-     })
-   end
+  def send_message
+    delivery_time
+    puts 'enter your phone number'
+    a = gets.chomp
+    client.account.messages.create({
+      from: "+441740582009",
+      to:   a,
+      body: "Thank you for your order! Delivery will arrive before #{@time.strftime("%H:%M")} today."
+    })
+  end
 
 end
