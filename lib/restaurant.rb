@@ -32,9 +32,9 @@ class Restaurant
     @order.total(input)
   end
 
-  def checkout
+  def checkout(total)
     @order.checkout
-    print_checkout
+    print_checkout(total)
   end
 
   private

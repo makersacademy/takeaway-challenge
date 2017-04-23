@@ -35,7 +35,7 @@ describe Restaurant do
 
     describe '#checkout' do
       it 'total cost is deducted and user receives confirmation' do
-        expect(restaurant.checkout).to eq "Order succesful! You have paid £14. Please await text confirmation"
+        expect(restaurant.checkout(14)).to eq "Order succesful! You have paid £14. Please await text confirmation"
       end
     end
 

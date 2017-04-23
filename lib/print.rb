@@ -24,8 +24,8 @@ module Print
     return "Total: £#{total} Would like to checkout or add more to your order?"
   end
 
-  def print_checkout
-    return "Order succesful! You have paid £14. Please await text confirmation"
+  def print_checkout(total)
+    return "Order succesful! You have paid £#{total}. Please await text confirmation"
   end
 
 end
