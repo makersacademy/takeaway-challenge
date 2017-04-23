@@ -11,7 +11,7 @@ describe OrderSystem do
   end
 
   describe "#place_order" do
-    context "When an item and quantity is given" do
+    context "when an item and quantity is given" do
       it "add the item to the order_list " do
         expect(order_system.order_list.first[0]).to be @item
       end
@@ -31,7 +31,7 @@ describe OrderSystem do
         order_system.place_order(item2, 3)
         expect(order_system.total_order).to eq total
       end
-    end
+   end
   end
 
 end

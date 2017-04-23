@@ -7,7 +7,8 @@ class OrderSystem
   end
 
   def place_order(item, quantity_needed)
-    @order_list[item.to_sym] = [quantity_needed, total_price(item, quantity_needed)]
+    @order_list[item.to_sym] = [quantity_needed,
+    total_price(item, quantity_needed)]
   end
 
   def total_order

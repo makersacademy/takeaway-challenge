@@ -20,7 +20,8 @@ class Takeaway
   end
 
   def show_order
-    order_system.order_list.each {|item| puts "#{item[1][0]} x #{item[0]} £#{item[1][1]}" }
+    order_system.order_list.each {|item| puts "#{item[1][0]}
+     x #{item[0]} £#{item[1][1]}" }
   end
 
   def show_total
