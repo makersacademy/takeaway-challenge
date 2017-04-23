@@ -13,7 +13,7 @@ class Restaurant
   end
 
   def place_order(order)
-    waiter.place_order(order)
+    waiter.process_order(order)
   end
 
 

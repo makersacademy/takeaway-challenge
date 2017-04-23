@@ -1,5 +1,5 @@
 class Waiter
 
-  def place_order(order)
+  def process_order(order)
   end
 end
