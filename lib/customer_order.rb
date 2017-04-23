@@ -30,16 +30,20 @@ class CustomerOrder
     @contents
   end
 
-  def process  
-    @message, @full_message, dishes, @order_total = "", "", [], 0
-    contents.each_with_index  { |dish, index|
-      @message += "Dish: #{dish.name} Price: £#{sprintf('%.2f', dish.price)}, Quantity: #{contents.count(dish)}\n" unless dishes.include?(dish.name)
-      dishes << dish.name
-      @order_total += dish.price
-    }
-    dishes = nil
+  def process
+    @message, @full_message, @dishes, @order_total = "", "", [], 0
+    run_the_function
     @full_message = @message + "#{contents.count} Dishes. Total: £#{sprintf('%.2f', @order_total)}"
     @message
+  end
+
+  def run_the_function
+    contents.each_with_index  { |dish, index|
+      @message += "Dish: #{dish.name} Price: £#{sprintf('%.2f', dish.price)}, Quantity: #{contents.count(dish)}\n" unless @dishes.include?(dish.name)
+      @dishes << dish.name
+      @order_total += dish.price
+    }
+    @dishes = nil
   end
 
   def send_text
