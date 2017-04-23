@@ -3,6 +3,8 @@ require_relative 'list_item'
 
 class List
 
+  attr_reader :menu_items
+
   def initialize(menu_data)
     @menu_items = []
     @line_width = 80
@@ -16,9 +18,14 @@ class List
     print_footer
   end
 
+  def names_of_items
+    menu_items.collect { |menu_item| menu_item.name }
+  end
+
+
   private
 
-  attr_accessor :menu_items
+  attr_writer :menu_items
   attr_reader :line_width, :column_width
 
   def load_menu_data_from_csv(file)

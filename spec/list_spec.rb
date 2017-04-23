@@ -12,6 +12,12 @@ describe List do
     List.new("test_list.csv")
   end
 
+  describe '#names_of_items' do
+    it 'returns an array of item names on menu' do
+      expect(list.names_of_items).to eq ["Margherita"]
+    end
+  end
+
   describe '#print_menu' do
 
     it 'prints header' do

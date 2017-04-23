@@ -1,97 +1,89 @@
 require_relative 'list'
+require_relative 'sms_sender'
 
 class Restaurant
+
+  include SMSSender
 
   def initialize(menu = "takeawaylist.csv")
     @menu = List.new(menu)
   end
 
   def view_menu
-    menu.print_menu
+    print_from_menu
   end
 
-  def select_items(user_input)
-    user_input = user_input.split(/, /)
-    check_input_formatting(user_input)
-    check_items_are_on_menu(user_input)
-    check_order_total(user_input)
-    send_sms
+  def make_order(user_input)
+    order = user_input.split(/, /)
+    check_input_formatting(order)
+    check_items_are_on_menu(order, menu)
+    check_order_total(order)
+    confirm_delivery
   end
 
   private
 
-  attr_reader :menu
-  attr_accessor :user_input
+  attr_reader :menu, :user_input
 
-  def check_input_formatting(user_input)
-    user_input[0..-2].each do |menu_item|
-      raise RuntimeError, "Input formatted incorrectly" unless /[A-Za-z ]+ x\d+/ =~ menu_item
-    end
-    raise RuntimeError, "Input formatted incorrectly" unless /\A\$\d+/. =~ user_input[-1]
+  def print_from_menu
+    menu.print_menu
   end
 
-  def check_items_are_on_menu(user_input)
-    order_item_names = return_order_item_names_from_user_input(user_input)
+  def check_input_formatting(order)
+    order[0..-2].each do |menu_item|
+      raise RuntimeError, "Input formatted incorrectly" unless /[A-Za-z ]+ x\d+/ =~ menu_item
+    end
+    raise RuntimeError, "Input formatted incorrectly" unless /\A\$\d+/. =~ order[-1]
+  end
+
+  def check_items_are_on_menu(order, menu)
+    order_item_names = return_item_names_from_order(order)
     order_item_names.each do |name|
-      unless names_of_items_on_menu.include?(name)
+      unless menu.names_of_items.include?(name)
         raise RuntimeError, "Item entered that is not listed on menu"
       end
     end
   end 
 
-  def check_order_total(user_input)
-    cost_entered = user_input[-1].scan(/\d+/)[0].to_i
-    order_item_names_and_quantities = return_order_item_names_and_quantities(user_input)
-    actual_cost = calculate_actual_cost(order_item_names_and_quantities)
+  def check_order_total(order)
+    cost_entered = order[-1].scan(/\d+/)[0].to_i
+    order_item_names_and_quantities = return_order_item_names_and_quantities(order)
+    actual_cost = calculate_actual_cost(order_item_names_and_quantities, menu)
     raise RuntimeError, "Incorrect order price entered" unless actual_cost == cost_entered 
   end
 
-  def return_order_item_names_from_user_input(user_input)
-    user_input[0..-2].collect { |menu_item| menu_item =~ /([A-Za-z ]+(?= x\d+))/; $1 }
+  def return_item_names_from_order(order)
+    order[0..-2].collect { |menu_item| menu_item =~ /([A-Za-z ]+(?= x\d+))/; $1 }
   end
 
-  def names_of_items_on_menu
-    menu_items.collect { |menu_item| menu_item.name }
-  end
-
-  def return_order_item_names_and_quantities(user_input)
-    user_input[0..-2].collect do |menu_item|
+  def return_order_item_names_and_quantities(order)
+    order[0..-2].collect do |menu_item|
       menu_item =~ /([A-Za-z ]+(?= x(\d+)))/; { name: $1, quantity: $2 } 
     end
   end
 
-  def calculate_actual_cost(order_item_names_and_quantities)
-    cost_grouped_by_menu_item = return_cost_grouped_by_menu_item(order_item_names_and_quantities)
+  def calculate_actual_cost(order_item_names_and_quantities, menu)
+    cost_grouped_by_menu_item = return_cost_grouped_by_menu_item(order_item_names_and_quantities, menu)
     costs = cost_grouped_by_menu_item
     costs.delete(nil)
     costs.reduce(&:+)
   end
 
-  def return_cost_grouped_by_menu_item(order_item_names_and_quantities)
+  def return_cost_grouped_by_menu_item(order_item_names_and_quantities, menu)
     item_costs = order_item_names_and_quantities.collect do |order|
-      menu_items.collect do |menu_item|
+      menu.menu_items.collect do |menu_item|
         menu_item.price * order[:quantity].to_i if menu_item.name == order[:name]
       end
     end
     item_costs.flatten!
   end
 
-  def send_sms
+  def confirm_delivery
+    sender = ENV["TWILIO_PHONE_NUMBER"]
+    receiver = ENV["MY_PHONE_NUMBER"]
     delivery_time = print_time(current_time_plus_one_hour)
-    account_sid = ENV["TWILIO_ACCOUNT_SID"]
-    auth_token = ENV["TWILIO_AUTH_TOKEN"]
-
-    client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    client.account.messages.create(
-      to: ENV["MY_PHONE_NUMBER"],
-      from: ENV["TWILIO_PHONE_NUMBER"],
-      body: "Thank you! Your order was placed and will be delivered before #{delivery_time}"
-    )
-  end
-
-  def current_time_plus_one_hour
-    Time.new + 3600
+    message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    send_sms(sender, receiver, message)
   end
 
   def print_time(time)
@@ -100,6 +92,8 @@ class Restaurant
     "#{hour}:#{minute}"
   end
 
-end
+  def current_time_plus_one_hour
+    Time.new + 3600
+  end
 
 end
