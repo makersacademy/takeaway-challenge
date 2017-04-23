@@ -32,6 +32,12 @@ class Restaurant
     @order.total(input)
   end
 
+  def checkout
+    @order.checkout
+    @print.checkout
+  end
+
+
   private
 
   def available?(order)

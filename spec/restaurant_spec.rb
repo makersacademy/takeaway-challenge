@@ -11,15 +11,6 @@ describe Restaurant do
     expect(restaurant.read_menu).to eq menu.cuisine
   end
 
-  describe '#order' do
-    it 'prints confirmation of order added to basket' do
-      expect(restaurant.order('pho')).to eq "1x pho(s) added to basket"
-    end
-    it 'raises error if dish doesn\'t exist' do
-      expect { restaurant.order('pizza') }.to raise_error "Unfortunately pizza isn't available"
-    end
-  end
-
   context 'adds order to basket' do
 
     before { restaurant.order('noodles') }
@@ -35,13 +26,28 @@ describe Restaurant do
 
     describe '#total' do
       it 'returns total cost of order if passed correct input' do
-        expect(restaurant.total(14)).to eq "Total: £14"
+        expect(restaurant.total(14)).to eq "Total: £14 Would like to checkout or add more to your order?"
       end
       it 'returns error if incorrect total input' do
         expect { restaurant.total(12) }.to raise_error "Error: Incorrect input, total is: £14 "
       end
     end
 
+    describe '#checkout' do
+      it 'total cost is deducted and user receives text confirmation using Twilio API' do
+        expect(restaurant.checkout).to eq "Order succesful! You have paid £14. Please await text confirmation"
+      end
+    end
+
+  end
+
+  describe '#order' do
+    it 'prints confirmation of order added to basket' do
+      expect(restaurant.order('pho')).to eq "1x pho(s) added to basket"
+    end
+    it 'raises error if dish doesn\'t exist' do
+      expect { restaurant.order('pizza') }.to raise_error "Unfortunately pizza isn't available"
+    end
   end
 
   describe '#add' do

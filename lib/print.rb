@@ -1,9 +1,7 @@
 class Print
 
   def print_menu(menu)
-    menu.cuisine.each do |dish, price|
-      print "#{dish.to_s.capitalize}, £#{price}\n"
-    end
+    menu.cuisine.each { |dish, price| "#{dish.to_s.capitalize}, £#{price}\n" }
   end
 
   def add_to_basket(dish, quantity = 1)
@@ -24,6 +22,10 @@ class Print
 
   def print_total(total)
     return "Total: £#{total} Would like to checkout or add more to your order?"
+  end
+
+  def checkout
+    return "Order succesful! You have paid £14. Please await text confirmation"
   end
 
 end

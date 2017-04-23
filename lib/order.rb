@@ -3,14 +3,13 @@ class Order
   def initialize(print = Print.new, menu = Menu.new)
     @print = print
     @menu = menu
-    @items = Hash.new(0)
-    @running_total = @items.clone
+    @basket = Hash.new(0)
+    @basket_total = @basket.clone
     @total = 0
   end
 
   def add(dish, quantity = 1)
-    @items[dish] += quantity
-    @running_total[dish] += quantity
+    @basket[dish] += quantity && @basket_total[dish] += quantity
     add_to_total
     @print.add_to_basket(dish, quantity)
   end
@@ -21,21 +20,24 @@ class Order
   end
 
   def basket
-    @items.each do |dish, quantity|
+    @basket.each do |dish, quantity|
       price = @menu.cuisine[dish] * quantity
       @print.view_basket(quantity, dish, price)
     end
   end
 
+  def checkout
+    @total = {}
+    @basket = {}
+  end
+
   private
 
-  attr_reader :items
-
   def add_to_total
-    @running_total.each do |dish, quantity|
+    @basket_total.each do |dish, quantity|
       @price = @menu.cuisine[dish] * quantity
-      @running_total.delete(dish)
-      end
+      @basket_total.delete(dish)
+    end
     @total += @price
   end
 
