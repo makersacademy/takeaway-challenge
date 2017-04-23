@@ -2,7 +2,7 @@ require_relative 'menu'
 require_relative 'messenger'
 class Takeaway
 
-attr_reader :menu, :current_order, :total
+  attr_reader :menu, :current_order, :total
 
   def initialize(given_menu = Menu.new)
     @menu = given_menu
@@ -16,19 +16,19 @@ attr_reader :menu, :current_order, :total
 
   def order_list
     list = []
-    @current_order.each { |key, value| list << "#{value}x #{key} = £#{@menu.dishes[key] * value}" }
+    @current_order.each { |key, value| list << "#{value}x #{key} = £#{sprintf('%.2f', @menu.dishes[key] * value)}" }
     puts list.join("\n")
     list.join("\n")
   end
 
   def show_total
     calculate_total
-    "Total: £#{total}"
+    "Total: £#{sprintf('%.2f', total)}"
   end
 
   def calculate_total
     @total = 0
-    @current_order.each { |key, value| @total +=  @menu.dishes[key] * value }
+    @current_order.each { |key, value| @total += @menu.dishes[key] * value }
     @total
   end
 

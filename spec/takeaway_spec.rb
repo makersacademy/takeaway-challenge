@@ -3,7 +3,7 @@ require 'menu'
 
 describe Takeaway do
   let(:menu) { double :menu, dish_list: Menu::DISHES }
-  let(:takeaway) { described_class.new(menu)}
+  let(:takeaway) { described_class.new(menu) }
   let(:messenger) { double :messenger }
   describe 'initialization' do
 
@@ -17,21 +17,21 @@ describe Takeaway do
   end
 
   describe '#order' do
-      it 'can select a dish from menu' do
-        allow(menu).to receive(:dishes) { Menu::DISHES }
-        takeaway.order('biryani')
-        expect(takeaway.current_order).to include 'biryani'
-      end
+    it 'can select a dish from menu' do
+      allow(menu).to receive(:dishes) { Menu::DISHES }
+      takeaway.order('biryani')
+      expect(takeaway.current_order).to include 'biryani'
+    end
 
-      it 'can specify quantity of order' do
-        allow(menu).to receive(:dishes) { Menu::DISHES }
-        expect{ takeaway.order('biryani', 3) }.to change{ takeaway.current_order['biryani'] }.by +3
-      end
+    it 'can specify quantity of order' do
+      allow(menu).to receive(:dishes) { Menu::DISHES }
+      expect { takeaway.order('biryani', 3) }.to change { takeaway.current_order['biryani'] }.by +3
+    end
 
-      it 'raises error when dish is not on the menu' do
-        allow(menu).to receive(:dishes) { Menu::DISHES }
-        expect { takeaway.order('pizza') }.to raise_error 'we do not have that dish'
-      end
+    it 'raises error when dish is not on the menu' do
+      allow(menu).to receive(:dishes) { Menu::DISHES }
+      expect { takeaway.order('pizza') }.to raise_error 'we do not have that dish'
+    end
   end
 
   describe '#show_total' do
