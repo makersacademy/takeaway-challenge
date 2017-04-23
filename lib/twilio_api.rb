@@ -18,7 +18,6 @@ module TwilioAPI
       to: ENV['CUSTOMER_PHONE_NO'],
       body: "Thanks! Your order was placed & will be delivered within the hour."
     )
-    puts "A text has been sent to confim your order"
   end
 
 end

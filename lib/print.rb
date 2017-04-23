@@ -1,5 +1,7 @@
 module Print
 
+  private
+  
   def print_order(item, quantity)
     puts "#{quantity} x #{item} added to your basket."
   end
