@@ -27,15 +27,18 @@ describe Takeaway do
 
   describe '#total' do
     before { t.order('Brains') }
-      specify { expect { t.total }.to output("Total: £5\n").to_stdout }
+    specify { expect { t.total }.to output("Total: £5\n").to_stdout }
   end
 
   describe '#checkout' do
-    context 'checks cost of ordering Brains' do
+    let (:messenger) { double(:messenger, :send_sms => 'Thanks! Your order was placed & will be delivered within the hour.') }
+    context 'Checks cost of ordering Brains' do
       before { t.order('Brains') }
-
-      it 'raises error if #checkout arg not eq to basket value' do
+      it 'Raises error if wrong total' do
         expect { t.checkout(10) }.to raise_error "Conflict in total cost"
+      end
+      it '' do
+
       end
     end
 

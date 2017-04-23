@@ -4,22 +4,22 @@ require_relative 'twilio_api'
 
 
 class Takeaway
-  include TwilioAPI
   include Print
 
   attr_reader :menu, :basket, :subtotal
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, messenger = TwilioAPI.new)
     @menu = menu
     @basket = Hash.new(0)
     @subtotal = 0
+    @messenger = messenger
   end
 
   def read_menu
     print_menu
   end
 
-  def order(item, quantity=1)
+  def order(item, quantity = 1)
     fail 'Item not available' unless in_menu?(item)
     add_item_to_basket(item, quantity)
     print_order(item, quantity)
@@ -33,7 +33,7 @@ class Takeaway
 
   def checkout(total)
     raise 'Conflict in total cost' unless total == subtotal
-    text_customer
+    messenger.send_sms
   end
 
   def view_basket
@@ -58,10 +58,6 @@ class Takeaway
 
   def reset_subtotal
     self.subtotal = 0
-  end
-
-  def text_customer
-    send_sms
   end
 
 end

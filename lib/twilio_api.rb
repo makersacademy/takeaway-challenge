@@ -2,7 +2,7 @@ require 'dotenv/load'
 require 'twilio-ruby'
 
 
-module TwilioAPI
+class TwilioAPI
 
   def send_sms
     account_sid = ENV['TWILIO_ACC_SID']
