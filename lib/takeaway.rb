@@ -1,6 +1,7 @@
 require_relative "menu"
 require_relative "order"
 
+
 class Takeaway
   attr_reader :menu, :order_system
 
@@ -27,5 +28,22 @@ class Takeaway
 
   def confirm(amount)
     raise "Order was not placed because doesn't match the total." if order_system.total_order != amount
+    send_message
   end
+
+  private
+
+  def time_of_delivery
+      @time = Time.new
+      @time += 30 * 60
+  end
+
+   def send_message
+      client.account.messages.create({
+        from: "441740582009",
+        to:   "447481475183",
+        body: "Thank you! Your order was placed and will be delivered before #{@time.strftime("%H:%M")}"
+     })
+   end
+
 end
