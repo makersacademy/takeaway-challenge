@@ -31,5 +31,11 @@ class Menu
   def total_cost
     @order_total.flatten.reduce(:+)
   end
+
+  private
+
+  def remove_order
+    @order = []
+    @total = []
+  end
  end
-end
