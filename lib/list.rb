@@ -1,12 +1,12 @@
 require 'CSV'
 require 'twilio-ruby'
 require_relative 'list_item'
-$line_width = 80
-$column_width = 40
 class List
 
   def initialize
     @menu_items = []
+    @line_width = 80
+    @column_width = 40
   end
 
   def view_items(file = "takeawaylist.csv")
@@ -26,6 +26,11 @@ class List
   private
 
   attr_accessor :menu_items, :user_input
+  attr_reader :line_width, :column_width
+
+  def reset_menu_items
+    self.menu_items = []
+  end
 
   def load_csv(file)
     CSV.foreach(file) { |row| build_menu_item(row) }
@@ -37,10 +42,6 @@ class List
     menu_items << ListItem.new({ name: name.to_s, price: price.to_i })
   end
 
-  def reset_menu_items
-    self.menu_items = []
-  end
-
   def print_menu
     print_header
     print_menu_items
@@ -48,22 +49,22 @@ class List
   end
 
   def print_header
-    puts "Menu Items".upcase.center($line_width)
+    puts "Menu Items".upcase.center(line_width)
     print "\n"
-    print "-" * $line_width
+    print "-" * line_width
     print "\n"
   end
 
   def print_menu_items
     menu_items.each do |item|
-      print item.name.capitalize.ljust($column_width)
-      print item.price.to_s.rjust($column_width)
+      print item.name.capitalize.ljust(column_width)
+      print item.price.to_s.rjust(column_width)
       print "\n"
     end
   end
 
   def print_footer
-    puts "-" * $line_width
+    puts "-" * line_width
   end
 
   def check_input_formatting(user_input)
