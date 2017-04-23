@@ -1,4 +1,5 @@
 require 'list'
+require 'twilio-ruby'
 
 describe List do
   subject(:list) { described_class.new }
@@ -35,6 +36,7 @@ describe List do
       end
     end
     before(:example) { list.view_items("test_list.csv") }
+    before(:example) { allow(list).to receive(:send_sms).and_return(true) }
 
     context 'input is incorrectly formatted' do
       it 'throws error if comma is missing' do
@@ -46,9 +48,10 @@ describe List do
       it 'throws error if number is missing' do
         expect { list.select_items('Margherita, $6') }.to raise_error(RuntimeError, "Input formatted incorrectly")
       end
-      it 'passes if input is correct' do
-        expect { list.select_items('Margherita x3, $18') }.to_not raise_error
-      end
+    end
+
+    it 'passes if input is correct' do
+      expect { list.select_items('Margherita x3, $18') }.to_not raise_error
     end
 
     it 'throws error if item is not on menu' do
@@ -65,6 +68,13 @@ describe List do
       
     it 'does not error if sum cost of order is correct' do
       expect { list.select_items('Margherita x3, Trois fromages x1, $26') }.to_not raise_error
+    end
+
+    context 'order info is valid' do
+      it 'sends a text message confirming arrival time' do
+        expect(list).to receive(:send_sms)
+        list.select_items('Margherita x3, Trois fromages x1, $26')
+      end
     end
 
     after(:context) { File.delete("test_list.csv") }

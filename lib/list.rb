@@ -1,4 +1,5 @@
 require 'CSV'
+require 'twilio-ruby'
 require_relative 'list_item'
 $line_width = 80
 $column_width = 40
@@ -19,6 +20,7 @@ class List
     check_input_formatting(user_input)
     check_items_are_on_menu(user_input)
     check_order_total(user_input)
+    send_sms
   end
 
   private
@@ -116,5 +118,25 @@ class List
     end
     item_costs.flatten!
   end
+
+  def send_sms
+    delivery_time = current_time_plus_one_hour
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
+
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    client.account.messages.create(
+      to: ENV["MY_PHONE_NUMBER"],
+      from: ENV["TWILIO_PHONE_NUMBER"],
+      body: "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    )
+  end
+
+  def current_time_plus_one_hour
+    time = Time.new
+    time.hour == 24 ? "0:#{time.min}" : "#{time.hour + 1}:#{time.min}"
+  end
+      
 
 end
