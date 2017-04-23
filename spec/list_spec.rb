@@ -38,36 +38,27 @@ describe List do
     before(:example) { list.view_items("test_list.csv") }
     before(:example) { allow(list).to receive(:send_sms).and_return(true) }
 
-    context 'input is incorrectly formatted' do
-      it 'throws error if comma is missing' do
-        expect { list.select_items('Margherita x3 $18') }.to raise_error(RuntimeError, "Input formatted incorrectly")
+    context 'order info is invalid' do
+      context 'input is incorrectly formatted' do
+        it 'throws error if comma is missing' do
+          expect { list.select_items('Margherita x3 $18') }.to raise_error(RuntimeError, "Input formatted incorrectly")
+        end
+        it 'throws error if $ is missing' do
+          expect { list.select_items('Margherita x3, 18') }.to raise_error(RuntimeError, "Input formatted incorrectly")
+        end
+        it 'throws error if quantity is missing' do
+          expect { list.select_items('Margherita, $6') }.to raise_error(RuntimeError, "Input formatted incorrectly")
+        end
       end
-      it 'throws error if $ is missing' do
-        expect { list.select_items('Margherita x3, 18') }.to raise_error(RuntimeError, "Input formatted incorrectly")
+
+      it 'throws error if item is not on menu' do
+        expect { list.select_items('Margarita x3, $18') }.to raise_error(RuntimeError, "Item entered that is not listed on menu")
       end
-      it 'throws error if number is missing' do
-        expect { list.select_items('Margherita, $6') }.to raise_error(RuntimeError, "Input formatted incorrectly")
-      end
-    end
-
-    it 'passes if input is correct' do
-      expect { list.select_items('Margherita x3, $18') }.to_not raise_error
-    end
-
-    it 'throws error if item is not on menu' do
-      expect { list.select_items('Margarita x3, $18') }.to raise_error(RuntimeError, "Item entered that is not listed on menu")
-    end
-        
-    it 'does not throw error if item is on menu' do
-      expect { list.select_items('Margherita x3, $18') }.to_not raise_error
-    end
-
-    it 'throws error if sum cost of order is incorrect' do
-      expect { list.select_items('Margherita x3, $16') }.to raise_error(RuntimeError, "Incorrect order price entered")
-    end
       
-    it 'does not error if sum cost of order is correct' do
-      expect { list.select_items('Margherita x3, Trois fromages x1, $26') }.to_not raise_error
+      it 'throws error if sum cost of order is incorrect' do
+        expect { list.select_items('Margherita x3, $16') }.to raise_error(RuntimeError, "Incorrect order price entered")
+      end
+      
     end
 
     context 'order info is valid' do
