@@ -20,16 +20,10 @@ describe CustomerOrder do
     expect { customer_order.remove(dish_1) }.to raise_error "That dish is not in this order"
   end
 
-  it 'prints orders' do
+  it 'displays its contents' do
     customer_order.add(dish_1)
     customer_order.add(dish_2)
     expect(customer_order.show_contents).to eq [dish_1, dish_2]
   end
 
-  it 'processes orders' do
-    customer_order.add(dish_1)
-    customer_order.add(dish_2, dish_2)
-    expect(customer_order.process).to eq "Dish: #{dish_1.name} Price: £#{dish_1.price}, Quantity: 1\nDish: #{dish_2.name} Price: £#{dish_2.price}, Quantity: 2\n"
-  end
-  
 end

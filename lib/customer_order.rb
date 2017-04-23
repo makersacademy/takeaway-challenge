@@ -2,6 +2,7 @@ require_relative './dish'
 require_relative './menu'
 require_relative './total_verifier'
 require_relative './message_sender'
+require_relative './order_processor'
 
 require 'envyable'
 Envyable.load('./config/env.yml', 'development')
@@ -41,19 +42,7 @@ class CustomerOrder
   end
 
   def process
-    @message, @full_message, @dishes, @order_total = "", "", [], 0
-    run_the_function
-    @full_message = @message + "#{contents.count} Dishes. Total: £#{sprintf('%.2f', @order_total)}"
-    @message
-  end
-
-  def run_the_function
-    contents.each_with_index  { |dish, index|
-      @message += "Dish: #{dish.name} Price: £#{sprintf('%.2f', dish.price)}, Quantity: #{contents.count(dish)}\n" unless @dishes.include?(dish.name)
-      @dishes << dish.name
-      @order_total += dish.price
-    }
-    @dishes = nil
+    @message, @full_message, @order_total = OrderProcessor.process(contents)
   end
 
   def send_text
