@@ -1,12 +1,13 @@
 class List
 attr_reader :dishes
 
-LIST_OF_DISHES =
-{'Chow Mein' => 5.99, 'Crispy shredded beef' => 6.99,
- 'Lamb Pasanda' => 7.99, 'King Prawn Jahlfrezi' => 8.99,
- 'Supreme Mega Deluxe Royale Meal' => 399.99}
-
 def initialize
-  @dishes = LIST_OF_DISHES
+
+@dishes =  [
+  {:Dish1 => 'Chow Mein', :Price => 5.99},
+  {:Dish2 => 'Crispy shredded beef', :Price => 6.99},
+  {:Dish3 => 'Supreme Mega Deluxe Royale Meal', :Price => 399.99}
+]
+
 end
 end
