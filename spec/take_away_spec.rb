@@ -1,9 +1,14 @@
 require 'take_away'
 
 describe Takeaway do
-  describe '#menu' do
-    it 'menu is empty hash' do
-      expect(subject.menu).to respond_to menu
+  describe '#order' do
+    it 'order equals empty array' do
+      expect(subject.order).to eq []
+    end
+
+    it 'orders plain noodles' do
+      expect(subject.order(1)).to eq [1]
     end
   end
+
 end
