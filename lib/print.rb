@@ -18,4 +18,12 @@ class Print
     print "#{quantity}x #{dish}(s) = £#{price}\n"
   end
 
+  def incorrect_total(total)
+    return "Error: Incorrect input, total is: £#{total} "
+  end
+
+  def print_total(total)
+    return "Total: £#{total} Would like to checkout or add more to your order?"
+  end
+
 end

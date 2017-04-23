@@ -20,20 +20,28 @@ describe Restaurant do
     end
   end
 
-  describe '#basket' do
-    let(:basket_summary) { { "pho" => 1, "noodles" => 3 } }
+  context 'adds order to basket' do
 
-    it 'returns basket summary' do
-      restaurant.order('pho')
-      restaurant.order('noodles', 3)
-      expect(restaurant.basket).to eq basket_summary
-    end
-  end
+    before { restaurant.order('noodles') }
+    before { restaurant.order('pho', 2) }
 
-  describe '#total' do
-    it 'returns total cost of order' do
-      expect(restaurant.total(input)).to eq input
+    describe '#basket' do
+      let(:basket_summary) { { "pho" => 2, "noodles" => 1 } }
+
+      it 'returns basket summary' do
+        expect(restaurant.basket).to eq basket_summary
+      end
     end
+
+    describe '#total' do
+      it 'returns total cost of order if passed correct input' do
+        expect(restaurant.total(14)).to eq "Total: £14"
+      end
+      it 'returns error if incorrect total input' do
+        expect { restaurant.total(12) }.to raise_error "Error: Incorrect input, total is: £14 "
+      end
+    end
+
   end
 
   describe '#add' do

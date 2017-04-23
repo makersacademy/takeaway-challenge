@@ -25,7 +25,7 @@ class Restaurant
   end
 
   def basket
-    @order.basket(@menu)
+    @order.basket
   end
 
   def total(input)
