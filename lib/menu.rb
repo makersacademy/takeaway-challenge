@@ -1,16 +1,24 @@
 class Menu
 
-  DISHES =
-  {
-    pepperoni:  8.50,
-    margerita:  7.00,
-    meat_feast:  9.00,
-    garlic_bread:  2.50,
-    chicken_wings:  3.00
-  }
+  attr_reader :menu, :order, :dish
+
+  def initialize
+    @menu = {"Pepperoni" => 8, "Meat Feast" => 10, "Chicken" => 7}
+    @order = []
+    @dish = dish
+  end
 
   def show_menu
-    DISHES
+    menu
   end
+
+  def place_order(dish)
+    if @menu.has_key?(dish)
+      @order << dish
+    else raise "Sorry, this dish is not on the menu."
+    end
+  end
+
+
 
 end
