@@ -1,5 +1,5 @@
-Takeaway Application
-==================
+#### Takeaway Application
+
 ```
                             _________
               r==           |       |
@@ -14,9 +14,9 @@ Takeaway Application
 
 ```
 
-### This program allows the user to order from their chosen cuisine, and get confirmation of their order via text. This program was built using the [Twilio API](https://www.twilio.com/) as a Ruby gem.
+#### This program allows the user to order from their chosen cuisine, and get confirmation of their order via text. This program was built using the [Twilio API](https://www.twilio.com/) as a Ruby gem.
 
-### The User stories considered:
+#### The User stories considered:
 
 ```
 As a customer
@@ -45,7 +45,6 @@ gem install bundler
 gem install twilio-ruby
 bundle
 # you may be asked to install ruby '2.4.0'
-
 ```
 
 *You can now start ordering! Run this program from the command line in IRB*
@@ -75,20 +74,22 @@ restaurant.total(22)
 # => "Total: £22 Would like to checkout or add more to your order?"
 restaurant.checkout(22)
 # => "Order successful! You have paid £22. Please await text confirmation"
-# The User will be sent a text when #checkout is called with the correct total
+# The User will be sent a text when #checkout is called.
+# The text will confirm the order and tell them the time of arrival
 ```
 
-### Problems encountered:
+#### Problems encountered:
 
 1. Iterating through orders to return the total cost
 
-- When iterating through the basket hash of orders, I needed to delete or ignore the orders already added to the total to avoid adding the same orders on every iteration.
+- When iterating through the 'basket' hash of in the Order class, I needed to delete or ignore the orders after being added to the total to avoid adding the same orders on every iteration.
 To get around this I cloned the basket hash, iterated through the clone adding to the total. I could then delete the clone knowing that order had been added and the basket would stay intact.
+This goes against DRY principles and I will consider refactoring this particular behaviour.
 
 2. Testing using mocks and doubles across multiple classes
 
 3. Testing the TwilioAPI directly
 
-### Test coverage
+#### Test coverage 100%
 
-[test-coverage](https://github.com/JessicaBarclay/takeaway-challenge/blob/master/links/test-coverage.png)
+![Alt text]( https://github.com/JessicaBarclay/takeaway-challenge/blob/master/links/test-coverage.png )
