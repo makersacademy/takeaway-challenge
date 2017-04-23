@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'menu'
 
 describe Takeaway do
   subject(:t) { described_class.new }
@@ -16,7 +17,7 @@ describe Takeaway do
     context 'stores multiples' do
       it 'stores two of one type' do
         t.order('Brains', 2)
-        expect(t.basket).to eq ['Brains', 'Brains']
+        expect(t.basket).to eq ({'Brains' => [5, 2]})
       end
     end
     it 'raises error if item not in menu' do
@@ -24,20 +25,27 @@ describe Takeaway do
     end
   end
 
-  describe '#verify_order' do
+  describe '#checkout' do
     it 'responds to' do
-      expect(t).to respond_to(:verify_order).with(1).argument
+      expect(t).to respond_to(:checkout).with(1).argument
     end
 
     context 'checks cost of ordering Brains' do
       before { t.order('Brains') }
 
       it 'calculates order total' do
-        expect(t.verify_order(5)).to eq 5
+        expect(t.checkout(5)).to eq 5
       end
 
-      it 'raises error if #verify_order arg not eq to basket value' do
-        expect { t.verify_order(10) }.to raise_error "Conflict in total cost"
+      it 'raises error if #checkout arg not eq to basket value' do
+        expect { t.checkout(10) }.to raise_error "Conflict in total cost"
+      end
+    end
+
+    describe '#see_basket' do
+      it 'displays basket contents' do
+        t.order('Brains')
+        expect(t.see_basket).to include 'Brains'
       end
     end
 
