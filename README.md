@@ -1,11 +1,11 @@
 
-# My diagram for building the challenge 
+# Diagram for completing the challenge 
 
         items selected                   total price and nr.
 Menu -----------------> Order preparation -------------------> Takeaway    
 |        for purchase           |           of items             |           
 |                               |                                |
-|                               |                                | |                               |      info  about order         |
+|                               |       info  about order        |                           
 |                               |  - -  -  -  -  -  -  -  - ->   |
 |                               |                                |  
 |                               |                                |
