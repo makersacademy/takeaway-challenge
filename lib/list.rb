@@ -57,7 +57,7 @@ class List
 
   def print_menu_items
     menu_items.each do |item|
-      print item.name.capitalize.ljust(column_width)
+      print item.name.ljust(column_width)
       print item.price.to_s.rjust(column_width)
       print "\n"
     end
