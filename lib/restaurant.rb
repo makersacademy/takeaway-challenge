@@ -1,3 +1,6 @@
+require 'dotenv/load'
+require 'twilio-ruby'
+
 class Restaurant
 
   MENU = { "chips" => 2,
@@ -6,9 +9,9 @@ class Restaurant
     "chow mein" => 3,
     "dumplings" => 3,
     "pan galactic gargle blaster" => 314159,
-    "crispy_duck" => 2,
-    "chish_n_fips" => 1,
-    "spring_rolls" => 2 }
+    "crispy ducklings" => 2,
+    "chish 'n' fips" => 1,
+    "spring rolls of sorrow" => 2 }
 
   attr_reader :menu, :basket, :subtotal
 
@@ -19,11 +22,8 @@ class Restaurant
   end
 
   def read_menu
-    p @menu
-  end
-
-  def dish_available?(dish)
-    @menu.has_key?(dish)
+    puts "Dastardly Dave's Delightful Dishes"
+    @menu.each { |name, price| p "#{name.capitalize} - £#{price}" }
   end
 
   def order(dish, amount)
@@ -35,11 +35,49 @@ class Restaurant
     end
   end
 
+  def basket_summary
+    get_total
+    b = Hash.new(0)
+    @basket.each { |v| b[v] += 1 }
+    b.each { |name, qty| p "#{name.capitalize} x #{qty}" }
+    p "subtotal £#{@subtotal.flatten.inject(:+)}"
+  end
+
+  def place_order(total)
+    if total == @subtotal.flatten.inject(:+)
+      send_sms
+      return "Thank you! Your order was placed and will be delivered in the next 30 minutes."
+    else
+      return "Please pay the exact total to place your order."
+    end
+  end
+
+  private
+
   def get_total
     @basket.each { |dish| @subtotal << @menu.values_at(dish) }
     @subtotal.flatten.inject(:+)
-    a = @subtotal.flatten.inject(:+)
-    p "Your subtotal is #{a}"
+  end
+
+  def dish_available?(dish)
+    @menu.has_key?(dish)
+  end
+
+  def correct_amount?(amount)
+    amount == @subtotal.flatten.inject(:+)
+  end
+
+  def send_sms
+    client = Twilio::REST::Client.new(
+      ENV['TWILIO_ACCOUNT_SID'],
+      ENV['TWILIO_AUTH_TOKEN']
+      )
+
+    client.messages.create(
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to: ENV['CUSTOMER_PHONE_NUMBER'],
+      body: "Thank you! Your order was placed and will be delivered in the next 30 minutes."
+    )
   end
 
 end

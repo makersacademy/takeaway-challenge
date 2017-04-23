@@ -18,10 +18,6 @@ describe Restaurant do
       expect { subject.order("shoe laces", 1).to raise_error "We are all out of shoe laces! What else would you like?" }
     end
 
-    it 'checks if the dish is available' do
-      expect(subject.dish_available?('chips')).to be(true)
-    end
-
     it "has an empty basket by default" do
       expect(subject.basket).to eq []
     end
@@ -35,9 +31,14 @@ describe Restaurant do
       expect(subject.basket).to include('chips')
     end
 
-    it 'adds up the total order value' do
+    it 'tells you your order has been placed if right amount given' do
       subject.order('chips',1)
-      expect(subject.get_total).to eq 2
+      subject.basket_summary
+      expect(subject.place_order(2)).to eq "Thank you! Your order was placed and will be delivered in the next 30 minutes."
+    end
+
+    it 'tells you the wrong amount has been given and no order is placed' do
+      expect(subject.place_order(3)).to eq "Please pay the exact total to place your order."
     end
 
   end
