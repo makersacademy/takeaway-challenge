@@ -55,6 +55,12 @@ restaurant = Restaurant.new
 # this program runs the default menu, but feel free to customise in Menu class!
 # the menu included as default:
 # @cuisine = { 'ramen' => 5, 'bun' => 3, 'noodles' => 4 }
+restaurant.read_menu
+#         Basket       
+# ***********************
+# Ramen                £5
+# Bun                  £3
+# Noodles              £4
 restaurant.order('noodles', 2)
 # => "2x noodles(s) added to basket"
 restaurant.add('ramen')

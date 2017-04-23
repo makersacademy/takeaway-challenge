@@ -11,7 +11,7 @@ class Restaurant
   end
 
   def read_menu
-    print_menu(@menu)
+    print_menu
   end
 
   def order(dish, quantity = 1)

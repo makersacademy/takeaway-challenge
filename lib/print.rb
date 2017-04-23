@@ -1,7 +1,8 @@
 module Print
 
-  def print_menu(menu)
-    menu.cuisine.each { |dish, price| "#{dish.to_s.capitalize}, £#{price}\n" }
+  def print_menu
+    puts "","Basket".center(20),"*"*23
+    @menu.cuisine.each{ |dish, price| puts "#{dish.to_s.capitalize.ljust(20)} £#{price}\n" }
   end
 
   def add_to_basket(dish, quantity = 1)
