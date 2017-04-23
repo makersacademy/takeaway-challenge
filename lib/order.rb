@@ -2,11 +2,12 @@ require_relative 'menu'
 
 # Manages customer's basket
 class Order
-  attr_reader :basket, :total
+  attr_reader :basket, :total, :menu
 
-  def initialize
+  def initialize(menu = Menu)
     @basket = []
     @total = 0
+    @menu = menu.new
   end
 
   def add_to_basket(item, num)
@@ -29,7 +30,7 @@ class Order
   private
 
   def price(item)
-    Menu::FOOD_MENU[item]
+    menu.dishes[item]
   end
 
   def empty?

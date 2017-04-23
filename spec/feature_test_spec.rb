@@ -10,5 +10,10 @@ feature 'Feature test' do
 
   def sets_up_takeaway
     expect(takeaway.check_basket).to be_empty
+    takeaway.add('Rare Chicken', 2)
+    takeaway.add('Questionable sauce')
+    expect(takeaway.check_basket).not_to be_empty
   end
+
+  
 end

@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'menu'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
@@ -7,6 +8,7 @@ describe Takeaway do
   it { is_expected.to respond_to :view_menu }
   it { is_expected.to respond_to :add }
 
+  let(:menu) { Menu.new }
   let(:text) { double :sms, send_message: 'Order confirmed' }
 
   describe '#check_basket' do
@@ -27,14 +29,14 @@ describe Takeaway do
 
     it 'adds multiple items together' do
       takeaway.add('Cleanout curry') # Price is 1.99
-      takeaway.add('Chicken korma') # Price is 5.99
+      takeaway.add('Rare chicken') # Price is 5.99
       expect(takeaway.check_total).to eq 'Basket total: £7.98'
     end
   end
 
   describe '#view_menu' do
     it 'displays the food on the menu' do
-      expect(takeaway.view_menu).to eq Menu::FOOD_MENU
+      expect(takeaway.view_menu).to eq menu.dishes
     end
   end
 
@@ -74,7 +76,7 @@ describe Takeaway do
     it 'sends through to text message class' do
       takeaway.send(:text=, text)
       takeaway.add('Cleanout curry')
-      expect(takeaway.checkout(1.99)).to eq 'Order confirmed'
+      expect(takeaway.checkout(1.99)).to eq 'Order placed successfully!'
     end
   end
 end

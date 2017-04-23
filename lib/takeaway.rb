@@ -53,6 +53,7 @@ class Takeaway
   def order_success
     empty_basket
     text.send_message
+    'Order placed successfully!'
   end
 
   def offer_bargain(item)
