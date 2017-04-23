@@ -11,7 +11,7 @@ describe OrderSystem do
   end
 
   describe "#place_order" do
-    context "when an item and quantity is given" do
+    context "When an item and quantity is given" do
       it "add the item to the order_list " do
         expect(order_system.order_list.first[0]).to be @item
       end
@@ -24,7 +24,7 @@ describe OrderSystem do
   end
 
   describe "#order_total" do
-    context "Shows the order" do
+     context "Shows the order" do
       it "returns sum of all items from the order_list" do
         total = 15.95
         item2 = order_system.menu.list.to_a.last[0]

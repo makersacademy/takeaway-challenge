@@ -2,7 +2,7 @@ require 'twilio'
 
 describe Twilio do
   class DeliveryClass
-end
+  end
 
 before(:each) do
    @delivery_class = DeliveryClass.new
