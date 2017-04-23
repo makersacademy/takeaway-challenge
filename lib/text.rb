@@ -1,4 +1,4 @@
-class SMS
+module Text
   def text
     account_sid = 'AC30dc5b990ed47dc40d92963328691a89'
     auth_token = '3836dc07ae8ad1dcb7013deffa80468c'
