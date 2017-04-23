@@ -36,4 +36,13 @@ describe Restaurant do
     end
   end
 
+  describe '#add' do
+    it 'prints confirmation of order added to basket' do
+      expect(restaurant.add('bun')).to eq "1x bun(s) added to basket"
+    end
+    it 'raises error if dish doesn\'t exist' do
+      expect { restaurant.add('beer') }.to raise_error "Unfortunately beer isn't available"
+    end
+  end
+
 end

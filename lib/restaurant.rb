@@ -20,6 +20,10 @@ class Restaurant
     @order.add(dish, quantity)
   end
 
+  def add(dish, quantity = 1)
+    order(dish, quantity)
+  end
+
   def basket
     @order.basket(@menu)
   end
