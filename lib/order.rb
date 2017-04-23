@@ -16,7 +16,7 @@ class Order
   def select_item
     puts "Please select the item you want by its code"
     @selection = $stdin.gets.chomp
-    raise "Selection cancelled" unless selection == "a" || "b" || "c"
+    raise "Selection cancelled" unless selection == "a" || selection == "b" || selection == "c"
   end
 
   def select_item_quantity
