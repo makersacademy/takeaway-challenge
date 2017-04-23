@@ -1,5 +1,6 @@
 require 'restaurant'
 require 'menu'
+require 'order'
 
 describe Restaurant do
   subject(:restaurant) { described_class.new(menu: menu) }
@@ -9,6 +10,13 @@ describe Restaurant do
   describe '#read_menu' do
     it 'Displays what is on the menu' do
       expect(restaurant.read_menu).to include menu_items
+    end
+  end
+  describe '#order' do
+    it 'Adds menu items to the current order' do
+      restaurant = Restaurant.new
+      restaurant.order("Pizza", 2)
+      expect(restaurant.current_order).to include({ "Pizza" => 2 })
     end
   end
 end
