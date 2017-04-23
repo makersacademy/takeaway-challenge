@@ -12,7 +12,8 @@ class Order
 
   def add_to_order(number)
     choice = @menu.pizzas.values[number - 1]
-    @trolley << choice
+    @trolley << choice unless choice.nil?
+    return "Invalid number. Please select a valid dish." if choice.nil?
     "#{choice.keys[0]} pizza added."
   end
 
