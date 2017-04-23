@@ -14,4 +14,8 @@ class Order
     @print.view_basket(@items, menu)
   end
 
+  def total(input)
+    input
+  end
+
 end

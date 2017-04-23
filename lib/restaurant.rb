@@ -24,6 +24,10 @@ class Restaurant
     @order.basket(@menu)
   end
 
+  def total(input)
+    @order.total(input)
+  end
+
   private
 
   def available?(order)

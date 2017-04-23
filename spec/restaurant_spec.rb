@@ -4,6 +4,7 @@ require './lib/menu'
 describe Restaurant do
   alias_method :restaurant, :subject
   let(:dish) { double :dish }
+  let(:input) { double :input }
 
   it 'lists dishes from given menu' do
     menu = Menu.new
@@ -18,14 +19,20 @@ describe Restaurant do
       expect { restaurant.order('pizza') }.to raise_error "Unfortunately pizza isn't available"
     end
   end
-  
+
   describe '#basket' do
-    let(:basket_summary) { {"pho"=>1, "noodles"=>3} }
+    let(:basket_summary) { { "pho" => 1, "noodles" => 3 } }
 
     it 'returns basket summary' do
       restaurant.order('pho')
       restaurant.order('noodles', 3)
       expect(restaurant.basket).to eq basket_summary
+    end
+  end
+
+  describe '#total' do
+    it 'returns total cost of order' do
+      expect(restaurant.total(input)).to eq input
     end
   end
 
