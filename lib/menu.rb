@@ -1,7 +1,15 @@
+
 class Menu
 
+  attr_reader :dishes
 
-  	MENU = {"sushi set" => 10.99, "ramen" => 6.99, "udon" => 6.99, "miso soup" => 5.49}
+  def initialize(dishes)
+    @dishes = dishes
+  end
 
-
+  def print_menu
+  	dishes.map do |item, price|
+    "%s £%.2f" % [item.to_s.capitalize, price]
+    end.join(', ')
+  end
 end
