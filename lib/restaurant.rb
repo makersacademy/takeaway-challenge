@@ -43,8 +43,8 @@ class Restaurant
 
   def check_order_total(order)
     cost_entered = order[-1].scan(/\d+/)[0].to_i
-    order_item_names_and_quantities = return_order_item_names_and_quantities(order)
-    actual_cost = calculate_actual_cost(order_item_names_and_quantities, menu)
+    item_names_and_quantities = return_item_names_and_quantities(order)
+    actual_cost = calculate_actual_cost(item_names_and_quantities, menu)
     raise RuntimeError, "Incorrect order price entered" unless actual_cost == cost_entered 
   end
 
@@ -52,21 +52,21 @@ class Restaurant
     order[0..-2].collect { |menu_item| menu_item =~ /([A-Za-z ]+(?= x\d+))/; $1 }
   end
 
-  def return_order_item_names_and_quantities(order)
+  def return_item_names_and_quantities(order)
     order[0..-2].collect do |menu_item|
       menu_item =~ /([A-Za-z ]+(?= x(\d+)))/; { name: $1, quantity: $2 } 
     end
   end
 
-  def calculate_actual_cost(order_item_names_and_quantities, menu)
-    cost_grouped_by_menu_item = return_cost_grouped_by_menu_item(order_item_names_and_quantities, menu)
+  def calculate_actual_cost(item_names_and_quantities, menu)
+    cost_grouped_by_menu_item = return_cost_grouped_by_menu_item(item_names_and_quantities, menu)
     costs = cost_grouped_by_menu_item
     costs.delete(nil)
     costs.reduce(&:+)
   end
 
-  def return_cost_grouped_by_menu_item(order_item_names_and_quantities, menu)
-    item_costs = order_item_names_and_quantities.collect do |order|
+  def return_cost_grouped_by_menu_item(item_names_and_quantities, menu)
+    item_costs = item_names_and_quantities.collect do |order|
       menu.menu_items.collect do |menu_item|
         menu_item.price * order[:quantity].to_i if menu_item.name == order[:name]
       end

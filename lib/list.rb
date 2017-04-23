@@ -22,7 +22,6 @@ class List
     menu_items.collect { |menu_item| menu_item.name }
   end
 
-
   private
 
   attr_writer :menu_items

@@ -6,7 +6,7 @@ describe Restaurant do
   end
   subject(:restaurant) { described_class.new("test_list.csv") }
 
-  it {is_expected.to respond_to(:view_menu) }
+  it { is_expected.to respond_to(:view_menu) }
 
   describe '#make_order' do
     before(:example) { allow(restaurant).to receive(:send_sms).and_return(true) }
