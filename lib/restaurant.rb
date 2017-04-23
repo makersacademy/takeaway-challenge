@@ -8,8 +8,8 @@ class Restaurant
     @waiter = Waiter.new
   end
 
-  def view_menu(file = nil)
-    file.nil? ? menu.print_menu : menu.print_menu(file)
+  def view_menu
+    menu.print_menu
   end
 
   def place_order(order)
