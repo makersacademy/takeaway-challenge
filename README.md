@@ -5,7 +5,7 @@ The Build
 Functional Representation
 
 | User          |
-| ------------- | -------------
+| ------------- | 
 | Terminal      | main user interface
 | Menu          | list of food  
 | Menu Printer  | prints food   
