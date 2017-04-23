@@ -38,4 +38,8 @@ class Menu
     @order = []
     @total = []
   end
- end
+
+  def confirmation_message(twilio = TwilioAPI.new)
+    twilio.send_confirmation
+  end
+end
