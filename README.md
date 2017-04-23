@@ -58,3 +58,10 @@ IRB usage
  => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC2d9d44552b5415638489da2b5fb7076d/Messages/SMecc55ba4e18047ecb827253fb361bdaa>
 2.4.0 :010 >
 ```
+
+## Future changes
+
+* Add a selection of menus
+* Refactor code to have more classes implementing the SRP
+* Taking orders via sms
+* Prettier prints
