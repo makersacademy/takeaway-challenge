@@ -47,6 +47,7 @@ class Order
   end
 
   def place_order
+    return raise "Your order is empty." if @trolley.empty?
     Sms.new.send_message
     @trolley = []
   end

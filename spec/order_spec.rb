@@ -37,4 +37,10 @@ describe Order do
     end
   end
 
+  describe '#place_order' do
+    it 'should raise error if trolley is empty' do
+      expect { subject.place_order }.to raise_error "Your order is empty."
+    end
+  end
+
 end
