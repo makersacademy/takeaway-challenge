@@ -18,19 +18,19 @@ class CustomerOrder
     @my_total = 0
   end
 
-  def add(*dish)
-    dish.each { |dish|
-    @my_total += dish.price
-    @contents << dish
-  }
+  def add(*array)
+    array.each { |dish|
+      @my_total += dish.price
+      @contents << dish
+    }
   end
 
-  def remove(*dish)
-    dish.each { |dish|
-    raise "That dish is not in this order" unless @contents.include?(dish)
-    @my_total -= dish.price
-    @contents.delete(dish)
-  }
+  def remove(*array)
+    array.each { |dish|
+      raise "That dish is not in this order" unless @contents.include?(dish)
+      @my_total -= dish.price
+      @contents.delete(dish)
+    }
   end
 
   def order_count

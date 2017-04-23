@@ -2,15 +2,15 @@ require 'total_verifier'
 
 describe TotalVerifier do
 
-  let(:total_verifier){ described_class }
+  let(:total_verifier) { described_class }
 
-  it 'checks that two numbers are equal' do
+  it 'alerts if two numbers are not equal' do
     message = "Those two numbers are not equal"
-    expect {total_verifier.verify(12.50, 12.49)}.to raise_error message
+    expect { total_verifier.verify(12.50, 12.49) }.to raise_error message
   end
 
   it 'checks that two numbers are equal' do
-    expect {total_verifier.verify(12.50, 12.50)}.not_to raise_error
+    expect { total_verifier.verify(12.50, 12.50) }.not_to raise_error
   end
 
 end
