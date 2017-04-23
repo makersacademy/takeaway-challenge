@@ -28,16 +28,7 @@ RSpec.describe Terminal do
     it 'is expected to display the balance for order' do
       subject.add_to_order('lamb doner', 2)
       subject.add_to_order('half pounder', 1)
-
       expect(subject.outstanding_balance).to eq 'total order: £14'
-    end
-  end
-
-  describe '#pay_money' do
-    it 'is expected to take payment for food' do
-      subject.add_to_order('lamb doner', 2)
-      subject.outstanding_balance
-      expect(subject.pay_money(10)).to eq 'thank you for your payment'
     end
   end
 end

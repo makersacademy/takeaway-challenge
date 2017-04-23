@@ -3,12 +3,6 @@ require 'twilio-ruby'
 
 class Delivery
 
-  attr_reader :time
-
-  def initialize
-    @time = Time.now + 60*60
-  end
-
   def process_text
     eta = Time.now + 60*60
     account_sid = 'ACf2a3374e74c0a52db1d166ffdcd5111d'
