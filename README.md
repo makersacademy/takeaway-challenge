@@ -2,7 +2,7 @@
 #### (Forked from [makersacademy/takeaway-challenge](https://github.com/makersacademy/takeaway-challenge))
 
 ## A program modeling the functionality of a takeaway restaurant:
-- User is able to print the restaurante menu
+- User is able to print the restaurant menu
 - Dishes can be added to the order
 - Current order can be viewed and its total price confirmed
 - Order can be placed
