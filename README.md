@@ -24,7 +24,7 @@ This program lets you 'build' restaurants and 'order' food within a ruby repl. I
 
 3. Get Twilio. Sign up for a free account [here](https://www.twilio.com/try-twilio), and tell it you're planning to use **SMS** for building **order notifications** in **Ruby**. It should then walk you through the setup process. Get a Twilio phone number [here](https://www.twilio.com/console/phone-numbers/search). It should all be free with the trial account.
 
-4. My code relies on a few environmental variables—they are TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, MY_PHONE_NUMBER, TWILIO_PHONE_NUMBER. Make sure you set them before running the code. Your Twilio Account SID and Auth Tokens can be found [here](https://www.twilio.com/console/account/settings).
+4. My code relies on a few environmental variables—they are TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, MY_PHONE_NUMBER, TWILIO_PHONE_NUMBER. Make sure you set them before running the code. Once you have a Twilio account, your SID and Auth Token can be found [here](https://www.twilio.com/console/account/settings).
 
 
 ## Usage
