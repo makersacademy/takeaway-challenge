@@ -13,6 +13,10 @@ class Takeaway
 
   def show_menu
     menu.print_menu
-  end 
+  end
+
+  def order(item, quantity_needed)
+
+  end
 
 end
