@@ -11,13 +11,13 @@ class Order < Takeaway
 
   def add(item, quantity)
     fail "Item not on menu" unless menu.include?(item)
-    puts "#{quantity}x #{item} added to the order."
+    "#{quantity}x #{item} added to the order."
     cost = menu[item]
     @items << [item, cost, quantity]
   end
 
   def check
-    items.each { |x| puts "#{x[0]} = £#{x[1]}\n" * x[2] }
+    items.each { |x| "#{x[0]} = £#{x[1]}\n" * x[2] }
     "Total: £#{total}"
   end
 
