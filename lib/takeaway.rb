@@ -16,14 +16,14 @@ attr_reader :menu, :current_order
 
   def order_list
     list = []
-    @current_order.each { |key, value| list << "#{value}x #{key}" }
+    @current_order.each { |key, value| list << "#{value}x #{key} = £#{@menu.dishes[key] * value}" }
     puts list.join("\n")
     list.join("\n")
   end
 
   def total
     calculate_total
-    "Total: #{@total}"
+    "Total: £#{@total}"
   end
 
   def calculate_total

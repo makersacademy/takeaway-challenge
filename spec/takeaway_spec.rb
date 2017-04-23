@@ -34,7 +34,7 @@ describe Takeaway do
       takeaway.order('biryani')
       order_quantity = takeaway.current_order['biryani']
       dish_price = takeaway.menu.dishes['biryani']
-      expect(takeaway.total).to eq "Total: #{order_quantity * dish_price}"
+      expect(takeaway.total).to eq "Total: £#{order_quantity * dish_price}"
     end
   end
 
@@ -45,6 +45,7 @@ describe Takeaway do
       expect(takeaway.order_list).to include 'biryani'
     end
   end
+
 
 
 end
