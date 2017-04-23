@@ -37,7 +37,6 @@ class Restaurant
     @print.checkout
   end
 
-
   private
 
   def available?(order)

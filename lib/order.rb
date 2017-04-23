@@ -1,3 +1,5 @@
+require './lib/twilio-api'
+
 class Order
 
   def initialize(print = Print.new, menu = Menu.new)
@@ -27,12 +29,17 @@ class Order
   end
 
   def checkout
-    pay
+    reset_total
+    message
   end
 
   private
 
-  def pay
+  def message(twilio = TwilioAPI.new)
+    twilio.send_sms
+  end
+
+  def reset_total
     @total = {}
     @basket = {}
   end
