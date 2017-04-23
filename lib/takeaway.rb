@@ -11,12 +11,12 @@ class Takeaway
     empty_basket
   end
 
-  def empty_basket
-    @order = @order_class.new
+  def view_menu
+    @menu.dishes
   end
 
-  def check_basket
-    @order.basket
+  def empty_basket
+    @order = @order_class.new
   end
 
   def add(item, quantity = 1)
@@ -26,12 +26,19 @@ class Takeaway
     "Added #{quantity} x #{item} to your basket. #{quip}!"
   end
 
-  def view_menu
-    @menu.dishes
+  def check_basket
+    @order.basket
   end
 
-  def total
-    "£#{format('%.2f', 0.00)}"
+  def check_total
+    total = 0
+    check_basket.each { |x| total += x[:price] }
+    "Basket total: £#{format('%.2f', total)}"
+  end
+
+  def basket_summary
+    return 'Basket is empty' if check_basket.empty?
+    [@order.basket, check_total]
   end
 
   private
@@ -45,6 +52,7 @@ class Takeaway
   end
 
   def quip
-    ['Delicious', 'Infectious', 'Wonderful', 'Enjoy', 'Tasty', 'Really?'].sample
+    ['Delicious', 'Infectious', 'Adventurous',
+     'Enjoy', 'Tasty', 'Really?', 'Great price'].sample
   end
 end
