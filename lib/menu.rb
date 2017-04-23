@@ -13,7 +13,7 @@ class Menu
   end
 
   def show_menu
-    menu
+    @menu
   end
 
   def show_order
