@@ -120,7 +120,7 @@ class List
   end
 
   def send_sms
-    delivery_time = current_time_plus_one_hour
+    delivery_time = print_time(current_time_plus_one_hour)
     account_sid = ENV["TWILIO_ACCOUNT_SID"]
     auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
@@ -134,8 +134,13 @@ class List
   end
 
   def current_time_plus_one_hour
-    time = Time.new
-    time.hour == 24 ? "0:#{time.min}" : "#{time.hour + 1}:#{time.min}"
+    Time.new + 3600
+  end
+
+  def print_time(time)
+    hour = time.hour == 23 ? 0 : time.hour
+    minute = time.min < 10 ? "0#{time.min}" : time.min
+    "#{hour}:#{minute}"
   end
       
 
