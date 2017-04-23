@@ -4,8 +4,7 @@ describe Order do
 
   describe '#add_to_order' do
     it 'should allow user to select a dish' do
-      menu = Menu.new
-      expect(subject.add_to_order(1)[0]).to eq menu.pizzas.values[0]
+      expect(subject.add_to_order(1)).to eq "Mozzarela pizza added."
     end
   end
 

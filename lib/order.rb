@@ -11,8 +11,9 @@ class Order
   end
 
   def add_to_order(number)
-    choice = menu.pizzas.values[number - 1]
+    choice = @menu.pizzas.values[number - 1]
     @trolley << choice
+    "#{choice.keys[0]} pizza added."
   end
 
   def view_order
