@@ -4,11 +4,11 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :menu, :order_list
+  attr_reader :menu
 
   def initialize
     @menu = Menu.new
-    @order_list = {}
+    @order_list = Order.new(@menu)
   end
 
   def show_menu
