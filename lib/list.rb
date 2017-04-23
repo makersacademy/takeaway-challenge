@@ -1,5 +1,4 @@
 require 'CSV'
-require 'twilio-ruby'
 require_relative 'list_item'
 
 class List
@@ -11,18 +10,16 @@ class List
     load_menu_data_from_csv(menu_data)
   end
 
-  def view_items(file = "takeawaylist.csv")
-    print_menu
+  def print_menu
+    print_header
+    print_menu_items
+    print_footer
   end
 
   private
 
   attr_accessor :menu_items
   attr_reader :line_width, :column_width
-
-  def reset_menu_items
-    self.menu_items = []
-  end
 
   def load_menu_data_from_csv(file)
     CSV.foreach(file) { |row| build_menu_item(row) }
@@ -32,12 +29,6 @@ class List
     name = row[0]
     price = row[1]
     menu_items << ListItem.new({ name: name.to_s, price: price.to_i })
-  end
-
-  def print_menu
-    print_header
-    print_menu_items
-    print_footer
   end
 
   def print_header

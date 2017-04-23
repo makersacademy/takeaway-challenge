@@ -3,13 +3,13 @@ require_relative 'waiter'
 
 class Restaurant
 
-  def initialize
-    @menu = List.new
+  def initialize(menu = "takeawaylist.csv")
+    @menu = List.new(menu)
     @waiter = Waiter.new
   end
 
   def view_menu(file = nil)
-    file.nil? ? menu.view_items : menu.view_items(file)
+    file.nil? ? menu.print_menu : menu.print_menu(file)
   end
 
   def place_order(order)

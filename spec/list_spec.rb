@@ -12,15 +12,25 @@ describe List do
     List.new("test_list.csv")
   end
 
-  describe '#view_items' do
+  describe '#print_menu' do
 
-    it 'prints menu items' do
-      expect(list).to receive(:print_menu)
-      list.view_items("test_list.csv")
+    it 'prints header' do
+      expect(list).to receive(:print_header)
+      list.print_menu
     end
 
-    specify { expect { list.view_items("test_list.csv") }.to output(/Margherita/).to_stdout }
-    specify { expect { list.view_items("test_list.csv") }.to output(/6/).to_stdout }
+    it 'prints menu items' do
+      expect(list).to receive(:print_menu_items)
+      list.print_menu
+    end
+
+    it 'prints footer' do
+      expect(list).to receive(:print_footer)
+      list.print_menu
+    end
+
+    specify { expect { list.print_menu }.to output(/Margherita/).to_stdout }
+    specify { expect { list.print_menu }.to output(/6/).to_stdout }
 
   end
 
