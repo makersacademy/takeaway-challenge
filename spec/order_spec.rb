@@ -17,9 +17,15 @@ describe Order do
     expect(order.customer_order).to eq customer_order
   end
 
-  it 'raises error if item ordered is not onthe menu' do
+  it 'raises error if item ordered is not on the menu' do
     error = "Item is not on the menu."
     expect { order.add_item(:Margherita, 1) }.to raise_error error
-
   end
+
+  it 'checks the total matches the sum of the various items ordered' do
+    order.add_item(:Milano, 1)
+    order.add_item(:Roma, 1)
+    expect(order.total).to eq "Your total: £39.98"
+  end
+
 end
