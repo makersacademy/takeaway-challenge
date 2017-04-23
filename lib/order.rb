@@ -39,6 +39,7 @@ class Order
 
   def place_order
     Sms.new.send_message
+    @trolley = []
   end
 
 end
