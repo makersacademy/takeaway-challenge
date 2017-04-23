@@ -45,8 +45,9 @@ class CustomerOrder
     @message, @full_message, @order_total = OrderProcessor.process(contents)
   end
 
-  def send_text
+  def complete_and_send_text
     MessageSender.send_text(@name, @phone_number, @full_message)
+    "message sent successfully"
   end
 
   def cross_check_total

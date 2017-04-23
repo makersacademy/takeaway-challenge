@@ -9,4 +9,8 @@ describe TotalVerifier do
     expect {total_verifier.verify(12.50, 12.49)}.to raise_error message
   end
 
+  it 'checks that two numbers are equal' do
+    expect {total_verifier.verify(12.50, 12.50)}.not_to raise_error
+  end
+
 end

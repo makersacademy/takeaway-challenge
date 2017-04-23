@@ -9,7 +9,6 @@ class MessageSender
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new account_sid, auth_token
     from = "+441740582048"
-    add = 45*60
     time = (Time.now + ADDITIONAL_TIME).strftime("%H.%M")
       client.account.messages.create(
         :from => from,
@@ -17,6 +16,5 @@ class MessageSender
         :body => "Hello #{name}, your order has been dispatched from Makers Bistro.\n#{message} It will arrive in #{ADDITIONAL_TIME/60} minutes at #{time}!"
       )
   end
-
 
 end

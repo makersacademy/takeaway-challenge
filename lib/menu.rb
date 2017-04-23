@@ -16,13 +16,17 @@ class Menu
     string
   end
 
-  def add(hash)
-    @list_of_dishes = @list_of_dishes.merge!(hash)
+  def add(*array)
+    array.each { |hash|
+      @list_of_dishes = @list_of_dishes.merge!(hash.present)
+    }
   end
 
-  def remove(hash)
-    raise "Menu does not contain that dish" unless list_of_dishes.include?(hash)
-    @list_of_dishes.delete_if {|key, value| hash.keys.include?(key) && hash.values.include?(value) }
+  def remove(*array)
+    array.each { |hash|
+      raise "Menu does not contain that dish" unless list_of_dishes.include?(hash.present)
+      @list_of_dishes.delete_if {|key, value| hash.present.keys.include?(key) && hash.present.values.include?(value) }
+    }
   end
 
   private

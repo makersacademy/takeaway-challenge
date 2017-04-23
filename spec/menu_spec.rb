@@ -9,16 +9,16 @@ describe Menu do
   let(:menu) { described_class.new([{ dish_1.name => dish_1.price }, { dish_2.name => dish_2.price }]) }
 
   it 'can have dishes added to it' do
-     expect { menu.add(dish_3.present) }.to change{menu.list_of_dishes.count}.from(2).to(3)
+     expect { menu.add(dish_3) }.to change{menu.list_of_dishes.count}.from(2).to(3)
   end
 
   it 'can have dishes removed from it' do
-     expect { menu.remove(dish_2.present) }.to change{menu.list_of_dishes.count}.from(2).to(1)
+     expect { menu.remove(dish_2) }.to change{menu.list_of_dishes.count}.from(2).to(1)
   end
 
   it 'cannot lose dishes that it does not contain' do
     message = "Menu does not contain that dish"
-    expect { menu.remove(dish_3.present) }.to raise_error message
+    expect { menu.remove(dish_3) }.to raise_error message
   end
 
   it 'prints a list of dishes' do
