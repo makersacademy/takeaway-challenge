@@ -11,6 +11,12 @@ takeaway.pay(71.44,FakeTextMessage.new)
 * No isolated unit testing on Takeaway class as it is responsible for very little functionality
 * Rubocop clean, rspecs green
 
+#### Screenshots
+
+<img width="1382" alt="screen shot 2017-04-23 at 10 32 33" src="https://cloud.githubusercontent.com/assets/24992029/25312448/f8dc0dba-2810-11e7-9b23-7b8c089858d8.png">
+
+![img_0608](https://cloud.githubusercontent.com/assets/24992029/25312450/fa1d7ace-2810-11e7-837c-5de7cf838f11.PNG)
+
 #### REPL example
 
 ```
