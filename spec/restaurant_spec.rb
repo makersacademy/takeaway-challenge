@@ -1,4 +1,5 @@
 require 'restaurant'
+# require 'fake-sms'
 
 describe 'restaurant' do
   subject { Restaurant.new }
@@ -37,6 +38,16 @@ describe 'restaurant' do
   describe '#check_total' do
     it 'expects check_total to return 10' do
     expect(subject.check_total).to eq(7)
+    end
+  end
+
+  describe '#send_text' do
+    it 'expects subject to respond to send_text' do
+      expect(subject).to respond_to(:send_text)
+    end
+
+    it 'expects subject to send a text' do
+      subject.send_text
     end
   end
 end
