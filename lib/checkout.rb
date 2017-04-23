@@ -16,7 +16,10 @@ class CheckOut
     return "total order: £#{total_balance}"
   end
 
-  def payment
+  def payment(money)
+    raise "Nothing to pay for" if @the_cart.empty?
+    raise "Not the correct amount" if money != @total_balance
+    'thank you for your payment'
   end
 
 end

@@ -13,6 +13,6 @@ RSpec.describe MenuPrinter do
   describe '#print_menu' do
     it 'is gives a return value of nil ' do
       expect(subject.print_menu).to eq nil
+    end
   end
-end
 end

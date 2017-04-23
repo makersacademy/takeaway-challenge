@@ -43,6 +43,6 @@ RSpec.describe OrderSelection do
       subject.add_item('kebab', 2)
       expect(subject.view_cart).to eq '2 kebab'
     end
-end
+  end
 
 end

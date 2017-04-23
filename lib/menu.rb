@@ -17,5 +17,5 @@ class Menu
       'ketchup': 0.50,
       'garlic': 0.50
     }
-end
+  end
 end

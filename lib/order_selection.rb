@@ -24,6 +24,6 @@ class OrderSelection
     v = 1
     @cart.each {|x| v = "#{@cart.count(x)} #{x}"}
     v
-end
+  end
 
 end

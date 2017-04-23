@@ -1,5 +1,5 @@
 require_relative 'menu'
-#understands printing menu
+
 class MenuPrinter
   attr_reader :menu
 
@@ -9,9 +9,9 @@ class MenuPrinter
 
   def print_menu
     @menu.the_menu.each do |key,value|
-   puts "#{key} for #{value}"
+      puts "#{key} for #{value}"
+    end
+    nil
   end
-  nil
-end
 
 end
