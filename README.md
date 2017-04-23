@@ -20,9 +20,11 @@ This program lets you 'build' restaurants and 'order' food within a ruby repl. I
 
 1. Clone the repository: `git clone git@github.com:adc17/takeaway-challenge.git`
 
-2. Get Twilio. Sign up for a free account [here](https://www.twilio.com/try-twilio), and tell it you're planning to use **SMS** for building **order notifications** in **Ruby**. It should then walk you through the setup process. Get a Twilio phone number [here](https://www.twilio.com/console/phone-numbers/search). It should all be free with the trial account.
+2. Install gems: `cd path/to/dir` then `bundle install`. If `bundler` isn't installed, first run `gem install bundler`.
 
-3. My code relies on a few environmental variables—they are TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, MY_PHONE_NUMBER, TWILIO_PHONE_NUMBER. Make sure you set them before running the code. Your Twilio Account SID and Auth Tokens can be found [here](https://www.twilio.com/console/account/settings).
+3. Get Twilio. Sign up for a free account [here](https://www.twilio.com/try-twilio), and tell it you're planning to use **SMS** for building **order notifications** in **Ruby**. It should then walk you through the setup process. Get a Twilio phone number [here](https://www.twilio.com/console/phone-numbers/search). It should all be free with the trial account.
+
+4. My code relies on a few environmental variables—they are TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, MY_PHONE_NUMBER, TWILIO_PHONE_NUMBER. Make sure you set them before running the code. Your Twilio Account SID and Auth Tokens can be found [here](https://www.twilio.com/console/account/settings).
 
 
 ## Usage
@@ -58,7 +60,9 @@ To test, navigate to the project root and run `rspec`.
 
 3. Line 13 of `lib/restaurant.rb`. I couldn't figure out how to test it, and aside from the Twilio API, it's the only thing my tests didn't cover. I suspect it was just bad domain modelling.
 
-4. Twilio. I'd never interacted with an API before, and despite Twilio's being extremely simple, it took me a couple of hours to get everything set up. This included automatically exporting the necessary variables to my `ENV`.
+4. Checking the price was accurate. Again, probably bad domain modelling, but I had to match item names entered by the user against item data in my menu, then multiply the quantity of those items ordered by the price for that item on the menu. My solution was even more unclear than that sentence.
+
+5. Twilio. I'd never interacted with an API before, and despite Twilio's being extremely simple, it took me a couple of hours to get everything set up. This included automatically exporting the necessary variables to my `ENV`.
 
 ## Improvements
 
