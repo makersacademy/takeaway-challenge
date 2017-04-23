@@ -1,32 +1,42 @@
 require_relative 'menu'
+require_relative 'print'
+require_relative 'twilio_api'
+
 
 class Takeaway
+  include TwilioAPI
+  include Print
 
   attr_reader :menu, :basket, :subtotal
 
-  def initialize
-    @menu = Menu.new
-    @basket = {}
+  def initialize(menu = Menu.new)
+    @menu = menu
+    @basket = Hash.new(0)
     @subtotal = 0
   end
 
   def read_menu
-    menu.list_dishes
+    print_menu
   end
 
   def order(item, quantity=1)
-    fail 'Item not available' if !menu.dishes.has_key?(item)
+    fail 'Item not available' unless in_menu?(item)
     add_item_to_basket(item, quantity)
     print_order(item, quantity)
   end
 
-  def checkout(total)
+  def total
+    reset_subtotal
     calculate_subtotal
-    raise 'Conflict in total cost' if total != subtotal
-    subtotal = 0
+    print_total
   end
 
-  def see_basket
+  def checkout(total)
+    raise 'Conflict in total cost' unless total == subtotal
+    text_customer
+  end
+
+  def view_basket
     print_basket
   end
 
@@ -34,24 +44,24 @@ class Takeaway
 
   attr_writer :subtotal
 
+  def in_menu?(item)
+    menu.dishes.has_key?(item)
+  end
+
   def calculate_subtotal
-    self. basket.each_pair { |food, cost_quant| self.subtotal += cost_quant.reduce(:*) }
+    basket.each_pair { |_food, cost_quant| self.subtotal += cost_quant.reduce(:*) }
   end
 
-  def print_order(item, quantity)
-    puts "#{quantity} x #{item} added to your basket."
+  def add_item_to_basket(item, qty)
+    qty.times { basket[item] = [menu.dishes[item], qty] }
   end
 
-  def print_basket
-    basket.each_pair do |food, cost_quant|
-      puts "#{food} @ £#{cost_quant[0]} = £#{cost_quant.reduce(:*)}"
-    end
+  def reset_subtotal
+    self.subtotal = 0
   end
 
-  def add_item_to_basket(item, quantity)
-    quantity.times do
-      basket[item] = [menu.dishes[item], quantity]
-    end
+  def text_customer
+    send_sms
   end
 
 end
