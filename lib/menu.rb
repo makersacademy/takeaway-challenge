@@ -6,22 +6,21 @@ class Menu
 
   def initialize
     @list_of_dishes = {}
-    load_menu
+    load
   end
 
-  def add(dish_name, price)
-    @list_of_dishes[dish_name] = price
+  def print(filename = "menu_list")
+      CSV.foreach("/Users/peterbarcsak/Projects/takeaway-challenge/lib/#{filename}.csv") do |line|
+      dish, price = line
+      puts "#{dish.upcase}: £#{price.to_f}"
+    end
   end
 
-  def price(dish_name)
-    @list_of_dishes[dish_name]
-  end
-
-  def load_menu(filename = "menu_list")
+  def load(filename = "menu_list")
       CSV.foreach("/Users/peterbarcsak/Projects/takeaway-challenge/lib/#{filename}.csv") do |line|
       dish, price = line
       @list_of_dishes[dish.to_sym] = price.to_f
     end
   end
-  
+
 end

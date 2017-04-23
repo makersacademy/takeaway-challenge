@@ -1,14 +1,13 @@
-require_relative 'menu'
 require_relative 'menuprice'
 
 class Order
 
   include MenuPrice
 
-  attr_reader :order_details
+  attr_reader :order_details, :customers_expected_total
 
-  def initialize(*order, customers_expected_total)
-    @order_details = Hash[*order]
+  def initialize(order_details, customers_expected_total)
+    @order_details = order_details
     @customers_expected_total = customers_expected_total
   end
 
