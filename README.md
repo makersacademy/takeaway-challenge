@@ -1,7 +1,7 @@
 # Takeaway Challenge
 #### (Forked from [makersacademy/takeaway-challenge](https://github.com/makersacademy/takeaway-challenge))
 
-## A system modeling the functionality of a takeaway restaurant.
+## A program modeling the functionality of a takeaway restaurant:
 - User is able to print the restaurante menu
 - Dishes can be added to the order
 - Current order can be viewed and its total price confirmed
@@ -73,4 +73,4 @@ SM6fcf5e749b2c4e1382d5ae3c050de9a8
 [13] pry(main)> order.trolley
 => []
 ```
-https://mail.google.com/mail/u/0?ui=2&ik=b508bd9c0a&attid=0.0&th=15b984d539e3e662&view=fimg&disp=thd&attbid=ANGjdJ-llY_Ql2TiQ-Jl6_sJQly7emWMr6W0l_UKUoM-GQj1joZixKC7UZvPwDi2UiZT_U2srbwthw02Jy4tkWDx9RdYZ4RjLMQHYiynn08RMHxhx_andsZbrlwG32Y&ats=2524608000000&sz=w1280-h703
+![Sms example:](https://github.com/ffasolin/takeaway-challenge/blob/master/takeawaysms.jpeg?raw=true)
