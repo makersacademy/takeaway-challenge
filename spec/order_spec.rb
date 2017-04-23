@@ -17,4 +17,20 @@ describe Order do
       expect(order.order_items).to include(from_menu)
     end
   end
+
+  context '#price_check' do
+    from_menu = Menu::MENU.sample
+    it 'checks if order total price is correct' do
+      order.select_dish(from_menu)
+      expect(order.price_check).to eq Order::PRICE * order.order_items.count
+    end
+  end
+
+  context '#confirm_order' do
+    let(:confirm_order) { double :confirm_order}
+    it 'send SMS to customer' do
+      allow(order).to receive(:confirm_order)
+      expect(order.confirm_order(:text_customer))
+    end
+  end
 end
