@@ -19,11 +19,17 @@ describe Takeaway do
      before :each do
      @item = takeaway.menu.list.first[0]
    end
-      it "puts the itemfrom the order list in a hash " do
+      it "puts the item from the order list in a hash " do
        takeaway.order(@item, 2)
        expect(takeaway.order_list.first[0]).to be @item
    end
-end
+
+   it "multiplies the item price by the quantity" do
+        price = takeaway.menu.list.first[1]
+        takeaway.order(@item, 2)
+       expect(takeaway.order_list.first[1]).to eq(price * 2)
+      end
+    end
 end
 
 end
