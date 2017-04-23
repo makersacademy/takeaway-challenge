@@ -1,6 +1,6 @@
-require "./lib/order.rb"
-
 class Takeaway
+
+  attr_reader :menu
 
   def menu
     {

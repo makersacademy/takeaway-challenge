@@ -1,4 +1,6 @@
-class Order
+require "./lib/takeaway"
+
+class Order < Takeaway
 
   attr_reader :items, :total
 
@@ -7,7 +9,13 @@ class Order
     @total = "total"
   end
 
-  def add(from_menu)
+  def menu
+    super
+  end
+
+  def add(item)
+    fail "Item not on menu" unless menu.include?(item)
+    @items << item
   end
 
 end
