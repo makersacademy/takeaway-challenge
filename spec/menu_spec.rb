@@ -15,6 +15,9 @@ describe Menu do
     it 'checks if dishes are in the menu - hardcoded values' do
       expect((Menu::LIST_OF_DISHES).keys).to include *order.keys
     end
+    it 'raises an error if the dish not in the menu' do
+      expect{subject.select('and',2,3)}.to raise_error 'Dish not in the menu, try again!'
+    end
   end
 
   describe '#checkout' do

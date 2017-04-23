@@ -10,8 +10,8 @@ class Menu
   def initialize
     @order = {}
     @total = 0
-    @dishes=[]
-    @quants =[]
+    @dishes = []
+    @quants = []
     @sms = Textsms.new
   end
 
@@ -21,8 +21,9 @@ class Menu
   end
 
   def select(dish, quant, total)
+    fail 'Dish not in the menu, try again!' unless LIST_OF_DISHES.include? dish
     @dishes << dish
-    puts "#{dish} was added! Select again if you want to add more"
+    puts "#{dish} was added #{quant} time(s)! Select again if you want to add more"
     @quants << quant
     @order = @dishes.zip @quants
     @total = @total+total
@@ -36,7 +37,7 @@ class Menu
 
   private
 
-  attr_reader :order
+  # attr_reader :order
 
   def correct_total
     tot = 0
