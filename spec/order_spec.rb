@@ -27,12 +27,12 @@ describe Order do
 
     it "adds item to order" do
       subject.add(:chicken_naga,2)
-      expect(subject.items).to include [:chicken_naga,2]
+      expect(subject.items).to include [:chicken_naga,7.50,2]
     end
 
     it "adds a quantity of item to order" do
       subject.add(:pilau_rice, 3)
-      expect(subject.items[0]).to eq [:pilau_rice, 3]
+      expect(subject.items[0]).to eq [:pilau_rice, 2, 3]
     end
   end
 
@@ -43,16 +43,17 @@ describe Order do
     end
 
     before(:example) do
-      subject.add(:vegetable_biryani, 1)
+      subject.add(:vegetable_biryani, 2)
+      subject.add(:saag_aloo, 1)
     end
 
-    it "finds the item value" do
-      name = subject.items[0][0]
-      expect(subject.menu[name]).to eq 6
+    it "establishes item total" do
+      expect(subject.sub_total).to eq [12, 3]
     end
 
-    it "adds the total of an item" do
+    it "adds the total amount" do
+      expect(subject.total).to eq 15
     end
-
   end
+
 end

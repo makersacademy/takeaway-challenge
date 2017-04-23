@@ -15,11 +15,19 @@ class Order < Takeaway
 
   def add(item, quantity)
     fail "Item not on menu" unless menu.include?(item)
-    @items << [item, quantity]
+    cost = self.menu[item]
+    @items << [item, cost, quantity]
+  end
+
+  def sub_total
+    self.items.map {|x| x[1] * x[2]}
   end
 
   def total
-    
+    sub_total.reduce(:+)
   end
+
+
+
 
 end
