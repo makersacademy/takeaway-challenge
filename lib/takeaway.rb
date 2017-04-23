@@ -20,8 +20,10 @@ class Takeaway
   end
 
   def add(item, quantity = 1)
+    item = item.downcase.capitalize
     raise suggest_spoiling_stock(item) unless on_menu?(item)
     @order.add_to_basket(item, quantity)
+    "Added #{quantity} x #{item} to your basket. #{quip}!"
   end
 
   def view_menu
@@ -35,10 +37,14 @@ class Takeaway
   private
 
   def on_menu?(item)
-    view_menu.include?(item.downcase.capitalize)
+    view_menu.include?(item)
   end
 
   def suggest_spoiling_stock(item)
     "#{item} is not on the menu. Why not try our delicious Cleanout curry?"
+  end
+
+  def quip
+    ['Delicious', 'Infectious', 'Wonderful', 'Enjoy', 'Tasty', 'Really?'].sample
   end
 end

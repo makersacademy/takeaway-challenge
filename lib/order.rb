@@ -9,7 +9,6 @@ class Order
   end
 
   def add_to_basket(item, num)
-    item = item.downcase.capitalize
     return adjust_current_basket(item, num) if in_basket?(item)
     @basket << { item: item, amount: num, price: price(item) * num }
   end
