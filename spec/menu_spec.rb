@@ -31,5 +31,9 @@ describe Menu do
   it 'raises error if an item is not on the menu' do
     expect(menu.in_menu?(:lasagne)).to be false
   end
+
+  it 'calculates a price' do
+    expect(menu.price(:burger)).to eq(menu_items[:burger])
+  end
   
 end

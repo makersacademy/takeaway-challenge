@@ -12,10 +12,11 @@ class Restaurant
   end
 
   def place_order(menu_items)
-      menu_items.each do |item, quantity|
-        order.add(item, quantity)
-      end
+    menu_items.each do |item, quantity|
+      order.add(item, quantity)
     end
+    order.total
+  end
 
   private
 

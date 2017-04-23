@@ -28,4 +28,8 @@ class Menu
     !!menu_items[item]
   end
 
+  def price(item)
+    menu_items[item]
+  end
+
 end

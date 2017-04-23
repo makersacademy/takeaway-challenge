@@ -14,8 +14,14 @@ describe Restaurant do
   end
 
   it 'can order items from the menu' do
-      expect(order).to receive(:add).twice
-      restaurant.place_order(menu_items)
-    end
+    expect(order).to receive(:add).twice
+    restaurant.place_order(menu_items)
+  end
+
+  it 'calculates the order total' do
+    allow(order).to receive(:add)
+    total = restaurant.place_order(menu_items)
+    expect(total).to eq(7.50)
+  end
 
 end
