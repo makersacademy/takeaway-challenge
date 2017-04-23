@@ -20,10 +20,6 @@ Takeaway Challenge
 This program was made during week 2 of Makers Academy.  It allows the user to view a restaurant menu, make an order, see the cost, and then receive a text message informing them of when the delivery is due to arrive.
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
 ```
 As a customer
 So that I can check if I want to order something
