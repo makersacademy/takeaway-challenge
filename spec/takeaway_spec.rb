@@ -7,6 +7,8 @@ describe Takeaway do
   it { is_expected.to respond_to :view_menu }
   it { is_expected.to respond_to :add }
 
+  let(:text) { double :sms, send_message: 'Order confirmed' }
+
   describe '#check_basket' do
     it 'starts as an empty basket' do
       expect(takeaway.check_basket).to be_empty
@@ -60,6 +62,19 @@ describe Takeaway do
       takeaway.add('Mystery stew', 1)
       final_basket = [takeaway.check_basket, takeaway.check_total]
       expect(takeaway.basket_summary).to eq final_basket
+    end
+  end
+
+  describe '#checkout' do
+    it 'raises error when given incorrect payment total' do
+      takeaway.add('Cleanout curry') # Price is 1.99
+      expect { takeaway.checkout(2.00) }.to raise_error 'Incorrect total'
+    end
+
+    it 'sends through to text message class' do
+      takeaway.send(:text=, text)
+      takeaway.add('Cleanout curry')
+      expect(takeaway.checkout(1.99)).to eq 'Order confirmed'
     end
   end
 end

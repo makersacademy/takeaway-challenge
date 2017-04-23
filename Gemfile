@@ -6,6 +6,7 @@ ruby '2.4.0'
 
 group :test, :development do
   gem 'capybara'
+  gem 'envyable'
   gem 'rake'
   gem 'reek'
   gem 'rspec'
