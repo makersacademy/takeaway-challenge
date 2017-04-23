@@ -23,7 +23,10 @@ class Order
         end
     end
     
-    def order(dish)
-        @order << @menu.dishes[dish -1]
+    def order(*chosen_dishes)
+        chosen_dishes.each do |dish|
+            @order << @menu.dishes[dish -1]
+        end
+        @order
     end
 end

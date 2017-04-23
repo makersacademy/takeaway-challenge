@@ -26,6 +26,10 @@ describe Order do
             expect(subject.order(1)).to include test_menu.dishes[0]
         end
         
+        it "Can receive several 'dishes' at once and add these to the order" do
+            expect(subject.order(1, 2, 3)).to include(test_menu.dishes[0]).and include(test_menu.dishes[1]).and include(test_menu.dishes[2])
+        end
+        
     end
 
 end
