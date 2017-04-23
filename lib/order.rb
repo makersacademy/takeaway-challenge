@@ -27,11 +27,15 @@ class Order
   end
 
   def checkout
-    @total = {}
-    @basket = {}
+    pay
   end
 
   private
+
+  def pay
+    @total = {}
+    @basket = {}
+  end
 
   def add_to_total
     @basket_total.each do |dish, quantity|
