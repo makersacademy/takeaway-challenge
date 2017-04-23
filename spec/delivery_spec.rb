@@ -7,6 +7,7 @@ RSpec.describe Delivery do
     before(:each) do
       allow(delivery).to receive(:process_text)
     end
+    
     it 'it send a confirmation message' do
       subject.process_text
     end
