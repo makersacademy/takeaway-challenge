@@ -21,7 +21,7 @@ class Menu
   end
 
   def place_order(dish)
-    if @menu.has_key?(dish)
+    if @menu.include?(dish)
        @order_total << @menu.values_at(dish)
        @order << dish
     else raise "Sorry, this dish is not on the menu."
