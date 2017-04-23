@@ -1,11 +1,12 @@
 require 'takeaway'
+require 'envyable'
+Envyable.load('./config/env.yml', 'test')
 
 describe Takeaway do
   subject { described_class.new(menu) }
   let(:menu) { double [{ item: :item, price: 5 }] }
 
   it { is_expected.to respond_to(:add_to_order).with(1).argument }
-  it { is_expected.to respond_to(:order) }
 
   describe '#initialize' do
     it 'has a menu' do
@@ -21,6 +22,11 @@ describe Takeaway do
   end
 
   describe '#add_to_order' do
+    it 'creates a new order' do
+      expect(menu).to receive(:dishes) { [:item] }
+      subject.add_to_order(1)
+      expect(subject.current_order).to be_instance_of(Order)
+    end
     it 'starts a new order if no current order' do
       expect(menu).to receive(:dishes) { [:item] }
       subject.add_to_order(1)
@@ -40,24 +46,12 @@ describe Takeaway do
     end
   end
 
-  describe '#new_order' do
-    it 'creates a new order' do
-      subject.new_order
-      expect(subject.current_order).to be_instance_of(Order)
-    end
-  end
-
-  describe '#end_order' do
-    it 'sets current_order to nil' do
-      subject.new_order
-      subject.end_order
-      expect(subject.current_order).to be_nil
-    end
-  end
-
   describe '#place_order' do
-    xit 'confirms order was placed by text message' do
-
+    it 'sets current_order to nil' do
+      expect(menu).to receive(:dishes) { [:item] }
+      subject.add_to_order(1)
+      subject.place_order
+      expect(subject.current_order).to be_nil
     end
   end
 
