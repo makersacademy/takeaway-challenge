@@ -3,7 +3,7 @@ require_relative 'text'
 require_relative 'print'
 
 class Restaurant
-  include Text, Print, Menu
+  include Text, Print
   attr_reader :menu, :orders
 
   def initialize
@@ -24,9 +24,6 @@ class Restaurant
 
   def total_price
     @total.flatten.inject(:+)
-  end
-
-  def show_order
   end
 
   def check_total
