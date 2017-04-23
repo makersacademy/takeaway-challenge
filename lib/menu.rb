@@ -6,4 +6,5 @@ attr_reader :dishes
   def initialize(dish_list = DISHES)
     @dishes = dish_list
   end
+  
 end
