@@ -13,9 +13,11 @@ class Order < Takeaway
     super
   end
 
-  def add(item)
+  def add(item, quantity)
     fail "Item not on menu" unless menu.include?(item)
-    @items << item
+    @items << [item, quantity]
   end
+
+
 
 end
