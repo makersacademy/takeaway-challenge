@@ -6,7 +6,7 @@ require_relative 'twilio_api'
 class Takeaway
   include Print
 
-  attr_reader :menu, :basket, :subtotal
+  attr_reader :menu, :messenger, :basket, :subtotal
 
   def initialize(menu = Menu.new, messenger = TwilioAPI.new)
     @menu = menu
