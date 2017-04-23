@@ -16,7 +16,8 @@ class Menu
     end
 
   def print_menu
-    @list.each {|item, price| puts "#{@menu_num}. #{item} £#{price}"}
+    @list.each do |item, price|
+      puts "#{@menu_num}. #{item} £#{price}"
       @menu_num += 1
     end
   end

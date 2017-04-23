@@ -6,7 +6,7 @@ describe Takeaway do
 
   describe "#Show_menu" do
     context "Shows the menu list" do
-      it "access the #menu_print" do
+      it "access the #menuprint" do
         expect(takeaway.menu).to receive(:print_menu)
         takeaway.show_menu
       end
