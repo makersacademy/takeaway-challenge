@@ -6,14 +6,7 @@ describe Restaurant do
   end
   subject(:restaurant) { described_class.new("test_list.csv") }
 
-  it { is_expected.to respond_to(:view_menu) }
-
-  describe '#view_menu' do
-    it 'prints from menu' do
-      expect(restaurant).to receive(:print_from_menu)
-      restaurant.view_menu
-    end
-  end
+  it {is_expected.to respond_to(:view_menu) }
 
   describe '#make_order' do
     before(:example) { allow(restaurant).to receive(:send_sms).and_return(true) }
@@ -42,8 +35,13 @@ describe Restaurant do
     end
 
     context 'order info is valid' do
-      it 'sends a text message confirming arrival time' do
+      it 'runs #confirm_delivery' do
         expect(restaurant).to receive(:confirm_delivery)
+        restaurant.make_order('Margherita x3, Trois fromages x1, $26')
+      end
+
+      it 'sends a text message' do
+        expect(restaurant).to receive(:send_sms)
         restaurant.make_order('Margherita x3, Trois fromages x1, $26')
       end
     end

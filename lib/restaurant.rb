@@ -10,7 +10,7 @@ class Restaurant
   end
 
   def view_menu
-    print_from_menu
+    menu.print_menu
   end
 
   def make_order(user_input)
@@ -24,10 +24,6 @@ class Restaurant
   private
 
   attr_reader :menu, :user_input
-
-  def print_from_menu
-    menu.print_menu
-  end
 
   def check_input_formatting(order)
     order[0..-2].each do |menu_item|
