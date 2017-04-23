@@ -16,15 +16,13 @@ Takeaway Challenge
 
 This program lets you 'build' restaurants and 'order' food within a ruby repl. It also uses Twilio to send you confirmation text messages. 
 
-## Dependencies
+## Installation
 
-You'll need Ruby—find out how to get it on ruby-lang's [installation page](https://www.ruby-lang.org/en/documentation/installation/). If you are on macOS or Linux, I recommend using [RVM](https://rvm.io).
+1. Clone the repository: `git clone git@github.com:adc17/takeaway-challenge.git`
 
-You will also need `bundler`—if you haven't installed it, run `gem install bundler`. Then navigate to the project root and run `bundle install`, which will install any missing project dependencies.
+2. Get Twilio. Sign up for a free account [here](https://www.twilio.com/try-twilio), and tell it you're planning to use **SMS** for building **order notifications** in **Ruby**. It should then walk you through the setup process. Get a Twilio phone number [here](https://www.twilio.com/console/phone-numbers/search). It should all be free with the trial account.
 
-Finally, you'll need Twilio. Sign up for a free account [here](https://www.twilio.com/try-twilio), and tell it you're planning to use **SMS** for building **order notifications** in **Ruby**. Get a Twilio phone number [here](https://www.twilio.com/console/phone-numbers/search). It should all be free with the trial account.
-
-My code relies on a few environmental variables—they are TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, MY_PHONE_NUMBER, TWILIO_PHONE_NUMBER. Make sure you set them before running the code. Your Twilio Account SID and Auth Tokens can be found [here](https://www.twilio.com/console/account/settings).
+3. My code relies on a few environmental variables—they are TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, MY_PHONE_NUMBER, TWILIO_PHONE_NUMBER. Make sure you set them before running the code. Your Twilio Account SID and Auth Tokens can be found [here](https://www.twilio.com/console/account/settings).
 
 
 ## Usage
@@ -56,7 +54,7 @@ To test, navigate to the project root and run `rspec`.
 
 1. Confirming that valid input had been passed with `#make_order`. I ended up resorting to some horrible regexps, and I am sorry. I'll try and figure out a better way next time.
 
-2. Domain modelling. Initially, this application had only two classes: `List` and `ListItem`. I decided that it made no sense for lists to process orders, so I remodelled my domain with `Restaurant`s and `Waiter`s. I then realized that `Waiters` overcomplicated everything, as they needed too much access to the restaurant menu to process orders, so I subsumed them into `Restaurant`. Finally, I isolated my interaction with Twilio's API in a separate module, and mixed it into my restaurant class. All this frazzled my brain. However, my RSpec tests helped me no end with the process of refactoring, and that gave me a real taste of the power of TDD. 
+2. Domain modelling. Initially, this application had only two classes: `List` and `ListItem`. I decided that it made no sense for lists to process orders, so I remodelled my domain with `Restaurant`s and `Waiter`s. I then realized that waiters overcomplicated everything, as they needed too much access to the restaurant menu to process orders, so I subsumed them into `Restaurant`. Finally, I isolated my interaction with Twilio's API in a separate module, and mixed it into my restaurant class. All this frazzled my brain. However, my RSpec tests helped me no end with the process of refactoring, and that gave me a real taste of the power of TDD. 
 
 3. Line 13 of `lib/restaurant.rb`. I couldn't figure out how to test it, and aside from the Twilio API, it's the only thing my tests didn't cover. I suspect it was just bad domain modelling.
 
