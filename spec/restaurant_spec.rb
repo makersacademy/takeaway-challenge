@@ -34,7 +34,7 @@ describe Restaurant do
     end
 
     describe '#checkout' do
-      it 'total cost is deducted and user receives text confirmation using Twilio API' do
+      it 'total cost is deducted and user receives confirmation' do
         expect(restaurant.checkout).to eq "Order succesful! You have paid £14. Please await text confirmation"
       end
     end

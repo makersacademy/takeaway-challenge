@@ -1,9 +1,10 @@
-require './lib/twilio-api'
+require_relative 'twilio-api'
+require_relative 'print'
 
 class Order
+  include Print
 
-  def initialize(print = Print.new, menu = Menu.new)
-    @print = print
+  def initialize(menu = Menu.new)
     @menu = menu
     @basket = Hash.new(0)
     @basket_total = @basket.clone
@@ -13,18 +14,18 @@ class Order
   def add(dish, quantity = 1)
     @basket[dish] += quantity && @basket_total[dish] += quantity
     add_to_total
-    @print.add_to_basket(dish, quantity)
+    add_to_basket(dish, quantity)
   end
 
   def total(input)
-    raise @print.incorrect_total(@total) unless correct?(input)
-    @print.print_total(@total)
+    raise incorrect_total(@total) unless correct?(input)
+    print_total(@total)
   end
 
   def basket
     @basket.each do |dish, quantity|
       price = @menu.cuisine[dish] * quantity
-      @print.view_basket(quantity, dish, price)
+      view_basket(quantity, dish, price)
     end
   end
 
