@@ -14,66 +14,49 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+This repository contains a software which manages takeaway orders from an Italian restaurant.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## My approach
 
-Task
------
+In my TDD I opted on initialising a few instance variables as empty arrays for new objects of the Order class (my_dishes, total, delivery_fee and my_order respectively). None of them are attribute readers as I do not want my customers to be able to manipulate the data.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## Project status
+This project covers the user stories from User Story 1 to be determined.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+## Getting started
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+`git clone https://github.com/enonnai/takeaway-challenge.git`
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+Ruby installation page: https://www.ruby-lang.org/en/documentation/installation/
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+`gem install rspec`
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+`bundle install`
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## How to run the program
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+*************** WELCOME TO CRISTINA'S TAKEAWAY SERVICE ***************
 
+To run my program, cd in the project folder name and type in the following commands:
+`irb`
+`require ./lib/order.rb`
 
-In code review we'll be hoping to see:
+Fist of all, let's create an order:
+`order = Order.new`
+See my dishes:
+`order.see_dishes`
+Add a dish by passing its name as an argument (it has to be a string):
+`order.add_dish('dish_name')`
+Add more dishes!
+`order.add_dish('dish_name')`
+Remove a dish:
+`order.remove_dish('dish_name')`
+See your order summary
+`order.summary`
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+## Running tests
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Run unit tests from the project folder path via `rspec`
 
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+---
+BUON APPETITO!
