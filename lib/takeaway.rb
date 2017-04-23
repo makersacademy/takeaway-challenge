@@ -20,8 +20,12 @@ class Takeaway
   end
 
   def show_order
-    order_system.order_list.each {|item| puts "#{item[1][0]}
+    order_system.order_list.each {|item| puts "#{item[1][0]}.to_s
      x #{item[0]} £#{item[1][1]}" }
+  end
+
+  def remove_item(item)
+      order_system.order_list.tap{ |h| h.delete(item)}
   end
 
   def show_total
