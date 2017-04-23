@@ -1,3 +1,5 @@
+require 'order'
+
 class Menu
 
   attr_reader :menu, :order, :dish, :order_total
@@ -7,6 +9,7 @@ class Menu
     @order = []
     @dish = dish
     @order_total = []
+    @price_check = []
   end
 
   def show_menu
@@ -26,6 +29,7 @@ class Menu
   end
 
   def total_cost
-    @order_total.flatten.inject(:+)
+    @order_total.flatten.reduce(:+)
   end
+ end
 end

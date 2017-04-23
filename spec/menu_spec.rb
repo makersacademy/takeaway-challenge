@@ -1,14 +1,15 @@
 require 'menu'
+require 'order'
 
 describe Menu do
 
   subject(:menu){ described_class.new}
 
   describe '#show_menu' do
-    it 'should give a list of available pizzas' do
-      expect(menu.show_menu).to eq subject.menu
+      it 'should give a list of available pizzas' do
+        expect(menu.show_menu).to eq subject.menu
+      end
     end
-  end
 
   describe '#show_order' do
     it 'should show contents of current order' do
@@ -32,5 +33,5 @@ describe Menu do
       subject.place_order("Meat Feast")
       expect(subject.total_cost).to eq(18)
     end
-  end
-end
+  end 
+ end
