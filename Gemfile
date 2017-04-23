@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.3.3'
 
 gem 'capybara'
+gem 'envyable'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
