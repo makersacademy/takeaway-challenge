@@ -3,6 +3,8 @@ require 'twilio-ruby'
 
 describe List do
   subject(:list) { described_class.new }
+#  let(:client) { double("Twilio::REST::Client", account: self, messages: self, create: true) }
+  let(:twilio) { class_double("Twilio"). as_stubbed_const(:transfer_nested_constants => true) }
 
   describe '#view_items' do
     before(:context) { File.open("test_list.csv", "w") { |file| file.puts "Margherita, 6" } }
@@ -36,7 +38,8 @@ describe List do
       end
     end
     before(:example) { list.view_items("test_list.csv") }
-    before(:example) { allow(list).to receive(:send_sms).and_return(true) }
+#    before(:example) { allow(list).to receive(:send_sms).and_return(true) }
+#    before(:example) { allow(twilio::REST::Client).to receive(:new).and_return(client) }
 
     context 'order info is invalid' do
       context 'input is incorrectly formatted' do
@@ -58,7 +61,7 @@ describe List do
       it 'throws error if sum cost of order is incorrect' do
         expect { list.select_items('Margherita x3, $16') }.to raise_error(RuntimeError, "Incorrect order price entered")
       end
-      
+
     end
 
     context 'order info is valid' do
