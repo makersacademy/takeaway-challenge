@@ -8,7 +8,9 @@ class Menu
       @list = {
         :chips =>1.99,
         :chicken_soup => 4.99,
-        :pizza => 4.99
+        :pizza => 4.99,
+        :salad => 2.99,
+        :lamb_meat => 6.99
         }
       @menu_num = 1
     end
