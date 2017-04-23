@@ -4,7 +4,8 @@ class Order
   DISHES = {
     :carbonara => 6, :pesto => 6.50, :ravioli => 7.50, :tortellini => 8.50, :lasagna => 8.90
   }.freeze
-    MINIMUM_ORDER = 20
+
+  MINIMUM_ORDER = 20
 
   def initialize
     @my_dishes = []

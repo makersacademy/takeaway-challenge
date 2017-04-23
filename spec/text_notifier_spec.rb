@@ -1,7 +1,7 @@
 require 'text_notifier.rb'
 
 describe TextNotifier do
-  subject { described_class.new}
+  subject { described_class.new }
 
   describe '#send_sms' do
     let(:number) { 123 }
