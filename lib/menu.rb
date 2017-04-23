@@ -8,6 +8,8 @@ class Menu
     load_menu("#{cuisine}_menu.csv")
   end
 
+  private
+  
   def load_menu(filename)
     file = File.open(filename, 'r')
     menu_to_hash(file)

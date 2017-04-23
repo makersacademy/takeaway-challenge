@@ -3,8 +3,7 @@ clear && pry
 load './lib/takeaway.rb'
 takeaway = Takeaway.new('indian')
 takeaway.show_menu
-takeaway.checkout
-rand(5..10).times { takeaway.order(rand(1..takeaway.takeaway_menu.count))}
+rand(5..10).times { takeaway.order(rand(1..takeaway.takeaway_menu.count - 1))}
 takeaway.basket
 takeaway.checkout
 takeaway.pay(

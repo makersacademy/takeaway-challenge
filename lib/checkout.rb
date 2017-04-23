@@ -10,6 +10,8 @@ class Checkout
     @final_summary << [line, "Total: £#{'%.2f' % basket.total_cost}", line]
   end
 
+  private
+  
   def summarise_order(basket)
     @summarised_order = Hash.new 0
     order = basket.current_order
