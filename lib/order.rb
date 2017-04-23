@@ -5,8 +5,8 @@ class Order
 
   attr_reader :trolley, :menu, :quantity
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu = Menu.new)
+    @menu = menu
     @trolley = []
   end
 
