@@ -40,30 +40,29 @@ describe Order do
   describe '#summary' do
     let(:order) { :order }
     let(:total) { :total }
-    it 'returns the list of dishes, their quantities and the total' do
+    it 'returns the order with the dish name and their quantities, and the total' do
       subject.add_dish(dish)
       subject.add_dish(dish)
-      expect(subject.summary).to eq({ order => { dish => 2 }, total => 13.0 })
+      expect(subject.summary).to eq({ order => { dish => 2 }, total => 13 })
     end
   end
 
-  describe '#total_checker' do
-    let(:dish) { :lasagna }
-    context 'when the total spent triggers Free Delivery' do
-      it 'does not add the delivery fee' do
-        subject.add_dish(dish)
-        subject.add_dish(dish)
-        subject.add_dish(dish)
-        subject.add_dish(dish)
-        expect(subject.summary).to include { @delivery_fee = 0 }
+  describe '#check_out' do
+    context 'when the minimum order total is not met' do
+      it 'raises an error' do
+        message = "Minimum order is #{Order::MINIMUM_ORDER}."
+        expect { subject.check_out }.to raise_error message
       end
     end
 
-    context 'when the total spent does not trigger Free Delivery' do
-      it 'adds the £3 delivery fee' do
+    context 'when the minimum order total is met' do
+      it 'sends an SMS and returns a thank you message' do
         subject.add_dish(dish)
         subject.add_dish(dish)
-        expect(subject.summary).to include { @delivery_fee = 3 }
+        subject.add_dish(dish)
+        subject.add_dish(dish)
+        message = 'Thank you for ordering with us! You will receive a confirmation SMS shortly.'
+        expect(subject.check_out).to eq message
       end
     end
   end
