@@ -16,7 +16,7 @@ class Takeaway
   end
 
   def order(item, quantity_needed)
-
+    @order_list[item.to_sym] = total_price(item, quantity_needed)
   end
 
 end

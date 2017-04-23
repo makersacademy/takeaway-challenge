@@ -4,7 +4,7 @@ describe Takeaway do
 
   subject(:takeaway) {described_class.new}
   it { is_expected.to respond_to(:order).with(2).argument}
-  
+
   describe '#show_menu' do
     context 'Shows the menu list' do
       it 'calls #menu_print' do
@@ -13,5 +13,17 @@ describe Takeaway do
       end
     end
   end
+
+  describe "#order" do
+     context "gives the item and quantity needed" do
+     before :each do
+     @item = takeaway.menu.list.first[0]
+   end
+      it "puts the itemfrom the order list in a hash " do
+       takeaway.order(@item, 2)
+       expect(takeaway.order_list.first[0]).to be @item
+   end
+end
+end
 
 end
