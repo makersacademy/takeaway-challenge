@@ -4,14 +4,14 @@ class Takeaway
 
   def menu
     {
-      :chicken_balti => 6.50,
-      :vegetable_biryani => 6,
-      :lamb_saag => 7,
-      :chicken_naga => 7.50,
-      :tarka_dall => 3,
-      :saag_aloo => 3,
-      :plain_naan => 1.50,
-      :pilau_rice => 2
+      "Chicken Balti" => 6.50,
+      "Vegetable Biryani" => 6,
+      "Lamb Saag" => 7,
+      "Chicken Naga" => 7.50,
+      "Tarka Dall" => 3,
+      "Saag Aloo" => 3,
+      "Plain Naan" => 1.50,
+      "Pilau Rice" => 2
     }
   end
 

@@ -22,37 +22,48 @@ describe Order do
     end
 
     it "fails item not on menu" do
-      expect { subject.add(:pad_thai,1) }.to raise_error "Item not on menu"
+      expect { subject.add("Pad Thai", 1) }.to raise_error "Item not on menu"
     end
 
     it "adds item to order" do
-      subject.add(:chicken_naga,2)
-      expect(subject.items).to include [:chicken_naga,7.50,2]
+      subject.add("Chicken Naga", 2)
+      expect(subject.items).to include ["Chicken Naga", 7.50, 2]
     end
 
     it "adds a quantity of item to order" do
-      subject.add(:pilau_rice, 3)
-      expect(subject.items[0]).to eq [:pilau_rice, 2, 3]
+      subject.add("Pilau Rice", 3)
+      expect(subject.items[0]).to eq ["Pilau Rice", 2, 3]
     end
   end
 
   describe "#calculates a total of the order placed" do
 
-    it "checks that total exists" do
-      expect(subject).to respond_to(:total)
+    before(:example) do
+      subject.add("Vegetable Biryani", 2)
+      subject.add("Saag Aloo", 1)
     end
+
+    it "returns total amount" do
+      expect(subject.print_total).to eq "£15"
+    end
+  end
+
+  describe "prints the order contents" do
 
     before(:example) do
-      subject.add(:vegetable_biryani, 2)
-      subject.add(:saag_aloo, 1)
+      subject.add("Chicken Balti", 1)
+      subject.add("Vegetable Biryani", 1)
     end
 
-    it "establishes item total" do
-      expect(subject.sub_total).to eq [12, 3]
+    it "prints each item and cost on a new line" do
+      expect(subject.check).to eq "Total: £12.5"
     end
+  end
 
-    it "adds the total amount" do
-      expect(subject.total).to eq 15
+  describe "submits the order and confimation" do
+
+    it "sends a new text message" do
+      expect(subject).to respond_to(:submit)
     end
   end
 
