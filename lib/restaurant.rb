@@ -1,9 +1,9 @@
 require_relative 'menu'
-require 'twilio-ruby'
 require_relative 'text'
+require_relative 'print'
 
 class Restaurant
-  include Text
+  include Text, Print, Menu
   attr_reader :menu, :orders
 
   def initialize
@@ -13,12 +13,8 @@ class Restaurant
     @orders_checked = []
   end
 
-  def pretty_print
-    @menu.each { |k, v| puts "#{k}: £#{v}" }
-  end
-
   def show_menu
-    pretty_print
+    pretty_print_menu
   end
 
   def order(item)
@@ -30,12 +26,11 @@ class Restaurant
     @total.flatten.inject(:+)
   end
 
+  def show_order
+  end
+
   def check_total
     @orders.each { |a| @orders_checked << @menu.values_at(a) }
     @orders_checked.flatten.inject(:+)
-  end
-
-  def send_text
-    text
   end
 end

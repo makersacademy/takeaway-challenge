@@ -13,9 +13,9 @@ describe 'restaurant' do
     end
   end
 
-  describe '#pretty_print' do
-    it 'expects restaurant to pretty_print' do
-      expect(subject.pretty_print). to eq(subject.pretty_print)
+  describe '#pretty_print_menu' do
+    it 'expects restaurant to pretty_print_menu' do
+      expect(subject.pretty_print_menu). to eq(subject.pretty_print_menu)
     end
   end
 
@@ -41,10 +41,4 @@ describe 'restaurant' do
     end
   end
 
-  describe '#send_text' do
-    it 'expects subject to send a text' do
-      obj = double()
-      obj.stub(:send_text)
-    end
-  end
 end

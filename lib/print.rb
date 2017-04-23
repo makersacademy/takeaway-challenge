@@ -1,8 +1,8 @@
-# require_relative 'menu'
-# require_relative 'restaurant'
-# class Print
-#
-#   def pretty_print
-#     true
-#   end
-# end
+require_relative 'menu'
+require_relative 'restaurant'
+module Print
+
+  def pretty_print_menu
+    @menu.each { |k, v| puts "#{k}: £#{v}" }
+  end
+end
