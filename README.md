@@ -31,46 +31,35 @@ Pizza Menu
 3. Ham, $5
 4. Rocket, $8
 5. Calabresa, $7
-=> {:"1"=>{:Mozzarela=>"$4"},
- :"2"=>{:Mushrooms=>"$6"},
- :"3"=>{:Ham=>"$5"},
- :"4"=>{:Rocket=>"$8"},
- :"5"=>{:Calabresa=>"$7"}}
-[4] pry(main)> order.add_to_order(3)
-=> [{:Ham=>"$5"}]
-[5] pry(main)> order.add_to_order(4)
-=> [{:Ham=>"$5"}, {:Rocket=>"$8"}]
-[6] pry(main)> order.add_to_order(1)
-=> [{:Ham=>"$5"}, {:Rocket=>"$8"}, {:Mozzarela=>"$4"}]
-[7] pry(main)> order.view_order
+=> "Choose your pizzas!"
+[4] pry(main)> 10.times { order.add_to_order(5) }
+=> 10
+[5] pry(main)> 16.times { order.add_to_order(1) }
+=> 16
+[6] pry(main)> 4.times { order.add_to_order(2) }
+=> 4
+[7] pry(main)> order.add_to_order(3)
+=> "Ham pizza added."
+[8] pry(main)> order.add_to_order(4)
+=> "Rocket pizza added."
+[9] pry(main)> order.view_order
 Your Order:
-1. Ham, $5
-2. Rocket, $8
-3. Mozzarela, $4
-Total: $17
+Calabresa, $7..............x10
+Mozzarela, $4..............x16
+Mushrooms, $6...............x4
+Ham, $5.....................x1
+Rocket, $8..................x1
+                   Total: $171
 => nil
-[8] pry(main)> order.confirm_total(15)
+[9] pry(main)> order.confirm_total(15)
 RuntimeError: Sum is not equal to total amount.
 from /Users/Fasolin/Projects/takeaway-challenge/lib/order.rb:36:in `confirm_total'
-[9] pry(main)> order.confirm_total(17)
+[10] pry(main)> order.confirm_total(17)
 => "Amount is correct."
-[10] pry(main)> order
-=> #<Order:0x007fdbe9a05268
- @menu=
-  #<Menu:0x007fdbe9a05240
-   @pizzas=
-    {:"1"=>{:Mozzarela=>"$4"},
-     :"2"=>{:Mushrooms=>"$6"},
-     :"3"=>{:Ham=>"$5"},
-     :"4"=>{:Rocket=>"$8"},
-     :"5"=>{:Calabresa=>"$7"}}>,
- @trolley=[{:Ham=>"$5"}, {:Rocket=>"$8"}, {:Mozzarela=>"$4"}]>
-[11] pry(main)> order.trolley
-=> [{:Ham=>"$5"}, {:Rocket=>"$8"}, {:Mozzarela=>"$4"}]
-[12] pry(main)> order.place_order
+[11] pry(main)> order.place_order
 SM6fcf5e749b2c4e1382d5ae3c050de9a8
 => []
-[13] pry(main)> order.trolley
+[12] pry(main)> order.trolley
 => []
 ```
 ![Sms example:](https://github.com/ffasolin/takeaway-challenge/blob/master/takeawaysms.jpeg?raw=true)
