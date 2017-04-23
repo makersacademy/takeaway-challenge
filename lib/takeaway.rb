@@ -4,7 +4,7 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :order
 
   def initialize
     @menu = Menu.new
@@ -15,12 +15,15 @@ class Takeaway
     menu.print_menu
   end
 
-  def order(item, quantity_needed)
-    @order_list[item.to_sym] = total_price(item, quantity_needed)
+  def order(item, quanitity_needed)
+    order.place_order(item, quanitity_needed)
   end
 
-  def  total_price(item, quantity_needed)
-      quantity_needed * menu.list[item.to_sym]
+  def show_order
+    order.show_order
   end
+
+
+
 
 end

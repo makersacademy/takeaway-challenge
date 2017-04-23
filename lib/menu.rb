@@ -5,9 +5,9 @@ class Menu
     attr_reader :list
     def initialize
       @list = {
-        :chips =>2.99,
+        :chips =>1.99,
         :chicken_soup => 4.99,
-        :pizza => 5.99
+        :pizza => 4.99
 
       }
       @menu_num = 1
