@@ -6,10 +6,6 @@ describe 'Order' do
   it "starts with an empty list" do
     expect(subject.customer_order).to eq []
   end
-end
-
-describe 'Order' do
-  subject = Order.new
 
   before do
     IO.any_instance.stub(:puts)
