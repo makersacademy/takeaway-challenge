@@ -17,7 +17,7 @@ describe Takeaway do
 
   describe '#check_total' do
     it 'starts as a total of zero' do
-      expect(takeaway.check_total).to eq 'Basket total: £0.00'
+      expect(takeaway.check_total).to eq 'Basket is empty'
     end
 
     it 'adds items to the total price' do

@@ -6,15 +6,15 @@ require_relative 'sms'
 class Takeaway
   attr_reader :menu
 
-  def initialize(order_class = Order)
+  def initialize(order_class = Order, menu = Menu, text = Sms)
     @order_class = order_class
-    @menu = Menu.new
-    @text = Sms.new
+    @menu = menu.new
+    @text = text.new
     empty_basket
   end
 
   def view_menu
-    @menu.dishes
+    menu.dishes
   end
 
   def empty_basket
@@ -22,36 +22,35 @@ class Takeaway
   end
 
   def add(item, quantity = 1)
-    item = item.downcase.capitalize
+    item = item.capitalize
     raise offer_old_stock(item) unless on_menu?(item)
-    @order.add_to_basket(item, quantity)
+    order.add_to_basket(item, quantity)
     "Added #{quantity} x #{item} to your basket. #{quip}!"
   end
 
   def check_basket
-    @order.basket
+    order.basket
   end
 
   def check_total
-    @total = 0
-    check_basket.each { |x| @total += x[:price] }
-    "Basket total: £#{format('%.2f', @total)}"
+    order.calculate_total
   end
 
   def basket_summary
-    return 'Basket is empty' if check_basket.empty?
-    [@order.basket, check_total]
+    order.basket_summary
   end
 
   def checkout(total)
     check_total
-    raise 'Incorrect total' unless total == @total.round(2)
-    @text.send_message
+    raise 'Incorrect total' unless total == order.total
+    empty_basket
+    text.send_message
   end
 
   private
 
-  attr_writer :text
+  attr_reader :order
+  attr_accessor :text
 
   def on_menu?(item)
     view_menu.include?(item)

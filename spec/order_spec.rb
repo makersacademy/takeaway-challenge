@@ -25,4 +25,10 @@ describe Order do
       expect(order.basket).to eq my_basket
     end
   end
+
+  describe 'total' do
+    it 'starts as a total of zero' do
+      expect(order.calculate_total).to eq 'Basket is empty'
+    end
+  end
 end

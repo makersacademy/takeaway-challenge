@@ -2,6 +2,7 @@ require 'twilio-ruby'
 require 'envyable'
 Envyable.load('config/env.yml')
 
+# Manages contacting customers
 class Sms
   attr_accessor :client
 
