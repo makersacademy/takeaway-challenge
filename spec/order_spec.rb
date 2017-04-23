@@ -27,13 +27,16 @@ describe Order do
     end
   end
 
-  describe '#confirm_total' do
+  describe '#checkout' do
     it 'should raise error if amount is incorrect' do
-      expect { subject.confirm_total(1) }.to raise_error "Sum is not equal to total amount."
+      expect { subject.checkout(1) }.to raise_error "Sum is not equal to total amount."
     end
 
     it 'should not raise error if amount is correct' do
-      expect(subject.confirm_total(0)).to eq "Amount is correct."
+      message = "Thank you! Your order was placed and will be delivered before #{Hour.new.eta_to_string}"
+      allow_any_instance_of(Sms).to receive(:send_message).and_return(message)
+      subject.add_to_order(1)
+      expect(subject.checkout(4)).to eq "Order confirmed. Check your phone for delivery details."
     end
   end
 

@@ -41,9 +41,10 @@ class Order
     prices.reduce(:+)
   end
 
-  def confirm_total(amount)
+  def checkout(amount)
     raise "Sum is not equal to total amount." if amount != total_price
-    "Amount is correct."
+    place_order
+    "Order confirmed. Check your phone for delivery details."
   end
 
   def place_order
