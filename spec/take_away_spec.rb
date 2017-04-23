@@ -11,4 +11,18 @@ describe Takeaway do
     end
   end
 
+  describe '#order summary' do
+    it 'shows order summary' do
+      subject.order(1)
+      expect(subject.order_summary).to eq [{"Plain noodle"=>3}]
+    end
+  end
+
+  describe '#order_total' do
+    it 'calculates total of order' do
+      subject.order(1)
+      subject.order(2)
+      expect(subject.order_total).to eq 6
+    end
+  end
 end
