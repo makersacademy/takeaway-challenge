@@ -3,9 +3,10 @@ require 'ordermanagement'
 describe OrderManagement do
   let(:ordermanagement) { described_class.new }
   order = [:test_dish, 1]
+  total = 10
   describe '#place' do
     it 'creates new orders' do
-      ordermanagement.place(order)
+      ordermanagement.place(order, total)
       expect(ordermanagement.new_orders[0].order_details.keys).to include order[0]
     end
   end

@@ -9,8 +9,8 @@ class OrderManagement
     @new_orders = []
   end
 
-  def place(*order)
-    @new_orders << Order.new(order)
+  def place(*order, total)
+    @new_orders << Order.new(order, total)
   end
 
 end
