@@ -9,12 +9,11 @@ describe Menu do
   let(:menu) { described_class.new([{ dish_1.name => dish_1.price }, { dish_2.name => dish_2.price }]) }
 
   it 'can have dishes added to it' do
-    menu.add(dish_3.present)
-    expect(menu.print_list).to eq "#{dish_1.name} - #{dish_1.price}\n#{dish_2.name} - #{dish_2.price}\n#{dish_3.name} - #{dish_3.price}"
+     expect { menu.add(dish_3.present) }.to change{menu.list_of_dishes.count}.from(2).to(3)
   end
 
   it 'prints a list of dishes' do
-    expect(menu.print_list).to eq "#{dish_1.name} - #{dish_1.price}\n#{dish_2.name} - #{dish_2.price}"
+    expect(menu.print_list).to eq "#{dish_1.name} - £#{dish_1.price}\n#{dish_2.name} - £#{dish_2.price}"
   end
 
 end
