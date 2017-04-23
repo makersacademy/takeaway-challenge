@@ -27,6 +27,11 @@ describe Takeaway do
         allow(menu).to receive(:dishes) { Menu::DISHES }
         expect{ takeaway.order('biryani', 3) }.to change{ takeaway.current_order['biryani'] }.by +3
       end
+
+      it 'raises error when dish is not on the menu' do
+        allow(menu).to receive(:dishes) { Menu::DISHES }
+        expect { takeaway.order('pizza') }.to raise_error 'we do not have that dish'
+      end
   end
 
   describe '#show_total' do

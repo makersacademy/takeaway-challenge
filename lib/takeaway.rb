@@ -10,6 +10,7 @@ attr_reader :menu, :current_order, :total
   end
 
   def order(dish, quantity = 1)
+    fail 'we do not have that dish' unless @menu.dishes[dish]
     @current_order[dish] += quantity
   end
 
