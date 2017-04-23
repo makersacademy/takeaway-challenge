@@ -42,12 +42,9 @@ describe 'restaurant' do
   end
 
   describe '#send_text' do
-    it 'expects subject to respond to send_text' do
-      expect(subject).to respond_to(:send_text)
-    end
-
     it 'expects subject to send a text' do
-      subject.send_text
+      obj = double()
+      obj.stub(:send_text)
     end
   end
 end
