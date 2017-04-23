@@ -6,7 +6,7 @@ describe Restaurant do
   let(:dish) { double :dish }
   let(:input) { double :input }
 
-  it 'lists dishes from given menu' do
+  it 'returns dishes from given menu' do
     menu = Menu.new
     expect(restaurant.read_menu).to eq menu.cuisine
   end
@@ -35,7 +35,7 @@ describe Restaurant do
 
     describe '#checkout' do
       it 'total cost is deducted and user receives confirmation' do
-        expect(restaurant.checkout(14)).to eq "Order succesful! You have paid £14. Please await text confirmation"
+        expect(restaurant.checkout(14)).to eq "Order successful! You have paid £14. Please await text confirmation"
       end
     end
 

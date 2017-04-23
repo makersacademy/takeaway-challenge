@@ -8,7 +8,7 @@ module Print
     return "#{quantity}x #{dish.downcase}(s) added to basket"
   end
 
-  def unavailable(dish)
+  def print_unavailable(dish)
     return "Unfortunately #{dish} isn't available"
   end
 
@@ -25,7 +25,7 @@ module Print
   end
 
   def print_checkout(total)
-    return "Order succesful! You have paid £#{total}. Please await text confirmation"
+    return "Order successful! You have paid £#{total}. Please await text confirmation"
   end
 
 end

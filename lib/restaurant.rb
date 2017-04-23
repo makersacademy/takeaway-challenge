@@ -16,7 +16,7 @@ class Restaurant
 
   def order(dish, quantity = 1)
     dish = dish.downcase
-    raise unavailable(dish) unless available?(dish)
+    raise print_unavailable(dish) unless available?(dish)
     @order.add(dish, quantity)
   end
 
