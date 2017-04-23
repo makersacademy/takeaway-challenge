@@ -1,6 +1,7 @@
 require 'menu'
 
 describe Menu do
+
   subject { described_class.new }
   let(:order) { {'formule1' => 2, 'drink' => 2} }
 
@@ -23,10 +24,13 @@ describe Menu do
        expect{subject.checkout}.to raise_error('The sum is incorrect!')
     end
 
-    it 'moves on if the inputed total is equal to the real total' do
+    before { allow(subject).to receive(:send) }
+    it 'sends text if the total is correct' do
       subject.select(['formule1', 'formule2', 'drink'], [1,1,2], 35)
-      expect(subject.checkout).to include 'Thank you! Your order was placed and will be delivered before 18:52'
+      expect(subject).to receive(:send).with('Thank you! Your order was placed and will be delivered in one hour')
+      subject.checkout
+      end
     end
-  end
+
 
 end
