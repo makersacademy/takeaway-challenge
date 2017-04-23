@@ -40,7 +40,7 @@ describe Takeaway do
 
   describe '#add' do
     it 'raises error when item is not on the menu' do
-      msg = 'Rice is not on the menu. Why not try our delicious Cleanout curry?'
+      msg = 'Rice is not on the menu. How about a tasty Cleanout curry?'
       expect { takeaway.add('Rice') }.to raise_error msg
     end
 

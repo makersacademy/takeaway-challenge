@@ -22,10 +22,9 @@ class Takeaway
   end
 
   def add(item, quantity = 1)
-    item = item.capitalize
-    raise offer_old_stock(item) unless on_menu?(item)
-    order.add_to_basket(item, quantity)
-    "Added #{quantity} x #{item} to your basket. #{quip}!"
+    raise offer_bargain(item) unless menu.include?(item.capitalize)
+    order.add_to_basket(item.capitalize, quantity)
+    "Added #{quantity} x #{item.capitalize} to your basket. #{quip}!"
   end
 
   def check_basket
@@ -43,8 +42,7 @@ class Takeaway
   def checkout(total)
     check_total
     raise 'Incorrect total' unless total == order.total
-    empty_basket
-    text.send_message
+    order_success
   end
 
   private
@@ -52,12 +50,13 @@ class Takeaway
   attr_reader :order
   attr_accessor :text
 
-  def on_menu?(item)
-    view_menu.include?(item)
+  def order_success
+    empty_basket
+    text.send_message
   end
 
-  def offer_old_stock(item)
-    "#{item} is not on the menu. Why not try our delicious Cleanout curry?"
+  def offer_bargain(item)
+    "#{item.capitalize} is not on the menu. How about a tasty Cleanout curry?"
   end
 
   def quip

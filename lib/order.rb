@@ -11,14 +11,14 @@ class Order
 
   def add_to_basket(item, num)
     return adjust_current_basket(item, num) if in_basket?(item)
-    @basket << { item: item, amount: num, price: price(item) * num }
+    basket << { item: item, amount: num, price: price(item) * num }
   end
 
   def calculate_total
     return 'Basket is empty' if empty?
     @total = 0
-    @basket.each { |x| @total += x[:price] }
-    "Basket total: £#{format('%.2f', @total)}"
+    basket.each { |x| @total += x[:price] }
+    "Basket total: £#{format('%.2f', total)}"
   end
 
   def basket_summary
@@ -33,22 +33,22 @@ class Order
   end
 
   def empty?
-    @basket.empty?
+    basket.empty?
   end
 
   def adjust_current_basket(item, num)
-    @basket.map! { |order|
+    basket.map! { |order|
       order[:item] == item ? reorder(order, item, num) : order
     }
   end
 
   def in_basket?(item)
-    @basket.map { |orders| orders.values.include? item }.include?(true)
+    basket.map { |orders| orders.values.include? item }.include?(true)
   end
 
-  def reorder(x, item, num)
+  def reorder(order, item, num)
     { item: item,
-      amount: num + x[:amount],
-      price: (price(item) * (x[:amount] + num)).round(2) }
+      amount: num + order[:amount],
+      price: (price(item) * (order[:amount] + num)).round(2) }
   end
 end

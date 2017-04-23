@@ -12,4 +12,8 @@ class Menu
   def initialize
     @dishes = FOOD_MENU
   end
+
+  def include?(item)
+    dishes.include?(item)
+  end
 end
