@@ -4,6 +4,7 @@ require 'menu'
 describe Takeaway do
   let(:menu) { double :menu, dish_list: Menu::DISHES }
   let(:takeaway) { described_class.new(menu)}
+  let(:messenger) { double :messenger }
   describe 'initialization' do
 
     it 'has a menu' do
@@ -28,13 +29,13 @@ describe Takeaway do
       end
   end
 
-  describe '#total' do
+  describe '#show_total' do
     it 'shows the total of all orders placed' do
       allow(menu).to receive(:dishes) { Menu::DISHES }
       takeaway.order('biryani')
       order_quantity = takeaway.current_order['biryani']
       dish_price = takeaway.menu.dishes['biryani']
-      expect(takeaway.total).to eq "Total: £#{order_quantity * dish_price}"
+      expect(takeaway.show_total).to eq "Total: £#{order_quantity * dish_price}"
     end
   end
 
@@ -46,6 +47,13 @@ describe Takeaway do
     end
   end
 
-
-
+  describe '#complete_order' do
+    context 'amount given does not equal to total' do
+      it 'raises error' do
+        allow(menu).to receive(:dishes) { Menu::DISHES }
+        takeaway.order('biryani')
+        expect { takeaway.complete_order(14.50) }.to raise_error 'please pay the correct amount'
+      end
+    end
+  end
 end

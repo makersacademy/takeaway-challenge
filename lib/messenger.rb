@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Messenger
 
   ACCOUNT_SID = 'AC2d9d44552b5415638489da2b5fb7076d'
