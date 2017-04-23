@@ -6,7 +6,6 @@ RSpec.describe OrderSelection do
     subject.menu = {'kebab': 5}
   end
 
-
   it {is_expected.to respond_to(:cart)}
 
   it 'cart should be empty to begin with' do
@@ -14,6 +13,7 @@ RSpec.describe OrderSelection do
   end
 
   describe '#add_item' do
+
     it 'adds food to cart' do
       subject.add_item('kebab',2)
       expect(subject.cart).to eq ['kebab','kebab']
@@ -25,6 +25,7 @@ RSpec.describe OrderSelection do
   end
 
   describe '#remove_item' do
+
     it 'removes food from cart' do
       subject.add_item('kebab',2)
       subject.remove_item('kebab',2)
@@ -37,5 +38,11 @@ RSpec.describe OrderSelection do
     end
   end
 
+  describe '#view_cart' do
+    it 'should print out the cart' do
+      subject.add_item('kebab', 2)
+      expect(subject.view_cart).to eq '2 kebab'
+    end
+end
 
 end

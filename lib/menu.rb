@@ -3,7 +3,7 @@ class Menu
 
   def initialize
     @the_menu = {
-      'lamb doner': 5,
+      "lamb doner": 5,
       'chicken doner': 4.5,
       'quarter pounder': 3,
       'half pounder': 4,
