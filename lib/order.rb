@@ -1,4 +1,4 @@
-require 'menu'
+require_relative 'menu'
 
 class Order
 
@@ -20,7 +20,7 @@ class Order
 
 	def list_orders
 		@dishes.each { |order|
-			puts "#{order[:quantity]} #{order[:name]} at #{find_price(order[:name])} each = #{order[:total]}"
+			puts "You've ordered #{order[:quantity]} #{order[:name].capitalize} at £#{find_price(order[:name])} each = #{order[:total]}"
 		}
 	end
 
@@ -33,7 +33,7 @@ class Order
 	def total_bill
 		total = 0
 		@dishes.each {|order| 
-			total += order[:total]
+			total += order[:total].to_i
 		}
 		total
 	end
@@ -54,10 +54,11 @@ class Order
 	end
 
 	def find_price(name)
+		price = 0
 		@menu.list_dishes.each { |dish| 
 			price = dish[:price] if dish[:name] == name.downcase
 		}
-		price
+		price.to_i
 	end
 
 	def add_dish(name, quantity, total_price)

@@ -1,6 +1,6 @@
 
-require 'menu'
-require 'order'
+require_relative 'order.rb'
+require_relative 'sms_confirmation'
 
 class CustomerView
 
@@ -18,25 +18,25 @@ class CustomerView
 	private
 
 	def list_menus
-		number_menus = Menu.list_menus
+		num_menus = Menu.list_menus
 		puts "Which menu number would you like to order from?"
-		choose_menu(number_menus)
+		choose_menu(num_menus)
 	end
 
 	def choose_menu(num_menus)
-		menu_num = gets.chomp
+		menu_num = gets.chomp.to_i
 		check_valid_menu(menu_num, num_menus)
-		create_order
+		create_order(menu_num)
 	end
 
 	def check_valid_menu(menu_num, num_menus)
-		unless (menu_num <= num_menus) && (num.is_a? Integer)
+		unless (menu_num <= num_menus)
  			puts "Not a valid menu number" 
  			list_menus
  		end
  	end
 
-	def create_order
+	def create_order(menu_num)
 		@order = Order.new
 		@order.select_menu(menu_num)
 		order_dish
@@ -45,7 +45,7 @@ class CustomerView
 	def order_dish
 		dish = select_dish
 		quantity = select_quantity
-		@order.select_dish(dish, quantity)
+		@order.select_dish(dish, quantity.to_i)
 		dish_confirmation(dish.capitalize, quantity)
 	end
 
@@ -56,33 +56,52 @@ class CustomerView
 
 	def select_quantity
 		puts "How many of this dish would you like?"
-		gets.chomp
+		gets.chomp.to_i
 	end
 
 	def dish_confirmation(dish, quantity)
 		puts "You've added #{quantity} #{dish}"
+		continue_order
 	end
 
 	def continue_order
 		puts "Would you like to order something else? (y/n)"
-		continue? = gets.chomp.downcase
-		continue? == y || yes ? order_dish : confirm_order
+		continue = gets.chomp.downcase
+		continue == ("y" || "yes") ? order_dish : confirm_order
 	end
 
 	def confirm_order
 		puts "Would you like to review your order? (y/n)"
-		check? = gets.chomp
-		check? == y || yes ? check_order; check_total : check_total
+		check = gets.chomp.downcase
+		check == ("y" || "yes") ? check_order : check_total
 	end
 
 	def check_order
 		@order.list_orders
+		check_total
 	end
 
 	def check_total
 		puts "The total bill comes to £#{@order.raise_total}"
+		payment
 	end
 
+	def payment
+		puts "Please type p to pay now:"
+		if gets.chomp.downcase == "p" 
+			puts "Thank you for your payment. A confirmation text will arrive shortly." 
+			sms_confirmation
+		else 
+			check_order
+		end
+	end
+
+	def sms_confirmation
+		puts ENV[TWILIO_ACCOUNT_SID]
+		puts ENV[TWILIO_AUTH_TOKEN]
+
+		# SmsConfirmation.new.send
+	end
 end
 
-customer = View.new
+# customer = CustomerView.new
