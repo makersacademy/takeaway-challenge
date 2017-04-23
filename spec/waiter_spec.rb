@@ -3,6 +3,11 @@ require 'waiter'
 describe Waiter do
   subject(:list) { described_class.new }
 
+  it 'has a restaurant from initialization' do
+    expect_any_instance_of(Waiter).to receive(:restaurant=)
+    Waiter.new("restaurant")
+  end
+
   describe '#select_items' do
     before(:context) do
       File.open("test_list.csv", "w") do |file|

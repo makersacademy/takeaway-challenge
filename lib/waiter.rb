@@ -1,5 +1,9 @@
 class Waiter
 
+  def initialize(restaurant)
+    self.restaurant = restaurant
+  end
+
   def select_items(user_input)
     user_input = user_input.split(/, /)
     check_input_formatting(user_input)
@@ -11,6 +15,7 @@ class Waiter
   private
   
   attr_accessor :user_input
+  attr_reader :restaurant
 
   def check_input_formatting(user_input)
     user_input[0..-2].each do |menu_item|

@@ -5,7 +5,7 @@ class Restaurant
 
   def initialize(menu = "takeawaylist.csv")
     @menu = List.new(menu)
-    @waiter = Waiter.new
+    @waiter = Waiter.new(self)
   end
 
   def view_menu
