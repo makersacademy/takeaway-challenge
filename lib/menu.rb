@@ -24,4 +24,8 @@ class Menu
     end.join(", ")
   end
 
+  def in_menu?(item)
+    !!menu_items[item]
+  end
+
 end

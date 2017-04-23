@@ -24,4 +24,12 @@ describe Menu do
     expect(menu.print_menu).to eq(food_list)
   end
 
+  it 'allows process to proceed if an item is on the menu' do
+    expect(menu.in_menu?(:pizza)).to be true
+  end
+
+  it 'raises error if an item is not on the menu' do
+    expect(menu.in_menu?(:lasagne)).to be false
+  end
+  
 end
