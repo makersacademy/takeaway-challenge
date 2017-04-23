@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class MessageSender
 
   ADDITIONAL_TIME = (45*60)

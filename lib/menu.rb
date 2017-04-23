@@ -20,6 +20,11 @@ class Menu
     @list_of_dishes = @list_of_dishes.merge!(hash)
   end
 
+  def remove(hash)
+    raise "Menu does not contain that dish" unless list_of_dishes.include?(hash)
+    @list_of_dishes.delete_if {|key, value| hash.keys.include?(key) && hash.values.include?(value) }
+  end
+
   private
 
   def merge_function(array_of_hashes)
@@ -28,4 +33,10 @@ class Menu
     end
   end
 
+end
+
+class Hash
+  def include?(other)
+    self.merge(other) == self
+  end
 end

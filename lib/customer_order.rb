@@ -1,7 +1,5 @@
-
 require_relative './dish'
 require_relative './menu'
-require_relative './orderlistcalculator'
 require_relative './total_verifier'
 require_relative './message_sender'
 
@@ -19,11 +17,23 @@ class CustomerOrder
     @my_total = 0
   end
 
-  def add(*order)
-    order.each { |order|
-    @my_total += order.price
-    @contents << order
+  def add(*dish)
+    dish.each { |dish|
+    @my_total += dish.price
+    @contents << dish
   }
+  end
+
+  def remove(*dish)
+    dish.each { |dish|
+    raise "That dish is not in this order" unless @contents.include?(dish)
+    @my_total -= dish.price
+    @contents.delete(dish)
+  }
+  end
+
+  def order_count
+    @contents.size
   end
 
   def show_contents
