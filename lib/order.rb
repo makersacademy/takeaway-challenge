@@ -2,11 +2,11 @@ require "./lib/takeaway"
 
 class Order < Takeaway
 
-  attr_reader :items, :total
+  attr_reader :items
 
   def initialize
     @items = []
-    @total = "total"
+    @total = total
   end
 
   def menu
@@ -18,6 +18,8 @@ class Order < Takeaway
     @items << [item, quantity]
   end
 
-
+  def total
+    
+  end
 
 end

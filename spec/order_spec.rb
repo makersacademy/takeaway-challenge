@@ -12,7 +12,6 @@ describe Order do
 
     it "contains a list to store an item" do
       expect(subject.items).to eq []
-      expect(subject.total).to include "total"
     end
   end
 
@@ -37,5 +36,23 @@ describe Order do
     end
   end
 
+  describe "#calculates a total of the order placed" do
 
+    it "checks that total exists" do
+      expect(subject).to respond_to(:total)
+    end
+
+    before(:example) do
+      subject.add(:vegetable_biryani, 1)
+    end
+
+    it "finds the item value" do
+      name = subject.items[0][0]
+      expect(subject.menu[name]).to eq 6
+    end
+
+    it "adds the total of an item" do
+    end
+
+  end
 end
