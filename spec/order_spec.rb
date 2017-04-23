@@ -3,7 +3,7 @@ require 'takeaway'
 
 describe Order do
   subject(:order) { described_class.new }
-
+  let(:takeaway) { described_class.new }
   let(:customer_order) do
     {
       Milano: 1,
@@ -12,8 +12,7 @@ describe Order do
 
   end
   it 'allows the customer to order several items' do
-    order.add_item(:Milano, 1)
-    order.add_item(:Roma, 1)
+    new_order
     expect(order.customer_order).to eq customer_order
   end
 
@@ -23,9 +22,12 @@ describe Order do
   end
 
   it 'checks the total matches the sum of the various items ordered' do
-    order.add_item(:Milano, 1)
-    order.add_item(:Roma, 1)
+    new_order
     expect(order.total).to eq "Your total: £39.98"
   end
 
+  def new_order
+    order.add_item(:Milano, 1)
+    order.add_item(:Roma, 1)
+  end
 end

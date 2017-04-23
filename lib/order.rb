@@ -26,4 +26,8 @@ class Order
     menu[item] * quantity
   end
 
+  def summary
+    @customer_order.each { |item, quantity| puts "#{item} x #{quantity}" }; puts total
+  end
+
 end
