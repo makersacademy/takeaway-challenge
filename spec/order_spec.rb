@@ -27,7 +27,7 @@ describe Order do
   end
 
   context '#confirm_order' do
-    let(:confirm_order) { double :confirm_order}
+    let(:confirm_order) { double :confirm_order }
     it 'send SMS to customer' do
       allow(order).to receive(:confirm_order)
       expect(order.confirm_order(:text_customer))
