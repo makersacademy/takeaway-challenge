@@ -1,7 +1,7 @@
 module Print
 
   def print_menu
-    puts "","Basket".center(20),"*"*23
+    puts "","Menu".center(20),"*"*23
     @menu.cuisine.each{ |dish, price| puts "#{dish.to_s.capitalize.ljust(20)} £#{price}\n" }
   end
 
