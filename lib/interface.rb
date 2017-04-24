@@ -17,16 +17,20 @@ class Interface
   def print_options
     puts "\n1. Show Menu"
     puts '2. Make Selection'
-    puts '3. Print invoice'
-    puts '4. Exit'
+    puts '3. Checkout'
+    puts '4. See Order'
+    puts '5. Exit'
     print '>  '
   end
 
   def process_response(selection)
     case selection
       when "1"
-        Print_menu.new.print
+        Print_menu.new.print(Menu_list.new.menu_items)
+      when "2"
+      when "3"
       when "4"
+      when "5"
         exit
       else
         puts "This option doesn't exit. Please try again"

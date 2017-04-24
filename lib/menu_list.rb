@@ -12,9 +12,9 @@ class Menu_list
 
   def load_menu
     file = File.open("menu.csv", "r")
-    file.readlines.each do |line|
+    file.readlines.each_with_index do |line, index|
       type, name, price = line.chomp.split(',')
-      @menu_items << {type: type.to_sym, name: name, price: price}
+      @menu_items << {item: index+1, type: type.to_sym, name: name, price: price}
     end
   end
 
