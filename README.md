@@ -23,6 +23,18 @@ Instructions
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday morning
 
+How to use
+-------
+
+e.g.
+1. require "./lib/order.rb"
+2. order = Order.new
+3. order.add("Chicken Balti",2)
+4. order.print_total
+5. order.check
+6. order.submit
+
+
 Task
 -----
 
