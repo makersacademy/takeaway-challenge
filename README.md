@@ -82,12 +82,6 @@ Takeaway Challenge
 
  =================
 
- ## Challenges
-
- Frustratingly I ran out of time to implement the SMS feature, but I hope to soon.
-
- =================
-
  ## How to use
 
  Bellow is a pry transcript of how the program runs from a users perspective:

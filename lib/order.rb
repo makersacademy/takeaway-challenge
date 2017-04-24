@@ -1,4 +1,6 @@
 require_relative 'takeaway'
+require_relative 'sms'
+
 
 class Order
 
@@ -30,4 +32,8 @@ class Order
     @customer_order.each { |item, quantity| puts "#{item} x #{quantity}" }; puts total
   end
 
+  def send_sms(phone_number)
+    Sms.send_text(phone_number)
+    "sent"
+  end
 end
