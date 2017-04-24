@@ -2,7 +2,7 @@ require "kebabshop"
 
 describe Kebabshop do
   subject(:kebabshop) { described_class.new }
-  kebabs = Kebabshop::KEBABS
+   kebabs = Kebabshop::KEBABS
 
 
   it "checks to see a list of dishes with prices" do
@@ -19,6 +19,15 @@ describe Kebabshop do
       kebabshop.place_order("Adana kebab",1)
       expect(kebabshop.cart).to include "Adana kebab"
     end
+
+  #   it "shows total order" do
+  #     kebabshop.place_order("Adana kebab",1)
+  #     kebabshop.place_order("Donner kebab",1)
+  #     kebabshop.place_order("Iskender kebab",1)
+  #     expect(kebabshop.show_order).to eq @cart
+  #   end
+  # #not working yet
+
 
   end
 

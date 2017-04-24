@@ -16,9 +16,15 @@ class Kebabshop
     puts "a total of #{number} #{kebab}(s) have been placed in your cart"
   end
 
+  # def show_order
+  #   @cart
+  # end
+
+
   def check_menu
     @kebabs
   end
+
 
 
 
