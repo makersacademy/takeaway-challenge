@@ -21,8 +21,8 @@ class Restaurant
     current_order.order_item(item, quantity)
   end
 
-  def sumarise_order
-    @checkout.sumarise(this_order, menu_summary)
+  def summarise_order
+    @checkout.summarise(this_order, menu_summary)
   end
 
   def order_total

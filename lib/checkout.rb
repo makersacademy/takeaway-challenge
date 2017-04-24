@@ -1,5 +1,5 @@
 class Checkout
-  def sumarise(food, prices)
+  def summarise(food, prices)
     summary_string = ""
     food.each do |key, value|
       cost = prices[key] * value

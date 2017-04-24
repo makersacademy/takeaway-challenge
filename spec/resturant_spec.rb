@@ -24,7 +24,7 @@ describe Restaurant do
       subject.order("Pizza", 2)
       subject.order("Garlic Bread", 3)
       order_sum = "2x Pizza = £10.96, 3x Garlic Bread = £10.2"
-      expect(subject.sumarise_order).to eq order_sum
+      expect(subject.summarise_order).to eq order_sum
     end
   end
   describe '#order_total' do
