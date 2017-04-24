@@ -56,7 +56,7 @@ restaurant = Restaurant.new
 # the menu included as default:
 # @cuisine = { 'ramen' => 5, 'bun' => 3, 'noodles' => 4 }
 restaurant.read_menu
-#         Basket       
+#         Menu       
 # ***********************
 # Ramen                £5
 # Bun                  £3
