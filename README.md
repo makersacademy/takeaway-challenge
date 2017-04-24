@@ -26,6 +26,8 @@ Takeaway Challenge, Makers Academy Week 2
   * total
   * checkout(sum)
 
+![Pry usage](/takeaway_pry.png)
+
 ## Challenge
 
 The purpose of this challenge was to implement a program that fulfilled the following user stories, whilst maintaining the principles of DRY, SRP and loosely coupled code that is maintainable.
