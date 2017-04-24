@@ -26,9 +26,7 @@ RSpec.describe Terminal do
 
   describe '#outstanding_balance' do
     it 'is expected to display the balance for order' do
-      subject.add_to_order('lamb doner', 2)
-      subject.add_to_order('half pounder', 1)
-      expect(subject.outstanding_balance).to eq 'total order: £14'
+      expect(subject.add_to_order('lamb doner', 2)).to eq 'total order: £10'
     end
   end
 end

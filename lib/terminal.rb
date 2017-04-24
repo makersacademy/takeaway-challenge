@@ -20,13 +20,15 @@ class Terminal
 
   def add_to_order(item, quantity)
     @order.add_item(item, quantity)
+    outstanding_balance
   end
 
   def delete_from_order(item, quantity)
     @order.remove_item(item, quantity)
+    outstanding_balance
   end
 
-  def outstanding_balance(cart = @order.cart)
+  def outstanding_balance
     @checkout.balance(cart = @order.cart)
   end
 

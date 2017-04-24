@@ -13,7 +13,8 @@ class CheckOut
   def balance(cart)
     cart.each {|food| @the_cart[food] += 1}
     @total_balance = @the_cart.map { |k, v| v * @menu.the_menu[:"#{k}"]}.sum
-    return "total order: £#{total_balance}"
+    @the_cart.clear
+    "total order: £#{total_balance}"
   end
 
   def payment(money)
