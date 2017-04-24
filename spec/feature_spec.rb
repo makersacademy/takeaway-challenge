@@ -34,7 +34,9 @@ feature 'Feature Integration test - Dishes -> Menus -> CustomerOrder -> Verify '
   end
 
   def print_the_menu
-    list = "Chilli Beef - £12.99\nSweet & Sour Chicken - £9.99\nLobster Thermidore - £28.0\nFruit Basket - £10.99\nEggs Bennedict - £11.99\nSalad Nicoise - £10.99"
+    list = "Chilli Beef - £12.99\nSweet & Sour Chicken - £9.99\nLobster "\
+    "Thermidore - £28.0\nFruit Basket - £10.99\nEggs Bennedict - £11.99\nSalad "\
+    "Nicoise - £10.99"
     expect(@menu.print_list).to eq list
   end
 
@@ -44,7 +46,8 @@ feature 'Feature Integration test - Dishes -> Menus -> CustomerOrder -> Verify '
   end
 
   def print_the_menu_again
-    list = "Chilli Beef - £12.99\nSweet & Sour Chicken - £9.99\nLobster Thermidore - £28.0\nSalad Nicoise - £10.99"
+    list = "Chilli Beef - £12.99\nSweet & Sour Chicken - £9.99\nLobster "\
+    "Thermidore - £28.0\nSalad Nicoise - £10.99"
     expect(@menu.print_list).to eq list
   end
 
@@ -54,7 +57,10 @@ feature 'Feature Integration test - Dishes -> Menus -> CustomerOrder -> Verify '
   end
 
   def update_the_order
-    result = ["Dish: Salad Nicoise Price: £10.99, Quantity: 1\nDish: Lobster Thermidore Price: £28.00, Quantity: 1\n", "Dish: Salad Nicoise Price: £10.99, Quantity: 1\nDish: Lobster Thermidore Price: £28.00, Quantity: 1\n2 Dishes. Total: £38.99", 38.99]
+    result = ["Dish: Salad Nicoise Price: £10.99, Quantity: 1\nDish: Lobster "\
+      "Thermidore Price: £28.00, Quantity: 1\n", "Dish: Salad Nicoise Price: "\
+      "£10.99, Quantity: 1\nDish: Lobster Thermidore Price: £28.00, Quantity: "\
+      "1\n2 Dishes. Total: £38.99", 38.99]
     expect(@peter_griffin.process).to eq result
   end
 
@@ -68,7 +74,13 @@ feature 'Feature Integration test - Dishes -> Menus -> CustomerOrder -> Verify '
   end
 
   def update_the_order_again
-    result = ["Dish: Salad Nicoise Price: £10.99, Quantity: 1\nDish: Lobster Thermidore Price: £28.00, Quantity: 2\nDish: Sweet & Sour Chicken Price: £9.99, Quantity: 1\nDish: Chilli Beef Price: £12.99, Quantity: 1\n", "Dish: Salad Nicoise Price: £10.99, Quantity: 1\nDish: Lobster Thermidore Price: £28.00, Quantity: 2\nDish: Sweet & Sour Chicken Price: £9.99, Quantity: 1\nDish: Chilli Beef Price: £12.99, Quantity: 1\n5 Dishes. Total: £89.97", 89.97]
+    result = ["Dish: Salad Nicoise Price: £10.99, Quantity: 1\nDish: Lobster "\
+      "Thermidore Price: £28.00, Quantity: 2\nDish: Sweet & Sour Chicken Price:"\
+      " £9.99, Quantity: 1\nDish: Chilli Beef Price: £12.99, "\
+      "Quantity: 1\n", "Dish: Salad Nicoise Price: £10.99, Quantity: "\
+      "1\nDish: Lobster Thermidore Price: £28.00, Quantity: "\
+      "2\nDish: Sweet & Sour Chicken Price: £9.99, Quantity: 1\nDish: "\
+      "Chilli Beef Price: £12.99, Quantity: 1\n5 Dishes. Total: £89.97", 89.97]
     expect(@peter_griffin.process).to eq result
   end
 
