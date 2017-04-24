@@ -29,4 +29,16 @@ class Order
         end
         @order
     end
+    
+    def total_bill
+        total = 0
+        @order.each {|dish| total += dish[:price]}
+        total
+    end
+    
+    def print_bill
+        @order.each do |item|
+            puts "#{item[:dish]} 1 #{item[:price]}"
+        end
+    end
 end
