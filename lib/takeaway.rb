@@ -1,36 +1,32 @@
 require_relative 'restaurant'
 require_relative 'text_service'
+require_relative 'order'
 
 class Takeaway # understands creating an order
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :restaurant
 
   def initialize
-    @order = Hash.new(0)
-    @restaurant = Restaurant.new
+    @order = Order.new
     @text_service = TextService.new
   end
 
   def view_menu
+    @restaurant = Restaurant.new
     @restaurant.view
   end
 
+  def view_order
+    puts "Your order comes to £#{(@order.order_total).to_s}."
+  end
+
+
   def add_item(item, quantity)
-    @order[item.to_sym] += quantity.to_f
-    "#{quantity} #{item} added to order."
-  end
-
-  def items_total
-    menu = (@restaurant.menu).keep_if { |k, v| @order.key? k }
-    @total =  @order.merge(menu){|key, oldval, newval| newval * oldval}
-  end
-
-  def order_total
-   items_total.values.inject(:+)
+    @order.add(item, quantity)
   end
 
   def submit_order
-    @total.values.inject(:+) == order_total ? @text_service.send_text : raise("There was a problem with your order.")
+    @order.check_order? ? @text_service.send_text : raise("There was a problem with your order.")
   end
 
 end

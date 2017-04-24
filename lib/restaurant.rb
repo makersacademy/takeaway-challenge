@@ -1,6 +1,6 @@
 class Restaurant # understands storing the menu
 
-  attr_reader :menu
+  attr_accessor :menu
 
   def initialize
     @menu =  {kimchi_pancake: 2.99,
