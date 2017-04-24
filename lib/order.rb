@@ -25,20 +25,27 @@ class Order
     
     def order(*chosen_dishes)
         chosen_dishes.each do |dish|
-            @order << @menu.dishes[dish -1]
+            if @order.include?(@menu.dishes[dish -1])
+                index = @order.index(@menu.dishes[dish -1])
+                @order[index][:quantity] +=1
+            else
+                @order << @menu.dishes[dish -1]
+                @order[-1][:quantity] = 1
+            end
         end
         @order
     end
     
     def total_bill
         total = 0
-        @order.each {|dish| total += dish[:price]}
+        @order.each {|dish| total += (dish[:price] * dish[:quantity])}
         total
     end
     
     def print_bill
         @order.each do |item|
-            puts "#{item[:dish]} 1 #{item[:price]}"
+            puts "#{item[:dish]} #{item[:quantity]} £#{item[:price] * item[:quantity]}"
         end
+        puts "The total bill is £#{total_bill}"
     end
 end

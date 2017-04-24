@@ -36,22 +36,41 @@ describe Order do
         before(:example) { subject.add_menu(test_menu) }
         before(:example) { subject.order(1, 2, 3) }
         
-        it 'Gives the total amount for the order' do
+        it 'Gives the total amount for the order "1, 2, 3" as 21.50' do
             expect(subject.total_bill).to eq(21.50)
         end
     end
     
-    let(:printed_menu) { "#{test_menu.dishes[0][:dish]} 1 #{test_menu.dishes[0][:price]}\n#{test_menu.dishes[1][:dish]} 1 #{test_menu.dishes[1][:price]}\n#{test_menu.dishes[2][:dish]} 1 #{test_menu.dishes[2][:price]}\n" }
+    describe '#total_bill 2' do
+        before(:example) { subject.add_menu(test_menu) }
+        before(:example) { subject.order(1, 2, 3, 2, 1, 2) }
+        
+        it 'Gives the total amount for the order "1, 2, 3, 2, 1, 2" as 44.50' do
+            expect(subject.total_bill).to eq(44.50)
+        end
+    end
+    
+    let(:printed_bill) { "#{test_menu.dishes[0][:dish]} 1 £#{test_menu.dishes[0][:price]}\n#{test_menu.dishes[1][:dish]} 1 £#{test_menu.dishes[1][:price]}\n#{test_menu.dishes[2][:dish]} 1 £#{test_menu.dishes[2][:price]}\nThe total bill is £21.5\n" }
+    let(:printed_bill_2) { "#{test_menu.dishes[0][:dish]} 2 £#{test_menu.dishes[0][:price] * 2}\n#{test_menu.dishes[1][:dish]} 3 £#{test_menu.dishes[1][:price] * 3}\n#{test_menu.dishes[2][:dish]} 1 £#{test_menu.dishes[2][:price]}\nThe total bill is £44.5\n" }
     
     describe '#print_bill' do
         
         before(:example) { subject.add_menu(test_menu) }
         before(:example) { subject.order(1, 2, 3) }
         
-        it 'Prints out the bill with the dishes with the quanities' do
-            expect{ subject.print_bill }.to output(printed_menu).to_stdout
+        it 'Prints out the bill with the dishes with the quanities order and subtotal' do
+            expect{ subject.print_bill }.to output(printed_bill).to_stdout
         end
+    end
+    
+    describe '#print_bill' do
         
+        before(:example) { subject.add_menu(test_menu) }
+        before(:example) { subject.order(1, 2, 3, 2, 1, 2) }
+        
+        it 'Prints out the bill with the dishes with the correct quanities i.e. same dish ordered more than once' do
+            expect{ subject.print_bill }.to output(printed_bill_2).to_stdout
+        end
     end
     
 end
