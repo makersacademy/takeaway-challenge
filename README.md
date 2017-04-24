@@ -43,6 +43,10 @@ takeaway.order('pizza', 3)
 
 takeaway.show_order
 
+# Remove the wrong item from the order 
+
+takeaway.remove_item(:pizza)
+
 # Display the total price of your order
 
 takeaway.show_total
