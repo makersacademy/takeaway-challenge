@@ -50,3 +50,14 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+### Approach
+
+* Made a good-enough domain model to begin coding, expecting it to develop as I gained an understanding of the domain
+
+* Met the first user story by creating a Menu class object that could be called from a Takeaway class
+
+* Met the second user story by implementing an array to store the customer's selection through an order function
+
+* Met the third by refactoring shopping basket into a hash data structure, to allow storage of price and quantity.
+
+* Met the final story by using the twilio-ruby gem and integrating sms-sending code into the program as a class that is instantiated when the Takeaway class is instantiated.
