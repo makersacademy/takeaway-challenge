@@ -45,6 +45,7 @@ gem install bundler
 gem install twilio-ruby
 bundle
 # you may be asked to install ruby '2.4.0'
+# remember you will need a Twilio account and you will need to input your info into TwilioAPI
 ```
 
 *You can now start ordering! Run this program from the command line in IRB*
