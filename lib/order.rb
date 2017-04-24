@@ -3,13 +3,15 @@ require_relative 'takeaway'
 require_relative 'order'
 
 class Order
+attr_reader :menu
 
   def initialize()
-    dishes = {}
+    dishes = []
+    @menu = Menu.new.list
   end
 
-  def add(dish, quantity)
-    dishes << { dish => quantity }
+  def add(index)
+    dishes << @menu.values[index-1]
   end
 
 end
