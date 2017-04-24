@@ -10,4 +10,10 @@ describe Checkout do
       expect(checkout.sumarise(food, prices)).to eq summary
     end
   end
+  describe '#total_price' do
+    it "Prints the total price of the order" do
+      cost = 18.59
+      expect(checkout.total_price(food, prices)).to eq cost
+    end
+  end
 end

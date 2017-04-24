@@ -19,4 +19,20 @@ describe Restaurant do
       expect(restaurant.current_order.items).to eq({ "Pizza" => 2 })
     end
   end
+  describe '#sumarise_order' do
+    it 'Prints a summary of the order' do
+      subject.order("Pizza", 2)
+      subject.order("Garlic Bread", 3)
+      order_sum = "2x Pizza = £10.96, 3x Garlic Bread = £10.2"
+      expect(subject.sumarise_order).to eq order_sum
+    end
+  end
+  describe '#order_total' do
+    it 'Displays the total for the current order' do
+      subject.order("Pizza", 2)
+      subject.order("Garlic Bread", 3)
+      expected_total = "£21.16"
+      expect(subject.order_total).to eq expected_total
+    end
+  end
 end

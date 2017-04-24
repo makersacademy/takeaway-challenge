@@ -30,6 +30,8 @@ class Restaurant
     "£#{total}"
   end
 
+  private
+
   def this_order
     @current_order.items
   end
