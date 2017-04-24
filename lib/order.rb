@@ -9,7 +9,7 @@ class Order
 	end
 
 	def select_menu(number)
-		#raise ArgumentError, 'Not a valid menu' unless menu.is_a? Menu
+		raise ArgumentError, 'Not a valid menu' unless number <= Menu.menus.length
 		@menu = Menu.select_menu(number)
 	end
 

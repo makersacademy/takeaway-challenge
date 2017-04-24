@@ -97,8 +97,8 @@ class CustomerView
 	end
 
 	def sms_confirmation
-		puts ENV[TWILIO_ACCOUNT_SID]
-		puts ENV[TWILIO_AUTH_TOKEN]
+		puts ENV['TWILIO_ACCOUNT_SID']
+		puts ENV['TWILIO_AUTH_TOKEN']
 
 		# SmsConfirmation.new.send
 	end

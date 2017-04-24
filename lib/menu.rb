@@ -1,9 +1,11 @@
 require_relative 'dish'
 require 'csv'
+require 'active_support'
 
 class Menu
 
 	@@menus = []
+	cattr_reader :menus
 
 	def initialize
 		@dishes = []
@@ -33,7 +35,7 @@ class Menu
 
 	def save_csv(filename)
 	 	CSV.open(filename, 'wb') { |csv| 
-			@dishes.each {|dish| csv << dish }
+			@dishes.each { |dish| csv << dish }
 		}
 	end
 

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 
+gem 'active_support'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'
