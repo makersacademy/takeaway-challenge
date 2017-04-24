@@ -1,6 +1,7 @@
 require_relative 'menu'
 
 class Order
+	attr_reader :dishes
 
 	def initialize
 		@dishes = []
@@ -9,7 +10,7 @@ class Order
 	end
 
 	def select_menu(number)
-		raise ArgumentError, 'Not a valid menu' unless number <= Menu.menus.length
+		raise ArgumentError, 'Not a valid menu number' unless number <= Menu.menus.length
 		@menu = Menu.select_menu(number)
 	end
 
@@ -25,18 +26,14 @@ class Order
 	end
 
 	def raise_total
-		total_bill
-	end
-
-	private
-
-	def total_bill
 		total = 0
 		@dishes.each {|order| 
 			total += order[:total].to_i
 		}
 		total
 	end
+
+	private
 
 	def validate_dish(name, quantity)
 		raise ArgumentError, 'No menu selected' if @menu == nil

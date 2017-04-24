@@ -5,7 +5,6 @@ require_relative 'sms_confirmation'
 class CustomerView
 
 	def	initialize
-		#@menu = nil
 		@order = nil
 		greeting
 	end
@@ -97,11 +96,6 @@ class CustomerView
 	end
 
 	def sms_confirmation
-		puts ENV['TWILIO_ACCOUNT_SID']
-		puts ENV['TWILIO_AUTH_TOKEN']
-
-		# SmsConfirmation.new.send
+		SmsConfirmation.new.send
 	end
 end
-
-# customer = CustomerView.new
