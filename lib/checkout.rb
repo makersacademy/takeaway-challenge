@@ -8,4 +8,10 @@ class Checkout
     end
     summary_string.chomp(", ")
   end
+
+  def total_price(food, prices)
+  total = 0
+  food.each { |key, value| total += prices[key] * value }
+  total.round(2)
+  end
 end

@@ -16,7 +16,7 @@ describe Restaurant do
     it 'Adds menu items to the current order' do
       restaurant = Restaurant.new
       restaurant.order("Pizza", 2)
-      expect(restaurant.current_order).to include({ "Pizza" => 2 })
+      expect(restaurant.current_order.items).to eq({ "Pizza" => 2 })
     end
   end
 end

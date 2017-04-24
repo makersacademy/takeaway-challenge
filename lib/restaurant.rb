@@ -22,14 +22,19 @@ class Restaurant
   end
 
   def sumarise_order
-    checkout.sumarise(this_order, menu_summary)
+    @checkout.sumarise(this_order, menu_summary)
+  end
+
+  def order_total
+    total = @checkout.total_price(this_order, menu_summary)
+    "£#{total}"
   end
 
   def this_order
-    @current_order
+    @current_order.items
   end
 
   def menu_summary
-    @menu
+    @menu.dishes
   end
 end
