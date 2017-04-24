@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-let(:menu) { described_class.new }
+  let(:menu) { described_class.new }
 
   it 'stores menu items and their prices' do
     expect(menu.items).to include(:pizza => 10.00)
@@ -11,7 +11,7 @@ let(:menu) { described_class.new }
 
   it 'displays menu items and prices to customers' do
     menu.items.each do |item, price|
-    expect{menu.display}.to output(/#{item} - #{price}/).to_stdout
-  end
+      expect { menu.display }.to output(/#{item} - #{price}/).to_stdout
+    end
   end
 end

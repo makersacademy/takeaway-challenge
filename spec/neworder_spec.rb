@@ -5,7 +5,7 @@ require 'sms'
 
 describe NewOrder do
   let(:neworder) { described_class.new }
-
+  let(:sms) { double :sms, sms_template: "Your order was placed and will be delivered before 11:06", timestamp: "11:06", send: sms_template }
   before do
     allow_any_instance_of(SMS).to receive(:send)
   end
@@ -13,8 +13,8 @@ describe NewOrder do
   it 'adds dishes and quantities to an order' do
     neworder.add_dish(:pizza, 2)
     neworder.add_dish(:fried_chicken, 4)
-    expect(neworder.order.count({pizza: 10.00})).to eq 2
-    expect(neworder.order.count({fried_chicken: 8.50})).to eq 4
+    expect(neworder.order.count({ pizza: 10.00 })).to eq 2
+    expect(neworder.order.count({ fried_chicken: 8.50 })).to eq 4
   end
 
   it 'adds up the order\'s total cost' do
@@ -24,7 +24,7 @@ describe NewOrder do
 
   it 'takes total and raises an error if incorrect' do
     neworder.add_dish(:pizza, 2)
-    expect{neworder.place_order(19.00)}.to raise_error 'Incorrect total given'
+    expect { neworder.place_order(19.00) }.to raise_error 'Incorrect total given'
   end
 
   # not 100% if this is really testing the .send method is called, but it passes...

@@ -4,7 +4,7 @@ require_relative './sms.rb'
 
 class NewOrder
 
-attr_reader :menu, :order, :sms
+  attr_reader :menu, :order, :sms
 
   def initialize
     @order = []
@@ -18,7 +18,7 @@ attr_reader :menu, :order, :sms
 
   def total
     @amount = 0.00
-    @order.each { |item| item.each { |dish, price| @amount += price } }
+    @order.each { |item| @amount += item.values[0] }
     @amount
   end
 
