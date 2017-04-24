@@ -34,11 +34,11 @@ class CustomerOrder
   end
 
   def order_count
-    @contents.size
+    contents.size
   end
 
   def show_contents
-    @contents
+    contents
   end
 
   def process

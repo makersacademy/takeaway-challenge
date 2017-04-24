@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
 
-  let(:dish_1) { double :dish, name: 'Fruit Basket', price: 10.99 }
+  let(:dish_1) { double :dish, name: 'Fruit Basket', price: 10.99, present: { 'Fruit Basket' => 10.99 } }
   let(:dish_2) { double :dish, name: 'Salad Nicoise', price: 14.99, present: { "Salad Nicoise" => 14.99 } }
   let(:dish_3) { double :dish, name: 'Shrimp Fettuccini', price: 18.99, present: { "Shrimp Fettuccini" => 18.99 } }
 
@@ -13,7 +13,7 @@ describe Menu do
   end
 
   it 'can have dishes removed from it' do
-    expect { menu.remove(dish_2) }.to change { menu.list_of_dishes.count }.from(2).to(1)
+    expect { menu.remove(dish_2, dish_1) }.to change { menu.list_of_dishes.count }.from(2).to(0)
   end
 
   it 'cannot relinquish dishes that it does not contain' do
