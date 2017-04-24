@@ -13,8 +13,8 @@ class MessageSender
     client.account.messages.create(
       :from => from,
       :to => phone_number,
-      :body => "Hello #{name}, your order has been dispatched from Makers Bistro.\n#{message}
-      It will arrive in #{ADDITIONAL_TIME / 60} minutes at #{time}!"
+      :body => "Hello #{name}, your order has been dispatched from Makers Bistro.\n#{message} "\
+      "It will arrive in #{ADDITIONAL_TIME / 60} minutes at #{time}!"
     )
   end
 
