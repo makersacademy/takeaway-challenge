@@ -6,7 +6,7 @@ class OrderManagement
 
   include TwilioSMS
 
-  attr_reader :new_orders
+  attr_reader :new_orders, :menu
 
   def initialize
     @processed_orders = []
