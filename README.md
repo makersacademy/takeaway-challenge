@@ -17,7 +17,9 @@ Takeaway Challenge
 Description
 -----
 
-This challenge creates a restaurant ordering platform.  The customer can see the menu, order whichever dishes she likes, check that the total is correct, and receive a confirmation text.  
+This challenge creates a restaurant ordering platform.  The customer can see the menu, order whichever dishes she likes, check that the total is correct, and receive a confirmation text.  I first created a `Restaurant` class, which holds the functions of displaying the menu, ordering, returning the total price, and confirming the total price.  I then created a `Print` module, which contains the printing methods used to display the order.  Finally, I created a `Text` module to use Twilio to send a confirmation text to my own number.
+
+I used `rspec` and `irb` to test these files.  When writing the rspec tests for Twilio, I first allowed the test to send me a text message, and then when I had confirmed that this was working, I stubbed it out so that the test would not issue a text.  However, `irb` will still allow the user to generate a text message.
 
 Requirements
 -----
