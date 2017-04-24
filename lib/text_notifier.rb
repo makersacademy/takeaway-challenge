@@ -1,4 +1,9 @@
+#! /usr/bin/ruby
+
 require 'twilio-ruby'
+require 'dotenv'
+
+time = Time.now + 3600
 
 class TextNotifier
   def self.send_sms(number, body)
@@ -6,9 +11,6 @@ class TextNotifier
   end
 
   def initialize
-    @account_sid = "AC9d3635a19fddd31127f4b65482b01447"
-    @auth_token = "5027cc2f218c3b5dd5e13165d48b0f71"
-    @from_number = "+441732252223"
   end
 
   def send_sms(number, body)
@@ -21,11 +23,22 @@ class TextNotifier
     message = client.account.messages.create(
       :body => body,
       :to => number,
-      :from => @from_number
+      :from => config[:from]
     )
   end
 
+
+  def config
+    {
+      account_sid: ENV["ACCOUNT_SID"],
+      auth_token: ENV["AUTH_TOKEN"],
+      from: ENV["FROM_PHONE"],
+      to: ENV["customer_phone"],
+      body: "Thank you! Your order has been placed and will be delivered before #{time.strftime("%H:%M")}"
+    }
+  end
+
   def client
-    Twilio::REST::Client.new @account_sid, @auth_token
+    Twilio::REST::Client.new config[:account_sid], config[:auth_token]
   end
 end

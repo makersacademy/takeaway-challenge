@@ -1,4 +1,5 @@
 require_relative 'text_notifier.rb'
+require "dotenv/load"
 
 class Order
   DISHES = {
@@ -53,7 +54,7 @@ class Order
   end
 
   def send_sms_confirmation
-    recipient = "+4407456777596"
+    recipient = ENV["customer_phone"]
     TextNotifier.send_sms(recipient, sms_confirmation_body)
   end
 
