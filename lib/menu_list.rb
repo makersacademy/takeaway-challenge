@@ -14,7 +14,8 @@ class Menu_list
     file = File.open("menu.csv", "r")
     file.readlines.each_with_index do |line, index|
       type, name, price = line.chomp.split(',')
-      @menu_items << {item: index+1, type: type.to_sym, name: name, price: price}
+      index += 1
+      @menu_items << {item: index, type: type.to_sym, name: name, price: price}
     end
   end
 

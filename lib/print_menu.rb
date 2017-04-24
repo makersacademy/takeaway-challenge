@@ -23,8 +23,8 @@ class Print_menu
 
   def print_footer(menu_items)
     puts ""
-    if menu_items.count > 0; puts "Overall, we have #{menu_items.count} delicious options on the menu".center(100)
-    else names.count == 0; puts "We have no Students!".center(100)
+    if menu_items.count > 0; puts "We have #{menu_items.count} delicious options on the menu".center(100)
+    else names.count == 0; puts "We have nothing on the menu. sucks being you!".center(100)
     end
     puts ""
   end

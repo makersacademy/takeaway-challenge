@@ -7,6 +7,12 @@ require './lib/print_menu.rb'
 # customer interface for takeaway
 class Interface
 
+  attr_reader :current_order
+
+  def initialize
+    @current_order =[]
+  end
+
   def build_interface
     loop do
       print_options
@@ -26,8 +32,9 @@ class Interface
   def process_response(selection)
     case selection
       when "1"
-        Print_menu.new.print(Menu_list.new.menu_items)
+        Print_menu.new.print(menu_list.menu_items)
       when "2"
+        @current_order << Menu_selection.new(menu_list.menu_items).selection
       when "3"
       when "4"
       when "5"
@@ -35,6 +42,10 @@ class Interface
       else
         puts "This option doesn't exit. Please try again"
     end
+  end
+
+  def menu_list
+    @menu_list ||= Menu_list.new
   end
 
 end
