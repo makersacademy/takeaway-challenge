@@ -87,12 +87,12 @@ Takeaway Challenge
  Bellow is a pry transcript of how the program runs from a users perspective:
 
 ```
-[[1] pry(main)> require './lib/order'
+[1] pry(main)> require './lib/order'
 => true
 [2] pry(main)> dominos = Takeaway.new
-=> #<Takeaway:0x007fdaf4444978
+=> #<Takeaway:0x007ffb1a87f858
  @order=
-  #<Order:0x007fdaf4444928
+  #<Order:0x007ffb1a87f808
    @customer_order={},
    @menu=
     {:Milano=>19.99,
@@ -100,22 +100,19 @@ Takeaway Challenge
      :Sicilia=>19.99,
      :Verona=>19.99,
      :Roma=>19.99}>>
-[3] pry(main)> dominos.order.add_item(:Milano, 1)
-=> 1
-[4] pry(main)> dominos.order.add_item(:Roma, 5)
+[3] pry(main)> dominos.order.add_item(:Roma, 5)
 => 5
-[5] pry(main)> dominos.order.summary
-Milano x 1
-Roma x 5
-Your total: £119.94
-=> nil
-[6] pry(main)> dominos.order.add_item(:Margherita, 2)
+[4] pry(main)> dominos.order.add_item(:Margherita, 2)
 RuntimeError: Item is not on the menu.
-from /Users/anthonycrisp/Desktop/Projects/TakeAway/takeaway-challenge/lib/order.rb:13:in `add_item'
-[7] pry(main)> dominos.order.summary
-Milano x 1
+from /Users/anthonycrisp/Desktop/Projects/TakeAway/takeaway-challenge/lib/order.rb:15:in `add_item'
+[5] pry(main)> dominos.order.add_item(:Milano, 1)
+=> 1
+[6] pry(main)> dominos.order.summary
 Roma x 5
+Milano x 1
 Your total: £119.94
 => nil
+[7] pry(main)> dominos.order.send_sms(+44**********)
+=> "sent"
 [8] pry(main)>
 ```
