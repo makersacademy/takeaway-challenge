@@ -23,8 +23,8 @@ class Interface
   def print_options
     puts "\n1. Show Menu"
     puts '2. Make Selection'
-    puts '3. Checkout'
-    puts '4. See Order'
+    puts '3. See Basket'
+    puts '4. Checkout'
     puts '5. Exit'
     print '>  '
   end
@@ -34,8 +34,9 @@ class Interface
       when "1"
         Print_menu.new.print(menu_list.menu_items)
       when "2"
-        @current_order << Menu_selection.new(menu_list.menu_items).selection
+        @current_order = @current_order + Menu_selection.new(menu_list.menu_items).selection
       when "3"
+        Print_menu.new.print(@current_order)
       when "4"
       when "5"
         exit
