@@ -13,8 +13,8 @@ class OrderProcessor
       @message += "Dish: #{dish.name} Price: £#{sprintf('%.2f', dish.price)}, "\
       "Quantity: #{contents.count(dish)}\n" unless dishes.include?(dish.name)
       dishes << dish.name
-      @order_total += dish.price
     }
+    @order_total = contents.map { |e| e.price }.inject(:+)
     dishes = nil
   end
 
