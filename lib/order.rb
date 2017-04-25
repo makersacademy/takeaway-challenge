@@ -1,4 +1,5 @@
 require './lib/menu'
+require './lib/order_confirm'
 
 class Order
     
@@ -48,4 +49,12 @@ class Order
         end
         puts "The total bill is £#{total_bill}"
     end
+    
+    def confirm_order(delivery_time = '1 hour', number)
+        order_confirmation = OrderConfirm.new
+        order_confirmation.get_msg("Your order comes to £#{total_bill} and will be with you in #{delivery_time}")
+        order_confirmation.get_num(number)
+        order_confirmation.send_confirm_msg
+    end
+    
 end
