@@ -4,21 +4,22 @@
 
 # It understands how to display a Menu
 
-
 class Menu
   attr_reader :menu
 
-  def initialize
-    @menu = {"Salad" => 5 ,
-      "Pizza" => 8 ,
-      "Pasta" => 9 ,
-      "Ice Cream" => 5 ,
-      "Still Water" => 2.50 ,
-      "Pepsi" => 3.00}
-  end
-
   def display
     @menu.each  {|key, value| puts "#{key} - £#{value}"}
+  end
+
+  private
+
+  def initialize
+    @menu = {"Salad" => 5,
+      "Pizza" => 8,
+      "Pasta" => 9,
+      "Burger" => 5,
+      "Fish & Chips" => 6,
+      "Chips" => 3}
   end
 
 end

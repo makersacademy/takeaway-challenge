@@ -1,17 +1,34 @@
+# As a customer
+# So that I can order the meal I want
+# I would like to be able to select some number of several available dishes
+
+# It understands how to add available items to an order
+
+require_relative "menu"
+require_relative "check"
+
 class Order
-  attr_reader :menu, :pending_order
+  attr_reader :order
+
+ def add(dish)
+   @dish = dish
+   order_guard(@dish)
+ end
+
+private
 
  def initialize
-    @menu = Menu.new.menu
-    @pending_order = []
+   @order = []
+   @menu = Menu.new.menu
  end
 
- def new_order
-   @pending_order = ["Salad", "Pasta", "Ice Cream", "Pepsi"]
+ def order_guard(dish)
+   fail "Sorry that item is not on the menu and will not be added." if !item_on_menu?(dish)
+   @order.push(dish) ; "We added #{dish} to your order."
  end
 
- def review_order
-   @pending_order.all? {|item| hash.key? item}
+ def item_on_menu?(dish)
+   @menu.key?(dish)
  end
 
 end
