@@ -1,5 +1,18 @@
 Takeaway Challenge
 ==================
+```
+                            _________
+              r==           |       |
+           _  //            |  M.A. |   ))))
+          |_)//(''''':      |       |
+            //  \_____:_____.-------D     )))))
+           //   | ===  |   /        \
+       .:'//.   \ \=|   \ /  .:'':./    )))))
+      :' // ':   \ \ ''..'--:'-.. ':
+      '. '' .'    \:.....:--'.-'' .'
+       ':..:'                ':..:'
+
+ ```
 
 Instructions
 -------
@@ -13,7 +26,6 @@ Instructions
 Task
 -----
 
-* Fill out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already)
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
@@ -44,6 +56,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   * Use the Gemfile to manage your gems
   * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
   * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
 * Advanced! (have a go if you're feeling adventurous):
   * Implement the ability to place orders via text message.
@@ -56,23 +69,11 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
 Notes on Test Coverage
 ------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you submit a pull request, and you can also get a summary locally by running:
-
-```
-$ coveralls report
-```
-
-This repo works with [Coveralls](https://coveralls.io/) to calculate test coverage statistics on each pull request.
-
-Build Badge Example
-------------------
-
-[![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
-[![Coverage Status](https://coveralls.io/repos/makersacademy/takeaway-challenge/badge.png)](https://coveralls.io/r/makersacademy/takeaway-challenge)
+You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
