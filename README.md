@@ -1,3 +1,7 @@
+Makers Academy Week 2 Weekend Challenge
+* My approach involved spending a good deal of time upfront planning out how the programme would work and diagramming. I thought a lot about how to structure the classes, always keeping in mind the Single Responsibility Principle.
+* When it came to writing the code, however, I relied heavily upon the [Takeaway Challenge Exemplar](https://www.youtube.com/watch?v=mgiJKdH9x8c)
+
 Takeaway Challenge
 ==================
 ```
