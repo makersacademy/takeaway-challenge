@@ -13,67 +13,82 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+### How to run application
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+- Clone this repo (takeaway-challenge)
+- Open IRB / PRY or your favourite terminal application
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+[1] pry(main)> require './lib/order'
+=> true
+[2] pry(main)> order = Order.new
+=> #<Order:0x007fb099b61380 @order_items=[], @order_price=0>
+[3] pry(main)> Menu.new
+=> #<Menu:0x007fb099b21ed8
+ @menu=
+  {:pizza=>2.0,
+   :chips=>2.0,
+   :kebab=>2.0,
+   :burger=>2.0,
+   :sushi=>2.0,
+   :fried_chicken=>2.0}>
+[4] pry(main)> order.select_dish
+ArgumentError: wrong number of arguments (given 0, expected 1)
+from /Users/jonathanelliot/Projects/takeaway-challenge/lib/order.rb:15:in `select_dish'
+[5] pry(main)> order.select_dish(:something_no_on_menu)
+RuntimeError: That item is not on the menu
+from /Users/jonathanelliot/Projects/takeaway-challenge/lib/order.rb:16:in `select_dish'
+[6] pry(main)> order.select_dish(:pizza)
+=> 2.0
+[7] pry(main)> order
+=> #<Order:0x007fb099b61380 @order_items=[:pizza], @order_price=2.0>
+[8] pry(main)> order.select_dish(:burger)
+=> 4.0
+[9] pry(main)> order
+=> #<Order:0x007fb099b61380 @order_items=[:pizza, :burger], @order_price=4.0>
+[10] pry(main)> order.price_check
+=> 4.0
+[11] pry(main)> order.confirm_order
+=> <Twilio::REST::Message @path=/2010-04-01/Accounts/AC3b3b543d39c56bbaeadf9160caa56a74/Messages/SMda0e02e47cc846f0b3a3a453fb8c1928>
+[12] pry(main)> quit
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+### Issues with program
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+# Rspec report
+```
+takeaway-challenge git:(master) rspec
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Menu
+should respond to #menu
+
+Order
+responds to #select_dish with 1 argument
+#select_dish
+  raise an error if chosen food is not on menu
+  adds chosen food to #order_items
+#price_check
+  checks if order total price is correct
+#confirm_order
+  send SMS to customer
+
+Have you considered running rubocop? It will help you improve your code!
+Try it now! Just run: rubocop
+
+Finished in 0.00959 seconds (files took 0.44973 seconds to load)
+6 examples, 0 failures
 
 
-In code review we'll be hoping to see:
+COVERAGE:  96.00% -- 48/50 lines in 4 files
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
++----------+--------------+-------+--------+---------+
+| coverage | file         | lines | missed | missing |
++----------+--------------+-------+--------+---------+
+|  89.47%  | lib/order.rb | 19    | 2      | 26, 32  |
++----------+--------------+-------+--------+---------+
+3 file(s) with 100% coverage not shown
+```
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+- Struggled maintaining 100% coverage after implementing twilio.API. Put all twilio code on one line which brought test coverage back up from around 90% but feels like a cheat - Rubocop didn't like it.
+- I was trying to use a hash to assign food items to a cost but I wasn't able to access the cost (value) from the key by using `@menu[from_menu]` it kept throwing an error to do with `nil`. Used a constant `PRICE` in the end in order to finish the challenge.
+- `#price_check` is a pretty useless method as price is returned when you look at the Order object anyway. Thought I should include it though as the user story wanted me to confirm.
