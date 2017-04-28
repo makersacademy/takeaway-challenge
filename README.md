@@ -1,6 +1,6 @@
 Takeaway Challenge
 ==================
-```
+
                             _________
               r==           |       |
            _  //            |  M.A. |   ))))
@@ -12,8 +12,63 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
+My approach to the Takeaway challenge (user stories, instructions and resources
+bellow):
+1. Domain model based on user stories: I need a Menu class that can print a menu,
+can place an order, checks of the total sum is correct, sends and sms to confirm the order
+
+2. I created a constant LIST_OF_DISHES, a hash of dishes and prices
+
+3. I added simple print method, that prints the menu and price - in rspec, it is  
+expected to print a constant.
+
+4. I added a select method with 2 arguments - a dish from the menu and
+how many times the dish needs to be added. Dishes go into an array of dishes, quantities go into an array of numbers. The method puts the two arrays into a hash called order, which is an instance variable of the Menu class. In Rspec, I tested if a hardcoded order (a hash) has its keys (dishes) included in the LIST_OF_DISHES.
+
+5. The select method fails if the added dish is not in the menu.
+
+6. I added a checkout method taking a 'total' argument, which fails if the total sum is incorrect and send sms if correct.
+
+7. For user story 3, I added a correct_total method, adding all dishes in the
+order multiplied by the number of items.
+
+8. For the text message to confirm an order: I created a Twilio account, which gave me a number from which to send text messages and the code allowing me to send a text using my account credentials and my Twilio number.
+
+9. Initially I tried to have a send text method within my Menu class, but it had too many dependencies and I was getting too many errors. Also, menus don't really send you text messages, so here's to SRP. I made a new class Textsms, which only has one method, namely the send(text) method.
+
+10. I modified the send method in the Textsms class so it takes an argument (the Twilio code had no arg and the body was hardcoded in the method). Then I added an
+@sms (initalized with a new Textsms instance) instance variable to the Menu class and within the checkout method I called sms.send(text).
+
+Here's how to use it in irb:
+```
+2.4.0 :001 > require './lib/menu'
+ => true
+2.4.0 :002 > menu=Menu.new
+ => #<Menu:0x007fb44c39b0b8 @order={}, @total=0, @dishes=[], @quants=[], @sms=#<Textsms:0x007fb44c39b018>>
+2.4.0 :003 > menu.print
+ => {"formule1"=>10, "formule2"=>15, "formule3"=>20, "drink"=>5}
+2.4.0 :004 > menu.select('formule1',1)
+formule1 was added 1 time(s)! Select again if you want to add more
+ => [["formule1", 1]]
+2.4.0 :005 > menu.select('drink',1)
+drink was added 1 time(s)! Select again if you want to add more
+ => [["formule1", 1], ["drink", 1]]
+2.4.0 :006 > menu.select('drinkssssssss',1)
+RuntimeError: Dish not in the menu, try again!
+	[...]
+2.4.0 :007 > menu.place_order(16)
+RuntimeError: The sum is incorrect!
+	[...]
+2.4.0 :008 > menu.place_order(15)
+ => nil
+2.4.0 :009 > menu.confirm_order
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/ACfa9b631a7443203be5289bdefa1522b2/Messages/SM8e69afb955994cc6a2f463145c66e690>
+2.4.0 :010 >
+
+
  ```
 
+________________________________________________________________________
 Instructions
 -------
 

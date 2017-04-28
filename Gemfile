@@ -8,3 +8,7 @@ gem 'rspec'
 gem 'rubocop'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false, group: :test
+gem 'public_suffix'
+gem 'twilio-ruby'
+gem 'sinatra'
+gem 'json'
