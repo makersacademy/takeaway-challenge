@@ -4,7 +4,7 @@ require_relative 'order'
 
 class Takeaway # understands creating an order
 
-  attr_reader :menu, :order, :restaurant
+  attr_reader :order, :restaurant
 
   def initialize
     @order = Order.new
@@ -19,7 +19,6 @@ class Takeaway # understands creating an order
   def view_order
     puts "Your order comes to £#{(@order.order_total).to_s}."
   end
-
 
   def add_item(item, quantity)
     @order.add(item, quantity)
