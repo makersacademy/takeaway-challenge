@@ -1,2 +1,5 @@
 /**/.DS_Store
 /coverage
+/localsettings.rb
+.env*
+!.env.example
