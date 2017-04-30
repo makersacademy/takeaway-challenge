@@ -45,18 +45,25 @@ To run my program, cd in the project folder name and type in the following comma
 
 Create a new order:
 `order = Order.new`
+
 See dishes with prices:
 `order.see_dishes`
+
 Add a dish by passing a string as an argument:
 `order.add_dish('dish_name')` - returns the price of the dish just added
+
 Add more dishes:
 `order.add_dish('dish_name')` - adds on dish price
+
 Remove a dish:
 `order.remove_dish('dish_name')` - returns your total spent minus the removed dish
+
 See order summary:
-`order.summary` -
+`order.summary`
+
 Check out the order:
 `order.check_out` - sends an SMS with 1 hour estimated delivery time or returns an error if minimum amount spent is less than 20.
+
 
 ## Running tests
 
