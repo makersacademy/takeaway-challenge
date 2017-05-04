@@ -16,7 +16,7 @@ Takeaway Challenge
  
  ```
 
-This challenge was to design a system (using TDD in RSpec and an object oriented design in Ruby) where a user could order various dishes from a restaurant menu and receive a text confirming the order. I wrote it over the weekend of my second week at Makers Academy.
+This challenge was to TDD an OOP system in Ruby where a user could order various dishes from a restaurant menu and receive a text confirming the order. I wrote it over the weekend of my second week at Makers Academy.
 
 In irb:
 ```
