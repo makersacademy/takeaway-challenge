@@ -74,6 +74,7 @@ class Order
      MessageSender.send_message(
      self.object_id, Information::TO, message)
       puts "Confirmation text sent"
+      return "Confirmation text sent"
     end
 
 

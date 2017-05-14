@@ -1,4 +1,5 @@
 require 'Time'
+require 'Timecop'
 
 
 describe Order do
@@ -9,13 +10,6 @@ describe Order do
   let(:order_id) {order.object_id}
 
 
-  # describe '#initialize' do
-  #   it 'should create an order form based on the hash given by the cart' do
-  #     allow(cart).to receive(:basket).and_return(selected_dish)
-  #     allow(cart).to receive(:checkout).and_return(order.summary << (cart.basket))
-  #     expect(order.summary).to include selected_dish
-  #   end
-  # end
 
   describe '#total' do
     it 'should create a total price based on the quantity of dishes ordered' do
@@ -50,16 +44,11 @@ describe Order do
   end
 
   describe '#send' do
-    @fake_time = Time.parse("22:00")
-    let(:message) {"Thank you! Your order has been sent and will be delivered at "}
 
     it 'allows the user to send their confirmed order and get a confirmation message' do
 
-      delivery_time = double("delivery_time", :time => @fake_time)
-      allow(delivery_time).to receive(:calculate).and_return(@fake_time)
-      allow(order).to receive(:get_delivery_time).and_return(delivery_time.calculate)
       allow(order).to receive(:confirmed?).and_return(true)
-      allow(order).to receive(:notify).with(message).and_return("Confirmation text sent")
+      allow(order).to receive(:notify).and_return("Confirmation text sent")
       expect(order.send).to eq ("Confirmation text sent")
 
     end
