@@ -21,10 +21,16 @@ Approach
 
 A program in Ruby designed to allow users to select multiple dishes from a menu, confirm their selection, place their order and receive a confirmation text message.
 
+To run the program, open the project folder and type the following command:
+
+```
+ruby lib/takeaway.rb
+```
+
 
 Program Example
-
 -------
+
 ```
 Welcome to Jukes' Late Night Takeaway Emporium!
 ------------------
