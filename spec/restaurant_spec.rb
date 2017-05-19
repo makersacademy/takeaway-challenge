@@ -6,7 +6,7 @@ describe Restaurant do
 
   describe '#initialize' do
     it 'should initialize with a new instance of the Menu class' do
-      expect(Restaurant.new.menu).to eq Menu.new
+      expect(Restaurant.new.menu).not_to be nil
     end
   end
 

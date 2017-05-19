@@ -3,7 +3,7 @@ class Restaurant
   attr_reader :menu
 
   def initialize
-    @menu
+    @menu = Menu.new
   end
 
 end
