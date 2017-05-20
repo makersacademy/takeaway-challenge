@@ -36,7 +36,7 @@ Functionality
 
   Project Structure
   -----------------
-
+```
   ├── CONTRIBUTING.md
   ├── Gemfile
   ├── Gemfile.lock
@@ -55,7 +55,7 @@ Functionality
       ├── menu_spec.rb
       ├── order_spec.rb
       └── spec_helper.rb
-
+```
 Usage
 -----
 To run:
@@ -76,11 +76,13 @@ This program was built using Test Driven Development
 
 Tools Used
 ----------
-Language:
+- Language:
 Ruby - v2.4.0p0 (2016-12-24 revision 57164)
-Testing Framework:
+
+- Testing Framework:
 Rspec - v3.5.4
-Cybernetic style enforcement from the future:
+
+- Cybernetic style enforcement from the future:
 Rubocop - v0.48.1
 
 Acknowledgement
