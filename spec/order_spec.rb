@@ -42,7 +42,12 @@ describe Order do
     it 'checks the total amount of the order against an input' do
       order.add_dish_to_order(:pizza)
       order.change_quantity_of_dish(:pizza,3)
-      expect(order.check_order_amount(166)).to eq false
+      expect {order.check_order_amount(166)}.to raise_error
+    end
+  end
+  describe '#order_dishes' do
+    it 'allows you to choose multiple dishes' do
+
     end
   end
 end

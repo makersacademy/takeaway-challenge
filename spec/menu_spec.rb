@@ -7,7 +7,7 @@ describe Menu do
       expect(menu.list).to eq  pizza: 5, carbonara: 6
     end
     it 'returns a string to print out the menu list' do
-      expect(menu.print_menu).to eq  "pizza - £5, carbonara - £6, "
+      expect(menu.create_menu_string).to eq  "pizza - £5, carbonara - £6, "
     end
   end
 end
