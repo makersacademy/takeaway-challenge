@@ -8,12 +8,8 @@
 # def initialize
 #   @dishes = {:name => "name", :price => 0}
 # end
-
-#menu1.list_all_dishes
-#
+# menu1.list_all_dishes
 # menu1.dishes
-
-
 
 # As a customer
 # So that I can order the meal I want

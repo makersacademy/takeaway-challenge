@@ -1,29 +1,20 @@
 require './lib/menu.rb'
 
 describe Menu do
-  let(:menu) { described_class.new(:dishes, :prices) }
+  let(:menu) { described_class.new }
 
   describe '#initialize' do
     it 'is initialized with dishes' do
-      expect(menu.dishes).to eq :dishes
-    end
-
-    it 'is initialized with prices' do
-      expect(menu.prices).to eq :prices
+      complete_menu = { :starters => { "Olives" => 4, "Pitta bread" => 5 }, :main_course => { "Fried duck" => 12, "Fish & Chips" => 9 }, :dessert => { "Jam roll" => 5, "Apple crumble" => 6 } }
+      expect(menu.dishes).to eq complete_menu
     end
   end
 
-  describe '#list_dishes' do
-    it 'lists dishes' do
-      complete_menu = { :Starters => ["Olives", "Pitta bread,"], :Main_course => ["Fried duck", "Fish & Chips"], :Dessert => ["Jam roll", "Apple crumble"] }
-      expect(menu.list_dishes).to eq complete_menu
+  describe '#lists_dishes_with_prices' do
+    it 'lists all menu dishes with prices' do
+      all_dishes = "Starters: Olives = £4, Pitta bread = £5 -- Main Course: Fried duck = £12, Fish & Chips = £9 -- Dessert: Jam roll = £5, Apple crumble = £6."
+      expect(menu.lists_dishes_with_prices).to eq all_dishes
     end
   end
 
-  describe '#list_prices' do
-    it 'lists prices' do
-      complete_prices = { :Starters => [4, 5], :Main_course => [12, 9], :Dessert => [5, 6] }
-      expect(menu.list_prices).to eq complete_prices
-    end
-  end
 end
