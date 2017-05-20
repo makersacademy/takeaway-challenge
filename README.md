@@ -1,3 +1,12 @@
+Takeaway Challenge - Makers Week2 Weekend Challenge
+
+==> To run the program, simply run lib/takeaway.rb
+
+My Approach of solving the challenge:
+* Start with user story 1: creating system of MenuList and Dish Objects. Dish objects have a name and a price.
+
+
+
 Takeaway Challenge
 ==================
 ```
