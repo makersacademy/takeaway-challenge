@@ -14,3 +14,5 @@ order.select_food(:vegan_cheese_platter, 3)
 order.select_food(:breaded_aubergine, 1)
 
 puts "Order taken: #{order.order_list}"
+
+puts "Total: #{order.show_total}"
