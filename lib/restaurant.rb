@@ -6,4 +6,8 @@ class Restaurant
     @menu = Menu.new
   end
 
+  def show_menu
+    []
+  end
+
 end
