@@ -13,8 +13,8 @@ describe Takeaway do
     expect(takeaway.create_new_order(:menu_item)).to eq [:menu_item]
   end
 
-  # it "shows the user's current order" do
-  #   expect(takeaway.view_current_order).not_to be_empty
-  # end
+  it "returns an error if current order is empty" do
+    expect{ takeaway.view_current_order }.to raise_error 'No items currently ordered'
+  end
 
 end
