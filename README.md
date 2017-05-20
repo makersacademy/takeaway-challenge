@@ -32,7 +32,7 @@ Functionality
   * List all available dishes and prices.
   * Let's a customer add a dish to their meal.
 3. Dish
-  * Contains the name and price of an individual dish.
+  * Contains the name, description and price of an individual dish.
 4. Confirmation text
   * Has a message thanking customer for their order.
   * Gives an estimated delivery time, which is 1 hour from the time of order.
