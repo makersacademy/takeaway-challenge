@@ -9,6 +9,18 @@ describe TakeAway do
     expect(takeaway.basket).to eq({})
   end
 
+  describe '#add_to_order' do
+    it 'adds an item to the basket' do
+      takeaway.add_to_order("quarter chicken")
+      expect(takeaway.basket).to eq({"quarter chicken": 1})
+    end
+
+    it 'adds multiple items to the basket' do
+      takeaway.add_to_order("half chicken", 3)
+      expect(takeaway.basket).to eq({"half chicken": 3})
+    end
+  end
+
   describe 'Feature tests' do
     describe '#show_menu' do
       it 'shows the list of dishes with prices' do
