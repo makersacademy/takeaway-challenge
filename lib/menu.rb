@@ -10,7 +10,7 @@ class Menu
   end
 
   def show
-    puts "THIS IS THE MENU:/nWe look forward to receiving your order!"
+    puts "THIS IS THE MENU:\n\n\nWe look forward to receiving your order!"
   end
 
 end

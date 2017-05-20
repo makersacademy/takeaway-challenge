@@ -20,7 +20,7 @@ describe Menu do
   describe '#show' do
 
     it 'should print out the list of items' do
-      expect(STDOUT).to receive(:puts).with("THIS IS THE MENU:/nWe look forward to receiving your order!")
+      expect(STDOUT).to receive(:puts).with("THIS IS THE MENU:\n\n\nWe look forward to receiving your order!")
       menu.show
     end
 

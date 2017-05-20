@@ -6,4 +6,8 @@ class Dish
     @price = price
   end
 
+  def print
+    "#{@name}, Price: $#{@price}"
+  end
+
 end
