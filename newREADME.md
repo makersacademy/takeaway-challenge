@@ -1,5 +1,3 @@
-# New README #
-
 Takeaway Challenge
 ==================
 ```
@@ -32,12 +30,31 @@ Then run the command ```$ bundle```
 
 ### Structure ###
 
-tree
+    .
+    ├── CONTRIBUTING.md
+    ├── Gemfile
+    ├── Gemfile.lock
+    ├── LICENSE
+    ├── README.md
+    ├── Rakefile
+    ├── coverage
+    ├── docs
+    │   └── review.md
+    ├── lib
+    │   ├── menu.rb
+    │   ├── order.rb
+    │   └── takeaway.rb
+    ├── newREADME.md
+    ├── spec
+    │   ├── menu_spec.rb
+    │   ├── order_spec.rb
+    │   ├── spec_helper.rb
+    │   └── takeaway_spec.rb
+    └── userstories.md
 
 ### Development Methodology
 
 This program was built and tested using Test Driven Development
 
 * [Ruby](https://www.ruby-lang.org/) - The language used to develop this program - v2.4.0p0 (2016-12-24 revision 57164)
-* [Rspec] (http://rspec.info/) - The testing framework used to drive development - v3.5.4
-* [Rubocop] (http://batsov.com/rubocop/) - Static code analyzer used to guide style - v0.48.1
+* [Rspec](http://rspec.info/) - The testing framework used to drive development - v3.5.4
