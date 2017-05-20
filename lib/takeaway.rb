@@ -14,4 +14,9 @@ class Takeaway
     @menu.view_menu
   end
 
+  def create_new_order(menu_item)
+    @order = Order.new(menu_item)
+    @order.current_order
+  end
+
 end
