@@ -1,0 +1,2 @@
+class Takeway
+end
