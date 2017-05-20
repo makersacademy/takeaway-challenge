@@ -2,12 +2,12 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
-  describe '#print_menu' do
-    it 'should respond to the method' do
-      expect(menu).to respond_to(:print_menu)
+  describe '#list' do
+    it 'will return a list of menu items in a hash'do
+      expect(menu.list).to eq  pizza: 5, carbonara: 6
     end
-    it 'prints out the method' do
-      expect { menu.print_menu }.to output("MENU\npizza - £5.0\ncarbonara - £6.0\npasta - £8.0\n").to_stdout
+    it 'returns a string to print out the menu list' do
+      expect(menu.print_menu).to eq  "pizza - £5, carbonara - £6, "
     end
   end
 end

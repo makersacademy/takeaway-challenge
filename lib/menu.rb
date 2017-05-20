@@ -1,11 +1,14 @@
 class Menu
 
+attr_reader :list
   def initialize
-    @list = {:pizza => 5.00, :carbonara => 6.00, :pasta => 8.00}
+    @list = {pizza: 5, carbonara: 6}
   end
 
   def print_menu
-    puts 'MENU'
-    @list.each {|k,v| print("#{k} - £#{v}\n")}
+    output = ""
+    @list.each {|k,v|  output += "#{k} - £#{v}, " }
+    output
   end
+
 end
