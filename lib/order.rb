@@ -4,5 +4,7 @@ class Order
 
   end
 
-
+  def choice
+    2
+  end
 end
