@@ -1,5 +1,4 @@
 
-
 # This prints out nicely formatted menus or orders which are easy to read.
 class Printer
 
