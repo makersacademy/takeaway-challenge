@@ -6,7 +6,7 @@ describe Takeaway do
   describe '#initialize' do
     it 'is initialized with dishes' do
       complete_menu = { :starters => { 1 => { "Olives" => 4 } , 2 => { "Pitta bread" => 5 } }, :main_course => { 3 => { "Fried duck" => 12 }, 4 => { "Fish & Chips" => 9 } }, :dessert => { 5 => { "Jam roll" => 5 }, 6 => { "Apple crumble" => 6 } } }
-      expect(takeaway.dishes).to eq complete_menu
+      expect(takeaway.menu).to eq complete_menu
     end
     it 'is initialized with a basket' do
       expect(takeaway.basket).to eq []
