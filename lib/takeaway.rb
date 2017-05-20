@@ -17,12 +17,18 @@ class Takeaway
 
   def create_new_order(menu_item, price)
     @order = Order.new(menu_item, price)
-    view_current_order
+    @order.current_order
   end
 
   def view_current_order
     raise 'No items currently ordered' unless @order
     @order.current_order
+  end
+
+  def print_current_order
+    raise 'No items currently ordered' unless @order
+    @order.print_current_order_detail
+    @order.order_total
   end
 
   def select_dish(menu_item, price)
