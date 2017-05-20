@@ -2,9 +2,9 @@
 require_relative '../lib/dish.rb'
 
 describe Dish do
-  let(:name) { 'Chicken in yellow bean sauce' }
-  let(:description) { 'Fried chicken breast pieces in a traditional yellow bean sauce, served with cashew nuts and sweet peppers' }
-  let(:price) { 7 }
+  let(:name) { 'Kung Pao Chicken' }
+  let(:description) { 'George likes his chicken spicy!' }
+  let(:price) { 8 }
   subject(:dish) { Dish.new(name, description, price) }
 
   it 'has a name' do
@@ -18,5 +18,4 @@ describe Dish do
   it 'has a price' do
     expect(dish.price).to eq price
   end
-
 end

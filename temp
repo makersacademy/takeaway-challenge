@@ -1,0 +1,13 @@
+def print_menu(menu)
+  @dishes.each_with_index { |item, index|
+    puts "#{index + 1}. #{item.name} - £#{item.price}\n#{item.description}"
+  }
+end
+end
+
+menu = Menu.new
+dish1 = Dish.new('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
+dish2 = Dish.new('Pretzels', 'These pretzels are making me thirsty!', 2)
+dish3 = Dish.new('Soup', 'No soup for you!', 4)
+menu.add_dishes_to_menu(dish1, dish2, dish3)
+menu.print_menu
