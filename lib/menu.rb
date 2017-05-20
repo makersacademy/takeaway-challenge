@@ -2,13 +2,15 @@
 
 class Menu
 
+  attr_reader :pizza, :pasta
+
   def initialize
     @pizza = {}
     @pasta = {}
   end
 
   def view_menu
-    {:pizza_dishes => pizza_dishes, :pasta_dishes => pasta_dishes }
+    { :pizza_dishes => pizza_dishes, :pasta_dishes => pasta_dishes }
   end
 
   def pizza_dishes

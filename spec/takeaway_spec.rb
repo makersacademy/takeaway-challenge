@@ -5,8 +5,8 @@ describe Takeaway do
 
   it { is_expected.to respond_to :view_menu }
 
-  # it 'shows a menu of dishes with prices' do
-  #   expect(takeaway.view_menu).to eq({})
-  # end
+  it 'should show the full menu by default' do
+    expect(takeaway.view_menu).to include(:pizza_dishes)
+  end
 
 end
