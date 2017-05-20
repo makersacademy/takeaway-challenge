@@ -14,17 +14,16 @@ class Printer
 
   def print_menu(menu)
     puts '---'
-    menu.dishes.each_with_index { |item, index|
+    menu.dishes.each_with_index do |item, index|
       puts "#{index + 1}. #{item.name} - £#{item.price}\n#{item.description}\n---"
-    }
+    end
   end
 
   def print_order(order)
-    puts "Order no. #{object.order_number}:"
-    order.order.each { |item, quantity|
-      puts "#{item.name} x #{quantity}"
-    }
-    puts "---\nOrder total: #{object.total}"
+    puts "Order no. #{order.order_number}:\n------"
+    order.items.each { |order_item| puts "• #{order_item[0].name} x #{order_item[1]}" }
+    puts '------'
+    puts "Order total: £#{order.total}"
   end
 
 end

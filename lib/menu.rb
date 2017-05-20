@@ -1,7 +1,4 @@
 
-require_relative './dish'
-require_relative './order'
-
 # This is a menu, it is populated with dishes.
 class Menu
   attr_reader :dishes

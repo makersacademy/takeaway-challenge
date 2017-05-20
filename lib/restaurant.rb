@@ -1,11 +1,16 @@
 
 require_relative './menu'
 require_relative './printer'
+require_relative './dish'
+require_relative './order'
+require_relative './messenger'
+require 'twilio-ruby'
 
 # This is the main interface, representing a takeaway restaurant.
 class Restaurant
 
-  def initialize
+  def initialize(name = "Monk's")
+    @name = name
     @menu = Menu.new
   end
 
@@ -22,23 +27,19 @@ class Restaurant
     @menu.show_menu
   end
 
-  def order(menu_number, quantity)
+  def add_to_order(menu_number, quantity = 1)
     @order ||= Order.new
-    @order.add_to_order(menu_number, quantity)
+    dish = @menu.dishes[menu_number - 1]
+    @order.add_to_order(dish, quantity)
+  end
+
+  def view_order
+    @order.show_order
   end
 
   def finalise_order(expected_order_total)
     @order.finalise(expected_order_total)
+    @order = nil
   end
 
 end
-
-monks = Restaurant.new
-monks.add_dish('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
-monks.add_dish('Big Salad', 'Big lettuce, big carrots, tomatoes like volleyballs!', 6)
-monks.add_dish('Pretzels', 'These pretzels are making me thirsty!', 2)
-monks.add_dish('Soup', 'No soup for you!', 4)
-monks.add_dish('Calzone', 'Cheese, pepperoni, eggplant!', 3.5)
-monks.add_dish('Muffin Top', 'Top of the muffin to you!', 1.5)
-monks.view_menu
-monks.order(1, 2)
