@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 # It is responsible for handling user requests
 
@@ -20,7 +21,7 @@ class Takeaway
   end
 
   def view_current_order
-    raise 'No items currently ordered' if !@order
+    raise 'No items currently ordered' unless @order
     @order.current_order
   end
 

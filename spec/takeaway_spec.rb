@@ -14,7 +14,7 @@ describe Takeaway do
   end
 
   it "returns an error if current order is empty" do
-    expect{ takeaway.view_current_order }.to raise_error 'No items currently ordered'
+    expect { takeaway.view_current_order }.to raise_error 'No items currently ordered'
   end
 
 end

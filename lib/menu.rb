@@ -5,8 +5,8 @@ class Menu
   attr_reader :pizza, :pasta
 
   def initialize
-    @pizza = {}
-    @pasta = {}
+    # @pizza = {}
+    # @pasta = {}
   end
 
   def view_menu

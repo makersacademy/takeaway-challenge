@@ -12,7 +12,7 @@ describe Order do
   end
 
   it 'can add other items to the order' do
-    expect{order.add_to_order(:new_item)}.to change { order.current_order.length }.by 1 
+    expect { order.add_to_order(:new_item) }.to change { order.current_order.length }.by 1
   end
 
 end
