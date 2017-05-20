@@ -6,7 +6,7 @@ describe Restaurant do
   it { is_expected.to respond_to(:show_menu) }
 
   it 'has an empty basket upon instantiation' do
-    expect(restaurant.basket).to eq {}
+    expect(restaurant.basket).to eq({})
   end
 
   describe '#show_menu' do
