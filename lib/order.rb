@@ -8,4 +8,8 @@ class Order
     @current_order = [menu_item]
   end
 
+  def add_to_order(new_item)
+    @current_order << new_item
+  end
+
 end
