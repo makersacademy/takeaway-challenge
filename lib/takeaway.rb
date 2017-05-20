@@ -1,7 +1,7 @@
 class Takeaway
 
   attr_reader :menu, :basket
-# extract out to a separate menu class
+# TODO extract out to a separate menu class
   def initialize
     @menu = {   :starters => starters(),
                 :main_course => main_course(),
