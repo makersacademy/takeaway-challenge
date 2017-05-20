@@ -33,6 +33,9 @@ Functionality
   * Let's a customer add a dish to their meal.
 3. Dish
   * Contains the name and price of an individual dish.
+4. Confirmation text
+  * Has a message thanking customer for their order.
+  * Gives an estimated delivery time, which is 1 hour from the time of order.
 
   Project Structure
   -----------------
@@ -46,10 +49,12 @@ Functionality
   ├── docs
   │   └── review.md
   ├── lib
+  │   ├── confirmation_text.rb
   │   ├── dish.rb
   │   ├── menu.rb
   │   └── order.rb
   └── spec
+      ├── confirmation_text_spec.rb
       ├── dish_spec.rb
       ├── feature_spec.rb
       ├── menu_spec.rb
@@ -62,7 +67,7 @@ To run:
 ```
 $ ruby ./lib/order.rb
 ```
-To install required files prerequisites:
+To install required files and prerequisites:
 
 ```
 $ gem install bundle
@@ -77,13 +82,13 @@ This program was built using Test Driven Development
 Tools Used
 ----------
 - Language:
-Ruby - v2.4.0p0 (2016-12-24 revision 57164)
+  Ruby - v2.4.0p0 (2016-12-24 revision 57164)
 
 - Testing Framework:
-Rspec - v3.5.4
+  Rspec - v3.5.4
 
 - Cybernetic style enforcement from the future:
-Rubocop - v0.48.1
+  Rubocop - v0.48.1
 
 Acknowledgement
 ---------------
