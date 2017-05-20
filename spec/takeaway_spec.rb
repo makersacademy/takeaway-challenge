@@ -10,7 +10,7 @@ describe Takeaway do
   end
 
   it 'should allow the user to create an order' do
-    expect(takeaway.create_new_order(:menu_item)).to eq [:menu_item]
+    expect(takeaway.create_new_order(:menu_item, :price)).to eq([{:menu_item => :price}])
   end
 
   it "returns an error if current order is empty" do
@@ -18,8 +18,8 @@ describe Takeaway do
   end
 
   it 'allows a user to select an item from the menu' do
-    takeaway.create_new_order(:menu_item)
-    expect { takeaway.select_dish(:dish) }.to change { takeaway.view_current_order.length }.by 1
+    takeaway.create_new_order(:menu_item, :price)
+    expect { takeaway.select_dish(:dish, :price) }.to change { takeaway.view_current_order.length }.by 1
   end
 
 end

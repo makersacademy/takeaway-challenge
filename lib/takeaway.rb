@@ -15,8 +15,8 @@ class Takeaway
     @menu.view_menu
   end
 
-  def create_new_order(menu_item)
-    @order = Order.new(menu_item)
+  def create_new_order(menu_item, price)
+    @order = Order.new(menu_item, price)
     view_current_order
   end
 
@@ -25,8 +25,8 @@ class Takeaway
     @order.current_order
   end
 
-  def select_dish(dish)
-    @order.add_to_order(dish)
+  def select_dish(menu_item, price)
+    @order.add_to_order(menu_item, price)
   end
 
 end
