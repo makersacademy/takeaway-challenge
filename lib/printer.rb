@@ -23,7 +23,7 @@ class Printer
     puts "Order no. #{order.order_number}:\n------"
     order.items.each { |order_item| puts "• #{order_item[0].name} x #{order_item[1]}" }
     puts '------'
-    puts "Order total: £#{order.total}"
+    puts "Total: £#{order.total}"
   end
 
 end

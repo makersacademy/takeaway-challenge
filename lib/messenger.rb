@@ -9,10 +9,12 @@ class Messenger
   end
 
   def send_confirmation(order_number)
+    time = (Time.new + 3600).strftime('%H:%M')
     @client.account.messages.create({
-        :from => '+441792720462',
-        :to => '+447793198014',
-        :body => "Your order (no. #{order_number}) has been received and will be with you shortly!"})
+        from: '+441792720462',
+        to: '+447793198014',
+        body: "Thank you for your order (##{order_number}).
+We're cooking it up right now and it'll be with you by #{time}!" })
   end
 
 end

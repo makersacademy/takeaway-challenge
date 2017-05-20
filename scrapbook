@@ -1,11 +1,7 @@
-
-dish1 = Dish.new('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
-dish2 = Dish.new('Pretzels', 'These pretzels are making me thirsty!', 2)
-dish3 = Dish.new('Soup', 'No soup for you!', 4)
-dish4 = Dish.new('Muffin Top', 'Top of the muffin to you!', 1.5)
-dish5 = Dish.new('Big Salad', 'Big lettuce, big carrots, tomatoes like volleyballs!', 6)
-dish6 = Dish.new('Calzone', 'Cheese, pepperoni, eggplant!', 2.5)
-
-menu = Menu.new
-menu.add_dishes_to_menu(dish1, dish2, dish3, dish4, dish5, dish6)
-menu.view_menu
+monks = Restaurant.new
+monks.add_dish('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
+monks.add_dish('Big Salad', 'Big lettuce, big carrots, tomatoes like volleyballs!', 6)
+monks.add_dish('Pretzels', 'These pretzels are making me thirsty!', 2)
+monks.add_dish('Soup', 'No soup for you!', 4)
+monks.add_dish('Calzone', 'Cheese, pepperoni, eggplant!', 3.5)
+monks.add_dish('Muffin Top', 'Top of the muffin to you!', 1.5)
