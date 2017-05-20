@@ -9,4 +9,8 @@ class Order
     @dishes << dish
   end
 
+  def total_price
+    @dishes.map { |dish| dish.price }.inject(:+)
+  end
+
 end
