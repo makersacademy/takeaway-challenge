@@ -13,6 +13,10 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+****** My Approach ******
+Using the user stories I'm planning two classes (Takeaway and Order) and a module with the for Menu detail.
+also depending after reading a little later maybe another class keeping the Twilio details separate.
+
 
 Instructions
 -------
