@@ -17,7 +17,7 @@ subject(:menu) { described_class.new }
 # I would like to be able to select some number of several available dishes
   describe "#selection_of_dish" do
     it "should raise an error if the dish a user has chosen is not on the menu" do
-      expect{ menu.selection_of_dish(dish) }.to raise_error "Dish not in menu: please select a dish from the menu"
+      expect{ menu.selection_of_dish("dish") }.to raise_error "Dish not in menu: please select a dish from the menu"
     end
   end
 end
