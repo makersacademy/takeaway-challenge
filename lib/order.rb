@@ -1,4 +1,4 @@
-#deals with the dishes
+# deals with the orders
 class Order
 
 
