@@ -18,17 +18,17 @@ def selection_of_dish(dish, number)
   @meal << {dish: dish, amount: number}
 end
 
+def user_order
+#   list_of_dishes.select{|key, hash| hash["client_id"] == "2180" }
+  # @meal[-1]
+end
+
 # def amount(number)
 #   # if number == 1
 #   #   puts "You have ordered #{number} #{@meal[-1]} dish"
 #   # else
 #   #   puts "You have ordered #{number} #{@meal[-1]} dishes"
 #   # end
-# end
-
-# def number_of_meals(number)
-#   meal.map d
-#   # puts "You have selected #{number} #{@meal[0]}"
 # end
 
 # private
