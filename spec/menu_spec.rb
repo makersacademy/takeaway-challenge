@@ -9,4 +9,8 @@ describe Menu do
     menu.items << dish
     expect(menu.items).to include(dish)
   end
+  it 'lets the user add items to the menu' do
+    menu.add_item(:Pizza, 9)
+    expect(menu.items[-1].name).to eq(:Pizza)
+  end
 end
