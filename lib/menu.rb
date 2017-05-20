@@ -14,13 +14,13 @@ class Menu
   end
 
   def selected_item(food)
-    list.each{ |item| @selected_item = item if item[0] == food }
+    list.each { |item| @selected_item = item if item[0] == food }
     check_if_available
-    get_item_info
+    item_info
   end
 
-  def get_item_info
-    @dish = @selected_item[0].to_s.gsub('_', ' ')
+  def item_info
+    @dish = @selected_item[0].to_s.tr('_', ' ')
     @price = @selected_item[1]
   end
 
