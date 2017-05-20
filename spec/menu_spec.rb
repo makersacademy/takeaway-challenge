@@ -6,13 +6,22 @@ describe Menu do
   let(:dish) { double :dish, printed: "Test-Dish, Price $10" }
 
   it 'is initialized with an empty array of @items' do
-    expect(subject.items).to be_empty
+    expect(menu.items).to be_empty
   end
 
   describe '#add' do
 
     it 'should add items to the menu' do
       expect { menu.add(dish) }.to change { menu.items.count }.by 1
+    end
+
+  end
+
+  describe '#bulk_add' do
+
+    it 'adds multiple dishes from an array of hashes and adds them to @items' do
+      array_of_hashes = [{ name: "Spaghetti carbonara", price: 8 }, { name: "Spaghetti arabiata", price: 7 }]
+      expect { menu.bulk_add(array_of_hashes) }.to change { menu.items.count }.by 2
     end
 
   end
