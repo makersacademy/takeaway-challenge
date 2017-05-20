@@ -11,4 +11,8 @@ class TakeAway
   def show_menu
     @menu.dishes
   end
+
+  def add_to_order(dish, amount = 1)
+    @basket[dish.to_sym] = amount
+  end
 end
