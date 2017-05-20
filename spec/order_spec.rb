@@ -14,8 +14,8 @@ describe Order do
     expect(order.items[-1]).to eq dish
   end
 
-  # it 'stores the cost of the total order' do
-  #   order.total_cost = 10
-  #   expect(order.total_cost).to eq 10
-  # end
+  it 'stores the cost of the total order' do
+    order.total_cost = 10
+    expect(order.total_cost).to eq 10
+  end
 end
