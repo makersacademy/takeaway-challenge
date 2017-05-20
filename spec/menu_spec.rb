@@ -13,15 +13,17 @@ describe Menu do
     end
   end
 
-  describe '#list dishes' do
-
-  it 'can see the list of dishes' do
-    complete_menu = {:starters => ["Olives", "Pitta bread,"], :main_course => ["Fried duck", "Fish & Chips"], :dessert => ["Jam roll", "Apple crumble"]}
-    expect(menu.list_dishes).to eq complete_menu
+  describe '#list_dishes' do
+    it 'lists dishes' do
+      complete_menu = { :Starters => ["Olives", "Pitta bread,"], :Main_course => ["Fried duck", "Fish & Chips"], :Dessert => ["Jam roll", "Apple crumble"] }
+      expect(menu.list_dishes).to eq complete_menu
+    end
   end
 
-end 
-
-
-
+  describe '#list_prices' do
+    it 'lists prices' do
+      complete_prices = { :Starters => [4, 5], :Main_course => [12, 9], :Dessert => [5, 6] }
+      expect(menu.list_prices).to eq complete_prices
+    end
+  end
 end
