@@ -17,4 +17,9 @@ describe Takeaway do
     expect { takeaway.view_current_order }.to raise_error 'No items currently ordered'
   end
 
+  it 'allows a user to select an item from the menu' do
+    takeaway.create_new_order(:menu_item)
+    expect { takeaway.select_dish(:dish) }.to change { takeaway.view_current_order.length }.by 1
+  end
+
 end

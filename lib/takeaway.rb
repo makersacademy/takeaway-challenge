@@ -25,4 +25,8 @@ class Takeaway
     @order.current_order
   end
 
+  def select_dish(dish)
+    @order.add_to_order(dish)
+  end
+
 end
