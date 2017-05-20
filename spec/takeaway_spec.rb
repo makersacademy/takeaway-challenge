@@ -12,7 +12,7 @@ describe TakeAway do
 
     describe '#add_to_order' do
       it 'raises an exception if the dish passed is not on the menu' do
-        expect{ takeaway.add_to_order("salmon teriyaki") }.to raise_error("Sorry, that item is not on the menu")
+        expect{ takeaway.add_to_order("egg fried rice") }.to raise_error("Sorry, that item is not on the menu")
       end
     end
   end
