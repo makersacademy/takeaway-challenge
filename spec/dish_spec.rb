@@ -11,11 +11,11 @@ describe Dish do
     expect(dish.price).not_to be_nil
   end
 
-  describe '#print' do
+  describe '#printed' do
 
     it 'should return a string with the relevant info' do
-    expect(dish.print).to eq "Test, Price: $5"
+      expect(dish.printed).to eq "Test, Price: $5"
     end
-    
+
   end
 end

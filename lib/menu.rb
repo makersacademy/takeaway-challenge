@@ -10,7 +10,15 @@ class Menu
   end
 
   def show
-    puts "THIS IS THE MENU:\n\n\nWe look forward to receiving your order!"
+    puts create_string
+  end
+
+  private
+
+  def create_string
+    string = "THIS IS THE MENU:\n\n"
+    string += @items.inject{|memo,item| memo + "\n" + item.printed} unless @items.empty?
+    string + "\nWe look forward to receiving your order!"
   end
 
 end
