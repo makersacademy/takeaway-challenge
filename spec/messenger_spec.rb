@@ -1,6 +1,4 @@
 
 require_relative '../lib/messenger'
 
-Describe Messenger do
-
-end
+describe Messenger do; end

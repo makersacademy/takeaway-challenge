@@ -7,6 +7,7 @@ class Menu
 
   def initialize
     @dishes = []
+    @printer = Printer.new
   end
 
   def add_dishes_to_menu(*dishes)
@@ -15,5 +16,9 @@ class Menu
 
   def remove_dish_from_menu(*dishes)
     dishes.each { |dish| @dishes.delete(dish) }
+  end
+
+  def view_menu
+    @printer.print_menu(self)
   end
 end
