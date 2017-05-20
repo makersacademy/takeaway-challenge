@@ -17,7 +17,7 @@ class Menu
 
   def create_string
     string = "THIS IS THE MENU:\n\n"
-    string += @items.inject{|memo,item| memo + "\n" + item.printed} unless @items.empty?
+    @items.each {|item| string = string + item.printed + "\n"} unless @items.empty?
     string + "\nWe look forward to receiving your order!"
   end
 

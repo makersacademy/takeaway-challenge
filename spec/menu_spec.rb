@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
 
   subject(:menu) { described_class.new }
-  let(:dish) { double :dish }
+  let(:dish) { double :dish, printed: "Test-Dish, Price $10" }
 
   it 'is initialized with an empty array of @items' do
     expect(subject.items).to be_empty
@@ -19,8 +19,14 @@ describe Menu do
 
   describe '#show' do
 
-    it 'should print out the list of items' do
+    it 'should print out the empty list correctly' do
       expect(STDOUT).to receive(:puts).with("THIS IS THE MENU:\n\n\nWe look forward to receiving your order!")
+      menu.show
+    end
+
+    it 'should print out the list with items correctly' do
+      menu.add(dish)
+      expect(STDOUT).to receive(:puts).with("THIS IS THE MENU:\n\nTest-Dish, Price $10\n\nWe look forward to receiving your order!")
       menu.show
     end
 
