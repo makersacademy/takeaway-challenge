@@ -19,6 +19,7 @@ describe Takeaway do
     it { is_expected.to respond_to(:order).with(2).arguments }
 
     it 'let select the desired product from the menu' do
+      allow(menu).to receive(:select_dish) { { name: 'wings', price: 7 } } 
       expect(takeaway.order('chicken', 2)).to eq '2 x wings added to your cart'
     end
   end

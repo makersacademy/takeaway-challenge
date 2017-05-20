@@ -3,6 +3,7 @@ require_relative 'menu'
 class Takeaway
   def initialize(menu)
     @menu = menu
+    @cart = []
   end
 
   def read_menu
@@ -10,7 +11,15 @@ class Takeaway
   end
 
   def order(dish, amount)
-    @menu.select_dish(dish)
+    product = @menu.select_dish(dish)
+    add_to_cart(product, amount)
+  end
+
+  private
+
+  def add_to_cart(product, amount)
+    amount.times { @cart << product }
+    "#{amount} x #{product[:name]} added to your cart"
   end
 
 end

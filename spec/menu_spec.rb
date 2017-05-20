@@ -38,7 +38,7 @@ describe Menu do
 
     context 'if the dish is not on the menu' do
       it 'tells the user that the dish is not on the menu' do
-        expect(menu.select_dish('wings')).to eq 'wings is not on the menu'
+        expect { menu.select_dish('wings') }.to raise_error 'wings is not on the menu'
       end
     end
   end

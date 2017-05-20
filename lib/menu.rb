@@ -14,9 +14,10 @@ class Menu
     end.join(", ")
   end
 
-  def select_dish(name)
-    selected = @dishes.find { |dish| dish.name == name }
-    return { name: selected.name, price: selected.price } if !!selected
-    "#{name} is not on the menu"
+  def select_dish(dish_name)
+    selected = @dishes.find { |dish| dish.name == dish_name }
+    raise "#{dish_name} is not on the menu" unless !!selected
+    { name: selected.name, price: selected.price }
   end
+
 end
