@@ -26,5 +26,14 @@ describe TakeAway do
         expect(takeaway.basket_summary).to eq "half chicken x1 = 6.0, small fries x2 = 3.98"
       end
     end
+
+    describe '#total' do
+      it 'shows the total price of current order' do
+        takeaway.add_to_order("half chicken", 2)
+        expect(takeaway.total).to eq 12.0
+        takeaway.add_to_order("large fries", 3)
+        expect(takeaway.total).to eq 19.5
+      end
+    end
   end
 end

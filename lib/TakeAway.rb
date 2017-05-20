@@ -19,6 +19,6 @@ class TakeAway
   end
 
   def basket_summary
-    return @basket.list.map { |dish, amount| "#{dish} x#{amount} = #{@menu.dishes[dish]*amount}" }.join(", ")
+    @basket.list.map { |dish, amount| "#{dish} x#{amount} = #{@menu.dishes[dish]*amount}" }.join(", ")
   end
 end
