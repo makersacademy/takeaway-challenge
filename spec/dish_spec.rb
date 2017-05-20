@@ -1,5 +1,5 @@
 
-require_relative '../lib/dish.rb'
+require_relative '../lib/dish'
 
 describe Dish do
   let(:name) { 'Kung Pao Chicken' }

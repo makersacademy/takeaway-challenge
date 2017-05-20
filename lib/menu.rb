@@ -1,5 +1,5 @@
-require_relative './dish.rb'
-require_relative './printer.rb'
+require_relative './dish'
+require_relative './printer'
 
 # This is a menu, it is populated with dishes.
 class Menu
