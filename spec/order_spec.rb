@@ -7,6 +7,7 @@ describe Order do
   let(:new_item) { double(:new_item) }
 
   it { is_expected.to respond_to :current_order }
+  it { is_expected.to respond_to(:order_time) }
 
   it 'should show the users current order' do
     expect(order.current_order).to eq([{ :menu_item => MENU_PRICE[:price] }])
@@ -19,7 +20,9 @@ describe Order do
   it 'calculates the total for the current order' do
     order.add_to_order(:menu_item, MENU_PRICE[:price])
     order.add_to_order(:menu_item, MENU_PRICE[:price])
-    expect(order.order_total).to eq 30
+    expect(order.order_total).to eq MENU_PRICE[:price] * 3
   end
+
+  # think about delivery as an object
 
 end

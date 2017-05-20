@@ -3,11 +3,12 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :current_order
+  attr_reader :current_order, :order_time
 
   def initialize(menu_item, price)
     @current_order = [{ menu_item => price }]
     @order_total = 0.0
+    @order_time = Time.now
   end
 
   def add_to_order(new_item, price)
