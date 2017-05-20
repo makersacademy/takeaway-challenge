@@ -5,6 +5,8 @@ class Order
   end
 
   def choice
-    2
+    user_choice = $stdin.gets.chomp
+    user_choice
+
   end
 end

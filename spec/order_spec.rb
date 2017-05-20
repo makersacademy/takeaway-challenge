@@ -8,6 +8,7 @@ describe Order do
   end
 
   it 'should take users input of line number' do
-      expect(order.choice).to eq 2
+    allow($stdin).to receive(:gets).and_return("2")
+      expect(order.choice).to be == "2"
   end
 end
