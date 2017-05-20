@@ -8,5 +8,9 @@ class Menu
   def add(item)
     @items << item
   end
-  
+
+  def show
+    puts "THIS IS THE MENU:/nWe look forward to receiving your order!"
+  end
+
 end
