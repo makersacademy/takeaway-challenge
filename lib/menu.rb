@@ -6,6 +6,6 @@ class Menu
   end
 
   def add_dish(dish)
-    dish
+    @dishes << dish
   end
 end
