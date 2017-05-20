@@ -10,4 +10,10 @@ describe Restaurant do
     end
   end
 
+  describe '#show_menu' do
+    it 'should show a (currently empty) list of dishes' do
+      expect(subject.show_menu).to eq []
+    end
+  end
+
 end
