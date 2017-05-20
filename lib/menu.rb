@@ -1,6 +1,7 @@
 require_relative './dish.rb'
+require_relative './printer.rb'
 
-# This is a menu, it is populated with dish objects.
+# This is a menu, it is populated with dishes.
 class Menu
   attr_reader :dishes
 
