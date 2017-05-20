@@ -17,4 +17,8 @@ class TakeAway
     raise "Sorry, that item is not on the menu" unless @menu.dishes.has_key?(dish.to_sym)
     @basket.add(dish.to_sym, amount)
   end
+
+  def basket_summary
+    return @basket.list.map { |dish, amount| "#{dish} x#{amount} = #{@menu.dishes[dish]*amount}" }.join(", ")
+  end
 end
