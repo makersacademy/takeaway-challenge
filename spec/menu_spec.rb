@@ -16,22 +16,22 @@ describe Menu do
     end
   end
 
-  describe '#order' do
-    it 'has an empty array, @current order' do
-      expect(subject.current_order).to eq []
+  describe '#order_item' do
+    it 'has an empty array, @basket' do
+      expect(subject.basket).to eq []
     end
 
-    it 'should copy an item from @dishes to @current_order' do
+    it 'should copy an item from @dishes to @basket' do
       subject.instance_variable_set("@dishes", [{ 'generic_food' => 5 }, { 'another_food' => 10 }])
-      subject.order(2, 1)
-      expect(subject.current_order).to eq [{ 'another_food' => 10 }]
+      subject.order_item(2, 1)
+      expect(subject.basket).to eq [{ 'another_food' => 10 }]
       expect(subject.dishes).to eq [{ 'generic_food' => 5 }, { 'another_food' => 10 }]
     end
 
-    it 'should be able to add multiples of a dish to @current_order' do
+    it 'should be able to add multiples of a dish to @basket' do
       subject.instance_variable_set("@dishes", [{ 'generic_food' => 5 }, { 'another_food' => 10 }])
-      subject.order(2, 2)
-      expect(subject.current_order).to eq [{ 'another_food' => 10 }, { 'another_food' => 10 }]
+      subject.order_item(2, 2)
+      expect(subject.basket).to eq [{ 'another_food' => 10 }, { 'another_food' => 10 }]
     end
   end
 
