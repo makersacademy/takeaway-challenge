@@ -6,7 +6,7 @@ require_relative 'order'
 
 class Restaurant
 
-  attr_reader :name, :address, :menu, :orders, :current_order, :next_order_id
+  attr_reader :name, :address, :menu, :orders
 
   def initialize(name, address, menu = Menu.new, notifier = Notifier.new)
     @name = name
@@ -14,36 +14,55 @@ class Restaurant
     @notifier = notifier
     @menu = menu
     @orders = []
-    @next_order_id = (orders.count) + 1
+    @order_ids = []
   end
  
   def create_customer_order
-    @current_order = Order.new(@menu)
+    @current_order = Order.new(generate_order_id, @menu)
+    @orders << @current_order
   end
 
-  def finalize_customer_order
-    @current_order.finalize(@next_order_id)
+  def add_items_to_order(order_id, dish, quantity = 1)
+    get_order_details(order_id)
+    @current_order.add_dish(dish, quantity)
+  end
+
+  def finalize_customer_order(order_id)
+    get_order_details(order_id)
+    @current_order.finalize
     @orders << @current_order
   end
 
   def accept_customer_order(order_id)
-    get_order_details(order_id) 
-    @notifier.send_message("Your order #{order_id} was accepted")
+    @current_order = get_order_details(order_id) 
+    @notifier.send_message("Order #{order_id} was confirmed. 
+    The total amount is £#{@current_order.total} 
+    and it will be delivered by #{delivery_time}")
   end
+  
+  private
 
   def get_order_details(order_id)
-    @orders.each_with_index do |order, index|
+    @orders.each do |order|
       return @current_order = order if order_id == order.id
     end
     raise "Invalid order"
   end
 
+  def delivery_time
+    time = Time.now + 2700
+    time.strftime("%H:%M")
+  end
+
+  def generate_order_id(size = 6)
+    charset = %w{2 3 4 6 7 9 A C D E F G H J K M N P Q R T V W X Y Z}
+    order_id = (0...size).map { charset.to_a[rand(charset.size)] }.join
+    if @order_ids.include? "order_id"
+      generate_order_id
+    else 
+      @order_ids << order_id
+      order_id
+    end
+  end
+
 end
-
-# KFC = Restaurant.new("KFC","Chingford")
-# KFC.menu.create_dish("Chicken Burguer", "Spicy", 8)
-# KFC.create_customer_order
-# KFC.current_order.add_dish("Chicken Burguer", 1)
-# KFC.finalize_customer_order
-# KFC.accept_customer_order(1)
-

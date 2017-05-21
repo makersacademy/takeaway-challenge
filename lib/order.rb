@@ -4,14 +4,15 @@ class Order
   attr_reader :items, :menu, :status, :id
   attr_writer :items
 
-  def initialize(menu)
+  def initialize(id, menu)
     @items = []
-    @id = nil
+    @id = id
     @status = :new
     @menu = menu
+    @total = 0.00
   end
 
-  def add_dish(dish, quantity = 1)
+  def add_dish(dish, quantity)
     valid_dish?(dish)
     get_dish_info_from_menu(dish)
     @dish[:quantity] = quantity
@@ -21,6 +22,25 @@ class Order
   def remove_dish(dish)
     valid_dish?(dish)
     get_dish_info_from_menu(dish)
+  end
+
+  def accepted
+    @status = :finalized
+  end
+
+  def get_dish_info_from_menu(dish)
+    @menu.list.each do |menu_item|
+      @dish = menu_item if dish == menu_item[:name]
+    end
+  end
+  
+  private
+
+  def valid_dish?(dish)
+    @menu.list.each do |menu_item|
+      return true if dish == menu_item[:name]
+    end
+    raise 'Item not found'
   end
 
   def total
@@ -36,29 +56,9 @@ class Order
     @dish = nil
   end
 
-  def finalize(order_id)
+  def finalize
+    @total = total
     @status = :finalized
-    @id = order_id
-  end
-
-  def accepted
-    @status = :finalized
-  end
-
-  def get_dish_info_from_menu(dish)
-    @menu.list.each do |menu_item|
-      @dish = menu_item if dish == menu_item[:name]
-    end
-  end
-  
-  
-  private
-
-  def valid_dish?(dish)
-    @menu.list.each do |menu_item|
-      return true if dish == menu_item[:name]
-    end
-    raise 'Item not found'
   end
   
 end

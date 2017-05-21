@@ -7,12 +7,11 @@ class Notifier
     auth_token  = ENV['AUTH_TOKEN']
     @client     = Twilio::REST::Client.new account_sid, auth_token
   end
-  
 
   def send_message(message_body)
-  message = @client.account.messages.create(:body => "#{message_body}",
-    :to => ENV['TO_NUMBER'],    
-    :from => ENV['FROM_NUMBER'])
+    @client.account.messages.create(:body => "#{message_body}",
+      :to => ENV['TO_NUMBER'],    
+      :from => ENV['FROM_NUMBER'])
   end
 
 end
