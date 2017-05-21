@@ -1,18 +1,18 @@
 class Menu
 
-  attr_reader :dishes, :current_order
+  attr_reader :dishes, :basket
 
   def initialize
     @dishes = [{ "food" => 5 }]
-    @current_order = []
+    @basket = []
   end
 
   def show_menu
     @dishes.each { |item| item.map { |name, price| puts "#{name}, #{price}" } }
   end
 
-  def order(list_number, quantity)
-    quantity.times { @current_order << @dishes[list_number - 1] }
+  def order_item(list_number, quantity)
+    quantity.times { @basket << @dishes[list_number - 1] }
   end
 
 end
