@@ -11,7 +11,7 @@ class Restaurant
   end
 
   def checkout
-    @order.current_order << @menu.basket
+    @order.current_order.concat(@menu.basket)
   end
 
 end
