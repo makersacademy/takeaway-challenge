@@ -42,8 +42,8 @@ class Order
   def display_total
     calculate_total
     raise "Ooops! Error! Try again!" if @bill_me != @total.inject(0, :+)
-    p "Your total for this order is £#{@bill_me}."
     p "If happy with this order, type order.feed_me.complete_order"
+    p "Your total for this order is £#{@bill_me}."
   end
 
   def confirm_order(feed_me = Confirmation.new)

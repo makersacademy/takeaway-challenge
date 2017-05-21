@@ -16,17 +16,15 @@ describe Order do
   it 'calculates the total cost of the order' do
     order.add_to_order("Cheeseburger", 1)
     order.add_to_order("BBQ Ranch Burger", 2)
-    order.calculate_price
     expect(order.calculate_total).to eq 21
   end
 
   it 'should give you your total price' do
-
-    order.calculate_price
-    order.calculate_total
+    order.add_to_order("Cheeseburger", 1)
+    order.add_to_order("BBQ Ranch Burger", 2)
     expect(order.display_total).to eq "Your total for this order is £21."
   end
-  
+
   # it 'should raise an error if the total is incorrect' do
   #   expect { order.display_total }.to raise_error("Ooops! Error! Try Again!")
   # end
