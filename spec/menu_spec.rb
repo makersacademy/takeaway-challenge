@@ -25,6 +25,13 @@ describe Menu do
       subject.instance_variable_set("@dishes", [{ 'generic_food' => 5 }, { 'another_food' => 10 }])
       subject.order(2)
       expect(subject.current_order).to eq [{ 'another_food' => 10 }]
+      expect(subject.dishes).to eq [{ 'generic_food' => 5 }, { 'another_food' => 10 }]
+    end
+
+    it 'should be able to add multiples of a dish to @current_order' do
+      subject.instance_variable_set("@dishes", [{ 'generic_food' => 5 }, { 'another_food' => 10 }])
+      subject.order(2, 2)
+      expect(subject.current_order).to eq [{ 'another_food' => 10 }, { 'another_food' => 10 }]
     end
   end
 
