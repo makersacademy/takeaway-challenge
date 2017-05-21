@@ -1,6 +1,8 @@
 require 'dotenv/load'
 require 'twilio-ruby'
 
+
+
 account_sid = ENV['TWILIO_ACCOUNT_SID'] # Your Account SID from www.twilio.com/console
 auth_token = ENV['TWILIO_AUTH_TOKEN'] # Your Auth Token from www.twilio.com/console
 
