@@ -24,8 +24,8 @@ class Takeaway
     @order.finalize_order(price)
   end
 
-  def send_text()
-    notifier.send_text("Thank you for your order: £#{price}. Order was placed and will be delivered before 18:52")
+  def send_text
+    notifier.send_message("Thank you for your order: £#{price}. Order was placed and will be delivered before 18:52")
   end
 
 end
