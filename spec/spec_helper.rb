@@ -1,6 +1,7 @@
 require 'menu'
 require 'order'
 require 'checkout'
+require 'printer'
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'

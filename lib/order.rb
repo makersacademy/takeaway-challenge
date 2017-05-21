@@ -1,8 +1,8 @@
 class Order
-  attr_reader :current_order
+  attr_reader :in_basket
 
   def initialize
-    @current_order = []
+    @in_basket = []
   end
 
   def view_menu
@@ -10,6 +10,6 @@ class Order
   end
 
   def add_dish(*dishes_to_order)
-    dishes_to_order.each { |dish| @current_order << dish  }
+    dishes_to_order.each { |dish| @in_basket << dish  }
   end
 end

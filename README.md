@@ -28,6 +28,15 @@ constant) and Order with a view_menu method for the customer to view it.
 Planned in irb, made an rspec feature test from that, then drew unit tests from
 that feature test as it threw up each error.  
 
+2. User Story 2 - Approach
+
+ As a customer
+ So that I can order the meal I want
+ I would like to be able to select some number of several available dishes
+
+When making an order after viewing the menu, the customer can #add_dish with
+the dish or dishes they want to order, this adds their ordered items
+to the order's @in_basket, ready to be processed. 
 
 
 Instructions
