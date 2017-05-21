@@ -4,7 +4,6 @@ require_relative './printer'
 require_relative './dish'
 require_relative './order'
 require_relative './messenger'
-require 'twilio-ruby'
 
 # This is the main interface, representing a takeaway restaurant.
 class Restaurant
