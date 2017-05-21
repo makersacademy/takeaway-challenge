@@ -8,7 +8,7 @@ describe Order do
     expect(order.basket).to be_empty
   end
 
-  # it 'adds menu item to basket' do
-  #   expect(order.add_item(menu_item)).to eq menu_item
-  # end
+   it 'adds menu item to basket' do
+     expect(order.add_item(menu_item)).to eq menu_item
+   end
 end
