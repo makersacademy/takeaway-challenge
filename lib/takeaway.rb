@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'delivery'
 
 # It is responsible for handling user requests
 class Takeaway
@@ -15,23 +16,19 @@ class Takeaway
   end
 
   def create_new_order(menu_item, price)
-    @order = Order.new(menu_item, price)
+    @order = Order.new(menu_item, price, Time.now)
     @order.current_order
   end
 
   def select_dish(menu_item, price)
     @order.add_to_order(menu_item, price)
-  end
-
-  def view_order
-    raise 'No items currently ordered' unless @order
     @order.current_order
   end
 
   def print_order
     raise 'No items currently ordered' unless @order
     @order.print_order_detail
-    @order.order_total
+    p @order.order_total
   end
 
 end

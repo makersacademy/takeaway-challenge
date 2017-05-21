@@ -1,14 +1,16 @@
 # It is responsbile for compiling a user's order
 require_relative 'menu'
+require_relative 'delivery'
 
 class Order
 
-  attr_reader :current_order, :order_time
+  attr_reader :current_order
 
-  def initialize(menu_item, price)
+  def initialize(menu_item, price, time)
     @current_order = [{ menu_item => price }]
     @order_total = 0.0
-    @order_time = Time.now
+    @order_time = time
+    @delivery = Delivery.new(@order_time)
   end
 
   def add_to_order(new_item, price)
