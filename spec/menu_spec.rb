@@ -18,4 +18,9 @@ describe Menu do
  		printed_menu = "Spring roll £0.99, Char sui bun £3.99"
  		expect(menu.print).to eq(printed_menu)
  	end
+
+ 	it "tells if a dish is on the menu" do
+ 		expect(menu.has_dish?(:beef)).to be false
+ 	end
+
 end
