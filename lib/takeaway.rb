@@ -6,7 +6,8 @@ class Takeaway
 
 DELIVERY_PRICE = 2.50
 
-  attr_reader :menu, :order
+  attr_reader :menu, :text
+  attr_accessor :order
 
   def initialize
     @menu = Menu.new.items
