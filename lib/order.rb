@@ -1,14 +1,14 @@
 require_relative 'menu.rb'
-require_relative 'inputoutput.rb'
+require_relative 'output.rb'
 
 class Order
 
   attr_reader :order_hash, :menu
 
-  def initialize(menu = Menu.new, inputoutput = InputOutput.new)
+  def initialize(menu = Menu.new, output = Output.new)
     @order_hash = {}
     @menu = menu
-    @inputoutput = inputoutput
+    @output = output
   end
 
   def create_order
@@ -18,7 +18,7 @@ class Order
       ordering_a_dish
     end
     check_order_amount
-    @inputoutput.send_text
+    @output.send_text
     print("Order is on its way!")
   end
 
@@ -63,7 +63,7 @@ class Order
 
   def total_of_order
     sum = 0
-    @order_hash.each {|k,v| sum += @menu.list[k] * v}
+    @order_hash.each { |k, v| sum += @menu.list[k] * v }
     sum
   end
 

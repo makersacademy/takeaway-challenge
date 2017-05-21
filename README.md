@@ -16,7 +16,18 @@ Takeaway Challenge
 
 Instructions
 -------
+To run the program open up irb in the takeaway-challenge folder
 
+ ```
+takeaway-challenge user$ irb
+2.4.0 :001 > require './lib/order.rb'
+ => true
+2.4.0 :002 > order = Order.new
+ => #<Order:0x007f83231a4ea8 @order_hash={}, @menu=#<Menu:0x007f83231a4e80 @list={:pizza=>5, :carbonara=>6}>, @output=#<Output:0x007f83231a4e30>>
+2.4.0 :003 > order.create_order
+pizza - £5, carbonara - £6, Which dish would you like?
+ ```
+ 
 User Stories
 -------
 ```
@@ -36,5 +47,6 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-Diagram
+Improvements
 -------
+In the future I would like to move some of the functionality out of the order class and add tests for the SMS output
