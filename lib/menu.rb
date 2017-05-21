@@ -11,4 +11,8 @@ class Menu
     @dishes.each { |item| item.map { |name, price| puts "#{name}, #{price}" } }
   end
 
+  def order(list_number)
+    @current_order << @dishes[list_number - 1]
+  end
+
 end

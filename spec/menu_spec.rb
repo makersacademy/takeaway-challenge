@@ -21,8 +21,8 @@ describe Menu do
       expect(subject.current_order).to eq []
     end
 
-    it 'should copy an item from @dishes to @current_order'do
-      subject.instance_variable_set("@dishes", [{ 'generic_food' => 5 }, { 'another_food' => 10 } ])
+    it 'should copy an item from @dishes to @current_order' do
+      subject.instance_variable_set("@dishes", [{ 'generic_food' => 5 }, { 'another_food' => 10 }])
       subject.order(2)
       expect(subject.current_order).to eq [{ 'another_food' => 10 }]
     end
