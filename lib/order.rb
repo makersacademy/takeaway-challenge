@@ -1,6 +1,6 @@
 require_relative 'menu'
 class Order
-  attr_reader :selection, :menu_list
+  attr_reader :selection, :menu_list, :total, :bill_me
 
   def initialize
     @menu = Menu.new
