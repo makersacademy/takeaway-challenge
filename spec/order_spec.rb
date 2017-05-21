@@ -7,7 +7,7 @@ require 'order'
 
    let(:new_dish) {double(:new_dish)}
 
-   it 'shows customers current order' do
+   it 'shows current order' do
      expect(order.current_order).to eq [:selected_dish]
    end
 

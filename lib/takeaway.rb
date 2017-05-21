@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
@@ -15,6 +16,10 @@ class Takeaway
   def new_order(selected_dish)
     @order = Order.new(selected_dish)
     @order.current_order
+  end
 
+  def check_order
+    raise 'No dishes selected' unless @order
+    @order.current_order
   end
 end
