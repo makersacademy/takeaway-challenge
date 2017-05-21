@@ -11,4 +11,10 @@ class Takeaway
   def show_menu
     @menu.list_dishes
   end
+
+  def new_order(selected_dish)
+    @order = Order.new(selected_dish)
+    @order.current_order
+
+  end
 end
