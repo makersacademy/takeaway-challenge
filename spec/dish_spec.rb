@@ -11,4 +11,8 @@ describe Dish do
     expect(dish.price).to eq 5
   end
 
+  it 'should have a default description of - ' do
+    expect(dish.description). to eq '-'
+  end
+
 end
