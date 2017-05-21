@@ -9,7 +9,7 @@ class Order
     Menu::LIST_OF_DISHES
   end
 
-  def add_dish(dish)
-    @current_order << dish
+  def add_dish(*dishes_to_order)
+    dishes_to_order.each { |dish| @current_order << dish  }
   end
 end

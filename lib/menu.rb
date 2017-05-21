@@ -9,7 +9,8 @@ class Menu
     "Egg Fried Rice" => 2.00,
     "Steamed Rice" => 1.50,
     "Fanta" => 1.50,
-    "Diet Coke" => 1.50 }
+    "Diet Coke" => 1.50
+  }
 
   def initialize
 
