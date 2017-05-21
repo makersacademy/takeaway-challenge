@@ -1,5 +1,7 @@
 class Menu
 
+  attr_reader :dishes
+
   def initialize
     @dishes = []
   end
@@ -15,9 +17,10 @@ class Menu
   end
 
   def select_dish(dish_name)
-    selected = @dishes.find { |dish| dish.name == dish_name }
-    raise "#{dish_name} is not on the menu" unless !!selected
-    { name: selected.name, price: selected.price }
+    @dishes.find { |dish| dish.name == dish_name }
   end
 
+  def contain_dish?(dish_name)
+    @dishes.any? { |dish| dish.name == dish_name }
+  end
 end

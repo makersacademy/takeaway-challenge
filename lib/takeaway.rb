@@ -1,25 +1,20 @@
 require_relative 'menu'
 
 class Takeaway
-  def initialize(menu)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
-    @cart = []
+    @order = order
   end
 
   def read_menu
     @menu.show_menu
   end
 
-  def order(dish, amount)
-    product = @menu.select_dish(dish)
-    add_to_cart(product, amount)
+  def add_to_order(dish, amount)
+    @order.add_product(dish, amount)
   end
 
-  private
-
-  def add_to_cart(product, amount)
-    amount.times { @cart << product }
-    "#{amount} x #{product[:name]} added to your cart"
+  def check_total
+    @order.total
   end
-
 end
