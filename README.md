@@ -17,11 +17,18 @@ Takeaway Challenge
 Instructions
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Begin your ordering process by typing ```require './lib/order'```into irb.
+* Once the file has been required, type ```order = Order.new```
+* Follow the promts on the screen to make your choices.
+* When you have confirmed your order, make sure to type ```order.feed_me.complete_order``` to get your text delivery confirmation.
+
+Approach
+-------
+* Created a menu with a list of dishes, which was output in a presentable format.
+* Created relevant classes and methods to allow user to make and store menu choices.
+* Create a method to calculate and check the total cost of the order.
+* Implement functionality to receive text confirmed via sms.
+* **Future steps** Ideally this would be implemented more effectively from the commandline, potentially from a user text.
 
 Task
 -----
