@@ -13,6 +13,7 @@ class Restaurant
   def checkout
     @order.current_order.concat(@menu.basket)
     @menu.basket.clear
+    "Your chosen items have been moved to your order!"
   end
 
 end
