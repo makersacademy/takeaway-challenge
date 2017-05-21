@@ -11,8 +11,6 @@ class Order
     @inputoutput = inputoutput
   end
 
-
-
   # def start_order
   #   print_menu
   #   @inputoutput.print_to_terminal("Which dish would you like?\n")
