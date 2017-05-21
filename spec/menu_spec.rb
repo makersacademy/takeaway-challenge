@@ -2,9 +2,11 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
-  let(:dish) { double :dish, name: 'fried chicked' }
+  let(:order) { double :order }
+  let(:dish) { double :dish, name: 'fried chicken' }
 
   it { expect(menu).to respond_to :read_menu }
+  it { expect(menu).to respond_to :take_order }
 
   describe '#default_menu' do
     it 'checks if menu is initialized with default dishes' do
@@ -19,6 +21,12 @@ describe Menu do
   describe '#read_menu' do
     it 'allows to read the full menu' do
       expect(menu.read_menu.count).to eq 6
+    end
+  end
+
+  describe '#take_order' do
+    it 'allows to take an order' do
+      expect(menu.take_order).to be
     end
   end
 

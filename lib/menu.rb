@@ -1,4 +1,5 @@
 require_relative 'dish'
+require_relative 'order'
 
 class Menu
 
@@ -9,6 +10,16 @@ class Menu
 
   def read_menu
     @menu.dup
+  end
+
+  def take_order
+    @order = Order.new
+    rand(0..5).times do |i|
+      _dish = @menu[i]
+      _quantity = rand(1..2)
+      @order.add_dish(_dish, _quantity)
+    end
+    @order.display_order
   end
 
   def contains?(dish)
