@@ -48,4 +48,7 @@ puts "---------------"
 
 order.view_meal
 
-# order.confirm
+puts "CONFIRMATION:"
+puts "-------------"
+
+order.confirm_order

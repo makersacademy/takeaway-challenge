@@ -1,4 +1,5 @@
 require 'menu'
+require 'confirmation_text'
 
 class Order
 
@@ -20,6 +21,11 @@ class Order
 
   def remove_dish(selection)
     selection.respond_to?(:even?) ? remove_dish_by_number(selection) : remove_dish_by_name(selection)
+  end
+
+  def confirm_order
+    confirmation_message
+    Confirmation_text.new(calculate_total_price)
   end
 
 private
@@ -54,6 +60,12 @@ private
 
   def error_unrecognised_dish_message
     "Sorry, I don't recognise that dish, please try again"
+  end
+
+  def confirmation_message
+    puts "Thanks! Your order:\n-------------------\n"
+    view_meal
+    puts "-------------------\nHas been placed!"
   end
 
   def calculate_total_price

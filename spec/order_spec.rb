@@ -72,4 +72,10 @@ subject(:order) { described_class.new(menu) }
       expect{ order.remove_dish("Big Mac") }.to raise_error "Sorry, I don't recognise that dish, please try again"
     end
   end
+  describe "#Confirm order" do
+    it "Informs the user their order has been placed" do
+      2.times { order.select_dish(1) }
+      expect { order.confirm_order }.to output("Thanks! Your order:\n-------------------\nItem: 1, Saag Paneer, £4, X2.\nTOTAL: £8\n-------------------\nHas been placed!\n").to_stdout
+    end
+  end
 end
