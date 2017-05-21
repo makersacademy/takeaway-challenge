@@ -13,4 +13,17 @@ class Restaurant
     @menu = menu
     @orders = []
   end
+
+  def create_customer_order
+    
+  end
+
+  def accept_customer_order
+
+  end
+
+  def cancel_customer_order
+
+  end
+
 end
