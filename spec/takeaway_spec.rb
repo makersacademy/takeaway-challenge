@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:takeaway) {described_class.new}
+  let(:takeaway) {described_class.new('Beef & Beer')}
   let(:interface) { double(:interface, class: Interface) }
 
   it 'instantiates a new takeaway' do
