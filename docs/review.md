@@ -130,7 +130,7 @@ end
 ```
 
 ```ruby
-# Chicago Style --> arguably an 'integration' or 'feature' test
+.rb
 describe Order do
   subject(:order) { described_class.new(Menu.new) } # note real Menu class
 
@@ -233,7 +233,7 @@ end
 restaurant = Restaurant.new
 # or
 restaurant = Restaurant.new(dummy_messager)
-# where dummy_messager might be a test double for example
+.rb
 ```
 
 ## Separation of Concerns

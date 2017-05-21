@@ -1,11 +1,13 @@
+
+require_relative './secrets.rb'
 require 'twilio-ruby'
 
 # This sends a confirmation message to a customer via SMS.
 class Messenger
 
   def initialize
-    account_sid = 'AC02744860c8f9050b6006f5311dff458d'
-    auth_token = '3103e2415597fdd2fe16110b242d5ae7'
+    account_sid = ACCOUNT_SID
+    auth_token = AUTH_TOKEN
     @twilio_id = '+441792720462'
     @client = Twilio::REST::Client.new account_sid, auth_token
   end

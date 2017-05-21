@@ -7,12 +7,12 @@ Metrics/LineLength:
   # Would get extracted to locales, but that's out of the fence here so.
   Max: 100
 
-  # While test refactoring is good, I suspect it's out of scope for week 1
+  # While test.rb refactoring is good, I suspect it's out of scope for week 1
   Exclude:
     - 'spec/**/*'
 
 Metrics/BlockLength:
-  # While test refactoring is good, I suspect it's out of scope for week 1
+  # While test.rb refactoring is good, I suspect it's out of scope for week 1
   Exclude:
     - 'spec/**/*'
 
