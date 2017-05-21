@@ -11,23 +11,21 @@ class Order
     @inputoutput = inputoutput
   end
 
-  def order_journey
 
-  end 
 
-  def start_order
-    print_menu
-    @inputoutput.print_to_terminal("Which dish would you like?\n")
-    dish = @inputoutput.get_input
-    add_dish_to_order(dish)
-    @inputoutput.print_to_terminal("How many portions would you like\n")
-    number = @inputoutput.get_input
-    change_quantity_of_dish(dish, number)
-    @inputoutput.print_to_terminal("Let us know the total amount and then your order will be on its way!\n")
-    amount = @inputoutput.get_input
-    check_order_amount(amount)
-    @inputoutput.print_to_terminal("Order is on its way!")
-  end
+  # def start_order
+  #   print_menu
+  #   @inputoutput.print_to_terminal("Which dish would you like?\n")
+  #   dish = @inputoutput.get_input
+  #   add_dish_to_order(dish)
+  #   @inputoutput.print_to_terminal("How many portions would you like\n")
+  #   number = @inputoutput.get_input
+  #   change_quantity_of_dish(dish, number)
+  #   @inputoutput.print_to_terminal("Let us know the total amount and then your order will be on its way!\n")
+  #   amount = @inputoutput.get_input
+  #   check_order_amount(amount)
+  #   @inputoutput.print_to_terminal("Order is on its way!")
+  # end
 
 
   def print_menu
@@ -45,6 +43,7 @@ class Order
   def check_order_amount(amount)
     amount.to_i
     raise "Please check the amount given" unless total_of_order == amount
+    true
   end
 
   def total_of_order

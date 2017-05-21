@@ -11,4 +11,9 @@ describe InputOutput do
       expect(inputoutput.get_input).to eq "user input"
     end
   end
+  describe "#send_text" do
+    it 'sends text' do
+      
+    end
+  end
 end
