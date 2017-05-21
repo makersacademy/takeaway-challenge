@@ -1,8 +1,8 @@
 require 'interface'
 
 describe Interface do
-  let(:interface) {described_class.new('Restaurant')}
-  let(:printer) { double(:printer)}
+  let(:printer) { double('printer', menu:'Menu', items: 'Items' )}
+  let(:interface) {described_class.new(printer)}
 
 
 
@@ -14,5 +14,10 @@ describe Interface do
     expect(interface.printer).to be_an_instance_of Printer
   end
 
-
+  # describe '#process' do
+  #   it 'prints restaurant menu when 1 is selected' do
+  #     allow(printer).to receive(:print_menu).and_return("Itemsi")
+  #     expect{ interface.process('1') }.to output("1. See Menu\n2. Choose Item\n").to_stdout
+  #   end
+  # end
 end
