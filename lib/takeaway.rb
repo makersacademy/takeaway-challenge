@@ -1,31 +1,20 @@
+require 'menu'
 class Takeaway
 
   attr_reader :menu, :basket
-# TODO extract out to a separate menu class
+
   def initialize
-    @menu = {   :starters => starters(),
-                :main_course => main_course(),
-                :dessert => dessert() }
+    @menu = Menu.new
     @basket = []
   end
 
-  def starters
-    { 1 => { "Olives" => 4 }, 2 => { "Pitta bread" => 5 } }
-  end
-
-  def main_course
-    { 3 => { "Fried duck" => 12 }, 4 => { "Fish & Chips" => 9 } }
-  end
-
-  def dessert
-    { 5 => { "Jam roll" => 5 }, 6 => { "Apple crumble" => 6 } }
-  end
-
+# TODO shorten this long line, e.g. print 3 x outputs for each course
   def lists_dishes_with_prices
     "Starters: #{extracts_starters} -- Main Course: #{extracts_main_course} -- Dessert: #{extracts_dessert}."
   end
 
-# work out how to do 0 and Q on controller menu & methods
+# TODO shorten this long line, e.g. print 3 x outputs for each course
+# TODO work out how to do 0 and Q on controller menu & methods
   def displays_controller
     "Welcome to our takeaway service. Please make your order by selecting 0 to be taken to the selection menu, press 'Q' at anytime to escape the program:"
   end
@@ -41,11 +30,11 @@ class Takeaway
     end
   end
 
-# TODO refactor all selection methods to avoid repetition - DRY 3's 
+# TODO refactor all selection methods to avoid repetition - DRY 3's
 # TODO update with a loop to let them make 2 choices & push into basket
   def starters_selection
     displays_options(extracts_starters)
-    starters = gets.chomp
+    starter = STDIN.gets.chomp
     @basket << [starter]
     displays_order_confirmation_message
   end
@@ -53,7 +42,7 @@ class Takeaway
 # TODO update with a loop to let them make 2 choices & push into basket
   def main_course_selection
     displays_options(extracts_main_course)
-    mains = gets.chomp
+    main = STDIN.gets.chomp
     @basket << [main]
     displays_order_confirmation_message
   end
@@ -61,15 +50,14 @@ class Takeaway
 # TODO update with a loop to let them make 2 choices & push into basket
   def dessert_selection
     displays_options(extracts_dessert)
-    mains = gets.chomp
+    dessert = STDIN.gets.chomp
     @basket << [dessert]
     displays_order_confirmation_message
   end
 
-
+# TODO line too long refactor 
   def displays_options(menu_extract)
-    "The starters that we have available are #{menu_extract}:"
-    "Please enter the order number you would like to add to your basket:"
+    "Please choose the order number for the dish you would like from the menu options: #{menu_extract}:"
   end
 
 # TODO customise this so the message confirms the order number(s) so customer is sure of what they ordered
@@ -77,7 +65,10 @@ class Takeaway
     "Thanks for your selection we've added your orders to your basket."
   end
 
-
+  def final_display_order_confirmation_message
+    @balance.flatten
+    "Thanks for your orders. Your order numbers are: #{@balance}"
+  end
 
   private
 
