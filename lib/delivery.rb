@@ -14,6 +14,7 @@ class Delivery
   end
 
   def send_notification
+    @delivery_notification = "Thank you! You're order will be delivered before #{@delivery_time}"
     # account_sid = 'AC59a274e32e8dabfb2e8d4299c2ca7503'
     # auth_token = '549ea7cdba5c041228b186232c0de92d'
     # @client = Twilio::REST::Client.new(account_sid, auth_token)
@@ -21,9 +22,9 @@ class Delivery
     # @client.account.messages.create({
     #   :from => @sms_number,
     #   :to => @user_contact_number,
-    #   :body => 'This is your delivery notification'
+    #   :body => @delivery_notification
     #   })
-    message_sent_notification = "Thank you! You're order will be delivered before #{@delivery_time}"
+    @delivery_notification
   end
 
 end
