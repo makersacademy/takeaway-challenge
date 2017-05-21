@@ -82,25 +82,27 @@ describe Takeaway do
     end
   end
 
-  describe "#gives_orders_with_dishes_hash" do
+  describe '#gives_orders_with_dishes_hash' do
     it 'returns a hash of the dishes & their prices ordered from the menu' do
       takeaway.basket.push(1,2,3)
       expect(takeaway.gives_orders_with_dishes_hash).to eq [{ "Olives" => 4 }, { "Pitta bread" => 5 }, { "Fried duck" => 12 }]
     end
   end
 
-
-  # TODO work out how to check this method properly as right now it doesn't actually check that the method works
-  xdescribe '#calculates_order_cost' do
-    it 'calculates the cost of one order' do
-      fake_basket = double(:basket)
-      allow(fake_basket).to receive(:calculates_order_cost).and_return(12)
-      expect(fake_basket.calculates_order_cost).to eq 12
+  describe '#gives_orders_prices' do
+    it 'returns a hash with orders and prices of the orders added to the basket' do
+      takeaway.basket.push(1,2,3)
+      takeaway.gives_orders_with_dishes_hash
+      expect(takeaway.gives_orders_prices).to eq [4,5,12]
     end
-    it 'calculates the cost of more than one order' do
-      fake_basket = double(:basket)
-      allow(fake_basket).to receive(:calculates_order_cost).and_return(27)
-      expect(fake_basket.calculates_order_cost).to eq 27
+  end
+
+  describe '#calculates_order_cost' do
+    it 'returns the total of all the order prices' do
+      takeaway.basket.push(1,2,3)
+      takeaway.gives_orders_with_dishes_hash
+      takeaway.gives_orders_prices
+      expect(takeaway.calculates_order_cost).to eq 21
     end
   end
 

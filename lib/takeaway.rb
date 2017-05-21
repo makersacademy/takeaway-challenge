@@ -55,7 +55,7 @@ class Takeaway
     @menu.dessert
   end
 
-# TODO need to make sure this loop can end, convert to while loop?
+  # TODO need to make sure this loop can end, convert to while loop?
   def interactive_menu
     continue_ordering = true
     while continue_ordering do
@@ -98,7 +98,7 @@ class Takeaway
   end
 
   def print_orders
-    if @basket.count == 0
+    if @basket.count.zero?
       puts "You have made no orders!"
     elsif @basket.count == 1
       puts "You have 1 order: order number #{@basket.join(', ')}"
@@ -107,9 +107,10 @@ class Takeaway
     end
   end
 
+  # TODO DRY this up 3 x repetion
   def gives_orders_with_dishes_hash
     orders_values = []
-    @basket.each do |order_num|
+    @basket.map do |order_num|
       orders_values << menu_starters.fetch(order_num) if menu_starters.has_key?(order_num)
       orders_values << menu_main_course.fetch(order_num) if menu_main_course.has_key?(order_num)
       orders_values << menu_dessert.fetch(order_num) if menu_dessert.has_key?(order_num)
@@ -117,19 +118,14 @@ class Takeaway
     orders_values
   end
 
-  def print_orders_price
-    price_list = []
-    @order_values.each do |dish, price|
-      price_list << @order_values[price]
+  def gives_orders_prices
+    gives_orders_with_dishes_hash.map do |dish_and_price|
+      dish_and_price.values.first
     end
-    price_list
   end
 
   def calculates_order_cost
-    @menu.include? @basket 
-    #I need to acccess the numbers in the basket array which are keys to
-    @basket.
-    reduce(:+)
+    gives_orders_prices.reduce(:+)
   end
 
 end
