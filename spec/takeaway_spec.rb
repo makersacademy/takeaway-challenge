@@ -17,4 +17,8 @@ describe Takeaway do
     expect(subject.current_order.dishes).to include dish2
   end
 
+  it 'show_order shows a total of zero when no food is ordered' do
+    expect { subject.show_order }.to output("Total: £0\n").to_stdout
+  end
+
 end

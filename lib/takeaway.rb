@@ -20,4 +20,8 @@ class Takeaway
     @current_order ||= Order.new
   end
 
+  def show_order
+    puts "Total: £#{current_order.total_price}"
+  end
+
 end
