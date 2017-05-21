@@ -10,8 +10,8 @@ class Restaurant
     @order = Order.new
   end
 
-  def show_dishes
-    print @menu.current_order
+  def checkout
+    @order.current_order << @menu.basket
   end
 
 end
