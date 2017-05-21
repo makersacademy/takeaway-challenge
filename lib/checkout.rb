@@ -11,7 +11,7 @@ class Checkout
   end
 
   def itemised_receipt(order)
-    Printer.new.print(order)
+    "Order:\n#{create_receipt(order)}Total - £#{total_cost(order)}"
   end
 
   private
@@ -20,6 +20,10 @@ class Checkout
   end
 
   def create_receipt(order)
-    in_basket.each_with_index { |dish, index|}
+    receipt = ""
+    order.in_basket.each_with_index do |dish, index|
+      receipt << "#{index+1}.#{dish} - £#{Menu::LIST_OF_DISHES[dish]}\n"
+    end
+    receipt
   end
 end

@@ -44,7 +44,7 @@ describe 'takeaway' do
       order.view_menu
       order.add_dish('Chicken Chow Mein')
       order.add_dish('Spicy Chilli Beef')
-      receipt_message = "Order:\n1.Chicken Chow Mein - £5.50\n2.Spicy Chilli Beef - £5.00\nTotal - £10.50"
+      receipt_message = "Order:\n1.Chicken Chow Mein - £5.5\n2.Spicy Chilli Beef - £5.0\nTotal - £10.5"
       expect(checkout.itemised_receipt(order)).to eq(receipt_message)
     end
   end

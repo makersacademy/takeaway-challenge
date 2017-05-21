@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe Checkout do
   subject(:checkout) { described_class.new }
-  let(:fake_order) { double(:order, in_basket: 'Chicken Chow Mein') }
+  let(:fake_order) { double(:order, in_basket: ['Chicken Chow Mein']) }
   it 'responds to #total_cost' do
     expect(checkout).to respond_to(:total_cost).with(1).argument
   end
@@ -15,7 +15,7 @@ describe Checkout do
 
   describe '#itemised_receipt' do
     it 'can show an itemised list of items ordered, their cost, and the total' do
-      receipt_message = "Order:\n1.Chicken Chow Mein - £5.50\nTotal - £5.50"
+      receipt_message = "Order:\n1.Chicken Chow Mein - £5.5\nTotal - £5.5"
       expect(checkout.itemised_receipt(fake_order)).to eq(receipt_message)
     end
   end
