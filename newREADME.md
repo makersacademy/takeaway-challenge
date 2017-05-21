@@ -14,22 +14,23 @@ Takeaway Challenge
 
  ```
 
-## Getting Started
+## User Stories ##
 
-run ```$ ruby ./lib/takeaway.rb```
+ Check userstories.rb for an overview of the various objects I have used to interpret each requirement.
 
-### User Stories ###
+### Getting Started#
 
-Check userstories.rb for an overview of the various objects I have used to interpret each requirement.
+run ```$ ruby ./lib/takeaway.rb```.
 
 ### Prerequisites
 
-You will need to run the command ```$ gem install bundle``` (if you don't have bundle already)
+This project requires the Twilio RubyGem [(more info...)](https://www.twilio.com/docs/libraries/ruby).
 
-Then run the command ```$ bundle```
+All prerequisites are available by running the command ```$ bundle```.
+
+You will need to run the command ```$ gem install bundle``` if you don't have bundle already installed.
 
 ### Structure ###
-
     .
     ├── CONTRIBUTING.md
     ├── Gemfile
@@ -41,11 +42,13 @@ Then run the command ```$ bundle```
     ├── docs
     │   └── review.md
     ├── lib
+    │   ├── delivery.rb
     │   ├── menu.rb
     │   ├── order.rb
     │   └── takeaway.rb
     ├── newREADME.md
     ├── spec
+    │   ├── delivery_spec.rb
     │   ├── menu_spec.rb
     │   ├── order_spec.rb
     │   ├── spec_helper.rb
@@ -56,5 +59,6 @@ Then run the command ```$ bundle```
 
 This program was built and tested using Test Driven Development
 
-* [Ruby](https://www.ruby-lang.org/) - The language used to develop this program - v2.4.0p0 (2016-12-24 revision 57164)
-* [Rspec](http://rspec.info/) - The testing framework used to drive development - v3.5.4
+* [Ruby](https://www.ruby-lang.org) - The language used to develop this program - v2.4.0p0 (2016-12-24 revision 57164)
+* [Twilio](https://www.twilio.com) - The SMS client used to send delivery notifications - v4.13.0
+* [Rspec](http://rspec.info) - The testing framework used to drive development - v3.5.4

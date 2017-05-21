@@ -11,4 +11,8 @@ describe Delivery do
     expect(delivery.delivery_time).to eq ORDER_TIME[:time] + Delivery::DELIVERY_ESTIMATE
   end
 
+  it 'sends a delivery note' do
+    expect(delivery.send_notification).to eq :message_sent
+  end
+
 end
