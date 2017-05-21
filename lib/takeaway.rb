@@ -57,9 +57,10 @@ class Takeaway
 
 # TODO need to make sure this loop can end, convert to while loop?
   def interactive_menu
-    loop do
+    continue_ordering = true
+    while continue_ordering do
       print_menu
-      process_menu(STDIN.gets.chomp)
+      continue_ordering = process_menu(@display.read_input)
     end
   end
 
@@ -73,17 +74,18 @@ class Takeaway
     case selection
     when "1"
       place_orders
+      true
     when "2"
       show_orders
+      true
     when "7"
-      exit # this will cause the program to terminate
+      false
     else
       puts "I don't know what you mean, try again"
+      true
     end
   end
 
-  # TODO test has display double- responsibility give right key to exit the program as 7 x
-  # TODO this is basically lifted from student directory precourse exercise- would be good to figure out a new way to solve this problem
   def place_orders
     puts "Take a note of the order numbers from our menu: #{lists_dishes_with_prices}"
     puts "Enter the order numbers you'd like to add to your basket:"
