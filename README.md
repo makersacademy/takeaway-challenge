@@ -38,5 +38,3 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 Diagram
 -------
-
-<iframe src="https://atlas.mindmup.com/2017/05/3631a6c03e3211e7886a955789eba9c7/takeaway/index.html"></iframe>
