@@ -26,7 +26,7 @@ class Order
   def end_order
     show_total
     confirm_order
-    @message.send_message(@price) if @response == "y"
+    @message.send_message(@total) if @response == "y"
   end
 
   private
@@ -39,9 +39,9 @@ class Order
   end
 
   def calculate_total
-    total = 0
-    @order_list.each { |order| total += order[:price] }
-    total
+    @total = 0
+    @order_list.each { |order| @total += order[:price] }
+    @total
   end
 
   def confirm_order
