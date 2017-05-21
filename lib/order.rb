@@ -1,7 +1,7 @@
 require_relative 'menu'
 require_relative 'confirmation'
-require 'dotenv'
-Dotenv.load
+require 'dotenv/load'
+Dotenv.load('twilio.env')
 
 class Order
   attr_reader :selection, :menu_list, :feed_me, :confirmation

@@ -1,13 +1,13 @@
 require 'twilio-ruby'
 require_relative 'order'
+require 'dotenv/load'
+Dotenv.load('twilio.env')
 
 class Confirmation
   attr_reader :time
 
   def initialize
-    account_sid = "ACd4c4fc4bafc1f64663c610cb0755854c"
-    auth_token = "bb5a90236df6bef7de2039c3f0127dc8"
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
     @time = (Time.now + 3600).strftime("%H:%M:%S")
   end
 
@@ -17,8 +17,8 @@ class Confirmation
 
   def send_sms(message)
     @client.messages.create(
-        :from => "+441483608668",
-        :to => "+447940559363",
+        :from => ENV['TWILIO_NUMBER'],
+        :to => ENV['TWILIO_USER'],
         :body => message
         )
   end
