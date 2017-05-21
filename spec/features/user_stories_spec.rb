@@ -16,12 +16,12 @@ describe 'takeaway' do
     order.view_menu
     order.add_dish("Chicken Chow Mein")
     order.add_dish("Spicy Chilli Beef")
-    order.add_dish("Egg Fried Rice", "Diet Coke")
-    expect{ order.add_dish("Kung Pow Chicken") }.to change{ @current_order }.to eq({
-       "Chicken Chow Mein" => 5.50,
-       "Spicy Chilli Beef" => 5.00,
-       "Egg Fried Rice" => 2.00,
-       "Diet Coke" => 1.50
-       })
+    order.add_dish("Egg Fried Rice")
+    expect{ order.add_dish("Kung Pow Chicken") }.to change{ order.current_order }.to eq([
+       "Chicken Chow Mein",
+       "Spicy Chilli Beef",
+       "Egg Fried Rice",
+       "Kung Pow Chicken"
+       ])
   end
 end

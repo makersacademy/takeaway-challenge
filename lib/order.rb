@@ -1,14 +1,15 @@
 class Order
-  attr_reader
+  attr_reader :current_order
 
   def initialize
+    @current_order = []
   end
 
   def view_menu
     Menu::LIST_OF_DISHES
   end
 
-  def add_dish(dish, *more_dishes)
-    
+  def add_dish(dish)
+    @current_order << dish
   end
 end
