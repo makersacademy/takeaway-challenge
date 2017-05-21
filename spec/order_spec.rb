@@ -2,8 +2,8 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class.new }
-  let(:menu_item) { double :menu_item, name: 'Taco', price: 5 }
-  let(:menu_item2) { double :menu_item }
+  let(:menu_item) { double :dish, price: 2 }
+  let(:menu_item2) { double :dish, price: 3}
 
   it 'allows customer to start with an empty basket' do
     expect(order.basket).to be_empty
@@ -12,12 +12,12 @@ describe Order do
   describe '#add_dish' do
      it 'adds menu item to basket' do
        order.add_dish(menu_item)
-       expect(order.basket).to eq ({menu_item => 1})
+       expect(order.basket).to eq ({ menu_item => 1 })
      end
 
      it 'allows customer to customise quantity of menu item in order' do
        order.add_dish(menu_item,4)
-       expect(order.basket).to eq ({menu_item => 4})
+       expect(order.basket).to eq ({ menu_item => 4 })
      end
   end
 
@@ -25,7 +25,7 @@ describe Order do
     it 'removes menu item from basket' do
       order.add_dish(menu_item)
       order.remove_dish(menu_item)
-      expect(order.basket).to eq ({menu_item => 0})
+      expect(order.basket).to eq ({ menu_item => 0 })
     end
 
     it 'can only remove menu items which have been added to basket' do
@@ -51,6 +51,14 @@ describe Order do
 
     it 'only lets you clear a non-empty basket' do
       expect{ order.clear_order }.to raise_error("Basket already empty")
+    end
+  end
+
+  describe '#total_price' do
+    it 'calculates price total for dishes in basket' do
+      order.add_dish(menu_item)
+      order.add_dish(menu_item2)
+      expect(order.total_price).to eq 5
     end
   end
 

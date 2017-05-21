@@ -24,13 +24,14 @@ class Order
     @basket = Hash.new(0)
   end
 
+  def total_price
+    @basket.keys.map { |dish| dish.price }.reduce(:+)
+  end
+
   private
 
   def not_in_basket?(dish,quantity)
     @basket[dish] < quantity || @basket[dish] == nil
   end
-
-# review_order
-# clear_order
 
 end
