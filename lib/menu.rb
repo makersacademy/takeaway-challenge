@@ -24,4 +24,21 @@ class Menu
     end
   end
 
+  def confirm_menu_item(menu_item_key)
+    build_menu_items_to_check
+    raise 'Item not in menu!' unless @check_items.include?(menu_item_key)
+  end
+
+  private
+
+  def build_menu_items_to_check
+    @check_items = []
+    @menu_items.each do |_style_of_food, dishes|
+      dishes.each do |dish|
+        @check_items << dish[0]
+      end
+    end
+  end
+
+
 end

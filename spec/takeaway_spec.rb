@@ -4,6 +4,7 @@ describe Takeaway do
   TAKEAWAY_PRICE = { price: 10 }
   subject(:takeaway) { described_class.new }
   let(:order) { takeaway.create_new_order(:menu_item, TAKEAWAY_PRICE[:price]) }
+  let(:menu) { double(:menu) }
 
   it 'should show the full menu by default' do
     expect(takeaway.view_menu).to include(:pizza, :pasta)

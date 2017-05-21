@@ -3,7 +3,6 @@ require 'order'
 describe Order do
   MENU_PRICE = { price: 10 }
   subject(:order) { described_class.new(:menu_item, MENU_PRICE[:price], Time.now) }
-
   let(:new_item) { double(:new_item) }
 
   it { is_expected.to respond_to :current_order }

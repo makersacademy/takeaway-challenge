@@ -21,7 +21,6 @@ class Takeaway
   end
 
   def select_dish(menu_item, price)
-    # @menu.confirm_menu_item(menu_item)
     @order.add_to_order(menu_item, price)
     @order.current_order
   end

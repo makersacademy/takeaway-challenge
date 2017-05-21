@@ -15,4 +15,10 @@ describe Menu do
     expect(menu.view_menu).to include(:pizza, :pasta)
   end
 
+  let(:non_menu_item) { [:frogs_legs, 1000] }
+
+  it 'checks whether an item is in the menu' do
+    expect { menu.confirm_menu_item(non_menu_item) }.to raise_error 'Item not in menu!'
+  end
+
 end
