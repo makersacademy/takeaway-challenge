@@ -5,6 +5,8 @@ require_relative './dish'
 require_relative './order'
 require_relative './messenger'
 require_relative './errors'
+require 'twilio-ruby'
+require 'sinatra'
 
 # This is the main interface, representing a takeaway restaurant.
 class Restaurant
@@ -49,3 +51,17 @@ class Restaurant
   end
 
 end
+
+# monks = Restaurant.new
+# monks.add_dish('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
+# monks.add_dish('Big Salad', 'Big lettuce, big carrots, tomatoes like volleyballs!', 6)
+# monks.add_dish('Pretzels', 'These pretzels are making me thirsty!', 2)
+# monks.add_dish('Soup', 'No soup for you!', 4)
+# monks.add_dish('Calzone', 'Cheese, pepperoni, eggplant!', 3.5)
+# monks.add_dish('Muffin Top', 'Top of the muffin to you!', 1.5)
+#
+# post '/receiver' do
+#   body = params['Body'].split(',')
+#   monks.order(body[0].to_i, body[1].to_i)
+#   monks.checkout(16)
+# end
