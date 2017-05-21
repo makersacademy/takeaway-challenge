@@ -1,5 +1,9 @@
 require_relative 'menu'
 require_relative 'display'
+# require_relative 'text_provider'
+
+# TODO properly implement Twilio - add to initialize as a new class instance under @test
+# TODO extract display messages out into display class - takeaway class has too much responsibility
 
 class Takeaway
 
@@ -15,30 +19,25 @@ class Takeaway
     print "#{extracts_starters} #{extracts_main_course} #{extracts_dessert}"
   end
 
-  # TODO refactor to avoid repetition- DRY 3's - plus each method is doing too much
   # TODO should this be in the menu class not the takeaway class?
   def extracts_starters
-    starter1 = menu_starters[1].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    starter2 = menu_starters[2].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    starter1_key = menu_starters.keys[0]
-    starter2_key = menu_starters.keys[1]
-    print "Starters: #{starter1_key}. #{starter1}, #{starter2_key}. #{starter2} "
+    extracts(menu_starters(), [1, 2], "Starters")
   end
 
   def extracts_main_course
-    main1 = menu_main_course[3].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    main2 = menu_main_course[4].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    main1_key = menu_main_course.keys[0]
-    main2_key = menu_main_course.keys[1]
-    print "Main Courses: #{main1_key}. #{main1}, #{main2_key}. #{main2} "
+    extracts(menu_main_course(), [3, 4], "Main Courses")
   end
 
   def extracts_dessert
-    dessert1 = menu_dessert[5].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    dessert2 = menu_dessert[6].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    dessert1_key = menu_dessert.keys[0]
-    dessert2_key = menu_dessert.keys[1]
-    print "Desserts: #{dessert1_key}. #{dessert1}, #{dessert2_key}. #{dessert2}"
+    extracts(menu_dessert(), [5, 6], "Desserts")
+  end
+
+  def extracts(course, numbers, description)
+    course1 = course[numbers[0]].map { |k, v| "#{k} = £#{v}" }.join(', ')
+    course2 = course[numbers[1]].map { |k, v| "#{k} = £#{v}" }.join(', ')
+    course1_key = course.keys[0]
+    course2_key = course.keys[1]
+    print "#{description}: #{course1_key}. #{course1}, #{course2_key}. #{course2} "
   end
 
   # TODO refactor to avoid repetition- DRY 3's
@@ -55,7 +54,6 @@ class Takeaway
     @menu.dessert
   end
 
-  # TODO need to make sure this loop can end, convert to while loop?
   def interactive_menu
     continue_ordering = true
     while continue_ordering do
@@ -91,7 +89,7 @@ class Takeaway
     puts "Enter the order numbers you'd like to add to your basket:"
     puts "Remember, to exit select 7 or hit double space twice"
     order_num = @display.read_input
-    while !order_num.empty? do
+    until order_num.empty? do
       @basket << order_num.to_i
       order_num = @display.read_input
     end
@@ -131,7 +129,11 @@ class Takeaway
   def prints_order_total
     prices = gives_orders_prices().map { |price| "£" + price.to_s }.join(", ")
     total = calculates_order_cost()
-    p "Thanks for ordering! Your combined orders total: #{prices} which gives a total of £#{total}"
+    puts "Thanks for ordering! Your combined orders total: #{prices} which gives a total of £#{total}"
   end
+
+  # def delivers_text_notification
+  #   @text.client.messages.create
+  # end
 
 end
