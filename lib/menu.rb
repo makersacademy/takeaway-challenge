@@ -1,9 +1,10 @@
 class Menu
 
-  attr_reader :dishes
+  attr_reader :dishes, :current_order
 
   def initialize
-    @dishes = [ {"food"=>5} ]
+    @dishes = [{ "food" => 5 }]
+    @current_order = []
   end
 
   def show_menu
