@@ -1,6 +1,9 @@
 require 'order'
 require 'menu'
 
+puts "FEATURE TEST:"
+puts "-------------"
+
 menu = Menu.new
 
 menu.add_dish(Dish.new("Saag Paneer", "Cheesy Green Goodness", 4))
@@ -18,11 +21,31 @@ menu.add_dish(Dish.new("Naga Chilli", "Edible napalm", 9))
 
 order = Order.new(menu)
 
+puts "MENU:"
+puts "-----"
 order.menu.list_dishes
 
-# order.select_dish(1)
-# ordert.select_dish("Saag Aloo")
-#
-# order.view_meal
-#
+order.select_dish(1)
+order.select_dish(1)
+order.select_dish("Saag Aloo")
+order.select_dish(3)
+order.select_dish("Pahaari Aloo")
+# order.select_dish(50)
+# order.select_dish("Big Mac")
+
+puts "UNMODIFIED ORDER:"
+puts "-----------------"
+
+order.view_meal
+
+order.remove_dish(1)
+order.remove_dish("Pahaari Aloo")
+# order.remove_dish(50)
+# order.remove_dish("Big Mac")
+
+puts "MODIFIED ORDER:"
+puts "---------------"
+
+order.view_meal
+
 # order.confirm
