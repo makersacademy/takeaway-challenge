@@ -19,7 +19,7 @@ describe Takeaway do
     end
 
     it 'prints a message saying what was added to the order' do
-      expect(takeaway.add_to_order("chicken wings", 2)).to eq "2x chicken wings added to your order"
+      expect(takeaway.add_to_order("chicken wings", 2)).to eq "2x chicken wings successfully added to your order"
     end
   end
 
