@@ -18,7 +18,7 @@ describe Restaurant do
       it 'should move the contents of @basket to @current_order' do
         subject.menu.order_item(1, 1)
         subject.checkout
-        expect(subject.order.current_order).to eq [{ "food" => 5 }]
+        expect(subject.order.current_order).to eq [{ "edemame" => 5 }]
       end
 
       it 'should clear the contents of @basket' do
