@@ -26,8 +26,8 @@ class Order
 
   def order_total
     @order_items.map do |dish, quantity|
-      dish_overall_price = dish.price * quantity
-    end.reduce { |sum, dish_overall_price| sum + dish_overall_price}
+      dish.price * quantity
+    end.reduce { |sum, dish_overall_price| sum + dish_overall_price }
   end
 
   def correct_amount?(price)

@@ -16,7 +16,7 @@ describe Order do
   it 'allows to display the ordered dishes' do
     order.add_dish(:dish)
     order.add_dish(:other_dish)
-    expect(order.display_order).to include {:dish}
+    expect(order.display_order).to (include { :dish })
   end
 
   it 'allows to finalize an order by calculating the order total' do
