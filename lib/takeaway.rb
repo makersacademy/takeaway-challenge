@@ -1,9 +1,10 @@
 class Takeaway
   attr_reader :current_order
 
-  def initialize(menu_class = Menu)
+  def initialize(menu_class = Menu, notifier_class = Notifier)
     @menu = menu_class.new
     @current_order = nil
+    @notifier = notifier_class.new
   end
 
   def read_menu
@@ -29,6 +30,7 @@ class Takeaway
 
   def place_order(total)
     raise 'Order total is not correct' if current_order.total_price != total
+    @notifier.send('Thank you!')
   end
 
 end
