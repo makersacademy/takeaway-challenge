@@ -75,14 +75,12 @@ describe Takeaway do
     end
   end
 
-  # TODO work out how to check place_orders in a test
-  xdescribe '#print_orders' do
+  describe '#print_orders' do
     it 'prints the order numbers from the basket' do
-       fake_balance = double(:balance, [1,2,3])
-       allow(fake_balance).to receive(:print_orders).sys.stdout(/You have 3 orders: order numbers 1,2,3/)
-      expect { takeaway.prints_orders }.to eq "You have 3 orders: order numbers 1,2,3"
+      takeaway.basket.push(1,2,3)
+      expect { takeaway.print_orders }.to output(/You have 3 orders: order numbers 1, 2, 3/).to_stdout
+    end
   end
-end
 
 # TODO work out how to check this method properly as right now it doesn't actually check that the method works
   describe '#calculates_order_cost' do
