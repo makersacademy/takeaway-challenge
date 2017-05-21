@@ -1,3 +1,4 @@
+require 'time.rb'
 class Takeaway
   attr_reader :current_order
 
@@ -31,7 +32,7 @@ class Takeaway
 
   def place_order(total)
     raise 'Order total is not correct' if current_order.total_price != total
-    @notifier.send('Thank you!')
+    @notifier.send("Thank you! Your order will be delivered before #{Time.now.hour + 1}:#{Time.now.min}")
   end
 
 end

@@ -38,7 +38,7 @@ describe Takeaway do
   end
 
   it 'sends a text saying that the order was placed successfully' do
-    message = 'Thank you!'
+    message = "Thank you! Your order will be delivered before #{Time.now.hour + 1}:#{Time.now.min}"
     expect(notifier).to receive(:send).with(message)
     allow(menu).to receive(:find_dish).and_return(dish1, dish2)
     subject.select_dish('milk')
