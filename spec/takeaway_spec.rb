@@ -24,7 +24,12 @@ describe Takeaway do
   it 'prints the full order and total price' do
     takeaway.create_new_order(:menu_item, TAKEAWAY_PRICE[:price])
     takeaway.select_dish(:menu_item, TAKEAWAY_PRICE[:price])
-    expect { takeaway.print_order }.to output("\"menu_item - 10\"\n\"menu_item - 10\"\n20.0\n").to_stdout
+    expect { takeaway.print_order }.to output("\"menu_item - 10\"\n\"menu_item - 10\"\n\"Total = 20.0\"\n").to_stdout
+  end
+
+  it 'sends a delivery message on completion of order' do
+    takeaway.create_new_order(:menu_item, TAKEAWAY_PRICE[:price])
+    expect(takeaway.complete_order).to match("Thank you! You're order will be delivered before #{DELIVERY_TIME}")
   end
 
 end

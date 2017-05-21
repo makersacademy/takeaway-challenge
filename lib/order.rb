@@ -4,7 +4,7 @@ require_relative 'delivery'
 
 class Order
 
-  attr_reader :current_order
+  attr_reader :current_order, :delivery
 
   def initialize(menu_item, price, time)
     @current_order = [{ menu_item => price }]
@@ -31,5 +31,7 @@ class Order
       end
     end
   end
+
+  
 
 end

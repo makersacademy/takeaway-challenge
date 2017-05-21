@@ -28,7 +28,11 @@ class Takeaway
   def print_order
     raise 'No items currently ordered' unless @order
     @order.print_order_detail
-    p @order.order_total
+    p "Total = #{@order.order_total}"
+  end
+
+  def complete_order
+    @order.delivery.send_notification
   end
 
 end
