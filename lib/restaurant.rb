@@ -30,14 +30,15 @@ class Restaurant
   end
 
   def order(menu_number, quantity = 1)
-    raise(MenuError) if menu_number > @menu.dishes.count
+    raise(MenuError) if menu_number > @menu.dishes.count || menu_number < 1
     @order ||= Order.new
     @order_counter += 1 if @order.basket.empty?
     dish = @menu.dishes[menu_number - 1]
-    puts @order.add_to_basket(dish, quantity)
+    @order.add_to_basket(dish, quantity)
   end
 
   def view_basket
+    return 'Your basket is empty!' if @order.nil?
     @order.show_basket
   end
 
@@ -47,6 +48,7 @@ class Restaurant
   end
 
 end
+
 
 # monks = Restaurant.new
 # monks.add_dish('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
