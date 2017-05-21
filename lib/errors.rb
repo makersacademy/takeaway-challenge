@@ -5,7 +5,6 @@ class MenuError < StandardError
   end
 end
 
-
 class OrderTotalError < StandardError
   def initialize(error_message = 'Your expected total differs from the calculated total!')
     super
