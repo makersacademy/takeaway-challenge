@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   subject(:order) { described_class.new }
-  let(:dish) {double(:dish)}
+  let(:dish) { double(:dish) }
 
   it 'when starting the order, there is nothing listed' do
     expect(order.items).to eq []

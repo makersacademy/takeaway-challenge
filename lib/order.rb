@@ -1,3 +1,6 @@
+require_relative 'menu'
+require_relative 'dish'
+
 class Order
 
   attr_reader :items
