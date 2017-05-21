@@ -1,11 +1,14 @@
 require_relative 'menu'
+require_relative 'display'
+
 class Takeaway
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :display
 
-  def initialize
+  def initialize(display = Display.new)
     @menu = Menu.new
     @basket = []
+    @display = display
   end
 
   def lists_dishes_with_prices
@@ -52,6 +55,7 @@ class Takeaway
     @menu.dessert
   end
 
+# TODO need to make sure this loop can end, convert to while loop?
   def interactive_menu
     loop do
       print_menu
@@ -78,28 +82,34 @@ class Takeaway
     end
   end
 
+  # TODO test has display double- responsibility give right key to exit the program as 7 x
   # TODO this is basically lifted from student directory precourse exercise- would be good to figure out a new way to solve this problem
   def place_orders
     puts "Take a note of the order numbers from our menu: #{lists_dishes_with_prices}"
     puts "Enter the order numbers you'd like to add to your basket:"
     puts "Remember, to exit select 7 or hit double space twice"
-    # get the first order
-    order_num = STDIN.gets.chomp
-    # while the order_na    me is not empty, repeat this code
+    order_num = @display.read_input
     while !order_num.empty? do
-      # add the order number to the basket array
-      @basket << order_num
-      # get another order number from the user
-      order_num = STDIN.gets.chomp
+      @basket << order_num.to_i
+      order_num = @display.read_input
     end
   end
 
   def print_orders
-    if @basket.count == 1
+    if @basket.count == 0
+      puts "You have made no orders!"
+    elsif @basket.count == 1
       puts "You have 1 order: order number #{@basket.join(', ')}"
     else
       puts "You have #{@basket.count} orders: order numbers #{@basket.join(', ')}"
     end
+  end
+
+  def calculates_order_cost
+    @menu.include? @basket 
+    #I need to acccess the numbers in the basket array which are keys to
+    @basket.
+    reduce(:+)
   end
 
 end

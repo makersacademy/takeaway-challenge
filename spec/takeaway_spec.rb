@@ -1,5 +1,6 @@
 require './lib/takeaway.rb'
 require './lib/menu.rb'
+require './lib/display.rb'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
@@ -57,25 +58,44 @@ describe Takeaway do
   # TODO work out how to check an interactive_menu in a test
   xdescribe '#interactive_menu' do
     it 'loads the #print_menu and #process_menu' do
-      expect { takeaway.interactive_menu }.to output(//).to_stdout
+      expect { takeaway.interactive_menu }.to output(/1. Place orders\n 2. Show order selections\n7. Exit/).to_stdout
     end
   end
 
   # TODO work out how to check place_orders in a test
-  xdescribe '#place_orders' do
-    it 'collects the order number & stores it in the basket' do
-      STDIN = 1
-      takeaway.place_orders
-      expect { takeaway.basket}.to eq 1
+  describe '#place_orders' do
+    it 'puts order numbers in basket' do
+      fake_display = double(:display)
+      allow(fake_display).to receive(:read_input).and_return("7", "")
+      takeaway1 = Takeaway.new(fake_display)
+      takeaway1.place_orders
+      expect(takeaway1.basket).to eq [7]
     end
   end
 
-  # TODO work out how to check print_orders in a test
-  describe '#print_orders' do
-    xit 'prints the order numbers from the basket' do
-      let(:quantity) { takeaway.basket << 1 }
-      expect { takeaway.prints_orders }.to output(/You have 1 item in your basket/).to_stdout
+  # TODO work out how to check place_orders in a test
+  xdescribe '#print_orders' do
+    it 'prints the order numbers from the basket' do
+       fake_balance = double(:balance, [1,2,3])
+       allow(fake_balance).to receive(:print_orders).sys.stdout(/You have 3 orders: order numbers 1,2,3/)
+      expect { takeaway.prints_orders }.to eq "You have 3 orders: order numbers 1,2,3"
+  end
+end
+
+# TODO work out how to check this method properly as right now it doesn't actually check that the method works
+  describe '#calculates_order_cost' do
+    it 'calculates the cost of one order' do
+      fake_basket = double(:basket)
+      allow(fake_basket).to receive(:calculates_order_cost).and_return(12)
+      expect(fake_basket.calculates_order_cost).to eq 12
+    end
+    it 'calculates the cost of more than one order' do
+      fake_basket = double(:basket)
+      allow(fake_basket).to receive(:calculates_order_cost).and_return(27)
+      expect(fake_basket.calculates_order_cost).to eq 27
     end
   end
+
+  describe '#checks order cost matches sum of all the orders from the basket'
 
 end
