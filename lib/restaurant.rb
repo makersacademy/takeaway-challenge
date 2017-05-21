@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require_relative 'notifier'
 require_relative 'menu'
 
