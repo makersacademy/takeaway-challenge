@@ -1,6 +1,6 @@
 require 'takeaway'
 
-describe Takeway do
+describe Takeaway do
 
   subject(:takeaway) { described_class.new }
 
@@ -13,6 +13,19 @@ describe Takeway do
     expect(takeaway.show_menu).to include "Curry -- £8"
   end
   it 'allows the customer to start creating an order from scratch' do
-    expect(takeaway.create_order).to be_a(Order)
+    expect(takeaway.order).to be_a(Order)
+  end
+  it 'allows the customer to add items onto the takeaway order' do
+    takeaway.add_item_to_order("Curry")
+    expect(takeaway.order.items[0]).to be_a(Dish)
+  end
+  it 'shows the order total when items added' do
+    takeaway.add_item_to_order("Burger")
+    expect(takeaway.order.total_cost).to eq 9
+  end
+  it 'shows the customer the order total' do
+    takeaway.add_item_to_order("Burger")
+    takeaway.add_item_to_order("Soup")
+    expect(takeaway.order_total).to eq 15
   end
 end
