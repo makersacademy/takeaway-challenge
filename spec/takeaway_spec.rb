@@ -6,7 +6,7 @@ describe Takeaway do
   let(:order) { takeaway.create_new_order(:menu_item, TAKEAWAY_PRICE[:price]) }
 
   it 'should show the full menu by default' do
-    expect(takeaway.view_menu).to include(:pizza_dishes)
+    expect(takeaway.view_menu).to include(:pizza, :pasta)
   end
 
   it 'should allow the user to create an order' do

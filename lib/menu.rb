@@ -2,30 +2,26 @@
 
 class Menu
 
-  attr_reader :pizza, :pasta
+  attr_reader :menu_items
 
   def initialize
-    # @pizza = {}
-    # @pasta = {}
+    @menu_items = { :pizza => { :margherita => 9.50,
+                              :fiorentina => 11.95,
+                              :rustica => 11.95,
+                              :diavolo => 12.45
+                              },
+                    :pasta => { :spaghetti => 10.00,
+                              :lasagne => 9.95,
+                              :vegetarian_lasagne => 6.50
+                              }
+                  }
   end
 
   def view_menu
-    { :pizza_dishes => pizza_dishes, :pasta_dishes => pasta_dishes }
-  end
-
-  def pizza_dishes
-    @pizza = { :margherita => 9.50,
-              :fiorentina => 11.95,
-              :rustica => 11.95,
-              :diavolo => 12.45
-            }
-  end
-
-  def pasta_dishes
-    @pasta = { :spaghetti => 10.00,
-            :lasagne => 9.95,
-            :vegetarian_lasagne => 6.50
-          }
+    @menu_items.each do |style_of_food, dishes|
+      p "#{style_of_food}:"
+      dishes.each { |dish, price| p "#{dish} - £#{price}" }
+    end
   end
 
 end
