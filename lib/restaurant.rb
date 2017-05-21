@@ -43,16 +43,3 @@ class Restaurant
   end
 
 end
-
-monks = Restaurant.new
-monks.add_dish('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
-monks.add_dish('Big Salad', 'Big lettuce, big carrots, tomatoes like volleyballs!', 6)
-monks.add_dish('Pretzels', 'These pretzels are making me thirsty!', 2)
-monks.add_dish('Soup', 'No soup for you!', 4)
-monks.add_dish('Calzone', 'Cheese, pepperoni, eggplant!', 3.5)
-monks.add_dish('Muffin Top', 'Top of the muffin to you!', 1.5)
-monks.order(4, 3)
-monks.order(2, 2)
-monks.order(5)
-monks.order(1)
-monks.finalise_order(35.5)
