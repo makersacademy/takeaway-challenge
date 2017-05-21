@@ -11,6 +11,7 @@ class Order
   end
 
   def add_dish(dish, quantity = 1)
+    valid_dish?(dish)
     @items[dish] = 0 unless items[dish]
     @items[dish] += quantity
   end
@@ -24,5 +25,11 @@ class Order
   def finalize_order
   end
 
+  def valid_dish?(dish)
+    @menu.list.each do |menu_item|
+      return true if dish == menu_item[:name]
+    end
+    raise 'Item not found'
+  end
   
 end
