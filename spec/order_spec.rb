@@ -17,7 +17,7 @@ describe Order do
     end
   end
 
-  describe '#order_total' do
+  describe '#total' do
     it 'gives the order total' do
       order.add_dish("Chicken Burguer", 2)
       expect(order.order_total).to eq 16

@@ -1,11 +1,12 @@
 
 class Order
 
-  attr_reader :items, :menu
+  attr_reader :items, :menu, :status, :id
   attr_writer :items
 
   def initialize(menu)
     @items = []
+    @id = nil
     @status = :new
     @menu = menu
   end
@@ -22,7 +23,7 @@ class Order
     get_dish_info_from_menu(dish)
   end
 
-  def order_total
+  def total
     total = 0
     @items.each do |item|
       total += item[:price] * item[:quantity]
@@ -35,7 +36,13 @@ class Order
     @dish = nil
   end
 
-  def finalize_order
+  def finalize(order_id)
+    @status = :finalized
+    @id = order_id
+  end
+
+  def accepted
+    @status = :finalized
   end
 
   def get_dish_info_from_menu(dish)
