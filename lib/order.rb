@@ -10,5 +10,7 @@ class Order
   def get_total
     price_list = @current_order.map { |e| e.values }
     @order_total = price_list.flatten.inject(:+)
+    puts "Your order comes to #{@order_total}."
+    puts "You ordered: #{@current_order.each { |x| puts x }}"
   end
 end

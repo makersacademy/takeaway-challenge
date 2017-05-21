@@ -9,8 +9,11 @@
 |         |    verify_total_cost?         |
 |         |    receive_confirmation?         |
 | Restaurant         |   has_menu?          |
+|        |   can_send_confirmation?        |
 | Menu        |   has_meals?         |
 |        |   has_prices?         |
+| Order       |   has_items?        |
+|       |   has_totals?        |
 
 
 ## User stories in original format:
