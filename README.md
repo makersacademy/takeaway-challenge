@@ -90,9 +90,9 @@ Tools Used
 - Cybernetic style enforcement from the future:
   Rubocop - v0.48.1
   
-- SMS Messaging API: Twilio - 4.13.0
+- SMS Messaging API: Twilio - v4.13.0
 
-- Domain-specific language: Sinatra - 2.0.0 
+- Domain-specific language: Sinatra - v2.0.0 
 
 Acknowledgement
 ---------------
