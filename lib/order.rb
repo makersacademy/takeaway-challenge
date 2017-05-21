@@ -22,7 +22,7 @@ class Order
     @order_total
   end
 
-  def print_current_order_detail
+  def print_order_detail
     @current_order.each do |item|
       item.each do |menu_item, price|
         p "#{menu_item} - #{price}"

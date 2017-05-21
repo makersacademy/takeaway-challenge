@@ -15,17 +15,17 @@ describe Takeaway do
   end
 
   it "returns an error if current order is empty" do
-    expect { takeaway.view_current_order }.to raise_error 'No items currently ordered'
+    expect { takeaway.view_order }.to raise_error 'No items currently ordered'
   end
 
   it 'allows a user to select an item from the menu' do
     takeaway.create_new_order(:menu_item, TAKEAWAY_PRICE[:price])
-    expect { takeaway.select_dish(:menu_item, TAKEAWAY_PRICE[:price]) }.to change { takeaway.view_current_order.length }.by 1
+    expect { takeaway.select_dish(:menu_item, TAKEAWAY_PRICE[:price]) }.to change { takeaway.view_order.length }.by 1
   end
-  
+
   it 'prints the full order and total price' do
     takeaway.create_new_order(:menu_item, TAKEAWAY_PRICE[:price])
     takeaway.select_dish(:menu_item, TAKEAWAY_PRICE[:price])
-    expect { takeaway.print_current_order }.to output("\"menu_item - 10\"\n\"menu_item - 10\"\n").to_stdout
+    expect { takeaway.print_order }.to output("\"menu_item - 10\"\n\"menu_item - 10\"\n").to_stdout
   end
 end
