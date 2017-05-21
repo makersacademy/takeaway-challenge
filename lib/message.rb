@@ -14,11 +14,12 @@ class Message
     @client = Twilio::REST::Client.new @account_sid, @auth_token
 
     calculate_time
-    @client.account.messages.create(
+    message = @client.account.messages.create(
        :from => @twilio_number,
        :to => @customer_number,
-       :body => "Yum, your delicious order is on its way! Total cost will be £#{price}, and arrives at #{@time_order}. Enjoy! \u{1F35D}"
+       :body => "So delicious, and no animals?! Here is one happy piggy. \u{1F437} Total cost will be £#{price}, and arrives at #{@time_order}. Enjoy!"
     )
+    message.to
    end
 
    private
