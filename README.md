@@ -1,3 +1,8 @@
+Using Takeaway Challenge Exemplar Youtube video as guide
+--------------------------------------------------------
+https://www.youtube.com/watch?v=mgiJKdH9x8c
+
+
 Takeaway Challenge
 ==================
 ```
