@@ -1,6 +1,4 @@
 
-class OrderTotalError < StandardError; end
-
 # This will be populated with the customer's menu choices and will contain the order total.
 class Order
   attr_reader :basket, :total

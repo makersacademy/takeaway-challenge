@@ -4,6 +4,7 @@ require_relative './printer'
 require_relative './dish'
 require_relative './order'
 require_relative './messenger'
+require_relative './errors'
 
 # This is the main interface, representing a takeaway restaurant.
 class Restaurant
@@ -29,6 +30,7 @@ class Restaurant
   end
 
   def order(menu_number, quantity = 1)
+    raise(MenuError) if menu_number > @menu.dishes.count
     @order ||= Order.new
     @order_counter += 1 if @order.basket.empty?
     dish = @menu.dishes[menu_number - 1]
@@ -46,25 +48,11 @@ class Restaurant
 
 end
 
-monks = Restaurant.new
-
-monks.add_dish('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
-monks.add_dish('Big Salad', 'Big lettuce, big carrots, tomatoes like volleyballs!', 6)
-monks.add_dish('Pretzels', 'These pretzels are making me thirsty!', 2)
-monks.add_dish('Soup', 'No soup for you!', 4)
-monks.add_dish('Calzone', 'Cheese, pepperoni, eggplant!', 3.5)
-monks.add_dish('Muffin Top', 'Top of the muffin to you!', 1.5)
-monks.add_dish('Junior Mints', "It's chocolate, it's peppermint, it's delicious!", 0.5)
-
-monks.order(2, 1)
-monks.order(1)
-monks.order(2, 2)
-monks.order(4)
-monks.order(7, 4)
-puts
-monks.checkout(32)
-monks.order(4)
-monks.order(5)
-monks.checkout(7.5)
-
-
+# monks = Restaurant.new
+# monks.add_dish('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
+# monks.add_dish('Big Salad', 'Big lettuce, big carrots, tomatoes like volleyballs!', 6)
+# monks.add_dish('Pretzels', 'These pretzels are making me thirsty!', 2)
+# monks.add_dish('Soup', 'No soup for you!', 4)
+# monks.add_dish('Calzone', 'Cheese, pepperoni, eggplant!', 3.5)
+# monks.add_dish('Muffin Top', 'Top of the muffin to you!', 1.5)
+# monks.add_dish('Junior Mints', "It's chocolate, it's peppermint, it's delicious!", 0.5)
