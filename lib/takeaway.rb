@@ -13,8 +13,8 @@ class Takeaway
     list_of_food
   end
 
-  def select_dish(selected_dish)
-    current_order.add_dish(@menu.find_dish(selected_dish))
+  def select_dish(selected_dish, quantity = 1)
+    current_order.add_dish(@menu.find_dish(selected_dish), quantity)
   end
 
   def current_order

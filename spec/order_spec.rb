@@ -8,12 +8,12 @@ describe Order do
   it { is_expected.to respond_to :dishes }
 
   it 'returns an empty array of dish when creating a new dish' do
-    expect(subject.dishes).to eq []
+    expect(subject.dishes).to eq ({})
   end
 
   it 'can have dishes added' do
-    subject.add_dish(dish1)
-    expect(subject.dishes).to eq [dish1]
+    subject.add_dish(dish1, 1)
+    expect(subject.dishes).to eq ({dish1 => 1})
   end
 
   it 'returns the correct total price of the dishes in the order' do
