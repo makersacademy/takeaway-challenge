@@ -16,5 +16,11 @@ subject(:order) { described_class.new(menu) }
       order.select_dish("Saag Aloo")
       expect(order.meal).to include dish_02
     end
+    it "Raises and error if selection number isn't in the menu" do
+      expect{ order.select_dish(6) }.to raise_error "Sorry, that's not an item on the menu, please try again"
+    end
+    it "Raises and error if selection name isn't in the menu" do
+      expect{ order.select_dish("Big Mac") }.to raise_error "Sorry, that's not an item on the menu, please try again"
+    end
   end
 end
