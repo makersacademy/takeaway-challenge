@@ -13,14 +13,14 @@ describe Order do
   describe '#add_dish' do
     it 'adds a dish to the order list' do
       order.add_dish("Chicken Burguer", 1)
-      expect(order.items).to eq [{ name: "Chicken Burguer", description: "Spicy", price: 8 }]
+      expect(order.items).to eq [{ name: "Chicken Burguer", description: "Spicy", price: 8, quantity: 1 }]
     end
   end
 
   describe '#order_total' do
     it 'gives the order total' do
-      order.add_dish("Chicken Burguer", 1)
-      expect(order.order_total).to eq 8
+      order.add_dish("Chicken Burguer", 2)
+      expect(order.order_total).to eq 16
     end
 
   end
