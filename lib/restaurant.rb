@@ -3,7 +3,6 @@ require_relative 'notifier'
 require_relative 'menu'
 require_relative 'order'
 
-
 class Restaurant
 
   attr_reader :name, :address, :menu, :current_order
@@ -21,7 +20,6 @@ class Restaurant
   end
 
   def accept_customer_order
-
   end
 
   def cancel_customer_order
