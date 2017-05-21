@@ -28,12 +28,12 @@ describe Order do
     end
   end
 
-  describe '#total' do
+  describe '#calculate_total' do
     it 'shows the total price of current order' do
       order.add("chicken wings", 2)
-      expect(order.total).to eq "9.98"
+      expect(order.calculate_total).to eq "9.98"
       order.add("chicken burger", 3)
-      expect(order.total).to eq "20.45"
+      expect(order.calculate_total).to eq "20.45"
     end
   end
 end

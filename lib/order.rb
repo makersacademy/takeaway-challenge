@@ -14,4 +14,8 @@ class Order
   def summary
     @list.map { |dish, amount| "#{dish} x#{amount} = #{@menu.dishes[dish]*amount}" }.join(", ")
   end
+
+  def calculate_total
+    '%.2f' % @list.map { |dish, amount| @menu.dishes[dish.to_sym] * amount }.sum
+  end
 end
