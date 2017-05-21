@@ -26,7 +26,7 @@ Functionality
   * Collect dishes selected from the menu into a meal.
   * Calculate total cost of meal from individual dish prices.
   * Allows a user to view how many of each dish their is in their meal, and price.
-  * Allows user to finalise their meal and make a payment.
+  * Allows user to confirm their final order.
   * Sends a text to the user to confirm their order has been placed.
 2. Menu
   * List all available dishes and prices.
@@ -89,6 +89,10 @@ Tools Used
 
 - Cybernetic style enforcement from the future:
   Rubocop - v0.48.1
+  
+- SMS Messaging API: Twilio - v4.13.0
+
+- Domain-specific language: Sinatra - v2.0.0 
 
 Acknowledgement
 ---------------
