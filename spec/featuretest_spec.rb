@@ -16,3 +16,5 @@ order.select_food(:breaded_aubergine, 1)
 puts "Order taken: #{order.order_list}"
 
 puts "Total: #{order.show_total}"
+
+# order.end_order

@@ -21,7 +21,7 @@ class Menu
   end
 
   def item_info
-    @dish = @selected_item[0].to_s.tr('_', ' ')
+    @dish = @selected_item[0].to_s.split('_').map(&:capitalize).join(' ')
     @price = @selected_item[1]
   end
 

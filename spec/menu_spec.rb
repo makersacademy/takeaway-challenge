@@ -6,7 +6,7 @@ describe Menu do
   describe '#add_item' do
     it 'adds a dish with a specific price to the menu' do
       menu.add_item(:bread, 3)
-      expect(menu.list).to eq ({bread: 3})
+      expect(menu.list).to eq({ bread: 3 })
     end
   end
 
@@ -27,7 +27,7 @@ describe Menu do
     end
     it 'selects the chosen dish from the menu list' do
       menu.selected_item(:bean_burger)
-      expect(menu.dish).to eq "bean burger"
+      expect(menu.dish).to eq "Bean Burger"
       expect(menu.price).to eq 8
     end
     it 'raises an error if the selected item is not on the list' do

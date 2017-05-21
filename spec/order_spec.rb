@@ -4,9 +4,7 @@ describe Order do
   subject(:order) { described_class.new }
   let(:menu) { double(:menu) }
 
-
   describe '#select_food' do
-
   end
 
   describe '#show_total' do
