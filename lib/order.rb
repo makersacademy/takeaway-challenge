@@ -3,31 +3,32 @@ class OrderTotalError < StandardError; end
 
 # This will be populated with the customer's menu choices and will contain the order total.
 class Order
-  attr_reader :items, :total
+  attr_reader :basket, :total
 
   @@order_count = 0
 
   def initialize
-    @items = []
-    @printer = Printer.new
-    @total = 0
-    @messenger = Messenger.new
     @@order_count += 1
+    @basket = []
+    @total = 0
+    @printer = Printer.new
+    @messenger = Messenger.new
   end
 
   def order_number
     @@order_count
   end
 
-  def add_to_order(dish, quantity)
-    @items << [dish, quantity]
+  def add_to_basket(dish, quantity)
+    @basket << [dish, quantity]
+    "#{quantity} x #{dish.name} has been added to your basket!"
   end
 
   def calculate_total
-    @items.each { |order_item| @total += (order_item[0].price * order_item[1]) }
+    @basket.each { |order_item| @total += (order_item[0].price * order_item[1]) }
   end
 
-  def show_order
+  def show_basket
     calculate_total
     @printer.print(self)
     @total = 0

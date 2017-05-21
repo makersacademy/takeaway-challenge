@@ -21,9 +21,9 @@ class Printer
 
   def print_order(order)
     puts "Order no. #{order.order_number}:\n------"
-    order.items.each { |order_item| puts "• #{order_item[0].name} x #{order_item[1]}" }
+    order.basket.each { |order_item| puts "• #{order_item[0].name} x #{order_item[1]}" }
     puts '------'
-    puts "Total: £#{order.total}"
+    puts "Sub-Total: £#{order.total}"
   end
 
 end

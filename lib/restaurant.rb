@@ -30,11 +30,11 @@ class Restaurant
   def order(menu_number, quantity = 1)
     @order ||= Order.new
     dish = @menu.dishes[menu_number - 1]
-    @order.add_to_order(dish, quantity)
+    puts @order.add_to_basket(dish, quantity)
   end
 
-  def view_order
-    @order.show_order
+  def view_basket
+    @order.show_basket
   end
 
   def finalise_order(expected_order_total)
@@ -43,3 +43,21 @@ class Restaurant
   end
 
 end
+
+monks = Restaurant.new
+
+monks.add_dish('Kung Pao Chicken', 'George likes his chicken spicy!', 8)
+monks.add_dish('Big Salad', 'Big lettuce, big carrots, tomatoes like volleyballs!', 6)
+monks.add_dish('Pretzels', 'These pretzels are making me thirsty!', 2)
+monks.add_dish('Soup', 'No soup for you!', 4)
+monks.add_dish('Calzone', 'Cheese, pepperoni, eggplant!', 3.5)
+monks.add_dish('Muffin Top', 'Top of the muffin to you!', 1.5)
+monks.add_dish('Junior Mints', "It's chocolate, it's peppermint, it's delicious!", 0.5)
+
+monks.order(2, 1)
+monks.order(1)
+monks.order(2, 2)
+monks.order(4)
+monks.order(7, 4)
+puts
+monks.view_basket
