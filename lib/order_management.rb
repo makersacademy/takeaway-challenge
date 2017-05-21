@@ -1,6 +1,7 @@
 class OrderManagement
 
-  def order_by_commandline(order_hash)
+  def order_by_commandline(order_hash,menu_items)
+    order_hash[:basket].each {|item| raise "Sorry, '#{item[:name]}' is not on our menu" unless is_item_of_menu?(item[:name],menu_items)}
   end
 
 
