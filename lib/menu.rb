@@ -21,5 +21,10 @@ class Menu
   def has_dish?(dish)
     !dishes[dish].nil? # can also use !!dishes[dish]
   end
+
+  def price(dish)
+    dishes[dish]
+  end
+
 end
 
