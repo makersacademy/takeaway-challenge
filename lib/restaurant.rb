@@ -12,6 +12,7 @@ class Restaurant
 
   def checkout
     @order.current_order.concat(@menu.basket)
+    @menu.basket.clear
   end
 
 end
