@@ -13,6 +13,7 @@ class Menu
 
   def order_item(list_number, quantity)
     quantity.times { @basket << @dishes[list_number - 1] }
+    "You added #{quantity} #{(@dishes[list_number - 1].keys)[0]}(s) to your basket!"
   end
 
 end
