@@ -12,8 +12,8 @@ class Menu
   end
 
   def list_menu
-    @menu_list.each do |item, price|
-    puts "#{item.ljust(20)}    £#{price}"
+    @menu_list.each_with_index do |(dish, price), index|
+      puts "#{index + 1}. #{dish.ljust(20)}    £#{price}"
     end
   end
 
