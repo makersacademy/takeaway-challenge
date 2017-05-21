@@ -1,4 +1,5 @@
 require 'dotenv/load'
+Dotenv.load('settings.env')
 require_relative 'notifier'
 require_relative 'menu'
 require_relative 'order'
@@ -20,6 +21,7 @@ class Restaurant
   end
 
   def accept_customer_order
+    @notifier.send_message("Your order was accepted")
   end
 
   def cancel_customer_order

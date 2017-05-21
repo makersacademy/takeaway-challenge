@@ -14,7 +14,7 @@ class Order
     valid_dish?(dish)
     get_dish_info_from_menu(dish)
     @dish[:quantity] = quantity
-    @items << @dish
+    save_dish
   end
 
   def remove_dish(dish)
@@ -28,6 +28,11 @@ class Order
       total += item[:price] * item[:quantity]
     end
     total
+  end
+  
+  def save_dish
+    @items << @dish
+    @dish = nil
   end
 
   def finalize_order
