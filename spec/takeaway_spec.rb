@@ -6,6 +6,11 @@ describe Takeaway do
   let(:dish2) { double :dish, :name => 'chips', :price => 3 }
   let(:menu) { double :menu, :dishes => [dish1, dish2], :find_dish => dish2 }
   let(:menu_class) { double :menu_class, :new => menu }
+  let(:message) { double :message, :sid => 'ID' }
+  let(:messages) { double :messages, :create => message }
+  let(:account) { double :account, :messages => messages }
+  let(:client) { double :client, :account => account }
+  let(:client_class) { double :client, :new => client }
   let(:subject) { Takeaway.new(menu_class) }
 
   it 'read_menu returns a menu object' do
@@ -24,8 +29,12 @@ describe Takeaway do
   it 'show_order shows the total sum of ordered food and the order' do
     allow(menu).to receive(:find_dish).and_return(dish1, dish2)
     subject.select_dish('milk')
-    subject.select_dish('chip')
+    subject.select_dish('chips')
     expect { subject.show_order }.to output("1. milk, £2\n2. chips, £3\nTotal: £5\n").to_stdout
+  end
+
+  it 'mocks the twilio client interface' do
+    expect(client.account.messages.create.sid).to eq 'ID'
   end
 
 end

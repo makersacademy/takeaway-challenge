@@ -27,4 +27,8 @@ class Takeaway
     puts "Total: £#{current_order.total_price}"
   end
 
+  def place_order
+    
+  end
+
 end
