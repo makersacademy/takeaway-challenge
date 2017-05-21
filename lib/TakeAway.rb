@@ -26,4 +26,9 @@ class Takeaway
   def total
     @basket.calculate_total
   end
+
+  def checkout(amount)
+    raise "Sorry, that amount does not match your order total, please try again" unless @basket.try_complete(amount)
+    "Order placed - please see your mobile for delivery details"
+  end
 end

@@ -23,6 +23,21 @@ describe Takeaway do
     end
   end
 
+  describe '#checkout' do
+    before do
+      takeaway.add_to_order("chicken wings", 2)
+      takeaway.add_to_order("chicken burger", 3)
+    end
+
+    it 'confirms the order is complete' do
+      expect(takeaway.checkout(20.45)).to eq "Order placed - please see your mobile for delivery details"
+    end
+
+    it 'raises an error if given amount is incorrect' do
+      expect{ takeaway.checkout(20.46) }.to raise_error "Sorry, that amount does not match your order total, please try again"
+    end
+  end
+
   describe 'Feature tests' do
 
     describe '#basket_summary' do
@@ -42,14 +57,6 @@ describe Takeaway do
         expect(takeaway.total).to eq "9.98"
         takeaway.add_to_order("chicken burger", 3)
         expect(takeaway.total).to eq "20.45"
-      end
-    end
-
-    describe '#checkout' do
-      it 'confirms the order is complete' do
-        takeaway.add_to_order("chicken wings", 2)
-        takeaway.add_to_order("chicken burger", 3)
-        expect(takeaway.checkout(20.45)).to eq "Order placed - please see your mobile for delivery details"
       end
     end
   end
