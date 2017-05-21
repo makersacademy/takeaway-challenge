@@ -15,15 +15,20 @@ class Order
     @basket[dish] -= quantity
   end
 
+  def review_order
+    @basket.dup
+  end
+
+  def clear_order
+    @basket = Hash.new(0)
+  end
+
   private
 
-  def not_in_basket?(dish,quantity) 
+  def not_in_basket?(dish,quantity)
     @basket[dish] < quantity || @basket[dish] == nil
   end
 
-
-# add_dish
-# remove_dish
 # review_order
 # clear_order
 

@@ -32,7 +32,22 @@ describe Order do
       order.add_dish(menu_item)
       expect{ order.remove_dish(menu_item2) }.to raise_error("Not in basket")
     end
+  end
 
+  describe '#review_order' do
+    it 'lets you view basket at any point while ordering' do
+      order.add_dish(menu_item)
+      expect(order.review_order).to eq order.basket
+    end
+  end
+
+  describe '#clear_order' do
+    it 'lets you clear basket at any point while ordering' do
+      order.add_dish(menu_item)
+      order.add_dish(menu_item2)
+      order.clear_order
+      expect(order.basket).to be_empty
+    end
   end
 
 end
