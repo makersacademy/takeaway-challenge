@@ -15,7 +15,7 @@ class Order
     @basket[dish] -= quantity
   end
 
-  def review_order
+  def review_order #could be returned as string?
     @basket.dup
   end
 
