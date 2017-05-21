@@ -1,11 +1,13 @@
+require_relative 'menu'
+
 class Takeaway
 
-  def initialize(menu)
+  def initialize(menu = Menu.new)
     @menu = menu
   end
 
   def print_menu
-    "Chips: 1.50"
+    @menu
   end
 
 end

@@ -5,6 +5,7 @@ describe Takeaway do
 
   let(:menu) { double(:menu) }
   it "prints menu" do
-    expect(takeaway.print_menu).to eq ("Chips: 1.50")
+    allow(takeaway).to receive(:print_menu) {:menu}
+    expect(takeaway.print_menu).to eq :menu
   end
 end
