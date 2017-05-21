@@ -11,7 +11,7 @@ class Order
 
   def total_price
     total_price = 0
-    @dishes.each {|dish, quantity| total_price += dish.price * quantity }
+    @dishes.each { |dish, quantity| total_price += dish.price * quantity }
     total_price
   end
 

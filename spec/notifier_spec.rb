@@ -7,7 +7,7 @@ describe Notifier do
   let(:account) { double :account, :messages => messages }
   let(:client) { double :client, :account => account }
   let(:client_class) { double :client, :new => client }
-  let(:subject) { Notifier.new(client_class)}
+  let(:subject) { Notifier.new(client_class) }
 
   it 'sends a message' do
     message = 'Thank you for your order.'

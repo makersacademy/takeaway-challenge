@@ -30,7 +30,6 @@ describe Takeaway do
     expect { subject.show_order }.to output("1. 1x milk, £2\n2. 2x chips, £3\nTotal: £8\n").to_stdout
   end
 
-
   it 'raise an error if the order total is not correct when order is placed' do
     subject.select_dish('milk')
     subject.select_dish('chips')

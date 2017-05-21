@@ -20,6 +20,4 @@ class Notifier
 
   end
 
-
-
 end
