@@ -11,6 +11,6 @@ class Menu
   end
 
   def print_dishes
-    dishes.each { |dish, price| puts "#{dish}: #{price}" }
+    dishes.map { |dish, price| "#{dish}: #{price}" }.join(", ")
   end
 end
