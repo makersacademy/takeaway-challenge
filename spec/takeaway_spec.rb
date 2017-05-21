@@ -20,11 +20,12 @@ describe Takeaway do
   it 'show_order shows a total of zero when no food is ordered' do
     expect { subject.show_order }.to output("Total: £0\n").to_stdout
   end
-  
+
   it 'show_order shows the total sum of ordered food and the order' do
+    allow(menu).to receive(:find_dish).and_return(dish1, dish2)
     subject.select_dish('milk')
     subject.select_dish('chip')
-    expect(subject.show_order).to output("1. milk, £2\n2.chips, £3\nTotal: £5\n").to_stdout
+    expect { subject.show_order }.to output("1. milk, £2\n2. chips, £3\nTotal: £5\n").to_stdout
   end
 
 end

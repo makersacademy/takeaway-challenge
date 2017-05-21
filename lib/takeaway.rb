@@ -21,6 +21,9 @@ class Takeaway
   end
 
   def show_order
+    current_order.dishes.each_with_index do |dish, index|
+      puts "#{index + 1}. #{dish.name}, £#{dish.price}"
+    end
     puts "Total: £#{current_order.total_price}"
   end
 
