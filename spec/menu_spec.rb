@@ -16,4 +16,10 @@ describe Menu do
     end
   end
 
+  describe '#order_item' do
+    it 'should move a selected item from @dishes to @current_order' do
+      expect(subject.current_order).to eq []
+    end
+  end
+
 end
