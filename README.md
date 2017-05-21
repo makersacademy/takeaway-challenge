@@ -95,3 +95,5 @@ Acknowledgement
 Thanks to Chris Harrop (github: bannastre) for writing a great README which I pilfered from mercilessly.
 
 Thanks to Makers Academy (github: makersacademy) and Sam Morgan (github: sjmog) for teaching me to do the code good(we hope.)
+
+Thanks to Charlotte Feather (github: Charliefea), Charlotte Fereday (github: charlottebrf), Michael Jacobson (github: michaelbjacobson) and Kye Bracey (github: Kynosaur) for showing me how to check my output before I wreck my output.
