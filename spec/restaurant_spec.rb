@@ -35,7 +35,7 @@ describe Restaurant do
       allow(menu).to receive(:new) { menu }
       allow(order).to receive(:new) { order }
       allow(order).to receive(:add_dish) { order.basket[item2] += 1}
-      expect{ restaurant.add_order(2, 1) }.to raise_error("Not on menu")
+      expect{ restaurant.add_order(2, 1) }.to raise_error(InvalidOption)
     end
 
   end

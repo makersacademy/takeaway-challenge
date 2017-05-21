@@ -19,11 +19,12 @@ class Order
   end
 
   def review_order
+    fail("Nothing in basket") if @basket.empty?
     @basket.map { |dish,quantity| [dish.name, quantity] }.to_h
   end
 
   def order_total
-    @basket.keys.map { |dish| dish.price.to_i * @basket[dish].to_f }.reduce(:+)
+    @basket.keys.map { |dish| dish.price.to_f * @basket[dish].to_f }.reduce(:+)
   end
 
 

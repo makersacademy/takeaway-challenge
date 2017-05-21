@@ -3,6 +3,8 @@ require_relative './menu.rb'
 require_relative './display.rb'
 require_relative './messager.rb'
 
+class InvalidOption < StandardError; end
+
 class Restaurant
   include Display
 
@@ -20,7 +22,7 @@ class Restaurant
   end
 
   def add_order(menu_number,quantity = 1)
-    raise("Not on menu") unless on_menu?(menu_number)
+    raise(InvalidOption) unless on_menu?(menu_number)
     dish = @menu.dishes[menu_number - 1]
     @current_order.add_dish(dish,quantity)
   end
