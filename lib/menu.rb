@@ -3,7 +3,7 @@ require_relative './dish.rb'
 class Menu
 
   DEFAULT_DISHES = "mexican_dishes.csv"
-  attr_reader :dishes 
+  attr_reader :dishes
 
   def initialize
     @dishes = []
@@ -20,7 +20,7 @@ class Menu
     file = File.open(filename,"r")
     File.foreach(file) do |line|
       name, price, description = line.chomp.split(',')
-      @dishes << Dish.new(name, price, description)
+      @dishes << Dish.new(name, '%.2f' % price, description)
     end
   end
 
