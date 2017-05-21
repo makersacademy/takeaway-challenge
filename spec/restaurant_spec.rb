@@ -20,5 +20,11 @@ describe Restaurant do
         subject.checkout
         expect(subject.order.current_order).to eq [{ "food" => 5 }]
       end
+
+      it 'should clear the contents of @basket' do
+        subject.menu.order_item(1, 1)
+        subject.checkout
+        expect(subject.menu.basket).to eq []
+      end
     end
 end
