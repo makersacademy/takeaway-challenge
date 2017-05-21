@@ -34,8 +34,9 @@ class Restaurant
   end
 
   def accept_customer_order(order_id)
-    @current_order = get_order_details(order_id) 
-    @notifier.send_message("Order #{order_id} was confirmed. 
+    @current_order = get_order_details(order_id)
+    @current_order.accepted
+    @notifier.send_message("Order #{order_id} was confirmed.
     The total amount is £#{@current_order.total} 
     and it will be delivered by #{delivery_time}")
   end

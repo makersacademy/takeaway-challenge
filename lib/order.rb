@@ -15,17 +15,13 @@ class Order
   def add_dish(dish, quantity)
     valid_dish?(dish)
     get_dish_info_from_menu(dish)
-    @dish[:quantity] = quantity
     save_dish
+    @items.last[:quantity] = quantity
   end
 
   def remove_dish(dish)
     valid_dish?(dish)
     get_dish_info_from_menu(dish)
-  end
-
-  def accepted
-    @status = :finalized
   end
 
   def get_dish_info_from_menu(dish)
@@ -41,6 +37,15 @@ class Order
     end
     total
   end
+
+  def finalize
+    @total = total
+    @status = :finalized
+  end
+
+  def accepted
+    @status = :accepted
+  end
   
   private
 
@@ -54,11 +59,6 @@ class Order
   def save_dish
     @items << @dish
     @dish = nil
-  end
-
-  def finalize
-    @total = total
-    @status = :finalized
   end
   
 end
