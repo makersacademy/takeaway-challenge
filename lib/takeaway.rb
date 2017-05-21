@@ -128,4 +128,10 @@ class Takeaway
     gives_orders_prices.reduce(:+)
   end
 
+  def prints_order_total
+    prices = gives_orders_prices().map { |price| "£" + price.to_s }.join(", ")
+    total = calculates_order_cost()
+    p "Thanks for ordering! Your combined orders total: #{prices} which gives a total of £#{total}"
+  end
+
 end

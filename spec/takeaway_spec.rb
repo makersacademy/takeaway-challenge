@@ -106,6 +106,14 @@ describe Takeaway do
     end
   end
 
-  describe '#checks order cost matches sum of all the orders from the basket'
+  describe '#prints_order_total' do
+    it 'prints the order total next to the prices of the order dishes' do
+      takeaway.basket.push(1,2,3)
+      takeaway.gives_orders_with_dishes_hash
+      takeaway.gives_orders_prices
+      takeaway.calculates_order_cost
+      expect { takeaway.prints_order_total }.to output(/Thanks for ordering! Your combined orders total: £4, £5, £12 which gives a total of £21/).to_stdout
+    end
+  end
 
 end
