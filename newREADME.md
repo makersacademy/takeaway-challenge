@@ -31,29 +31,30 @@ All prerequisites are available by running the command ```$ bundle```.
 You will need to run the command ```$ gem install bundle``` if you don't have bundle already installed.
 
 ### Structure ###
-    .
-    ├── CONTRIBUTING.md
-    ├── Gemfile
-    ├── Gemfile.lock
-    ├── LICENSE
-    ├── README.md
-    ├── Rakefile
-    ├── coverage
-    ├── docs
-    │   └── review.md
-    ├── lib
-    │   ├── delivery.rb
-    │   ├── menu.rb
-    │   ├── order.rb
-    │   └── takeaway.rb
-    ├── newREADME.md
-    ├── spec
-    │   ├── delivery_spec.rb
-    │   ├── menu_spec.rb
-    │   ├── order_spec.rb
-    │   ├── spec_helper.rb
-    │   └── takeaway_spec.rb
-    └── userstories.md
+      .
+      ├── CONTRIBUTING.md
+      ├── Gemfile
+      ├── Gemfile.lock
+      ├── LICENSE
+      ├── README.md
+      ├── Rakefile
+      ├── coverage
+      ├── docs
+      │   └── review.md
+      ├── lib
+      │   ├── auth_token.rb
+      │   ├── delivery.rb
+      │   ├── menu.rb
+      │   ├── order.rb
+      │   └── takeaway.rb
+      ├── newREADME.md
+      ├── spec
+      │   ├── delivery_spec.rb
+      │   ├── menu_spec.rb
+      │   ├── order_spec.rb
+      │   ├── spec_helper.rb
+      │   └── takeaway_spec.rb
+      └── userstories.md
 
 ### Development Methodology
 

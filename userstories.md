@@ -17,15 +17,14 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 
-Object    |   Message         |
---------- | ----------------- | --
-customer  | order something   |
-customer  | view_menu (with prices) |
-customer  | select several dishes |
-customer  | verify order      |
-customer  | check_total       |
-customer  | receive_text      |
-order     | have delivery time  |
-delivery  | send_delivery_note  |
-meal      | be ordered        |
-dishes    | have prices       |
+Object    |   Message               |
+--------- | ----------------------- | --
+takeaway  | create_new_order        |
+takeaway  | view_menu               |
+takeaway  | select_dish             |
+takeaway  | print_order (with total)|
+takeaway  | complete_order          |
+order     | add_to_order            |
+order     | order_total             |
+order     | print_order_detail      |
+delivery  | send_notification       |
