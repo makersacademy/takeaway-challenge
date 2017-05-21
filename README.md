@@ -26,7 +26,7 @@ miso soup, 2.0
 dorayaki, 3.5
 mochi, 3.5
 ```
-Let's order food! (via the list number and then quanitity desired)
+Let's order food! (via the list number and then quantity desired)
 ```
 2.4.0 :005 > japanese_restaurant.menu.order_item(1,1)
  => "You added 1 portions of edemame to your basket!"
