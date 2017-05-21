@@ -14,66 +14,49 @@ Takeaway Challenge
 
  ```
 
-Instructions
+What is it?
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Enables users to select dishes and the quantities of each dish from a set menu
 
-Task
+How it works?
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Sample code on Pry:
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+[1] pry(main)> require "./lib/order"
+=> true
+[2] pry(main)> order = Order.new
+=> #<Order:0x007f8251953618
+ @checkout=#<Checkout:0x007f8251953578>,
+ @meal=[],
+ @menu=#<Menu:0x007f82519535c8 @list_of_dishes={"chicken"=>4.99, "fish"=>5.5, "beef"=>4.99, "vegetarian"=>4.5}>>
+[3] pry(main)> order.selection_of_dish("chicken", 2)
+=> [{:dish=>"chicken", :price=>9.98}]
+[4] pry(main)> order.selection_of_dish("beef", 1)
+=> [{:dish=>"chicken", :price=>9.98}, {:dish=>"beef", :price=>4.99}]
+[5] pry(main)> order.selection_of_dish("vegetarian", 4)
+=> [{:dish=>"chicken", :price=>9.98}, {:dish=>"beef", :price=>4.99}, {:dish=>"vegetarian", :price=>18.0}]
+[6] pry(main)> order.delete_order("beef")
+=> [{:dish=>"chicken", :price=>9.98}, {:dish=>"vegetarian", :price=>18.0}]
+[7] pry(main)> order.order_summary
+You have selected 2 dishes: chicken at £9.98
+vegetarian at £18.0
+[nil, nil].This gives you a total price of £27.98=> nil
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+Language
+-----
+Ruby 2.4.0
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Gem files
+-----
+gem 'capybara'
+gem 'rake'
+gem 'rspec'
+gem 'rubocop'
+gem 'simplecov', require: false, group: :test
+gem 'simplecov-console', require: false, group: :test
+gem 'twilio-ruby'
 
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+* Notes: Unfortunately i was unable to fully complete this, and currently have 2 failing tests and need have answered 3/4 user stories
