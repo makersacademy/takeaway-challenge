@@ -1,3 +1,5 @@
+require_relative 'notifier'
+require_relative 'menu'
 
 class Restaurant
 
