@@ -1,9 +1,9 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new }
+  subject(:takeaway) {described_class.new}
 
-  it 'should open a new order' do
-    expect(takeaway).to respond_to(:order)
+  it "prints menu" do
+    expect(takeaway.print_menu).to eq ("Chips: 1.50")
   end
 end
