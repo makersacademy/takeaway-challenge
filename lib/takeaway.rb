@@ -107,6 +107,24 @@ class Takeaway
     end
   end
 
+  def gives_orders_with_dishes_hash
+    orders_values = []
+    @basket.each do |order_num|
+      orders_values << menu_starters.fetch(order_num) if menu_starters.has_key?(order_num)
+      orders_values << menu_main_course.fetch(order_num) if menu_main_course.has_key?(order_num)
+      orders_values << menu_dessert.fetch(order_num) if menu_dessert.has_key?(order_num)
+    end
+    orders_values
+  end
+
+  def print_orders_price
+    price_list = []
+    @order_values.each do |dish, price|
+      price_list << @order_values[price]
+    end
+    price_list
+  end
+
   def calculates_order_cost
     @menu.include? @basket 
     #I need to acccess the numbers in the basket array which are keys to
