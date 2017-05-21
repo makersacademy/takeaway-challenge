@@ -17,4 +17,10 @@ class Restaurant
     "Your chosen items have been moved to your order!"
   end
 
+
+  def send_SMS
+    Notifier.new if @order.order_total != nil
+  end
+
+
 end
