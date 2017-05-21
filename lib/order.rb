@@ -23,8 +23,11 @@ class Order
   end
 
   def calculate_total
-    sum = 0
-    @total.each { |price| sum += price }
-    sum
+    @bill_me = @total.inject(0, :+)
+  end
+
+  def display_total
+    raise "Ooops! Error! Try again!" if @bill_me != @total.inject(0, :+)
+    p "Your total for this order is £#{@bill_me}."
   end
 end
