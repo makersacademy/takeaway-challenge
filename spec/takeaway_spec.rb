@@ -33,7 +33,9 @@ describe Takeaway do
 
     it 'confirms the order is complete' do
       allow(full_order).to receive(:try_complete).with(20.45).and_return true
-      expect(takeaway.checkout(20.45)).to eq "Order placed - please see your mobile for delivery details"
+      allow(full_order).to receive(:summary).and_return "chicken wings x2 = 9.98, chicken burger x3 = 10.47"
+      expect(takeaway).to receive(:send_message)
+      takeaway.checkout(20.45)
     end
 
     it 'raises an error if given amount is incorrect' do

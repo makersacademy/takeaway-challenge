@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'twilio'
 
 class Takeaway
   attr_reader :basket, :menu
@@ -7,6 +8,7 @@ class Takeaway
   def initialize
     @menu = Menu.new
     @basket = Order.new
+    @sms_provider = Sms.new
   end
 
   def show_menu
@@ -29,6 +31,12 @@ class Takeaway
 
   def checkout(amount)
     raise "Sorry, that amount does not match your order total, please try again" unless @basket.try_complete(amount)
-    "Order placed - please see your mobile for delivery details"
+    send_message(@basket.summary, Time.now)
+    "Order placed - please see text message for delivery details"
+  end
+
+  private
+  def send_message(order, time)
+    @sms_provider.send_sms(order, time + (60*60))
   end
 end
