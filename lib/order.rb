@@ -10,6 +10,16 @@ class Order
     @basket[dish] += quantity
   end
 
+  def remove_dish(dish, quantity = 1) #Make custom error!
+    fail("Not in basket") if not_in_basket?(dish,quantity)
+    @basket[dish] -= quantity
+  end
+
+  private
+
+  def not_in_basket?(dish,quantity) 
+    @basket[dish] < quantity || @basket[dish] == nil
+  end
 
 
 # add_dish
