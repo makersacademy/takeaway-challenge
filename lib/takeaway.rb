@@ -16,13 +16,15 @@ class Takeaway
   end
 
   def create_new_order(menu_item, price)
+    @menu.confirm_menu_item(menu_item)
     @order = Order.new(menu_item, price, Time.now)
     @order.current_order
   end
 
   def select_dish(menu_item, price)
+    create_new_order(menu_item, price) unless @order
+    @menu.confirm_menu_item(menu_item)
     @order.add_to_order(menu_item, price)
-    @order.current_order
   end
 
   def print_order

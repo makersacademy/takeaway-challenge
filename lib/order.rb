@@ -32,6 +32,4 @@ class Order
     end
   end
 
-
-
 end

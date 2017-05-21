@@ -10,8 +10,8 @@ class Delivery
 
   def initialize(order_time)
     @delivery_time = (order_time + DELIVERY_ESTIMATE).strftime("%I:%M %p")
-    @send_sms_from_number = '+441952780147'
-    @user_contact_number = '+447843627130'
+    @send_sms_from_number = Authorization::AUTH_SMS_SENDER_NUMBER
+    @user_contact_number = Authorization::USER_CONTACT_NUMBER
   end
 
   def send_notification

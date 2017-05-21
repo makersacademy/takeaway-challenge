@@ -40,5 +40,4 @@ class Menu
     end
   end
 
-
 end
