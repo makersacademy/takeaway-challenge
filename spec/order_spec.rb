@@ -23,7 +23,7 @@ describe Order do
 
   describe '#remove_dish' do
     before { order.add_dish(menu_item) }
-    
+
     it 'removes menu item from basket' do
       order.remove_dish(menu_item)
       expect(order.basket).to eq ({ menu_item => 0 })
@@ -41,24 +41,11 @@ describe Order do
     end
   end
 
-  describe '#clear_order' do
-    it 'lets you clear basket at any point while ordering' do
-      order.add_dish(menu_item)
-      order.add_dish(menu_item2)
-      order.clear_order
-      expect(order.basket).to be_empty
-    end
-
-    it 'only lets you clear a non-empty basket' do
-      expect{ order.clear_order }.to raise_error("Basket already empty")
-    end
-  end
-
   describe '#total_price' do
     it 'calculates price total for dishes in basket' do
       order.add_dish(menu_item)
       order.add_dish(menu_item2)
-      expect(order.total_price).to eq 5.20
+      expect(order.order_total).to eq 5.20
     end
   end
 

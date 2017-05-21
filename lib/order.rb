@@ -1,3 +1,4 @@
+
 class Order
 
   attr_reader :basket
@@ -6,7 +7,7 @@ class Order
     @basket = Hash.new(0)
   end
 
-  def add_dish(dish, quantity = 1)
+  def add_dish(dish, quantity = 1) #error if item not available
     @basket[dish] += quantity
   end
 
@@ -19,13 +20,8 @@ class Order
     @basket.dup
   end
 
-  def clear_order
-    fail("Basket already empty") if @basket.empty?
-    @basket = Hash.new(0)
-  end
-
-  def total_price
-    @basket.keys.map { |dish| dish.price }.reduce(:+)
+  def order_total
+    @basket.keys.map { |dish| dish.price * @basket[dish] }.reduce(:+)
   end
 
   private
@@ -33,5 +29,7 @@ class Order
   def not_in_basket?(dish,quantity)
     @basket[dish] < quantity || @basket[dish] == nil
   end
+
+
 
 end
