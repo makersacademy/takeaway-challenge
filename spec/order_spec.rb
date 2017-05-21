@@ -18,9 +18,10 @@ describe Order do
   end
 
   it 'calculates the order total' do
-    allow(:order).to receive(:order_total).and_return(12.5)
-    order.add_dish(["chicken", 7.5])
-    order.add_dish(["salad", 2.5], 2)
+    dish1 = Dish.new("chicken", 7.5)
+    dish2 = Dish.new("salad", 2.5)
+    order.add_dish(dish1)
+    order.add_dish(dish2, 2)
     expect(order.order_total).to eq 12.5
   end
 
