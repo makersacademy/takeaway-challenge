@@ -12,7 +12,7 @@ class Takeaway
     print "#{extracts_starters} #{extracts_main_course} #{extracts_dessert}"
   end
 
-  # TODO refactor to avoid repetition- DRY 3's
+  # TODO refactor to avoid repetition- DRY 3's - plus each method is doing too much
   # TODO should this be in the menu class not the takeaway class?
   def extracts_starters
     starter1 = menu_starters[1].map { |k, v| "#{k} = £#{v}" }.join(', ')
@@ -52,62 +52,29 @@ class Takeaway
     @menu.dessert
   end
 
-  # TODO shorten this long line, e.g. print 3 x outputs for each course
-  # TODO work out how to do 0 and Q on controller menu & methods
-  def displays_controller
-    "Welcome to our takeaway service. Please make your order by selecting 0 to be taken to the selection menu, press 'Q' at anytime to escape the program:"
+  def print_menu
+    puts "1. Order Starters"
+    puts "2. Order Main courses"
+    puts "3. Order Desserts"
+    puts "4. Show order selections"
+    puts "5. Exit"
   end
 
-  def selection_menu(choice)
-    case choice
-    when :starters
-      starters_selection
-    when :main_course
-      main_course_selection
-    when :dessert
-      dessert_selection
+  def process_menu(selection)
+    case selection
+    when "1"
+      order_starters
+    when "2"
+      order_mains
+    when "3"
+      order_desserts
+    when "4"
+      show_selections
+    when "5"
+      exit # this will cause the program to terminate
+    else
+      puts "I don't know what you mean, try again"
     end
   end
-
-  # TODO refactor all selection methods to avoid repetition - DRY 3's
-  # TODO update with a loop to let them make 2 choices & push into basket
-  def starters_selection
-    displays_options(extracts_starters)
-    starter = STDIN.gets.chomp
-    @basket << [starter]
-    displays_order_confirmation_message
-  end
-
-  # TODO update with a loop to let them make 2 choices & push into basket
-  def main_course_selection
-    displays_options(extracts_main_course)
-    main = STDIN.gets.chomp
-    @basket << [main]
-    displays_order_confirmation_message
-  end
-
-  # TODO update with a loop to let them make 2 choices & push into basket
-  def dessert_selection
-    displays_options(extracts_dessert)
-    dessert = STDIN.gets.chomp
-    @basket << [dessert]
-    displays_order_confirmation_message
-  end
-
-  # TODO line too long refactor
-  def displays_options(menu_extract)
-    "Please choose the order number for the dish you would like from the menu options: #{menu_extract}:"
-  end
-
-  # TODO customise this so the message confirms the order number(s) so customer is sure of what they ordered
-  def displays_order_confirmation_message
-    "Thanks for your selection we've added your orders to your basket."
-  end
-
-  def final_display_order_confirmation_message
-    @balance.flatten
-    "Thanks for your orders. Your order numbers are: #{@balance}"
-  end
-
 
 end
