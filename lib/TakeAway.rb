@@ -1,7 +1,7 @@
 require_relative 'menu'
 require_relative 'order'
 
-class TakeAway
+class Takeaway
   attr_reader :basket, :menu
 
   def initialize

@@ -1,6 +1,6 @@
 require 'takeaway'
 
-describe TakeAway do
+describe Takeaway do
   subject(:takeaway) { described_class.new }
   let(:menu) { double(:menu, :dishes => {"chicken burger": 3.49, "chicken wings": 4.99}) }
   before(:each) do
