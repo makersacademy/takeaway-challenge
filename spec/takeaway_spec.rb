@@ -2,6 +2,10 @@ require 'takeaway'
 
 describe TakeAway do
   subject(:takeaway) { described_class.new }
+  let(:menu) { double(:menu, :dishes => {"chicken burger": 3.49, "chicken wings": 4.99}) }
+  before(:each) do
+    takeaway.instance_variable_set(:@menu, menu)
+  end
 
   describe '#add_to_order' do
     it 'raises an exception if the dish passed is not on the menu' do
@@ -12,27 +16,27 @@ describe TakeAway do
   describe 'Feature tests' do
     describe '#show_menu' do
       it 'shows the list of dishes with prices' do
-        expect(takeaway.show_menu).to eq ({ "quarter chicken": 3.5, "half chicken": 6.0, "whole chicken": 10.50, "small fries": 1.99, "large fries": 2.50 })
+        expect(takeaway.show_menu).to eq ({ "chicken burger": 3.49, "chicken wings": 4.99})
       end
     end
 
     describe '#basket_summary' do
       before do
-        takeaway.add_to_order("half chicken")
-        takeaway.add_to_order("small fries", 2)
+        takeaway.add_to_order("chicken burger")
+        takeaway.add_to_order("chicken wings", 2)
       end
 
       it 'shows the basket summary with totalled up prices' do
-        expect(takeaway.basket_summary).to eq "half chicken x1 = 6.0, small fries x2 = 3.98"
+        expect(takeaway.basket_summary).to eq "chicken burger x1 = 3.49, chicken wings x2 = 9.98"
       end
     end
 
     describe '#total' do
       it 'shows the total price of current order' do
-        takeaway.add_to_order("half chicken", 2)
-        expect(takeaway.total).to eq 12.0
-        takeaway.add_to_order("large fries", 3)
-        expect(takeaway.total).to eq 19.5
+        takeaway.add_to_order("chicken wings", 2)
+        expect(takeaway.total).to eq 9.98
+        takeaway.add_to_order("chicken burger", 3)
+        expect(takeaway.total).to eq 20.45
       end
     end
   end

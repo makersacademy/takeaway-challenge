@@ -2,11 +2,11 @@ class Menu
   attr_reader :dishes
   def initialize
     @dishes = {
-      "quarter chicken": 3.5,
-      "half chicken": 6.0,
-      "whole chicken": 10.50,
-      "small fries": 1.99,
-      "large fries": 2.50
+      "chicken burger": 3.49,
+      "chicken wings": 4.99,
+      "whole chicken": 10.49,
+      "fries": 1.99,
+      "mozzarella sticks": 1.99
     }
   end
 end
