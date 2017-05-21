@@ -13,6 +13,7 @@ class Order
   def add_dish(dish, quantity = 1)
     valid_dish?(dish)
     get_dish_info_from_menu(dish)
+    @dish[:quantity] = quantity
     @items << @dish
   end
 
@@ -24,7 +25,7 @@ class Order
   def order_total
     total = 0
     @items.each do |item|
-      total += item[:price]
+      total += item[:price] * item[:quantity]
     end
     total
   end
