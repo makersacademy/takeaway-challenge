@@ -2,9 +2,15 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
-  let(:menu) { double(:menu, :dishes => {"chicken burger": 3.49, "chicken wings": 4.99}) }
+  let(:menu) { double(:menu, :dishes => {"chicken burger": 3.49, "chicken wings": 4.99}, :print_dishes => "chicken burger: 3.49, chicken wings: 4.99") }
   before(:each) do
     takeaway.instance_variable_set(:@menu, menu)
+  end
+
+  describe '#show_menu' do
+    it 'shows the list of dishes with prices' do
+      expect(takeaway.show_menu).to eq "chicken burger: 3.49, chicken wings: 4.99"
+    end
   end
 
   describe '#add_to_order' do
