@@ -1,6 +1,6 @@
 class Order
 
-  attr_accessor :dishes
+  attr_accessor :dishes, :add
 
   def add(dish)
     @dishes
