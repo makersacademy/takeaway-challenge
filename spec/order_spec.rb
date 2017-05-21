@@ -9,7 +9,7 @@ describe Order do
       restaurant = Restaurant.new
       restaurant.menu.order_item(1, 2)
       restaurant.checkout
-      subject.get_total
+      restaurant.order.get_total
       expect(restaurant.order.order_total).to eq 10
     end
   end
