@@ -9,4 +9,8 @@ class Menu
       "mozzarella sticks": 1.99
     }
   end
+
+  def print_dishes
+    dishes.each { |dish, price| puts "#{dish}: #{price}" }
+  end
 end

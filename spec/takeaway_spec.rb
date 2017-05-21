@@ -14,11 +14,6 @@ describe TakeAway do
   end
 
   describe 'Feature tests' do
-    describe '#show_menu' do
-      it 'shows the list of dishes with prices' do
-        expect(takeaway.show_menu).to eq ({ "chicken burger": 3.49, "chicken wings": 4.99})
-      end
-    end
 
     describe '#basket_summary' do
       before do

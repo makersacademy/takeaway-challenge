@@ -10,7 +10,7 @@ class TakeAway
   end
 
   def show_menu
-    @menu.dishes
+    @menu.print_dishes
   end
 
   def add_to_order(dish, amount = 1)
