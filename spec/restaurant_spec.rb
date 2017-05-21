@@ -22,11 +22,22 @@ describe Restaurant do
     expect(restaurant.order_summary).to eq(order.basket)
   end
 
-  it 'should add item to #current_order' do
-    allow(menu).to receive(:new) { menu }
-    allow(order).to receive(:new) { order }
-    allow(order).to receive(:add_dish) { order.basket[item2] += 1}
-    expect(restaurant.add_order(item2, 1)).to eq 1
+  describe '#add_order' do
+
+    it 'should add item to #current_order' do
+      allow(menu).to receive(:new) { menu }
+      allow(order).to receive(:new) { order }
+      allow(order).to receive(:add_dish) { order.basket[item1] += 1}
+      expect(restaurant.add_order(1, 1)).to eq 1
+    end
+
+    it 'should raise error if item not available on menu' do
+      allow(menu).to receive(:new) { menu }
+      allow(order).to receive(:new) { order }
+      allow(order).to receive(:add_dish) { order.basket[item2] += 1}
+      expect{ restaurant.add_order(2, 1) }.to raise_error("Not on menu")
+    end
+
   end
 
   it 'should remove item from #current_order' do

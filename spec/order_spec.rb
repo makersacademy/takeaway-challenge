@@ -2,8 +2,8 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class.new }
-  let(:menu_item) { double :dish, price: 2 }
-  let(:menu_item2) { double :dish, price: 3.20}
+  let(:menu_item) { double :dish, name: 'Taco', price: 2 }
+  let(:menu_item2) { double :dish, name: 'Burrito', price: 3.20}
 
   it 'allows customer to start with an empty basket' do
     expect(order.basket).to be_empty
@@ -37,7 +37,7 @@ describe Order do
   describe '#review_order' do
     it 'lets you view basket at any point while ordering' do
       order.add_dish(menu_item)
-      expect(order.review_order).to eq order.basket
+      expect(order.review_order).to eq ({'Taco' => 1})
     end
   end
 
@@ -47,6 +47,9 @@ describe Order do
       order.add_dish(menu_item2)
       expect(order.order_total).to eq 5.20
     end
+  end
+
+  describe '#finalise_order' do
   end
 
 end

@@ -4,5 +4,4 @@ module Display
     p "Welcome to #{name}!"
   end
 
-
 end
