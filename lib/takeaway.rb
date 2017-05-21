@@ -13,13 +13,13 @@ class Takeaway
     @menu.list_dishes
   end
 
-  def new_order(selected_dish)
-    @order = Order.new(selected_dish)
+  def new_order(dish, price)
+    @order = Order.new(dish, price)
     @order.current_order
   end
 
-  def select_dish(dish)
-    @order.add(dish)
+  def select_dish(dish, price)
+    @order.add(dish, price)
   end
 
   def check_order
