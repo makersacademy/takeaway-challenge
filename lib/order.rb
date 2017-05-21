@@ -1,5 +1,6 @@
 require_relative 'menu.rb'
 require_relative 'output.rb'
+require 'dotenv/load'
 
 class Order
 
