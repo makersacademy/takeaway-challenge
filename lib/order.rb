@@ -1,4 +1,7 @@
 require_relative 'menu'
+require 'dotenv'
+Dotenv.load
+
 class Order
   attr_reader :selection, :menu_list, :total, :bill_me
 
