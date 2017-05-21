@@ -11,8 +11,8 @@ class Notifier
 
   def send_message(message_body)
   message = @client.account.messages.create(:body => "#{message_body}",
-    :to => "+447474574540",    
-    :from => "+441798422045")
+    :to => ENV['TO_NUMBER'],    
+    :from => ENV['FROM_NUMBER'])
   end
 
 end
