@@ -14,6 +14,22 @@ Takeaway Challenge
 
  ```
 
+README
+------------
+1. User Story 1 - Approach
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+To prevent the need for class extraction later I decided an initial two classes
+would be prudent, Order and Menu. Menu holding the 'list of dishes'(as a global
+constant) and Order with a view_menu method for the customer to view it.
+Planned in irb, made an rspec feature test from that, then drew unit tests from
+that feature test as it threw up each error.  
+
+
+
 Instructions
 -------
 
