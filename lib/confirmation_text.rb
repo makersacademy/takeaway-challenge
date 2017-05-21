@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'twilio-ruby'
 require 'date'
+require 'dotenv/load'
+Dotenv.load('settings.env')
 
 class ConfirmationText
 
@@ -15,15 +17,15 @@ class ConfirmationText
 
   def send_sms
     @client.account.messages.create(
-    from: '+441344567722',
-    to: '+447450463745',
+    from: ENV['FROM_NUMBER'],
+    to: ENV['TO_NUMBER'],
     body: message_contents
     )
   end
 
   def setup_twilio_client
-    account_sid = "AC009fa2cf455a6e32ed0f211052ded1ee"
-    auth_token = "cd1eb8b834719383f2b9235565c0c529"
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
