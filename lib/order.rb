@@ -6,5 +6,8 @@ class Order
     @current_order = [selected_dish]
   end
 
+  def add(new_dish)
+    @current_order << new_dish
+  end
+
 end
-  
