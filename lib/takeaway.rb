@@ -1,0 +1,40 @@
+require_relative 'menu'
+require_relative 'order'
+require_relative 'delivery'
+
+# It is responsible for handling user requests
+class Takeaway
+
+  attr_reader :menu
+
+  def initialize
+    @menu = Menu.new
+  end
+
+  def view_menu
+    @menu.view_menu
+  end
+
+  def create_new_order(menu_item, price)
+    @menu.confirm_menu_item(menu_item)
+    @order = Order.new(menu_item, price, Time.now)
+    @order.current_order
+  end
+
+  def select_dish(menu_item, price)
+    create_new_order(menu_item, price) unless @order
+    @menu.confirm_menu_item(menu_item)
+    @order.add_to_order(menu_item, price)
+  end
+
+  def print_order
+    raise 'No items currently ordered' unless @order
+    @order.print_order_detail
+    p "Total = #{@order.order_total}"
+  end
+
+  def complete_order
+    @order.delivery.send_notification
+  end
+
+end
