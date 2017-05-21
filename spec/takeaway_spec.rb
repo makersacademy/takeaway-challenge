@@ -17,6 +17,10 @@ describe Takeaway do
     it 'raises an exception if the dish passed is not on the menu' do
       expect{ takeaway.add_to_order("egg fried rice") }.to raise_error("Sorry, that item is not on the menu")
     end
+
+    it 'prints a message saying what was added to the order' do
+      expect(takeaway.add_to_order("chicken wings", 2)).to eq "2x chicken wings added to your order"
+    end
   end
 
   describe 'Feature tests' do
