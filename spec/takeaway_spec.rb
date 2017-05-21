@@ -25,9 +25,9 @@ describe Takeaway do
 
   it 'show_order shows the total sum of ordered food and the order' do
     allow(menu).to receive(:find_dish).and_return(dish1, dish2)
-    subject.select_dish('milk')
-    subject.select_dish('chips')
-    expect { subject.show_order }.to output("1. milk, £2\n2. chips, £3\nTotal: £5\n").to_stdout
+    subject.select_dish('milk', 1)
+    subject.select_dish('chips', 2)
+    expect { subject.show_order }.to output("1. 1x milk, £2\n2. 2x chips, £3\nTotal: £8\n").to_stdout
   end
 
 
