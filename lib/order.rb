@@ -13,14 +13,25 @@ class Order
     @order_items[dish] += quantity
   end
 
-  def finalize_order
+  def display_order
     @order_items
   end
+
+  def finalize_order(price)
+    raise "Please confirm your order price!" unless correct_amount?(price)
+    order_total
+  end
+
+  private
 
   def order_total
     @order_items.map do |dish, quantity|
       dish_overall_price = dish.price * quantity
     end.reduce { |sum, dish_overall_price| sum + dish_overall_price}
+  end
+
+  def correct_amount?(price)
+    order_total == price
   end
 
 end

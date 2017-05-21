@@ -2,3 +2,4 @@
 /coverage
 .env
 ./spec/spec_helper.rb
+menu.csv
