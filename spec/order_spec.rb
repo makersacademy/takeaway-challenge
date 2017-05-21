@@ -27,4 +27,13 @@ describe Order do
       expect(order.summary).to eq "chicken burger x1 = 3.49, chicken wings x2 = 9.98"
     end
   end
+
+  describe '#total' do
+    it 'shows the total price of current order' do
+      order.add("chicken wings", 2)
+      expect(order.total).to eq "9.98"
+      order.add("chicken burger", 3)
+      expect(order.total).to eq "20.45"
+    end
+  end
 end

@@ -23,6 +23,6 @@ class Takeaway
   end
 
   def total
-    @basket.list.map { |dish, amount| @menu.dishes[dish] * amount }.sum.truncate(2)
+    '%.2f' % @basket.list.map { |dish, amount| @menu.dishes[dish] * amount }.sum
   end
 end

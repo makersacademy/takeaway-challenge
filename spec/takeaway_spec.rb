@@ -35,9 +35,9 @@ describe Takeaway do
     describe '#total' do
       it 'shows the total price of current order' do
         takeaway.add_to_order("chicken wings", 2)
-        expect(takeaway.total).to eq 9.98
+        expect(takeaway.total).to eq "9.98"
         takeaway.add_to_order("chicken burger", 3)
-        expect(takeaway.total).to eq 20.45
+        expect(takeaway.total).to eq "20.45"
       end
     end
   end
