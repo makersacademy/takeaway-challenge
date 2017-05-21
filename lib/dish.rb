@@ -7,7 +7,7 @@ class Dish
     @name = name
     @description = description
     @price = price
-    @info = {name: name, description: description, price: price }
+    @info = { name: name, description: description, price: price }
   end
 
 end
