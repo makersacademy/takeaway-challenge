@@ -10,11 +10,7 @@ class Order
   end
 
   def total_price
-    if @dishes == []
-      0
-    else
-      @dishes.map { |dish| dish.price }.inject(:+)
-    end
+    @dishes == [] ? 0 : @dishes.map { |dish| dish.price }.inject(:+)
   end
 
 end
