@@ -4,6 +4,8 @@ require_relative 'menu'
 
 class Takeaway
 
+DELIVERY_PRICE = 2.50
+
   attr_reader :menu, :order
 
   def initialize
@@ -17,12 +19,8 @@ class Takeaway
     end
   end
 
-  # def create_order
-  #   @order = Order.new
-  # end
-
   def add_item_to_order(add_dish)
-    # order = create_order
+    # raise "This dish is not available" if menu.not_include? add_dish
     menu.each do |dish|
       if dish.name == add_dish
         order.items << dish
@@ -32,7 +30,7 @@ class Takeaway
   end
 
   def order_total
-    order.total_cost
+    order.total_cost + DELIVERY_PRICE
   end
 
 end

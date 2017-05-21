@@ -26,6 +26,6 @@ describe Takeaway do
   it 'shows the customer the order total' do
     takeaway.add_item_to_order("Burger")
     takeaway.add_item_to_order("Soup")
-    expect(takeaway.order_total).to eq 15
+    expect(takeaway.order_total).to eq 15 + Takeaway::DELIVERY_PRICE
   end
 end
