@@ -18,7 +18,7 @@ subject(:order) { described_class.new }
     end
 
     it "should select the dish and the amount of that dish a user wants" do
-      expect(order.selection_of_dish("chicken", 2)).to eq([{dish: "chicken", price: "4.99", amount: 2}])
+      expect(order.selection_of_dish("chicken", 2)).to eq([{dish: "chicken", price: 9.98}])
     end
   end
 
@@ -27,8 +27,21 @@ subject(:order) { described_class.new }
 # I would like to check that the total
 # I have been given matches the sum of the various dishes in my order
 
-  # describe "#user_order" do
-  #   it "should print the user's order" do
-  #   end
-  # end
+  describe "#user_order" do
+    # let(:order) { double('order', selection_of_dish: 'chicken', 2 ) }
+    # allow(:order).to receive(:selection_of_dish 'chicken', 2)
+    it "should print the user's order" do
+      order.stub(:selection_of_dish).with('chicken', 2)
+      expect(order).to respond_to(show_order)
+      # .to eq("You have selected 3 dishes: chicken at £9.98
+      # [nil, nil, nil].This gives you a total price of £25.97=> nil")
+    end
+  describe "#delete_order" do
+    it "should delete the dish and quantity of that dish if it is included in the order" do
+      order.stub(:selection_of_dish).with('chicken', 2)
+      order.stub(:delete_order).with('chicken')
+      expect(order.meal).not_to include("chicken")
+    end
+  end
+  end
 end
