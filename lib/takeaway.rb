@@ -27,8 +27,8 @@ class Takeaway
     puts "Total: £#{current_order.total_price}"
   end
 
-  def place_order
-    
+  def place_order(total)
+    raise 'Order total is not correct' if current_order.total_price != total
   end
 
 end

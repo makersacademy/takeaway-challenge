@@ -37,4 +37,10 @@ describe Takeaway do
     expect(client.account.messages.create.sid).to eq 'ID'
   end
 
+  it 'raise an error if the order total is not correct when order is placed' do
+    subject.select_dish('milk')
+    subject.select_dish('chips')
+    expect { subject.place_order(99) }.to raise_error 'Order total is not correct'
+  end
+
 end
