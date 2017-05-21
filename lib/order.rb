@@ -1,7 +1,7 @@
 
 class Order
 
-  attr_reader :items, :menu, :status, :id
+  attr_reader :items, :menu, :status, :id, :total
   attr_writer :items
 
   def initialize(id, menu)
@@ -33,6 +33,14 @@ class Order
       @dish = menu_item if dish == menu_item[:name]
     end
   end
+
+  def total
+    total = 0
+    @items.each do |item|
+      total += item[:price] * item[:quantity]
+    end
+    total
+  end
   
   private
 
@@ -41,14 +49,6 @@ class Order
       return true if dish == menu_item[:name]
     end
     raise 'Item not found'
-  end
-
-  def total
-    total = 0
-    @items.each do |item|
-      total += item[:price] * item[:quantity]
-    end
-    total
   end
   
   def save_dish
