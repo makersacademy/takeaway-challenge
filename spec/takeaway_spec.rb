@@ -43,7 +43,7 @@ describe Takeaway do
   # TODO this is a cheat test - consider changing this so I check not just the final line but the entire menu
   describe '#print_menu' do
     it 'displays a menu for customer orders' do
-      expect { takeaway.print_menu }.to output(/5. Exit/).to_stdout
+      expect { takeaway.print_menu }.to output(/1. Place orders\n2. Show order selections\n7. Exit\n/).to_stdout
     end
   end
 
@@ -51,6 +51,30 @@ describe Takeaway do
   describe '#process_menu' do
     it 'allows the user to order by making a course selection' do
       expect { takeaway.process_menu(6) }.to output(/I don't know what you mean, try again/).to_stdout
+    end
+  end
+
+  # TODO work out how to check an interactive_menu in a test
+  xdescribe '#interactive_menu' do
+    it 'loads the #print_menu and #process_menu' do
+      expect { takeaway.interactive_menu }.to output(//).to_stdout
+    end
+  end
+
+  # TODO work out how to check place_orders in a test
+  xdescribe '#place_orders' do
+    it 'collects the order number & stores it in the basket' do
+      STDIN = 1
+      takeaway.place_orders
+      expect { takeaway.basket}.to eq 1
+    end
+  end
+
+  # TODO work out how to check print_orders in a test
+  describe '#print_orders' do
+    xit 'prints the order numbers from the basket' do
+      let(:quantity) { takeaway.basket << 1 }
+      expect { takeaway.prints_orders }.to output(/You have 1 item in your basket/).to_stdout
     end
   end
 

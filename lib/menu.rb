@@ -1,6 +1,7 @@
 class Menu
   attr_reader :menu
 
+# TODO remove this menu
   def initialize
     @menu = { :starters => starters(),
               :main_course => main_course(),

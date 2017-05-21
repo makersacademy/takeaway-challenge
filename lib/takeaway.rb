@@ -52,28 +52,53 @@ class Takeaway
     @menu.dessert
   end
 
+  def interactive_menu
+    loop do
+      print_menu
+      process_menu(STDIN.gets.chomp)
+    end
+  end
+
   def print_menu
-    puts "1. Order Starters"
-    puts "2. Order Main courses"
-    puts "3. Order Desserts"
-    puts "4. Show order selections"
-    puts "5. Exit"
+    puts "1. Place orders"
+    puts "2. Show order selections"
+    puts "7. Exit"
   end
 
   def process_menu(selection)
     case selection
     when "1"
-      order_starters
+      place_orders
     when "2"
-      order_mains
-    when "3"
-      order_desserts
-    when "4"
-      show_selections
-    when "5"
+      show_orders
+    when "7"
       exit # this will cause the program to terminate
     else
       puts "I don't know what you mean, try again"
+    end
+  end
+
+  # TODO this is basically lifted from student directory precourse exercise- would be good to figure out a new way to solve this problem
+  def place_orders
+    puts "Take a note of the order numbers from our menu: #{lists_dishes_with_prices}"
+    puts "Enter the order numbers you'd like to add to your basket:"
+    puts "Remember, to exit select 7 or hit double space twice"
+    # get the first order
+    order_num = STDIN.gets.chomp
+    # while the order_na    me is not empty, repeat this code
+    while !order_num.empty? do
+      # add the order number to the basket array
+      @basket << order_num
+      # get another order number from the user
+      order_num = STDIN.gets.chomp
+    end
+  end
+
+  def print_orders
+    if @basket.count == 1
+      puts "You have 1 order: order number #{@basket.join(', ')}"
+    else
+      puts "You have #{@basket.count} orders: order numbers #{@basket.join(', ')}"
     end
   end
 
