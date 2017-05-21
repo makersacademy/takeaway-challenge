@@ -5,18 +5,11 @@ class OrderTotalError < StandardError; end
 class Order
   attr_reader :basket, :total
 
-  @@order_count = 0
-
   def initialize
-    @@order_count += 1
     @basket = []
     @total = 0
     @printer = Printer.new
     @messenger = Messenger.new
-  end
-
-  def order_number
-    @@order_count
   end
 
   def add_to_basket(dish, quantity)
@@ -34,7 +27,7 @@ class Order
     @total = 0
   end
 
-  def finalise(expected_order_total)
+  def finalise(expected_order_total, order_number)
     calculate_total
     raise(OrderTotalError) if expected_order_total != @total
     @messenger.send_confirmation(order_number)

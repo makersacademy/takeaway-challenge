@@ -12,6 +12,7 @@ class Restaurant
   def initialize(name = "Monk's")
     @name = name
     @menu = Menu.new
+    @order_counter = 0
   end
 
   def add_dish(name, description, price)
@@ -29,6 +30,7 @@ class Restaurant
 
   def order(menu_number, quantity = 1)
     @order ||= Order.new
+    @order_counter += 1 if @order.basket.empty?
     dish = @menu.dishes[menu_number - 1]
     puts @order.add_to_basket(dish, quantity)
   end
@@ -37,8 +39,8 @@ class Restaurant
     @order.show_basket
   end
 
-  def finalise_order(expected_order_total)
-    @order.finalise(expected_order_total)
+  def checkout(expected_order_total)
+    @order.finalise(expected_order_total, @order_counter)
     @order = nil
   end
 
@@ -60,4 +62,9 @@ monks.order(2, 2)
 monks.order(4)
 monks.order(7, 4)
 puts
-monks.view_basket
+monks.checkout(32)
+monks.order(4)
+monks.order(5)
+monks.checkout(7.5)
+
+

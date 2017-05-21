@@ -20,7 +20,7 @@ class Printer
   end
 
   def print_order(order)
-    puts "Order no. #{order.order_number}:\n------"
+    puts '------'
     order.basket.each { |order_item| puts "• #{order_item[0].name} x #{order_item[1]}" }
     puts '------'
     puts "Sub-Total: £#{order.total}"
