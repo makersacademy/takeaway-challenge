@@ -19,7 +19,7 @@ Instructions
 
 * Begin your ordering process by typing ```require './lib/order'```into irb.
 * Once the file has been required, type ```order = Order.new```
-* Follow the promts on the screen to make your choices.
+* Follow the prompts on the screen to make your choices.
 * When you have confirmed your order, make sure to type ```order.feed_me.complete_order``` to get your text delivery confirmation.
 
 Approach
