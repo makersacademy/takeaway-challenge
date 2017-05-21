@@ -2,7 +2,7 @@ require 'sinatra'
 require 'twilio-ruby'
 require 'date'
 
-class Confirmation_text
+class ConfirmationText
 
   def initialize(total_price)
     @estimated_time = Time.now + 3600
@@ -27,8 +27,9 @@ class Confirmation_text
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-
   def message_contents
-    "Thank you for your order! TOTAL: £#{@total_price}. It will be with you at #{@estimated_time.strftime("%H:%M")}!"
+    "Thank you for your order!
+    TOTAL: £#{@total_price}.
+    It will be with you at #{@estimated_time.strftime("%H:%M")}!"
   end
 end

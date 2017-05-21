@@ -15,7 +15,7 @@ class Order
   end
 
   def view_meal
-    @meal.uniq.each_with_index{|dish, index| puts "Item: #{index + 1}, #{dish.name}, £#{dish.price}, X#{@meal.count(dish)}."}
+    @meal.uniq.each_with_index { |dish, index| puts "Item: #{index + 1}, #{dish.name}, £#{dish.price}, X#{@meal.count(dish)}." }
     puts "TOTAL: £#{calculate_total_price}"
   end
 
@@ -25,14 +25,14 @@ class Order
 
   def confirm_order
     confirmation_message
-    Confirmation_text.new(calculate_total_price)
+    ConfirmationText.new(calculate_total_price)
   end
 
 private
 
   def remove_dish_by_number(selection)
     fail error_unrecognised_dish_message if can_not_find_number?(@meal, selection)
-    @meal.delete_at(selection - 1 )
+    @meal.delete_at(selection - 1)
   end
 
   def remove_dish_by_name(selection)
@@ -51,11 +51,11 @@ private
   end
 
   def can_find_name?(target, selection)
-    target.any? { |dish| dish.name.downcase == selection.downcase}
+    target.any? { |dish| dish.name.downcase == selection.downcase }
   end
 
   def can_not_find_number?(target, selection)
-    target[selection -1].nil?
+    target[selection - 1].nil?
   end
 
   def error_unrecognised_dish_message
@@ -70,7 +70,7 @@ private
 
   def calculate_total_price
     prices = []
-    @meal.each{ |dish| prices << dish.price }
-    prices.inject{ |sum, price| sum + price }
+    @meal.each { |dish| prices << dish.price }
+    prices.inject { |sum, price| sum + price }
   end
 end
