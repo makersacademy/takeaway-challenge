@@ -25,41 +25,31 @@ class Order
 private
 
   def remove_dish_by_number(selection)
-    fail error_unrecognised_dish_message if can_not_find_number_in_meal?(selection)
+    fail error_unrecognised_dish_message if can_not_find_number?(@meal, selection)
     @meal.delete_at(selection - 1 )
   end
 
   def remove_dish_by_name(selection)
-    fail error_unrecognised_dish_message unless can_find_name_in_meal?(selection)
+    fail error_unrecognised_dish_message unless can_find_name?(@meal, selection)
     @meal.delete_at(@meal.index(@meal.find { |dish| dish.name.downcase == selection.downcase }))
   end
 
   def select_dish_by_number(selection)
-    fail error_unrecognised_dish_message if can_not_find_number_in_menu?(selection)
+    fail error_unrecognised_dish_message if can_not_find_number?(@menu.dishes, selection)
     @meal << @menu.dishes[selection - 1]
   end
 
   def select_dish_by_name(selection)
-    fail error_unrecognised_dish_message unless can_find_name_in_menu?(selection)
-    @menu.dishes.each do
-      |dish| @meal << dish if dish.name.downcase == selection.downcase
-    end
+    fail error_unrecognised_dish_message unless can_find_name?(@menu.dishes, selection)
+    @menu.dishes.each { |dish| @meal << dish if dish.name.downcase == selection.downcase }
   end
 
-  def can_find_name_in_menu?(selection)
-    @menu.dishes.any? { |dish| dish.name.downcase == selection.downcase}
+  def can_find_name?(target, selection)
+    target.any? { |dish| dish.name.downcase == selection.downcase}
   end
 
-  def can_find_name_in_meal?(selection)
-    @meal.any? { |dish| dish.name.downcase == selection.downcase}
-  end
-
-  def can_not_find_number_in_menu?(selection)
-    @menu.dishes[selection -1].nil?
-  end
-
-  def can_not_find_number_in_meal?(selection)
-    @meal[selection -1].nil?
+  def can_not_find_number?(target, selection)
+    target[selection -1].nil?
   end
 
   def error_unrecognised_dish_message
