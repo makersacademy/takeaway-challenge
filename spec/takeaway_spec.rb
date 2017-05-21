@@ -7,7 +7,7 @@ describe Takeaway do
   # TODO use doubles throughout. e.g. allow(fake_menu).to receive(:menu).and_return(fake_menu)
   describe '#initialize' do
     # TODO express differently/delete
-    xit 'is initialized with a menu' do
+    it 'is has a menu from Menu class' do
       expect(takeaway.menu).to eq takeaway.menu
     end
     it 'is initialized with a basket' do

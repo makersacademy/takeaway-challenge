@@ -8,35 +8,48 @@ class Takeaway
     @basket = []
   end
 
-  # TODO shorten this long line, e.g. print 3 x outputs for each course
   def lists_dishes_with_prices
     print "#{extracts_starters} #{extracts_main_course} #{extracts_dessert}"
   end
 
   # TODO refactor to avoid repetition- DRY 3's
-  # TODO maybe create method for @menu.starters
+  # TODO should this be in the menu class not the takeaway class?
   def extracts_starters
-    starter1 = @menu.starters[1].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    starter2 = @menu.starters[2].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    starter1_key = @menu.starters.keys[0]
-    starter2_key = @menu.starters.keys[1]
+    starter1 = menu_starters[1].map { |k, v| "#{k} = £#{v}" }.join(', ')
+    starter2 = menu_starters[2].map { |k, v| "#{k} = £#{v}" }.join(', ')
+    starter1_key = menu_starters.keys[0]
+    starter2_key = menu_starters.keys[1]
     print "Starters: #{starter1_key}. #{starter1}, #{starter2_key}. #{starter2} "
   end
 
   def extracts_main_course
-    main1 = @menu.main_course[3].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    main2 = @menu.main_course[4].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    main1_key = @menu.main_course.keys[0]
-    main2_key = @menu.main_course.keys[1]
+    main1 = menu_main_course[3].map { |k, v| "#{k} = £#{v}" }.join(', ')
+    main2 = menu_main_course[4].map { |k, v| "#{k} = £#{v}" }.join(', ')
+    main1_key = menu_main_course.keys[0]
+    main2_key = menu_main_course.keys[1]
     print "Main Courses: #{main1_key}. #{main1}, #{main2_key}. #{main2} "
   end
 
   def extracts_dessert
-    dessert1 = @menu.dessert[5].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    dessert2 = @menu.dessert[6].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    dessert1_key = @menu.dessert.keys[0]
-    dessert2_key = @menu.dessert.keys[1]
+    dessert1 = menu_dessert[5].map { |k, v| "#{k} = £#{v}" }.join(', ')
+    dessert2 = menu_dessert[6].map { |k, v| "#{k} = £#{v}" }.join(', ')
+    dessert1_key = menu_dessert.keys[0]
+    dessert2_key = menu_dessert.keys[1]
     print "Desserts: #{dessert1_key}. #{dessert1}, #{dessert2_key}. #{dessert2}"
+  end
+
+  # TODO refactor to avoid repetition- DRY 3's
+  # TODO should this be in the menu class not the takeaway class?
+  def menu_starters
+    @menu.starters
+  end
+
+  def menu_main_course
+    @menu.main_course
+  end
+
+  def menu_dessert
+    @menu.dessert
   end
 
   # TODO shorten this long line, e.g. print 3 x outputs for each course
