@@ -10,6 +10,8 @@ class Order
     @selected_item = nil
     @order_list = []
     @message = Message.new
+    puts "Welcome to Veg-E! What will your order be?"
+    puts ""
   end
 
   def select_food(dish, quantity = 1)
@@ -26,7 +28,7 @@ class Order
   def end_order
     show_total
     confirm_order
-    @message.send_message(@total) if @response == "y"
+    complete_send if @response == "y"
   end
 
   private
@@ -51,5 +53,10 @@ class Order
       break if @response == "y" || @response == "n"
       puts "Sorry, I don't follow."
     end
+  end
+
+  def complete_send
+    puts "Your food is on its way; eet smakelijk!"
+    @message.send_message(@total)
   end
 end

@@ -1,5 +1,6 @@
 require 'twilio-ruby'
 
+# sends a text message confirming an order
 class Message
   attr_reader :time_order
 
@@ -17,15 +18,15 @@ class Message
     message = @client.account.messages.create(
        :from => @twilio_number,
        :to => @customer_number,
-       :body => "So delicious, and no animals?! Here is one happy piggy. \u{1F437} Total cost will be £#{price}, and arrives at #{@time_order}. Enjoy!"
+       :body => "So delicious, and no animals?! Here is one happy piggy. \u{1F437}
+       Total cost will be £#{price}, and arrives at #{@time_order}. Enjoy!"
     )
     message.to
-   end
+  end
 
-   private
-   def calculate_time
-     time = Time.now;
-     time2 = Time.now + (30 * 60)
-     @time_order = "#{time2.hour}:#{time2.min}"
-   end
+  private
+  def calculate_time
+    time2 = Time.now + (30 * 60)
+    @time_order = "#{time2.hour}:#{time2.min}"
+  end
 end
