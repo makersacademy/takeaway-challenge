@@ -18,4 +18,13 @@ describe Order do
       expect(order.list).to eq({ "chicken wings": 3 })
     end
   end
+
+  describe '#summary' do
+    before do
+      order.instance_variable_set(:@list, { "chicken burger": 1, "chicken wings": 2 })
+    end
+    it 'shows the basket summary with totalled up prices' do
+      expect(order.summary).to eq "chicken burger x1 = 3.49, chicken wings x2 = 9.98"
+    end
+  end
 end
