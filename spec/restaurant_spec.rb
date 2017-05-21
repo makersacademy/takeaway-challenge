@@ -6,4 +6,5 @@ describe Restaurant do
   it 'has a menu upon initialization' do
     expect(restaurant.menu).to be_an_instance_of Menu
   end
+
 end
