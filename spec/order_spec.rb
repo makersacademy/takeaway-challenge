@@ -48,6 +48,10 @@ describe Order do
       order.clear_order
       expect(order.basket).to be_empty
     end
+
+    it 'only lets you clear a non-empty basket' do
+      expect{ order.clear_order }.to raise_error("Basket already empty")
+    end
   end
 
 end

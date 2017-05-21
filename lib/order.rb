@@ -20,6 +20,7 @@ class Order
   end
 
   def clear_order
+    fail("Basket already empty") if @basket.empty?
     @basket = Hash.new(0)
   end
 
