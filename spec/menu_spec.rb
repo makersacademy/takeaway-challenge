@@ -19,6 +19,11 @@ describe Menu do
     it 'raises an error if the menu has no items available' do
       expect { menu.list_dishes }.to raise_error 'Menu is empty'
     end
+
+    it 'displays list of items in the menu' do
+      menu.create_dish("Cheesy Pizza", "Tomato, Cheese and Garlic", 9)
+      expect(menu.list_dishes).to eq ["Cheesy Pizza - Tomato, Cheese and Garlic (£9)"
+    end
   end
 
 end

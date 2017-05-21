@@ -40,6 +40,20 @@ class Restaurant
     The total amount is £#{@current_order.total} 
     and it will be delivered by #{delivery_time}")
   end
+
+  def order_list
+    @orders.each do |order|
+      puts "ORDER: #{order.id}"
+      puts "Status: #{order.status.capitalize}"
+      puts "Items:"
+      order.items.each do |order_details|
+        puts "#{order_details[:name]} Qty: #{order_details[:quantity]} Price: £#{order_details[:price]}"
+      end
+      puts
+      puts "Order Total: £#{order.total}"
+      puts
+    end
+  end
   
   private
 
