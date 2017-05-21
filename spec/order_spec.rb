@@ -18,12 +18,17 @@ subject(:order) { described_class.new }
     end
 
     it "should select the dish and the amount of that dish a user wants" do
-      expect(order.selection_of_dish("chicken", 2)).to eq([{dish: "chicken", amount: 2}])
+      expect(order.selection_of_dish("chicken", 2)).to eq([{dish: "chicken", price: "4.99", amount: 2}])
     end
   end
 
-  describe "#user_order" do
-    it "should print the user's order" do
-    end
-  end
+#As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total
+# I have been given matches the sum of the various dishes in my order
+
+  # describe "#user_order" do
+  #   it "should print the user's order" do
+  #   end
+  # end
 end

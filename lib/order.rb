@@ -15,13 +15,13 @@ end
 def selection_of_dish(dish, number)
   raise "Dish not in menu: please select a dish from the menu" unless @menu.list_of_dishes.has_key?(dish)
   raise "That is not a number, please enter a valid number" unless number == number.to_i
-  @meal << {dish: dish, amount: number}
+  @meal << {dish: dish, price: @menu.list_of_dishes[dish], amount: number}
 end
 
-def user_order
+# def user_order
 #   list_of_dishes.select{|key, hash| hash["client_id"] == "2180" }
   # @meal[-1]
-end
+# end
 
 # def amount(number)
 #   # if number == 1
