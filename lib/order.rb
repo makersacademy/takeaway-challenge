@@ -14,6 +14,9 @@ class Order
   def create_order
     print @menu.create_menu_string
     ordering_a_dish
+    while multiple_dishes do
+      ordering_a_dish
+    end
     check_order_amount
     @inputoutput.send_text
     print("Order is on its way!")
@@ -21,10 +24,10 @@ class Order
 
   def ordering_a_dish
     print("Which dish would you like?\n")
-     print dish = gets.chomp
+    dish = gets.chomp
     raise  'This is not a dish in the menu' unless check_dish_against_menu(dish)
-     print add_dish_to_order(dish)
-     print number_of_portions(dish)
+    add_dish_to_order(dish)
+    number_of_portions(dish)
   end
 
   def check_dish_against_menu(dish)
@@ -33,7 +36,7 @@ class Order
 
   def multiple_dishes
     print "Answer yes if you want to choose another dish\n"
-    response = gets.chomp
+    response = gets.chomp.downcase
     response == 'yes'
   end
 
