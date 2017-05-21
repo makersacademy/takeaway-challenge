@@ -1,12 +1,17 @@
 require 'restaurant'
 describe Restaurant do
-	 subject(:restaurant) { described_class.new(menu: menu, order: order) }
+	 subject(:restaurant) { described_class.new(menu: menu, order: order, sms: sms, config: {}) }
 	 
 	 let(:menu) { double(:menu, print: printed_menu) }
 	 let(:order) { instance_double("Order", total: 15.50) }
+	 let(:sms) 	{ instance_double("SMS", deliver: nil)}
 	 let(:printed_menu) { "Spring roll: £0.99" }
 
 	 let(:dishes) { { chicken: 2, fish: 1 } }
+
+	 before do
+	 	allow(order).to receive(:add)
+	 end
 
 	 it 'creates an instance of a Restaurant' do
  	  expect(subject).to be_a Restaurant
@@ -24,5 +29,10 @@ describe Restaurant do
  		allow(order).to receive(:add)
  		total = restaurant.place_order(dishes)
  		expect(total).to eq(15.50)
+ 	end
+
+ 	it 'sends an sms when the order has been placed' do
+ 		expect(sms).to receive(:deliver)
+ 		restaurant.place_order(dishes)
  	end
 end
