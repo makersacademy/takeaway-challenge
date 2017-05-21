@@ -5,6 +5,6 @@ class Menu
   end
 
   def list_dishes
-    @dishes
+    @dishes = { :chicken => 6.50, :beef => 8.20, :seafood => 10.50 }
   end
 end
