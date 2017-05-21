@@ -8,4 +8,7 @@ class Order
     Menu::LIST_OF_DISHES
   end
 
+  def add_dish(dish, *more_dishes)
+    
+  end
 end

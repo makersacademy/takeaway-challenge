@@ -12,6 +12,7 @@ describe 'takeaway' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   it 'so we can order multiple dishes, select and store each dish chosen' do
+    order = Order.new
     order.view_menu
     order.add_dish("Chicken Chow Mein")
     order.add_dish("Spicy Chilli Beef")
