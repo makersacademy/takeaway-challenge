@@ -2,7 +2,7 @@ require_relative 'order'
 require_relative 'dish'
 require_relative 'menu'
 
-class Takeway
+class Takeaway
 
   attr_reader :menu
 
@@ -14,6 +14,10 @@ class Takeway
     menu.map do |dish|
       "#{dish.name} -- £#{dish.price}"
     end
+  end
+
+  def create_order
+    @order = Order.new
   end
 
 end
