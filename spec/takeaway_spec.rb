@@ -44,5 +44,13 @@ describe Takeaway do
         expect(takeaway.total).to eq "20.45"
       end
     end
+
+    describe '#checkout' do
+      it 'confirms the order is complete' do
+        takeaway.add_to_order("chicken wings", 2)
+        takeaway.add_to_order("chicken burger", 3)
+        expect(takeaway.checkout(20.45)).to eq "Order placed - please see your mobile for delivery details"
+      end
+    end
   end
 end

@@ -36,4 +36,19 @@ describe Order do
       expect(order.calculate_total).to eq "20.45"
     end
   end
+
+  describe '#try_complete' do
+    before do
+      order.add("chicken wings", 2)
+      order.add("chicken burger", 3)
+    end
+
+    it 'returns true if amount given at checkout matches total' do
+      expect(order.try_complete(20.45)).to eq true
+    end
+
+    it 'returns false if amount given at checkout does not match total' do
+      expect(order.try_complete(20.46)).to eq false
+    end
+  end
 end
