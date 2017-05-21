@@ -1,11 +1,20 @@
 Takeaway Challenge - Makers Week2 Weekend Challenge
 
-==> To run the program, simply run lib/takeaway.rb
+==> To run the program, load lib/takeaway.rb in irb
+==> You may want to create an instance of a menu and an instance of the OrderManagement class to run the system
 
 My Approach of solving the challenge:
-* Start with user story 1: creating system of MenuList and Dish Objects. Dish objects have a name and a price.
+* Start with user story 1: creating system of Menu and Dish Objects. Dish objects have a name and a price.
+* Add functionality to add dishes to the menu, print out the list of all dishes in the menu, and bulk_add multiple dishes at once
+* To cover user story 2: creating OrderManagement class which can handle orders. Main functionality is #order_by_commandline method which takes a hash with the order and the menu information
+* To cover user story 3: implemented to guard conditions using 2 private methods in the OrderManagement class. One to check, whether the items in the order are actually on the menu, one to check whether the total of the order - given by the user - is really the price (items x number x price) of the order
+* To cover user story 4: implemented communication with Twilio API to send confirmation text message with estimated time of arrival
 
+Example of data structure of hash to bulk_add dishes to the menu:
+array_of_hashes = [{name: "Spaghetti carbonara", price: 8}, {name: "Spaghetti arabiata", price: 7}, {name: "Lasagna al forno", price: 9}, {name: "Pizza Margherita", price: 7}, {name: "Pizza Quattro Stagioni", price: 10}]
 
+Example of data structure for an order:
+order_hash = { basket: [{name: "Pizza Margherita", quantity: 2},{name: "Lasagna al forno", quantity: 1} ], total: 23}
 
 Takeaway Challenge
 ==================
