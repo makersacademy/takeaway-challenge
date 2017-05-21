@@ -89,10 +89,10 @@ Tools Used
 
 - Cybernetic style enforcement from the future:
   Rubocop - v0.48.1
-  
+
 - SMS Messaging API: Twilio - v4.13.0
 
-- Domain-specific language: Sinatra - v2.0.0 
+- Domain-specific language: Sinatra - v2.0.0
 
 Acknowledgement
 ---------------
@@ -101,3 +101,5 @@ Thanks to Chris Harrop (github: bannastre) for writing a great README which I pi
 Thanks to Makers Academy (github: makersacademy) and Sam Morgan (github: sjmog) for teaching me to do the code good(we hope.)
 
 Thanks to Charlotte Feather (github: Charliefea), Charlotte Fereday (github: charlottebrf), Michael Jacobson (github: michaelbjacobson) and Kye Bracey (github: Kynosaur) for showing me how to check my output before I wreck my output.
+
+Thanks to Mario Ribeiro (github: marioribeiro) For hijacking my Twilio to gently reminding me to hide my info.
