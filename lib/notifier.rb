@@ -10,7 +10,7 @@ class Notifier
   @client = Twilio::REST::Client.new account_sid, auth_token
 
   # friends = {
-  # "+447960083589" => "Me!",
+  # "+44HAHANOPE" => "Me!",
   # }
   #
   # friends.each do |key, value|
