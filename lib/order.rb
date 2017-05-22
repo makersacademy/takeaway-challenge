@@ -1,4 +1,6 @@
 require_relative 'display'
+require 'dotenv/load'
+Dotenv.load('settings.env')
 
 class InvalidOption < StandardError; end
 
