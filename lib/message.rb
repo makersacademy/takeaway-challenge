@@ -5,10 +5,10 @@ class Message
   attr_reader :time_order
 
   def initialize
-    @account_sid = 'ACb57d78ffceb78ec72d31808940fdd9cb'
-    @auth_token = 'e12e1e03d87e789be99786c14b9c97a1'
-    @twilio_number = '+441984250037'
-    @customer_number = '+447490553888'
+    @account_sid = 'xxxxxxxxxx'
+    @auth_token = 'xxxxxxxxxx'
+    @twilio_number = 'xxxxxxxxxx'
+    @customer_number = 'xxxxxxxxxx'
   end
 
   def send_message(price)
