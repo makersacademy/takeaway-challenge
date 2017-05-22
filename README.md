@@ -14,6 +14,43 @@ Takeaway Challenge
 
  ```
 
+README
+------------
+1. User Story 1 - Approach
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+To prevent the need for class extraction later I decided an initial two classes
+would be prudent, Order and Menu. Menu holding the 'list of dishes'(as a global
+constant) and Order with a view_menu method for the customer to view it.
+Planned in irb, made an rspec feature test from that, then drew unit tests from
+that feature test as it threw up each error.  
+
+2. User Story 2 - Approach
+
+ As a customer
+ So that I can order the meal I want
+ I would like to be able to select some number of several available dishes
+
+When making an order after viewing the menu, the customer can #add_dish with
+the dish or dishes they want to order, this adds their ordered items
+to the order's @in_basket, ready to be processed.
+
+3. User Story 3 - Approach
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+In Checkout made an #itemised_receipt method which can be passed an order and
+will return an interpolated string with the name and price of each item,
+followed by the total cost, so that a customer can check the sum against their order.
+(Initially I made a Printer class to handle the actual printing of the string but
+  after some thought deleted it and kept the function in Checkout)
+
+
 Instructions
 -------
 

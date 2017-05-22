@@ -1,3 +1,7 @@
+require 'menu'
+require 'order'
+require 'checkout'
+require 'messenger'
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
