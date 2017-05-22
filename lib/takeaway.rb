@@ -21,4 +21,8 @@ class Takeaway
     @order = Order.new(@cart, @restaurant)
   end
 
+  def confirm
+    interface.printer.print_confirmation
+  end
+
 end

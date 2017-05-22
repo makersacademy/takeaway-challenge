@@ -27,5 +27,8 @@ class Printer
     puts "Please enter the quantity"
   end
 
+  def print_confirmation
+    puts 'Your order has been placed'
+  end
 
 end
