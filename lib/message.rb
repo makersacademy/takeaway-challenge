@@ -6,16 +6,17 @@ class Message
   attr_reader :time_order
 
   def initialize
-
+    @acc_sid = ENV['ACCOUNT_SID']
+    @auth_token = ENV['AUTH_TOKEN']
   end
 
   def send_message(price)
-    @client = Twilio::REST::Client.new ENV[ACCOUNT_SID], [AUTH_TOKEN]
+    @client = Twilio::REST::Client.new @acc_sid, @auth_token
 
     calculate_time
     message = @client.account.messages.create(
-       :from => ENV[TWILIO_NUMBER],
-       :to => ENV[CUSTOMER_NUMBER],
+       :from => ENV['TWILIO_NUMBER'],
+       :to => ENV['CUSTOMER_NUMBER'],
        :body => "So delicious, and no animals?! Here is one happy piggy. \u{1F437}
        Total cost will be £#{price}, and arrives at #{@time_order}. Enjoy!"
     )
