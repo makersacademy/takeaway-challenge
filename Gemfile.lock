@@ -24,6 +24,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     multi_json (1.12.1)
+    mustermann (1.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     parser (2.4.0.0)
@@ -31,6 +32,8 @@ GEM
     powerpack (0.1.1)
     public_suffix (2.0.5)
     rack (2.0.3)
+    rack-protection (2.0.0)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rainbow (2.2.2)
@@ -65,6 +68,12 @@ GEM
       hirb
       simplecov
     simplecov-html (0.10.1)
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0)
+      tilt (~> 2.0)
+    tilt (2.0.7)
     twilio-ruby (4.13.0)
       builder (>= 2.1.2)
       jwt (~> 1.0)
@@ -84,6 +93,7 @@ DEPENDENCIES
   rubocop
   simplecov
   simplecov-console
+  sinatra
   twilio-ruby
 
 RUBY VERSION
