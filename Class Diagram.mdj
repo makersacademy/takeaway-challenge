@@ -1812,7 +1812,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+1..*",
+									"text": "+0..*",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -4273,7 +4273,7 @@
 								"_parent": {
 									"$ref": "AAAAAAFcJorM5kJinto="
 								},
-								"name": "1..*",
+								"name": "0..*",
 								"reference": {
 									"$ref": "AAAAAAFcJoBsC0FVczw="
 								},

@@ -25,6 +25,7 @@ class Takeaway
   def checkout
     message = "Thank you! Your order was placed. The total is £#{check_total}."
     sms.send(message)
+    # @order = Order.new(menu)
   end
 
   private
