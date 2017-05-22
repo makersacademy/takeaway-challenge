@@ -10,7 +10,7 @@ describe Menu do
     end
   end
 
-  describe '#read_menu' do
+  describe '#show_menu' do
     let(:dish2) { double :dish2, name: 'lamb', price: 5 }
     it 'show the dishes in the menu' do
       menu.add_dish(dish)

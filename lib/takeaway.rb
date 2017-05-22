@@ -23,8 +23,7 @@ class Takeaway
   end
 
   def checkout
-    message = "Thank you! Your order was placed.
-    The total amount is £#{check_total}."
+    message = "Thank you! Your order was placed. The total is £#{check_total}."
     sms.send(message)
   end
 

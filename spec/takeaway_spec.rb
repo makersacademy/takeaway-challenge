@@ -5,6 +5,7 @@ describe Takeaway do
   let(:order) { double :order, cart: { 'wings' => 2, 'chicken' => 1 } }
   let(:menu) { double :menu }
   let(:dish) { double :dish, name: 'chicken', price: 7 }
+  let(:sms) { double :sms }
 
   describe '#read_menu' do
     it { is_expected.to respond_to :read_menu }
@@ -33,5 +34,6 @@ describe Takeaway do
 
   describe '#checkout'
     it 'sends a order confirmation text message' do
+      allow(sms).to receive(:send).with('test message')
     end
 end
