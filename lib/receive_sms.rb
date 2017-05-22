@@ -59,6 +59,6 @@ post '/receive-sms' do
 end
 
 def sms_initial_menu(to_number)
-  send_message("SMS2EAT. Send 1 for Chicken Burguer (£8), 2 for Chicken Wings (£2)", to_number)
+  send_message("Send 1 for Chicken Burguer (£8), 2 for Chicken Wings (£2)", to_number)
   send_message("Send 3 to finalize order", to_number)
 end
