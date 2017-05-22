@@ -17,7 +17,7 @@ end
 
 def send_message(message_body, to_number)
   @client.account.messages.create(:body => "#{message_body}",
-    :to   => customer_number,    
+    :to   => to_number,    
     :from => ENV['FROM_NUMBER'])
 end
 
@@ -59,6 +59,6 @@ post '/receive-sms' do
 end
 
 def sms_initial_menu(to_number)
-  send_message("SMS2EAT. Send 1 for Chicken Burguer (£8), 2 for Chicken Wings (£2)", customer_number)
-  send_message("Send 3 to finalize order", customer_number)
+  send_message("SMS2EAT. Send 1 for Chicken Burguer (£8), 2 for Chicken Wings (£2)", to_number)
+  send_message("Send 3 to finalize order", to_number)
 end

@@ -5,11 +5,11 @@ class Order
   attr_writer :items
 
   def initialize(id, menu)
-    @items = []
-    @id = id
+    @items  = []
+    @id     = id
     @status = :new
-    @menu = menu
-    @total = 0.00
+    @menu   = menu
+    @total  = 0.00
   end
 
   def add_dish(dish, quantity)
