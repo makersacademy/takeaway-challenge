@@ -1,5 +1,3 @@
-require 'takeaway'
-
 class Printer
 
   attr_reader :restaurant
@@ -11,6 +9,9 @@ class Printer
   def interactive_menu
     puts '1. See Menu'
     puts '2. Choose Item'
+    puts '3. Checkout'
+    puts '4. Confirm'
+    puts '9. Exit'
   end
 
   def print_menu
@@ -28,7 +29,12 @@ class Printer
   end
 
   def print_confirmation
-    puts 'Your order has been placed'
+    "Your order has been placed. You'll be munching on it by #{delivery_time}"
+  end
+
+  private
+  def delivery_time
+    (Time.new + 3600).strftime("%H:%M")
   end
 
 end

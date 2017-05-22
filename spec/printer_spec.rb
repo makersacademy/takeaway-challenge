@@ -6,7 +6,7 @@ describe Printer do
 
   describe '#interactive_menu' do
     it 'prints menu to STDOUT ' do
-      expect{ printer.interactive_menu }.to output("1. See Menu\n2. Choose Item\n").to_stdout
+      expect{ printer.interactive_menu }.to output("1. See Menu\n2. Choose Item\n3. Checkout\n4. Confirm\n9. Exit\n").to_stdout
     end
   end
 

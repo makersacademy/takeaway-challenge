@@ -1,20 +1,32 @@
-require 'restaurant'
-require 'menu'
-require 'item'
-require 'interface'
-require 'printer'
-require 'cart'
-require 'order'
+require_relative 'restaurant'
+require_relative 'menu'
+require_relative 'item'
+require_relative 'interface'
+require_relative 'printer'
+require_relative 'cart'
+require_relative 'order'
+require_relative 'messenger'
+require 'dotenv/load'
+Dotenv.load('settings.env')
 
 class Takeaway
 
-  attr_reader :interface, :restaurant, :cart, :order
+  attr_reader :interface, :restaurant, :cart, :order, :messenger
 
   def initialize(restaurant_name)
-    @restaurant = Restaurant.new(restaurant_name)
-    @interface = Interface.new(@restaurant)
+    @restaurant = Restaurant.new(restaurant_name, self)
+    @interface = Interface.new(@retakeawastaurant)
     @cart = Cart.new
     @order
+    @messenger
+  end
+
+  def add_item_to_cart
+    interface.printer.input_item_selection
+    item_selection = STDIN.gets.chomp.to_i
+    interface.printer.input_quantity
+    quantity = STDIN.gets.chomp.to_i
+    quantity.times { cart.select_item(restaurant.menu.items[item_selection - 1]) }
   end
 
   def checkout
@@ -22,7 +34,22 @@ class Takeaway
   end
 
   def confirm
-    interface.printer.print_confirmation
+    @messenger = Messenger.new
+    messenger.send(self.interface.printer.print_confirmation)
   end
 
 end
+
+
+#Run Program Loop
+# takeaway = Takeaway.new ('Beef & Beer')
+# takeaway.restaurant.menu.add_item('Burger', 3)
+# takeaway.restaurant.menu.add_item('Beer', 2)
+# takeaway.interface.interactive_menu
+# interface.printer.print_confirmation # => NameError: undefined local variable or method `interface' for main:Object\nDid you mean?  Integer
+
+# ~> NameError
+# ~> undefined local variable or method `interface' for main:Object
+# ~> Did you mean?  Integer
+# ~>
+# ~> /Users/lubosmich/Projects/takeaway-challenge/lib/takeaway.rb:49:in `<main>'

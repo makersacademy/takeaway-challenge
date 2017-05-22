@@ -9,24 +9,18 @@ class Interface
 
   def interactive_menu
     loop do
-      print_interactive_menu
+      printer.interactive_menu
       process(selection = STDIN.gets.chomp)
     end
   end
 
-  def print_interactive_menu
-    printer.interactive_menu
-  end
-
   def process(selection)
     case selection
-    when '1'
-      printer.print_menu
-    when '2'
-      printer.input_item_selection
-      item_selection = STDIN.gets.chomp.to_i
-      printer.input_quantity
-      cart.select_item(@restaurant.menu.items[item_selection - 1])
+    when '1' then printer.print_menu
+    when '2' then restaurant.takeaway.add_item_to_cart
+    when '3' then restaurant.takeaway.checkout
+    when '4' then restaurant.takeaway.confirm
+    when '9' then exit
     end
   end
 
