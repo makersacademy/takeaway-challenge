@@ -69,8 +69,6 @@ private
   end
 
   def calculate_total_price
-    prices = []
-    @meal.each { |dish| prices << dish.price }
-    prices.inject { |sum, price| sum + price }
+    @meal.map{ |dish| dish.price }.inject(:+)
   end
 end
