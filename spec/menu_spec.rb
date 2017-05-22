@@ -10,7 +10,7 @@ describe Menu do
 
   describe '#default_menu' do
     it 'checks if menu is initialized with default dishes' do
-      expect(menu.read_menu.first).to eq 'fried chicken'
+      expect(menu.read_menu.first).to be
     end
   end
 

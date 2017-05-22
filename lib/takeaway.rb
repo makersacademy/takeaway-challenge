@@ -25,7 +25,7 @@ class Takeaway
   end
 
   def send_text
-    notifier.send_message("Thank you for your order: £#{price}. Order was placed and will be delivered before 18:52")
+    notifier.send_message
   end
 
 end

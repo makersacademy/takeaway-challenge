@@ -29,12 +29,18 @@ describe Notifier do
 
   subject(:notifier) { described_class.new }
 
-  describe '#send_message' do
-    it 'successfully sends a message' do
-      expect { notifier.send_message(:text) }.not_to raise_error
+  context '#send_message' do
+    it 'sends a confirmation message' do
+      notifier.send_message(0)
+      expect(messages).to have_received(:create).with({
+        :from => TWILIO_NUMBER,
+        :to => TO_NUMBER,
+        :body => "Thank you for your order: £0. Order was placed and will be delivered before 18:52",
+        :media_url => nil,
+        })
     end
 
-
   end
+
 
 end

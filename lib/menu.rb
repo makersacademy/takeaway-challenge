@@ -14,7 +14,7 @@ class Menu
 
   def take_order
     @order = Order.new
-    rand(0..5).times do |i|
+    rand(1..5).times do |i|
       _dish = @menu[i]
       _quantity = rand(1..2)
       @order.add_dish(_dish, _quantity)
