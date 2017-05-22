@@ -1,3 +1,34 @@
+I started this challenge by drawing out all the classes that I felt I would require. These started with Menu, Dish, Order & Takeaway. I built out a basic Dish class and then a Menu class which used the Dish class to implement the items on the menu. The order class used the Menu class to pick items of it and the Takeaway bought it all together which the customer would be using.
+
+I have not yet implemented Twilio despite my efforts. I found this challenge difficult due to my uneasiness about relationships across classes. I certainly learnt alot throughout the challenge and feel I have a better grasp of the concepts compared to the challenges completed previously.
+
+TBC - SMS implementation
+    - Edge cases. Sometimes orders aren't stored correctly and menu items aren't added to the list
+
+IRB snippet:
+
+```
+2.4.0 :001 > require './lib/takeaway'
+ => true
+2.4.0 :002 > PizzaHut = Takeaway.new
+ => #<Takeaway:0x007fe8a98c00e8 @menu=[#<Dish:0x007fe8a98c0070 @name="Burger", @price=9>, #<Dish:0x007fe8a98c0020 @name="Curry", @price=8>, #<Dish:0x007fe8a98bbf70 @name="Soup", @price=6>], @order=#<Order:0x007fe8a98bbef8 @items=[], @total_cost=0>>
+2.4.0 :003 > PizzaHut.menu
+ => [#<Dish:0x007fe8a98c0070 @name="Burger", @price=9>, #<Dish:0x007fe8a98c0020 @name="Curry", @price=8>, #<Dish:0x007fe8a98bbf70 @name="Soup", @price=6>]
+2.4.0 :004 > PizzaHut.show_menu
+ => ["Burger -- £9", "Curry -- £8", "Soup -- £6"]
+2.4.0 :005 > PizzaHut.add_item_to_order("Curry")
+ => [#<Dish:0x007fe8a98c0070 @name="Burger", @price=9>, #<Dish:0x007fe8a98c0020 @name="Curry", @price=8>, #<Dish:0x007fe8a98bbf70 @name="Soup", @price=6>]
+2.4.0 :006 > PizzaHut.order_total
+ => 10.5
+2.4.0 :007 > PizzaHut.order
+ => #<Order:0x007fe8a98bbef8 @items=[#<Dish:0x007fe8a98c0020 @name="Curry", @price=8>], @total_cost=8>
+2.4.0 :008 > Menu = Menu.new
+(irb):8: warning: already initialized constant Menu
+/Applications/Projects/MakersWeek2/WeekendChallenge/takeaway-challenge/lib/menu.rb:3: warning: previous definition of Menu was here
+ => #<Menu:0x007fe8a98900a0 @items=[#<Dish:0x007fe8a988bf50 @name="Burger", @price=9>, #<Dish:0x007fe8a988be38 @name="Curry", @price=8>, #<Dish:0x007fe8a988bde8 @name="Soup", @price=6>]>
+ ```
+
+
 Takeaway Challenge
 ==================
 ```
