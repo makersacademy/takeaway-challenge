@@ -36,7 +36,19 @@ that feature test as it threw up each error.
 
 When making an order after viewing the menu, the customer can #add_dish with
 the dish or dishes they want to order, this adds their ordered items
-to the order's @in_basket, ready to be processed. 
+to the order's @in_basket, ready to be processed.
+
+3. User Story 3 - Approach
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+In Checkout made an #itemised_receipt method which can be passed an order and
+will return an interpolated string with the name and price of each item,
+followed by the total cost, so that a customer can check the sum against their order.
+(Initially I made a Printer class to handle the actual printing of the string but
+  after some thought deleted it and kept the function in Checkout)
 
 
 Instructions

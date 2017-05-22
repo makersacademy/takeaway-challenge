@@ -25,6 +25,7 @@ describe 'takeaway' do
        'Kung Pow Chicken'
        ])
   end
+
   describe 'receipt' do
     # As a customer
     # So that I can verify that my order is correct
@@ -46,6 +47,18 @@ describe 'takeaway' do
       order.add_dish('Spicy Chilli Beef')
       receipt_message = "Order:\n1.Chicken Chow Mein - £5.5\n2.Spicy Chilli Beef - £5.0\nTotal - £10.5"
       expect(checkout.itemised_receipt(order)).to eq(receipt_message)
+    end
+  end
+  describe 'text confirmation' do
+    # As a customer
+    # So that I am reassured that my order will be delivered on time
+    # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+    it 'sends a text, to confirm the order and specify time of delivery' do
+      order = Order.new
+      messenger = Messenger.new
+      order.add_dish('Chicken Chow Mein')
+      order.add_dish('Spicy Chilli Beef')
+      expect{ messenger.send_confirmation_sms(order) }.not_to raise_error
     end
   end
 end
