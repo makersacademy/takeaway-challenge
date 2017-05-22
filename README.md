@@ -56,10 +56,12 @@ Your order comes to 37.9.
 It was expensive.
 
 ### My Approach
-I've drawn a very loose diagram to help me visualise the different classes that I might make (so that I don't have to do class extraction at a later point!). The arrows sort of show the relationships between classes. For example, a restaurant has one menu which can have many dishes. The chosen dishes would then be moved to a basket which is then finalised and added up. 
+I've drawn a very loose diagram to help me visualise the different classes that I might make (so that I don't have to do class extraction at a later point!). The arrows sort of show the relationships between classes. For example, a restaurant has one menu which can have many dishes. The chosen dishes would then be moved to a basket which is then finalised and added up.
 ![Initial diagram](https://github.com/wemmm/takeaway-challenge/blob/master/diagram.png "Initial Diagram")
 
 ### Additional Things
-I had a small degree of success with the Twilio gem and managed to get it to text me. I then was unable to get it to stop texting me and had to unimplement it for the sake of my sanity. If I had had more time I would have liked to have gotten the text confirmation function working smoothly. 
+I had a small degree of success with the Twilio gem and managed to get it to text me. I then was unable to get it to stop texting me and had to unimplement it for the sake of my sanity. If I had had more time I would have liked to have gotten the text confirmation function working smoothly.
 
-I also don't like that the menu items are hard coded in menu.rb. Given more time I think it would have been interesting to devise some way of using different menus- possible loading in .csv files? Or making sub classes of Restaurant with different food? 
+I would like to refactor the code to handle edge cases a bit better- for example, giving the user a message if they try to checkout an empty basket.
+
+I also don't like that the menu items are hard coded in menu.rb. Given more time I think it would have been interesting to devise some way of using different menus- possible loading in .csv files? Or making sub classes of Restaurant with different food?

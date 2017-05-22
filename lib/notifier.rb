@@ -17,7 +17,7 @@ class Notifier
   #   @client.account.messages.create(
   #     :from => from,
   #     :to => key,
-  #     :body => "Your order is en route and will arrive at #{Time.now + 3000}. Thank you!"
+  #     :body => "Your order is en route and will arrive at #{Time.now + 1000}. Thank you!"
   #   )
   #   puts "Sent message to #{value}"
   # end
