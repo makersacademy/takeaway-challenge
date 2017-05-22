@@ -14,13 +14,13 @@ Takeaway Challenge
 
  ```
 
-#Makers Academy weekend challenge #2
+# Makers Academy weekend challenge #2
 
-##Instructions
+## Instructions
 
 ![User instructions](https://raw.githubusercontent.com/Kynosaur/takeaway-challenge/master/takeaway_user_instructions.png)
 
-##Approach
+## Approach
 
 I tackled the user stories in the below order:
 
