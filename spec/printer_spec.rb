@@ -10,7 +10,7 @@ describe Printer do
   end
 
   it 'prints receipts' do
-    expect(print.receipt(order_summary,6)).to eq 'Total bill: 6'
+    expect(print.receipt(order_summary, 6)).to eq 'Total bill: 6'
   end
 
 end

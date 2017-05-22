@@ -23,12 +23,12 @@ class Restaurant
     @menu.show_menu
   end
 
-  def add_order(item_number,quantity = 1)
+  def add_order(item_number, quantity = 1)
     raise(InvalidOption) unless on_menu?(item_number)
     @current_order.add_dish(dish(item_number), quantity)
   end
 
-  def remove_order(item_number,quantity = 1)
+  def remove_order(item_number, quantity = 1)
     @current_order.remove_dish(dish(item_number), quantity)
   end
 
@@ -38,7 +38,7 @@ class Restaurant
 
   def checkout
     @current_order.confirm_order
-    @print.receipt(order_summary,@current_order.order_total)
+    @print.receipt(order_summary, @current_order.order_total)
   end
 
   private

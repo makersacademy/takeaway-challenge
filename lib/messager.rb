@@ -16,11 +16,11 @@ class Messager
 
   def send_confirmation(price)
     delivery_time = (Time.new + 3600).strftime('%H:%M')
-    message = @client.account.messages.create(
+    @client.account.messages.create(
     :body => "Thank you for ordering with #{TAKEAWAY_NAME}! Your order total is: £#{price} and will be with you by #{delivery_time}.",
     :to => @client_no,
     :from => @twilio_no
     )
   end
-  
+
 end

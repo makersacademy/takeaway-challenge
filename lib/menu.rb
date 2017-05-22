@@ -17,7 +17,7 @@ class Menu
   private
 
   def load_menu(filename = DEFAULT_DISHES)
-    file = File.open(filename,"r")
+    file = File.open(filename, "r")
     File.foreach(file) do |line|
       name, price, description = line.chomp.split(',')
       @dishes << Dish.new(name, '%.2f' % price, description)
@@ -25,7 +25,7 @@ class Menu
   end
 
   def print_menu(dishes)
-    dishes.each_with_index { |dish,i| p "#{i+1}.#{dish.name},£#{dish.price},#{dish.description}" }
+    dishes.each_with_index { |dish, i| p "#{i + 1}.#{dish.name},£#{dish.price},#{dish.description}" }
   end
 
 end
