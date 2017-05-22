@@ -26,15 +26,14 @@ describe Restaurant do
 
     it 'should raise error if item not available on menu' do
       allow(order).to receive(:add_dish) { order.basket[item2] += 1 }
-      expect { restaurant.add_order(2, 1) }.to raise_error(InvalidOption)
+      expect { restaurant.add_order(2, 1) }.to raise_error(InvalidOptionError)
     end
   end
 
   it 'should remove item from #current_order' do
     allow(order).to receive(:add_dish) { order.basket[item2] += 4 }
     allow(order).to receive(:remove_dish) { order.basket[item2] -= 2 }
-    expect(restaurant.remove_order(1, 2)).to eq -2
+    expect(restaurant.remove_order(1, 2)).to eq(-2)
   end
-
 
 end

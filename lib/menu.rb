@@ -3,10 +3,11 @@ require_relative './dish.rb'
 class Menu
 
   DEFAULT_DISHES = "mexican_dishes.csv"
+
   attr_reader :dishes
 
-  def initialize
-    @dishes = []
+  def initialize(dishes = Array.new)
+    @dishes = dishes
   end
 
   def show_menu

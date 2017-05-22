@@ -2,8 +2,8 @@ require_relative 'printer'
 require 'dotenv/load'
 Dotenv.load('settings.env')
 
-class InvalidOption < StandardError; end
-class EmptyBasket < StandardError; end
+class InvalidOptionError < StandardError; end
+class EmptyBasketError < StandardError; end
 
 class Order
 
@@ -21,7 +21,7 @@ class Order
   end
 
   def remove_dish(dish, quantity = 1)
-    raise(InvalidOption) if not_in_basket?(dish, quantity)
+    raise(InvalidOptionError) if not_in_basket?(dish, quantity)
     @basket[dish] -= quantity
     @print.order_update('remove', dish, quantity)
   end
@@ -35,13 +35,13 @@ class Order
   end
 
   def confirm_order
-    raise(EmptyBasket) if @basket.empty?
+    raise(EmptyBasketError) if @basket.empty?
     @messager.send_confirmation(order_total)
   end
 
   private
 
-  def not_in_basket?(dish,quantity)
+  def not_in_basket?(dish, quantity)
     @basket[dish] < quantity || @basket[dish].nil?
   end
 

@@ -5,8 +5,7 @@ require_relative './messager.rb'
 require 'dotenv/load'
 Dotenv.load('settings.env')
 
-class InvalidOption < StandardError; end
-class BasketEmpty < StandardError; end
+class InvalidOptionError < StandardError; end
 
 class Restaurant
 
@@ -24,7 +23,7 @@ class Restaurant
   end
 
   def add_order(item_number, quantity = 1)
-    raise(InvalidOption) unless on_menu?(item_number)
+    raise(InvalidOptionError) unless on_menu?(item_number)
     @current_order.add_dish(dish(item_number), quantity)
   end
 

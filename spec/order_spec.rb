@@ -13,12 +13,12 @@ describe Order do
   describe '#add_dish' do
     it 'adds menu item to basket' do
       order.add_dish(menu_item)
-      expect(order.basket).to eq ({ menu_item => 1 })
+      expect(order.basket).to eq({ menu_item => 1 })
     end
 
     it 'allows customer to customise quantity of menu item in order' do
       order.add_dish(menu_item, 4)
-      expect(order.basket).to eq ({ menu_item => 4 })
+      expect(order.basket).to eq({ menu_item => 4 })
     end
   end
 
@@ -27,18 +27,18 @@ describe Order do
 
     it 'removes menu item from basket' do
       order.remove_dish(menu_item)
-      expect(order.basket).to eq ({ menu_item => 0 })
+      expect(order.basket).to eq({ menu_item => 0 })
     end
 
     it 'can only remove menu items which have been added to basket' do
-      expect { order.remove_dish(menu_item2) }.to raise_error(InvalidOption)
+      expect { order.remove_dish(menu_item2) }.to raise_error(InvalidOptionError)
     end
   end
 
   describe '#review_order' do
     it 'lets you view basket at any point while ordering' do
       order.add_dish(menu_item)
-      expect(order.review_order).to eq ({ 'Taco' => 1 })
+      expect(order.review_order).to eq({ 'Taco' => 1 })
     end
   end
 
@@ -52,7 +52,7 @@ describe Order do
 
   describe '#confirm_order' do
     it 'should raise error if order is empty at checkout' do
-      expect { order.confirm_order }.to raise_error(EmptyBasket)
+      expect { order.confirm_order }.to raise_error(EmptyBasketError)
     end
   end
 
