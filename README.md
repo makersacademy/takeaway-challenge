@@ -1,5 +1,15 @@
 Takeaway Challenge
 ==================
+How I believe I should go about implementing this program.
+
+Dish class - responsibility to have an array of hashes which hold the dishes names and cost of the dish.
+Menu class - will have a menu_selection method, the hash from dishes class will be available for the user to choose the dishes they would like to order from the menu.
+Order class - Verify order method, will be fed the items from the menu that the user has picked. If the items are correct then the user will receive a text message, which will be done in the text message class. If the items do not match, then an error message will be given to the user.
+text class - will communicate with verify order to send a message confirming the users order and delivery time.
+
+
+
+
 ```
                             _________
               r==           |       |
