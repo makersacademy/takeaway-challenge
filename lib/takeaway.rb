@@ -1,6 +1,6 @@
 require_relative 'menu'
 require_relative 'display'
-# require_relative 'text_provider'
+require_relative 'text_provider'
 
 # TODO properly implement Twilio - add to initialize as a new class instance under @test
 # TODO extract display messages out into display class - takeaway class has too much responsibility
@@ -132,8 +132,9 @@ class Takeaway
     puts "Thanks for ordering! Your combined orders total: #{prices} which gives a total of £#{total}"
   end
 
-  # def delivers_text_notification
-  #   @text.client.messages.create
-  # end
+  def delivers_text_notification(cost)
+    @text = TextProvider.new
+    @text.send_text(cost)
+  end
 
 end
