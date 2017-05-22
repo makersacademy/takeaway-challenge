@@ -22,9 +22,10 @@ def send_message(message_body, to_number)
 end
 
 post '/receive-sms' do
-  message_body = params["Body"]
-  customer_number  = params["From"]
+  message_body    = params["Body"]
+  customer_number = params["From"]
   content_type 'text/xml'
+  
   if !@customers.include? customer_number
     send_message("Welcome to SMS2EAT!", customer_number)
     sms_initial_menu(customer_number)

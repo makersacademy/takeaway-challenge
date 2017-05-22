@@ -31,7 +31,6 @@ class Restaurant
     get_order_details(order_id)
     @current_order.finalize
     @orders << @current_order
-    @current_order
   end
 
   def accept_customer_order(order_id)
