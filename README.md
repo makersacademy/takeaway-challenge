@@ -1,79 +1,70 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway Challenge
+## Makers Academy Week 2 Weekend Challenge
 
+### What it Does
+Emulates an online takeaway food ordering system.
+
+### How to Use
+Run in IRB.
+```
+2.4.0 :001 > require './lib/restaurant.rb'
+ => true
+```
+Make a restaurant!
+```
+2.4.0 :002 > japanese_restaurant = Restaurant.new
+ => #<Restaurant:0x007fe580199890 @menu=#<Menu:0x007fe580199868 @dishes=[{"edemame"=>5.0}, {"chirashi"=>11.95}, {"salmon nigiri"=>5.5}, {"california rolls"=>6.75}, {"miso soup"=>2.0}, {"dorayaki"=>3.5}, {"mochi"=>3.5}], @basket=[]>, @order=#<Order:0x007fe5801996b0 @current_order=[], @order_total=nil>>
+```
+Look at the fairly readable menu!
+```
+2.4.0 :003 > japanese_restaurant.menu.show_menu
+edemame, 5.0
+chirashi, 11.95
+salmon nigiri, 5.5
+california rolls, 6.75
+miso soup, 2.0
+dorayaki, 3.5
+mochi, 3.5
+```
+Let's order food! (via the list number and then quantity desired)
+```
+2.4.0 :005 > japanese_restaurant.menu.order_item(1,1)
+ => "You added 1 portions of edemame to your basket!"
+```
+ORDER LOTS OF FOOD
+```
+2.4.0 :006 > japanese_restaurant.menu.order_item(2, 2)
+ => "You added 2 portions of chirashi to your basket!"
+2.4.0 :007 > japanese_restaurant.menu.order_item(5, 1)
+ => "You added 1 portions of miso soup to your basket!"
+2.4.0 :008 > japanese_restaurant.menu.order_item(7, 2)
+ => "You added 2 portions of mochi to your basket!"
  ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+Finish the order!
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+2.4.0 :009 > japanese_restaurant.checkout
+ => "Your chosen items have been moved to your order!"
+2.4.0 :010 > japanese_restaurant.order.get_total
+Your order comes to 37.9.
+{"edemame"=>5.0}
+{"chirashi"=>11.95}
+{"chirashi"=>11.95}
+{"miso soup"=>2.0}
+{"mochi"=>3.5}
+{"mochi"=>3.5}
 ```
+It was expensive.
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+### My Approach
+I've drawn a very loose diagram to help me visualise the different classes that I might make (so that I don't have to do class extraction at a later point!). The arrows sort of show the relationships between classes. For example, a restaurant has one menu which can have many dishes. The chosen dishes would then be moved to a basket which is then finalised and added up.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+![Initial diagram](https://github.com/wemmm/takeaway-challenge/blob/master/diagram.png "Initial Diagram")
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+### Additional Things
+I had a small degree of success with the Twilio gem and managed to get it to text me. I then was unable to get it to stop texting me and had to unimplement it for the sake of my sanity. If I had had more time I would have liked to have gotten the text confirmation function working smoothly.
 
+![Twilio](https://github.com/wemmm/takeaway-challenge/blob/master/phone.PNG "Twilio")
 
-In code review we'll be hoping to see:
+I would like to refactor the code to handle edge cases a bit better- for example, giving the user a message if they try to checkout an empty basket.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+I also don't like that the menu items are hard coded in menu.rb. Given more time I think it would have been interesting to devise some way of using different menus- possible loading in .csv files? Or making sub classes of Restaurant with different food?
