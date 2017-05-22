@@ -13,6 +13,9 @@ describe Takeaway do
     it 'is initialized with a basket' do
       expect(takeaway.basket).to eq []
     end
+    it 'is initialized with a display' do
+      expect(takeaway.display).to eq takeaway.display
+    end
   end
 
   describe "#extracts_starters" do
