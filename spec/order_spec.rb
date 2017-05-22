@@ -31,7 +31,7 @@ describe Order do
     end
 
     it 'can only remove menu items which have been added to basket' do
-      expect{ order.remove_dish(menu_item2) }.to raise_error("Not in basket")
+      expect{ order.remove_dish(menu_item2) }.to raise_error(InvalidOption)
     end
   end
 

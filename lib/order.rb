@@ -1,5 +1,7 @@
 require_relative 'display'
 
+class InvalidOption < StandardError; end
+
 class Order
 
   attr_reader :basket, :messager
@@ -10,13 +12,13 @@ class Order
     @print = printer
   end
 
-  def add_dish(dish, quantity = 1) #error if item not available
+  def add_dish(dish, quantity = 1)
     @basket[dish] += quantity
     @print.order_update('add',dish,quantity)
   end
 
   def remove_dish(dish, quantity = 1) #Make custom error!
-    fail("Not in basket") if not_in_basket?(dish,quantity)
+    fail(InvalidOption) if not_in_basket?(dish,quantity)
     @basket[dish] -= quantity
     @print.order_update('remove',dish,quantity)
   end
