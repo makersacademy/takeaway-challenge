@@ -18,4 +18,15 @@ describe 'Feature Tests' do
       expect([takeaway.cart.list]).to include(item1)
     end
   end
+
+  describe 'Order' do
+    it 'calculates total and outputs the list of items ordered with prices' do
+      item1 = takeaway.restaurant.menu.add_item('Burger', 3)[0]
+      item2 = takeaway.restaurant.menu.add_item('Beer', 2)[1]
+      takeaway.cart.select_item(takeaway.restaurant.menu.items[0])
+      takeaway.cart.select_item(takeaway.restaurant.menu.items[1])
+      takeaway.checkout
+      expect(takeaway.order.calculate_total).to eq(item1.price + item2.price)
+    end
+  end
 end

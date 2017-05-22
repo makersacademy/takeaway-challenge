@@ -1,6 +1,6 @@
 class Interface
 
-  attr_reader :printer
+  attr_reader :printer, :restaurant
 
   def initialize(restaurant)
     @restaurant = restaurant
