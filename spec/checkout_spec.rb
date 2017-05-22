@@ -4,10 +4,17 @@ describe Checkout do
 subject(:checkout) { described_class.new }
 
   describe "#show_order" do
-  # let(:order) { double('order', selection_of_dish: 'chicken', 2 ) }
-  # allow(:order).to receive(:selection_of_dish 'chicken', 2)
     it "should print the user's order" do
-      expect(checkout).to receive(show_order)
+      expect(checkout).to receive(:show_order)
+      checkout.show_order
+    end
+    it "should print the user's order" do
+      expect(checkout).to receive(:print_order)
+      checkout.show_order([{dish: "chicken", price: 5}])
+    end
+    it "should print the user's order" do
+      expect(checkout).to receive(:calculate_total)
+      checkout.show_order([{dish: "chicken", price: 5}])
     end
   end
 end

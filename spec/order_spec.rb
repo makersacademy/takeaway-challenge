@@ -36,9 +36,11 @@ subject(:order) { described_class.new }
     end
 
     describe "#order_summary" do
+      let(:checkout) {double(:checkout, :show_order => "shows order" )}
       it "should print the users order" do
-        # order.stub(:selection_of_dish).with('chicken', 2)
-        expect(order.order_summary).to eq(checkout.show_order)
+        order2 = Order.new(checkout)
+        expect(checkout).to receive(:show_order)
+        order2.order_summary
       end
     end
   end

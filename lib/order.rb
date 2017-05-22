@@ -5,9 +5,9 @@ class Order
 
 attr_accessor :meal, :list_of_dishes, :order
 
-def initialize
+def initialize(checkout = Checkout.new)
   @menu = Menu.new
-  @checkout = Checkout.new
+  @checkout = checkout
   @meal = []
 end
 
