@@ -31,3 +31,4 @@ attr_reader :menu, :order, :sms
  end
 
 end
+
