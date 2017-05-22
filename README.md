@@ -18,7 +18,7 @@ Takeaway Challenge
 
 ##Instructions
 
-[add these when you have internet]
+![User instructions](https://raw.githubusercontent.com/Kynosaur/takeaway-challenge/master/takeaway_user_instructions.png)
 
 ##Approach
 
