@@ -3,10 +3,11 @@ require 'dotenv/load'
 Dotenv.load('settings.env')
 
 class InvalidOption < StandardError; end
+class EmptyBasket < StandardError; end
 
 class Order
 
-  attr_reader :basket, :messager
+  attr_reader :basket
 
   def initialize(messager = Messager.new, printer = Printer.new)
     @basket = Hash.new(0)
@@ -20,13 +21,12 @@ class Order
   end
 
    def remove_dish(dish, quantity = 1)
-     fail(InvalidOption) if not_in_basket?(dish,quantity)
+     raise(InvalidOption) if not_in_basket?(dish,quantity)
      @basket[dish] -= quantity
      @print.order_update('remove',dish,quantity)
    end
 
   def review_order
-    fail("Nothing in basket") if @basket.empty?
     @basket.map { |dish,quantity| [dish.name, quantity] }.to_h
   end
 
@@ -35,6 +35,7 @@ class Order
   end
 
   def confirm_order
+    raise(EmptyBasket) if @basket.empty?
     @messager.send_confirmation(order_total)
   end
 

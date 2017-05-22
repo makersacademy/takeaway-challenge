@@ -37,9 +37,8 @@ class Restaurant
   end
 
   def checkout
-    raise(BasketEmpty) if empty_order?
-    @print.receipt(order_summary,@current_order.order_total)
     @current_order.confirm_order
+    @print.receipt(order_summary,@current_order.order_total)
   end
 
   private
@@ -56,6 +55,5 @@ class Restaurant
   def dish(item_number)
     @menu.dishes[item_number - 1]
   end
-
 
 end

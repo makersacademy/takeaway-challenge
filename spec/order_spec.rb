@@ -50,6 +50,13 @@ describe Order do
     end
   end
 
+  describe '#confirm_order' do
+    it 'should raise error if order is empty at checkout' do
+      expect { order.confirm_order }.to raise_error(EmptyBasket)
+    end
+  end
+
+
   # describe '#confirm_order' do
   #   before { allow(order).to receive(:send_text) }
   #
