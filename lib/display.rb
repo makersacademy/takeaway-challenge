@@ -1,16 +1,16 @@
-module Display
+class Printer
 
-  def print_welcome_message(name)
+  def welcome_message(name)
     p "Welcome to #{name}!"
   end
 
-  def print_receipt(order,total_amount)
+  def receipt(order,total_amount)
     order.each { |dish,quantity| p "#{dish} X#{quantity}" }
     p "Total bill: #{total_amount}"
   end
 
-  def print_incoming_text_warning
-    p "You'll be sent a text with an estimated arrival time for your food"
+  def order_update(act, dish, qty)
+    act == 'add' ? "Added: #{dish.name}x#{qty}" : "Removed: #{dish.name}x#{qty}"
   end
 
 

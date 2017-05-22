@@ -7,15 +7,14 @@ class InvalidOption < StandardError; end
 class BasketEmpty < StandardError; end
 
 class Restaurant
-  include Display
 
   attr_reader :current_order
 
-  def initialize(menu = Menu.new, order = Order.new, messager = Messager.new, name = "Woahaca")
+  def initialize(menu = Menu.new, order = Order.new, printer = Printer.new, name = "Woahaca")
     @menu = menu
     @current_order = order
-    @messager = messager
-    print_welcome_message(name)
+    @print = printer
+    @print.welcome_message(name)
   end
 
   def view_menu
@@ -37,8 +36,8 @@ class Restaurant
 
   def checkout
     raise(BasketEmpty) if empty_order?
-    print_receipt(order_summary,@current_order.order_total)
-    confirm_order
+    @print.receipt(order_summary,@current_order.order_total)
+    @current_order.confirm_order
   end
 
   private
@@ -50,11 +49,6 @@ class Restaurant
 
   def empty_order?
     @current_order.basket.empty?
-  end
-
-  def confirm_order
-    @messager.send_confirmation(@current_order.order_total)
-    print_incoming_text_warning
   end
 
 

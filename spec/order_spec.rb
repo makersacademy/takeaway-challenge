@@ -1,9 +1,10 @@
 require 'order'
 
 describe Order do
-  subject(:order) { described_class.new }
-  let(:menu_item) { double :dish, name: 'Taco', price: 2 }
+  subject(:order)  { described_class.new }
+  let(:menu_item)  { double :dish, name: 'Taco', price: 2 }
   let(:menu_item2) { double :dish, name: 'Burrito', price: 3.20}
+  let(:messager)   { double :messager }
 
   it 'allows customer to start with an empty basket' do
     expect(order.basket).to be_empty
@@ -49,7 +50,13 @@ describe Order do
     end
   end
 
-  describe '#finalise_order' do
-  end
+  # describe '#confirm_order' do
+  #   before { allow(order).to receive(:send_text) }
+  #
+  #   it 'sends a payment confirmation text message' do
+  #     expect(order.messager).to receive(:send_text).with("Thank you for your order: £20.93")
+  #   end
+  # end
+
 
 end

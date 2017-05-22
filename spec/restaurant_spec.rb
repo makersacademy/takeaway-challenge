@@ -48,5 +48,15 @@ describe Restaurant do
     expect(restaurant.remove_order(item2,2)).to eq -2
   end
 
+  describe '#checkout' do
+
+    it 'should raise error if order is empty at checkout' do
+      allow(menu).to receive(:new) { menu }
+      allow(order).to receive(:new) { order }
+      expect{ restaurant.checkout }.to raise_error(BasketEmpty)
+    end
+
+  end
+
 
 end
