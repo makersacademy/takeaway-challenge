@@ -48,10 +48,6 @@ class Restaurant
     return true unless menu_number.to_i > @menu.dishes.length
   end
 
-  def empty_order?
-    @current_order.basket.empty?
-  end
-
   def dish(item_number)
     @menu.dishes[item_number - 1]
   end
