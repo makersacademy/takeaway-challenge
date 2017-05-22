@@ -32,7 +32,7 @@ describe Takeaway do
   describe '#send_text' do
     it 'allows to send a message' do
       allow(notifier).to receive(:send_message)
-      expect(takeaway.send_text).not_to be_empty
+      expect(takeaway.send_text(0).to_s).to include("Twilio::REST::Message")
     end
   end
 

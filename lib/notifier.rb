@@ -6,7 +6,8 @@ class Notifier
 
   attr_reader :message
 
-  def initialize(client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']))
+  def initialize(client = Twilio::REST::Client.new(
+                      ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']))
     @client = client
   end
 
@@ -19,7 +20,7 @@ class Notifier
       })
   end
 
-#private
+private
 
   def gen_message(total_price = 0)
     "Thank you for your order: £#{total_price}."\
