@@ -12,6 +12,12 @@ describe Order do
       restaurant.order.get_total
       expect(restaurant.order.order_total).to eq 10
     end
+
+    it 'should inform the user if they try to checkout an empty basket' do
+      restaurant = Restaurant.new
+      restaurant.checkout
+      expect(restaurant.order.get_total).to eq "No items in order!"
+    end
   end
 
 end
