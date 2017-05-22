@@ -1,4 +1,6 @@
 require 'twilio-ruby'
+require 'dotenv/load'
+Dotenv.load('settings.env')
 
 class Notifier
 
