@@ -23,11 +23,11 @@ class Restaurant
 
   def add_order(item_number,quantity = 1)
     raise(InvalidOption) unless on_menu?(item_number)
-    @current_order.add_dish(@menu.dishes[item_number - 1], quantity)
+    @current_order.add_dish(dish(item_number), quantity)
   end
 
-  def remove_order(dish,quantity = 1)
-    @current_order.remove_dish(dish,quantity)
+  def remove_order(item_number,quantity = 1)
+    @current_order.remove_dish(dish(item_number), quantity)
   end
 
   def order_summary
@@ -49,6 +49,10 @@ class Restaurant
 
   def empty_order?
     @current_order.basket.empty?
+  end
+
+  def dish(item_number)
+    @menu.dishes[item_number - 1]
   end
 
 

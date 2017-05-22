@@ -32,7 +32,7 @@ describe Restaurant do
   it 'should remove item from #current_order' do
     allow(order).to receive(:add_dish) { order.basket[item2] += 4}
     allow(order).to receive(:remove_dish) { order.basket[item2] -= 2}
-    expect(restaurant.remove_order(item2,2)).to eq -2
+    expect(restaurant.remove_order(1,2)).to eq -2
   end
 
   describe '#checkout' do

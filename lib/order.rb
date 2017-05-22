@@ -17,11 +17,11 @@ class Order
     @print.order_update('add',dish,quantity)
   end
 
-  def remove_dish(dish, quantity = 1) #Make custom error!
-    fail(InvalidOption) if not_in_basket?(dish,quantity)
-    @basket[dish] -= quantity
-    @print.order_update('remove',dish,quantity)
-  end
+   def remove_dish(dish, quantity = 1)
+     fail(InvalidOption) if not_in_basket?(dish,quantity)
+     @basket[dish] -= quantity
+     @print.order_update('remove',dish,quantity)
+   end
 
   def review_order
     fail("Nothing in basket") if @basket.empty?

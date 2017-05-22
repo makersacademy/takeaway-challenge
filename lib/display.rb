@@ -10,7 +10,7 @@ class Printer
   end
 
   def order_update(act, dish, qty)
-    act == 'add' ? "Added: #{dish.name}x#{qty}" : "Removed: #{dish.name}x#{qty}"
+    act == 'add' ? "Added: #{dish.name} x#{qty}" : "Removed: #{dish.name} x#{qty}"
   end
 
 
