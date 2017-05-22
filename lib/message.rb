@@ -26,6 +26,6 @@ class Message
   private
   def calculate_time
     time2 = Time.now + (30 * 60)
-    @time_order = "#{time2.hour}:#{time2.min}"
+    @time_order = time2.strftime("%H:%M")
   end
 end
