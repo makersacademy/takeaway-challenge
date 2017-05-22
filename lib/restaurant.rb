@@ -31,7 +31,7 @@ class Restaurant
   def load_menu(path_to_menu)
     csv = CSV.read(path_to_menu)
     csv.each { |line| add_dish(line[0], line[1], line[2].to_f) }
-    self.view_menu
+    view_menu
     'Menu succesfully loaded'
   end
 
