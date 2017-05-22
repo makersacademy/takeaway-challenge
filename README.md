@@ -14,21 +14,15 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+#Makers Academy weekend challenge #2
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+##Instructions
 
-Task
------
+[add these when you have internet]
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+##Approach
+
+I tackled the user stories in the below order:
 
 ```
 As a customer
@@ -48,32 +42,14 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+I knew straight away that I would want a "Takeaway" class for the user to interact with, and that class would need to communicate with a "Menu" class (which would be responsible for storing and printing the list of dishes and prices) and an "Order" class (which would be responsible for all things relating to the order - storing the order, adding to it and working out the summary and total).  I diagrammed how the classes would interact and what kind of methods I would need to implement before setting up the Menu class and the #show_menu method.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+I then built the #add_to_order method, including a guard case for if the user tried to order a dish which was not on the menu and making sure it increased the current total of the dish, in case the user wanted to add more later.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Next I built the #basket_summary and #total methods, having the Order class work these out by referring to the Menu class for prices.  The code for actually calculating and displaying the basket_summary output is something I would improve had I spent more time on this challenge - I feel there is a much cleaner and more elegant way to do it.
 
+Once the functionality of showing the menu, adding to the order and displaying the totals was implemented, I developed the #checkout method which tells the Order class to check that the given total is correct, and then simply returns `true` if it is, which allows Takeaway to put sending the confirmation SMS into action.
 
-In code review we'll be hoping to see:
+I used the `twilio-ruby` gem for sending the SMS and `Dotenv` for hiding the telephone numbers and auth token.  The actual SMS which is sent is quite basic and simply uses the #basket_summary message in the output - this is another thing I would like to improve to make the SMS more readable and professional-looking.  I used `strftime` to format the time and simply Time.now + (60*60) to generate the time one hour from placing the order.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Given more time I would like to implement the functionality to clear the order once it has been placed, and refactor some of the methods which seem a bit too lengthy to me - it was tempting to enable multiple orders and menus to be used in the program, but I opted with satisfying the user stories over implementing these.
