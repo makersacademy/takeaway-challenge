@@ -36,6 +36,7 @@ class Takeaway
   def confirm
     @messenger = Messenger.new
     messenger.send(self.interface.printer.print_confirmation)
+    puts (interface.printer.print_confirmation)
   end
 
 end

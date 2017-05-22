@@ -12,9 +12,9 @@ describe Takeaway do
     expect(takeaway.interface).to be_an_instance_of Interface
   end
 
-  describe '#confirm' do
-    it 'puts out a message to STDOUT confirming order placed' do
-      expect{ takeaway.confirm }.to output("Your order has been placed\n").to_stdout
-    end
-  end
+  # describe '#confirm' do
+  #   it 'puts out a message to STDOUT confirming order placed' do
+  #     expect{ takeaway.confirm }.to output("Your order has been placed\n").to_stdout
+  #   end
+  # end
 end
