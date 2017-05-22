@@ -11,14 +11,14 @@ describe Order do
   end
 
   describe '#add_dish' do
-     it 'adds menu item to basket' do
-       order.add_dish(menu_item)
-       expect(order.basket).to eq ( { menu_item => 1 } )
+    it 'adds menu item to basket' do
+      order.add_dish(menu_item)
+      expect(order.basket).to eq ( { menu_item => 1 } )
      end
 
-     it 'allows customer to customise quantity of menu item in order' do
-       order.add_dish(menu_item,4)
-       expect(order.basket).to eq ( { menu_item => 4 } )
+    it 'allows customer to customise quantity of menu item in order' do
+      order.add_dish(menu_item,4)
+      expect(order.basket).to eq ( { menu_item => 4 } )
      end
   end
 

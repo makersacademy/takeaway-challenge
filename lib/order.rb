@@ -1,4 +1,4 @@
-require_relative 'display'
+require_relative 'printer'
 require 'dotenv/load'
 Dotenv.load('settings.env')
 

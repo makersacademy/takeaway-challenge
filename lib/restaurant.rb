@@ -1,6 +1,6 @@
 require_relative './order.rb'
 require_relative './menu.rb'
-require_relative './display.rb'
+require_relative './printer.rb'
 require_relative './messager.rb'
 require 'dotenv/load'
 Dotenv.load('settings.env')
