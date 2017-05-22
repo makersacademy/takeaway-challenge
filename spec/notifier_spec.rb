@@ -3,44 +3,21 @@ require 'notifier'
 describe Notifier do
 
   # building up for the 'account.messages.create'
-  let(:messages) do
-    message = double(:messages)
-    allow(message).to receive(:create)
-    messages
-  end
+  let(:messages) { double :twilio_messages }
+  let(:account) { double :twilio_account, messages: messages }
+  let(:client) { double :twilio_client, account: account}
 
-  let(:account) do
-    account = double(:account)
-    allow(account).to receive(:messages).and_return(messages)
-    account
-  end
-
-  let(:client_instance) do
-    client_instance = double(:client_instance)
-    allow(client_instance).to receive(:account).and_return(account)
-    client_instance
-  end
-
-  let(:client) do
-    client_class = double(:twilio_client_class)
-    allow(client_class).to receive(:new).and_return(client_instance)
-    client_class
-  end
-
-  subject(:notifier) { described_class.new }
+  subject(:notifier) { described_class.new(client) }
 
   context '#send_message' do
     it 'sends a confirmation message' do
-      notifier.send_message(0)
-      expect(messages).to have_received(:create).with({
-        :from => TWILIO_NUMBER,
-        :to => TO_NUMBER,
-        :body => "Thank you for your order: £0. Order was placed and will be delivered before 18:52",
-        :media_url => nil,
+      expect(messages).to receive(:create).with({
+        :from => ENV['TWILIO_NUMBER'],
+        :to => ENV['TO_NUMBER'],
+        :body => "Thank you for your order: £0.Order was placed and will be delivered before 18:52",
         })
+        notifier.send_message(0)
     end
-
   end
-
 
 end

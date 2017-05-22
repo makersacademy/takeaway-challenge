@@ -1,15 +1,13 @@
 require_relative 'menu'
 require_relative 'notifier'
-require_relative 'order'
 
 class Takeaway
 
   attr_reader :menu, :order, :notifier
 
-  def initialize(menu = Menu.new, notifier = Notifier.new, order = Order.new)
+  def initialize(menu = Menu.new, notifier = Notifier.new)
     @menu = menu
     @notifier = notifier
-    @order = order
   end
 
   def display_menu
@@ -21,11 +19,11 @@ class Takeaway
   end
 
   def complete_order(price)
-    @order.finalize_order(price)
+    @menu.close_order(price)
   end
 
-  def send_text
-    notifier.send_message
+  def send_text(text)
+    @notifier.send_message(text)
   end
 
 end

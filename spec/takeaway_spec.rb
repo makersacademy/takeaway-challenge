@@ -2,7 +2,6 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
-  let(:order) { double :order }
   let(:menu) { double :menu }
   let(:notifier) { double :notifier }
 
@@ -25,13 +24,16 @@ describe Takeaway do
 
   describe '#complete_order' do
     it 'allows to complete an order' do
-      allow(order).to receive(:finalize_order).and_return(5)
+      allow(menu).to receive(:close_order).and_return(5)
       expect(takeaway.complete_order(5)).to eq 5
     end
   end
 
   describe '#send_text' do
-
+    it 'allows to send a message' do
+      allow(notifier).to receive(:send_message)
+      expect(takeaway.send_text).not_to be_empty
+    end
   end
 
 end

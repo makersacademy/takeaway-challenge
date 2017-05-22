@@ -22,6 +22,10 @@ class Menu
     @order.display_order
   end
 
+  def close_order(price)
+    @order.finalize_order(price)
+  end
+
   def contains?(dish)
     @menu.include?(dish)
   end
