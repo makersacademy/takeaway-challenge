@@ -24,16 +24,14 @@ describe Takeaway do
     end
   end
 
-  describe '#chek_order' do
-    it 'allow the customer to list the item he ordered' do
-      # expect(takeaway.check_order).to eq 'wings x 2 = £14.00, chiken x 1 = £5.00'
-    end
-  end
-
   describe '#check_total' do
     it 'shows the order total' do
       allow(order).to receive(:total) { 19.00 }
       expect(takeaway.check_total).to eq 19.00
     end
   end
+
+  describe '#checkout'
+    it 'sends a order confirmation text message' do
+    end
 end

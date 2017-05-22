@@ -24,7 +24,7 @@ class Order
   attr_reader :menu
 
   def add_to_cart(dish, amount)
-    @cart[dish.name] = amount
+    cart[dish.name] = amount
     "#{amount} x #{dish.name} added to your cart"
   end
 end
