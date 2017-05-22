@@ -7,7 +7,7 @@ describe 'Feature Tests' do
     it 'prints the list of dishes with prices when promted' do
       takeaway.restaurant.menu.add_item('Burger', 3)
       takeaway.restaurant.menu.add_item('Beer', 3)
-      expect{takeaway.interface.process('1')}.to output("1. Burger: £3\n2. Beer: £3\n").to_stdout
+      expect{ takeaway.interface.process('1') }.to output("1. Burger: £3\n2. Beer: £3\n").to_stdout
     end
   end
 

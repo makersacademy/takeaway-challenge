@@ -15,7 +15,7 @@ class Takeaway
 
   def initialize(restaurant_name)
     @restaurant = Restaurant.new(restaurant_name, self)
-    @interface = Interface.new(@retakeawastaurant)
+    @interface = Interface.new(@restaurant)
     @cart = Cart.new
     @order
     @messenger
@@ -43,14 +43,7 @@ end
 
 
 #Run Program Loop
-# takeaway = Takeaway.new ('Beef & Beer')
-# takeaway.restaurant.menu.add_item('Burger', 3)
-# takeaway.restaurant.menu.add_item('Beer', 2)
-# takeaway.interface.interactive_menu
-# interface.printer.print_confirmation # => NameError: undefined local variable or method `interface' for main:Object\nDid you mean?  Integer
-
-# ~> NameError
-# ~> undefined local variable or method `interface' for main:Object
-# ~> Did you mean?  Integer
-# ~>
-# ~> /Users/lubosmich/Projects/takeaway-challenge/lib/takeaway.rb:49:in `<main>'
+takeaway = Takeaway.new ('Beef & Beer')
+takeaway.restaurant.menu.add_item('Burger', 3)
+takeaway.restaurant.menu.add_item('Beer', 2)
+takeaway.interface.interactive_menu
