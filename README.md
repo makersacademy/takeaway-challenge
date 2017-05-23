@@ -14,21 +14,61 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+Makers Academy's second take-home challenge, where a food order can be made by a customer. This order will be confirmed and a text-message is sent to their number with relevant information such as price and estimated delivery time.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Text messaging service used: Twilio.
 
-Task
------
+Information used for Twilio (authentication token, SID, phone numbers) stored in .env file. To properly run the program, create file with relevant information.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## How to Use:
+#### Creating a Menu
+The program starts with an empty menu. It is therefore the responsibility of the restaurant to create one; this can be done with the #add_item(dish, price) method.
+```
+2.4.0 :001 > require './lib/order'
+ => true
+2.4.0 :002 > menu = Menu.new
+ => #<Menu:0x007ff1cca02a88 @selected_item=nil, @dish=nil, @price=nil, @list={}>
+2.4.0 :003 > menu.add_item(:bread, 3)
+ => 3
+2.4.0 :004 > menu.add_item(:water, 0)
+ => 0
+```
+
+#### Creating an Order
+When creating a new order, it can take in an existing menu as initializing parameter. If none is provided, a new menu is created.
+
+One can then select food from the menu with #select_food(dish, quantity). If no quantity is given, it is set as 1.
+
+```
+2.4.0 :005 > order = Order.new(menu)
+Welcome to Veg-E! What will your order be?
+
+ => #<Order:0x007ff1cc9f4708 @menu=#<Menu:0x007ff1cca02a88 @selected_item=nil, @dish=nil, @price=nil, @list={:bread=>3, :water=>0}>, @selected_item=nil, @order_list=[], @message=#<Message:0x007ff1cc9f46b8 @acc_sid="ACb57d78ffceb78ec72d31808940fdd9cb", @auth_token="e12e1e03d87e789be99786c14b9c97a1">>
+ 2.4.0 :006 > order.select_food(:water)
+ => [{:dish=>"Water", :quantity=>1, :price=>0}]
+2.4.0 :007 > order.select_food(:bread,2)
+ => [{:dish=>"Water", :quantity=>1, :price=>0}, {:dish=>"Bread", :quantity=>2, :price=>6}]
+```
+
+#### Confirming an order
+When all the dishes have been selected, one can decide to #end_order. Before a text message is sent out, the total order is displayed and a confirmation is requested. When confirmed, a text message with expected arrival and total price is dispatched.
+
+```
+2.4.0 :009 > order.select_food(:bread,2)
+ => [{:dish=>"Water", :quantity=>1, :price=>0}, {:dish=>"Bread", :quantity=>2, :price=>6}]
+2.4.0 :010 > order.end_order
+1x Water: £0
+2x Bread: £6
+--------------
+Total price: £6
+Is this your final order? (y/n)
+y
+Your food is on its way; eet smakelijk!
+"CUSTOMER'S PHONE NUMBER"
+```
+
+
+## User Stories
 
 ```
 As a customer
@@ -48,32 +88,6 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+#### Object Diagramming
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+![alt text](https://github.com/RSijelmass/takeaway-challenge/blob/master/takeaway_diagram.png)
