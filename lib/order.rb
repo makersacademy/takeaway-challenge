@@ -5,11 +5,11 @@ require_relative 'message'
 class Order
   attr_reader :order_list
 
-  def initialize(menu = Menu.new) #printer = Printer.new
+  def initialize(menu = Menu.new, message =  Message.new) #printer = Printer.new
     @menu = menu
     @selected_item = nil
     @order_list = []
-    @message = Message.new
+    @message = message
     puts "Welcome to Veg-E! What will your order be?"
     puts ""
   end
