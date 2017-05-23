@@ -2,12 +2,18 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
+  let(:list) { double(:hash) }
 
   describe '#add_item' do
     it 'adds a dish with a specific price to the menu' do
       menu.add_item(:bread, 3)
       expect(menu.list).to eq({ bread: 3 })
     end
+    # it '' do
+    #   menu = Menu.new(list)
+    #   menu.add_item(:bread, 3)
+    #   expect(list).to have_received(:add_item).with(:bread)
+    # end
   end
 
   describe '#list' do

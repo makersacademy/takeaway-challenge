@@ -5,7 +5,7 @@ require_relative 'message'
 class Order
   attr_reader :order_list
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new) #printer = Printer.new
     @menu = menu
     @selected_item = nil
     @order_list = []
@@ -28,7 +28,7 @@ class Order
   def end_order
     show_total
     confirm_order
-    complete_send if @response == "y"
+    @response == "y" ? complete_send : puts("No worries!")
   end
 
   private

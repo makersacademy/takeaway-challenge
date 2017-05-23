@@ -1,10 +1,13 @@
 require 'order'
 
 describe Order do
-  subject(:order) { described_class.new }
-  let(:menu) { double(:menu) }
+  let(:menu) { double(:menu, selected_item: {bread: 3}, dish: :bread, price: 3) }
+  subject(:order) { described_class.new(menu) }
 
   describe '#select_food' do
+    it 'adds an order to the order list after selecting dish' do
+      expect{ order.select_food(:bread) }.to change { order.order_list.length }.by 1
+    end
   end
 
   describe '#show_total' do

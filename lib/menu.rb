@@ -3,11 +3,11 @@
 class Menu
   attr_reader :list, :dish, :price
 
-  def initialize
+  def initialize(list = Hash.new)
     @selected_item = nil
     @dish = nil
     @price = nil
-    @list = {}
+    @list = list
   end
 
   def add_item(dish, price)
@@ -18,6 +18,10 @@ class Menu
     list.each { |item| @selected_item = item if item[0] == dish }
     check_if_available
     item_info
+  end
+
+  def show_menu
+    @list.each_with_index { |item,i| puts "#{i + 1}: #{item[0]}, £#{item[1]}" }
   end
 
   def item_info

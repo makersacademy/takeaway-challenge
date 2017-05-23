@@ -5,7 +5,7 @@ require 'dotenv/load'
 class Message
   attr_reader :time_order
 
-  def initialize
+  def initialize#(client = Twilio::REST::Client.new)
     @acc_sid = ENV['ACCOUNT_SID']
     @auth_token = ENV['AUTH_TOKEN']
   end
