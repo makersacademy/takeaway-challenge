@@ -20,7 +20,8 @@ Text messaging service used: Twilio.
 
 Information used for Twilio (authentication token, SID, phone numbers) stored in .env file. To properly run the program, create file with relevant information.
 
-##### Creating a Menu
+## How to Use:
+#### Creating a Menu
 The program starts with an empty menu. It is therefore the responsibility of the restaurant to create one; this can be done with the #add_item(dish, price) method.
 ```
 2.4.0 :001 > require './lib/order'
@@ -33,7 +34,7 @@ The program starts with an empty menu. It is therefore the responsibility of the
  => 0
 ```
 
-##### Creating an Order
+#### Creating an Order
 When creating a new order, it can take in an existing menu as initializing parameter. If none is provided, a new menu is created.
 
 One can then select food from the menu with #select_food(dish, quantity). If no quantity is given, it is set as 1.
@@ -49,7 +50,7 @@ Welcome to Veg-E! What will your order be?
  => [{:dish=>"Water", :quantity=>1, :price=>0}, {:dish=>"Bread", :quantity=>2, :price=>6}]
 ```
 
-##### Confirming an order
+#### Confirming an order
 When all the dishes have been selected, one can decide to #end_order. Before a text message is sent out, the total order is displayed and a confirmation is requested. When confirmed, a text message with expected arrival and total price is dispatched.
 
 ```
@@ -66,7 +67,8 @@ Your food is on its way; eet smakelijk!
 "CUSTOMER'S PHONE NUMBER"
 ```
 
-#### User Stories
+
+## User Stories
 
 ```
 As a customer
