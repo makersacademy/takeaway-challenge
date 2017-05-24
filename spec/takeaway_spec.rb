@@ -18,31 +18,6 @@ describe Takeaway do
     end
   end
 
-  describe "#extracts_starters" do
-    it 'lists starters from menu' do
-      expect { takeaway.extracts_starters }.to output(/Starters: 1. Olives = £4, 2. Pitta bread = £5/).to_stdout
-    end
-  end
-
-  describe "#extracts_main_course" do
-    it 'lists main courses from menu' do
-      expect { takeaway.extracts_main_course }.to output(/Main Courses: 3. Fried duck = £12, 4. Fish & Chips/).to_stdout
-    end
-  end
-
-  describe "#extracts_dessert" do
-    it 'lists desserts from menu' do
-      expect { takeaway.extracts_dessert }.to output(/Desserts: 5. Jam roll = £5, 6. Apple crumble = £6/).to_stdout
-    end
-  end
-
-  describe '#lists_dishes_with_prices' do
-    it 'lists all menu dishes with prices' do
-      expect { takeaway.lists_dishes_with_prices }.to output(/Starters: 1. Olives = £4, 2. Pitta bread = £5 Main Courses: 3. Fried duck = £12, 4. Fish & Chips = £9 Desserts: 5. Jam roll = £5, 6. Apple crumble = £6/).to_stdout
-    end
-  end
-
-  # TODO test could be improved
   describe '#print_menu' do
     it 'displays a menu for customer orders' do
       expect { takeaway.print_menu }.to output(/1. Place orders\n2. Show order selections\n7. Exit\n/).to_stdout
@@ -119,9 +94,11 @@ describe Takeaway do
 
   xdescribe '#delivers_text_notification' do
     it 'delivers a text notification once an order has been made' do
-      fake_text = double(:text)
-      allow(fake_text).to receive(:send_text).and_return("Thank you! Your order was placed and will be delivered before 18:52")
-      expect { takeaway.delivers_text_notification }.to output(/Thank you! Your order was placed and will be delivered before 18:52/).to_stdout
+      fake_cost = double(:cost)
+      text = TextProvider.new
+      allow(fake_cost).to receive(:delivers_text_notification).and_return(12)
+      allow(fake_cost).to receive(:send_text).and_return(12)
+      expect(takeaway.delivers_text_notification(fake_cost)).to eq "Thank you! Your order was placed and will be delivered before 18:52. The total cost of your order is £12"
     end
   end
 

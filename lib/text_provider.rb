@@ -5,7 +5,12 @@ require_relative 'takeaway'
 class TextProvider
   attr_reader :client
 
+# TODO this isn't a secure way of storing info- secure this - complete this
   def initialize
+    # account_sid = ENV['account_sid']
+    # auth_token = ENV['auth_token']
+    # @twilio_no = ENV['to_number']
+    # @client_no = ENV['from_number']
     account_sid = 'AC034ed165a8e938089eb0d73e01a10f35'
     auth_token = '6b7a74650475a79697e3d1b8a2998b3b'
     @client = Twilio::REST::Client.new account_sid, auth_token

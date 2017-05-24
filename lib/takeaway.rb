@@ -15,31 +15,6 @@ class Takeaway
     @display = display
   end
 
-  def lists_dishes_with_prices
-    print "#{extracts_starters} #{extracts_main_course} #{extracts_dessert}"
-  end
-
-  # TODO should this be in the menu class not the takeaway class?
-  def extracts_starters
-    extracts(menu_starters(), [1, 2], "Starters")
-  end
-
-  def extracts_main_course
-    extracts(menu_main_course(), [3, 4], "Main Courses")
-  end
-
-  def extracts_dessert
-    extracts(menu_dessert(), [5, 6], "Desserts")
-  end
-
-  def extracts(course, numbers, description)
-    course1 = course[numbers[0]].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    course2 = course[numbers[1]].map { |k, v| "#{k} = £#{v}" }.join(', ')
-    course1_key = course.keys[0]
-    course2_key = course.keys[1]
-    print "#{description}: #{course1_key}. #{course1}, #{course2_key}. #{course2} "
-  end
-
   # TODO refactor to avoid repetition- DRY 3's
   # TODO should this be in the menu class not the takeaway class?
   def menu_starters
@@ -85,7 +60,7 @@ class Takeaway
   end
 
   def place_orders
-    puts "Take a note of the order numbers from our menu: #{lists_dishes_with_prices}"
+    puts "Take a note of the order numbers from our menu: #{displays_menu}"
     puts "Enter the order numbers you'd like to add to your basket:"
     puts "Remember, to exit select 7 or hit double space twice"
     order_num = @display.read_input
