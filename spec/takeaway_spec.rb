@@ -50,10 +50,10 @@ describe Takeaway do
     end
   end
 
-  describe '#print_orders' do
+  describe '#count_orders' do
     it 'prints the order numbers from the basket' do
       takeaway.basket.push(1, 2, 3)
-      expect { takeaway.print_orders }.to output(/You have 3 orders: order numbers 1, 2, 3/).to_stdout
+      expect { takeaway.count_orders }.to output(/You have 3 orders: order numbers 1, 2, 3/).to_stdout
     end
   end
 

@@ -48,7 +48,7 @@ class Takeaway
     end
   end
 
-  def print_orders
+  def count_orders
     if @basket.count.zero?
       @display.print_no_orders
     elsif @basket.count == 1
@@ -58,30 +58,11 @@ class Takeaway
     end
   end
 
-  # TODO refactor to avoid repetition- DRY 3's
-  # TODO should this be in the menu class not the takeaway class?
-  def menu_starters
-    @menu.starters
-  end
-
-  def menu_main_course
-    @menu.main_course
-  end
-
-  def menu_dessert
-    @menu.dessert
-  end
-
-
   # TODO DRY this up 3 x repetion
   def gives_orders_with_dishes_hash
-    orders_values = []
     @basket.map do |order_num|
-      orders_values << menu_starters.fetch(order_num) if menu_starters.has_key?(order_num)
-      orders_values << menu_main_course.fetch(order_num) if menu_main_course.has_key?(order_num)
-      orders_values << menu_dessert.fetch(order_num) if menu_dessert.has_key?(order_num)
+      @menu.dish_for(order_num)
     end
-    orders_values
   end
 
   def gives_orders_prices

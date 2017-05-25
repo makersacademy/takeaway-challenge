@@ -27,4 +27,10 @@ describe Menu do
     end
   end
 
+  describe '#dish_for(order_num)' do
+    it 'gives the dish hash for the corresponding order number' do
+      expect(menu.dish_for(2)).to eq({ "Pitta bread" => 5 })
+    end
+  end
+
 end

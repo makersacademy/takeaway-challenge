@@ -40,4 +40,14 @@ class Menu
     print "#{description}: #{course1_key}. #{course1}, #{course2_key}. #{course2} "
   end
 
+  def dish_for(order_num)
+    if starters().has_key?(order_num)
+      starters().fetch(order_num)
+    elsif main_course().has_key?(order_num)
+      main_course().fetch(order_num)
+    elsif dessert().has_key?(order_num)
+      dessert().fetch(order_num)
+    end
+  end
+
 end
