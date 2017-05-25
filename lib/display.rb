@@ -1,5 +1,6 @@
 
 class Display
+
   def read_input
     STDIN.gets.chomp
   end
@@ -21,5 +22,17 @@ class Display
   def print_instructions
     puts "Enter the order numbers you'd like to add to your basket:"
     puts "Remember, to exit select 7 or hit double space twice"
+  end
+
+  def print_no_orders
+    puts "You have made no orders!"
+  end
+
+  def prints_order(basket)
+    puts "You have 1 order: order number #{basket.join(', ')}"
+  end
+
+  def prints_orders(basket)
+    puts "You have #{basket.count} orders: order numbers #{basket.join(', ')}"
   end
 end

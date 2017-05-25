@@ -50,11 +50,11 @@ class Takeaway
 
   def print_orders
     if @basket.count.zero?
-      puts "You have made no orders!"
+      @display.print_no_orders
     elsif @basket.count == 1
-      puts "You have 1 order: order number #{@basket.join(', ')}"
+      @display.prints_order(@basket)
     else
-      puts "You have #{@basket.count} orders: order numbers #{@basket.join(', ')}"
+      @display.prints_orders(@basket)
     end
   end
 

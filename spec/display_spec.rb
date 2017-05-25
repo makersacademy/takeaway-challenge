@@ -28,7 +28,25 @@ describe Display do
 
   describe '#print_error_message' do
     it 'prints an error message' do
-      expect { display.print_error_message}.to output(/I don't know what you mean, try again/).to_stdout
+      expect { display.print_error_message }.to output(/I don't know what you mean, try again/).to_stdout
+    end
+  end
+
+  describe '#print_no_orders' do
+    it 'prints no orders' do
+      expect { display.print_no_orders }.to output(/You have made no orders!/).to_stdout
+    end
+  end
+
+  describe '#prints_order(basket)' do
+    it 'prints one order' do
+      expect { display.prints_order([2]) }.to output(/You have 1 order: order number 2/).to_stdout
+    end
+  end
+
+  describe '#prints_orders(basket)' do
+    it 'prints one order' do
+      expect { display.prints_orders([2, 3, 4]) }.to output(/You have 3 orders: order numbers 2, 3, 4/).to_stdout
     end
   end
 
