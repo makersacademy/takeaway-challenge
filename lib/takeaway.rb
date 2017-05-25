@@ -32,15 +32,9 @@ class Takeaway
   def interactive_menu
     continue_ordering = true
     while continue_ordering do
-      print_menu
+      @display.print_interactive_menu
       continue_ordering = process_menu(@display.read_input)
     end
-  end
-
-  def print_menu
-    puts "1. Place orders"
-    puts "2. Show order selections"
-    puts "7. Exit"
   end
 
   def process_menu(selection)
@@ -60,7 +54,6 @@ class Takeaway
   end
 
   def place_orders
-    puts "Take a note of the order numbers from our menu: #{displays_menu}"
     puts "Enter the order numbers you'd like to add to your basket:"
     puts "Remember, to exit select 7 or hit double space twice"
     order_num = @display.read_input

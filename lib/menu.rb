@@ -20,7 +20,6 @@ class Menu
     { 5 => { "Jam roll" => 5 }, 6 => { "Apple crumble" => 6 } }
   end
 
-# TODO this is duplicated from
   def extracts_starters
     extracts(starters(), [1, 2], "Starters")
   end

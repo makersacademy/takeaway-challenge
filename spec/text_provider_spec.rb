@@ -31,7 +31,7 @@ xdescribe '#send_text' do
     client  = double(:twilio_rest_client, account: account)
     messager = Messager.new(client)
 
-    expect(messages).to receive(:create).with(body: "Woop", to: "8937278463287462", from: "873460823640832")
+    expect(messages).to receive(:create).with(body: "Woop", to: "8937278463287462", from: "873460823640832" )
     messager.send_sms("Woop")
   end
 end

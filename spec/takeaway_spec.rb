@@ -18,12 +18,6 @@ describe Takeaway do
     end
   end
 
-  describe '#print_menu' do
-    it 'displays a menu for customer orders' do
-      expect { takeaway.print_menu }.to output(/1. Place orders\n2. Show order selections\n7. Exit\n/).to_stdout
-    end
-  end
-
   # TODO test could be improved
   describe '#process_menu' do
     it 'allows the user to order by making a course selection' do
@@ -35,6 +29,7 @@ describe Takeaway do
     it 'loads the user menu and puts an order number in basket' do
       fake_display = double(:display)
       allow(fake_display).to receive(:read_input).and_return("1", "5", "", "7")
+      allow(fake_display).to receive(:print_interactive_menu)
       takeaway1 = Takeaway.new(fake_display)
       takeaway1.interactive_menu
       expect(takeaway1.basket).to eq [5]
@@ -95,7 +90,7 @@ describe Takeaway do
   xdescribe '#delivers_text_notification' do
     it 'delivers a text notification once an order has been made' do
       fake_cost = double(:cost)
-      text = TextProvider.new
+      # text = TextProvider.new
       allow(fake_cost).to receive(:delivers_text_notification).and_return(12)
       allow(fake_cost).to receive(:send_text).and_return(12)
       expect(takeaway.delivers_text_notification(fake_cost)).to eq "Thank you! Your order was placed and will be delivered before 18:52. The total cost of your order is £12"
