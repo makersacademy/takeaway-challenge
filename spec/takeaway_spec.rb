@@ -21,6 +21,8 @@ describe Takeaway do
   # TODO test could be improved
   describe '#process_menu' do
     it 'allows the user to order by making a course selection' do
+      fake_display = double(:display)
+      allow(fake_display).to receive(:print_error_message)
       expect { takeaway.process_menu(6) }.to output(/I don't know what you mean, try again/).to_stdout
     end
   end

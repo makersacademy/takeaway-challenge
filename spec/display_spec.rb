@@ -5,7 +5,7 @@ require './lib/menu.rb'
 
 describe Display do
   subject(:display) { described_class.new }
-  
+
   describe '#read_input' do
     it 'gives standard input' do
       fake_display = double(:display)
@@ -23,6 +23,12 @@ describe Display do
   describe '#print_interactive_menu' do
     it 'displays a menu for customer orders' do
       expect { display.print_interactive_menu }.to output(/1. Place orders\n2. Show order selections\n7. Exit\n/).to_stdout
+    end
+  end
+
+  describe '#print_error_message' do
+    it 'prints an error message' do
+      expect { display.print_error_message}.to output(/1. Place orders\n2. Show order selections\n7. Exit\n/).to_stdout
     end
   end
 

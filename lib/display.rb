@@ -5,7 +5,7 @@ class Display
   end
 
   def displays_menu(menu)
-    print "#{menu.extracts_starters} #{menu.extracts_main_course} #{menu.extracts_dessert}"
+    puts "#{menu.extracts_starters} #{menu.extracts_main_course} #{menu.extracts_dessert}"
   end
 
   def print_interactive_menu
@@ -13,4 +13,9 @@ class Display
     puts "2. Show order selections"
     puts "7. Exit"
   end
+
+  def print_error_message
+    puts "I don't know what you mean, try again"
+  end
+
 end

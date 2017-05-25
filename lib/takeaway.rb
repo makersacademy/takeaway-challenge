@@ -48,7 +48,7 @@ class Takeaway
     when "7"
       false
     else
-      puts "I don't know what you mean, try again"
+      @display.print_error_message
       true
     end
   end
