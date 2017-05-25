@@ -32,6 +32,7 @@ describe Takeaway do
       fake_display = double(:display)
       allow(fake_display).to receive(:read_input).and_return("1", "5", "", "7")
       allow(fake_display).to receive(:print_interactive_menu)
+      allow(fake_display).to receive(:print_instructions)
       takeaway1 = Takeaway.new(fake_display)
       takeaway1.interactive_menu
       expect(takeaway1.basket).to eq [5]
@@ -42,6 +43,7 @@ describe Takeaway do
     it 'puts order numbers in basket' do
       fake_display = double(:display)
       allow(fake_display).to receive(:read_input).and_return("7", "")
+      allow(fake_display).to receive(:print_instructions)
       takeaway1 = Takeaway.new(fake_display)
       takeaway1.place_orders
       expect(takeaway1.basket).to eq [7]

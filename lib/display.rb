@@ -18,4 +18,8 @@ class Display
     puts "I don't know what you mean, try again"
   end
 
+  def print_instructions
+    puts "Enter the order numbers you'd like to add to your basket:"
+    puts "Remember, to exit select 7 or hit double space twice"
+  end
 end

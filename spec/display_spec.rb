@@ -28,7 +28,7 @@ describe Display do
 
   describe '#print_error_message' do
     it 'prints an error message' do
-      expect { display.print_error_message}.to output(/1. Place orders\n2. Show order selections\n7. Exit\n/).to_stdout
+      expect { display.print_error_message}.to output(/I don't know what you mean, try again/).to_stdout
     end
   end
 

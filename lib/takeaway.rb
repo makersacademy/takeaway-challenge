@@ -15,20 +15,6 @@ class Takeaway
     @display = display
   end
 
-  # TODO refactor to avoid repetition- DRY 3's
-  # TODO should this be in the menu class not the takeaway class?
-  def menu_starters
-    @menu.starters
-  end
-
-  def menu_main_course
-    @menu.main_course
-  end
-
-  def menu_dessert
-    @menu.dessert
-  end
-
   def interactive_menu
     continue_ordering = true
     while continue_ordering do
@@ -54,8 +40,7 @@ class Takeaway
   end
 
   def place_orders
-    puts "Enter the order numbers you'd like to add to your basket:"
-    puts "Remember, to exit select 7 or hit double space twice"
+    @display.print_instructions
     order_num = @display.read_input
     until order_num.empty? do
       @basket << order_num.to_i
@@ -72,6 +57,21 @@ class Takeaway
       puts "You have #{@basket.count} orders: order numbers #{@basket.join(', ')}"
     end
   end
+
+  # TODO refactor to avoid repetition- DRY 3's
+  # TODO should this be in the menu class not the takeaway class?
+  def menu_starters
+    @menu.starters
+  end
+
+  def menu_main_course
+    @menu.main_course
+  end
+
+  def menu_dessert
+    @menu.dessert
+  end
+
 
   # TODO DRY this up 3 x repetion
   def gives_orders_with_dishes_hash
