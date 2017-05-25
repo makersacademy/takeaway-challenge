@@ -14,9 +14,9 @@ describe Display do
     end
   end
 
-  describe '#displays_menu' do
+  describe '#display_menu' do
     it 'lists all menu dishes with prices' do
-      expect { display.displays_menu(Menu.new) }.to output(/Starters: 1. Olives = £4, 2. Pitta bread = £5 Main Courses: 3. Fried duck = £12, 4. Fish & Chips = £9 Desserts: 5. Jam roll = £5, 6. Apple crumble = £6/).to_stdout
+      expect { display.display_menu }.to output(/Starters: 1. Olives = £4, 2. Pitta bread = £5 Main Courses: 3. Fried duck = £12, 4. Fish & Chips = £9 Desserts: 5. Jam roll = £5, 6. Apple crumble = £6/).to_stdout
     end
   end
 
@@ -38,15 +38,23 @@ describe Display do
     end
   end
 
-  describe '#prints_order(basket)' do
+  describe '#print_order(basket)' do
     it 'prints one order' do
-      expect { display.prints_order([2]) }.to output(/You have 1 order: order number 2/).to_stdout
+      expect { display.print_order([2]) }.to output(/You have 1 order: order number 2/).to_stdout
     end
   end
 
-  describe '#prints_orders(basket)' do
+  describe '#print_orders(basket)' do
     it 'prints one order' do
-      expect { display.prints_orders([2, 3, 4]) }.to output(/You have 3 orders: order numbers 2, 3, 4/).to_stdout
+      expect { display.print_orders([2, 3, 4]) }.to output(/You have 3 orders: order numbers 2, 3, 4/).to_stdout
+    end
+  end
+
+  describe '#print_total(prices, total)' do
+    it 'prints total' do
+      prices = "£4, £5, £12"
+      total = 21
+      expect { display.print_total(prices, total) }.to output(/Thanks for ordering! Your combined orders total: £4, £5, £12 which gives a total of £21/).to_stdout
     end
   end
 

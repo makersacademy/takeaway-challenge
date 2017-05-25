@@ -1,12 +1,16 @@
 
 class Display
 
+  def initialize(menu = Menu.new)
+    @menu = menu
+  end
+
   def read_input
     STDIN.gets.chomp
   end
 
-  def displays_menu(menu)
-    puts "#{menu.extracts_starters} #{menu.extracts_main_course} #{menu.extracts_dessert}"
+  def display_menu
+    puts "#{@menu.extracts_starters} #{@menu.extracts_main_course} #{@menu.extracts_dessert}"
   end
 
   def print_interactive_menu
@@ -28,11 +32,16 @@ class Display
     puts "You have made no orders!"
   end
 
-  def prints_order(basket)
+  def print_order(basket)
     puts "You have 1 order: order number #{basket.join(', ')}"
   end
 
-  def prints_orders(basket)
+  def print_orders(basket)
     puts "You have #{basket.count} orders: order numbers #{basket.join(', ')}"
   end
+
+  def print_total(prices, total)
+    puts "Thanks for ordering! Your combined orders total: #{prices} which gives a total of £#{total}"
+  end
+
 end

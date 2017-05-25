@@ -52,9 +52,9 @@ class Takeaway
     if @basket.count.zero?
       @display.print_no_orders
     elsif @basket.count == 1
-      @display.prints_order(@basket)
+      @display.print_order(@basket)
     else
-      @display.prints_orders(@basket)
+      @display.print_orders(@basket)
     end
   end
 
@@ -97,7 +97,7 @@ class Takeaway
   def prints_order_total
     prices = gives_orders_prices().map { |price| "£" + price.to_s }.join(", ")
     total = calculates_order_cost()
-    puts "Thanks for ordering! Your combined orders total: #{prices} which gives a total of £#{total}"
+    @display.print_total(prices, total)
   end
 
   def delivers_text_notification(cost)
