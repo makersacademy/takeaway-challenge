@@ -21,7 +21,29 @@ Approach
 
 A program in Ruby designed to allow users to select multiple dishes from a menu, confirm their selection, place their order and receive a confirmation text message.
 
-To run the program, open the project folder and type the following command:
+Installation
+------
+
+1. `git clone` this repository onto your local machine.
+
+2. Run `bundle install` to install dependencies.
+
+3. Run 'rspec' to run all unit and feature tests.
+
+4. For Twilio API text functionality, [register for a free key](https://www.twilio.com/?mkwid=sycBqEwgT&pdv=c&pcrid=178304118126&pmt=e&pkw=twilio%20api&campaign=G_S_Brand_Alpha_EMEA&utm_source=google&utm_medium=cpc&utm_term=twilio+api&utm_campaign=G_S_Brand_Alpha_EMEA&utm_content=Brand&gclid=CjsKDwjw6qnJBRDpoonDwLSeZhIkAIpTR8LMzQEqjhWYopI7JLmoWagrkiZjoQmmv9lMX6EDyghwGgIR8PD_BwE) and then create a file called `info.rb` in the lib directory with the following infomation:
+
+```
+class Information
+
+  FROM = '[Twilio account number]'
+  TO = '[Your phone number]'
+  SID = '[Twilio provided SID]'
+  TOKEN = '[Twilio provided token]'
+end
+
+```
+
+5.  To run the program, type the command:
 
 ```
 ruby lib/takeaway.rb
@@ -54,12 +76,12 @@ Mystery Meat Kebab @£7 x3
 The total is £21
 Confirm order? (Y/N)
 
- *Text message sent*
+ *Text message sent via Twilio API*
 
  ```
 
 
-Task
+User Stories
 -----
 
 ```
