@@ -1,15 +1,80 @@
 # README
 
-## Takeaway Challenge
+[![Build Status](https://travis-ci.org/charlottebrf/takeaway-challenge.svg?branch=master)](https://travis-ci.org/charlottebrf/takeaway-challenge)
 
-[![Build Status](https://travis-ci.org/charlottebrf/takeaway-challenge.svg?branch=master)](https://travis-ci.org/charlottebrf/airport_challenge)
+Takeaway Challenge
+==================
+```
+                            _________
+              r==           |       |
+           _  //            |  M.A. |   ))))
+          |_)//(''''':      |       |
+            //  \_____:_____.-------D     )))))
+           //   | ===  |   /        \
+       .:'//.   \ \=|   \ /  .:'':./    )))))
+      :' // ':   \ \ ''..'--:'-.. ':
+      '. '' .'    \:.....:--'.-'' .'
+       ':..:'                ':..:'
 
-- **Menu**: menu began as a hash in the initialize method, however it became clear that it needed to be it's own class. For future refactors this menu data could also have been stored in a json file, which could make more sense than a class.
-- **Menu**: further comments can be seen in my code that show that if I had more time I would extract more methods from Takeaway class to Menu as Takeaway has too much responsibility & carries out a lot of methods that would better fit in Menu. For example: #extracts_starters #extracts_main_course #extracts_dessert.
-- **Takeaway**: takeaway has too much responsibility at present, again see TODO comments in the code, as with Menu, I have noted where methods could at a future stage be extracted into the Display class so that Takeaway is not responsible for printing output to the user. This said there is a lot of positive encapsulation in methods & some delegation to other classes to try to stick as far as possible to SOLID principles.
-- **Takeaway**: much of the functionality of how users could place an order for User story 2 was modelled on the Pre-course Student Directory: #interactive_menu, #print_menu, #process_menu, #place_orders, #print_orders. For future refactors it would be interesting to explore other approaches.
-- **Takeaway**: given that many of the methods for User story 3 involved calculations, e.g. #calculates_order_cost #prints_order_total #gives_orders_prices for future refactors a separate Calculator class could be another way to lessen Takeaway's responsibility.
-- **Display**: display was created in order to be able to create double & mocks to test for STDIN. See #place_orders & #interactive_menu specs. As mentioned for future refactors I would give display all responsibility for displaying user output.
-- **Test Provider**: Created a TextProvider class
-- **Tests**: Tests coverage is 96%.
-- **Rubocop**: Implemented throughout: total of 4 offences which are due to need to refactor out Takeaway class further.
+ ```
+
+Technologies
+-----
+
+## Install
+
+* Bundle install Gemfile dependencies
+
+```bash
+ $ bundle
+ $ gem install bundle
+
+```
+
+* Ruby v '2.2.2'
+
+```bash
+$ rvm install 2.2.2
+$ rvm use 2.2.2
+
+```
+Test coverage
+-----
+```
+Test coverage: 96%
+Rubocop: 7 offences
+```
+
+Task
+-----
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+My Approach
+-----
+- **Menu**: Menu is a dependency of Takewaway class and is responsible for all Menu behaviours. It holds the hash of the Menu itself, as well as manages queries related to the Menu. For example: #extracts_starters #extracts_main_course #extracts_dessert.
+- **Display**: Display is a dependency of the Takeaway class. Display is responsible for all for STDOUT prints.
+- **Takeaway**: Takeaway is depending on the Display & Menu classes. Takeaway class was extracted to delegate behaviour not connected to its class to Display & Menu. I wrote two blog posts about this process, which can be found [here](https://medium.com/@charlottebrf/makers-academy-day-13-4e011debdbb) and [here](https://medium.com/@charlottebrf/makers-academy-day-18-cbbcb741eac).
+- **Test Provider**: Created a TextProvider class.
+
+
+Future Improvements
+-----
+- **Takeaway**: Much of the functionality of how users could place an order for User story 2 was modelled on the Pre-course Student Directory: #interactive_menu, #print_menu, #process_menu, #place_orders, #print_orders. For future refactors it would be interesting to explore other approaches.
+- **Test Provider**: The tests for the TextProvider are incomplete and need to be completed.

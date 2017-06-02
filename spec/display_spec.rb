@@ -1,8 +1,6 @@
 require './lib/display'
 require './lib/menu.rb'
 
-# TODO update with more tests
-
 describe Display do
   subject(:display) { described_class.new }
 
