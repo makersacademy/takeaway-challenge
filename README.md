@@ -1,3 +1,7 @@
+# README
+
+[![Build Status](https://travis-ci.org/charlottebrf/takeaway-challenge.svg?branch=master)](https://travis-ci.org/charlottebrf/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 ```
@@ -14,21 +18,35 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+Technologies
+-----
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Install
+
+* Bundle install Gemfile dependencies
+
+```bash
+ $ bundle
+ $ gem install bundle
+
+```
+
+* Ruby v '2.2.2'
+
+```bash
+$ rvm install 2.2.2
+$ rvm use 2.2.2
+
+```
+Test coverage
+-----
+```
+Test coverage: 96%
+Rubocop: 7 offences
+```
 
 Task
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -48,32 +66,15 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+My Approach
+-----
+- **Menu**: Menu is a dependency of Takewaway class and is responsible for all Menu behaviours. It holds the hash of the Menu itself, as well as manages queries related to the Menu. For example: #extracts_starters #extracts_main_course #extracts_dessert.
+- **Display**: Display is a dependency of the Takeaway class. Display is responsible for all for STDOUT prints.
+- **Takeaway**: Takeaway is depending on the Display & Menu classes. Takeaway class was extracted to delegate behaviour not connected to its class to Display & Menu. I wrote two blog posts about this process, which can be found [here](https://medium.com/@charlottebrf/makers-academy-day-13-4e011debdbb) and [here](https://medium.com/@charlottebrf/makers-academy-day-18-cbbcb741eac).
+- **Test Provider**: Created a TextProvider class.
 
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Future Improvements
+-----
+- **Takeaway**: Much of the functionality of how users could place an order for User story 2 was modelled on the Pre-course Student Directory: #interactive_menu, #print_menu, #process_menu, #place_orders, #print_orders. For future refactors it would be interesting to explore other approaches.
+- **Test Provider**: The tests for the TextProvider are incomplete and need to be completed.
