@@ -1,7 +1,11 @@
 [![Build Status](https://travis-ci.org/makersacademy/takeaway-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/takeaway-challenge)
 
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
+## Weekend Challenge, week 2
+
+Project done 25. - 26. March 2017
+_____________________
 ```
                             _________
               r==           |       |
