@@ -1,12 +1,30 @@
-# Takeaway Challenge
+Takeaway Challenge
+=================
 
-Makers Academy Week 2 weekend challenge, to write software for the website of an online fast food delivery company. The program displays a menu of dishes, takes a customer's order, calculates the total, and sends an SMS text message order confirmation using the Twilio API.
+Makers Academy Week 2 weekend challenge to write a program to handle orders for an online fast food delivery company.
 
-## Technologies and Principles
+Installation & Testing
+--------
+
+* Simply fork or clone this repo, and run `bundle install`
+* Tests can be run by running rspec on the command line in the main project directory
+
+Features
+-------------------------
+* Displays a menu of dishes and their prices
+* Takes a customer's order and calculates the total
+* Uses the Twlio API to dispatches an SMS confirming each order
+* Each SMS is timestamped
+
+Technologies & Principles
+-------------------------
 
 * Ruby
-* TDD / RSpec
+* RSpec
 * Class extraction
-* Testing
 
-Test files can be found in spec/. To run these, type 'rspec' while in the main directory.
+Further Development
+-------------------
+
+* Conceal API key in an environment variable
+* Use a web framework to provide a front end and a database to persist records of orders
