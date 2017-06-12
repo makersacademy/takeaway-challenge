@@ -7,7 +7,7 @@ Installation & Testing
 --------
 
 * Simply fork or clone this repo, and run `bundle install`
-* Tests can be run by running rspec on the command line in the main project directory
+* Tests can be run by running `rspec` on the command line in the main project directory
 
 Features
 -------------------------
