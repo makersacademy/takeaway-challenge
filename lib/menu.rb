@@ -1,4 +1,4 @@
-require_relative 'menu_item'
+require_relative 'dish'
 
 class Menu
   attr_reader :contents

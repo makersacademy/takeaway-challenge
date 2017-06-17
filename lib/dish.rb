@@ -1,4 +1,4 @@
-class MenuItem
+class Dish
   attr_reader :title, :price
 
   def initialize(args)

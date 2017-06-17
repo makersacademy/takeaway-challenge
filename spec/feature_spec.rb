@@ -1,9 +1,9 @@
 require 'menu'
 
 describe 'Feature Tests' do
-  let(:burger)  { MenuItem.new(title: 'Horse Burger', price: 7.99) }
-  let(:steak)   { MenuItem.new(title: 'Horse Steak', price: 14.99) }
-  let(:cutlets) { MenuItem.new(title: 'Horse Cutlets', price: 10.99) }
+  let(:burger)  { Dish.new(title: 'Horse Burger', price: 7.99) }
+  let(:steak)   { Dish.new(title: 'Horse Steak', price: 14.99) }
+  let(:cutlets) { Dish.new(title: 'Horse Cutlets', price: 10.99) }
   let(:menu)    { Menu.new }
 
   describe 'Adding items to the menu' do

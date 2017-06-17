@@ -1,6 +1,6 @@
-require 'menu_item'
+require 'dish'
 
-describe MenuItem do
+describe Dish do
 
   let(:title) { 'Horse Burger' }
   let(:price) { 7.99 }

@@ -1,16 +1,16 @@
 require 'menu'
 
 describe Menu do
-  let(:menu)   { described_class.new }
+  let(:menu) { described_class.new }
 
   it { is_expected.to be_a Menu }
   it { is_expected.to respond_to :contents }
 
-  let(:menu_item_1) do
-    menu_item_1 = double(:menu_item_1)
-    allow(menu_item_1).to receive(:title)  { "Chicken Burger" }
-    allow(menu_item_1).to receive(:price) { 8.99 }
-    menu_item_1
+  let(:dish_1) do
+    dish_1 = double(:dish_1)
+    allow(dish_1).to receive(:title) { "Chicken Burger" }
+    allow(dish_1).to receive(:price) { 8.99 }
+    dish_1
   end
 
   describe 'Contents' do
@@ -28,11 +28,11 @@ describe Menu do
 
     context 'Adding an item to the menu' do
       before do
-        menu.add(menu_item_1)
+        menu.add(dish_1)
       end
 
       it 'has added items in the contents array' do
-        expect(menu.contents).to include(menu_item_1)
+        expect(menu.contents).to include(dish_1)
       end
     end
   end
@@ -43,11 +43,11 @@ describe Menu do
 
   context 'Viewing menu contents' do
     before do
-      menu.add(menu_item_1)
+      menu.add(dish_1)
     end
 
     it 'Outputs a list of the menu\'s contents' do
-      expect { menu.view }.to output("#{menu_item_1.title}: #{menu_item_1.price}\n").to_stdout
+      expect { menu.view }.to output("#{dish_1.title}: #{dish_1.price}\n").to_stdout
     end
   end
 end
