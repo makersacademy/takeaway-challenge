@@ -18,8 +18,8 @@ def show_menu
 end
 
 def add(food, quant=1)
-  fail "That's not on the menu!" unless menu.has?(food)
-  order.add(food, quant)
+  check_right(food)
+  order.add(food.to_sym, quant)
 end
 
 def summary
@@ -27,13 +27,17 @@ def summary
 end
 
 def checkout(payment)
-  check_payment(payment)
+  check_correct(payment)
 end
 
 private
 
-def check_payment(payment)
+def check_correct(payment)
   fail "You're short. Please pay the correct sum man." if payment < order.total
+end
+
+def check_right(food)
+  fail "That's not on the menu!" unless menu.has?(food)
 end
 
 end

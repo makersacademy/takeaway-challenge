@@ -12,21 +12,20 @@ class Order
     @printer = printer
   end
 
-  def add(dish, quant=1)
-    basket[dish] += quant
-    update_total(dish, quant)
+  def add(food, quant=1)
+    basket[food] += quant
+    update_total(food, quant)
   end
 
   def summary
-     printer.format_(basket)
-     printer.print_(basket)
-     printer.print_(total)
+     printer.output_for(basket)
+     printer.output_(total)
   end
 
   private
 
-  def update_total(dish, quant)
-    @total += menu.dishes[dish] * quant
+  def update_total(food, quant)
+    @total += menu.dishes[food] * quant
   end
 
 end

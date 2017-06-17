@@ -20,7 +20,8 @@ def initialize(menu_printer = MenuPrinter.new)
 end
 
 def show_dishes
-  printer.print_(dishes)
+  printer.format_(dishes)
+  printer.print_items
 end
 
 def has?(food)
