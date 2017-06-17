@@ -25,7 +25,7 @@ class Order < Menu
     list = ''
     @updated_basket.each do |dish, quantity|
       dish.each do |name, price|
-        list += "(" + quantity.to_s + ") " + name + "(s): £" + (price * quantity).to_s
+        list += "(" + quantity.to_s + ") " + name + "(s): £" + (price * quantity).to_s + "\n"
       end
     end
     return list
@@ -54,5 +54,24 @@ class Order < Menu
   def show_basket
     show_items
     show_total
+  end
+
+  def place_order
+    account_sid = "sid number goes here"
+    auth_token = "sid token goes here"
+    client = Twilio::REST::Client.new account_sid, auth_token
+
+    from = "+my Twilio number"
+
+    myself = { "+my actual number" => "Miho" }
+
+    myself.each do |key, value|
+      client.account.messages.create(
+        :from => from,
+        :to => key,
+        :body => "Thanks for your order, #{value}. It will be delivered in 1 hour."
+      )
+      puts "Sent message to customer: #{value}"
+    end
   end
 end

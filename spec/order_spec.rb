@@ -37,7 +37,7 @@ describe Order do
     it 'creates a list of items in the basket' do
       dish = 'Kobe Slider'
       order.order_dish(2, dish)
-      expect(order.basket_items).to be == '(2) Kobe Slider(s): £14'
+      expect(order.basket_items).to be == '(2) Kobe Slider(s): £14' + "\n"
     end
   end
 
@@ -72,6 +72,12 @@ describe Order do
         order.order_dish(2, dish)
         expect { order.show_total }.to output('Total to pay: £14' + "\n").to_stdout
       end
+    end
+  end
+
+  describe '#place_order' do
+    it 'confirms a sent text message' do
+      expect { order.place_order }.to output("Sent message to customer: Miho").to_stdout
     end
   end
 end
