@@ -23,9 +23,14 @@ def add(dish)
   order.add(dish)
 end
 
-def checkout(total)
+def checkout(payment)
+  check_payment(payment)
 end
 
 private
+
+def check_payment(payment)
+  fail "You are short. Please pay the correct sum, man." if payment < order.total
+end
 
 end

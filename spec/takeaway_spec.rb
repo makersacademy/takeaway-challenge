@@ -57,5 +57,14 @@ describe Takeaway do
      end
    end
 
+   describe "#checkout" do
+     context "when user pays too little" do
+       it "fails with descriptive error message" do
+         allow(order).to receive(:total).and_return(10.00)
+         expect{takeaway.checkout(5.0)}.to raise_error("You are short. Please pay the correct sum, man.")
+       end
+     end
+   end
+
 
 end
