@@ -10,7 +10,7 @@ class Menu
                  'Shrimp Tempura' => 4,
                  'Salmon Teriyaki' => 5,
                  'Chicken Katsu' => 8,
-                 'Edamame' => 2 }
+                 'Edamame Pot' => 2 }
   end
 
   def read_menu

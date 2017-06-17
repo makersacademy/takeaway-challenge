@@ -32,4 +32,46 @@ describe Order do
       expect(order.lookup_item(dish)).to eq('Kobe Slider' => 7)
     end
   end
+
+  describe '#basket_items' do
+    it 'creates a list of items in the basket' do
+      dish = 'Kobe Slider'
+      order.order_dish(2, dish)
+      expect(order.basket_items).to be == '(2) Kobe Slider(s): £14'
+    end
+  end
+
+  describe '#combine_items' do
+    it 'combines and gives the quantity items' do
+      dish = 'Kobe Slider'
+      order.order_dish(2, dish)
+      expect { order.combine_items }.to change(order, :updated_basket)
+    end
+  end
+
+  describe '#basket_total' do
+    it 'gets the subtotal of the basket' do
+      dish = 'Kobe Slider'
+      order.order_dish(2, dish)
+      expect(order.basket_total).to eq 14
+    end
+  end
+
+  describe '#show_basket' do
+    describe '#show_items' do
+      it 'shows the current items in the basket' do
+        dish = 'Kobe Slider'
+        order.order_dish(2, dish)
+        expect { order.show_items }.to output('(2) Kobe Slider(s): £14' + "\n").to_stdout
+      end
+    end
+
+    describe '#show_total' do
+      it 'shows the total of the current items in the basket' do
+        dish = 'Kobe Slider'
+        order.order_dish(2, dish)
+        expect { order.show_total }.to output('Total to pay: £14' + "\n").to_stdout
+      end
+    end
+  end
 end
