@@ -1,7 +1,9 @@
 class Menu
 
+attr_reader :dishes
+
 def initialize
-  @korean_dishes = {
+  @dishes = {
     kimchi_jjigae: 8.99,
     galbi: 10.99,
     kimbap: 4.99,
@@ -12,10 +14,10 @@ end
 
   def welcome
     "Welcome to Simon's Korean Restaurant!"
-    "Our specials today are:"
+    "Today's specials are:"
   end
 
   def print_dishes
-    @korean_dishes.map { |k,v| p "#{k}, £#{v}" }
+    @dishes.map { |k,v| p "#{k}, £#{v}" }
   end
 end

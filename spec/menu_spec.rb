@@ -9,7 +9,7 @@ describe Menu do
 
 
   it "should display a welcome message" do
-    expect(menu.welcome).to include "Our specials today are:"
+    expect(menu.welcome).to include "Today's specials are:"
   end
 
   it "prints list of dishes with prices" do
