@@ -1,4 +1,6 @@
 
+require_relative "order_printer"
+
 class Order
 
   attr_reader :basket, :total, :printer
@@ -13,6 +15,8 @@ class Order
     basket << dish
     note_price_of(dish)
   end
+
+  private
 
   def note_price_of(dish)
     @total += dish[1]

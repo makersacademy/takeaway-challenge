@@ -1,7 +1,7 @@
 
-require "order"
-require "message"
-require "menu"
+require_relative "order"
+require_relative "menu"
+require_relative "message"
 
 class Takeaway
 
@@ -22,5 +22,10 @@ def add(dish)
   fail "That's not on the menu!" if dish.nil?
   order.add(dish)
 end
+
+def checkout(total)
+end
+
+private
 
 end

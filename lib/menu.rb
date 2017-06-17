@@ -1,5 +1,5 @@
 
-require "menu_printer"
+require_relative "menu_printer"
 
 class Menu
 
