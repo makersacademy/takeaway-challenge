@@ -33,4 +33,13 @@ describe Takeaway do
      end
    end
 
+   describe "#see_menu" do
+     it "asks the menu to show its dishes" do
+       allow(menu).to receive(:show_dishes)
+       expect(menu).to receive(:show_dishes)
+       takeaway.show_menu
+     end
+   end
+
+
 end

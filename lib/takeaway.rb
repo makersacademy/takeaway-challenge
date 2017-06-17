@@ -13,4 +13,8 @@ def initialize(menu = Menu.new, order = Order.new, message = Message.new)
   @message = message
 end
 
+def show_menu
+  menu.show_dishes
+end
+
 end
