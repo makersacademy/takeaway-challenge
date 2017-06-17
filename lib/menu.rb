@@ -12,4 +12,7 @@ class Menu
     end.join("\n")
   end
 
+  def get(dish_name)
+    @dishes.select { |dish| dish[:name] == dish_name }.first
+  end
 end

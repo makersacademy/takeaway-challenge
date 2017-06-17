@@ -22,9 +22,10 @@ describe Menu do
     end
   end
 
-  # describe '#get' do
-  #   it 'gets a dish from the list' do
-  #
-  #   end
-  # end
+  describe '#get' do
+    it 'gets a dish from the list' do
+      dish = "Spaghetti"
+      expect(menu.get(dish)).to eq({ name: "Spaghetti", price: 10 })
+    end
+  end
 end

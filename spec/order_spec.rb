@@ -5,7 +5,7 @@ describe Order do
   describe '#initialize' do
     let(:menu) { double :menu }
 
-    subject(:order) { described_class.new(menu)}
+    subject(:order) { described_class.new(menu) }
 
     it 'is initialized with an empty entries array' do
       expect(order.entries).to be_empty
