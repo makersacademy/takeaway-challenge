@@ -31,12 +31,12 @@ describe Menu do
     describe "#find" do
       context "when dish passed in is not on the menu" do
         it "returns nil" do
-          expect(menu.find(:Truffles)).to be nil
+          expect(menu.has?(:Truffles)).to be nil
         end
       end
       context "when dish passed in that is on the menu" do
         it "returns the item" do
-          expect(menu.find(:Pizza)).to eq [:Pizza, 10.0]
+          expect(menu.has?(:Pizza)).to eq [:Pizza, 10.0]
         end
       end
     end

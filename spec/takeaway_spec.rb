@@ -44,14 +44,14 @@ describe Takeaway do
    describe "#add" do
      context "when user tries to order a dish not on menu" do
        it "fails with a descriptive message" do
-         allow(menu).to receive(:find).with(:Truffles).and_return(nil)
+         allow(menu).to receive(:has?).with(:Truffles).and_return(nil)
          expect{takeaway.add(:Truffles)}.to raise_error("That's not on the menu!")
        end
      end
      context "when user orders a dish on menu" do
        it "adds the dish to the order" do
-         allow(menu).to receive(:find).with(:Pizza).and_return([:Pizza, 10.0])
-         expect(order).to receive(:add).with([:Pizza, 10.0])
+         allow(menu).to receive(:has?).with(:Pizza).and_return([:Pizza, 10.0])
+         expect(order).to receive(:add).with(:Pizza, 1)
          takeaway.add(:Pizza)
        end
      end
@@ -61,8 +61,16 @@ describe Takeaway do
      context "when user pays too little" do
        it "fails with descriptive error message" do
          allow(order).to receive(:total).and_return(10.00)
-         expect{takeaway.checkout(5.0)}.to raise_error("You are short. Please pay the correct sum, man.")
+         expect{takeaway.checkout(5.0)}.to raise_error("You're short. Please pay the correct sum man.")
        end
+     end
+   end
+
+   describe "summary" do
+     it "asks the order to show its basket" do
+       allow(order).to receive(:summary)
+       expect(order).to receive(:summary)
+       takeaway.summary
      end
    end
 

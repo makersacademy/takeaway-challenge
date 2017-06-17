@@ -17,10 +17,13 @@ def show_menu
   menu.show_dishes
 end
 
-def add(dish)
-  dish = menu.find(dish)
-  fail "That's not on the menu!" if dish.nil?
-  order.add(dish)
+def add(food, quant=1)
+  fail "That's not on the menu!" unless menu.has?(food)
+  order.add(food, quant)
+end
+
+def summary
+  order.summary
 end
 
 def checkout(payment)
@@ -30,7 +33,7 @@ end
 private
 
 def check_payment(payment)
-  fail "You are short. Please pay the correct sum, man." if payment < order.total
+  fail "You're short. Please pay the correct sum man." if payment < order.total
 end
 
 end
