@@ -2,14 +2,16 @@ class Menu
 
 attr_reader :dishes
 
+DISHES = {
+  "kimchi_jjigae" => 8.99,
+  "galbi" => 10.99,
+  "kimbap" => 4.99,
+  "bibimbap" => 6.99,
+  "kimchi_jeon" => 4.99
+}
+
 def initialize
-  @dishes = {
-    kimchi_jjigae: 8.99,
-    galbi: 10.99,
-    kimbap: 4.99,
-    bibimbap: 6.99,
-    kimchi_jeon: 4.99
-  }
+  @dishes = DISHES
 end
 
   def welcome

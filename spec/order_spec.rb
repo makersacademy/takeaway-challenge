@@ -18,6 +18,10 @@ describe Order do
       order.add_dish("galbi", 1)
       expect(order.basket).to include {"galbi"}
     end
+
+    it "should raise error if dish is not on menu" do
+      expect { order.add_dish("fish", 1) }.to raise_error("Dish not available. Please see menu for options.")
+    end
   end
 
 end
