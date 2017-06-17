@@ -28,7 +28,21 @@ describe Order do
   describe "#total" do
     it "should return the total cost of items in basket" do
       order.add_dish("galbi", 1)
-      expect(order.total).to eq 10.99
+      expect(order.total).to eq "Your order total is £10.99"
+    end
+  end
+
+  describe "#checkout" do
+    before do
+      $stdin = StringIO.new("Yes")
+    end
+
+    after do
+      $stdin = STDIN
+    end
+
+    it "should return confirmation message if 'Yes' response" do
+      expect(order.checkout).to include "Thankyou! Your order was placed and will be delivered"
     end
   end
 end
