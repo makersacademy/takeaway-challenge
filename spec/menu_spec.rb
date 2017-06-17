@@ -21,4 +21,10 @@ describe Menu do
       expect(subject.show).to eq "Spaghetti: £10\nBolognese: £12\nPizza: £8"
     end
   end
+
+  # describe '#get' do
+  #   it 'gets a dish from the list' do
+  #
+  #   end
+  # end
 end

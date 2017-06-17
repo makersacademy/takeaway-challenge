@@ -11,4 +11,5 @@ class Menu
       "#{dish[:name]}: £#{dish[:price]}"
     end.join("\n")
   end
+
 end
