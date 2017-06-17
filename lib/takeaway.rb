@@ -18,10 +18,9 @@ def show_menu
 end
 
 def add(dish)
-  fail "That's not on the menu!" unless menu.orderable(dish)
+  dish = menu.find(dish)
+  fail "That's not on the menu!" if dish.nil?
   order.add(dish)
 end
 
 end
-
-# 

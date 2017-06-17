@@ -8,13 +8,13 @@ describe Menu do
 
 
      describe "attributes" do
-      it {is_expected.to respond_to(:menu_printer)}
+      it {is_expected.to respond_to(:printer)}
       it {is_expected.to respond_to(:dishes)}
 
         context "on init" do
           describe "@menu_printer" do
             it "will default to my menu_printer class" do
-              expect(menu.menu_printer).to be menu_printer
+              expect(menu.printer).to be menu_printer
             end
           end
       end
@@ -28,15 +28,15 @@ describe Menu do
       end
     end
 
-    describe "#orderable" do
+    describe "#find" do
       context "when dish passed in is not on the menu" do
-        it "returns false" do
-          expect(menu.orderable(:Truffles)).to be false
+        it "returns nil" do
+          expect(menu.find(:Truffles)).to be nil
         end
       end
       context "when dish passed in that is on the menu" do
-        it "returns true" do
-          expect(menu.orderable(:Pizza)).to be true
+        it "returns the item" do
+          expect(menu.find(:Pizza)).to eq [:Pizza, 10.0]
         end
       end
     end

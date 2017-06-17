@@ -42,7 +42,19 @@ describe Takeaway do
    end
 
    describe "#add" do
-     
+     context "when user tries to order a dish not on menu" do
+       it "fails with a descriptive message" do
+         allow(menu).to receive(:find).with(:Truffles).and_return(nil)
+         expect{takeaway.add(:Truffles)}.to raise_error("That's not on the menu!")
+       end
+     end
+     context "when user orders a dish on menu" do
+       it "adds the dish to the order" do
+         allow(menu).to receive(:find).with(:Pizza).and_return([:Pizza, 10.0])
+         expect(order).to receive(:add).with([:Pizza, 10.0])
+         takeaway.add(:Pizza)
+       end
+     end
    end
 
 
