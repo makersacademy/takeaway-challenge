@@ -28,7 +28,17 @@ describe Menu do
       end
     end
 
-    describe "#check_dish" do
+    describe "#orderable" do
+      context "when dish passed in is not on the menu" do
+        it "returns false" do
+          expect(menu.orderable(:Truffles)).to be false
+        end
+      end
+      context "when dish passed in that is on the menu" do
+        it "returns true" do
+          expect(menu.orderable(:Pizza)).to be true
+        end
+      end
     end
 
 

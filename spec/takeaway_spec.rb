@@ -41,5 +41,9 @@ describe Takeaway do
      end
    end
 
+   describe "#add" do
+     
+   end
+
 
 end
