@@ -6,17 +6,18 @@ describe Order do
 
   it { is_expected.to respond_to(:add_dish).with(2).arguments }
   it { is_expected.to respond_to(:basket) }
+  it { is_expected.to respond_to(:total) }
 
   describe "#initialise" do
     it "expects to initialize with an empty basket" do
-      expect(order.basket).to eq []
+      expect(order.basket).to eq Hash.new
     end
   end
 
   describe "#add_dish" do
     it "should add selected dish to basket" do
       order.add_dish("galbi", 1)
-      expect(order.basket).to include {"galbi"}
+      expect(order.basket).to include {:galbi}
     end
 
     it "should raise error if dish is not on menu" do
@@ -24,4 +25,10 @@ describe Order do
     end
   end
 
+  describe "#total" do
+    it "should return the total cost of items in basket" do
+      order.add_dish("galbi", 1)
+      expect(order.total).to eq 10.99
+    end
+  end
 end

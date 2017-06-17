@@ -2,16 +2,14 @@ class Menu
 
 attr_reader :dishes
 
-DISHES = {
-  "kimchi_jjigae" => 8.99,
-  "galbi" => 10.99,
-  "kimbap" => 4.99,
-  "bibimbap" => 6.99,
-  "kimchi_jeon" => 4.99
-}
-
 def initialize
-  @dishes = DISHES
+  @dishes = {
+    "kimchi_jjigae" => 8.99,
+    "galbi" => 10.99,
+    "kimbap" => 4.99,
+    "bibimbap" => 6.99,
+    "kimchi_jeon" => 4.99
+  }
 end
 
   def welcome
@@ -20,6 +18,10 @@ end
   end
 
   def print_dishes
-    @dishes.map { |k,v| p "#{k}, £#{v}" }
+    dishes.map { |k,v| p "#{k}, £#{v}" }
+  end
+
+  def get_price(key)
+    dishes[key]
   end
 end
