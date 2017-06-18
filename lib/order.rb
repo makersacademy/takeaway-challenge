@@ -16,6 +16,6 @@ class Order
   end
 
   def total_amount
-    "The total amount is £#{@entries.inject(0) {|memo, hsh| memo + hsh[:price]}}"
+    "The total amount is £#{@entries.inject(0) { |memo, hsh| memo + hsh[:price] }}"
   end
 end
