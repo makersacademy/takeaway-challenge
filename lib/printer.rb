@@ -10,7 +10,7 @@ class Printer
 
   def print_all(dishes)
     i = 0
-    dishes.each {|dish, price| print_(dish, i, price)}
+    dishes.each {|dish, price| print_(dish, i, price); i += 1}
   end
 
   def print_an_order_of(food, quant)
