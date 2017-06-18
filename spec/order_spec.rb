@@ -36,11 +36,15 @@ describe Order do
     before do
       subject.select_item(1)
       subject.select_item(2)
-    end
-
-    it 'lets me view the contents of my basket' do
-      expect(STDOUT).to receive(:puts).exactly(subject.basket.count).times
       subject.view_basket
     end
+
+    it 'calculates the total of my order' do
+      expect(subject.total).to eq(19.98)
+    end
+
+    # it 'should give a summary of the order' do
+    #   expect(STDOUT).to receive(:puts).with("your total amount is $19.98 dollars")
+    # end
   end
 end

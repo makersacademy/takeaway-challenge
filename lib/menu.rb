@@ -17,7 +17,7 @@ class Menu
 
   def print_menu
     @menu.each do |item|
-      puts "#{item[:item_number]}. #{item[:menu_item]} : $#{item[:price]}"
+      puts "#{item[:item_number]}. #{item[:menu_item]} - $#{item[:price]}"
     end
   end
 
