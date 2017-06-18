@@ -1,0 +1,6 @@
+[{:item=>1, :name=>:" TOMATO, GARLIC & OREGANO ", :price=>4.95},
+ {:item=>2, :name=>:" TOMATO, MOZZARELLA, BASIL ", :price=>6.4},
+ {:item=>3, :name=>:" COURGETTES, BASIL, MOZZARELLA, BUFFALO RICOTTA  ", :price=>7.35},
+ {:item=>4, :name=>:" GLOUCESTER OLD SPOT HAM (Home Cured),MOZZARELLA, BUFFALO RICOTTA, WILD MUSHROOMS ", :price=>7.35},
+ {:item=>5, :name=>:" TOMATO, GARLIC, OREGANO, CAPERS, OLIVES, ANCHOVIES & MOZZARELLA ", :price=>7.25},
+ {:item=>6, :name=>:" TOMATO, CURED ORGANIC CHORIZO (Dry & semi-dry)& MOZZARELLA ", :price=>7.55}]
