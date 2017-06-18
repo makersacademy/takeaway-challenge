@@ -8,7 +8,8 @@ describe Order do
     menu
   end
 
-  let(:order) { described_class.new(menu) }
+  let(:order)        { described_class.new(menu) }
+  let(:delivery_time) { Time.new + (60 * 60) }
 
   describe 'Initialization' do
     it { is_expected.to respond_to :basket }
@@ -56,31 +57,64 @@ describe Order do
   describe '#view' do
     it { is_expected.to respond_to(:view) }
     it { is_expected.to respond_to(:total) }
-  end
 
-  context 'When the basket is empty' do
-    it 'raises an error' do
-      expect { order.view }.to raise_error("Your basket is empty")
+    context 'When the basket is empty' do
+      it 'raises an error' do
+        expect { order.view }.to raise_error("Your basket is empty")
+      end
+    end
+
+    context 'When the basket isn\'t empty' do
+      before do
+        order.add("Horse Burger")
+        order.add("Horse Surprise")
+      end
+
+      it 'prints the contents of the basket' do
+        expect { order.view }.to output(/#{menu.contents.keys.first}: #{menu.contents.values.first}/).to_stdout
+      end
+
+      it 'returns the order total' do
+        expect(order.view).to eq "Your total is £21.98"
+      end
+
+      it 'updates the total' do
+        order.view
+        expect(order.total).to eq 21.98
+      end
     end
   end
 
-  context 'When the basket isn\'t empty' do
-    before do
-      order.add("Horse Burger")
-      order.add("Horse Surprise")
+  describe '#submit' do
+    it { is_expected.to respond_to(:submit) }
+
+    context 'When the basket is empty' do
+      it 'raises an error' do
+        expect { order.submit }.to raise_error("Add some items to your basket first")
+      end
     end
 
-    it 'prints the contents of the basket' do
-      expect { order.view }.to output(/#{menu.contents.keys.first}: #{menu.contents.values.first}/).to_stdout
+    context 'When the order hasn\'t been viewed first' do
+      before do
+        order.add("Horse Burger")
+        order.add("Horse Surprise")
+      end
+
+      it 'raises an error' do
+        expect { order.submit }.to raise_error("Check your basket first to confirm (order.view)")
+      end
     end
 
-    it 'returns the order total' do
-      expect(order.view).to eq "Your total is £21.98"
-    end
+    context 'When an order is ready to be submitted' do
+      before do
+        order.add("Horse Burger")
+        order.add("Horse Surprise")
+        order.view
+      end
 
-    it 'updates the total' do
-      order.view
-      expect(order.total).to eq 21.98
+      it 'sends a confirmation text' do
+        expect(order.submit).to eq "Thanks for ordering from Harold's House of Horse! Your order will be with you by #{delivery_time.hour}:#{delivery_time.min}"
+      end
     end
   end
 end

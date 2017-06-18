@@ -23,6 +23,12 @@ class Order
     menu.view
   end
 
+  def submit
+    raise "Add some items to your basket first" if basket.empty?
+    raise "Check your basket first to confirm (order.view)" if total.nil?
+    send_text
+  end
+
   private
   def add_to_basket(item)
     to_add = search_menu(item)
@@ -42,5 +48,14 @@ class Order
   def calculate_total
     @total = basket.inject(0) { |sum, item| sum + item.values.first }
     "Your total is £#{@total}"
+  end
+
+  def send_text
+    "Thanks for ordering from Harold's House of Horse! Your order will be with you by #{calculate_delivery_time}"
+  end
+
+  def calculate_delivery_time
+    t = Time.new + (60 * 60)
+    "#{t.hour}:#{t.min}"
   end
 end
