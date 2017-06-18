@@ -22,9 +22,9 @@ describe Order do
       expect(order.add_entry("Spaghetti", 2)).to eq [{ name: "Spaghetti", price: 10 }, { name: "Spaghetti", price: 10 }]
     end
 
-    it 'gives a warning if no dish has been found' do
+    it 'raises an error if no dish has been found' do
       allow(menu).to receive(:get).and_return(nil)
-      expect(order.add_entry("Lasagna")).to eq("Dish not found")
+      expect { order.add_entry("Lasagna") }.to raise_error("Dish not found")
     end
   end
 end

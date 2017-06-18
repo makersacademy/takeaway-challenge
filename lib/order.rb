@@ -10,11 +10,8 @@ class Order
   end
 
   def add_entry(dish_name, quantity = 1)
-    dish = @menu.get(dish_name)
-    if dish
-      (@entries << dish) * quantity
-    else
-      "Dish not found"
-    end
+    raise "Dish not found" unless dish = @menu.get(dish_name)
+    quantity.times { @entries << dish }
+    @entries
   end
 end
