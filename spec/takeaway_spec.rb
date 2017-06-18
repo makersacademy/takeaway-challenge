@@ -21,13 +21,9 @@ describe Takeaway do
       expect { subject.place_order }.to raise_error "order total is not correct"
     end
 
-    it 'shows the order info and places order' do
-      subject.place_order
-      allow(subject.message).to receive(send_message: true)
-      allow(subject.new_order).to receive(:calculate_total) { 29.97 }
-      expect(subject.new_order).to receive(:view_basket)
-      subject.place_order
-    end
+    # it 'gives an order confirmation' do
+    #   subject.place_order
+    #   expect(STDOUT).to receive(:puts).with("Your order has been placed successfully! You will receive an SMS with your order time.")
+    # end
   end
-
 end

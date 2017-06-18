@@ -13,6 +13,7 @@ class Order
 
   def select_item(item_number, amount = 1)
     amount.times { @basket << @menu.menu[item_number - 1] }
+    view_summary
   end
 
   def view_summary

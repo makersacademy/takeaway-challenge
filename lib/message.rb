@@ -7,7 +7,7 @@ class Message
 
   attr_reader :to, :from
 
-  def initialize(to = '+447445568685', from = '+441668932046')
+  def initialize(to = '+447445199917', from = '+441668932046')
     @to = to
     @from = from
     @client = Twilio::REST::Client.new ACCT_SID, AUTH_TOKEN
@@ -15,7 +15,7 @@ class Message
 
   def send_message
     message = @client.account.messages.create(
-        :body => "Thankyou for placing your order. Your food will be with you by #{(Time.new + 60 * 60).strftime("%R")}.",
+        :body => "Thank you for placing your order. Your food will be with you by #{(Time.new + 60 * 60).strftime("%R")}.",
         :to => @to,
         :from => @from)
 

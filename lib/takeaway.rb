@@ -14,6 +14,7 @@ class Takeaway
     @new_order.view_summary
     @message = Message.new
     @message.send_message
+    puts "Your order has been placed successfully! You will receive an SMS with your order time."
   end
 
 private
