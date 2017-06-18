@@ -1,35 +1,86 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
+The hot new bespoke app for ordering a takeaway from Harold's House of Horse - London's premiere horse meat specialist restaurant!
+
+Some highlight features include:
+- Use the *stylish* and *vintage* terminal interface to read the menu and place your order!
+- See your order total update in realtime! (as long as you do order.view)
+- Get a confirmation text message!
+
+All tests are passing at the time of writing, with very high test coverage (99.39%). It would've been 100%, but I couldn't find a way to comprehensively stub the Twilio API for one of my methods so I had to exclude it. It all behaves as expected when actually being used, however.
+
+I'm happy with how this turned out overall, especially considering the amount of time we're given to develop this. If I had more time, I would've delegated the order basket into its own class for the sake of adhering more strictly to the single responsibility principle. Aside from that, I believe that my code adheres fairly well to the 4 rules of simple design.
+
+Made with :heart: for the week 2 weekend challenge for Makers Academy. There was also some blood, sweat and tears along the way.
+
+## Installation
+1. Clone this repo by running `git clone git@github.com:tbscanlon/takeaway-challenge.git` from your terminal
+2. Navigate to the project folder: `cd takeaway-challenge/`.
+3. Install dependencies by running `bundle install` (you may need to `gem install bundle`).
+
+**Very important note:** You'll need a Twilio account with the details to access the API. Sign up for one here: https://www.twilio.com/try-twilio. After that, do the following:
+
+1. Create a `.env` folder in the root directory of this project (i.e. not in `/lib` or `/spec`).
+2. Copy the following into your new `.env` file:
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+ACCOUNT_SID = <your account SID>
+AUTH_TOKEN = <your account authentication token>
+FROM = <your Twilio phone number>
+TO = <your mobile phone number>
+```
 
- ```
+## Usage
+1. Run `irb` in the project folder.
+2. Type `require './lib/order'` and press enter to load everything.
 
-Instructions
--------
+Then try this out:
+```ruby
+order = Order.new
+order.show_menu
+order.add("Horse Burger")
+order.add("Horse Surprise")
+order.view # to confirm your order
+order.submit # to send a confirmation text
+```
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Code Examples
 
-Task
------
+### Initializing a new Order
+```ruby
+def initialize(menu = Menu.new, messenger = Messenger.new)
+  @basket    = []
+  @menu      = menu
+  @total     = nil
+  @messenger = messenger
+end
+```
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+### Calculating the Delivery Time
+```ruby
+def calculate_delivery_time
+  t = Time.new + (60 * 60)
+  "#{t.hour}:#{t.min}"
+end
+```
 
+### Sending a text
+```ruby
+def submit
+  raise "Add some items to your basket first" if basket.empty?
+  raise "Check your basket first to confirm (order.view)" if total.nil?
+  send_text
+end
+
+def send_text
+  @messenger.send "Thanks for ordering from Harold's House of Horse! Your order will be with you by #{calculate_delivery_time}"
+end
+
+def send(text)
+  @twilio.account.messages.create(from: from, to: to, body: text)
+end
+```
+
+## User Stories
 ```
 As a customer
 So that I can check if I want to order something
@@ -47,33 +98,3 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
