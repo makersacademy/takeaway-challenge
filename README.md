@@ -69,7 +69,7 @@ RuntimeError: Dish not found
 from /Users/marysalemme/Desktop/Dev/week2/takeaway-challenge/lib/order.rb:15:in `add_entry'
 [8] pry(main)> order.total_amount
 => 56
-[9] pry(main)> order.place(56, "Mary", "+447756241735")
+[9] pry(main)> order.place(56, "Mary", "+44xxxxxxxxxx")
 Sent message to Mary
 => "Your oder has been placed. You will receive an SMS confirmation shortly"
 ```
