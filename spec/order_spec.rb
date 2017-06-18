@@ -8,7 +8,13 @@ describe Order do
     menu
   end
 
-  let(:order)        { described_class.new(menu) }
+  let(:messenger) do
+    messenger = double(:messenger)
+    allow(messenger).to receive(:send) { "Thanks for ordering from Harold's House of Horse! Your order will be with you by #{delivery_time.hour}:#{delivery_time.min}" }
+    messenger
+  end
+
+  let(:order)         { described_class.new(menu, messenger) }
   let(:delivery_time) { Time.new + (60 * 60) }
 
   describe 'Initialization' do
@@ -118,10 +124,3 @@ describe Order do
     end
   end
 end
-
-# Move dishes into a hash in the menu
-# Add an Order class that has a basket
-# - Order.add(item_name)
-# - Order.basket - shows basket contents
-# - Order.confirm - marks the order as acceptable
-# - Order.submit - sends the text

@@ -1,12 +1,16 @@
+require 'dotenv/load'
+require 'twilio-ruby'
 require_relative 'menu'
+require_relative 'messenger'
 
 class Order
   attr_reader :basket, :menu, :total
 
-  def initialize(menu = Menu.new)
-    @basket = []
-    @menu   = menu
-    @total  = nil
+  def initialize(menu = Menu.new, messenger = Messenger.new)
+    @basket    = []
+    @menu      = menu
+    @total     = nil
+    @messenger = messenger
   end
 
   def add(item)
@@ -51,7 +55,7 @@ class Order
   end
 
   def send_text
-    "Thanks for ordering from Harold's House of Horse! Your order will be with you by #{calculate_delivery_time}"
+    @messenger.send "Thanks for ordering from Harold's House of Horse! Your order will be with you by #{calculate_delivery_time}"
   end
 
   def calculate_delivery_time
