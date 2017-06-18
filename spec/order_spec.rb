@@ -35,6 +35,14 @@ let(:order) { described_class.new }
   end
 end
 
+  describe "#confirm_order"  do
+    before do
+      allow($stdin).to receive(:gets).and_return('Yes')
+    end
+    it "returns a confirmation message for the customer" do
+      answer = $stdin.gets
+      expect(answer).to eq('Yes')
+    end
+  end
+
 end
-
-
