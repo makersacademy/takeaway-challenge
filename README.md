@@ -13,22 +13,15 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
 Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+------------
+* Fork this repo
+* Run the command 'bundle' in the project directory to ensure you have all the gems
+* Write a Takeaway program
 
 Task
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Our task was to create a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -48,32 +41,123 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Here is an example of a feature test of my program:
+```
+2.4.0 :001 > require './lib/order.rb'
+ => true
+2.4.0 :002 > menu = Menu.new
+ => #<Menu:0x007fbf5e036e78>
+2.4.0 :003 > order = Order.new
+ => #<Order:0x007fbf5e1a1c90 @basket=[], @updated_basket={}>
+2.4.0 :004 > order.order_dish('Kobe Slider')
+1 Kobe Slider(s) added to your basket.
+ => nil
+2.4.0 :005 > order.order_dish(3, 'Shrimp Tempura')
+3 Shrimp Tempura(s) added to your basket.
+ => nil
+2.4.0 :006 > order.show_basket
+(1) Kobe Slider(s): £7
+(3) Shrimp Tempura(s): £12
+Total to pay: £19
+ => nil
+2.4.0 :007 > order.place_order
+```
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Approach to solving the challenge:
+----------------------------------
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+First, I created a domain model for each User Story (above) to keep track of the specified criteria.
 
+My program ensures that:
 
-In code review we'll be hoping to see:
+* The menu can be read; it gives the list of dishes and associated prices
+* The customer can choose a quantity for the available dishes from the menu
+* If the dish is not listed on the menu, the customer is prompted to select an available item from the menu
+* The customer can see their basket which gives the total items and prices of the various dishes they ordered
+* The customer receives a text when their order is placed and what time to expect their delivery to arrive
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Creating the menu
+-----------------
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+I wrote a few test cases for creating my menu. First describing what I wanted to test and then running it through RSPEC and expecting errors to occur.
 
-Notes on Test Coverage
+```ruby
+describe Menu do
+  describe '#initialize' do
+    it { is_expected.to respond_to(:initialize) }
+  end
+```
+
+I expected the errors to show that I didn't have a 'Menu' class or an 'initialize' method. So, then proceeded to write the code for the tests to pass.
+
+```ruby
+class Menu
+  def initialize
+
+  end
+end
+```
+I then proceeded to write tests to actually create and output the menu and the supporting code for that. I removed the respond to method expectation as it seemed redundant; I knew it would expect that and need a method to be able to work.
+
+**Tests:**  
+```ruby
+describe Menu do
+  describe '#initialize' do
+    it 'initializes with the list of dishes' do
+      expect(menu.dishes).to eq @dishes
+    end
+  end
+
+  describe '#read_menu' do
+    it 'outputs the menu' do
+      expect { menu.read_menu }.to output(@dishes).to_stdout
+    end
+  end
+end
+```
+
+**Code:**  
+```ruby
+class Menu
+  attr_reader :dishes
+
+  def initialize
+    create_menu
+  end
+
+  def create_menu
+    @@dishes = { 'Kobe Slider' => 7,
+                 'Shrimp Tempura' => 4,
+                 'Salmon Teriyaki' => 5,
+                 'Chicken Katsu' => 8,
+                 'Edamame Pot' => 2 }
+  end
+
+  def read_menu
+    @@dishes.each do |key, value|
+      puts key + ": £" + value.to_s
+    end
+  end
+end
+```
+
+Creating the order
 ------------------
+In much the same way as the menu class, the order class was tested and created following the TDD method.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+  **Ordering the dish:**  
+  When a customer orders a dish, I set the default balance to equal 1 under the assumption that the customer would order at least 1 of any of the dishes. This quantity is also changeable at the time of ordering. The dish is looked up (from the menu list hash from the menu class) to retrieve the name and price key-value pair and adds it to the basket. Each combination of dishes ordered is grouped and pushed to an updated basket whilst also being displayed to the customer as being added to the basket.
+
+  **Showing the basket:**  
+  The basket shows the customer all the dishes and prices they have ordered and gives them a total price to pay.
+
+  **Placing the order:**  
+  Once the customer is satisfied with their choices, they can place the order which sends them a text that thanks them for their order, with their name and what time it will be delivered (I set it to deliver an hour after the order was placed).
+
+  [I used a Twilio number and my phone number to test the text(s) deliveries could be received.]
+
+
+How I plan to finish the challenge
+----------------------------------
+Although, I have met the requirements from the user stories, I would like to incorporate some doubles, mocks and stubs into my program. I found it difficult to add these without the tests breaking, even though the code was working correctly.

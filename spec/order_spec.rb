@@ -2,7 +2,8 @@ require 'order'
 require 'menu'
 
 describe Order do
-  subject(:order) { described_class.new }
+  let(:order) { described_class.new }
+  let(:dish) { double('Kobe Slider') }
 
   describe '#initialize' do
     it 'initializes the order with an empty basket' do
@@ -31,13 +32,21 @@ describe Order do
       dish = 'Kobe Slider'
       expect(order.lookup_item(dish)).to eq('Kobe Slider' => 7)
     end
+
+    it 'verifies if the dish exists on the menu' do
+      expect(order.lookup_item('Kobe Slider')).to include('Kobe Slider')
+    end
+
+    it 'verifies the dish does not exist on the menu' do
+      expect { order.lookup_item('Dragon Roll') }.to raise_error('Please enter an item from the menu.')
+    end
   end
 
-  describe '#basket_items' do
+  describe '#create_basket_items' do
     it 'creates a list of items in the basket' do
       dish = 'Kobe Slider'
       order.order_dish(2, dish)
-      expect(order.basket_items).to be == '(2) Kobe Slider(s): £14' + "\n"
+      expect(order.create_basket_items).to be == '(2) Kobe Slider(s): £14' + "\n"
     end
   end
 
@@ -49,11 +58,11 @@ describe Order do
     end
   end
 
-  describe '#basket_total' do
+  describe '#create_basket_total' do
     it 'gets the subtotal of the basket' do
       dish = 'Kobe Slider'
       order.order_dish(2, dish)
-      expect(order.basket_total).to eq 14
+      expect(order.create_basket_total).to eq 14
     end
   end
 
@@ -76,8 +85,8 @@ describe Order do
   end
 
   describe '#place_order' do
-    it 'confirms a sent text message' do
-      expect { order.place_order }.to output("Sent message to customer: Miho").to_stdout
+    xit 'confirms a sent text message' do
+      expect { order.place_order }.to output("Sent message to customer: Miho" + "\n").to_stdout
     end
   end
 end
