@@ -21,6 +21,6 @@ class Messenger
 private
 
   def delivery_time
-    "#{(Time.now + (60*60)).strftime("%H:%M")}"
+    "#{(Time.now + (60 * 60)).strftime("%H:%M")}"
   end
 end

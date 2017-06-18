@@ -50,9 +50,9 @@ describe Order do
     end
 
     it 'takes the total amount from the user and places the order' do
-        allow(order).to receive(:total_amount).and_return(20)
-        expect(messenger).to receive(:send_message)
-        order.place(20, "Mary", "123123")
-      end
+      allow(order).to receive(:total_amount).and_return(20)
+      expect(messenger).to receive(:send_message)
+      order.place(20, "Mary", "123123")
+    end
   end
 end
