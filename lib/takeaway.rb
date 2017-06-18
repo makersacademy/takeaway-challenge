@@ -2,16 +2,16 @@
 
 require_relative "order"
 require_relative "menu"
-require_relative "messager"
+require_relative "messenger"
 
 # Understands how to oversee buying food via CL.
 
 class Takeaway
 
-  def initialize(menu = Menu.new, order = Order.new, messager = Messager.new)
+  def initialize(menu = Menu.new, order = Order.new, messenger = Messenger.new)
     @menu = menu
     @order = order
-    @messager = messager
+    @messenger = messenger
   end
 
   def show_menu
@@ -29,12 +29,12 @@ class Takeaway
 
   def checkout(payment)
     check_correct(payment)
-    messager.send_confirmation()
+    messenger.send_confirmation()
   end
 
 private
 
-  attr_reader :menu, :order, :messager
+  attr_reader :menu, :order, :messenger
 
   def check_correct(payment)
     fail "You're short. Please pay the correct sum man." if payment < order.total

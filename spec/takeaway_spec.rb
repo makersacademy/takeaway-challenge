@@ -3,11 +3,11 @@ require_relative "../lib/takeaway"
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(menu, order, messager) }
+  subject(:takeaway) { described_class.new(menu, order, messenger) }
 
   let(:menu) { double(:menu) }
   let(:order) { double(:order) }
-  let(:messager) { double(:messager) }
+  let(:messenger) { double(:messenger) }
 
   describe "#show_menu" do
     it "asks the menu to show its dishes" do
@@ -45,8 +45,8 @@ describe Takeaway do
     context "when user pays correct sum" do
       it "asks the messanger to send confirmation" do
         allow(order).to receive(:total).and_return(10.00)
-        allow(messager).to receive(:send_confirmation)
-        expect(messager).to receive(:send_confirmation)
+        allow(messenger).to receive(:send_confirmation)
+        expect(messenger).to receive(:send_confirmation)
         takeaway.checkout(10.00)
       end
     end
