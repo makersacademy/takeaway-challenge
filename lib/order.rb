@@ -14,4 +14,8 @@ class Order
     quantity.times { @entries << dish }
     @entries
   end
+
+  def total_amount
+    "The total amount is £#{@entries.inject(0) {|memo, hsh| memo + hsh[:price]}}"
+  end
 end

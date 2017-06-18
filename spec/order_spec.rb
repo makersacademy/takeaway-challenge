@@ -27,4 +27,14 @@ describe Order do
       expect { order.add_entry("Lasagna") }.to raise_error("Dish not found")
     end
   end
+
+  describe '#total_amount' do
+    it 'checks the total amount of the order' do
+      allow(menu).to receive(:get).with("Spaghetti").and_return({ name: "Spaghetti", price: 10 })
+      allow(menu).to receive(:get).with("Pizza").and_return({ name: "Pizza", price: 8 })
+      order.add_entry("Spaghetti")
+      order.add_entry("Pizza")
+      expect(order.total_amount).to eq "The total amount is £18"
+    end
+  end
 end
