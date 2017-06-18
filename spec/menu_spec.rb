@@ -13,6 +13,6 @@ describe Menu do
   end
 
   it "prints list of dishes with prices" do
-    expect(menu.print_dishes).to include "kimchi_jjigae, £8.99"
+    expect(menu.print_dishes).to include "kimchi_jjigae, £8"
   end
 end

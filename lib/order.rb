@@ -1,15 +1,16 @@
 require_relative "menu.rb"
 require_relative "sms.rb"
-# require 'dotenv'
-# Dotenv.load
+require 'dotenv'
+Dotenv.load
 
 class Order
 
-  attr_reader :basket, :menu
+  attr_reader :basket, :menu, :sms
 
   def initialize(menu = Menu.new)
     @basket = {}
     @menu = menu
+    @sms = SMS.new
   end
 
   def add_dish(dish, quantity)
@@ -19,7 +20,7 @@ class Order
   end
 
   def read_menu
-    menu.welcome
+    p menu.welcome
     menu.print_dishes
   end
 
@@ -37,7 +38,7 @@ class Order
 
   def basket_summary
     basket.map do |k, v|
-      "#{v}x #{k}(s) = £#{v * menu.get_price(k)}"
+      "#{v}x #{k}(s) = £#{(v * menu.get_price(k)).to_i}"
     end
   end
 
@@ -46,11 +47,16 @@ class Order
     confirm = gets.chomp
     if confirm == 'Yes'
       confirmation
+      basket.clear
+    else
+      return nil
     end
   end
 
+private
+
   def confirmation
-    "Thankyou! Your order was placed and will be delivered before #{delivery_time}"
+    sms.send_sms("Thankyou! Your order was placed and will be delivered before #{delivery_time}")
   end
 
   def delivery_time
