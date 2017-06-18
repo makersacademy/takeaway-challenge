@@ -1,4 +1,7 @@
-require "./lib/menu.rb"
+require_relative "menu.rb"
+require_relative "sms.rb"
+# require 'dotenv'
+# Dotenv.load
 
 class Order
 
@@ -15,23 +18,40 @@ class Order
     return "#{quantity} x #{dish}(s) added to your basket."
   end
 
+  def read_menu
+    menu.welcome
+    menu.print_dishes
+  end
+
   def total
     total = 0
     basket.each do |k, v|
       total = total + (v * menu.get_price(k))
     end
+    total
+  end
+
+  def order_total
     p "Your order total is £#{total}"
+  end
+
+  def basket_summary
+    basket.map do |k, v|
+      "#{v}x #{k}(s) = £#{v * menu.get_price(k)}"
+    end
   end
 
   def checkout
     p "Enter 'Yes' if you would like to place your order"
     confirm = gets.chomp
     if confirm == 'Yes'
-      "Thankyou! Your order was placed and will be delivered before #{delivery_time}"
+      confirmation
     end
   end
 
-private
+  def confirmation
+    "Thankyou! Your order was placed and will be delivered before #{delivery_time}"
+  end
 
   def delivery_time
    (Time.now + (60 * 60)).strftime("%H:%M")

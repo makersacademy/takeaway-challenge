@@ -28,7 +28,28 @@ describe Order do
   describe "#total" do
     it "should return the total cost of items in basket" do
       order.add_dish("galbi", 1)
-      expect(order.total).to eq "Your order total is £10.99"
+      expect(order.total).to eq 10.99
+    end
+  end
+
+  describe "#order_total" do
+    it "shoud return a string with order total" do
+      order.add_dish("galbi", 1)
+      expect(order.order_total).to eq "Your order total is £10.99"
+    end
+  end
+
+  describe "#read_menu" do
+    it "should return welcome message and menu" do
+      expect(order.read_menu).to include "kimchi_jjigae, £8.99"
+    end
+  end
+
+  describe "#basket_summary" do
+    it "should give a summary of items in basket" do
+      order.add_dish("galbi", 1)
+      order.add_dish("kimbap", 1)
+      expect(order.basket_summary).to eq ["1x galbi(s) = £10.99", "1x kimbap(s) = £4.99"]
     end
   end
 
