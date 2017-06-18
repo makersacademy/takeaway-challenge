@@ -1,10 +1,10 @@
 
 require "twilio-ruby"
 
-class Messager
+class Messenger
 
-ACC_SID = ENV["TWILIO_ACC_SID"]
-AUTH_TOKEN = ENV["TWILIO_AUTH_TOKEN"]
+ACC_SID = ""
+AUTH_TOKEN = ""
 
 def initialize
   @client = Twilio::REST::Client.new(ACC_SID, AUTH_TOKEN)
