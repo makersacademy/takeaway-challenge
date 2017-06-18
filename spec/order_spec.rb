@@ -3,7 +3,8 @@ require 'order'
 describe Order do
   let(:menu) do
     menu = double(:menu)
-    allow(menu).to receive(:contents) { { "Horse Burger" => 8.99 } }
+    allow(menu).to receive(:contents) { { "Horse Burger" => 8.99, "Horse Surprise" => 12.99 } }
+    allow(menu).to receive(:view)     { puts "Horse Burger: 8.99" }
     menu
   end
 
@@ -41,6 +42,45 @@ describe Order do
   context 'Adding non-existant items' do
     it 'raises an error' do
       expect { order.add("Chicken Burger") }.to raise_error("Chicken Burger not found")
+    end
+  end
+
+  describe '#show_menu' do
+    it { is_expected.to respond_to(:show_menu) }
+
+    it "outputs the items on the menu" do
+      expect { order.show_menu }.to output(/#{menu.contents.keys.first}: #{menu.contents.values.first}/).to_stdout
+    end
+  end
+
+  describe '#view' do
+    it { is_expected.to respond_to(:view) }
+    it { is_expected.to respond_to(:total) }
+  end
+
+  context 'When the basket is empty' do
+    it 'raises an error' do
+      expect { order.view }.to raise_error("Your basket is empty")
+    end
+  end
+
+  context 'When the basket isn\'t empty' do
+    before do
+      order.add("Horse Burger")
+      order.add("Horse Surprise")
+    end
+
+    it 'prints the contents of the basket' do
+      expect { order.view }.to output(/#{menu.contents.keys.first}: #{menu.contents.values.first}/).to_stdout
+    end
+
+    it 'returns the order total' do
+      expect(order.view).to eq "Your total is £21.98"
+    end
+
+    it 'updates the total' do
+      order.view
+      expect(order.total).to eq 21.98
     end
   end
 end
