@@ -15,7 +15,7 @@ class Order
     @printer = printer
   end
 
-  def add(food, quant=1)
+  def add(food, quant = 1)
     basket[food] += quant
     update_total(food, quant)
   end

@@ -9,7 +9,6 @@ describe Takeaway do
   let(:order) { double(:order) }
   let(:messager) { double(:messager) }
 
-
   describe "#show_menu" do
     it "asks the menu to show its dishes" do
       allow(menu).to receive(:show_food)
@@ -44,13 +43,13 @@ describe Takeaway do
     end
 
     context "when user pays correct sum" do
-    it "asks the messanger to send confirmation" do
-      allow(order).to receive(:total).and_return(10.00)
-      allow(messager).to receive(:send_confirmation)
-      expect(messager).to receive(:send_confirmation)
-      takeaway.checkout(10.00)
+      it "asks the messanger to send confirmation" do
+        allow(order).to receive(:total).and_return(10.00)
+        allow(messager).to receive(:send_confirmation)
+        expect(messager).to receive(:send_confirmation)
+        takeaway.checkout(10.00)
+      end
     end
-   end
 
   end
 

@@ -10,7 +10,7 @@ class Printer
 
   def print_all(dishes)
     i = 0
-    dishes.each {|dish, price| print_(dish, i, price); i += 1}
+    dishes.each { |dish, price| print_(dish, i, price); i += 1 }
   end
 
   def print_an_order_of(food, quant)
@@ -18,7 +18,7 @@ class Printer
   end
 
   def print_all_orders_in(basket)
-    basket.each {|food, quant| print_an_order_of(food, quant)}
+    basket.each { |food, quant| print_an_order_of(food, quant) }
   end
 
   def print_the(total)

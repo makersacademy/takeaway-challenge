@@ -20,7 +20,7 @@ class Menu
   end
 
   def has?(food)
-    dishes.find { |dish, price| dish == food.to_sym }
+    dishes.find { |dish, _price| dish == food.to_sym }
   end
 
   private

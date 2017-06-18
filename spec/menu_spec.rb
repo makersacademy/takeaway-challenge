@@ -4,7 +4,6 @@ require_relative "../lib/food"
 
 describe Menu do
 
-
   subject(:menu) { described_class.new(printer) }
   let(:resturant_food) { Menu::RESTAURANT_FOOD }
   let(:printer) { double(:printer) }
