@@ -1,7 +1,7 @@
 Takeaway Challenge
 ==================
 
-![Alt text][id]  
+ 
 ![id](http://i.imgur.com/i9ddqj9.png?1)
 
 
