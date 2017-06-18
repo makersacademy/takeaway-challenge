@@ -1,8 +1,8 @@
 Takeaway Challenge
 ==================
 
-![Alt text][id]
-[id]: http://i.imgur.com/i9ddqj9.png?1
+![Alt text][id]  
+![id](http://i.imgur.com/i9ddqj9.png?1)
 
 
 Ruby program that replicates basic functionality of a Takeaway restaurant. Responsibility is split between several classes:
