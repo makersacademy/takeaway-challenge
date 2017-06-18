@@ -3,7 +3,7 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            | Mary's|   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -14,22 +14,8 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+### Task
+Write a Takeaway program from the following user stories, using the [Twilio API](https://www.twilio.com/sms/api):
 ```
 As a customer
 So that I can check if I want to order something
@@ -48,32 +34,53 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
 
-In code review we'll be hoping to see:
+## Installation
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+- Run `git clone https://github.com/MarySalemme/takeaway-challenge.git`
+- Navigate to the repo `cd takeaway-challenge`
+- Run `gem install bundle` from the command line
+- Run `bundle`
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+## Usage
+```
+[2] pry(main)> require './lib/order.rb'
+=> true
+[3] pry(main)> menu = Menu.new([{ name: 'Spaghetti', price: 10 }, { name: 'Bolognese', price: 12 }, { name: 'Pizza', price: 8 }])
+=> #<Menu:0x007fe9dbac5a40 @dishes=[{:name=>"Spaghetti", :price=>10}, {:name=>"Bolognese", :price=>12}, {:name=>"Pizza", :price=>8}]>
+[4] pry(main)> order = Order.new(menu)
+=> #<Order:0x007fe9dba8cec0
+ @entries=[],
+ @menu=#<Menu:0x007fe9dbac5a40 @dishes=[{:name=>"Spaghetti", :price=>10}, {:name=>"Bolognese", :price=>12}, {:name=>"Pizza", :price=>8}]>,
+ @messenger=
+  #<Messenger:0x007fe9dba8ce20 @client=<Twilio::REST::Client @account_sid=ACf3440f773fa43bf7fd4fb0ad846b291d>, @from="+44 1639 262014">>
+[5] pry(main)> order.add_entry("Spaghetti", 4)
+=> [{:name=>"Spaghetti", :price=>10}, {:name=>"Spaghetti", :price=>10}, {:name=>"Spaghetti", :price=>10}, {:name=>"Spaghetti", :price=>10}]
+[6] pry(main)> order.add_entry("Pizza", 2)
+=> [{:name=>"Spaghetti", :price=>10},
+ {:name=>"Spaghetti", :price=>10},
+ {:name=>"Spaghetti", :price=>10},
+ {:name=>"Spaghetti", :price=>10},
+ {:name=>"Pizza", :price=>8},
+ {:name=>"Pizza", :price=>8}]
+[7] pry(main)> order.add_entry("Lasagna", 4)
+RuntimeError: Dish not found
+from /Users/marysalemme/Desktop/Dev/week2/takeaway-challenge/lib/order.rb:15:in `add_entry'
+[8] pry(main)> order.total_amount
+=> 56
+[9] pry(main)> order.place(56, "Mary", "+44xxxxxxxxxx")
+Sent message to Mary
+=> "Your oder has been placed. You will receive an SMS confirmation shortly"
+```
+Text received:
+```
+Hey Mary, you will receive your order at 22:24!
 
-Notes on Test Coverage
-------------------
+```
+## Running tests
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+`rspec`
+
+**Overall test coverage > 96%**  
+(I didn't manage to implement a test in messenger.rb without sending a text)
