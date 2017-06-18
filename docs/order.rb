@@ -1,24 +1,25 @@
 require './docs/menu.rb'
+require './docs/checkout.rb'
 
 class Order
 
-attr_accessor :total_basket, :menu
+attr_accessor :menu, :checkout
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @total_basket = {}
   end
 
   def add_dish(dish, quantity = 1)
     fail "Item not on the menu!" unless menu.dishes.include?(dish)
-    @total_basket.store(dish, quantity)
+    create_checkout
+    @checkout.save_order(dish, quantity)
   end
 
   def display_total
-    p "Your bill comes to £#{calculate_total}"
+    "Your bill comes to £#{@checkout.calculate_total}"
   end
 
-  def confrim_order
+  def confirm_order
     puts "Enter 'Yes' if you would like to continue with your order"
     answer = gets.chomp.downcase
     answer == "yes" ? "Thankyou, your order has been placed and should be expected to arrive #{calculate_arrival_time}" : exit
@@ -31,12 +32,8 @@ private
     arrival_time = arrival_time.strftime("at %I:%M%p")
   end
 
-  def calculate_total
-    total = 0
-    @total_basket.each do |k, v|
-    total = total + (v * menu.find_price(k))
-    end
-    total
+  def create_checkout
+    @checkout = Checkout.new
   end
 
 end
