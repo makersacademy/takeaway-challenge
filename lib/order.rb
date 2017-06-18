@@ -6,7 +6,7 @@ require_relative "menu"
 
 class Order
 
-  attr_reader :total
+  attr_reader :total, :basket
 
   def initialize(printer = Printer.new, menu = Menu.new)
     @basket = Hash.new(0)
@@ -27,7 +27,7 @@ class Order
 
   private
 
-  attr_reader :basket, :printer, :menu
+  attr_reader :printer, :menu
 
   def update_total(food, quant)
     @total += menu.dishes[food] * quant
