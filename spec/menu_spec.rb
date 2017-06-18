@@ -16,4 +16,10 @@ let(:menu) { described_class.new }
     end
   end
 
+  describe "#find_price" do
+    it "returns the price of an item" do
+      expect(menu.find_price("warm tofu chilli salad")).to eq(11.0)
+    end
+  end
+
 end

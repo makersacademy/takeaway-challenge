@@ -21,6 +21,10 @@ attr_reader :dishes
     format_menu
   end
 
+  def find_price(key)
+    dishes[key]
+  end
+
 private
 
   def print_header

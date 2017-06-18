@@ -28,6 +28,13 @@ let(:order) { described_class.new }
     end
   end
 
+  describe "#display_total" do
+  it "should show the bill to the customer" do
+    allow(order).to receive(:calculate_total).and_return("26.0")
+    expect(order.display_total).to eq("Your bill comes to £26.0")
+  end
+end
+
 end
 
 
