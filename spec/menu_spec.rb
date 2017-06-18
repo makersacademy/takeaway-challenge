@@ -6,11 +6,11 @@ describe Menu do
 
   describe "#food_list" do
     it "should return a hash" do
-      expect(subject.food_list).to be_a Hash
+      expect( subject.food_list ).to be_a Hash
     end
 
     it "should initialize with food" do
-      expect(subject.food_list).not_to be_empty
+      expect( subject.food_list ).not_to be_empty
     end
   end
 
