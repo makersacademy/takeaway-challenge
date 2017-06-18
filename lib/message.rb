@@ -7,7 +7,7 @@ class Message
 
   attr_reader :to, :from
 
-  def initialize(to = '+447445199917', from = '+441668932046')
+  def initialize(to = '+447445568685', from = '+441668932046')
     @to = to
     @from = from
     @client = Twilio::REST::Client.new ACCT_SID, AUTH_TOKEN
