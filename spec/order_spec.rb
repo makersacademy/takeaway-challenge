@@ -31,12 +31,12 @@ describe Order do
     end
   end
 
-  describe '#view_basket' do
+  describe '#view_summary' do
 
     before do
       subject.select_item(1)
       subject.select_item(2)
-      subject.view_basket
+      subject.view_summary
     end
 
     it 'calculates the total of my order' do

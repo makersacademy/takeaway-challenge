@@ -15,7 +15,7 @@ class Order
     amount.times { @basket << @menu.menu[item_number - 1] }
   end
 
-  def view_basket
+  def view_summary
     sort_basket
     calculate_total
     puts "your total amount is $#{@total} dollars"
@@ -24,8 +24,8 @@ class Order
 private
 
   def calculate_total
-    @basket = @basket.map { |item| item[:price] }
-    @total = @basket.reduce(:+)
+    @basket_totals = @basket.map { |item| item[:price] }
+    @total = @basket_totals.reduce(:+).round(2)
   end
 
   def sort_basket

@@ -1,4 +1,4 @@
-require "menu.rb"
+require "./lib/menu.rb"
 
 describe Menu do
 
