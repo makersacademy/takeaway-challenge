@@ -1,7 +1,7 @@
 # Takeaway challenge
 
 Task - Build a basic web app which integrates the Twilio API and allows user to place
-an order and receive a test message confirmation with delivery time.
+an order and receive a text message confirmation with delivery time.
 
 ## Installation
 
