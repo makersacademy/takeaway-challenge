@@ -19,13 +19,6 @@ let(:order) { described_class.new }
     end
   end
 
-  describe "#display_total" do
-    it "should show the bill to the customer" do
-      order.add_dish("seafood ramen")
-      expect(order.display_total).to eq("Your bill comes to £13.0")
-    end
-  end
-
   describe "#confirm_order"  do
     before do
       allow($stdin).to receive(:gets).and_return('Yes')

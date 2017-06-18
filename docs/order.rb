@@ -15,14 +15,9 @@ attr_accessor :menu, :checkout
     @checkout.save_order(dish, quantity)
   end
 
-  def display_total
-    "Your bill comes to £#{@checkout.calculate_total}"
-  end
-
   def confirm_order
-    puts "Enter 'Yes' if you would like to continue with your order"
-    answer = gets.chomp.downcase
-    answer == "yes" ? "Thankyou, your order has been placed and should be expected to arrive #{calculate_arrival_time}" : exit
+    puts "Your order comes to #{@checkout.calculate_total}"
+    confirmation_check == "yes" ? "Thankyou, your order has been placed and should be expected to arrive #{calculate_arrival_time}" : exit
   end
 
 private
@@ -34,6 +29,11 @@ private
 
   def create_checkout
     @checkout = Checkout.new
+  end
+
+  def confirmation_check
+    puts "Enter 'Yes' if you would like to continue with your order"
+    answer = gets.chomp.downcase
   end
 
 end
