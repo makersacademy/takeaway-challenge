@@ -1,11 +1,14 @@
 
-require_relative "order_printer"
+require_relative "printer"
+require_relative "menu"
+
+# Understands how to process an order
 
 class Order
 
-  attr_reader :basket, :total, :printer, :menu
+  attr_reader :total
 
-  def initialize(printer = OrderPrinter.new, menu = Menu.new)
+  def initialize(printer = Printer.new, menu = Menu.new)
     @basket = Hash.new(0)
     @total = 0.0
     @menu = menu
@@ -18,11 +21,13 @@ class Order
   end
 
   def summary
-     printer.output_for(basket)
-     printer.output_(total)
+    printer.print_all_orders_in(basket)
+    printer.print_the(total)
   end
 
   private
+
+  attr_reader :basket, :printer, :menu
 
   def update_total(food, quant)
     @total += menu.dishes[food] * quant

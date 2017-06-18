@@ -1,12 +1,13 @@
 
 require "twilio-ruby"
 
-class Message
+class Messager
 
+=begin
 ACC_SID = ENV["TWILIO_ACC_SID"]
 AUTH_TOKEN = ENV["TWILIO_AUTH_TOKEN"]
 
-def initialize(client = Twilio::REST::Client.new account_sid, auth_token )
+def initialize(client = Twilio::REST::Client.new(ACC_SID, AUTH_TOKEN))
   @client = client
 end
 
@@ -28,5 +29,7 @@ end
 def confirmation_message
   "Thanks for ordering. Your meal will be delivered at #{time}"
 end
+
+=end
 
 end

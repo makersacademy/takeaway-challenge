@@ -1,31 +1,31 @@
 
-require_relative "menu_printer"
+require_relative "printer"
+require_relative "food"
+
+# Understands how to process a menu of food.
 
 class Menu
 
-  MENU_ITEMS = {
+  attr_reader :dishes
 
-    Pizza: 10.00,
-    Pasta: 12.50,
-    Salad: 5.25,
-    Fries: 4.00
+  include Food
 
-  }.freeze
+  def initialize(printer = Printer.new)
+    @printer = printer
+    @dishes = RESTAURANT_FOOD
+  end
 
-  attr_reader :printer, :dishes
+  def show_food
+    printer.print_all(dishes)
+  end
 
-def initialize(menu_printer = MenuPrinter.new)
-  @printer = menu_printer
-  @dishes = MENU_ITEMS
-end
+  def has?(food)
+    dishes.find { |dish, price| dish == food.to_sym }
+  end
 
-def show_dishes
-  printer.format_(dishes)
-  printer.print_items
-end
+  private
 
-def has?(food)
-  dishes.find {|dish, price| dish == food.to_sym }
-end
+  attr_reader :printer
+
 
 end
