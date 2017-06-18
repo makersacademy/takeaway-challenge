@@ -4,7 +4,7 @@ describe Menu do
 
   describe '#initialize' do
     it 'has a list of menu items' do
-      expect(subject.menu).to include({ menu_item: :vegetarian_enchiladas, price: 9.99 })
+      expect(subject.menu).to include({ item_number: 1, menu_item: :vegetarian_enchiladas, price: 9.99 })
     end
   end
 
