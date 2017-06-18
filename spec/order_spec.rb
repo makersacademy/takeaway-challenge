@@ -3,8 +3,9 @@ require 'order'
 describe Order do
 
   let(:menu) { double :menu }
+  let(:messenger) { double :messenger }
 
-  subject(:order) { described_class.new(menu) }
+  subject(:order) { described_class.new(menu, messenger) }
 
   describe '#initialize' do
     it 'is initialized with an empty entries array' do
@@ -13,6 +14,10 @@ describe Order do
 
     it 'is initialized with a menu' do
       expect(order.menu).not_to be_nil
+    end
+
+    it 'is initialized with a messenger' do
+      expect(order.messenger).not_to be_nil
     end
   end
 
@@ -34,7 +39,20 @@ describe Order do
       allow(menu).to receive(:get).with("Pizza").and_return({ name: "Pizza", price: 8 })
       order.add_entry("Spaghetti")
       order.add_entry("Pizza")
-      expect(order.total_amount).to eq "The total amount is £18"
+      expect(order.total_amount).to eq 18
     end
+  end
+
+  describe '#place' do
+    it 'raises an error if the total given is different from the actual total amount' do
+      allow(order).to receive(:total_amount).and_return(30)
+      expect { order.place(20, "Mary", "123123") }.to raise_error("The total provided is incorrect")
+    end
+
+    it 'takes the total amount from the user and places the order' do
+        allow(order).to receive(:total_amount).and_return(20)
+        expect(messenger).to receive(:send_message)
+        order.place(20, "Mary", "123123")
+      end
   end
 end
