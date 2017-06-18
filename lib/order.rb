@@ -9,8 +9,12 @@ class Order
     @menu = menu
   end
 
-  def add_entry(dish_name)
+  def add_entry(dish_name, quantity = 1)
     dish = @menu.get(dish_name)
-    @entries << dish
+    if dish
+      (@entries << dish) * quantity
+    else
+      "Dish not found"
+    end
   end
 end
