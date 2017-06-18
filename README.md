@@ -26,4 +26,4 @@ Ruby program that replicates basic functionality of a Takeaway restaurant. Respo
  - Other functionalities to be added: Bank class to deal with money transfer from client to restaurant
 
 #### How to test it
- - use rspec and rubocop
+ - Use rspec and rubocop
