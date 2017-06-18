@@ -16,7 +16,7 @@ class Sms
     :from => ENV['from'],
     :to => ENV['to_me'],
     :body => "Thank you! Your order was placed and will be delivered before #{time}")
-    puts "Sent message to #{ENV['to_me']}"
+    puts "Message sent!"
   end
 
 end
