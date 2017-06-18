@@ -25,10 +25,3 @@ class Menu
     contents.each { |item, price| puts "#{item}: #{price}" }
   end
 end
-
-# Move dishes into a hash in the menu
-# Add an Order class that has a basket
-# - Order.add(item_name)
-# - Order.basket - shows basket contents
-# - Order.confirm - marks the order as acceptable
-# - Order.submit - sends the text
