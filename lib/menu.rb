@@ -27,5 +27,4 @@ class Menu
 
   attr_reader :printer
 
-
 end

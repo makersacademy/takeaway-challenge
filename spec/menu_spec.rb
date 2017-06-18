@@ -1,33 +1,33 @@
 
 require_relative "../lib/menu"
+require_relative "../lib/food"
 
 describe Menu do
 
-  subject(:menu) { described_class.new(menu_printer) }
-  let(:menu_printer) { double(:menu_printer) }
+
+  subject(:menu) { described_class.new(printer) }
+  let(:resturant_food) { Menu::RESTAURANT_FOOD }
+  let(:printer) { double(:printer) }
 
   describe "attributes" do
-    it { is_expected.to respond_to(:printer) }
-    it { is_expected.to respond_to(:dishes) }
-
-    context "on init" do
-      describe "@menu_printer" do
-        it "will default to my menu_printer class" do
-          expect(menu.printer).to be menu_printer
+    context "@dishes" do
+      context "on init" do
+        it "defaults to resturant food" do
+          expect(menu.dishes).to eq resturant_food
         end
       end
     end
   end
 
   describe "#show_dishes" do
-    it "tells the menu_printer to print dishes" do
-      allow(menu_printer).to receive(:print_).with(menu.dishes)
-      expect(menu_printer).to receive(:print_).with(menu.dishes)
-      menu.show_dishes
+    it "tells the printer to print dishes" do
+      allow(printer).to receive(:print_all).with(menu.dishes)
+      expect(printer).to receive(:print_all).with(menu.dishes)
+      menu.show_food
     end
   end
 
-  describe "#find" do
+  describe "#has?" do
     context "when dish passed in is not on the menu" do
       it "returns nil" do
         expect(menu.has?(:Truffles)).to be nil
