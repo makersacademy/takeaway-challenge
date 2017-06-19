@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 require_relative 'menu'
 
 class Order
@@ -20,6 +21,11 @@ class Order
     puts "Your total is £#{calculate_total}."
   end
 
+  def place_order
+    puts "Order confirmed"
+    sms_notifier
+  end
+
   private
 
   def search(item)
@@ -40,6 +46,19 @@ class Order
 
   def list_basket
     basket.each { |item| puts "#{item.keys.first} : £#{item.values.first}" }
+  end
+
+  def sms_notifier
+    account_sid = "" # Replace with your account_sid from Twilio
+    auth_token = "" # Replace with your auth token
+    client = Twilio::REST::Client.new account_sid, auth_token
+    client.account.messages.create(:body => "Thank you for your order. Your order will be delivered at " + time.to_s + ".",
+    :to => "",    # Replace with your phone number
+    :from => "")  # Replace with your Twilio number
+  end
+
+  def time
+    (Time.now + 60*60).strftime("%H:%M")
   end
 
 

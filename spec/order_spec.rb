@@ -5,6 +5,7 @@ describe Order do
   it { is_expected.to respond_to(:menu) }
   it { is_expected.to respond_to(:add).with(2).argument }
   it { is_expected.to respond_to(:review_order) }
+  it { is_expected.to respond_to(:place_order) }
 
   describe "#basket" do
     it "should be an Array" do
@@ -64,7 +65,6 @@ describe Order do
     end
 
     context "basket contains items" do
-
       before do
         subject.add("pancakes")
         subject.add("water")
@@ -73,9 +73,13 @@ describe Order do
       it "should print the sum of the basket" do
         expect{subject.review_order}.to output{"Your total is £6."}.to_stdout
       end
-
     end
+  end
 
+  describe "#place_order" do
+    it "should confirm the order has been placed" do
+       expect {subject.place_order}.to output("Order confirmed\n").to_stdout
+    end
   end
 
 
