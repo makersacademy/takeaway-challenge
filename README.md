@@ -1,20 +1,9 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  V.H. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+![ScreenShot](https://greatist.com/sites/default/files/SlowCooker-Pork-Ramen_0.jpg)
 
- ```
 
-Instructions
+# Takeaway Challenge
+
+How to use
 -------
 
 This programme mimics the basic functionality of a take away food app.  You can:
@@ -26,8 +15,6 @@ This programme mimics the basic functionality of a take away food app.  You can:
 - Confirm your selection and see the total for the order
 
 - Complete checkout
-
-I didn't have time to get to the TWilio API section :(
 
 How to use:
 
