@@ -1,19 +1,7 @@
 
 # Diagram for completing the challenge
 
-        items selected                   total price and nr.
-Menu -----------------> Order preparation -------------------> Takeaway    
-|        for purchase           |           of items             |           
-|                               |                                |
-|                               |       info  about order        |                           
-|                               |  - -  -  -  -  -  -  -  - ->   |
-|                               |                                |  
-|                               |                                |
-List of                     Total number of items    All items purchased
-itmes                       Place the order          Review the items purchased
-                            Total price of itmes     Place the order
-                                                     Confirm the order
-                                                     Send text sms to confirm order
+![diagram](images/diagram.png)
 
 
 ## I create my classes
