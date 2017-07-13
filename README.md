@@ -4,18 +4,18 @@
 ![diagram](images/diagram.png)
 
 
-## I create my classes
-## Takeaway class, OrderSystem class and Menu class  
+* I create my classes
+* Takeaway class, OrderSystem class and Menu class  
 
-## Menu class includes the items
-## OrderSystem class includes the total price and nr of
-## the items
-## For invoking the Single Responsibility Principle
-## and for keeping my code clean I
-## link Menu and OrderSystem class to Takeaway class
-## Takeaway class includes all the procedures from
-## Menu and OrderSystem class
-## I initialize Takeaway class
+* Menu class includes the items
+* OrderSystem class includes the total price and nr of
+* the items
+* For invoking the Single Responsibility Principle
+* and for keeping my code clean I
+* link Menu and OrderSystem class to Takeaway class
+* Takeaway class includes all the procedures from
+* Menu and OrderSystem class
+* I initialize Takeaway class
 
 takeaway = Takeaway.new
 
