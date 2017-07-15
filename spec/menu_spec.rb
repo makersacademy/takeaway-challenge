@@ -40,6 +40,13 @@ describe Menu do
       end
     end
 
+    describe '#to_s' do
+      it 'can display the menu' do
+        menu = Menu.new("Dominos", "Cheese & Tomato", 6)
+        menu_output = "Dominos Menu\nCheese & Tomato                6.00\n"
+        expect { puts menu }.to output(menu_output).to_stdout
+      end
+    end
   end
 
 end

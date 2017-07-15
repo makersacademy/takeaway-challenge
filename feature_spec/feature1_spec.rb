@@ -3,6 +3,7 @@
 # I would like to see a list of dishes with prices
 
 require_relative '../lib/menu.rb'
+require_relative '../lib/order.rb'
 
 menu = Menu.new("Dominos",
 "Cheese & Tomato", 6,
@@ -11,9 +12,5 @@ menu = Menu.new("Dominos",
 "Tandoori Hot", 9,
 "Vegi Sizzler", 8)
 
-puts "#{menu.name} Menu"
-menu.dishes.each do |dish, price|
-  print "#{dish}".ljust(25)
-  print "#{'%.02f' % price}".rjust(10)
-  puts ""
-end
+order = Order.new(menu)
+puts order.read_menu
