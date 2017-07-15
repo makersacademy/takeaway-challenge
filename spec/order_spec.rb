@@ -20,7 +20,7 @@ describe Order do
 
   describe '#breakdown' do
     it 'details the contents of the current order' do
-      expect { order.breakdown }.to output("2x Burger @ 5.50 = £11.00\n").to_stdout
+      expect { order.breakdown }.to output("2x Burger @ £5.50 each = £11.00\n").to_stdout
     end
   end
 

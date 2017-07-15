@@ -2,6 +2,7 @@ class Takeaway
 
   require_relative './menu'
   require_relative './order'
+  require_relative './sms'
 
   attr_reader :order
 
@@ -15,12 +16,16 @@ class Takeaway
 
   def new_order(*numbers)
     @order = Order.new(numbers)
-    "The order total is £#{'%.02f' % @order.total}"
+    puts "The order total is £#{'%.02f' % @order.total}"
   end
 
   def breakdown
     @order.breakdown
-    "The order total is £#{'%.02f' % @order.total}"    
+    puts "The order total is £#{'%.02f' % @order.total}"
+  end
+
+  def confirm(mobile)
+    SMS.new(mobile)
   end
 
 end
