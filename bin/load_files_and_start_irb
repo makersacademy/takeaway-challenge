@@ -3,6 +3,6 @@ require 'irb'
 
 puts 'Loading files..'
 require './lib/takeaway.rb'
-#require './lib/airport.rb'
+require './lib/order.rb'
 
 IRB.start
