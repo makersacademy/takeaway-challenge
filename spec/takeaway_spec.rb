@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   subject("takeaway") { described_class.new }
-  numbers = [1]
+  numbers = 1
   describe '#menu' do
 
     it 'tells the menu to print' do

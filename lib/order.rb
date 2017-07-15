@@ -12,4 +12,10 @@ class Order
     @current_order.map { |dish, quantity| dish[1] * quantity }.inject(:+)
   end
 
+  def breakdown
+    @current_order.each do |dish, quantity|
+      puts "#{quantity}x #{dish[0]} @ #{'%.02f' % dish[1]} = £#{'%.02f' % (dish[1] * quantity)}"
+    end
+  end
+
 end

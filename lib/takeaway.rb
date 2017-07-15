@@ -18,4 +18,9 @@ class Takeaway
     "The order total is £#{'%.02f' % @order.total}"
   end
 
+  def breakdown
+    @order.breakdown
+    "The order total is £#{'%.02f' % @order.total}"    
+  end
+
 end
