@@ -20,8 +20,11 @@ describe Takeaway do
       end
 
       it 'raises error if total does not match that' do
+        takeaway.place_order(my_order,total)
+        takeaway.price
+        expect{takeaway.check_total}.to raise_error 'Sorry total does not match'
 
-      end  
+      end
 
 
 

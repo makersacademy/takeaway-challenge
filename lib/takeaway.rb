@@ -26,6 +26,10 @@ class Takeaway
     calc_total= @order.calc_price(@items)
   end
 
+  def check_total
+    raise 'Sorry total does not match' if calc_total != @total
+  end
+
 
 
 
