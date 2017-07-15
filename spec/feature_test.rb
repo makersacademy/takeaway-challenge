@@ -11,8 +11,9 @@ require_relative '../lib/order.rb'
 
 # order meal by selecting a number of dishes
 thai = Takeaway.new
-p thai.order("Green Curry", 2, 2)
-p thai.order("Rice", 4, 4)
+thai.order("Green Curry", 2, 2)
+thai.order("Rice", 4, 4)
+p thai.open_orders
 # thai.add_dish("Pad Pak", 2)
 # p thai.dishes
 # thai = Takeaway.new
