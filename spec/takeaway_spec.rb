@@ -7,7 +7,7 @@ describe Takeaway do
   describe '#menu' do
 
     it 'tells the menu to print' do
-      expect { takeaway.menu }.to output("1: Burger, £5.50\n").to_stdout
+      expect { takeaway.menu }.to output("1: Burger, £5.50\n2: Pizza, £5.00\n").to_stdout
     end
   end
 
@@ -15,7 +15,7 @@ describe Takeaway do
 
     it 'creates a new order' do
       takeaway.new_order(numbers)
-    expect(takeaway.order).not_to be_nil
+      expect(takeaway.order).not_to be_nil
     end
   end
 

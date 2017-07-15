@@ -2,7 +2,8 @@ class Menu
 
   def initialize
     @menu = {
-      1 => ["Burger", 5.50]
+      1 => ["Burger", 5.50],
+      2 => ["Pizza", 5.00]
     }
   end
 
@@ -11,7 +12,9 @@ class Menu
   end
 
   def selection(numbers)
-    numbers.collect { |number| @menu[number] }
+    order_hash = Hash.new { 0 }
+    numbers.each { |order| order_hash[@menu[order]] += 1 }
+    order_hash
   end
 
 end
