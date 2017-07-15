@@ -7,12 +7,6 @@ describe Order do
   let(:price) { 6 }
   let(:phone_number) { double(:string) }
 
-  describe "initialization" do
-    it "should initialize with an empty array of dishes" do
-      expect(order.dishes).to be_empty
-    end
-  end
-
   describe "#add" do
     it "should receive dishes from the menu" do
       expect(order.add(dish)).to eq [dish]
@@ -47,6 +41,14 @@ describe Order do
       allow(dish).to receive_messages(:name => name, :price => price)
       allow(phone_number).to receive(:match) { true }
       expect { order.submit(phone_number) }.to output("Order submitted\n").to_stdout
+    end
+
+    it "should set the order as complete" do
+      order.add(dish)
+      allow(dish).to receive_messages(:name => name, :price => price)
+      allow(phone_number).to receive(:match) { true }
+      order.submit(phone_number)
+      expect(order).to be_complete
     end
 
     it "should not allow submission of empty orders" do

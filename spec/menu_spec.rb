@@ -7,10 +7,6 @@ describe Menu do
   let(:order) { double(:order) }
 
   describe "initialization" do
-    it "should initialize with an empty array of dishes" do
-      expect(menu.dishes).to be_empty
-    end
-
     it "should receive a name at initialization" do
       expect(menu.name).to eq name
     end
@@ -32,18 +28,10 @@ describe Menu do
     end
   end
 
-  describe "#new_order" do
-    it "should create an order object and save it as an instance variable" do
-      menu.new_order
-      expect(menu.current_order).not_to be_nil
-    end
-  end
-
   describe "#order" do
     before do
       menu.add_dish(dish)
       allow(dish).to receive_messages(:name => "Raw Vegan Lasagna", :price => 6)
-      menu.new_order
     end
     it "should confirm that a dish has been added to the order" do
       expect { menu.order("Raw Vegan Lasagna") }.to output("Raw Vegan Lasagna added to order\n").to_stdout

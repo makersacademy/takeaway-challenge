@@ -1,7 +1,7 @@
 require_relative "text"
 
 class Order
-  attr_reader :dishes, :text_confirmation
+  attr_reader :text_confirmation
   VALID_NUMBER = /07(\d{9})/
 
   def initialize
@@ -24,9 +24,21 @@ class Order
   end
 
   def submit(phone_number)
-    raise "Please add at least one item to your order" if dishes.empty?
-    raise "Please enter a valid UK phone number" unless phone_number.match(VALID_NUMBER)
+    submission_errors(phone_number)
     @text_confirmation = Text.new(phone_number)
     puts "Order submitted"
+    @complete = true
+  end
+
+  def complete?
+    complete
+  end
+
+  private
+  attr_reader :dishes, :complete
+
+  def submission_errors(phone_number)
+    raise "Please add at least one item to your order" if dishes.empty?
+    raise "Please enter a valid UK phone number" unless phone_number.match(VALID_NUMBER)
   end
 end
