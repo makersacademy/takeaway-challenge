@@ -1,3 +1,5 @@
+require_relative "text"
+
 class Order
   attr_reader :dishes
 
@@ -22,5 +24,7 @@ class Order
 
   def submit(phone_number)
     raise "Please add at least one item to your order" if dishes.empty?
+    display
+    puts "Order submitted"
   end
 end

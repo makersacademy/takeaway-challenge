@@ -42,7 +42,11 @@ describe Order do
   end
 
   describe "#submit" do
-    it "should create a new text message confirming the order"
+    it "should display the submitted order" do
+      order.add(dish)
+      allow(dish).to receive_messages(:name => name, :price => price)
+      expect { order.submit(phone_number) }.to output("#{name} £#{price}\nOrder total: £#{price}\nOrder submitted\n").to_stdout
+    end
 
     it "should not allow submission of empty orders" do
       expect { order.submit(phone_number) }.to raise_error "Please add at least one item to your order"

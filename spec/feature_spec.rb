@@ -12,3 +12,5 @@ menu.current_order.total
 menu.order("Sun-Dried Tomato Truffles")
 menu.order("Raw Caramel Apple Pie")
 menu.current_order.display
+menu.order("Raw Vegan Lasagna")
+menu.current_order.submit("07854692794")
