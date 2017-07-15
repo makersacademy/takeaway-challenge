@@ -8,11 +8,6 @@ class Takeaway
   end
 
   def read_menu
-    puts "Today's menu:"
-    menu.display_menu.each_pair { |key, value| puts "#{key.capitalize}: £#{value}" }
+    menu.display_menu
   end
 end
-
-takeaway = Takeaway.new
-output = takeaway.read_menu
-p output
