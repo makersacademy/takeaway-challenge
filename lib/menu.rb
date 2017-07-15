@@ -1,4 +1,3 @@
-
 class Menu
   attr_reader :dish_list
 
@@ -7,10 +6,17 @@ class Menu
   end
 
   def print_menu
-    i = 0
     dish_list.each do |dish|
-      i += 1
-      puts "#{i}. #{dish.name} - £#{dish.price}"
+      puts "- #{dish.name} - £#{dish.price}"
     end
   end
+
+  def includes?(dish_name)
+    dish_list.each do |dish|
+      return true if dish.name == dish_name
+    end
+    false
+  end
+
+
 end

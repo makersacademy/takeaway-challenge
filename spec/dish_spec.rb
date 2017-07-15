@@ -6,7 +6,6 @@ describe Dish do
   let(:name) { "Pizza" }
   let(:price) { 10 }
 
-
   it 'should have a name' do
     expect(dish.name).to eq name
   end
