@@ -15,7 +15,7 @@ describe Order do
       }
     )
   }
-  subject(:order) { described_class.new(menu)}
+  subject(:order) { described_class.new(menu) }
 
   describe '#read_menu' do
     it 'can read the menu' do
@@ -27,18 +27,28 @@ describe Order do
     end
   end
 
-  describe '#order' do
-    it 'can add to basket a specific quantity of a dish' do
-      basket = { "Cheese & Tomato" => 2 }
-      expect { order.add("Cheese & Tomato", 2) }.to change { order.basket }.to basket
+  describe '#add' do
+    it 'does not add to the basket if the dish is not on the menu' do
+      expect(order.add("Vegi Volcano", 2)).to eq "Vegi Volcano is not on the menu"
     end
 
-    context 'invalid data while adding to order' do
-      it 'does not add an item to basket if it not in the menu' do
-        message = "Vegi Volcano cannot be added to the basket as it is not on the menu\n"
-        expect { order.add("Vegi Volcano", 2) }.to output(message).to_stdout
+    context 'dish is on the menu' do
+      it 'adds the dish and the quantity to the basket' do
+        basket = { "Cheese & Tomato" => 2 }
+        expect { order.add("Cheese & Tomato", 2) }.to change { order.basket }.to basket
+      end
+
+      it 'updates the quantity of the dish in the basket' do
+        basket = { "Cheese & Tomato" => 2 }
+        order.add("Cheese & Tomato", 1)
+        expect { order.add("Cheese & Tomato", 1) }.to change { order.basket }.to basket
       end
     end
+  end
 
+  describe '#total' do
+    it 'calculates the total for the order' do
+      expect { order.add("Cheese & Tomato", 2) }.to change { order.total }.to 12
+    end
   end
 end

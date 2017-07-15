@@ -18,5 +18,6 @@ puts order.read_menu
 p order.add("Vegi Volcano", 2)
 p order.add("Vegi Sizzler", 1)
 p order.add("Tandoori Hot", 2)
-p order.add("Vegi Sizzler", 1)
+p order.add("Vegi Sizzler")
 p order.basket
+p order.total

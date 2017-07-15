@@ -2,6 +2,7 @@ class Order
   def initialize(menu)
     @menu = menu
     @basket = Hash.new(0)
+    @total = 0
   end
 
   def read_menu
@@ -12,11 +13,18 @@ class Order
     @basket.dup
   end
 
-  def add(dish_name, quantity)
-    if @menu.dishes[dish_name].nil?
-      puts "#{dish_name} cannot be added to the basket as it is not on the menu"
-      return 0
+  def total
+    @total = 0
+    @basket.each do |dish_name, quantity|
+      dish_price = @menu.dishes[dish_name]
+      @total += dish_price * quantity
     end
+    @total
+  end
+
+  def add(dish_name, quantity = 1)
+    return "#{dish_name} is not on the menu" if @menu.dishes[dish_name].nil?
     @basket[dish_name] += quantity
+    "#{quantity}x #{dish_name} added to your basket"
   end
 end
