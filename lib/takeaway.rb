@@ -1,10 +1,12 @@
 require_relative 'menu'
 
 class Takeaway
+  attr_reader :open_orders
 
   def initialize
     @menu = Menu.new
     @new_order = Order.new
+    @open_orders = []
   end
 
   def view_menu
@@ -17,7 +19,7 @@ class Takeaway
     end
     # fail "Sorry, we do not serve #{dish_and_quantity}" if not_on_menu
     @new_order.add_dish(dish_and_quantity)
-    @new_order.dishes
+    @open_orders << @new_order.dishes
   end
 
   # def not_on_menu

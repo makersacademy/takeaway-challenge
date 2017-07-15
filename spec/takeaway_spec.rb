@@ -14,6 +14,12 @@ describe Takeaway do
   #   end
   # end
 
+  it 'stores the open orders' do
+    thai.order(dish1, quantity, 2)
+    thai.order(dish2, quantity, 2)
+    expect(thai.open_orders).to eq [{ dish1 => quantity }, { dish2 => quantity }]
+  end
+
   describe '#view_menu' do
     it 'shows the list of dishes with prices' do
       expect { thai.view_menu }.to output("Green Curry: £6\nMassaman Curry: £6\nPanang Curry: £6\nPad Thai: £7\nRice: £2\nPad Pak: £3\nSingha: £4\n").to_stdout
@@ -22,16 +28,13 @@ describe Takeaway do
 
   describe '#order' do
     it 'creates the order' do
-      expect(thai.order(dish1, quantity, dish2, quantity, total)).to eq dishes
+      expect(thai.order(dish1, quantity, dish2, quantity, total)).to eq [dishes]
     end
 
     it 'raises an error if order includes a dish not on the menu' do
       expect { thai.order(dish3, quantity, 2) }.to raise_error "Sorry, we do not serve #{[dish3, quantity, 2]}"
     end
 
-    # it 'stores the open orders' do
-    #   thai.order("Green Curry", )
-    #   expect { }
   end
 
 end
