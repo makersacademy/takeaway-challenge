@@ -2,10 +2,11 @@ require_relative "dish"
 require_relative "order"
 
 class Menu
-  attr_reader :dishes, :current_order
+  attr_reader :dishes, :current_order, :name
 
-  def initialize
+  def initialize(name)
     @dishes = Array.new
+    @name = name
   end
 
   def add_dish(dish)

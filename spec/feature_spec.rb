@@ -1,7 +1,7 @@
 require "dish"
 require "menu"
 
-menu = Menu.new
+menu = Menu.new("Ravenous Rabbit's Raw Vegan Eatery")
 menu.add_dish(Dish.new("Raw Vegan Lasagna", 6))
 menu.add_dish(Dish.new("Sun-Dried Tomato Truffles", 4))
 menu.add_dish(Dish.new("Raw Caramel Apple Pie", 5))

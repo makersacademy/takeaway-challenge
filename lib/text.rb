@@ -1,14 +1,14 @@
-require "twilio-ruby"
 require "yaml"
+require "twilio-ruby"
 
 class Text
   attr_reader :number, :client, :time
-  CONFIG = YAML.load_file('config.yaml')
+  CONFIG = YAML.load_file("config.yaml")
   DELIVERY_DELAY = 3600
 
   def initialize(phone_number)
     @number = phone_number
-    @client = Twilio::REST::Client.new CONFIG['SID'], CONFIG['token']
+    @client = Twilio::REST::Client.new CONFIG["SID"], CONFIG["token"]
     @time = Time.new + DELIVERY_DELAY
   end
 
@@ -19,7 +19,7 @@ class Text
   def send
     client.messages.create(
       to: number,
-      from: CONFIG['sender'],
+      from: CONFIG["sender"],
       body: message_creator
     )
     "Message sent"

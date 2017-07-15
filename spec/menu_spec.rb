@@ -1,13 +1,18 @@
 require "menu"
 
 describe Menu do
-  subject(:menu) { described_class.new }
+  subject(:menu) { described_class.new(name) }
+  let(:name) { double(:name) }
   let(:dish) { double(:dish) }
   let(:order) { double(:order) }
 
   describe "initialization" do
     it "should initialize with an empty array of dishes" do
       expect(menu.dishes).to be_empty
+    end
+
+    it "should receive a name at initialization" do
+      expect(menu.name).to eq name
     end
   end
 
