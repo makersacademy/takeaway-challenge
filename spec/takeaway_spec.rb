@@ -7,6 +7,7 @@ describe Takeaway do
   let(:quantity) { 2 }
   let(:dish2) { "Rice" }
   let(:dish3) { "Not on menu" }
+  let(:total) { 4 }
   # describe '#initialize' do
   #   it 'has a menu' do
   #     expect(thai.menu).to eq Menu::DISHES
@@ -21,11 +22,11 @@ describe Takeaway do
 
   describe '#order' do
     it 'creates the order' do
-      expect(thai.order(dish1, quantity, dish2, quantity)).to eq dishes
+      expect(thai.order(dish1, quantity, dish2, quantity, total)).to eq dishes
     end
 
-    it 'raises an error if order does not include a dish on the menu' do
-      expect { thai.order(dish3, quantity) }.to raise_error "Sorry, we do not serve #{[dish3, quantity]}"
+    it 'raises an error if order includes a dish not on the menu' do
+      expect { thai.order(dish3, quantity, 2) }.to raise_error "Sorry, we do not serve #{[dish3, quantity, 2]}"
     end
 
     # it 'stores the open orders' do

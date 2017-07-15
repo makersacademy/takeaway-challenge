@@ -12,7 +12,7 @@ class Takeaway
   end
 
   def order(*dish_and_quantity)
-    (0...dish_and_quantity.length).step(2) do |n|
+    (0...dish_and_quantity.length -1).step(2) do |n|
       fail "Sorry, we do not serve #{dish_and_quantity}" unless @menu.dishes.key?(dish_and_quantity[n])
     end
     # fail "Sorry, we do not serve #{dish_and_quantity}" if not_on_menu
