@@ -5,7 +5,7 @@ describe Order do
   let(:dish) { double(:dish) }
   let(:name) { "Raw Vegan Lasagna" }
   let(:price) { 6 }
-  let(:phone_number) { "07854692794" }
+  let(:phone_number) { double(:string) }
 
   describe "initialization" do
     it "should initialize with an empty array of dishes" do
