@@ -1,5 +1,5 @@
 class Menu
-  # attr_reader :dishes
+  attr_reader :dishes
 
   DISHES = { "Green Curry" => 6,
              "Massaman Curry" => 6,
@@ -9,13 +9,13 @@ class Menu
              "Pad Pak" => 3,
              "Singha" => 4 }
 
-  # def initialize
-  #   @dishes = DISHES
-  # end
+  def initialize
+    @dishes = DISHES
+  end
 
   def print_menu
-    DISHES.each do |item, price|
-      puts "#{item}: £#{price}"
+    DISHES.each do |dish, price|
+      puts "#{dish}: £#{price}"
     end
   end
 
