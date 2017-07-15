@@ -1,10 +1,10 @@
 require "dish"
 require "menu"
 
-menu = Menu.new("Ravenous Rabbit's Raw Vegan Eatery")
-menu.add_dish(Dish.new("Raw Vegan Lasagna", 6))
-menu.add_dish(Dish.new("Sun-Dried Tomato Truffles", 4))
-menu.add_dish(Dish.new("Raw Caramel Apple Pie", 5))
+menu = Menu.new("Ravenous Rabbit Raw Vegan Eatery")
+menu.add_dish(Dish.new("Raw Vegan Lasagna", 6, "Main course"))
+menu.add_dish(Dish.new("Sun-Dried Tomato Truffles", 4, "Starter"))
+menu.add_dish(Dish.new("Raw Caramel Apple Pie", 5, "Dessert"))
 menu.display
 menu.order("Raw Vegan Lasagna")
 menu.current_order.total

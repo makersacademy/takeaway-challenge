@@ -2,9 +2,12 @@ require "menu"
 
 describe Menu do
   subject(:menu) { described_class.new(name) }
-  let(:name) { double(:name) }
+  let(:name) { double(:string) }
   let(:dish) { double(:dish) }
   let(:order) { double(:order) }
+  let(:dish_name) { "Raw Vegan Lasagna" }
+  let(:dish_price) { 6 }
+  let(:dish_type) { "Main course" }
 
   describe "initialization" do
     it "should receive a name at initialization" do
@@ -21,20 +24,21 @@ describe Menu do
   describe "#display" do
     before do
       2.times { menu.add_dish(dish) }
-      allow(dish).to receive_messages(:name => "Raw Vegan Lasagna", :price => 6)
+      allow(dish).to receive_messages(:name => dish_name, :price => dish_price, :type => dish_type)
     end
-    it "should print a list of the dishes it contains" do
-      expect { menu.display }.to output("Raw Vegan Lasagna £6\nRaw Vegan Lasagna £6\n").to_stdout
+
+    it "should display dishes by type" do
+      expect { menu.display }.to output("Starters:\nMain courses:\nRaw Vegan Lasagna £6\nRaw Vegan Lasagna £6\nDesserts:\n").to_stdout
     end
   end
 
   describe "#order" do
     before do
       menu.add_dish(dish)
-      allow(dish).to receive_messages(:name => "Raw Vegan Lasagna", :price => 6)
+      allow(dish).to receive_messages(:name => dish_name, :price => dish_price)
     end
     it "should confirm that a dish has been added to the order" do
-      expect { menu.order("Raw Vegan Lasagna") }.to output("Raw Vegan Lasagna added to order\n").to_stdout
+      expect { menu.order(dish_name) }.to output("Raw Vegan Lasagna added to order\n").to_stdout
     end
 
     it "should raise an error if the user tries to order a dish not on the menu" do

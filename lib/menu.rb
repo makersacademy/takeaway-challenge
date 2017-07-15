@@ -2,7 +2,8 @@ require_relative "dish"
 require_relative "order"
 
 class Menu
-  attr_reader :current_order, :name
+  attr_reader :current_order, :name, :dishes
+  DISH_TYPES = ["Starter", "Main course", "Dessert"]
 
   def initialize(name)
     @dishes = Array.new
@@ -15,9 +16,7 @@ class Menu
   end
 
   def display
-    dishes.each do |dish|
-      puts "#{dish.name} £#{dish.price}"
-    end
+    DISH_TYPES.each { |type| dish_displayer(type) }
   end
 
   def order(item)
@@ -29,5 +28,12 @@ class Menu
 
   private
   attr_reader :dishes
+
+  def dish_displayer(type)
+    puts "#{type.capitalize}s:"
+    dishes.select {|dish| dish.type == type.capitalize }.each do |dish|
+      puts "#{dish.name} £#{dish.price}"
+    end
+  end
 
 end
