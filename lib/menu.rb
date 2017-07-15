@@ -8,9 +8,9 @@ class Menu
 
   def print_menu
     i = 0
-    dish_list.each do |dish, price|
+    dish_list.each do |dish|
       i += 1
-      puts "#{i}. #{dish} - £#{price}"
+      puts "#{i}. #{dish.name} - £#{dish.price}"
     end
   end
 end
