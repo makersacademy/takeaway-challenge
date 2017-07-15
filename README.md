@@ -1,3 +1,4 @@
+
 Takeaway Challenge
 ==================
 ```
@@ -17,7 +18,7 @@ Takeaway Challenge
 
 ---
 
-#### Getting started ####
+### Getting started ###
 
 1. `git clone https://github.com/ckiteou/takeaway-challenge.git`
 2. `gem install capybara`
@@ -25,14 +26,14 @@ Takeaway Challenge
 2. Run the command `gem install bundle` (if you don't have bundle already)
 3. When the installation completes, run `bundle`
 
-#### How to run the program ####
+### How to run the program ###
 
 Run in irb:
 
 ```
 2.4.0 :001 > require './lib/takeaway-challenge'
 ```
-#### Running tests ####
+### Running tests ###
 
 `rspec`
 
@@ -59,10 +60,10 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-#### Authors ####
+### Authors ###
 **Costas Kiteou** - *Makers Academy Student* - Remote Cohort: July 2017
 
-#### Acknowledgments ####
+### Acknowledgments ###
 - Thank you to my wife for her patience and support
 - Thank you to all the members of my cohort, who have each inspired me with their advice or guidence to grow as a developer
 - Thank you Dan Le Dosquet-Bergquist for having faith in me
