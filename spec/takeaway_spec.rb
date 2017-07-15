@@ -3,19 +3,20 @@ require 'takeaway'
 describe Takeaway do
 
   subject("takeaway") { described_class.new }
+  numbers = [1]
   describe '#menu' do
 
     it 'tells the menu to print' do
-      # expect(takeaway.menu).to  unsure on this
+      expect { takeaway.menu }.to output("1: Burger, £5.50\n").to_stdout
     end
   end
 
-  # describe '#order' do
-  #
-  #   it 'accepts a number of dishes' do
-  #   this_order = 1,2,4
-  #   expect(takeaway.order(this_order)).to eq # will complete...
-  #   end
-  # end
+  describe '#new_order' do
+
+    it 'creates a new order' do
+      takeaway.new_order(numbers)
+    expect(takeaway.order).not_to be_nil
+    end
+  end
 
 end

@@ -11,4 +11,11 @@ describe Menu do
     end
   end
 
+  describe '#selection' do
+    it 'returns the ordered items' do
+      numbers = [1]
+    expect(menu.selection(numbers)).to eq [["Burger", 5.50]]
+    end
+  end
+
 end
