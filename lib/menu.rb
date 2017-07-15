@@ -23,7 +23,8 @@ class Menu
   end
 
   def order(item)
-    current_order.add(dishes.find{ |dish| dish.name == item})
+    raise "That item is not on the menu" unless dishes.map { |dish| dish.name }.include?(item)
+    current_order.add(dishes.find { |dish| dish.name == item })
     puts "#{item} added to order"
   end
 end

@@ -10,7 +10,7 @@ class Order
   end
 
   def total
-    puts "Order total: £#{dishes.map { |dish| dish.price  }.reduce(:+)}"
+    puts "Order total: £#{dishes.map { |dish| dish.price }.reduce(:+)}"
   end
 
   def display
@@ -18,5 +18,9 @@ class Order
       puts "#{dish.name} £#{dish.price}"
     end
     total
+  end
+
+  def submit(phone_number)
+    raise "Please add at least one item to your order" if dishes.empty?
   end
 end

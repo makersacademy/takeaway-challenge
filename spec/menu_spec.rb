@@ -41,7 +41,11 @@ describe Menu do
       menu.new_order
     end
     it "should confirm that a dish has been added to the order" do
-      expect{ menu.order("Raw Vegan Lasagna") }.to output("Raw Vegan Lasagna added to order\n").to_stdout
+      expect { menu.order("Raw Vegan Lasagna") }.to output("Raw Vegan Lasagna added to order\n").to_stdout
+    end
+
+    it "should raise an error if the user tries to order a dish not on the menu" do
+      expect { menu.order("Cheese Toastie") }.to raise_error "That item is not on the menu"
     end
   end
 end
