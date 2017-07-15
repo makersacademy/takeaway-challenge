@@ -15,6 +15,7 @@ class Takeaway
 
   def new_order(*numbers)
     @order = Order.new(numbers)
+    "The order total is £#{'%.02f' % @order.total}"
   end
 
 end
