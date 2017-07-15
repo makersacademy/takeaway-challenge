@@ -66,14 +66,16 @@ Design
 - dishes
 
 Takes no arguments
+
 Returns a hash of the format { key: dish_name value: dish_price }
 
 - to_s
 
 Takes no arguments
+
 Returns a formatted string with values of name, dish name, dish price ...
 
-- Design Notes
+##### Design Notes
 
 The ability to add a dish to the menu has not been implemented on purpose. This is because all user stories are from the perspective of a 'customer' wanting to place an order at which point it is a reasonable expectation that a menu already exists. Adding a dish to the menu is an action from the perspective of the 'restaurant owner / manager' and a feature that has not been asked.
 

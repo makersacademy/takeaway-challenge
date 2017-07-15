@@ -4,7 +4,7 @@ class Menu
 
   def initialize(name, *dishes)
     @name = name
-    @dishes = Hash.new(0)
+    @dishes = Hash.new
     load_dishes(dishes)
   end
 
