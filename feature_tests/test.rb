@@ -1,4 +1,4 @@
-restaurant = Takeaway.new
+# restaurant = Takeaway.new
 menu = Menu.new
 
 tacos = Dish.new("Tacos", 6)
@@ -12,9 +12,9 @@ burrito.add_to_menu(menu)
 fajitas.add_to_menu(menu)
 
 menu.list_dishes
-menu.add_to_order(tacos,3)
-menu.add_to_order(nachos,3)
-menu.add_to_order(burrito,3)
+menu.add_to_order(tacos, 3)
+menu.add_to_order(nachos, 3)
+menu.add_to_order(burrito, 3)
 
 order.view_order
 order.total_price
