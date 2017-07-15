@@ -23,6 +23,7 @@ describe Text do
       allow(text).to receive(:client) { client }
       allow(client).to receive_message_chain(:messages, :create) { double(:message) }
     end
+
     it "should send a text to the user's number" do
       expect(text.send).to eq "Message sent"
     end

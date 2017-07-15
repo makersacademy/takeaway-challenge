@@ -10,7 +10,6 @@ class Text
     @number = phone_number
     @client = Twilio::REST::Client.new CONFIG["SID"], CONFIG["token"]
     @time = Time.new + DELIVERY_DELAY
-    send
   end
 
   def message_creator

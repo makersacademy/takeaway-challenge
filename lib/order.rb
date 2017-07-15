@@ -13,7 +13,7 @@ class Order
   end
 
   def total
-    puts "Order total: £#{dishes.map { |dish| dish.price }.reduce(:+)}"
+    puts "Order total: £#{sum_dishes}"
   end
 
   def display
@@ -36,6 +36,10 @@ class Order
 
   private
   attr_reader :dishes, :complete
+
+  def sum_dishes
+    dishes.map { |dish| dish.price }.reduce(:+)
+  end
 
   def submission_errors(phone_number)
     raise "Please add at least one item to your order" if dishes.empty?
