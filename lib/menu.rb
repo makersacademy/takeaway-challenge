@@ -27,7 +27,6 @@ class Menu
   end
 
   private
-  attr_reader :dishes
 
   def dish_displayer(type)
     puts "#{type.capitalize}s:"
