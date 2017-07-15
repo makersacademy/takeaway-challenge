@@ -4,15 +4,12 @@
 
 require_relative '../lib/menu.rb'
 
-dishes = {
-  "Cheese & Tomato"   => 6.00,
-  "Mighty Meaty"      => 9.00,
-  "Pepperoni Passion" => 8.00,
-  "Tandoori Hot"      => 9.00,
-  "Vegi Sizzler"      => 8.00
-}
-
-p menu = Menu.new("Dominos", dishes)
+menu = Menu.new("Dominos",
+"Cheese & Tomato", 6,
+"Mighty Meaty", 9,
+"Pepperoni Passion", 8,
+"Tandoori Hot", 9,
+"Vegi Sizzler", 8)
 
 puts "#{menu.name} Menu"
 menu.dishes.each do |dish, price|

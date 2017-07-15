@@ -49,9 +49,15 @@ Design
 
 Creating a new instance of Menu expects two arguments
 
-|Argument |Optional?|Type                                       |
-|:-       |:-       |:-                                         |
-|name     |No       |String                                     |
-|dishes   |No       |Hash (key - dish name, value - dish price) |
+|Argument |Optional?|Type                                             |
+|:-       |:-       |:-                                               |
+|name     |No       |String                                           |
+|dishes   |No       |dish name, dish price, dish name, dish price ... |
 
 The ability to add a dish to the menu has not been implemented on purpose. This is because all user stories are from the perspective of a 'customer' wanting to place an order at which point it is a reasonable expectation that a menu already exists. Adding a dish to the menu is an action from the perspective of the 'restaurant manager' and a feature that has not been asked.
+
+Example
+
+```
+Menu.new("Dominos", "Cheese & Tomato", 6, "Mighty Meaty", 9, "Pepperoni Passion", 8, "Tandoori Hot", 9, "Vegi Sizzler", 8)
+```
