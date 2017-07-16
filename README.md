@@ -48,6 +48,6 @@ References
 
 ```
  https://github.com/bkeepers/dotenv - for keeping sensitive information safe
- https://github.com/Nandhini31/takeaway-challenge/blob/master/docs/review.md - refered stub for testing sms  
+ https://github.com/Nandhini31/takeaway-challenge/blob/master/docs/review.md -  stub for testing sms  
 
 ```
