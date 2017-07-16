@@ -32,3 +32,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 * Set up rspec files and write a test.
 * Set up feature files (a wee idea nicked from Annalaise).
+
+------------
+*progress so far*
+
+* created a menu class with a list(), implemented hash for list.
