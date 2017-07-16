@@ -13,9 +13,6 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
--------
 Instructions
 ---------
 
