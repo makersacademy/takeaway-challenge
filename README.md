@@ -37,6 +37,54 @@ TO - # Your phone number
 
 Create a twilio account and follow the instructions on twilio to get the values required for setting the ENV variables as mentioned above.
 
+Example
+
+```
+2.4.0 :001 > require './lib/menu.rb'
+ => true
+2.4.0 :002 > require './lib/order.rb'
+ => true
+2.4.0 :003 > menu = Menu.new("Dominos",
+2.4.0 :004 >     "Cheese & Tomato", 6,
+2.4.0 :005 >     "Mighty Meaty", 9,
+2.4.0 :006 >     "Pepperoni Passion", 8,
+2.4.0 :007 >     "Tandoori Hot", 9,
+2.4.0 :008 >     "Vegi Sizzler", 8)
+ => #<Menu:0x007fae59301880 @name="Dominos", @dishes={"Cheese & Tomato"=>6.0, "Mighty Meaty"=>9.0, "Pepperoni Passion"=>8.0, "Tandoori Hot"=>9.0, "Vegi Sizzler"=>8.0}>
+2.4.0 :009 > order = Order.new(menu)
+ => #<Order:0x007fae592f3668 @menu=#<Menu:0x007fae59301880 @name="Dominos", @dishes={"Cheese & Tomato"=>6.0, "Mighty Meaty"=>9.0, "Pepperoni Passion"=>8.0, "Tandoori Hot"=>9.0, "Vegi Sizzler"=>8.0}>, @basket={}, @total=0, @placed=false>
+2.4.0 :010 > puts order.read_menu
+Dominos Menu
+Cheese & Tomato                6.00
+Mighty Meaty                   9.00
+Pepperoni Passion              8.00
+Tandoori Hot                   9.00
+Vegi Sizzler                   8.00
+ => nil
+2.4.0 :011 > order.add("Vegi Volcano", 2)
+ => "Cannot add, Vegi Volcano is not on the menu"
+2.4.0 :012 > order.add("Vegi Sizzler", 1)
+ => "1x Vegi Sizzler added to your basket"
+2.4.0 :013 > order.add("Tandoori Hot", 2)
+ => "2x Tandoori Hot added to your basket"
+2.4.0 :014 > order.add("Vegi Sizzler")
+ => "1x Vegi Sizzler added to your basket"
+2.4.0 :015 > order.basket
+ => {"Vegi Sizzler"=>2, "Tandoori Hot"=>2}
+2.4.0 :016 > order.total
+ => 34.0
+2.4.0 :017 > order.checkout(30)
+ => "Incorrect amount"
+2.4.0 :018 > order.checkout(34)
+ => "Success"
+2.4.0 :019 > order.placed?
+ => true
+2.4.0 :020 > order.add("Cheese & Tomato")
+ => "Cannot add, order already placed"
+
+```
+
+
 User Stories
 -----
 
@@ -60,7 +108,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-Design
+Classes
 -----
 
 #### Menu
@@ -97,19 +145,54 @@ Returns a formatted string with values of name, dish name, dish price ...
 
 The ability to add a dish to the menu has not been implemented on purpose. This is because all user stories are from the perspective of a 'customer' wanting to place an order at which point it is a reasonable expectation that a menu already exists. Adding a dish to the menu is an action from the perspective of the 'restaurant owner / manager' and a feature that has not been asked.
 
-Example
+#### Order
 
-```
-2.4.0 :001 > require './lib/menu.rb'
- => true
-2.4.0 :002 > menu = Menu.new("Dominos", "Cheese & Tomato", 6, "Mighty Meaty", 9, "Pepperoni Passion", 8, "Tandoori Hot", 9, "Vegi Sizzler", 8)
- => #<Menu:0x007ffd5d0cc300 @name="Dominos", @dishes={"Cheese & Tomato"=>6.0, "Mighty Meaty"=>9.0, "Pepperoni Passion"=>8.0, "Tandoori Hot"=>9.0, "Vegi Sizzler"=>8.0}>
-2.4.0 :003 > puts menu
-Dominos Menu
-Cheese & Tomato                6.00
-Mighty Meaty                   9.00
-Pepperoni Passion              8.00
-Tandoori Hot                   9.00
-Vegi Sizzler                   8.00
- => nil
-```
+##### Attributes
+
+* basket:   A hash where the key is the dish name and the value is the quantity
+* total:    The total amount for the items in the basket
+
+##### Methods
+
+* new
+
+|Argument |Optional?|Type                                             |
+|:-       |:-       |:-                                               |
+|menu     |No       |Menu                                             |
+
+* read_menu
+
+Reads the menu by calling to_s method of menu
+
+* placed?
+
+True / False - Tells if the order has been placed
+
+* add
+
+|Argument       |Optional?|Type                                        |
+|:-             |:-       |:-                                          |
+|dish_name      |No       |String                                      |
+|quantity       |Yes      |Number, Default 1                           |
+
+Before adding it checks that the order has not already been placed, and that the item is on the menu. It updates the basket and calls the method that updates the total. It returns a message.
+
+* checkout
+
+|Argument       |Optional?|Type                                       |
+|:-             |:-       |:-                                         |
+|amount         |No       |Number                                     |
+
+Before checking out it checks that the basket isn't empty, and that the amount is correct. It calls the method that sends a text message indicating a delivery time of 1 hour.
+
+#### Messenger
+
+##### Methods
+
+* send_message
+
+|Argument       |Optional?|Type                                        |
+|:-             |:-       |:-                                          |
+|text           |No       |String                                      |
+
+Using the twilio gem it sends the text
