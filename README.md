@@ -42,8 +42,11 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 Method Syntax
 ---------
+
+```
 takeaway = Takeaway.new
 takeaway.print_menu
 takeaway.order(item, amount)
 takeaway.basket
 takeaway.checkout(amount)
+```
