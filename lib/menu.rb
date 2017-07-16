@@ -7,7 +7,12 @@ class Menu
   end
 
   def print_menu
-    dishes.map { |name, price| "#{name.capitalize} £#{price}" }
+    puts "------MENU------"
+    puts "----------------"
+    puts dishes.map { |name, price| "#{name.capitalize} £#{price}" }
   end
 
+  def dish_included?(name)
+    dishes.has_key?(name.capitalize)
+  end
 end

@@ -1,12 +1,14 @@
 require_relative 'menu'
+require_relative 'message'
 
 class Order
 
-  attr_reader :menu, :ordered_dishes
+  attr_reader :menu, :basket
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, message = Message.new)
     @menu = menu
-    @ordered_dishes = Hash.new
+    @basket = Hash.new
+    @message = message
   end
 
   def read_menu
@@ -14,11 +16,21 @@ class Order
   end
 
   def order_dish(name, quantity)
-    ordered_dishes[name] = quantity
+    raise "Sorry, this dish is not included in the menu" unless menu.dish_included?(name)
+    @basket[name] = quantity
+    puts "#{name.capitalize} added to your basket"
+    @basket
   end
 
   def total_amount
-    total = ordered_dishes.map { |name, quantity| menu.dishes[name] * quantity }
+    total = @basket.map { |name, quantity| menu.dishes[name] * quantity }
     total.inject(0) { |sum, amount| sum + amount }
   end
+
+  def checkout(amount)
+    raise "Incorrect amount" unless amount == total_amount
+    puts "Thank you for your order!"
+    @message.send_message
+  end
+
 end
