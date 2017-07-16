@@ -3,11 +3,11 @@ class Menu
 
   def initialize
     @dishes = {
-      :salad => 5,
-      :soup => 3,
-      :juice => 2,
-      :burger => 7,
-      :pasta => 6
+      "salad" => 5,
+      "soup" => 3,
+      "juice" => 2,
+      "burger" => 7,
+      "pasta" => 6
      }
   end
 
