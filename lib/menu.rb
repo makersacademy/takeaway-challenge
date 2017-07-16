@@ -2,7 +2,11 @@ require_relative 'order'
 
 class Menu
 
-  attr_reader :order
+  attr_reader :order, :dish
+
+  def initialize
+
+  end
 
   def print_menu
     puts " \/\/\/\/\/\/\/\/\/ ".center(30)
@@ -27,7 +31,9 @@ class Menu
   end
 
   def place_order (dish)
-    @order = dish #attribute
+    @dish = dish
+    @order = Order.new(dish)  #attribute
+
   end
 
 

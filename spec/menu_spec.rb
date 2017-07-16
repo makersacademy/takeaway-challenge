@@ -20,7 +20,7 @@ describe Menu do
   it "saves a new order" do
     new_order = { "Pie n Mash" => 2 }
     menu.place_order(new_order)
-    expect(menu.order).to eq new_order
+    expect(menu.dish).to eq new_order
   end
 
 
