@@ -2,6 +2,10 @@
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
 
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+
 require_relative '../lib/menu.rb'
 require_relative '../lib/order.rb'
 
@@ -21,3 +25,7 @@ p order.add("Tandoori Hot", 2)
 p order.add("Vegi Sizzler")
 p order.basket
 p order.total
+p order.checkout(30)
+p order.checkout(34)
+p order.placed?
+p order.add("Cheese & Tomato")

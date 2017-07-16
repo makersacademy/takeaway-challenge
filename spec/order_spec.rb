@@ -17,6 +17,20 @@ describe Order do
   }
   subject(:order) { described_class.new(menu) }
 
+  describe 'initialization' do
+    it 'has an empty basket' do
+      expect(order.basket).to be_empty
+    end
+
+    it 'has an order total of zero' do
+      expect(order.total).to be_zero
+    end
+
+    it 'has not been placed' do
+      expect(order).not_to be_placed
+    end
+  end
+
   describe '#read_menu' do
     it 'can read the menu' do
       menu = double(:menu, name: "Dominos", dishes: { "Cheese & Tomato" => 6 })
@@ -28,8 +42,14 @@ describe Order do
   end
 
   describe '#add' do
+    it 'does not add to the basket if the order has already been placed' do
+      order.add("Cheese & Tomato", 2)
+      order.checkout(12)
+      expect(order.add("Vegi Sizzler",1)).to eq "Cannot add, order already placed"
+    end
+
     it 'does not add to the basket if the dish is not on the menu' do
-      expect(order.add("Vegi Volcano", 2)).to eq "Vegi Volcano is not on the menu"
+      expect(order.add("Vegi Volcano", 2)).to eq "Cannot add, Vegi Volcano is not on the menu"
     end
 
     context 'dish is on the menu' do
@@ -49,6 +69,19 @@ describe Order do
   describe '#total' do
     it 'calculates the total for the order' do
       expect { order.add("Cheese & Tomato", 2) }.to change { order.total }.to 12
+    end
+  end
+
+  describe '#checkout' do
+    it 'does not checkout if the amount is incorrect' do
+      order.add("Cheese & Tomato", 2)
+      expect(order.checkout(10)).to eq "Incorrect amount"
+    end
+
+    it 'checksout the order if the amount is correct' do
+      order.add("Cheese & Tomato", 2)
+      order.checkout(12)
+      expect(order).to be_placed
     end
   end
 end
