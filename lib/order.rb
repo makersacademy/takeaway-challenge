@@ -15,6 +15,7 @@ class Order
     temp_sum = @ordered_items.map{|k,v| v * @menu_items[k] if @menu_items.key? k }.compact
     order_total = temp_sum.inject(0, :+)
   end
+
   
 
 end
