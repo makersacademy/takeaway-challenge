@@ -1,36 +1,19 @@
-require_relative 'dish.rb'
-
-DISHES = {  "Spaghetti bologneise" => 2.99,
-            "Scrambled eggs" => 5
-         }
+require_relative '../data/dishes.rb'
 
 class Menu
-  def initialize(dish_class = Dish)
-    @dish_class = dish_class
-    @dishes = []
-    load_dishes
+
+  attr_reader :dishes
+
+  def initialize(dishes = DISHES)
+    @dishes = dishes
   end
 
-  def to_string
-    dishes.map.with_index { |dish, index| "#{index + 1}. #{dish.name}, Price = #{dish.price}" }.join("\n")
+  def to_s
+    dishes.map { |dish, price| "#{dish}, price = £#{price}" }.join("\n")
   end
 
-  def choose(dish)
-    dishes[dish-1]
+  def include?(dish)
+    dishes.keys.include?(dish)
   end
 
-  def length
-    @dishes.length
-  end
-
-  private
-
-  attr_reader :dishes, :dish_class
-
-  def load_dishes
-    # add load from file
-    DISHES.each do |name, price|
-      @dishes << @dish_class.new(name, price)
-    end
-  end
 end
