@@ -1,3 +1,5 @@
+require_relative 'messenger'
+
 class Order
 
   attr_reader :total
@@ -29,8 +31,10 @@ class Order
   end
 
   def checkout(amount)
+    return "Cannot checkout, basket is empty" if @basket.empty?
     return "Incorrect amount" unless amount == total
     complete_order
+    send_text_message
   end
 
   private
@@ -48,4 +52,9 @@ class Order
     @placed = true
   end
 
+  def send_text_message
+    time = Time.new + 60 * 60
+    text = "Thank you! Your order will be delivered before #{time.hour}:#{time.min}"
+    Messenger.new.send_message(text)
+  end
 end

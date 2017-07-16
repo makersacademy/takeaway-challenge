@@ -42,7 +42,9 @@ describe Order do
   end
 
   describe '#add' do
+
     it 'does not add to the basket if the order has already been placed' do
+      allow(order).to receive(:send_text_message).and_return("Success")
       order.add("Cheese & Tomato", 2)
       order.checkout(12)
       expect(order.add("Vegi Sizzler", 1)).to eq "Cannot add, order already placed"
@@ -52,7 +54,7 @@ describe Order do
       expect(order.add("Vegi Volcano", 2)).to eq "Cannot add, Vegi Volcano is not on the menu"
     end
 
-    context 'dish is on the menu' do
+    context 'dish added successfully to the basket' do
       it 'adds the dish and the quantity to the basket' do
         basket = { "Cheese & Tomato" => 2 }
         expect { order.add("Cheese & Tomato", 2) }.to change { order.basket }.to basket
@@ -63,25 +65,37 @@ describe Order do
         order.add("Cheese & Tomato", 1)
         expect { order.add("Cheese & Tomato", 1) }.to change { order.basket }.to basket
       end
-    end
-  end
 
-  describe '#total' do
-    it 'calculates the total for the order' do
-      expect { order.add("Cheese & Tomato", 2) }.to change { order.total }.to 12
+      it 'updates the total for the order' do
+        expect { order.add("Cheese & Tomato", 2) }.to change { order.total }.to 12
+      end
     end
   end
 
   describe '#checkout' do
-    it 'does not checkout if the amount is incorrect' do
-      order.add("Cheese & Tomato", 2)
-      expect(order.checkout(10)).to eq "Incorrect amount"
+
+    it 'does not checkout if the basket is empty' do
+      expect(order.checkout(0)).to eq "Cannot checkout, basket is empty"
     end
 
-    it 'checksout the order if the amount is correct' do
-      order.add("Cheese & Tomato", 2)
-      order.checkout(12)
-      expect(order).to be_placed
+    context 'basket is not empty' do
+      before do
+        order.add("Cheese & Tomato", 2)
+        allow(order).to receive(:send_text_message).and_return("Success")
+      end
+
+      it 'does not checkout if the amount is incorrect' do
+        expect(order.checkout(10)).to eq "Incorrect amount"
+      end
+
+      it 'places the order if the amount is correct' do
+        order.checkout(12)
+        expect(order).to be_placed
+      end
+
+      it 'sends a confirmation text' do
+        expect(order.checkout(12)).to eq "Success"
+      end
     end
   end
 end
