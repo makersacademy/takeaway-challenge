@@ -1,20 +1,27 @@
 require 'dish_list'
 
 class Order
-  def initialize(list = DishList.new)
-    @list_data = list.data
+  attr_reader :total
+
+  def initialize(data)
+    raise "Not enough data to create order" unless data[:order]
+    @list = data[:list] || DishList.new
+    @order_data = data[:order]
     @total = 0
-    @order_data = Hash.new
+    update_total
   end
 
-  def make(order)
-    @order_data = order
+  private
+
+  def order_data
+    @order_data
   end
 
-  def total
-    @order_data.each do |k,v|
-      @total += @list_data[k] * v
-    end
-    @total
+  def list_data
+    @list.data
+  end
+
+  def update_total
+    order_data.each { |k,v| @total += list_data[k] * v }
   end
 end
