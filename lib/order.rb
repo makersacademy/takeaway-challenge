@@ -1,16 +1,14 @@
 class Order
 
-  def initialize(takeawaymenu)
-    @takeawaymenu = takeawaymenu
+  def initialize
+    @basket = []
   end
 
-  def order
-    puts "Which item?"
-    item_check(gets)
+  def order(item, amount)
   end
 
   def basket
-
+    @basket
   end
 
   def checkout
@@ -18,9 +16,5 @@ class Order
   end
 
 private
-
-  def item_check(item)
-    @takeawaymenu.has_key?(item.capitalize.chomp.to_sym)
-  end
 
 end

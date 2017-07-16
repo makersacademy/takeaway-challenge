@@ -4,12 +4,13 @@ class Takeaway
 
   attr_reader :menu
 
-  def initialize
+  def initialize(order = Order.new)
     @menu = { Margarita: 6.50, Moscow_Mule: 7.15, Gin_and_tonic: 6.00,
               Mojito: 6.79, Daiquiri: 8.21, Old_fashioned: 7.46,
               Bloody_Mary: 6.10, Cosmopolitan: 8.00, Negroni: 6.50,
               Caipirinha: 9, Piña_Colada: 7.60, Gimlet: 6.15,
               Sex_on_the_Beach: 9, White_Russian: 7.80, Aperol_Spritz: 7 }
+    @order = order
   end
 
   def print_menu
@@ -18,8 +19,9 @@ class Takeaway
     puts
   end
 
-  def order(order = Order.new(self.menu))
-    order.order
+  def order(item, amount)
+    raise "Item unavailable" unless item_check(item)
+    @order.order(item, amount)
   end
 
   def basket
@@ -31,6 +33,10 @@ class Takeaway
   end
 
 private
+
+  def item_check(item)
+    @menu.has_key?(item.capitalize.to_sym)
+  end
 
   def print_logo
     puts '     ______           __   __        _ __   __        __                                   __ '.ljust(100)

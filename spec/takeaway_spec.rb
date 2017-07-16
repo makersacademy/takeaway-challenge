@@ -1,9 +1,11 @@
 require "takeaway"
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new }
-    let(:order) { double(:order) }
-    let(:menu) { @menu }
+  subject(:takeaway) { described_class.new(orderdouble) }
+    let(:orderdouble) { double(:order, order: nil) }
+    let(:sampleorder) { 'Gimlet' }
+    let(:errororder) { 'Banana' }
+    let(:sampleamount) { 1 }
 
   describe "#menu" do
     it "responds to #menu method" do
@@ -13,8 +15,12 @@ describe Takeaway do
 
   describe "#order" do
     it "delegates to the order object" do
-      expect(order).to receive(:order)
-      subject.order(order)
+      expect(orderdouble).to receive(:order)
+      subject.order(sampleorder, sampleamount)
+    end
+
+    it "raises an error if item doesn't exist is menu" do
+      expect { takeaway.order(errororder, sampleamount) }.to raise_error "Item unavailable"
     end
   end
 
