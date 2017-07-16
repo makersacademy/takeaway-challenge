@@ -11,11 +11,8 @@ class Menu
     end
   end
 
-  def includes?(dish_name)
-    dish_list.each do |dish|
-      return true if dish.name == dish_name
-    end
-    false
+  def includes?(query_dish)
+    dish_list.include?(query_dish)
   end
 
 
