@@ -1,32 +1,33 @@
-require 'order'
+require_relative 'order'
 
 class Takeaway
 
-  def initialize(order_manager = Order.new)
+  attr_reader :menu
+
+  def initialize
     @menu = { Margarita: 6.50, Moscow_Mule: 7.15, Gin_and_tonic: 6.00,
               Mojito: 6.79, Daiquiri: 8.21, Old_fashioned: 7.46,
               Bloody_Mary: 6.10, Cosmopolitan: 8.00, Negroni: 6.50,
               Caipirinha: 9, Piña_Colada: 7.60, Gimlet: 6.15,
               Sex_on_the_Beach: 9, White_Russian: 7.80, Aperol_Spritz: 7 }
-    @order_manager = order_manager
   end
 
-  def menu
+  def print_menu
     print_logo
-    @menu.each { |key, value| puts "#{key}: ".rjust(50) + "£%.2f" % "#{value}".ljust(10) }
+    @menu.each { |key, value| puts "#{key}: ".rjust(45) + "£%.2f" % "#{value}".ljust(10) }
     puts
   end
 
-  def order
-
+  def order(order = Order.new(self.menu))
+    order.order
   end
 
   def basket
-    
+    @order_manager.basket
   end
 
   def checkout
-
+    @order_manager.checkout
   end
 
 private

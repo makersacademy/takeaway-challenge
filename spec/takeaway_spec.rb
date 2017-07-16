@@ -2,6 +2,8 @@ require "takeaway"
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
+    let(:order) { double(:order) }
+    let(:menu) { @menu }
 
   describe "#menu" do
     it "responds to #menu method" do
@@ -10,8 +12,9 @@ describe Takeaway do
   end
 
   describe "#order" do
-    it "responds to #order method" do
-      expect(takeaway).to respond_to(:order)
+    it "delegates to the order object" do
+      expect(order).to receive(:order)
+      subject.order(order)
     end
   end
 
