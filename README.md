@@ -47,6 +47,7 @@ TO=[CUSTOMER Phone number]
 References
 
 ```
- https://github.com/bkeepers/dotenv 
+ https://github.com/bkeepers/dotenv - for keeping sensitive information safe
+ https://github.com/Nandhini31/takeaway-challenge/blob/master/docs/review.md - refer stub for send-sms  
 
 ```
