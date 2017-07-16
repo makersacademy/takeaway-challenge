@@ -45,15 +45,18 @@ menu = [
                                  { name: 'capricciosa', price: 9 },
                                  { name: 'meatylicious', price: 9 },
                                  { name: 'vegetarian', price: 8 },
-                                 { name: 'hawaiian', price: 7 }] },
+                                 { name: 'hawaiian', price: 7 }]
+     },
    { category: 'drinks', items: [{ name: 'coke', price: 2 },
                                  { name: 'lemonade', price: 2 },
-                                 { name: 'ginger beer', price: 2 }
-                                 { name: 'orange juice', price: 2.5 }
-                                 { name: 'water', price: 1 }] }
+                                 { name: 'ginger beer', price: 2 },
+                                 { name: 'orange juice', price: 2.5 },
+                                 { name: 'water', price: 1 }]
+     },
    { category: 'dips',   items: [{ name: 'ketchup', price: 0.5 },
                                  { name: 'mayo', price: 0.5 },
-                                 { name: 'brown sauce', price: 0.5 }
+                                 { name: 'brown sauce', price: 0.5 }]
+     }
  ]
 
 pizza_place = Restaurant.new(menu)
