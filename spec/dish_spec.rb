@@ -1,9 +1,16 @@
 require 'dish'
 
 describe Dish do
-  let(:name) { 'Cheeseburger' }
+  let(:id)    { 'CH' }
+  let(:name)  { 'Cheeseburger' }
   let(:price) { 42 }
-  subject(:dish) { described_class.new(name: name, price: price) }
+  subject(:dish) { described_class.new(name: name, price: price, id: id) }
+
+  describe '#ID' do
+    it 'is expected to return dish ID' do
+      expect(dish.id).to eq id
+    end
+  end
 
   describe '#name' do
     it 'is expected to return name' do
