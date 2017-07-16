@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :dishes, :list_dishes
+  attr_reader :dishes
 
   def initialize
     @dishes = { "Burrito" => 8,
@@ -8,14 +8,14 @@ class Menu
                 "Tacos" => 5 }
   end
 
-  def read_menu
+  def print_dishes
     print_each_dish
   end
 
 private
 
   def print_each_dish
-    @dishes.each { |name,price| puts "#{name} - £#{price}" }
+    @dishes.each { |name, price| puts "#{name} - £#{price}" }
   end
 
 end
