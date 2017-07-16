@@ -1,6 +1,7 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+# require 'fake_sms'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
@@ -16,3 +17,15 @@ RSpec.configure do |config|
     puts "\e[33mTry it now! Just run: rubocop\e[0m"
   end
 end
+
+# RSpec.configure do |config|
+#   config.before(:each) do
+#     stub_const("Twilio::REST::Client", FakeSms)
+#   end
+# end
+#
+# RSpec.configure do |config|
+#   config.before :each, type: :feature do
+#     FakeSMS.messages = []
+#   end
+# end

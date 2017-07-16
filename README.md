@@ -14,23 +14,42 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Overview
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Software to control ordering at a takeaway. Customers can view a menu and place an order by listing the items with quantities and a total. The order is confirmed by text message with an estimated time of arrival.
 
-Task
------
+Getting started
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+1. `git clone https://github.com/BDCraven/takeaway-challenge`
+2. Run the command `gem install bundle` (if you don't have bundle already)
+3. When the installation completes, run `bundle`
+
+Usage
+
+`irb`
+
+Commands
+* Create new takeaway with Takeaway.new
+
+* .view_menu
+
+* .order("dish", quantity, total dishes)
+
+* .open_orders
+
+See irb example below.
+
+
+Running tests
+
+`rspec`
+```
 
 ```
+User Stories
+---------
+
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -46,34 +65,94 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+```
 
 
-In code review we'll be hoping to see:
+Approach to the challenge
+---------
+* Considered the user stories and separated nouns into objects and verbs into messages. Compiled short diagrams to explore the interactions between the objects.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+* Started with the first user story and worked down consecutively.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+* For each user story, prepared feature tests to determine the wording for the unit test. Watched the test fail and then wrote code to make it pass.
 
-Notes on Test Coverage
-------------------
+* For the implementation of user story 4 the code to implement the Twilio gem was written first as it was not clear how to test a third party API using Rspec.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+* Sensitive Twilio account information has been stored in environment variables. Tried to use Figaro gem to store the variables in a file but was unable to run it. Environment variables currently have to be populated manually with export
+
+ * TWILIO_PHONE= Twilio number
+ * TWILIO_ACCOUNT_SID= Twilio account
+ * TWILIO_AUTH_TOKEN= Twilio token
+ * TWILIO_TO= Twilio recipient
+
+
+* Attempted to set up a fake API sms file which would store the messages but was unable to get the messages variable to store anything.
+
+* Decided to test Twilio using VCR gem but ran out of time.
+
+
+```
+
+```
+
+
+Issues
+---------
+
+* Insufficient stubs in RSpec means a text message is sent for multiple tests when running rspec.
+
+* The value of the order is not calculated so bill is not returned.
+
+* Customer is not recorded so order is not referenced to a customer.
+
+* No ability to input customer phone number.
+
+* No ability to mark open order as complete.
+
+irb example  
+-------
+2.4.0 :003 > require './lib/takeaway.rb'
+=> true
+
+2.4.0 :004 > require './lib/menu.rb'
+ => false
+
+2.4.0 :005 > require './lib/order.rb'
+ => true
+
+2.4.0 :006 > require './lib/sms_confirmation.rb'
+ => false
+
+2.4.0 :007 > thai = Takeaway.new
+ => #<Takeaway:0x007f8432a2c4d0 @menu=#<Menu:0x007f8432a2c458 @dishes={"Green Curry"=>6, "Massaman Curry"=>6, "Panang Curry"=>6, "Pad Thai"=>7, "Rice"=>2, "Pad Pak"=>3, "Singha"=>4}>, @new_order=#<Order:0x007f8432a2c430 @dishes={}>, @open_orders=[]>
+
+2.4.0 :008 > thai.view_menu
+Green Curry: £6
+Massaman Curry: £6
+Panang Curry: £6
+Pad Thai: £7
+Rice: £2
+Pad Pak: £3
+Singha: £4
+ => {"Green Curry"=>6, "Massaman Curry"=>6, "Panang Curry"=>6, "Pad Thai"=>7, "Rice"=>2, "Pad Pak"=>3, "Singha"=>4}
+
+2.4.0 :009 > thai.order("Green Curry", 2, 2)
+Sent message to customer
+ => [{"Green Curry"=>2}]
+
+2.4.0 :010 > thai.order("Rice", 1, 2)
+RuntimeError: The total of 2 does not appear to match the sum of dishes ordered.
+
+2.4.0 :011 > thai.order("Green Curry", 2, "Rice", 2, 4)
+Sent message to customer
+ => [{"Green Curry"=>2}, {"Green Curry"=>2, "Rice"=>2}]
+
+2.4.0 :013 > thai.open_orders
+ => [{"Green Curry"=>2}, {"Green Curry"=>2, "Rice"=>2}]
+
+2.4.0 :014 > thai.order("Fish", 1, "Chips", 1, 2)
+RuntimeError: Sorry, we do not serve ["Fish", 1, "Chips", 1, 2]
