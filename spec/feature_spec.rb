@@ -1,15 +1,11 @@
+=begin
 require 'menu' # for some reason this is raising a LoadError
-              
+
 
 menu = Menu.new(dish, price)
 p menu("Tonkotsu", 10)
 
 
-
-
-
-
-=begin
 
 class Menu
 
