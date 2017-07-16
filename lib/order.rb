@@ -5,13 +5,15 @@ class Order
   end
 
   def order(item, amount)
+    amount.times { @basket << item }
+    puts "Added #{amount} #{item} to your order"
   end
 
   def basket
     @basket
   end
 
-  def checkout
+  def checkout(amount)
 
   end
 

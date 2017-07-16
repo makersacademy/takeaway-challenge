@@ -21,15 +21,15 @@ class Takeaway
 
   def order(item, amount)
     raise "Item unavailable" unless item_check(item)
-    @order.order(item, amount)
+    @order.order(item.capitalize, amount)
   end
 
   def basket
-    @order_manager.basket
+    @order.basket
   end
 
   def checkout
-    @order_manager.checkout
+    @order.checkout
   end
 
 private
