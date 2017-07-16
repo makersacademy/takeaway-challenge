@@ -45,7 +45,7 @@ describe Order do
     it 'does not add to the basket if the order has already been placed' do
       order.add("Cheese & Tomato", 2)
       order.checkout(12)
-      expect(order.add("Vegi Sizzler",1)).to eq "Cannot add, order already placed"
+      expect(order.add("Vegi Sizzler", 1)).to eq "Cannot add, order already placed"
     end
 
     it 'does not add to the basket if the dish is not on the menu' do
