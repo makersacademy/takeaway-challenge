@@ -3,6 +3,10 @@ require_relative '../lib/menu'
 
 takeaway = Takeaway.new()
 
+takeaway.menu
+
+takeaway.new_order(1, 2, 2, 3, 3, 4, 4, 4)
+
 takeaway.breakdown
 
-#takeaway.confirm
+takeaway.confirm(mobile_number)

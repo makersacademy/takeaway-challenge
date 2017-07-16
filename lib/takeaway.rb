@@ -27,7 +27,9 @@ class Takeaway
   end
 
   def confirm(mobile)
+    fail "Order empty" unless @order
     SMS.new(mobile).send_sms
+    @order = nil
   end
 
 end

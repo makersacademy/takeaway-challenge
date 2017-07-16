@@ -4,6 +4,7 @@ describe Takeaway do
 
   subject("takeaway") { described_class.new(order) }
   let(:order) { 'order' }
+  let(:mobile_number) { '+447723456789' }
 
   describe '#menu' do
 
@@ -36,7 +37,15 @@ describe Takeaway do
 
   describe '#confirm' do
 
-    it { is_expected.to respond_to :confirm }
+    it 'returns an error if no order is placed' do
+      expect { Takeaway.new.confirm(mobile_number) }.to raise_error "Order empty"
+    end
+
+    it 'changes order to nil' do
+      takeaway.new_order(1)
+      takeaway.confirm(mobile_number)
+      expect(takeaway.order).to be_nil
+    end
   end
 
 end

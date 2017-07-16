@@ -12,16 +12,16 @@ class SMS
     @client.messages.create(
       from: @sender,
       to: @customer,
-      body: "Hi! Your order has been place and will be delivered before #{time.hour + 1}:#{time.min}."
+      body: "Hi! Your order has been place and will be delivered before #{time}."
     )
 
-    puts "Sent message to #{@customer}"
+    puts "Order placed!  Confirmation sent to 0#{@customer.to_s[2..-1]}"
   end
 
   private
 
   def time
-    Time.new
+    (Time.new + (60 * 60)).strftime("%H:%M")
   end
 
 end
