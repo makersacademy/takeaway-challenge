@@ -1,4 +1,5 @@
 module Menu
+  
   BURGERS = {
   :flamino_burger => 8.45,
   :the_original_burger => 7.45,
@@ -8,6 +9,6 @@ module Menu
   :inferno_tower => 8.45,
   :mario_burger => 8.95,
   :naked_chicken_burger => 7.95
-  }
+}
 
 end
