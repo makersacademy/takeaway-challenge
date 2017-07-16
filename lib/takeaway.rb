@@ -28,8 +28,8 @@ class Takeaway
 
   def basket
     raise "Basket is empty!" if @order.basket.empty?
-    @order.basket
     puts "Total value in basket: £#{calculate_total}"
+    @order.basket
   end
 
   def checkout(amount)

@@ -2,7 +2,7 @@ require "takeaway"
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(orderdouble) }
-    let(:orderdouble) { double(:order, order: nil, basket: []) }
+    let(:orderdouble) { double(:order, order: [nil], basket: []) }
     let(:sampleorder) { 'Gimlet' }
     let(:errororder) { 'Banana' }
     let(:sampleamount) { 1 }
@@ -30,7 +30,8 @@ describe Takeaway do
 
   describe "#basket" do
     it "responds to #basket method" do
-      expect(takeaway).to respond_to(:basket)
+      allow(orderdouble).to receive(:basket) { ['gimlet'] }
+      expect(takeaway.basket).to eq ["gimlet"]
     end
 
     it "delegates to the order object" do
@@ -38,7 +39,7 @@ describe Takeaway do
       expect(takeaway).to respond_to(:basket)
     end
 
-    it "aises an error if the basket is empty" do
+    it "raises an error if the basket is empty" do
       expect(orderdouble).to receive(:basket)
         expect { takeaway.basket }.to raise_error "Basket is empty!"
     end
