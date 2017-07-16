@@ -10,7 +10,7 @@ class DishList
   end
 
   def show
-    list.each { |item| puts "#{item.name} - #{item.price}" }
+    list.each { |item| puts "#{item.name}".ljust(25,'.') + " £#{item.price}" }
     list.dup
   end
 
