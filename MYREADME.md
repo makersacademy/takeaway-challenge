@@ -39,3 +39,5 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * created a menu class with a list(), implemented hash for list.
 * removed list() and replaced with menu. More fancy dish names and prices implemented. As well as print_menu().
 * create a new order().
+* create a fakeOrder to help save time! and keep accuracy during testing.
+* create a test in Order class that stores a new_order and returns the total payment price.

@@ -4,6 +4,7 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
+  fakeOrder = [{ "Pie n Mash" => 2 }, 10.50] 
 
   it "has a list of dish types" do
     expect{ menu.print_menu }.to output(menu.print_menu).to_stdout
@@ -17,10 +18,9 @@ describe Menu do
     expect(menu).to respond_to :place_order
   end
 
-  it "saves a new order" do
-    new_order = { "Pie n Mash" => 2 }
-    menu.place_order(new_order)
-    expect(menu.dish).to eq new_order
+  it "create a new order" do
+    menu.place_order(fakeOrder)
+    expect(menu.new_order.dish).to eq ({ "Pie n Mash" => 2 })
   end
 
 
