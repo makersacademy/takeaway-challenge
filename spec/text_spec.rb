@@ -2,7 +2,6 @@ require "text"
 
 describe Text do
   let(:phone_number) { double(:string) }
-  let(:client) { double(:client) }
   let(:time) { Time.new + Text::DELIVERY_DELAY }
   subject(:text) { described_class.new(phone_number) }
 
@@ -19,13 +18,11 @@ describe Text do
   end
 
   describe "#send" do
-    before do
-      allow(text).to receive(:client) { client }
-      allow(client).to receive_message_chain(:messages, :create) { double(:message) }
-    end
-
-    it "should send a text to the user's number" do
-      expect(text.send).to eq "Message sent"
+    it"should send a text to the user's number" do
+      response = VCR.use_cassette('twilio') do
+        text.send
+      end
+      expect(response.body).to eq "Thank you! Your order was placed and will be delivered by 13:22"
     end
   end
 end

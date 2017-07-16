@@ -22,6 +22,5 @@ class Text
       from: CONFIG["sender"],
       body: message_creator
     )
-    "Message sent"
   end
 end

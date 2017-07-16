@@ -26,8 +26,7 @@ class Order
   def submit(phone_number)
     submission_errors(phone_number)
     @text_confirmation = Text.new(phone_number)
-    puts "Order submitted"
-    @complete = true
+    end_order
   end
 
   def complete?
@@ -44,5 +43,10 @@ class Order
   def submission_errors(phone_number)
     raise "Please add at least one item to your order" if dishes.empty?
     raise "Please enter a valid UK phone number" unless phone_number.match(VALID_NUMBER)
+  end
+
+  def end_order
+    puts "Order submitted"
+    @complete = true
   end
 end

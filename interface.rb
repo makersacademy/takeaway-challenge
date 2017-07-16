@@ -41,7 +41,7 @@ class Interface
   end
 
   def process(input)
-    menu.order(input)
+    menu.order(input) unless input == "finish"
   end
 
   def order
@@ -76,6 +76,3 @@ class Interface
     order
   end
 end
-
-interface = Interface.new
-interface.user_welcome
