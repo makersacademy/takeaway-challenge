@@ -20,8 +20,8 @@ Instructions
 * The project's functionality is demonstrated in the last feature spec found in feature specs folder takeaway-challenge/feature_spec
 
 * Sending text message has been stubbed out and hence the following lines of code will not run via rspec
-messenger.rb lines 15-16
-order.rb lines 56-58
+- messenger.rb lines 15-16
+- order.rb lines 56-58
 
 To check that test coverage is 100% comment one of the occurrences of the following line in order_spec.
 
@@ -30,10 +30,10 @@ allow(order).to receive(:send_text_message).and_return("Success")
 ```
 
 * The following environment variables have to be set up in order to be able to send the text message
-ACCOUNT_SID - # Account SID from www.twilio.com/console
-AUTH_TOKEN - # Auth Token from www.twilio.com/console
-FROM - # Your Twilio number
-TO - # Your phone number
+- ACCOUNT_SID - # Account SID from www.twilio.com/console
+- AUTH_TOKEN - # Auth Token from www.twilio.com/console
+- FROM - # Your Twilio number
+- TO - # Your phone number
 
 Create a twilio account and follow the instructions on twilio to get the values required for setting the ENV variables as mentioned above.
 
