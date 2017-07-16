@@ -1,0 +1,8 @@
+
+expect menu to respond to place_order
+
+we want to save an order.
+
+new_order = { pie n mash x 2 }
+menu.placed_order(new_order)
+expect(menu.order).to eq new_order
