@@ -23,12 +23,12 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 
-my attempt at a domain map:
+* My attempt at a domain map:
 
 ![20170716_120320](https://user-images.githubusercontent.com/25685164/28247002-a07ecdbe-6a1f-11e7-9798-d2b6a638f160.jpg)
 
 ------------
 *test files and feature files*
 
-set up rspec files and write a test
-set up feature files (a wee idea nicked from Annalaise)
+* Set up rspec files and write a test.
+* Set up feature files (a wee idea nicked from Annalaise).
