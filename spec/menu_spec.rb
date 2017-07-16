@@ -9,7 +9,7 @@ describe Menu do
       expect(menu.dishes.count).to eq 1
     end
 
-    it 'should not be empty and should be a kind of Hash' do
+    it 'should not be empty and should a Hash' do
       expect(menu.dishes).not_to be_empty and be_a_kind_of(Hash)
     end
   end
