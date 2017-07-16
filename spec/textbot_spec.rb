@@ -18,10 +18,5 @@ describe Textbot do
       expect(clientdouble).to receive(:messages)
       textbot.sendmessage(0, clientdouble)
     end
-
   end
-
-
-
-
 end
