@@ -3,7 +3,7 @@ require 'irb'
 
 puts 'Loading files..'
 require './lib/dish.rb'
-require './lib/takeaway.rb'
+require './lib/order.rb'
 require './lib/restaurant.rb'
 require './lib/menu.rb'
 puts 'Files loaded!'

@@ -1,32 +1,24 @@
 class Restaurant
   attr_reader :menu, :order
 
-  def initialize(menu = Menu.new(Array.new), order = Order.new)
+  def initialize(menu = Menu.new(Array.new))
     @menu = menu
-    @order = order
   end
 
   def show_menu
     menu.print_menu
   end
 
-  def take_order(list_of_dishes, amount_tendered)
-    check_cost(list_of_dishes, amount_tendered)
-    check_menu_includes(list_of_dishes)
-    place_order(list_of_dishes)
+  def take_order(order, amount_tendered)
+    @order = order
+    check_cost(order, amount_tendered)
   end
 
   private
 
-  def check_cost(list_of_dishes, amount_tendered)
-    correct_cost = order.calculate_cost(list_of_dishes)
-    fail("EXACT CHANGE PLEASE. Please provide exactly £#{correct_cost}") unless amount_tendered == correct_cost
+  def check_cost(order, amount_tendered)
+    fail("EXACT CHANGE PLEASE. Please provide exactly £#{order.calculate_cost}") unless amount_tendered == @order.calculate_cost
   end
 
-  def check_menu_includes(list_of_dishes)
-    list_of_dishes.each do |requested_dish|
-      fail("Sorry, food safety regulations prevent us from serving #{requested_dish.name}!") unless menu.includes?(requested_dish)
-    end
-  end
 
 end

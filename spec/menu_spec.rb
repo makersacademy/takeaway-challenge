@@ -13,7 +13,6 @@ describe Menu do
   let(:bad_dish_query) { double :bad_dish_query, name: "Waldorf Salad", price: 1000 }
   subject(:menu) { described_class.new(dish_list) }
 
-
   it 'should be initialised with a list of dishes' do
     expect(menu.dish_list).to eq dish_list
   end
