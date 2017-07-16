@@ -34,8 +34,7 @@ class Order
   def calculator
     @current_value = calculate(@current_orders)
   end
-  
-private
+
   def calculate(item)
     item.values.map { |each_order| each_order.inject(:*) }.map.inject(:+)
   end
