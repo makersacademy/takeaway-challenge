@@ -16,7 +16,7 @@ Takeaway Challenge
 
 # Setup
 ------
-You will need the following gems to test this:
+You will need the following gems to test this:  
 gem 'capybara'  
 gem 'rake'  
 gem 'rspec'  

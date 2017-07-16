@@ -15,6 +15,8 @@ class Takeaway
     "Milanese" => 8
   }
 
+  attr_reader :basket, :menu, :total
+
   def initialize
     @menu = @@pizzas
     @basket = []
@@ -26,15 +28,16 @@ class Takeaway
   end
 
   def order(item, number = 1)
-    fail "That's not on the menu!" unless @menu.has_key?(item)
+    fail "That's not on the menu!" unless menu.has_key?(item)
     print "#{number} #{item}s added to basket." if number > 1
     print "#{number} #{item} added to basket." if number == 1
-    number.times { @basket << item }
+    number.times {@basket << item}
     @total += @menu[item] * number
   end
 
   def display_basket
-    print @basket
+    fail "Basket empty. Please order something." if @basket == []
+    @basket
   end
 
   def display_total
