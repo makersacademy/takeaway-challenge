@@ -1,0 +1,13 @@
+DishList      :print #to be extracted
+              :data
+
+Dish          :id
+              :name
+              :price
+
+Order         :data # [ { id: number }, { id: number } ... ]
+              :total
+
+TextSender    :send(phone_no, message)
+
+TextReceiver  :order(message)
