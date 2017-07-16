@@ -14,7 +14,7 @@ class Order
   end
 
   def checkout(amount)
-
+    
   end
 
 private

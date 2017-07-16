@@ -2,11 +2,10 @@ require "takeaway"
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(orderdouble) }
-    let(:orderdouble) { double(:order, order: nil) }
+    let(:orderdouble) { double(:order, order: nil, basket: []) }
     let(:sampleorder) { 'Gimlet' }
     let(:errororder) { 'Banana' }
     let(:sampleamount) { 1 }
-    let(:amount) { 5 }
 
   describe "menu" do
     it "responds to #menu method" do
@@ -21,7 +20,7 @@ describe Takeaway do
   describe "#order" do
     it "delegates to the order object" do
       expect(orderdouble).to receive(:order)
-      subject.order(sampleorder, sampleamount)
+      takeaway.order(sampleorder, sampleamount)
     end
 
     it "raises an error if item doesn't exist is menu" do
@@ -35,8 +34,13 @@ describe Takeaway do
     end
 
     it "delegates to the order object" do
+      takeaway.order(sampleorder, sampleamount)
+      expect(takeaway).to respond_to(:basket)
+    end
+
+    it "aises an error if the basket is empty" do
       expect(orderdouble).to receive(:basket)
-      subject.basket
+        expect { takeaway.basket }.to raise_error "Basket is empty!"
     end
   end
 
@@ -47,7 +51,7 @@ describe Takeaway do
 
     it "delegates to the order object" do
       expect(orderdouble).to receive(:checkout)
-      subject.checkout(amount)
+      takeaway.checkout(0)
     end
   end
 end

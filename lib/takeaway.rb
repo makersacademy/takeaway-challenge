@@ -11,6 +11,7 @@ class Takeaway
               caipirinha: 9, pina_colada: 7.60, gimlet: 6.15,
               sex_on_the_beach: 9, white_russian: 7.80, aperol_spritz: 7 }
     @order = order
+    @total = 0
   end
 
   def print_menu
@@ -22,17 +23,26 @@ class Takeaway
   def order(item, amount)
     raise "Item unavailable" unless item_check(item)
     @order.order(menu_format(item), amount)
+    puts "Total value in basket: £#{calculate_total}"
   end
 
   def basket
+    raise "Basket is empty!" if @order.basket.empty?
     @order.basket
   end
 
   def checkout(amount)
+    raise "Incorrect total" unless amount == @total.round(2)
     @order.checkout(amount)
   end
 
 private
+
+  def calculate_total
+    return 0 if @order.basket.empty?
+    @order.basket.each { |item| @total += @menu[item.to_sym] }
+    @total.round(2)
+  end
 
   def item_check(item)
     p menu_format(item)

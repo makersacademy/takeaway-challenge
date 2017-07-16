@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class.new }
-  let(:sampleorder) { 'Gimlet' }
+  let(:sampleorder) { 'gimlet' }
   let(:sampleamount) { 1 }
 
 
@@ -24,6 +24,11 @@ describe Order do
 
     it "starts with an empty basket" do
       expect(order.basket).to be_empty
+    end
+
+    it "stores items in the basket" do
+      order.order(sampleorder, sampleamount)
+      expect(order.basket[0]).to be sampleorder
     end
   end
 
