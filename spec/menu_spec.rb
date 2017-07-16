@@ -1,22 +1,17 @@
 require 'menu'
 
 describe Menu do
-  subject(:menu) { described_class.new }
-  let(:dish) { {"Chicken burger":11}}
-  let(:price) { 11 }
+  subject(:menu) { described_class.new (dishes)}
+  let(:dishes) {{"Margherita": 7.95,
+    "Tropicana": 10.80,
+    "Fiorentina": 9.90,
+    "Steak and Rocket": 14.95,
+    "Penne Arrabiata": 7.95,
+    "Salmon Penne":11.80}}
+  let(:dish_name) { "Margherita" }
+  let(:dish_price) { 7.95 }
 
-  it "returns a list of dishes" do
-    expect(menu).to be_an_instance_of Hash
+  it "returns all the available dishes" do
+    expect(menu.dishes).to eq dishes
   end
-  # it "expects to return the price of the dish" do
-  #   @dish = ["Chicken Burger":11]
-  #   expect(menu.price).to eq 11
-  # end
-  #
-  # # context "dishes" do
-  #   before {menu.store_dishes}
-  #   it "stores dish in dishes array" do
-  #     expect(menu.dishes).to include menu.dish{name:price}
-  #   end
-  # end
 end
