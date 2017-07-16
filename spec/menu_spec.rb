@@ -11,4 +11,5 @@ describe Menu do
   it '#display will show the list of dishes and prices' do
     expect{menu.display}.to output.to_stdout
   end
+
 end

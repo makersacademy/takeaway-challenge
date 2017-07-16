@@ -1,28 +1,43 @@
+require './lib/confirmer.rb'
+
 class Order
 
-  attr_accessor :items, :item, :number, :menu, :cost
+  attr_accessor :items, :item, :cost, :confirmer, :expected_total
+  attr_reader :menu
 
   def initialize(items = [])
     @items = items
     @menu = Menu.new
-    @cost = 0
+    @expected_total = 0
   end
 
   def select_items
     puts "What menu item would you like? (Press return if you've finished ordering)"
-      @item = gets.chomp
+      @item = gets.chomp.downcase
       until @item == ""
         puts "How many?"
-        @number = gets.chomp.to_i
-         @number.times {@items << @item}
+        number = gets.chomp.to_i
+        number.times {items << @item}
         select_items
       end
+        puts "Write expected amount"
+        @expected_total = gets.chomp.to_i
+        check_price
+  end
+
+  def check_price
+    sum_items
+    puts 'Incorrect total, please start again'if @confirmer.cost != @expected_total
   end
 
   def sum_items
-    @items.each do |item|
-     @cost += menu.items[item]
-    end
-    return cost
+    @confirmer = Confirmer.new(items.group_by(&:itself).map{|k,v|[k, v.count]}.to_h)
+      items.each do |item|
+        @confirmer.cost += menu.items[item]
+      end
+  end
+
+  def summarize_order
+    @confirmer.display_order
   end
 end

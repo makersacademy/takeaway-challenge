@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
   subject(:order) {described_class.new}
-  let(:order_test) {described_class.new(["Broccoli", "Beans"])}
+  let(:order_test) {described_class.new(["broccoli", "beans"])}
   let(:test_items) {[{"broccoli"=>"3"}, {"beans"=>"3"}]}
 
   it 'has a method to allow customer to select menu items' do
@@ -11,6 +11,12 @@ describe Order do
 
   it 'returns correct cost of items' do
     order_test.sum_items
-    expect(order_test.cost).to eq 5
+    expect(order_test.confirmer.cost).to eq 5
   end
+
+  it '#summarize_order will show list of dishes ordered' do
+    order_test.sum_items
+    expect{order_test.summarize_order}.to output.to_stdout
+  end
+
 end
