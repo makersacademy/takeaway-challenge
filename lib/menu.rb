@@ -16,12 +16,12 @@ class Menu
   end
 
   def show_menu
-    list_of_dishes.each_with_index.map { |dish, index| "#{index + 1}. #{dish.menu_readable}" }.join("\n")
+    list_of_dishes.each_with_index.map { |dish, i| "#{i + 1}. #{dish.menu_readable}" }.join("\n")
   end
 
   def add_to_order(index, quantity)
-    selected_dish = list_of_dishes[index-1]
-    @new_order << { dish: selected_dish.name, quantity: quantity, price: (quantity*selected_dish.price) }
+    selected_dish = list_of_dishes[index - 1]
+    @new_order << { dish: selected_dish.name, quantity: quantity, price: (quantity * selected_dish.price) }
   end
 
   def place_order(order_class = Order)

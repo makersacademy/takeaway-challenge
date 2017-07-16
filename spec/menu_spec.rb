@@ -35,7 +35,7 @@ describe Menu do
     describe '#add_to_order' do
       it 'adds an item to an order' do
         subject.add_to_order(1, 3)
-        expect(subject.new_order).to eq [{:dish=>"Fries", :quantity=>3, :price=>15}]
+        expect(subject.new_order).to eq [{ :dish => "Fries", :quantity => 3, :price => 15 }]
       end
       it 'adds several items as hashes to an order' do
         subject.add_to_order(1, 3)
