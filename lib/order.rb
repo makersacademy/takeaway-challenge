@@ -1,7 +1,10 @@
+require_relative 'textbot'
+
 class Order
 
-  def initialize
+  def initialize(textbot = Textbot.new)
     @basket = []
+    @textbot = textbot
   end
 
   def order(item, amount)
@@ -14,7 +17,7 @@ class Order
   end
 
   def checkout(amount)
-    
+    @textbot.sendmessage(amount)
   end
 
 private

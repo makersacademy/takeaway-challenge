@@ -35,6 +35,7 @@ class Takeaway
   def checkout(amount)
     raise "Incorrect total" unless amount == @total.round(2)
     @order.checkout(amount)
+    puts "Thank you for your order!"
   end
 
 private

@@ -1,7 +1,8 @@
 require 'order'
 
 describe Order do
-  subject(:order) { described_class.new }
+  subject(:order) { described_class.new(textbotdouble) }
+  let(:textbotdouble) { double(:textbot, checkout: nil, sendmessage: nil) }
   let(:sampleorder) { 'gimlet' }
   let(:sampleamount) { 1 }
 
@@ -34,7 +35,12 @@ describe Order do
 
   describe "#checkout" do
     it "responds to #checkout method" do
-      expect(order).to respond_to(:checkout)
+      expect(order).to respond_to(:checkout).with(1)
+    end
+
+    it "delegates to the textbot object" do
+      expect(textbotdouble).to receive(:sendmessage)
+      order.checkout(0)
     end
   end
 end
