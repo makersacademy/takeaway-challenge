@@ -5,11 +5,11 @@ class Takeaway
   attr_reader :menu
 
   def initialize(order = Order.new)
-    @menu = { Margarita: 6.50, Moscow_Mule: 7.15, Gin_and_tonic: 6.00,
-              Mojito: 6.79, Daiquiri: 8.21, Old_fashioned: 7.46,
-              Bloody_Mary: 6.10, Cosmopolitan: 8.00, Negroni: 6.50,
-              Caipirinha: 9, Piña_Colada: 7.60, Gimlet: 6.15,
-              Sex_on_the_Beach: 9, White_Russian: 7.80, Aperol_Spritz: 7 }
+    @menu = { margarita: 6.50, moscow_mule: 7.15, gin_and_tonic: 6.00,
+              mojito: 6.79, daiquiri: 8.21, old_fashioned: 7.46,
+              bloody_mary: 6.10, cosmopolitan: 8.00, negroni: 6.50,
+              caipirinha: 9, pina_colada: 7.60, gimlet: 6.15,
+              sex_on_the_beach: 9, white_russian: 7.80, aperol_spritz: 7 }
     @order = order
   end
 
@@ -21,7 +21,7 @@ class Takeaway
 
   def order(item, amount)
     raise "Item unavailable" unless item_check(item)
-    @order.order(item.capitalize, amount)
+    @order.order(menu_format(item), amount)
   end
 
   def basket
@@ -35,7 +35,12 @@ class Takeaway
 private
 
   def item_check(item)
-    @menu.has_key?(item.capitalize.to_sym)
+    p menu_format(item)
+    @menu.has_key?menu_format(item).to_sym
+  end
+
+  def menu_format(string)
+    string.downcase.gsub(/[ ]/, '_')
   end
 
   def print_logo
