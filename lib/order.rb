@@ -14,9 +14,10 @@ class Order
   end
 
   def calculate_cost
+    cost = 0
     @basket.each do |dish, quantity|
-      @total_cost += dish.price * quantity
+      cost += dish.price * quantity
     end
-    @total_cost
+    @total_cost = cost
   end
 end

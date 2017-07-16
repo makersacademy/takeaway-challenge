@@ -6,6 +6,7 @@ require './lib/dish.rb'
 require './lib/order.rb'
 require './lib/restaurant.rb'
 require './lib/menu.rb'
+require './lib/messager.rb'
 puts 'Files loaded!'
 
 IRB.start

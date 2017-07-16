@@ -15,5 +15,4 @@ class Menu
     dish_list.include?(query_dish)
   end
 
-
 end

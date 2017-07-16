@@ -1,8 +1,10 @@
 class Restaurant
-  attr_reader :menu, :order
+  attr_reader :menu, :cashier, :messager
 
-  def initialize(menu = Menu.new(Array.new))
+  def initialize(menu = Menu.new(Array.new), messager = Messager.new)
     @menu = menu
+    @cashier = 0
+    @messager = messager
   end
 
   def show_menu
@@ -10,15 +12,19 @@ class Restaurant
   end
 
   def take_order(order, amount_tendered)
-    @order = order
     check_cost(order, amount_tendered)
+    place_order(amount_tendered)
   end
 
   private
 
   def check_cost(order, amount_tendered)
-    fail("EXACT CHANGE PLEASE. Please provide exactly £#{order.calculate_cost}") unless amount_tendered == @order.calculate_cost
+    fail("EXACT CHANGE PLEASE. Please provide exactly £#{order.calculate_cost}") unless amount_tendered == order.calculate_cost
   end
 
+  def place_order(amount_tendered)
+    @cashier += amount_tendered
+    messager.send_confirmation_msg
+  end
 
 end

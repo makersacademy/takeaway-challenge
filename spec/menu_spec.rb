@@ -5,7 +5,7 @@ describe Menu do
   let(:dish1) { double :dish1, name: "Burrito", price: 5 }
   let(:dish2) { double :dish2, name: "Pizza", price: 10 }
   let(:dish3) { double :dish3, name: "Burger", price: 15 }
-  let(:dish_list) { [ dish1, dish2, dish3 ] }
+  let(:dish_list) { [dish1, dish2, dish3] }
 
   let(:printed_menu) { "- Burrito - £5\n- Pizza - £10\n- Burger - £15\n" }
 
