@@ -1,5 +1,7 @@
 class Menu
 
+  attr_reader :order
+
   def print_menu
     puts " \/\/\/\/\/\/\/\/\/ ".center(30)
     puts "THE MENU OF MASH".center(30)
@@ -20,6 +22,10 @@ class Menu
       "Burger n Mash" => 4.87
     }
 
+  end
+
+  def place_order (food)
+    @order = food #attribute
   end
 
 
