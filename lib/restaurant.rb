@@ -1,3 +1,5 @@
+require 'order'
+
 class Restaurant
 
   def initialize(menu, order = Order.new)
@@ -13,6 +15,10 @@ class Restaurant
     order.view_order
   end
 
+  def place_order(total_cost, mobile_number = MY_MOBILE)
+    raise "Incorrect order total" unless correct_amount?(total_cost)
+  end
+
   def select_dish(dish, quantity)
     raise "This dish is not on the menu" if not_on_menu?(dish)
     order.add_to_basket(dish, quantity, find_price(dish))
@@ -22,23 +28,31 @@ class Restaurant
 
   attr_reader :menu, :order
 
+  def correct_amount?(total_cost)
+    total_cost == order.total_cost
+  end
+
   def parse_menu
-    menu.each_with_object(String.new) do |section, output|
-      output << section[:category].capitalize + ":\n"
-      section[:items].each { |item| output << "  #{item[:name].capitalize} (£#{two_decimal_price(item[:price])})\n" }
+    menu[:categories].each_with_object(String.new) do |category, output|
+      output << category.capitalize + ":\n"
+      menu[:items].each { |dish| output << parsed_display(dish) if dish[:category] == category }
     end
   end
 
-  def find_category(dish)
-    menu.select { |section| section[:items].find { |item| item[:name] == dish.downcase } }
+  def parsed_display(dish)
+    "  #{dish[:name].capitalize} (£#{two_decimal_price(dish[:price])})\n"
+  end
+
+  def retrieve_hash(dish)
+    menu[:items].select { |item| item[:name] == dish.downcase }[0]
   end
 
   def not_on_menu?(dish)
-    find_category(dish).empty?
+    retrieve_hash(dish).nil?
   end
 
   def find_price(dish)
-    find_category(dish).first[:items].find { |item| item[:name] == dish.downcase }[:price]
+    retrieve_hash(dish)[:price]
   end
 
   def two_decimal_price(number)

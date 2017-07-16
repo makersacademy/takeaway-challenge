@@ -4,13 +4,16 @@ describe Restaurant do
 
   subject(:restaurant) { described_class.new(EXAMPLE_MENU, order) }
   let(:order) { double(:order) }
-  EXAMPLE_MENU = [
-     { category: 'pizzas', items: [{ name: 'margherita', price: 5 },
-                                   { name: 'pepperoni', price: 7 },
-                                   { name: 'hawaiian', price: 7 }] },
-     { category: 'drinks', items: [{ name: 'coke', price: 2 },
-                                   { name: 'lemonade', price: 2 }] }
-   ]
+  EXAMPLE_MENU =
+    { categories: ['pizzas', 'drinks'],
+      items: [
+       { name: 'margherita', price: 5, category: 'pizzas' },
+       { name: 'pepperoni', price: 7, category: 'pizzas' },
+       { name: 'hawaiian', price: 7, category: 'pizzas' },
+       { name: 'coke', price: 2, category: 'drinks' },
+       { name: 'lemonade', price: 2, category: 'drinks' }]
+    }
+
 
   let(:pretty_menu) {
     "Pizzas:\n  Margherita (£5.00)\n  Pepperoni (£7.00)\n  Hawaiian (£7.00)\nDrinks:\n  Coke (£2.00)\n  Lemonade (£2.00)\n"
@@ -23,12 +26,12 @@ describe Restaurant do
   end
 
   describe '#select_dish' do
-    it 'raises an error if the dish does not exist' do
-      expect{ restaurant.select_dish('curry', 1) }.to raise_error("This dish is not on the menu")
-    end
     it 'tells the order to add the dishes to the order' do
       expect(order).to receive(:add_to_basket)
       restaurant.select_dish('margherita', 1)
+    end
+    it 'raises an error if the dish does not exist' do
+      expect{ restaurant.select_dish('curry', 1) }.to raise_error("This dish is not on the menu")
     end
   end
 
@@ -36,6 +39,13 @@ describe Restaurant do
     it 'asks order object to view the order' do
       expect(order).to receive(:view_order)
       restaurant.view_order
+    end
+  end
+
+  describe '#place_order' do
+    it 'raises an error if the price entered is incorrect' do
+      allow(order).to receive(:total_cost) { 10 }
+      expect{ restaurant.place_order(5) }.to raise_error("Incorrect order total")
     end
   end
 
