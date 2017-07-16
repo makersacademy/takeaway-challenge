@@ -2,6 +2,7 @@ require 'menu_item'
 
 describe MenuItem do
   tuna = MenuItem.new(:tuna, 12)
+
   describe '#name' do
     it 'has a name when initalized' do
       expect(tuna.name).to eq :tuna
@@ -13,6 +14,4 @@ describe MenuItem do
       end
     end
   end
-
-
 end
