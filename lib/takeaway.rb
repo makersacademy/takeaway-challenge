@@ -7,4 +7,8 @@ class Takeaway
     @orders = []
   end
 
+  def read_menu(menu)
+    menu
+  end
+
 end
