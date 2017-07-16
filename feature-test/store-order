@@ -1,0 +1,5 @@
+new class Order
+
+takes an order and stores amount of dishes
+new order is pie n mash x 2
+expect new order of a dish to equal the order of pie n mash x 2

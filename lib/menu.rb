@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Menu
 
   attr_reader :order
@@ -7,13 +9,13 @@ class Menu
     puts "THE MENU OF MASH".center(30)
     puts "()()()()()()()()()()".center(30)
     puts ""
-    puts dishes.map{ |dishes, price| "#{dishes} = #{price}".center(30) }
+    puts mains.map{ |mains, price| "#{mains} = #{price}".center(30) }
     puts ""
     puts ""
   end
 
 
-  def dishes
+  def mains
     {
       "Pie n Mash" => 5.25,
       "Bangers n Mash" => 7.25,
@@ -24,8 +26,8 @@ class Menu
 
   end
 
-  def place_order (food)
-    @order = food #attribute
+  def place_order (dish)
+    @order = dish #attribute
   end
 
 

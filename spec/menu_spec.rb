@@ -1,4 +1,4 @@
-require './lib/menu.rb'
+require 'menu'
 
 
 
@@ -10,7 +10,7 @@ describe Menu do
   end
 
   it "returns price of dishes" do
-    expect(menu.dishes["Pie n Mash"]).to eq 5.25
+    expect(menu.mains["Pie n Mash"]).to eq 5.25
   end
 
   it "responds to place an order" do
