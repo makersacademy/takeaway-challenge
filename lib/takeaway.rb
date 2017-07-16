@@ -29,6 +29,7 @@ class Takeaway
   def basket
     raise "Basket is empty!" if @order.basket.empty?
     @order.basket
+    puts "Total value in basket: £#{calculate_total}"
   end
 
   def checkout(amount)
@@ -40,12 +41,12 @@ private
 
   def calculate_total
     return 0 if @order.basket.empty?
+    @total = 0
     @order.basket.each { |item| @total += @menu[item.to_sym] }
     @total.round(2)
   end
 
   def item_check(item)
-    p menu_format(item)
     @menu.has_key?menu_format(item).to_sym
   end
 
