@@ -22,4 +22,18 @@ describe Order do
       expect(subject.total_price).to eq 16
     end
   end
+
+  describe '#confirm_order' do
+    it 'confirms order when requested' do
+      expect(subject.confirm_order).to eq "Order confirmed!"
+    end
+    it 'raises error if total price is not correct' do
+      allow(subject).to receive(:calculated_price) {8}
+      expect {subject.confirm_order}.to raise_error "The total amount is not correct, please order again."
+    end
+    it 'checks price by summing individual prices' do
+      subject.price_check
+      expect(subject.calculated_price).to eq 16
+    end
+  end
 end
