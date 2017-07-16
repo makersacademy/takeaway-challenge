@@ -12,9 +12,10 @@ class Menu
   end
 
   def selection(numbers)
-    order_hash = Hash.new { 0 }
-    numbers.each { |order| order_hash[@menu[order]] += 1 }
-    order_hash
+    numbers.each_with_object(Hash.new { 0 }) do |order, hash|
+      fail "Number #{order} is not a valid dish" unless @menu[order]
+      hash[@menu[order]] += 1
+    end
   end
 
 end

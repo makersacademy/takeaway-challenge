@@ -5,8 +5,8 @@ takeaway = Takeaway.new
 
 # takeaway.menu
 takeaway.menu
-takeaway.new_order(1,2,2)
+takeaway.new_order(5)
 
 takeaway.breakdown
 
-takeaway.confirm(+447743058608)
+# takeaway.confirm(+447743058608)

@@ -12,11 +12,20 @@ describe Menu do
   end
 
   describe '#selection' do
+    let(:valid_order) { [1, 1] }
+
     it 'returns the ordered items and number ordered as hash' do
-      numbers = [1, 1]
       this_order = { ["Burger", 5.50] => 2 }
-      expect(menu.selection(numbers)).to eq this_order
+      expect(menu.selection(valid_order)).to eq this_order
     end
+
+    context 'when a non-existend order number is entered' do
+      it 'raises an error' do
+        numbers = [5]
+        expect { menu.selection(numbers) }.to raise_error "Number 5 is not a valid dish"
+      end
+    end
+
   end
 
 end

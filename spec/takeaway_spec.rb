@@ -19,13 +19,4 @@ describe Takeaway do
     end
   end
 
-  # describe '#breakdown' do
-  #   it 'tells the order to breakdown' do
-  #     takeaway.new_order(numbers)
-  #     expect(@order).to receive(:breakdown)
-  #   end
-  # end
-
-  # How do you create an rspec test for passing methods?
-
 end

@@ -13,8 +13,7 @@ class Order
   end
 
   def breakdown
-    @current_order.each { |dish, quantity|
-      puts "#{quantity}x #{dish[0]} @ £#{'%.02f' % dish[1]} each = £#{'%.02f' % (dish[1] * quantity)}" }
+    @current_order.each { |dish, quantity| puts "#{quantity}x #{dish[0]} @ £#{'%.02f' % dish[1]} each = £#{'%.02f' % (dish[1] * quantity)}" }
   end
 
 end
