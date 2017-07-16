@@ -14,7 +14,7 @@ describe Order do
 
   describe '#total' do
     it 'returns the total cost of an order' do
-      expect(order.total).to eq 11
+      expect(order.total).to eq "11.00"
     end
   end
 

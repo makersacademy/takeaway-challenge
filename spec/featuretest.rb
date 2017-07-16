@@ -1,12 +1,12 @@
 require_relative '../lib/takeaway'
 require_relative '../lib/menu'
 
-takeaway = Takeaway.new
+takeaway = Takeaway.new("order")
 
-# takeaway.menu
 takeaway.menu
-takeaway.new_order(5)
+
+takeaway.new_order(1,1,2,3,3,3,4,4)
 
 takeaway.breakdown
 
-# takeaway.confirm(+447743058608)
+takeaway.confirm

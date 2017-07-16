@@ -1,14 +1,20 @@
+require_relative 'two_dp'
+
 class Menu
+
+  include TwoDp
 
   def initialize
     @menu = {
       1 => ["Burger", 5.50],
-      2 => ["Pizza", 5.00]
+      2 => ["Pizza", 5.00],
+      3 => ["Noodles", 6.00],
+      4 => ["Curry", 8.00]
     }
   end
 
   def print
-    @menu.each { |number, dish| puts "#{number}: #{dish[0]}, £#{'%.02f' % dish[1]}\n" }
+    @menu.each { |number, dish| puts "#{number}: #{dish[0]}, £#{two_dp(dish[1])}\n" }
   end
 
   def selection(numbers)

@@ -1,6 +1,9 @@
+require_relative 'menu'
+require_relative 'two_dp'
+
 class Order
 
-  require_relative './menu'
+  include TwoDp
 
   attr_reader :current_order
 
@@ -9,11 +12,11 @@ class Order
   end
 
   def total
-    @current_order.map { |dish, quantity| dish[1] * quantity }.inject(:+)
+    two_dp(@current_order.map { |dish, quantity| dish[1] * quantity }.inject(:+))
   end
 
   def breakdown
-    @current_order.each { |dish, quantity| puts "#{quantity}x #{dish[0]} @ £#{'%.02f' % dish[1]} each = £#{'%.02f' % (dish[1] * quantity)}" }
+    @current_order.each { |dish, quantity| puts "#{quantity}x #{dish[0]} @ £#{two_dp(dish[1])} each = £#{two_dp(dish[1] * quantity)}" }
   end
 
 end

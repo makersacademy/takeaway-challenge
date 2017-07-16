@@ -7,7 +7,7 @@ describe Menu do
   describe '#print' do
 
     it 'shows a list of dishes and prices' do
-      expect { menu.print }.to output("1: Burger, £5.50\n2: Pizza, £5.00\n").to_stdout
+      expect { menu.print }.to output("1: Burger, £5.50\n2: Pizza, £5.00\n3: Noodles, £6.00\n4: Curry, £8.00\n").to_stdout
     end
   end
 
@@ -25,7 +25,6 @@ describe Menu do
         expect { menu.selection(numbers) }.to raise_error "Number 5 is not a valid dish"
       end
     end
-
   end
 
 end
