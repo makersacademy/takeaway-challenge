@@ -37,4 +37,11 @@ describe Takeaway do
 
   end
 
+  # describe '#confirm_order' do
+  #   it 'sends an sms to the customer to confirm delivery will be made within the hour' do
+  #     thai.order(dish1, quantity, dish2, quantity, total)
+  #     expect { thai.confirm_order }.to output("Sent message to customer\n").to_stdout
+  #   end
+  # end
+
 end
