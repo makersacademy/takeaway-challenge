@@ -8,11 +8,6 @@ describe Takeaway do
   let(:dish2) { "Rice" }
   let(:dish3) { "Not on menu" }
   let(:total) { 4 }
-  # describe '#initialize' do
-  #   it 'has a menu' do
-  #     expect(thai.menu).to eq Menu::DISHES
-  #   end
-  # end
 
   it 'stores the open orders' do
     thai.order(dish1, quantity, 2)

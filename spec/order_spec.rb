@@ -16,10 +16,4 @@ describe Order do
     expect { order.add_dish([dish, quantity, total]) }.to raise_error "The total of #{total} does not appear to match the sum of dishes ordered."
   end
 
-  #   dishes_hash = { "Green Curry" => 6, "Massaman Curry" => 6,
-  #                 "Panang Curry" => 6, "Pad Thai" => 7,
-  #                 "Rice" => 2, "Pad Pak" => 3,
-  #                 "Singha" => 4 }
-  #   expect(thai.dishes).to eq dishes_hash
-  # end
 end

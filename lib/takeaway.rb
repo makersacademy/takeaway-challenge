@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'sms_confirmation'
 
 class Takeaway
   attr_reader :open_orders
