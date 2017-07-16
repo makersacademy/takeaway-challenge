@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   subject("takeaway") { described_class.new(order) }
-  let(:order) { double('order') }
+  let(:order) { 'order' }
 
   describe '#menu' do
 
@@ -28,13 +28,15 @@ describe Takeaway do
       expect(order).to receive(:breakdown)
       takeaway.breakdown
     end
+
+    it 'returns an error if no order is placed' do
+      expect { Takeaway.new.breakdown }.to raise_error "Order empty - no breakdown to display"
+    end
   end
 
   describe '#confirm' do
 
     it { is_expected.to respond_to :confirm }
   end
-
-
 
 end

@@ -6,7 +6,7 @@ class Takeaway
 
   attr_reader :order
 
-  def initialize(order)
+  def initialize(order = nil)
     @menu = Menu.new
     @order = order
   end
@@ -21,6 +21,7 @@ class Takeaway
   end
 
   def breakdown
+    fail "Order empty - no breakdown to display" unless @order
     @order.breakdown
     puts "The order total is £#{@order.total}"
   end
