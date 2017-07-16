@@ -14,7 +14,11 @@ describe Order do
   end
 
   it "raises an error if dish isn't available" do
-    expect{ order.add_dish("tea") }.to raise_error "This dish is not on the menu"
+    expect { order.add_dish("tea") }.to raise_error "This dish is not on the menu"
+  end
+
+  it "refurns false if the dish is not on the menu" do
+    expect(order.available?("chips")).to be false
   end
 
   it "summs all dishes chosen" do
@@ -24,7 +28,7 @@ describe Order do
 
   it "raises an error if amount given does not match total_to_pay" do
     order.add_dish("pasta")
-    expect{ order.payment(5) }.to raise_error "Please check the amount, does not match total!"
+    expect { order.payment(5) }.to raise_error "Please check the amount, does not match total!"
   end
 
 end

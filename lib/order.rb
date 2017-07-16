@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'confirmation'
 
 class Order
   attr_reader :menu, :booking, :total_to_pay
@@ -9,9 +10,8 @@ class Order
   end
 
   def add_dish(dish, quantity = 1)
-    raise "This dish is not on the menu" unless menu.dishes.key?(dish)
+    raise "This dish is not on the menu" unless available?(dish)
     quantity.times { @booking << dish }
-    completed_order(dish, quantity)
   end
 
   def completed_order(dish, quantity)
@@ -22,5 +22,9 @@ class Order
     raise "Please check the amount, does not match total!" unless amount == @total_to_pay
     puts "Payment has been received, you will receive the test confirmation shortly"
     sent_text
+  end
+
+  def available?(dish)
+    menu.dishes.key?(dish)
   end
 end
