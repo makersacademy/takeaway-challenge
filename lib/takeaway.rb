@@ -14,18 +14,15 @@ class Takeaway
   end
 
   def order(*dish_and_quantity)
-    (0...dish_and_quantity.length-1).step(2) do |n|
-      fail "Sorry, we do not serve #{dish_and_quantity}" unless @menu.dishes.key?(dish_and_quantity[n])
-    end
-    # fail "Sorry, we do not serve #{dish_and_quantity}" if not_on_menu
+    check_on_menu(dish_and_quantity)
     @new_order.add_dish(dish_and_quantity)
     @open_orders << @new_order.dishes
   end
 
-  # def not_on_menu
-  #   order(dish_and_quantity).step(2).each do |dish|
-  #     return true if !@menu.dishes.key?(dish)
-  #   end
-  # end
+  def check_on_menu(dish_and_quantity)
+    (0...dish_and_quantity.length-1).step(2) do |dish|
+      fail "Sorry, we do not serve #{dish_and_quantity}" unless @menu.dishes.key?(dish_and_quantity[dish])
+    end
+  end
 
 end
