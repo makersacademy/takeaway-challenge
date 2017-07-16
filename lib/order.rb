@@ -3,7 +3,7 @@ require_relative 'takeaway'
 
 class Order
 
-  attr_reader :price ,:order_total
+  attr_reader :price, :order_total
 
   def initialize(menu = Menu.new)
     @ordered_items = {}
@@ -12,12 +12,9 @@ class Order
 
   def calc_price(ordered_items)
     @ordered_items = ordered_items
-    temp_sum = @ordered_items.map{|k,v| v * @menu_items[k] if @menu_items.key? k }.compact
-    order_total = temp_sum.inject(0, :+)
+    temp_sum = @ordered_items.map { |k, v| v * @menu_items[k] if @menu_items.key? k }.compact
+    temp_sum.inject(0, :+)
   end
-
-  
-
 end
 
 

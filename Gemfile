@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 
-gem 'twilio-ruby', '~> 5.0.0.rc26'
 gem 'capybara'
+gem 'dotenv-rails'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false, group: :test
-gem 'dotenv-rails'
+gem 'twilio-ruby', '~> 5.0.0.rc26'
