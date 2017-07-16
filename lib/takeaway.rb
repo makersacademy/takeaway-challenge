@@ -28,8 +28,8 @@ class Takeaway
     @order.basket
   end
 
-  def checkout
-    @order.checkout
+  def checkout(amount)
+    @order.checkout(amount)
   end
 
 private

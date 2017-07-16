@@ -6,6 +6,7 @@ describe Takeaway do
     let(:sampleorder) { 'Gimlet' }
     let(:errororder) { 'Banana' }
     let(:sampleamount) { 1 }
+    let(:amount) { 5 }
 
   describe "menu" do
     it "responds to #menu method" do
@@ -46,7 +47,7 @@ describe Takeaway do
 
     it "delegates to the order object" do
       expect(orderdouble).to receive(:checkout)
-      subject.checkout
+      subject.checkout(amount)
     end
   end
 end
