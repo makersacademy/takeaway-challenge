@@ -1,41 +1,20 @@
 require 'dish_list'
 
 class Order
-
-  def initialize (list = DishList.new)
-    @list   = list
-    @order  = Hash.new
-    @total  = 0
+  def initialize(list = DishList.new)
+    @list_data = list.data
+    @total = 0
+    @order_data = Hash.new
   end
 
   def make(order)
-    update_order(order)
-    update_total
+    @order_data = order
   end
 
   def total
-  end
-
-  private
-
-  attr_accessor 'order'
-
-  def list
-    @list.dup
-  end
-
-  def update_order(order_data)
-    @order = order_data
-  end
-
-  def update_total
-    @order.each do |id, amount|
-      dish = dish_with_id(id)
-      @total += dish.price * amount
+    @order_data.each do |k,v|
+      @total += @list_data[k] * v
     end
-  end
-
-  def dish_with_id(id)
-    list.data.select { |n| n.id == id }.last
+    @total
   end
 end
