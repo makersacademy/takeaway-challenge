@@ -1,7 +1,3 @@
-# describe "feature tests" do
-#
-# end
-
 require './lib/dish.rb'
 require './lib/takeaway.rb'
 require './lib/restaurant.rb'

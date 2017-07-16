@@ -1,9 +1,9 @@
 class Restaurant
-  attr_reader :menu, :takeaway
+  attr_reader :menu, :order
 
-  def initialize(menu = Menu.new(Array.new), takeaway = Takeaway.new)
+  def initialize(menu = Menu.new(Array.new), order = Order.new)
     @menu = menu
-    @takeaway = takeaway
+    @order = order
   end
 
   def show_menu
@@ -11,13 +11,17 @@ class Restaurant
   end
 
   def take_order(list_of_dishes, amount_tendered)
-    correct_cost = takeaway.calculate_cost(list_of_dishes)
-    fail("EXACT CHANGE PLEASE. Please provide exactly £#{correct_cost}") unless amount_tendered == correct_cost
+    check_cost(list_of_dishes, amount_tendered)
     check_menu_includes(list_of_dishes)
-
+    place_order(list_of_dishes)
   end
 
   private
+
+  def check_cost(list_of_dishes, amount_tendered)
+    correct_cost = order.calculate_cost(list_of_dishes)
+    fail("EXACT CHANGE PLEASE. Please provide exactly £#{correct_cost}") unless amount_tendered == correct_cost
+  end
 
   def check_menu_includes(list_of_dishes)
     list_of_dishes.each do |requested_dish|
