@@ -1,0 +1,43 @@
+#notes to self
+
+
+# iterating_over_hashes.rb
+
+person = {name: 'bob', height: '6 ft', weight: '160 lbs', hair: 'brown'}
+
+person.each do |key, value|
+  puts "Bob's #{key} is #{value}"
+end
+
+# optional_parameters.rb
+
+def greeting(name, options = {})
+  if options.empty?
+    puts "Hi, my name is #{name}"
+  else
+    puts "Hi, my name is #{name} and I'm #{options[:age]}" +
+         " years old and I live in #{options[:city]}."
+  end
+end
+
+greeting("Bob")
+greeting("Bob", {age: 62, city: "New York City"})
+
+print_menu() to display the menu
+puts "======"
+
+
+result: Menu
+          /////////
+       THE MENU OF MASH
+     ()()()()()()()()()()
+
+      Pie n Mash = 5.25
+    Bangers n Mash = 7.25
+      Eel n Mash = 3.45
+     Pizza n Mash = 6.78
+     Burger n Mash = 4.87
+
+
+  has a list of dish types
+  returns price of dishes

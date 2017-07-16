@@ -37,3 +37,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 *progress so far*
 
 * created a menu class with a list(), implemented hash for list.
+* removed list() and replaced with menu. More fancy dish names and prices implemented. As well as print_menu()
