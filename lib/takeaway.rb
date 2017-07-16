@@ -41,6 +41,7 @@ class Takeaway
   def check_out
     @basket.check_out
   end
+
 end
 
 

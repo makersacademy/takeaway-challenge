@@ -15,10 +15,4 @@ let(:menu) { double(Menu::BURGERS) }
     expect((subject.welcome).class).to eq String
   end
   
-    #context "check menu" do
-    #  it { expect(subject).to respond_to(:on_the_menu?).with(1).argument }
-    #  describe :menu do
-    #    it { expect(menu).to contain(:flamino_burger) }
-    #  end
-    #end
 end

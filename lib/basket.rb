@@ -1,5 +1,8 @@
+require "./lib/menu.rb"
+
 class Basket
   include Menu
+  attr_reader :basket
 
   def initialize
       @basket = Hash.new(0)
