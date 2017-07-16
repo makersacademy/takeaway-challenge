@@ -2,7 +2,7 @@ require 'confirmation'
 
 describe Confirmation do
   subject(:text) { described_class.new }
-  let (:account) { double(:account_sid) }
+  let(:account) { double(:account_sid) }
   let(:messages) { double(:auth_token) }
   let(:time) { double(:time_now) }
 # let(:client) { double(:) }
