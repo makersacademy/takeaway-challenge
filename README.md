@@ -3,17 +3,42 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
+           _  //            | Deli  |   ))))-----
+          |_)//(''''':      | Foood |
+            //  \_____:_____.-------D     )))))-------
            //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
+       .:'//.   \ \=|   \ /  .:'':./    )))))----------
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
  ```
 
+ Project completed and all tests are passing, I couldn't find a way to stub the Twilio API inside the message class and finally excluded it. This explains the low test coverage of 92%.
+
+ It behave as expected from the terminal.
+
+ If I had more time, I would've delegated the order basket into its own class for the sake of adhering more strictly to the single responsibility principle.
+
+ I feel I have respected the rule of keeping each object as separate as possible from each others, using encapsulation.
+
+The project has been made with ❤️ from France for the week 2 weekend challenge for Makers Academy.
+
+
+ Instructions
+ ============
+ 1/ Clone this repo by running git clone
+ git@github.com:tbscanlon/takeaway-challenge.git from your terminal
+
+ 2/ Navigate to the project folder: cd takeaway-challenge/.
+
+ 3/ Install dependencies by running bundle install (you may need to gem install bundle).
+
+
+
+
+Project User Stories
+===================
 ```
 As a customer
 So that I can check if I want to order something

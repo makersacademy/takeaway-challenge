@@ -1,7 +1,7 @@
 class Menu
   attr_reader :menu
   def initialize
-    @menu = {"Margherita" => 8, "Pepperoni" => 10, "Spiced Salami" => 11.50,"Carbonara" => 12.50, "Tiramisu" => 5.50 }
+    @menu = {"Pig's.brain" => 8, "Rosted.frog" => 10, "Camel.Curry" => 11.50, "Dolphin.salami" => 12.50, "Battered.axololt" => 5.50 }
   end
 
   def print_menu

@@ -1,10 +1,7 @@
 require_relative 'basket'
 require_relative 'menu'
 require_relative 'message'
-
-
 class Order
-  attr_reader
   def initialize
     @menu = Menu.new
     @basket = Basket.new
@@ -17,12 +14,12 @@ class Order
 
   def add_to_basket(*dishes)
     n = 0
-    p dishes
     dishes.each do
       @basket.add_summary(dishes[n])
       @basket.add_price(@menu.menu[dishes[n]])
       n =+ 1
     end
+    p "#{dishes} added to your menu"
   end
 
   def total
