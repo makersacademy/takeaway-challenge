@@ -1,5 +1,5 @@
 require 'order'
-
+require 'time'
 describe Order do
   order = Order.new({ tuna: 4, frog: 1 })
 
@@ -25,7 +25,9 @@ describe Order do
 
   describe '#place_order' do
     it 'places the order when the corect total is given' do
-      expect(order.place_order(13)).to eq("Thank you! Your order was placed and will be delivered before 18:52")
+      clock = Clock.new
+      clock = clock.times
+      expect(order.place_order(13)).to eq("Thank you! Your order was placed and will be delivered before #{clock}")
     end
 
     it 'raises an error if you try to under pay' do

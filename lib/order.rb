@@ -1,3 +1,4 @@
+require 'time'
 class Order
   attr_reader :order
   def initialize(menu)
@@ -21,8 +22,13 @@ class Order
      "--- Total = €13 ---"
   end
 
+ def times
+   clock = Clock.new
+   clock.times
+ end
+
   def place_order(total)
-    return "Thank you! Your order was placed and will be delivered before 18:52" if total == @total
+    return "Thank you! Your order was placed and will be delivered before #{times}" if total == @total
     raise "Sorry we don't hangel" if total < @total
     raise "To much try again" if total > @total
   end
