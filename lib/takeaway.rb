@@ -1,5 +1,15 @@
+
 class TakeAway
-  def menu
-    "Prawn Toast (4): £4.25"
+
+  def initialize(menu: menu)
+    @menu = menu
   end
+
+  def read_menu
+    menu.read
+  end
+
+  private
+
+  attr_reader :menu
 end
