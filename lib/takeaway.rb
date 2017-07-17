@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
@@ -11,6 +12,16 @@ class Takeaway
 
   def read_menu(menu)
     menu
+  end
+
+  def order(dish, quantity)
+    add_to_order(dish, quantity)
+  end
+
+private
+
+  def add_to_order(dish, quantity)
+    Order.new(dish, quantity)
   end
 
 end
