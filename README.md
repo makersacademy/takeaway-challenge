@@ -1,5 +1,31 @@
 Takeaway Challenge
 ==================
+
+
+What is this?
+
+This challenge required writing code that would allow a user to select items from a menu and order them to be delivered. It checked the user was happy with the price and
+sent an SMS confirmation via Twilio.
+
+Instructions for use:
+
+```
+cd ...takeaway-challenge
+./bin/irb
+order = Order.new
+```
+
+Limitations:
+
+This is a partial solution due to having limited time:
+- #select_items is a complicated method that requires the user to input their expected total cost of their order three times rather than one
+- The SMS sent by calling #confirm_order displays the food items as a hash, rather than a more readable format
+- Only a limited number of suitable tests were implemented, achieving 78% coverage
+
+
+
+Full remit:
+
 ```
                             _________
               r==           |       |

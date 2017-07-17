@@ -1,0 +1,43 @@
+# As a customer
+# So that I can check if I want to order something
+# I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+Objects:
+- list of dishes
+- total cost
+- text confirmation message
+
+Methods:
+
+- initialize list of dishes
+- print/show list of dishes
+- allow selection of dishes in any quantity
+- display order to customer
+- check order adds up
+- send confirmation message
+
+Class organisation:
+
+- Menu
+-- init(list of dishes)
+-- display(list of dishes)
+- Order
+-- init(cost)
+-- select(dishes)
+-- display(dishes)
+-- check display cost == select dishes cost?? #May end up being a different type of check
+- Confirmer
+-- customer confirm order
+-- system send confirmation

@@ -1,0 +1,10 @@
+#! /usr/bin/env ruby -v
+
+require 'irb'
+
+puts 'Loading files...'
+
+require './lib/menu.rb'
+require './lib/order.rb'
+
+IRB.start
