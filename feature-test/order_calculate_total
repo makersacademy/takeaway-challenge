@@ -1,0 +1,23 @@
+method:
+
+def calculate_total #fails
+  total = 0
+  dish.each{|mains, quantity| total += dish[mains] * quantity}
+
+  total
+end
+
+rspec:
+
+allow(order_1).to receive(:menu).and_return({ "Pie n Mash" => 5.25, "Bangers n Mash" => 7.25 })
+expect(order_1.calculate_total).to eq 19.75
+end
+
+it "calculates a total" do #fails
+  expect(order_1.calculate_total).to eq 19.75
+end
+
+it 'sends a message if order is successful' do #fails
+  order1.check_payment
+  expect(order1.send_message).to eq "Thank you for your order!"
+end
