@@ -1,0 +1,16 @@
+DishList      :print
+              :data
+
+Dish          :name
+              :price
+
+OrderManager  :
+
+Order         :data # [ { id: number }, { id: number } ... ]
+              :total
+
+TextSender    :text(message)
+
+
+---
+TextReceiver  :order(message)
