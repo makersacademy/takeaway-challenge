@@ -6,6 +6,8 @@ describe Order do
   let(:quantity) { 1 }
   let(:price) { 11.99 }
   subject(:order) { described_class.new }
+  let(:message) { "#{quantity} x #{item}. Price: £#{price}" }
+  let(:order_message) { "You ordered: \n" + message + "\nTotal of £#{price}\n"}
 
   it 'is initialized with an empty basket' do
     expect(order.basket).to eq []
@@ -21,9 +23,14 @@ describe Order do
   end
   end
 
-  it 'calcuates the total of the order in the basket' do
+  it 'calculates the total of the order in the basket' do
     order.add(item, quantity, price)
-    expect(order.total).to eq "Total of £#{price}"
+    expect(order.update_total).to eq "Total of £#{price}"
+  end
+
+  it 'prints the completed order' do
+      order.add(item, quantity, price)
+      expect{ order.complete_order }.to output(order_message).to_stdout
   end
 
 end

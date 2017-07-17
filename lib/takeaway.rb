@@ -10,12 +10,20 @@ class Takeaway
 
 attr_reader :order
 
-  def initialize(order_class = Order)
-    @order = order_class.new
+  def initialize(order = Order.new)
+    @order = order
   end
 
   def view_menu
       puts "MA Pizzeria"
       MENU.each { |key, value| puts "#{key} - Price: £#{value}" }
+  end
+
+  def add_item(item, quantity = 1, price)
+    order.add(item, quantity, price)
+  end
+
+  def finalise_order
+    order.complete_order
   end
 end
