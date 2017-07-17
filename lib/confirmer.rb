@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require 'twilio-ruby'
 
 class Confirmer
@@ -14,8 +15,8 @@ class Confirmer
   end
 
   def confirm_order
-    account_sid = 'AC5d880a3a8efa0e09e62225717f0db77a'
-    auth_token = 'e56e6405ef41cc1e683b5642e7b5097a'
+    account_sid = ENV["ACCOUNT_SID"]
+    auth_token = ENV["AUTH_TOKEN"]
 
     @client = Twilio::REST::Client.new account_sid, auth_token
 
