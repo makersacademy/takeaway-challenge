@@ -17,6 +17,7 @@ class Restaurant
   end
 
   def place_order(total_cost)
+    raise "Nothing ordered" unless order?
     raise "Incorrect order total" unless correct_amount?(total_cost)
     order.send_confirmation
   end
@@ -32,6 +33,10 @@ class Restaurant
 
   def correct_amount?(total_cost)
     total_cost == order.total_cost
+  end
+
+  def order?
+    order.total_cost > 0
   end
 
   def parse_menu

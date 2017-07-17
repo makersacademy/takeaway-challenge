@@ -51,6 +51,11 @@ describe Restaurant do
       expect{ restaurant.place_order(incorrect_amount) }.to raise_error("Incorrect order total")
     end
 
+    it 'raises an error if nothing is on the order' do
+      allow(order).to receive(:total_cost) { 0 }
+      expect{ restaurant.place_order(incorrect_amount) }.to raise_error("Nothing ordered")
+    end
+
     it 'instructs Order class to send a confirmation SMS' do
       allow(order).to receive(:total_cost) { correct_amount }
       expect(order).to receive(:send_confirmation)

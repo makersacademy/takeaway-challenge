@@ -65,3 +65,10 @@ pizza_place = Restaurant.new(menu)
 pizza_place.display_menu
 
 ```
+
+Review
+------
+* Currently the program only handles a single order;
+* Functionality is satisfactory and tests are passing;
+* Need to practice further on stubbing external APIs in tests (this has been done, but not sure if it's done well);
+* User stories were not well written, and the implementation hints were a bit cryptic, but the final product ended up OK.
