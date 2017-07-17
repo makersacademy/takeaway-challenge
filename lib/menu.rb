@@ -9,9 +9,9 @@ class Menu
   end
 
   def print_menu
-    puts "------MENU------"
-    puts "----------------"
-    puts dishes.map { |name, price| "#{name.capitalize} £#{price}" }
+    puts "--------MENU--------".center(70)
+    puts "--------------------".center(70)
+    puts dishes.map { |name, price| "#{name.capitalize} £#{price}".center(70) }
   end
 
   def dish_included?(name)

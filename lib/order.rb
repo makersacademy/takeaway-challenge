@@ -29,7 +29,7 @@ class Order
   def checkout(amount)
     raise "Incorrect amount" unless amount == total_amount
     puts "Thank you for your order! You will receive a confirmation sms shortly."
-    @message.send_message if completed?
+    @message.send_message
   end
 
   private

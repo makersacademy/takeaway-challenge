@@ -39,8 +39,4 @@ describe Order do
       expect { order.checkout(amount) }.to raise_error("Incorrect amount")
     end
   end
-
-  it "send confirmation message" do
-
-  end
 end
