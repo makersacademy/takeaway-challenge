@@ -4,9 +4,9 @@ require_relative 'text_sender'
 class Order
   attr_reader :total, :order_data
 
-  def initialize
+  def initialize(**options)
     @total = 0
-    @text_sender = TextSender.new
+    @text_sender = TextSender.new(options)
   end
 
   def place(options)
@@ -14,13 +14,16 @@ class Order
     @order_data = options[:order]
     update_total
     raise "Error! Wrong total." if options[:total] != total
-    send_text
+    send_confirmation
   end
 
   private
 
-  def send_text
-    message = "Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}"
+  def send_confirmation
+    start_string = "Thank you!
+    Your order was placed and will be delivered before "
+    eta_string = "#{Time.now.hour + 1}:#{Time.now.min}"
+    message = start_string + eta_string
     @text_sender.text(message)
   end
 
