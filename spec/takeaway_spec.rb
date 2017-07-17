@@ -5,6 +5,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new }
   let(:printed_menu) { "pizza is 8.0, rice is 7.0, chicken is 6.0" }
   let(:order) { instance_double("Order", current_orders: { :rice => [7, 7.0] }, current_value: true) }
+  let(:orders) { "rice,pizza" }
 
   describe "#menu?" do
     it 'has a list of dishes with their prices' do
@@ -36,6 +37,17 @@ describe Takeaway do
     it 'can verify the final order' do
       expect(order).to receive(:current_value)
       takeaway.verify_order(order)
+    end
+  end
+
+  before do
+    allow(takeaway).to receive(:send_confirmation)
+  end
+
+  describe "#send_confirmation" do
+    it 'send an order confirmation' do
+      expect(takeaway).to receive(:send_confirmation)
+      takeaway.send_confirmation
     end
   end
 end
