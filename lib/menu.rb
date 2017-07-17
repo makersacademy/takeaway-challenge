@@ -15,4 +15,5 @@ class Menu
   def dish_included?(name)
     dishes.has_key?(name.capitalize)
   end
+
 end

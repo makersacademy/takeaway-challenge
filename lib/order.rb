@@ -23,14 +23,19 @@ class Order
   end
 
   def total_amount
-    total = @basket.map { |name, quantity| menu.dishes[name] * quantity }
     total.inject(0) { |sum, amount| sum + amount }
   end
 
   def checkout(amount)
     raise "Incorrect amount" unless amount == total_amount
-    puts "Thank you for your order!"
+    puts "Thank you for your order! You will receive a confirmation sms shortly."
     @message.send_message
+  end
+
+  private
+
+  def total
+    @basket.map { |name, quantity| menu.dishes[name] * quantity }
   end
 
 end

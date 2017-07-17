@@ -12,7 +12,8 @@ class Message
     @client.messages.create(
       from: "+441202286284",
       to: "+447426382746",
-      body: "Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}"
+      body: "Thank you! Your order was placed and will be delivered before
+      #{Time.now.hour + 1}:#{Time.now.min}"
     )
   end
 end
