@@ -13,7 +13,7 @@ describe Order do
     it 'returns a total of the items ordered' do
       order.add_item_to_order("tuna", 3)
       order.add_item_to_order("frog", 1)
-      expect(order.check_order).to eq "--- Total = €13 ---"
+      expect(order.check_order).to eq nil
     end
   end
 

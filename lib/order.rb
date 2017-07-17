@@ -1,4 +1,5 @@
-require 'time'
+require_relative 'time'
+
 class Order
   attr_reader :order
   def initialize(menu)
@@ -19,7 +20,6 @@ class Order
       @total += value[1] * value[0]
     end
      puts "--- Total = €#{@total} ---"
-     "--- Total = €13 ---"
   end
 
  def times

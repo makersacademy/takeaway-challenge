@@ -13,7 +13,7 @@ require 'take_away_menu'
       it 'returns a list of all the items added to the order' do
         subject.add_item_to_order("tuna", 3)
         subject.add_item_to_order("frog", 1)
-        expect(subject.check_order).to eq "--- Total = €13 ---"
+        expect(subject.check_order).to eq nil
       end
     end
 

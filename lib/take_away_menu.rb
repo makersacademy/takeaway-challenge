@@ -1,4 +1,4 @@
-require 'order'
+require_relative 'order'
 
 class TakeAwayMenu
   def initialize
@@ -27,6 +27,10 @@ class TakeAwayMenu
     return "You have yet to place an order" if @order.order.empty?
     @order.check_order
   end
+
+ def place_order(total)
+   @order.place_order(total)
+ end
 
 
 end
