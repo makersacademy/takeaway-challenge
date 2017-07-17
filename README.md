@@ -1,11 +1,14 @@
-Takeaway Challenge
+Takeaway Challenge  
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            | Deli  |   ))))-----
-          |_)//(''''':      | Foood |
-            //  \_____:_____.-------D     )))))-------
+  ```
+                      ____  
+                       /  \
+                       \__/                    
+                  /=== |  | _________
+              r==/     |  | |       |
+           _  //       |  | | Deli  |   ))))-----
+          |_)//(''''': |  | | Foood |
+            //  \_____:|__|_.-------D     )))))-------
            //   | ===  |   /        \
        .:'//.   \ \=|   \ /  .:'':./    )))))----------
       :' // ':   \ \ ''..'--:'-.. ':
@@ -22,7 +25,7 @@ Takeaway Challenge
 
  I feel I have respected the rule of keeping each object as separate as possible from each others, using encapsulation.
 
-The project has been made with ❤️ from France for the week 2 weekend challenge for Makers Academy.
+The project has been made with ❤️ from France for the weekend challenge of week 2 at Makers Academy.
 
 
  Instructions
@@ -33,6 +36,8 @@ The project has been made with ❤️ from France for the week 2 weekend challen
  2/ Navigate to the project folder: cd takeaway-challenge/.
 
  3/ Install dependencies by running bundle install (you may need to gem install bundle).
+
+ 4/ You will have to create a twilio account: https://www.twilio.com/
 
 
 
