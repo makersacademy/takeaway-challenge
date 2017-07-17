@@ -43,7 +43,7 @@ describe Takeaway do
 
     it 'changes order to nil' do
       takeaway.new_order(1)
-      takeaway.confirm(mobile_number)
+      takeaway.confirm(+447743058608)
       expect(takeaway.order).to be_nil
     end
   end

@@ -1,8 +1,8 @@
-class Takeaway
+require_relative 'menu'
+require_relative 'order'
+require_relative 'sms'
 
-  require_relative 'menu'
-  require_relative 'order'
-  require_relative 'sms'
+class Takeaway
 
   attr_reader :order
 
