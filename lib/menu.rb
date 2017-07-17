@@ -10,4 +10,8 @@ class Menu
       "%s £%.2f" % [item.to_s.capitalize, price]
     end.join(", ")
   end
+
+  def has_dish?(dish)
+    !!dishes[dish]
+  end
 end
