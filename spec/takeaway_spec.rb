@@ -35,7 +35,16 @@ describe Takeaway do
 
     it 'calculates total' do
       subject.order("spring roll", 1)
-      expect(subject.total).to eq "Total = £0.99"
+      expect(subject.display_total).to eq "Total = £0.99"
+    end
+  end
+
+  describe '#complete?' do
+    it { is_expected.to respond_to(:complete?) }
+
+    it 'should be true if order complete' do
+      subject.complete?
+      expect(subject.complete?).to eq true
     end
   end
 end

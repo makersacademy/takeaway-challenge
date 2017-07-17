@@ -8,10 +8,8 @@ describe Order do
     it { is_expected.to respond_to(:add).with(2).argument }
 
     it 'adds an item(s) to basket' do
-      hash = Hash.new(0)
-      hash["spring roll"] += 1
       subject.add("spring roll", 1)
-      expect(subject.items).to eq hash
+      expect(subject.display_basket).to eq "spring roll x1 = £0.99. "
     end
   end
 
@@ -29,7 +27,7 @@ describe Order do
 
     it 'calculates the total' do
       subject.add("spring roll", 1)
-      expect(subject.total).to eq "Total = £0.99"
+      expect(subject.display_total).to eq "Total = £0.99"
     end
   end
 end

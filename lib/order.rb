@@ -1,7 +1,6 @@
 require_relative 'menu'
 
 class Order
-  attr_reader :items, :dish_total, :total
   def initialize
     @items = Hash.new(0)
     @dish_total = Hash.new
@@ -11,6 +10,7 @@ class Order
   def add(dish, quantity = 1)
     @items[dish] += quantity
     @dish_total[dish] = quantity * Menu::MENU[dish]
+    @dish_total.each { |_dish, sum| @total += sum }
   end
 
   def display_basket
@@ -20,7 +20,10 @@ class Order
   end
 
   def total
-    @dish_total.each { |_dish, sum| @total += sum }
+    @total
+  end
+
+  def display_total
     "Total = £#{@total}"
   end
 end
