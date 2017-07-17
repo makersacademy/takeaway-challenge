@@ -1,4 +1,5 @@
-require 'order'
+require_relative 'order'
+require_relative 'text_message'
 
 class Restaurant
 
@@ -15,8 +16,9 @@ class Restaurant
     order.view_order
   end
 
-  def place_order(total_cost, mobile_number = MY_MOBILE)
+  def place_order(total_cost)
     raise "Incorrect order total" unless correct_amount?(total_cost)
+    order.send_confirmation
   end
 
   def select_dish(dish, quantity)

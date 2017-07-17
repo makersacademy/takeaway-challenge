@@ -1,9 +1,13 @@
 require 'restaurant'
+require 'text_message'
 
 describe Restaurant do
 
   subject(:restaurant) { described_class.new(EXAMPLE_MENU, order) }
   let(:order) { double(:order) }
+  let(:correct_amount) { 10 }
+  let(:incorrect_amount) { 5 }
+  let(:not_on_menu) { 'curry' }
   EXAMPLE_MENU =
     { categories: ['pizzas', 'drinks'],
       items: [
@@ -13,7 +17,6 @@ describe Restaurant do
        { name: 'coke', price: 2, category: 'drinks' },
        { name: 'lemonade', price: 2, category: 'drinks' }]
     }
-
 
   let(:pretty_menu) {
     "Pizzas:\n  Margherita (£5.00)\n  Pepperoni (£7.00)\n  Hawaiian (£7.00)\nDrinks:\n  Coke (£2.00)\n  Lemonade (£2.00)\n"
@@ -28,10 +31,10 @@ describe Restaurant do
   describe '#select_dish' do
     it 'tells the order to add the dishes to the order' do
       expect(order).to receive(:add_to_basket)
-      restaurant.select_dish('margherita', 1)
+      restaurant.select_dish(EXAMPLE_MENU[:items].first[:name], 1)
     end
     it 'raises an error if the dish does not exist' do
-      expect{ restaurant.select_dish('curry', 1) }.to raise_error("This dish is not on the menu")
+      expect{ restaurant.select_dish(not_on_menu, 1) }.to raise_error("This dish is not on the menu")
     end
   end
 
@@ -44,8 +47,14 @@ describe Restaurant do
 
   describe '#place_order' do
     it 'raises an error if the price entered is incorrect' do
-      allow(order).to receive(:total_cost) { 10 }
-      expect{ restaurant.place_order(5) }.to raise_error("Incorrect order total")
+      allow(order).to receive(:total_cost) { correct_amount }
+      expect{ restaurant.place_order(incorrect_amount) }.to raise_error("Incorrect order total")
+    end
+
+    it 'instructs Order class to send a confirmation SMS' do
+      allow(order).to receive(:total_cost) { correct_amount }
+      expect(order).to receive(:send_confirmation)
+      restaurant.place_order(correct_amount)
     end
   end
 

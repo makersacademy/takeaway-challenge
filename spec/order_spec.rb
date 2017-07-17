@@ -1,7 +1,9 @@
 require 'order'
+require 'mock_text_message'
 
 describe Order do
-  subject(:order) { described_class.new }
+  subject(:order) { described_class.new(text_module) }
+  let(:text_module) { object_double('mock_text_message') }
   let(:dish) { 'margherita'}
   let(:price) { 5 }
   let(:quantity) { 2 }
@@ -21,6 +23,13 @@ describe Order do
     before { add_to_basket }
     it 'prints the order in progress' do
       expect{ order.view_order }.to output(pretty_order).to_stdout
+    end
+  end
+
+  describe '#send_confirmation' do
+    it 'instructs Twilio to send a confirmation text' do
+      expect(text_module).to receive(:send)
+      order.send_confirmation
     end
   end
 end
