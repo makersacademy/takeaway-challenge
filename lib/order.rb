@@ -31,6 +31,7 @@ class Order
   end
 
   def checkout(amount)
+    return "Cannot checkout, order already placed" if placed?
     return "Cannot checkout, basket is empty" if @basket.empty?
     return "Incorrect amount" unless amount == total
     complete_order

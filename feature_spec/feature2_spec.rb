@@ -21,3 +21,4 @@ p order.checkout(30)
 p order.checkout(34)
 p order.placed?
 p order.add("Cheese & Tomato")
+#p order.checkout(34)

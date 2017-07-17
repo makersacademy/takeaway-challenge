@@ -96,6 +96,11 @@ describe Order do
       it 'sends a confirmation text' do
         expect(order.checkout(12)).to eq "Success"
       end
+
+      it 'does not checkout again if the order has already been placed' do
+        order.checkout(12)
+        expect(order.checkout(12)).to eq "Cannot checkout, order already placed"
+      end
     end
   end
 end
