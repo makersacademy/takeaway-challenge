@@ -16,20 +16,4 @@ IRB.start
 # ta.place_order(order)
 # ta.calculate_total
 # ta.verify_order(order)
-# order.correct_charge?
-
-# it { is_expected.to respond_to(:take_order) }
-# it { is_expected.to respond_to(:create_order) }
-#
-# context 'when dish is not available' do
-#   it 'is expected to raise error' do
-#
-#   end
-# end
-#
-# context 'when dish is available' do
-#   it 'takes an order' do
-#     takeaway.take_order
-#     expect(takeaway.customer_order).to eq customer_order
-#   end
-# end
+# ta.send_confirmation
