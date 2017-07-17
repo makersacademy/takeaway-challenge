@@ -2,6 +2,7 @@ require 'order'
 require 'time'
 describe Order do
   order = Order.new({ tuna: 4, frog: 1 })
+ subject(:order) { described_class.new }
 
   describe '#add item to order' do
     it 'saves each item ordered to a hash' do
@@ -17,6 +18,7 @@ describe Order do
     end
   end
 
+
   describe '#order' do
     it 'returns the instance variable @order' do
       expect(order.order).to eq({ tuna: [4, 3], frog: [1, 1] })
@@ -24,18 +26,21 @@ describe Order do
   end
 
   describe '#place_order' do
-    it 'places the order when the corect total is given' do
+    it 'places the order when the correct total is given' do
       clock = Clock.new
       clock = clock.times
-      expect(order.place_order(13)).to eq("Thank you! Your order was placed and will be delivered before #{clock}")
+      message = "Thank you! Your order was placed and will be delivered before #{clock}"
+      expect(order.place_order(13)).to eq message
     end
 
     it 'raises an error if you try to under pay' do
-      expect { order.place_order(12) }.to raise_error("Sorry we don't hangel")
-  end
+      message = "Sorry we don't hangel"
+      expect { order.place_order(12) }.to raise_error message
+    end
 
     it 'raises an error if you try to over pay' do
-      expect { order.place_order(14) }.to raise_error "To much try again"
+      message = "To much try again"
+      expect { order.place_order(14) }.to raise_error
     end
   end
 end

@@ -71,4 +71,3 @@ pork      300 €3
  => nil
 2.4.0 :009 > china_town.place_order(1200)
  => "Thank you! Your order was placed and will be delivered before 7:50"
-2.4.0 :010 >

@@ -1,4 +1,4 @@
-require_relative 'time'
+require_relative 'sms_messanger'
 
 class Order
   attr_reader :order
@@ -6,6 +6,7 @@ class Order
     @menu = menu
     @order = {}
     @total = 0
+    @sms = SMSMessenger.new
   end
 
   def add_item_to_order(item, quantity)
@@ -22,13 +23,8 @@ class Order
      puts "--- Total = €#{@total} ---"
   end
 
- def times
-   clock = Clock.new
-   clock.times
- end
-
   def place_order(total)
-    return "Thank you! Your order was placed and will be delivered before #{times}" if total == @total
+    return @sms.send_sms if total == @total
     raise "Sorry we don't hangel" if total < @total
     raise "To much try again" if total > @total
   end
