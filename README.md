@@ -12,6 +12,7 @@ Instructions for use:
 ```
 cd ...takeaway-challenge
 ./bin/irb
+order = Order.new
 ```
 
 Limitations:
