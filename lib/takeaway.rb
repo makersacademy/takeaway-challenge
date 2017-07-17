@@ -26,4 +26,8 @@ attr_reader :order
   def finalise_order
     order.complete_order
   end
+
+  def payment(amount)
+     amount == order.total ? "Thank you for your payment!" : "You entered the incorrect payment amount"
+  end
 end

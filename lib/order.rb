@@ -20,7 +20,7 @@ class Order
 
     def update_total
       @basket.each do |hash|
-        @total += hash[:price]
+        @total += hash[:price] * hash[:quantity]
       end
       "Total of £#{@total}"
     end
@@ -31,6 +31,6 @@ private
     end
 
     def print_each_order
-      basket.each { |hash| puts "#{hash[:quantity]} x #{hash[:dish]}. Price: £#{hash[:price]}" }
+      basket.each { |hash| puts "#{hash[:quantity]} x #{hash[:dish]}. Price: £#{hash[:price] * hash[:quantity]}" }
     end
 end

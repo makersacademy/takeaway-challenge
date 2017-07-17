@@ -13,7 +13,7 @@ describe Order do
     expect(order.basket).to eq []
   end
 
-  describe '#add' do
+describe '#add' do
   it 'lets the customer select items and a quantity from the menu along with the price' do
     expect(order.add(item, quantity, price)).to eq "#{quantity} x #{item}, costing £#{quantity * price} have been added to your order"
   end
@@ -21,7 +21,7 @@ describe Order do
   it 'stores the selected items' do
     expect { order.add(item, quantity, price) }.to change{ order.basket.length }.by(1)
   end
-  end
+end
 
   it 'calculates the total of the order in the basket' do
     order.add(item, quantity, price)
