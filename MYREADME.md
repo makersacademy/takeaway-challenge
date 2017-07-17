@@ -41,3 +41,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * create a new order().
 * create a fakeOrder to help save time! and keep accuracy during testing.
 * create a test in Order class that stores a new_order and returns the total payment price.
+
+----------
+*failures*
+* order won't calculate

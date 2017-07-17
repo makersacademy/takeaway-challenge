@@ -1,10 +1,11 @@
 require_relative 'order'
 
-class Menu
+class Kitchen
 
-  attr_reader :new_order
+  attr_reader :new_order, :menu
 
   def initialize
+    @menu = mains
 
   end
 
@@ -30,8 +31,8 @@ class Menu
 
   end
 
-  def place_order(dish)
-    @new_order = Order.new(dish)  #attribute
+  def create_order(dish)
+    @new_order = Order.new(menu, dish)  #attribute
 
   end
 
