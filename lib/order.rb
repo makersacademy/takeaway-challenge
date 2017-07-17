@@ -29,11 +29,10 @@ class Order
   def checkout(amount)
     raise "Incorrect amount" unless amount == total_amount
     puts "Thank you for your order! You will receive a confirmation sms shortly."
-    @message.send_message
+    @message.send_message if completed?
   end
 
   private
-
   def total
     @basket.map { |name, quantity| menu.dishes[name] * quantity }
   end
