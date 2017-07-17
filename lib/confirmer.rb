@@ -10,7 +10,7 @@ class Confirmer
   end
 
   def display_order
-      items.each {|(k,v)| print "#{v} x #{k}\n"}
+    items.each { |(k, v)| print "#{v} x #{k}\n" }
   end
 
   def confirm_order
@@ -22,7 +22,7 @@ class Confirmer
     @client.messages.create(
       :from => '+441277424078',
       :to => '+447787564620',
-      :body => "You ordered: #{items.each {|(k,v)| print "#{v} x #{k}\n"}}\n Your order will arrive at around #{(Time.now + 60*60).strftime("%H:%M")}."
+      :body => "You ordered: #{items.each { |(k,v)| print "#{v} x #{k}\n" }}\n Your order will arrive at around #{(Time.now + 60 * 60).strftime("%H:%M")}."
     )
   end
 end

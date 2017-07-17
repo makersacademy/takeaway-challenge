@@ -17,7 +17,7 @@ class Order
       until @item == ""
         puts "How many?"
         number = gets.chomp.to_i
-        number.times {items << @item}
+        number.times { items << @item }
         select_items
       end
         puts "Write expected amount"
@@ -27,14 +27,14 @@ class Order
 
   def check_price
     sum_items
-    puts 'Incorrect total, please start again'if @confirmer.cost != @expected_total
+    fail 'Incorrect total, please start again' if @confirmer.cost != @expected_total
   end
 
   def sum_items
-    @confirmer = Confirmer.new(items.group_by(&:itself).map{|k,v|[k, v.count]}.to_h)
-      items.each do |item|
-        @confirmer.cost += menu.items[item]
-      end
+    @confirmer = Confirmer.new(items.group_by(&:itself).map{|k, v| [k, v.count]}.to_h)
+    items.each do |item|
+      @confirmer.cost += menu.items[item]
+    end
   end
 
   def summarize_order
