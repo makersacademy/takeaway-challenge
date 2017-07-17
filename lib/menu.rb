@@ -14,4 +14,8 @@ class Menu
   def has_dish?(dish)
     !!dishes[dish]
   end
+
+  def price(dish)
+    dishes[dish]
+  end
 end
