@@ -2,8 +2,8 @@ require 'textbot'
 
 describe Textbot do
   subject(:textbot) { described_class.new }
-  subject(:clientdouble) { double(:clientdouble, messages: messagedouble) }
-  subject(:messagedouble) { double(:messagedouble, create: nil, sid: nil) }
+  let(:clientdouble) { double(:clientdouble, messages: messagedouble) }
+  let(:messagedouble) { double(:messagedouble, create: nil, sid: nil) }
 
   describe "#initialize" do
 

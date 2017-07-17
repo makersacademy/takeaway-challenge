@@ -1,12 +1,11 @@
 require 'twilio-ruby'
-require 'date'
-require 'twiliodetails'
+require_relative 'twiliodetails'
 
 class Textbot
   def initialize
     account_sid = Twilio::ACCOUNT_SID
     auth_token = Twilio::AUTH_TOKEN
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
   def sendmessage(amount, client = @client)
