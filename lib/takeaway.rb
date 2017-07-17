@@ -1,4 +1,4 @@
-require 'order'
+require_relative 'order'
 
 class TakeAway
 
