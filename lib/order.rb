@@ -4,11 +4,12 @@ class Order
 
   attr_reader :total
 
-  def initialize(menu)
+  def initialize(menu, messenger_class = Messenger)
     @menu = menu
     @basket = Hash.new(0)
     @total = 0
     @placed = false
+    @messenger_class = messenger_class
   end
 
   def read_menu
@@ -56,6 +57,6 @@ class Order
   def send_text_message
     time = Time.new + 60 * 60
     text = "Thank you! Your order will be delivered before #{time.hour}:#{time.min}"
-    Messenger.new.send_message(text)
+    @messenger_class.new.send_message(text)
   end
 end

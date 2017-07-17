@@ -15,7 +15,8 @@ describe Order do
       }
     )
   }
-  subject(:order) { described_class.new(menu) }
+  let(:messenger) { double (:messenger) }
+  subject(:order) { described_class.new(menu, messenger) }
 
   describe 'initialization' do
     it 'has an empty basket' do
@@ -44,7 +45,7 @@ describe Order do
   describe '#add' do
 
     it 'does not add to the basket if the order has already been placed' do
-      allow(order).to receive(:send_text_message).and_return("Success")
+      allow(messenger).to receive_message_chain(:new, :send_message).and_return("Success")
       order.add("Cheese & Tomato", 2)
       order.checkout(12)
       expect(order.add("Vegi Sizzler", 1)).to eq "Cannot add, order already placed"
@@ -81,7 +82,7 @@ describe Order do
     context 'basket is not empty' do
       before do
         order.add("Cheese & Tomato", 2)
-        allow(order).to receive(:send_text_message).and_return("Success")
+        allow(messenger).to receive_message_chain(:new, :send_message).and_return("Success")
       end
 
       it 'does not checkout if the amount is incorrect' do
