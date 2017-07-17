@@ -19,9 +19,9 @@ class Menu
     list_of_dishes.each_with_index.map { |dish, i| "#{i + 1}. #{dish.menu_readable}" }.join("\n")
   end
 
-  def add_to_order(index, quantity)
+  def add_to_order(index, qty)
     selected_dish = list_of_dishes[index - 1]
-    @new_order << { dish: selected_dish.name, quantity: quantity, price: (quantity * selected_dish.price) }
+    @new_order << { dish: selected_dish.name, quantity: qty, price: (qty * selected_dish.price) }
   end
 
   def place_order(order_class = Order)

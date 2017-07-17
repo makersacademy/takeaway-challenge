@@ -1,5 +1,6 @@
 # this class contains an order of dishes chosen from the menu
 require_relative 'menu'
+require_relative 'msg_sender'
 
 class Order
 
@@ -12,10 +13,12 @@ class Order
   def process_order
     confirm_order
     print_order
-    send_text
+    create_text
   end
 
   def confirm_order
+    total_price_calculation
+    price_check
     raise "The total amount is not correct, please order again." if total_price != calculated_price
     "Order confirmed!"
   end
@@ -39,7 +42,8 @@ class Order
     @calculated_price = ary.inject(0, :+)
   end
 
-  def send_text
+  def create_text(text_class = MsgSender)
+    text_class.new
   end
 
 end

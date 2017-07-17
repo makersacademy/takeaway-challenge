@@ -28,12 +28,20 @@ describe Order do
       expect(subject.confirm_order).to eq "Order confirmed!"
     end
     it 'raises error if total price is not correct' do
-      allow(subject).to receive(:calculated_price) {8}
-      expect {subject.confirm_order}.to raise_error "The total amount is not correct, please order again."
+      allow(subject).to receive(:calculated_price) { 8 }
+      expect { subject.confirm_order }.to raise_error "The total amount is not correct, please order again."
     end
     it 'checks price by summing individual prices' do
       subject.price_check
       expect(subject.calculated_price).to eq 16
+    end
+  end
+
+  describe '#send_text' do
+    let(:text) { MsgSender.new }
+    it 'sends a text when order is confirmed and processed' do
+      subject.process_order
+      expect(subject.create_text).not_to be_nil
     end
   end
 end
