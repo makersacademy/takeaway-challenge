@@ -2,8 +2,6 @@ require 'takeaway'
 
 describe Takeaway do
   let(:subject) { described_class.new }
-  let(:dish) { double :dish }
-  let(:quantity) { 1 }
 
   describe '#read_menu' do
     it { is_expected.to respond_to(:read_menu) }
@@ -18,10 +16,8 @@ describe Takeaway do
     it { is_expected.to respond_to(:order).with(2).argument }
 
     it 'adds an item to basket' do
-      items = Hash.new(0)
-      items[dish] += 1
-      subject.order(dish, quantity)
-      expect(subject.view_basket).to eq items
+      subject.order("spring roll", 1)
+      expect(subject.view_basket).to eq "spring roll x1 = £0.99. "
     end
 
   end
@@ -29,11 +25,17 @@ describe Takeaway do
     it { is_expected.to respond_to(:view_basket) }
 
     it 'displays basket' do
-      subject.order(dish, quantity)
-      subject.order(dish, quantity)
-      items = Hash.new(0)
-      items[dish] += 2
-      expect(subject.view_basket).to eq items
+      subject.order("spring roll", 1)
+      expect(subject.view_basket).to eq "spring roll x1 = £0.99. "
+    end
+
+  end
+  describe '#total' do
+    it { is_expected.to respond_to(:total) }
+
+    it 'calculates total' do
+      subject.order("spring roll", 1)
+      expect(subject.total).to eq "Total = £0.99"
     end
   end
 end
