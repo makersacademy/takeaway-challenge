@@ -69,7 +69,7 @@ I didn't complete this challenge, if I had more time I would have implemented a 
 - [Guard-Rspec](https://github.com/guard/guard-rspec)
 
 # Solution References
-- Sam Morgans[challenge exemplar](https://www.youtube.com/watch?v=mgiJKdH9x8c&t=82s)
+- Sam Morgans [challenge exemplar](https://www.youtube.com/watch?v=mgiJKdH9x8c&t=82s)
 
 # Code Review
 
