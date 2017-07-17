@@ -3,7 +3,7 @@ require "./lib/basket.rb"
 
 class Takeaway
   include Menu
- 
+
   def initialize
     @welcome = "Welcome to Carlo's"
     @menu = Menu::BURGERS
@@ -21,11 +21,11 @@ class Takeaway
   end
 
   def on_the_menu?(item)
-      if !@menu.include?(item.to_sym)
-        puts "Not on the menu, please select again"
-      else
-        @basket.add_to_basket(item)
-      end
+    if !@menu.include?(item.to_sym)
+      puts "Not on the menu, please select again"
+    else
+      @basket.add_to_basket(item)
+    end
   end
 
   def select_from_menu
@@ -43,5 +43,4 @@ class Takeaway
   end
 
 end
-
 

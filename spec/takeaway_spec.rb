@@ -12,7 +12,7 @@ let(:menu) { double(Menu::BURGERS) }
   end
 
   it "dispays welcome message and checks if its a string" do
-    expect((subject.welcome).class).to eq String
+    expect((subject.welcome).class).to eq String 
   end
   
 end

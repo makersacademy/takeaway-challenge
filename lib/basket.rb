@@ -2,7 +2,7 @@ require "./lib/menu.rb"
 
 class Basket
   include Menu
-  attr_reader :basket
+  #attr_reader :basket
 
   def initialize
       @basket = Hash.new(0)
@@ -28,3 +28,4 @@ class Basket
   end
 
 end
+
