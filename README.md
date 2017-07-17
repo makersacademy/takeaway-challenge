@@ -14,20 +14,11 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
+Full instructions can be read in [INSTRUCTIONS.md](INSTRUCTIONS.md)
+
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -48,32 +39,46 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+####To Use the Program
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Using irb or pry, enter the following commands:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+`require_relative '/lib/takeaway.rb'`
+`takeaway = Takeaway.new`
+Note: real telephone numbers have be omitted from the messager.rb file, you will need to add a Twilio number and customer number to use the text message confirmation functionality.
 
+####Methods
+View the takeaway menu:
+`takeaway.view_menu`
 
-In code review we'll be hoping to see:
+Add items and quantities to order
+add(item, quantity = 1)
+`takeaway.add("Margherita", 2)`
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Display your order and current total cost
+`takeaway.view_order`
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Confirm payment to complete order and a text message will be sent to your phone
+complete_order(payment)
+`takeaway.complete_order(22)`
 
-Notes on Test Coverage
-------------------
+####Structure of program
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Classes
+Takeaway
+This is the interface the customer would use. See above for its main methods.
+It includes instances of the Order, Menu and Messager classes.
+
+Menu
+Stores the dishes from data/dishes.rb file in a hash `@dishes`.
+The method `to_s` returns the menu as a string.
+
+Order
+This uses a hash `@basket` to store dish names and quantities the customer `add` to the order.
+The method `to_s` returns the order as a string with a current total of order.
+The method size returns the number of dishes in the order.
+
+Messager
+This uses the Twilio API to `send_text` message to a customer number to confirm order.
+
+[code review rubric](docs/review.md).  
