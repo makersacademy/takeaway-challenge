@@ -1,16 +1,24 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class Messager
 
-  TWILIO_NUMBER, CUSTOMER_NUMBER = '', ''
+  TWILIO_NUMBER, CUSTOMER_NUMBER = ENV['TWILIO_NUMBER'], ENV['CUSTOMER_NUMBER']
 
   def initialize
-    account_sid = 'AC97143f5ea971f392fcb0875852911f6b'
-    auth_token = '665633a5da3552e60650bbaf77b54916'
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new ENV['account_sid'], ENV['auth_token']
+    @number = CUSTOMER_NUMBER
   end
 
-  def send_text(message, customer_telephone_no = CUSTOMER_NUMBER)
+  def enter_tel_no(number)
+    number = number.tr(" ","")
+    number[0] = '' if number[0] == "0"
+    raise 'invalid number' unless number.match(/\d{10}/)
+    @number = "++44" + number
+  end
+
+  def send_text(message, customer_telephone_no = @number)
     @client.messages.create({
       :from => TWILIO_NUMBER,
       :to => customer_telephone_no,
