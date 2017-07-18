@@ -1,13 +1,18 @@
-require_relative 'menu'
-require_relative 'confirmation'
+# require_relative 'menu'
+# require_relative 'confirmation'
 
 class Order
-  attr_reader :menu, :booking, :total_to_pay
-  def initialize
-    @menu = Menu.new
+
+  attr_reader :menu, :booking, :total_to_pay, :confirmation
+  def initialize(menu, confirmation)
+    @menu = menu
     @booking = Array.new
-    @confirmation = Confirmation.new
+    @confirmation = confirmation
     @total_to_pay = 0
+  end
+
+  def print_menu
+    @menu.list_dishes
   end
 
   def add_dish(dish, quantity = 1)

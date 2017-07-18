@@ -2,11 +2,14 @@ require 'order'
 require 'menu'
 
 describe Order do
-  subject(:order) { described_class.new }
+  subject(:order) { described_class.new( "Salad", "Text") }
 
   it 'responds to add_dish' do
     expect(order).to respond_to(:add_dish)
   end
+
+  # allow(menu).to receive(:print_menu).and_return(:printed_menu)
+  #   expect(order.read_menu).to eq :printed_menu
 
   it 'updates order when dishes are chosen' do
     order.add_dish("salad", 3)
