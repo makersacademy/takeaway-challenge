@@ -2,14 +2,14 @@ require 'order'
 require 'menu'
 
 describe Order do
-  subject(:order) { described_class.new( "Salad", "Text") }
+  subject(:order) { described_class.new(menu, confirmation) }
+  let(:menu) { Menu.new }
+  let(:confirmation) { Confirmation.new(double :client) }
+
 
   it 'responds to add_dish' do
     expect(order).to respond_to(:add_dish)
   end
-
-  # allow(menu).to receive(:print_menu).and_return(:printed_menu)
-  #   expect(order.read_menu).to eq :printed_menu
 
   it 'updates order when dishes are chosen' do
     order.add_dish("salad", 3)
@@ -25,8 +25,9 @@ describe Order do
   end
 
   it "summs all dishes chosen" do
+    total = 6
     order.completed_order("soup", 2)
-    expect(order.total_to_pay).to eq 6
+    expect(order.total_to_pay).to eq total
   end
 
   it "raises an error if amount given does not match total_to_pay" do

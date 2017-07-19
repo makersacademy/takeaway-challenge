@@ -16,9 +16,39 @@ Takeaway Challenge
 
 Instructions
 -----
+Run the command `bundle` in the project directory to ensure you have all the gems
 
-* Run the command `bundle` in the project directory to ensure you have all the gems
-* Use `Rspec` to test
+`require './lib/order'`
+
+`require './lib/menu'`
+
+`require './lib/confirmation'`
+
+`today_menu = Menu.new`
+
+`text = Confirmation.new`
+
+`new_order = Order.new(today_menu, text)`
+
+`new_order.print_menu`
+
+`new_order.add_dish("salad")`
+
+`new_order.completed_order("salad", 1)`
+
+`new_order.payment(5)`
+
+Use `Rspec` to test
+
+## Overview
+
+Place the order by giving the list of dishes and their quantities. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 30 minutes from now. "Thank you! Your order was placed and will be delivered before Hour:Min".
+
+The text sending functionality implemented using Twilio API.
+
+When Takeaway is loaded into IRB and the order is placed, the text will be sent
+
+For the project testing purpose use personal mobile phone number.
 
 User stories:
 -----
@@ -40,12 +70,3 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 30 minutes from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account.
-  * A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.

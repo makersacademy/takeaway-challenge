@@ -1,12 +1,9 @@
-# require_relative 'menu'
-# require_relative 'confirmation'
-
 class Order
 
   attr_reader :menu, :booking, :total_to_pay, :confirmation
   def initialize(menu, confirmation)
     @menu = menu
-    @booking = Array.new
+    @booking = []
     @confirmation = confirmation
     @total_to_pay = 0
   end

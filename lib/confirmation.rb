@@ -15,8 +15,7 @@ class Confirmation
     message = @client.messages.create(
       body: "Thank you! The order was placed and will be delivered before #{delivery_time}",
       to: ENV['SEND_TO'],
-      from: ENV['FROM'])
-      #create (method) to be stubbed and not to send the message
+      from: ENV['FROM'])    
   end
 
   private
