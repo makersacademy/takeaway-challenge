@@ -14,6 +14,45 @@ Takeaway Challenge
 
  ```
 
+ PROJECT OVERVIEW
+ ----------------
+ * a program that allows users to create their own menu, show that menu in a readable form, select a dish and add it to their order and finally confirm the order and send a confirmation text via twilio API
+ * list of classes: dish / menu / order / msg_sender
+
+ IRB EXAMPLE
+ -----------
+ ```
+ 2.4.0 :002 > require './lib/menu'
+  => true
+ 2.4.0 :003 > menu = Menu.new
+  => #<Menu:0x007fbb1833ee58 @list_of_dishes=[], @new_order=[]>
+ 2.4.0 :004 > menu.add_dish("Pizza", 5)
+  => [#<Dish:0x007fbb18327460 @name="Pizza", @price=5>]
+ 2.4.0 :005 > menu.add_dish("Fries", 6)
+  => [#<Dish:0x007fbb18327460 @name="Pizza", @price=5>, #<Dish:0x007fbb183155f8 @name="Fries", @price=6>]
+ 2.4.0 :006 > menu.show_menu
+  => "1. Pizza, £5\n2. Fries, £6"
+ 2.4.0 :007 > menu.add_to_order(1,2)
+  => [{:dish=>"Pizza", :quantity=>2, :price=>10}]
+ 2.4.0 :008 > menu.add_to_order(2,2)
+  => [{:dish=>"Pizza", :quantity=>2, :price=>10}, {:dish=>"Fries", :quantity=>2, :price=>12}]
+ 2.4.0 :009 > order = menu.place_order
+  => #<Order:0x007fbb182dee40 @current_order=[{:dish=>"Pizza", :quantity=>2, :price=>10}, {:dish=>"Fries", :quantity=>2, :price=>12}]>
+ 2.4.0 :010 > order.process_order
+  => #<MsgSender:0x007fbb182cf800>
+  ```
+
+ INSTALLATION INSTRUCTIONS
+ -------------------------
+ * please run `bundle install` when running this for the first time
+ * twilio-ruby and sinatra gems are required for correct sms functionality
+ * rspec needs to be working for correct test functionality
+
+ SOURCE
+ ------
+ Original of the challenge can be found here: https://github.com/makersacademy/takeaway-challenge
+
+
 Instructions
 -------
 
