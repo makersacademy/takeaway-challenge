@@ -1,10 +1,10 @@
 #require_relative 'takeaway'
 class Order
-  attr_reader :basket, :total
+  attr_reader :basket
 
     def initialize
       @basket = []
-      @total = 0
+      # @total = 0
     end
 
     def add(item, quantity, price)
@@ -15,14 +15,15 @@ class Order
     def complete_order
       puts "You ordered: "
       print_each_order
-      puts update_total
+      puts "Total of £#{total}"
     end
 
-    def update_total
+    def total
+      total = 0
       @basket.each do |hash|
-        @total += hash[:price] * hash[:quantity]
+        total += hash[:price] * hash[:quantity]
       end
-      "Total of £#{@total}"
+      total
     end
 
 private

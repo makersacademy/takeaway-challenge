@@ -1,4 +1,4 @@
-require 'order'
+
 
 describe Order do
 
@@ -25,7 +25,7 @@ end
 
   it 'calculates the total of the order in the basket' do
     order.add(item, quantity, price)
-    expect(order.update_total).to eq "Total of £#{price}"
+    expect(order.total).to eq price
   end
 
   it 'prints the completed order' do

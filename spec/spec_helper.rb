@@ -2,6 +2,12 @@ require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
 
+require 'basket'
+require 'message'
+require 'order'
+require 'takeaway'
+require 'menu'
+
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
   # Want a nice code coverage website? Uncomment this next line!
