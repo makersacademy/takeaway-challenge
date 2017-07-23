@@ -5,13 +5,6 @@ describe Order do
   let(:current_orders) { { :rice => [7, 7.0] } }
   let(:current_value) { @current_value }
 
-  describe "#choose_dish" do
-    it 'chooses available dishes' do
-      order.choose_dish
-      expect(order.dish_available?).to eq true
-    end
-  end
-
   describe "#save_order" do
     it 'saves an order' do
       order.save_order
