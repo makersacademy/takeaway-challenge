@@ -1,0 +1,19 @@
+#! /usr/bin/env ruby -w
+require 'irb'
+
+puts 'Loading files..'
+require './lib/takeaway.rb'
+require './lib/order.rb'
+IRB.start
+
+# ta = Takeaway.new
+# order = Order.new
+# order.choose_dish
+# rice
+#  2
+# order.calculator
+# order.current_value
+# ta.place_order(order)
+# ta.calculate_total
+# ta.verify_order(order)
+# ta.send_confirmation

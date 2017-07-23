@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/funmia/takeaway-challenge.svg?branch=master)](https://travis-ci.org/funmia/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 ```
