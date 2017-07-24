@@ -2,60 +2,59 @@ require 'menu'
 
 describe Menu do
 
-	describe '#list_dishes' do
+	describe '#get_dishes' do
 		subject(:menu) { Menu.new }
-		it {is_expected.to respond_to(:list_dishes)}
+		it {is_expected.to respond_to(:get_dishes)}
 		it 'should return array' do
-			expect(menu.list_dishes).to be_instance_of(Array)
+			expect(menu.get_dishes).to be_instance_of(Array)
 		end
 		it 'should return an array of hashes' do
-			menu.list_dishes.each { |dish| 
+			menu.get_dishes.each { |dish|
 				expect(dish).to be_instance_of(Hash)
 			}
 		end
 	end
 
-	describe '#save_csv' do
+	describe '#save_to_csv' do
 		subject(:menu) { Menu.new }
-		it {is_expected.to respond_to(:save_csv).with(1).argument}
+		it {is_expected.to respond_to(:save_to_csv).with(1).argument}
 		it 'should add something to the csv file' do
-			menu.load_csv('test_menu.csv')
-			menu.save_csv('test_menu_save.csv')
+			menu.load_from_csv('test_menu.csv')
+			menu.save_to_csv('test_menu_save.csv')
 			File.read('test_menu_save.csv').should == File.read('test_menu.csv')
 		end
 	end
 
-	describe '#load_csv' do
+	describe '#load_from_csv' do
 		subject(:menu) { Menu.new }
 		it 'should add an array of hashes to @dishes' do
-			before = menu.list_dishes.length
-			menu.load_csv('test_menu.csv')
-			after = menu.list_dishes.length
+			before = menu.get_dishes.length
+			menu.load_from_csv('test_menu.csv')
+			after = menu.get_dishes.length
 			expect(before).to be < after
 		end
 	end
 
-	describe '#save_menu' do
+	describe '#set_menus' do
 		subject(:menu) { Menu.new }
 		it 'should add an array of hashes to @@menus' do
 			before = Menu.menus.length
-			menu.load_csv('test_menu.csv')
-			menu.save_menu
+			menu.load_from_csv('test_menu.csv')
+			menu.set_menus
 			after = Menu.menus.length
 			expect(before).to be < after
 		end
 	end
 
-	def add_dish(dish)
+	def set_dishes(dish)
 		expect(Dish).to recieve(:new).and_return({name: 'name', price: 3})
 		it 'raises error if not passed a valid Dish object' do
-			expect(menu.add_dish('chicken')).to raise_error ArgumentError, 'Not a valid dish object' 
+			expect(menu.set_dishes('chicken')).to raise_error ArgumentError, 'Not a valid dish object'
 		end
 		it 'saves new Dish to @dishes as a correctly formatted hash' do
-			menu.add_dish(Dish.new)
-			expect(men.list_dishes.last).to eq({name: 'name', price: 3})
+			menu.set_dishes(Dish.new)
+			expect(men.get_dishes.last).to eq({name: 'name', price: 3})
 		end
 	end
 
 end
-

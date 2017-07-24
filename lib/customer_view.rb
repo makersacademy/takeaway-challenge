@@ -11,13 +11,13 @@ class CustomerView
 
 	def greeting
 		"Welcome to Sam's takeaway."
-		list_menus
+		print_menus
 	end
 
 	private
 
-	def list_menus
-		num_menus = Menu.list_menus
+	def print_menus
+		num_menus = Menu.print_menus
 		puts "Which menu number would you like to order from?"
 		choose_menu(num_menus)
 	end
@@ -30,21 +30,21 @@ class CustomerView
 
 	def check_valid_menu(menu_num, num_menus)
 		unless (menu_num <= num_menus)
- 			puts "Not a valid menu number" 
- 			list_menus
+ 			puts "Not a valid menu number"
+ 			print_menus
  		end
  	end
 
 	def create_order(menu_num)
 		@order = Order.new
-		@order.select_menu(menu_num)
+		@order.get_menu(menu_num)
 		order_dish
 	end
 
 	def order_dish
 		dish = select_dish
 		quantity = select_quantity
-		@order.select_dish(dish, quantity.to_i)
+		@order.get_dish(dish, quantity.to_i)
 		dish_confirmation(dish.capitalize, quantity)
 	end
 
@@ -76,7 +76,7 @@ class CustomerView
 	end
 
 	def check_order
-		@order.list_orders
+		@order.print_orders
 		check_total
 	end
 
@@ -87,10 +87,10 @@ class CustomerView
 
 	def payment
 		puts "Please type p to pay now:"
-		if gets.chomp.downcase == "p" 
-			puts "Thank you for your payment. A confirmation text will arrive shortly." 
+		if gets.chomp.downcase == "p"
+			puts "Thank you for your payment. A confirmation text will arrive shortly."
 			sms_confirmation
-		else 
+		else
 			check_order
 		end
 	end

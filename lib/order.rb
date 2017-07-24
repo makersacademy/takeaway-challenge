@@ -9,25 +9,25 @@ class Order
 		@menu = nil
 	end
 
-	def select_menu(number)
+	def get_menu(number)
 		raise ArgumentError, 'Not a valid menu number' unless number <= Menu.menus.length
-		@menu = Menu.select_menu(number)
+		@menu = Menu.get_menu(number)
 	end
 
-	def select_dish(name, quantity)
+	def get_dish(name, quantity)
 		validate_dish(name.downcase, quantity)
 		add_dish(name.downcase, quantity, (find_price(name)*quantity))
 	end
 
-	def list_orders
+	def print_orders
 		@dishes.each { |order|
 			puts "You've ordered #{order[:quantity]} #{order[:name].capitalize} at £#{find_price(order[:name])} each = #{order[:total]}"
 		}
 	end
 
-	def raise_total
+	def calculate_total
 		total = 0
-		@dishes.each {|order| 
+		@dishes.each {|order|
 			total += order[:total].to_i
 		}
 		total
@@ -44,7 +44,7 @@ class Order
 	def dish_exists?(name)
 		#return true if valid dish name for menu
 		exists = false
-		@menu.list_dishes.each { |dish| 
+		@menu.get_dishes.each { |dish|
 			exists = true if dish[:name] == name.downcase
 		}
 		exists
@@ -52,7 +52,7 @@ class Order
 
 	def find_price(name)
 		price = 0
-		@menu.list_dishes.each { |dish| 
+		@menu.get_dishes.each { |dish|
 			price = dish[:price] if dish[:name] == name.downcase
 		}
 		price.to_i

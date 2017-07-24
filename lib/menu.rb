@@ -11,42 +11,51 @@ class Menu
 		@dishes = []
 	end
 
-	def self.list_menus
+	def self.print_menus
 		menu_counter = 0
-		@@menus.each { |menu| 
+		@@menus.each { |menu|
 			puts "Menu #{menu_counter+1}: #{menu.list_dishes}"
 			menu_counter += 1
 		}
 		menu_counter
 	end
 
-	def self.select_menu(number)
+	def self.get_menu(number)
 		@@menus[number - 1]
 	end
 
-	def add_dish(dish)
-		raise ArgumentError, 'Not a valid dish object' unless dish.instance_of? Dish
-		@dishes << dish.to_hash
+	def set_menus
+		@@menus << self
 	end
 
-	def list_dishes
+	def get_dishes
 		@dishes
 	end
 
-	def save_csv(filename)
-	 	CSV.open(filename, 'wb') { |csv| 
-			@dishes.each { |dish| csv << dish }
+	def set_dishes(dish)
+		unless dish.instance_of? Dish
+			raise ArgumentError, 'Not a valid dish object'
+		end
+		@dishes << dish.to_hash
+	end
+
+	def save_to_csv(filename)
+	 	CSV.open(filename, 'wb') { |csv|
+
+			@dishes.each { |dish|
+				row = []
+				puts dish
+				row << dish[:name] << dish[:price]
+				csv << row
+			}
 		}
 	end
 
-	def load_csv(filename)
-		CSV.foreach(filename) { |row| 
+	def load_from_csv(filename)
+		CSV.foreach(filename) { |row|
 			name, price = row
 			@dishes << {name: name.downcase, price: price}
 		}
 	end
 
-	def save_menu
-		@@menus << self
-	end
 end
