@@ -81,7 +81,7 @@ class CustomerView
 	end
 
 	def check_total
-		puts "The total bill comes to £#{@order.raise_total}"
+		puts "The total bill comes to £#{@order.calculate_total}"
 		payment
 	end
 

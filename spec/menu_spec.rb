@@ -21,7 +21,7 @@ describe Menu do
 		it 'should add something to the csv file' do
 			menu.load_from_csv('test_menu.csv')
 			menu.save_to_csv('test_menu_save.csv')
-			File.read('test_menu_save.csv').should == File.read('test_menu.csv')
+			expect(File.read('test_menu_save.csv')).to eq(File.read('test_menu.csv'))
 		end
 	end
 

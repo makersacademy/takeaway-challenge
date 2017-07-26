@@ -12,11 +12,10 @@ class SmsConfirmation
 		client = Twilio::REST::Client.new(account_sid, auth_token)
 
 		client.account.messages.create(
-		  from: '+447903107385',
-		  to: '+447903107385',
+		  from: ENV['TWILIO_PHONE'],
+		  to: ENV['TWILIO_DESTINATION_PHONE'],
 		  body: 'Thanks for your order. It will be delivered before #{time}.'
 		)
 	end
 
 end
-

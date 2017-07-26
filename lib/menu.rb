@@ -14,7 +14,7 @@ class Menu
 	def self.print_menus
 		menu_counter = 0
 		@@menus.each { |menu|
-			puts "Menu #{menu_counter+1}: #{menu.list_dishes}"
+			puts "Menu #{menu_counter+1}: #{menu.get_dishes}"
 			menu_counter += 1
 		}
 		menu_counter
