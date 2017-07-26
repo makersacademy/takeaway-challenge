@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages.json
+    body:
+      encoding: US-ASCII
+      string: From=%2B441134678471&To=%2B447903107385&Body=Thanks+for+your+order.%C2%A0It+will+be+delivered+before+%23%7Btime%7D.
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/4.13.0 (ruby/x86_64-darwin16 2.4.1-p111)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic QUM4NjdkYzJjMTk0ZjkyNjgwOGQ1ZmQwZmY0NTViMmVhZDo3MzQxN2ZlOWJhZGY2Zjc1NTk1YzY2MGZiNWQ2NTQzOQ==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 400
+      message: BAD REQUEST
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 26 Jul 2017 15:40:44 GMT
+      Twilio-Request-Duration:
+      - '0.118'
+      Twilio-Request-Id:
+      - RQed3842391b274af38ae60599df3f84b3
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '218'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"code": 21606, "message": "The From phone number <TWILIO_PHONE> is
+        not a valid, SMS-capable inbound phone number or short code for your account.",
+        "more_info": "https://www.twilio.com/docs/errors/21606", "status": 400}'
+    http_version: 
+  recorded_at: Wed, 26 Jul 2017 15:40:44 GMT
+recorded_with: VCR 3.0.3
