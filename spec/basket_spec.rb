@@ -2,7 +2,7 @@ require './lib/basket.rb'
 
 describe Basket do
   let(:item) { double(:item) }
-  let(:formatter) { double(:formatter, show_table: "") }
+  let(:formatter) { double(:formatter, show_table: "", format_price: "") }
   subject { Basket.new(formatter) }
 
   describe '.items' do
@@ -80,6 +80,15 @@ describe Basket do
         subject.add_item({ name: "maps", price: 2.5 })
         subject.add_item({ name: "sapm", price: 3.5 })
         expect(subject.basket_total).to eq(7)
+      }
+    end
+  end
+
+  describe 'formatted_total' do
+    context 'uses formatter' do
+      specify {
+        expect(formatter).to receive(:format_price)
+        subject.formatted_total
       }
     end
   end

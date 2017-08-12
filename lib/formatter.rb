@@ -5,12 +5,13 @@ class Formatter
   ITEM_WIDTH = 20
   PRICE_WIDTH = 5
 
-  def show_table(title, array)
-    puts head(title)
-    puts titles
+  def format_table(title, array)
+    string = "#{head(title)}\n#{titles}\n"
     array.each_with_index do |item, index|
-      puts line(index, item[:name], item[:price])
+      string += line(index, item[:name], item[:price])
+      string += "\n"
     end
+    string
   end
 
   def format_price(amount)

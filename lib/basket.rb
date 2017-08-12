@@ -24,6 +24,10 @@ class Basket
     value
   end
 
+  def formatted_total
+    @formatter.format_price(basket_total)
+  end
+
   def show_basket
     @formatter.show_table("basket", @items)
     show_total

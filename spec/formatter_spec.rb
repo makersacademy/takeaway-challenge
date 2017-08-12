@@ -4,7 +4,7 @@ describe Formatter do
 
   subject { Formatter.new }
 
-  describe '.show_table' do
+  describe '.format_table' do
     context 'displays' do
       specify {
         item = { name: 'item', price: 1 }
@@ -15,23 +15,21 @@ describe Formatter do
           "| id | dish                 price\n" +
           "| 0  | item                 £1.00\n" +
           "| 1  | item                 £1.00\n"
-        expect { subject.show_table("thing", [item, item]) }.to(
-          output(expected_string).to_stdout
-        )
+        expect(subject.format_table("thing", [item, item])).to eq(expected_string)
       }
     end
 
     context 'uses head' do
       specify {
         expect(subject).to receive(:head)
-        subject.show_table("thing", [])  
+        subject.format_table("thing", [])
       }
     end
 
     context 'uses titles' do
       specify {
         expect(subject).to receive(:titles)
-        subject.show_table("thing", [])
+        subject.format_table("thing", [])
       }
     end
   end
