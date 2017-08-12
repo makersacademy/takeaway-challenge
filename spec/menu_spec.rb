@@ -3,9 +3,7 @@ require_relative '../lib/menu'
 describe 'Menu' do
 
   subject(:menu) { Menu.new }
-  let(:print_menu) { "Curry - 8.95\n" "Rice - 3.5\n" "Naan - 2.5\n" }
-
-  # how to intialize with 2 arguments
+  let(:print_menu) { "Curry - 8.95\nRice - 3.5\nNaan - 2.5\n" }
 
   context 'new instance' do
 
@@ -24,7 +22,7 @@ describe 'Menu' do
       end
 
       it 'prints the menu out to user' do
-        expect{menu.print_menu}.to output(print_menu).to_stdout
+        expect { menu.print_menu }.to output(print_menu).to_stdout
       end
     end
   end

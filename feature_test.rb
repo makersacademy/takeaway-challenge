@@ -1,7 +1,15 @@
 require './lib/menu.rb'
+require './lib/order.rb'
 
-p menu = Menu.new
+menu = Menu.new
 
-p menu.dish.keys[0]
+# p menu.dish
+#
+# p print = menu.dish
+#
+# p print.has_key?(:curry)
+p order1 = Order.new(menu)
 
-p menu.print_menu
+p order1.place_order('curry', 5)
+
+p order1.basket
