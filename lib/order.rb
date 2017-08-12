@@ -12,7 +12,7 @@ class Order
     @contents << order_item
   end
 
-  def loop_receiving
+  def loop_receiving(order_item)
     while order_item.dish_number != ""
       receive(order_item)
       order_item = OrderItem.new
