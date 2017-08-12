@@ -10,6 +10,14 @@ class Menu
     CSV.open("menu.csv", "r")
   end
 
+  def print_menu
+    self.open_menu do |newfile|
+      newfile.readlines.each do |line|
+        puts "#{line}"
+      end
+    end
+  end
+
 end
 
 

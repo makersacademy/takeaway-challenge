@@ -2,6 +2,7 @@ require './lib/menu.rb'
 
 describe Menu do
   let(:csv) { double :csv }
+  let(:menu_file) { double :menu_file }
   let(:menu) { described_class.new }
 
   it 'prints the menu header' do
@@ -11,6 +12,11 @@ describe Menu do
   it 'opens the file with the menu on' do
     menu.open_menu
     allow(csv).to receive(:open)
+  end
+
+  it 'it prints each line of the file to the screen' do
+    menu.open_menu
+    allow(menu_file).to receive(:readlines)
   end
 
 end
