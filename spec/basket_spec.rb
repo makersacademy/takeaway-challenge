@@ -84,11 +84,17 @@ describe Basket do
     end
   end
 
-  describe '.show_items' do
-
+  describe '.show_basket' do
     context 'uses formatter' do
       specify {
         expect(formatter).to receive(:show_table)
+        subject.show_basket
+      }
+    end
+
+    context 'shows total' do
+      specify {
+        expect(subject).to receive(:show_total)
         subject.show_basket
       }
     end

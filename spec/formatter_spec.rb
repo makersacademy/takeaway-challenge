@@ -20,6 +20,20 @@ describe Formatter do
         )
       }
     end
+
+    context 'uses head' do
+      specify {
+        expect(subject).to receive(:head)
+        subject.show_table("thing", [])  
+      }
+    end
+
+    context 'uses titles' do
+      specify {
+        expect(subject).to receive(:titles)
+        subject.show_table("thing", [])
+      }
+    end
   end
 
   describe '.format_price' do
@@ -47,81 +61,81 @@ describe Formatter do
       }
     end
   end
-
-  describe '.head' do
-    describe 'displays properly' do
-      specify {
-        expected_string =
-          "**************************************************\n" +
-          "THING\n" +
-          "**************************************************"
-        expect(subject.head('thing')).to eq(expected_string)
-      }
-    end
-  end
-
-  describe '.titles' do
-    describe 'displays properly' do
-      specify {
-        expected_string = "| id | dish                 price"
-        expect(subject.titles).to eq(expected_string)
-      }
-    end
-  end
-
-  describe '.line' do
-    context 'method call' do
-      specify {
-        expect(subject).to respond_to(:line)
-      }
-    end
-
-    context 'line' do
-      specify {
-        expected_string = '| 1  | spam                 £2.50'
-        expect(subject.line(1, 'spam', 2.5)).to eq(expected_string)
-      }
-    end
-  end
-
-  describe '.space' do
-    context 'method call' do
-      specify {
-        expect(subject).to respond_to(:space)
-      }
-    end
-
-    context 'single word' do
-      specify {
-        string = 'hello'
-        expect(subject.space(string, 10)).to eq(string + (' ' * 5))
-      }
-    end
-
-    context 'single word' do
-      specify {
-        string = 'hello, how are you?'
-        expect(subject.space(string, 30)).to eq(string + (' ' * 11))
-      }
-    end
-
-    context 'no words' do
-      specify {
-        expect(subject.space('', 20)).to eq('' + (' ' * 20))
-      }
-    end
-  end
-
-  describe '.star_row' do
-    describe 'made of *' do
-      specify {
-        expect(subject.star_row.count("*")).to eq(DISPLAY_WIDTH)
-      }
-    end
-    describe 'lenght is DISPLAY_WIDTH' do
-      specify {
-        expect(subject.star_row.length).to eq(DISPLAY_WIDTH)
-      }
-    end
-  end
+  #
+  # describe '.head' do
+  #   describe 'displays properly' do
+  #     specify {
+  #       expected_string =
+  #         "**************************************************\n" +
+  #         "THING\n" +
+  #         "**************************************************"
+  #       expect(subject.head('thing')).to eq(expected_string)
+  #     }
+  #   end
+  # end
+  #
+  # describe '.titles' do
+  #   describe 'displays properly' do
+  #     specify {
+  #       expected_string = "| id | dish                 price"
+  #       expect(subject.titles).to eq(expected_string)
+  #     }
+  #   end
+  # end
+  #
+  # describe '.line' do
+  #   context 'method call' do
+  #     specify {
+  #       expect(subject).to respond_to(:line)
+  #     }
+  #   end
+  #
+  #   context 'line' do
+  #     specify {
+  #       expected_string = '| 1  | spam                 £2.50'
+  #       expect(subject.line(1, 'spam', 2.5)).to eq(expected_string)
+  #     }
+  #   end
+  # end
+  #
+  # describe '.space' do
+  #   context 'method call' do
+  #     specify {
+  #       expect(subject).to respond_to(:space)
+  #     }
+  #   end
+  #
+  #   context 'single word' do
+  #     specify {
+  #       string = 'hello'
+  #       expect(subject.space(string, 10)).to eq(string + (' ' * 5))
+  #     }
+  #   end
+  #
+  #   context 'single word' do
+  #     specify {
+  #       string = 'hello, how are you?'
+  #       expect(subject.space(string, 30)).to eq(string + (' ' * 11))
+  #     }
+  #   end
+  #
+  #   context 'no words' do
+  #     specify {
+  #       expect(subject.space('', 20)).to eq('' + (' ' * 20))
+  #     }
+  #   end
+  # end
+  #
+  # describe '.star_row' do
+  #   describe 'made of *' do
+  #     specify {
+  #       expect(subject.star_row.count("*")).to eq(DISPLAY_WIDTH)
+  #     }
+  #   end
+  #   describe 'lenght is DISPLAY_WIDTH' do
+  #     specify {
+  #       expect(subject.star_row.length).to eq(DISPLAY_WIDTH)
+  #     }
+  #   end
+  # end
 end

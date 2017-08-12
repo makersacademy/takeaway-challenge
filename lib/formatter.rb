@@ -16,7 +16,9 @@ class Formatter
   def format_price(amount)
     '£%.2f' % amount
   end
-  
+
+  private
+
   def head(title)
     star_row + "\n#{title.upcase}\n" + star_row
   end
