@@ -12,7 +12,7 @@ class Creating_menu
     @menu_hash = {
     "Plastic fried virus skin": 9.99,
     "Birdpeople egg with dehydrated watermelon": 88.67,
-    "Shredded concreate in amigdila": 4.99,
+    "Shredded concreate": 4.99,
     "Cockroach-wing encapsulated microchip": 7.90,
     "Extra powdered rocket": 2.99,
     "Ninja squirrel rolled in plastic-bag": 4.67}
@@ -27,3 +27,6 @@ class Creating_menu
     end
   end
 end
+
+menu = Creating_menu.new
+menu.putting_hash_into_file

@@ -6,19 +6,19 @@ class Menu
     puts "Welcome to Adbuls OK late night eatery. Open 25-7. Food for your future self."
   end
 
-  def open_menu
-    CSV.open("menu.csv", "r")
-  end
-
   def print_menu
-    open_menu do |newfile|
+    counter = 0
+    CSV.open("menu.csv", "r") do |newfile|
       newfile.readlines.each do |line|
-        puts "#{line}"
-      end
+        menu_options = "#{counter+=1}." + " " "#{line.to_s}"
+        puts "#{menu_options}\n"
+      end 
     end
   end
-
 end
+
+# menu= Menu.new
+# menu.print_menu
 
   # attr_accessor :menu_hash
   #

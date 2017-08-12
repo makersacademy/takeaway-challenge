@@ -10,12 +10,11 @@ describe Menu do
   end
 
   it 'opens the file with the menu on' do
-    menu.open_menu
+    menu.print_menu
     allow(csv).to receive(:open)
   end
 
   it 'it prints each line of the file to the screen' do
-    menu.open_menu
     allow(menu_file).to receive(:readlines)
     menu.print_menu
   end
