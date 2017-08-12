@@ -17,9 +17,8 @@ describe Order do
     order.receive(order_item2)
     expect(order.contents).to eq [order_item, order_item2]
   end
-  it "stores the correct total" do
-    allow(order_item).to receive(:dish_number).and_return("1")
-    allow(order_item).to receive(:quantity).and_return("2")
+  it "calculates the order total" do
+    allow(order_item).to receive(:cost).and_return(16)
     order.receive(order_item)
     expect(order.total).to eq 16
   end

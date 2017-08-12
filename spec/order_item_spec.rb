@@ -8,4 +8,7 @@ describe OrderItem do
   it "stores the quantity" do
     expect(order_item.quantity).to eq "2"
   end
+  it "calculates the item cost" do
+    expect(order_item.cost).to eq 16
+  end
 end

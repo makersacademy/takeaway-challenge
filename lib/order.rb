@@ -22,9 +22,7 @@ class Order
 
   def total
     sum = 0
-    @contents.each do |item|
-      sum += (item.quantity.to_i * $menu[item.dish_number.to_i - 1][:price])
-    end
+    @contents.each { |item| sum += item.cost }
     sum
   end
 end

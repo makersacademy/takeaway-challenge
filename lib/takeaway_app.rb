@@ -5,9 +5,6 @@ class TakeawayApp
 
   attr_reader :order
 
-  # def initialize
-  #   @order = []
-  # end
   $menu = [{ :dish => "Chicken Korma", :price => 8 }, { :dish => "Lamb Balti", :price => 9 }]
   def show_dishes
     menu = [{ :dish => "Chicken Korma", :price => 8 }, { :dish => "Lamb Balti", :price => 9 }]
