@@ -1,10 +1,10 @@
 require './docs/menu.rb'
 require './docs/takeaway.rb'
 test = Takeaway.new
-
 # test.show_menu
 # test.header
+test.choose_dish(1, 2)
+test.choose_dish(2, 3)
+test.choose_dish(5, 4)
 
-test.choose_dish(1, 1)
-test.basket
-test.choose_dish(9, 3)
+test.show_basket

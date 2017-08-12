@@ -20,7 +20,7 @@ describe Takeaway do
       expect(subject.show_menu).to respond_to(:display)
     end
   end
-
+  
   context "#choose_dish" do
     it "selects a dish and puts it into the basket" do
       subject.choose_dish 1, 1
@@ -45,4 +45,24 @@ describe Takeaway do
     end
   end
 
+  context "#show_basket" do
+    it "shows the contents of the basket" do
+      subject.choose_dish 3, 2
+      message = "Sorrowful Rice x 2\nTotal £244\n\n"
+      expect { subject.show_basket }.to output(message).to_stdout
+    end
+    it "shows the quantity of the selected dishes" do
+      subject.choose_dish 2, 4
+      message = "Secret Roast Goose x 4\nTotal £2784\n\n"
+      expect { subject.show_basket }.to output(message).to_stdout
+    end
+  end
+
+  context "#tally" do
+    it "shows the total price of the selected dishes" do
+      subject.choose_dish 2, 2
+      subject.choose_dish 5, 3
+      expect(subject.tally).to eq 1878
+    end
+  end
 end
