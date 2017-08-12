@@ -19,4 +19,9 @@ describe Menu do
     menu.print_menu
   end
 
+  it 'prints the menu hash in a less complicated way (Not opening a file)' do
+    output = "1.Plastic fried virus skin: $9.99\n2.Birdpeople egg with dehydrated watermelon: $88.67\n3.Shredded concreate: $4.99\n4.Cockroach-wing encapsulated microchip: $7.97\n5.Extra powdered rocket: $2.99\n6.Ninja squirrel rolled in plastic-bag: $4.67\n"
+    expect { subject.show_menu_hash }.to output(output).to_stdout
+  end
+
 end
