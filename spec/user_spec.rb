@@ -10,21 +10,34 @@ describe User do
   it 'creates an empty array for the basket' do
     expect(subject.basket).to be_instance_of(Array)
   end
-  #
-  # end
-  # it 'the user can make a selection through stdin' do
-  #   expect(subject.user_selection).to eq gets.chomp
-  # end
-  #
-  # it 'adds this selection to a basket' do
-  #
-  # end
-  #
-  # it 'the user can make several selections through stdin' do
-  #
-  # end
-  #
-  # it 'saves the users selection to a file' do
-  # end
+
+  it 'prints the instructions on how to order' do
+    output2 = "Please select your order.\nTo do this please enter the number of your order from 1-6. Please press enter after each selection, and double enter when you have completed your order.\nIf you wish to order more than one of the same dish please enter this number twice, both times pressing the space bar after.\n"
+    expect{ subject.order_instructions }.to output(output2).to_stdout
+  end
+
+  it 'the user can make a selection through stdin' do
+    # expect(subject.user_selection).to eq gets.chomp
+  end
+
+  it 'raises an error if the user does not enter a correct number' do
+
+  end
+
+  it 'raises an error if the user does not complete the order' do
+
+  end
+
+  it 'raises an error if the user does not input anything' do
+
+  end
+
+  it 'adds this selection to a basket' do
+
+  end
+
+  it 'saves the users selection to a file' do
+
+  end
 
 end
