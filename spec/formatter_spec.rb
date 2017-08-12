@@ -2,7 +2,25 @@ require 'formatter'
 
 describe Formatter do
 
-  subject { Formatter }
+  subject { Formatter.new }
+
+  describe '.show_table' do
+    context 'displays' do
+      specify {
+        item = { name: 'item', price: 1 }
+        expected_string =
+          "**************************************************\n" +
+          "THING\n" +
+          "**************************************************\n" +
+          "| id | dish                 price\n" +
+          "| 0  | item                 £1.00\n" +
+          "| 1  | item                 £1.00\n"
+        expect { subject.show_table("thing", [item, item]) }.to(
+          output(expected_string).to_stdout
+        )
+      }
+    end
+  end
 
   describe '.format_price' do
     context 'method call' do
@@ -30,45 +48,79 @@ describe Formatter do
     end
   end
 
-  describe '.format_with_space' do
+  describe '.head' do
+    describe 'displays properly' do
+      specify {
+        expected_string =
+          "**************************************************\n" +
+          "THING\n" +
+          "**************************************************"
+        expect(subject.head('thing')).to eq(expected_string)
+      }
+    end
+  end
+
+  describe '.titles' do
+    describe 'displays properly' do
+      specify {
+        expected_string = "| id | dish                 price"
+        expect(subject.titles).to eq(expected_string)
+      }
+    end
+  end
+
+  describe '.line' do
     context 'method call' do
       specify {
-        expect(subject).to respond_to(:format_with_space)
+        expect(subject).to respond_to(:line)
+      }
+    end
+
+    context 'line' do
+      specify {
+        expected_string = '| 1  | spam                 £2.50'
+        expect(subject.line(1, 'spam', 2.5)).to eq(expected_string)
+      }
+    end
+  end
+
+  describe '.space' do
+    context 'method call' do
+      specify {
+        expect(subject).to respond_to(:space)
       }
     end
 
     context 'single word' do
       specify {
         string = 'hello'
-        expect(subject.format_with_space(string, 10)).to eq(string + (' ' * 5))
+        expect(subject.space(string, 10)).to eq(string + (' ' * 5))
       }
     end
 
     context 'single word' do
       specify {
         string = 'hello, how are you?'
-        expect(subject.format_with_space(string, 30)).to eq(string + (' ' * 11))
+        expect(subject.space(string, 30)).to eq(string + (' ' * 11))
       }
     end
 
     context 'no words' do
       specify {
-        expect(subject.format_with_space('', 20)).to eq('' + (' ' * 20))
+        expect(subject.space('', 20)).to eq('' + (' ' * 20))
       }
     end
   end
 
-  describe '.format_line' do
-    context 'method call' do
+  describe '.star_row' do
+    describe 'made of *' do
       specify {
-        expect(subject).to respond_to(:format_line)
+        expect(subject.star_row.count("*")).to eq(DISPLAY_WIDTH)
       }
     end
-
-    context 'line' do
+    describe 'lenght is DISPLAY_WIDTH' do
       specify {
-        expected_line = '| 1 | spam                 £2.50 |'
-        expect(subject.format_line(1, 'spam', 2.5)).to eq(expected_line)
+        expect(subject.star_row.length).to eq(DISPLAY_WIDTH)
       }
     end
   end

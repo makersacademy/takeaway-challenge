@@ -1,5 +1,7 @@
 require_relative 'formatter'
 
+DISPLAY_WIDTH = 50
+
 class Basket
   attr_reader :items
 
@@ -23,8 +25,13 @@ class Basket
   end
 
   def show_basket
-    @items.each_with_index do |item, index|
-      puts @formatter.format_line(index, item[:name], item[:price])
-    end
+    @formatter.show_table("basket", @items)
+    show_total
+  end
+
+  private
+
+  def show_total
+    "Total: #{basket_total}"
   end
 end

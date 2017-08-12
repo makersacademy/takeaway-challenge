@@ -2,7 +2,7 @@ require './lib/basket.rb'
 
 describe Basket do
   let(:item) { double(:item) }
-  let(:formatter) { double(:formatter) }
+  let(:formatter) { double(:formatter, show_table: "") }
   subject { Basket.new(formatter) }
 
   describe '.items' do
@@ -84,26 +84,12 @@ describe Basket do
     end
   end
 
-  describe '.show_basket' do
-    context 'method call' do
-      specify {
-        expect(subject).to respond_to(:show_basket)
-      }
-    end
+  describe '.show_items' do
 
     context 'uses formatter' do
       specify {
-        subject.add_item({ name: 'item', price: 1 })
-        expect(formatter).to receive(:format_line)
+        expect(formatter).to receive(:show_table)
         subject.show_basket
-      }
-    end
-
-    context 'uses puts' do
-      specify {
-        allow(formatter).to receive(:format_line).with(0, 'item', 1)
-        subject.add_item({ name: 'item', price: 1 })
-        expect { subject.show_basket }.to output.to_stdout
       }
     end
   end

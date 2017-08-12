@@ -21,14 +21,8 @@ describe Menu do
 
     context 'uses formatter' do
       specify {
-        expect(formatter).to receive(:format_line)
+        expect(formatter).to receive(:show_table)
         subject.show_dishes
-      }
-    end
-
-    context 'uses puts' do
-      specify {
-        expect { subject.show_dishes }.to output.to_stdout
       }
     end
   end

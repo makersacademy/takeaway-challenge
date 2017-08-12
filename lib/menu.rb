@@ -16,9 +16,7 @@ class Menu
   end
 
   def show_dishes
-    @dishes.each_with_index do |item, index|
-      puts @formatter.format_line(index, item[:name], item[:price])
-    end
+    @formatter.show_table("menu", @dishes)
   end
 
   def get_dish(index)
