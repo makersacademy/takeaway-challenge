@@ -4,3 +4,5 @@ require './docs/takeaway.rb'
 
 test = Takeaway.new
 test.show_menu
+
+test.header
