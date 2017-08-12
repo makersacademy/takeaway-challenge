@@ -20,14 +20,29 @@ describe Takeaway do
       expect(subject.show_menu).to respond_to(:display)
     end
   end
+
   context "#choose_dish" do
-    it "selects a dish and puts it into basket" do
-      subject.choose_dish(1)
+    it "selects a dish and puts it into the basket" do
+      subject.choose_dish 1, 1
       expect(subject.basket.size).to eq 1
     end
+    it "selects three dishes and puts it into the basket" do
+      subject.choose_dish 1, 3
+      expect(subject.basket.size).to eq 3
+    end
+    it "has a quantity of one by default if no input" do
+      subject.choose_dish 2
+      expect(subject.basket.size).to eq 1
+    end
+    it "invalid dish number chosen" do
+      expect { subject.choose_dish 9, 1 }.to raise_error("Invalid choice")
+    end
+    it "negative dish number not allowed" do
+      expect { subject.choose_dish 1, -3 }.to raise_error("Invalid choice")
+    end
+    it "negative quantity number not allowed" do
+      expect { subject.choose_dish 1, -3 }.to raise_error("Invalid choice")
+    end
   end
-  # context "#basket" do
-  #   it "prints selected items and sums up cost"
-  #   expect(subject.@cost).to eq 7657
-  # end
+
 end

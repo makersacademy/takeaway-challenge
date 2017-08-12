@@ -17,10 +17,12 @@ class Takeaway
   end
 
   def show_menu
-     @menu.display
+    @menu.display
   end
 
-  def choose_dish(number)
-    @basket << @menu.items.keys[number - 1]
+  def choose_dish(number, quantity = 1)
+    raise("Invalid choice") if number > @menu.items.size
+    raise("Invalid choice") if quantity < 1
+    quantity.times { @basket << @menu.items.keys[number - 1] }
   end
 end
