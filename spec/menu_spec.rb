@@ -1,16 +1,27 @@
 require './lib/menu.rb'
 
 describe Menu do
+  let(:csv) { double :csv }
+  let(:menu) { described_class.new }
+
   it 'prints the menu header' do
     expect { subject.print_menu_header }.to output("Welcome to Adbuls OK late night eatery. Open 25-7. Food for your future self.\n").to_stdout
   end
 
-  it 'menu list is created as an empty hash' do
-    expect(subject.menu_hash).to be_instance_of(Hash)
+  it 'opens the file with the menu on' do
+    menu.open_menu
+    allow(csv).to receive(:open)
   end
+
+end
+
+
 
   # it 'prints the menu' do
   #   expect { subject.print_menu }.to output("1. Metalic fried virus.\n", + "£\n" + "9.99\n").to_stdout
   # end
 
-end
+
+  # it 'menu list is created as an empty hash' do
+  #   expect(subject.menu_hash).to be_instance_of(Hash)
+  # end
