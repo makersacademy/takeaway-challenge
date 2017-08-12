@@ -24,4 +24,8 @@ describe Menu do
     expect { subject.show_menu_hash }.to output(output).to_stdout
   end
 
-end
+end 
+
+  # it 'the menu number is changed with the counter' do
+  #   expect { menu.show_menu_hash }.to change { menu.show_menu_hash.counter }.by(6)
+  # end

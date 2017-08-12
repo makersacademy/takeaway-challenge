@@ -1,3 +1,12 @@
+require_relative './menu.rb'
+
 class User
 
-end 
+  attr_accessor :basket, :menu
+
+  def initialize
+    @menu = Menu.new.show_menu_hash
+    @basket = []
+  end
+
+end
