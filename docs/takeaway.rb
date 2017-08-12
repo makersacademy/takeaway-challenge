@@ -10,11 +10,11 @@ class Takeaway
   end
 
   def header
-    puts "Welcome to the God of Cookery Takeaway.\n Choose an option"
-    puts "1. See menu"
-    puts "2. Choose dishes"
-    puts "3. Basket"
-    puts "4. Exit"
+    puts "Welcome to the God of Cookery Takeaway!"
+    puts "show_menu"
+    puts "choose_dish(dish number, quantity)"
+    puts "show_basket"
+    puts "checkout"
   end
 
   def show_menu
@@ -39,5 +39,9 @@ class Takeaway
 
   def total
     puts "Total £#{@tally}"
+  end
+
+  def checkout
+    Phone.new.input_details
   end
 end

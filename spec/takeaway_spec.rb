@@ -1,7 +1,8 @@
 require './docs/takeaway.rb'
 
 describe Takeaway do
-  let(:menu) { double "menu" }
+
+  let(:phone) { "phone" }
 
   context "#initialize" do
     it "basket is empty by default" do
@@ -11,7 +12,7 @@ describe Takeaway do
 
   context "#header" do
     it "prints the main menu options" do
-      message = "Welcome to the God of Cookery Takeaway.\n Choose an option\n1. See menu\n2. Choose dishes\n3. Basket\n4. Exit\n"
+      message = "Welcome to the God of Cookery Takeaway!\nshow_menu\nchoose_dish(dish number, quantity)\nshow_basket\ncheckout\n"
       expect { subject.header }.to output(message).to_stdout
     end
   end
@@ -20,7 +21,7 @@ describe Takeaway do
       expect(subject.show_menu).to respond_to(:display)
     end
   end
-  
+
   context "#choose_dish" do
     it "selects a dish and puts it into the basket" do
       subject.choose_dish 1, 1
@@ -48,12 +49,12 @@ describe Takeaway do
   context "#show_basket" do
     it "shows the contents of the basket" do
       subject.choose_dish 3, 2
-      message = "Sorrowful Rice x 2\nTotal £244\n\n"
+      message = "3. Sorrowful Rice x 2\nTotal £244\n\n"
       expect { subject.show_basket }.to output(message).to_stdout
     end
     it "shows the quantity of the selected dishes" do
       subject.choose_dish 2, 4
-      message = "Secret Roast Goose x 4\nTotal £2784\n\n"
+      message = "2. Secret Roast Goose x 4\nTotal £2784\n\n"
       expect { subject.show_basket }.to output(message).to_stdout
     end
   end
@@ -63,6 +64,12 @@ describe Takeaway do
       subject.choose_dish 2, 2
       subject.choose_dish 5, 3
       expect(subject.tally).to eq 1878
+    end
+  end
+
+  context "#checkout" do
+    it "confirms checkout and asks for input details" do
+      expect(phone).to(respond_to { :input_details })
     end
   end
 end

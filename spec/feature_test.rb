@@ -1,5 +1,7 @@
 require './docs/menu.rb'
 require './docs/takeaway.rb'
+require './docs/phone.rb'
+
 test = Takeaway.new
 # test.show_menu
 # test.header
