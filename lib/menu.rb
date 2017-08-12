@@ -11,7 +11,7 @@ class Menu
   end
 
   def print_menu
-    self.open_menu do |newfile|
+    open_menu do |newfile|
       newfile.readlines.each do |line|
         puts "#{line}"
       end
@@ -19,12 +19,6 @@ class Menu
   end
 
 end
-
-
-
-
-
-
 
   # attr_accessor :menu_hash
   #
