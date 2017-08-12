@@ -26,4 +26,14 @@ class TakeawayApp
     # end
   end
 
+  def show_order
+    @order.show
+  end
+
+  def check_calculation
+    check_cost=0
+    (@order.contents).each { |a| check_cost += a.cost }
+    raise "Does not add up correctly" if @order.total != check_cost
+  end
+
 end

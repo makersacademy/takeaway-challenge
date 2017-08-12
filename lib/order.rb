@@ -3,10 +3,11 @@ require_relative './takeaway_app.rb'
 
 class Order
 
-  attr_reader :contents
+  attr_accessor :contents, :total
 
   def initialize
     @contents = []
+    @total = 0
   end
 
   def receive(order_item)
@@ -21,8 +22,15 @@ class Order
   end
 
   def total
-    sum = 0
-    @contents.each { |item| sum += item.cost }
-    sum
+    @contents.each { |item| @total += item.cost }
+    @total
   end
+
+  def show
+    @contents.each do |item|
+      puts "#{item.dish_name} #{item.quantity} X £#{item.unit_cost} = £#{item.cost}"
+    end
+    puts "Total = £#{@total}"
+  end
+
 end
