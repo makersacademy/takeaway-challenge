@@ -8,10 +8,10 @@ class TakeawayApp
   # def initialize
   #   @order = []
   # end
-
+  $menu = [{ :dish => "Chicken Korma", :price => 8 }, { :dish => "Lamb Balti", :price => 9 }]
   def show_dishes
-    menu = [{ :dish => "Chicken Korma", :price => "£8.00" }, { :dish => "Lamb Balti", :price => "£9.00" }]
-    menu.each_with_index { |menu_item, index| puts "#{index + 1}. #{menu_item[:dish]} #{menu_item[:price]}" }
+    menu = [{ :dish => "Chicken Korma", :price => 8 }, { :dish => "Lamb Balti", :price => 9 }]
+    menu.each_with_index { |menu_item, index| puts "#{index + 1}. #{menu_item[:dish]} £#{menu_item[:price]}" }
   end
 
   def prompt_order
