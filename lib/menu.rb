@@ -1,14 +1,14 @@
 class Menu
 
-  attr_reader :dish, :price
+  attr_reader :dish
 
-  def initialize(dish,price)
-    @dish = dish
-    @price = price
+  def initialize
+    @dish = { curry: 8.95, rice: 3.50, naan:  2.50}
+
   end
 
-  def show_menu
-    # hash of dishes and price
-    # method for inputting new dishes into the hash
+  def print_menu
+    puts dish.map { |item, price| "#{item}".capitalize + " - #{price}"}
+    
   end
 end
