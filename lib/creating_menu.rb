@@ -9,8 +9,7 @@ class Creating_menu
   end
 
   def hash_of_menu
-    @menu_hash = {
-    "Plastic fried virus skin": 9.99,
+    @menu_hash = {"Plastic fried virus skin": 9.99,
     "Birdpeople egg with dehydrated watermelon": 88.67,
     "Shredded concreate": 4.99,
     "Cockroach-wing encapsulated microchip": 7.97,
@@ -27,6 +26,3 @@ class Creating_menu
     end
   end
 end
-
-menu = Creating_menu.new
-menu.putting_hash_into_file

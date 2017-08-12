@@ -11,7 +11,7 @@ class Menu
     counter = 0
     CSV.open("menu.csv", "r") do |newfile|
       newfile.readlines.each do |line|
-        menu_options = "#{counter+=1}." + " " "#{line.to_s}"
+        menu_options = "#{counter += 1}." + " " "#{line.to_s}"
         puts "#{menu_options}\n"
       end
     end
@@ -20,14 +20,14 @@ class Menu
   def show_menu_hash
     counter = 0
     Creating_menu.new.hash_of_menu.each do |key, value|
-       puts  "#{counter+=1}." "#{key}: " + "$" "#{value}"
+       puts "#{counter += 1}." "#{key}: " + "$" "#{value}"
     end
   end
 end
 
-menu= Menu.new
-menu.print_menu
-menu.show_menu_hash
+# menu= Menu.new
+# menu.print_menu
+# menu.show_menu_hash
 
   # attr_accessor :menu_hash
   #
