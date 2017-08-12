@@ -22,10 +22,10 @@ describe Order do
     end
   end
 
-  describe '.complete' do
+  describe '.complete!' do
     context 'returns summary' do
       specify {
-        expect(subject.complete).to be_a(Hash)
+        expect(subject.complete!).to be_a(Hash)
       }
     end
   end

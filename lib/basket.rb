@@ -2,6 +2,7 @@ require_relative 'formatter'
 
 DISPLAY_WIDTH = 50
 
+# in lib/basket.rb
 class Basket
   attr_reader :items
 

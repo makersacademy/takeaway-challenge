@@ -1,4 +1,5 @@
 
+# in lib/order.rb
 class Order
 
   DELIVERY_TIME = 3600
@@ -14,7 +15,7 @@ class Order
     @basket.add_item(dish)
   end
 
-  def complete
+  def complete!
     @complete = true
     time = Time.now + DELIVERY_TIME
     summary(time)

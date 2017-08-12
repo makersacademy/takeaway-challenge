@@ -1,4 +1,5 @@
 
+# in lib/formatter.rb
 class Formatter
 
   INDEX_WIDTH = 2
