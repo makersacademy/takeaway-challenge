@@ -1,11 +1,11 @@
 require './lib/order.rb'
 
 MENU = [ 
-	{ item: 1, dish: :bruschetta, price: 4.99 },
-	{ item: 2, dish: :pizza_salami, price: 9.99 },
-	{ item: 3, dish: :pasta_carbonara, price: 12.99 },
-	{ item: 4 ,dish: :sirloin_steak, price: 15.99 },
-	{ item: 5 ,dish: :tiramisu, price: 5.99 }
+	{ dish: :bruschetta, quantity: 1, price: 5 },
+	{ dish: :pizza_salami, quantity: 1, price: 10 },
+	{ dish: :pasta_carbonara, quantity: 1, price: 13 },
+	{ dish: :sirloin_steak, quantity: 1, price: 16 },
+	{ dish: :tiramisu, quantity: 1, price: 6 }
 ] # <--- New takeaway menu ~
 
 class Menu
@@ -17,8 +17,8 @@ class Menu
 	end
 
 	def print_menu
-		@menu.each do |item|
-			puts "#{item[:item]}. #{item[:dish]} : £#{item[:price]}" # < --- It prints all the menu with the prices ~
+		@menu.each_with_index do |item, index|
+			puts "#{index+1}. #{item[:dish]} : £#{item[:price]}" # < --- It prints all the menu with the prices ~
 		end
 	end
 

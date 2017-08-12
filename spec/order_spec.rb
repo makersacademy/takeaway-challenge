@@ -16,14 +16,19 @@ describe Order do
 	end
 
 	it "adds items into the basket" do
-		subject.add_items(1,1)
-		expect(subject.basket).to eq([{ item: 1, dish: :bruschetta, price: 4.99 }])
+		subject.add_items("bruschetta", 1, 5)
+		expect(subject.basket).to eq([{ dish: "bruschetta", quantity: 1, price: 5 }])
 	end
 
 	it "shows the status of the basket" do
-		subject.add_items(1,1)
-		subject.add_items(2,1)
-		expect{subject.view_order}.to output("1. bruschetta : £4.99\n" +
-			"2. pizza_salami : £9.99\n").to_stdout
+		subject.add_items("bruschetta", 1, 5 )
+		subject.add_items("pizza salami", 1, 10 )
+		expect{subject.view_order}.to output("1. bruschetta : £5\n" +
+			"2. pizza salami : £10\n").to_stdout
+	end
+
+	it "checks if the price given is correct" do
+		expect { subject.place_order }.to raise_error("The total price is not correct!")
+
 	end
 end

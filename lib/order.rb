@@ -10,15 +10,22 @@ class Order
 		@total = total
 	end
 
-	def add_items(item, amount = 1)
-		amount.times do
-			@basket << @menu.menu[item - 1]
-		end # <--- Tried with a string but I was getting an error, so went for an integer ~
+	def add_items(dish, quantity, price)
+		@basket << { dish: dish, quantity: quantity, price: price }
 	end
 
 	def view_order
 		@basket.each_with_index do |item, index|
 			puts "#{index + 1}. #{item[:dish]} : £#{item[:price]}"
 		end
+	end
+
+	def place_order
+		raise("The total price is not correct!") if total_price == false
+	end
+
+	def total_price(price)
+		@total = order.basket.map { |h| h[:price] }.sum
+		return true if @total = price
 	end
 end

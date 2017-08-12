@@ -5,6 +5,8 @@ menu = Menu.new
 order = Order.new
 
 p menu.print_menu
-p order.add_items(1, 2)
-p order.add_items(2, 3)
-p order.view_order
+order.add_items("bruschetta", 2, 4.99)
+order.add_items("pizza margherita", 1, 9.99)
+p order.basket
+@total = order.basket.map { |h| h[:price] }.sum
+p @total
