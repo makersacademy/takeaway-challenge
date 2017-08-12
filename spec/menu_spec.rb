@@ -17,6 +17,7 @@ describe Menu do
   it 'it prints each line of the file to the screen' do
     menu.open_menu
     allow(menu_file).to receive(:readlines)
+    menu.print_menu
   end
 
 end
