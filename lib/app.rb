@@ -1,12 +1,12 @@
-require './lib/basket'
-require './lib/order'
 
 # in lib/app.rb
 class App
   attr_reader :order
 
-  def initialize(sms, menu, formatter)
+  def initialize(sms, menu, basket_klass, order_klass, formatter)
     @formatter = formatter
+    @basket_klass = basket_klass
+    @order_klass = order_klass
     @menu = menu
     @order = new_order
     @sms = sms
@@ -23,8 +23,8 @@ class App
   private
 
   def new_order
-    basket = Basket.new(@formatter)
-    Order.new(@menu, basket)
+    basket = @basket_klass.new(@formatter)
+    @order_klass.new(@menu, basket)
   end
 
   def process_input(line)

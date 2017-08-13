@@ -10,5 +10,5 @@ TOKEN = ''
 sms = SMS.new(Twilio::REST::Client.new(SID, TOKEN).account.messages)
 formatter = Formatter.new
 menu = Menu.new(formatter)
-app = App.new(sms, menu, formatter)
+app = App.new(sms, menu, Basket, Order, formatter)
 app.run

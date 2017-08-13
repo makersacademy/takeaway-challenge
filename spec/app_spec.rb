@@ -6,20 +6,39 @@ describe App do
   let(:formatter) { double(:formatter) }
   let(:menu) { double(:menu) }
 
-  subject { App.new(sms, menu, formatter) }
+  let(:basket) { double(:basket) }
+  let(:basket_klass) { double(:basket_klass, new: basket) }
+
+  let(:order) { double(:order) }
+  let(:order_klass) { double(:order_klass, new: order) }
+
+  subject { App.new(sms, menu, basket_klass, order_klass, formatter) }
 
   before do
-    allow(formatter).to receive(:format_table).and_return("")
-    allow(formatter).to receive(:format_price).and_return("")
 
-    allow(menu).to receive(:item_count).and_return(5)
-    allow(menu).to receive(:get_dish).and_return({ name: "something", price: 1 })
-    allow(menu).to receive(:show).and_return("")
+    allow(order).to receive_messages(
+      select_dish: true,
+      complete: nil,
+      show: ""
+    )
+
+    allow(formatter).to receive_messages(
+      format_table: "",
+      format_price: ""
+    )
+
+    allow(menu).to receive_messages(
+      item_count: 5,
+      get_dish: { name: "something", price: 1 },
+      show: ""
+    )
 
     allow(subject).to receive(:loop).and_yield
-    allow(subject).to receive(:exit)
-    allow(subject).to receive(:system)
     allow(subject).to receive(:gets).and_return(io_obj)
+    allow(subject).to receive_messages(
+      exit: nil,
+      system: nil
+    )
 
     allow(sms).to receive(:send)
 
@@ -27,9 +46,9 @@ describe App do
   end
 
   describe '.order' do
-    context 'with type of Order' do
+    context 'not nil' do
       specify {
-        expect(subject.order).to be_a(Order)
+        expect(subject.order).not_to eq(nil)
       }
     end
   end
@@ -70,9 +89,15 @@ describe App do
   end
 
   describe '.new_order' do
-    context 'is an order' do
+    context 'creates' do
       specify {
-        expect(subject.send(:new_order)).to be_a(Order)
+        expect(order_klass).to receive(:new)
+        subject.send(:new_order)
+      }
+    end
+    context 'order' do
+      specify {
+        expect(subject.send(:new_order)).to eq(order)
       }
     end
   end
@@ -98,6 +123,13 @@ describe App do
       }
     end
 
+    context 'shows menu' do
+      specify {
+        expect(menu).to receive(:show)
+        subject.send(:process_input, "m")
+      }
+    end
+
     context 'calls menu' do
       specify {
         expect(menu).to receive(:show)
@@ -108,6 +140,13 @@ describe App do
     context 'shows basket' do
       specify {
         expect { subject.send(:process_input, "b") }.to output.to_stdout
+      }
+    end
+
+    context 'shows basket' do
+      specify {
+        expect(order).to receive(:show)
+        subject.send(:process_input, "b")
       }
     end
 
@@ -143,6 +182,21 @@ describe App do
   end
 
   describe '.try_select_dish' do
+
+    context 'select dish' do
+      specify {
+        expect(order).to receive(:select_dish)
+        subject.send(:try_select_dish, "0")
+      }
+    end
+
+    context 'get dish' do
+      specify {
+        expect(menu).to receive(:get_dish)
+        subject.send(:try_select_dish, "0")
+      }
+    end
+
     context 'valid dishes' do
       specify {
         expect(menu).to receive(:get_dish)
@@ -152,6 +206,7 @@ describe App do
 
     context 'invalid dishes' do
       specify {
+        allow(order).to receive(:select_dish).and_return(false)
         expect { subject.send(:try_select_dish, '9001') }.to output("9001 is not a valid dish id\n").to_stdout
       }
     end
@@ -162,6 +217,13 @@ describe App do
     context 'output' do
       specify {
         expect { subject.send(:complete) }.to output.to_stdout
+      }
+    end
+
+    context 'complete' do
+      specify {
+        expect(order).to receive(:complete)
+        subject.send(:complete)
       }
     end
 
