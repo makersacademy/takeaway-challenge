@@ -4,7 +4,10 @@ require './lib/formatter'
 require './lib/menu'
 require './lib/sms'
 
-sms = SMS.new
+SID = ''
+TOKEN = ''
+
+sms = SMS.new(Twilio::REST::Client.new(SID, TOKEN).account.messages)
 formatter = Formatter.new
 menu = Menu.new(formatter)
 app = App.new(sms, menu, formatter)
