@@ -14,6 +14,7 @@ class User
   end
 
   def order_selection(order_num, quantity = DEAFAULT_QUANT)
+    order_error(order_num, quantity)
     keys = @menu.keys
     @price = @menu[keys[order_num.to_i - 1]]
     quantity.times do
@@ -33,6 +34,11 @@ class User
 
   def display_basket
     puts "The total value of your basket is £ #{@total_amount}"
+  end
+
+  def order_error(order_num, quantity)
+    raise("Item does not exit") if order_num > 6
+    raise("Item does not exit") if quantity < 1
   end
 
 end

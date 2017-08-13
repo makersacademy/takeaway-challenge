@@ -30,10 +30,19 @@ describe User do
    end
 
    it 'displays the total value' do
-      user.order_selection(4, 2)
-      user.total_price_of_basket
-      expect { user.display_basket }.to output("The total value of your basket is £ 15.94\n").to_stdout
+     user.order_selection(4, 2)
+     user.total_price_of_basket
+     expect { user.display_basket }.to output("The total value of your basket is £ 15.94\n").to_stdout
    end
+
+   it 'raises an error if the wrong item number is put in' do
+     expect { user.order_selection(10, 2) }.to raise_error("Item does not exit")
+   end
+
+   it 'raises an error if the wrong quantity is put in' do
+     expect { user.order_selection(3, 0) }.to raise_error("Item does not exit")
+   end
+
  end
 end
 
