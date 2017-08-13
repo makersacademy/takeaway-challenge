@@ -1,4 +1,4 @@
-require_relative '../lib/text'
+require_relative '../lib/text.rb'
 
 describe Text do
 
