@@ -17,10 +17,11 @@ describe TakeawayApp do
     takeaway_app.receive_order(order)
     expect(takeaway_app.order).to eq order
   end
-  # it "shows the order summary" do
-  #   takeaway_app.receive_order(order)
-  #   expect(takeaway_app.show_order).to eq order
-  # end
+  it "shows the order summary" do
+    takeaway_app.receive_order(order)
+    expect(order).to receive(:show)
+    takeaway_app.show_order
+  end
   it "raises an error if the total and the sum of the item costs are different" do
     allow(order_item).to receive(:cost).and_return(16)
     allow(order_item2).to receive(:cost).and_return(9)
@@ -29,7 +30,13 @@ describe TakeawayApp do
     takeaway_app.receive_order(order)
     expect { takeaway_app.check_calculation }.to raise_error("Does not add up correctly")
   end
-
+  # context "#sending message" do
+  #   before do
+  #     Timecop.freeze(Time.local(2017))
+  #   end
+  #   after do
+  #     Timecop.return
+  #   end
   it "calculates the time an hour from now" do
     t = Time.new + 3600
     expect(takeaway_app.time_in_an_hour).to eq t.strftime("%H:%M")
@@ -40,6 +47,6 @@ describe TakeawayApp do
     expect(takeaway_app.create_message).to eq "Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}"
   end
 
-
+  # end
 
 end

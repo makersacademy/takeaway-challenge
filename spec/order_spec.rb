@@ -19,7 +19,7 @@ describe Order do
   it "calculates the order total" do
     allow(order_item).to receive(:cost).and_return(16)
     order.receive(order_item)
-    expect(order.total).to eq 16
+    expect(order.calc_total).to eq 16
   end
 
   it "shows the order with each item, it's cost and a total" do

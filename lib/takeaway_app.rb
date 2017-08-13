@@ -19,12 +19,8 @@ class TakeawayApp
 
   def receive_order(order)
     @order = order
-    # prompt_order
-    # order_item = STDIN.gets.gsub(/\n/,"")
-    # while !order_item.empty?
-    #   @order << { :dish_number => order_item.split[0], :quantity => order_item.split[1] }
-    #   order_item = STDIN.gets.gsub(/\n/,"")
-    # end
+    # use this @order for non testing
+    # @order = Order.new
   end
 
   def show_order
@@ -32,8 +28,8 @@ class TakeawayApp
   end
 
   def check_calculation
-    check_cost=0
-    (@order.contents).each { |a| check_cost += a.cost }
+    check_cost = 0
+    @order.contents.each { |a| check_cost += a.cost }
     raise "Does not add up correctly" if @order.total != check_cost
   end
 
@@ -57,4 +53,15 @@ class TakeawayApp
       :body => create_message,
     })
   end
+
 end
+
+# running the app below
+# t = TakeawayApp.new
+# t.show_dishes
+# t.prompt_order
+# t.receive_order
+# t.show_order
+# t.check_calculation
+# t.create_message
+# t.send_message
