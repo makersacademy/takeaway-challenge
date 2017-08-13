@@ -1,23 +1,17 @@
 require_relative '../lib/order.rb'
-require_relative '../lib/menu.rb'
 
 RSpec.describe Order do
-  let(:menu) { 'menu'}
-  let(:dish) { "tokyo bowl"}
-  let(:quant) { 2 }
-  let(:price_true) { 24 }
-  let(:price_false) { 23 }
   it { is_expected.to be_a Order }
-  it { is_expected.to respond_to :process_order }
+
+  let(:correct_order) { Order.new("tokyo bowl", 2, 24) }
+  let(:wrong_order) { Order.new("tokyo bowl", 2, 23)}
 
   context "#init" do
     it "can receive an order" do
-      expect(Order).to receive(:new).with(dish, quant, price_true)
-      Order.new(dish, quant, price_true)
+      expect(Order).to respond_to(:new).with(3).arguments
     end
     it "stores an order" do
-      order = Order.new(dish, quant, price_true)
-      expect(order.basket).to eq([dish, quant, price_true])
+      expect(correct_order.basket).to eq(["tokyo bowl", 2, 24])
     end
     it "contains the menu" do
       expect(subject.instance_variable_get(:@current_menu)).to be_a Hash
@@ -25,15 +19,13 @@ RSpec.describe Order do
   end
 
   context ".process_order" do
-    it "raises error if price is wrong" do
-      order = Order.new(dish, quant, price_false)
-      expect { order.process_order }.to raise_error("Incorrect price entered")
+    it { is_expected.to respond_to :process_order }
+    it "raises error if incorrect order" do
+      expect { wrong_order.process_order }.to raise_error("Incorrect price entered")
     end
-    it "accepts correct order" do
-      order = Order.new(dish, quant, price_true)
-      expect(order.process_order).to eq("Order completed, a text is on its way")
-    end
-    pending "sends a text with delivery time +1" do
+    it "processes correct order w/ SMS" do
+      SMS = String
+      expect(correct_order.process_order).to be_a SMS
     end
   end
 end
