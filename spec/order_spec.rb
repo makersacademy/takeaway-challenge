@@ -12,6 +12,8 @@ describe Order do
 
   it { expect(subject).to respond_to :order_total }
 
+  it { expect(subject).to respond_to :complete_order }
+
   it "should print the menu" do
     expect(subject.show_menu).to eq Menu::DISHES
   end
@@ -67,6 +69,44 @@ describe Order do
       expect { subject.add_order("Lobster", 0) }.to raise_error("Can not select a quantity of 0")
     end
 
+    it "should only allow you to order items on the menu" do
+      message = "That item is not on the menu"
+      expect { subject.add_order("Bacon") }.to raise_error(message)
+    end
+
+  end
+
+  context "complete_order" do
+    before(:each) do
+    allow(subject).to receive(:order_correct?).and_return(false)
+    end
+
+    it "should not allow order completion if the price entered is false" do
+      price = double :price
+      message = "The price does not match. Please review your order"
+      expect(subject.complete_order(price)).to eq message
+    end
+
+  end
+
+  # Not sure about these tests
+  context "complete_order" do
+    before(:each) do
+    allow(order).to receive(:order_correct?).and_return(true)
+    end
+
+    it "it should allow order completion if the price entered is true" do
+      expect(order).to receive(:complete_order).with(15.0)
+      order.complete_order(15.0)
+    end
+
+    it "should allow order completion if the price entered is true" do
+      sms = double :sms_message
+      price = 15
+      msg = Message.new(price)
+      expect(msg).to receive(:send_sms)
+      msg.send_sms
+    end
   end
 
 end

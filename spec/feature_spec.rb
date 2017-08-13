@@ -1,11 +1,15 @@
 require "./lib/order.rb"
 require "./lib/menu.rb"
-nandos = Order.new
-nandos.add_order("Lobster", 2)
-nandos.add_order("Pizza", 4)
-nandos.add_order("Halloumi")
-nandos.add_order("Salmon", 2)
-nandos.add_order("Halloumi")
-nandos.order_list
-nandos.order_total
-nandos.show_basket
+require "./lib/app.rb"
+order1 = Order.new
+order1.add_order("Lobster", 2)
+order1.add_order("Pizza", 4)
+order1.add_order("Halloumi")
+order1.add_order("Salmon", 2)
+order1.edit_selection("Halloumi", 3)
+order1.remove_selection("Lobster")
+order1.order_list
+order1.order_total
+order1.show_basket
+order1.complete_order(55.0)
+order1.complete_order(57.0)
