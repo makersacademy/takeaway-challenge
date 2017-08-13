@@ -32,5 +32,5 @@ Menu options:
 
 ### To Do
 
-- allow user to remove item form basket
+- allow user to remove item from basket
 - load menu from csv/json
