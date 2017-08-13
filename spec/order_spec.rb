@@ -28,7 +28,8 @@ describe Order do
 	end
 
 	it "checks if the price given is correct" do
-		expect { subject.place_order }.to raise_error("The total price is not correct!")
+		subject.add_items("bruschetta", 1, 5 )
+		expect { subject.place_order(10) }.to raise_error("The total price is not correct!")
 
 	end
 end
