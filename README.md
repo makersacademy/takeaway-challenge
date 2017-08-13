@@ -1,6 +1,6 @@
 # Takeaway Challenge
 
-Midweek task, assigned by [Kay Lovelace](https://github.com/neoeno), [Makers Academy](http://www.makersacademy.com/).
+Weekend task, assigned by [Kay Lovelace](https://github.com/neoeno), [Makers Academy](http://www.makersacademy.com/).
 
 ## User Story
 
