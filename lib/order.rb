@@ -11,7 +11,11 @@ class Order
   end
   
   def place_order(dish, quantity)
-    @current_order[dish] = quantity
+    if menu.include?(dish.to_sym)
+      @current_order[dish] = quantity
+    else
+      raise "That item is not on the menu, please choose again"
+    end
   end
 
   def check_order
@@ -27,9 +31,15 @@ class Order
     end
   end
   
-
-  
-  
+  def submit_order(payment)
+    if payment != @final_total
+      raise "Incorrect payment, order not complete" 
+    end
+    current_order
+    final_total
+    "Order complete"
+  end
+   
 end
 
 # for each item in the current order,

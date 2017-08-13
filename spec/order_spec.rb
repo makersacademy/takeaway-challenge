@@ -34,9 +34,22 @@ describe Order do
     expect(subject.final_total).to eq(5.00)
   end
   
-  # it 'raises error when item added is not on the menu' do
-  #   expect{subject.place_order("red_curry", 1)}. to raise_error("That item is not on the menu, please choose again")
-  # end
+  it 'raises error when item added is not on the menu' do
+    expect{subject.place_order("red_curry", 1)}. to raise_error("That item is not on the menu, please choose again")
+  end
   
+  it 'can be placed when selection is finished' do
+    subject.place_order("prawn_crackers", 1)
+    subject.place_order("chicken_satay", 1)
+    subject.total
+    expect(subject.submit_order(5.00)).to eq "Order complete"
+  end
+
+  it 'is not placed when payment is incorrect' do
+    subject.place_order("prawn_crackers", 1)
+    subject.place_order("chicken_satay", 1)
+    subject.total
+    expect{subject.submit_order(7)}.to raise_error "Incorrect payment, order not complete" 
+  end
 
 end
