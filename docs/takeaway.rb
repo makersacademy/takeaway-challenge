@@ -42,8 +42,13 @@ class Takeaway
   end
 
   def checkout
+    checkout_error if @tally.zero?
     phone = Phone.new
     phone.tally = @tally
     phone.input_details
+  end
+
+  def checkout_error
+    raise("No dishes selected")
   end
 end

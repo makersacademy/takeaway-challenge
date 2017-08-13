@@ -59,19 +59,21 @@ describe Takeaway do
     end
   end
 
-  context "#tally" do
+  context "#checkout" do
     it "shows the total price of the selected dishes" do
       subject.choose_dish 2, 2
       subject.choose_dish 5, 3
       expect(subject.tally).to eq 1878
     end
-  end
 
-  context "#checkout" do
-    it "tally amount is set ready for checkout"
     it "confirms checkout and asks for input details" do
       expect(phone).to(respond_to { :input_details })
     end
-    it "cannot checkout with no dishes chosen"
+  end
+
+  context "#checkout_error" do
+    it "raises an error if checking out with no dishes selected" do
+      expect { subject.checkout }.to raise_error("No dishes selected")
+    end
   end
 end

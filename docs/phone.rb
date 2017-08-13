@@ -22,7 +22,7 @@ class Phone
   def time(delay = 1)
     time = Time.new
     hour = time.hour + delay
-    hour >= 24? hour = hour - 24 : hour
+    hour >= 24 ? hour -= 24 : hour
     "#{hour}:#{time.strftime("%m")}"
   end
 
@@ -33,9 +33,9 @@ class Phone
   def send
     client = Twilio::REST::Client.new @account_sid, @auth_token
     @message = client.messages.create(
-        body: "how is everyone getting on with the weekend challenge?",
-        to: @phone,
-        from: "+447481362500")
+      body: text_in_message,
+      to: @phone,
+      from: "+447481362500")
     puts @message.sid
   end
 end
