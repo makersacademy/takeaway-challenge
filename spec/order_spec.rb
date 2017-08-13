@@ -12,6 +12,8 @@ describe Order do
 
   it { expect(subject).to respond_to :order_total }
 
+  it { expect(subject).to respond_to :show_basket }
+
   it { expect(subject).to respond_to :complete_order }
 
   it "should print the menu" do
@@ -47,7 +49,12 @@ describe Order do
     end
 
     it "should let you remove a selection" do
-      expect { subject.remove_selection("Pizza") }.to change { subject.order_list.length }.by -1
+      subject.remove_selection("Pizza")
+      expect(subject.order_list.length).to eq 1
+    end
+
+    it "should show multiple items in the basket" do
+      expect(subject.show_basket).to eq "Total: £40.0"
     end
 
   end
@@ -58,9 +65,24 @@ describe Order do
       subject.add_order("Lobster", 2)
     end
 
-    it "should match the sum of the dishes ordered" do
+    it "should match the sum of the selections ordered" do
       expect(subject.order_total).to eq 40.0
     end
+
+    it "should change when selections are removed" do
+      # subject.remove_selection("Lobster")
+      expect { subject.remove_selection("Lobster") }.to change { subject.order_total }.by(-24.0)
+      # expect(subject.order_total).to eq 16.0
+    end
+
+    it "should return true if order total is the same as price entered" do
+      expect(subject.order_correct?(40)).to be true
+    end
+
+    it "should return false if order total is not the same as price entered" do
+      expect(subject.order_correct?(30)).to be false
+    end
+
   end
 
   context "Raises" do
@@ -78,7 +100,7 @@ describe Order do
 
   context "complete_order" do
     before(:each) do
-    allow(subject).to receive(:order_correct?).and_return(false)
+      allow(subject).to receive(:order_correct?).and_return(false)
     end
 
     it "should not allow order completion if the price entered is false" do
@@ -90,9 +112,10 @@ describe Order do
   end
 
   # Not sure about these tests
+
   context "complete_order" do
     before(:each) do
-    allow(order).to receive(:order_correct?).and_return(true)
+      allow(order).to receive(:order_correct?).and_return(true)
     end
 
     it "it should allow order completion if the price entered is true" do
@@ -101,7 +124,6 @@ describe Order do
     end
 
     it "should allow order completion if the price entered is true" do
-      sms = double :sms_message
       price = 15
       msg = Message.new(price)
       expect(msg).to receive(:send_sms)

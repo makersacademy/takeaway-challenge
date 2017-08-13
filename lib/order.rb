@@ -1,7 +1,6 @@
 require_relative "./menu.rb"
 require_relative "./app.rb"
 
-
 class Order
 
   attr_reader :order_list, :menu
@@ -16,7 +15,7 @@ class Order
   end
 
   def add_order(item, quantity = 1)
-    raise "That item is not on the menu" if !(menu.dishes.include?(item))
+    raise "That item is not on the menu" unless menu.dishes.include?(item)
     raise "Can not select a quantity of 0" if quantity.zero?
     order_list[item] = [quantity, "#{order_price(item, quantity)}".to_f]
     "You have ordered #{item} - x #{quantity}"
@@ -30,7 +29,7 @@ class Order
     order_list.each do |k, v|
       puts "#{k} x#{v[0]} = £#{v[1]}"
     end
-    puts "Total: £#{order_total}"
+    "Total: £#{order_total}"
   end
 
   def individual_selection_costs
