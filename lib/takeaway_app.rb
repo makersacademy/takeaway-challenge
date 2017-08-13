@@ -36,4 +36,9 @@ class TakeawayApp
     raise "Does not add up correctly" if @order.total != check_cost
   end
 
+  def time_in_an_hour
+    t = Time.new + 3600
+    t.strftime("%H:%M")
+  end
+
 end

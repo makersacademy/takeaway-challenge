@@ -23,15 +23,12 @@ describe Order do
   end
 
   it "shows the order with each item, it's cost and a total" do
-    # order_item.instance_variable_set("@dish_name", "Chicken Korma")
-    # order_item.instance_variable_set("@quantity", 2)
-    # order_item.instance_variable_set("@unit_cost", 8)
-    # order_item.instance_variable_set("@cost", 16)
-    order_item3 = OrderItem.new("1 2")
-    order.receive(order_item3)
+    allow(order_item).to receive(:dish_name).and_return("Chicken Korma")
+    allow(order_item).to receive(:unit_cost).and_return(8)
+    allow(order_item).to receive(:cost).and_return(16)
+    allow(order_item).to receive(:quantity).and_return(2)
+    order.receive(order_item)
     order.total
-    # allow(:order_item).to receive(:cost).and_return(16)
-    # allow(:order_item2).to receive(:cost).and_return(9)
     expect { order.show }.to output("Chicken Korma 2 X £8 = £16\nTotal = £16\n").to_stdout
   end
 

@@ -6,7 +6,7 @@ describe TakeawayApp do
   let(:order_item) { double "order_item" }
   let(:order_item2) { double "order_item2" }
   let(:order) { double "order" }
-
+  let(:time) {double "time"}
   it "shows a list of dishes and prices" do
     expect { takeaway_app.show_dishes }.to output("1. Chicken Korma £8\n2. Lamb Balti £9\n").to_stdout
   end
@@ -22,15 +22,16 @@ describe TakeawayApp do
   #   expect(takeaway_app.show_order).to eq order
   # end
   it "raises an error if the total and the sum of the item costs are different" do
-    # allow(:order_item3).to receive(:cost).and_return(16)
-    # allow(:order_item4).to receive(:cost).and_return(9)
-    order_item3 = OrderItem.new("1 2")
-    order_item4 = OrderItem.new("2 1")
-    order2 = Order.new
-    order2.receive(order_item3)
-    order2.receive(order_item4)
-    order2.total = 26
-    takeaway_app.receive_order(order2)
+    allow(order_item).to receive(:cost).and_return(16)
+    allow(order_item2).to receive(:cost).and_return(9)
+    allow(order).to receive(:contents).and_return([order_item, order_item2])
+    allow(order).to receive(:total).and_return(26)
+    takeaway_app.receive_order(order)
     expect { takeaway_app.check_calculation }.to raise_error("Does not add up correctly")
+  end
+
+  it "calculates the time an hour from now" do
+    t = Time.new + 3600
+    expect(takeaway_app.time_in_an_hour).to eq t.strftime("%H:%M")
   end
 end
