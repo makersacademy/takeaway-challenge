@@ -8,10 +8,11 @@ require_relative 'sms'
 class App
   attr_reader :order
 
-  def initialize
+  def initialize(sms)
     @formatter = Formatter.new
     @menu = Menu.new(@formatter)
     @order = new_order
+    @sms = sms
   end
 
   def run
@@ -55,7 +56,7 @@ class App
 
   def complete
     summary = @order.complete
-    SMS.send(phone_number, summary)
+    @sms.send(phone_number, summary)
     puts 'order placed!'
     @order = new_order
   end

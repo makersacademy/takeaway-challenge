@@ -3,7 +3,7 @@ require 'app'
 describe App do
   let(:io_obj) { double() }
   let(:sms) { double() }
-
+  subject { App.new(sms) }
   describe '.order' do
     context 'initializes with new order' do
       specify {
@@ -146,6 +146,7 @@ describe App do
 
   describe '.complete' do
     before do
+      allow(sms).to receive(:send)
       allow(subject).to receive(:gets).and_return(io_obj)
       allow(io_obj).to receive(:chomp).and_return("0")
     end
@@ -153,6 +154,13 @@ describe App do
     context 'output' do
       specify {
         expect { subject.send(:complete) }.to output.to_stdout
+      }
+    end
+
+    context 'new order' do
+      specify {
+        expect(sms).to receive(:send)
+        subject.send(:complete)
       }
     end
 
