@@ -2,6 +2,7 @@ require 'app'
 
 describe App do
   let(:io_obj) { double() }
+  let(:sms) { double() }
 
   describe '.order' do
     context 'initializes with new order' do
@@ -144,16 +145,14 @@ describe App do
   end
 
   describe '.complete' do
+    before do
+      allow(subject).to receive(:gets).and_return(io_obj)
+      allow(io_obj).to receive(:chomp).and_return("0")
+    end
 
     context 'output' do
       specify {
         expect { subject.send(:complete) }.to output.to_stdout
-      }
-    end
-
-    context 'send sms' do
-      specify {
-        pending
       }
     end
 
@@ -162,6 +161,22 @@ describe App do
         expect(subject).to receive(:new_order)
         subject.send(:complete)
       }
+    end
+  end
+
+  describe '.phone_number' do
+    before do
+      allow(subject).to receive(:gets).and_return(io_obj)
+      allow(io_obj).to receive(:chomp).and_return("0")
+    end
+
+    context 'gets' do
+      context 'gets' do
+        specify {
+          expect(subject).to receive(:gets).and_return(io_obj)
+          subject.send(:phone_number)
+        }
+      end
     end
   end
 

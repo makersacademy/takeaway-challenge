@@ -2,15 +2,15 @@ require_relative 'formatter'
 require_relative 'menu'
 require_relative 'basket'
 require_relative 'order'
+require_relative 'sms'
 
 # in lib/app.rb
 class App
   attr_reader :order
 
-  def initialize(order_klass = Order)
+  def initialize
     @formatter = Formatter.new
     @menu = Menu.new(@formatter)
-    @order_klass = order_klass
     @order = new_order
   end
 
@@ -26,7 +26,7 @@ class App
 
   def new_order
     basket = Basket.new(@formatter)
-    @order_klass.new(@menu, basket)
+    Order.new(@menu, basket)
   end
 
   def process_input(line)
@@ -55,9 +55,14 @@ class App
 
   def complete
     summary = @order.complete
-    # sent sms message with summary
+    SMS.send(phone_number, summary)
     puts 'order placed!'
     @order = new_order
+  end
+
+  def phone_number
+    puts "please enter your phone number"
+    gets.chomp
   end
 
   def options
