@@ -24,17 +24,18 @@ describe Takeout do
     it 'can add a dish to basket' do
       subject.add_dish(:lasagna)
       subject.basket.each {}
-      expect(subject.basket).to include([:lasagna, 10])
+      expect(subject.basket).to include([:lasagna, 10, 1])
     end
 
     it 'can fill basket with multiple items' do
       subject.add_dish(:lasagna)
       subject.add_dish(:pizza)
-      expect(subject.basket).to include([:lasagna, 10] && [:pizza, 12])
+      expect(subject.basket).to include([:lasagna, 10, 1] && [:pizza, 12, 1])
     end
 
     it 'can add multiples of the same dish' do
-
+      subject.add_dish(:lasagna, 4)
+      expect(subject.basket).to include([:lasagna, 10, 4])
     end
 
   end
@@ -53,6 +54,11 @@ describe Takeout do
       subject.add_dish(:lasagna)
       subject.add_dish(:pizza)
       expect(subject.total_price).to eq 22
+    end
+
+    it 'compensates for multiples of the same dish' do
+      subject.add_dish(:lasagna, 4)
+      expect(subject.total_price).to eq 40
     end
   end
 
@@ -85,15 +91,6 @@ describe Takeout do
     end
   end
 
-  # context '#place_order' do
-  #   it 'asks for input' do
-  #     allow($stdin).to receive_message_chain(:gets, :chomp).and_return('3, lasagna')
-  #     allow($stdin).to receive_message_chain(:gets, :chomp).and_return("\n")
-  #     subject.place_order
-  #   end
-  #   it 'receives an order'
-  # end
-
   context '#checkout' do
     before do
       @success = 'Success! Your order has been placed.'
@@ -111,7 +108,8 @@ describe Takeout do
 
 
     it 'sends text message when complete' do
-      message = 'Success! Your order has been placed.'
+      complete_order = "#Your order total price is £22"
+      message = "Success! Your order has been placed. #{complete_order}"
       subject.add_dish(:lasagna)
       subject.add_dish(:pizza)
       expect(subject).to receive(:send_text).with(message)
