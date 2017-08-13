@@ -1,16 +1,22 @@
 require 'app'
 
 describe App do
-  let(:io_obj) { double() }
-  let(:sms) { double() }
-  subject { App.new(sms) }
-  describe '.order' do
-    context 'initializes with new order' do
-      specify {
-        expect(subject.order).not_to be(nil)
-      }
-    end
+  let(:io_obj) { double(:io_o) }
+  let(:sms) { double(:sms) }
+  let(:formatter) { double(:formatter) }
+  let(:menu) { double(:menu) }
 
+  subject { App.new(sms, menu, formatter) }
+
+  before do
+    allow(formatter).to receive(:format_table).and_return("")
+    allow(formatter).to receive(:format_price).and_return("")
+    allow(menu).to receive(:item_count).and_return(5)
+    allow(menu).to receive(:get_dish).and_return({ name: "something", price: 1 })
+    allow(menu).to receive(:show).and_return("")
+  end
+
+  describe '.order' do
     context 'with type of Order' do
       specify {
         expect(subject.order).to be_a(Order)
@@ -93,6 +99,13 @@ describe App do
       }
     end
 
+    context 'calls menu' do
+      specify {
+        expect(menu).to receive(:show)
+        subject.send(:process_input, "m")
+      }
+    end
+
     context 'shows basket' do
       specify {
         expect { subject.send(:process_input, "b") }.to output.to_stdout
@@ -133,7 +146,8 @@ describe App do
   describe '.try_select_dish' do
     context 'valid dishes' do
       specify {
-        expect { subject.send(:try_select_dish, '0') }.to output("selected dish: spam\n").to_stdout
+        expect(menu).to receive(:get_dish)
+        subject.send(:try_select_dish, '0')
       }
     end
 
@@ -146,6 +160,7 @@ describe App do
 
   describe '.complete' do
     before do
+      allow(subject).to receive(:quit)
       allow(sms).to receive(:send)
       allow(subject).to receive(:gets).and_return(io_obj)
       allow(io_obj).to receive(:chomp).and_return("0")
@@ -164,9 +179,9 @@ describe App do
       }
     end
 
-    context 'new order' do
+    context 'quit' do
       specify {
-        expect(subject).to receive(:new_order)
+        expect(subject).to receive(:quit)
         subject.send(:complete)
       }
     end

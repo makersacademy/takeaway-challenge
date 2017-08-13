@@ -10,7 +10,7 @@ describe SMS do
 
     context 'message' do
       specify {
-        expect { subject.send("0", {time: "1"}) }.to output.to_stdout
+        expect { subject.send("0", { time: "1" }) }.to output.to_stdout
       }
     end
   end

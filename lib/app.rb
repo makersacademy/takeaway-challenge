@@ -1,16 +1,13 @@
-require_relative 'formatter'
-require_relative 'menu'
-require_relative 'basket'
-require_relative 'order'
-require_relative 'sms'
+require './lib/basket'
+require './lib/order'
 
 # in lib/app.rb
 class App
   attr_reader :order
 
-  def initialize(sms)
-    @formatter = Formatter.new
-    @menu = Menu.new(@formatter)
+  def initialize(sms, menu, formatter)
+    @formatter = formatter
+    @menu = menu
     @order = new_order
     @sms = sms
   end
@@ -58,7 +55,7 @@ class App
     summary = @order.complete
     @sms.send(phone_number, summary)
     puts 'order placed!'
-    @order = new_order
+    quit
   end
 
   def phone_number
