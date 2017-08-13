@@ -1,4 +1,4 @@
-# require_relative "./dish.rb"
+
 
 class TakeAway
 
@@ -10,24 +10,26 @@ class TakeAway
 
   COUNT = 1
   PRODUCT_ERROR = "Item does not exist"
+  CHECKOUT_MESSAGE = "Thanks for ordering at #{Time.now}. Your order will be with you in 1 hour."
 
-  attr_reader :menu
-  attr_accessor :order_array
+  
+  attr_accessor :order_array, :menu, :checkout_message
 
   def initialize(menu = MENU, order_array = [])
     @menu = menu.each { |item, price| "#{item}: #{price}" }
     @order_array = order_array 
     @total = []
+    
   end
 
   def read_menu
     @menu
   end
   
-  def order(item, count = COUNT)
+  def order(item, count = COUNT) #price = @menu[price])
     fail PRODUCT_ERROR if @menu[item].nil?
     @order_array.push("#{item} x#{count}")
-  	# @total.push(@menu[price])
+  	 #@total.push(@menu[price])
   	 if count.nil? 
       "1x #{item}(s) added to your basket."
       else
@@ -36,13 +38,17 @@ class TakeAway
   end
 
   def basket_summary
-  	 @menu
   	 @order_array.each { |item, count| "#{item} x#{count}" } 
   end
 
   def total_amount
-  	# total = []
+  	 @total.join(" ")
   	
-  end
+  end         
+   
+  def checkout(checkout_message = CHECKOUT_MESSAGE)
+  	@checkout_message = checkout_message
+    p @checkout_message
+ end
 
 end

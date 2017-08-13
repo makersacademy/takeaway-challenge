@@ -1,11 +1,11 @@
 require "takeaway_challenge.rb"
-# require "dish.rb"
 
 describe TakeAway do
 
 	 it 'lets you read the menu' do
+	 	 menu_read = described_class::MENU
  		 t = TakeAway.new
- 	  expect(t.read_menu).to eq({ "spring roll" => 0.99, "char sui bun" => 3.99, "pork dumpling" => 2.99, "peking duck" => 7.99, "fu-king fried rice" => 5.99 })
+ 	  expect(t.read_menu).to eq(menu_read)
   end
 
   it 'should take a order without count' do
@@ -30,7 +30,17 @@ describe TakeAway do
     t.order("spring roll", 2)
     t.order("fu-king fried rice", 3)
     t.basket_summary
-    expect(t.total).to eq "$19,95"
+    expect(t.total_amount).to eq "#{@total}"
   end
+
+  it "gives us the time our food will arrive :D " do
+  	 message = described_class::CHECKOUT_MESSAGE
+    t = TakeAway.new
+    t.order("spring roll", 4)
+    t.basket_summary
+    expect(t.checkout).to eq(message)
+  end
+
+    
 
 end
