@@ -19,11 +19,11 @@ Takeaway Challenge
 Where I got to:
 
 Stage at:
-Not managed to make Twillo send the text yet. Issue with the way the twillo gem is required especially when rspec ran. Text body includes the current time plus one hour as the delivery time.
+Not managed to make twilio send the text yet. Issue with the way the twilio gem is required especially when rspec ran. Text body includes the current time plus one hour as the delivery time.
 
 Still to do:
 Rspec test the time plus an hour in the output message. Have tested it on it's own just cannot work out how to stubb it out correctly in output message.
-Need to test twillo sending text in rspec - To do this i would try and stubb out the twillo class.
+Need to test twilio sending text in rspec - To do this i would try and stubb out the twilio class.
 Need to add and test the total order value to the text. Would need to use a double or a stubb to test this.
 
 
