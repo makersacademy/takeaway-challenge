@@ -1,7 +1,5 @@
 class Menu
 
-  # attr_reader :menu
-
   MENU = {
     prawn_crackers: 1.00,
     chicken_satay: 4.00,

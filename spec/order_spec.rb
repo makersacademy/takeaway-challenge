@@ -27,5 +27,16 @@ describe Order do
     expect(subject.check_order).to eq({"prawn_crackers"=>1, "chicken_satay"=>1})
   end
   
+  it 'calculates total to be paid' do
+    subject.place_order("prawn_crackers", 1)
+    subject.place_order("chicken_satay", 1)
+    subject.total
+    expect(subject.final_total).to eq(5.00)
+  end
+  
+  # it 'raises error when item added is not on the menu' do
+  #   expect{subject.place_order("red_curry", 1)}. to raise_error("That item is not on the menu, please choose again")
+  # end
+  
 
 end
