@@ -2,9 +2,9 @@ require "takeaway_challenge.rb"
 
 describe TakeAway do
 
-	 it 'lets you read the menu' do
-	 	 menu_read = described_class::MENU
- 		 t = TakeAway.new
+  it 'lets you read the menu' do
+ 	  menu_read = described_class::MENU
+ 	  t = TakeAway.new
  	  expect(t.read_menu).to eq(menu_read)
   end
 
@@ -20,8 +20,8 @@ describe TakeAway do
 
   it 'displays order summary' do
   	 t = TakeAway.new
-  	 t.order("spring roll", 4)
-  	 t.order("fu-king fried rice", 2)
+    t.order("spring roll", 4)
+	   t.order("fu-king fried rice", 2)
   	 expect(t.basket_summary).to eq ["spring roll x4", "fu-king fried rice x2"]
   end
 

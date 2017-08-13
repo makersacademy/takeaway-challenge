@@ -34,7 +34,7 @@ class TakeAway
       "1x #{item}(s) added to your basket."
       else
         "#{count}x #{item}(s) added to your basket."
-     end
+    end
   end
 
   def basket_summary
@@ -48,7 +48,6 @@ class TakeAway
    
   def checkout(checkout_message = CHECKOUT_MESSAGE)
   	 @checkout_message = checkout_message
-    p @checkout_message
   end
 
 end
