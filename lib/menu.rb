@@ -15,11 +15,15 @@ class Menu
     ]
   end
 
-  def show_dishes
-    @formatter.show_table("menu", @dishes)
+  def show
+    @formatter.format_table("menu", @dishes)
   end
 
   def get_dish(index)
     @dishes[index]
+  end
+
+  def item_count
+    @dishes.length
   end
 end

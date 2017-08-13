@@ -30,13 +30,7 @@ class Basket
   end
 
   def show_basket
-    @formatter.show_table("basket", @items)
-    show_total
-  end
-
-  private
-
-  def show_total
+    "#{@formatter.format_table("basket", @items)}\n" + 
     "Total: #{basket_total}"
   end
 end

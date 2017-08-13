@@ -12,17 +12,31 @@ describe Menu do
     end
   end
 
+  describe '.item_count' do
+    context 'method call' do
+      specify {
+        expect(subject).to respond_to(:item_count)
+      }
+    end
+
+    context 'accurate count' do
+      specify {
+        expect(subject.item_count).to eq(5)
+      }
+    end
+  end
+
   describe '.show_dishes' do
     context 'method call' do
       specify {
-        expect(subject).to respond_to(:show_dishes)
+        expect(subject).to respond_to(:show)
       }
     end
 
     context 'uses formatter' do
       specify {
-        expect(formatter).to receive(:show_table)
-        subject.show_dishes
+        expect(formatter).to receive(:format_table)
+        subject.show
       }
     end
   end

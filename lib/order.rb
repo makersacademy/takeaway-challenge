@@ -11,11 +11,13 @@ class Order
   end
 
   def select_dish(index)
+    return false if index > @menu.item_count
     dish = @menu.get_dish(index)
     @basket.add_item(dish)
+    true
   end
 
-  def complete!
+  def complete
     @complete = true
     time = Time.now + DELIVERY_TIME
     summary(time)
@@ -23,6 +25,10 @@ class Order
 
   def show
     @basket.show_basket
+  end
+
+  def item_count
+    @basket.items.length
   end
 
   private

@@ -7,7 +7,7 @@ class Formatter
   PRICE_WIDTH = 5
 
   def format_table(title, array)
-    string = "#{head(title)}\n#{titles}\n"
+    string = "#{head(title)}\n#{titles}\n\n"
     array.each_with_index do |item, index|
       string += line(index, item[:name], item[:price])
       string += "\n"
