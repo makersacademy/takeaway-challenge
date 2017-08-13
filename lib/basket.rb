@@ -1,4 +1,3 @@
-require_relative 'formatter'
 
 DISPLAY_WIDTH = 50
 
@@ -30,7 +29,7 @@ class Basket
   end
 
   def show_basket
-    "#{@formatter.format_table("basket", @items)}\n" + 
+    "#{@formatter.format_table("basket", @items)}\n" +
     "Total: #{basket_total}"
   end
 end
