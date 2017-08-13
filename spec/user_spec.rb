@@ -34,23 +34,20 @@ describe User do
     order = $stdin.gets
   end
 
+  it 'summs up the total order' do
+
+  end
+
   # it 'raises an error if the user does not enter a correct number' do
   #   user.order_selection.order = 9
   #   expect { user.order_error }.to raise_error("The number you have input is not an item on the menu")
   # end
   #
-  # it 'raises an error if the user does not complete the order' do
+  # #
+  # # it 'raises an error if the user does not input anything' do
   #
   # end
-  #
-  # it 'raises an error if the user does not input anything' do
-  #
-  # end
-  #
-  # it 'adds this selection to a basket' do
-  #
-  # end
-  #
+
   # it 'saves the users selection to a file' do
   #
   # end
