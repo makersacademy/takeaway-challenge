@@ -53,7 +53,6 @@ class Takeout
     @dishes.each do |dish, price|
       puts "#{dish.capitalize}: £#{price}"
     end
-    nil
   end
 
   def checkout(sum)

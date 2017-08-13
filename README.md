@@ -14,66 +14,38 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+Approach to solving the challenge
+---------
+This challenge was completed by attempting to use TDD for every new feature implemented. Through interpreting the user stories, I decided this task required at least two classes: Menu and Takeout. The Takeout class performed actions (such as adding, removing and seeing dishes) whereas the Menu class sourced information that could be provided to the takeout.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+ 
+Difficulties
+---------
+I knew that this challenge would involve two principal difficulties, which were RSpec's 'doubles' and class-to-class interaction.
 
-Task
------
+1. RSpec 'doubles'
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+   Doubles have been a difficult concept to grasp since learning about them earlier in the week. Of particular difficulty was learning how to make a particular instance of a double change its behaviour within a specific test in case multiple instances were required. 
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+2. Class-to-class interaction
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+   When completing the airport class in particular, a lot of thought had to be committed to working out how it would interact with both the plane and weather class. Problems emerged when trying to initiate new instances of the weather class within the airport initializer (as I thought at one point I needed this to occur), and this subsequently led to more impossible problems in my spec files. However, this actually led to substantial refactoring of my classes, which ultimately led to clearer, more efficient methods.
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
+Future Developments
 ------------------
+If I were to further develop this task, I would implement the following:
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+1. More menus
+   
+   The current app does not have more than one menu. The Takeout class could feature a "switch_menu" method, that could source dishes from other menus to then add to the order.
+
+2. Using user input to order (through gets)
+   
+   This app would be much more interactive if users could just execute a "takeout.run" method, which would prompt the user to add/delete dishes to a basket, then accept certain inputs to checkout and complete the order.
+   
+
+Learning points
+---------
+
+  * Be clear on which classes can take which responsibilities
+  * Keep your iterations "x.each do" clean so they can reveal intention
