@@ -25,25 +25,6 @@ class Menu
   end
 end
 
-# menu= Menu.new
+menu= Menu.new
+menu.show_menu_hash
 # menu.print_menu
-# menu.show_menu_hash
-
-  # attr_accessor :menu_hash
-  #
-  # def initialize
-  #   @menu_hash = {}
-  # end
-
-  # def prints_menu_list
-  # #   CSV.open(menu_list. "r") do |newfile|
-  # #     newfile.readlines.each do |line|
-  # #       puts "#{line}"
-  # # end
-
-#   def creating_the_menu_hash
-#      @menu_hash["1. Metalic fried virus"] = 9.99
-#      p "#{menu_hash}"
-#
-# #NO it should only open then print a CSV file which contains the info .. look at student directory stuff for how to do this
-#   end
