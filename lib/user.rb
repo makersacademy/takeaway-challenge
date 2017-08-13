@@ -7,6 +7,7 @@ class User
   def initialize
     @menu = Menu.new.show_menu_hash
     @basket = []
+
   end
 
   def order_instructions
@@ -17,8 +18,12 @@ class User
 
   def order_selection
     order_instructions
-
-
+    order = gets.chomp
+    @basket << order
+    puts "Thank you number #{order} has been added to your bascket"
   end
 
 end
+
+# user = User.new
+# user.order_selection
