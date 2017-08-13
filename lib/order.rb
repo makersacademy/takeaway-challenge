@@ -32,10 +32,6 @@ class Order
     "Total: £#{order_total}"
   end
 
-  def individual_selection_costs
-    order_list.values.map { |x| x[-1] }
-  end
-
   def order_total
     individual_selection_costs.reduce(0, :+)
   end
@@ -63,6 +59,12 @@ class Order
     else
       "The price does not match. Please review your order"
     end
+  end
+
+  private
+
+  def individual_selection_costs
+    order_list.values.map { |x| x[-1] }
   end
 
 end
