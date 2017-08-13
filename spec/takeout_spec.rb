@@ -1,11 +1,11 @@
 require 'takeout'
-require 'send-sms'
+require 'send_sms'
 
 describe Takeout do
+  let(:texter) { double :texter }
   before do
-    @l_output = "Lasagna: £10\n"
-    @l_and_p = "Lasagna: £10\nPizza: £12\n"
     @dishes = { :lasagna => 10, :pizza => 12, :burger => 10, :chips => 2 }
+    @texter = texter
   end
 
   def format_dishes
@@ -19,11 +19,12 @@ describe Takeout do
     expect(subject.class).to eq described_class
   end
 
+  it 'can pick a menu'
+
   context '#add_dish' do
 
     it 'can add a dish to basket' do
       subject.add_dish(:lasagna)
-      subject.basket.each {}
       expect(subject.basket).to include([:lasagna, 10, 1])
     end
 
@@ -36,6 +37,11 @@ describe Takeout do
     it 'can add multiples of the same dish' do
       subject.add_dish(:lasagna, 4)
       expect(subject.basket).to include([:lasagna, 10, 4])
+    end
+
+    it 'gives informative message to user' do
+      message = '5x Lasagna added to basket'
+      expect { subject.add_dish(:lasagna, 5) }.to output(message).to_stdout
     end
 
   end
@@ -62,26 +68,41 @@ describe Takeout do
     end
   end
 
-  context '#check_price' do
-    it 'lists total price and dishes in basket' do
-      subject.add_dish(:lasagna)
+  context '#delete_from_basket' do
+    before do
+      subject.add_dish(:lasagna, 2)
       subject.add_dish(:pizza)
-      total = "Total price: £22\n"
-      message = "#{total}#{@l_and_p}"
-      expect { subject.check_price }.to output(message).to_stdout
+      subject.add_dish(:burger, 50)
+    end
+    it 'can remove an item' do
+      message = "2x Lasagna = £20\n50x Burger = £500\n"
+      subject.delete_from_basket(:pizza)
+      expect { subject.current_basket }.to output(message).to_stdout
+    end
+    it 'can delete some extras of items' do
+      message = "2x Lasagna = £20\n1x Pizza = £12\n25x Burger = £250\n"
+      subject.delete_from_basket(:burger, 25)
+      expect { subject.current_basket }.to output(message).to_stdout
+    end
+
+    it 'can delete "all" from basket' do
+      subject.delete_from_basket("all")
+      expect(subject.current_basket).to be_nil
     end
   end
 
   context '#current_basket' do
     it 'shows an added item' do
+      message = "1x Lasagna = £10\n"
       subject.add_dish(:lasagna)
-      expect { subject.current_basket }.to output(@l_output).to_stdout
+      expect { subject.current_basket }.to output(message).to_stdout
     end
 
-    it 'shows multple added items' do
+    it 'shows multiple added items' do
+      message = "1x Lasagna = £10\n1x Pizza = £12\n"
       subject.add_dish(:lasagna)
       subject.add_dish(:pizza)
-      expect { subject.current_basket }.to output(@l_and_p).to_stdout
+      expect { subject.current_basket }.to output(message).to_stdout
     end
   end
 
@@ -106,10 +127,9 @@ describe Takeout do
       expect { subject.checkout(21) }.to raise_error 'Incorrect sum'
     end
 
-
     it 'sends text message when complete' do
-      complete_order = "#Your order total price is £22"
-      message = "Success! Your order has been placed. #{complete_order}"
+      complete_order = "Your order total price is £22"
+      message = "#{@success} #{complete_order}"
       subject.add_dish(:lasagna)
       subject.add_dish(:pizza)
       expect(subject).to receive(:send_text).with(message)

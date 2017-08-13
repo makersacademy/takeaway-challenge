@@ -1,4 +1,4 @@
-require './lib/send-sms.rb'
+require './lib/send_sms.rb'
 
 class Takeout
 
@@ -7,39 +7,53 @@ class Takeout
   def initialize
     @dishes = Menu.new.dishes
     @basket = []
+    @texter = Texter.new
   end
 
   def add_dish(dish, quantity = 1)
     @dishes.select do |key, value|
       @basket << [key, value, quantity] if key == dish.downcase.to_sym
     end
+    print "#{quantity}x #{dish.capitalize} added to basket"
   end
 
   def total_price
     total = 0
-    @basket.each { |dish, price, quantity| total += price*quantity }
+    @basket.each { |_dish, price, quantity| total += price * quantity }
     total
   end
 
   def current_basket
     arr = []
-    @dishes.each do |dish, price|
-      @basket.each do |d, p|
-      arr << "#{dish.capitalize}: £#{price}" if dish == d
+    @dishes.each do |key, _v|
+      @basket.each do |dish, price, quantity|
+        arr << "#{quantity}x #{dish.capitalize} = £#{quantity * price}" if key == dish
       end
     end
     puts arr
+  end
+
+  def delete_from_basket(item, amount = 1)
+    @basket = [] if item == "all"
+    @basket.each_with_index do |order, index|
+      if order.include? item
+        quantity = order.last
+        p order
+        if amount >= order.last
+          @basket.delete_at(index)
+        else
+          order.pop
+          order << quantity - amount
+        end
+      end
+    end
   end
 
   def read_menu
     @dishes.each do |dish, price|
       puts "#{dish.capitalize}: £#{price}"
     end
-  end
-
-  def check_price
-    puts "Total price: £#{total_price}"
-    "#{current_basket}"
+    nil
   end
 
   def checkout(sum)
@@ -50,12 +64,10 @@ class Takeout
   private
 
   def send_text(message)
-    Texter.new.send_text(message)
+    @texter.send_text(message)
   end
 
   def complete_order
-    "#Your order total price is £#{total_price}"
+    "Your order total price is £#{total_price}"
   end
-
-
 end

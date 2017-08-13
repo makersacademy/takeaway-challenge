@@ -10,4 +10,9 @@ class Menu
                 :burger => 10,
                 :chips => 2 }
   end
+
+  def add_to_menu(dish, price)
+    @dishes[dish.downcase.to_sym] = price
+  end
+
 end
