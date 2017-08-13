@@ -6,7 +6,7 @@ describe TakeawayApp do
   let(:order_item) { double "order_item" }
   let(:order_item2) { double "order_item2" }
   let(:order) { double "order" }
-  let(:time) {double "time"}
+  let(:time) { double "time" }
   it "shows a list of dishes and prices" do
     expect { takeaway_app.show_dishes }.to output("1. Chicken Korma £8\n2. Lamb Balti £9\n").to_stdout
   end
@@ -34,4 +34,12 @@ describe TakeawayApp do
     t = Time.new + 3600
     expect(takeaway_app.time_in_an_hour).to eq t.strftime("%H:%M")
   end
+
+  it "creates a message" do
+    t = Time.new + 3600
+    expect(takeaway_app.create_message).to eq "Thank you! Your order was placed and will be delivered before #{t.strftime("%H:%M")}"
+  end
+
+
+
 end
