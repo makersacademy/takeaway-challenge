@@ -25,7 +25,3 @@ describe Menu do
   end
 
 end 
-
-  # it 'the menu number is changed with the counter' do
-  #   expect { menu.show_menu_hash }.to change { menu.show_menu_hash.counter }.by(6)
-  # end

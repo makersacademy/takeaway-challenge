@@ -46,23 +46,3 @@ end
 user = User.new
 user.order_selection(2, 3)
 user.total_price_of_basket
-
-
-# # def order_error?
-# #   menu_items = ["1", "2", "3", "4", "5", "6"]
-# #   order_correct = !menu_items.include?(@order)
-# #   return 'The number you have input is not an item on the menu' if order_correct == false
-# # end
-#
-# def order_selection
-#   order_instructions
-#   order = $stdin.gets.chomp
-#     while order != 0
-#       @order = order.to_i
-#     # order_error?
-#     accessing_price_of_order
-#     @basket << { @order => @price }
-#     puts "Thank you number #{@order} priced at £ #{@price} has been added to your bascket"
-#     order = $stdin.gets.chomp.to_i
-#   end
-# end
