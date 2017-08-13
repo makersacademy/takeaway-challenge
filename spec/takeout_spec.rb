@@ -1,4 +1,5 @@
 require 'takeout'
+require 'send-sms'
 
 describe Takeout do
   before do
@@ -94,9 +95,27 @@ describe Takeout do
   # end
 
   context '#checkout' do
+    before do
+      @success = 'Success! Your order has been placed.'
+    end
     it 'raises an error if wrong sum is given' do
       subject.add_dish(:chips)
       expect { subject.checkout(3) }.to raise_error 'Incorrect sum'
+    end
+
+    it 'raises errors for multiple orders & incorrect sum' do
+      subject.add_dish(:lasagna)
+      subject.add_dish(:pizza)
+      expect { subject.checkout(21) }.to raise_error 'Incorrect sum'
+    end
+
+
+    it 'sends text message when complete' do
+      message = 'Success! Your order has been placed.'
+      subject.add_dish(:lasagna)
+      subject.add_dish(:pizza)
+      expect(subject).to receive(:send_text).with(message)
+      subject.checkout(22)
     end
   end
 end

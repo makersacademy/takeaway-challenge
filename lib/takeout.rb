@@ -1,3 +1,5 @@
+require './lib/send-sms.rb'
+
 class Takeout
 
   attr_reader :basket
@@ -43,43 +45,47 @@ class Takeout
     "#{current_basket}"
   end
 
-  def place_order
-    arr = []
-    prompt_for_order
-    order = gets.chomp
-    calculate_input(order, arr)
-    complete_order(arr)
-  end
+  # def place_order
+  #   arr = []
+  #   prompt_for_order
+  #   order = gets.chomp
+  #   calculate_input(order, arr)
+  #   complete_order(arr)
+  # end
 
   def checkout(sum)
     raise 'Incorrect sum' unless sum == total_price
-    'Success! Your order has been placed'
+    send_text 'Success! Your order has been placed.'
   end
 
   private
 
-  def prompt_for_order
-    puts "Please place your order!"
-    puts "Place quantity first, then food"
-    puts "Enter nothing to complete order"
-    puts "eg '3, lasagna'"
+  def send_text(message)
+    Texter.new.send_text(message)
   end
 
-  def calculate_input(order, arr)
-    until order.empty?
-      order = order.gsub(/\s+/, "")
-      order = order.split(",")
-      @cost += ((order[0].to_i)*(@dishes[(order[1].to_sym)]))
-      arr << order
-      order = gets.chomp
-    end
-  end
+  # def prompt_for_order
+  #   puts "Please place your order!"
+  #   puts "Place quantity first, then food"
+  #   puts "Enter nothing to complete order"
+  #   puts "eg '3, lasagna'"
+  # end
+  #
+  # def calculate_input(order, arr)
+  #   until order.empty?
+  #     order = order.gsub(/\s+/, "")
+  #     order = order.split(",")
+  #     @cost += ((order[0].to_i)*(@dishes[(order[1].to_sym)]))
+  #     arr << order
+  #     order = gets.chomp
+  #   end
+  # end
 
-  def complete_order(arr)
-    puts "You have ordered:"
-    arr.each {|amount, order| puts "#{amount}x #{order}"}
-    puts "Your order total price is £#{@cost}"
-  end
+  # def complete_order(arr)
+  #   puts "You have ordered:"
+  #   arr.each {|amount, order| puts "#{amount}x #{order}"}
+  #   puts "Your order total price is £#{@cost}"
+  # end
 
 
 end
