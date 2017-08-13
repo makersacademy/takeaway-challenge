@@ -3,6 +3,12 @@ require 'twilio-ruby'
 
 class Phone
 
+  attr_accessor :tally
+
+  def initialize
+    @tally = tally
+  end
+
   def input_details
     puts "Input Account SID"
     @account_sid = gets.chomp
@@ -13,12 +19,23 @@ class Phone
     send
   end
 
+  def time(delay = 1)
+    time = Time.new
+    hour = time.hour + delay
+    hour >= 24? hour = hour - 24 : hour
+    "#{hour}:#{time.strftime("%m")}"
+  end
+
+  def text_in_message
+    "Your order will arrive at #{time} and is £#{@tally}. Enjoy our heavenly dishes!"
+  end
+
   def send
     client = Twilio::REST::Client.new @account_sid, @auth_token
     @message = client.messages.create(
-        body: "Hello from Ruby",
+        body: "how is everyone getting on with the weekend challenge?",
         to: @phone,
         from: "+447481362500")
-    puts message.sid
+    puts @message.sid
   end
 end

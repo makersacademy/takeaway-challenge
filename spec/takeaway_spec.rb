@@ -68,8 +68,10 @@ describe Takeaway do
   end
 
   context "#checkout" do
+    it "tally amount is set ready for checkout"
     it "confirms checkout and asks for input details" do
       expect(phone).to(respond_to { :input_details })
     end
+    it "cannot checkout with no dishes chosen"
   end
 end

@@ -42,6 +42,8 @@ class Takeaway
   end
 
   def checkout
-    Phone.new.input_details
+    phone = Phone.new
+    phone.tally = @tally
+    phone.input_details
   end
 end
