@@ -1,6 +1,6 @@
 DISHES = {
-chicken_chow_mein: 5,
-sweet_and_sour_chicken: 5.50
+pizza: 5,
+curry: 5.50
 }
 
 class Menu
@@ -19,20 +19,21 @@ class Menu
   end
 
   def dish_order(dish, amount = 1)
-    amount.times { @order << dish }
+    raise "Sorry, that dish isn't on the menu" unless @dishes.key?(dish.to_sym)
+    amount.times { @order << dish.to_sym }
   end
 
   def order_amount
     @order.map { |dish| @dishes[dish] }.inject(:+)
   end
-     
+
 end
 
-menu = Menu.new
-menu.print_dishes
-menu.dish_order(:chicken_chow_mein)
-menu.dish_order(:chicken_chow_mein, 5)
-p menu.order
-menu.dish_order(:sweet_and_sour_chicken)
-p menu.order_amount
-p menu.order
+# menu = Menu.new
+# menu.print_dishes
+# menu.dish_order(:chicken_chow_mein)
+# menu.dish_order(:chicken_chow_mein, 5)
+# p menu.order
+# menu.dish_order(:sweet_and_sour_chicken)
+# p menu.order_amount
+# p menu.order
