@@ -1,3 +1,4 @@
+require_relative 'colours'
 
 # in lib/app.rb
 class App
@@ -13,7 +14,7 @@ class App
   end
 
   def run
-    command { puts "Welcome" }
+    command { puts BLUE + "Welcome" + ENDLINE }
     loop do
       puts "#{options}"
       process_input(gets.chomp)
@@ -44,16 +45,16 @@ class App
 
   def try_select_dish(line)
     if number?(line) && @order.select_dish(line.to_i)
-      puts "selected dish: #{@menu.get_dish(line.to_i)[:name]}"
+      puts GREEN + "selected dish: #{@menu.get_dish(line.to_i)[:name]}" + ENDLINE
     else
-      puts "#{line} is not a valid dish id"
+      puts RED + "#{line} is not a valid dish id" + ENDLINE
     end
   end
 
   def complete
     summary = @order.complete
     @sms.send(phone_number, summary)
-    puts 'order placed!'
+    puts GREEN + 'order placed!' + ENDLINE
     quit
   end
 
@@ -67,7 +68,7 @@ class App
   end
 
   def options
-    "enter the id for the dish you want to add and hit return.\n" +
+    "\nenter the id for the dish you want to add and hit return.\n" +
     "or\n" +
     "m to view the menu\n" +
     "b to view your basket\n" +
@@ -76,7 +77,7 @@ class App
   end
 
   def quit
-    puts 'exiting...'
+    puts GREEN + 'exiting...' + ENDLINE
     exit
   end
 end

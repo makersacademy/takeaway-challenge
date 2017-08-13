@@ -207,7 +207,7 @@ describe App do
     context 'invalid dishes' do
       specify {
         allow(order).to receive(:select_dish).and_return(false)
-        expect { subject.send(:try_select_dish, '9001') }.to output("9001 is not a valid dish id\n").to_stdout
+        expect { subject.send(:try_select_dish, '9001') }.to output("\e[31m9001 is not a valid dish id\e[0m\n").to_stdout
       }
     end
   end
