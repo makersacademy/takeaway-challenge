@@ -4,14 +4,14 @@ class Takeout
 
   attr_reader :basket
 
-  def initialize
-    @dishes = Menu.new.dishes
+  def initialize(menu = Menu.new.dishes)
+    @dishes = menu
     @basket = []
     @texter = Texter.new
   end
 
   def add_dish(dish, quantity = 1)
-    @dishes.select do |key, value|
+    @dishes.each do |key, value|
       @basket << [key, value, quantity] if key == dish.downcase.to_sym
     end
     print "#{quantity}x #{dish.capitalize} added to basket"
@@ -36,7 +36,7 @@ class Takeout
   def delete_from_basket(item, amount = 1)
     @basket = [] if item == "all"
     @basket.each_with_index do |order, index|
-      if order.include? item
+      if order.include? item.to_sym
         quantity = order.last
         p order
         if amount >= order.last

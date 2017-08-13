@@ -3,26 +3,19 @@ require 'send_sms'
 
 describe Takeout do
   let(:texter) { double :texter }
-  before do
-    @dishes = { :lasagna => 10, :pizza => 12, :burger => 10, :chips => 2 }
-    @texter = texter
-  end
+  let(:dishes) { double :dishes }
 
-  def format_dishes
-    @dishes.each do |dish, price|
-      puts "#{dish.to_s.capitalize}: £#{price}"
-    end
-    nil
+  before do
+    dishes = { :lasagna => 10, :pizza => 12, :burger => 10, :chips => 2 }
+    subject.instance_variable_set(:@texter, texter)
+    subject.instance_variable_set(:@dishes, dishes)
   end
 
   it 'works' do
     expect(subject.class).to eq described_class
   end
 
-  it 'can pick a menu'
-
   context '#add_dish' do
-
     it 'can add a dish to basket' do
       subject.add_dish(:lasagna)
       expect(subject.basket).to include([:lasagna, 10, 1])
@@ -74,11 +67,13 @@ describe Takeout do
       subject.add_dish(:pizza)
       subject.add_dish(:burger, 50)
     end
+
     it 'can remove an item' do
       message = "2x Lasagna = £20\n50x Burger = £500\n"
       subject.delete_from_basket(:pizza)
       expect { subject.current_basket }.to output(message).to_stdout
     end
+
     it 'can delete some extras of items' do
       message = "2x Lasagna = £20\n1x Pizza = £12\n25x Burger = £250\n"
       subject.delete_from_basket(:burger, 25)
@@ -108,14 +103,12 @@ describe Takeout do
 
   context '#read_menu' do
     it 'outputs the menu in legible format' do
-      expect { subject.read_menu }.to output(format_dishes).to_stdout
+      message = "Lasagna: £10\nPizza: £12\nBurger: £10\nChips: £2\n"
+      expect { subject.read_menu }.to output(message).to_stdout
     end
   end
 
   context '#checkout' do
-    before do
-      @success = 'Success! Your order has been placed.'
-    end
     it 'raises an error if wrong sum is given' do
       subject.add_dish(:chips)
       expect { subject.checkout(3) }.to raise_error 'Incorrect sum'
@@ -128,8 +121,9 @@ describe Takeout do
     end
 
     it 'sends text message when complete' do
+      success = 'Success! Your order has been placed.'
       complete_order = "Your order total price is £22"
-      message = "#{@success} #{complete_order}"
+      message = "#{success} #{complete_order}"
       subject.add_dish(:lasagna)
       subject.add_dish(:pizza)
       expect(subject).to receive(:send_text).with(message)
