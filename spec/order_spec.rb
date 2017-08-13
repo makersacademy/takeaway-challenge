@@ -9,7 +9,7 @@ describe Order do
 
   it 'creates new order with menu' do
     order = Order.new
-    expect(order.current_order).to include {}
+    expect(order.current_order).to(include {})
   end
 
   it 'will place an order' do
@@ -18,13 +18,13 @@ describe Order do
   
   it 'adds menu items to the current order' do
     subject.place_order("prawn_crackers", 1)
-    expect(subject.current_order).to include { prawn crackers: 1 }
+    expect(subject.current_order).to(include { prawn crackers: 1 })
   end
   
   it 'can check what is in the current order' do
     subject.place_order("prawn_crackers", 1)
     subject.place_order("chicken_satay", 1)
-    expect(subject.check_order).to eq({"prawn_crackers"=>1, "chicken_satay"=>1})
+    expect(subject.check_order).to eq({ "prawn_crackers" => 1, "chicken_satay" => 1 })
   end
   
   it 'calculates total to be paid' do
@@ -35,7 +35,7 @@ describe Order do
   end
   
   it 'raises error when item added is not on the menu' do
-    expect{subject.place_order("red_curry", 1)}. to raise_error("That item is not on the menu, please choose again")
+    expect { subject.place_order("red_curry", 1) }. to raise_error("That item is not on the menu, please choose again")
   end
   
   it 'can be placed when selection is finished' do
@@ -49,7 +49,7 @@ describe Order do
     subject.place_order("prawn_crackers", 1)
     subject.place_order("chicken_satay", 1)
     subject.total
-    expect{subject.submit_order(7)}.to raise_error "Incorrect payment, order not complete" 
+    expect { subject.submit_order(7) }.to raise_error "Incorrect payment, order not complete" 
   end
 
 end

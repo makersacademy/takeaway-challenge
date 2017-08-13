@@ -4,18 +4,16 @@ class Order
 
   attr_reader :menu, :current_order, :item, :final_total
 
-  def initialize(menu = Menu.new)
+  def initialize(_menu = Menu.new)
     @current_order = {}
     @menu = Menu::MENU
     @final_total = 0
   end
   
   def place_order(dish, quantity)
-    if menu.include?(dish.to_sym)
-      @current_order[dish] = quantity
-    else
-      raise "That item is not on the menu, please choose again"
-    end
+    raise "That item is not on the menu, please choose again" unless menu.include?(dish.to_sym)
+    @current_order[dish] = quantity
+    
   end
 
   def check_order
@@ -41,9 +39,3 @@ class Order
   end
    
 end
-
-# for each item in the current order,
-# take the key value, compare it to menu and if it's there, extract
-# the pair value, multiply it by the pair value in @current_order and add them up'
-
-# if menu.include?(item[0].to_sym) do @current_order[1] * 
