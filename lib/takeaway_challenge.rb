@@ -26,10 +26,10 @@ class TakeAway
     @menu
   end
   
-  def order(item, count = COUNT) #price = @menu[price])
+  def order(item, count = COUNT) # price = @menu[price])
     fail PRODUCT_ERROR if @menu[item].nil?
     @order_array.push("#{item} x#{count}")
-  	 #@total.push(@menu[price])
+  	 # @total.push(@menu[price])
   	 if count.nil? 
       "1x #{item}(s) added to your basket."
       else
@@ -47,8 +47,8 @@ class TakeAway
   end         
    
   def checkout(checkout_message = CHECKOUT_MESSAGE)
-  	@checkout_message = checkout_message
+  	 @checkout_message = checkout_message
     p @checkout_message
- end
+  end
 
 end
