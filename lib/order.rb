@@ -12,5 +12,10 @@ class Order
   def place_order(dish, quantity)
     @current_order[dish] = quantity
   end
+
+  def check_order
+    @current_order
+  end
+  
   
 end

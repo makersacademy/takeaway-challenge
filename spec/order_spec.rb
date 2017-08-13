@@ -21,5 +21,11 @@ describe Order do
     expect(subject.current_order).to include { prawn crackers: 1 }
   end
   
+  it 'can check what is in the current order' do
+    subject.place_order("prawn_crackers", 1)
+    subject.place_order("chicken_satay", 1)
+    expect(subject.check_order).to eq({"prawn_crackers"=>1, "chicken_satay"=>1})
+  end
+  
 
 end
