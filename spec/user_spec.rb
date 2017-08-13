@@ -16,49 +16,28 @@ describe User do
    let(:user) { described_class.new }
 
    it 'adds the order to the basket array' do
-     expect { user.order_selection 3 }.to change { user.basket }
+     expect { user.order_selection 3 }.to change{ user.basket }
    end
 
-  it 'accepts an order number and finds the correct price' do
-    user.order_selection(4)
-    expect(user.basket).to include 4 => 7.97 
-  end
+   it 'accepts an order number and finds the correct price' do
+     user.order_selection(4, 2)
+     expect(user.basket).to include 4 => 7.97
+   end
 
-end
+   it 'calculates the price based on order number and quantity' do
+     user.order_selection(4, 2)
+     expect(user.total_price_of_basket).to eq(15.94)
+   end
 
+   it 'displays the total value' do
+      user.order_selection(4, 2)
+      user.total_price_of_basket
+      expect { user.display_basket }.to output("The total value of your basket is £ 15.94\n").to_stdout
+   end
+ end
 end
 
   # it 'displays the basket'
   #   user.order_selection(3)
   #   expect(user.display_basket).to output
   # end
-#
-#   it 'summs up the total order' do
-#
-#   end
-#
-# end
-#
-#
-#   # it 'the user can make a selection through stdin' do
-#   #   user.order_selection
-#   #   allow(user.order_selection).to receive(:gets).and_return("3")
-#   #   order = $stdin.gets
-#   # end
-#
-#
-#   # it 'raises an error if the user does not enter a correct number' do
-#   #   user.order_selection.order = 9
-#   #   expect { user.order_error }.to raise_error("The number you have input is not an item on the menu")
-#   # end
-#   #
-#   # #
-#   # # it 'raises an error if the user does not input anything' do
-#   #
-#   # end
-#
-#   # it 'saves the users selection to a file' do
-#   #
-#   # end
-#
-# end

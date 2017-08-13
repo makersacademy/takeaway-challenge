@@ -16,7 +16,6 @@ describe Creating_menu do
   it 'puts this hash into a file' do
     create_menu.putting_hash_into_file
     allow(menu_file).to receive(:open)
-    #how to test something iterates through a hash
     allow(menu_file).to receive(:puts)
   end
 
