@@ -20,7 +20,7 @@ class Menu
   def show_menu_hash
     counter = 0
     Creating_menu.new.hash_of_menu.each do |key, value|
-       puts "#{counter += 1}." "#{key}: " + "$" "#{value}"
+      puts "#{counter += 1}." "#{key}: " + "$" "#{value}"
     end
   end
 end

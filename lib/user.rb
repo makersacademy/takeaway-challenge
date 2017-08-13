@@ -2,12 +2,15 @@ require_relative './menu.rb'
 
 class User
 
-  attr_accessor :basket, :menu
+  attr_accessor :basket, :menu, :order, :price
+  DEAFAULT_ORDER_VALUE = 0
+  DEAFAULT_PRICE = 0
 
   def initialize
     @menu = Menu.new.show_menu_hash
     @basket = []
-
+    @order = DEAFAULT_ORDER_VALUE
+    @price = DEAFAULT_PRICE
   end
 
   def order_instructions
@@ -18,12 +21,19 @@ class User
 
   def order_selection
     order_instructions
-    order = gets.chomp
-    @basket << order
-    puts "Thank you number #{order} has been added to your bascket"
+    @order = gets.chomp.to_i
+    accessing_price_of_order
+    @basket << { @order => @price }
+    puts "Thank you number #{@order} priced at £ #{@price} has been added to your bascket"
   end
 
+  def accessing_price_of_order
+    keys = @menu.keys
+    p "#{@menu.keys}"
+    @price = @menu[keys[@order - 1]]
+  end
 end
 
-# user = User.new
-# user.order_selection
+user = User.new
+user.order_instructions
+user.order_selection
