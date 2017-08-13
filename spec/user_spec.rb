@@ -35,7 +35,8 @@ describe User do
   end
 
   # it 'raises an error if the user does not enter a correct number' do
-  #
+  #   user.order_selection.order = 9
+  #   expect { user.order_error }.to raise_error("The number you have input is not an item on the menu")
   # end
   #
   # it 'raises an error if the user does not complete the order' do

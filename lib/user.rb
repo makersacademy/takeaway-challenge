@@ -22,10 +22,17 @@ class User
   def order_selection
     order_instructions
     @order = $stdin.gets.chomp.to_i
+    # order_error
     accessing_price_of_order
     @basket << { @order => @price }
     puts "Thank you number #{@order} priced at £ #{@price} has been added to your bascket"
   end
+
+  # def order_error
+  #   menu_items = ["1", "2", "3", "4", "5", "6"]
+  #   order_correct = menu_items.include? @order
+  #   raise "The number you have input is not an item on the menu" if order_correct == false
+  # end
 
   def accessing_price_of_order
     keys = @menu.keys
