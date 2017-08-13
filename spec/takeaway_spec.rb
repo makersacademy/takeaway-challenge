@@ -54,16 +54,19 @@ describe Takeaway do
     before(:each) do
       takeaway1.select_dish("Kebab")
       allow(restaurant1).to receive(:menu).and_return(menu1)
-      allow(menu1).to receive(:list).and_return({Kebab: 5, Pizza: 6})
+      allow(menu1).to receive(:list).and_return({"Kebab" => 5, "Pizza" => 6})
     end
 
     it 'accumulates separate orders of the same dish and accumulates dishes' do
       takeaway1.select_dish("Kebab",2)
       takeaway1.select_dish("Pizza",1)
-      message1 = "3x Kebab @ £5 each ------- £15
-      1x Pizza @ £6 each ------- £6
-      Total = £21\n"
-      expect(takeaway1.show_basket).to output(message1).to_stdout
+      # p takeaway1.restaurant
+      # p takeaway1.restaurant.menu
+      # p takeaway1.restaurant.menu.list
+      message1 = "3x Kebab @ £5 each ------- £15\n" +
+      "1x Pizza @ £6 each ------- £6\n" +
+      "Total = £21\n"
+      expect { takeaway1.show_basket }.to output(message1).to_stdout
     end
 
   end
@@ -73,7 +76,13 @@ describe Takeaway do
 
     before(:each) do
       allow(restaurant1).to receive(:menu).and_return(menu1)
-      allow(menu1).to receive(:list).and_return({Kebab: 5, Pizza: 6})
+      allow(menu1).to receive(:list).and_return({"Kebab" => 5, "Pizza" => 6})
+    end
+
+    it "won't work if the order is closed" do
+      takeaway1.select_dish("Kebab",2)
+      takeaway1.checkout(1234)
+      expect { takeaway1.checkout }.to raise_error {"Order now closed"}
     end
 
     it "requires a card no. to pay the bill" do
@@ -81,7 +90,8 @@ describe Takeaway do
     end
 
     it "requires some items to be in basket" do
-      expect { takeaway1.checkout(1234) }.to raise_error "Basket empty - cannot checkout"
+      error_mess = "Basket empty - cannot checkout"
+      expect { takeaway1.checkout(1234) }.to raise_error { error_mess }
     end
 
     it "saves credit card number upon payment to debit amount" do
@@ -96,7 +106,11 @@ describe Takeaway do
     # end
 
     it 'provides a summary of the order on checkout' do
-      expect(takeaway1.checout(1234)).to output(message1).to_stdout
+      takeaway1.select_dish("Kebab",2)
+      message = "Your final order is:\n" +
+      "2x Kebab @ £5 each ------- £10\n" +
+      "Total = £10\n"
+      expect { takeaway1.checkout(1234) }.to output(message).to_stdout
     end
 
     it "sends a text upon completion of checkout" do
@@ -105,8 +119,10 @@ describe Takeaway do
 
 
     it 'if checkout has already been completed then no more items can be added' do
+      takeaway1.select_dish("Kebab",2)
       takeaway1.checkout(1234)
-      expect { takeaway1.select_dish("food")}.to raise_error "Cannot add to order after checkout"
+      error_mess = "Cannot add to order after checkout"
+      expect { takeaway1.checkout(4312)}.to raise_error {error_mess}
     end
 
   end
