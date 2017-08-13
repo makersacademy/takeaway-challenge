@@ -6,7 +6,10 @@ require './lib/order'
 require './lib/basket'
 require './lib/sms'
 
+#  twilio sid
 SID = ''
+
+# twilio user token
 TOKEN = ''
 
 sms = SMS.new(Twilio::REST::Client.new(SID, TOKEN).api.account.messages)
