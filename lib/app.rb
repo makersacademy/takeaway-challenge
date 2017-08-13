@@ -43,9 +43,8 @@ class App
   end
 
   def try_select_dish(line)
-    number = line.to_i
-    if @order.select_dish(number)
-      puts "selected dish: #{@menu.get_dish(number)[:name]}"
+    if number?(line) && @order.select_dish(line.to_i)
+      puts "selected dish: #{@menu.get_dish(line.to_i)[:name]}"
     else
       puts "#{line} is not a valid dish id"
     end
@@ -61,6 +60,10 @@ class App
   def phone_number
     puts "please enter your phone number"
     gets.chomp
+  end
+
+  def number?(line)
+    line.to_i.to_s == line
   end
 
   def options

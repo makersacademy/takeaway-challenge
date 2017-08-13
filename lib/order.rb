@@ -11,7 +11,7 @@ class Order
   end
 
   def select_dish(index)
-    return false if index > @menu.item_count
+    return false if index >= @menu.item_count
     dish = @menu.get_dish(index)
     @basket.add_item(dish)
     true

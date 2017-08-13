@@ -186,14 +186,14 @@ describe App do
     context 'select dish' do
       specify {
         expect(order).to receive(:select_dish)
-        subject.send(:try_select_dish, "0")
+        subject.send(:try_select_dish, '0')
       }
     end
 
     context 'get dish' do
       specify {
         expect(menu).to receive(:get_dish)
-        subject.send(:try_select_dish, "0")
+        subject.send(:try_select_dish, '0')
       }
     end
 
