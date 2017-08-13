@@ -11,9 +11,19 @@ describe App do
   before do
     allow(formatter).to receive(:format_table).and_return("")
     allow(formatter).to receive(:format_price).and_return("")
+
     allow(menu).to receive(:item_count).and_return(5)
     allow(menu).to receive(:get_dish).and_return({ name: "something", price: 1 })
     allow(menu).to receive(:show).and_return("")
+
+    allow(subject).to receive(:loop).and_yield
+    allow(subject).to receive(:exit)
+    allow(subject).to receive(:system)
+    allow(subject).to receive(:gets).and_return(io_obj)
+
+    allow(sms).to receive(:send)
+
+    allow(io_obj).to receive(:chomp).and_return("0")
   end
 
   describe '.order' do
@@ -25,12 +35,6 @@ describe App do
   end
 
   describe '.run' do
-    before do
-      allow(subject).to receive(:loop).and_yield
-      allow(subject).to receive(:gets).and_return(io_obj)
-      allow(io_obj).to receive(:chomp).and_return("0")
-    end
-
     context 'method call' do
       specify {
         expect(subject).to respond_to(:run)
@@ -74,11 +78,6 @@ describe App do
   end
 
   describe '.process_input' do
-    before do
-      allow(subject).to receive(:command).and_yield
-      allow(subject).to receive(:exit)
-      allow(subject).to receive(:system)
-    end
     context 'commands' do
       specify {
         expect(subject).to receive(:command).and_yield
@@ -159,12 +158,6 @@ describe App do
   end
 
   describe '.complete' do
-    before do
-      allow(subject).to receive(:quit)
-      allow(sms).to receive(:send)
-      allow(subject).to receive(:gets).and_return(io_obj)
-      allow(io_obj).to receive(:chomp).and_return("0")
-    end
 
     context 'output' do
       specify {
@@ -188,11 +181,6 @@ describe App do
   end
 
   describe '.phone_number' do
-    before do
-      allow(subject).to receive(:gets).and_return(io_obj)
-      allow(io_obj).to receive(:chomp).and_return("0")
-    end
-
     context 'gets' do
       context 'gets' do
         specify {

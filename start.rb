@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 require './lib/app'
 require './lib/formatter'
 require './lib/menu'

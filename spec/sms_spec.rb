@@ -1,7 +1,11 @@
 require 'sms'
 
 describe SMS do
+
+  subject { SMS.new }
+
   describe '.send' do
+
     context 'method call' do
       specify {
         expect(subject).to respond_to(:send)
