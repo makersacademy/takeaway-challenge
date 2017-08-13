@@ -28,13 +28,12 @@ describe User do
     expect(user.accessing_price_of_order).to eq(4.99)
   end
 
-  # it 'adds the price of the food from the menu array to the basket when a number is selected' do
-  #
-  # end
-  # # it 'the user can make a selection through stdin' do
-  # #   # expect(subject.user_selection).to eq gets.chomp
-  # # end
-  #
+  it 'the user can make a selection through stdin' do
+    user.order_selection
+    allow(user.order_selection).to receive(:gets).and_return("3")
+    order = $stdin.gets
+  end
+
   # it 'raises an error if the user does not enter a correct number' do
   #
   # end

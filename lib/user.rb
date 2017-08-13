@@ -21,7 +21,7 @@ class User
 
   def order_selection
     order_instructions
-    @order = gets.chomp.to_i
+    @order = $stdin.gets.chomp.to_i
     accessing_price_of_order
     @basket << { @order => @price }
     puts "Thank you number #{@order} priced at £ #{@price} has been added to your bascket"
