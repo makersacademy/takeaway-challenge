@@ -17,3 +17,7 @@ class FoodMenu
   end
 
 end
+# 
+# def in_GBP(amount)
+#   format("£%.2f", amount)
+# end
