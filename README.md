@@ -83,4 +83,10 @@ My approach
 
 During this challenge I changed my approach, instead of coding first and testing after, I did the opposite. Testing my "imaginary" code made me realise the quantity of methods and bits of code I needed to type. In case my implementation had been longer than the test I would have added parts in the test itself.
 
+The first User Story was pretty straightforward. I created a new Hash with some dishes and prices and then I printed it out using interpolation.
 
+The second User Story was a bit harder but I could manage to create a new key/value pair for my Hash so at the moment of the order a user would have been able to choose more than one portion of the same item.
+
+The third User Story took me quite a lot, I struggled iterating through the Array of Hashes so I could sum up all the different prices of the multiple items ordered. I couldn't manage to do that the way I wanted so I chose another way: I created a new local variable called "total" and that would have multiplied the quantity and the price related to the arguments given during the action of adding items in the basket. It worked at the end!
+
+The fourth and last User Story is incomplete unfortunately. It's commented out so I could pass rspec and rubocop properly but I really struggled to understand how to use Twilio. It gave me a few syntax error and also I couldn't manage to test it. 
