@@ -3,20 +3,13 @@ require 'twilio-ruby'
 
 class Phone
 
-  attr_accessor :tally
+  attr_accessor :tally, :account_sid, :auth_token, :phone_number
 
-  def initialize
+  def initialize (account_sid, auth_token, phone_number)
     @tally = tally
-  end
-
-  def input_details
-    puts "Input Account SID"
-    @account_sid = gets.chomp
-    puts "Input Auth Token"
-    @auth_token = gets.chomp
-    puts "Receiver's Phone Number"
-    @phone = gets.chomp
-    send
+    @account_sid = account_sid
+    @auth_token = auth_token
+    @phone_number = phone_number
   end
 
   def time(delay = 1)
@@ -34,7 +27,7 @@ class Phone
     client = Twilio::REST::Client.new @account_sid, @auth_token
     @message = client.messages.create(
       body: text_in_message,
-      to: @phone,
+      to: @phone_number,
       from: "+447481362500")
     puts @message.sid
   end

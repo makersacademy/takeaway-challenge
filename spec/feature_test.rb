@@ -2,11 +2,11 @@ require './docs/menu.rb'
 require './docs/takeaway.rb'
 require './docs/phone.rb'
 
-test = Takeaway.new
+takeaway = Takeaway.new
 # test.show_menu
 # test.header
-test.choose_dish(1, 2)
-test.choose_dish(2, 3)
-test.choose_dish(5, 4)
+takeaway.choose_dish(3, 2)
+takeaway.choose_dish(5, 3)
+takeaway.choose_dish(6, 4)
 
-test.show_basket
+takeaway.show_basket

@@ -14,7 +14,7 @@ class Takeaway
     puts "show_menu"
     puts "choose_dish(dish number, quantity)"
     puts "show_basket"
-    puts "checkout"
+    puts "checkout(account_sid, auth_token, phone_number)"
   end
 
   def show_menu
@@ -41,11 +41,11 @@ class Takeaway
     puts "Total £#{@tally}"
   end
 
-  def checkout
+  def checkout(account_sid, auth_token, phone_number)
     checkout_error if @tally.zero?
-    phone = Phone.new
+    phone = Phone.new(account_sid, auth_token, phone_number)
     phone.tally = @tally
-    phone.input_details
+    phone.send
   end
 
   def checkout_error

@@ -34,7 +34,7 @@ describe Phone do
       expect(subject.text_in_message).to eq(message)
     end
   end
-  context "#send" do
-    it "sends a text to confirm the order"
+
+  it 'sends a payment confirmation text message'
   end
 end
