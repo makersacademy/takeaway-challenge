@@ -1,13 +1,16 @@
 require 'takeaway'
 require 'order'
 require 'menu'
+require 'messager'
 
 describe Takeaway do
   let('menu') { double :menu, on_the_menu?: true }
   let('order') { double :order, add: true }
+  let('messager') { double :messager, send_text: true }
   before do
     allow(Order).to receive(:new) { order }
     allow(Menu).to receive(:new) { menu }
+    allow(Messager).to receive(:new) { messager }
   end
   subject { described_class.new(menu) }
   it 'uploads a hash to menu instance' do
@@ -44,9 +47,10 @@ describe Takeaway do
     expect(subject.paid_bill?(14)).to eq true
   end
 
-  it 'sends payment to order instance'
+  it 'sends payment to order instance' do
+    allow(order).to receive(:total).with(menu) { 14 }
+    expect(messager).to receive(:send_text)
+    subject.complete_order(14)
+  end
 
-  it ''
-
-  it 'sends order confirmation to messager instance'
 end
