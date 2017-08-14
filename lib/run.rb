@@ -1,12 +1,14 @@
 require_relative 'foodmenu'
 require_relative 'sendtext'
 require_relative 'order'
+require_relative 'settime'
 
 class Run
   attr_reader :total
 
   def initialize
     @order = Order.new
+    @texter = TwilioController.new
   end
 
   def interactive_menu
@@ -53,7 +55,10 @@ class Run
   end
 
   def checkout
-    TwilioController.send_text_message
+    settime = SetTime.new
+    message = "Thanks! Your order will be delivered before #{settime.hr1}:#{settime.min1} today"
+    @texter.send_text_message(message)
+    puts "Your order is placed!  Please check your sms for delivery time."
     exit
   end
 

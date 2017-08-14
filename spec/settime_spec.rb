@@ -4,7 +4,6 @@ describe SetTime do
 
   # subject { described_class.new(journey_c) }
 
-
   context '#initialize' do
     it 'returns one hour later' do
       hr2 = Time.now.hour + 1

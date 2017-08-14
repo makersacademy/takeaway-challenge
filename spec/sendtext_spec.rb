@@ -4,16 +4,17 @@ describe TwilioController do
 
   let(:client) { double :client }
 
-  # subject { described_class.new(journey_c) }
-
-
-  context '#send_text_message' do
-    it 'sends a text' do
-      # t = mock(Twilio::REST::Client)
-      expect(TwilioController).to receive(:send_text_message)
-      TwilioController.send_text_message
-    end
+  before do
+    subject.instance_variable_set(:@client, client)
   end
 
+  context '#send_text_message' do
+
+    it 'sends a text' do
+      message = ""
+      expect(client).to receive_message_chain(:messages, :create)
+      subject.send_text_message(message)
+    end
+  end
 
 end
