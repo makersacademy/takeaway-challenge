@@ -1,3 +1,5 @@
+require 'dotenv/load'
+
 class Takeaway
 
   def initialize(hash)
@@ -32,10 +34,24 @@ class Takeaway
     puts "The total bill is £#{@order.total(@menu)}"
   end
 
+  def complete_order(paid)
+    raise "wrong amount paid" unless paid_bill?(paid)
+    send_text("Thank you for your order. Please expect delivery by #{Time.now+3600}")
+  end
+
+  def send_text(message)
+      Twilio::REST::Client.new(ENV['SID'], ENV['AUTH'])
+        .messages.create(
+          from: ENV['TWILIO_PHONE'],
+          to: ENV['MY_PHONE'],
+          body: message
+        )
+    end
+
   def paid_bill?(paid)
     paid == @order.total(@menu)
   end
-    
+
 
 
 end
