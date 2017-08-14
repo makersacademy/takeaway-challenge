@@ -21,15 +21,18 @@ This challenge was completed by attempting to use TDD for every new feature impl
  
 Difficulties
 ---------
-I knew that this challenge would involve two principal difficulties, which were RSpec's 'doubles' and class-to-class interaction.
 
-1. RSpec 'doubles'
 
-   Doubles have been a difficult concept to grasp since learning about them earlier in the week. Of particular difficulty was learning how to make a particular instance of a double change its behaviour within a specific test in case multiple instances were required. 
+  1. Twilio API
+    
+  This was the first time using Twilio, and integrating an unfamiliar gem into a project required some time to understand it first. Once texts were being successfully sent within my IDE, there were some challenges in integrating it into my own app. This was eventually achieved through placing all necessary code into a "Texter" class, which was then executed within the Takeout class upon checking out.
+  
+  2. Maintaining trajectory
+  
+  It felt very easy to get carried away in this task, as the user stories felt quite open to interpretation. This led to me temporarily veering off-course and attempting to over-complicate my app, rather than keeping it simple and effective. Of course, this led to future difficulties when implementing new functionality, as substantial code would need to be altered to allow it to work. 
+  
+  Some of this code still exists in my final version - some methods are messier than ideal - and so it is important to be more structured and clear as to both what is and is not necessary to be implemented in future projects.
 
-2. Class-to-class interaction
-
-   When completing the airport class in particular, a lot of thought had to be committed to working out how it would interact with both the plane and weather class. Problems emerged when trying to initiate new instances of the weather class within the airport initializer (as I thought at one point I needed this to occur), and this subsequently led to more impossible problems in my spec files. However, this actually led to substantial refactoring of my classes, which ultimately led to clearer, more efficient methods.
 
 Future Developments
 ------------------
@@ -39,7 +42,7 @@ If I were to further develop this task, I would implement the following:
    
    The current app does not have more than one menu. The Takeout class could feature a "switch_menu" method, that could source dishes from other menus to then add to the order.
 
-2. Using user input to order (through gets)
+2. Requiring user input to order (through 'gets)
    
    This app would be much more interactive if users could just execute a "takeout.run" method, which would prompt the user to add/delete dishes to a basket, then accept certain inputs to checkout and complete the order.
    
