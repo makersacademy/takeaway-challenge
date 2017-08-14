@@ -38,7 +38,7 @@ class Takeaway
   end
 
   def complete_order(paid)
-    raise "wrong amount paid" unless paid_bill?(paid)
+    raise "Wrong amount paid" unless paid_bill?(paid)
     send_text("Thank you for your order. Please expect delivery by #{Time.now + 3600}")
   end
 

@@ -28,6 +28,10 @@ describe Takeaway do
     expect { subject.read_menu }.to output("{\"pizza\"=>1.99}\n").to_stdout
   end
 
+  it 'adds 1 item as default' do
+    expect { subject.order("pizza") }. to output("1x pizza(s) added to order\n").to_stdout
+  end
+
   it 'prints confirmation for added products' do
     expect { subject.order("pizza", 2) }. to output("2x pizza(s) added to order\n").to_stdout
   end
@@ -42,9 +46,19 @@ describe Takeaway do
     expect { subject.order_summary }.to output("2x pizza = £4.96\n").to_stdout
   end
 
+  it 'puts order total' do
+    allow(order).to receive(:total).with(menu) { 14 }
+    expect { subject.order_total }.to output("The total bill is £14\n").to_stdout
+  end
+
   it 'checks amount paid is correct' do
     allow(order).to receive(:total).with(menu) { 14 }
     expect(subject.paid_bill?(14)).to eq true
+  end
+
+  it 'raises error if amount paid is incorrect' do
+    allow(order).to receive(:total).with(menu) { 14 }
+    expect { subject.complete_order(12) }.to raise_error("Wrong amount paid")
   end
 
   it 'sends payment to order instance' do
