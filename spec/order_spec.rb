@@ -15,4 +15,12 @@ describe Order do
     expect(subject.summary(menu)).to eq([{ :item => "pasta", :quant => 2, :total => 3.98 }])
   end
 
+  it 'returns order total' do
+    allow(menu).to receive(:lookup).with("pasta") { 1.99 }
+    allow(menu).to receive(:lookup).with("pizza") { 2.99 }
+    subject.add("pizza", 3)
+    subject.add("pasta", 2)
+    expect(subject.total(menu)).to eq(3 * 2.99 + 2 * 1.99)
+  end
+
 end

@@ -17,4 +17,12 @@ class Order
     end
   end
 
+  def total(menu)
+    total = 0
+    summary(menu).each do |hash|
+      total += hash[:total]
+    end
+    total
+  end
+
 end

@@ -28,4 +28,14 @@ class Takeaway
     end
   end
 
+  def order_total
+    puts "The total bill is £#{@order.total(@menu)}"
+  end
+
+  def paid_bill?(paid)
+    paid == @order.total(@menu)
+  end
+    
+
+
 end

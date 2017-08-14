@@ -7,3 +7,4 @@ p t.order('spame')
 p t.order 'spam', 3
 p t.order 'pasta'
 p t.order_summary
+p t.order_total
