@@ -1,5 +1,3 @@
-require_relative "../lib/menu.rb"
-
 class Order
 
 	attr_accessor :menu, :basket, :total
