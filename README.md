@@ -77,3 +77,22 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+-----------------------
+
+Will's approach:
+
+First, I created the Menu class that had functions for adding dishes (either individually or by importing), removing dishes and displaying the menu. The menu items were stored as a hash, with keys representing dishes and values representing prices. I initially wrote this with symbols, but decided that it was more logical for menus to have strings as the dish name (as each dish should be called something different anyway). Initially I had the menu stored as an array of many different one-key-value-pair hashes, but in the end realised that a single hash would more efficiently achieve the same outcome. This made my code a lot less clunky!
+
+I then wrote a Restaurant class which just executed the steps in menu. This class was perhaps slightly redundant, but was done with the thought that a restaurant might have more than one menu and that this would be easier to implement through this approach. In the end, I did not do this, but it could have easily been achieved by allowing each Restaurant instance to have more than one menu.
+
+Finally I wrote the takeaway class. This initialized with a restaurant (as each instance of a takeaway is [usually] from one restaurant) and a phone number that would a) differentiate the customer and b) enable a text to be sent.
+I also initialized with an empty order list and payment card, as well as the current time (+1hour) and a message to be text. I also set an instance variable @texter in order to store an instance of my Texting class. I then wrote an attr_accessor for this so that I would be able to replace Texting.new with a texting double for testing and thereby avoid endless texts being sent to my phone and potentially burning through my free credit!
+
+The takeaway class could read the restaurant's menu (very basic).
+The takeaway class could select a number of dishes, one at a time (with a default quantity of one). This was then added to the order array.
+The show_basket method showed all items ordered by item. It relies on the order being placed accurately although I could have possibly added in an error message for when items were not on the menu. The method summarised the quantity and pricing of each item ordered.
+
+Checkout went through a series of checks before showing the basket, taking card details and closing the order, before sending a confirmation text that the order would be delivered within an hour (specifying the time it would arrive).
+
+All of the code was written test first aside from the Twilio stuff as this was difficult to test properly although I did manage to achieve 100% coverage with a string of mocks; however, much of the comfort relied on the feature test, and the fact that the documentation for Twilio had come from their website.
