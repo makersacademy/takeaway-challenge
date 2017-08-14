@@ -7,7 +7,6 @@ class Takeaway
   attr_reader :restaurant, :phone_no, :order, :payment_card_no, :order_open
   attr_accessor :texter
   def initialize(restaurant, phone_no)
-    @confirmation =
     @restaurant = restaurant
     @phone_no = phone_no.gsub(/^0/, "44").to_i
     @order = []
