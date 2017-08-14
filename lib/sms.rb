@@ -9,15 +9,15 @@ class SMS
   def send(phone_number, summary)
     sms = "Thank you! Your order was placed and will be delivered before #{summary[:time]}"
     out = "A confirmation has been sent to #{phone_number}"
-    begin
-      @messages.create({
-        :from => '+15017250604',
-        :to => phone_number,
-        :body => sms,
-      })
-    rescue
-      puts "Text message failed to send!"
-    end
+    # begin
+    #   @messages.create({
+    #     :from => '+15017250604',
+    #     :to => phone_number,
+    #     :body => sms,
+    #   })
+    # rescue
+    #   puts "Text message failed to send!"
+    # end
     puts "#{sms}\n#{out}"
   end
 end
