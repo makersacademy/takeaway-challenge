@@ -1,0 +1,19 @@
+require 'twilio-ruby'
+require './lib/app'
+require './lib/formatter'
+require './lib/menu'
+require './lib/order'
+require './lib/basket'
+require './lib/sms'
+
+#  twilio sid
+SID = ''
+
+# twilio user token
+TOKEN = ''
+
+sms = SMS.new(Twilio::REST::Client.new(SID, TOKEN).api.account.messages)
+formatter = Formatter.new
+menu = Menu.new(formatter)
+app = App.new(sms, menu, Basket, Order, formatter)
+app.run
