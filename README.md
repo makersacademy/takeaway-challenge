@@ -42,7 +42,7 @@ If I were to further develop this task, I would implement the following:
    
    The current app does not have more than one menu. The Takeout class could feature a "switch_menu" method, that could source dishes from other menus to then add to the order.
 
-2. Requiring user input to order (through 'gets)
+2. Requiring user input to order (through 'gets')
    
    This app would be much more interactive if users could just execute a "takeout.run" method, which would prompt the user to add/delete dishes to a basket, then accept certain inputs to checkout and complete the order.
    
