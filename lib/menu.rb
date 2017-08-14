@@ -11,4 +11,12 @@ class Menu
     @menu
   end
 
+  def on_the_menu?(item)
+    @menu.keys.include?(item)
+  end
+
+  def lookup(item)
+    @menu[item]
+  end
+
 end
