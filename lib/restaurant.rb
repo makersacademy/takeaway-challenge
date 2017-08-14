@@ -25,8 +25,8 @@ class Restaurant
 
 	 def basket_summary
  		 basket.each do |x, y| 
-  			 puts "You have ordered #{y[0]} #{x} for £#{y[1]}"
-  		end
+ 			  puts "You have ordered #{y[0]} #{x} for £#{y[1]}"
+ 		 end
  	end
 
 	 def cost_of_each
@@ -34,7 +34,9 @@ class Restaurant
  	end
 
 	 def total
- 		 "$#{cost_of_each.reduce(:+).round(2)}"
+ 		 amount = cost_of_each.reduce(:+).round(2)
+ 		 return "The total cost of your food is $#{amount}"
+
  	end
 
 	 def remove_dish(dish)
@@ -46,17 +48,17 @@ class Restaurant
  	end
 
 	 def order_correct?(price)
-    total == price
-    end
- 
-  def complete_order(price)
-    if order_correct?(price)
-      sms_message = Message.new(price)
-      sms_message.send_sms
-    else
-      "Please review your order"
-    end
-  end
+ 	  total == price
+ 	end
+
+	 def complete_order(price)
+ 	  if order_correct?(price)
+   	  sms_message = Message.new(price)
+   	  sms_message.send_sms
+   	else
+   	  "Please review your order"
+   	end
+ 	end
 end
 
 r = Restaurant.new
