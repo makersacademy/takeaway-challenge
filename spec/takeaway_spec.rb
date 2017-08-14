@@ -39,9 +39,12 @@ describe Takeaway do
     expect { subject.order_summary }.to output("2x pizza = £4.96\n").to_stdout
   end
 
-  it 'sends payment to order instance'
+  it 'checks amount paid is correct' do
+    allow(order).to receive(:total).with(menu) { 14 }
+    expect(subject.paid_bill?(14)).to eq true
+  end
 
-  it 'checks amount paid is correct'
+  it 'sends payment to order instance'
 
   it ''
 

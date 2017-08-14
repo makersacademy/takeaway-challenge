@@ -1,10 +1,13 @@
-require 'dotenv/load'
+require 'dotenv'
+Dotenv.load
+require 'twilio-ruby'
 
 class Takeaway
 
   def initialize(hash)
     @menu = Menu.new(hash)
     @order = Order.new
+    @messager = Messager.new
   end
 
   def upload_menu(hash)
@@ -36,22 +39,20 @@ class Takeaway
 
   def complete_order(paid)
     raise "wrong amount paid" unless paid_bill?(paid)
-    send_text("Thank you for your order. Please expect delivery by #{Time.now+3600}")
+    send_text("Thank you for your order. Please expect delivery by #{Time.now + 3600}")
   end
 
   def send_text(message)
-      Twilio::REST::Client.new(ENV['SID'], ENV['AUTH'])
-        .messages.create(
-          from: ENV['TWILIO_PHONE'],
-          to: ENV['MY_PHONE'],
-          body: message
-        )
-    end
+    Twilio::REST::Client.new(gets.chomp, gets.chomp)
+      .messages.create(
+        from: 441_874_202_012,
+        to: 447_984_633_938,
+        body: message
+      )
+  end
 
   def paid_bill?(paid)
     paid == @order.total(@menu)
   end
-
-
 
 end
