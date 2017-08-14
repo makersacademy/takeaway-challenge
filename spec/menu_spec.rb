@@ -11,4 +11,12 @@ describe Menu do
     expect(subject.read).to eq({ "garlic bread" => 0.99 })
   end
 
+  it 'checks items are on the menu' do
+    expect(subject.on_the_menu?("pizza")).to eq true
+  end
+
+  it 'looks up items price' do
+    expect(subject.lookup("pizza")).to eq 1.99
+  end
+
 end
