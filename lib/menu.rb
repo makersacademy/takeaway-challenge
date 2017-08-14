@@ -1,3 +1,4 @@
+
 class Menu
 
   attr_reader :options
@@ -36,8 +37,13 @@ class Menu
     else
       puts "order system not working"
     end
-  end 
+  end
+
+  def send_txt
+    
+  end
 end
+
 
 # puts "Select option No. from menu, or x for exit"
 # choice = gets.chomp
