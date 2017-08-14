@@ -43,12 +43,7 @@ class Takeaway
   end
 
   def send_text(message)
-    Twilio::REST::Client.new(gets.chomp, gets.chomp)
-      .messages.create(
-        from: 441_874_202_012,
-        to: 447_984_633_938,
-        body: message
-      )
+    @messager.send_text(message)
   end
 
   def paid_bill?(paid)

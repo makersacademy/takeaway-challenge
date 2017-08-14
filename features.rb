@@ -4,6 +4,7 @@ require './lib/menu.rb'
 require 'dotenv'
 Dotenv.load
 require 'twilio-ruby'
+require './lib/messager.rb'
 
 p t = Takeaway.new("pizza" => 1.99, "pasta" => 2.99, "spam" => 3.99)
 p t.order('spame')
