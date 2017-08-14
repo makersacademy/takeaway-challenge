@@ -77,3 +77,10 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+My approach
+-----------
+
+During this challenge I changed my approach, instead of coding first and testing after, I did the opposite. Testing my "imaginary" code made me realise the quantity of methods and bits of code I needed to type. In case my implementation had been longer than the test I would have added parts in the test itself.
+
+

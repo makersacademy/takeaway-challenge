@@ -10,16 +10,16 @@ MENU = [
 
 class Menu
 
-	attr_accessor :menu
+	 attr_accessor :menu
 
-	def initialize
-		@menu = MENU
-	end
+	 def initialize
+ 		 @menu = MENU
+ 	end
 
-	def print_menu
-		@menu.each_with_index do |item, index|
-			puts "#{index+1}. #{item[:dish]} : £#{item[:price]}" # < --- It prints all the menu with the prices ~
-		end
-	end
+	 def print_menu
+ 		 @menu.each_with_index do |item, index|
+  			 puts "#{index + 1}. #{item[:dish]} : £#{item[:price]}"
+  		end # < --- It prints all the menu with the prices ~
+ 	end
 
 end
