@@ -13,3 +13,7 @@ p order1 = Order.new(menu)
 p order1.place_order('curry', 5)
 
 p order1.basket
+
+p order1.total
+
+p order1.total_cost

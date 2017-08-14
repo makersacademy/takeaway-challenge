@@ -23,8 +23,18 @@ describe 'Order' do
     end
 
     describe 'invalid order' do
-      it 'raises an error' do 
+      it 'raises an error' do
         expect { subject.place_order('pizza', 1) }.to raise_error("sorry this dish is not avaiable")
+      end
+    end
+  end
+
+  context 'order total' do
+
+    describe 'the total cost' do
+      it' ensures total cost equals cost of all dishes' do
+        subject.place_order('curry', 5)
+        expect(subject.total).to eq([[44.75]])
       end
     end
   end

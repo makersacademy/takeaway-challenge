@@ -1,11 +1,12 @@
 require './lib/menu.rb'
 class Order
 
-  attr_reader :basket, :menu
+  attr_reader :basket, :menu, :total_cost
 
   def initialize(_menu)
     @menu = Menu.new
     @basket = []
+    @total_cost = []
   end
 
   def place_order(dish, amount)
@@ -14,4 +15,11 @@ class Order
     end
     @basket << [dish, amount]
   end
+
+  def total
+    @basket.map do |dish, amount|
+      @total_cost << menu.dish[dish.to_sym] * amount
+    end
+  end
+
 end
