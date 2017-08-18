@@ -12,7 +12,7 @@ describe Takeaway do
 
   context "#header" do
     it "prints the main menu options" do
-      message = "Welcome to the God of Cookery Takeaway!\nshow_menu\nchoose_dish(dish number, quantity)\nshow_basket\ncheckout\n"
+      message = "Welcome to the God of Cookery Takeaway!\nshow_menu\nchoose_dish(dish number, quantity)\nshow_basket\ncheckout(account_sid, auth_token, phone_number)\n"
       expect { subject.header }.to output(message).to_stdout
     end
   end
@@ -73,7 +73,7 @@ describe Takeaway do
 
   context "#checkout_error" do
     it "raises an error if checking out with no dishes selected" do
-      expect { subject.checkout }.to raise_error("No dishes selected")
+      expect { subject.checkout("123", "abc", "144") }.to raise_error("No dishes selected")
     end
   end
 end

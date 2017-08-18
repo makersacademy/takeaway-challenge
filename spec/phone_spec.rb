@@ -2,6 +2,8 @@ require './docs/phone.rb'
 
 describe Phone do
 
+  let(:subject) {described_class.new("123", "abc", "144")}
+
   context "#initialize" do
     it "tally amount is set" do
       subject.tally = 3380
@@ -10,9 +12,16 @@ describe Phone do
   end
 
   context "#input_details" do
-    it "takes an input value for SID"
-    it "takes an input value for Auth Token"
-    it "takes an input value for Phone Number"
+    it "takes an input value for SID" do
+      expect(subject.account_sid).to eq("123")
+    end
+    it "takes an input value for Auth Token" do
+      expect(subject.auth_token).to eq("abc")
+    end
+
+    it "takes an input value for Phone Number" do
+      expect(subject.phone_number).to eq("144")
+    end
   end
 
   context "#time" do
@@ -36,5 +45,4 @@ describe Phone do
   end
 
   it 'sends a payment confirmation text message'
-  end
 end
