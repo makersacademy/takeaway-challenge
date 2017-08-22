@@ -1,30 +1,21 @@
-# hash out requires for non testing
 require_relative './order_item.rb'
-require_relative './takeaway_app.rb'
+
 
 class Order
 
   attr_accessor :contents
   attr_reader :total
 
-# use second initialize method for running the app
-  def initialize
-    @contents = []
+  def initialize(user_input_array)
+    @user_input_array = user_input_array
     @total = 0
+    @contents = []
   end
 
-  # def initialize
-  #   @order_item = OrderItem.new
-  #   @contents = []
-  #   @total = 0
-  #   while @order_item.dish_number != nil
-  #     @contents << @order_item
-  #     @order_item = OrderItem.new
-  #   end
-  # end
-
-  def receive(order_item)
-    @contents << order_item
+  def generate_order_items
+    @user_input_array.each do |order_item_string|
+      @contents << OrderItem.new(order_item_string)
+    end
   end
 
   def calc_total
@@ -33,6 +24,7 @@ class Order
   end
 
   def show
+    generate_order_items
     calc_total
     @contents.each do |item|
       puts "#{item.dish_name} #{item.quantity} X £#{item.unit_cost} = £#{item.cost}"

@@ -1,15 +1,18 @@
 require_relative './order.rb'
-require_relative './order_item.rb'
+require_relative './messager.rb'
 require 'twilio-ruby'
 
 class TakeawayApp
 
-  attr_reader :order
+  attr_reader :order, :user_input_array
 
-  $menu = [{ :dish => "Chicken Korma", :price => 8 }, { :dish => "Lamb Balti", :price => 9 }]
+  def initialize(order_class = Order)
+    @order_class = order_class
+  end
+
   def show_dishes
-    menu = [{ :dish => "Chicken Korma", :price => 8 }, { :dish => "Lamb Balti", :price => 9 }]
-    menu.each_with_index { |menu_item, index| puts "#{index + 1}. #{menu_item[:dish]} £#{menu_item[:price]}" }
+    @menu = Menu.new
+    @menu.show_dishes
   end
 
   def prompt_order
@@ -17,10 +20,15 @@ class TakeawayApp
     puts " When you are finished please press enter twice."
   end
 
-  def receive_order(order)
-    @order = order
-    # use this @order for non testing
-    # @order = Order.new
+
+  def get_user_input
+    @user_input_array = []
+    loop do
+      user_input = STDIN.gets.delete("\n")
+      break if user_input == ""
+      @user_input_array << user_input
+    end
+    @order = @order_class.new(@user_input_array)
   end
 
   def show_order
@@ -28,40 +36,27 @@ class TakeawayApp
   end
 
   def check_calculation
-    check_cost = 0
-    @order.contents.each { |a| check_cost += a.cost }
-    raise "Does not add up correctly" if @order.total != check_cost
-  end
-
-  def time_in_an_hour
-    t = Time.new + 3600
-    t.strftime("%H:%M")
-  end
-
-  def create_message
-    "Thank you! Your order was placed and will be delivered before #{time_in_an_hour}"
+    puts "What do you think your total should be?"
+    check_cost = STDIN.gets.delete("\n")
+    raise "Does not add up correctly" if @order.total != check_cost.to_i
   end
 
   def send_message
-    account_sid = 'AC297b79f096953ffb25e6c7a7554798b9'
-    auth_token = 'c3fce4179277f9e78c5c5897cb1448aa'
-    client_phone_no = '+447815793407'
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.api.account.messages.create({
-      :from => '+441158246050',
-      :to => client_phone_no,
-      :body => create_message,
-    })
+    @messager = Messager.new
+    @messager.create_message
+    @messager.send_message
+  end
+
+  def run
+    show_dishes
+    prompt_order
+    get_user_input
+    show_order
+    check_calculation
+    send_message
   end
 
 end
 
-# running the app below
 # t = TakeawayApp.new
-# t.show_dishes
-# t.prompt_order
-# t.receive_order
-# t.show_order
-# t.check_calculation
-# t.create_message
-# t.send_message
+# t.run
