@@ -5,17 +5,14 @@ Metrics/LineLength:
   #    AIRPORT_REFUSED_MESSAGE = "Airport has refused our landing! Probably bad weather"
   # ```
   # Would get extracted to locales, but that's out of the fence here so.
-  Max: 100
-
+  Max: 120
   # While test refactoring is good, I suspect it's out of scope for week 1
   Exclude:
     - 'spec/**/*'
-
 Metrics/BlockLength:
   # While test refactoring is good, I suspect it's out of scope for week 1
   Exclude:
     - 'spec/**/*'
-
 # I've been quite careful about which style cops I've enabled
 # Why? My feeling is that style cops can create lots of linter noise that
 # is hard for a beginner to handle. This focuses the linting onto:
@@ -26,7 +23,6 @@ Metrics/BlockLength:
 # Quote cops are notable by their absence. They add a lot of noise and they're
 # annoying to fix so a good opportunity to turn devs off of the utility of
 # linting. Hopefully they pick them up later :)
-
 Style/IndentationConsistency:
   Enabled: true
 Style/IndentationWidth:
@@ -137,7 +133,6 @@ Style/VariableName:
   Enabled: true
 Style/FileName:
   Enabled: true
-
 # Rubocop doesn't make disabling all cops in a given group easy, so we list...
 Style/AccessModifierIndentation:
   Enabled: false
