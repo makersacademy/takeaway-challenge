@@ -3,7 +3,6 @@ require 'menu'
 describe Menu do
 
   subject(:menu) { described_class.new }
-  let(:menu_items) {double(:menu_items)}
   let(:menu_items) do
 
     {
@@ -24,4 +23,8 @@ describe Menu do
     expect(menu.menu_items).to eq(menu.menu_items)
   end
 
+  it 'checks to see if the item is on the menu, otherwise it raises error' do
+    allow(menu).to receive(:includes_dish?).and_return(true)
+    expect(menu.includes_dish?).to be(true)
+  end
 end

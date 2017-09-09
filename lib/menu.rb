@@ -9,4 +9,8 @@ class Menu
   def add_item(item, price)
     menu_items[item] = price
   end
+
+  def includes_dish?(dish)
+    @menu_items.key?(dish) ? true : false
+  end
 end
