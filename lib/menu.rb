@@ -3,10 +3,10 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = {"pizza" => 5, "coke" => 1}
+    @dishes = {"Pizza" => 5.00, "Coke" => 1.00}
   end
 
   def to_s
-    "5"
+    "Pizza: $5.00,  Coke: $1.00"
   end
 end
