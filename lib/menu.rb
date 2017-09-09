@@ -1,5 +1,5 @@
 class Menu
-  
+
   def initialize
     @italian_menu
   end
@@ -9,5 +9,4 @@ class Menu
       :pizza => 15,
       :risotto => 20}
   end
-
 end
