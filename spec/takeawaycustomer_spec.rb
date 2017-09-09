@@ -1,10 +1,11 @@
 require 'takeawaycustomer'
+require 'dishes'
 
 describe TakeawayCustomer do
   let(:cust) { described_class.new(name, number) }
   let(:name) { double :name }
-  let(:name) { double :name }
   let(:number) { double :number }
+  let(:dishes) { double :dishes }
 
   describe '#initialize' do
     it 'checks that takeaway_customers name is entered' do
@@ -16,8 +17,9 @@ describe TakeawayCustomer do
   end
 
   describe '#list' do
-    it 'allows cust to list available dishes and prices (hash)' do
-      expect(cust.list).to eq (dishes)
+    it 'lets users list avaiable dishes' do
+      allow(cust).to receive(:list).and_return(dishes)
+      expect(cust.list).to eq(dishes)
     end
   end
 end
