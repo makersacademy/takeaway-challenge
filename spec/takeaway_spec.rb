@@ -3,21 +3,29 @@ require 'takeaway'
 describe TakeAway do
 
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double(:menu) }
+  let(:menu) { double(:menu, menu_items: menu_items) }
+  let(:order) {double :order}
+  let(:menu_items) do
 
-describe '#initialize' do
-  it 'instantiates a new takeaway' do
-    expect(takeaway).to eq takeaway
+    {
+      chicken: 3.99,
+      falafel: 4.50
+    }
+
   end
 
-  it 'initializes it with a menu object' do
-    #allow(takeaway).to receive(:print_menu).and_return(menu)
-    #What is actually going on here?
-    expect(takeaway.print_menu).to eq(menu)
+  describe '#initialize' do
+    it 'instantiates a new takeaway' do
+      expect(takeaway).to eq takeaway
+    end
   end
- end
 
   it 'can read a menu' do
     expect(subject.menu). to eq(menu)
   end
+
+  it 'can print out a list of dishes by name and price' do
+    expect(takeaway.print_menu).to eq(menu_items)
+  end
+
 end
