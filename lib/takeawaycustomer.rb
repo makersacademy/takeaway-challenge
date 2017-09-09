@@ -1,6 +1,7 @@
 class TakeawayCustomer
-  attr_reader :name
-  def initialize(name)
+  attr_reader :name, :number
+  def initialize(name, number)
     @name = name
+    @number = number
   end
 end
