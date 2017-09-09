@@ -20,6 +20,11 @@ describe Menu do
       menu.create_dish("Salad Nicoise", "Tuna, Egg, Anchovies, lettuce and tomato", 8)
       expect(menu.list_dishes).to include({ name: "Pad thai", description: "Stir-fried rice noodle dish", price: 9 })
     end
+
+    it 'raises an error if the menu has no items available' do
+      expect { menu.list_dishes }.to raise_error 'No dishes found'
+    end
+
   end
 
 end

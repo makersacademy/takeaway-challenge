@@ -12,10 +12,9 @@ class Menu
   end
 
   def list_dishes
+    fail 'No dishes found' if @list.empty?
     @list.each do |dish|
-      dish[:name]
-      dish[:description]
-      dish[:price]
+      puts "#{dish[:name]} - #{dish[:description]} (£#{dish[:price]})"
     end
   end
 
