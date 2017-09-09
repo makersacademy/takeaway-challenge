@@ -9,6 +9,7 @@ class Cart
   end
 
   def order(dish, quantity = 1)
+    raise 'Item unavailable' if !menu.dishes.include?(dish)
     @basket[dish] += quantity
     p "#{quantity}x #{dish}(s) added to your basket"
   end
@@ -16,14 +17,8 @@ class Cart
   def total_price
     total = 0
     basket.each do |dish, quantity|
-      total += (quantity * price(dish))
+      total += (quantity * menu.price(dish))
     end
     total
-  end
-
-  private
-
-  def price(dish)
-    menu.dishes[dish]
   end
 end

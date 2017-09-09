@@ -9,4 +9,8 @@ class Menu
   def to_s
     "Pizza: $5.00,  Coke: $1.00"
   end
+
+  def price(dish)
+    dishes[dish]
+  end
 end
