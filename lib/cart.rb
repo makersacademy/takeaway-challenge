@@ -34,11 +34,11 @@ class Cart
 
   def send_text
     account_sid = 'ACc1b7bd40884f6b9d0de29c8b819e85cd'
-    auth_token = '1cdd64af26ac067333d7932b5c36255f'
+    auth_token = '123456789'
     client = Twilio::REST::Client.new account_sid, auth_token
     client.messages.create({
       :from => '+441706300291',
-      :to => '+447597779619',
+      :to =>  '123456789',
       :body => 'Your order will arrive in 1 hour'
       })
   end
