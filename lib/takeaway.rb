@@ -27,7 +27,12 @@ class Takeaway
 
   # assume qty of 1 for item if not specified
   def add_to_order(item, qty = 1)
+    raise "#{item} not on the menu" unless @menu_list.include?(item)
     @basket[item] += qty
+  end
+
+  def view_basket
+    @basket.each { |item, qty| "#{qty} x #{item}" }
   end
 
 end

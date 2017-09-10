@@ -25,5 +25,21 @@ describe Takeaway do
     it 'is method and take 2 arguments' do
       is_expected.to respond_to(:add_to_order).with(2).argument
     end
+    it 'output error if item not on menu' do
+      item = 'bana'
+      err_msg = "#{item} not on the menu"
+      expect { subject.add_to_order(item) }.to raise_error(err_msg)
+    end
+  end
+
+  describe '#basket' do
+    it 'is empty' do
+      expect(subject.basket).to eq({})
+    end
+    it 'has item' do
+      takeaway = Takeaway.new
+      takeaway.add_to_order('Proscuiutto Pizza')
+      expect(takeaway.basket).to eq({ "Proscuiutto Pizza" => 1 })
+    end
   end
 end
