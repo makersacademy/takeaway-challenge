@@ -1,5 +1,7 @@
 require_relative 'order'
 require_relative 'menu'
+require 'twilio-ruby'
+
 
 class Takeaway
   attr_reader :order, :menu
@@ -11,5 +13,16 @@ class Takeaway
 
   def add_to_list(food, price)
     @order.add(food, price)
+  end
+
+  def confirmation_text
+    account_sid = "AC3a46a6ffa91c1cffdd08651455598a78" # Account SID from www.twilio.com/console
+    auth_token = "your_auth_token"   # Auth Token from www.twilio.com/console
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    message = @client.messages.create(
+    body: "Order confirmation",
+    to: "+12345678901",    # Replace with phone number
+    from: "+12345678901")  # Replace with Twilio number
   end
 end

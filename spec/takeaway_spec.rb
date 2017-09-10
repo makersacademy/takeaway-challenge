@@ -25,4 +25,8 @@ describe Takeaway do
     allow(order).to receive(:add)
     expect(takeaway.add_to_list).to eq [{:pasta => 10}]
   end
+
+  it 'can send a confirmation text' do
+    expect(takeaway.confirmation_text).to be_empty
+  end
 end
