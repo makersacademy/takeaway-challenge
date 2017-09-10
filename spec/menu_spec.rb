@@ -17,8 +17,7 @@ describe Menu do
   describe '#list_dishes' do
     it 'lists dishes in the menu' do
       menu.create_dish("Pad thai", "Stir-fried rice noodle dish", 9)
-      menu.create_dish("Salad Nicoise", "Tuna, Egg, Anchovies, lettuce and tomato", 8)
-      expect(menu.list_dishes).to include({ name: "Pad thai", description: "Stir-fried rice noodle dish", price: 9 })
+      expect(menu.list_dishes).to eq ["Pad thai - Stir-fried rice noodle dish (£9)"]
     end
 
     it 'raises an error if the menu has no items available' do
