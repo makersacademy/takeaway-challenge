@@ -14,15 +14,15 @@ class Order
   def add_dish(dish, quantity = 1)
     valid_dish?(dish)
     get_dish_info_from_menu(dish)
-    @dish[:quantity] = quantity
     save_dish
+    @items.last[:quantity] = quantity
   end
 
   def remove_dish(dish, quantity = 1)
     valid_dish?(dish)
     get_dish_info_from_menu(dish)
-    @dish[:quantity] = quantity
     @items.delete(dish)
+    @items.last[:quantity] = quantity
   end
 
   def get_dish_info_from_menu(dish)
