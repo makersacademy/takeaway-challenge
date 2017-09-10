@@ -1,5 +1,5 @@
-require 'twilio-ruby'
-
+#require 'twilio-ruby'
+# Breaking Rspec and not sure why.
 class Text
 
   def initialize
@@ -13,7 +13,7 @@ class Text
         body: "Thanks for the order. Your food will be with you at #{time}!",
         to: "+447740097914",    # Replace with your phone number
         from: "+441158244546")  # Replace with your Twilio number
-  
+
     puts message.sid
   end
 

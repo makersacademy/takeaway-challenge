@@ -12,14 +12,14 @@ class Order
   end
 
   def choose_order(order)
-    if order.casecmp("burger").zero?
+    if order.downcase == "burger"
       @basket << @menu.item_list[1]
-    elsif order.casecmp("pizza").zero?
+    elsif order.downcase == "pizza"
       @basket << @menu.item_list[0]
-    elsif order.casecmp("kebab").zero?
-      @basket << @menu > item_list[2]
+    elsif order.downcase == "kebab"
+      @basket << @menu.item_list[2]
     else
-      puts "That dish isn't on the menu"
+      raise "That dish isn't on the menu"
     end
   end
 
