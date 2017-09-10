@@ -2,11 +2,13 @@ require 'menu'
 
 RSpec.describe Menu do
   subject(:menu) { described_class.new }
-  
+
   describe '#show' do
     it 'displays the menu' do
       expect(subject.show).to eq "Welcome to the Catnip emporium:\nThis is our menu"
     end
+
+    pending 'pulls items from array'
   end
 
   context 'adding items' do
