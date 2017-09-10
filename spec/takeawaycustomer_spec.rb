@@ -33,4 +33,13 @@ describe TakeawayCustomer do
       expect(cust.selections).to eq('Fish&Chips' => 2)
     end
   end
+
+  describe '#confirm_order' do
+    it 'returns contents of selections and totals the cost of all dishes' do
+      cust.order('Fish&Chips')
+      cust.order('Fish&Chips')
+      cust.order('Burger&Chips')
+      expect(cust.total).to eq(11)
+    end
+  end
 end
