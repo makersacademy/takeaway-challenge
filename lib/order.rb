@@ -12,12 +12,12 @@ class Order
     @orders[dish] = quantity
   end
 
-  def display_current_order
+  def current_order
     @orders
   end
 
   def item_count
-    orders.each { |_dish, amount| @count += amount }
+    orders.each { |dish, amount| @count += amount }
     @count
   end
 
