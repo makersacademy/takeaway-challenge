@@ -17,6 +17,3 @@ attr_reader :item_list
   end
 
 end
-
-menu = Menu.new
-puts menu.item_list.map {|item| item[:price]}.reduce(:+)

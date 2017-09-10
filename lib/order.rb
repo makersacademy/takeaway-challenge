@@ -35,6 +35,10 @@ attr_reader :basket, :text, :menu
     end
   end
 
+  def send_confirmation
+    @text.send_text
+  end
+
 private
 
   def price
