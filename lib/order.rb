@@ -1,12 +1,14 @@
 class Order
 
   attr_accessor :items
-  attr_reader :menu
+  attr_reader :menu, :status, :id, :total
 
-  def initialize(menu)
+  def initialize(id, menu)
     @items = []
+    @id = id
     @status = :new
     @menu = menu
+    @total = 0.00
   end
 
   def add_dish(dish, quantity = 1)
@@ -23,9 +25,10 @@ class Order
     @items.delete(dish)
   end
 
-  def save_dish
-    @items << @dish
-    @dish = nil
+  def get_dish_info_from_menu(dish)
+    @menu.list.each do |menu_item|
+      @dish = menu_item if dish == menu_item[:name]
+    end
   end
 
   def order_total
@@ -37,13 +40,12 @@ class Order
   end
 
   def finalize_order
-
+    @total = total
+    @status = :finalized
   end
 
-  def get_dish_info_from_menu(dish)
-    @menu.list.each do |menu_item|
-      @dish = menu_item if dish == menu_item[:name]
-    end
+  def accepted
+    @status = :accepted
   end
 
   private
@@ -53,6 +55,11 @@ class Order
       return true if dish == menu_item[:name]
     end
     fail 'Item not found'
+  end
+
+  def save_dish
+    @items << @dish
+    @dish = nil
   end
 
 end
