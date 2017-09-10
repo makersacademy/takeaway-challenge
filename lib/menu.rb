@@ -7,8 +7,11 @@ attr_reader :dishes, :print
   end
 
 
-  # def dishes
-  #
-  # end
+  def print
+    dishes.map do |type, price|
+      # "%s £%.2f" % [type.to_s.capitalize, price]
+    # end.join(", ")
+    end
+  end
 
 end
