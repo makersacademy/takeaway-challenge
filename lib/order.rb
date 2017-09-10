@@ -13,7 +13,7 @@ class Order
     valid_dish?(dish)
     get_dish_info_from_menu(dish)
     @dish[:quantity] = quantity
-    @items << @dish
+    save_dish
   end
 
   def remove_dish(dish, quantity = 1)
@@ -21,6 +21,11 @@ class Order
     get_dish_info_from_menu(dish)
     @dish[:quantity] = quantity
     @items.delete(dish)
+  end
+
+  def save_dish
+    @items << @dish
+    @dish = nil
   end
 
   def order_total
