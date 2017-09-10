@@ -1,3 +1,7 @@
+# As a customer
+# So that I can check if I want to order something
+# I would like to see a list of dishes with prices
+
 require 'menu'
 require 'takeaway'
 
@@ -12,7 +16,7 @@ subject(:menu) { described_class.new(dishes)}
   end
 
   it "has a list of dishes with prices" do
-    expect(subject.dishes).to eq(dishes)
+    expect(subject.dishes).to eq(:dishes)
   end
 
   it "prints a list of dishes with prices" do
@@ -21,3 +25,18 @@ subject(:menu) { described_class.new(dishes)}
   end
 
 end
+
+
+# describe Menu do
+#
+#
+#   describe "#print_menu" do
+#     it "prints a list of dishes and prices" do
+#       it { is_expected.to respond_to(:print_menu) }
+#     end
+#   end
+#
+#
+#
+#
+# end
