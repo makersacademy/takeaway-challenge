@@ -1,13 +1,12 @@
 require_relative 'menu'
 
 class Order
+
+attr_reader :menu, :food_order
+
   def initialize
     @food_order = []
-    @menu = Menu.new.italian_menu
-  end
-
-  def food_order
-    @food_order
+    @menu = Menu.new
   end
 
   def add(food, price)
