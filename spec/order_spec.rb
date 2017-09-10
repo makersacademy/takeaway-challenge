@@ -12,15 +12,15 @@ describe Order do
   describe '#add_dish' do
     it 'adds a dish to the order list' do
       order.add_dish("Green Curry", 1)
-      expect(order.items).to eq [{ name: "Green Curry", description: "Chicken", price: 10 }]
+      expect(order.items).to eq [{ name: "Green Curry", description: "Chicken", price: 10, quantity: 1 }]
     end
   end
 
   describe '#remove_dish' do
     it 'deletes dish from the order list' do
       order.add_dish("Green Curry", 2)
-      order.remove_dish("Green Curry")
-      expect(order.items).to eq [{ name: "Green Curry", description: "Chicken", price: 10 }]
+      order.remove_dish("Green Curry", 1)
+      expect(order.items).to eq [{ name: "Green Curry", description: "Chicken", price: 10, quantity: 1 }]
     end
   end
 
