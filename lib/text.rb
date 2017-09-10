@@ -1,4 +1,4 @@
-#require 'twilio-ruby'
+require 'twilio-ruby'
 # Breaking Rspec and not sure why.
 class Text
 
