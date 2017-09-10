@@ -16,8 +16,8 @@ class Takeaway
   end
 
   def confirmation_text
-    account_sid = "AC3a46a6ffa91c1cffdd08651455598a78" # Account SID from www.twilio.com/console
-    auth_token = "your_auth_token"   # Auth Token from www.twilio.com/console
+    account_sid = "" # Account SID from www.twilio.com/console
+    auth_token = ""   # Auth Token from www.twilio.com/console
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
