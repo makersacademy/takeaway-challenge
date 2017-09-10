@@ -1,11 +1,11 @@
 require 'takeawaycustomer'
-require 'dishes'
+require 'menu'
 
 describe TakeawayCustomer do
   let(:cust) { described_class.new(name, number) }
   let(:name) { double :name }
   let(:number) { double :number }
-  #let(:dishes) { double :dishes }
+  let(:selection) { double :selection }
 
   describe '#initialize' do
     it 'checks that takeaway_customers name is entered' do
@@ -22,10 +22,15 @@ describe TakeawayCustomer do
     end
   end
 
-  # describe '#build_order' do
-  #   it 'lets user select a number of dishes and store them' do
-  #
-  #
-  #
-  # end
+  describe '#order' do
+    it 'lets user select a dish and store it' do
+      cust.order('Fish&Chips')
+      expect(cust.selections).to eq('Fish&Chips' => 1)
+    end
+    it 'lets user select more than one dish and store them' do
+      cust.order('Fish&Chips')
+      cust.order('Fish&Chips')
+      expect(cust.selections).to eq('Fish&Chips' => 2)
+    end
+  end
 end
