@@ -4,7 +4,8 @@ describe TakeAway do
 
   subject(:takeaway) { described_class.new(menu) }
   let(:menu) { double(:menu, menu_items: menu_items) }
-  let(:order) {double :order}
+  let(:order) { double :order }
+  let(:sms) { double :sms, deliver: nil }
   let(:menu_items) do
 
     {
@@ -14,7 +15,7 @@ describe TakeAway do
 
   end
 
-  describe '#initialize' do
+  describe "#initialize" do
     it 'instantiates a new takeaway' do
       expect(takeaway).to eq takeaway
     end

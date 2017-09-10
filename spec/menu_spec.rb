@@ -24,7 +24,18 @@ describe Menu do
   end
 
   it 'checks to see if the item is on the menu, otherwise it raises error' do
-    allow(menu).to receive(:includes_dish?).and_return(true)
-    expect(menu.includes_dish?).to be(true)
+    expect(menu.includes_dish?(:chicken)).to be(false)
+  end
+
+  it 'validates that there is this item on the menu' do
+    expect(menu.includes_dish?("spring roll")).to be(true)
+  end
+
+  it 'returns false if there is not an item of the menu' do
+    expect(menu.includes_dish?("nutella")).to be(false)
+  end
+
+  it 'calculates a price' do
+    expect(menu.price(:chicken)).to eq(menu.menu_items[:chicken])
   end
 end
