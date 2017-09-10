@@ -1,6 +1,7 @@
-class Takeway
+class Takeaway
 
-  attr_reader :menu_list
+  attr_reader :menu_list,
+  :basket
 
   DEFAULT_MENU_LIST = {
     'Napolitana Pizza' => 16.32,
@@ -16,10 +17,17 @@ class Takeway
 
   def initialize(menu_list = DEFAULT_MENU_LIST)
     @menu_list = menu_list
+    @basket = {}
+    @basket.default = 0 # Set default of
   end
 
   def read
     @menu_list.each { |item, price| "#{item} : #{price}" }
+  end
+
+  # assume qty of 1 for item if not specified
+  def add_to_order(item, qty = 1)
+    @basket[item] += qty
   end
 
 end
