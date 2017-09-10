@@ -8,7 +8,7 @@ describe Menu do
   end
 
   it 'can print the dishes' do
-    expect(puts menu).to eq (nil)
+    expect(puts menu).to eq nil
   end
 
   it 'can return the price of a dish' do

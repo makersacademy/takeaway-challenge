@@ -21,4 +21,9 @@ class Cart
     end
     total
   end
+
+  def checkout(price)
+    raise 'Incorrect total price' if price != total_price
+    "Checkout successful. You will receive a text message from the restaurant shortly."
+  end
 end

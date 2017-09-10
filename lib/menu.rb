@@ -7,7 +7,9 @@ class Menu
   end
 
   def to_s
-    "Pizza: $5.00,  Coke: $1.00"
+    dishes.each do |dish, price|
+      p "#{dish}: $#{'%.2f' % price}"
+    end
   end
 
   def price(dish)
