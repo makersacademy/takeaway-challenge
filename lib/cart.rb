@@ -1,4 +1,5 @@
 require_relative 'menu'
+require 'twilio-ruby'
 
 class Cart
   attr_reader :basket, :menu
@@ -9,7 +10,7 @@ class Cart
   end
 
   def order(dish, quantity = 1)
-    raise 'Item unavailable' if !menu.dishes.include?(dish)
+    raise 'Item unavailable' unless menu.dishes.include?(dish)
     @basket[dish] += quantity
     p "#{quantity}x #{dish}(s) added to your basket"
   end
@@ -24,6 +25,21 @@ class Cart
 
   def checkout(price)
     raise 'Incorrect total price' if price != total_price
-    "Checkout successful. You will receive a text message from the restaurant shortly."
+    send_text
+    "Checkout for $#{'%.2f' % total_price} successful. You will receive a text shortly."
+    basket = Hash.new(0)
+  end
+
+  private
+
+  def send_text
+    account_sid = 'ACc1b7bd40884f6b9d0de29c8b819e85cd'
+    auth_token = '1cdd64af26ac067333d7932b5c36255f'
+    client = Twilio::REST::Client.new account_sid, auth_token
+    client.messages.create({
+      :from => '+441706300291',
+      :to => '+447597779619',
+      :body => 'Your order will arrive in 1 hour'
+      })
   end
 end
