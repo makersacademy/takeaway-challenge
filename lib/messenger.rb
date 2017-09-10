@@ -1,23 +1,22 @@
 require 'twilio-ruby'
 
-# put your own credentials here
-account_sid = 'ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
+class Messenger
 
-# set up a client to talk to the Twilio REST API
-@client = Twilio::REST::Client.new account_sid, auth_token
+  def initialize
+    # put your own credentials here
+    account_sid = 'ACccf307f4d525ffd8e4573774252206eb'
+    auth_token = '887ceae2323916a92c1eae0b97a4980d'
 
-# alternatively, you can preconfigure the client like so
-Twilio.configure do |config|
-  config.account_sid = account_sid
-  config.auth_token = auth_token
+    # set up a client to talk to the Twilio REST API
+    @client = Twilio::REST::Client.new account_sid, auth_token
+  end
+
+  def send_sms(message)
+    @client.api.account.messages.create(
+      from: '+441482240601',
+      to: '+447825178166',
+      body: message
+    )
+  end
+
 end
-
-# and then you can create a new client without parameters
-@client = Twilio::REST::Client.new
-
-@client.api.account.messages.create(
-  from: '+14159341234',
-  to: '+16105557069',
-  body: 'Hey there!'
-)
