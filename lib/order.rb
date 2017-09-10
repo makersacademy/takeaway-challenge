@@ -48,6 +48,6 @@ class Order
     order.each do |dish|
       p "#{dish[0]}  x#{dish[1]}  price: £#{dish[2]}"
     end
-    p "Total price: #{price}"
+    p "Total price: £#{price}"
   end
 end

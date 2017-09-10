@@ -1,4 +1,5 @@
 require_relative 'dish'
+require 'csv'
 
 class Menu
 
@@ -10,11 +11,9 @@ class Menu
     create_menu
   end
 
-  def create_menu
-    # need to put menu_file in a file (CSV)
-    menu_file = [["Fried Rice", 1], ["Special Curry", 2]]
-    menu_file.each do |dish|
-      new_dish = @dish_class.new(dish[0], dish[1])
+  def create_menu(file = "./lib/menu.csv")
+    CSV.foreach(file, converters: :numeric) do |row|
+      new_dish = @dish_class.new(row[0], row[1])
       @menu << new_dish
     end
   end
