@@ -1,10 +1,8 @@
 class Dishes
-attr_accessor :dishes
-  def initialize(dishes)
-    @dishes = dishes
+attr_reader :dishes
+
+  def initialize
+    @dishes = {'Fish&Chips' => 3, 'Burger&Chips' => 5}
   end
 
-  def list
-     @dishes
-  end
 end

@@ -18,8 +18,7 @@ describe TakeawayCustomer do
 
   describe '#list' do
     it 'lets users list avaiable dishes' do
-      allow(cust).to receive(:list).and_return(dishes)
-      expect(cust.list).to eq(dishes)
+      expect(cust.list).to eq('Fish&Chips' => 3, 'Burger&Chips' => 5)
     end
   end
 end

@@ -3,10 +3,10 @@ class TakeawayCustomer
   def initialize(name, number)
     @name = name
     @number = number
-    @dishes  = Dishes.new(dishes)
+    @dishes  = Dishes.new
   end
 
   def list
-    @dishes.list
+    @dishes.dishes
   end
 end
