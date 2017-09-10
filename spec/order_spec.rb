@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
   let(:menu) { double(:menu, list: [{ name: "Green Curry", description: "Chicken", price: 10 }]) }
-  subject(:order) { described_class.new("ZH38", menu) }
+  subject(:order) { described_class.new("44ZH38", menu) }
 
   it { is_expected.to respond_to(:add_dish).with(2).argument }
   it { is_expected.to respond_to(:remove_dish).with(1).argument }
