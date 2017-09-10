@@ -28,5 +28,8 @@ Introductions
 
 Questions/Issues
 ------------------
+1. Code is working but could not finish tests
 
-1. How can I / should I test the funcationality of Twilio with RSpec?
+2. How can I / should I test the funcationality of Twilio with RSpec?
+
+3. How can I test for 'puts' in methods?
