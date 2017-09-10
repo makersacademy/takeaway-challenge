@@ -1,5 +1,4 @@
 require 'dotenv/load'
-Dotenv.load('settings.env')
 require_relative 'notifier'
 require_relative 'menu'
 require_relative 'order'
