@@ -1,5 +1,4 @@
 require 'twilio-ruby'
-require_relative 'order'
 
 class Menu
   attr_reader :balance, :current_order, :basket
