@@ -1,7 +1,7 @@
+require_relative 'order'
 class Takeaway
 
-  attr_reader :menu_list,
-  :basket
+  attr_reader :menu_list
 
   DEFAULT_MENU_LIST = {
     'Napolitana Pizza' => 16.32,
@@ -17,22 +17,28 @@ class Takeaway
 
   def initialize(menu_list = DEFAULT_MENU_LIST)
     @menu_list = menu_list
-    @basket = {}
-    @basket.default = 0 # Set default of
   end
 
   def read
     @menu_list.each { |item, price| "#{item} : #{price}" }
   end
 
-  # assume qty of 1 for item if not specified
-  def add_to_order(item, qty = 1)
-    raise "#{item} not on the menu" unless @menu_list.include?(item)
-    @basket[item] += qty
+  def create_order
+    @order = Order.new
   end
 
-  def view_basket
-    @basket.each { |item, qty| "#{qty} x #{item}" }
+  def view_order
+    return "Basket is empty" if @order.basket.empty?
+    summary = @order.basket.map do |item, qty|
+      "#{qty} x #{item} = £#{menu_list[item] * qty}"
+    end.join("\n")
+    summary + "\nTotal : £#{@order.calc_total(@menu_list)}"
+  end
+
+  def add_to_order item, qty = 1
+    raise "Qty cannot be negative" if qty < 0
+    raise "#{item} not on the menu" unless @menu_list.include?(item)
+    @order.add_to_basket(item, qty)
   end
 
 end
