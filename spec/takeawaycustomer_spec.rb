@@ -39,7 +39,7 @@ describe TakeawayCustomer do
       cust.order('Fish&Chips')
       cust.order('Fish&Chips')
       cust.order('Burger&Chips')
-      expect(cust.total).to eq(11)
+      expect(cust.total).to eq("Your order total is £11")
     end
   end
 end

@@ -22,6 +22,7 @@ class TakeawayCustomer
   def total
     total = 0
     @selections.each { |item, quantity| total += (@menu.menu[item] * quantity) }
-    total
+    @selections.each { |item, quantity| puts "You ordered #{quantity} #{item}" }
+    "Your order total is £#{total}"
   end
 end
