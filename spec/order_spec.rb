@@ -43,6 +43,12 @@ RSpec.describe Order do
       order.confirm
       expect(order.time).not_to be nil
     end
+
+    it 'returns a confirmation message' do
+        selection = [1,1,2,3]
+        order = described_class.new(selection, menu)
+        expect(order.confirm).to eq "Thank you for your order! Your delivery will arrive before #{order.time.hour+1}:#{order.time.min}"
+    end
   end
 
   #
