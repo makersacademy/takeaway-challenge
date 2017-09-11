@@ -24,14 +24,25 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 ## Nouns in User Stories
+- customer
+- takeaway
+- message
 
 ## Verbs in User Stories
-
+- view_menu
+- add_to_basket
+- calc_total
 
 ##  Functional representation of that story
 
 | Objects         | Messages                              |
 |-----------------|---------------------------------------|
-
+| customer        |                                       |
+| takeaway        |  create_order                                     |
+| order           | badket<br>add_to_basket<br>calc_total |
 
 ## How our Objects will use Messages to communicate with one another
+takeaway <-- create_order --> order
+order <-- add_to_order
+order <-- basket --> basket
+order <-- calc_total --> total
