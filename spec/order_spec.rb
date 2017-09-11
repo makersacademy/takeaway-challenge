@@ -5,13 +5,13 @@ RSpec.describe Order do
   subject(:order) { described_class.new }
   let(:menu) { double 'menu' }
   before do
-    items = [['catnip',5],['CATnip',10],['CATNIP',15]]
+    items = [['catnip', 5], ['CATnip', 10], ['CATNIP', 15]]
     allow(menu).to receive(:items).and_return(items)
   end
 
   context 'order selection' do
     it 'stores an initial selection' do
-      selection = [1,1,2,3]
+      selection = [1, 1, 2, 3]
       order = described_class.new(selection, menu)
       expect(order.selection).to eq selection
     end
@@ -19,8 +19,8 @@ RSpec.describe Order do
 
   describe '#view' do
 
-    it  'formatted message contains correct items' do
-      selection = [1,1,2,3]
+    it 'formatted message contains correct items' do
+      selection = [1, 1, 2, 3]
       order = described_class.new(selection, menu)
       message = "catnip 	 5\ncatnip 	 5\nCATnip 	 10\nCATNIP 	 15\n-----------------------\ntotal: 	 35"
       expect(order.view).to eq message
@@ -30,7 +30,7 @@ RSpec.describe Order do
 
   describe '#total' do
     it 'calculates the correct total' do
-      selection = [1,1,2,3]
+      selection = [1, 1, 2, 3]
       order = described_class.new(selection, menu)
       expect(order.total).to eq 35
     end
@@ -38,16 +38,16 @@ RSpec.describe Order do
 
   describe '#confirm' do
     it 'captures the current time' do
-      selection = [1,1,2,3]
+      selection = [1, 1, 2, 3]
       order = described_class.new(selection, menu)
       order.confirm
       expect(order.time).not_to be nil
     end
 
     it 'returns a confirmation message' do
-        selection = [1,1,2,3]
-        order = described_class.new(selection, menu)
-        expect(order.confirm).to eq "Thank you for your order! Your delivery will arrive before #{order.time.hour+1}:#{order.time.min}"
+      selection = [1, 1, 2, 3]
+      order = described_class.new(selection, menu)
+      expect(order.confirm).to eq "Thank you for your order! Your delivery will arrive before #{order.time.hour + 1}:#{order.time.min}"
     end
   end
 

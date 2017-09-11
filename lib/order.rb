@@ -11,7 +11,7 @@ class Order
   def total
     total = 0
     selection.each do |item|
-      total += @menu.items[item-1][1]
+      total += @menu.items[item - 1][1]
     end
     total
   end
@@ -19,7 +19,7 @@ class Order
   def view
     output = ""
     selection.each do |item|
-      output += "#{@menu.items[item-1][0]} \t #{@menu.items[item-1][1]}\n"
+      output += "#{@menu.items[item - 1][0]} \t #{@menu.items[item - 1][1]}\n"
     end
     output += "-----------------------\n"
     output += "total: \t #{total}"
@@ -29,7 +29,7 @@ class Order
 
   def confirm
     @time = Time.new
-    "Thank you for your order! Your delivery will arrive before #{@time.hour+1}:#{@time.min}"
+    "Thank you for your order! Your delivery will arrive before #{@time.hour + 1}:#{@time.min}"
   end
 
 end
