@@ -1,13 +1,12 @@
 require 'twilio-ruby'
+require_relative 'order'
 
 class Menu
   attr_reader :balance, :current_order, :basket
 
   def initialize
-    @basket = []
-    @balance = 0
+    @order = Order.new
     @menu_items = { rice: 1, curry: 5, chips: 2, garlicbread: 4 }
-    @current_order = { item: nil, quantity: nil, price: nil }
   end
 
   def print_menu
@@ -22,40 +21,36 @@ class Menu
     puts "6. CHECKOUT".center(70)
     puts "7. EXIT MENU".center(70)
     puts
-    get_order(order_choice=gets.chomp.to_i)
   end
 
-  def main_menu
-    loop do
-      print_menu
-      get_order(gets.chomp.to_i)
-    end
-  end
-
-  def get_order(order_choice)
+  def get_order(order_choice, quantity=0)
     case order_choice
     when 1
-      @choice = "Rice"
-      @price = @menu_items[:rice]
-      quantity_check
+      @order.choice("Rice")
+      @order.item_quantity(quantity)
+      @order.price(@menu_items[:rice])
+      send_to_basket
     when 2
-      @choice = "Curry"
+      @order.choice("Curry")
+      @item_quantity = quantity
       @price = @menu_items[:curry]
-      quantity_check
+      send_to_basket
     when 3
-      @choice = "Chips"
+      @order.choice("Chips")
+      @item_quantity = quantity
       @price = @menu_items[:chips]
-      quantity_check
+      send_to_basket
     when 4
-      @choice = "Garlic Bread"
+      @order.choice("Garlic Bread")
+      @item_quantity = quantity
       @price = @menu_items[:garlicbread]
-      quantity_check
+      send_to_basket
     when 5
-      if @basket == []
+      if @order.basket == []
         puts "Your basket is empty"
       else
         puts "Your current basket"
-        puts @basket
+        puts @order.basket
       end
     when 6
       puts "CHECKING OUT..."
@@ -67,50 +62,19 @@ class Menu
     end
   end
 
-  def quantity_check
-    # return true
-    puts "How many?"
-    quantity(gets.chomp.to_i)
-    puts
+  def send_to_basket
+    @order.add_to_current_order
+    @order.add_to_basket
   end
 
-  def quantity(item_quantity)
-    @item_quantity = item_quantity
-    add_to_current_order
-    add_to_basket
-  end
-
-  def add_to_current_order
-    @balance += (@item_quantity * @price)
-    @current_order[:item] = @choice
-    @current_order[:quantity] = @item_quantity
-    @current_order[:price] = (@item_quantity * @price)
-  end
-
-  def add_to_basket
-    puts "#{@quantity} #{@choice} ordered!"
-    @basket << @current_order
-    total
-    @current_order = { item: nil, quantity: nil, price: nil }
-    puts
-    main_menu
-  end
-
-  def checkout
-    puts "total to pay?"
-    sum = gets.chomp.to_i
-    if sum != total
-      puts "wrong total"
-      checkout
+  def checkout(total_to_pay)
+    sum = total_to_pay
+    if sum != @order.total
+      puts "wrong total try again"
     else
-      # text_confirmation
       puts "your order is on the way!"
-      @basket = []
+      @order.empty_basket
     end
-  end
-
-  def total
-    @basket.collect { |x| x[:price] }.inject(&:+)
   end
 
   def text_confirmation
