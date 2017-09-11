@@ -6,7 +6,6 @@ class Order
   attr_reader :current_order, :basket, :balance, :total
 
   def initialize
-    @menu_items = { rice: 1, curry: 5, chips: 2, garlicbread: 4 }
     @basket = []
     @balance = 0
     @current_order = { item: nil, quantity: nil, price: nil }
@@ -34,23 +33,15 @@ class Order
   def add_to_basket
     puts "#{@quantity} #{@choice} ordered!"
     @basket << @current_order
-    total
     @current_order = { item: nil, quantity: nil, price: nil }
   end
 
-  def checkout(total_to_pay)
-    sum = total_to_pay
-    if sum != total
-      puts "wrong total try again"
-    else
-      # text_confirmation
-      TextConfirm.new.text_confirmation
-      
-    end
+  def checkout(text_confirm=TextConfirm.new)
+    text_confirm.text_confirmation
   end
 
   def empty_basket
-      @basket = []
+    @basket = []
   end
 
   def total
