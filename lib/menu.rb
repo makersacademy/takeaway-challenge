@@ -9,8 +9,6 @@ class Menu
     @balance = 0
     @menu_items = { rice: 1, curry: 5, chips: 2, garlicbread: 4 }
     @current_order = { item: nil, quantity: nil, price: nil }
-
-    @order = Order.new
   end
 
   def print_menu
