@@ -13,10 +13,15 @@ describe Restaurant do
   it { is_expected.to respond_to(:finalize_customer_order).with(1).argument }
   it { is_expected.to respond_to(:accept_customer_order).with(1).argument }
   it { is_expected.to respond_to(:order_list) }
+  it { is_expected.to respond_to(:current_order) }
+
+  before do
+    restaurant.create_customer_order("44ZH38")
+  end
 
   describe '#create_customer_order' do
     it 'creates a new customer order' do
-      result = restaurant.create_customer_order
+      result = restaurant.create_customer_order("44ZH38")
       expect(restaurant.orders).to eq result
     end
   end

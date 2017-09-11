@@ -16,8 +16,8 @@ class Restaurant
     @order_ids = []
   end
 
-  def create_customer_order
-    @current_order = Order.new(generate_order_id, @menu)
+  def create_customer_order(order_id = generate_order_id)
+    @current_order = Order.new(order_id, @menu)
     @orders << @current_order
   end
 
