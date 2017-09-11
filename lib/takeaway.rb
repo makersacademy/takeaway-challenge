@@ -4,11 +4,12 @@ require_relative 'order'
 class TakeAway
 
   attr_accessor :order
-  attr_reader :menu
+  attr_reader :menu, :sms
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new, order = Order.new, sms: nil)
     @menu = menu
     @order = order
+    @sms = sms
   end
 
   def print_menu
@@ -19,6 +20,7 @@ class TakeAway
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
     end
+      sms.deliver
   end
   # Need to refactor the layout
 

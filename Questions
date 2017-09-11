@@ -5,3 +5,12 @@
 5. How to know if I am actually testing something?
 6. How can I learn better?
 7. Breaking down User Stories
+
+---
+
+Mocks: Expectations about method calls, verifying them, and faking returning a value
+Stubs: Fake responses to method calls
+Fake: Objects with a working implementation that is useful for tests
+Dummy: Usually not very relevant in Ruby testing
+
+---

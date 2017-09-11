@@ -29,4 +29,9 @@ describe TakeAway do
     expect(takeaway.print_menu).to eq(menu_items)
   end
 
+  it 'sends an SMS when the order has been placed' do
+    expect(sms).to receive(:deliver)
+    takeaway.place_order(takeaway.order.chosen_items)
+  end
+
 end
