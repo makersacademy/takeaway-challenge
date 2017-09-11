@@ -36,6 +36,15 @@ RSpec.describe Order do
     end
   end
 
+  describe '#confirm' do
+    it 'captures the current time' do
+      selection = [1,1,2,3]
+      order = described_class.new(selection, menu)
+      order.confirm
+      expect(order.time).not_to be nil
+    end
+  end
+
   #
   # context 'displaying order' do
   #   it 'displaying the total' do

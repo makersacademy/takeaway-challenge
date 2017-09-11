@@ -1,11 +1,11 @@
 require 'menu'
 
 RSpec.describe Menu do
-  subject(:menu) { described_class.new }
+  subject(:menu) { described_class.new([['catnip', 5], ['CATnip', 10], ['CATNIP', 15]]) }
 
   describe '#show' do
     it 'displays the menu' do
-      expect(subject.show).to eq "Welcome to the Catnip emporium:\nThis is our menu"
+      expect(subject.show).to eq [['catnip', 5], ['CATnip', 10], ['CATNIP', 15]]
     end
 
     pending 'pulls items from array'

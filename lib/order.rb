@@ -1,5 +1,7 @@
+require 'time'
+
 class Order
-  attr_reader :selection, :menu
+  attr_reader :selection, :menu, :time
 
   def initialize(selection, menu)
     @selection = selection
@@ -23,6 +25,11 @@ class Order
     output += "total: \t #{total}"
     puts output
     return output
+  end
+
+  def confirm
+    @time = Time.new
+    "Thank you for your order! Your delivery will arrive before #{@time.hour+1}:#{@time.min}"
   end
 
 end
