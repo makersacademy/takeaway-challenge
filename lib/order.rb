@@ -1,3 +1,4 @@
+require_relative 'menu'
 class Order
 
   attr_reader :orders, :count, :total
