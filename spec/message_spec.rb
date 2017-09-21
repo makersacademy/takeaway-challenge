@@ -13,3 +13,12 @@ describe Message do
     expect(message2.send_message).to eq "Thank you!"
   end
 end
+# describe Confirmation do
+#   subject(:confirmation) { described_class.new(client) }
+#   let(:messages) { double :something }
+#   let(:client) { double :anything, messages: messages}
+#
+#   it "messages to receive create" do
+#     expect(messages).to receive(:create).with(args)
+#     confirmation.sent_text
+#   end

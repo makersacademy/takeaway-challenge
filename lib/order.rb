@@ -1,5 +1,5 @@
-require_relative 'menu'
-require_relative 'message'
+# require_relative 'menu'
+# require_relative 'message'
 
 class Order
 
