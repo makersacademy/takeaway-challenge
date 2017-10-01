@@ -1,11 +1,10 @@
 require 'twilio-ruby'
-# info at www.twilio.com/console
 
 class Phone
 
   attr_accessor :tally, :account_sid, :auth_token, :phone_number
 
-  def initialize (account_sid, auth_token, phone_number)
+  def initialize(account_sid, auth_token, phone_number)
     @tally = tally
     @account_sid = account_sid
     @auth_token = auth_token

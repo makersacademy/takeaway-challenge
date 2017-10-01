@@ -2,7 +2,7 @@ require './docs/takeaway.rb'
 
 describe Takeaway do
 
-  let(:phone) { "phone" }
+  let(:phone) { double :phone }
 
   context "#initialize" do
     it "basket is empty by default" do
@@ -23,6 +23,7 @@ describe Takeaway do
   end
 
   context "#choose_dish" do
+    message = "Invalid choice"
     it "selects a dish and puts it into the basket" do
       subject.choose_dish 1, 1
       expect(subject.basket.size).to eq 1
@@ -36,13 +37,13 @@ describe Takeaway do
       expect(subject.basket.size).to eq 1
     end
     it "invalid dish number chosen" do
-      expect { subject.choose_dish 9, 1 }.to raise_error("Invalid choice")
+      expect { subject.choose_dish 9, 1 }.to raise_error(message)
     end
     it "negative dish number not allowed" do
-      expect { subject.choose_dish 1, -3 }.to raise_error("Invalid choice")
+      expect { subject.choose_dish 1, -3 }.to raise_error(message)
     end
     it "negative quantity number not allowed" do
-      expect { subject.choose_dish 1, -3 }.to raise_error("Invalid choice")
+      expect { subject.choose_dish 1, -3 }.to raise_error(message)
     end
   end
 

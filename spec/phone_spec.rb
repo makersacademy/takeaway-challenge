@@ -2,7 +2,7 @@ require './docs/phone.rb'
 
 describe Phone do
 
-  let(:subject) {described_class.new("123", "abc", "144")}
+  let(:subject) { described_class.new("123", "abc", "144") }
 
   context "#initialize" do
     it "tally amount is set" do
@@ -29,7 +29,6 @@ describe Phone do
       allow(subject).to receive(:time) { "15:08" }
       expect(subject.time).to eq("15:08")
     end
-    it "loops the 24 hour clock"
     it "minutes are not single digits" do
       allow(subject).to receive(:time) { "15:08" }
       expect(subject.time).to eq("15:08")
@@ -43,6 +42,4 @@ describe Phone do
       expect(subject.text_in_message).to eq(message)
     end
   end
-
-  it 'sends a payment confirmation text message'
 end

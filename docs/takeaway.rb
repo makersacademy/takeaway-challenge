@@ -27,11 +27,6 @@ class Takeaway
     quantity.times { @tally += @menu.items.values[number] }
   end
 
-  def invalid_choice(number, quantity)
-    raise("Invalid choice") if number > @menu.items.size
-    raise("Invalid choice") if quantity < 1
-  end
-
   def show_basket
     @basket.uniq.map { |dishes| puts "#{dishes} x #{@basket.count(dishes)}" }
     puts total
@@ -42,13 +37,20 @@ class Takeaway
   end
 
   def checkout(account_sid, auth_token, phone_number)
-    checkout_error if @tally.zero?
+    raise("No dishes selected") if empty_basket?
     phone = Phone.new(account_sid, auth_token, phone_number)
     phone.tally = @tally
     phone.send
   end
 
-  def checkout_error
-    raise("No dishes selected")
+  private
+
+  def invalid_choice(number, quantity)
+    raise("Invalid choice") if number > @menu.items.size
+    raise("Invalid choice") if quantity < 1
+  end
+
+  def empty_basket?
+    @basket.length.zero?
   end
 end
