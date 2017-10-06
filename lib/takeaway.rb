@@ -6,6 +6,6 @@ class TakeAway
   end
 
   def read_menu
-    @menu = Menu.new
+    Menu.new.show_dishes
   end
 end

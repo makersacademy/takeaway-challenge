@@ -1,7 +1,7 @@
 class Menu
   attr_reader :dishes
 
-  def initialize
+  def show_dishes
     @dishes = [item: :sushi, price: 7]
   end
 end
