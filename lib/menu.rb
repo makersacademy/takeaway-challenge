@@ -13,4 +13,8 @@ class Menu
     dishes
   end
 
+  def on_menu?(dish)
+    dishes.include?(dish)
+  end
+
 end

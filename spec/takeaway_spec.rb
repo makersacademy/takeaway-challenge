@@ -13,7 +13,14 @@ describe TakeAway do
   end
   it 'allows user to order a menu item' do
     allow(menu).to receive(:each).and_return 'sushi' => '£5.99'
+    allow(menu).to receive(:on_menu?).and_return true
+    allow(menu).to receive(:order)
     takeaway.order('sushi')
     expect(takeaway.basket).to eq 'sushi'=>'£5.99'
+  end
+  it 'raises an error if the item is not on the menu' do
+    allow(menu).to receive(:each).and_return 'sushi' => '£5.99'
+    allow(menu).to receive(:on_menu?).and_return false
+    expect {takeaway.order('baloney') }.to raise_error("Sorry item is not on the menu!")
   end
 end
