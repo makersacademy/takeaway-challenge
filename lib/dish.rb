@@ -8,7 +8,11 @@ class Dish
     @price = params[:price]
   end
 
+  def summary_s
+    "#{@name}           #{@price}"
+  end
+
   def to_s
-    "#{name}     #{description}           #{price}"
+    "#{@name}     #{@description}           #{@price}"
   end
 end
