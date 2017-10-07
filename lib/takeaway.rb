@@ -16,8 +16,11 @@ attr_reader :menu
     menu
   end
 
-  private
+  def new_order
+  Order.new
+  end
 
+  private
 
   def welcome_message
     puts "Welcome to Tim's Thai"

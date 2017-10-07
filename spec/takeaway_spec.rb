@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'order'
 
 describe Takeaway do
 
@@ -12,8 +13,12 @@ subject(:takeaway) {described_class.new}
     it "has a method which prints the contents of menu" do
     expect(takeaway.view_menu).to include "Spring Rolls"
     end
+  end
 
-
+    describe 'New Order' do
+    it 'creates an order object with the customer name as a reference' do
+    expect(takeaway.new_order).to be_instance_of(Order)
+    end
   end
 
 end
