@@ -7,6 +7,11 @@ describe Takeaway do
     it 'is initialsed with a meals list' do
       expect(takeaway.menu).to be_empty
     end
+
+    it 'returns the menu list' do
+      expect(takeaway.menu).to eq []
+    end
+
   end
 
 end
