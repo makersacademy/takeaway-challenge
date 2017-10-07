@@ -13,7 +13,7 @@ describe Basket do
   describe '#add' do
 
     it 'adds an item to the basket' do
-      expect(basket.add(dish1, dish1_price)).to include [dish1, 1, dish1_price] 
+      expect(basket.add(dish1, dish1_price)).to include [dish1, dish1_price] 
     end
 
   end
@@ -25,16 +25,31 @@ describe Basket do
       basket.add(dish2, dish2_price)
       expect(basket.total).to eq dish1_price+dish2_price
     end
+    it 'raises error if no items have been added' do
+      error = 'no items have been added to the basket'
+      expect { basket.total }.to raise_error 'no items have been added to the basket'
+    end
 
   end
 
   describe '#summary' do
 
-    it 'prints the basket to a string' do
+    it 'prints the summary to stdout as a string' do
       basket.add(dish1, dish1_price)
+      str = "1 #{dish1} = £#{dish1_price}\n"
+      expect { basket.summary }.to output(str).to_stdout
+    end
+    it 'prints multiple items as a list' do
       basket.add(dish1, dish1_price)
       basket.add(dish2, dish2_price)
-      expect(basket.summary).to be_instance_of String #need more coverage here
+      str = "1 #{dish1} = £#{dish1_price}\n1 #{dish2} = £#{dish2_price}\n"
+      expect { basket.summary }.to output(str).to_stdout
+    end
+    it 'combines multiple items that are the same' do
+      basket.add(dish1, dish1_price)
+      basket.add(dish1, dish1_price)
+      str = "2 #{dish1} = £#{2*dish1_price}\n"
+      expect { basket.summary }.to output(str).to_stdout
     end
 
   end

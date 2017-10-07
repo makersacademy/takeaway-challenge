@@ -8,24 +8,22 @@ class Basket
 
   def add(dish, totalprice)
     @list << [dish, totalprice] 
-    compile_order
   end
 
   def total
+    fail('no items have been added to the basket') if list.empty?
     sum = 0
-    list.each do |item|
-      sum += item[1]
-    end
+    list.each { |item| sum += item[1] }
     sum
   end
 
   def summary
-    to_return = []
-    list.each { |item| to_return << item.to_s }
-    to_return.join(', ')
+    compile_order.each { |item| puts print(item) }
   end
 
   private
+
+  attr_reader :list
 
   def compile_order
     list.group_by(&:first).map do |x, y|
@@ -33,10 +31,8 @@ class Basket
     end
   end
 
-  def to_s(item)
-    "#{list[1].to_s} #{item[0]} = #{list[3]}"
+  def print(item)
+    "#{item[1].to_s} #{item[0]} = £#{item[2]}"
   end
-
-  attr_reader :list
 
 end
