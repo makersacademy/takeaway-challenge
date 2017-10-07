@@ -1,9 +1,16 @@
 class Takeaway
 
-  attr_reader :menu
+  attr_accessor :menu
 
-  def intialize
-    @menu = { doner: 5, burger: 10, pizza: 20 }
+  def initialize
+    @menu = [["Doner", 5], ["Burger", 10], ["Pizza", 20]]
+    show_menu(menu)
+  end
+
+  def show_menu(menu)
+    menu.each do |inner|
+      puts inner.join(" ")
+    end
   end
 
 end
