@@ -11,6 +11,9 @@ describe Dish do
     it 'gives the instance a price' do
       expect(dish.price).to eq price
     end
+    it 'gives the instance a quantity that defaults to zero' do
+      expect(dish.quantity).to eq 0
+    end
   end
   describe '#readable' do
     it 'returns a string' do

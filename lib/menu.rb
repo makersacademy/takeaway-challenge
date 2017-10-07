@@ -10,8 +10,15 @@ class Menu
     @menuprinter = MenuPrinter
     puts menuprinter.see dishes
   end
-  def select dish_name
+  def select dish_name, quantity
     matches = dishes.select { |dish| dish_name == dish.name }
-    matches.length > 0 ? matches.each { |match| selection << match } : 'Sorry, that is not available'
+    matches.length > 0 ? matches.each { |match| make_selection match, quantity } : 'Sorry, that is not available'
+  end
+
+  private
+
+  def make_selection match, quantity
+    match.quantity += quantity
+    selection << match
   end
 end
