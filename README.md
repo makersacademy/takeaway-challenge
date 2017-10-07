@@ -19,10 +19,11 @@ Description
 
 Steps
 -------
-* run ```bundle install```
+
 
 How to run
 -----------
+* run ```bundle install```
 
 Task
 -----
