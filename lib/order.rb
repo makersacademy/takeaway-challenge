@@ -30,4 +30,11 @@ class Order
     end
     current_order += "Total Cost £#{cost}"
   end
+
+  def place_order
+    delivery_time = Time.now + (60 * 60)
+    current_order = "#{display_order}\n"
+    current_order += delivery_time.strftime("Your order will arrive at %I:%M%p")
+    current_order
+  end
 end

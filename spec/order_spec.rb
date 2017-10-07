@@ -52,4 +52,13 @@ describe 'Order' do
       expect(order.display_order).to eq("2 items in your order:\npizza : £10\npizza : £10\nTotal Cost £20")
     end
   end
+
+  context 'Placing Order' do
+    it 'should allow the user to place their order' do
+      allow(Time).to receive(:now).and_return(Time.new(2017, 10, 12, 12, 30))
+
+      order.add('pizza', 2)
+      expect(order.place_order).to eq("2 items in your order:\npizza : £10\npizza : £10\nTotal Cost £20\nYour order will arrive at 01:30PM")
+    end
+  end
 end
