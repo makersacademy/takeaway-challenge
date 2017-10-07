@@ -19,6 +19,12 @@ describe Takeaway do
     expect(takeaway).to respond_to(:select_dish).with(1).argument
   end
 
+  it 'starts with an empty basket' do
+    expect(takeaway.basket).to eq 0
+  end
+
+
+
 
 
 end
