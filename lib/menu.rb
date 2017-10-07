@@ -6,6 +6,7 @@ class Menu
   end
 
   def add_dish(dish)
+    fail 'Menu already contains dish' if @dishes.include?(dish)
     @dishes << dish
   end
 end

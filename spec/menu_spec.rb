@@ -29,6 +29,12 @@ describe Menu do
       expect { menu_1.add_dish dish_1 }.to change { menu_1.dishes }.by [dish_1]
     end
 
+    context 'raise_error' do
+      it 'should raise_error if dish already added' do
+        menu_1.add_dish(dish_1)
+        expect { menu_1.add_dish(dish_1) }.to raise_error 'Menu already contains dish'
+      end
+    end
   end
 
 end
