@@ -1,9 +1,14 @@
 class Order
 
-attr_reader :name
+attr_reader :name, :dish_list
 
-def initialize(name)
-  @name = name
-end
+  def initialize(name)
+    @name = name
+    @dish_list = []
+  end
+
+  def addto_order(dish)
+    @dish_list <<  dish
+  end
 
 end
