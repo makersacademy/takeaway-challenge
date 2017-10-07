@@ -15,8 +15,12 @@ class Menu
     @dishes.delete dish
   end
 
+  def view_menu
+    @dishes
+  end
+
   private
-  
+
   def dish_found?(dish)
     @dishes.include?(dish)
   end
