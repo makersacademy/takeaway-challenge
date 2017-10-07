@@ -1,24 +1,30 @@
-require File.dirname(__FILE__) + '/dish'
 class Basket
-  DEFAULT_CURENCY = "£"
+  require File.dirname(__FILE__) + '/defaults'
+  attr_reader :selected_items
   
-  def initialize (selected_items = {})
+  def initialize(selected_items = Hash.new(0))
     @selected_items = selected_items
   end
 
+  
+  def add_item(item, quantity = Defaults::MINIMUM_QUANTITY)
+    @selected_items[item] += quantity if !!item && quantity > 0
+  end
+
+  def remove_item(item, quantity = Defaults::MINIMUM_QUANTITY)
+    @selected_items[item] -= quantity if !!item && (selected_items[item] - quantity) >= 0 
+  end
+
+  #maybe a receipt class ??
   def create_receipt
     receipt = ""
-    selected_items.each{ |dish, quantity| receipt << "#{dish.name} - #{DEFAULT_CURENCY}#{'%.2f' % dish.price} x #{quantity}\n"}
-    receipt << "Total: #{DEFAULT_CURENCY}#{'%.2f' % calculate_total}"
+    selected_items.each{ |item, quantity| receipt << "#{item} x #{quantity}\n" if quantity > 0}
+    receipt << "Total: #{Defaults::DEFAULT_CURENCY}#{'%.2f' % calculate_total}"
   end
 
   def calculate_total
     total = 0
-    selected_items.each { |dish, quantity| total += dish.price * quantity }
+    selected_items.each { |item, quantity| total += item.price * quantity }
     total
   end
-  
-  private
-  attr_reader :selected_items
-
 end
