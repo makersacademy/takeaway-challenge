@@ -1,5 +1,14 @@
+require 'dish'
+
 class Menu
-  DISHES = ['Tagliatelle with duck, £9', 'Pizza, £10', 'Salad Caprese, £8.50']
+  attr_reader :dishes
+  DISHES = [['Tagliatelle with duck ragu', 9], ['Pizza Diavola', 10], ['Salad Caprese', 8.5]]
+  def initialize
+    @dishes = []
+  end
+  def build
+    DISHES.each { | name_price | @dishes.push Dish.new name_price[0], name_price[1] }
+  end
   def see
     DISHES
   end
