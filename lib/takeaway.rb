@@ -7,10 +7,15 @@ class Takeaway
     show_menu(menu)
   end
 
-  def show_menu(menu)
+  def show_menu(menu) ##add to intialize?
     menu.each do |inner|
       puts inner.join(" ")
     end
+
+  end
+
+  def order_food(order)
+
   end
 
 end
