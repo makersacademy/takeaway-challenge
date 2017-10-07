@@ -10,5 +10,7 @@ class Order
   end
 
   def add_item
+    item_num = $stdin.gets.chomp.to_i
+    item_quant = $stdin.gets.chomp.to_i
   end
 end

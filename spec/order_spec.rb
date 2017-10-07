@@ -6,8 +6,16 @@ describe Order do
   subject(:order) { described_class.new(menu, basket) }
 
 
-  it "#add_item" do
+  describe "#add_item" do
+    it "exists" do
     expect(order).to respond_to(:add_item)
+    end
+
+    it "accepts user input for item_num and item_quant" do
+      allow($stdin).to receive(:gets).and_return("1\n","2\n")
+      expect($stdin).to receive(:gets).twice
+      order.add_item
+    end
   end
 
   it "instantiates with a menu" do
