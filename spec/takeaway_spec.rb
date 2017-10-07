@@ -36,4 +36,10 @@ describe TakeAway do
       expect(takeaway.basket).to be_empty
     end
   end
+
+  context 'when complete' do
+    it 'calculates the total cost of the order' do
+    expect(takeaway.order_total).to eq "Your total is: £#{takeaway.basket.values.sum}"
+    end
+  end
 end
