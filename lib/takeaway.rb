@@ -4,7 +4,7 @@ class Takeaway
 
   def initialize
     @menu = Dishes.new
-    @basket = 0
+    @basket = {}
   end
 
   def print_menu
@@ -14,8 +14,6 @@ class Takeaway
   def select_dish(dish)
 
   end
-
-
 
 
 

@@ -20,8 +20,13 @@ describe Takeaway do
   end
 
   it 'starts with an empty basket' do
-    expect(takeaway.basket).to eq 0
+    # expect(takeaway.basket).to be_empty
+    expect(takeaway.basket).to be_an_instance_of Hash
   end
+
+  
+
+
 
 
 
