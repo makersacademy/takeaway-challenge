@@ -24,6 +24,10 @@ class TakeAway
     "Your total is: £#{@basket.values.sum}"
   end
 
+  def show_basket
+    basket.map {|dish| "#{dish[0]}: #{dish[1]}"}.join(", ")
+  end
+
   private
 
   def print_selection(dish, quantity)
