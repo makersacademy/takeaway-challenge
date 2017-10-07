@@ -1,4 +1,4 @@
-require_relative '../lib/menu'
+require 'menu'
 
 describe Menu do
   subject(:list) { described_class.new }
