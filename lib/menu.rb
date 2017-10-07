@@ -11,11 +11,11 @@ class Menu
   end
 
   def view_menu
-    #"Menu:\n\n" +
-    readable_menu = "Avo Spice Menu:\n"
-    menu_items.each do |item|
-        readable_menu += "#{item[:item_num]}) #{item[:item]} - #{item[:cost]}\n"
-    end
-    readable_menu
+    "Avo Spice Menu:\n" + menu_formatter
+  end
+
+  private
+  def menu_formatter
+    menu_items.map {|item| "#{item[:item_num]}) #{item[:item]} - £#{'%.2f' % item[:cost]}\n"}.join.chomp
   end
 end
