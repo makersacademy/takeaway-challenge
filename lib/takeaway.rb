@@ -9,6 +9,7 @@ attr_reader :menu
             "Tom Yum" => 7,
             "Green Curry" => 7,
             "Chang Beer" => 2}
+    @name
     welcome_message
   end
 
@@ -17,7 +18,7 @@ attr_reader :menu
   end
 
   def new_order(name)
-  name = Order.new(name)
+  @name = Order.new(name)
   end
 
   def select_dish(dish_name)
