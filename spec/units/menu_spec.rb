@@ -14,7 +14,7 @@ describe Menu do
   end
   describe '#see' do
     it 'enables users to see everything on the menu' do
-      menu_text = subject.menuprinter.see subject.dishes
+      menu_text = subject.menuprinter.see_menu subject.dishes
       Menu::DISHES.each do |dish_array|
         expect(menu_text).to include dish_array[0]
       end
@@ -27,7 +27,7 @@ describe Menu do
     end
     it 'enables users to choose a particular number of items' do
       subject.select 'Pizza Diavola', 3
-      expect(subject.selection[0].quantity).to eq 3
+      expect(subject.selection[0].quantity_ordered).to eq 3
     end
     it 'tells a user if they are trying to order something that is not available' do
       expect(subject.select 'Pizza Napolitana', 1).to eq 'Sorry, that is not available'
@@ -37,6 +37,27 @@ describe Menu do
       subject.select 'Tagliatelle with duck ragu', 1
       subject.select 'Salad Caprese', 2
       expect(subject.selection.length).to eq 3
+    end
+  end
+  describe '#check_order' do
+    total_cost = (3 * 10) + 9
+    before(:each) do
+      subject.select 'Pizza Diavola', 3
+      subject.select 'Tagliatelle with duck ragu', 1
+    end
+    it 'raises an error if the price supplied by the customer does not match the calculated total price' do
+      expect { subject.check_order 30 }.to raise_error "Sorry, our sums do not match"
+    end
+    it 'returns a string' do
+      expect(subject.check_order total_cost).to be_a String
+    end
+    it 'which contains the names of the dishes ordered' do
+      matches = subject.check_order(total_cost).scan 'Pizza Diavola'
+      matches += subject.check_order(total_cost).scan 'Tagliatelle with duck ragu'
+      expect(matches.length).to be 2
+    end
+    it 'and contains the total cost of the dishes ordered' do
+      expect(subject.check_order total_cost).to include total_cost.to_s
     end
   end
 end
