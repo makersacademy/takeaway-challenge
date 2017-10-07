@@ -12,5 +12,6 @@ class Order
   def add_item
     item_num = $stdin.gets.chomp.to_i
     item_quant = $stdin.gets.chomp.to_i
+    order_menu.menu_items[item_num-1][:item]
   end
 end

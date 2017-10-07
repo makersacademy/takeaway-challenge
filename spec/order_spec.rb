@@ -1,7 +1,7 @@
 require 'order'
 
 describe Order do
-  let(:menu) { double(:menu) }
+  let(:menu) { double(:menu, menu_items: [{item_num: 1, item: "Murgh Masala", cost: 6.9}]) }
   let(:basket) { double(:basket) }
   subject(:order) { described_class.new(menu, basket) }
 
@@ -15,6 +15,11 @@ describe Order do
       allow($stdin).to receive(:gets).and_return("1\n","2\n")
       expect($stdin).to receive(:gets).twice
       order.add_item
+    end
+
+    it "retrieves item from menu" do
+      allow($stdin).to receive(:gets).and_return("1\n","2\n")
+      expect(order.add_item).to eq("Murgh Masala")
     end
   end
 
