@@ -50,6 +50,10 @@ describe Basket do
       str = "2 #{dish1} = £#{2 * dish1_price}\n"
       expect { basket.summary }.to output(str).to_stdout
     end
+    it 'raises error if no items have been added' do
+      error = 'no items have been added to the basket'
+      expect { basket.summary }.to raise_error error     
+    end
 
   end
 
