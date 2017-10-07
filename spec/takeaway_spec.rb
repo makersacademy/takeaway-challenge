@@ -15,36 +15,9 @@ describe Takeaway do
     expect(takeaway.print_menu).to include(dish)
   end
 
-  it 'selects from the list of dishes' do
-
+  it 'selects from the menu' do
+    expect(takeaway).to respond_to(:select_dish).with(1).argument
   end
-
-end
-
-
-
-
-
-
-require 'takeaway.rb'
-
-describe Takeaway do
-  subject(:takeaway) {described_class.new}
-
-
-  it 'has a list of dishes' do
-    expect(takeaway.menu).to be_an_instance_of(Dishes)
-  end
-
-
-  # it 'prints a list of dishes' do
-  #   expect(takeaway.list).to
-  # end
-
-
-
-
-
 
 
 

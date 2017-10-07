@@ -5,7 +5,7 @@ class Dishes
   end
 
   def list
-    {"curry" => 1.00,"xcurry" => 1.00}
+    {"curry" => 1.00, "xcurry" => 1.00}
   end
 
 end
