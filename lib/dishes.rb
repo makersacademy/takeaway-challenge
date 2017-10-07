@@ -1,15 +1,11 @@
 class Dishes
 
-  attr_reader :list
-
   def initialize
-    @list = [{:dish => "curry", :price => 1.00},
-    {:dish => "xcurry", :price => 1.00}]
+    @list = list
   end
 
-  # def menu_list
-  #   {:dish => "curry", :price => 1.00}
-  #   {:dish => "xcurry", :price => 1.00}
-  # end
+  def list
+    {"curry" => 1.00,"xcurry" => 1.00}
+  end
 
 end
