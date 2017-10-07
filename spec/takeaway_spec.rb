@@ -18,9 +18,6 @@ describe TakeAway do
       allow(menu).to receive(:each).and_return menu.dishes
       allow(menu).to receive(:on_menu?).and_return true
     end
-    it 'user can order a menu item' do
-      expect(takeaway.order('sushi')).to eq 'sushi'=>5.99
-    end
     it 'ordered items are stored in a basket' do
       takeaway.order('burger')
       expect(takeaway.basket).to eq 'burger'=> menu.dishes['burger']

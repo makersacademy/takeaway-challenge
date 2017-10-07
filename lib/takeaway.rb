@@ -14,7 +14,6 @@ class TakeAway
     raise "Sorry item is not on the menu!" if !menu.on_menu?(dish)
     basket[dish] = menu.dishes[dish] * quantity
     print_selection(dish, quantity)
-    basket
   end
 
   def empty_basket
