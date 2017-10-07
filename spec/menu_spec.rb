@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  let(:order) { double(:order, items: 'Margherita, Meat Feast') }
+  let(:order) { 'Margherita, Meat Feast' }
   describe '#select' do
     it 'should respond to the select method' do
       expect(subject).to respond_to :select

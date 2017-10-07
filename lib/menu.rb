@@ -11,7 +11,7 @@ class Menu
   end
 
   def select(order)
-    items = order.items.split(', ')
+    items = order.split(', ')
     select_items(items)
   end
 
