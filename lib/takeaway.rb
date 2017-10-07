@@ -1,10 +1,11 @@
 class Takeaway
 
-  # attr_reader :menu
+  attr_reader :menu
 
-  def menu
-    []
+  def initialize
+    @menu = []
   end
+
 
 
 end

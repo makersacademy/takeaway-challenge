@@ -7,5 +7,4 @@ describe Takeaway do
     expect(takeaway.menu).to be_empty
   end
 
-
 end
