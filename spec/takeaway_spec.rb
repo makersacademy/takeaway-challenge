@@ -53,7 +53,7 @@ describe Takeaway do
       end
 
       it 'displays the order and the cost' do
-        expect(takeaway.place_order).to eq "Thanks! Your order, total of #{total} is being processed"
+        expect(takeaway.place_order).to eq   "Thanks! Your order, total of #{total}, is being processed and will be delivered by #{takeaway.delivery_time}"
       end
 
     end
