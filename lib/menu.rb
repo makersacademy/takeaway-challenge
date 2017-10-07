@@ -10,6 +10,8 @@ class Menu
     DISHES.each { | name_price | @dishes.push Dish.new name_price[0], name_price[1] }
   end
   def see
-    DISHES
+    menu_text = @dishes.map { |dish| dish.readable }.join("\n")
+    puts menu_text
+    menu_text
   end
 end

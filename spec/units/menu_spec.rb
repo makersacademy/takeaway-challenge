@@ -6,11 +6,6 @@ describe Menu do
       expect(subject.dishes).to eq []
     end
   end
-  describe '#see' do
-    it 'enables users to see the menu' do
-      expect(subject.see).to be_an Array
-    end
-  end
   describe '#build' do
     it 'adds a Dish object to the menu.dishes array' do
       subject.build
@@ -19,6 +14,17 @@ describe Menu do
     it 'adds adds the right number of objects to the menu.dishes array' do
       subject.build
       expect(subject.dishes.length).to eq Menu::DISHES.length
+    end
+  end
+  context 'with dishes array built' do
+    before(:each) {subject.build}
+    describe '#see' do
+      it 'enables users to see everything on the menu' do
+        menu_text = subject.see
+        Menu::DISHES.each do |dish_array|
+          expect(menu_text).to include dish_array[0]
+        end
+      end
     end
   end
 end
