@@ -1,16 +1,14 @@
-require 'dish'
+require_relative 'dish'
+require_relative 'menu_printer'
 
 class Menu
-  attr_reader :dishes, :selection
+  attr_reader :dishes, :selection, :menuprinter
   DISHES = [['Tagliatelle with duck ragu', 9], ['Pizza Diavola', 10], ['Salad Caprese', 8.5]]
   def initialize
     @dishes = DISHES.map { | name_price | Dish.new name_price[0], name_price[1] }
     @selection = []
-  end
-  def see
-    menu_text = dishes.map(&:readable).join("\n")
-    puts menu_text
-    menu_text
+    @menuprinter = MenuPrinter
+    puts menuprinter.see dishes
   end
   def select dish_name
     matches = dishes.select { |dish| dish_name == dish.name }

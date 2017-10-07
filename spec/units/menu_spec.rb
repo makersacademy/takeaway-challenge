@@ -14,7 +14,7 @@ describe Menu do
   end
   describe '#see' do
     it 'enables users to see everything on the menu' do
-      menu_text = subject.see
+      menu_text = subject.menuprinter.see subject.dishes
       Menu::DISHES.each do |dish_array|
         expect(menu_text).to include dish_array[0]
       end
