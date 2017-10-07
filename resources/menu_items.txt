@@ -1,0 +1,7 @@
+A|Salmon onigiri|1.5
+B|Chicken onigiri|1.5
+C|Chicken teriyaki|5
+D|Chicken katsu|5
+E|Beef teriyaki|6
+F|Salmon sashimi (4pcs)|3
+G|Salmon nigiri (4pcs)|4

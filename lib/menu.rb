@@ -1,23 +1,26 @@
 class Menu
   attr_reader :menu_header, :menu_items
 
-  def display_menu(menu_header, menu_items, menu_footer)
+  MENU_HEADER = "#{"*" * 35}
+*  Welcome to Kay's Desk takeway  *
+#{"*" * 35}\n\n"
+
+  MENU_ITEMS = "\n#\tDescription\tPrice
+A\tSalmon onigiri\t1.5
+B\tChicken onigiri\t1.5
+C\tChicken teriyaki\t5
+D\tChicken katsu\t5
+E\tBeef teriyaki\t6
+F\tSalmon sashimi (4pcs)\t3
+G\tSalmon nigiri (4pcs)\t4\n"
+
+  def display_header
     system('clear')
-    display_header menu_header
-    display_items menu_items
-    display_footer menu_footer
+    puts MENU_HEADER
   end
 
-private
-  def display_header(menu_header)
-    puts "#{menu_header}\n\n"
+  def display_items
+    puts MENU_ITEMS
   end
 
-  def display_items(menu_items)
-    puts "#{menu_items}\n\n"
-  end
-
-  def display_footer(menu_footer)
-    puts "#{menu_footer}\n"
-  end
 end

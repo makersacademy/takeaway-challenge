@@ -1,16 +1,17 @@
-require 'menu.rb'
+require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
-  let(:menu_header) { double(:menu_header) }
-  let(:menu_items) { double(:menu_items) }
-  let(:menu_footer) { double(:menu_footer) }
 
-  describe '#display' do
-    it 'displays the menu' do
-      menu_output = "#{menu_header}\n\n#{menu_items}\n\n#{menu_footer}\n"
-      expect { menu.display_menu(menu_header, menu_items, menu_footer) }
-        .to output(menu_output).to_stdout
+  describe '#display_header' do
+    it 'displays the menu header' do
+      expect { menu.display_header }.to output(Menu::MENU_HEADER).to_stdout
+    end
+  end
+
+  describe '#display_items' do
+    it 'displays menu items' do
+      expect { menu.display_items }.to output(Menu::MENU_ITEMS).to_stdout
     end
   end
 
