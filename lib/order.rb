@@ -7,8 +7,9 @@ class Order
     @menu = menu
   end
 
-  def add(food)
-    fail "Please enter a valid selection!" unless @menu.menu_items.include?(food)
-    @basket << food
+  def add(food, quantity = 1)
+    fail "Please enter a valid food selection!" unless @menu.menu_items.include?(food)
+    fail "Please enter a valid number of items!" unless quantity >= 1
+    quantity.times{ @basket << food }
   end
 end
