@@ -1,11 +1,26 @@
 require 'dish'
 
 describe Dish do
-  subject(:dish) { described_class.new 'Salad Caprese', 8.5 }
-  it 'can be initialized with a name' do
-    expect(dish.name).to eq 'Salad Caprese'
+  name = 'Salad Caprese'
+  price = 8.5
+  subject(:dish) { described_class.new name, price }
+  describe '#initialize' do
+    it 'gives the instance a name' do
+      expect(dish.name).to eq 'Salad Caprese'
+    end
+    it 'gives the instance a price' do
+      expect(dish.price).to eq price
+    end
   end
-  it 'can be initialized with a price' do
-    expect(dish.price).to eq 8.5
+  describe '#readable' do
+    it 'returns a string' do
+      expect(subject.readable).to be_a String
+    end
+    it 'which contains the name of the dish' do
+      expect(subject.readable).to include name
+    end
+    it 'and the price of the dish' do
+      expect(subject.readable).to include price.to_s
+    end
   end
 end

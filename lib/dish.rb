@@ -4,4 +4,8 @@ class Dish
     @name = name
     @price = price
   end
+
+  def readable
+    "#{name}: £#{'%.2f' % price}"
+  end
 end
