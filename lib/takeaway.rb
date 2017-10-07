@@ -17,7 +17,7 @@ attr_reader :menu
   end
 
   def new_order(name)
-  name = Order.new
+  name = Order.new(name)
   end
 
   private
