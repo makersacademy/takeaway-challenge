@@ -12,5 +12,8 @@ subject(:takeaway) {described_class.new}
     it "has a method which prints the contents of menu" do
     expect(takeaway.view_menu).to include "Spring Rolls"
     end
+
+
   end
+
 end
