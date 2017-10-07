@@ -29,15 +29,25 @@ describe Takeaway do
     end
   end
 
-  describe 'showing order total' do
+  describe 'manages the order' do
     subject(:dish) { "Chop Suey" }
     subject(:dish1) { "Thai Curry" }
-    it 'shows the order total' do
-      takeaway.select(dish)
-      takeaway.select(dish1)
-      total = takeaway.current_order.values.sum
-      expect(takeaway.order_total).to eq total
+    subject(:total) { takeaway.current_order.values.sum }
+
+    context '2 dishes ordered' do
+      before do
+        takeaway.select(dish)
+        takeaway.select(dish1)
+      end
+
+      it 'shows the order total' do
+        expect(takeaway.order_total).to eq total
+      end
+
+      it 'displays the order and the cost' do
+        expect(takeaway.place_order).to eq "Thanks! Your order, total of #{total} is being processed"
+      end
+
     end
   end
-
 end
