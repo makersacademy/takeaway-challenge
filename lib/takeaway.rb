@@ -1,12 +1,12 @@
 require_relative './menu.rb'
+require_relative './message_service.rb'
 
 class Takeaway
 
-  attr_reader :menu, :basket
-
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, message_service = MessageService.new)
 
     @menu = menu
+    @message_service = message_service
     @basket = []
     @total = 0
 
@@ -40,7 +40,15 @@ class Takeaway
   def checkout_order(payment)
     fail 'please pay the correct amount' unless payment == @total
     @basket, @total = [], 0
-    "Thank you for your order"
+    send_confirmation
+  end
+
+  private
+
+  attr_reader :menu, :basket, :message_service
+
+  def send_confirmation
+    message_service.send_sms("Thank you for your order")
   end
 
 end
