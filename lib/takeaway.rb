@@ -3,7 +3,7 @@ class Takeaway
   attr_reader :menu
 
   def initialize
-    @menu = []
+    @menu = Dishes.new
   end
 
 end
