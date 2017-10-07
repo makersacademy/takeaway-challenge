@@ -1,5 +1,6 @@
 # new class 'Order'
 require './lib/menu'
+require 'twilio-ruby'
 
 class Order
   attr_reader :basket
@@ -35,6 +36,20 @@ class Order
     delivery_time = Time.now + (60 * 60)
     current_order = "#{display_order}\n"
     current_order += delivery_time.strftime("Your order will arrive at %I:%M%p")
+    text_order(current_order)
     current_order
+  end
+
+  def text_order(order_details)
+    account_sid = 'ACd00a806679c1169c47a3950e956df159'
+    auth_token = '5cdca75a737497e87715e0ff774d18e2'
+
+    client = Twilio::REST::Client.new account_sid, auth_token
+
+    client.messages.create({
+      :from => '+441143033372',
+      :to => '+447773793569',
+      :body => order_details,
+    })
   end
 end
