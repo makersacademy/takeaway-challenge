@@ -5,7 +5,7 @@ describe Menu do
   subject(:menu_empty) { described_class.new([]) }
   subject(:menu_dish_1) { described_class.new([dish_1]) }
   subject(:menu_all_dishes) { described_class.new([dish_1, dish_2, dish_3, dish_4]) }
-  
+
   let(:dish_1) { double :dish_1, name: 'Test Dish 1', description: 'Test dish 1 description', price: 10.95 }
   let(:dish_2) { double :dish_2, name: 'Test Dish 2', description: 'Test dish 2 description', price: 5.99 }
   let(:dish_3) { double :dish_3, name: 'Test Dish 3', description: 'Test dish 3 description', price: 2.50 }

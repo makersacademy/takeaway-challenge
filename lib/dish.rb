@@ -7,12 +7,5 @@ class Dish
     @description = params[:description]
     @price = params[:price]
   end
-
-  def summary_s
-    "#{@name}           #{@price}"
-  end
-
-  def to_s
-    "#{@name}     #{@description}           #{@price}"
-  end
+  
 end
