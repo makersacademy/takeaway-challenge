@@ -44,6 +44,11 @@ describe Menu do
       expect(menu_1.dishes).not_to include dish_1
     end
 
+    context 'raise_error' do
+      it 'should raise_error if dish not found' do
+        expect { menu_1.remove_dish(dish_1) }.to raise_error 'Dish not found'
+      end
+    end
   end
 
 end
