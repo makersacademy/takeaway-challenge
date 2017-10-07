@@ -17,7 +17,7 @@ Takeaway Challenge
 Description
 -------
 
-Steps
+My approach
 -------
 
 
