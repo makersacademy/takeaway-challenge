@@ -12,9 +12,7 @@ class Basket
 
   def total
     fail('no items have been added to the basket') if list.empty?
-    sum = 0
-    list.each { |item| sum += item[1] }
-    sum
+    calculate_total
   end
 
   def summary
@@ -33,6 +31,12 @@ class Basket
 
   def print(item)
     "#{item[1].to_s} #{item[0]} = £#{item[2]}"
+  end
+
+  def calculate_total
+    sum = 0
+    list.each { |item| sum += item[1] }
+    sum
   end
 
 end
