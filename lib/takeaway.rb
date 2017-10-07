@@ -1,21 +1,17 @@
 require_relative './menu.rb'
-require_relative './order.rb'
+require_relative './basket.rb'
 require_relative './message_service.rb'
 
 class Takeaway
 
-  def initialize(menu = Menu.new, basket_class = Basket, message_service = MessageService.new)
-
+  def initialize(menu = Menu.new,
+                 basket_class = Basket,
+                 message_service = MessageService.new
+                 )
     @menu = menu
     @message_service = message_service
     @basket_class = basket_class
     @basket = basket_class.new
-    @total = 0
-
-  end
-
-  def order_total
-    "Total = £#{@total}"
   end
 
   def print_menu
@@ -32,10 +28,15 @@ class Takeaway
     basket.summary
   end
 
+  def order_total
+    fail 'no items have been added to the basket' if basket.total == 0
+    "Total = £#{basket.total}"
+  end
+
   def checkout_order(payment)
-    fail 'please pay the correct amount' unless payment == @total
-    @basket, @total = [], 0
+    fail 'please pay the correct amount' unless payment == basket.total
     send_confirmation
+    @basket = basket_class.new
   end
 
   # private

@@ -6,7 +6,7 @@ describe Takeaway do
   let(:dish1_price) { 3.46 }
   let(:dish2) { 'seaweed' }
   let(:dish2_price) { 3.57 }
-  let(:basket) { double('basket', add: nil, total: nil) }
+  let(:basket) { double('basket', add: nil, total: 0, summary: nil) }
   let(:basket_class) { class_double('basket_class', new: basket) }
   let(:message_service) { double('message_service', send_sms: nil) }
   let(:menu) { double('menu', print: nil, items: { dish1 => dish1_price, dish2 => dish2_price }) }
@@ -17,42 +17,21 @@ describe Takeaway do
   describe '#print_menu' do
 
     it 'prints the menu' do
-      expect(takeaway).to respond_to :print_menu
-    end
-
-  end
-
-  describe '#order_summary' do
-
-    it 'is empty by default' do
-      expect(takeaway.basket).to receive :summary
-      takeaway.order_summary
-    end
-
-  end
-
-  describe '#order_total' do
-
-    xit 'has an order total of 0 by default' do
-      expect(takeaway.order_total).to eq "Total = £0"
-    end
-    xit 'shows the total cost of all items in the basket' do
-      takeaway.order  dish1
-      expect(basket).to receive(:total)
-      takeaway.order_total
+      expect(menu).to receive :print
+      takeaway.print_menu
     end
 
   end
 
   describe '#order' do
-
+    
     it 'adds an item to the basket' do
-      expect(takeaway.basket).to receive(:add).with(dish1, 1)
-      takeaway.order  dish1
+      expect(takeaway.basket).to receive(:add)
+      takeaway.order dish1
     end
-    xit 'adds the cost of the item to the total' do
-      takeaway.order  dish1
-      expect(takeaway.order_total).to eq "Total = £#{dish1_price}"
+    it 'allows to specify a quantity of items' do
+      expect(takeaway.basket).to receive(:add).with(dish1, 3)
+      takeaway.order(dish1, 3)
     end
     it "will raise error if item isn't on the menu" do
       expect{ takeaway.order 'fish sauce' }.to raise_error 'item is not on the menu'
@@ -62,25 +41,47 @@ describe Takeaway do
     end
 
   end
+    
+  describe '#order_summary' do
+
+    it 'shows the order summary' do
+      expect(takeaway.basket).to receive :summary
+      takeaway.order_summary
+    end
+
+  end
+
+  describe '#order_total' do
+
+    it 'raises error if no items have been added to the basket' do
+      error = 'no items have been added to the basket'
+      expect { takeaway.order_total }.to raise_error error
+    end
+    it 'shows the total cost of all items in the basket' do
+      takeaway.order  dish1
+      allow(basket).to receive(:total) {dish1_price}
+      expect(basket).to receive(:total)
+      takeaway.order_total
+    end
+
+  end
 
   describe '#checkout' do
 
     it "raises an error if the wrong payment is received" do
+      error = 'please pay the correct amount'
       takeaway.order  dish1
-      expect{ takeaway.checkout_order(dish1_price + 1) }.to raise_error 'please pay the correct amount'
+      expect{ takeaway.checkout_order(dish1_price + 1) }.to raise_error error
     end
-    xit "empties the basket" do
+    it "empties the basket" do
+      expect(takeaway.basket_class).to receive(:new)
       takeaway.order  dish1
+      allow(basket).to receive(:total) {dish1_price}
       takeaway.checkout_order(dish1_price)
-      expect(takeaway.order_summary).to be_empty
     end
-    xit "sets the total back to 0" do
+    it 'sends an sms confirmation to the user' do
       takeaway.order  dish1
-      takeaway.checkout_order(dish1_price)
-      expect(takeaway.order_total).to eq "Total = £0"
-    end
-    xit 'sends an sms confirmation to the user' do
-      takeaway.order  dish1
+      allow(basket).to receive(:total) {dish1_price}
       expect(takeaway).to receive (:send_confirmation)
       takeaway.checkout_order(dish1_price)
     end
