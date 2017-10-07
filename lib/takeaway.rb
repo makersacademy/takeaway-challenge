@@ -11,9 +11,9 @@ class Takeaway
     @menu.list
   end
 
-  def select(dish)
-    @current_order[dish] = @menu.list[dish]
-    # edge case 1 = you can only add 1 item currently
+  def select(dish, quantity = 1)
+    item_subtotal = @menu.list[dish] * quantity
+    @current_order[dish] = item_subtotal
   end
 
   def order_total

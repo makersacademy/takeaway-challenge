@@ -23,21 +23,29 @@ describe Takeaway do
 
   describe 'selecting dishes' do
     subject(:dish) { "Chop Suey" }
+    subject(:quantity) { 2 }
     it 'adds a dish to the current order' do
-      takeaway.select(dish)
+      takeaway.select(dish, quantity)
       expect(takeaway.current_order).to include(dish)
+    end
+
+    it 'can add multiple dishes to the current order' do
+      takeaway.select(dish, quantity)
+      expect(takeaway.order_total).to eq(takeaway.current_order[dish])
+
     end
   end
 
   describe 'manages the order' do
     subject(:dish) { "Chop Suey" }
     subject(:dish1) { "Thai Curry" }
+    subject(:quantity) { 2 }
     subject(:total) { takeaway.current_order.values.sum }
 
     context '2 dishes ordered' do
       before do
-        takeaway.select(dish)
-        takeaway.select(dish1)
+        takeaway.select(dish, quantity)
+        takeaway.select(dish1, quantity)
       end
 
       it 'shows the order total' do
