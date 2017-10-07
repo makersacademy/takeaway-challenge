@@ -20,6 +20,10 @@ attr_reader :menu
   name = Order.new(name)
   end
 
+  def select_dish(dish_name)
+    @menu.select {|k,v| k == dish_name}
+  end
+
   private
 
   def welcome_message

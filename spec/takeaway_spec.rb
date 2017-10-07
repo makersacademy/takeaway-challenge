@@ -15,10 +15,16 @@ subject(:takeaway) {described_class.new}
     end
   end
 
-    describe 'New Order' do
+    describe '#New Order' do
     it 'creates an order object with the customer name as a reference' do
     expect(takeaway.new_order("Zara")).to be_instance_of(Order)
     end
   end
+
+  describe 'select_dish' do
+  it 'selects a dish from the menu hash' do
+  expect(takeaway.select_dish("Tom Yum")).to eq "Tom Yum" => 7
+  end
+end
 
 end
