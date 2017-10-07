@@ -1,13 +1,15 @@
 require_relative './menu.rb'
+require_relative './order.rb'
 require_relative './message_service.rb'
 
 class Takeaway
 
-  def initialize(menu = Menu.new, message_service = MessageService.new)
+  def initialize(menu = Menu.new, basket_class = Basket, message_service = MessageService.new)
 
     @menu = menu
     @message_service = message_service
-    @basket = []
+    @basket_class = basket_class
+    @basket = basket_class.new
     @total = 0
 
   end
@@ -20,21 +22,14 @@ class Takeaway
     menu.print
   end
 
-  def order(dish, quantity = 1)    
+  def order(dish, quantity = 1)
     fail 'item is not on the menu' unless menu.items[dish]
-    quantity.times do
-      @basket << [quantity, dish, menu.items[dish]] 
-      @total += menu.items[dish]
-    end
+    quantity.times { @basket.add(dish, quantity) }
     "#{quantity} #{dish} added to basket"
   end
 
   def order_summary
-    to_return = []
-    @basket.each do |item|
-      to_return << "#{item[0].to_s} #{item[1]} = #{item[0]*item[2]}"
-    end
-    to_return.join(', ')
+    basket.summary
   end
 
   def checkout_order(payment)
@@ -43,9 +38,9 @@ class Takeaway
     send_confirmation
   end
 
-  private
+  # private
 
-  attr_reader :menu, :basket, :message_service
+  attr_reader :menu, :basket_class, :basket, :message_service
 
   def send_confirmation
     message_service.send_sms("Thank you for your order")
