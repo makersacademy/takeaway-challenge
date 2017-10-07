@@ -9,4 +9,8 @@ class Menu
     fail 'Menu already contains dish' if @dishes.include?(dish)
     @dishes << dish
   end
+
+  def remove_dish(dish)
+    @dishes.delete dish
+  end
 end

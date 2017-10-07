@@ -37,4 +37,13 @@ describe Menu do
     end
   end
 
+  context '#remove_dish' do
+    it 'should remove a Dish from the dishes Array' do
+      menu_1.add_dish(dish_1)
+      menu_1.remove_dish(dish_1)
+      expect(menu_1.dishes).not_to include dish_1
+    end
+
+  end
+
 end
