@@ -34,8 +34,7 @@ describe Basket do
       basket.add(dish1, dish1_price)
       basket.add(dish1, dish1_price)
       basket.add(dish2, dish2_price)
-      expect(basket.summary).to be_instance_of String
-      p basket.summary
+      expect(basket.summary).to be_instance_of String #need more coverage here
     end
 
   end

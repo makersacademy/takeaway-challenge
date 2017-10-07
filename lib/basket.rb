@@ -21,17 +21,20 @@ class Basket
 
   def summary
     to_return = []
-    list.each do |item|
-      to_return << "#{list[1].to_s} #{item[0]} = #{list[3]}"
-    end
+    list.each { |item| to_return << item.to_s }
     to_return.join(', ')
   end
-
 
   private
 
   def compile_order
-    list.group_by(&:first).map{ |x, y| [x, y.count, y.inject(0){ |sum, i| sum + i.last }] }
+    list.group_by(&:first).map do |x, y|
+      [x, y.count, y.inject(0){ |sum, i| sum + i.last }]
+    end
+  end
+
+  def to_s(item)
+    "#{list[1].to_s} #{item[0]} = #{list[3]}"
   end
 
   attr_reader :list
