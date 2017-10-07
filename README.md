@@ -19,7 +19,7 @@ Description
 
 Steps
 -------
-* run bundle install
+* run ```bundle install```
 
 How to run
 -----------
