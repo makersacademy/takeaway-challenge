@@ -1,10 +1,10 @@
 require 'takeaway'
 
 describe TakeAway do
-  let(:menu_class) { double :menu_class, dishes: [item: :sushi, price: 7] }
-  let(:takeaway) {described_class.new(menu_class)}
+  let(:menu) { double :menu, dishes: { sushi: '£7.99' } }
+  let(:takeaway) {described_class.new(menu)}
   it 'allows user to see a menu' do
-    allow(menu_class).to receive(:show_dishes).and_return menu_class.dishes
-    expect(takeaway.read_menu).to eq [item: :sushi, price: 7]
+    allow(menu).to receive(:show).and_return menu.dishes
+    expect(takeaway.read_menu).to eq(menu.dishes)
   end
 end

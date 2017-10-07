@@ -1,11 +1,10 @@
 class TakeAway
-  attr_reader :menu_class
-
-  def initialize(menu_class = Menu)
-    @menu_class = menu_class
+  attr_reader :menu
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
 
   def read_menu
-    Menu.new.show_dishes
+    menu.show
   end
 end
