@@ -1,4 +1,4 @@
-#new instance of menu class
+# new class 'Menu'
 class Menu
   attr_reader :menu_items
 
