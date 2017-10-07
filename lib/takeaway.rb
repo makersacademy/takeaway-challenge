@@ -10,19 +10,22 @@ class TakeAway
     menu.show
   end
 
-  def order(dish)
+  def order(dish, quantity = 1)
     raise "Sorry item is not on the menu!" if !menu.on_menu?(dish)
-    add(dish)
+    basket[dish] = menu.dishes[dish] * quantity
+    print_selection(dish, quantity)
     @basket
+  end
+
+  def empty_basket
+    @basket = {}
   end
 
   private
 
-  def add(dish)
-    menu.dishes.each do |item, price|
-        @basket[item] = price if item.include?(dish)
-        "You've added #{dish} to your basket"
-    end
+  def print_selection(dish, quantity)
+    quantity > 2 ? string = "es" : string = ""
+    "You've added #{quantity} #{dish} dish" + string + " to your basket"
   end
 
 end
