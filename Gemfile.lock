@@ -83,7 +83,7 @@ DEPENDENCIES
   rubocop
   simplecov
   simplecov-console
-  twilio-ruby
+  twilio-ruby (~> 5.3.1)
 
 RUBY VERSION
    ruby 2.4.2p198
