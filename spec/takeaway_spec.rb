@@ -21,10 +21,11 @@ subject(:takeaway) {described_class.new}
     end
   end
 
-  describe 'select_dish' do
-    it 'selects a dish from the menu hash' do
-    takeaway.new_order('Tim')
-    expect(takeaway.select_dish("Tom Yum")).to eq [{"Tom Yum" => 7}]
+  describe '#select_dish' do
+    it 'selects a number of dishes from the menu hash' do
+    order = takeaway.new_order('Tim')
+    takeaway.select_dish("Tom Yum", 2)
+    expect(order.dish_list).to eq [{"Tom Yum" => 7}, {"Tom Yum" => 7}]
     end
 end
 

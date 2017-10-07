@@ -21,14 +21,12 @@ attr_reader :menu
   @name = Order.new(name)
   end
 
-  def select_dish(dish_name)
+  def select_dish(dish_name, number)
     dish_and_price = @menu.select {|k,v| k == dish_name}
-    @name.addto_order(dish_and_price)
+    number.times {@name.addto_order(dish_and_price)}
   end
 
   private
-
-
 
   def welcome_message
     puts "Welcome to Tim's Thai"
