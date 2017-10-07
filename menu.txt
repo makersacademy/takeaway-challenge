@@ -1,0 +1,7 @@
+Margherita|5
+Hawaiian|6
+Vegetarian|6
+Pepperoni|6
+Four seasons|7
+Full house|9
+All-in|11
