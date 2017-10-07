@@ -17,7 +17,7 @@ subject(:takeaway) {described_class.new}
 
     describe 'New Order' do
     it 'creates an order object with the customer name as a reference' do
-    expect(takeaway.new_order).to be_instance_of(Order)
+    expect(takeaway.new_order("Zara")).to be_instance_of(Order)
     end
   end
 
