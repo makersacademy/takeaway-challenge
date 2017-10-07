@@ -8,6 +8,6 @@ describe 'Menu' do
   end
 
   it 'should print a list of dishes with their respective prices' do
-    expect(menu.display_items).to eq("Pizza : £10\nPasta : £7\nGarlic_bread : £4\n")
+    expect(menu.display_items).to eq("Pizza : £10\nPasta : £7\nGarlic bread : £4\n")
   end
 end

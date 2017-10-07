@@ -4,15 +4,15 @@ class Menu
 
   def initialize
     @menu_items = {
-      :pizza => 10,
-      :pasta => 7,
-      :garlic_bread => 4
+      'pizza' => 10,
+      'pasta' => 7,
+      'garlic bread' => 4
     }
   end
 
   def display_items
     items = ""
-    @menu_items.each { |food, price| items += "#{food.capitalize} : £#{price}\n" }
+    @menu_items.each { |item, price| items += "#{item.capitalize} : £#{price}\n" }
     items
   end
 end
