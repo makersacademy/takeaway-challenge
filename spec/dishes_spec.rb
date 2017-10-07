@@ -11,7 +11,7 @@ describe Dishes do
 
   it 'adds dishes' do
     dishes.add_item(name, price)
-    expect(dishes.list).to include({ name: name, price: price })
+    expect(dishes.list).to include({ name: name, price: "£#{price}" })
   end
 
   # expect(:a => 1, :b => 2).to include(:a)

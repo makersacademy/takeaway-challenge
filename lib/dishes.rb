@@ -7,7 +7,7 @@ class Dishes
   end
 
   def add_item(name, price)
-    @list << { name: name, price: price }
+    @list << { name: name, price: "£#{price}" }
   end
 
 end
