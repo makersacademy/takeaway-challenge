@@ -29,4 +29,15 @@ describe Takeaway do
     end
   end
 
+  describe 'showing order total' do
+    subject(:dish) { "Chop Suey" }
+    subject(:dish1) { "Thai Curry" }
+    it 'shows the order total' do
+      takeaway.select(dish)
+      takeaway.select(dish1)
+      total = takeaway.current_order.values.sum
+      expect(takeaway.order_total).to eq total
+    end
+  end
+
 end

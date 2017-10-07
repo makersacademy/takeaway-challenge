@@ -15,4 +15,8 @@ class Takeaway
     @current_order[dish] = @menu.list[dish]
   end
 
+  def order_total
+    @current_order.values.sum
+  end
+
 end
