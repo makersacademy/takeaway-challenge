@@ -21,7 +21,7 @@ class Takeaway
   def order(dish, quantity = 1)
     fail 'item is not on the menu' unless menu.items[dish]
     quantity.times { @basket.add(dish, quantity) }
-    "#{quantity} #{dish} added to basket"
+    puts "#{quantity} #{dish} added to basket"
   end
 
   def order_summary
@@ -29,7 +29,6 @@ class Takeaway
   end
 
   def order_total
-    fail 'no items have been added to the basket' if basket.total == 0
     "Total = £#{basket.total}"
   end
 

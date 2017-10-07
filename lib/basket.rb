@@ -1,13 +1,11 @@
 class Basket
 
   def initialize
-
     @list = []
-
   end
 
-  def add(dish, totalprice)
-    @list << [dish, totalprice] 
+  def add(dish, price)
+    @list << [dish, price] 
   end
 
   def total
@@ -16,7 +14,7 @@ class Basket
   end
 
   def summary
-    compile_order.each { |item| puts print(item) }
+    compile_order.each { |item| print(item) }
   end
 
   private
@@ -25,12 +23,12 @@ class Basket
 
   def compile_order
     list.group_by(&:first).map do |x, y|
-      [x, y.count, y.inject(0){ |sum, i| sum + i.last }]
+      [x, y.count, y.inject(0) { |sum, i| sum + i.last }]
     end
   end
 
   def print(item)
-    "#{item[1].to_s} #{item[0]} = £#{item[2]}"
+    puts "#{item[1]} #{item[0]} = £#{item[2]}"
   end
 
   def calculate_total
