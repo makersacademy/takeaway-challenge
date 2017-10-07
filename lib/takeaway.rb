@@ -10,7 +10,7 @@ class Takeaway
     }
   end
 
-  def list_dishes_prices(dishes)
+  def list_dishes_and_prices(dishes)
     dishes.map do |key, value|
      "#{key}, #{value}"
     end

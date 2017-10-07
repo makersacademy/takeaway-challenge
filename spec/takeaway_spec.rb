@@ -5,7 +5,7 @@ describe Takeaway do
 
   it 'allows you to see a list of dishes with prices' do
     dishes = takeaway.dishes
-    expect(takeaway.list_dishes_prices(dishes)).to eq ["chicken_bhuna, 4.25",
+    expect(takeaway.list_dishes_and_prices(dishes)).to eq ["chicken_bhuna, 4.25",
       "pilau_rice, 2",
       "peshwari_naan, 1.75",
       "creamy_lentils, 3",
