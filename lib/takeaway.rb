@@ -39,12 +39,6 @@ attr_reader :menu, :name
     text_customer
   end
 
-  # def place_order(total_amount)
-  #   fail "The total amount is not correct. Verify the order" if total_amount != @name.total
-  # time = Time.new + (60 * 60)
-  # "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}"
-  # end
-
   def incorrect?
     @name.total != @total
   end
