@@ -19,8 +19,20 @@ describe Order do
     let(:incorrect_total_order) { Order.new }
     before { incorrect_total_order.input_items('Margherita 1, 9') }
     it 'should verify the total of the order' do
-
       expect { incorrect_total_order.verify_total }.to raise_error "Total does not match the sum of the prices!"
+    end
+  end
+
+  describe 'edge cases' do
+    it 'should raise an error when there are no items in the order' do
+      expect { subject.input_items() }.to raise_error 'No items in the order!'
+    end
+  end
+
+  describe '#send_text' do
+    it 'should return the string when not given permission to actually send the text' do
+      subject.input_items(order)
+      expect(subject.send_text(false)).to eq "Thank you! Your order of 1 x Margherita and 2 x Meat Feast was placed and will be delivered before #{((Time.now.hour + 1) % 24)}:#{Time.now.min}"
     end
   end
 end

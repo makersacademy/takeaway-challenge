@@ -11,7 +11,8 @@ class Order
     @text = Text.new
   end
 
-  def input_items(order)
+  def input_items(order = '')
+    raise "No items in the order!" if order == ''
     @items = @menu.select(read_order(order))
   end
 
@@ -20,8 +21,11 @@ class Order
     raise "Total does not match the sum of the prices!" unless @total == total
   end
 
-  def send_text
-    @text.send_text("Thank you! Your order was placed and will be delivered before #{time}")
+  def send_text(permission = true)
+    order_string = @items[0..-2].map { |item| "#{item[:quantity]} x #{item[:name]}" }.join(', ') << " and #{@items[-1][:quantity]} x #{@items[-1][:name]}"
+    message = "Thank you! Your order of #{order_string} was placed and will be delivered before #{time}"
+    return "Thank you! Your order of #{order_string} was placed and will be delivered before #{time}" unless permission
+    @text.send_text(message) if permission
   end
 
   private

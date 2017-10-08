@@ -22,13 +22,12 @@ class Menu
 
   private
 
-  def select_items(items)
-    items_ordered = []
+  def select_items(items, ordered = [])
     items.each do |item|
-      @dishes.select do |dish|
-        items_ordered << { name: dish[:name], quantity: item[1] } if dish[:name] == item[0]
+      @dishes.each do |dish|
+        ordered << { name: dish[:name], quantity: item[1] } if dish[:name].casecmp(item[0].downcase).zero?
       end
     end
-    items_ordered
+    ordered
   end
 end
