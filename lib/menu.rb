@@ -5,21 +5,22 @@ class Menu
 *  Welcome to Kay's Desk takeway  *
 #{"*" * 35}\n\n"
 
-  MENU_ITEM_HEADER = "\n#\tDescription\tPrice"
+  MENU_ITEM_HEADER = "\n#\tDescription\tPrice\n"
   MENU_ITEMS = "A\tSalmon onigiri\t1.5
 B\tChicken onigiri\t1.5
 D\tChicken katsu\t5
 E\tBeef teriyaki\t6
 F\tSashimi (4pcs)\t3
-G\tNigiri (4pcs)\t4"
+G\tNigiri (4pcs)\t4
 
-  def display_header
+S\tShow menu
+T\tConfirm & text order
+X\tDelete order"
+
+  def show
     system('clear')
-    puts MENU_HEADER
+    print MENU_HEADER
+    print MENU_ITEM_HEADER
+    print MENU_ITEMS
   end
-
-  def display_items
-    puts "#{MENU_ITEM_HEADER}\n#{MENU_ITEMS}"
-  end
-
 end
