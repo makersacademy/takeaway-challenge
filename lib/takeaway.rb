@@ -4,6 +4,8 @@ require_relative './message_service.rb'
 
 class Takeaway
 
+  attr_reader :basket_class
+
   def initialize(menu = Menu.new,
                  basket_class = Basket,
                  message_service = MessageService.new
@@ -19,8 +21,8 @@ class Takeaway
   end
 
   def order(dish, quantity = 1)
-    fail 'item is not on the menu' unless menu.items[dish]
-    quantity.times { @basket.add(dish, quantity) }
+    validate_dish(dish)
+    quantity.times { basket.add(dish, menu.items[dish]) }
     puts "#{quantity} #{dish} added to basket"
   end
 
@@ -38,9 +40,13 @@ class Takeaway
     @basket = basket_class.new
   end
 
-  # private
+  private
 
-  attr_reader :menu, :basket_class, :basket, :message_service
+  attr_reader :menu, :message_service, :basket
+
+  def validate_dish(dish)
+    fail 'dish is not on the menu' unless menu.items[dish]
+  end
 
   def send_confirmation
     message_service.send_sms("Thank you for your order")

@@ -10,7 +10,10 @@ describe Takeaway do
   let(:basket_class) { class_double('basket_class', new: basket) }
   let(:message_service) { double('message_service', send_sms: nil) }
   let(:menu) { double('menu', print: nil, items: { dish1 => dish1_price, dish2 => dish2_price }) }
- 
+
+  before do
+    allow($stdout).to receive(:write)
+  end
 
   subject(:takeaway) { described_class.new(menu, basket_class, message_service) }
 
@@ -25,16 +28,17 @@ describe Takeaway do
 
   describe '#order' do
     
-    it 'adds an item to the basket' do
-      expect(takeaway.basket).to receive(:add)
+    it 'adds an dish to the basket' do
+      expect(basket).to receive(:add).with(dish1, dish1_price)
       takeaway.order dish1
     end
-    it 'allows to specify a quantity of items' do
-      expect(takeaway.basket).to receive(:add).with(dish1, 3)
+    it 'allows to specify a quantity of dishes to add' do
+      expect(basket).to receive(:add)
+        .exactly(3).times.with(dish1, dish1_price)
       takeaway.order(dish1, 3)
     end
-    it "will raise error if item isn't on the menu" do
-      error = 'item is not on the menu'
+    it "raises an error if the dish isn't on the menu" do
+      error = 'dish is not on the menu'
       expect { takeaway.order 'fish sauce' }.to raise_error error
     end
     it 'confirms that the items have been added to the basket' do
@@ -47,7 +51,7 @@ describe Takeaway do
   describe '#order_summary' do
 
     it 'shows the order summary' do
-      expect(takeaway.basket).to receive :summary
+      expect(basket).to receive :summary
       takeaway.order_summary
     end
 
@@ -62,7 +66,7 @@ describe Takeaway do
 
   end
 
-  describe '#checkout' do
+  describe '#checkout_order' do
 
     it "raises an error if the wrong payment is received" do
       error = 'please pay the correct amount'
@@ -81,6 +85,7 @@ describe Takeaway do
       expect(takeaway).to receive(:send_confirmation)
       takeaway.checkout_order(dish1_price)
     end
+    
   end
 
 end
