@@ -3,7 +3,7 @@ describe Order do
   let(:order) { 'Margherita 1, Meat Feast 2, 20.5' }
   let(:order_with_items) { Order.new }
   before { order_with_items.input_items(order) }
-  
+
   describe '#input_items' do
     it 'should respond to the input_items method' do
       expect(subject).to respond_to :input_items
@@ -33,7 +33,7 @@ describe Order do
   describe '#send_text' do
     it 'should return the string when not given permission to actually send the text' do
       subject.input_items(order)
-      expect(subject.send_text(false)).to eq "Thank you! Your order of 1 x Margherita and 2 x Meat Feast was placed and will be delivered before #{((Time.now.hour + 1) % 24)}:#{Time.now.min}"
+      expect(subject.order_complete(false)).to eq "Thank you! Your order of 1 x Margherita and 2 x Meat Feast was placed and will be delivered before #{((Time.now.hour + 1) % 24)}:#{Time.now.min}"
     end
   end
 end

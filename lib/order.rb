@@ -21,11 +21,8 @@ class Order
     raise "Total does not match the sum of the prices!" unless @total == total
   end
 
-  def send_text(permission = true)
-    order_string = @items[0..-2].map { |item| "#{item[:quantity]} x #{item[:name]}" }.join(', ') << " and #{@items[-1][:quantity]} x #{@items[-1][:name]}"
-    message = "Thank you! Your order of #{order_string} was placed and will be delivered before #{time}"
-    return "Thank you! Your order of #{order_string} was placed and will be delivered before #{time}" unless permission
-    @text.send_text(message) if permission
+  def order_complete(permission = true)
+    send_text(permission)
   end
 
   private
@@ -51,5 +48,12 @@ class Order
     min = "#{Time.now.min}"
     min = '0' << min if min.length == 1
     "#{hour}:#{min}"
+  end
+
+  def send_text(permission)
+    order_string = @items[0..-2].map { |item| "#{item[:quantity]} x #{item[:name]}" }.join(', ') << " and #{@items[-1][:quantity]} x #{@items[-1][:name]}"
+    message = "Thank you! Your order of #{order_string} was placed and will be delivered before #{time}"
+    return "Thank you! Your order of #{order_string} was placed and will be delivered before #{time}" unless permission
+    @text.send_text(message) if permission
   end
 end
