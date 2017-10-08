@@ -13,7 +13,7 @@ describe OrderedDish do
       expect(subject.readable).to include name
     end
     it 'and the price of the number of dishes ordered' do
-      expect(subject.readable).to include (price * 3).to_s
+      expect(subject.readable).to include((price * 3).to_s)
     end
   end
 end

@@ -21,6 +21,6 @@ class Menu
   private
 
   def build_dish_instances
-    DISHES.map { | name_price | MenuDish.new name_price[0], name_price[1] }
+    DISHES.map { |name_price| MenuDish.new name_price[0], name_price[1] }
   end
 end

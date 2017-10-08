@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
   let(:order) { double(:order, :add => true) }
-  subject(:menu) { described_class.new order}
+  subject(:menu) { described_class.new order }
   describe '#initialize' do
     it 'takes an Order object as an argument and stores it in the order instance variable' do
       expect(menu.order).to eq order

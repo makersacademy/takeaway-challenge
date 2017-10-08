@@ -9,6 +9,7 @@ describe Order do
       @price_per_unit = price_per_unit
       @quantity_ordered = 0
     end
+    
     def readable
       "#{'%-30s' % (name + ":")} £#{'%5.2f' % (quantity_ordered * price_per_unit)}"
     end
