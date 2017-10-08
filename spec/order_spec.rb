@@ -5,28 +5,31 @@ describe Order do
   subject(:order) { described_class.new }
 
   describe '#add_food_item' do
-    let(:order_item) { double(:order_item,
-                          description: 'a food item',
-                          quantity: 1,
-                          unit_price: 10) }
+    let(:description) { 'a food item' }
+    let(:quantity) { 1 }
+    let(:unit_price) { 10 }
 
-    context 'first food item of this type' do
-      # it 'ordered quantity of this food item changes by expected amount' do
-      #   expect { order.add_food_item(order_item.description,
-      #                               order_item.quantity,
-      #                               order_item.unit_price) }
-      #     .to change { order.order_items[order_item.description].quantity }
-      #           .by(order_item.quantity)
-      # end
-
-      # it 'value of the order changes by the expected amount' do
-      #   expect { order.add_food_item(order_item.description) }
-      #     .to change { order.value }.by(order_item.value)
-      # end
-
+    it 'new ordered food item is added to order' do
+      expect { order.add_food_item(description, quantity, unit_price) }
+        .to change { order.order_items.count }.from(0).to(1)
     end
 
+    it 'order total_value changes by the expected amount' do
+      order.add_food_item(description, quantity, unit_price)
+      expect { order.add_food_item(description, quantity, unit_price) }
+        .to change { order.total_value }.by(quantity * unit_price)
+    end
   end
 
+  describe '#order_items' do
+    it 'a new order should have no order_items' do
+      expect(order.order_items.count).to eq(0)
+    end
+  end
 
+  describe '#total_value' do
+    it 'a new order should have zero total value' do
+      expect(order.total_value).to eq(0)
+    end
+  end
 end
