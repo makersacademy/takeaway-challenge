@@ -31,7 +31,7 @@ describe Order do
 
     it "sends new item to basket" do
       allow($stdin).to receive(:gets).and_return("1\n")
-      expect(basket).to receive(:new_item).with(1, 1)
+      expect(basket).to receive(:new_item).with({ item: "Murgh Masala", quantity: 1, cost: 6.9 })
       order.select_item
     end
 

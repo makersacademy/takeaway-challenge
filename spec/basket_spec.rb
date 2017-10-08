@@ -7,6 +7,11 @@ describe Basket do
     it "has a new item method" do
       expect(basket).to respond_to(:new_item)
     end
+
+    it "adds item to basket_contents" do
+      expect(basket.basket_contents).to receive(:<<).with(1)
+      basket.new_item(1)
+    end
   end
 
 end
