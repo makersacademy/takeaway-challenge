@@ -24,15 +24,16 @@ basket.add_item(list.dish_list[4],-3)
 # list.select_item(18, -6) # negative quantity and out of index
 basket.remove_item(list.dish_list[0])
 
-puts basket.create_receipt
+
 
 basket.remove_item(list.dish_list[0])
 basket.remove_item(list.dish_list[4], 6)
 basket.remove_item(list.dish_list[17])
 basket.remove_item(list.dish_list[9], 9)
 puts
-puts basket.create_receipt
+
 order = Order.new(basket)
 puts order
-# order.finalise_order
+
+puts order.finalise_order()
 

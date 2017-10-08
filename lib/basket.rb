@@ -15,13 +15,6 @@ class Basket
     @selected_items[item] -= quantity if !!item && (selected_items[item] - quantity) >= 0 
   end
 
-  #maybe a receipt class ??
-  def create_receipt
-    receipt = ""
-    selected_items.each{ |item, quantity| receipt << "#{item} x #{quantity}\n" if quantity > 0}
-    receipt << "Total: #{Defaults::DEFAULT_CURENCY}#{'%.2f' % calculate_total}"
-  end
-
   def calculate_total
     total = 0
     selected_items.each { |item, quantity| total += item.price * quantity }
