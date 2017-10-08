@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 
-gem 'twilio-ruby'
+gem 'twilio'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'

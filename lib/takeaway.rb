@@ -6,16 +6,16 @@ class Takeaway
   attr_reader :menu, :basket, :total
 
   def initialize
-    @menu = Dishes.new
+    @menu = {"curry" => 1.00, "xcurry" => 1.00}
     @basket = {}
   end
 
   def print_menu
-    @menu.list
+    @menu
   end
 
   def select_dish(dish, quantity)
-    @basket[dish] = @menu.list[dish] * quantity
+    @basket[dish] = @menu[dish] * quantity
     #key on the left, right is value, put them into the has as a key/value pair
   end
 
@@ -24,7 +24,7 @@ class Takeaway
   end
 
   def total
-    @total = @menu.list.values.sum
+    @total = @menu.values.sum
   end
 
   def place_order(order_total)
@@ -35,7 +35,7 @@ class Takeaway
 
 
   private
-
+  # why isnt this working
   # def error_total?
   #   order_total != total
   # end

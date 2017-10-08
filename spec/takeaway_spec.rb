@@ -2,7 +2,7 @@ require 'takeaway.rb'
 
 describe Takeaway do
   subject(:takeaway) {described_class.new}
-  let(:dish) do
+  let(:menu) do
     { "curry" => 1.00,
     "xcurry" => 1.00 }
   end
@@ -21,12 +21,12 @@ describe Takeaway do
 
   describe '#Menu tests' do
     it 'has a list of dishes' do
-      expect(takeaway.menu).to be_an_instance_of(Dishes)
+      expect(takeaway.menu).to eq menu
     end
   end
 
   it 'prints a list of dishes' do
-    expect(takeaway.print_menu).to include(dish)
+    expect(takeaway.print_menu).to include(menu)
   end
 
   describe '#Selection tests' do
