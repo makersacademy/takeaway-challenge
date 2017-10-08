@@ -62,23 +62,23 @@ describe Takeaway do
 
   end
 
-  describe '#checkout_order' do
+  describe '#checkout' do
 
     before { takeaway.order dish1 }
 
     it "raises an error if the wrong payment amount is received" do
       error = 'please pay the correct amount'
-      expect { takeaway.checkout_order(dish1_price + 1) }.to raise_error error
+      expect { takeaway.checkout(dish1_price + 1) }.to raise_error error
     end
     it 'sends an sms confirmation to the user' do
       allow(basket).to receive(:total) { dish1_price }
       expect(takeaway).to receive(:send_confirmation)
-      takeaway.checkout_order(dish1_price)
+      takeaway.checkout(dish1_price)
     end
     it "empties the basket" do
       expect(basket).to receive :reset
       allow(basket).to receive(:total) { dish1_price }
-      takeaway.checkout_order(dish1_price)
+      takeaway.checkout(dish1_price)
     end
     
   end

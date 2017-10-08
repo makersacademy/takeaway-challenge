@@ -1,6 +1,7 @@
 require_relative './menu.rb'
 require_relative './basket.rb'
 require_relative './message_service.rb'
+require 'date'
 
 class Takeaway
 
@@ -20,7 +21,7 @@ class Takeaway
   def order(dish, quantity = 1)
     fail 'dish is not on the menu' unless on_menu?(dish)
     add_items(dish, quantity)
-    puts "#{quantity} #{dish} added to basket"
+    puts "#{quantity} #{dish} added to basket" #add plural string
   end
 
   def order_summary
@@ -31,7 +32,7 @@ class Takeaway
     "Total = £#{basket.total}"
   end
 
-  def checkout_order(payment)
+  def checkout(payment)
     fail 'please pay the correct amount' unless correct_ammount?(payment)
     send_confirmation
     basket.reset
@@ -50,7 +51,9 @@ class Takeaway
   end
 
   def send_confirmation
-    message_service.send_sms("Thank you for your order")
+    text = "Thank you! Your order was placed and will be delivered before"
+    time = (DateTime.now+(1/24.0)).strftime("%R")
+    message_service.send_sms("#{text} #{time}")
   end
 
   def correct_ammount?(payment)
