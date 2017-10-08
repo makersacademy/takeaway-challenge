@@ -24,6 +24,7 @@ class Order
 
   def send_order
     raise "Error: order cost incorrect" unless @order_basket.check_total
+    TextAlert.new.send_confirmation
   end
 
 end

@@ -6,7 +6,6 @@ describe Order do
   let(:basket) { double(:basket, check_total: true, new_item: nil) }
   subject(:order) { described_class.new(menu, basket) }
 
-
   describe "#select_item" do
 
     it "exists" do
@@ -52,6 +51,13 @@ describe Order do
     it "raises error if order cost is incorrect" do
       allow(basket).to receive(:check_total).and_return(false)
       expect { order.send_order }.to raise_error("Error: order cost incorrect")
+    end
+
+    it "sends SMS order confirmation to customer" do
+      text_alert_double = double(send_confirmation: nil)
+      allow(TextAlert).to receive(:new).and_return(text_alert_double)
+      expect(text_alert_double).to receive(:send_confirmation)
+      order.send_order
     end
   end
 
