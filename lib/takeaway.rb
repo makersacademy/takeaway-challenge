@@ -12,6 +12,7 @@ attr_reader :menu, :name
             "Green Curry" => 7,
             "Chang Beer" => 2}
     @name
+    @phone_number = 447814548040
     welcome_message
   end
 
@@ -32,25 +33,35 @@ attr_reader :menu, :name
     "#{@name.dish_list} #{@name.total}"
   end
 
-  def place_order(total_amount)
-    fail "The total amount is not correct. Verify the order" if total_amount != @name.total
-  time = Time.new + (60 * 60)
-  "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}"
+  def place_order(total)
+    @total = total
+    fail "The total amount is not correct. Verify the order" if incorrect?
+    text_customer
   end
 
-  # def place_order
-  #   account_sid = "ACc4f9ba92a70a60ff60b6b0991011ddda"
-  #   auth_token = "d81477b5a864b24554cfabb3f5a6abc7"
-  #   @client = Twilio::REST::Client.new account_sid, auth_token
-  #   time = Time.new + (60 * 60)
-  #   message = @client.messages.create(
-  #       body: "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}",
-  #       to: "+447814548040",
-  #       from: "+441138590979")
-  #   puts message.sid
+  # def place_order(total_amount)
+  #   fail "The total amount is not correct. Verify the order" if total_amount != @name.total
+  # time = Time.new + (60 * 60)
+  # "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}"
   # end
 
+  def incorrect?
+  @total != @name.total
+  end
+
   private
+
+  def text_customer
+    account_sid = "ACc4f9ba92a70a60ff60b6b0991011ddda"
+    auth_token = "d81477b5a864b24554cfabb3f5a6abc7"
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    time = Time.new + (60 * 60)
+    message = @client.messages.create(
+        body: "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}",
+        to: "+#{@phone_number}",
+        from: "+441138590979")
+    puts message.sid
+  end
 
   def welcome_message
     puts "Welcome to Pad Thai."
