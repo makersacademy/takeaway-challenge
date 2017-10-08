@@ -1,4 +1,5 @@
 require_relative './order'
+require_relative './restaurant'
 
 class Takeaway
   attr_reader :order, :basket, :total_price
@@ -18,12 +19,13 @@ class Takeaway
     puts @basket
   end
 
-  def complete_order
+  def complete_order(order_input, price_input)
     process_basket
-    puts "Thanks. You should receive a text shortly to confirm delivery time."
+    restaurant = Restaurant.new(order, total_price, order_input, price_input)
+    restaurant.process 
   end
 
-private 
+private
   def calculate_dishes(item)
      order[item] == nil ? order[item] = 1 : order[item] += 1
   end

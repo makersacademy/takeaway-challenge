@@ -25,6 +25,7 @@ context 'add multiple items' do
 end
 
 context 'view basket' do
+
 before(:each)do
   takeaway.add('dumplings')
   takeaway.add('curry')
@@ -37,14 +38,19 @@ end
     #expect(takeaway.view_basket).to eq({dumplings_x_1: '£5', curry_x_2: '£10', beer_x_1: '£4', total: '£19'})
   end
 
-  it 'should let customers complete their order' do
-    expect{takeaway.complete_order}.to output("Thanks. You should receive a text shortly to confirm delivery time.\n").to_stdout
-  end
-
   it 'should store total price' do
-      takeaway.complete_order
+
+      takeaway.view_basket
       expect(takeaway.total_price).to eq(19)
   end
+
+  it 'should raise an error if price input does not equates total_price' do
+    takeaway.view_basket
+    order = takeaway.order
+    price = takeaway.total_price - 1
+    expect{takeaway.complete_order(order, price)}.to raise_error("Fail to process due to unmatched price or order")
+  end
+
 end
 
 end

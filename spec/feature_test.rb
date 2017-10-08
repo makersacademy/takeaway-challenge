@@ -11,3 +11,6 @@ takeaway.add('dumplings')
 takeaway.add('curry')
 takeaway.view_basket
 takeaway.complete_order
+
+menu.view
+takeaway.order
