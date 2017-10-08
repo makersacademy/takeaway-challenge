@@ -34,12 +34,12 @@ All untested lines are from `text_alert.rb`. See Notes below.
 
 ## Notes and To-dos
 
-* There are no unit tests for the Twilio API
+* There are no unit tests for the Twilio API. Twilio's behaviour should be stubbed using Webmock and VCR.
 * No validation for `#select_item` method
 * No `#remove_item` or `#view_basket` method in Basket class
 * Basket doesn't combine items of the same type if they were added separately
 * Basket and Order classes overlap in their responsibility
-* No means of feeding account_sid, auth_token, from or to numbers into the program, or of hiding these for security. They are currently blank and require insertion
+* No means of feeding account_sid, auth_token, from or to numbers into the program, or of hiding these for security. They are currently blank for security reasons and require insertion. The dotenv gem should be used to tackle this
 
 ## APPENDIX
 
