@@ -11,7 +11,7 @@ class Basket
   end
 
   def remove_item(item, quantity = Defaults::MINIMUM_QUANTITY)
-    @selected_items[item] -= quantity if !!item && (selected_items[item] - quantity) >= 0 
+    @selected_items[item] -= quantity if selected_items.include?(item) && (selected_items[item] - quantity) >= 0 && quantity > 0 
   end
 
   def calculate_total
