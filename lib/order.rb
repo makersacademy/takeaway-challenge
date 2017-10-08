@@ -21,4 +21,8 @@ class Order
                           quantity: @item_quant,
                           cost: order_menu.menu_items.find { |item| item[:item_num] == @item_num }[:cost] * @item_quant })
   end
+
+  def send_order
+  end
+
 end

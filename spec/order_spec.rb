@@ -43,4 +43,11 @@ describe Order do
 
   end
 
+  describe "#send_order" do
+
+    it "has #send_order method" do
+      expect(order).to respond_to(:send_order)
+    end
+  end
+
 end
