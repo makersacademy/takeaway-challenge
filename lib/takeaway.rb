@@ -4,16 +4,13 @@ require_relative './message_service.rb'
 
 class Takeaway
 
-  attr_reader :basket_class
-
   def initialize(menu = Menu.new,
-                 basket_class = Basket,
+                 basket = Basket.new,
                  message_service = MessageService.new
                  )
     @menu = menu
     @message_service = message_service
-    @basket_class = basket_class
-    @basket = basket_class.new
+    @basket = basket
   end
 
   def print_menu
@@ -21,8 +18,8 @@ class Takeaway
   end
 
   def order(dish, quantity = 1)
-    validate_dish(dish)
-    quantity.times { basket.add(dish, menu.items[dish]) }
+    fail 'dish is not on the menu' unless on_menu?(dish)
+    add_items(dish, quantity)
     puts "#{quantity} #{dish} added to basket"
   end
 
@@ -35,21 +32,29 @@ class Takeaway
   end
 
   def checkout_order(payment)
-    fail 'please pay the correct amount' unless payment == basket.total
+    fail 'please pay the correct amount' unless correct_ammount?(payment)
     send_confirmation
-    @basket = basket_class.new
+    basket.reset
   end
 
   private
 
   attr_reader :menu, :message_service, :basket
 
-  def validate_dish(dish)
-    fail 'dish is not on the menu' unless menu.items[dish]
+  def on_menu?(dish)
+    !!menu.items[dish]
+  end
+
+  def add_items(dish, quantity)
+    quantity.times { basket.add(dish, menu.items[dish]) }
   end
 
   def send_confirmation
     message_service.send_sms("Thank you for your order")
+  end
+
+  def correct_ammount?(payment)
+    payment == basket.total
   end
 
 end

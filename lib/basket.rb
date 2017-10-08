@@ -18,6 +18,10 @@ class Basket
     compile_order.each { |item| print(item) }
   end
 
+  def reset
+    @list = []
+  end
+
   private
 
   attr_reader :list

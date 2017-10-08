@@ -15,8 +15,7 @@ describe Menu do
   describe '#print' do
     
     it 'prints the menu as a string' do
-      expect(menu.items).to receive(:each)
-      menu.print
+      expect { menu.print }.to output.to_stdout
     end
 
   end
