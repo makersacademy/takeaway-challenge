@@ -6,7 +6,7 @@ describe Takeaway do
 
   describe '#initialize'
   it "shows a list of dishes" do
-    expect(takeaway.menu).to eq takeaway.menu
+    expect(takeaway.read_menu).to eq takeaway.read_menu
   end
 
 end

@@ -8,4 +8,8 @@ class Takeaway
     @menu = Menu.new
   end
 
+  def read_menu
+    @menu.dishes
+  end
+
 end
