@@ -16,8 +16,11 @@ describe Order do
   end
 
   describe '#verify_total' do
+    let(:incorrect_total_order) { Order.new }
+    before { incorrect_total_order.input_items('Margherita 1, 9') }
     it 'should verify the total of the order' do
-      expect(order_with_items.verify_total).to eq true
+      incorrect_total_order.send_text
+      expect { incorrect_total_order.verify_total }.to raise_error "Total does not match the sum of the prices!"
     end
   end
 end
