@@ -1,6 +1,10 @@
 class Menu
+attr_reader :menu_items
 
-    MAIN_MENU =  {
+  def initialize
+    @menu_items = {}
+
+    @main_menu =  {
     "classic margherita": 8.50,
     "pepperoni": 9.95,
     "napoletana": 11.95,
@@ -10,10 +14,10 @@ class Menu
     "frutti di mare": 15.95,
     "fiorentina": 11.95,
     "primavera": 14.95,
-    "hawaiian": 11.45,
+    "hawaiian": 11.45
     }
 
-    DESSERT_MENU = {
+    @dessert_menu = {
     "tiramisu": 5.50,
     "chocolate brownie": 3.95,
     "torta della nonna": 3.95,
@@ -24,34 +28,32 @@ class Menu
     "vanilla ice cream": 5.50
     }
 
-    DRINKS_MENU = {
+    @drinks_menu = {
       "water 500ml": 1.50,
       "coca cola": 1.20,
       "diet coke": 1.20,
       "fanta": 1.20,
-      "sprite": 1.20,
+      "sprite": 1.20
     }
+    end
 
   def view_menu
     dishes = ""
     puts "Pizzas:"
-    MAIN_MENU.map.each_with_index { |(food, cost), index|
+    @main_menu.map.each_with_index { |(food, cost), index|
       dishes += p"#{index+1}. #{food}: £#{cost}" }
     puts "Desserts:"
-    DESSERT_MENU.map.each_with_index { |(food, cost), index|
+    @dessert_menu.map.each_with_index { |(food, cost), index|
       dishes += p"#{index+1}. #{food}: £#{cost}" }
     puts "Drinks:"
-    DRINKS_MENU.map.each_with_index { |(food, cost), index|
+    @drinks_menu.map.each_with_index { |(food, cost), index|
       dishes += p"#{index+1}. #{food}: £#{cost}" }
       dishes
   end
 
   def menu_items
-    dishes = ""
-      MAIN_MENU.map.each { |food, cost| dishes += "#{food}: £#{cost} " }
-      DESSERT_MENU.map.each { |food, cost| dishes += "#{food}: £#{cost} " }
-      DRINKS_MENU.map.each { |food, cost| dishes += "#{food}: £#{cost} " }
-    dishes
+    @menu_items = [@main_menu, @dessert_menu, @drinks_menu]
+    @menu_items.inject(&:merge)
   end
 
 end
