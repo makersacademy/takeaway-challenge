@@ -8,7 +8,7 @@ class DishListParser
   public
   attr_reader :list
 
-  def initialize (filename = File.dirname(__FILE__) +"/../data/dishes.csv")
+  def initialize(filename = File.dirname(__FILE__) + "/../data/dishes.csv")
     @filename = filename
     @list = []
   end
@@ -16,7 +16,7 @@ class DishListParser
   def parse_from_file(delimiter = ",")
     File.open(filename, "r") do |infile|
       while (line = infile.gets)
-        name , price = line.chomp.split(delimiter)
+        name, price = line.chomp.split(delimiter)
         list << Dish.new(name: name, price: price.to_f)
       end
     end

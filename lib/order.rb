@@ -9,13 +9,13 @@ class Order
     @sms_interface = sms_interface
   end
 
-  def finalise_order (sms = true)
+  def finalise_order(sms = true)
     send_sms(Defaults::DEFAULT_MESSAGE, order_time) if sms
     create_receipt
   end
 
   def to_s
-    "Order ID: #{self.object_id} - Total: #{Defaults::DEFAULT_CURENCY}#{basket.calculate_total}"
+    "Order ID: #{object_id} - Total: #{Defaults::DEFAULT_CURENCY}#{basket.calculate_total}"
   end
 
   private
@@ -24,7 +24,7 @@ class Order
   end
 
   def create_receipt
-    receipt = Receipt.new(self)
+    Receipt.new(self)
   end
 
   attr_reader :order_time, :sms_interface

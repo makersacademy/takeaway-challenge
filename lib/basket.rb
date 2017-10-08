@@ -6,7 +6,6 @@ class Basket
     @selected_items = selected_items
   end
 
-  
   def add_item(item, quantity = Defaults::MINIMUM_QUANTITY)
     @selected_items[item] += quantity if !!item && quantity > 0
   end

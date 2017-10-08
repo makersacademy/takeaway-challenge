@@ -15,7 +15,7 @@ class DishList
 
   def to_s
     menu = ""
-    dish_list.each_with_index { |dish, index| menu << "#{index+1}. #{dish}\n"}
+    dish_list.each_with_index { |dish, index| menu << "#{index + 1}. #{dish}\n" }
     menu.chomp
   end
 end
