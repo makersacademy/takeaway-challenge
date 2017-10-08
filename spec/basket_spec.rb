@@ -24,9 +24,14 @@ describe Basket do
     end
 
   describe "#check_total" do
-    it "checks subtotal is correct" do
+    it "returns true if subtotal is correct" do
       basket.new_item({ item: "Murgh Masala", quantity: 1, cost: 6.9 })
       expect(basket.check_total).to eq(true)
+    end
+    it "returns false if subtotal is incorrect" do
+      basket.new_item({ item: "Murgh Masala", quantity: 1, cost: 6.9 })
+      allow(basket).to receive(:subtotal).and_return(0) 
+      expect(basket.check_total).to eq(false)
     end
   end
 end

@@ -13,6 +13,8 @@ attr_reader :basket_contents, :subtotal
   end
 
   def check_total
-    true if @basket_contents.map {|item| item[:cost]}.sum == @subtotal
+    p "subtotal:"
+    p @subtotal
+    @basket_contents.map {|item| item[:cost]}.sum == subtotal
   end
 end
