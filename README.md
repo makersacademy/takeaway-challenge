@@ -24,12 +24,14 @@ Approach
 
 Keep it DRY, SOLID & TDD `--init`
 
+* unit & feature tested (feature tests in `/spec/integration`)
+
 Usage
 -----
 
 * Clone this repo
 * Run 'bundle' to ensure you have all the gems
-* to use the sms service, you will need to set up a `.env` file with your Twilio account details (see examples variables below) 
+* to use the sms service, you will need to create a `.env` file in the root of the project directory with your Twilio account details (see examples variables below) 
 
 ```
 ACCOUNT_SID="@account_sid"
