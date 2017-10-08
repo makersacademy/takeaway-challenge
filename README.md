@@ -31,6 +31,6 @@ fooderoo.select 'Pizza Diavola', 2
 ```
 1. Once you are happy with your selection, check the total cost of your order by typing:
 ```ruby
-fooderoo.select 20
+puts fooderoo.check_order 20
 ```
-1. If the order total is as expected, you will receive a text message confirmation of the expected delivery time. 
+1. If the order total is as expected, you will receive a text message confirmation of the expected delivery time.
