@@ -133,10 +133,6 @@
         1,
         1,
         null,
-        null,
-        null,
-        null,
-        null,
         null
       ],
       "/Users/georgelamprakis/makers_challenges/week_2/takeaway-challenge/lib/dish_list_parser.rb": [
@@ -277,6 +273,7 @@
         1,
         1,
         1,
+        1,
         null,
         1,
         null,
@@ -390,6 +387,6 @@
         null
       ]
     },
-    "timestamp": 1507475960
+    "timestamp": 1507477222
   }
 }
