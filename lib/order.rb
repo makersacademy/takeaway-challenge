@@ -20,6 +20,10 @@ class Order
     price
   end
 
+  def place_order
+    order_summary
+  end
+
   def order_summary
     "Thank you! Your order totalling £#{calculate_total} will arrive at #{delivery_time}"
   end

@@ -35,6 +35,10 @@ describe Order do
     end
   end
 
+  it 'places an order' do
+    expect(order.place_order).to eq order.order_summary
+  end
+
   it 'calculates the total cost of order' do
     order.add('Salad', 2)
     order.add('Pizza', 3)
