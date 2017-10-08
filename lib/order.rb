@@ -1,11 +1,10 @@
 class Order
 
-attr_reader :name, :dish_list, :total
+attr_reader :name, :dish_list
 
   def initialize(name)
     @name = name
     @dish_list = []
-    @total
   end
 
   def addto_order(dish)
@@ -13,7 +12,7 @@ attr_reader :name, :dish_list, :total
   end
 
   def total
-    @total = dish_list.map {|hash|hash.values}.flatten.inject(:+)
+    dish_list.map {|hash|hash.values}.flatten.inject(:+)
   end
 
 end

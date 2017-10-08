@@ -29,11 +29,13 @@ subject(:takeaway) {described_class.new}
     end
   end
 
-  # describe "verify_order" do
-  #   it 'prints the full list of items and alongside the total'
-  #
-  # end
-
+  describe "verify_order" do
+    it 'prints the full list of items and alongside the total' do
+    order = takeaway.new_order('Tim')
+    takeaway.select_dish("Tom Yum", 2)
+    expect(takeaway.verify_order).to eq "[{\"Tom Yum\"=>7}, {\"Tom Yum\"=>7}] 14"
+    end
+  end
 
 
 end

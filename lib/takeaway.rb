@@ -26,6 +26,10 @@ attr_reader :menu, :name
     number.times {@name.addto_order(dish_and_price)}
   end
 
+  def verify_order
+    "#{@name.dish_list} #{@name.total}"
+  end
+
   private
 
   def welcome_message
