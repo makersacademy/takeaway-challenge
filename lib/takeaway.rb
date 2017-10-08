@@ -1,6 +1,6 @@
 class Takeaway
 
-attr_reader :menu
+attr_reader :menu, :name
 
   def initialize
     @menu = {"Spring Rolls" => 4,

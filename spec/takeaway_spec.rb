@@ -27,12 +27,13 @@ subject(:takeaway) {described_class.new}
     takeaway.select_dish("Tom Yum", 2)
     expect(order.dish_list).to eq [{"Tom Yum" => 7}, {"Tom Yum" => 7}]
     end
-end
+  end
 
-  # describe '#update_order' do
-  #   it 'updates the order with the selected dishes' do
-  #     takeaway.select_dish("Tom Yum")
-  #     expect(takeaway.update_order).to include "Tom Yum"
-  #   end
+  # describe "verify_order" do
+  #   it 'prints the full list of items and alongside the total'
+  #
   # end
+
+
+
 end
