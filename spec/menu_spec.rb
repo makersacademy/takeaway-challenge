@@ -11,7 +11,8 @@ describe Menu do
 
   describe '#display_items' do
     it 'displays menu items' do
-      expect { menu.display_items }.to output(Menu::MENU_ITEMS).to_stdout
+      expect { menu.display_items }
+        .to output("#{Menu::MENU_ITEM_HEADER}\n#{Menu::MENU_ITEMS}\n").to_stdout
     end
   end
 
