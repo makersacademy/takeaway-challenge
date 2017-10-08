@@ -11,7 +11,11 @@ class Takeaway
   end
 
   def list_dishes_and_prices(dishes)
-    dishes.map { |key, value| "#{key}, #{value}" }
+    dishes.map { |k, v| "#{k}, #{v}" }
   end
-  
+
+  def select_meal(*meal_items)
+    dishes.select! { |k, v| meal_items.include?(k) }
+  end
+
 end
