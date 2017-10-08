@@ -26,7 +26,7 @@ class Order
 
   private
   def send_sms(message, time, phone_number)
-    sms_interface.send_sms(message.concat("#{(time + Defaults::DELIVERY_TIME).strftime('%H:%M')}", phone_number))
+    sms_interface.send_sms(message.concat("#{(time + Defaults::DELIVERY_TIME).strftime('%H:%M')}"), phone_number)
   end
 
   def create_receipt
