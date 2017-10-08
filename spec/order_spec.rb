@@ -24,12 +24,12 @@ describe Order do
     end
 
     it 'customer should be able to add items to the basket' do
-      order.add('Pasta')
+      order.add('Pasta', 1)
       expect(order.basket).to eq ['Pasta']
     end
 
     it 'raises an error if customer adds unknown food' do
-      expect{ order.add('fish') }.to raise_error 'This is not on the menu!'
+      expect{ order.add('fish', 1) }.to raise_error 'This is not on the menu!'
     end
   end
 

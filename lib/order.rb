@@ -9,8 +9,8 @@ class Order
     @basket = []
   end
 
-  def add(item)
+  def add(item, amount = 1)
     raise 'This is not on the menu!' unless @menu.dishes.include?(item)
-    @basket << item
+    amount.times {@basket << item}
   end
 end
