@@ -1,4 +1,5 @@
-require_relative './menu'
+require_relative './order'
+
 class Takeaway
   attr_reader :order
 
@@ -12,36 +13,21 @@ class Takeaway
     item
   end
 
-  def calculate_dishes(item)
-     order[item] == nil ? order[item] = 1 : order[item] += 1
-  end
-
   def view_basket
-    @basket = {}
-    calculate_total
-    return @basket
+    process_order = Order.new(order)
+    process_order.calculate_total
+    @basket = process_order.basket
+    puts @basket
   end
 
+  def complete_order
+    puts "Thanks. You should receive a text shortly to confirm delivery time."
+  end
 
 private
 
-  def calculate_total
-    @total_price = 0
-    order.each do |item, quantity|
-      str = item.to_s + '_x_' + quantity.to_s
-      item_total_price = calculate_item_price(item, quantity)
-      @basket[str.to_sym] = "£#{item_total_price}"
-      @total_price += item_total_price
-    end
-    @basket[:total] = "£#{@total_price}"
+  def calculate_dishes(item)
+     order[item] == nil ? order[item] = 1 : order[item] += 1
   end
-
-  def calculate_item_price(item, quantity)
-    menu = Menu.new
-    menu.price(item) * quantity
-  end
-
-
-
 
 end

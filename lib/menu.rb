@@ -19,7 +19,7 @@ attr_reader :menu
     price = menu[item]
     price
   end
-  
+
 private
 
   def convert_to_string(str)
