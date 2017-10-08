@@ -20,4 +20,15 @@ context 'add multiple items' do
   end
 end
 
+context 'view basket' do
+
+  it 'should show a list of orders with prices' do
+    takeaway.add('dumplings')
+    takeaway.add('curry')
+    takeaway.add('curry')
+    takeaway.add('beer')
+    expect(takeaway.view_basket).to eq({dumplings_x_1: '£5', curry_x_2: '£10', beer_x_1: '£4', total: '£19'})
+  end
+end
+
 end

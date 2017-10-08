@@ -1,6 +1,8 @@
 
 
 class Menu
+attr_reader :menu
+
   def initialize
     @menu = {dumplings: 5, udon: 6, curry: 5, beer: 4}
   end
@@ -12,6 +14,12 @@ class Menu
     str
   end
 
+  def price(item)
+    item = item.to_sym
+    price = menu[item]
+    price
+  end
+  
 private
 
   def convert_to_string(str)

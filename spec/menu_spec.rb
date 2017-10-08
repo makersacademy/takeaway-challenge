@@ -13,4 +13,8 @@ describe Menu do
     view_menu = "dumplings, £5; udon, £6; curry, £5; beer, £4"
     expect(list.view).to eq(view_menu)
   end
+
+  it "returns item's price when required" do
+    expect(list.price('dumplings')).to eq(5)
+  end
 end
