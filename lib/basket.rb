@@ -9,11 +9,12 @@ class Basket
   end
 
   def total
-    fail('no items have been added to the basket') if list.empty?
+    validate_basket
     calculate_total
   end
 
   def summary
+    validate_basket
     compile_order.each { |item| print(item) }
   end
 
@@ -35,6 +36,10 @@ class Basket
     sum = 0
     list.each { |item| sum += item[1] }
     sum
+  end
+
+  def validate_basket
+    fail('no items have been added to the basket') if list.empty?
   end
 
 end
