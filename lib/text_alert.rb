@@ -1,0 +1,2 @@
+class TextAlert
+end
