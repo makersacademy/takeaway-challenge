@@ -14,66 +14,65 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+ Approach
+ --------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+ - Created a Takeaway program to allow a customer to choose dishes from a menu and place an order. An order confirmation is sent to the customer by text.
+ - 2 classes: Takeaway and Order.
+ - The order object is created by a 'new order' method in Takeaway.
+ - Used the Twilio API to send the SMS.
+ - The total price is used to finalise the order, allowing an error to raise if that is not the correct total.
 
 
-In code review we'll be hoping to see:
+ Install
+ -------
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+ 1. Fork this repo, and clone to your local machine
+ 2. Run the command `gem install bundle` (if you don't have bundle already)
+ 3. When the installation completes, run `bundle`
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+ Usage
+ -----
 
-Notes on Test Coverage
-------------------
+ example usage below:
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+ ```
+ [1] pry(main)> require './lib/takeaway.rb'
+ => true
+ [2] pry(main)> require './lib/order.rb'
+ => true
+ [3] pry(main)> thai = Takeaway.new
+ Welcome to Pad Thai.
+ => #<Takeaway:0x007ffbdbae0a18
+  @menu=
+   {"Spring Rolls"=>4,
+    "Crispy Prawns"=>5,
+    "Pork Skewers"=>6,
+    "Tom Yum"=>7,
+    "Green Curry"=>7,
+    "Chang Beer"=>2},
+  @phone_number=447814548040>
+ [4] pry(main)> thai.new_order('Tim')
+ => #<Order:0x007ffbdac85400 @dish_list=[], @name="Tim">
+ [5] pry(main)> thai.select_dish("Spring Rolls", 4)
+ => 4
+ [6] pry(main)> thai.select_dish("Chang Beer", 6)
+ => 6
+ [7] pry(main)> thai.verify_order
+ => "[{\"Spring Rolls\"=>4}, {\"Spring Rolls\"=>4}, {\"Spring Rolls\"=>4}, {\"Spring Rolls\"=>4}, {\"Chang Beer\"=>2}, {\"Chang Beer\"=>2}, {\"Chang Beer\"=>2}, {\"Chang Beer\"=>2}, {\"Chang Beer\"=>2}, {\"Chang Beer\"=>2}] 28"
+ [8] pry(main)> thai.place_order(28)
+ SM0594970ec36047f4841692e9fc0be628
+ => nil
+ [9] pry(main)>
+ ```
+ Unfinished business
+ --------
+Need to get the double working to stop the SMS sending when tests run
+Began a menu class to move the menu across. Follow this through.
+Improve the readability of returned hashes.
+Add an interactive menu to minimise the user calling methods.
+
+ Authors
+ --------
+
+ Tim Jones
