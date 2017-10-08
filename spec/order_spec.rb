@@ -13,15 +13,9 @@ describe Order do
       expect(order).to respond_to(:select_item)
     end
 
-    it "accepts user input for item_num" do
-      allow($stdin).to receive(:gets).and_return("1\n")
-      expect($stdin).to receive(:gets)
-      order.select_item
-    end
-
-    it "calls #select_quantity" do
-      allow($stdin).to receive(:gets).and_return("1\n")
-      expect(order).to receive(:select_quantity)
+    it "accepts user input for item_num and item_quant" do
+      allow($stdin).to receive(:gets).and_return("1\n", "1\n")
+      expect($stdin).to receive(:gets).twice
       order.select_item
     end
 

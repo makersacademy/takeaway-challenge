@@ -1,5 +1,3 @@
-require 'menu'
-
 class Basket
 
 attr_reader :basket_contents
