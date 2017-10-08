@@ -9,9 +9,24 @@ describe Basket do
     end
 
     it "adds item to basket_contents" do
-      expect(basket.basket_contents).to receive(:<<).with(1)
-      basket.new_item(1)
+      expect(basket.basket_contents).to receive(:<<).with({ item: "Murgh Masala", quantity: 1, cost: 6.9 })
+      basket.new_item({ item: "Murgh Masala", quantity: 1, cost: 6.9 })
+    end
+
+    it "adds to subtotal" do
+      expect{ basket.new_item({ item: "Murgh Masala", quantity: 1, cost: 6.9 }) }.to change{ basket.subtotal }.by(6.9)
     end
   end
 
+  describe "#subtotal"
+    it "keeps a subtotal for order" do
+      expect(basket).to respond_to(:subtotal)
+    end
+
+  describe "#check_total" do
+    it "checks subtotal is correct" do
+      basket.new_item({ item: "Murgh Masala", quantity: 1, cost: 6.9 })
+      expect(basket.check_total).to eq("Total correct")
+    end
+  end
 end
