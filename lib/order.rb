@@ -8,4 +8,8 @@ class Order
     @menu = menu
     @basket = []
   end
+
+  def add(item)
+    @basket << item
+  end
 end

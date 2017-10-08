@@ -16,10 +16,17 @@ end
 
 describe Order do
 
-  subject(:order) { described_class.new(FakeMenu.new) }
+  let(:order) { described_class.new(FakeMenu.new) }
 
-  it 'should be initialised with an empty basket' do
-    expect(order.basket).to be_empty
+  describe 'basket' do
+    it 'should be initialised with an empty basket' do
+      expect(order.basket).to be_empty
+    end
+
+    it 'customer should be able to add items to the basket' do
+      order.add('pasta')
+      expect(order.basket).to eq ['pasta']
+    end
   end
 
 end
