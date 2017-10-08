@@ -1,7 +1,8 @@
+require '/Users/oliverpople/Desktop/Makers/Projects/takeaway-challenge/lib/sms.rb'
+
 class Takeaway
 
-  attr_accessor :menu
-  attr_reader :bill
+  attr_reader :menu, :bill
 
   MENU = [["Doner", 5], ["Burger", 10], ["Pizza", 20]]
 
@@ -21,17 +22,17 @@ class Takeaway
     end
   end
 
-  def order_food(doners, burgers, pizzas)
-    doners_price = DONER_PRICE * doners
-    burgers_price = BURGER_PRICE * burgers
-    pizzas_price = PIZZA_PRICE * pizzas
-    @bill = doners_price + burgers_price + pizzas_price
+  def order_food(don_quant, bur_quant, piz_quant)
+    doners_total = DONER_PRICE * don_quant
+    burgers_total = BURGER_PRICE * bur_quant
+    pizzas_total = PIZZA_PRICE * piz_quant
+    @bill = doners_total + burgers_total + pizzas_total
     puts "Your bill is £#{@bill}"
   end
 
   def payment(amount)
     raise "Your payment is incorect." if amount != @bill
-    puts "Thank you! Your order was placed and will be delivered before 18:52" if amount >= @bill
+    Sms.new if amount >= @bill
   end
 
 end

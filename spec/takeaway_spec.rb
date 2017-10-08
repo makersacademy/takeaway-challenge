@@ -1,8 +1,9 @@
-require 'Takeaway.rb'
+require 'takeaway.rb'
 
 describe Takeaway do
 
   let(:menu) { double :menu }
+  subject(:sms) { described_class.new }
 
   describe '#menu' do
     it 'stores a list of all dishes and prices' do
@@ -20,10 +21,10 @@ describe Takeaway do
 
   describe '#order_food' do
     it 'selects the food for each order' do
-      doners = 1
-      burgers = 0
-      pizzas = 0
-      subject.order_food(doners, burgers, pizzas)
+      don_quant = 1
+      bur_quant = 0
+      piz_quant = 0
+      subject.order_food(don_quant, bur_quant, piz_quant)
       expect(subject.bill).to eq(5)
     end
   end
@@ -36,7 +37,7 @@ describe Takeaway do
 
     it 'verifies the payment matches bill and the food will be delivered on time' do
       bill = 10
-      expect(subject.payment(10)).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+      expect(subject.payment(10)).to eq sms
     end
   end
 end
