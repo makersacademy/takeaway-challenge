@@ -60,7 +60,7 @@ class Takeaway
 
   def send_confirmation
     text = "Thank you! Your order was placed and will be delivered before"
-    time = (DateTime.now+(1/24.0)).strftime("%R")
+    time = (DateTime.now + (1 / 24.0)).strftime("%R")
     message_service.send_sms("#{text} #{time}")
   end
 
