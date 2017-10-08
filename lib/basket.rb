@@ -1,5 +1,3 @@
-require 'takeaway_restaurant'
-
 class Basket
 
   attr_reader :selected_meal, :total_price
@@ -9,7 +7,7 @@ class Basket
   end
 
   def total_order_price(items_and_quantities, dishes)
-    prices = dishes.select_prices
+    prices = dishes.select_prices_only
     quantities = items_and_quantities.values
 
     i = 0
@@ -22,7 +20,7 @@ class Basket
     #need to refactor this method
   end
 
-  def select_prices(items_and_quantities, dishes)
+  def select_prices_only(items_and_quantities, dishes)
     dishes.select {|k, v| items_and_quantities.include?(k)}.values
   end
 
