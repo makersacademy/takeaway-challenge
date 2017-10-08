@@ -2,30 +2,49 @@ require 'takeaway.rb'
 
 describe Takeaway do
 
-  let(:menu) { double :menu }
+  let(:available_dishes) { double :available_dishes }
   subject(:sms) { described_class.new }
+  subject(:struct) { described_class.new }
+  let(:initialise) { double :initialise }
+  let(:menu_data) { double :menu_data }
 
-  describe '#menu' do
-    it 'stores a list of all dishes and prices' do
-      menu = [["doner", 5], ["burger", 10], ["pizza", 20]]
-      allow(subject).to receive(:menu).and_return([["doner", 5], ["burger", 10], ["pizza", 20]])
-    end
+  describe '#initialize' do
+    it 'stores the menu data struct in as an instance variable' do
+      subject.menu_data
+     expect(subject.available_dishes).to eq(struct)
+  end
+end
+
+  describe '#menuify' do
+    it 'creates a struct to store menu data' do
+       allow(subject.menuify).to receive(:menu_data).and_return(:struct)
+     end
   end
 
-  describe '#show_menu' do
+  describe '#print_menu' do
     it 'displays menu items to customer' do
-      menu = [["doner", 5], ["burger", 10], ["pizza", 20]]
-      allow(subject.show_menu(menu)).to receive(:menu).and_return("doner 5\nburger 10\npizza 20")
+      allow(subject.print_menu).to receive(:available_dishes).and_return("doner 5\nburger 10\npizza 20")
     end
   end
 
-  describe '#order_food' do
-    it 'selects the food for each order' do
-      don_quant = 1
-      bur_quant = 0
-      piz_quant = 0
-      subject.order_food(don_quant, bur_quant, piz_quant)
-      expect(subject.bill).to eq(5)
+  describe '#doner_order' do
+    it 'take doners order and returns the costs' do
+      subject.doner_order(2)
+      expect(subject.doners_total).to eq(10)
+    end
+  end
+
+  describe '#burger_order' do
+    it 'take burger order and returns the costs' do
+      subject.burger_order(2)
+      expect(subject.burger_total).to eq(20)
+    end
+  end
+
+  describe '#pizza_order' do
+    it 'take pizza order and returns the costs' do
+      subject.pizza_order(2)
+      expect(subject.pizza_total).to eq(40)
     end
   end
 
@@ -39,5 +58,6 @@ describe Takeaway do
       bill = 10
       expect(subject.payment(10)).to eq sms
     end
+
   end
 end
