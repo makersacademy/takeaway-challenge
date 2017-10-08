@@ -1,0 +1,6 @@
+module TwilioPrivateData
+  SID = "ACef3b265110ac900dc6e3404f0a63351a"
+  TOKEN = "12c9b3d0695627aa436f8f594d8c4bc9"
+  FROM = "+441992351213"
+  TO = "+447802584879"
+end

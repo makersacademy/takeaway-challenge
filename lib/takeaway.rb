@@ -4,7 +4,6 @@ require_relative './text.rb'
 
 class TakeAway
   attr_reader :menu, :basket
-  extend Text
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -34,7 +33,7 @@ class TakeAway
   end
 
   def complete_order
-    send "Thank you! Your order will be delivered before #{delivery_time}"
+    Text.new.send "Thank you! Your order will be delivered before #{delivery_time}"
     empty_basket
   end
 

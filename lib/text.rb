@@ -1,8 +1,8 @@
 require 'twilio-ruby'
 require 'time'
-require 'twilio_private_data'
+require_relative './twilio_private_data.rb'
 
-module Text
+class Text
 
   def send(text)
     account_sid = TwilioPrivateData::SID

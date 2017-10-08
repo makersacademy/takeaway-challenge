@@ -7,7 +7,7 @@ describe TakeAway do
     'pie' => 15.99, 'water' => 2.99,
     'beer' => 3.99
   } }
-  let(:text) { double :text, sms: "Thank you! Your order will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}" }
+  let(:text) { double :text, send: "Thank you! Your order will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}" }
   let(:takeaway) { described_class.new(menu) }
 
   it 'allows user to see a menu' do
@@ -49,8 +49,10 @@ describe TakeAway do
       expect(takeaway.show_basket).to eq "sushi x 1 = £5.99"
     end
     it 'clears the basket ready for the next order' do
-      allow(takeaway).to receive(:send).with("Thank you! Your order will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}")
-      expect { takeaway.complete_order }.to change { takeaway.basket }.to be_empty
+      allow(text).to receive(:send).with("Thank you! Your order will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}")
+      VCR.use_cassette('twilio') do
+        expect { takeaway.complete_order }.to change { takeaway.basket }.to be_empty
+      end
     end
   end
 end

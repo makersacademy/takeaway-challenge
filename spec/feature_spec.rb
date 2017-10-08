@@ -24,4 +24,9 @@ describe 'takeaway' do
     eat.show_basket
     eat.order_total
   end
+  it 'lets you complete your order and receieve a text message' do
+    VCR.use_cassette('twilio') do
+      eat.complete_order
+    end
+  end
 end
