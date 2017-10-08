@@ -35,4 +35,15 @@ describe Order do
     end
   end
 
+  it 'calculates the total cost of order' do
+    order.add('Salad', 2)
+    order.add('Pizza', 3)
+    expect(order.calculate_total).to eq 40
+  end
+
+  it 'confirms the order' do
+    order.add('Pasta', 2)
+    expect(order.order_summary).to eq "Thank you! Your order totalling £12 will arrive at #{order.delivery_time}"
+  end
+
 end
