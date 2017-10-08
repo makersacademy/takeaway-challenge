@@ -38,8 +38,8 @@ describe Takeaway do
       expect { takeaway.order 'fish sauce' }.to raise_error error
     end
     it 'confirms that the items have been added to the basket' do
-      str = "1 #{dish1} added to basket\n"
-      expect { takeaway.order dish1 }.to output(str).to_stdout
+      str = "1 #{dish1} added to basket"
+      expect(takeaway.order dish1).to eq str
     end
 
   end

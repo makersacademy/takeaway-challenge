@@ -21,7 +21,7 @@ class Takeaway
   def order(dish, quantity = 1)
     fail 'dish is not on the menu' unless on_menu?(dish)
     add_items(dish, quantity)
-    puts "#{quantity} #{dish} added to basket" #add plural string
+    confirm_added(dish, quantity)
   end
 
   def order_summary
@@ -48,6 +48,14 @@ class Takeaway
 
   def add_items(dish, quantity)
     quantity.times { basket.add(dish, menu.items[dish]) }
+  end
+
+  def confirm_added(dish, quantity)
+    "#{quantity} #{dish}#{plural(quantity)} added to basket"
+  end
+
+  def plural(quantity)
+    's' if quantity > 1
   end
 
   def send_confirmation
