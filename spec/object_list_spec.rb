@@ -24,7 +24,7 @@ describe ObjectList do
 
     context 'raise_error' do
       it 'should raise_error if object already in list' do
-        expect { list_object_1.add(object_1) }.to raise_error 'Menu already contains dish'
+        expect { list_object_1.add(object_1) }.to raise_error 'Already exists in list'
       end
     end
   end
@@ -37,7 +37,7 @@ describe ObjectList do
 
     context 'raise_error' do
       it 'should raise_error if object not found' do
-        expect { list_empty.remove(object_1) }.to raise_error 'Dish not found'
+        expect { list_empty.remove(object_1) }.to raise_error 'Not found in list'
       end
     end
   end

@@ -2,18 +2,19 @@ require './lib/object_list_printer'
 
 class ObjectList
   attr_reader :objects
+
   def initialize(objects = [])
     @objects = objects
   end
 
   def add(object)
-    fail 'Menu already contains dish' if found?(object)
+    fail 'Already exists in list' if found?(object)
     @objects << object
     'Success'
   end
 
   def remove(object)
-    fail 'Dish not found' unless found?(object)
+    fail 'Not found in list' unless found?(object)
     @objects.delete(object)
     'Success'
   end
