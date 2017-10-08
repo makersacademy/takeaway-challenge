@@ -47,6 +47,13 @@ subject(:takeaway) {described_class.new}
   end
 
   describe "#place_order" do
+    # let(:takeaway) { double :takeaway }
+    # context 'to prevent a text being sent' do
+    #
+    #   before do
+    #     allow(:takeaway).to receive(:incorrect?).and_return true
+    #   end
+
     it 'sends a text saying that the order will be ready in one hour if total is correct' do
       order = takeaway.new_order('Tim')
       takeaway.select_dish("Tom Yum", 2)
@@ -54,7 +61,6 @@ subject(:takeaway) {described_class.new}
       total = 14
       takeaway.place_order(total)
       expect(takeaway.incorrect?).to eq false
+      end
     end
   end
-
-end
