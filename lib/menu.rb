@@ -3,11 +3,11 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = { 'pizza' => 8,
-                'pasta' => 6,
-                'salad' => 8,
-                'chips' => 3,
-                'burger'=> 9
+    @dishes = { 'Pizza' => 8,
+                'Pasta' => 6,
+                'Salad' => 8,
+                'Chips' => 3,
+                'Burger'=> 9
               }
   end
 
