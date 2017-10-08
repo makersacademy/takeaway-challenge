@@ -21,6 +21,13 @@ class Order
   end
 
   def send_text
+    puts "Are you sure you're ready to send the text?"
+    answer = gets.chomp.downcase
+    if answer == 'yes'
+      puts "Certain?"
+      answer = gets.chomp.downcase
+      break unless answer == 'yes'
+    end
     @text.send_text("Thank you! Your order was placed and will be delivered before #{time}")
   end
 

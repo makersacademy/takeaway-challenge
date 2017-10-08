@@ -7,9 +7,7 @@ class Text
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
         body: message,
-        to: "+447810878636", # Replace with your phone number
-        from: "++441158244614") # Replace with your Twilio number
-
-    puts message.sid
+        to: "+447810878636",
+        from: "++441158244614")
   end
 end
