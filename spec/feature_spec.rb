@@ -26,7 +26,7 @@ describe 'takeaway' do
   end
   it 'lets you complete your order and receieve a text message' do
     VCR.use_cassette('twilio') do
-      eat.complete_order
+      eat.complete_order(47.97)
     end
   end
 end

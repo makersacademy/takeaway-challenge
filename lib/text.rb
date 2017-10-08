@@ -3,7 +3,6 @@ require 'time'
 require_relative './twilio_private_data.rb'
 
 class Text
-
   def send(text)
     account_sid = TwilioPrivateData::SID
     auth_token = TwilioPrivateData::TOKEN

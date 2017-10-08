@@ -32,7 +32,8 @@ class TakeAway
     "Your total is: £#{total}"
   end
 
-  def complete_order
+  def complete_order(amount)
+    raise "Sorry the amount given is incorrect" unless correct_amount(amount)
     Text.new.send "Thank you! Your order will be delivered before #{delivery_time}"
     empty_basket
   end
@@ -46,6 +47,10 @@ class TakeAway
 
   def total
     @basket.values.map { |_quantity, price| price }.inject(:+)
+  end
+
+  def correct_amount(amount)
+    amount == total
   end
 
   def delivery_time

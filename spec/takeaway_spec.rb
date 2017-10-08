@@ -51,8 +51,11 @@ describe TakeAway do
     it 'clears the basket ready for the next order' do
       allow(text).to receive(:send).with("Thank you! Your order will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}")
       VCR.use_cassette('twilio') do
-        expect { takeaway.complete_order }.to change { takeaway.basket }.to be_empty
+        expect { takeaway.complete_order(5.99) }.to change { takeaway.basket }.to be_empty
       end
+    end
+    it 'raises an error if the confirmed amount is incorrect' do
+      expect { takeaway.complete_order(4.99) }.to raise_error("Sorry the amount given is incorrect")
     end
   end
 end
