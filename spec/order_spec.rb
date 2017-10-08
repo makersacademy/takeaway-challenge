@@ -1,8 +1,8 @@
 require 'order'
 
-  def new_order
-    $stdin.gets.chomp
-  end
+def new_order
+  $stdin.gets.chomp
+end
 
 describe Order do
 
@@ -42,7 +42,7 @@ describe Order do
 
     it 'takes order_item and adds the item and price to @order' do
       subject.order_item
-      expect(subject.order).to eq([{"GAZPATCHO" => 6.00}])
+      expect(subject.order).to eq([{ "GAZPATCHO" => 6.00 }])
     end
   end
 
@@ -59,7 +59,7 @@ describe Order do
     it 'takes view_order and returns the list of item and their prices' do
       o = Order.new
       o.order_item
-      expect {o.view_order}.to output(" GAZPATCHO   6.0 \n\n").to_stdout
+      expect { o.view_order }.to output(" GAZPATCHO   6.0 \n\n").to_stdout
     end
   end
 
@@ -73,10 +73,10 @@ describe Order do
       $stdin = STDIN
     end
 
-    it 'prints the cost of the order'do
+    it 'prints the cost of the order' do
       o = Order.new
       o.order_item
-      expect {o.order_total}.to output("Your total price is £6.0\n").to_stdout
+      expect { o.order_total }.to output("Your total price is £6.0\n").to_stdout
     end
   end
 
