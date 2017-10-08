@@ -15,27 +15,4 @@ describe Dish do
       expect(dish.quantity_ordered).to eq 0
     end
   end
-  describe '#readable_menu' do
-    it 'returns a string' do
-      expect(subject.readable_menu).to be_a String
-    end
-    it 'which contains the name of the dish' do
-      expect(subject.readable_menu).to include name
-    end
-    it 'and the price of the dish' do
-      expect(subject.readable_menu).to include price.to_s
-    end
-  end
-  describe '#readable_order' do
-    it 'returns a string' do
-      expect(subject.readable_order).to be_a String
-    end
-    it 'which contains the name of the dish' do
-      expect(subject.readable_order).to include name
-    end
-    it 'and the price of the number of dishes ordered' do
-      dish.quantity_ordered = 3
-      expect(subject.readable_order).to include (price * 3).to_s
-    end
-  end
 end
