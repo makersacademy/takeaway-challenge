@@ -1,5 +1,6 @@
 require 'takeaway'
 require 'menu'
+require 'text'
 
 describe 'takeaway' do
   menu = Menu.new

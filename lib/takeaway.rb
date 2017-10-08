@@ -1,5 +1,9 @@
+require 'time'
+require 'text'
+
 class TakeAway
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :text
+  extend Text
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -20,12 +24,16 @@ class TakeAway
     @basket = {}
   end
 
+  def show_basket
+    basket.map {|dish| "#{dish[0]}: £#{dish[1]}"}.join(", ")
+  end
+
   def order_total
     "Your total is: £#{@basket.values.sum}"
   end
 
-  def show_basket
-    basket.map {|dish| "#{dish[0]}: #{dish[1]}"}.join(", ")
+  def complete_order
+    self.send("Thank you! Your order was placed and will be delivered before #{(Time.now+10*60*60).strftime("%H:%M")}")
   end
 
   private

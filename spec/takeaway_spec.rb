@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'time'
 
 describe TakeAway do
   let(:menu) { double :menu, dishes: {'sushi' => 5.99,
@@ -6,6 +7,7 @@ describe TakeAway do
     'pie' => 15.99, 'water' => 2.99,
     'beer' => 3.99
   } }
+  let(:text) { double :text, sms: "Thank you! Your order was placed and will be delivered before #{(Time.now+10*60*60).strftime("%H:%M:%S")}"}
   let(:takeaway) {described_class.new(menu)}
 
   it 'allows user to see a menu' do
@@ -35,11 +37,20 @@ describe TakeAway do
   end
 
   context 'when complete' do
+    before(:each) do
+      allow(menu).to receive(:each).and_return 'sushi' => 5.99
+      allow(menu).to receive(:on_menu?).and_return true
+      takeaway.order('sushi')
+    end
     it 'calculates the total cost of the order' do
-      expect(takeaway.order_total).to eq "Your total is: £#{takeaway.basket.values.sum}"
+      takeaway.order('pizza')
+      expect(takeaway.order_total).to eq "Your total is: £13.98"
     end
     it 'shows users their order summary' do
-      expect(takeaway.show_basket).to be_a String
+      allow(menu).to receive(:each).and_return 'sushi' => 5.99
+      allow(menu).to receive(:on_menu?).and_return true
+      takeaway.order('sushi')
+      expect(takeaway.show_basket).to eq "sushi: £5.99"
     end
   end
 end
