@@ -12,10 +12,8 @@ class Order
   end
 
   def new_order
-    puts "Enter the section of the menu you would like to chose from: "
-    # section = gets.chomp.downcase
-    # puts "Enter the item you would like: "
-    # item = gets.chomp
+    puts "Enter the item you would like: "
+    # item = gets.chomp.upcase
     # price = Menu.new.tapas.fetch(item)
     # @order << {item => price}
   end
