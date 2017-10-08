@@ -20,4 +20,8 @@ describe 'takeaway' do
   it 'lets you add multiples of the same dish to your basket' do
     eat.order('pie', 3)
   end
+  it 'lets you check your order against the total price' do
+    eat.show_basket
+    eat.order_total
+  end
 end
