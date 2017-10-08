@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Takeaway
 
 attr_reader :menu, :name
@@ -31,9 +33,21 @@ attr_reader :menu, :name
   end
 
   def place_order
-    time = Time.new + (60 * 60)
-    "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}"
+  time = Time.new + (60 * 60)
+  "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}"
   end
+
+  # def place_order
+  #   account_sid = "ACc4f9ba92a70a60ff60b6b0991011ddda"
+  #   auth_token = "d81477b5a864b24554cfabb3f5a6abc7"
+  #   @client = Twilio::REST::Client.new account_sid, auth_token
+  #   time = Time.new + (60 * 60)
+  #   message = @client.messages.create(
+  #       body: "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}",
+  #       to: "+447814548040",
+  #       from: "+441138590979")
+  #   puts message.sid
+  # end
 
   private
 
