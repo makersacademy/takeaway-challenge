@@ -30,10 +30,15 @@ attr_reader :menu, :name
     "#{@name.dish_list} #{@name.total}"
   end
 
+  def place_order
+    time = Time.new + (60 * 60)
+    "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}"
+  end
+
   private
 
   def welcome_message
-    puts "Welcome to Tim's Thai"
+    puts "Welcome to Pad Thai."
   end
 
 end

@@ -37,5 +37,13 @@ subject(:takeaway) {described_class.new}
     end
   end
 
+  describe "#place_order" do
+    it 'returns a message saying that the order will be ready in one hour' do
+      order = takeaway.new_order('Tim')
+      takeaway.select_dish("Tom Yum", 2)
+      time = Time.new + (60 * 60)
+      expect(takeaway.place_order).to eq "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}"
+    end
+    end
 
 end
