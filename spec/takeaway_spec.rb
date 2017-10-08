@@ -53,7 +53,11 @@ describe Takeaway do
       end
 
       it 'displays the order and the cost' do
-        expect(takeaway.place_order).to eq   "Thanks! Your order, total of #{total}, is being processed and will be delivered by #{takeaway.delivery_time}"
+        expect(takeaway.place_order).to eq   "Thanks! Your order, total of £#{total}, is being processed and will be delivered by #{takeaway.delivery_time}!"
+      #   expect it to print out the confirmation
+      #
+      #   expect it to reset the order hash to {}
+      #   expect it to call the text_confirmation method
       end
 
     end
