@@ -24,12 +24,4 @@ class Basket
     dishes.select {|k, v| items_and_quantities.include?(k)}.values
   end
 
-  def correct_total_price?(dish_prices_and_quantities, dishes)
-    @total_price == dish_prices_and_quantities.map {|k, v| k*v }.inject(:+)
-      #this method effectively checks the total price was correctly calculated
-      #by redoing it in a different manner
-  end
-
-
-
 end
