@@ -11,13 +11,8 @@ class Order
   end
 
   def correct_total_price?(total_price, prices_and_quantities_in_basket)
-    if total_price == prices_and_quantities_in_basket.map {|k, v| k*v }.inject(:+)
-      @correct_total_price = true
-    else
-      @correct_total_price = false
-    end
-      #this method effectively checks the total price was correctly calculated
-      #by redoing it in a different manner
+    total_price == prices_and_quantities_in_basket.map {|k, v| k*v }.inject(:+) ?
+    @correct_total_price = true : @correct_total_price = false
   end
 
 end
