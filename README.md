@@ -1,3 +1,37 @@
+# TAKEAWAY CHALLENGE
+
+This is my response to the 'weekend challenge' of Week 2 of Makers Academy. For full details of what the challenge involved, see 'APPENDIX' below.
+
+## Getting started
+
+1) `git clone path-to-your-repo`
+2) `gem install bundle`
+
+## Usage
+
+Instructions are for Terminal on Mac OS
+1) `irb`
+2) `require './lib.airport.rb'`
+
+* Airport and Plane objects must be instantiated by using `Airport.new` and `Plane.new`.
+* Planes are airborne by default when instantiated.
+* The default capacity of airports is 20 which can be changed by supplying an * optional argument to `Airport.new`.
+* Stormy weather prevents planes taking off but not landing.
+* There is a .01 probability of stormy weather at each attempted take off.
+
+## Running tests
+
+Run `rspec`
+
+99.10% test coverage. One line untested is the redundant `stormy?` method (see Notes).
+
+## Notes
+
+* #stormy? in the `Airport` class is redundant. `stormy?` should be called on a new `Weather` object. I could not see how I could create a method stub within `airport_spec.rb` to mock the weather object responding to `stormy?`.
+
+
+## APPENDIX
+
 Takeaway Challenge
 ==================
 ```
