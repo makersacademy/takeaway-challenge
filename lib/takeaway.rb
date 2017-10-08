@@ -1,3 +1,6 @@
+require 'twilio-ruby'
+
+
 class Takeaway
 
   attr_reader :menu, :basket, :total
@@ -16,16 +19,28 @@ class Takeaway
     #key on the left, right is value, put them into the has as a key/value pair
   end
 
+  def empty_basket
+    @basket = {}
+  end
+
   def total
     @total = @menu.list.values.sum
   end
 
   def place_order(order_total)
     raise "total is not correct, unable to secure order" if order_total != total
-    "Thank you! Your order with a total of #{total} has been confirmed"
+    confirmation
+    Message.send
   end
 
 
+  private
 
+  # def error_total?
+  #   order_total != total
+  # end
 
+  def confirmation
+    "Thank you! Your order with a total of #{total} has been confirmed"
+  end
 end
