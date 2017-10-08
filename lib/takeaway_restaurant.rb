@@ -12,8 +12,4 @@ class Takeaway_Restaurant
     }
   end
 
-  # def list_dishes_and_prices(dishes)
-  #   dishes.map { |k, v| "#{k}, #{v}" }
-  # end
-
 end
