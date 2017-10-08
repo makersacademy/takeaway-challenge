@@ -16,7 +16,7 @@ class TakeAway
   end
 
   def order(dish, quantity = 1)
-    raise "Sorry item is not on the menu!" if !menu.on_menu?(dish)
+    raise "Sorry item is not on the menu!" unless menu.on_menu?(dish)
     basket[dish] = [quantity, menu.dishes[dish] * quantity]
     print_selection(dish, quantity)
   end
@@ -26,7 +26,7 @@ class TakeAway
   end
 
   def show_basket
-    basket.map {|dish| "#{dish[0]} x #{dish[1][0]} = £#{dish[1][1]}"}.join(", ")
+    basket.map { |dish| "#{dish[0]} x #{dish[1][0]} = £#{dish[1][1]}" }.join(", ")
   end
 
   def order_total
@@ -34,7 +34,7 @@ class TakeAway
   end
 
   def complete_order
-    self.send "Thank you! Your order will be delivered before #{(Time.now + 60*60).strftime("%H:%M")}"
+    send "Thank you! Your order will be delivered before #{delivery_time}"
     empty_basket
   end
 
@@ -46,7 +46,10 @@ class TakeAway
   end
 
   def total
-    @basket.values.map { |quantity, price| price }.inject(:+)
+    @basket.values.map { |_quantity, price| price }.inject(:+)
   end
 
+  def delivery_time
+    (Time.now + 60 * 60).strftime("%H:%M")
+  end
 end

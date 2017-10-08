@@ -2,7 +2,7 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = {'sushi' => 5.99,
+    @dishes = { 'sushi' => 5.99,
       'pizza' => 7.99, 'burger' => 4.99,
       'pie' => 15.99, 'water' => 2.99,
       'beer' => 3.99
@@ -10,7 +10,7 @@ class Menu
   end
 
   def show
-    puts dishes.map {|dish| "#{dish[0]}: £#{dish[1]}"}.join("\n")
+    puts dishes.map { |dish| "#{dish[0]}: £#{dish[1]}" }.join("\n")
   end
 
   def on_menu?(dish)

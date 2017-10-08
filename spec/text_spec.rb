@@ -9,7 +9,7 @@ describe Text do
   it "sends a text message after the order is placed" do
     fakeaway.extend(text)
     VCR.use_cassette('twilio') do
-      fakeaway.send("Thank you! Your order will be delivered before #{(Time.now + 60*60).strftime("%H:%M")}")
+      fakeaway.send("Thank you! Your order will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}")
     end
   end
 end
