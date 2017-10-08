@@ -2,11 +2,11 @@ require 'basket'
 
 class Order
 
-  attr_reader :total_price, :correct_total_price
+  attr_reader :total_price, :correct_total_price, :meal_order
 
-  def place_order
+  def place_order(items_and_quantities, total_price)
     fail "The sum is not correct" unless @correct_total_price
-    # order = [items_and_quantities, total_price]
+    @meal_order = [items_and_quantities, total_price]
     "Thanks! Your order is placed and will be delivered."
   end
 
