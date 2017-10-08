@@ -1,24 +1,22 @@
 require './lib/object_list.rb'
 
 class Menu
-  attr_reader :dishes_list
+  attr_reader :menu_items
 
-  def initialize(dishes_list = ObjectList.new)
-    @dishes_list = dishes_list
+  def initialize(menu_items = ObjectList.new)
+    @menu_items = menu_items
   end
 
   def add_dish(dish)
-    # fail 'Menu already contains dish' if dish_found? dish
-    @dishes_list.add dish
+    @menu_items.add dish
   end
 
   def remove_dish(dish)
-    # fail 'Dish not found' unless dish_found? dish
-    @dishes_list.remove dish
+    @menu_items.remove dish
   end
 
   def view_menu
-    @dishes_list.to_string
+    @menu_items.to_string
   end
 
 end

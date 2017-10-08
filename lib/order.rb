@@ -6,4 +6,8 @@ class Order
   def initialize(order_items = ObjectList.new)
     @order_items = order_items
   end
+
+  def add_item(item)
+    @order_items.add item
+  end
 end

@@ -15,11 +15,11 @@ describe Menu do
       expect(menu_empty).to be_an_instance_of Menu
     end
 
-    it 'has an empty object_list injected' do
-      expect(menu_empty.dishes_list).to be_an_instance_of ObjectList
+    it 'has an empty ObjectList menu_items' do
+      expect(menu_empty.menu_items).to be_an_instance_of ObjectList
     end
 
-    it { is_expected.to respond_to(:dishes_list) }
+    it { is_expected.to respond_to(:menu_items) }
 
     it { is_expected.to respond_to(:add_dish) }
 
@@ -30,8 +30,8 @@ describe Menu do
 
   context '#add_dish' do
 
-    it 'it adds entry to dishes_list' do
-      expect { menu_empty.add_dish(dish_1) }.to change { menu_empty.dishes_list.objects }.to [dish_1]
+    it 'it adds entry to menu_items' do
+      expect { menu_empty.add_dish(dish_1) }.to change { menu_empty.menu_items.objects }.to [dish_1]
     end
 
     it 'it returns success' do
@@ -40,9 +40,9 @@ describe Menu do
   end
 
   context '#remove_dish' do
-    it 'it removes entry from dishes_list' do
+    it 'it removes entry from menu_items' do
       menu_empty.add_dish(dish_1)
-      expect { menu_empty.remove_dish(dish_1) }.to change { menu_empty.dishes_list.objects }.to []
+      expect { menu_empty.remove_dish(dish_1) }.to change { menu_empty.menu_items.objects }.to []
     end
 
     it 'it returns success' do

@@ -14,11 +14,23 @@ describe Order do
       expect(order_empty).to be_an_instance_of Order
     end
 
-    it 'has an empty object_list injected' do
+    it 'has an empty ObjectList order_items' do
       expect(order_empty.order_items).to be_an_instance_of ObjectList
     end
 
     it { is_expected.to respond_to(:order_items) }
   end
 
+  context '#add_item' do
+
+    it 'it adds entry to order_items' do
+      expect { order_empty.add_item(order_item_1) }.to change { order_empty.order_items.objects }.to [order_item_1]
+    end
+
+    it 'it returns success' do
+      expect(order_empty.add_item(order_item_1)).to eq 'Success'
+    end
+  end
+
+  
 end
