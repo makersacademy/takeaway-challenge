@@ -11,7 +11,7 @@ class Order
 
   def add(item, amount = 1)
     raise 'This is not on the menu!' unless @menu.dishes.include?(item)
-    amount.times {@basket << item}
+    amount.times { @basket << item }
   end
 
   def calculate_total
@@ -31,6 +31,5 @@ class Order
   def delivery_time
     "#{(Time.now + 1 * 60 * 60).hour}:#{Time.now.min}"
   end
-
 
 end

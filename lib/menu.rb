@@ -7,7 +7,7 @@ class Menu
                 'Pasta' => 6,
                 'Salad' => 8,
                 'Chips' => 3,
-                'Burger'=> 9
+                'Burger' => 9
               }
   end
 

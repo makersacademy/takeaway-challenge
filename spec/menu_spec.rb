@@ -9,7 +9,7 @@ describe Menu do
   end
 
   it 'should show the customer a list of menu items nd their price' do
-    expect(menu.show_dishes).to eq ("pizza: £8\npasta: £6\nsalad: £8\nchips: £3\nburger: £9\n")
+    expect(menu.show_dishes).to eq "Pizza: £8\nPasta: £6\nSalad: £8\nChips: £3\nBurger: £9\n"
   end
 
 end

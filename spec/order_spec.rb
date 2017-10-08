@@ -27,7 +27,7 @@ describe Order do
       expect(order.basket).to eq ['Pasta']
     end
     it 'raises an error if customer adds unknown food' do
-      expect{ order.add('fish', 1) }.to raise_error 'This is not on the menu!'
+      expect { order.add('fish', 1) }.to raise_error 'This is not on the menu!'
     end
     it 'customer can add more than one of each dish' do
       order.add('Salad', 2)
@@ -35,19 +35,18 @@ describe Order do
     end
   end
 
-  it 'places an order' do
-    expect(order.place_order).to eq order.order_summary
+  describe 'manage order' do
+    it 'places an order' do
+      expect(order.place_order).to eq order.order_summary
+    end
+    it 'calculates the total cost of order' do
+      order.add('Salad', 2)
+      order.add('Pizza', 3)
+      expect(order.calculate_total).to eq 40
+    end
+    it 'confirms the order' do
+      order.add('Pasta', 2)
+      expect(order.order_summary).to eq "Thank you! Your order totalling £12 will arrive at #{order.delivery_time}"
+    end
   end
-
-  it 'calculates the total cost of order' do
-    order.add('Salad', 2)
-    order.add('Pizza', 3)
-    expect(order.calculate_total).to eq 40
-  end
-
-  it 'confirms the order' do
-    order.add('Pasta', 2)
-    expect(order.order_summary).to eq "Thank you! Your order totalling £12 will arrive at #{order.delivery_time}"
-  end
-
 end
