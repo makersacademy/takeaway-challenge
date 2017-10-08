@@ -1,10 +1,11 @@
 module TwilioIntergration
   require 'twilio-ruby'
+  require File.dirname(__FILE__) +'/hidden'
 
-  ACCOUNT_SID = 'ACc7182fe3eed9aa00ada9834fbf0ce818'
-  AUTH_TOKEN = '1c3da88d242cbd9a2deaed747bba5a09'
-  TWILIO_PHONE = '+442380000702'
-  RECEIVERS_PHONE = '+447491803825'
+  ACCOUNT_SID = Hidden::ACCOUNT_SID
+  AUTH_TOKEN = Hidden::AUTH_TOKEN 
+  TWILIO_PHONE = Hidden::TWILIO_PHONE
+  RECEIVERS_PHONE = Hidden::RECEIVERS_PHONE
 
   def self.send_sms(message, phone_number = RECEIVERS_PHONE)
     client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)

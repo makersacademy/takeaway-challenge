@@ -2,11 +2,16 @@ class Order
   require File.dirname(__FILE__) + '/defaults'
   require File.dirname(__FILE__) + '/twilio_intergration'
   require File.dirname(__FILE__) + '/receipt'
+  
   attr_reader :basket
+
+  @@order_id = 0
+
   def initialize(basket = Basket.new, time = Time.new, sms_interface = TwilioIntergration)
     @order_time = time
     @basket = basket
     @sms_interface = sms_interface
+    @@order_id += 1
   end
 
   def finalise_order(sms = true)
@@ -15,7 +20,7 @@ class Order
   end
 
   def to_s
-    "Order ID: #{object_id} - Total: #{Defaults::DEFAULT_CURENCY}#{basket.calculate_total}"
+    "Order ID: #{@@order_id} - Total: #{Defaults::DEFAULT_CURENCY}#{basket.calculate_total}"
   end
 
   private

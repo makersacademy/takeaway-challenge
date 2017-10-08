@@ -1,0 +1,38 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/georgelamprakis/makers_challenges/week_2/takeaway-challenge/spec/twilio_intergration_spec.rb": [
+        1,
+        1,
+        2,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/georgelamprakis/makers_challenges/week_2/takeaway-challenge/lib/twilio_intergration.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1507475121
+  }
+}
