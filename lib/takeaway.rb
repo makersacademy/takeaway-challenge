@@ -35,9 +35,9 @@ class Takeaway
     #this methid is horrible, need to refactor
   end
 
-  # def correct_total_price?(*meal_items, *quantities)
-  #   total_price == dishes.select { |k, v| meal_items.include?(k) }.values.inject(:+)
-  # end
+  def correct_total_price?(*meal_items, *quantities)
+    total_price == dishes.select { |k, v| meal_items.include?(k) }.values.inject(:+)
+  end
 
   # def place_order_and_receive_text(list_of_dishes, quantities, exact_total)
   #   list_of_dishes = select_meal(*meal_items)
