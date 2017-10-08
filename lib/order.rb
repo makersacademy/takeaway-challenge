@@ -1,4 +1,5 @@
 require 'menu'
+require 'basket'
 
 class Order
 
@@ -9,9 +10,17 @@ class Order
     @order_basket = basket
   end
 
-  def add_item
-    item_num = $stdin.gets.chomp.to_i
-    item_quant = $stdin.gets.chomp.to_i
-    order_menu.menu_items[item_num-1][:item]
+  def select_item
+    @item_num = $stdin.gets.chomp.to_i
+    select_quantity
+    add_to_basket
+  end
+
+  def select_quantity
+    @item_quant = $stdin.gets.chomp.to_i
+  end
+
+  def add_to_basket
+    order_basket.new_item(@item_num, @item_quant)
   end
 end
