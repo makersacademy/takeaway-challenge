@@ -1,6 +1,6 @@
 class Takeaway
 
-  attr_reader :total_price
+  attr_reader :total_price, :selected_meal
 
   def initialize
     @total_price = 0
@@ -21,7 +21,7 @@ class Takeaway
   end
 
   def select_meal(items_and_quantities)
-    selected_meal = items_and_quantities
+    @selected_meal = items_and_quantities
   end
 
   def total_order_price(items_and_quantities)
@@ -38,9 +38,11 @@ class Takeaway
     #need to refactor this method
   end
 
-  # def correct_total_price?(items_and_quantities)
-  #   @total_price == items_and_quantities
-  # end
+  def correct_total_price?(dish_prices_and_quantities)
+    @total_price == dish_prices_and_quantities.map {|k, v| k*v }.inject(:+)
+      #this method effectively checks the total price was correctly calculated
+      #by redoing it in a different manner
+  end
 
   # def place_order_and_receive_text(list_of_dishes, quantities, exact_total)
   #   list_of_dishes = select_meal(*meal_items)

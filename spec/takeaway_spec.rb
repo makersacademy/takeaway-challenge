@@ -18,8 +18,11 @@ describe Takeaway do
       pilau_rice: 1})
   end
 
-  # it 'verifies the price is correct' do
-  #   takeaway.select_meal(:chicken_bhuna)
-  #   expect(takeaway.correct_total_price?(:chicken_bhuna)).to eq true
-  # end
+  it 'checks the price is correct' do
+    items_and_quantities = ({chicken_bhuna: 1, pilau_rice: 1})
+    dish_prices_and_quantities = ({4.25 => 1, 2 => 1})
+    takeaway.select_meal(items_and_quantities)
+    takeaway.total_order_price(items_and_quantities)
+    expect(takeaway.correct_total_price?(dish_prices_and_quantities)).to eq true
+  end
 end
