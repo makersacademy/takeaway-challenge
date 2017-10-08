@@ -19,11 +19,11 @@ describe Takeaway do
   end
 
   it 'selects from the menu' do
-    expect(takeaway).to respond_to(:select_dish).with(1).argument
+    expect(takeaway).to respond_to(:select_dish).with(2).argument
   end
 
   it 'selects from the menu' do
-    takeaway.select_dish("curry")
+    takeaway.select_dish("curry", 1)
     expect(takeaway.basket).to include "curry"
   end
 
@@ -38,27 +38,32 @@ describe Takeaway do
   # end
 
   it "adds up the total of all dishes" do
-    takeaway.select_dish("curry")
-    takeaway.select_dish("xcurry")
+    takeaway.select_dish("curry", 1)
+    takeaway.select_dish("xcurry", 1)
     expect(takeaway.total).to eq total
   end
 
+  describe "placing order test" do
+    it 'places and order' do
+      takeaway.select_dish("curry", 1)
+      takeaway.select_dish("xcurry", 1)
+      # expect(takeaway.total).to eq total
+      total = takeaway.basket.values.sum
+      expect(takeaway.place_order(total)).to eq "Thank you! Your order with a total of #{total} has been confirmed"
+    end
 
-  it 'places and order' do
-    takeaway.select_dish("curry")
-    takeaway.select_dish("xcurry")
-    expect(takeaway.total).to eq total
-    # total = takeaway.basket.values.sum
-    expect(takeaway.place_order).to eq "Thank you! Your order with a total of #{total} has been confirmed"
+    # let(:order_total) { 3 }
+
+    it 'reaises and error if incorrect confirmed total' do
+      takeaway.select_dish("curry", 1)
+      takeaway.select_dish("xcurry", 1)
+      expect{takeaway.place_order(3)}.to raise_error "total is not correct, unable to secure order"
+    end
+
+
+
+
   end
-
-  # it 'raises an error if customer total is not correct' do
-  # takeaway.select_dish("curry")
-  # takeaway.select_dish("xcurry")
-  # total = takeaway.basket.values.sum
-  # expect {takeaway.place_order}.to raise_error
-  # end
-
   # it
 
 
