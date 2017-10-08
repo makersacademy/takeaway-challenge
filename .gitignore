@@ -1,4 +1,4 @@
 /**/.DS_Store
 /coverage
 /design.md
-./lib/twilio.rb
+lib/twilio.rb
