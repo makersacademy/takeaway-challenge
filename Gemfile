@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 
+gem 'twilio-ruby'
+gem 'sinatra'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'

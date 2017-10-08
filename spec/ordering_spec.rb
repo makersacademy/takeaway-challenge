@@ -1,5 +1,6 @@
 require 'ordering'
 require 'menu'
+require 'twilio-ruby'
 
 describe Ordering do
   subject(:order) { described_class.new }
@@ -22,7 +23,7 @@ describe Ordering do
 
   it "allows the customer to check how many dishes they have ordered" do
     order.selection('pepperoni', 4)
-    expect(order.view_dishes).to eq "You have ordered 4 dishes."
+    expect(order.view_order).to eq "You have ordered 4 dishes."
   end
 
   it "calculates the total cost of the order" do
