@@ -15,8 +15,17 @@ class SendSms
     @client.api.account.messages.create(
       from: @from,
       to: @to,
-      body: "Thank you! Your food will be with you shortly."
+      body: "Thank you! Your order was placed and will be delivered before #{time_one_hour_from_now}"
     )
     puts "Message sent."
+  end
+
+  private
+
+  def time_one_hour_from_now
+    seconds_in_hour = 3600
+    t = Time.now
+    t += seconds_in_hour
+    t.strftime("%H:%M")
   end
 end
