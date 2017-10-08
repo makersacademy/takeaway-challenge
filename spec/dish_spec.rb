@@ -2,7 +2,7 @@ require 'dish'
 
 describe Dish do
   let(:dish) { Dish.new(name: "Tzatziki", price: 3.40) }
-  let(:default_currency) {"£"}
+  let(:default_currency) { "£" }
   it "can have a name" do
     expect(dish.name).to eq("Tzatziki")
   end

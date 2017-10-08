@@ -4,12 +4,12 @@ describe Order do
   let(:basket) { double(:fake_basket, :calculate_total => 10) }
   let(:twilio) { double(:fake_twilio) }
   let(:time) { double(:fake_time) }
-  let(:order) { Order.new(basket, time, twilio)}
+  let(:order) { Order.new(basket, time, twilio) }
   
   it "initializes an order with a basket" do
     expect(order.basket).to eq basket
   end
-  #NOT PROPERLY TESTED - Is there a real reason to test this method??
+  # NOT PROPERLY TESTED - Is there a real reason to test this method?? # 
   describe "#finalise_order" do # how can we test that properly???
     it "should return a string" do
       allow(order).to receive(:send_sms)

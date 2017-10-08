@@ -1,6 +1,6 @@
 module TwilioIntergration
   require 'twilio-ruby'
-  require File.dirname(__FILE__) +'/hidden'
+  require File.dirname(__FILE__) + '/hidden'
 
   ACCOUNT_SID = Hidden::ACCOUNT_SID
   AUTH_TOKEN = Hidden::AUTH_TOKEN 
