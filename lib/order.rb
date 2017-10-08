@@ -10,6 +10,7 @@ class Order
   end
 
   def add(item)
+    raise 'This is not on the menu!' unless @menu.dishes.include?(item)
     @basket << item
   end
 end
