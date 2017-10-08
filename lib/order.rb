@@ -2,13 +2,12 @@ require_relative './menu'
 
 
 class Order
-  attr_reader :basket
-  DEFAULT_TOTAL = 0
-  
-  def initialize(order, total_price = DEFAULT_TOTAL)
+  attr_reader :basket, :total_price
+
+  def initialize(order)
     @order = order
     @basket = {}
-    @total_price = total_price
+    @total_price = 0
   end
 
   def calculate_total

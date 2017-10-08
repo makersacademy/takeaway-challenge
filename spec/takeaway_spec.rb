@@ -40,6 +40,11 @@ end
   it 'should let customers complete their order' do
     expect{takeaway.complete_order}.to output("Thanks. You should receive a text shortly to confirm delivery time.\n").to_stdout
   end
+
+  it 'should store total price' do
+      takeaway.complete_order
+      expect(takeaway.total_price).to eq(19)
+  end
 end
 
 end
