@@ -10,7 +10,6 @@ takeaway.add('beer')
 takeaway.add('dumplings')
 takeaway.add('curry')
 takeaway.view_basket
-takeaway.complete_order
-
-menu.view
-takeaway.order
+order = takeaway.order
+price = takeaway.total_price
+takeaway.complete_order(order, price)
