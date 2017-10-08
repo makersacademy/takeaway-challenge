@@ -35,7 +35,7 @@ attr_reader :menu, :name
 
   def place_order(total)
     @total = total
-    fail "The total amount is not correct. Verify the order to check total" if incorrect?
+    fail "The total amount is not correct. Verify the order to check total." if incorrect?
     text_customer
   end
 
@@ -46,7 +46,7 @@ attr_reader :menu, :name
   # end
 
   def incorrect?
-  @total != @name.total
+    @name.total != @total
   end
 
   private

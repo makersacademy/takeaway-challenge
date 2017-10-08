@@ -1,5 +1,6 @@
 require 'takeaway'
 require 'order'
+require 'menu'
 
 describe Takeaway do
 
@@ -42,7 +43,7 @@ subject(:takeaway) {described_class.new}
     order = takeaway.new_order('Tim')
     takeaway.select_dish("Tom Yum", 2)
     time = Time.new + (60 * 60)
-    expect{takeaway.place_order(12)}.to raise_error "The total amount is not correct. Verify the order"
+    expect{takeaway.place_order(12)}.to raise_error "The total amount is not correct. Verify the order to check total."
     end
   end
 
