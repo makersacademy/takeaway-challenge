@@ -1,9 +1,9 @@
-require_relative '../lib/dish_printer'
+require_relative '../lib/object_printer'
 
 module ObjectListPrinter
-  def self.to_string(objects, dish_printer = DishPrinter)
-    objects.each_with_index.map { |dish, index|
-      dish_printer.to_string(dish, index + 1)
+  def self.to_string(objects, object_printer = ObjectPrinter)
+    objects.each_with_index.map { |object, index|
+      object_printer.to_string(object, index + 1)
     }.join("\n")
   end
 end

@@ -1,4 +1,4 @@
-require 'object_list_printer'
+require './lib/object_list_printer'
 
 class ObjectList
   attr_reader :objects
@@ -6,8 +6,16 @@ class ObjectList
     @objects = objects
   end
 
-  def add(objects)
-    objects.each { |object| @objects << object }
+  def add(object)
+    fail 'Menu already contains dish' if found?(object)
+    @objects << object
+    'Success'
+  end
+
+  def remove(object)
+    fail 'Dish not found' unless found?(object)
+    @objects.delete(object)
+    'Success'
   end
 
   def to_string(object_list_printer = ObjectListPrinter)
@@ -19,6 +27,10 @@ class ObjectList
   end
 
   private
+
+  def found?(object)
+    @objects.include?(object)
+  end
 
   def all
     @objects
