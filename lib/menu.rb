@@ -1,9 +1,9 @@
-require './lib/object_list.rb'
+require './lib/item_list.rb'
 
 class Menu
   attr_reader :menu_items
 
-  def initialize(menu_items = ObjectList.new)
+  def initialize(menu_items = ItemList.new)
     @menu_items = menu_items
   end
 

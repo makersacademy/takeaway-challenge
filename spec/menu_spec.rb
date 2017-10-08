@@ -16,7 +16,7 @@ describe Menu do
     end
 
     it 'has an empty ObjectList menu_items' do
-      expect(menu_empty.menu_items).to be_an_instance_of ObjectList
+      expect(menu_empty.menu_items).to be_an_instance_of ItemList
     end
 
     it { is_expected.to respond_to(:menu_items) }
@@ -31,7 +31,7 @@ describe Menu do
   context '#add_dish' do
 
     it 'it adds entry to menu_items' do
-      expect { menu_empty.add_dish(dish_1) }.to change { menu_empty.menu_items.objects }.to [dish_1]
+      expect { menu_empty.add_dish(dish_1) }.to change { menu_empty.menu_items.items }.to [dish_1]
     end
 
     it 'it returns success' do
@@ -42,7 +42,7 @@ describe Menu do
   context '#remove_dish' do
     it 'it removes entry from menu_items' do
       menu_empty.add_dish(dish_1)
-      expect { menu_empty.remove_dish(dish_1) }.to change { menu_empty.menu_items.objects }.to []
+      expect { menu_empty.remove_dish(dish_1) }.to change { menu_empty.menu_items.items }.to []
     end
 
     it 'it returns success' do
@@ -51,6 +51,19 @@ describe Menu do
   end
 
   context '#view_menu' do
+    subject(:menu_full) { described_class.new }
 
+    before(:each) do
+      menu_full.add_dish(dish_1)
+      menu_full.add_dish(dish_2)
+      menu_full.add_dish(dish_3)
+      allow(dish_1).to receive(:map).and_return(['Test Dish 1          ', 'Test dish 1 description          ', '10.95          '])
+      allow(dish_2).to receive(:map).and_return(['Test Dish 2          ', 'Test dish 2 description          ', '5.99          '])
+      allow(dish_3).to receive(:map).and_return(['Test Dish 3          ', 'Test dish 3 description          ', '2.50          '])
+    end
+
+    it 'it returns a formatted string' do
+      expect(menu_full.view_menu).to eq "1. Test Dish 1          Test dish 1 description          10.95          \n2. Test Dish 2          Test dish 2 description          5.99          \n3. Test Dish 3          Test dish 3 description          2.50          "
+    end
   end
 end
