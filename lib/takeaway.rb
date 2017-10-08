@@ -12,4 +12,10 @@ class Takeaway
     @menu.dishes
   end
 
+  def order(menu_item)
+    @menu.dishes.each_key do |k|
+      return k if k == menu_item
+    end
+  end
+
 end
