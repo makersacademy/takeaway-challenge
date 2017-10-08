@@ -13,9 +13,13 @@ describe Takeaway do
   end
 
   it 'allows you to select a meal' do
-    dishes = takeaway.dishes
     expect(takeaway.select_meal(:chicken_bhuna, :pilau_rice)).to eq({
       chicken_bhuna: 4.25,
       pilau_rice: 2})
+  end
+
+  it 'verifies the price is correct' do
+    takeaway.select_meal(:chicken_bhuna)
+    expect(takeaway.correct_total_price?(:chicken_bhuna)).to eq true
   end
 end
