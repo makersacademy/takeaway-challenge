@@ -20,14 +20,28 @@ class Takeaway
     dishes.map { |k, v| "#{k}, #{v}" }
   end
 
-  def select_meal(*meal_items)
-    selected_meal = dishes.select { |k, v| meal_items.include?(k) }
-    @total_price = selected_meal.values.inject(:+)
+  def select_meal(items_and_quantities)
+    selected_meal = items_and_quantities
+    prices = dishes.select {|k, v| items_and_quantities.include?(k)}.values
+    quantities = items_and_quantities.values
+    i = 0
+    total_meal_price = []
+    while i < prices.length
+    total_meal_price << prices[i] * quantities[i]
+    i += 1
+    end
+    @total_price = total_meal_price
     selected_meal
+    #this methid is horrible, need to refactor
   end
 
-  def correct_total_price?(*meal_items)
-    total_price == dishes.select { |k, v| meal_items.include?(k) }.values.inject(:+)
-  end
+  # def correct_total_price?(*meal_items, *quantities)
+  #   total_price == dishes.select { |k, v| meal_items.include?(k) }.values.inject(:+)
+  # end
+
+  # def place_order_and_receive_text(list_of_dishes, quantities, exact_total)
+  #   list_of_dishes = select_meal(*meal_items)
+  #   exact_total = @total_price
+  # end
 
 end
