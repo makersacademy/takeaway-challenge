@@ -21,13 +21,6 @@ class Order
   end
 
   def send_text
-    puts "Are you sure you're ready to send the text?"
-    answer = gets.chomp.downcase
-    if answer == 'yes'
-      puts "Certain?"
-      answer = gets.chomp.downcase
-      break unless answer == 'yes'
-    end
     @text.send_text("Thank you! Your order was placed and will be delivered before #{time}")
   end
 
@@ -49,7 +42,7 @@ class Order
   end
 
   def time
-    hour = "#{(Time.now.hour + 1) % 12}"
+    hour = "#{(Time.now.hour + 1) % 24}"
     hour = '0' << hour if hour.length == 1
     min = "#{Time.now.min}"
     min = '0' << min if min.length == 1
