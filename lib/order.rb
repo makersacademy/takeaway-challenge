@@ -13,8 +13,8 @@ class Order
 
   def new_order
     puts "Enter the item you would like: "
-    # item = gets.chomp.upcase
-    # price = Menu.new.tapas.fetch(item)
-    # @order << {item => price}
+    item = gets.chomp.upcase
+    price = Menu.new.tapas.fetch(item)
+    @order << {item => price}
   end
 end

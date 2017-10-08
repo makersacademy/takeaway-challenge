@@ -1,7 +1,18 @@
 require 'order'
 
-describe Order do
+  def new_order
+    $stdin.gets.chomp
+  end
 
+describe Order do
+  before do
+    $stdin = StringIO.new("GAZPATCHO")
+  end
+
+  after do
+    $stdin = STDIN
+  end
+  
   it 'contains @order on initialization' do
     expect(subject.order).to eq([])
   end
@@ -21,7 +32,20 @@ describe Order do
     })
   end
 
-  it 'asks for an item' do
-    expect {subject.new_order}.to output("Enter the item you would like: \n").to_stdout
+  # it 'new_order asks for an item' do
+    # expect {subject.new_order}.to output("Enter the item you would like: \n").to_stdout
+  # end
+
+  it 'takes new_order and adds the item and price to @order' do
+    # before do
+    #   $stdin = StringIO.new("GAZPATCHO")
+    # end
+    #
+    # after do
+    #   $stdin = STDIN
+    # end
+
+    subject.new_order
+    expect(subject.order).to eq([{"GAZPATCHO" => 6.00}])
   end
 end
