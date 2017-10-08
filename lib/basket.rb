@@ -1,6 +1,6 @@
 class Basket
 
-attr_reader :basket_contents, :subtotal
+  attr_reader :basket_contents, :subtotal
 
   def initialize
     @basket_contents = []
@@ -13,6 +13,7 @@ attr_reader :basket_contents, :subtotal
   end
 
   def check_total
-    @basket_contents.map {|item| item[:cost]}.sum == subtotal
+    @basket_contents.map { |item| item[:cost] }.sum == subtotal
   end
+
 end

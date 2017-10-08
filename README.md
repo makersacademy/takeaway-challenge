@@ -4,31 +4,42 @@ This is my response to the 'weekend challenge' of Week 2 of Makers Academy. For 
 
 ## Getting started
 
-1) `git clone path-to-your-repo`
+Instructions are for Terminal on Mac OS
+
+1) `git clone git@github.com:jonsanders101/takeaway-challenge.git`
 2) `gem install bundle`
+3) In 'text_alert.rb', replace comments with relevant fields
 
 ## Usage
 
 Instructions are for Terminal on Mac OS
-1) `irb`
-2) `require './lib.airport.rb'`
 
-* Airport and Plane objects must be instantiated by using `Airport.new` and `Plane.new`.
-* Planes are airborne by default when instantiated.
-* The default capacity of airports is 20 which can be changed by supplying an * optional argument to `Airport.new`.
-* Stormy weather prevents planes taking off but not landing.
-* There is a .01 probability of stormy weather at each attempted take off.
+1) `irb`
+2) `require './lib.order.rb'`
+
+* Make a new order object with `Order.new`
+* Menu is taken from './menu/menu.txt'
+* Menu can be viewed by `#order_menu.view_menu`
+* Menu items are selected by `#select_item`. User is prompted to enter item number and quantity
+* Order is submitted by `#send_order`
+* User receives SMS confirmation that order will be delivered by the time given (one hour from present)
 
 ## Running tests
 
 Run `rspec`
 
-99.10% test coverage. One line untested is the redundant `stormy?` method (see Notes).
+93.75%% test coverage.
 
-## Notes
+All untested lines are from `text_alert.rb`. See Notes below.
 
-* #stormy? in the `Airport` class is redundant. `stormy?` should be called on a new `Weather` object. I could not see how I could create a method stub within `airport_spec.rb` to mock the weather object responding to `stormy?`.
+## Notes and To-dos
 
+* There are no unit tests for the Twilio API
+* No validation for `#select_item` method
+* No `#remove_item` or `#view_basket` method in Basket class
+* Basket doesn't combine items of the same type if they were added separately
+* Basket and Order classes overlap in their responsibility
+* No means of feeding account_sid, auth_token, from or to numbers into the program, or of hiding these for security. They are currently blank and require insertion
 
 ## APPENDIX
 

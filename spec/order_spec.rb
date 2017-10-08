@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  let(:menu) { double(:menu, menu_items: [{item_num: 1, item: "Murgh Masala", cost: 6.9}]) }
+  let(:menu) { double(:menu, menu_items: [{ item_num: 1, item: "Murgh Masala", cost: 6.9 }]) }
   let(:basket) { double(:basket, check_total: true, new_item: nil) }
   subject(:order) { described_class.new(menu, basket) }
 

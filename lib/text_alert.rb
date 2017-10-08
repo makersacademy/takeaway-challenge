@@ -4,6 +4,13 @@ require 'twilio-ruby'
 class TextAlert
 
   def initialize
+    # @account_sid = # ADD ACCOUNT SID HERE
+    # @auth_token = # ADD AUTH TOKEN HERE
+    # @client = Twilio::REST::Client.new @account_sid, @auth_token
+    #
+    # @from = # ADD TWILIO NUMBER HERE
+    # @customer_number = # ADD CUSTOMER NUMBER HERE
+
     @account_sid = 'ACc432bc414067fc1d92cc2b94155eaab9'
     @auth_token = '42a694dd82361d5d0d88fbec21dbe8dd'
     @client = Twilio::REST::Client.new @account_sid, @auth_token
