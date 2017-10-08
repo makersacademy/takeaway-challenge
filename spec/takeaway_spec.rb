@@ -41,6 +41,7 @@ describe Takeaway do
     subject(:dish1) { "Thai Curry" }
     subject(:quantity) { 2 }
     subject(:total) { takeaway.current_order.values.sum }
+    subject(:wrong_confirmation) { 10 }
 
     context '2 dishes ordered' do
       before do
@@ -53,13 +54,23 @@ describe Takeaway do
       end
 
       it 'displays the order and the cost' do
-        expect(takeaway.place_order).to eq   "Thanks! Your order, total of £#{total}, is being processed and will be delivered by #{takeaway.delivery_time}!"
-      #   expect it to print out the confirmation
-      #
-      #   expect it to reset the order hash to {}
-      #   expect it to call the text_confirmation method
+        expect(takeaway.order_summary).to eq "Thanks! Your order, total £#{total}, will be delivered by #{takeaway.delivery_time}!"
       end
 
+      #   expect it to print out the confirmation
+      #   expect it to reset the order hash to {}
+      #   expect it to call the text_confirmation method
+      
+      it 'raises error if order confirmation is correct' do
+        expect{takeaway.place_order(wrong_confirmation)}.to raise_error "Incorrect total entered, please try again"
+      end
+    end
+
+    describe 'text_confirmation' do
+      it 'has a text confirmation method' do
+
+        expect(takeaway).to respond_to :text_confirmation
+      end
     end
   end
 end
