@@ -11,4 +11,10 @@ describe DishList do
   it "appents an object to the array of dishes" do
     expect(list.add_dish(dish).count).to eq 1
   end
+
+  it "#to_s returns a string with an index number and the items in the dish_list array" do
+    list.add_dish(dish)
+    list.add_dish(dish)
+    expect(list.to_s).to eq "1. #{dish}\n2. #{dish}"
+  end
 end
