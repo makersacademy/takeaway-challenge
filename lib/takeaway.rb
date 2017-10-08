@@ -22,22 +22,25 @@ class Takeaway
 
   def select_meal(items_and_quantities)
     selected_meal = items_and_quantities
-    prices = dishes.select {|k, v| items_and_quantities.include?(k)}.values
-    quantities = items_and_quantities.values
-    i = 0
-    total_meal_price = []
-    while i < prices.length
-    total_meal_price << prices[i] * quantities[i]
-    i += 1
-    end
-    @total_price = total_meal_price
-    selected_meal
-    #this methid is horrible, need to refactor
   end
 
-  def correct_total_price?(*meal_items, *quantities)
-    total_price == dishes.select { |k, v| meal_items.include?(k) }.values.inject(:+)
+  def total_order_price(items_and_quantities)
+    prices = dishes.select {|k, v| items_and_quantities.include?(k)}.values
+    quantities = items_and_quantities.values
+
+    i = 0
+     item_prices = []
+    while i < prices.length
+      item_prices << prices[i] * quantities[i]
+      i += 1
+    end
+    @total_price = item_prices.inject(:+)
+    #need to refactor this method
   end
+
+  # def correct_total_price?(items_and_quantities)
+  #   @total_price == items_and_quantities
+  # end
 
   # def place_order_and_receive_text(list_of_dishes, quantities, exact_total)
   #   list_of_dishes = select_meal(*meal_items)
