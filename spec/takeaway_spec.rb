@@ -2,11 +2,12 @@ require 'takeaway.rb'
 
 describe Takeaway do
   subject(:takeaway) {described_class.new}
+  subject(:total) { takeaway.basket.values.sum }
+
   let(:menu) do
     { "curry" => 1.00,
     "xcurry" => 1.00 }
   end
-  subject(:total) { takeaway.basket.values.sum }
 
   describe '#Basket tests'do
     it 'starts with an empty basket' do
@@ -38,11 +39,17 @@ describe Takeaway do
     end
   end
 
-  it "adds up the total of all dishes" do
-    takeaway.select_dish("curry", 1)
-    takeaway.select_dish("xcurry", 1)
-    expect(takeaway.total).to eq total
+
+  describe '#adding up total  tests' do
+    before do
+      takeaway.select_dish("curry", 1)
+      takeaway.select_dish("xcurry", 1)
+    end
+    it "adds up the total of all dishes" do
+      expect(takeaway.total).to eq total
+    end
   end
+
 
   describe '#Total and Order tests' do
     context 'dishes have been selected'

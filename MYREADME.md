@@ -25,6 +25,19 @@ As a customer:.....
 4. I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+What the program can do:
+
+Basically simple functionality:
+
+- it can print a menu
+- it can select dishes
+- it can total the price of the dishes
+- it can send a confirmation message when placing an order
+- it can delete the contents of the basket and start again
+
+
+
+
 Blockers:
 
 - I did not know where to start
