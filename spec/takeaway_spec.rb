@@ -38,12 +38,19 @@ subject(:takeaway) {described_class.new}
   end
 
   describe "#place_order" do
+
     it 'returns a message saying that the order will be ready in one hour' do
       order = takeaway.new_order('Tim')
       takeaway.select_dish("Tom Yum", 2)
       time = Time.new + (60 * 60)
-      expect(takeaway.place_order).to eq "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}"
-    end
+      expect(takeaway.place_order(14)).to eq "Thank you! Your order was placed and will be delivered before #{time.strftime('%I:%M%p')}"
     end
 
+    it 'raises error if number passed does not equal number from verify order' do
+    order = takeaway.new_order('Tim')
+    takeaway.select_dish("Tom Yum", 2)
+    time = Time.new + (60 * 60)
+    expect{takeaway.place_order(12)}.to raise_error "The total amount is not correct. Verify the order"
+    end
+  end
 end
