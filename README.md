@@ -66,7 +66,13 @@ RuntimeError: Sorry the amount given is incorrect
 [9] pry(main)> eat.complete_order(39.97)
 => {}
 ```
+Text Confirmation
+-----
+<img src=/img/text.png width='250'>
 
+How To Use
+-----
 
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
+* Run pry and use the commands above to place your order
