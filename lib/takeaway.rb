@@ -34,6 +34,7 @@ class TakeAway
 
   def complete_order
     self.send("Thank you! Your order was placed and will be delivered before #{(Time.now+10*60*60).strftime("%H:%M")}")
+    empty_basket
   end
 
   private

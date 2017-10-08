@@ -10,7 +10,7 @@ class Menu
   end
 
   def show
-    dishes
+    dishes.map {|dish| "#{dish[0]}: £#{dish[1]}"}.join("\n")
   end
 
   def on_menu?(dish)

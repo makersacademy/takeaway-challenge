@@ -52,5 +52,9 @@ describe TakeAway do
       takeaway.order('sushi')
       expect(takeaway.show_basket).to eq "sushi: £5.99"
     end
+    it 'clears the basket ready for the next order' do
+      allow(takeaway).to receive(:send).with("Thank you! Your order was placed and will be delivered before #{(Time.now+10*60*60).strftime("%H:%M")}")
+      expect {takeaway.complete_order}.to change { takeaway.basket }.to be_empty
+    end
   end
 end
