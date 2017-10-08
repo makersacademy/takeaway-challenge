@@ -1,5 +1,7 @@
 class Menu
 
+  attr_reader :dishes
+
   def initialize
     @dishes = [
       { name: 'Margherita', price: 5.5 },
@@ -11,8 +13,7 @@ class Menu
   end
 
   def select(order)
-    items = order.split(', ')
-    select_items(items)
+    select_items(order)
   end
 
   def to_string
@@ -25,7 +26,7 @@ class Menu
     items_ordered = []
     items.each do |item|
       @dishes.select do |dish|
-        items_ordered << dish if dish[:name] == item
+        items_ordered << { name: dish[:name], quantity: item[1] } if dish[:name] == item[0]
       end
     end
     items_ordered

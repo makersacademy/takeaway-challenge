@@ -1,14 +1,14 @@
 require 'menu'
 
 describe Menu do
-  let(:order) { 'Margherita, Meat Feast' }
+  let(:order) { [['Margherita', 1], ['Meat Feast', 2]] }
   describe '#select' do
     it 'should respond to the select method' do
       expect(subject).to respond_to :select
     end
 
-    it 'should return the items ordered along with their prices' do
-      expect(subject.select(order)).to eq [{ name: 'Margherita', price: 5.5 }, { name: 'Meat Feast', price: 7.5 }]
+    it 'should return the items ordered along with their quantities' do
+      expect(subject.select(order)).to eq [{ name: 'Margherita', quantity: 1 }, { name: 'Meat Feast', quantity: 2 }]
     end
   end
 
