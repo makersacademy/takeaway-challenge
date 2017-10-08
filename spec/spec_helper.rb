@@ -24,3 +24,7 @@ VCR.configure do |config|
     config.filter_sensitive_data("<#{var}>") { ENV[var] }
   end
 end
+
+RSpec.configure do |c|
+  c.before { allow($stdout).to receive(:puts) }
+end
