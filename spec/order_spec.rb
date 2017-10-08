@@ -3,6 +3,7 @@ describe Order do
   let(:order) { 'Margherita 1, Meat Feast 2, 20.5' }
   let(:order_with_items) { Order.new }
   before { order_with_items.input_items(order) }
+  
   describe '#input_items' do
     it 'should respond to the input_items method' do
       expect(subject).to respond_to :input_items
