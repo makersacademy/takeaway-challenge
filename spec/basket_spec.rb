@@ -26,7 +26,7 @@ describe Basket do
   describe "#check_total" do
     it "checks subtotal is correct" do
       basket.new_item({ item: "Murgh Masala", quantity: 1, cost: 6.9 })
-      expect(basket.check_total).to eq("Total correct")
+      expect(basket.check_total).to eq(true)
     end
   end
 end

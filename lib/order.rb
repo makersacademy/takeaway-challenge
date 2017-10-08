@@ -23,6 +23,7 @@ class Order
   end
 
   def send_order
+    raise "Error: order cost incorrect" unless @order_basket.check_total
   end
 
 end
