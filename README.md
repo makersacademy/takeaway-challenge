@@ -1,3 +1,48 @@
+# TAKEAWAY CHALLENGE
+
+This is my response to the 'weekend challenge' of Week 2 of Makers Academy. For full details of what the challenge involved, see 'APPENDIX' below.
+
+## Getting started
+
+Instructions are for Terminal on Mac OS
+
+1) `git clone git@github.com:jonsanders101/takeaway-challenge.git`
+2) `gem install bundle`
+3) In 'text_alert.rb', replace comments with relevant fields
+
+## Usage
+
+Instructions are for Terminal on Mac OS
+
+1) `irb`
+2) `require './lib.order.rb'`
+
+* Make a new order object with `Order.new`
+* Menu is taken from './menu/menu.txt'
+* Menu can be viewed by `#order_menu.view_menu`
+* Menu items are selected by `#select_item`. User is prompted to enter item number and quantity
+* Order is submitted by `#send_order`
+* User receives SMS confirmation that order will be delivered by the time given (one hour from present)
+
+## Running tests
+
+Run `rspec`
+
+93.75%% test coverage.
+
+All untested lines are from `text_alert.rb`. See Notes below.
+
+## Notes and To-dos
+
+* There are no unit tests for the Twilio API. Twilio's behaviour should be stubbed using Webmock and VCR.
+* No validation for `#select_item` method
+* No `#remove_item` or `#view_basket` method in Basket class
+* Basket doesn't combine items of the same type if they were added separately
+* Basket and Order classes overlap in their responsibility
+* No means of feeding account_sid, auth_token, from or to numbers into the program, or of hiding these for security. They are currently blank for security reasons and require insertion. The dotenv gem should be used to tackle this
+
+## APPENDIX
+
 Takeaway Challenge
 ==================
 ```
