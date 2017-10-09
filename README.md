@@ -1,7 +1,7 @@
 Takeaway Challenge
 ==================
 
-![Alt text](./screenshots/model.png?raw=true "Optional Title")
+![Alt text](./screenshots/main.png?raw=true "Optional Title")
 
 Instructions
 -------

@@ -1,6 +1,7 @@
 require_relative 'dish'
 require_relative 'menu'
 require_relative 'order'
+require_relative 'text'
 
 MENU_ITEMS = [
     Dish.new(name: 'Test Item 1', description: 'Test item 1 description', price: '10.95'),
@@ -30,6 +31,9 @@ module TakeAway
     puts order_1.view_order
     puts "-----------------------------"
     puts "Total: #{order_1.total}"
+    new_message = Text
+    new_message.init
+    new_message.text_send(order_1.total)
   end
 end
 
