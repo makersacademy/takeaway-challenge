@@ -1,4 +1,5 @@
 require_relative 'menu'
+require 'twilio-ruby'
 
 class Order
 
@@ -29,7 +30,22 @@ class Order
   end
 
   def delivery_time
-    "#{(Time.now + 1 * 60 * 60).hour}:#{Time.now.min}"
+    t = (Time.now + 1 * 60 * 60)
+    t.strftime("%H:%M")
   end
+
+  def text_message
+    account_sid = "ACdb9eb98941aaa35cc21e47ab42ae2945"
+    auth_token = "885b34502ef1fd7c59fc9c706800ebc6"
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    message = @client.messages.create(
+        body: order_summary,
+        to: "+447496950977",
+        from: "+441484906185")
+
+    puts message.sid
+  end
+
 
 end
