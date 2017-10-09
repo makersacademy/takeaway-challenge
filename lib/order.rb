@@ -1,5 +1,5 @@
 require_relative "menu"
-
+require_relative "message"
 class Order
 
   attr_reader :order
@@ -33,4 +33,7 @@ class Order
     puts "Your total price is £#{price}"
   end
 
+  def send_message
+    Sms.new
+  end
 end
