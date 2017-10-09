@@ -6,7 +6,7 @@ module Text
     create_client
   end
 
-  def create_client
+  def self.create_client
     secret = YAML::load_file('../secret.yml')
     account_sid = secret['creds']['account_sid']
     auth_token = secret['creds']['auth_token']
