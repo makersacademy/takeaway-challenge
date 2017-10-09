@@ -6,4 +6,7 @@ class Order
     @current = {}
   end
 
+  def total
+    @current.values.sum
+  end
 end

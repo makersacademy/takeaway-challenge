@@ -26,12 +26,12 @@ describe Takeaway do
     subject(:quantity) { 2 }
     it 'adds a dish to the current order' do
       takeaway.select(dish, quantity)
-      expect(takeaway.current_order).to include(dish)
+      expect(takeaway.order.current).to include(dish)
     end
 
     it 'can add multiple dishes to the current order' do
       takeaway.select(dish, quantity)
-      expect(takeaway.order_total).to eq(takeaway.current_order[dish])
+      expect(takeaway.order_total).to eq(takeaway.order.current[dish])
 
     end
   end
@@ -40,8 +40,12 @@ describe Takeaway do
     subject(:dish) { "Chop Suey" }
     subject(:dish1) { "Thai Curry" }
     subject(:quantity) { 2 }
-    subject(:total) { takeaway.current_order.values.sum }
+    subject(:total) { takeaway.order_total }
     subject(:wrong_confirmation) { 10 }
+
+    it 'is instantiated with an empty order' do
+      expect(takeaway.order).to be_instance_of Order
+    end
 
     context '2 dishes ordered' do
       before do

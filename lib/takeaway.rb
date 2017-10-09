@@ -5,11 +5,11 @@ require 'sinatra'
 
 class Takeaway
 
-  attr_reader :menu, :current_order, :total_confirmation
+  attr_reader :menu, :order, :total_confirmation
 
   def initialize
     @menu = Dishes.new
-    @current_order = {}
+    @order = Order.new
   end
 
   def print_menu
@@ -17,11 +17,11 @@ class Takeaway
   end
 
   def select(dish, quantity = 1)
-    @current_order[dish] = @menu.list[dish] * quantity
+    @order.current[dish] = @menu.list[dish] * quantity
   end
 
   def order_total
-    @current_order.values.sum
+    @order.total
   end
 
   def place_order(confirmation)
