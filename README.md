@@ -21,9 +21,10 @@ Technologies
 
 * Bundle install Gemfile dependencies
 
-```bash
- $ bundle
- $ gem install bundle
+```
+$ gem install bundle
+$ bundle
+
 ```
 
 Task
