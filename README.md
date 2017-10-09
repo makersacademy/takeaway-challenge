@@ -17,7 +17,7 @@ Takeaway Challenge
 Technologies
 -------
 
-## Install
+#### Install
 
 * Bundle install Gemfile dependencies
 
@@ -26,13 +26,7 @@ Technologies
  $ gem install bundle
 
 
-My approach
--------
 
-
-How to run
------------
-* run ```bundle install```
 
 Task
 -----
@@ -54,6 +48,10 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+My approach
+-------
+
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
