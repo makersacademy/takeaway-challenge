@@ -2,7 +2,8 @@ require 'menu'
 
 describe Menu do
 
-  subject(:menu) { described_class.new }
+  subject(:menu) { described_class.new(stream: stream) }
+  let(:stream) { double :stream, puts: nil }
 
   describe '#initialize' do
     
@@ -15,7 +16,8 @@ describe Menu do
   describe '#print' do
     
     it 'prints the menu as a string' do
-      expect { menu.print }.to output.to_stdout
+      expect(stream).to receive(:puts)
+      menu.print
     end
 
   end

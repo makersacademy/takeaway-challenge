@@ -2,7 +2,9 @@ class Menu
 
   attr_reader :items
 
-  def initialize 
+  def initialize(stream: $stdout)
+
+    @stream = stream
 
     @items = {
       "special fried rice" => 4.00,
@@ -20,7 +22,7 @@ class Menu
   def print
 
     items.each do |k, v| 
-      puts "#{k}: £#{v}"  
+      @stream.puts "#{k}: £#{v}"  
     end
 
   end
