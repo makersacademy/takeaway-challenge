@@ -13,10 +13,6 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-My Approach
--------
-* Write some stuff
-
 The Brief
 -------
 
@@ -36,6 +32,26 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+How To Use
+-----
+
+* Fork this repo
+* Load dependencies
+```
+$ gem install bundle
+$ bundle install
+```
+* This app uses the 'twilio-ruby' gem and as such you will need an account for the following variables in text.rb:
+  * account_sid  - Twilio Account SID
+  * auth_token  - Twilio Auth Token
+  * to_number   - Phone number for receiving messages
+  * from_number  - Twilio-verified phone number for sending messages
+
+* Load the app in pry or IRB
+```
+[1] pry(main)> require './lib/takeaway.rb'
 ```
 
 Functionality
@@ -70,9 +86,8 @@ Text Confirmation
 -----
 <img src=/img/text.png width='250'>
 
-How To Use
+Further Developments
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Run pry and use the commands above to place your order
+* Add a basket class to delegate responsibility from takeaway which should only manage public interface
+* Ability to order via text
+* Read menu from a file
