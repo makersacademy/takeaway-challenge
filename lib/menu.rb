@@ -17,7 +17,7 @@ class Menu
     File.open(File.dirname(__FILE__) + '/../menu/menu.txt') do |file|
       file.each do |line|
         menu << { item_num:  line.split(",")[0].to_i,
-                item:       line.split(",")[1],
+                item:       liorderne.split(",")[1],
                 cost:       line.split(",")[2].chomp.to_f }
       end
     end

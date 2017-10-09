@@ -34,7 +34,7 @@ describe Order do
     end
 
     it "sends SMS order confirmation to customer" do
-      text_alert_double = double(send_confirmation: nil)
+      text_alert_double = double(send_confirmation: nil) #dependency inject this at the top
       allow(TextAlert).to receive(:new).and_return(text_alert_double)
       expect(text_alert_double).to receive(:send_confirmation)
       order.send_order
