@@ -13,6 +13,15 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+This project aimed to allow a customer to select menu items from a takeaway menu.
+The intention was to allow the customer to have the order sent to them via SMS.
+
+I got part-way, but suffered both technical and design difficulties.
+The tests run, but are not comprehensive.  The technical difficulties prevented
+the SMS functionality from working.
+
+
+
 
 Instructions
 -------
