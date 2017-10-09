@@ -14,8 +14,17 @@ Takeaway Challenge
 
  ```
 
-Description
+Technologies
 -------
+
+## Install
+
+* Bundle install Gemfile dependencies
+
+```bash
+ $ bundle
+ $ gem install bundle
+
 
 My approach
 -------
