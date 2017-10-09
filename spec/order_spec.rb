@@ -49,4 +49,12 @@ describe Order do
       expect(order.order_summary).to eq "Thank you! Your order totalling £12 will arrive at #{order.delivery_time}"
     end
   end
+
+  # before do
+  #   allow(order).to receive(:text_message)
+  # end
+  #
+  # it 'sends a confirmation text' do
+  #   expect(order).to receive(:text_message).with(order.order_summary)
+  # end
 end
