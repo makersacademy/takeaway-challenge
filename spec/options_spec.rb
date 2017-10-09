@@ -1,4 +1,4 @@
-require 'options'
+require_relative './lib/options'
 
 describe Options do
   subject(:options) { described_class.new }

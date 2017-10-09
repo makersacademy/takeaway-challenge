@@ -1,4 +1,4 @@
-require 'order_item'
+require './order_item'
 class Order
   attr_reader :order_items
 

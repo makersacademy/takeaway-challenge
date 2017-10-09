@@ -1,4 +1,4 @@
-require 'order_item'
+require_relative './lib/order_item'
 
 describe OrderItem do
   let(:description) { 'yummy food' }

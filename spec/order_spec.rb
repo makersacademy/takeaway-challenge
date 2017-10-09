@@ -1,5 +1,5 @@
-require 'menu'
-require 'order'
+require_relative './lib/menu'
+require_relative './lib/order'
 
 describe Order do
 

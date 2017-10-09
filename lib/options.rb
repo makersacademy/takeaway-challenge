@@ -1,6 +1,6 @@
-require 'menu'
-require 'order'
-require 'send_sms'
+require './menu'
+require './order'
+require './send_sms'
 
 class Options
   def initialize
@@ -47,7 +47,7 @@ private
   end
 
   def send_sms
-    raise 'Nothing to order' if @order.value.zero?
+    raise 'Nothing to order' if @order.total_value.zero?
     SendSMS.new(@order.show)
   end
 

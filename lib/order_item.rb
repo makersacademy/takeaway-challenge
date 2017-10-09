@@ -11,7 +11,6 @@ class OrderItem
     raise 'Cannot reduce below zero - no alteration made' if
         amount < 0 && amount.abs > quantity
     @quantity += amount if amount > 0
-    @quantity += amount if amount < 0 && amount.abs <= quantity
   end
 
   def value
