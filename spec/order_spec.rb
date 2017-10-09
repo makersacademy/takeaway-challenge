@@ -21,4 +21,13 @@ describe Order do
     expect(order.total).to eq 27.98
   end
 
+  it 'displays the order and the cost' do
+    expect(order.summary).to eq "Thanks! Your order, total £#{order.total}, will be delivered by #{order.delivery_time}!"
+  end
+
+  describe 'confirmation' do
+    it{ is_expected.to respond_to :sms_confirmation}
+
+  end
+
 end

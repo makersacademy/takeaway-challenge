@@ -2,7 +2,6 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
-  # let(:dishes) { double(:dishes, name: "Chop Suey", price: 15.99) }
   let(:list) do
     {
       "Chop Suey" => 15.99,
@@ -57,23 +56,8 @@ describe Takeaway do
         expect(takeaway.order_total).to eq total
       end
 
-      it 'displays the order and the cost' do
-        expect(takeaway.order_summary).to eq "Thanks! Your order, total £#{total}, will be delivered by #{takeaway.delivery_time}!"
-      end
-
-      #   expect it to print out the confirmation
-      #   expect it to reset the order hash to {}
-      #   expect it to call the text_confirmation method
-
       it 'raises error if order confirmation is correct' do
         expect { takeaway.place_order(wrong_confirmation) }.to raise_error "Incorrect total entered, please try again"
-      end
-    end
-
-    describe 'text_confirmation' do
-      it 'has a text confirmation method' do
-
-        expect(takeaway).to respond_to :text_confirmation
       end
     end
   end
