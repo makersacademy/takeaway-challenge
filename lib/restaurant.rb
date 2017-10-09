@@ -1,18 +1,19 @@
 require_relative 'messenger'
 class Restaurant
-  attr_reader :orders, :menu
+  attr_reader :order, :menu
 
   def initialize(menu = Menu.new)
-    @orders = []
+    @order = Hash.new(0)
     @menu = menu
   end
 
   def see_menu
+    @menu.load_menu_from_file
     @menu.change_menu_to_string
   end
 
   def submit_order(new_order)
-    @orders << new_order
+    @order << new_order
     Messenger.send(get_order_confirmation_message)
   end
 
@@ -22,12 +23,18 @@ class Restaurant
     "Thank you! Your order was placed and will be delivered before " + t.strftime("%R")
   end
 
+  def add_dish_to_orders(dish_index)
 
-  def add_money_paid_for_items
-
+    dish = menu.dishes[dish_index - 1]
+    @order[dish] += 1
   end
 
+  def add_order_total
+    @order.map do |dish, quantity|
+      dish.price.to_f * quantity.to_f
+   end.inject(:+)
 
+  end
 
 
 
