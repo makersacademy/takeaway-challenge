@@ -46,7 +46,7 @@ Takeaway Challenge
  > Contains Twilio personal credentials and is not uploaded to repo
 
 ## How it runs
- ```
+ ```ruby
 # Parser reads the file dishes.csv and creates instances of Dishes which are being pushed in an array
 # Parser can be instantiated with a file path. The defaults points out the pat where dishes.csv is in this project
 
