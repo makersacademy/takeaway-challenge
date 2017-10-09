@@ -14,7 +14,13 @@ module TakeAway
   Dish = ::Dish
   Menu = ::Menu
   Order = ::Order
+
   def self.init
+    menu_draw
+    order_list_draw
+  end
+
+  def self.menu_draw
     puts "Testing Menu print to screen"
     puts "----------------------------"
     menu_1 = Menu.new
@@ -22,6 +28,9 @@ module TakeAway
     puts menu_1.view_menu
     puts ""
     puts ""
+  end
+
+  def self.order_list_draw
     puts "Testing Order print to screen"
     puts "-----------------------------"
     order_1 = Order.new
@@ -31,9 +40,15 @@ module TakeAway
     puts order_1.view_order
     puts "-----------------------------"
     puts "Total: #{order_1.total}"
+
+    # send_text(order_1)
+  end
+
+  def self.send_text(order)
     new_message = Text
     new_message.init
-    new_message.text_send(order_1.total)
+    new_message.send_text('Thank you! Your order was placed and will be delivered before 18:52. ' +
+      "Total will be £#{order.total}")
   end
 end
 

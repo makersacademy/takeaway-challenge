@@ -5,6 +5,7 @@ describe ItemPrinter do
   let(:item) { double(:item, name: 'Test Dish 1', description: 'Test dish 1 description', price: '10.95') }
 
   before(:each) do
+    allow(item).to receive(:[]).and_return(['Test Dish 1          ', 'Test dish 1 description          ', '10.95          '])
     allow(item).to receive(:keys).and_return(%w(name description price))
     allow(item).to receive(:map).and_return(['Test Dish 1          ', 'Test dish 1 description          ', '10.95          '])
     allow(item).to receive(:join).and_return('Test Dish 1          Test dish 1 description          10.95          ')

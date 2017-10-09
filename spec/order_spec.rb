@@ -2,10 +2,12 @@ require './lib/order.rb'
 
 describe Order do
 
-  let(:order_item_1) { double :order_item_1, name: 'Test Item 1', description: 'Test item 1 description', price: '10.95' }
-  let(:order_item_2) { double :order_item_2, name: 'Test Item 2', description: 'Test item 2 description', price: '5.99' }
-  let(:order_item_3) { double :order_item_3, name: 'Test Item 3', description: 'Test item 3 description', price: '2.50' }
-  let(:order_item_4) { double :order_item_4, name: 'Test Item 4', description: 'Test item 4 description', price: '12.00' }
+  let(:order_items) { [
+    double(:order_item_1, name: 'Test Item 1', description: 'Test item 1 description', price: '10.95'),
+    double(:order_item_2, name: 'Test Item 2', description: 'Test item 2 description', price: '5.99'),
+    double(:order_item_3, name: 'Test Item 3', description: 'Test item 3 description', price: '2.50'),
+    double(:order_item_4, name: 'Test Item 4', description: 'Test item 4 description', price: '12.00')]
+  }
 
   subject(:order_empty) { described_class.new }
 
@@ -24,22 +26,22 @@ describe Order do
   context '#add_item' do
 
     it 'it adds entry to order_items' do
-      expect { order_empty.add_item(order_item_1) }.to change { order_empty.order_items.items }.to [order_item_1]
+      expect { order_empty.add_item(order_items[0]) }.to change { order_empty.order_items.items }.to [order_items[0]]
     end
 
     it 'it returns success' do
-      expect(order_empty.add_item(order_item_1)).to eq 'Success'
+      expect(order_empty.add_item(order_items[0])).to eq 'Success'
     end
   end
 
   context '#remove_dish' do
     it 'it removes entry from menu_items' do
-      order_empty.add_item(order_item_1)
-      expect { order_empty.remove_item(order_item_1) }.to change { order_empty.order_items.items }.to []
+      order_empty.add_item(order_items[0])
+      expect { order_empty.remove_item(order_items[0]) }.to change { order_empty.order_items.items }.to []
     end
 
     it 'it returns success' do
-      expect(order_empty.add_item(order_item_1)).to eq 'Success'
+      expect(order_empty.add_item(order_items[0])).to eq 'Success'
     end
   end
 
@@ -47,18 +49,12 @@ describe Order do
     subject(:order_full) { described_class.new }
 
     before(:each) do
-      order_full.add_item(order_item_1)
-      order_full.add_item(order_item_2)
-      order_full.add_item(order_item_3)
-      order_full.add_item(order_item_4)
-      allow(order_item_1).to receive(:keys).and_return(%w(name description price))
-      allow(order_item_2).to receive(:keys).and_return(%w(name description price))
-      allow(order_item_3).to receive(:keys).and_return(%w(name description price))
-      allow(order_item_4).to receive(:keys).and_return(%w(name description price))
-      allow(order_item_1).to receive(:map).and_return(['Test Item 1          ', 'Test item 1 description          ', '10.95          '])
-      allow(order_item_2).to receive(:map).and_return(['Test Item 2          ', 'Test item 2 description          ', '5.99          '])
-      allow(order_item_3).to receive(:map).and_return(['Test Item 3          ', 'Test item 3 description          ', '2.50          '])
-      allow(order_item_4).to receive(:map).and_return(['Test Item 4          ', 'Test item 4 description          ', '12.00          '])
+      order_items.each do |order_item|
+        allow(order_item).to receive(:[]).and_return("#{order_item.name}", "#{order_item.description}", "#{order_item.price}")
+        allow(order_item).to receive(:keys).and_return(%w(name description price))
+      end
+
+      [order_items[0], order_items[1], order_items[2], order_items[3]].each { |order_item| order_full.add_item(order_item) }
     end
 
     context '#total' do

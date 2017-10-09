@@ -3,23 +3,19 @@ require 'yaml'
 
 module Text
   def self.init
-    create_client
+    @config = YAML::load_file('../config.yml')
+    @client = create_client(@config['creds']['account_sid'], @config['creds']['auth_token'])
   end
 
-  def self.create_client
-    secret = YAML::load_file('../secret.yml')
-    account_sid = secret['creds']['account_sid']
-    auth_token = secret['creds']['auth_token']
-    @client = Twilio::REST::Client.new account_sid, auth_token
+  def self.create_client(account_sid, auth_token)
+    Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def self.text_send(price)
+  def self.send_text(text)
     @client.api.account.messages.create({
-      :from => '+441575730011',
-      :to => '+447590432979',
-      :body => "Thank you! Your order was placed and will be delivered before 18:52. Total will be £#{price}",
+      :from => @config['from'],
+      :to => @config['to'],
+      :body => text,
     })
   end
 end
-
-

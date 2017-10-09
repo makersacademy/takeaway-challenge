@@ -22,4 +22,17 @@ describe Dish do
       expect(dish.keys).to eq %w(name description price)
     end
   end
+
+  context '#[]' do
+    it 'should return a keys associated value' do
+      expect(dish[:name]).to eq 'Test Dish 1'
+    end
+  end
+
+  context '#[]=' do
+    it 'should write a value to key' do
+      dish[:name] = 'Test Dish Edited'
+      expect(dish[:name]).to eq 'Test Dish Edited'
+    end
+  end
 end
