@@ -50,11 +50,11 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 My approach
 -------
 
-- Created two classes **Menu** and **Takeaway**
-- Menu stores the list of dishes with prices
-- Takeaway can order and print menu options
-- Functionality still to be completed:
-          - Ordering several items of the same dish
-          - Totalling order prices
-          - Text message implementation
- - Challenges with design which I wrote about in a blog post [here](https://medium.com/@alexscotttonge)
+* Created two classes **Menu** and **Takeaway**
+* Menu stores the list of dishes with prices
+* Takeaway can order and print menu options
+* Functionality still to be completed:
+    - Ordering several items of the same dish
+    - Totalling order prices
+    - Text message implementation
+* Challenges with design which I wrote about in a blog post [here](https://medium.com/@alexscotttonge)
