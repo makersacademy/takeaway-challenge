@@ -14,20 +14,61 @@ Takeaway Challenge
 
  ```
 
+My Approach
+-------
+
+I began by focussing on creating a menu and an order system that worked. My focus was   
+not to create a vast menu but to create enough variety so as to properly test the class
+does exactly what I wanted. I then moved on to creating the order class and developed
+the functionality it needed one step at a time. Firstly adding items to a basket, then
+working out the cost, displaying the order and then finally placing the order.
+
+Incorporating Twilio into the program was tricky. Exactly how to use the service as
+part of my program wasn't as obvious as I had originally thought it would be. However
+once I had figured it out it worked well.
+
+The one thing I am not happy about currently is that my test coverage is only just over
+95%. Due to the information needed to make sure the Twilio functon works, I have four
+lines in my code that are untested and can't logically be tested to add any value to
+the program.
+
+I intend to attempt refactoring what I have and maybe adding a small number of
+improvements to how it works but this will only decrease my test coverage.
+
 Instructions
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+```
+15:35 $ irb
+2.4.2 :001 > require './lib/order.rb'
+ => true
+2.4.2 :002 > order = Order.new
+ => #<Order:0x00007f95058b2c38 @basket=[], @menu=#<Menu:0x00007f95058b2c10 @menu_items={"pizza"=>10, "pasta"=>7, "garlic bread"=>4}>>
+2.4.2 :003 > order.add('pizza')
+ => 1
+2.4.2 :004 > order.add('pasta', 2)
+ => 2
+2.4.2 :005 > puts order.display_order
+3 items in your order:
+pizza : £10
+pasta : £7
+pasta : £7
+Total Cost £24
+ => nil
+2.4.2 :006 > puts order.place_order
+3 items in your order:
+pizza : £10
+pasta : £7
+pasta : £7
+Total Cost £24
+Your order will arrive at 04:43PM
+ => nil
+2.4.2 :007 >
+```
 
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -60,20 +101,3 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 * Advanced! (have a go if you're feeling adventurous):
   * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
