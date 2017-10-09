@@ -1,6 +1,6 @@
 require 'order_item'
 
-describe Order_item do
+describe OrderItem do
   let(:description) { 'yummy food' }
   let(:quantity) { 1 }
   let(:unit_price) { 10 }

@@ -1,4 +1,4 @@
-class Order_item
+class OrderItem
   attr_reader :description, :quantity, :unit_price
 
   def initialize(description, unit_price)
@@ -8,7 +8,7 @@ class Order_item
   end
 
   def alter_quantity(amount)
-    raise 'Cannot reduce below zero - no alteration made'  if
+    raise 'Cannot reduce below zero - no alteration made' if
         amount < 0 && amount.abs > quantity
     @quantity += amount if amount > 0
     @quantity += amount if amount < 0 && amount.abs <= quantity
