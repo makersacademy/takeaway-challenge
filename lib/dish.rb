@@ -7,5 +7,8 @@ class Dish
     @description = params[:description]
     @price = params[:price]
   end
-  
+
+  def keys
+    %w(name description price)
+  end
 end

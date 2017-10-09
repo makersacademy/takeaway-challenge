@@ -1,3 +1,5 @@
-# describe TakeAway do
-#
-# end
+require './lib/take_away'
+
+describe TakeAway do
+
+end

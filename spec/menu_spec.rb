@@ -2,10 +2,10 @@ require './lib/menu.rb'
 
 describe Menu do
 
-  let(:dish_1) { double :dish_1, name: 'Test Dish 1', description: 'Test dish 1 description', price: 10.95 }
-  let(:dish_2) { double :dish_2, name: 'Test Dish 2', description: 'Test dish 2 description', price: 5.99 }
-  let(:dish_3) { double :dish_3, name: 'Test Dish 3', description: 'Test dish 3 description', price: 2.50 }
-  let(:dish_4) { double :dish_4, name: 'Test Dish 4', description: 'Test dish 4 description', price: 12.00 }
+  let(:dish_1) { double :dish_1, name: 'Test Dish 1', description: 'Test dish 1 description', price: '10.95' }
+  let(:dish_2) { double :dish_2, name: 'Test Dish 2', description: 'Test dish 2 description', price: '5.99' }
+  let(:dish_3) { double :dish_3, name: 'Test Dish 3', description: 'Test dish 3 description', price: '2.50' }
+  let(:dish_4) { double :dish_4, name: 'Test Dish 4', description: 'Test dish 4 description', price: '12.00' }
 
   subject(:menu_empty) { described_class.new }
   subject(:menu_dish_1) { described_class.new([dish_1]) }
@@ -57,6 +57,9 @@ describe Menu do
       menu_full.add_dish(dish_1)
       menu_full.add_dish(dish_2)
       menu_full.add_dish(dish_3)
+      allow(dish_1).to receive(:keys).and_return(%w(name description price))
+      allow(dish_2).to receive(:keys).and_return(%w(name description price))
+      allow(dish_3).to receive(:keys).and_return(%w(name description price))
       allow(dish_1).to receive(:map).and_return(['Test Dish 1          ', 'Test dish 1 description          ', '10.95          '])
       allow(dish_2).to receive(:map).and_return(['Test Dish 2          ', 'Test dish 2 description          ', '5.99          '])
       allow(dish_3).to receive(:map).and_return(['Test Dish 3          ', 'Test dish 3 description          ', '2.50          '])

@@ -1,4 +1,4 @@
-require './lib/item_list.rb'
+require_relative '../lib/item_list.rb'
 
 class Menu
   attr_reader :menu_items

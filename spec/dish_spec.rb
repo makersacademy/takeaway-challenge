@@ -2,7 +2,7 @@ require './lib/dish.rb'
 
 describe Dish do
 
-  subject(:dish) { described_class.new(name: 'Test Dish 1', description: 'Test description.', price: 10.95) }
+  subject(:dish) { described_class.new(name: 'Test Dish 1', description: 'Test description.', price: '10.95') }
 
   context '#initialization' do
     it 'creates a Dish with a name, description, and price' do
@@ -17,4 +17,9 @@ describe Dish do
 
   end
 
+  context '#keys' do
+    it 'returns a list of public keys' do
+      expect(dish.keys).to eq %w(name description price)
+    end
+  end
 end

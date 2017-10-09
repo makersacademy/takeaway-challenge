@@ -1,4 +1,4 @@
-require './lib/item_list.rb'
+require_relative '../lib/item_list.rb'
 
 class Order
   attr_reader :order_items
@@ -27,6 +27,6 @@ class Order
   private
 
   def calc_total
-    @order_items.items.map { |item| item.price }.inject(:+).round(2)
+    @order_items.items.map { |item| item.price.to_f }.inject(:+).round(2)
   end
 end

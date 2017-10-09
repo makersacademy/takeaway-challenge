@@ -1,4 +1,4 @@
-require './lib/item_list_printer'
+require_relative '../lib/item_list_printer'
 
 class ItemList
   attr_reader :items

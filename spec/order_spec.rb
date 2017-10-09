@@ -2,10 +2,10 @@ require './lib/order.rb'
 
 describe Order do
 
-  let(:order_item_1) { double :order_item_1, name: 'Test Item 1', description: 'Test item 1 description', price: 10.95 }
-  let(:order_item_2) { double :order_item_2, name: 'Test Item 2', description: 'Test item 2 description', price: 5.99 }
-  let(:order_item_3) { double :order_item_3, name: 'Test Item 3', description: 'Test item 3 description', price: 2.50 }
-  let(:order_item_4) { double :order_item_4, name: 'Test Item 4', description: 'Test item 4 description', price: 12.00 }
+  let(:order_item_1) { double :order_item_1, name: 'Test Item 1', description: 'Test item 1 description', price: '10.95' }
+  let(:order_item_2) { double :order_item_2, name: 'Test Item 2', description: 'Test item 2 description', price: '5.99' }
+  let(:order_item_3) { double :order_item_3, name: 'Test Item 3', description: 'Test item 3 description', price: '2.50' }
+  let(:order_item_4) { double :order_item_4, name: 'Test Item 4', description: 'Test item 4 description', price: '12.00' }
 
   subject(:order_empty) { described_class.new }
 
@@ -51,6 +51,10 @@ describe Order do
       order_full.add_item(order_item_2)
       order_full.add_item(order_item_3)
       order_full.add_item(order_item_4)
+      allow(order_item_1).to receive(:keys).and_return(%w(name description price))
+      allow(order_item_2).to receive(:keys).and_return(%w(name description price))
+      allow(order_item_3).to receive(:keys).and_return(%w(name description price))
+      allow(order_item_4).to receive(:keys).and_return(%w(name description price))
       allow(order_item_1).to receive(:map).and_return(['Test Item 1          ', 'Test item 1 description          ', '10.95          '])
       allow(order_item_2).to receive(:map).and_return(['Test Item 2          ', 'Test item 2 description          ', '5.99          '])
       allow(order_item_3).to receive(:map).and_return(['Test Item 3          ', 'Test item 3 description          ', '2.50          '])
