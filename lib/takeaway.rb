@@ -4,8 +4,8 @@ class Takeaway
 
   attr_reader :menu, :order_subtotal
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu = Menu.new)#(menu = Menu.new)
+    @menu = menu #(@menu = menu)
     @order_subtotal = {}
   end
 
@@ -25,7 +25,14 @@ class Takeaway
     puts order_subtotal
   end
 
+  #def print_menu
+    #(@)menu.print
+  #end
+
 end
+
+#dependency injection is used for classes
+#are likely to change.
 
 # t = Takeaway.new
 # t.order('Rock Cakes')
