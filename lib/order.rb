@@ -41,14 +41,18 @@ class Order
   end
 
   def text_order(order_details)
-    account_sid = 'ACd00a806679c1169c47a3950e956df159'
-    auth_token = '5cdca75a737497e87715e0ff774d18e2'
+    # enter account SID here:
+    account_sid = '_____________'
+    # enter account token here:
+    auth_token = '_____________'
 
     client = Twilio::REST::Client.new account_sid, auth_token
 
-    client.messages.create({
-      :from => '+441143033372',
-      :to => '+447773793569',
+    client.account.messages.create({
+      #enter twilio number here:
+      :from => '_____________',
+      #enter recipients number here:
+      :to => '_____________',
       :body => order_details,
     })
   end
