@@ -18,5 +18,4 @@ describe Menu do
       expect(subject.to_string).to eq menu_string
     end
   end
-
 end
