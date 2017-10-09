@@ -1,6 +1,8 @@
 
 require 'rubygems'
 require 'twilio-ruby'
+require 'sinatra'
+
 class Takeaway
 
   attr_reader :menu, :current_order, :total_confirmation
@@ -25,6 +27,7 @@ class Takeaway
   def place_order(confirmation)
     raise "Incorrect total entered, please try again" if confirmation != order_total
     order_summary
+    text_confirmation
   end
 
   def order_summary
@@ -50,4 +53,15 @@ class Takeaway
         to: "+447596833699",
         body: "#{order_summary}")
   end
+
+  # def sms_orders
+  #     post '/sms' do
+  #     puts "Message: #{params['Body']}!"
+  #
+  #     twiml = Twilio::TwiML::MessagingResponse.new do |r|
+  #       r.message(body: "Added to our list of robot sightings! Head for the hills!")
+  #     end
+  #     twiml.to_s
+  #     end
+  # end
 end

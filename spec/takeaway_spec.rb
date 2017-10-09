@@ -60,9 +60,9 @@ describe Takeaway do
       #   expect it to print out the confirmation
       #   expect it to reset the order hash to {}
       #   expect it to call the text_confirmation method
-      
+
       it 'raises error if order confirmation is correct' do
-        expect{takeaway.place_order(wrong_confirmation)}.to raise_error "Incorrect total entered, please try again"
+        expect { takeaway.place_order(wrong_confirmation) }.to raise_error "Incorrect total entered, please try again"
       end
     end
 
