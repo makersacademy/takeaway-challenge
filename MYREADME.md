@@ -35,9 +35,6 @@ Basically simple functionality:
 - it can send a confirmation message when placing an order
 - it can delete the contents of the basket and start again
 
-
-
-
 Blockers:
 
 - I did not know where to start

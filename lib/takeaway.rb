@@ -3,7 +3,7 @@ require 'twilio-ruby'
 
 class Takeaway
 
-  attr_reader :menu, :basket, :total
+  attr_reader :menu, :basket, :total, :order_total
 
   def initialize
     @menu = {"curry" => 1.00, "xcurry" => 1.00}
@@ -28,17 +28,17 @@ class Takeaway
   end
 
   def place_order(order_total)
-    raise "total is not correct, unable to secure order" if order_total != total
+    @order_total = order_total   #you have to set the argument order_total to equal @order_total
+    raise "total is not correct, unable to secure order" if error_total?
     confirmation
     Message.send
   end
 
-
   private
-  # why isnt this working
-  # def error_total?
-  #   order_total != total
-  # end
+
+  def error_total?
+    @order_total != total
+  end
 
   def confirmation
     "Thank you! Your order with a total of #{total} has been confirmed"
