@@ -3,11 +3,6 @@ require 'receipt'
 describe Receipt do
   let(:order) { double(:order, :calculate_total => 10) }
   let(:receipt) { Receipt.new(order) }
-  describe "#initialize" do
-    it "should initialise a variable type of order" do
-      expect(receipt.order).to eq order
-    end
-  end
 
   describe "#to_s" do
     it "should return a string receipt" do
