@@ -3,7 +3,12 @@ Takeaway Challenge
 
 ![Alt text](./screenshots/main.png?raw=true "Optional Title")
 
-Instructions
+Running
+-------
+
+`$ Ruby take_away.rb`
+
+Challenge Instructions
 -------
 
 * Challenge time: rest of the day and weekend, until Monday 9am
