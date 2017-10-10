@@ -24,7 +24,7 @@ module TakeAway
     puts "Testing Menu print to screen"
     puts "----------------------------"
     menu_1 = Menu.new
-    MENU_ITEMS.each { |menu_item| menu_1.add_dish(menu_item) }
+    MENU_ITEMS.each { |menu_item| menu_1.add_item(menu_item) }
     puts menu_1.view_menu
     puts ""
     puts ""

@@ -7,12 +7,16 @@ class Menu
     @menu_items = menu_items
   end
 
-  def add_dish(dish)
+  def add_item(dish)
     @menu_items.add dish
   end
 
-  def remove_dish(dish)
+  def remove_item(dish)
     @menu_items.remove dish
+  end
+
+  def get_item(dish)
+    @menu_items.find dish
   end
 
   def view_menu

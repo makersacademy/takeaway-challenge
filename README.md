@@ -3,7 +3,7 @@ Takeaway Challenge
 
 ![Alt text](./screenshots/main.png?raw=true "Optional Title")
 
-Running
+Testing Usage
 -------
 
 `$ Ruby take_away.rb`

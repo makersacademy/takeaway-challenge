@@ -7,15 +7,15 @@ describe Menu do
   # let(:dish_3) { double :dish_3, name: 'Test Dish 3', description: 'Test dish 3 description', price: '2.50' }
   # let(:dish_4) { double :dish_4, name: 'Test Dish 4', description: 'Test dish 4 description', price: '12.00' }
 
-  let(:dishes) { [
-      double(:dish_1, name: 'Test Item 1', description: 'Test item 1 description', price: '10.95'),
-      double(:dish_2, name: 'Test Item 2', description: 'Test item 2 description', price: '5.99'),
-      double(:dish_3, name: 'Test Item 3', description: 'Test item 3 description', price: '2.50'),
-      double(:dish_4, name: 'Test Item 4', description: 'Test item 4 description', price: '12.00')]
+  let(:menu_items) { [
+      double(:menu_item_1, name: 'Test Item 1', description: 'Test item 1 description', price: '10.95'),
+      double(:menu_item_2, name: 'Test Item 2', description: 'Test item 2 description', price: '5.99'),
+      double(:menu_item_3, name: 'Test Item 3', description: 'Test item 3 description', price: '2.50'),
+      double(:menu_item_4, name: 'Test Item 4', description: 'Test item 4 description', price: '12.00')]
   }
 
   subject(:menu_empty) { described_class.new }
-  subject(:menu_dish_1) { described_class.new([dishes[0]]) }
+  subject(:menu_dish_1) { described_class.new([menu_items[0]]) }
 
   context '#initialization' do
     it 'creates a Menu' do
@@ -28,32 +28,47 @@ describe Menu do
 
     it { is_expected.to respond_to(:menu_items) }
 
-    it { is_expected.to respond_to(:add_dish) }
+    it { is_expected.to respond_to(:add_item) }
 
-    it { is_expected.to respond_to(:remove_dish) }
+    it { is_expected.to respond_to(:remove_item) }
+
+    it { is_expected.to respond_to(:get_item) }
+
 
     it { is_expected.to respond_to(:view_menu) }
   end
 
-  context '#add_dish' do
+  context '#add_item' do
 
     it 'it adds entry to menu_items' do
-      expect { menu_empty.add_dish(dishes[0]) }.to change { menu_empty.menu_items.items }.to [dishes[0]]
+      expect { menu_empty.add_item(menu_items[0]) }.to change { menu_empty.menu_items.items }.to [menu_items[0]]
     end
 
     it 'it returns success' do
-      expect(menu_empty.add_dish(dishes[0])).to eq 'Success'
+      expect(menu_empty.add_item(menu_items[0])).to eq 'Success'
     end
   end
 
-  context '#remove_dish' do
+  context '#remove_item' do
     it 'it removes entry from menu_items' do
-      menu_empty.add_dish(dishes[0])
-      expect { menu_empty.remove_dish(dishes[0]) }.to change { menu_empty.menu_items.items }.to []
+      menu_empty.add_item(menu_items[0])
+      expect { menu_empty.remove_item(menu_items[0]) }.to change { menu_empty.menu_items.items }.to []
     end
 
     it 'it returns success' do
-      expect(menu_empty.add_dish(dishes[0])).to eq 'Success'
+      expect(menu_empty.add_item(menu_items[0])).to eq 'Success'
+    end
+  end
+
+  context '#get_item' do
+    it 'it finds and returns entry' do
+      allow(menu_empty.menu_items).to receive(:find).and_return([menu_items[0]])
+      menu_empty.add_item(menu_items[0])
+      expect(menu_empty.get_item(menu_items[0])).to eq [menu_items[0]]
+    end
+
+    it 'it returns success' do
+      expect(menu_empty.add_item(menu_items[0])).to eq 'Success'
     end
   end
 
@@ -61,12 +76,13 @@ describe Menu do
     subject(:menu_full) { described_class.new }
 
     before(:each) do
-      dishes.each { |dish|
-        allow(dish).to receive(:[]).and_return("#{dish.name}", "#{dish.description}", "#{dish.price}")
-        allow(dish).to receive(:keys).and_return(%w(name description price))
+      menu_items.each { |item|
+        allow(item).to receive(:[]).and_return("#{item.name}", "#{item.description}", "#{item.price}")
+        allow(item).to receive(:keys).and_return(%w(name description price))
+        menu_full.add_item(item)
       }
 
-      [dishes[0], dishes[1], dishes[2], dishes[3]].each { |dish| menu_full.add_dish(dish) }
+      # [menu_items[0], menu_items[1], menu_items[2], menu_items[3]].each { |item| menu_full.add_item(item) }
     end
 
     it 'it returns a formatted string' do
