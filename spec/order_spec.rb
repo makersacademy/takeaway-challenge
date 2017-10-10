@@ -17,7 +17,7 @@ describe Order do
     end
 
     it 'has an empty ObjectList order_items' do
-      expect(order_empty.order_items).to be_an_instance_of ItemList
+      expect(order_empty.order_items).to be_an_instance_of ItemList::List
     end
 
     it { is_expected.to respond_to(:order_items) }
@@ -50,7 +50,7 @@ describe Order do
 
     before(:each) do
       order_items.each do |order_item|
-        allow(order_item).to receive(:[]).and_return("#{order_item.name}", "#{order_item.description}", "#{order_item.price}")
+        allow(order_item).to receive(:[]).and_return("#{order_item.name}", "#{order_item.price}")
         allow(order_item).to receive(:keys).and_return(%w(name description price))
       end
 
@@ -64,8 +64,8 @@ describe Order do
     end
 
     context '#view_order' do
-      it 'it returns a formatted list string' do
-        expect(order_full.view_order).to eq "1. Test Item 1          Test item 1 description          10.95          \n2. Test Item 2          Test item 2 description          5.99          \n3. Test Item 3          Test item 3 description          2.50          \n4. Test Item 4          Test item 4 description          12.00          "
+      it 'it returns a formatted order summary' do
+        expect(order_full.view_order).to eq "1. Test Item 1          10.95          \n2. Test Item 2          5.99          \n3. Test Item 3          2.50          \n4. Test Item 4          12.00          "
       end
     end
   end
