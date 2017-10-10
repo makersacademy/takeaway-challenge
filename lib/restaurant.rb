@@ -2,8 +2,8 @@ require_relative 'messenger'
 class Restaurant
   attr_reader :order, :menu
 
-  def initialize(menu = Menu.new)
-    @order = Hash.new(0)
+  def initialize(menu = Menu.new, order = Order.new)
+    @order = order
     @menu = menu
   end
 
@@ -12,8 +12,7 @@ class Restaurant
     @menu.change_menu_to_string
   end
 
-  def submit_order(new_order)
-    @order << new_order
+  def submit_order
     Messenger.send(get_order_confirmation_message)
   end
 
@@ -24,19 +23,13 @@ class Restaurant
   end
 
   def add_dish_to_orders(dish_index)
-
-    dish = menu.dishes[dish_index - 1]
-    @order[dish] += 1
+    dish = @menu.dishes[dish_index - 1]
+    @order.add_dish(dish)
+    "You have ordered option #{dish_index}"
   end
 
   def add_order_total
-    @order.map do |dish, quantity|
-      dish.price.to_f * quantity.to_f
-   end.inject(:+)
-
+    @order.total
   end
-
-
-
 
 end

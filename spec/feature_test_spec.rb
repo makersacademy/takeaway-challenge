@@ -8,14 +8,14 @@ menu = Menu.new
 restaurant = Restaurant.new
 puts restaurant.see_menu
 
-restaurant.add_dish_to_orders(1)
-restaurant.add_dish_to_orders(1)
-restaurant.add_dish_to_orders(2)
-restaurant.add_dish_to_orders(3)
-
-
-puts restaurant.order
-puts restaurant.add_order_total
+puts restaurant.add_dish_to_orders(1)
+# restaurant.add_dish_to_orders(1)
+# restaurant.add_dish_to_orders(2)
+# restaurant.add_dish_to_orders(3)
+#
+#
+# puts restaurant.order
+# puts restaurant.add_order_total
 # puts menu.dishes[0]
 # puts restaurant.submit_order(1)
 # puts restaurant.submit_order(3)
