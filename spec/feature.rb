@@ -5,7 +5,7 @@ require_relative '../lib/order'
 parser = DishListParser.new
 parser.parse_from_file
 list = DishList.new(parser.list)
-p list
+
 puts list
 basket = Basket.new
 basket.add_item(list.dish_list[0])
@@ -23,4 +23,3 @@ puts
 order = Order.new(basket)
 puts order
 puts order.finalise_order(true)
-

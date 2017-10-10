@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/dish'
+
 class DishListParser
-  
   private
   attr_reader :filename
   attr_writer :list

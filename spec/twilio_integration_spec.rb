@@ -1,6 +1,6 @@
-require 'twilio_intergration'
-describe TwilioIntergration do
-  let(:twilio) { TwilioIntergration }
+require 'twilio_integration'
+describe TwilioIntegration do
+  let(:twilio) { TwilioIntegration }
   let(:message) { double(:message) }
 
   it ".send_sms should respond" do

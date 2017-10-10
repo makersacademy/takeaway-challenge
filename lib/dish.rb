@@ -1,5 +1,5 @@
 class Dish
-  require File.dirname(__FILE__) + '/defaults'
+  DEFAULT_CURENCY = "£"
   attr_reader :name, :price
   def initialize(dish_info)
     @name = dish_info[:name]
@@ -7,6 +7,6 @@ class Dish
   end
 
   def to_s
-    "#{name}: #{Defaults::DEFAULT_CURENCY}#{'%.2f' % price}"
+    "#{name}: #{DEFAULT_CURENCY}#{'%.2f' % price}"
   end
 end
