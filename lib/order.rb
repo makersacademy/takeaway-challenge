@@ -1,9 +1,9 @@
-require_relative '../lib/item_list.rb'
+require 'item_list'
 
 class Order
   attr_reader :order_items
 
-  def initialize(order_items = ItemList.new)
+  def initialize(order_items = ItemList::List.new)
     @order_items = order_items
     @total = 0.0
   end
@@ -17,7 +17,7 @@ class Order
   end
 
   def view_order
-    @order_items.to_string
+    @order_items.to_summary([:name, :price])
   end
 
   def total

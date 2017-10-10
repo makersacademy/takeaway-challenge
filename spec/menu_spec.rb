@@ -23,7 +23,7 @@ describe Menu do
     end
 
     it 'has an empty ObjectList menu_items' do
-      expect(menu_empty.menu_items).to be_an_instance_of ItemList
+      expect(menu_empty.menu_items).to be_an_instance_of ItemList::List
     end
 
     it { is_expected.to respond_to(:menu_items) }

@@ -10,3 +10,5 @@ gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false, group: :test
 
 gem 'twilio-ruby'
+
+gem 'item_list', '~> 0.1.0'
