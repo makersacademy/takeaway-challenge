@@ -1,10 +1,11 @@
 Takeaway Challenge
 ==================
 
-![Alt text](./screenshots/main.png?raw=true "Optional Title")
+![Alt text](./screenshots/Screen Shot 2017-10-10 at 18.37.40.png?raw=true "Optional Title")
 
 Testing Usage
 -------
+![Alt text](./screenshots/Screen Shot 2017-10-10 at 17.44.36.png?raw=true "Optional Title")
 
 `$ Ruby take_away.rb`
 
@@ -49,5 +50,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   * Implement the ability to place orders via text message.
 
 * A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
