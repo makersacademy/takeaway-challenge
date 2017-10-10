@@ -34,13 +34,10 @@ module TakeAway
     puts "Testing Order print to screen"
     puts "-----------------------------"
     order_1 = Order.new
-    order_1.add_item(MENU_ITEMS[0])
-    order_1.add_item(MENU_ITEMS[1])
-    order_1.add_item(MENU_ITEMS[2])
+    MENU_ITEMS.each { |order_item| order_1.add_item(order_item) }
     puts order_1.view_order
     puts "-----------------------------"
     puts "Total: #{order_1.total}"
-
     # send_text(order_1)
   end
 
