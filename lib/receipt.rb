@@ -1,7 +1,6 @@
 class Receipt
   DEFAULT_CURENCY = "£"
 
-
   def initialize(order = Order.new)
     @order = order
   end
