@@ -5,7 +5,7 @@ describe Order do
   let(:dish) { Dish.new("pizza", 5.00) }
   describe '#add_dish' do
 
-    it 'adds a dish to the order' do
+    it '#adds a dish to the order' do
       orders = order.items
       expect{ order.add_dish(dish) }.to change { orders.count }.by(1)
     end

@@ -10,12 +10,13 @@ class Order
   end
 
   def total
-
     @items.map do |dish, quantity|
       dish.price.to_f * quantity.to_f
    end.inject(:+)
-
   end
 
+  def total_to_string
+    "Your total order is £#{'%.2f' % total}."
+  end
 
 end

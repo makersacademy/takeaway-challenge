@@ -1,8 +1,8 @@
 require 'twilio-ruby'
 
-module Messenger
+class Messenger
 
-  def self.send(message)
+  def send(message)
     account_sid = "AC6d991795435c3889fe1c039dcb18be9c"
 
     # Your Account SID from www.twilio.com/console
