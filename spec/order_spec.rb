@@ -16,11 +16,17 @@ describe Order do
       expect(order_empty).to be_an_instance_of Order
     end
 
-    it 'has an empty ObjectList order_items' do
+    it 'has an empty ItemList::List order_items' do
       expect(order_empty.order_items).to be_an_instance_of ItemList::List
     end
 
     it { is_expected.to respond_to(:order_items) }
+
+    it { is_expected.to respond_to(:add_item) }
+
+    it { is_expected.to respond_to(:remove_item) }
+
+    it { is_expected.to respond_to(:view_order) }
   end
 
   context '#add_item' do
