@@ -11,11 +11,11 @@ module Text
     Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def self.send_text(text)
+  def self.send_text(message_text)
     @client.api.account.messages.create({
       :from => @config['from'],
       :to => @config['to'],
-      :body => text,
+      :body => message_text,
     })
   end
 end

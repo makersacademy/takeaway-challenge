@@ -65,7 +65,7 @@ describe Order do
 
     context '#view_order' do
       it 'it returns a formatted order summary' do
-        expect(order_full.view_order).to eq "1. Test Item 1          10.95          \n2. Test Item 2          5.99          \n3. Test Item 3          2.50          \n4. Test Item 4          12.00          "
+        expect(order_full.view_order).to eq "1. Test Item 1 10.95\n2. Test Item 2 5.99\n3. Test Item 3 2.50\n4. Test Item 4 12.00"
       end
     end
   end

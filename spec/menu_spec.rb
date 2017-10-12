@@ -80,7 +80,7 @@ describe Menu do
     end
 
     it 'it returns a formatted string' do
-      expect(menu_full.view_menu).to eq "1. Test Item 1          Test item 1 description          10.95          \n2. Test Item 2          Test item 2 description          5.99          \n3. Test Item 3          Test item 3 description          2.50          \n4. Test Item 4          Test item 4 description          12.00          "
+      expect(menu_full.view_menu).to eq "1. Test Item 1 Test item 1 description 10.95\n2. Test Item 2 Test item 2 description 5.99\n3. Test Item 3 Test item 3 description 2.50\n4. Test Item 4 Test item 4 description 12.00"
     end
   end
 end

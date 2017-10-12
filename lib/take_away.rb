@@ -44,8 +44,8 @@ module TakeAway
   def self.send_text(order)
     new_message = Text
     new_message.init
-    new_message.send_text('Thank you! Your order was placed and will be delivered before 18:52. ' +
-      "Total will be £#{order.total}")
+    new_message.send_text("Thank you! Your #{order.order_items.count} items with a total cost of £#{order.total}. " +
+                                        "Your order was placed and will be delivered before 18:52. ")
   end
 end
 
