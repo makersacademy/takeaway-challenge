@@ -5,11 +5,14 @@ ruby '2.4.0'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'
-gem 'rubocop', '~> 0.48.1'
+gem 'rubocop'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false, group: :test
 
 gem 'twilio-ruby'
 
-gem 'item_list', '~> 0.1.2'
-# gem 'item_list', '~> 0.1.1', path: '../../../../projects/gems/item_list'
+<<<<<<< HEAD
+gem 'item_list', '~> 0.1.0'
+=======
+gem 'item_list', '~> 0.1.0'
+>>>>>>> 24d61999dcf5da242a1159305d04ef59a2adc4e2
