@@ -6,7 +6,9 @@ describe Restaurant do
   let(:order) { double :order, items: Hash.new(0) }
   let(:dish) { double :dish, name: "Pizza", price: 5.00  }
   let(:menu) { double :menu, dishes: [dish] }
-  let(:restaurant) { described_class.new(menu, order) }
+  let(:messenger) { double :messenger }
+  let(:message) {"Thank you! Your order was placed and will be delivered before 8.30"}
+  let(:restaurant) { described_class.new(order, menu, messenger) }
 
   # describe '#see_menu' do
   #   it 'allows the customer to see the menu' do
@@ -30,12 +32,19 @@ describe Restaurant do
     end
   end
 
-  describe '#add_order_total' do
+  describe '#submit_order' do
     it 'adds up the total for the order' do
-      allow(order).to receive(:total).and_return(5.00)
-      expect(restaurant.add_order_total).to eq(5.00)
+      allow(order).to receive(:total_to_string).and_return("5.00")
+      # allow(messenger).to receive(:send).with(message).and_return(message)
+      expect(restaurant.submit_order).to eq("Your order total is £5.00. You will receive a text shortly.")
     end
   end
-
+  #
+  # describe '#send_text' do
+  #   it 'sends a text as order confirmation' do
+  #     allow(messenger).to receive(:send).with(message)
+  #     expect(restaurant.send_text).to eq("Your order total is £5.00. You will receive a text shortly.")
+  #   end
+  # end
 
 end

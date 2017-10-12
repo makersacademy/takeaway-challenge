@@ -2,7 +2,7 @@ require 'order'
 require 'dish'
 describe Order do
   let(:order) { described_class.new }
-  let(:dish) { Dish.new("pizza", 5.00) }
+  let(:dish) { double :dish, name: "Pizza", price: 5.00 }
   describe '#add_dish' do
 
     it '#adds a dish to the order' do

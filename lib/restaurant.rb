@@ -1,6 +1,6 @@
 require_relative 'messenger'
 class Restaurant
-  attr_reader :order, :menu
+
 
   def initialize(order = Order.new, menu = Menu.new, messenger = Messenger.new)
     @order = order
@@ -19,10 +19,16 @@ class Restaurant
     "You have ordered option #{dish_index}"
   end
 
-  def submit_order
-    p show_order_total
-    @messenger.send(get_order_confirmation_message)
+  def review_order
+    "Your order total is £#{show_order_total}. You will receive a text shortly."
   end
+
+  def submit_order
+    show_order_total
+    @messenger.send(get_order_confirmation_message)
+    review_order
+  end
+
 
   private
 
