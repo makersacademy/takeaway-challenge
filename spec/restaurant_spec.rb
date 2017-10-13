@@ -35,7 +35,7 @@ describe Restaurant do
   describe '#submit_order' do
     it 'adds up the total for the order' do
       allow(order).to receive(:total_to_string).and_return("5.00")
-      # allow(messenger).to receive(:send).with(message).and_return(message)
+      allow(messenger).to receive(:send)
       expect(restaurant.submit_order).to eq("Your order total is £5.00. You will receive a text shortly.")
     end
   end

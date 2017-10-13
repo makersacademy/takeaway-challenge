@@ -1,18 +1,18 @@
-require './lib/dish'
-require './lib/menu'
-require './lib/order'
-require './lib/restaurant'
-
-
-menu = Menu.new
-
-restaurant = Restaurant.new
-
-p restaurant.see_menu
-p restaurant.add_dish_to_orders(1)
-p restaurant.submit_order
-
-# puts restaurant.see_menu
+# require './lib/dish'
+# require './lib/menu'
+# require './lib/order'
+# require './lib/restaurant'
+#
+#
+# menu = Menu.new
+#
+# restaurant = Restaurant.new
+#
+# p restaurant.see_menu
+# p restaurant.add_dish_to_orders(1)
+# p restaurant.submit_order
+#
+# # puts restaurant.see_menu
 
 # puts restaurant.add_dish_to_orders(1)
 
