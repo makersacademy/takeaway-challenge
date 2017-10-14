@@ -57,4 +57,4 @@ My approach
     - Ordering several items of the same dish
     - Totalling order prices
     - Text message implementation
-* Challenges with design which I wrote about in a blog post [here](https://medium.com/@alexscotttonge)
+* Challenges with design which I wrote about in a blog post [here](https://medium.com/@alexscotttonge/code-is-when-design-meets-the-harsh-light-of-dawn-53505d4e967)
