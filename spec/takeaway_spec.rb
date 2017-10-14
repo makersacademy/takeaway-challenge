@@ -1,8 +1,12 @@
 require 'takeaway.rb'
 
 describe Takeaway do
-  subject(:takeaway) {described_class.new}
+  subject(:takeaway) {described_class.new(menu)}
   subject(:total) { takeaway.basket.values.sum }
+  subject(:dish1) { "curry" }
+  subject(:quantity) { 1 }
+  subject(:dish2) { "xcurry" }
+  subject(:quantity2) { 1 }
 
   let(:menu) do
     { "curry" => 1.00,
@@ -15,7 +19,7 @@ describe Takeaway do
       expect(takeaway.basket).to be_an_instance_of Hash
     end
     it "deletes current basket to start order again" do
-      takeaway.select_dish("curry", 1)
+      takeaway.select_dish(dish1, quantity)
       expect(takeaway.empty_basket).to be_an_instance_of Hash
     end
   end
@@ -32,30 +36,28 @@ describe Takeaway do
 
   describe '#Selection tests' do
     before do
-      takeaway.select_dish("curry", 1)
+      takeaway.select_dish(dish1, quantity)
     end
     it 'selects from the menu' do
       expect(takeaway.basket).to include "curry"
     end
   end
 
-
   describe '#adding up total  tests' do
     before do
-      takeaway.select_dish("curry", 1)
-      takeaway.select_dish("xcurry", 1)
+      takeaway.select_dish(dish1,quantity)
+      takeaway.select_dish(dish2,quantity2)
     end
     it "adds up the total of all dishes" do
       expect(takeaway.total).to eq total
     end
   end
 
-
   describe '#Total and Order tests' do
     context 'dishes have been selected'
     before do
-      takeaway.select_dish("curry", 1)
-      takeaway.select_dish("xcurry", 1)
+      takeaway.select_dish(dish1,quantity)
+      takeaway.select_dish(dish2,quantity2)
     end
     it 'places and order' do
       total = takeaway.basket.values.sum

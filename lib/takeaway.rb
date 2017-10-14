@@ -1,12 +1,13 @@
 require 'twilio-ruby'
+require_relative 'menu'
 
 
 class Takeaway
 
   attr_reader :menu, :basket, :total, :order_total
 
-  def initialize
-    @menu = {"curry" => 1.00, "xcurry" => 1.00}
+  def initialize(menu = Menu.new)
+    @menu = menu
     @basket = {}
   end
 
