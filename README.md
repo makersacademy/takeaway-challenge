@@ -22,9 +22,11 @@ A program to allow users to place a takeaway order and recive a confirmation sms
 Approach
 --------
 
-Keep it DRY, SOLID & TDD `--init`
+* I attemtped to make the program feel as intuitive as possible, printing strings to $stdout in natural language.
 
-* unit & feature tested (feature tests in `/spec/integration`)
+* This challenge was a good opportunity to pratice making use of the dependancy injection and delegation pronciples.
+
+* unit & feature tested  at > 99% coverage (feature tests in `/spec/integration`)
 
 Usage
 -----
