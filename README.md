@@ -63,13 +63,13 @@ Your order total is 34 and you will it receive it no later than 23:50. Thank you
 -------
 This involves a few more steps, namely using [ngork](https://ngrok.com/) to expose a local server that the Twilio API can hook onto and Sinatra to receive post requests.
 
-First, install ngork. Then in the project directory, run 
+First, install download and install ngork. Then run
 ```
 ./ngrok http 4567
 ```
 When ngrok runs, you get a randomly generated URI, such as https://42a3b352.ngrok.io which must be entered into the Twilio console for your Twilio number to receive texts.
 
-Then, run
+Then, in the project directory run
 ```
 ruby app.rb
 ```
