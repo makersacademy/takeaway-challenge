@@ -38,7 +38,7 @@ For example if we pass in
 ```
 [3] pry(main)> takeaway.parse_order('2 nuggets, 4 chicken, 3 chips')
 ```
-We can access our current items as such
+We can access our current order as such
 ```
 [4] pry(main)> takeaway.order
 => [{:total=>24},

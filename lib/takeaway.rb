@@ -31,6 +31,10 @@ class Takeaway
     end
   end
 
+  def check_sum
+    @billing.check_sum(@order, @billing.sum(@order))
+  end
+
   def confirm_order
     @text.send_text(@order[0][:total])
     @order = [{total: 0}]
