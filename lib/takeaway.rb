@@ -23,11 +23,18 @@ class Takeaway
   end
 
   def choose(query, quantity = 1)
-    selection = @menu.find{|x| x[:name].include?(query.capitalize)}
+    selection = @menu.find{|x| x[:name].downcase.include?(query.downcase)}
     raise 'Please choose something from the menu' unless selection
     selection[:quantity] = quantity
     @order << selection
     @order[0][:total] = sum
+  end
+
+  def parse_text_order(string)
+    string.split(',').each do |x|
+      amount, word = x.split(' ')
+      choose(word, amount.to_i)
+    end
   end
 
   def sum
