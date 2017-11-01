@@ -9,7 +9,7 @@ This program can be used in two ways, either in a [REPL](#repl) or using [text m
 
 <a name="repl">Using a REPL</a>
 -------
-When your in the project directory, run your REPL and require takeaway.rb and create and instance of it
+When you're in the project directory, run your REPL and require takeaway.rb and create and instance of it
 
 ``` 
 [1] pry(main)> require './lib/takeaway'
@@ -31,6 +31,20 @@ When your in the project directory, run your REPL and require takeaway.rb and cr
  @order=[{:total=>0}],
  @text=#<Text:0x007f8366a51590>>
 ```
+We can see a menu with some food items and their prices.
+The `parse_order` method of the `Takeaway` class takes a string in the format `(quantity foodname, quantity foodname, quantity foodname)` and creates an array with the selected items, their quantities and the total price, which is accessible through `@order`.
 
+For example if we pass in
+```
+[3] pry(main)> takeaway.parse_order('2 nuggets, 4 chicken, 3 chips')
+```
+We can access our current items as such
+```
+[4] pry(main)> takeaway.order
+=> [{:total=>24},
+ {:name=>"Nuggets", :price=>3, :quantity=>2},
+ {:name=>"Chicken", :price=>3, :quantity=>4},
+ {:name=>"Chips", :price=>2, :quantity=>3}]
+```
 <a name="text-messages">Using text messages</a>
 -------
