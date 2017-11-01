@@ -1,0 +1,42 @@
+
+
+list of dishes
+
+select a number of dishes
+
+check total matches order (sum of dishes)
+
+receive a text with order confirmation
+
+
+
+
+
+takeaway
+  
+  print dishes (menu.print)
+  select dishes (order.add)
+  show total (order.show)
+  send text (order.confirm)
+
+end
+
+
+menu
+
+  dishes / price
+  add dish
+  remove dish
+  change price
+
+end
+
+
+order
+  
+  add dish
+  delete dish
+  show order
+
+end
+
