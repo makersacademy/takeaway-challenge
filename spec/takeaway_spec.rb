@@ -23,41 +23,16 @@ describe Takeaway do
 
   describe "#choose" do
     it 'adds 3 pizza to order instance variable' do
-      subject.choose('pizza', 3)
+      subject.parse_order('3 pizza')
       expect(subject.order).to include({name: 'Pizza', price: 8, quantity: 3})
     end
+    it 'parses text correctly' do
+      subject.parse_order('3 pizza, 4 burger, 2 nuggets')
+      expect(subject.order).to eq([{total: 46}, {name: 'Pizza', price: 8, quantity: 3}, {name: 'Hamburger', price: 4, quantity: 4}, {name: 'Nuggets', price: 3, quantity: 2}])
+    end
     it 'raises error when trying to choose non existent item' do
-      expect{subject.choose('grapes')}.to raise_error 'Please choose something from the menu'
+      expect{subject.parse_order('2 grapes')}.to raise_error 'Please choose something from the menu'
     end
-  end
-
-  describe "checking totals" do
-    before{subject.choose('pizza', 3)}
-    before{subject.choose('donner', 2)}
-    before{subject.choose('nuggets', 5)}
-
-    describe "#order" do
-      it 'calculates total of 51 when passed an order' do
-        expect(subject.order).to include(total: 51)
-      end
-    end
-
-    describe "#sum" do
-      it 'gets sum of order, should be 51' do
-        expect(subject.sum).to eq 51
-      end
-    end
-
-    describe "#check_sum" do
-      it 'raises error if sum does not match up with check sum' do
-        expect{subject.check_sum(32)}.to raise_error "Sum is not correct!"
-      end
-
-      it 'returns true when total matches up with check_sum' do
-        expect(subject.check_sum(subject.order[0][:total])).to eq true
-      end
-    end
-    
   end
 
 end

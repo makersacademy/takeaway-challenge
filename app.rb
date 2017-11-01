@@ -1,22 +1,18 @@
 require 'sinatra'
 require './lib/takeaway'
+require './lib/text'
 
-takeaway = Takeaway.new
 
 post '/sms' do
 
-  hour_later = ((Time.now)+60*60).strftime('%H:%M')
-
+  takeaway = Takeaway.new
   number = params['From']
   body = params['Body']
 
-  takeaway.parse_text_order(body)
+  takeaway.parse_order(body)
   total = takeaway.order[0][:total]
 
   content_type 'text/xml'
-  "<Response>
-    <Message>
-      Your order total is #{total} and you will receive it no later than #{hour_later}. Thank you!
-    </Message>
-  </Response>" 
+  Text.new.text_response(total)
+
 end
