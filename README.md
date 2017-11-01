@@ -1,7 +1,7 @@
 Takeaway Challenge
 ==================
 
-This program can be used in two ways, either in a [REPL](#repl) or using [text messages](#text-messages). First, clone the repo and run 'bundle' to install all required gems. This program is comprised of three classes:
+This program can be used in two ways, either in a [REPL](#repl) or using [text messages](#text-messages). First, clone the repo and run 'bundle' to install all required gems. You need to sign up for Twilio to be able to use the API needed here. This program is comprised of three classes:
 
 - Takeaway: This holds the menu and handles receiving and confirmation of the order
 - Billing: This handles the calculation of the order's total
@@ -46,5 +46,31 @@ We can access our current order as such
  {:name=>"Chicken", :price=>3, :quantity=>4},
  {:name=>"Chips", :price=>2, :quantity=>3}]
 ```
+`check_sum` checks if the total of the order matches the sum of all the chosen food items
+```
+[5] pry(main)> takeaway.check_sum
+=> true
+```
+Finally, `confirm_order` will send a text message to the verified recipient designated in the `Text` class
+```
+[6] pry(main)> takeaway.confirm_order
+```
+For example, the text would read
+```
+Your order total is 34 and you will it receive it no later than 23:50. Thank you!
+```
 <a name="text-messages">Using text messages</a>
 -------
+This involves a few more steps, namely using [ngork](https://ngrok.com/) to expose a local server that the Twilio API can hook onto and Sinatra to receive post requests.
+
+First, install ngork. Then in the project directory, run 
+```
+./ngrok http 4567
+```
+When ngrok runs, you get a randomly generated URI, such as https://42a3b352.ngrok.io which must be entered into the Twilio console for your Twilio number to receive texts.
+
+Then, run
+```
+ruby app.rb
+```
+Now your app is listening for texts and you can text an order in the same format that the above `parse_order` takes an argument, and you will receive a text in the same format as above.
