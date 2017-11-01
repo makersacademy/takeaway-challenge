@@ -73,4 +73,4 @@ Then, in the project directory run
 ```
 ruby app.rb
 ```
-Now your app is listening for texts and you can text an order in the same format that the above `parse_order` takes an argument, and you will receive a text in the same format as above.
+Now the app is listening for texts and you can text an order in the same format that the above `parse_order` takes an argument, and you will receive a text in the same format as above.
