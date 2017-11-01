@@ -52,7 +52,7 @@ class Takeaway
   end
 
   def confirm_order
-    @text.send_text
+    @text.send_text(@order[0][:total])
     @order = [{total: 0}]
   end
 

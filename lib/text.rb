@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 
 class Text
-  def send_text(time)
+  def send_text(total)
     
     hour_later = ((Time.now)+60*60).strftime('%H:%M')
     
@@ -11,7 +11,7 @@ class Text
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
-        body: "Thank you for you order! You will receive it no later than #{hour_later}.",
+        body: "Your order total is #{total} and you will receive it no later than #{hour_later}. Thank you!",
         to: "+447931737379",    # Replace with your phone number
         from: "+447481337808")  # Replace with your Twilio number
 
