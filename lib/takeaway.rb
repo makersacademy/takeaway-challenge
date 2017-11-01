@@ -1,4 +1,5 @@
 require './lib/text'
+
 class Takeaway
 
   attr_reader :menu, :order
