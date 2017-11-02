@@ -19,9 +19,9 @@ describe MenuItem do
     end
   end
 
-  describe '#tagline' do
+  describe '#menu_string' do
     context 'with line of normal length' do
-      subject { menuitem.tagline(30) }
+      subject { menuitem.menu_string(40) }
 
       it 'starts with title' do
         expect(subject).to start_with 'mushy peas'
@@ -32,7 +32,7 @@ describe MenuItem do
       end
 
       it 'is 30 characters long' do
-        expect(subject.length).to eq 30
+        expect(subject.length).to eq 40
       end
 
       it 'is one line long' do
@@ -44,7 +44,15 @@ describe MenuItem do
       subject { described_class.new('a' * 50, 5) }
 
       it 'raises error' do
-        expect { subject.tagline(30) }.to raise_error RuntimeError
+        expect { subject.menu_string(30) }.to raise_error RuntimeError
+      end
+    end
+
+    context 'when called without explicit length' do
+      subject { menuitem.menu_string }
+
+      it 'creates line of length 30' do
+        expect(subject.length).to eq 30
       end
     end
   end

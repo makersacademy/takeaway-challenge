@@ -6,6 +6,10 @@
 class MenuItem
   attr_reader :title, :price
 
+  # TODO
+  # wrapping for multiline items
+  # string method for itemisation
+
   COL_WIDTH = 30
 
   def initialize(title, price)
@@ -13,18 +17,18 @@ class MenuItem
     @price = price
   end
 
-  def tagline(length)
+  def menu_string(length = COL_WIDTH)
     raise "title and price too long" if content_longer_than? length
-    "#{title} #{tagline_fill(length)} #{pretty_price}"
+    "#{title} #{fill(length)} #{pretty_price}"
   end
-
+  
   private
 
   def pretty_price
     "£#{'%.02f' % price}"
   end
 
-  def tagline_fill(length, char = '.')
+  def fill(length, char = '.')
     ''.ljust(length - content_length, char)
   end
 
