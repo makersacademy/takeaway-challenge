@@ -67,10 +67,14 @@ First, install download and install ngork. Then run
 ```
 ./ngrok http 4567
 ```
-When ngrok runs, you get a randomly generated URI, such as https://42a3b352.ngrok.io which must be entered into the Twilio console for your Twilio number to receive texts.
+When ngrok runs, you get a randomly generated URI, such as https://42a3b352.ngrok.io which must be entered into the Twilio console for your Twilio number to receive texts. You also have to append /sms to the URI you submit to TWilio.
 
 Then, in the project directory run
 ```
 ruby app.rb
 ```
 Now the app is listening for texts and you can text an order in the same format that the above `parse_order` takes an argument, and you will receive a text in the same format as above.
+
+Example of this in use:
+
+![gif](https://thumbs.gfycat.com/CostlyDeafeningJohndory-size_restricted.gif)
