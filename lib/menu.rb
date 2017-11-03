@@ -7,7 +7,7 @@ class Menu
   def initialize
     @menu = menu
   end
-
+  
   def menu
     menu = []
     CSV.foreach("menu.csv") do |row|
@@ -16,5 +16,14 @@ class Menu
     end
     menu
   end
+
+  def print
+    @menu.each do |x|
+      puts "#{x[:name]} #{x[:price]}"
+    end
+  end
+
+  private
+
 
 end

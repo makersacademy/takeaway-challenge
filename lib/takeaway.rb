@@ -6,7 +6,7 @@ class Takeaway
 
   attr_reader :menu, :order
 
-  def initialize(text = Text.new, billing = Billing.new, menu = Menu.new.menu)
+  def initialize(text = Text.new, billing = Billing.new, menu = Menu.new)
     @menu = menu
     @order = [{ total: 0 }]
     @text = text
@@ -18,6 +18,10 @@ class Takeaway
       amount, word = x.split(' ')
       choose(word, amount.to_i)
     end
+  end
+
+  def print_menu
+    @menu.print
   end
 
   def check_sum
@@ -36,7 +40,7 @@ class Takeaway
   end
 
   def choose(query, quantity = 1)
-    selection = @menu.find { |x| x[:name].downcase.include?(query.downcase) }
+    selection = @menu.menu.find { |x| x[:name].downcase.include?(query.downcase) }
     raise 'Please choose something from the menu' unless selection
     selection[:quantity] = quantity
     add_to_order(selection)
