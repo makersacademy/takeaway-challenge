@@ -23,7 +23,4 @@ class Menu
     end
   end
 
-  private
-
-
 end
