@@ -4,7 +4,15 @@ require 'menuitem'
 
 describe MenuItem do
 
-  let(:menuitem) { described_class.new('mushy peas', 5) }
+  # mocking Money object
+  let(:price) { '£5.50' }
+  let(:money) { double(:money, format: price, to_f: 5.5) }
+  let(:moneyclass) { double(:moneyclass, new: money) }
+
+  let(:menuitem) { 
+    described_class.new('mushy peas', 550, money_class: moneyclass) 
+  }
+
   subject { menuitem }
 
   describe '#initialize' do
@@ -13,46 +21,40 @@ describe MenuItem do
         expect(subject.title).to eq 'mushy peas'
       end
 
-      it 'has price' do
-        expect(subject.price).to eq 5
+      it 'has price object' do
+        expect(subject.price_object).to eq money
       end
     end
   end
 
-  describe '#menu_string' do
-    context 'with line of normal length' do
-      subject { menuitem.menu_string(40) }
+  describe '#price' do
+    context 'when creating price' do
+      after(:each) { subject.price }
 
-      it 'starts with title' do
-        expect(subject).to start_with 'mushy peas'
-      end
-
-      it 'ends with pretty price' do
-        expect(subject).to end_with '£5.00'
-      end
-
-      it 'is 30 characters long' do
-        expect(subject.length).to eq 40
-      end
-
-      it 'is one line long' do
-        expect(subject).to_not include "\n"
+      it 'converts price object to string' do
+        expect(subject.price_object).to receive(:format)
       end
     end
 
-    context 'with line of excessive length' do
-      subject { described_class.new('a' * 50, 5) }
+    context 'after creating formatted price' do
+      it 'returns formatted price' do
+        expect(subject.price).to eq price
+      end
+    end
+  end
 
-      it 'raises error' do
-        expect { subject.menu_string(30) }.to raise_error RuntimeError
+  describe '#value' do
+    context 'when creating price' do
+      after(:each) { subject.value }
+
+      it 'converts price object to float' do
+        expect(subject.price_object).to receive(:to_f)
       end
     end
 
-    context 'when called without explicit length' do
-      subject { menuitem.menu_string }
-
-      it 'creates line of length 30' do
-        expect(subject.length).to eq 30
+    context 'after creating formatted price' do
+      it 'returns 5.5' do
+        expect(subject.value).to eq 5.5
       end
     end
   end

@@ -1,42 +1,28 @@
 #!/usr/bin/env ruby
 
+require 'money'
+
+# configures Money object to avoid known bug
+# see: https://github.com/RubyMoney/money/issues/593
+
+Money.use_i18n = false
+
 # The MenuItem class represents a single item on a menu - some sort
 # of dish or drink.
 
 class MenuItem
-  attr_reader :title, :price
+  attr_reader :title, :price_object
 
-  # TODO
-  # wrapping for multiline items
-  # string method for itemisation
-
-  COL_WIDTH = 30
-
-  def initialize(title, price)
+  def initialize(title, price, money_class: Money)
     @title = title
-    @price = price
+    @price_object = money_class.new(price)
   end
 
-  def menu_string(length = COL_WIDTH)
-    raise "title and price too long" if content_longer_than? length
-    "#{title} #{fill(length)} #{pretty_price}"
-  end
-  
-  private
-
-  def pretty_price
-    "£#{'%.02f' % price}"
+  def price
+    price_object.format
   end
 
-  def fill(length, char = '.')
-    ''.ljust(length - content_length, char)
-  end
-
-  def content_length
-    title.length + pretty_price.length + 2 # for spacing
-  end
-
-  def content_longer_than?(length)
-    content_length > length
+  def value
+    price_object.to_f
   end
 end
