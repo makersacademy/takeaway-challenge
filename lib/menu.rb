@@ -21,8 +21,8 @@ class Menu
     @menu[number - 1]
   end
 
-  def send_dish_price(number)
-    @menu[number - 1].price.to_i
+  def in_menu?(dish)
+    @menu.include?(dish)
   end
 
 private

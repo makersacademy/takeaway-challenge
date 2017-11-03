@@ -4,7 +4,6 @@ require 'csv'
 describe Menu do
 
   subject(:menu) { Menu.new }
-  subject(:assertions) { Assertions.new }
 
   CSV_PATH = File.open(File.dirname(__FILE__) + '/menu.csv')
 
@@ -14,7 +13,7 @@ describe Menu do
         [dish.description, dish.price] }
       csv_file = []
       CSV.foreach(CSV_PATH) { |line|
-        csv_file << line }
+        csv_file << [line[0], line[1].to_i] }
       expect(dish_list).to eq csv_file
     end
   end
@@ -29,13 +28,17 @@ describe Menu do
     end
   end
 
-  context 'Returning dish info' do
+  context 'Retrieves dish info' do
     it 'receives a number and sends corresponding dish from @menu' do
       expect(menu.send_dish(1).description).to eq 'Noodles'
     end
 
-    it 'receives a number and sends corresponding dish price' do
-      expect(menu.send_dish_price(1)).to eq 6
+    it 'returns true if a dish is part of the menu array' do
+      expect(menu.in_menu?(menu.menu[1])).to eq true
+    end
+
+    it 'returns false if a dish is part of the menu array' do
+      expect(menu.in_menu?("X")).to eq false
     end
   end
 

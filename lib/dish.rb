@@ -5,7 +5,7 @@ class Dish
 
   def initialize(description, price)
     @description = description
-    @price = price
+    @price = price.to_i
   end
 
 end

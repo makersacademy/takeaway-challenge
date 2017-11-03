@@ -1,21 +1,16 @@
 require 'order'
 
-
 describe Order do
 
+  let(:menu) { double('menu', send_dish: dish, send_dish_price: 10, in_menu?: true) }
+  let(:dish) { double('dish', description: 'galinhas', price: 10) }
 
-  subject(:order) { Order.new }
-  subject(:order_with_dish) { Order.new }
-
-  let(:dish) { double('dish') }
+  subject(:order) { Order.new(menu) }
+  subject(:order_with_dish) { Order.new(menu) }
 
   before do
-    allow(dish).to receive(:num).and_return(1)
-    allow(dish).to receive(:description).and_return("galinhas")
-    allow(dish).to receive(:price).and_return(10)
     order_with_dish.add_dish(dish)
   end
-
 
   context 'Initialization' do
 
@@ -34,7 +29,6 @@ describe Order do
     end
 
   end
-
 
   context 'Add/Remove methods' do
 
@@ -58,6 +52,11 @@ describe Order do
         order_with_dish.remove_dish(dish)
       end
 
+      it 'raises an error when asked to remove a dish not in order' do
+        allow(order.menu).to receive(:in_menu?).and_return(false)
+        expect { order.add_dish(dish) }.to raise_error('Invalid dish number')
+      end
+
       it 'removes dish from order array' do
         expect(order_with_dish.order).to_not include dish
       end
@@ -66,20 +65,23 @@ describe Order do
         expect(order.total).to eq 0
       end
 
+      it 'raises an error when asked to remove a dish not in order' do
+        allow(order.order).to receive(:include?).and_return(false)
+        expect { order.remove_dish(dish) }.to raise_error('Dish not in order')
+      end
+
     end
 
   end
 
-
-  context 'printing order' do
+  context 'printing the order' do
     it 'correctly prints order' do
       2.times { order.add_dish(dish) }
-      message_1 = "1. galinhas - £10\n"
-      message_2 = "2. galinhas - £10\n"
-      message_3 = "Order is open\n"
-      message_4 = "Total: £20\n"
-      message = message_1 + message_2 + message_3 + message_4
-      expect { order.show }.to output(message).to_stdout
+      message = ["1. galinhas - £10\n"]
+      message << "2. galinhas - £10\n"
+      message << "Order is open\n"
+      message << "Total: £20\n"
+      expect { order.show }.to output(message.join).to_stdout
     end
   end
 

@@ -25,6 +25,7 @@ describe Takeaway do
     before do
       allow(takeaway.order).to receive_messages(add_dish: 'Dish Added',
         remove_dish: 'Dish Removed', show: 'Order Details')
+      allow(takeaway).to receive_messages(send_text: 'Message sent')
     end
 
     it 'Requests Order to add a dish' do
@@ -35,7 +36,7 @@ describe Takeaway do
       expect(takeaway.remove_dish(1)).to eq 'Dish Removed'
     end
 
-    it 'Requests Order to print its detials' do
+    it 'Requests Order to print its details' do
       expect(takeaway.show_order).to eq 'Order Details'
     end
 
@@ -44,7 +45,5 @@ describe Takeaway do
       expect(takeaway.order_history).not_to be_empty
     end
   end
-
-
 
 end
