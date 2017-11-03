@@ -13,9 +13,9 @@ Money.use_i18n = false
 class MenuItem
   attr_reader :title, :price_object
 
-  def initialize(title, price, money_class: Money)
+  def initialize(title, price, currency: 'GBP', money_class: Money)
     @title = title
-    @price_object = money_class.new(price)
+    @price_object = money_class.new(price, currency)
   end
 
   def price

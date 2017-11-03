@@ -4,14 +4,13 @@ require 'menuitem'
 
 describe MenuItem do
 
-  # mocking Money object
   let(:price) { '£5.50' }
   let(:money) { double(:money, format: price, to_f: 5.5) }
-  let(:moneyclass) { double(:moneyclass, new: money) }
+  let(:money_class) { double(:money_class, new: money) }
 
-  let(:menuitem) { 
-    described_class.new('mushy peas', 550, money_class: moneyclass) 
-  }
+  let(:kwargs) { {money_class: money_class} }
+
+  let(:menuitem) { described_class.new('mushy peas', 550, **kwargs) }
 
   subject { menuitem }
 
@@ -23,6 +22,23 @@ describe MenuItem do
 
       it 'has price object' do
         expect(subject.price_object).to eq money
+      end
+    end
+
+    context 'when creating price object' do
+      before(:each) { kwargs[:currency] = 'USD' }
+      after(:each) { described_class.new('dish', 100, **kwargs) }
+
+      it 'creates price object with correct arguments' do
+        expect(money_class).to receive(:new).with(100, 'USD')
+      end
+    end
+
+    context 'when created with default currency' do
+      after(:each) { described_class.new('dish', 100, **kwargs) }
+
+      it 'is denominated in GBP' do
+        expect(money_class).to receive(:new).with(100, 'GBP')
       end
     end
   end
