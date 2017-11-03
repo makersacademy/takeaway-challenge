@@ -6,4 +6,16 @@ class Restaurant
     @menu = []
   end
 
+  def add(dish)
+    @menu << dish
+  end
+
+  def remove(dish)
+    @menu.delete(dish)
+  end
+
+  def print_menu
+    @menu.each { |item| puts "#{item.name}: £#{item.price}" }
+  end
+
 end

@@ -1,6 +1,6 @@
-require "dishes"
+require "dish"
 
-describe Dishes do
+describe Dish do
 
   subject(:dish) { described_class.new("burger", 7) }
 
