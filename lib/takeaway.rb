@@ -33,7 +33,7 @@ class Takeaway
     message = 'Amount entered differ from total'
     raise RuntimeError, message unless sum == orders[0].total
     puts 'Thank you! Your order was placed and will be delivered before 18:52'
-    @orders << Order.new
+    @orders.unshift(Order.new)
   end
 
   private

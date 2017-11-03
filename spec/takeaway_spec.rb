@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   # Takeaways
-  let(:takeaway) do
+  let(:subject) do
     described_class.new(menu_class: menu_class, order_class: order_class)
   end
 
@@ -14,10 +14,7 @@ describe Takeaway do
   let(:menu_class) { double(:menu_class, new: some_menu) }
   let(:order_class) { double(:order_class, new: some_order) }
 
-  subject { takeaway }
-
   describe '#initialize' do
-    subject { takeaway }
     it 'has some menu preloaded' do
       expect(subject.menu).to eq(some_menu)
     end
@@ -28,14 +25,12 @@ describe Takeaway do
   end
 
   describe '#show_menu' do
-    subject { takeaway }
     it 'prints the menu in a fancy way' do
       expect(subject.show_menu).to eq([dish])
     end
   end
 
   describe '#order' do
-    subject { takeaway }
     after(:each) { subject.order("Double_trouble", 2) }
     it 'sends the ordered dish and quantity to the order' do
       expect(some_order).to receive(:add).with(dish, 2)
@@ -43,7 +38,6 @@ describe Takeaway do
   end
 
   describe '#checkout' do
-    subject { takeaway }
     it 'prints the checkout in a fancy way' do
       expect(subject.checkout).to eq nil
     end
