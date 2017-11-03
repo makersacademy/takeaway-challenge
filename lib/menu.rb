@@ -8,7 +8,7 @@ class Menu
 
   class << self
     def from_csv(path, menuitem_class = MenuItem, reader = CSV)
-      self.new(get_items(path, menuitem_class, reader))
+      new(get_items(path, menuitem_class, reader))
     end
 
     private
