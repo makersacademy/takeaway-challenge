@@ -1,11 +1,12 @@
 require 'billing'
 
 describe Billing do
-  order = [
-            {name: 'Pizza', price: 8, quantity: 3},
-            {name: 'Donner Wrap', price: 6, quantity: 2},
-            {name: 'Nuggets', price: 3, quantity: 5}
-          ]
+  let(:order) do [
+                    { name: 'Pizza', price: 8, quantity: 3 },
+                    { name: 'Donner Wrap', price: 6, quantity: 2 },
+                    { name: 'Nuggets', price: 3, quantity: 5 }
+                  ]
+  end
 
   describe "checking totals" do
 
@@ -17,7 +18,7 @@ describe Billing do
 
     describe "#check_sum" do
       it 'raises error if sum does not match up with check sum' do
-        expect{subject.check_sum(order, 32)}.to raise_error "Sum is not correct!"
+        expect { subject.check_sum(order, 32) }.to raise_error "Sum is not correct!"
       end
 
       it 'returns true when total matches up with check_sum' do
