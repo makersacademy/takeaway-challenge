@@ -27,4 +27,8 @@ class Menu
   def get(index)
     @items[index]
   end
+
+  def format(formatter, *args)
+    items.map { |i| formatter.format(i, *args) }.join("\n")
+  end
 end
