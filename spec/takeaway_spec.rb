@@ -11,10 +11,15 @@ describe Takeaway do
     menu
   end
 
-  describe '#menu' do
-    it 'prints list of food items with prices' do
-      p menu
-      expect(subject.menu).to eq menu
+  describe '#menu.menu' do
+    it 'returns list of food items with prices' do
+      expect(subject.menu.menu).to eq menu
+    end
+  end
+
+  describe '#print_menu' do
+    it 'prints menu' do
+      
     end
   end
 
