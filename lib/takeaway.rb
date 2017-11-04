@@ -3,7 +3,8 @@ class TakeAway
   attr_reader :menu_options, :sum_total, :quantity, :chosen_meal
 
   def initialize
-    @basket_sumarry = []
+    @basket_summary = []
+    @single_order = {}
     @sum_total = 0
   end
 
@@ -18,22 +19,27 @@ class TakeAway
     end
   end
 
-  def order(chosen_meal, quantity=1)
-    @sum_total += menu_options[chosen_meal] * quantity.to_i
-    add_to_basket
-    printe_message
+  def order(chosen_meal, quantity = 1)
+    @single_order = { quantity: quantity, chosen_meal: chosen_meal }
+    @basket_summary << @single_order
+    p print_message
+    @single_order = {}
+
   end
 
-  def add_to_basket
-    @basket_summary << "#{quantity} of #{chosen_meal}"
+  def sum_total
+    @sum_total += menu_options[:chosen_meal] * @single_order[:quantity]
   end
+  # def add_to_basket
+  #   @basket_summary.push( {quantity: quantity, chosen_meal: chosen_meal })
+  # end
 
   def print_message
-    print "x #{quantity} #{chosen_meal} added to your basket."
+    "x #{@single_order[:quantity]} #{@single_order[:chosen_meal]} added to your basket."
   end
 
-  def basket_sumarry
-    @basket_summary.each do |meal, quantity|
+  def basket_summary
+    @basket_summary.each do |quantity, meal|
       p "#{quantity} of #{meal},"
     end
   end

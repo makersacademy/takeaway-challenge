@@ -11,7 +11,7 @@ describe TakeAway do
   end
 
   describe ' #list_of_dishes' do
-    it 'prints listed #menu_options with prices' do
+    it 'prints listed menu_options with prices' do
       expect(subject.list_of_dishes).to eq(subject.menu_options)
     end
   end
@@ -33,10 +33,7 @@ describe TakeAway do
 
     it ' should be added to basket summary' do
       subject.order('Miso Soup', 2)
-      subject.add_to_basket
-      string = "#{quantity} of #{chosen_meal}"
-      expect(subject.basket_sumarry).to include(string)
-      expect(subject.order).to eq(message)
+      expect(subject.basket_summary).to eq([{ quantity: 2, chosen_meal: 'Miso Soup' }])
     end
 
   end
