@@ -5,7 +5,8 @@ require 'order'
 describe Order do
 
   let(:formatter) { double(:formatter, format: 'a line') }
-  let(:menuitem) { double(:menuitem, title: 'dish', value: 2) }
+  let(:menuitem) { double(:menuitem, title: 'dish', price_object: 2) }
+  let(:otheritem) { double(:menuitem, price_object: 5) }
   let(:money_class) { double(:money_class, new: 0) }
 
   let(:kwargs) { { currency: 'GBP', money_class: money_class } }
@@ -56,10 +57,10 @@ describe Order do
     end
 
     context 'when adding item values' do
-      before(:each) { subject.items.update({ 5 => 6, 3 => 4 }) }
+      before(:each) { subject.items.update({ menuitem => 4, otheritem => 5}) }
 
       it 'sums values multiplied by quantity' do
-        expect(subject.total).to eq 42
+        expect(subject.total).to eq 33
       end
     end
   end

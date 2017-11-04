@@ -25,7 +25,7 @@ class Order
   end
 
   def total
-    items.reduce(zero) { |sum, pair| sum + pair.reduce(1, :*) }
+    items.reduce(zero) { |sum, pair| sum + subtotal(*pair) }
   end
 
   def format(formatter = ItemisedFormat.new, *args)
@@ -33,6 +33,10 @@ class Order
   end
     
   private
+
+  def subtotal(item, count)
+    item.price_object * count
+  end
 
   def zero
     @money_class.new(0, currency)
