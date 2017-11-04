@@ -7,7 +7,7 @@ describe Restaurant do
   describe '#menu' do
     context 'when requesting to see menu' do
       it 'should show menu' do
-        expect(restaurant.menu).to eq restaurant.menu
+        expect(restaurant.steakhouse).to eq restaurant.steakhouse
       end
     end
   end
