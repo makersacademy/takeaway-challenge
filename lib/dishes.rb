@@ -2,17 +2,14 @@ require 'csv'
 
 class Dishes
 
-
-  attr_reader :menu
-
   def initialize
     @menu = []
   end
 
-
   def print_menu
     list_of_dishes
     print_each_dish
+    @menu = []
   end
 
   def selecting_dish(dish)

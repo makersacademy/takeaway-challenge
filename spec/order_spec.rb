@@ -23,6 +23,5 @@ describe Order do
       expect(subject.ordered_list[1]).to eq ({:Banana_shake=>3.2})
       expect(subject.ordered_list[-1]).to eq ({:Nutella_waffles=>2.0})
     end
-
   end
 end
