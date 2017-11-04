@@ -1,21 +1,23 @@
 class Menu
 
-  def initialize
-    @info = [[:Satay, 5.00], [:Kuih, 3.00], [:RotiCanai, 6.00], [:Bihun, 8.00]]
+  attr_reader :info 
+
+def initialize
+  @info = {"Satay" => 5, "RotiCanai" => 9,"Kuih" => 3,"NasiLemak" => 10}
+end
+
+def read_menu
+  @info.each do |key, value|
+    puts "#{key}, $#{value}"
   end
+end
 
-  def print_menu_info
-    @info.each_with_index do |food, num|
-      puts "#{num + 1}. #{food[0]}, $#{food[1]}"
-    end
+def order(food)
+  if @info.has_key?(food)
+  p "You have added #{food} to your basket"
+else
+  p "This is Malaysian restaurant. We don't have that"
   end
-
-  def select_order(*foods)
-    foods.each do |food|
-      puts "#{@info[food][0]}"
-    end
-  end
-
-
+end
 
 end

@@ -16,3 +16,6 @@ User : Customer
 |text                    | receive (message)  | A list of dishes and prices|
 
 ## Supported documentation
+
+https://stackoverflow.com/questions/1227571/how-to-iterate-over-a-hash-in-ruby
+https://ruby-doc.org/core-2.4.2/Hash.html#method-i-key
