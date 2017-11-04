@@ -57,11 +57,11 @@ describe Menu do
       after(:each) { subject.format(formatter, :arg) }
 
       it 'formats first item with other arguments' do
-        expect(formatter).to receive(:format).with(fish_item, :arg)
+        expect(formatter).to receive(:format).with(0, fish_item, :arg)
       end
 
       it 'formats second item with other arguments' do
-        expect(formatter).to receive(:format).with(chips_item, :arg)
+        expect(formatter).to receive(:format).with(1, chips_item, :arg)
       end
     end
 
