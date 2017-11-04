@@ -6,8 +6,16 @@ class Menu
 
   def print_menu_info
     @info.each_with_index do |food, num|
-      puts "#{num + 1} #{food[0]}, $#{food[1]}"
+      puts "#{num + 1}. #{food[0]}, $#{food[1]}"
     end
   end
+
+  def select_order(*foods)
+    foods.each do |food|
+      puts "#{@info[food][0]}"
+    end
+  end
+
+
 
 end
