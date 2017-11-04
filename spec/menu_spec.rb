@@ -41,13 +41,13 @@ describe Menu do
   end
 
   describe '#get' do
-    context 'when accessing items by index' do
+    context 'when accessing items by index (starting from 100)' do
       it 'can get 0th item' do
-        expect(subject.get(0)).to eq fish_item
+        expect(subject.get(100)).to eq fish_item
       end
 
       it 'can get 1st item' do
-        expect(subject.get(1)).to eq chips_item
+        expect(subject.get(101)).to eq chips_item
       end
     end
   end
@@ -57,11 +57,11 @@ describe Menu do
       after(:each) { subject.format(formatter, :arg) }
 
       it 'formats first item with other arguments' do
-        expect(formatter).to receive(:format).with(0, fish_item, :arg)
+        expect(formatter).to receive(:format).with(100, fish_item, :arg)
       end
 
       it 'formats second item with other arguments' do
-        expect(formatter).to receive(:format).with(1, chips_item, :arg)
+        expect(formatter).to receive(:format).with(101, chips_item, :arg)
       end
     end
 

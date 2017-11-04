@@ -6,6 +6,7 @@ require './lib/formats/menuformat'
 
 class Menu
   attr_reader :items
+  START = 100
 
   class << self
     def from_csv(path, menuitem_class = MenuItem, reader = CSV)
@@ -26,12 +27,12 @@ class Menu
   end
 
   def get(index)
-    @items[index]
+    @items[index - START]
   end
 
   def format(formatter = MenuFormat.new, *args)
     items.each_with_index.map do |item, index| 
-      formatter.format(index, item, *args)
+      formatter.format(index + START, item, *args)
     end.join("\n")
   end
 end
