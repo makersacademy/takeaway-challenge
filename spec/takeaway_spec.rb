@@ -51,7 +51,7 @@ describe Takeaway do
 
   describe '#finalize_order' do
     it 'sends text' do
-      # expect(subject.finalize_order).to respond_to(text.send_text(1)).with(1).argument
+      expect(subject.finalize_order).to respond_to(:send_text).with(1).argument
     end
   end
 end
