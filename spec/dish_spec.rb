@@ -1,14 +1,14 @@
-require './lib/dish'
+require './lib/dish.rb'
 
 describe Dish do
   NAME = 'korma'
   PRICE = 8
 
-  subject(:dish) { Dish.new(NAME, PRICE) }
+  subject(:Dish) { Dish.new(NAME, PRICE) }
 
   describe 'initilize' do
     it 'should create a Dish with a name' do
-      expect(dish.name).to eq NAME
+      expect(subject.name).to eq NAME
     end
 
     it 'should create a Dish with a price' do
