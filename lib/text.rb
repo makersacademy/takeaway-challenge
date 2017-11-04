@@ -25,13 +25,21 @@ class Text
         #{message_body(total)}
       </Message>
     </Response>"
+  end  
+
+  def send_menu(menu)
+    "<Response>
+      <Message>
+        #{menu}
+      </Message>
+    </Response>"
   end
 
   private
 
   def message_body(total)
     [
-      "Your order total is #{total} and you will",
+      "Your order total is £#{total} and you will",
       " receive it no later than #{$hour_later}. Thank you!"
     ].join("")
   end
