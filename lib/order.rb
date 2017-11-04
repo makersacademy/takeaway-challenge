@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'money'
+require './lib/formats'
 
 # configures Money object to avoid known bug
 # see: https://github.com/RubyMoney/money/issues/593
@@ -27,7 +28,7 @@ class Order
     items.reduce(zero) { |sum, pair| sum + pair.reduce(1, :*) }
   end
 
-  def format(formatter, *args)
+  def format(formatter = ItemisedFormat.new, *args)
     items.map { |pair| formatter.format(*pair, *args) }.join("\n")
   end
     

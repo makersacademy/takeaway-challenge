@@ -2,6 +2,7 @@
 
 require 'csv'
 require './lib/menuitem'
+require './lib/formats'
 
 class Menu
   attr_reader :items
@@ -28,7 +29,9 @@ class Menu
     @items[index]
   end
 
-  def format(formatter, *args)
-    items.map { |item| formatter.format(item, *args) }.join("\n")
+  def format(formatter = MenuFormat.new, *args)
+    items.each_with_index.map do |item, index| 
+      formatter.format(index, item, *args)
+    end.join("\n")
   end
 end
