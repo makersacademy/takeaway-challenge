@@ -20,7 +20,16 @@ def order(order_option)
   case order_option
    when 1
     @option = "Satay"
-    @current_order[:food] =  @option 
+    @current_order[:food] = @option
+  when 2
+    @option = "RotiCanai"
+    @current_order[:food] = @option
+  when 3
+    @option = "Kuih"
+    @current_order[:food] = @option
+  when 4
+    @option = "Nasi Lemak"
+    @current_order[:food] = @option
   end
 end
 
