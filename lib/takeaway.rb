@@ -21,7 +21,7 @@ class Takeaway
   end
 
   def print_menu
-    @menu.print
+    @menu.items
   end
 
   def check_sum

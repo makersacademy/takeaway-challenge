@@ -17,10 +17,14 @@ class Menu
     menu
   end
 
-  def print
-    @menu.each do |x|
-      puts "#{x[:name]} #{x[:price]}"
+  def items
+    items = []
+    CSV.foreach("menu.csv") do |row|
+      name, price = row
+      # menu << { name: name, price: price.to_i }
+      items << "#{name} £#{price}"
     end
+    items.join("\n")
   end
 
 end
