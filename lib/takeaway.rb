@@ -16,10 +16,12 @@ class TakeAway
   def add_to_basket(dessert)
     raise 'Unknown item' unless in_menu?(dessert)
     puts 'How many of these would you like?'
-    amount = gets.chomp
+    amount = gets
     item = @menu.dishes.select { |dish| dish.include?(dessert) }.pop
     amount.to_i.times{@basket << item}
-    @basket.each { |item| item.each { |name, price| @total += price } }
+    @replacement = []
+    amount.to_i.times { @replacement << item}
+    @replacement.each { |dessert| dessert.each{ |x,y| @total += y } }
   end
 
   def remove_from_basket(dessert)
@@ -38,8 +40,8 @@ class TakeAway
   def see_basket
     @basket.each { |item| item.each { |name, price|
       puts name
-    } }
-    puts "total: £#{@total}"
+      } }
+    puts "Your is total: £#{@total}"
     return "total: £#{@total}"
   end
 
