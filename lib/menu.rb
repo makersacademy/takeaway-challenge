@@ -1,23 +1,20 @@
 class Menu
 
-  attr_reader :info 
+attr_reader :info
 
 def initialize
-  @info = {"Satay" => 5, "RotiCanai" => 9,"Kuih" => 3,"NasiLemak" => 10}
+  @info = {:Satay => 5, :RotiCanai => 9,:Kuih => 3,:NasiLemak => 10}
 end
 
 def read_menu
-  @info.each do |key, value|
-    puts "#{key}, $#{value}"
-  end
+  puts
+  puts "Malaysian Express - Authentic Malaysian"
+  puts "1. Satay - $5.00"
+  puts "2. RotiCanai - $9.00"
+  puts "3. Kuih - $3.00"
+  puts "4. Nasi Lemak - $10"
+  return "Choose Option for your order!"
 end
 
-def order(food)
-  if @info.has_key?(food)
-  p "You have added #{food} to your basket"
-else
-  p "This is Malaysian restaurant. We don't have that"
-  end
-end
 
 end
