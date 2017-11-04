@@ -25,5 +25,11 @@ describe TakeAway do
       take_away.add_to_basket('Apple Crumble')
       expect(take_away.basket).to contain_exactly({"Apple Crumble"=>6.99})
   end
+  describe '#see_basket' do
+    it 'should show me the items of the basket and the total' do
+      take_away.add_to_basket('Chocolate Melt')
+      expect(take_away.see_basket).to eq 'total: £7.99'
+    end
+  end
 end
 end

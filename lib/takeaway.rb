@@ -5,6 +5,7 @@ class TakeAway
   def initialize
     @basket = []
     @menu = Menu.new
+    @total = 0
   end
 
   def read_menu
@@ -13,7 +14,13 @@ class TakeAway
 
   def add_to_basket(dessert)
   @basket << @menu.dishes.select{|dish| dish.include?(dessert)}.pop
-
   end
 
+  def see_basket
+    @basket.each{|item| item.each{|name, price|
+      @total += price
+      puts name}}
+      puts "total: £#{@total}"
+      return "total: £#{@total}"
+  end
 end
