@@ -16,20 +16,20 @@ class Order
 
   class << self
     def from_selection(menu, hash, **kwargs)
-      order = new(**kwargs)
-      to_menuitems(menu, hash).each { |item, count| order.add(item, count) }
-      order
+      items = Hash[hash.map { |index, count| [menu.get(index), count] }]
+      validate_order(new(existing: items, **kwargs))
     end
 
     private
 
-    def to_menuitems(menu, hash)
-      Hash[hash.map { |index, count| [menu.get(index), count] }]
+    def validate_order(order)
+      raise RangeError unless order.items.keys.all?
+      order
     end
   end
 
-  def initialize(currency: 'GBP', money_class: Money)
-    @items = Hash.new { |hash, key| hash[key] = 0 }
+  def initialize(existing: {}, currency: 'GBP', money_class: Money)
+    @items = Hash.new { |hash, key| hash[key] = 0 }.update(existing)
     @currency = currency
     @money_class = money_class
   end

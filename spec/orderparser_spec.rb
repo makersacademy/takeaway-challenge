@@ -51,4 +51,40 @@ describe OrderParser do
       end 
     end
   end
+
+  describe '#get_errors' do
+    context 'when no errors present' do
+      subject { parser.get_errors(string) }
+
+      it 'returns empty string' do
+        expect(subject).to eq ''
+      end
+    end
+
+    context 'when errors present' do
+      subject { parser.get_errors('100 100xx4 100x4 4') }
+
+      it 'returns problematic sections' do
+        expect(subject).to eq 'xx4 4'
+      end
+    end
+  end
+
+  describe '#get_duplicates' do
+    context 'when no duplicates' do
+      subject { parser.get_duplicates(string) }
+
+      it 'returns empty array' do
+        expect(subject).to eq []
+      end
+    end
+
+    context' when duplicates present' do
+      subject { parser.get_duplicates('100 101x1 100x3 101') }
+
+      it 'returns list of duplicates' do
+        expect(subject).to eq ['100', '101']
+      end
+    end
+  end
 end

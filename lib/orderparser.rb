@@ -27,15 +27,27 @@ class OrderParser
     Hash[@matches.map { |match| unpack(match) }]
   end
 
+  def get_errors(order)
+    order.gsub(@regex, '')
+  end
+
+  def get_duplicates(order)
+    get_matches(order)
+    item_numbers.select { |number| item_numbers.count(number) > 1 }.uniq
+  end
+
   private
 
   def get_matches(order)
     @matches = order.to_enum(:scan, @regex).map { Regexp.last_match }
   end
 
+  def item_numbers
+    @matches.map { |match| match.captures.first.strip }
+  end
+
   def no_duplicates?
-    captures = @matches.map { |match| match.captures.first.strip }
-    captures.uniq.length == captures.length
+    item_numbers.uniq.length == item_numbers.length
   end
 
   def matches_whole?(order)

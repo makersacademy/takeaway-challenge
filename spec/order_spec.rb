@@ -17,7 +17,7 @@ describe Order do
   subject { order }
 
   describe '#initialize' do
-    context 'when created' do
+    context 'when created with no arguments' do
       it 'has items hash' do
         expect(subject.items).to be_a Hash
       end
@@ -28,6 +28,22 @@ describe Order do
       
       it 'has currency' do
         expect(subject.currency).to eq 'GBP'
+      end
+
+      it 'implements missing-value behaviour' do
+        expect(subject.items[:c]).to eq 0
+      end
+    end
+
+    context 'when given hash' do
+      subject { described_class.new(existing: { b: 2 }).items }
+
+      it 'uses given hash' do
+        expect(subject).to eq({ b: 2 })
+      end
+      
+      it 'still implements missing-value behaviour' do
+        expect(subject[:c]).to eq 0
       end
     end
   end
@@ -44,6 +60,16 @@ describe Order do
 
       it 'has 1 of item 2' do
         expect(subject.items[:b]).to eq 1
+      end
+    end
+
+    context 'when receiving unexpected items' do
+      subject { described_class } 
+      before(:each) { allow(menu).to receive(:get).and_return(nil) }
+
+      it 'raises error' do
+        expect { subject.from_selection(menu, { a: 1 }) }
+          .to raise_error RangeError
       end
     end
   end
