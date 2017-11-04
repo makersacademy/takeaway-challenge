@@ -11,13 +11,13 @@ class Dishes
 
 
   def print_menu
-    list
+    list_of_dishes
     print_each_dish
   end
 
   def selecting_dish(dish)
     dish.capitalize!
-    list
+    list_of_dishes
     do_select(dish)
   end
 
@@ -35,7 +35,7 @@ private
     end
   end
 
-  def list
+  def list_of_dishes
     CSV.foreach('lib/dish_list.csv') do |line|
       dish = line[0]
       price = line[1]
