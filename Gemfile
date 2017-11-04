@@ -5,6 +5,7 @@ ruby '2.4.0'
 gem 'money'
 gem 'twilio-ruby'
 gem 'sinatra'
+gem 'thin'
 
 gem 'capybara'
 gem 'rake'
