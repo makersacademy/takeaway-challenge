@@ -16,7 +16,7 @@ describe Menu do
         expect(subject.dishes).to be_an_instance_of(Hash)
       end
       it "should return the dish pizza" do
-        expect(subject.dishes[1]).to eq([:pizza, 5])
+        expect(subject.dishes[:pizza]).to eq(5)
       end
     end
   end
