@@ -13,11 +13,16 @@ class Order
     @menu.print_menu
   end
 
+  def place_order(*ordered_dish)
+    ordered_dish.each do |dish|
+      @ordered_list << asks_for_dish(dish.to_s)
+    end
+  end
+
+  private
+
   def asks_for_dish(dish)
     @menu.selecting_dish(dish)
   end
 
-  def place_order(ordered_dish)
-    @ordered_list << asks_for_dish(ordered_dish)
-  end
 end
