@@ -1,19 +1,20 @@
 require 'twilio-ruby'
-
+require 'sinatra'
+require_relative 'credentials'
 
 class TextOrder
 
   def initialize
-    @account_sid = 'ACa7841a789acbfca82809d3388606513a'
-    @auth_token = '3076bdc095ad7d8dadeb9d7d8bf7f840'
+    @account_sid = SID
+    @auth_token = TOKEN
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
     @messages = []
   end
 
-  def send_text(message)
+  def send_text(message, client = TO)
     @messages << @client.messages.create(
-                  from: '+441888272043',
-                  to: '+447835039292',
+                  from: FROM,
+                  to: client,
                   body: message
                   )
     puts @messages.last.status

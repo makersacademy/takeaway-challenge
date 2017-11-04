@@ -9,9 +9,9 @@ describe Takeaway do
   let(:dish) { double('dish') }
 
   context 'Initialization' do
-      it 'initializes an empty @order_history array' do
-        expect(takeaway.order_history).to eq []
-      end
+    it 'initializes an empty @order_history array' do
+      expect(takeaway.order_history).to eq []
+    end
   end
 
   context 'Menu interaction methods' do

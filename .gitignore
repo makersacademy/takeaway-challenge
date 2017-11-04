@@ -2,3 +2,6 @@
 /coverage
 /spec/assertions.rb
 /esquema.txt
+/app.rb
+/lib/credentials.rb
+
