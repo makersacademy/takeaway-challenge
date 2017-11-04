@@ -14,6 +14,20 @@ Money.use_i18n = false
 class Order
   attr_reader :items, :currency
 
+  class << self
+    def from_selection(menu, hash, **kwargs)
+      order = new(**kwargs)
+      to_menuitems(menu, hash).each { |item, count| order.add(item, count) }
+      order
+    end
+
+    private
+
+    def to_menuitems(menu, hash)
+      Hash[hash.map { |index, count| [menu.get(index), count] }]
+    end
+  end
+
   def initialize(currency: 'GBP', money_class: Money)
     @items = Hash.new { |hash, key| hash[key] = 0 }
     @currency = currency

@@ -4,11 +4,14 @@ require 'order'
 
 describe Order do
 
+  # mock objects
+  let(:menu) { double(:menu) }
   let(:formatter) { double(:formatter, format: 'a line') }
   let(:menuitem) { double(:menuitem, title: 'dish', price_object: 2) }
   let(:otheritem) { double(:menuitem, price_object: 5) }
   let(:money_class) { double(:money_class, new: 0) }
 
+  # order objects
   let(:kwargs) { { currency: 'GBP', money_class: money_class } }
   let(:order) { described_class.new(**kwargs) }
   subject { order }
@@ -25,6 +28,22 @@ describe Order do
       
       it 'has currency' do
         expect(subject.currency).to eq 'GBP'
+      end
+    end
+  end
+
+  describe 'class #from_selection' do
+    context 'when creating from menu and item-quantity hash' do
+      before(:each) { allow(menu).to receive(:get).with(1).and_return(:a) }
+      before(:each) { allow(menu).to receive(:get).with(2).and_return(:b) }
+      subject { described_class.from_selection(menu, { 1 => 5, 2 => 1 }) }
+
+      it 'has 5 of item 1' do
+        expect(subject.items[:a]).to eq 5
+      end
+
+      it 'has 1 of item 2' do
+        expect(subject.items[:b]).to eq 1
       end
     end
   end
