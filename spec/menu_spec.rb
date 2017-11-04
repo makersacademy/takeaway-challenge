@@ -12,20 +12,20 @@ describe Menu do
   context 'ordering food & quantity' do
 
     it '#order should enable user to order Satay' do
-      subject.order(1)
-      expect(subject.order(1)).to eq ("Satay")
+      subject.order(1,2)
+      expect(subject.order(1,2)).to eq ({:food => "Satay", :quantity => 2})
     end
     it '#order should enable user to order RotiCanai' do
-      subject.order(2)
-      expect(subject.order(2)).to eq ("RotiCanai")
+      subject.order(2,2)
+      expect(subject.order(2,2)).to eq ({:food => "RotiCanai", :quantity => 2})
     end
     it '#order should enable user to order Kuih' do
-      subject.order(3)
-      expect(subject.order(3)).to eq ("Kuih")
+      subject.order(3,2)
+      expect(subject.order(3,2)).to eq ({:food => "Kuih", :quantity => 2})
     end
     it '#order shoudl enable user to order NasiLemak'do
-     subject.order(4)
-     expect(subject.order(4)).to eq ("Nasi Lemak")
+     subject.order(4,2)
+     expect(subject.order(4,2)).to eq ({:food => "Nasi Lemak", :quantity => 2})
    end
   end
 

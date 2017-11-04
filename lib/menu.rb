@@ -1,10 +1,10 @@
 class Menu
 
-attr_reader :info, :food
+attr_reader :info, :food, :current_order
 
 def initialize
   @info = { Satay: 5, RotiCanai: 9, Kuih: 3, NasiLemak: 10}
-  @current_order = { food: nil }
+  @current_order = { food: nil , quantity: nil }
 end
 
 def read_menu
@@ -16,20 +16,28 @@ def read_menu
   return "Choose Option for your order! (Input a Number)"
 end
 
-def order(order_option)
+def order(order_option, quantity = 0)
   case order_option
    when 1
     @option = "Satay"
     @current_order[:food] = @option
+    @current_order[:quantity] = quantity
+    p @current_order
   when 2
     @option = "RotiCanai"
     @current_order[:food] = @option
+    @current_order[:quantity] = quantity
+    p @current_order
   when 3
     @option = "Kuih"
     @current_order[:food] = @option
+    @current_order[:quantity] = quantity
+    p @current_order
   when 4
     @option = "Nasi Lemak"
     @current_order[:food] = @option
+    @current_order[:quantity] = quantity
+    p @current_order
   end
 end
 
@@ -37,6 +45,8 @@ def option(option)
   @option = option
 end
 
-
+def food_quantity(quantity)
+  @quantity = quantity
+end
 
 end
