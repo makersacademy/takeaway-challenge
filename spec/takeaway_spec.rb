@@ -67,6 +67,12 @@ describe TakeAway do
       take_away.empty_basket
       expect(take_away.basket).to be_empty
     end
+    it 'should set the total to 0' do
+      take_away.stub(:gets).and_return(1)
+      take_away.add_to_basket('Apple Crumble')
+      take_away.empty_basket
+      expect(take_away.total).to eq 0
+    end
   end
   # describe '#finalize_order' do
   #   it 'should send me a text that my order has been confirmed' do

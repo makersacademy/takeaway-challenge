@@ -25,11 +25,14 @@ class TakeAway
   end
 
   def remove_from_basket(dessert)
-    @basket.select { |item| item.each { |name, _| @basket.delete item if name == dessert } }
+    @basket.each { |item| item.each {|name, price| @total -= price if name == dessert}}
+    @basket.select { |item| item.each { |name, price| @basket.delete item if name == dessert } }
+
   end
 
   def empty_basket
     @basket = []
+    @total = 0
   end
   def finalize_order
     puts 'Your order has been noted and is now being processed. See you later!'
@@ -42,7 +45,7 @@ class TakeAway
       puts name
       } }
     puts "Your is total: £#{@total}"
-    return "total: £#{@total}"
+    return "total: £#{@total.round(2)}"
   end
 
   private
