@@ -8,8 +8,6 @@ describe Takeaway do
                       { name: 'Burger', price: 4, amount: 1 }
                     ]
                 end
-  let(:text) { Text.new }
-
 
   describe "#items" do
     it 'should initialize as an empty array' do
@@ -24,14 +22,13 @@ describe Takeaway do
   end
 
   describe '#choose_item' do
-
     it 'adds amount to total for chicken menu item' do
-      expect { subject.choose_item('Chicken') }
+      expect { subject.add_to_items('Chicken') }
         .to change { subject.total }.by(5)
     end
 
     it 'adds amount to total for burger menu item' do
-      expect { subject.choose_item("Burger") }
+      expect { subject.add_to_items("Burger") }
         .to change { subject.total }.by(4)
     end
   end
@@ -40,6 +37,15 @@ describe Takeaway do
     it 'adds hash to items array' do
       expect { subject.add_to_items('Chicken') }
         .to change { subject.items.length }.by(1)
+    end
+  end
+
+  describe '#check_total' do
+    context 'double checks total' do
+      it 'checks against previous total' do
+        expect(subject.check_total)
+          .to eq(subject.total)
+      end
     end
   end
 

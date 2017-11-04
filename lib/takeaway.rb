@@ -16,13 +16,8 @@ class Takeaway
     @order = order
   end
 
-  def choose_item(item)
-    choice = menu_select(item)
-    add_to_items(choice)
-  end
-
   def add_to_items(item)
-    @items << item
+    @items << @menu.select { |x| x[:name].include?(item) }
   end
 
   def total
@@ -36,11 +31,4 @@ class Takeaway
   def finalize_order
     @text.send_text(total)
   end
-
-  private
-
-  def menu_select(chosen_food)
-    @menu.select { |x| x[:name].include?(chosen_food) }
-  end
-
 end

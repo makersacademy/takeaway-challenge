@@ -20,5 +20,9 @@ describe Order do
       expect(subject.check_total(items, subject.total(items)))
         .to eq(subject.total(items))
     end
+
+    it "should raise error if totals don't match" do
+      expect{ subject.check_total(items, 6) }.to raise_error('Wrong total!')
+    end
   end
 end
