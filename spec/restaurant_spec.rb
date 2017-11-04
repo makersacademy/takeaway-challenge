@@ -21,4 +21,12 @@ describe Restaurant do
     end
   end
 
+  describe '#total' do
+    context 'when checking total sum of dishes order' do
+      it 'should return total' do
+        expect(resturant.total).to eq total
+      end
+    end
+  end
+
 end
