@@ -8,6 +8,8 @@ describe MenuFormat do
   let(:formatter) { described_class.new(length: 50, index_length: 6) }
   subject { formatter }
 
+  include_examples 'formatter'
+
   describe '#format' do
     context 'when creating formatted string' do
       let(:index) { '   4 |' }

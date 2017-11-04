@@ -2,24 +2,11 @@
 
 require 'formats/formatter'
 
-# Klass provides dummy usage of Formatter module
+shared_examples 'formatter' do
 
-class Klass
-  include Formatter
-
-  def initialize
-    @content = ['abc', 'def', 'ghi']
-    @length = 30
-  end
-
-  def content
-    @content
-  end
-end
-
-describe Formatter do
-
-  let(:obj) { Klass.new }
+  let(:obj) { described_class.new(length: 30) }
+  let(:content) { ['abc', 'def', 'ghi'] }
+  before(:each) { allow(obj).to receive(:content).and_return(content) }
 
   describe '#content_length' do
     subject { obj.content_length }

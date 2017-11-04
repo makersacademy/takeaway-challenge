@@ -8,6 +8,8 @@ describe ItemisedFormat do
   let(:formatter) { described_class.new(length: 50, count_length: 4) }
   subject { formatter }
 
+  include_examples 'formatter'
+
   describe '#format' do
     context 'when creating formatted string' do
       let(:count) { 'x4  ' }
