@@ -7,4 +7,8 @@ class TakeAway
     @menu = Menu.new
   end
 
+  def read_menu
+    @menu.read_menu
+  end
+
 end

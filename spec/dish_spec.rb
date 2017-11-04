@@ -3,7 +3,7 @@ describe Dish do
   subject(:dish) { described_class.new(name, price, allergy_info) }
   let(:name) { "spring rolls" }
   let(:price) { 3.99 }
-  let(:allergy_info) {"No specifications regarding allergies"}
+  let(:allergy_info) { "No specifications regarding allergies" }
   describe '#name' do
     context 'name of the dish'
     it 'returns name' do
@@ -19,7 +19,7 @@ describe Dish do
   end
   describe '#dish_info' do
     it 'should show me the dishes price and name in a hash' do
-      expect(dish.dish_info).to eq ({"spring rolls" => 3.99})
+      expect(dish.dish_info).to eq({ "spring rolls" => 3.99 })
     end
   end
   describe '#allergy_info' do
