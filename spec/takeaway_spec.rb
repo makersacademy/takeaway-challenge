@@ -34,5 +34,18 @@ describe TakeAway do
       take_away.add_to_basket('Chocolate Melt')
       expect(take_away.see_basket).to eq 'total: £7.99'
     end
+    it 'should show me the items of the basket and the total' do
+      take_away.add_to_basket('Chocolate Melt')
+      take_away.add_to_basket('Apple Crumble')
+      expect(take_away.see_basket).to eq 'total: £14.98'
+    end
+  end
+  describe '#remove_from_basket' do
+    it 'should remove any item from basket' do
+      take_away.add_to_basket('Apple Crumble')
+      take_away.add_to_basket('Chocolate Melt')
+      take_away.remove_from_basket('Chocolate Melt')
+      expect(take_away.basket.include?({'Chocolate Melt'=> 7.99})).to be_falsey
+    end
   end
 end
