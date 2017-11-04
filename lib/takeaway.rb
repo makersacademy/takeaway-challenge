@@ -1,6 +1,6 @@
 require './lib/menu.rb'
 class TakeAway
-  attr_reader :basket, :menu
+  attr_reader :basket, :menu, :total
 
   def initialize
     @basket = []
@@ -14,7 +14,9 @@ class TakeAway
 
   def add_to_basket(dessert)
     raise 'Unknown item' unless in_menu?(dessert)
-    @basket << @menu.dishes.select { |dish| dish.include?(dessert) }.pop
+    item = @menu.dishes.select { |dish| dish.include?(dessert) }.pop
+    @basket << item
+    item.select{|x,y| @total += y}
   end
 
   def remove_from_basket(dessert)
@@ -27,7 +29,6 @@ class TakeAway
 
   def see_basket
     @basket.each { |item| item.each { |name, price|
-      @total += price
       puts name
     } }
     puts "total: £#{@total}"

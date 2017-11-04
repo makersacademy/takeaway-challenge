@@ -29,6 +29,12 @@ describe TakeAway do
       expect { take_away.add_to_basket("Cheese") }.to raise_error 'Unknown item'
     end
   end
+  describe '#total' do
+    it 'should show me the total' do
+      take_away.add_to_basket('Chocolate Melt')
+      expect(take_away.total).to eq 7.99
+    end
+  end
   describe '#see_basket' do
     it 'should show me the items of the basket and the total' do
       take_away.add_to_basket('Chocolate Melt')
