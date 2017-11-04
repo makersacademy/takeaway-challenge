@@ -23,7 +23,9 @@ class Order
   end
 
   def pay(amount)
+    fail "Nothing added to order yet" if @cost == 0
     fail "Please pay £#{cost} to complete order" if amount < @cost
+    print "Thank you! Your order has been placed succesfully and will be delivered before #{Time.now + 3600}"
   end
 
   private

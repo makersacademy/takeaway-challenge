@@ -64,9 +64,17 @@ describe Order do
 
   describe "#pay" do
     context "when paying for an order" do
-      it "should raise error is payment incorrect" do
+      it "should raise error if payment incorrect" do
         set_menu.add_to_order("pizza", 1)
         expect { set_menu.pay(2) }.to raise_error("Please pay £5 to complete order")
+      end
+      it "should raise error if paying for empty order" do
+        expect { set_menu.pay(2) }.to raise_error("Nothing added to order yet")
+      end
+      it "should complete your order" do
+        set_menu.add_to_order("pizza", 1)
+        expect { set_menu.pay(10) }
+        .to output("Thank you! Your order has been placed succesfully and will be delivered before #{Time.now + 3600}").to_stdout
       end
     end
   end
