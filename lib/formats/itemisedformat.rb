@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require './lib/formats/formatter'
+
 # ItemisedFormat is a formatting class. It is usually
 # passed to Order #format to get pretty printed orders.
 
