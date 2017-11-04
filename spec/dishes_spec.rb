@@ -20,4 +20,9 @@ describe Dishes do
     end
   end
 
+  context 'when selecting a dish' do
+    it 'returns the specified dish' do
+      expect(subject.selecting_dish('pancake')).to eq ({:Pancake=>1.0})
+    end
+  end
 end

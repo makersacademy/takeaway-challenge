@@ -15,7 +15,18 @@ class Dishes
     print_each_dish
   end
 
+  def selecting_dish(dish)
+    dish.capitalize!
+    list
+    do_select(dish)
+  end
+
 private
+  def do_select(dish)
+    wanted_dish = @menu.select { |selected_dish| selected_dish.key(1) == dish.to_sym}
+    wanted_dish[0]
+  end
+
   def print_each_dish
     @menu.each do |dish_with_price|
       dish_with_price.each_pair do |dish, price|
