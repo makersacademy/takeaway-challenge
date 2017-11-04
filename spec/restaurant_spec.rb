@@ -35,7 +35,7 @@ describe Restaurant do
   end
 
   describe "#print_menu" do
-    it "expects show print to show a list of dish names and prices" do
+    it "expects show print to show a list of one dish name and price" do
       subject.add(dish)
       expect { subject.print_menu }.to output("burger: £7\n").to_stdout
     end
