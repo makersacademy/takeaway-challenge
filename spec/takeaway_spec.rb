@@ -16,7 +16,6 @@ describe TakeAway do
       expect(take_away.read_menu).to eq menu.read_menu
     end
   end
-  describe '#add_to_basket' do
     it 'should add an item to the basket' do
       take_away.add_to_basket('Chocolate Melt')
       expect(take_away.basket).to contain_exactly({ 'Chocolate Melt' => 7.99 })
@@ -59,6 +58,11 @@ describe TakeAway do
       take_away.add_to_basket('Apple Crumble')
       take_away.empty_basket
       expect(take_away.basket).to be_empty
+    end
+  end
+  describe '#finalize_order' do
+    it 'should send me a text that my order has been confirmed' do
+      expect(take_away.finalize_order).to eq 
     end
   end
 end
