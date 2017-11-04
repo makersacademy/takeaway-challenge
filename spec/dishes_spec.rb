@@ -21,4 +21,12 @@ describe Menu do
     end
   end
 
+  # describe "#list_dishes" do
+  #   context "while viewing the menu" do
+  #     it "should return a human readable menu" do
+  #       expect { subject.view_dishes }.to output.to_stdout
+  #     end
+  #   end
+  # end
+
 end

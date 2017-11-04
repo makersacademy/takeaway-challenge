@@ -17,3 +17,12 @@ class Menu
   end
 
 end
+
+
+  # def view_dishes
+  #   puts "Menu"
+  #   puts ""
+  #   puts "Dishes"
+  #   @dishes.each { |k, v| puts "#{k} - #{v[0].to_s.capitalize} - £#{v[1]}" }
+  #   puts ""
+  # end
