@@ -29,6 +29,6 @@ class Menu
   end
 
   def format(formatter, *args)
-    items.map { |i| formatter.format(i, *args) }.join("\n")
+    items.map { |item| formatter.format(item, *args) }.join("\n")
   end
 end

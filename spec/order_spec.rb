@@ -4,6 +4,7 @@ require 'order'
 
 describe Order do
 
+  let(:formatter) { double(:formatter, format: 'a line') }
   let(:menuitem) { double(:menuitem, title: 'dish', value: 2) }
   let(:money_class) { double(:money_class, new: 0) }
 
@@ -59,6 +60,30 @@ describe Order do
 
       it 'sums values multiplied by quantity' do
         expect(subject.total).to eq 42
+      end
+    end
+  end
+
+  describe '#format' do
+    before(:each) { order.items.update({ a: 1, b: 2 }) }
+
+    context 'when applying format' do
+      after(:each) { subject.format(formatter) }
+
+      it 'formats first item with other arguments' do
+        expect(formatter).to receive(:format).with(:a, 1)
+      end
+
+      it 'formats second item with other arguments' do
+        expect(formatter).to receive(:format).with(:b, 2)
+      end
+    end
+
+    context 'when creating string' do
+      subject { order.format(formatter) }
+
+      it 'creates 2 lines' do
+        expect(subject.split("\n").length).to eq 2
       end
     end
   end
