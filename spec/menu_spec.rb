@@ -73,4 +73,22 @@ describe Menu do
       end
     end
   end
+
+  describe '#get_missing' do
+    context 'when given numbers that are present' do
+      subject { menu.get_missing( { 100 => 2, 101 => 3 }) }
+
+      it 'returns empty list' do
+        expect(subject).to eq []
+      end
+    end
+
+    context 'when given numbers that are absent' do
+      subject { menu.get_missing({ 200 => 2, 201 => 3 }) }
+
+      it 'returns list of numbers' do
+        expect(subject).to eq [200, 201]
+      end
+    end
+  end
 end

@@ -10,15 +10,7 @@ class Menu
 
   class << self
     def from_csv(path, menuitem_class = MenuItem, reader = CSV)
-      new(get_items(path, menuitem_class, reader))
-    end
-
-    private
-
-    def get_items(path, menuitem_class, reader)
-      reader.foreach(path).map do |title, price| 
-        menuitem_class.new(title, price)
-      end
+      new(reader.foreach(path).map { |row| menuitem_class.new(*row) })
     end
   end
 
@@ -34,5 +26,9 @@ class Menu
     items.each_with_index.map do |item, index| 
       formatter.format(index + START, item, *args)
     end.join("\n")
+  end
+
+  def get_missing(items)
+    items.keys.select { |key| get(key).nil? }
   end
 end
