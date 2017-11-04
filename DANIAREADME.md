@@ -17,5 +17,4 @@ User : Customer
 
 ## Supported documentation
 
-https://stackoverflow.com/questions/1227571/how-to-iterate-over-a-hash-in-ruby
-https://ruby-doc.org/core-2.4.2/Hash.html#method-i-key
+https://makersacademy.teachable.com/courses/makers-academy-precourse/lectures/2090359
