@@ -9,9 +9,7 @@ class Menu
 
   def print_menu
     load_menu
-    @dishes.each do |item|
-      puts "#{@dishes.index(item) + 1}. #{item.fetch(:dish)}, £#{'%.2f' % item.fetch(:price).to_f}"
-    end
+    format_menu
   end
 
   private
@@ -26,6 +24,12 @@ class Menu
         dish, price = line[0], line[1]
         add_dish(dish, price)
       end
+    end
+  end
+
+  def format_menu
+    @dishes.each do |item|
+      puts "#{@dishes.index(item) + 1}. #{item.fetch(:dish)}, £#{'%.2f' % item.fetch(:price).to_f}"
     end
   end
 end
