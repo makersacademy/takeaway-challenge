@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'money'
-require './lib/formats'
+require './lib/formats/itemisedformat'
 
 # configures Money object to avoid known bug
 # see: https://github.com/RubyMoney/money/issues/593

@@ -2,7 +2,7 @@
 
 require 'csv'
 require './lib/menuitem'
-require './lib/formats'
+require './lib/formats/menuformat'
 
 class Menu
   attr_reader :items
