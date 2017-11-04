@@ -23,8 +23,12 @@ class Dishes
 
 private
   def do_select(dish)
-    wanted_dish = @menu.select { |selected_dish| selected_dish.key(1) == dish.to_sym}
-    wanted_dish[0]
+    @menu.select { |dishes|
+      dishes.select { |wanted|
+        return dishes if wanted == dish.to_sym
+      }
+    }
+    raise "The #{dish} is not on the menu"
   end
 
   def print_each_dish

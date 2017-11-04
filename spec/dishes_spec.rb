@@ -24,5 +24,11 @@ describe Dishes do
     it 'returns the specified dish' do
       expect(subject.selecting_dish('pancake')).to eq ({:Pancake=>1.0})
     end
+    it 'returns the specified dish' do
+      expect(subject.selecting_dish('Waffles')).to eq ({:Waffles=>1.0})
+    end
+    it 'Raise an error if the dish is not on the list' do
+      expect { subject.selecting_dish('nothing') }.to raise_error(RuntimeError)
+    end
   end
 end
