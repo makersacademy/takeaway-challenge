@@ -1,6 +1,12 @@
-require 'list_of_dishes.rb'
+require './lib/list_of_dishes.rb'
 
 # this is a food dish with a name, price and quantity.
 class Dish
+  attr_reader :name, :price, :quantity
 
+  def initialize(name, price, quantity = 0)
+    @name = name
+    @price = price
+    @quantity = quantity
+  end
 end

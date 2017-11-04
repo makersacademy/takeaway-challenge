@@ -1,5 +1,5 @@
-require 'order.rb'
-require 'dish.rb'
+require './lib/order.rb'
+require './lib/dish.rb'
 
 # this stores a list of all dishes that can be searched
 class ListOfDishes
