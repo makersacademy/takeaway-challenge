@@ -1,14 +1,14 @@
 require 'csv'
 
 class Menu
-  attr_reader :dishes, :menu
+  attr_reader :dishes
 
   def initialize
     @dishes = []
+    @menu = load_menu
   end
 
   def print_menu
-    load_menu
     format_menu
   end
 
