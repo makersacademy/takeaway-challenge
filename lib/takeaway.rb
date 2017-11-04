@@ -11,4 +11,9 @@ class TakeAway
     @menu.read_menu
   end
 
+  def add_to_basket(dessert)
+  @basket << @menu.dishes.select{|dish| dish.include?(dessert)}.pop
+
+  end
+
 end

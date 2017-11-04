@@ -16,4 +16,14 @@ describe TakeAway do
       expect(take_away.read_menu).to eq menu.read_menu
     end
   end
+  describe '#add_to_basket' do
+    it 'should add an item to the basket' do
+      take_away.add_to_basket('Chocolate Melt')
+      expect(take_away.basket).to contain_exactly({'Chocolate Melt' => 7.99})
+    end
+    it 'should add any item to the basket' do
+      take_away.add_to_basket('Apple Crumble')
+      expect(take_away.basket).to contain_exactly({"Apple Crumble"=>6.99})
+  end
+end
 end
