@@ -1,35 +1,46 @@
 require './lib/text.rb'
-require './lib/billing.rb'
+require './lib/order.rb'
 
 class Takeaway
 
-  attr_reader :order, :text, :billing
+  attr_reader :items, :text, :order, :menu
 
-  def initialize(text = Text.new, billing = Billing.new )
+  def initialize(text = Text.new, order = Order.new)
     @menu = [
-              {name: 'Burger', price: 4},
-              {name: 'Chips', price: 2},
-              {name: 'Chicken', price: 5}
+              { name: 'Burger', price: 4, amount: 1 },
+              { name: 'Chips', price: 2, amount: 1 },
+              { name: 'Chicken', price: 5, amount: 1 }
             ]
-    @order = []
+    @items = []
     @text = text
-    @billing = billing
+    @order = order
   end
 
-  def choose_item(chosen_food)
-    choice = @menu.select { |x| x[:name].include?(chosen_food) }
-    add_to_order(choice)
+  def choose_item(item)
+    choice = menu_select(item)
+    add_to_items(choice)
   end
 
-  def add_to_order(item)
-    @order << item
+  def add_to_items(item)
+    @items << item
   end
 
-  def calculate_total
-    @billing.total(@order)
+  def total
+    @order.total(@items)
   end
 
-  def finialize_order
-    @text.send_text(calculate_total)
+  def check_total
+    @order.check_total(@items, total)
   end
+
+  def finalize_order
+    @text.send_text(total)
+  end
+
+  private
+
+  def menu_select(chosen_food)
+    @menu.select { |x| x[:name].include?(chosen_food) }
+  end
+
 end

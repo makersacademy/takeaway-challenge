@@ -2,48 +2,50 @@ require 'takeaway'
 
 describe Takeaway do
 
+  let(:subject) { described_class.new }
+  let(:items)   do  [
+                      { name: 'Chicken', price: 5, amount: 1 },
+                      { name: 'Burger', price: 4, amount: 1 }
+                    ]
+                end
   let(:text) { Text.new }
 
-  context "#initialize" do
-    it 'should initialize with a new text class' do
-      # expect(subject.text).to eq(text)
+
+  describe "#items" do
+    it 'should initialize as an empty array' do
+      expect(subject.items).to be_a Array
     end
+  end
 
-    it 'should initialize order as an empty array' do
-
+  describe "#menu" do
+    it "should initialize as an array" do
+       expect(subject.items).to be_an Array
     end
-
-    it 'should initialize text as an empty text file' do
-
-    end
-
-    it 'should initialize menu as an array of hashes' do
-
-    end
-
   end
 
   describe '#choose_item' do
-    it 'equals item hash' do
-      # expect(subject.choose_item("Chicken")).to equal({:name=>"Chicken", :price=>5})
+
+    it 'adds amount to total for chicken menu item' do
+      expect { subject.choose_item('Chicken') }
+        .to change { subject.total }.by(5)
+    end
+
+    it 'adds amount to total for burger menu item' do
+      expect { subject.choose_item("Burger") }
+        .to change { subject.total }.by(4)
     end
   end
 
-  describe '#add to order' do
-    it 'adds hash to order array' do
-        # expect(subject.add_to_order).to
+  describe '#add_to_items' do
+    it 'adds hash to items array' do
+      expect { subject.add_to_items('Chicken') }
+        .to change { subject.items.length }.by(1)
     end
   end
 
-  describe '#finialize_order' do
+  describe '#finalize_order' do
     it 'sends text' do
-
-    end
-  end
-
-  describe '#calculate_total' do
-    it 'takes values from hash and returns total of prices' do
-
+      # expect(subject.finalize_order).to respond_to(text.send_text(1)).with(1).argument
     end
   end
 end
