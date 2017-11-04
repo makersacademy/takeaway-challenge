@@ -13,6 +13,7 @@ class TakeAway
   end
 
   def add_to_basket(dessert)
+  raise 'Unknown item' if @menu.dishes.select{|dish| dish.include?(dessert)}.empty?
   @basket << @menu.dishes.select{|dish| dish.include?(dessert)}.pop
   end
 

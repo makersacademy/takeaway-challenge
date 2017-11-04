@@ -24,7 +24,10 @@ describe TakeAway do
     it 'should add any item to the basket' do
       take_away.add_to_basket('Apple Crumble')
       expect(take_away.basket).to contain_exactly({"Apple Crumble"=>6.99})
-  end
+    end
+    it 'should raise error if trying to order unknown menu item' do
+      expect{take_away.add_to_basket("Cheese")}.to raise_error 'Unknown item'
+    end
   describe '#see_basket' do
     it 'should show me the items of the basket and the total' do
       take_away.add_to_basket('Chocolate Melt')
