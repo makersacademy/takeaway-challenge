@@ -9,7 +9,8 @@ class Menu
   end
 
   def read_menu
-    @dishes.each{|dish| dish.each{|name, price|
-      puts "#{name} (#{price})"}}
+    @dishes.each { |dish| dish.each { |name, price|
+      puts "#{name} (£#{price})"
+    } }
   end
 end
