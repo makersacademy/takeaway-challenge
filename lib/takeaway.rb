@@ -18,7 +18,11 @@ class TakeAway
   end
 
   def remove_from_basket(dessert)
-    @basket.select{ |item| item.each{ |name, price| @basket.delete item if name == dessert } }
+    @basket.select { |item| item.each { |name, _| @basket.delete item if name == dessert } }
+  end
+
+  def empty_basket
+    @basket = []
   end
 
   def see_basket
@@ -29,7 +33,6 @@ class TakeAway
     puts "total: £#{@total}"
     return "total: £#{@total}"
   end
-
 
   private
   def in_menu?(dessert)

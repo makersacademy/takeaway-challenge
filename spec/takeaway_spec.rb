@@ -45,7 +45,14 @@ describe TakeAway do
       take_away.add_to_basket('Apple Crumble')
       take_away.add_to_basket('Chocolate Melt')
       take_away.remove_from_basket('Chocolate Melt')
-      expect(take_away.basket.include?({'Chocolate Melt'=> 7.99})).to be_falsey
+      expect(take_away.basket.include?({ 'Chocolate Melt' => 7.99 })).to be_falsey
+    end
+  end
+  describe '#empty_basket' do
+    it 'should remove everything from my basket' do
+      take_away.add_to_basket('Apple Crumble')
+      take_away.empty_basket
+      expect(take_away.basket).to be_empty
     end
   end
 end
