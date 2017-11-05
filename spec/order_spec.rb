@@ -1,8 +1,8 @@
 require 'order'
 
 describe Order do
-  let(:dish) { station = double(:dish, name:"Coconut Cake", price:"6") }
-  let(:dish2) { station = double(:dish2, name:"Ginger Tea", price:"2") }
+  let(:dish) { dish = double(:dish, name: "Coconut Cake", price: "6") }
+  let(:dish2) { dish2 = double(:dish2, name: " Ginger Tea", price: "2") }
 
   describe 'attributes' do
     it 'has a total equal to 0' do
@@ -41,11 +41,11 @@ describe Order do
 
   describe '#basket_summary' do
     it 'prints to the screen' do
-    subject.add_to_basket(dish)
-    subject.add_to_basket(dish2)
-    it_prints = "1. #{dish.name.upcase} -- Price #{dish.price}$ -- Quantity 1\n"
-    it_prints = it_prints + "2. #{dish2.name.upcase} -- Price #{dish2.price}$ -- Quantity 1\n"
-    expect { subject.basket_summary }.to output(it_prints).to_stdout
+      subject.add_to_basket(dish)
+      subject.add_to_basket(dish2)
+      it_prints = "1. #{dish.name.upcase} -- Price #{dish.price}$ -- Quantity 1\n"
+      it_prints += "2. #{dish2.name.upcase} -- Price #{dish2.price}$ -- Quantity 1\n"
+      expect { subject.basket_summary }.to output(it_prints).to_stdout
     end
   end
 

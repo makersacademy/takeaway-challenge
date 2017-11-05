@@ -28,7 +28,7 @@ class Menu
   def add_dish(dish)
     @dish_list << dish
     CSV.open("./lib/menu.csv", "ab") do |csv|
-      csv << [dish.name,dish.price]
+      csv << [dish.name, dish.price]
     end
   end
 

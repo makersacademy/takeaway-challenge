@@ -14,15 +14,15 @@ describe Menu do
       @buffer = StringIO.new()
       @filename = "somefile.txt"
       @content = "the content fo the file"
-      allow(File).to receive(:open).with(@filename,'w').and_yield( @buffer )
-      File.open(@filename, 'w') {|f| f.write(@content)}
+      allow(File).to receive(:open).with(@filename, 'w').and_yield(@buffer)
+      File.open(@filename, 'w') { |f| f.write(@content) }
       expect(@buffer.string).to eq(@content)
     end
   end
 
   describe '#read_menu' do
     it 'puts to the screen' do
-    expect { subject.read_menu }.to output(@dish_list).to_stdout
+      expect { subject.read_menu }.to output(@dish_list).to_stdout
     end
   end
 end
