@@ -16,10 +16,16 @@ attr_reader :basket, :list
   end
 
   def order(dish)
-    @basket << @menu.list.select { |k| k[:name].include?(dish) }
+    @basket << add_dish(dish)
   end
 
   def total
     @sum.total(@basket)
+  end
+
+
+  private
+  def add_dish(dish)
+    @menu.list.select { |k| k[:name].include?(dish) }
   end
 end
