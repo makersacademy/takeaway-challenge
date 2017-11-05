@@ -8,7 +8,7 @@ class TakeAway
   attr_reader :menu, :orders
 
   DEFAULT_DELAY = 3600
-  MENU_CSV = File.dirname(__FILE__) + '/../dishes.csv'
+  MENU_CSV = '/app/dishes.csv'
 
   def initialize(path: MENU_CSV, menu_class: Menu, 
                  dialogue: Dialogue.new, handler: OrderHandler
