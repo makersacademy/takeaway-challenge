@@ -54,7 +54,7 @@ describe Parser do
       subject { parser.get_errors(string) }
 
       it 'returns empty string' do
-        expect(subject).to eq ''
+        expect(subject).to eq []
       end
     end
 
@@ -62,7 +62,7 @@ describe Parser do
       subject { parser.get_errors('100 100xx4 100x4 4') }
 
       it 'returns problematic sections' do
-        expect(subject).to eq 'xx4 4'
+        expect(subject).to eq ['xx4', ' 4']
       end
     end
   end

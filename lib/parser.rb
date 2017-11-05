@@ -25,7 +25,7 @@ class Parser
   end
 
   def get_errors(order)
-    order.gsub(@regex, '')
+    order.gsub(@regex, 0.chr).split(0.chr).select { |i| i.length > 0 }
   end
 
   def get_duplicates(order)
