@@ -28,7 +28,7 @@ Takeaway Challenge
   So that I can check if I want to order something
   I would like to see a list of dishes with prices
 
-This user story will have us creating a list of dishes with their matching prices. A data structure with keys and matching values probably means the use of a hash in this case. Our program's main object will be a Menu class for now.
+This user story will have us creating a list of dishes with their matching prices. A data structure with keys and matching values probably means the use of a hash in this case. Our program's main object will be a Menu class for now. It would also be great to declare this hash as a constant of our class (as this is our takeway menu)
 
 
   - As a customer

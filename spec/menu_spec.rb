@@ -1,45 +1,15 @@
 require 'menu'
 
 describe Menu do
-subject(:menu) { described_class.new }
+  subject(:menu) { described_class.new }
 
-
-
-  describe 'initialize' do
-    it 'gets the list of dishes and prices' do
-      expect(subject.get_menu).to eq(menu_list)
+  describe 'give_menu' do
+    it 'gives the menu list' do
+      expect(subject.give_menu).to eq({ "margherita pizza" => 9, "mushroom pizza" => 11 })
     end
 
 
-
-
-#it 'returns the ' do
-  #expect(subject.get_menu).to
-
-
   end
-
-
-
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 end
