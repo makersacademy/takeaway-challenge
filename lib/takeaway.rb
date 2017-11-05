@@ -7,9 +7,9 @@ class Takeaway
 
   def initialize(text = Text.new, order = Order.new)
     @menu = [
-              { name: 'Burger', price: 4, amount: 1 },
-              { name: 'Chips', price: 2, amount: 1 },
-              { name: 'Chicken', price: 5, amount: 1 }
+              { name: 'Burger', price: 4 },
+              { name: 'Chips', price: 2 },
+              { name: 'Chicken', price: 5 }
             ]
     @items = []
     @text = text
@@ -17,7 +17,7 @@ class Takeaway
   end
 
   def add_to_items(item)
-    @items << @menu.select { |x| x[:name].include?(item) }
+    @items << select_item(item)
   end
 
   def total
@@ -30,5 +30,13 @@ class Takeaway
 
   def finalize_order
     @text.send_text(total)
+  end
+
+private
+
+  def select_item(item)
+    @menu.select do |x|
+      x[:name].include?(item)
+    end
   end
 end

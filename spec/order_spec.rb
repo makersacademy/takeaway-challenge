@@ -3,11 +3,11 @@ require 'order'
 describe Order do
   subject(:subject) { described_class.new }
 
-  let(:items) do  [
-                    {name: 'Chicken', price: 5, amount: 1 },
-                    {name: 'Burger', price: 4, amount: 1 }
-                  ]
-  end
+  let(:items) do [
+                  { name: 'Chicken', price: 5, amount: 1 },
+                  { name: 'Burger', price: 4, amount: 1 }
+                ]
+                end
 
   describe '#total' do
     it 'calculates totals from prices' do
@@ -22,7 +22,7 @@ describe Order do
     end
 
     it "should raise error if totals don't match" do
-      expect{ subject.check_total(items, 6) }.to raise_error('Wrong total!')
+      expect { subject.check_total(items, 6) }.to raise_error('Wrong total!')
     end
   end
 end
