@@ -47,8 +47,8 @@ describe Order do
       expect(subject.items).to eq([dish, dish])
     end
     it "updates @total with the correct price when passing two burgers" do
-      subject.add_item("burger", 2)
-      expect(subject.total).to eq(14)
+      subject.add_item("burger", 1)
+      expect(subject.total).to eq(7)
     end
     it "updates @total with the correct price when passing seven burgers" do
       subject.add_item("burger", 7)
@@ -74,6 +74,29 @@ describe Order do
       subject.add_item("burger", 2)
       subject.remove_item("burger")
       expect(subject.total).to eq(7)
+    end
+  end
+
+  describe "#check_total" do
+    it "prints the order summary" do
+      subject.add_item("burger", 1)
+      subject.add_item("burger", 1)
+      expect { subject.check_total }.to output("Order Summary:\nburger: £7\nburger: £7\nYour total is £14\n").to_stdout
+    end
+  end
+
+  describe "#pay" do
+    it "raises error if providing less money than total" do
+      subject.add_item("burger", 1)
+      expect { subject.pay(1) }.to raise_error("You didn't provide enough money, you are missing £6.")
+    end
+    it "completes order if giving exact money" do
+      subject.add_item("burger", 1)
+      expect { subject.pay(7) }.to output("Your order is complete.\n").to_stdout
+    end
+    it "completes order and gives change if giving too much money" do
+      subject.add_item("burger", 1)
+      expect { subject.pay(12) }.to output("Your order is complete.\nYour change is £5.\n").to_stdout
     end
   end
 end
