@@ -9,12 +9,12 @@ describe Menu do
     { name: 'pizza', price: 7 },
     { name: 'nachos', price: 3 },
     { name: 'sweet potato fries', price: 4 },
-    { name: 'veggie burger', price: 5 }]
+    { name: 'veggie roll', price: 5 }]
   }
 
   describe '#menu' do
     it 'should show menu' do
-      expect(subject.menu).to eq full_menu
+      expect(subject.show).to eq full_menu
     end
   end
 end

@@ -9,10 +9,12 @@ class Menu
     { name: 'pizza', price: 7 },
     { name: 'nachos', price: 3 },
     { name: 'sweet potato fries', price: 4 },
-    { name: 'veggie burger', price: 5 }]
+    { name: 'veggie roll', price: 5 }]
   end
 
   def show
-    @menu
+    @menu.each do |k|
+      puts "#{k[:name]}, £#{k[:price]}"
+    end
   end
 end
