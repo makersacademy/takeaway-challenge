@@ -1,79 +1,32 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Weekend Challenge 2: Takeaway
+=============================
 
- ```
+## Introduction
 
-Instructions
--------
+The second weekend challenge was to create software to be run in the command line, to manage a takeaway app. There would be four bits of functionality to implement:
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Viewing a list of dishes with prices
+* Selecting one or more available dishes
+* Checking the total is equal to the various dishes
+* Sending the user a text message with confirmation of their order
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+For more information on the specifics of the challenge, see the [Instructions](https://github.com/peterwdj/takeaway-challenge/blob/master/Instructions.md).
 
 
-In code review we'll be hoping to see:
+## Approach
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Throughout the week, I had struggled with classes that lost sight of what their purpose was; functionality lived in the wrong places, and my code had rapidly become spaghetti-like. I had struggled with converting the theory of domain modelling, with which I feel comfortable, to the practical application thereof.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+I therefore took a holistic view of the project from the start, looking at what needed to be implemented, and distilling each user story into what was actually being asked of the system. This left me with three classes:
+* A Menu class - to load a menu from a file and display it to a user
+* A Basket class - allowing users to add items from the menu to their basket, and view which items are in it
+* An Order class - allowing an order to be placed, which sends a confirmation SMS to the user and telling the Basket class to reset the current order
 
-Notes on Test Coverage
-------------------
+Diagramming this out on paper beforehand gave me a much clearer mental model of how the code would work: the responsibilities of each class, and how they would talk to each other.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+## Challenges
+
+Some of this weekend's biggest challenges came with RSpec - specifically, testing for (and stubbing) loading a CSV file, and testing that a text would be sent to a user. Googling around the former did not yield very many results (and often dived into why testing using frameworks were a bad practice altogether); as a result the test is currently long-winded and unscalable. The second was solved by creating a variable that would store the body of the SMS sent to the user after a message had been sent, and then checking the value of that variable using RSpec. I found that, whilst this solution worked, it was unsatisfactory as it did not truly test if a text had been delivered to a user - only that the message that was supposed to have been sent was what it said it was. However, I was able to find no other way to properly test this, other than simply by doing it in PRY.
+
+Another challenge from this week was installing and configuring the Twilio gem. This one was more staight-forward to overcome, though - I was able to quickly find answers and solutions to the errors I was having on Stack Overflow when installing the Gem. The actual implementation of the Gem within the code was also something that I felt the documentation left the user thrown-in at the proverbial deep end with, but through trial and error I was able to discover which lines of code needed to live in which methods, and successfully add the ability to send a confirmation text message to the user. 
