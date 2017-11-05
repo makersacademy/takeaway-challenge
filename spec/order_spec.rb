@@ -11,6 +11,8 @@ describe Order do
         expect(subject.text).to eq "Sent from your Twilio trial account - Thanks for your order! It will be delivered at #{subject.delivery_time}."
       end
       it "Should return the basket to being an empty array" do
+        allow(subject).to receive(:send_confirmation) { subject.text = "Sent from your Twilio trial account - Thanks for your order! It will be delivered at #{subject.delivery_time}." }
+        subject.place_order(Basket.new)
         basket = Basket.new
         basket.add(1)
         basket.add(7)

@@ -2,7 +2,8 @@ require 'twilio-ruby'
 require 'basket'
 
 class Order
-  attr_reader :text, :delivery_time
+  attr_reader :delivery_time
+  attr_accessor :text
 
   def initialize
     @text = ""
