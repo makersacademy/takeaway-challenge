@@ -54,7 +54,9 @@ describe Order do
     context "before paying for an order" do
       it "should provide a breakdown of costs" do
         set_menu.add_to_order("pizza", 1)
-        expect { set_menu.breakdown }.to output.to_stdout
+        expect { set_menu.breakdown }
+          .to output("pizza - 1 x £5, Your basket total is £5")
+            .to_stdout
       end
       it "should raise an error if nothing added to order" do
         expect { set_menu.breakdown }.to raise_error("Nothing added to order yet")
@@ -75,7 +77,7 @@ describe Order do
         allow(set_menu).to receive(:send_message).and_return(nil)
         set_menu.add_to_order("pizza", 1)
         expect { set_menu.pay(5) }
-        .to output("Thank you! Your order has been placed succesfully and will be delivered before #{Time.now + 3600}").to_stdout
+        .to output("Thank you! Your order will be delivered before #{Time.now + 3600}").to_stdout
       end
     end
   end

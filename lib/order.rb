@@ -2,13 +2,14 @@
 # irb -r ./lib/order.rb
 
 require_relative 'takeaway'
+require_relative 'text'
 
 class Order
   attr_reader :menu, :current, :cost
 
   def initialize (menu = Takeaway::DISHES)
     @menu = menu
-    @current = Hash.new { |this_hash, key| this_hash[key] = 0 }
+    @current = Hash.new { |h, k| h[k] = 0 }
     @cost = 0
   end
 
@@ -18,15 +19,15 @@ class Order
   end
 
   def breakdown
-    fail "Nothing added to order yet" if @cost == 0
+    fail no_items if @cost == 0
     order_breakdown
   end
 
   def pay(amount)
-    fail "Nothing added to order yet" if @cost == 0
+    fail no_items if @cost == 0
     fail "Please pay £#{cost} to complete order" if amount != @cost
     send_message
-    print "Thank you! Your order has been placed succesfully and will be delivered before #{Time.now + 3600}"
+    print "Thank you! Your order will be delivered before #{Time.now + 3600}"
   end
 
   private
@@ -38,10 +39,12 @@ class Order
   end
 
   def order_breakdown
-    puts "Your current basket"
-    puts ""
-    @current.each { |k,v| puts "#{k} - #{v} x £#{@menu[k]}" }
-    puts "Your basket total is £#{@cost}"
+    @current.each { |k,v| print "#{k} - #{v} x £#{@menu[k]}, " }
+    print "Your basket total is £#{@cost}"
+  end
+
+  def no_items
+    "Nothing added to order yet"
   end
 
   def send_message
@@ -50,7 +53,7 @@ class Order
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
-        body: "Thank you! Your order has been placed succesfully and will be delivered before #{Time.now + 3600}",
+        body: "Thank you! Your order will be delivered before #{Time.now + 3600}",
         to: "+447780869533",    # Replace with your phone number
         from: "+441325952438")  # Replace with your Twilio number
   end
