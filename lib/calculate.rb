@@ -1,10 +1,10 @@
 class Calculate
 
   def total(basket)
-  total = 0
-    basket.each do |x, _y|
+    total = 0
+    basket.each do |key, _value|
       total += x[:price]
     end
-  total
+    total
   end
 end

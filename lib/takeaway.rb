@@ -3,7 +3,7 @@ require './lib/calculate.rb'
 
 class Takeaway
 
-attr_reader :basket, :list
+  attr_reader :basket,  :list
 
   def initialize(menu = Menu.new, sum = Calculate.new)
     @basket = []
@@ -23,9 +23,8 @@ attr_reader :basket, :list
     @sum.total(@basket)
   end
 
-
   private
   def add_dish(dish)
-    @menu.list.select { |k| k[:name].include?(dish) }
+    @menu.list.select { |key| key[:name].include?(dish) }
   end
 end
