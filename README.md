@@ -19,6 +19,7 @@ Use the Twilio Gem to order food
 (This is for the core and travis c plugin later on)
 
 ## Approach
+![alt text](images/Screen Shot 2017-11-05 at 18.20.22.png)
 
 ## Domain Model
 
