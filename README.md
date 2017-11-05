@@ -1,9 +1,7 @@
-Takeaway Challenge
-==================
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  I.P. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -14,66 +12,53 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+# Takeaway Challenge
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+The Takeaway Challenge is the second weekend challenge at Makers Academy. The request was to write a software to simulate a takeaway that could receive orders from a customer. The instructions can be found in the "Instructions.md" file.
 
-Task
------
+This is my proposed solution using Ruby.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+For this project I created four different classes, 'takeaway', 'dish', 'menu' and 'order' that can be found
+in the lib directory. The tests for each one are in the spec directory and can be run using RSpec.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+Every takeaway created has a preloaded menu with a list of dishes and prices, and a spike holder for the
+different orders. An order consists of a cart (list of items and quantities), a status (new, payed, canceled), and a total.
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+A customer can ask for the menu, order, proceed to checkout and pay. Once the payment is approved, an SMS is
+sent to the customer with a confirmation message and with the expected time of delivery. The text sending functionality was implemented using Twilio API.
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+This is a sample of how the program works:
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+# We start by creating our takeaway, we will call it "Shakes & Co"
+shakes_and_co = Takeaway.new
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+# Now we can ask for the menu
+shakes_and_co.show_menu
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+              - MENU -
+Double_trouble.....................12.99
+Kiwilicious.........................8.99
+Smarty_smarties.....................8.49
+Lets_go_nuts........................4.99
+Chocolate_indulgence................5.99
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+# We choose something from the menu and order it
+shakes_and_co.order("Kiwilicious")
 
+# We might want something else
+shakes_and_co.order("Chocolate_indulgence", 2)
 
-In code review we'll be hoping to see:
+# Now we can proceed to checkout
+shakes_and_co.checkout
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+            - CHECKOUT -
+Kiwilicious x 1.....................8.99
+Chocolate_indulgence x 2...........11.98
+--------------------
+Total: 20.97
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+# We pay the Total
+shakes_and_co.pay(20.97)
 
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+# We get a confirmation text message that looks like this
+'The order will be delivered before 08:30 PM'
