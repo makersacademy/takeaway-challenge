@@ -52,6 +52,7 @@ class Order
   end
 
   def checkout
+    total_cost
     puts 'To complete your order, please confirm the total cost:'
     answer = gets.chomp
     raise 'incorrect total cost' if answer.to_i != @final_cost.to_i
