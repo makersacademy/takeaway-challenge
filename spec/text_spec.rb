@@ -2,7 +2,7 @@ require 'text'
 
 describe Text do
 
-  let(:defined_time) { described_class.new(4)}
+  let(:defined_time) { described_class.new(4) }
 
   describe "Instatiation" do
     context "upon instantiation" do

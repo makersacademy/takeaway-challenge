@@ -3,7 +3,8 @@ require 'takeaway'
 describe Takeaway do
 
   let(:instance_order) { double(:instance_order, add_to_order: "anything",
-    breakdown: "anything", pay: "anything", current: "anything") }
+    breakdown: "anything", pay: "anything", current: "anything")
+  }
   let(:with_order) { described_class.new(instance_order) }
 
   describe "Instatiation" do

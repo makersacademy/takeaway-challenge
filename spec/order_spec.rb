@@ -17,7 +17,7 @@ describe Order do
   describe "#menu" do
     context "when reading the menu" do
       it "should return hash containing menu items" do
-        expect(set_menu.menu).to eq( { pizza: 5 } )
+        expect(set_menu.menu).to eq({ pizza: 5 })
       end
     end
   end
@@ -36,7 +36,7 @@ describe Order do
   describe "#cost" do
     context "when placing an order" do
       it "should increase the cost by 10" do
-        (set_menu.add_to_order(pizza, 2))
+        set_menu.add_to_order(pizza, 2)
         expect(set_menu.cost).to eq(10)
       end
     end
@@ -45,8 +45,8 @@ describe Order do
   describe "#current" do
     context "when adding items to order" do
       it "should update current to contain 2 pizzas" do
-        (set_menu.add_to_order(pizza, 2))
-        expect(set_menu.current).to eq( { pizza: 2} )
+        set_menu.add_to_order(pizza, 2)
+        expect(set_menu.current).to eq({ pizza: 2 })
       end
     end
   end

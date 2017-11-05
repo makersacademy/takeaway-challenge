@@ -1,9 +1,9 @@
 require_relative 'text'
 
 class Order
-  attr_reader :menu, :current, :cost, :time
+  attr_reader :menu, :current, :cost
 
-  def initialize (menu = Takeaway::DISHES, text = Text)
+  def initialize(menu = Takeaway::DISHES, text = Text)
     @menu = menu
     @current = Hash.new { |h, k| h[k] = 0 }
     @cost = 0
@@ -17,12 +17,12 @@ class Order
   end
 
   def breakdown
-    fail no_items if @cost == 0
+    fail no_items if @cost.zero?
     order_breakdown
   end
 
   def pay(amount)
-    fail no_items if @cost == 0
+    fail no_items if @cost.zero?
     fail "Please pay £#{cost} to complete order" if amount != @cost
     @text.send
   end
@@ -39,7 +39,7 @@ class Order
   end
 
   def order_breakdown
-    @current.each { |k,v| print "#{k} - #{v} x £#{@menu[k]}, " }
+    @current.each { |k, v| print "#{k} - #{v} x £#{@menu[k]}, " }
     print "Your basket total is £#{@cost}"
   end
 
