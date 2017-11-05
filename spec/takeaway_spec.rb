@@ -10,7 +10,7 @@ describe Takeaway do
       end
       context "when selecting a dish" do
         it "should be added to basket" do
-          expect{ takeaway.order(dish) }.to change { takeaway.basket }.by(1)
+          expect(takeaway.order("Chips")).to eq (takeaway.basket)
         end
       end
     end
