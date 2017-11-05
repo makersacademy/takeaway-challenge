@@ -83,15 +83,14 @@ end
 
 def getting_answer
   answer = gets.chomp
-  make_order if answer.upcase.casecmp('Y')
+  make_order if answer.upcase == 'Y'
   initial_display unless complete_order?
 end
 
 def complete_order?
   puts "Is your order complete? (Y/N)"
   answer = gets.chomp
-  return true if answer.upcase.casecmp('Y')
-  false
+  answer.upcase == 'Y'
 end
 
 def ask_for_food
@@ -105,11 +104,11 @@ def initial_display
   choose
 end
 
-public
-
 def run_take_away
   new_order
   initial_display
 end
+
+public
 
 run_take_away
