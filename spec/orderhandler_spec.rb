@@ -71,14 +71,14 @@ describe OrderHandler do
     end
   end
 
-  describe '#confirm' do
+  describe '#finalise' do
     context 'when creating message' do
       before(:each) do
-        allow(dialogue).to receive(:confirm?).with(order).and_return('msg')
+        allow(dialogue).to receive(:finalise).with(order).and_return('msg')
       end
 
       it 'returns confirmation message' do
-        expect(subject.confirm(order)).to eq 'msg'
+        expect(subject.finalise(order)).to eq 'msg'
       end
     end
   end
@@ -92,7 +92,7 @@ describe OrderHandler do
       end
 
       it 'calls place with object' do
-        expect(subject).to receive(:confirm).with(order)
+        expect(subject).to receive(:finalise).with(order)
       end
     end
 
@@ -121,7 +121,7 @@ describe OrderHandler do
     context 'when order has invalid items' do
       before(:each) do
         allow(subject).to receive(:build_order).and_return(order)
-        allow(subject).to receive(:confirm).and_raise RangeError
+        allow(subject).to receive(:finalise).and_raise RangeError
         allow(menu).to receive(:get_missing).and_return([1, 2])
       end
 

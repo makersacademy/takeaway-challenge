@@ -16,7 +16,7 @@ class OrderHandler
 
   def response(string)
     order = build_order(string)
-    confirm(order)
+    finalise(order)
   rescue ParseError
     malformed(string)
   rescue DuplicateError
@@ -25,8 +25,8 @@ class OrderHandler
     missing(string)
   end
 
-  def confirm(order)
-    @dialogue.confirm? order
+  def finalise(order)
+    @dialogue.finalise(order)
   end
 
   def malformed(string)
