@@ -32,7 +32,19 @@ class Takeaway
     raise RuntimeError, 'Amount to pay does not match total' unless amount == @order.total
     @order.complete_order
     @total_orders << @order
-    ##sends sms
+    send_message
+  end
+
+  private
+  def send_message
+    account_sid = "AC5753bf622b1a4f4f5342d06ed8efcf99"
+    auth_token = "ba8cc4a30318eae2b599331c3435d1ae"
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    message = @client.messages.create(
+    body: "Your order is confirmed",
+    to: "+447925276696",
+    from: "+447925276696")
+    puts message.sid
   end
 
 end
