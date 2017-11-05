@@ -44,7 +44,8 @@ end
   context 'User should be able to exit to check-out' do
 
     it '#menu_functions should check whether possible to pay' do
-      expect{subject.menu_functions(7)}.to output("Cool! See ya at check-out!\n").to_stdout
+      subject.menu_functions(1,2)
+      expect{subject.menu_functions(7)}.to output("Cool! You're total amount is $10! See ya at checkout\n").to_stdout
     end
   end
 

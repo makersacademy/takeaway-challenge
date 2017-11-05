@@ -1,4 +1,4 @@
-require 'menu'
+require_relative 'menu'
 
 class Order
 
@@ -25,6 +25,7 @@ def update_basket
   @current_order = { food: nil , quantity: nil , price: nil}
 end
 
+
 def option(option)
   @option = option
 end
@@ -38,7 +39,12 @@ def price(price)
 end
 
 def total_price
-  @basket.collect { |x| x[:price] }.inject(&:+)
+  @total = @basket.collect { |x| x[:price] }.inject(&:+)
+end
+
+def total
+  total_price
+  puts "Cool! You're total amount is $#{@total}! See ya at checkout"
 end
 
 end

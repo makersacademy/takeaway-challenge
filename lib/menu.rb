@@ -1,4 +1,4 @@
-require 'order'
+require_relative 'order'
 
 class Menu
 
@@ -53,7 +53,7 @@ def menu_functions(order_option,quantity = 0)
     return @order.basket
     end
   when 7
-    puts "Cool! See ya at check-out!"
+    order.total
   end
 end
 
