@@ -3,7 +3,7 @@ class Calculate
   def total(basket)
     total = 0
     basket.each do |key, _value|
-      total += x[:price]
+      total += key[:price]
     end
     total
   end
