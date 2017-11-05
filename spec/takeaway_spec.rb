@@ -3,8 +3,7 @@ describe TakeAway do
   # TakeAway.stub(:gets).and_return(1)
   let(:take_away) { described_class.new }
   let(:menu) { double 'fake menu', read_menu: [{ "Chocolate Melt" => 7.99 }, { "Apple Crumble" => 6.99 }, { "Banana Split" => 6.99 }] }
-
-
+  # let(:message) { double 'fake message', send_text: 'Thank you for your order! Your order should arrive in less than an hour.' }
   context 'when new instance of takeaway is made' do
     it 'should instantiate with an empty basket' do
       expect(take_away.basket).to eq []
@@ -28,7 +27,7 @@ describe TakeAway do
       expect(take_away.basket).to contain_exactly({ 'Apple Crumble' => 6.99 })
     end
     it 'should raise error if trying to order unknown menu item' do
-      expect { take_away.add_to_basket("Cheese") }.to raise_error 'Unknown item'
+      expect { take_away.add_to_basket("Cheese") }.to raise_error 'Please pick a dessert from the menu.'
     end
   end
   describe '#total' do
@@ -86,6 +85,8 @@ describe TakeAway do
       allow(take_away).to receive(:send_text)
     end
     it 'should send me a text that my order has been confirmed' do
+    # this is'nt really testing anything at this point..
+    # take_away.stub(:send_text).and_return('Thank you for your order! Your order should arrive in less than an hour.')
       expect(take_away).to receive(:send_text).with('Thank you for your order! Your order should arrive in less than an hour.')
       take_away.finalize_order
     end
