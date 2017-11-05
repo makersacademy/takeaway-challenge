@@ -24,4 +24,12 @@ describe Takeaway do
       expect(takeaway.check_total).to eq 10
     end
   end
+
+  describe '#confirm_order' do
+    it "should send a text" do
+      allow(takeaway.text).to receive(:send_text).and_return nil
+      allow(takeaway).to receive(:reset_order).and_return "text sent"
+      expect(takeaway.confirm_order).to eq "text sent"
+    end
+  end
 end
