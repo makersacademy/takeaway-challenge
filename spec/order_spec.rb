@@ -13,10 +13,14 @@ describe Order do
     it 'has a Total defaulted in 0' do
       expect(subject.total).to eq 0
     end
+
+    it 'has a status defaulted to "new"' do
+      expect(subject.status).to eq :new
+    end
   end
 
   describe '#add' do
-    before(:each) { subject.add(dish, 2)}
+    before(:each) { subject.add(dish, 2) }
     context 'when a dish is ordered once' do
       it 'adds a dish to the cart' do
         expect(subject.cart).to eq({ dish => 2 })
@@ -37,4 +41,17 @@ describe Order do
     end
   end
 
+  describe '#canceled' do
+    before(:each) { subject.canceled }
+    it 'changes the status to canceled' do
+      expect(subject.status).to eq :canceled
+    end
+  end
+
+  describe 'payed' do
+    before(:each) { subject.payed }
+    it 'changes the status to canceled' do
+      expect(subject.status).to eq :payed
+    end
+  end
 end
