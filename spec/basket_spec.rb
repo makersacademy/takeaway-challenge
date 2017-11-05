@@ -2,7 +2,7 @@ require 'basket'
 require 'menu'
 
 describe Basket do
-  let (:loaded_basket) do
+  let(:loaded_basket) do
     subject.add(1)
     subject.add(7)
   end
@@ -10,8 +10,8 @@ describe Basket do
   context 'Adding new items to the basket' do
     describe '#add_item' do
       it "Should add a new item to the user's basket" do
-        subject.add(1)
-        expect(subject.current_order).to eq([{ :dish => "Pizza Rossa", :price => "9" }])
+        loaded_basket
+        expect(subject.current_order).to eq([{ :dish => "Pizza Rossa", :price => "9" }, { :dish => "Take It Cheesy", :price => "14.5" }])
       end
     end
   end
