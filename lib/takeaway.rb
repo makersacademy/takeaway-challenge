@@ -4,13 +4,14 @@ require './lib/menu'
 
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :order_history
 
   def initialize(text = Text.new, billing = Billing.new, menu = Menu.new)
     @menu = menu
     @order = [{ total: 0 }]
     @text = text
     @billing = billing
+    @order_history = []
   end
 
   def parse_order(string)
@@ -29,7 +30,8 @@ class Takeaway
   end
 
   def confirm_order
-    @text.send_text(@order[0][:total])
+    # @text.send_text(@order[0][:total])
+    @order_history << @order
     @order = [{ total: 0 }]
   end
 

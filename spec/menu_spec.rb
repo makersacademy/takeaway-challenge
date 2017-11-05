@@ -16,5 +16,11 @@ describe Menu do
       expect(subject.menu).to eq menu
     end
   end
+
+  describe '#items' do
+    it 'returns string with food items' do
+      expect(subject.items).to eq "Bolognese £6\nPizza £8\nChips £2\nChicken £3\nHamburger £4\nDonner Wrap £6\nNuggets £3\nMozzarella Sticks £5\nDeep-fried Mars Bar £1\nFish £5"
+    end
+  end
   
 end
