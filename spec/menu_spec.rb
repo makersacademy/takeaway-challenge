@@ -10,4 +10,4 @@ describe Menu do
   end
 end
 
-# This test would work much better with a double (seeing as menus can get quite long), but have been unable to find out how to stub STDOUT in Rspec.
+# This test would work much better with a double (seeing as menus can get quite long), but have been unable to find out how to stub STDOUT in RSpec.
