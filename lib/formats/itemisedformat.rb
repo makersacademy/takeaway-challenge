@@ -1,15 +1,11 @@
-#!/usr/bin/env ruby
-
 require './lib/formats/formatter'
 
 # ItemisedFormat is a formatting class. It is usually
 # passed to Order #format to get pretty printed orders.
-
 class ItemisedFormat
-
   DEFAULT_LENGTH = 20
   DEFAULT_COUNT_LENGTH = 3
-
+  
   def initialize(length: DEFAULT_LENGTH, count_length: DEFAULT_COUNT_LENGTH)
     @item = @count = nil
     @length = length
@@ -23,6 +19,7 @@ class ItemisedFormat
   end
 
   private
+
   include Formatter
 
   def count_to_s

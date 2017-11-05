@@ -1,14 +1,11 @@
-#!/usr/bin/env ruby
-
 require 'formats/itemisedformat'
 
 describe ItemisedFormat do
-
   let(:menuitem) { double(:menuitem, title: 'fish') }
   let(:formatter) { described_class.new(length: 50, count_length: 4) }
   subject { formatter }
-
   include_examples 'formatter'
+
 
   describe '#format' do
     context 'when creating formatted string' do
@@ -27,7 +24,7 @@ describe ItemisedFormat do
         expect(subject.length).to eq 50
       end
     end
- 
+
     context 'when using default parameters' do
       subject { described_class.new.format(menuitem, 4) }
 
