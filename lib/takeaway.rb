@@ -1,6 +1,4 @@
 require_relative 'order'
-require 'twilio-ruby'
-require 'sinatra'
 
 class Takeaway
   attr_reader :order, :menu

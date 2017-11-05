@@ -19,12 +19,4 @@ describe Text do
       end
     end
   end
-
-  describe "#text" do
-    context "when completingpayment for an order" do
-      it "should return a text message" do
-
-      end
-    end
-  end
 end

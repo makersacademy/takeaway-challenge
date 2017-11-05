@@ -1,22 +1,19 @@
-# IRB SCRIPT
-# irb -r ./lib/order.rb
-
-require_relative 'takeaway'
 require_relative 'text'
 
 class Order
-  attr_reader :menu, :current, :cost
+  attr_reader :menu, :current, :cost, :time
 
-  def initialize (menu = Takeaway::DISHES, time = Time)
+  def initialize (menu = Takeaway::DISHES, text = Text)
     @menu = menu
     @current = Hash.new { |h, k| h[k] = 0 }
     @cost = 0
-    @time = time
+    @text = text
   end
 
   def add_to_order(dish, quantity)
     fail "That isn't on the menu" unless menu.has_key?(dish.to_sym)
     update_current(dish, quantity)
+    add_to_cost(dish, quantity)
   end
 
   def breakdown
@@ -27,15 +24,18 @@ class Order
   def pay(amount)
     fail no_items if @cost == 0
     fail "Please pay £#{cost} to complete order" if amount != @cost
-    @time.send
+    @text.send
   end
 
   private
 
   def update_current(dish, quantity)
     @current[dish.to_sym] += quantity
-    @cost += (menu[dish.to_sym] * quantity)
     puts "#{quantity} #{dish} added to your order"
+  end
+
+  def add_to_cost(dish, quantity)
+    @cost += (menu[dish.to_sym] * quantity)
   end
 
   def order_breakdown
