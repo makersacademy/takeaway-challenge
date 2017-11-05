@@ -6,7 +6,7 @@ class Text
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     @message = @client.messages.create(
-        body: "",
+        body: "Thank you! Your order was placed and will be delivered before 18:52",
         to: "",    # Replace with your phone number
         from: "")  # Replace with your Twilio number
 
