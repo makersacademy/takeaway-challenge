@@ -8,6 +8,7 @@ describe TakeAway do
     it 'should be an instance of TakeAway class' do
       expect(subject).to be_an_instance_of(TakeAway)
     end
+  
   end
 
   describe ' #list_of_dishes' do
@@ -40,7 +41,7 @@ describe TakeAway do
   describe ' #print_basket_summary' do
     it 'should print all items with quantities' do
       subject.order('Miso Soup', 2)
-      printed_message = '2 of Miso Soup,'
+      printed_message = ['2 of Miso Soup,']
       expect(subject.print_basket_summary).to eq(printed_message)
 
     end

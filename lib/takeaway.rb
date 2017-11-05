@@ -1,6 +1,9 @@
 # Order class for takeaway challenge
+require 'menu'
+require 'restaurant'
+
 class TakeAway
-  attr_reader :menu_options, :sum_total, :quantity, :chosen_meal
+  attr_reader :sum_total, :quantity, :chosen_meal, :basket_summary
 
   def initialize
     @basket_summary = []
@@ -24,23 +27,21 @@ class TakeAway
     @basket_summary << @single_order
     p print_message
     @single_order = {}
-
   end
 
   def sum_total
     @sum_total += menu_options[:chosen_meal] * @single_order[:quantity]
   end
-  # def add_to_basket
-  #   @basket_summary.push( {quantity: quantity, chosen_meal: chosen_meal })
-  # end
 
   def print_message
     "x #{@single_order[:quantity]} #{@single_order[:chosen_meal]} added to your basket."
   end
 
-  def basket_summary
-    @basket_summary.each do |quantity, meal|
-      p "#{quantity} of #{meal},"
+  def print_basket_summary
+    @basket_summary.map do |item|
+      number = item[:quantity]
+      food = item[:chosen_meal]
+       "#{number} of #{food},"
     end
   end
 
