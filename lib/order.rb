@@ -1,8 +1,9 @@
 require 'menu.rb'
+require 'SMS.rb'
 
 # this shows the list of dishes which can be added to an order
 class Order
-  attr_reader :menu, :current_order
+  attr_reader :menu, :current_order, :final_cost
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -33,11 +34,11 @@ class Order
   end
 
   def total_cost
-    total_cost = 0
+    @final_cost = 0
     @current_order.each do |dish|
-      total_cost += dish[1].price
+      @final_cost += dish[1].price
     end
-    total_cost
+    @final_cost
   end
 
   def new_order
@@ -53,8 +54,8 @@ class Order
   def checkout
     puts 'To complete your order, please confirm the total cost:'
     answer = gets.chomp
-    raise 'incorrect total cost' if answer.to_i != total_cost.to_i
-    'confirmed'
+    raise 'incorrect total cost' if answer.to_i != @final_cost.to_i
+    send_text
   end
 
   private
@@ -93,5 +94,10 @@ class Order
   def delete_from_current_order(key)
     @current_order[key].quantity -= 1
     @current_order.delete(key) if @current_order[key].quantity < 1
+  end
+
+  def send_text
+    total_cost
+    SMS.new(@current_order, @final_cost)
   end
 end
