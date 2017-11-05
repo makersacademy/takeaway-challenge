@@ -5,6 +5,7 @@ class Order
     items.each do |x, _y|
       total += x[:price]
     end
+    puts "Order total £#{total}!"
     total
   end
 
@@ -14,6 +15,7 @@ class Order
       total += x[:price]
     end
     raise 'Wrong total!' unless total == previous_total
+    puts "Order checked and correct!"
     total
   end
 end

@@ -14,6 +14,6 @@ class Text
     @client.messages.create(
       from: '+441158240958',
       to: '+447850523068',
-      body: "Your order is £#{amount}! It will arrive before #{time_plus_hour}. Tess is a poo.")
+      body: "Your order is £#{amount}! It will arrive before #{time_plus_hour}.")
   end
 end

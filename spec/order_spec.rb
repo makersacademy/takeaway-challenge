@@ -4,8 +4,8 @@ describe Order do
   subject(:subject) { described_class.new }
 
   let(:items) do [
-                  { name: 'Chicken', price: 5, amount: 1 },
-                  { name: 'Burger', price: 4, amount: 1 }
+                  { item: 'Chicken', price: 5},
+                  { item: 'Burger', price: 4}
                 ]
                 end
 

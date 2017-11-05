@@ -4,10 +4,11 @@ describe Takeaway do
 
   let(:subject) { described_class.new }
   let(:items) do [
-                    { name: 'Chicken', price: 5 },
-                    { name: 'Burger', price: 4 }
+                    { item: 'Chicken', price: 5 },
+                    { item: 'Burger', price: 4 }
                   ]
               end
+
   let(:chicken) { 'Chicken' }
 
   describe "#items" do
