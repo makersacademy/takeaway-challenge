@@ -23,5 +23,13 @@ describe Order do
       expect(subject.ordered_list[1]).to eq ({:Banana_shake=>3.2})
       expect(subject.ordered_list[-1]).to eq ({:Nutella_waffles=>2.0})
     end
+    it 'gives the price of the food' do
+      subject.place_order('pancake')
+      expect(subject.total_price).to eq(1.0)
+    end
+    it 'gives the total price when asked for different dishes' do
+      subject.place_order('pancake', 'Banana_shake', 'nutella_waffles')
+      expect(subject.total_price).to eq(6.2)
+    end
   end
 end
