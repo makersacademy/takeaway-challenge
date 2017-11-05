@@ -1,8 +1,9 @@
+require_relative 'order'
 # IRB SCRIPT
-# irb -r ./lib/menu.rb
+# irb -r ./lib/takeaway.rb
 
 class Takeaway
-  attr_reader :dishes
+  attr_reader :dishes, :order
 
   DISHES = {
     pizza: 5,
@@ -12,8 +13,13 @@ class Takeaway
     family_deal: 15
   }
 
-  def initialize
+  def initialize(order = Order.new)
     @dishes = DISHES
+    @order = order
+  end
+
+  def select(dish, quantity)
+    @order.add_to_order(dish, quantity)
   end
 
 end
