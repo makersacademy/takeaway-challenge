@@ -2,7 +2,7 @@ require "order"
 
 describe Order do
   let(:dish) { double(:dish, name: "burger", price: 7) }
-  let(:restaurant) { double(:restaurant, menu: [dish]) }
+  let(:restaurant) { double(:restaurant, menu: [dish], name: "mcdonalds") }
   subject(:order) { described_class.new(restaurant) }
 
   describe "#initialize" do
@@ -92,11 +92,11 @@ describe Order do
     end
     it "completes order if giving exact money" do
       subject.add_item("burger", 1)
-      expect { subject.pay(7) }.to output("Your order is complete.\n").to_stdout
+      expect { subject.pay(7) }.to output("Your order from mcdonalds is complete for £7.\n").to_stdout
     end
     it "completes order and gives change if giving too much money" do
       subject.add_item("burger", 1)
-      expect { subject.pay(12) }.to output("Your order is complete.\nYour change is £5.\n").to_stdout
+      expect { subject.pay(12) }.to output("Your order from mcdonalds is complete for £7.\nYour change is £5.\n").to_stdout
     end
   end
 end

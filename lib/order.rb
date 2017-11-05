@@ -13,7 +13,7 @@ class Order
     @items = []
   end
 
-  def add_item(item, quantity)
+  def add_item(item, quantity = 1)
     raise "This item doesn't exist at this restaurant." if get_item(item).nil?
     increase_items(item, quantity)
     increase_total(quantity)
@@ -40,7 +40,7 @@ class Order
   private
 
   def complete_order(amount)
-    puts "Your order is complete."
+    puts "Your order from #{@restaurant.name} is complete for £#{@total}."
     puts "Your change is £#{amount - @total}." if check_change(amount)
   end
 
