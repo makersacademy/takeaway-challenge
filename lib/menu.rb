@@ -27,7 +27,6 @@ def menu_functions(order_option,quantity = 0)
     @order.option("Satay")
     @order.food_quantity(quantity)
     @order.price(@info[:Satay])
-    update
   when 2
     @order.option("RotiCanai")
     @order.food_quantity(quantity)
@@ -50,24 +49,8 @@ end
 
 def update
   @order.update_order
+  @order.update_basket
 end
-
-
-def check_basket
-  basket = @basket
-  basket.each do |element,number|
-    puts "#{number}x #{element}"
-  end
-end
-
-def adding_food
-  @current_order[:food] = @option
-  @current_order[:quantity] = @quantity
-  @basket << @current_order.values
-end
-
-
-
 
 
 end
