@@ -1,12 +1,14 @@
 require './lib/menu.rb'
+require './lib/calculate.rb'
 
 class Takeaway
 
 attr_reader :basket, :list
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sum = Calculate.new)
     @basket = []
     @menu = menu
+    @sum = sum
   end
 
   def menu
@@ -18,10 +20,6 @@ attr_reader :basket, :list
   end
 
   def total
-    total = 0
-    @basket.each do |x, _y|
-      total += x[:price]
-    end
-    total
+    @sum.total(@basket)
   end
 end
