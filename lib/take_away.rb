@@ -7,7 +7,7 @@ class TakeAway
   end
 
   def print_menu
-    @menu.show
+    @menu.pretty_print
   end
 
 end

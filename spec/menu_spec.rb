@@ -12,4 +12,8 @@ describe Menu do
     expect(menu.list).to be_instance_of(Hash)
   end
 
+  it '#pretty_print return a string' do
+    expect(menu.pretty_print).to be_instance_of(String)
+  end
+
 end
