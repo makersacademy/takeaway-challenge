@@ -1,9 +1,11 @@
 require_relative 'order'
+require_relative 'text'
 
 private
 
 def new_order
   @order = Order.new
+  @text = Text.new
 end
 
 def initial_menu
@@ -85,6 +87,12 @@ def getting_answer
   answer = gets.chomp
   make_order if answer.upcase == 'Y'
   initial_display unless complete_order?
+  send_sms
+end
+
+def send_sms
+  @text.send_text
+  say_goodbye
 end
 
 def complete_order?
