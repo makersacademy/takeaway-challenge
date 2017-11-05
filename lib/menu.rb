@@ -63,11 +63,13 @@ def update
 end
 
 def check_out(money)
-   sum = money
-  if sum != @order.total_price
+  if money < @order.total_price
      puts "Sorry, wrong amount for payment."
+   elsif money > @order.total_price
+     change = money - @order.total_price
+     puts "Here's your change! $#{change}! You'll hear a confirmation soon!"
   else
-     puts "Thank you! You'll hear a confirmaton soon!"
+     puts "Perfect! You'll hear a confirmaton soon!"
   end
 end
 
