@@ -29,10 +29,11 @@ sent to the customer with a confirmation message and with the expected time of d
 
 This is a sample of how the program works:
 
-* We start by creating our takeaway, we will call it "Shakes & Co"
+We start by creating our takeaway, we will call it "Shakes & Co"
+```
 shakes_and_co = Takeaway.new
-
-* Now we can ask for the menu
+```
+Now we can ask for the menu
 ```
 shakes_and_co.show_menu
 
@@ -43,16 +44,16 @@ Smarty_smarties.....................8.49
 Lets_go_nuts........................4.99
 Chocolate_indulgence................5.99
 ```
-* We choose something from the menu and order it
+We choose something from the menu and order it
 ```
 shakes_and_co.order("Kiwilicious")
 ```
-* We might want something else
+We might want something else
 ```
 shakes_and_co.order("Chocolate_indulgence", 2)
 ```
 
-* Now we can proceed to checkout
+Now we can proceed to checkout
 ```
 shakes_and_co.checkout
 
@@ -62,11 +63,11 @@ Chocolate_indulgence x 2...........11.98
 --------------------
 Total: 20.97
 ```
-* We pay the Total
+We pay the Total
 ```
 shakes_and_co.pay(20.97)
 ```
-* We get a confirmation text message that looks like this
+We get a confirmation text message that looks like this
 ```
 'The order will be delivered before 08:30 PM'
 ```
