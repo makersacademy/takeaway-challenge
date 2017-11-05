@@ -8,7 +8,7 @@ class Basket
   end
 
   def add(item_number)
-    @current_order << @menu.dishes.at(item_number - 1) if item_number <= @menu.dishes.length
+    @current_order << @menu.dishes.at(item_number - 1) if item_number.abs <= @menu.dishes.length
   end
 
   def total
