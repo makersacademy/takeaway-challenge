@@ -1,16 +1,11 @@
-#!/usr/bin/env ruby
-
 require 'money'
 require './lib/formats/itemisedformat'
 
-# configures Money object to avoid known bug
 # see: https://github.com/RubyMoney/money/issues/593
-
 Money.use_i18n = false
 
 # The Order class represents a single order. It stores a number
 # of dishes against their quantities.
-
 class Order
   attr_reader :items, :currency
 
@@ -45,7 +40,7 @@ class Order
   def format(formatter = ItemisedFormat.new, *args)
     items.map { |pair| formatter.format(*pair, *args) }.join("\n")
   end
-    
+
   private
 
   def subtotal(item, count)

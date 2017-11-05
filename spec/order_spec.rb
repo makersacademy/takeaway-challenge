@@ -1,17 +1,11 @@
-#!/usr/bin/env ruby
-
 require 'order'
 
 describe Order do
-
-  # mock objects
   let(:menu) { double(:menu) }
   let(:formatter) { double(:formatter, format: 'a line') }
   let(:menuitem) { double(:menuitem, title: 'dish', price_object: 2) }
   let(:otheritem) { double(:menuitem, price_object: 5) }
   let(:money_class) { double(:money_class, new: 0) }
-
-  # order objects
   let(:kwargs) { { currency: 'GBP', money_class: money_class } }
   let(:order) { described_class.new(**kwargs) }
   subject { order }
@@ -25,7 +19,7 @@ describe Order do
       it 'has no items' do
         expect(subject.items).to be_empty
       end
-      
+
       it 'has currency' do
         expect(subject.currency).to eq 'GBP'
       end
@@ -39,9 +33,9 @@ describe Order do
       subject { described_class.new(existing: { b: 2 }).items }
 
       it 'uses given hash' do
-        expect(subject).to eq({ b: 2 })
+        expect(subject).to eq(b: 2)
       end
-      
+
       it 'still implements missing-value behaviour' do
         expect(subject[:c]).to eq 0
       end
@@ -52,7 +46,7 @@ describe Order do
     context 'when creating from menu and item-quantity hash' do
       before(:each) { allow(menu).to receive(:get).with(1).and_return(:a) }
       before(:each) { allow(menu).to receive(:get).with(2).and_return(:b) }
-      subject { described_class.from_selection(menu, { 1 => 5, 2 => 1 }) }
+      subject { described_class.from_selection(menu, 1 => 5, 2 => 1) }
 
       it 'has 5 of item 1' do
         expect(subject.items[:a]).to eq 5
@@ -64,11 +58,11 @@ describe Order do
     end
 
     context 'when receiving unexpected items' do
-      subject { described_class } 
+      subject { described_class }
       before(:each) { allow(menu).to receive(:get).and_return(nil) }
 
       it 'raises error' do
-        expect { subject.from_selection(menu, { a: 1 }) }
+        expect { subject.from_selection(menu, a: 1) }
           .to raise_error RangeError
       end
     end
@@ -102,7 +96,7 @@ describe Order do
     end
 
     context 'when adding item values' do
-      before(:each) { subject.items.update({ menuitem => 4, otheritem => 5}) }
+      before(:each) { subject.items.update(menuitem => 4, otheritem => 5) }
 
       it 'sums values multiplied by quantity' do
         expect(subject.total).to eq 33
@@ -111,7 +105,7 @@ describe Order do
   end
 
   describe '#format' do
-    before(:each) { order.items.update({ a: 1, b: 2 }) }
+    before(:each) { order.items.update(a: 1, b: 2) }
 
     context 'when applying format' do
       after(:each) { subject.format(formatter) }
