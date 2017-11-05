@@ -2,7 +2,7 @@
 
 [Task](#task) | [Approach](#approach) | [Execution](#execution) | [Struggles](#struggles) | [Demo](#demo) | [Technologies](#technologies)
 
-## <a name"task">Task</a>
+## <a name="task">Task</a>
 
 This task was completed as the weekend challenge for week 2 at Makers Academy. Following two weeks of learning how to test drive the development of Ruby programs we were asked to develop a Takeaway App. Below are the user stories we were given.
 
