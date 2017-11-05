@@ -1,7 +1,7 @@
 # Dialogue provides formatted messages for responses to clients.
 class Dialogue
-  def confirmed(order)
-    'Your order has been placed! It will arrive before %s.' % order.time
+  def confirmed(time)
+    'Your order has been placed! It will arrive before %s.' % time
   end
 
   def malformed(errors)
@@ -31,5 +31,9 @@ class Dialogue
   def in_progress
     'An order is currently in progress. Please confirm or cancel before' \
       'ordering again.'
+  end
+
+  def cancel
+    'Your order has been cancelled.'
   end
 end

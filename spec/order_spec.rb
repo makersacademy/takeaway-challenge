@@ -127,17 +127,4 @@ describe Order do
       end
     end
   end
-
-  describe '#time' do
-    context 'gets current time' do
-      let(:time) { double(:time, now: now) }
-      let(:now) { double(:time, :+ => delayed) }
-      let(:delayed) { double(:time, strftime: :time) }
-      subject { described_class.new(time_class: time) }
-
-      it 'gets formatted time' do
-        expect(subject.time).to eq :time
-      end
-    end
-  end
 end

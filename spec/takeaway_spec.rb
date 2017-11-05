@@ -6,19 +6,13 @@ describe TakeAway do
 
   let(:menu) { double(:menu, format: 'string') }
   let(:menu_class) { double(:menu_class, from_csv: menu) }
-  let(:order) { double(:order) }
-  let(:order_class) { double(:order_class, from_selection: order) }
-  let(:parser) { double(:parser, to_hash: { a: 1 }) }
+  let(:handler) { double(:handler, response: 'r') }
   let(:dialogue) do 
-    double(:dialogue, confirmed: 'y', cancelled: 'n', 
-           no_order: 'x', confirm?: '?'
-          )
+    double(:dialogue, confirmed: 'y', cancel: 'n', no_order: 'x', 'in_progress': 'p')
   end
 
   let(:takeaway) do 
-    described_class.new(menu_class: menu_class, parser: parser, 
-                        dialogue: dialogue
-                       )
+    described_class.new(menu_class: menu_class, handler: handler, dialogue: dialogue)
   end
 
   subject { takeaway }
@@ -51,127 +45,77 @@ describe TakeAway do
     end
   end
 
-  describe '#build_order' do
-    context 'when receiving SMS message' do
-      after(:each) { subject.build_order('sms', order_class: order_class) }
-
-      it 'parses order into hash' do
-        expect(parser).to receive(:to_hash).with('sms')
-      end
-
-      it 'creates Order object' do
-        expect(order_class).to receive(:from_selection).with(menu, { a: 1 })
-      end
-
-      it 'returns Order object' do
-        expect(subject.build_order('sms', order_class: order_class))
-          .to eq order
-      end
-    end
-  end
-
   describe '#incoming_order' do
-    after(:each) { subject.incoming_order('123', 'order') }
-
-    context 'when receiving valid order' do
-      before(:each) do
-        allow(subject).to receive(:build_order).and_return(order)
-      end
-
-      it 'calls place with object' do
-        expect(subject).to receive(:place).with('123', order)
+    context 'when order in progress' do
+      before(:each) { subject.orders.push('123') }
+      
+      it 'returns progress message' do
+        expect(subject.incoming_order('123', 'order')).to eq 'p'
       end
     end
 
-    context 'when order has syntax errors' do
-      before(:each) do
-        allow(subject).to receive(:build_order).and_raise ParseError
-      end
+    context 'when order is permitted' do
+      before(:each) { takeaway.incoming_order('123', 'order') }
 
-      it 'creates message' do
-        expect(dialogue).to receive(:malformed).with('order')
+      it 'puts number in order list' do
+        expect(takeaway.orders).to include '123'
       end
     end
 
-    context 'when order has duplicates' do
-      before(:each) do
-        allow(subject).to receive(:build_order).and_raise DuplicateError
-      end
+    context 'when getting response' do
+      subject { takeaway.incoming_order('123', 'y') }
 
-      it 'creates message' do
-        expect(dialogue).to receive(:duplicated).with('order')
-      end
-    end
-
-    context 'when order has invalid items' do
-      before(:each) do
-        allow(subject).to receive(:build_order).and_return(order)
-      end
-
-      before(:each) do
-        allow(subject).to receive(:place).and_raise RangeError
-      end
-
-      it 'creates message' do
-        expect(dialogue).to receive(:missing).with(order)
+      it 'returns response' do
+        expect(subject).to eq 'r'
       end
     end
   end
 
-  describe '#place' do
-    context 'when placing order' do
-      after(:each) { subject.place('123', order) }
-
-      it 'registers number' do
-        expect(subject.orders).to receive(:push).with('123')
-      end
-
-      it 'gets dialogue message' do
-        expect(dialogue).to receive(:confirm?).with(order)
+  describe '#incoming_confirmation' do
+    context 'when no order in progress' do
+      it 'returns progress message' do
+        expect(subject.incoming_confirmation('123', 'order')).to eq 'x'
       end
     end
 
-    context 'after placing menu' do
-      subject { takeaway.place('123', order) }
+    context 'when order is permitted' do
+      before(:each) { subject.orders.push('123') }
+      before(:each) { takeaway.incoming_confirmation('123', 'y') }
 
-      it 'returns dialogue message' do
-        expect(subject).to eq '?'
+      it 'removes number in order list' do
+        expect(takeaway.orders).to_not include '123'
+      end
+    end
+
+    context 'when getting confirmation response' do
+      before(:each) { takeaway.orders.push('123') }
+      before(:each) { allow(takeaway).to receive(:delivery).and_return('time') }
+      subject { takeaway.incoming_confirmation('123', 'y') }
+
+      it 'returns response' do
+        expect(subject).to eq 'y'
+      end
+    end
+
+    context 'when getting confirmation response' do
+      before(:each) { takeaway.orders.push('123') }
+      subject { takeaway.incoming_confirmation('123', 'n') }
+
+      it 'returns response' do
+        expect(subject).to eq 'n'
       end
     end
   end
 
-  describe '#confirm' do
-    before(:each) { subject.orders.push('123') }
+  describe '#delivery' do
+    context 'gets current time' do
+      let(:time) { double(:time, now: now) }
+      let(:now) { double(:time, :+ => delayed) }
+      let(:delayed) { double(:time, strftime: :time) }
+      subject { takeaway.delivery(time_class: time) }
 
-    context 'when no order exists' do
-      it 'returns message' do
-        expect(subject.confirm('234', 'msg')).to eq 'x'
-      end
-    end
-
-    context 'when receiving confirmation or cancellation' do
-      it 'marks order as complete' do
-        expect { subject.confirm('123', 'y') }
-          .to change { subject.orders.length }.by(-1)
-      end
-    end
-
-    context 'when receiving confirmation' do
-      before(:each) { allow(subject).to receive(:delivery).and_return('1') }
-      after(:each) { subject.confirm('123', 'y') }
-
-      it 'returns confirmation' do
-        expect(subject.confirm('123', 'y')).to eq 'y'
-      end
-
-      it 'calls with delivery time' do
-        expect(dialogue).to receive(:confirmed).with('1')
-      end
-    end
-
-    context 'when receiving cancellation' do
-      it 'returns confirmation' do
-        expect(subject.confirm('123', 'n')).to eq 'n'
+      it 'gets formatted time' do
+        expect(subject).to eq :time
       end
     end
   end
