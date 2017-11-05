@@ -19,6 +19,7 @@ class Order
     menu.list.each do |key, dish|
       puts "#{dish.name} £#{dish.price}"
     end
+    return
   end
 
   def add(dish, quantity = 1)
@@ -62,5 +63,12 @@ class Order
   def cancel_order
     @current_order = {}
     "Your current order has been cancelled"
+  end
+
+  def checkout
+    puts "To complete your order, please confirm the total cost:"
+    answer = gets.chomp
+    raise "incorrect total cost" if answer.to_i != total_cost.to_i
+    'confirmed'
   end
 end

@@ -88,4 +88,20 @@ describe Order do
       expect(subject.current_order).to eq Hash.new
     end
   end
+
+  describe '#checkout' do
+    it 'should raise error if answer doesnt match total_cost' do
+      p 'enter anything but 14!'
+      subject.add('Moghlai')
+      subject.add('Patia')
+      expect{ subject.checkout }.to raise_error("incorrect total cost")
+    end
+
+    it 'should return confirmed if correct total entered' do
+      p 'enter 13!'
+      subject.add('Rogan Josh')
+      subject.add('Saag')
+      expect(subject.checkout).to eq('confirmed')
+    end
+  end
 end
