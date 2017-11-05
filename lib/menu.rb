@@ -1,13 +1,13 @@
+require 'order'
+
 class Menu
 
-attr_reader :info, :food, :current_order, :basket
+attr_reader :order
 
 def initialize
   @info = { Satay: 5, RotiCanai: 9, Kuih: 3, NasiLemak: 10}
-  @current_order = { food: nil , quantity: nil }
-  @quantity = nil
-  @basket = []
-  # @bill = ""
+  @order = Order.new
+
 end
 
 def read_menu
@@ -20,28 +20,36 @@ def read_menu
   return "Choose Option for your order! (Input a Number)"
 end
 
-def menu_functions(order_option,quantity)
+def menu_functions(order_option,quantity = 0)
   @quantity = quantity
   case order_option
    when 1
-    @option = "Satay"
-    adding_food
+    @order.option("Satay")
+    @order.food_quantity(quantity)
+    @order.price(@info[:Satay])
+    update
   when 2
-    @option = "RotiCanai"
-    adding_food
+    @order.option("RotiCanai")
+    @order.food_quantity(quantity)
+    @order.price(@info[:RotiCanai])
+    update
   when 3
-    @option = "Kuih"
-    adding_food
+    @order.option("Kuih")
+    @order.food_quantity(quantity)
+    @order.price(@info[:Kuih])
+    update
   when 4
-    @option = "Nasi Lemak"
-    adding_food
+    @order.option("Nasi Lemak")
+    @order.food_quantity(quantity)
+    @order.price(@info[:NasiLemak])
+    update
   when 5
-    if empty_basket
-      puts "Your basket if empty"
-    else
-      check_basket
-    end
+    update
   end
+end
+
+def update
+  @order.update_order
 end
 
 
@@ -58,16 +66,8 @@ def adding_food
   @basket << @current_order.values
 end
 
-def empty_basket
-   @basket = []
-end
 
-def option(option)
-  @option = option
-end
 
-def food_quantity(quantity)
-  @quantity = quantity
-end
+
 
 end
