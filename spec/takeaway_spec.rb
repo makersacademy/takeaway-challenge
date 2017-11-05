@@ -31,11 +31,19 @@ describe TakeAway do
       expect(order1).to eq(subject.order('Miso Soup', 1))
     end
 
-    it ' should be added to basket summary' do
+    it ' should push to basket_summary' do
       subject.order('Miso Soup', 2)
       expect(subject.basket_summary).to eq([{ quantity: 2, chosen_meal: 'Miso Soup' }])
     end
+  end
 
+  describe ' #print_basket_summary' do
+    it 'should print all items with quantities' do
+      subject.order('Miso Soup', 2)
+      printed_message = '2 of Miso Soup,'
+      expect(subject.print_basket_summary).to eq(printed_message)
+
+    end
   end
 
 end
