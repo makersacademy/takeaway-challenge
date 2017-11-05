@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  let(:set_menu) { Order.new( { pizza: 5 } ) }
+  let(:set_menu) { Order.new({ pizza: 5 }) }
   let(:pizza) { "pizza" }
 
   describe "Instantiation" do
@@ -72,8 +72,9 @@ describe Order do
         expect { set_menu.pay(2) }.to raise_error("Nothing added to order yet")
       end
       it "should complete your order" do
+        allow(set_menu).to receive(:send_message).and_return(nil)
         set_menu.add_to_order("pizza", 1)
-        expect { set_menu.pay(10) }
+        expect { set_menu.pay(5) }
         .to output("Thank you! Your order has been placed succesfully and will be delivered before #{Time.now + 3600}").to_stdout
       end
     end

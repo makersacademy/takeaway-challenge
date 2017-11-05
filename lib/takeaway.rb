@@ -1,9 +1,9 @@
 require_relative 'order'
-# IRB SCRIPT
-# irb -r ./lib/takeaway.rb
+require 'twilio-ruby'
+require 'sinatra'
 
 class Takeaway
-  attr_reader :dishes, :order
+  attr_reader :order, :menu
 
   DISHES = {
     pizza: 5,
@@ -14,12 +14,29 @@ class Takeaway
   }
 
   def initialize(order = Order.new)
-    @dishes = DISHES
     @order = order
+  end
+
+  def menu
+    DISHES
   end
 
   def select(dish, quantity)
     @order.add_to_order(dish, quantity)
+  end
+
+  def basket
+    @order.breakdown
+  end
+
+  def checkout(amount)
+    @order.pay(amount)
+    reset_order
+  end
+
+  private
+  def reset_order
+    @order = Order.new
   end
 
 end

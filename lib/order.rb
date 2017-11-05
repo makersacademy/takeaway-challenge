@@ -24,7 +24,8 @@ class Order
 
   def pay(amount)
     fail "Nothing added to order yet" if @cost == 0
-    fail "Please pay £#{cost} to complete order" if amount < @cost
+    fail "Please pay £#{cost} to complete order" if amount != @cost
+    send_message
     print "Thank you! Your order has been placed succesfully and will be delivered before #{Time.now + 3600}"
   end
 
@@ -41,5 +42,16 @@ class Order
     puts ""
     @current.each { |k,v| puts "#{k} - #{v} x £#{@menu[k]}" }
     puts "Your basket total is £#{@cost}"
+  end
+
+  def send_message
+    account_sid = "ACc62846ea6cd0ccef6201d60d5669b8d3" # Your Account SID from www.twilio.com/console
+    auth_token = "38063e6515b226eed2ab0e7b94482534"   # Your Auth Token from www.twilio.com/console
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    message = @client.messages.create(
+        body: "Thank you! Your order has been placed succesfully and will be delivered before #{Time.now + 3600}",
+        to: "+447780869533",    # Replace with your phone number
+        from: "+441325952438")  # Replace with your Twilio number
   end
 end
