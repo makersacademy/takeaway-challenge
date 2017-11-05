@@ -1,9 +1,6 @@
-#!/usr/bin/env ruby
-
 require 'formats/menuformat'
 
 describe MenuFormat do
-
   let(:menuitem) { double(:menuitem, title: 'fish', price: '£5.00') }
   let(:formatter) { described_class.new(length: 50, index_length: 6) }
   subject { formatter }
@@ -31,7 +28,7 @@ describe MenuFormat do
         expect(subject.length).to eq 50
       end
     end
- 
+
     context 'when using default parameters' do
       subject { described_class.new.format(4, menuitem) }
 

@@ -1,10 +1,7 @@
-#!/usr/bin/env ruby
-
 require './lib/formats/formatter'
 
 # MenuFormat is a formatting class. It is usually passed
 # to Menu #format to get pretty printed menus.
-
 class MenuFormat
   include Formatter
 
