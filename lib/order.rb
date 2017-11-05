@@ -24,7 +24,7 @@ class Order
     @message = @client.messages.create(
       to: "+447928624753",
       from: "+441202835495",
-      body: "Thanks for your order! It will be delivered at #{@delivery_time}."
+      body: "Thanks for your order! It will be delivered before #{@delivery_time}."
     )
     @text = @message.body
   end
