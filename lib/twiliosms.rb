@@ -11,7 +11,7 @@ class Twiliosms
         body: "Thank you! Your order was placed and will be delivered before #{Time.now.strftime '%I:%M %p'}",
         to: "",
         from: "+441827230490")
-        puts message.sid
+        #puts message.sid
   end
 
 end

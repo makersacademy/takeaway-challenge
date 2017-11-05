@@ -1,14 +1,16 @@
 require '/Users/marcovanali/Desktop/Projects/Weekend_Challenges/takeaway-challenge/lib/twiliosms.rb'
+require '/Users/marcovanali/Desktop/Projects/Weekend_Challenges/takeaway-challenge/lib/takeaway_logo.rb'
 
 class Restaurant
 
   def initialize
     @list = [[:Pizza, 12], [:Patatine, 4], [:CocaCola, 3], [:Lasagne, 4], [:Polenta, 3]]
     @dishes_choosen = []
+    @user_interface = Takeaway_logo.new
   end
 
   def show_menu
-    puts "Menu"
+    @user_interface.menu_header
     @list.each_index { |num| puts "#{num + 1}. #{@list[num][0]} = £#{@list[num][1]}" }
   end
 
@@ -25,7 +27,7 @@ class Restaurant
   end
 
   def select_dishes
-    puts "You want to order:"
+    puts "Your basket:"
     @dishes_choosen.each do |food|
       food[0] -= 1
       puts "#{food[1]} #{@list[food[0]][0]}"
@@ -35,7 +37,7 @@ class Restaurant
   def payment_message
     @prices = []
     @dishes_choosen.each { |dish| @prices << (@list[dish[0]][1]) * (dish[1]) }
-    puts "You have to pay £#{@prices.reduce(:+)}"
+    puts "Total to pay: £#{@prices.reduce(:+)}"
   end
 
   def user_payment
@@ -46,6 +48,7 @@ class Restaurant
       @money = gets.chomp.to_i
       payment_error
     end
+    conferm
   end
 
   def payment_error
@@ -53,7 +56,7 @@ class Restaurant
   end
 
   def conferm
-    puts "Thanks your order has been accepted. Shortly you will receive an confirmation sms."
+    puts "Thanks your order has been accepted. Shortly you will receive an confirmation by sms."
   end
 
   def conferm_sms
