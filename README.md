@@ -18,7 +18,7 @@ Takeaway Challenge
 
 -Go in ./lib/twiliosms.rb and add in the 12 line your number.
 -At the beginning of 'restaurant.rb' and 'takeaway_interface.rb'  change the path of the required files with yours.
-Then with your terminal go in the main folder, and run './lib/interface.rb'
+Then with your terminal go in the main folder, and run 'ruby ./lib/interface.rb'
 
 ![Logo](0.png)
 ![First part](1.png)
