@@ -18,14 +18,18 @@ class ListOfDishes
     Moghlai: Dish.new('Moghlai', 6),
     Passanda: Dish.new('Passanda', 5),
     Patia: Dish.new('Patia', 8),
-    RoganJosh: Dish.new('Rogan Josh', 9),
+    Roganjosh: Dish.new('Rogan Josh', 9),
     Saag: Dish.new('Saag', 4),
     Tikka: Dish.new('Tikka', 5),
-    TikkaMasala: Dish.new('Tikka Masala', 4),
+    Tikkamasala: Dish.new('Tikka Masala', 4),
     Vindaloo: Dish.new('Vindaloo', 7)
   }
 
   def initialize
     @list = MENU
+  end
+
+  def find(dish)
+    @list[dish.to_s.delete(' ').downcase.capitalize.to_sym]
   end
 end
