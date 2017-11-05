@@ -20,4 +20,8 @@ class Order
     )
     @text = @message.body
   end
+
+  def reset_basket basket
+    basket.empty_basket
+  end
 end

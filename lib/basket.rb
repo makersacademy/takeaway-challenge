@@ -24,4 +24,8 @@ class Basket
       " #{dish.fetch(:dish)}, £#{'%.2f' % dish.fetch(:price).to_f}"
     end
   end
+
+  def empty_basket
+    @current_order = []
+  end
 end
