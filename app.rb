@@ -8,12 +8,7 @@ post '/sms' do
 
   body = params['Body']
 
-  # takeaway.parse_order(body)
-  # total = takeaway.order[0][:total]
-
-  # content_type 'text/xml'
-  # Text.new.text_response(total)
-  body.downcase == 'menu' ? send_menu : confirmation_text(body)
+  body.casecmp('menu').zero? ? send_menu : confirmation_text(body)
 
 end
 

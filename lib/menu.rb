@@ -21,7 +21,6 @@ class Menu
     items = []
     CSV.foreach("menu.csv") do |row|
       name, price = row
-      # menu << { name: name, price: price.to_i }
       items << "#{name} £#{price}"
     end
     items.join("\n")
