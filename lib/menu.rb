@@ -1,9 +1,8 @@
-#!/usr/bin/env ruby
-
 require 'csv'
 require './lib/menuitem'
 require './lib/formats/menuformat'
 
+# Menu is a collections of MenuItems.
 class Menu
   attr_reader :items
   START = 100
@@ -23,7 +22,7 @@ class Menu
   end
 
   def format(formatter = MenuFormat.new, *args)
-    items.each_with_index.map do |item, index| 
+    items.each_with_index.map do |item, index|
       formatter.format(index + START, item, *args)
     end.join("\n")
   end
