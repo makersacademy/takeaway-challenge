@@ -16,10 +16,11 @@ def read_menu
   puts "2. RotiCanai - $9.00"
   puts "3. Kuih - $3.00"
   puts "4. Nasi Lemak - $10"
+  puts "5. Check Basket"
   return "Choose Option for your order! (Input a Number)"
 end
 
-def order(order_option,quantity)
+def menu_functions(order_option,quantity)
   @quantity = quantity
   case order_option
    when 1
@@ -34,13 +35,18 @@ def order(order_option,quantity)
   when 4
     @option = "Nasi Lemak"
     adding_food
+  when 5
+    if empty_basket
+      puts "Your basket if empty"
+    else
+      check_basket
+    end
   end
 end
 
 
 def check_basket
   basket = @basket
-  puts "Total Order:\n\n"
   basket.each do |element,number|
     puts "#{number}x #{element}"
   end
@@ -50,6 +56,10 @@ def adding_food
   @current_order[:food] = @option
   @current_order[:quantity] = @quantity
   @basket << @current_order.values
+end
+
+def empty_basket
+   @basket = []
 end
 
 def option(option)
