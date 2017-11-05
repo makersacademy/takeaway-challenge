@@ -7,12 +7,13 @@ describe TakeAway do
   let(:menu) { double(:menu, format: 'string') }
   let(:menu_class) { double(:menu_class, from_csv: menu) }
   let(:handler) { double(:handler, response: 'r') }
+  let(:handler_class) { double(:handler_class, new: handler) }
   let(:dialogue) do 
     double(:dialogue, confirmed: 'y', cancel: 'n', no_order: 'x', 'in_progress': 'p')
   end
 
   let(:takeaway) do 
-    described_class.new(menu_class: menu_class, handler: handler, dialogue: dialogue)
+    described_class.new(menu_class: menu_class, handler: handler_class, dialogue: dialogue)
   end
 
   subject { takeaway }

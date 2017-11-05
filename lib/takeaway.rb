@@ -11,11 +11,11 @@ class TakeAway
   MENU_CSV = './dishes.csv'
 
   def initialize(path: MENU_CSV, menu_class: Menu, 
-                 dialogue: Dialogue.new, handler: OrderHandler.new
+                 dialogue: Dialogue.new, handler: OrderHandler
                 )
     @menu = menu_class.from_csv(path)
     @dialogue = dialogue
-    @handler = handler
+    @handler = handler.new(menu)
     @orders = []
   end
 

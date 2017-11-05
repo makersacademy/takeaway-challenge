@@ -2,18 +2,27 @@ require_relative 'lib/takeaway'
 require 'sinatra/base'
 require 'twilio-ruby'
 
+module Sinatra
+  module TakeAwayHelper
+    def takeaway
+      TakeAway.new
+    end
+  end
+end
+
+
 class App < Sinatra::Base
+
+  helpers Sinatra::TakeAwayHelper
+
   get '/' do
-    TakeAway.new.get_menu.gsub("\n", "<br>")
+    takeaway.print_menu.gsub("\n", "<br>")
   end
 
   post '/sms' do
-    body = params['Body']
-    number = params['From']
-
     content_type 'text/xml'
     twiml = Twilio::TwiML::MessagingResponse.new do |response|
-      response.message(body: params['From'])
+      response.message(body: takeaway.response(body))
     end
     twiml.to_xml
   end
