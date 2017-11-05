@@ -55,4 +55,25 @@ describe Order do
       expect(subject.total).to eq(49)
     end
   end
+
+  describe "#remove_item" do
+    it "raises error if trying to remove item not in order" do
+      expect { subject.remove_item(dish) }.to raise_error("This item is not in this order.")
+    end
+    it "removes an item from the @items list if item is there" do
+      subject.add_item("burger", 1)
+      subject.remove_item("burger")
+      expect(subject.items).not_to include(dish)
+    end
+    it "removes just one item from the @items list if there are multiple items there" do
+      subject.add_item("burger", 6)
+      subject.remove_item("burger")
+      expect(subject.items).to include(dish)
+    end
+    it "ensures the total is updated when removing an item" do
+      subject.add_item("burger", 2)
+      subject.remove_item("burger")
+      expect(subject.total).to eq(7)
+    end
+  end
 end
