@@ -5,7 +5,7 @@ require 'verification.rb'
 class Order
   attr_reader :menu, :current_order, :already_in_list
 
-  def initialize(menu = Menu.new,)
+  def initialize(menu = Menu.new)
     @menu = menu
     @current_order = {}
     @already_in_list = false
@@ -46,7 +46,21 @@ class Order
     @current_order.delete(key) if @current_order[key].quantity < 1
   end
 
-  def checkout
-    
+  def total_cost
+    total_cost = 0
+    @current_order.each do |dish|
+      total_cost += dish[1].price
+    end
+    total_cost
+  end
+
+  def new_order
+    @current_order = Hash.new
+    "A new order has been opened please view the menu"
+  end
+
+  def cancel_order
+    @current_order = {}
+    "Your current order has been cancelled"
   end
 end

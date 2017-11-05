@@ -64,4 +64,28 @@ describe Order do
       expect { subject.delete('Biryani') }.to raise_error(message)
     end
   end
+
+  describe '#total_cost' do
+    it 'should return the total cost of current_order' do
+      subject.add('Jalfrezi')
+      subject.add('Korai')
+      expect(subject.total_cost).to eq 12
+    end
+  end
+
+  describe '#new_order' do
+    it 'should reset current_order' do
+      subject.add('Korma')
+      subject.new_order
+      expect(subject.current_order).to eq Hash.new
+    end
+  end
+
+  describe '#cancel_order' do
+    it 'should reset current_order' do
+      subject.add('Madras')
+      subject.cancel_order
+      expect(subject.current_order).to eq Hash.new
+    end
+  end
 end
