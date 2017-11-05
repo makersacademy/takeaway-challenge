@@ -1,5 +1,17 @@
 # Weekend Challenge 2#: Take away challenge
 
+_________
+r==           |       |
+_  //            |  M.A. |   ))))
+|_)//(''''':      |       |
+//  \_____:_____.-------D     )))))
+//   | ===  |   /        \
+.:'//.   \ \=|   \ /  .:'':./    )))))
+:' // ':   \ \ ''..'--:'-.. ':
+'. '' .'    \:.....:--'.-'' .'
+':..:'                ':..:'
+
+
 ## takeaway-challenge
 Use the Twilio Gem to order food
 (This is for the core and travis c plugin later on)
