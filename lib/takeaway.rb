@@ -1,7 +1,7 @@
 # IRB SCRIPT
 # irb -r ./lib/menu.rb
 
-class Menu
+class Takeaway
   attr_reader :dishes
 
   DISHES = {

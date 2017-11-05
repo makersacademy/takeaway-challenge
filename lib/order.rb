@@ -1,12 +1,12 @@
 # IRB SCRIPT
 # irb -r ./lib/order.rb
 
-require_relative 'menu'
+require_relative 'takeaway'
 
 class Order
   attr_reader :menu, :current, :cost
 
-  def initialize (menu = Menu::DISHES)
+  def initialize (menu = Takeaway::DISHES)
     @menu = menu
     @current = Hash.new { |this_hash, key| this_hash[key] = 0 }
     @cost = 0

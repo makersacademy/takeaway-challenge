@@ -1,11 +1,11 @@
-require 'menu'
+require 'takeaway'
 
-describe Menu do
+describe Takeaway do
 
   describe "Instatiation" do
     context "When instantiating" do
-      it "should be an instance of class Menu" do
-        expect(subject).to be_an_instance_of(Menu)
+      it "should be an instance of class Takeaway" do
+        expect(subject).to be_an_instance_of(Takeaway)
       end
     end
   end
