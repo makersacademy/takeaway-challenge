@@ -52,7 +52,7 @@ describe Restaurant do
       expect(subject).to respond_to(:start_order)
     end
     it "returns instance of another class" do
-      Order = double(:Order)
+      Order ||= double(:Order)
       allow(Order).to receive(:new).with(anything()).and_return("instance")
       expect(restaurant.start_order).to eq("instance")
     end

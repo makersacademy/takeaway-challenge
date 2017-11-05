@@ -1,4 +1,4 @@
-require_relative "takeaway"
+require_relative "sms"
 
 class Order
   attr_reader :id, :restaurant, :total, :items
@@ -32,12 +32,21 @@ class Order
   end
 
   def pay(amount)
-    raise "You didn't provide enough money, you are missing £#{@total - amount}." unless check_bill(amount)
+    raise "Sorry, you are missing £#{@total - amount}." unless check_bill(amount)
+    complete_order(amount)
+    send_notification
+  end
+
+  private
+
+  def complete_order(amount)
     puts "Your order is complete."
     puts "Your change is £#{amount - @total}." if check_change(amount)
   end
 
-  private
+  def send_notification
+    SMS.new.send_sms
+  end
 
   def get_item(item)
     @restaurant.menu.select { |dish| dish.name == item }[0]

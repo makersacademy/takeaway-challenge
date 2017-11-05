@@ -88,7 +88,7 @@ describe Order do
   describe "#pay" do
     it "raises error if providing less money than total" do
       subject.add_item("burger", 1)
-      expect { subject.pay(1) }.to raise_error("You didn't provide enough money, you are missing £6.")
+      expect { subject.pay(1) }.to raise_error("Sorry, you are missing £6.")
     end
     it "completes order if giving exact money" do
       subject.add_item("burger", 1)
