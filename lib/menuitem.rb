@@ -1,15 +1,10 @@
-#!/usr/bin/env ruby
-
 require 'money'
 
-# configures Money object to avoid known bug
 # see: https://github.com/RubyMoney/money/issues/593
-
 Money.use_i18n = false
 
-# The MenuItem class represents a single item on a menu - some sort
+# MenuItem represents a single item on a menu - some sort
 # of dish or drink.
-
 class MenuItem
   attr_reader :title, :price_object
 

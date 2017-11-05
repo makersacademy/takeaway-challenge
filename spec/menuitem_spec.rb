@@ -1,17 +1,11 @@
-#!/usr/bin/env ruby
-
 require 'menuitem'
 
 describe MenuItem do
-
   let(:price) { '£5.50' }
   let(:money) { double(:money, format: price, to_f: 5.5) }
   let(:money_class) { double(:money_class, new: money) }
-
-  let(:kwargs) { {money_class: money_class} }
-
+  let(:kwargs) { { money_class: money_class } }
   let(:menuitem) { described_class.new('mushy peas', 550, **kwargs) }
-
   subject { menuitem }
 
   describe '#initialize' do
