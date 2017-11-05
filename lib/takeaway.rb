@@ -18,7 +18,7 @@ class Takeaway
   end
 
   def order(dish)
-    @basket <<   @menu.list.select { |key| key[:name].include?(dish) }
+    @basket << add_dish(dish)
   end
 
   def total
@@ -26,10 +26,14 @@ class Takeaway
   end
 
   def check_out
-    text.message
+    text.message(total)
     @basket.clear
+    puts "Your order has been received!"
   end
 
-  # private
-t
+  private
+  def add_dish(dish)
+    @menu.list.select { |key| key[:name].include?(dish) }
+  end
+
 end
