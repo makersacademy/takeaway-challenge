@@ -13,15 +13,15 @@ describe Order do
       subject.place_order('pancake')
       subject.place_order('Banana_shake')
       subject.place_order('nutella_waffles')
-      expect(subject.ordered_list[0]).to eq ({:Pancake=>1.0})
-      expect(subject.ordered_list[1]).to eq ({:Banana_shake=>3.2})
-      expect(subject.ordered_list[-1]).to eq ({:Nutella_waffles=>2.0})
+      expect(subject.ordered_list[0]).to eq({ :Pancake => 1.0 })
+      expect(subject.ordered_list[1]).to eq({ :Banana_shake => 3.2 })
+      expect(subject.ordered_list[-1]).to eq({ :Nutella_waffles => 2.0 })
     end
     it 'can have several orders at once' do
       subject.place_order('pancake', 'Banana_shake', 'nutella_waffles')
-      expect(subject.ordered_list[0]).to eq ({:Pancake=>1.0})
-      expect(subject.ordered_list[1]).to eq ({:Banana_shake=>3.2})
-      expect(subject.ordered_list[-1]).to eq ({:Nutella_waffles=>2.0})
+      expect(subject.ordered_list[0]).to eq({ :Pancake => 1.0 })
+      expect(subject.ordered_list[1]).to eq({ :Banana_shake => 3.2 })
+      expect(subject.ordered_list[-1]).to eq({ :Nutella_waffles => 2.0 })
     end
     it 'gives the price of the food' do
       subject.place_order('pancake')

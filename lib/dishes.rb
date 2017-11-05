@@ -46,7 +46,7 @@ private
   end
 
   def add_menu(dish, price)
-    @menu << {dish=>price}
+    @menu << { dish => price }
   end
 
 end

@@ -40,7 +40,7 @@ end
 
 def make_order
   ask_for_food
-  @amount_of_dishes.times {@order.place_order(@wanted_dish.capitalize)}
+  @amount_of_dishes.times { @order.place_order(@wanted_dish.capitalize) }
   print_order
 end
 
@@ -65,7 +65,7 @@ end
 
 def print_dishes
   @order.ordered_list.each do |dishes_list|
-    dishes_list.each_pair do |dish,price|
+    dishes_list.each_pair do |dish, price|
       puts "#{dish} ----> #{price}£"
     end
   end
@@ -83,14 +83,14 @@ end
 
 def getting_answer
   answer = gets.chomp
-  make_order if answer.upcase == 'Y'
+  make_order if answer.upcase.casecmp('Y')
   initial_display unless complete_order?
 end
 
 def complete_order?
   puts "Is your order complete? (Y/N)"
   answer = gets.chomp
-  return true if answer.upcase == 'Y'
+  return true if answer.upcase.casecmp('Y')
   false
 end
 
@@ -111,6 +111,5 @@ def run_take_away
   new_order
   initial_display
 end
-
 
 run_take_away
