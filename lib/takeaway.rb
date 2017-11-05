@@ -26,9 +26,14 @@ class Takeaway
   end
 
   def check_out
+    empty_basket?
     text.message(total)
     @basket.clear
-    puts "Your order has been received!"
+    puts "Your order has been confirmed!"
+  end
+
+  def empty_basket?
+    raise "You haven't ordered anything!" if @basket.empty?
   end
 
   private
