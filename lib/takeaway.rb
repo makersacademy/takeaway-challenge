@@ -21,7 +21,9 @@ attr_reader :basket, :list
 
   def total
     total = 0
-      @basket.each { |k| total += k[:price] }
+    @basket.each do |x, _y|
+      total += x[:price]
+    end
     total
   end
 end
