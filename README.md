@@ -8,11 +8,12 @@ Use the Twilio Gem to order food
 
 ## Domain Model
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Objects            | Messages      | Output            |
+| ------------------ |:-------------:| -----------------:|
+| list(dishes,prices)| see           | See A menu?       |
+| dishes             | select        | Select dishes     |
+| total, sum         | compare/check | Match 2 prices    |
+| receive text       | receive       | Text confirmation |
 
 
 ## Supported Documents
