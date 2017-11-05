@@ -4,7 +4,7 @@ describe Dish do
   NAME = 'korma'
   PRICE = 8
 
-  subject(:Dish) { Dish.new(NAME, PRICE) }
+  subject(:Dish) { described_class.new(NAME, PRICE) }
 
   describe 'initilize' do
     it 'should create a Dish with a name' do

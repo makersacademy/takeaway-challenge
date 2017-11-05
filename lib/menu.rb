@@ -1,11 +1,11 @@
-require 'order.rb'
+#require 'order.rb'
 require 'dish.rb'
 
 # this stores a list of all dishes that can be searched
-class ListOfDishes
+class Menu
   attr_reader :list
 
-  MENU = {
+  DISH_MENU = {
     Balti: Dish.new('Balti', 8),
     Bhuna: Dish.new('Bhuna', 7),
     Biryani: Dish.new('Biryani', 9),
@@ -26,10 +26,10 @@ class ListOfDishes
   }
 
   def initialize
-    @list = MENU
+    @list = DISH_MENU
   end
 
-  def find(dish)
+  def search(dish)
     @list[dish.to_s.delete(' ').downcase.capitalize.to_sym]
   end
 end
