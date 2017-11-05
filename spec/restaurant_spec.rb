@@ -1,8 +1,6 @@
-require 'menu'
-class MenuDouble
-  @dishes_choosen = [[1, 2], [3, 4]]
-end
-describe Menu do
+require 'restaurant'
+
+describe Restaurant do
   describe '#show_menu' do
     it 'Shows the menu list' do
       list = "Menu\n1. Pizza = £12\n2. Patatine = £4\n3. CocaCola = £3\n4. Lasagne = £4\n5. Polenta = £3\n"
@@ -17,7 +15,7 @@ describe Menu do
       expect { subject.select_dishes }.to output("You want to order:\n2 Pizza\n").to_stdout
     end
   end
-  # NOT WORKING - TO FIX IT.
+
   describe '#food_and_quantity' do
     it "Ask to the user which dishes want to order and the quantity" do
       allow(subject).to receive(:gets).and_return('1', '2', '') #woow stubbed a while
@@ -56,11 +54,5 @@ end
 
 
 # Error message if the user do not puts number inside *dishes
-
-#def total_price
-#  @price = 0
-#  @dishes.each do |price|
-#    @price += price[1]
-#  end
-#  puts "#{@price.to_s}"
-#end
+# Should I use different matchers?  I'am only testing what is printed
+#  but it is consequence of a correct managment of the arrays.

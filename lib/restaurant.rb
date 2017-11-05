@@ -1,4 +1,7 @@
-class Menu
+require '/Users/marcovanali/Desktop/Projects/Weekend_Challenges/takeaway-challenge/lib/twiliosms.rb'
+
+
+class Restaurant
 
   def initialize
     @list = [[:Pizza, 12], [:Patatine, 4], [:CocaCola, 3], [:Lasagne, 4], [:Polenta, 3]]
@@ -7,9 +10,7 @@ class Menu
 
   def show_menu
     puts "Menu"
-    @list.each_index do |num|
-      puts "#{num + 1}. #{@list[num][0]} = £#{@list[num][1]}"
-    end
+    @list.each_index { |num| puts "#{num + 1}. #{@list[num][0]} = £#{@list[num][1]}" }
   end
 
   def food_and_quantity
@@ -49,13 +50,15 @@ class Menu
   end
 
   def payment_error
-      puts "Sorry the amount it's not correct." if @money != @prices.reduce(:+) #No Raise error otherwise the loop stops
+    puts "Sorry the amount it's not correct." if @money != @prices.reduce(:+)
   end
-end
 
-#menu = Menu.new
-#menu.show_menu
-#menu.food_and_quantity
-#menu.select_dishes
-#menu.payment_message
-#menu.user_payment
+  def conferm
+    puts "Thanks your order has been accepted. Shortly you will receive an confirmation sms."
+  end
+  
+  def conferm_sms
+    Twiliosms.new.send_conferm_sms
+  end
+
+end
