@@ -46,4 +46,15 @@ describe Restaurant do
       expect { subject.print_menu }.to output("burger: £7\npizza: £10\n").to_stdout
     end
   end
+
+  describe "#start_order" do
+    it "expects restaurant to respond to start_order" do
+      expect(subject).to respond_to(:start_order)
+    end
+    it "returns instance of another class" do
+      Order = double(:Order)
+      allow(Order).to receive(:new).with(anything()).and_return("instance")
+      expect(restaurant.start_order).to eq("instance")
+    end
+  end
 end

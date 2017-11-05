@@ -39,13 +39,10 @@ describe Takeaway do
     end
   end
 
-  describe "#print_menu" do
-    it "prints out a menu if specified a restaurant in the list" do
+  describe "#get_restaurant" do
+    it "returns the correct instance of the class restaurant by checking its name" do
       subject.add(restaurant)
-      expect(subject.print_menu(restaurant)).to eq("working")
-    end
-    it "raises an error if asked to print a menu from a restaurant not on the list" do
-      expect { subject.print_menu("mcdonalds") }.to raise_error("This restaurant is not included in our list.")
+      expect(subject.get_restaurant("mcdonalds")).to eq(restaurant)
     end
   end
 end

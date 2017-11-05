@@ -18,4 +18,8 @@ class Restaurant
     @menu.each { |item| puts "#{item.name}: £#{item.price}" }
   end
 
+  def start_order
+    Order.new(self)
+  end
+
 end

@@ -17,9 +17,8 @@ class Takeaway
     @restaurants.each { |restaurant| puts restaurant.name }
   end
 
-  def print_menu(restaurant)
-    raise "This restaurant is not included in our list." unless @restaurants.include?(restaurant)
-    restaurant.print_menu
+  def get_restaurant(name)
+    @restaurants.select { |restaurant| restaurant.name == name }[0]
   end
 
 end
