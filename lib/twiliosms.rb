@@ -9,7 +9,7 @@ class Twiliosms
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
         body: "Thank you! Your order was placed and will be delivered before #{Time.now.strftime '%I:%M %p'}",
-        to: "+447864968591",
+        to: "",
         from: "+441827230490")
         puts message.sid
   end
