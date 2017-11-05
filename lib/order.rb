@@ -7,7 +7,8 @@ Money.use_i18n = false
 # The Order class represents a single order. It stores a number
 # of dishes against their quantities.
 class Order
-  attr_reader :items, :currency
+  attr_reader :items, :currency, :time
+  DEFAULT_DELAY = 3600
 
   class << self
     def from_selection(menu, hash, **kwargs)
@@ -23,10 +24,13 @@ class Order
     end
   end
 
-  def initialize(existing: {}, currency: 'GBP', money_class: Money)
+  def initialize(existing: {}, currency: 'GBP', 
+                 money_class: Money, time_class: Time
+                )
     @items = Hash.new { |hash, key| hash[key] = 0 }.update(existing)
     @currency = currency
     @money_class = money_class
+    @time = delivery(time_class)
   end
 
   def add(item, quantity = 1)
@@ -49,5 +53,9 @@ class Order
 
   def zero
     @money_class.new(0, currency)
+  end
+
+  def delivery(time_class, delay = DEFAULT_DELAY)
+    (time_class.now + delay).strftime('%H:%M:%S')
   end
 end
