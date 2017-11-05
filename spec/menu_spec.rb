@@ -12,21 +12,25 @@ describe Menu do
   context 'ordering food & quantity' do
 
     it '#order should enable user to order Satay' do
-      subject.order(1,2)
-      expect(subject.order(1,2)).to eq ({:food => "Satay", :quantity => 2})
+      expect(subject.order(1,2)).to eq ([["Satay", 2]])
     end
     it '#order should enable user to order RotiCanai' do
-      subject.order(2,2)
-      expect(subject.order(2,2)).to eq ({:food => "RotiCanai", :quantity => 2})
+      expect(subject.order(2,2)).to eq ([["RotiCanai", 2]])
     end
     it '#order should enable user to order Kuih' do
-      subject.order(3,2)
-      expect(subject.order(3,2)).to eq ({:food => "Kuih", :quantity => 2})
+      expect(subject.order(3,2)).to eq ([["Kuih", 2]])
     end
-    it '#order shoudl enable user to order NasiLemak'do
-     subject.order(4,2)
-     expect(subject.order(4,2)).to eq ({:food => "Nasi Lemak", :quantity => 2})
+    it '#order should enable user to order NasiLemak'do
+     expect(subject.order(4,2)).to eq ([["Nasi Lemak", 2]])
    end
+  end
+
+  context 'checking order in basket' do
+    it '#check_basket should have more than two orders to basket' do
+      subject.order(1,2)
+      subject.order(2,2)
+      expect {subject.check_basket}.to output("Total Order:\n\n2x Satay\n2x RotiCanai\n").to_stdout
+    end
   end
 
 end

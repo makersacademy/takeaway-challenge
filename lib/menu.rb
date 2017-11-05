@@ -1,10 +1,13 @@
 class Menu
 
-attr_reader :info, :food, :current_order
+attr_reader :info, :food, :current_order, :basket
 
 def initialize
   @info = { Satay: 5, RotiCanai: 9, Kuih: 3, NasiLemak: 10}
   @current_order = { food: nil , quantity: nil }
+  @quantity = nil
+  @basket = []
+  # @bill = ""
 end
 
 def read_menu
@@ -16,29 +19,37 @@ def read_menu
   return "Choose Option for your order! (Input a Number)"
 end
 
-def order(order_option, quantity = 0)
+def order(order_option,quantity)
+  @quantity = quantity
   case order_option
    when 1
     @option = "Satay"
-    @current_order[:food] = @option
-    @current_order[:quantity] = quantity
-    p @current_order
+    adding_food
   when 2
     @option = "RotiCanai"
-    @current_order[:food] = @option
-    @current_order[:quantity] = quantity
-    p @current_order
+    adding_food
   when 3
     @option = "Kuih"
-    @current_order[:food] = @option
-    @current_order[:quantity] = quantity
-    p @current_order
+    adding_food
   when 4
     @option = "Nasi Lemak"
-    @current_order[:food] = @option
-    @current_order[:quantity] = quantity
-    p @current_order
+    adding_food
   end
+end
+
+
+def check_basket
+  basket = @basket
+  puts "Total Order:\n\n"
+  basket.each do |element,number|
+    puts "#{number}x #{element}"
+  end
+end
+
+def adding_food
+  @current_order[:food] = @option
+  @current_order[:quantity] = @quantity
+  @basket << @current_order.values
 end
 
 def option(option)
