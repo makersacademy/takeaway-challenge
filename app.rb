@@ -7,6 +7,10 @@ module Sinatra
     def takeaway
       TakeAway.new
     end
+
+    def responder
+      Twilio::TwiML::MessagingResponse
+    end
   end
 end
 
@@ -23,7 +27,7 @@ class App < Sinatra::Base
     content_type 'text/xml'
     body = params['Body']
     from = params['From']
-    twiml = Twilio::TwiML::MessagingResponse.new do |response|
+    twiml = responder.new do |response|
       if body =~ /[YyNn]/
         response.message(body: takeaway.incoming_confirmation(from, body))
       else
