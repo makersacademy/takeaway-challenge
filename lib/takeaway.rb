@@ -1,22 +1,20 @@
+require './lib/menu.rb'
+
 class Takeaway
 
 attr_reader :basket, :list
 
-  def initialize
+  def initialize(menu = Menu.new)
     @basket = []
-    @list = [
-      {name: "Chicken", quantity: 1, price: 4.5},
-      {name: "Chips", quantity: 1, price: 2},
-      {name: "Burger", quantity: 1, price: 6}
-      ]
+    @menu = menu
   end
 
   def menu
-    @list
+    @menu.list
   end
 
   def order(dish)
-    @basket << @list.select { |k| k[:name].include?(dish) }
+    @basket << @menu.list.select { |k| k[:name].include?(dish) }
   end
 
   def total

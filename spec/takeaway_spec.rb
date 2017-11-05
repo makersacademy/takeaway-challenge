@@ -5,7 +5,7 @@ describe Takeaway do
     describe "#menu" do
       context "when requesting to see the menu" do
         it "should show the menu" do
-          expect(takeaway.menu).to eq takeaway.menu
+          expect(takeaway.menu.list).to eq takeaway.menu.list
         end
       end
     end
