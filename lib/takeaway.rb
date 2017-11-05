@@ -19,4 +19,9 @@ attr_reader :basket, :list
     @basket << @list.select { |k| k[:name].include?(dish) }
   end
 
+  def total
+    total = 0
+      @basket.each { |k| total += k[:price] }
+    total
+  end
 end
