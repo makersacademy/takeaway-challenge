@@ -36,7 +36,7 @@ class TakeAway
   end
   def finalize_order
     puts 'Your order has been noted and is now being processed. See you later!'
-    send_text('Thank you for your order! Your order should arrive in less than an hour. ')
+    send_text('Thank you for your order! Your order should arrive in less than an hour.')
   end
 
 

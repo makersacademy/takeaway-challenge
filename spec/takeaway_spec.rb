@@ -59,6 +59,13 @@ describe TakeAway do
       take_away.remove_from_basket('Chocolate Melt')
       expect(take_away.basket.include?({ 'Chocolate Melt' => 7.99 })).to be_falsey
     end
+    it 'should remove the price of the items from the total' do
+      take_away.stub(:gets).and_return(1)
+      take_away.add_to_basket('Apple Crumble')
+      take_away.add_to_basket('Chocolate Melt')
+      take_away.remove_from_basket('Chocolate Melt')
+      expect(take_away.total).to eq 6.99
+    end
   end
   describe '#empty_basket' do
     it 'should remove everything from my basket' do
@@ -74,9 +81,13 @@ describe TakeAway do
       expect(take_away.total).to eq 0
     end
   end
-  # describe '#finalize_order' do
-  #   it 'should send me a text that my order has been confirmed' do
-  #     expect(take_away.finalize_order).to eq
-  #   end
-  # end
+  describe '#finalize_order' do
+    before do
+      allow(take_away).to receive(:send_text)
+    end
+    it 'should send me a text that my order has been confirmed' do
+      expect(take_away).to receive(:send_text).with('Thank you for your order! Your order should arrive in less than an hour.')
+      take_away.finalize_order
+    end
+  end
 end
