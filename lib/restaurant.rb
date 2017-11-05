@@ -1,6 +1,5 @@
 require '/Users/marcovanali/Desktop/Projects/Weekend_Challenges/takeaway-challenge/lib/twiliosms.rb'
 
-
 class Restaurant
 
   def initialize
@@ -56,7 +55,7 @@ class Restaurant
   def conferm
     puts "Thanks your order has been accepted. Shortly you will receive an confirmation sms."
   end
-  
+
   def conferm_sms
     Twiliosms.new.send_conferm_sms
   end

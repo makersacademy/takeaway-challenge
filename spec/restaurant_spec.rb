@@ -18,8 +18,8 @@ describe Restaurant do
 
   describe '#food_and_quantity' do
     it "Ask to the user which dishes want to order and the quantity" do
-      allow(subject).to receive(:gets).and_return('1', '2', '') #woow stubbed a while
-      expect{ subject.food_and_quantity }.to output("Please write the number of the first dish you want to order. Then press Enter.\nWrite a number to indicate how many portion you wish.\nWrite the number of the next dish. If you've finish just press Enter.\n").to_stdout
+      allow(subject).to receive(:gets).and_return('1', '2', '') 
+      expect { subject.food_and_quantity }.to output("Please write the number of the first dish you want to order. Then press Enter.\nWrite a number to indicate how many portion you wish.\nWrite the number of the next dish. If you've finish just press Enter.\n").to_stdout
     end
   end
 
@@ -37,7 +37,7 @@ describe Restaurant do
       subject.select_dishes
       subject.payment_message
       allow(subject).to receive(:gets).and_return('24')
-      expect{ subject.user_payment }.to output("PAYMENT:\nPlease insert the amount of money:\n").to_stdout
+      expect { subject.user_payment }.to output("PAYMENT:\nPlease insert the amount of money:\n").to_stdout
     end
   end
   describe '#user_payment' do
@@ -47,12 +47,7 @@ describe Restaurant do
       subject.select_dishes
       subject.payment_message
       allow(subject).to receive(:gets).and_return('24')
-      expect{ subject.user_payment }.to output("PAYMENT:\nPlease insert the amount of money:\n").to_stdout
+      expect { subject.user_payment }.to output("PAYMENT:\nPlease insert the amount of money:\n").to_stdout
     end
   end
 end
-
-
-# Error message if the user do not puts number inside *dishes
-# Should I use different matchers?  I'am only testing what is printed
-#  but it is consequence of a correct managment of the arrays.

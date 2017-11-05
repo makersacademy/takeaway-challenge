@@ -26,11 +26,11 @@ Then with your terminal go in the main folder, and run 'ruby takeaway_interface.
 
 # Approach
 
-Read carefully the EX_README.md file <br >
-Made domains models for each user story <br>
-Read the 'Hints on functionality to implement' section in the EX_README.md file. <br>
-Followed TDD <br>
-Google a lot when struggling. <br>
+-Read carefully the EX_README.md file <br >
+-Made domains models for each user story <br>
+-Read the 'Hints on functionality to implement' section in the EX_README.md file. <br>
+-Followed TDD <br>
+-Google a lot when struggling. <br>
 
 I've mainly followed the user tasks. They were quite clear and initially i wasn't sure if use an Hash or an Array to contain the list of foods and prices. Then I decided to use an array because more compatible with the idea to let choose
 the food in base of their number.
