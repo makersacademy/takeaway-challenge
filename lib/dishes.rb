@@ -13,9 +13,10 @@ class Dishes
   end
 
   def selecting_dish(dish)
-    dish.capitalize!
     list_of_dishes
-    do_select(dish)
+    to_return = do_select(dish.capitalize)
+    @menu = []
+    to_return
   end
 
 private
