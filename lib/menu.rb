@@ -18,7 +18,7 @@ def read_menu
   puts "3. Kuih - $3.00"
   puts "4. Nasi Lemak - $10"
   puts "5. Check Basket"
-  puts "6. Remove an order from the Basket"
+  puts "6. Erase Order from Basket"
   puts "7. Checkout"
   return "Choose Option for your order! (Input a Number)"
 end

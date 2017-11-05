@@ -45,11 +45,4 @@ end
     expect(subject.total_price).to eq(10)
    end
   end
-
-  context 'Items should be able to be removed from basket' do
-
-    xit '#remove_food can aid to help remove order' do
-
-    end
-  end
 end
