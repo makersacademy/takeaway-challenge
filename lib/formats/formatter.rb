@@ -1,12 +1,8 @@
-#!/usr/bin/env ruby
-
-# Formatter defines utility functions for other
-# formatting classes.
-
+# Formatter defines utility functions for other formatting classes.
 module Formatter
   def content_length
     # add content.length to account for spacing
-    content.map { |item| item.length }.reduce(0, :+) + content.length
+    content.map(&:length).reduce(0, :+) + content.length
   end
 
   def get_fill(char)
@@ -17,4 +13,3 @@ module Formatter
     content.insert(insert_at, get_fill(fill_with))
   end
 end
-
