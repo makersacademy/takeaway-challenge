@@ -24,7 +24,7 @@ class Menu
   def format(formatter = MenuFormat.new, *args)
     items.each_with_index.map do |item, index|
       formatter.format(index + START, item, *args)
-    end.join("\n")
+    end.join('<br>')
   end
 
   def get_missing(items)

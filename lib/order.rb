@@ -40,7 +40,7 @@ class Order
   end
 
   def format(formatter = ItemisedFormat.new, *args)
-    items.map { |pair| formatter.format(*pair, *args) }.join("\n")
+    items.map { |pair| formatter.format(*pair, *args) }.join('<br>')
   end
 
   private

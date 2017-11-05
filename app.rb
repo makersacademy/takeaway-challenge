@@ -21,8 +21,14 @@ class App < Sinatra::Base
 
   post '/sms' do
     content_type 'text/xml'
+    body = params['Body']
+    from = params['From']
     twiml = Twilio::TwiML::MessagingResponse.new do |response|
-      response.message(body: takeaway.response(body))
+      if body =~ /[YyNn]/
+        response.message(body: takeaway.incoming_confirmation(from, body))
+      else
+        response.message(body: takeaway.incoming_order(from, body))
+      end
     end
     twiml.to_xml
   end
