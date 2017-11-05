@@ -41,9 +41,9 @@ class Takeaway
     auth_token = "ba8cc4a30318eae2b599331c3435d1ae"
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
-    body: "Your order is confirmed",
+    body: "Your order at Gabriela's Takeaway is confirmed",
     to: "+447925276696",
-    from: "+447925276696")
+    from: "+441202286967")
     puts message.sid
   end
 
