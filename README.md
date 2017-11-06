@@ -55,7 +55,7 @@ pizza hut
 [9] pry(main)> OberEats.remove(pizza_hut)
 => #<Restaurant:0x007feeb9822008 @menu=[], @name="pizza hut">
 ```
-7. We now have mcdonalds and OberEats. However, if we check the menu, it's completely empty:
+7. We now have mcdonalds at OberEats. However, if we check the menu, it's completely empty:
 ```
 [10] pry(main)> mcdonalds.menu
 => []
