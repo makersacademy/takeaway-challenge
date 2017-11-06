@@ -17,9 +17,9 @@ class Takeaway
     @menu.list
   end
 
-  # def order(dish)
-  #   @basket << add_dish(dish)
-  # end
+  def order(dish)
+    @basket << add_dish(dish)
+  end
   #
   # def total
   #   @sum.total(@basket)
@@ -36,9 +36,9 @@ class Takeaway
   #   raise "You haven't ordered anything!" if @basket.empty?
   # end
   #
-  # private
-  # def add_dish(dish)
-  #   @menu.list.select { |key| key[:name].include?(dish) }
-  # end
+  private
+  def add_dish(dish)
+    @menu.list.select { |key| key[:name].include?(dish) }
+  end
 
 end

@@ -32,8 +32,16 @@ describe Takeaway do
     describe '#menu_list' do
       context 'when viewing menu' do
         it 'returns menu' do
-          expect(fake_menu).to receive(:list).and_return [{name: "Chicken", quantity: 1, price: 4.5}]
+          expect(fake_menu).to receive(:list)
           takeaway.menu_list
+        end
+      end
+    end
+
+    describe '#order' do
+      context 'when adding a dish to the basket' do
+        it 'adds a dish' do
+          expect { takeaway.order('Chicken') }.to change { takeaway.basket.count }
         end
       end
     end
