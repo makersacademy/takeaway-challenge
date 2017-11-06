@@ -11,12 +11,5 @@ describe Text do
       end
     end
   end
-
-  describe "#time" do
-    context "when sending message" do
-      it "should return the time as 4" do
-        expect(defined_time.time).to eq(4)
-      end
-    end
-  end
+  
 end

@@ -33,6 +33,7 @@ class Takeaway
   end
 
   private
+  
   def reset_order
     @order = Order.new
   end
