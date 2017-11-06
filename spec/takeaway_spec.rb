@@ -8,12 +8,15 @@ describe TakeAway do
   let(:menu_class) { double(:menu_class, from_csv: menu) }
   let(:handler) { double(:handler, response: 'r') }
   let(:handler_class) { double(:handler_class, new: handler) }
+  let(:numbers) { double(:numbers, has?: true, set: nil, clear: nil) }
   let(:dialogue) do 
-    double(:dialogue, confirmed: 'y', cancel: 'n', no_order: 'x', 'in_progress': 'p')
+    double(:dialogue, confirmed: 'y', cancel: 'n', 
+           no_order: 'x', 'in_progress': 'p')
   end
 
   let(:takeaway) do 
-    described_class.new(menu_class: menu_class, handler: handler_class, dialogue: dialogue)
+    described_class.new(menu_class: menu_class, handler: handler_class, 
+                        dialogue: dialogue, numbers: numbers)
   end
 
   subject { takeaway }
@@ -48,23 +51,23 @@ describe TakeAway do
 
   describe '#incoming_order' do
     context 'when order in progress' do
-      before(:each) { subject.orders.push('123') }
-      
       it 'returns progress message' do
         expect(subject.incoming_order('123', 'order')).to eq 'p'
       end
     end
 
     context 'when order is permitted' do
-      before(:each) { takeaway.incoming_order('123', 'order') }
+      before(:each) { allow(numbers).to receive(:has?).and_return(false) }
+      after(:each) { takeaway.incoming_order('123', 'order') }
 
       it 'puts number in order list' do
-        expect(takeaway.orders).to include '123'
+        expect(numbers).to receive(:set).with('123')
       end
     end
 
     context 'when getting response' do
-      subject { takeaway.incoming_order('123', 'y') }
+      before(:each) { allow(numbers).to receive(:has?).and_return(false) }
+      subject { takeaway.incoming_order('123', 'order') }
 
       it 'returns response' do
         expect(subject).to eq 'r'
@@ -74,22 +77,22 @@ describe TakeAway do
 
   describe '#incoming_confirmation' do
     context 'when no order in progress' do
+      before(:each) { allow(numbers).to receive(:has?).and_return(false) }
+
       it 'returns progress message' do
         expect(subject.incoming_confirmation('123', 'order')).to eq 'x'
       end
     end
 
     context 'when order is permitted' do
-      before(:each) { subject.orders.push('123') }
-      before(:each) { takeaway.incoming_confirmation('123', 'y') }
+      after(:each) { takeaway.incoming_confirmation('123', 'y') }
 
       it 'removes number in order list' do
-        expect(takeaway.orders).to_not include '123'
+        expect(numbers).to receive(:clear).with('123')
       end
     end
 
     context 'when getting confirmation response' do
-      before(:each) { takeaway.orders.push('123') }
       before(:each) { allow(takeaway).to receive(:delivery).and_return('time') }
       subject { takeaway.incoming_confirmation('123', 'y') }
 
@@ -99,7 +102,6 @@ describe TakeAway do
     end
 
     context 'when getting confirmation response' do
-      before(:each) { takeaway.orders.push('123') }
       subject { takeaway.incoming_confirmation('123', 'n') }
 
       it 'returns response' do

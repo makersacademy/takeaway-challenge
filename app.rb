@@ -2,22 +2,14 @@ require_relative 'lib/takeaway'
 require 'sinatra/base'
 require 'twilio-ruby'
 
-module Sinatra
-  module TakeAwayHelper
-    def takeaway
-      TakeAway.new
-    end
-
-    def responder
-      Twilio::TwiML::MessagingResponse
-    end
-  end
-end
-
-
 class App < Sinatra::Base
+  def takeaway(takeaway_class = TakeAway)
+    takeaway_class.new
+  end
 
-  helpers Sinatra::TakeAwayHelper
+  def responder(responder_class = Twilio::TwiML::MessagingResponse)
+    responder_class
+  end
 
   get '/' do
     takeaway.print_menu.gsub("\n", "<br>")
@@ -29,10 +21,11 @@ class App < Sinatra::Base
     from = params['From']
     twiml = responder.new do |response|
       if body =~ /[YyNn]/
-        response.message(body: takeaway.incoming_confirmation(from, body))
+        msg = takeaway.incoming_confirmation(from, body)
       else
-        response.message(body: takeaway.incoming_order(from, body))
+        msg = takeaway.incoming_order(from, body)
       end
+      response.message(body: "\n\n#{msg}")
     end
     twiml.to_xml
   end

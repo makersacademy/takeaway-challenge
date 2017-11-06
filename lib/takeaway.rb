@@ -2,6 +2,7 @@
 
 require_relative 'dialogue'
 require_relative 'menu'
+require_relative 'numbers'
 require_relative 'orderhandler'
 
 class TakeAway
@@ -10,12 +11,13 @@ class TakeAway
   DEFAULT_DELAY = 3600
   MENU_CSV = File.dirname(__FILE__) + '/../dishes.csv'
 
-  def initialize(path: MENU_CSV, menu_class: Menu, 
+  def initialize(path: MENU_CSV, menu_class: Menu, numbers: Numbers.new,
                  dialogue: Dialogue.new, handler: OrderHandler
                 )
     @menu = menu_class.from_csv(path)
     @dialogue = dialogue
     @handler = handler.new(menu)
+    @numbers = numbers
     @orders = []
   end
 
@@ -54,14 +56,14 @@ class TakeAway
   end
 
   def in_progress?(number)
-    orders.include?(number)
+    @numbers.has?(number)
   end
 
   def mark_in_progress(number)
-    orders << number
+    @numbers.set(number)
   end
   
   def mark_complete(number)
-    orders.delete(number)
+    @numbers.clear(number)
   end
 end
