@@ -17,6 +17,8 @@
 
 ## Approach
 
+![](images/Screen%20Shot%202017-11-06%20at%2009.48.39.png)
+
 
 ### Design Approach
 
@@ -24,7 +26,7 @@ I had several design draft on how my code would look like before I attempted it.
 
 ### Explanation
 
-As we go through the screen shot, we first see a printed menu with number options. You then can click the options to see what the program develops into.It takes the orders if you click 1-4, it prints out the whole order if you click 5, it then tells you the total if you click 7 and then it tells you to go to payment. The payment (or check out method) has three situations where it either gets money that is lower than the amount, higher than the amount and exact amount. This allows my program to tell the user they have to pay more and also give change.
+As we go through the screen shot, we first see a printed menu with number options. You then can click the options to see what the program develops into.It takes the orders if you click 1-4, it prints out the whole order if you click 5, it then tells you the total if you click 7 and then it tells you to go to payment. The payment (or check out method) has three situations where it either gets money that is not equal or equal to the amount. A computer wouldn't take more than the amount stated neither would a customer give more than the amount staed if it were digital. Hence, I changed my initial approach of allowing the computer to give change to just having a value not equal to something. 
 
 ### Unit Test
 
