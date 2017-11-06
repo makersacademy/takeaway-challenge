@@ -24,23 +24,23 @@ Takeaway Challenge
 
  ## User Stories
 
-  - As a customer
-  So that I can check if I want to order something
-  I would like to see a list of dishes with prices
+  - As a customer</br>
+  So that I can check if I want to order something</br>
+  I would like to see a list of dishes with prices</br>
 
-This user story will have us creating a list of dishes with their matching prices. A data structure with keys and matching values probably means the use of a hash in this case. Our program's main object will be a Menu class for now. It would also be great to declare this hash as a constant of our class (as this is our takeway menu)
-
-
-  - As a customer
-  So that I can order the meal I want
-  I would like to be able to select some number of several available dishes
+This user story will have us creating a list of dishes with their matching prices. A data structure with keys and matching values probably means the use of a hash in this case. Our program's main object will be a Menu class for now. My logic at this point would be to declare this hash as a constant of our class (as this is our takeway menu customers can choose from).
 
 
+  - As a customer</br>
+  So that I can order the meal I want</br>
+  I would like to be able to select some number of several available dishes</br>
 
 
 
-  - As a customer
-  So that I can verify that my order is correct
+
+
+  - As a customer</br>
+  So that I can verify that my order is correct</br>
   I would like to check that the total I have been given matches the sum of the various dishes in my order
 
 
