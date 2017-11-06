@@ -11,9 +11,9 @@ class Takeaway
   ACCOUNT_SID = 'AC2443e62e2510e55905e8cb3c2d31bb8a'
   AUTH_TOKEN = 'ccc7f3d0b864bad7cca601f1ccbd7808'
 
-  def initialize(menu_class: Menu, order_class: Order)
-    @menu = menu_class.new
-    @orders = [order_class.new]
+  def initialize(menu: Menu.new, order: Order.new)
+    @menu = menu
+    @orders = [order]
   end
 
   def show_menu
