@@ -14,9 +14,6 @@
 
  ```
 
-## takeaway-challenge
-Use the Twilio Gem to order food
-(This is for the core and travis c plugin later on)
 
 ## Approach
 

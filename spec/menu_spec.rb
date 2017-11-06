@@ -56,11 +56,6 @@ end
       subject.menu_functions(5)
       expect{subject.check_out(6)}.to output("Sorry, wrong amount for payment.\n").to_stdout
     end
-    it '#check_out should be able to give change' do
-      subject.menu_functions(1,2)
-      subject.menu_functions(5)
-      expect{subject.check_out(15)}.to output("Here's your change! $5! You'll hear a confirmation soon!\n").to_stdout
-    end
     it '#check_out should be able to be able to say the checkout is right!' do
       subject.menu_functions(1,2)
       subject.menu_functions(5)
