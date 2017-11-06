@@ -19,8 +19,6 @@ class Order
   private
 
   def send_confirmation
-    # account_sid = "AC9bdc53ce16000ee247b2f71d99876d87"
-    # auth_token = "1a2ad891876c6ef0a1fbefde27e6b214"
     @client = Twilio::REST::Client.new account_sid, auth_token
     @message = @client.messages.create(
       to: my_number,
