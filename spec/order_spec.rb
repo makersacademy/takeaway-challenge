@@ -11,7 +11,7 @@ describe Order do
   context 'Placing an order' do
     describe '#place_order' do
 
-      xit "Should send an SMS to the user, and store that to a @message variable" do
+      it "Should send an SMS to the user, and store that to a @message variable" do
         subject.place_order(loaded_basket)
         expect(subject.text).to eq "Sent from your Twilio trial account - Thanks for your order! It will be delivered before #{subject.delivery_time}."
       end
