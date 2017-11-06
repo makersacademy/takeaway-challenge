@@ -14,7 +14,7 @@ class SMS
 
   def message_body
     "Thank you! Your order was placed and will be delivered before"\
-    " #{(Time.now+3600).strftime("%H:%M")}."
+    " #{(Time.now + 3600).strftime("%H:%M")}."
   end
 
 end

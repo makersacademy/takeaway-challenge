@@ -37,15 +37,15 @@ class Order
     send_notification
   end
 
+  def send_notification
+    SMS.new.send_sms
+  end
+
   private
 
   def complete_order(amount)
     puts "Your order from #{@restaurant.name} is complete for £#{@total}."
     puts "Your change is £#{amount - @total}." if check_change(amount)
-  end
-
-  def send_notification
-    SMS.new.send_sms
   end
 
   def get_item(item)

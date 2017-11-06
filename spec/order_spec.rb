@@ -3,6 +3,8 @@ require "order"
 describe Order do
   let(:dish) { double(:dish, name: "burger", price: 7) }
   let(:restaurant) { double(:restaurant, menu: [dish], name: "mcdonalds") }
+  let(:SMS) { double(:SMS) }
+  let(:sms) { double(:sms) }
   subject(:order) { described_class.new(restaurant) }
 
   describe "#initialize" do
@@ -86,6 +88,9 @@ describe Order do
   end
 
   describe "#pay" do
+    before { allow(SMS).to receive(:new).and_return(sms) }
+    before { allow(sms).to receive(:send_sms) }
+
     it "raises error if providing less money than total" do
       subject.add_item("burger", 1)
       expect { subject.pay(1) }.to raise_error("Sorry, you are missing £6.")
