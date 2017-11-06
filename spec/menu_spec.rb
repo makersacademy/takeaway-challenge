@@ -16,4 +16,8 @@ describe Menu do
     expect(menu.pretty_print).to be_instance_of(String)
   end
 
+  it '#to_currency change a number to currency' do
+    expect(menu.to_currency(5)).to eq("£5.00")
+  end
+
 end

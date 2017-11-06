@@ -1,6 +1,6 @@
 class Menu
 
-  LINEWIDTH = 50
+  LINEWIDTH = 20
 
   attr_reader :list
 
@@ -11,9 +11,13 @@ class Menu
   def pretty_print
     arr = []
     @list.each do |item, price|
-      arr << "#{item}".ljust(LINEWIDTH / 2) + "#{price}\n".rjust(LINEWIDTH / 2)
+      arr << "#{item}".ljust(LINEWIDTH) + "#{to_currency(price)}\n".rjust(LINEWIDTH)
     end
     arr.join
+  end
+
+  def to_currency(number)
+    "£#{sprintf('%.2f', number)}"
   end
 
 end
