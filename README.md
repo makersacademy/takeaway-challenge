@@ -47,6 +47,7 @@ I have endeavoured to follow *Dont Repeat Yourself*, **DRY** and *Single Respons
 * Unsure as to whether testing correctly, particularly for the Takeaway class where many functions are delegated to class Order.
 * Initially written without the use of the Takeaway class with all orders being made directly through class Order. I created Takeaway as a way to practice delegation and dependency injection but I'm not convinced it is necessary.
 * Stubbing Text class so that texts weren't sent while conducting unit tests.
+* In the future I would like to implement the ability to remove dishes from your order if you change your mind.
 
 ## <a name="demo">Demo</a>
 
