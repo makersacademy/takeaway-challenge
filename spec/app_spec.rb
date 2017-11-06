@@ -34,7 +34,7 @@ describe App do
 
   describe 'post /sms' do
 
-    context 'when receiving confirmation' do
+    context 'when receiving order' do
       before(:each) { post '/sms', 'Body' => 'y', 'From' => '123' }
       after(:each) { post '/sms', 'Body' => 'y', 'From' => '123' }
 
@@ -44,18 +44,6 @@ describe App do
 
       it 'calls takeaway incoming_confirmation' do
         expect(takeaway).to receive(:incoming_confirmation).with('123', 'y')
-      end
-    end
-
-    context 'when receiving order' do
-      before(:each) { post '/sms', 'Body' => 'order', 'From' => '123' }
-
-      it 'should return ok' do
-        expect(last_response).to be_ok
-      end
-
-      it 'calls takeaway incoming_order' do
-        expect(takeaway).to receive(:incoming_order)
       end
     end
   end
