@@ -16,8 +16,15 @@ describe Takeaway do
   describe '#choose' do
     it 'adds selected dish to order' do
       allow(menu).to receive(:select_dish) { 'dish' }
-      allow(order).to receive(:add) { ['dish'] }
-      expect(takeaway.choose('chicken', 'korma')).to eq(['dish'])
+      allow(order).to receive(:add)
+      expect(takeaway.choose('chicken', 'korma')).to eq(1)
+    end
+
+    context 'when quantity is less than 1' do
+      it 'raises an error' do
+          expect { takeaway.choose('lamb', 'bhuna', 0) }
+            .to raise_error "InvalidQuantity"
+      end
     end
   end
 

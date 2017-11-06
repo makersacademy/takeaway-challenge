@@ -21,7 +21,7 @@ class Order
   def view
     puts "Order:"
     @items.each do |item|
-      item.each do | name, price|
+      item.each do |name, price|
         puts "#{symbol_to_string(name).capitalize}: £#{price}"
       end
     end

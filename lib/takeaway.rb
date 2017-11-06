@@ -1,3 +1,6 @@
+require 'sinatra'
+require 'twilio-ruby'
+require_relative 'twilio'
 require_relative 'order'
 require_relative 'dish'
 require_relative 'menu'
@@ -17,9 +20,10 @@ class Takeaway
     @menu.view_full_menu
   end
 
-  def choose(option, dish_name)
+  def choose(option, dish_name, quantity = 1)
+    raise 'InvalidQuantity' if quantity < 1
     selection = @menu.select_dish(dish_name, option)
-    @order.add(selection)
+    quantity.times { @order.add(selection) }
   end
 
   def view_order
@@ -32,12 +36,28 @@ class Takeaway
 
   def complete_order
     @order_history << @order
+    send_text
     new_order
   end
 
   private
   def new_order
     @order = @order_class.new
+  end
+
+  def send_text
+    client = Twilio::REST::Client.new account_sid, auth_token
+
+    from = twilio_number
+
+    client.messages.create(
+      from: from,
+      to: my_number,
+      body: "Your order has been confirmed"
+    )
+
+    puts "message sent"
+
   end
 
 end

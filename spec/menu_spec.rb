@@ -13,8 +13,8 @@ describe Menu do
       prawn_price = dish.options.values.last
       dish_string =
       "1. #{dish.name.capitalize}:\n" +
-      "     #{symbol_to_string(chicken_name)}: £#{chicken_price}\n" +
-      "     #{symbol_to_string(prawn_name)}: £#{prawn_price}\n\n"
+      "    #{symbol_to_string(chicken_name).capitalize}: £#{chicken_price}\n" +
+      "    #{symbol_to_string(prawn_name).capitalize}: £#{prawn_price}\n\n"
       expect { menu.view_full_menu }.to output(dish_string).to_stdout
     end
   end

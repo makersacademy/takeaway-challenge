@@ -11,7 +11,7 @@ class Menu
     @dishes.each do |dish|
       puts "#{menu_number}. #{dish.name.capitalize}:"
       dish.options.each do |option, price|
-        puts "     #{symbol_to_string(option)}: £#{price}"
+        puts "    #{symbol_to_string(option).capitalize}: £#{price}"
       end
       puts
       menu_number += 1
