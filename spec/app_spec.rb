@@ -30,6 +30,7 @@ describe App do
 
   describe 'SMS' do
 
+    # TODO: make these work!
     context 'when receiving confirmation' do
       before(:each) { post '/sms', message: 'Y', 'from': '123' }
 
@@ -38,8 +39,6 @@ describe App do
       end
 
       it 'should return menu upon accessing homepage' do
-        # expect(last_response.body).to eq 'ok'
-        puts last_response
       end
     end
   end
