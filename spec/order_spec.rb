@@ -11,12 +11,6 @@ describe Order do
     end
   end
 
-  describe '#print_menu' do
-  #   it 'should return a formated list of dishes and prices' do
-  #     expect(subject.print_menu).to eq formated_list
-  #   end
-  end
-
   describe '#add' do
     it 'should add a dish to current_order' do
       subject.add('tikka')
@@ -90,7 +84,7 @@ describe Order do
   end
 
   describe '#checkout' do
-    xit 'should raise error if answer doesnt match total_cost' do
+    it 'should raise error if answer doesnt match total_cost' do
       p 'enter anything but 14!'
       subject.add('Moghlai')
       subject.add('Patia')

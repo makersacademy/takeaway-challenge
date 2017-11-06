@@ -14,22 +14,14 @@ Takeaway Challenge
 
  ```
 
-Instructions
+
+
+
+Summary
 -------
+This program is designed to allow you to order chosen meals from a menu. To add and delete items from your current order. To make a new and cancel an order, and when checkout is complete, sends a SMS message to tell the user the delivery will arrive within one hours time.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+**Main Objectives**
 ```
 As a customer
 So that I can check if I want to order something
@@ -40,40 +32,48 @@ So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
 As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+**Safety Features**
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+**Additional Information**
+This program uses the TWilio API to send a SMS message.
+I have a local .env file that hides the SMS details. To use this program please register with Twilio for free and put in your own details
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Summary
+-------
+This program is made up of four files: Dish, Menu, Order & SMS.
+**Dish**
+Dish is a simple class which is used to create a dish. It consist of three methods: Name, Price & Quantity.
+**Menu**
+Menu has the dish menu stored via an array. Menu is also used to search through the menu and return the Desired item.
+**SMS**
+SMS is used to send the text message via the Twilio API. It formats the message and adds in the time + 1 hour.
+**Order**
+This is the user interface for the program. Options to control the program are as follows:
+How to manage the order itself:
+new_order - will create a new order.
+cancel_order - will wipe clear the current order and initiate a new_order
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+How to view information about your current order:
+current_order - will allow the user to view the dishes they currently have on their order.
+view_menu - this will show the user a complete list of the menu.
+print_menu - this will show the user a more formatted user friendly menu.
+total_cost - this will show the total cost of the current order.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+How to adjust your current order:
+add - will add an item to your current order. Please pass in the meal you wish to add as a string. E.G. my_order.add('korma')
+delete - will delete an item from your current order. Please pass in the meal you wish to delete as a string. E.G. my_order.add('vindaloo')
 
+How to complete your current order:
+checkout - This will ask you to enter the total cost as a saftey feature. If this passes a text message will be sent telling the user the delivery time, total cost and items ordered.
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Additional Information
+-------
+This program requires more work. It needs more tests around the SMS.rb. The current tests are currently in the Chicargo style testing method and needs London style tests to be added.
+It also needs some changes for example to the Reduce method

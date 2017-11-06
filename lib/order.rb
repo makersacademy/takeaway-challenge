@@ -15,7 +15,7 @@ class Order
   end
 
   def print_menu
-    menu.list.each_value do |_key, dish|
+    menu.list.each do |_key, dish|
       puts "#{dish.name} £#{dish.price}"
     end
     return
@@ -36,7 +36,9 @@ class Order
   def total_cost
     @final_cost = 0
     @current_order.each do |dish|
-      @final_cost += dish[1].price
+      dish[1].quantity.to_i.times do
+        @final_cost += dish[1].price
+      end
     end
     @final_cost
   end
@@ -47,8 +49,8 @@ class Order
   end
 
   def cancel_order
-    @current_order = {}
     'Your current order has been cancelled'
+    new_order
   end
 
   def checkout

@@ -1,6 +1,7 @@
 require 'twilio-ruby'
 require 'sinatra'
 require 'time'
+require 'dotenv/load'
 
 # This sends a text to the client
 class SMS
@@ -13,14 +14,14 @@ class SMS
   end
 
   def send_message
-    account_sid = "ACf2b06a33d12860426f72e6acbf307c69" # Your Account SID from www.twilio.com/console
-    auth_token = "7f52dabed4ddd5420cfccf435c9cf55b"   # Your Auth Token from www.twilio.com/console
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
         body: ":\nThank you for your order, it will be with you before #{check_time}\n\nTotal cost: £#{@cost}\n\nYour order:\n#{print_order}",
-        to: "+447891112443",    # Replace with your phone number
-        from: "+441233800977")  # Replace with your Twilio number
+        to: ENV['MY_NUMBER'],
+        from: ENV['TWILIO_NUMBER'])
     puts message.sid
   end
 
@@ -34,7 +35,7 @@ class SMS
 
   def check_time
     current = Time.new
-    current.localtime + (60*60)
+    current += (60 * 60)
     "#{current.hour}:#{current.min}"
   end
 end
