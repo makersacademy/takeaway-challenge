@@ -1,4 +1,4 @@
-# Weekend Challenge 2#: Take away challenge
+# Weekend Challenge 2#: Take away challenge [![Build Status](https://travis-ci.org/thatdania/takeaway-challenge.svg?branch=master)](https://travis-ci.org/thatdania/takeaway-challenge)
 
 ```
                             _________
