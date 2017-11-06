@@ -43,6 +43,16 @@ describe Takeaway do
         it 'adds a dish' do
           expect { takeaway.order('Chicken') }.to change { takeaway.basket.count }
         end
+        it 'adds to basket' do
+          expect(takeaway.order('Chips')).to eq takeaway.basket
+        end
+      end
+    end
+
+    describe '#total' do
+      it 'returns total' do
+        expect(fake_sum).to receive(:total)
+        takeaway.total
       end
     end
 
@@ -56,9 +66,7 @@ describe Takeaway do
     #
     # describe '#order' do
     #   context 'when selecting a dish' do
-    #     it 'should be added to basket' do
-    #       expect(takeaway.order('Chips')).to eq takeaway.basket
-    #     end
+
     #   end
     #   context 'when adding dishes to your order' do
     #     it 'order total should be the sum of dishes added' do
@@ -77,13 +85,13 @@ describe Takeaway do
     #   end
     # end
     #
-    # describe '#empty_basket' do
-    #   context 'when trying to checkout with an empty basket' do
-    #     it 'should raise an error' do
-    #       expect { takeaway.empty_basket? }.to raise_error "You haven't ordered anything!"
-    #     end
-    #   end
-    # end
+    describe '#empty_basket' do
+      context 'when trying to checkout with an empty basket' do
+        it 'should raise an error' do
+          expect { takeaway.empty_basket? }.to raise_error "You haven't ordered anything!"
+        end
+      end
+    end
 
 
 end
