@@ -1,2 +1,5 @@
+rvm 2.4.0
+bundle instal
 --color --format documentation
 --require spec_helper
+--format documentation
