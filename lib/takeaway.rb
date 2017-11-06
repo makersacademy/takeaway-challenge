@@ -25,13 +25,17 @@ class TakeAway
     menu.format
   end
 
-  def incoming_order(number, order)
+  def response(number, order)
+    order =~ /[YNyn]/ ? confirmation(number, order) : order(number, order)
+  end
+
+  def order(number, order)
     return @dialogue.in_progress if in_progress?(number)
     mark_in_progress(number)
     @handler.response(order)
   end
 
-  def incoming_confirmation(number, message)
+  def confirmation(number, message)
     return @dialogue.no_order unless in_progress?(number)
     mark_complete(number)
     respond(message)
@@ -42,7 +46,7 @@ class TakeAway
   end
 
   def delivery(time_class: Time, delay: DEFAULT_DELAY)
-    (time_class.now + delay).strftime('%H:%M:%S')
+    (time_class.now + delay).strftime('%H:%M')
   end
 
   private

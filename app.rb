@@ -21,8 +21,10 @@ class App < Sinatra::Base
     from = params['From']
     twiml = responder.new do |response|
       if body =~ /[YyNn]/
+        p 'confirm path'
         msg = takeaway.incoming_confirmation(from, body)
       else
+        p 'order path'
         msg = takeaway.incoming_order(from, body)
       end
       response.message(body: "\n\n#{msg}")

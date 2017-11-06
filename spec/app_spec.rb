@@ -2,7 +2,10 @@ require_relative '../app'
 
 describe App do
 
-  let(:takeaway) { double(:takeaway, print_menu: 'hello', incoming_confirmation: 'ok') }
+  let(:takeaway) do
+    double(:takeaway, print_menu: 'hello', incoming_confirmation: 'ok')
+  end
+
   let(:responder) { double(:responder, to_xml: 'hello') }
   let(:responder_class) { double(:responder_class, new: responder) }
 
@@ -11,10 +14,11 @@ describe App do
   end
 
   before(:each) do
-    allow_any_instance_of(App).to receive(:responder).and_return(takeaway)
+    allow_any_instance_of(App).to receive(:responder)
+      .and_return(responder_class)
   end
 
-  describe 'GET' do
+  describe 'get /' do
     before(:each) { get '/' }
 
     context 'when reaching homepage' do
@@ -28,17 +32,30 @@ describe App do
     end
   end
 
-  describe 'SMS' do
+  describe 'post /sms' do
 
-    # TODO: make these work!
     context 'when receiving confirmation' do
-      before(:each) { post '/sms', message: 'Y', 'from': '123' }
+      before(:each) { post '/sms', 'Body' => 'y', 'From' => '123' }
+      after(:each) { post '/sms', 'Body' => 'y', 'From' => '123' }
 
       it 'should return ok' do
         expect(last_response).to be_ok
       end
 
-      it 'should return menu upon accessing homepage' do
+      it 'calls takeaway incoming_confirmation' do
+        expect(takeaway).to receive(:incoming_confirmation).with('123', 'y')
+      end
+    end
+
+    context 'when receiving order' do
+      before(:each) { post '/sms', 'Body' => 'order', 'From' => '123' }
+
+      it 'should return ok' do
+        expect(last_response).to be_ok
+      end
+
+      it 'calls takeaway incoming_order' do
+        expect(takeaway).to receive(:incoming_order)
       end
     end
   end
