@@ -1,5 +1,6 @@
 require './lib/menu.rb'
 require 'twilio-ruby'
+require './auth_credentials'
 
 class TakeAway
   attr_reader :basket, :menu, :total
@@ -44,12 +45,12 @@ class TakeAway
   end
 
   def send_text(message)
-    account_sid = 'AC03611fb5200da206b504672390256cd3'
-    auth_token = '82cd412cda204f971ac2d21f02b93000'
+    account_sid = ACCOUNT_SID
+    auth_token = AUTH_TOKEN
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.messages.create({
-    from: "+32460207839",
-    to: "+32495203246",
+    from: FROM,
+    to: TO ,
     body: message })
   end
 
