@@ -1,4 +1,39 @@
-Takeaway Challenge
+# How to use:
+
+Create your own takeaway service using:
+
+`<name> = Takeaway.new`
+
+You can also pass in your own created Menu class if you have created one, however it has a default menu already created.
+
+The Menu is made up by a number of Dish classes listed in an array.
+
+To create your own:
+
+`menu = Menu.new([Dishes])`
+
+The Dish class can take a name of the dish, and variety of options with relevant prices. Eg:
+
+`korma = Dish.new('Korma', {chicken: 5.95, lamb: 6.95})`
+
+`chicken_kebab = Dish.new('Chicken Kebab', {small: 4.9, medium: 6.2, large: 7.5})`
+
+
+After creating a new Takeaway you can use the following commands:
+
+`.view_menu` --> Lists all dishes with options
+
+`.choose('dish option', 'dish name', quantity(optional))`
+e.g: `takeaway.choose('chicken', 'korma')` --> This adds the dish to your current order
+
+`.view_order` --> Lists your current order
+
+`.view_order_total` --> shows price of current order
+
+`.complete_order` --> adds your order to order history, sends a text to confirm the order has gone through, and creates a new Order class.
+
+
+# Takeaway Challenge
 ==================
 ```
                             _________
@@ -14,7 +49,7 @@ Takeaway Challenge
 
  ```
 
-Instructions
+## Instructions
 -------
 
 * Challenge time: rest of the day and weekend, until Monday 9am
