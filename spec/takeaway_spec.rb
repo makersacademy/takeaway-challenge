@@ -11,9 +11,10 @@ describe Takeaway do
     menu
   end
   let(:text) { double(:text, send_text: true) }
-  let(:billing) { double(:billing) }
+  let(:text_class) { double(:text, new: text) }
+  let(:billing) { double(:billing, check_sum: true, sum: true) }
   let(:menu_instance) { double(:menu_instance, items: 'printing menu', menu: menu) }
-  subject(:takeaway) { described_class.new(text, billing, menu_instance) }
+  subject(:takeaway) { described_class.new(text_class, billing, menu_instance) }
 
   describe '#print_menu' do
     it 'prints menu' do
@@ -34,6 +35,12 @@ describe Takeaway do
     end
     it 'raises error when trying to choose non existent item' do
       expect { subject.parse_order('2 grapes') }.to raise_error 'Please choose something from the menu'
+    end
+  end
+
+  describe '#check_sum' do
+    it 'calls check_sum on billing instance' do
+      expect(subject.check_sum).to eq true
     end
   end
 

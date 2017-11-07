@@ -6,7 +6,7 @@ class Takeaway
 
   attr_reader :menu, :order, :order_history
 
-  def initialize(text = Text.new, billing = Billing.new, menu = Menu.new)
+  def initialize(text = Text, billing = Billing.new, menu = Menu.new)
     @menu = menu
     @order = [{ total: 0 }]
     @text = text
@@ -30,7 +30,7 @@ class Takeaway
   end
 
   def confirm_order
-    @text.send_text(@order[0][:total])
+    @text.new.send_text(@order[0][:total])
     @order_history << @order
     @order = [{ total: 0 }]
   end
