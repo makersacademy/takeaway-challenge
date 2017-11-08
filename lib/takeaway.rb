@@ -13,34 +13,34 @@ class Takeaway
     @text = text_class.new
   end
 
-  def menu_list
-    @menu.list
-  end
+    def menu_list
+      @menu.list
+    end
 
-  def order(dish)
-    @basket << add_dish(dish)
-  end
+    def order(dish)
+      @basket << add_dish(dish)
+    end
 
-  def total
-    @sum.total(@basket)
-  end
+    def total
+      @sum.total(@basket)
+    end
 
-  def check_out
-    # empty_basket?
-    text.message(total)
-    clear_basket
-  end
+    def check_out
+      empty_basket?
+      text.message(total)
+      clear_basket
+    end
 
-  def empty_basket?
-    raise "You haven't ordered anything!" if @basket.empty?
-  end
+    def empty_basket?
+      raise "You haven't ordered anything!" if @basket.empty?
+    end
 
-  private
-  def add_dish(dish)
-    @menu.list.select { |key| key[:name].include?(dish) }
-  end
+    private
+    def add_dish(dish)
+      @menu.list.select { |key| key[:name].include?(dish) }
+    end
 
-  def clear_basket
-    @basket.clear
-  end
+    def clear_basket
+      @basket.clear
+    end
 end

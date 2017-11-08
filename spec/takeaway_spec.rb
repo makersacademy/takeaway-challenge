@@ -1,18 +1,14 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu_class: menu_class, sum_class: sum_class, text_class: text_class) }
-
-  let(:menu_class) { double(:menu_class, new: fake_menu) }
+  
   let(:fake_menu) { double(:fake_menu, list: [{name: "Chicken", quantity: 1, price: 4.5}]) }
-  let(:sum_class) { double(:sum_class, new: fake_sum) }
+  let(:menu_class) { double(:menu_class, new: fake_menu) }
   let(:fake_sum) { double(:fake_sum) }
+  let(:sum_class) { double(:sum_class, new: fake_sum) }
+  let(:fake_text) { double(:fake_text, message: true) }
   let(:text_class) { double(:text_class, new: fake_text) }
-  let(:fake_text) { double(:fake_text) }
-
-  # before do
-  #   allow(takeaway).to receive(:check_out)
-  # end
+  subject(:takeaway) { described_class.new(menu_class: menu_class, sum_class: sum_class, text_class: text_class) }
 
     describe '#initialize' do
       it 'shows the menu' do
@@ -57,8 +53,11 @@ describe Takeaway do
     end
 
     describe '#check_out' do
-      xit 'sends confirmation message' do
-        expect(fake_text).to receive(:message)
+      it 'empties basket' do
+        takeaway.order('Chicken')
+        allow(takeaway).to receive(:total).and_return(4.5)
+        takeaway.check_out
+        expect(takeaway.basket).to be_empty
       end
     end
 
