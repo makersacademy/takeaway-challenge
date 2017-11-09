@@ -53,4 +53,11 @@ describe Takeaway do
     end
   end
 
+  context 'Class methods' do
+    it 'saves instance of takeaway class to instance variable' do
+      Takeaway.store(subject)
+      expect(Takeaway.instance).to eq subject
+    end
+  end
+
 end

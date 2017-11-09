@@ -14,6 +14,14 @@ class Takeaway
     @order_history = []
   end
 
+  def self.store(instance) 
+    @instance = instance
+  end
+
+  def self.instance
+    @instance
+  end
+
   def parse_order(string)
     string.split(',').each do |x|
       amount, word = x.split(' ')
