@@ -18,7 +18,7 @@ end
 
 def confirmation_text(body)
   @takeaway.instance.parse_order(body)
-  total = @takeaway.instance.order[0][:total]
+  total = @takeaway.instance.order_total
 
   content_type 'text/xml'
   Text.new.text_response(total)

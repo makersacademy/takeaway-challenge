@@ -53,6 +53,14 @@ describe Takeaway do
     end
   end
 
+  describe "#order_total" do
+    it 'returns the order total' do
+      allow(billing).to receive(:sum).and_return 24
+      subject.parse_order('3 pizza')
+      expect(subject.order_total).to eq 24
+    end
+  end
+
   context 'Class methods' do
     it 'saves instance of takeaway class to instance variable' do
       Takeaway.store(subject)

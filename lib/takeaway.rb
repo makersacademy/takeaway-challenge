@@ -14,7 +14,7 @@ class Takeaway
     @order_history = []
   end
 
-  def self.store(instance) 
+  def self.store(instance)
     @instance = instance
   end
 
@@ -41,6 +41,10 @@ class Takeaway
     @text.new.send_text(@order[0][:total])
     @order_history << @order
     @order = [{ total: 0 }]
+  end
+
+  def order_total
+    @order[0][:total]
   end
 
   private
