@@ -120,10 +120,6 @@ gem install simplecov-console
 
 ```
 
-## Author
-
-[Etienne Mustow](https://github.com/etiennemustow)
-
 # Reterospective 
 
 #### Looking back on this project, there are a lot of things I'd have changed about my approach.
@@ -153,7 +149,7 @@ You need to make a conscious effort to test everything if it isn't an innate qua
 ## 3. Gemfile
 
 I even winced looking at my Gemfile knowing what I do now. It's messy. Very messy.
-If you're looking at my Gemfile and thinking, "Mine looks like that too? What's wrong with his??", let me help you out:
+If you're looking at my Gemfile and thinking, **"Mine looks like that too? What's wrong with his??"**, let me help you out:
 <br><br>
 It's important to group your Ruby gems in a particular way.
 
@@ -189,7 +185,7 @@ bundle install --without test
 This isn't just useful for the pioneer of the project but useful for anyone who'd ever want to view or edit their code.
 
 
-## 3. Single Responsibility Principle (SRP)
+## 4. Single Responsibility Principle (SRP)
 
 In my project, I had the Takeaway class handling a lot of logic that I could've handed to the other classes to performas class methods before I injected them into the Takeaway class. 
 An example of this would be the place_order method. This method was handling logic such as the puts statement and the string being assigned to the order variable. 
@@ -207,22 +203,29 @@ instantly, a hash and key set-up springs to mind.
 I can't describe how I'd tackle this issue with the code I currently have as my entire set-up would be different.
 If I were to get to that point again, my process would be as follows:
 
-* Extract logic into an Item, Menu, Order and Takeaway class
+* Extract logic into Item, Menu, Order and Takeaway classes
 
 Class | Responsibility | Possible initialize method in class |
 ------|----------------|-----------------|
 Item |  Have a name property | ``` def initialize(name); @name = name, end ``` |
-Menu | Contain an array of items | ``` def initialize(item = Item.new); @current_menu = [predefined array of items]; @working_menu = []  ``` |
-Order | Acts as intermediary between Menu and Takeaway class methods | ``` def initialize(items, quantity) ```|
+Menu | Contain an array of items | ``` def initialize(item = Item.new); @current_menu = [predefined array of items]; @working_menu = []; end  ``` |
+Order | Acts as intermediary between Menu and Takeaway class methods | ``` def initialize(); @current_order = []; end  ```|
+Takeaway | Acts as the controller and displays text to user (what methods are called upon in console) | ``` def initialize(); @order = Order.new; end ``` |
 
 
+* Start building class methods within each class so that each class communicates only with the class it's supposed to
 
+In my example:
+-------------
 
+Class | Communicates with: |
+------|--------------------|
+Item | Menu|
+Menu | Item, Order |
+Order | Menu, Takeaway |
+Takeaway | Order |
 
-
-```
-def remove(item, quan)
- ```
+I believe the logic handling interaction with the Twilio API would also be in the Order class but can only verify upon amending this project.
 <br><br>
 When I talk with colleagues, SRP is so widely used that it's become a running joke to even forget about using it. 
 On a more serious note, not following SRP is one of the most common reasons why programmes you write can become too complex, verbose or just plain difficult to keep writing.
@@ -298,7 +301,7 @@ Robert C. Martin (a.k.a. world-renowned software engineer, Uncle Bob) states tha
 <br><br>
 If the Class is fulfilling its responsbility and adding a method means it won't do that any more, change the method, remove the method or rethink your Class' responsbility.
 
-## 4. DI
+## 5. Dependency Injection
 
 
 
@@ -307,8 +310,11 @@ If the Class is fulfilling its responsbility and adding a method means it won't 
 
 I will revisit this project to reach my fourth user story and experiment with the Twilio API.
 
-** Thanks for reading this far! **
+**Thanks for reading this far!** :smile:
 
+## Author
+
+[Etienne Mustow](https://github.com/etiennemustow)
 
 
 
