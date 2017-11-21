@@ -13,19 +13,19 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-Introduction:
+Introduction
+------------
 
-  A Makers project to build a takeaway restaurant application.
+  A Makers project to build a takeaway restaurant application. This program allows you to see a menu, order food, calculate the price and then send a message to indicate that the order is on its way
 
-Building the Code
+Domain Model
+------------
 
-  It would require 4 files
-    Takeaway - To view menu, view ordered items,     place order, confirm total and complete order
+  It would require 4 classes
+    Takeaway - To view menu, view ordered items, place order, confirm total and complete order
     Order - To calculate total price for the order
     Menu - To contain Hash of menu items and prices
     Text - To send confirmation text using the Twilio API
-
-    This program allows you to see a menu, order food, calculate the price and then send a message to indicate that the order is on its way  
 
 To Use Program
 --------------
