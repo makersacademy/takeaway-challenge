@@ -1,7 +1,5 @@
 class Menu
-
   attr_reader :italian_menu
-
   def initialize
     @italian_menu= {:pasta => 10,
       :pizza => 15,
