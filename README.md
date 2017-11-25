@@ -17,7 +17,7 @@ Takeaway Challenge
 Overview
 -------
 
-A program to allow users to place a takeaway order and recive a confirmation sms via the Twilio api
+A program to allow users to place a takeaway order and receive a confirmation sms via the Twilio api
 
 Approach
 --------
@@ -26,13 +26,13 @@ Approach
 
 * This challenge was a good opportunity to pratice making use of the dependancy injection and delegation pronciples.
 
-* unit & feature tested  at > 99% coverage (feature tests in `/spec/integration`)
+* unit & feature tested at > 99% coverage (feature tests in `/spec/integration`)
 
 Usage
 -----
 
 `bundle install`
-* to use the sms service, you will need to create a `.env` file in the root of the project directory with your Twilio account details (see examples variables below) 
+* to use the sms service, you will need to create a [`.env`](https://github.com/bkeepers/dotenv) file in the root of the project directory with your Twilio account details (see examples variables below) 
 
 ```
 ACCOUNT_SID="@account_sid"
