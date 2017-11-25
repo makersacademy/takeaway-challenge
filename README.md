@@ -31,8 +31,7 @@ Approach
 Usage
 -----
 
-* Clone this repo
-* Run 'bundle' to ensure you have all the gems
+`bundle install`
 * to use the sms service, you will need to create a `.env` file in the root of the project directory with your Twilio account details (see examples variables below) 
 
 ```
