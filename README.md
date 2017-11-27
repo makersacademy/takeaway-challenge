@@ -2,6 +2,8 @@
 
 Write a Takeaway program with the specified user stories.
 
+Makers Academy exercise. 
+
 ## User Stories
 
 ```
