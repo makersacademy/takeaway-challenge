@@ -1,7 +1,13 @@
 class Order
+  attr_reader :items
 
-  # def add_to_order(item)
-  # end
+  def initialize
+    @items = Hash.new(0)
+  end
+
+  def add_dish(dish, quantity = 1)
+    @items[dish] += quantity
+  end
   #
   # def order_total
   # end
