@@ -14,4 +14,10 @@ class Takeaway
               "water"=>1.25
             }
   end
+
+  def read_menu
+    @menu.each do |item, price|
+      puts "#{item.split.map(&:capitalize).join(" ")}: £#{sprintf("%.2f", price)}"
+    end
+  end
 end
