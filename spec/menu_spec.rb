@@ -10,5 +10,8 @@ describe Menu do
     it "returns the selected menu item" do
       expect(subject.choose_item('Lunch')).to eq({:Lunch => 2})
     end
+    it "raises an error if the item is not on the menu" do
+      expect{subject.choose_item('')}.to raise_error(RuntimeError)
+    end
   end
 end
