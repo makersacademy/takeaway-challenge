@@ -1,6 +1,6 @@
 class Menu
   attr_reader :menu_items
-  
+
   def initialize
     @menu_items = {
       "Aloo Ghobi"           => 5.50,
