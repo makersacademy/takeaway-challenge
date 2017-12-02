@@ -2,8 +2,8 @@ require 'menu'
 
 describe Menu do
   context "#initialize" do
-    it "should create a list of menu items and prices" do
-      expect(subject).not_to be_nil
+    it "should list all menu items and prices" do
+      expect(subject.menu_items).not_to be_nil
     end
   end
 
