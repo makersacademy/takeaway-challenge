@@ -1,5 +1,4 @@
 class Menu
-  attr_reader :menu_items
 
   def initialize
     @menu_items = {
@@ -15,7 +14,7 @@ class Menu
   end
 
   def print_menu
-    menu_items.each do |item, price|
+    @menu_items.each do |item, price|
       puts "#{item}: £#{sprintf("%.2f", price)}"
     end
   end
