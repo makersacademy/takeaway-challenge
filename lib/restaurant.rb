@@ -13,4 +13,8 @@ class Restaurant
     ]
   end
 
+  def print_menu
+    Printer.new.print_menu
+  end
+
 end

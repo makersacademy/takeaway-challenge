@@ -12,10 +12,10 @@ class Order
     @current_order << food
   end
 
-  def food_exist?(food)
-    for i in 0..menu.length
-      food == menu[i].dish ? true : false
-    end
-  end
+  # def food_exist?(food)
+  #   for i in 0..menu.length
+  #     food == menu[i].dish ? true : false
+  #   end
+  # end
 
 end
