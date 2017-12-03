@@ -28,6 +28,13 @@ class Order
     puts "#{@quantity} x #{@choice} added to basket"
   end
 
+  def total
+    grand_total = []
+    @basket.each do |item|
+      grand_total << item.values
+    end
+    grand_total.flatten.reduce(:+)
+  end
 
 
 
