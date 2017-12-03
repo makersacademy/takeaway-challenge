@@ -1,6 +1,9 @@
 require './lib/takeaway.rb'
+require './lib/text.rb'
 
 class Order
+
+  include Text
 
   attr_reader :current_order
 
