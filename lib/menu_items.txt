@@ -1,0 +1,1 @@
+"---\n:pizza: 1.15\n:kebab: 4.65\n:sub: 1.48\n:sandwich: 7.23\n:coke: 5.08\n:juice: 1.35\n:pepsi: 3.15\n:water: 4.16\n:chicken: 3.29\n:fish: 4.57\n:beer: 7.57\n:sushi: 7.54\n:turkey: 7.31\n:currey: 6.91\n:duck: 5.49\n:burger: 1.21\n:chips: 2.43\n:milkshake: 2.25\n:rice: 2.22\n"
