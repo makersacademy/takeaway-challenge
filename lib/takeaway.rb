@@ -21,4 +21,8 @@ class TakeAway
     raise 'You have not ordered anything yet!' unless @order
     @order.current_order
   end
+
+  def add_more_dishes(dish)
+    @order.add_to_order(dish)
+  end
 end
