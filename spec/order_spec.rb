@@ -17,4 +17,14 @@ describe Order do
       expect(subject.total_price).to eq 5
     end
   end
+  describe "#print_menu" do
+    it "should print the list of menu items" do
+      expect { subject.print_menu }.to output.to_stdout
+    end
+  end
+  describe "#print_order" do
+    it "should print the items in the current order" do
+      expect {subject.print_order }.to output.to_stdout
+    end
+  end
 end
