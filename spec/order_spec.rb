@@ -11,7 +11,7 @@ describe Order do
     end
 
     it 'should allow valid items to be added' do
-      expect { subject.add_to_order(:pizza, 1) }.to change{subject.items.length}.by 1
+      expect { subject.add_to_order(:pizza, 1) }.to change { subject.items.length }.by 1
     end
 
     it 'should not allow a quantity of less than 1 to be accepted' do
@@ -19,7 +19,7 @@ describe Order do
     end
 
     it 'should update cost on addition of item' do
-      expect { subject.add_to_order(:pizza, 2) }.to change{subject.total_cost}.by 2.30
+      expect { subject.add_to_order(:pizza, 2) }.to change { subject.total_cost }.by 2.30
     end
   end
 end
