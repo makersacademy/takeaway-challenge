@@ -30,41 +30,54 @@ class Interface
       exit
     else
       puts "Thats not an option"
+      print_and_select
     end
   end
 
   def add_to_order
-    puts "What would you like to order"
-    item = gets.chomp
-    puts "How many of #{item} would you like?"
-    quantity = gets.chomp.to_i
-    quantity.times do
-      @order.request_item(item)
-    end
-    puts "Would you like to order anything else? Y/N"
-    response = gets.chomp
-    add_to_order if response.upcase == 'Y'
-    print_interface
-    option_select
+    item = get_food
+    get_quantity.times { @order.request_item(item) }
+    add_to_order if yes?(more_food)
+    print_and_select
   end
 
   def review_order
     @order.print_order
-    puts "Would you like to order anything else? Y/N"
-    response = gets.chomp
-    add_to_order if response.upcase == 'Y'
+    add_to_order if yes?(more_food)
     confirm_order
   end
 
   def confirm_order
+    yes?(finish_order) ? (puts "text placeholder"; exit) : print_and_select
+  end
+
+  def print_and_select
+    print_interface
+    option_select
+  end
+
+  def more_food
+    puts "Would you like to order anything else? Y/N"
+    response = gets.chomp.upcase
+  end
+
+  def get_food
+    puts "What would you like to order"
+    gets.chomp
+  end
+
+  def get_quantity
+    puts "How many of that would you like?"
+    gets.chomp.to_i
+  end
+
+  def yes?(question)
+    question == 'Y'
+  end
+
+  def finish_order
     puts "Confirm order? Y/N"
-    response = gets.chomp
-    if response.upcase == 'Y'
-      puts "text placeholder"
-    else
-      print_interface
-      option_select
-    end
+    gets.chomp.upcase
   end
 
 end

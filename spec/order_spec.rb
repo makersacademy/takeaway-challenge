@@ -1,6 +1,9 @@
 require 'order'
 
 describe Order do
+  let (:menu) {double(:menu, print_menu: nil)}
+  subject { described_class.new(Menu.new) }
+
   describe "#request_item" do
     it "should add a menu item to the order" do
       subject.request_item('Lunch')
@@ -24,7 +27,7 @@ describe Order do
   end
   describe "#print_order" do
     it "should print the items in the current order" do
-      expect {subject.print_order }.to output.to_stdout
+      expect { subject.print_order }.to output.to_stdout
     end
   end
 end

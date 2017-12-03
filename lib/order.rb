@@ -21,7 +21,8 @@ attr_reader :order
 
   def print_order
     quantities = Hash.new(0)
-    @order.each {|words,count| quantities[words]+= 1}
-    quantities.sort_by {|words, count| count}.reverse!.each{|key,value| puts "#{value}x #{key.keys[0]}".ljust(15) + "£#{key.values[0]*value}".rjust(10)}
+    @order.each {|items,count| quantities[items]+= 1}
+    quantities.sort_by {|items, count| count}.reverse!.each{|key,value| puts "#{value}x #{key.keys[0]}".ljust(15) + "£#{key.values[0]*value}".rjust(10)}
+    puts "\nTotal: £#{total_price}"
   end
 end
