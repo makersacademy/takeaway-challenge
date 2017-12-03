@@ -10,10 +10,14 @@ class Menu
                   }
     end
     def view_menu
-        menu = ''
+        menu = ''   
         dishes.map { |food, price| menu += p"#{food}: £#{price}" }
         menu
     end
+    def dish_search
+        menu = ''
+        dishes.map.each { |food, price| menu += "#{food}: £#{price} " }
+        menu
+    end
 end
-
-
+    
