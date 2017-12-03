@@ -6,5 +6,5 @@ RSpec::Core::RakeTask.new :spec
 task default: [:spec]
 
 task mytask: :dotenv do
-    Takeaway.new :send_confirmation
+  Takeaway.new :send_confirmation
 end

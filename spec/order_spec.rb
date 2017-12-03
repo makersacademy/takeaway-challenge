@@ -1,9 +1,9 @@
 require 'order'
 describe Order do
   subject(:order) { described_class.new }
-  let(:basket) { double({:"chow mein" => [4, 5.0]}) }
-  let(:current_value){double(:current_value)}
-  let(:dish){double(:dish)}
+  let(:basket) { double({ :"chow mein" => [4, 5.0] }) }
+  let(:current_value) { double(:current_value) }
+  let(:dish) { double(:dish) }
 
   it 'is initialized with an empty basket' do
     expect(order.basket).to be_empty
