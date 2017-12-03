@@ -2,8 +2,10 @@
 
 class Menu
 
+attr_reader :food
+
   def initialize
-    @pizza_menu = {
+    @food = {
       'Pepperoni' => 9,
       'Margherita' => 7,
       'Meat feast' => 10,
@@ -11,8 +13,6 @@ class Menu
     }
   end
 
-  def print_menu
-    @pizza_menu
-  end
+
 
 end
