@@ -14,7 +14,7 @@ class Menu
     @menu_items.each_pair do |dish, price|
       left_aligned = "#{i}. #{dish}"
       right_aligned = "£" + sprintf('%.2f', price)
-      puts left_aligned.ljust(20) + right_aligned.rjust(20)
+      puts left_aligned.ljust(20) + right_aligned.rjust(12)
       i += 1
     end
   end
