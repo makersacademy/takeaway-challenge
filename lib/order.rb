@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class Order
   attr_accessor :order_list
   DEFAULT_QUANTITY = 1
@@ -21,6 +23,6 @@ class Order
     @order_list.each do |item, quantity|
       total_price += quantity * @menu.price(item)
     end
-    total_price
+    "Total: £#{sprintf("%.2f", total_price)}"
   end
 end
