@@ -8,8 +8,8 @@ class Takeaway
     @order_history = []
   end
 
-  def handle_order(order)
-    order_output(process_order(take_order(order)))
+  def handle_order(user_order)
+    order_output(process_order(take_order(user_order)))
   end
 
   def take_order(order, order_class = Order)
@@ -19,6 +19,7 @@ class Takeaway
   end
 
   def order_output(order)
+    raise 'Incorrect Order Received' unless order_correct?(order)
     "Your order is complete! Total: £#{"%.2f" % order.price}, Arriving by: #{order.time}"
   end
 
@@ -30,7 +31,7 @@ class Takeaway
     order
   end
 
-  def verify_order?(order)
+  def order_correct?(order)
     order.correct?
   end
 

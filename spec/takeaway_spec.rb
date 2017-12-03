@@ -5,7 +5,7 @@ describe Takeaway do
   let(:menu) { double(:my_menu) }
   let(:user_order) { "1,1\n2,3\n20.50" }
   let(:order_intermediate) { double(:my_order_intermediate, new: order) }
-  let(:order) { double(:my_order, price: 20.50, orders: [1, 1], time: 'Now') }
+  let(:order) { double(:my_order, price: 20.50, orders: [1, 1], time: 'Now', correct?: true) }
   let(:message) { "Your order is complete! Total: £20.50, Arriving by: Now" }
 
   it 'takes orders as string' do
@@ -20,6 +20,11 @@ describe Takeaway do
 
   it 'notifies customer of successful order' do
     expect(ta.order_output(order)).to eq message
+  end
+
+  it 'throws error if order is incorrect' do
+    allow(order).to receive(:correct?) { false }
+    expect { ta.order_output(order) }.to raise_error 'Incorrect Order Received'
   end
 
 end
