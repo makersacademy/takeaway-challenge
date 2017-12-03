@@ -36,6 +36,10 @@ describe Order do
       subject.delete_item("bun thit nuong", 2)
       expect(subject.basket).to eq [{ :item => "Spring Rolls", :quantity => 1 }]
     end
+
+    it "should raise error if the item is not on the menu" do
+      expect { subject.delete_item("Noodle Soup") }.to raise_error "This item is not in your basket"
+    end
   end
 
   describe "#price" do
