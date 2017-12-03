@@ -8,4 +8,8 @@ describe Menu do
   it 'should return a price when provided an item' do
     expect(subject.get_price(:pizza)).to eq 1.15
   end
+
+  it 'should return a price when an item is specified with incorrect case' do
+    expect(subject.get_price("PIZZA")).to eq 1.15
+  end
 end

@@ -9,6 +9,6 @@ class Menu
   end
 
   def get_price(item)
-    items[item.downcase]
+    items[item.to_sym.downcase]
   end
 end
