@@ -8,7 +8,11 @@ class Order
   end
 
   def add(item, quantity = DEFAULT_QUANTITY)
-    @order_list.include?(item) ? @order_list[item] += quantity : @order_list[item] = quantity
+    if @order_list.include?(item)
+      @order_list[item] += quantity
+    else
+      @order_list[item] = quantity
+    end
     "#{quantity} #{item}(s) added to your order"
   end
 
