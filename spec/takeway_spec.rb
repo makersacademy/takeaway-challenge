@@ -14,4 +14,8 @@ describe TakeAway do
     expect(takeaway.view_menu).to eq "Chicken £3.78 | Pasta £4.59 | Salad £2.86"
   end
 
+  it "should allow the creation of a new order" do
+    expect(takeaway.create_order(:dish)).to eq [:dish]
+  end
+
 end
