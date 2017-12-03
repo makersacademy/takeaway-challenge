@@ -1,3 +1,4 @@
-require "./lib/menu"
-p menu = Menu.new
-p menu.view
+require "./lib/restaurant"
+p restaurant = Restaurant.new
+p restaurant.menu
+p restaurant.food
