@@ -19,4 +19,10 @@ describe TakeAway do
     expect(takeaway.create_order(:dish)).to eq [:dish]
   end
 
+  it "should check if order is not empty" do
+    expect{ takeaway.view_order }.to raise_error "You have not ordered anything yet!"
+  end
+
+
+
 end

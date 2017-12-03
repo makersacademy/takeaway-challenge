@@ -1,8 +1,7 @@
-require_relative "./menu.rb"
-require_relative "./order.rb"
+require_relative './menu.rb'
+require_relative './order.rb'
 
 class TakeAway
-
   attr_reader :menu
 
   def initialize
@@ -15,6 +14,11 @@ class TakeAway
 
   def create_order(dish)
     @order = Order.new(dish)
+    @order.current_order
+  end
+
+  def view_order
+    raise "You have not ordered anything yet!" if !@order
     @order.current_order
   end
 
