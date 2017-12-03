@@ -19,4 +19,8 @@ class Menu
       puts "#{item}: £#{sprintf("%.2f", price)}"
     end
   end
+
+  def price(item)
+    @menu_items[item]
+  end
 end
