@@ -1,12 +1,14 @@
 require_relative 'menu'
+require_relative 'notification'
 
 class Order
   attr_accessor :order_list
   DEFAULT_QUANTITY = 1
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, notification = Notification.new)
     @order_list = {}
     @menu = menu
+    @notification = notification
   end
 
   def add(item, quantity = DEFAULT_QUANTITY)
@@ -23,6 +25,12 @@ class Order
     @order_list.each do |item, quantity|
       total_price += quantity * @menu.price(item)
     end
-    "Total: £#{sprintf("%.2f", total_price)}"
+    total_price
+  end
+
+  def complete
+    formatted_total = "£#{sprintf("%.2f", total)}"
+    message = "Thank you! Your total is #{formatted_total} and your order has been placed."
+    @notification.send_text(message)
   end
 end
