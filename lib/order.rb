@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :basket, :choice, :quantity, :text
+  attr_reader :menu, :basket, :choice, :quantity
 
   def initialize(menu)
     @basket = Hash.new(0)
@@ -21,7 +21,9 @@ class Order
     @basket.each do |dish, quantity|
       sub_total = @menu[dish] * quantity
       @running_total += sub_total
-      puts "#{quantity} x #{dish} - £#{sprintf('%.2f', sub_total)}"
+      left_aligned = "#{quantity} x #{dish}"
+      right_aligned = "£#{sprintf('%.2f', sub_total)}"
+      puts left_aligned.ljust(20) + right_aligned.rjust(12)
     end
   end
 
@@ -39,7 +41,7 @@ class Order
   end
 
   def print_total
-    puts "Total £" + sprintf('%.2f', @total)
+    puts "Total".ljust(20) + ("£" + sprintf('%.2f', @total)).rjust(12)
   end
 
 end

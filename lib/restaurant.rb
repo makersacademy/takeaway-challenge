@@ -4,7 +4,7 @@ require_relative "sms"
 
 class Restaurant
 
-  attr_reader :order
+  attr_reader :order, :menu
 
   def initialize(menu = Menu.new)
     @menu = menu

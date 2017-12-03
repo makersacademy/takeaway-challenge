@@ -26,7 +26,7 @@ describe Order do
   describe "#basket_summary" do
     it "displays the contents of the basket hash" do
       order.add(choice, quantity)
-      expect { order.basket_summary }.to output("2 x Test-dish1 - £20.00\n").to_stdout
+      expect { order.basket_summary }.to output("2 x Test-dish1".ljust(20) + "£20.00\n".rjust(13)).to_stdout
     end
   end
 
@@ -50,7 +50,7 @@ describe Order do
     it "prints the total of the order" do
       order.add(choice, quantity)
       order.total
-      expect { order.print_total }.to output("Total £20.00\n").to_stdout
+      expect { order.print_total }.to output("Total".ljust(20) + "£20.00\n".rjust(13)).to_stdout
     end
   end
 end
