@@ -27,13 +27,13 @@ describe Order do
     it "should give the customer a correct order total" do
       order.add("Poutine")
       order.add("Caesar")
-      expect(order.total).to eq(2.00)
+      expect(order.total).to eq("Total: £2.00")
     end
     it "should give the customer a correct total when multiples of same item " do
       order.add("Poutine", 2)
       order.add("Caesar")
       order.add("Caesar")
-      expect(order.total).to eq(4.00)
+      expect(order.total).to eq("Total: £4.00")
     end
   end
 end
