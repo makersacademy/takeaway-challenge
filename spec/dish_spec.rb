@@ -12,5 +12,10 @@ describe Dish do
         expect(subject.price).to eq 4.99
       end
     end
+    describe "#to_s" do
+      it "returns the name and price as a string" do
+        expect(subject.to_s).to eq "Lamb Biryani, £4.99"
+      end
+    end
 
 end
