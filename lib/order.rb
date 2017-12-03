@@ -1,5 +1,5 @@
 class Order
-  attr_reader :available_dishes, :basket
+  attr_reader :available_dishes, :basket, :restaurant
 
   def initialize(available_dishes)
     @available_dishes = available_dishes
@@ -14,6 +14,20 @@ class Order
     else
       "Sorry, we do not have enough quantity "
     end
+  end
+
+  def sum_items
+    @basket.inject(0) do|sum, dish|
+        sum + (dish[:price] * dish[:quantity])
+    end
+  end
+
+  def tot=(tot)
+    @tot = tot
+  end
+
+  def check_sum_items
+    sum_items == @tot
   end
 
   private

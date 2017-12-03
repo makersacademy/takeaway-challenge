@@ -1,9 +1,10 @@
 require "order"
+require "restaurant"
 
 describe Order do
+  subject(:order) { described_class.new(available_dishes) }
 
   describe "#add" do
-    subject(:order) { described_class.new(available_dishes) }
     let(:error_message) {  "Sorry, we do not have enough quantity " }
 
     context "when the dish is available" do
@@ -43,7 +44,36 @@ describe Order do
         expect(order.add("pizza", 15)).to eq(error_message)
       end
     end
-
   end
 
-end
+  describe "#sum_items" do
+    let(:available_dishes) {
+      [
+        { name: "pizza", price: 5, quantity: 6 },
+        { name: "meatball", price: 6, quantity: 10 }
+      ]
+    }
+
+    it "sum of itemes in basket" do
+      order.add("pizza", 2)
+      order.add("meatball", 5)
+      expect(order.sum_items).to eq(40)
+      end
+    end
+
+    describe "#check_sum_items" do
+      let(:available_dishes) {
+        [
+          { name: "pizza", price: 5, quantity: 6 },
+          { name: "meatball", price: 6, quantity: 10 }
+        ]
+      }
+      # let(:restaurant){double 'restaurant' , calculate_bill: order }
+      it "sum of itemes in basket" do
+        order.add("pizza", 2)
+        order.add("meatball", 5)
+        order.tot = 40 
+        expect(order.check_sum_items).to be(true)
+        end
+      end
+  end

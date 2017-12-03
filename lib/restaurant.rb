@@ -30,6 +30,14 @@ class Restaurant
     @menu
   end
 
+  def calculate_bill
+    tot = order.basket.inject(0) do|sum, dish|
+      sum + (dish[:price] * dish[:quantity])
+    end
+
+    order.tot = tot
+  end
+
   private
   attr_writer :menu
 

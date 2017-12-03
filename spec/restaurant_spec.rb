@@ -66,12 +66,9 @@ describe Restaurant do
 
   describe "#update menu" do
 
-    # let(:order) { [{ name: "pizza", price: 5, quantity: 3 }] }
-
     it "updates dishes quantity" do
       restaurant.create_order
-      # p order = Order.new([{ name: "pizza", price: 5, quantity: 3 }])
-      p restaurant.order.add("pizza", 2)
+      restaurant.order.add("pizza", 2)
 
       expect(restaurant.update_menu).to eq([
         { name: "pizza", price: 5, quantity: 4 },
@@ -79,6 +76,15 @@ describe Restaurant do
 
         }
       ])
+    end
+  end
+  describe "#calculate_bill" do
+    it "calculates bill for the order" do
+      restaurant.create_order
+      restaurant.order.add("pizza", 2)
+      restaurant.order.add("meatball", 3)
+
+      expect(restaurant.calculate_bill).to be(28)
     end
   end
 end
