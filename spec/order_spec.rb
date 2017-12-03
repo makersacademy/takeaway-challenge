@@ -2,22 +2,22 @@ require 'menu'
 require 'order'
 
 describe Order do
-  let(:menu) { double(:menu, print_dishes: Array) }
-  let (:order) { Order.new(menu) }
-  let (:test) { double(:order, gets: '1') }
+  let(:menu) { double(:menu, print_dishes: Array, menu_items: Array, ) }
+  let(:order) { Order.new(menu) }
+  let(:test) { double(:order, gets: '1') }
 
   it 'should initialize with a list of dishes' do
     expect(order.menu).to eq(menu)
   end 
 
-  it 'should allow the user to place an order' do
-    expect(order.place_order).to eq(menu.print_dishes)
+  it 'should print menu for user' do
+    expect(order.print_menu).to eq(order.menu.print_dishes)
   end
 
   it "should assign current order with user input" do
     allow($stdin).to receive(:gets).and_return(1)
     order.take_order
-    expect(order.current_order).to eql([1])
+    expect(order.dish_num).to eql([1])
   end
 
   it "should assign current order with user input" do
@@ -26,7 +26,10 @@ describe Order do
     expect(order.quantity).to eql([2])
   end
 
-  it 'should print out the full order with total cost' do
-    expect(order.order_confirmation).to eq(true)
+  it 'should return current order' do
+    allow($stdin).to receive(:gets).and_return(2)
+    order.take_order
+    expect{order.order_confirmation}.to change{order.current_order.length}.by(2)
   end
+
 end

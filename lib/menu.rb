@@ -1,7 +1,9 @@
 require_relative 'order'
 
 class Menu
-  
+  def initialize
+  end
+
   def print_dishes(menu = menu_items)
     menu.each_with_index do |dishes_list, index|
       dishes_list.each do |dish_name, dish_price|
