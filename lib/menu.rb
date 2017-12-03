@@ -1,3 +1,6 @@
+require_relative 'printer'
+require_relative 'dish'
+
 class Menu
 
   def initialize
@@ -10,6 +13,10 @@ class Menu
 
   def add_dish(dish)
     dish_list << dish
+  end
+
+  def print_menu(printer = Printer.new)
+    printer.print_menu(dish_list)
   end
 
   private
