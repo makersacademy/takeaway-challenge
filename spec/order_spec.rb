@@ -1,54 +1,44 @@
 require 'order'
-
 describe Order do
+
+  let(:dish) { "chow mein" }
+  let(:quantity) { 1 }
+  let(:price) { 5.00 }
   subject(:order) { described_class.new }
-  let(:dish) { double :dish, name: "chow mein", price: 5.00 }
-  let(:dish2) { double :dish2, name: "sweet and sour chicken", price: 6.00 }
+  let(:message) { "#{quantity} x #{dish}. Price: £#{price}" }
+  let(:order_message) { "You ordered: \n" + message + "\nTotal of £#{price}\n"}
 
-  it "allows customer to start with an empty basket" do
-    expect(order.basket).to be_empty
+  it 'is initialized with an empty basket' do
+    expect(order.basket).to eq []
   end
 
-  describe "#add_dish" do
-    it "allows customer to add dishes to basket" do
-      order.add_dish(dish)
-      expect(order.basket[dish.name]).to eq 1
-    end
-
-    it 'allows customer to customise quantity of dishes in order' do
-     order.add_dish(dish, 4)
-     expect(order.basket[dish.name]).to eq 4
-    end
+describe '#add' do
+  it 'allows customer to select dishes and a quantity' do
+    expect(order.add(dish, quantity, price)).to eq "#{quantity} x #{dish}, costing £#{quantity * price} have been added to your order"
   end
 
-  describe "#remove_dish" do
-    before { order.add_dish(dish) }
+  it 'updates the basket' do
+    expect { order.add(dish, quantity, price) }.to change{ order.basket.length }.by(1)
+  end
+end
 
-    it "allows customers to remove a dish from basket" do
-      order.remove_dish(dish)
-      expect(order.basket[dish.name]).to eq 0
-    end
-
-    it "can only remove the dish in the basket" do
-      expect { order.remove_dish(dish2) }.to raise_error "This dish is not in the basket."
-    end
+describe '#remove' do
+  it 'allows customer to remove dishes and a quantity' do
+    order.add(dish, quantity, price)
+    order.remove(dish, quantity, price)
+    expect(order.basket.length ).to eq 0
   end
 
-  describe "#review_order" do
-    it 'allows customer to view the basket' do
-      order.add_dish(dish)
-      expect(order.review_order).to eq({ 'chow mein' => 1 })
-    end
-  end
-  
-  describe "#total_price" do
-    it 'order total to be sum of dishes added' do
-      order.add_dish(dish)
-      order.add_dish(dish2)
-      expect(order.order_total).to eq 11.00
-    end
+end
+
+  it 'calculates the total of the order in the basket' do
+    order.add(dish, quantity, price)
+    expect(order.total).to eq price
   end
 
-
+  it 'prints the completed order' do
+      order.add(dish, quantity, price)
+      expect{ order.complete_order }.to output(order_message).to_stdout
+  end
 
 end
