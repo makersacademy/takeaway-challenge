@@ -4,7 +4,7 @@ class Menu
     @dish_list = []
   end
 
-  def show
+  def show_menu
     dish_list
   end
 

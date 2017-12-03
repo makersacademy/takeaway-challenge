@@ -1,7 +1,7 @@
 require 'dish'
 
 describe Dish do
-  subject(:dish) { described_class.new('name', 'description', 10) }
+  subject(:dish) { described_class.new('name', 'description', 10, 2) }
 
   context 'can be initialised with accessible values' do
 
@@ -15,6 +15,10 @@ describe Dish do
 
     it '#price' do
       expect(dish.price).to eq 10
+    end
+
+    it '#item_id' do
+      expect(dish.item_id).to eq 2
     end
   end
 end
