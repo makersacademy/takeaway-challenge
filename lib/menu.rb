@@ -1,8 +1,7 @@
 
 
 class Menu
-
-attr_reader :dishes
+  attr_reader :dishes
 
   def initialize
     @dishes = { Chicken: 3.78, Pasta: 4.59, Salad: 2.86 }
@@ -14,5 +13,4 @@ attr_reader :dishes
     end
     list.join(' | ')
   end
-
 end

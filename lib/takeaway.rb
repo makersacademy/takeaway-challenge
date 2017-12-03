@@ -18,8 +18,7 @@ class TakeAway
   end
 
   def view_order
-    raise "You have not ordered anything yet!" if !@order
+    raise 'You have not ordered anything yet!' unless @order
     @order.current_order
   end
-
 end

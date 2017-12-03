@@ -13,4 +13,5 @@ User Story #2 - Order - unit tests to add item to order passed
 User Story #2 - Takeaway - unit tests to create new order with dish failed
 User Story #2 - Takeaway - unit tests to create new order with dish passed
 User Story #2 - Takeaway - unit tests for empty order failed
-User Story #2 - Takeaway - unit tests to for empty 
+User Story #2 - Takeaway - unit tests for empty order passed
+User Story #2 - Takeaway - unit tests for adding more dishes failed 
