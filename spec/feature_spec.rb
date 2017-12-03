@@ -1,7 +1,6 @@
-require './lib/takeaway'
+require './lib/menu'
 require './lib/order'
-takeaway = Takeaway.new
-takeaway.menu
-takeaway.read_menu
+menu = Menu.new
+menu.read_menu
 order = Order.new
 order.basket

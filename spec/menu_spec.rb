@@ -1,6 +1,6 @@
-require 'takeaway'
+require 'menu'
 
-describe Takeaway do
+describe Menu do
 
   it {is_expected.to respond_to(:menu)}
 
