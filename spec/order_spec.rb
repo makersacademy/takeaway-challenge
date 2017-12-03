@@ -63,7 +63,7 @@ describe Order do
       takeaway = Takeaway.new
       order.add('chicken')
       order.add('chips')
-      expect(order.total).to eq(takeaway.menu['chicken']+takeaway.menu['chips'])
+      expect(order.total).to eq("£#{takeaway.menu['chicken']+takeaway.menu['chips']}")
     end
   end
 

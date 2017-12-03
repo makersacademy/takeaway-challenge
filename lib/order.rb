@@ -33,6 +33,7 @@ class Order
     food_keys = @current_order.keys
     array_of_prices = food_keys.map {|food| @current_order[food]*@takeaway.menu[food]}
     @total = array_of_prices.inject(0){|sum,x| sum + x }
+    return "£#{@total}"
   end
 
   def checkout(amount)
