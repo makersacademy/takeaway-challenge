@@ -1,5 +1,5 @@
 class Order
-  attr_reader :available_dishes
+  attr_reader :available_dishes, :basket
 
   def initialize(available_dishes)
     @available_dishes = available_dishes
@@ -18,7 +18,7 @@ class Order
 
   private
   def item_by_name(name)
-    available_dishes.find { |dish| dish[:name] = name }
+    available_dishes.find { |dish| dish[:name] == name }
   end
 
 end

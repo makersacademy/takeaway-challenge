@@ -20,6 +20,16 @@ class Restaurant
     @order = Order.new(available_dishes)
   end
 
+  def update_menu
+    @order.basket.each do |dish_from_basket|
+      appropriate_dish_from_menu = menu.find do |dish_from_menu|
+        dish_from_menu[:name] == dish_from_basket[:name]
+      end
+      appropriate_dish_from_menu[:quantity] -= dish_from_basket[:quantity]
+    end
+    @menu
+  end
+
   private
   attr_writer :menu
 

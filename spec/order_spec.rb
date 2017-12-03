@@ -4,13 +4,13 @@ describe Order do
 
   describe "#add" do
     subject(:order) { described_class.new(available_dishes) }
-    let(:error_message) {  "Sorry, we do not have enough quantity "}
+    let(:error_message) {  "Sorry, we do not have enough quantity " }
 
     context "when the dish is available" do
       let(:available_dishes) {
         [
           { name: "pizza", price: 5, quantity: 6 },
-          { name: "meatball", price: 6, quantity: 10}
+          { name: "meatball", price: 6, quantity: 10 }
         ]
       }
 
@@ -23,7 +23,7 @@ describe Order do
       let(:available_dishes) {
         [
           { name: "pizza", price: 5, quantity: 6 },
-          { name: "meatball", price: 6, quantity: 10}
+          { name: "meatball", price: 6, quantity: 10 }
         ]
       }
 
@@ -36,7 +36,7 @@ describe Order do
       let(:available_dishes) {
         [
           { name: "pizza", price: 5, quantity: 0 },
-          { name: "meatball", price: 6, quantity:0}
+          { name: "meatball", price: 6, quantity: 0 }
         ]
       }
       it "checks if there are not selected dishes available any more " do
@@ -45,6 +45,5 @@ describe Order do
     end
 
   end
-
 
 end
