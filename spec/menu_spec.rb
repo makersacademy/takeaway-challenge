@@ -8,6 +8,4 @@ describe Menu do
     expect(menu.print_dishes).to be_instance_of(Array)
   end
 
-  
-
 end
