@@ -37,4 +37,12 @@ describe Order do
     end
   end
 
+  describe "#basket_summary" do
+    it "should give you your basket summary" do
+      subject.add_order("spring rolls")
+      subject.add_order("bun thit nuong", 2)
+      expect(subject.basket_summary).to include "You have 3 item(s) in your basket:" && "Your total cost is: £22.99"
+    end
+  end
+
 end
