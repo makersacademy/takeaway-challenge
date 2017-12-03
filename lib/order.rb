@@ -14,4 +14,10 @@ class Order
        p @basket
        p "There are currently #{basket.count} dishes in your basket."
    end
+   def grand_total
+       #cost = @basket.map { |dish, price| price }.sum
+       cost = 0
+       @basket.each{ |dish, price| cost += @menu1.dishes[dish] }
+       p "Grand total: £#{cost}"
+   end
 end

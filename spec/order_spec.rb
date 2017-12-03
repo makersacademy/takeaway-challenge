@@ -20,4 +20,9 @@ describe Order do
         order1.selection('Golden egg galette', 2)
         expect(order1.basket).to include 'Golden egg galette', 'Golden egg galette'
     end
+    it 'calculates the grand total for selected dishes' do 
+        order1.selection('Flame-roasted toast', 3)
+        order1.selection('Mystery meat sushi', 1)
+        expect(order1.grand_total). to include "Grand total: £42.5"
+    end
 end
