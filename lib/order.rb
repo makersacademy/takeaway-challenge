@@ -10,23 +10,26 @@ class Order
     @menu = menu
   end
 
-  def add_order(item, quantity = DEFAULT_QUANTITY)
+  def add_item(item, quantity = DEFAULT_QUANTITY)
     item = item.split.map(&:capitalize).join(" ")
     raise "This item is not on the menu" unless @menu.menu.include?(item)
-    quantity.times { @basket << item }
-    puts "#{quantity} x #{item} added to your basket."
+    @basket << { :item => item, :quantity => quantity }
+    "#{quantity} x #{item} added to your basket."
   end
 
   def price
     total_price = 0
-    @basket.each { |item| total_price += @menu.menu[item] }
+    @basket.each { |dish| total_price += @menu.menu[dish[:item]] * dish[:quantity] }
     total_price.round(2)
   end
 
   def basket_summary
-    summary = "You have #{@basket.count} item(s) in your basket:\n"
-    @basket.each do |item|
-      summary += "#{item}: £#{sprintf("%.2f", @menu.menu[item])}\n"
+    total_quantity = 0
+    @basket.each { |dish| total_quantity += dish[:quantity] }
+    summary = "You have #{total_quantity} item(s) in your basket:\n"
+    @basket.each do |dish|
+      total_cost = sprintf("%.2f", @menu.menu[dish[:item]] * dish[:quantity])
+      summary += "#{dish[:quantity]} x #{dish[:item]}: £#{total_cost}\n"
     end
     summary += "Your total cost is: £#{price}"
   end
