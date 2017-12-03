@@ -34,7 +34,10 @@ class Order
   def total
     food_keys = @current_order.keys
     array_of_prices = food_keys.map {|food| @current_order[food]*@takeaway.menu[food]}
-    array_of_prices.inject(0){|sum,x| sum + x }
+    @total = array_of_prices.inject(0){|sum,x| sum + x }
   end
 
+  def checkout(amount)
+    @total == amount ? send_sms : raise("Please check the total")
+  end
 end
