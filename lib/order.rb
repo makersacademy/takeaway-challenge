@@ -39,12 +39,12 @@ class Order
       @current_value = calculate(@basket)
     end
 
+
+  private
+
     def calculate(basket)
       @basket.values.map {|each_order| each_order.inject(:*)}.map.inject(:+)
     end
-
-
-  private
 
     def dish_available?
       @menu.menu.has_key?(@dish)

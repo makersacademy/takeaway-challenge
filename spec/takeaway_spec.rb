@@ -24,4 +24,15 @@ describe Takeaway do
       takeaway.verify_order(order)
     end
   end
+
+  before do
+    allow(takeaway).to receive(:send_confirmation)
+  end
+
+  describe "#send_confirmation" do
+    it 'send an order confirmation' do
+      expect(takeaway).to receive(:send_confirmation)
+      takeaway.send_confirmation
+    end
+  end
 end
