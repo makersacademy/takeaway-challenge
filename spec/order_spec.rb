@@ -1,44 +1,26 @@
 require 'order'
 describe Order do
-
-  let(:dish) { "chow mein" }
-  let(:quantity) { 1 }
-  let(:price) { 5.00 }
   subject(:order) { described_class.new }
-  let(:message) { "#{quantity} x #{dish}. Price: £#{price}" }
-  let(:order_message) { "You ordered: \n" + message + "\nTotal of £#{price}\n"}
+  let(:basket) { double({:"chow mein" => [4, 5.0]}) }
+  let(:current_value){double(:current_value)}
+  let(:dish){double(:dish)}
 
   it 'is initialized with an empty basket' do
-    expect(order.basket).to eq []
+    expect(order.basket).to be_empty
   end
 
-describe '#add' do
-  it 'allows customer to select dishes and a quantity' do
-    expect(order.add(dish, quantity, price)).to eq "#{quantity} x #{dish}, costing £#{quantity * price} have been added to your order"
+  describe "#ordered_dishes" do
+    it "updates the basket when one dish is added" do
+      order.add_dish
+      expect(order.basket).to have_key(:"chow mein")
+    end
   end
 
-  it 'updates the basket' do
-    expect { order.add(dish, quantity, price) }.to change{ order.basket.length }.by(1)
+  describe "#deleted_dish" do
+    it "updates the basket when one dish is deleted" do
+      order.add_dish
+      order.deleted_dish(dish)
+      expect(order.basket).not_to have_key(:"chow mein")
+    end
   end
-end
-
-describe '#remove' do
-  it 'allows customer to remove dishes and a quantity' do
-    order.add(dish, quantity, price)
-    order.remove(dish, quantity, price)
-    expect(order.basket.length ).to eq 0
-  end
-
-end
-
-  it 'calculates the total of the order in the basket' do
-    order.add(dish, quantity, price)
-    expect(order.total).to eq price
-  end
-
-  it 'prints the completed order' do
-      order.add(dish, quantity, price)
-      expect{ order.complete_order }.to output(order_message).to_stdout
-  end
-
 end

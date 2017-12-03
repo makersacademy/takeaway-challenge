@@ -1,47 +1,57 @@
 require_relative 'menu'
 
 class Order
-  attr_reader :basket
+  attr_reader :basket, :dish, :quantity, :current_value
 
     def initialize
-      @basket = []
-
+      @menu = Menu.new
+      @basket = {}
+      @dish = dish
+      @quantity = quantity
+      @current_value = current_value
     end
 
-    def add(dish, quantity, price)
-      ordered_dishes(dish, quantity, price)
-      return "#{quantity} x #{dish}, costing £#{quantity * price} have been added to your order"
+    def add_dish
+      puts "Hi, please enter the name of the dish you want to add."
+      @dish = gets.chomp.to_sym
+      fail "This dish is not on the menu" unless dish_available?
+      puts "Please enter the quantity of the dish."
+      @quantity = gets.chomp.to_i
+      ordered_dishes
     end
 
-    def remove(dish, quantity, price)
-      delete_dish(dish, quantity, price)
-      return "#{quantity} x #{dish}, costing £#{quantity * price} have been deleted from your order"
+    def remove_dish
+      puts "Hi, please enter the name of the dish you want to remove."
+      @dish = gets.chomp.to_sym
+      raise "This dish is not in the basket." if not_in_basket?(dish)
+      deleted_dish(@dish)
     end
 
-    def total
-      total = 0
-      @basket.each do |hash|
-        total += hash[:price] * hash[:quantity]
-      end
-      total
+    def ordered_dishes
+      @basket[@dish] = @quantity, @menu.menu[@dish].to_f
     end
 
-    def complete_order
-      puts "You ordered: "
-      print_each_order
-      puts "Total of £#{total}"
+    def deleted_dish(dish)
+      @basket.delete(@dish)
     end
 
-private
-    def ordered_dishes(dish, quantity, price)
-      @basket << { :dish => dish, :quantity => quantity, :price => price }
+    def order_total
+      @current_value = calculate(@basket)
     end
 
-    def delete_dish(dish, quantity, price)
-      @basket.delete({ :dish => dish, :quantity => quantity, :price => price })
+    def calculate(basket)
+      @basket.values.map {|each_order| each_order.inject(:*)}.map.inject(:+)
     end
 
-    def print_each_order
-      basket.each { |hash| puts "#{hash[:quantity]} x #{hash[:dish]}. Price: £#{hash[:price] * hash[:quantity]}" }
+
+  private
+
+    def dish_available?
+      @menu.menu.has_key?(@dish)
     end
+
+    def not_in_basket?(dish)
+      @basket[@dish].nil?
+    end
+
 end

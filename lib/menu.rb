@@ -1,16 +1,17 @@
-
-require 'csv'
-
 class Menu
 
-attr_reader :list
+attr_reader :menu
 
   def initialize
-    @list = read_from_csv
+    @menu = menu
   end
 
-  def read_from_csv
-    CSV.read("menu.csv").to_h
+  def menu
+    @menu = {"chow mein": 5, "sweetnd sour chicken": 6}
+  end
+
+  def print_menu
+    @menu.map{|dish, price| "#{dish} is #{price.to_f}" }.join(", ")
   end
 
 end
