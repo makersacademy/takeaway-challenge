@@ -16,4 +16,5 @@ User Story #2 - Takeaway - unit tests for empty order failed
 User Story #2 - Takeaway - unit tests for empty order passed
 User Story #2 - Takeaway - unit tests for adding more dishes failed
 User Story #2 - Takeaway - unit tests for adding more dishes passed
-User Story #3 - Takeaway - unit tests for adding more dishes passed
+User Story #2 - Takeaway - unit tests for adding more dishes passed
+User Story #2 - Order - unit tests for pricing failed
