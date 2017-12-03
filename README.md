@@ -53,6 +53,10 @@ Ruby 2.4.0
 Twilio API
 ```
 
+## Final Thoughts
+
+I spent some time while creating the program understanding how to use dependency injection and doubles. If I had some more time, I would have improved the program to account for edge cases (i.e. raising an error if menu item requested is not on the menu), added a delivery time to the text message and made the output prettier.
+
 ## Author
 
 [Keran Braich](https://github.com/ker-an)
