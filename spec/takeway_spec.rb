@@ -1,1 +1,1 @@
-require_relative "../lib/takeaway"
+require "takeaway"
