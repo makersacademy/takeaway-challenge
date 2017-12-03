@@ -3,6 +3,7 @@ require './lib/takeaway.rb'
 class Order
 
   attr_reader :current_order
+
   def initialize(takeaway = Takeaway.new)
     @current_order = {}
     @takeaway = takeaway
@@ -25,6 +26,12 @@ class Order
   def on_menu(food)
     check_against = @takeaway.menu.keys
     check_against.include?(food)
+  end
+
+  def total
+    food_keys = @current_order.keys
+    array_of_prices = food_keys.map {|food| @current_order[food]*@takeaway.menu[food]}
+    array_of_prices.inject(0){|sum,x| sum + x }
   end
 
 end

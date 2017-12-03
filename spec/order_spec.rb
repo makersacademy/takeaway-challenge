@@ -56,4 +56,14 @@ describe Order do
       expect(order.on_menu('pizza')).to be false
     end
   end
+
+  context '#total' do
+    it 'should give the total cost of all the dishes' do
+      order = Order.new
+      takeaway = Takeaway.new
+      order.add('chicken')
+      order.add('chips')
+      expect(order.total).to eq(takeaway.menu['chicken']+takeaway.menu['chips'])
+    end
+  end
 end
