@@ -1,3 +1,5 @@
+require "order"
+
 class Restaurant
   attr_reader :food
 
