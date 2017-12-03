@@ -15,24 +15,25 @@ describe Order do
   end
 
   describe "#add_item" do
-    it "raises an error if the choice is not on the menu" do
-      expect { order.add(false_choice, quantity) }.to raise_error("Item not on menu")
-    end
     it "adds an item x times from the menu hash to the basket array" do
       expect { order.add(choice, quantity) }.to change { order.basket.length }.by quantity
     end
   end
 
   describe "#get_choice" do
-    it "should assign the choice to an instance variable" do
-      allow(STDIN).to receive(:gets) { "Test-dish" }
+    it "assigns the choice to an instance variable" do
+      allow(STDIN).to receive(:gets) { choice }
       order.get_choice
       expect(order.choice).to eq choice
+    end
+    it "raises an error if the choice is not on the menu" do
+      allow(STDIN).to receive(:gets) { false_choice }
+      expect { order.get_choice }.to raise_error("Item not on menu")
     end
   end
 
   describe "#get_quantity" do
-    it "should assign the quantity to an instance variable" do
+    it "assigns the quantity to an instance variable" do
       allow(STDIN).to receive(:gets) { 2 }
       order.get_quantity
       expect(order.quantity).to eq quantity

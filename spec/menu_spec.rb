@@ -26,7 +26,7 @@ describe Menu do
   end
 
   describe "#print" do
-    xit "returns the menu items" do
+    xit "prints the menu items" do
       expect(menu.print).to eq("1. Test-dish".ljust(20)+"£10.00".rjust(20))
     end
   end
