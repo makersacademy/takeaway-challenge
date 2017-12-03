@@ -35,5 +35,11 @@ describe TakeAway do
       expect {takeaway.print_current_order}. to output("\"dish - 5\"\n\"dish - 5\"\n").to_stdout
     end
 
+    it 'should raise error if order is empty' do
+      expect { subject.print_current_order }.to raise_error 'You have not ordered anything yet!'
+    end
+
+
+
   end
 end
