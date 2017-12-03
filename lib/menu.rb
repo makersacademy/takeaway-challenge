@@ -8,7 +8,10 @@ class Menu
   end
 
   def print_menu
-    puts @menu
+    puts "Menu"
+    @menu.each do |item,cost|
+      puts "#{item}".ljust(10) + "£#{cost}".rjust(10)
+    end
   end
 
   def choose_item(item)

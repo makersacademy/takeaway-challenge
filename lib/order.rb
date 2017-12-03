@@ -6,8 +6,11 @@ attr_reader :order
     @total_price
   end
 
-  def request_item(item)
-    @order << @menu.choose_item(item)
+  def request_item(*item)
+    item.each do |item|
+      @order << @menu.choose_item(item)
+    end
+
   end
 
   def total_price
