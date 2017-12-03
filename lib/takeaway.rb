@@ -12,9 +12,9 @@ class TakeAway
     @menu.show_dishes
   end
 
-  def create_order(dish)
-    @order = Order.new(dish)
-    @order.current_order
+  def create_order(dish,price)
+    @order = Order.new(dish, price)
+    view_order
   end
 
   def view_order
@@ -22,7 +22,7 @@ class TakeAway
     @order.current_order
   end
 
-  def add_more_dishes(dish)
-    @order.add_to_order(dish)
+  def add_more_dishes(dish, price)
+    @order.add_to_order(dish, price)
   end
 end

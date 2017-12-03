@@ -15,7 +15,7 @@ describe TakeAway do
   end
   context 'Creation of order' do
     it 'should allow the creation of a new order' do
-      expect(subject.create_order(:dish)).to eq [:dish]
+      expect(subject.create_order(:dish, 5)).to eq [{:dish => 5}]
     end
 
     it 'should check if order is not empty' do
@@ -23,8 +23,8 @@ describe TakeAway do
     end
 
     it 'should allow adding more dishes in the order' do
-      takeaway.create_order(:dish)
-      expect { subject.add_more_dishes(:dish) }.to change { subject.view_order.length }.by 1
+      takeaway.create_order(:dish, 5)
+      expect { subject.add_more_dishes(:dish, 5) }.to change { subject.view_order.length }.by 1
     end
   end
 end
