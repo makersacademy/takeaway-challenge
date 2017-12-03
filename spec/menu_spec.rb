@@ -13,7 +13,7 @@ describe Menu do
     it 'should add in the required food into the menu when called' do
       menu = Menu.new
       menu.add_to_menu('gravy', 5)
-      expect(menu.the_menu).to include(gravy: 5)
+      expect(menu.the_menu).to include("gravy" => 5)
     end
   end
 
