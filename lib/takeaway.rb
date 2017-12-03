@@ -27,6 +27,7 @@ class TakeAway
   end
 
   def print_current_order
+    raise 'You have not ordered anything yet!' unless @order
     @order.print_current_order
   end
 
