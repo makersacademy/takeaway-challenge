@@ -20,3 +20,5 @@ User Story #2 - Takeaway - unit tests for adding more dishes passed
 User Story #2 - Order - unit tests for pricing failed
 User Story #2 - Order - unit tests for pricing passed
 User Story #2 - Takeaway - refactoring and unit test passes
+User Story #3 - Takeaway - unit tests show for order items and their prices failing
+User Story #3 - Order - unit tests show for order items and their prices failing

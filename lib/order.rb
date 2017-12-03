@@ -18,4 +18,5 @@ class Order
     @order_total
   end
 
+
 end
