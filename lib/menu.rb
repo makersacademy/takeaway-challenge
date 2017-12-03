@@ -7,7 +7,7 @@ attr_reader :menu
   end
 
   def menu
-    @menu = {"chow mein": 5, "sweetnd sour chicken": 6}
+    @menu = {"chow mein": 5, "sweet sour chicken": 6}
   end
 
   def print_menu
