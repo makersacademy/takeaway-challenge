@@ -2,9 +2,10 @@ require_relative "../lib/order.rb"
 
 describe Order do
   subject(:order) {described_class.new}
+  let (:item) { double(:item) }
 
   it "should add a dish to the current order" do
-    expect(subject.add_to_order(:item)).to change{order.length}.by 1
+    expect{subject.add_to_order(item)}.to change{order.current_order.length}.by 1
   end
 
 end
