@@ -6,5 +6,6 @@ order = Order.new
 order.basket
 order.add_item("spring rolls")
 order.add_item("bun thit nuong", 2)
-order.basket
-["Spring Rolls", "Bun Thit Nuong", "Bun Thit Nuong"]
+order.add_item("pho", 3)
+order.price
+order.basket_summary

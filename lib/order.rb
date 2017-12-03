@@ -24,14 +24,24 @@ class Order
   end
 
   def basket_summary
-    total_quantity = 0
-    @basket.each { |dish| total_quantity += dish[:quantity] }
-    summary = "You have #{total_quantity} item(s) in your basket:\n"
+    p summary = "You have #{@total_quantity} item(s) in your basket:\n"
     @basket.each do |dish|
       total_cost = sprintf("%.2f", @menu.menu[dish[:item]] * dish[:quantity])
       summary += "#{dish[:quantity]} x #{dish[:item]}: £#{total_cost}\n"
     end
-    summary += "Your total cost is: £#{price}"
+    p summary += "Your total cost is: £#{price}"
+  end
+
+  private
+
+  def basket_quantity
+    @total_quantity = 0
+    @basket.each { |dish| @total_quantity += dish[:quantity] }
+  end
+
+  def order_summary_breakdown
+
+    basket_quantity
   end
 
 end
