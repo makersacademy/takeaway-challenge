@@ -1,3 +1,3 @@
 require "./lib/menu"
 p menu = Menu.new
-p menu.check
+p menu.view
