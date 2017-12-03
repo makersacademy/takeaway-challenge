@@ -27,4 +27,13 @@ describe TakeAway do
       expect { subject.add_more_dishes(:dish, 5) }.to change { subject.view_order.length }.by 1
     end
   end
+
+  context "Order Checking" do
+    it "should allow user to check what has been ordered and total cost" do
+      takeaway.create_order(:dish, 5)
+      takeaway.add_more_dishes(:dish, 5)
+      expect {takeaway.print_current_order}. to output ("\"dish - 5\"\n\"dish - 5\"\n").to_stdout
+    end
+
+  end
 end
