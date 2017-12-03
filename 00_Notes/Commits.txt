@@ -24,3 +24,5 @@ User Story #3 - Takeaway - unit tests show for order items and their prices fail
 User Story #3 - Order - unit tests show for order items and their prices failing
 User Story #3 - Order/Takeaway - unit tests show for order items and their prices passing
 User Story #3 - Takeaway - unit tests for empty order items and their prices list failing
+User Story #3 - Takeaway - unit tests for empty order items and their prices list passing
+User Story #4 - Added Message Class and unit test files
