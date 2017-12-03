@@ -18,5 +18,11 @@ class Order
     @order_total
   end
 
-
+  def print_current_order
+      @current_order.each do |item|
+        item.each do |dish, price|
+          p "#{dish} - #{price}"
+        end
+      end
+    end
 end

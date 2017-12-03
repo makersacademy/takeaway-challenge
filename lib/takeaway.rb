@@ -25,4 +25,9 @@ class TakeAway
   def add_more_dishes(dish, price)
     @order.add_to_order(dish, price)
   end
+
+  def print_current_order
+    @order.print_current_order
+  end
+
 end
