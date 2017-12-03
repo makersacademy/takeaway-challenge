@@ -3,6 +3,7 @@ require_relative 'menu'
 class Order
 
   attr_reader :basket, :menu
+  attr_writer :basket
   DEFAULT_QUANTITY = 1
 
   def initialize(menu = Menu.new)
@@ -15,6 +16,12 @@ class Order
     raise "This item is not on the menu" unless @menu.menu.include?(item)
     @basket << { :item => item, :quantity => quantity }
     "#{quantity} x #{item} added to your basket."
+  end
+
+  def delete_item(item, quantity = DEFAULT_QUANTITY)
+    item = item.split.map(&:capitalize).join(" ")
+    @basket.delete({ :item => item, :quantity => quantity })
+
   end
 
   def price
@@ -34,14 +41,12 @@ class Order
 
   private
 
-  def basket_quantity
-    @total_quantity = 0
-    @basket.each { |dish| @total_quantity += dish[:quantity] }
-  end
-
-  def order_summary_breakdown
-
-    basket_quantity
-  end
+  # def basket_quantity
+  #   @total_quantity = 0
+  #   @basket.each { |dish| @total_quantity += dish[:quantity] }
+  # end
+  #
+  # def order_summary_breakdown
+  # end
 
 end

@@ -29,14 +29,14 @@ describe Order do
     end
   end
 
-  # describe "#{delete_item}" do
-  #   it "should let you delete an item" do
-  #     subject.add_item("spring rolls")
-  #     subject.add_item("bun thit nuong", 2)
-  #     subject.delete_item("bun thit nuong", 1)
-  #     expect(subject.basket).to eq ["Spring Rolls", "Bun Thit Nuong"]
-  #   end
-  # end
+  describe "#delete_item" do
+    it "should let you delete an item" do
+      subject.add_item("spring rolls")
+      subject.add_item("bun thit nuong", 2)
+      subject.delete_item("bun thit nuong", 2)
+      expect(subject.basket).to eq [{ :item => "Spring Rolls", :quantity => 1 }]
+    end
+  end
 
   describe "#price" do
     it "should calculate price of the basket order" do
@@ -53,6 +53,13 @@ describe Order do
       subject.add_item("bun thit nuong", 2)
       subject.add_item("pho", 3)
       expect(subject.basket_summary).to include "You have 3 item(s) in your basket:" && "Your total cost is: £55.96"
+    end
+
+    it "should give you the correct summary when item is deleted off the basket" do
+      subject.add_item("spring rolls")
+      subject.add_item("bun thit nuong", 2)
+      subject.delete_item("bun thit nuong", 2)
+      expect(subject.basket_summary).to include "You have 1 item(s) in your basket:" && "Your total cost is: £3.99"
     end
   end
 
