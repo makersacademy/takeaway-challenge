@@ -22,4 +22,16 @@ class Order
     @ordered_items.each { |item| puts "#{item[:dish]} :: price - £#{item[:price]}" }
   end
 
+  def place
+    require 'twilio-ruby'
+    require 'Time'
+    t = (Time.now + 900)
+    @client = Twilio::REST::Client.new "*", "*"
+    message = @client.messages.create(
+      body: "Thankyou for placing your order! Your order will arrive by #{t.hour}:#{t.min}.",
+      to: "+44787*",
+      from: "+44134*")
+    puts message.sid
+  end
+
 end

@@ -22,8 +22,8 @@ describe Order do
 
   context '#order_view' do
     it "Should display the ordered items so far" do
-      expect{order.order_view}.to output("food :: price - £5\n").to_stdout
+      expect { order.order_view }.to output("food :: price - £5\n").to_stdout
     end
   end
-  
+
 end
