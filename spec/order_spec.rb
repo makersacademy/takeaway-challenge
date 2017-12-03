@@ -29,4 +29,12 @@ describe Order do
     end
   end
 
+  describe "#price" do
+    it "should calculate price of the basket order" do
+      subject.add_order("spring rolls")
+      subject.add_order("bun thit nuong", 2)
+      expect(subject.price).to eq 22.99
+    end
+  end
+
 end

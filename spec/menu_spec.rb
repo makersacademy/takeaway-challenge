@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
 
-  it {is_expected.to respond_to(:menu)}
+  it { is_expected.to respond_to(:menu) }
 
   describe "#menu" do
     it "should have a list of dishes on the menu" do
