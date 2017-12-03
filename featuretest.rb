@@ -4,7 +4,7 @@ require './lib/order.rb'
 p menu = Menu.new
 p order = Order.new
 
-menu.print_menu
+order.print_menu
 # p order.request_item("Lunch", "Dinner", "Breakfast")
 # p order.request_item("Dinner")
 # p order.request_item("Dinner")

@@ -10,11 +10,13 @@ attr_reader :order
     item.each do |item|
       @order << @menu.choose_item(item)
     end
-
   end
 
   def total_price
     @total_price = @order.map{|items| items.values}.flatten.reduce(:+)
   end
 
+  def print_menu
+    @menu.print_menu
+  end
 end
