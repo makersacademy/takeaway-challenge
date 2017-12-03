@@ -66,4 +66,15 @@ describe Order do
       expect(order.total).to eq(takeaway.menu['chicken']+takeaway.menu['chips'])
     end
   end
+
+  context '#checkout' do
+    it 'should raise error when incorrect amount is entered' do
+      order = Order.new
+      order.add('chicken', 1)
+      expect { order.checkout(10) }.to raise_error("Please check the total")
+    end
+    xit 'should send a text once the correct amount is entered' do
+
+    end
+  end
 end

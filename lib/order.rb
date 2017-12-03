@@ -3,8 +3,6 @@ require './lib/text.rb'
 
 class Order
 
-  include Text
-
   attr_reader :current_order
 
   def initialize(takeaway = Takeaway.new)
@@ -38,6 +36,6 @@ class Order
   end
 
   def checkout(amount)
-    @total == amount ? send_sms : raise("Please check the total")
+    @total == amount ? TextSender.new.send_sms : raise("Please check the total")
   end
 end
