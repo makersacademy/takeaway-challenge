@@ -10,7 +10,6 @@ attr_reader :dishes
     list = @dishes.map do |name, price|
       "#{name} £#{price.round(2)}"
     end
-
     list.join(' | ')
   end
 
