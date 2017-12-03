@@ -2,17 +2,20 @@ require_relative 'menu'
 require_relative 'order'
 
 class Takeaway
+  attr_reader :order_history
 
   def initialize
     @menu = Menu.new
     @order_history = []
   end
 
-  def handle_order(user_order)
-    order_output(process_order(take_order(user_order)))
+  def handle_order(user_order, order_class = Order)
+    order = process_order(take_order(user_order, order_class))
+    order_history << order
+    order_output(order)
   end
 
-  def take_order(order, order_class = Order)
+  def take_order(order, order_class)
     order_lines = order.split("\n")
     orders_with_price = order_lines.each { |line| line.split(',') }
     create_order(orders_with_price, order_class)
