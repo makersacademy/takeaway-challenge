@@ -30,6 +30,12 @@ describe Takeaway do
 
   it 'should successfully checkout' do
     subject.add(:pizza, 1)
-    subject.checkout("+447580011698")
+    expect { subject.checkout("+447580011698") }.to change{ subject.order_history.length }.by 1
+  end
+
+  it 'should be able to cancel orders' do
+    subject.add(:pizza, 1)
+    subject.cancel_order
+    expect(subject.order.items.length).to eq 0
   end
 end

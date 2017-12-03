@@ -21,9 +21,14 @@ class Takeaway
   end
 
   def checkout(phone_num)
-    msg = "Your total is #{order.total_cost}."
+    time = Time.now + 10*60
+    msg = "Your total is #{order.total_cost}. It will be delivered before #{time.hour}:#{time.min}"
     msg_sender.send_sms(msg, phone_num)
     archive_order
+    create_new_order
+  end
+
+  def cancel_order
     create_new_order
   end
 
