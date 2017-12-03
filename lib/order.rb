@@ -6,8 +6,12 @@ class Order
        @menu1 = menu1
        @basket = []
    end
-   def selection(food)
+   def selection(food, quantity = 1)
        raise "Please select from one of the tasty dishes available!" unless @menu1.dish_search.include?(food)
-       @basket << food
+       quantity.times { @basket << food }
+   end
+   def view_basket
+       p @basket
+       p "There are currently #{basket.count} dishes in your basket."
    end
 end
