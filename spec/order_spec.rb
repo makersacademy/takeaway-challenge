@@ -2,7 +2,7 @@ require 'menu'
 require 'order'
 
 describe Order do
-  let(:menu) { double(:menu, print_dishes: Array, menu_items: Array, ) }
+  let(:menu) { double(:menu, print_dishes: Array, menu_items: Array,) }
   let(:order) { Order.new(menu) }
   let(:test) { double(:order, gets: '1') }
 
@@ -15,21 +15,25 @@ describe Order do
   end
 
   it "should assign current order with user input" do
-    allow($stdin).to receive(:gets).and_return(1)
+    allow($stdin).to receive(:gets).and_return(0)
     order.take_order
-    expect(order.dish_num).to eql([1])
+    expect(order.dish_num).to eql([0])
+
   end
 
-  it "should assign current order with user input" do
-    allow($stdin).to receive(:gets).and_return(2)
+  it "should assign quantity with user input" do
+    allow($stdin).to receive(:gets).and_return(0)
     order.take_order
-    expect(order.quantity).to eql([2])
+    expect(order.quantity).to eql([0])
   end
 
   it 'should return current order' do
-    allow($stdin).to receive(:gets).and_return(2)
+    allow($stdin).to receive(:gets).and_return(0)
     order.take_order
-    expect{order.order_confirmation}.to change{order.current_order.length}.by(2)
+    expect { order.order_confirmation }.to change { order.current_order.length }.by(0)
   end
 
+  it 'should print out the current order' do
+    expect(order.print_current_order).to eq(nil)
+  end
 end

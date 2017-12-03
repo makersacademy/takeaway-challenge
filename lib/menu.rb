@@ -1,13 +1,13 @@
 require_relative 'order'
 
 class Menu
-  def initialize
-  end
-
+  
   def print_dishes(menu = menu_items)
     menu.each_with_index do |dishes_list, index|
       dishes_list.each do |dish_name, dish_price|
-        puts("#{index + 1}   #{dish_name}    #{dish_price.to_s.rjust(19)}")
+        beginning = "#{index + 1}.  #{dish_name}"
+        ending = "#{dish_price}"
+        puts(beginning.ljust(30) + ending.rjust(10))
       end
     end
   end
