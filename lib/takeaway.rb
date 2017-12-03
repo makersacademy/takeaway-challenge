@@ -1,4 +1,5 @@
 require_relative 'order'
+require_relative 'texter'
 class Takeaway
 
   def initialize menu, order_class = Order, texter_class = Texter
@@ -16,7 +17,8 @@ class Takeaway
   end
 
   def order order, price, phone_number
-    @order = order_class.new(order)
+    @order = order_class.new(order, @menu)
+    @order.check
     raise "Price Mismatch!" if price != @order.price
     @texter.text phone_number
   end

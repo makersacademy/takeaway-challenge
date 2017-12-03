@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
   let(:menu) { double(:menu, "Popadums" => 1, to_s: "Lamb Biryani, £4.99\nChicken Malaya, £4.50\nPopadums, £1.00") }
   let(:order_class) {double(:order_class, new: order )}
-  let(:order) {double(:order, price: 10.49)}
+  let(:order) {double(:order, price: 10.49, check: true)}
   let(:texter_class) {double(:texter_class, new: texter)}
   let(:texter) {double(:texter, text: nil)}
   subject {described_class.new(menu, order_class, texter_class)}
