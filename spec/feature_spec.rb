@@ -10,3 +10,5 @@ order.add_item("pho", 3)
 order.basket
 order.price
 order.basket_summary
+
+require "./lib/text"

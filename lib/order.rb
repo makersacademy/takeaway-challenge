@@ -3,7 +3,6 @@ require_relative 'menu'
 class Order
 
   attr_reader :basket, :menu
-  # attr_writer :basket
   DEFAULT_QUANTITY = 1
 
   def initialize(menu = Menu.new)
@@ -36,6 +35,8 @@ class Order
     summary = order_summary_breakdown(summary)
     summary += "Your total cost is: £#{price}"
   end
+
+
 
   private
 

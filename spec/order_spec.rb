@@ -1,5 +1,6 @@
 require 'order'
 
+
 describe Order do
 
   describe "#initialize" do
