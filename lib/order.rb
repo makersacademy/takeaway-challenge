@@ -16,8 +16,9 @@ class Order
     @current_order
   end
 
-  def add(food, quantity)
+  def add(food, quantity = 1)
     raise("Select a item from the menu") if !on_menu(food)
+    puts "#{quantity} #{food}(s) added to your basket"
     @current_order[food] = quantity
   end
 

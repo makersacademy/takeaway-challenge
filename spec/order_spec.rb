@@ -38,6 +38,11 @@ describe Order do
       order = Order.new
       expect { order.add('pizza',1) }.to raise_error("Select a item from the menu")
     end
+    it 'should default with quanity as one' do
+      order = Order.new
+      order.add('chicken')
+      expect(order.show_current_order).to eq({ "chicken" => 1 })
+    end
   end
 
   context '#on_menu' do
