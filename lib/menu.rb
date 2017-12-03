@@ -1,3 +1,5 @@
+
+
 class Menu
 
 attr_reader :dishes
@@ -8,7 +10,7 @@ attr_reader :dishes
 
   def show_dishes
     list = @dishes.map do |name, price|
-      "#{name} £#{price.round(2)}"
+      "#{name} £#{price.to_f}"
     end
     list.join(' | ')
   end

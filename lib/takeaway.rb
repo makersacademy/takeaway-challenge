@@ -5,12 +5,17 @@ class TakeAway
 
   attr_reader :menu
 
-  def initialize(menu = Menu.new)
-    @menu = menu
+  def initialize
+    @menu = Menu.new
   end
 
   def view_menu
     @menu.show_dishes
+  end
+
+  def create_order(dish)
+    @order = Order.new(dish)
+    @order.current_order
   end
 
 end
