@@ -33,7 +33,8 @@ describe Order do
     expect { order.order_confirmation }.to change { order.current_order.length }.by(0)
   end
 
-  it 'should print out the current order' do
-    expect(order.print_current_order).to eq(nil)
+  it 'should take order' do
+    allow($stdin).to receive(:gets).and_return(0)
+    expect(order.order_takeaway).to eq(nil)
   end
 end
