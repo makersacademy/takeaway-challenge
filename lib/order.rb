@@ -23,4 +23,9 @@ class Order
     .map { |order, num| order.price * num }.inject(:+) == @price
   end
 
+  def delivery_time
+    del = @time + 3600
+    del.strftime("%H:%M")
+  end
+
 end

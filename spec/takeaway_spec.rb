@@ -3,16 +3,16 @@ require 'takeaway'
 describe Takeaway do
   subject(:ta) { described_class.new }
   let(:menu) { double(:my_menu) }
-  let(:user_order) { "1,1\n2,3\n20.50" }
+  let(:user_order) { "1,1 2,3 20" }
   let(:order_class) { double(:my_order_class, new: order) }
-  let(:order) { double(:my_order, price: 20.50, orders: [1, 1], time: 'Now', correct?: true, translate: 1) }
-  let(:message) { "Your order is complete! Total: £20.50, Arriving by: Now" }
+  let(:order) { double(:my_order, price: 20, orders: [1, 1], time: 'Now', correct?: true, translate: 1) }
+  let(:message) { "Your order is complete! Total: £20.00, Arriving by: Now" }
   let(:handler_class) { double(:my_handler_class, new: handler) }
   let(:handler) { double(:my_handler) }
 
   it 'transforms order into order objects' do
     ta.take_order(user_order, order_class)
-    expect(order.price).to eq 20.50
+    expect(order.price).to eq 20
     expect(order.orders[0]).to eq 1
   end
 

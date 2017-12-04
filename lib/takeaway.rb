@@ -22,21 +22,18 @@ class Takeaway
   def handle_order(user_order, order_class = Order)
     order = process_order(take_order(user_order, order_class))
     order_history << order
-    p order
     order_output(order)
   end
 
   def take_order(order, order_class)
     order_lines = order.split(" ")
-    p order_lines
     orders_with_price = order_lines.map { |line| line.split(',') }
-    p orders_with_price
     create_order(orders_with_price, order_class)
   end
 
   def order_output(order)
     raise 'Incorrect Order Received' unless order_correct?(order)
-    "Your order is complete! Total: £#{"%.2f" % order.price}, Arriving by: #{order.time}"
+    "Your order is complete! Total: £#{"%.2f" % order.price}, Arriving by: #{order.delivery_time}"
   end
 
   private
@@ -53,7 +50,6 @@ class Takeaway
   def create_order(orders_with_price, order_class)
     price = orders_with_price.pop[0].to_i
     orders = orders_with_price.map { |item| item[0].to_i }
-    p orders
     quantities = orders_with_price.map { |item| item[1].to_i }
     order_class.new(orders, quantities, price)
   end
