@@ -13,7 +13,7 @@ class TakeAway
   end
 
   def create_order(dish,price)
-    @order = Order.new(dish, price)
+    @order = Order.new(dish, price, Time.now)
     view_order
   end
 

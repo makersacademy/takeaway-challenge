@@ -1,7 +1,7 @@
 require_relative '../lib/order.rb'
 
 describe Order do
-  subject(:order) { described_class.new(:dish, 5) }
+  subject(:order) { described_class.new(:dish, 5, Time.now) }
   let(:dish) { double(:dish) }
 
 

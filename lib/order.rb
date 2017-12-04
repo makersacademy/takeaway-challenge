@@ -1,10 +1,13 @@
+require_relative "./message.rb"
 
 class Order
   attr_reader :current_order
 
-  def initialize(dish, price)
+  def initialize(dish, price, time)
     @current_order = [{ dish => price }]
     @order_total = 0
+    @order_time = time
+    @message = Message.new(@order_time)
   end
 
   def add_to_order(dish, price)
