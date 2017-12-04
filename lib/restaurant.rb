@@ -3,7 +3,7 @@ require "order"
 class Restaurant
   attr_reader :food
 
-  def food
+  def initialize
     @food = {
       "RUSTICA MARGHERITA": 9.45,
       "LENTIL RAGU": 8.95,
@@ -13,10 +13,8 @@ class Restaurant
   end
 
   def menu
-    food.each do |dish, cost|
+    @food.each do |dish, cost|
       puts "#{dish} : #{format("£%.2f", cost)}"
     end
   end
-
-
 end

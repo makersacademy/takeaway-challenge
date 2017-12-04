@@ -1,13 +1,16 @@
-require_relative "restaurant"
+# require_relative "restaurant"
 
 class Order
-  attr_accessor :list
+  DEFAULT_AMOUNT = 1
+  attr_reader :basket
 
   def initialize
-    @list = []
+    @basket = {}
   end
 
-  def add(food)
-    @list.push(food)
-  end
+  def add(food, amount = DEFAULT_AMOUNT)
+    @food, @amount = food, amount
+    @amount.times do
+      @basket[food] += 1
+    end
 end
