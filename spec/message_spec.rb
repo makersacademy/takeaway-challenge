@@ -14,6 +14,7 @@ it "should know how long delivery will take" do
 end
 
 it "should send a message" do
-  
+  expect(message.send_sms).to eq :message_sent
+
 end
 end
