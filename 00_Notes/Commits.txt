@@ -29,3 +29,8 @@ User Story #4 - Added Message Class and unit test files
 User Story #4 - Message - unit test for time stamp added & failed
 User Story #4 - Message - unit test for time stamp passed
 User Story #4 - Message - unit test for delivery time passed
+User Story #4 - Message/Order/Takeaway - Refactoring
+Issues with Twilio integration, error with metjod called by Twilio
+Twilio issue resolved
+refactoring part #1
+Rubocop Completed
