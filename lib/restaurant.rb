@@ -1,4 +1,7 @@
+require 'twilio-ruby'
 require './lib/order'
+require './lib/message_confirmation'
+
 
 class Restaurant
   attr_reader :menu, :order
@@ -12,12 +15,19 @@ class Restaurant
     @menu = menu
   end
 
-  def available_dishes
-    menu.select { |dish| dish[:quantity] > 0 }
-  end
-
   def create_order
     @order = Order.new(available_dishes)
+  end
+
+  def complete_order
+    update_menu
+    calculate_bill
+    send_confirmation
+  end
+
+  def send_confirmation
+    msg_cnf = MessageConfirmation.new
+    msg_cnf.send_message
   end
 
   def update_menu
@@ -38,7 +48,10 @@ class Restaurant
     order.tot = tot
   end
 
+  def available_dishes
+    menu.select { |dish| dish[:quantity] > 0 }
+  end
+
   private
   attr_writer :menu
-
 end

@@ -1,35 +1,23 @@
 require './lib/restaurant'
-
-# describe "Stuff is working" do
-#   it do
-    menu = [
-      { name: "spaghetti", price: 7, quantity: 8 }.freeze,
-      { name: "meatball", price: 6, quantity: 9 }.freeze,
-      { name: "pizza", price: 9, quantity: 10 }.freeze
-    ].freeze
-    restaurant = Restaurant.new(menu)
-    p available_dishes = restaurant.available_dishes
-    order = Order.new(available_dishes)
-    #
-    # expect(restaurant.available_dishes.length).to eq(3)
-
-    puts
-    p restaurant.create_order
-    p order.add('spaghetti', 8)
-    p order.add('pizza', 2)
-    p order.add('meatball', 6)
-    puts
-    p order.basket
-
-    puts
-    
-    puts
-    p order.sum_items
-
-    # p c.merge(b) { |k, v1, v2| k[:quantity] = v1 - v2 }
+require './lib/message_confirmation'
 
 
-    # p c.merge(b){|k, v1, v2| quantity:(v1 - v2)}
-    # p
-#   end
-# end
+menu = [
+  { name: "spaghetti", price: 1, quantity: 8 },
+  { name: "meatball", price: 10, quantity: 9 },
+  { name: "pizza", price: 5, quantity: 10 }
+]
+
+restaurant = Restaurant.new(menu)
+puts "Restaurant: This is the menu: #{restaurant.menu}"
+
+order = restaurant.create_order
+puts "My new order has these available dishes #{order.available_dishes}"
+
+
+order.add('spaghetti', 1)
+order.add('meatball', 2)
+order.add('pizza', 3)
+
+# restaurant.complete_order
+puts order.check_sum_items

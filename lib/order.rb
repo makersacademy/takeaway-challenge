@@ -1,5 +1,6 @@
 class Order
   attr_reader :available_dishes, :basket, :restaurant
+  attr_accessor :tot
 
   def initialize(available_dishes)
     @available_dishes = available_dishes
@@ -18,12 +19,8 @@ class Order
 
   def sum_items
     @basket.inject(0) do|sum, dish|
-        sum + (dish[:price] * dish[:quantity])
+      sum + (dish[:price] * dish[:quantity])
     end
-  end
-
-  def tot=(tot)
-    @tot = tot
   end
 
   def check_sum_items

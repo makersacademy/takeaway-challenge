@@ -69,15 +69,15 @@ describe Restaurant do
     it "updates dishes quantity" do
       restaurant.create_order
       restaurant.order.add("pizza", 2)
+      restaurant.order.add("meatball", 2)
 
       expect(restaurant.update_menu).to eq([
         { name: "pizza", price: 5, quantity: 4 },
-        { name: "meatball", price: 6, quantity: 4
-
-        }
+        { name: "meatball", price: 6, quantity: 2}
       ])
     end
   end
+
   describe "#calculate_bill" do
     it "calculates bill for the order" do
       restaurant.create_order
@@ -85,6 +85,23 @@ describe Restaurant do
       restaurant.order.add("meatball", 3)
 
       expect(restaurant.calculate_bill).to be(28)
+    end
+  end
+
+  describe "#send_confirmation" do
+    let(:message_confirmation) { double(MessageConfirmation) }
+
+    before do
+      allow(MessageConfirmation).to receive(:new).and_return(message_confirmation)
+    end
+
+    it "checks if the text is sent" do
+      restaurant.create_order
+      restaurant.order.add("pizza", 2)
+
+      expect(message_confirmation).to receive(:send_message)
+      restaurant.send_confirmation
+
     end
   end
 end
