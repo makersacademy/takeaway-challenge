@@ -4,19 +4,18 @@ Envyable.load("./config/env.yml", "development")
 
 class SMS
 
-  def send_sms
-    account_sid = ENV["TWILIO_ACCOUNT_SID"]
-    auth_token = ENV["TWILIO_AUTH_TOKEN"]
+  def send_sms(twilio_rest_client = Twilio::REST::Client, env = ENV)
+    account_sid = env["TWILIO_ACCOUNT_SID"]
+    auth_token = env["TWILIO_AUTH_TOKEN"]
 
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    @client = twilio_rest_client.new(account_sid, auth_token)
 
     message = @client.messages.create(
-      to: ENV["MY_PHONE_NUMBER"],
-      from: ENV["TWILIO_NUMBER"],
+      to: env["MY_PHONE_NUMBER"],
+      from: env["TWILIO_NUMBER"],
       body: "Order successful. Estimated delivery time #{time_now}"
     )
 
-    puts message.sid
   end
 
   private

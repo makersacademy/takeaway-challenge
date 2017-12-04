@@ -23,6 +23,12 @@ describe Order do
     end
   end
 
+  describe "#remove" do
+    it "removes an item x times from the basket hash" do
+      expect { order.remove(choice, quantity) }.to change { order.basket[choice] }.by -quantity
+    end
+  end
+
   describe "#basket_summary" do
     it "displays the contents of the basket hash" do
       order.add(choice, quantity)

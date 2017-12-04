@@ -16,6 +16,14 @@ class Order
     puts "#{@quantity} x #{@choice} added to basket"
   end
 
+  def remove(choice, quantity = 1)
+    @choice, @quantity = choice, quantity
+    @quantity.times do
+      @basket[choice] -= 1
+    end
+    puts "#{@quantity} x #{@choice} removed from basket"
+  end
+
   def basket_summary
     @running_total = 0
     @basket.each do |dish, quantity|
@@ -25,23 +33,24 @@ class Order
       right_aligned = "£#{sprintf('%.2f', sub_total)}"
       puts left_aligned.ljust(20) + right_aligned.rjust(12)
     end
+    @running_total
   end
 
   def total
-    @total = 0
+    total = 0
     @basket.each do |dish, quantity|
-      @total += @menu[dish] * quantity
+      total += @menu[dish] * quantity
     end
-    @total
+    total
   end
 
   def check_totals
-    raise "Totals do not match" if @running_total != @total
+    raise "Totals do not match" if @running_total != total
     print_total
   end
 
   def print_total
-    puts "Total".ljust(20) + ("£" + sprintf('%.2f', @total)).rjust(12)
+    puts "Total".ljust(20) + ("£" + sprintf('%.2f', total)).rjust(12)
   end
 
 end
