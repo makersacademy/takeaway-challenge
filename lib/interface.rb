@@ -1,3 +1,5 @@
+require 'envyable'
+Envyable.load('./config/env.yml', 'development')
 class Interface
 
   def initialize(order_class = Order, text_class = Text)
@@ -49,7 +51,7 @@ class Interface
   end
 
   def confirm_order
-    yes?(finish_order) ? (@text.send_text(ENV["PHONE_NUMBER"]); exit) : print_and_select
+    yes?(finish_order) ? (@text.send_text; exit) : print_and_select
   end
 
   def print_and_select
