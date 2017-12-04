@@ -27,7 +27,7 @@ class Order
     sum_items == @tot
   end
 
-  private
+  # private
   attr_reader :available_dishes
 
   def item_by_name(name)

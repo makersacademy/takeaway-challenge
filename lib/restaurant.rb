@@ -39,10 +39,9 @@ class Restaurant
   end
 
   def send_confirmation
-    msg_cnf = MessageConfirmation.new
-    msg_cnf.send_message
+    MessageConfirmation.new.send_message
   end
 
-  private
+ private
   attr_writer :menu
 end
