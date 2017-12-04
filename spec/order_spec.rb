@@ -26,4 +26,10 @@ describe Order do
     end
   end
 
+  context '#should place order' do
+    it "Should send a message when the order is placed" do
+      allow(order).to receive(:place) { 'message sent' }
+      expect(order.place).to eq 'message sent'
+    end
+  end
 end

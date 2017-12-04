@@ -53,7 +53,8 @@ class Interface
   def place_order
     puts "Do you wish to place your order? (Type no to make changes)"
     ans = gets.chomp
-    ans[0].downcase != "n" ? @order.place : input
+    input if ans.empty?
+    ans[0].casecmp("n").zero? ? input : @order.place
     quitshop
   end
 
