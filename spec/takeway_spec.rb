@@ -16,7 +16,7 @@ describe TakeAway do
   end
   context 'Creation of order' do
     it 'should allow the creation of a new order' do
-      expect(subject.create_order(:dish, 5)).to eq [{:dish => 5}]
+      expect(subject.create_order(:dish, 5)).to eq [{ dish: 5 }]
     end
 
     it 'should check if order is not empty' do
@@ -29,18 +29,20 @@ describe TakeAway do
     end
   end
 
-  context "Order Checking" do
-    it "should allow user to check what has been ordered and total cost" do
+  context 'Order Checking' do
+    it 'should allow user to check what has been ordered and total cost' do
       takeaway.create_order(:dish, 5)
       takeaway.add_more_dishes(:dish, 5)
-      expect {takeaway.print_current_order}.to output("\"dish - 5\"\n\"dish - 5\"\n10\n").to_stdout
+      expect { takeaway.print_current_order }.to output("\"dish - 5\"\n\"dish - 5\"\n\"Total = 10\"\n").to_stdout
     end
 
     it 'should raise error if order is empty' do
       expect { subject.print_current_order }.to raise_error 'You have not ordered anything yet!'
     end
 
-
-
+    # context "Inform Customer of his delivery" do
+    #   it "should send a delivery notification to the customer once order complete"
+    #   expect(takeaway.complete_order).to eq
+    # end
   end
 end

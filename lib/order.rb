@@ -1,8 +1,8 @@
-require_relative "./message.rb"
-require_relative "./menu.rb"
+require_relative './message.rb'
+require_relative './menu.rb'
 
 class Order
-  attr_reader :current_order
+  attr_reader :current_order, :message
 
   def initialize(dish, price, time)
     @current_order = [{ dish => price }]
@@ -17,16 +17,16 @@ class Order
 
   def order_total
     @current_order.each do |item|
-      item.each {|dish_name, dish_price| @order_total += dish_price}
+      item.each { |_dish_name, dish_price| @order_total += dish_price }
     end
     @order_total
   end
 
   def print_current_order
-      @current_order.each do |item|
-        item.each do |dish, price|
-          p "#{dish} - #{price}"
-        end
+    @current_order.each do |item|
+      item.each do |dish, price|
+        p "#{dish} - #{price}"
       end
     end
+  end
 end

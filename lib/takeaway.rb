@@ -12,7 +12,7 @@ class TakeAway
     @menu.show_dishes
   end
 
-  def create_order(dish,price)
+  def create_order(dish, price)
     @order = Order.new(dish, price, Time.now)
     view_order
   end
@@ -29,7 +29,10 @@ class TakeAway
   def print_current_order
     raise 'You have not ordered anything yet!' unless @order
     @order.print_current_order
-    p @order.order_total
+    p "Total = #{@order.order_total}"
   end
 
+  def complete_order
+    @order.message.send_sms
+  end
 end
