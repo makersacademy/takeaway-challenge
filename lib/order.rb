@@ -16,9 +16,7 @@ class Order
   end
 
   def order_takeaway
-    print_menu
-    take_order
-    order_confirmation
+    print_menu; take_order; order_confirmation
     @sms.send_sms
   end
 
@@ -47,9 +45,7 @@ class Order
   
   def calculate_total_cost(current_order = @current_order)
     current_order.each { |hash|
-      hash.values.inject(0) { |_name, cost|
-        @total_cost += cost
-      }
+      hash.values.inject(0) { |_name, cost| @total_cost += cost }
     }
   end
   

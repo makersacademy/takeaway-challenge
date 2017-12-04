@@ -3,6 +3,7 @@ require 'order'
 
 describe Order do
   let(:menu) { double(:menu, print_dishes: Array, menu_items: Array,) }
+  let(:sms) { TextMessage.new }
   let(:order) { Order.new(menu) }
   let(:test) { double(:order, gets: '1') }
 
@@ -35,6 +36,7 @@ describe Order do
 
   it 'should take order' do
     allow($stdin).to receive(:gets).and_return(0)
-    expect(order.order_takeaway).to eq(nil)
+    expect(sms).to receive(:send_sms).and_return("Order successful")
+    sms.send_sms
   end
 end
