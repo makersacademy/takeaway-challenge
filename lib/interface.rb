@@ -1,6 +1,7 @@
 class Interface
 
-  def initialize(order_class = Order)
+  def initialize(order_class = Order, text_class = Text)
+    @text = text_class.new
     @order = order_class.new
   end
 
@@ -48,7 +49,7 @@ class Interface
   end
 
   def confirm_order
-    yes?(finish_order) ? (puts "text placeholder"; exit) : print_and_select
+    yes?(finish_order) ? (@text.send_text(ENV["PHONE_NUMBER"]); exit) : print_and_select
   end
 
   def print_and_select

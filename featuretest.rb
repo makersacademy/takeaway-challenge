@@ -1,6 +1,7 @@
 require './lib/menu.rb'
 require './lib/order.rb'
 require './lib/interface.rb'
+require './lib/text.rb'
 
 # p menu = Menu.new
 # p order = Order.new
