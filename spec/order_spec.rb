@@ -15,4 +15,9 @@ describe Order do
     expect(order.correct?).to be true
   end
 
+  it 'calculates/formats delivery time' do
+    format_time = (order.time + 3600).strftime("%H:%M")
+    expect(order.delivery_time).to eq format_time
+  end
+
 end

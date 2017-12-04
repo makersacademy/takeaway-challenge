@@ -5,7 +5,7 @@ describe Takeaway do
   let(:menu) { double(:my_menu) }
   let(:user_order) { "1,1 2,3 20" }
   let(:order_class) { double(:my_order_class, new: order) }
-  let(:order) { double(:my_order, price: 20, orders: [1, 1], time: 'Now', correct?: true, translate: 1) }
+  let(:order) { double(:my_order, price: 20, orders: [1, 1], delivery_time: 'Now', correct?: true, translate: 1) }
   let(:message) { "Your order is complete! Total: £20.00, Arriving by: Now" }
   let(:handler_class) { double(:my_handler_class, new: handler) }
   let(:handler) { double(:my_handler) }
