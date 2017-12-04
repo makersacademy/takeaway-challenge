@@ -1,5 +1,5 @@
 class Order
-  attr_reader :available_dishes, :basket, :restaurant
+  attr_reader :basket
   attr_accessor :tot
 
   def initialize(available_dishes)
@@ -28,8 +28,9 @@ class Order
   end
 
   private
+  attr_reader :available_dishes
+
   def item_by_name(name)
     available_dishes.find { |dish| dish[:name] == name }
   end
-
 end

@@ -40,6 +40,7 @@ describe Order do
           { name: "meatball", price: 6, quantity: 0 }
         ]
       }
+
       it "checks if there are not selected dishes available any more " do
         expect(order.add("pizza", 15)).to eq(error_message)
       end
@@ -58,22 +59,22 @@ describe Order do
       order.add("pizza", 2)
       order.add("meatball", 5)
       expect(order.sum_items).to eq(40)
-      end
     end
-
-    describe "#check_sum_items" do
-      let(:available_dishes) {
-        [
-          { name: "pizza", price: 5, quantity: 6 },
-          { name: "meatball", price: 6, quantity: 10 }
-        ]
-      }
-      # let(:restaurant){double 'restaurant' , calculate_bill: order }
-      it "sum of itemes in basket" do
-        order.add("pizza", 2)
-        order.add("meatball", 5)
-        order.tot = 40 
-        expect(order.check_sum_items).to be(true)
-        end
-      end
   end
+
+  describe "#check_sum_items" do
+    let(:available_dishes) {
+      [
+        { name: "pizza", price: 5, quantity: 6 },
+        { name: "meatball", price: 6, quantity: 10 }
+      ]
+    }
+
+    it "sum of itemes in basket" do
+      order.add("pizza", 2)
+      order.add("meatball", 5)
+      order.tot = 40
+      expect(order.check_sum_items).to be(true)
+    end
+  end
+end

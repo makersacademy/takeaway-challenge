@@ -1,22 +1,22 @@
 require 'twilio-ruby'
 require './lib/order'
 require './lib/message_confirmation'
+require './lib/menu'
 
 
 class Restaurant
   attr_reader :menu, :order
 
-  LIST_DISHES = [
-    { name: "spaghetti", price: 7, quantity: 8 },
-    { name: "meatball", price: 6, quantity: 9 },
-    { name: "pizza", price: 9, quantity: 10 }]
-
-  def initialize(menu = LIST_DISHES)
+  def initialize(menu = Menu.new)
     @menu = menu
   end
 
+  def print_menu
+    menu.list
+  end
+
   def create_order
-    @order = Order.new(available_dishes)
+    @order = Order.new(menu.available_dishes)
   end
 
   def complete_order
@@ -25,31 +25,22 @@ class Restaurant
     send_confirmation
   end
 
-  def send_confirmation
-    msg_cnf = MessageConfirmation.new
-    msg_cnf.send_message
-  end
-
   def update_menu
-    @order.basket.each do |dish_from_basket|
-      appropriate_dish_from_menu = menu.find do |dish_from_menu|
-        dish_from_menu[:name] == dish_from_basket[:name]
-      end
-      appropriate_dish_from_menu[:quantity] -= dish_from_basket[:quantity]
-    end
+    @order.basket.each { |dish_from_basket| menu.update_item(dish_from_basket) }
     @menu
   end
 
   def calculate_bill
-    tot = order.basket.inject(0) do|sum, dish|
+    total = order.basket.inject(0) do|sum, dish|
       sum + (dish[:price] * dish[:quantity])
     end
 
-    order.tot = tot
+    order.tot = total
   end
 
-  def available_dishes
-    menu.select { |dish| dish[:quantity] > 0 }
+  def send_confirmation
+    msg_cnf = MessageConfirmation.new
+    msg_cnf.send_message
   end
 
   private

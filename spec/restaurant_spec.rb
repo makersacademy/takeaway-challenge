@@ -1,80 +1,44 @@
 require 'restaurant'
+require 'menu'
 
 describe Restaurant do
   subject(:restaurant) { described_class.new(menu) }
-  let(:menu) {
+  let(:menu) do
+    double(
+      Menu,
+      available_dishes: available_dishes,
+      update_item: {},
+      print_menu: [{name: "pizza", price: 5, quantity: 6}]
+    )
+  end
+  let(:available_dishes) {
     [
       { name: "pizza", price: 5, quantity: 6 },
       { name: "meatball", price: 6, quantity: 4 }
     ]
   }
+   describe "#print_menu" do
+     it "shows the menu" do
+       expect(menu.print_menu).to eq([ {name: "pizza", price: 5, quantity: 6} ])
+     end
 
-  describe "#available_dishes" do
-    let(:menu) { [{ name: 'spaghetti', price: 5, quantity: 1 }] }
-
-    it "checks all dishes are available" do
-      expect(restaurant.available_dishes.all? { |dish| dish[:quantity] > 0 }).to be(true)
-    end
-
-    context "when some dishes are available" do
-      let(:menu) {
-        [
-          { name: "pizza", price: 5, quantity: 6 },
-          { name: "meatball", price: 6, quantity: 0 }
-        ]
-      }
-
-      it "checks if some dishes are available" do
-        expect(restaurant.available_dishes).to eq([{ name: "pizza", price: 5, quantity: 6 }])
-      end
-    end
-
-    context "When there are not available dishes" do
-      let(:menu) {
-        [
-          { name: "pizza", price: 5, quantity: 0 },
-          { name: "meatball", price: 6, quantity: 0 }
-        ]
-      }
-      it "checks if there are not dishes available any more" do
-        expect(restaurant.available_dishes).to be_empty
-      end
-    end
-
-    describe "#get_menu" do
-      let(:menu) {
-        [
-          { name: "pizza", price: 5, quantity: 6 },
-          { name: "meatball", price: 6, quantity: 4 }
-        ]
-      }
-      it "gets menu" do
-        expect(restaurant.menu).to eq([{ name: "pizza", price: 5, quantity: 6 }, { name: "meatball", price: 6, quantity: 4 }])
-      end
-    end
-
-
-
-  end
+   end
 
   describe "#create_order" do
     it "starts new order" do
-
       expect(restaurant.create_order).to be_a(Order)
     end
   end
 
   describe "#update menu" do
+    it "updates the menu entry for each order item" do
+      order = restaurant.create_order
+      order.add("pizza", 2)
+      order.add("meatball", 2)
 
-    it "updates dishes quantity" do
-      restaurant.create_order
-      restaurant.order.add("pizza", 2)
-      restaurant.order.add("meatball", 2)
+      expect(menu).to receive(:update_item).twice
 
-      expect(restaurant.update_menu).to eq([
-        { name: "pizza", price: 5, quantity: 4 },
-        { name: "meatball", price: 6, quantity: 2}
-      ])
+      restaurant.update_menu
     end
   end
 
