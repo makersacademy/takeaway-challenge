@@ -15,11 +15,11 @@ class Message
   end
 
   def send_sms
-    account_sid = Authorisation:ACC_SID
-    auth_token = Authorisation:AUTH_TOKEN
+    account_sid = Authorisation::ACC_SID
+    auth_token = Authorisation::AUTH_TOKEN
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    @client.account.messages.create(from: @sms_number,
+    @client.messages.create(from: @sms_number,
                                     to: @user_contact_number,
                                     body: 'This is your delivery notification.')
     :message_sent
