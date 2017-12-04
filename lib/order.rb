@@ -1,10 +1,13 @@
+require_relative 'menu'
+
 class Order
-  attr_reader :orders, :price
+  attr_reader :orders, :price, :time
 
   def initialize(orders, quantities, price)
     @orders = orders
     @quantities = quantities
     @price = price
+    @time = Time.now
   end
 
   def translate(menu)
@@ -17,7 +20,7 @@ class Order
 
   def correct?
     @orders.zip(@quantities)
-    .map { |order, num| order.price * num }.inject(:+) == @price 
+    .map { |order, num| order.price * num }.inject(:+) == @price
   end
 
 end
