@@ -12,4 +12,8 @@ end
 it "should know how long delivery will take" do
   expect(subject.delivery_time). to eq (time + Message::DELIVERY_TIME)
 end
+
+it "should send a message" do
+  
+end
 end

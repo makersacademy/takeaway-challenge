@@ -29,7 +29,7 @@ class TakeAway
   def print_current_order
     raise 'You have not ordered anything yet!' unless @order
     @order.print_current_order
-    @order.order_total
+    p @order.order_total
   end
 
 end

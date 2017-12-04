@@ -29,7 +29,6 @@ end
 
     it "should allow user to check what has been ordered and total cost" do
       subject.add_to_order(:dish, 5)
-      p subject
       expect {subject.print_current_order}.to output("\"dish - 5\"\n\"dish - 5\"\n").to_stdout
     end
   end

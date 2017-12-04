@@ -1,4 +1,5 @@
 require_relative "./message.rb"
+require_relative "./menu.rb"
 
 class Order
   attr_reader :current_order

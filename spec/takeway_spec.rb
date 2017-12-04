@@ -4,6 +4,7 @@ describe TakeAway do
   subject(:takeaway) { described_class.new }
   let(:dish) { double(:dish) }
   let(:menu) { Menu.new }
+
   context 'Display menu' do
     it 'should display the menu' do
       expect(subject).to respond_to(:view_menu)
@@ -32,7 +33,7 @@ describe TakeAway do
     it "should allow user to check what has been ordered and total cost" do
       takeaway.create_order(:dish, 5)
       takeaway.add_more_dishes(:dish, 5)
-      expect {takeaway.print_current_order}. to output("\"dish - 5\"\n\"dish - 5\"\n").to_stdout
+      expect {takeaway.print_current_order}.to output("\"dish - 5\"\n\"dish - 5\"\n10\n").to_stdout
     end
 
     it 'should raise error if order is empty' do
