@@ -7,9 +7,9 @@ describe Text do
   # subject(:mock_time) {double(:mock_time, (Time.new + 60 * 60).strftime("%H:%M"))}
 
   describe "#send_text" do
-    # before do
-    #   allow(subject).to receive(:send_text)
-    # end
+    before do
+      allow(subject).to receive(:send_text)
+    end
 
     it "sends a text message with order confirmation" do
       subject.send_text
@@ -24,7 +24,7 @@ describe Text do
 
   describe "#order_summary" do
     it "should confirm the order with a delivery time" do
-    expect(subject.order_summary).to eq "Thank you for your order. The estimate delivery time is #{(Time.new + 60 * 60).strftime(Text::TIME_FORMAT)}"
+      expect(subject.order_summary).to eq "Thank you for your order. The estimate delivery time is #{(Time.new + 60 * 60).strftime(Text::TIME_FORMAT)}"
     end
   end
 

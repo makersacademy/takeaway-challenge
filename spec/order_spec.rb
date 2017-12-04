@@ -1,7 +1,8 @@
 require 'order'
 
-
 describe Order do
+
+  subject(:order) { described_class.new }
 
   describe "#initialize" do
     it "should initalize with an empty basket" do
@@ -65,6 +66,17 @@ describe Order do
       subject.add_item("bun thit nuong", 2)
       subject.delete_item("bun thit nuong", 2)
       expect(subject.basket_summary).to include "You have 1 item(s) in your basket:" && "Your total cost is: £3.99"
+    end
+  end
+
+  describe "#place_order" do
+
+    # before do
+    #   allow(subject).to receive(:place_order)
+    # end
+
+    it "should send a text once order is placed" do
+      subject.place_order
     end
   end
 

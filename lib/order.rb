@@ -1,13 +1,15 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 
   attr_reader :basket, :menu
   DEFAULT_QUANTITY = 1
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, text = Text.new)
     @basket = []
     @menu = menu
+    @text = text
   end
 
   def add_item(item, quantity = DEFAULT_QUANTITY)
@@ -19,7 +21,7 @@ class Order
 
   def delete_item(item, quantity = DEFAULT_QUANTITY)
     item = capitalize_item(item)
-    basket_dishes = @basket.map{|dish| dish[:item]}
+    basket_dishes = @basket.map { |dish| dish[:item] }
     raise "This item is not in your basket" unless basket_dishes.include?(item)
     @basket.delete({ :item => item, :quantity => quantity })
   end
@@ -36,12 +38,14 @@ class Order
     summary += "Your total cost is: £#{price}"
   end
 
-
+  def place_order
+    @text.send_text
+  end
 
   private
 
   def capitalize_item(item)
-    item = item.split.map(&:capitalize).join(" ")
+    item.split.map(&:capitalize).join(" ")
   end
 
   def basket_quantity
@@ -57,5 +61,4 @@ class Order
     end
     summary
   end
-
 end
