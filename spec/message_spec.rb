@@ -10,7 +10,7 @@ describe Message do
   end
 
   it 'should know how long delivery will take' do
-    expect(subject.delivery_time). to eq(time + Message::DELIVERY_TIME).strftime('%I:%M %p')
+    expect(subject.delivery_time). to eq((time + Message::DELIVERY_TIME).strftime('%I:%M %p'))
   end
 
   it 'should send a message' do

@@ -49,6 +49,7 @@ Takeaway Challenge
 ### Further Work
 * Improve so that list of dishes can be loaded from CSV
 * Create an interactive front-end
+* add a delete method for dishes
 * Use stubs & doubles for testing (at the moment, a dummy return has been created with the **message.rb**)
 * Investigate more edge cases (e.g. dish requested not existing)
 * Add a method to be able to correct errors in total cost of order.

@@ -17,7 +17,7 @@ class Order
 
   def order_total
     @current_order.each do |item|
-      item.each { |_dish_name, dish_price| @order_total += dish_price }
+      item.each { |dish_name, dish_price| @order_total += dish_price }
     end
     @order_total
   end

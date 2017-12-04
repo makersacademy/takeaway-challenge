@@ -3,7 +3,7 @@ require_relative '../lib/takeaway.rb'
 describe TakeAway do
   subject(:takeaway) { described_class.new }
   let(:dish) { double(:dish) }
-  let(:menu) { Menu.new }
+  
 
   context 'Display menu' do
     it 'should display the menu' do
