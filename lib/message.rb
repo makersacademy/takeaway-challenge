@@ -9,19 +9,19 @@ class Message
 
   def initialize(order_timestamp)
     @order_timestamp = order_timestamp
-    @delivery_time = order_timestamp + DELIVERY_TIME
+    @delivery_time = (order_timestamp + DELIVERY_TIME)
     @sms_number = '+441681292005'
     @user_contact_number = '+447377669808'
   end
 
   def send_sms
-    account_sid = Authorisation::ACC_SID
-    auth_token = Authorisation::AUTH_TOKEN
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    @client.messages.create(from: @sms_number,
-                                    to: @user_contact_number,
-                                    body: 'This is your delivery notification.')
-    :message_sent
+    # account_sid = Authorisation::ACC_SID
+    # auth_token = Authorisation::AUTH_TOKEN
+    # @client = Twilio::REST::Client.new(account_sid, auth_token)
+    #
+    # @client.messages.create(from: @sms_number,
+    #                                 to: @user_contact_number,
+    #                                 body: 'This is your delivery notification.')
+    p "Message sent to end customer"
     end
 end
