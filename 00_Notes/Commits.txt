@@ -1,0 +1,36 @@
+Create README.md
+User Story #1 - Unit Test Failing
+User Story #1 - Simple Unit Test Respond to method passed
+User Story #1 - Unit Test with Dishes failing
+User Story #1 - Unit Test with Dishes passing
+User Story #1 - Rubocop Run
+User Story #1 - Added TakeAway Class and Unit Tests files
+User Story #1 - Takeaway - unit test to view menu failed
+User Story #1 - Takeaway - unit test to view menu passed
+User Story #2 - Added Order Class and Unit Tests files
+User Story #2 - Order - unit tests to add item to order failed
+User Story #2 - Order - unit tests to add item to order passed
+User Story #2 - Takeaway - unit tests to create new order with dish failed
+User Story #2 - Takeaway - unit tests to create new order with dish passed
+User Story #2 - Takeaway - unit tests for empty order failed
+User Story #2 - Takeaway - unit tests for empty order passed
+User Story #2 - Takeaway - unit tests for adding more dishes failed
+User Story #2 - Takeaway - unit tests for adding more dishes passed
+User Story #2 - Takeaway - unit tests for adding more dishes passed
+User Story #2 - Order - unit tests for pricing failed
+User Story #2 - Order - unit tests for pricing passed
+User Story #2 - Takeaway - refactoring and unit test passes
+User Story #3 - Takeaway - unit tests show for order items and their prices failing
+User Story #3 - Order - unit tests show for order items and their prices failing
+User Story #3 - Order/Takeaway - unit tests show for order items and their prices passing
+User Story #3 - Takeaway - unit tests for empty order items and their prices list failing
+User Story #3 - Takeaway - unit tests for empty order items and their prices list passing
+User Story #4 - Added Message Class and unit test files
+User Story #4 - Message - unit test for time stamp added & failed
+User Story #4 - Message - unit test for time stamp passed
+User Story #4 - Message - unit test for delivery time passed
+User Story #4 - Message/Order/Takeaway - Refactoring
+Issues with Twilio integration, error with metjod called by Twilio
+Twilio issue resolved
+refactoring part #1
+Rubocop Completed
