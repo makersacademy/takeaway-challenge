@@ -27,13 +27,13 @@ describe TakeAway do
   end
 
   describe '#view_order' do
-    context 'There is nothing to order' do
+    context 'nothing has been chosen' do
       it 'raises an error' do
         expect { takeaway.view_order }.to raise_error 'Please select an item first'
       end
     end
 
-    context 'There have been items chosen' do
+    context 'there have been some items chosen' do
       before do
         allow(menu).to receive(:items).and_return({ 'Pizza' => 1.50 })
         takeaway.choose_item('Pizza', 1)
@@ -47,5 +47,9 @@ describe TakeAway do
         expect { takeaway.view_order }.to change { takeaway.total_cost }.by(1.50)
       end
     end
+  end
+
+  describe '#place_order' do
+
   end
 end
