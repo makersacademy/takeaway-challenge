@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :dishes, :menu
+  attr_reader :dishes, :menu, :total
 
   def initialize(menu = Menu.new)
     @dishes = {}

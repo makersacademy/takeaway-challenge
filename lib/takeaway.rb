@@ -16,6 +16,9 @@ class Takeaway
 
   def order(dish, quantity)
     @order.add_item(dish, quantity)
+  end
+
+  def bill
     @order.total
   end
 
