@@ -1,12 +1,17 @@
 class Takeaway
 
   attr_reader :menu
-  
-  def initialize(menu = Menu.new)
-    @menu = menu
+
+  def initialize
+    @menu = {
+      "Fish" => 2365,
+      "Chips" => 1836,
+      "Kebab" => 4317
+    }
   end
 
-  def show_menu
-    menu.print_menu
+  def print_menu
+    menu
   end
+
 end
