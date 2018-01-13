@@ -5,6 +5,11 @@ class Takeaway
   end
 
   def show_menu
-
+    menu.show
   end
+
+  private
+
+  attr_reader :menu
+
 end
