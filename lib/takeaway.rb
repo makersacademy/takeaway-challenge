@@ -1,8 +1,12 @@
+require_relative 'menu'
+require_relative 'messenger'
+
 class TakeAway
   attr_reader :order, :total_cost
 
-  def initialize(menu_class:)
+  def initialize(menu_class = Menu.new, messenger_class = Messenger.new)
     @menu = menu_class
+    @messenger = messenger_class
     @order = []
     @total_cost = 0
   end
@@ -44,5 +48,9 @@ class TakeAway
   def update_total
     @total_cost = order.reduce(0) { |sum, item| sum + item['quantity'] * item['price'] }
     puts "Grand total: £%0.2f" % @total_cost
+  end
+
+  def send_confirmation(message)
+    @messenger.send(message)
   end
 end

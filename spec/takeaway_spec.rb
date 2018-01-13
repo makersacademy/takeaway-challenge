@@ -1,8 +1,9 @@
 require 'takeaway'
 
 describe TakeAway do
-  subject(:takeaway) { described_class.new(menu_class: menu) }
+  subject(:takeaway) { described_class.new(menu, messenger) }
   let(:menu) { double(:menu) }
+  let(:messenger) { double(:messenger) }
 
   describe '#display_menu' do
     it 'displays the menu' do
