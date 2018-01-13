@@ -11,7 +11,6 @@ class Takeaway
   end
 
   def print_menu
-    menu
+    menu.map { |name, price| "#{name}: £#{price}" }
   end
-
 end
