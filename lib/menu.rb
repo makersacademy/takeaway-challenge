@@ -6,7 +6,9 @@ class Menu
     @dishes = {
       "Fish" => 2365,
       "Chips" => 1836,
-      "Kebab" => 4317
+      "Kebab" => 4317,
+      "Lobster" => 11092,
+      "Shark" => 15423
     }
   end
 
@@ -21,6 +23,4 @@ class Menu
   def price(dish)
     dishes[dish]
   end
-
-
 end

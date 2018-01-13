@@ -2,18 +2,25 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :basket
+  attr_reader :dishes, :menu
 
-  def initialize
-    @basket = []
+  def initialize(menu = Menu.new)
+    @dishes = {}
+    @menu = menu
   end
 
-  def add_item(item, quantity)
-     quantity.times { add_to_basket(item) }
+  def add_item(dish, quantity)
+    raise 'This isnt on the menu' unless menu.on_menu?(dish)
+    dishes[dish] = quantity
   end
 
-  def add_to_basket(item)
-    @basket << item
+  def total
+    dish_totals.inject(:+)
   end
 
+  def dish_totals
+    dishes.map do |dish, quantity|
+    menu.price(dish) * quantity
+    end
+  end
 end

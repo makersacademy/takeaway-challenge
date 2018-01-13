@@ -2,15 +2,18 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
+
   let(:dishes) do {
     Fish: 2365,
     Chips: 1836,
-    Kebab: 4317
+    Kebab: 4317,
+    Lobster: 11092,
+    Shark: 15423
   }
 end
 
-  it 'has a menu with prices' do
-    expect(menu.list).to eq ["Fish: £2365", "Chips: £1836", "Kebab: £4317"]
+  it 'prints a menu with prices' do
+    expect(menu.list).to eq ["Fish: £2365", "Chips: £1836", "Kebab: £4317", "Lobster: £11092", "Shark: £15423"]
   end
 
   it 'checks if a dish is on the menu' do
@@ -24,5 +27,5 @@ end
   it 'checks a dishes price' do
     expect(menu.price(:chips)).to eq(dishes[:chips])
   end
-  
+
 end
