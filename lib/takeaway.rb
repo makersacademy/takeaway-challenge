@@ -12,6 +12,7 @@ class Takeaway
 
   def order_placed(dishes_prices)
     dishes_prices.each {|name, qty| order.add(name, qty) }
+    order.total_amount
   end
 
 

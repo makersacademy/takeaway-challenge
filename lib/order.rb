@@ -11,4 +11,9 @@ class Order
     raise "#{name.capitalize} not on the menu, can't be selected." if menu.includes_dish?(name) == false
     dishes_prices[name] = qty
   end
+
+  def total_amount
+    items = dishes_prices.map {|name, qty| menu.get_price(name) * qty }
+    items.inject(:+)
+  end
 end

@@ -3,7 +3,7 @@ require './lib/takeaway.rb'
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order) }
   let(:menu) { double(:menu, printing: printed_m) }
-  let(:order) { double(:order) }
+  let(:order) { double(:order, total_amount: 20) }
   let(:printed_m) { "Pizza: £10.99, Sandwich: £2.99" }
   let(:dishes_prices) { {pizza: 3, sandwich: 2, juice: 4} }
 
@@ -18,7 +18,13 @@ describe Takeaway do
 
   it 'order some dishes' do
     expect(order).to receive(:add).thrice
-    expect(takeaway.order_placed(dishes_prices)).to eq(dishes_prices)
+    takeaway.order_placed(dishes_prices)
+  end
+
+  it 'shows the order\'s total amount' do
+    allow(order).to receive(:add)
+    total_amount = takeaway.order_placed(dishes_prices)
+    expect(total_amount).to eq(20)
   end
 
 end
