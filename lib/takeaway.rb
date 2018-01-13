@@ -14,7 +14,10 @@ class TakeAway
   end
 
   def select_dish(dish_name)
-    @menu_class.find_dish(dish_name).each { |item| @order_final << item }
+    @menu_class.find_dish(dish_name).each do |item|
+      @order_final << item
+      @total_cost += item[:price]
+    end
   end
 
   def see_menu
@@ -31,7 +34,6 @@ class TakeAway
   end
 
   def bill
-    @order_final.each { |items| @total_cost += items[:price] }
     @total_cost
   end
 
@@ -55,7 +57,7 @@ class TakeAway
     puts '----------------'
     puts "Total payable --- #{bill}"
   end
-  
+
   def logo
 
     puts "   ```"
