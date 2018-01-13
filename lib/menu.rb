@@ -1,4 +1,6 @@
 class Menu
+  attr_reader :items
+
   def initialize
     @items = {
       'Pizza' => 11.95,
@@ -13,8 +15,4 @@ class Menu
       puts "#{food}: £%0.2f" % price
     end
   end
-
-  private
-
-  attr_reader :items
 end
