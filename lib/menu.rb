@@ -30,7 +30,7 @@ class Menu
   end
 
   def order(food, quantity)
-    (@basket << MENU[food]) * quantity
+    quantity.times {@basket << MENU[food]}
     "You added #{MENU[food].keys[0]} #{quantity} time(s)!"
   end
 

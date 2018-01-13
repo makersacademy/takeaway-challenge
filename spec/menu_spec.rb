@@ -10,11 +10,10 @@ describe Menu do
 
   describe '#order' do
     it 'adds an item to the basket' do
-      expect { subject.order(1, 2) }.to change { subject.basket }.to([{"tuna soaked nut butter": 2.00}])
+      expect { subject.order(1, 1) }.to change { subject.basket }.to([{"tuna soaked nut butter": 2.00}])
     end
 
     it 'adds an item to the basket a specified amount of times' do
-      pending
       expect { subject.order(1, 3) }.to change { subject.basket }.to([{"tuna soaked nut butter": 2.00}, {"tuna soaked nut butter": 2.00}, {"tuna soaked nut butter": 2.00}])
     end
 
