@@ -29,6 +29,14 @@ describe Order do
     end
   end
 
+  describe 'order summary' do
+    it 'summarises order so far' do
+      order.add_to_order("CHIA_PUDDING")
+      order.add_to_order("BANANA_BREAD")
+      expect(order.summary).to eq "Your order so far contains: CHIA_PUDDING, BANANA_BREAD, all coming to a total of £11.25."
+    end
+  end
+
   describe 'looking up hash' do
     it 'puts the key value pair into the order' do
       order.add_to_order("CHIA_PUDDING")
