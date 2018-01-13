@@ -20,13 +20,9 @@ class Cafe
     "You have ordered #{item} x#{quantity}."
   end
 
-  def total_correct?(customer_calc)
-    return "Your total is correct." if @order.check(customer_calc)
-    "Your total is incorrect."
-  end
-
-  def checkout
-    "Please pay £#{@order.total}."
+  def checkout(customer_calc)
+    return "Please pay £#{@order.total}." if @order.check(customer_calc)
+    "Please pay the correct amount."
   end
 
   private
