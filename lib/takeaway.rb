@@ -37,6 +37,7 @@ class TakeAway
   end
 
   def update_total
-    @total_cost = 1.5
+    @total_cost = order.reduce(0) { |sum, item| sum + item['quantity'] * item['price'] }
+    puts "Grand total: £%0.2f" % @total_cost
   end
 end
