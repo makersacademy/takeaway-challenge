@@ -30,7 +30,7 @@ describe Order do
   end
 
   describe 'looking up hash' do
-    it 'finds the key value pair' do
+    it 'puts the key value pair into the order' do
       order.add_to_order("CHIA_PUDDING")
       expect(order.basket).to include ({CHIA_PUDDING: 5.75})
     end

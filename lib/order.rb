@@ -9,8 +9,13 @@ class Order
   end
 
   def add_to_order(item)
-    pair = Menu::MENU.select {|k,v| k == item.to_sym }
-    @basket << pair
+    @basket << details(item)
+  end
+
+  private
+
+  def details(item)
+    Menu::MENU.select {|k,v| k == item.to_sym }
   end
 
 end
