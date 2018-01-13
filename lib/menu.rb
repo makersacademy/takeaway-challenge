@@ -3,7 +3,7 @@ class Menu
 
   attr_reader :price_list
 
-  def initialize(price_list = {"Hamburger" => "£2.00", "Hot-dog" => "£3.00", "Fries" => "£5.00"})
+  def initialize(price_list = {"Hamburger" => 2, "Hot-dog" => 3, "Fries" => 5})
     @price_list = price_list
   end
 

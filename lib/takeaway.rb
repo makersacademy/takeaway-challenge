@@ -3,21 +3,26 @@ require_relative 'menu'
 
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :basket, :dishes, :basket, :text_provider
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @dishes =
-    @basket =
-    @text_provider =
+    @dishes = nil
+    @basket = {}
+    @text_provider = nil
   end
 
-  def dishes
+  def display
     @menu.display
   end
 
-  def order
-    'order'
+  def order(dish, number = 1)
+    menu.price_list.each do |k, v|
+      if k == dish
+        @basket.include?(k) ? @basket[k] += v * number : @basket[k] = v * number
+      else
+        puts "apologies that dish is not available"
+      end
+    end
   end
-
 end
