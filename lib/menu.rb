@@ -1,8 +1,8 @@
-#ßunderstands how to display a menu
+# understands how to display a menu
 require_relative 'dish'
 
 class Menu
-  attr_reader :dish, :dishes
+  attr_reader :dish, :dishes, :name, :price
 
   def initialize
     @dishes = []
@@ -14,7 +14,9 @@ class Menu
   end
 
   def display
-    @dishes
+    @dishes.each_with_index do |dish, index|
+      puts "#{index} = #{dish}"
+    end
   end
-
+  
 end

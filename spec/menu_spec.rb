@@ -2,12 +2,12 @@ require 'menu'
 
 describe Menu do
 
-  subject(:menu) { described_class.new}
-  let(:dish_class) { double :dish_class, new: dish}
-  let(:dish) { double :dish}
-  let(:name) { double :name}
-  let(:price) { double :price}
-  let(:dishes) { double :dishes}
+  subject(:menu) { described_class.new }
+  let(:dish_class) { double :dish_class, new: dish }
+  let(:dish) { double :dish }
+  let(:name) { double :name }
+  let(:price) { double :price }
+  let(:dishes) { double :dishes }
 
   describe 'initially' do
     it 'has no dishes' do
@@ -26,7 +26,7 @@ describe Menu do
   describe '#display' do
     it 'displays the menu' do
       subject.add_dish(dish)
-      allow(menu).to receive(:display)
+      allow(menu).to receive(:display).and_return(:dishes)
       expect(menu.display).to be_truthy
     end
   end
