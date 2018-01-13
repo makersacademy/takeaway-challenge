@@ -29,7 +29,7 @@ class Order
   end
 
   def list
-    @basket.join(", ")
+    (@basket.uniq.map { |item| item + " x#{@basket.count(item)}"}).join(", ")
   end
 
   def add_to_total(item)

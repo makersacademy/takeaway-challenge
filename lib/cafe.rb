@@ -17,7 +17,7 @@ class Cafe
 
   def order_me(item, quantity = 1)
     @order.add_to_order(item, quantity)
-    "You have ordered #{item}."
+    "You have ordered #{item} x#{quantity}."
   end
 
   def total_correct?(customer_calc)

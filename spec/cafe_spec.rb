@@ -13,7 +13,11 @@ describe Cafe do
 
   describe 'order' do
     it 'confirms order' do
-      expect(cafe.order_me("CHIA_PUDDING")).to eq "You have ordered CHIA_PUDDING."
+      expect(cafe.order_me("CHIA_PUDDING")).to eq "You have ordered CHIA_PUDDING x1."
+    end
+
+    it 'states what was ordered' do
+      expect(cafe.order_me("BANANA_BREAD", 2)).to eq "You have ordered BANANA_BREAD x2."
     end
 
     it 'matches customer total' do

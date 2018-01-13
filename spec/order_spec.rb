@@ -6,6 +6,11 @@ describe Order do
   let(:cafe) { double :cafe, :order }
 
   describe '#add_to_order' do
+
+    it 'stores the item in an array' do
+      expect(order.add_to_order("CHIA_PUDDING", 2)).to eq 2
+    end
+
     it 'stores the item in an array' do
       order.add_to_order("CHIA_PUDDING", 1)
       expect(order.basket).to include "CHIA_PUDDING"
@@ -21,13 +26,20 @@ describe Order do
       order.add_to_order("BANANA_BREAD", 2)
       expect(order.basket).to include "BANANA_BREAD", "BANANA_BREAD"
     end
+
   end
 
   describe 'order summary' do
     it 'summarises order so far' do
       order.add_to_order("CHIA_PUDDING", 1)
       order.add_to_order("BANANA_BREAD", 1)
-      expect(order.summary).to eq "Your order so far contains: CHIA_PUDDING, BANANA_BREAD, all coming to a total of £11.25."
+      expect(order.summary).to eq "Your order so far contains: CHIA_PUDDING x1, BANANA_BREAD x1, all coming to a total of £11.25."
+    end
+
+    it 'summarises order so far' do
+      order.add_to_order("CHIA_PUDDING", 3)
+      order.add_to_order("BANANA_BREAD", 1)
+      expect(order.summary).to eq "Your order so far contains: CHIA_PUDDING x3, BANANA_BREAD x1, all coming to a total of £22.75."
     end
   end
 
@@ -58,5 +70,4 @@ describe Order do
       expect(order.check(6.50)).to be_falsey
     end
   end
-
 end
