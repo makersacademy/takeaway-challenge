@@ -1,7 +1,7 @@
 
 class Menu
 
-  attr_reader :price_list
+  attr_accessor :price_list
 
   def initialize(price_list = {"Hamburger" => 2, "Hot-dog" => 3, "Fries" => 5})
     @price_list = price_list

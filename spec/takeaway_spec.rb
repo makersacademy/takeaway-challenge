@@ -31,7 +31,24 @@ describe Takeaway do
   context 'if the dish is not already in the basket' do
     it 'should add the dish and sub-total to the basket' do
       takeaway.order(dish, number = 1)
-      expect(takeaway.basket).to include({dish => (5 * number)})
+      takeaway.basket.include?(dish) == false
+      expect(takeaway.basket).to include({dish => 5 })
+    end
+  end
+
+  context 'if the dish is already in the basket' do
+    it 'should add the new sub-total to the dish already in the basket' do
+      takeaway.basket = {dish => 5}
+      takeaway.order(dish, number = 1)
+      expect(takeaway.basket).to include({dish => 10})
+    end
+  end
+
+  context 'if the dish is not available' do
+    it 'should return "apologies that dish is not available"' do
+      no_dishes = double
+      allow(takeaway.menu).to receive(:price_list).and_return({no_dishes => 0})
+      expect(takeaway.order(dish, number = 1)).to eq "apologies that dish is not available"
     end
   end
 

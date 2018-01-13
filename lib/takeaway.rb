@@ -3,7 +3,8 @@ require_relative 'menu'
 
 class Takeaway
 
-  attr_reader :menu, :basket, :dishes, :basket, :text_provider
+  attr_reader :menu, :basket, :dishes, :text_provider
+  attr_accessor :basket
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -21,7 +22,7 @@ class Takeaway
       if k == dish
         @basket.include?(k) ? @basket[k] += v * number : @basket[k] = v * number
       else
-        puts "apologies that dish is not available"
+        return "apologies that dish is not available"
       end
     end
   end
