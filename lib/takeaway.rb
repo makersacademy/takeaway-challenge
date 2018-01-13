@@ -14,17 +14,9 @@ class Takeaway
     @menu.list
   end
 
-  def order(dishes)
-    order_item(dishes)
-    order.total
-  end
-
-  private
-
-  def order_item(dishes)
-    dishes.each do |dish, quantity|
-      order.add(dish, quantity)
-    end
+  def order(dish, quantity)
+    @order.add_item(dish, quantity)
+    @order.total
   end
 
 
