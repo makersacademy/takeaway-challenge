@@ -40,7 +40,7 @@ describe TakeAway do
       end
 
       it 'shows the order' do
-        expect { takeaway.view_order }.to output("Pizza: 1 @ £1.50\n").to_stdout
+        expect { takeaway.view_order }.to output(include("Pizza: 1 @ £1.50")).to_stdout
       end
 
       it 'updates the total' do
@@ -50,6 +50,13 @@ describe TakeAway do
   end
 
   describe '#place_order' do
+    before do
+      allow(takeaway).to receive(:send_confirmation)
+    end
 
+    it 'sends a text message' do
+      expect(takeaway).to receive(:send_confirmation).with("Thank you for your order. The total is £0.00 and will be with you within the hour!")
+      takeaway.place_order
+    end
   end
 end

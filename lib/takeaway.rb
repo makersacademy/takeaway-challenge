@@ -24,6 +24,11 @@ class TakeAway
     update_total
   end
 
+  def place_order
+    message = "Thank you for your order. The total is £%0.2f and will be with you within the hour!" % total_cost
+    send_confirmation(message)
+  end
+
   private
 
   attr_reader :menu
