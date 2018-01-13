@@ -11,4 +11,12 @@ describe Takeaway do
       expect(takeaway.menu).to eq menu
     end
   end
+
+  describe "#place_order" do
+
+    it "places an order" do
+      takeaway.place_order("spring rolls", 3)
+      expect(takeaway.order).to include(["spring rolls", 3])
+    end
+  end
 end
