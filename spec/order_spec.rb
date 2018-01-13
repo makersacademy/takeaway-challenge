@@ -37,9 +37,15 @@ describe Order do
   end
 
   describe 'order total' do
-    it 'adds the price' do
+    it 'stores the price' do
       order.add_to_order("CHIA_PUDDING")
       expect(order.total).to eq 5.75
+    end
+
+    it 'adds the price' do
+      order.add_to_order("CHIA_PUDDING")
+      order.add_to_order("BANANA_BREAD")
+      expect(order.total).to eq 11.25
     end
   end
 
