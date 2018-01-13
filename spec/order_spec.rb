@@ -36,12 +36,11 @@ describe Order do
     end
   end
 
-
+  describe 'order total' do
+    it 'adds the price' do
+      order.add_to_order("CHIA_PUDDING")
+      expect(order.total).to eq 5.75
+    end
+  end
 
 end
-
-# it 'adds one item\'s key value pair to a hash' do
-#   item = :CHIA_PUDDING
-#   order.add_to_order(item)
-#   expect(order.full_order).to include :CHIA_PUDDING
-# end

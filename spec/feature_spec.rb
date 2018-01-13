@@ -18,13 +18,7 @@ describe 'requests menu' do
   end
 end
 
-# describe 'ordering' do
-#   it 'receives an order' do
-#     cafe = Cafe.new
-#     "CHIA_PUDDING".order
-#     adds key value pair to order hash
-#   end
-# end
+
 
 # describe 'places order' do
 #   it 'receives my order and stores it' do

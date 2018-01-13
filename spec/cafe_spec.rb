@@ -18,10 +18,3 @@ describe Cafe do
   end
 
 end
-
-# describe 'ordering' do
-#   it 'receives order' do
-#     my_order = "BANANA BREAD"
-#     expect(cafe.receive_order(my_order)).to eq "BANANA BREAD"
-#   end
-# end
