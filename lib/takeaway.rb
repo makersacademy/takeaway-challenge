@@ -20,10 +20,20 @@ class Takeaway
   def order(dish, number = 1)
     menu.price_list.each do |k, v|
       if k == dish
-        @basket.include?(k) ? @basket[k] += v * number : @basket[k] = v * number
+          if !@basket.include?(k)
+              @basket[k] = [number, v * number]
+          else
+              @basket[k][0] += number
+              @basket[k][1] += v * number
+          end
+          return "#{number} #{dish}(s) added to your basket"
       else
-        return "apologies that dish is not available"
+        return "apologies, that dish is not available"
       end
     end
+  end
+
+  def basket_summary
+    @basket
   end
 end
