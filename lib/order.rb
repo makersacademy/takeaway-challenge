@@ -24,12 +24,12 @@ class Order
   private
 
   def place_in_basket(item)
-    @basket<< item
+    @basket << item
     add_to_total(item)
   end
 
   def list
-    (@basket.uniq.map { |item| item + " x#{@basket.count(item)}"}).join(", ")
+    (@basket.uniq.map { |item| item + " x#{@basket.count(item)}" }).join(", ")
   end
 
   def add_to_total(item)
