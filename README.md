@@ -1,79 +1,62 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# takeaway-challenge
 
- ```
+This program allows customers to view a restaurant's menu, select menu items and quantities, verify the total and receive a text message order confirmation.
 
-Instructions
--------
+## Getting Started
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Task
------
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## Installing
+
+Clone the program to your local directory:
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+git clone https://github.com/ker-an/takeaway-challenge.git local_directory
+cd local_directory
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## How To Use
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Create a new order and view a list of menu items with prices:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+```
+$ source .env
+$ irb
+2.4.0 :001 > require "./lib/order"
+  => true
+2.4.0 :002 > order = Order.new
+  => #<Order:0x007fef73ac6f10 @order_list={}, @menu=#<Menu:0x007fef73ac6ee8 @menu_items={"Aloo Ghobi"=>5.5, "Mac and Cheese"=>6.0, "Chicken Tikka Masala"=>7.0, "Al Pastor Tacos"=>6.0, "Poutine"=>3.5, "Vegetable Gyozas"=>3.5, "Naan"=>2.0, "Caesar"=>5.5}>, @notification=#<Notification:0x007fef73ac6e98>>
+```
+Add menu items to the order and view total:
 
+```
+2.4.0 :003 > order.add("Poutine")
+  => "1 Poutine(s) added to your order"
+2.4.0 :004 > order.add("Vegetable Gyozas", 3)
+  => "3 Vegetable Gyozas(s) added to your order"
+2.4.0 :005 > order.total
+  => 14.0
+```
 
-In code review we'll be hoping to see:
+Send confirmation text to customer once order complete:
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+```
+2.4.0 :006 > order.complete
+  => <Twilio.Api.V2010.MessageInstance Sent from your Twilio trial account - Thank you! Your total is £14.00 and your order has been placed.>
+```
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+## Built With
 
-Notes on Test Coverage
-------------------
+```
+Ruby 2.4.0
+Twilio API
+```
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+## Final Thoughts
+
+I spent some time while creating the program understanding how to use dependency injection and doubles. If I had some more time, I would have improved the program to account for edge cases (i.e. raising an error if menu item requested is not on the menu), added a delivery time to the text message and made the output prettier.
+
+## Author
+
+[Keran Braich](https://github.com/ker-an)
