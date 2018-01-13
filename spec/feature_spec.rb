@@ -18,8 +18,6 @@ describe 'requests menu' do
   end
 end
 
-
-
 # describe 'places order' do
 #   it 'receives my order and stores it' do
 #     cafe = Cafe.new

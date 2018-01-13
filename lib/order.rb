@@ -18,11 +18,12 @@ class Order
     "Your order so far contains: #{list}, all coming to a total of £#{@total}."
   end
 
+  private
+
   def list
     @basket.keys.join(", ")
   end
 
-  private
   def add_to_total(item)
     @total += Menu::MENU[item.to_sym]
   end
