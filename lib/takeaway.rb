@@ -1,5 +1,5 @@
 require_relative 'menu'
-require_relative 'price_list'
+# require_relative 'price_list'
 
 class Takeaway
 

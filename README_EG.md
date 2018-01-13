@@ -45,8 +45,6 @@ It is separated into the following sections:
 
 	- menu.rb / menu_spec.rb
 
-	- price_list.rb / price_list_spec.rb
-
 	- order.rb / order_spec.rb
 
 	- text.rb / text_spec.rb
@@ -62,10 +60,6 @@ It is separated into the following sections:
 	- menu
 
 	Calls a list of dishes and prices
-
-	- price list
-
-	Details available dishes and prices
 
 	- order
 
