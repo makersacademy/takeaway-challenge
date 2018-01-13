@@ -8,18 +8,18 @@ describe Order do
   describe '#add_to_order' do
     it 'stores the item in an array' do
       order.add_to_order("CHIA_PUDDING", 1)
-      expect(order.basket).to include({ :CHIA_PUDDING => 5.75 })
+      expect(order.basket).to include "CHIA_PUDDING"
     end
 
     it 'stores multiple items in an array' do
       order.add_to_order("CHIA_PUDDING", 1)
       order.add_to_order("BANANA_BREAD", 1)
-      expect(order.basket).to include({ :CHIA_PUDDING => 5.75 }, { :BANANA_BREAD => 5.50 })
+      expect(order.basket).to include "CHIA_PUDDING", "BANANA_BREAD"
     end
 
     it 'accepts multiples of the same item' do
       order.add_to_order("BANANA_BREAD", 2)
-      expect(order.basket).to include({ :BANANA_BREAD => 5.50 }, { :BANANA_BREAD => 5.50 })
+      expect(order.basket).to include "BANANA_BREAD", "BANANA_BREAD"
     end
   end
 

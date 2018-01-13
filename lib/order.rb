@@ -5,7 +5,7 @@ class Order
   attr_reader :basket, :total, :list
 
   def initialize
-    @basket = {}
+    @basket = []
     @total = 0
   end
 
@@ -24,12 +24,12 @@ class Order
   private
 
   def place_in_basket(item)
-    @basket[item.to_sym] = Menu::MENU[item.to_sym]
+    @basket<< item
     add_to_total(item)
   end
 
   def list
-    @basket.keys.join(", ")
+    @basket.join(", ")
   end
 
   def add_to_total(item)
