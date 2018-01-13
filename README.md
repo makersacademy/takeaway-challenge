@@ -46,3 +46,16 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 Usage
 ------------------
+You can use the following commands to use the application;
+
+takeaway = TakeAway.new               ===> To create a new instance
+
+takeaway.see_menu                     ===> To see what is on menu
+
+takeaway.select_dish("DISH NAME")     ===> To add dish to your order
+
+takeaway.bill                         ===> To see the total cost so far
+
+takeaway.order_list                   ===> To see the total bill including selection
+
+takeaway.complete_order               ===> To complete order and send confirmation text  
