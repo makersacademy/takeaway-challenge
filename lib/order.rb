@@ -1,13 +1,16 @@
+require_relative 'menu'
+
 class Order
 
-  attr_reader :full_order
+  attr_reader :basket
 
   def initialize
-    @full_order = []
+    @basket = []
   end
 
   def add_to_order(item)
-    @full_order << item.to_sym
+    pair = Menu::MENU.select {|k,v| k == item.to_sym }
+    @basket << pair
   end
 
 end
