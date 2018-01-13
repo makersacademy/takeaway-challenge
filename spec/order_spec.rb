@@ -57,7 +57,6 @@ describe Order do
       order.add_to_order("BANANA_BREAD", 3)
       expect(order.check(6.50)).to be_falsey
     end
-
   end
 
 end

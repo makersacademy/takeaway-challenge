@@ -25,6 +25,10 @@ class Cafe
     "Your total is incorrect."
   end
 
+  def checkout
+    "Please pay £#{@order.total}."
+  end
+
   private
 
   def ask_for_order

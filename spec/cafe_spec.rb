@@ -25,7 +25,13 @@ describe Cafe do
       cafe.order_me("BANANA_BREAD", 3)
       expect(cafe.total_correct?(1.50)).to eq "Your total is incorrect."
     end
+  end
 
+  describe '#checkout' do
+    it 'provides a total' do
+      cafe.order_me("BANANA_BREAD", 2)
+      expect(cafe.checkout).to eq "Please pay £11.0."
+    end
   end
 
 end
