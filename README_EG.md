@@ -31,13 +31,13 @@ It is separated into the following sections:
 
 	The challenge concerns the creation of a takeaway order system that will meet the following requirements:
 
-	- that a customer is able to **see** a **menu**, **listing** **dishes** and their **prices**;
+	- that a customer is able to see a menu, listing dishes and their prices;
 
-	- that a customer is able to **order** from the menu by **selecting** a number of available dishes;
+	- that a customer is able to order from the menu by selecting a number of available dishes;
 
-	- that a customer can **verify** that the **total** provided is correct
+	- that a customer can verify that the total provided is correct
 
-	- that a customer can **receive** a **verification text** that their order will be delivered on time
+	- that a customer can receive a verification text that their order will be delivered on time
 
 ## **2. High Level Approach to Problem**
 
@@ -45,13 +45,15 @@ It is separated into the following sections:
 
 	- menu.rb / menu_spec.rb
 
+	- price_list.rb / price_list_spec.rb
+
 	- order.rb / order_spec.rb
 
 	- text.rb / text_spec.rb
 
 ## **3. Gemfile**
 
-	- I have included the twilio-gem into the gemfile, which will be available on bundle install
+	- I have included the twilio-gem 5.6.0 into the gemfile, which will be available on bundle install
 
 ## **4. Objects**
 
@@ -59,15 +61,19 @@ It is separated into the following sections:
 
 	- menu
 
-		Listing out the dishes and their prices in hash format for the customer
+	Calls a list of dishes and prices
+
+	- price list
+
+	Details available dishes and prices
 
 	- order
 
-		 Storing a customer's order
+	Storing a customer's order
 
 	- text
 
-		Verifying the customer's order via Twilio text message
+	Verifying the customer's order via Twilio text message
 
 ## **5. Methods**
 
