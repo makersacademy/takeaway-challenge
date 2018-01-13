@@ -1,3 +1,11 @@
+README
+This is my attempt at weekend challenge. It was my first attempt using an API.
+I try to structure the domains so that the programme can be extend, i.e by changing the shop you order form by calling order = Order.new(ShopName).
+Shops can also update menus.
+I haven't used doubles in my tests, and I struggled to test the text function without actually sending messages to my phone. 
+The task instructions are below.
+
+
 Takeaway Challenge
 ==================
 ```
