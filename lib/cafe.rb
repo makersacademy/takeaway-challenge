@@ -21,8 +21,8 @@ class Cafe
   end
 
   def checkout(customer_calc)
-    return "Please pay £#{@order.total}." if @order.check(customer_calc)
-    "Please pay the correct amount."
+    return "Thank you for £#{@order.total}." if @order.check(customer_calc)
+    "Please pay the correct amount of £#{@order.total}."
   end
 
   private

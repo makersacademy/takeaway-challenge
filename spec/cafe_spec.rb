@@ -24,11 +24,11 @@ describe Cafe do
   describe '#checkout' do
     it 'provides a total' do
       cafe.order_me("BANANA_BREAD", 2)
-      expect(cafe.checkout(11)).to eq "Please pay £11.0."
+      expect(cafe.checkout(11)).to eq "Thank you for £11.0."
     end
     it 'checks balance at checkout' do
       cafe.order_me("BANANA_BREAD", 2)
-      expect(cafe.checkout(8)).to eq "Please pay the correct amount."
+      expect(cafe.checkout(8)).to eq "Please pay the correct amount of £11.0."
     end
   end
 
