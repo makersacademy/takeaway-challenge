@@ -62,10 +62,10 @@ describe TakeAway do
 
   context '#complete_order' do
     subject(:takeaway_class)        { described_class.new }
-
-    it "Should complete order with a text msg" do
-      expect(takeaway_class).to receive(:complete_order)
-      takeaway_class.complete_order
+    it "receives a text message after the order is placed" do
+      VCR.use_cassette('twilio') do
+        takeaway_class.complete_order
+      end
     end
   end
 end

@@ -16,7 +16,7 @@ class Texting
   # send an sms
     @client.messages.create(
     from: ENV['TWILIO_PHONE'],
-    to: ENV['TWILIO_DESTINATION_PHONE',
+    to: ENV['TWILIO_DESTINATION_PHONE'],
     body: msg)
   end
 

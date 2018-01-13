@@ -6,6 +6,7 @@ class TakeAway
   attr_reader :total_cost
 
   def initialize(menu_class = Menu.new, texting_class = Texting.new)
+    logo
     @menu_class = menu_class
     @texting_class = texting_class
     @order_final = []
@@ -54,17 +55,7 @@ class TakeAway
     puts '----------------'
     puts "Total payable --- #{bill}"
   end
-
-  def quantity
-    list_sorted = []
-
-    @order_final.each do |item|
-
-      
-    end
-
-  end
-
+  
   def logo
 
     puts "   ```"
