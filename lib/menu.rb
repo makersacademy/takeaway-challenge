@@ -7,7 +7,8 @@ class Menu
   end
 
   def printing
-    dishes_prices.map { |name, price| "%s £%.2f" % [name.to_s, price] }.join(", ")
+    dishes_prices.split(",").map {|name| p name }
+    # dishes_prices.map { |name, price| "%s £%.2f" % [name.to_s, price] }.join(", ")
   end
 
 end
