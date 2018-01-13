@@ -1,16 +1,14 @@
+require_relative 'menu'
+
 class Takeaway
 
   attr_reader :menu
 
-  def initialize
-    @menu = {
-      "Fish" => 2365,
-      "Chips" => 1836,
-      "Kebab" => 4317
-    }
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
 
   def print_menu
-    menu.map { |name, price| "#{name}: £#{price}" }
+    @menu.list
   end
 end
