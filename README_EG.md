@@ -27,7 +27,7 @@ It is separated into the following sections:
 
 	This challenge consolidates learning to date on TDD/BDD techniques re: Ruby and Rspec while also introducing new elements concerning third-party APIs, here the Twilio messaging service.
 
-	### **Requirements** 
+	Requirements 
 
 	The challenge concerns the creation of a takeaway order system that will meet the following requirements:
 
