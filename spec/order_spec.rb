@@ -16,6 +16,11 @@ describe Order do
       order.add_to_order("BANANA_BREAD")
       expect(order.basket).to include({ :CHIA_PUDDING => 5.75 }, { :BANANA_BREAD => 5.50 })
     end
+
+    it 'accepts multiples of the same item' do
+      order.add_to_order("BANANA_BREAD", 2)
+      expect(order.basket).to include({ :BANANA_BREAD => 5.50 }, { :BANANA_BREAD => 5.50 })
+    end
   end
 
   describe 'order summary' do

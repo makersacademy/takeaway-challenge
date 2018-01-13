@@ -9,9 +9,8 @@ class Order
     @total = 0
   end
 
-  def add_to_order(item)
-    @basket[item.to_sym] = Menu::MENU[item.to_sym]
-    add_to_total(item)
+  def add_to_order(item, quantity = 1)
+    quantity.times {place_in_basket(item)}
   end
 
   def summary
@@ -19,6 +18,11 @@ class Order
   end
 
   private
+
+  def place_in_basket(item)
+    @basket[item.to_sym] = Menu::MENU[item.to_sym]
+    add_to_total(item)
+  end
 
   def list
     @basket.keys.join(", ")
