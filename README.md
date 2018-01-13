@@ -1,6 +1,8 @@
 Takeaway Challenge
 ==================
 ```
+            'The Enchanted Takeaway'
+
                             _________
               r==           |       |
            _  //            |  B.P. |   ))))
@@ -18,7 +20,9 @@ Introduction
 ------------
 This is a terminal based application with Twilio API implementation where I have integrated the text messaging ability as part of the design. I have designed and tested each class with TDD in mind.
 
-The story board is below which gives you the requirements of the client. As a customer, you can look at the ‘Enchanted Takeaway menu’ and order your potion. Each selection comes at a cost. You can add your selection and look at the total order. Finally the order can be confirmed with a text message. The text message gives you the approximate time of delivery.
+The story board is below which gives you the requirements of the client. As a customer, you can look at the ‘Enchanted Takeaway menu’ and order your potion. Each selection comes at a cost. You can select a potion and add it to your order. You could also keep an eye on spending by looking at your bill or order list for a more detailed breakdown. Finally the order can be confirmed with a text message. The text message gives you the approximate time of delivery.
+
+I have used ENV variables to protect user information for the Twilio account. However, if you would like to inspect the communication log, you can read the YAML file: fixtures/vcr_cassettes/twilio.yml located in the repository.
 
 To use the Twilio text messaging service you will need to register and create an account at [www.twilio.com](https://www.twilio.com).
 
@@ -46,16 +50,19 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 Usage
 ------------------
+```
 You can use the following commands to use the application;
 
-takeaway = TakeAway.new               ===> To create a new instance
+takeaway = TakeAway.new               ===> creates a new instance
 
-takeaway.see_menu                     ===> To see what is on menu
+takeaway.see_menu                     ===> see what is on the menu
 
-takeaway.select_dish("DISH NAME")     ===> To add dish to your order
+takeaway.select_dish("DISH NAME")     ===> add a potion to your order
 
-takeaway.bill                         ===> To see the total cost so far
+takeaway.bill                         ===> see the total cost so far
 
-takeaway.order_list                   ===> To see the total bill including selection
+takeaway.order_list                   ===> see the total bill including selection
 
-takeaway.complete_order               ===> To complete order and send confirmation text  
+takeaway.complete_order               ===> complete order and send confirmation text  
+
+```
