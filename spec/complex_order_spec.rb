@@ -1,9 +1,9 @@
-require 'order'
+require 'complex_order'
 
 describe Order do
 
   # subject(:order) { described_class.new }
-  order = Order.new
+  order = Complex_order.new
   let(:selected_dish) { double :selected_dish }
   let(:quantity) { double :quantity }
   let(:io_obj) { double :io_obj }
@@ -52,14 +52,3 @@ describe Order do
       expect(order.instance_variable_get(:@selected_dish)).to eq :selected_dish
     end
   end
-
-
-
-
-
-    # it 'should display the list of dishes and prices' do
-    #   expect(menu.display).to eq price_list.each{|k, v| puts "#{k} : #{v}"}
-    # end
-  end
-
-end

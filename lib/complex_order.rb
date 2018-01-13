@@ -1,4 +1,4 @@
-class Order
+class Complex_order
 
   attr_reader
 
