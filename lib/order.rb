@@ -9,12 +9,16 @@ class Order
     @total = 0
   end
 
-  def add_to_order(item, quantity = 1)
-    quantity.times {place_in_basket(item)}
+  def add_to_order(item, quantity)
+    quantity.times { place_in_basket(item) }
   end
 
   def summary
     "Your order so far contains: #{list}, all coming to a total of £#{@total}."
+  end
+
+  def check(customer_calc)
+    @total == customer_calc
   end
 
   private

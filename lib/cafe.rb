@@ -15,9 +15,14 @@ class Cafe
     ask_for_order
   end
 
-  def order_me(item)
-    @order.add_to_order(item)
+  def order_me(item, quantity = 1)
+    @order.add_to_order(item, quantity)
     "You have ordered #{item}."
+  end
+
+  def total_correct?(customer_calc)
+    return "Your total is correct." if @order.check(customer_calc)
+    "Your total is incorrect."
   end
 
   private
