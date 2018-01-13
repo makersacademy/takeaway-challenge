@@ -1,17 +1,10 @@
 class Menu
 
-  attr_reader :name, :price, :dish, :menu
+  attr_reader :dishes
 
-  def initialize(name, price)
-    @name = name
-    @price = price
-    @dish = { name: name, price: price }
-    @menu = []
+  DEFAULT_DISHES = [{ :name => "spring roll", :price => 2 }]
+
+  def initialize
+    @dishes = DEFAULT_DISHES
   end
-
-  def check_menu(dish)
-    menu << dish
-  end
-
-
 end

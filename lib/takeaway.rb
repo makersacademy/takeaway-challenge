@@ -1,4 +1,4 @@
-require "menu"
+require_relative "menu"
 
 class Takeaway
 
@@ -7,5 +7,4 @@ class Takeaway
   def initialize(menu)
     @menu = menu
   end
-
 end
