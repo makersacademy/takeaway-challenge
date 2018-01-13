@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'price_list'
 
 class Takeaway
 
@@ -8,8 +9,12 @@ class Takeaway
     @menu = menu
   end
 
-  # def print_list
-  #   @price_list
+  def dishes
+    @menu.display
+  end
+
+  # def order
+  #   'order'
   # end
 
 end

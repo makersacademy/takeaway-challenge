@@ -2,20 +2,32 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double :menu}
+  let(:menu) { double :menu, display: details}
+  let(:details) { double :details }
+  let(:order) { double :order }
 
   it 'should initialize with a menu' do
     expect(takeaway.menu).to eq menu
   end
 
-  # describe '#print_list' do
-  #   it 'should respond to the print list method' do
-  #     expect(menu).to respond_to(:print_list)
+  describe '#menu' do
+
+    it 'should respond to the menu method' do
+      expect(takeaway).to respond_to(:menu)
+    end
+
+    it 'should print the menu for the customer' do
+      expect(takeaway.dishes).to eq menu.display
+    end
+
+  end
+
+  # describe '#order' do
+  #
+  #   it 'should respond to the order method' do
+  #     expect(takeaway.order).to respond_to(:order)
   #   end
   #
-  #   it 'should print the list of dishes and prices' do
-  #     expect(menu.print_list).to eq price_list
-  #   end
   # end
 
 end

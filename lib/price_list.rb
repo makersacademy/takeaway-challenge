@@ -6,4 +6,13 @@ class Price_list
     @details = details
   end
 
+  def show
+    list
+  end
+
+  private
+
+  def list
+    @details.each{|k, v| puts "#{k} : #{v}"}
+  end
 end

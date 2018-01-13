@@ -3,12 +3,11 @@ class Menu
 
   attr_reader :price_list
 
-  def initialize(price_list)
+  def initialize(price_list = Price_list)
     @price_list = price_list
   end
 
-  def print_list
-    @price_list
+  def display
+    @price_list.show
   end
-
 end
