@@ -1,0 +1,86 @@
+# **Ed Goold Takeaway Challenge Readme - 13.1.2018**
+
+This readme concerns Ed Goold's solution to a case study challenge provided at the end of week 2 of the Makers Academy course, December 2017 cohort.
+
+It is separated into the following sections:
+
+	1. Introduction & Requirements
+
+	2. High Level Approach to Problem
+
+	3. Gemfile
+
+	4. Objects
+
+	5. Methods
+
+	6. The Twilio API
+
+	7. Tests and Coverage
+
+	8. Final Thoughts
+
+	9. Code Review Request
+
+
+## **1. Introduction & Requirements**
+
+	This challenge consolidates learning to date on TDD/BDD techniques re: Ruby and Rspec while also introducing new elements concerning third-party APIs, here the Twilio messaging service.
+
+	### **Requirements** 
+
+	The challenge concerns the creation of a takeaway order system that will meet the following requirements:
+
+	- that a customer is able to **see** a **menu**, **listing** **dishes** and their **prices**;
+
+	- that a customer is able to **order** from the menu by **selecting** a number of available dishes;
+
+	- that a customer can **verify** that the **total** provided is correct
+
+	- that a customer can **receive** a **verification text** that their order will be delivered on time
+
+## **2. High Level Approach to Problem**
+
+	Following learning to date, I have attempted a strict TDD/BDD led solution to the problem, involving the creation of the following objects and their corresponding spec files:
+
+	- menu.rb / menu_spec.rb
+
+	- order.rb / order_spec.rb
+
+	- text.rb / text_spec.rb
+
+## **3. Gemfile**
+
+	- I have included the twilio-gem into the gemfile, which will be available on bundle install
+
+## **4. Objects**
+
+	I have created the following objects for this application:
+
+	- menu
+
+		Listing out the dishes and their prices in hash format for the customer
+
+	- order
+
+		 Storing a customer's order
+
+	- text
+
+		Verifying the customer's order via Twilio text message
+
+## **5. Methods**
+
+## **6. The Twilio API**
+
+	This has been stubbed using the following technique:
+
+## **7. Tests and Coverage**
+
+	Test coverage details and thoughts:
+
+## **8. Final Thoughts**
+
+## **9. Code Review Request**
+
+
