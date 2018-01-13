@@ -6,5 +6,4 @@ class Price_list
     @details = details
   end
 
-
 end

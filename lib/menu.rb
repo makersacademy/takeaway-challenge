@@ -1,10 +1,9 @@
-require_relative 'price_list'
 
 class Menu
 
   attr_reader :price_list
 
-  def initialize(price_list = Price_list)
+  def initialize(price_list)
     @price_list = price_list
   end
 
