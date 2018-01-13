@@ -1,6 +1,6 @@
 # **Ed Goold Takeaway Challenge Readme - 13.1.2018**
 
-This readme concerns Ed Goold's solution to a case study challenge provided at the end of week 2 of the Makers Academy course, December 2017 cohort.
+This readme summarises my solution to the Takeaway Challenge set for the second weekend of the Makers Academy's December 2017 cohort.
 
 It is separated into the following sections:
 
@@ -35,9 +35,9 @@ It is separated into the following sections:
 
 	- that a customer is able to order from the menu by selecting a number of available dishes;
 
-	- that a customer can verify that the total provided is correct
+	- that a customer can verify that the total provided is correct; and
 
-	- that a customer can receive a verification text that their order will be delivered on time
+	- that a customer can receive a verification text that their order will be delivered on time.
 
 ## **2. High Level Approach to Problem**
 
@@ -51,23 +51,17 @@ It is separated into the following sections:
 
 ## **3. Gemfile**
 
-	- I have included the twilio-gem 5.6.0 into the gemfile, which will be available on bundle install
+	- I have included the twilio-gem 5.6.0 into the gemfile, which will be available on bundle install.
 
 ## **4. Objects**
 
-	I have created the following objects for this application:
+	I have created the following objects for this application, that, in high level summary, provide for the following:
 
-	- menu
+	- Menu - stores a list of prices and displays those when called;
 
-	Calls a list of dishes and prices
+	- Takeaway - order and running total functionality for the customer; and
 
-	- order
-
-	Storing a customer's order
-
-	- text
-
-	Verifying the customer's order via Twilio text message
+	- Text - verifying the customer's order via Twilio text message.
 
 ## **5. Methods**
 
