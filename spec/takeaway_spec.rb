@@ -1,4 +1,4 @@
-require './docs/takeaway.rb'
+require './lib/takeaway.rb'
 
 describe TakeAway do
 

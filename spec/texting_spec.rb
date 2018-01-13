@@ -1,4 +1,4 @@
-require './docs/texting.rb'
+require './lib/texting.rb'
 
 describe Texting do
 
