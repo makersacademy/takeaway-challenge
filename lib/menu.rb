@@ -1,3 +1,5 @@
+require_relative 'price_list'
+
 class Menu
 
   attr_reader :price_list
