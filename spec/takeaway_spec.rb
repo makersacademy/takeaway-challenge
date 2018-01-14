@@ -42,4 +42,15 @@ describe Takeaway do
       expect(takeaway.get_total).to eq 8
     end
   end
+
+  describe "#display_total" do
+
+    it "returns a message with the total" do
+      takeaway.add_to_order("spring rolls", 1)
+      takeaway.add_to_order("dumplings", 1)
+      takeaway.add_to_order("spring rolls", 2)
+      allow(menu).to receive(:dishes).and_return({ "spring rolls" => 2,  "dumplings" => 3 })
+      expect(takeaway.display_total).to eq "The total is: £ 9"
+    end
+  end
 end

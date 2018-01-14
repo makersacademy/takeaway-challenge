@@ -18,6 +18,10 @@ class Takeaway
     @order.map { |item, quantity| quantity * menu.dishes[item] }.inject(0, :+)
   end
 
+  def display_total
+    "The total is: £ #{get_total}"
+  end
+
   private
 
   def display_order(order)
