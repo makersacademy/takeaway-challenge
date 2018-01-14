@@ -16,6 +16,10 @@ describe Cafe do
       expect(cafe.order_me("CHIA_PUDDING")).to eq "You have ordered CHIA_PUDDING x1."
     end
 
+    it 'raises error if item not listed' do
+      expect { cafe.order_me("cereal") }.to raise_error('This item is not on the menu.')
+    end
+
     it 'states what was ordered' do
       expect(cafe.order_me("BANANA_BREAD", 2)).to eq "You have ordered BANANA_BREAD x2."
     end
@@ -28,8 +32,17 @@ describe Cafe do
     end
     it 'checks balance at checkout' do
       cafe.order_me("BANANA_BREAD", 2)
-      expect(cafe.checkout(8)).to eq "Please pay the correct amount of £11.0."
+      expect{ (cafe.checkout(8)) }.to raise_error "Please pay the correct amount of £11.0."
     end
   end
+
+  # describe '#confirm_order' do
+  #   it 'sends a text' do
+  #     cafe.order_me("BANANA_BREAD", 2)
+  #     expect(cafe.checkout(8)).to "
+  #   end
+  # end
+
+
 
 end

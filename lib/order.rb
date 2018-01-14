@@ -1,7 +1,6 @@
 require_relative 'menu'
 
 class Order
-
   attr_reader :basket, :total, :list
 
   def initialize

@@ -1,5 +1,7 @@
 class Menu
 
+attr_reader :list
+
   MENU = {
     BANANA_BREAD: 5.50,
     GRANOLA_FRUITCOMPOTE_YOGHURT: 4.50,
@@ -12,8 +14,16 @@ class Menu
     SWEETCORN_FRITTERS: 6.50
     }
 
+  def initialize
+    @list = MENU
+  end
+
   def show
     p MENU
+  end
+
+  def includes?(item)
+    @list.include?(item.to_sym)
   end
 
 end
