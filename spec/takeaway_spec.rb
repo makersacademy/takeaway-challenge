@@ -26,6 +26,10 @@ describe TakeAway do
       expect { takeaway.choose_item('exoticfood', 100) }.to raise_error 'Cannot choose this item!'
     end
 
+    it 'does not allow negative values' do
+      expect { takeaway.choose_item('Pizza', -1) }.to raise_error 'Must choose a number >0'
+    end
+
     it 'lets the user know what was added to the order' do
       expect(takeaway.choose_item('Pizza')).to eq "Pizza x1 = £1.50"
     end

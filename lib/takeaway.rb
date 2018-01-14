@@ -17,8 +17,9 @@ class TakeAway
 
   def choose_item(item, amount = 1)
     raise 'Cannot choose this item!' unless on_menu? item
+    raise 'Must choose a number >0' unless amount > 0
     chosen_item = hashed_order(item, amount)
-    order << hashed_order(item, amount)
+    order << chosen_item
     "#{chosen_item[:item_name]} x#{chosen_item[:quantity]} = £%0.2f" % item_subtotal(chosen_item)
   end
 
