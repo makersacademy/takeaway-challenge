@@ -3,8 +3,8 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new("Breakfast Menu") }
-  let (:dish) { double :dish }
-  let (:dish2) { double :dish2 }
+  let (:dish) { double :dish, name: "Pancakes" }
+  let (:dish2) { double :dish2, name: "Waffles" }
 
   context '#initialize' do
     it 'has a name' do
@@ -26,6 +26,14 @@ describe Menu do
     it 'adds two dishes to menu' do
       menu.add(dish2 = double)
       expect(menu.dishes).to contain_exactly(dish, dish2)
+    end
+
+    it 'fails if dish is not in menu' do
+      expect { menu.dish_by_name("Test string") }.to raise_error "Dish not found in menu"
+    end
+
+    it 'returns the dish' do
+      expect(menu.dish_by_name("Pancakes")).to eq dish
     end
   end
 

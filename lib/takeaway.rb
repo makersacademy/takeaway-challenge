@@ -37,11 +37,11 @@ class Takeaway
   end
 
   def add_to_cart(item)
-    @shopping_cart.add(item)
+    @shopping_cart.add(@menu.dish_by_name(item))
   end
 
   def remove_from_cart(item)
-    @shopping_cart.remove(item)
+    @shopping_cart.remove(@menu.dish_by_name(item))
   end
 
   def checkout(recipient_number)

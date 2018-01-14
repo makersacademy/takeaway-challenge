@@ -19,4 +19,9 @@ class Menu
   def dishes
     @dishes.dup
   end
+
+  def dish_by_name(name)
+    raise "Dish not found in menu" unless dishes.find { |dish| dish.name == name }
+    dishes.find { |dish| dish.name == name }
+  end
 end

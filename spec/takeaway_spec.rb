@@ -2,9 +2,9 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
-  let(:menu) { double :menu }
   let(:menu_printer) { double :menu_printer }
-  let(:dish1) { double :dish1, price: 3 }
+  let(:dish1) { double :dish1, name: "Pancakes", price: 3 }
+  let(:menu) { double :menu, dish_by_name: dish1 }
   let(:order_printer) { double :order_printer, print: nil }
   let(:order) { double :order, kind_of?: true, time: Time.at(0) }
   let(:dish_list_printer) { double :dish_list_printer }
@@ -61,15 +61,15 @@ describe Takeaway do
 
   context '#add_to_cart' do
     it 'adds an item to the cart' do
-      expect(takeaway.shopping_cart).to receive(:add)
-      takeaway.add_to_cart(dish1)
+      expect(takeaway.shopping_cart).to receive(:add).with(dish1)
+      takeaway.add_to_cart("Pancakes")
     end
   end
 
   context '#remove_from_cart' do
     it 'removes an item from the cart' do
-      expect(takeaway.shopping_cart).to receive(:remove)
-      takeaway.remove_from_cart(dish1)
+      expect(takeaway.shopping_cart).to receive(:remove).with(dish1)
+      takeaway.remove_from_cart("Pancakes")
     end
   end
 
