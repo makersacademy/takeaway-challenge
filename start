@@ -1,0 +1,40 @@
+#! /usr/bin/ruby
+
+require './lib/takeaway'
+require './lib/menu'
+require './lib/sms'
+require './lib/order'
+
+menu = {
+  "pizza" => 10.99,
+  "sandwich" => 2.99,
+  "pasta" => 6.99,
+  "ice_cream" => 4.99,
+  "orange_juice" => 1.99,
+  "coke" => 0.99
+}
+
+menu = Menu.new(menu)
+dishes_prices = {}
+
+
+line_width = 40
+puts "===========================".center(line_width)
+puts "Hello and welcome to Eat_well".center(line_width)
+puts "Menu....Eat_well".center(line_width)
+puts "Delivery time....great".center(line_width)
+puts "===========================".center(line_width)
+puts
+puts menu.show_menu
+
+loop do
+  puts "===========================".center(line_width)
+  puts "What would you like to order? (type 'done' when finished and you are ready to place your order)"
+  item = gets.chomp
+  break if item == "done"
+  print "How many would you like? "
+  qty = gets.to_i
+  dishes_prices[item] = qty
+end
+
+puts Takeaway.new(menu: menu).order_placed(dishes_prices)
