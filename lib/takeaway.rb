@@ -9,6 +9,7 @@ class Takeaway
   def initialize(menu = Menu.new, order = Order.new, sms = SMS.new)
     @order = order
     @sms = sms
+    @menu = menu
   end
 
   def print_menu

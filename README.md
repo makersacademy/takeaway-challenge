@@ -14,6 +14,37 @@ Takeaway Challenge
 
  ```
 
+Updated README
+-------
+
+This is a takeaway application that will print you a menu of available dishes, track your oder of multiple items and when you are ready you can view your total bill and order your meal. You will also be sent a a confirmation by text quoting your delivery time.
+
+Potential scenario below:
+
+2.4.1 :059 > takeaway = Takeaway.new
+ => #<Takeaway:0x007f9c808ce550 @order=#<Order:0x007f9c808ce4d8 @dishes={}, @menu=#<Menu:0x007f9c808ce4b0 @dishes={"Fish"=>2365, "Chips"=>1836, "Kebab"=>4317, "Lobster"=>11092, "Shark"=>15423}>>, @sms=#<SMS:0x007f9c808ce410>, @menu=#<Menu:0x007f9c808ce528 @dishes={"Fish"=>2365, "Chips"=>1836, "Kebab"=>4317, "Lobster"=>11092, "Shark"=>15423}>>
+2.4.1 :060 > takeaway.print_menu
+ => ["Fish: £2365", "Chips: £1836", "Kebab: £4317", "Lobster: £11092", "Shark: £15423"]
+2.4.1 :061 > takeaway.order('Lobster', 4)
+ => 4
+2.4.1 :062 > takeaway.bill
+ => 44368
+2.4.1 :063 > takeaway.order('Shark', 5)
+ => 5
+2.4.1 :064 > takeaway.bill
+ => 121483
+2.4.1 :065 > takeaway.complete_order
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC9545fb29292bf69857193f0b6e192816/Messages/SM4ea288aee18d4b00bb8f577b1047a5a8>
+2.4.1 :066 >
+
+
+
+
+
+
+
+
+
 Instructions
 -------
 
