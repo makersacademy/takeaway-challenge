@@ -2,7 +2,7 @@
 class Takeaway
   attr_reader :menu, :order
 
-  def initialize(menu: menu, order: nil )
+  def initialize(menu: menu, order: order )
     @menu = menu
     @order = order
   end
