@@ -14,15 +14,12 @@ attr_reader :list
     SWEETCORN_FRITTERS: 6.50
     }
 
-  def initialize
-    @list = MENU
-  end
-
   def show
     p MENU
   end
 
   def includes?(item)
+    @list = MENU
     @list.include?(item.to_sym)
   end
 

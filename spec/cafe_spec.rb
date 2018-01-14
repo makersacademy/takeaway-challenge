@@ -2,8 +2,8 @@ require 'cafe'
 
 describe Cafe do
 
-  subject(:cafe) { described_class.new }
-  # let(:menu) { double :menu }
+  subject(:cafe) { described_class.new(messager) }
+  let(:messager) { double :messager }
 
   describe 'menu retrieval' do
     it 'requests menu' do
@@ -26,23 +26,16 @@ describe Cafe do
   end
 
   describe '#checkout' do
-    it 'provides a total' do
+    it 'provides a correct total' do
       cafe.order_me("BANANA_BREAD", 2)
-      expect(cafe.checkout(11)).to eq "Thank you for £11.0."
+      expect(messager).to receive(:confirm_order_by_text)
+      cafe.checkout(11)
     end
+
     it 'checks balance at checkout' do
       cafe.order_me("BANANA_BREAD", 2)
       expect{ (cafe.checkout(8)) }.to raise_error "Please pay the correct amount of £11.0."
     end
   end
-
-  # describe '#confirm_order' do
-  #   it 'sends a text' do
-  #     cafe.order_me("BANANA_BREAD", 2)
-  #     expect(cafe.checkout(8)).to "
-  #   end
-  # end
-
-
 
 end

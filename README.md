@@ -42,9 +42,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 * Hints on functionality to implement:
-  * otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
+
   * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
 
 * Advanced! (have a go if you're feeling adventurous):
   * Implement the ability to place orders via text message.

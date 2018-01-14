@@ -1,15 +1,16 @@
 require_relative 'order'
 require_relative 'menu'
-# require_relative 'messager'
+require_relative 'messager'
 
 class Cafe
 
-  attr_reader :menu, :order, :message
+  attr_reader :menu, :order, :message, :time
 
-  def initialize
+  def initialize(messager = Messager.new)
     @menu = Menu.new
     @order = Order.new
-    # @messager = Messager.new
+    @messager = messager
+    @time
   end
 
   def read_menu
@@ -29,14 +30,17 @@ class Cafe
   end
 
   def order_is_confirmed
-    # @messager.confirm_order
+    @messager.confirm_order_by_text(text_content)
     "Thank you for £#{@order.total}."
   end
 
-  private
-
   def ask_for_order
     "What would you like to order?"
+  end
+
+  def text_content
+    @time = (Time.now + 3600).strftime("%H:%M")
+    "Thank you! Your order was placed and will be delivered before #{@time}."
   end
 
 end
