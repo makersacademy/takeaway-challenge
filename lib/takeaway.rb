@@ -15,21 +15,24 @@ class TakeAway
     menu.show
   end
 
-  def choose_item(item, quantity)
+  def choose_item(item, amount = 1)
     raise 'Cannot choose this item!' unless on_menu? item
-    order << { 'item' => item, 'quantity' => quantity, 'price' => get_price(item) }
+    chosen_item = hashed_order(item, amount)
+    order << hashed_order(item, amount)
+    "#{chosen_item[:item_name]} x#{chosen_item[:quantity]} = £%0.2f" % item_subtotal(chosen_item)
   end
 
   def view_order
     raise 'Please select an item first' if order.empty?
-    order.each do |item|
-      puts "#{item['item']}: #{item['quantity']} @ £%0.2f" % item['price']
-    end
-    update_total
+    build_order
+  end
+
+  def view_total
+    calculate_total
   end
 
   def place_order
-    message = "Thank you for your order. The total is £%0.2f and will be with you within the hour!" % total_cost
+    message = "Thank you for your order. #{calculate_total} and will be with you within the hour!"
     send_confirmation(message)
   end
 
@@ -37,17 +40,31 @@ class TakeAway
 
   attr_reader :menu
 
-  def on_menu?(item)
-    menu.items.include? item
+  def build_order
+    order.map do |item|
+      "#{item[:item_name]} x#{item[:quantity]} = £%0.2f" % item_subtotal(item)
+    end.join(', ')
   end
 
-  def get_price(item)
-    menu.items[item]
+  def hashed_order(item, amount)
+    item_hash = display_menu.find { |hash| hash[:item_name] == item }
+    item_hash[:quantity] = amount
+    item_hash
   end
 
-  def update_total
-    @total_cost = order.reduce(0) { |sum, item| sum + item['quantity'] * item['price'] }
-    puts "Grand total: £%0.2f" % @total_cost
+  def on_menu?(name)
+    display_menu.any? do |item|
+      item.has_value? name
+    end
+  end
+
+  def calculate_total
+    @total_cost = order.reduce(0) { |sum, item| sum + item[:quantity] * item[:price].to_f }
+    "The grand total is £%0.2f" % total_cost
+  end
+
+  def item_subtotal(chosen_item)
+    chosen_item[:price].to_f * chosen_item[:quantity]
   end
 
   def send_confirmation(message)

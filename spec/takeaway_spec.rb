@@ -7,23 +7,27 @@ describe TakeAway do
 
   describe '#display_menu' do
     it 'displays the menu' do
-      allow(menu).to receive(:show).and_return "First item: £price"
-      expect(takeaway.display_menu).to eq "First item: £price"
+      expect(menu).to receive(:show)
+      takeaway.display_menu
     end
   end
 
   describe '#choose_item' do
     before do
-      allow(menu).to receive(:items).and_return({ 'Pizza' => 1.50 })
+      allow(menu).to receive(:show).and_return([{ item_name: 'Pizza', price: '1.50' }])
     end
 
     it 'chooses an item and a quantity to order' do
-      takeaway.choose_item('Pizza', 1)
-      expect(takeaway.order).to include({ 'item' => 'Pizza', 'quantity' => 1, 'price' => 1.5 })
+      takeaway.choose_item('Pizza')
+      expect(takeaway.order).to include({ item_name: 'Pizza', price: '1.50', quantity: 1 })
     end
 
     it 'checks if the item is on the menu' do
       expect { takeaway.choose_item('exoticfood', 100) }.to raise_error 'Cannot choose this item!'
+    end
+
+    it 'lets the user know what was added to the order' do
+      expect(takeaway.choose_item('Pizza')).to eq "Pizza x1 = £1.50"
     end
   end
 
@@ -35,18 +39,22 @@ describe TakeAway do
     end
 
     context 'there have been some items chosen' do
-      before do
-        allow(menu).to receive(:items).and_return({ 'Pizza' => 1.50 })
-        takeaway.choose_item('Pizza', 1)
-      end
-
       it 'shows the order' do
-        expect { takeaway.view_order }.to output(include("Pizza: 1 @ £1.50")).to_stdout
+        allow(menu).to receive(:show).and_return([{ item_name: 'Pizza', price: '1.50' }])
+        takeaway.choose_item('Pizza')
+        expect(takeaway.view_order).to eq 'Pizza x1 = £1.50'
       end
+    end
+  end
 
-      it 'updates the total' do
-        expect { takeaway.view_order }.to change { takeaway.total_cost }.by(1.50)
-      end
+  describe '#view_total' do
+    before do
+      allow(menu).to receive(:show).and_return([{ item_name: 'Pizza', price: '1.50' }])
+      takeaway.choose_item('Pizza')
+    end
+
+    it 'calculates the total' do
+      expect { takeaway.view_total }.to change { takeaway.total_cost }.by(1.50)
     end
   end
 
@@ -56,7 +64,7 @@ describe TakeAway do
     end
 
     it 'sends a text message' do
-      expect(takeaway).to receive(:send_confirmation).with("Thank you for your order. The total is £0.00 and will be with you within the hour!")
+      expect(takeaway).to receive(:send_confirmation).with("Thank you for your order. The grand total is £0.00 and will be with you within the hour!")
       takeaway.place_order
     end
   end

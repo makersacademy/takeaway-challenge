@@ -1,18 +1,20 @@
-class Menu
-  attr_reader :items
+require 'csv'
 
-  def initialize
-    @items = {
-      'Pizza' => 11.95,
-      'Vegetarian Pizza' => 10.95,
-      'Salad' => 5.25,
-      'Drink' => 3.50
-    }
+class Menu
+  def initialize(menu_data: './data/menu_items.csv')
+    @items = make_hash(menu_data)
   end
 
   def show
-    items.each do |food, price|
-      puts "#{food}: £%0.2f" % price
-    end
+    items.clone
+  end
+
+  private
+
+  attr_reader :items
+
+  def make_hash(file_name)
+    read_file = CSV.open(file_name, headers: true, header_converters: :symbol)
+    read_file.to_a.map { |row| row.to_hash }
   end
 end
