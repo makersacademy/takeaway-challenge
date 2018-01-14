@@ -25,7 +25,7 @@ class Order
   def submit(amount)
     raise "Order failed, nothing in basket" if empty_basket?
     check_total(amount)
-    "Thank you! Your order will be delivered at #{deadline_set}"
+    "Thank you! Your order will be delivered by #{deadline_set}"
   end
 
   

@@ -62,13 +62,13 @@ describe Order do
       end
 
       it "returns order time, one hour later than 1:00" do 
-        message =  "Thank you! Your order will be delivered at 02:00"
+        message =  "Thank you! Your order will be delivered by 02:00"
         expect(order.submit(17.5)).to eq message
       end
 
     it "returns order time, one hour later than 23:59" do 
       set_time(23, 59)	
-      message =  "Thank you! Your order will be delivered at 00:59"
+      message =  "Thank you! Your order will be delivered by 00:59"
       expect(order.submit(17.5)).to eq message
     end
 
