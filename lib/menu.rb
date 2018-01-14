@@ -19,6 +19,7 @@ class Menu
   end
 
   def print_menu
+    fail "No items added to menu" if items.empty?
     items.each { |k, v| puts "#{k}, price £#{v}0" }
   end
 

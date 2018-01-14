@@ -33,6 +33,9 @@ describe Menu do
       menu.add_items("Prawn Toast", 3.0)
       expect { menu. print_menu }.to output("Prawn Toast, price £3.00\n").to_stdout
     end
+    it 'raises error if no items added to menu' do
+      expect { menu.print_menu }.to raise_error "No items added to menu"
+    end
   end
   describe "#available?(item)" do
     it 'confirms if an item is not available from stored menu items' do
