@@ -6,11 +6,7 @@ class Order
   end
 
   def add(item, qty)
-    if @basket.has_key? item
-      @basket[item] += qty
-    else
-      @basket.store(item, qty)
-    end
+    @basket.has_key?(item) ? @basket[item] += qty : @basket.store(item, qty)
   end
 
   def to_s

@@ -14,7 +14,6 @@ class Takeaway
   end
 
   def order(item, qty = 1)
-    # create_order unless @order
     @order.add(item, qty)
   end
 

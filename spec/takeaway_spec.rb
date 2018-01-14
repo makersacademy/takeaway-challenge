@@ -40,6 +40,6 @@ describe Takeaway do
       takeaway.submit_order
     end
   end
-  end
+  
 
 end
