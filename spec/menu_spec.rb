@@ -4,14 +4,14 @@ describe Menu do
 
   subject(:menu) { described_class.new }
   let(:dishes) do
-    [
-      { :name => "spring rolls", :price => 2 },
-      { :name => "sour pork", :price => 5 },
-      { :name => "vegetables noodles", :price => 4 },
-      { :name => "shredded duck", :price => 7 },
-      { :name => "dumplings", :price => 3 },
-      { :name => "chop suey", :price => 4 }
-    ]
+    {
+      "spring rolls" => 2,
+      "sour pork" => 5,
+      "vegetables noodles" => 4,
+      "shredded duck" => 7,
+      "dumplings" => 3,
+      "chop suey" => 4
+    }
   end
 
   describe "attributes" do
