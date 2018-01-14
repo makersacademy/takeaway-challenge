@@ -19,28 +19,36 @@ describe Order do
     end
   end
   describe '#total' do
-    it 'returns the total cost of the order' do
-      order.add_items("Prawn Toast", 2, 4.50)
-      expect(order.total).to eq 9
+    context 'not items added to order' do
+      it 'confirms no items added to order if order empty' do
+        expect { order.total }.to raise_error "No items ordered yet!"
+      end
     end
-    it 'returns the cost when multiple items added with different quantity' do
-      order.add_items("Prawn Toast", 2, 4.50)
-      order.add_items("Fried rice", 1, 3)
-      order.add_items("Beef Chow mein", 6, 6.00)
-      expect(order.total).to eq 48
-    end
-    it 'confirms no items added to order if order empty' do
-      expect { order.total }.to raise_error "No items ordered yet!"
+    context "items added to order" do
+      before do
+        order.add_items("Prawn Toast", 2, 4.50)
+      end
+      it 'returns the total cost of the order' do
+        expect(order.total).to eq 9
+      end
+      it 'returns the cost when multiple items added with different quantity' do
+        order.add_items("Fried rice", 1, 3)
+        order.add_items("Beef Chow mein", 6, 6.00)
+        expect(order.total).to eq 48
+      end
     end
   end
   describe '#verified?(total)' do
-    it 'checks user input against order total and confirms true if correct' do
-      order.add_items("Prawn Toast", 1, 4.50)
-      expect(order.verified?(4.50)).to eq true
-    end
-    it 'returns false if total given does not match order total' do
-      order.add_items("Prawn Toast", 1, 4.50)
-      expect(order.verified?(9)).to eq false
+    context 'items added to order' do
+      before do
+        order.add_items("Prawn Toast", 1, 4.50)
+      end
+      it 'checks user input against order total and confirms true if correct' do
+        expect(order.verified?(4.50)).to eq true
+      end
+      it 'returns false if total given does not match order total' do
+        expect(order.verified?(9)).to eq false
+      end
     end
   end
 end
