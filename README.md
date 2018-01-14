@@ -41,6 +41,10 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+## Getting started
+* git clone git@github.com:Leigan0/takeaway-challenge.git
+* cd takeaway-challenge
+* bundle
 
 ## Usage
 * To create menu = Menu.new
