@@ -13,6 +13,71 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Approach
+-------
+
+You may have noticed that the menu is disgusting. That's because this is a subsidiary of the Wem's current horrible project; FishyWheelz. Check out the [repo](https://github.com/wemmm/fishbot) and the [twitter](https://twitter.com/magicalbestbest) for more delightful fishy and sometimes edible products.
+
+##### Diagramming
+
+![diagram](https://github.com/elliewem/takeaway-challenge/blob/master/IMG_4018.jpg)
+
+My approach for this challenge was to create four classes; takeaway, menu, checkout and confirmation_text. The checkout would be the only class that could access the confirmation_text.
+
+###### How to use
+
+* Viewing the menu
+
+```
+=> require takeaway.rb
+=> t = Takeaway.new
+=> t.viewmenu
+=> 2.4.1 :004 > t.viewmenu
+tuna soaked nut butter, £2.00
+sweaty eel sausage, £2.50
+microwaved xmas crab, £3.00
+easy peasy hot & eely cheesy balls, £3.50
+Kenny Loggins' mackeral tagine, £9.00
+chubby tea bags, £1.50
+mushed tadpole burrito, £6.00
+cod monsieur, £6.50
+steamy bream hot box, £6.250
+fishy goods and services, £7.00
+muddy fish-finger aeoli, £1.00
+hot pollacks, £4.00
+scaley protein shake, £5.00
+freaky lamp fish, £10.00
+code smells, £0.50
+
+```
+
+* Adding a 'food item' to the basket more than once, and viewing the basket
+
+```
+=> t.order(4,1)
+ => "You added easy peasy hot & eely cheesy balls 1 time(s)!"
+=> t.order(6,2)
+ => "You added chubby tea bags 2 time(s)!"
+=> t.order(9,1)
+ => "You added steamy bream hot box 1 time(s)!"
+=> t.menu.basket
+ => [{:"easy peasy hot & eely cheesy balls"=>3.5}, {:"chubby tea bags"=>1.5}, {:"chubby tea bags"=>1.5}, {:"steamy bream hot box"=>6.25}]
+ ```
+
+ * Checking the order
+
+ ```
+=> t.check_order
+fishy goods and services: 7.0
+muddy fish-finger aeoli: 1.0
+ => "Your total is £8.00!"
+```
+
+* Completing the order
+```
+=> t.complete_order
+```
+![diagram](https://github.com/elliewem/takeaway-challenge/blob/master/IMG_6527.jpg)
 
 Instructions
 -------
