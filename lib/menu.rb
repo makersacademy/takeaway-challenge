@@ -20,7 +20,7 @@ class Menu
 
   def print_menu
     fail "No items added to menu" if items.empty?
-    #separation of concerns needs to be considered further
+    # separation of concerns needs to be considered further
     items.each { |k, v| puts "#{k}, price £#{v}0" }
   end
 

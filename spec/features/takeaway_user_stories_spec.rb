@@ -44,7 +44,7 @@ describe 'takeaway' do
   describe 'user complete_order' do
     it 'confirms order empty if no items ordered' do
       takeaway1 = Takeaway.new
-      expect{ takeaway1.complete_order(2) }.to raise_error 'No items ordered yet!'
+      expect { takeaway1.complete_order(2) }.to raise_error 'No items ordered yet!'
     end
     it 'allows user to verify order by checking user total against order total' do
       takeaway1 = Takeaway.new(menu, order)
