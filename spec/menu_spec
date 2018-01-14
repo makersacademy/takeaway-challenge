@@ -2,4 +2,18 @@ require 'menu'
 
 describe Menu do
 
+  subject(:menu) { described_class.new(dishes) }
+
+  let(:dishes) do
+    {
+      eggs: 1.50,
+      milk: 2.30
+    }
+  end
+
+  it 'contains a list of price of dishes' do
+    expect(menu.dishes).to eq(dishes)
+  end
+
 end
+
