@@ -7,6 +7,7 @@ class Order
 
   def add_items(item, quantity, cost)
     @items << { item: item, quantity: quantity, cost: cost }
+    "#{quantity} x #{item} sucessfully added"
   end
 
   def total

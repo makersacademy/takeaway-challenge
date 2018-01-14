@@ -10,8 +10,8 @@ describe Order do
   end
 
   describe '#add_items(item, quantity)' do
-    it 'returns items added to order' do
-      expect(order.add_items("Prawn Toast", 2, 4.50)).to eq [{ item: "Prawn Toast", quantity: 2, cost: 4.5 }]
+    it 'confirms string return items added to order' do
+      expect(order.add_items("Prawn Toast", 2, 4.50)).to eq "2 x Prawn Toast sucessfully added"
     end
     it 'stores items added to order in array of hashes' do
       order.add_items("Prawn Toast", 2, 4.50)
