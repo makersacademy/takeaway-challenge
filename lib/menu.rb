@@ -21,4 +21,8 @@ class Menu
   def print_menu
     items.each { |k, v| puts "#{k}, price £#{v}0" }
   end
+
+  def item_available?(item)
+    items.has_key?(item)
+  end
 end

@@ -50,3 +50,11 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * To create a takeaway - takeaway = Takeaway.new(menu)
 * Takeaway object will default load with a an empty menu object, you have the option to add an argument to load an alternative menu
 * To print menu items to screen - takeaway.print_menu
+
+## Technologies used
+* RSpec
+* Ruby
+* Twilio
+
+## Running tests
+* Rspec
