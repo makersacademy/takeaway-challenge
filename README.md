@@ -146,6 +146,9 @@ Dish
   has a name
   has a price
 
+Takeaway features
+  can place an order
+
 MenuPrinter
   prints the menu name
   prints dishes
@@ -219,11 +222,14 @@ TwilioService
   creates a Twilio REST client
   sends an SMS
 
-Finished in 0.03309 seconds (files took 0.50804 seconds to load)
-49 examples, 0 failures
 
-COVERAGE: 100.00% -- 366/366 lines in 22 files
+Finished in 0.03422 seconds (files took 0.5024 seconds to load)
+50 examples, 0 failures
+
+COVERAGE: 100.00% -- 380/380 lines in 23 files
 ```
+
+A feature test was written to test the process a customer might go through when placing an order. This passes.
 
 Next steps
 -------
