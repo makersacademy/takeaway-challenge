@@ -14,4 +14,10 @@ describe Menu do
     end
   end
 
+  describe '#price' do
+    it 'returns the price of a meal' do
+      expect(menu.price('salad')).to eq(meals['salad'])
+    end
+  end
+
 end

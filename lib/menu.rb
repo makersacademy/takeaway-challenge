@@ -13,4 +13,8 @@ class Menu
     list[0..-3]
   end
 
+  def price(meal)
+    meals[meal]
+  end
+  
 end

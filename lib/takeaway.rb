@@ -13,6 +13,7 @@ class Takeaway
 
   def make_order(meals)
     meals.each { |meal, number| order.add(meal, number) }
+    order.total_cost
   end
 
 end
