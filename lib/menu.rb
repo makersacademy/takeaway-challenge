@@ -12,7 +12,7 @@ class Menu
     @selection.dup
   end
 
-  def read
+  def print
     @selection.each do 
        |option| puts "#{option.food}, price: #{option.price}" 
      end

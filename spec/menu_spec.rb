@@ -12,18 +12,17 @@ describe Menu do
 
   end
 
-  describe "#read" do
-
+  describe "#print" do
     it "should print out 5 lines of tofu and price of 5" do
       test_text = "tofu, price: 5\n" * 5
-      expect{menu.read}.to output(test_text).to_stdout
+      expect{menu.print}.to output(test_text).to_stdout
     end
 
     it "should print out 5 lines of meat and price of 1000" do
       test_text = "meat, price: 1000\n" * 5
       allow(option).to receive(:price).and_return(1000)
       allow(option).to receive(:food).and_return("meat")
-      expect{menu.read}.to output(test_text).to_stdout
+      expect{menu.print}.to output(test_text).to_stdout
     end
 
   end
