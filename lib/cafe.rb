@@ -4,13 +4,12 @@ require_relative 'messager'
 
 class Cafe
 
-  attr_reader :menu, :order, :message,
+  attr_reader :menu, :order, :message, :time
 
   def initialize(messager = Messager.new)
     @menu = Menu.new
     @order = Order.new
     @messager = messager
-    @time
   end
 
   def read_menu
@@ -28,12 +27,6 @@ class Cafe
     raise "Please pay the correct amount of £#{@order.total}." unless @order.check(customer_calc)
     order_is_confirmed
   end
-
-  def basket_summary
-    @order.summary
-  end
-
-private
 
   def order_is_confirmed
     @messager.confirm_order_by_text(text_content)
