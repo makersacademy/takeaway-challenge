@@ -3,7 +3,7 @@ require "menu"
 describe Menu do 
   let(:option_class) {double :option_class, new: option} 
   let(:option) {double :option, price: 5, food: "tofu"}
-  subject(:menu) { described_class.new }
+  subject(:menu) { described_class.new(option_class) }
 
   describe "#choices" do
     it "should have at least five menu options" do
@@ -22,7 +22,7 @@ describe Menu do
     it "should print out 5 lines of meat and price of 1000" do
       test_text = "meat, price: 1000\n" * 5
       allow(option).to receive(:price).and_return(1000)
-      allow(option).to receive(:food).and_return("meat") 
+      allow(option).to receive(:food).and_return("meat")
       expect{menu.read}.to output(test_text).to_stdout
     end
 
