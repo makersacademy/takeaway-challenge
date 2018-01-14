@@ -23,5 +23,14 @@ describe Order do
       order.add_items("Prawn Toast", 2, 4.50)
       expect(order.total).to eq 9
     end
+    it 'returns the cost when multiple items added with different quantity' do
+      order.add_items("Prawn Toast", 2, 4.50)
+      order.add_items("Fried rice", 1, 3)
+      order.add_items("Beef Chow mein", 6, 6.00)
+      expect(order.total).to eq 48
+    end
+    it 'confirms no items added to order if order empty' do
+      expect{ order.total }.to raise_error "No items ordered yet!"
+    end
   end
 end
