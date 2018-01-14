@@ -7,27 +7,25 @@ describe Menu do
   let(:dish) { double :dish }
   let(:name) { double :name }
   let(:price) { double :price }
-  let(:dishes) { double :dishes }
   let(:quantity) { double :quantity }
   let(:order) { double :order }
 
   describe 'initially' do
     it 'has no dishes' do
-      allow(menu).to receive(:dishes)
-      expect(menu.dishes).to eq nil
+      expect(menu.menu).to be_empty
     end
   end
 
-  describe '#add_dish' do
+  describe '#add' do
     it 'adds a dish to menu' do
-      subject.add_dish(dish)
-      expect(subject.add_dish(dish)).to be_truthy
+      subject.add(dish, price)
+      expect(subject.add(dish, price)).to be_truthy
     end
   end
 
   describe '#display' do
     it 'displays the menu' do
-      subject.add_dish(dish)
+      subject.add(dish, price)
       allow(menu).to receive(:display).and_return(:dishes)
       expect(menu.display).to be_truthy
     end
@@ -36,7 +34,7 @@ describe Menu do
   describe '#choose' do
 
     it 'can select a menu item' do
-      subject.add_dish(dish)
+      subject.add(dish, price)
       allow(menu).to receive(:display).and_return(:dishes)
       allow(menu).to receive(:choose).and_return(:order)
       expect(menu.choose(dish, quantity)).to be_truthy
