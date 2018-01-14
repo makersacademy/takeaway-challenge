@@ -50,9 +50,12 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * To create a takeaway - takeaway = Takeaway.new(menu)
 * Note, menu defaults with order class, to add alternative object - Takeaway.new(menu_arg, order_arg)
 * Takeaway object will default load with a an empty menu object, you have the option to add an argument to load an alternative menu
-* To print menu items to screen - takeaway.print_menu
+* To print menu items to STDout - takeaway.print_menu
 * To add items to order - takeaway.order_item(item, quantity) e.g takeaway.order_item("Fried Rice", 3)
+* Error will be raised if item not available
 * To verify order - takeaway.verify_order(order_total) e.g. takeaway.verify_order(15)
+* Error will be raised if no items in basket
+* If order total input matches order total then confirmation text message is sent
 
 ## Technologies used
 * RSpec
