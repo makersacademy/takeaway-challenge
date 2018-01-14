@@ -12,45 +12,38 @@ describe Takeaway do
     end
   end
 
-  describe "#add_to_order" do
+  describe "#place_order" do
 
-    it "adds items" do
-      takeaway.add_to_order("spring rolls", 3)
-      takeaway.add_to_order("dumplings", 7)
-      expect(takeaway.order).to eq({ "spring rolls" => 3, "dumplings" => 7 })
+    context "when correct total given" do
+      it "adds a single item to the order" do
+        allow(menu).to receive(:dishes).and_return({ "spring rolls" => 2 })
+        takeaway.place_order("spring rolls", 3, 6)
+        expect(takeaway.order).to eq({ "spring rolls" => 3 })
+      end
+
+      it "adds multiple items to the order" do
+        allow(menu).to receive(:dishes).and_return({ "spring rolls" => 2, "dumplings" => 3})
+        takeaway.place_order("spring rolls", 3, "dumplings", 1, 9)
+        expect(takeaway.order).to eq({ "spring rolls" => 3, "dumplings" => 1 })
+      end
     end
 
-    it "adds items twice" do
-      takeaway.add_to_order("spring rolls", 3)
-      takeaway.add_to_order("dumplings", 7)
-      takeaway.add_to_order("spring rolls", 2)
-      expect(takeaway.order).to eq({ "spring rolls" => 5, "dumplings" => 7 })
-    end
-
-    it "returns a message with the order" do
-      takeaway.add_to_order("spring rolls", 3)
-      takeaway.add_to_order("dumplings", 7)
-      expect(takeaway.add_to_order("spring rolls", 2)).to eq "You just added '2 x spring rolls'. Your order so far is: '5 x spring rolls, 7 x dumplings'"
+    context "when incorrect total given and does not place the order" do
+      it "raises an error" do
+        allow(menu).to receive(:dishes).and_return({ "spring rolls" => 2 })
+        expect { takeaway.place_order("spring rolls", 3, 5) }.to raise_error "The total is not correct and the order has not been placed!"
+        expect(takeaway.order).to eq({})
+      end
     end
   end
 
   describe "#get_total" do
 
     it "returns the total cost of the dishes in the order" do
-      takeaway.add_to_order("spring rolls", 4)
       allow(menu).to receive(:dishes).and_return({ "spring rolls" => 2 })
-      expect(takeaway.get_total).to eq 8
+      takeaway.place_order("spring rolls", 4, 8)
+      expect(takeaway.get_total(["spring rolls", 4])).to eq 8
     end
   end
 
-  describe "#display_total" do
-
-    it "returns a message with the total" do
-      takeaway.add_to_order("spring rolls", 1)
-      takeaway.add_to_order("dumplings", 1)
-      takeaway.add_to_order("spring rolls", 2)
-      allow(menu).to receive(:dishes).and_return({ "spring rolls" => 2,  "dumplings" => 3 })
-      expect(takeaway.display_total).to eq "The total is: £ 9"
-    end
-  end
 end

@@ -9,22 +9,18 @@ class Takeaway
     @order = {}
   end
 
-  def add_to_order(item, quantity)
-    @order[item].nil? ? @order[item] = quantity : @order[item] += quantity
-    "You just added '#{quantity} x #{item}'. Your order so far is: '#{display_order(@order)}'"
+  def place_order(*order, total)
+    raise "The total is not correct and the order has not been placed!" if total != get_total(order)
+    @order = format_order(order)
   end
 
-  def get_total
-    @order.map { |item, quantity| quantity * menu.dishes[item] }.inject(0, :+)
-  end
-
-  def display_total
-    "The total is: £ #{get_total}"
+  def get_total(order)
+    format_order(order).map { |item, quantity| quantity * menu.dishes[item] }.inject(0, :+)
   end
 
   private
 
-  def display_order(order)
-    order.map { |k, v| "#{v} x #{k}" }.join(", ")
+  def format_order(order)
+    order.each_slice(2).to_a.to_h
   end
 end
