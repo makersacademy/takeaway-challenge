@@ -18,9 +18,7 @@ class Order
   end
 
   def total
-    total = 0
-    @basket.each{ |item, qty| total += (@menu.price(item) * qty) }
-    total
+    @basket.map{ |item, qty| @menu.price(item) * qty }.sum
   end
 
   def basket
