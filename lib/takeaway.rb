@@ -3,14 +3,14 @@ require_relative 'order'
 require_relative 'sms_tool'
 
 class Takeaway
-  include SmsTool
 
   attr_reader :menu, :order_history
 
-  def initialize(menu = Menu.new, order_class = Order)
+  def initialize(menu = Menu.new, order_class = Order, sms_tool = SmsTool.new)
     @menu = menu
     @order_history = []
     @order_class = order_class
+    @sms_tool = sms_tool
   end
 
   def print_menu
@@ -40,7 +40,7 @@ class Takeaway
   end
 
   def send_confirmation_sms
-    SmsTool.send_message
+    @sms_tool.send_message
   end
 
 end

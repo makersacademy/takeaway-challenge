@@ -1,12 +1,14 @@
 class FakeSms
   attr_accessor :messages
-  @messages = []
+  def initialize
+    @messages = []
+  end
 
-  def self.messages
+  def messages
     @messages
   end
 
-  def self.send_message(msg = "Message sent")
+  def send_message(msg = "Message sent")
     @messages << msg
   end
 end

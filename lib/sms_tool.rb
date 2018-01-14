@@ -1,15 +1,15 @@
 require 'twilio-ruby'
 require 'dotenv/load'
 
-module SmsTool
+class SmsTool
 
-		def self.send_message(number = ENV['NUMBER'])
+		def self.send_message(message, number = ENV['NUMBER'])
 				time = Time.now + (1 * 60 * 60)
 				boot_twilio
 				@client.api.account.messages.create(
 	  		from: '+442870032047',
 	  		to: number,
-	  		body: "Thank you! Your order was placed and will be delivered before #{time}.")
+	  		body: "Thank you! Your order:#{message} was placed and will be delivered before #{time}.")
 		end
 
 		def self.boot_twilio

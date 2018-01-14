@@ -4,7 +4,8 @@ describe Takeaway do
   let(:order) { double :order, add_items: 'Prawn Toast, 1', verified?: true }
   let(:order_class) { double :order_class, new: order }
   let(:menu){ double :menu, print_menu: { "Prawn Toast" => 4.50, "Beef Chow Mein" => 6.50 }, item_available?: true, items: { "Prawn Toast" => 4.50, "Beef Chow Mein" => 6.50 } }
-  subject(:takeaway) { described_class.new(menu, order_class) }
+  sms_tool = FakeSms.new
+  subject(:takeaway) { described_class.new(menu, order_class, sms_tool) }
 
   describe 'initialize' do
     it 'initializes with orders history' do
@@ -52,13 +53,20 @@ describe Takeaway do
       allow(order).to receive(:verified?).and_return(false)
       expect { takeaway.complete_order(10) }. to raise_error "Total does not match current order, order not processed"
     end
-    it 'saves verified order to order history' do
-      takeaway.complete_order(4.50)
-      expect(takeaway.order_history).to include order
-    end
-    it 'sends text message confirmation if order total matches' do
-      takeaway.complete_order(4.50)
-      expect(FakeSms.messages).to eq ["Message sent"]
+    context 'correct order total provided' do
+      before do
+        takeaway.complete_order(4.50)
+      end
+      it 'sends text message confirmation if order total matches' do
+        expect(sms_tool.messages).to eq ["Message sent"]
+      end
+      it 'saves verified order to order history' do
+        expect(takeaway.order_history).to include order
+      end
+      it 'sends a payment confirmation text message' do
+        expect(sms_tool).to receive(:send_message)
+        takeaway.complete_order(4.50)
+      end
     end
   end
 end

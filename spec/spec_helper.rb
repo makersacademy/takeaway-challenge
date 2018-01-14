@@ -18,6 +18,5 @@ RSpec.configure do |config|
   end
   config.before(:each) do
     stub_const('SmsTool', FakeSms)
-    FakeSms.messages.pop
   end
 end
