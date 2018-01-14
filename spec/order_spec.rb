@@ -47,10 +47,11 @@ let(:meal) { double :meal}
   end
 
   describe '#confirm(answer)' do
-    it 'should set selection to nil if user doesnt enter yes' do
+    it "raise error if user doesn't confirm order" do
       error = "Order cancelled, please select items"
       expect{order.confirm(false)}.to raise_error error
     end
+
   end
 
 

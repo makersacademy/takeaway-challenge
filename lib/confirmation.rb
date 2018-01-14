@@ -14,7 +14,7 @@ class Confirmation
   end
 
   private
-
+  
   def twilio
     account_sid = "AC10fd3faa78a3d63a02326e48229577f1"
     auth_token = "455568101452ba91849052c8147480d4"
