@@ -3,7 +3,7 @@ require "date"
 
 class Order 
    
-  def initialize(time: time = DateTime.now, menu: menu = Menu.new )
+  def initialize(time = DateTime.now, menu = Menu.new )
   @time = time
   @menu = menu
   @list = []
