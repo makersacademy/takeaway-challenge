@@ -5,7 +5,7 @@ describe Order do
 
   subject(:order) { described_class.new(menu) }
 
-  let(:menu) { instance_double("Menu") } #verifying double
+  let(:menu) { double(:menu) } #verifying double
 
   let(:dishes) do
     {

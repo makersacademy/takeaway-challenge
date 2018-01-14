@@ -4,7 +4,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order) }
 
   let(:menu) { double(:menu, show: showed_menu) }
-  let(:order) { instance_double("Order", order, total: 11.20) }
+  let(:order) { double(:order, total: 11.20) }
 
   let(:showed_menu) { "pierogi: £4.00" }
   let(:dishes) { { pierogi: 4.00, kopytka: 2.00, bigos: 5.20 } }
