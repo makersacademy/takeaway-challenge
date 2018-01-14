@@ -42,4 +42,11 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-##
+## Usage
+* To create menu = Menu.new
+* Within menu - two constants of CHINESE_MENU_ITEMS, or INDIAN_MENU_ITEMS, user has option to add these items to menu
+* To add from dishes from a constant  - menu.add_items_from_hash(CHINESE_MENU_ITEMS)
+* To add dishes to menu - menu.add_items("name argument", price) e.g. menu.add_items('Chips', 2.00)
+* To create a takeaway - takeaway = Takeaway.new(menu)
+* Takeaway object will default load with a an empty menu object, you have the option to add an argument to load an alternative menu
+* To print menu items to screen - takeaway.print_menu
