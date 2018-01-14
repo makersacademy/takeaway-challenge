@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '~> 2.4.0'
 
 gem 'dotenv'
+gem 'twilio'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'
