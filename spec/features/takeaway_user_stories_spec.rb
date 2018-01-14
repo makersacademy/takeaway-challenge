@@ -36,7 +36,7 @@ describe 'takeaway' do
 
   describe 'order feature non available items' do
     it 'will not allow user to order items that are not on the menu' do
-      expect { takeaway.order_item("Pizza", 3) }.to raise_error 'Sorry, we do not sell this dish'
+      expect { takeaway.order_item("Pizza", 3) }.to raise_error 'Sorry, we do not sell Pizza'
     end
   end
 

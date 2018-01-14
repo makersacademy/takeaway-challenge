@@ -21,10 +21,12 @@ describe Takeaway do
       expect(takeaway.print_menu).to eq ({ "Prawn Toast" => 4.50, "Beef Chow Mein" => 6.50 })
     end
   end
+
   describe '#order_item(item,quantity)' do
     it 'will not allow user to order an item that is not available' do
+      item = "Pizza"
       allow(menu).to receive(:item_available?).and_return(false)
-      expect { takeaway.order_item("Pizza", 1) }.to raise_error "Sorry, we do not sell this dish"
+      expect { takeaway.order_item(item, 1) }.to raise_error "Sorry, we do not sell #{item}"
     end
     it 'creates a new order object, if no order in progress' do
       takeaway.order_item('Prawn Toast', 1)
