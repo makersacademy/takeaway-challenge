@@ -11,12 +11,17 @@ describe Menu do
     }
   end
 
+  it 'contains a list of price of dishes' do
+    expect(menu.dishes).to eq(dishes)
+  end
+
   it 'prints dish list with prices' do
     printed_menu = "eggs $1.50, milk $4.50"
     expect(menu.print).to eq(printed_menu)
   end
 
-  it 'contains a list of price of dishes' do
-    expect(menu.dishes).to eq(dishes)
+
+  it 'knows if the dish is on the menu' do
+    expect(menu.has_dish?(:milk)).to be true
   end
 end
