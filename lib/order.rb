@@ -17,9 +17,9 @@ class Order
     @list.dup
   end
   
-  def add(option)
+  def add(option, quantity = 1)
     choice = option_finder(option)
-    @list << choice
+    quantity.times { @list << choice } 
   end
 
 
