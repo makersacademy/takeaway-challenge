@@ -19,8 +19,12 @@ class TakeAway
     raise 'Cannot choose this item!' unless on_menu? item
     raise 'Must choose a number >0' unless amount > 0
     chosen_item = hashed_order(item, amount)
-    order << chosen_item
+    update_order(chosen_item)
     "#{chosen_item[:item_name]} x#{chosen_item[:quantity]} = £%0.2f" % item_subtotal(chosen_item)
+  end
+
+  def delete_item(item)
+    order.delete_if { |hash| hash[:item_name] == item }
   end
 
   def view_order
@@ -45,6 +49,14 @@ class TakeAway
     order.map do |item|
       "#{item[:item_name]} x#{item[:quantity]} = £%0.2f" % item_subtotal(item)
     end.join(', ')
+  end
+
+  def update_order(chosen_item)
+    if order.any? { |hash| hash[:item_name] == chosen_item[:item_name] }
+      raise 'Item already in order, please remove it first'
+    else
+      order << chosen_item
+    end
   end
 
   def hashed_order(item, amount)

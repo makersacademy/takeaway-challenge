@@ -30,8 +30,22 @@ describe TakeAway do
       expect { takeaway.choose_item('Pizza', -1) }.to raise_error 'Must choose a number >0'
     end
 
+    it 'does not allow same item to be added twice' do
+      takeaway.choose_item('Pizza')
+      expect { takeaway.choose_item('Pizza') }.to raise_error 'Item already in order, please remove it first'
+    end
+
     it 'lets the user know what was added to the order' do
       expect(takeaway.choose_item('Pizza')).to eq "Pizza x1 = £1.50"
+    end
+  end
+
+  describe '#delete_item' do
+    it 'should delete a request item from the order' do
+      allow(menu).to receive(:show).and_return([{ item_name: 'Pizza', price: '1.50' }])
+      takeaway.choose_item('Pizza')
+      takeaway.delete_item('Pizza')
+      expect(takeaway.order).to be_empty
     end
   end
 
