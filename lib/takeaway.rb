@@ -3,13 +3,11 @@ require_relative 'menu'
 
 class Takeaway
 
+  attr_reader :menu
+
   def initialize(order_class = Order, menu_class = Menu)
     @menu = menu_class.new
     @order = order_class.new(@menu)
-  end
-
-  def display_menu
-    @menu.to_s
   end
 
   def order(item, qty = 1)

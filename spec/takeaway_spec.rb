@@ -9,12 +9,6 @@ describe Takeaway do
   let(:order_class) { double :order_class, new: order }
   subject(:takeaway) { described_class.new(order_class, menu_class) }
 
-  describe "#display menu" do
-    it "gets menu string from menu" do
-      expect(takeaway.display_menu).to eq ("menu string")
-    end
-  end
-
   describe "#order" do
     it "sends item and quantity to order" do
       expect(order).to receive(:add).with(instance_of(String),instance_of(Integer))
