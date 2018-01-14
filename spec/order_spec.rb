@@ -22,16 +22,19 @@ describe Order do
 
 
   it "chooses several dishes from menu" do
-    order.add(:eggs, 5)
-    order.add(:milk, 8)
+    create_order
     expect(order.dishes).to eq(dishes)
   end
 
   it 'adds up total price for order' do
-    order.add(:eggs, 5)
-    order.add(:milk, 8)
+    create_order
     total = 43.50
     expect(order.total).to eq(total)
+  end
+
+  def create_order
+    order.add(:eggs, 5)
+    order.add(:milk, 8)
   end
 
 
