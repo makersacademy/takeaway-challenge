@@ -8,8 +8,12 @@ class Order
   end
 
   def add(dish, quantity)
-    fail NoItemError, "This #{dish} is not on the menu!" unless menu.has_dish?(dish)
+    fail NoItemError, "This #{dish} is not on the menu!" unless menu.dish_exists?(dish)
     dishes[dish] = quantity
+  end
+
+  def total
+
   end
 
   private

@@ -23,11 +23,11 @@ describe Menu do
   end
 
   it 'says if the dish is on the menu' do
-    expect(menu.has_dish?(:pierogi)).to be true
+    expect(menu.dish_exists?(:pierogi)).to be true
   end
 
   it 'says if the dish is not on the menu' do
-    expect(menu.has_dish?(:ramen)).to be false
+    expect(menu.dish_exists?(:ramen)).to be false
   end
 
 end
