@@ -2,6 +2,10 @@ require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
 require 'fake_sms'
+require 'coveralls'
+
+Coveralls.wear!
+
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
