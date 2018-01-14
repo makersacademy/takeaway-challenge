@@ -7,4 +7,8 @@ class Order
   def add_items(item,quantity,cost)
     @items << { item: item, quantity: quantity, cost: cost}
   end
+
+  def total
+    @items.map { |item| item[:quantity] * item[:cost] }.inject(:+)
+  end
 end

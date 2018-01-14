@@ -20,6 +20,8 @@ describe Order do
   end
   describe '#total' do
     it 'returns the total cost of the order' do
+      order.add_items("Prawn Toast", 2, 4.50)
+      expect(order.total).to eq 9
     end
   end
 end
