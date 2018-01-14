@@ -1,7 +1,7 @@
-require './customer.rb'
-require './menu.rb'
-require './order.rb'
-require './texter.rb'
+require './lib/customer.rb'
+require './lib/menu.rb'
+require './lib/order.rb'
+require './lib/texter.rb'
 
 # create menu
 menu = Menu.new

@@ -13,6 +13,33 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Solution
+--------
+
+Classes
+-------
+* Customer - has responsibility for choosing from the menu and placing the order
+* Menu - maintains a list of menu items
+* Order - understands the order, can confirm order is correct and send a confirming text to the customer's phone
+* Texter - has responsibility for interacting with twilio to actually send the text
+
+How to Run
+----------
+The file pudding.rb can be run to show the end to end process in action. Note environment variables below will need to be set up - will require a twilio subscription
+
+Environment
+-----------
+The class Texter needs access to four environment variables in order to send a text:
+
+* account_sid - twilio account_sid
+* auth_token - twilio auth_token
+* from - the sender's number
+* to - the receiver's number
+
+Commit History Blunder
+----------------------
+Unfortunately I pushed sensitive data to my original repository and opted to remove the repository and re-fork. Thus the commit history was lost. Bit of a sledge-hammer to crack a nut but I wanted to act promptly and (at time of writing) this was the best I could muster
+
 
 Instructions
 -------
