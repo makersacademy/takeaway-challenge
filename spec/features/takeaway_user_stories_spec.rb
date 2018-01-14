@@ -40,7 +40,11 @@ describe 'takeaway' do
     end
   end
 
-  describe 'user order total veriifcation' do
+  describe 'user order total verification' do
+    it 'confirms order empty if no items ordered' do
+      takeaway1 = Takeaway.new
+      expect{takeaway1.verify_order(2)}.to raise_error 'No items ordered yet!'
+    end
     it 'allows user to verify order by checking user total against order total' do
       takeaway1 = Takeaway.new(menu, order)
       menu.add_items_from_hash(Menu::INDIAN_MENU_ITEMS)
