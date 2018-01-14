@@ -13,6 +13,17 @@ describe Checkout do
       expect { subject.check_order([{"freaky lamp fish": 10.0}, {"freaky lamp fish": 10.0}]) }.to output.to_stdout
     end
 
+    it 'raises an error if the basket is empty' do
+      expect { subject.check_order([])}.to raise_error("Your basket is empty!")
+    end
+
+  end
+
+  describe '#complete_order' do
+    it 'raises an error if the basket is empty' do
+      expect { subject.complete_order([])}.to raise_error("Your basket is empty!")
+    end
+
   end
 
 

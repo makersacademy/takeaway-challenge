@@ -20,4 +20,8 @@ class Takeaway
     @checkout.check_order(@menu.basket)
   end
 
+  def complete_order
+    @checkout.complete_order(@menu.basket)
+  end
+
 end
