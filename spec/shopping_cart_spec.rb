@@ -2,11 +2,9 @@ require 'rspec'
 require 'shopping_cart'
 
 describe ShoppingCart do
-  DISH1_PRICE = 10
-  DISH2_PRICE = 12
   subject(:shopping_cart) { described_class.new }
-  let(:dish1) { double :dish1, price: DISH1_PRICE }
-  let(:dish2) { double :dish2, price: DISH2_PRICE }
+  let(:dish1) { double :dish1, price: 10 }
+  let(:dish2) { double :dish2, price: 12 }
 
   context '#initialize' do
     it 'is empty' do
@@ -21,7 +19,7 @@ describe ShoppingCart do
     end
 
     it 'adds the item\'s price to the cart total' do
-      expect{ shopping_cart.add(dish1) }.to change { shopping_cart.total }.by DISH1_PRICE
+      expect { shopping_cart.add(dish1) }.to change { shopping_cart.total }.by 10
     end
   end
 
@@ -41,7 +39,7 @@ describe ShoppingCart do
     end
 
     it 'deducts the removed item\'s price from the cart total' do
-      expect{ shopping_cart.remove(dish2) }.to change { shopping_cart.total }.by -DISH2_PRICE
+      expect { shopping_cart.remove(dish2) }.to change { shopping_cart.total }.by(-12)
     end
   end
 

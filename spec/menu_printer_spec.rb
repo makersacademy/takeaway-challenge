@@ -2,10 +2,10 @@ require 'rspec'
 require 'menu_printer'
 
 describe MenuPrinter do
-  let (:dish_list_printer) { double :dish_list_printer, print: nil }
-  let (:dish1) { double :dish1 }
-  let (:dish2) { double :dish2 }
-  let (:menu) { double :menu, dishes: [dish1, dish2], name: "test menu" }
+  let(:dish_list_printer) { double :dish_list_printer, print: nil }
+  let(:dish1) { double :dish1 }
+  let(:dish2) { double :dish2 }
+  let(:menu) { double :menu, dishes: [dish1, dish2], name: "test menu" }
   subject(:menu_printer) { described_class.new(dish_list_printer) }
 
   before(:each) do

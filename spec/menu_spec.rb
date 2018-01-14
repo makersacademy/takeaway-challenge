@@ -3,8 +3,8 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new("Breakfast Menu") }
-  let (:dish) { double :dish, name: "Pancakes" }
-  let (:dish2) { double :dish2, name: "Waffles" }
+  let(:dish) { double :dish, name: "Pancakes" }
+  let(:dish2) { double :dish2, name: "Waffles" }
 
   context '#initialize' do
     it 'has a name' do

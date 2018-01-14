@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 
-gem 'dotenv'
 gem 'capybara'
+gem 'dotenv'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
