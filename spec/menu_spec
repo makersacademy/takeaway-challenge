@@ -29,4 +29,8 @@ describe Menu do
     expect(menu.has_dish?(:nachos)).to be false
   end
 
+  it 'works out the cost' do
+    expect(menu.price(:eggs)).to eq(dishes[:eggs])
+  end
+
 end
