@@ -43,7 +43,7 @@ describe 'takeaway' do
   describe 'user order total verification' do
     it 'confirms order empty if no items ordered' do
       takeaway1 = Takeaway.new
-      expect{takeaway1.verify_order(2)}.to raise_error 'No items ordered yet!'
+      expect{ takeaway1.complete_order(2) }.to raise_error 'No items ordered yet!'
     end
     it 'allows user to verify order by checking user total against order total' do
       takeaway1 = Takeaway.new(menu, order)
@@ -51,12 +51,12 @@ describe 'takeaway' do
       takeaway1.order_item("Pilau Rice", 3)
       takeaway1.order_item("Tarka dal", 3)
       takeaway1.order_item("Saag Paneer", 3)
-      expect(takeaway1.verify_order(42.0)).to eq ["Message sent"]
+      expect(takeaway1.complete_order(42.0)).to eq ["Message sent"]
     end
     it 'raises error if user suggested total does not match order total' do
       takeaway.order_item("Pilau Rice", 3)
       takeaway.order_item("Tarka dal", 3)
-      expect { takeaway.verify_order(43) }.to raise_error "Total does not match current order, order not processed"
+      expect { takeaway.complete_order(43) }.to raise_error "Total does not match current order, order not processed"
     end
   end
 end

@@ -13,4 +13,9 @@ class Order
     fail "No items ordered yet!" if items.empty?
     @items.map { |item| item[:quantity] * item[:cost] }.inject(:+)
   end
+
+  def verified?(user_total)
+    user_total == total
+  end
+
 end
