@@ -1,7 +1,9 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms_tool'
 
 class Takeaway
+  include SmsTool
   attr_reader :menu, :order_history
 
   def initialize(menu = Menu.new, order_class = Order)
@@ -20,14 +22,25 @@ class Takeaway
   end
 
   def verify_order(user_total)
-    fail "Total does not match current order, order not processed" unless user_total == @current_order.total
-    "Total verified - order processed"
+    fail "Total does not match current order, order not processed" unless user_total == current_order.total
+    log_and_complete
+    send_confirmation_sms
   end
 
   private
 
   def current_order
     @current_order ||= @order_class.new
+  end
+
+  def log_and_complete
+    order_history << current_order
+    @current_order = nil
+    "Total verified - order processed"
+  end
+
+  def send_confirmation_sms
+    SmsTool.send_message
   end
 
 end

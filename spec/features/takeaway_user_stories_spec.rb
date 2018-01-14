@@ -51,7 +51,7 @@ describe 'takeaway' do
       takeaway1.order_item("Pilau Rice", 3)
       takeaway1.order_item("Tarka dal", 3)
       takeaway1.order_item("Saag Paneer", 3)
-      expect(takeaway1.verify_order(42.0)).to eq "Total verified - order processed"
+      expect(takeaway1.verify_order(42.0)).to eq ["Message sent"]
     end
     it 'raises error if user suggested total does not match order total' do
       takeaway.order_item("Pilau Rice", 3)
