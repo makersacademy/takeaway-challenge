@@ -8,7 +8,6 @@ require_relative 'dish_list_printer'
 require_relative 'order_printer'
 require_relative 'twilio_service'
 
-
 class Takeaway
   attr_reader :menu, :shopping_cart
 

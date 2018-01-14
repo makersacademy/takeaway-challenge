@@ -13,22 +13,14 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
+Introduction
 -------
+The purpose of this repository is to satisfy the user stories listed below. The code was developed using TDD to design 
+and implement new features as required.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+User Stories
+-------
+The client has requested software to operate a takeaway capable of receiving and dispatching orders.
 
 ```
 As a customer
@@ -48,32 +40,191 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Getting Started
+-------
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+* Clone this repo
+* Run `bundle install` in the project directory to install the required gems 
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+An example irb transcript is shown below to demonstrate how the app is used. An instance of `Takeaway` should be used to
+place orders
 
+```
+2.4.0 :001 > require './lib/takeaway'
+ => true 
+2.4.0 :002 > my_takeaway = Takeaway.new
+ => (return hidden) 
+2.4.0 :003 > my_takeaway.display_menu
+Breakfast Menu
+Pancakes...£3.00
+Waffles...£2.00
+Full English...£6.00
+French Toast...£4.00
+Poached Eggs...£3.00
+Cereal...£2.00
+Fruit Salad...£3.00
+Croissant...£1.00
+Tea...£1.00
+Coffee...£2.00
+ => (return hidden) 
+2.4.0 :004 > my_takeaway.add_to_cart("Pancakes")
+ => #<ShoppingCart:0x0000000209ee60 @total=3, @items=[#<Dish:0x0000000209f310 @name="Pancakes", @price=3>]> 
+2.4.0 :005 > my_takeaway.add_to_cart("Waffles")
+ => #<ShoppingCart:0x0000000209ee60 @total=5, @items=[#<Dish:0x0000000209f310 @name="Pancakes", @price=3>, #<Dish:0x0000000209f270 @name="Waffles", @price=2>]> 
+2.4.0 :006 > my_takeaway.add_to_cart("Curry")
+RuntimeError: Dish not found in menu
+(trace hidden)
+2.4.0 :007 > my_takeaway.add_to_cart("French Toast")
+ => #<ShoppingCart:0x0000000209ee60 @total=9, @items=[#<Dish:0x0000000209f310 @name="Pancakes", @price=3>, #<Dish:0x0000000209f270 @name="Waffles", @price=2>, #<Dish:0x0000000209f1d0 @name="French Toast", @price=4>]> 
+2.4.0 :008 > my_takeaway.remove_from_cart("Waffles")
+ => #<ShoppingCart:0x0000000209ee60 @total=7, @items=[#<Dish:0x0000000209f310 @name="Pancakes", @price=3>, #<Dish:0x0000000209f1d0 @name="French Toast", @price=4>]> 
+2.4.0 :009 > my_takeaway.checkout("+441234567891")
+Pancakes...£3.00
+French Toast...£4.00
+Total...£7.00
+Order placed at...14-01-2018 19:15:21
+```
 
-In code review we'll be hoping to see:
+After checking out, the customer will receive an SMS at the number provided e.g:
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+```Thank you! Your order was placed and will be delivered before 20:15```
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Design
+-------
+The following classes were created to perform the required operations:
 
-Notes on Test Coverage
-------------------
+* `Dish`
+    * Has a name and a price.
+* `DishPrinter`
+    * Can print dishes.
+* `DishListPrinter`
+    * Can print an array of dishes.
+    * Consumes instance of `DishPrinter`.
+* `Menu`
+    * Stores a list of dishes that can be ordered.
+    * Can add/remove dishes.
+    * Can lookup dishes by name.
+* `MenuPrinter`
+    * Can print an instance of `Menu`.
+    * Consumes instance of `DishListPrinter`.
+* `ShoppingCart`
+    * Can store a list of dishes to order.
+    * Can add/remove dishes to the cart.
+    * Can be emptied.
+* `ShoppingCartPrinter`
+    * Can print the contents of a `ShoppingCart`.
+    * Consumes instance of `DishListPrinter`.
+* `Order`
+    * Can store a list of dishes ordered.
+    * Can provide the order total and time.
+* `OrderPrinter`
+    * Can print summary of an `Order` showing dishes ordered, the order total, and time.
+    * Consumes instance of `DishListPrinter`.
+* `TwilioService`
+    * Can send the user an SMS confirming delivery time.
+    * Uses Twilio REST API.
+* `Takeaway`
+    * Should be used as the controller.
+    * Can display the takeaway's menu.
+    * Can add/remove items to/from instance of `ShoppingCart`.
+    * Can checkout `ShoppingCart`, creating an `Order` and dispatching an SMS.
+    
+Testing
+-------
+The unit tests below all passed with 100% coverage of the code. Edge cases were specifically targeted in addition to 
+tests satisfying the user stories above.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+```
+DishListPrinter
+  prints a list of dishes
+
+DishPrinter
+  prints a dish
+  fails to print something that is not a dish
+
+Dish
+  has a name
+  has a price
+
+MenuPrinter
+  prints the menu name
+  prints dishes
+  fails to print something that is not a menu
+
+Menu
+  #initialize
+    has a name
+    is empty on initialize
+  #add
+    adds a dish to menu
+    adds two dishes to menu
+    fails if dish is not in menu
+    returns the dish
+  #remove
+    removes a dish from the menu
+    does not remove other dishes
+
+OrderPrinter
+  prints dishes
+  prints order total and time
+  fails to print something that is not an order
+
+Order
+  #initialize
+    fails if no items were ordered
+    contains ordered items
+    has the correct total
+    knows the time at which the order was placed
+
+ShoppingCartPrinter
+  prints dishes
+  prints shopping cart total
+  fails to print something that is not a shopping cart
+
+ShoppingCart
+  #initialize
+    is empty
+  #add
+    adds an item to the cart
+    adds the item's price to the cart total
+  #remove
+    removes an item
+    does not remove other items
+    deducts the removed item's price from the cart total
+  #empty
+    is empty
+    resets cart total to zero
+
+Takeaway
+  #initialize
+    has a menu
+    has a menu containing 10 items
+    creates a menu printer
+    creates an order printer
+    has a shopping cart
+    creates a twilio service
+  #display_menu
+    prints a menu out
+  #add_to_cart
+    adds an item to the cart
+  #remove_from_cart
+    removes an item from the cart
+  #checkout
+    empties shopping cart
+    returns an order
+    prints the order
+    sends a text
+
+TwilioService
+  creates a Twilio REST client
+  sends an SMS
+
+Finished in 0.03309 seconds (files took 0.50804 seconds to load)
+49 examples, 0 failures
+
+COVERAGE: 100.00% -- 366/366 lines in 22 files
+```
+
+Next steps
+-------
+* Implement functionality for customers to place orders via SMS.
