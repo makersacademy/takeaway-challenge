@@ -2,7 +2,22 @@ require "order"
 
 describe Order do
   let(:time) {double :datetime, hour: 1, minute: 0}
-  subject(:order) {described_class.new(time: time)}
+  let(:menu) {double :menu, choices: [tofu]}
+  let(:tofu) {double :option, food: "tofu", price: 5}
+
+  subject(:order) {described_class.new(time: time, menu: menu)}
+ 
+
+  describe "#add" do
+  	  
+  	  it "when you order an item, its stored in the list" do
+       order.add("tofu")
+       expect(order.list).to eq [tofu]
+      end
+
+
+  end
+
   describe "#request" do
     
     it "returns order time, one hour later than 1:00" do 
