@@ -27,13 +27,16 @@ class Takeaway
               @basket[k][1] += v * number
           end
           return "#{number} #{dish}(s) added to your basket"
-      else
-        return "apologies, that dish is not available"
+      # else
+      #   return "apologies, that dish is not available"
       end
     end
   end
 
   def basket_summary
-    @basket
+    @basket.each do |k, v|
+      output = "#{@basket[k][0]} x #{k} = £#{@basket[k][1]}"
+      return output
+    end
   end
 end

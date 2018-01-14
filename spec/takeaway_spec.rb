@@ -44,20 +44,26 @@ describe Takeaway do
       end
     end
 
-    context 'if the dish is not available' do
-      it 'should return "apologies that dish is not available"' do
-        no_dishes = double
-        allow(takeaway.menu).to receive(:price_list).and_return({no_dishes => [0, 0]})
-        expect(takeaway.order(dish, number = 1)).to eq "apologies, that dish is not available"
-      end
-    end
+    # context 'if the dish is not available' do
+    #   it 'should return "apologies that dish is not available"' do
+    #     no_dishes = double
+    #     allow(takeaway.menu).to receive(:price_list).and_return({no_dishes => [0, 0]})
+    #     expect(takeaway.order(dish, number = 1)).to eq "apologies, that dish is not available"
+    #   end
+    # end
   end
 
   describe '#basket_summary' do
     it 'should provide a summary of the dishes and running total' do
       takeaway.basket = {dish => [1, 5]}
       takeaway.order(dish, number = 1)
-      expect(takeaway.basket_summary).to eq({dish => [2, 10]})
+      # p takeaway.basket
+      # p takeaway.basket[dish][0]
+      # p dish
+      # p takeaway.basket[dish][1]
+      p "#{takeaway.basket[dish][0]} x #{dish} = £#{takeaway.basket[dish][1]}"
+      expect(takeaway.basket_summary).to eq "#{takeaway.basket[dish][0]} x #{dish} = £#{takeaway.basket[dish][1]}"
+
     end
   end
 end
