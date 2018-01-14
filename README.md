@@ -14,6 +14,28 @@ Takeaway Challenge
 
  ```
 
+How to run program
+---------
+
+```
+2.4.1 :001 > require './lib/order.rb'
+ => true
+2.4.1 :002 > order = Order.new
+ => #<Order:0x007fab022d3ed0 @menu=#<Menu:0x007fab022d3ea8 @list={:pizza=>10.0, :pasta=>5.0, :avacado=>3.0, :chicken=>4.0}>, @total=0, @confirmation=#<Confirmation:0x007fab022d3e58>>
+2.4.1 :003 > order.menu
+ => {:pizza=>10.0, :pasta=>5.0, :avacado=>3.0, :chicken=>4.0}
+2.4.1 :004 > order.select(:pasta, :avacado)
+ => [:pasta, :avacado]
+2.4.1 :005 > order.total
+you ordered:
+pasta,
+avacado
+Totalling: £8.0
+ => 8.0
+2.4.1 :006 > order.confirm(true)
+=> Confirmation message sent.
+```
+
 Instructions
 -------
 
