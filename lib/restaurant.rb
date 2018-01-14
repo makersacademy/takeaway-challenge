@@ -1,3 +1,5 @@
+require_relative 'secrets'
+
 class Restaurant
 
   attr_reader :basket
@@ -20,6 +22,10 @@ class Restaurant
     dish_summary + "\nTotal is £#{basket_total}"
   end
 
+  def confirm_order
+    send_message("Thank you for your order.")
+  end
+
   private
 
   def dish_summary
@@ -27,6 +33,15 @@ class Restaurant
       "#{quantity} x #{dish.capitalize} -- " +
       "£#{subtotal(dish, quantity)}"
     }.join("\n")
+  end
+
+  def send_message(message)
+    Twilio::REST::Client.new(secrets.account, secrets.token)
+      .messages.create(
+        from: secrets.twilio_phone,
+        to: secrets.destination,
+        body: message
+      )
   end
 
   def subtotal(dish, quantity)

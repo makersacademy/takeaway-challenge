@@ -38,4 +38,11 @@ describe Restaurant do
       expect(restaurant.order_summary).to eq summary
     end
   end
+
+  describe '#confirm_order' do
+    it 'allows messenger to send confirmation message' do
+      expect(restaurant).to receive(:send_message).with("Thank you for your order.")
+      restaurant.confirm_order
+    end
+  end
 end
