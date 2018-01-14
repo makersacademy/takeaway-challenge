@@ -2,7 +2,8 @@ require 'order'
 
 describe Order do
 let(:mock_menu) {double :menu_object, :list => {pizza: 10.00, pasta: 5.00}}
-subject(:order) {described_class.new(mock_menu)}
+let(:mock_confirmation) {double :confirmation_object, :send => "Thank you! Your order was placed and will be delivered"}
+subject(:order) {described_class.new(mock_menu, mock_confirmation)}
 let(:meal) { double :meal}
 
   describe '#menu' do

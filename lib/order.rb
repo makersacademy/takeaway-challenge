@@ -1,10 +1,12 @@
 require_relative 'menu'
+require_relative 'confirmation'
 
 class Order
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, confirmation = Confirmation.new)
     @menu = menu
     @total = 0
+    @confirmation = confirmation
   end
 
   def menu
@@ -23,7 +25,7 @@ class Order
 
   def confirm(answer)
     raise "Order cancelled, please select items" if answer != true
-   #else twillio text this message: "Thank you! Your order was placed and will be delivered before 18:52"
+    @confirmation.send
     @selection = nil
   end
 
