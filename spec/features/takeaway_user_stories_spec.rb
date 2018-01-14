@@ -1,14 +1,24 @@
 require 'takeaway'
 
 describe 'takeaway' do
+
   menu = Menu.new
   order = Order
   takeaway = Takeaway.new(menu, order)
 
+  describe 'items can be added to menu' do
+    it 'allows items to be added to menu' do
+      menu1 = Menu.new
+      expect(menu1.items).to be_empty
+      menu1.add_items_from_hash(Menu::CHINESE_MENU_ITEMS)
+      expect(menu1.items).to eq Menu::CHINESE_MENU_ITEMS
+    end
+  end
+
   describe 'displays menu' do
     it 'raises error if menu is empty' do
       expect { takeaway.print_menu }.to raise_error "No items added to menu"
-    end 
+    end
 
     it 'prints menu to STDout' do
       menu.add_items_from_hash(Menu::CHINESE_MENU_ITEMS)
@@ -40,7 +50,6 @@ describe 'takeaway' do
       expect(takeaway1.verify_order(42.0)).to eq "Total verified - order processed"
     end
     it 'raises error if user suggested total does not match order total' do
-      menu.add_items_from_hash(Menu::INDIAN_MENU_ITEMS)
       takeaway.order_item("Pilau Rice", 3)
       takeaway.order_item("Tarka dal", 3)
       expect { takeaway.verify_order(43) }.to raise_error "Total does not match current order, order not processed"
