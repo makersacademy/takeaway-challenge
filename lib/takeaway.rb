@@ -6,10 +6,10 @@ class Takeaway
 
   extend Forwardable
 
-  def_delegators :@menu, :viewmenu, :order, :basket
-  def_delegators :@checkout, :check_order
+  def_delegators :@menu, :viewmenu, :order
+  def_delegators :@checkout, :check_order, :complete_order
 
-  attr_reader :menu
+  attr_reader :menu, :checkout
 
   def initialize
     @menu = Menu.new
@@ -17,11 +17,7 @@ class Takeaway
   end
 
   def check_order
-    @checkout.check_order(self.basket)
-  end
-
-  def complete_order
-    @checkout.complete_order
+    @checkout.check_order(@menu.basket)
   end
 
 end

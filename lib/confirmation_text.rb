@@ -1,5 +1,5 @@
 require('bundler')
-Bundler.require()
+
 
 class ConfirmationText
 

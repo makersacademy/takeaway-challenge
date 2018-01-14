@@ -30,8 +30,14 @@ class Menu
   end
 
   def order(food, quantity)
+    raise(order_error) if MENU[food].nil?
     quantity.times {@basket << MENU[food]}
     "You added #{MENU[food].keys[0]} #{quantity} time(s)!"
   end
 
+  private
+
+  def order_error
+    "I don't know what that is - please look at the menu and try again"
+  end
 end

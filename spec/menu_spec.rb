@@ -20,6 +20,10 @@ describe Menu do
     it 'provides a success message' do
       expect(subject.order(1,2)).to eq("You added tuna soaked nut butter 2 time(s)!")
     end
+
+    it 'raises an error if the food doesn\'t exist' do
+      expect { subject.order(20,1) }.to raise_error("I don't know what that is - please look at the menu and try again")
+    end
   end
 
 end
