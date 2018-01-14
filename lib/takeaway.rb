@@ -1,6 +1,6 @@
 require_relative 'order'
 require_relative 'menu'
-require_relative 'twilio_auth'
+require 'dotenv/load' # loads local .env file with twilio authentication
 require 'date'
 
 class Takeaway
