@@ -15,6 +15,15 @@ describe Order do
        expect(order.list).to eq [tofu]
       end
 
+      it "you can order two lots of a food in one go" do
+        order.add("tofu", 2)
+        expect(order.list).to eq [tofu, tofu]
+      end
+
+      it "raises error when you order something not on the menu" do
+        expect { order.add("chicken", 2) }.to raise_error("Not on menu")
+      end
+
 
   end
 
