@@ -14,7 +14,6 @@ class Menu
   attr_reader :items
 
   def make_hash(file_name)
-    file_name = './data/menu_items.csv'
     read_file = CSV.open(file_name, headers: true, header_converters: :symbol)
     read_file.to_a.map { |row| row.to_hash }
   end
