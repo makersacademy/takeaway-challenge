@@ -17,17 +17,6 @@ class Menu
 
   private
 
-
-  def food
-    ['Happily ever after spell', 'Poison apple',
-      'Love potion', 'Dragon tears', 'Find me a prince spell',
-      'Find me a princess spell', 'Make me a developer potion']
-  end
-
-  def price
-    [250, 1, 350, 1000, 1500, 1500, 8000]
-  end
-
   def potion_menu
     menu_list = [
       { dish: 'Happily ever after spell', price: 250, quantity: 0 },
