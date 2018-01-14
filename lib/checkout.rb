@@ -1,4 +1,4 @@
-require_relative './takeaway.rb'
+require_relative './confirmation_text.rb'
 
 class Checkout
 
@@ -8,6 +8,10 @@ class Checkout
   def check_order(order)
     order.map {|item| item.each { |k,v| puts "#{k}: #{v}"} }
     "Your total is £#{total(order)}0!"
+  end
+
+  def complete_order
+    ConfirmationText.new.send
   end
 
   private
