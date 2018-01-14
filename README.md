@@ -14,21 +14,70 @@ Takeaway Challenge
 
  ```
 
-Instructions
+About
 -------
+This is a small project to further develop and explore object oriented programming (OOP) along with test driven development (TDD). As a customer of a non-descript takeway shop, you wish to purchase some food. This code will allow you to do this by showing you the menu, allowing you to add items to the order and confirming by text once the order is placed.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+I have tried once again to follow a behaviour driven devlopment (BDD) cycle, by considering the user stories [below](#user-stories). Having more experience of multi-class systems, I found the objects were easier to describe and I think delegation was achieved better for this project than the [Airport Challenge](https://github.com/domvernon/airport_challenge).
 
-Task
+If I had more time, I would have liked to have extracted another object or two from the main TakeAway class, as this clearly seems to be doing quite a lot and is in violation of the single-responsibility principle. I would have also like to implement a simple command line app to make it more obvious for the user as to how to place an order.
+
+Setup
 -----
+You will need a twilio account to get the most functionality out of this project.  
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+To run the code:
+1. Clone the repo to your local machine
+2. Change into the directory
+3. run `bundle`
+4. Create a file `.env` and fill in the following path variables needed<sup>1</sup>:  
+```ruby
+TWILIO_ACCOUNT_SID = # This is found in your twilio account
+TWILIO_AUTH_TOKEN =  # This is found in your twilio account
+MY_PHONE_NUMBER =  # Make sure to put it in country code format (+44 for example)
+TWILIO_PHONE_NUMBER =  # This is the number you have been given by twilio
+```
+5. start `irb`
+
+To run the tests:
+1. Change into the main directory
+2. run 'rspec'
+
+<sup>1</sup>For further details: [see here](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
+
+Instructions
+-----
+This is an example irb transcript:
+```ruby
+2.4.0 :001 > require './lib/takeaway.rb'
+ => true 
+2.4.0 :002 > t = TakeAway.new
+ => #<TakeAway:0x007fe4f7c2f5b8 ... >
+2.4.0 :003 > t.display_menu
+ => [{:item_name=>"Pizza", :price=>"11.95"}, {:item_name=>"Vegetarian Pizza", :price=>"10.95"}, {:item_name=>"Salad", :price=>"5.25"}, {:item_name=>"Drink", :price=>"3.50"}] 
+2.4.0 :004 > t.choose_item('Pizza', 2)
+ => "Pizza x2 = £23.90" 
+2.4.0 :005 > t.choose_item('Drink')
+ => "Drink x1 = £3.50" 
+2.4.0 :006 > t.choose_item('Drink')
+RuntimeError: Item already in order, please remove it first
+2.4.0 :007 > t.delete_item('Drink')
+ => [{:item_name=>"Pizza", :price=>"11.95", :quantity=>2}] 
+2.4.0 :008 > t.view_order
+ => "Pizza x2 = £23.90" 
+2.4.0 :009 > t.view_total
+ => "The grand total is £23.90" 
+2.4.0 :010 > t.place_order
+ => "Order placed!" 
+2.4.0 :011 > t.view_order
+RuntimeError: Please select an item first
+  ```
+ ![text confirmation](/docs/message-confirmation.jpg)
+
+
+User Stories
+-----
+These were the user stories used to guide the project:
 
 ```
 As a customer
@@ -48,32 +97,3 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
