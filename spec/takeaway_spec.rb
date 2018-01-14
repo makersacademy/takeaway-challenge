@@ -32,6 +32,7 @@ describe Takeaway do
     it "returns order total from order" do
       expect(takeaway.check_total).to eq 12
     end
+  end
 
   describe "#submit" do
     it "instructs sms_client to send confirmation" do
@@ -40,6 +41,4 @@ describe Takeaway do
       takeaway.submit_order
     end
   end
-  
-
 end

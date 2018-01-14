@@ -16,4 +16,14 @@ describe Menu do
     end
   end
 
+  describe "#contains?" do
+    it "returns true if dish is on menu" do
+      expect(menu.contains?("Spring rolls")).to eq true
+    end
+    it "returns false if dish is not on menu" do
+      expect(menu.contains?("Not food")).to eq false
+    end
+  end
+
+
 end

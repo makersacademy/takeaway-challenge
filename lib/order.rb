@@ -6,6 +6,7 @@ class Order
   end
 
   def add(item, qty)
+    raise "This dish isn't on the menu!" unless @menu.contains?(item)
     @basket.has_key?(item) ? @basket[item] += qty : @basket.store(item, qty)
   end
 

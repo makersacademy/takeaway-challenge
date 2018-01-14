@@ -18,4 +18,9 @@ class Menu
     DISHES.find{|dish| dish[:name] == item}[:price]
   end
 
+  def contains?(item)
+    !!DISHES.find{|dish| dish[:name] == item}
+  end
+
+
 end
