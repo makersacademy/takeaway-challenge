@@ -46,7 +46,7 @@ Instructions
 
 - Create new restaurant: `my_restaurant = Takeaway.new`
 - View menu: `puts my_restaurant.menu`
-- Add an item to the order: `my_restaurant.order "item name"`
+- Add an item to the order: `my_restaurant.order "item name", quantity (optional)`
 - View items in current order & cost breakdown: `puts my_restaurant.order_summary`
 - Check total price: `my_restaurant.check_total`
 - Submit order: `my_restaurant.submit_order`
