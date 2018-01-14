@@ -49,4 +49,8 @@ class Order
      raise ("Not on menu")
    end
 
+   def check_total(amount)
+   message = "Order failed, you paid £#{amount}, your order cost £#{total}. Try again"
+   raise message if amount != total
+   end
 end
