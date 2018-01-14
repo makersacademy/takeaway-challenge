@@ -1,4 +1,8 @@
 # Takeaway Challenge
+
+[![Coverage Status](https://coveralls.io/repos/github/Leigan0/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/Leigan0/takeaway-challenge?branch=master)
+
+[![Build Status](https://travis-ci.org/Leigan0/takeaway-challenge.svg?branch=master)](https://travis-ci.org/Leigan0/takeaway-challenge)
 ==================
 ```
                             _________
