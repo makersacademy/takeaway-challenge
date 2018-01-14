@@ -8,10 +8,9 @@ class Takeaway
 
   attr_reader :menu
 
-  def initialize(order_class = Order, menu_class = Menu, sms_client = Twilio::REST::Client)
+  def initialize(order_class = Order, menu_class = Menu)
     @menu = menu_class.new
     @order = order_class.new(@menu)
-    @sms_client = sms_client.new(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
   end
 
   def order(item, qty = 1)
@@ -27,14 +26,16 @@ class Takeaway
     @order.total
   end
 
-  def submit
+  def submit_order
     send_sms("Thank you for your order! It should arrive at #{estimated_delivery_time}")
   end
 
   private
 
-  def send_sms(message, from = ENV['SENDING_NUMBER'], to = ENV['MY_NUMBER'])
-    @sms_client.messages.create(from: from, to: to, body: message)
+  def send_sms(message, to = ENV['MY_NUMBER'])
+    sms_client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
+    from = ENV['SENDING_NUMBER']
+    sms_client.messages.create(from: from, to: to, body: message)
     "Sent message to #{to}"
   end
 
