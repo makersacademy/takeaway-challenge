@@ -11,10 +11,20 @@ Requirements
 
 All requirements can be installed by installing the bundler gem (`gem install bundle`) and then running `bundle install` in the project directory.
 
+N.B. Sending confirmation sms requires Twilio account with a number that can send sms, and a .env account in the project root directory containing the following:
+
+```
+ACCOUNT_SID = " "
+AUTH_TOKEN = " "
+SENDING_NUMBER = " " # your Twilio number
+MY_NUMBER = " " # the recipient
+```
+
 User Stories implemented
 -------
 
-```As a customer
+```
+As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
@@ -36,14 +46,9 @@ Instructions
 
 - Create new restaurant: `my_restaurant = Takeaway.new`
 - View menu: `puts my_restaurant.menu`
-- Add an item to the order: `my_restaurant.order(item_name)`
-- View items in current order & cost breakdown: `my_restaurant.order_summary`
+- Add an item to the order: `my_restaurant.order "item name"`
+- View items in current order & cost breakdown: `puts my_restaurant.order_summary`
 - Check total price: `my_restaurant.check_total`
 - Submit order: `my_restaurant.submit_order`
 
-N.B. Confirmation sms requires Twilio account with a number that can send sms, and a .env account in the project root directory containing the following:
-
-```ACCOUNT_SID = " "
-AUTH_TOKEN = " "
-SENDING_NUMBER = " " # your Twilio number
-MY_NUMBER = " " # the recipient
+N.B. Menu is currently hard-coded in menu.rb file, but future work could allow this to be changed or loaded from another source.
