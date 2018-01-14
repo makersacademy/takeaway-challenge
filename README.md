@@ -45,6 +45,11 @@ Getting Started
 
 * Clone this repo
 * Run `bundle install` in the project directory to install the required gems 
+* Register on Twilio and get a Twilio number.
+* Create a .ENV file in the project directory to store the following from Twilio:
+    * ACCOUNT_SID
+    * AUTH_TOKEN
+    * TWILIO_NUMBER
 
 An example irb transcript is shown below to demonstrate how the app is used. An instance of `Takeaway` should be used to
 place orders
