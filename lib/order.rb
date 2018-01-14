@@ -4,7 +4,7 @@ class Order
     @items = []
   end
 
-  def add_items(item,quantity)
-    @items << { item: item, quantity: quantity }
+  def add_items(item,quantity,cost)
+    @items << { item: item, quantity: quantity, cost: cost}
   end
 end

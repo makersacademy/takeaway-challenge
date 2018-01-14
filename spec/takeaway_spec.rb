@@ -1,9 +1,9 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:order) {double :order, add_items: 'Prawn Toast, 1' }
+  let(:order) {double :order, add_items: 'Prawn Toast, 1', total: 4.50 }
   let(:order_class) { double :order_class, new: order }
-  let(:menu){ double :menu, print_menu: { "Prawn Toast": 4.50, "Beef Chow Mein": 6.50 }, item_available?: true }
+  let(:menu){ double :menu, print_menu: { "Prawn Toast": 4.50, "Beef Chow Mein": 6.50 }, item_available?: true, items: { "Prawn Toast": 4.50, "Beef Chow Mein": 6.50 } }
   subject(:takeaway) { described_class.new(menu, order_class) }
 
   describe 'initialize' do
@@ -31,7 +31,7 @@ describe Takeaway do
       expect(order_class).to have_received(:new)
     end
     it 'returns a new order object, if no order in progress' do
-      expect(takeaway.order_item('Prawn Toast', 1)).to eq 'Prawn Toast, 1' 
+      expect(takeaway.order_item('Prawn Toast', 1)).to eq 'Prawn Toast, 1'
     end
     it 'does not create a new order, if order in progress' do
       takeaway.order_item("Prawn Toast",1)
@@ -40,7 +40,13 @@ describe Takeaway do
     end
     it 'passes item and quantity to order object' do
       takeaway.order_item("Prawn Toast",1)
-      expect(order).to have_received(:add_items).with("Prawn Toast",1)
+      expect(order).to have_received(:add_items).with("Prawn Toast",1, nil)
+    end
+  end
+  describe '#verify_order' do
+    it 'checks user input against order total and confirms if correct' do
+      takeaway.order_item("Prawn Toast",1)
+      expect(takeaway.verify_order(4.50).to eq "Total verified - order processed")
     end
   end
 end

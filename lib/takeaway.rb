@@ -16,7 +16,7 @@ class Takeaway
 
   def order_item(item,quantity)
     fail 'Sorry, we do not sell this dish' unless menu.item_available?(item)
-    current_order.add_items(item, quantity)
+    current_order.add_items(item, quantity, cost = menu.items[item])
   end
 
   private
