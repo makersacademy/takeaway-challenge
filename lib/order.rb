@@ -8,14 +8,6 @@ class Order
   @menu = menu
   @list = []
   end
-
-  def request(order)
-    "Thank you! Your order will be delivered at #{deadline_set}"
-  end
-
-  def list
-    @list.dup
-  end
   
   def add(option, quantity = 1)
     choice = option_finder(option)
