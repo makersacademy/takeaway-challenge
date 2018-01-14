@@ -6,6 +6,8 @@ require_relative 'shopping_cart'
 require_relative 'order'
 require_relative 'dish_list_printer'
 require_relative 'order_printer'
+require_relative 'twilio_service'
+
 
 class Takeaway
   attr_reader :menu, :shopping_cart
@@ -27,6 +29,7 @@ class Takeaway
     @menu_printer = MenuPrinter.new(dish_list_printer)
     @order_printer = OrderPrinter.new(dish_list_printer)
     @shopping_cart = ShoppingCart.new
+    @twilio_service = TwilioService.new
   end
 
   def display_menu
@@ -41,10 +44,12 @@ class Takeaway
     @shopping_cart.remove(item)
   end
 
-  def checkout
+  def checkout(recipient_number)
     @order = Order.new(@shopping_cart.items)
     @shopping_cart.empty
     @order_printer.print(@order)
+    message_body = "Thank you! Your order was placed and will be delivered before #{(@order.time + (60 * 60)).strftime('%H:%M')}"
+    @twilio_service.send_sms(recipient_number, message_body)
     @order
   end
 end

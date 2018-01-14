@@ -6,9 +6,10 @@ describe Takeaway do
   let(:menu_printer) { double :menu_printer }
   let(:dish1) { double :dish1, price: 3 }
   let(:order_printer) { double :order_printer, print: nil }
-  let(:order) { double :order, kind_of?: true }
+  let(:order) { double :order, kind_of?: true, time: Time.at(0) }
   let(:dish_list_printer) { double :dish_list_printer }
   let(:shopping_cart) { double :shopping_cart, empty: nil, items: [dish1], kind_of?: true }
+  let(:twilio_service) { double :twilio_service, send_sms: nil }
 
   before(:each) do
     allow(menu).to receive(:add).and_return menu
@@ -18,6 +19,7 @@ describe Takeaway do
     allow(Order).to receive(:new).and_return order
     allow(OrderPrinter).to receive(:new).and_return order_printer
     allow(ShoppingCart).to receive(:new).and_return shopping_cart
+    allow(TwilioService).to receive(:new).and_return twilio_service
   end
 
   context '#initialize' do
@@ -42,6 +44,11 @@ describe Takeaway do
 
     it 'has a shopping cart' do
       expect(takeaway.shopping_cart).to be_a ShoppingCart
+    end
+
+    it 'creates a twilio service' do
+      expect(TwilioService).to receive(:new).and_return(twilio_service)
+      Takeaway.new
     end
   end
 
@@ -69,16 +76,21 @@ describe Takeaway do
   context '#checkout' do
     it 'empties shopping cart' do
       expect(takeaway.shopping_cart).to receive(:empty)
-      Takeaway.new.checkout
+      Takeaway.new.checkout("Test number")
     end
 
     it 'returns an order' do
-      expect(takeaway.checkout).to be_a Order
+      expect(takeaway.checkout("Test number")).to be_a Order
     end
 
     it 'prints the order' do
       expect(order_printer).to receive(:print).with(order)
-      Takeaway.new.checkout
+      Takeaway.new.checkout("Test number")
+    end
+
+    it 'sends a text' do
+      expect(twilio_service).to receive(:send_sms).with("Test number", "Thank you! Your order was placed and will be delivered before #{(order.time + (60 * 60)).strftime('%H:%M')}")
+      Takeaway.new.checkout("Test number")
     end
   end
 end
