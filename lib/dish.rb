@@ -5,7 +5,8 @@ class Dish
     @name = name
     @price = price
   end
+
   def to_s
-    "Menu item: #{@name}: £#{@price}"
+    "#{@name} - £#{@price}"
   end
 end

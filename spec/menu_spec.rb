@@ -8,6 +8,8 @@ describe Menu do
   let(:name) { double :name }
   let(:price) { double :price }
   let(:dishes) { double :dishes }
+  let(:quantity) { double :quantity }
+  let(:order) { double :order }
 
   describe 'initially' do
     it 'has no dishes' do
@@ -28,6 +30,16 @@ describe Menu do
       subject.add_dish(dish)
       allow(menu).to receive(:display).and_return(:dishes)
       expect(menu.display).to be_truthy
+    end
+  end
+
+  describe '#choose' do
+
+    it 'can select a menu item' do
+      subject.add_dish(dish)
+      allow(menu).to receive(:display).and_return(:dishes)
+      allow(menu).to receive(:choose).and_return(:order)
+      expect(menu.choose(dish, quantity)).to be_truthy
     end
   end
 end
