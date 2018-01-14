@@ -5,7 +5,7 @@ require 'dotenv/load'
 module SmsTool
 
 	def self.send_message(number = ENV['NUMBER'])
-		time = Time.now.strftime("%I:%M%p")
+		time = Time.now + (1 * 60 * 60 )
 		boot_twilio
 		message = @client.api.account.messages.create(
   		from: '+442870032047',
