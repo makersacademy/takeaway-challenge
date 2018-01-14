@@ -1,3 +1,4 @@
+require 'dotenv/load'
 # understands how to display a menu
 # require_relative 'dish'
 require_relative 'order'
