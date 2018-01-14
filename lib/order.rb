@@ -1,5 +1,6 @@
 require  "./lib/menu"
 require "date"
+require "twilio-ruby"
 
 class Order 
    
@@ -27,9 +28,7 @@ class Order
     check_total(amount)
     "Thank you! Your order will be delivered by #{deadline_set}"
   end
-
   
-
   private
    def deadline_set
     hour = @time.hour < 23 ? @time.hour + 1 : 0 
