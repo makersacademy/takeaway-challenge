@@ -14,7 +14,7 @@
 #     puts "Thank you, now please enter how many of those you want:"
 #     @quantity = gets.chomp
 #   end
-#
+# 
 #
 #   #
 #   # def order

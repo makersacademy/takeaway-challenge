@@ -63,7 +63,6 @@ describe Takeaway do
       # p takeaway.basket[dish][1]
       p "#{takeaway.basket[dish][0]} x #{dish} = £#{takeaway.basket[dish][1]}"
       expect(takeaway.basket_summary).to eq "#{takeaway.basket[dish][0]} x #{dish} = £#{takeaway.basket[dish][1]}"
-
     end
   end
 end

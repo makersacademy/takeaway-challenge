@@ -37,6 +37,6 @@ class Takeaway
     @basket.each do |k, v|
       output = "#{@basket[k][0]} x #{k} = £#{@basket[k][1]}"
       return output
-    end
+   end
   end
 end

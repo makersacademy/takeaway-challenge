@@ -17,6 +17,4 @@ describe Menu do
       expect(menu.display).to eq price_list.each{|k, v| puts "#{k} : #{v}"}
     end
   end
-
-
 end

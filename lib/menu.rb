@@ -14,5 +14,5 @@ class Menu
   private
   def list
     @price_list.each{|k, v| puts "#{k} : #{v}"}
-  end
+ end
 end

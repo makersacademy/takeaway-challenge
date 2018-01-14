@@ -13,7 +13,7 @@
 #   #   expect(io_obj).to receive(:chomp).and_return(:selected_dish)
 #   #   expect(io_obj).to receive(:chomp).and_return(:quantity)
 #   # end
-#
+# 
 #
 #   # it 'should initialize with a list of dishes and prices' do
 #   #   expect(menu.price_list).to eq price_list
