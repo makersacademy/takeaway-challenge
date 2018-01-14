@@ -50,6 +50,11 @@ describe Order do
 
   describe "#submit" do
 
+  	it "raises error if try to order without anything in basket" do 
+      message = "Order failed, nothing in basket"	
+      expect{order.submit(0)}.to raise_error message
+    end
+
   	 context "order two tofus one daal and first" do 
       before do 
         order.add("tofu", 2)

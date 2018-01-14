@@ -23,6 +23,7 @@ class Order
   end
 
   def submit(amount)
+    raise "Order failed, nothing in basket" if empty_basket?
     check_total(amount)
     "Thank you! Your order will be delivered at #{deadline_set}"
   end
@@ -53,4 +54,8 @@ class Order
    message = "Order failed, you paid £#{amount}, your order cost £#{total}. Try again"
    raise message if amount != total
    end
+
+   def empty_basket?
+     list.empty?
+   end 
 end
