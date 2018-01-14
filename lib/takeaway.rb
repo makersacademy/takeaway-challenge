@@ -39,6 +39,8 @@ class TakeAway
   def place_order
     message = "Thank you for your order. #{calculate_total} and will be with you within the hour!"
     send_confirmation(message)
+    @order = []
+    'Order placed!'
   end
 
   private

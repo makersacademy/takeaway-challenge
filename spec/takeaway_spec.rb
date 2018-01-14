@@ -85,5 +85,14 @@ describe TakeAway do
       expect(takeaway).to receive(:send_confirmation).with("Thank you for your order. The grand total is £0.00 and will be with you within the hour!")
       takeaway.place_order
     end
+
+    it 'clears the order' do
+      takeaway.place_order
+      expect(takeaway.order).to be_empty
+    end
+
+    it 'clears the order' do
+      expect(takeaway.place_order).to eq 'Order placed!'
+    end
   end
 end
