@@ -3,8 +3,8 @@ class Restaurant
   attr_reader :basket
 
   def initialize
-    @menu = { 'spring_rolls' => 1.99, 'prawn_toast' => 1.99,
-       'egg_fried_rice' => 2.50, 'kung_po_chicken' => 4.50 }
+    @menu = { 'spring rolls' => 1.99, 'prawn toast' => 1.99,
+       'egg fried rice' => 2.50, 'kung po chicken' => 4.50 }
     @basket = {}
   end
 
@@ -12,7 +12,28 @@ class Restaurant
     @menu
   end
 
-  def order(dish, number = 1)
-    @basket[dish] = number
+  def order(dish, quantity = 1)
+    @basket[dish] = quantity
+  end
+
+  def order_summary
+    dish_summary + "\nTotal is £#{basket_total}"
+  end
+
+  private
+
+  def dish_summary
+    @basket.map { |dish, quantity|
+      "#{quantity} x #{dish.capitalize} -- " +
+      "£#{subtotal(dish, quantity)}"
+    }.join("\n")
+  end
+
+  def subtotal(dish, quantity)
+    @menu[dish] * quantity
+  end
+
+  def basket_total
+    @basket.map { |dish, quantity| @menu[dish] * quantity }.sum
   end
 end
