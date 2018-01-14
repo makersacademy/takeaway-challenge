@@ -39,6 +39,7 @@ describe Order do
   describe "#total" do
     it "returns total value of basket" do
       order = described_class.new(menu, {item => 3})
+      expect(order.total).to eq 3.00
     end
   end
 
