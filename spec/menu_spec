@@ -24,4 +24,9 @@ describe Menu do
   it 'knows if the dish is on the menu' do
     expect(menu.has_dish?(:milk)).to be true
   end
+
+  it 'knows if the dish is not on the menu' do
+    expect(menu.has_dish?(:nachos)).to be false
+  end
+
 end
