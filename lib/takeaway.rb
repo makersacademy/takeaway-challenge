@@ -1,5 +1,7 @@
 require_relative 'order'
 require_relative 'menu'
+require_relative 'twilio_auth'
+require 'date'
 
 class Takeaway
 
@@ -24,12 +26,18 @@ class Takeaway
   end
 
   def submit
-    # send confirmation sms
+    send_sms("Thank you for your order! It should arrive at #{estimated_delivery_time}")
   end
 
   private
 
-  def send_sms
+  def send_sms(message)
+    message
+  end
+
+  def estimated_delivery_time
+    estimated_time = Time.now + 30*60
+    estimated_time.strftime("%H:%M")
   end
 
 end
