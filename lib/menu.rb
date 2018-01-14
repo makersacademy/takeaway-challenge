@@ -4,7 +4,7 @@ class Menu
   MENU = { 'salad' => 5.45, 'burger' => 7.99, 'pizza' => 8.99, 'sandwich' => 3.75,
           'burrito' => 5, 'pie' => 4, 'quiche' => 3 }
 
-  def initialize(meals)
+  def initialize(meals = MENU)
     @meals = meals
   end
 
