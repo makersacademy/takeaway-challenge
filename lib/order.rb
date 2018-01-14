@@ -14,9 +14,7 @@ class Order
   end
 
   def to_s
-    string = ""
-    @basket.each {|item, qty| string << "#{qty} x #{item}  = £%.2f %#{@menu.price(item) * qty}\n"}
-    string
+    @basket.map {|item, qty| "#{qty} x #{item}  = £#{"%.2f" % (@menu.price(item) * qty)}"}.join("\n")
   end
 
   def total
