@@ -22,6 +22,9 @@ class Order
     quantity.times { @list << choice } 
   end
 
+  def total
+    @list.reduce(0) { |total, choice| total += choice.price} 
+  end
 
    private
    def deadline_set
