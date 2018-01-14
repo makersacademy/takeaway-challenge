@@ -3,8 +3,6 @@ require 'dotenv/load' if ENV['RUBY_ENV'] == "development"
 
 class Messager
 
-attr_reader
-
   def initialize
     @account_sid = ENV["TWILIO_ACC_SID"]
     @auth_token = ENV["TWILIO_AUTH_TOKEN"]
