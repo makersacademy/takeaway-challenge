@@ -17,7 +17,7 @@ class SMS
     @client.messages.create(
     from: ENV['TWILIO_PHONE'],
     to: ENV['TWILIO_DESTINATION_PHONE'],
-    body: (msg))
+    body: msg)
   end
 
   def time_of_delivery
