@@ -18,11 +18,28 @@ class Order
     @list.reduce(0) { |total, choice| total += choice.price} 
   end
 
-   private
+  def list
+    @list.dup
+  end
+
+  def submit(amount)
+    check_total(amount)
+    "Thank you! Your order will be delivered at #{deadline_set}"
+  end
+
+  
+
+  private
    def deadline_set
     hour = @time.hour < 23 ? @time.hour + 1 : 0 
-    minutes = @time.minute < 10 ? "0#{@time.minute}" : @time.minute    
+    hour = time_format(hour)
+    minutes = time_format(@time.minute)   
     "#{hour}:#{minutes}"
+   end
+
+   def time_format(time)
+      time = time.to_s
+      time.length == 1  ?  "0" + time : time   
    end
 
    def option_finder(option)
