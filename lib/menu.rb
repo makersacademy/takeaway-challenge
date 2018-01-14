@@ -1,5 +1,3 @@
-require 'menu'
-
 class Menu
   attr_reader :dishes
 
@@ -15,6 +13,10 @@ class Menu
 
   def has_dish?(plate)
     !dishes[plate].nil?
+  end
+
+  def price(dish)
+    dishes[dish]
   end
 
 end
