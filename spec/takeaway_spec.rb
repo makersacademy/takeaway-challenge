@@ -46,7 +46,11 @@ describe Takeaway do
   describe '#verify_order' do
     it 'checks user input against order total and confirms if correct' do
       takeaway.order_item("Prawn Toast",1)
-      expect(takeaway.verify_order(4.50).to eq "Total verified - order processed")
+      expect(takeaway.verify_order(4.50)).to eq "Total verified - order processed"
+    end
+    it 'raises error if user order total does not match actual order total' do
+      takeaway.order_item("Prawn Toast",1)
+      expect { takeaway.verify_order(10) }. to raise_error "Total does not match current order, order not processed" 
     end
   end
 end
