@@ -45,22 +45,37 @@ describe Order do
        	   order.add("daal")
         expect(order.total).to eq 17.5
       end
-      end
-
-
+     end
   end
 
-  describe "#request" do
-    
-    it "returns order time, one hour later than 1:00" do 
-      message =  "Thank you! Your order will be delivered at 2:00"
-      expect(order.request("tofu 1, 5")).to eq message
+  describe "#submit" do
+
+  	 context "order two tofus one daal and first" do 
+      before do 
+        order.add("tofu", 2)
+        order.add("daal")
+      end
+
+      it "returns order time, one hour later than 1:00" do 
+        message =  "Thank you! Your order will be delivered at 02:00"
+        expect(order.submit(17.5)).to eq message
+      end
+
+    it "returns order time, one hour later than 23:59" do 
+      set_time(23, 59)	
+      message =  "Thank you! Your order will be delivered at 00:59"
+      expect(order.submit(17.5)).to eq message
     end
 
-      it "returns order time, one hour later than 23:59" do 
-      set_time(23, 59)	
-      message =  "Thank you! Your order will be delivered at 0:59"
-      expect(order.request("tofu 1, 5")).to eq message
+    it "raises error if you pay too little" do 
+      message = "Order failed, you paid £15, your order cost £17.5. Try again"	
+      expect{order.submit(15)}.to raise_error message
+    end
+
+     it "raises error if you pay too much" do 
+      order.add("daal", 2)	
+      message = "Order failed, you paid £30, your order cost £32.5. Try again"	
+      expect{order.submit(30)}.to raise_error message
     end
 
     def set_time(hour, minute) 
@@ -68,5 +83,5 @@ describe Order do
       allow(time).to receive(:minute).and_return(minute) 
     end
    end
-
+  end
 end
