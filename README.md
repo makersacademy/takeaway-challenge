@@ -14,12 +14,17 @@ Takeaway Challenge
 
  ```
 
+Brief Summary of Approach
+ -------
+I used diagramming to plan my objects and how they would interact with each other.  I then used the TDD cycle, with frequent diagram revisits to implement the program.  I feel a lot more confident with classes and delegation after this challenge.  I need to work on injecting dependencies.
+
 Instructions
 -------
 
+* Clone this repository
+* cd takeaway-challenge
 * Run the command 'bundle' in the project directory to ensure you have all the gems
-*
-
+* To use in irb please comment out the following part of line 2 in messager.rb { if ENV['RUBY_ENV'] == "development" }
 
 User stories
 --------
@@ -41,9 +46,24 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
+Functionality in IRB
+--------
+```
+To access the Cafe: require './lib/cafe.rb'
+To visit a new Cafe: cafe = Cafe.new
+To read the Menu: cafe.show_menu
+To order food (item, quantity):  cafe.order_me("CHOCOLATE_BANANA_PANCAKES",2)
+To access basket summary: cafe.basket_summary
+To check out (and submit payment): cafe.checkout(15.75)
+This will send you a text to confirm your order has been placed.
+To exit: exit
+```
 
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
+Technologies Used:
+--------
+* RSpec
+* Twilio API
 
-* Advanced! (have a go if you're feeling adventurous):
+Where I would go next with this:
+--------
   * Implement the ability to place orders via text message.
