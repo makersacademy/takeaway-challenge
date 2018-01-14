@@ -31,7 +31,10 @@ class Order
    end
 
    def option_finder(option)
-     @menu.choices.each {|choice| return choice if choice.food == option}
+     @menu.choices.each do 
+      |choice| return choice if choice.food == option
+     end
+     raise ("Not on menu")
    end
 
 end
