@@ -7,6 +7,7 @@ class Order
   def initialize(menu = Menu.new)
     @dishes = {}
     @menu = menu
+
   end
 
   def add_item(dish, quantity)

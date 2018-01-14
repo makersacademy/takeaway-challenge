@@ -1,13 +1,14 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
 
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :sms
 
-  def initialize(menu = Menu.new, order = Order.new)
-    @menu = menu
+  def initialize(menu = Menu.new, order = Order.new, sms = SMS.new)
     @order = order
+    @sms = sms
   end
 
   def print_menu
@@ -20,6 +21,10 @@ class Takeaway
 
   def bill
     @order.total
+  end
+
+  def complete_order
+    @sms.deliver
   end
 
 
