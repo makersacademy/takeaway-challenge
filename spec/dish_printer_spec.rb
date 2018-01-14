@@ -3,10 +3,9 @@ require 'dish_printer'
 
 describe DishPrinter do
   subject(:dish_printer) { described_class.new }
-  let(:dish) { double :dish, name: "Pancakes", price: 3.00 }
+  let(:dish) { double :dish, name: "Pancakes", price: 3.00, is_a?: true }
 
   it 'prints a dish' do
-    allow(dish).to receive(:is_a?).and_return true
     expect { dish_printer.print(dish) }.to output("Pancakes...£3.00\n").to_stdout
   end
 

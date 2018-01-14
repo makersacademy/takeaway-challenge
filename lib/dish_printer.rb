@@ -1,4 +1,4 @@
-require 'dish'
+require_relative 'dish'
 
 class DishPrinter
   def print(dish)

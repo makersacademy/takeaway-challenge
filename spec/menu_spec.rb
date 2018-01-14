@@ -4,6 +4,7 @@ require 'menu'
 describe Menu do
   subject(:menu) { described_class.new("Breakfast Menu") }
   let (:dish) { double :dish }
+  let (:dish2) { double :dish2 }
 
   context '#initialize' do
     it 'has a name' do
@@ -16,21 +17,19 @@ describe Menu do
   end
 
   context '#add' do
+    before(:each) { menu.add(dish) }
+
     it 'adds a dish to menu' do
-      menu.add(dish)
       expect(menu.dishes).to contain_exactly(dish)
     end
 
     it 'adds two dishes to menu' do
-      menu.add(dish)
       menu.add(dish2 = double)
       expect(menu.dishes).to contain_exactly(dish, dish2)
     end
   end
 
   context '#remove' do
-    let(:dish2) { double :dish2 }
-
     before do
       menu.add(dish)
       menu.add(dish2)

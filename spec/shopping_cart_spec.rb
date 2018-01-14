@@ -3,8 +3,10 @@ require 'shopping_cart'
 
 describe ShoppingCart do
   DISH1_PRICE = 10
+  DISH2_PRICE = 12
   subject(:shopping_cart) { described_class.new }
   let(:dish1) { double :dish1, price: DISH1_PRICE }
+  let(:dish2) { double :dish2, price: DISH2_PRICE }
 
   context '#initialize' do
     it 'is empty' do
@@ -24,9 +26,6 @@ describe ShoppingCart do
   end
 
   context '#remove' do
-    DISH2_PRICE = 12
-    let(:dish2) { double :dish2, price: DISH2_PRICE }
-
     before do
       shopping_cart.add(dish1)
       shopping_cart.add(dish2)
@@ -47,8 +46,6 @@ describe ShoppingCart do
   end
 
   context '#empty' do
-    let(:dish2) { double :dish2, price: DISH2_PRICE }
-
     before do
       shopping_cart.add(dish1)
       shopping_cart.add(dish2)
