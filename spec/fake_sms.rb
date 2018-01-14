@@ -1,6 +1,6 @@
 class FakeSms
-    attr_accessor :messages
-    @messages =[]
+  attr_accessor :messages
+  @messages = []
 
   def self.messages
     @messages

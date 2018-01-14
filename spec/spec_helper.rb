@@ -10,7 +10,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 ])
 SimpleCov.start
 
-
 RSpec.configure do |config|
   config.after(:suite) do
     puts
@@ -21,5 +20,4 @@ RSpec.configure do |config|
     stub_const('SmsTool', FakeSms)
     FakeSms.messages.pop
   end
-
 end

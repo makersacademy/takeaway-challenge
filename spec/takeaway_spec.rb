@@ -18,7 +18,7 @@ describe Takeaway do
       expect(menu).to have_received(:print_menu)
     end
     it "returns a list of dishes available with price" do
-      expect(takeaway.print_menu).to eq ({ "Prawn Toast" => 4.50, "Beef Chow Mein" => 6.50 })
+      expect(takeaway.print_menu).to eq({ "Prawn Toast" => 4.50, "Beef Chow Mein" => 6.50 })
     end
   end
 
@@ -53,12 +53,12 @@ describe Takeaway do
       expect { takeaway.complete_order(10) }. to raise_error "Total does not match current order, order not processed"
     end
     it 'saves verified order to order history' do
-        takeaway.complete_order(4.50)
-        expect(takeaway.order_history).to include order
+      takeaway.complete_order(4.50)
+      expect(takeaway.order_history).to include order
     end
     it 'sends text message confirmation if order total matches' do
-        takeaway.complete_order(4.50)
-        expect(FakeSms.messages).to eq ["Message sent"]
+      takeaway.complete_order(4.50)
+      expect(FakeSms.messages).to eq ["Message sent"]
     end
   end
 end

@@ -17,7 +17,7 @@ class Takeaway
     menu.print_menu
   end
 
-  def order_item(item, quantity=1)
+  def order_item(item, quantity = 1)
     fail "Sorry, we do not sell #{item}" unless menu.item_available?(item)
     current_order.add_items(item, quantity, menu.items[item])
   end

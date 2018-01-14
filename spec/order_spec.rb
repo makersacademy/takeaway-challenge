@@ -33,7 +33,7 @@ describe Order do
       expect { order.total }.to raise_error "No items ordered yet!"
     end
   end
-  describe '#verified?(total)'
+  describe '#verified?(total)' do
     it 'checks user input against order total and confirms true if correct' do
       order.add_items("Prawn Toast", 1, 4.50)
       expect(order.verified?(4.50)).to eq true
@@ -42,4 +42,5 @@ describe Order do
       order.add_items("Prawn Toast", 1, 4.50)
       expect(order.verified?(9)).to eq false
     end
+  end
 end
