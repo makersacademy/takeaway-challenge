@@ -2,8 +2,9 @@ require 'takeaway'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order) }
-  let(:order) { double(:order, total: 15.50) }
+
   let(:menu) { double(:menu, print: printed_menu)}
+  let(:order) { double(:order, total: 43.50) }
   let(:printed_menu) { 'Eggs $1.50'}
 
   let(:dishes) { {eggs: 5, milk: 5} }
@@ -20,7 +21,7 @@ describe Takeaway do
   it 'can work out the total price' do
     allow(order).to receive(:add)
     total = takeaway.place_order(dishes)
-    expect(total).to eq(15.50)
+    expect(total).to eq(43.50)
   end
 
 end
