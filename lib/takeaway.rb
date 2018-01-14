@@ -1,4 +1,3 @@
-
 class Takeaway
   def initialize(menu:)
     @menu = menu
