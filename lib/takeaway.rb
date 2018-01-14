@@ -1,5 +1,6 @@
 require_relative 'order'
 require_relative 'menu'
+require 'twilio-ruby'
 require 'dotenv/load' # loads local .env file with twilio authentication
 require 'date'
 
@@ -7,9 +8,10 @@ class Takeaway
 
   attr_reader :menu
 
-  def initialize(order_class = Order, menu_class = Menu)
+  def initialize(order_class = Order, menu_class = Menu, sms_client = Twilio::REST::Client)
     @menu = menu_class.new
     @order = order_class.new(@menu)
+    @sms_client = sms_client.new(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
   end
 
   def order(item, qty = 1)
@@ -31,8 +33,9 @@ class Takeaway
 
   private
 
-  def send_sms(message)
-    message
+  def send_sms(message, from = ENV['SENDING_NUMBER'], to = ENV['MY_NUMBER'])
+    @sms_client.messages.create(from: from, to: to, body: message)
+    "Sent message to #{to}"
   end
 
   def estimated_delivery_time
