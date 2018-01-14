@@ -22,7 +22,7 @@ describe Takeaway do
       end
 
       it "adds multiple items to the order" do
-        allow(menu).to receive(:dishes).and_return({ "spring rolls" => 2, "dumplings" => 3})
+        allow(menu).to receive(:dishes).and_return({ "spring rolls" => 2, "dumplings" => 3  })
         takeaway.place_order("spring rolls", 3, "dumplings", 1, 9)
         expect(takeaway.order).to eq({ "spring rolls" => 3, "dumplings" => 1 })
       end
