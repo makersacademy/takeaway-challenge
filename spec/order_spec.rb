@@ -31,8 +31,6 @@ describe Order do
       expect(order.request("tofu 1, 5")).to eq message
     end
 
-
-
     def set_time(hour, minute) 
       allow(time).to receive(:hour).and_return(hour)
       allow(time).to receive(:minute).and_return(minute) 
