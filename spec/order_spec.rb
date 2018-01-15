@@ -1,10 +1,10 @@
 require 'order'
 
 describe Order do
-let(:mock_menu) {double :menu_object, :list => {pizza: 10.00, pasta: 5.00}}
-let(:mock_confirmation) {double :confirmation_object, :send => "Thank you! Your order was placed and will be delivered"}
-subject(:order) {described_class.new(mock_menu, mock_confirmation)}
-let(:meal) { double :meal}
+  let(:mock_menu) { double :menu_object, :list => { pizza: 10.00, pasta: 5.00 } }
+  let(:mock_confirmation) { double :confirmation_object, :send => "Thank you! Your order was placed and will be delivered" }
+  subject(:order) { described_class.new(mock_menu, mock_confirmation) }
+  let(:meal) { double :meal }
 
   describe '#menu' do
     it 'order should respond to menu method' do
@@ -49,10 +49,9 @@ let(:meal) { double :meal}
   describe '#confirm(answer)' do
     it "raise error if user doesn't confirm order" do
       error = "Order cancelled, please select items"
-      expect{order.confirm(false)}.to raise_error error
+      expect { order.confirm(false) }.to raise_error error
     end
 
   end
-
 
 end
