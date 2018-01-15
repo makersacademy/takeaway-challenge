@@ -34,7 +34,7 @@ Potential scenario below:
 2.4.1 :064 > takeaway.bill
  => 121483
 2.4.1 :065 > takeaway.complete_order
- => <Twilio::REST::Message @path=/2010-04-01/Accounts/AC9545fb29292bf69857193f0b6e192816/Messages/SM4ea288aee18d4b00bb8f577b1047a5a8>
+ => <Twilio::REST::Message @path=/2010-04-01/Accounts/TWILIONUMBER/Messages/TWILIONUMBER>
 2.4.1 :066 >
 
 
