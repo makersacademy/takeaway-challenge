@@ -27,21 +27,34 @@ describe Restaurant do
     end
   end
 
-  describe '#order_summary' do
-    it 'returns an itemised bill' do
+  context 'with a full meal' do
+    before do
       restaurant.order('spring rolls')
       restaurant.order('prawn toast')
       restaurant.order('egg fried rice')
       restaurant.order('kung po chicken')
-      summary = "1 x Spring rolls -- £1.99\n1 x Prawn toast -- £1.99\n" +
-      "1 x Egg fried rice -- £2.5\n1 x Kung po chicken -- £4.5\nTotal is £10.98"
-      expect(restaurant.order_summary).to eq summary
+    end
+
+    describe '#order_summary' do
+      it 'returns an itemised bill' do
+        summary = "1 x Spring rolls -- £1.99\n1 x Prawn toast -- £1.99\n" +
+        "1 x Egg fried rice -- £2.50\n1 x Kung po chicken -- £4.50\nTotal is £10.98"
+        expect(restaurant.order_summary).to eq summary
+      end
+    end
+
+    describe '#check_total' do
+      it 'returns true if the total is correct' do
+        expect(restaurant.check_total(10.98)).to eq true
+      end
     end
   end
 
   describe '#confirm_order' do
     it 'allows messenger to send confirmation message' do
-      expect(restaurant).to receive(:send_message).with("Thank you for your order.")
+      delivery_time = (Time.now + 1800).strftime("%H:%M")
+      message = "Thank you for your order. Your food will be delivered by #{delivery_time}"
+      expect(restaurant).to receive(:send_message).with(message)
       restaurant.confirm_order
     end
   end
