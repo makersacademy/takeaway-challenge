@@ -1,5 +1,5 @@
 require 'twilio-ruby'
-require 'dotenv/load' if ENV['RUBY_ENV'] == "development"
+require 'dotenv/load'
 
 class Messager
 
@@ -18,6 +18,4 @@ class Messager
 
 end
 
-#floats
-#stubbing and mocking
-#summary refactor
+# floats

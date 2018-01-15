@@ -6,9 +6,9 @@ class Cafe
 
   attr_reader :menu, :order, :message, :time
 
-  def initialize(messager = Messager.new)
-    @menu = Menu.new
-    @order = Order.new
+  def initialize(menu = Menu.new, order = Order.new, messager = Messager.new)
+    @menu = menu
+    @order = order
     @messager = messager
   end
 
@@ -20,7 +20,11 @@ class Cafe
   def order_me(item, quantity = 1)
     raise 'This item is not on the menu.' unless @menu.includes?(item)
     @order.add_to_order(item, quantity)
-    "You have ordered #{item} x#{quantity}."
+    "You have added #{item} x#{quantity}."
+  end
+
+  def basket_summary
+    @order.summary
   end
 
   def checkout(customer_calc)

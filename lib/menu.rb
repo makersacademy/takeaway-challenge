@@ -1,6 +1,6 @@
 class Menu
 
-attr_reader :list
+  attr_reader :list
 
   MENU = {
     BANANA_BREAD: 5.50,

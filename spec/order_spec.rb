@@ -30,18 +30,14 @@ describe Order do
   end
 
   describe 'order summary' do
-    it 'summarises order so far' do
-      order.add_to_order("CHIA_PUDDING", 1)
-      expect(order.summary).to eq "Your order so far contains: CHIA_PUDDING x1, all coming to a total of £5.75."
-    end
-
-    it 'summarises order so far' do
+    
+    it 'summarises order with more than one item' do
       order.add_to_order("CHIA_PUDDING", 1)
       order.add_to_order("BANANA_BREAD", 1)
       expect(order.summary).to eq "Your order so far contains: CHIA_PUDDING x1, BANANA_BREAD x1, all coming to a total of £11.25."
     end
 
-    it 'summarises order so far' do
+    it 'summarises order with item multiples' do
       order.add_to_order("CHIA_PUDDING", 3)
       order.add_to_order("BANANA_BREAD", 1)
       expect(order.summary).to eq "Your order so far contains: CHIA_PUDDING x3, BANANA_BREAD x1, all coming to a total of £22.75."
