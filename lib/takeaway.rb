@@ -1,10 +1,11 @@
-require 'order'
+require_relative 'order'
+require_relative 'menu'
 
 class Takeaway
 
-  def initialize(menu:, order: nil)
-    @menu = menu
-    @order = order || Order.new
+  def initialize
+    @menu = Menu.new
+    @order = Order.new
   end
 
   def show_menu
@@ -12,10 +13,10 @@ class Takeaway
   end
 
   def order_food(dishes)
-    dishes.each do |dish, quantity|
-      order.add(dish, quantity)
-    end
-    order.total
+    # dishes.each do |dish, quantity|
+    #   @order.add(dish, quantity)
+    # end
+    # order.total
   end
 
   private

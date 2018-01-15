@@ -1,8 +1,10 @@
+
+
 class Menu
 
   attr_reader :dishes
 
-  def initialize(dishes)
+  def initialize(dishes = menu_list)
     @dishes = dishes
   end
 
@@ -14,6 +16,22 @@ class Menu
 
   def dish_exists?(dish)
     !dishes[dish].nil?
+  end
+
+  def find_dish(dish_name)
+    menu_list.select do |item|
+       item if item.include?(dish_name.to_sym)
+    end
+  end
+
+  private
+
+  def menu_list
+    menu = [
+      {pierogi: 4.00},
+      {kopytka: 2.00},
+      {bigos: 5.20}
+    ]
   end
 
 end

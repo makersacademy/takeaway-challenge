@@ -2,9 +2,9 @@ class Order
 
   attr_reader :dishes
 
-  def initialize(menu)
+  def initialize
     @dishes = {}
-    @menu = menu
+    # @menu = menu
   end
 
   def add(dish, quantity)
