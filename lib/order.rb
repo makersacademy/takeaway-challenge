@@ -19,6 +19,8 @@ class Order
     dish_totals.inject(:+)
   end
 
+  private
+
   def dish_totals
     dishes.map do |dish, quantity|
     menu.price(dish) * quantity
