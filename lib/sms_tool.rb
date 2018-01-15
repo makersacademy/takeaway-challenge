@@ -9,7 +9,7 @@ class SmsTool
 				@client.api.account.messages.create(
 	  		from: '+442870032047',
 	  		to: number,
-	  		body: "Thank you! Your order:#{message} was placed and will be delivered before #{time}.")
+	  		body: "Thank you! Your order was placed and will be delivered before #{time}.")
 		end
 
 		def self.boot_twilio
