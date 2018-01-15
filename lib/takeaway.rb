@@ -55,7 +55,7 @@ class TakeAway
 
   def order_total
     puts '----------------'
-    puts "Total payable --- #{bill}"
+    puts "Total payable --- £#{bill}"
   end
 
   def logo
