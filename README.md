@@ -1,34 +1,9 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
+This was a Makers Academy weekend challenge to design code that allowed the user to order food from a menu and receive an order confirmation via text message using the Twilio API.
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The user stories implemented are as follows:
 
 ```
 As a customer
@@ -48,32 +23,35 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Here is an example of how you might interact with the code from the command line:
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+```
+2.4.1 :011 > require './lib/restaurant.rb'
+ => false
+2.4.1 :012 > r = Restaurant.new
+ => #<Restaurant:0x007fad4a357240 @menu=#<Menu:0x007fad4a357218>, @order=#<Order:0x007fad4a3571f0 @basket={}, @menu=#<Menu:0x007fad4a357218>, @prices=[]>>
+2.4.1 :013 > r.menu.view
+ => [{:name=>"green curry", :price=>8.0}, {:name=>"red curry", :price=>8.0}, {:name=>"pad thai", :price=>7.0}, {:name=>"massaman curry", :price=>9.0}, {:name=>"satay chicken", :price=>8.0}, {:name=>"beef panang", :price=>8.0}, {:name=>"massaman curry", :price=>9.0}, {:name=>"fried rice", :price=>5.0}, {:name=>"special fried rice", :price=>6.0}, {:name=>"sticky rice", :price=>5.0}, {:name=>"tempura", :price=>3.0}, {:name=>"crab cakes", :price=>5.0}]
+2.4.1 :014 > r.order.add_item("sticky rice", 2)
+ => "2 x sticky rice(s) added to your basket"
+2.4.1 :015 > r.order.add_item("sticky rice", 2)
+ => "2 x sticky rice(s) added to your basket"
+2.4.1 :016 > r.order.view_basket
+"sticky rice x 4 = £20.0"
+ => {"sticky rice"=>4}
+2.4.1 :017 > r.order.add_item("massaman curry", 2)
+ => "2 x massaman curry(s) added to your basket"
+2.4.1 :018 > r.order.view_basket
+"sticky rice x 4 = £20.0"
+"massaman curry x 2 = £18.0"
+ => {"sticky rice"=>4, "massaman curry"=>2}
+2.4.1 :019 > r.order.total
+ => "Total: £38.0"
+2.4.1 :020 > r.complete_order(28.0)
+RuntimeError: your total of £28.0 does not match the calculated sum of £38.0
+	from /Users/EdPerkins/Projects/takeaway-challenge/lib/restaurant.rb:21:in `complete_order'
+	from (irb):20
+	from /Users/EdPerkins/.rvm/rubies/ruby-2.4.1/bin/irb:11:in `<main>'
+2.4.1 :021 > r.complete_order(38.0)
+ => <Twilio.Api.V2010.MessageInstance account_sid: ACd052e2398bbf75bb0be6b4633acea1fc api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you! Your food order of £38.0 will be delivered before 22.31 date_created: 2018-01-14 21:46:14 +0000 date_updated: 2018-01-14 21:46:14 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: +441694352044 messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid: SM48d872e429d4433880b9458b0268bd1a status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/ACd052e2398bbf75bb0be6b4633acea1fc/Messages/SM48d872e429d4433880b9458b0268bd1a/Media.json"} to: +447801732952 uri: /2010-04-01/Accounts/ACd052e2398bbf75bb0be6b4633acea1fc/Messages/SM48d872e429d4433880b9458b0268bd1a.json>
+ ```
