@@ -14,6 +14,10 @@ class Restaurant
     @order = Order.new(@menu)
   end
 
+  def correct_amount?(price)
+    order.my_total == price
+  end
+
   def complete_order(price)
     if correct_amount?(price)
       send_text("Thank you! Your food order of £#{price} will be delivered before #{delivery_time}")
@@ -29,9 +33,7 @@ class Restaurant
     @client.messages.create( to: ENV['MY_NUMBER'], from: ENV['TWILIO_NUMBER'], body: confirmation_message)
   end
 
-  def correct_amount?(price)
-    @my_total == price
-  end
+
 
   private
 

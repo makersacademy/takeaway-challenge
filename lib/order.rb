@@ -2,12 +2,11 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :basket, :sum_total
+  attr_reader :basket
 
   def initialize(menu = Menu.new)
     @basket = {}
     @menu = menu
-    @prices = []
   end
 
   def add_item(dish_name, quantity = 1)
@@ -26,14 +25,19 @@ class Order
   end
 
   def sum_total
-    @prices.clear
-    basket.each{ |item, quantity| @prices << (Menu::MENU_ITEMS.find {|dish| dish[:name] == item}[:price] * quantity)}
-    @prices.sum
+    prices = []
+    basket.each{ |item, quantity| prices << (Menu::MENU_ITEMS.find {|dish| dish[:name] == item}[:price] * quantity)}
+    @my_total = prices.sum
   end
 
   def total
-    return "Total: £#{sum_total}"
+    sum_total
+    return "Total: £#{@my_total}"
   end
+
+    def my_total
+      @my_total
+    end
 
   private
 
