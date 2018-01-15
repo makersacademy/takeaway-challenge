@@ -3,6 +3,11 @@ Takeaway Challenge
 
 Week 2 weekend challenge to model a takeaway, including connecting to 3rd party API (Twilio) to send confirmation sms messages.
 
+Files:
+- takeaway.rb: The main program, which holds the restaurant itsef and handles user interaction
+- menu.rb: Holds the menu items, and related methods
+- order.rb: Creates a specific order and related methods
+
 Requirements 
 -------
 
@@ -11,13 +16,13 @@ Requirements
 
 All requirements can be installed by installing the bundler gem (`gem install bundle`) and then running `bundle install` in the project directory.
 
-N.B. Sending confirmation sms requires Twilio account with a number that can send sms, and a .env account in the project root directory containing the following:
+N.B. Sending confirmation sms requires Twilio account with a number that can send sms, and a .env file in the project root directory containing the following:
 
 ```
-ACCOUNT_SID = " "
-AUTH_TOKEN = " "
-SENDING_NUMBER = " " # your Twilio number
-MY_NUMBER = " " # the recipient
+ACCOUNT_SID = "..."
+AUTH_TOKEN = "..."
+SENDING_NUMBER = "..." # your Twilio number
+MY_NUMBER = "..." # the recipient
 ```
 
 User Stories implemented
@@ -50,5 +55,3 @@ Instructions
 - View items in current order & cost breakdown: `puts my_restaurant.order_summary`
 - Check total price: `my_restaurant.check_total`
 - Submit order: `my_restaurant.submit_order`
-
-N.B. Menu is currently hard-coded in menu.rb file, but future work could allow this to be changed or loaded from another source.
