@@ -1,3 +1,19 @@
+Note on the coding:
+
+Example from Sam Morgan: https://www.youtube.com/watch?v=mgiJKdH9x8c  
+
+I followed step by step and changing the names, so I can understand more the approach. The example from Sam helped me to understand more the problem of the takeaway and I tried to see if by doing a few things differently, it would work (for example I tried at first to not use the doubles (as I'm still not sure), but I had some issues) and then decided to follow his approach and see what the doubles help us.
+
+Then, I read more about doubles and tried to see again Sam's approach.
+
+When I get to the implementation for the sms, was the point where I feel I need to work more on this and understand how twilio works, I installed the bundle.
+
+Also, by trying to understand the single responsibility, I tried to see why Sam has used different class files - as takeaway, order, menu and then sms(where I've got stuck).
+
+I've decided to stop here and tried to understand the things Sam has done before and not going further.
+
+My approach has been to see an example and understand how I can do it but following it. 
+
 Takeaway Challenge
 ==================
 ```
