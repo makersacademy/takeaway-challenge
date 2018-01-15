@@ -51,7 +51,7 @@ Functionality in IRB
 ```
 To access the Cafe: require './lib/cafe.rb'
 To visit a new Cafe: cafe = Cafe.new
-To read the Menu: cafe.show_menu
+To read the Menu: cafe.read_menu
 To order food (item, quantity):  cafe.order_me("CHOCOLATE_BANANA_PANCAKES",2)
 To access basket summary: cafe.basket_summary
 To check out (and submit payment): cafe.checkout(15.75)
