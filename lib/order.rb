@@ -1,13 +1,14 @@
 require  "./lib/menu"
 require "date"
-require "twilio-ruby"
+require "messenger"
 
 class Order 
    
-  def initialize(time = DateTime.now, menu = Menu.new )
+  def initialize(messenger = Messenger.new, time = DateTime.now, menu = Menu.new)
   @time = time
   @menu = menu
   @list = []
+  @messenger = messenger
   end
   
   def add(option, quantity = 1)
@@ -26,21 +27,11 @@ class Order
   def submit(amount)
     raise "Order failed, nothing in basket" if empty_basket?
     check_total(amount)
-    "Thank you! Your order will be delivered by #{deadline_set}"
+    @messenger.confirmation
   end
   
   private
-   def deadline_set
-    hour = @time.hour < 23 ? @time.hour + 1 : 0 
-    hour = time_format(hour)
-    minutes = time_format(@time.minute)   
-    "#{hour}:#{minutes}"
-   end
-
-   def time_format(time)
-      time = time.to_s
-      time.length == 1  ?  "0" + time : time   
-   end
+ 
 
    def option_finder(option)
      @menu.choices.each do 

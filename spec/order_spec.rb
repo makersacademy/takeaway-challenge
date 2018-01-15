@@ -3,10 +3,11 @@ require "order"
 describe Order do
   let(:time) {double :datetime, hour: 1, minute: 0}
   let(:menu) {double :menu, choices: [tofu, daal]}
+  let(:messenger) {double :messenger, confirmation: true}
   let(:tofu) {double :option, food: "tofu", price: 5}
   let(:daal) {double :option, food: "daal", price: 7.50}
 
-  subject(:order) {described_class.new(time, menu)}
+  subject(:order) {described_class.new(messenger, time, menu)}
  
 
   describe "#add" do
@@ -61,15 +62,9 @@ describe Order do
         order.add("daal")
       end
 
-      it "returns order time, one hour later than 1:00" do 
-        message =  "Thank you! Your order will be delivered by 02:00"
-        expect(order.submit(17.5)).to eq message
-      end
-
-    it "returns order time, one hour later than 23:59" do 
-      set_time(23, 59)	
-      message =  "Thank you! Your order will be delivered by 00:59"
-      expect(order.submit(17.5)).to eq message
+    it "sends message for correct amount" do 
+      order.submit(17.5)
+      expect(messenger).to have_received(:confirmation)
     end
 
     it "raises error if you pay too little" do 
