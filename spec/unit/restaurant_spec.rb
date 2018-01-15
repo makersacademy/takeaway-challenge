@@ -1,13 +1,14 @@
 require 'restaurant'
 
 describe Restaurant do
-  subject(:restaurant) { described_class.new }
+  subject(:restaurant) { described_class.new(menu) }
+  let(:menu) { double :menu, read: { 'spring rolls' => 1.99, 'prawn toast' => 1.99,
+     'egg fried rice' => 2.50, 'kung po chicken' => 4.50 }
+  }
 
   describe '#read_menu' do
-    it 'returns a menu' do
-      menu = { 'spring rolls' => 1.99, 'prawn toast' => 1.99,
-         'egg fried rice' => 2.50, 'kung po chicken' => 4.50 }
-      expect(restaurant.read_menu).to eq menu
+    it 'asks menu to return a price list' do
+      expect(restaurant.read_menu).to eq menu.read
     end
   end
 

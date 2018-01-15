@@ -5,15 +5,14 @@ class Restaurant
 
   attr_reader :basket
 
-  def initialize
-    @menu = { 'spring rolls' => 1.99, 'prawn toast' => 1.99,
-       'egg fried rice' => 2.50, 'kung po chicken' => 4.50 }
+  def initialize(menu = Menu.new)
+    @menu = menu
     @basket = {}
     @secrets = Secrets.new
   end
 
   def read_menu
-    @menu
+    @menu.read
   end
 
   def order(dish, quantity = 1)
@@ -55,10 +54,10 @@ class Restaurant
   end
 
   def subtotal(dish, quantity)
-    @menu[dish] * quantity
+    @menu.read[dish] * quantity
   end
 
   def basket_total
-    @basket.map { |dish, quantity| @menu[dish] * quantity }.sum
+    @basket.map { |dish, quantity| @menu.read[dish] * quantity }.sum
   end
 end
