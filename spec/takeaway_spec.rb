@@ -38,7 +38,7 @@ describe TakeAway do
     let(:menu_class)                { double :menu_class, new: menu }
     let(:menu)                      { [{ dish: "Enchanted Sauce", price: 12 }] }
     let(:dish_name)                 { 'Enchanted Sauce' }
-    let(:output_double)             { "Your order:\n----------------\nEnchanted Sauce --- £12\n----------------\nTotal payable --- 12\n" }
+    let(:output_double)             { "Your order:\n----------------\nEnchanted Sauce --- £12\n----------------\nTotal payable --- £12\n" }
 
     it "Should print a list of the order" do
       allow(menu_class).to receive(:find_dish).and_return(menu)
