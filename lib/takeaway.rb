@@ -1,26 +1,48 @@
 require_relative 'order'
 require_relative 'menu'
+require_relative 'message'
 
 class Takeaway
 
-  def initialize
-    @menu = Menu.new
-    @order = Order.new
+  attr_reader :menu, :order
+
+  def initialize(menu = Menu.new, message = Message.new)
+    @message = message
+    @menu = menu
+    @order = nil
   end
 
-  def show_menu
-    menu.show
+  def display_menu
+    menu.display
   end
 
-  def order_food(dishes)
-    # dishes.each do |dish, quantity|
-    #   @order.add(dish, quantity)
-    # end
-    # order.total
+  def order(food, quantity=1)
+    fail 'There is no such dish on the menu' unless on_menu?(food)
+    @order = Order.new(@menu.dish_list) if @order.nil?
+    @order.add_to_order(food, quantity)
+  end
+
+  def basket_summary
+    @order.nil? ? "Basket empty" : @order.basket
+  end
+
+  def total
+    "Total: £#{@order.current_total}"
+  end
+
+  def confirm_order
+    fail 'No orders have been added' if @order.nil?
+    @message.send_text if price_is_correct?
   end
 
   private
 
-  attr_reader :menu, :order
+  def price_is_correct?
+    @order.current_total == @order.total_price_of_basket
+  end
+
+  def on_menu?(food)
+    @menu.dish_list.include?(food)
+  end
 
 end

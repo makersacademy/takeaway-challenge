@@ -1,44 +1,49 @@
 require 'order'
-require 'menu'
 
 describe Order do
 
-  subject(:order) { described_class.new(menu) }
+  let(:dish_list) { {"pierogi"=>4.00} }
+  let(:order) { described_class.new(dish_list) }
 
-  let(:menu) { double(:menu) }
+  describe '#initialize' do
+    it 'checks the current_total is 0' do
+      expect(order.current_total).to be 0
+    end
 
-  let(:dishes) do
-    {
-      pierogi: 4.00,
-      kopytka: 2.00,
-      bigos: 5.20
-    }
+    it 'checks the basket is empty' do
+      expect(order.basket).to be_empty
+    end
   end
 
-  before do
-    allow(menu).to receive(:dish_exists?).with(:pierogi).and_return(true)
-    allow(menu).to receive(:dish_exists?).with(:kopytka).and_return(true)
-    allow(menu).to receive(:dish_exists?).with(:bigos).and_return(true)
+  describe 'ordering dish' do
+    it 'adds dish to order' do
+      order.add_to_order("pierogi", 4.00)
+      expect(order.basket).to eq "pierogi" => 4.00
+    end
+
+    it 'updates the quantity of the food' do
+      order.add_to_order("pierogi", 2)
+      order.add_to_order("pierogi", 4)
+      expect(order.basket).to include "pierogi" => 6
+    end
+
+    it 'sets quantity to 1 by default' do
+      order.add_to_order("pierogi")
+      expect(order.basket).to eq "pierogi" => 1
+    end
   end
 
-  it 'can select some number of several available dishes' do
-    order.add(:pierogi, 4)
-    order.add(:kopytka, 2)
-    order.add(:bigos, 5.20)
-    expect(order.dishes).to eq(dishes)
-  end
+  describe '#order total' do
+    it 'calculates current total' do
+      order.add_to_order("pierogi")
+      expect(order.current_total).to eq 4.00
+    end
 
-  it 'cannot add dishes that are not on the menu' do
-    allow(menu).to receive(:dish_exists?).with(:ramen).and_return(false)
-    expect { order.add(:ramen, 10.50) }.to raise_error NoItemError, "This ramen is not on the menu!"
-  end
-
-  it 'calculates the total sum for the order' do
-    order.add(:pierogi, 4)
-    order.add(:kopytka, 2)
-    order.add(:bigos, 5.20)
-    total = 11.20
-    expect(order.total).to eq(total)
+    it 'calculates total' do
+      order.add_to_order("pierogi", 5)
+      order.add_to_order("pierogi", 2)
+      expect(order.current_total).to eq 28.00
+    end
   end
 
 end

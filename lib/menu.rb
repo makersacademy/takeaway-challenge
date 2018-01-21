@@ -1,37 +1,20 @@
-
-
 class Menu
 
-  attr_reader :dishes
+  attr_reader :dish_list
 
-  def initialize(dishes = menu_list)
-    @dishes = dishes
+  def initialize
+    @dish_list = {"pierogi" => 4.00,
+                  "kopytka" => 2.00,
+                  "bigos" => 5.20}
   end
 
-  def show
-    dishes.map do |name, price|
-      "%s £%.2f" % [name.to_s.capitalize, price]
-    end.join(", ")
+  def display
+    dish_list.each {|food, price| "#{food.capitalize} £#{price}"}
   end
 
-  def dish_exists?(dish)
-    !dishes[dish].nil?
-  end
-
-  def find_dish(dish_name)
-    menu_list.select do |item|
-       item if item.include?(dish_name.to_sym)
-    end
-  end
-
-  private
-
-  def menu_list
-    menu = [
-      {pierogi: 4.00},
-      {kopytka: 2.00},
-      {bigos: 5.20}
-    ]
+  def add_to_menu(food, price)
+    fail 'Dish already exists' if dish_list.key?(food)
+    dish_list.store(food, price)
   end
 
 end

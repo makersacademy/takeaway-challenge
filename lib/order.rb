@@ -1,25 +1,34 @@
 class Order
 
-  attr_reader :dishes
+  attr_reader :basket, :current_total, :dish_list
 
-  def initialize
-    @dishes = {}
-    # @menu = menu
+  def initialize(dish_list)
+    @dish_list = dish_list
+    @basket = Hash.new(0)
+    @current_total = 0
   end
 
-  def add(dish, quantity)
-    fail NoItemError, "This #{dish} is not on the menu!" unless menu.dish_exists?(dish)
-    dishes[dish] = quantity
+  def add_to_order(food, quantity=1)
+    basket[food] += quantity
+    calculate_total(food, quantity)
+    "#{quantity} x #{food}(s) added to your basket. Total: £#{current_total}."
   end
 
-  def total
+  # def current_basket
+  #   @basket.map {|dish, qty| "#{dish.capitalize} x #{qty}"} unless @basket.empty?
+  #   "Total: £#{current_total}"
+  # end
 
+  def total_price_of_basket
+    dish_total = basket.map {|food, qty| @dish_list[food] * qty}
+    dish_total.inject(:+)
   end
 
   private
 
-  attr_reader :menu
+  def calculate_total(food, quantity)
+    total = @dish_list[food] * quantity
+    @current_total += total.round(2)
+  end
 
 end
-
-class NoItemError < StandardError; end
