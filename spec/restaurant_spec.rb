@@ -25,6 +25,7 @@ describe Restaurant do
 
   describe '#display menu' do
     it 'displays meny' do
+      restaurant.create_dish(dish_name, price)
       expect(restaurant.display_menu).to eq restaurant.menu
     end
   end

@@ -1,3 +1,5 @@
+require_relative 'dish'
+
 class Restaurant
 
   attr_reader :menu
@@ -12,7 +14,9 @@ class Restaurant
   end
 
   def display_menu
-    @menu
+    @menu.each_with_index { |dish, index|
+    puts "#{index+1}. #{dish.name} | #{dish.price} pounds  \n"
+  }
   end
 
 end
