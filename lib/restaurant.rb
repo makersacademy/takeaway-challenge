@@ -22,12 +22,15 @@ class Restaurant
   end
 
   def create_order
+
     puts "Enter the name of the food you want to order"
     name = gets.chomp
+    #decodes the price of the name from menu
     puts "Enter the amount"
     amount = gets.chomp
+    price =     #decodes the price of the name from menu
     order = Order.new
-    order.add_items(name, amount)
+    order.add_items(name, price, amount)
     return order
   end
 
