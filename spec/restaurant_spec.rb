@@ -23,11 +23,17 @@ describe Restaurant do
     end
   end
 
-  describe '#display menu' do
+  describe '#display_menu' do
     it 'displays meny' do
       restaurant.create_dish(dish_name, price)
       expect(restaurant.display_menu).to eq restaurant.menu
     end
   end
+
+  describe '#create_order' do
+    it 'creates and order' do
+      expect(restaurant.create_order).to be_instance_of(Order)
+    end
+  end 
 
 end
