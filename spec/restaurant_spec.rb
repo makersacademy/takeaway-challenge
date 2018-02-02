@@ -23,4 +23,10 @@ describe Restaurant do
     end
   end
 
+  describe '#display menu' do
+    it 'displays meny' do
+      expect(restaurant.display_menu).to eq restaurant.menu
+    end
+  end
+
 end

@@ -11,4 +11,8 @@ class Restaurant
     @menu << dish
   end
 
+  def display_menu
+    @menu
+  end
+
 end
