@@ -17,33 +17,25 @@ class Restaurant
 
   def display_menu
     @menu.each { |object|
-    puts "- #{object.details[:name]} | #{object.details[:price]} pounds  \n"
+      puts "- #{object.details[:name]} | #{object.details[:price]} pounds  \n"
     }
   end
 
-  def create_order
+  # provide argument ([{name:, amount:}, {name:, amount: }], total_number)
+  def create_order(dish_list, total_number)
     order = Order.new
-    puts "Enter the name of the food you want to order. If you want to stop ordering, click return two times"
-    @given_name = gets.chomp
-    puts "Enter the amount"
-    given_amount = gets.chomp
-    while !@given_name.empty? && !given_amount.empty? do
-      price = find_price()
-      order.add_items(@given_name, price, given_amount)
-      puts "Enter the name of the food you want to order"
-      @given_name = gets.chomp
-      puts "Enter the amount"
-      given_amount = gets.chomp
-    end
-    return order
-  end
-
-  def find_price
-    @menu.each { |object|
-    if object.details[:name] = @given_name then
-      return object.details[:price]
-    end
+    dish_list.each {|hash|
+      @menu.each{|object|
+        if object.details[:name] == hash[:name] then
+          name = hash[:name]
+          price = object.details[:price]
+          amount = hash[:amount]
+          order.add_items(name, price, amount)
+        end
+      }
     }
+    order.send_order(total_number)
+    order
   end
 
 end

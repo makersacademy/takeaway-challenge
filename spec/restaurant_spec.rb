@@ -5,6 +5,8 @@ describe Restaurant do
   subject(:restaurant) { described_class.new }
   let(:dish_name) {double('a name of dish')}
   let(:price) {double('a price of dish')}
+  let(:amount) {double('an amount of dish')}
+
 
   context "when created" do
     it "has an empty menu" do
@@ -32,18 +34,9 @@ describe Restaurant do
 
   describe '#create_order' do
     it 'creates an order' do
-      expect(restaurant.create_order).to be_instance_of(Order)
+      expect(restaurant.create_order([{name: dish_name, amount: amount}], 5)).to be_instance_of(Order)
     end
-    it "should puts commands on screen" do
-      expect{restaurant.create_order}.to output("Enter the name of the food you want to order. If you want to stop ordering, click return two times\nEnter the amount\n").to_stdout
-    end
-  end
-
-  describe '#find_price' do
-    it 'finds a price of a dish in menu' do
-      restaurant.create_dish(dish_name, price)
-      expect(restaurant.menu.last.details[:price]).to eq price
-    end
+    
   end
 
 end
