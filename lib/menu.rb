@@ -1,8 +1,8 @@
 class Menu
 
-  attr_reader :meals
+  attr_reader :meals, :order
 
-  def initialize
+  def initialize(order = Order.new)
     @meals = {
       pappadom: 0.50,
       chutney: 0.50,
@@ -13,6 +13,7 @@ class Menu
       rice: 1.95,
       naan: 1.80
     }
+    @order = order
   end
 
   def print
@@ -21,6 +22,12 @@ class Menu
       puts "#{i}. " + meal.to_s + " : £" + sprintf('%.2f', price)
       i += 1
     end
+  end
+
+  def get_choice
+    puts "What would you like to order?"
+    item = gets.chomp
+    @order.add(item)
   end
 
 end
