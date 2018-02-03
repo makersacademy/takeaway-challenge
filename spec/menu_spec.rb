@@ -4,7 +4,7 @@ describe Menu do
 
   subject(:menu) { described_class.new }
 
-  it 'stores meals as an instance variable' do
+  it 'it has an instance variable `meals`' do
     expect(menu.instance_variable_defined?(:@meals)).to be true
   end
 
