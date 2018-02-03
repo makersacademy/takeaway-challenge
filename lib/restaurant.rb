@@ -4,7 +4,7 @@ class Restaurant
            quorn: 2,
            tempeh: 3,
            jackfruit: 4
-         }
+          }
 
   def initialize
   end
@@ -12,6 +12,5 @@ class Restaurant
   def menu
     MENU
   end
-
 
 end
