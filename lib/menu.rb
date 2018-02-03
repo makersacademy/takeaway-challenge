@@ -22,7 +22,7 @@ class Menu
   end
 
   def includes?(item)
-    dishes.each { |dish, price| return item if item == dish }
+    dishes.each_key { |dish| return item if item == dish }
     false
   end
 

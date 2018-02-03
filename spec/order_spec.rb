@@ -2,10 +2,11 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { described_class.new(menu)}
+  subject(:order) { described_class.new(menu) }
   let(:menu) { double 'a menu' }
   let(:test_menu) { { "Dish_1" => 3.50, "Dish_2" => 4 } }
-  let(:test_summary) { "Order Summary\nDish_1 x2 £7.00\nDish_2 x1 £4.00\n"}
+  let(:test_summary) { "Order Summary\nDish_1 x2 £7.00\nDish_2 x1 £4.00\n" }
+  let(:test_total) { "Order total is £11.00" }
 
   context "when created" do
 
@@ -51,14 +52,20 @@ describe Order do
     before(:each) do
       allow(menu).to receive(:dishes).and_return(test_menu)
       allow(menu).to receive(:includes?).and_return(true)
+      order.add("Dish_1", 2)
+      order.add("Dish_2")
     end
 
     it 'returns a cummary of the basket with totals' do
-      order.add("Dish_1", 2)
-      order.add("Dish_2")
-      expect{order.summary}.to output(test_summary).to_stdout
+      expect { order.summary }.to output(test_summary).to_stdout
     end
 
+  end
+
+  describe '#total' do
+    it 'displays the total of the basket' do
+      expect { order.total }.to output(test_total).to_stdout
+    end
   end
 
 end
