@@ -16,7 +16,8 @@ MENU = {"Pepes ikan" => 3, "Satay" => 3, "Bakso urat" => 4, "Soto" => 4, "Nasi g
     end
   end
 
-  def add_item(item)
+  def add_item(item, quantity = 1)
+    raise 'Sorry, item not available' if !MENU.include?(item)
     @order.items << {item.capitalize => MENU[item.capitalize]}
   end
 
