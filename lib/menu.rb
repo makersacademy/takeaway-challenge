@@ -1,17 +1,22 @@
 class Menu
+  attr_reader :basket
 
   MENU = [
-    { "Buckwheat Shamalam" => 5.00 },
-    { "Avocado Foxtrot" => 6.50 },
-    { "Spinach Snickerdoodle" => 4.50 },
-    { "Froffee Coffee" => 3.50 },
-    { "Entitea" => 2.00 },
-    { "Nobody Knows" => 10.00 }
-  ]
+  { "1. Buckwheat Shamalam" => 5.00 },
+  { "2. Avocado Foxtrot" => 6.50 },
+  { "3. Spinach Snickerdoodle" => 4.50 },
+  { "4. Froffee Coffee" => 3.50 },
+  { "5. Entitea" => 2.00 },
+  { "6. Mystery Item" => 10.00 }
+]
+
+  def initialize
+    @basket = []
+  end
 
   def print_menu
     MENU.each { |item| item.each do |key, value|
-      return "#{key}, #{value}0"
+      puts "#{key}, " + '%.2f' % value
     end
     }
   end
