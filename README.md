@@ -24,7 +24,7 @@ Run `gem install bundle`
 
 Run `bundle` to require all necessary gems
 
-Run `ruby restaurant.rb` to execute programme
+Run `ruby init.rb` to execute programme
 
 # Example Code
 
