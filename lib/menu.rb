@@ -21,4 +21,9 @@ class Menu
     end
   end
 
+  def includes?(item)
+    dishes.each { |dish, price| return item if item == dish }
+    false
+  end
+
 end

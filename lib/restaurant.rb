@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Restaurant
 
@@ -11,5 +12,9 @@ class Restaurant
   def show_menu
     @menu.print
   end
+
+  # def create_order(order = Order.new)
+  #   @order = order
+  # end
 
 end

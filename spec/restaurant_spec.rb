@@ -6,6 +6,7 @@ describe Restaurant do
   let(:menu) { double 'menu' }
   let(:test_menu) { { "Dish_1" => 3.50, "Dish_2" => 4 } }
   let(:printed_test_menu) { "Menu\nDish_1: £3.50\nDish_2: £4.00\n" }
+  let(:order) { double 'an order' }
 
   it "stores a new menu object" do
     expect(restaurant.menu).to eq menu
@@ -18,5 +19,11 @@ describe Restaurant do
       expect(restaurant.show_menu).to eq printed_test_menu
     end
   end
+
+  # describe '#create_order' do
+  #   it 'stores an order object' do
+  #     expect(restaurant.create_order(order)).to eq order
+  #   end
+  # end
 
 end
