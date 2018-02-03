@@ -32,4 +32,10 @@ describe Takeaway do
       expect(order.total).to eq(order.menu[:pizza] + order.menu[:red_wine])
     end
   end
+
+  describe '#place_order' do
+    it 'returns list of dishes ordered and the total' do
+      expect{order.place_order}.to output('you have ordered 1 pizza and 1 red_wine, for a total of £14.').to_stdout
+    end
+  end
 end
