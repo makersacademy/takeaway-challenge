@@ -6,6 +6,8 @@ describe Restaurant do
   let(:dish_name) {double('a name of dish')}
   let(:price) {double('a price of dish')}
   let(:amount) {double('an amount of dish')}
+  let(:total_number) {double('number_of_dishes')}
+
 
 
   context "when created" do
@@ -34,9 +36,9 @@ describe Restaurant do
 
   describe '#create_order' do
     it 'creates an order' do
-      expect(restaurant.create_order([{name: dish_name, amount: amount}], 5)).to be_instance_of(Order)
+      restaurant.create_dish(dish_name, price)
+      expect(restaurant.create_order([{name: dish_name, amount: 1}], 1)).to be_instance_of(Order)
     end
-    
   end
 
 end

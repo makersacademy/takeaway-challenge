@@ -16,7 +16,7 @@ class Order
   end
 
   def send_order(total_number)
-    fail "The amount of dishes does not match your order" if total_number != count_dishes
+    fail 'The amount of dishes does not match your order' if total_number != count_dishes
     # twillo
   end
 
@@ -33,7 +33,7 @@ class Order
   def count_dishes
     number_of_dishes = 0
     @list_of_items.each {|hash|
-      number_of_dishes += (hash[:amount])
+      number_of_dishes += hash[:amount]
     }
     return number_of_dishes
   end
