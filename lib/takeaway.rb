@@ -4,12 +4,12 @@ class Takeaway
 
   def initialize
     @menu = {
-      :prawn_cracker => 1.95,
+      :prawn_crackers => 1.95,
       :prawn_summer_roll => 4.95,
       :vegetable_spring_rolls => 3.95,
       :tom_yam_soup => 4.95,
       :green_curry => 6.95,
-      :pad_thai => 7.00,
+      :pad_thai => 6.95,
       :steamed_rice => 2.25
       }
     @order = []
@@ -28,7 +28,7 @@ class Takeaway
       selection = gets.chomp
       break if selection.empty?
       raise "We don't have that here, try something else." if !menu_options.include?(selection.downcase)
-      @order << selection
+      note_down(selection)
     end
   end
 
@@ -53,6 +53,12 @@ class Takeaway
 
   def to_legible_strings(symbol)
     symbol.to_s.gsub('_', ' ')
+  end
+
+  def note_down(selection)
+    puts "How many would you like?"
+    number = gets
+    number.to_i.times { @order << selection }
   end
 
 end

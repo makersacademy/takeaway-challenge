@@ -14,7 +14,7 @@ describe Takeaway do
 
   describe '#take_order' do
     it 'saves user order to order instance variable' do
-      allow(takeaway).to receive(:gets).and_return('pad thai', 1, '')
+      allow(takeaway).to receive(:gets).and_return('pad thai', '1', '')
       takeaway.take_order
       expect(takeaway.order).to eq(['pad thai'])
     end
