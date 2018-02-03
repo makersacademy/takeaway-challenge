@@ -5,12 +5,12 @@ describe Restaurant do
   subject(:restaurant) { Restaurant.new }
 
   it "contains a menu" do
-    expect(Restaurant::MENU).to be_instance_of Hash
+    expect(restaurant.menu).to be_instance_of Hash
   end
 
   describe "#menu" do
     it "returns the menu" do
-      expect(restaurant.menu).to eq Restaurant::MENU
+      expect(restaurant.menu).to eq restaurant.menu
     end
   end
 

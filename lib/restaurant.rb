@@ -1,16 +1,15 @@
 class Restaurant
 
-  MENU = { tofu: 1,
+  DEFAULT_MENU = { tofu: 1,
            quorn: 2,
            tempeh: 3,
            seitan: 4
           }
 
-  def initialize
-  end
+  attr_reader :menu
 
-  def menu
-    MENU
+  def initialize(menu = DEFAULT_MENU)
+    @menu = menu
   end
 
 end

@@ -4,8 +4,8 @@ class Order
 
   attr_reader :menu, :selection, :provided_total
 
-  def initialize(menu = Restaurant::MENU)
-    @menu = menu
+  def initialize(restaurant = Restaurant.new)
+    @menu = restaurant.menu
   end
 
   def select_menu_items(selection, provided_total)

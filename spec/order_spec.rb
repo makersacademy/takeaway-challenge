@@ -23,14 +23,11 @@ describe Order do
   end
 
   describe "#validate_order" do
-    let(:test_order) { { tofu: 2, quorn: 1, tempeh: 3, seitan: 1 } }
-    let(:test_order_total_cost) { 17 }
-    let(:incorrect_test_order_total_cost) { 16 }
-    # let(:test_order) { order.menu }
-    # let(:test_order_total_cost) {
-    #   order.menu.each_value.map { |v| v ** 2 }.inject(&:+)
-    #   }
-    # let(:incorrect_test_order_total_cost) { test_order_total_cost - 1}
+    let(:test_order) { order.menu }
+    let(:test_order_total_cost) {
+      order.menu.each_value.map { |v| v ** 2 }.inject(&:+)
+      }
+    let(:incorrect_test_order_total_cost) { test_order_total_cost - 1}
     context "once an order has been created" do
       context "when provided_total is correct" do
         before :each do
