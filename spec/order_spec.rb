@@ -38,6 +38,7 @@ describe Order do
       expect(order.sub_total).to eq sub_total
     end
   end
+<<<<<<< HEAD
 
   describe '#total' do
     before(:each) do
@@ -49,4 +50,6 @@ describe Order do
       expect(order.total).to eq  "Total cost: £16.35"
     end
   end
+=======
+>>>>>>> 86cbab49a94d3148e78cc18e49ca0c969962d152
 end
