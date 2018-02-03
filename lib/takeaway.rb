@@ -4,8 +4,8 @@ class Takeaway
 
   attr_reader :order
 
-  def initialize
-    @menu = Menu.new.options
+  def initialize(menu: Menu.new)
+    @menu = menu
     @order = []
   end
 
@@ -26,6 +26,11 @@ class Takeaway
     end
   end
 
+  def verify_current_order
+    puts "You ordered:"
+    @menu.print_order_verification(order)
+  end
+
   private
 
   def menu_header
@@ -33,14 +38,14 @@ class Takeaway
   end
 
   def menu_to_strings
-    @menu.map do |item, price|
+    @menu.options.map do |item, price|
       item_string = to_legible_strings(item).capitalize
       "#{item_string}: £#{price}"
     end
   end
 
   def menu_options
-    @menu.keys.map do |item|
+    @menu.options.keys.map do |item|
       to_legible_strings(item).downcase
     end
   end

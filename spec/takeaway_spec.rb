@@ -14,6 +14,7 @@ describe Takeaway do
   end
 
   describe '#take_order' do
+
     it 'saves user order to order instance variable' do
       allow(takeaway).to receive(:gets).and_return('pad thai', '2', '')
       takeaway.take_order
@@ -24,6 +25,15 @@ describe Takeaway do
       allow(takeaway).to receive(:gets).and_return('pizza', '')
       error = "We don't have that here, try something else."
       expect { takeaway.take_order }.to raise_error(error)
+    end
+  end
+
+  describe '#verify_current_order' do
+    it 'shows the current order with total cost' do
+      allow(takeaway).to receive(:gets).and_return('pad thai', '2', '')
+      takeaway.take_order
+      order_verification = "You ordered:\n2 x pad thai(s)\nTotal cost: £13.9\n"
+      expect { takeaway.verify_current_order }.to output(order_verification).to_stdout
     end
   end
 end
