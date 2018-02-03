@@ -1,5 +1,5 @@
 class Cafe
-  attr_reader :basket
+  attr_reader :basket, :total
 
   MENU = [
   { "Buckwheat Shamalam" => 5.00 },
@@ -12,23 +12,25 @@ class Cafe
 
   def initialize
     @basket = []
+    @total = []
   end
 
   def print_menu
-    MENU
+    return MENU
   end
 
   def add(customer_choice)
-    MENU.each { |item| item.each_key do |key, _value|
+    MENU.each { |item| item.each do |key, value|
       if customer_choice == key
         @basket << "#{key}"
+        @total << value
       end
     end
     }
     return @basket.inject(Hash.new(0)) { |total, x| total[x] += 1; total }
   end
 
-  def total_items
-    @basket.count
+  def price
+    total.inject(0, :+)
   end
 end

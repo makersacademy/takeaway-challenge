@@ -15,9 +15,9 @@ describe Cafe do
     end
   end
 
-  describe '#total_items'
+  describe '#price'
   context 'when basket is not empty'
-  it 'returns the total number of items in the basket' do
-    expect(cafe.total_items).to eq cafe.total_items
+  it 'returns the total payment due' do
+    expect(cafe.price).to eq(cafe.price)
   end
 end
