@@ -1,6 +1,4 @@
 class Menu
-  attr_reader :menu
-
   def initialize
     @menu = {
       'Scrumbled eggs' => 4.99,
@@ -11,7 +9,7 @@ class Menu
     }
   end
 
-  def get_list(menu)
+  def list
     @menu
   end
 end

@@ -13,10 +13,10 @@ describe Menu do
       'Cod with beans & artichokes' => 11.40,
     }
 
-    it { is_expected.to respond_to :get_list }
+    it { is_expected.to respond_to :list }
 
     it 'should output a list with dishes and prices' do
-      expect(subject.get_list(menu)).to eq initialize_menu
+      expect(subject.list).to eq initialize_menu
     end
   end
 end
