@@ -6,7 +6,7 @@ class Cafe
   { "Avocado Foxtrot" => 6.50 },
   { "Crusty Snickerdoodle" => 4.50 },
   { "Froffee Coffee" => 3.50 },
-  { "Entitea" => 2.00 },
+  { "Realitea" => 2.00 },
   { "Mystery Item" => 10.00 }
 ]
 
@@ -19,19 +19,16 @@ class Cafe
   end
 
   def add(customer_choice)
-    MENU.each { |item| item.each do |key, value|
+    MENU.each { |item| item.each_key do |key, _value|
       if customer_choice == key
-        @basket << "#{key}, " + '%.2f' % value.to_s
+        @basket << "#{key}"
       end
     end
     }
-    return @basket
+    return @basket.inject(Hash.new(0)) { |total, x| total[x] += 1; total }
   end
 
   def total_items
-    @basket.inject(Hash.new(0)) { |total, x| total[x] += 1; total }
-  end
-
-  def total_value
+    @basket.count
   end
 end
