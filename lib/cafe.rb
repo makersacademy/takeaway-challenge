@@ -1,10 +1,10 @@
-class Menu
+class Cafe
   attr_reader :basket
 
   MENU = [
   { "Buckwheat Shamalam" => 5.00 },
   { "Avocado Foxtrot" => 6.50 },
-  { "Spinach Snickerdoodle" => 4.50 },
+  { "Crusty Snickerdoodle" => 4.50 },
   { "Froffee Coffee" => 3.50 },
   { "Entitea" => 2.00 },
   { "Mystery Item" => 10.00 }
@@ -15,18 +15,23 @@ class Menu
   end
 
   def print_menu
-    MENU.each { |item| item.each do |key, value|
-      puts "#{key}, " + '%.2f' % value
-    end
-    }
+    MENU
   end
 
-  def add_to_basket(menu_item)
+  def add(customer_choice)
     MENU.each { |item| item.each do |key, value|
-      if menu_item == key
+      if customer_choice == key
         @basket << "#{key}, " + '%.2f' % value.to_s
       end
     end
     }
+    return @basket
+  end
+
+  def total_items
+    @basket.inject(Hash.new(0)) { |total, x| total[x] += 1; total }
+  end
+
+  def total_value
   end
 end
