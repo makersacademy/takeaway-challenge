@@ -5,14 +5,14 @@ class Restaurant
 
   attr_reader :menu, :order
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new)
     @menu = menu
-    @order = order
   end
 
   def launch!
     introduction
     home_page
+    process(STDIN.gets.chomp.strip.downcase.to_sym)
   end
 
   def introduction
@@ -20,29 +20,25 @@ class Restaurant
   end
 
   def home_page
-    loop do
-      puts "\nSelect an option:\n"
-      puts "Type 'Menu' to View Menu"
-      puts "Type 'Order' to Place Order"
-      puts "Type 'Exit' to Leave\n"
-      print "> "
-      selection = gets.chomp.strip.downcase.to_sym
-      process(selection)
-    end
+    puts "\nSelect an option:\n"
+    puts "Type 'Menu' to View Menu"
+    puts "Type 'Order' to Place Order"
+    puts "Type 'Exit' to Leave\n"
   end
 
   def process(selection)
     case selection
     when :menu
       @menu.print
-      home_page
+      launch!
     when :order
-      #
+      @menu.select_item
     when :exit
       conclusion
       exit
     else
       puts "Typing error. Please try again."
+      launch!
     end
   end
 
