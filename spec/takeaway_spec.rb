@@ -2,8 +2,9 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:takeaway)     { described_class.new                 }
-  let(:menu)         { double('menu', print: food_options) }
+  let(:takeaway)       { described_class.new                     }
+  let(:menu_class)     { double('menu_class', new: menu)         }
+  let(:menu)           { double('menu')                          }
   let(:food_selection) { double('food_selection', empty?: false) }
 
   describe '#print_menu' do
@@ -14,9 +15,9 @@ describe Takeaway do
 
   describe '#take_order' do
     it 'saves user order to order instance variable' do
-      allow(takeaway).to receive(:gets).and_return('pad thai', '1', '')
+      allow(takeaway).to receive(:gets).and_return('pad thai', '2', '')
       takeaway.take_order
-      expect(takeaway.order).to eq(['pad thai'])
+      expect(takeaway.order).to eq(['pad thai', 'pad thai'])
     end
 
     it 'raises an error if the order is not part of the menu' do

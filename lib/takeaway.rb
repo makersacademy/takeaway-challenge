@@ -1,24 +1,18 @@
+require_relative 'menu'
+
 class Takeaway
 
   attr_reader :order
 
   def initialize
-    @menu = {
-      :prawn_crackers => 1.95,
-      :prawn_summer_roll => 4.95,
-      :vegetable_spring_rolls => 3.95,
-      :tom_yam_soup => 4.95,
-      :green_curry => 6.95,
-      :pad_thai => 6.95,
-      :steamed_rice => 2.25
-      }
+    @menu = Menu.new.options
     @order = []
   end
 
   def print_menu
     puts menu_header.center(40)
     menu_to_strings.each do |line|
-      puts line.center(40)
+    puts line.center(40)
     end
   end
 
