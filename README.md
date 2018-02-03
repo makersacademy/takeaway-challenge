@@ -36,6 +36,8 @@ Run `ruby init.rb` to execute programme
 
 2) After initial creation of `Order` and `Menu`, I realised that another file would be needed to interact with the user so that they can select items from the menu. Allowing the user experience to build on my domain model should help structure the incremental development.
 
+3) I then realised that a `Restaurant` file would be needed to create instances of `Menu` and `Order` and be the primary file that interacts with the user. This would be the optimum solution from an object-oriented approach.
+
 # Author
 
 Terence Allitt
