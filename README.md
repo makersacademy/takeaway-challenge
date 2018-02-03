@@ -1,3 +1,22 @@
+README Edit: My approach and code review
+=================
+
+My approach
+---------
+* First, I read through the User Stories and drew the Domain Models in tables in order to have a clear idea about the different objects and messages of each app feature.
+* Then, I drew a diagram highlighting the relations between objects and messages. The idea was to create the map that I would use later on for my code, to structure classes and methods.
+
+* After the pre-code section, I focused on writing RSpec Suite Tests (divided into fully-working Unit Tests) for the different User Stories. I only moved on to the following User Story once I finished a full Feature Test.
+* Some refactoring was needed within tests as I found a better way to model the code as I was developing the app, but I tried to reduce this as much as possible thanks to thorough pre-code design.
+
+
+
+Personal code review
+---------
+
+[TBC]
+
+
 Takeaway Challenge
 ==================
 ```
