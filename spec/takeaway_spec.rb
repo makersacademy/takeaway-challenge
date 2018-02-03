@@ -26,10 +26,10 @@ describe Takeaway do
     it "prints a list of dishes in basket, quantity ordered and sub-total" do
       takeaway.add_to_order(dish_1, quantity_1)
       takeaway.add_to_order(dish_2, quantity_2)
-      summary_message = ("Prawn Gyoza x4 = £14.04, Chicken Gyoza x1 = £3.11")
+      summary_message = "Prawn Gyoza x4 = £14.04, Chicken Gyoza x1 = £3.11"
       expect(takeaway.order_summary).to eq summary_message
-      end
     end
+  end
 
   describe '#order_total' do
     it 'prints the total cost of dishes' do
@@ -38,5 +38,4 @@ describe Takeaway do
       expect(takeaway.order_total).to eq("Total cost: £17.15")
     end
   end
-
 end

@@ -26,6 +26,4 @@ class Takeaway
     @order.total
   end
 
-private
-
 end

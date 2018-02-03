@@ -38,6 +38,4 @@ describe Order do
       expect(order.sub_total).to eq sub_total
     end
   end
-
-
 end

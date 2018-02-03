@@ -2,7 +2,7 @@ require_relative 'takeaway'
 
 class Menu
 
-attr_reader :dishes
+  attr_reader :dishes
 
   def initialize
     @dishes = { "Prawn Crackers" => 1.51, "Prawn Gyoza" => 3.51,
@@ -14,7 +14,4 @@ attr_reader :dishes
       "#{k} - £#{v}"
     end.join(", ")
   end
-
-private
-
 end
