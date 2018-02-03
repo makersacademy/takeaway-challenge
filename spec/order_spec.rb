@@ -6,7 +6,7 @@ describe Order do
 
   describe '#basket' do
     it 'starts as empty' do
-      expect(order.basket).to match_array([])
+      expect(order.basket).to eq ({})
     end
   end
 

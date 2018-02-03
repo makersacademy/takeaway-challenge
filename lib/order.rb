@@ -2,6 +2,6 @@ class Order
   attr_reader :basket
 
   def initialize
-    @basket = []
+    @basket = {}
   end
 end
