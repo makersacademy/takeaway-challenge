@@ -13,4 +13,11 @@ describe Menu do
       white_wine: 4.50
      })
   end
+
+  describe '#select' do
+    it 'allows selection of a dish' do
+      menu.select(:pizza)
+      expect(menu.selected).to eq [{ pizza: 10 }]
+    end
+  end
 end
