@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Restaurant
 
@@ -11,9 +12,8 @@ class Restaurant
 
   def launch!
     introduction
-    # action loop
     loop do
-      # what do you want to do? (add, remove etc)
+      puts "Select 'menu' to view meals"
       print "> "
       user_response = gets.chomp
       # do that action
@@ -26,6 +26,8 @@ class Restaurant
 
   def do_action(action)
     case action
+    when 'menu'
+      @menu.print
     when 'add'
       #
     when 'remove'

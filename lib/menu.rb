@@ -15,4 +15,12 @@ class Menu
     }
   end
 
+  def print
+    i = 1
+    @meals.each do |meal, price|
+      puts "#{i}. " + meal.to_s + " : £" + sprintf('%.2f', price)
+      i += 1
+    end
+  end
+
 end
