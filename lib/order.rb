@@ -11,12 +11,22 @@ class Order
     @basket
   end
 
-  def add(item)
-    if @menu.includes?(item)
-      @basket[item] = @menu.dishes[item]
+  def add(item, quantity = 1)
+    if @menu.includes?(item) && !order_includes?(item)
+      @basket[item] = quantity
+    elsif @menu.includes?(item) && order_includes?(item)
+     quantity = @basket[item] + quantity
+     @basket[item] = quantity
     else
       raise "This dish is not on the menu"
     end
+  end
+
+  def order_includes?(item)
+    @basket.each do |dish, quantity|
+      return true if dish == item
+    end
+    false
   end
 
 end
