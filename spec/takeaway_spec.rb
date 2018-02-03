@@ -2,6 +2,13 @@ require "takeaway"
 
 describe Takeaway do
 
+  let(:menu) { {
+    pizza: 10,
+    bolognese: 8,
+    risotto: 9,
+    red_wine: 4,
+    white_wine: 4.50
+   } }
   subject(:takeaway) { described_class.new }
   subject(:order) do
     takeaway.new_order(:pizza)
@@ -9,14 +16,8 @@ describe Takeaway do
     takeaway
   end
 
-  it 'contains a list of dishes' do
-    expect(takeaway.menu).to eq({
-      pizza: 10,
-      bolognese: 8,
-      risotto: 9,
-      red_wine: 4,
-      white_wine: 4.50
-     })
+  it 'contains a menu' do
+    expect(takeaway.menu).to eq menu
   end
 
   describe '#new_order' do

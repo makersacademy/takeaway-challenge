@@ -1,17 +1,12 @@
 require_relative 'order'
+require_relative 'menu'
 
 class Takeaway
 
   attr_reader :menu, :order, :total
 
   def initialize
-    @menu = {
-      pizza: 10,
-      bolognese: 8,
-      risotto: 9,
-      red_wine: 4,
-      white_wine: 4.50
-     }
+    @menu = Menu.new.items
     @total = 0
     @order = Order.new
   end
