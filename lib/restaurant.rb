@@ -3,7 +3,7 @@ class Restaurant
   MENU = { tofu: 1,
            quorn: 2,
            tempeh: 3,
-           jackfruit: 4
+           seitan: 4
           }
 
   def initialize
