@@ -17,6 +17,13 @@ class Order
     @basket[item] = quantity if !order_includes?(item)
   end
 
+  def summary
+    puts "Order Summary"
+    @basket.each do |dish, quantity|
+      puts "#{dish} x#{quantity} £#{sprintf('%.2f', @menu.dishes[dish]*quantity)}"
+    end
+  end
+
   private
 
   def order_includes?(item)

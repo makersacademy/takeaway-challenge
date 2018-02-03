@@ -5,6 +5,7 @@ describe Order do
   subject(:order) { described_class.new(menu)}
   let(:menu) { double 'a menu' }
   let(:test_menu) { { "Dish_1" => 3.50, "Dish_2" => 4 } }
+  let(:test_summary) { "Order Summary\nDish_1 x2 £7.00\nDish_2 x1 £4.00\n"}
 
   context "when created" do
 
@@ -41,6 +42,21 @@ describe Order do
       order.add("Dish_1", 2)
       order.add("Dish_1")
       expect(order.basket).to eq({ "Dish_1" => 3 })
+    end
+
+  end
+
+  describe '#summary' do
+
+    before(:each) do
+      allow(menu).to receive(:dishes).and_return(test_menu)
+      allow(menu).to receive(:includes?).and_return(true)
+    end
+
+    it 'returns a cummary of the basket with totals' do
+      order.add("Dish_1", 2)
+      order.add("Dish_2")
+      expect{order.summary}.to output(test_summary).to_stdout
     end
 
   end
