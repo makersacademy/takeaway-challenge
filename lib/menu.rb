@@ -1,19 +1,24 @@
 class Menu
 
-  def initialize
-    @dishes = { "prawn toast" => 2.50,
-      "spring rolls" => 2,
-      "chicken chow mein" => 5.50,
-      "sweet & sour pork" => 6,
-      "beef in black bean sauce" => 6.5,
-      "vegetable curry" => 5,
-      "fried rice"=>3.5
-    }
+  attr_reader :dishes
+
+  DISHES = { "Prawn Toast" => 2.50,
+    "Spring Rolls" => 2.00,
+    "Chicken Chow Mein" => 5.50,
+    "Sweet and Sour Pork" => 6.00,
+    "Vegetable Curry" => 5.00,
+    "Fried Rice" => 3.50
+  }
+
+  def initialize(dishes = DISHES)
+    @dishes = dishes
   end
 
-  def dishes
-    @dishes
+  def print
+    puts "Menu"
+    dishes.each do |dish, price|
+      puts "#{dish}: £#{sprintf('%.2f', price)}"
+    end
   end
-
 
 end
