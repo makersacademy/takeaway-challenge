@@ -33,9 +33,20 @@ describe Order do
       order.add("Chicken Gyoza", 3)
     end
 
-    it 'calculates the sub-total for each dish' do
+    it "calculates the sub-total for each dish" do
       sub_total = "Prawn Gyoza x2 = £7.02, Chicken Gyoza x3 = £9.33"
       expect(order.sub_total).to eq sub_total
+    end
+  end
+
+  describe '#total' do
+    before(:each) do
+      order.add("Prawn Gyoza", 2)
+      order.add("Chicken Gyoza", 3)
+    end
+
+    it "calculates the overall total" do
+      expect(order.total).to eq  "Total cost: £16.35"
     end
   end
 end

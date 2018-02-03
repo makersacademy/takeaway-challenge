@@ -25,5 +25,4 @@ class Takeaway
   def order_total
     @order.total
   end
-
 end

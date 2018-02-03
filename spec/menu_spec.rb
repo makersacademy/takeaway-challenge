@@ -12,8 +12,10 @@ describe Menu do
     }
   end
 
-  it 'when initialized contains menu in a hash' do
-    expect(menu.dishes).to eq(dishes)
+  context 'when initialized' do
+    it 'contains menu with dishes and prices in a hash' do
+      expect(menu.dishes).to eq(dishes)
+    end
   end
 
   describe '#print_menu' do

@@ -23,18 +23,24 @@ describe Takeaway do
   end
 
   describe "#basket_summary" do
-    it "prints a list of dishes in basket, quantity ordered and sub-total" do
+    before(:each) do
       takeaway.add_to_order(dish_1, quantity_1)
       takeaway.add_to_order(dish_2, quantity_2)
+    end
+
+    it "prints a list of dishes in basket, quantity ordered and sub-total" do
       summary_message = "Prawn Gyoza x4 = £14.04, Chicken Gyoza x1 = £3.11"
       expect(takeaway.order_summary).to eq summary_message
     end
   end
 
   describe '#order_total' do
-    it 'prints the total cost of dishes' do
+    before(:each) do
       takeaway.add_to_order(dish_1, quantity_1)
       takeaway.add_to_order(dish_2, quantity_2)
+    end
+
+    it 'prints the total cost of dishes' do
       expect(takeaway.order_total).to eq("Total cost: £17.15")
     end
   end
