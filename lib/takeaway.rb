@@ -15,10 +15,4 @@ class Takeaway
     @order.add(dish, quantity)
   end
 
-# What do we want to happen?
-
-# When we add an order, we want to call the Order class.
-# We cant to add each item and its quantity to an array
-# in the order class
-
 end
