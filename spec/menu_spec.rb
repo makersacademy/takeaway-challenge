@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
 
-  subject(:menu) { described_class.new(dishes) }
+  subject(:menu) { described_class.new }
 
   let(:dishes) do
     { "Prawn Crackers" => 1.51,

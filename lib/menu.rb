@@ -4,9 +4,9 @@ class Menu
 
   attr_reader :dishes
 
-  def initialize(dishes = { "Prawn Crackers" => 1.51, "Prawn Gyoza" => 3.51,
-     "Chicken Gyoza" => 3.11, "Spring Rolls" => 3.15 })
-    @dishes = dishes
+  def initialize
+    @dishes = { "Prawn Crackers" => 1.51, "Prawn Gyoza" => 3.51,
+       "Chicken Gyoza" => 3.11, "Spring Rolls" => 3.15 }
   end
 
   def print
