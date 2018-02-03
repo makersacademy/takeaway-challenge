@@ -11,16 +11,33 @@ describe Order do
   end
 
   describe "#add" do
-    it 'adds selected dishes and quantities to the basket' do
+    before(:each) do
       order.add("Prawn Gyoza", 2)
       order.add("Chicken Gyoza", 3)
+    end
+
+    it "adds selected dishes and quantities to the basket" do
       hash = { "Prawn Gyoza" => 2, "Chicken Gyoza" => 3 }
       expect(order.basket).to eq(hash)
     end
 
-    it 'raises an error when a dish not on the menu is added to the basket' do
+    it "raises an error when a dish not on the menu is added to the basket" do
       error_message = "This dish is not on the menu"
       expect { order.add("Chips", 3) }.to raise_error(error_message)
     end
   end
+
+  describe "#sub-total" do
+    before(:each) do
+      order.add("Prawn Gyoza", 2)
+      order.add("Chicken Gyoza", 3)
+    end
+
+    it 'calculates the sub-total for each dish' do
+      sub_total = "Prawn Gyoza x2 = £7.02, Chicken Gyoza x3 = £9.33"
+      expect(order.sub_total).to eq sub_total
+    end
+  end
+
+
 end

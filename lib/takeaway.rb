@@ -18,4 +18,14 @@ class Takeaway
     @order.add(dish, quantity)
   end
 
+  def order_summary
+    @order.sub_total
+  end
+
+  def order_total
+    @order.total
+  end
+
+private
+
 end
