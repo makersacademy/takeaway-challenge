@@ -5,7 +5,7 @@ describe Menu do
   let(:menu) { subject.menu }
 
   describe "#menu output" do
-    initialize_menu = {
+    default_menu = {
       'Scrumbled eggs' => 4.99,
       'Roasted aubergine & tomato curry' => 5.60,
       'Jacket Potato with whipped feta' => 8.25,
@@ -16,7 +16,7 @@ describe Menu do
     it { is_expected.to respond_to :list }
 
     it 'should output a list with dishes and prices' do
-      expect(subject.list).to eq initialize_menu
+      expect(subject.list).to eq default_menu
     end
   end
 end

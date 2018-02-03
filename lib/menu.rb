@@ -10,6 +10,8 @@ class Menu
   end
 
   def list
-    @menu
+    @menu.each do |dish, price|
+      puts "Dish: #{dish} - Price: #{price}"
+    end
   end
 end
