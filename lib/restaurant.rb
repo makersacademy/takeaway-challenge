@@ -1,7 +1,13 @@
+require_relative 'order'
 
 class Restaurant
 
-MENU = {"Pepes Ikan" => 3, "Satay" => 3, "Bakso Urat" => 4, "Soto" => 4, "Nasi Goreng" => 5}
+MENU = {"Pepes ikan" => 3, "Satay" => 3, "Bakso urat" => 4, "Soto" => 4, "Nasi goreng" => 5}
+
+  def initialize
+    @order = Order.new
+    @order_history =[]
+  end
 
   def print_menu
     puts "Our traditional indonesian menu includes:\n"
@@ -9,4 +15,12 @@ MENU = {"Pepes Ikan" => 3, "Satay" => 3, "Bakso Urat" => 4, "Soto" => 4, "Nasi G
       puts "#{key}: £#{value}"
     end
   end
+
+  def add_item(item)
+    @order.items << {item.capitalize => MENU[item.capitalize]}
+  end
+
+  # def archive_order
+  #   @order_history << @order
+  # end
 end
