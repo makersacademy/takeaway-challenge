@@ -10,12 +10,13 @@ class Menu
       red_wine: 4,
       white_wine: 4.50
      }
-    @selected = []
+    @order = Order.new
   end
 
-  def select(dish)
-    @selected << { dish => nil }
-    @selected.last[dish] = @dishes[dish]
+  def order(dish)
+    order = { dish => nil }
+    order[dish] = @dishes[dish]
+    @order.save_order(order)
   end
 
   def sum
