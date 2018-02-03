@@ -1,7 +1,9 @@
 require "menu"
 
 describe Menu do
-  subject(:menu) { described_class.new }
+
+  let(:menu) { Menu.new }
+
   dishes = { "Pepperoni Pizza" => 6, "Fish & Chips" => 4, "Chicken Jalfrezi" => 7, "Chow Mein" => 5, "Ceasar Salad" => 3 }
 
   describe "#print menu" do
