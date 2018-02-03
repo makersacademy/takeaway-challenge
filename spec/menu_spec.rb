@@ -3,13 +3,13 @@ require "menu"
  describe Menu do
 
    let(:printed_menu) {
-    "Beef Burger: £10"
-    "Cheese Burger: £12"
-    "Chicken Burger: £9"
+    "Beef burger: £10"
+    "Cheese burger: £12"
+    "Chicken burger: £9"
     "Fries: £4"
-    "Strawberry Shake: £5"
-    "Banana Shake: £5"
-    "Oreo Shake: £5"
+    "Strawberry shake: £5"
+    "Banana shake: £5"
+    "Oreo shake: £5"
    }
    it {is_expected.to respond_to(:print_menu) }
 

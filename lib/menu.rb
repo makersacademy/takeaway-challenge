@@ -1,12 +1,12 @@
 class Menu
   MENU = {
-    beef_burger: [10],
-    cheese_burger: [12],
-    chicken_burger: [9],
-    fries: 4,
-    strawberry_shake: [5],
-    banana_shake: [5],
-    oreo_shake: [5]
+    1 => ["Beef burger", 10],
+    2 => ["Cheese burger", 12],
+    3 => ["Chicken burger", 9],
+    4 => ["Fries", 4],
+    5 => ["Strawberry shake", 5],
+    6 => ["Banana shake", 5],
+    7 => ["Oreo shake", 5]
   }
 
   def print_menu
