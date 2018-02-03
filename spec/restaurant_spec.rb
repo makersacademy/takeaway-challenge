@@ -31,9 +31,19 @@ describe Restaurant do
   end
 
   describe '#create_order' do
-    it 'creates and order' do
+    it 'creates an order' do
       expect(restaurant.create_order).to be_instance_of(Order)
     end
-  end 
+    it "should puts commands on screen" do
+      expect{restaurant.create_order}.to output("Enter the name of the food you want to order. If you want to stop ordering, click return two times\nEnter the amount\n").to_stdout
+    end
+  end
+
+  describe '#find_price' do
+    it 'finds a price of a dish in menu' do
+      restaurant.create_dish(dish_name, price)
+      expect(restaurant.menu.last.details[:price]).to eq price
+    end
+  end
 
 end

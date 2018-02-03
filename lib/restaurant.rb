@@ -22,20 +22,28 @@ class Restaurant
   end
 
   def create_order
-
-    puts "Enter the name of the food you want to order"
-    name = gets.chomp
-    #decodes the price of the name from menu
-    puts "Enter the amount"
-    amount = gets.chomp
-    price =     #decodes the price of the name from menu
     order = Order.new
-    order.add_items(name, price, amount)
+    puts "Enter the name of the food you want to order. If you want to stop ordering, click return two times"
+    @given_name = gets.chomp
+    puts "Enter the amount"
+    given_amount = gets.chomp
+    while !@given_name.empty? && !given_amount.empty? do
+      price = find_price()
+      order.add_items(@given_name, price, given_amount)
+      puts "Enter the name of the food you want to order"
+      @given_name = gets.chomp
+      puts "Enter the amount"
+      given_amount = gets.chomp
+    end
     return order
   end
 
-
-private
-
+  def find_price
+    @menu.each { |object|
+    if object.details[:name] = @given_name then
+      return object.details[:price]
+    end
+    }
+  end
 
 end
