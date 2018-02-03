@@ -4,8 +4,8 @@ describe Menu do
 
   subject(:menu) { described_class.new }
   subject(:order) do
-    menu.order(:pizza)
-    menu.order(:red_wine)
+    menu.new_order(:pizza)
+    menu.new_order(:red_wine)
     menu
   end
 
@@ -19,16 +19,9 @@ describe Menu do
      })
   end
 
-  describe '#order' do
-
+  describe '#new_order' do
     it 'creates an order' do
-      expect(menu.order(:pizza)).to eq [{ pizza: 10 }]
-    end
-  end
-
-  describe '#sum' do
-    xit 'adds the total prices of the selected items' do
-      expect(order.sum).to eq 14
+      expect(menu.new_order(:pizza)).to eq [{ pizza: 10 }]
     end
   end
 end

@@ -1,6 +1,8 @@
+require_relative 'order'
+
 class Menu
 
-  attr_reader :dishes, :selected
+  attr_reader :dishes, :selected, :order
 
   def initialize
     @dishes = {
@@ -13,17 +15,8 @@ class Menu
     @order = Order.new
   end
 
-  def order(dish)
-    order = { dish => nil }
-    order[dish] = @dishes[dish]
+  def new_order(dish)
+    order = { dish => @dishes[dish] }
     @order.save_order(order)
-  end
-
-  def sum
-    @sum = 0
-    @selected.each do |dish|
-      dish.each_value { |price| @sum += price }
-    end
-    @sum
   end
 end
