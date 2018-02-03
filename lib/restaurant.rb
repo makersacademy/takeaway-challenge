@@ -2,12 +2,14 @@ require_relative 'menu'
 
 class Restaurant
 
+  attr_reader :menu
+
   def initialize(menu = Menu.new)
     @menu = menu
   end
 
-  def menu
-    @menu
+  def show_menu
+    @menu.print
   end
 
 end
