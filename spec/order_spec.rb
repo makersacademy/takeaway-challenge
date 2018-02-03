@@ -1,6 +1,5 @@
 require 'order'
 
-describe Order do 
-
+describe Order do
 
 end
