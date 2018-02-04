@@ -62,6 +62,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   -----
   After reading the User Stories, I created a Domain Model drawing an abstract representation of the objects and messages and make more easy the use of feature tests. e.g
 
+```
   2.5.0 :003 > take.show_menu
  1. Paella: £ 7.
  2. Rissotto: £ 8.
@@ -88,3 +89,12 @@ Traceback (most recent call last):
         2: from (irb):7
         1: from /Users/jose/Desktop/makers_week2/takeaway-challenge/lib/takeaway.rb:32:in `complete_order'
 RuntimeError (Sorry, sum is not correct)
+```
+
+Version
+-----
+Ruby 2.5.0
+
+Author
+----
+Jenny Arenas
