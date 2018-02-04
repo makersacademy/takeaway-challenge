@@ -1,4 +1,5 @@
 require_relative './restaurant.rb'
+require_relative './checkout.rb'
 
 class Order
 
@@ -24,7 +25,7 @@ class Order
       .join(", ")
   end
 
-  def checkout(provided_total, checkout_class, phone_number)
+  def checkout(provided_total, phone_number, checkout_class = Checkout)
     validate(provided_total)
     checkout_class.new(provided_total, phone_number)
   end

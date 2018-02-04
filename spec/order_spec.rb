@@ -93,7 +93,7 @@ describe Order do
     context "when provided_total is correct" do
       context "using an example order to test error" do
         it "does not raise error" do
-          expect { order.checkout(order_total, checkout_class, phone_number) }.not_to raise_error
+          expect { order.checkout(order_total, phone_number, checkout_class) }.not_to raise_error
         end
       end
 
@@ -104,7 +104,7 @@ describe Order do
 
         it "instantiates checkout_class object" do
           expect(checkout_class).to receive(:new).with(order_total, phone_number)
-          order.checkout(order_total, checkout_class, phone_number)
+          order.checkout(order_total, phone_number, checkout_class)
         end
       end
     end

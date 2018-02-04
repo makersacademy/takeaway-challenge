@@ -1,4 +1,6 @@
-module TwilioSendSMS
+require 'twilio-ruby'
+
+class TwilioSendSMS
 
   ACCOUNT_SID = ENV["TWILIO_ACCOUNT_SID"]
   AUTH_TOKEN = ENV["TWILIO_AUTH_TOKEN"]
