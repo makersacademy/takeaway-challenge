@@ -17,18 +17,22 @@ Takeaway Challenge
 Instructions
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Write a Takeaway program following the User Stories shown below.
 
-Task
+
+Setting up the environment
+------
+1. Clone this repo into to your local machine
+2. Run the command gem install bundle (if you don't have bundle already)
+3. When the installation completes, run bundle
+4. Install Rspec running 'gem install rspec'
+5. Set up the project to use Rspec run the command 'rspec --init'
+4. Use Twilio API
+
+How to use
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Here are the user stories that we worked out in collaboration with the client
 
 ```
 As a customer
@@ -52,28 +56,35 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   * Ensure you have a list of dishes with prices
   * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
   * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+  * Use the twilio-ruby gem to access the API.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+  Task
+  -----
+  After reading the User Stories, I created a Domain Model drawing an abstract representation of the objects and messages and make more easy the use of feature tests. e.g
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+  2.5.0 :003 > take.show_menu
+ 1. Paella: £ 7.
+ 2. Rissotto: £ 8.
+ 3. Octopus: £ 15.
+ 4. Salad: £ 6.
+ 5. Wine: £ 4.
+ => {:Paella=>7, :Rissotto=>8, :Octopus=>15, :Salad=>6, :Wine=>4}
 
+2.5.0 :004 > take.place_order("Paella", 2)
+Thank you. Your Paella dish was added 2 times to your trolley => nil
 
-In code review we'll be hoping to see:
+2.5.0 :005 > take.sub_total
+Total price of 2 dishes of Paella : £ 14.
+ => [14]
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+2.5.0 :006 > take.total_amount
+Total price of 2 dishes of Paella : £ 14.
+ => "Total amount to be paid £ 14"
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+2.5.0 :007 > take.complete_order(2)
+Total price of 2 dishes of Paella : £ 14.
+Traceback (most recent call last):
+        3: from /Users/jose/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+        2: from (irb):7
+        1: from /Users/jose/Desktop/makers_week2/takeaway-challenge/lib/takeaway.rb:32:in `complete_order'
+RuntimeError (Sorry, sum is not correct)
