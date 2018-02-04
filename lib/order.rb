@@ -19,7 +19,7 @@ class Order
   end
 
   def remove(item, quantity = DEFAULT_QUANTITY)
-    #
+    @basket[item] = @basket[item] - quantity
   end
 
   def display
@@ -39,9 +39,9 @@ class Order
 
   def total
     total = 0
-      @basket.each do |item, quantity|
-        total += (quantity * @menu.meals[item])
-      end
+    @basket.each do |item, quantity|
+      total += (quantity * @menu.meals[item])
+    end
     puts "Total = £#{"%.2f" % total}"
   end
 

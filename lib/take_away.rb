@@ -55,6 +55,7 @@ class TakeAway
     when :checkout then checkout
     when :home then launch!
     when :exit then exit_programme
+    else "Please Try Again"
     end
   end
 
@@ -117,5 +118,5 @@ class TakeAway
 
 end
 
-# t = TakeAway.new
-# t.launch!
+t = TakeAway.new
+t.launch!
