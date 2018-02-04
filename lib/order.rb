@@ -2,10 +2,11 @@ require_relative 'restaurant'
 
 class Order
 
-  attr_reader :items, :total, :bill
+  attr_reader :total, :bill
+  attr_accessor :items
 
   def initialize
-    @items = {}
+    @items = []
     @total
     @bill = 0
   end
