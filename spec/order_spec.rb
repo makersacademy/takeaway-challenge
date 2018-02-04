@@ -23,6 +23,8 @@ describe Order do
     expect(subject.current_order).to eql([product_1, product_2])
   end
 
+  it "Allows the customer to give different quantities for selections"
+
   it "Keeps track of the quantity of specific dishes" do
     # allow(subject.product).to receive(:new).and_return(product_1)
     # allow(product_1).to receive(:quantity_plus_one).and_return(:product_1_quantity_2)

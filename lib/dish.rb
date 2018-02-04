@@ -20,9 +20,8 @@ class Dish
     @quantity = 1
   end
 
-  def quantity_plus_one
-    self.quantity += 1
-    true
+  def add_quantity(quantity)
+    self.quantity += quantity
   end
 
 end
