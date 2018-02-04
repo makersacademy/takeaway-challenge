@@ -19,16 +19,13 @@ class Restaurant
   end
 
   def checkout(amount)
-    if amount == @order.total
-      send_text
-    else
-      raise "Incorrect amount, please check order total"
-    end
+    raise "Incorrect amount, please check order total" if amount != @order.total
+    send_text
   end
 
   private
 
-  def send_text(text = Text.new)
+  def send_text(text=Text.new)
     text.send
   end
 

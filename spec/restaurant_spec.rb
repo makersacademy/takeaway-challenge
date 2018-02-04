@@ -7,6 +7,7 @@ describe Restaurant do
   let(:test_menu) { { "Dish_1" => 3.50, "Dish_2" => 4 } }
   let(:printed_test_menu) { "Menu\nDish_1: £3.50\nDish_2: £4.00\n" }
   let(:order) { double 'an order' }
+  let(:test_text) { double 'text' } #not using this...
 
   it "stores a new menu object" do
     expect(restaurant.menu).to eq menu
@@ -27,20 +28,23 @@ describe Restaurant do
   end
 
   describe '#checkout' do
-    it 'returns an error if the payment amount is incorrect' do
+
+    before(:each) do
       restaurant.create_order(order)
       allow(order).to receive(:total).and_return(11.50)
+    end
+
+    it 'returns an error if the payment amount is incorrect' do
       message = "Incorrect amount, please check order total"
-      expect{restaurant.checkout(11)}.to raise_error message
+      expect { restaurant.checkout(11) }.to raise_error message
     end
 
     it 'sends a confirmation text if the amount is correct' do
-      restaurant.create_order(order)
-      allow(order).to receive(:total).and_return(11.50)
-      allow(restaurant).to receive(:send_text)
+      # allow(restaurant).to receive(:send_text)
       expect(restaurant).to receive(:send_text)
       restaurant.checkout(11.50)
     end
+
   end
 
 end
