@@ -1,22 +1,22 @@
-require_relative './twiliosendsms.rb'
+require_relative './twiliosendsms'
 
 class Checkout
 
-  def initialize(order_total, phone_number, sms_service = TwilioSendSMS)
+  def initialize(order_total, sms_service = TwilioSendSMS)
     @order_total = order_total
-    @phone_number = phone_number
     @sms_service = sms_service
   end
 
-  def send_sms
-    @sms_service.send_sms(@phone_number, sms_body)
+  def pay(payment, phone_number)
+    raise "Incorrect money provided" unless @order_total == payment
+    send_sms(phone_number)
+    "Thank you. Your order has been placed. You will receive confirmation by text message"
   end
 
   private
 
-  def sms_body
-    "Thank you for your order. "\
-    "It will be delivered at #{Time.now.strftime "%H:%M"}"
+  def send_sms(phone_number)
+    @sms_service.send_sms(phone_number)
   end
 
 end

@@ -1,9 +1,9 @@
 class Restaurant
 
-  DEFAULT_MENU = { tofu: 1,
-           quorn: 2,
-           tempeh: 3,
-           seitan: 4
+  DEFAULT_MENU = { tofu: 5.99,
+           quorn: 7.99,
+           tempeh: 6.49,
+           seitan: 8.99
           }
 
   attr_reader :menu

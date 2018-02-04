@@ -4,15 +4,13 @@ describe Order do
 
   subject(:order)      { described_class.new }
   let(:menu)           { order.menu }
-  let(:selection)      { double "a hash of selections" }
-  let(:provided_total) { double "the total provided" }
   let!(:correct_item)  { menu.keys.sample }
   let!(:correct_item2) { menu.reject { |key| key == correct_item }.keys.sample }
   let(:incorrect_item) { double("an incorrect item", to_sym: :"incorrect item") }
   let(:quantity)       { 3 }
 
   it "initializes with a menu hash" do
-    expect(order.menu).to be_instance_of Hash
+    expect(menu).to be_instance_of Hash
   end
 
   it "initializes with an empty selection hash" do
@@ -34,7 +32,7 @@ describe Order do
       context "when item is chosen for the first time in this order" do
         it "adds correct number of correct item to @selection" do
           expect_string = "#{quantity} x #{correct_item} "\
-          "= £#{quantity * order.menu[correct_item.to_sym]}"
+          "= £#{quantity * menu[correct_item.to_sym]}"
           expect(order.add(correct_item, quantity)).to eq expect_string
         end
       end
@@ -57,9 +55,9 @@ describe Order do
       end
       it "returns formatted basket summary string" do
         expect_string = "#{order.selection[correct_item]} x #{correct_item} "\
-        "= £#{order.selection[correct_item] * order.menu[correct_item.to_sym]}, "\
+        "= £#{order.selection[correct_item] * menu[correct_item.to_sym]}, "\
         "#{order.selection[correct_item2]} x #{correct_item2} "\
-        "= £#{order.selection[correct_item2] * order.menu[correct_item2.to_sym]}"
+        "= £#{order.selection[correct_item2] * menu[correct_item2.to_sym]}"
         expect(order.basket_summary).to eq expect_string
       end
     end
@@ -85,40 +83,14 @@ describe Order do
   end
 
   describe "#checkout" do
-    let(:order_total) {
-      order.selection.map { |item, amount| amount * menu[item] }.inject(&:+)
-    }
-    let(:incorrect_order_total) { order_total - 1 }
-    let(:checkout) { double "a checkout" }
+    let(:checkout)       { double "a checkout" }
     let(:checkout_class) { double "a checkout class", new: checkout }
-    let(:phone_number) { double "a phone number" }
-    before :each do
-      20.times { |num| order.add(menu.keys.sample, num) }
-    end
-
-    context "when provided_total is incorrect" do
-      it "raises 'Incorrect total provided' error" do
-        error_msg = "Incorrect total provided"
-        expect { order.checkout(incorrect_order_total, checkout_class, phone_number) }.to raise_error error_msg
-      end
-    end
-
-    context "when provided_total is correct" do
-      context "using an example order to test error" do
-        it "does not raise error" do
-          expect { order.checkout(order_total, phone_number, checkout_class) }.not_to raise_error
-        end
-      end
-
-      context "using a double of an order to test sms" do
-        before :each do
-          allow(order).to receive(:validate).and_return nil
-        end
-
-        it "instantiates checkout_class object" do
-          expect(checkout_class).to receive(:new).with(order_total, phone_number)
-          order.checkout(order_total, phone_number, checkout_class)
-        end
+    let(:order_total)    { "£31.49" }
+    context "using a double of an order to test sms" do
+      it "instantiates checkout_class object" do
+        allow(order).to receive(:total).and_return(order_total)
+        expect(checkout_class).to receive(:new).with(order_total.delete("£").to_f)
+        order.checkout(checkout_class)
       end
     end
   end

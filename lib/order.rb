@@ -3,7 +3,7 @@ require_relative './checkout.rb'
 
 class Order
 
-  attr_reader :menu, :selection, :provided_total
+  attr_reader :menu, :selection
 
   def initialize(restaurant = Restaurant.new)
     @menu = restaurant.menu
@@ -11,10 +11,10 @@ class Order
   end
 
   def add(item, quantity)
-    item_sym = item.to_sym
-    raise "Item not on menu" unless @menu.has_key?(item_sym)
-    @selection[item_sym] += quantity if @selection.has_key?(item_sym)
-    @selection[item_sym] = quantity unless @selection.has_key?(item_sym)
+    item = item.to_sym
+    raise "Item not on menu" unless @menu.has_key?(item)
+    @selection[item] += quantity if @selection.has_key?(item)
+    @selection[item] = quantity unless @selection.has_key?(item)
     string_formatter(item, quantity)
   end
 
@@ -30,20 +30,12 @@ class Order
     "£#{amount}"
   end
 
-  def checkout(provided_total, phone_number, checkout_class = Checkout)
-    validate(provided_total)
-    checkout_class.new(provided_total, phone_number)
+  def checkout(checkout_class = Checkout)
+    total_float = total.delete("£").to_f
+    checkout_class.new(total_float)
   end
 
   private
-
-  def validate(provided_total)
-    raise "Incorrect total provided" unless calculated_total == provided_total
-  end
-
-  def calculated_total
-    @selection.map { |item, amount| amount * menu[item] }.inject(&:+)
-  end
 
   def string_formatter(item, quantity)
     "#{quantity} x #{item} = £#{quantity * @menu[item.to_sym]}"
