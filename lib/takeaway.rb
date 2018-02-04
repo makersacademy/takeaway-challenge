@@ -22,11 +22,8 @@ class Takeaway
     @order.print_verification(@menu.options)
   end
 
-  def sms_confirmation
-    @order.send_verification_text
-  end
-
   def finish_order
+    @order.send_verification_text
     @order = Order.new
   end
 
