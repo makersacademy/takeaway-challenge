@@ -16,7 +16,7 @@ class Order
       selected_product = current_order[get_index(product_number)]
       selected_product.add_quantity(quantity)
     else
-      selected_product = product.new(product_number)
+      selected_product = product.new(product_number, quantity)
       add_product_to_order(selected_product)
     end
     puts "#{quantity}x #{selected_product.name}(s) added to basket"

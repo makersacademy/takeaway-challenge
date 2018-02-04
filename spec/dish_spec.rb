@@ -12,4 +12,9 @@ describe Dish do
     expect(dish.price).to eql(10)
   end
 
+  it "Create a new dish with a custom quantity" do
+    dish = Dish.new(1,3)
+    expect(dish.quantity).to eql(3)
+  end
+
 end

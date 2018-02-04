@@ -13,11 +13,11 @@ class Dish
   attr_reader :number, :name, :price
   attr_accessor :quantity
 
-  def initialize(dish_number)
+  def initialize(dish_number, quantity = 1)
     @number = dish_number
     @name = FOOD_MENU[dish_number][0]
     @price = FOOD_MENU[dish_number][1]
-    @quantity = 1
+    @quantity = quantity
   end
 
   def add_quantity(quantity)

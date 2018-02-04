@@ -11,8 +11,8 @@ describe Order do
   # i.e. the product adding, can test the new product aspect is working in product itself
   it "Allows the customer to select a product" do
     allow(subject.product).to receive(:new).and_return(product_1)
-    product_one = subject.select_product(1)
-    expect(subject.current_order).to eql(product_one)
+    subject.select_product(1)
+    expect(subject.current_order.last).to eql(product_1)
   end
 
   it "Allows the customer to select multiple products" do
@@ -22,8 +22,6 @@ describe Order do
     subject.select_product(2)
     expect(subject.current_order).to eql([product_1, product_2])
   end
-
-  it "Allows the customer to give different quantities for selections"
 
   it "Keeps track of the quantity of specific dishes" do
     # allow(subject.product).to receive(:new).and_return(product_1)

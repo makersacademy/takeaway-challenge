@@ -6,7 +6,7 @@ class Menu
 
   def initialize(product_list = Dish::FOOD_MENU, product = Dish)
     @product = product
-    @menu = []
+    @menu_of_products = []
     populate_menu(product_list)
   end
 
@@ -17,7 +17,7 @@ class Menu
   def populate_menu(product_list)
     number_of_products = product_list.count
     number_of_products.times do |i|
-      @menu << product.new(i + 1)
+      @menu_of_products << product.new(i + 1)
     end
   end
 
