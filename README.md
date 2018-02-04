@@ -14,6 +14,14 @@ Takeaway Challenge - Makers Academy Week 2
 
  ```
 
+ Summary
+ -----
+
+ This application allows a customer to place an order at a takeaway establishment. The customer is able to view the menu and then add and remove dishes and their quantities from the order basket.
+
+ The customer can also view a summary of their order showing the dishes ordered, their quantities and the corresponding sub-total. If the customer places an order, they are sent a text message confirming that the order will be delivered within an hour.
+
+ The text message sending functionality was implemented using the Twilio API.
 
 Approach
 -----
@@ -22,15 +30,6 @@ I read through each user story and created a flow diagram outlining the user's j
 Based on the user stories, I began thinking about how each class would interact with each other and created a second diagram outlining the responsibilities of each class.
 
 Once the core features outlined in the user stories had been implemented, I focused on adding features that help defend against edge cases such as a user adding a dish that is not on the menu, adding a negative number of dishes or a user trying to confirm an order without adding any dishes to their order. Finally, I added some additional features such as the ability to remove dishes from the order in various quantities.  
-
-Summary
------
-
-This application allows a customer to place an order at a takeaway establishment. The customer is able to view the menu and then add and remove dishes and their quantities from the order basket.
-
-The customer can also view a summary of their order showing the dishes ordered, their quantities and the corresponding sub-total. If the customer places an order, they are sent a text message confirming that the order will be delivered within an hour.
-
-The text message sending functionality was implemented using the Twilio API.
 
 Installation
 -----
