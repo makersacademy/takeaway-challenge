@@ -12,25 +12,31 @@ class Order
   end
 
   def select_product(product_number)
-    if product_in_order?(product_number)
-      current_order[get_index].quantity_plus_one
+    if product_already_in_order?(product_number)
+      current_order[get_index(product_number)].quantity_plus_one
     else
       selected_product = product.new(product_number)
       add_product_to_order(selected_product)
     end
   end
 
-  def product_in_order?(product_number)
+  def product_already_in_order?(product_number)
     current_order.each do |product|
-      return true if product.number == product_number
+      if product.number == product_number
+        product.quantity_plus_one
+        return true
+      end
     end
+    false
   end
 
-  def get_index
+  def get_index(product_number)
     i = 0
     current_order.each do |product|
-      return i if product.number == product_number
-      i += 1
+      if product.number == product_number
+        return i
+      end
+      i +=1
     end
   end
 

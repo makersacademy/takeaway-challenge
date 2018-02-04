@@ -22,6 +22,7 @@ class Dish
 
   def quantity_plus_one
     self.quantity += 1
+    true
   end
 
 end
