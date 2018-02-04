@@ -24,4 +24,8 @@ class Dish
     self.quantity += quantity
   end
 
+  def info
+    "Dish number: #{number}. Dish name: #{name}. Price: £#{price}"
+  end
+
 end

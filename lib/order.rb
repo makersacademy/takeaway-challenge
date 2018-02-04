@@ -19,6 +19,16 @@ class Order
       selected_product = product.new(product_number, quantity)
       add_product_to_order(selected_product)
     end
+    basket_update_message(selected_product, quantity)
+  end
+
+  def read_menu
+    menu.print_menu
+  end
+
+  private
+
+  def basket_update_message(selected_product, quantity)
     puts "#{quantity}x #{selected_product.name}(s) added to basket"
   end
 

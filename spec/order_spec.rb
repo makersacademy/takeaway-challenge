@@ -23,10 +23,10 @@ describe Order do
     expect(subject.current_order).to eql([product_1, product_2])
   end
 
-  it "Keeps track of the quantity of specific dishes" do
+  it "If the dish is already in the order, update the quantity" do
     # allow(subject.product).to receive(:new).and_return(product_1)
-    # allow(product_1).to receive(:quantity_plus_one).and_return(:product_1_quantity_2)
     subject.select_product(1)
+    # allow(product_1).to receive(:add_quantity).and_return(:product_1_quantity_2)
     subject.select_product(1)
     expect(subject.current_order.last.quantity).to eql 2
   end
