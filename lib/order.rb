@@ -1,3 +1,6 @@
+require_relative 'restaurant'
+require_relative 'message'
+
 class Order
 
   attr_reader :list_of_items
@@ -17,7 +20,7 @@ class Order
 
   def send_order(total_number)
     fail 'The amount of dishes does not match your order' if total_number != count_dishes
-    # twillo
+    Message.new
   end
 
   private

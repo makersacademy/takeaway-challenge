@@ -1,5 +1,6 @@
 require_relative 'dish'
 require_relative 'order'
+require_relative 'message'
 
 
 class Restaurant
@@ -17,7 +18,7 @@ class Restaurant
 
   def display_menu
     @menu.each { |object|
-      puts "- #{object.details[:name]} | #{object.details[:price]} pounds  \n"
+      puts "- #{object.details[:name]} | #{object.details[:price]} pounds  \n".ljust(10)
     }
   end
 
