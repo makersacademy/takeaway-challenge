@@ -15,18 +15,26 @@ class Order
     raise "Item not on menu" unless @menu.has_key?(item_sym)
     @selection[item_sym] += quantity if @selection.has_key?(item_sym)
     @selection[item_sym] = quantity if !@selection.has_key?(item_sym)
+    string_formatter(item, quantity)
   end
 
-  def select_menu_items(selection, provided_total)
-    validate(selection, provided_total)
-    @provided_total = provided_total
-    @selection = selection
+  def basket_summary
+    raise "Basket empty" if @selection.empty?
+    @selection.to_a
+      .map { |arr| string_formatter(arr[0], arr[1]) }
+      .join(", ")
+  end
+
+  def checkout(provided_total, checkout_class, phone_number)
+    validate(provided_total)
+    checkout_class.new
   end
 
   def send_sms(messaging_service, phone_number)
     messaging_service.send_sms(phone_number, sms_body)
   end
 
+  # MOVE TO SENDSMS CLASS
   def sms_body
     "Thank you for your order. "\
     "It will be delivered at #{Time.now.strftime "%H:%M"}"
@@ -34,12 +42,16 @@ class Order
 
   private
 
-  def validate(selection, provided_total)
-    raise "Incorrect total provided" unless calculated_total(selection) == provided_total
+  def validate(provided_total)
+    raise "Incorrect total provided" unless calculated_total == provided_total
   end
 
-  def calculated_total(selection)
-    selection.map { |item, amount| amount * menu[item] }.inject(&:+)
+  def calculated_total
+    @selection.map { |item, amount| amount * menu[item] }.inject(&:+)
+  end
+
+  def string_formatter(item, quantity)
+    "#{quantity} x #{item} = £#{quantity * @menu[item.to_sym]}"
   end
 
 end
