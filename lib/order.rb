@@ -59,13 +59,13 @@ class Order
     @current.each do |item, quantity|
       @total_cost += menu_options[item] * quantity
     end
+    @total_cost = @total_cost.round(2)
   end
 
   def get_phone_number
     puts "Enter your phone number: "
     print 0
-    number = gets.chomp
-    number = "+44" + number
+    number = "+44" + gets.chomp
   end
 
   def run_twilio(user_phone_number, message)

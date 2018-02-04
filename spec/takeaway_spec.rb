@@ -22,14 +22,13 @@ describe Takeaway do
     end
   end
 
-  describe '#verify_current_order' do
+  describe '#verify_order' do
     it 'delegates order verification to order object' do
       expect(order).to receive(:print_verification).with(options).and_return 'order verified'
-      expect(takeaway.verify_current_order).to eq 'order verified'
+      expect(takeaway.verify_order).to eq 'order verified'
     end
 
   describe '#finish_order' do
-
     before(:each) do
       allow(order).to receive(:send_verification_text)
     end

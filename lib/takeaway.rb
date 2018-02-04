@@ -18,7 +18,7 @@ class Takeaway
     @order.note_down(@menu.options)
   end
 
-  def verify_current_order
+  def verify_order
     @order.print_verification(@menu.options)
   end
 
