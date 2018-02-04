@@ -13,8 +13,8 @@ describe Order do
     expect(menu).to be_instance_of Hash
   end
 
-  it "initializes with an empty selection hash" do
-    expect(order.selection).to eq({})
+  it "initializes with an empty basket hash" do
+    expect(order.basket).to eq({})
   end
 
   describe "#add" do
@@ -24,13 +24,13 @@ describe Order do
           order.add(correct_item, 1)
         end
 
-        it "adds correct number of correct item to @selection" do
-          expect { order.add(correct_item, quantity) }.to change { order.selection[correct_item] }.by quantity
+        it "adds correct number of correct item to @basket" do
+          expect { order.add(correct_item, quantity) }.to change { order.basket[correct_item] }.by quantity
         end
       end
 
       context "when item is chosen for the first time in this order" do
-        it "adds correct number of correct item to @selection" do
+        it "adds correct number of correct item to @basket" do
           expect_string = "#{quantity} x #{correct_item} "\
           "= £#{quantity * menu[correct_item.to_sym]}"
           expect(order.add(correct_item, quantity)).to eq expect_string
@@ -54,10 +54,10 @@ describe Order do
         order.add(correct_item2, correct_item2_test_amount)
       end
       it "returns formatted basket summary string" do
-        expect_string = "#{order.selection[correct_item]} x #{correct_item} "\
-        "= £#{order.selection[correct_item] * menu[correct_item.to_sym]}, "\
-        "#{order.selection[correct_item2]} x #{correct_item2} "\
-        "= £#{order.selection[correct_item2] * menu[correct_item2.to_sym]}"
+        expect_string = "#{order.basket[correct_item]} x #{correct_item} "\
+        "= £#{order.basket[correct_item] * menu[correct_item.to_sym]}, "\
+        "#{order.basket[correct_item2]} x #{correct_item2} "\
+        "= £#{order.basket[correct_item2] * menu[correct_item2.to_sym]}"
         expect(order.basket_summary).to eq expect_string
       end
     end
@@ -71,7 +71,7 @@ describe Order do
 
   describe "#total" do
     let(:order_total) {
-      amount = order.selection.map { |item, quantity| quantity * menu[item] }.inject(&:+)
+      amount = order.basket.map { |item, quantity| quantity * menu[item] }.inject(&:+)
       "£#{amount}"
     }
     before :each do

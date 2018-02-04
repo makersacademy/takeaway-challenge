@@ -8,7 +8,7 @@ class TwilioSendSMS
   def self.send_sms(to_phone_number)
     client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
     client.messages.create(
-      body: self.message_body,
+      body: message_body,
       to: to_phone_number,
       from: '+447403932186',
       )

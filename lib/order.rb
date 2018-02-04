@@ -3,30 +3,30 @@ require_relative './checkout.rb'
 
 class Order
 
-  attr_reader :menu, :selection
+  attr_reader :menu, :basket
 
   def initialize(restaurant = Restaurant.new)
     @menu = restaurant.menu
-    @selection = {}
+    @basket = {}
   end
 
   def add(item, quantity)
     item = item.to_sym
     raise "Item not on menu" unless @menu.has_key?(item)
-    @selection[item] += quantity if @selection.has_key?(item)
-    @selection[item] = quantity unless @selection.has_key?(item)
+    @basket[item] += quantity if @basket.has_key?(item)
+    @basket[item] = quantity unless @basket.has_key?(item)
     string_formatter(item, quantity)
   end
 
   def basket_summary
-    raise "Basket empty" if @selection.empty?
-    @selection.to_a
+    raise "Basket empty" if @basket.empty?
+    @basket.to_a
       .map { |arr| string_formatter(arr[0], arr[1]) }
       .join(", ")
   end
 
   def total
-    amount = @selection.map { |item, quantity| quantity * menu[item] }.inject(&:+)
+    amount = @basket.map { |item, quantity| quantity * menu[item] }.inject(&:+)
     "£#{amount}"
   end
 
