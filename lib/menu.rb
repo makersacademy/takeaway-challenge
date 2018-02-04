@@ -1,5 +1,5 @@
 class Menu
-  MENU = {
+  FOOD_MENU = {
     1 => ["Beef burger", 10],
     2 => ["Cheese burger", 12],
     3 => ["Chicken burger", 9],
