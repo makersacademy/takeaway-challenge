@@ -1,4 +1,5 @@
 require 'order'
+require 'take_away'
 
 describe Order do
 
@@ -11,14 +12,14 @@ describe Order do
     'Cod with beans & artichokes' => 11.40,
   }
 
-  let(:confirmation) {double("Thank you! Your order was placed and will be delivered before 18:52")}
-  let(:selection) {double({ 'Scrambled eggs' => 2 })}
-
-  subject { Order.new(selection) }
+  # let(:confirmation) {double("Thank you! Your order was placed and will be delivered before 18:52")}
 
   describe '#check total amount' do
-    it 'should check if the total amount equals the current menu selection amount' do
-      expect(subject.sum_amount).to eq 9.98
+    it 'should check if current amount in selection matches with sum_amount' do
+      take_away = TakeAway.new
+      take_away.select("Scrambled eggs", 2)
+      subject = Order.new(take_away)
+      expect(subject.sum_amount).to eq take_away.current_amount
     end
   end
 
