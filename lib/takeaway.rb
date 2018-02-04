@@ -1,10 +1,11 @@
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :message
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new, order = Order.new, message = Message.new)
     @menu = menu
     @order = order
+    @message = message
   end
 
   def show_menu
@@ -18,6 +19,10 @@ class Takeaway
 
   def show_total
     puts "Your total is £#{'%.2f' % @order.total_cost}"
+  end
+
+  def complete_order(phone_number)
+    @message.send_sms(phone_number)
   end
 
 end

@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 require 'dotenv/load'
 
-class SMS
+class Message
 
   def send_sms(phone_number)
 
@@ -12,7 +12,8 @@ class SMS
     @client.messages.create({
       :from => ENV['from_phone'],
       :to => "+44#{phone_number[1..-1]}",
-      :body => "Thank you for your order! It will be delivered to you by #{delivery_time}."
+      :body => "Thank you for your order!"\
+      " It will be delivered to you by #{delivery_time}."
     })
 
   end
