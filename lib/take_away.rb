@@ -1,5 +1,7 @@
-class Menu
-  attr_reader :selection, :amount
+require_relative 'order'
+
+class TakeAway
+  attr_reader :selection, :current_amount, :menu
 
   def initialize
     @menu = {
@@ -11,26 +13,24 @@ class Menu
       'Cod with beans & artichokes' => 11.40,
     }
 
-    @selection = []
+    @selection = {}
     
-    @amount = 0
+    @current_amount = 0
   end
 
   def list
-    @item_n = 1
+    item_n = 0
 
     @menu.each do |dish, price|
-      puts "#{@item_n}. Dish: #{dish} - Price: #{price}"
-      @item_n += 1
+      item_n += 1
+      puts "#{item_n}. Dish: #{dish} - Price: #{price}"
     end
   end
 
   def select(dish, quantity = 1)
-    @menu.select do |k, v|
-      if k == dish
-        @selection << k + " (#{quantity})"
-        @amount += v * quantity
-      end
+    if @menu[dish]
+      @selection[dish] = quantity
+      @current_amount += @menu[dish] * quantity
     end
     @selection
   end
