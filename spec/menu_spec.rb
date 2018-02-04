@@ -8,5 +8,7 @@ describe Menu do
     expect(menu.options).to be_a Hash
   end
 
-
+  it 'prints a menu' do
+    expect(menu.print).to output.to_stdout
+  end
 end

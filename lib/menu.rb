@@ -14,39 +14,28 @@ class Menu
         }
   end
 
-  def print_order_verification(order)
-    print_quantities(order)
-    print_total_cost(order)
+  def print_centered
+    puts menu_header.center(40)
+    menu_to_strings.each do |line|
+    puts line.center(40)
+    end
   end
 
   private
 
-  def print_quantities(order)
-    order_quantities = calculate_quantities(order)
-    order_quantities.each do |item,quantity|
-      puts "#{quantity} x #{item}(s)"
+  def menu_header
+    "Today's specials"
+  end
+
+  def menu_to_strings
+    @options.map do |item, price|
+      item_string = to_legible_strings(item)
+      "#{item_string}: £#{price}"
     end
   end
 
-  def calculate_quantities(order)
-    order_quantities = Hash.new(0)
-    order.each do |order|
-      order_quantities[order] += 1
-    end
-    order_quantities
-  end
-
-  def print_total_cost(order)
-    total_cost = calculate_total(order)
-    puts "Total cost: £#{total_cost}"
-  end
-
-  def calculate_total(order)
-    total_cost = 0
-    order.each do |item|
-      total_cost += @options[item.gsub(/\s+/, "_").downcase.to_sym]
-    end
-    total_cost.floor(2)
+  def to_legible_strings(symbol)
+    symbol.to_s.gsub('_', ' ').capitalize
   end
 
 end
