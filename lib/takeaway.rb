@@ -1,4 +1,17 @@
+require 'twilio-ruby'
+require 'time'
+
+
+# put your own credentials here
+@account_sid = "AC10da6193fff26439f0535662c2b0ffb9"
+@auth_token = "9c46ff8da32bd438934e3f2385c90dcf"
+# Twilio number  +441942316301
+
+# set up a client to talk to the Twilio REST API
+
 class Takeaway
+  @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+
 
   attr_accessor :order
 
@@ -18,14 +31,24 @@ class Takeaway
   end
 
   def print_receipt
-    total = 0
+    @total = 0
     @order.each do |line|
       line_total = line[:count] * line[:cost]
-      puts "#{line[:desc]} @ #{line[:cost]} x #{line[:count]}   : £#{line_total}0"
+      puts "#{line[:desc]} @ £#{line[:cost]}0 x #{line[:count]}   : £#{line_total}0"
       total += line_total
     end
     puts "-----------------------------------"
-    puts "Total             : £#{total}0"
+    puts "Total             : £#{@total}0"
+  end
+
+  def send_text
+    now = Time.now
+    p @client
+    @client.messages.create(
+      to: "+447964876838",
+      from: "+441942316301",
+      body: "Your order has been placed and will be delivered before #{now.hour}:#{now.min}. The total cost is £#{@total}0"
+    )
   end
 
   private
