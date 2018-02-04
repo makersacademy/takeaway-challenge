@@ -4,10 +4,9 @@ describe Restaurant do
 
   subject(:restaurant) { described_class.new(menu) }
   let(:menu) { double 'menu' }
-  let(:test_menu) { { "Dish_1" => 3.50, "Dish_2" => 4 } }
   let(:printed_test_menu) { "Menu\nDish_1: £3.50\nDish_2: £4.00\n" }
   let(:order) { double 'an order' }
-  let(:test_text) { double 'text' } 
+  let(:text) { double 'a text' }
 
   it "stores a new menu object" do
     expect(restaurant.menu).to eq menu
@@ -15,7 +14,6 @@ describe Restaurant do
 
   describe '#show_menu' do
     it 'returns the printed menu' do
-      allow(menu).to receive(:dishes).and_return(test_menu)
       allow(menu).to receive(:print).and_return(printed_test_menu)
       expect(restaurant.show_menu).to eq printed_test_menu
     end
@@ -35,13 +33,13 @@ describe Restaurant do
     end
 
     it 'returns an error if the payment amount is incorrect' do
-      message = "Incorrect amount, please check order total"
+      message = "Please see basket summary for the correct order total"
       expect { restaurant.checkout(11) }.to raise_error message
     end
 
     it 'sends a confirmation text if the amount is correct' do
-      expect(test_text).to receive(:send)
-      restaurant.checkout(11.50, test_text)
+      expect(text).to receive(:send)
+      restaurant.checkout(11.50, text)
     end
 
   end

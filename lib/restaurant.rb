@@ -11,7 +11,7 @@ class Restaurant
   end
 
   def show_menu
-    @menu.print
+    menu.print
   end
 
   def create_order(order = Order.new)
@@ -19,8 +19,15 @@ class Restaurant
   end
 
   def checkout(amount, text = Text.new)
-    raise "Incorrect amount, please check order total" if amount != @order.total
+    message = "Please see basket summary for the correct order total"
+    raise message unless correct?(amount)
     text.send
+  end
+
+  private
+
+  def correct?(amount)
+    amount == order.total
   end
 
 end

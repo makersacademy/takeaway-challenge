@@ -19,17 +19,16 @@ describe Order do
   describe '#add' do
 
     before(:each) do
-      allow(menu).to receive(:dishes).and_return(test_menu)
-      allow(menu).to receive(:includes?).and_return(true)
+      allow(order).to receive(:on_menu?).and_return(true)
     end
 
     it "adds item to basket if it's on the menu" do
-      order.add("Dish_1")
-      expect(order.basket).to include("Dish_1" => 1)
+      order.add("Dish_2")
+      expect(order.basket).to include("Dish_2" => 1)
     end
 
     it "returns an error if item is not on the menu" do
-      allow(menu).to receive(:includes?).and_return(false)
+      allow(order).to receive(:on_menu?).and_return(false)
       message = "This dish is not on the menu"
       expect { order.add("Dish_3") }.to raise_error message
     end

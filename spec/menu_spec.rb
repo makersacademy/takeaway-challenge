@@ -16,14 +16,4 @@ describe Menu do
     end
   end
 
-  describe '#includes?' do
-    it 'returns item if item is on menu' do
-      expect(menu.includes?("Dish_2")).to eq "Dish_2"
-    end
-
-    it 'returns false if item is not on menu' do
-      expect(menu.includes?("Dish_3")).to be false
-    end
-  end
-
 end
