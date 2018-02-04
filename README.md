@@ -97,8 +97,8 @@ To run program
 1. Fork this repo
 2. Run `bundle` to install required gems
 3. Create a file called `hidden_data.env` assigning your details to the following variables (you will need to create a free Twilio account to get these)
-  - "MY_PHONE_NUMBER"
-  - "TWILIO_PHONE_NUMBER"
-  - "TWILIO_ACCOUNT_SID"
-  - "TWILIO_AUTH_CODE"
+    - "MY_PHONE_NUMBER"
+    - "TWILIO_PHONE_NUMBER"
+    - "TWILIO_ACCOUNT_SID"
+    - "TWILIO_AUTH_CODE"
 4. Start irb and `require './lib/restaurant.rb'`
