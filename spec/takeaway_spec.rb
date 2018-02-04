@@ -2,12 +2,12 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:takeaway) { described_class.new                     }
-  let(:menu) { double('menu')                          }
-  let(:order)
+  let(:takeaway) { described_class.new }
 
-  it 'is initialized with a menu object' do
-    takeaway.menu
+  describe '#print_menu' do
+    it 'returns menu to stdout' do
+      expect{takeaway.print_menu}.to output.to_stdout
+    end
   end
 
 end
