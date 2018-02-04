@@ -41,6 +41,7 @@ class Order
   end
 
   def order_total
+      @total = 0
     basket.each do |dish, quantity|
       @total += @menu.dishes[dish] * quantity
     end

@@ -16,7 +16,7 @@ Takeaway Challenge
 
 Task
 -----
-Create a program that satisfies the following user stories
+Create a program which satisfies the following user stories
 
 ```
 As a customer
@@ -38,7 +38,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 Approach
 -----
-- I used TDD to create this program, using doubles and stubs to create isolated unit tests.
+- I used TDD to create this program, using doubles and stubs where appropriate to create isolated unit tests. I also aimed to achieve full test coverage.
 - To send the confirmation texts, I integrated the Twilio API into my program using the twilio-ruby gem.
 - To avoid disclosing my personal information, I created a file with environmental variables which I added to .gitignore. In my program, I require the dotenv gem to access this file.
 - After satisfying the above user stories, I refactored my code, ensuring necessary methods were made private, and trying to abide by the Single Responsibility Principle for methods.
@@ -86,9 +86,9 @@ Prawn Toast x2 £5.00
 Chicken Chow Mein x2 £11.00
 Fried Rice x1 £3.50
 ----------
-Order total is £33.00
+Order total is £19.50
  => nil
-2.5.0 :011 > restaurant.checkout(33)
+2.5.0 :011 > restaurant.checkout(19.50)
 ```
 ![alt text](screenshots/ExampleText.png "Confirmation text message")
 
@@ -102,3 +102,7 @@ To run program
     - "TWILIO_ACCOUNT_SID"
     - "TWILIO_AUTH_CODE"
 4. Start irb and `require './lib/restaurant.rb'`
+
+Author
+-----
+Hannah Lillis
