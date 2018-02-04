@@ -54,7 +54,6 @@ def welcome_message
   puts "To remove a dish from the order,use remove_from_order(dish, quantity)"
   puts "To view a summary of your order,use order_summary and order_total"
   puts "To confirm your order use confirm_order"
-  puts "Use welcome_message to view these options again"
   puts "---".center(20)
 end
 

@@ -53,7 +53,6 @@ To place an order, use add_to_order(dish, quantity)
 To remove a dish from your order, use remove_from_order(dish, quantity)
 You can view a summary of your order using order_summary and order_total
 To confirm your order use confirm_order
-Use welcome_message to view these options again
         ---
  => true
 2.5.0 :002 > t = Takeaway.new
