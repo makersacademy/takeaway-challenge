@@ -15,6 +15,12 @@ describe Takeaway do
     takeaway.new_order(:red_wine)
     takeaway
   end
+  let(:final_order) do
+    puts "you have ordered: "
+    puts "1 pizza"
+    puts "1 red_wine"
+    puts "for a total of £14."
+  end
 
   it 'contains a menu' do
     expect(takeaway.menu).to eq menu
@@ -26,16 +32,15 @@ describe Takeaway do
     end
   end
 
-  describe '#order_total' do
-    it 'feeds back the total owed for the order' do
-      order.order_total
-      expect(order.total).to eq(order.menu[:pizza] + order.menu[:red_wine])
+  describe '#place_order' do
+    it 'returns list of dishes ordered and the total' do
+      expect { order.place_order }.to output(final_order).to_stdout
     end
   end
 
-  describe '#place_order' do
-    it 'returns list of dishes ordered and the total' do
-      expect{order.place_order}.to output('you have ordered 1 pizza and 1 red_wine, for a total of £14.').to_stdout
+  describe 'current_total' do
+    it "returns current price of things ordered" do
+      expect(order.current_total).to eq 14
     end
   end
 end

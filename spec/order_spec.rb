@@ -16,7 +16,5 @@ describe Order do
     it 'saves order in items' do
       expect(pizza_order.items).to include fake_order
     end
-
-    it 
   end
 end
