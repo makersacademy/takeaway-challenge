@@ -10,13 +10,9 @@ class Order
   end
 
   def select_menu_items(selection, provided_total)
+    validate(selection, provided_total)
     @provided_total = provided_total
     @selection = selection
-  end
-
-  def validate_order
-    raise "Incorrect total provided" unless calculated_total == @provided_total
-    @provided_total
   end
 
   def send_sms(messaging_service, phone_number)
@@ -25,13 +21,17 @@ class Order
 
   def sms_body
     "Thank you for your order. "\
-    "It will be delivered at #{Time.now.strftime "%Y-%m-%d %H:%M"}"
+    "It will be delivered at #{Time.now.strftime "%H:%M"}"
   end
 
   private
 
-  def calculated_total
-    @selection.map { |item, amount| amount * menu[item] }.inject(&:+)
+  def validate(selection, provided_total)
+    raise "Incorrect total provided" unless calculated_total(selection) == provided_total
+  end
+
+  def calculated_total(selection)
+    selection.map { |item, amount| amount * menu[item] }.inject(&:+)
   end
 
 end

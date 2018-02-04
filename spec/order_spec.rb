@@ -11,40 +11,45 @@ describe Order do
   end
 
   describe "#select_menu_items" do
-    it "stores the estimated total in @provided_total" do
-      expect { order.select_menu_items(selection, provided_total) }
-        .to change { order.provided_total }.to provided_total
-    end
-
-    it "stores the selection in @selection" do
-      expect { order.select_menu_items(selection, provided_total) }
-        .to change { order.selection }.to selection
-    end
-  end
-
-  describe "#validate_order" do
     let(:test_order)            { order.menu }
-    let(:test_order_total_cost) {order.menu
-      .each_value.map { |v| v**2 }.inject(&:+)
+    let(:test_order_total) {
+      order.menu.each_value.map { |v| v**2 }.inject(&:+)
     }
-    let(:incorrect_test_order_total_cost) { test_order_total_cost - 1 }
+    let(:correct_order) {
+      order.select_menu_items(test_order, test_order_total)
+    }
+    let(:incorrect_test_order_total) { test_order_total - 1 }
+    let(:incorrect_order) {
+      order.select_menu_items(test_order, incorrect_test_order_total)
+    }
 
-    context "once an order has been created" do
-      context "when provided_total is correct" do
-        before :each do
-          order.select_menu_items(test_order, test_order_total_cost)
-        end
-        it "returns provided_total" do
-          expect(order.validate_order).to eq test_order_total_cost
+    context "when provided_total is incorrect" do
+
+      it "raises 'Incorrect total provided' error" do
+        expect { incorrect_order }.to raise_error "Incorrect total provided"
+      end
+    end
+
+    context "when provided_total is correct" do
+      context "using an example order" do
+        it "does not raise error" do
+          expect { correct_order }.not_to raise_error
         end
       end
 
-      context "when provided_total is incorrect" do
+      context "using a dummy order" do
         before :each do
-          order.select_menu_items(test_order, incorrect_test_order_total_cost)
+          allow(order).to receive(:validate_order).and_return nil
         end
-        it "raises 'Incorrect total provided' error" do
-          expect { order.validate_order }.to raise_error "Incorrect total provided"
+
+        it "stores the estimated total in @provided_total" do
+          expect { order.select_menu_items(selection, provided_total) }
+            .to change { order.provided_total }.to provided_total
+        end
+
+        it "stores the selection in @selection" do
+          expect { order.select_menu_items(selection, provided_total) }
+            .to change { order.selection }.to selection
         end
       end
     end
@@ -64,7 +69,7 @@ describe Order do
   describe "#sms_body" do
     it "returns the correct message" do
       message = "Thank you for your order. "\
-      "It will be delivered at #{Time.now.strftime "%Y-%m-%d %H:%M"}"
+      "It will be delivered at #{Time.now.strftime "%H:%M"}"
       expect(order.sms_body).to eq message
     end
   end
