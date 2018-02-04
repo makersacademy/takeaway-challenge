@@ -15,4 +15,9 @@ class Order
     @total_amount
   end
 
+  def place_order(selection, amount)
+    raise "Wrong amount for your order" if amount != total_amount
+
+    "Thank you! Your order was placed and will be delivered before 18:52"
+  end
 end
