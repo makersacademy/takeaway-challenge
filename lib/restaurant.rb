@@ -30,6 +30,8 @@ MENU = {"Pepes ikan" => 3, "Satay" => 3, "Bakso urat" => 4, "Soto" => 4, "Nasi g
   #   @order_history << @order
   # end
 
+private
+
   def available?(item)
     raise "Sorry, #{item} not available" if !MENU.include?(item.capitalize)
   end
