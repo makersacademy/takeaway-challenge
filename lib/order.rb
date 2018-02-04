@@ -7,6 +7,14 @@ class Order
 
   def initialize(restaurant = Restaurant.new)
     @menu = restaurant.menu
+    @selection = {}
+  end
+
+  def add(item, quantity)
+    item_sym = item.to_sym
+    raise "Item not on menu" unless @menu.has_key?(item_sym)
+    @selection[item_sym] += quantity if @selection.has_key?(item_sym)
+    @selection[item_sym] = quantity if !@selection.has_key?(item_sym)
   end
 
   def select_menu_items(selection, provided_total)

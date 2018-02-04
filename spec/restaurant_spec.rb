@@ -2,7 +2,7 @@ require 'restaurant'
 
 describe Restaurant do
 
-  subject(:restaurant) { Restaurant.new }
+  subject(:restaurant) { described_class.new }
 
   it "contains a menu" do
     expect(restaurant.menu).to be_instance_of Hash
