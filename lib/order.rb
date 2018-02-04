@@ -1,5 +1,5 @@
 class Order
-  attr_reader :basket
+  attr_reader :basket, :item, :quantity
 
   def initialize
     @basket = Hash.new(0)

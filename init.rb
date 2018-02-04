@@ -1,8 +1,8 @@
 APP_ROOT = File.dirname(__FILE__)
 
-$:.unshift(File.join(APP_ROOT, 'lib'))
-require 'restaurant'
+$:.unshift(File.join(APP_ROOT))
+require 'take_away_app'
 
-spices_of_india = Restaurant.new
+take_away_app = TakeAwayApp.new
 
-spices_of_india.launch!
+take_away_app.launch!
