@@ -1,4 +1,5 @@
 require_relative './restaurant.rb'
+require_relative './twiliosendsms.rb'
 
 class Order
 
@@ -16,6 +17,10 @@ class Order
   def validate_order
     raise "Incorrect total provided" unless calculated_total == @provided_total
     @provided_total
+  end
+
+  def send_sms(messaging_service, phone_number, body)
+    messaging_service.send_sms(phone_number, body)
   end
 
   private

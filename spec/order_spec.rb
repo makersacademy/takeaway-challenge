@@ -23,11 +23,12 @@ describe Order do
   end
 
   describe "#validate_order" do
-    let(:test_order) { order.menu }
+    let(:test_order)            { order.menu }
     let(:test_order_total_cost) {
-      order.menu.each_value.map { |v| v ** 2 }.inject(&:+)
-      }
-    let(:incorrect_test_order_total_cost) { test_order_total_cost - 1}
+      order.menu.each_value.map { |v| v**2 }.inject(&:+)
+    }
+    let(:incorrect_test_order_total_cost) { test_order_total_cost - 1 }
+
     context "once an order has been created" do
       context "when provided_total is correct" do
         before :each do
@@ -46,6 +47,17 @@ describe Order do
           expect { order.validate_order }.to raise_error "Incorrect total provided"
         end
       end
+    end
+  end
+
+  describe "#send_sms" do
+    let(:messaging_service) { double("a messaging service") }
+    let(:phone_number)      { double("a phone number") }
+    let(:body)              { double("a string") }
+    it "calls TwilioSendSMS::send_sms" do
+      allow(messaging_service).to receive(:send_sms)
+      expect(messaging_service).to receive(:send_sms).with(phone_number, body)
+      order.send_sms(messaging_service, phone_number, body)
     end
   end
 end
