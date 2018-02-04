@@ -7,11 +7,16 @@ class TakeAway
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @basket = {}
+    @basket = []
   end
 
   def read_menu
     menu.dishes
+  end
+
+  def order(string, amount=1)
+    basket << {string => amount}
+    puts "#{amount}x #{string}(s) added you your basket"
   end
 
 end
