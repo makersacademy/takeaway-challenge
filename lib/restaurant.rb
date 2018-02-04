@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'text'
 
 class Restaurant
 
@@ -25,8 +26,10 @@ class Restaurant
     end
   end
 
-  def send_text
+  private
 
+  def send_text(text = Text.new)
+    text.send
   end
 
 end
