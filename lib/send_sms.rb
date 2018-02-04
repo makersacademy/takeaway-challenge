@@ -1,14 +1,15 @@
-require 'rubygems'
-require 'twilio-ruby'
+# require 'rubygems'
+# require 'twilio-ruby'
+require ('bundler')
+Bundler.require()
 
-account_sid = 'ACa832762f45c4408857332cd25274312e'
-auth_token = '[8b1a4c70686bc96f0e70f944b586385c]'
+account_sid = ENV["TWILIO_ACCOUNT_SID"]
+auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
+@client = ::Twilio::REST::Client.new(account_sid, auth_token)
 
-@client = Twilio::REST::Client.new(account_sid, auth_token)
 @client.messages.create(
-  :from => '+441412804093',
-  :to => '+447756780794',
-  :body => 'Thanks, your order has been set and will be delivered in 1 hour from now!'
+  to: ENV["MY_PHONE_NUMBER"],
+  from: '+441412804093',
+  body: 'Tomorrow\'s forecast in Financial District, San Francisco is Clear.',
 )
-puts @client.http_client.last_response.status_cod
