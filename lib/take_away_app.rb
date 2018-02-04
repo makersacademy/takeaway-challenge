@@ -1,4 +1,5 @@
-require './lib/restaurant'
+require_relative 'menu'
+require_relative 'order'
 
 class TakeAwayApp
 
@@ -22,7 +23,6 @@ class TakeAwayApp
       @restaurant.print_menu
       launch!
     when :order
-      # creates new order basket
       select_item
     when :exit
       conclusion
@@ -36,7 +36,6 @@ class TakeAwayApp
   def select_item
     puts "What would you like to order?"
     @item = STDIN.gets.chomp.downcase.to_sym
-    # item feeds into new order basket
     select_quantity
   end
 
@@ -47,17 +46,7 @@ class TakeAwayApp
     add_extra
   end
 
-  def add_extra
-    puts "Anything else? ( yes / no )"
-    extra = STDIN.gets.chomp.downcase
-    "yes" ? select_item : finished?
-  end
-
-  def finished?
-    puts "are you ready to checkout? ( yes / no)"
-    answer = STDIN.gets.chomp.downcase
-    "yes" ? exit : select_item
-  end
+  private
 
   def introduction
     puts "\n<<< Welcome to Spices of India >>>\n"

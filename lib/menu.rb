@@ -10,8 +10,7 @@ class Menu
       chutney: 0.50,
       samosa: 2.25,
       curry: 6.50,
-      tandoori_grill: 8.95,
-      veg_side: 2.75,
+      grill: 8.95,
       rice: 1.95,
       naan: 1.80
     }
@@ -27,7 +26,7 @@ class Menu
   end
 
   def price(item)
-    @meals[item] # returns price as float
+    @meals[item]
   end
 
 end
