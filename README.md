@@ -9,12 +9,19 @@ My approach
 * After the pre-code section, I focused on writing RSpec Suite Tests (divided into fully-working Unit Tests) for the different User Stories. I only moved on to the following User Story once I finished a full Feature Test.
 * Some refactoring was needed within tests as I found a better way to model the code as I was developing the app, but I tried to reduce this as much as possible thanks to thorough pre-code design.
 
+Next focus
+---------
+
+* I would have liked to have worked on edge cases if I had the time, for example: making sure users are not allowed to order any negative number of dishes, in which case the company selling the food would own them money!
+* I would also like to make the data structure for the @menu instance variable more flexible, as, right now it consists of a key with the dish and a value with the price. What happens if the restaurant decides to apply a discount? And what if ingredients need to be added a description field for allergens so that customers know what's in the food?
+* After doing all this, I would have like do take a look at tunnels to localhost, to allow users to place their orders via mobile phone, but I ran out of time.
 
 
 Personal code review
 ---------
 
-[TBC]
+* If there is something I would need to focus on and be more thorough I would say it's my tests. I do not think I am fully exploiting all the options RSpec offers. I have the impression that, whereas I try to apply DRY in my scripts every time I can, I am not following that principle all the time in my spec files.
+* I think the strategy is to practice TDD more and more and see more examples. I learn and I am led by example.
 
 
 Takeaway Challenge
