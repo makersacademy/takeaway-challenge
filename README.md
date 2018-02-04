@@ -1,4 +1,4 @@
-Takeaway Challenge
+Takeaway Challenge - Makers Academy
 ==================
 ```
                             _________
@@ -14,21 +14,51 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
+Application
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+This application allows a customer to place an order at a takeaway establishment. The customer is able to view the menu and then add and remove dishes and their quantities from the order basket.
+
+The customer can also view an order summary, outlining the dishes ordered, their quantities and the total cost so far. If the customer places an order, they are sent a text message confirming that the order will be delivered within an hour.
+
+The text message sending functionality was implemented using the Twilio API.
+
+Installation
+-----
+Clone the repository
+
+Run `bundle` in the project directory to ensure all necessary gems are installed
+
+Open irb, navigate into the project directory and run  `require './lib/takeaway`
+
+Sample
+-----
+
+```
+2.5.0 :001 > t = Takeaway.new
+ => #<Takeaway:0x00007fc8921a36c0 @menu=#<Menu:0x00007fc8921a3698 @dishes={"Prawn Crackers"=>1.51, "Prawn Gyoza"=>3.51, "Chicken Gyoza"=>3.11, "Spring Rolls"=>3.15}>, @order=#<Order:0x00007fc8921a35a8 @basket={}>>
+2.5.0 :002 > t.see_menu
+ => "Prawn Crackers - £1.51, Prawn Gyoza - £3.51, Chicken Gyoza - £3.11, Spring Rolls - £3.15"
+2.5.0 :003 > t.add_to_order("Spring Rolls", 3)
+ => "Spring Rolls x3 added to your order"
+2.5.0 :004 > t.order_summary
+ => "Spring Rolls x3 = £9.45"
+2.5.0 :005 > t.add_to_order("Prawn Crackers", 3)
+ => "Prawn Crackers x3 added to your order"
+2.5.0 :006 > t.order_summary
+ => "Spring Rolls x3 = £9.45, Prawn Crackers x3 = £4.53"
+2.5.0 :007 > t.remove_from_order("Prawn Crackers", 2)
+ => "x2 portions of Prawn Crackers removed from order"
+2.5.0 :008 > t.order_summary
+ => "Spring Rolls x3 = £9.45, Prawn Crackers x1 = £1.51"
+2.5.0 :009 > t.order_total
+ => "Total cost: £10.96"
+2.5.0 :010 > t.confirm_order
+ => "Order received. Please await SMS for order confirmation"
+```
+
+User stories
+______
 
 ```
 As a customer
@@ -46,34 +76,3 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
