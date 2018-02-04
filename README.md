@@ -14,21 +14,9 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Create a program that satisfies the following user stories
 
 ```
 As a customer
@@ -48,32 +36,69 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Approach
+-----
+I used TDD to create this program, using doubles and stubs to create isolated unit tests.
+To send the confirmation texts, I integrated the Twilio API into my program using the twilio-ruby gem.
+To avoid disclosing my personal information, I created a file with environmental variables which I added to .gitignore. In my program, I require the dotenv gem to access this file.
+After satisfying the above user stories, I refactored my code, ensuring necessary methods were made private, and trying to abide by the Single Responsibility Principle for methods.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Example irb Output
+-----
+```
+$ irb
+2.5.0 :001 > require './lib/restaurant.rb'
+ => true
+2.5.0 :002 > restaurant = Restaurant.new
+ => #<Restaurant:0x00007fb8109af6a8 @menu=#<Menu:0x00007fb8109af680 @dishes={"Prawn Toast"=>2.5, "Spring Rolls"=>2.0, "Chicken Chow Mein"=>5.5, "Sweet and Sour Pork"=>6.0, "Vegetable Curry"=>5.0, "Fried Rice"=>3.5}>>
+2.5.0 :003 > restaurant.show_menu
+Menu
+----------
+Prawn Toast: £2.50
+Spring Rolls: £2.00
+Chicken Chow Mein: £5.50
+Sweet and Sour Pork: £6.00
+Vegetable Curry: £5.00
+Fried Rice: £3.50
+ => {"Prawn Toast"=>2.5, "Spring Rolls"=>2.0, "Chicken Chow Mein"=>5.5, "Sweet and Sour Pork"=>6.0, "Vegetable Curry"=>5.0, "Fried Rice"=>3.5}
+2.5.0 :004 > order = restaurant.create_order
+ => #<Order:0x00007fb8113ceeb8 @basket={}, @menu=#<Menu:0x00007fb8113cee90 @dishes={"Prawn Toast"=>2.5, "Spring Rolls"=>2.0, "Chicken Chow Mein"=>5.5, "Sweet and Sour Pork"=>6.0, "Vegetable Curry"=>5.0, "Fried Rice"=>3.5}>, @total=0>
+2.5.0 :005 > order.add("Prawn Toast")
+ => "1x Prawn Toast has been added to your order"
+2.5.0 :006 > order.add("Chicken Chow Mein",2)
+ => "2x Chicken Chow Mein has been added to your order"
+2.5.0 :007 > order.summary
+Order Summary
+----------
+Prawn Toast x1 £2.50
+Chicken Chow Mein x2 £11.00
+----------
+Order total is £13.50
+ => nil
+2.5.0 :008 > order.add("Fried Rice")
+ => "1x Fried Rice has been added to your order"
+2.5.0 :009 > order.add("Prawn Toast")
+ => "1x Prawn Toast has been added to your order"
+2.5.0 :010 > order.summary
+Order Summary
+----------
+Prawn Toast x2 £5.00
+Chicken Chow Mein x2 £11.00
+Fried Rice x1 £3.50
+----------
+Order total is £33.00
+ => nil
+2.5.0 :011 > restaurant.checkout(33)
+```
+![alt text](screenshots/ExampleText.png "Confirmation text message")
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+To run program
+-----
+1. Fork this repo
+2. Run `bundle` to install required gems
+3. Create a file called `hidden_data.env` assigning your details to the following variables (you will need to create a free Twilio account to get these)
+  - "MY_PHONE_NUMBER"
+  - "TWILIO_PHONE_NUMBER"
+  - "TWILIO_ACCOUNT_SID"
+  - "TWILIO_AUTH_CODE"
+4. Start irb and `require './lib/restaurant.rb'`

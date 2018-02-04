@@ -16,6 +16,7 @@ class Menu
 
   def print
     puts "Menu"
+    puts "----------"
     dishes.each do |dish, price|
       puts "#{dish}: £#{sprintf('%.2f', price)}"
     end

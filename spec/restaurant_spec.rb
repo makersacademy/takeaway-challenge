@@ -4,7 +4,7 @@ describe Restaurant do
 
   subject(:restaurant) { described_class.new(menu) }
   let(:menu) { double 'menu' }
-  let(:printed_test_menu) { "Menu\nDish_1: £3.50\nDish_2: £4.00\n" }
+  let(:printed_test_menu) { "Menu\n----------\nDish_1: £3.50\nDish_2: £4.00\n" }
   let(:order) { double 'an order' }
   let(:text) { double 'a text' }
 

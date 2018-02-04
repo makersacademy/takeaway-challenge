@@ -1,7 +1,7 @@
 require_relative 'menu'
 
 class Order
-  attr_reader :basket
+  attr_reader :basket, :total
 
   def initialize(menu = Menu.new)
     @basket = {}
@@ -17,14 +17,17 @@ class Order
 
   def summary
     puts "Order Summary"
+    puts "----------"
     display_line_items
-    puts "Order total is £#{total}"
+    puts "----------"
+    puts "Order total is £#{order_total}"
   end
 
   private
 
   def on_menu?(item)
     @menu.dishes.each_key { |dish| return true if item == dish }
+    false
   end
 
   def in_basket?(item)
@@ -37,7 +40,7 @@ class Order
     basket[item] = quantity
   end
 
-  def total
+  def order_total
     basket.each do |dish, quantity|
       @total += @menu.dishes[dish] * quantity
     end
