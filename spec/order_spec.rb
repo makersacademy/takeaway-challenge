@@ -43,9 +43,9 @@ describe Order do
     subject.select_product(2)
     allow(product_1).to receive(:price).and_return(10)
     allow(product_1).to receive(:quantity).and_return(4)
-    allow(product_2).to receive(:price).and_return(10)
-    allow(product_2).to receive(:quantity).and_return(4)
-    expect{subject.view_basket_total}.to output("Total order value: £80\n").to_stdout
+    allow(product_2).to receive(:price).and_return(12)
+    allow(product_2).to receive(:quantity).and_return(2)
+    expect{subject.view_basket_total}.to output("Total order value: £64\n").to_stdout
   end
 
 end
