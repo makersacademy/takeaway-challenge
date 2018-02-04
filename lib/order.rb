@@ -1,5 +1,7 @@
 require_relative 'take_away'
 
+require 'twilio-ruby'
+
 class Order
   attr_reader :take_away, :total_amount, :menu
 
@@ -13,7 +15,20 @@ class Order
   def place_order(selection, amount)
     raise "Wrong amount for your order" if amount != total_amount
 
-    "Thank you! Your order was placed and will be delivered before 18:52"
+    send_sms("Thank you! Your order was placed and will be delivered before 18:52")
+  end
+
+  def send_sms(text)
+    account_sid = 'XXXXXX'
+    auth_token = 'XXXXXX'
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    @client.api.account.messages.create(
+      from: '123456',
+      to: '123456',
+      body: "Thank you! Your order was placed and will be delivered before 18:52"
+    )
   end
 
   private
