@@ -15,12 +15,12 @@ class Order
   end
 
   def add(dish, quantity)
-    @trolley.merge!(dish.to_sym => quantity.to_i)
+    trolley.merge!(dish.to_sym => quantity.to_i)
     print "Thank you. Your #{dish} dish was added #{quantity} times to your trolley"
   end
 
   def dish_price
-    @trolley.map do |dish, quantity|
+    trolley.map do |dish, quantity|
       price = quantity * @menu[:Paella]
       puts "Total price of #{quantity} dishes of #{dish} : £ #{price}."
       price
@@ -30,6 +30,7 @@ class Order
   def total
     total = dish_price.inject(0){|sum,x| sum + x }
      "Total amount to be paid £ #{total}"
+
   end
 
 end

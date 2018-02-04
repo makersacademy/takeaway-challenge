@@ -3,6 +3,8 @@ require 'Takeaway'
 describe Takeaway do
 
 subject(:takeaway) {described_class.new(Menu.new)}
+subject(:text) {described_class.new}
+let(:send_text) {double "send_sms"}
 let(:place_order) {double("dish",2)}
 
   describe"#initialize"do
@@ -42,7 +44,7 @@ end
     end
     context "When total amount of order is displayed" do
       it "displays total amount" do
-        expect(takeaway.total_amount).not_to be_empty
+        expect(takeaway.total_amount).not_to be_nil
       end
     end
   end
@@ -52,7 +54,11 @@ end
         allow(takeaway).to receive(:confirm_order).with(1).and_return("Sorry, sum is not correct")
       end
     end
-  end
+      it "sends a message if total amount is correct" do
+      allow(text).to receive(:send_sms).and_return("message")
+      expect(text.send_sms).not_to be_empty
+      end
+    end
 
 
 end
