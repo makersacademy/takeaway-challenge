@@ -1,14 +1,16 @@
 require_relative 'order'
 require_relative 'menu'
+require_relative 'phone'
 
 class Takeaway
 
   attr_reader :menu, :order, :total
 
-  def initialize
+  def initialize(phone = Phone.new)
     @menu = Menu.new.items
     @total = 0
     @order = Order.new
+    @phone = phone
     @final_order = {}
   end
 
@@ -31,6 +33,7 @@ class Takeaway
     puts "you have ordered: "
     print_order
     puts "for a total of £#{total}."
+    @phone.send_text
   end
 
   private
@@ -54,5 +57,4 @@ class Takeaway
       puts "#{amount} #{food}"
     end
   end
-
 end

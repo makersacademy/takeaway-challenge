@@ -9,7 +9,8 @@ describe Takeaway do
     red_wine: 4,
     white_wine: 4.50
    } }
-  subject(:takeaway) { described_class.new }
+  let(:phone) { double "a phone", send_text: true }
+  subject(:takeaway) { described_class.new(phone) }
   subject(:order) do
     takeaway.new_order(:pizza)
     takeaway.new_order(:red_wine)
@@ -35,6 +36,10 @@ describe Takeaway do
   describe '#place_order' do
     it 'returns list of dishes ordered and the total' do
       expect { order.place_order }.to output(final_order).to_stdout
+    end
+
+    it 'sends a text when successful' do
+
     end
   end
 
