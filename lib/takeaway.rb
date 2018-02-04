@@ -4,48 +4,58 @@ require_relative "text_message"
 
 class Takeaway
 
-  attr_reader :menu, :order, :confirmed_order
-
-  def initialize
+  def initialize(menu = Menu.new, order = Order.new)
+    @menu = menu
     @order = Order.new
   end
 
   def see_menu
-    @menu = Menu.new
     @menu.print
   end
 
   def add_to_order(dish, quantity = 1)
     @order.add(dish, quantity)
-    "#{dish} x#{quantity} added to your basket"
+    "#{dish} x#{quantity} added to your order"
   end
 
-  def remove_from_order(dish, quantity)
+  def remove_from_order(dish, quantity = 1)
     @order.remove(dish, quantity)
     "x#{quantity} portions of #{dish} removed from order"
   end
 
   def order_summary
-    order_empty?
     @order.sub_total
   end
 
   def order_total
-    order_empty?
     @order.total
   end
 
   def confirm_order
-    order_empty?
-    @confirmed_order = TextMessage.new
-    @confirmed_order.send_text_message
-    "SMS sent"
+    fail "Order empty: please add items to order" if @order.basket.empty?
+    send_text
+    "Order received. Please await SMS for order confirmation"
   end
 
-  private
+private
 
-  def order_empty?
-    error = "You haven't added any dishes to your order. Please add dishes"
-    fail error if @order.basket.empty?
+attr_reader :menu, :order
+
+  def send_text(text_message = TextMessage.new)
+    text_message.send
   end
 end
+
+def welcome_message
+  puts "----".center(20)
+  puts "Welcome to Delicious Express"
+  puts "To view our menu, use see_menu"
+  puts "To place an order,use add_to_order(dish, quantity)"
+  puts "To remove a dish from the order,use remove_from_order(dish, quantity)"
+  puts "To view a summary of your order,use order_summary and order_total"
+  puts "To confirm your order use confirm_order"
+  puts "Use welcome_message to view these options again"
+  puts "---".center(20)
+end
+
+welcome_message
