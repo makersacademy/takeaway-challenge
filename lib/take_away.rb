@@ -17,18 +17,23 @@ class TakeAway
   end
 
   def list
+    print_menu
+  end
+
+  def select(dish, quantity = 1)
+    @selection[dish] = quantity if @menu[dish]
+
+    @selection
+  end
+
+  private
+
+  def print_menu
     item_n = 0
 
     @menu.each do |dish, price|
       item_n += 1
       puts "#{item_n}. Dish: #{dish} - Price: #{price}"
     end
-  end
-
-  def select(dish, quantity = 1)
-    if @menu[dish]
-      @selection[dish] = quantity
-    end
-    @selection
   end
 end
