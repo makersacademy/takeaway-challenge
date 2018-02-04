@@ -4,15 +4,15 @@ class Order
 
   attr_reader :current_order, :dish
 
-  def initialize(dish = Dish)
+  def initialize(product = Dish)
     @current_order = []
-    @dish = dish
+    @product = product
   end
 
-  def select_dish(dish_number)
-    selected_dish = dish.new(dish_number)
-    @current_order << selected_dish
-    selected_dish
+  def select_product(product_number)
+    selected_product = product.new(product_number)
+    @current_order << selected_product
+    selected_product
   end
 
 end
