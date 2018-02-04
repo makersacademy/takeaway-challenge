@@ -12,9 +12,9 @@ My approach
 
 Mini personal code review: My appraisal of my attempt at the weekend challenge
 ---------
-* I found that I made the challenge incredibly difficult for myself. Versus the code I have written up to this point, this was the most uncomfortable code writing process I had, including slipping away from some core good processes I have followed in the past.
+* I found that I made the challenge incredibly difficult for myself and added a lot of complexity. Versus the code I have written up to this point, this was the most uncomfortable code writing process I had, including slipping away from some core good processes I have followed in the past.
 * Overall, though I fulfilled all the user stories and functionality, including using Twilio to send texts via ENV variables, I was not pleased with the structure of the code or the tests from an early stage.
-*  Despite being not proud of this codebase, rather than restarting anew I bottomed out this example so that I can analyse and deconstruct where I am going wrong with a coach and look to target those areas for improvement going forwards
+*  Rather than restarting anew I bottomed out this example so that I can analyse and deconstruct where I am going wrong with a coach and look to target those areas for improvement going forwards
 
 Things I believe contributed to the poor code structure / tests:
 ---------
