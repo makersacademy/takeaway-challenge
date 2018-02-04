@@ -1,8 +1,10 @@
 class TakeAway
 
-  attr_reader :dishes
+  attr_reader :basket,
+              :menu
 
-  def initialize
-    @dishes = {}
+  def initialize(menu = Menu.new)
+    @menu = menu
+    @basket = {}
   end
 end
