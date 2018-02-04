@@ -24,15 +24,19 @@ describe TakeAway do
 
   describe "#order" do
     it "saves items to an array" do
-      take_away.order("food item")
-      expect(take_away.basket).to include("food item" => 1)
+      take_away.order("Spicy Soup")
+      expect(take_away.basket).to include("Spicy Soup" => 1)
     end
     it "puts a string" do
-      expect { take_away.order("food item") }.to output(
-        "1x food item(s) added you your basket\n").to_stdout
-    end
-    it "puts " do
-
+      expect { take_away.order("Spicy Soup") }.to output("1x Spicy Soup(s) added you your basket\n").to_stdout
     end
   end
+
+  describe "#basket_checker" do
+    it "checks whether item is in menu" do
+      expect{ take_away.order("item that's not in menu") }.to raise_error 'item not in menu'
+    end
+  end
+
+
 end
