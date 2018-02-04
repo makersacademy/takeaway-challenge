@@ -18,7 +18,7 @@ class Order
 
   def print_verification(menu_options)
     puts "You ordered:"
-    print_quantity_strings
+    print_quantity_strings(menu_options)
     puts total_cost_to_string(menu_options)
   end
 
@@ -35,9 +35,10 @@ class Order
     quantity = gets.chomp.to_i
   end
 
-  def print_quantity_strings
+  def print_quantity_strings(menu_options)
     @current.each do |item,quantity|
-      puts "#{quantity} x #{item}(s)"
+      cost = menu_options[item]
+      puts "#{quantity} x #{item.to_s.gsub("_"," ")}(s) - £#{cost} each"
     end
   end
 

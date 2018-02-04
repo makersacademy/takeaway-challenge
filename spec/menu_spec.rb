@@ -9,6 +9,6 @@ describe Menu do
   end
 
   it 'prints a menu' do
-    expect(menu.print).to output.to_stdout
+    expect { menu.print_centered } .to output.to_stdout
   end
 end
