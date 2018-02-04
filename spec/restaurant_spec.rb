@@ -26,13 +26,17 @@ describe Restaurant do
   end
 
   describe '#pay' do 
+
     it 'raises an error when order is empty' do 
       message = 'Order is empty, please add an item first'
       expect { restaurant.complete_order }.to raise_error message
     end
 
     it 'raises an error when paid amount is incorrect' do 
-
+      message = "Incorrect amount, please pay £#{described_class::MENU[item]} to continue"
+      restaurant.add_item(item)
+      restaurant.complete_order
+      expect { restaurant.pay(1) }.to raise_error message      
     end
   end
 end

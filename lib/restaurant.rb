@@ -28,17 +28,16 @@ MENU = {"Pepes ikan" => 3, "Satay" => 3, "Bakso urat" => 4, "Soto" => 4, "Nasi g
 
   def complete_order
     raise 'Order is empty, please add an item first' if empty?
+    # raise 'Sorry, we dont take orders on Sundays' if Time.now.sunday?
     order.complete
+    "Thank you for placing your order, the total amount is £#{order.bill}"
   end
 
-  def pay
-
+  def pay(amount)
+    raise "Incorrect amount, please pay £#{order.bill} to continue" if amount != order.bill
+    #####
+    archive_order
   end
-
-  # def archive_order
-  #   @order_history << @order
-  #   @order = Order.new
-  # end
 
 private
 
@@ -48,6 +47,11 @@ private
 
   def available?(item)
     raise "Sorry, #{item} not available" if !MENU.include?(item.capitalize)
+  end
+
+  def archive_order
+    @order_history << @order
+    @order = Order.new
   end
 
 end
