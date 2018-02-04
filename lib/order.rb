@@ -11,7 +11,7 @@ class Order
     @product = product
     @menu = menu.new
     instructions
-    @text_client = Text.new
+    @text_client = text.new
   end
 
   def select_product(product_number, quantity = 1)
