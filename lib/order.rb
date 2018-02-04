@@ -1,6 +1,9 @@
 require 'twilio-ruby'
+require 'bundler'
 
-class Complete
+Bundler.require()
+
+class Order
   def send_sms(message_body)
     account_sid = "AC9f87b9e0a7c45431cbb48726a53b9637"
     auth_token = "1cdf8a1d4d9a3e8f1a38ae702597e386"

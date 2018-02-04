@@ -1,29 +1,38 @@
-require 'order'
+require 'takeaway'
 
-describe Order do
-  subject(:order) { described_class.new }
+describe Takeaway do
+  subject(:takeaway) { described_class.new }
+
+  it 'initializes with an empty basket array' do
+    expect(takeaway.basket).to eq []
+  end
+
+  it 'initializes with an empty itemised_bill array' do
+    expect(takeaway.itemised_bill).to eq []
+  end
 
   describe '#add' do
-    it 'stores selected items in the basket' do
-      expect { order.add("Buckwheat Shamalam") }.to change { order.basket }.to(["Buckwheat Shamalam"])
+    it 'pushes user selected items into the basket array' do
+      expect { takeaway.add("Buckwheat Shamalam") }.to change { takeaway.basket }.to(["Buckwheat Shamalam"])
     end
   end
 
-  describe '#price' do
-    it 'returns the total payment due' do
-      expect(order.price).to eq(order.price)
+  describe '#total' do
+    it 'returns a total that is the sum of the itemised bill' do
+      expect(takeaway.total).to eq(takeaway.total)
+    end
+  end
+
+  describe '#checkout' do
+
+    before do
+      takeaway.add("Froffee Coffee")
+    end
+
+    it "sends a text message after the order is placed" do
+      VCR.use_cassette('twilio') do
+        takeaway.checkout
+      end
     end
   end
 end
-
-  # describe '#confirmation' do
-  #   subject(:order) { described_class.new(text) }
-  #
-  #   describe '#confirmation'
-  #   before do
-  #     allow(text).to receive(:send_sms)
-  #   end
-
-    # it 'sends a confirmation text when an order is placed' do
-    #   expect(text).to receive(:send_sms).with("This is the voice of your conscience speaking - you eat a lot!")
-    # end

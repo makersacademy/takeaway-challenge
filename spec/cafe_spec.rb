@@ -3,13 +3,15 @@ require 'cafe'
 describe Cafe do
   subject(:cafe) { described_class.new }
 
-  describe '#initialize'
-  it 'features a menu' do
-    expect(cafe.menu).to be_instance_of Array
+  it 'initializes an array of hashes' do
+    expect(Cafe::ITEMS).to be_instance_of Array
   end
 
-  describe '#print_menu'
-  it 'returns a menu of available items' do
-    expect(cafe.print_menu).to eq cafe.items
+  it 'prints "ITEMS" constant to the console on request' do
+    expect(cafe.print_menu).to eq Cafe::ITEMS
+  end
+
+  it '"ITEMS" constant contains keys and values, which can be manipulated' do
+    expect(:"Buckwheat Shamalam" => 5.00).to have_key(:"Buckwheat Shamalam")
   end
 end

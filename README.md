@@ -24,8 +24,7 @@ Welcome to my repo for the Makers Academy weekend challenge(2). My task was to t
 [1] pry(main)> require "./lib/takeaway"
 => true
 [2] pry(main)> takeaway = Takeaway.new
-Hi! May I take your order?
-=> #<Takeaway:0x00007fdb2185adc8 @basket=[], @complete=#<Complete:0x00007fdb2185ad50>, @itemised_bill=[]>
+=> #<Takeaway:0x00007fa3fec14ea0 @basket=[], @itemised_bill=[], @order=#<Order:0x00007fa3fec14e78>>
 [3] pry(main)> takeaway.view_menu
 => [{"Buckwheat Shamalam"=>5.0}, {"Avocado Foxtrot"=>6.5}, {"Crusty Snickerdoodle"=>4.5}, {"Froffee Coffee"=>3.5}, {"Realitea"=>2.0}, {"Mystery Item"=>10.0}]
 [4] pry(main)> takeaway.add("Crusty Snickerdoodle")
@@ -34,18 +33,22 @@ Hi! May I take your order?
 => {"Crusty Snickerdoodle"=>1, "Froffee Coffee"=>1}
 [6] pry(main)> takeaway.add("Froffee Coffee")
 => {"Crusty Snickerdoodle"=>1, "Froffee Coffee"=>2}
-[7] pry(main)> takeaway.total
+[7] pry(main)> takeaway
+=> #<Takeaway:0x00007fa3fec14ea0
+ @basket=["Crusty Snickerdoodle", "Froffee Coffee", "Froffee Coffee"],
+ @itemised_bill=[4.5, 3.5, 3.5],
+ @order=#<Order:0x00007fa3fec14e78>>
+[8] pry(main)> takeaway.total
 => 11.5
-[8] pry(main)> takeaway.checkout
+[9] pry(main)> takeaway.checkout
 Your order is complete! You will receive a confirmation text. Thank you!=> nil
-[9] pry(main)>
 ```
 
 ## Specification
 
 In order to be successful at this challenge, my code **MUST**:
 
-- [ ] Display list of dishes with prices.
-- [ ] Allows the user to select a number of dishes.
-- [ ] Show the total cost of the order - and this amount should correspond with the price of each dish.
-- [ ] Send a text message to the user with an order confirmation.
+- [x] Display list of dishes with prices.
+- [x] Allows the user to select a number of dishes.
+- [x] Show the total cost of the order - and this amount should correspond with the price of each dish.
+- [x] Send a text message to the user with an order confirmation.

@@ -1,14 +1,13 @@
 require_relative 'cafe'
-require_relative 'complete'
+require_relative 'order'
 
 class Takeaway
-  attr_reader :menu, :basket, :price
+  attr_reader :itemised_bill, :basket, :order
 
-  def initialize
+  def initialize(order = Order.new)
     @basket = []
     @itemised_bill = []
-    @complete = Complete.new
-    puts "Hi! May I take your order?"
+    @order = order
   end
 
   def view_menu
@@ -31,7 +30,7 @@ class Takeaway
   end
 
   def checkout
-    @complete.send_sms("This is the voice of your conscience speaking - your order total is: £#{total}!")
+    @order.send_sms("Your order total is: £#{total}!")
     print "Your order is complete! You will receive a confirmation text. Thank you!"
   end
 end
