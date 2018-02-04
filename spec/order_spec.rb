@@ -24,8 +24,8 @@ describe Order do
 
   describe "#validate_order" do
     let(:test_order)            { order.menu }
-    let(:test_order_total_cost) {
-      order.menu.each_value.map { |v| v**2 }.inject(&:+)
+    let(:test_order_total_cost) {order.menu
+      .each_value.map { |v| v**2 }.inject(&:+)
     }
     let(:incorrect_test_order_total_cost) { test_order_total_cost - 1 }
 
@@ -56,8 +56,16 @@ describe Order do
     let(:body)              { double("a string") }
     it "calls TwilioSendSMS::send_sms" do
       allow(messaging_service).to receive(:send_sms)
-      expect(messaging_service).to receive(:send_sms).with(phone_number, body)
-      order.send_sms(messaging_service, phone_number, body)
+      expect(messaging_service).to receive(:send_sms).with(phone_number, order.sms_body)
+      order.send_sms(messaging_service, phone_number)
+    end
+  end
+
+  describe "#sms_body" do
+    it "returns the correct message" do
+      message = "Thank you for your order. "\
+      "It will be delivered at #{Time.now.strftime "%Y-%m-%d %H:%M"}"
+      expect(order.sms_body).to eq message
     end
   end
 end

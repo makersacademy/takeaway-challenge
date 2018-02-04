@@ -19,8 +19,13 @@ class Order
     @provided_total
   end
 
-  def send_sms(messaging_service, phone_number, body)
-    messaging_service.send_sms(phone_number, body)
+  def send_sms(messaging_service, phone_number)
+    messaging_service.send_sms(phone_number, sms_body)
+  end
+
+  def sms_body
+    "Thank you for your order. "\
+    "It will be delivered at #{Time.now.strftime "%Y-%m-%d %H:%M"}"
   end
 
   private
