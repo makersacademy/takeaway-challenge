@@ -46,6 +46,13 @@ end
       end
     end
   end
+  describe "#complete_order" do
+    context "When price is not equal to total amount" do
+      it "raises an error" do
+        allow(takeaway).to receive(:confirm_order).with(1).and_return("Sorry, sum is not correct")
+      end
+    end
+  end
 
 
 end

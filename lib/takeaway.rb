@@ -27,7 +27,7 @@ class Takeaway
   end
 
   def complete_order(price)
-  fail "Sorry, sum is not correct" unless correct_amount?(price)
+    fail "Sorry, sum is not correct" unless correct_amount?(price)
   end
 
 private
