@@ -4,19 +4,20 @@ class Menu
 
   attr_reader :product, :menu
 
-  def initialize(products = Dish::FOOD_MENU, product = Dish)
-    @menu = populate_menu(products)
+  def initialize(product_list = Dish::FOOD_MENU, product = Dish)
     @product = product
+    @menu = []
+    populate_menu(product_list)
   end
 
   def print_menu
     puts MENU
   end
 
-  def populate_menu(products)
-    number_of_products = products.count
+  def populate_menu(product_list)
+    number_of_products = product_list.count
     number_of_products.times do |i|
-      Dish.new(i + 1)
+      @menu << product.new(i + 1)
     end
   end
 
