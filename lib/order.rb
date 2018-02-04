@@ -12,6 +12,7 @@ def initialize(menu = Menu.new)
 end
 
 def add(dish, quantity)
+  raise "This dish is not on the menu" unless @menu.menu.has_key?(dish)
   @basket << {dish => quantity}
 end
 
