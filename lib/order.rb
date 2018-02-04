@@ -22,7 +22,7 @@ class Order
   def dish_price
     @trolley.map do |dish, quantity|
       price = quantity * @menu[:Paella]
-      "Total price of #{quantity} dishes of #{dish} : #{price} £"
+      puts "Total price of #{quantity} dishes of #{dish} : #{price} £"
       price
     end
   end

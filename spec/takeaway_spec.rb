@@ -3,6 +3,7 @@ require 'Takeaway'
 describe Takeaway do
 
 subject(:takeaway) {described_class.new}
+let(:place_order) {double("dish",2)}
 
   describe"#initialize"do
     it"returns the menu" do
@@ -14,4 +15,26 @@ subject(:takeaway) {described_class.new}
       expect(takeaway.show_menu).not_to be_nil
     end
   end
+  describe"#place_order"do
+    before(:each) do
+      takeaway.show_menu
+    end
+    it "place the order" do
+      allow(takeaway).to receive(:place_order).with(2).and_return(:default)
+  end
+end
+  describe"#sub_total" do
+    before(:each) do
+      takeaway.show_menu
+      takeaway.place_order("dish", 2)
+    end
+    context " When total price of a selected dish is displayed" do
+      it "displays the price of dish" do
+        expect(takeaway.sub_total).not_to be_empty
+      end
+    end
+  end
+
+
+
 end

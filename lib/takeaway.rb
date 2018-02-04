@@ -18,4 +18,9 @@ class Takeaway
     @order.add(dish,quantity)
   end
 
+  def sub_total
+    @order.dish_price
+  end
+
+
 end
