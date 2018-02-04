@@ -12,8 +12,8 @@ describe "order" do
 
   describe "#add" do
     it "should add a dish and the quantity to basket" do
-      order.add("pizza", 2)
-        expect(order.basket).to eq [{"pizza"=>2}]
+      order.add("Pepperoni Pizza", 2)
+        expect(order.basket).to eq [{"Pepperoni Pizza"=>2}]
     end
   end
 
