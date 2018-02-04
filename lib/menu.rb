@@ -17,7 +17,7 @@ class Menu
   def print_centered
     puts menu_header.center(40)
     menu_to_strings.each do |line|
-    puts line.center(40)
+      puts line.center(40)
     end
   end
 

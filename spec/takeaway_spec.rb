@@ -7,7 +7,7 @@ describe Takeaway do
   let(:options)     { double('options')                                        }
   let(:menu)        { double('menu', print_centered: 'menu', options: options) }
   let(:menu_class)  { double('menu_class', new: menu)                          }
-  let(:takeaway)    { described_class.new(menu_class,order_class)              }
+  let(:takeaway)    { described_class.new(menu_class, order_class)             }
 
   describe '#print_menu' do
     it 'delegates printing to menu object' do
@@ -30,7 +30,7 @@ describe Takeaway do
 
   describe '#finish_order' do
     before(:each) do
-      allow(order).to receive(:send_verification_text)
+    allow(order).to receive(:send_verification_text)
     end
 
     it 'delegates sms confirmation to order object' do

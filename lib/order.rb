@@ -27,8 +27,9 @@ class Order
 
   def send_verification_text
     user_phone_number = get_phone_number
-    message = "Thank you for your order costing £#{@total_cost}. Expect it to arrive at #{Time.now.hour + 1}:#{Time.now.min}"
-    run_twilio(user_phone_number,message)
+    arrival_time = "#{Time.now.hour + 1}:#{Time.now.min}"
+    message = "Thank you for your order costing £#{@total_cost}. Expect it to arrive at #{arrival_time}"
+    run_twilio(user_phone_number, message)
   end
 
   private
@@ -45,8 +46,8 @@ class Order
   end
 
   def print_quantity_strings(menu_options)
-    @current.each do |item,quantity|
-      puts "#{quantity} x #{item.to_s.gsub("_"," ")}(s) - £#{menu_options[item]} each"
+    @current.each do |item, quantity|
+      puts "#{quantity} x #{item.to_s.gsub("_", " ")}(s) - £#{menu_options[item]} each"
     end
   end
 
@@ -65,7 +66,7 @@ class Order
   def get_phone_number
     puts "Enter your phone number: "
     print 0
-    number = "+44" + gets.chomp
+    "+44" + gets.chomp
   end
 
   def run_twilio(user_phone_number, message)

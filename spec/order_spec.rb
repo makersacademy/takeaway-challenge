@@ -2,11 +2,11 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { described_class.new }
-  let(:total_cost) { double('total_cost') }
-  let(:phone_number) {double('phone_number')}
-  let(:message) { double('message')}
-  menu_options = { pad_thai: 6.95 }
+  subject(:order)    { described_class.new    }
+  let(:total_cost)   { double('total_cost')   }
+  let(:phone_number) { double('phone_number') }
+  let(:message)      { double('message')      }
+  menu_options =     { pad_thai: 6.95         }
 
   before(:each) do
     allow(order).to receive(:gets).and_return('pad thai', '2', '')
