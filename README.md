@@ -56,20 +56,18 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 2.5.0 :001 > require './lib/restaurant.rb'
  => true
 2.5.0 :002 > restaurant = Restaurant.new
- => #<Restaurant:0x00007feb1a4a7c18 @menu=[]>
+ => #<Restaurant:0x00007fdd29e2eb28 @menu=[]>
 2.5.0 :003 > restaurant.create_dish("chicken", 10)
- => [#<Dish:0x00007feb196fa688 @details={:name=>"chicken", :price=>10}>]
+ => [#<Dish:0x00007fdd29e25e60 @details={:name=>"chicken", :price=>10}>]
 2.5.0 :004 > restaurant.create_dish("beef", 30)
- => [#<Dish:0x00007feb196fa688 @details={:name=>"chicken", :price=>10}>, #<Dish:0x00007feb196f5e80 @details={:name=>"beef", :price=>30}>]
-2.5.0 :005 > restaurant.display_menu
-- chicken | 10 pounds
-- beef | 30 pounds
- => [#<Dish:0x00007feb196fa688 @details={:name=>"chicken", :price=>10}>, #<Dish:0x00007feb196f5e80 @details={:name=>"beef", :price=>30}>]
-2.5.0 :006 > justine = restaurant.create_order([{name: "chicken", amount: 6}, {name:"beef", amount: 3}], 9)
+ => [#<Dish:0x00007fdd29e25e60 @details={:name=>"chicken", :price=>10}>, #<Dish:0x00007fdd29e216f8 @details={:name=>"beef", :price=>30}>]
+2.5.0 :005 > justine = restaurant.create_order([{name: "chicken", amount: 6}, {name:"beef", amount: 3}], 9)
+ => #<Order:0x00007fdd29a588f0 @list_of_items=[{:name=>"chicken", :price=>10, :amount=>6}, {:name=>"beef", :price=>30, :amount=>3}], @total_number=9>
+2.5.0 :006 > justine.order_info
 Final price: 150
 Final number of dishes 9
- => #<Order:0x00007feb196d0360 @list_of_items=[{:name=>"chicken", :price=>10, :amount=>6}, {:name=>"beef", :price=>30, :amount=>3}], @total_number=9>
+ => nil
 2.5.0 :007 > justine.send_order
- => #<Message:0x00007feb196a9aa8>
+ => #<Message:0x00007fdd2a555690>
 2.5.0 :008 >
 ```
