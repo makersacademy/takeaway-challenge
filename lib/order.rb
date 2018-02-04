@@ -1,11 +1,13 @@
 class Order
+
+  DEFAULT_QUANTITY = 1
   attr_reader :basket, :item, :quantity
 
   def initialize
     @basket = Hash.new(0)
   end
 
-  def add(item, quantity = 1)
+  def add(item, quantity = DEFAULT_QUANTITY)
     @item, @quantity = item, quantity
     @quantity.times do
       @basket[item] += 1
