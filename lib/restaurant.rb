@@ -25,6 +25,7 @@ class Restaurant
   # provide argument ([{name:, amount:}, {name:, amount: }], total_number)
   def create_order(dish_list, total_number)
     order = Order.new
+    order.total_number = total_number
     dish_list.each {|hash|
       @menu.each{|object|
         if object.details[:name] == hash[:name] then
@@ -35,7 +36,6 @@ class Restaurant
         end
       }
     }
-    order.send_order(total_number)
     order
   end
 

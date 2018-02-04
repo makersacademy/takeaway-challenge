@@ -35,8 +35,10 @@ describe Order do
     describe '#send_order' do
       it 'raises error when mismatch' do
         order.add_items(dish_name, 2, 2)
-        order.add_items(dish_name, 1, 1)
-        expect { order.send_order(4) }.to raise_error 'The amount of dishes does not match your order'
+        expect { order.send_order }.to raise_error 'The amount of dishes does not match your order'
+      end
+      it 'creates new message when no mismatch' do
+        expect(order.send_order).to be_instance_of(Message)
       end
     end
 end

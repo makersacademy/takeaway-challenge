@@ -5,6 +5,7 @@ require 'twilio-ruby'
 Bundler.require()
 
 class Message
+
   time = Time.new + 60 * 60
   account_sid = ENV['ACCOUNT_SID']
   auth_token = ENV['AUTH_TOKEN']
@@ -14,4 +15,5 @@ class Message
     to: ENV['TO_TWILLIO'],
     body: "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
   )
+
 end

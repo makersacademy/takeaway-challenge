@@ -4,9 +4,11 @@ require_relative 'message'
 class Order
 
   attr_reader :list_of_items
+  attr_accessor :total_number
 
   def initialize
     @list_of_items = []
+    @total_number = 0
   end
 
   def add_items(name, price, amount)
@@ -18,8 +20,9 @@ class Order
     puts "Final number of dishes #{count_dishes}"
   end
 
-  def send_order(total_number)
+  def send_order
     fail 'The amount of dishes does not match your order' if total_number != count_dishes
+    puts "In a minute, you should receive a SMS confirmation of your order"
     Message.new
   end
 
