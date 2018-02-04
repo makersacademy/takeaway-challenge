@@ -6,12 +6,14 @@ class Order
   def initialize(menu = Menu.new)
     @basket = {}
     @menu = menu
+    @total = 0
   end
 
   def add(item, quantity = 1)
     raise "This dish is not on the menu" if not_on_menu(item)
     update_basket(item, quantity) if order_includes?(item)
     @basket[item] = quantity unless order_includes?(item)
+    "#{quantity}x #{item} has been added to your order"
   end
 
   def summary
@@ -19,17 +21,7 @@ class Order
     @basket.each do |dish, quantity|
       puts "#{dish} x#{quantity} £#{sprintf('%.2f', @menu.dishes[dish] * quantity)}"
     end
-  end
-
-  # this method does not work yet
-  def total
-    counter = 0
-    total = 0
-    while counter < @basket.length
-      total += sprintf('%.2f', @menu.dishes[dish] * quantity)
-      counter += 1
-    end
-    puts "Order total is £#{total}"
+    puts total
   end
 
   private
@@ -48,6 +40,13 @@ class Order
   def update_basket(item, quantity)
     quantity = @basket[item] + quantity
     @basket[item] = quantity
+  end
+
+  def total
+    @basket.each do |dish, quantity|
+      @total += @menu.dishes[dish] * quantity
+    end
+    "Order total is £#{sprintf('%.2f', @total)}\n"
   end
 
 end
