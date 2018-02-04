@@ -13,7 +13,8 @@ require "menu"
    let(:product_2) {double("Cheese burger", number: 2, name: "Cheese burger", price: 12, quantity: 1)}
 
    let(:printed_menu) do
-     "Dish number: 1. Dish name: Beef burger. Price: £10.\nDish number: 2. Dish name: Cheese burger. Price: £12.\n"
+     "Dish number: 1. Dish name: Beef burger. Price: £10.\n"\
+     "Dish number: 2. Dish name: Cheese burger. Price: £12.\n"
    end
 
    it {is_expected.to respond_to(:print_menu) }

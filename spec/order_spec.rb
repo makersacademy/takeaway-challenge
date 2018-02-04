@@ -55,8 +55,9 @@ describe Order do
     expect{subject.view_basket_total}.to output("Total order value: £64\n").to_stdout
   end
 
-  before do
-    allow(subject).to receive(:send_text)
+  it "asks menu to print the menu" do
+    subject.read_menu
+    expect(subject.menu).to receive(:print_menu)
   end
 
   it "Places the order" do
