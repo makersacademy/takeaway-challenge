@@ -102,7 +102,7 @@ class TakeAway
   end
 
   def display_menu
-    menu.print
+    @menu.print
     launch!
   end
 

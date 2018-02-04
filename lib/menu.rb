@@ -10,7 +10,6 @@ class Menu
       chutney: 0.50,
       samosa: 2.25,
       curry: 6.50,
-      grill: 8.95,
       rice: 1.95,
       naan: 1.80
     }
@@ -18,11 +17,10 @@ class Menu
 
   def print
     i = 1
-    @meals.each do |meal, price|
+    @meals.map do |meal, price|
       puts "#{i}. " + meal.to_s + " : £" + sprintf('%.2f', price)
       i += 1
     end
-    # format menu to be aligned prettier
   end
 
   def price(item)

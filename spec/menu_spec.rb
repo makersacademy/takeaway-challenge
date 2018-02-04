@@ -9,7 +9,6 @@ describe Menu do
       chutney: 0.50,
       samosa: 2.25,
       curry: 6.50,
-      grill: 8.95,
       rice: 1.95,
       naan: 1.80
     }
@@ -27,15 +26,8 @@ describe Menu do
 
   describe '#print' do
     it 'outputs items from menu' do
-      printed_menu =
-        "1. pappadom : £0.50"
-        "2. chutney : £0.50"
-        "3. samosa : £2.25"
-        "4. curry : £6.50"
-        "5. grill : £8.95"
-        "6. rice : £1.95"
-        "7. naan : £1.80"
-      expect(menu.print).to eq printed menu
+      printed_menu = "1. pappadom : £0.50\n2. chutney : £0.50\n3. samosa : £2.25\n4. curry : £6.50\n5. rice : £1.95\n6. naan : £1.80\n"
+      expect { menu.print }.to output(printed_menu).to_stdout
     end
   end
 

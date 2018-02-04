@@ -1,4 +1,4 @@
-require_relative 'takeaway'
+require_relative 'take_away'
 require_relative 'menu'
 
 class Order
