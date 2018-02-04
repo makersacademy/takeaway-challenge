@@ -1,3 +1,4 @@
 /**/.DS_Store
 /coverage
-/lib/txt_conf.rb
+/txt_conf/txt_conf.rb
+/lib/send_text.rb

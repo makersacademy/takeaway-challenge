@@ -1,15 +1,16 @@
 require_relative 'order'
+require_relative 'send_text'
 
 class Restaurant
 
 MENU = {"Pepes ikan" => 3, "Satay" => 3, "Bakso urat" => 4, "Soto" => 4, "Nasi goreng" => 5}
 
-  attr_reader :menu, :order_history
+  attr_reader :order_history
   attr_accessor :order
 
-  def initialize(order = Order.new)
+  def initialize(order = Order.new, sms = SendSms.new)
     @order_history =[]
-    @menu = menu
+    @sms = sms
     @order = order
   end
 
@@ -28,14 +29,14 @@ MENU = {"Pepes ikan" => 3, "Satay" => 3, "Bakso urat" => 4, "Soto" => 4, "Nasi g
 
   def complete_order
     raise 'Order is empty, please add an item first' if empty?
-    # raise 'Sorry, we dont take orders on Sundays' if Time.now.sunday?
+    raise 'Sorry, we dont take orders on Sundays' if Time.now.sunday?
     order.complete
     "Thank you for placing your order, the total amount is £#{order.bill}"
   end
 
   def pay(amount)
     raise "Incorrect amount, please pay £#{order.bill} to continue" if amount != order.bill
-    #####
+    @sms.send_message
     archive_order
   end
 
@@ -53,5 +54,4 @@ private
     @order_history << @order
     @order = Order.new
   end
-
 end
