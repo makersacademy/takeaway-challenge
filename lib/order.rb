@@ -14,6 +14,14 @@ class Order
     @order[dish] += quantity
   end
 
+  def total_cost
+    total = 0
+    @order.each do |dish, quantity|
+      total += @menu.dishes[dish] * quantity
+    end
+    total
+  end
+
   private
 
   def available?(dish)

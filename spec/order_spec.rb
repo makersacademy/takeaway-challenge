@@ -20,4 +20,12 @@ describe Order do
       expect(order.order).to eq({ "Hui Guo Rou" => 1 })
     end
   end
+
+  context "#total_cost" do
+    it "calculates the total cost" do
+      order.add_to_order("Hui Guo Rou", 1)
+      order.add_to_order("Mapo DouFu", 3)
+      expect(order.total_cost).to eq(13.25)
+    end
+  end
 end
