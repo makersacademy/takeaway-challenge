@@ -1,9 +1,12 @@
+require 'twilio-ruby'
+
 class Order
 
   attr_reader :current
 
   def initialize
     @current = Hash.new(0)
+    @total_cost = 0 # calculated when #calculate_total is run
   end
 
   def note_down(menu_options)
@@ -22,6 +25,12 @@ class Order
     puts total_cost_to_string(menu_options)
   end
 
+  def send_text
+    user_phone_number = get_phone_number
+    message = "Thank you for your order costing #{@total_cost}. Expect it to arrive at #{Time.now.hour + 1}:#{Time.now.min}"
+    run_twilio(user_phone_number,message)
+  end
+
   private
 
   def note_selection
@@ -37,22 +46,37 @@ class Order
 
   def print_quantity_strings(menu_options)
     @current.each do |item,quantity|
-      cost = menu_options[item]
-      puts "#{quantity} x #{item.to_s.gsub("_"," ")}(s) - £#{cost} each"
+      puts "#{quantity} x #{item.to_s.gsub("_"," ")}(s) - £#{menu_options[item]} each"
     end
   end
 
   def total_cost_to_string(menu_options)
-    total_cost = calculate_total(menu_options)
-    "Total cost: £#{total_cost}"
+    calculate_total(menu_options)
+    "Total cost: £#{@total_cost}"
   end
 
   def calculate_total(menu_options)
-    total_cost = 0
     @current.each do |item, quantity|
-      total_cost += menu_options[item] * quantity
+      @total_cost += menu_options[item] * quantity
     end
-    total_cost.floor(2)
+    @total_cost.floor(2)
+  end
+
+  def get_phone_number
+    puts "Enter your phone number:  \n0"
+    number = gets.chomp
+    number = "+44" + number
+  end
+
+  def run_twilio(user_phone_number, message)
+    account_sid = "AC36e483bbada70a05ac075253130205e2"
+    auth_token = "03684a4ecaea26a2c381ad8bd940243e"
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.messages.create(
+        body: message,
+        to: user_phone_number,
+        from: "+441618506928")
   end
 
 end

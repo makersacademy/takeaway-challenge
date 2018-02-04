@@ -22,4 +22,8 @@ class Takeaway
     @order.print_verification(@menu.options)
   end
 
+  def confirm_order
+    @order.send_text
+  end
+
 end
