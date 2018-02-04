@@ -1,15 +1,17 @@
 require_relative "dish"
 require_relative "menu"
+require_relative "text"
 
 class Order
 
-  attr_reader :current_order, :product, :menu
+  attr_reader :current_order, :product, :menu, :text_client
 
-  def initialize(product = Dish, menu = Menu)
+  def initialize(product = Dish, menu = Menu, text = Text)
     @current_order = []
     @product = product
     @menu = menu.new
     instructions
+    @text_client = Text.new
   end
 
   def select_product(product_number, quantity = 1)
@@ -43,6 +45,16 @@ class Order
     puts "Please place order using dish number and quantity"
     puts "You can also 'view_basket', 'view_basket_total' and 'place_order'"
     puts "Use 'instructions' to view these instructions again"
+  end
+
+  def place_order
+    text_client.send_text(order_total_value)
+    complete_order
+  end
+
+  def complete_order
+    puts "Order placed, text being sent with order confirmation"
+    exit
   end
 
   private

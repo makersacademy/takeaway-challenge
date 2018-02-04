@@ -55,4 +55,27 @@ describe Order do
     expect{subject.view_basket_total}.to output("Total order value: £64\n").to_stdout
   end
 
+  before do
+    allow(subject).to receive(:send_text)
+  end
+
+  it "Places the order" do
+    expect(subject.text_client).to receive(:send_text)
+    subject.complete_order
+  end
+  #
+  # it "Sends a text confirming the order" do
+  #   allow(subject).to receive(:product_in_order?).and_return(false)
+  #   allow(subject.product).to receive(:new).and_return(product_1)
+  #   subject.select_product(1)
+  #   allow(subject.product).to receive(:new).and_return(product_2)
+  #   subject.select_product(2)
+  #   allow(product_1).to receive(:price).and_return(10)
+  #   allow(product_1).to receive(:quantity).and_return(4)
+  #   allow(product_2).to receive(:price).and_return(12)
+  #   allow(product_2).to receive(:quantity).and_return(2)
+  #   expect(subject).to receive(:send_text).with("Thank you for your order. Price: £64. Expected delivery before 18:52")
+  #   subject.send_text
+  # end
+
 end
