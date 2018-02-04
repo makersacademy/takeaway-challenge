@@ -2,6 +2,8 @@ class Menu
 
   attr_reader :meals
 
+  # @meals should not be hard coded (use file instead)
+
   def initialize
     @meals = {
       pappadom: 0.50,

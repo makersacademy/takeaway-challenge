@@ -22,6 +22,7 @@ class TakeAwayApp
       @restaurant.print_menu
       launch!
     when :order
+      # creates new order basket
       select_item
     when :exit
       conclusion
@@ -35,6 +36,7 @@ class TakeAwayApp
   def select_item
     puts "What would you like to order?"
     @item = STDIN.gets.chomp.downcase.to_sym
+    # item feeds into new order basket
     select_quantity
   end
 

@@ -13,8 +13,8 @@ class Restaurant
     @menu.print
   end
 
-  def place_order
-    #
+  def place_order(order = Order.new)
+    @order = order
   end
 
 end
