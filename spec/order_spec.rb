@@ -24,6 +24,7 @@ describe Order do
   end
 
   it "If the dish is already in the order, update the quantity" do
+    #TODO This test is not independent
     # allow(subject.product).to receive(:new).and_return(product_1)
     subject.select_product(1)
     # allow(product_1).to receive(:add_quantity).and_return(:product_1_quantity_2)

@@ -19,6 +19,7 @@ require "menu"
    it {is_expected.to respond_to(:print_menu) }
 
    it 'Prints the menu with prices' do
+     #TODO This test is not independent
      menu.print_menu
      expect{ menu.print_menu }.to output(printed_menu).to_stdout
    end
