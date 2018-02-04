@@ -1,33 +1,49 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway Challenge
 
+Second weekend challenge at Makers Academy.
+
+This program emulates a Thai takeaway. You can look at the menu, make orders, and confirm your order through SMS.
+
+## How to use
+
+Use Ruby Version 2.5.0
+
+```
+irb -r './lib/takeaway.rb'
+
+```
+### Sample output
+
+```
+Lauras-MBP:takeaway-challenge lwkchan$ irb -r './lib/takeaway.rb'
+2.5.0 :001 > the_thai_guys = Takeaway.new
+ => #<Takeaway:0x00007fa615a54480 @menu=#<Menu:0x00007fa615a54408 @options={:prawn_crackers=>1.95, :prawn_summer_roll=>4.95, :vegetable_spring_rolls=>3.95, :tom_yam_soup=>4.95, :green_curry=>6.95, :pad_thai=>6.95, :steamed_rice=>2.25}>, @order=#<Order:0x00007fa615a54340 @current={}, @total_cost=0>>
+2.5.0 :002 > the_thai_guys.print_menu
+            Today's specials            
+         Prawn crackers: £1.95          
+        Prawn summer roll: £4.95        
+     Vegetable spring rolls: £3.95      
+          Tom yam soup: £4.95           
+           Green curry: £6.95           
+            Pad thai: £6.95             
+          Steamed rice: £2.25           
+ => ["Prawn crackers: £1.95", "Prawn summer roll: £4.95", "Vegetable spring rolls: £3.95", "Tom yam soup: £4.95", "Green curry: £6.95", "Pad thai: £6.95", "Steamed rice: £2.25"]
+2.5.0 :003 > the_thai_guys.take_order
+What would you like to order? Press return when you are finished.
+vegetable spring rolls
+How many would you like?
+3
+What would you like to order? Press return when you are finished.
+pad thai
+How many would you like?
+2
+What would you like to order? Press return when you are finished.
+
+ => nil
  ```
 
-Instructions
--------
+## Task
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -47,33 +63,19 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+# My approach
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+1. With the user stories, I sketched out my domain model as a sequence diagram. This was useful because the steps the user takes from looking at the menu, to making the order, to confirming the order happened in sequence.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+2. Next, I moved through the user stories one by one to implement each stage. I did this with a test driven methodology: writing the tests first, failing the tests, then writing the code to pass the test.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+3. Once satisfied with all my unit tests, I went on to test these as features in irb. For this, I used the user stories to double check the client would be satisfied.
 
+5. Finally, I thought of possible edge cases which I should test against- the main one being if the user ordered something which was not on the menu.
 
-In code review we'll be hoping to see:
+*If I had more time, I would consider more possible edge cases, such as the user getting the order wrong and needing to correct it.*
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+# Key learnings
+* Further understanding of TDD, including stubbing and doubles
+* More confidence in using hashes to store information and manipulating them for results
+* Implementing a web API (namely Twilio) to make my program go further than the console
