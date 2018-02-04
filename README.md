@@ -16,6 +16,16 @@ Takeaway Challenge
 
 Instructions
 -------
+* Fork this repo
+* Use ruby 2.5.0
+* Add the following to your gemfile:
+```
+gem 'twilio-ruby', '~> 5.6.2'
+```
+* Run the 'bundle' command in the project directory
+
+Instructions
+-------
 
 * Challenge time: rest of the day and weekend, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
