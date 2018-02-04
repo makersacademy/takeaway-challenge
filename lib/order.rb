@@ -9,6 +9,7 @@ class Order
     @current_order = []
     @product = product
     @menu = menu.new
+    instructions
   end
 
   def select_product(product_number, quantity = 1)
@@ -35,6 +36,13 @@ class Order
 
   def view_basket_total
     puts order_total_message
+  end
+
+  def instructions
+    puts "To view menu, use 'read_menu'"
+    puts "Please place order using dish number and quantity"
+    puts "You can also 'view_basket' and 'place_order'"
+    puts "Use 'instructions' to view these instructions again"
   end
 
   private

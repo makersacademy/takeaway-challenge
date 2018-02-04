@@ -3,7 +3,7 @@ require "dish"
 describe Dish do
 
   let(:dish) {dish = Dish.new(1)}
-  let(:dish_info) {"Dish number: 1. Dish name: Beef burger. Price: £10"}
+  let(:dish_info) {"Dish number: 1. Dish name: Beef burger. Price: £10."}
 
   it 'Creates a new dish using SKU# including the correct name' do
     expect(dish.name).to eql("Beef burger")
