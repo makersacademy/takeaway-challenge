@@ -1,8 +1,11 @@
 require "order"
+require "msg"
+require "menu"
 
 describe "order" do
 
   let(:order) { Order.new }
+
 
 
   describe "#initialize" do
@@ -39,11 +42,12 @@ describe "order" do
     end
   end
 
-
-
-
-
-
+  describe "#place_order" do
+    it "should give you the final total of your basket" do
+      order.add("Fish & Chips", 2)
+      expect(order.place_order).to eq "Thank you for your order. Total to pay: £8"
+    end
+  end
 
 
 end

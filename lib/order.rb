@@ -1,4 +1,5 @@
 require_relative "menu"
+require_relative "msg"
 
 class Order
 
@@ -6,11 +7,10 @@ class Order
 attr_reader :menu
 attr_accessor :basket
 
-def initialize(menu = Menu.new)
+def initialize(menu = Menu.new, msg = Msg.new)
   @basket = []
   @menu = menu
-
-
+  @Msg = msg
 end
 
 def add(dish, quantity = 1)
@@ -28,8 +28,11 @@ def total
     total
 end
 
-
-
+def place_order
+  puts "Thank you for your order. Total to pay: £#{total}"
+  puts "You will shortly receive a msg to confirm your delivery time"
+  @Msg.text
+end
 
 
 end

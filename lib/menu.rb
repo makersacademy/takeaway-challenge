@@ -14,4 +14,4 @@ class Menu
     end
   end
 
-  end
+end
