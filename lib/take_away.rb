@@ -5,7 +5,7 @@ class TakeAway
 
   def initialize
     @menu = {
-      'Nutella on rice cakes and banana on top' => 3,
+      'Nutella on rice cakes and banana on top' => 3.00,
       'Scrambled eggs' => 4.99,
       'Roasted aubergine & tomato curry' => 5.60,
       'Jacket Potato with whipped feta' => 8.25,
@@ -22,8 +22,6 @@ class TakeAway
 
   def select(dish, quantity = 1)
     @selection[dish] = quantity if @menu[dish]
-
-    @selection
   end
 
   private

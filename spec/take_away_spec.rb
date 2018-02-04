@@ -6,7 +6,7 @@ describe TakeAway do
   let(:dish) { 'Scrambled eggs' }
 
   default_menu = {
-    'Nutella on rice cakes and banana on top' => 3,
+    'Nutella on rice cakes and banana on top' => 3.00,
     'Scrambled eggs' => 4.99,
     'Roasted aubergine & tomato curry' => 5.60,
     'Jacket Potato with whipped feta' => 8.25,
@@ -22,7 +22,9 @@ describe TakeAway do
 
   describe "#select dish(es)" do
     it 'should select the right number of dishes as per user choice' do
-      expect(subject.select(dish, quantity)).to eq({dish => quantity})
+      subject.select(dish, quantity)
+
+      expect(subject.selection).to eq({ dish => quantity })
     end
   end
 end

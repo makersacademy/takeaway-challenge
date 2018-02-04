@@ -12,23 +12,10 @@ class Order
     sum_amount
   end
 
-  def place_order(selection, amount)
+  def place_order(_selection, amount)
     raise "Wrong amount for your order" if amount != total_amount
 
-    send_sms("Thank you! Your order was placed and will be delivered before 18:52")
-  end
-
-  def send_sms(text)
-    account_sid = 'XXXXXX'
-    auth_token = 'XXXXXX'
-
-    @client = Twilio::REST::Client.new account_sid, auth_token
-
-    @client.api.account.messages.create(
-      from: '123456',
-      to: '123456',
-      body: "Thank you! Your order was placed and will be delivered before 18:52"
-    )
+    send_sms("Thanks! Your order was placed and will be delivered before 18:52")
   end
 
   private
@@ -37,6 +24,18 @@ class Order
     take_away.selection.each do |dish, quantity|
       @total_amount += take_away.menu[dish] * quantity
     end
-    @total_amount
+  end
+
+  def send_sms(_text)
+    account_sid = 'XXXXXX'
+    auth_token = 'XXXXXX'
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    @client.api.account.messages.create(
+      from: '123456',
+      to: '123456',
+      body: "Thanks! Your order was placed and will be delivered before 18:52"
+    )
   end
 end
