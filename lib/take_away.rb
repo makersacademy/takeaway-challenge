@@ -117,6 +117,3 @@ class TakeAway
   end
 
 end
-
-t = TakeAway.new
-t.launch!
