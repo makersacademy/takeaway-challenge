@@ -23,6 +23,8 @@ Approach
 
 * Lastly, I implemented the interaction with the Twilio API and added Time-class functionality.
 
+* Things to improve: I definitely spent too much time thinking about features to add. Some of them I ended up adding, some were discarded and some were saved only locally. If I had to redo the exercise I would focus on having an MVP and then think of adding extra functionality or features.
+
 
 Instructions to run the program
 -----
