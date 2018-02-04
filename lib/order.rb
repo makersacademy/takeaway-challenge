@@ -26,7 +26,30 @@ class Order
     menu.print_menu
   end
 
+  def view_basket
+    current_order.each do |product|
+      puts product.full_info
+    end
+    view_basket_total
+  end
+
+  def view_basket_total
+    puts order_total_message
+  end
+
   private
+
+  def order_total_message
+    "Total order value: £#{order_total_value}"
+  end
+
+  def order_total_value
+    total = 0
+    current_order.each do |product|
+      total += (product.price * product.quantity)
+    end
+    total
+  end
 
   def basket_update_message(selected_product, quantity)
     puts "#{quantity}x #{selected_product.name}(s) added to basket"

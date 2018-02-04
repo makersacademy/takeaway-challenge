@@ -28,4 +28,8 @@ class Dish
     "Dish number: #{number}. Dish name: #{name}. Price: £#{price}"
   end
 
+  def full_info
+    info + "Quantity: #{product.quantity}"
+  end
+
 end
