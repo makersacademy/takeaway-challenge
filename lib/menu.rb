@@ -1,16 +1,23 @@
+require_relative "dish"
+
 class Menu
-  FOOD_MENU = {
-    1 => ["Beef burger", 10],
-    2 => ["Cheese burger", 12],
-    3 => ["Chicken burger", 9],
-    4 => ["Fries", 4],
-    5 => ["Strawberry shake", 5],
-    6 => ["Banana shake", 5],
-    7 => ["Oreo shake", 5]
-  }
+
+  attr_reader :product, :menu
+
+  def initialize(products = Dish::FOOD_MENU, product = Dish)
+    @menu = populate_menu(products)
+    @product = product
+  end
 
   def print_menu
     puts MENU
+  end
+
+  def populate_menu(products)
+    number_of_products = products.count
+    number_of_products.times do |i|
+      Dish.new(i + 1)
+    end
   end
 
 end

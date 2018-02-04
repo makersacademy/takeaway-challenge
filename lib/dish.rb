@@ -1,5 +1,3 @@
-require_relative "menu"
-
 class Dish
 
   FOOD_MENU = {
