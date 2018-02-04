@@ -29,3 +29,10 @@ describe Order do
     end
   end
 end
+# describe "#print_order" do
+#   it "returns array of dishes, prices and quantities ordered" do
+#     order.dish_quantity("szechuan tofu", 2)
+#     order.dish_quantity("rice", 3)
+#     expect(order.calculate_total).to eq [{}]
+#   end
+# end

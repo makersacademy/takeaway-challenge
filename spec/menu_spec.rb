@@ -5,7 +5,7 @@ describe Menu do
   subject(:menu) { described_class.new(order) }
   let(:order) { double("order") }
   let(:dish) { double("dish") }
-  let(:quantity) { double("quantity")}
+  let(:quantity) { double("quantity") }
 
   describe "#show" do
     it "returns menu" do
