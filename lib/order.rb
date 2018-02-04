@@ -25,9 +25,9 @@ class Order
     puts total_cost_to_string(menu_options)
   end
 
-  def send_text
+  def send_verification_text
     user_phone_number = get_phone_number
-    message = "Thank you for your order costing #{@total_cost}. Expect it to arrive at #{Time.now.hour + 1}:#{Time.now.min}"
+    message = "Thank you for your order costing £#{@total_cost}. Expect it to arrive at #{Time.now.hour + 1}:#{Time.now.min}"
     run_twilio(user_phone_number,message)
   end
 
@@ -59,7 +59,6 @@ class Order
     @current.each do |item, quantity|
       @total_cost += menu_options[item] * quantity
     end
-    @total_cost.floor(2)
   end
 
   def get_phone_number
