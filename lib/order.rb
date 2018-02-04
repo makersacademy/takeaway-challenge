@@ -41,7 +41,7 @@ class Order
   def instructions
     puts "To view menu, use 'read_menu'"
     puts "Please place order using dish number and quantity"
-    puts "You can also 'view_basket' and 'place_order'"
+    puts "You can also 'view_basket', 'view_basket_total' and 'place_order'"
     puts "Use 'instructions' to view these instructions again"
   end
 

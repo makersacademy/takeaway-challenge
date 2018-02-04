@@ -8,9 +8,6 @@ describe Order do
   let(:basket) {[product_1, product_2]}
   let(:basket_info) {"Dish number: 1. Dish name: Beef burger. Price: £10. Quantity: 2\nDish number: 2. Dish name: Cheese burger. Price: £12. Quantity: 1\nTotal order value: £32\n"}
 
-
-  # TODO: Isolate tests by only testing the functionality in order
-  # i.e. the product adding, can test the new product aspect is working in product itself
   it "Allows the customer to select a product" do
     allow(subject.product).to receive(:new).and_return(product_1)
     subject.select_product(1)
