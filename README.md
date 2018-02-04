@@ -25,6 +25,9 @@ Approach
 
 Instructions for running the programme
 ------
+
+Run ```bundle install``` to install dependencies. 
+
 ```
 [1] pry(main)> require './lib/order.rb'
 => true
