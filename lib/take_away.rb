@@ -14,8 +14,6 @@ class TakeAway
     }
 
     @selection = {}
-    
-    @current_amount = 0
   end
 
   def list
@@ -30,7 +28,6 @@ class TakeAway
   def select(dish, quantity = 1)
     if @menu[dish]
       @selection[dish] = quantity
-      @current_amount += @menu[dish] * quantity
     end
     @selection
   end

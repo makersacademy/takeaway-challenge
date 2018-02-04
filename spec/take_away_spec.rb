@@ -24,11 +24,5 @@ describe TakeAway do
     it 'should select the right number of dishes as per user choice' do
       expect(subject.select(dish, quantity)).to eq({dish => quantity})
     end
-
-    it 'should update the current total amount as per the dishes selected' do
-      subject.select(dish, quantity)
-
-      expect(subject.current_amount).to eq 29.94
-    end
   end
 end
