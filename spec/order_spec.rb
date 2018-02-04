@@ -4,7 +4,6 @@ describe Order do
 
   subject(:order) { described_class.new }
   let(:add) {double("dish",2)}
-  #let(:dish_price) {double "dish_price"}
 
   describe "#initialize" do
     it "returns an empty hash" do

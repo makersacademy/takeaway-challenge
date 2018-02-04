@@ -32,5 +32,4 @@ class Order
     "Total amount to be paid #{total}"
   end
 
-
 end
