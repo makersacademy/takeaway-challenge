@@ -14,8 +14,14 @@ class Text
     @client.messages.create(
       from: env["TWILIO_PHONE_NUMBER"],
       to: env["MY_PHONE_NUMBER"],
-      body: 'Your order will arrive in an hour'
+      body: "Your order will arrive by #{time_in_an_hour}"
     )
+  end
+
+  private
+
+  def time_in_an_hour
+    (Time.now + 3600).strftime("%H:%M")
   end
 
 end

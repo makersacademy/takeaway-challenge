@@ -7,7 +7,7 @@ describe Restaurant do
   let(:test_menu) { { "Dish_1" => 3.50, "Dish_2" => 4 } }
   let(:printed_test_menu) { "Menu\nDish_1: £3.50\nDish_2: £4.00\n" }
   let(:order) { double 'an order' }
-  let(:test_text) { double 'text' } #not using this...
+  let(:test_text) { double 'text' } 
 
   it "stores a new menu object" do
     expect(restaurant.menu).to eq menu
@@ -40,9 +40,8 @@ describe Restaurant do
     end
 
     it 'sends a confirmation text if the amount is correct' do
-      # allow(restaurant).to receive(:send_text)
-      expect(restaurant).to receive(:send_text)
-      restaurant.checkout(11.50)
+      expect(test_text).to receive(:send)
+      restaurant.checkout(11.50, test_text)
     end
 
   end

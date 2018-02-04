@@ -18,7 +18,8 @@ class Order
   def summary
     puts "Order Summary"
     @basket.each do |dish, quantity|
-      puts "#{dish} x#{quantity} £#{sprintf('%.2f', @menu.dishes[dish] * quantity)}"
+      subtotal = sprintf('%.2f', @menu.dishes[dish] * quantity)
+      puts "#{dish} x#{quantity} £#{subtotal}"
     end
     puts total_message
   end
