@@ -24,4 +24,15 @@ describe Restaurant do
       expect { restaurant.add_item("sausage") }.to raise_error message
     end
   end
+
+  describe '#pay' do 
+    it 'raises an error when order is empty' do 
+      message = 'Order is empty, please add an item first'
+      expect { restaurant.complete_order }.to raise_error message
+    end
+
+    it 'raises an error when paid amount is incorrect' do 
+
+    end
+  end
 end

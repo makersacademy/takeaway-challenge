@@ -26,13 +26,28 @@ MENU = {"Pepes ikan" => 3, "Satay" => 3, "Bakso urat" => 4, "Soto" => 4, "Nasi g
     @order.add_item(dish, quantity)
   end
 
+  def complete_order
+    raise 'Order is empty, please add an item first' if empty?
+    order.complete
+  end
+
+  def pay
+
+  end
+
   # def archive_order
   #   @order_history << @order
+  #   @order = Order.new
   # end
 
 private
 
+  def empty?
+    order.items.empty?
+  end
+
   def available?(item)
     raise "Sorry, #{item} not available" if !MENU.include?(item.capitalize)
   end
+
 end

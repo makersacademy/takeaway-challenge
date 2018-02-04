@@ -2,12 +2,11 @@ require_relative 'restaurant'
 
 class Order
 
-  attr_reader :total, :bill
+  attr_reader :bill
   attr_accessor :items
 
   def initialize
     @items = []
-    @total
     @bill = 0
   end
 
@@ -28,4 +27,9 @@ class Order
   # to fetch price we create a variable called bill and add the item[value]
   # to the variable bill
 
+private
+
+  def empty?
+    items.empty?
+  end
 end
