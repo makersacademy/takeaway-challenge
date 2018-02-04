@@ -62,5 +62,4 @@ describe Order do
 
   end
 
-
 end

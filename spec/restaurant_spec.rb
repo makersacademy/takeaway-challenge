@@ -12,7 +12,7 @@ describe Restaurant do
     expect(restaurant.menu).to eq menu
   end
 
-  describe 'show_menu' do
+  describe '#show_menu' do
     it 'returns the printed menu' do
       allow(menu).to receive(:dishes).and_return(test_menu)
       allow(menu).to receive(:print).and_return(printed_test_menu)
@@ -20,10 +20,27 @@ describe Restaurant do
     end
   end
 
-  # describe '#create_order' do
-  #   it 'stores an order object' do
-  #     expect(restaurant.create_order(order)).to eq order
-  #   end
-  # end
+  describe '#create_order' do
+    it 'creates a new empty order' do
+      expect(restaurant.create_order(order)).to eq order
+    end
+  end
+
+  describe '#checkout' do
+    it 'returns an error if the payment amount is incorrect' do
+      restaurant.create_order(order)
+      allow(order).to receive(:total).and_return(11.50)
+      message = "Incorrect amount, please check order total"
+      expect{restaurant.checkout(11)}.to raise_error message
+    end
+
+    it 'sends a confirmation text if the amount is correct' do
+      restaurant.create_order(order)
+      allow(order).to receive(:total).and_return(11.50)
+      allow(restaurant).to receive(:send_text)
+      expect(restaurant).to receive(:send_text)
+      restaurant.checkout(11.50)
+    end
+  end
 
 end
