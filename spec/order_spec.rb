@@ -7,7 +7,7 @@ describe Order do
   let(:selection)      { double "a hash of selections" }
   let(:provided_total) { double "the total provided" }
   let!(:correct_item)  { menu.keys.sample }
-  let!(:correct_item2) { menu.reject{ |key| key == correct_item }.keys.sample }
+  let!(:correct_item2) { menu.reject { |key| key == correct_item }.keys.sample }
   let(:incorrect_item) { double("an incorrect item", to_sym: :"incorrect item") }
   let(:quantity)       { 3 }
 
@@ -80,7 +80,7 @@ describe Order do
     let(:checkout_class) { double "a checkout class", new: checkout }
     let(:phone_number) { double "a phone number" }
     before :each do
-      20.times { |num| order.add(menu.keys.sample, num)}
+      20.times { |num| order.add(menu.keys.sample, num) }
     end
 
     context "when provided_total is incorrect" do
@@ -103,29 +103,10 @@ describe Order do
         end
 
         it "instantiates checkout_class object" do
-          expect(checkout_class).to receive(:new)
+          expect(checkout_class).to receive(:new).with(order_total, phone_number)
           order.checkout(order_total, checkout_class, phone_number)
         end
       end
-    end
-  end
-
-  describe "#send_sms" do
-    let(:messaging_service) { double("a messaging service") }
-    let(:phone_number)      { double("a phone number") }
-    let(:body)              { double("a string") }
-    it "calls TwilioSendSMS::send_sms" do
-      allow(messaging_service).to receive(:send_sms)
-      expect(messaging_service).to receive(:send_sms).with(phone_number, order.sms_body)
-      order.send_sms(messaging_service, phone_number)
-    end
-  end
-
-  describe "#sms_body" do
-    it "returns the correct message" do
-      message = "Thank you for your order. "\
-      "It will be delivered at #{Time.now.strftime "%H:%M"}"
-      expect(order.sms_body).to eq message
     end
   end
 end

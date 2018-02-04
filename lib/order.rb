@@ -1,5 +1,4 @@
 require_relative './restaurant.rb'
-require_relative './twiliosendsms.rb'
 
 class Order
 
@@ -14,7 +13,7 @@ class Order
     item_sym = item.to_sym
     raise "Item not on menu" unless @menu.has_key?(item_sym)
     @selection[item_sym] += quantity if @selection.has_key?(item_sym)
-    @selection[item_sym] = quantity if !@selection.has_key?(item_sym)
+    @selection[item_sym] = quantity unless @selection.has_key?(item_sym)
     string_formatter(item, quantity)
   end
 
@@ -27,17 +26,11 @@ class Order
 
   def checkout(provided_total, checkout_class, phone_number)
     validate(provided_total)
-    checkout_class.new
+    checkout_class.new(provided_total, phone_number)
   end
 
   def send_sms(messaging_service, phone_number)
     messaging_service.send_sms(phone_number, sms_body)
-  end
-
-  # MOVE TO SENDSMS CLASS
-  def sms_body
-    "Thank you for your order. "\
-    "It will be delivered at #{Time.now.strftime "%H:%M"}"
   end
 
   private
