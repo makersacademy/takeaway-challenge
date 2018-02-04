@@ -1,8 +1,9 @@
 require 'restaurant'
 
 describe Restaurant do
-  let(:restaurant) { described_class.new }
-  let(:order) { Order.new }
+  let(:restaurant) { described_class.new(order) }
+  let(:order) { Order.new}
+  let(:dish) { {"Pepes ikan" => 3} }
   let(:item) { "Pepes ikan" }
 
   describe '#print_menu' do
@@ -15,8 +16,7 @@ describe Restaurant do
   describe '#add_item' do 
     it 'adds selected item to order' do
       restaurant.add_item(item)
-      expect(order.items).to include(item)
-      p order.items
+      expect(order.items).to include(dish)
     end
 
     it 'raises an error when item isnt available' do 
