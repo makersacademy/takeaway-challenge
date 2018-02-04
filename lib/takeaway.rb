@@ -18,11 +18,18 @@ class Takeaway
   end
 
   def show_total
+    puts subtotals
     puts "Your total is £#{'%.2f' % @order.total_cost}"
   end
 
   def complete_order(phone_number)
     @message.send_sms(phone_number)
+  end
+
+  private
+
+  def subtotals
+    @order.subtotals
   end
 
 end

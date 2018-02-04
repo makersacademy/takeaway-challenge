@@ -28,4 +28,11 @@ describe Order do
       expect(order.total_cost).to eq(13.25)
     end
   end
+
+  context "#subtotals" do
+    it "shows the cost of each ordered dish" do
+      order.add_to_order("Hui Guo Rou", 2)
+      expect{order.subtotals}.to output("2 x Hui Guo Rou: £8.50\n").to_stdout
+    end
+  end
 end

@@ -20,6 +20,12 @@ class Order
     total
   end
 
+  def subtotals
+    @order.each do |dish, quantity|
+      puts "#{quantity} x #{dish}: £#{'%.2f' % (@menu.dishes[dish] * quantity)}"
+    end
+  end
+
   private
 
   def available?(dish)
