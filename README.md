@@ -8,6 +8,7 @@ My approach
 * In writing the code, I aimed to structure behaviour in different classes, use dependancy injection and apply the single responsibility principle to another level of depth
 * I also attempted to make the tests I wrote independent, though this proved difficult without heavy stubbing due to a significant number of dependencies
 * I followed the BDD process, though came off the track at certain points where I found the tests hard to construct in advance e.g. Printing out a whole menu that was properly stubbed to isolate the test
+* I attempted to set up the code so that it could be used for any ordering process, with the dish file being interchangeable with any other product file. In hindsight, this added a significant amount of complexity
 
 
 Mini personal code review: My appraisal of my attempt at the weekend challenge
