@@ -2,7 +2,7 @@ require 'Takeaway'
 
 describe Takeaway do
 
-subject(:takeaway) {described_class.new}
+subject(:takeaway) {described_class.new(Menu.new)}
 let(:place_order) {double("dish",2)}
 
   describe"#initialize"do
@@ -34,7 +34,18 @@ end
       end
     end
   end
-
+  describe"#total_amount" do
+    before(:each) do
+      takeaway.show_menu
+      takeaway.place_order("dish", 2)
+      takeaway.sub_total
+    end
+    context "When total amount of order is displayed" do
+      it "displays total amount" do
+        expect(takeaway.total_amount).not_to be_empty
+      end
+    end
+  end
 
 
 end

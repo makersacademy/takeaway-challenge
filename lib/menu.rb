@@ -17,7 +17,7 @@ attr_reader :menu
 
   def print_menu
     MENU.each_with_index do |(dish, price), index|
-      puts " #{index + 1}. #{dish}: #{price}£."
+      puts " #{index + 1}. #{dish}: £ #{price}."
     end
   end
 
