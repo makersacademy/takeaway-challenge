@@ -20,7 +20,7 @@ describe Restaurant do
     end
 
     it 'raises an error when item isnt available' do 
-      message = 'Sorry, item not available'
+      message = 'Sorry, sausage not available'
       expect { restaurant.add_item("sausage") }.to raise_error message
     end
   end

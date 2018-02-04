@@ -4,7 +4,7 @@ class Restaurant
 
 MENU = {"Pepes ikan" => 3, "Satay" => 3, "Bakso urat" => 4, "Soto" => 4, "Nasi goreng" => 5}
 
-  attr_reader :menu
+  attr_reader :menu, :order_history
   attr_accessor :order
 
   def initialize(order = Order.new)
@@ -31,6 +31,6 @@ MENU = {"Pepes ikan" => 3, "Satay" => 3, "Bakso urat" => 4, "Soto" => 4, "Nasi g
   # end
 
   def available?(item)
-    raise 'Sorry, item not available' if !MENU.include?(item.capitalize)
+    raise "Sorry, #{item} not available" if !MENU.include?(item.capitalize)
   end
 end
