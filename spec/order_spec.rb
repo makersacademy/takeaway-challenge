@@ -1,8 +1,9 @@
 require 'order'
 
 describe Order do
-  subject(:order) {described_class.new}
-  let(:add) {double"add" }
+
+  subject(:order) { described_class.new }
+  let(:add) {double("dish",2)}
 
   describe "#initialize" do
     it "returns an empty hash" do
@@ -12,14 +13,15 @@ describe Order do
       expect(order.menu).not_to eq nil
     end
   end
-
   describe "add" do
-    context "When items are added into the trolley" do
-      it {is_expected.to respond_to(:add).with(2).arguments}
       it "add items"do
-        expect(order.add(dish,quantity)).to eq("Thank you. Your #{dish} dish was added #{quantity} times in your trolley")
+        allow(order).to receive(:add).with(2).and_return(:default)
       end
     end
   end
-
+  describe "dish_price" do
+    it "displays the total price per dish" do
+      order.add("dish",2)
+      expect(my_order.dish_price).not_to eq nil
+    end
 end
