@@ -25,13 +25,14 @@ class Order
       .join(", ")
   end
 
+  def total
+    amount = @selection.map { |item, quantity| quantity * menu[item] }.inject(&:+)
+    "£#{amount}"
+  end
+
   def checkout(provided_total, phone_number, checkout_class = Checkout)
     validate(provided_total)
     checkout_class.new(provided_total, phone_number)
-  end
-
-  def send_sms(messaging_service, phone_number)
-    messaging_service.send_sms(phone_number, sms_body)
   end
 
   private

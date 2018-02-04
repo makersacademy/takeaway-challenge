@@ -71,6 +71,19 @@ describe Order do
     end
   end
 
+  describe "#total" do
+    let(:order_total) {
+      amount = order.selection.map { |item, quantity| quantity * menu[item] }.inject(&:+)
+      "£#{amount}"
+    }
+    before :each do
+      20.times { |num| order.add(menu.keys.sample, num) }
+    end
+    it "returns the correct value" do
+      expect(order.total).to eq order_total
+    end
+  end
+
   describe "#checkout" do
     let(:order_total) {
       order.selection.map { |item, amount| amount * menu[item] }.inject(&:+)
