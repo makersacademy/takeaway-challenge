@@ -62,7 +62,8 @@ class Order
   end
 
   def get_phone_number
-    puts "Enter your phone number:  \n0"
+    puts "Enter your phone number: "
+    print 0
     number = gets.chomp
     number = "+44" + number
   end
