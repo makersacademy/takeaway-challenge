@@ -12,8 +12,14 @@ class Order
     @menu = Menu.new
     dish_in_menu?(dish)
     @basket[dish] += quantity
-    "#{dish} x#{quantity} added to your basket"
+    # "#{dish} x#{quantity} added to your basket"
   end
+
+  def remove(dish, quantity)
+      dish_in_order?(dish)
+      @basket[dish] = @basket[dish] - quantity if @basket.has_key?(dish)
+      dish_quantity_nil?(dish)
+    end
 
   def sub_total
     @basket.map do |dish, quantity|
@@ -34,4 +40,13 @@ class Order
   def dish_in_menu?(dish)
     fail "This dish is not on the menu" unless @menu.dishes.has_key?(dish)
   end
+
+  def dish_in_order?(dish)
+    fail "This dish is not in your order" unless @basket.include?(dish)
+  end
+
+  def dish_quantity_nil?(dish)
+    @basket.delete(dish) if basket[dish] == 0
+  end
+
 end
