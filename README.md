@@ -38,10 +38,10 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 Approach
 -----
-I used TDD to create this program, using doubles and stubs to create isolated unit tests.
-To send the confirmation texts, I integrated the Twilio API into my program using the twilio-ruby gem.
-To avoid disclosing my personal information, I created a file with environmental variables which I added to .gitignore. In my program, I require the dotenv gem to access this file.
-After satisfying the above user stories, I refactored my code, ensuring necessary methods were made private, and trying to abide by the Single Responsibility Principle for methods.
+- I used TDD to create this program, using doubles and stubs to create isolated unit tests.
+- To send the confirmation texts, I integrated the Twilio API into my program using the twilio-ruby gem.
+- To avoid disclosing my personal information, I created a file with environmental variables which I added to .gitignore. In my program, I require the dotenv gem to access this file.
+- After satisfying the above user stories, I refactored my code, ensuring necessary methods were made private, and trying to abide by the Single Responsibility Principle for methods.
 
 Example irb Output
 -----
