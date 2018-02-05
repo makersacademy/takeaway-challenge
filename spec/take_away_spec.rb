@@ -38,5 +38,10 @@ describe TakeAway do
     end
   end
 
-
+  describe "#basket_summary" do
+    it "puts a basket summary string" do
+      take_away.order 'Spicy Soup', 1
+      expect { take_away.basket_summary }.to output("1x Spicy Soup(s) added you your basket\n").to_stdout
+    end
+  end
 end
