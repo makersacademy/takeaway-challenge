@@ -8,23 +8,23 @@ attr_reader :menu
 attr_accessor :basket
 
 def initialize(menu = Menu.new, msg = Msg.new)
-  @basket = []
+  @basket = Hash.new(0)
   @menu = menu
   @Msg = msg
 end
 
 def add(dish, quantity = 1)
   raise "This dish is not on the menu" unless @menu.menu.has_key?(dish)
-  @basket << { :dish => dish, :quantity => quantity }
+  @basket[dish] += quantity
 end
 
 def delete(dish, quantity = 1)
-    @basket.delete({ :dish => dish, :quantity => quantity })
+    @basket[dish] -= quantity
 end
 
 def total
     total = 0
-    @basket.each { |dish| total += @menu.menu[dish[:dish]] * dish[:quantity] }
+    @basket.each { |dish, quantity| total += @menu.menu[dish] * quantity }
     total
 end
 

@@ -17,7 +17,7 @@ describe "order" do
   describe "#add" do
     it "should add a dish and the quantity to basket" do
       order.add("Pepperoni Pizza", 2)
-        expect(order.basket).to eq [{:dish=>"Pepperoni Pizza", :quantity=>2}]
+        expect(order.basket).to eq ({"Pepperoni Pizza"=>2})
     end
 
     it "should raise error if the item is not on the menu" do
@@ -38,7 +38,7 @@ describe "order" do
     it "should delete a dish and quantity from the basket" do
       order.add("Fish & Chips", 2)
       order.delete("Fish & Chips", 1)
-      expect(order.basket).to eq [{:dish=>"Fish & Chips", :quantity=>1}]
+      expect(order.basket).to eq ({"Fish & Chips"=>1})
     end
   end
 
