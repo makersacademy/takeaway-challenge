@@ -14,7 +14,7 @@ describe Order do
     end
   end
   describe "#add" do
-    it "add items" sdo
+    it "add items" do
       allow(order).to receive(:add).with(2).and_return(:default)
     end
   end

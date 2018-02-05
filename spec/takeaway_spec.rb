@@ -54,8 +54,8 @@ describe Takeaway do
         allow(takeaway).to receive(:confirm_order).with(1).and_return("Sorry, sum is not correct")
       end
       it "sends a message if total amount is correct" do
-        allow(message).to receive(:send_sms).and_return("message")
-        expect(message.send_sms).not_to be_empty
+        allow(message).to receive(:send_sms)
+        takeaway.complete_order(2)
       end
     end
   end
