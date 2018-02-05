@@ -24,6 +24,48 @@ gem 'twilio-ruby', '~> 5.6.2'
 ```
 * Run the 'bundle' command in the project directory
 
+* Open up Terminal and go to the route directory
+
+* Load irb or pry
+
+* Open a Twilio account and update telephone number and other values given as xxxx in the ./lib/take_away.rb file
+
+Then:
+
+```
+require './lib/take_away.rb'
+
+pry(main)> t = TakeAway.new
+=> #<TakeAway:0x00007fab8ab638b0 @basket=[], @menu=#<Menu:0x00007fab8ab63888 @dishes={"Pork Pie"=>4.99, "Sausage Roll"=>2.5, "Spicy Soup"=>3.0}>, @output="">
+
+pry(main)> t.order 'Pork Pie', 4
+4x Pork Pie(s) added you your basket
+
+```
+To check the basket
+
+```
+pry(main)> t.basket
+```
+
+To have text message sent with your order details
+
+```
+pry(main)> t.send
+```
+
+You well then receive a message to your number containing some other your order details.
+
+To do list
+-------
+
+* Get the basket_summary in take_away.rb to output a pretty string.
+
+* Implement basket checking so further orders of the same thing result in the number in the relevant hash to increase instead of being considered a seperate item.
+
+* Check for further edge cases and increase testing of behaviours.
+
+
 Instructions
 -------
 
