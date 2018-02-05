@@ -73,11 +73,12 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 5. Finally, I thought of possible edge cases which I should test against- the main one being if the user ordered something which was not on the menu.
 
-*If I had more time, I would consider more possible edge cases, such as the user getting the order wrong and needing to correct it.*
-
-
-
 # Key learnings
 * Further understanding of TDD, including stubbing and doubles
 * More confidence in using hashes to store information and manipulating them for results
 * Implementing a web API (namely Twilio) to make my program go further than the console
+
+# To complete
+* Edge case for correcting the order
+* Clarifying step-by-step in README
+* Adding instructions for settting ENV variables to use Twilio
