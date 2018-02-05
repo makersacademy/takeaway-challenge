@@ -12,6 +12,7 @@ class TakeAway
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = []
+    @output = ''
   end
 
   def read_menu
@@ -43,8 +44,8 @@ class TakeAway
 
     @client.messages.create(
       from: '+441522246428',
-      to: '+xxxx',
-      body: 'Hey there, from the code'
+      to: '+447952635068',
+      body: output
 )
   end
 end
