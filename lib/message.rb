@@ -1,6 +1,7 @@
 require("bundler")
 require 'rubygems'
 require 'twilio-ruby'
+require 'dotenv/load'
 
 Bundler.require()
 
