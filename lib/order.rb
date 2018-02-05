@@ -5,7 +5,7 @@ class Order
   attr_reader :trolley, :menu
 
   def initialize
-    @trolley ={}
+    @trolley = {}
     @menu = { Paella: 7,
            Rissotto: 8,
            Octopus: 15,
@@ -15,8 +15,8 @@ class Order
   end
 
   def add(dish, quantity)
-    trolley.merge!(dish.to_sym => quantity.to_i)
-    print "Thank you. Your #{dish} dish was added #{quantity} times to your trolley"
+    trolley[dish.to_sym] = quantity.to_i
+    print "Thank you. Your dish was added #{quantity} times to your trolley"
   end
 
   def dish_price
@@ -28,9 +28,7 @@ class Order
   end
 
   def total
-    total = dish_price.inject(0){|sum,x| sum + x }
-     "Total amount to be paid £ #{total}"
-
+    total = dish_price.inject(0) { |sum, x| sum + x }
+    "Total amount to be paid £ #{total}"
   end
-
 end

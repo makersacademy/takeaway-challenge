@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   subject(:order) { described_class.new }
-  let(:add) {double("dish",2)}
+  let(:add) { double("dish", 2) }
 
   describe "#initialize" do
     it "returns an empty hash" do
@@ -14,9 +14,9 @@ describe Order do
     end
   end
   describe "#add" do
-      it "add items"do
-        allow(order).to receive(:add).with(2).and_return(:default)
-      end
+    it "add items" sdo
+      allow(order).to receive(:add).with(2).and_return(:default)
+    end
   end
   describe "#dish_price" do
     before(:each) do
@@ -27,7 +27,7 @@ describe Order do
       expect(order.dish_price).not_to be_nil
     end
   end
-  describe"#total" do
+  describe "#total" do
     before(:each) do
       order.add("paella", 2)
       order.trolley

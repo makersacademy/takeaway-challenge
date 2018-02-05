@@ -4,20 +4,20 @@ require_relative 'send_sms'
 
 class Takeaway
 
-  attr_reader :menu, :order, :text
+  attr_reader :menu, :order, :message
 
-  def initialize(menu=Menu.new)
+  def initialize(menu = Menu.new)
     @menu = menu
     @order = Order.new
-    @text = Text.new
+    @message = Message.new
   end
 
   def show_menu
     menu.print_menu
   end
 
-  def place_order(dish,quantity)
-    order.add(dish,quantity)
+  def place_order(dish, quantity)
+    order.add(dish, quantity)
   end
 
   def sub_total
@@ -30,10 +30,8 @@ class Takeaway
 
   def complete_order(price)
     fail "Sorry, sum is not correct" unless correct_amount?(price)
-    textsend_text
   end
-
-
+  
 private
 
   def correct_amount?(price)

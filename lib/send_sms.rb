@@ -1,21 +1,15 @@
 require 'twilio-ruby'
-require 'dotenv'
-Dotenv.load('encrypted.env')
+require 'bundler'
+Bundler.require()
 
-class Text
-
-  def initialize(twilio_rest_client = Twilio::REST::Client, env = ENV)
-    @account_sid = env["TWILIO_ACCOUNT_SID"]
-    @auth_token = env["TWILIO_AUTH_TOKEN"]
-    @client = twilio_rest_client.new(@account_sid, @auth_token)
-  end
-
-  def send_text(env = ENV)
+class Message
+  def send_sms
+    account_sid = 'ACa832762f45c4408857332cd25274312e'
+    auth_token = '8b1a4c70686bc96f0e70f944b586385c'
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
     @client.messages.create(
-      from: env["TWILIO_PHONE_NUMBER"],
-      to: env["MY_PHONE_NUMBER"],
-      body: "Thanks, your order has been set will arrive at #{time_in_an_hour}"
-    )
+      :from => '+441412804093',
+      :to => '447756780794',
+      :body => 'Tomorrow\'s forecast in Financial District, San Francisco is Clear.')
   end
-
 end
