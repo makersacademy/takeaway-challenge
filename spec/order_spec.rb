@@ -15,7 +15,7 @@ describe Order do
 
   describe '#note_down' do
     it 'saves the item order and its quantity in a hash' do
-      expect(order.current).to eq( { pad_thai: 2 } )
+      expect(order.current).to eq({ pad_thai: 2 })
     end
   end
 

@@ -75,6 +75,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 *If I had more time, I would consider more possible edge cases, such as the user getting the order wrong and needing to correct it.*
 
+
+
 # Key learnings
 * Further understanding of TDD, including stubbing and doubles
 * More confidence in using hashes to store information and manipulating them for results

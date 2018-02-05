@@ -70,14 +70,14 @@ class Order
   end
 
   def run_twilio(user_phone_number, message)
-    account_sid = "AC36e483bbada70a05ac075253130205e2"
-    auth_token = "03684a4ecaea26a2c381ad8bd940243e"
+    account_sid = "xxx"
+    auth_token = "xxx"
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.messages.create(
         body: message,
         to: user_phone_number,
-        from: "+441618506928")
+        from: "+xxx")
   end
 
 end
