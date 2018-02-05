@@ -52,3 +52,9 @@ In order to be successful at this challenge, my code **MUST**:
 - [x] Allows the user to select a number of dishes.
 - [x] Show the total cost of the order - and this amount should correspond with the price of each dish.
 - [x] Send a text message to the user with an order confirmation.
+
+## Alterations
+
+In the future, I would like to add the following functions to this program:
+
+- Adjustable quantities (user can specify how many of each item they want to add to the basket array).
