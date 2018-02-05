@@ -31,6 +31,6 @@ class Takeaway
 
   def checkout
     @order.send_sms("Your order total is: £#{total}!")
-    print "Your order is complete! You will receive a confirmation text!"
+    "Your order is complete! You will receive a confirmation text!"
   end
 end
