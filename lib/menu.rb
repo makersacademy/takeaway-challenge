@@ -2,6 +2,7 @@ class Menu
   attr_reader :menu_list
 
   def initialize
+    # pass menu hash as an argument instead
     @menu_list = [
       { desc: "Chips", cost: 1.0 },
       { desc: "Burger", cost: 3.5 },
