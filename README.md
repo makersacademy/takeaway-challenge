@@ -1,9 +1,9 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  FOOD |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -12,68 +12,49 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Introduction
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Welcome to my repo for the Makers Academy weekend challenge(2). My task was to test drive the creation of a set of classes/modules to satisfy the user stories below. I needed to design a takeaway program that displays a list of dishes (with prices), and allows the user to place an order, displays a sum total of what they have spent, and sends a text message confirmation to the user with details of their purchases (using Twilio API).
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+## Useage
 
+```
+[1] pry(main)> require "./lib/takeaway"
+=> true
+[2] pry(main)> takeaway = Takeaway.new
+=> #<Takeaway:0x00007fa3fec14ea0 @basket=[], @itemised_bill=[], @order=#<Order:0x00007fa3fec14e78>>
+[3] pry(main)> takeaway.view_menu
+=> [{"Buckwheat Shamalam"=>5.0}, {"Avocado Foxtrot"=>6.5}, {"Crusty Snickerdoodle"=>4.5}, {"Froffee Coffee"=>3.5}, {"Realitea"=>2.0}, {"Mystery Item"=>10.0}]
+[4] pry(main)> takeaway.add("Crusty Snickerdoodle")
+=> {"Crusty Snickerdoodle"=>1}
+[5] pry(main)> takeaway.add("Froffee Coffee")
+=> {"Crusty Snickerdoodle"=>1, "Froffee Coffee"=>1}
+[6] pry(main)> takeaway.add("Froffee Coffee")
+=> {"Crusty Snickerdoodle"=>1, "Froffee Coffee"=>2}
+[7] pry(main)> takeaway
+=> #<Takeaway:0x00007fa3fec14ea0
+ @basket=["Crusty Snickerdoodle", "Froffee Coffee", "Froffee Coffee"],
+ @itemised_bill=[4.5, 3.5, 3.5],
+ @order=#<Order:0x00007fa3fec14e78>>
+[8] pry(main)> takeaway.total
+=> 11.5
+[9] pry(main)> takeaway.checkout
+Your order is complete! You will receive a confirmation text. Thank you!=> nil
+```
 
-In code review we'll be hoping to see:
+## Specification
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+In order to be successful at this challenge, my code **MUST**:
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+- [x] Display list of dishes with prices.
+- [x] Allows the user to select a number of dishes.
+- [x] Show the total cost of the order - and this amount should correspond with the price of each dish.
+- [x] Send a text message to the user with an order confirmation.
 
-Notes on Test Coverage
-------------------
+## Alterations
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+In the future, I would like to add the following functions to this program:
+
+- Adjustable quantities (user can specify how many of each item they want to add to the basket array).

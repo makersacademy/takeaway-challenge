@@ -12,12 +12,19 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     diff-lcs (1.3)
     docile (1.1.5)
+    faraday (0.14.0)
+      multipart-post (>= 1.2, < 3)
+    hashdiff (0.3.7)
     hirb (0.7.3)
     json (2.1.0)
+    jwt (2.1.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
+    multipart-post (2.0.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     parallel (1.12.1)
@@ -51,6 +58,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.9.0)
+    safe_yaml (1.0.4)
     simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -60,7 +68,16 @@ GEM
       hirb
       simplecov
     simplecov-html (0.10.2)
+    twilio-ruby (5.6.2)
+      faraday (~> 0.9)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     unicode-display_width (1.3.0)
+    vcr (4.0.0)
+    webmock (3.3.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     xpath (3.0.0)
       nokogiri (~> 1.8)
 
@@ -74,6 +91,9 @@ DEPENDENCIES
   rubocop
   simplecov
   simplecov-console
+  twilio-ruby
+  vcr
+  webmock
 
 RUBY VERSION
    ruby 2.5.0p0
