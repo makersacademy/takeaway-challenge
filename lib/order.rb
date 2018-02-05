@@ -19,7 +19,7 @@ class Order
   end
 
   def remove(item, quantity = DEFAULT_QUANTITY)
-    @basket[item] = @basket[item] - quantity
+    @basket[item] -= quantity
   end
 
   def display
