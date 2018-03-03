@@ -3,7 +3,7 @@ require_relative './dish_printer'
 
 class Order
 
-  attr_reader :order_dishes, :completed, :menu
+  attr_reader :order_dishes, :completed, :menu, :paid
 
   def initialize(menu=Menu.new,
     printer=DishPrinter.new,
@@ -15,6 +15,7 @@ class Order
     @completed = false
     @texter = texter
     @text_number = text_number
+    @paid = false
   end
 
   def add_dish(i, n)
@@ -42,6 +43,8 @@ class Order
   end
 
   def complete
+    raise Exception.new("You cannot complete the order "\
+      "until you have paid!") unless paid
     @completed = true
     send_text
   end
@@ -53,6 +56,11 @@ class Order
   def text_body
     "Thank you! Your order was placed and will "\
     "be delivered before #{format_time}"
+  end
+
+  def pay(amount)
+    raise Exception.new('That is not the correct amount!') if amount != total
+    @paid = true
   end
 
   private

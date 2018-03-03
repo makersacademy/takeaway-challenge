@@ -40,11 +40,30 @@ describe Order do
     expect(order.total).to eq 2.0
   end
 
-  it 'completes the order' do
+  it 'allows the user to pay' do
+    order.add_dish(1,1)
+    order.add_dish(1,1)
+    expect{order.pay(2)}.to change{order.paid}.from(false).to(true)
+  end
+
+  it 'completes the order when paid' do
+    order.add_dish(1,1)
+    order.add_dish(1,1)
+    expect{order.pay(2)}.to change{order.paid}.from(false).to(true)
     expect{ order.complete }.to change{order.completed}.from(false).to(true)
   end
 
+  it 'does not complete the order when not paid' do
+    order.add_dish(1,1)
+    order.add_dish(1,1)
+    expect{ order.complete }.to raise_error("You cannot complete the order "\
+      "until you have paid!")
+  end
+
   it 'messages texter to send message when order is completed' do
+    order.add_dish(1,1)
+    order.add_dish(1,1)
+    order.pay(2)
     expect(dbl_texter).to receive(:send).with(any_args)
     order.complete
   end
@@ -56,6 +75,7 @@ describe Order do
   end
 
   it "doesn't let you add dishes after order is completed" do
+    order.pay(0)
     order.complete
     expect{order.add_dish(1,1)}.to raise_error('Items cannot be added after order is completed!')
   end
