@@ -74,6 +74,13 @@ In code review we'll be hoping to see:
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
 Notes on Test Coverage
-------------------
+----------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+DOMAIN MODEL
+------------
+Menu: display
+Order: select, verify
+Confirmation: send_text
+
