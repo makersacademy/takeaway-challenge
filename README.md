@@ -1,5 +1,23 @@
 Takeaway Challenge
 ==================
+Developer(Alex)'s approach:
+
+Note: All the written code, that I will refer to, have been written following a TDD methodology. Hence, when a step is described, it is implicit that the corresponding rspec have been coded prior to that.
+
+Steps for Developer:
+
+1.- I create a Dish class initialized with name and price.
+2.- I create a Menu class initiazed with an array to store the dishes and I store some dishes on it.
+3.- I create a print method inside of the Menu class to display the array of dishes.
+
+Steps for User:
+
+1.- The dishes, that the user will find available, have now a name and a price associated to them.
+2.-The user has now a menu with a list of the dishes offered.
+3 .-The user has now visibility of the list of dishes offered.
+
+
+
 ```
                             _________
               r==           |       |
