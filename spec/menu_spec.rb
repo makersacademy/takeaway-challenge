@@ -15,4 +15,16 @@ describe Menu do
     menu.add_dish('fake name', 1.0)
     expect(subject.select(1,2)).to eq [dbl_dish, dbl_dish]
   end
+
+  it 'populates from dish array' do
+    dish_array = [
+      ['Samosa', 1],
+      ['Samosa', 1],
+      ['Samosa', 1]
+    ]
+    menu.populate_dishes_from_array(dish_array)
+    expect(menu.print(false)).to eq "1. Samosa, £1.0\n" + \
+    "2. Samosa, £1.0\n" + \
+    "3. Samosa, £1.0\n"
+  end
 end

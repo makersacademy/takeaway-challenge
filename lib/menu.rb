@@ -9,6 +9,12 @@ class Menu
     @dish_array << @dish_class.new(name, price)
   end
 
+  def populate_dishes_from_array(input_dish_array)
+    input_dish_array.each do |x|
+      add_dish(x[0], x[1])
+    end
+  end
+
   def print(puts_out=true)
     if puts_out
       puts assemble_menu
