@@ -7,7 +7,7 @@ class Dish
     @price = price
   end
 
-  def print_dish
+  def print
     "#{@name}, £#{@price}"
   end
 end

@@ -9,7 +9,7 @@ describe Dish do
   end
 
   it 'prints its name and price as formatted string' do
-    expect(dish.print_dish).to eq 'Samosa, £1.0'
+    expect(dish.print).to eq 'Samosa, £1.0'
   end
 
 end
