@@ -13,4 +13,8 @@ class Menu
   def display_menu
     @printer.formatter(@menu)
   end
+
+  # def place_order
+  #   @printer.select_items
+  # end
 end

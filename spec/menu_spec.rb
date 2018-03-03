@@ -15,15 +15,14 @@ describe Menu do
 
   describe '#display_menu' do
 
-    it 'Should call print method with menu parameter' do
-        allow(fake_printer_class).to receive(:formatter).with(fake_menu) do
-          subject.display_menu(fake_menu)
-          expect(fake_printer_class).to receive(:formatter).with(fake_menu)
-        end
+    it 'Should call print method with me' do
+        expect(fake_printer_class).to receive(:formatter).with(subject.menu)
+        subject.display_menu
+      # end
     end
   end
 
-  # describe '#start_order' do
+  # describe '#place_order' do
   #
   #   it 'Should return true to begin order' do
   #     expect(subject.start_order).to eq true
