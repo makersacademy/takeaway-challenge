@@ -6,11 +6,11 @@ class Menu
     @menu = []
   end
 
-  def add_item(dish)
+  def add(dish)
     @menu << dish
   end
 
-  def remove_item(dish)
+  def remove(dish)
     @menu.delete(dish)
   end
 

@@ -11,20 +11,20 @@ describe Menu do
     end
   end
 
-  describe '#add_item' do
-    it { is_expected.to respond_to(:add_item).with(1).arguments }
+  describe '#add' do
+    it { is_expected.to respond_to(:add).with(1).arguments }
     it 'should add dish to @menu[]' do
-      menu.add_item(pm)
+      menu.add(pm)
       expect(menu.menu).to include(pm)
     end
   end
 
-  describe '#remove_item' do
-    it { is_expected.to respond_to(:remove_item).with(1).arguments }
+  describe '#remove' do
+    it { is_expected.to respond_to(:remove).with(1).arguments }
     it 'should remove menu item from the menu' do
-      menu.add_item(pm)
-      menu.add_item(ctm)
-      menu.remove_item(pm)
+      menu.add(pm)
+      menu.add(ctm)
+      menu.remove(pm)
       expect(menu.menu).not_to include(pm)
     end
   end
@@ -32,8 +32,8 @@ describe Menu do
   describe '#list_all' do
     it { is_expected.to respond_to(:list_all) }
     it 'should list all menu items' do
-      menu.add_item(pm)
-      menu.add_item(ctm)
+      menu.add(pm)
+      menu.add(ctm)
       expect { menu.list_all }.to output("1: #{pm.name} -- #{pm.price}\n2: #{ctm.name} -- #{ctm.price}\n").to_stdout
     end
   end
