@@ -13,5 +13,4 @@ class Menu
   def show_menu
     @menu.each { |key, value| puts "#{key}, £#{value}" }
   end
-
 end
