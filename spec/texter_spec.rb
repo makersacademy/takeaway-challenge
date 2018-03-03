@@ -4,7 +4,7 @@ describe Texter do
 
   subject(:texter) { described_class.new }
 
-  it 'sends a text' do
+  xit 'sends a text' do
     number = '+447951596154'
     body = "This is a text"
     texter.send(number, body)

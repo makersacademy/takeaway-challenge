@@ -2,7 +2,7 @@ require 'twilio-ruby'
 
 class Texter
 
-  attr_reader :wilio_number, :client
+  attr_reader :twilio_number, :client
 
   def initialize
     @account_sid = 'AC0ea6841b22bf58ef98354551ebe33c68'
