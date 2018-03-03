@@ -8,23 +8,23 @@ class Receipt
     @total = total
   end
 
-  def header
+  def print_header
     "You ordered:"
   end
 
-  def receipt
+  def print_receipt
     @order.each do |food_item|
-    "#{food_item} - £#{@menu.menu_list[food_item.to_sym]}"
+      "#{food_item} - £#{@menu.menu_list[food_item.to_sym]}"
     end
   end
 
-  def total
-    "Your total is #{@total}"
+  def print_total
+    "Your total to pay is #{@total.sum}"
   end
 
   def print_final_receipt
-    header
-    receipt
-    total
+    puts print_header
+    puts print_receipt
+    puts print_total
   end
 end

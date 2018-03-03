@@ -3,7 +3,7 @@ require_relative 'text'
 require_relative 'receipt'
 
 class MenuSelector
-  attr_reader :menu, :total, :orders
+  attr_reader :menu, :total, :order, :receipt
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -18,20 +18,18 @@ class MenuSelector
 
   def order_food(*order)
     @order = order
-    @order.each do |food_item|
+    order.each do |food_item|
       @total << @menu.menu_list[food_item.to_sym]
     end
+  end
+
+  def make_receipt(receipt = Receipt.new(@order, @total))
+    @receipt = receipt
+    receipt.print_final_receipt
   end
 
   def pay(user_total, text = Text)
     raise 'That is not the correct amount!' if user_total != @total.sum
     text.new
-    make_receipt
-  end
-
-  def make_receipt(receipt = Receipt)
-    @receipt = receipt
-    receipt.new(@order, @total)
-    @receipt.print_final_receipt
   end
 end
