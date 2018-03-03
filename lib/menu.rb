@@ -1,8 +1,12 @@
+require_relative './dish.rb'
+require_relative './dish_printer.rb'
+
 class Menu
 
-  def initialize(dish_class=Dish)
+  def initialize(dish_class=Dish, printer=DishPrinter.new)
     @dish_class = dish_class
     @dish_array = []
+    @printer = printer
   end
 
   def add_dish(name, price)
@@ -17,24 +21,14 @@ class Menu
 
   def print(puts_out=true)
     if puts_out
-      puts assemble_menu
+      puts @printer(dish_array)
     else
-      assemble_menu
+      @printer(dish_array)
     end
   end
 
   def select(i, n)
     Array.new(n) { @dish_array[i - 1] }
-  end
-
-  private
-
-  def assemble_menu
-    menu_string = ""
-    @dish_array.each_with_index do |dish, i|
-      menu_string += "#{i + 1}. #{dish.print}\n"
-    end
-    menu_string
   end
 
 end

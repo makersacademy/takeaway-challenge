@@ -19,12 +19,11 @@ describe Menu do
   it 'populates from dish array' do
     dish_array = [
       ['Samosa', 1],
-      ['Samosa', 1],
+      ['Bhaji', 1],
       ['Samosa', 1]
     ]
     menu.populate_dishes_from_array(dish_array)
-    expect(menu.print(false)).to eq "1. Samosa, £1.0\n" + \
-    "2. Samosa, £1.0\n" + \
-    "3. Samosa, £1.0\n"
+    expect(menu.dish_array.count).to eq 3
+
   end
 end
