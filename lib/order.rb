@@ -9,8 +9,6 @@ class Order
   end
 
   def add_item(item)
-
-
     @current_order << item
   end
 

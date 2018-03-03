@@ -23,12 +23,11 @@ describe Order do
       expect(subject.current_order).to eq([fake_item])
     end
 
-    it 'increases quantity if item is already present' do
-      # Magic numbers in my tests?
-      fake_item = double({ fake_menu: "Fake Item" })
-      2.times { subject.add_item(fake_item) }
-      expect(subject.current_order.first[quantity]).to eq(2)
-    end
+    # it 'increases quantity if item is already present' do
+    #   # Magic numbers in my tests?
+    #   fake_item = double("Item", { fake_menu: "Fake Item", quantity: 0 })
+    #   expect { 2.times { subject.add_item(fake_item) } }.to change { fake_item.quantity }.from(0).to(2)
+    # end
   end
 
   describe '#remove_item' do
