@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { described_class.new(dbl_menu, dbl_printer) }
+  subject(:order) { described_class.new(dbl_menu, dbl_printer, dbl_texter) }
   let(:dbl_dish) { double :dish,
     print: 'Samosa, £1.0',
     price: 1.0
@@ -16,6 +16,7 @@ describe Order do
      print: "1. Bhaji, £2.0\n"
     }
   let(:dbl_printer) { double :dish_printer }
+  let(:dbl_texter) { double :texter, send: nil }
 
   it 'messages menu to print when asked to show menu' do
     expect(dbl_menu).to receive(:print).with(any_args)
@@ -41,6 +42,17 @@ describe Order do
 
   it 'completes the order' do
     expect{ order.complete }.to change{order.completed}.from(false).to(true)
+  end
+
+  it 'messages texter to send message when order is completed' do
+    expect(dbl_texter).to receive(:send).with(any_args)
+    order.complete
+  end
+
+  it 'formats the text message body properly' do
+    allow(Time).to receive(:now).and_return(Time.mktime(0))
+    expect(order.text_body).to eq "Thank you! Your order was placed and will "\
+    "be delivered before 01:00"
   end
 
   it "doesn't let you add dishes after order is completed" do

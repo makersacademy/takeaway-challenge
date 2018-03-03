@@ -5,11 +5,16 @@ class Order
 
   attr_reader :order_dishes, :completed, :menu
 
-  def initialize(menu=Menu.new, printer=DishPrinter.new)
+  def initialize(menu=Menu.new,
+    printer=DishPrinter.new,
+    texter = Texter.new,
+    text_number = '+447951596154')
     @menu = menu
     @order_dishes = []
     @printer = printer
     @completed = false
+    @texter = texter
+    @text_number = text_number
   end
 
   def add_dish(i, n)
@@ -38,10 +43,27 @@ class Order
 
   def complete
     @completed = true
+    send_text
   end
 
   def change_menu(menu)
     @menu = menu
+  end
+
+  def text_body
+    "Thank you! Your order was placed and will "\
+    "be delivered before #{format_time}"
+  end
+
+  private
+
+  def send_text
+    @texter.send(@text_number, text_body)
+  end
+
+  def format_time
+    deliverytime = Time.now + 3600
+    deliverytime.strftime("%H:%M")
   end
 
 end
