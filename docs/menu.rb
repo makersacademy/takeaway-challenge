@@ -22,21 +22,16 @@ class Menu
   end
 
   def compose_message(list)
-    message = "This are the dishes in our menu:\n"
+    message = "These are the dishes in our menu:\n"
     list.each do |dish|
       message << "We have #{dish.name} for #{dish.price}£\n"
     end
     message << "We hope you like it"
   end
 
-  def show(message)
-    puts message
-  end
-
-  def print_menu
+  def display
     list = generate_list
-    message = compose_message(list)
-    show(message)
+    puts compose_message(list)
   end
 
 end
