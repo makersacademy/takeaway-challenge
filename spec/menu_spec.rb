@@ -6,7 +6,7 @@ describe Menu do
   let(:ctm) { double :chiken_tikka_masala, name: 'Chicken Tikka Masala', price: 6.99 }
 
   describe '#new' do
-    it 'menu should be empty in the start' do
+    it 'menu should be empty at start' do
       expect(menu.menu).to eq([])
     end
   end
@@ -17,6 +17,12 @@ describe Menu do
       menu.add(pm)
       expect(menu.menu).to include(pm)
     end
+
+    it 'should raise error if dish already exits in menu' do
+      menu.add(pm)
+      expect{ menu.add(pm) }.to raise_error 'Menu item already exists'
+    end
+
   end
 
   describe '#remove' do
@@ -26,6 +32,9 @@ describe Menu do
       menu.add(ctm)
       menu.remove(pm)
       expect(menu.menu).not_to include(pm)
+    end
+    it 'should raise error if dish is not in the menu' do
+      expect { menu.remove(pm) }.to raise_error 'Dish not found in the menu'
     end
   end
 
