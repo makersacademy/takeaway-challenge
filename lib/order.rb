@@ -15,6 +15,7 @@ class Order
   def add_dish(i, n)
     raise Exception.new('Items cannot be added after order is completed!') if @completed
     @order_dishes << @menu.select(i,n)
+    @order_dishes.flatten!
   end
 
   def show_menu(puts_out=true)
@@ -41,6 +42,6 @@ class Order
 
   def change_menu(menu)
     @menu = menu
-  end 
+  end
 
 end
