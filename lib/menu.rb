@@ -3,6 +3,8 @@ require_relative './dish_printer.rb'
 
 class Menu
 
+  attr_reader :dish_array
+
   def initialize(dish_class=Dish, printer=DishPrinter.new)
     @dish_class = dish_class
     @dish_array = []
@@ -21,9 +23,9 @@ class Menu
 
   def print(puts_out=true)
     if puts_out
-      puts @printer(dish_array)
+      puts @printer.print(dish_array)
     else
-      @printer(dish_array)
+      @printer.print(dish_array)
     end
   end
 

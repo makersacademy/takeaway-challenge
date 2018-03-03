@@ -1,8 +1,10 @@
 require './lib/menu.rb'
 require './lib/dish.rb'
+require './lib/dish_printer.rb'
+require './lib/order.rb'
 
-menu = Menu.new
-
+menu = menu.new
+order = order.new(menu)
 dish_array = [
   ['Samosa', 1],
   ['Bhaji', 1.50],
