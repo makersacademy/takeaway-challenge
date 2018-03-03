@@ -10,4 +10,8 @@ class Menu
       "%s £%.2f" % [name.to_s.capitalize, price]
     end.join(", ")
   end
+
+  def dish_available?(dish)
+    !!@dishes[dish]
+  end
 end
