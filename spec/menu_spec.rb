@@ -26,15 +26,17 @@ describe Menu do
 
   describe '#select_item' do
     it 'Should  call order_item method with item' do
-      expect(fake_order_class).to receive(:order_item).with(fake_item)
-      subject.select_item(fake_item)
+      allow(subject.menu).to receive(:select) { ["test"] }
+      expect(fake_order_class).to receive(:order_item).with("test")
+      subject.select_item("")
     end
   end
 
   describe '#deselect_item' do
     it 'Should  call remove_item method with item' do
-      expect(fake_order_class).to receive(:remove_item).with(fake_item)
-      subject.deselect_item(fake_item)
+      allow(subject.menu).to receive(:select) { ["test"] }
+      expect(fake_order_class).to receive(:remove_item).with("test")
+      subject.deselect_item("")
     end
   end
 end

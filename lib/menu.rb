@@ -16,10 +16,16 @@ class Menu
   end
 
   def select_item(item)
-    @order.order_item(item)
+    selection = @menu.select { |option| option[:item] == item }
+    @order.order_item(selection[0])
   end
 
   def deselect_item(item)
-    @order.remove_item(item)
+    selection = @menu.select { |option| option[:item] == item }
+    @order.remove_item(selection[0])
+  end
+
+  def place_order
+
   end
 end
