@@ -28,6 +28,12 @@ describe Menu do
     end
   end
 
+  context 'price of the dish' do
+    it 'returns the price of the dish' do
+    expect(menu.price(:margherita)).to eq dishes[:margherita]
+  end
+  end
+
 
 
 
