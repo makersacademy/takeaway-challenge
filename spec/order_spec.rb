@@ -22,10 +22,17 @@ describe Order do
       expect(order.cart).to eq([[pm, 2], [ctm, 1]])
     end
   end
-  
-  describe '#confirm_total' do
-    it 'expect confirm total to raise error' do
-      expect { order.confirm_total }.to raise_error 'Amount enter does not match total, please try again'
+
+  describe '#confirm_total?' do
+    it 'checks and returns true if entered amount equals total' do
+      order.add_to_order(pm, 2)
+      order.stub(:gets).and_return("17.98") # stubbing gets for correct amount
+      expect(order.confirm_total).to be true
+    end
+    it 'checks and returns false if entered amount equals total' do
+      order.add_to_order(ctm, 2)
+      order.stub(:gets).and_return("5") #stubbing gets for wrong amount
+      expect(order.confirm_total).to be false
     end
   end
 
@@ -50,12 +57,14 @@ describe Order do
 
     it 'sends a confirmation sms and returns true if successful' do
       expect(order).to receive(:checkout).with('good_phone_num').and_return(true)
+      # order.stub(:gets).and_return("5") #stubbing gets for wrong amount
       order.checkout('good_phone_num')
 
     end
 
     it 'sends a confirmation sms and returns false if unsuccesful' do
       expect(order).to receive(:checkout).with('bad_phone_number').and_return(false)
+      # order.stub(:gets).and_return("5") #stubbing gets for wrong amount
       subject.checkout('bad_phone_number')
     end
 
