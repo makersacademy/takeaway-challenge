@@ -7,10 +7,19 @@ class Order
   end
 
   def add_dish(number, quantity = 1)
-    @basket[(Menu.new.dishes[number]).first] =
-    [Menu.new.dishes[number].last, quantity]
+    dish_name = (Menu.new.dishes[number]).first
+    dish_number = Menu.new.dishes[number].last
+    @basket[dish_name] = [dish_number, quantity]
     @basket
   end
 
+  def basket_summary
+    @summary = @basket.map { |name, cost| [name, cost[0] * cost[1]] }.to_h
+  end
 
+  def total_cost
+    @summary.values.inject(&:+)
+  end
+
+  
 end

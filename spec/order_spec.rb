@@ -35,12 +35,30 @@ describe Order do
     end
   end
 
-  describe '#check_out' do
-    describe 'check the total is given matches the sum in the order' do
-      it "return the total amount " do
-
-      end
+  describe '#basket_summary' do
+    it 'return the summary of the order' do
+      basket = {
+          "prawn crackers" => [1.99, 2],
+          "vagetable dumplings" => [5.99, 1]
+        }
+      actual = Order.new(basket).basket_summary
+      expected = {
+          "prawn crackers" => 3.98,
+          "vagetable dumplings" => 5.99
+        }
+      expect(actual).to eq expected
     end
   end
 
+  describe '#total_cost' do
+    it 'return the total cost of the order' do
+      basket = {
+          "prawn crackers" => 3.98,
+          "vagetable dumplings" => 5.99
+        }
+      actual = Order.new(basket).total_cost
+      expected = 9.97
+      expect(actual).to eq expected
+    end
+  end
 end
