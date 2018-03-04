@@ -21,9 +21,9 @@ class Menu
   end
 
   def compose_menu(list)
-    message = "These are the dishes in our menu:\n"
+    message = "WELCOME TO THE INTERNATIONAL RESTAURANT\nMENU:\n"
     list.each do |dish|
-      message << "We have #{dish.name} for #{dish.price}£\n"
+      message << "#{dish.name} for #{dish.price}£\n"
     end
     message << "We hope you like it"
   end
