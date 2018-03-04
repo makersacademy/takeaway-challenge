@@ -1,12 +1,16 @@
 require_relative './order.rb'
 require_relative './menu.rb'
+require_relative './sms.rb'
+require 'envyable'
+Envyable.load('config/env.yml')
 
 class TakeAway
-  attr_reader :menu, :curr_order, :payment
+  attr_reader :menu, :curr_order, :payment, :delivery_eta
 
-  def initialize(order = Order, menu = Menu)
+  def initialize(order = Order, menu = Menu, sms = SMS)
     @order = order
     @menu = menu.new
+    @sms = sms
     @payment = 0
   end
 
@@ -14,25 +18,27 @@ class TakeAway
     p @menu.list
   end
 
-  def start_order(order_ref = gen_order_ref)
-    @curr_order = @order.new(order_ref)
+  def start_order
+    @curr_order = @order.new
   end
 
-  def complete_order(order_ref, amount)
-    customer_payment(order_ref, amount)
-    p "Thank you! Your order #{@curr_order.order_ref} was placed and will be delivered before 18:52"
+  def complete_order(amount)
+    customer_payment(amount)
+    send_confirmation
+  end
+
+  def send_confirmation
+    @delivery_eta = Time.now + 1 * 60 * 60
+    @new_sms = @sms.new
+    default_msg = "Thank you! Your order was placed and will be delivered before #{@delivery_eta.strftime('%H:%M')}"
+    @new_sms.send_sms(default_msg)
   end
 
   private
 
-  def customer_payment(order_ref, amount)
-    raise StandardError.new("No such order reference") if order_ref != @curr_order.order_ref
-    raise StandardError.new("You have not paid the correct total amount") if amount != @curr_order.total
-    p 'Payment received'
-  end
-
-  def gen_order_ref
-    order_ref = rand(10)*rand(10)
+  def customer_payment(amount)
+    raise StandardError.new("You have not paid the correct total amount") if amount != @curr_order.total.round(2)
+    p "Payment successful! You will shortly receive a confirmation text."
   end
 
 end

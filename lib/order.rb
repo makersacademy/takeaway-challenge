@@ -1,18 +1,18 @@
 class Order
-  attr_reader :menu, :basket, :item, :total, :order_ref
+  attr_reader :menu, :basket, :item, :total
 
-  def initialize(order_ref, menu = Menu)
-    @order_ref = order_ref
+  def initialize(menu = Menu)
     @menu = menu.new
     @basket = []
     @item = {}
+    @total = 0.00
   end
 
   def add_item(dish, quantity = 1)
-    raise ArgumentError.new("No such item in menu") if !@menu.list.has_key?(dish.downcase)
-    @item[:dish] = dish
+    raise ArgumentError.new("No such item in menu") unless @menu.list.has_key?(dish.downcase)
+    @item[:dish] = dish.downcase
     @item[:quantity] = quantity
-    @item[:subtotal] = @menu.list[dish]*quantity
+    @item[:subtotal] = @menu.list[dish.downcase] * quantity
     add_basket
     puts "#{quantity}x #{dish}(s) added to your basket."
   end
@@ -37,6 +37,5 @@ class Order
   def add_basket
     @basket << @item.dup
   end
-
 
 end
