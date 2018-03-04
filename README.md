@@ -4,17 +4,39 @@ Developer(Alex)'s approach:
 
 Note: All the written code, that I will refer to, have been written following a TDD methodology. Hence, when a step is described, it is implicit that the corresponding rspec have been coded prior to that.
 
+
 Steps for Developer:
 
+User story1
 1.- I create a Dish class initialized with name and price.
-2.- I create a Menu class initiazed with an array to store the dishes and I store some dishes on it.
-3.- I create a print method inside of the Menu class to display the array of dishes.
+2.- I create a Menu class initiazed with an array to store the dishes.
+3.- I define a generate_menu method inside of the Menu class to generate a list full of dishes.
+4.- I define a compose_menu method inside of the Menu class to compose a string out of a list of items with name & price.
+5.- I define a display method inside of the Menu class to puts the menu.
+
+User story2
+6.- I create a Dish class initialized with an array to store the orders and with a new instance menu from the class Menu.
+7.- I define a display_menu method inside of the Order class to show the menu initialized.
+8.- I define a generate_order method inside of the Order class to generate an order with the desired dishes from our menu.
+9.- I define a compose_order method inside of the Order class to compose a string out of a list of selected items with name & price.
+10.- I define a display method inside of the Order class to puts the order.
+
 
 Steps for User:
 
+User story1
 1.- The dishes, that the user will find available, have now a name and a price associated to them.
-2.-The user has now a menu with a list of the dishes offered.
-3 .-The user has now visibility of the list of dishes offered.
+2.-The user has now an empty menu where a list of the dishes offered will be stored.
+3.-The user has now the menu filled with a list of dishes offered.
+4.- The user has now a well articulated menu message.
+5.- The user can now see the menu.
+
+User story2
+6.- The user has now an empty order where a list of the orders selected will be stored and a new menu.
+7.- The user can now see the menu.
+8.-The user has now the order filled with a list of dishes selected.
+9.- The user has now a well articulated order message.
+10.- The user can now see the order.
 
 
 

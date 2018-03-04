@@ -4,7 +4,7 @@ describe Dish do
 
   subject(:dish) { described_class.new(:name, :price) }
 
-  context "Providing the initialized dish details (name, price)" do
+  context "Provided the initialized dish details (name, price)" do
 
     describe "#name" do
       it "displays the name of the dish" do
