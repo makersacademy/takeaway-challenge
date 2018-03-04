@@ -12,7 +12,7 @@ describe Menu do
       expect(menu.current_menu)
     end
 
-    it 'should have a method that displays menu' do
+    it 'should a attr_reader to access menu' do
       expect(menu).to respond_to(:current_menu)
     end
   end
