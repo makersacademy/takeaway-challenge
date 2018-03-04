@@ -14,4 +14,10 @@ class Order
     basket[dish] = quantity
   end
 
+  def total
+    sum = 0
+    basket.each { |dish, quantity| sum += menu.price(dish) * quantity }
+    sum
+  end
+
 end
