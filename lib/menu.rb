@@ -26,6 +26,7 @@ class Menu
   end
 
   def place_order
-
+    @printer.formatter(@order.current_order)
+    @order.confirm_order
   end
 end

@@ -4,9 +4,9 @@ describe Printer do
 
   describe '#formatter' do
 
-    it 'Should puts the document' do
-      document = "hello"
-      expect(subject.formatter(document)).to eq "hello"
+    it 'Should respond to  the document and puts' do
+      document = [ {i: "", p: ""} ]
+      expect(subject.formatter(document)).to eq(nil)
     end
   end
 end
