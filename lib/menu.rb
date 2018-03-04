@@ -13,7 +13,7 @@ class Menu
   end
 
   def read_menu
-    @menu
+    @menu.each { |key, value| puts key + ' : ' + value.to_s }
   end
 
   def price_of_dish(dish)
