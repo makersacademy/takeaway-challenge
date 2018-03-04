@@ -20,7 +20,7 @@ describe Menu do
 
     it 'should raise error if dish already exits in menu' do
       menu.add(pm)
-      expect{ menu.add(pm) }.to raise_error 'Menu item already exists'
+      expect { menu.add(pm) }.to raise_error 'Menu item already exists'
     end
 
   end
@@ -41,11 +41,11 @@ describe Menu do
   describe '#list_all' do
     it { is_expected.to respond_to(:list_all) }
     it 'should list all menu items' do
-      menu_print = "\n" + "=" * 50 + "\n" + "Bla Bla Kitchen Menu".center(40) +
+      menu_print = "\n" + "=" * 50 + "\n" + "Blah Blah Kitchen Menu".center(40) +
       "\n" + "=" * 50 + "\n" +
       "No.".ljust(5) + "Dish".center(30) + "Price".rjust(15) + "\n" + "-" * 50 + "\n" +
-      "1.".ljust(5) + "#{pm.name}".center(30) + "#{pm.price}".rjust(15) + "\n" +
-      "2.".ljust(5) + "#{ctm.name}".center(30) + "#{ctm.price}".rjust(15) + "\n" +
+      "1.".ljust(5) + "#{pm.name}".center(30) + "£#{pm.price}".rjust(15) + "\n" +
+      "2.".ljust(5) + "#{ctm.name}".center(30) + "£#{ctm.price}".rjust(15) + "\n" +
       "=" * 50 + "\n"
 
       menu.add(pm)

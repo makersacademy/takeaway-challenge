@@ -84,11 +84,11 @@ describe Order do
       print_val = "-" * 60 + "\n" +
       "Dish".ljust(30) + "Price".center(10) + "Quantity".center(10) +
       "Total".rjust(10) + "\n" + "-" * 60 + "\n" +
-      "Pie and mash".ljust(30) + "8.99".center(10) +
-      "2".center(10) + "17.98".rjust(10) + "\n" +
-      "Chicken Tikka Masala ".ljust(30) + "6.99".center(10) +
-      "3".center(10) + "20.97".rjust(10) + "\n" +
-      "=" * 60 + "\n" + "Grand Total".ljust(50) + "38.95".rjust(10) + "\n" +
+      "Pie and mash".ljust(30) + "£8.99".center(10) +
+      "2".center(10) + "£17.98".rjust(10) + "\n" +
+      "Chicken Tikka Masala ".ljust(30) + "£6.99".center(10) +
+      "3".center(10) + "£20.97".rjust(10) + "\n" +
+      "=" * 60 + "\n" + "Grand Total".ljust(50) + "£38.95".rjust(10) + "\n" +
       "=" * 60 + "\n"
 
 

@@ -24,8 +24,8 @@ class Order
     raise 'Cart is empty' if @cart.empty?
     success = request_confirmation(phone_number)
     # printing feedback
-    puts success ? 'Successful! You should receive a confirmation SMS with estimated time soom' :
-    'There has been a problem. Please try later'
+    puts success ? 'Successful! You should receive a confirmation SMS with estimated time soon' :
+    'Computer says no.. :('
 
   end
 
@@ -36,12 +36,12 @@ class Order
     puts '-' * 60
     @cart.each do |ind_dish|
       puts "#{ind_dish.first.name}".ljust(30) +
-      "#{ind_dish.first.price}".center(10) +
+      "£#{ind_dish.first.price}".center(10) +
       "#{ind_dish.last}".center(10) +
-      "#{ind_dish.first.price * ind_dish[1]}".rjust(10)
+      "£#{ind_dish.first.price * ind_dish[1]}".rjust(10)
     end
     puts '=' * 60
-    puts 'Grand Total'.ljust(50) + "#{calculate_total}".rjust(10)
+    puts 'Grand Total'.ljust(50) + "£#{calculate_total}".rjust(10)
     puts '=' * 60
   end
 
