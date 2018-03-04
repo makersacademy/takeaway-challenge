@@ -18,9 +18,8 @@ class MenuSelector
 
   def order_food(*order)
     @order = order
-    order.each do |food_item|
-      @total << @menu.menu_list[food_item.to_sym]
-    end
+    order.each { |o| @total << @menu.menu_list[o.to_sym] }
+    @total = @total.sum
   end
 
   def make_receipt(receipt = Receipt.new(@order, @total))
@@ -29,7 +28,7 @@ class MenuSelector
   end
 
   def pay(user_total, text = Text)
-    raise 'That is not the correct amount!' if user_total != @total.sum
+    raise 'That is not the correct amount!' if user_total != @total
     text.new
   end
 end

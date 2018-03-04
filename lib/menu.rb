@@ -10,5 +10,5 @@ class Menu
       chicken_wrap: 6,
       spaghetti_bolognese: 7.50
     }
-    end
   end
+end

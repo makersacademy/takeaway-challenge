@@ -19,7 +19,7 @@ class Receipt
   end
 
   def print_total
-    "Your total to pay is #{@total.sum}"
+    "Your total to pay is #{@total}"
   end
 
   def print_final_receipt
