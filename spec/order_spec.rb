@@ -3,50 +3,54 @@ require './lib/order.rb'
 describe Order do
 
   subject(:order) { described_class.new }
+  dish = Dish.new('7 Spanish Paella', 8)
+  wrong_dish2 = Dish.new('7 Spanish Paella', 5)
 
-  context "Provided a menu" do
+  context 'Provided a menu' do
 
-    describe "#display_menu" do
-      it "shows the menu" do
+    describe '#display_menu' do
+      it 'shows the menu' do
         expect(order.display_menu).to eq nil
       end
     end
 
   end
 
-  context "Provided an order" do
+  context 'Provided an order' do
 
-    describe "#add_to_order" do
-      it "generates an order with the desired dishes from our menu" do
-        expect(order.add_to_order(2, Dish.new("7 Spanish Paella", 8))).not_to be_empty
+    describe '#add_to_order' do
+      it 'generates an order with the desired dishes from our menu' do
+        expect(order.add_to_order(2, dish)).not_to be_empty
       end
-      it "raises an error if the quantity is not an integer" do
-        expect(order.add_to_order("string", Dish.new("7 Spanish Paella", 8))).to eq "Quantity must be an integer."
+      it 'raises an error if the quantity is not an integer' do
+        expect(order.add_to_order('string', dish)).to eq 'Quantity must be an integer.'
       end
-      it "raises an error if the dish does not belong to the class Dish" do
-        expect(order.add_to_order(2, "string")).to eq "Dish must be in the menu."
+      it 'raises an error if the dish does not belong to the class Dish' do
+        expect(order.add_to_order(2, 'string')).to eq 'Dish must be in the menu.'
       end
     end
 
-    describe "#calculate_payment" do
-      it "calculates the total sum to be paid" do
-        order.add_to_order(2, Dish.new("7 Spanish Paella", 8))
+    describe '#calculate_payment' do
+      it 'calculates the total sum to be paid' do
+        order.add_to_order(2, dish)
         expect(order.calculate_payment).to eq 16
       end
     end
 
-    describe "#available?" do
-      it "checks if the dish belongs to the class Dish" do
-        expect(order.available?("string")).to eq false
+    describe '#available?' do
+      it 'checks if the dish belongs to the class Dish' do
+        expect(order.available?('string')).to eq false
       end
-      it "checks if the dish is in the menu" do
-        expect(order.available?(Dish.new("gazpacho", 8))).to eq false
+      it 'checks if the dish is in the menu' do
+        moke_wrong_dish = double(:dish, name: 'gazpacho', price: 8)
+        expect(order.available?(moke_wrong_dish)).to eq false
       end
-      it "checks if the dish has the right price" do
-        expect(order.available?(Dish.new("7 Spanish Paella", 5))).to eq false
+      it 'checks if the dish has the right price' do
+
+        expect(order.available?(wrong_dish2)).to eq false
       end
-      it "checks if the dish on the menu" do
-        expect(order.available?(Dish.new("7 Spanish Paella", 8))).to eq true
+      it 'checks if the dish on the menu' do
+        expect(order.available?(dish)).to eq true
       end
     end
 
