@@ -1,6 +1,7 @@
 require_relative 'menu'
 
 class Order
+  attr_reader :total
   def initialize(menu = Menu.new)
     @menu = menu
     @total = 0
