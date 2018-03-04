@@ -1,4 +1,4 @@
-require './docs/dishes.rb'
+require './lib/dishes.rb'
 
 describe Dish do
 

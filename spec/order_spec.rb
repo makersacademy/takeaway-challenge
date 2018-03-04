@@ -1,4 +1,4 @@
-require './docs/order.rb'
+require './lib/order.rb'
 
 describe Order do
 
