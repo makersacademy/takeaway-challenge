@@ -22,6 +22,12 @@ describe Order do
       expect(order.cart).to eq([[pm, 2], [ctm, 1]])
     end
   end
+  
+  describe '#confirm_total' do
+    it 'expect confirm total to raise error' do
+      expect { order.confirm_total }.to raise_error 'Amount enter does not match total, please try again'
+    end
+  end
 
 # method made private
   # describe '#calculate_total' do

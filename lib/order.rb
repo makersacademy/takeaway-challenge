@@ -10,18 +10,23 @@ class Order
   end
 
   def add_to_order(dish, quantity)
-
+    # @cart = [[Banana, 6],[Banana, 1]]
     @cart << [dish, quantity]
+
+    #
     # if cart.empty?
-    #   (@cart << [dish, quantity])
+    #   @cart << [dish, quantity]
     # else
-    #   @cart.each{ |e| e.first.eql?(dish) ? (puts "already in") : @cart << [dish, quantity] }
+    #   @cart.each{ |e| e[0].eql?(dish) ? e[1] += quantity : @cart << [dish, quantity] }
     # end
   end
 
+
   def checkout(phone_number)
     raise 'Cart is empty' if @cart.empty?
-    success = request_confirmation(phone_number)
+    show_cart
+    # confirm_total # confirms total with customer aka getting payment
+    success = request_confirmation(phone_number) if confirm_total
     # printing feedback
     puts success ? 'Successful! You should receive a confirmation SMS with estimated time soon' :
     'Computer says no.. :('
@@ -44,7 +49,16 @@ class Order
     puts '=' * 60
   end
 
-  # private # made private as rubonov was messing up with %
+
+  def confirm_total
+    puts 'Please enter the total amount as listed above to place order'
+    amount = gets.chomp.to_f
+    raise 'Amount enter does not match total, please try again' unless amount.eql?(calculate_total)
+    return true
+  end
+
+    # private # made private as rubonov was messing up with %
+
   def request_confirmation(phone_number)
     new_sms = @send_sms_class.new()
     new_sms.send(phone_number, calculate_total)
@@ -54,6 +68,7 @@ class Order
   def calculate_total
     total = 0
     @cart.each { |dish| total += dish.first.price * dish.last }
-    total
+    total.round(2)
   end
+
 end
