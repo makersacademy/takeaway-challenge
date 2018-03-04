@@ -44,6 +44,18 @@ describe UI do
     end
   end
 
+
+  describe '#process(4)' do
+    it "should print the order, and then ask for user input" do
+      expect(subject).to receive(:print_order)
+
+      allow(subject).to receive(:user_input).and_return("N")
+
+      subject.process('4')
+    end
+  end
+
+
   describe '#interactive_menu' do
     it "should call print options" do
       expect(subject).to receive(:print_options)

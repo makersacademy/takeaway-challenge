@@ -30,7 +30,10 @@ class UI
         print_order
       when "4"
         print_order
-        #send the sms ""
+        puts "Would you like to make the order? (Y or N)"
+        input = user_input
+        require './lib/send_sms.rb' if input == "Y"
+        exit
       when "5"
         exit
       else
