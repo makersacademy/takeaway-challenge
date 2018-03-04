@@ -8,8 +8,8 @@ class Order
 
   def add_dish(number, quantity = 1)
     dish_name = (Menu.new.dishes[number]).first
-    dish_number = Menu.new.dishes[number].last
-    @basket[dish_name] = [dish_number, quantity]
+    dish_cost = (Menu.new.dishes[number].last)
+    @basket[dish_name] = [dish_cost, quantity]
     @basket
   end
 
@@ -21,9 +21,11 @@ class Order
     summary.values.inject(&:+)
   end
 
-  # def print_receipt#(basket,summary)
-  #   details = basket_summary(basket).map { |name, cost| "#{name}  #{cost}" }.join("\n")
-  #
-  # end
+  def print_receipt(basket_summary,total_cost)
+    details = basket_summary.map { |name, cost| "#{name}  #{cost/100.0}" }.join("\n")
+    puts details
+    puts "-----------------------"
+    puts "Total:  £#{total_cost/100.0}"
+  end
 
 end
