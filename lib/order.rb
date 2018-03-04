@@ -1,13 +1,15 @@
 require_relative './menu.rb'
+require_relative './twilio.rb'
 
 class Order
 
-  attr_reader :user_order, :menu, :tot
+  attr_reader :user_order, :menu, :tot, :text
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, text = Text.new)
     @user_order = []
     @menu = menu
     @list = menu.generate_menu
+    @text = text
   end
 
   def display_menu
@@ -52,7 +54,7 @@ class Order
 
   def finish_order
     fail 'Incorrect payment' if payment_wrong?
-    puts 'Thank you! Your order will be delivered before 18:52'
+    @text.send
   end
 
 end
