@@ -1,13 +1,16 @@
 require_relative 'menu.rb'
 
 class Order
-  def read_menu(menu)
-    puts menu.format
+  attr_reader :basket
+  def initialize(basket = {})
+    @basket = basket
   end
 
   def add_dish(number, quantity = 1)
-    @basket = {}
-    @basket[(Menu.new.dishes[number]).first] = [Menu.new.dishes[number].last, quantity]
+    @basket[(Menu.new.dishes[number]).first] =
+    [Menu.new.dishes[number].last, quantity]
     @basket
   end
+
+
 end

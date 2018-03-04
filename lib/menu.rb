@@ -1,5 +1,7 @@
+require_relative 'order.rb'
+
 class Menu
-  attr_reader :dishes, :format
+  attr_reader :dishes
 
   def initialize
     @dishes = {
@@ -10,7 +12,7 @@ class Menu
     }
   end
 
-  def format
+  def read_menu
     @dishes.map { |k, v| "#{k}. #{v[0]} £#{v[1]}" }.join("\n")
   end
 end

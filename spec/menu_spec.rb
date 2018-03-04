@@ -11,9 +11,9 @@ describe Menu do
     expect(actual).to eq expected
   end
 
-  describe '#format' do
+  describe '#read_menu' do
     it "show the list of the dishes and prices" do
-      actual = subject.format
+      actual = subject.read_menu
       expected = [
         "1. prawn crackers £1.99",
         "2. mini spring rolls £3.49",
