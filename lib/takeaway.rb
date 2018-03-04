@@ -1,13 +1,31 @@
+
 class Takeaway
+  attr_reader :menu, :basket, :prices
+  attr_accessor :total
+  def initialize(menu = Menu.new)
+    @total = 0
+    @basket = []
+    @menu = menu
+
+  end
+
   def list_menu
-    menu = {
-      "Curry Goat w/ Rice & Peas" => 7.99,
-      "Oxtail Stew w/ White Rice" => 8.49,
-      "Barrel Grilled Whole Jerk Chicken" => 12.99,
-      "Trinidad Special Roast Snapper" => 7.59,
-      "Traditional Lamb Patty" => 3.99,
-      "Salted Cassava Chips" => 2.99,
-      "Mango, Banana, Lime & Rum Drink" => 4.59
-}
+    @menu.prices.each { |y, z| puts y, z }
+  end
+
+  def add_to_basket(food, quantity = 1)
+    quantity.times do
+      @basket << @menu.menu[food]
+    end
+    @basket
+  end
+
+  def remove_from_basket(food)
+    @basket.delete(@menu.menu[food])
+  end
+
+  def update_total
+    @basket.each { |x| @total += @menu.prices[x] }
+    @total
   end
 end
