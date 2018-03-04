@@ -5,7 +5,7 @@ describe Takeaway do
 
   describe 'initialize' do
     it 'has a menu ready' do
-      expect(takeaway.menu).to not_be empty
+      expect(takeaway.menu).not_to be nil
     end
   end
 end
