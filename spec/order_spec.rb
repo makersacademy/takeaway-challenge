@@ -41,7 +41,7 @@ describe Order do
           "prawn crackers" => [1.99, 2],
           "vagetable dumplings" => [5.99, 1]
         }
-      actual = Order.new(basket).basket_summary
+      actual = Order.new.basket_summary(basket)
       expected = {
           "prawn crackers" => 3.98,
           "vagetable dumplings" => 5.99
@@ -52,11 +52,11 @@ describe Order do
 
   describe '#total_cost' do
     it 'return the total cost of the order' do
-      basket = {
+      basket_summary = {
           "prawn crackers" => 3.98,
           "vagetable dumplings" => 5.99
         }
-      actual = Order.new(basket).total_cost
+      actual = Order.new.total_cost(basket_summary)
       expected = 9.97
       expect(actual).to eq expected
     end

@@ -13,13 +13,17 @@ class Order
     @basket
   end
 
-  def basket_summary
-    @summary = @basket.map { |name, cost| [name, cost[0] * cost[1]] }.to_h
+  def basket_summary(basket)
+    basket.map { |name, cost| [name, cost[0] * cost[1]] }.to_h
   end
 
-  def total_cost
-    @summary.values.inject(&:+)
+  def total_cost(summary)
+    summary.values.inject(&:+)
   end
 
-  
+  # def print_receipt#(basket,summary)
+  #   details = basket_summary(basket).map { |name, cost| "#{name}  #{cost}" }.join("\n")
+  #
+  # end
+
 end
