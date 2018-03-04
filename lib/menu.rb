@@ -10,14 +10,12 @@ class Menu
 
   def generate_menu
     @list << Dish.new("1 Argentinian Asado", 12)
-    # @list << Dish.new("2 Canadian Poutine", 8)
-    # @list << Dish.new("3 Chinese Xiaolongbao", 8)
-    # @list << Dish.new("4 English Roast Beef & Yorkshire Pudding", 10)
-    # @list << Dish.new("5 Indian Tandoori Chicken", 10)
-    # @list << Dish.new("6 Italian Pizza", 8)
-    # @list << Dish.new("7 Japanese Katsudon", 10)
-    # @list << Dish.new("8 Portuguese Francesinha", 8)
-    @list << Dish.new("9 Spanish Paella", 8)
+    @list << Dish.new("2 Canadian Poutine", 8)
+    @list << Dish.new("3 Chinese Xiaolongbao", 8)
+    @list << Dish.new("4 English Roast Beef & Yorkshire Pudding", 10)
+    @list << Dish.new("5 Indian Tandoori Chicken", 10)
+    @list << Dish.new("6 Japanese Katsudon", 10)
+    @list << Dish.new("7 Spanish Paella", 8)
   end
 
   def compose_menu(list)
@@ -34,5 +32,3 @@ class Menu
   end
 
 end
-menu = Menu.new
-menu.display

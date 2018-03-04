@@ -17,9 +17,11 @@ User story1
 User story2
 6.- I create a Dish class initialized with an array to store the orders and with a new instance menu from the class Menu.
 7.- I define a display_menu method inside of the Order class to show the menu initialized.
-8.- I define a generate_order method inside of the Order class to generate an order with the desired dishes from our menu.
-9.- I define a compose_order method inside of the Order class to compose a string out of a list of selected items with name & price.
-10.- I define a display method inside of the Order class to puts the order.
+8.- I define an add_to_order method inside of the Order class to fill the array.
+9.- I define an available? predicate method inside of the Order calss to see if the attribute dish is in our menu.
+
+User story3
+1.- I define a calculate_payment method inside of the Order class to calculate the total to be paid.
 
 
 Steps for User:
@@ -34,10 +36,13 @@ User story1
 User story2
 6.- The user has now an empty order where a list of the orders selected will be stored and a new menu.
 7.- The user can now see the menu.
-8.-The user has now the order filled with a list of dishes selected.
-9.- The user has now a well articulated order message.
-10.- The user can now see the order.
+8.-The user can now add items to a basket.
+9.- The user can now check that the dish being order is indeed in our menu.
 
+User story3
+1.- The user has now an amount of money to match.
+
+User story3
 
 
 ```
