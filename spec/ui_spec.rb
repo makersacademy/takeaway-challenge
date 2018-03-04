@@ -19,42 +19,42 @@ describe UI do
     end
   end
 
-  describe '#process(1)' do
-    it "should print the menu" do
+  describe '#process' do
+    it "1. should print the menu" do
       expect(fake_menu).to receive(:print)
 
       subject.process("1")
     end
-  end
 
-  describe '#process(2)' do
-    it "should print the order" do
+    it "2. should print the order" do
       expect(subject).to receive(:print_order)
       expect(order).to receive(:add)
 
       subject.process('2')
     end
-  end
 
-  describe '#process(3)' do
-    it "should print the order" do
+    it "3. should print the order" do
       expect(subject).to receive(:print_order)
 
       subject.process('3')
     end
-  end
 
-
-  describe '#process(4)' do
-    it "should print the order, and then ask for user input" do
+    it "4. should print the order, and then ask for user input" do
       expect(subject).to receive(:print_order)
 
       allow(subject).to receive(:user_input).and_return("N")
 
       subject.process('4')
     end
-  end
 
+    it "5. should exit" do
+      expect(subject.process("5")).to eq nil
+    end
+
+    it "Anything else: should say it doesn't know what you mean" do
+      expect(subject.process('something')).to eq "I don't know what you mean, please try again"
+    end
+end
 
   describe '#interactive_menu' do
     it "should call print options" do

@@ -17,7 +17,7 @@ class Order
     end
   end
 
-private
+  private
 
   def user_input
     gets.chomp.split(", ")
