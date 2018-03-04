@@ -25,6 +25,9 @@ User story3
 11.- I define a payment_wrong? method inside of the Order class to check if the payment matches the total to be paid.
 12.- I define a finish_order method inside of the Order class to confirm delivery time or raise and error if the payment was not correct.
 
+User story4
+13.- I created a Twilio acc and applied it to my app.
+
 
 Steps for USER:
 
@@ -46,8 +49,8 @@ User story3
 11.- The user can now check if he has introduced the right amount of money to make the payment.
 12.- The user can now have a confirmation of the delivery time.
 
-User story3
-
+User story4
+13.- The user can receive now phone notifications.
 
 ```
                             _________
