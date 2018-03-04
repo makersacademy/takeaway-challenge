@@ -27,7 +27,5 @@ class Menu
       puts "#{i + 1}.".ljust(5) + "#{v.name}".center(30) + "£#{v.price}".rjust(15)
     end
     puts '=' * 50
-
-
   end
 end

@@ -9,7 +9,7 @@ class SendSMS
     begin
       @client = Twilio::REST::Client.new ENV["TWILLIO_ACCOUNT_SID"], ENV["TWILLIO_AUTH_TOKEN"]
       @client.messages.create(
-          body: "Thank you! Your order was placed and will be delivered before #{fetch_time}",
+          body: "Thank you! Your order was placed and will be delivered before #{in_40_mins}",
           to: phone_number, # Replace with your phone number
           from: ENV["TWILLIO_PHONE"]) # Replace with your Twilio number
     rescue Twilio::REST::TwilioError => e
@@ -21,8 +21,8 @@ class SendSMS
 
 private
 
-  def fetch_time
-    "#{(Time.now + 2400).hour}:#{(Time.now + 2400).min}"
+  def in_40_mins
+    (Time.now + 2400).strftime("%H:%M")
   end
 
 end
