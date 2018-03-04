@@ -4,7 +4,6 @@ describe Order do
 
   subject(:order) { described_class.new }
   dish = Dish.new('7 Spanish Paella', 8)
-  wrong_dish2 = Dish.new('7 Spanish Paella', 5)
 
   context 'Provided a menu' do
 
@@ -42,12 +41,10 @@ describe Order do
         expect(order.available?('string')).to eq false
       end
       it 'checks if the dish is in the menu' do
-        moke_wrong_dish = double(:dish, name: 'gazpacho', price: 8)
-        expect(order.available?(moke_wrong_dish)).to eq false
+        expect(order.available?(Dish.new('gazpacho', 8))).to eq false
       end
       it 'checks if the dish has the right price' do
-
-        expect(order.available?(wrong_dish2)).to eq false
+        expect(order.available?(Dish.new('7 Spanish Paella', 5))).to eq false
       end
       it 'checks if the dish on the menu' do
         expect(order.available?(dish)).to eq true
