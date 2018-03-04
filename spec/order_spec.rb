@@ -1,5 +1,6 @@
 require 'order'
 require 'menu'
+
 describe Order do
 
   describe '#add_dish' do
@@ -62,17 +63,29 @@ describe Order do
         expect(actual).to eq expected
       end
     end
-
-    # context 'when the total does not match the sum of the order' do
-    #   it 'raise an error message' do
-    #     basket_summary = {
-    #         "prawn crackers" => 3.98,
-    #         "vagetable dumplings" => 5.99
-    #       }
-    #     actual = Order.new.total_cost(basket_summary)
-    #     expected = 9.97
-    #     expect(actual).to eq expected
-    #   end
-    # end
   end
+
+   describe '#place_order' do
+     context 'when the payment_amount does not match the sum of the order' do
+       it 'raise an error message' do
+         basket_summary = {
+             "prawn crackers" => 398,
+             "vagetable dumplings" => 599
+           }
+         expect{ Order.new.place_order(1100, basket_summary) }.to raise_error ("Sorry, the payment amount is incorrect")
+       end
+     end
+
+     context 'when the payment_amount does match the sum of the order' do
+       it 'return a confirmation message' do
+         basket_summary = {
+             "prawn crackers" => 398,
+             "vagetable dumplings" => 599
+           }
+         time = (Time.now + 3600).strftime("%H:%M")
+         expect( Order.new.place_order(997, basket_summary) ).to eq "Thank you! Your order was placed and will be delivered before #{time}"
+       end
+     end
+   end
+
 end

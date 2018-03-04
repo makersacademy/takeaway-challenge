@@ -1,4 +1,5 @@
 require_relative 'menu.rb'
+require_relative 'send_sms.rb'
 
 class Order
   attr_reader :basket
@@ -21,11 +22,21 @@ class Order
     summary.values.inject(&:+)
   end
 
-  def print_receipt(basket_summary,total_cost)
+  def print_receipt(basket_summary, total_cost)
     details = basket_summary.map { |name, cost| "#{name}  £#{cost/100.0}" }.join("\n")
     puts details
     puts "-----------------------"
     puts "Total:  £#{total_cost/100.0}"
+  end
+
+  def place_order(payment_amount, summary)
+    raise "Sorry, the payment amount is incorrect" if payment_amount != total_cost(summary)
+    @time = (Time.now + 3600).strftime("%H:%M")
+    "Thank you! Your order was placed and will be delivered before #{@time}"
+  end
+
+  def send_confirmation
+    SMS.send_sms("Thank you! Your order was placed and will be delivered before #{@time}")
   end
 
 end

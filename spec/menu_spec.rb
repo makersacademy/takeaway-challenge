@@ -1,4 +1,5 @@
 require 'menu'
+require 'send_sms'
 
 describe Menu do
   it 'return a list of dishes and prices' do
