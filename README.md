@@ -16,67 +16,213 @@ github.com/durranee
        ':..:'                ':..:'
 
  ```
+A simple takeaway system using Twillio for sms confirmation
 
-Instructions
--------
+### files ###
+| /lib (main files) | /spec (tests) |
+|---|---|
+| order.rb | order_spec.rb  |
+| menu.rb  | menu_spec.rb  |
+| dish.rb  | dish_spec.rb  |
+| send_sms.rb  | send_sms_spec.rb |
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+All methods and tests have comments and 100% tested using RSpec
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+#### Prerequisite
+This ruby script requires a Twilio account with to work with Twillio SMS system.
+A free account works just fine.
+All credentials must be saved in /config/env.yml file as below
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+TWILLIO_ACCOUNT_SID: Your_Twillio_SID_Here
+TWILLIO_AUTH_TOKEN: Your_Twillio_Auth_Token_Here
+TWILLIO_PHONE: Your_Twillio_Phone_No_here
 ```
+Check /config/env.yml.example for an example
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+### How to feature test in irb ###
+ ```
+ require './lib/dish'
+ require './lib/menu'
+ require './lib/order'
+ require './lib/send_sms'
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+# --------------------------------------------------- #
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+# create an dish
+# This takes 2 mandatory arguments <string>name <float>price
+sb = Dish.new('Spaghetti Bolognese', 6.99)
 
+# --------------------------------------------------- #
 
-In code review we'll be hoping to see:
+# to create a Menu
+# this takes no arguments
+# menu = Menu.new
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+# --------------------------------------------------- #
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+# to add dish to menu
+# this takes one arguments <Dish object>
+# menu.add(sb)
 
-Notes on Test Coverage
-------------------
+# --------------------------------------------------- #
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+# to print the menu
+# this takes no arguments
+# menu.list_all
+
+# --------------------------------------------------- #
+
+# create Order object
+# this takes no arguments
+# order = Order.new
+
+# --------------------------------------------------- #
+
+# to add a dish to cart
+# this takes two arguments <dish object> and quantity <int>
+# order.add_to_order(sb, 2)
+
+# --------------------------------------------------- #
+
+# to print cart contents
+# this takes no arguments
+# order.show_cart
+
+# --------------------------------------------------- #
+
+# to place order / checkout
+# this takes 1 arguments <string> phone_number
+# order.checkout(phone_number)
+
+# --------------------------------------------------- #
+ ```
+
+ ### Example Run in irb ###
+ ```
+ $ irb
+ 2.5.0 :001 > require './lib/dish'
+ => true
+2.5.0 :002 > require './lib/menu'
+ => true
+2.5.0 :003 > require './lib/order'
+ => true
+2.5.0 :004 > require './lib/send_sms'
+ => true
+2.5.0 :005 >
+2.5.0 :006 > phone_number = "+44799999992"
+ => "+44799999992"
+2.5.0 :007 > sb = Dish.new('Spaghetti Bolognese', 6.99)
+ => #<Dish:0x00007fa816b8dab0 @name="Spaghetti Bolognese", @price=6.99>
+2.5.0 :008 > lr = Dish.new('Lamb Roast', 11.99)
+ => #<Dish:0x00007fa816b2fe60 @name="Lamb Roast", @price=11.99>
+2.5.0 :009 > menu = Menu.new
+ => #<Menu:0x00007fa8169c0de0 @menu=[]>
+2.5.0 :010 > menu.add(sb)
+ => [#<Dish:0x00007fa816b8dab0 @name="Spaghetti Bolognese", @price=6.99>]
+2.5.0 :011 > menu.add(lr)
+ => [#<Dish:0x00007fa816b8dab0 @name="Spaghetti Bolognese", @price=6.99>, #<Dish:0x00007fa816b2fe60 @name="Lamb Roast", @price=11.99>]
+2.5.0 :012 > menu.list_all
+
+==================================================
+         Blah Blah Kitchen Menu         
+==================================================
+No.               Dish                       Price
+--------------------------------------------------
+1.        Spaghetti Bolognese                £6.99
+2.             Lamb Roast                   £11.99
+==================================================
+ => nil
+2.5.0 :013 > order = Order.new
+ => #<Order:0x00007fa816a432e0 @send_sms_class=SendSMS, @cart=[]>
+2.5.0 :014 > order.add_to_order(sb, 4)
+ => [[#<Dish:0x00007fa816b8dab0 @name="Spaghetti Bolognese", @price=6.99>, 4]]
+2.5.0 :015 > order.add_to_order(lr, 2)
+ => [[#<Dish:0x00007fa816b8dab0 @name="Spaghetti Bolognese", @price=6.99>, 4], [#<Dish:0x00007fa816b2fe60 @name="Lamb Roast", @price=11.99>, 2]]
+2.5.0 :016 > order.show_cart
+------------------------------------------------------------
+Dish                            Price    Quantity      Total
+------------------------------------------------------------
+Spaghetti Bolognese             £6.99       4         £27.96
+Lamb Roast                      £11.99      2         £23.98
+============================================================
+Grand Total                                           £51.94
+============================================================
+=> nil
+2.5.0 :017 > order.checkout(phone_number)
+------------------------------------------------------------
+Dish                            Price    Quantity      Total
+------------------------------------------------------------
+Spaghetti Bolognese             £6.99       4         £27.96
+Lamb Roast                      £11.99      2         £23.98
+============================================================
+Grand Total                                           £51.94
+============================================================
+Please enter the total amount as listed above to place order
+> 51.94
+Thank you from Blah Blah Food! We're preparing your order and should be with you before #32:31.
+Your total is £51.94
+ ```
+ ## Classes and methods ##
+ ### Menu class methods ###
+ ```
+ # add(dish)
+ # add methhod simply adds dish object to @cart[] if it doesn't
+ # include already. If it does then throws error
+
+ # remove(dish)
+ # remove methhod removes dish object from @cart[] if it is in
+ # there already. If not, then throws error
+
+ # list_all()
+ # list_all simply prints a @menu[] prettier
+ ```
+
+ ### Dish class methods
+ ```
+ # No public methods. Just initialize() method that takes name and price as arg
+ ```
+
+ ### Order class methods
+ ```
+ # add_to_order(dish, quantity)
+ # add_to_order adds dish object and quantity provided to @cart[]
+
+ # checkout(phone_number)
+ # checkout takes phone number as argument and triggers request_confirmation
+ # to confirm whether to process order or not, true = go ahead, false abort
+ # this method will also throw error if @cart is empty
+
+ # show_cart()
+ # show_cart prints @cart contents prettier alongside pricing and grand total
+ # calculated bu calculate_total
+
+ # confirm_total()
+ # confirm_total will ask the user to enter the full billing amount shown
+ # and returns true if correct amount entered
+
+ # request_confirmation(phone_number)
+ # request_confirmation takes phone number as argument and creates an object of
+ # SendSMS class in order to proceed with sending text message
+
+## Private methods
+
+# calculate_total()
+# calculate total calculates and returns total amount from @cart after running
+# .round(2) on it
+
+ ```
+
+ ### SendSMS class methods
+ ```
+ # send(phone_number, total)
+ # main method for sending text, takes phone number and total amount as arg
+
+ ## Private methods
+
+ # delivery_message()
+ # delivery_message simply returns the string to send as text
+
+ # in_40_mins
+ # in_40_mins returns Time.now + 40 mins as HH:MM
+
+ ```
