@@ -6,9 +6,8 @@ describe Order do
 
   describe '#order_food' do
     it "allows the customer to order food" do
-      expect(subject.selection(fake_menu_item)).to change { basket }.to(fake_menu_item)
+      subject.selection(fake_menu_item)
+      expect(subject.basket).to match_array(fake_menu_item)
     end
-
   end
-
 end

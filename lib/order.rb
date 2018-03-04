@@ -1,14 +1,14 @@
-require 'menu'
+require_relative '../lib/menu.rb'
 
 class Order
 
-  attr_reader :menu
+  attr_reader :basket
 
   def initialize
-    @basket = [ ]
+    @basket = []
   end
-  #
-  # def selection(menu_item)
-  #   @basket << {}menu_item]
-  # end
+
+  def selection(food)
+    @basket << food
+  end
 end
