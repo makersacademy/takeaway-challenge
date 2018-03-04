@@ -1,6 +1,6 @@
 class Restaurant
   attr_reader :menu
-  def initialize(menu = { steak: "£12.50", pasta: "£7", fish: "£10" })
+  def initialize(menu = nil)
     @menu = menu
   end
 
