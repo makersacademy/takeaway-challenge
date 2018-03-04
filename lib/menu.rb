@@ -34,8 +34,4 @@ class Menu
       }
     ]
   end
-
-  def display_menu
-    @current_menu
-  end
 end
