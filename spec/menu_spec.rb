@@ -28,7 +28,6 @@ describe Menu do
         expect(menu.dish_available?(:margherita)).to be true
       end
 
-
       it 'says whether a dish is not available on the menu' do
         expect(menu.dish_available?(:curry)).to be false
       end
