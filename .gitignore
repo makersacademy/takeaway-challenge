@@ -1,1 +1,7 @@
 test.rb
+play.rb
+# Ignore application configuration using envyable
+/config/env.yml
+
+# Don't check in credentials 
+config/env.yml
