@@ -1,43 +1,36 @@
 require 'csv'
-require './lib/send_sms.rb'
+require './send_sms.rb'
+require './menu'
 class Takeaway
-  attr_reader :menu, :sum_of_order, :final_order  
+  attr_reader :menu, :final_order, :total  
   def initialize
-   @menu = CSV.read('/Users/chiakimizuta/gitDir/takeaway-challenge/lib/menu.csv', col_sep: ',', converters: :numeric)
-   @final_order = []
-   @sum_of_order = 0
+    @menu = Menu.new.menu
+    @final_order = []
+    @total = 0
   end   
 
   def order(dish, quantity)
+    price = @menu[dish]
+    fail "We do not have that dish here" if menu.key?(dish) == false
     order = {}
-    quantity = 0
     order[:dish] = dish
     order[:quantity] = quantity
-    @sum_of_order += quantity
-    @final_order << order     
+    @total += price * quantity
+    @final_order << order
+    @total  
   end   
-  
-  #raise error if dish isnt in the menu
-  #make a hash {dish:price}, quantity
-  #let total amount of price be same as calculation
-
 
   def sum_correct?
     sum = 0
     for order in @final_order
-      order.each do |dish, quantity|
-        sum += quantity
-      end
+      price = @menu[order[:dish]]
+      sum += price * order[:quantity]
     end
-    sum == @sum_of_order
+    sum == @total
   end  
   
   def confirmation
     fail "There was an error in your order" if sum_correct? == false
-    text.text_send
-  end
-
-  def text
-    Text.new
-  end           
+    Text.new.text_send
+  end 
 end 
