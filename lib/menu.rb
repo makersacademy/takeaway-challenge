@@ -9,13 +9,13 @@ class Menu
   end
 
   def generate_menu
-    @list << Dish.new("1 Argentinian Asado", 12)
-    @list << Dish.new("2 Canadian Poutine", 8)
-    @list << Dish.new("3 Chinese Xiaolongbao", 8)
-    @list << Dish.new("4 English Roast Beef & Yorkshire Pudding", 10)
-    @list << Dish.new("5 Indian Tandoori Chicken", 10)
-    @list << Dish.new("6 Japanese Katsudon", 10)
-    @list << Dish.new("7 Spanish Paella", 8)
+    @list << Dish.new('Argentinian Asado', 12)
+    @list << Dish.new('Canadian Poutine', 8)
+    @list << Dish.new('Chinese Xiaolongbao', 8)
+    @list << Dish.new('English Roast Beef & Yorkshire Pudding', 10)
+    @list << Dish.new('Indian Tandoori Chicken', 10)
+    @list << Dish.new('Japanese Katsudon', 10)
+    @list << Dish.new('Spanish Paella', 8)
   end
 
   def compose_menu(list)

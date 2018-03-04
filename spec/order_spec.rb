@@ -3,7 +3,7 @@ require './lib/order.rb'
 describe Order do
 
   subject(:order) { described_class.new }
-  dish = Dish.new('7 Spanish Paella', 8)
+  dish = Dish.new('Spanish Paella', 8)
 
   context 'Provided a menu' do
 
@@ -44,7 +44,7 @@ describe Order do
         expect(order.available?(Dish.new('gazpacho', 8))).to eq false
       end
       it 'checks if the dish has the right price' do
-        expect(order.available?(Dish.new('7 Spanish Paella', 5))).to eq false
+        expect(order.available?(Dish.new('Spanish Paella', 5))).to eq false
       end
       it 'checks if the dish on the menu' do
         expect(order.available?(dish)).to eq true
@@ -57,7 +57,7 @@ describe Order do
         expect(order.show_bill).to eq nil
       end
       it 'raises an error if nothing was ordered' do
-        expect(order.show_bill).to eq "You did not order anything"
+        expect(order.show_bill).to eq 'You did not order anything'
       end
     end
 

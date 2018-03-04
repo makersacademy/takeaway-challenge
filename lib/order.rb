@@ -15,8 +15,8 @@ class Order
   end
 
   def add_to_order(quantity, dish)
-    return "Quantity must be an integer." unless quantity.is_a? Integer
-    return "Dish must be in the menu." unless available?(dish)
+    return 'Quantity must be an integer.' unless quantity.is_a? Integer
+    return 'Dish must be in the menu.' unless available?(dish)
     @user_order << [quantity, dish]
   end
 
@@ -37,13 +37,9 @@ class Order
   def show_bill
     return "You did not order anything" if @user_order == []
     dishes = "You ordered:\n"
-    @user_order.each { |item|
-      item.last.name[0] = ''
-      dishes << item.last.name + " x " + item.first.to_s + " \n"
-    }
+    @user_order.each { |v| dishes << v.last.name + " x" + v.first.to_s + " \n" }
     calculate_payment
-    dishes << "TOTAL: #{@tot} £"
-    puts dishes
+    puts dishes << "TOTAL: #{@tot} £"
   end
 
 end
