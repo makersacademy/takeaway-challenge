@@ -5,16 +5,16 @@ describe SendSMS do
   subject(:send_sms) { described_class.new() }
 
   describe '#send' do
-    it { is_expected.to respond_to(:send).with(1).arguments }
+    it { is_expected.to respond_to(:send).with(2).arguments }
 
     it 'sends a confirmation sms and returns true if successful' do
-      expect(send_sms).to receive(:send).with('good_phone_num').and_return(true)
-      send_sms.send('good_phone_num')
+      expect(send_sms).to receive(:send).with('good_phone_num', 1).and_return(true)
+      send_sms.send('good_phone_num', 1)
     end
 
     it 'sends a confirmation sms and returns false if unsuccesful' do
-      expect(send_sms).to receive(:send).with('bad_phone_number').and_return(false)
-      send_sms.send('bad_phone_number')
+      expect(send_sms).to receive(:send).with('bad_phone_number', 0).and_return(false)
+      send_sms.send('bad_phone_number', 0)
     end
 
     # Actual test for send

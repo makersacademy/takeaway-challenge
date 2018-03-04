@@ -12,9 +12,6 @@ describe Order do
     it 'expects order[] to be empty at start' do
       expect(order.cart).to eq([])
     end
-    it 'expects total to be 0 at the start' do
-      expect(order.total).to eq(0)
-    end
   end
 
   describe '#add_to_order' do

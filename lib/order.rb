@@ -3,11 +3,10 @@
 # and requesting text confirmation from SendSMS class
 # require_relative 'send_sms'
 class Order
-  attr_reader :cart, :total # no need to have attr_reader, turned on for rspec
+  attr_reader :cart # no need to have attr_reader, turned on for rspec
   def initialize(send_sms_class = SendSMS)
     @send_sms_class = send_sms_class
     @cart = [] # save a hash like {dish: quantity}
-    @total = 0
   end
 
   def add_to_order(dish, quantity)
@@ -48,12 +47,13 @@ class Order
   # private # made private as rubonov was messing up with %
   def request_confirmation(phone_number)
     new_sms = @send_sms_class.new()
-    new_sms.send(phone_number)
+    new_sms.send(phone_number, calculate_total)
   end
 
   private
   def calculate_total
-    @cart.each { |dish| @total += dish.first.price * dish.last }
-    @total
+    total = 0
+    @cart.each { |dish| total += dish.first.price * dish.last }
+    total
   end
 end
