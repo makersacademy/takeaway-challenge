@@ -4,6 +4,7 @@
 
 class Dish
   attr_reader :name, :price
+  # initialises dish object with name and price
   def initialize(name, price)
     @name = name
     @price = price
