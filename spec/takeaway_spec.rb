@@ -72,8 +72,8 @@ describe Takeaway do
           subject.add_to_basket(2)
           subject.add_to_basket(3)
           expect(subject.update_total).to eq(29.47)
-
         end
+
       end
     end
 
