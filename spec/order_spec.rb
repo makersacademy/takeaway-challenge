@@ -51,6 +51,16 @@ describe Order do
       end
     end
 
+    describe '#show_bill' do
+      it 'shows the dishes ordered and the total to be paid' do
+        order.add_to_order(2, dish)
+        expect(order.show_bill).to eq nil
+      end
+      it 'raises an error if nothing was ordered' do
+        expect(order.show_bill).to eq "You did not order anything"
+      end
+    end
+
   end
 
 end
