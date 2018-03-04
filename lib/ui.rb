@@ -1,14 +1,14 @@
 require 'menu'
 
 class UI
-  def initialize(menu_class = Menu)
-    @menu = menu_class.new
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
 
   def print_options
-    a = ['1. Print menu', '2. Add items to basket',
+    options = ['1. Print menu', '2. Add items to basket',
          '3. Checkout', '4. Exit']
-    p a
+    p options
   end
 
   def print_menu
@@ -33,4 +33,5 @@ class UI
       process(input)
     end
   end
+
 end
