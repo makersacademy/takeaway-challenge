@@ -40,9 +40,15 @@ class UI
   def interactive_menu
     loop do
       print_options
-      choice = gets.chomp
+      choice = user_input
       process(choice)
     end
+  end
+
+  private
+
+  def user_input
+    gets.chomp
   end
 
 end
