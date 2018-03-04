@@ -5,7 +5,7 @@ Developer(Alex)'s approach:
 Note: All the written code, that I will refer to, have been written following a TDD methodology. Hence, when a step is described, it is implicit that the corresponding rspec have been coded prior to that.
 
 
-Steps for Developer:
+Steps for DEVELOPER:
 
 User story1
 1.- I create a Dish class initialized with name and price.
@@ -21,10 +21,12 @@ User story2
 9.- I define an available? predicate method inside of the Order calss to see if the attribute dish is in our menu.
 
 User story3
-1.- I define a calculate_payment method inside of the Order class to calculate the total to be paid.
+10.- I define a calculate_payment method inside of the Order class to calculate the total to be paid.
+11.- I define a payment_wrong? method inside of the Order class to check if the payment matches the total to be paid.
+12.- I define a finish_order method inside of the Order class to confirm delivery time or raise and error if the payment was not correct.
 
 
-Steps for User:
+Steps for USER:
 
 User story1
 1.- The dishes, that the user will find available, have now a name and a price associated to them.
@@ -40,7 +42,9 @@ User story2
 9.- The user can now check that the dish being order is indeed in our menu.
 
 User story3
-1.- The user has now an amount of money to match.
+10.- The user has now an amount of money to match.
+11.- The user can now check if he has introduced the right amount of money to make the payment.
+12.- The user can now have a confirmation of the delivery time.
 
 User story3
 

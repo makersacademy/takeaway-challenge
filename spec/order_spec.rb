@@ -61,6 +61,31 @@ describe Order do
       end
     end
 
+    describe '#payment_wrong?' do
+      it 'checks that the payment matches the total' do
+        order.add_to_order(2, dish)
+        order.stub(:gets).and_return("16")
+        expect(order.payment_wrong?).to be false
+      end
+      it 'checks that the payment does not match the total' do
+        order.add_to_order(2, dish)
+        order.stub(:gets).and_return("17")
+        expect(order.payment_wrong?).to be true
+      end
+    end
+
+    describe '#finish_order' do
+      it 'shows the delivery time' do
+        order.add_to_order(2, dish)
+        order.stub(:gets).and_return("16")
+        expect(order.finish_order).to eq nil
+      end
+      it 'raises an error when the payment is wrong' do
+        order.stub(:gets).and_return("17")
+        expect { order.finish_order } .to raise_error('Incorrect payment')
+      end
+    end
+
   end
 
 end

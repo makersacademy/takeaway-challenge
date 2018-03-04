@@ -22,15 +22,15 @@ class Order
 
   def available?(dish)
     return false unless dish.is_a?(Dish)
-    @list.each do |item|
-      return true if (item.name == dish.name) and (item.price == dish.price)
+    @list.each do |v|
+      return true if (v.name == dish.name) and (v.price == dish.price)
     end
     return false
   end
 
   def calculate_payment
     @tot = 0
-    @user_order.each { |item| @tot += item.last.price * item.first }
+    @user_order.each { |v| @tot += v.last.price * v.first }
     @tot
   end
 
@@ -40,6 +40,19 @@ class Order
     @user_order.each { |v| dishes << v.last.name + " x" + v.first.to_s + " \n" }
     calculate_payment
     puts dishes << "TOTAL: #{@tot} £"
+  end
+
+  def payment_wrong?
+    show_bill
+    puts 'If you agree with this bill, please introduce the amount to be paid'
+    money = gets.chomp
+    int = money.to_i
+    int != @tot
+  end
+
+  def finish_order
+    fail 'Incorrect payment' if payment_wrong?
+    puts 'Thank you! Your order will be delivered before 18:52'
   end
 
 end
