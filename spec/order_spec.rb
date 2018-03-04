@@ -1,32 +1,32 @@
 require 'order'
 
 describe Order do
+  subject(:order) { described_class.new }
+  let(:fake_item) { double("fake_item") }
+
   describe '#initialize' do
     it 'expects an array on initialize' do
-      expect(subject.current_order).to be_a(Array)
+      expect(order.current_order).to be_a(Array)
     end
 
     it 'should be an empty array' do
-      expect(subject.current_order).to be_empty
+      expect(order.current_order).to be_empty
     end
   end
 
   describe '#add_item' do
     it 'adds an item to the order' do
-      fake_item = double({ fake_menu: "Fake Item" })
-      expect(subject.add_item(fake_item)).to eq([fake_item])
+      expect(order.add_item(fake_item)).to eq([fake_item])
     end
 
-    it 'populates the order array' do
-      fake_item = double({ fake_menu: "Fake Item" })
-      subject.add_item(fake_item)
-      expect(subject.current_order).to eq([fake_item])
+    it 'populates current order array' do
+      order.add_item(fake_item)
+      expect(order.current_order).to include(fake_item)
     end
 
-    # it 'increases quantity if item is already present' do
-    #   # Magic numbers in my tests?
-    #   fake_item = double("Item", { fake_menu: "Fake Item", quantity: 0 })
-    #   expect { 2.times { subject.add_item(fake_item) } }.to change { fake_item.quantity }.from(0).to(2)
+    # it 'increases quantity if item is already present in order' do
+    #   fake_item_with_quantity = double("Item", { name: "Fake_Item_Name", quantity: 0 })
+    #   expect { 2.times { order.add_item(fake_item_with_quantity) } }.to change { fake_item_with_quantity.quantity }.from(0).to(2)
     # end
   end
 
@@ -37,7 +37,7 @@ describe Order do
       expect { subject.remove_item(fake_item) }.to raise_error(error_message)
     end
 
-    it 'removes a item from the current order' do
+    it 'removes item from the current order' do
       fake_item = double({ fake_menu: "Fake Item" })
       subject.add_item(fake_item)
       subject.remove_item(fake_item)
@@ -46,7 +46,7 @@ describe Order do
   end
 
   describe '#confirm_order' do
-    it 'raises an error if empty order is confirmed' do
+    it 'raises error if empty order is confirmed' do
       error_message = 'Unable to confirm an empty order'
       expect { subject.confirm_order }.to raise_error(error_message)
     end

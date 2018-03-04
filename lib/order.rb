@@ -2,7 +2,7 @@ class Order
   attr_reader :current_order
   # todo/edge cases
   # 1. accumulate orders
-  # 2. delete 1 order instead of who
+  # 2. delete 1 order instead of all of them
 
   def initialize
     @current_order = []
