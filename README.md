@@ -57,7 +57,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 **EXAMPLE CODE**
 -------
-You can copy and paste the following code into Terminal to run the program's basic functions.
+You can copy and paste the following code into Terminal to run the program's basic functions. Note that the SMS functionality will not work for anyone other than the original developer (Julian) as the credentials have been set to be Environmental Variables which are not publically available.
 ``` Ruby
   ta = TakeAway.new
   ta.show_menu
