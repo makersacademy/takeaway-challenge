@@ -17,9 +17,17 @@ class Menu
   end
 
   def list_all
+    puts ''
+    puts '=' * 50
+    puts 'Bla Bla Kitchen Menu'.center(40)
+    puts '=' * 50
+    puts "No.".ljust(5) + "Dish".center(30) + "Price".rjust(15)
+    puts '-' * 50
     @menu.uniq.each_with_index do |v, i|
-      puts "#{i + 1}: #{v.name} -- #{v.price}"
+      puts "#{i + 1}.".ljust(5) + "#{v.name}".center(30) + "#{v.price}".rjust(15)
     end
+    puts '=' * 50
+
 
   end
 end

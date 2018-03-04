@@ -41,9 +41,16 @@ describe Menu do
   describe '#list_all' do
     it { is_expected.to respond_to(:list_all) }
     it 'should list all menu items' do
+      menu_print = "\n" + "=" * 50 + "\n" + "Bla Bla Kitchen Menu".center(40) +
+      "\n" + "=" * 50 + "\n" +
+      "No.".ljust(5) + "Dish".center(30) + "Price".rjust(15) + "\n" + "-" * 50 + "\n" +
+      "1.".ljust(5) + "#{pm.name}".center(30) + "#{pm.price}".rjust(15) + "\n" +
+      "2.".ljust(5) + "#{ctm.name}".center(30) + "#{ctm.price}".rjust(15) + "\n" +
+      "=" * 50 + "\n"
+
       menu.add(pm)
       menu.add(ctm)
-      expect { menu.list_all }.to output("1: #{pm.name} -- #{pm.price}\n2: #{ctm.name} -- #{ctm.price}\n").to_stdout
+      expect { menu.list_all }.to output(menu_print).to_stdout
     end
   end
 

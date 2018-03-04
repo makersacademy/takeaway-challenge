@@ -14,7 +14,7 @@ class SendSMS
           from: ENV["TWILLIO_PHONE"]) # Replace with your Twilio number
     rescue Twilio::REST::TwilioError => e
       sms_status = false
-      puts e.message
+      # puts e.message # Enable to print actual error message when msg not sent
     end
     sms_status
   end

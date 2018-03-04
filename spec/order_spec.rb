@@ -44,10 +44,6 @@ describe Order do
     it 'should raise error when cart is empty' do
       expect { order.checkout('a_phone_number') }.to raise_error 'Cart is empty'
     end
-    # it 'should raise error when cart is empty' do
-    #   order.checkout('a_phone_number')
-    #   expect { order.checkout('a_phone_number') }.to raise_error 'cart is empty'
-    # end
 
     it 'sends a confirmation sms and returns true if successful' do
       expect(order).to receive(:checkout).with('good_phone_num').and_return(true)

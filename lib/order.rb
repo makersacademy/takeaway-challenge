@@ -3,7 +3,7 @@
 # and requesting text confirmation from SendSMS class
 # require_relative 'send_sms'
 class Order
-  attr_reader :cart, :total
+  attr_reader :cart, :total # no need to have attr_reader, turned on for rspec
   def initialize(send_sms_class = SendSMS)
     @send_sms_class = send_sms_class
     @cart = [] # save a hash like {dish: quantity}
@@ -11,12 +11,22 @@ class Order
   end
 
   def add_to_order(dish, quantity)
+
     @cart << [dish, quantity]
+    # if cart.empty?
+    #   (@cart << [dish, quantity])
+    # else
+    #   @cart.each{ |e| e.first.eql?(dish) ? (puts "already in") : @cart << [dish, quantity] }
+    # end
   end
 
   def checkout(phone_number)
     raise 'Cart is empty' if @cart.empty?
-    request_confirmation(phone_number)
+    success = request_confirmation(phone_number)
+    # printing feedback
+    puts success ? 'Successful! You should receive a confirmation SMS with estimated time soom' :
+    'There has been a problem. Please try later'
+
   end
 
   def show_cart
@@ -35,7 +45,7 @@ class Order
     puts '=' * 60
   end
 
-  # private
+  # private # made private as rubonov was messing up with %
   def request_confirmation(phone_number)
     new_sms = @send_sms_class.new()
     new_sms.send(phone_number)
@@ -43,7 +53,6 @@ class Order
 
   private
   def calculate_total
-    # raise 'Cart is empty' if @cart.empty?
     @cart.each { |dish| @total += dish.first.price * dish.last }
     @total
   end
