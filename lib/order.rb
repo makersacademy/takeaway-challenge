@@ -22,7 +22,7 @@ class Order
   end
 
   def print_receipt(basket_summary,total_cost)
-    details = basket_summary.map { |name, cost| "#{name}  #{cost/100.0}" }.join("\n")
+    details = basket_summary.map { |name, cost| "#{name}  £#{cost/100.0}" }.join("\n")
     puts details
     puts "-----------------------"
     puts "Total:  £#{total_cost/100.0}"
