@@ -3,13 +3,13 @@ require_relative 'send_sms.rb'
 
 class Order
   attr_reader :basket
-  def initialize(basket = {})
+  def initialize(basket = Hash.new)
     @basket = basket
   end
 
   def add_dish(number, quantity = 1)
-    dish_name = (Menu.new.dishes[number]).first
-    dish_cost = (Menu.new.dishes[number].last)
+    dish_name = Menu.new.dishes[number].first
+    dish_cost = Menu.new.dishes[number].last
     @basket[dish_name] = [dish_cost, quantity]
     @basket
   end
@@ -23,10 +23,12 @@ class Order
   end
 
   def print_receipt(basket_summary, total_cost)
-    details = basket_summary.map { |name, cost| "#{name}  £#{cost/100.0}" }.join("\n")
+    details = basket_summary.map do
+      |name, cost| "#{name}  £#{cost / 100.0}"
+    end.join("\n")
     puts details
     puts "-----------------------"
-    puts "Total:  £#{total_cost/100.0}"
+    puts "Total:  £#{total_cost / 100.0}"
   end
 
   def place_order(payment_amount, summary)
@@ -36,7 +38,8 @@ class Order
   end
 
   def send_confirmation
-    SMS.send_sms("Thank you! Your order was placed and will be delivered before #{@time}")
+    SMS.send_sms("Thank you! Your order was placed and will
+      be delivered before #{@time}")
   end
 
 end

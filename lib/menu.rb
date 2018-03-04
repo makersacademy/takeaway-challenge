@@ -13,6 +13,6 @@ class Menu
   end
 
   def read_menu
-    @dishes.map { |k, v| "#{k}. #{v[0]} £#{v[1]/100.0}" }.join("\n")
+    @dishes.map { |k, v| "#{k}. #{v[0]} £#{v[1] / 100.0}" }.join("\n")
   end
 end
