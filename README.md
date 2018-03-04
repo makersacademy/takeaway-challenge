@@ -18,7 +18,7 @@ A basic simulation of a takeaway ordering program, done for the Makers Academy c
 
 **2)** Run bundle install to install dependencies listed in Gemfile.
 
-**3)** the program requires a [Twilio](https://www.twilio.com/) account, with a twilio number, secure ID and authorisation token stored as environmental variables with the following names:
+**3)** The program requires a [Twilio](https://www.twilio.com/) account, with a twilio number, secure ID and authorisation token stored as environmental variables with the following names:
 ```
 TWILIO_ACCOUNT_SSID: 'your SID here'
 TWILIO_AUTH_TOKEN: 'your token here'
@@ -27,26 +27,26 @@ TWILIO_NUMBER: 'your number here'
 
 One easy way to do this is to use the [Envyable](https://github.com/philnash/envyable) ruby gem to create a env.yml file which can set the above environmental variables when the program is run.
 
-Additionally, the default phone number used to text order confirmations (see [Instructions for Use](instructions_for_use) is also stored in an environmental variable:
+Additionally, the default phone number used to text order confirmations (see [Instructions for Use](#instructions_for_use) is also stored in an environmental variable:
 
 ```
 MY_NUMBER: 'your default text number here'
 ```
 
-**4)** from the root directory, run irb or pry. They .pryrc or .irbrc config files will load all dependencies automatically.
+**4)** From the root directory, run irb or pry. They .pryrc or .irbrc config files will load all dependencies automatically.
 
 ## Instructions for Use
 
 The program has five objects:
 
-**1) Order:** This is the object that the user interacts with. The .rc file automatically generates an order object called **order**, but new ones can be generated with [yourOrderName] = Order.new.
+**1) Order:** This is the object that the user interacts with. The .rc file automatically generates an order object called **order**, but new ones can be generated with **[yourOrderName] = Order.new**.
 
 Order understand the following method calls:
 - **order.show_menu** shows the current menu, with dishes and prices.
 - **order.add_dish(dish menu number, amount of that dish)** adds an amount of that menu item to your order.
 - **order.show_order** shows you what dishes you currently have in your order.
 - **order.total** shows you the total cost of your order so far
-- **order.pay(amount)** allows you to pay the cost of your order. Providing that you pay the right amount, this will **complete your order** (after which no further dishes can be added), and will send a text to the **default number** listed in your environmental variables (see [Getting Started](getting_started).
+- **order.pay(amount)** allows you to pay the cost of your order. Providing that you pay the right amount, this will **complete your order** (after which no further dishes can be added), and will send a text to the **default number** listed in your environmental variables (see [Getting Started](#getting_started).
 - **order.change_menu** allows you to change the default menu for a new one.
 
 **2) Menu:** This object is responsible for creating and displaying a menu of dishes. A small menu is created by default by the .rc files.
@@ -59,7 +59,7 @@ Menu understands several method calls, but only the following are directly usefu
 
 **4) dish_printer:** The dish printer formats dish information for display. The user does not need to interact directly with the dish printer.  
 
-**5) texterL** The texter object sends confirmation texts via the Twilio api. The user does not need to interact directly with the texter.
+**5) texter:** The texter object sends confirmation texts via the Twilio api. The user does not need to interact directly with the texter.
 
 **Changing Menu**
 
