@@ -16,7 +16,11 @@ Takeaway Challenge
 
 Brief Summary of Approach
  -------
-I used diagramming to plan my objects and how they would interact with each other.  I then used the TDD cycle, with frequent diagram revisits to implement the program.  I feel a lot more confident with classes and delegation after this challenge.  I need to work on injecting dependencies.
+I used diagramming to plan my objects and how they would interact with each other.  I then used the TDD cycle, with frequent diagram revisits to implement the program.  I feel a lot more confident with classes and delegation after this challenge.  
+
+Points for development:
+* explore injecting dependencies
+* customers can place orders via the text message
 
 Instructions
 -------
@@ -63,7 +67,3 @@ Technologies Used:
 --------
 * RSpec
 * Twilio API
-
-Where I would go next with this:
---------
-  * Implement the ability to place orders via text message.
