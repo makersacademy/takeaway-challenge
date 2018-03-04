@@ -1,25 +1,36 @@
-require 'menu'
+require './lib/order.rb'
+require './lib/menu.rb'
 
 class UI
-  def initialize(menu = Menu.new)
-    @menu = menu
+  def initialize(order = Order.new)
+    @menu = order.menu
+    @order = order
   end
 
   def print_options
-    options = ['1. Print menu', '2. Add items to basket',
-         '3. Checkout', '4. Exit']
+    options = ['1. Print menu', '2. Add items to basket', '3. See order',
+         '4. Checkout', '5. Exit']
     p options
   end
 
-  def print_menu
-    @menu.print
+  def print_order
+    print "Order so far: "
+    puts @order.items.to_s
+    p "Order subtotal: " + @order.total.to_s
   end
 
   def process(selection)
     case selection
       when "1"
-        print_menu
+        @menu.print
+      when "2"
+        @order.add
+        print_order
+      when "3"
+        print_order
       when "4"
+        print_order
+      when "5"
         exit
       else
         "I don't know what you mean, please try again"
@@ -29,8 +40,8 @@ class UI
   def interactive_menu
     loop do
       print_options
-      input = gets.chomp
-      process(input)
+      choice = gets.chomp
+      process(choice)
     end
   end
 
