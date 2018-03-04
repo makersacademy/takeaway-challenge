@@ -1,3 +1,45 @@
+
+This is my first time making an app that allows user to receive a text through twillio. In this app, you are able to order a take away, from a menu (hash of dish and price) by specifying the quantity.
+You can see a total every time you place one order, and when you finish, you can see the final order list with each quantity and total price. 
+Then the program will make sure the calculation was correct, and if so it will send you an text saying that your order is going to be ready before the time that's an hour after you place an order. 
+
+--interacting example in irb--
+2.4.0 :001 > require './takeaway'
+ => true
+2.4.0 :002 > ta = Takeaway.new
+ => #<Takeaway:0x007f838115e0f8 @menu={:seafood_ramen=>8.5, :vegetable_curry=>7, :prawn_noodles=>7.5, :fried_eggrice=>6, :tofu_udon=>5.5, :sardine_teriyaki=>6.5, :tempura_udon=>8}, @final_order=[], @total=0>
+2.4.0 :003 > ta.menu
+ => {:seafood_ramen=>8.5, :vegetable_curry=>7, :prawn_noodles=>7.5, :fried_eggrice=>6, :tofu_udon=>5.5, :sardine_teriyaki=>6.5, :tempura_udon=>8}
+2.4.0 :004 > ta.order(:seafood_curry, 3)
+RuntimeError: We do not have that dish here
+  from /Users/chiakimizuta/gitDir/takeaway-challenge/lib/takeaway.rb:14:in `order'
+  from (irb):4
+  from /Users/chiakimizuta/.rvm/rubies/ruby-2.4.0/bin/irb:11:in `<main>'
+2.4.0 :005 > ta.order(:seafood_ramen, 2)
+ => 17.0
+2.4.0 :006 > ta.order(:tempura_udon, 1)
+ => 25.0
+2.4.0 :007 > ta.order(:sardine_teriyaky, 2)
+RuntimeError: We do not have that dish here
+  from /Users/chiakimizuta/gitDir/takeaway-challenge/lib/takeaway.rb:14:in `order'
+  from (irb):7
+  from /Users/chiakimizuta/.rvm/rubies/ruby-2.4.0/bin/irb:11:in `<main>'
+2.4.0 :008 > ta.order(:sardine_teriyaki, 2)
+ => 38.0
+2.4.0 :009 > ta.final_order
+ => [{:dish=>:seafood_ramen, :quantity=>2}, {:dish=>:tempura_udon, :quantity=>1}, {:dish=>:sardine_teriyaki, :quantity=>2}]
+2.4.0 :010 > ta.total
+ => 38.0
+2.4.0 :011 > ta.sum_correct?
+ => true
+2.4.0 :012 > ta.confirmation
+ => <Twilio.Api.V2010.MessageInstance account_sid: ACc6ab8628503b6202c8a41c0af43b523d api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 18:18 date_created: 2018-03-04 17:18:37 +0000 date_updated: 2018-03-04 17:18:37 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: +447533025648 messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid: SM9545bb8be5dd4ecba40a9fd99b38e0f4 status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/ACc6ab8628503b6202c8a41c0af43b523d/Messages/SM9545bb8be5dd4ecba40a9fd99b38e0f4/Media.json"} to: +447428778796 uri: /2010-04-01/Accounts/ACc6ab8628503b6202c8a41c0af43b523d/Messages/SM9545bb8be5dd4ecba40a9fd99b38e0f4.json>   
+
+*The last line (36) sent a text to my phone!
+
+
+
+
 Takeaway Challenge
 ==================
 ```
