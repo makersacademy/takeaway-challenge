@@ -4,7 +4,7 @@ require 'menu'
 describe Order do
   subject(:order) { described_class.new(menu) }
   let(:menu) { instance_double("Menu") }
-  let(:items) do {
+  let(:dishes) do {
    margherita: 3
   }
 
@@ -15,9 +15,9 @@ describe Order do
     allow(menu).to receive(:price).with(:margherita).and_return(4.00)
 end
 
-  context 'When order is initialised' do
+  context 'when order is initialised' do
     it 'returns an empty hash' do
-      expect(order.items).to be_empty
+      expect(order.basket).to be_empty
     end
 
     it 'returns a menu' do
@@ -25,11 +25,11 @@ end
     end
   end
 
-  context 'Selection of dishes' do
+  context 'selection of dishes' do
     describe '#add' do
       it 'adds items and their quantities to the dishes hash' do
         order.add(:margherita, 3)
-        expect(order.items).to eq(items)
+        expect(order.basket).to eq(dishes)
       end
     end
 
@@ -39,5 +39,6 @@ end
       expect { order.add(:hawaii, 1) }.to raise_error error_message
     end
   end
+
 
 end
