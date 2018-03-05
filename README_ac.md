@@ -90,3 +90,4 @@ This weekend challenge seemed to be much easier to approach, compared to the Air
 ## Things I need to improve
 - Domain modelling
 - Writing code without looking too much at walkthroughs
+- RSpec mocks and stubs
