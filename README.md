@@ -77,3 +77,7 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+###Resources
+[(https://www.youtube.com/watch?v=mgiJKdH9x8c)]
