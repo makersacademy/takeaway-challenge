@@ -64,7 +64,11 @@ Task
   * Use puts menu.read_menu to see the menu, the prices will be showed as £ prices.
 
 ## Order
-  * Use Order.new to create a new order with an empty basket in it
+  * Use Order.new to create a new order with an empty basket in it.
+  * Use order.add_dish(number of the dish, quantity you would like to order) to add dishes.
+    If no quantity passes in, it will use the default value 1 instead.
+  * Save all the dishes added in basket and pass it in basket_summary will get the detailed
+    basket_summary of the current basket
 
 ## SMS
   * Use Twilio API to send text messages
