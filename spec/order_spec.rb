@@ -11,6 +11,8 @@ describe Order do
       "prawn crackers" => 398,
       "vagetable dumplings" => 599
     } }
+  let(:time) { Time.parse("2018-01-20 20:17:40") }
+  subject(:order) { described_class.new }
 
   describe '#add_dish' do
     context 'when the basket is empty' do
@@ -39,7 +41,7 @@ describe Order do
 
   describe '#basket_summary' do
     it 'return the summary of the order' do
-      expect(Order.new.basket_summary(basket1)).to eq ({
+      expect(order.basket_summary(basket1)).to eq ({
           "prawn crackers" => 398,
           "vagetable dumplings" => 599
         })
@@ -49,23 +51,30 @@ describe Order do
   describe '#total_cost' do
     context 'when the total matches the sum of the order' do
       it 'return the total cost of the order' do
-        expect(Order.new.total_cost(basket_summary)).to eq 997
+        expect(order.total_cost(basket_summary)).to eq 997
       end
     end
   end
 
-   describe '#place_order' do
-     context 'when the payment_amount does not match the sum of the order' do
-       it 'raise an error message' do
-         expect{ Order.new.place_order(1100, basket_summary) }.to raise_error ("Sorry, the payment amount is incorrect")
-       end
-     end
+  describe '#print_receipt' do
+    it 'print the receipt with all the details' do
+      expect(order.print_receipt(basket_summary, 997)).to eq
+      (details + "\n-----------------------\n" + "Total:  £#{997 / 100.0}")
+    end
+  end
 
-     context 'when the payment_amount does match the sum of the order' do
-       it 'return a confirmation message' do
-         time = (Time.now + 3600).strftime("%H:%M")
-         expect( Order.new.place_order(997, basket_summary) ).to eq "Thank you! Your order was placed and will be delivered before #{time}"
-       end
+  describe '#place_order' do
+    context 'when the payment_amount does not match the sum of the order' do
+      it 'raise an error message' do
+        expect{ order.place_order(1100, basket_summary, time) }.to raise_error ("Sorry, the payment amount is incorrect")
+      end
+    end
+
+    context 'when the payment_amount does match the sum of the order' do
+      it 'return a confirmation message' do
+        time_new = "21:17"
+        expect( order.place_order(997, basket_summary, time) ).to eq "Thank you! Your order was placed and will be delivered before #{time_new}"
+      end
      end
    end
 

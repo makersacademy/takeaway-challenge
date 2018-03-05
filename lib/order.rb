@@ -26,20 +26,17 @@ class Order
     details = basket_summary.map do
       |name, cost| "#{name}  £#{cost / 100.0}"
     end.join("\n")
-    puts details
-    puts "-----------------------"
-    puts "Total:  £#{total_cost / 100.0}"
+    details + "\n-----------------------\n" + "Total:  £#{total_cost / 100.0}"
   end
 
-  def place_order(payment_amount, summary)
+  def place_order(payment_amount, summary, time = Time.now)
     raise "Sorry, the payment amount is incorrect" if payment_amount != total_cost(summary)
-    @time = (Time.now + 3600).strftime("%H:%M")
+    @time = (time + 3600).strftime("%H:%M")
     "Thank you! Your order was placed and will be delivered before #{@time}"
   end
 
   def send_confirmation
-    SMS.send_sms("Thank you! Your order was placed and will
-      be delivered before #{@time}")
+    SMS.send_sms("Thank you! Your order was placed and will be delivered before #{@time}")
   end
 
 end
