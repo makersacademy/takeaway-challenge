@@ -3,9 +3,6 @@ require 'twilio-ruby'
 require 'envyable'
 Envyable.load('config/env.yml')
 
-require 'rubygems'
-require 'twilio-ruby'
-
 account_sid = ENV["TWILLIO_ACCOUNT_SID"]
 auth_token = ENV["TWILLIO_AUTH_TOKEN"]
 
