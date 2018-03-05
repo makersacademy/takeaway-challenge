@@ -12,7 +12,15 @@ class Takeaway
   end
 
   def list_menu
-    @menu.prices.each { |y, z| puts y, z }
+    puts "=" * 75
+    puts " ======== Makers Carribbean Takeaway"
+    puts "=" * 75
+    ("1".."7").zip(@menu.prices).each { |x, y| puts "#{x}) #{y[0]} #{y[1]}" }
+    puts "=" * 75
+  end
+
+  def list_basket
+    puts (@basket.each { |x| @menu.prices[x] }).zip(@basket)
   end
 
   def add_to_basket(food, quantity = 1)
@@ -34,8 +42,10 @@ class Takeaway
     @total
   end
 
-  def checkout
+  def checkout(_name, address)
     customer = Customer.new
+    customer.name = names
+    customer.address = address
     customer.order << @basket
   end
 end

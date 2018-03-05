@@ -23,4 +23,8 @@ class Menu
     }
   end
 
+  def list_menu
+    @prices.each { |y, z| puts y, z }
+  end
+
 end
