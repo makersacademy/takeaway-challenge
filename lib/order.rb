@@ -1,21 +1,21 @@
 class Order
 
-  attr_reader :current_order, :final_order
+  attr_reader :current_order, :final_order, :order_price
 
   def initialize(verify)
     @verify = verify
     @current_order = []
-    # @order_price = 0
+    @order_price = 0
   end
 
   def order_item(item)
     @current_order << item
-    # @order_price += item[:price]
+    @order_price += item[:price]
   end
 
   def remove_item(item)
    @current_order.delete(item)
-   # @order_price += item[:price]
+   @order_price -= item[:price]
   end
 
   def confirm_order

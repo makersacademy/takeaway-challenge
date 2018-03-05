@@ -40,6 +40,7 @@ describe Menu do
     it 'Should print current_order using Printer formatter method' do
       allow(fake_order_class).to receive(:current_order) { ["test"] }
       allow(fake_order_class).to receive(:confirm_order)
+      allow(fake_order_class).to receive(:order_price)
       expect(fake_printer_class).to receive(:formatter).with(["test"])
       subject.place_order
     end
@@ -47,8 +48,19 @@ describe Menu do
     it 'Should call the confirm_order method' do
       allow(fake_order_class).to receive(:current_order) { ["test"] }
       allow(fake_printer_class).to receive(:formatter).with(["test"])
+      allow(fake_order_class).to receive(:order_price)
       expect(fake_order_class).to receive(:confirm_order)
       subject.place_order
     end
+
+    it 'Should receive the total puts to STDOUT' do
+      allow(fake_printer_class).to receive(:formatter).with(["test"])
+      allow(fake_order_class).to receive(:current_order) { ["test"] }
+      allow(fake_order_class).to receive(:confirm_order)
+      allow(fake_order_class).to receive(:order_price) { "0" }
+      expect(STDOUT).to receive(:puts).with("TOTAL // £0" )
+      subject.place_order
+    end
+
   end
 end

@@ -9,16 +9,29 @@ describe Order do
   end
 
   describe '#order_item' do
-    it 'Should add item as string to current order' do
-      subject.order_item("fake-item")
-      expect(subject.current_order).to eq(["fake-item"])
+    it 'Should add item as hash to current order' do
+      subject.order_item({ i: "", price: 1 })
+      expect(subject.current_order).to eq([{ i: "", price: 1 }])
+    end
+
+    it 'Should add the price of item to order_price' do
+      item = { i: "", price: 1 }
+      subject.order_item(item)
+      expect(subject.order_price).to eq 1
     end
   end
 
   describe '#remove_item' do
-    it 'Should remove item as string from current order' do
-      subject.order_item("fake-item")
-      subject.remove_item("fake-item")
+    it 'Should subtract the price of item from order price' do
+      item = { i: "test", price: 1 }
+      subject.order_item(item)
+      subject.remove_item(item)
+      expect(subject.order_price).to eq 0
+    end
+
+    it 'Should delete item from current order' do
+      subject.order_item({ i: "", price: 1 })
+      subject.remove_item({ i: "", price: 1 })
       expect(subject.current_order).to eq []
     end
   end

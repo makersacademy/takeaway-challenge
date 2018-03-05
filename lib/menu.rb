@@ -27,6 +27,7 @@ class Menu
 
   def place_order
     @printer.formatter(@order.current_order)
+    puts "TOTAL // £" + @order.order_price.to_s
     @order.confirm_order
   end
 end
