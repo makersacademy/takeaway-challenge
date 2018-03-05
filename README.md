@@ -1,3 +1,6 @@
+Cloned from Makers Academy (source):
+https://github.com/makersacademy/takeaway-challenge
+
 Takeaway Challenge
 ==================
 ```
@@ -73,14 +76,70 @@ In code review we'll be hoping to see:
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
+
 Notes on Test Coverage
 ----------------------
-
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+All tests passed (100% Coverage)
+
 
 DOMAIN MODEL
 ------------
-Menu: display
-Order: select, verify
-Confirmation: send_text
+Menu: display_menu, select_item, deselect_item, place_order
+Order: order_item, remove_item, confirm_order
+Verify: verify_order, send_delivery_confirmation
+Printer: formatter
 
+
+FEATURE TEST (IRB)
+------------------
+
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > require './lib/printer'
+ => true
+2.5.0 :003 > require './lib/order'
+ => true
+2.5.0 :004 > require './lib/verify'
+ => true
+2.5.0 :005 > menu = Menu.new(Printer.new, Order.new(Verify.new))
+ => #<Menu:0x00007feffa391718 @printer=#<Printer:0x00007feffa391970 @title="DDs VEGERAMA", @split="----------------------------------------">, @order=#<Order:0x00007feffa391768 @verify=#<Verify:0x00007feffa3918a8 @client=#<Twilio::REST::Client:0x00007feffa391830 @username="AC5947896b6110bba62a8acb8acede7129", @password="8d6e8b2ca2bf060292e8a628e3dea0e1", @region=nil, @account_sid="AC5947896b6110bba62a8acb8acede7129", @auth_token="8d6e8b2ca2bf060292e8a628e3dea0e1", @auth=["AC5947896b6110bba62a8acb8acede7129", "8d6e8b2ca2bf060292e8a628e3dea0e1"], @http_client=#<Twilio::HTTP::Client:0x00007feffa391808 @proxy_addr=nil, @proxy_port=nil, @proxy_user=nil, @proxy_pass=nil, @ssl_ca_file=nil, @timeout=nil, @adapter=:net_http>, @accounts=nil, @api=nil, @chat=nil, @fax=nil, @ip_messaging=nil, @lookups=nil, @monitor=nil, @notify=nil, @preview=nil, @pricing=nil, @proxy=nil, @taskrouter=nil, @trunking=nil, @video=nil, @messaging=nil, @wireless=nil, @sync=nil, @studio=nil>>, @current_order=[], @order_price=0>, @menu=[{:item=>"Devil's Cauliflower", :price=>4}, {:item=>"Rainbow Pot", :price=>3}, {:item=>"Oreo Brownie", :price=>3}]>
+2.5.0 :006 > menu.display_menu
+
+              DDs VEGERAMA              
+----------------------------------------
+Devil's Cauliflower                    4
+Rainbow Pot                            3
+Oreo Brownie                           3
+
+
+
+ => nil
+2.5.0 :007 > menu.select_item("Oreo Brownie")
+ => 3
+2.5.0 :008 > menu.select_item("Rainbow Pot")
+ => 6
+2.5.0 :009 > menu.select_item("Devil's Cauliflower")
+ => 10
+2.5.0 :010 > menu.deselect_item("Rainbow Pot")
+ => 7
+2.5.0 :011 > menu.place_order
+
+
+
+              DDs VEGERAMA              
+----------------------------------------
+Oreo Brownie                           3
+Devil's Cauliflower                    4
+
+
+
+TOTAL // £7
+
+
+PLEASE CONFIRM YOUR ORDER AND TOTAL
+
+Press Y to confirm / Press N to edit order
+Y
+ => "SM42ead1986adc494291ea6d7dc4405a8b" 
