@@ -15,7 +15,7 @@ class TakeAway
   end
 
   def show_menu
-    p @menu.list
+    p menu.list
   end
 
   def start_order
@@ -32,6 +32,7 @@ class TakeAway
     @new_sms = @sms.new
     default_msg = "Thank you! Your order was placed and will be delivered before #{@delivery_eta.strftime('%H:%M')}"
     @new_sms.send_sms(default_msg)
+    p 'Confirmation text sent.'
   end
 
   private

@@ -18,20 +18,20 @@ class Order
   end
 
   def check_basket
-    @basket.each { |hash|
+    basket.each { |hash|
       puts "#{hash[:quantity]}x #{hash[:dish]} for #{sprintf "%.2f", hash[:subtotal]}"
       # `sprintf "%2f", NUM` is used to convert NUM
       # into a string which always ends with 2 decimals
     }
     calc_total
-    puts "Total price: #{sprintf "%.2f", @total}"
+    puts "Total price: #{sprintf "%.2f", total}"
   end
 
   private
 
   def calc_total
     @total = 0
-    @basket.each { |hash| @total += hash[:subtotal] }
+    basket.each { |hash| @total += hash[:subtotal] }
   end
 
   def add_basket
