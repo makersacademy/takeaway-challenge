@@ -30,6 +30,7 @@ Task
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
+# Instructions of use
 ```ruby
 [2] pry(main)> order = Order.new
 => #<Order:0x00007f8d82bd7790 @basket={}>
@@ -58,6 +59,20 @@ Task
 => "Thank you! Your order was placed and will be delivered before 02:00"
 [10] pry(main)> order.send_confirmation
 ```
+## Menu
+  * All the prices marked as pennies, use Menu.new to create a menu with dish numbers, dish names and prices in it.
+  * Use puts menu.read_menu to see the menu, the prices will be showed as £ prices.
+
+## Order
+  * Use Order.new to create a new order with an empty basket in it
+
+## SMS
+  * Use Twilio API to send text messages
+  * account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    client = Twilio::REST::Client.new account_sid, auth_token
+    from = ENV['TWILIO_PHONE']
+    to = ENV['TWILIO_DESTINATION_PHONE']
 
 ```
 As a customer
