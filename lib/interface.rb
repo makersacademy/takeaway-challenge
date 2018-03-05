@@ -30,10 +30,10 @@ class Interface
       @takeaway.list_menu
     when "2"
       puts "Enter food name or number to add to basket"
-      food_selection = gets.chomp
+      food_selection = gets.to_i
       puts "Enter quantity"
-      food_quantity = gets.chomp.to_i
-      @takeaway.add_to_basket(food_selection, food_quantity)
+      food_quantity = Integer(gets.chomp)
+      @takeaway.add_to_basket(food_selection)
     when "3"
       takeaway.list_basket
     when "4"
@@ -41,7 +41,7 @@ class Interface
       customer_name = gets.chomp
       puts "Please enter your address"
       customer_address = gets.chomp
-      takeaway.checkout
+      takeaway.checkout(customer_name, customer_address)
     end
   end
 
