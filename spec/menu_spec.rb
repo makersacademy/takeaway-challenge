@@ -58,7 +58,7 @@ describe Menu do
       allow(fake_order_class).to receive(:current_order) { ["test"] }
       allow(fake_order_class).to receive(:confirm_order)
       allow(fake_order_class).to receive(:order_price) { "0" }
-      expect(STDOUT).to receive(:puts).with("TOTAL // £0" )
+      expect(STDOUT).to receive(:puts).with("TOTAL // £0")
       subject.place_order
     end
 
