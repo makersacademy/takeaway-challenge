@@ -9,7 +9,6 @@ class Verify
     puts "PLEASE CONFIRM YOUR ORDER AND TOTAL"
     puts
     puts "Press Y to confirm / Press N to edit order"
-    `say PLEASE CONFIRM YOUR ORDER AND TOTAL`
     user_confirm = gets.chomp.downcase
     send_delivery_confirmation if user_confirm == "y"
   end
