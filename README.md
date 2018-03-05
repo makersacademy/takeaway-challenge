@@ -30,6 +30,35 @@ Task
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
+```ruby
+[2] pry(main)> order = Order.new
+=> #<Order:0x00007f8d82bd7790 @basket={}>
+[3] pry(main)> menu = Menu.new
+=> #<Menu:0x00007f8d82babb90
+ @dishes=
+  {1=>["prawn crackers", 199],
+   2=>["mini spring rolls", 349],
+   3=>["vegetable dumplings", 599],
+   4=>["chicken pad thai", 649]}>
+[4] pry(main)> puts menu.read_menu
+1. prawn crackers £1.99
+2. mini spring rolls £3.49
+3. vegetable dumplings £5.99
+4. chicken pad thai £6.49
+=> nil
+[5] pry(main)> basket = order.add_dish(1,2)
+=> {"prawn crackers"=>[199, 2]}
+[6] pry(main)> basket = order.add_dish(3,2)
+=> {"prawn crackers"=>[199, 2], "vegetable dumplings"=>[599, 2]}
+[7] pry(main)> summary = order.basket_summary(basket)
+=> {"prawn crackers"=>398, "vegetable dumplings"=>1198}
+[8] pry(main)> total = order.total_cost(summary)
+=> 1596
+[9] pry(main)> order.place_order(1596,summary)
+=> "Thank you! Your order was placed and will be delivered before 02:00"
+[10] pry(main)> order.send_confirmation
+```
+
 ```
 As a customer
 So that I can check if I want to order something

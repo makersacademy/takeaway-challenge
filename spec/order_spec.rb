@@ -58,8 +58,8 @@ describe Order do
 
   describe '#print_receipt' do
     it 'print the receipt with all the details' do
-      expect(order.print_receipt(basket_summary, 997)).to eq
-      (details + "\n-----------------------\n" + "Total:  £#{997 / 100.0}")
+      details = "prawn crackers  £3.98\nvagetable dumplings  £5.99"
+      expect(order.print_receipt(basket_summary, 997)).to eq (details + "\n-----------------------\n" + "Total:  £#{997 / 100.0}")
     end
   end
 
