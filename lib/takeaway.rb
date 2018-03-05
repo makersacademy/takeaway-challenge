@@ -1,5 +1,6 @@
 require "./lib/customer.rb"
 require './lib/menu.rb'
+require "./lib/messenger.rb"
 
 class Takeaway
   attr_reader :menu, :basket, :prices
@@ -42,10 +43,11 @@ class Takeaway
     @total
   end
 
-  def checkout(_name, address)
+  def checkout(name, address, messenger = Messenger.new)
     customer = Customer.new
-    customer.name = names
+    customer.name = name
     customer.address = address
     customer.order << @basket
+    messenger.message
   end
 end

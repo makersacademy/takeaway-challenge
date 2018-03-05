@@ -1,5 +1,6 @@
 require 'dotenv'
-Dotenv.load('../.env')
+require "twilio-ruby"
+Dotenv.load
 
 class Messenger
 

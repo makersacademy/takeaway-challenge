@@ -1,5 +1,5 @@
 class Customer
-  attr_reader :order, :name, :address, :mobil_num
+  attr_accessor :order, :name, :address, :mobil_num
   def initialize
     @order = []
     @name
