@@ -10,10 +10,10 @@ Envyable.load('config/env.yml')
 
 class SendSMS
 # main method for sending text, takes phone number and total amount as arg
-  def send(phone_number, total)
+  def send(phone_number, total, client_class= Twilio::REST::Client)
     sms_status = true # sms sent status will turn false if sms not sent
     begin
-      @client = Twilio::REST::Client.new ENV["TWILLIO_ACCOUNT_SID"], ENV["TWILLIO_AUTH_TOKEN"]
+      @client = client_class.new ENV["TWILLIO_ACCOUNT_SID"], ENV["TWILLIO_AUTH_TOKEN"]
       @client.messages.create(
           body: delivery_message + "#{total}",
           to: phone_number, # Replace with your phone number
@@ -33,7 +33,7 @@ private
     "and should be with you before #{in_40_mins}\n Your total is £"
   end
 
-# in_40_mins returns Time.now + 40 mins as HH:MM 
+# in_40_mins returns Time.now + 40 mins as HH:MM
   def in_40_mins
     (Time.now + 2400).strftime("%H:%M")
   end
