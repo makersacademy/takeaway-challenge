@@ -21,4 +21,9 @@ describe Menu do
     ])
     end
   end
+  describe '#prices' do
+    it 'returns the price of a dish' do
+      expect(subject.prices('Peking duck')).to eq(9.9)
+    end
+  end
 end
