@@ -40,7 +40,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 How to use
 ---------------------
 
-- Clone it (command line -git git@github.com:reenz/takeaway-challenge.git)
+- Clone it (command line -git@github.com:reenz/takeaway-challenge.git)
 - Install dependencies (command line - bundle install)
 - Go to irb
 ```
@@ -64,7 +64,7 @@ Technologies Used
 - Rubocop
 - Capybara
 - Simplecov
-```
+
 
 Possible Enhancements
 ---------------------
