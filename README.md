@@ -13,15 +13,8 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
 -------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This a weekend challenge to build a takeaway program with following user stories
 
 User Stories Covered With Unit Tests
 -------------------------------------
@@ -42,6 +35,35 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+How to use
+---------------------
+
+- Clone it (command line -git git@github.com:reenz/takeaway-challenge.git)
+- Install dependencies (command line - bundle install)
+- Go to irb
+```
+  require "./lib/takeaway.rb"
+  takeaway = Takeaway.new
+  takeaway.read_menu
+=> {"Bombay aloo"=>3.25, "Dal tadka"=>3.35, "Boiled rice"=>2.0, "Fried rice"=>3.0, "Naan"=>1.5, "Lassi"=>3.0, "Juice"=>2.0}
+  takeaway.order("Lassi", 2)
+=> "Lassi * 2 added to basket"
+  takeaway.view_basket
+=> "Lassi * 2 = 6.0"
+  takeaway.complete_order(6)
+```
+
+Technologies Used
+---------------------
+- Ruby
+- Rspec
+- Twilio-ruby
+- Rake
+- Rubocop
+- Capybara
+- Simplecov
 ```
 
 Possible Enhancements
