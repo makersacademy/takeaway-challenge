@@ -1,6 +1,7 @@
 require_relative './dish'
 
 class Menu
+  attr_reader :menu
 
   SET_MENU = 3
 
@@ -24,11 +25,11 @@ class Menu
   end
 
   def print_menu
-    print "Menue PizzaVolf".center(25,"*")
-    print "Pizza: #{@menu[:pizza]}".center(25)
-    print "Paste: #{@menu[:paste]}".center(25)
-    print "Side: #{@menu[:side]}".center(25)
-    print "Salade: #{@menu[:salade]}".center(25)
-    print "end".center(25, "*")
+    puts "Menue PizzaVolf".center(25,"*")
+    puts "Pizza: #{@menu[:pizza]}".center(25)
+    puts "Paste: #{@menu[:paste]}".center(25)
+    puts "Side: #{@menu[:side]}".center(25)
+    puts "Salade: #{@menu[:salade]}".center(25)
+    puts "end".center(25, "*")
   end
 end

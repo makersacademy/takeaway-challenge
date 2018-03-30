@@ -28,6 +28,5 @@ describe Menu do
       allow(Dish).to receive(:rand_side_dish).and_return(side_dish)
       allow(Dish).to receive(:rand_salade_dish).and_return(salade_dish)
     end
-
   end
 end
