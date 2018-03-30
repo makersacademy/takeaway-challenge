@@ -36,7 +36,7 @@ class Restaurant
     end
   end
 
-  def receive_money(amount)
+  def receive_money(amount, customer)
     @bank_account += amount
     current_time = Time.now
     delivery_time = current_time + 3600
