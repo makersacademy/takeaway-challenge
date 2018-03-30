@@ -1,22 +1,24 @@
+require_relative 'notify_user'
+
 class Order 
   def initialize(order)
     @order = order
   end 
   
   def place_order
-     raise StandardError.new('please specify a total') unless includes_total?
+     raise StandardError.new('please specify a total') unless set_total
      raise StandardError.new('empty order submited') if empty_order?
      raise StandardError.new('number of dishes does not match total') unless correct_total?
      send_text 
   end
 
   private
-  def includes_total?
+  def set_total
     @total = @order.delete(:total)
   end
 
   def send_text
-    false
+    NotifyUser::send_notification
   end
 
   def empty_order?
