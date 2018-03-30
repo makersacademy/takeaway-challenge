@@ -1,8 +1,9 @@
+
 class Dish
   attr_reader :name
   attr_reader :price
 
-  def initialize(name, price)
+  def initialize(name = '', price = 0)
     @name = name
     @price = price
   end
@@ -50,6 +51,6 @@ class Dish
       'Russian'
     ]
     salade_price = [4.20, 5.30, 5.85]
-    Dish.new(salade.sample, salade.sample)
+    Dish.new(salade.sample, salade_price.sample)
   end
 end

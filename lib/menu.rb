@@ -5,10 +5,10 @@ class Menu
   SET_MENU = 3
 
   def initialize(menu = {
-    pizza: => []
-    paste: => []
-    side: => []
-    salade: => []
+    pizza: [],
+    paste: [],
+    side: [],
+    salade: []
   })
     @menu = menu
   end
