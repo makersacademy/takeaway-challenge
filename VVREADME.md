@@ -58,6 +58,7 @@ In the initial stages of the challenge feature tests were run using IRB.
     - Installed twilio ruby gem
     - Creation of Domain Model
     - Start working on the 1st user story element
+    - Adding first tests, creating list of dishes
     ![1stUS]()
 
 
