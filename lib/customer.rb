@@ -5,6 +5,7 @@ require_relative './order'
 class Customer
 
   attr_reader :bank_account
+  attr_reader :telephone
 
   ERROR_MESSAGES = {
     not_enough_money_for_order: 'Sorry, you do not have enough money to pay for order'
@@ -12,10 +13,11 @@ class Customer
 
   INITIAL_CASH_AMOUNT = 100
 
-  def initialize(status = false, bank_account = INITIAL_CASH_AMOUNT, telephone = +447502223960)
+  def initialize(status = false, bank_account = INITIAL_CASH_AMOUNT, telephone = '+448696969696')
     @status = status
     @wallet = wallet
     @bank_account = bank_account
+    @telephone = telephone
   end
 
   def hungry?

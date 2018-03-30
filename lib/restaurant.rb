@@ -1,6 +1,7 @@
 require_relative './menu'
 require_relative './order'
 require 'time'
+require 'twilio-ruby'
 
 class Restaurant
   attr_reader :menu
@@ -19,6 +20,10 @@ class Restaurant
     @menu = menu
     @category_array = ['pizza', 'paste', 'side', 'salde']
     @bank_account = bank_account
+
+    account_sid = 'AC51859c3bada076b7262f4f545121a302'
+    auth_token = 'e8faccab6929c94b4171ee77b5f3250e'
+    @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
   def show_menu
@@ -40,7 +45,13 @@ class Restaurant
     @bank_account += amount
     current_time = Time.now
     delivery_time = current_time + 3600
-    message = "Thank you! Your order was placed and will be delivered before #{delivery_time.hour}:#{delivery_time.min}"
+    message = "Thank you! Your order was placed and will be
+    delivered before #{delivery_time.hour}:#{delivery_time.min}"
+    @client.api.account.messages.create(
+      from: '+447403941285',
+      to: customer.telephone,
+      body: message
+    )
     # send
   end
 
