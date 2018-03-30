@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.0'
 
+gem 'byebug', require: false, group: :test
 gem 'capybara'
 gem 'rake'
 gem 'rspec'
