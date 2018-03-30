@@ -2,9 +2,6 @@ require 'dish'
 
 describe Dish do
   
-  before(:each) do
-  end
-
   it 'returns the correct price for an item' do
     expect(Dish.new('meatballs', 8.95).price).to eq 8.95
   end
