@@ -1,5 +1,11 @@
 # require '../lib/takeaway.rb'
+# require '../lib/menu.rb'
 
-# p t = TakeAway.new
+# p t = Takeaway.new(@menu)
+
+# p m = Menu.new(@list)
+
+# p m.list
+
 
 

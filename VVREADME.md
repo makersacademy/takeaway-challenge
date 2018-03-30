@@ -19,13 +19,11 @@ Things you need to install if you want to edit the repository include the follow
 
 ## Running the tests
 
-Run the automated tests for this challenge via RSpec or rubocop.
+Run the automated tests for this challenge via RSpec -fd or rubocop.
 
 ### Break down of end to end tests
 
-In the initial stages of the challenge feature tests were run using IRB.
-
-- Feature test example:
+- 1st user story test for Menu class:
 
 ![FT](https://github.com/VytisVA/airport_challenge/blob/master/FT%20IRB.png)
 
@@ -33,11 +31,11 @@ In the initial stages of the challenge feature tests were run using IRB.
 
 ![UT](https://github.com/VytisVA/airport_challenge/blob/master/UT%20RSpec.png)
 
-- Unit testing/Manual feature testing via IRB for let_landing method:
+- Unit testing:
 
 ![UT2](https://github.com/VytisVA/airport_challenge/blob/master/FT2%20IRB.png)
 
-- Failure in the unit test - let_landing method:
+- Further RSpec test:
 
 ![UT2](https://github.com/VytisVA/airport_challenge/blob/master/UT2%20RSpec.png)
 
@@ -56,10 +54,11 @@ In the initial stages of the challenge feature tests were run using IRB.
 
 - 1 - Setting up a project:
     - Installed twilio ruby gem
-    - Creation of Domain Model
     - Start working on the 1st user story element
-    - Adding first tests, creating list of dishes
     ![1stUS]()
+    - Creation of Domain Model
+    - Adding first tests, creating list of dishes
+    
 
 
 ## ToDo

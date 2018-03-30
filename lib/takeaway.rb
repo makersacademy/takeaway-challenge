@@ -1,6 +1,6 @@
 class Takeaway
 
-	def initialize(menu:)
+	def initialize(menu)
     	@menu = menu
 	end
 
@@ -12,6 +12,3 @@ class Takeaway
 
 	attr_reader :menu
 end
-
-# initaial_menu = { :Hotdog => 2, :Pizza => 4, :Sushi => 5, :Bagel => 3, :Sandwich => 2, :Drink => 1 }
- 
