@@ -1,20 +1,19 @@
+require_relative 'dish_printer'
+
 class Dish
-  
+
+  include DishPrinter
   attr_reader :price, :id
 
-  def Dish.id_generator
-    if  defined?(@@id).nil?
-      @@id = 1
-    else
-      @@id += 1
-    end
-  end
+  @@id = 0
 
   def initialize(name, price)
     @name = name
     @price = price
-    @id = Dish.id_generator
+    @id = @@id += 1
   end
-
-
+  
+  def describe
+    pretty_print(name: @name, id: @id, price: @price)
+  end
 end
