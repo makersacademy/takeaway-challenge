@@ -3,36 +3,16 @@ require 'dish'
 
 describe Menu do
 
-  it 'adds a new dish to dishes array' do
+  it 'adds a new dish to dishes array and shows dishes with prices' do
     menu = Menu.new
-    sushi = Dish.new
-    expect(menu.add_dish(sushi)).to eq [sushi]
+    menu.make_dish("sushi", 1)
+    menu.add_dish
+    menu.make_dish("laksa", 1)
+    menu.add_dish
+    menu.make_dish("pizza", 1)
+    menu.add_dish
+    expect(menu.dishes).to include({"sushi" => 1}, {"laksa" => 1}, {"pizza" => 1})
   end
-
-  it 'views the dishes in the dish array' do
-    menu = Menu.new
-    sushi = Dish.new
-    menu.add_dish(sushi)
-    expect((menu.view_dishes)).to eq [sushi]
-  end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
