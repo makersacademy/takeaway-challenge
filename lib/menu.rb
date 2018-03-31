@@ -19,7 +19,7 @@ class Menu
   def print_menu
     menu_display = []
     # @dishes.each { |dish| menu_display << "#{dish.name}: $#{dish.price}"}
-    @dishes.each { |k,v| menu_display << "#{k}: $#{v}"}
+    @dishes.each { |k, v| menu_display << "#{k}: $#{v}" }
     menu_display.join(", ")
   end
 
@@ -39,6 +39,5 @@ class Menu
   def dish_on_menu?(dish)
     @dishes.keys.include?(dish)
   end
-
 
 end

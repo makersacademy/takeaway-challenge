@@ -4,8 +4,9 @@ require_relative 'order'
 class Takeaway
 
   attr_reader :menu
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, current_order = nil)
     @menu = menu
+    @current_order = current_order
   end
 
   def show_menu

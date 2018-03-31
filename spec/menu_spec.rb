@@ -25,7 +25,7 @@ describe Menu do
 
     it "raises error when dish is not in menu" do
       message = "This dish is not on the menu!"
-      expect{ menu.contains?('something not on menu') }.to raise_error message
+      expect { menu.contains?('something not on menu') }.to raise_error message
     end
 
   end
