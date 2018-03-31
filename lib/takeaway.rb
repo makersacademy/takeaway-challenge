@@ -13,8 +13,31 @@ class Takeaway
     @menu.print_menu
   end
 
-  def order(item, quantity)
-    @current_order = Order.new
-    @current_order.add(item, @menu.dishes[item], quantity)
+  def order(item, quantity = 1)
+    @menu.contains?(item)
+    order_helper(item, quantity)
+    "#{quantity}x #{item}(s) added to your order."
   end
+
+  def order_summary
+    @current_order.summary
+  end
+
+  def total
+    "Your total is: $#{@current_order.total}"
+  end
+
+  private
+
+  def order_helper(item, quantity)
+    if @current_order.nil?
+      @current_order = Order.new
+      @current_order.add(item, @menu.dishes[item], quantity)
+    else
+      @current_order.add(item, @menu.dishes[item], quantity)
+    end
+
+  end
+
+
 end
