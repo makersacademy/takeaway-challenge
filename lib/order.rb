@@ -1,6 +1,7 @@
 require_relative 'notify_user'
-
+ 
 class Order 
+  attr_reader :order
   def initialize(order)
     @order = order
   end 
