@@ -10,7 +10,7 @@ get '/' do
 end
 
 post '/' do 
-  body = request.params["Body"]
+  body = JSONE.parse(request.params["Body"])
   account_sid = ENV['AC_SID']
   auth_token = ENV['TWIL_TOKEN']
   order = Order.new(body)
