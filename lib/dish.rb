@@ -7,13 +7,13 @@ class Dish
 
   @@id = 0
 
-  def initialize(name, price)
+  def initialize name, price
     @name = name
     @price = price
     @id = @@id += 1
   end
   
   def describe
-    pretty_print(name: @name, id: @id, price: @price)
+    pretty_print name: @name, id: @id, price: @price
   end
 end
