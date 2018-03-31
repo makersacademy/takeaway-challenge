@@ -2,6 +2,8 @@ require 'sinatra'
 require_relative 'meal_list'
 require_relative 'meal'
 require_relative 'order'
+require 'json'
+require 'pry'
 
 get '/' do
   'Hello world!'
@@ -9,6 +11,11 @@ end
 
 post '/' do 
   body = request.params["Body"]
-  order = Order.new(body)
-  order.place_order
+  account_sid = ENV['AC_SID']
+  auth_token = ENV['TWIL_TOKEN']
+  @client = Twilio::REST::Client.new account_sid, auth_token
+  message = @client.messages.create(
+      body: "#{body}",
+      to: ENV[MY_NUMBER],   
+      from: ENV[TWILIO_NUMBER]) 
 end
