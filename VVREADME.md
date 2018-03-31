@@ -10,8 +10,6 @@ These instructions will help to follow the steps of the project.
 
 ### Prerequisites & Installing
 
-Things you need to install if you want to edit the repository include the following:
-
 - Fork this repo, and clone to your local machine.
 - Run the command gem install bundle (if you don't have bundle already).
 - When the installation completes, run bundle.
@@ -23,44 +21,38 @@ Run the automated tests for this challenge via RSpec -fd or rubocop.
 
 ### Break down of end to end tests
 
-- 1st user story test for Menu class:
+- 1st user story element test for Menu class:
 
-![FT](https://github.com/VytisVA/airport_challenge/blob/master/FT%20IRB.png)
+![FT]()
 
-- Unit test image:
+- 2nd user story element test for Order class:
 
-![UT](https://github.com/VytisVA/airport_challenge/blob/master/UT%20RSpec.png)
+![UT]()
 
 - Unit testing:
 
-![UT2](https://github.com/VytisVA/airport_challenge/blob/master/FT2%20IRB.png)
+![UT2]()
 
 - Further RSpec test:
 
-![UT2](https://github.com/VytisVA/airport_challenge/blob/master/UT2%20RSpec.png)
+![UT2]()
 
 ## Built With  
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Atom](https://atom.io/)
 * [Sublime Text](https://www.sublimetext.com/)
 * [iterm2](https://www.iterm2.com/)
+* [Twilio](https://www.twilio.com/docs/iam/api)
 
 ## Authors
 
-* [Vytis Vadoklis aka VytisVA](https://github.com/VytisVA)
+* [Vytis Vadoklis](https://github.com/VytisVA)
 
 ## Steps Completed
 
-- 1 - Setting up a project:
-    - Installed twilio ruby gem
-    - Start working on the 1st user story element
-    ![1stUS]()
-    - Creation of Domain Model
-    - Adding first tests, creating list of dishes
-    
-
+- 1 - 
+ 
 
 ## ToDo
 
-- tbc
+- 
