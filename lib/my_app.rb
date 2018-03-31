@@ -16,6 +16,6 @@ post '/' do
   @client = Twilio::REST::Client.new account_sid, auth_token
   message = @client.messages.create(
       body: "#{body}",
-      to: ENV[MY_NUMBER],   
-      from: ENV[TWILIO_NUMBER]) 
+      to: ENV['MY_NUMBER'],   
+      from: ENV['TWILIO_NUMBER']) 
 end
