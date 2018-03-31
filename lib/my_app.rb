@@ -2,7 +2,6 @@ require 'sinatra'
 require_relative 'meal_list'
 require_relative 'meal'
 require_relative 'order'
-require 'pry'
 
 get '/' do
   'Hello world!'
