@@ -19,3 +19,5 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 For the list of dishes I referred to the rubric to get examples of items to include in the menu, just to save time on the non-code stuff.
+
+I have included the menu in the initialize method, and an empty basket
