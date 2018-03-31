@@ -3,4 +3,5 @@ source 'https://rubygems.org' do
   gem rspec
   gem rubocop
   gem simplecov
+  rvm 2.4.1
 end
