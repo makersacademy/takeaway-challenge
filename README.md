@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/jbropho/takeaway_chall
-enge.svg?branch=master)](https://travis-ci.org/jbropho/takeaway_challenge)
+[![Build Status](https://travis-ci.org/jbropho/takeaway_challenge.svg?branch=master)](https://travis-ci.org/jbropho/takeaway_challenge)
 # Takeaway Challenge
 ## Makers Academy weekend challenge to create a takeaway app with text notifications.
 [Challenge Specification](https://github.com/makersacademy/takeaway-challenge)
