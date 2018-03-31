@@ -14,6 +14,12 @@ class Order
     @prices.reduce(:+)
   end
 
+  def summary
+    items = []
+    @basket.each { |item, quantity| items << "#{item} x#{quantity}" }
+    "Your order: #{items.join(", ")}, total: $#{total}"
+  end
+
   private
 
   def basket_adder(dish, quantity)
