@@ -19,7 +19,7 @@ class Order
     counter = 0
     @basket.each { |item, quantity|
       items << "#{item} x#{quantity} = $#{@prices[counter]}"
-      counter +=1
+      counter += 1
     }
     "Your order: #{items.join(", ")}, total: $#{total}"
   end

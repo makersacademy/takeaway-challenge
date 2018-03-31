@@ -8,10 +8,10 @@ describe Takeaway do
     'hot dog' => 3.75,
     'fries' => 2.50,
     'soda' => 1.50, },
-    contains?: true )
+    contains?: true)
   }
-  let(:example_summary) { "Your order: burger x2 = $10.0, total: $10.0"}
-  let(:order) { double(:order, summary: example_summary, total: 10.0)}
+  let(:example_summary) { "Your order: burger x2 = $10.0, total: $10.0" }
+  let(:order) { double(:order, summary: example_summary, total: 10.0) }
 
   describe '#show_menu' do
     it "shows menu when prompted" do

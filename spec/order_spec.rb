@@ -4,7 +4,7 @@ describe Order do
   subject(:order) { described_class.new }
   let(:example_summary) {
     "Your order: pizza x3 = $15.0, burger x2 = $5.0, total: $20.0"
-    }
+  }
 
   describe '#add' do
     before do

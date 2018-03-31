@@ -30,14 +30,8 @@ class Takeaway
   private
 
   def order_helper(item, quantity)
-    if @current_order.nil?
-      @current_order = Order.new
-      @current_order.add(item, @menu.dishes[item], quantity)
-    else
-      @current_order.add(item, @menu.dishes[item], quantity)
-    end
-
+    @current_order = Order.new if @current_order.nil?
+    @current_order.add(item, @menu.dishes[item], quantity)
   end
-
 
 end
