@@ -7,7 +7,7 @@ class Order
 
   def add(dish, price, quantity)
     basket_adder(dish, quantity)
-    quantity.times { @prices << price }
+    @prices << price * quantity
   end
 
   def total
@@ -16,7 +16,11 @@ class Order
 
   def summary
     items = []
-    @basket.each { |item, quantity| items << "#{item} x#{quantity}" }
+    counter = 0
+    @basket.each { |item, quantity|
+      items << "#{item} x#{quantity} = $#{@prices[counter]}"
+      counter +=1
+    }
     "Your order: #{items.join(", ")}, total: $#{total}"
   end
 
