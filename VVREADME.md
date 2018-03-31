@@ -1,8 +1,8 @@
 # Takeaway-challenge
 
-VVREADME briefly explains my approach to solving the challenge. Link to the task source with detailed instructions regarding the challenge itself is available [here](https://github.com/makersacademy/takeaway-challenge).
+Link to the task source with detailed instructions regarding the challenge itself is available [here](https://github.com/makersacademy/takeaway-challenge).
 
-Unfinished code or other elements will be highlighted, and plan will be provided how to finalise the challenge in [ToDo](#todo).
+Unfinished code or other missing elements will be highlighted, and plan will be provided how to finalise the challenge in [ToDo](#todo).
 
 ## Getting Started
 
@@ -14,6 +14,9 @@ These instructions will help to follow the steps of the project.
 - Run the command gem install bundle (if you don't have bundle already).
 - When the installation completes, run bundle.
 - Install twilio-ruby gem via [this](https://github.com/twilio/twilio-ruby).
+- Sign up for a free Twilio account
+- Open terminal and in IRB and require the followiong files:
+	- 
 
 ## Running the tests
 
@@ -21,19 +24,19 @@ Run the automated tests for this challenge via RSpec -fd or rubocop.
 
 ### Break down of end to end tests
 
-- 1st user story element test for Menu class:
+- 1st user story test:
 
 ![FT]()
 
-- 2nd user story element test for Order class:
+- 2nd user story test:
 
 ![UT]()
 
-- Unit testing:
+- 3rd user story test:
 
 ![UT2]()
 
-- Further RSpec test:
+- 4th user story test:
 
 ![UT2]()
 
@@ -50,7 +53,9 @@ Run the automated tests for this challenge via RSpec -fd or rubocop.
 
 ## Steps Completed
 
-- 1 - 
+- 1 - Setting up project:
+	- Canvasing ideas, sketching, googling, running various app versions, learning Twilio.
+	- 1st user story, generating tests, writing code.
  
 
 ## ToDo
