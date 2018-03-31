@@ -1,0 +1,85 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/danielwork/Documents/GitHub/makers/week2/w2-end/takeaway-challenge/w2-dm/spec/customer_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        2,
+        2,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/danielwork/Documents/GitHub/makers/week2/w2-end/takeaway-challenge/w2-dm/lib/app.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/danielwork/Documents/GitHub/makers/week2/w2-end/takeaway-challenge/w2-dm/lib/menu.rb": [
+        1,
+        1,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
+        1,
+        null,
+        1,
+        12,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/danielwork/Documents/GitHub/makers/week2/w2-end/takeaway-challenge/w2-dm/lib/customer.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/danielwork/Documents/GitHub/makers/week2/w2-end/takeaway-challenge/w2-dm/spec/menu_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        2,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1522494650
+  }
+}
