@@ -14,11 +14,9 @@ post '/' do
   account_sid = ENV['AC_SID']
   auth_token = ENV['TWIL_TOKEN']
   order = Order.new(body)
-  STDOUT.puts "body : #{body} "
-  STDOUT.puts "order : #{order}"
-  # @client = Twilio::REST::Client.new account_sid, auth_token
-  # message = @client.messages.create(
-  #     body: "#{order.to_s}",
-  #     to: ENV['MY_NUMBER'],   
-  #     from: ENV['TWILIO_NUMBER']) 
+  @client = Twilio::REST::Client.new account_sid, auth_token
+  message = @client.messages.create(
+      body: "#{body}",
+      to: ENV['MY_NUMBER'],   
+      from: ENV['TWILIO_NUMBER']) 
 end
