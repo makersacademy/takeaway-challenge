@@ -7,7 +7,8 @@ class NotifyUser
      create_client
      send_message 
   end 
-∫
+  
+  private 
   def self.create_client
     @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
   end
