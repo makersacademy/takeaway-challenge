@@ -43,11 +43,26 @@ describe Takeaway do
       expect { takeaway.remove_item(item, 1) }.to change {takeaway.my_order[item]}.from(3).to(2)
     end
 
-    it 'raises an error if the quantity removed is more than the quantity in my order' do
+    it 'raises an error if the quantity removed is more than the quantity in my_order' do
       message = "Sorry, you can't remove more than you've ordered"
       item = "Pepperoni"
       takeaway.add_item(item)
       expect { takeaway.remove_item(item, 2) }.to raise_error message
+    end
+
+    it 'raises an error if the item is not in my_order' do
+      message = "Sorry, the item selected is not in your order"
+      item = "Pepperoni"
+      expect { takeaway.remove_item("Pepperoni") }.to raise_error message
+    end
+  end
+
+  describe '#order_total' do
+    it { is_expected.to respond_to(:order_total) }
+    it 'shows a summary of the order including a total for each item' do
+      item = "Pepperoni"
+      subject.add_item(item, 2)
+      expect(subject.order_total).to eq 15.00
     end
   end
 
