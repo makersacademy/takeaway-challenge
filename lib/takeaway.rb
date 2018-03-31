@@ -14,7 +14,13 @@ class Takeaway
   end
 
   def add(item)
-    @basket = { :"spring roll" => 0.99 }
+    @basket = { "spring roll" => 0.99 }
+    # @menu.each do |k, v|
+    #   if k == item
+    #     @basket[k] = v
+    #   end
+    # end
+    # puts @basket
   end
 
 end

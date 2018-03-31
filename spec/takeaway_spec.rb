@@ -19,6 +19,12 @@ describe Takeaway do
   end
 
   it "adds item selected to basket" do
-    expect(takeaway.add("spring roll")).to have_key(:"spring roll")
+    # d = double{ :"spring roll" => 0.99 }
+    expect(takeaway.add("spring roll")).to be_a(Hash)
+  end
+
+  it "adds more items selected to basket" do
+    takeaway.add("spring roll")
+    expect(takeaway.add("peking duck")).to be_a(Hash)
   end
 end
