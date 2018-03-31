@@ -23,5 +23,22 @@ class Menu
     menu_display.join(", ")
   end
 
+  def contains?(dish)
+    not_on_menu_error unless dish_on_menu?(dish)
+    return true
+  end
+
+  private
+
+  # ERROR MESSAGES
+  def not_on_menu_error
+    raise "This dish is not on the menu!"
+  end
+
+  # HELPER METHODS
+  def dish_on_menu?(dish)
+    @dishes.keys.include?(dish)
+  end
+
 
 end
