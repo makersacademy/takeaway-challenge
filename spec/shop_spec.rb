@@ -49,4 +49,10 @@ describe Shop do
       expect { subject.order 1, 3 }.to output("Fake dish added\n").to_stdout
     end      
   end
+
+  describe '#checkout' do
+    it 'outputs info string if no orders are available' do
+      expect(subject.checkout).to eq Shop::MESSAGES[:no_items]
+    end
+  end
 end

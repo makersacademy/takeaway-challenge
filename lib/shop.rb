@@ -3,7 +3,7 @@ require_relative 'order'
 
 class Shop
 
-  MESSAGES = { empty_menu: 'No dishes currently available', invalid_quantity: 'Error: please enter a valid quantity (1 -12)', invalid_id: "Error: please enter a valid dish number from the menu\n" }
+  MESSAGES = { empty_menu: 'No dishes currently available', invalid_quantity: 'Error: please enter a valid quantity (1 -12)', invalid_id: "Error: please enter a valid dish number from the menu\n", no_items: 'No items ordered' }
 
   def initialize
     @menu = Dishes.new('./data/dishes.csv')
@@ -29,8 +29,17 @@ class Shop
     end
   end
 
+  def checkout
+    return MESSAGES[:no_items] unless can_checkout?
+  #  @orders.last.complete!
+  end
+ 
   private
   def latest_in_progress?
     !@orders.empty? && @orders.last.state == :in_progress
+  end
+
+  def can_checkout?
+    !@orders.empty? && @orders.last.state == :in_progress && @orders.last.calculate_total > 0
   end
 end
