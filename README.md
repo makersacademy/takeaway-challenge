@@ -70,4 +70,5 @@ My approach was to keep this task as simple as possible and concentrate on writi
 * Adhered to creating an MVP with no unnecessary features
 
 ## Focus for the coming week
-* Increase ability to gain visibility into and debug live web-apps 
+* Increase ability to gain visibility into and debug live web-apps
+* Learn to test Sinatra routers
