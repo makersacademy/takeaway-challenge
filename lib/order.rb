@@ -32,14 +32,14 @@ class Order
 
   def get_selection
     puts "What would you like to order? Press return to finish"
-    selection = gets.chomp
+    selection = STDIN.gets.chomp
     selection = selection.gsub(/\s+/,'_').downcase.to_sym
 
   end
 
   def get_quantity
     puts "How many would you like?"
-    quantity = gets.chomp.to_i
+    quantity = STDIN.gets.chomp.to_i
 
   end
 

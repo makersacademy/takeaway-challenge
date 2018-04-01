@@ -13,7 +13,7 @@ describe Order do
   end
 
   describe '#save_items' do
-
+    let(:squid){ double('squid') }
     it "adds an item and quantity to the order object" do
       allow(order).to receive(:gets).and_return('lemon chicken', '2', '')
       allow(menu_option).to receive(:options).and_return(menu_option)
@@ -21,13 +21,14 @@ describe Order do
       expect(order.order_items).to eq({ lemon_chicken: 2 })
     end
 
+
   end
 
   describe '#check_order' do
     before(:each) do
       order.save_items(menu_option)
     end
-    it "prints a verifiction of an order" do
+    it "prints a verification of an order" do
       order_verification = "You ordered:\n 2 x lemon chicken - £5.89 each\n Total: £11.78\n"
       expect{order.check_order(menu_option)}.to output(order_verification).to_stdout
 
