@@ -1,5 +1,7 @@
 require 'rubygems'
+require 'dotenv/load'
 require 'twilio-ruby'
+
 class Restaurant
   attr_reader :basket, :menu
   def initialize(menu = Menu.new)
@@ -8,7 +10,7 @@ class Restaurant
     @bill = [0]
   end
 
-  def order(name, quantity, expect_total)
+  def order(name, quantity = 1, expect_total)
     basket << (menu.dishes.assoc name) * quantity
     sum = menu.dishes[name] * quantity
     error = "Hey it should be #{sum} not #{expect_total}"
@@ -42,12 +44,12 @@ class Restaurant
   private
 
   def send_text(message)
-    account_sid = 'AC5aa76e3c7ccd0c77f55ff9aab18210f0'
-    auth_token = '126c49a5abafd240cd9eff57f6009ede'
+    account_sid = ENV['TWILIO_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new account_sid, auth_token
 
-    from = '+441986232066'
-    to = '+447450255468'
+    from = ENV['MY_TWILO_NUMBER']
+    to = ENV['CLIENT_NUMBER']
 
     client.messages.create(
       from: from,

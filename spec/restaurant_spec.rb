@@ -33,10 +33,9 @@ describe Restaurant do
     specify { expect { subject.todays_menu }.to output("curry\n1.0\npasta\n3.0\nbasta\n2.5\n\"So... What would you like? It is all fairly fresh\"\n").to_stdout }
   end
 
-  it 'sends a payment confirmation text message' do
-    message = "Your order is complete and will arrive at #{(Time.new + 3600).strftime("%H:%M:%S")}, prepare £1.0 to pay the driver"
-    expect(takeaway).to receive(:send_text).with(message)
-    takeaway.order('curry', 1, 1)
-    takeaway.checkout
+  it "receives a text message after the order is placed" do
+    VCR.use_cassette('twilio') do
+      takeaway.checkout
+    end
   end
 end

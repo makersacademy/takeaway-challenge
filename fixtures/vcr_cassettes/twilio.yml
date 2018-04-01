@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2010-04-01/Accounts/AC5aa76e3c7ccd0c77f55ff9aab18210f0/Messages.json
+    body:
+      encoding: UTF-8
+      string: Body=Your+order+is+complete+and+will+arrive+at+21%3A20%3A49%2C+prepare+%C2%A30+to+pay+the+driver&From=%2B441986232066&To=%2B447450255468
+    headers:
+      User-Agent:
+      - twilio-ruby/5.7.2 (ruby/x86_64-darwin16 2.5.0-p0)
+      Accept-Charset:
+      - utf-8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Authorization:
+      - Basic QUM1YWE3NmUzYzdjY2QwYzc3ZjU1ZmY5YWFiMTgyMTBmMDoxMjZjNDlhNWFiYWZkMjQwY2Q5ZWZmNTdmNjAwOWVkZQ==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 01 Apr 2018 19:20:50 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Concurrent-Requests:
+      - '1'
+      Twilio-Request-Duration:
+      - '0.084'
+      Twilio-Request-Id:
+      - RQ39a57327c3d5458eb94f3c1d419cf36e
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '889'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SMeedd6d7344a04b28b3b05464f9ded8fe", "date_created": "Sun,
+        01 Apr 2018 19:20:50 +0000", "date_updated": "Sun, 01 Apr 2018 19:20:50 +0000",
+        "date_sent": null, "account_sid": "AC5aa76e3c7ccd0c77f55ff9aab18210f0", "to":
+        "+447450255468", "from": "+441986232066", "messaging_service_sid": null, "body":
+        "Sent from your Twilio trial account - Your order is complete and will arrive
+        at 21:20:49, prepare \u00a30 to pay the driver", "status": "queued", "num_segments":
+        "1", "num_media": "0", "direction": "outbound-api", "api_version": "2010-04-01",
+        "price": null, "price_unit": "USD", "error_code": null, "error_message": null,
+        "uri": "/2010-04-01/Accounts/AC5aa76e3c7ccd0c77f55ff9aab18210f0/Messages/SMeedd6d7344a04b28b3b05464f9ded8fe.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/AC5aa76e3c7ccd0c77f55ff9aab18210f0/Messages/SMeedd6d7344a04b28b3b05464f9ded8fe/Media.json"}}'
+    http_version: 
+  recorded_at: Sun, 01 Apr 2018 19:20:50 GMT
+recorded_with: VCR 4.0.0
