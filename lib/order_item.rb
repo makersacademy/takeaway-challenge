@@ -3,7 +3,7 @@ require_relative 'order_item_printer'
 class OrderItem
   include OrderItemPrinter
 
-  attr_reader :price, :description
+  attr_reader :price, :description, :id
 
   def initialize dish, quantity
     @dish = dish
@@ -15,7 +15,7 @@ class OrderItem
 
   private
   def id_generator
-    ([rand(65..90).chr] + Array.new(4) { rand(0..9) }).join
+    ([Kernel.rand(65..90).chr] + Array.new(4) { Kernel.rand(0..9) }).join
   end
 
   def calculate_price

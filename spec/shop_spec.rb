@@ -8,7 +8,9 @@ describe Shop do
     @dishes = instance_double('Dishes')
     @empty_dishes = instance_double('Dishes')
     @order = instance_double('Order')
+    @dish = instance_double('Dish')
     allow(@order).to receive(:add_item).with("Fake dish", 3) { "Fake dish added" }
+    allow(@order).to receive(:state) { :in_progress }
     allow(@dishes).to receive(:describe) { "Fake dish1\nFake dish2" }
     allow(@dishes).to receive(:get_dish).with(1) { "Fake dish" }
     allow(@empty_dishes).to receive(:describe).and_raise("No dishes currently available")
@@ -53,6 +55,44 @@ describe Shop do
   describe '#checkout' do
     it 'outputs info string if no orders are available' do
       expect(subject.checkout).to eq Shop::MESSAGES[:no_items]
+    end
+ 
+    it 'outputs an info string if all orders are completed' do
+      subject.instance_variable_set(:@orders, [@order])
+      allow(@order).to receive(:state) { :completed }
+      expect(subject.checkout).to eq Shop::MESSAGES[:no_items]
+    end 
+
+     it 'outputs an info string if latest order totals to 0' do
+       allow(@order).to receive(:calculate_total) { 0 }
+       subject.instance_variable_set(:@orders, [@order])
+       expect(subject.checkout).to eq Shop::MESSAGES[:no_items]
+     end 
+
+    it 'sets the last order to complete' do
+      subject.instance_variable_set(:@orders, [@order])
+      allow(@order).to receive(:calculate_total) { 10 }
+      expect(@order).to receive(:complete!)
+      subject.checkout
+    end
+
+    it 'outputs a message with confirmation and total' do
+      subject.instance_variable_set(:@orders, [@order])
+      allow(@order).to receive(:calculate_total) { 10 }
+      allow(@order).to receive(:complete!)
+      expect { subject.checkout }.to output("Thanks for the order. Your total is £10.00. You will shortly receive a confirmation message.\n").to_stdout
+    end
+  end
+
+  describe '#show_bill' do
+    it 'returns with a message if no orders available' do
+      expect(subject.show_bill).to eq Shop::MESSAGES[:no_orders]
+    end
+
+    it 'returns a description of the last order' do
+      subject.instance_variable_set(:@orders, [@order])
+      allow(@order).to receive(:describe) { "Fake order description" }
+      expect(subject.show_bill).to eq "Fake order description"
     end
   end
 end

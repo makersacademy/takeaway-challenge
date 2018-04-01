@@ -3,7 +3,7 @@ require_relative 'order'
 
 class Shop
 
-  MESSAGES = { empty_menu: 'No dishes currently available', invalid_quantity: 'Error: please enter a valid quantity (1 -12)', invalid_id: "Error: please enter a valid dish number from the menu\n", no_items: 'No items ordered' }
+  MESSAGES = { empty_menu: 'No dishes currently available', invalid_quantity: 'Error: please enter a valid quantity (1 -12)', invalid_id: "Error: please enter a valid dish number from the menu\n", no_items: 'No items ordered', no_orders: 'No orders available' }
 
   def initialize
     @menu = Dishes.new('./data/dishes.csv')
@@ -31,7 +31,13 @@ class Shop
 
   def checkout
     return MESSAGES[:no_items] unless can_checkout?
-  #  @orders.last.complete!
+    @orders.last.complete!
+    puts "Thanks for the order. Your total is £%<total>.2f. You will shortly receive a confirmation message." % { total: @orders.last.calculate_total }
+  end
+  
+  def show_bill
+    return MESSAGES[:no_orders] if @orders.empty?
+    @orders.last.describe
   end
  
   private
