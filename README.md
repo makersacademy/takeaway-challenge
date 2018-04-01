@@ -17,7 +17,7 @@ Takeaway Challenge
 Background
 -------
 
-The second weekend challenge at makers academy. The task is detailed below.
+The second weekend challenge at makers academy, we were challenged to emulate a takeaway delivery service. The task is detailed below.
 Throughout this project I further developed skills in TDD/BDD, refactoring, using mocks, doubles and stubs. I also became more confident in using hashes to store data and manipulating them for expected results.
 
 Task

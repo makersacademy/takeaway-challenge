@@ -7,16 +7,20 @@ class Order
   end
 
 
-  def save_items(menu)
+  def save_items(menu_options)
     loop do
       selection = get_selection
       break if selection.empty?
 
-      raise "We don't currently serve this dish!" if menu.options[selection].nil?
+      raise "We don't currently serve this dish!" if menu_options[selection].nil?
       quantity = get_quantity
       @order_items[selection] = quantity
     end
     'order noted'
+  end
+
+  def check_order(menu_options)
+    'order verified'
   end
 
 
