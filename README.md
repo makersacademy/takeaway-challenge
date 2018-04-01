@@ -13,6 +13,25 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+IRB
+ 2.5.0 :002 > require './lib/take_away.rb'
+ => true
+2.5.0 :003 > takeway = TakeAway.new
+ => #<TakeAway:0x00007f839aa37e18 @menu={"Goi Ga"=>5.99, "Cha Gio"=>4.99, "Vietnamese dumpling"=>2.99, "peking duck"=>5.0, "Pho Bo"=>6.99}>
+2.5.0 :004 > takeway.read_menu
+ => {"Goi Ga"=>5.99, "Cha Gio"=>4.99, "Vietnamese dumpling"=>2.99, "peking duck"=>5.0, "Pho Bo"=>6.99}
+2.5.0 :005 > order = Order.new
+ => #<Order:0x00007f839aa1bd80 @basket=[], @total=0, @menu={"Goi Ga"=>5.99, "Cha Gio"=>4.99, "Vietnamese dumpling"=>2.99, "peking duck"=>5.0, "Pho Bo"=>6.99}>
+2.5.0 :006 > order.order("peking duck", 2)
+ => "2X peking duck added to your basket"
+2.5.0 :007 > order.order("Pho Bo", 4)
+ => "4X Pho Bo added to your basket"
+2.5.0 :008 > order.basket
+ => ["peking duck X 2 = £10.0", "Pho Bo X 4 = £27.96"]
+2.5.0 :009 > order.receipt
+ => "peking duck X 2 = £10.0\nPho Bo X 4 = £27.96\n Total = 37.96"
+
+
 
 Instructions
 -------

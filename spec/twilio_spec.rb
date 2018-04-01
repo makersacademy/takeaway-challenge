@@ -6,7 +6,7 @@ describe Message do
 
   subject(:message) { described_class.new }
 
-  it "receives a confirmation text" do
+  it "sends a confirmation text" do
     VCR.use_cassette('twilio') do
       message.send_message
     end
