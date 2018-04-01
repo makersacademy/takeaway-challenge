@@ -14,11 +14,27 @@ describe Menu do
     expect(menu.dishes).to include({"sushi" => 1}, {"laksa" => 1}, {"pizza" => 1})
   end
 
+  it 'allows user to select one dish' do
+    menu = Menu.new
+    menu.make_dish("sushi", 1)
+    menu.add_dish
+    menu.make_dish("laksa", 1)
+    menu.add_dish
+    menu.make_dish("pizza", 1)
+    menu.add_dish
+    expect(menu.dishes[0]).to include ({"sushi" => 1})
+  end
 
-
-
-
-
-
-
+  it 'allows user to select some number of dishes' do
+    menu = Menu.new
+    choice1 = menu.make_dish("sushi", 1)
+    menu.add_dish
+    choice2 = menu.make_dish("laksa", 1)
+    menu.add_dish
+    choice3 = menu.make_dish("pizza", 1)
+    menu.add_dish
+    menu.select_sushi
+    menu.select_laksa
+    expect(menu.selection).to include({"sushi" => 1}, {"laksa" => 1})
+  end
 end
