@@ -10,12 +10,12 @@ describe Menu do
     end
 
     it 'allow you to add the dishes' do
-      expect(menu.dishes).to include({dish => price})
+      expect(menu.dishes).to include({ dish => price })
     end
 
     it 'allow you to delete the dishes' do
       menu.delete(dish)
-      expect(menu.dishes).not_to include({dish => price})
+      expect(menu.dishes).not_to include({ dish => price })
     end
   end
 end

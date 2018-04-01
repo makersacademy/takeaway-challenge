@@ -2,7 +2,7 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = {'curry' => 1.00, 'pasta' => 3.00, 'basta' => 2.50}
+    @dishes = { 'curry' => 1.00, 'pasta' => 3.00, 'basta' => 2.50 }
   end
 
   def add(dish, price)
