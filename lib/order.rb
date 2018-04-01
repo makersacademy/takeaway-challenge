@@ -21,10 +21,8 @@ class Order
 
   def check_order(menu_options)
     puts "You ordered:"
-    @order_items.each do |item, quantity|
-    puts " #{quantity} x #{item.to_s.gsub('_', ' ')} - £#{menu_options[item.to_s.gsub(/\s+/, '_').to_sym]} each"
-    end
-    puts " Total: £11.78"
+    summary_of_order(menu_options)
+    puts " Total: £#{order_total(menu_options)}"
 
     'order verified'
   end
@@ -45,6 +43,19 @@ class Order
 
   end
 
+  def summary_of_order(menu_options)
+    @order_items.each do |item, quantity|
+    puts " #{quantity} x #{item.to_s.gsub('_', ' ')} - £#{menu_options[item.to_s.gsub(/\s+/, '_').to_sym]} each"
+    end
+  end
 
+  def order_total(menu_options)
+    amounts = []
+    @order_items.each do |item, quantity|
+      amounts << menu_options[item] * quantity
+    end
 
-end
+    amounts.reduce(:+).to_s
+
+    end
+  end
