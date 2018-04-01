@@ -59,11 +59,27 @@ describe Takeaway do
 
   describe '#order_total' do
     it { is_expected.to respond_to(:order_total) }
-    it 'shows a summary of the order including a total for each item' do
+    it 'shows the total value of the order' do
       item = "Pepperoni"
       subject.add_item(item, 2)
       expect(subject.order_total).to eq 15.00
     end
+  end
+
+  describe '#item_total' do
+    it { is_expected.to respond_to(:item_total) }
+    it 'returns the combined total for items on the order' do
+      item = "Pepperoni"
+      expect(takeaway.item_total(item, 3)).to eq 22.50
+    end
+  end
+
+  describe '#display_order' do
+      it 'returns a printed list of the items on your order and their subtotals' do
+        takeaway.add_item("Pepperoni", 2)
+        takeaway.add_item("Vegetarian")
+        expect(takeaway.display_order).to eq "Pepperoni x2 = £15.00, Vegetarian x1 = £7.00"
+      end
   end
 
 

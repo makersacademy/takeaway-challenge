@@ -23,6 +23,7 @@ class Takeaway
 
   def order_total
     @my_order.each { |item, quantity| @total += (view_menu[item] * quantity ) }
+    @total
   end
 
   def item_total(item, quantity)
