@@ -1,6 +1,8 @@
 require_relative 'dish'
 require_relative 'send_sms'
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load('takeaway_environment_variables.env')
 
 class Menu
 
@@ -14,6 +16,9 @@ class Menu
     @dishes = []
     @selection = []
     @total = total
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
   def in_1_hour
@@ -46,26 +51,28 @@ class Menu
     @selection << {"type" => "pizza", "price" => DEFAULT_PRICE }
   end
 
-  def place_order
-  end
-
   def total_price
     total_price = @selection.map {|s| s["price"]}.reduce(0, :+)
   end
 
-  def total_correct?
-    @total == total_price
+  def total_incorrect?
+    @total != total_price
   end
 
-  def send_message
-    account_sid = 'ACdcdde353d226481c3cc28638c6442da7'
-    auth_token = '95f4cbb93d6d065bdfd9d46bc1529249'
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.api.account.messages.create(
-    from: '+447481342537',
-    to: '+447934429256',
-    body: "Hey there! Your order has been confirmed and will arrive at #{in_1_hour}"
-    )
+  def complete_order
+    send_text("Your order was placed and will be delivered before #{in_1_hour}")
+  end
+
+  def send_text(message)
+    raise "The customer total doesn't match the food price total" if total_incorrect?
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    Twilio::REST::Client.new(account_sid, auth_token)
+      @client.messages.create(
+        from: ENV['TWILIO_PHONE'],
+        to: ENV['MY_PHONE'],
+        body: message
+      )
   end
 
 end

@@ -1,5 +1,6 @@
 require 'menu'
 require 'dish'
+require_relative 'vcr_setup'
 
 describe Menu do
 
@@ -61,18 +62,13 @@ describe Menu do
     menu.add_dish
     menu.select_sushi
     menu.select_laksa
-    expect(menu.total_correct?).to be true
+    expect(menu.total_incorrect?).to be false
   end
 
-  # it 'sends a confirmation message to the customer' do
-  #   menu = Menu.new
-  #   choice1 = menu.make_dish("sushi", 1)
-  #   menu.add_dish
-  #   choice2 = menu.make_dish("laksa", 1)
-  #   menu.add_dish
-  #   choice3 = menu.make_dish("pizza", 1)
-  #   menu.add_dish
-  #   menu.select_sushi
-  #   menu.select_laksa
-  # end
+  it "receives a text message after the order is placed" do
+    menu = Menu.new
+    VCR.use_cassette('twilio') do
+      menu.complete_order
+    end
+  end
 end

@@ -9,3 +9,6 @@ gem 'rspec'
 gem 'rubocop'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false, group: :test
+gem 'vcr'
+gem 'webmock'
+gem 'dotenv-rails', groups: [:development, :test]
