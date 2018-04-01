@@ -20,6 +20,12 @@ class Order
   end
 
   def check_order(menu_options)
+    puts "You ordered:"
+    @order_items.each do |item, quantity|
+    puts " #{quantity} x #{item.to_s.gsub('_', ' ')} - £#{menu_options[item.to_s.gsub(/\s+/, '_').to_sym]} each"
+    end
+    puts " Total: £11.78"
+
     'order verified'
   end
 

@@ -23,5 +23,16 @@ describe Order do
 
   end
 
+  describe '#check_order' do
+    before(:each) do
+      order.save_items(menu_option)
+    end
+    it "prints a verifiction of an order" do
+      order_verification = "You ordered:\n 2 x lemon chicken - £5.89 each\n Total: £11.78\n"
+      expect{order.check_order(menu_option)}.to output(order_verification).to_stdout
+
+    end
+  end
+
 
 end
