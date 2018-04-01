@@ -53,4 +53,19 @@ describe Order do
       expect(subject.calculate_total).to eq 9.99
     end
   end
+
+  describe '#complete!' do
+    it 'sets the state of order to :complete' do
+      expect { subject.complete! }.to change { subject.state }.from(:in_progress).to(:complete)
+    end
+  end
+
+  describe '#describe' do
+    it 'passes info to OrderPrinter, returns a string with order info' do
+      subject.instance_variable_set(:@items, [@order_item])
+      message = "Order summary\n#{subject.instance_variable_get(:@items).map(&:description).join("\n")}\nTotal: #{subject.calculate_total}\nState: #{subject.state}"
+      allow_any_instance_of(OrderPrinter).to receive(:pretty_print).and_return(message)
+      expect(subject.describe).to eq message
+    end
+  end
 end

@@ -1,6 +1,9 @@
 require_relative 'order_item'
+require_relative 'order_printer'
 
 class Order
+
+  include OrderPrinter
 
   MESSAGES = { not_found: 'Item not found' }
 
@@ -23,5 +26,13 @@ class Order
     
   def calculate_total
     @items.reduce(0) { |x,y| x + y.price }
+  end
+
+  def complete!
+    @state = :complete
+  end
+
+  def describe
+    pretty_print(items: @items.map(&:description).join("\n"), total: calculate_total, status: @status.to_s)
   end
 end
