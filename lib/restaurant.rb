@@ -10,35 +10,36 @@ class Restaurant
     @bill = [0]
   end
 
-  def order(name, quantity = 1, expect_total)
+  def order(name, quantity = 1)
     basket << (menu.dishes.assoc name) * quantity
-    sum = menu.dishes[name] * quantity
-    error = "Hey it should be #{sum} not #{expect_total}"
-    raise error if sum != expect_total
-    @bill << sum
-    p "#{quantity}x #{name} added to the basket, total: £#{total}"
+    @bill << menu.dishes[name] * quantity
+    "#{quantity}x #{name} added to the basket, total: £#{total}"
   end
 
   def todays_menu
     menu.dishes.each { |dish| puts dish }
-    p "So... What would you like? It is all fairly fresh"
+    "So... What would you like? It is all fairly fresh"
   end
 
   def basket_summary
     basket.each { |order| puts order }
-    p "Total: #{total}"
+    "Total: #{total}"
   end
 
   def total
     @bill.sum
   end
 
-  def checkout
+  def checkout(expect_total)
+    error_message = "Hey! - order something first"
+    raise error_message if basket.length.zero?
+    error = "Hey it is #{total} not #{expect_total}"
+    raise error if expect_total != total
     message = "Your order is complete and will arrive at #{(Time.new + 3600).strftime("%H:%M:%S")}, prepare £#{total} to pay the driver"
     send_text(message)
-    @bill = []
+    @bill = [0]
     @basket = []
-    p "Enjoy your meal!"
+    "Enjoy your meal!"
   end
 
   private
