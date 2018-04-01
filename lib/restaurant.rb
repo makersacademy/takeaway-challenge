@@ -23,7 +23,7 @@ class Restaurant
 
   def basket_summary
     basket.each { |order| puts order }
-    "Total: #{total}"
+    p "Total: #{total}"
   end
 
   def total
