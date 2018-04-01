@@ -10,18 +10,17 @@ the steps to set up a phone number to send/receive texts.
 
 2. Project set-up
       ```
-      git clone https://github.com/jbropho/takeaway-challenge
-      cd takeaway-challenge
-      bundle install
+      $ git clone https://github.com/jbropho/takeaway-challenge
+      $ cd takeaway-challenge
+      $ bundle install
       ```
-
 
 3. Set temporary environment variables
       ```
-      export AC_SID=your_account_sid_here
-      export TWIL_TOKEN=your_auth_token_here
-      export MY_NUMBER=your_real_phone_number
-      export TWILIO_NUMBER=your_twilio_phone_number
+      $ export AC_SID=your_account_sid_here
+      $ export TWIL_TOKEN=your_auth_token_here
+      $ export MY_NUMBER=your_real_phone_number
+      $ export TWILIO_NUMBER=your_twilio_phone_number
       ```
 
 4. Run irb
@@ -45,15 +44,15 @@ the steps to set up a phone number to send/receive texts.
 5. Sign up for an account with [Heroku](https://heroku.com), install and login to the CLI
 
 6. Inside project root directory
-
-    heroku create
-    heroku config:set AC_SID=your_account_sid_here
-    heroku config:set TWIL_TOKEN=your_auth_token_here
-    heroku config:set MY_NUMBER=your_real_phone_number
-    heroku config:set TWILIO_NUMBER=your_twilio_phone_number
-    heroku push master
-
-
+    ```
+    $ heroku create
+    $ heroku config:set AC_SID=your_account_sid_here
+    $ heroku config:set TWIL_TOKEN=your_auth_token_here
+    $ heroku config:set MY_NUMBER=your_real_phone_number
+    $ heroku config:set TWILIO_NUMBER=your_twilio_phone_number
+    $ heroku push master
+    ```
+    
 7. Go to the manage numbers sections of your Twilio account dashboard,
 click on your twilio number to edit. In the messaging section add the root url of your heroku app to the 'A message comes in' webhook and set the HTTP method to POST.
 
