@@ -33,6 +33,6 @@ class Order
   end
 
   def describe
-    pretty_print(items: @items.map(&:description).join("\n"), total: calculate_total, status: @status.to_s)
+    pretty_print(items: @items.map(&:description).join("\n"), total: calculate_total, state: @state.to_s)
   end
 end

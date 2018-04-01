@@ -9,6 +9,8 @@ describe Shop do
     @empty_dishes = instance_double('Dishes')
     @order = instance_double('Order')
     @dish = instance_double('Dish')
+    @order_item = instance_double('OrderItem')
+    allow(@order_item).to receive(:id) { 'X5678' }
     allow(@order).to receive(:add_item).with("Fake dish", 3) { "Fake dish added" }
     allow(@order).to receive(:state) { :in_progress }
     allow(@dishes).to receive(:describe) { "Fake dish1\nFake dish2" }
@@ -92,7 +94,31 @@ describe Shop do
     it 'returns a description of the last order' do
       subject.instance_variable_set(:@orders, [@order])
       allow(@order).to receive(:describe) { "Fake order description" }
-      expect(subject.show_bill).to eq "Fake order description"
+      expect { subject.show_bill }.to output("Fake order description\n").to_stdout
+    end
+  end
+
+  describe '#remove' do
+    it 'returns with an info string if there are no orders' do
+      expect(subject.remove 'ABCD').to eq Shop::MESSAGES[:cannot_modify]
+    end
+
+    it 'returns with an info string if all orders are completed' do
+      subject.instance_variable_set(:@orders, [@order])
+      allow(@order).to receive(:state) { :completed }
+      expect(subject.remove 'ABCD').to eq Shop::MESSAGES[:cannot_modify]
+    end      
+
+    it 'returns with an info string if an invalid id is passed' do
+      subject.instance_variable_set(:@orders, [@order])
+      allow(@order).to receive(:remove_item).with('A1234').and_raise(Order::MESSAGES[:not_found])
+      expect(subject.remove 'A1234').to eq Shop::MESSAGES[:invalid_item_id]
+    end
+
+    it 'removes the order item with the given id' do
+      subject.instance_variable_set(:@orders, [@order])
+      expect(@order).to receive(:remove_item).with('X5678')
+      subject.remove 'X5678'
     end
   end
 end
