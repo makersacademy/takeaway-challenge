@@ -11,7 +11,7 @@ class Restaurant
   def order(name, quantity, expect_total)
     basket << (menu.dishes.assoc name) * quantity
     sum = (menu.dishes[name]) * quantity
-    error = "Hey it should be #{sum} not #{total}"
+    error = "Hey it should be #{sum} not #{expect_total}"
     raise error if sum != expect_total
     @bill << sum
     p "#{quantity}x #{name} added to the basket, total: £#{total}"
