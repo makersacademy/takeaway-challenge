@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu) }
+  subject(:takeaway) { described_class.new(menu, order, messager) }
   let(:menu_display) { 'burger: $5.0, hot dog: $3.75, fries: $2.5, soda: $1.5' }
   let(:menu) { double(:menu, print_menu: menu_display, dishes: {
     'burger' => 5.00,
@@ -11,7 +11,8 @@ describe Takeaway do
     contains?: true)
   }
   let(:example_summary) { "Your order: burger x2 = $10.0, total: $10.0" }
-  let(:order) { double(:order, summary: example_summary, total: 10.0) }
+  let(:order) { double(:order, add: [10], summary: example_summary, total: 10.0) }
+  let(:messager) { double(:messager, send_text: "Text sent!") }
 
   describe '#show_menu' do
     it "shows menu when prompted" do
@@ -40,10 +41,23 @@ describe Takeaway do
 
   describe '#total' do
     it "shows the user their total" do
-      message = "Your total is: $13.0"
+      message = "Your total is: $10.0"
       takeaway.order('burger', 2)
-      takeaway.order('soda', 2)
+      # takeaway.order('soda', 2)
       expect(takeaway.total).to eq message
+    end
+  end
+
+  describe '#complete_order' do
+    it "raises and error if the total is not correct" do
+      message = "That total is not correct!"
+      takeaway.order('burger', 2)
+      expect { takeaway.complete_order(25.00) }.to raise_error message
+    end
+
+    it "confirms the order" do
+      message = "Thank you! Your total is $10 and a confirmation text is on it's way!"
+      expect(takeaway.complete_order(10)).to eq(message)
     end
   end
 end
