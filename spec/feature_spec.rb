@@ -1,5 +1,13 @@
 # require '../lib/takeaway.rb'
 
-# p t = Takeaway.new
+# require '../lib/menu.rb'
 
-# p t.show_menu
+# p m = Menu.new(print)
+
+# puts m.print
+
+# # p t = Takeaway.new()
+
+# # p t.print_menu
+
+
