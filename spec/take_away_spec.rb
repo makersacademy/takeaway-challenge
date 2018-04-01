@@ -7,4 +7,13 @@ describe TakeAway do
       "Vietnamese dumpling" => 2.99, "peking duck" => 5.00, "Pho Bo" => 6.99 })
     end
   end
+  describe '#order' do
+    it 'you can order a dish' do
+      expect(subject.order('Goi Ga', 2)).to eq("2X Goi Ga added to your basket")
+    end
+  end
+  it "remembers order" do
+    subject.order('Goi Ga', 2)
+    expect(subject.basket).to include("Goi Ga X 2 = £11.98")
+  end
 end
