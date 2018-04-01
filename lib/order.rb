@@ -1,16 +1,18 @@
 require_relative 'notify_user'
- 
-class Order 
+require_relative 'set_menu'
+require_relative 'pretty_printer'
+
+class Order
   attr_reader :order
   def initialize(order)
     @order = order
-  end 
-  
+  end
+
   def place_order
      raise StandardError.new('please specify a total') unless set_total
      raise StandardError.new('empty order submited') if empty_order?
      raise StandardError.new('number of dishes does not match total') unless correct_total?
-     send_text 
+     send_text
   end
 
   private
@@ -23,7 +25,7 @@ class Order
   end
 
   def empty_order?
-    @order.size == 0 
+    @order.size == 0
   end
 
   def correct_total?
