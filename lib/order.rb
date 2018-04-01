@@ -11,7 +11,7 @@ class Order
 
   def add_item dish, quantity
     @items << OrderItem.new(dish, quantity)
-    puts "Added to order:", @items.last.description
+    "Added to order: " +  @items.last.description
   end
 
   def calculate_total

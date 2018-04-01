@@ -23,7 +23,7 @@ class Shop
     @orders << Order.new unless latest_in_progress?
     begin
       dish = @menu.get_dish item_id
-      @orders.last.add_item dish, quantity
+      puts @orders.last.add_item dish, quantity
     rescue
       puts MESSAGES[:invalid_id]
     end

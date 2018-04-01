@@ -46,7 +46,7 @@ describe Shop do
       allow(@order).to receive(:state).and_return(:in_progress)
       subject.instance_variable_set(:@orders, [@order])
       subject.instance_variable_set(:@menu, @dishes)
-      expect(subject.order 1, 3).to eq "Fake dish added"
+      expect { subject.order 1, 3 }.to output("Fake dish added\n").to_stdout
     end      
   end
 end
