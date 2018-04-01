@@ -1,7 +1,8 @@
 require 'order'
 describe Order do
   subject(:order) { described_class.new }
-  let(:menu_item){ double('item') }
+  let(:customer) { double('customer') }
+  menu_option = { lemon_chicken: 5.89 }
 
   describe '#initialize' do
 
@@ -11,10 +12,13 @@ describe Order do
 
   end
 
-  describe '#add_item' do
+  describe '#save_items' do
 
-    it "adds an item to the order list" do
-      expect(order.add_item(menu_item)).to contain_exactly menu_item
+    it "adds an item and quantity to the order object" do
+      allow(order).to receive(:gets).and_return('lemon chicken', '2', '')
+      allow(menu_option).to receive(:options).and_return(menu_option)
+      order.save_items(menu_option)
+      expect(order.order_items).to eq({ lemon_chicken: 2 })
     end
 
   end

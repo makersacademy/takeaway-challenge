@@ -3,9 +3,10 @@ class Customer
 
   attr_reader :order
 
-  def initialize(order = Order.new)
+  def initialize(order = Order.new, menu = Menu.new)
 
     @order = order
+    @menu = menu
 
   end
 
@@ -18,7 +19,7 @@ class Customer
 
   def place_order
 
-    @order.save_items(Menu::MENU_LIST)
+    @order.save_items(@menu)
 
   end
 end
