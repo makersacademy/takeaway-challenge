@@ -4,14 +4,14 @@ describe TakeAway do
 
   subject(:takeaway) { described_class.new }
 
-  before do
-    allow(takeaway).to receive(:message)
-  end
-  it 'Sends a delivery confirmation message' do
-    delivery = (Time.now + 3600).strftime("%H:%M")
-    expect(takeaway).to receive(:message).with("Thank you for your order; your food will be delivered by #{delivery}")
-    takeaway.message("Thank you for your order; your food will be delivered by #{delivery}")
-  end
+  # before do
+  #   allow(takeaway).to receive(:message)
+  # end
+  # it 'Sends a delivery confirmation message' do
+  #   delivery = (Time.now + 3600).strftime("%H:%M")
+  #   expect(takeaway).to receive(:message).with("Thank you for your order; your food will be delivered by #{delivery}")
+  #   takeaway.message("Thank you for your order; your food will be delivered by #{delivery}")
+  # end
 
   describe '#read_menu' do
     it 'shows menu' do
