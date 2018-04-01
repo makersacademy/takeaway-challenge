@@ -32,4 +32,11 @@ describe 'Customer' do
     end 
   end
 
+  describe "#confirm_order" do
+    it "raises an error if the correct price is not entered" do
+      customer.stub(:total) {0}
+      expect{customer.confirm_order}. to raise_error "Correct and complete your order"
+    end
+  end
+
 end

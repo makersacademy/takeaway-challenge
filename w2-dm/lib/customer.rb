@@ -19,9 +19,14 @@ class Customer
   end
 
   def show_total
-    raise "Incorrect amount stated" if @user_cost != calculate
+    raise "Incorrect amount stated" if incorrect_amount?
     @total = calculate
     @total
+  end
+
+  def confirm_order
+    raise "Correct and complete your order" if incomplete?
+    send_order
   end
 
 end
@@ -36,6 +41,11 @@ private
     end
   end
 
+  def send_order
+    phone = Phone.new
+    phone.send_confirmation
+  end
+
   def select_item
     puts "How many of each #{@item} do you want"
     quant = gets.chomp.to_i
@@ -48,5 +58,13 @@ private
       hash.each_pair do | k, v | total += (k * v) end
     end
     total
+  end
+
+  def incorrect_amount?
+    !(@user_cost == calculate)
+  end
+
+  def incomplete?
+    @total == 0
   end
 

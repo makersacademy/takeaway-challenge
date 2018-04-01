@@ -3,5 +3,6 @@ source 'https://rubygems.org' do
   gem rspec
   gem rubocop
   gem simplecov
+  gem twilio-ruby
   rvm 2.4.1
 end
