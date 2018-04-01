@@ -37,4 +37,30 @@ describe Menu do
     menu.select_laksa
     expect(menu.selection).to include({"sushi" => 1}, {"laksa" => 1})
   end
+
+  it 'gives customer the total' do
+    menu = Menu.new
+    choice1 = menu.make_dish("sushi", 1)
+    menu.add_dish
+    choice2 = menu.make_dish("laksa", 1)
+    menu.add_dish
+    choice3 = menu.make_dish("pizza", 1)
+    menu.add_dish
+    menu.select_sushi
+    menu.select_laksa
+    expect(menu.total).to eq 2
+  end
+
+  it 'checks total given to customer is same as sum cost of dishes selected' do
+    menu = Menu.new
+    choice1 = menu.make_dish("sushi", 1)
+    menu.add_dish
+    choice2 = menu.make_dish("laksa", 1)
+    menu.add_dish
+    choice3 = menu.make_dish("pizza", 1)
+    menu.add_dish
+    menu.select_sushi
+    menu.select_laksa
+    expect(menu.total).to eq (choice1["sushi"] + choice2["laksa"])
+  end
 end
