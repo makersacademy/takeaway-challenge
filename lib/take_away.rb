@@ -1,3 +1,5 @@
+require_relative 'twilio.rb'
+
 class TakeAway
 
   attr_reader :menu
@@ -23,6 +25,10 @@ class TakeAway
 
   def receipt
     "#{basket.join("\n")}\n Total = #{total}"
+  end
+
+  def message
+    Message.new.send_message
   end
 
 end
