@@ -13,8 +13,6 @@ class Order
       break if selection.empty?
 
       raise "We don't currently serve this dish!" if menu.options[selection].nil?
-
-      puts "How many would you like?"
       quantity = get_quantity
       @order_items[selection] = quantity
     end
