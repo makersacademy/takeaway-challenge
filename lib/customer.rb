@@ -1,5 +1,4 @@
-require_relative 'menu'
-require_relative 'order'
+require 'menu'
 
 class Customer
 
@@ -18,7 +17,7 @@ class Customer
 
   def select_item(dish)
 
-    order.save_item(dish)
+    Menu::MENU_LIST.select{ |item| item[:food_item] == dish }.each{ |item| @order.save_item(item)}
 
   end
 end
