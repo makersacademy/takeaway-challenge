@@ -1,3 +1,4 @@
+require_relative 'menu'
 class Order
   attr_reader :order_items
 
@@ -5,7 +6,12 @@ class Order
     @order_items = []
   end
 
-  def save_item(dish)
-    order_items << dish
+
+  def save_items(menu)
+    'order noted'
+  end
+
+  def add_item(item)
+    @order_items.push(item)
   end
 end

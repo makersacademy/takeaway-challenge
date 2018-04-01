@@ -1,6 +1,7 @@
-require 'menu'
-
+require_relative 'menu'
 class Customer
+
+  attr_reader :order
 
   def initialize(order = Order.new)
 
@@ -15,9 +16,9 @@ class Customer
     end.inject(:+)
   end
 
-  def select_item(dish)
+  def place_order
 
-    Menu::MENU_LIST.select{ |item| item[:food_item] == dish }.each{ |item| @order.save_item(item)}
+    @order.save_items(Menu::MENU_LIST)
 
   end
 end
