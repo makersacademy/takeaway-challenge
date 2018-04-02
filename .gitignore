@@ -1,2 +1,5 @@
 /**/.DS_Store
 /coverage
+
+# ignore the file literally named .env
+takeaway-challenge/lib/.env

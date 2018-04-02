@@ -3,12 +3,7 @@ class Menu
   attr_reader :dishes
 
   def initialize(dishes)
-    @dishes = {
-		:pie => 5.99,
-		:sandwich => 3.29,
-		:falafel => 1.00,
-		:bagel => 2.56,
-	}
+    @dishes = dishes
   end
 
   def print
