@@ -2,6 +2,7 @@
 
 require './lib/takeaway.rb'
 require './lib/menu.rb'
+require './lib/tokens.rb'
 
 print menu_list = { "pie" => 5.99, "sandwich" => 3.29, "falafel" => 1.00, "bagel" => 2.56 }
 
@@ -22,9 +23,9 @@ phone = gets
 
 config = 
 	{
-		account_sid: ACCOUNT_SID,
-		auth_token: AUTH_TOKEN,
-		from: PHONE_NUMBER,
+		account_sid: Tokens::ACCOUNT_SID,
+		auth_token: Tokens::AUTH_TOKEN,
+		from: Tokens::PHONE_NUMBER,
 		to: phone,
 		body: "Thanks! Your order will be received before %s!"
 	}
