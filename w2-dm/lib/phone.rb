@@ -1,9 +1,10 @@
 class Phone
 
   def initialize
-    @account_sid = 'AC743acc5594ff64f05dc907422f204b4d'
-    @auth_token = '63741f91cb6b9143d0d1ba70e6fef95e'
-    @client = Twilio::REST::Client.new @account_sid, @auth_token
+    #environment variables used for twilSID and twiltoken
+    account_sid = 'twilsid'
+    auth_token = 'twiltok'
+    @client = Twilio::REST::Client.new account_sid, auth_token
     @from = '+441173252750'
     @to = '+447923174752'
   end
@@ -11,7 +12,7 @@ class Phone
   def send_confirmation
     h = Time.now.strftime('%H').to_i + 1
     m = Time.now.strftime('%M').to_i
-    body = "Your order will be placed at #{h}:#{m}"
+    body = "Your order will be delivered before #{h}:#{m}"
     @client.api.account.messages.create(
       from: @from,
       to: @to, 

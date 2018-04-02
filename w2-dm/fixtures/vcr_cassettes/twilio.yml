@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2010-04-01/Accounts/AC743acc5594ff64f05dc907422f204b4d/Messages.json
+    body:
+      encoding: UTF-8
+      string: Body=Your+order+will+be+placed+at+19%3A37&From=%2B441173252750&To=%2B447923174752
+    headers:
+      User-Agent:
+      - twilio-ruby/5.7.2 (ruby/x86_64-darwin17 2.4.1-p111)
+      Accept-Charset:
+      - utf-8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Authorization:
+      - Basic QUM3NDNhY2M1NTk0ZmY2NGYwNWRjOTA3NDIyZjIwNGI0ZDo2Mzc0MWY5MWNiNmI5MTQzZDBkMWJhNzBlNmZlZjk1ZQ==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 01 Apr 2018 17:37:34 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Concurrent-Requests:
+      - '1'
+      Twilio-Request-Duration:
+      - '0.111'
+      Twilio-Request-Id:
+      - RQfceb1d38d5ef4ee7a576f8453ffdd09a
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '838'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SM1dd8461c1ffa4d57afa0305a0c593cd0", "date_created": "Sun,
+        01 Apr 2018 17:37:34 +0000", "date_updated": "Sun, 01 Apr 2018 17:37:34 +0000",
+        "date_sent": null, "account_sid": "AC743acc5594ff64f05dc907422f204b4d", "to":
+        "+447923174752", "from": "+441173252750", "messaging_service_sid": null, "body":
+        "Sent from your Twilio trial account - Your order will be placed at 19:37",
+        "status": "queued", "num_segments": "1", "num_media": "0", "direction": "outbound-api",
+        "api_version": "2010-04-01", "price": null, "price_unit": "USD", "error_code":
+        null, "error_message": null, "uri": "/2010-04-01/Accounts/AC743acc5594ff64f05dc907422f204b4d/Messages/SM1dd8461c1ffa4d57afa0305a0c593cd0.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/AC743acc5594ff64f05dc907422f204b4d/Messages/SM1dd8461c1ffa4d57afa0305a0c593cd0/Media.json"}}'
+    http_version: 
+  recorded_at: Sun, 01 Apr 2018 17:37:34 GMT
+recorded_with: VCR 4.0.0

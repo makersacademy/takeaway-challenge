@@ -1,3 +1,4 @@
+
 class Menu
   attr_reader :options
 

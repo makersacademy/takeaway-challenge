@@ -21,7 +21,6 @@ class Customer
   def show_total
     raise "Incorrect amount stated" if incorrect_amount?
     @total = calculate
-    @total
   end
 
   def confirm_order
