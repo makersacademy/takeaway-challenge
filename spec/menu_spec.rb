@@ -38,4 +38,11 @@ describe Menu do
     end
   end
 
+  describe '#price?' do
+    it 'should return the price for searched dish' do
+      subject.add_dish(dish, price)
+      expect(subject.price?(dish)).to eq price
+    end
+  end
+
 end

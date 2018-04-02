@@ -21,6 +21,10 @@ class Menu
     return true
   end
 
+  def price?(dish)
+    price_search(dish)
+  end
+
   private
 
   def list_message
@@ -39,4 +43,10 @@ class Menu
     dish_name.include?(dish)
   end
 
+  def price_search(dish)
+    name = []
+    price = []
+    @list.each { |items| name << items.name & price << items.price }
+    price[name.index(dish)]
+  end
 end
