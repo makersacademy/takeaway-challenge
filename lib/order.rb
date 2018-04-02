@@ -20,7 +20,7 @@ class Order
   end
 
   def remove_item item_id
-    raise MESSAGES[:not_found] if !@items.any? { |item| item.id == item_id }
+    raise MESSAGES[:not_found] unless found? item_id
     @items.delete_if { |item| item.id == item_id }
   end
     
@@ -34,5 +34,10 @@ class Order
 
   def describe
     pretty_print(items: @items.map(&:description).join("\n"), total: calculate_total, state: @state.to_s)
+  end
+
+  private
+  def found? item_id
+    @items.any? { |item| item.id == item_id }
   end
 end

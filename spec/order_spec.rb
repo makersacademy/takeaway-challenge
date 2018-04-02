@@ -31,7 +31,7 @@ describe Order do
 
   describe '#remove_item' do
     it 'raises an error if item not found' do
-      expect { order.remove_item 'ABCDE' }.to raise_error Shop::MESSAGES[:not_found]
+      expect { order.remove_item 'ABCDE' }.to raise_error Order::MESSAGES[:not_found]
     end
 
   it 'removes a matching item' do
