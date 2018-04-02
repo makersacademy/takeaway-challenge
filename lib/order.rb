@@ -35,13 +35,14 @@ class Order
     time = Time.now + (60*60)
     time1 = time.strftime("%H:%M")
     @message = "Thank you! Your order was placed and will be delivered before #{time1}."
+    send_text(@message)
   end
 
   def send_text(text)
     @client.api.account.messages.create(
       from: '+441733530297',
       to: '+447828003315',
-      body: @message
+      body: text
     )
   end
 

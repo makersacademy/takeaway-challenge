@@ -44,7 +44,9 @@ describe Order do
       (subject.menu).stub(:price => 3.9)
       time = Time.new + (60*60)
       time1 = time.strftime("%H:%M")
-      expect(subject.finalise).to eq("Thank you! Your order was placed and will be delivered before #{time1}.")
+      VCR.use_cassette('twilio') do
+        subject.finalise
+      end
     end
 
   end
@@ -52,12 +54,9 @@ describe Order do
 
   describe "#send_text(text)" do
     it "sends the text" do
-      subject.add("Ming's wings", 4)
-      subject.list
-      (subject.menu).stub(:price => 3.9)
-      subject.finalise
+      text = "This is some text."
       VCR.use_cassette('twilio') do
-        subject.send_text(@message)
+        subject.send_text(text)
       end
     end
   end
