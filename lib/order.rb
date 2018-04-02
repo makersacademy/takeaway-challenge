@@ -4,7 +4,7 @@ class Order
 
   attr_reader :total
 
-# Should be passed an array with items listed, and the total as the last item
+  # Should be passed an array with items listed, and the total as the last item
   def initialize(options = [])
     calculate_total(options)
     compare_totals(options)

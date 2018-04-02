@@ -1,9 +1,5 @@
 require 'menu'
+require 'order'
 
 class Operator
-
-  def order()
-
-  end
-
 end
