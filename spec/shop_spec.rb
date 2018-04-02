@@ -5,11 +5,13 @@ describe Shop do
   subject { Shop.new }
 
   before(:each) do
+    @communicator = instance_double('Communicator')
     @dishes = instance_double('Dishes')
     @empty_dishes = instance_double('Dishes')
     @order = instance_double('Order')
     @dish = instance_double('Dish')
     @order_item = instance_double('OrderItem')
+    allow(@communicator).to receive(:send)
     allow(@order_item).to receive(:id) { 'X5678' }
     allow(@order).to receive(:add_item).with("Fake dish", 3) { "Fake dish added" }
     allow(@order).to receive(:state) { :in_progress }
@@ -73,6 +75,7 @@ describe Shop do
 
     it 'sets the last order to complete' do
       subject.instance_variable_set(:@orders, [@order])
+      subject.instance_variable_set(:@communicator, @communicator)
       allow(@order).to receive(:calculate_total) { 10 }
       expect(@order).to receive(:complete!)
       subject.checkout
@@ -80,6 +83,7 @@ describe Shop do
 
     it 'outputs a message with confirmation and total' do
       subject.instance_variable_set(:@orders, [@order])
+      subject.instance_variable_set(:@communicator, @communicator)
       allow(@order).to receive(:calculate_total) { 10 }
       allow(@order).to receive(:complete!)
       expect { subject.checkout }.to output("Thanks for the order. Your total is £10.00. You will shortly receive a confirmation message.\n").to_stdout

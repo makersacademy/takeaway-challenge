@@ -1,5 +1,6 @@
 require_relative 'dishes'
 require_relative 'order'
+require_relative 'communicator'
 
 class Shop
 
@@ -8,6 +9,7 @@ class Shop
   def initialize
     @menu = Dishes.new('./data/dishes.csv')
     @orders = []
+    @communicator = Communicator.new
   end
 
   def show_menu
@@ -42,6 +44,7 @@ class Shop
   def checkout
     return MESSAGES[:no_items] unless can_checkout?
     @orders.last.complete!
+    @communicator.send @orders.last.calculate_total
     puts "Thanks for the order. Your total is £%<total>.2f. You will shortly receive a confirmation message." % { total: @orders.last.calculate_total }
   end
   

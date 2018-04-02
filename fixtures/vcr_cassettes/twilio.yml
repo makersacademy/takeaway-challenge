@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages.json
+    body:
+      encoding: UTF-8
+      string: Body=Thanks+for+the+order%21+Your+total+is+10.20.+You+will+receive+the+order+before+09%3A58.&From=%2B447480609719&To=%2B447479404914
+    headers:
+      User-Agent:
+      - twilio-ruby/5.7.2 (ruby/x86_64-darwin17 2.5.0-p0)
+      Accept-Charset:
+      - utf-8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Authorization:
+      - Basic QUM5NTgxZGQ3MmMxZmVhNzhhYWJlN2MyN2M5NTliMzFkZjpkMzZlZWQ5YzUyY2QzY2M5NzNiYWZjODc0ZjNlMTc3MA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 02 Apr 2018 07:58:37 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Concurrent-Requests:
+      - '1'
+      Twilio-Request-Duration:
+      - '0.108'
+      Twilio-Request-Id:
+      - RQe2981e850460448c8667a876fcef9c2b
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '887'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SMb6ddbcf02c1a4ef1a5ec0269e6be07ec", "date_created": "Mon,
+        02 Apr 2018 07:58:37 +0000", "date_updated": "Mon, 02 Apr 2018 07:58:37 +0000",
+        "date_sent": null, "account_sid": "<TWILIO_ACCOUNT_SID>", "to": "<TWILIO_DEST_PHONE>",
+        "from": "<TWILIO_REC_PHONE>", "messaging_service_sid": null, "body": "Sent
+        from your Twilio trial account - Thanks for the order! Your total is 10.20.
+        You will receive the order before 09:58.", "status": "queued", "num_segments":
+        "1", "num_media": "0", "direction": "outbound-api", "api_version": "2010-04-01",
+        "price": null, "price_unit": "USD", "error_code": null, "error_message": null,
+        "uri": "/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages/SMb6ddbcf02c1a4ef1a5ec0269e6be07ec.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages/SMb6ddbcf02c1a4ef1a5ec0269e6be07ec/Media.json"}}'
+    http_version: 
+  recorded_at: Mon, 02 Apr 2018 07:58:37 GMT
+recorded_with: VCR 4.0.0
