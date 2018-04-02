@@ -33,10 +33,4 @@ class Basket
     @total
   end
 
-  private
-
-  # def item_total(item, quantity)
-  #   view_menu[item] * (quantity)
-  # end
-
 end

@@ -1,22 +1,20 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) {Takeaway.new(menu: menu, basket: basket)}
-  let(:menu) { double :menu, dishes {"Pepperoni"=> 7.50, "Vegetarian"=> 7.00, } }
+  subject(:takeaway) { described_class.new(mnu_klass.new,basket_klass.new) }
+
+  let(:menu) {double(:menu, dishes: { 'Pepperoni' => 7.50, 'Vegetarian' => 7.00 })}
+  let(:mnu_klass) { double(:mnu_klass, new: menu) }
+
+  let(:basket) { double(:basket) }
+  let(:basket_klass) { double(:basket_klass, new: basket) }
+
+  let(:printed_text) { "Pepperoni pizza : £7.50, Vegetarian pizza : £7.00" }
 
   describe '#view_menu' do
     it 'shows the menu available' do
-      expect(takeaway.view_menu).to eq(menu)
-    end
-  end
-
-  describe '#my_order' do
-    context 'before any orders' do
-      it { is_expected.to respond_to(:my_order) }
-
-      it 'starts empty' do
-        expect(takeaway.my_order).to be_empty
-      end
+      allow(menu).to receive(:readable_menu).and_return(printed_text)
+      expect(takeaway.view_menu).to eq(printed_text)
     end
   end
 
@@ -24,9 +22,9 @@ describe Takeaway do
     it { is_expected.to respond_to(:add_item).with(1..2).argument }
 
     it 'adds an item to my order' do
-      item = "Pepperoni"
-      takeaway.add_item(item)
-      expect(takeaway.my_order).to include(item)
+      message = "1 x Pepperoni pizza(s) added to your basket"
+      allow(basket).to receive(:add_to_basket("Pepperoni")).and_return(message)
+      expect(takeaway.add_item("Pepperoni")).to eq message
     end
 
     it 'raises an error if the item is not on the menu' do
