@@ -1,7 +1,6 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
-
 require 'vcr'
 require 'webmock'
 

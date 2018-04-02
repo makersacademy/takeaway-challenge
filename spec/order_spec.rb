@@ -1,4 +1,6 @@
 require 'order'
+require 'vcr'
+
 describe Order do
   subject(:order) { described_class.new }
   let(:customer) { double('customer') }
@@ -40,11 +42,19 @@ describe Order do
 
   describe '#confirm_order' do
     it "sends a message confirming the order" do
-      allow(order).to receive(:order_total).and_return('£11.78')
-      allow(phone_num).to receive(:chomp).and_return(phone_num)
-      allow(order).to receive(:message).and_return(message)
-      allow(order).to receive(:run_twilio).and_return('SMS sent')
-      expect(order.confirm_order).to eq('SMS sent')
+
+      allow(customer).to receive(:finish_order)
+      allow(order).to receive(:order_total).and_return(17.98)
+
+     VCR.use_cassette('twilio') do
+     customer.finish_order(17.98)
+
+ end
+      # allow(order).to receive(:order_total).and_return('£11.78')
+      # allow(phone_num).to receive(:chomp).and_return(phone_num)
+      # allow(order).to receive(:message).and_return(message)
+      # allow(order).to receive(:run_twilio).and_return('SMS sent')
+      # expect(order.confirm_order).to eq('SMS sent')
     end
   end
 

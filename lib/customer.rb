@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+
 class Customer
 
   attr_reader :order

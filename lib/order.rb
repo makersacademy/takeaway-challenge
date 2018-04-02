@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 
 class Order
-  attr_reader :order_items
+  attr_reader :order_items, :order_total
 
   def initialize
     @order_items = {}
