@@ -11,6 +11,7 @@ class Restaurant
   end
 
   def order(name, quantity = 1)
+    raise 'Not on the menu!' unless menu.dishes.key?(name)
     basket << (menu.dishes.assoc name) * quantity
     @bill << menu.dishes[name] * quantity
     "#{quantity}x #{name} added to the basket, total: £#{total}"

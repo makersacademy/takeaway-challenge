@@ -25,6 +25,11 @@ describe Restaurant do
       error = "Hey! - order something first"
       expect { takeaway.checkout(5) }.to raise_error error
     end
+
+    it 'raise an error if not on the menu' do
+      error = 'Not on the menu!'
+      expect { takeaway.order('banana') }.to raise_error error
+    end
   end
 
   describe 'pretty prints basket and total for the client' do
