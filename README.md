@@ -68,7 +68,7 @@ RuntimeError (Hey it is 5.0 not 4)
  ```
 This is more or less how your text message will look like
 
-![It should be an image here but you know how it is with free hosting]https://s17.postimg.org/z6vs46g4f/Screenshot_20180402-133002.png
+![It should be an image here but you know how it is with free hosting](https://s17.postimg.org/z6vs46g4f/Screenshot_20180402-133002.png)
 
 You will also get an error if you will try to checkout with an empty basket. No one likes the time wasters, right?
 
