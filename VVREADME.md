@@ -13,7 +13,8 @@ These instructions will help to follow the steps of the project.
 - Fork this repo, and clone to your local machine.
 - Run the command gem install bundle (if you don't have bundle already).
 - When the installation completes, run bundle.
-- Install twilio-ruby gem via [this](https://github.com/twilio/twilio-ruby).
+- Install twilio-ruby gem via [this](https://github.com/twilio/twilio-ruby)
+- Install VCR gem via [this](https://github.com/vcr/vcr)
 - Sign up for a free Twilio account
 - Open terminal and in IRB and require the followiong files:
 	- 
@@ -28,7 +29,7 @@ Run the automated tests for this challenge via RSpec -fd or rubocop.
 
 ![FT]()
 
-- 2nd user story test:
+- 2nd user story test failure:
 
 ![UT]()
 
@@ -56,8 +57,15 @@ Run the automated tests for this challenge via RSpec -fd or rubocop.
 - 1 - Setting up project:
 	- Canvasing ideas, sketching, googling, running various app versions, learning Twilio.
 	- 1st user story, generating tests, writing code.
+- 2 - Creating canvas for 2nd user story:
+	- Opening order_spec.rb and order files.
+	- Tests on menu_spec.rb and code on menu.rb
+- 3 - Moving on to 3rd user story:
+	- 		
  
 
 ## ToDo
 
-- 
+- 1 - Mock sending the message:
+	- [Pill](https://github.com/makersacademy/course/blob/master/pills/levels_of_stubbing.md)
+	- [VCR](https://github.com/vcr/vcr)
