@@ -66,4 +66,19 @@ RuntimeError (Hey it is 5.0 not 4)
 2.5.0 :016 > takeaway.checkout(5)
  => "Enjoy your meal!"
  ```
- 
+This is more or less how your text message will look like
+
+![It should be an image here but you know how it is with free hosting]https://s17.postimg.org/z6vs46g4f/Screenshot_20180402-133002.png
+
+You will also get an error if you will try to checkout with an empty basket. No one likes the time wasters, right?
+
+ ```
+ 2.5.0 :004 > takeaway.checkout(5)
+Traceback (most recent call last):
+        3: from /Users/patryk/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+        2: from (irb):4
+        1: from /Users/patryk/Projects/takeaway-challenge/lib/restaurant.rb:36:in `checkout'
+RuntimeError (Hey! - order something first)
+ ```
+## Feedback ##
+As always I am open to any suggestions so please do not hesitate to contact me through Github or an email: ppilecki@icloud.com
