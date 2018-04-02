@@ -63,9 +63,9 @@ Run the automated tests for this challenge via RSpec -fd or rubocop.
 	- Opening order_spec.rb and order files.
 	- Tests on menu_spec.rb and code on menu.rb
 - 3 - 3rd user story:
-	- 
+	- Notes missing
 - 4 - 4th user story:
-	- 
+	- Notes missing
  
 
 ## ToDo
@@ -75,3 +75,4 @@ Run the automated tests for this challenge via RSpec -fd or rubocop.
 	- [VCR](https://github.com/vcr/vcr).
 - 2 - Full SMS functionality not yet implemented: 
 	- (Implement the ability to place orders via text message.)
+- 3 -  Complete user story notes, and finalize VVREADME.md
