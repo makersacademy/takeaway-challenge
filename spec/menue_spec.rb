@@ -11,7 +11,7 @@ describe Menu do
   let(:salade_dish) { double :dish }
   context 'when generate a mune' do
     before {
-      allow(pizza_dish).to receive(:name).and_return('Paste with shrimps')
+      allow(pizza_dish).to receive(:name).and_return('Pepperoni Feast')
       allow(pizza_dish).to receive(:price).and_return(10.00)
       allow(paste_dish).to receive(:name).and_return('Paste with octopus')
       allow(paste_dish).to receive(:price).and_return(7.90)

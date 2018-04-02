@@ -13,7 +13,7 @@ class Customer
 
   INITIAL_CASH_AMOUNT = 100
 
-  def initialize(status = false, bank_account = INITIAL_CASH_AMOUNT, telephone = '+448696969696')
+  def initialize(status = false, bank_account = INITIAL_CASH_AMOUNT, telephone = '+4488888888')
     @status = status
     @wallet = wallet
     @bank_account = bank_account
@@ -26,7 +26,7 @@ class Customer
 
   def place_an_order(restaurant)
     order = restaurant.take_an_order
-    if order == nil
+    if order == nil || @status = false
       puts "Order is not placed"
       return
     else

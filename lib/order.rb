@@ -14,7 +14,7 @@ class Order
   end
 
   def total_price
-    @dish_orders.inject { |sum, dish_order|
+    @dish_orders.reduce(0) { |sum, dish_order|
       sum + dish_order.dish.price * dish_order.count
     }
   end

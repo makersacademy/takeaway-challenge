@@ -20,7 +20,6 @@ class Restaurant
     @menu = menu
     @category_array = ['pizza', 'paste', 'side', 'salde']
     @bank_account = bank_account
-
     account_sid = 'AC51859c3bada076b7262f4f545121a302'
     auth_token = 'e8faccab6929c94b4171ee77b5f3250e'
     @client = Twilio::REST::Client.new account_sid, auth_token
@@ -52,7 +51,6 @@ class Restaurant
       to: customer.telephone,
       body: message
     )
-    # send
   end
 
   private
@@ -68,13 +66,13 @@ class Restaurant
       puts 'How many do you want?'
       dish_count = gets.chomp.to_i
       raise ERROR_MESSAGES[:invalid_dish_count] if dish_count <= 0
-      dish = menu.@menu[:category].select { |n|
+      dish = @menu.menu[category_chosen.to_sym].select { |n|
         n.name == dish_name
       }.first
       raise ERROR_MESSAGES[:dish_does_not_exist] if dish == nil
       new_order.add(DishOrder.new(dish, dish_count))
       puts 'Do you want to order anything else (yes/no)?'
-      break if gets.chomp.downcase == 'yes'
+      break if gets.chomp.downcase == 'no'
     end
     return new_order
   end
