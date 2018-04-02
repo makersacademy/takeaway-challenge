@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 class Customer
 
   attr_reader :order
@@ -23,5 +24,10 @@ class Customer
 
   def verify_order
     @order.check_order(@menu.options)
+  end
+
+  def finish_order
+    @order.confirm_order
+    @order = Order.new
   end
 end

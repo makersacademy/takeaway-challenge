@@ -1,9 +1,11 @@
-require_relative 'menu'
+require 'twilio-ruby'
+
 class Order
   attr_reader :order_items
 
   def initialize
     @order_items = {}
+    @order_total = 0
   end
 
 
@@ -25,6 +27,15 @@ class Order
     puts " Total: £#{order_total(menu_options)}"
 
     'order verified'
+  end
+
+  def confirm_order
+    puts "Please enter your phone number:"
+    user_phone = gets.chomp
+    user_phone = "+44" + user_phone
+    message = "Thank you for your order, total £#{@order_total}, expect it to arrive at #{Time.now.hour+1}:#{Time.now.min}"
+    run_twilio(user_phone, message)
+
   end
 
 
@@ -55,7 +66,21 @@ class Order
       amounts << menu_options[item] * quantity
     end
 
-    amounts.reduce(:+).to_s
+    amounts.inject(@order_total, :+)
+
+    end
+
+    def run_twilio(user_phone, message)
+      account_sid = ENV['TWILIO_ACCOUNT_SID']
+      auth_token = ENV['TWILIO_AUTH_TOKEN']
+
+      @client = Twilio::REST::Client.new account_sid, auth_token
+      @client.messages.create(
+        body: message,
+        to: user_phone,
+        from: ENV['TWILIO_PHONE'])
+
+      'SMS sent'
 
     end
   end

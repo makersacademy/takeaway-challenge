@@ -27,5 +27,19 @@ describe Customer do
       end
     end
 
+    describe "#finish_order" do
+      before(:each) do
+        allow(order).to receive(:send_confirmation_text)
+      end
+
+      it "delegates sending order confirmation message to order object" do
+        customer.finish_order
+        expect(order).to receive(:send_confirmation_text)
+      end
+      it "creates a new order object" do
+        expect(customer.finish_order).to be_an_instance_of Order
+      end
+    end
+
 
 end
