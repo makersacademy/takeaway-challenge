@@ -1,79 +1,83 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway Challenge (Makers Weekend Challenge #2)
 
- ```
+A basic simulation of a takeaway ordering program, done for the Makers Academy course, weekend challenge #2
 
-Instructions
--------
+## Contents
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+lib files
+===========
+takeaway.rb
+menu.rb
+basket.rb
 
-Task
------
+spec files
+===========
+takeaway_spec.rb
+menu_spec.rb
+basket_spec.rb
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## Getting Started
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+**1)** Clone or download and unzip repository.  
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+**2)** Run bundle install to install dependencies listed in Gemfile.
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+**3)** The program requires a [Twilio](https://www.twilio.com/) account, with a twilio number, secure ID and authorisation token stored as environmental variables with the following names:
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+TWILIO_ACCOUNT_SSID: 'your SID here'
+TWILIO_AUTH_TOKEN: 'your token here'
+TWILIO_NUMBER: 'your number here'
+TWILIO_DESTIN: 'destination number here'
 
 
-In code review we'll be hoping to see:
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+## Instructions for use
 
-Notes on Test Coverage
-------------------
+The program has 3 objects:
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+**1) Takeaway:** this is the controlling object, which the user interacts with.
+
+Takeaway understands the following method calls:
+**takeaway.view_menu** displays the menu in a readable format showing pizza's and prices.
+**takeaway.add_item(item,quantity)** add's the item by the required quantity. The quantity doesn't need to be entered, it is defaulted to 1. This method call will also perform a check on whether the item requested is in the menu. The user will get a message once the item(s) have been added.
+**takeaway.remove_item(item,quantity)** removes an item by the required quantity. Again, the quantity is defaulted to 1 if nothing is entered. This will also provide the user with a message once the item has been removed.
+**takeaway.view_basket** displays the current contents of the users basket along with subtotals for the individual items.
+**takeaway.total_bill** displays the total amount currently due for all items in the basket. (I would like to have changed this as the next method is reliant on this being called in order for the bill to be paid)
+**takeaway.checkout(amount_paid)** allows the user to enter the payment for the bill. This will generate a text message confirming the order and delivery time.
+
+**2) Menu:** this is the object for storing the list of menu items and displaying them in a readable format.
+
+Menu understands the following method calls, however the user does not need to use these method calls, they are all called from the Takeaway class:
+**menu.readable_menu** displays the menu in a readable format showing pizza's and prices, for example: "Pepperoni pizza : £7.50"
+**takeaway.item_on_menu?(item)** checks whether the item entered is on the menu - returns true or false.
+
+**2) Basket:** this object is used for storing the ordered items and controlling what is added and removed. It also totals the items in the basket.  
+
+Basket understands the following method calls, however the user does not need to use these method calls, they are all called from the Takeaway class:
+**basket.add_to_basket(item, quantity)** this adds the item by the quantity to the basket.
+**basket.remove_from_basket(item, quantity)** removes the item from the basket by the desired quantity. This will also raise error messages if the item selected is not in the basket or if the user tries to remove more than the quantity in their basket.
+**basket.display_order(menu)** this is used to display the order in a readable format. It will raise an error message if the basket is empty.
+**basket.order_total(menu)** this totals up the items in the basket and returns a combined total.
+
+## Approach
+I started by creating the takeaway class then introduced the menu class and basket class later on when refactoring. I struggled with the tests and implementing doubles after refactoring my code. It took a considerable amount of time to resolve these issues. I tried to introduce a seperate class for the text messaging but couldn't get this to run so placed the code in my takeaway class instead.
+
+## Tech
+ruby
+rspec
+Twilio
+dotenv
+
+## Positives
+- Getting more used to TDD
+- Feeling more comfortable using various classes
+- Introduced the use of a text messaging facility through the twilio gem
+
+## Things I'd improve
+- I'd like to get the text messaging functionality in a class of it's own
+- Refactor so that the checkout option wasn't dependent on the total_bill method being called before it.
+- Reduce some of the repetition - adding, removing, etc
+- Better use of doubles to improve test coverage. 
