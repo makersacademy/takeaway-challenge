@@ -2,8 +2,8 @@ require 'menu'
 
 class Operator
 
-  def order
-    
+  def order()
+
   end
 
 end
