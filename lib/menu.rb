@@ -21,7 +21,7 @@ class Menu
     return true
   end
 
-  # private
+  private
 
   def list_message
     display = []
