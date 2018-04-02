@@ -4,7 +4,7 @@ require_relative 'dish'
 class Dishes
 
   ERRORS = { no_dish: 'Dish not found',
-  no_dishes: 'No dishes currently available' }
+  no_dishes: 'empty_menu' }
 
   def initialize(source = nil)
     @source = source
