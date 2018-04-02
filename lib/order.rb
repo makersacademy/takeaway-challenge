@@ -70,17 +70,17 @@ class Order
 
     end
 
-    def run_twilio(user_phone, message)
-      account_sid = ENV['TWILIO_ACCOUNT_SID']
-      auth_token = ENV['TWILIO_AUTH_TOKEN']
-
-      @client = Twilio::REST::Client.new account_sid, auth_token
-      @client.messages.create(
-        body: message,
-        to: user_phone,
-        from: ENV['TWILIO_PHONE'])
-
-      'SMS sent'
-
-    end
+    # def run_twilio(user_phone, message)
+    #   account_sid = ENV['TWILIO_ACCOUNT_SID']
+    #   auth_token = ENV['TWILIO_AUTH_TOKEN']
+    #
+    #   @client = Twilio::REST::Client.new account_sid, auth_token
+    #   @client.messages.create(
+    #     body: message,
+    #     to: user_phone,
+    #     from: ENV['TWILIO_PHONE'])
+    #
+    #   'SMS sent'
+    #
+    # end
   end
