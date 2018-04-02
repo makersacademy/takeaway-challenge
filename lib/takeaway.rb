@@ -1,40 +1,49 @@
+require_relative 'menu'
+require_relative 'basket'
+
 class Takeaway
-  attr_reader :my_order, :list
-  def initialize
-    @my_order = Hash.new(0)
-    @total = 0.00
-    @list = []
+  attr_reader :menu, :basket
+  def initialize(menu = Menu.new, basket = Basket.new)
+    @menu = menu
+    @basket = basket
   end
 
   def view_menu
-    {"Margharita"=> 7.00, "Pepperoni"=> 7.50, "Ham & Pineapple"=> 7.50, "Vegetarian"=> 7.00, "Meat Feast"=> 8.00}
+    menu.readable_menu
   end
 
   def add_item(item, quantity = 1)
-    raise "Sorry, that is not available on the menu" unless view_menu.include?(item)
-    @my_order[item] += quantity
+    raise "Sorry, that is not available on the menu" unless menu.item_on_menu?(item)
+    basket.add_to_basket(item, quantity)
+    "#{quantity} x #{item} pizza(s) added to your basket"
   end
 
   def remove_item(item, quantity = 1)
-    raise "Sorry, the item selected is not in your order" unless @my_order.include?(item)
-    raise "Sorry, you can't remove more than you've ordered" if my_order[item] < quantity
-    @my_order[item] -= quantity
+    basket.remove_from_basket(item, quantity)
+    "#{quantity} x #{item} pizza(s) removed from your basket"
   end
 
-  def order_total
-    @my_order.each { |item, quantity| @total += (view_menu[item] * quantity ) }
-    @total
+  def view_basket
+    basket.display_order(menu)
   end
 
-  def item_total(item, quantity)
-    view_menu[item] * (quantity)
+  def total_bill
+    @total = basket.order_total(menu) unless basket_empty?
+    "Your total bill is £#{'%.2f' % @total}."
   end
 
-
-  def display_order
-    @my_order.each do |item, quantity|
-      @list << "#{item} x#{quantity} = £#{'%.2f' % (item_total(item, quantity))}"
-    end
-    p @list.join(", ")
+  def checkout(amount_paid)
+    raise "Incorrect amount paid" unless correct_amount_paid?(amount_paid)
   end
+
+private
+
+  def basket_empty?
+    basket.my_order.empty?
+  end
+
+  def correct_amount_paid?(amount_paid)
+    amount_paid == @total
+  end
+
 end

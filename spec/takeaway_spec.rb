@@ -1,11 +1,12 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) {Takeaway.new}
+  subject(:takeaway) {Takeaway.new(menu: menu, basket: basket)}
+  let(:menu) { double :menu, dishes {"Pepperoni"=> 7.50, "Vegetarian"=> 7.00, } }
 
   describe '#view_menu' do
     it 'shows the menu available' do
-      expect(takeaway.view_menu).to eq({"Margharita"=> 7.00, "Pepperoni"=> 7.50, "Ham & Pineapple"=> 7.50, "Vegetarian"=> 7.00, "Meat Feast"=> 8.00})
+      expect(takeaway.view_menu).to eq(menu)
     end
   end
 
