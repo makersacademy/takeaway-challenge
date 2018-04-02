@@ -3,11 +3,15 @@
 require './lib/takeaway.rb'
 require './lib/menu.rb'
 require './lib/tokens.rb'
+require './lib/order.rb'
 
-print menu_list = { "pie" => 5.99, "sandwich" => 3.29, "falafel" => 1.00, "bagel" => 2.56 }
+menu_list = { "pie" => 5.99, "sandwich" => 3.29, "falafel" => 1.00, "bagel" => 2.56 }
 
-p menu = Menu.new(menu_list)
-p dishes = {}
+menu = Menu.new(menu_list)
+
+puts menu.print
+
+dishes = {}
 
 loop do
   print "What do you want? "
@@ -15,10 +19,13 @@ loop do
   break if dish == "done"
   print "How many?"
   quantity = gets.to_i
-  p dishes[dish] = quantity
+  dishes[dish] = quantity
+  menu.price(dish) * quantity
 end
 
-print "What is your phone number? "
+puts dishes
+
+puts "What is your phone number? "
 phone = gets
 
 config = 
