@@ -16,6 +16,10 @@ class Order
     @prices.inject(0, :+)
   end
 
+  def summary
+    "You've ordered #{summary_manager}"
+  end
+
   private
 
   def basket_manager(dish, quantity)
@@ -24,6 +28,12 @@ class Order
     else
       @basket[dish] = quantity
     end
+  end
+
+  def summary_manager
+    summary = []
+    @basket.each { |k, v| summary << "#{k} x #{v}" }
+    summary.join(", ")
   end
 
 end

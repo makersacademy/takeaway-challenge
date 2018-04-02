@@ -26,4 +26,10 @@ describe Order do
       expect(subject.sum).to eq 48.6
     end
   end
+
+  describe '#summary' do
+    it 'should print out the summary of ordered dishes' do
+      expect(subject.summary). to eq "You've ordered pasta x 4, pizza x 2"
+    end
+  end
 end
