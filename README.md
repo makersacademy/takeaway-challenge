@@ -5,7 +5,9 @@
 ## Tech:
 Ruby - Rspec - Sinatra - Heroku - Twilio
 
-## Usage
+
+
+## Setup
 
 1. Sign-up for a [Twilio Account](https://www.twilio.com/) and follow
 the steps to set up a phone number to send/receive texts.
@@ -62,8 +64,14 @@ click on your twilio number to edit. In the messaging section add the root url o
    ```
    {:dal_makhani => 3, :biryani => 2, :bhaji => 3, :total => 8}
    ```
+
+## Testing
+  ```
+  $ rspec
+  ```
 ## Approach
 My approach was to keep this task as simple as possible and concentrate on writing clean code and having enough time to implement the extra feature which allows ordering by text.
+
 
 ## Positives
 * Successfully created my first Sinatra application and pushed it to Heroku
