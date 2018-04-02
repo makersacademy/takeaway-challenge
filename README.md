@@ -7,5 +7,6 @@
 <h2>Implementation</h2>
 <p>App is written entirely in Ruby. I am using the Twilio API to send SMS messages to confirm the order and twilio-ruby gem to work with the API.</p>
 <h2>In use</h2>
-![Alt text](./images/new-shop.png?raw=true)
+
+![Alt text](./images/order.png?raw=true)
   
