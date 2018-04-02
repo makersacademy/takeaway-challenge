@@ -85,3 +85,5 @@ This proved harder than I expected. I used one method to create the message to b
 #### Things to keep in mind
 
 I need to stick closer to the modelling that I did at the beginning. As soon as I was aware that the implementation of the API was harder than I expected, I lost sight of the plan I had with trying to keep with the single responsibility principle.
+
+I need to commit more! I swear I committed more than just twice for this whole thing..... But maybe not.....??? COMMIT COMMIT COMMIT.
