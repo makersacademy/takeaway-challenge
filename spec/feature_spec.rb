@@ -1,18 +1,12 @@
-# # require '../lib/takeaway.rb'
-
+# require '../lib/takeaway.rb'
 # require '../lib/menu.rb'
-
-# require '../lib/order.rb'
-
-# p m = Menu.new(print)
-
-# puts m.print
+# # require '../lib/order.rb'
+# require '../lib/run.rb'
 
 # # p t = Takeaway.new
 
-# # p t.print_menu
+# p r = Run.new
 
-# p o = Order.new(:dishes)
 
 
 

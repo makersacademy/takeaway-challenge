@@ -1,8 +1,7 @@
-require "order"
-require "sms"
+require "./lib/order"
+require "./lib/sms"
 
 class Takeaway
-
   def initialize(menu:, config:, order: nil, sms: nil)
     @menu = menu
     @order = order || Order.new(menu)
@@ -11,13 +10,13 @@ class Takeaway
 
   def print_menu
     menu.print
-  end 
+  end
 
   def place_order(dishes)
-  	add_dishes(dishes)
+    add_dishes(dishes)
     sms.deliver
     order.total
-  end	
+  end
 
   private
 

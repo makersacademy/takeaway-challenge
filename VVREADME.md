@@ -2,6 +2,8 @@
 
 Link to the task source with detailed instructions regarding the challenge itself is available [here](https://github.com/makersacademy/takeaway-challenge).
 
+Was using takeaway-exemplar on [github](https://github.com/makersacademy/takeaway-exemplar) and [youtube walkthrough](https://www.youtube.com/watch?v=mgiJKdH9x8c&index=2&t=0s&list=LLVfF8s5P2mxj3OYyaW6x2rg) by Sam Morgan to complete the challange. 
+
 Unfinished code or other missing elements will be highlighted, and plan will be provided how to finalise the challenge in [ToDo](#todo).
 
 ## Getting Started
@@ -60,12 +62,16 @@ Run the automated tests for this challenge via RSpec -fd or rubocop.
 - 2 - Creating canvas for 2nd user story:
 	- Opening order_spec.rb and order files.
 	- Tests on menu_spec.rb and code on menu.rb
-- 3 - Moving on to 3rd user story:
-	- 		
+- 3 - 3rd user story:
+	- 
+- 4 - 4th user story:
+	- 
  
 
 ## ToDo
 
 - 1 - Mock sending the message:
-	- [Pill](https://github.com/makersacademy/course/blob/master/pills/levels_of_stubbing.md)
-	- [VCR](https://github.com/vcr/vcr)
+	- [Pill](https://github.com/makersacademy/course/blob/master/pills/levels_of_stubbing.md).
+	- [VCR](https://github.com/vcr/vcr).
+- 2 - Full SMS functionality not yet implemented: 
+	- (Implement the ability to place orders via text message.)

@@ -1,0 +1,32 @@
+#! /usr/bin/env ruby
+
+require './lib/takeaway.rb'
+require './lib/menu.rb'
+
+print menu_list = { "pie" => 5.99, "sandwich" => 3.29, "falafel" => 1.00, "bagel" => 2.56 }
+
+p menu = Menu.new(menu_list)
+p dishes = {}
+
+loop do
+  print "What do you want? "
+  dish = gets.strip
+  break if dish == "done"
+  print "How many?"
+  quantity = gets.to_i
+  p dishes[dish] = quantity
+end
+
+print "What is your phone number? "
+phone = gets
+
+config = 
+	{
+		account_sid: ACCOUNT_SID,
+		auth_token: AUTH_TOKEN,
+		from: PHONE_NUMBER,
+		to: phone,
+		body: "Thanks! Your order will be received before %s!"
+	}
+
+Takeaway.new(menu: menu, config: config).place_order(dishes)
