@@ -3,9 +3,7 @@ class Takeaway
   attr_reader :menu, :basket
 
   def initialize
-    @menu = { "spring roll" => 0.99, "char sui bun" => 3.99,
-            "pork dumpling" => 2.99, "peking duck" => 7.99,
-            "fu-king fried rice" => 5.99 }
+    @menu = Menu.new
     @basket = {}
   end
 
@@ -13,14 +11,34 @@ class Takeaway
     @menu
   end
 
-  def add(item)
-    @basket = { "spring roll" => 0.99 }
-    # @menu.each do |k, v|
-    #   if k == item
-    #     @basket[k] = v
-    #   end
-    # end
-    # puts @basket
+  def add(item, number)
+    if @basket.include?(item)
+      @basket[item] = @basket[item] + number
+    else
+      @basket[item] = number
+    end
+    puts "#{number}x #{item} added to your basket."
+  end
+
+  def basket_summary
+    summary = []
+    @basket.each do |item, number|
+      summary.push("#{number} #{item} = £#{@menu.menu[item] * number}")
+    end
+    return summary.join(", ")
+  end
+
+  def total
+    total = 0.00
+    @basket.each do |item, number|
+      total += (@menu.menu[item] * number)
+    end
+    return "£#{total}"
+  end
+
+  def checkout
+    puts @basket
+
   end
 
 end
