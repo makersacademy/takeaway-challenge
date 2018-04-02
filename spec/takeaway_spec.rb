@@ -63,11 +63,13 @@ describe Takeaway do
     end
   end
 
-  # describe '#checkout' do
-  #   it 'raises an error when the user enters a value that doesnt match the total bill' do
-  #     takeaway.add_item("Pepperoni", 2)
-  #
-  #   end
-  # end
+  describe '#checkout' do
+    it 'sends you a message after you have paid' do
+      takeaway.add_item("Pepperoni", 2)
+      takeaway.total_bill
+      expect(takeaway).to receive(:send_text)
+      takeaway.checkout(15.00)
+    end
+  end
 
 end

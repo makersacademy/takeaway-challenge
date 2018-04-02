@@ -1,8 +1,10 @@
 require_relative 'menu'
 require_relative 'basket'
+require 'dotenv/load'
+require 'twilio-ruby'
 
 class Takeaway
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :text_messager
   def initialize(menu = Menu.new, basket = Basket.new)
     @menu = menu
     @basket = basket
@@ -34,7 +36,9 @@ class Takeaway
 
   def checkout(amount_paid)
     raise "Incorrect amount paid" unless correct_amount_paid?(amount_paid)
+    send_text
   end
+
 
 private
 
@@ -45,5 +49,15 @@ private
   def correct_amount_paid?(amount_paid)
     amount_paid == @total
   end
+
+  def send_text
+    time = (Time.now + (60*60)).strftime('%H:%M')
+    Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+      .messages.create(
+        from: ENV['TWILIO_PHONE'],
+        to: ENV['TWILIO_DESTIN'],
+        body: "Thank you! Your order was placed and will be delivered before #{time}"
+      )
+    end
 
 end
