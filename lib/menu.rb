@@ -16,12 +16,27 @@ class Menu
     @list << dish.new(name, price)
   end
 
-  private
+  def contain?(dish)
+    no_dish_error unless on_manu?(dish)
+    return true
+  end
+
+  # private
 
   def list_message
     display = []
-    @list.each{|dish| display << "Dish Name: #{dish.name}, Price: #{dish.price}" }
+    @list.each { |dish| display << "Dish Name: #{dish.name}, Price: #{dish.price}" }
     display.join(", ")
+  end
+
+  def no_dish_error
+    raise "This dish is not on our takeaway menu."
+  end
+
+  def on_manu?(dish)
+    dish_name = []
+    @list.each { |items| dish_name << items.name }
+    dish_name.include?(dish)
   end
 
 end

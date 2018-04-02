@@ -1,4 +1,5 @@
 require './lib/menu'
+require './lib/order'
 
 class Restaurant
 
