@@ -16,7 +16,7 @@ class Order
 
   def add_item dish, quantity
     @items << OrderItem.new(dish, quantity)
-    "Added to order: " +  @items.last.description
+    "Added to order: " + @items.last.description
   end
 
   def remove_item item_id
@@ -25,7 +25,7 @@ class Order
   end
     
   def calculate_total
-    @items.reduce(0) { |x,y| x + y.price }
+    @items.reduce(0) { |x, y| x + y.price }
   end
 
   def complete!
@@ -33,7 +33,8 @@ class Order
   end
 
   def describe
-    pretty_print(items: @items.map(&:description).join("\n"), total: calculate_total, state: @state.to_s)
+    pretty_print(items: @items.map(&:description).join("\n"),
+    total: calculate_total, state: @state.to_s)
   end
 
   private

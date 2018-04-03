@@ -23,7 +23,7 @@ class OrderItem
   end
 
   def describe
-    pretty_print(id: @id, dish: @dish.describe, quantity: @quantity, price: @price)
+    pretty_print(id: @id, dish: @dish.describe,
+    quantity: @quantity, price: @price)
   end
 end
-

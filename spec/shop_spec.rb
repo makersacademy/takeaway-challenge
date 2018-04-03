@@ -46,10 +46,10 @@ describe Shop do
     context 'failure' do
       it 'returns with an info string if quantity not in (1..12)' do
         expect(shop_plus_menu.order 3, -8).to eq Shop::MESSAGES[:invalid_quantity]
-    end
+      end
   
       it 'outputs an info string if dish not found' do
-        expect { shop_plus_menu.order -1, 3 }.to output(Shop::MESSAGES[:invalid_id]).to_stdout
+        expect { shop_plus_menu.order(-1, 3) }.to output(Shop::MESSAGES[:invalid_id]).to_stdout
       end    
     end
 
@@ -71,9 +71,9 @@ describe Shop do
         expect(shop_menu_orders.checkout).to eq Shop::MESSAGES[:no_items]
       end 
 
-     it 'outputs an info string if latest order totals to 0' do
-       allow(@order).to receive(:calculate_total) { 0 }
-       expect(shop_menu_orders.checkout).to eq Shop::MESSAGES[:no_items]
+      it 'outputs an info string if latest order totals to 0' do
+        allow(@order).to receive(:calculate_total) { 0 }
+        expect(shop_menu_orders.checkout).to eq Shop::MESSAGES[:no_items]
       end 
     end
 

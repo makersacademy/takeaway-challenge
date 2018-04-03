@@ -34,10 +34,10 @@ describe Order do
       expect { order.remove_item 'ABCDE' }.to raise_error Order::MESSAGES[:not_found]
     end
 
-  it 'removes a matching item' do
-    order.remove_item 'A8888'
-    expect(order.instance_variable_get(:@items)).not_to include(@order_item)
-  end
+    it 'removes a matching item' do
+      order.remove_item 'A8888'
+      expect(order.instance_variable_get(:@items)).not_to include(@order_item)
+    end
   end
       
   describe '#calculate_total' do

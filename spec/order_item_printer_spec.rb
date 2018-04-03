@@ -14,5 +14,3 @@ describe OrderItemPrinter do
     expect(@dummy_class.pretty_print(id: 'A1234', price: 9.80, quantity: 3, dish: 'Fake dish')).to eq 'Order item A1234: Fake dish x 3 : £9.80'
   end
 end
-    
-  
