@@ -8,8 +8,7 @@ class Customer
   attr_accessor :hungry
 
   ERROR_MESSAGES = {
-    not_enough_money_for_order: 'Sorry,
-    you do not have enough money to pay for order'
+    not_enough_money_for_order: 'Sorry, you do not have enough money to pay for order'
   }.freeze
 
   INITIAL_CASH_AMOUNT = 100
