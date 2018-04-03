@@ -20,8 +20,8 @@ class Restaurant
     @menu = menu
     @category_array = ['pizza', 'paste', 'side', 'salde']
     @bank_account = bank_account
-    account_sid = 'AC51859c3bada076b7262f4f545121a302'
-    auth_token = 'e8faccab6929c94b4171ee77b5f3250e'
+    account_sid = 'AC51859c3bada****7262f4f545121****'
+    auth_token = 'e8faccab6929c****71ee77b5f3****'
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
@@ -47,7 +47,7 @@ class Restaurant
     message = "Thank you! Your order was placed and will be
     delivered before #{delivery_time.hour}:#{delivery_time.min}"
     @client.api.account.messages.create(
-      from: '+447403941285',
+      from: '+44777777777',
       to: customer.telephone,
       body: message
     )
