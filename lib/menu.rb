@@ -23,9 +23,9 @@ class Menu
     }
     return @menu
   end
-
+  
   def print_menu
-    puts "Menue PizzaVolf".center(25,"*")
+    puts "Menue PizzaVolf".center(25, "*")
     puts "Pizza: #{@menu[:pizza]}".center(25)
     puts "Paste: #{@menu[:paste]}".center(25)
     puts "Side: #{@menu[:side]}".center(25)

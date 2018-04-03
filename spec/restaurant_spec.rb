@@ -147,44 +147,44 @@ describe Restaurant do
         end
       end
 
-        context 'when user answer difer from (yes/no)' do
-          let(:invalid_order_input) {
-            ["pizza\n",
-              "Pepperoni Feast\n",
-              "1\n",
-              "yes\n",
-              "paste\n",
-              "Paste with octopus\n",
-              "2\n",
-              "foo\n",
-              "no\n",
-              "yes\n"]
-          }
+      context 'when user answer difer from (yes/no)' do
+        let(:invalid_order_input) {
+          ["pizza\n",
+            "Pepperoni Feast\n",
+            "1\n",
+            "yes\n",
+            "paste\n",
+            "Paste with octopus\n",
+            "2\n",
+            "foo\n",
+            "no\n",
+            "yes\n"]
+        }
 
-          before {
-            set_invalid_user_input
-          }
+        before {
+          set_invalid_user_input
+        }
 
-          it 'asks again for input and returns order' do
-            restaurant = Restaurant.new(menu)
-            order = restaurant.take_an_order
-            dish_orders = order.dish_orders
-            expect(dish_orders[0].dish).to eq(pizza_dish)
-            expect(dish_orders[0].count).to eq(1)
-            expect(dish_orders[1].dish).to eq(paste_dish)
-            expect(dish_orders[1].count).to eq(2)
-          end
+        it 'asks again for input and returns order' do
+          restaurant = Restaurant.new(menu)
+          order = restaurant.take_an_order
+          dish_orders = order.dish_orders
+          expect(dish_orders[0].dish).to eq(pizza_dish)
+          expect(dish_orders[0].count).to eq(1)
+          expect(dish_orders[1].dish).to eq(paste_dish)
+          expect(dish_orders[1].count).to eq(2)
         end
       end
     end
-
-    def set_valid_user_input
-      allow_any_instance_of(Object)
-      .to receive(:gets).and_return(*valid_order_input)
-    end
-
-    def set_invalid_user_input
-      allow_any_instance_of(Object)
-      .to receive(:gets).and_return(*invalid_order_input)
-    end
   end
+
+  def set_valid_user_input
+    allow_any_instance_of(Object)
+    .to receive(:gets).and_return(*valid_order_input)
+  end
+
+  def set_invalid_user_input
+    allow_any_instance_of(Object)
+    .to receive(:gets).and_return(*invalid_order_input)
+  end
+end

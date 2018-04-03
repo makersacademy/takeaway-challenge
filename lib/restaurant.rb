@@ -11,9 +11,14 @@ class Restaurant
   INITIAL_CASH_AMOUNT = 100
 
   ERROR_MESSAGES = {
-    category_does_not_exist: 'Sorry, the caregory you are trying to choose does not exist',
-    dish_does_not_exist: 'Sorry, the dish you are trying to choose does not exist',
-    invalid_dish_count: 'Sorry, dish count can be 1 or more'
+    category_does_not_exist: 'Sorry,
+    the caregory you are trying to choose
+    does not exist',
+    dish_does_not_exist: 'Sorry,
+    the dish you are trying
+    to choose does not exist',
+    invalid_dish_count: 'Sorry,
+    dish count can be 1 or more'
   }.freeze
 
   def initialize(menu = Menu.new, bank_account = INITIAL_CASH_AMOUNT)
@@ -69,9 +74,9 @@ class Restaurant
       dish = @menu.menu[category_chosen.to_sym].select { |n|
         n.name == dish_name
       }.first
-      raise ERROR_MESSAGES[:dish_does_not_exist] if dish == nil
+      raise ERROR_MESSAGES[:dish_does_not_exist] if dish.nil?
       new_order.add(DishOrder.new(dish, dish_count))
-      break if !continue_order?
+      break unless continue_order?
     end
     return new_order
   end

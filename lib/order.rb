@@ -23,7 +23,10 @@ class Order
     puts "Order".center(PRINT_CENTER_LENGTH)
     @dish_orders.each { |dish_order|
       dish_order_total_price = dish_order.count * dish_order.dish.price
-      puts "#{dish_order.dish.name} #{dish_order.count} * #{dish_order.dish.price} #{dish_order_total_price}".center(PRINT_CENTER_LENGTH)
+      puts "#{dish_order.dish.name}
+      #{dish_order.count} *
+      #{dish_order.dish.price}
+      #{dish_order_total_price}".center(PRINT_CENTER_LENGTH)
     }
     puts "Total: #{total_price}"
   end
