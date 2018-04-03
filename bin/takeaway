@@ -13,6 +13,8 @@ puts menu.print
 
 dishes = {}
 
+total = 0.00
+
 loop do
   print "What do you want? "
   dish = gets.strip
@@ -20,10 +22,12 @@ loop do
   print "How many?"
   quantity = gets.to_i
   dishes[dish] = quantity
-  menu.price(dish) * quantity
+  total += (menu.price(dish) * quantity)
 end
 
 puts dishes
+
+puts "Your order total is £#{total}"
 
 puts "What is your phone number? "
 phone = gets
