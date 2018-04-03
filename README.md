@@ -42,11 +42,16 @@ Structure
 
 The app has folowing classes:
 1. Customer
-A customer has initial hungriness ```status```, the initial amount of money on ```bank_account```, and ```telephone```
+has initial hungriness ```status```, the initial amount of money on ```bank_account```, and ```telephone```
 Customer can ```place_an_order``` in restaurant if customer is ```hungry``` and ```pay_an_order``` from ```bank_account``` if customer has enough money.
 Customer can recive confermation that order was placed via sms (implemented using Twilio API).
 2. Restaurant
-3. Menu
-4. Dish
-5. Dish_order (support)
+has initial ```menu``` and ```bank_account```. It can ```show_menu```, ```take_an_order``` and ```receive_money``` from customer for total amount of order.
+3. Dish
+has name and price and can be randomly generated according to one out of four categories menu.
+4. Dish_order (support)
+creats dish orders out of ```dish``` and the number of how many such ```dish``` customer wants - ```count```
+5. Menu
+has initial categories which can be filled with ```Dish.new```. It can ```print_menu``` and generage menu using ```menu_generator```
 6. Order (support)
+forms dish orders to one order.
