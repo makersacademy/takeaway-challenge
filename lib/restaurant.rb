@@ -71,10 +71,19 @@ class Restaurant
       }.first
       raise ERROR_MESSAGES[:dish_does_not_exist] if dish == nil
       new_order.add(DishOrder.new(dish, dish_count))
-      puts 'Do you want to order anything else (yes/no)?'
-      break if gets.chomp.downcase == 'no'
+      break if !continue_order?
     end
     return new_order
+  end
+
+  def continue_order?
+    puts 'Do you want to order anything else (yes/no)?'
+    user_input = gets.chomp.downcase
+    while user_input != 'yes' && user_input != 'no'
+      puts 'Do you want to order anything else (yes/no)?'
+      user_input = gets.chomp.downcase
+    end
+    return user_input == 'yes'
   end
 
   def verify_an_order(order)
