@@ -26,7 +26,7 @@ class Restaurant
   end
 
   def show_menu
-    @menu.print_menue
+    @menu.print_menu
   end
 
   def take_an_order

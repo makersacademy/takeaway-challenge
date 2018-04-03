@@ -15,7 +15,7 @@ class Menu
   end
 
   def menu_generator
-    SET_MENUE.times {
+    SET_MENU.times {
       @menu[:pizza] << Dish.rand_pizza_dish
       @menu[:paste] << Dish.rand_paste_dish
       @menu[:side] << Dish.rand_side_dish
@@ -23,7 +23,7 @@ class Menu
     }
     return @menu
   end
-  
+
   def print_menu
     puts "Menue PizzaVolf".center(25, "*")
     puts "Pizza: #{@menu[:pizza]}".center(25)
