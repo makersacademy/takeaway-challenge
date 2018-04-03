@@ -17,11 +17,13 @@ class Takeaway
   def add_item(item, quantity = 1)
     raise "Sorry, that is not available on the menu" unless menu.item_on_menu?(item)
     basket.add_to_basket(item, quantity)
+    total
     "#{quantity} x #{item} pizza(s) added to your basket"
   end
 
   def remove_item(item, quantity = 1)
     basket.remove_from_basket(item, quantity)
+    total
     "#{quantity} x #{item} pizza(s) removed from your basket"
   end
 
@@ -30,7 +32,8 @@ class Takeaway
   end
 
   def total_bill
-    @total = basket.order_total(menu) unless basket_empty?
+    # @total = basket.order_total(menu) unless basket_empty?
+    total
     "Your total bill is £#{'%.2f' % @total}."
   end
 
@@ -49,6 +52,11 @@ private
   def correct_amount_paid?(amount_paid)
     amount_paid == @total
   end
+
+  def total
+    @total = basket.order_total(menu) unless basket_empty?
+  end
+
 
   def send_text
     time = (Time.now + (60*60)).strftime('%H:%M')
