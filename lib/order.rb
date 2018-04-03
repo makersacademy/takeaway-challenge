@@ -15,18 +15,14 @@ class Order
   end
 
   def add(dish, quantity)
-    quantity.times do
-      @list.push(dish)
-    end
+    quantity.times { @list.push(dish) }
     puts "(x#{quantity}) #{dish} added to basket."
   end
 
   def total
     total = 0.0
-    @list.each do |dish|
-      total += @menu.price(dish)
-    end
-    p "The total is £#{total}"
+    @list.each { |dish| total += @menu.price(dish) }
+    puts "The total is £#{total}"
     total
   end
 
