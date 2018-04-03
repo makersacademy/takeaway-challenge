@@ -17,7 +17,7 @@ class Order
   end
 
   def summary
-    "You've ordered #{summary_manager}"
+    "You've ordered #{summary_manager}, the total price is #{sum}"
   end
 
   private
