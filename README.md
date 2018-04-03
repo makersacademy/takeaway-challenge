@@ -6,7 +6,3 @@
   dish (identified by id) can be ordered, only an existing order item (identified by order item id) can be removed and only from an order in progress, checkout is only possible if there is an order in progress with a total > 0, etc.</p>
 <h2>Implementation</h2>
 <p>App is written entirely in Ruby. I am using the Twilio API to send SMS messages to confirm the order and twilio-ruby gem to work with the API.</p>
-<h2>In use</h2>
-
-![Alt text](./images/zero.png?raw=true)
-![Alt text](./images/one.png?raw=true)
