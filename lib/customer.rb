@@ -15,7 +15,7 @@ class Customer
 
   def initialize(status = false,
     bank_account = INITIAL_CASH_AMOUNT,
-    telephone = '+4488888888')
+    telephone = Tokens::MY_NUMBER)
     @hungry = status
     @bank_account = bank_account
     @telephone = telephone

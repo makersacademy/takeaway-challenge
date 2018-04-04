@@ -9,18 +9,28 @@ describe Restaurant do
 
   it { expect(subject).to respond_to :show_menu }
   it { expect(subject).to respond_to :take_an_order }
-  it { expect(subject).to respond_to :receive_money }
+  it { expect(subject).to respond_to(:receive_money).with(2).arguments }
+  it { expect(subject).to respond_to(:send_message).with(1).arguments }
 
   context 'when takes an order' do
     let(:menu) { double :menu }
     let(:pizza_dish) { double :dish }
     let(:paste_dish) { double :dish }
+    let(:customer) { double :customer}
+
+    let(:client) { double :client }
+    let(:messages) { double :messages }
+    let(:telephone) { double :telephone }
+
     before {
       allow(pizza_dish).to receive(:name).and_return('Pepperoni Feast')
       allow(pizza_dish).to receive(:price).and_return(10.00)
       allow(paste_dish).to receive(:name).and_return('Paste with octopus')
       allow(paste_dish).to receive(:price).and_return(7.90)
       allow(menu).to receive(:menu).and_return({ pizza: [pizza_dish], paste: [paste_dish] })
+      allow(customer).to receive(:telephone).and_return(telephone)
+      allow(client).to receive(:messages)
+      allow(messages).to receive(:create)
     }
 
     context 'when creates a valid order' do
@@ -49,6 +59,11 @@ describe Restaurant do
           expect(dish_orders[0].count).to eq(1)
           expect(dish_orders[1].dish).to eq(paste_dish)
           expect(dish_orders[1].count).to eq(2)
+        end
+        it 'send the user an sms' do
+          restaurant = Restaurant.new(menu)
+          restaurant.send_message(customer)
+          # expect(messages).to receive(:create)
         end
       end
 

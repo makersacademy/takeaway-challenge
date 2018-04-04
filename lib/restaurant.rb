@@ -1,5 +1,6 @@
 require_relative './menu'
 require_relative './order'
+require_relative './account_inf'
 require 'time'
 require 'twilio-ruby'
 
@@ -7,6 +8,7 @@ class Restaurant
   attr_reader :menu
   attr_reader :category_array
   attr_reader :bank_account
+  attr_reader :client
 
   INITIAL_CASH_AMOUNT = 100
 
@@ -20,8 +22,8 @@ class Restaurant
     @menu = menu
     @category_array = ['pizza', 'paste', 'side', 'salde']
     @bank_account = bank_account
-    account_sid = 'AC51859c3bada****7262f4f545121****'
-    auth_token = 'e8faccab6929c****71ee77b5f3****'
+    account_sid = Tokens::ACCOUNT_SID
+    auth_token = Tokens::AUTH_TOKEN
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
@@ -42,18 +44,30 @@ class Restaurant
 
   def receive_money(amount, customer)
     @bank_account += amount
+    send_message(customer)
+  end
+
+  def send_message(customer)
     current_time = Time.now
     delivery_time = current_time + 3600
     message = "Thank you! Your order was placed and will be
-    delivered before #{delivery_time.hour}:#{delivery_time.min}"
-    @client.api.account.messages.create(
-      from: '+44777777777',
+    delivered before #{delivery_time.hour}:#{minutes(delivery_time)}"
+    @client.messages.create(
+      from: Tokens::TWILIO_NUMBER,
       to: customer.telephone,
       body: message
     )
   end
 
   private
+
+  def minutes(delivery_time)
+    if delivery_time.min < 10
+      return "0 #{delivery_time.min}"
+    else
+      return "#{delivery_time.min}"
+    end
+  end
 
   def create_an_order
     new_order = Order.new
