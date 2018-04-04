@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/MaryDomashneva/takeaway-challenge.svg?branch=master)](https://travis-ci.org/MaryDomashneva/takeaway-challenge)
+[![codebeat badge](https://codebeat.co/badges/5f9ca3a7-c57f-4fb6-b820-3f823580ae9c)](https://codebeat.co/projects/github-com-marydomashneva-takeaway-challenge-master)
 
 Takeaway Challenge
 ==================
@@ -19,6 +20,11 @@ Takeaway Challenge
 Task
 -----
 
+Use the Twilio Gem to order food
+
+User story
+-----
+
 ```
 As a customer
 So that I can check if I want to order something
@@ -36,6 +42,27 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+Technology used
+-----
+
+* Ruby 2.5.0
+* TWILIO API
+* Rspec
+* Capybara
+
+Run project
+-----
+
+* In order to use the app following environment variables are required:
+```
+TAKE_AWAY_TWILIO_NUMBER // twilio number to send sms from
+TAKE_AWAY_TWILIO_ACCOUNT_SID // twilio account sid
+TAKE_AWAY_TWILIO_AUTH_TOKEN // twilio auth token
+TAKE_AWAY_TWILIO_MY_NUMBER // client number to recieve sms
+```
+* In order to run tests, clone project, install ruby 2.5.0, install Rspec ```gem 'rspc'``` and ```rspec``` command in terminal.
+* The easiest way to try project is in IRB: ```inside terminal irb -r./takeaway-challenge```
 
 Result
 -----
