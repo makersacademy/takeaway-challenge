@@ -1,6 +1,5 @@
 require_relative './menu'
 require_relative './order'
-require_relative './account_inf'
 require 'time'
 require 'twilio-ruby'
 
@@ -26,8 +25,8 @@ class Restaurant
   end
 
   def client
-    account_sid = Tokens::ACCOUNT_SID
-    auth_token = Tokens::AUTH_TOKEN
+    account_sid = ENV['TAKE_AWAY_TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TAKE_AWAY_TWILIO_AUTH_TOKEN']
     @client ||= Twilio::REST::Client.new account_sid, auth_token
   end
 
@@ -57,7 +56,7 @@ class Restaurant
     message = "Thank you! Your order was placed and will be
     delivered before #{delivery_time.hour}:#{minutes(delivery_time)}"
     client.messages.create(
-      from: Tokens::TWILIO_NUMBER,
+      from: ENV['TAKE_AWAY_TWILIO_NUMBER'],
       to: customer.telephone,
       body: message
     )

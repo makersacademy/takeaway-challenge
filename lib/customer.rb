@@ -15,7 +15,7 @@ class Customer
 
   def initialize(status = false,
     bank_account = INITIAL_CASH_AMOUNT,
-    telephone = Tokens::MY_NUMBER)
+    telephone = ENV['TAKE_AWAY_TWILIO_MY_NUMBER'])
     @hungry = status
     @bank_account = bank_account
     @telephone = telephone
