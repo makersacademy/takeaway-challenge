@@ -12,3 +12,17 @@ describe Message do
     end
   end
 end
+
+# describe Sms do
+#   let(:client) { double :client }
+#   let (:subject) { described_class.new(client) }
+#   allow(client).to receive(:messages)
+#   describe '#send' do
+#     it "send the user an sms" do
+#       # what do we want to test???
+#       allow(client).to receive(:messages)
+#       expect(subject.client.messages).to receive(:create)
+#       subject.send(15.55)
+#     end
+#   end
+# end

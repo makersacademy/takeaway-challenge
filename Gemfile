@@ -11,3 +11,4 @@ gem 'simplecov-console', require: false, group: :test
 gem 'twilio-ruby'
 gem 'vcr'
 gem 'webmock'
+gem 'dotenv-rails', groups: [:development, :test]
