@@ -18,13 +18,17 @@ class Restaurant
     invalid_dish_count: 'Sorry, dish count can be 1 or more'
   }.freeze
 
-  def initialize(menu = Menu.new, bank_account = INITIAL_CASH_AMOUNT)
+  def initialize(menu = Menu.new, twilio_client = nil, bank_account = INITIAL_CASH_AMOUNT)
     @menu = menu
     @category_array = ['pizza', 'paste', 'side', 'salde']
     @bank_account = bank_account
+    @client = twilio_client
+  end
+
+  def client
     account_sid = Tokens::ACCOUNT_SID
     auth_token = Tokens::AUTH_TOKEN
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client ||= Twilio::REST::Client.new account_sid, auth_token
   end
 
   def show_menu
@@ -52,7 +56,7 @@ class Restaurant
     delivery_time = current_time + 3600
     message = "Thank you! Your order was placed and will be
     delivered before #{delivery_time.hour}:#{minutes(delivery_time)}"
-    @client.messages.create(
+    client.messages.create(
       from: Tokens::TWILIO_NUMBER,
       to: customer.telephone,
       body: message

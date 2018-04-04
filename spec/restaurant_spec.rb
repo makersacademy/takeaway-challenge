@@ -29,7 +29,7 @@ describe Restaurant do
       allow(paste_dish).to receive(:price).and_return(7.90)
       allow(menu).to receive(:menu).and_return({ pizza: [pizza_dish], paste: [paste_dish] })
       allow(customer).to receive(:telephone).and_return(telephone)
-      allow(client).to receive(:messages)
+      allow(client).to receive(:messages).and_return(messages)
       allow(messages).to receive(:create)
     }
 
@@ -61,9 +61,9 @@ describe Restaurant do
           expect(dish_orders[1].count).to eq(2)
         end
         it 'send the user an sms' do
-          restaurant = Restaurant.new(menu)
+          restaurant = Restaurant.new(menu, client)
+          expect(messages).to receive(:create)
           restaurant.send_message(customer)
-          # expect(messages).to receive(:create)
         end
       end
 
