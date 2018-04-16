@@ -1,36 +1,26 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
-
-Task
+About
 -----
-Create a program which satisfies the following user stories
+This is the Week 2 Makers Academy Challenge, built in one weekend, using Ruby. The task was to create a program which satisfies the following user stories
 
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
-
+```
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
-
+```
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+```
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
@@ -38,10 +28,13 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 Approach
 -----
-- I used TDD to create this program, using doubles and stubs where appropriate to create isolated unit tests. I also aimed to achieve full test coverage.
-- To send the confirmation texts, I integrated the Twilio API into my program using the twilio-ruby gem.
-- To avoid disclosing my personal information, I created a file with environmental variables which I added to .gitignore. In my program, I require the dotenv gem to access this file.
-- After satisfying the above user stories, I refactored my code, ensuring necessary methods were made private, and trying to abide by the Single Responsibility Principle for methods.
+- I worked through the above user sotries, one at a time, using TDD to drive my code
+- I made sure to use doubles and stubs where appropriate to create isolated unit tests 
+- I aimed to achieve full test coverage
+- To send the confirmation texts, I integrated the Twilio API into my program using the twilio-ruby gem
+- To avoid disclosing my personal information, I created a file with environmental variables which I added to .gitignore
+- I required the dotenv gem to access thses variables
+- After satisfying the above user stories, I refactored my code, ensuring necessary methods were made private, and trying to abide by the Single Responsibility Principle for methods
 
 Example irb Output
 -----
@@ -92,16 +85,16 @@ Order total is £19.50
 ```
 ![alt text](screenshots/ExampleText.png "Confirmation text message")
 
-To run program
+How to use
 -----
-1. Fork this repo
-2. Run `bundle` to install required gems
-3. Create a file called `hidden_data.env` assigning your details to the following variables (you will need to create a free Twilio account to get these)
+1. Clone this repo
+2. Run `$ bundle install` to install required gems
+3. Create a file called `hidden_data.env` in the root directory, assigning your details to the following variables (you will need to create a free Twilio account to get these)
     - "MY_PHONE_NUMBER"
     - "TWILIO_PHONE_NUMBER"
     - "TWILIO_ACCOUNT_SID"
     - "TWILIO_AUTH_CODE"
-4. Start irb and `require './lib/restaurant.rb'`
+4. Run `$ irb` and `require './lib/restaurant.rb'`
 
 Author
 -----
