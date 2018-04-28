@@ -1,7 +1,9 @@
 require 'menu'
 
 describe Menu do
-  subject { Menu.new('mock') }
+  let(:object_type) { Dish }
+  subject { Menu.new(object_type) }
+
   let(:dish_id_1) { 1 }
   let(:dish_name_1) { 'dish_1' }
   let(:dish_price_1) { 4.5 }
@@ -24,17 +26,15 @@ describe Menu do
   end
 
   context '#dishes' do
-    let(:one_item_array_return) { [[dish_id_1, dish_name_1, dish_price_1]] }
-
-    it 'Returns an copy of @dishes' do
+    it 'Returns the objects of @dishes' do
       add_dish
-      expect(subject.dishes).to eq one_item_array_return
+      expect(subject.dishes).to include object_type
     end
 
     it "Items can't be removed from @dishes" do
       add_dish
       subject.dishes.pop
-      expect(subject.dishes).to eq one_item_array_return
+      expect(subject.dishes.length).to eq 1
     end
   end
 
