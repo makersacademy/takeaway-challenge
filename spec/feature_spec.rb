@@ -12,12 +12,21 @@ feature "Take Away Challenge" do
    ]
 
    let(:dishes) {Dishes.new(menu)}
-# As a customer
-# So that I can check if I want to order something
-# I would like to see a list of dishes with prices
 
-  scenario "Get list of dishes and prices" do
+  # As a customer
+  # So that I can check if I want to order something
+  # I would like to see a list of dishes with prices
+
+  scenario "Print Menu" do
     expect(dishes.menu.count).to eq 7
+    dishes.menu
   end
 
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
+
+  scenario "Select from menu" do
+
+  end
 end
