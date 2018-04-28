@@ -4,12 +4,12 @@ class Menu
 
   def initialize
     @list = {
-        "Southern Chicken" => 5.50,
-        "Chicken Katsu Curry" => 5.50,
-        "Jerk Chicken" => 5.50,
-        "Mamas Meatballs" => 5.30,
-        "Kofta Patties" => 5.90,
-        "Pasta Primavera" => 5.00,
-        "Vegan Moussaka" => 5.20 }
+        "southern chicken" => 5.50,
+        "chicken curry" => 5.50,
+        "jerk chicken" => 5.50,
+        "mamas meatballs" => 5.30,
+        "kofta patties" => 5.90,
+        "pasta primavera" => 5.00,
+        "vegan moussaka" => 5.20 }
   end
 end
