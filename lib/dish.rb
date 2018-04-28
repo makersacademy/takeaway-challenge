@@ -2,10 +2,10 @@ class Dish
 
   attr_reader :name, :description, :price
 
-  def initialize(name: nil, description: nil, price: nil)
-    @name = name
-    @description = description
-    @price = price
+  def initialize(args = {})
+    @name = args[:name]
+    @description = args[:description]
+    @price = args[:price]
   end
 
 end
