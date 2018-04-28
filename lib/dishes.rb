@@ -12,4 +12,8 @@ class Dishes
    end
   end
 
+  def in_menu?(selection)
+    menu.find{|dish| dish[:dish] == selection} != nil
+  end
+
 end

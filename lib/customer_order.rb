@@ -8,7 +8,11 @@ class CustomerOrder
   end
 
   def select_dish(dish, quantity)
+    validate_dish(dish, quantity)
     @selection << [dish, quantity]
   end
 
+  def validate_dish(dish, quantity)
+    raise "Error: Dish is not in menu!" unless @dishes.in_menu?(dish)
+  end
 end
