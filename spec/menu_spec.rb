@@ -6,7 +6,7 @@ describe Menu do
 
   describe '#display' do
     it 'displays a menu' do
-      expect{ menu.display }.to output.to_stdout
+      expect { menu.display }.to output.to_stdout
     end
   end
 
