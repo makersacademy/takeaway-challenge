@@ -18,6 +18,13 @@ class TakeAway
     message(dish, quantity)
   end
 
+  def basket_summary
+    summary = []
+    @basket.each do |item, amount|
+      summary.push("#{item} x#{amount} = £#{amount * @menu.list[item]}")
+    end
+    summary.join(", ")
+  end
 
   private
   def message(dish, quantity)
