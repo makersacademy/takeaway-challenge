@@ -38,9 +38,9 @@ class Menu
       }
   ]
 
-  attr_reader :menu
-
-  def initialize
-    @menu = TAKEAWAY_MENU
+  def display_menu
+    TAKEAWAY_MENU
   end
+
+
 end
