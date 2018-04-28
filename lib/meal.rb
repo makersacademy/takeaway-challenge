@@ -6,9 +6,9 @@ class Meal
     @menu = menu
   end
 
-  def add_dish(selection)
+  def add_dish(selection, quantity)
     @menu.dishes.each do |dish|
-      @meal << dish if dish[:name] == selection
+      quantity.times {@meal << dish if dish[:name] == selection}
     end
   end
 
