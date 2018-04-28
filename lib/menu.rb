@@ -1,11 +1,14 @@
 require 'csv'
+require_relative 'dish.rb'
 
 class Menu
 
-  attr_reader :dishes, :menu_csv
+  attr_reader :dishes, :menu_csv, :dish
 
-  def initialize
+  def initialize(dish_class = Dish)
     @menu_csv = CSV.read('lib/menu.csv', :encoding => 'windows-1251:utf-8')
+    @dishes = []
+    @dish_class = dish_class
   end
 
   def view_menu
@@ -13,7 +16,8 @@ class Menu
   end
 
   def menu_load
-    @menu.each do |row|
+    @menu_csv.each do |row|
+      @dishes << @dish_class.new(row[0],row[1],row[2])
     end
   end
 
