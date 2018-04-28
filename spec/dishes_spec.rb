@@ -10,7 +10,6 @@ describe Dishes do
       expect(dishes.menu).to all(be_a(Hash).and include(:dish).and include(:price))
     end
 
-
   end
 
   describe "#print" do

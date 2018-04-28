@@ -42,9 +42,10 @@ feature "Take Away Challenge" do
   scenario "Verify total" do
     order_1 = ['Hawaiian', 2]
     order_2 = ['Vegeterian', 3]
+    customer_amount = 10
     order.select_dish(order_1[0], order_1[1])
     order.select_dish(order_2[0], order_2[1])
-    expect(order.total_valid?).to be true
+    expect(order.bill_valid?(customer_amount)).to be true
   end
 
 end

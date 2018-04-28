@@ -1,3 +1,4 @@
+require 'bill'
 require 'dishes'
 require 'customer_order'
 require 'capybara/rspec'
