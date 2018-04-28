@@ -1,4 +1,5 @@
 require 'take_away'
+require 'twilio-ruby'
 
 describe TakeAway do
 
@@ -63,21 +64,27 @@ describe TakeAway do
   end
 
   describe "#checkout" do
-  let(:menu) {double :menu, list: {"jerk chicken" => 5.59, "mamas meatballs" => 5.39} }
-    it "returns message that order is complete" do
-      takeaway.order("jerk chicken", 1)
-      takeaway.order("mamas meatballs", 1)
-      time = (Time.new + 3600).strftime("%H:%M")
-      takeaway.basket_summary
-      takeaway.total
-      expect(takeaway.checkout(10.98)).to eq "Thank you! Your order was placed and will be delivered before #{time}"
+    let(:menu) {double :menu, list: {"jerk chicken" => 5.59, "mamas meatballs" => 5.39} }
+      it "returns message that order cannot be complete" do
+        takeaway.order("jerk chicken", 1)
+        takeaway.order("mamas meatballs", 1)
+        expect { takeaway.checkout(16.89) }.to raise_error "Check your total as it is incorrect"
+      end
+
+
+      before do
+        allow(Twilio::REST::Client).to receive(:new).and_return(client)
+      end
+      let(:client) { double :client, messages: messages }
+      let(:messages) { double :messages, create: nil }
+        it "sends text message" do
+          takeaway.order("jerk chicken", 1)
+          takeaway.order("mamas meatballs", 1)
+          takeaway.basket_summary
+          takeaway.total
+          takeaway.checkout(10.98)
+        expect(Twilio::REST::Client).to have_received(:new)
+      end
     end
 
-    it "returns message that order cannot be complete" do
-      takeaway.order("jerk chicken", 1)
-      takeaway.order("mamas meatballs", 1)
-      expect { takeaway.checkout(16.89) }.to raise_error "Check your total as it is incorrect"
-    end
-
-  end
 end

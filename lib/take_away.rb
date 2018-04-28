@@ -1,3 +1,5 @@
+require "twilio-ruby"
+
 class TakeAway
 
   attr_reader :menu, :basket
@@ -36,9 +38,9 @@ class TakeAway
 
   def checkout(price)
     fail "Check your total as it is incorrect" unless price == @total
-    "Thank you! Your order was placed and will be delivered before #{(Time.new + 3600).strftime("%H:%M")}"
+    @message = "Thank you! Your order was placed and will be delivered before #{(Time.new + 3600).strftime("%H:%M")}"
+    send_text(@message)
   end
-
 
   private
   def message(dish, quantity)
@@ -46,5 +48,17 @@ class TakeAway
       "#{quantity}x #{dish}(s) added to your basket"
     end
   end
+
+  def send_text(message)
+    account_sid = 'AC0f959b75e37138db00db732e733646c1'
+    auth_token = '68f5ae4727f3c56ecee0f33bd3c17611'
+    client = Twilio::REST::Client.new account_sid, auth_token
+    client.messages.create(
+      from: +441494372502,
+      to: +447459387589,
+      body: message
+    )
+  end
+
 
 end
