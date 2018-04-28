@@ -3,18 +3,16 @@ require 'spec_helper'
 feature 'list menu dishes' do
   scenario 'menu has no dishes' do
     menu = Menu.new
-    ottolenghi_menu = Menu.new
     menu.list
   end
 
-  xscenario 'menu has dishes' do
-    pasta = Dish.new('Pasta', 5)
-    bolognese = Dish.new('Bolognese', 5)
-    salad = Dish.new('Salad', 2)
-    menu = Menu.new(dishes: [pasta, bolognese, salad])
-    ottolenghi_menu = Menu.new
-    menu.list
-  end
+  # scenario 'menu has dishes' do
+  #   pasta = Dish.new('Pasta', 5)
+  #   bolognese = Dish.new('Bolognese', 5)
+  #   salad = Dish.new('Salad', 2)
+  #   menu = Menu.new(dishes: [pasta, bolognese, salad])
+  #   menu.list
+  # end
 end
 
 =begin
