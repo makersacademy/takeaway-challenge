@@ -1,11 +1,11 @@
-require 'dishes'
+require 'menu'
 
-describe Dishes do
-  before { allow(subject).to receive(:list) { p "Dish_name = £Dish_price\n" } }
+describe Menu do
+  before { allow(subject).to receive(:list) { "Dish_name = £Dish_price\n" } }
 
-  describe '#Dishes', :dishes do
+  describe '#menu', :menu do
     it 'Returns an array 10 dishes with prices' do
-      expect(subject.dishes.length).to eq 10
+      expect(subject.menu.length).to eq 10
     end
   end
 

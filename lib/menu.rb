@@ -1,8 +1,8 @@
-class Dishes
-  attr_reader :dishes
+class Menu
+  attr_reader :menu
 
   def initialize
-    @dishes = [{ name: 'Spring rolls', price: 2 },
+    @menu = [{ name: 'Spring rolls', price: 2 },
     { name: 'Popadoms', price: 2 },
     { name: 'Spare ribs', price: 3.5 },
     { name: 'Spicy Chicken Wings', price: 2.5 },
@@ -15,7 +15,7 @@ class Dishes
   end
 
   def list
-    @dishes.each do |dish|
+    @menu.each do |dish|
       puts "#{dish[:name]} - £#{dish[:price]}\n"
     end
   end
