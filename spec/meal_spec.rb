@@ -6,14 +6,14 @@ describe Meal do
   subject { Meal.new(menu) }
 
   describe '#add_dish', :add do
-    it 'Adds 1 dish to the basket array' do
+    it 'Adds 1 dish to the meals array' do
       subject.add_dish(selection, 1)
-      expect(subject.basket.length).to eq(1)
+      expect(subject.meals.length).to eq(1)
     end
 
     it 'Adds 2 of the same dish to the basket array' do
       subject.add_dish(selection, 2)
-      expect(subject.basket.length).to eq(2)
+      expect(subject.meals.length).to eq(2)
     end
   end
 
@@ -21,6 +21,13 @@ describe Meal do
     it 'Sums the total cost of the meal' do
       subject.add_dish(selection, 2)
       expect(subject.sum_of_basket).to eq(4)
+    end
+  end
+
+  describe '#basket', :basket do
+    it 'Returns a pretty string of the current meals' do
+      subject.add_dish(selection, 2)
+      expect { subject.basket }.to output("2 lots of #{selection}\n").to_stdout
     end
   end
 end
