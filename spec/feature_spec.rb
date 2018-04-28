@@ -35,4 +35,16 @@ feature "Take Away Challenge" do
     expect(order.selection).to eq [order_1, order_2]
   end
 
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  scenario "Verify total" do
+    order_1 = ['Hawaiian', 2]
+    order_2 = ['Vegeterian', 3]
+    order.select_dish(order_1[0], order_1[1])
+    order.select_dish(order_2[0], order_2[1])
+    expect(order.total_valid?).to be true
+  end
+
 end
