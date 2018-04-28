@@ -11,9 +11,9 @@ class Order
     @menu.display
   end
 
-  def add(item)
+  def add(item, number)
     raise 'item not on menu' unless @menu.items.has_key?(item)
-    @list << item
+    number.times { @list << item }
   end
 
 end
