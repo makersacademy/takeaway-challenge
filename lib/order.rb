@@ -1,7 +1,11 @@
 class Order
 
-  def see_menu
+  def initialize
+    @menu = Menu.new
+  end
 
+  def see_menu
+    @menu.display
   end
 
 end
