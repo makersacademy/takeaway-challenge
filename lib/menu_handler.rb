@@ -10,17 +10,12 @@ class Menu_handler
   def initialize(root = ROOT)
     @root = root
     @file_summaries = []
+    get_summaries
   end
 
-  def get_summaries
-    get_files.each do |file_path|
-      load_summaries(file_path)
-    end
-  end
-
-  def get_items(category)
-
-
+  def get__menu_items(category)
+    path = @file_summaries.select { |file_sum| file_sum[:category] == category }.first[:path]
+    load_menu_items(path)
   end
 
   private
@@ -33,6 +28,12 @@ class Menu_handler
     csv_files
   end
 
+  def get_summaries
+    get_files.each do |file_path|
+      load_summaries(file_path)
+    end
+  end
+
   def load_summaries(filepath)
     CSV.open(filepath) do |csv|
       flag, category, summary = csv.first
@@ -43,6 +44,10 @@ class Menu_handler
                          }
       end
     end
+  end
+
+  def load_menu_items(filepath)
+    [{item: "item", description: "description", price: "price"}]
   end
 
 end
