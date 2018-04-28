@@ -12,16 +12,19 @@ class TakeAway
   end
 
   def order(dish, quantity = 1)
-    @menu.list.each_key do |item|
-        @basket[dish] += quantity if item == dish
+    if @menu.list.include?(dish)
+      @basket[dish] += quantity
     end
-    message(dish, quantity = 1)
+    message(dish, quantity)
   end
 
+
   private
-  def message(dish, quantity = 1)
+  def message(dish, quantity)
     if @menu.list.include?(dish)
       "#{quantity}x #{dish}(s) added to your basket"
     end
   end
+
+
 end

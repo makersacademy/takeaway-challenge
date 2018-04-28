@@ -32,3 +32,12 @@ def select_dishes(dish, quantity = 1)
 end
 
 select_dishes("schicken")
+
+def basket_summary
+  menu = Menu.new
+  take_away = TakeAway.new(menu)
+  take_away.order("jerk chicken")
+  take_away.order("mamas meatballs")
+end
+
+basket_summary
