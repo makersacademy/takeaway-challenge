@@ -1,5 +1,7 @@
 # irb -r './spec/feature_tests.rb'
 require './lib/menu'
+require './lib/take_away'
+
 
 def set_up_the_menu_list
   menu = Menu.new
@@ -7,3 +9,11 @@ def set_up_the_menu_list
 end
 
 set_up_the_menu_list
+
+def has_the_list_of_dishes
+  menu = Menu.new
+  take_away = TakeAway.new(menu)
+  p take_away
+end
+
+has_the_list_of_dishes
