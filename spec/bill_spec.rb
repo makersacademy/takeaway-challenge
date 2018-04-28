@@ -8,10 +8,15 @@ describe Bill do
   subject(:bill) { Bill.new(dishes, customer_order) }
 
   describe '#initialize' do
-    fit 'initialize order total to zero' do
+
+    fit 'sets order total to zero' do
       expect(bill.total).to eq 0
     end
-  end
 
+    fit 'sets customer order' do
+      expect(bill.order).to eq customer_order
+    end
+
+  end
 
 end
