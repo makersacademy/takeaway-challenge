@@ -1,20 +1,26 @@
 class Menu
-  attr_reader :selection
+  attr_reader :select
 
 # add csv which will import menu
-  def initialise
-    @selection = [
-              { name: :beef_curry, price: 5.70 },
-              { name: :chicken_curry, price: 4.70 },
-              { name: :veggie_curry, price: 4.70 },
-              { name: :fish_curry, price: 4.70 },
-              { name: :aloo_curry, price: 4.70 }]
+
+  def initialize
+    @selection = selection
   end
-  # puts menu to console
+
+  def selection
+    items = [
+            { name: :beef_curry, price: 5.70 },
+            { name: :chicken_curry, price: 4.70 },
+            { name: :veggie_curry, price: 4.70 },
+            { name: :fish_curry, price: 4.70 },
+            { name: :aloo_curry, price: 4.70 }
+            ]
+  end
 
   def print
-    selection.each do |item|
+    @selection.each do |item|
       STDOUT.puts "name: #{item[:name]}: price: #{item[:price]}"
     end
   end
+
 end
