@@ -12,12 +12,13 @@ feature "Take Away Challenge" do
    ]
 
    let(:dishes) {Dishes.new(menu)}
+   let(:order) {CustomerOrder.new(dishes)}
 
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
 
-  scenario "Print Menu" do 
+  scenario "Print Menu" do
     expect(dishes.menu.count).to eq 7
     dishes.menu
   end
@@ -27,6 +28,11 @@ feature "Take Away Challenge" do
   # I would like to be able to select some number of several available dishes
 
   scenario "Select from menu" do
-
+    order_1 = ['Hawaiian', 2]
+    order_2 = ['Vegeterian', 3]
+    order.select_dish(order_1[0], order_1[1])
+    order.select_dish(order_2[0], order_2[1])
+    expect(order.selection).to eq [order_1, order_2]
   end
+
 end
