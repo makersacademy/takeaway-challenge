@@ -11,7 +11,7 @@ describe Menu do
 
   context '#initialize' do
     it '@dishes is empty' do
-      expect(subject.dishes.length).to eq 0
+      expect(subject.dishes).to be_empty
     end
   end
 

@@ -3,7 +3,7 @@ require 'menu'
 describe 'Feature test' do
   subject { Menu.new }
 
-  context Menu do
+  context 'Menu building' do
     it 'Can have five items added and then pretty printed' do
       number_of_times = 5
       dish_names = ['Dish one', 'Dish two', 'Dish three', 'Dish four', 'Dish five']
