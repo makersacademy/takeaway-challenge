@@ -16,4 +16,13 @@ describe TakeAway do
       expect(takeaway.read_menu).to eq menu.list
     end
   end
+
+  describe "#order" do
+    it "selects dishes" do
+      dish = "southern chicken"
+      quantity = 1
+      expect(takeaway.order(dish, quantity)).to eq "#{quantity}x #{dish}(s) added to your basket"
+    end
+
+  end
 end
