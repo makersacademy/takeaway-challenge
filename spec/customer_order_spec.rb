@@ -19,7 +19,7 @@ describe CustomerOrder do
     it 'saves multiple selections' do
       order.select_dish(dish, quantity)
       order.select_dish(dish, quantity)
-      expect(order.selection).to eq [[dish, quantity], [dish, quantity]]
+      expect(order.selection).to eq [{dish: dish, quantity: quantity}, {dish: dish, quantity: quantity}]
     end
 
     it 'returns error if dish is not in menu' do
@@ -36,6 +36,15 @@ describe CustomerOrder do
       expect { order.select_dish(dish, invalid_quantity) }.to raise_error message
     end
 
+  end
+
+  describe '#bill_valid?' do
+
+    it 'calculates bill and compares with customer value' do
+      allow(dishes).to receive(:in_menu?).with(dish).and_return(true)
+      order.select_dish(dish, quantity)
+      expect(order.bill_valid?(17.98)).to be true
+    end
   end
 
 end
