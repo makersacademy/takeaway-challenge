@@ -2,6 +2,7 @@ require 'capybara/rspec'
 require 'dish'
 require 'dishlist'
 require 'dishlist_generator'
+require 'menu_handler'
 require 'simplecov'
 require 'simplecov-console'
 
