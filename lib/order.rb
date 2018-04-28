@@ -18,4 +18,7 @@ class Order
   def view_basket
     @items
   end
+
+  def checkout
+  end
 end
