@@ -2,6 +2,7 @@
 
 require './lib/dishes'
 require './lib/customer_order'
+require './lib/bill'
 
 @menu = [{dish: 'Hawaiian' , price: '8.99'},
   {dish: 'BBQ Original', price: '6.99'},
@@ -12,7 +13,7 @@ require './lib/customer_order'
   {dish: 'Ceasar Salad' , price: '5.90'}
  ]
 
-@order_1 = ['Hawaiian', 2]
+@order_1 = [{dish:'Hawaiian', quantity: 2}]
 @order_2 = ['Tortellini', 3]
 
 def print_list
@@ -25,4 +26,9 @@ def order
   p order = CustomerOrder.new(dishes)
   p order.select_dish(@order_1[0], @order_1[1])
   p order.select_dish(@order_2[0], @order_2[1])
+end
+
+def bill
+  bill = Bill.new(@menu, @order_1)
+  p bill.calculate_bill
 end

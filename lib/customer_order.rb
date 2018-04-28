@@ -2,14 +2,14 @@ class CustomerOrder
 
   attr_reader :selection
 
-  def initialize(dishes = Dishes.new, bill = Bill.new)
-    @dishes = dishes
+  def initialize(dishes = Dishes.new)
+    @dishes = dishes.menu
     @selection = []
   end
 
   def select_dish(dish, quantity)
     validate_dish(dish, quantity)
-    @selection << [dish, quantity]
+    @selection << {dish: dish, quantity: quantity}
   end
 
   def validate_dish(dish, quantity)

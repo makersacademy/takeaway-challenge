@@ -13,7 +13,7 @@ describe CustomerOrder do
 
     it 'saves selection' do
       order.select_dish(dish, quantity)
-      expect(order.selection).to eq [[dish, quantity]]
+      expect(order.selection).to eq [{dish: dish, quantity: quantity}]
     end
 
     it 'saves multiple selections' do
