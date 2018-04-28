@@ -19,5 +19,5 @@ class Menu
       puts "#{dish[:name]} - £#{dish[:price]}\n"
     end
   end
-
+  
 end

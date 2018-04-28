@@ -20,4 +20,5 @@ class Meal
     meals = @meals.map { |dish| dish[:name] }
     meals.uniq.each { |dish| puts "#{meals.count(dish)} lots of #{dish}" }
   end
+  
 end
