@@ -20,5 +20,7 @@ class Order
   end
 
   def checkout
+    #gets confirmation if price is correct from resturant
+    
   end
 end
