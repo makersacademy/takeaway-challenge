@@ -1,0 +1,3 @@
+class Messager
+
+end
