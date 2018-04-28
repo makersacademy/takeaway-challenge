@@ -28,12 +28,7 @@ end
 def select_dishes(dish, quantity = 1)
   menu = Menu.new
   take_away = TakeAway.new(menu)
-  take_away.order(dish)
-  puts "#{quantity}x #{dish}(s) added to your basket"
-  p take_away
+  p take_away.order(dish)
 end
 
-select_dishes("southern chicken")
-select_dishes("chicken curry", 2)
-select_dishes("southern chicken")
-select_dishes("chicken curry", 2)
+select_dishes("schicken")

@@ -3,7 +3,7 @@ require 'take_away'
 describe TakeAway do
 
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double :menu, :list => {} }
+  let(:menu) { double :menu, :list => {"southern chicken" => 5.90} }
 
   describe "#initialize" do
     it "has a menu list" do
@@ -18,10 +18,15 @@ describe TakeAway do
   end
 
   describe "#order" do
-    it "selects dishes" do
+    it "adds the dishes to the basket" do
       dish = "southern chicken"
-      quantity = 1
-      expect(takeaway.order(dish, quantity)).to eq "#{quantity}x #{dish}(s) added to your basket"
+      takeaway.order(dish, quanity = 1)
+      expect(takeaway.basket.length).to eq 1
+    end
+
+    it "prints the message" do
+      dish = "southern chicken"
+      expect(takeaway.order(dish, quantity = 1)).to eq "#{quantity}x #{dish}(s) added to your basket"
     end
 
   end

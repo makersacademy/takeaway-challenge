@@ -1,6 +1,6 @@
 class TakeAway
 
-  attr_reader :menu
+  attr_reader :menu, :basket
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -13,11 +13,15 @@ class TakeAway
 
   def order(dish, quantity = 1)
     @menu.list.each_key do |item|
-      if item == dish
-        @basket[dish] += quantity
-      end
+        @basket[dish] += quantity if item == dish
     end
-  "#{quantity}x #{dish}(s) added to your basket"
+    message(dish, quantity = 1)
   end
 
+  private
+  def message(dish, quantity = 1)
+    if @menu.list.include?(dish)
+      "#{quantity}x #{dish}(s) added to your basket"
+    end
+  end
 end
