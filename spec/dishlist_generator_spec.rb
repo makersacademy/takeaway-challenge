@@ -1,4 +1,4 @@
-fdescribe Dishlist_generator do
+describe Dishlist_generator do
 
   let(:menu_handler) { instance_double 'Menu_handler'}
   let(:dish) { instance_double 'Dish' }
@@ -14,16 +14,15 @@ fdescribe Dishlist_generator do
   end
 
   describe '#create_list' do
-    before {subject.create_list("arg")}
+    let(:dishes) { subject.create_list("arg") }
 
     it 'creates an array of dish objects' do
-      expect(subject.dishes).to contain_exactly(dish, dish)
+      expect(dishes).to contain_exactly(dish, dish)
     end
 
     it 'creates an array of dish objects' do
-      expect(subject.dishes.count).to eq 2
+      expect(dishes.count).to eq 2
     end
   end
-
 
 end

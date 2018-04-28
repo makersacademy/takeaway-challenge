@@ -1,6 +1,6 @@
 describe Dish do
 
-  let(:set_dish) { Dish.new(name: "Margherita", description: "Oregano, mozzarella and tomato", price: 7.50) }
+  let(:set_dish) { Dish.new(item: "Margherita", description: "Oregano, mozzarella and tomato", price: 7.50) }
 
   describe '#initilize' do
 
