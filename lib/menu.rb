@@ -2,9 +2,9 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu = [{ name: 'Spring rolls', price: 2 },
+    @menu = [{ name: 'Spring Rolls', price: 2 },
     { name: 'Popadoms', price: 2 },
-    { name: 'Spare ribs', price: 3.5 },
+    { name: 'Spare Ribs', price: 3.5 },
     { name: 'Spicy Chicken Wings', price: 2.5 },
     { name: 'Wun Tun Soup', price: 2.5 },
     { name: 'Cantonese Roast Duck', price: 4.5 },

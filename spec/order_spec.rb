@@ -1,7 +1,8 @@
 require 'order'
 
 describe Order do
-  let(:meal) { double :meal, add_dish: nil, basket: [{ name: selection, price: 2 }], sum_of_basket: 4 }
+  let(:meal) { double :meal, add_dish: nil, basket: [{ name: selection, price: 2 }], sum_of_basket: 4, menu: menu }
+  let(:menu) { double :menu, list: nil }
   let(:selection) { double :selection }
   subject { Order.new(meal) }
 

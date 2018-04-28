@@ -1,7 +1,8 @@
 class Order
 
-  def initialize(meal)
+  def initialize(meal = Meal.new)
     @meal = meal
+    menu
   end
 
   def choose(selection, quantity)
@@ -14,6 +15,12 @@ class Order
 
   def current_order
     @meal.basket
+  end
+
+  private
+
+  def menu
+    @meal.menu.list
   end
 
 end

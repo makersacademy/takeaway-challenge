@@ -1,7 +1,6 @@
 require 'menu'
 
 describe Menu do
-  before { allow(subject).to receive(:list) { "Dish_name = £Dish_price\n" } }
 
   describe '#menu', :menu do
     it 'Returns an array 10 dishes with prices' do
@@ -10,8 +9,12 @@ describe Menu do
   end
 
   describe '#list', :list do
+    it 'responds to the method list' do
+      expect(subject).to respond_to(:list)
+    end
+
     it 'Returns a string of dishes with prices' do
-      expect(subject.list).to eq("Dish_name = £Dish_price\n")
+      expect { subject.list }.to output("Spring Rolls - £2\nPopadoms - £2\nSpare Ribs - £3.5\nSpicy Chicken Wings - £2.5\nWun Tun Soup - £2.5\nCantonese Roast Duck - £4.5\nKung Po Chicken - £4\nShredded Beef with Chilli - £5\nSzechuan Beef - £5\nCantonese Roast Pork - £5\n").to_stdout
     end
   end
 end

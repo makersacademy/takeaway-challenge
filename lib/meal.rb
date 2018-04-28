@@ -1,7 +1,7 @@
 class Meal
   attr_reader :meals, :menu
 
-  def initialize(menu)
+  def initialize(menu = Menu.new)
     @meals = []
     @menu = menu
   end
