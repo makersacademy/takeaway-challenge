@@ -1,7 +1,7 @@
 describe Menu_handler do
+  let(:menu_handler) { described_class.new('/Users/georgesykes/Projects/MakersAcademy/WeekendChallenges/takeaway-challenge/test_resources')}
 
   describe '#initialize' do
-    let(:menu_handler) { described_class.new('/Users/georgesykes/Projects/MakersAcademy/WeekendChallenges/takeaway-challenge/test_resources')}
 
     it 'defaults the root' do
       expect(subject.instance_variable_get(:@root)).to eq described_class::ROOT
@@ -22,9 +22,10 @@ describe Menu_handler do
   end
 
   describe '#get_summaries' do
-    let(:summaries) { subject.get_summaries }
+    let(:summaries) { menu_handler.get_summaries }
 
     it 'returns an array of summaries' do
+      p summaries
       expect(summaries).to be_an_instance_of(Array)
     end
 

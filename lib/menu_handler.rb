@@ -15,8 +15,9 @@ class Menu_handler
   def get_summaries
     summaries = []
     @files.each do |file_path|
-      summaries << read_summaries(file_path)
+      summaries << read_summary(file_path) if !read_summary(file_path).nil?
     end
+    summaries
   end
 
   def get_items(category)
@@ -32,8 +33,11 @@ class Menu_handler
     csv_files
   end
 
-  def read_summaries(filepath)
-
+  def read_summary(filepath)
+    CSV.open(filepath) do |csv|
+      flag, category, summary = csv.first
+      return { category: category, summary: summary } if flag == "Description"
+    end
   end
 
 end
