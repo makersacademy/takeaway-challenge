@@ -2,13 +2,12 @@
 require './lib/menu'
 require './lib/take_away'
 
-
 def set_up_the_menu_list
   menu = Menu.new
   p menu.list
 end
 
-set_up_the_menu_list
+#set_up_the_menu_list
 
 def has_the_list_of_dishes
   menu = Menu.new
@@ -16,4 +15,12 @@ def has_the_list_of_dishes
   p take_away
 end
 
-has_the_list_of_dishes
+#has_the_list_of_dishes
+
+def read_list_of_dishes
+  menu = Menu.new
+  take_away = TakeAway.new(menu)
+  p take_away.read_menu
+end
+
+read_list_of_dishes
