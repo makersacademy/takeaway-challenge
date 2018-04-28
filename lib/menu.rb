@@ -1,9 +1,10 @@
 class Menu
 
-  attr_reader :items
+  attr_reader :itezs
 
   def display
-    @items.each { |item, price| puts "#{item} : £#{price}" }
+    n = 0
+    @items.each { |item, price| puts "#{n += 1}.#{item} : £#{price}" }
   end
 
   private
