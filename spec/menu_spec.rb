@@ -40,7 +40,7 @@ describe Menu do
   context '#print_dishes' do
     it "Prints the dishes nicely" do
       add_dish
-      expect(subject.print_dishes).to eq "0. #{dish_name_1} - £#{dish_price_1}"
+      expect(subject.print_dishes).to eq "0. #{dish_name_1} - £#{dish_price_1} \n"
     end
   end
 end

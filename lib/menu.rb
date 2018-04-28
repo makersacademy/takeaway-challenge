@@ -19,7 +19,7 @@ class Menu
 
   def print_dishes
     @dishes.map.with_index { |dish, index|
-      "#{index}. #{dish[0]} - £#{dish[1]}"
+      "#{index}. #{dish[0]} - £#{dish[1]} \n"
     }.join()
   end
 
