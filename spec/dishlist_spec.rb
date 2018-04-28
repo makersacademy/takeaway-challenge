@@ -1,15 +1,17 @@
 describe Dishlist do
 
   let(:dishlist_generator) { instance_double 'Dishlist_generator' }
-  subject(:dishlist) { described_class.new(restaurant: 'Carluccios', dishlist_generator: dishlist_generator) }
-  before { allow(dishlist_generator).to receive(:create_list).with(anything).and_return([]) }
+  let(:test_value) { ["test"] }
+  subject(:dishlist) { described_class.new(category: 'pizza', dishlist_generator: dishlist_generator) }
+  before { allow(dishlist_generator).to receive(:create_list).with(anything).and_return(test_value) }
 
-  describe '#iinitialize' do
+  describe '#dishes' do
 
-    it 'defaults to an empty list' do
-      expect(subject.dishes).to be_empty
+    it 'returns a duplicate of the test value' do
+      expect(subject.dishes).not_to be test_value
+      expect(subject.dishes).to eq test_value
     end
-    
+
   end
 
 end
