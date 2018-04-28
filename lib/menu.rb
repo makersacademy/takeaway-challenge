@@ -1,12 +1,17 @@
 class Menu
-  attr_reader :item, :item_list
+  attr_reader :item_list
 
-  def initialize(item: nil)
-    @item = item
+  def initialize
     @item_list = []
   end
 
-  def add(item)
-  
+  def add_item(item)
+    @item_list << item
+  end
+
+  def display
+    @item_list.each do |item|
+      puts "#{item[:name]} - £#{item[:price]}"
+    end
   end
 end

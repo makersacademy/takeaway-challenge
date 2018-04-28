@@ -12,4 +12,12 @@ describe Dish do
       expect(dish.price).to eq 25
     end
   end
+
+  describe '#set_details' do
+    let(:item) { { :name => "Steak", :price => 25 } }
+    it 'shows full details of the dish' do
+      dish.set_details
+      expect(dish.set_details).to eq item
+    end
+  end
 end
