@@ -1,19 +1,13 @@
 require 'spec_helper'
 
-feature 'list menu dishes' do
-  scenario 'menu has no dishes' do
-    menu = Menu.new
+feature 'List menu dishes' do
+  scenario 'menu has dishes' do
+    pasta = Dish.new('Pasta', 5)
+    bolognese = Dish.new('Bolognese', 5)
+    salad = Dish.new('Salad', 2)
+    menu = Menu.new(dishes: [pasta, bolognese, salad])
     menu.list
-    expect { menu.list }.to output("The menu is empty\n").to_stdout
   end
-
-  # scenario 'menu has dishes' do
-  #   pasta = Dish.new('Pasta', 5)
-  #   bolognese = Dish.new('Bolognese', 5)
-  #   salad = Dish.new('Salad', 2)
-  #   menu = Menu.new(dishes: [pasta, bolognese, salad])
-  #   menu.list
-  # end
 end
 
 =begin
