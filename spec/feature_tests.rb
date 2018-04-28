@@ -16,6 +16,11 @@ def new_menu
   menu.display
 end
 
-p new_menu
+def new_basket
+  new_menu
+  basket1 = Basket.new
+end
+
+p new_basket
 
 # irb -r './spec/feature_tests.rb'
