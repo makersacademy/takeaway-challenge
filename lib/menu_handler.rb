@@ -47,7 +47,13 @@ class Menu_handler
   end
 
   def load_menu_items(filepath)
-    [{item: "item", description: "description", price: "price"}]
+    menu_items = []
+    CSV.foreach(filepath) do |line|
+      title, description, price = line
+      next if title == "Description"
+      menu_items << { item: title, description: description, price: price }
+    end
+    menu_items
   end
 
 end
