@@ -2,6 +2,7 @@ require 'menu'
 
 describe Menu do
   subject { Menu.new('mock') }
+  let(:dish_id_1) { 1 }
   let(:dish_name_1) { 'dish_1' }
   let(:dish_price_1) { 4.5 }
   let(:add_dish) { subject.add_dish(dish_name_1, dish_price_1) }
@@ -23,7 +24,7 @@ describe Menu do
   end
 
   context '#dishes' do
-    let(:one_item_array_return) { [[dish_name_1, dish_price_1]] }
+    let(:one_item_array_return) { [[dish_id_1, dish_name_1, dish_price_1]] }
 
     it 'Returns an copy of @dishes' do
       add_dish
@@ -40,7 +41,7 @@ describe Menu do
   context '#print_dishes' do
     it "Prints the dishes nicely" do
       add_dish
-      expect(subject.print_dishes).to eq "0. #{dish_name_1} - £#{dish_price_1} \n"
+      expect(subject.print_dishes).to eq "#{dish_id_1}. #{dish_name_1} - £#{dish_price_1} \n"
     end
   end
 end
