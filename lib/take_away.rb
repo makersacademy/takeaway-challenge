@@ -26,6 +26,15 @@ class TakeAway
     summary.join(", ")
   end
 
+  def total
+    total = []
+    @basket.each do |item, amount|
+      total << amount * @menu.list[item]
+    end
+    "Total: £#{(total.sum).round(2)}"
+  end
+
+
   private
   def message(dish, quantity)
     if @menu.list.include?(dish)

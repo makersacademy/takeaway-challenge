@@ -52,4 +52,14 @@ describe TakeAway do
       expect(takeaway.basket_summary).to eq ("jerk chicken x1 = £5.59, mamas meatballs x2 = £10.78")
     end
   end
+
+  describe "#total" do
+    let(:menu) {double :menu, list: {"jerk chicken" => 5.59, "mamas meatballs" => 5.39} }
+    it "shows total price for the order" do
+      takeaway.order("jerk chicken", 1)
+      takeaway.order("mamas meatballs", 2)
+      expect(takeaway.total).to eq "Total: £16.37"
+    end
+  end
+
 end
