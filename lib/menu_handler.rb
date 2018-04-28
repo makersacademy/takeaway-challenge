@@ -3,24 +3,24 @@ require 'find'
 
 class Menu_handler
 
-  attr_reader :files
+  attr_reader :file_summaries
 
   ROOT = '/Users/georgesykes/Projects/MakersAcademy/WeekendChallenges/takeaway-challenge/resources/menus/'
 
   def initialize(root = ROOT)
     @root = root
-    @files = get_files
+    @file_summaries = []
   end
 
   def get_summaries
-    summaries = []
-    @files.each do |file_path|
-      summaries << read_summary(file_path) if !read_summary(file_path).nil?
+    get_files.each do |file_path|
+      load_summaries(file_path)
     end
-    summaries
   end
 
   def get_items(category)
+
+
   end
 
   private
@@ -33,10 +33,15 @@ class Menu_handler
     csv_files
   end
 
-  def read_summary(filepath)
+  def load_summaries(filepath)
     CSV.open(filepath) do |csv|
       flag, category, summary = csv.first
-      return { category: category, summary: summary } if flag == "Description"
+      if flag == "Description"
+      @file_summaries << { path: filepath,
+                           summary: summary,
+                           category: category
+                         }
+      end
     end
   end
 
