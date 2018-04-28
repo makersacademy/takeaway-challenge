@@ -4,5 +4,5 @@ require './lib/dishes'
 
 def print_list
   dishes = Dishes.new
-  p dishes.list
+  dishes.print
 end

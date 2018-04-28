@@ -1,16 +1,15 @@
 class Dishes
 
-attr_reader :list
+  attr_accessor :menu
 
-def initialize(list = list)
-  @list = [{dish: 'Hawaiian' , price: '8.99'},
-    {dish: 'BBQ Original', price: '6.99'},
-    {dish: 'Vegeterian', price: '7.99'},
-    {dish: 'Four Seasons', price: '5.99'},
-    {dish: 'Seafood' , price: '8.99'},
-    {dish: 'Margerita' , price: '4.99'},
-    {dish: 'Ceasar Salad' , price: '5.90'}
-   ]
- end
+  def initialize(menu = @menu)
+    @menu = menu
+  end
+
+  def print_menu
+   menu.each_with_index do |dish, index|
+     puts "#{index + 1}. #{dish[:dish]}: £#{dish[:price]}"
+   end
+  end
 
 end
