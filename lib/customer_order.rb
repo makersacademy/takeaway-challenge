@@ -14,5 +14,6 @@ class CustomerOrder
 
   def validate_dish(dish, quantity)
     raise "Error: Dish is not in menu!" unless @dishes.in_menu?(dish)
+    raise "Error: Invalid quantity!" unless quantity.is_a? Integer
   end
 end

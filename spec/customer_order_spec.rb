@@ -29,6 +29,13 @@ describe CustomerOrder do
       expect { order.select_dish(invalid_dish, quantity) }.to raise_error message
     end
 
+    it 'returns error if quantity is not valid' do
+      invalid_quantity = 2.5
+      message = "Error: Invalid quantity!"
+      allow(dishes).to receive(:in_menu?).with(dish).and_return(true)
+      expect { order.select_dish(dish, invalid_quantity) }.to raise_error message
+    end
+
   end
 
 end
