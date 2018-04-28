@@ -5,6 +5,7 @@ class TakeAway
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = Hash.new(0)
+    @total = 0.0
   end
 
   def read_menu
@@ -27,11 +28,15 @@ class TakeAway
   end
 
   def total
-    total = []
     @basket.each do |item, amount|
-      total << amount * @menu.list[item]
+      @total += (amount * @menu.list[item])
     end
-    "Total: £#{(total.sum).round(2)}"
+    "Total: £#{@total.round(2)}"
+  end
+
+  def checkout(price)
+    fail "Check your total as it is incorrect" unless price == @total
+    "Thank you! Your order was placed and will be delivered before #{(Time.new + 3600).strftime("%H:%M")}"
   end
 
 
@@ -41,6 +46,5 @@ class TakeAway
       "#{quantity}x #{dish}(s) added to your basket"
     end
   end
-
 
 end

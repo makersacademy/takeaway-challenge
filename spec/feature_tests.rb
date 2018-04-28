@@ -41,3 +41,12 @@ def basket_summary
 end
 
 basket_summary
+
+def complete_order(price)
+  menu = Menu.new
+  take_away = TakeAway.new(menu)
+  take_away.order("jerk chicken")
+  take_away.order("mamas meatballs")
+end
+
+complete_order(10.98)

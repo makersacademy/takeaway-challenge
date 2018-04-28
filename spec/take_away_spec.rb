@@ -62,4 +62,22 @@ describe TakeAway do
     end
   end
 
+  describe "#checkout" do
+  let(:menu) {double :menu, list: {"jerk chicken" => 5.59, "mamas meatballs" => 5.39} }
+    it "returns message that order is complete" do
+      takeaway.order("jerk chicken", 1)
+      takeaway.order("mamas meatballs", 1)
+      time = (Time.new + 3600).strftime("%H:%M")
+      takeaway.basket_summary
+      takeaway.total
+      expect(takeaway.checkout(10.98)).to eq "Thank you! Your order was placed and will be delivered before #{time}"
+    end
+
+    it "returns message that order cannot be complete" do
+      takeaway.order("jerk chicken", 1)
+      takeaway.order("mamas meatballs", 1)
+      expect { takeaway.checkout(16.89) }.to raise_error "Check your total as it is incorrect"
+    end
+
+  end
 end
