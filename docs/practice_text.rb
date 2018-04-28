@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require 'dotenv/load'
 
 account_sid = "ACf57fe993220533543d389c7c17d3398c"
 auth_token = "8ad60fc96d300a9a9214f353d1404aeb"
