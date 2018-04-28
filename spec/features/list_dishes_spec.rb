@@ -4,6 +4,7 @@ feature 'list menu dishes' do
   scenario 'menu has no dishes' do
     menu = Menu.new
     menu.list
+    expect { menu.list }.to output("The menu is empty\n").to_stdout
   end
 
   # scenario 'menu has dishes' do
