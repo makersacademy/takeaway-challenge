@@ -13,9 +13,14 @@ class Menu_handler
   end
 
   def get_summaries
-
+    summaries = []
+    @files.each do |file_path|
+      summaries << read_summaries(file_path)
+    end
   end
 
+  def get_items(category)
+  end
 
   private
 
@@ -25,6 +30,10 @@ class Menu_handler
       csv_files << path if path =~ /.*\.csv$/
     end
     csv_files
+  end
+
+  def read_summaries(filepath)
+
   end
 
 end
