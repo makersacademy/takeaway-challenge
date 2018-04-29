@@ -35,8 +35,9 @@ describe Order do
   end
 
   describe '#checkout(time)' do
+    let(:fake_messager) { double :fake_messager, send_text: "Thank you! Your order was placed and will be delivered before 21:30" }
     it 'sends a text confirming time' do
-      expect(subject.checkout).to eq("Thank you! Your order was placed and will be delivered before 21:30")
+      allow(subject.checkout).to receive(fake_messager.send_text).and_return("Thank you! Your order was placed and will be delivered before 21:30")
     end
   end
 

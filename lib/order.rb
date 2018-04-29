@@ -1,11 +1,13 @@
 require_relative 'menu'
+require_relative 'messager'
 class Order
   attr_reader :items, :m
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, messager = Messager.new)
     @m = menu
     @items = Hash.new(0)
     @total = 0
+    @messager = messager
   end
 
   def show_menu
@@ -26,6 +28,6 @@ class Order
   end
 
   def checkout
-     "Thank you! Your order was placed and will be delivered before 21:30"
+    @messager.send_text
   end
 end

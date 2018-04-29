@@ -17,7 +17,4 @@ class Menu
     @menu.has_key?(dish)
   end
 
-  # def price(dish)
-  #   @menu[dish] = @price
-  # end
 end
