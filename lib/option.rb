@@ -22,4 +22,10 @@ class Option
     amount.times { new_meals.pop }
     @meals = @meals.concat new_meals
   end
+
+  def basket
+    meals = @meals.map { |dish| dish[:item] }
+    meals.uniq.each { |dish| puts "x#{meals.count(dish)} of: #{dish}" }
+    meals
+  end
 end

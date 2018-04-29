@@ -31,4 +31,11 @@ describe Option do
       expect(subject.total_options).to eq(4)
     end
   end
+
+  describe '#basket', :basket do
+    it 'Returns a pretty string of the current meals' do
+      subject.add_option(selection, 4)
+      expect { subject.basket }.to output("x4 of: #{selection}\n").to_stdout
+    end
+  end
 end
