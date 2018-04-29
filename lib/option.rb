@@ -6,9 +6,13 @@ class Option
     @dishes = dishes
   end
 
-  def add_option(selection)
-    @dishes.menu.each do |m|
-      @dishes << m if m[:name] == selection
+  def add_option(selection, amount)
+    @dishes.dishes.each do |m|
+      amount.times {@dishes << m if m[:item] == selection}
     end
+  end
+
+  def total_options
+    @dishes.map { |m| m[:item_price] }.inject(:+)
   end
  end
