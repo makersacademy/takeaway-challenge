@@ -1,11 +1,16 @@
 require 'menu'
 
 describe Menu do
-  let(:dish) {double :dish, name: "1", price: 2, quantity: 3}
+  let(:dish) {double :dish, name: "Chicken Burger", price: 2.00, quantity: 3}
   let(:dish_class) {double :dish_class, new: dish}
   subject {Menu.new(dish_class)}
+
   it 'has a view_menu method' do
     expect(subject).to respond_to(:view_menu)
+  end
+
+  it 'view menu returns nil' do
+    expect(subject.view_menu).to eq nil
   end
   it 'loads a csv file and saves it to menu csv' do
     expect(subject.menu_csv).to be_an_instance_of(Array)

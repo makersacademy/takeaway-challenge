@@ -19,6 +19,8 @@ class Menu
     @menu_csv.each do |row|
       @dishes << @dish_class.new(row[0],row[1],row[2])
     end
+
+  
   end
 
 
