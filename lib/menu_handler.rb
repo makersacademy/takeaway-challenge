@@ -13,7 +13,7 @@ class Menu_handler
     get_summaries
   end
 
-  def get__menu_items(category)
+  def get_menu_items(category)
     path = @file_summaries.select { |file_sum| file_sum[:category] == category }.first[:path]
     load_menu_items(path)
   end

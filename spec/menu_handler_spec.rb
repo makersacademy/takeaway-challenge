@@ -27,7 +27,7 @@ describe Menu_handler do
 
 
   describe '#get_menu_items' do
-    let(:menu_items) { menu_handler.get__menu_items("fake") }
+    let(:menu_items) { menu_handler.get_menu_items("fake") }
 
     it 'returns an array of menu items' do
       expect(menu_items).to be_an_instance_of(Array)
