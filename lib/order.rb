@@ -21,8 +21,8 @@ class Order
     @meal.basket
   end
 
-  def checkout(payment_value)
-    fail "This is not the correct amount, check the current price!" if payment_value != price
+  def checkout(payment)
+    fail "Incorrect amount, check the current price!" if payment != price
     account_sid = ENV['ACC_SID']
     auth_token = ENV['AUTH_TOKEN']
 
@@ -30,8 +30,7 @@ class Order
     @client.messages.create(
       body: message_body,
       to: ENV['MY_NUM'],
-      from: ENV['TWIL_NUM']
-    )
+      from: ENV['TWIL_NUM'])
     "Checkout complete!"
   end
 
@@ -42,7 +41,8 @@ class Order
   end
 
   def message_body
-    "Thank you! Your order has been placed and will be delivered at #{delivery_time}"
+    "Thank you! Your order has been placed and will be delivered at\n
+    #{delivery_time}"
   end
 
   def delivery_time

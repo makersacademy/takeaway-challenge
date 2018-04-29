@@ -12,6 +12,13 @@ class Meal
     end
   end
 
+  def remove_dish(selection, quantity)
+    revised_meals = @meals.select { |dish| dish[:name] == selection }
+    @meals.reject! { |dish| dish[:name] == selection }
+    quantity.times { revised_meals.pop }
+    @meals = @meals.concat revised_meals
+  end
+
   def sum_of_basket
     @meals.map { |dish| dish[:price] }.inject(:+)
   end
@@ -20,5 +27,5 @@ class Meal
     meals = @meals.map { |dish| dish[:name] }
     meals.uniq.each { |dish| puts "#{meals.count(dish)} lots of #{dish}" }
   end
-  
+
 end

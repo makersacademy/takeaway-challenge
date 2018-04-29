@@ -39,7 +39,7 @@ describe Order do
 
     it 'Raises an error if payment is not equal to cost' do
       subject.choose(selection, 2)
-      expect { subject.checkout(2) }.to raise_error "This is not the correct amount, check the current price!"
+      expect { subject.checkout(2) }.to raise_error "Incorrect amount, check the current price!"
     end
   end
 end

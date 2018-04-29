@@ -30,4 +30,12 @@ describe Meal do
       expect { subject.basket }.to output("2 lots of #{selection}\n").to_stdout
     end
   end
+
+  describe '#remove_dish', :remove do
+    it 'Removes 1 dish from the meals array' do
+      subject.add_dish(selection, 8)
+      subject.remove_dish(selection, 3)
+      expect(subject.meals.length).to eq(5)
+    end
+  end
 end
