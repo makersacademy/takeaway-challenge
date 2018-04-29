@@ -28,28 +28,25 @@ describe Order do
     end
   end
 
-  describe '#view_summary' do
-    # it 'should print the basket' do
-    #   order.add_dish("Haddock", 2)
-    #   basket = { "Haddock" => 2 }
-    #   expect(order.view_summary).to eq "Order summary: #{basket}"
-    #   end
-      it 'should print the cost' do
-        order.add_dish("Haddock", 2)
-        basket = { "Haddock" => 2 }
-        expect(order.view_summary(10)).to eq "Item summary: #{basket}. Order total: £10"
-      end
-    end
-      # it 'should show the cost of each selection' do
-      #   order.add_dish("Haddock", 2)
-      #   basket = [{ "Haddock" => 2 }]
-      #   expect(order.view_summary(basket)).to eq ["2 x Haddock - £10"]
-      # end
-
   describe '#cost' do
     it 'should multiply the quantity added to the order by the menu price' do
       order.add_dish("Haddock", 2)
-      expect(order.cost).to eq 10
+      expect(order.cost).to eq "Order total: £10"
+    end
+  end
+
+  describe '#enter_payment' do
+    it 'should return the payment amount entered' do
+      expect(order.enter_payment(10)). to eq "£10"
+    end
+  end
+
+  describe "#payment_accepted?" do
+    it 'should return true if the payment amount equals the order cost' do
+      expect(order.payment_accepted?).to be true
+    end
+    it 'should raise an error if the payment amount is not correct' do
+      expect(order.payment_accepted?).to raise
     end
   end
 

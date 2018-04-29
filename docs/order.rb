@@ -27,10 +27,15 @@ class Order
     multiply = menu_hash.map { |k, v| v * basket_hash[k] if basket_hash.key? k }.compact
     total_cost = multiply.inject(:+)
     total_cost
+    "Order total: £#{total_cost}"
   end
 
-  def view_summary(total_cost)
-    "Item summary: #{basket}. Order total: £#{total_cost}"
+  def enter_payment(payment_amount)
+    "£#{payment_amount}"
+  end
+
+  def payment_accepted?
+    true
   end
 
 end
