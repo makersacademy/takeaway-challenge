@@ -24,6 +24,7 @@ def typical_order
   order = CustomerOrder.new(menu, bill, text)
   order.select_dish(@order_1[:dish], @order_1[:quantity])
   order.select_dish(@order_2[:dish], @order_2[:quantity])
+  order.total
   order.process(53.94)
 end
 

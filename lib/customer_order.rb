@@ -28,7 +28,6 @@ class CustomerOrder
 
   def validate_payment(customer_amount)
     raise "Error: Incorrect payment!" unless bill_valid?(customer_amount)
-    puts "Order successful! A text has been sent confirming your order!"
   end
 
   def validate_dish(dish, quantity)

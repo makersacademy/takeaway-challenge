@@ -12,6 +12,8 @@ class Text
       to: Config::PHONE,
       body: 'Thank you! Your order was placed and will be delivered before 18:52'
     )
+
+      puts "Order successful! A text has been sent confirming your order!"
   end
 
 end
