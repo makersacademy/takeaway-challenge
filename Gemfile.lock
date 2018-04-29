@@ -14,6 +14,7 @@ GEM
       xpath (>= 2.0, < 4.0)
     diff-lcs (1.3)
     docile (1.1.5)
+    dotenv (2.4.0)
     faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
     hirb (0.7.3)
@@ -77,6 +78,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  dotenv
   rake
   rspec
   rubocop

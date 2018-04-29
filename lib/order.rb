@@ -1,4 +1,7 @@
 require 'twilio-ruby'
+require 'dotenv/load'
+Dotenv.load('file1.env')
+
 class Order
 
   def initialize(meal = Meal.new)
@@ -19,14 +22,14 @@ class Order
   end
 
   def checkout
-    account_sid = "AC16b352672186bfee4bde2c91bb3f4324"
-    auth_token = "4f9c8d3c5589ed20f331a9a8baffa969"
+    account_sid = ENV['ACC_SID']
+    auth_token = ENV['AUTH_TOKEN']
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.messages.create(
       body: message_body,
-      to: "+447713853129",
-      from: "+441628200825"
+      to: ENV['MY_NUM'],
+      from: ENV['TWIL_NUM']
     )
     "Checkout complete!"
   end
