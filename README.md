@@ -14,21 +14,13 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
------
+----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The task for this weekend challenge was to simulate a takeaway food app using the Twilio API. This challenge was designed to reinforce principles learned in week 2 of Makers such as single-responsibility principle and mocking, as well as TDD and OOP. This code currently has 100% test coverage and raises 0 offences with rubocop.
+
+User Stories
+------------
 
 ```
 As a customer
@@ -48,32 +40,41 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Approach
+--------
+When approaching the user stories, I created a diagram of objects and messages and how I thought they would interact with each other. I decided my approach would be to create a Menu class, a Meal class, and an Order class. The Menu class would be responsible for holding the menu data, and would be able to pretty print the menu.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+The Meal class would be responsible for keeping a record of the all the currently selected dishes, adding and removing them when necessary, and would be able to calculate the price based on the currently selected dishes.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+The Order class would be be able to add dishes, remove dishes, check the order, check the price, and complete the order, sending a text. The aim was to have the Order class be able to complete this functionality simply by calling methods on the Meal, rather than having any of its own specific algorithms.
 
+I believe I managed to achieve what I set out to create, however if I were to improve upon my code, I would make a separate class for the price, and I would test more edge cases.
 
-In code review we'll be hoping to see:
+In regards to the twilio implementation, due to the use of sensitive information, I used the gotenv gem to create ENV variables for this information that were saved to a .env file which I added to the .gitignore file. 
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Instructions
+------------
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+- Create a new instance of the Order class with no arguments to have a default meal and menu upon instantiation.
 
-Notes on Test Coverage
-------------------
+my_order = Order.new
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+- Add a dish of choice, with a quantity by using the choose method.
+
+my_order.choose(selection, quantity)
+
+- Likewise, remove a previous dish with a quantity using the remove method.
+
+my_order.remove(selection, quantity)
+
+- Check the current order as a pretty string by using the current_order method.
+
+my_order.current_order
+
+- Check the current price of your order using the price method.
+
+my_order.price
+
+- To order the meal, run the checkout method with the amount to pay. This will send you a text confirming your order and giving the time of delivery.
+
+my_order.checkout(payment)
