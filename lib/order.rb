@@ -2,17 +2,11 @@ require_relative 'menu.rb'
 
 class Order
 
-  attr_reader :start_program, :menu_class, :menu, :input
+  attr_reader :start_program, :menu_class, :menu
 
   def initialize(menu_class = Menu)
     @menu_class = menu_class
     @start_program = ask_for_order
-
-
-  end
-
-  def input=(input = gets.chomp)
-    @input = input
   end
 
   def ask_for_order
@@ -27,25 +21,19 @@ class Order
   end
 
   def make_order(dish_name, quantity)
-    @menu.temp_dishes.each do |dish|
-      if dish.name == dish_name
-        @menu.quantity_checker(quantity, dish)
-      elsif dish == @menu.temp_dishes[-1]
-        puts "There is no dish with that name"
-      end
-    end
+    @menu.dish_check(dish_name, quantity)
   end
 
   def confirm(amount)
     total = 0.00
     @menu.current_order.each do |dish|
-      puts "#{dish.quantity}. #{dish.name} Price: #{dish.price}"
+      puts "#{dish.quantity}. #{dish.name} Price: £#{dish.price}"
       total += (dish.quantity * dish.price)
     end
     if total == amount.to_f
       puts "confirm order"
     else
-      puts "wrong amount"
+      raise "not the right money"
     end
   end
 

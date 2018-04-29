@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  let(:dish) {double :dish, name: "Chicken Burger", price: 2.00, quantity: 3}
+  let(:dish) {double :dish, name: "Chicken Burger", price: 2.00, quantity: 3, quantity_change: 1 }
   let(:dish_class) {double :dish_class, new: dish}
   subject {Menu.new(dish_class)}
 
@@ -34,6 +34,23 @@ describe Menu do
       subject.menu_load
       expect(subject.dishes.length).to eq 4
     end
+  end
 
+  describe '#dish_check' do
+    it 'should return text when the dish does not exist' do
+      subject.dish_check("Pizza", 4)
+      expect(subject.current_order).to eq []
+    end
+    it 'should return length of 1 on current order' do
+      subject.dish_check("Chicken Burger", 1)
+      expect(subject.current_order.length).to eq 0
+    end
+  end
+
+  describe '#add_to_order' do
+    it 'does something' do
+      allow(dish).to receive(:dish_check)
+      expect(subject).to respond_to(:add_to_order).with(2).arguments
+    end
   end
 end

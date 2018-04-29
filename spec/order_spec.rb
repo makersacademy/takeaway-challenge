@@ -17,11 +17,23 @@ describe Order do
     end
   end
 
-  describe '#ask_for_order' do
+  describe '#make_order' do
+    it 'responds to the method' do
+      allow(menu).to receive(:dish_check)
+      expect(subject).to respond_to(:make_order).with(2).arguments
+    end
 
   end
 
-  describe '#user_input' do
+  describe '#view_menu' do
+    it 'runs the method in menu' do
+      expect(subject.view_menu).to eq "shows menu"
+    end
+  end
 
+  describe '#make_order' do
+    it 'runs the method in menu' do
+      expect(subject.view_menu).to eq "shows menu"
+    end
   end
 end
