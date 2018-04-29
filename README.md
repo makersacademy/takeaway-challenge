@@ -17,7 +17,7 @@ Takeaway Challenge
 About a program
 ---------------
 
-This program simulates TakeAway software behaviour with following user stories
+This program simulates TakeAway software behaviour with the following user stories
 ```
 As a customer
 So that I can check if I want to order something
@@ -39,19 +39,18 @@ My approach
 -----------
 
 I have created two classes:
-* Menu class - initializes menu list
+* Menu class - initialises menu list
 * TakeAway class - shows the menu list, takes orders and saves them in basket,
   allows to view the basket and returns total price for the order. It also lets
   to complete the order and sends sms confirmation when order is completed.
 
 For sms confirmation I used Twilio API and for tests Rspec (100% test coverage).
 
-If I had more time I would use VCR for network stubbing, to test my program interaction with Twilio.
+If I had more time I would use VCR for network stubbing to test my program interaction with Twilio.
 Plus I would work on passing 100% Rubocop, as my code has 2 offences 'Style/NumericLiterals: Use underscores ( _ ) as decimal mark and separate every 3 digits' as I used phone numbers inside the TakeAway class. If I used VCR or I saved phone numbers for Twilio in ENV vars that would solve the offences. I will look into it later.
 
 User instruction
 ----------------
-
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Start the program in IRB, require file and create TakeAway object
@@ -65,7 +64,7 @@ saka"=>5.29}>, @basket={}, @total=0.0>
 ```
 * Use 'read_menu' method to see the list of available dishes with prices. Use 'order' method to place an order and you will see the confirmation that item is added to your basket. You can pass the quantity with the name of the dish. If you do not specify quantity one item will be added. There is also 'basket_summary' method and 'total' to check what you ordered and how much it will cost you. To finalise the order, use 'checkout' method and pass the number which equals total price confirmed to you when you run 'total' method. Program will raise an error message if number passed is incorrect or send text message with the confirmation of the order otherwise. If you want to receive text message to your phone replace phone number in file take_away.rb line 54.
 
-example
+#Example
 ```
 2.5.0 :003 > takeaway.read_menu
  => {"southern chicken"=>5.59, "chicken curry"=>5.49, "jerk chicken"=>5.59, "mamas meatballs"=>5.39, "kofta pattie
