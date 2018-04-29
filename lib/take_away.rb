@@ -1,4 +1,5 @@
-require "twilio-ruby"
+require_relative '../lib/menu'
+require 'twilio-ruby'
 
 class TakeAway
 

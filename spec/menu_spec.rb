@@ -5,7 +5,7 @@ describe Menu do
 
   describe "#initialize" do
     it "has got the full list of dishes on initialize" do
-      expect(menu.list).to eq ({
+      expect(menu.list).to eq({
         "southern chicken" => 5.59,
         "chicken curry" => 5.49,
         "jerk chicken" => 5.59,

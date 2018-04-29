@@ -66,7 +66,6 @@ describe TakeAway do
       allow(Twilio::REST::Client).to receive(:new).and_return(client)
       takeaway.order("jerk chicken", 1)
       takeaway.order("mamas meatballs", 1)
-      takeaway.basket_summary
       takeaway.total
     end
 
