@@ -21,12 +21,19 @@ class Menu
     @menu_csv.each do |row|
       @dishes << @dish_class.new(row[0],row[1],row[2])
     end
-    
     @dishes.each do |instance|
       @temp_dishes << instance.dup
     end
+  end
 
-
+  def quantity_checker(input, dish)
+    if input.to_i > dish.quantity
+      puts "Sorry there is not enough in stock"
+    else
+      dish.quantity -= input.to_i
+      @current_order << dish.dup
+      @current_order[-1].quantity = input.to_i
+    end
   end
 
 

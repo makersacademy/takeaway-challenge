@@ -18,35 +18,35 @@ class Order
     input = gets.chomp
     choice(input)
   end
-end
 
-def choice(input)
-  if input == 'view menu'
-    @menu.view_menu
-  elsif input == 'make order'
+  def choice(input)
     while input != "finish"
-      puts "Please enter the name of the item you would like to order"
-      puts "when you are done please type 'finish'"
-      input = gets.chomp
-      make_a_order(input)
-    end
-  end
-end
-
-def make_a_order(input)
-  @menu.temp_dishes.each do |dish|
-    if dish.name == input
-      puts "How many would you like?"
-      input = gets.chomp
-      if input.to_i > dish.quantity
-        puts "Sorry there is not enough in stock"
-      else
-        dish.quantity = dish.quantity - input.to_i
-        @menu.current_order << dish.dup
-        @menu.current_order[-1].quantity = input.to_i
+      if input == 'view menu'
+        @menu.view_menu
+        puts "'maker order' or type 'finish'"
+        input = gets.chomp
+      elsif input == 'make order'
+        while input != "finish"
+          puts "Please enter the name of the item you would like to order"
+          puts "when you are done please type 'finish'"
+          input = gets.chomp
+          make_a_order(input)
+        end
+        break
       end
-    elsif dish == @menu.temp_dishes[-1]
-      puts "There is no dish with that name"
     end
   end
+
+  def make_a_order(input)
+    @menu.temp_dishes.each do |dish|
+      if dish.name == input
+        puts "How many would you like?"
+        input = gets.chomp
+        @menu.quantity_checker(input, dish)
+      elsif dish == @menu.temp_dishes[-1]
+        puts "There is no dish with that name"
+      end
+    end
+  end
+
 end
