@@ -59,6 +59,20 @@ describe CustomerOrder do
       end
     end
 
+    context 'order is not processed correctly' do
+      it 'raise error to customer' do
+        message = 'Thank you! Your order was placed and will be delivered before 18:52'
+        allow(dishes).to receive(:in_menu?).with(dish).and_return(true)
+        customer_amount = 15.00
+        allow(bill).to receive(:calculate_bill)
+        allow(bill).to receive(:total).and_return(17.98)
+        allow(bill).to receive(:is_valid?).with(customer_amount)
+        order.select_dish(dish, quantity)
+        order.select_dish(dish, quantity)
+        expect{ order.process(customer_amount) }.to raise_error "Error: Incorrect payment!"
+      end
+    end
+
   end
 
   describe '#bill_valid?' do
