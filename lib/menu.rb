@@ -7,18 +7,14 @@ class Menu
 
   def list
     raise 'The menu is empty' if no_dishes?
-    print_dishes
+    @dishes.each do |dish|
+      puts "#{dish.name}, #{dish.price}"
+    end
   end
 
   private
 
   def no_dishes?
     @dishes.empty?
-  end
-
-  def print_dishes
-    @dishes.each do |dish|
-      puts "#{dish.name}, #{dish.price}"
-    end
   end
 end

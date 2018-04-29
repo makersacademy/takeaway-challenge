@@ -5,8 +5,8 @@ class Message
 
   def initialize(message)
     @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
-    @from = '+447533006429'
-    @to = '+447533105683'
+    @from = ENV['TWILIO_PHONE']
+    @to = ENV['TWILIO_DESTINATION_PHONE']
     @message = message
   end
 
