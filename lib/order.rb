@@ -1,5 +1,3 @@
-require_relative 'dish'
-
 class Order
   def initialize
     @basket = {}
