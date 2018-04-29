@@ -13,11 +13,20 @@ class Takeaway
   end
 
   def order(order)
-    @order_class.new(order)
+    current_menu = menu
+    @customer_order = @order_class.new(order, current_menu)
+    @customer_order.process ? dispatch(@customer_order) : order_error
   end
 
-  def dispatch
+  def dispatch(customer_order)
+    order_id = customer_order.__id__
 
+  end
+
+  private
+
+  def order_error
+    raise 'Order total incorrect.'
   end
 
 end

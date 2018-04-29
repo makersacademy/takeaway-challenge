@@ -42,5 +42,4 @@ class Menu
     TAKEAWAY_MENU
   end
 
-
 end

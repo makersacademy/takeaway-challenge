@@ -11,4 +11,4 @@ message = @client.messages.create(
                               from: "+15005550006"
 )
 
-puts message.sid
+# puts message.sid
