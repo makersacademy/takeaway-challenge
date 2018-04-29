@@ -18,6 +18,12 @@ subject(:order) { described_class.new(dishes) }
     end
   end
 
+  describe '#breakdown' do
+    it 'shows total for each item' do
+      expect(order.breakdown).to eq ([{ :name=>:fish_curry, :price=>4.7, :quantity=>2, :total=>9.4 }])
+    end
+  end
+
   describe '#confirm?' do
     it 'show you default status on order confirmation' do
       expect(order.confirmed?).to eq false
