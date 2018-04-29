@@ -5,6 +5,7 @@ require_relative './order'
 
 class Orderer
 
+  attr_reader :order, :dishlist
   include Item_printer
 
   def initialize(menu_handler = Menu_handler.new, dishlist_class = Dishlist, order_class = Order)

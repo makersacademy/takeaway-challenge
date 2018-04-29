@@ -25,17 +25,19 @@ fdescribe Orderer do
     it 'generates a list of menu summaries' do
       expect(menu_handler).to receive(:file_summaries)
       expect(STDIN).to receive(:gets)
-      described_class.new(menu_handler)
+      described_class.new(menu_handler, dishlist_class, order_class)
     end
 
     specify { expect { described_class.new(menu_handler) }.to output(summary_output).to_stdout }
 
     it 'creates a dishlist' do
-
+      expect(subject.dishlist).to be dishlist
     end
 
     it 'creates an order' do
+      expect(subject.order).to be order
     end
+
 
   end
 
