@@ -13,12 +13,15 @@ class Order
   end
 
   def add(dish, quantity)
-    @selected_dishes << [dish[:name], quantity]
+    name, price, amount = dish[:name], dish[:price], quantity
+    @selected_dishes << [name, price, amount]
+    adjust_total(price, amount)
   end
 
   private
 
-  def set_total
-
+  def adjust_total(price,quantity)
+    @total += price * quantity
   end
+
 end
