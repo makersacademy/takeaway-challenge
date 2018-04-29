@@ -13,6 +13,10 @@ class Order
     @meal.add_dish(selection, quantity)
   end
 
+  def remove(selection, quantity)
+    @meal.remove_dish(selection, quantity)
+  end
+
   def price
     @meal.sum_of_basket
   end

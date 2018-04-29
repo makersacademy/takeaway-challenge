@@ -3,9 +3,10 @@ require 'twilio-ruby'
 
 describe Order do
   subject { Order.new(meal) }
-  let(:meal) { double :meal, add_dish: nil, basket: [{ name: selection, price: 2 }], sum_of_basket: 4, menu: menu }
+  let(:meal) { double :meal, add_dish: nil, remove_dish: nil, basket: basket, sum_of_basket: 4, menu: menu }
   let(:menu) { double :menu, list: nil }
   let(:selection) { double :selection }
+  let(:basket) { [{ name: selection, price: 2 }] }
 
   before { allow(Twilio::REST::Client).to receive(:new).and_return(twilio_client) }
   let(:twilio_client) { double :twilio_client, messages: messages }
@@ -40,6 +41,16 @@ describe Order do
     it 'Raises an error if payment is not equal to cost' do
       subject.choose(selection, 2)
       expect { subject.checkout(2) }.to raise_error "Incorrect amount, check the current price!"
+    end
+  end
+
+  describe '#Remove' do
+
+    let(:basket) { [{ name: selection, price: 2 }, { name: selection, price: 2 }] }
+    it 'removes a dish from the order' do
+      subject.choose(selection, 3)
+      subject.remove(selection, 1)
+      expect(subject.current_order.length).to eq(2)
     end
   end
 end
