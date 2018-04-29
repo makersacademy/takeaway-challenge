@@ -12,10 +12,9 @@ describe Order do
     let(:dish) { double :dish, name: 'Steak', price: 25 }
     let(:dish2) { double :dish, name: 'Chips', price: 8 }
     let(:dish3) { double :dish, name: 'Caesar Salad', price: 9 }
-    it 'finds the sum of of dish prices and returns result' do
+    it 'finds the sum of dish prices and returns result' do
       order.items += [dish, dish2, dish3]
       expect(subject.total).to eq(42)
     end
   end
-
 end

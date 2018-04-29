@@ -1,56 +1,41 @@
 require 'basket'
 
 describe Basket do
-  subject(:basket) { described_class.new }
-  let(:one_selection) { [{ dish: "Steak", price: 25, quantity: 1 }] }
-  let(:selections) { [{ dish: "Steak", price: 25, quantity: 1
-    }, { dish: "Chips", price: 8, quantity: 2 }] }
+  let(:dish) { double :dish, name: 'Steak', price: 25 }
+  let(:dish2) { double :dish, name: 'Chips', price: 8 }
+  let(:dish3) { double :dish, name: 'Caesar Salad', price: 9 }
+  let(:menu) { double :menu, list: [dish, dish2, dish3], display: "1.) Steak - £25\n2.) Chips - £8\n3.) Caesar Salad - £9\n" }
+  subject(:basket) { described_class.new(menu) }
 
-  describe '#initialize' do
-    it 'it is created with 0 selections in it' do
-      expect(basket.selections).to eq []
+  describe '#display_menu' do
+    let(:pretty_print) { "1.) Steak - £25\n2.) Chips - £8\n3.) Caesar Salad - £9\n" }
+    it 'prints a list of menu options and prices' do
+      expect { basket.display_menu }.to output(pretty_print).to_stdout
     end
   end
 
-  describe '#add_dish' do
-    it 'adds first selection into the basket' do
-      expect(basket.add_dish(dish: "Steak", price: 25, quantity: 1)).to eq one_selection
+  describe '#add_to_selection' do
+    it 'adds a new order' do
+      basket.add_to_selection(1)
+      expect(basket.selection.items).to include(dish)
     end
 
-    it 'can add multiple selections into the basket' do
-      basket.add_dish(dish: "Steak", price: 25, quantity: 1)
-      basket.add_dish(dish: "Chips", price: 8, quantity: 2)
-      expect(basket.selections).to eq selections
-    end
-  end
-
-  describe '#display_summary' do
-    let(:pretty_print) { "Steak x 1 = £25\nChips x 2 = £16\nCaesar Salad x 3 = £27\n" }
-    it 'pretty prints all dishes selected by customer' do
-      basket.add_dish(dish: "Steak", price: 25, quantity: 1)
-      basket.add_dish(dish: "Chips", price: 8, quantity: 2)
-      basket.add_dish(dish: "Caesar Salad", price: 9, quantity: 3)
-      expect { basket.display_summary }.to output(pretty_print).to_stdout
+    it 'accepts several selections of the same item' do
+      basket.add_to_selection(1, 2)
+      expect(basket.selection.items).to include(dish, dish)
     end
   end
 
-  describe '#display_total' do
-    let(:print_total) { "Your total is £68.\n" }
-    it 'prints total order cost' do
-      basket.add_dish(dish: "Steak", price: 25, quantity: 1)
-      basket.add_dish(dish: "Chips", price: 8, quantity: 2)
-      basket.add_dish(dish: "Caesar Salad", price: 9, quantity: 3)
-      basket.total_cost
-      expect { basket.display_total }.to output(print_total).to_stdout
+  context 'adds one of each dish to basket' do
+    before do
+      basket.add_to_selection(1)
+      basket.add_to_selection(2)
     end
-  end
 
-  describe '#total_cost' do
-    it 'calculates the total cost of the order' do
-      basket.add_dish(dish: "Steak", price: 25, quantity: 1)
-      basket.add_dish(dish: "Chips", price: 8, quantity: 2)
-      basket.add_dish(dish: "Caesar Salad", price: 9, quantity: 3)
-      expect(basket.total_cost).to eq 68
+    describe '#selection_total' do
+      it 'prints the total price of all items in the basket' do
+        expect { basket.selection_total }.to output("Your total is £33\n").to_stdout
+      end
     end
   end
 end

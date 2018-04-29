@@ -1,35 +1,25 @@
+require_relative 'menu'
+require_relative 'order'
+require_relative 'dish'
+
 class Basket
 
-  attr_reader :selection, :selections
+  attr_reader :selection, :menu
 
-  def initialize
-    @selections = []
-    @selection = {}
+  def initialize(menu = Menu.new)
+    @selection = Order.new
+    @menu = menu
   end
 
-  def add_dish(dish: '', price: 0, quantity: 0)
-    @selection[:dish] = dish
-    @selection[:price] = price
-    @selection[:quantity] = quantity
-    @selections << @selection
-    @selection = {}
-    @selections
+  def display_menu
+    puts @menu.display
   end
 
-  def display_summary
-    @selections.each do |selection|
-      puts "#{selection[:dish]} x #{selection[:quantity]} = " +
-      "£#{selection[:price] * selection[:quantity]}"
-    end
+  def add_to_selection(number, quantity = 1)
+    quantity.times { @selection.items << @menu.list[number - 1] }
   end
 
-  def display_total
-    puts "Your total is £#{@total}."
-  end
-
-  def total_cost
-    @total = @selections.map { |selection|
-      selection[:price] * selection[:quantity]
-    }.reduce :+
+  def selection_total
+    puts "Your total is £#{@selection.total}"
   end
 end
