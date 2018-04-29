@@ -1,5 +1,5 @@
 require 'bill'
-require 'dishes'
+require 'menu'
 require 'customer_order'
 require 'capybara/rspec'
 require 'simplecov'

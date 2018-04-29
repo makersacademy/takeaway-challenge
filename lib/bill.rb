@@ -1,6 +1,6 @@
 class Bill
 
-attr_reader :total, :order
+  attr_reader :total
 
   def initialize
     @total = 0
@@ -9,7 +9,7 @@ attr_reader :total, :order
   def calculate_bill(menu, order)
     order.each do |order|
       item = menu.find{|menu| menu[:dish] == order[:dish]}
-      @total += (order[:quantity] * item[:price].to_f)
+      @total += order[:quantity] * item[:price].to_f
     end
   end
 

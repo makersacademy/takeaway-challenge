@@ -1,13 +1,13 @@
-describe Dishes do
+describe Menu do
 
   mock_list = [{dish: 'Hawaiian' , price: '8.99'}]
   invalid_dish = 'Tortellini'
-  subject(:dishes) { Dishes.new(menu = mock_list) }
+  subject(:menu) { Menu.new(list = mock_list) }
 
   describe "#list" do
 
     it 'saves a list of menu items' do
-      expect(dishes.menu).to all(be_a(Hash).and include(:dish).and include(:price))
+      expect(menu.list).to all(be_a(Hash).and include(:dish).and include(:price))
     end
 
   end
@@ -15,7 +15,7 @@ describe Dishes do
   describe "#print" do
 
     it "pretty prints the menu" do
-      expect{ dishes.print_menu}.to output("1. Hawaiian: £8.99\n").to_stdout
+      expect{ menu.printed }.to output("1. Hawaiian: £8.99\n").to_stdout
     end
 
   end
@@ -23,7 +23,7 @@ describe Dishes do
   describe '#in_menu?' do
 
     it 'returns false if dish is not in menu' do
-      expect(dishes.in_menu?(invalid_dish)).to be false
+      expect(menu.available?(invalid_dish)).to be false
     end
 
   end

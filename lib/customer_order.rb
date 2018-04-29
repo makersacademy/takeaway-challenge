@@ -2,8 +2,8 @@ class CustomerOrder
 
   attr_reader :selection
 
-  def initialize(dishes = Dishes.new, bill = Bill.new, text = Text.new)
-    @dishes = dishes
+  def initialize(menu = Menu.new, bill = Bill.new, text = Text.new)
+    @menu = menu
     @selection = []
     @bill = bill
     @text = text
@@ -20,7 +20,7 @@ class CustomerOrder
   end
 
   def validate_dish(dish, quantity)
-    raise "Error: Dish is not in menu!" unless @dishes.in_menu?(dish)
+    raise "Error: Dish is not in menu!" unless @menu.available?(dish)
     raise "Error: Invalid quantity!" unless quantity.is_a? Integer
   end
 
@@ -30,7 +30,7 @@ class CustomerOrder
   end
 
   def calculate_bill
-    @bill.calculate_bill(@dishes.menu, @selection)
+    @bill.calculate_bill(@menu.list, @selection)
   end
 
 end

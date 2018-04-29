@@ -2,7 +2,7 @@ require './spec/spec_helper.rb'
 
 feature "Take Away Challenge" do
 
-  menu = [{dish: 'Hawaiian' , price: '8.99'},
+  list = [{dish: 'Hawaiian' , price: '8.99'},
     {dish: 'BBQ Original', price: '6.99'},
     {dish: 'Vegeterian', price: '7.99'},
     {dish: 'Four Seasons', price: '5.99'},
@@ -11,18 +11,17 @@ feature "Take Away Challenge" do
     {dish: 'Ceasar Salad' , price: '5.90'}
    ]
 
-   let(:dishes) {Dishes.new(menu)}
+   let(:menu) {Menu.new(list)}
    let(:text) {Text.new}
    let(:bill) {Bill.new}
-   let(:order) {CustomerOrder.new(dishes, bill, text)}
+   let(:order) {CustomerOrder.new(menu, bill, text)}
 
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
 
   scenario "Print Menu" do
-    expect(dishes.menu.count).to eq 7
-    dishes.menu
+    expect(menu.list.count).to eq 7
   end
 
   # As a customer
