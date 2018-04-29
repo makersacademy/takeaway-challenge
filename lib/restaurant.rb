@@ -1,3 +1,4 @@
-class restaurant
+class Restaurant
+
 
 end

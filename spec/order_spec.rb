@@ -2,12 +2,10 @@ require 'order'
 
 describe Order do
 
-  let(:fake_menu){ double :fake_menu, list_dishes: "the menu is empty?"}
-  # let(:add_dish){ double :add_dish, dish: dish, quantity: quantity}
-
+  let(:fake_menu) { double :fake_menu, list_dishes: "the menu is empty" }
   describe '#initialize' do
     it 'creates a empty order' do
-      expect(subject.items).to eq ({})
+      expect(subject.items).to eq({})
     end
   end
 
@@ -17,25 +15,29 @@ describe Order do
     end
   end
 
-  describe '#add_item' do
-    it 'adds menu item to the order list' do
-      subject.add_dish(:cake, 5)
-      expect(subject.items[:cake]).to eq(5)
+  describe '#add_dish' do
+    it 'adds the selected dish and quantity to the order list if dish in menu' do
+      subject.add_dish(:krabby_patty)
+      expect(subject.items).to eq({ :krabby_patty => 1})
+    end
+
+    it 'does not add a dish if that dish is not in menu' do
+      subject.add_dish(:not_on_menu)
+      expect(subject.items).to eq({})
     end
   end
 
-  describe '#view_basket' do
-    it 'print the complete order' do
-      subject.add_dish(:cake, 1)
-      expect(subject.view_basket).to eq(subject.items)
+  describe '#correct_order?' do
+    it 'checks if total given matches the sum of dishes' do
+      subject.add_dish(:krabby_patty, 2)
+      expect(subject.correct_order?(2.5)).to eq(true)
     end
   end
 
-  describe '#checkout' do
-    it 'checks if total is correct' do
-      subject.add_dish(:icecream, 2)
-      subject.add_dish(:cake, 3)
-      expect(subject.checkout).to eq(total)
+  describe '#checkout(time)' do
+    it 'sends a text confirming time' do
+      expect(subject.checkout).to eq("Thank you! Your order was placed and will be delivered before 21:30")
     end
   end
+
 end

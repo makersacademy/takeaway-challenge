@@ -1,26 +1,31 @@
-require 'menu'
+require_relative 'menu'
 class Order
-  attr_reader :items, :menu
+  attr_reader :items, :m
 
   def initialize(menu = Menu.new)
-    @menu = menu
+    @m = menu
     @items = Hash.new(0)
+    @total = 0
   end
 
   def show_menu
-    @menu.list_dishes
+    @m.list_dishes
   end
 
-  def add_dish(dish, quantity=1)
-    @items[dish] += quantity
+  def add_dish(dish, quantity = 1)
+    @items[dish] += quantity if @m.contains?(dish)
   end
 
-  def view_basket
-    @items
+  def correct_order?(price)
+    total == price
+  end
+
+  def total
+    @items.each { |dish, quantity| @total += @m.menu[dish] * quantity }
+    @total
   end
 
   def checkout
-    #gets confirmation if price is correct from resturant
-    
+     "Thank you! Your order was placed and will be delivered before 21:30"
   end
 end
