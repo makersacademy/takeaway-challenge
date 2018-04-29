@@ -14,10 +14,4 @@ describe Message, :message do
       expect(subject.message).to eq 'Test message'
     end
   end
-
-  xdescribe '#send' do
-    it 'is expected to send a message' do
-      subject.send
-    end
-  end
 end
