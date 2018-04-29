@@ -1,17 +1,19 @@
+require_relative 'dish'
+
 class Menu
-  attr_reader :item_list
+  attr_reader :list
 
   def initialize
-    @item_list = []
+    @list = []
   end
 
-  def add_item(item)
-    @item_list << item
+  def add(dish)
+    @list << dish
   end
 
   def display
-    @item_list.each do |item|
-      puts "#{item[:name]} - £#{item[:price]}"
+    @list.each_with_index do |dish, index|
+      puts "#{index + 1}.) #{dish.name} - £#{dish.price}"
     end
   end
 end

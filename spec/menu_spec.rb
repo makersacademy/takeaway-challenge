@@ -2,32 +2,29 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
-  let(:dish1) { { name: "Steak", price: 25 } }
-  let(:dish2) { { name: "Chips", price: 8 } }
-  let(:dish3) { { name: "Caesar Salad", price: 9 } }
+  let(:dish) { double :dish, name: 'Steak', price: 25 }
+  let(:dish2) { double :dish, name: 'Chips', price: 8 }
+  let(:dish3) { double :dish, name: 'Caesar Salad', price: 9 }
 
   describe '#initialize' do
-
-    it 'it is created with a blank list of menu items' do
-      expect(menu.item_list).to eq []
+    it 'is created with an empty array' do
+      expect(menu.list).to be_instance_of(Array)
     end
   end
 
-  describe '#add_item' do
-    let(:items) { [{ name: "Steak", price: 25 }, { name: "Chips", price: 8 }] }
-
-    it 'adds a new item to the list of items' do
-      menu.add_item(dish1)
-      expect(menu.add_item(dish2)).to eq items
+  describe '#add' do
+    it 'adds dishes to the list of dishes' do
+      menu.add(dish)
+      expect(menu.list).to include(dish)
     end
   end
 
   describe '#display' do
-    let(:pretty_print) { "Steak - £25\nChips - £8\nCaesar Salad - £9\n" }
-    it 'pretty prints a menu' do
-      menu.add_item(dish1)
-      menu.add_item(dish2)
-      menu.add_item(dish3)
+    let(:pretty_print) { "1.) Steak - £25\n2.) Chips - £8\n3.) Caesar Salad - £9\n" }
+    it 'pretty prints a list of dishes and prices' do
+      menu.add(dish)
+      menu.add(dish2)
+      menu.add(dish3)
       expect { menu.display }.to output(pretty_print).to_stdout
     end
   end
