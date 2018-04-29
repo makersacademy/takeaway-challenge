@@ -17,6 +17,14 @@ describe Option do
     end
   end
 
+  describe '#remove_option', :remove_option do
+    it 'remove a dish away from the meals array' do
+      subject.add_option(selection, 6)
+      subject.remove_option(selection, 3)
+      expect(subject.meals.length).to eq(3)
+    end
+  end
+
   describe '#total_options', :total_options do
     it 'adds total options selected from menu' do
       subject.add_option(selection, 2)

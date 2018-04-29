@@ -7,7 +7,7 @@ describe '#menu', :menu do
     it "responds to the method" do
       expect(subject).to respond_to :full_menu
     end
-   end
+end
 
 describe '#full_menu', :full_menu do
     it 'returns string of dish names and prices' do

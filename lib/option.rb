@@ -13,6 +13,13 @@ class Option
   end
 
   def total_options
-    @meals.map { |dish| dish[:price] }.inject(:+)
+    @meals.map { |dish| dish[:item_price] }.inject(:+)
+  end
+
+  def remove_option(selection, amount)
+    new_meals = @meals.select { |dish| dish[:item] == selection }
+    @meals.reject! { |dish| dish[:item] == selection }
+    amount.times { new_meals.pop }
+    @meals = @meals.concat new_meals
   end
 end
