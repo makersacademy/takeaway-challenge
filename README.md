@@ -14,6 +14,50 @@ Takeaway Challenge
 
  ```
 
+Update
+---
+
+####Approach to Solving the Challenge
+
+I have broken the user stories into DOM using Object-Message modelling as follows:
+
+Object|Model
+:---:|:---:
+User|
+Takeaway|.menu
+---|.order
+---|(check total)
+---|(confirm delivery and expected time)
+
+I then diagrammed the program model, where the `Takeaway` class acts as a command & control centre, delegating the heavy-lifting to other classes, as follows:
+
+![diagram] (./takeaway_diagram.png)
+
+
+#### Running tests
+
+Run `rspec -fd` from the project directory to run the entire suite.
+
+Each class is tested in isolation using spy doubles and stubs. 
+Emulating Twilio API has been a bit of a pain.
+
+#### Basic Usage
+_Create a new takeaway:_
+
+```ta = Takeaway.new```
+
+_Check menu:_
+
+```ta.menu```
+
+_Place order:_
+
+Order takes a string in the following format:
+
+```Dish, Quantity, Another dish, Quantity,...,Total of order```
+
+```ta.order('Gagh, 2, Lemba Bread, 2, 13.99')```
+
 Instructions
 -------
 

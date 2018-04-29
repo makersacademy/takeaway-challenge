@@ -17,7 +17,7 @@ class Takeaway
     @menu.display_menu
   end
 
-  def order(order)
+  def order(order)@menu
     @order_class.new(order, menu).correct? ? call_dispatch(order) : order_error
   end
 
