@@ -40,7 +40,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 Feature test
 
-'''
+```
 [1] pry(main)> oliver = Order.new
 => #<Order:0x00007fb5ec205b58
  @menu= #<Menu:0x00007fb5ec204118 @items={:pappadom_preach=>0.5,:tikka_to_ride=>4.75,:livin_dhal=>3.25,:jalfrezi_rock=>5.5,:saag_ado=>3.0,:paperback_raita=>0.75,:korma_police=>4.5,:dhansak_queen=>5.0,:bhaji_trousers=>2.75,:rice_rice_baby=>2.5}, @list=#<List:0x00007fb5ec2040c8 @dishes=[], @menu=nil>>>
@@ -80,4 +80,4 @@ you have added 1 rice_rice_baby to your order
 [9] pry(main)> oliver.check_total
 => 15.0
 [10] pry(main)> oliver.complete_order(15.0)
-'''
+```
