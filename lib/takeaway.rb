@@ -3,10 +3,9 @@ require_relative 'order'
 
 class Takeaway
 
-WELCOME = 'Welcome to the chip shop! Would you like to see our menu?'
-ORDER = 'Please enter the items you would like to order'
+  WELCOME = 'Welcome to the chip shop! Would you like to see our menu?'
 
-attr_reader :menu
+  attr_reader :menu
 
   def initialize(menu = Menu.new, order_class = Order)
     @menu = menu
@@ -24,7 +23,5 @@ attr_reader :menu
   def enter_order(menu_items)
     @order_class.new(menu_items)
   end
-
-
 
 end

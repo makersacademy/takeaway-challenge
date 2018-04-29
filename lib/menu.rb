@@ -7,8 +7,7 @@ class Menu
   end
 
   def show_menu
-    CSV.read(@menu_filename)  
+    CSV.read(@menu_filename)
   end
-
 
 end
