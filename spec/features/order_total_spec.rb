@@ -1,4 +1,4 @@
-feature 'Order dishes' do
+feature 'Total an order of dishes' do
   scenario 'order has dishes' do
     pasta = Dish.new('Pasta', 5)
     bolognese = Dish.new('Bolognese', 5)
@@ -8,7 +8,6 @@ feature 'Order dishes' do
     order.add(pasta, 2)
     order.add(bolognese, 2)
     order.add(salad, 1)
-    order_list = "2 x Pasta\n2 x Bolognese\n1 x Salad\n"
-    expect { order.list }.to output(order_list).to_stdout
+    expect(order.total).to eq 22
   end
 end

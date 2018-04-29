@@ -1,4 +1,4 @@
-feature 'Order dishes' do
+feature 'Sends a text when order is confirmed' do
   scenario 'order has dishes' do
     pasta = Dish.new('Pasta', 5)
     bolognese = Dish.new('Bolognese', 5)
@@ -8,7 +8,8 @@ feature 'Order dishes' do
     order.add(pasta, 2)
     order.add(bolognese, 2)
     order.add(salad, 1)
-    order_list = "2 x Pasta\n2 x Bolognese\n1 x Salad\n"
-    expect { order.list }.to output(order_list).to_stdout
+    expect { order.confirm }.to output('Thank you! Your order was placed and will be delivered before 18:52').to_stdout
   end
 end
+
+# Thank you! Your order was placed and will be delivered before 18:52
