@@ -1,5 +1,5 @@
 describe Menu_handler do
-  let(:menu_handler) { described_class.new('/Users/georgesykes/Projects/MakersAcademy/WeekendChallenges/takeaway-challenge/test_resources')}
+  let(:menu_handler) { described_class.new('/Users/georgesykes/Projects/MakersAcademy/WeekendChallenges/takeaway-challenge/test_resources') }
 
   describe '#initialize' do
 
@@ -25,9 +25,8 @@ describe Menu_handler do
 
   end
 
-
   describe '#get_menu_items' do
-    let(:menu_items) { menu_handler.get_menu_items("fake") }
+    let(:menu_items) { menu_handler.menu_items("fake") }
 
     it 'returns an array of menu items' do
       expect(menu_items).to be_an_instance_of(Array)

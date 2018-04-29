@@ -27,7 +27,7 @@ class Message_handler
 
   def generate_message(order)
     "Your #{order.category} order has been received and will be with you by #{get_time}."\
-    "£#{'%.2f' % order.total.round(2)} will be charged to your account"
+    " £#{'%.2f' % order.total.round(2)} will be charged to your account"
   end
 
   def get_time

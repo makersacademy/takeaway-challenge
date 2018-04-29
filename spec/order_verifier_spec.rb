@@ -1,7 +1,7 @@
 describe Order_verifier do
 
   let(:selected_dishes) { [["a", 7.00, 1], ["b", 5.50, 2]] }
-  let(:order) {double :order, selected_dishes: selected_dishes }
+  let(:order) { double :order, selected_dishes: selected_dishes }
   let(:message_handler) { double :message_handler }
   before { allow(message_handler).to receive(:send_message).with(anything) }
   subject(:order_verifier) { described_class.new(message_handler) }

@@ -1,5 +1,5 @@
 describe Order do
-  subject(:order) { described_class.new(:pizza)}
+  subject(:order) { described_class.new(:pizza) }
   let(:dish) { double :dish }
   before do
     allow(dish).to receive(:name).and_return("Margherita")
@@ -27,7 +27,7 @@ describe Order do
 
     let(:order_total) do
       orders.reduce(0) do |total, order|
-        total += (order[0].price * order[1])
+        total + (order[0].price * order[1])
       end
     end
 
@@ -62,6 +62,5 @@ describe Order do
     end
 
   end
-
 
 end

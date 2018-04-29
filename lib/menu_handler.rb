@@ -11,17 +11,17 @@ class Menu_handler
   def initialize(root = ROOT)
     @root = root
     @file_summaries = []
-    get_summaries
+    summaries
   end
 
-  def get_menu_items(category)
+  def menu_items(category)
     path = @file_summaries.select { |file_sum| file_sum[:category] == category }.first[:path]
     load_menu_items(path)
   end
 
   private
 
-  def get_files
+  def files
     csv_files = []
     Find.find(@root) do |path|
       csv_files << path if path =~ /.*\.csv$/
@@ -29,8 +29,8 @@ class Menu_handler
     csv_files
   end
 
-  def get_summaries
-    get_files.each do |file_path|
+  def summaries
+    files.each do |file_path|
       load_summaries(file_path)
     end
   end

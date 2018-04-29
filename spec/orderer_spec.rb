@@ -1,30 +1,26 @@
-fdescribe Orderer do
-  let(:summaries) { [ { path: ".../.", summary: "description1", category: "cat" } ]}
+describe Orderer do
+  let(:summaries) { [{ path: ".../.", summary: "description1", category: "cat" }] }
 
   let(:menu_items) { [
                     { item: "title", description: "description", price: 2.349 },
                     { item: "title2", description: "description2", price: 9.657 }
-                    ] }
-  let(:summary_output) {
-                        "1. Cat - Description1\nPlease enter the number for the menu you want\n"
-                        }
-  let(:menu_output) {
-                    "1. Title, £2.35 - Description\n2. Title2, £9.66 - Description2\n"
-                    }
+                    ]
+                   }
+  let(:summary_output) { "1. Cat - Description1\nPlease enter the number for the menu you want\n" }
+  let(:menu_output) { "1. Title, £2.35 - Description\n2. Title2, £9.66 - Description2\n" }
 
   let(:menu_handler) { instance_double "Menu_handler", file_summaries: summaries }
-  let(:dishlist) { double :dishlist}
-  let(:dishlist_class) { double :dishlistclass, new: dishlist}
+  let(:dishlist) { double :dishlist }
+  let(:dishlist_class) { double :dishlistclass, new: dishlist }
   let(:order) { double :order }
   let(:dish) { double :dish }
-  let(:order_class) { double :order_class, new: order}
+  let(:order_class) { double :order_class, new: order }
   let(:order_verifier) { double :order_verifier }
-  let(:order_verifier_class) {double :order_verifier, new: order_verifier}
+  let(:order_verifier_class) { double :order_verifier, new: order_verifier }
   subject(:orderer) { described_class.new(menu_handler, dishlist_class, order_class, order_verifier_class) }
 
-
   before do
-    allow(menu_handler).to receive(:get_menu_items).with(anything).and_return(menu_items)
+    allow(menu_handler).to receive(:menu_items).with(anything).and_return(menu_items)
     allow(dishlist).to receive(:dishes).and_return(menu_items)
     allow(order).to receive(:add).with(any_args)
     allow(STDIN).to receive(:gets) { '1' }
@@ -72,7 +68,6 @@ fdescribe Orderer do
       subject.show_order
     end
   end
-
 
   describe '#place_order' do
 

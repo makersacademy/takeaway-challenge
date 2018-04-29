@@ -8,7 +8,7 @@ class Dishlist_generator
   end
 
   def create_list(category)
-    dishes = @menu_handler.get_menu_items(category)
+    dishes = @menu_handler.menu_items(category)
     dish_list = []
     dishes.each do |dish|
       dish_list << create_dish(dish)
