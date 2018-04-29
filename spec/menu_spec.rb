@@ -1,12 +1,24 @@
 require 'menu'
 
+# class Dish
+#   attr_reader :id, :name, :price
+#
+#   def initialize(id, name, price)
+#     @id = id
+#     @name = name
+#     @price = price
+#   end
+# end
+
 describe Menu do
-  let(:object_type) { Dish }
+  let(:object_type) { class_double(Dish, new: new) }
   subject { Menu.new(object_type) }
 
   let(:dish_id_1) { 1 }
-  let(:dish_name_1) { 'dish_1' }
-  let(:dish_price_1) { 4.5 }
+  let(:dish_name_1) { double(:dish_name_1, name: 'dish_1') }
+  let(:dish_price_1) { double(:dish_price_1, price: 4.5) }
+  let(:new) { double(:new, id: dish_id_1, name: dish_name_1, price: dish_price_1) }
+  
   let(:add_dish) { subject.add_dish(dish_name_1, dish_price_1) }
 
   context '#initialize' do
@@ -28,7 +40,7 @@ describe Menu do
   context '#dishes' do
     it 'Returns the objects of @dishes' do
       add_dish
-      expect(subject.dishes).to include object_type
+      expect(subject.dishes).to include new
     end
 
     it "Items can't be removed from @dishes" do
