@@ -1,12 +1,30 @@
+require_relative 'menu'
+require_relative 'order'
+
 class Takeaway
 
-  def initialize
+WELCOME = 'Welcome to the chip shop! Would you like to see our menu?'
+ORDER = 'Please enter the items you would like to order'
 
+attr_reader :menu
+
+  def initialize(menu = Menu.new, order_class = Order)
+    @menu = menu
+    @order_class = order_class
   end
 
   def welcome
-    'Welcome to the chip shop!\n Would you like to see our menu?'
+    WELCOME
   end
+
+  def show_menu
+    @menu.show_menu
+  end
+
+  def enter_order(menu_items)
+    @order_class.new(menu_items)
+  end
+
 
 
 end
