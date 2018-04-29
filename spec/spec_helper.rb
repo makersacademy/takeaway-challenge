@@ -16,3 +16,9 @@ RSpec.configure do |config|
     puts "\e[33mTry it now! Just run: rubocop\e[0m"
   end
 end
+
+RSpec.configure do |config|
+  config.before :each, type: :feature do
+    Confirm.messages = []
+  end
+end
