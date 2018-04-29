@@ -44,7 +44,7 @@ describe Order do
     end
   end
 
-  describe '#Remove' do
+  describe '#Remove', :remove do
 
     let(:basket) { [{ name: selection, price: 2 }, { name: selection, price: 2 }] }
     it 'removes a dish from the order' do
