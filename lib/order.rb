@@ -22,7 +22,7 @@ class Order
     selected_dishes.each do |item|
       puts "#{ item[2] } x #{ item[0] }(£#{ '%.2f' % item[1].round(2) })"
     end
-    puts "Total: £#{ @total.round(2) }"
+    puts "Total: £#{ '%.2f' % @total.round(2) }"
   end
 
   private

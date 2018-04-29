@@ -15,7 +15,7 @@ class Orderer
     category = select_menu
     @dishlist = dishlist_class.new(category: category, menu_handler: menu_handler)
     @order = order_class.new(category)
-    @order_verifier = order_verifier_class.new(@menu_handler)
+    @order_verifier = order_verifier_class.new
   end
 
   def show_menu
@@ -56,7 +56,7 @@ class Orderer
   end
 
   def valid_dish?(num)
-    num.is_a?(Integer) && num <= dishlist.dishes.length
+    num.is_a?(Integer) && num <= dishlist.dishes.length && num > 0
   end
 
 end

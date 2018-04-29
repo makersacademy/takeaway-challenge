@@ -5,10 +5,14 @@ require 'dishlist_generator'
 require 'order'
 require 'orderer'
 require 'menu_handler'
+require 'message_handler'
 require 'simplecov'
 require 'simplecov-console'
 require 'pry'
 require 'pry-byebug'
+require 'webmock/rspec'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
