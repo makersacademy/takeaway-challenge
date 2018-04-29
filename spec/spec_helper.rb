@@ -4,7 +4,6 @@ require 'customer_order'
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
-require 'twilio-ruby'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
