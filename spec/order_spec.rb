@@ -83,18 +83,11 @@ describe Order do
 
     it 'should return a message for a full order' do
       time = Time.new
-      text = "Thank you! Your order was placed and will be delivered before #{(time.hour + 1) % 24}:#{time.min}\n"
+      text = "Your order was placed and will be delivered before #{(time.hour + 1) % 24}:#{time.min}\n"
       subject.add(pasta, 2)
       subject.add(bolognese, 2)
       subject.add(salad, 1)
       expect { subject.confirm(message_class) }.to output(text).to_stdout
-    end
-
-    it 'should send a text message' do
-      subject.add(pasta, 2)
-      subject.add(bolognese, 2)
-      subject.add(salad, 1)
-      subject.confirm(message_class)
     end
   end
 end

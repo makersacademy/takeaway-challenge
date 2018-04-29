@@ -32,7 +32,7 @@ class Order
   def confirm(message_class = Message)
     empty_order_error
 
-    text = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    text = "Your order was placed and will be delivered before #{delivery_time}"
     puts text
     message = message_class.new(text)
     message.send
