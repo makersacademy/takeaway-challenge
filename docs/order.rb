@@ -6,7 +6,7 @@ class Order
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @basket = []
+    @basket = {}
     @order_summary_array = []
   end
 
@@ -15,26 +15,22 @@ class Order
   end
 
   def add_dish(dish, quantity)
-    @basket << { dish => quantity }
+    @basket[dish] = quantity
   end
 
-  def view_summary(basket)
-    @basket
-    @basket.each do |dish, quantity|
-      dish_cost = Menu.new.menu_items[dish]
-      total_price = dish_cost.to_i * quantity.to_i
-      @order_summary_array.push("#{quantity.to_s} x #{dish} -£#{total_price}")
-    end
-    @order_summary_array
-    # ["2 x Haddock - £10"]
+  def cost
+    menu_for_price = Menu.new
+    menu_hash = menu_for_price.menu_items
+    basket_hash = @basket
+    menu_hash
+    basket_hash
+    multiply = menu_hash.map { |k, v| v * basket_hash[k] if basket_hash.key? k }.compact
+    total_cost = multiply.inject(:+)
+    total_cost
   end
-  # private
-  # def total_price
-  #   @menu.menu_items.each do |menu_dish, price|
-  #     if dish = menu_dish
-  #       total_price = quantity * price
-  #     end
-  #   end
-  # end
+
+  def view_summary(total_cost)
+    "Item summary: #{basket}. Order total: £#{total_cost}"
+  end
 
 end

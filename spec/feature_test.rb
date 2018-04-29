@@ -70,6 +70,14 @@ def view_summary
   order.view_summary
 end
 
+def view_summary_two
+  order = Order.new
+  order.add_dish("Haddock", 2)
+  p basket = [{ "Haddock" => 2 }]
+  p order.view_summary(basket)
+end
+
+
 # new_order
 # has_menu
 # order_display_menu
@@ -79,6 +87,6 @@ end
 # add_to_basket
 # view_basket
 # view_basket_again
-view_summary
+view_summary_two
 
 # irb -r './spec/feature_test.rb'
