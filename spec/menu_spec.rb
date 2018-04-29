@@ -20,7 +20,7 @@ describe Menu do
   describe '#pretty_print' do
     it 'pretty prints a list of dishes and prices' do
       subject.add(dish)
-      expect(subject.pretty_print).to eq("1) Curry - £5")
+      expect { subject.pretty_print }.to output("1) Curry - £5\n").to_stdout
     end
   end
 

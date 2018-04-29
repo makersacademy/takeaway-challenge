@@ -22,9 +22,10 @@ describe TakeAway do
 
   describe '#display_menu' do
     it 'prints a list of menu options and prices' do
+      subject.add_menu_item(dish)
       expect do
-        take_away.display_menu
-      end.to output("Los Pollos Hermanos\n==============================\n1) Curry - £5\n2) Chips - £2\n==============================\n").to_stdout
+        subject.display_menu
+      end.to output("Los Pollos Hermanos\n==============================\n1) Curry - £5\n==============================\n").to_stdout
     end
   end
 
@@ -36,7 +37,7 @@ describe TakeAway do
 
     describe '#basket_total' do
       it 'prints the total price of all items in the basket' do
-        expect(take_away.basket_total).to eq('The current total of your order is £7')
+        expect { take_away.basket_total }.to output("The current total of your order is £7\n").to_stdout
       end
     end
 

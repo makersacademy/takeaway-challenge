@@ -15,8 +15,12 @@ class TakeAway
 
   def display_menu
     print_header
-    puts @menu.pretty_print
+    @menu.pretty_print
     print_footer
+  end
+
+  def add_menu_item(dish)
+    @menu.add(dish)
   end
 
   def add_to_basket(number, quantity = 1)
@@ -24,7 +28,7 @@ class TakeAway
   end
 
   def basket_total
-    "The current total of your order is £#{@basket.total}"
+    puts "The current total of your order is £#{@basket.total}"
   end
 
   def checkout(price, messenger = Messenger.new)

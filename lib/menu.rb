@@ -13,8 +13,12 @@ class Menu
 
   def pretty_print
     @list.each_with_index do |dish, index|
-      return "#{index + 1}) #{dish.name} - £#{dish.price}"
+      puts "#{index + 1}) #{dish.name} - £#{dish.price}"
     end
+  end
+
+  def load_menu
+    @list = [Dish.new('Curry', 5), Dish.new('Kebab', 4), Dish.new('Chips', 2)]
   end
 
 end
