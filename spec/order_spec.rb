@@ -24,9 +24,19 @@ subject(:order) { described_class.new(dishes) }
     end
   end
 
-  describe '#confirm?' do
+  describe '#confirmed?' do
     it 'show you default status on order confirmation' do
       expect(order.confirmed?).to eq false
+    end
+    it 'shows you status when confirmed order' do
+      order.confirm
+      expect(order.confirmed?).to eq true
+    end
+  end
+
+  describe '#confirm' do
+    it 'sets the value of @confirmed to true' do
+      expect(order.confirm).to eq true
     end
   end
 

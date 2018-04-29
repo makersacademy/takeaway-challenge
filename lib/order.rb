@@ -1,7 +1,7 @@
 require_relative 'dishes.rb'
 
 class Order
-  attr_reader :overview, :total, :breakdown
+  attr_reader :overview, :total
 
   def initialize(dishes = Dishes.new) # pass in selection of dishes
     @overview = dishes.current_selection
@@ -20,6 +20,10 @@ class Order
 
   def confirmed?
     @confirmed
+  end
+
+  def confirm
+    @confirmed = true
   end
 
 end
