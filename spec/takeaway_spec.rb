@@ -3,8 +3,8 @@ require 'takeaway'
 describe Takeaway do
   let(:menu) { spy :menu_double }
   let(:dispatcher) { spy :dispatcher_double }
-  let(:order_class) { double :order_class_double, new: order }
-  let(:order) { spy :order_double }
+  let(:order_class) { double :order_class_double, new: new_order }
+  let(:new_order) { spy :order_double }
   let(:subject) { described_class.new(menu, order_class, dispatcher) }
   let(:customer_order) { 'Customer Order' }
 
@@ -22,14 +22,14 @@ describe Takeaway do
     end
     it 'should tell Order class instance to check if order is correct' do
       subject.order(customer_order)
-      expect(order).to have_received(:correct?)
+      expect(new_order).to have_received(:correct?)
     end
     it 'should raise error on invalid order' do
-      allow(order).to receive(:correct?).and_return(false)
+      allow(new_order).to receive(:correct?).and_return(false)
       expect { subject.order(customer_order) }.to raise_error('Order total incorrect.')
     end
     it 'should dispatch order on valid order' do
-      allow(order).to receive(:correct?).and_return(true)
+      allow(new_order).to receive(:correct?).and_return(true)
       expect(subject).to receive(:call_dispatch)
       subject.order(customer_order)
     end
@@ -37,9 +37,9 @@ describe Takeaway do
 
   describe '#call_dispatch' do
     it 'should call dispatcher and pass order_id' do
-      allow(order).to receive(:correct?).and_return(true)
+      allow(new_order).to receive(:correct?).and_return(true)
       subject.order(customer_order)
-      expect(dispatcher).to have_received(:dispatch).with(order.__id__)
+      expect(dispatcher).to have_received(:dispatch).with(customer_order.__id__)
     end
   end
 

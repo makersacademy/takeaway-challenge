@@ -18,16 +18,13 @@ class Takeaway
   end
 
   def order(order)
-    current_menu = menu
-    @customer_order = @order_class.new(order, current_menu)
-    @customer_order.correct? ? call_dispatch(@customer_order) : order_error
+    @order_class.new(order, menu).correct? ? call_dispatch(order) : order_error
   end
 
   private
 
   def call_dispatch(customer_order)
-    order_id = customer_order.__id__
-    @dispatcher.dispatch(order_id)
+    @dispatcher.dispatch(customer_order.__id__)
   end
 
   def order_error
