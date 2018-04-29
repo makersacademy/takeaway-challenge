@@ -1,3 +1,5 @@
+require_relative './message'
+
 class Order
   attr_reader :items
 
@@ -27,10 +29,13 @@ class Order
     @items.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
   end
 
-  def confirm
+  def confirm(message_class = Message)
     empty_order_error
 
-    puts "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    text = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    puts text
+    message = message_class.new(text)
+    message.send
   end
 
   private

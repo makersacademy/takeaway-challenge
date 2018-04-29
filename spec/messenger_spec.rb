@@ -1,3 +1,0 @@
-describe Messenger do
-
-end

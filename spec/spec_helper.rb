@@ -1,10 +1,10 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
-require 'menu'
-require 'dish'
-require 'order'
-require 'messenger'
+require_relative '../lib/menu'
+require_relative '../lib/dish'
+require_relative '../lib/order'
+require_relative '../lib/message'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
