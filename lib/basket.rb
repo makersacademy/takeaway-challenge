@@ -1,9 +1,9 @@
 class Basket
 
-  attr_reader :orders
+  attr_reader :items
 
   def initialize
-    @orders = {}
+    @items = Hash.new(0)
   end
 
 end

@@ -16,22 +16,33 @@ describe Takeaway do
     expect(takeaway.menu).to eq menu
   end
 
+  it "should have an attribute reader total" do
+    expect(takeaway.total).to eq 0
+  end
+
   it "should have an attribute reader Basket" do
     expect(takeaway).to respond_to(:basket)
   end
 
-  describe ' #order ' do
-    it "should return a confirmation of the order" do
-      expect(takeaway.order(item, quantity)).to eq("Order confirmed: #{item} x#{quantity}")
+  describe ' #add_to_basket ' do
+    it "should return a confirmation of what has been added to basket" do
+      expect(takeaway.add_to_basket(item, quantity)).to eq("Order confirmed: #{item} x#{quantity}")
     end
 
-    it "should add item and quantity to the Basket's orders" do
-      takeaway.order(item, quantity)
-      expect(takeaway.basket.orders).to eq({ item => quantity })
+    it "should add item and quantity to the Basket's items hash" do
+      takeaway.add_to_basket(item, quantity)
+      expect(takeaway.basket.items).to eq({ item => quantity })
     end
 
     it "should raise an error if item is unavailable" do
-      expect { takeaway.order(:salmon, quantity) }.to raise_error("This item is unavailable")
+      expect { takeaway.add_to_basket(:salmon, quantity) }.to raise_error("This item is unavailable")
+    end
+  end
+
+  describe ' #receipt ' do
+    it "should return a list of ordered items" do
+      takeaway.add_to_basket(item, quantity)
+      expect(takeaway.receipt).to eq("panda_pop (x2) --- £2, Total: £2.00")
     end
   end
 
