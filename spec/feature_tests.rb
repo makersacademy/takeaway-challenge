@@ -23,9 +23,9 @@ end
 def new_basket
   new_menu
   basket = Basket.new
-  basket.add_selection(dish: 'Steak', price: 25, quantity: 1)
-  # basket.add_selection(dish: 'Chips', price: 8, quantity: 2)
-  basket.add_selection(dish: 'Caesar Salad', price: 9, quantity: 3)
+  basket.add_dish(dish: 'Steak', price: 25, quantity: 1)
+  basket.add_dish(dish: 'Chips', price: 8, quantity: 2)
+  basket.add_dish(dish: 'Caesar Salad', price: 9, quantity: 3)
   basket.display_summary
   basket.total_cost
   basket.display_total

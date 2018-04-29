@@ -1,22 +1,18 @@
 require 'dish'
 
 describe Dish do
-  subject(:dish) { described_class.new(name: "Steak", price: 25) }
-
   describe '#initialize' do
-    it 'knows its name' do
-      expect(dish.name).to eq "Steak"
+
+    let(:name) { 'Steak' }
+    let(:price) { 25 }
+    let(:dish) { Dish.new(name, price) }
+
+    it 'initializes with two arguments' do
+      expect(Dish).to respond_to(:new).with(2)
     end
 
-    it 'knows its price' do
-      expect(dish.price).to eq 25
-    end
-  end
-
-  describe '#set_details' do
-    let(:item) { { :name => "Steak", :price => 25 } }
-    it 'shows full details of the dish' do
-      expect(dish.set_details).to eq item
+    it 'assigns the arguments as attributes' do
+      expect(dish).to have_attributes(name: name, price: price)
     end
   end
 end
