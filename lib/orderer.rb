@@ -25,6 +25,13 @@ class Orderer
     order.add(@dishlist.dishes[item_num - 1 ], quantity)
   end
 
+  def show_order
+    @order.print_order
+  end
+
+  def place_order
+    
+  end
 
   private
 

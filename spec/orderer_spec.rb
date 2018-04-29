@@ -67,6 +67,14 @@ fdescribe Orderer do
 
   end
 
+  describe '#show_order' do
+
+    it 'prints the order summary' do
+      expect(order).to receive(:print_order)
+      subject.show_order
+    end
+  end
+
 
   describe '#place_order' do
 
