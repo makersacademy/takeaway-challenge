@@ -7,6 +7,8 @@ require 'orderer'
 require 'menu_handler'
 require 'simplecov'
 require 'simplecov-console'
+require 'pry'
+require 'pry-byebug'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,

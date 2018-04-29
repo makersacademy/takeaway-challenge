@@ -9,7 +9,7 @@ describe Dishlist_generator do
                       { item: "item2", description: "description", price: "price" }
                       ] }
   before do
-    allow(menu_handler).to receive(:get__menu_items).with(anything).and_return(menu_items)
+    allow(menu_handler).to receive(:get_menu_items).with(anything).and_return(menu_items)
     allow(dish_class).to receive(:new).with(anything).and_return(dish)
   end
 
