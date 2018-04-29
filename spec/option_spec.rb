@@ -1,19 +1,19 @@
 require 'option'
 
 describe Option do
-  let(:dishes) { double :dishes, dishes: [{ item: selection, item_price: 2 }] }
+  let(:menu) { double :menu, menu: [{ item: selection, item_price: 2 }] }
   let(:selection) { double :selection }
-  subject { Option.new(dishes) }
+  subject { Option.new(menu) }
 
-  describe '#add_option', :add_option do
-    it 'adds on 1 option to meal array' do
+  describe '#add_dish', :add_dish do
+    it 'adds one selection to the meals array' do
       subject.add_option(selection, 1)
-      expect(subject.dishes.length).to eq(1)
+      expect(subject.meals.length).to eq(1)
     end
 
-    it 'selecting one option twice, adds to dishes array' do
+    it 'adds x2 of one selection to meals array' do
       subject.add_option(selection, 2)
-      expect(subject.dishes.length).to eq(2)
+      expect(subject.meals.length).to eq(2)
     end
   end
 

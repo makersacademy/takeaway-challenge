@@ -1,18 +1,18 @@
 class Option
-  attr_reader :dishes, :meal
+  attr_reader :meals, :menu
 
-  def initialize(dishes)
-    @meal = []
-    @dishes = dishes
+  def initialize(menu = Menu.new)
+    @meals = []
+    @menu = menu
   end
 
   def add_option(selection, amount)
-    @dishes.dishes.each do |m|
-      amount.times {@dishes << m if m[:item] == selection}
+    @menu.menu.each do |dish|
+      amount.times { @meals << dish if dish[:item] == selection }
     end
   end
 
   def total_options
-    @dishes.map { |m| m[:item_price] }.inject(:+)
+    @meals.map { |dish| dish[:price] }.inject(:+)
   end
- end
+end
