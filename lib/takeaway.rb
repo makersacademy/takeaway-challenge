@@ -12,4 +12,16 @@ class Takeaway
             }
   end
 
+  def order(item, quantity)
+    raise "This item is unavailable" unless available?(item)
+    @basket.orders[item] = quantity
+    "Order confirmed: #{item} x#{quantity}"
+  end
+
+  private
+
+  def available?(item)
+    @menu.has_key?(item)
+  end
+
 end
