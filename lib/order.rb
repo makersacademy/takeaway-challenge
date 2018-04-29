@@ -10,6 +10,7 @@ class Order
     @sum = 0
     @your_order = []
     @yo_total = 0
+    @your_order_print = []
   end
 
   def total
@@ -18,6 +19,7 @@ class Order
         number, dish, price = line
         @sum += price.to_f if number == item
         @your_order << dish + price if number == item
+        @your_order_print << dish if number == item
       end
     end
   end
@@ -27,6 +29,13 @@ class Order
       raise "You have been wrongly charged!" if @sum != @yo_total
       "You have been charged correctly"
   end
+
+  def confirm_order
+    @your_order_print.join
+    puts "Your order is #{@your_order_print} and the total is £#{@sum}0"
+    require './lib/send-sms.rb'
+  end
+
 
 private
 
