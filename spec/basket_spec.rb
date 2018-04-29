@@ -37,5 +37,16 @@ describe Basket do
         expect { basket.selection_total }.to output("Your total is £33\n").to_stdout
       end
     end
+
+    describe '#checkout' do
+      let(:messenger) { double :messenger, message: 'text sent' }
+      it 'prints confirmation if input price equals basket total' do
+        expect { basket.checkout(33, messenger) }.to output("Thank you. Text confirmation has been sent.\n").to_stdout
+      end
+
+      it 'raises an error if input price does not equal basket total' do
+        expect { basket.checkout(5, messenger) }.to raise_error("Payment does not equal basket total.")
+      end
+    end
   end
 end

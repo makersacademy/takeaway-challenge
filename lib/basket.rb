@@ -1,3 +1,4 @@
+require_relative 'messenger'
 require_relative 'menu'
 require_relative 'order'
 require_relative 'dish'
@@ -21,5 +22,21 @@ class Basket
 
   def selection_total
     puts "Your total is £#{@selection.total}"
+  end
+
+  def checkout(price, messenger = Messenger.new)
+    payment_error(price)
+    messenger.message
+    confirmation_message
+  end
+
+  private
+
+  def payment_error(price)
+    raise 'Payment does not equal basket total.' if price != @selection.total
+  end
+
+  def confirmation_message
+    puts 'Thank you. Text confirmation has been sent.'
   end
 end
