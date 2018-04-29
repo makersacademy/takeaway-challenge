@@ -11,4 +11,8 @@ class TakeAway
     quantity.times { @basket.items << @menu.list[number - 1] }
   end
 
+  def display_menu
+    puts @menu.pretty_print
+  end
+
 end

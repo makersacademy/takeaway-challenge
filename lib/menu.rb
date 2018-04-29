@@ -13,7 +13,7 @@ class Menu
 
   def pretty_print
     @list.each_with_index do |dish, index|
-      puts "#{index + 1}) #{dish.name} - £#{dish.price}"
+      return "#{index + 1}) #{dish.name} - £#{dish.price}"
     end
   end
 
