@@ -6,7 +6,7 @@ class SendMessage
   def initialize(test = false)
     @test = test
     @client = Twilio::REST::Client.new(ENV['TWILIO_ID'], ENV['TWILIO_TOKEN'])
-    @text_message = "Thank you for your order. It will be with you around #{time}"
+    @text_message = "Thank you for your order. It will be with you before #{time}"
   end
 
   def send
@@ -25,7 +25,7 @@ class SendMessage
   private
 
   def time
-    time = Time.now + 1800
+    time = Time.now + 3600
     "#{time.hour}:#{time.min}"
   end
 end

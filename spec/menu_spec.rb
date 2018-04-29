@@ -1,15 +1,5 @@
 require 'menu'
 
-# class Dish
-#   attr_reader :id, :name, :price
-#
-#   def initialize(id, name, price)
-#     @id = id
-#     @name = name
-#     @price = price
-#   end
-# end
-
 describe Menu do
   let(:object_type) { class_double(Dish, new: new) }
   subject { Menu.new(object_type) }
@@ -18,7 +8,7 @@ describe Menu do
   let(:dish_name_1) { double(:dish_name_1, name: 'dish_1') }
   let(:dish_price_1) { double(:dish_price_1, price: 4.5) }
   let(:new) { double(:new, id: dish_id_1, name: dish_name_1, price: dish_price_1) }
-  
+
   let(:add_dish) { subject.add_dish(dish_name_1, dish_price_1) }
 
   context '#initialize' do

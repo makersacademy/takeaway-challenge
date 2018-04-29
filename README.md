@@ -3,7 +3,7 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  B.F. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -14,66 +14,139 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+My task was to write a takeaway program that would give a user the ability to see the contents of the menu (dish name and price), add any of those dishes to a basket and submit the basket for ordering. Once successfully ordered, a text message would be sent to the user (read: me) that the order has been received. As with all Makers work, the programme is test driven so, you now, that took a load of time to mock/stub properly.
+
+I also took the decision to build a dish object that would then be added to the menu first. Seemed the simplest solution and would follow the same style/format that the rest of the programme would be rather than adding completely different functionality such as CSV manipulation or hard coding the menu (yuck).
+
+
+User stories
+-----
+
+I added the acceptance criteria myself to help guide me, I also added the penultimate user story myself to help with my sanity - the challenge as written didn't actually say that orders needed to be submitted, just that a text should be sent when an order is submitted...
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+AS A customer
+SO THAT I can check if I want to order something
+I WOULD LIKE to see a list of dishes with prices
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+AC1 - Can print a list of all dishes (menu)
+AC2 - Each dish includes a name
+AC3 - Each dish includes a price
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+AS A customer
+SO THAT I can order the meal I want
+I WOULD LIKE to be able to select some number of several available dishes
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+AC1 - Can order one quantity of one dish from the menu
+AC2 - Can order more than one quantity of one dish from the menu
+AC3 - Can order multiple dishes
+
+AS A customer
+SO THAT I can verify that my order is correct
+I WOULD LIKE to check that the total I have been given matches the sum of the various dishes in my order
+
+AC1 - Can print each dish in the basket with the correct price
+AC2 - Can print each dish in the basket with the correct quantity ordered
+AC3 - Can print a total for the basket
+
+AS A customer
+SO THAT I can eat
+I WOULD LIKE to submit an order for delivery
+
+AC1 - Can submit an order
+AC2 - Receives confirmation that an order has been submitted successfully
+
+AS A customer
+SO THAT I am reassured that my order will be delivered on time
+I WOULD LIKE to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+AC1 - After an order has been submitted, a text is sent
+AC2 - The text contains the above copy with an appropriate time (plus 1 hour from submit)
+
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Planning process and other notes
+-----
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+[To aid my development, I diagrammed the functionality fully. Please look at it, it took me ages](https://drive.google.com/file/d/1gkUxRdvpOBrwUFZViwY37CZTSYYlVmuY/view?usp=sharing) and I kept it up to date as I went along. I missed a few private functions, minor stats here and there and I changed the colour coding but otherwise not much changed from original draft.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+The SubmitOrder class has a safe-mode (not used by default) which can be set through initialize. Safe-mode is turned on for the tests.
 
+Installation and set-up
+-----
 
-In code review we'll be hoping to see:
+1. Clone the repo:
+```
+git clone git@github.com:benfurber/airport_challenge.git
+```
+2. Open the directory:
+```
+cd airport_challenge
+```
+3. Install/switch to Ruby 2.5.0:
+```
+rvm install 2.50
+rvm use 'ruby-2.5.0'
+```
+4. Install bundle (if required) and run it:
+```
+gem install bundle
+bundle
+```
+5. [Sign-up to Twilio](https://www.twilio.com/), create a .ENV in the route and add the below:
+```
+TWILIO_ID = 'FROM_TWILIO'
+TWILIO_TOKEN = 'FROM_TWILIO'
+MY_PHONE_NUMBER = '+440000000000'
+TWILIO_PHONE_NUMBER = 'FROM_TWILIO'
+```
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+6. Check that the tests are still running and valid:
+```
+rspec
+```
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+7. [Review the demo in the demo folder](https://github.com/benfurber/takeaway-challenge/tree/master/demo):
+```
+require_relative '../lib/menu.rb'
+require_relative '../lib/order.rb'
+require_relative '../lib/submit_order.rb'
 
-Notes on Test Coverage
-------------------
+# Create the objects
+menu = Menu.new
+order = Order.new
+submit_order = SubmitOrder.new(SendMessage, true)
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+# Add the dishes
+number_of_dishes = 5
+dish_names = ['Dish one', 'Dish two', 'Dish three', 'Dish four', 'Dish five']
+dish_prices = [4, 5, 6, 10, 6]
+number_of_dishes.times { |i| menu.add_dish(dish_names[i], dish_prices[i]) }
+
+# Print the menu to the console
+puts '--------------------'
+puts 'The menu:'
+puts '--------------------'
+puts
+puts menu.print_dishes
+puts
+
+# Add two dishes to the order
+order.add_to_basket(menu.dishes[0], 1)
+order.add_to_basket(menu.dishes[1], 2)
+
+# Print the order to the console
+puts 'The order:'
+puts '--------------------'
+puts order.print_order
+puts
+
+# Submit the order
+puts 'Submitted?'
+puts '--------------------'
+puts submit_order.submit(order.basket)
+puts
+```
