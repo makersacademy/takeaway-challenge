@@ -1,4 +1,4 @@
-xfeature 'Order dishes' do
+feature 'Order dishes' do
   scenario 'menu has dishes' do
     pasta = Dish.new('Pasta', 5)
     bolognese = Dish.new('Bolognese', 5)
@@ -8,7 +8,7 @@ xfeature 'Order dishes' do
     order.add(pasta, 2)
     order.add(bolognese, 2)
     order.add(salad, 1)
-    order_list = "2 x Pasta, 2 x Bolognese and 1 x Salad"
+    order_list = "2 x Pasta\n2 x Bolognese\n1 x Salad\n"
     expect { order.list }.to output(order_list).to_stdout
   end
 end

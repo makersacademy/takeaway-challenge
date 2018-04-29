@@ -13,6 +13,14 @@ class Order
     add_new_item(dish, amount)
   end
 
+  def list
+    raise 'The order is empty' if empty_order?
+
+    @items.each do |item|
+      puts "#{item[:amount]} x #{item[:dish].name}"
+    end
+  end
+
   private
 
   def on_menu?(dish)
@@ -31,5 +39,9 @@ class Order
 
   def dish_on_order?(dish)
     @items.any? { |item| item[:dish] == dish }
+  end
+
+  def empty_order?
+    @items.empty?
   end
 end

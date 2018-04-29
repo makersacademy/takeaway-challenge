@@ -33,7 +33,7 @@ describe Order do
       expect(subject.items).to eq [{ dish: pasta, amount: 2 }]
     end
 
-    it "should add multiple dishes" do
+    it 'should add multiple dishes' do
       subject.add(pasta, 2)
       subject.add(bolognese, 1)
       subject.add(bolognese, 1)
@@ -44,6 +44,20 @@ describe Order do
         { dish: salad, amount: 1 }
       ]
       expect(subject.items).to eq items
+    end
+  end
+
+  describe '#list' do
+    it 'should throw error for empty order' do
+      expect { subject.list }.to raise_error 'The order is empty'
+    end
+
+    it 'should list the items on the order' do
+      subject.add(pasta, 2)
+      subject.add(bolognese, 2)
+      subject.add(salad, 1)
+      order_list = "2 x Pasta\n2 x Bolognese\n1 x Salad\n"
+      expect { subject.list }.to output(order_list).to_stdout
     end
   end
 end
