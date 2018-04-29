@@ -16,4 +16,5 @@ class Menu
       puts "#{index + 1}) #{dish.name} - £#{dish.price}"
     end
   end
+
 end

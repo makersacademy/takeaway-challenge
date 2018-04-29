@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
 
-  let(:dish) { double :dish , name: 'Curry', price: '5' }
+  let(:dish) { double :dish , name: 'Curry', price: 5 }
 
   describe '#initializes' do
     it 'it initializes with an array' do
@@ -23,4 +23,6 @@ describe Menu do
       expect { subject.pretty_print }.to output("1) Curry - £5\n").to_stdout
     end
   end
+
+  
 end
