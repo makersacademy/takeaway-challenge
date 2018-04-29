@@ -27,14 +27,7 @@ class Order
 
   def checkout(payment)
     fail "Incorrect amount, check the current price!" if payment != price
-    account_sid = ENV['ACC_SID']
-    auth_token = ENV['AUTH_TOKEN']
-
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.messages.create(
-      body: message_body,
-      to: ENV['MY_NUM'],
-      from: ENV['TWIL_NUM'])
+    send_text
     "Checkout complete!"
   end
 
@@ -51,6 +44,17 @@ class Order
 
   def delivery_time
     "#{Time.new.hour}:#{Time.new.min + 10}"
+  end
+
+  def send_text
+    account_sid = ENV['ACC_SID']
+    auth_token = ENV['AUTH_TOKEN']
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.messages.create(
+      body: message_body,
+      to: ENV['MY_NUM'],
+      from: ENV['TWIL_NUM'])
   end
 
 end
