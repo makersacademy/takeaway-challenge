@@ -73,4 +73,21 @@ describe Order do
       expect(subject.total).to eq 22
     end
   end
+
+  describe '#confirm' do
+    it 'should throw error for empty order' do
+      expect { subject.confirm }.to raise_error 'The order is empty'
+    end
+
+    it 'should return a message for a full order' do
+      time = Time.new
+      hour = (time.hour + 1) % 24
+      min = time.min
+      message = "Thank you! Your order was placed and will be delivered before #{hour}:#{min}"
+      subject.add(pasta, 2)
+      subject.add(bolognese, 2)
+      subject.add(salad, 1)
+      expect { subject.confirm }.to output(message).to_stdout
+    end
+  end
 end

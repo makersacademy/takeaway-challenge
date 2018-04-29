@@ -27,6 +27,10 @@ class Order
     @items.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
   end
 
+  def confirm
+    check_empty_order
+  end
+
   private
 
   def on_menu?(dish)
