@@ -27,12 +27,19 @@ describe Order do
 
   describe '#checkout', :check do
     it 'Creates a new message using the twilio API' do
-      subject.checkout
+      subject.choose(selection, 2)
+      subject.checkout(4)
       expect(Twilio::REST::Client).to have_received(:new)
     end
 
     it 'Returns a message upon checkout' do
-      expect(subject.checkout).to eq "Checkout complete!"
+      subject.choose(selection, 2)
+      expect(subject.checkout(4)).to eq "Checkout complete!"
+    end
+
+    it 'Raises an error if payment is not equal to cost' do
+      subject.choose(selection, 2)
+      expect { subject.checkout(2) }.to raise_error "This is not the correct amount, check the current price!"
     end
   end
 end

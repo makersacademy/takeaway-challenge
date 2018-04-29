@@ -21,7 +21,8 @@ class Order
     @meal.basket
   end
 
-  def checkout
+  def checkout(payment_value)
+    fail "This is not the correct amount, check the current price!" if payment_value != price
     account_sid = ENV['ACC_SID']
     auth_token = ENV['AUTH_TOKEN']
 
