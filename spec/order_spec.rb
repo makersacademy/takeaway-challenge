@@ -3,7 +3,7 @@ require 'order'
 describe Order do
   let(:order) { 'Gagh, 2, 11.98' }
   let(:order_wrong) { 'Gagh, 2, 5.99' }
-  let(:menu) { { 'Gagh' => 5.99,'Spice Melange' => 10.99 } }
+  let(:menu) { { 'Gagh' => 5.99, 'Spice Melange' => 10.99 } }
   let(:subject) { described_class.new(order, menu) }
   let(:subject_wrong_order) { described_class.new(order_wrong, menu) }
 
@@ -23,5 +23,4 @@ describe Order do
       expect(subject_wrong_order.correct?).to be false
     end
   end
-
 end

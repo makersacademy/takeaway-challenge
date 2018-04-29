@@ -11,8 +11,8 @@ class Dispatcher
   def dispatch(order_id)
     @client.messages.create(
     body: "Thank you! Your order #{order_id} was placed and will be delivered before #{calculate_time}",
-    to: "+445555555555",
-    from: "+15005550006"
+    to: "#{ENV['TWILIO_TO_NUMBER']}",
+    from: "#{ENV['TWILIO_FROM_NUMBER']}"
 )
   end
 
@@ -23,6 +23,3 @@ class Dispatcher
   end
 
 end
-
-
-
