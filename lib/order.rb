@@ -1,4 +1,5 @@
 require_relative 'menu.rb'
+require_relative 'send_text.rb'
 
 class Order
 
@@ -12,7 +13,8 @@ class Order
   def ask_for_order
     @menu = @menu_class.new
     @menu.menu_load
-    puts "To view the menu enter '.view menu' to make a order enter '.make order(dish name, quantity)'"
+    puts "To view the menu enter '.view menu' to make a order enter
+      '.make order(dish name, quantity)'"
     puts "once you have made your order run confirm with the total"
   end
 
@@ -30,8 +32,9 @@ class Order
       puts "#{dish.quantity}. #{dish.name} Price: £#{dish.price}"
       total += (dish.quantity * dish.price)
     end
-    if total == amount.to_f
-      puts "confirm order"
+    if total.round(2) == amount
+      mob = Mobile.new
+      mob.send_text
     else
       raise "not the right money"
     end

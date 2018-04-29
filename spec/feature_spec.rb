@@ -1,8 +1,14 @@
 require 'order.rb'
 
 describe 'scenarios' do
-  let(:subject)  {Order.new}
+  let(:subject) { Order.new }
   describe 'Confirm with correct order' do
+
+    it 'should send a text' do
+      subject.make_order("Chicken Burger", 1)
+      subject.make_order("BBQ Chicken Wings", 1)
+      subject.confirm(14.70)
+    end
 
     it 'should return the correct order' do
       subject.make_order("Chicken Burger", 2)

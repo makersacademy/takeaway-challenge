@@ -19,7 +19,7 @@ class Menu
         add_to_order(quantity, dish)
         break
       elsif dish == @temp_dishes[-1]
-       raise "There is no dish with that name"
+        raise "There is no dish with that name"
       end
     end
   end
@@ -30,19 +30,16 @@ class Menu
 
   def menu_load
     @menu_csv.each do |row|
-      @dishes << @dish_class.new(row[0],row[1],row[2])
+      @dishes << @dish_class.new(row[0], row[1], row[2])
     end
     create_temp_dishes
   end
 
   def add_to_order(input, dish)
-    if input.to_i > dish.quantity
-      raise "Sorry there is not enough in stock"
-    else
-      dish.quantity -= input.to_i
-      @current_order << dish.dup
-      @current_order[-1].quantity += input.to_i
-    end
+    raise "Sorry there is not enough in stock" if input.to_i > dish.quantity
+    dish.quantity -= input.to_i
+    @current_order << dish.dup
+    @current_order[-1].quantity = input.to_i
   end
 
   private
@@ -64,11 +61,11 @@ class Menu
     puts ":--------------------------------------------:"
     puts "| ITEM                             | PRICE   |"
     @menu_csv.each do |row|
-      puts":----------------------------------+---------:"
+      puts ":----------------------------------+---------:"
       price = '%.2f' % row[1]
       string = "| " + row[0].ljust(33) + "| " + price.to_s.ljust(8) + "|"
       puts string
     end
-      puts"'----------------------------------'---------'"
+    puts "'----------------------------------'---------'"
   end
 end

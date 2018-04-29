@@ -1,7 +1,8 @@
 require 'dish'
 
 describe Dish do
-subject {Dish.new(:chips, 2.50, 3)} 
+  subject { Dish.new(:chips, 2.50, 3) }
+
   it 'has a name' do
     expect(subject).to respond_to(:name)
   end
@@ -19,6 +20,4 @@ subject {Dish.new(:chips, 2.50, 3)}
       expect(subject.quantity).to eq 3
     end
   end
-
-
 end
