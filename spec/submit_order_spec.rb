@@ -8,7 +8,7 @@ describe SubmitOrder do
     end
     it "Doesn't send when the order is empty" do
       order = {}
-      expect{ subject.submit(order) }.to raise_error(RuntimeError)
+      expect { subject.submit(order) }.to raise_error(RuntimeError)
     end
   end
 end
