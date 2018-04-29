@@ -31,7 +31,7 @@ Takeaway|.menu
 
 I then diagrammed the program model, where the `Takeaway` class acts as a command & control centre, delegating the heavy-lifting to other classes, as follows:
 
-![diagram] (./takeaway_diagram.png)
+![diagram] (https://github.com/nixlim/takeaway-challenge/blob/master/takeaway_diagram.png)
 
 
 #### Running tests
