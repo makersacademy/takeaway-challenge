@@ -3,8 +3,7 @@ class Dish
   attr_reader :name, :price, :dish_info
 
   def initialize(name:, price:)
-    @name = name
-    @price = price
+    @name, @price = name, price
     @dish_info = {}
   end
 
