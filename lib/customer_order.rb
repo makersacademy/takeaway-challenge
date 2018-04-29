@@ -14,6 +14,11 @@ class CustomerOrder
     @selection << {dish: dish, quantity: quantity}
   end
 
+  def total
+    calculate_bill
+    puts "Current order amounts to: £#{@bill.total}"
+  end
+
   def process(customer_amount)
     validate_payment(customer_amount)
     @text.send
@@ -23,11 +28,13 @@ class CustomerOrder
 
   def validate_payment(customer_amount)
     raise "Error: Incorrect payment!" unless bill_valid?(customer_amount)
+    puts "Order successful! A text has been sent confirming your order!"
   end
 
   def validate_dish(dish, quantity)
     raise "Error: Dish is not in menu!" unless @menu.available?(dish)
     raise "Error: Invalid quantity!" unless quantity.is_a? Integer
+    puts "#{quantity}x #{dish} added to order!"
   end
 
   def bill_valid?(customer_amount)

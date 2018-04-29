@@ -46,6 +46,21 @@ describe CustomerOrder do
 
   end
 
+  describe '#current_order' do
+
+    before do
+      allow(menu).to receive(:available?).with(dish).and_return(true)
+      allow(bill).to receive(:calculate_bill)
+      allow(bill).to receive(:total).and_return(order_value)
+      order.select_dish(dish, quantity)
+    end
+
+    it 'prints the current order value' do
+      expect{ order.total }.to output("Current order amounts to: £17.98\n").to_stdout
+    end
+
+  end
+
   describe '#process_order' do
 
     before do
