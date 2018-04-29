@@ -28,11 +28,26 @@ describe TakeAway do
     end
   end
 
-  describe '#basket_total' do
-    it 'prints the total price of all items in the basket' do
+  context 'adds one of each dish to basket' do
+    before do
       take_away.add_to_basket(1)
       take_away.add_to_basket(2)
-      expect(take_away.basket_total).to eq('The current total of your order is £7')
+    end
+
+    describe '#basket_total' do
+      it 'prints the total price of all items in the basket' do
+        expect(take_away.basket_total).to eq('The current total of your order is £7')
+      end
+    end
+
+    describe '#checkout' do
+      it 'prints confirmation if input price equals basket total' do
+        expect { take_away.checkout(7) }.to output("Thanks. Text confirmation has been sent.\n").to_stdout
+      end
+
+      it 'raises an error if input price does not equal basket total' do
+        expect { take_away.checkout(5) }.to raise_error('Input payment does not equal basket total.')
+      end 
     end
   end
 end

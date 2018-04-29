@@ -22,6 +22,10 @@ class TakeAway
     "The current total of your order is £#{@basket.total}"
   end
 
+  def checkout(price)
+    price != @basket.total ? payment_error : confirmation_message
+  end
+
   private
 
   def print_header
@@ -31,6 +35,14 @@ class TakeAway
 
   def print_footer
     puts '=' * 30
+  end
+
+  def payment_error
+    raise 'Input payment does not equal basket total.'
+  end
+
+  def confirmation_message
+    puts 'Thanks. Text confirmation has been sent.'
   end
 
 end
