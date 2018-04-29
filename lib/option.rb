@@ -1,5 +1,5 @@
 class Option
-  attr_reader :meals, :menu
+    attr_reader :meals, :menu
 
   def initialize(menu = Menu.new)
     @meals = []
