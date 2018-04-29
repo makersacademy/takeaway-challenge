@@ -4,17 +4,17 @@ require './lib/customer_order'
 require './lib/bill'
 require './lib/text'
 
-@menu = [{dish: 'Hawaiian' , price: '8.99'},
-  {dish: 'BBQ Original', price: '6.99'},
-  {dish: 'Vegeterian', price: '7.99'},
-  {dish: 'Four Seasons', price: '5.99'},
-  {dish: 'Seafood' , price: '8.99'},
-  {dish: 'Margerita' , price: '4.99'},
-  {dish: 'Ceasar Salad' , price: '5.90'}
+@menu = [{ dish: 'Hawaiian', price: '8.99' },
+  { dish: 'BBQ Original', price: '6.99' },
+  { dish: 'Vegeterian', price: '7.99' },
+  { dish: 'Four Seasons', price: '5.99' },
+  { dish: 'Seafood', price: '8.99' },
+  { dish: 'Margerita', price: '4.99' },
+  { dish: 'Ceasar Salad', price: '5.90' }
  ]
 
-@order_1 = {dish:'Hawaiian', quantity: 2}
-@order_2 = {dish:'Seafood', quantity: 4}
+@order_1 = { dish: 'Hawaiian', quantity: 2 }
+@order_2 = { dish: 'Seafood', quantity: 4 }
 
 def typical_order
   menu = Menu.new(@menu)

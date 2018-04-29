@@ -1,9 +1,10 @@
 describe CustomerOrder do
 
   let(:order) { CustomerOrder.new(menu, bill, text) }
-  let(:list) { [{dish: 'Hawaiian' , price: '8.99'},
-    {dish: 'BBQ Original', price: '6.99'},]}
-  let(:menu) { double :menu, list: list}
+  let(:list) { [{ dish: 'Hawaiian', price: '8.99' },
+    { dish: 'BBQ Original', price: '6.99' }]
+  }
+  let(:menu) { double :menu, list: list }
 
   let(:dish) { 'Hawaiian' }
   let(:quantity) { 2 }
@@ -11,10 +12,10 @@ describe CustomerOrder do
   let(:invalid_quantity) { 2.5 }
   let(:order_value) { 17.98 }
   let(:customer_amount) { 17.98 }
-  let(:incorrect_customer_amount) { 15.00 }
+  let(:incorrect_amount) { 15.00 }
 
   let(:bill) { double :bill, is_valid?: true }
-  let(:message) { 'Thank you! Your order was placed and will be delivered before 18:52' }
+  let(:message) { 'Thank you! Order was placed and will be delivered before 18:52' }
   let(:text) { double :text, send: message }
 
   describe '#select_dishes' do
@@ -25,12 +26,14 @@ describe CustomerOrder do
     end
 
     it 'saves selection' do
-      expect(order.selection).to eq [{dish: dish, quantity: quantity}]
+      expect(order.selection).to eq [{ dish: dish, quantity: quantity }]
     end
 
     it 'saves multiple selections' do
       order.select_dish(dish, quantity)
-      expect(order.selection).to eq [{dish: dish, quantity: quantity}, {dish: dish, quantity: quantity}]
+      multi_order = [{ dish: dish, quantity: quantity },
+        { dish: dish, quantity: quantity }]
+      expect(order.selection).to eq multi_order
     end
 
     it 'returns error if dish is not in menu' do
@@ -56,7 +59,7 @@ describe CustomerOrder do
     end
 
     it 'prints the current order value' do
-      expect{ order.total }.to output("Current order amounts to: £17.98\n").to_stdout
+      expect { order.total }.to output("Current order amounts to: £17.98\n").to_stdout
     end
 
   end
@@ -79,9 +82,9 @@ describe CustomerOrder do
 
     context 'order is not processed correctly' do
       it 'raise error to customer' do
-        allow(bill).to receive(:is_valid?).with(incorrect_customer_amount)
+        allow(bill).to receive(:is_valid?).with(incorrect_amount)
         order.select_dish(dish, quantity)
-        expect{ order.process(incorrect_customer_amount) }.to raise_error "Error: Incorrect payment!"
+        expect { order.process(incorrect_amount) }.to raise_error "Error: Incorrect payment!"
       end
     end
 

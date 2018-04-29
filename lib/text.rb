@@ -10,10 +10,9 @@ class Text
     @client.api.account.messages.create(
       from: Config::TPHONE,
       to: Config::PHONE,
-      body: 'Thank you! Your order was placed and will be delivered before 18:52'
+      body: 'Thank you! Order was placed and will be delivered before 18:52'
     )
-
-      puts "Order successful! A text has been sent confirming your order!"
+    puts "Order successful! A text has been sent confirming your order!"
   end
 
 end

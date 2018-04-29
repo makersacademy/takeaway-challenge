@@ -2,19 +2,20 @@ require './spec/spec_helper.rb'
 
 feature "Take Away Challenge" do
 
-  list = [{dish: 'Hawaiian' , price: '8.99'},
-    {dish: 'BBQ Original', price: '6.99'},
-    {dish: 'Vegeterian', price: '7.99'},
-    {dish: 'Four Seasons', price: '5.99'},
-    {dish: 'Seafood' , price: '8.99'},
-    {dish: 'Margerita' , price: '4.99'},
-    {dish: 'Ceasar Salad' , price: '5.90'}
-   ]
+  list = [{ dish: 'Hawaiian', price: '8.99' },
+  { dish: 'BBQ Original', price: '6.99' },
+  { dish: 'Vegeterian', price: '7.99' },
+  { dish: 'Four Seasons', price: '5.99' },
+  { dish: 'Seafood', price: '8.99' },
+  { dish: 'Margerita', price: '4.99' },
+  { dish: 'Ceasar Salad', price: '5.90' }
+  ]
 
-   let(:menu) {Menu.new(list)}
-   let(:text) {Text.new}
-   let(:bill) {Bill.new}
-   let(:order) {CustomerOrder.new(menu, bill, text)}
+  let(:menu) { Menu.new(list) }
+  let(:text) { Text.new }
+  let(:bill) { Bill.new }
+  let(:order) { CustomerOrder.new(menu, bill, text) }
+  let(:customer_amount) { 41.95 }
 
   # As a customer
   # So that I can check if I want to order something
@@ -33,7 +34,7 @@ feature "Take Away Challenge" do
     order_2 = ['Vegeterian', 3]
     order.select_dish(order_1[0], order_1[1])
     order.select_dish(order_2[0], order_2[1])
-    orders = [{dish: 'Hawaiian', quantity: 2},{dish: 'Vegeterian', quantity: 3}]
+    orders = [{ dish: 'Hawaiian', quantity: 2 }, { dish: 'Vegeterian', quantity: 3 }]
     expect(order.selection).to eq orders
   end
 
@@ -44,7 +45,6 @@ feature "Take Away Challenge" do
   scenario "Verify total" do
     order_1 = ['Hawaiian', 2]
     order_2 = ['Vegeterian', 3]
-    customer_amount = 41.95
     order.select_dish(order_1[0], order_1[1])
     order.select_dish(order_2[0], order_2[1])
     # order.process(customer_amount)
@@ -58,7 +58,6 @@ feature "Take Away Challenge" do
   scenario "Send Text" do
     order_1 = ['Hawaiian', 2]
     order_2 = ['Vegeterian', 3]
-    customer_amount = 41.95
     order.select_dish(order_1[0], order_1[1])
     order.select_dish(order_2[0], order_2[1])
     # order.process(customer_amount)

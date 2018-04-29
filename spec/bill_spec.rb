@@ -2,10 +2,12 @@ describe Bill do
 
   subject(:bill) { Bill.new }
 
-  let(:menu) { [{dish: 'Hawaiian' , price: '8.99'},
-    {dish: 'BBQ Original', price: '6.99'},]}
-  let(:customer_order) { [{dish: 'Hawaiian', quantity: 4},
-    {dish: 'BBQ Original', quantity: 5}] }
+  let(:menu) { [{ dish: 'Hawaiian', price: '8.99' },
+    { dish: 'BBQ Original', price: '6.99' }]
+  }
+  let(:customer_order) { [{ dish: 'Hawaiian', quantity: 4 },
+    { dish: 'BBQ Original', quantity: 5 }]
+  }
   let(:order_value) { 70.91 }
 
   describe '#initialize' do

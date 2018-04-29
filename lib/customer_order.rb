@@ -11,7 +11,7 @@ class CustomerOrder
 
   def select_dish(dish, quantity)
     validate_dish(dish, quantity)
-    @selection << {dish: dish, quantity: quantity}
+    @selection << { dish: dish, quantity: quantity }
   end
 
   def total

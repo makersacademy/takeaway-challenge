@@ -1,8 +1,8 @@
 describe Menu do
 
-  let(:mock_list) { [{dish: 'Hawaiian' , price: '8.99'}] }
+  let(:mock_list) { [{ dish: 'Hawaiian', price: '8.99' }] }
   let(:invalid_dish) { 'Tortellini' }
-  subject(:menu) { Menu.new(list = mock_list) }
+  subject(:menu) { Menu.new(mock_list) }
 
   describe "#list" do
 
@@ -15,7 +15,7 @@ describe Menu do
   describe "#print" do
 
     it "pretty prints the menu" do
-      expect{ menu.printed }.to output("1. Hawaiian: £8.99\n").to_stdout
+      expect { menu.printed }.to output("1. Hawaiian: £8.99\n").to_stdout
     end
 
   end
