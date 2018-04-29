@@ -1,6 +1,9 @@
+require_relative 'send_message'
+
 class SubmitOrder
-  def initialize(message_type = SendMessage)
+  def initialize(message_type = SendMessage, test = false)
     @message_type = message_type
+    @test = test
   end
 
   def submit(order)
@@ -11,7 +14,7 @@ class SubmitOrder
   private
 
   def text_confirmation
-    messenger = @message_type.new(true)
+    messenger = @message_type.new(@test)
     messenger.send
     "Order submitted"
   end

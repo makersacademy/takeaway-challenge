@@ -1,6 +1,7 @@
 require 'submit_order'
 
 describe SubmitOrder do
+  let(:subject) { SubmitOrder.new(SendMessage, true) }
   context '#submit' do
     it 'Sends when order valid' do
       order = { 'Dish one' => [4.5, 2] }

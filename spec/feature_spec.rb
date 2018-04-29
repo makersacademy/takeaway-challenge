@@ -1,9 +1,11 @@
 require 'menu'
 require 'order'
+require 'submit_order'
 
 describe 'Feature test' do
   let(:menu) { Menu.new }
   let(:order) { Order.new }
+  let(:submit_order) { SubmitOrder.new(SendMessage, true) }
 
   let(:number_of_dishes) { 5 }
   let(:dish_names) { ['Dish one', 'Dish two', 'Dish three', 'Dish four', 'Dish five'] }
@@ -39,7 +41,16 @@ describe 'Feature test' do
       order.add_to_basket(menu.dishes[0], 2)
       order.add_to_basket(menu.dishes[1], 2)
       order.add_to_basket(menu.dishes[0], 1)
+      expect(order.basket.length).to eq 2
       expect(order.current_total).to eq(dish_prices[0] * 3 + dish_prices[1] * 2)
+    end
+  end
+
+  context 'Submit order' do
+    it 'Simple one dish order' do
+      build_menu
+      order.add_to_basket(menu.dishes[0], 2)
+      expect(submit_order.submit(order.basket)).to eq "Order submitted"
     end
   end
 end
