@@ -1,6 +1,6 @@
 class CustomerOrder
 
-  attr_reader :selection
+  attr_reader :selection, :bill
 
   def initialize(menu = Menu.new, bill = Bill.new, text = Text.new)
     @menu = menu
@@ -15,8 +15,14 @@ class CustomerOrder
   end
 
   def process(customer_amount)
-    raise "Error: Incorrect payment!" unless bill_valid?(customer_amount)
+    validate_payment(customer_amount)
     @text.send
+  end
+
+  private
+
+  def validate_payment(customer_amount)
+    raise "Error: Incorrect payment!" unless bill_valid?(customer_amount)
   end
 
   def validate_dish(dish, quantity)

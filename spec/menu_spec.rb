@@ -1,7 +1,7 @@
 describe Menu do
 
-  mock_list = [{dish: 'Hawaiian' , price: '8.99'}]
-  invalid_dish = 'Tortellini'
+  let(:mock_list) { [{dish: 'Hawaiian' , price: '8.99'}] }
+  let(:invalid_dish) { 'Tortellini' }
   subject(:menu) { Menu.new(list = mock_list) }
 
   describe "#list" do
@@ -20,7 +20,7 @@ describe Menu do
 
   end
 
-  describe '#in_menu?' do
+  describe '#available?' do
 
     it 'returns false if dish is not in menu' do
       expect(menu.available?(invalid_dish)).to be false

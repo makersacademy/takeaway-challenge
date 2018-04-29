@@ -47,7 +47,8 @@ feature "Take Away Challenge" do
     customer_amount = 41.95
     order.select_dish(order_1[0], order_1[1])
     order.select_dish(order_2[0], order_2[1])
-    expect(order.bill_valid?(customer_amount)).to be true
+    order.process(customer_amount)
+    expect(order.bill.total == customer_amount).to be true
   end
 
   # As a customer
