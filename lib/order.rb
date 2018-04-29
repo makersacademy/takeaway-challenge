@@ -14,11 +14,17 @@ class Order
   end
 
   def list
-    raise 'The order is empty' if empty_order?
+    check_empty_order
 
     @items.each do |item|
       puts "#{item[:amount]} x #{item[:dish].name}"
     end
+  end
+
+  def total
+    check_empty_order
+
+    @items.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
   end
 
   private
@@ -29,7 +35,7 @@ class Order
 
   def add_existing_dish(dish, amount)
     @items.each do |item|
-      item[:amount] += amount if item[:dish] == dish
+      item[:amount] += amount if same?(item, dish)
     end
   end
 
@@ -38,10 +44,18 @@ class Order
   end
 
   def dish_on_order?(dish)
-    @items.any? { |item| item[:dish] == dish }
+    @items.any? { |item| same?(item, dish) }
+  end
+
+  def same?(item, dish)
+    item[:dish] == dish
   end
 
   def empty_order?
     @items.empty?
+  end
+
+  def check_empty_order
+    raise 'The order is empty' if empty_order?
   end
 end

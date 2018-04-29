@@ -60,4 +60,17 @@ describe Order do
       expect { subject.list }.to output(order_list).to_stdout
     end
   end
+
+  describe '#total' do
+    it 'should throw error for empty order' do
+      expect { subject.total }.to raise_error 'The order is empty'
+    end
+
+    it 'should return the total cost for a full order' do
+      subject.add(pasta, 2)
+      subject.add(bolognese, 2)
+      subject.add(salad, 1)
+      expect(subject.total).to eq 22
+    end
+  end
 end
