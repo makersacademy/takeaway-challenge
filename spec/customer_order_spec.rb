@@ -7,6 +7,7 @@ describe CustomerOrder do
     {dish: 'BBQ Original', price: '6.99'},]}
   let(:dishes) { double :dishes, menu: menu}
   let(:bill) { double :bill }
+  let(:text) { double :text }
 
   describe '#select_dishes' do
 
@@ -35,6 +36,22 @@ describe CustomerOrder do
       message = "Error: Invalid quantity!"
       allow(dishes).to receive(:in_menu?).with(dish).and_return(true)
       expect { order.select_dish(dish, invalid_quantity) }.to raise_error message
+    end
+
+  end
+
+  describe '#process_order' do
+
+    context 'order is processed correctly' do
+      it 'sends text to customer' do
+        message = 'Thank you! Your order was placed and will be delivered before 18:52'
+        allow(dishes).to receive(:in_menu?).with(dish).and_return(true)
+        allow(text).to receive(:send).and_return(message)
+        order.select_dish(dish, quantity)
+        order.select_dish(dish, quantity)
+        order.process
+        expect(order.text.send).to eq message
+      end
     end
 
   end

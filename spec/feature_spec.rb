@@ -59,7 +59,6 @@ feature "Take Away Challenge" do
     customer_amount = 41.95
     order.select_dish(order_1[0], order_1[1])
     order.select_dish(order_2[0], order_2[1])
-
   end
 
 end

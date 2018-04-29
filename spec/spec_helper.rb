@@ -4,6 +4,7 @@ require 'customer_order'
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+require 'text'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
