@@ -31,6 +31,7 @@ Takeaway|.menu
 
 I then diagrammed the program model, where the `Takeaway` class acts as a command & control centre, delegating the heavy-lifting to other classes, as follows:
 
+
 ![diagram](/img/takeaway_diagram.png)
 
 #### Running tests
