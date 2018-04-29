@@ -9,6 +9,6 @@
 #     order.add(bolognese, 2)
 #     order.add(salad, 1)
 #     time = Time.now
-#     expect { order.confirm }.to output("Thank you! Your order was placed and will be delivered before #{time.hour + 1}:#{time.min}").to_stdout
+#     expect { order.confirm }.to output("Your order was placed and will be delivered before #{time.hour + 1}:#{time.min}\n").to_stdout
 #   end
 # end
