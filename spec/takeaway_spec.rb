@@ -20,13 +20,13 @@ describe Takeaway do
     expect(takeaway.total).to eq 0
   end
 
-  it "should have an attribute reader Basket" do
+  it "should have an attribute reader basket" do
     expect(takeaway).to respond_to(:basket)
   end
 
   describe ' #add_to_basket ' do
     it "should return a confirmation of what has been added to basket" do
-      expect(takeaway.add_to_basket(item, quantity)).to eq("Order confirmed: #{item} x#{quantity}")
+      expect(takeaway.add_to_basket(item, quantity)).to eq("Added: #{item} x#{quantity}")
     end
 
     it "should add item and quantity to the Basket's items hash" do
@@ -43,6 +43,17 @@ describe Takeaway do
     it "should return a list of ordered items" do
       takeaway.add_to_basket(item, quantity)
       expect(takeaway.receipt).to eq("panda_pop (x2) --- £2, Total: £2.00")
+    end
+  end
+
+  describe ' #checkout ' do
+    it "should raise error if expected total doesn't match actual total" do
+      expect { takeaway.checkout(10) }.to raise_error("Incorrect total")
+    end
+
+    it "should print the receipt if total is correct" do
+      takeaway.add_to_basket(item, quantity)
+      expect(takeaway.checkout(2)).to eq("panda_pop (x2) --- £2, Total: £2.00")
     end
   end
 

@@ -19,15 +19,20 @@ class Takeaway
     raise "This item is unavailable" unless available?(item)
     @basket.items[item] += quantity
     increment_total(item, quantity)
-    "Order confirmed: #{item} x#{quantity}"
+    "Added: #{item} x#{quantity}"
   end
 
   def receipt
-    receipt_statement = ""
+    statement = ""
     @basket.items.each do |item, quantity|
-      receipt_statement += "#{item} (x#{quantity}) --- £#{item_total(item, quantity)}, "
+      statement += "#{item} (x#{quantity}) --- £#{item_total(item, quantity)}, "
     end
-    receipt_statement + "Total: £#{"%.2f" % @total}"
+    statement + "Total: £#{"%.2f" % @total}"
+  end
+
+  def checkout(expected_total)
+    raise "Incorrect total" unless correct_total?(expected_total)
+    receipt
   end
 
   private
@@ -42,6 +47,10 @@ class Takeaway
 
   def increment_total(item, quantity)
     @total += @menu[item] * quantity
+  end
+
+  def correct_total?(expected_total)
+    expected_total == @total
   end
 
 end
