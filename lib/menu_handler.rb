@@ -1,11 +1,12 @@
 require 'csv'
 require 'find'
 
+
 class Menu_handler
 
   attr_reader :file_summaries
 
-  ROOT = '/Users/georgesykes/Projects/MakersAcademy/WeekendChallenges/takeaway-challenge/resources/menus/'
+  ROOT = File.join(File.dirname(__FILE__), '../resources/menus/')
 
   def initialize(root = ROOT)
     @root = root
