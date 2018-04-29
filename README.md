@@ -3,7 +3,7 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            | MUZZI |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -14,66 +14,44 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+ ## Project Overview ##
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+ This application has been built to create an interactive take away simulation for
+ use in a REPL environment.
+ It allows the user to create custom dishes, menus and take aways.
+ The user can display their menus, select items to put in their basket and confirm payment.
+ Orders are also confirmed via an automated text message.
+ This has been created to solve the user stories set out in the challenge, however it requires more work to finesse the extra features put into it such as the user interface.
 
-Task
------
+ ## How to use ##
+ + Fork this repository and clone it to your machine
+ + Run the command ``` gem install bundle ```
+ + Run ``` bundle ```
+ + Open a REPL environment
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+ For customer use:
+ + Require ``` ./lib/user_interface.rb ```
+ + Follow the automated instructions in the terminal
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+ For restaurant use (building menus and testing order functions):
+ + Require ``` ./lib/take_away.rb ```
+ + Type ``` dish = Dish.new(a, b)``` to create a new dish called "dish", where "a" is the name of the dish and b is the price as an integer.
+ + Type ``` my_restaurant = TakeAway.new(a) ``` to create a new take away called "my_restaurant", where "a" is an optional name input.
+ + Type ``` my_restaurant.add_menu_item(dish) ``` to add dish to the new menu.
+ + Type ``` my_restaurant.display_menu ``` to print out your menu.
+ + Type ``` my_restaurant.add_to_basket ``` to add a listed menu item to the shopping basket.
+ + Type ``` my_restaurant.basket_total ``` to see the current cost of the shopping basket.
+ + Type ``` my_restaurant.checkout(a) ``` to confirm payment of "a" amount. If "a" matches the basket total, text confirmation of the order will be sent via sms.
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+ ## The following technologies were used in the creation of this system: ##
+ + Rake
+ + RuboCop
+ + SimpleCov
+ + Capybara
+ + Twilio
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+ ## Testing ##
+ Rspec was used to test-drive this application.
+ If you would like to see the tests run, simply type
+ ``` rspec ```
+ from the project directory

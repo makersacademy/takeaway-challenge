@@ -1,5 +1,5 @@
 class Order
-attr_accessor :items
+  attr_accessor :items
 
   def initialize
     @items = []
@@ -10,5 +10,5 @@ attr_accessor :items
     @items.each { |item| total += item.price }
     total
   end
-  
+
 end

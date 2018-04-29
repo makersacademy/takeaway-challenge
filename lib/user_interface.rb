@@ -30,7 +30,7 @@ while true do
        '3) Cancel order'
   choice = gets.chomp
   case choice
-  when  '1'
+  when '1'
     take_away.basket_total
   when '2'
     puts 'Enter the exact payment amount to continue: '

@@ -2,8 +2,8 @@ require 'take_away'
 
 describe TakeAway do
 
-  let(:dish) { double :dish , name: 'Curry', price: 5}
-  let(:dish2) { double :dish , name: 'Chips', price: 2 }
+  let(:dish) { double :dish, name: 'Curry', price: 5 }
+  let(:dish2) { double :dish, name: 'Chips', price: 2 }
   let(:menu) { double :menu, list: [dish, dish2], pretty_print: "1) Curry - £5\n2) Chips - £2\n" }
   let(:take_away) { TakeAway.new('Los Pollos Hermanos', menu) }
 
@@ -42,7 +42,7 @@ describe TakeAway do
     end
 
     describe '#checkout' do
-      let(:messenger) { double :messenger , message: 'text sent'}
+      let(:messenger) { double :messenger, message: 'text sent' } 
       it 'prints confirmation if input price equals basket total' do
         expect { take_away.checkout(7, messenger) }.to output("Thanks. Text confirmation has been sent.\n").to_stdout
       end
