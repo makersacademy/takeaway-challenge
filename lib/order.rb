@@ -31,7 +31,7 @@ class Order
   end
 
   def confirm_order
-    @your_order_print.join
+    @your_order_print.join(",")
     puts "Your order is #{@your_order_print} and the total is £#{@sum}0"
     require './lib/send-sms.rb'
   end
