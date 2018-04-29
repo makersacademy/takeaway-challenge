@@ -33,7 +33,6 @@ I then diagrammed the program model, where the `Takeaway` class acts as a comman
 
 ![diagram] (/img/takeaway_diagram.png)
 
-
 #### Running tests
 
 Run `rspec -fd` from the project directory to run the entire suite.
