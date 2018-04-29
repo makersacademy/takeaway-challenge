@@ -1,5 +1,6 @@
-describe Menu_handler do
-  let(:menu_handler) { described_class.new('/Users/georgesykes/Projects/MakersAcademy/WeekendChallenges/takeaway-challenge/test_resources') }
+describe MenuHandler do
+  let(:test_root) { File.join(File.dirname(__FILE__), '../test_resources/') }
+  let(:menu_handler) { described_class.new(test_root) }
 
   describe '#initialize' do
 
@@ -8,7 +9,7 @@ describe Menu_handler do
     end
 
     it 'sets the root' do
-      expect(menu_handler.instance_variable_get(:@root)).to eq '/Users/georgesykes/Projects/MakersAcademy/WeekendChallenges/takeaway-challenge/test_resources'
+      expect(menu_handler.instance_variable_get(:@root)).to eq test_root
     end
 
     it 'sets the category of the menus' do

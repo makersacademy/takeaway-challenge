@@ -1,8 +1,7 @@
 require 'csv'
 require 'find'
 
-
-class Menu_handler
+class MenuHandler
 
   attr_reader :file_summaries
 
@@ -15,7 +14,10 @@ class Menu_handler
   end
 
   def menu_items(category)
-    path = @file_summaries.select { |file_sum| file_sum[:category] == category }.first[:path]
+    path = @file_summaries.select do |file_sum|
+      file_sum[:category] == category
+    end.first[:path]
+
     load_menu_items(path)
   end
 
@@ -39,10 +41,11 @@ class Menu_handler
     CSV.open(filepath) do |csv|
       flag, category, summary = csv.first
       if flag == "Description"
-      @file_summaries << { path: filepath,
-                           summary: summary,
-                           category: category
-                         }
+        @file_summaries << {
+                             path: filepath,
+                             summary: summary,
+                             category: category
+        }
       end
     end
   end

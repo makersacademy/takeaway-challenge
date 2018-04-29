@@ -1,13 +1,13 @@
 require_relative './message_handler'
 
-class Order_verifier
+class OrderVerifier
 
-  def initialize(message_handler = Message_handler.new)
+  def initialize(message_handler = MessageHandler.new)
     @message_handler = message_handler
   end
 
   def process_order(order)
-    raise "Order total does not match" if !check_total(order)
+    raise "Order total does not match" unless check_total(order)
     place_order(order)
   end
 

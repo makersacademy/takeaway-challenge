@@ -1,4 +1,4 @@
-describe Order_verifier do
+describe OrderVerifier do
 
   let(:selected_dishes) { [["a", 7.00, 1], ["b", 5.50, 2]] }
   let(:order) { double :order, selected_dishes: selected_dishes }

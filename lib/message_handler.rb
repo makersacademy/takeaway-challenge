@@ -1,6 +1,6 @@
 require 'twilio-ruby'
 
-class Message_handler
+class MessageHandler
 
   def initialize
     @account_sid = ENV["TWILIO_AC_SID"]
@@ -19,18 +19,18 @@ class Message_handler
 
   def send_sms(body)
     @client.api.account.messages.create(
-      from: @num_from ,
-      to: @num_to ,
+      from: @num_from,
+      to: @num_to,
       body: body
       )
   end
 
   def generate_message(order)
-    "Your #{order.category} order has been received and will be with you by #{get_time}."\
+    "Your #{order.category} order has been received and will be with you by #{time}."\
     " £#{'%.2f' % order.total.round(2)} will be charged to your account"
   end
 
-  def get_time
+  def time
     time = Time.now + 1800
     time.strftime("%H:%M")
   end

@@ -7,9 +7,9 @@ require_relative './order_verifier'
 class Orderer
 
   attr_reader :order, :dishlist
-  include Item_printer
+  include ItemPrinter
 
-  def initialize(menu_handler = Menu_handler.new, dishlist_class = Dishlist, order_class = Order, order_verifier_class = Order_verifier)
+  def initialize(menu_handler = MenuHandler.new, dishlist_class = Dishlist, order_class = Order, order_verifier_class = OrderVerifier)
     @menu_handler = menu_handler
     print_menu_summaries
     category = select_menu
@@ -23,7 +23,7 @@ class Orderer
   end
 
   def add(item_num, quantity)
-    raise "Not a valid dish number" if !valid_dish?(item_num)
+    raise "Not a valid dish number" unless valid_dish?(item_num)
     order.add(@dishlist.dishes[item_num - 1], quantity)
   end
 
@@ -43,7 +43,7 @@ class Orderer
 
   def select_menu
     puts 'Please enter the number for the menu you want'
-    while input = STDIN.gets.chomp
+    while (input = STDIN.gets.chomp)
       options = (1..@menu_handler.file_summaries.length).to_a.map { |num| num.to_s }
       break if options.include?(input)
       puts "Invalid entry"

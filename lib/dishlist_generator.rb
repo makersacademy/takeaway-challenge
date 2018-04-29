@@ -1,8 +1,8 @@
 require_relative './dish'
 
-class Dishlist_generator
+class DishlistGenerator
 
-  def initialize(dish_class: Dish, menu_handler: Menu_handler.new)
+  def initialize(dish_class: Dish, menu_handler: MenuHandler.new)
     @dish_class = dish_class
     @menu_handler = menu_handler
   end

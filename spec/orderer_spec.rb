@@ -5,7 +5,7 @@ describe Orderer do
                     { item: "title", description: "description", price: 2.349 },
                     { item: "title2", description: "description2", price: 9.657 }
                     ]
-                   }
+  }
   let(:summary_output) { "1. Cat - Description1\nPlease enter the number for the menu you want\n" }
   let(:menu_output) { "1. Title, £2.35 - Description\n2. Title2, £9.66 - Description2\n" }
 

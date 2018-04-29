@@ -1,4 +1,4 @@
-fdescribe Message_handler do
+fdescribe MessageHandler do
   before(:each) do
     stub_request(:any, /api.twilio.com/).
          to_return(status: 200, body: "", headers: {})
