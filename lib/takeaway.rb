@@ -1,4 +1,5 @@
 require_relative 'basket'
+require_relative 'sms'
 
 class Takeaway
 
@@ -32,6 +33,8 @@ class Takeaway
 
   def checkout(expected_total)
     raise "Incorrect total" unless correct_total?(expected_total)
+    text = SMS.new
+    text.send
     receipt
   end
 

@@ -53,6 +53,7 @@ describe Takeaway do
 
     it "should print the receipt if total is correct" do
       takeaway.add_to_basket(item, quantity)
+      expect_any_instance_of(SMS).to receive(:send).and_return("Thank you!")
       expect(takeaway.checkout(2)).to eq("panda_pop (x2) --- £2, Total: £2.00")
     end
   end
