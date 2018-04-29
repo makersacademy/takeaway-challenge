@@ -24,7 +24,7 @@ class Orderer
 
   def add(item_num, quantity)
     raise "Not a valid dish number" if !valid_dish?(item_num)
-    order.add(@dishlist.dishes[item_num - 1 ], quantity)
+    order.add(@dishlist.dishes[item_num - 1], quantity)
   end
 
   def show_order

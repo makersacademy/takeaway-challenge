@@ -1,3 +1,5 @@
+require_relative './message_handler'
+
 class Order_verifier
 
   def initialize(message_handler = Message_handler.new)

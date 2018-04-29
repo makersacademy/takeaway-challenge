@@ -1,5 +1,10 @@
 describe Order do
   subject(:order) { described_class.new(:pizza)}
+  let(:dish) { double :dish }
+  before do
+    allow(dish).to receive(:name).and_return("Margherita")
+    allow(dish).to receive(:price).and_return(8.75)
+  end
 
   describe '#initialize' do
 
@@ -18,21 +23,16 @@ describe Order do
   end
 
   context 'when orders have been added' do
-    let(:orders) { [
-                  [{ name: "Margherita", price: 9.00 }, 2],
-                  [{ name: "American", price: 8.75 }, 1],
-                  [{ name: "Garlic Bread", price: 3.50 }, 3],
-                  [{ name: "Salad", price: 4.25 }, 2]
-                  ] }
+    let(:orders) { [[dish, 2], [dish, 1]] }
 
     let(:order_total) do
       orders.reduce(0) do |total, order|
-        total += (order[0][:price] * order[1])
+        total += (order[0].price * order[1])
       end
     end
 
     let(:order_print) {
-      "2 x Margherita(£9.00)\n1 x American(£8.75)\n3 x Garlic Bread(£3.50)\n2 x Salad(£4.25)\nTotal: £#{order_total}\n"
+      "2 x Margherita(£8.75)\n1 x Margherita(£8.75)\nTotal: £#{order_total}\n"
     }
 
     before do
@@ -44,7 +44,7 @@ describe Order do
     describe '#add' do
 
       it 'adds items to the list of selected dishes' do
-        expect(order.selected_dishes.count).to be 4
+        expect(order.selected_dishes.count).to be 2
       end
 
       it 'sets the total' do

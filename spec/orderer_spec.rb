@@ -51,12 +51,6 @@ fdescribe Orderer do
 
   end
 
-  describe '#show_menu' do
-
-    specify { expect { subject.show_menu }.to output(summary_output + menu_output).to_stdout }
-
-  end
-
   describe '#add' do
 
     it 'adds a dish to the order' do
