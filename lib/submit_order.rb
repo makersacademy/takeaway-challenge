@@ -1,4 +1,8 @@
 class SubmitOrder
+  def initialize(message_type = SendMessage)
+    @message_type = message_type
+  end
+
   def submit(order)
     valid_order?(order)
     text_confirmation
@@ -7,6 +11,8 @@ class SubmitOrder
   private
 
   def text_confirmation
+    messenger = @message_type.new(true)
+    messenger.send
     "Order submitted"
   end
 
