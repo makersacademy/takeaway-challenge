@@ -41,13 +41,14 @@ describe TakeAway do
     end
 
     describe '#checkout' do
+      let(:messenger) { double :messenger , message: 'text sent'}
       it 'prints confirmation if input price equals basket total' do
-        expect { take_away.checkout(7) }.to output("Thanks. Text confirmation has been sent.\n").to_stdout
+        expect { take_away.checkout(7, messenger) }.to output("Thanks. Text confirmation has been sent.\n").to_stdout
       end
 
       it 'raises an error if input price does not equal basket total' do
-        expect { take_away.checkout(5) }.to raise_error('Input payment does not equal basket total.')
-      end 
+        expect { take_away.checkout(5, messenger) }.to raise_error('Input payment does not equal basket total.')
+      end
     end
   end
 end
