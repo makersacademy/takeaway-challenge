@@ -18,13 +18,17 @@ fdescribe Orderer do
   let(:order) { double :order }
   let(:dish) { double :dish }
   let(:order_class) { double :order_class, new: order}
-  subject(:orderer) { described_class.new(menu_handler, dishlist_class, order_class) }
+  let(:order_verifier) { double :order_verifier }
+  let(:order_verifier_class) {double :order_verifier, new: order_verifier}
+  subject(:orderer) { described_class.new(menu_handler, dishlist_class, order_class, order_verifier_class) }
+
 
   before do
     allow(menu_handler).to receive(:get_menu_items).with(anything).and_return(menu_items)
     allow(dishlist).to receive(:dishes).and_return(menu_items)
     allow(order).to receive(:add).with(any_args)
     allow(STDIN).to receive(:gets) { '1' }
+    allow(order_verifier).to receive(:process_order).with(order)
   end
 
   describe '#initialize' do
@@ -32,7 +36,7 @@ fdescribe Orderer do
     it 'generates a list of menu summaries' do
       expect(menu_handler).to receive(:file_summaries)
       expect(STDIN).to receive(:gets)
-      described_class.new(menu_handler, dishlist_class, order_class)
+      described_class.new(menu_handler, dishlist_class, order_class, order_verifier_class)
     end
 
     specify { expect { subject }.to output(summary_output).to_stdout }
@@ -77,6 +81,11 @@ fdescribe Orderer do
 
 
   describe '#place_order' do
+
+    it 'places the order' do
+      expect(order_verifier).to receive(:process_order).with(order)
+      subject.place_order
+    end
 
   end
 

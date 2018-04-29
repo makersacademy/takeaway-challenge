@@ -2,18 +2,20 @@ require_relative './item_printer'
 require_relative './dishlist'
 require_relative './menu_handler'
 require_relative './order'
+require_relative './order_verifier'
 
 class Orderer
 
   attr_reader :order, :dishlist
   include Item_printer
 
-  def initialize(menu_handler = Menu_handler.new, dishlist_class = Dishlist, order_class = Order)
+  def initialize(menu_handler = Menu_handler.new, dishlist_class = Dishlist, order_class = Order, order_verifier_class = Order_verifier)
     @menu_handler = menu_handler
     print_menu_summaries
     category = select_menu
     @dishlist = dishlist_class.new(category: category, menu_handler: menu_handler)
     @order = order_class.new(category)
+    @order_verifier = order_verifier_class.new(@menu_handler)
   end
 
   def show_menu
@@ -30,7 +32,7 @@ class Orderer
   end
 
   def place_order
-    
+    @order_verifier.process_order(order)
   end
 
   private
@@ -50,11 +52,11 @@ class Orderer
   end
 
   def print_menu_items
-    ordered_print(@dishlist.dishes)
+    ordered_print(dishlist.dishes)
   end
 
   def valid_dish?(num)
-    num.is_a?(Integer) && num <= @dishlist.dishes.length
+    num.is_a?(Integer) && num <= dishlist.dishes.length
   end
 
 end
