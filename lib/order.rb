@@ -2,7 +2,7 @@ require_relative 'menu.rb'
 
 class Order
 
-  attr_reader :start_program, :menu_class, :menu
+  attr_reader :start_program, :menu_class, :menu, :input
 
   def initialize(menu_class = Menu)
     @menu_class = menu_class
@@ -11,41 +11,41 @@ class Order
 
   end
 
+  def input=(input = gets.chomp)
+    @input = input
+  end
+
   def ask_for_order
     @menu = @menu_class.new
     @menu.menu_load
-    puts "To view the menu enter 'view menu' to make a order enter 'make order'"
-    input = gets.chomp
-    choice(input)
+    puts "To view the menu enter '.view menu' to make a order enter '.make order(dish name, quantity)'"
+    puts "once you have made your order run confirm with the total"
   end
 
-  def choice(input)
-    while input != "finish"
-      if input == 'view menu'
-        @menu.view_menu
-        puts "'maker order' or type 'finish'"
-        input = gets.chomp
-      elsif input == 'make order'
-        while input != "finish"
-          puts "Please enter the name of the item you would like to order"
-          puts "when you are done please type 'finish'"
-          input = gets.chomp
-          make_a_order(input)
-        end
-        break
+  def view_menu
+    @menu.view_menu
+  end
+
+  def make_order(dish_name, quantity)
+    @menu.temp_dishes.each do |dish|
+      if dish.name == dish_name
+        @menu.quantity_checker(quantity, dish)
+      elsif dish == @menu.temp_dishes[-1]
+        puts "There is no dish with that name"
       end
     end
   end
 
-  def make_a_order(input)
-    @menu.temp_dishes.each do |dish|
-      if dish.name == input
-        puts "How many would you like?"
-        input = gets.chomp
-        @menu.quantity_checker(input, dish)
-      elsif dish == @menu.temp_dishes[-1]
-        puts "There is no dish with that name"
-      end
+  def confirm(amount)
+    total = 0.00
+    @menu.current_order.each do |dish|
+      puts "#{dish.quantity}. #{dish.name} Price: #{dish.price}"
+      total += (dish.quantity * dish.price)
+    end
+    if total == amount.to_f
+      puts "confirm order"
+    else
+      puts "wrong amount"
     end
   end
 
