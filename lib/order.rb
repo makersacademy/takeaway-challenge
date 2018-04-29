@@ -1,5 +1,6 @@
 require_relative 'dishes.rb'
 
+
 class Order
   attr_reader :overview, :total
 
@@ -23,6 +24,7 @@ class Order
   end
 
   def confirm
+    require_relative 'text'
     @confirmed = true
   end
 

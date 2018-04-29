@@ -5,6 +5,7 @@ let(:dishes) { double :dishes, current_selection: current_selection }
 let(:current_selection) { [{ :name=>:fish_curry, :price=>4.7, :quantity=>2 }] }
 subject(:order) { described_class.new(dishes) }
 
+
   describe '#overview' do
     it 'returns the current order' do
       dishes.current_selection
@@ -26,18 +27,33 @@ subject(:order) { described_class.new(dishes) }
 
   describe '#confirmed?' do
     it 'show you default status on order confirmation' do
-      expect(order.confirmed?).to eq false
+      expect(order.confirmed?).to be false
     end
-    it 'shows you status when confirmed order' do
-      order.confirm
-      expect(order.confirmed?).to eq true
+
+    let(:order_complete) {double :order, confirmed?: confirmed }
+    let(:confirmed) { true }
+
+    it 'true when order is confirmed' do
+      expect(order_complete.confirmed?).to be true
     end
   end
 
-  describe '#confirm' do
-    it 'sets the value of @confirmed to true' do
-      expect(order.confirm).to eq true
+  context 'confirm' do
+    let(:order_complete) {double :order, confirm: confirmed }
+    let(:confirmed) { true }
+
+    describe '#confirm' do
+      it 'sets the value of @confirmed to true' do
+        expect(order_complete.confirm).to eq true
+      end
+    end
+
+    describe '#confirm' do
+      before { allow(order_complete).to receive(:confirm) { puts "Sent message" } }
+
+      it 'sends text message' do
+        expect { order_complete.confirm }.to output("Sent message\n").to_stdout
+      end
     end
   end
-
 end
