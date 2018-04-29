@@ -12,8 +12,6 @@ describe Order do
     end
   end
 
-  it { is_expected.to respond_to(:add).with(2).argument }
-
   describe '#add' do
     it 'should not add dishes that do not exist' do
       expect { subject.add(not_on_menu) }.to raise_error 'Not on menu'
@@ -33,6 +31,19 @@ describe Order do
       subject.add(pasta)
       subject.add(pasta)
       expect(subject.items).to eq [{ dish: pasta, amount: 2 }]
+    end
+
+    it "should add multiple dishes" do
+      subject.add(pasta, 2)
+      subject.add(bolognese, 1)
+      subject.add(bolognese, 1)
+      subject.add(salad, 1)
+      items = [
+        { dish: pasta, amount: 2 },
+        { dish: bolognese, amount: 2 },
+        { dish: salad, amount: 1 }
+      ]
+      expect(subject.items).to eq items
     end
   end
 end
