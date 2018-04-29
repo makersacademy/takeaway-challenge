@@ -12,7 +12,9 @@ feature "Take Away Challenge" do
    ]
 
    let(:dishes) {Dishes.new(menu)}
-   let(:order) {CustomerOrder.new(dishes)}
+   let(:text) {Text.new}
+   let(:bill) {Bill.new}
+   let(:order) {CustomerOrder.new(dishes, bill, text)}
 
   # As a customer
   # So that I can check if I want to order something
@@ -59,6 +61,7 @@ feature "Take Away Challenge" do
     customer_amount = 41.95
     order.select_dish(order_1[0], order_1[1])
     order.select_dish(order_2[0], order_2[1])
+    # order.process(customer_amount)
   end
 
 end

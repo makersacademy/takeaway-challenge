@@ -1,6 +1,6 @@
 describe CustomerOrder do
 
-  let(:order) { CustomerOrder.new(dishes, bill) }
+  let(:order) { CustomerOrder.new(dishes, bill, text) }
   let(:dish) { 'Hawaiian' }
   let(:quantity) { 2 }
   let(:menu) { [{dish: 'Hawaiian' , price: '8.99'},
@@ -8,6 +8,7 @@ describe CustomerOrder do
   let(:dishes) { double :dishes, menu: menu}
   let(:bill) { double :bill }
   let(:text) { double :text }
+  let(:customer_amount) { double :customer_amount }
 
   describe '#select_dishes' do
 
@@ -46,11 +47,15 @@ describe CustomerOrder do
       it 'sends text to customer' do
         message = 'Thank you! Your order was placed and will be delivered before 18:52'
         allow(dishes).to receive(:in_menu?).with(dish).and_return(true)
+        customer_amount = 17.98
+        allow(bill).to receive(:calculate_bill)
+        allow(bill).to receive(:total).and_return(17.98)
+        allow(bill).to receive(:is_valid?).with(customer_amount)
         allow(text).to receive(:send).and_return(message)
         order.select_dish(dish, quantity)
         order.select_dish(dish, quantity)
-        order.process
-        expect(order.text.send).to eq message
+        order.process(customer_amount)
+        expect(text.send).to eq message
       end
     end
 
