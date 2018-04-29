@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :select
+  attr_reader :selection
 
 # add csv which will import menu
 
