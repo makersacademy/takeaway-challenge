@@ -15,5 +15,5 @@ describe Order do
       expect(subject.total).to eq(7)
     end
   end
-  
+
 end
