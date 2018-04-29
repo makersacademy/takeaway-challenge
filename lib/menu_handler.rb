@@ -52,7 +52,7 @@ class Menu_handler
     CSV.foreach(filepath) do |line|
       title, description, price = line
       next if title == "Description"
-      menu_items << { item: title, description: description, price: price }
+      menu_items << { item: title, description: description, price: price.to_f }
     end
     menu_items
   end

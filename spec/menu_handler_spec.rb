@@ -40,7 +40,7 @@ describe Menu_handler do
     it 'returns correct values' do
       expect(menu_items.first[:item]).to eq "item"
       expect(menu_items.first[:description]).to eq "description"
-      expect(menu_items.first[:price]).to eq "price"
+      expect(menu_items.first[:price]).to eq 5.00
     end
 
   end
