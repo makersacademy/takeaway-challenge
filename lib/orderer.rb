@@ -16,6 +16,16 @@ class Orderer
     @order = order_class.new(category)
   end
 
+  def show_menu
+    print_menu_items
+  end
+
+  def add(item_num, quantity)
+    raise "Not a valid dish number" if !valid_dish?(item_num)
+    order.add(@dishlist.dishes[item_num - 1 ], quantity)
+  end
+
+
   private
 
   def print_menu_summaries
@@ -34,6 +44,10 @@ class Orderer
 
   def print_menu_items
     ordered_print(@dishlist.dishes)
+  end
+
+  def valid_dish?(num)
+    num.is_a?(Integer) && num <= @dishlist.dishes.length
   end
 
 end
