@@ -15,9 +15,7 @@ class TakeAway
   end
 
   def order(dish, quantity = 1)
-    if @menu.list.include?(dish)
-      @basket[dish] += quantity
-    end
+    @basket[dish] += quantity if @menu.list.include?(dish)
     message(dish, quantity)
   end
 
@@ -30,23 +28,20 @@ class TakeAway
   end
 
   def total
-    @basket.each do |item, amount|
-      @total += (amount * @menu.list[item])
-    end
+    @basket.each { |item, amount| @total += (amount * @menu.list[item]) }
     "Total: £#{@total.round(2)}"
   end
 
   def checkout(price)
     fail "Check your total as it is incorrect" unless price == @total
-    @message = "Thank you! Your order was placed and will be delivered before #{(Time.new + 3600).strftime("%H:%M")}"
-    send_text(@message)
+    time = (Time.new + 3600).strftime("%H:%M")
+    m = "Thank you! Your order was placed and will be delivered before #{time}"
+    send_text(m)
   end
 
   private
   def message(dish, quantity)
-    if @menu.list.include?(dish)
-      "#{quantity}x #{dish}(s) added to your basket"
-    end
+    "#{quantity}x #{dish}(s) added to your basket" if @menu.list.include?(dish)
   end
 
   def send_text(message)
@@ -59,6 +54,4 @@ class TakeAway
       body: message
     )
   end
-
-
 end

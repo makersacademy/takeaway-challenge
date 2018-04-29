@@ -12,5 +12,4 @@ class Menu
         "pasta primavera" => 4.99,
         "vegan moussaka" => 5.29 }
   end
-
 end
