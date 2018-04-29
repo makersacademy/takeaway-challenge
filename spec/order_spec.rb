@@ -6,8 +6,8 @@ describe Order do
   let(:menu) { double :menu, items: { pappadom_preach: 0.50 }, total: 5.75 }
   let(:confirm) { double :confirm, send_text: 'Thank you!' }
 
-  it {is_expected.to respond_to(:view_order) }
-  it {is_expected.to respond_to(:check_total) }
+  it { is_expected.to respond_to(:view_order) }
+  it { is_expected.to respond_to(:check_total) }
 
   describe '#see_menu' do
     it 'displays a menu' do

@@ -3,7 +3,7 @@ require 'list'
 describe List do
 
   let(:list) { List.new }
-  let(:items) { double :items , keys: [ :pappadom_preach ], values: [ 4.50 ] }
+  let(:items) { double :items, keys: [:pappadom_preach], values: [4.50] }
   let(:menu) { double :menu }
 
   describe '#add_list' do
