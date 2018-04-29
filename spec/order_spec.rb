@@ -83,7 +83,7 @@ describe Order do
       time = Time.new
       hour = (time.hour + 1) % 24
       min = time.min
-      message = "Thank you! Your order was placed and will be delivered before #{hour}:#{min}"
+      message = "Thank you! Your order was placed and will be delivered before #{hour}:#{min}\n"
       subject.add(pasta, 2)
       subject.add(bolognese, 2)
       subject.add(salad, 1)
@@ -91,3 +91,5 @@ describe Order do
     end
   end
 end
+
+# +447533006429

@@ -14,7 +14,7 @@ class Order
   end
 
   def list
-    check_empty_order
+    empty_order_error
 
     @items.each do |item|
       puts "#{item[:amount]} x #{item[:dish].name}"
@@ -22,13 +22,15 @@ class Order
   end
 
   def total
-    check_empty_order
+    empty_order_error
 
     @items.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
   end
 
   def confirm
-    check_empty_order
+    empty_order_error
+
+    puts "Thank you! Your order was placed and will be delivered before #{delivery_time}"
   end
 
   private
@@ -59,7 +61,12 @@ class Order
     @items.empty?
   end
 
-  def check_empty_order
+  def empty_order_error
     raise 'The order is empty' if empty_order?
+  end
+
+  def delivery_time
+    time = Time.new
+    "#{(time.hour + 1) % 24}:#{time.min}"
   end
 end
