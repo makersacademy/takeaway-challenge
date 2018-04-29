@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 feature 'List menu dishes' do
   scenario 'menu has dishes' do
     menu_list = "Pasta, 5\nBolognese, 5\nSalad, 2\n"

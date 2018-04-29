@@ -6,7 +6,7 @@ class Menu
   end
 
   def list
-    return puts 'The menu is empty' if no_dishes?
+    raise 'The menu is empty' if no_dishes?
     print_dishes
   end
 

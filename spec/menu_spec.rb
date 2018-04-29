@@ -17,7 +17,7 @@ describe Menu do
 
   describe '#list' do
     it 'should puts message if the menu is empty' do
-      expect { empty_menu.list }.to output("The menu is empty\n").to_stdout
+      expect { empty_menu.list }.to raise_error 'The menu is empty'
     end
 
     it 'should puts menu if the menu is not empty' do
