@@ -5,7 +5,7 @@ describe Bill do
   let(:customer_order) { [{dish: 'Hawaiian', quantity: 4},
     {dish: 'BBQ Original', quantity: 5}] }
 
-  subject(:bill) { Bill.new(menu, customer_order) }
+  subject(:bill) { Bill.new }
 
   describe '#initialize' do
 
@@ -13,16 +13,12 @@ describe Bill do
       expect(bill.total).to eq 0
     end
 
-    it 'sets customer order' do
-      expect(bill.order).to eq customer_order
-    end
-
   end
 
   describe '#calculate_bill' do
 
     it 'calculates bill based on menu' do
-      bill.calculate_bill
+      bill.calculate_bill(menu, customer_order)
       expect(bill.total).to eq 70.91
     end
 

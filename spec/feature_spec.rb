@@ -49,4 +49,17 @@ feature "Take Away Challenge" do
     expect(order.bill_valid?(customer_amount)).to be true
   end
 
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+  scenario "Send Text" do
+    order_1 = ['Hawaiian', 2]
+    order_2 = ['Vegeterian', 3]
+    customer_amount = 41.95
+    order.select_dish(order_1[0], order_1[1])
+    order.select_dish(order_2[0], order_2[1])
+
+  end
+
 end

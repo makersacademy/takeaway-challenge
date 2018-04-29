@@ -1,11 +1,12 @@
 describe CustomerOrder do
 
-  let(:order) { CustomerOrder.new(dishes) }
+  let(:order) { CustomerOrder.new(dishes, bill) }
   let(:dish) { 'Hawaiian' }
   let(:quantity) { 2 }
   let(:menu) { [{dish: 'Hawaiian' , price: '8.99'},
     {dish: 'BBQ Original', price: '6.99'},]}
   let(:dishes) { double :dishes, menu: menu}
+  let(:bill) { double :bill }
 
   describe '#select_dishes' do
 
@@ -43,6 +44,8 @@ describe CustomerOrder do
     it 'calculates bill and compares with customer value' do
       allow(dishes).to receive(:in_menu?).with(dish).and_return(true)
       order.select_dish(dish, quantity)
+      allow(bill).to receive(:calculate_bill)
+      allow(bill).to receive(:total).and_return(17.98)
       expect(order.bill_valid?(17.98)).to be true
     end
   end

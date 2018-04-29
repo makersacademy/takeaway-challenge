@@ -2,10 +2,10 @@ class CustomerOrder
 
   attr_reader :selection
 
-  def initialize(dishes = Dishes.new)
+  def initialize(dishes = Dishes.new, bill = Bill.new)
     @dishes = dishes
     @selection = []
-    @bill = 0
+    @bill = bill
   end
 
   def select_dish(dish, quantity)
@@ -20,12 +20,11 @@ class CustomerOrder
 
   def bill_valid?(customer_amount)
     calculate_bill
-    @bill.total
     @bill.total == customer_amount
   end
 
   def calculate_bill
-    @bill = Bill.new(@dishes.menu, @selection)
-    @bill.calculate_bill
+    @bill.calculate_bill(@dishes.menu, @selection)
   end
+
 end
