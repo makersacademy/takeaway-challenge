@@ -1,12 +1,12 @@
 class Menu
 
-attr_reader :menu
+attr_reader :menu, :show_menu
 
  def initialize
     @menu = {
-              "Chiken Tika" => 5.00,
+              "Chicken Tika" => 5.00,
               "Rogan Josh" => 5.00,
-              "Vindaloo" => 7.00,
+              "Vindaloo" => 7.00
             }
   end
 
@@ -26,4 +26,5 @@ attr_reader :menu
   def add(dish, price)
     @menu.store(dish, price)
     menu
+  end
 end
