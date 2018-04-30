@@ -35,9 +35,10 @@ class Order
     "Submitting your payment of £#{payment_amount}"
   end
 
-  def place_order(payment_amount, total_cost)
+  def place_order(payment_amount, total_cost, time = Time.now)
     raise "Unable to place order. Please enter the correct payment amount." if payment_amount != total_cost
-    if payment_amount == total_cost then "Thanks for your order. It will be delivered to you by 21:00" else false
+    time = (time + 3600).strftime("%H:%M")
+    if payment_amount == total_cost then "Thanks for your order. It will be delivered to you by #{time}" else false
     end
   end
 

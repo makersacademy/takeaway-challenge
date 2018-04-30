@@ -2,6 +2,7 @@ require './docs/order'
 
 describe Order do
   let(:menu) { double menu: { "Haddock" => 5, "Cod" => 6 } }
+  let(:time) { Time.parse("2018-01-20 20:17:40") }
   # let(:basket) { { } }
   subject(:order) { described_class.new(menu) }
 
@@ -45,24 +46,21 @@ describe Order do
     it 'should return true if the payment amount equals the order cost' do
       allow(order).to receive(:cost) { 10 }
       allow(order).to receive(:enter_payment).with(1) { 10 }
-      expect(order.place_order(10, 10)).to eq "Thanks for your order. It will be delivered to you by 21:00"
+      time_new = "21:17"
+      expect(order.place_order(10, 10, time)).to eq "Thanks for your order. It will be delivered to you by #{time_new}"
     end
     it 'should raise an error if the payment amount is incorrect' do
       allow(order).to receive(:cost) { 10 }
       allow(order).to receive(:enter_payment).with(1) { 5 }
-      expect { order.place_order(10, 5) }.to raise_error ("Unable to place order. Please enter the correct payment amount.")
+      time_new = "21:17"
+      expect { order.place_order(10, 5, time_new) }.to raise_error ("Unable to place order. Please enter the correct payment amount.")
     end
   end
 
-  # describe '#submit_order' do
-  #   it 'should confirm the order if payment amount is correct' do
-  #     expect(order.place_order(10, 10)).to eq "Thanks for your order. It will be delivered to you by 21:00"
+  # describe '#send_SMS' do
+  #   it 'should tell SMS to send an SMS' do
+  #
   #   end
-    # it 'should raise an error if the payment was not correct' do
-    #   # p allow(order).to receive(:cost) { 10 }
-    #   # p allow(order).to receive(:enter_payment).with(1) { 5 }
-      # expect { order.place_order(10, 5) }.to raise_error ("Unable to place order. Please enter the correct payment amount.")
-  #   # end
   # end
 
 end
