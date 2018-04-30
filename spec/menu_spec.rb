@@ -19,7 +19,7 @@ describe Menu do
         "Curry Sauce - £1",
         "Scraps - £1"
         ]
-        expect(menu.show_menu).to eq menu_items
+      expect(menu.show_menu).to eq menu_items
     end
   end
 

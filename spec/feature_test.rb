@@ -77,7 +77,6 @@ def view_summary_two
   p order.view_summary(basket)
 end
 
-
 # new_order
 # has_menu
 # order_display_menu
