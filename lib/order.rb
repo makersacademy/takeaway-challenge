@@ -3,7 +3,7 @@ require_relative 'messager'
 class Order
   attr_reader :items, :m
 
-  def initialize(menu = Menu.new, messager = Messager.new)
+  def initialize(menu = Menu.new, messager)
     @m = menu
     @items = Hash.new(0)
     @total = 0

@@ -7,6 +7,8 @@ class Messager
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
+  private
+
   def send_text
     message = @client.messages.create(
       body: "Thank you! Your order was placed and will be delivered before #{calculate_time}",
@@ -14,7 +16,6 @@ class Messager
       from: "+441183246310")
   end
 
-  private
     def calculate_time
       t = Time.now + 3600
       "#{t.hour}:#{t.min}"
