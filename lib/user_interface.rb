@@ -1,13 +1,8 @@
 require_relative 'take_away'
 
-puts 'Hello! Welcome to the Takeaway App. Would you like to load the set menu? y/n '
-response = gets.chomp
-if response == 'y'
-  menu = Menu.new
-  menu.load_menu
-elsif response == 'n'
-  menu = Menu.new
-end
+puts 'Hello! Welcome to the Takeaway App.'
+menu = Menu.new
+menu.load_menu
 take_away = TakeAway.new("Muzzi's Dirty Kebab Shop", menu)
 while true do
   take_away.display_menu
