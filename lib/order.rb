@@ -2,8 +2,9 @@ class Order
 
   attr_reader :list
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, confirm = Confirm.new)
     @menu = menu
+    @confirm = confirm
   end
 
   def see_menu
@@ -32,7 +33,7 @@ class Order
   private
 
   def text
-    Confirm.new.send_text
+    @confirm.send_text
   end
 
 end

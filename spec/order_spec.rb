@@ -2,9 +2,10 @@ require 'order'
 
 describe Order do
 
-  let(:order) { Order.new(menu) }
   let(:menu) { double :menu, items: { pappadom_preach: 0.50 }, total: 5.75 }
   let(:confirm) { double :confirm, send_text: 'Thank you!' }
+  let(:order) { Order.new(menu, confirm) }
+
 
   it { is_expected.to respond_to(:view_order) }
   it { is_expected.to respond_to(:check_total) }
@@ -29,6 +30,11 @@ describe Order do
   describe '#complete_order' do
     it 'raises an error if not equal to order' do
       expect { order.complete_order(5.5) }.to raise_error 'total input is not equal to order'
+    end
+
+    it 'sends text if total is complete' do
+
+      expect(order.complete_order(5.75)).to eq("Thank you!")
     end
   end
 end
