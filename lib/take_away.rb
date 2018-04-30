@@ -22,14 +22,14 @@ class TakeAway
 
   def basket_summary
     summary = []
-    @basket.each do |item, amount|
+    @basket.each_pair do |item, amount|
       summary.push("#{item} x#{amount} = £#{amount * @menu.list[item]}")
     end
     summary.join(", ")
   end
 
   def total
-    @basket.each { |item, amount| @total += (amount * @menu.list[item]) }
+    @basket.each_pair { |item, amount| @total += (amount * @menu.list[item]) }
     "Total: £#{@total.round(2)}"
   end
 
