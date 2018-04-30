@@ -1,4 +1,6 @@
 require './docs/order'
+require './docs/menu'
+require './docs/sms'
 
 describe Order do
   let(:menu) { double menu: { "Haddock" => 5, "Cod" => 6 } }

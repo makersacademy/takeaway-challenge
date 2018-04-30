@@ -1,4 +1,5 @@
 require './docs/menu'
+require './docs/sms'
 
 class Order
 
@@ -40,6 +41,10 @@ class Order
     time = (time + 3600).strftime("%H:%M")
     if payment_amount == total_cost then "Thanks for your order. It will be delivered to you by #{time}" else false
     end
+  end
+
+  def send_sms
+    SMS.send_sms("Thank you! Your order was placed and will be delivered before #{@time}")
   end
 
 end
