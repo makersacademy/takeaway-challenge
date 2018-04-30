@@ -37,17 +37,32 @@ describe Order do
 
   describe '#enter_payment' do
     it 'should return the payment amount entered' do
-      expect(order.enter_payment(10)). to eq "£10"
+      expect(order.enter_payment(10)). to eq "Submitting your payment of £10"
     end
   end
 
-  describe "#payment_accepted?" do
+  describe "#place_order" do
     it 'should return true if the payment amount equals the order cost' do
-      expect(order.payment_accepted?).to be true
+      allow(order).to receive(:cost) { 10 }
+      allow(order).to receive(:enter_payment).with(1) { 10 }
+      expect(order.place_order(10, 10)).to eq "Thanks for your order. It will be delivered to you by 21:00"
     end
-    # it 'should raise an error if the payment amount is not correct' do
-    #   expect(order.payment_accepted?).to raise
-    # end
+    it 'should raise an error if the payment amount is incorrect' do
+      allow(order).to receive(:cost) { 10 }
+      allow(order).to receive(:enter_payment).with(1) { 5 }
+      expect { order.place_order(10, 5) }.to raise_error ("Unable to place order. Please enter the correct payment amount.")
+    end
   end
+
+  # describe '#submit_order' do
+  #   it 'should confirm the order if payment amount is correct' do
+  #     expect(order.place_order(10, 10)).to eq "Thanks for your order. It will be delivered to you by 21:00"
+  #   end
+    # it 'should raise an error if the payment was not correct' do
+    #   # p allow(order).to receive(:cost) { 10 }
+    #   # p allow(order).to receive(:enter_payment).with(1) { 5 }
+      # expect { order.place_order(10, 5) }.to raise_error ("Unable to place order. Please enter the correct payment amount.")
+  #   # end
+  # end
 
 end

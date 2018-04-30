@@ -31,11 +31,14 @@ class Order
   end
 
   def enter_payment(payment_amount)
-    "£#{payment_amount}"
+    # @payment_amount = payment_amount
+    "Submitting your payment of £#{payment_amount}"
   end
 
-  def payment_accepted?
-    true
+  def place_order(payment_amount, total_cost)
+    raise "Unable to place order. Please enter the correct payment amount." if payment_amount != total_cost
+    if payment_amount == total_cost then "Thanks for your order. It will be delivered to you by 21:00" else false
+    end
   end
 
 end
