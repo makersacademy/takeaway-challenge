@@ -49,12 +49,12 @@ describe Order do
       allow(order).to receive(:cost) { 10 }
       allow(order).to receive(:enter_payment).with(1) { 10 }
       time_new = "21:17"
-      expect(order.place_order(10, 10, time)).to eq "Thanks for your order. It will be delivered to you by #{time_new}"
+      expect(order.place_order(10, 10, time)).to eq "Payment confirmed. Thanks for your order."
     end
     it 'should raise an error if the payment amount is incorrect' do
       allow(order).to receive(:cost) { 10 }
       allow(order).to receive(:enter_payment).with(1) { 5 }
-      time_new = "21:17"
+      # time_new = "21:17"
       expect { order.place_order(10, 5, time_new) }.to raise_error ("Unable to place order. Please enter the correct payment amount.")
     end
   end

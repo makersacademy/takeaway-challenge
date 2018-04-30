@@ -39,12 +39,13 @@ class Order
   def place_order(payment_amount, total_cost, time = Time.now)
     raise "Unable to place order. Please enter the correct payment amount." if payment_amount != total_cost
     time = (time + 3600).strftime("%H:%M")
-    if payment_amount == total_cost then "Thanks for your order. It will be delivered to you by #{time}" else false
+    if payment_amount == total_cost then "Payment confirmed. Thanks for your order." else false
     end
   end
 
-  def send_sms
-    SMS.send_sms("Thank you! Your order was placed and will be delivered before #{@time}")
+  def send_sms(time = Time.now)
+    time = (time + 3600).strftime("%H:%M")
+    SMS.send_sms("Thank you! Your order was placed and will be delivered before #{time}")
   end
 
 end
