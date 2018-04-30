@@ -10,7 +10,7 @@ class Confirm
 
   def send_text
     time
-    message = @client.messages.create(
+    @client.messages.create(
       body: "Thank you! Your order was placed and will be " +
       "delivered before #{@h}:#{@m}",
       to: "+447775338549",

@@ -6,7 +6,6 @@ describe Order do
   let(:confirm) { double :confirm, send_text: 'Thank you!' }
   let(:order) { Order.new(menu, confirm) }
 
-
   it { is_expected.to respond_to(:view_order) }
   it { is_expected.to respond_to(:check_total) }
 
