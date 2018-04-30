@@ -6,8 +6,8 @@ class MessageHandler
     @account_sid = ENV["TWILIO_AC_SID"]
     @auth_token = ENV["TWILIO_AUTH"]
     @client = Twilio::REST::Client.new @account_sid, @auth_token
-    @num_to = '+447786026749'
-    @num_from = '+441704325019'
+    @num_to = ENV["TWILIO_TO_PHONE"]
+    @num_from = ENV["TWILIO_FROM_PHONE"]
   end
 
   def send_message(order)
