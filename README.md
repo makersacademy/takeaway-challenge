@@ -1,3 +1,12 @@
+# UPDATE:
+
+The Takeaway Challenge was our second weekend challenge set at Maker's Academy. We were instructed to create a program for a takeaway shop that could show a menu, take orders, return the sum of the orders and send a confirmation text to the user using the Twilio API.
+
+I chose to save the menu in a CSV file and to extract the data from there and work with it in my various classes. I also enjoyed using the Twilio API and making it work.
+
+I would have like to have spent more time on the testing, especially around doubling methods that run methods from other classes, but overall I am quite happy with what I managed to achieve in this project.
+
+
 Takeaway Challenge
 ==================
 ```
