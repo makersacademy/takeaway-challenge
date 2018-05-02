@@ -5,7 +5,8 @@ require 'submit_order'
 describe 'Feature test' do
   let(:menu) { Menu.new }
   let(:order) { Order.new }
-  let(:submit_order) { SubmitOrder.new(SendMessage, true) }
+  let(:submit_order) { SubmitOrder.new(not_twilio) }
+  let(:not_twilio) { double(:not_twilio) }
 
   let(:number_of_dishes) { 5 }
   let(:dish_names) { ['Dish one', 'Dish two', 'Dish three', 'Dish four', 'Dish five'] }
@@ -47,10 +48,20 @@ describe 'Feature test' do
   end
 
   context 'Submit order' do
+    # Annoyingly complex mocking of the Twilio methods...
+    before do
+      allow(not_twilio).to receive(:messages).and_return(not_twilio)
+      allow(not_twilio).to receive(:new).and_return(not_twilio)
+      allow(not_twilio).to receive(:send).and_return(not_twilio)
+      allow(not_twilio).to receive(:create).and_return (not_twilio)
+      allow(not_twilio).to receive(:sid)
+      allow(not_twilio).to receive(:time).and_return('time')
+    end
+
     it 'Simple one dish order' do
       build_menu
       order.add_to_basket(menu.dishes[0], 2)
-      expect(submit_order.submit(order.basket)).to eq "Order submitted"
+      expect(submit_order.submit(order.basket)).to eq not_twilio
     end
   end
 end

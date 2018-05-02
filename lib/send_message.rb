@@ -3,26 +3,26 @@ require 'dotenv/load'
 require 'time'
 
 class SendMessage
-  def initialize(test = false)
-    @test = test
-    @client = Twilio::REST::Client.new(ENV['TWILIO_ID'], ENV['TWILIO_TOKEN'])
-    @text_message = "Thank you for your order. It will be with you before #{time}"
+  def initialize(
+      client = Twilio::REST::Client.new(ENV['TWILIO_ID'], ENV['TWILIO_TOKEN'])
+    )
+    @client = client
   end
 
   def send
-    return "Message sent" if @test
-
-    message = @client.messages.create(
-      body: @text_message,
-      to: ENV['MY_PHONE_NUMBER'],
-      from: ENV['TWILIO_PHONE_NUMBER']
-    )
-    message.sid
-
+    @client.messages.create(message_arguments)
     "Message sent"
   end
 
   private
+
+  def message_arguments
+    {
+      body: "Thank you for your order. It will be with you before #{time}",
+      to: ENV['MY_PHONE_NUMBER'],
+      from: ENV['TWILIO_PHONE_NUMBER']
+    }
+  end
 
   def time
     time = Time.now + 3600

@@ -15,7 +15,7 @@ class Order
   def add_to_basket(item, number)
     if in_basket?(item)
       @basket[item.name][1] += number
-      return "Added #{number} more of #{item.name} to basket"
+      "Added #{number} more of #{item.name} to basket"
     else
       @basket[item.name] = [item.price, number]
       "Added #{number} of #{item.name} to basket"

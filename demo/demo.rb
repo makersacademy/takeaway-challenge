@@ -5,7 +5,7 @@ require_relative '../lib/submit_order.rb'
 # Create the objects
 menu = Menu.new
 order = Order.new
-submit_order = SubmitOrder.new(SendMessage, true)
+submit_order = SubmitOrder.new
 
 # Add the dishes
 number_of_dishes = 5
