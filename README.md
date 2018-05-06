@@ -16,7 +16,7 @@ Takeaway Challenge
 
 -------
 
-This task was to write a takeaway program.
+This task was to write a takeaway program that sends text confirmation to the customer.
 
 User Stories:
 -----
@@ -39,10 +39,12 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-## Basic Requirements
+## Basic Functionality
 
-- The program has a list of dishes
-- The user places the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "TPlace the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52"
+- The program has a list of dishes (a menu)
+- The user places the order by viewing the list of dishes, then entering the dishes and quantities they wish to order
+- The cost is  calculated, and the user enters their payment details
+- If the payment amount entered by the user is not correct, the user sees an error message, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 21:00."
 - The text sending functionality is implemented using Twilio API
 
 ## Getting Started
