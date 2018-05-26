@@ -1,5 +1,5 @@
-require 'menu.rb'
 require 'order.rb'
+
 
 
 describe 'User Stories' do
@@ -23,12 +23,12 @@ describe 'User Stories' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
 
-  it 'allows customer to place order with selected items and quantity' do
+  it 'allows customer to place order with suspected total and returns the actual total' do
     takeaway_restaurant = Restaurant.new
     menu = takeaway_restaurant.menu_items
     order = takeaway_restaurant.create_order 
     order.add_item(:chicken_curry, 5)
-    expect(order.submit).to eq(menu[:chicken_curry] * 5)
+    expect(order.submit(47.5)).to eq(menu[:chicken_curry] * 5)
   end
 
 
@@ -41,14 +41,19 @@ describe 'User Stories' do
   #   expect(restaurant.received_orders).to eq order.current_items
   # end
 
-end
-
-
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
+  it 'raises an error if the suspected total of my order is wrong' do
+    takeaway_restaurant = Restaurant.new
+    order = takeaway_restaurant.create_order
+    order.add_item(:chicken_curry, 5)
+    order.add_item(:pork_belly, 3)
+    expect { order.submit(10) }.to raise_error "The suspected total is wrong"
+  end
 
+end
 
 # As a customer
 # So that I am reassured that my order will be delivered on time

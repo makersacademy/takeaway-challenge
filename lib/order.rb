@@ -11,7 +11,14 @@ class Order
     @current_items << [item, quantity]
   end
 
-  def submit
+  def submit(suspected_total)
+    total = calculate_order_price
+    @suspected_total = suspected_total
+    raise "The suspected total is wrong" if total != suspected_total
+    total
+  end
+
+  def calculate_order_price 
     total = 0
     @current_items.each do |order_line|
       price = @restaurant.menu_items[order_line[0]]

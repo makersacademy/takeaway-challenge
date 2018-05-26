@@ -23,11 +23,17 @@ describe Order do
     expect(order.current_items[1][0]).to eq item_2
   end
 
-  it 'allows the user to submit the current_items' do
+  it 'submitting the order returns the total cost' do
     this_order = Order.new(Restaurant.new)
     this_order.add_item(:chicken_curry, 5)
-    expect(this_order.submit).to eq(9.50 * 5)
+    expect(this_order.submit(47.5)).to eq(9.50 * 5)
   end 
+
+  it 'raises an error if the suspected total doesnt match actual total' do
+    this_order = Order.new(Restaurant.new)
+    this_order.add_item(:chicken_curry, 5)
+    expect { this_order.submit(10) }.to raise_error "The suspected total is wrong"
+  end
 
 
 
