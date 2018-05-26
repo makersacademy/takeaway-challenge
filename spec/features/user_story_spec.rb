@@ -1,27 +1,43 @@
-require 'customer.rb'
 require 'menu.rb'
+require 'order.rb'
+
 
 describe 'User Stories' do
-  subject(:customer) { Customer.new }
+  subject(:menu) { Menu.new }
+  subject(:order) { Order.new }
 
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
 
-  it 'customer can see a list of the items on menu' do
-    expect(customer.view_menu).to include "Chicken Curry, £9.99"
-    expect(customer.view_menu).to include "Pork Belly, £7.99"
+  it 'allows the customer to view the menu' do
+    expect { menu }.not_to raise_error
   end
+
+  it 'allows the customer to see a list of dishes with prices' do
+    expect(menu.view_menu).to include "1. Chicken Curry, £9.99"
+    expect(menu.view_menu).to include "5. Pork Belly, £7.99"
+    expect(menu.view_menu).to include "7. Mushroom Soup, £1.99"
+  end 
 
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
 
-  it 'allows the customer to select items that they want to order' do
-    customer.view_menu
-    current_order = customer.create_order
-    customer.add_to_order("Burger and fries", 1)
-    expect(current_order).to include(["Burger and fries", 1])
+  it 'can create an order' do
+    expect { Order.new }.not_to raise_error
+  end
+
+  it 'can add items to the order' do
+    order.add_item("chicken curry", 4)
+    expect(order.current_items[0]).to eq(["chicken curry", 4])
+  end
+
+  it 'can store more than 1 item in its current items' do
+    order.add_item("Pork Belly", 6)
+    order.add_item("Chicken Curry", 5)
+    order.add_item("Beef Curry", 3)
+    expect(order.current_items.length).to eq 3
   end
 
 end
