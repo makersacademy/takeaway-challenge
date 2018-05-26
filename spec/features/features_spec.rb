@@ -1,5 +1,4 @@
 require './lib/menu.rb'
-require './lib/order.rb'
 
 describe 'Menu Features' do
 
@@ -42,23 +41,13 @@ Please order before 10pm
 Delivery is available in the E2 area"
   end
 
-end
-
-describe 'Order Features' do
-
-  subject(:order) { Order.new }
-
   # ** User Story 2 **
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
 
-  it 'can create an order' do
-    expect { Order.new }.not_to raise_error
-  end
-
   it 'can request an order' do
-    expect { order.request }.not_to raise_error
+    expect { menu.order_request }.not_to raise_error
   end
 
   # it 'can order a range of dishes from the menu'

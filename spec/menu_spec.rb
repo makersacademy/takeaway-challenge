@@ -33,4 +33,12 @@ Please order before 10pm
 Delivery is available in the E2 area"
     end
   end
+
+  context '#order_request' do
+    it 'responds to an order request' do
+      expect { menu.order_request }.not_to raise_error
+    end
+  end
+
+
 end

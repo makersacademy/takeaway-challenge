@@ -27,4 +27,7 @@ class Menu
     end
   end
 
+  def order_request
+  end 
+
 end
