@@ -12,13 +12,13 @@ describe Menu do
       expect(menu.price).to eq 5
     end
   end
-  
+  #
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
 
   it 'displays the menu' do
-    expect(menu.display_menu).to eq @items
+    expect { menu.display_menu }.to output.to_stdout
   end
 
 end
