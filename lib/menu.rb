@@ -4,7 +4,10 @@ class Menu
 
   attr_reader :dishes, :header, :footer
 
-  def initialize
+  HEADER = "Ty Abs - Whitechapel\nTakeaway Menu"
+  FOOTER = "Please order before 10pm\nDelivery is available in the E2 area"
+
+  def initialize(header=HEADER, footer=FOOTER)
     @dishes = [
       { "Chicken Tikka" => 8.99 },
       { "Dry Meat" => 10.99 },
@@ -13,8 +16,8 @@ class Menu
       { "Peshwari Naan" => 3.99 },
       { "Garlic Naan" => 3.49 },
       { "Plain Rice" => 2.99 }]
-    @header = "Ty Abs - Whitechapel\nTakeaway Menu"
-    @footer = "Please order before 10pm\nDelivery is available in the E2 area"
+    @header = header
+    @footer = footer
   end
 
   def display
@@ -28,6 +31,6 @@ class Menu
   end
 
   def order_request
-  end 
+  end
 
 end
