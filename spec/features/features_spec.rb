@@ -1,13 +1,15 @@
 require './lib/menu.rb'
+require './lib/order.rb'
 
 describe 'Menu Features' do
 
   subject(:menu) { Menu.new }
 
-# ** User Story 1 **
-# As a customer
-# So that I can check if I want to order something
-# I would like to see a list of dishes with prices
+  # ** User Story 1 **
+  # As a customer
+  # So that I can check if I want to order something
+  # I would like to see a list of dishes with prices
+
   it 'can create a menu' do
     expect { Menu.new }.not_to raise_error
   end
@@ -30,14 +32,6 @@ describe 'Menu Features' do
 
   it 'displays the whole menu available' do
     expect(menu.display).to include(menu.dishes.to_s)
-    #   { "Chicken Tikka" => 8.99 },
-    #   { "Dry Meat" => 10.99 },
-    #   { "Mixed Grill" => 14.99 },
-    #   { "Chana Dal" => 7.99 },
-    #   { "Peshwari Naan" => 3.99 },
-    #   { "Garlic Naan" => 3.49 },
-    #   { "Plain Rice" => 2.00 }
-    # )
   end
 
   it 'presents the menu in a customer friendly format' do
@@ -47,5 +41,26 @@ Takeaway Menu
 Please order before 10pm
 Delivery is available in the E2 area"
   end
+
+end
+
+describe 'Order Features' do
+
+  subject(:order) { Order.new }
+
+  # ** User Story 2 **
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
+
+  it 'can create an order' do
+    expect { Order.new }.not_to raise_error
+  end
+
+  it 'can request an order' do
+    expect { order.request }.not_to raise_error
+  end
+
+  # it 'can order a range of dishes from the menu'
 
 end

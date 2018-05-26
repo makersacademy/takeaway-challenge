@@ -1,3 +1,5 @@
+# Understands the restaurant menu.
+
 class Menu
 
   attr_reader :dishes, :header, :footer
@@ -24,13 +26,5 @@ class Menu
       dish.select
     end
   end
-
-  # def display_menu
-  #   dishes.each do |dish|
-  #     dish.each do |key, value|
-  #       "#{key}: £#{value}"
-  #     end
-  #   end
-  # end
 
 end
