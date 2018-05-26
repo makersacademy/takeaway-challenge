@@ -5,7 +5,7 @@ class Menu
   def initialize(name, price = 1)
     @name = name
     @price = price
-    @items = { "sushi" => 5, "noodles" => 7 }
+    @items = { "sushi" => 5, "noodles" => 7, "edamame" => 3 }
   end
 
   def display_menu

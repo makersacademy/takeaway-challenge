@@ -12,9 +12,22 @@ describe Order do
     expect(subject).to respond_to(:add_item).with(2).arguments
   end
 
+  before do
+    subject.add_item("sushi", 3)
+  end
+
   it 'adds the selection to the basket' do
-    order.add_item(:sushi, 1)
-    expect(subject.add_item("sushi")).to eq subject.basket
+    expect(subject.basket).to include ["sushi", 3]
+  end
+
+
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+
+  it 'calculates the total cost of food' do
+    expect(subject.total).to eq 15
   end
 
 end
