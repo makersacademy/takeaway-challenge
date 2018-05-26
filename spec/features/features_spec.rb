@@ -3,6 +3,7 @@ require 'cafe'
 describe 'Feature tests' do
   let(:cafe) { Cafe.new }
   let(:menu) { Menu.new }
+  let(:order) { Order.new }
 
   # User Story 1:
   # As a customer
@@ -18,4 +19,8 @@ describe 'Feature tests' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
 
+  it 'selects dishes from the menu' do
+    dish = double :dish
+    expect(cafe.select_dishes(dish)).to eq cafe.basket
+  end
 end
