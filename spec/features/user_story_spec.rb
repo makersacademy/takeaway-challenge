@@ -3,54 +3,43 @@ require 'order.rb'
 
 
 describe 'User Stories' do
-  subject(:menu) { Menu.new }
   subject(:order) { Order.new }
   let(:item_1) { double :item1}
   let(:item_2) { double :item2}
   let(:item_3) { double :item3}
+  let(:total_cost) { double :total_cost }
 
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
 
   it 'allows the customer to view the menu' do
-    expect { menu }.not_to raise_error
+    takeaway_restaurant = Restaurant.new
+    expect(takeaway_restaurant.menu_items).to include({ chicken_curry: 9.50 })
+    expect(takeaway_restaurant.menu_items).to include({ pork_belly: 7.99 })
   end
-
-  it 'allows the customer to see a list of dishes with prices' do
-    expect(menu.view_menu).to include "1. Chicken Curry, £9.99"
-    expect(menu.view_menu).to include "5. Pork Belly, £7.99"
-    expect(menu.view_menu).to include "7. Mushroom Soup, £1.99"
-  end 
 
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
 
-  it 'can create an order' do
-    expect { Order.new }.not_to raise_error
+  it 'allows customer to place order with selected items and quantity' do
+    takeaway_restaurant = Restaurant.new
+    menu = takeaway_restaurant.menu_items
+    order = takeaway_restaurant.create_order 
+    order.add_item(:chicken_curry, 5)
+    expect(order.submit).to eq(menu[:chicken_curry] * 5)
   end
 
-  it 'can add items to the order' do
-    order.add_item(item_1, 4)
-    expect(order.current_items[0]).to eq([item_1, 4])
-  end
 
-  it 'can store more than 1 item in its current items' do
-    order.add_item(item_1, 6)
-    order.add_item(item_2, 5)
-    order.add_item(item_3, 3)
-    expect(order.current_items.length).to eq 3
-  end
-
-  it 'can submit the current order to the restaurant' do
-    order.add_item(item_1, 6)
-    order.add_item(item_2, 5)
-    order.add_item(item_3, 3)
-    restaurant = Restaurant.new
-    restaurant.submit(order.current_items)
-    expect(restaurant.received_orders).to eq order.current_items
-  end
+  # it 'can submit the current order to the restaurant' do
+  #   order.add_item(item_1, 6)
+  #   order.add_item(item_2, 5)
+  #   order.add_item(item_3, 3)
+  #   restaurant = Restaurant.new
+  #   restaurant.submit(order.current_items)
+  #   expect(restaurant.received_orders).to eq order.current_items
+  # end
 
 end
 
