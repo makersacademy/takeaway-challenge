@@ -1,8 +1,8 @@
 class Menu
-  attr_reader :juice_menu
+  attr_reader :juices
 
   def initialize
-    @juice_menu = [
+    @juices = [
       { "Matcha Greens Booster Shot": 2.49 },
       { "Strawberry Glow Cold Press Juice": 3.99 },
       { "Cherry Vit C Booster Shot": 2.49 },
@@ -14,6 +14,6 @@ class Menu
   end
 
   def show_menu
-    @juice_menu
+    @juices
   end
 end

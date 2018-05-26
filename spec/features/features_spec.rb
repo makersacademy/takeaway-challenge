@@ -1,7 +1,8 @@
-require 'menu'
+require 'cafe'
 
-describe 'Menu feature tests' do
-  subject(:menu) { Menu.new }
+describe 'Feature tests' do
+  let(:cafe) { Cafe.new }
+  let(:menu) { Menu.new }
 
   # User Story 1:
   # As a customer
@@ -9,7 +10,12 @@ describe 'Menu feature tests' do
   # I would like to see a list of dishes with prices
 
   it 'shows a list of dishes with prices' do
-    expect(menu.show_menu).to eq menu.juice_menu
+    expect(cafe.display).to eq menu.juices
   end
+
+  # User Story 2:
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
 
 end
