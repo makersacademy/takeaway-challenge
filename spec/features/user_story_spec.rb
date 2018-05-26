@@ -2,19 +2,26 @@ require 'customer.rb'
 require 'menu.rb'
 
 describe 'User Stories' do
-  let(:customer) { Customer.new }
+  subject(:customer) { Customer.new }
 
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
 
-  it 'customer can view an array of menu items' do
-    expect(customer.view_menu).to be_instance_of(Array)
-  end 
+  it 'customer can see a list of the items on menu' do
+    expect(customer.view_menu).to include "Chicken Curry, £9.99"
+    expect(customer.view_menu).to include "Pork Belly, £7.99"
+  end
 
-  it 'when customer views menu, a menu is displayed' do
-    menu = Menu.new 
-    expect(customer.view_menu).to include("Chicken Curry")
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
+
+  it 'allows the customer to select items that they want to order' do
+    customer.view_menu
+    current_order = customer.create_order
+    customer.add_to_order("Burger and fries", 1)
+    expect(current_order).to include(["Burger and fries", 1])
   end
 
 end
@@ -22,10 +29,6 @@ end
 
 
 
-
-# As a customer
-# So that I can order the meal I want
-# I would like to be able to select some number of several available dishes
 
 # As a customer
 # So that I can verify that my order is correct
