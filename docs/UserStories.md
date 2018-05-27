@@ -18,8 +18,8 @@ I would like to be able to select some number of several available dishes
 
 Diagram:
 ```puml
-Customer->Restaurant: Order(Dishes)
-Restaurant-->Customer: Ordered Dishes
+Customer->Restaurant: Place Order (Dishes)
+Restaurant-->Customer: Order
 ```
 
 User Story 3
@@ -30,5 +30,20 @@ I would like to check that the total I have been given matches the sum of the va
 
 Diagram:
 ```puml
-Customer->Restaurant: Order(Dishes)
-Restaurant-->Customer: Ordered Dishes + Order Total
+Customer->Restaurant: Place Order (Dishes)
+Restaurant-->Customer: Order + Total
+```
+
+User Story 4
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+Diagram:
+```puml
+Customer->Restaurant: Place Order (Dishes)
+Restaurant-->Customer: Order + Total
+Customer->Restaurant: Confirm Order
+Restaurant-->Customer: Confirmation SMS
+```

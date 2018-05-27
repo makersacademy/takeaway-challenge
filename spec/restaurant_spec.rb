@@ -35,6 +35,12 @@ describe Restaurant do
       restaurant.place_order("Chicken", "Beef")
       expect(restaurant.order_total).to eq 7
     end
+  end
 
+  describe '#send_SMS' do
+    it 'sends an order confirmation SMS' do
+      allow(restaurant).to receive(:send_SMS).and_return "Message sent!"
+      expect(restaurant.send_SMS).to eq "Message sent!"
+    end
   end
 end
