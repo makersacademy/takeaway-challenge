@@ -1,6 +1,6 @@
-require 'Menu'
-require 'MenuItemList'
-require 'MenuItem'
+require 'menu'
+require 'menu_item_list'
+require 'menu_item'
 
 
 RSpec.describe Menu do
