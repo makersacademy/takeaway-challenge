@@ -1,5 +1,6 @@
 require 'menu'
 
+
 RSpec.describe Menu do
 
 	let(:item1) 	{ { name: 'name1', price: 1 } }
@@ -11,12 +12,8 @@ RSpec.describe Menu do
 
 
 	it 'contains a list of dish names and their prices' do
-		expect(menu.print_items).to eq menu_list
+		expect(menu.print_items).to(eq menu_list)
 	end
-
-
-
-
 
 
 end
