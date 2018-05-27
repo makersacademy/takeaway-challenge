@@ -9,7 +9,7 @@ require 'order'
 
 describe 'user stories' do
 
-  # user story 1
+  # User story 1
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -20,7 +20,14 @@ describe 'user stories' do
     menu.view
   end
 
-end
+# user story 2
+# As a customer
+# So that I can order the meal I want
+# I would like to be able to select some number of several available dishes
 
-menu = Menu.new
-menu.view
+  it "allows the customer to select several dishes" do
+    order = Order.new
+    order.select_dish(:roast_goose, 3)
+    expect(order.basket[:roast_goose]).to eq 3
+  end
+end
