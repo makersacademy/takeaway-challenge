@@ -1,6 +1,6 @@
 class RestaurantApp
 
-attr_reader :dish, :order_list
+  attr_reader :dish, :order_list
 
   def initialize
     @dish = dish
