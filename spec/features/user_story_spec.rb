@@ -1,7 +1,5 @@
 require 'order.rb'
 
-
-
 describe 'User Stories' do
   subject(:order) { Order.new }
   let(:item_1) { double :item1}
@@ -31,16 +29,6 @@ describe 'User Stories' do
     expect(order.submit(47.5)).to eq(menu[:chicken_curry] * 5)
   end
 
-
-  # it 'can submit the current order to the restaurant' do
-  #   order.add_item(item_1, 6)
-  #   order.add_item(item_2, 5)
-  #   order.add_item(item_3, 3)
-  #   restaurant = Restaurant.new
-  #   restaurant.submit(order.current_items)
-  #   expect(restaurant.received_orders).to eq order.current_items
-  # end
-
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
@@ -53,12 +41,26 @@ describe 'User Stories' do
     expect { order.submit(10) }.to raise_error "The suspected total is wrong"
   end
 
-end
-
 # As a customer
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 # Hints on functionality to implement:
+  let(:confirmation) { double :confirmation}
+
+  it 'when the total is correct it sends a text when the order is placed' do
+    takeaway_restaurant = Restaurant.new
+    order = takeaway_restaurant.create_order
+    order.add_item(:chicken_curry, 5)
+    expect(confirmation).to receive(:send_text_message)
+    allow(confirmation).to receive(:send_text_message).and_return("testing")
+    order.submit(47.5)
+  end
+
+  xit 'when the total is incorrect it raises error' do
+
+  end
+
+end
 
 # Ensure you have a list of dishes with prices
 # Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
