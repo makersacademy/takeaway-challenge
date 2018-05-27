@@ -19,6 +19,12 @@ class Menu
 	end
 
 
+	def place_order
+		message = 'Thank you! Your order was placed and will be delivered before 18:52'
+		message if orders?
+	end
+
+
 	private
 	def print_full_menu
 		@menu
