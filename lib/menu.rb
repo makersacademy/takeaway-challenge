@@ -1,11 +1,5 @@
 class Menu
-  def stores_menu
-    menu = {
-      banana: 1
-      coconut: 2
-      mango: 3
-      pineapple: 4
-      strawberry: 5
-    }
+  def menu_list
+    { banana: 1.99, strawberry: 2.99, peach: 3.99, coconut: 4.99 }
   end
 end
