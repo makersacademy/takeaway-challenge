@@ -3,19 +3,14 @@ class Menu
 	attr_reader :menu, :order
 
 
-	def initialize(list_of_dishes, order_numbers = nil)
-		@menu = list_of_dishes
-		@order = order_numbers
+	def initialize(full_menu, my_order = nil)
+		@menu = full_menu
+		@order = my_order
 	end
 
 
 	def print
 		orders?? print_order : print_full_menu
-	end
-
-
-	def total
-		print.inject(0) {|sum, hash| sum + hash[:price]}
 	end
 
 
@@ -25,13 +20,14 @@ class Menu
 	end
 
 
+
 	private
 	def print_full_menu
-		@menu
+		@menu.items
 	end
 
 	def print_order
-		@menu.values_at(*order)
+		@menu.items.values_at(*order.items)
 	end
 
 	def orders?
@@ -39,3 +35,6 @@ class Menu
 	end
 
 end
+
+
+
