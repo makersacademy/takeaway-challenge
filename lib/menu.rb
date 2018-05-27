@@ -14,7 +14,7 @@ class Menu
 	end
 
 
-	# private
+	private
 	def print_full_menu
 		@menu
 	end
