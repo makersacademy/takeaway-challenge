@@ -5,13 +5,13 @@ require 'menu_item'
 
 RSpec.describe Menu do
 
-	let(:item1)		{ MenuItem.new('name1', 1) }
-	let(:item2)		{ MenuItem.new('name2', 2) }
-	let(:item3)		{ MenuItem.new('name3', 3) }
+	let(:item1)	{ MenuItem.new('name1', 1) }
+	let(:item2)	{ MenuItem.new('name2', 2) }
+	let(:item3)	{ MenuItem.new('name3', 3) }
 	let(:full_menu)	{ MenuItemList.new([ item1, item2, item3 ]) }
 
 	let(:my_order)	{ OrderList.new(full_menu, [0,1]) }
-	let(:menu)		{ Menu.new(full_menu) }
+	let(:menu)	{ Menu.new(full_menu) }
 	let(:selected_dishes) { Menu.new(full_menu,my_order) }
 
 
