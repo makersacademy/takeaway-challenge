@@ -5,7 +5,6 @@ class Interface
 
   def initialize
     @menu = CSV.read('menu.csv')
-    @order = Order.new
   end
 
   # Shows dishes, read from a csv file
@@ -17,6 +16,7 @@ class Interface
     end
   end
 
+  # take in the selection from a user and store it as an array
   def selection_input
     selection = []
     puts "Enter q to end input"
