@@ -12,7 +12,6 @@ RSpec.describe Menu do
 
 	it 'contains a list of dish names and their prices' do
 		expect(menu.print_items).to eq menu_list
-		p menu.print_items
 	end
 
 
