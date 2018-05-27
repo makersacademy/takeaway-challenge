@@ -9,11 +9,22 @@ class Menu
 	end
 
 
+	def print
+		orders? ? print_order : print_full_menu
+	end
+
+
+	# private
 	def print_full_menu
 		@menu
 	end
 
 	def print_order
-		@menu.values_at(*@order)
+		@menu.values_at(*order)
 	end
+
+	def orders?
+		!!order
+	end
+
 end
