@@ -18,7 +18,7 @@ class Texter
     #     body: @message,
     #     to: @to,
     #     from: @from)
-
+    puts "Text sent!"
     return true
   end
 end

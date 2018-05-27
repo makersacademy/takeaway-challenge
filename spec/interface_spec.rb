@@ -44,4 +44,10 @@ describe Interface do
       end
     end
   end
+
+  # describe '#make_order' do
+  #   it 'makes order' do
+  #     expect(subject.make_order).to eq true
+  #   end
+  # end
 end
