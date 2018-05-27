@@ -31,17 +31,17 @@ This project has been created for a takeaway restaurant. It will be used by cust
 
 Navigate to the root folder in this project directory on the command line to begin. 
 
-Use the following commands on the command line: 
+Here's a demo of the product, where the user creates a chinese takeaway restaurant, views the menu, creates an order and then adds items to it before submtitting the order. When the user gets the suspected total wrong, an error occurs, but on the correct total being submitted the order goes through and the user recieves a text message sent through the Twilio API! 
 
+![alt text](https://imgur.com/OuPI82y)
 
 
 ## Tech/Framework used 
 
 Built in Ruby (version 2.5.0)<br />
-Twilio API 
+Sends texts using Twilio API 
 Tested using Rspec (version 3.7) 
-webmock gem to stub out the twilio external https call
-
+Uses webmock gem to stub out the twilio external https call
 
 ## Running tests
 
@@ -54,5 +54,7 @@ With thanks to Twilio for their awesome API!
 ## Skills I used creating thing project 
 
 TDD</br />
-* </br /> 
+Using an external API </br /> 
+Stubbing, mocking and isolated unit tests (although still a long way to go on this!)</br /> 
+Dependency Injection</br />
 

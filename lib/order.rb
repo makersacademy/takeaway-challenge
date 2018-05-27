@@ -2,9 +2,10 @@ class Order
 
   attr_reader :current_items
 
-  def initialize(restaurant)
+  def initialize(restaurant, confirmation = Confirmation.new)
     @current_items = []
     @restaurant = restaurant
+    @confirm = confirmation
   end
 
   def add_item(item, quantity)
@@ -15,7 +16,7 @@ class Order
     total = calculate_order_price
     @suspected_total = suspected_total
     raise "The suspected total is wrong" if total != suspected_total
-    Confirmation.new.send_text_message("Your order total is confirmed, total cost is #{total} and will be delivered by 11am")
+    @confirm.send_text_message("Your order total is confirmed, total cost is #{total} and will be delivered by 11am")
     total
   end
 
@@ -37,9 +38,3 @@ class Order
     delivery_time = "at #{now_hour.to_i + 1}:#{now_minute}#{now_ampm}"
   end
 end
-
-# I would look at each element in the array  
-# I'd check the dish's (element[0]) price 
-# I'd times that price by the quantity (element[1])
-# I'd add that order lines price (food * quantity) to a running total 
-# I'd return that total 
