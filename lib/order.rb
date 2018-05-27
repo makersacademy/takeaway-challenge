@@ -12,4 +12,14 @@ class Order
     dishes[dish] = number
   end
 
+  def total
+    item_totals.inject(:+)
+  end
+
+  def item_totals
+    dishes.map do |dish, number|
+      menu.price(dish) * number
+    end
+  end
+
 end

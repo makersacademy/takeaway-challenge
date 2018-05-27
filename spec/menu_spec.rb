@@ -26,4 +26,8 @@ describe Menu do
   it 'tells if a dish is not available on the menu' do
     expect(menu.available?(:chicken)).to be false
   end
+
+  it 'gives the price' do
+    expect(menu.price(:pizza)).to eq(dishes[:pizza])
+  end
 end
