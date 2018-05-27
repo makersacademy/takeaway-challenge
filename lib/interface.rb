@@ -42,4 +42,16 @@ class Interface
     order.add(generate_order(selection_input))
   end
 
+  # confirm the order
+  def confirm_order(order)
+    puts order.show_order
+    print "Do you want to make this order(y/n)? "
+    choice = gets.chomp
+    if choice == "y"
+      puts "Making order..."
+      return true
+    end
+    return false
+  end 
+
 end

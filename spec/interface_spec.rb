@@ -27,4 +27,14 @@ describe Interface do
       expect(subject.order_add(order)).to eq true
     end
   end
+
+  describe '#confirm_order' do
+    context 'user says Y' do
+      it 'exits the order' do
+        subject.stub(:gets).and_return('y')
+        allow(order).to receive_messages(:show_order => "order hur durr\n")
+        expect { subject.confirm_order(order) }.to output("order hur durr\nDo you want to make this order(y/n)? Making order...\n").to_stdout
+      end
+    end
+  end
 end
