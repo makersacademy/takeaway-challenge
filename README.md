@@ -21,7 +21,10 @@ Takeaway Challenge
 2. Created a Feature Test file for creating TDD lead behaviour to fit each element of the user stories.
 3. Modelled the exact interaction and behaviour needed to fit the smallest piece of the user story.
 4. Worked through the Red, Green, Refactor process to address each user story.
-5. 
+5. Tried not to guess the object design but be guided by the code, thus worked to refactor all methods so that they had a single responsibility and then move any unrelated methods out to other classes as final refactor.
+6. Therefore initially had all code for user story 1 in menu. Separated out dishes to a new class on completion of User story 1.  
+7.
+
 
 ### Status at point of push:
 

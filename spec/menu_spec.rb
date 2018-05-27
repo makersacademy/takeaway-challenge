@@ -1,4 +1,5 @@
 require './lib/menu.rb'
+require './lib/dishes.rb'
 
 describe Menu do
 
@@ -13,17 +14,18 @@ describe Menu do
     end
   end
 
+# This is testing the dishes class so move this out.
   context '#dishes' do
     it 'contains a list of dishes with prices on initialization' do
-      expect(menu.dishes).to include({ "Chicken Tikka" => 8.99 })
-      expect(menu.dishes).to include({ "Dry Meat" => 10.99 })
-      expect(menu.dishes).to include({ "Garlic Naan" => 3.49 })
+      expect(menu.dishes.dishes).to include({ "Chicken Tikka" => 8.99 })
+      expect(menu.dishes.dishes).to include({ "Dry Meat" => 10.99 })
+      expect(menu.dishes.dishes).to include({ "Garlic Naan" => 3.49 })
     end
   end
 
   context '#display' do
     it 'displays the dishes available for order' do
-      expect(menu.display).to include(menu.dishes.to_s)
+      expect(menu.display).to include(menu.dishes.dishes.to_s)
     end
     it 'displays the dishes in the context of a menu' do
       expect(menu.display).to match "Ty Abs - Whitechapel
@@ -39,6 +41,5 @@ Delivery is available in the E2 area"
       expect { menu.order_request }.not_to raise_error
     end
   end
-
 
 end
