@@ -40,6 +40,7 @@ Use the following commands on the command line:
 Built in Ruby (version 2.5.0)<br />
 Twilio API 
 Tested using Rspec (version 3.7) 
+webmock gem to stub out the twilio external https call
 
 
 ## Running tests

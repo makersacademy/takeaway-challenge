@@ -15,6 +15,7 @@ class Order
     total = calculate_order_price
     @suspected_total = suspected_total
     raise "The suspected total is wrong" if total != suspected_total
+    Confirmation.new.send_text_message("Your order total is confirmed, total cost is #{total} and will be delivered by 11am")
     total
   end
 

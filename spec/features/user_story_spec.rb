@@ -2,6 +2,7 @@ require 'order.rb'
 
 describe 'User Stories' do
   subject(:order) { Order.new }
+  subject(:confirmation) { Confirmation.new}
   let(:item_1) { double :item1}
   let(:item_2) { double :item2}
   let(:item_3) { double :item3}
@@ -45,20 +46,29 @@ describe 'User Stories' do
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 # Hints on functionality to implement:
-  let(:confirmation) { double :confirmation}
+
+before do 
+  stub_request(:post, "https://api.twilio.com/2010-04-01/Accounts/ACdffb9edd5111340d41549cb5fdf96bc0/Messages.json").
+           with(
+             body: {"Body"=>"Your order total is confirmed, total cost is 47.5 and will be delivered by 11am", "From"=>"+441133205765", "To"=>"+447412525804"},
+             headers: {
+            'Accept'=>'application/json',
+            'Accept-Charset'=>'utf-8',
+            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Authorization'=>'Basic QUNkZmZiOWVkZDUxMTEzNDBkNDE1NDljYjVmZGY5NmJjMDpmZDE1ZWU5OWNkMTRhNmQ2YTg5NmY2M2I0NDFmZjdjMQ==',
+            'Content-Type'=>'application/x-www-form-urlencoded',
+            'User-Agent'=>'twilio-ruby/5.10.2 (ruby/x86_64-darwin17 2.5.0-p0)'
+             }).
+           to_return(status: 200, body: "", headers: {})
+end
 
   it 'when the total is correct it sends a text when the order is placed' do
     takeaway_restaurant = Restaurant.new
     order = takeaway_restaurant.create_order
     order.add_item(:chicken_curry, 5)
-    expect(confirmation).to receive(:send_text_message)
-    allow(confirmation).to receive(:send_text_message).and_return("testing")
     order.submit(47.5)
   end
 
-  xit 'when the total is incorrect it raises error' do
-
-  end
 
 end
 
