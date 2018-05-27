@@ -18,17 +18,13 @@ class Order
     @given_total
   end
 
-  def calculate_total_cost
-    @order.each{ |dish, number| @calculated_sum += @menu.dish[dish] * number}
-    @calculated_sum
-  end
-
   private
   def incorrect_order?
     (@order.keys - @menu.dish.keys) == []
   end
 
   def incorrect_sum?
-    self.calculate_total_cost == @given_total
+    @order.each{ |dish, number| @calculated_sum += @menu.dish[dish] * number}
+    @calculated_sum == @given_total
   end
 end
