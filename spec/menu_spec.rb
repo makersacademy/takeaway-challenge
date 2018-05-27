@@ -11,8 +11,21 @@ RSpec.describe Menu do
 	subject(:menu) { described_class.new(menu_list) }
 
 
-	it 'contains a list of dish names and their prices' do
-		expect(menu.print_items).to(eq menu_list)
+	context 'Menu Printer' do
+		it 'prints a list of dish names and their prices' do
+			expect( menu.print_full_menu ).to eq(menu_list)
+		end
+	end
+
+
+	context 'Order Printer' do
+		let(:my_order) { described_class.new( menu_list, [0, -1] ) }
+		let(:printed_order) { [item1, item3] }
+
+
+		it 'prints a list of selected dishes' do
+			expect(my_order.print_order).to eq(printed_order)
+		end
 	end
 
 
