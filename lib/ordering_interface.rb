@@ -10,10 +10,12 @@ class OrderingInterface
     slug_slime_secretion_soup: 9,
   }
 
-  def initialize
-    account_sid = "ACfd981671155067ec401169ba7900427e"
-    auth_token = "02e0ed276dc3b6ab11a4faea10a667d1"
-    @client = Twilio::REST::Client.new account_sid, auth_token
+  def initialize(
+      account_sid = nil,
+      auth_token = nil
+    )
+    @account_sid = account_sid
+    @auth_token = auth_token
     @sender_number = "+447480539252"
     @recipient_number = "+447506661424"
   end
@@ -29,15 +31,24 @@ class OrderingInterface
       acc + quant
     }
     raise "Total doesn't match!" unless calculated_total == given_total
-    "Thank you! Your order was placed and will be delievered before #{Time.now.strftime('%H:%M')}."
+    confirmation = "Thank you! Your order was placed and will be delievered before #{Time.now.strftime('%H:%M')}."
+    return confirmation if api_info_incomplete?
+    send_sms(confirmation)
   end  
 
   def menu
     HORRID_DISHES
   end
 
+  private
+
+  def api_info_incomplete?
+    @account_sid.nil? || @auth_token.nil? || @sender_number.nil? || @recipient_number.nil?
+  end
+
   def send_sms(string)
-    @client.api.account.messages.create(
+    client = Twilio::REST::Client.new @account_sid, @auth_token
+    client.api.account.messages.create(
       from: @sender_number,
       to: @recipient_number,
       body: string
