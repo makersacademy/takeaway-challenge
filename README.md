@@ -17,12 +17,12 @@ Takeaway Challenge
 
  ```
 
-Task
+Task:
 -----
 
 Use the Twilio Gem to order food
 
-User story
+User story:
 -----
 
 ```
@@ -43,7 +43,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-Technology used
+Technology used:
 -----
 
 * Ruby 2.5.0
@@ -51,7 +51,7 @@ Technology used
 * Rspec
 * Capybara
 
-Run project
+Run project:
 -----
 
 * In order to use the app following environment variables are required:
@@ -64,7 +64,7 @@ TAKE_AWAY_TWILIO_MY_NUMBER // client number to recieve sms
 * In order to run tests, clone project, install ruby 2.5.0, install Rspec ```gem 'rspc'``` and ```rspec``` command in terminal.
 * The easiest way to try project is in IRB: ```inside terminal irb -r./takeaway-challenge```
 
-Result
+Result:
 -----
 
 The app has folowing classes:
