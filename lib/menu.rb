@@ -1,6 +1,6 @@
 # Understands the restaurant menu.
 
-require_relative 'dishes'
+require_relative 'restaurant'
 
 class Menu
 
@@ -9,7 +9,7 @@ class Menu
   HEADER = "Ty Abs - Whitechapel\nTakeaway Menu"
   FOOTER = "Please order before 10pm\nDelivery is available in the E2 area"
 
-  def initialize(dishes = Dishes.new, header = HEADER, footer = FOOTER)
+  def initialize(dishes = Restaurant.new.dishes, header = HEADER, footer = FOOTER)
     @dishes = dishes
     @header = header
     @footer = footer
@@ -20,7 +20,7 @@ class Menu
   end
 
   def display_menu
-    dishes.dishes.each do |dish|
+    dishes.each do |dish|
       dish.select
     end
   end

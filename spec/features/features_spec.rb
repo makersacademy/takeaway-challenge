@@ -1,5 +1,19 @@
 require './lib/menu.rb'
-require './lib/dishes.rb'
+require './lib/restaurant.rb'
+
+describe 'Restaurant Features' do
+
+  subject(:restaurant) { Restaurant.new }
+
+    it 'contains an array of hashes for the menu structure' do
+      expect(restaurant.dishes).to include({ "Chicken Tikka" => 8.99 })
+    end
+
+    it 'contains an array of hashes for the menu structure' do
+      expect(restaurant.dishes).to include({ "Dry Meat" => 10.99 })
+    end
+
+end
 
 describe 'Menu Features' do
 
@@ -18,28 +32,18 @@ describe 'Menu Features' do
     expect { menu.dishes }.not_to raise_error
   end
 
-# # Move this test to new class as stat of dishes
-#   it 'contains an array of hashes for the menu structure' do
-#     expect(menu.dishes).to include({ "Chicken Tikka" => 8.99 })
-#   end
-#
-# # Move this test to new class as stat of dishes
-#   it 'contains an array of hashes for the menu structure' do
-#     expect(menu.dishes).to include({ "Dry Meat" => 10.99 })
-#   end
-
   it 'can display a the list of dishes available for order' do
     expect { menu.display }.not_to raise_error
   end
 
   it 'displays the whole menu available' do
-    expect(menu.display).to include(menu.dishes.dishes.to_s)
+    expect(menu.display).to include(menu.dishes.to_s)
   end
 
   it 'presents the menu in a customer friendly format' do
     expect(menu.display).to eq "Ty Abs - Whitechapel
 Takeaway Menu
-#{menu.dishes.dishes.inspect}
+#{menu.dishes.inspect}
 Please order before 10pm
 Delivery is available in the E2 area"
   end
