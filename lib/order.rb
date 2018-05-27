@@ -1,4 +1,6 @@
 require_relative 'menu'
+require_relative 'test_twilio'
+
 class Order
   # order understands the process of ordering food
   attr_reader :basket, :menu, :total
@@ -16,8 +18,9 @@ class Order
     increment_total_order_number(quantity)
   end
 
-  def place_order
-    puts "Thank you! Your order was placed and will be delivered before 18:52"
+  def place_order(text = Text.new)
+    #Is this just a different form of standard out?
+    text.send
   end
 
   private
