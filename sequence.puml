@@ -1,0 +1,39 @@
+```puml
+actor customer
+
+==seeing the menu==
+customer -> ordering_interface: menu
+activate ordering_interface
+  ordering_interface --> customer: {menu with prices}\nprinted to console
+deactivate ordering_interface
+
+==logging in==
+customer -> ordering_interface: customer_login(api_details)
+activate ordering_interface
+  ordering_interface -> "Sms\nConfirmation\nClient" as A: new
+  activate A
+  create sms_client
+  A -> sms_client
+  activate sms_client
+  deactivate A
+  sms_client --> ordering_interface: self
+  deactivate sms_client
+deactivate ordering_interface
+
+==ordering==
+customer -> ordering_interface: {item1: quantity,\nitem2: quantity,\n total: quantity}
+activate ordering_interface
+
+alt not logged in
+  ordering_interface --> customer: confirmation message
+else \t logged in
+  ordering_interface -> sms_client: confirmation message
+  note over sms_client: sends confirmation\n message via SMS
+  deactivate ordering_interface
+end
+
+customer -> ordering_interface: incorrect order
+activate ordering_interface
+  note over ordering_interface: raise RuntimeError
+deactivate ordering_interface
+```

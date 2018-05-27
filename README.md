@@ -6,6 +6,8 @@ This is my solution to the second weekend challenge. The aim of this exercise wa
 
 **Note**: There are no tests for `SmsConfirmationClient` because I don't want to provide my twilio account-sid and auth-token on github for privacy reasons. The SMS sending functionality has been mocked inside the `OrderingInterface` class. The SMS functionality has also been tested in a manual test in the [application demonstration section](#application_demonstration).
 
+A sequence diagram is provided in its [own section](#diagram).
+
 ## Application Demonstration
 
 ```
@@ -86,17 +88,8 @@ RuntimeError (Total doesn't match!)
 => nil
 ```
 
-## Current Diagram
+## Diagram
 
-```puml
-actor client
+I have drawn the diagram using plantUML. The source code of this diagram is available in the same directory as this readme.
 
-==seeing the menu==
-client -> program: menu
-program --> client: {menu with prices}
-
-==ordering==
-client -> program: {item1: quantity,\nitem2: quantity,\n total: quantity}
-program -> twilio_api: order confirmation
-twilio_api --> client: order confirmation
-```
+![sequence](sequence.png)
