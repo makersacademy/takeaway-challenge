@@ -1,29 +1,23 @@
 require_relative "menu"
+require_relative "sms_confirmation_client"
 require "twilio-ruby"
 require "time"
 
 class OrderingInterface
   include Menu
 
-  def initialize(
-      account_sid: nil,
-      auth_token: nil,
-      sender_number: nil,
-      recipient_number: nil
-    )
-    @account_sid = account_sid
-    @auth_token = auth_token
-    @sender_number = sender_number
-    @recipient_number = recipient_number
+  def initialize(sms_util: SmsConfirmationClient)
+    @sms_util = sms_util
+    @login_status = false
   end
 
   def order(hash_args)
     check_if_total_is_given(hash_args)
     check_whether_claimed_total_is_correct(hash_args)
     check_that_each_menu_item_really_exists(hash_args)
-    return confirmation_message if api_info_incomplete?
-    send_sms(confirmation)
-  end  
+    return confirmation_message unless logged_in?
+    @sms_client.send_sms(confirmation_message)
+  end
 
   def menu
     HORRID_DISHES.each { |dish, price|
@@ -31,7 +25,21 @@ class OrderingInterface
     }
   end
 
+  def customer_login(account_sid:, auth_token:, sender_num:, recipient_num:)
+    @sms_client = @sms_util.new(
+      account_sid: account_sid,
+      auth_token: auth_token,
+      sender_num: sender_num,
+      recipient_num: recipient_num
+    )
+    @login_status = true
+  end
+
   private
+
+  def logged_in?
+    @login_status
+  end
 
   def check_if_total_is_given(hash_args)
     raise "No total given!" if hash_args[:total].nil?
@@ -55,23 +63,7 @@ class OrderingInterface
 
   def confirmation_message
     "Thank you! Your order was placed " +
-    "and will be delievered before " +
+    "and will be delivered before " +
     "#{Time.now.strftime('%H:%M')}."
-  end
-
-  def api_info_incomplete?
-    @account_sid.nil? ||
-      @auth_token.nil? ||
-      @sender_number.nil? ||
-      @recipient_number.nil?
-  end
-
-  def send_sms(string)
-    client = Twilio::REST::Client.new @account_sid, @auth_token
-    client.api.account.messages.create(
-      from: @sender_number,
-      to: @recipient_number,
-      body: string
-    )
   end
 end
