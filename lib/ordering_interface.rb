@@ -1,4 +1,4 @@
-require "menu"
+require_relative "menu"
 require "twilio-ruby"
 require "time"
 
@@ -26,7 +26,9 @@ class OrderingInterface
   end  
 
   def menu
-    HORRID_DISHES
+    HORRID_DISHES.each { |dish, price|
+      puts "#{dish}: £#{price}"
+    }
   end
 
   private
@@ -72,5 +74,4 @@ class OrderingInterface
       body: string
     )
   end
-
 end

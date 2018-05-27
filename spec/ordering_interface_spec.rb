@@ -52,7 +52,13 @@ describe OrderingInterface do
   end
 
   it "#menu - show menu with prices" do
-    expect(subject.menu).to eq described_class::HORRID_DISHES
+    expected_output = ""
+    described_class::HORRID_DISHES.each { |dish, price|
+      expected_output += "#{dish}: £#{price}\n"
+    }
+    expect { subject.menu }
+      .to output(expected_output)
+      .to_stdout
   end
 
 end
