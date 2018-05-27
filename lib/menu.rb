@@ -20,7 +20,7 @@ class Menu
 	end
 
 	def delivery_time
-		(Time.now+3600).strftime('%H : %M').delete(' ')
+		(Time.now+3600).strftime('%H:%M')
 	end
 
 	private
