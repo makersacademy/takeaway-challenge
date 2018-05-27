@@ -41,28 +41,18 @@ describe OrderingInterface do
 
   it "#order - unknown dish" do
     expect {
-        subject.order(
-          {
-            gelatinous_grime_goulash: 2,
-            spaghetti_bolognese: 1,
-            total: 3
-          }
-        )
-      }.to raise_error "Unknown dish!"
+      subject.order(
+        {
+          gelatinous_grime_goulash: 2,
+          spaghetti_bolognese: 1,
+          total: 3
+        }
+      )
+    }.to raise_error "Unknown dish!"
   end
 
   it "#menu - show menu with prices" do
     expect(subject.menu).to eq described_class::HORRID_DISHES
   end
-
-  # it "#send_sms - should return string" do
-  #   allow(subject)
-  #     .to receive(:send_sms)
-  #     .with("hello")
-  #     .and_return("hello")
-  #   expect(subject.send_sms("hello")).to eq "hello"
-  # end
-
-
 
 end
