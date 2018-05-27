@@ -51,7 +51,8 @@ class Interface
       puts "Making order..."
       return true
     end
+    puts "Order cancelled"
     return false
-  end 
+  end
 
 end
