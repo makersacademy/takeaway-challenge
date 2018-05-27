@@ -15,11 +15,13 @@ class Menu
 
 
 	def place_order
-		message = 'Thank you! Your order was placed and will be delivered before 18:52'
+		message = 'Thank you! Your order was placed and will be delivered before ' + delivery_time
 		message if orders?
 	end
 
-
+	def delivery_time
+		(Time.now+3600).strftime('%H : %M').delete(' ')
+	end
 
 	private
 	def print_full_menu
@@ -33,6 +35,8 @@ class Menu
 	def orders?
 		!!order
 	end
+
+
 
 end
 

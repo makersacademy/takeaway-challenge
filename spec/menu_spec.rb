@@ -27,7 +27,8 @@ RSpec.describe Menu do
 	end
 
 	it 'sends a confirmation message on completion of order' do
-		message = 'Thank you! Your order was placed and will be delivered before 18:52'
+		time = selected_dishes.delivery_time
+		message = 'Thank you! Your order was placed and will be delivered before ' + time
 		expect(selected_dishes.place_order).to eq(message)
 	end
 
