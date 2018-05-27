@@ -50,10 +50,11 @@ describe 'user stories' do
 
   it "sends confirmation text" do
     # lets break down this problem and first write the code for "puts confirmation text"
-    # order = Order.new
-    # order.select_dish(:roast_goose, 3)
-    # order.select_dish(:deep_fried_goose, 5)
-    # order.place_order
+    order = Order.new
+    order.select_dish(:roast_goose, 3)
+    order.select_dish(:deep_fried_goose, 5)
+    expect(STDOUT).to receive(:puts)
+    order.place_order
   end
 
 end

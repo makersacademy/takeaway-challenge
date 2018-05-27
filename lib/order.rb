@@ -16,6 +16,10 @@ class Order
     increment_total_order_number(quantity)
   end
 
+  def place_order
+    puts "Thank you! Your order was placed and will be delivered before 18:52"
+  end
+
   private
 
   def not_on_menu?(dish)

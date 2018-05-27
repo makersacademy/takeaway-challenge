@@ -16,7 +16,7 @@ describe Order do
   describe "#select_dish" do
 
     it "allows user to select dishes from the menu" do
-      allow(menu_double).to receive(:choices).and_return({dish_choice => nil})
+      allow(menu_double).to receive(:choices).and_return({dish_choice => 1})
       order_quantity = 5
       order.select_dish(dish_choice, order_quantity)
       expect(order.basket[dish_choice]).to eq order_quantity
@@ -36,13 +36,23 @@ describe Order do
   describe "#total" do
 
     it "returns total of orders" do
-      allow(menu_double).to receive(:choices).and_return({dish_choice => nil})
+      allow(menu_double).to receive(:choices).and_return({dish_choice => 1})
       order_quantity = 5
       order.select_dish(dish_choice, order_quantity)
       expect(order.total).to eq order_quantity
       # I don't feel this test is well written, magic number again
     end
 
+  end
+
+  describe "#confirmation" do
+    it "sends confirmation text" do
+      allow(menu_double).to receive(:choices).and_return({dish_choice => 1})
+      allow(order).to receive(:increment_total_order_number).and_return(nil)
+      order.select_dish(dish_choice, order_quantity)
+      expect(STDOUT).to receive(:puts)
+      order.place_order
+    end
   end
 
 end
