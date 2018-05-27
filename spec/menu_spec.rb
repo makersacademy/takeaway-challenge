@@ -32,8 +32,9 @@ RSpec.describe Menu do
 
 
 		it 'checks the total for my order' do
-			expect(my_order.sum).to eq(item1[:price]+item3[:price])
+			expect(my_order.total).to eq(item1[:price]+item3[:price])
 		end
+
 
 
 	end

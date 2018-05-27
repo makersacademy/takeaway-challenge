@@ -14,8 +14,8 @@ class Menu
 	end
 
 
-	def sum
-		orders?? print_order.inject(0) {|sum, hash| sum + hash[:price]} : "you've placed no orders yet"
+	def total
+		print.inject(0) {|sum, hash| sum + hash[:price]}
 	end
 
 
