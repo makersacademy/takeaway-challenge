@@ -29,6 +29,13 @@ class Order
     return total
   end
 
+   def delivery_time
+    now = Time.now
+    now_hour = now.strftime("%I")
+    now_minute = now.strftime("%M")
+    now_ampm = now.strftime("%p")
+    delivery_time = "at #{now_hour.to_i + 1}:#{now_minute}#{now_ampm}"
+  end
 end
 
 # I would look at each element in the array  

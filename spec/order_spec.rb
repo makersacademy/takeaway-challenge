@@ -51,6 +51,10 @@ describe Order do
       this_order.add_item(:chicken_curry, 5)
       expect { this_order.submit(10) }.to raise_error "The suspected total is wrong"
     end
+
+    it 'creates a time for the delivery to be sent' do
+      expect(subject.delivery_time).to be_instance_of(String) 
+    end
   end 
 
 end
