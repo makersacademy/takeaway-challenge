@@ -31,6 +31,7 @@ describe 'user stories' do
     expect(order.basket[:roast_goose]).to eq 3
   end
 
+  # user story 3
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
@@ -40,6 +41,19 @@ describe 'user stories' do
     order.select_dish(:roast_goose, 3)
     order.select_dish(:deep_fried_goose, 5)
     expect(order.total).to eq 8
+  end
+
+# user story 4
+#  As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+  it "sends confirmation text" do
+    # lets break down this problem and first write the code for "puts confirmation text"
+    # order = Order.new
+    # order.select_dish(:roast_goose, 3)
+    # order.select_dish(:deep_fried_goose, 5)
+    # order.place_order
   end
 
 end

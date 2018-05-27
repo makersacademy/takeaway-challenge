@@ -11,9 +11,23 @@ class Order
 
   def select_dish(dish, quantity)
     message = "Order could not be taken: not on the menu"
-    fail message unless @menu.choices.has_key?(dish)
-    @basket[dish] = quantity
+    fail message if not_on_menu?(dish)
+    add_to_basket(dish, quantity)
+    increment_total_order_number(quantity)
+  end
+
+  private
+
+  def not_on_menu?(dish)
+    !@menu.choices.has_key?(dish)
+  end
+
+  def increment_total_order_number(quantity)
     @total += quantity
+  end
+
+  def add_to_basket(dish, quantity)
+    @basket[dish] = quantity
   end
 
 end
