@@ -18,4 +18,12 @@ describe Menu do
     printed_menu = "Pizza £9.99, Pasta £8.50"
     expect(menu.print_menu).to eq(printed_menu)
   end
+
+  it 'tells if a dish is available on the menu' do
+    expect(menu.available?(:pizza)).to be true
+  end
+
+  it 'tells if a dish is not available on the menu' do
+    expect(menu.available?(:chicken)).to be false
+  end
 end
