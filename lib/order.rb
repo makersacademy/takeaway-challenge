@@ -18,6 +18,11 @@ class Order
     @given_total
   end
 
+  def delivery_time
+    time = Time.now + 60*60
+    @time = time.strftime('%H : %M')
+  end
+
   private
   def incorrect_order?
     (@order.keys - @menu.dish.keys) == []
