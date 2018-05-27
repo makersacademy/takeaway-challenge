@@ -33,7 +33,7 @@ Navigate to the root folder in this project directory on the command line to beg
 
 Here's a demo of the product, where the user creates a chinese takeaway restaurant, views the menu, creates an order and then adds items to it before submtitting the order. When the user gets the suspected total wrong, an error occurs, but on the correct total being submitted the order goes through and the user recieves a text message sent through the Twilio API! 
 
-![Alt text](takeaway-challenge/Screen Shot 2018-05-27 at 20.47.14.png)
+![Alt text](https://github.com/Robfaldo/takeaway-challenge/blob/master/Screen%20Shot%202018-05-27%20at%2020.47.14.png?raw=true)
 
 
 ## Tech/Framework used 
