@@ -3,10 +3,13 @@ require 'pry'
 
 class ConfirmOrder
 
-  def initialize(menu = Menu.new, requested_order)
+  attr_reader :expected_total
+
+  def initialize(menu = Menu.new, requested_order, expected_total)
     @menu = menu.menu_list
     @requested_order = requested_order
-    @total = 0
+    @expected_total = expected_total
+    @actual_total = 0
   end
 
   def order_valid?
@@ -20,8 +23,10 @@ class ConfirmOrder
   end
 
   def calculate_total
-    total = @menu.map { |item, price|
+    @actual_total = @menu.map { |item, price|
         price * @requested_order[item] if @requested_order.key?(item)
       }.compact.sum.round(2)
+    raise 'Incorrect total' if @expected_total != @actual_total
+    return @actual_total
   end
 end
