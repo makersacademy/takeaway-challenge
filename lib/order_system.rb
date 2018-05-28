@@ -1,6 +1,7 @@
 # Understands the takeaway order system
 
 require_relative 'twilio_notification'
+require_relative 'menu'
 
 class OrderSystem
 
@@ -35,7 +36,6 @@ class OrderSystem
     order_placed
   end
 
- # Probably refactor this out to twillo
   def order_placed
     @order_in_progress = true
     text.send_message

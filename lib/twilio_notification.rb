@@ -1,12 +1,12 @@
-require 'twilio-ruby'
 require 'dotenv'
+require 'twilio-ruby'
 
 class TwilioNotification
 
   attr_reader :client, :delivery
 
   def initialize(account_sid = ENV['ACCOUNT_SID'],
-                 auth_token = ENV['AUTH_TOKEN'])
+                auth_token = ENV['AUTH_TOKEN'])
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     @from = ENV['TWILIO_PHONE']
     @to = ENV['RECEIVER']
@@ -18,8 +18,7 @@ class TwilioNotification
     client.messages.create(
     from: @from,
     to: @to,
-    body: "Thank you! Your order was placed and will be delivered
-          before #{delivery}"
+    body: "Thank you! Your order was placed and will be with you by #{delivery}"
     )
     "Message sent."
   end
