@@ -1,6 +1,6 @@
 class Menu_list
 
-  def self.menu_list
+  def menu_list
       @menu_list = [
       [1,"Roast Duck in Sour Plum Sauce", 6.2],
       [2,	"Sweet & Sour Chicken Hong Kong Style",	5.4],

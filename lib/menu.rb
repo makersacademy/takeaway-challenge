@@ -3,21 +3,26 @@ require_relative 'menu_list'
 
 class Menu
 
-  attr_reader :order, :menu_list
+  attr_reader :order, :menu_list, :messaging
 
   def initialize
-    # message = Messaging.new
     @order = []
     @prices = []
-    @new_menu = Menu_list.new
+    @menu_list = Menu_list.new
+    @menu_list = menu_list
+    @message = Messaging.new
   end
 
-  def print_menu
-    @new_menu
+  def print
+    menu_list.menu_list
+  end
+
+  def send_message
+
   end
 
   def item(number)
-    @choice = menu_list.slice(number-1)
+    @choice = menu_list.menu_list.slice(number-1)
     @prices << @choice.last
     @order << @choice
   end
@@ -30,6 +35,5 @@ class Menu
     @prices
     @prices.sum.round(2)
   end
-
 
 end

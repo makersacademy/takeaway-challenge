@@ -2,13 +2,8 @@ require 'menu'
 
 describe Menu do
 
-  it "includes the list of menu items" do
-    expect(subject.menu_list).to be_an Array
-  end
-
-
   it 'takes a choice' do
-    allow(subject).to receive(:item)
+    expect(subject).to respond_to(:item).with(1).argument
   end
 
   it 'contains one or more choice' do
@@ -23,7 +18,5 @@ describe Menu do
     menu.item(1)
     expect(menu.prices).to be_nonzero
   end
-
-
 
 end
