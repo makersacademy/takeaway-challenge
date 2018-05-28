@@ -1,4 +1,4 @@
-require_relative 'take_away'
+require_relative 'menu'
 
 class Order
   attr_reader :basket, :total, :menu
@@ -6,7 +6,7 @@ class Order
   def initialize
     @basket = []
     @total = 0
-    @menu = TakeAway.new.menu
+    @menu = Menu.new.menu
   end
 
   def order(dish, amount)
