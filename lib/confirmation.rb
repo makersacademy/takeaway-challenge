@@ -23,4 +23,3 @@ class Confirmation
     puts message.sid
   end
 end
-Confirmation.new.send_text

@@ -4,7 +4,7 @@ describe Order do
   let(:order) { described_class.new }
   let(:current_order) {{ "Runny Risotto" => 2,
                     "Cold Pizza" => 3 }}
-
+                  
   it { is_expected.to respond_to(:select_dishes).with(1).argument }
   it { is_expected.to respond_to(:checking_total).with(1).argument }
 
