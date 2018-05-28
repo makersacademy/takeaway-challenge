@@ -1,14 +1,17 @@
 class Restaurant
   require 'twilio-ruby'
+  require 'csv'
 
   attr_accessor :menu
   attr_reader :order
 
   def initialize(menu = { Chicken: 3, Beef: 4 },
-    account_sid = 'ACb240a03130d9e88e24f8a9ac0529b12c',
-    auth_token = 'cb612ed27a25cdff5214927fee3e3b0f')
+    account_sid = CSV.read('./lib/twilio.csv')[0],
+    auth_token = CSV.read('./lib/twilio.csv')[1])
     @menu = menu
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new account_sid[0], auth_token[0]
+    @from = CSV.read('./lib/twilio.csv')[2]
+    @to = CSV.read('./lib/twilio.csv')[3]
   end
 
   def print_menu
@@ -37,8 +40,8 @@ class Restaurant
   def send_sms
     delivery_time = Time.new + 1 * 60 * 60
     @client.messages.create(
-      :from => '+447480824831',
-      :to => '+447834348935',
+      :from => @from[0],
+      :to => @to[0],
       :body => "Thank you! Your order was placed and will be delivered
       before #{delivery_time.strftime("%H:%M")}")
   end
