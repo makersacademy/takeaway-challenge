@@ -35,26 +35,39 @@ describe OrderSystem do
 
   context '#confirm_order' do
     it 'returns an error if the total submitted is not the correct total cost' do
+      text_double = double(send_message: "Message sent.")
+      menu_double = double(dishes: { "Dry Meat" => 10.99 })
+      order = OrderSystem.new(menu_double, text_double)
       allow(order).to receive(:total_cost) { 2 }
       total_submitted = 12
       message = "Your submitted order total of #{total_submitted} is not correct."
       expect { order.confirm_order(total_submitted) }.to raise_error message
     end
     it 'returns confirmation' do
+      text_double = double(send_message: "Message sent.")
+      menu_double = double(dishes: { "Dry Meat" => 10.99 })
+      order = OrderSystem.new(menu_double, text_double)
       allow(order).to receive(:total_cost) { 10.99 }
       total_submitted = 10.99
-      message = "Total cost is 10.99. Thank you for your order."
+      message = "Total cost is #{order.total_cost}. Thank you for your order."
       expect(order.confirm_order(total_submitted)).to eq message
     end
     it 'allows user to receive a text message confirming estimated delivery time' do
+      text_double = double(send_message: "Message sent.")
+      menu_double = double(dishes: { "Dry Meat" => 10.99 })
+      order = OrderSystem.new(menu_double, text_double)
       allow(order).to receive(:total_cost) { 21.98 }
-      message = "Thank you! Your order was placed and will be delivered before 18:52"
+      message = "Total cost is #{order.total_cost}. Thank you for your order."
       expect(order.confirm_order(21.98)).to eq message
     end
   end
 
   context '#order_placed' do
     it 'marks order as being in progress' do
+      text_double = double(send_message: "Message sent.")
+      menu_double = double(dishes: { "Dry Meat" => 10.99 })
+      order = OrderSystem.new(menu_double, text_double)
+      order.add_to_order("Dry Meat", 2)
       order.order_placed
       expect(order.order_in_progress).to eq true
     end

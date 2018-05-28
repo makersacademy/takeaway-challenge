@@ -81,10 +81,15 @@ describe 'OrderSystem Features' do
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
   it 'checks the total submitted matches the order total' do
+    text_double = double(send_message: "Message sent.")
+    menu_double = double(dishes: { "Chicken Tikka" => 8.99,
+    "Dry Meat" => 10.99, "Plain Rice" => 2.99 })
+    order = OrderSystem.new(menu_double, text_double)
     order.add_to_order("Chicken Tikka", 1)
     order.add_to_order("Dry Meat", 2)
     order.add_to_order("Plain Rice", 3)
     message = "Total cost is #{order.total_cost.round(2)}. Thank you for your order."
+    allow(order).to receive(:order_placed) { message }
     expect(order.confirm_order(39.94)).to eq message
   end
 
@@ -92,11 +97,11 @@ describe 'OrderSystem Features' do
     expect { order.add_to_order("Chicken Tikka", 3) }.to change { order.total_cost }.by 26.97
   end
 
-  it 'allows the user confirm how much their order should cost' do
-    expect(order).to respond_to(:confirm_order).with(1).arguments
-  end
-
   it 'allows user place an order' do
+    text_double = double(send_message: "Message sent.")
+    menu_double = double(dishes: { "Dry Meat" => 10.99 })
+    order = OrderSystem.new(menu_double, text_double)
+    order.add_to_order("Dry Meat", 2)
     order.order_placed
     expect(order.order_in_progress).to eq true
   end
@@ -107,8 +112,12 @@ describe 'OrderSystem Features' do
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
   it 'allows user to receive a text message confirming estimated delivery time' do
+    text_double = double(send_message: "Message sent.")
+    menu_double = double(dishes: { "Dry Meat" => 10.99 })
+    order = OrderSystem.new(menu_double, text_double)
     order.add_to_order("Dry Meat", 2)
-    expect(order.confirm_order(21.98)).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+    allow(order).to receive(:total_cost) { 21.98 }
+    message = "Total cost is 21.98. Thank you for your order."
+    expect(order.confirm_order(21.98)).to eq message
   end
-
 end
