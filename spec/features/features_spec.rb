@@ -75,7 +75,6 @@ describe 'OrderSystem Features' do
     expect(order.add_to_order(item, number)).to eq "#{number} #{item}(s) added to your order."
   end
 
-
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
@@ -117,7 +116,7 @@ describe 'OrderSystem Features' do
     order = OrderSystem.new(menu_double, text_double)
     order.add_to_order("Dry Meat", 2)
     allow(order).to receive(:total_cost) { 21.98 }
-    message = "Total cost is 21.98. Thank you for your order."
+    message = "Total cost is #{order.total_cost}. Thank you for your order."
     expect(order.confirm_order(21.98)).to eq message
   end
 end
