@@ -46,6 +46,11 @@ describe OrderSystem do
       message = "Total cost is 10.99. Thank you for your order."
       expect(order.confirm_order(total_submitted)).to eq message
     end
+    it 'allows user to receive a text message confirming estimated delivery time' do
+      allow(order).to receive(:total_cost) { 21.98 }
+      message = "Thank you! Your order was placed and will be delivered before 18:52"
+      expect(order.confirm_order(21.98)).to eq message
+    end
   end
 
   context '#order_placed' do

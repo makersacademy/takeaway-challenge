@@ -1,10 +1,11 @@
 # Understands the takeaway order system
 
 # require_relative 'menu'
+require 'twilio-ruby'
 
 class OrderSystem
 
-  attr_reader :menu, :order_in_progress, :total_cost, :pending_order
+  attr_reader :menu, :order_in_progress, :total_cost, :pending_order, :client
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -37,7 +38,18 @@ class OrderSystem
  # Probably refactor this out to twillo
   def order_placed
     @order_in_progress = true
+    text_message
     return "Total cost is #{total_cost.round(2)}. Thank you for your order."
   end
+
+def text_message
+  @client.messages.create(
+    from: '+447480639164',
+    to: '+447917881462',
+    body: 'Thank you! Your order was placed and will be delivered before 18:52"
+  end')
+end
+
+
 
 end
