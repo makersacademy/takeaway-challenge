@@ -1,30 +1,22 @@
+require_relative 'messaging'
+require_relative 'menu_list'
+
 class Menu
 
-  attr_reader :order
+  attr_reader :order, :menu_list
 
   def initialize
+    # message = Messaging.new
     @order = []
     @prices = []
+    @new_menu = Menu_list.new
   end
 
-  def menu_list
-      @menu_list = [
-      [1,"Roast Duck in Sour Plum Sauce", 6.2],
-      [2,	"Sweet & Sour Chicken Hong Kong Style",	5.4],
-      [3, "Beef Curry",	5.2],
-      [4, "Cha Siu Cantonese Roast Lean Pork", 5.5],
-      [5, "King Prawns with Green Pepper in Black Bean Sauce", 6.5],
-      [6, "Special Chow Mein", 5.7],
-      [7, "Egg Fried Rice", 2.8],
-      [8, "Steamed Mussels in Black Bean Sauce", 6.5],
-      [9, "Crispy Pork in Garlic and Honey Sauce", 5.5],
-      [10,	"Chicken with Cashewnuts & Pineapple", 5.4],
-      [11,	"Shrimps Foo Yung", 5.2]
-    ]
+  def print_menu
+    @new_menu
   end
 
   def item(number)
-    @menu_list = menu_list
     @choice = menu_list.slice(number-1)
     @prices << @choice.last
     @order << @choice
@@ -39,6 +31,5 @@ class Menu
     @prices.sum.round(2)
   end
 
-end
 
-#"Thank you! Your order was placed and will be delivered before 18:52"
+end

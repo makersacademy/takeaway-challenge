@@ -9,7 +9,6 @@ describe Menu do
 
   it 'takes a choice' do
     allow(subject).to receive(:item)
-    # expect(subject.choices(1)).to eq(1)
   end
 
   it 'contains one or more choice' do
@@ -25,7 +24,6 @@ describe Menu do
     expect(menu.prices).to be_nonzero
   end
 
-  it "sends a text message"
 
 
 end
