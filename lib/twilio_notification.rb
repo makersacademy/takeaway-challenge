@@ -1,3 +1,5 @@
+# Understands the text message sending function via Twilio
+
 require 'dotenv'
 require 'twilio-ruby'
 
