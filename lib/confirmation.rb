@@ -3,8 +3,8 @@ require 'twilio-ruby'
 class Confirmation 
 
   def initialize
-    account_sid = 'ACdffb9edd5111340d41549cb5fdf96bc0'
-    auth_token = 'fd15ee99cd14a6d6a896f63b441ff7c1'
+    account_sid = 'ACdffb9exxxx'
+    auth_token = 'fd15ee9xxxx'
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
