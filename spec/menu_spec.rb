@@ -1,6 +1,6 @@
-require "restaurant"
+require "menu"
 
-describe Restaurant do
+describe Menu do
   it "it has a list of dishes that can be seen (is not empty)" do
     expect(subject.dish.empty?).to be false
   end

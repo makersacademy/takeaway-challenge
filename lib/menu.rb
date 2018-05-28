@@ -1,4 +1,4 @@
-class Restaurant
+class Menu
   attr_reader :dish
   def initialize
     @dish = { "Runny Risotto" => 5,

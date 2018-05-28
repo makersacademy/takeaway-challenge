@@ -1,5 +1,4 @@
 require "order"
-require "restaurant"
 
 describe Order do
   let(:order) { described_class.new }
@@ -23,16 +22,6 @@ describe Order do
       order.select_dishes(current_order)
       error_given_total = 10
       expect {order.checking_total(error_given_total)}.to raise_error"Incorrect sum - please retry to place order"
-    end
-  end
-
-  context "---finalizing the order if conditions are met---" do
-    it "returns the time before the order must be delivered" do
-           expect(order.delivery_time).to be_instance_of(String)
-    end
-
-    it "finalizes the order by sending a text to the custumer" do
-
     end
   end
 end

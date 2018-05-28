@@ -1,9 +1,12 @@
-require_relative "./restaurant.rb"
+require_relative "./menu.rb"
+require_relative "./confirmation.rb"
+
 class Order
   attr_reader :order
-  def initialize
+  def initialize(confirmation = Confirmation.new)
     @calculated_sum = 0
-    @menu = Restaurant.new
+    @menu = Menu.new
+    @confirmation = confirmation
   end
 
   def select_dishes(current_order)
@@ -15,12 +18,7 @@ class Order
   def checking_total(given_total)
     @given_total = given_total
     raise "Incorrect sum - please retry to place order" unless incorrect_sum?
-    @given_total
-  end
-
-  def delivery_time
-    time = Time.now + 60*60
-    @time = time.strftime('%H : %M')
+    @confirmation.send_text
   end
 
   private
