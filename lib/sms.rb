@@ -11,9 +11,9 @@ class SMS
     @config = config
   end
   def deliver
-    client.messages.create(messages_args)
+    client.messages.create(message_args)
   end
-  def messages_args
+  def message_args
     {
       from: config[:from],
       to: config[:to],

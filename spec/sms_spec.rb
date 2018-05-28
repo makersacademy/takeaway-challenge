@@ -21,7 +21,7 @@ describe SMS do
       to: config[:to],
       body: "Thank you: Your order will be delivered before 15:00"
       }
-    allow(Time).to receive(:now).and_return("14:00")
+    allow(Time).to receive(:now).and_return(Time.parse("14:00"))
     expect(messages).to receive(:create).with(args)
     sms.deliver
 
