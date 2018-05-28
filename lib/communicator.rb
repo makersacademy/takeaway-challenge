@@ -4,7 +4,7 @@ require 'dotenv/load'
 class Communicator
   def initialize
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'],
-    ENV['TWILIO_AUTH_TOKEN']
+    ENV['439433498894JKLDFJ498GH9384T94GTNH98RT3R39TUGHB95GHOIN']
   end
 
   def send total
