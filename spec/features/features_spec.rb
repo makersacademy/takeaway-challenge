@@ -56,23 +56,23 @@ end
 
 describe 'OrderSystem Features' do
 
-  subject(:menu) { Menu.new }
+  subject(:order) { OrderSystem.new }
   let(:item) { double :item }
   let(:number) { double :number }
 
   it 'asks user what they would like to order' do
     order_intro = 'What would you like to order?'
-    expect(menu.order_request).to eq order_intro
+    expect(order.order_request).to eq order_intro
   end
 
   it 'allows user to add an item to their order' do
-    menu.add_to_order("Chicken Tikka", 1)
-    expect(menu.pending_order).to include "Chicken Tikka"
+    order.add_to_order("Chicken Tikka", 1)
+    expect(order.pending_order).to include "Chicken Tikka"
   end
 
   it 'adds an item to pending order' do
     number = 1
-    expect(menu.add_to_order(item, number)).to eq "#{number} #{item}(s) added to your order."
+    expect(order.add_to_order(item, number)).to eq "#{number} #{item}(s) added to your order."
   end
 
   # ** User Story 3 **
@@ -81,24 +81,24 @@ describe 'OrderSystem Features' do
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
   it 'checks the total submitted matches the order total' do
-    menu.add_to_order("Chicken Tikka", 1)
-    menu.add_to_order("Dry Meat", 2)
-    menu.add_to_order("Plain Rice", 3)
-    message = "Total cost is #{menu.total_cost.round(2)}. Thank you for your order."
-    expect(menu.confirm_order(39.94)).to eq message
+    order.add_to_order("Chicken Tikka", 1)
+    order.add_to_order("Dry Meat", 2)
+    order.add_to_order("Plain Rice", 3)
+    message = "Total cost is #{order.total_cost.round(2)}. Thank you for your order."
+    expect(order.confirm_order(39.94)).to eq message
   end
 
   it 'totals up the pending order' do
-    expect { menu.add_to_order("Chicken Tikka", 3) }.to change { menu.total_cost }.by 26.97
+    expect { order.add_to_order("Chicken Tikka", 3) }.to change { order.total_cost }.by 26.97
   end
 
   it 'allows the user confirm how much their order should cost' do
-    expect(menu).to respond_to(:confirm_order).with(1).arguments
+    expect(order).to respond_to(:confirm_order).with(1).arguments
   end
 
   it 'allows user place an order' do
-    menu.order_placed
-    expect(menu.order_in_progress).to eq true
+    order.order_placed
+    expect(order.order_in_progress).to eq true
   end
 
 end
