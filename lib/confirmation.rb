@@ -1,6 +1,6 @@
 require 'twilio-ruby'
 
-class Text
+class Confirmation
 
   def send
     account_sid = "AC66383f8637b98199adab167d20c3e9d6" # Your Account SID from www.twilio.com/console

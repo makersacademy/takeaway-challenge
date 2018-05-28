@@ -3,11 +3,11 @@ require 'order'
 describe Order do
 
   let(:menu_double) { double :menu }
+  let(:confirmation_double) { double :confirmation }
   let(:dish_choice) { double :dish }
-  let(:wrong_dish_choice) { double :wrong_dish }
-  let(:order_quantity) {double :order_quantity }
+  order_quantity = 1 # I don't like this magic number
 
-  subject(:order) { described_class.new(menu_double) } # to be doubled in due course
+  subject(:order) { described_class.new(menu_double) }
 
   # As a customer
   # So that I can order the meal I want
@@ -15,43 +15,40 @@ describe Order do
 
   describe "#select_dish" do
 
-    it "allows user to select dishes from the menu" do
-      allow(menu_double).to receive(:choices).and_return({dish_choice => 1})
-      order_quantity = 5
-      order.select_dish(dish_choice, order_quantity)
-      expect(order.basket[dish_choice]).to eq order_quantity
-      #don't like magic number here, not sure how to solve it
+    context "when dish is on the menu" do
+
+      before do
+        allow(menu_double).to receive(:choices).and_return({ dish_choice => 1 })
+      end
+
+      it "allows user to select dish" do
+        order.select_dish(dish_choice, order_quantity)
+        expect(order.basket[dish_choice]).to eq order_quantity
+      end
+
+      it "records total of orders" do
+        order.select_dish(dish_choice, order_quantity)
+        expect(order.total).to eq order_quantity
+      end
+
     end
 
-    it "raises error if dish is not on the menu" do
-      allow(menu_double).to receive(:choices).and_return(Hash.new)
-      message = "Order could not be taken: not on the menu"
-      allow(order).to receive(:increment_total_order_number).with(1).and_return(nil) #I don't like this line
-      expect { order.select_dish(wrong_dish_choice, order_quantity) }.to raise_error message
+    context "when dish is not on the menu" do
+      
+      it "raises error" do
+        allow(menu_double).to receive(:choices).and_return(Hash.new)
+        message = "Order could not be taken: not on the menu"
+        expect { order.select_dish(dish_choice) }.to raise_error message
+      end
 
     end
 
   end
 
-  describe "#total" do
-
-    it "returns total of orders" do
-      allow(menu_double).to receive(:choices).and_return({dish_choice => 1})
-      order_quantity = 5
-      order.select_dish(dish_choice, order_quantity)
-      expect(order.total).to eq order_quantity
-      # I don't feel this test is well written, magic number again
-    end
-
-  end
-
-  describe "#confirmation" do
-    it "sends confirmation text" do
-      allow(menu_double).to receive(:choices).and_return({dish_choice => 1})
-      allow(order).to receive(:increment_total_order_number).and_return(nil)
-      order.select_dish(dish_choice, order_quantity)
-      expect(STDOUT).to receive(:puts)
-      order.place_order
+  describe "#place_order" do
+    it "sends confirmation" do
+      expect(confirmation_double).to receive(:send)
+      order.place_order(confirmation_double)
     end
   end
 

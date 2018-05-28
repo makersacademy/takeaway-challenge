@@ -49,7 +49,6 @@ describe 'user stories' do
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
   it "sends confirmation text" do
-    # lets break down this problem and first write the code for "puts confirmation text"
     order = Order.new
     order.select_dish(:roast_goose, 3)
     order.select_dish(:deep_fried_goose, 5)

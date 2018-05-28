@@ -1,9 +1,11 @@
 require_relative 'menu'
-require_relative 'test_twilio'
+require_relative 'confirmation'
 
 class Order
   # order understands the process of ordering food
   attr_reader :basket, :menu, :total
+
+  DEFAULT_QUANTITY = 1
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -11,16 +13,15 @@ class Order
     @total = 0
   end
 
-  def select_dish(dish, quantity)
+  def select_dish(dish, quantity = DEFAULT_QUANTITY)
     message = "Order could not be taken: not on the menu"
     fail message if not_on_menu?(dish)
     add_to_basket(dish, quantity)
     increment_total_order_number(quantity)
   end
 
-  def place_order(text = Text.new)
-    #Is this just a different form of standard out?
-    text.send
+  def place_order(confirmation = Confirmation.new)
+    confirmation.send
   end
 
   private
