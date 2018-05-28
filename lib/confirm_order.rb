@@ -39,3 +39,6 @@ private
     @sms_sender.send_sms(total)
   end
 end
+
+confirm_order = ConfirmOrder.new(Menu.new)
+confirm_order.process_order({banana: 2, peach: 1}, 7.97)
