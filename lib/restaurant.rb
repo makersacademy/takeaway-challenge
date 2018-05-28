@@ -4,13 +4,15 @@ class Restaurant
   attr_accessor :menu
   attr_reader :order
 
-  def initialize(menu = {Chicken: 3, Beef: 4}, account_sid = 'ACb240a03130d9e88e24f8a9ac0529b12c', auth_token = 'cb612ed27a25cdff5214927fee3e3b0f')
+  def initialize(menu = { Chicken: 3, Beef: 4 },
+    account_sid = 'ACb240a03130d9e88e24f8a9ac0529b12c',
+    auth_token = 'cb612ed27a25cdff5214927fee3e3b0f')
     @menu = menu
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
   def print_menu
-    menu.each { |k,v| puts "#{k}: £#{v}" }
+    menu.each { |k, v| puts "#{k}: £#{v}" }
   end
 
   def place_order(*dishes)
@@ -28,31 +30,17 @@ class Restaurant
 
   def menu_check(*dishes)
     dishes.each do |dish|
-      raise "#{dish} is not on the menu" if !@menu.key?(dish.to_sym)
+      raise "#{dish} is not on the menu" unless @menu.key?(dish.to_sym)
     end
   end
 
-  def send_SMS
-    delivery_time = Time.new + 1*60*60
+  def send_sms
+    delivery_time = Time.new + 1 * 60 * 60
     @client.messages.create(
       :from => '+447480824831',
       :to => '+447834348935',
-      :body => "Thank you! Your order was placed and will be delivered before #{delivery_time.strftime("%H:%M")}")
-  end
-
-  def print_logo
-  logo = ["                            _________",
-  "              r==           |       |",
-  "           _  //            |  N.P. |   ))))",
-  "          |_)//(''''':      |       |",
-  "            //  \\_____:_____.-------D     )))))",
-  "           //   | ===  |   /        \\",
-  "       .:'//.   \\ \\=|   \\ /  .:'':./    )))))",
-  "      :' // ':   \\ \\ ''..'--:'-.. ':",
-  "      '. '' .'    \\:.....:--'.-'' .'",
-  "       ':..:'                ':..:'                  "]
-  puts logo
-  puts "\nWELCOME TO NICKY'S PIZZERIA!!!!"
+      :body => "Thank you! Your order was placed and will be delivered
+      before #{delivery_time.strftime("%H:%M")}")
   end
 
   private
