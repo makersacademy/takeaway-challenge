@@ -4,7 +4,7 @@ describe SMS do
   subject(:sms) { described_class.new(config, client: client) }
 
   let(:client) { double(:client, messages: messages) }
-  let(:messages) { double(:messages) }
+  let(:messages) { spy(:messages) }
 
   let(:config) do
     {
@@ -24,7 +24,7 @@ describe SMS do
     }
 
     allow(Time).to receive(:now).and_return(Time.parse("17:52"))
-    expect(messages).to receive(:create).with(args)
     sms.deliver
+    expect(messages).to have_received(:create).with(args)
   end
 end
