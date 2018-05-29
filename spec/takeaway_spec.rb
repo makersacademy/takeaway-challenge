@@ -1,7 +1,7 @@
 require 'Takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu: menu, order: order, sms: sms) }
+  subject(:takeaway) { described_class.new(menu: menu, order: order, sms: sms, config: {}) }
 
   let(:menu) { double :menu, print: printed_menu }
   let(:order) { instance_double("Order", total: 10.00) }
