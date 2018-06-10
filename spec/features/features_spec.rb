@@ -30,7 +30,14 @@ describe 'Feature tests' do
 
   it 'checks the total I have been given' do
     cafe.select_juices("Matcha Greens Booster Shot")
-    expect(cafe.check_total(2.49)).to eq [2.49]
+    expect(cafe.check_total(2.49)).to eq 2.49
   end
 
+  # User Story 4
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  # it 'sends a text to confirm that my order will be delivered' do
+  #   expect(cafe.place_order).to eq message.send
+  # end
 end
