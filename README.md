@@ -25,24 +25,6 @@ These instructions will help to follow the steps of the project.
 
 Run the automated tests for this challenge via RSpec -fd or rubocop.
 
-### Break down of end to end tests
-
-- 1st user story test:
-
-![FT]()
-
-- 2nd user story test failure:
-
-![UT]()
-
-- 3rd user story test:
-
-![UT2]()
-
-- 4th user story test:
-
-![UT2]()
-
 ## Built With  
 
 * [Visual Studio Code](https://code.visualstudio.com/)
