@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'twilio-ruby'
 require 'dotenv/load'
 
@@ -10,8 +12,9 @@ class Messenger
 
   def send(message)
     @client.messages.create(
-    to: ENV['MY_PHONE_NUMBER'],
-    from: ENV['TWILIO_PHONE_NUMBER'],
-    body: message)
+      to: ENV['MY_PHONE_NUMBER'],
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      body: message
+    )
   end
 end

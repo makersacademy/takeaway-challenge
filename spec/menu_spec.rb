@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'menu'
 
 describe Menu do
@@ -9,7 +11,7 @@ describe Menu do
     end
 
     it 'inside the array are hashes' do
-      expect(menu.show).to all(be_a Hash) 
+      expect(menu.show).to all(be_a Hash)
     end
   end
 end

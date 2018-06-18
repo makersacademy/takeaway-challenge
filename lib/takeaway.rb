@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'menu'
 require_relative 'messenger'
 
-class TakeAway
+class Takeaway
   attr_reader :order, :total_cost
 
   def initialize(menu_class = Menu.new, messenger_class = Messenger.new)
@@ -20,7 +22,7 @@ class TakeAway
     raise 'Must choose a number >0' unless amount.positive?
     chosen_item = hashed_order(item, amount)
     update_order(chosen_item)
-    "#{chosen_item[:item_name]} x#{chosen_item[:quantity]} = £%0.2f" % item_subtotal(chosen_item)
+    format("#{chosen_item[:item_name]} x#{chosen_item[:quantity]} = £%0.2f", item_subtotal(chosen_item))
   end
 
   def delete_item(item)
@@ -49,16 +51,13 @@ class TakeAway
 
   def build_order
     order.map do |item|
-      "#{item[:item_name]} x#{item[:quantity]} = £%0.2f" % item_subtotal(item)
+      format("#{item[:item_name]} x#{item[:quantity]} = £%0.2f", item_subtotal(item))
     end.join(', ')
   end
 
   def update_order(chosen_item)
-    if order.any? { |hash| hash[:item_name] == chosen_item[:item_name] }
-      raise 'Item already in order, please remove it first'
-    else
-      order << chosen_item
-    end
+    raise 'Item already in order, please remove it first' if item_in_order chosen_item
+    order << chosen_item
   end
 
   def hashed_order(item, amount)
@@ -69,13 +68,13 @@ class TakeAway
 
   def on_menu?(name)
     display_menu.any? do |item|
-      item.has_value? name
+      item.value? name
     end
   end
 
   def calculate_total
     @total_cost = order.reduce(0) { |sum, item| sum + item[:quantity] * item[:price].to_f }
-    "The grand total is £%0.2f" % total_cost
+    format('The grand total is £%0.2f', total_cost)
   end
 
   def item_subtotal(chosen_item)
@@ -84,5 +83,9 @@ class TakeAway
 
   def send_confirmation(message)
     @messenger.send(message)
+  end
+
+  def item_in_order(chosen_item)
+    order.any? { |hash| hash[:item_name] == chosen_item[:item_name] }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 class Menu
@@ -15,6 +17,6 @@ class Menu
 
   def make_hash(file_name)
     read_file = CSV.open(file_name, headers: true, header_converters: :symbol)
-    read_file.to_a.map { |row| row.to_hash }
+    read_file.to_a.map(&:to_hash)
   end
 end
