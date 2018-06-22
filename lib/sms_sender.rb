@@ -2,8 +2,8 @@ require 'twilio-ruby'
 
 class SMSSender
   # To find these visit https://www.twilio.com/user/account
-  ACCOUNT_SID = "AC41c53cb8424c27922dec36f543fb0614"
-  AUTH_TOKEN = "a9d000d445b11aa0cb7d9dabc8367cd4"
+  ACCOUNT_SID = "XXXXXXXXXXXXX"
+  AUTH_TOKEN = "XXXXXXXXXXXXXXXXXX"
   TO_NUMBER = '+447914303594'
   FROM_NUMBER = '+441274288749'
 
