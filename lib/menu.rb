@@ -1,17 +1,25 @@
 require 'csv'
 
 class Menu
-  CSV_PATH = './menu.csv'
+  DEFAULT_CSV_PATH = './menu.csv'
   ITEM_MAX_LENGTH = 50
 
   attr_reader :menu_array
 
-  def initialize
-    @menu_array = CSV.read(CSV_PATH)
+  def initialize(path = nil)
+    path ||= DEFAULT_CSV_PATH
+    @menu_array = fetch_menu_array(path)
+  end
+
+  def fetch_menu_array(path)
+    row_array = CSV.read(path)
+    row_array.map! { |row|
+      { name: row[0], price: row[1], veggie: !!row[2] }
+    }
   end
 
   def list_prices
-    @menu_array.each.with_index { |row, index| prettify(row, index) }
+    @menu_array.each.with_index { |item, index| prettify(item, index) }
   end
 
   def select(input)
@@ -21,9 +29,9 @@ class Menu
 
   private
 
-  def prettify(row, index)
+  def prettify(item, index)
     STDOUT.print "#{index + 1}. ".rjust(5)
-    STDOUT.print row[0].ljust(ITEM_MAX_LENGTH)
-    STDOUT.puts row[1].rjust(10)
+    STDOUT.print item[:name].ljust(ITEM_MAX_LENGTH)
+    STDOUT.puts item[:price].rjust(10)
   end
 end

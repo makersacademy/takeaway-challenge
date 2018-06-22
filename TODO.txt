@@ -1,0 +1,9 @@
+  TODO
+ ``````
+* #delete_item.
+* Refactor Order.rb, create a main.rb which holds the order, the menu, the
+  sms sender etc, and runs a game loop to make it interactive.
+* Add ability to authenticate new number?
+* Extract items into own class?
+* Write tests for all this.
+* Change menu to read from column titles?

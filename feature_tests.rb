@@ -18,3 +18,9 @@ order.list
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed
 #   and will be delivered before 18:52" after I have ordered.
+order.send_text(number)
+
+# As a customer
+# So that I can get my order right.
+# I would like to be able to delete items.
+order.delete(item)
