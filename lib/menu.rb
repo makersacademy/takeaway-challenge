@@ -1,4 +1,4 @@
-class TakeAway
+class Menu
 
   attr_reader :english_menu
 
@@ -13,5 +13,12 @@ class TakeAway
   def show_menu
     @english_menu
   end
+
+  #
+  # def add_to_basket(food)
+  #   @basket << food
+  #   "added to the basket"
+  # end
+
 
 end
