@@ -3,7 +3,7 @@ require 'summary'
 describe Summary do
 
   let(:summary)          { described_class.new(final_choices) }
-  let(:final_choices)    { [ { choice: "meat", quantity: 2 } ] }
+  let(:final_choices)    { [{ dish: "meat", quantity: 2 }] }
   let(:menu)             { { "meat" => 10, "veg" => 10 } }
 
   describe '#initialize' do

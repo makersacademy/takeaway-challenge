@@ -35,7 +35,7 @@ describe Order do
       # test needs to be isolated from the Selection class
       order = Order.new
       order.add("meat", 2)
-      expect(order.selection.choices).to include ({ choice: "meat", quantity: 2 })
+      expect(order.selection.choices).to include ({ dish: "meat", quantity: 2 })
     end
   end
 

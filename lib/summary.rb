@@ -1,3 +1,4 @@
+# Summary returns the total cost of the final choices
 class Summary
 
   attr_reader :final_choices
@@ -14,7 +15,9 @@ class Summary
   private
 
   def price_lookup
-    @prices = @final_choices.map { |hash| Menu::MENU[hash[:choice]] * hash[:quantity] }
+    @prices = @final_choices.map do |selection|
+      Menu::MENU[selection[:dish]] * selection[:quantity]
+    end
   end
 
 end

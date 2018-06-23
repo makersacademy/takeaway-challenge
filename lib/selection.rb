@@ -6,8 +6,8 @@ class Selection
     @choices = []
   end
 
-  def add(choice, quantity)
-    @choices << { choice: choice, quantity: quantity }
+  def add(dish, quantity)
+    @choices << { dish: dish, quantity: quantity }
   end
 
   def total

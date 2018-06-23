@@ -15,8 +15,8 @@ class Order
     @menu.options
   end
 
-  def add(choice, quantity)
-    @selection.add(choice, quantity)
+  def add(dish, quantity)
+    @selection.add(dish, quantity)
   end
 
 end
