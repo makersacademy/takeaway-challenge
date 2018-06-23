@@ -1,3 +1,4 @@
+# Selection keeps track of choices (dish and quantity)
 class Selection
 
   attr_reader :choices

@@ -1,3 +1,4 @@
+# Menu contains dishs and prices
 class Menu
 
   attr_reader :options
