@@ -1,5 +1,4 @@
 class Menu
-
   attr_reader :dishes
 
   MENU_ITEMS = {
@@ -15,8 +14,12 @@ class Menu
 
   def print_dishes
     dishes.map do |item, price|
-      "%s £%.2f" % [item.to_s.capitalize, price]
+      "#{item.to_s.capitalize} £#{'%.2f' % price}"
     end.join(', ')
+  end
+
+  def on_menu?(dish)
+    !!dishes[dish]
   end
 
 end
