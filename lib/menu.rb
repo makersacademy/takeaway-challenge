@@ -2,7 +2,7 @@ class Menu
 
   attr_reader :options
 
-  MENU = [{dish: "meat", price: 10},{dish: "veg", price: 5}]
+  MENU = { "meat" => 10, "veg" => 5}
 
   def initialize
     @options = MENU

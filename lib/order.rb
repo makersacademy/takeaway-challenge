@@ -1,5 +1,6 @@
 require_relative './menu.rb'
 require_relative './selection.rb'
+require_relative './summary.rb'
 
 class Order
 

@@ -31,10 +31,19 @@ describe Order do
 
   describe '#add' do
     it 'adds a choice to the selection array' do
-      # test needs to be mocked
+      # test needs to be isolated
       order = Order.new
       order.add("chicken")
       expect(order.selection.choices).to include "chicken"
     end
   end
+
+  # playing with isolating the test above
+  # describe '#add' do
+  #   it 'adds a choice to the selection array' do
+  #     allow(:selection).to receive(:add).with("chicken") { ["chicken"] }
+  #     expect(order.add("chicken")).to eq "chicken"
+  #   end
+  # end
+
 end
