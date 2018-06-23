@@ -1,6 +1,14 @@
+require 'csv'
+
 class Takeaway
+  MENU = []
+  CSV.foreach('./docs/menu.csv') do |line|
+    dish, price = line
+    MENU << { dish: dish, price: price }
+  end
+
   def show_menu
-    { dosa: '£6', curry: '£12' }
+    MENU
   end
 
   def order(dish, amount = 1)
