@@ -19,4 +19,8 @@ class Order
     @selection.add(choice)
   end
 
+  def print_summary
+    @selection.print_summary
+  end
+
 end
