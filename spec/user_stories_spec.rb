@@ -1,22 +1,24 @@
 require 'takeaway'
 
-# As a customer
-# So that I can check if I want to order something
-# I would like to see a list of dishes with prices
 describe Takeaway do
   subject(:takeaway) { described_class.new }
 
+  # As a customer
+  # So that I can check if I want to order something
+  # I would like to see a list of dishes with prices
   it 'displays a list of dishes with prices' do
     expect(takeaway.show_menu).to eq dosa: '£6', curry: '£12'
   end
+
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of
+  # several available dishes
+  it 'lets user select a dish and amount' do
+    expect(takeaway.order('dosa', 4)).to eq '4 x dosa'
+  end
 end
 
-#
-# As a customer
-# So that I can order the meal I want
-# I would like to be able to select some number of
-# several available dishes
-#
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been
