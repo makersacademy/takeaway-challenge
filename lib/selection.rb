@@ -6,13 +6,13 @@ class Selection
     @choices = []
   end
 
-  def add(choice)
-    @choices << choice
+  def add(choice, quantity)
+    @choices << { choice: choice, quantity: quantity }
   end
 
-  def print_summary
+  def total
     @summary = Summary.new(@choices)
-    "#{@choices.join(", ")} | Total: £#{@summary.total}"
+    @summary.total
   end
 
 end

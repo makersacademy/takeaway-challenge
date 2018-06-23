@@ -14,7 +14,7 @@ class Summary
   private
 
   def price_lookup
-    @prices = @final_choices.map { |x| Menu::MENU[x] }
+    @prices = @final_choices.map { |hash| Menu::MENU[hash[:choice]] * hash[:quantity] }
   end
 
 end

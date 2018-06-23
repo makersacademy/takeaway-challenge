@@ -3,7 +3,7 @@ require 'summary'
 describe Summary do
 
   let(:summary)          { described_class.new(final_choices) }
-  let(:final_choices)    { ["meat", "veg"] }
+  let(:final_choices)    { [ { choice: "meat", quantity: 2 } ] }
   let(:menu)             { { "meat" => 10, "veg" => 10 } }
 
   describe '#initialize' do
@@ -15,7 +15,7 @@ describe Summary do
   describe '#total' do
     # test needs to be isolated from the Menu class (MENU constant)
     it 'returns the total price for the final choices' do
-      expect(summary.total).to eq 15
+      expect(summary.total).to eq 20
     end
   end
 

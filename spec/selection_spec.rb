@@ -4,6 +4,7 @@ describe Selection do
 
   let(:selection)   { described_class.new }
   let(:choice)      { "meat" }
+  let(:quantity)    { 2 }
 
   describe '#initialize' do
     it 'initializes with an empty array' do
@@ -13,16 +14,16 @@ describe Selection do
 
   describe '#add' do
     it 'adds a menu item to the choices array' do
-      selection.add(choice)
-      expect(selection.choices).to include choice
+      selection.add(choice, quantity)
+      expect(selection.choices).to include ({choice: choice, quantity: quantity})
     end
   end
 
-  describe '#print_summary' do
-    it 'returns a summary and price' do
+  describe '#total' do
+    it 'returns the total cost' do
       # test needs to be isolated from the Menu class (MENU constant)
-      selection.add(choice)
-      expect(selection.print_summary).to eq "#{choice} | Total: £10"
+      selection.add(choice, quantity)
+      expect(selection.total).to eq 20
     end
   end
 

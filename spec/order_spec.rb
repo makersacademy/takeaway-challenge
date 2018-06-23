@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  it { is_expected.to respond_to(:add).with(1).argument }
+  it { is_expected.to respond_to(:add).with(2).arguments }
 
   let(:order)         { described_class.new(menu, selection) }
 
@@ -34,18 +34,8 @@ describe Order do
     it 'adds a choice to the selection array' do
       # test needs to be isolated from the Selection class
       order = Order.new
-      order.add("chicken")
-      expect(order.selection.choices).to include "chicken"
-    end
-  end
-
-  describe '#print' do
-    it 'returns a summary and price' do
-      # test needs to be isolated from the Menu class (MENU constant)
-      order = Order.new
-      choice = "Meat"
-      order.add(choice)
-      expect(order.print_summary).to eq "#{choice} | Total: £10"
+      order.add("meat", 2)
+      expect(order.selection.choices).to include ({ choice: "meat", quantity: 2 })
     end
   end
 

@@ -15,12 +15,8 @@ class Order
     @menu.options
   end
 
-  def add(choice)
-    @selection.add(choice)
-  end
-
-  def print_summary
-    @selection.print_summary
+  def add(choice, quantity)
+    @selection.add(choice, quantity)
   end
 
 end
