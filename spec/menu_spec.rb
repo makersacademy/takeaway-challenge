@@ -2,6 +2,7 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new(dishes) }
+
   let(:dishes) do { Dosa: 7.95, Chapatti: 2.70 } end
   let(:shown_menu) { 'Dosa - £7.95, Chapatti - £2.70' }
 
@@ -21,6 +22,11 @@ describe Menu do
     end
     it 'returns false if dish is not on the menu' do
       expect(subject.includes_dish?('Pizza')).to eq false
+    end
+  end
+  describe '#price' do
+    it 'return the price of the dish' do
+      expect(subject.price('Dosa')).to eq 7.95
     end
   end
 end

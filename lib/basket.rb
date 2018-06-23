@@ -1,11 +1,20 @@
 class Basket
-  attr_reader :dishes
+  attr_reader :orders
 
   def initialize
-    @dishes = []
+    @orders = []
   end
 
-  def add(dish, amount)
-    amount.times do @dishes << dish end
+  def add(dish, amount, price)
+    @orders << { dish: dish, amount: amount, price: price }
+  end
+
+  def show
+    @orders.map do |order|
+      amount = order[:amount]
+      name = order[:dish]
+      total = amount * order[:price]
+      "#{amount} x #{name} - £#{'%.2f' % total}"
+    end.join("\n")
   end
 end

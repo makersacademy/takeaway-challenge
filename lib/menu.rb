@@ -1,7 +1,7 @@
 class Menu
   attr_reader :dishes
 
-  def initialize(dishes = { Dosa: 7.95 })
+  def initialize(dishes = { Dosa: 7.95, Chapatti: 2.70 })
     @dishes = dishes
   end
 
@@ -13,5 +13,9 @@ class Menu
 
   def includes_dish?(dish)
     @dishes.include?(dish.to_sym)
+  end
+
+  def price(dish)
+    @dishes[dish.to_sym]
   end
 end
