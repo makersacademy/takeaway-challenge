@@ -1,5 +1,4 @@
 require "order"
-# I would like to be able to select some number of several available dishes
 
 describe Order do
 
