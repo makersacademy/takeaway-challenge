@@ -21,14 +21,14 @@ class Takeaway
   def add_to_basket(dish, quantity)
     @basket[dish] = quantity
     @total_order << @basket
-    return "#{dish} burrito x #{quantity} added"
+    "#{dish} burrito x #{quantity} added"
   end
 
   def sub_total
-    basket.each do |k, v|
-      @price = @menu_list[k]
-      @total << v * @price
-      return "#{k} x #{v} is £#{'%.2f' % (v * @price)}"
+    basket.each do |filling, quantity|
+      @price = @menu_list[filling]
+      @total << quantity * @price
+      puts "#{filling} x #{quantity} is £#{'%.2f' % (quantity * @price)}"
     end
   end
 
@@ -36,10 +36,6 @@ class Takeaway
     @total.inject(:+)
   end
 
-  # test that total is an empty array
-  # test that basket.each totals dish by qty
-  # test that @total is array of prices
-  # test that total_price sums array of prices
 end
 
 # For running the program in irb
