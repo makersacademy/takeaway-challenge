@@ -4,9 +4,9 @@ class Menu
   end
 
   def price_list
-    @list = [{ 'Pork Burrito' => 8.00 },
-      { 'Chicken Burrito' => 7.50 },
-      { 'Steak Burrito' => 8.50 },
-      { 'Veggie Burrito' => 7.00 }]
+    @list = [{ pork: 8.00 },
+      { chicken: 7.50 },
+      { steak: 8.50 },
+      { veggie: 7.00 }]
   end
 end
