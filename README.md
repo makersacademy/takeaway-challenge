@@ -29,19 +29,13 @@ The RSpec tests at the moment do not include a double or mock for Twilio, so run
 Test coverage is: 98.82%
 
 
-
 Instructions to Start
 -------
 * Open IRB
 * create a new Order object (i.e. order = Order.new) and you are up and running!
 
-Task
+User stories implemented
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
 ```
 As a customer
 So that I can check if I want to order something
