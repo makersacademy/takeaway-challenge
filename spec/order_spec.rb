@@ -8,6 +8,10 @@ describe Order do
       expect(subject.takeaway_order).to be_empty
     end
 
+    it 'should create an empty order balance' do
+      expect(subject.balance).to eq(0)
+    end
+
   end
 
   context 'customer viewing menu of dishes' do

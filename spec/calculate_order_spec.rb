@@ -11,12 +11,12 @@ describe CalculateOrder do
 
     it 'should calculate the order total' do
       subject.calculate([dish_1])
-      expect(subject.order_total.to_i).to eq 3
+      expect(subject.balance.to_i).to eq 3
     end
 
     it 'should calculate the order total' do
       subject.calculate(takeaway)
-      expect(subject.order_total.to_i).to eq 7
+      expect(subject.balance.to_i).to eq 7
     end
 
     # review this test!

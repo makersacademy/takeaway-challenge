@@ -2,15 +2,15 @@ require_relative './order.rb'
 
 class CalculateOrder
 
-  attr_reader :order_total
+  attr_reader :balance
 
   def initialize
-    @order_total = 0
+    @balance = 0
   end
 
   def calculate(order)
     order.each do |key|
-      @order_total += key[:price]
+      @balance += key[:price]
     end
   end
 

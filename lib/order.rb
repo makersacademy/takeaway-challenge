@@ -4,12 +4,13 @@ require_relative './calculate_order.rb'
 
 class Order
 
-  attr_reader :dishes_list, :takeaway_order, :calc
+  attr_reader :dishes_list, :takeaway_order, :calc, :balance
 
   def initialize
     @dishes_list = DishesList.new
     @takeaway_order = []
     @calc = CalculateOrder.new
+    @balance = 0
   end
 
   def view_list
@@ -18,7 +19,7 @@ class Order
 
   def add_order(dish)
     @takeaway_order << dish
-    calculate_order
+    @balance += dish[:price]
   end
 
   def complete_order
@@ -32,6 +33,7 @@ class Order
 
   attr_reader :calculate_order
 
+  # this method checks the order balance
   def calculate_order
     @calc.calculate(@takeaway_order)
   end
