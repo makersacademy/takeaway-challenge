@@ -4,7 +4,7 @@ require_relative './calculate_order.rb'
 
 class Order
 
-  attr_reader :dishes_list, :takeaway_order, :calc, :balance, :check_balance, :order_complete
+  attr_reader :dishes_list, :calc, :takeaway_order, :balance, :order_complete
 
   def initialize
     @dishes_list = DishesList.new
@@ -28,9 +28,9 @@ class Order
   def complete_order
     # add functionality to prevent user complete order
     # if takeaway_order is empty
-    @calc.calculate(@takeaway_order)
+    calculate_balance
     check_balance
-  #  fail "balance does not match: check order" unless check_balance
+    fail "balance does not match: check order" unless balance_match?
     @order_complete = true
     # include method here to receive a text
   end
@@ -42,6 +42,10 @@ class Order
   private
 
 #  this method checks the order balance match the sum of the order
+  def calculate_balance
+    @calc.calculate(@takeaway_order)
+  end
+
   def balance_match?
     @calc.check_bal(@balance)
   end

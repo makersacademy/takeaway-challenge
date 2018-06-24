@@ -64,16 +64,16 @@ describe Order do
 
       let(:dish_1) { {:name => "sushi festival", :price => 3} }
       let(:dish_2) { {:name => "chicken teriyaki dragon roll", :price => 4} }
-      #
-      # it 'raise an error if the order balance does not match sum of dishes' do
-      #   dishes = DishesList.new
-      #   dishes.view_list
-      #   calc = CalculateOrder.new
-      #   calc.balance = 5
-      #   subject.add_order(dish_1)
-      #   subject.add_order(dish_2)
-      #   expect{subject.complete_order}.to raise_error "balance does not match: check order"
-      # end
+
+      it 'raise an error if the order balance does not match sum of dishes' do
+        dishes = DishesList.new
+        dishes.view_list
+        calc = CalculateOrder.new
+        subject.calc.balance = 5
+        subject.add_order(dish_1)
+        subject.add_order(dish_2)
+        expect{subject.complete_order}.to raise_error "balance does not match: check order"
+      end
 
       it 'balance should match order' do
         dishes = DishesList.new
