@@ -22,21 +22,24 @@ describe Order do
       }
 
       it 'should return a list of dishes' do
-        expect(subject.view_list).to eq menu
+      expect(subject.view_list).to eq menu
       end
 
     end
   end
 
-  describe '#add_dish' do
+    describe '#add_order' do
 
-    it 'should allow to select some number of several available dishes' do
+      let(:dish_1) { {:name => "sushi festival", :price => 3} }
+      let(:dish_2) { {:name => "chicken teriyaki dragon roll", :price => 4} }
+
+      it 'should allow to select some number of several available dishes' do
 
       dishes = DishesList.new
       dishes.view_list
-      subject.add_order({ name: "sushi festival", price: 3 })
-      subject.add_order({ name: "chicken teriyaki dragon roll", price: 4 })
-      expect(subject.takeaway_order.length).to eq 2
+      subject.add_order(dish_1)
+      subject.add_order(dish_2)
+      expect(subject.takeaway_order.length).to eq(2)
     end
 
   end

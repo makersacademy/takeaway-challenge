@@ -1,29 +1,39 @@
 require_relative './dishes_list.rb'
+require_relative './dish.rb'
 require_relative './calculate_order.rb'
 
 class Order
 
-  attr_reader :dishes_list, :takeaway_order, :calculate_order
+  attr_reader :dishes_list, :takeaway_order, :calc
 
   def initialize
     @dishes_list = DishesList.new
     @takeaway_order = []
-    @calculate_order = CalculateOrder.new
+    @calc = CalculateOrder.new
   end
 
   def view_list
     dishes_list.view_list
   end
 
-  def add_order(food)
-    @takeaway_order << food
+  def add_order(dish)
+    @takeaway_order << dish
+    calculate_order
   end
 
   def complete_order
     # add functionality to prevent user complete order
     # if takeaway_order is empty
-    @calculate_order.calculate(@takeaway_order)
+    calculate_order
     puts "Your order total: #{calculate_order}"
+  end
+
+  private
+
+  attr_reader :calculate_order
+
+  def calculate_order
+    @calc.calculate(@takeaway_order)
   end
 
 end
