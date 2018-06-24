@@ -22,7 +22,7 @@ class Order
     @takeaway_order << dish
     @balance += dish[:price]
     @order_complete = false
-     "Dish added. Your order total: #{balance}"
+    "Dish added. Your order total: #{balance}"
   end
 
   def complete_order
@@ -50,7 +50,7 @@ class Order
   end
 
   def order_empty?
-    takeaway_order.length == 0
+    takeaway_order.length.zero?
   end
 
 end

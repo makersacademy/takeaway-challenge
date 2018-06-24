@@ -2,11 +2,11 @@ require 'dish'
 
 describe Dish do
 
-  let(:dish) { {:name => "dish_name", :price => 1} }
+  let(:dish) { { :name => "dish_name", :price => 1 } }
 
   describe '#initialize' do
 
-    subject {described_class.new( {:name => "dish_name", :price => 1} )}
+    subject { described_class.new({ :name => "dish_name", :price => 1 }) }
 
     it 'should create a dish' do
       expect(subject.dish).to eq dish
@@ -19,7 +19,6 @@ describe Dish do
     it 'should know its dish price' do
       expect(subject.price).to eq 1
     end
-
 
   end
 

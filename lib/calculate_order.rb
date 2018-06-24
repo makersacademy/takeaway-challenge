@@ -15,13 +15,7 @@ class CalculateOrder
   end
 
   def compare(order_balance)
-    if @balance == order_balance
-      true
-    else
-      false
-    end
-
+    @balance == order_balance
   end
-
 
 end
