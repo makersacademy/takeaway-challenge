@@ -2,7 +2,7 @@ require_relative './order.rb'
 
 class CalculateOrder
 
-  attr_reader :balance
+  attr_accessor :balance
 
   def initialize
     @balance = 0
@@ -13,5 +13,15 @@ class CalculateOrder
       @balance += key[:price]
     end
   end
+
+  def check_bal(order_balance)
+    if @balance == order_balance
+      true
+    else
+      false
+    end
+
+  end
+
 
 end

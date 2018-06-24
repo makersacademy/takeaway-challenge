@@ -12,6 +12,10 @@ describe Order do
       expect(subject.balance).to eq(0)
     end
 
+    it 'should set order complete as false' do
+      expect(subject.order_complete).to eq(false)
+    end
+
   end
 
   context 'customer viewing menu of dishes' do
@@ -54,7 +58,31 @@ describe Order do
         subject.add_order(dish_2)
         expect(subject.balance).to eq(7)
       end
+    end
 
+    describe '#complete_order' do
+
+      let(:dish_1) { {:name => "sushi festival", :price => 3} }
+      let(:dish_2) { {:name => "chicken teriyaki dragon roll", :price => 4} }
+      #
+      # it 'raise an error if the order balance does not match sum of dishes' do
+      #   dishes = DishesList.new
+      #   dishes.view_list
+      #   calc = CalculateOrder.new
+      #   calc.balance = 5
+      #   subject.add_order(dish_1)
+      #   subject.add_order(dish_2)
+      #   expect{subject.complete_order}.to raise_error "balance does not match: check order"
+      # end
+
+      it 'balance should match order' do
+        dishes = DishesList.new
+        dishes.view_list
+        subject.add_order(dish_1)
+        subject.add_order(dish_2)
+        subject.complete_order
+        expect(subject.order_complete).to eq(true)
+      end
     end
 
 end
