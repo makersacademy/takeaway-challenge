@@ -24,9 +24,8 @@ class Messenger
   end
 
   def body(total)
-    "Thank you for your order. \
-    Delivery estimated for #{delivery_time.strftime('%H:%M')} \
-    The total came to #{total}"
+    "Thank you for your order. Delivery estimated for " +
+    "#{delivery_time.strftime('%H:%M')}. The total came to #{total}"
   end
 
   def delivery_time

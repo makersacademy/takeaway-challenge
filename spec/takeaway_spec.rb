@@ -22,14 +22,14 @@ describe Takeaway do
     end
   end
 
-  # describe '#total' do
-  #   it 'returns the payable balance' do
-  #     allow(order).to receive(:add)
-  #     allow(order).to receive(:total).and_return(10)
-  #     takeaway.place_order(customer_order)
-  #     expect(takeaway.total).to eq 10
-  #   end
-  # end
+  describe '#total' do
+    it 'returns the payable balance' do
+      allow(order).to receive(:add)
+      allow(order).to receive(:total).and_return(10)
+      takeaway.place_order(customer_order)
+      expect(takeaway.total).to eq 10
+    end
+  end
 
   describe '#basket' do
     it 'allows customers to check current order before purchase' do

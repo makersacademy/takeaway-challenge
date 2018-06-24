@@ -29,8 +29,8 @@ class Takeaway
   def basket
     display = []
     order.basket.each do |item, qty|
-      display << "#{item.capitalize} #{qty}
-      \ £#{'%.2f' % (menu.price(item) * qty)}"
+      display << "#{item.capitalize} #{qty} " +
+      "£#{'%.2f' % (menu.price(item) * qty)}"
     end
     display.join(", ")
   end
