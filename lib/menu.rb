@@ -8,7 +8,7 @@ class Menu
   end
 
   def add_item(item, price)
-    items[item] = price.to_f
+    items[item.capitalize] = price.to_f
   end
 
   def list_items
