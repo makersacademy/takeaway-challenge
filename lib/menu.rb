@@ -1,10 +1,14 @@
-menu = {"oreo cookie sandwich " => 1, "chocolate eggo waffle" => 2, 
-"crispy chicken nuggets" => 3, "tangy beef jerky" => 1, "spicy lamb donner" => 4}
+class Menu
+
+dishes = { "oreo cookie sandwich " => 1, "chocolate eggo waffle" => 2, 
+"crispy chicken nuggets" => 3, "tangy beef jerky" => 1, "spicy lamb donner" => 4 }
+
 
 order_list = []
 
 
-amount = order_list.inject(0) {|sum, hash| sum + hash[:amount]}
+total = order_list.inject(0) {|sum, hash| sum + hash[:total]}
+
 
 def input_order
   puts "What would you like to order?"
@@ -12,9 +16,10 @@ def input_order
   order = gets.chomp
   while !order.empty? do
   add_to_order_list
-  puts "Your total comes to #{amount}"
+  puts "Your total comes to #{total}"
   end
 end
+
 
 
 def add_to_order_list(order, price)
@@ -22,9 +27,12 @@ def add_to_order_list(order, price)
 end
 
 
-def print_menu
+def print_dishes
   loop do
-  print menu
+  print dishes
   end
 end
+
+end
+
 
