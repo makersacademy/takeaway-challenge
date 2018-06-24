@@ -14,7 +14,7 @@ class CalculateOrder
     end
   end
 
-  def check_bal(order_balance)
+  def compare(order_balance)
     if @balance == order_balance
       true
     else

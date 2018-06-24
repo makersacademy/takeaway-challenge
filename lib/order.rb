@@ -31,6 +31,7 @@ class Order
     calculate_balance
     check_balance
     fail "balance does not match: check order" unless balance_match?
+    fail "your order is empty: add some dishes first" if order_empty?
     @order_complete = true
     # include method here to receive a text
   end
@@ -47,7 +48,11 @@ class Order
   end
 
   def balance_match?
-    @calc.check_bal(@balance)
+    @calc.compare(@balance)
+  end
+
+  def order_empty?
+    takeaway_order.length == 0
   end
 
 end

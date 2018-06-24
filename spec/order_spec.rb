@@ -75,6 +75,13 @@ describe Order do
         expect{subject.complete_order}.to raise_error "balance does not match: check order"
       end
 
+      it 'raise an error if there are no dishes added to the order' do
+        dishes = DishesList.new
+        dishes.view_list
+        calc = CalculateOrder.new
+        expect{subject.complete_order}.to raise_error "your order is empty: add some dishes first"
+      end
+
       it 'balance should match order' do
         dishes = DishesList.new
         dishes.view_list
