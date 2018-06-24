@@ -22,12 +22,10 @@ class Order
     @takeaway_order << dish
     @balance += dish[:price]
     @order_complete = false
-     "Your order total: #{balance}"
+     "Dish added. Your order total: #{balance}"
   end
 
   def complete_order
-    # add functionality to prevent user complete order
-    # if takeaway_order is empty
     calculate_balance
     check_balance
     fail "balance does not match: check order" unless balance_match?
