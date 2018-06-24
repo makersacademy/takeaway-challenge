@@ -1,5 +1,6 @@
 # for rspec testing
 require './lib/menu'
+require './lib/text'
 # for irb testing
 # require './menu'
 
