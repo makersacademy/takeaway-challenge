@@ -45,8 +45,4 @@ describe Order do
       expect(order.total).to eq 16.98
     end
   end
-
-
-
-
 end

@@ -1,13 +1,15 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'messenger'
 
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :messenger
 
-  def initialize(menu, order = Order.new)
+  def initialize(menu, order = Order.new, messenger = Messenger.new)
     @menu = menu
     @order = order
+    @messenger = messenger
   end
 
   def show_menu
@@ -27,9 +29,13 @@ class Takeaway
   def basket
     display = []
     order.basket.each do |item, qty|
-      display << "#{ item.capitalize } #{qty} £#{ '%.2f' % (menu.price(item) * qty) }"
+      display << "#{item.capitalize} #{qty} £#{'%.2f' % (menu.price(item) * qty)}"
     end
     display.join(", ")
   end
 
+  def checkout
+    messenger.send(order.total)
+    order.total
+  end
 end
