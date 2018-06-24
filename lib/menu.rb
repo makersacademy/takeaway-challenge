@@ -14,12 +14,16 @@ class Menu
 
   def print_dishes
     dishes.map do |item, price|
-      "#{item.to_s.capitalize} £#{'%.2f' % price}"
+      "#{item.capitalize} £#{'%.2f' % price}"
     end.join(', ')
   end
 
   def on_menu?(dish)
     !!dishes[dish]
+  end
+
+  def price(dish)
+    dishes[dish]
   end
 
 end

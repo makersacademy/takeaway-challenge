@@ -40,4 +40,10 @@ describe Menu do
       expect(menu.on_menu?(:steak)).to be false
     end
   end
+
+  describe '#price' do
+    it 'returns its price' do
+      expect(menu.price(:pizza)).to eq 4.00
+    end
+  end
 end
