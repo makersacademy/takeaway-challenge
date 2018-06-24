@@ -39,17 +39,12 @@ describe Order do
 
       it 'should allow to select some number of several available dishes' do
 
-      dishes = DishesList.new
-      dishes.view_list
-      subject.add_order(dish_1)
-      subject.add_order(dish_2)
-      expect(subject.takeaway_order.length).to eq(2)
-    end
-
-    describe '#add_order' do
-
-      let(:dish_1) { {:name => "sushi festival", :price => 3} }
-      let(:dish_2) { {:name => "chicken teriyaki dragon roll", :price => 4} }
+        dishes = DishesList.new
+        dishes.view_list
+        subject.add_order(dish_1)
+        subject.add_order(dish_2)
+        expect(subject.takeaway_order.length).to eq(2)
+      end
 
       it 'should add an order balance' do
 
@@ -61,7 +56,5 @@ describe Order do
       end
 
     end
-
-  end
 
 end
