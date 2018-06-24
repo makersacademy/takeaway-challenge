@@ -5,7 +5,8 @@ require_relative './twilio_sms.rb'
 
 class Order
 
-  attr_reader :dishes_list, :calc, :takeaway_order, :balance, :order_complete, :twilio
+  attr_reader :dishes_list, :calc, :takeaway_order, :balance, :order_complete,
+  :twilio
 
   def initialize
     @dishes_list = DishesList.new

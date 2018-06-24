@@ -12,7 +12,7 @@ describe DishesList do
     }
 
     it 'should return a list of dishes' do
-      expect(subject.menu).to eq menu
+      expect(subject.menu).to eq(menu)
     end
 
   end
@@ -27,7 +27,7 @@ describe DishesList do
     }
 
     it 'should return a list of dishes' do
-      expect(subject.view_list).to eq menu
+      expect(subject.view_list).to eq(menu)
     end
 
   end

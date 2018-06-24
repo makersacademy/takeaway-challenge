@@ -2,7 +2,7 @@ require_relative './order.rb'
 
 class CalculateOrder
 
-  attr_accessor :balance
+  attr_reader :balance
 
   def initialize
     @balance = 0

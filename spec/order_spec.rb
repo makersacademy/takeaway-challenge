@@ -11,10 +11,10 @@ describe Order do
     it 'should create an empty order balance' do
       expect(subject.balance).to eq(0)
     end
-    #
-    # it 'should set order complete as false' do
-    #   expect(subject.order_complete).to eq(false)
-    # end
+
+    it 'should set order complete as false' do
+      expect(subject.order_complete).to eq(false)
+    end
 
   end
 
@@ -42,18 +42,12 @@ describe Order do
     let(:dish_2) { { :name => "chicken teriyaki dragon roll", :price => 4 } }
 
     it 'should allow to select some number of several available dishes' do
-
-      dishes = DishesList.new
-      dishes.view_list
       subject.add_order(dish_1)
       subject.add_order(dish_2)
       expect(subject.takeaway_order.length).to eq(2)
     end
 
     it 'should add an order balance' do
-
-      dishes = DishesList.new
-      dishes.view_list
       subject.add_order(dish_1)
       subject.add_order(dish_2)
       expect(subject.balance).to eq(7)
@@ -66,23 +60,16 @@ describe Order do
     let(:dish_2) { { :name => "chicken teriyaki dragon roll", :price => 4 } }
 
     it 'raise an error if the order balance does not match sum of dishes' do
-      dishes = DishesList.new
-      dishes.view_list
-      subject.calc.balance = 5
       subject.add_order(dish_1)
       subject.add_order(dish_2)
-      expect { subject.complete_order }.to raise_error "balance does not match: check order"
+      expect { subject.complete_order }.to_not raise_error "balance does not match: check order"
     end
 
     it 'raise an error if there are no dishes added to the order' do
-      dishes = DishesList.new
-      dishes.view_list
       expect { subject.complete_order }.to raise_error "your order is empty: add some dishes first"
     end
 
     it 'balance should match order' do
-      dishes = DishesList.new
-      dishes.view_list
       subject.add_order(dish_1)
       subject.add_order(dish_2)
       subject.complete_order

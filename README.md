@@ -14,7 +14,11 @@ Takeaway Challenge
 
  ```
 
-Instructions
+My working version of the Takeaway challenge.
+==================
+
+
+<!-- Instructions
 -------
 
 * Challenge time: rest of the day and weekend, until Monday 9am
@@ -76,4 +80,4 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 Notes on Test Coverage
 ------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests. -->

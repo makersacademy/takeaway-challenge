@@ -11,7 +11,7 @@ describe TwilioSMS do
   describe '#initialize' do
 
     it 'should not by default send a SMS' do
-      expect(subject.sms_sent).to eq false
+      expect(subject.sms_sent).to eq(false)
     end
 
   end
@@ -20,7 +20,7 @@ describe TwilioSMS do
 
     it 'should send a SMS if the order is complete' do
       subject.send_sms
-      expect(subject.sms_sent).to eq true
+      expect(subject.sms_sent).to eq(true)
     end
 
   end
