@@ -46,6 +46,22 @@ describe Order do
       expect(subject.takeaway_order.length).to eq(2)
     end
 
+    describe '#add_order' do
+
+      let(:dish_1) { {:name => "sushi festival", :price => 3} }
+      let(:dish_2) { {:name => "chicken teriyaki dragon roll", :price => 4} }
+
+      it 'should add an order balance' do
+
+        dishes = DishesList.new
+        dishes.view_list
+        subject.add_order(dish_1)
+        subject.add_order(dish_2)
+        expect(subject.balance).to eq(7)
+      end
+
+    end
+
   end
 
 end
