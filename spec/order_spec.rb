@@ -11,10 +11,10 @@ describe Order do
     it 'should create an empty order balance' do
       expect(subject.balance).to eq(0)
     end
-
-    it 'should set order complete as false' do
-      expect(subject.order_complete).to eq(false)
-    end
+    #
+    # it 'should set order complete as false' do
+    #   expect(subject.order_complete).to eq(false)
+    # end
 
   end
 

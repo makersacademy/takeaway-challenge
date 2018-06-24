@@ -1,14 +1,16 @@
 require_relative './dishes_list.rb'
 require_relative './dish.rb'
 require_relative './calculate_order.rb'
+require_relative './twilio_sms.rb'
 
 class Order
 
-  attr_reader :dishes_list, :calc, :takeaway_order, :balance, :order_complete
+  attr_reader :dishes_list, :calc, :takeaway_order, :balance, :order_complete, :twilio
 
   def initialize
     @dishes_list = DishesList.new
     @calc = CalculateOrder.new
+    @twilio = TwilioSMS.new
     @takeaway_order = []
     @balance = 0
     @order_complete = false
@@ -31,7 +33,7 @@ class Order
     fail "balance does not match: check order" unless balance_match?
     fail "your order is empty: add some dishes first" if order_empty?
     @order_complete = true
-    # include method here to receive a text
+    send_sms
   end
 
   def check_balance
@@ -51,6 +53,14 @@ class Order
 
   def order_empty?
     takeaway_order.length.zero?
+  end
+
+  def order_complete?
+    @order_complete
+  end
+
+  def send_sms
+    @twilio.send_sms
   end
 
 end
