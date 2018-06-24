@@ -1,5 +1,4 @@
 require 'menu'
-require 'order'
 
 describe Menu do
 
@@ -8,7 +7,7 @@ describe Menu do
 
     subject(:menu) { described_class.new }
 
-    it "shows a list of dishes" do
+    it "shows a list of meals" do
       expect(menu.show_menu).to eq(menu.english_menu)
           end
         end
