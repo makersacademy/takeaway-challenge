@@ -26,7 +26,11 @@ I have made a working assumption that that the customer is already at the takeaw
 
 The RSpec tests at the moment do not include a double or mock for Twilio, so running RSpec will trigger the order confirmation SMS to be sent.
 
-Instructions to Start,
+Test coverage is: 98.82%
+
+
+
+Instructions to Start
 -------
 * Open IRB
 * create a new Order object (i.e. order = Order.new) and you are up and running!
