@@ -23,7 +23,7 @@ describe Order do
   describe "#total_price" do
     it "should return the sum of order" do
       order.add_order("spring roll", 2)
-      order.sofar_price.inject(:+)
+      order.backet_summary
       expect(order.total_price).to eq 1.98
     end
   end

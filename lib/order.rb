@@ -21,7 +21,7 @@ class Order
 
   def backet_summary
     @total_order.each do |item|
-        item.each_key do |key|
+      item.each_key do |key|
         price = (@menu.display[key] * item[key])
         @sofar_price << price
       end
@@ -32,7 +32,7 @@ class Order
       @total_order.each do |item|
         item.each do |key, value|
           puts "#{key} x#{value} = #{@sofar_price[i]}"
-          i+=1
+          i += 1
         end
       end
     end
