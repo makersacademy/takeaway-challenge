@@ -24,7 +24,7 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     multipart-post (2.0.0)
-    nokogiri (1.8.2)
+    nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     parallel (1.12.1)
     parser (2.5.1.0)
@@ -68,7 +68,7 @@ GEM
       hirb
       simplecov
     simplecov-html (0.10.2)
-    twilio-ruby (5.10.3)
+    twilio-ruby (5.10.5)
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
