@@ -13,7 +13,7 @@ class Order
     @selection = selection_class.new
   end
 
-  def list_options
+  def show_menu
     @menu.options
   end
 
@@ -21,10 +21,10 @@ class Order
     @selection.add(dish, quantity)
   end
 
-  # #playing
-  # def confirm(total)
-  #   confirmation = Confirmation.new(selection.total)
-  #   confirmation.check(total)
-  # end
+  # not tested
+  def confirm(given_total, confirmation_class = Confirmation)
+    confirmation = confirmation_class.new(given_total, @selection.total)
+    confirmation.place_order
+  end
 
 end

@@ -24,9 +24,9 @@ describe Order do
 
   end
 
-  describe '#list_options' do
-    it 'shows the options' do
-      expect(order.list_options).to eq "chicken"
+  describe '#show_menu' do
+    it 'shows the dishes and prices' do
+      expect(order.show_menu).to eq "chicken"
     end
   end
 
@@ -35,7 +35,7 @@ describe Order do
       # test needs to be isolated from the Selection class
       order = Order.new
       order.add("meat", 2)
-      expect(order.selection.choices).to include ({ dish: "meat", quantity: 2 })
+      expect(order.selection.choices).to include({ dish: "meat", quantity: 2 })
     end
   end
 

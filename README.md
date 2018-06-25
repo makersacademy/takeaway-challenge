@@ -1,3 +1,31 @@
+# Airport Challenge
+
+=============================
+
+# Motivation
+
+Week 2 Makers Academy weekend project to practice topics covered during the week:
+* Test-Driven Development
+  - red, green, refactor
+  - using mocks and doubles
+* Object-Oriented Programming
+  - classes, methods, scope, instance variables
+  - ensuring code is DRY
+  - using Single Responsibility Principle
+* (Original instructions preserved below)
+
+___
+
+# Tech/framework used
+
+Ruby, RSpec, Rubocop, Twilio SMS API
+_____
+
+# Features
+* Simple menu, select, order functionality with multiple dishes and quantities
+* Order confirmation by text message if no errors are raised
+
+
 Takeaway Challenge
 ==================
 ```

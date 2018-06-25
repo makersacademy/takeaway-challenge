@@ -3,7 +3,7 @@ require 'selection'
 describe Selection do
 
   let(:selection)   { described_class.new }
-  let(:dish)      { "meat" }
+  let(:dish)        { "meat" }
   let(:quantity)    { 2 }
 
   describe '#initialize' do

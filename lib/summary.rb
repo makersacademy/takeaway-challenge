@@ -1,4 +1,5 @@
-# Summary returns the total cost of the final choices
+# Summary returns the cost of the final choices
+
 class Summary
 
   attr_reader :final_choices

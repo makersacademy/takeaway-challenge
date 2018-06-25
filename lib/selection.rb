@@ -11,9 +11,9 @@ class Selection
     @choices << { dish: dish, quantity: quantity }
   end
 
-  def total
-    @summary = Summary.new(@choices)
-    @summary.total
+  def total(summary = Summary)
+    summary = summary.new(@choices)
+    summary.total
   end
 
 end
