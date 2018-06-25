@@ -3,12 +3,12 @@ require 'twilio-ruby'
 class Send_message
 
 def send(time)
-  account_sid = 'AC89d6670e9833119b6ab60d04165e1f2b'
-  auth_token = 'aea59c410226df1adf15491de7d49943'
+  account_sid = ENV['TWILIO_ACCOUNT_SID']
+  auth_token = ENV['TWILIO_ACCOUNT_AUTH_TOKEN']
   client = Twilio::REST::Client.new(account_sid, auth_token)
 
-  from = '+441429450187' # Your Twilio number
-  to = '+447968096596' # Your mobile phone number
+  from = ENV['TWILIO_PHONE_NUMBER'] # Your Twilio number
+  to = ENV['PHONE_NUMBER'] # Your mobile phone number
 
   client.messages.create(
   from: from,
