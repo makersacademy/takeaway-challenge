@@ -10,7 +10,6 @@ class Takeaway
     @menu = @menu_class.menu
     @order = []
     @message = sms.new
-    @time = Time.new + 3600
   end
 
   def show_menu
@@ -33,7 +32,10 @@ class Takeaway
   end
 
   def place_order # place order
-    @message.send(@time)
+
+    @time = Time.new + 3600
+    @message.send(time)
+
   end
 
 end

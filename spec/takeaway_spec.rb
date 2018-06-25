@@ -7,7 +7,7 @@ describe Takeaway do
   let(:mock_sms_class) { double :sms, new: mock_sms, send: mock_message}
   let(:mock_sms) {double :sms}
   let(:mock_message) {double :message}
-  # let(:takeaway) { time: time }
+  let(:time) { Time.new }
 
   it "Whole class" do
     expect(takeaway).to respond_to(:menu, :add_item, :place_order, :calculate_sum)
@@ -52,10 +52,8 @@ describe Takeaway do
 
   describe "#place_order" do
     it "placing an order sends a message" do
-      # difficulty stubbing @time if its assigned within #place_order, but not if outside
-      takeaway.instance_variable_set(:@time, :time)
-      allow(mock_sms).to receive(:send).with(:time).and_return("Thank you, your order was placed and should arrive at 10")
-      expect(takeaway.place_order).to eq "Thank you, your order was placed and should arrive at 10"
+      allow(mock_sms).to receive(:send).and_return("Thank you, your order was placed and should arrive at #{:time}")
+      expect(takeaway.place_order).to eq "Thank you, your order was placed and should arrive at #{:time}"
     end
   end
 
