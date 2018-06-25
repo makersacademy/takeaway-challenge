@@ -23,24 +23,30 @@ describe Order do
     end
   end
 
-  describe '.place_order' do
-    context 'asks user for order details' do
-      it 'asks user to input name of dish' do
-        # expect { order.place_order }.to \
-        # output("Which dish would you like to order?\n").to_stdout
-      end
-      it 'accepts name of dish from user' do
+  # I found building tests for the place_order method difficult, as I felt
+  # reliant on using loops in building it, and had trouble understanding how
+  # these would work during testing. Likewise, testing the individual units
+  # proved a problem as I wanted to keep them private and test them through
+  # other methods. This lef to me writing the place order methods first, which
+  # I was unhappy about doing.
 
-      end
-      it 'raises error if dish name does not exist in menu items' do
-
-      end
-      it 'asks user to input quantity of dish' do
-
-      end
-      it 'accepts quantity of dish from user' do
-
-      end
-    end
-  end
+  # describe '.place_order' do
+  #   context 'asks user for order details' do
+  #     it 'asks user to input name of dish' do
+  #
+  #     end
+  #     it 'accepts name of dish from user' do
+  #
+  #     end
+  #     it 'raises error if dish name does not exist in menu items' do
+  #
+  #     end
+  #     it 'asks user to input quantity of dish' do
+  #
+  #     end
+  #     it 'accepts quantity of dish from user' do
+  #
+  #     end
+  #   end
+  # end
 end

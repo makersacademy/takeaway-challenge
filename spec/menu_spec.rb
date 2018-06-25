@@ -29,7 +29,10 @@ describe Menu do
       expect { Menu.new.list_items }.to \
         raise_error('Please add an item to the menu first!')
     end
-    # Is this the correct way to test print output? Seems unlikely, but I can't test the methods individually as they are private.
+
+    # Is this the correct way to test print output? Seems unlikely,
+    # but I can't test the methods individually as they are private.
+
     it 'displays a list of menu items to the user' do
       menu = Menu.new
       menu.add_item('Roast beef', 3.50)
