@@ -1,18 +1,16 @@
-# for rspec testing
 require './lib/menu'
 require './lib/text'
-# for irb testing
-# require './menu'
 
 class Takeaway
 
   attr_reader :basket, :total_order, :total
 
-  def initialize(menu_list)
+  def initialize(menu_list, text = Text.new)
     @menu_list = menu_list.price_list
     @basket = {}
     @total_order = []
     @total = []
+    @text = text
   end
 
   def print_menu
@@ -34,12 +32,11 @@ class Takeaway
   end
 
   def total_price
-    @total.inject(:+)
+    price = @total.inject(:+)
+    checkout(price)
   end
 
+  def checkout(price)
+    @text.confirmation(price)
+  end
 end
-
-# For running the program in irb
-# menu = Menu.new
-# takeaway = Takeaway.new(menu)
-# takeaway.print_menu

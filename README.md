@@ -1,35 +1,4 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
 ```
 As a customer
 So that I can check if I want to order something
@@ -48,32 +17,42 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+A takeaway application was developed which can show the user a menu, take orders, calculate a sub_total, confirm a total price, and send a text confirmation of delivery.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+The following commands can be run;
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+menu = Menu.new creates an instance of the menu class.
+takeaway = Takeaway.new(menu) creates an instance of the takeaway class with the menu passed through.
+
+takeaway.print_menu shows the menu.
+takeaway.add_to_basket('chicken', 2) adds two chicken burritos to the order.
+takeaway.sub_total contains the current order split by filling type.
+takeaway.total_price confirms the final cost and sends the confirmation text.
 
 
-In code review we'll be hoping to see:
+text.rb has assigned the twilio information to environment variables. In order to for the text functionality to work you will need to sign up to a twilio account and export your account information to your local computer assigning using the same variables names.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Example running in IRB
+2.5.0 :003 > require './lib/takeaway'
+ => true
+2.5.0 :004 > menu = Menu.new
+ => #<Menu:0x00007fe8de2c8840>
+2.5.0 :005 > takeaway = Takeaway.new(menu)
+ => #<Takeaway:0x00007fe8de2a0bd8 @menu_list={"pork"=>8.0, "chicken"=>7.5, "steak"=>8.5, "veggie"=>7.0}, @basket={}, @total_order=[], @total=[], @text=#<Text:0x00007fe8de2a0b38 @client=nil>>
+2.5.0 :006 > takeaway.add_to_basket('chicken', 3)
+ => "chicken burrito x 3 added"
+2.5.0 :007 > takeaway.add_to_basket('pork', 2)
+ => "pork burrito x 2 added"
+2.5.0 :008 > takeaway.sub_total
+chicken x 3 is £22.50
+pork x 2 is £16.00
+ => {"chicken"=>3, "pork"=>2}
+2.5.0 :009 > takeaway.total_price
+ => <Twilio.Api.V2010.MessageInstance account_sid: xxxxxxxxxxxxxxxxxxxxxxxxx api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you for your order. Total cost: £38.5.
+      Your order will be delivered before 9:21.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Things to change
 
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Needs to be refactored to make it cleaner.
+Basket could be separated out into a new class.
+Need to add mocks/stubs so that twilio doesn't send a text each time the tests are run.
