@@ -31,5 +31,4 @@ class Menu
   def meal_excist(meal)
     @english_menu.key.include?(meal)
   end
-
 end

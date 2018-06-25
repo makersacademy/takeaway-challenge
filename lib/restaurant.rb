@@ -24,6 +24,7 @@ class Restaurant
     order.basket
   end
 
+
   def checkout(total)
     order.sub_total(total)
   end

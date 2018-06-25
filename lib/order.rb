@@ -26,5 +26,6 @@ class Order
     end
     @subtotal.reduce(:+)
   return @subtotal
+
   end
 end
