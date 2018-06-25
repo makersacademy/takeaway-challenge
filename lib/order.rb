@@ -9,8 +9,6 @@ class Order
 
   def initialize
     @items = []
-    @sms_sender = SMSSender.new
-    @current_menu = Menu.new
   end
 
   def list
@@ -22,16 +20,8 @@ class Order
     STDOUT.puts item[:price].rjust(PRICE_MAX_LENGTH)
   end
 
-  def add_item(number)
-    @items << @current_menu.select(number)
-  end
-
-  def select_menu(path)
-    Menu.new(path)
-  end
-
-  def show_menu
-    @current_menu.list_prices
+  def add(item)
+    @items << item
   end
 
   def print_total
@@ -40,9 +30,5 @@ class Order
 
   def total
     @items.map { |item| item[:price].gsub(/£/, '').to_f }.sum.round(2)
-  end
-
-  def send_sms
-    @sms_sender.send_message(@items, print_total)
   end
 end

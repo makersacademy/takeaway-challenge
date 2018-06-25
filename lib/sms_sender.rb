@@ -2,13 +2,11 @@ require 'twilio-ruby'
 
 class SMSSender
   # To find these visit https://www.twilio.com/user/account
-  ACCOUNT_SID = "XXXXXXXXXXXXX"
-  AUTH_TOKEN = "XXXXXXXXXXXXXXXXXX"
   TO_NUMBER = '+447914303594'
   FROM_NUMBER = '+441274288749'
 
-  def initialize
-    @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
+  def initialize(sid, auth_token)
+    @client = Twilio::REST::Client.new(sid, auth_token)
   end
 
   def send_message(order, total)

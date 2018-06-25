@@ -1,13 +1,11 @@
 require 'csv'
 
 class Menu
-  DEFAULT_CSV_PATH = './menu.csv'
   ITEM_MAX_LENGTH = 50
 
   attr_reader :menu_array
 
-  def initialize(path = nil)
-    path ||= DEFAULT_CSV_PATH
+  def initialize(path)
     @menu_array = fetch_menu_array(path)
   end
 
