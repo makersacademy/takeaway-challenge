@@ -15,9 +15,16 @@ describe Basket do
       expect(subject.orders).to eq dishes
     end
   end
+
   describe '#show' do
-    it 'returns the selected dishes and the sum of their prices' do
+    it 'returns the selected dishes and the sum of their respective prices' do
       expect(subject.show).to eq "3 x Dosa - £23.85\n2 x Chapatti - £5.40"
+    end
+  end
+  
+  describe '#total' do
+    it 'returns the total price of all selected dishes' do
+      expect(subject.total).to eq 29.25
     end
   end
 end

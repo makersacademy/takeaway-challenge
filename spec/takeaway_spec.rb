@@ -1,10 +1,11 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu, basket) }
+  subject(:takeaway) { described_class.new(menu, basket, confirmation) }
 
   let(:menu) { double(:menu, show: shown_menu, includes_dish?: true, price: 7.95) }
-  let(:basket) { double(:basket, add: 'added', show: basket_content) }
+  let(:basket) { double(:basket, add: nil, show: basket_content, total: 10) }
+  let(:confirmation) { double(:confirmation, send_message: nil) }
   let(:shown_menu) { 'Dosa - £7.95' }
   let(:basket_content) { "3 x Dosa - £15.90\n2 x Chapatti - £5.40\n" }
 
@@ -20,14 +21,16 @@ describe Takeaway do
       expect(basket).to receive(:add).with 'Dosa', 3, 7.95
       takeaway.order('Dosa', 3)
     end
+
     it 'confirms the order with the user' do
       allow(menu).to receive(:includes_dish?).and_return true
       expect(takeaway.order('Dosa', 5)).to eq "Added 5 x Dosa to your order"
     end
+
     context 'dish is not on the menu' do
-      it 'raises an error if dish is not on the menu' do
+      it 'raises an error' do
         allow(menu).to receive(:includes_dish?).and_return false
-        expect { takeaway.order('Pizza') }.to raise_error 'That dish is not on the menu'
+        expect { takeaway.order('Pizza') }.to raise_error 'Cannot process order: that dish is not on the menu'
       end
     end
   end
@@ -37,6 +40,22 @@ describe Takeaway do
       takeaway.order('Dosa', 3)
       takeaway.order('Chapatti', 2)
       expect(takeaway.show_basket).to eq basket_content
+    end
+  end
+
+  describe '#checkout' do
+    context 'if amount is correct' do
+      it 'send a text' do
+        expect { takeaway.checkout(10) }.not_to raise_error
+      end
+    end
+
+    context 'if amount is incorrect' do
+      it 'raises an error' do
+        takeaway.order('Dosa', 3)
+        takeaway.order('Chapatti', 2)
+        expect { takeaway.checkout(5) }.to raise_error 'failed to check out: incorrect amount'
+      end
     end
   end
 end

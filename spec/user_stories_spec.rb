@@ -2,12 +2,15 @@ require 'takeaway'
 
 describe Takeaway do
   describe 'user stories' do
-    subject(:takeaway) { described_class.new(menu, basket) }
+    subject(:takeaway) { described_class.new() }
 
-    let(:menu) { double(:menu, show: shown_menu, includes_dish?: true, price: 7.95) }
-    let(:basket) { double(:basket, add: 'added', show: basket_content) }
-    let(:shown_menu) { "Masala Dosa - £7.95" }
-    let(:basket_content) { "3 x Dosa - £15.90\n2 x Chapatti - £5.40\n" }
+    let(:shown_menu) { "Dosa - £7.95, Chapatti - £2.70" }
+    let(:basket_content) { "3 x Dosa - £23.85\n2 x Chapatti - £5.40" }
+
+    before do
+      takeaway.order('Dosa', 3)
+      takeaway.order('Chapatti', 2)
+    end
 
     # As a customer
     # So that I can check if I want to order something
@@ -29,9 +32,6 @@ describe Takeaway do
     # I would like to check that the total I have been
     # given matches the sum of the various dishes in my order
     it 'shows the user the sum of the various dishes in their order' do
-      takeaway.order('Dosa', 3)
-      takeaway.order('Chapatti', 2)
-      basket_content = "3 x Dosa - £15.90\n2 x Chapatti - £5.40\n"
       expect(takeaway.show_basket).to eq basket_content
     end
 
@@ -39,6 +39,8 @@ describe Takeaway do
     # So that I am reassured that my order will be delivered on time
     # I would like to receive a text such as "Thank you! Your order
     # was placed and will be delivered before 18:52" after I have ordered
-
+    it 'sends a text after the order is finalized' do
+      expect { takeaway.checkout(29.25) }.not_to raise_error
+    end
   end
 end

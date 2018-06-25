@@ -6,16 +6,16 @@ class Menu
   end
 
   def show
-    @dishes.map do |title, price|
+    dishes.map do |title, price|
       "#{title} - £#{'%.2f' % price}"
     end.join(', ')
   end
 
   def includes_dish?(dish)
-    @dishes.include?(dish.to_sym)
+    dishes.include?(dish.to_sym)
   end
 
   def price(dish)
-    @dishes[dish.to_sym]
+    dishes[dish.to_sym]
   end
 end
