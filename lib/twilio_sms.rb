@@ -16,17 +16,17 @@ class TwilioSMS
   def send_sms
     time
     # Your Account SID from www.twilio.com/console
-    account_sid = "AC7e39b6b96a12214456b2217c17792dd7"
+    account_sid = ""
 
     # Your Auth Token from www.twilio.com/console
-    auth_token = "7e454a37dd32ab9f8d6b764984900dd2"
+    auth_token = ""
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     # message = @client.messages.create(
     @client.messages.create(
         body: "Thank you! Your order will be delivered before #{delivery_time}",
-        to: "+447956874881",    # Replace with your phone number
-        from: "+447481361728")  # Replace with your Twilio number
+        to: "",    # Replace with your phone number
+        from: "")  # Replace with your Twilio number
 
     # puts message.sid
     @sms_sent = true

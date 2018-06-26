@@ -19,7 +19,6 @@ My working version of the Takeaway challenge.
 
 What is working:
 -------
-
 All of the following user stories listed below have been implemented.
 
 I have made a working assumption that that the customer is already at the takeaway, therefore my implementation does not contain a Takeaway object (or class).
@@ -31,10 +30,24 @@ Test coverage is: 98.82%
 
 Instructions to Start
 -------
-* Open IRB
-* create a new Order object (i.e. order = Order.new) and you are up and running!
+* Before starting, enter your Twilio accpount details in 'twilio_sms.rb'
 
-User stories implemented
+* Open IRB and type in the following: require require './lib/order.rb'
+* Create a new Order object (i.e. order = Order.new) and you are up and running!
+
+Commands:
+.view_list
+returns a list of dishes in the menu
+
+.add_order(dish)
+add a dish to your order
+e.g .add_order({ :name => "sushi festival", :price => 3 })
+
+.complete_order
+to complete your order
+
+
+User Stories Implemented
 -----
 ```
 As a customer
