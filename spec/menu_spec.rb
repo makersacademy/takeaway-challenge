@@ -16,7 +16,7 @@ describe Menu do
     end
   end
 
-  describe '.add_item' do
+  describe '#add_item' do
     menu = Menu.new
     it 'adds menu items to the items hash' do
       menu.add_item('Glass of beer', 2.75)
@@ -24,14 +24,11 @@ describe Menu do
     end
   end
 
-  describe '.list_items' do
+  describe '#list_items' do
     it 'raises an error if no items have been added to the menu' do
       expect { Menu.new.list_items }.to \
         raise_error('Please add an item to the menu first!')
     end
-
-    # Is this the correct way to test print output? Seems unlikely,
-    # but I can't test the methods individually as they are private.
 
     it 'displays a list of menu items to the user' do
       menu = Menu.new

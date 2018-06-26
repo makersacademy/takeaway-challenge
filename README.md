@@ -7,21 +7,16 @@ Second week (weekend) solo project, focusing on object interaction and TDD. The 
 
 ## Completion
 
-* All features fully implemented.
-* All tests passing.
+* All features & user stories fully implemented.
+* All tests passing with 100% coverage.
 * Code conforms to Rubocop style guide.
-* Significant refactoring and unit testing needed (see below).
-
-## Difficulties
-
-I found this challenge surprisingly difficult, which stemmed from my uncertainty around how certain unit tests should be conducted (testing for both user input and STDOUTPUT).
-I also felt reliant on using loops to track user input within the Order class, and this added further confusion to the TDD process. Unfortunately, I ended up writing the user input methods without individual unit tests as I found myself running out of time and unable to find an adequate solution. As a consequence:
-* Several methods within the Order class need significant refactoring, removing the reliance on long conditional loops.
-* Unit tests should help to guide this process, meaning I need a better understanding of both loops and input/output testing.
+* Order class re-designed after successful code review.
 
 ## Learning Outcomes
 
-Despite having problems with the looping and testing process, I improved my understanding of class dependency significantly this week as I kept Classes as independent and modular as possible. Looking at my personal learning objectives from last week, this challenge gave me a solid grasp of how public/private methods work (and the problems they can cause as identified above), along with an improvement in understanding of attribute readers/writers/accessors.
+Having originally written the Order class to include user input (see previous commits), I re-assessed my approach after code review and re-wrote the order class using unit tests as guidance.
+The user input from previous commits has been completely removed and replaced with simple functions designed to take input as arguments. This is a far more straightforward approach while still fulfilling the user stories, and has helped significantly improve my understanding of the interaction between classes and user input.
+I also benefitted from re-writing the unit tests, which gave me the opportunity to problem-solve using doubles within the order/sms confirmation process.
 
 ## Technical
 
@@ -29,41 +24,23 @@ Written in Ruby using Rspec for unit tests & irb for feature testing.
 
 ## Implementation
 
-Pre-load './spec/order_irb.rb' into irb for a pre-defined list of dishes.
-
-'menu.add_item' - Adds a new item to the menu (taken as a (string, float) argument)
-'menu.list_items' - Displays a list of all items currently on the menu.
-'order.place_order' - Guides user through a series of prompts and sends a text confirmation on completion.
-
 ```shell
 irb
-source('./spec/order_irb.rb')
+require './lib/menu.rb'
+require './lib/order.rb'
+menu = Menu.new('My Restaurant Menu')
+menu.add_item('Beef', 4.25)
 menu.add_item('Chicken', 3.5)
-menu.list_items # => Puts a list of menu items
-# ------------------------------
-# Restaurant Menu
-# ------------------------------
-# 1. Beef - £3.25
-# 2. Curry - £3.00
-# 3. Roast dinner - £3.50
-# 4. Pork - £3.00
-# 5. Fish and chips - £3.17
-# 6. Chicken - £3.50
-order.place_order
-# Which dish would you like to order? (exit to finish)
-Fish and chips
-# What quantity of this dish would you like to order?
-1
-# Which dish would you like to order? (exit to finish)
-exit
-# Please enter the total amount for your order:
-3.17
-# Order total is correct. Please check your phone for confirmation.
+menu.lists_items # => Puts a formatted menu to the terminal
+order = Order.new(menu)
+order.add_item('Beef', 5) # => "Beef x 5 has been added to your order."
+order.add_item('Chicken', 2) # => "Chicken x 2 has been added to your order."
+order.subtotal # => "£28.25"
+order.confirm_price(28.25) # => "Order total is correct."
+order.confirm_order # => "Please check your phone for order updates."
 ```
 
 ## Further Improvements
 
-* Refactoring order methods, removing reliance on conditional loops.
-* Appropriate unit testing before implementing the above.
-* Improve understanding of loops.
-* Improve understanding of testing output and user input.
+* Twilio information to be embedded as Environment variables.
+* Further practice with mocking/doubles would be beneficial.
