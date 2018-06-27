@@ -10,8 +10,8 @@ class Messenger
     to: ENV['TO']
   }
 
-  def initialize
-    @client = Twilio::REST::Client.new(CONF[:sid], CONF[:auth])
+  def initialize(client = Twilio::REST::Client.new(CONF[:sid], CONF[:auth]))
+    @client = client
   end
 
   def send(total)
@@ -20,7 +20,6 @@ class Messenger
       to: CONF[:to],
       body: body(total)
     )
-    "Message sent"
   end
 
   def body(total)

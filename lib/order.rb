@@ -26,5 +26,4 @@ class Order
     end
     balance
   end
-
 end
