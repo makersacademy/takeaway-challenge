@@ -88,7 +88,7 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 :octocat:  `Setup`
 
 
-[Link to Header](#the-header)
+[`Link to Header`](#the-header)
 
 
 
