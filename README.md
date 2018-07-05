@@ -86,3 +86,24 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
   
   
 :octocat:  `Setup`
+
+
+### <a name="head1234"></a>A Heading in this SO entry! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[link text](http://...#abcd)
