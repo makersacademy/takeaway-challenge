@@ -78,25 +78,23 @@ Notes on Test Coverage
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
 
-- [x] `maven` to build the project <br>
-- [x] `webpack` to bundle the javascript <br>
-- [x] `thymeleaf` to serve `index.html` <br>
-- [ ] `react` to make requests to the api and render the component views <br>
-- [ ] `flyway` to manage `postgres` db migrations
+- [x] [`maven`](#Maven) to build the project <br>
+- [x] [`webpack`](#Webpack) to bundle the javascript <br>
+- [x] [`thymeleaf`](#Thymeleaf) to serve `index.html` <br>
+- [ ] [`react`](#React) to make requests to the api and render the component views <br>
+- [ ] [`flyway`](#Flyway) to manage `postgres` db migrations
   
   
 :octocat:  `Setup`
 
-
-[`Link to Header`](#the-header)
-
-
-
-
-
-
-
-
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 
@@ -105,4 +103,9 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 
 
 
-### The Header
+
+### Maven
+### Webpack
+### Thymeleaf
+### React
+### Flyway
