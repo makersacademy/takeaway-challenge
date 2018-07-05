@@ -1,4 +1,4 @@
-# Twillio Take Out
+# Twillio Takeout
 
 A Ruby back-end application that is connected to the [Twillio API](https://www.twilio.com/)
 
@@ -7,8 +7,8 @@ A Ruby back-end application that is connected to the [Twillio API](https://www.t
 In your terminal, run
 
 ```
-git clone https://github.com/ellie-keen/takeaway-challenge.git
-cd takeaway-challenge
+git clone https://github.com/ellie-keen/twillio-takeout.git
+cd twillio-takeout
 bundle install
 ```
 
