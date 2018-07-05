@@ -88,7 +88,7 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 :octocat:  `Setup`
 
 
-### <a name="head1234">A Heading in this SO entry! </a>
+[Link to Header](#the-header)
 
 
 
@@ -105,5 +105,4 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 
 
 
-
-[link text](http://...#abcd)
+## The Header
