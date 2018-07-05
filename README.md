@@ -84,7 +84,7 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 - [ ] [`react`](#react) to make requests to the api and render the component views <br>
 - [ ] [`flyway`](#flyway) to manage `postgres` db migrations
   
-............:octocat:  `Setup`............
+............  :octocat:  `Setup`  ............
 
 
 
