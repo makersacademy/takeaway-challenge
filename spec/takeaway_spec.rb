@@ -1,13 +1,17 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu, basket, confirmation) }
-
   let(:menu) { double(:menu, show: shown_menu, includes_dish?: true, price: 7.95) }
   let(:basket) { double(:basket, add: nil, show: basket_content, total: 10) }
-  let(:confirmation) { double(:confirmation, send_message: nil) }
+  let(:client) { double(:client) }
+  let(:message) { double :message }
+  let(:messages_client) { double :messages_client }
+
+  let(:confirmation) { TextConfirmation.new(client) }
   let(:shown_menu) { 'Dosa - £7.95' }
   let(:basket_content) { "3 x Dosa - £15.90\n2 x Chapatti - £5.40\n" }
+
+  subject(:takeaway) { described_class.new(confirmation, menu, basket) }
 
   describe '#show_menu' do
     it 'returns a list of dishes and their prices' do
@@ -45,8 +49,15 @@ describe Takeaway do
 
   describe '#checkout' do
     context 'if amount is correct' do
-      it 'send a text' do
-        expect { takeaway.checkout(10) }.not_to raise_error
+      it 'returns a message' do
+        time = Time.new
+        amount = 10
+        message_config = { from: TextConfirmation::CONFIGURATION[:from], to: ENV['MY_PHONE_NUMBER'], body: "Thank you for your order.
+Total order price: £#{amount}.
+Expected delivery time: #{time.hour + 1}:#{time.min}." }
+        allow(client).to receive(:messages).and_return messages_client
+        allow(messages_client).to receive(:create).with(message_config).and_return message
+        expect(takeaway.checkout(amount)).to eq message
       end
     end
 

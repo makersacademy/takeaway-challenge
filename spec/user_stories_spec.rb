@@ -2,10 +2,15 @@ require 'takeaway'
 
 describe Takeaway do
   describe 'user stories' do
-    subject(:takeaway) { described_class.new() }
 
     let(:shown_menu) { "Dosa - £7.95, Chapatti - £2.70" }
     let(:basket_content) { "3 x Dosa - £23.85\n2 x Chapatti - £5.40" }
+
+    let(:client) { double :client }
+    let(:messages_client) { double :messages_client }
+    let(:message) { double :message }
+    
+    subject(:takeaway) { described_class.new(TextConfirmation.new(client)) }
 
     before do
       takeaway.order('Dosa', 3)
@@ -40,7 +45,14 @@ describe Takeaway do
     # I would like to receive a text such as "Thank you! Your order
     # was placed and will be delivered before 18:52" after I have ordered
     it 'sends a text after the order is finalized' do
-      expect { takeaway.checkout(29.25) }.not_to raise_error
+      time = Time.new
+      amount = 29.25
+      message_config = { to: ENV['MY_PHONE_NUMBER'], from: ENV['TWILIO_PHONE_NUMBER'], body: "Thank you for your order.
+Total order price: £#{amount}.
+Expected delivery time: #{time.hour + 1}:#{time.min}." }
+      allow(client).to receive(:messages).and_return messages_client
+      allow(messages_client).to receive(:create).with(message_config).and_return message
+      expect(takeaway.checkout(29.25)).to eq message
     end
   end
 end

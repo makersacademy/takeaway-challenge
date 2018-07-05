@@ -3,9 +3,10 @@ require_relative 'menu'
 require_relative 'text_confirmation'
 
 class Takeaway
-  def initialize(menu = Menu.new,
-                 basket = Basket.new,
-                 confirmation = TextConfirmation.new)
+  def initialize(confirmation = TextConfirmation.new,
+    menu = Menu.new,
+    basket = Basket.new
+  )
     @menu = menu
     @basket = basket
     @confirmation = confirmation
