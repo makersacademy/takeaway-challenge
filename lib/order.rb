@@ -10,10 +10,16 @@ class Order
     @food = food
     Menu::MENU.each do |hash|
       if hash[:food] == @food.to_s
-        @order_array << { hash[:food] => hash[:price] }
+        @order_array << { :food => hash[:food], :price => hash[:price] }
         puts "1x #{@food}(s) has been added to your basket"
         return @order_array
       end
+    end
+  end
+
+  def check
+    @order_array.each do |hash|
+      puts "1x #{hash[:food]}"
     end
   end
 
