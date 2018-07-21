@@ -46,7 +46,8 @@ class Cart
     if item_name.is_a? String
       @items.each do |hash|
         if hash[:name] == item_name
-          @items.delete(hash)
+          @items.delete_at(@items.index(hash))
+          break
         end
       end
     elsif item_name.is_a? Array
