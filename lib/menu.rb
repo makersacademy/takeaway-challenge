@@ -11,8 +11,8 @@ class Menu
   def print_all
     puts ""
     @menu.each do |category, array_of_items|
-      puts "#{category}".center(36)
-      puts "--------------------".center(36)
+      puts "#{category}".center(40)
+      puts "--------------------".center(40)
       array_of_items.each do |item_hash|
         puts "#{item_hash[:name].rjust(24)}: £#{sprintf('%.2f', item_hash[:price])}"
       end
@@ -24,8 +24,8 @@ class Menu
     puts ""
     @menu.each do |category, array_of_items|
       if category.to_s == chosen_category
-        puts "#{category}".center(36)
-        puts "--------------------".center(36)
+        puts "#{category}".center(40)
+        puts "--------------------".center(40)
         array_of_items.each do |item_hash|
           puts "#{item_hash[:name].rjust(24)}: £#{sprintf('%.2f', item_hash[:price])}"
         end
