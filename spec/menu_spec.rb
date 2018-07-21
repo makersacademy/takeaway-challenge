@@ -20,5 +20,20 @@ describe Menu do
       expect(menu.choice).to eq "y"
     end
   end
+  describe '#decision' do
+    before do
+      allow($stdout).to receive(:write)
+    end
+    it { is_expected.to respond_to(:decision) }
+    it 'raise an error message when user is not interested' do
+      allow(menu).to receive(:gets).and_return("n\n")
+      expect{menu.decision}.to raise_error("Not interested, we hope to see you soon")
+    end
+    it 'delegates to the checkout class' do
+      allow(menu).to receive(:gets).and_return("y\n")
+      expect(menu).to receive(:place_order)
+      menu.place_order
+    end
+  end
 
 end

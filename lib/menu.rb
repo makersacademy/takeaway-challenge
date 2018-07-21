@@ -24,18 +24,19 @@ class Menu
     end
     decision
   end
-
-  private
+  
   def decision
     puts "Would you like to order from us?: [y/n]"
     @choice = gets.chomp
-    if @choice == "y"
-      checkout = @checkout.new
-      checkout.place_order
-    else
-     puts "We hope to satisfy you on another day mother fucker."
-     exit
-    end
+    fail "Not interested, we hope to see you soon" if @choice == "n"
+    checkout = @checkout.new
+    checkout.place_order
+    # if @choice == "y"
+    #
+    # else
+    #  puts "We hope to satisfy you on another day mother fucker."
+    #  exit
+    # end
   end
 
 end
