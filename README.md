@@ -14,4 +14,4 @@ Takeaway Challenge
 
  ```
 
-This is the second weekend challenge; to be completed at the end of week 2 during Makers Academy  
+This is the second weekend challenge; to be completed at the end of week 2 during Makers Academy. 
