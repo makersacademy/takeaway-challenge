@@ -1,6 +1,10 @@
+require_relative 'checkout'
 class Menu
 
-  def initialize
+  attr_reader :choice
+
+  def initialize(checkout = Checkout)
+    @checkout = checkout
     @menu = [
       {:name => "Cheeseburger", :price => 11.95},
       {:name => "Pancakes", :price => 9.00},
@@ -15,7 +19,22 @@ class Menu
     index = 1
     @menu.each do |hash|
       puts "#{index}: #{hash[:name]} - £#{sprintf("%.2f", hash[:price])}"
+      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
       index += 1
+    end
+    decision
+  end
+
+  private
+  def decision
+    puts "Would you like to order from us?: [y/n]"
+    @choice = gets.chomp
+    if @choice == "y"
+      checkout = @checkout.new
+      checkout.place_order
+    else
+     puts "We hope to satisfy you on another day mother fucker."
+     exit
     end
   end
 
