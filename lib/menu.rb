@@ -3,8 +3,8 @@ class Menu
 
   attr_reader :choice
 
-  def initialize(checkout = Checkout)
-    @checkout = checkout
+  def initialize(checkout_class = Checkout)
+    @checkout = checkout_class
     @menu = [
       {:name => "Cheeseburger", :price => 11.95},
       {:name => "Pancakes", :price => 9.00},
@@ -22,21 +22,33 @@ class Menu
       puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
       index += 1
     end
-    decision
   end
-  
+
   def decision
     puts "Would you like to order from us?: [y/n]"
     @choice = gets.chomp
-    fail "Not interested, we hope to see you soon" if @choice == "n"
-    checkout = @checkout.new
-    checkout.place_order
-    # if @choice == "y"
-    #
-    # else
-    #  puts "We hope to satisfy you on another day mother fucker."
-    #  exit
-    # end
+    fail "User is not interested in ordering" if @choice == "n"
+    @cart = @checkout.new
+    @items = []
+    add_items
+  end
+
+  def add_items
+    puts "Great!"
+    puts "What would you like? Enter the number of the item you desire:"
+    loop do
+      print_menu
+      input = gets.chomp.to_i
+      if input == 0
+        @cart.place_order(@items)
+        break
+      elsif input > @menu.length || input < 0
+        puts "Invalid menu number, try again!"
+      else
+        @items.push(@menu[input-1])
+        puts "Anything else? Type '0' to place the order!"
+      end
+    end
   end
 
 end
