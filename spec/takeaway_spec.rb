@@ -17,6 +17,10 @@ it 'calculates the total correct' do
   takeaway.add(4,"salad")
   expect(takeaway.bill).to eq(11.50)  
 end 
+it 'gives customer an ETA of +60min when order is placed' do
+  arrival_time = (Time.new) + (60*60)
+  expect(takeaway.order).to eq("Order is on it's way! ETA: #{arrival_time.strftime("%H:%M")}")
+end 
 end 
 
 # let(:fake_menu) {double :fake_menu, new: menu_class}

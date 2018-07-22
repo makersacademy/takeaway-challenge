@@ -22,6 +22,10 @@ class Takeaway
     total = 0 
     @basket.each{|x| x.each{|_,price| total += price}}  
     total
+  end
+  def order 
+    arrival_time = (Time.new) + (60*60)
+    "Order is on it's way! ETA: #{arrival_time.strftime("%H:%M")}"
   end 
   end 
  
