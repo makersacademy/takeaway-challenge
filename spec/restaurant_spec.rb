@@ -14,26 +14,6 @@ describe Restaurant do
     expect(cafe.show_menu).to eq("starter_menu_main_menu")
   end
 
-  # describe '#select_juices' do
-    
-  #   it 'adds selected juices to basket' do
-  #     allow(menu).to receive(:on_menu?)
-  #     allow(order).to receive(:add_to_basket)
-  #     allow(order).to receive(:basket)
-  #     expect(cafe.select_juices(juice1)).to eq cafe.show_basket
-  #   end
-  # end
-
-  # describe '#show_basket' do
-  #   it 'displays the basket' do
-  #     allow(menu).to receive(:on_menu?)
-  #     allow(order).to receive(:add_to_basket)
-  #     allow(order).to receive(:basket).and_return ([juice1, juice2])
-  #     cafe.select_juices(juice1)
-  #     cafe.select_juices(juice2)
-  #     expect(cafe.show_basket).to eq [juice1, juice2]
-  #   end
-  # end
   describe "#select" do
 
     it 'allows the user to select items' do
