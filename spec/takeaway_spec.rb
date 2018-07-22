@@ -4,6 +4,14 @@ describe Takeaway do
   it 'expects takeaway.new to create a new takeaway object' do
     expect(takeaway).to be_instance_of(described_class)
   end 
+  it 'user can add several dishes to a basket ' do 
+    takeaway.add(4, "kebab")
+    takeaway.add("curry")
+     expect(takeaway.basket).to eq([{"kebab"=>5.0}, {"kebab"=>5.0}, {"kebab"=>5.0}, {"kebab"=>5.0}, {"curry"=>7.5}])
+    end 
+  it 'throws error message if user makes request off-menu' do 
+    expect(takeaway.add('seabass')).to eq("This dish is not on the menu") 
+end 
 end 
 
 # let(:fake_menu) {double :fake_menu, new: menu_class}

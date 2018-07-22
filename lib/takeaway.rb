@@ -19,9 +19,6 @@ class Takeaway
     else "This dish is not on the menu"
     end 
     end 
-    def show_basket 
-      @basket
-    end 
   end 
  
 
