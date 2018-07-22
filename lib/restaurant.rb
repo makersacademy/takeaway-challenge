@@ -1,5 +1,6 @@
 require_relative 'menu.rb'
 require_relative 'order.rb'
+require_relative 'messages.rb'
 
 class Restaurant
 
@@ -28,13 +29,15 @@ class Restaurant
   end
 
   def complete_order
-    send_text("Thank you for your order: £TBC")
+    send_text
   end
 
   private
 
-  def send_text(message)
+  def send_text
     # this method calls the Twilio API
+    msg = Message.new
+    msg.send
   end
 
   def on_menu?(item)
