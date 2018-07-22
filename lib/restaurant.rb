@@ -8,7 +8,6 @@ class Restaurant
   end 
 
   def print_menu
-    #Print list of dishes
     @menu
   end 
 end 

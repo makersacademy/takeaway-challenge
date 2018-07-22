@@ -1,6 +1,6 @@
 require "restaurant"
 describe Restaurant do
-  subject(:restaurant) {Restaurant.new}
+  subject(:restaurant) { Restaurant.new }
 
   describe "#initialize" do
     it "creates a new menu object" do
