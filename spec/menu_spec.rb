@@ -6,9 +6,9 @@ describe Menu do
   
   context 'display menu' do # user can see menu
 
-    it 'shows a hash of menu items with prices' do
+    it 'shows an array of hashes (menu items with prices)' do
       expect(subject).to respond_to(:food) # Menu class reads :food attribute
-      expect(subject.food).to be_a(Hash) # :food is a hash     
+      expect(subject.food).to be_a(Array) # :food is a hash     
     end
   end
 end
