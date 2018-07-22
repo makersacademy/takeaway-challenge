@@ -1,24 +1,28 @@
 require 'menu'
 
 class Order
-  attr_reader :whiskies
+  attr_reader :menu, :whiskies
 
   def initialize(menu)
-    @menu = menu
     @whiskies = {
-      "thing1": 2,
-      "thing2": 1
+      :Lagavulin_16yo_Islay => 49.50,
+      :Laphroaig_10yo_Islay => 30.00
     }
+    @menu = menu
   end
 
   def add(item, quantity)
-    raise "Sorry, we don't offer #{item}!" unless whiskies.has_key?(item)
+    raise "Sorry, we don't sell #{item}!" unless whiskies.has_key?(item)
     whiskies[item] = quantity
   end
 
-  private
+  def item_totals
+    whiskies.map do |item, quantity|
+      price(item) * quantity
+    end
+  end
 
-  attr_reader :menu
+  def total
+    item_totals.inject(:+)
+  end
 end
-
-# class WrongItemError < StandardError; end

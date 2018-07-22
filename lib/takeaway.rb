@@ -3,7 +3,7 @@ require 'order'
 class Takeaway
   def initialize(menu:, order: nil)
     @menu = menu
-    @order = order || Order.new
+    @order = order || Order.new # experimenting with dependency injection
   end
 
   def show_menu
@@ -14,6 +14,7 @@ class Takeaway
     whiskies.each do |item, quantity|
       order.add(item, quantity)
     end
+    order.total
   end
   
   private
