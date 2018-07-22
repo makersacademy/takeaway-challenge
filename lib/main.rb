@@ -29,6 +29,7 @@ class Main
         @order.dish_list.clear
       elsif command == 'order'
         @order.place_order
+        @message_processor.send_message
         puts 'Thank your for your order'
         break
       end
