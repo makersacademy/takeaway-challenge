@@ -89,7 +89,7 @@ cart = Cart.new
   ```
 
 #### 8. Remove items from your cart, if necessary
-  * You may remove a single item by it's name
+  * You may remove a single item by its name
   ```
   cart.remove("Soup of the Day")
   ```
@@ -97,7 +97,7 @@ cart = Cart.new
   ```
   cart.remove(["Chicken Alfredo", "Lemonade"])
   ```
-  * To remove multiple of the same item, pass it's name the desired number of times
+  * To remove multiple of the same item, pass its name the desired number of times
 
 #### 9. Check out!
   * You must enter the total amount to pay, which must match your cart's total, in order to confirm checkout
