@@ -1,6 +1,7 @@
 require 'order'
 
 describe Order do
+
   it { is_expected.to be_a Order }
 
   describe '#print_menu' do
@@ -9,14 +10,20 @@ describe Order do
     end
   end
 
-  describe '#select(selection)' do
+  describe '#select(selection, number)' do
+    it { is_expected.to respond_to(:select).with(2).arguments }
+
     it 'raises an error if the item is not on the menu' do
-      expect { subject.select("TV") }.to raise_error 'TV is not on the menu'
+      expect { subject.select("TV", 1) }.to raise_error 'TV is not on the menu'
     end
 
     it 'adds selection to selections if item on menu' do
-      subject.select("Miso Soup")
-      expect(subject.selections).to eq ["Miso Soup"]
+      subject.select("Miso Soup", 2)
+      expect(subject.selections).to eq ["Miso Soup", "Miso Soup"]
+    end
+
+    it 'prints total cost so far after each select' do
+      expect { subject.select("Teriyake Donburi", 1) }.to output("The total cost of your order is now £10.25\n").to_stdout
     end
   end
 
@@ -26,16 +33,15 @@ describe Order do
     end
 
     it 'removes item from selection if previously selected' do
-      subject.select("Katsu Curry")
+      subject.select("Katsu Curry", 1)
       subject.remove("Katsu Curry")
       expect(subject.selections).to eq []
     end
 
     it 'subtracts the price of the meal from total cost' do
-      subject.select("Steak Bulgogi")
-      subject.select("Yasai Pad Thai")
-      subject.remove("Yasai Pad Thai")
-      expect(subject.view_cost).to eq 14.5
+      subject.select("Steak Bulgogi", 2)
+      subject.remove("Steak Bulgogi")
+      expect(subject.cost).to eq 14.5
     end
   end
 
@@ -45,17 +51,15 @@ describe Order do
     end
 
     it 'shows selections if one or more item selected' do
-      subject.select("Steamed Rice")
-      subject.select("Chicken Ramen")
-      expect(subject.view_selections).to eq(["Steamed Rice", "Chicken Ramen"])
+      subject.select("Steamed Rice", 2)
+      subject.select("Chicken Ramen", 1)
+      expect(subject.view_selections).to eq(["Steamed Rice", "Steamed Rice", "Chicken Ramen"])
     end
   end
 
-  describe '#view_cost' do
-    it 'shows total cost of order' do
-      subject.select("Miso Soup")
-      subject.select("Yasai Pad Thai")
-      expect(subject.view_cost).to eq 11.9
+  describe '#confirm' do
+    it 'shows confirmation message once order is confirmed' do
+      expect { subject.confirm }.to output("Thank you for your order, your food will arrive at #{Time.now.hour}:#{Time.now.min + 30}\n").to_stdout
     end
   end
 end

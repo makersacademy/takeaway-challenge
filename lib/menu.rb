@@ -9,7 +9,7 @@ class Menu
       "Teriyake Donburi" => 10.25,
       "Steak Bulgogi" => 14.50,
       "Yasai Pad Thai" => 9.95,
-      "Steamed Rice" => 2,
+      "Steamed Rice" => 2.00,
       "Miso Soup" => 1.95
     }
   end
