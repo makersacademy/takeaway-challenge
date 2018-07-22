@@ -17,4 +17,10 @@ describe Restaurant do
     #   expect_any_instance_of
     # end 
   end 
+
+  describe "#selec_dish" do
+    it "responds to select dish with multiple arguments" do
+      expect(restaurant).to respond_to(:selec_dish).with(3).argument
+    end 
+  end
 end

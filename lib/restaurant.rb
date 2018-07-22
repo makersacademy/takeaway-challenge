@@ -10,4 +10,6 @@ class Restaurant
   def print_menu
     @menu.print_menu
   end
+
+  
 end 
