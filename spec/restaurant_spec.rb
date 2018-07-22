@@ -7,14 +7,15 @@ describe Restaurant do
       expect(subject.menu).to be_an_instance_of(Menu) 
     end
   end
-  
-  describe "#menu" do
-  it "responds to menu method" do
-    expect(restaurant).to respond_to(:menu)
-  end 
+
+  describe "#print_menu" do
+
+    it "responds to print_menu" do
+      expect(restaurant).to respond_to(:print_menu)
+    end 
 
     it "returns a menu object" do
-      expect(restaurant.menu).to be_an_instance_of(Menu)
+      expect(restaurant.print_menu).to be_an_instance_of(Menu)
     end 
-  end
+  end 
 end

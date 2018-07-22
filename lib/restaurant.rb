@@ -5,5 +5,10 @@ class Restaurant
 
   def initialize(menu_class = Menu)
     @menu = menu_class.new    
-  end 
+  end
+
+  def print_menu
+    #prints menu  
+    puts "Dishes with prices"
+  end
 end 
