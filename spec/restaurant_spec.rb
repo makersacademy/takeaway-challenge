@@ -4,7 +4,7 @@ describe Restaurant do
 
   describe "#initialize" do
     it "creates a new menu object" do
-      expect(subject.menu).to be_an_instance_of(Menu) 
+      expect(restaurant.menu).to be_an_instance_of(Menu) 
     end
   end
 
@@ -18,9 +18,9 @@ describe Restaurant do
     # end 
   end 
 
-  describe "#selec_dish" do
-    it "responds to select dish with multiple arguments" do
-      expect(restaurant).to respond_to(:selec_dish).with(3).argument
-    end 
+  describe "#select" do
+    it "responds to the select method with at least 1 argument" do
+      expect(restaurant).to respond_to(:select).with(1).argument
+    end
   end
 end
