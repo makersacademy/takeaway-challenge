@@ -11,20 +11,22 @@ class Order
 
   def add_dish(dish)
     @dish_list << dish # push dish object to list
+    total_cost
   end
 
   def remove_dish(dish)
     dish_list.each do |i| 
       if i.name == dish.name then @dish_list.delete(i) end
     end
+    total_cost
   end
 
   def total_cost
-    @dish_list.map { |i| i.price }.inject(:+)
+    @total_cost = @dish_list.map { |i| i.price }.inject(:+)
   end
 
   def place_order
-
+    
   end
 
 end
