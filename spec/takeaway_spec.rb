@@ -7,8 +7,8 @@ describe Takeaway do
 
   let(:menu)  { double(:menu, show: displayed_menu) }
   let(:order) { double(:order) }
-  let(:displayed_menu) { "Yum: £10.00" }
-  let(:whiskies) { {:yum => 2, :hibiki => 1} }
+  let(:displayed_menu) { "yum: £10.00" }
+  let(:whiskies) { {yum: 2, hibiki: 1} }
 
  describe 'menu' do
   
@@ -19,8 +19,12 @@ describe Takeaway do
 
  describe 'order' do
   it 'allows user to select any number of different items' do
-    expect(order).to receive(:add).twice
+    allow(order).to receive(:add).twice
     takeaway.place_order(whiskies)
+  end
+
+  it 'calculates the total of the order' do
+    total = takeaway.place_order(whiskies)
   end
  end
 end

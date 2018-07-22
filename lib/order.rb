@@ -4,12 +4,15 @@ class Order
   attr_reader :whiskies
 
   def initialize(menu)
-    @whiskies = {}
     @menu = menu
+    @whiskies = {
+      "thing1": 2,
+      "thing2": 1
+    }
   end
 
   def add(item, quantity)
-    fail WrongItemError, "Sorry, we don't offer #{item.capitalize}" unless menu.has_item?(item)
+    raise "Sorry, we don't offer #{item}!" unless whiskies.has_key?(item)
     whiskies[item] = quantity
   end
 
@@ -18,4 +21,4 @@ class Order
   attr_reader :menu
 end
 
-class WrongItemError < StandardError; end
+# class WrongItemError < StandardError; end

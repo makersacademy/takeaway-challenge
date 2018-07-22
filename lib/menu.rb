@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :whiskies, :show
+  attr_reader :whiskies, :show, :has_item
   
   def initialize(whiskies)
     @whiskies = whiskies
