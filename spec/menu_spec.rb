@@ -3,14 +3,14 @@ describe Menu do
   subject(:menu) { Menu.new }
 
   describe "#initialize" do
-    it "initializes with an empty array" do
-      expect(menu.menu).to be_empty
+    it "creates an array of dishes" do
+      expect(menu.menu).to be_an_instance_of(Array)
     end
   end
-  
-  # describe "#add_dish" do
-  #   it "respond to add_dish" do
-  #     expect(menu).to respond_to(:add_dish).with(1).argument
-  #   end
-  # end 
+
+  describe "#print_menu" do
+    it "prints array" do
+      expect{ menu.print_menu }.to output("meat ------ 10\n").to_stdout
+    end  
+  end 
 end

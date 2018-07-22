@@ -1,19 +1,17 @@
-# Return all the dishes
-# Start by returning one dish 
-# Same and price
-# Menu contains dishes and prices
+# Menu contains dishes and their corresponding prices
 require_relative "dish"
 class Menu
 
   attr_reader :menu
 
   def initialize
-    @menu = []
+    @menu = [{name: "meat", price: 10}]
   end 
-
-  def add_dish(dish_object)
-    @dish_object = {dish_object[:name], dish_object[:price]}
-    @menu 
+  
+  def print_menu
+    @menu.each do |dish|
+      puts "#{dish[:name]} ------ #{dish[:price]}"
+    end
   end
 
 end
