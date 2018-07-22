@@ -1,4 +1,5 @@
 require_relative './menu.rb'
+require 'time'
 
 class Order
   attr_reader :food, :order_array
@@ -14,7 +15,6 @@ class Order
           @order_array << { :food => hash[:food], :price => hash[:price] }
         end
         puts "#{quantity}x #{@food}(s) has been added to your basket"
-        return @order_array
       end
     end
   end
@@ -26,11 +26,16 @@ class Order
   end
 
   def check_total
-    total = 0
+    @total = 0
     @order_array.each do |hash|
-      total += hash[:price]
+      @total += hash[:price]
     end
-    total
+    @total
+  end
+
+  def confirm
+    puts "The total to pay is £#{@total}"
+    puts "Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}."
   end
 
 end

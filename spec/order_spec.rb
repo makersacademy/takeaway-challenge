@@ -1,5 +1,6 @@
 require 'order'
 require 'menu'
+require 'time'
 
 RSpec.describe Order do
 
@@ -11,12 +12,14 @@ RSpec.describe Order do
     end
 
     it 'returns the order array of one item' do
-      expect(subject.add('pizza', 1)).to match_array([{ :food => 'pizza', :price => 6.5 }])
+      subject.add('pizza', 1)
+      expect(subject.order_array).to match_array([{ :food => 'pizza', :price => 6.5 }])
     end
 
     it ' returns the order array of 3 items' do
       subject.add('rice side dish', 2)
-      expect(subject.add('beef', 1)).to match_array([{ :food => 'rice side dish', :price => 1.5 }, { :food => 'rice side dish', :price => 1.5 }, { :food => 'beef', :price => 5.5 }])
+      subject.add('beef', 1)
+      expect(subject.order_array).to match_array([{ :food => 'rice side dish', :price => 1.5 }, { :food => 'rice side dish', :price => 1.5 }, { :food => 'beef', :price => 5.5 }])
     end
   end
 
@@ -43,6 +46,18 @@ RSpec.describe Order do
       subject.add('risotto', 1)
       subject.add('vegetarian', 1)
       expect(subject.check_total).to eq 10
+    end
+  end
+
+  describe '.confirm' do
+    it { is_expected.to respond_to(:confirm) }
+
+    it 'confirms the order' do
+      subject.add('risotto', 1)
+      subject.add('vegetarian', 1)
+      subject.check_dishes
+      subject.check_total
+      expect { subject.confirm } .to output("The total to pay is £10\nThank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}.\n").to_stdout
     end
   end
 
