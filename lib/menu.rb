@@ -5,8 +5,7 @@ class Menu
               "curry" => 7.5, "kebab" => 5.00, "salad" => 1}
       
     end 
-    
-    def display 
+    def display #need to print menu here 
     items
 end 
 end 

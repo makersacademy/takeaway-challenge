@@ -12,6 +12,11 @@ describe Takeaway do
   it 'throws error message if user makes request off-menu' do 
     expect(takeaway.add('seabass')).to eq("This dish is not on the menu") 
 end 
+it 'calculates the total correct' do
+  takeaway.add("curry")
+  takeaway.add(4,"salad")
+  expect(takeaway.bill).to eq(11.50)  
+end 
 end 
 
 # let(:fake_menu) {double :fake_menu, new: menu_class}

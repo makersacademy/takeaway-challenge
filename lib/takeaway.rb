@@ -5,7 +5,6 @@ class Takeaway
   def initialize(menu = Menu)
     @menu = menu.new #pass in menu class here. menu.new will boot up any obj. 
     @basket  = []
-    @total = 0 
   end
   
   def display_menu 
@@ -18,7 +17,12 @@ class Takeaway
       "added to basket!"
     else "This dish is not on the menu"
     end 
-    end 
+  end 
+  def bill
+    total = 0 
+    @basket.each{|x| x.each{|_,price| total += price}}  
+    total
+  end 
   end 
  
 
