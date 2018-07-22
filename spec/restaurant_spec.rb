@@ -41,6 +41,16 @@ describe Restaurant do
       cafe.delete(item)
       expect(cafe.show_basket).to eq([])
     end
+  end
 
+  describe "#complete_order" do
+    before do
+      allow(cafe).to receive(:send_text)
+    end
+
+    it 'sends a payment confirmation text message' do
+      expect(cafe).to receive(:send_text).with("Thank you for your order: £TBC")
+      cafe.complete_order
+    end
   end
 end

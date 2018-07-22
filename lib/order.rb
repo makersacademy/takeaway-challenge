@@ -4,7 +4,7 @@ class Order
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = []
-    @total = []
+    @total = 0
   end
 
   def add_to_basket(item)
@@ -14,6 +14,5 @@ class Order
   def remove_from_basket(item)
     @basket.delete(item)
   end
-
 
 end

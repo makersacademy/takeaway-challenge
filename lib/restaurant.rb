@@ -27,7 +27,15 @@ class Restaurant
     order.basket
   end
 
+  def complete_order
+    send_text("Thank you for your order: £TBC")
+  end
+
   private
+
+  def send_text(message)
+    # this method calls the Twilio API
+  end
 
   def on_menu?(item)
     menu.available?(item)
