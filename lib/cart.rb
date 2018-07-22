@@ -1,4 +1,6 @@
 require_relative 'menu'
+require_relative 'send_sms'
+require 'twilio-ruby'
 require 'date'
 
 class Cart
@@ -6,6 +8,7 @@ class Cart
   def initialize(menu_class = Menu)
     @menu = menu_class.new
     @items = []
+    @sms = TextSender.new
   end
 
   attr_reader :items
@@ -50,7 +53,7 @@ class Cart
       puts "#{item_hash[:quantity].to_s.ljust(3)}#{item_hash[:name].ljust(24)}: £#{sprintf('%.2f', (item_hash[:price] * item_hash[:quantity]))}"
     end
     puts "-----------------------------------".center(36)
-    puts " ".ljust(3)+"Total Price".ljust(24)+": £#{sprintf('%.2f', total)}"
+    puts " ".ljust(3) + "Total Price".ljust(24) + ": £#{sprintf('%.2f', total)}"
     puts ""
   end
 
@@ -68,9 +71,8 @@ class Cart
 
   def checkout(confirmed_price)
     fail "That total was incorrect. Please input the total price of your order to confirm checkout" unless confirmed_price == total
-    time = (Time.now)
-    delivery_time = time + (60 * 60)
-    puts "Thank you, your order has been placed! It should arrive before #{delivery_time.strftime('%R')}"
+    # puts "Thank you, your order has been placed! It should arrive before {delivery_time.strftime('%R')}"
+    @sms.send_text
     @items = []
   end
 
@@ -85,15 +87,15 @@ class Cart
   end
 
   def add_to_quantity(item_name)
-      @items.each do |item|
-        if item[:name] == item_name
-          item[:quantity] += 1
-        end
+    @items.each do |item|
+      if item[:name] == item_name
+        item[:quantity] += 1
       end
+    end
   end
 
   def add_new_item(item_name)
-    @menu.menu.each do |category, array|
+    @menu.menu.each do |_category, array|
       array.each do |item|
         if item[:name] == item_name
           item_to_add = item
@@ -120,13 +122,12 @@ class Cart
     end
   end
 
-
   def remove_from_quantity(item_name)
-      @items.each do |item|
-        if item[:name] == item_name
-          item[:quantity] -= 1
-        end
+    @items.each do |item|
+      if item[:name] == item_name
+        item[:quantity] -= 1
       end
+    end
   end
 
   def remove_item(item_name)
