@@ -1,5 +1,6 @@
 require_relative "menu"
 require_relative "order"
+
 class Restaurant
 
   attr_reader :menu, :order
@@ -18,6 +19,6 @@ class Restaurant
   end 
 
   def order_total
-    @order.total(@order)
+    @order.total
   end
 end 
