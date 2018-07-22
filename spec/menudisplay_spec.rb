@@ -29,7 +29,7 @@ describe MenuDisplay do
     before(:each) { allow(order).to receive(:total_cost) { 2 * dish.price } }
     describe '#print_total' do
       it { expect(subject).to respond_to(:print_total) }
-      it { expect { subject.print_total }.to output("Total: 8.80").to_stdout }
+      it { expect { subject.print_total }.to output("Total: 8.80\n").to_stdout }
     end
   end
   context 'Deature 4 - print interface' do

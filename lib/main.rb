@@ -15,6 +15,7 @@ class Main
     @menu = Menu.new(Dish, menu) # can use own menu or random
     @order = Order.new(Dish)
     @display = MenuDisplay.new(Dish, @menu, @order)
+    @message_processor = MessageProcessor.new
   end
 
   def main
@@ -28,7 +29,7 @@ class Main
         @order.dish_list.clear
       elsif command == 'order'
         @order.place_order
-        print 'Thank your for your order'
+        puts 'Thank your for your order'
         break
       end
     end
