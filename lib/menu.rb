@@ -5,12 +5,14 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu = [{name: "meat", price: 10}]
+    dish = Dish.new
+    @menu = []
+    @menu << dish
   end 
   
   def print_menu
     @menu.each do |dish|
-      puts "#{dish[:name]} ------ #{dish[:price]}"
+      puts "#{dish.details[:name]} ------ #{dish.details[:price]}"
     end
   end
 

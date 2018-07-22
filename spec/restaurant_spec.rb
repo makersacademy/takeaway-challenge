@@ -9,13 +9,12 @@ describe Restaurant do
   end
 
   describe "#print_menu" do
-
     it "responds to print_menu" do
       expect(restaurant).to respond_to(:print_menu)
     end 
 
-    it "returns a menu object" do
-      expect(restaurant.print_menu).to be_an_instance_of(Menu)
-    end 
+    # it "delegates printing of menu to menu class" do
+    #   expect_any_instance_of
+    # end 
   end 
 end
