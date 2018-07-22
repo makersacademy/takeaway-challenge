@@ -1,3 +1,4 @@
+#absolutely terrible spec file - still have no clue on mocking
 require 'menu'
 
 describe Menu do
@@ -27,7 +28,7 @@ describe Menu do
     it { is_expected.to respond_to(:decision) }
     it 'raise an error message when user is not interested' do
       allow(menu).to receive(:gets).and_return("n\n")
-      expect{menu.decision}.to raise_error("User is not interested in ordering")
+      expect { menu.decision }.to raise_error("User is not interested in ordering")
     end
     it 'allows a user to add items to their order' do
       allow(menu).to receive(:gets).and_return("y\n")
@@ -36,12 +37,22 @@ describe Menu do
   end
 
   describe '#add_items' do
+    let(:message)  { "Item - £price\n"                   }
     before do
       allow($stdout).to receive(:write)
     end
 
     it { is_expected.to respond_to(:add_items) }
-    it 'receives user input' do
+    it 'returns allows a user to add an item' do
+      allow(menu).to receive(:gets).and_return("y\n")
+      menu.decision
+      allow(menu).to receive(:gets).and_return("1\n")
+      menu.items.push(message)
+      expect(menu.items).to eq [message]
+    end
+    xit 'delegates to the checkout class' do
+
     end
   end
+
 end
