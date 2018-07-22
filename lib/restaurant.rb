@@ -8,7 +8,7 @@ class Restaurant
   end
 
   def print_menu
-    #prints menu  
+    # Prints menu  
     puts "Dishes with prices"
   end
 end 

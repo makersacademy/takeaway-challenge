@@ -22,4 +22,4 @@ describe Dish do
       expect(new_dish.price).to eq price_of_dish  
     end
   end 
-end 
+end

@@ -1,9 +1,10 @@
 require "menu"
 describe Menu do
   subject(:menu) { Menu.new }
-
-  # it "respnds to dish method" do
-  #   expect(menu).to respond_to(:dish)
-  # end
-
+  
+  describe "#add_dish" do
+    it "respond to add_dish" do
+      expect(menu).to respond_to(:add_dish)
+    end
+  end 
 end
