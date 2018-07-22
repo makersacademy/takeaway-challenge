@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :starters, :mains
+  attr_reader :starters, :mains, :full_menu
   
   def initialize
     @starters = {
@@ -14,6 +14,7 @@ class Menu
       "rogan josh" => 7.89,
       "saag aloo" => 5.45
     }
+    @full_menu = @starters.merge(@mains)
   end
 
   def print_menus
@@ -30,6 +31,6 @@ class Menu
   end
 
   def available?(item)
-    @mains.key?(item)
+    @full_menu.key?(item)
   end
 end
