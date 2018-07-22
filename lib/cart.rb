@@ -20,22 +20,10 @@ class Cart
 
   def add(item_name)
     if item_name.is_a? String
-      @menu.menu.each do |category, array|
-        array.each do |item|
-          if item[:name] == item_name
-            @items.push(item)
-          end
-        end
-      end
+      add_or_update(item_name)
     elsif item_name.is_a? Array
       item_name.each do |string|
-        @menu.menu.each do |category, array|
-          array.each do |item|
-            if item[:name] == string
-              @items.push(item)
-            end
-          end
-        end
+        add_or_update(string)
       end
     else
       fail "Please input either an item name or an array of item names"
@@ -44,19 +32,10 @@ class Cart
 
   def remove(item_name)
     if item_name.is_a? String
-      @items.each do |hash|
-        if hash[:name] == item_name
-          @items.delete_at(@items.index(hash))
-          break
-        end
-      end
+      remove_or_update(item_name)
     elsif item_name.is_a? Array
       item_name.each do |string|
-        @items.each do |hash|
-          if hash[:name] == string
-              @items.delete(hash)
-          end
-        end
+        remove_or_update(string)
       end
     else
       fail "Please input either an item name or an array of item names"
@@ -65,20 +44,20 @@ class Cart
 
   def my_items
     puts ""
-    puts "Your Cart".center(40)
-    puts "--------------------".center(40)
+    puts "Your Cart".center(36)
+    puts "-----------------------------------".center(36)
     @items.each do |item_hash|
-      puts "#{item_hash[:name].rjust(24)}: £#{sprintf('%.2f', item_hash[:price])}"
+      puts "#{item_hash[:quantity].to_s.ljust(3)}#{item_hash[:name].ljust(24)}: £#{sprintf('%.2f', (item_hash[:price] * item_hash[:quantity]))}"
     end
-    puts "--------------------".center(40)
-    puts "Total Price".rjust(24)+": £#{sprintf('%.2f', total)}"
+    puts "-----------------------------------".center(36)
+    puts " ".ljust(3)+"Total Price".ljust(24)+": £#{sprintf('%.2f', total)}"
     puts ""
   end
 
   def total
     total = 0
     @items.each do |item_hash|
-      total += item_hash[:price]
+      total += (item_hash[:price] * item_hash[:quantity])
     end
     total
   end
@@ -93,6 +72,77 @@ class Cart
     delivery_time = time + (60 * 60)
     puts "Thank you, your order has been placed! It should arrive before #{delivery_time.strftime('%R')}"
     @items = []
+  end
+
+  private
+
+  def item_in_cart?(item_name)
+    @items.each do |item|
+      if item[:name] == item_name
+        return true
+      end
+    end
+  end
+
+  def add_to_quantity(item_name)
+      @items.each do |item|
+        if item[:name] == item_name
+          item[:quantity] += 1
+        end
+      end
+  end
+
+  def add_new_item(item_name)
+    @menu.menu.each do |category, array|
+      array.each do |item|
+        if item[:name] == item_name
+          item_to_add = item
+          item_to_add[:quantity] = 1
+          @items.push(item_to_add)
+        end
+      end
+    end
+  end
+
+  def add_or_update(item_name)
+    if item_in_cart?(item_name) == true
+      add_to_quantity(item_name)
+    else
+      add_new_item(item_name)
+    end
+  end
+
+  def item_quantity_over_1?(item_name)
+    @items.each do |item|
+      if item[:name] == item_name
+        return true if item[:quantity] > 1
+      end
+    end
+  end
+
+
+  def remove_from_quantity(item_name)
+      @items.each do |item|
+        if item[:name] == item_name
+          item[:quantity] -= 1
+        end
+      end
+  end
+
+  def remove_item(item_name)
+    @items.each do |item|
+      if item[:name] == item_name
+        @items.delete(item)
+      end
+    end
+  end
+
+  def remove_or_update(item_name)
+    if item_quantity_over_1?(item_name) == true
+      remove_from_quantity(item_name)
+    else
+      remove_item(item_name)
+    end
   end
 
 end

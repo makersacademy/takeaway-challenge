@@ -11,7 +11,7 @@ describe Cart do
   # Adding some items to a cart double to test 'remove' and 'my_items' functionality, and stubbing for time
   before do
     allow(Time).to receive(:now).and_return(time)
-    full_cart.instance_variable_set(:@items, [{:name => "Prime Rib", :price => 9.25 },{:name => "Ceasar Salad", :price => 3.25 },{:name => "Lemonade", :price => 1.50 }])
+    full_cart.instance_variable_set(:@items, [{:name => "Prime Rib", :price => 9.25, :quantity => 1 },{:name => "Ceasar Salad", :price => 3.25, :quantity => 2 },{:name => "Lemonade", :price => 1.50, :quantity => 1 }])
   end
 
   describe "#print_full_menu" do
@@ -35,13 +35,21 @@ describe Cart do
     context "item passed is a name of a dish" do
       it "adds the item with corresponding name to @items" do
         subject.add("Veggie Omelette")
-        expect(subject.items).to include({:name => "Veggie Omelette", :price => 4.5 })
+        expect(subject.items).to include({:name => "Veggie Omelette", :price => 4.5, :quantity => 1 })
+      end
+      it "updates quantity if one already in cart" do
+        full_cart.add("Prime Rib")
+        expect(full_cart.items[0]).to eq ({:name => "Prime Rib", :price => 9.25, :quantity => 2 })
       end
     end
     context "item passed is an array of dish names" do
       it "adds all items in array to @items" do
         subject.add(["Prime Rib", "Ceasar Salad", "Lemonade"])
-        expect(subject.items).to eq [{:name => "Prime Rib", :price => 9.25 },{:name => "Ceasar Salad", :price => 3.25 },{:name => "Lemonade", :price => 1.50 }]
+        expect(subject.items).to eq [{:name => "Prime Rib", :price => 9.25, :quantity => 1 },{:name => "Ceasar Salad", :price => 3.25, :quantity => 1 },{:name => "Lemonade", :price => 1.50, :quantity => 1 }]
+      end
+      it "updates quantities if item already in cart" do
+        full_cart.add(["Prime Rib", "Coffee"])
+        expect(full_cart.items).to eq [{:name => "Prime Rib", :price => 9.25, :quantity => 2 },{:name => "Ceasar Salad", :price => 3.25, :quantity => 2 },{:name => "Lemonade", :price => 1.50, :quantity => 1 },{:name => "Coffee", :price => 1.00, :quantity => 1 }]
       end
     end
     context "item passed is not valid" do
@@ -55,14 +63,22 @@ describe Cart do
     it { is_expected.to respond_to(:remove).with(1).argument }
     context "item passed is a name of a dish" do
       it "removes the item with corresponding name from @items" do
+        full_cart.remove("Prime Rib")
+        expect(full_cart.items).not_to include({:name => "Prime Rib", :price => 9.25, :quantity => 1 })
+      end
+      it "updates quantity instead of removing if quantity of item > 1" do
         full_cart.remove("Ceasar Salad")
-        expect(full_cart.items).not_to include({:name => "Ceasar Salad", :price => 3.25 })
+        expect(full_cart.items).to include({:name => "Ceasar Salad", :price => 3.25, :quantity => 1 })
       end
     end
     context "item passed is an array of dish names" do
-      it "adds all items in array to @items" do
-        full_cart.remove(["Prime Rib", "Ceasar Salad", "Lemonade"])
+      it "removes all items in array to @items" do
+        full_cart.remove(["Prime Rib", "Ceasar Salad", "Ceasar Salad", "Lemonade"])
         expect(full_cart.items).to be_empty
+      end
+      it "updates quantity instead of removing if quantity of item > 1" do
+        full_cart.remove(["Prime Rib", "Ceasar Salad", "Lemonade"])
+        expect(full_cart.items).to eq [{:name => "Ceasar Salad", :price => 3.25, :quantity => 1 }]
       end
     end
     context "item passed is not valid" do
@@ -74,23 +90,22 @@ describe Cart do
 
   describe "#my_items" do
     it { is_expected.to respond_to :my_items }
-    #This test is ugly due to string formatting, like in menu_spec
     it "neatly prints all items from @items" do
-      expect { full_cart.my_items }.to output("\n               Your Cart                \n          --------------------          \n               Prime Rib: £9.25\n            Ceasar Salad: £3.25\n                Lemonade: £1.50\n          --------------------          \n             Total Price: £14.00\n\n").to_stdout
+      expect { full_cart.my_items }.to output("\n#{"Your Cart".center(36)}\n#{"-----------------------------------".center(36)}\n#{"1".ljust(3)}#{"Prime Rib".ljust(24)}: £9.25\n#{"2".ljust(3)}#{"Ceasar Salad".ljust(24)}: £6.50\n#{"1".ljust(3)}#{"Lemonade".ljust(24)}: £1.50\n#{"-----------------------------------".center(36)}\n#{" ".ljust(3)}#{"Total Price".ljust(24)}: £17.25\n\n").to_stdout
     end
   end
 
   describe "#total" do
     it { is_expected.to respond_to :total }
     it "returns total price of all items in @items" do
-      expect(full_cart.total).to eq 14.00
+      expect(full_cart.total).to eq 17.25
     end
   end
 
   describe "#my_total" do
     it { is_expected.to respond_to :my_total }
     it "prints total price of all items in @items" do
-      expect { full_cart.my_total }.to output("£14.00\n").to_stdout
+      expect { full_cart.my_total }.to output("£17.25\n").to_stdout
     end
   end
 
@@ -98,10 +113,10 @@ describe Cart do
     it { is_expected.to respond_to(:checkout).with(1).argument }
     context "total entered correctly" do
       it "prints confirmation of order" do
-        expect { full_cart.checkout(14.00) }.to output("Thank you, your order has been placed! It should arrive before #{(time + (60 * 60)).strftime('%R')}\n").to_stdout
+        expect { full_cart.checkout(17.25) }.to output("Thank you, your order has been placed! It should arrive before #{(time + (60 * 60)).strftime('%R')}\n").to_stdout
       end
       it "removes all items from cart for next order" do
-        full_cart.checkout(14.00)
+        full_cart.checkout(17.25)
         expect(full_cart.items).to be_empty
       end
     end
