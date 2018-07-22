@@ -4,9 +4,9 @@ class Restaurant
 
   attr_reader :menu, :order
 
-  def initialize(menu_object = Menu)
-    @menu = menu_object.new
-    @order = Order.new
+  def initialize(menu_class = Menu, order_class = Order)
+    @menu = menu_class.new
+    @order = order_class.new
   end
 
   def print_menu

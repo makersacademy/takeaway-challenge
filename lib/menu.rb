@@ -4,8 +4,8 @@ class Menu
 
   attr_reader :menu
 
-  def initialize
-    dish = Dish.new
+  def initialize (dish_class = Dish)
+    dish = dish_class.new
     @menu = []
     @menu << dish
   end 
