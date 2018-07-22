@@ -16,4 +16,8 @@ class Restaurant
   def add_to_order(dish, quantity = 1)
     @order.add(dish, quantity)
   end 
+
+  def order_total
+    @order.total(@order)
+  end
 end 

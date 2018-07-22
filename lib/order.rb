@@ -11,4 +11,7 @@ class Order
   def add(dish, quantity)
     @summary << {dish_name: dish, quantity: quantity}
   end 
+
+  def total(order)
+  end
 end 
