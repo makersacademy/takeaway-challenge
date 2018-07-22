@@ -1,5 +1,21 @@
 Takeaway Challenge
 ==================
+
+## Progress update
+User story status:
+- [x] I would like to see a list of dishes with prices
+- [x] I would like to be able to select some number of several available dishes
+- [ ] I would like to check that the total I have been given matches the sum of the various dishes in my order
+- [ ] I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+## Comments on approach
+I had limited time this weekend and then spent too long trying to get my head around mocking.
+Rather than using the rest of the time working on hashes to get a subtotal etc I thought it would be best to focus on the twillio api to get a functioning text message service.
+
+
+
+Takeaway Challenge - Original README
+====================================
 ```
                             _________
               r==           |       |
