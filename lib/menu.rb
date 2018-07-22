@@ -1,6 +1,5 @@
-# Create a meanu from all the dishes
-# Lists all the dishes
-# Name and cost
+#Return all the dishes
+#start by returning one dish 
+#name and price
 class Menu
-
 end

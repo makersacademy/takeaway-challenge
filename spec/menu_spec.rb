@@ -2,8 +2,8 @@ require "menu"
 describe Menu do
   subject(:menu) { Menu.new }
 
-  it "returns a dish object" do
-    expect(menu.dish).to be_an_instance_of(Dish)
+  it "respnds to dish method" do
+    expect(menu).to respond_to(:dish)
   end
 
 end
