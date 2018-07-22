@@ -12,9 +12,15 @@ class Takeaway
     @menu.display  
   end 
 
-  def add(dish)
-    if menu.items.has_key?(dish) 
+  def add(num=1,dish)
+    if menu.items.has_key?(dish)
+      num.times{@basket << {dish => menu.items[dish]}}
+      "added to basket!"
+    else "This dish is not on the menu"
     end 
+    end 
+    def show_basket 
+      @basket
     end 
   end 
  
