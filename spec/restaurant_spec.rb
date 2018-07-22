@@ -1,13 +1,20 @@
 require "restaurant"
 describe Restaurant do
+  subject(:restaurant) {Restaurant.new}
+
+  describe "#initialize" do
+    it "creates a new menu object" do
+      expect(subject.menu).to be_an_instance_of(Menu) 
+    end
+  end
   
   it "responds to print_menu" do
-    expect(subject).to respond_to(:print_menu)
+    expect(restaurant).to respond_to(:print_menu)
   end 
 
   describe "#print_menu" do
     it "returns a menu object" do
-      expect(subject.print_menu).to be_an_instance_of(Menu)
+      expect(restaurant.print_menu).to be_an_instance_of(Menu)
     end 
   end 
 end
