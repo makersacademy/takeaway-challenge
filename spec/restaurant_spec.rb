@@ -22,5 +22,7 @@ describe Restaurant do
     it "responds to the select method with at least 1 argument" do
       expect(restaurant).to respond_to(:select).with(1).argument
     end
+
+    # Delegates to order class
   end
 end

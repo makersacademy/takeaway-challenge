@@ -2,10 +2,13 @@
 # Caluculates order summary
 # Sends text messaage
 class Order
+  attr_reader :summary
 
-  attr_reader :order_summary
-  
-  def initialize 
-    @order_summary = []
+  def initialize
+    @summary = []
+  end
+
+  def add(dish, quantity)
+    @summary << {dish_name: dish, quantity: quantity}
   end 
 end 
