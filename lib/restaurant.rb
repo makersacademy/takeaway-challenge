@@ -7,7 +7,7 @@ class Restaurant
 
   def initialize(menu_type = Menu, order_type = Order)
     @menu = menu_type.new
-    @order = order_type.new
+    @order = order_type.new(@menu)
   end
 
   def show_menu
@@ -22,5 +22,19 @@ class Restaurant
     menu.mains
   end
 
+  def select(item)
+    raise "Item not added to basket - please select available items" unless on_menu?(item)
+    order.add_to_basket(item)
+  end
+
+  def show_basket
+    order.basket
+  end
+
+  private
+
+  def on_menu?(item)
+    menu.available?(item)
+  end
 
 end

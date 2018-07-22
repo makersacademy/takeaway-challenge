@@ -28,4 +28,8 @@ class Menu
   def print_main_menu
     puts "Main menu: #{mains}"
   end
+
+  def available?(item)
+    @mains.key?(item)
+  end
 end
