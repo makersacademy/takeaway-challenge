@@ -27,6 +27,12 @@ describe 'user stories' do
       expect(cafe1.show_basket).to eq(["rogan josh"])
     end
 
+    it "deletes from basket" do
+      restaurant.select("rogan josh")
+      restaurant.delete("rogan josh")
+      expect(restaurant.show_basket).to eq([])
+    end
+
     it "raises error if item not available" do
       expect { restaurant.select("Hubba Bubba") }.to raise_error "Item not added to basket - please select available items"
     end

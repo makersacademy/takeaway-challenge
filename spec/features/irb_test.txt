@@ -1,0 +1,9 @@
+require './lib/restaurant'
+cafe = Restaurant.new
+cafe.select("poppadoms")
+cafe.select("secret samosa")
+cafe.select("saag aloo")
+cafe.show_basket
+cafe.delete("saag aloo")
+cafe.show_basket
+

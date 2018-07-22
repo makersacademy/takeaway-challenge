@@ -11,5 +11,9 @@ class Order
     @basket << item
   end
 
+  def remove_from_basket(item)
+    @basket.delete(item)
+  end
+
 
 end
