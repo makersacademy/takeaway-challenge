@@ -1,13 +1,18 @@
-require_relative '../../lib/menu.rb'
+require_relative '../../lib/restaurant.rb'
+
 describe 'user stories' do
+
+  let(:restaurant) { Restaurant.new }
+  let(:menu) { Menu.new }
+  let(:order) { Order.new }
+
   describe "user story 1" do
     # User story 1
     # As a customer
     # So that I can check if I want to order something
     # I would like to see a list of dishes with prices
-    it "returns a menu hash" do
-      mirch = Menu.new
-      # expect(mirch.starters).to include{("poppadoms" => 0.99)}
+    it "prints the menu" do
+      expect { restaurant.show_menu }.to output("Starter menu: #{menu.starters}\nMain menu: #{menu.mains}\n").to_stdout
     end
   end
 
@@ -18,6 +23,7 @@ describe 'user stories' do
 
     # User story 3
     # As a customer
+
     # So that I can verify that my order is correct
     # I would like to check that the total I have been given matches the sum of the various dishes in my order
 

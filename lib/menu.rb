@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :starters
+  attr_reader :starters, :mains
   
   def initialize
     @starters = {
@@ -9,5 +9,23 @@ class Menu
       "chana dal" => 4.99,
       "secret samosa" => 2.50
     }
+    @mains = {
+      "tikka masala" => 7.50,
+      "rogan josh" => 7.89,
+      "saag aloo" => 5.45
+    }
+  end
+
+  def print_menus
+    print_starter_menu
+    print_main_menu
+  end
+  
+  def print_starter_menu
+    puts "Starter menu: #{starters}"
+  end
+
+  def print_main_menu
+    puts "Main menu: #{mains}"
   end
 end
