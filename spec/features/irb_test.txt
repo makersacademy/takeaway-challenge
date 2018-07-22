@@ -6,4 +6,5 @@ cafe.select("saag aloo")
 cafe.show_basket
 cafe.delete("saag aloo")
 cafe.show_basket
+cafe.complete_order
 
