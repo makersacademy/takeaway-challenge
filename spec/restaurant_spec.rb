@@ -1,0 +1,2 @@
+describe Restaurant do
+end
