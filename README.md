@@ -6,13 +6,43 @@ User story status:
 - [x] I would like to see a list of dishes with prices
 - [x] I would like to be able to select some number of several available dishes
 - [ ] I would like to check that the total I have been given matches the sum of the various dishes in my order
-- [ ] I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+- [x] I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 ## Comments on approach
 I had limited time this weekend and then spent too long trying to get my head around mocking.
 Rather than using the rest of the time working on hashes to get a subtotal etc I thought it would be best to focus on the twillio api to get a functioning text message service.
 
+This was quite a struggle and involved fathoming out how to use ENV variables and the API with test numbers. In the end I looked to others to see how to wrap the Twilio API into a class [MSchmidt19](https://github.com/Mschmidt19/takeaway-challenge) and [SimoneSmith](https://github.com/simone-smith/takeaway-challenge).
 
+## IRB Test
+
+Here's the [IRB test text](https://github.com/Whatapalaver/takeaway-challenge/blob/master/spec/features/irb_test.txt) file:
+
+```
+ irb                                                                                                                             ✔  17:17:16
+2.5.0 :001 > require './lib/restaurant'
+ => true
+2.5.0 :002 > cafe = Restaurant.new
+ => #<Restaurant:0x00007fb25950da08 @menu=#<Menu:0x00007fb25950d9e0 @starters={"poppadoms"=>0.99, "chutney"=>0.55, "chana dal"=>4.99, "secret samosa"=>2.5}, @mains={"tikka masala"=>7.5, "rogan josh"=>7.89, "saag aloo"=>5.45}, @full_menu={"poppadoms"=>0.99, "chutney"=>0.55, "chana dal"=>4.99, "secret samosa"=>2.5, "tikka masala"=>7.5, "rogan josh"=>7.89, "saag aloo"=>5.45}>, @order=#<Order:0x00007fb25950d940 @menu=#<Menu:0x00007fb25950d9e0 @starters={"poppadoms"=>0.99, "chutney"=>0.55, "chana dal"=>4.99, "secret samosa"=>2.5}, @mains={"tikka masala"=>7.5, "rogan josh"=>7.89, "saag aloo"=>5.45}, @full_menu={"poppadoms"=>0.99, "chutney"=>0.55, "chana dal"=>4.99, "secret samosa"=>2.5, "tikka masala"=>7.5, "rogan josh"=>7.89, "saag aloo"=>5.45}>, @basket=[], @total=0>>
+2.5.0 :003 > cafe.select("poppadoms")
+ => ["poppadoms"]
+2.5.0 :004 > cafe.select("secret samosa")
+ => ["poppadoms", "secret samosa"]
+2.5.0 :005 > cafe.select("saag aloo")
+ => ["poppadoms", "secret samosa", "saag aloo"]
+2.5.0 :006 > cafe.show_basket
+ => ["poppadoms", "secret samosa", "saag aloo"]
+2.5.0 :007 > cafe.delete("saag aloo")
+ => "saag aloo"
+2.5.0 :008 > cafe.show_basket
+ => ["poppadoms", "secret samosa"]
+2.5.0 :010 > cafe.complete_order
+SMb99448302c0947989e6df2fcd588d239
+```
+## Outstanding tasks
+
+I haven't completed user story 3 so need to work through the totalling of the order.
+I haven't amended the call to the twilio API to take a custom message body either.
 
 Takeaway Challenge - Original README
 ====================================
