@@ -12,7 +12,9 @@ class Order
   end
 
   def print_menu
-    @menu.menu
+    @menu.menu.each do | meal, price |
+      puts "#{meal}, £#{price}"
+    end
   end
 
   def select(selection, number)
@@ -25,14 +27,14 @@ class Order
   end
 
   def remove(selection)
-    raise "#{selection} was not previously selected" if !@selections.include?(selection)
+    raise "#{selection} was not previously selected" unless @selections.include?(selection)
     @selections.delete(selection)
     @cost -= @menu.menu[selection]
   end
 
   def view_selections
     raise 'No items have been selected' if @selections.length.zero?
-    @selections
+    puts @selections
   end
 
   def confirm

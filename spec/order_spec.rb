@@ -6,7 +6,7 @@ describe Order do
 
   describe '#print_menu' do
     it' is expected to print the menu items' do
-      expect(subject.print_menu).to be_a Hash
+      expect { subject.print_menu }.to output("Chicken Ramen, £9.95\nYaki Soba, £8.75\nKatsu Curry, £10.75\nTeriyake Donburi, £10.25\nSteak Bulgogi, £14.5\nYasai Pad Thai, £9.95\nSteamed Rice, £2.0\nMiso Soup, £1.95\n").to_stdout
     end
   end
 
@@ -53,7 +53,7 @@ describe Order do
     it 'shows selections if one or more item selected' do
       subject.select("Steamed Rice", 2)
       subject.select("Chicken Ramen", 1)
-      expect(subject.view_selections).to eq(["Steamed Rice", "Steamed Rice", "Chicken Ramen"])
+      expect { subject.view_selections }.to output("Steamed Rice\nSteamed Rice\nChicken Ramen\n").to_stdout
     end
   end
 
