@@ -4,7 +4,7 @@ describe Menu do
   
   describe "#add_dish" do
     it "respond to add_dish" do
-      expect(menu).to respond_to(:add_dish)
+      expect(menu).to respond_to(:add_dish).with(1).argument
     end
   end 
 end
