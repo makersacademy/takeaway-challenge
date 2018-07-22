@@ -15,10 +15,16 @@ class Order
   end
 
   def select(selection)
-    raise 'Item is not on the menu' if @menu.menu[selection].nil?
+    raise "#{selection} is not on the menu" if @menu.menu[selection].nil?
     @selections << selection
     @cost += @menu.menu[selection]
   end
+
+  def remove(selection)
+    raise "#{selection} was not previously selected" if @selections.include?(selection) == false
+    @selections.delete(selection)
+    @cost -= @menu.menu[selection]
+    end
 
   def view_selections
     raise 'No items have been selected' if @selections.length.zero?

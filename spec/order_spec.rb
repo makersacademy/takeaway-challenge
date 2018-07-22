@@ -11,12 +11,31 @@ describe Order do
 
   describe '#select(selection)' do
     it 'raises an error if the item is not on the menu' do
-      expect { subject.select("TV") }.to raise_error 'Item is not on the menu'
+      expect { subject.select("TV") }.to raise_error 'TV is not on the menu'
     end
 
     it 'adds selection to selections if item on menu' do
       subject.select("Miso Soup")
-      expect(subject.selections).to eq(["Miso Soup"])
+      expect(subject.selections).to eq ["Miso Soup"]
+    end
+  end
+
+  describe '#remove(selection)' do
+    it 'raises an error if item not previously selected' do
+      expect { subject.remove("Steamed Rice") }.to raise_error 'Steamed Rice was not previously selected'
+    end
+
+    it 'removes item from selection if previously selected' do
+      subject.select("Katsu Curry")
+      subject.remove("Katsu Curry")
+      expect(subject.selections).to eq []
+    end
+
+    it 'subtracts the price of the meal from total cost' do
+      subject.select("Steak Bulgogi")
+      subject.select("Yasai Pad Thai")
+      subject.remove("Yasai Pad Thai")
+      expect(subject.view_cost).to eq 14.5
     end
   end
 
