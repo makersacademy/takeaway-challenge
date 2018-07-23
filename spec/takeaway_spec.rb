@@ -1,5 +1,5 @@
-require "restaurant"
-describe Restaurant do
+require "takeaway"
+describe Takeaway do
 
   # Doubles
   # Menu (the class)
@@ -15,7 +15,7 @@ describe Restaurant do
   let(:dish)        { "meat"                          }
   let(:quantity)    { 1                               }
   
-  subject(:restaurant) { described_class.new(menu_class, order_class) }
+  subject(:takeaway) { described_class.new(menu_class, order_class) }
 
   describe "#initialize" do
     it "creates a new menu object" do
@@ -32,28 +32,28 @@ describe Restaurant do
   describe "#print_menu" do
     it "delegates to menu object" do
       expect(menu).to receive(:print_menu)
-      restaurant.print_menu
+      takeaway.print_menu
     end 
   end 
 
   describe "#add_to_order" do
     it "delegates to order object with arguments" do
       expect(order).to receive(:add).with(dish, quantity)
-      restaurant.add_to_order(dish, quantity)
+      takeaway.add_to_order(dish, quantity)
     end
   end
 
   describe "#order_total" do
     it "delegates calculation of order total to order object" do
       expect(order).to receive(:calc_total)
-      restaurant.order_total 
+      takeaway.order_total 
     end
   end
 
   describe "#confirm" do
     it "delegates order confirmation order object" do
       expect(order).to receive(:confirm)
-      restaurant.confirm
+      takeaway.confirm
     end
   end 
 end

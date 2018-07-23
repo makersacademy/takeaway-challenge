@@ -18,5 +18,4 @@ class Menu
       puts "#{dish[:name]} ------ #{dish[:price]}"
     end
   end
-
 end

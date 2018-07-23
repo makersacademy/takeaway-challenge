@@ -1,7 +1,7 @@
 require_relative "menu"
 require_relative "order"
 
-class Restaurant
+class Takeaway
 
   attr_reader :menu, :order
 
@@ -19,8 +19,10 @@ class Restaurant
   end 
 
   def order_total
-    @order.calc_total
+    @order.total
   end
 
-
+  def confirm
+    @order.confirm
+  end
 end 
