@@ -1,46 +1,41 @@
 require 'order'
-require 'menu'
 
 describe Order do
-  subject(:order) { described_class.new(:menu) }
 
-  let(:menu) { double(:menu) }
-  # let(:whiskies) { double(:whiskies) }
+	subject(:order) {Order.new}
+	let(:stuff)			{double(:stuff)}
 
-  let(:whiskies) do
-    {
-      :Lagavulin_16yo_Islay => 2,
-      :Laphroaig_10yo_Islay => 1
-    }
-  end
+	
+	context 'starting basket' do
+		
+		it 'should be empty' do 
+			expect(order.basket).to be_empty		
+		end
 
-  context 'select' do
-    before do
-      allow(whiskies).to receive(:has_key?).with(:Lagavulin_16yo_Islay).and_return(true)
-      allow(whiskies).to receive(:has_key?).with(:Laphroaig_10yo_Islay).and_return(true)
+		it 'should charge nothing' do
+			expect(order.total).to eq 0.00
+		end
+	end
+	
 
-      allow(menu).to receive(:price).with(:Lagavulin_16yo_Islay).and_return(49.50)
-      allow(menu).to receive(:price).with(:Laphroaig_10yo_Islay).and_return(30.00)
-    end
-      
-    it 'can choose multiple items from menu' do
-      order.add(:Lagavulin_16yo_Islay, 2)
-      order.add(:Laphroaig_10yo_Islay, 1)
-      expect(order.whiskies).to eq(whiskies)
-    end
+	context 'adding to basket' do
+    
+    it 'changes correct number of items in basket' do
+ 			expect {order.add(stuff, 4)}.to change {order.basket.count}.by(4)
+ 		end
+	end
 
-    it 'only allows available items to be selected' do
-      allow(whiskies).to receive(:has_key?).with(:beer).and_return(false)
-      expect { order.add(:beer, 5) }.to raise_error "Sorry, we don't sell beer!"  
-    end
-  end
+	context 'total' do
+    
+    it 'adds up price of each item' do
+			expect {order.add_to_total(4.50, 3)}.to change {order.total}.by(13.50)
+		end
+	end
 
-  context 'cost' do
-    it 'calculates the total' do
-      order.add(:Lagavulin_16yo_Islay, 2)
-      order.add(:Laphroaig_10yo_Islay, 1)
-      total = 120.00
-      expect(order.total).to eq(total)
-    end
-  end
+	context 'view order' do
+
+		it 'returns string of ordered items' do
+			expect(order.view_order).to be_a(String) 
+		end
+	end
 end

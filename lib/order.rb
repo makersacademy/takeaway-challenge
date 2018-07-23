@@ -1,28 +1,23 @@
-require 'menu'
-
 class Order
-  attr_reader :menu, :whiskies
 
-  def initialize(menu)
-    @whiskies = {
-      :Lagavulin_16yo_Islay => 49.50,
-      :Laphroaig_10yo_Islay => 30.00
-    }
-    @menu = menu
-  end
+	attr_reader :basket, :total
 
-  def add(item, quantity)
-    raise "Sorry, we don't sell #{item}!" unless whiskies.has_key?(item)
-    whiskies[item] = quantity
-  end
+	def initialize
+		@basket = []
+		@total = 0.00
+	end
 
-  def item_totals
-    whiskies.map do |item, quantity|
-      price(item) * quantity
-    end
-  end
+	def add(food, quantity)
+		quantity.times do			
+			@basket << food
+		end
+	end
 
-  def total
-    item_totals.inject(:+)
-  end
+	def add_to_total(price, quantity)
+		@total += (quantity * price)
+	end
+
+	def view_order
+		"#{@basket.join(",\n")} \n Your current order total is £#{@total}"
+	end
 end
