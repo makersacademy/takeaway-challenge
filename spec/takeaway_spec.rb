@@ -11,10 +11,7 @@ describe Takeaway do
   # Instance of order
   let(:order_class) { double :order_class, new: order }
   let(:order)       { double :order_instance          }
-
-  let(:dish)        { "meat"                          }
-  let(:quantity)    { 1                               }
-  
+    
   subject(:takeaway) { described_class.new(menu_class, order_class) }
 
   describe "#initialize" do
@@ -38,6 +35,8 @@ describe Takeaway do
 
   describe "#add_to_order" do
     it "delegates to order object with arguments" do
+      dish = "meat"
+      quantity = 1
       expect(order).to receive(:add).with(dish, quantity)
       takeaway.add_to_order(dish, quantity)
     end

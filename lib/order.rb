@@ -2,7 +2,7 @@
 # Caluculates total
 # Sends text messaage
 require "date"
-# require "twilio-ruby"
+require "twilio-ruby"
 require_relative "menu"
 class Order
   attr_reader :summary
@@ -14,7 +14,7 @@ class Order
     auth_token = "635ff5061dd4d33d0c4159400948205b"
     
     # Initialize Twilio Client
-    # @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
   def reset
@@ -23,9 +23,9 @@ class Order
   end 
 
   def add(dish, quantity)
-    fail "Select dish from menu" unless @menu.menu.any? {|hash| hash[:name] == dish}
+    fail "Select dish from menu" unless @menu.menu.any? { |hash| hash[:name] == dish }
     @summary << { name: dish, quantity: quantity }
-  end 
+  end
 
   def total
     @summary.each do |ordered_dish|

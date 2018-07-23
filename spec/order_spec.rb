@@ -41,7 +41,7 @@ describe Order do
   end 
   
   describe "#add" do
-    it "refered to manu object to raise errror" do
+    it "requires to menu object to raise errror" do
       expect(menu).to receive(:menu)
       menu.menu
     end
@@ -65,7 +65,7 @@ describe Order do
 
   describe "#confirm" do
     it "raises error it attempt to confirm with no dishes" do
-      expect {order.confirm }.to raise_error "Must select a dish"
+      expect { order.confirm }.to raise_error "Must select a dish"
     end 
 
     it "resets variables" do
@@ -78,7 +78,7 @@ describe Order do
   describe "#delivery_time" do
     it "returns time in one hour" do
       time = Time.new
-      expect(order.delivery_time).to eq (time + (1 * 60 * 60)).strftime("at %I:%M%p")
+      expect(order.delivery_time).to eq(time + (1 * 60 * 60)).strftime("at %I:%M%p")
     end 
   end
 end
