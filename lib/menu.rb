@@ -40,7 +40,7 @@ class Menu
       print_menu
       @input = gets.chomp.to_i
       if @input.zero?
-        @cart.place_order(@items)
+        @cart.verify_order(@items)
         bill
         break
       elsif invalid?
@@ -59,7 +59,7 @@ class Menu
     @items.each do |hash|
       @price += hash[:price]
     end
-    @cart.verify_order(@price)
+    @cart.place_order(@price)
   end
 
   private

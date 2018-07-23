@@ -9,7 +9,6 @@ describe Menu do
     before do
       allow($stdout).to receive(:write)
     end
-
     before do
       test_menu.instance_variable_set(:@menu, '1. Cheeseburger - 11.95')
     end
@@ -37,22 +36,18 @@ describe Menu do
   end
 
   describe '#add_items' do
-    let(:message)  { "Item - £price\n"                   }
+    let(:message)  { "Item - £price\n" }
     before do
       allow($stdout).to receive(:write)
     end
 
     it { is_expected.to respond_to(:add_items) }
-    it 'returns allows a user to add an item' do
+    it 'allows a user to add an item' do
       allow(menu).to receive(:gets).and_return("y\n")
       menu.decision
       allow(menu).to receive(:gets).and_return("1\n")
       menu.items.push(message)
       expect(menu.items).to eq [message]
     end
-    xit 'delegates to the checkout class' do
-
-    end
   end
-
 end
