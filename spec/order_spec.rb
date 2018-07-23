@@ -58,7 +58,8 @@ describe Order do
   end
 
   describe '#confirm' do
-    it 'is expected to respond to text' do
-      expect(subject).to respond_to :text
+    it 'is expected to respond to confirm' do
+      expect(subject).to respond_to :confirm
+    end
   end
 end
