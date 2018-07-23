@@ -1,9 +1,10 @@
 require 'order'
 
 class Takeaway
-  def initialize(menu:, order: nil)
+  def initialize(menu:, order: nil, sms: nil)
     @menu = menu
     @order = order || Order.new # experimenting with dependency injection
+    @sms = sms
   end
 
   def show_menu
