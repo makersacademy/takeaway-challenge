@@ -44,7 +44,7 @@ describe Takeaway do
 
   describe "#order_total" do
     it "delegates calculation of order total to order object" do
-      expect(order).to receive(:calc_total)
+      expect(order).to receive(:order_total)
       takeaway.order_total 
     end
   end
