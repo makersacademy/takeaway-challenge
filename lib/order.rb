@@ -10,8 +10,8 @@ class Order
   def initialize(menu_class = Menu.new)
     reset
     @menu = menu_class
-    account_sid = "AC27bbc0ac1d8220509171870f32e122f9"
-    auth_token = "635ff5061dd4d33d0c4159400948205b"
+    account_sid = "AC1160106e158ef4bf942fbedacf7e02eb"
+    auth_token = "bc531919d8b7d39f1d88b864fdb38911"
     
     # Initialize Twilio Client
     @client = Twilio::REST::Client.new account_sid, auth_token
