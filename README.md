@@ -1,5 +1,9 @@
 Takeaway Challenge
 ==================
+## Context of challenge
+
+This is the Makers weekend challenge to be completed at the end of week 2.
+The focus this week has been on class extraction and mocking with RSpec. Both of these featured heavily in the challenge but it was also the first time we attempted to work with an API.
 
 ## Progress update
 User story status:
@@ -10,7 +14,7 @@ User story status:
 
 ## Comments on approach
 I had limited time this weekend and then spent too long trying to get my head around mocking.
-Rather than using the rest of the time working on hashes to get a subtotal etc I thought it would be best to focus on the twillio api to get a functioning text message service.
+Rather than using the rest of the time working on hashes to get a subtotal etc I thought it would be best to focus on the twilio api to get a functioning text message service.
 
 This was quite a struggle and involved fathoming out how to use ENV variables and the API with test numbers. In the end I looked to others to see how to wrap the Twilio API into a class [MSchmidt19](https://github.com/Mschmidt19/takeaway-challenge) and [SimoneSmith](https://github.com/simone-smith/takeaway-challenge).
 
@@ -41,8 +45,9 @@ SMb99448302c0947989e6df2fcd588d239
 ```
 ## Outstanding tasks
 
-I haven't completed user story 3 so need to work through the totalling of the order.
-I haven't amended the call to the twilio API to take a custom message body either.
+- [ ] I haven't completed user story 3 so need to work through the totalling of the order.
+- [ ] I haven't amended the call to the twilio API to take a custom message body either.
+- [ ] I started with two menus, @starters and @mains before merging them so I could avoid the unintended complexity. I'd like to put these out to csv files so I can load them in and use them as originally intended.
 
 Takeaway Challenge - Original README
 ====================================
