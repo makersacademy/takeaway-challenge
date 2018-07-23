@@ -29,7 +29,7 @@ class Main
         @order.dish_list.clear
       elsif command == 'order'
         @order.place_order
-        @message_processor.send_message
+        # @message_processor.send_message removed due to twiliio number issues
         puts 'Thank your for your order'
         break
       end
