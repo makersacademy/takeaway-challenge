@@ -7,7 +7,6 @@ class Dish
   def initialize(name, price)
     @name = name.to_sym
     @price = price
-    puts price
   end
 
 end
