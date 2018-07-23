@@ -5,7 +5,7 @@ describe MessageProcessor do
     describe '#send_message' do
       it { expect(subject).to respond_to(:send_message) }
       it 'sends da message' do
-        subject.send_message removed to stop test faliure
+        subject.send_message
       end
     end
   end
