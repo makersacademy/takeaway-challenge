@@ -1,5 +1,5 @@
 require_relative 'menu'
-require 'time'
+require_relative 'text'
 
 class Order
   attr_reader :selections
@@ -38,6 +38,6 @@ class Order
   end
 
   def confirm
-    puts "Thank you for your order, your food will arrive at #{Time.now.hour}:#{Time.now.min + 30}"
+    Text.new.text
   end
 end

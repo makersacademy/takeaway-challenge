@@ -58,8 +58,7 @@ describe Order do
   end
 
   describe '#confirm' do
-    it 'shows confirmation message once order is confirmed' do
-      expect { subject.confirm }.to output("Thank you for your order, your food will arrive at #{Time.now.hour}:#{Time.now.min + 30}\n").to_stdout
-    end
+    it 'is expected to respond to text' do
+      expect(subject).to respond_to :text
   end
 end
