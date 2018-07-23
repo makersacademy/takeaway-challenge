@@ -1,26 +1,28 @@
 # Holds order summary
-# Caluculates order summary
-# Sends text messaage
+# Caluculates order summary
+# Sends text messaage
 require_relative "menu"
 class Order
   attr_reader :summary, :total
 
-  def initialize(menu_class = Menu)
+  def initialize(menu_class = Menu.new)
     @summary = []
     @total = 0
-    @menu = menu_class.new
+    @menu = menu_class
   end
 
   def add(dish, quantity)
-    @summary << {name: dish, quantity: quantity}
+    @summary << { name: dish, quantity: quantity }
   end 
 
-  def total
+  def calc_total
     @summary.each do |ordered_dish|
       @menu.menu.each do |dish|
-        @total += (dish[:price] * ordered_dish[:quantity]) if ordered_dish[:name] == dish[:name]
+        if ordered_dish[:name] == dish[:name]
+          @total += (dish[:price] * ordered_dish[:quantity]) 
+        end 
       end 
     end
-    @total
   end
+
 end 

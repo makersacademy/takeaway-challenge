@@ -4,11 +4,12 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu = [ { name: "prawns", price: 5    },
-              { name: "wood", price: 10     },
-              { name: "fire", price: 15     },
-              { name: "wet", price: 10      },
-              { name: "taco", price: 3      }          
+    @menu = [{ name: "prawns", price: 5   },
+              { name: "wood", price: 13   },
+              { name: "fire", price: 15   },
+              { name: "wet", price: 10    },
+              { name: "taco", price: 3    },
+              { name: "meat", price: 1    }           
             ]
   end 
   

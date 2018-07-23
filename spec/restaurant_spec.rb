@@ -45,8 +45,15 @@ describe Restaurant do
 
   describe "#order_total" do
     it "delegates calculation of order total to order object" do
-      expect(order).to receive(:total)
+      expect(order).to receive(:calc_total)
       restaurant.order_total 
+    end
+  end
+
+  describe "#confirm" do
+    it "delegates order confirmation order object" do
+      expect(order).to receive(:confirm)
+      restaurant.confirm
     end
   end 
 end

@@ -7,7 +7,7 @@ class Restaurant
 
   def initialize(menu_class = Menu, order_class = Order)
     @menu = menu_class.new
-    @order = order_class.new
+    @order = order_class.new(@menu)
   end
 
   def print_menu
@@ -19,6 +19,8 @@ class Restaurant
   end 
 
   def order_total
-    @order.total
+    @order.calc_total
   end
+
+
 end 
