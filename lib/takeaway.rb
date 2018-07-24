@@ -1,7 +1,6 @@
 require_relative 'menu'
 require 'twilio-ruby'
 
-
 class Takeaway 
   attr_reader :menu, :basket, :total 
   def initialize(menu = Menu)
@@ -32,7 +31,7 @@ class Takeaway
     "Order is on it's way! ETA: #{arrival_time.strftime("%H:%M")}"
     account_sid = 'AC19a985d88c9a6bbe33293c413201f1cf'
     auth_token = 'e5d9f269c243d4338f832bfc7841ff60'
-   @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new account_sid, auth_token
     
     @client.messages.create(
       from: '+447480638128',
@@ -42,5 +41,3 @@ class Takeaway
   end 
 
 end
-
-
