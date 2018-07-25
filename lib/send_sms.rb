@@ -14,13 +14,13 @@ class TextSender
   end
 
   def send_text
-    time = Time.now
-    delivery_time = time + (60 * 60)
+    # time = Time.now
+    # delivery_time = time + (60 * 60)
 
     @client.messages.create(
     from: @from,
     to: @to,
-    body: "Thank you, your order has been placed! It should arrive before #{delivery_time.strftime('%R')}"
+    body: "Thank you, your order has been placed! It should arrive before #{(Time.now + (60 * 60)).strftime('%R')}"
     )
   end
 
