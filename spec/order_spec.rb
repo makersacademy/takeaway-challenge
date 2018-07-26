@@ -2,11 +2,16 @@ require 'order'
 
 describe Order do
 
+  let(:subject) { described_class.new(fake_menu) }
+  let(:fake_menu) { double :menu, menu: {
+    "Chicken" => 4.05,
+    "Chips" => 2.07}}
+
   it { is_expected.to be_a Order }
 
   describe '#print_menu' do
     it' is expected to print the menu items' do
-      expect { subject.print_menu }.to output("Chicken Ramen, £9.95\nYaki Soba, £8.75\nKatsu Curry, £10.75\nTeriyake Donburi, £10.25\nSteak Bulgogi, £14.5\nYasai Pad Thai, £9.95\nSteamed Rice, £2.0\nMiso Soup, £1.95\n").to_stdout
+      expect { subject.print_menu }.to output("Chicken, £4.05\nChips, £2.07\n").to_stdout
     end
   end
 
@@ -18,30 +23,30 @@ describe Order do
     end
 
     it 'adds selection to selections if item on menu' do
-      subject.select("Miso Soup", 2)
-      expect(subject.selections).to eq ["Miso Soup", "Miso Soup"]
+      subject.select("Chips", 2)
+      expect(subject.selections).to eq ["Chips", "Chips"]
     end
 
     it 'prints total cost so far after each select' do
-      expect { subject.select("Teriyake Donburi", 1) }.to output("The total cost of your order is now £10.25\n").to_stdout
+      expect { subject.select("Chicken", 2) }.to output("The total cost of your order is now £8.1\n").to_stdout
     end
   end
 
   describe '#remove(selection)' do
     it 'raises an error if item not previously selected' do
-      expect { subject.remove("Steamed Rice") }.to raise_error 'Steamed Rice was not previously selected'
+      expect { subject.remove("Chips") }.to raise_error 'Chips was not previously selected'
     end
 
     it 'removes item from selection if previously selected' do
-      subject.select("Katsu Curry", 1)
-      subject.remove("Katsu Curry")
+      subject.select("Chicken", 1)
+      subject.remove("Chicken")
       expect(subject.selections).to eq []
     end
 
     it 'subtracts the price of the meal from total cost' do
-      subject.select("Steak Bulgogi", 2)
-      subject.remove("Steak Bulgogi")
-      expect(subject.cost).to eq 14.5
+      subject.select("Chips", 2)
+      subject.remove("Chips")
+      expect(subject.cost).to eq 2.07
     end
   end
 
@@ -51,9 +56,9 @@ describe Order do
     end
 
     it 'shows selections if one or more item selected' do
-      subject.select("Steamed Rice", 2)
-      subject.select("Chicken Ramen", 1)
-      expect { subject.view_selections }.to output("Steamed Rice\nSteamed Rice\nChicken Ramen\n").to_stdout
+      subject.select("Chicken", 2)
+      subject.select("Chips", 1)
+      expect { subject.view_selections }.to output("Chicken\nChicken\nChips\n").to_stdout
     end
   end
 

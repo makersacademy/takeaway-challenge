@@ -3,7 +3,7 @@ class Menu
 
   def initialize
     @menu = {
-      "Chicken Ramen" => 9.95,
+      ":Chicken Ramen" => 9.95,
       "Yaki Soba" => 8.75,
       "Katsu Curry" => 10.75,
       "Teriyake Donburi" => 10.25,
