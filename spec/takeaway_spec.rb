@@ -28,7 +28,7 @@ describe Takeaway do
 
   describe "#print_menu" do
     it "delegates to menu object" do
-      expect(menu).to receive(:print_menu)
+      expect(menu).to receive(:print)
       takeaway.print_menu
     end 
   end 
@@ -44,7 +44,7 @@ describe Takeaway do
 
   describe "#order_total" do
     it "delegates calculation of order total to order object" do
-      expect(order).to receive(:order_total)
+      expect(order).to receive(:total)
       takeaway.order_total 
     end
   end

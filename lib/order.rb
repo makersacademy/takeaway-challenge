@@ -7,20 +7,15 @@ require_relative "menu"
 class Order
   attr_reader :summary
 
-  def initialize(menu_class = Menu.new)
+  def initialize(menu_class = Menu.new, client_object = Twilio::REST::Client)
     reset
     @menu = menu_class
-    account_sid = "AC1160106e158ef4bf942fbedacf7e02eb"
-    auth_token = "bc531919d8b7d39f1d88b864fdb38911"
+    account_sid = "AC27bbc0ac1d8220509171870f32e122f9"
+    auth_token = "635ff5061dd4d33d0c4159400948205b"
     
     # Initialize Twilio Client
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = client_object.new account_sid, auth_token
   end
-
-  def reset
-    @summary = []
-    @total = 0
-  end 
 
   def add(dish, quantity)
     fail "Select dish from menu" unless @menu.menu.any? { |hash| hash[:name] == dish }
@@ -28,6 +23,7 @@ class Order
   end
 
   def total
+    @total = 0
     @summary.each do |ordered_dish|
       @menu.menu.each do |dish|
         if ordered_dish[:name] == dish[:name]
@@ -37,23 +33,35 @@ class Order
     end
     return @total
   end
-
   def confirm
     fail "Must select a dish" if @summary.empty?
+    total
     confirmation_message
     reset
   end
 
   def confirmation_message
     @client.messages.create(
-      body: "Thank you! Your order was placed and will be delivered before #{delivery_time}",
+      body: "Thank you! Your order costs £#{total} and will be delivered before #{delivery_time}",
       to: "+447476311101",
       from: "+447480488332"
     )
   end
 
+  def reset
+    @summary = []
+    @total = 0
+  end 
+
   def delivery_time
     time = Time.new
     (time + (1 * 60 * 60)).strftime("at %I:%M%p") 
   end 
-end 
+
+  def show_client 
+    puts @client
+  end 
+  private :reset, :delivery_time
+end
+
+

@@ -4,18 +4,18 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu = [{ name: "prawns", price: 5   },
-              { name: "wood", price: 13   },
-              { name: "fire", price: 15   },
-              { name: "wet", price: 10    },
-              { name: "taco", price: 3    },
-              { name: "meat", price: 1    }           
+    @menu = [{ name: "prawns", price: 5.25   },
+              { name: "wood", price: 13.00   },
+              { name: "fire", price: 15.00   },
+              { name: "wet", price: 10.05    },
+              { name: "taco", price: 3.99    },
+              { name: "meat", price: 1.25    }           
             ]
   end 
   
-  def print_menu
+  def print
     @menu.each do |dish|
-      puts "#{dish[:name]} ------ #{dish[:price]}"
+      puts "#{dish[:name]} ------ £#{dish[:price]}"
     end
   end
 end

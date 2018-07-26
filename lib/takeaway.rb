@@ -12,7 +12,7 @@ class Takeaway
   end
 
   def print_menu
-    @menu.print_menu
+    @menu.print
   end
 
   def add_to_order(dish, quantity = 1)
@@ -20,7 +20,7 @@ class Takeaway
   end 
 
   def order_total
-    @order.total
+    puts "£#{@order.total}"
   end
 
   def confirm

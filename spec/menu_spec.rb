@@ -16,7 +16,7 @@ describe Menu do
 
   describe "#print_menu" do
     it "prints array" do
-      expect(menu.print_menu).to include({ name: "prawns", price: 5 })
+      expect(menu.print).to include({ name: "prawns", price: 5.25 })
     end  
   end 
 end
