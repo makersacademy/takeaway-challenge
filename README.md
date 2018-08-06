@@ -5,6 +5,14 @@ Takeaway Challenge
 This is the Makers weekend challenge to be completed at the end of week 2.
 The focus this week has been on class extraction and mocking with RSpec. Both of these featured heavily in the challenge but it was also the first time we attempted to work with an API.
 
+By the end of week 2 all Makers developers can:
+
+- Use all of week 1's skills (don't underestimate the importance of this)
+- Break one class into two classes that work together, while maintaining test coverage
+- Unit test classes in isolation using mocking
+- Explain some basic OO principles and tie them to high level concerns (e.g. ease of change)
+- Review another person's code and give them meaningful feedback
+
 ## Progress update
 User story status:
 - [x] I would like to see a list of dishes with prices
