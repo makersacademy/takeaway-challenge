@@ -11,5 +11,5 @@ auth_token = Config::AUTH_TOKEN
 @client.api.account.messages.create(
   from: Config::TWILIO_NUMBER,
   to: Config::MY_NUMBER,
-  body: 'Hello world!'
+  body: Config::MESSAGE
 )
