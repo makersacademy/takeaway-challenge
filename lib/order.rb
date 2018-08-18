@@ -8,7 +8,7 @@ class Order
     @dish = dish
     @quantity = quantity
     @price = price
-    @total_order << current_order
+    already_in_order? ? update_order : @total_order << current_order 
     "Ordered - #{dish} x #{quantity}"
   end
 
@@ -16,7 +16,6 @@ class Order
   attr_reader :dish, :quantity, :price
 
   def current_order
-    return update_order if already_in_order?
     { dish: dish, quantity: quantity, price: price * quantity }
   end
 
@@ -26,7 +25,7 @@ class Order
 
   def update_order
     total_order.each { |hash| 
-      hash[:quantity] += quantity; 
+      hash[:quantity] += quantity 
       hash[:price] += price * quantity if hash[:dish] == dish 
     }
   end

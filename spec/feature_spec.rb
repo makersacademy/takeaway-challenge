@@ -1,12 +1,12 @@
 require 'takeaway.rb'
 
 describe 'having a takeaway' do
-  let(:user) { Takeaway.new(menu, order) }
-  let(:order) { Order.new }
+  let(:user) { Takeaway.new(menu) }
+  let(:order) { double :order, total_order: [{ dish: "Burger", quantity: 2, price: 10 }] }
   let(:food) { [{ dish: "Burger", price: 5 }, { dish: "Pizza", price: 7 }] }
-  let(:menu) { double :menu, food_menu: food, 
+  let(:menu) { double :menu, order: order, food_menu: food, 
   show_menu: "#{food[0][:dish]} - £#{food[0][:price]}, #{food[1][:dish]} - £#{food[1][:price]}",
-  order_dish: "Ordered - Burger x 1" 
+  order_dish: "Ordered - Burger x 1"
   }
   describe 'can see the menu' do
     it '#see_menu returns menu' do
@@ -17,6 +17,14 @@ describe 'having a takeaway' do
   describe 'can order a dish from the menu' do
     it '#order returns order and price of dish' do
       expect(user.order("Burger", 1)).to eq "Ordered - Burger x 1"
+    end
+  end
+
+  describe 'can check the total order' do
+    it '#check_order returns total order' do
+      user.order("Burger", 1)
+      user.order("Burger", 1)
+      expect(user.check_order).to eq "Order: Burger x 2  Total: £10"
     end
   end
 end

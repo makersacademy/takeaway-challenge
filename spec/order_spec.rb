@@ -6,7 +6,9 @@ describe Order do
     end
 
     it 'updates a current order if same dish is ordered' do
- #     subject.add_dish("Burger", 1, 5)
+      subject.add_dish("Burger", 1, 5)
+      subject.add_dish("Burger", 1, 5)
+      expect(subject.total_order).to eq [{ dish: "Burger", quantity: 2, price: 10 }]
     end
   end
 end
