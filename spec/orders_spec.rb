@@ -2,6 +2,13 @@ require 'orders'
 
 describe Orders do
 
+  let(:menu) { double :menu }
+
+  it 'chooses the menu' do
+    subject.choose_menu(menu)
+    expect(subject.choose_menu(menu)).to eq menu
+  end
+
   it 'responds to 2 arguments' do
     expect(subject).to respond_to(:cust_order).with(2).arguments
   end
@@ -23,6 +30,7 @@ describe Orders do
   end
 
   it 'returns the bill' do
+    subject.choose_menu
     subject.cust_order("pie", 2)
     subject.cust_order("cranberry juice", 2)
     expect(subject.bill).to eq 14

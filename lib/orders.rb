@@ -1,11 +1,16 @@
+# require_relative 'sms'
+
 class Orders
 
-  attr_reader :orders, :total_bill
+  attr_reader :orders, :total_bill, :menu
 
-  def initialize(menu = Menu.new)
-    @menu = menu
+  def initialize
     @orders = {}
     @total_bill = []
+  end
+
+  def choose_menu(menu = Menu.new)
+    @menu = menu
   end
 
   def cust_order(dish, how_many)

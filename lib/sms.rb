@@ -6,5 +6,5 @@ auth_token = "6c5a1d7fe6cb8361c094f06bcfb6a7df"
 @client = Twilio::REST::Client.new account_sid, auth_token
 message = @client.messages.create(
     body: "Hello from Ruby",
-    to: "+447425275774",
+    to: "",
     from: "+441344231763")
