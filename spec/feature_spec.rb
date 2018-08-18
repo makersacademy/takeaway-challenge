@@ -37,7 +37,9 @@ describe '__TAKEAWAY FEATURE TESTS__' do
   end
 
   def e__the_customer_can_add_menu_items_to_order
-    @order.add_item
+    @order.add_item('name1', 2)
+    @order.add_item('name2', 1)
+    @order.add_item('name3', 2)
   end
 
 end
