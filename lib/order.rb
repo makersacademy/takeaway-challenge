@@ -1,13 +1,14 @@
 class Order
 
+  attr_reader :order
   def initialize(menu = Menu.new)
     @menu = menu
-    @order = []
+    @order = {}
     @price = 0
-    user_input = ''
   end
 
   def add_item(name, quantity)
+    @order[name] = quantity
   end
 
 end
