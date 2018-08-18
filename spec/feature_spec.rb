@@ -7,7 +7,7 @@ describe 'Takeaway feature tests' do
   end
 
   def given_that_there_are_some_dishes
-    expect(Dish).to respond_to(:new)
+    expect(Dish).to respond_to(:new).with(2).arguments
   end
 
 end
