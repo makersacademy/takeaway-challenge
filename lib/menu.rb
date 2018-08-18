@@ -1,5 +1,5 @@
 module Menu
   
-  MENU = { curry: 5, pizza: 4, kebab: 3, meatballs: 2 }
-
+    MENU = { Katsu: 6, Curry: 5, Pizza: 4, Kebab: 3, Meatballs: 2, Congee: 1 }
+ 
 end
