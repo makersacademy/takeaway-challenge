@@ -9,7 +9,7 @@ describe Dish do
   end
 
   it 'creates a dish with a name and a price' do
-    expect([dish.name, dish.price]).to eq ['name','price']
+    expect([dish.name, dish.price]).to eq ['name', 'price']
   end
 
 end

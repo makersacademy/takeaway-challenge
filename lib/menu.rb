@@ -9,7 +9,7 @@ class Menu
   end
 
   def view_menu
-    @dishes.map { |name, price| "#{name} - #{price}"}
+    @dishes.map { |name, price| "#{name} - #{price}" }
   end
 
 end

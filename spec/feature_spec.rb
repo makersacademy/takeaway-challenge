@@ -20,18 +20,22 @@ describe '__TAKEAWAY FEATURE TESTS__' do
     @dish_2 = Dish.new('name2', 2)
     @dish_3 = Dish.new('name3', 3)
   end
+
   def b__the_dishes_can_be_added_to_a_menu
     @menu = Menu.new
     @menu.add(@dish_1)
     @menu.add(@dish_2)
     @menu.add(@dish_3)
   end
+
   def c__the_menu_can_be_viewed
     @menu.view_menu
   end
+
   def d__an_order_can_be_created
     @order = Order.new
   end
+
   def e__the_customer_can_add_menu_items_to_order
     @order.add_item
   end
