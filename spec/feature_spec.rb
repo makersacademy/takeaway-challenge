@@ -6,7 +6,7 @@ describe '__TAKEAWAY FEATURE TESTS__' do
   it 'shows a list of dishes with prices' do
     given_that_there_are_some_dishes
     the_dishes_can_be_added_to_a_menu
-    # the_menu_can_be_viewed
+    the_menu_can_be_viewed
   end
 
   def given_that_there_are_some_dishes
@@ -16,10 +16,14 @@ describe '__TAKEAWAY FEATURE TESTS__' do
   end
 
   def the_dishes_can_be_added_to_a_menu
-    menu = Menu.new
-    menu.add(@dish_1)
-    menu.add(@dish_2)
-    menu.add(@dish_3)
+    @menu = Menu.new
+    @menu.add(@dish_1)
+    @menu.add(@dish_2)
+    @menu.add(@dish_3)
+  end
+
+  def the_menu_can_be_viewed
+    @menu.view_menu
   end
 
 end
