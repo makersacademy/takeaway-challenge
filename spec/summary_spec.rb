@@ -6,16 +6,17 @@ describe Summary do
   let(:final_choices)    { [{ dish: "meat", quantity: 2 }] }
   let(:menu)             { { "meat" => 10, "veg" => 10 } }
 
+  # test ok
   describe '#initialize' do
     it 'initializes with an array of final choices' do
       expect(summary.final_choices).to eq final_choices
     end
   end
 
+  # test ok
   describe '#total' do
-    # test needs to be isolated from the Menu class (MENU constant)
     it 'returns the total price for the final choices' do
-      expect(summary.total).to eq 20
+      expect(summary.total(menu)).to eq 20
     end
   end
 

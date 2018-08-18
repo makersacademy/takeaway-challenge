@@ -19,12 +19,13 @@ class Order
 
   def add(dish, quantity)
     @selection.add(dish, quantity)
+    "#{quantity}x #{dish} added to your order"
   end
 
-  # not tested
-  def confirm(given_total, confirmation_class = Confirmation)
-    confirmation = confirmation_class.new(given_total, @selection.total)
-    confirmation.place_order
-  end
+  # # not tested
+  # def confirm(given_total, confirmation_class = Confirmation)
+  #   confirmation = confirmation_class.new(given_total, @selection.total)
+  #   confirmation.place_order
+  # end
 
 end

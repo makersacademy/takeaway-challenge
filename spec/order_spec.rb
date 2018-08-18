@@ -2,41 +2,45 @@ require 'order'
 
 describe Order do
 
-  it { is_expected.to respond_to(:add).with(2).arguments }
-
-  let(:order)         { described_class.new(menu, selection) }
-
-  let(:menu)          { double :menu, new: list }
-  let(:list)          { double :list, options: "chicken" }
-
-  let(:selection)     { double :selection, new: choices, print_summary: summary }
-  let(:choices)       { double :choices, choices: [] }
-  let(:summary)       { double :summary }
+  let(:order)            { described_class.new(menu_class, selection_class) }
+  let(:menu_class)       { double(:menu_class, new: :mock_menu) }
+  let(:selection_class)  { double(:selection_class, new: :mock_selection) }
+  let(:mock_menu)        { double(:mock_menu, options: "options" ) }
+  let(:mock_selection)   { double(:mock_selection, add: "stuff" ) }
 
   describe '#initialize' do
-    it 'initializes with a menu' do
-      expect(order.menu).to eq list
+
+    it 'creates a new menu' do
+      expect(order.menu).to eq :mock_menu
     end
 
-    it 'initializes with an empty selection array' do
-      expect(order.selection).to eq choices
+    it 'creates a new selection' do
+      expect(order.selection).to eq :mock_selection
     end
 
   end
 
   describe '#show_menu' do
-    it 'shows the dishes and prices' do
-      expect(order.show_menu).to eq "chicken"
+
+    it 'should show a menu' do
+      expect(mock_menu).to respond_to :options
     end
+
   end
 
   describe '#add' do
-    it 'adds a choice to the selection array' do
-      # test needs to be isolated from the Selection class
-      order = Order.new
-      order.add("meat", 2)
-      expect(order.selection.choices).to include({ dish: "meat", quantity: 2 })
+
+    let(:dish)      {:dish}
+    let(:quantity)  {:quantity}
+
+
+    it 'adds a specified order to the selection' do
+
+      expect(mock_selection).to receive(:add) {"added"}
+      order.add(dish, quantity)
+
     end
+
   end
 
 end

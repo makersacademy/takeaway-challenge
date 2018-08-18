@@ -1,3 +1,4 @@
+# tests ok
 # Selection keeps track of choices (dish and quantity)
 class Selection
 
@@ -11,9 +12,9 @@ class Selection
     @choices << { dish: dish, quantity: quantity }
   end
 
-  def total(summary = Summary)
+  def total(summary = Summary, menu = Menu::MENU)
     summary = summary.new(@choices)
-    summary.total
+    summary.total(menu)
   end
 
 end
