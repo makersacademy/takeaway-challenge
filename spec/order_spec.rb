@@ -40,4 +40,12 @@ describe Order do
     end
   end
 
+  describe '#total_cost' do
+    it 'returns total added valuse of :price in #selected' do
+      order.instance_variable_set(:@selected, menu_two)
+      order.total_cost
+      expect(order.total_cost).to eq 4
+    end
+  end
+
 end

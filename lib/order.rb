@@ -8,6 +8,7 @@ class Order
     @menu = menu
     @selected = []
     @ordered_list = ordered_list
+    @total = 0
   end
 
   def list_menu
@@ -20,6 +21,12 @@ class Order
 
   def list_order
     @ordered_list = @selected.group_by { |i| i }.map { |k, v| [k, v.count] }
+  end
+
+  def total_cost
+    @total = 0
+    @selected.each { |item| @total += item[:price] }
+    @total
   end
 
 end
