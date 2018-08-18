@@ -14,14 +14,17 @@ class Orders
     @orders[dish] = how_many
   end
 
+  def order_conf
+    @orders.each do |item, how_many|
+      puts "#{item.to_s.gsub("_", " ")} x #{how_many}"
+    end
+  end
+
   def bill
     @orders.each do |dish, how_many|
       @total_bill << @menu.menu_items[dish] * how_many
     end
-
     @total_bill.sum
   end
-
-
 
 end

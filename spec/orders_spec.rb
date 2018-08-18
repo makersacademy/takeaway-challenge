@@ -16,9 +16,16 @@ describe Orders do
     expect { subject.cust_order('chicken', 2) }.to raise_error "sorry, dish is not available"
   end
 
+  it "confirms customer order" do
+    subject.cust_order("pie", 2)
+    subject.cust_order("cranberry juice", 2)
+    expect(subject.order_conf).to eq({ :pie=>2, :cranberry_juice=>2 })
+  end
+
   it 'returns the bill' do
     subject.cust_order("pie", 2)
     subject.cust_order("cranberry juice", 2)
     expect(subject.bill).to eq 14
   end
+
 end
