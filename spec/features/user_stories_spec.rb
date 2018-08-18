@@ -1,4 +1,5 @@
 require 'menu'
+require 'order'
 describe 'User Stories' do
 # As a customer
 # So that I can check if I want to order something
@@ -15,13 +16,30 @@ describe 'User Stories' do
 
   it "can select a dish and quantity" do
     menu = Menu.new
-    expect(menu.order('spring rolls', 2)).to eq('added to basket: spring rolls x2')
+    order = Order.new
+    expect(order.make_order('spring rolls', 2)).to eq('added to basket: spring rolls x2')
   end
+
+  it "adds dish and quantity to order basket" do
+    menu = Menu.new
+    order = Order.new
+    order.make_order('spring rolls', 2)
+    expect(order.basket).to eq({'spring rolls' => 2})
+  end
+
 
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
-#
+
+
+  it "can check total matches order" do
+    menu = Menu.new
+    order = Order.new
+    order.make_order('spring rolls', 2)
+    expect(order.check_order).to eq("spring rolls x2: £7.98")
+  end
+
 # As a customer
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered

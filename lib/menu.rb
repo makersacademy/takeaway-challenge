@@ -9,8 +9,4 @@ attr_reader :dishes
     dishes
   end
 
-  def order(dish, quantity)
-    "added to basket: #{dish} x#{quantity}"
-  end
-
 end
