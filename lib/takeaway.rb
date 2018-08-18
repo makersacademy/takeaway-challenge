@@ -6,12 +6,7 @@ class Takeaway
     @menu = menu
   end
 
-
   def view_menu
     menu.print_menu
   end
-
-
-
-
 end

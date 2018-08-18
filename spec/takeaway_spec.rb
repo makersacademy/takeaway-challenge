@@ -8,14 +8,8 @@ describe Takeaway do
     let(:menu) { double(:menu, print_menu: printed_menu) }
     let(:printed_menu) { "Pizza: £7.50" }
 
-    it "responds to this method" do
-      expect(takeaway).to respond_to(:view_menu)
-    end
-
     it "allows us to view a menu" do
       expect(takeaway.view_menu).to eq(printed_menu)
     end
   end
-
-
 end
