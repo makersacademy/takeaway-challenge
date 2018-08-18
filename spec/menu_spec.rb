@@ -9,6 +9,6 @@ describe Menu do
 
   it 'returns the price of an item' do
     menu_items = { pie: 4.50 }
-    expect(subject.price(:pie)).to eq 4.50
+    expect(subject.price("pie")).to eq 4.50
   end
 end
