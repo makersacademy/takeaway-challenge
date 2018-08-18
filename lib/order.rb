@@ -1,7 +1,9 @@
+require './lib/menu.rb'
+
 class Order
 
-  MENU = { curry: 5, pizza: 4, kebab: 3, meatballs: 2 }
-  def show_menu(menu = MENU)
+  def show_menu(menu = Menu::MENU)
     menu
   end
+
 end
