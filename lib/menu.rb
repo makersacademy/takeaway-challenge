@@ -16,7 +16,7 @@ class Menu
   end
 
   def view_menu
-    @menu_items.each { |item, price| puts "#{item.to_s}: £#{price}"}
+    @menu_items.each { |item, price| puts "#{item.to_s.gsub("_", " ")}: £#{price}"}
   end
 
 end

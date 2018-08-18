@@ -16,8 +16,9 @@ describe Orders do
     expect { subject.cust_order('chicken', 2) }.to raise_error "sorry, dish is not available"
   end
 
-  it 'returns the price of an item' do
-    menu_items = { pie: 4.50 }
-    expect(subject.price("pie")).to eq 4.50
+  it 'returns the bill' do
+    subject.cust_order("pie", 2)
+    subject.cust_order("cranberry juice", 2)
+    expect(subject.bill).to eq 14
   end
 end
