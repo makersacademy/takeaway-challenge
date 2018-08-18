@@ -21,3 +21,4 @@
 # menu = Menu.new
 # takeout = Takeaway.new
 # takeout.view_menu
+# menu.print_menu
