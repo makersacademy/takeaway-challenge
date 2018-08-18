@@ -11,7 +11,7 @@ describe Menu do
     end
 
     it 'adds a dish' do
-      expect(subject.add(dish1)).to eq dish1
+      expect(subject.add(dish1).last).to eq dish1
     end
 
   describe '#view_menu' do
