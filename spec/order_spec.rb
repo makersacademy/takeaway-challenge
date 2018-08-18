@@ -1,16 +1,12 @@
-require 'order'
+# require 'order'
 
 describe Order do
 
-  describe '#show_menu' do
-    it 'displays a menu with prices' do
-      expect(subject.show_menu).to be_a_kind_of(Hash)
-    end
-  end
+  let(:order) { double(:order, show_menu: {curry: 5, pizza: 4}) }
 
-  describe '#order_takeaway' do
-    it 'adds things from the menu to an order' do
-      expect(subject.order_takeaway).to be_a_kind_of(Array)
+  describe '#show_menu' do
+    it 'returns a menu with prices' do
+      expect(order.show_menu).to eq({curry: 5, pizza: 4})
     end
   end
 
