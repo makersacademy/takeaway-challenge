@@ -1,10 +1,11 @@
 require 'twilio-ruby'
+require 'dotenv/load'
 
 class Sms
 
   def initialize
-    account_sid = "AC63e265e321d14d7abcc4d080a20be8db"
-    auth_token = "6c5a1d7fe6cb8361c094f06bcfb6a7df"
+    account_sid = ENV['"AC63e265e321d14d7abcc4d080a20be8db"']
+    auth_token = ENV['"AC63e265e321d14d7abcc4d080a20be8db"']
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
