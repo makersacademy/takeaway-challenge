@@ -6,7 +6,7 @@ module Dishes
     "Mystery Curry" => 9,
     "Hoisin Duck Pankcakes" => 10
   }
-  
+
   def list
     MENU.each do |dish, price|
       puts "#{dish} - £#{price}"

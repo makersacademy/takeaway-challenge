@@ -4,8 +4,7 @@ class Orders
   include Dishes
 
   def view_menu
-    # call list method from Dishes module
-    list
+    list 
   end
 
 end
