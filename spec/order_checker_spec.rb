@@ -26,15 +26,16 @@ describe OrderChecker do
 
     context 'valid order' do
 
-
+      before do
+        @order_array = [[7,1], [1,3], [3,4]]
+      end
 
       it 'does not raise error' do
-        order_array = [[7,1], [1,3], [3,4]]
-        expect { subject.check_order(@menu, order_array) }.not_to raise_error
+        expect { subject.check_order(@menu, @order_array) }.not_to raise_error
       end
 
       it 'returns the calculated total' do
-
+        expect(subject.check_order(@menu, @order_array)).to eq 31
       end
     end
   end

@@ -28,8 +28,25 @@ describe 'User Stories' do
   # I would like to be able to select some number of several available dishes
     it 'Allows method to be called without error' do
       order = Order.new
-      order_array = [[1,1], [3,1], [7,1], 12]
+      order_array = [[[1,1], [3,1], [7,1]], 12]
       expect { order.place_order(order_array) }.not_to raise_error
+    end
+  end
+
+  context 'Allows customer to check the order total' do
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+    it 'Raises an error if an incorrect order total is provided' do
+      order = Order.new
+      order_array = [[[1,1], [3,1], [7,1]], 15]
+      expect { order.place_order(order_array) }.to raise_error("Incorrect order total provided!")
+    end
+
+    it 'Returns the total if the correct total was provided' do
+      order = Order.new
+      order_array = [[[1,1], [3,1], [7,1]], 12]
+      expect(order.place_order(order_array)).to eq 12
     end
   end
 end
