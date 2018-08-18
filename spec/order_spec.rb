@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   menu = [{ food: "food1", price: 1 }]
-  let(:order) { Order.new(menu) }
+  let(:order) { Order.new(menu)}
 
   it 'sets @menu on initialize' do
     expect(order.menu).to eq menu
@@ -21,4 +21,10 @@ describe Order do
     end
   end
 
+  describe '#select_items' do
+    it 'places hashes into @selected array' do
+      order.add_items(1, 2)
+      expect(order.selected).to eq [{ :food => "food1", :price => 1 }, { :food => "food1", :price => 1 }] 
+    end
+  end
 end
