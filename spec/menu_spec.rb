@@ -7,5 +7,18 @@ describe Menu do
       expect(subject.show_menu).to eq "Burger - £5, Pizza - £7"
     end
   end
+  describe 'returns price of dish' do
+    it 'returns price of dish' do
+      expect(subject.get_price("Pizza")).to eq 7
+    end
+  end
+  describe 'order a dish' do
+    it 'order dish from the menu' do
+      expect(subject.order_dish("Pizza", 1)).to eq "Ordered - Pizza x 1"
+    end
+    it 'order dish not on the menu' do
+      expect { subject.order_dish("Sushi", 1) }.to raise_error "Sushi not on the menu"
+    end
+  end
 end
   
