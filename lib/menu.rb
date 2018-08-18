@@ -8,7 +8,8 @@ class Menu
     sirloin_steak: 12.99,
     cranberry_juice: 2.50,
     chips: 2.50,
-    boiled_egg: 0.99
+    boiled_egg: 0.99,
+    congee: 1.99
     }
 
   def initialize(menu_items = MENU_SELECTIONS)
