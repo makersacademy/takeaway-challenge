@@ -1,14 +1,15 @@
 class Menu
 
   def initialize
-    @dishes = []
+    @dishes = {}
   end
 
   def add(dish)
-    @dishes << dish
+    @dishes[dish.name] = dish.price
   end
 
   def view_menu
+    @dishes.map { |name, price| "#{name} - #{price}"}
   end
 
 end
