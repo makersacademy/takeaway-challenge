@@ -1,6 +1,4 @@
-require 'twilio-ruby'
-require 'dotenv/load'
-require_relative 'menu'
+require_relative 'order'
 
 # put your own credentials here
 account_sid = ENV['TWILIO_ACCOUNT_SID']
