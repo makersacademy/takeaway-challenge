@@ -14,7 +14,7 @@ module OrderChecker
 
   def self.calculated_total(menu, order_array)
     total = 0
-    order_array.each do | order |
+    order_array.each do |order|
       total += menu[order[0] - 1][:price] * order[1]
     end
     total

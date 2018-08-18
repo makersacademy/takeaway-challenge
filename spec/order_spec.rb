@@ -13,8 +13,8 @@ describe Order do
 
   describe '#place_order' do
     it 'passes #check_total to Menu' do
-      order_array = [[1,1], [3,1], [7,1], 12]
-      expect(menu).to receive(:check_order)
+      order_array = [[[1,1], [3,1], [7,1]], 12]
+      expect(menu).to receive(:check_order).and_return(12)
       subject.place_order(order_array)
     end
   end

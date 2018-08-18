@@ -2,6 +2,7 @@ require 'order'
 require 'menu'
 require 'printer'
 require 'order_checker'
+require 'send_text'
 
 describe 'User Stories' do
 
@@ -46,7 +47,16 @@ describe 'User Stories' do
     it 'Returns the total if the correct total was provided' do
       order = Order.new
       order_array = [[[1,1], [3,1], [7,1]], 12]
-      expect(order.place_order(order_array)).to eq 12
+      expect { order.place_order(order_array) }.to output("Total cost = £12").to_stdout
+    end
+  end
+
+  context 'Allows customer to receive text confirmation' do
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+    it 'Sends a text after order has been confirmed' do
+
     end
   end
 end

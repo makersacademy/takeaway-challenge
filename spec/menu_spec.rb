@@ -15,8 +15,8 @@ describe Menu do
 
   describe '#check_order' do
     it 'passes #check_order to OrderChecker' do
-      order_array = [[3,1], [8,1], [3,5]]
-      expect(order_checker).to receive(:check_order)
+      order_array = [[[1,1], [3,1], [7,1]], 12]
+      expect(order_checker).to receive(:check_order).and_return(12)
       subject.check_order(order_array)
     end
   end
