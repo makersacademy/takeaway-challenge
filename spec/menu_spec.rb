@@ -12,7 +12,7 @@ describe Menu do
     context 'populates @current_menu with csv file data' do
       test = "./spec/test-menus/test.csv"
       new_menu = Menu.new(test)
-      expect(new_menu.current_menu).to eq [{ :food => "food1", :price => 1 }, { :food => "food2", :price => 2 }]
+      it { expect(new_menu.current_menu).to eq [{ :food => "food1", :price => 1 }, { :food => "food2", :price => 2 }] }
     end
   end
 
