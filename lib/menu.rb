@@ -19,9 +19,4 @@ class Menu
     @menu_items.each { |item, price| puts "#{item.to_s}: £#{price}"}
   end
 
-  def price(dish)
-    dish = dish.to_sym
-    @menu_items[dish]
-  end
-
 end
