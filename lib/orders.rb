@@ -1,4 +1,4 @@
-# require_relative 'sms'
+require_relative 'sms'
 
 class Orders
 
@@ -19,7 +19,7 @@ class Orders
     @orders[dish] = how_many
   end
 
-  def order_conf
+  def order_conf(conf = Sms.new)
     @orders.each do |item, how_many|
       puts "#{item.to_s.gsub("_", " ")} x #{how_many}"
     end
@@ -30,6 +30,10 @@ class Orders
       @total_bill << @menu.menu_items[dish] * how_many
     end
     @total_bill.sum
+  end
+
+  def conf_message(conf = Sms.new)
+    conf.send_message
   end
 
 end
