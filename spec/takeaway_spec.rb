@@ -11,8 +11,8 @@ describe Takeaway do
 
   describe "#add_item" do
     it "should add item to basket" do
-      subject.add_item("congee")
-      expect(subject.basket).to eq(["congee"])
+      subject.add_item("congee", 3)
+      expect(subject.basket).to eq(["congee", "congee", "congee"])
     end
   end
 end
