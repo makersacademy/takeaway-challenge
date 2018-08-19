@@ -8,4 +8,11 @@ describe Takeaway do
       expect(subject.display_menu).to be_a_kind_of(Hash)
     end
   end
+
+  describe "#add_item" do
+    it "should add item to basket" do
+      subject.add_item("congee")
+      expect(subject.basket).to eq(["congee"])
+    end
+  end
 end
