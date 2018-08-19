@@ -1,9 +1,9 @@
-require_relative 'menu_item'
-require 'csv'
+require_relative "menu_item"
+require "csv"
 
 class Menu
 
-  DEFAULT_FILENAME = './lib/takeaway_menu.csv'
+  DEFAULT_FILENAME = "./lib/takeaway_menu.csv"
   attr_reader :m_items
 
   def initialize
@@ -18,7 +18,7 @@ class Menu
   end
 
   def display
-    @m_items.each_value do | item |
+    @m_items.each_value do |item|
       puts "#{item.number}. #{item.dish.capitalize.ljust(22, " ")} £#{item.price.rjust(6, " ")}"
     end
   end

@@ -13,7 +13,7 @@ class Order
 
   def calculate_total
     total = 0
-    @o_items.each do | o_item |
+    @o_items.each do |o_item|
       total += o_item.price.to_f * o_item.quantity.to_i
     end
     "£#{sprintf("%0.2f", total)}"

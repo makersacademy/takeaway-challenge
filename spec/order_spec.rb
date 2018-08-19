@@ -21,7 +21,7 @@ describe Order do
     it "returns the order total, formatted nicely" do
       order_item_one = double(price: "5.00", quantity: "1")
       order_item_two = double(price: "3.00", quantity: "2")
-      subject.instance_variable_set(:@o_items, [order_item_one, order_item_two] )
+      subject.instance_variable_set(:@o_items, [order_item_one, order_item_two])
 
       expect(subject.calculate_total).to eq "£11.00"
     end
