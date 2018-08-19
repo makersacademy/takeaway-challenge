@@ -52,3 +52,25 @@ The Order class contained in the order.rb file acts as a sort of hub that all cu
 - new_order.add_items(1, 2) (adds items from the menu into your order, first number represents the item number on the menu list and the second is the amount you want with a default of 1)
 - new_order.reset_order (wipes order)
 - new_order.complete_order (sends SMS containing the total amount owed and a delivery time 1 hour ahead of time order)
+
+## Files
+
+Written with Ruby Version 2.5.0
+        ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-darwin17]
+
+Files
+        ./lib/order.rb
+        ./lib/messenger.rb
+        ./lib/menu.rb
+        ./lib/display.rb
+
+Menu CSV file
+        ./lib/menus/current_menu.csv
+
+Test Files
+        ./spec/order_spec.rb
+        ./spec/messenger_send.rb
+        ./spec/menu_spec.rb
+        ./spec/display_spec.rb
+        ./spec/spec_help.rb
+        ./spec/test_menus/test.csv
