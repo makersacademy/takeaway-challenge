@@ -24,7 +24,13 @@ describe Order do
       subject.instance_variable_set(:@o_items, [order_item_one, order_item_two] )
 
       expect(subject.calculate_total).to eq "£11.00"
+    end
+  end
 
+  describe "#confirm" do
+    it "sends a confirmation text with the time 1hr from now" do
+      expect(Messager).to receive(:send_text).with("Hey there, thanks for your order! Your food will be with you at #{(Time.now + 3600).strftime("%H:%M")}.")
+      subject.confirm
     end
   end
 end

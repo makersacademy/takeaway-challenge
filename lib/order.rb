@@ -1,3 +1,5 @@
+require_relative "messager"
+
 class Order
   attr_reader :o_items
 
@@ -15,5 +17,9 @@ class Order
       total += o_item.price.to_f * o_item.quantity.to_i
     end
     "£#{sprintf("%0.2f", total)}"
+  end
+
+  def confirm
+    Messager.send_text("Hey there, thanks for your order! Your food will be with you at #{(Time.now + 3600).strftime("%H:%M")}.")
   end
 end
