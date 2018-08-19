@@ -9,6 +9,7 @@ describe Takeaway do
     end
   end
 
+
   describe "#add_item" do
     it "should add item to basket" do
       subject.add_item("congee", 3)
@@ -22,4 +23,17 @@ describe Takeaway do
       expect(subject.calculate_total).to eq(6)
     end
   end
+
+  describe "#checkout" do
+    it "should check that the total I've given matches sum of dishes ordered" do
+      subject.add_item("congee", 3)
+      expect()
+    end
+  end
+
+  # describe "#send_message" do
+  #   it "should send an sms message upon purchase" do
+  #     subject.
+  #   end
+  # end
 end
