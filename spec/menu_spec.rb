@@ -11,7 +11,7 @@ describe Menu do
   end
 
   describe '#view_menu' do
-    let(:menu) { Menu.new }
+    let(:menu) { described_class.new }
     before { menu.add(dish1); menu.add(dish2); menu.add(dish3) }
 
     it 'shows a list of all dishes on the menu' do

@@ -31,7 +31,7 @@ describe '__TAKEAWAY FEATURE TESTS__' do
     g__the_given_payment_is_checked_to_equal_the_total
   end
   it 'sends the customer a confirmation text message' do
-    
+
   end
 
   def a__given_that_there_are_some_dishes
@@ -48,7 +48,7 @@ describe '__TAKEAWAY FEATURE TESTS__' do
   end
 
   def c__the_menu_can_be_viewed
-    @menu.view_menu
+    expect(@menu.view_menu.to_a).to eq ["name1 - 5", "name2 - 2", "name3 - 4"]
   end
 
   def d__an_order_can_be_created
@@ -59,15 +59,16 @@ describe '__TAKEAWAY FEATURE TESTS__' do
     @new_order.add_item('name1', 2)
     @new_order.add_item('name2', 1)
     @new_order.add_item('name3', 2)
+    expect(@new_order.order.to_a).to eq [["name1", 2], ["name2", 1], ["name3", 2]]
   end
 
   def f__the_order_price_is_totalled
     @new_order.update_price
-    @new_order.price
+    expect(@new_order.price).to eq 20
   end
 
   def g__the_given_payment_is_checked_to_equal_the_total
-    @new_order.pay(20)
+    expect { @new_order.pay(10) }.to raise_error 'You must give the exact amount.'
   end
 
 end
