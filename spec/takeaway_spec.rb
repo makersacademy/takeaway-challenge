@@ -21,4 +21,14 @@ describe Takeaway do
       subject.choose_order(1)
     ).to include(dish: 'Fish and chips', price: 8)
   end
+
+  it '#choose_order allows choosing the quantity of each dish' do
+    array = [
+      {dish: 'Fish and chips', price: 8},
+      {dish: 'Fish and chips', price: 8},
+      {dish: 'Fish and chips', price: 8}]
+    expect(
+      subject.choose_order(1, 3)
+    ).to match_array(array)
+  end
 end

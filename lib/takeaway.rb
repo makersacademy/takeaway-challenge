@@ -1,8 +1,11 @@
 class Takeaway
   attr_reader :dishes
-  def dishes
+  attr_accessor :choice
+
+  def initialize
     @dishes = [{dish: 'Fish and chips', price: 8},
     {dish: 'Paella', price: 10}]
+    @choice = []
   end
 
   def print_dishes
@@ -12,10 +15,8 @@ class Takeaway
   end
 
   def choose_order(order_number, quantity = 1)
-    choice = []
-    choice << dishes[order_number - 1]
+    quantity.times { choice << dishes[order_number - 1] }
+    choice
   end
-
-
 
 end
