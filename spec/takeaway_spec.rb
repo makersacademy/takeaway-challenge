@@ -2,12 +2,13 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new }
-
+  subject(:takeaway) { described_class.new(menu) }
+  let(:menu) { double(:menu, dishes: { "pepperoni" => 7.50, "hawaiian" => 6.50, "vegetarian" => 5.50 }) }
 
   describe "#view_menu" do
     it "shows a shows a list of dishes with prices" do
-      expect(takeaway.view_menu).to eq("Pepperoni £7.50, Hawaiian £6.50, Vegetarian £5.50")
+      allow(menu).to receive(:print_menu).and_return("Pepperoni £7.50")
+      expect(takeaway.view_menu).to eq("Pepperoni £7.50")
     end
   end
 
@@ -36,13 +37,5 @@ describe Takeaway do
     it "will place the order and confirm via text" do
       expect(takeaway).to respond_to(:place_order)
     end
-    # it "will place the order and confirm via text" do
-    #   text = "Thank you! Your order was placed and will be delivered before 18:52"
-    #   expect(takeaway.place_order).to eq(text)
-    # end
-
   end
-
-
-
 end
