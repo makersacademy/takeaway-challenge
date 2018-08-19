@@ -14,6 +14,14 @@ Takeaway Challenge
 
  ```
 
+Tags
+------
+- OOP
+- TDD
+- Ruby
+- RSpec
+- Mocks/doubles, dependency injection, encapsulation, APIs
+
 
 What does it do?
 -------
@@ -49,13 +57,26 @@ OrderManager
                                               |<--------------> DeliveryTime
 </pre>   
 
+
 **TDD using RSpec:**
 The program was developed test-first:
-- Feature tests are provided in RSpec. Take a look at the features tests [here](specs/features/user_stories_spec.rb).
+- Feature tests are provided in RSpec. Take a look at the features tests [here](spec/features/user_stories_spec.rb).
 - Unit tests were also created in RSpec. These describe how I intend specific blocks of code to work in isolation. 
 - Using the TDD process I developed chunks of code to ensure my unit tests passed. I followed the RED, GREEN, REFACTOR process before moving onto the next unit/feature test.
 - `simplecov` was used to show the test coverage (current version shows 100% coverage).
 - `rubocop` was used to ensure that coding standards were met in all files (no offenses in current version).
+
+
+Usage
+-------
+
+As a user you can interact with my program through the terminal. First you need to instantiate a new OrderManager object:
+`order = OrderManager.new`
+
+After this you can see the range of ice-creams on offer:
+`order.see_menu`
+
+If you'd like to place an order you need to provide an array containing your order details:
 
 
 
