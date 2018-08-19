@@ -14,13 +14,7 @@ Takeaway Challenge
 
  ```
 
-Tags
-------
-- OOP
-- TDD
-- Ruby
-- RSpec
-- Mocks/doubles, dependency injection, encapsulation, APIs
+Tags: OOP, TDD, Ruby, RSpec, Mocks/Doubles, Dependency Injection, Encapsulation, APIs
 
 
 What does it do?
