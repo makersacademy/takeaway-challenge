@@ -1,6 +1,6 @@
+require 'dotenv'
 require 'twilio-ruby'
 require './lib/deliverytimecalc.rb'
-require 'dotenv'
 
 Dotenv.load
 
