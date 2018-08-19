@@ -32,21 +32,20 @@ Domain Model
 
 The user interacts directly with the OrderManager class via the terminal. The diagram below describes the class/module structure.
 
-
+<pre>
 OrderManager  
-     |  
      |  
      |<----------> MenuPrinter  
      |  
-     '|
-     '|<----------> OrderChecker
+     |
+     |<----------> OrderChecker
                         |
                         |
                         |<---------------> SendText
                                               |
                                               |
                                               |<--------------> DeliveryTime
-     
+<pre>     
 
 
 User Stories
