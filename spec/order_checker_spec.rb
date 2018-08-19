@@ -12,13 +12,13 @@ describe OrderChecker do
       { dish: "Wild strawberry",         price: 4.5 },
       { dish: "Dark chocolate & cherry", price: 5.5 }
     ]
-  order_array_invalid = [[[10,1], [1,3], [3,4]], 12]
-  order_array_valid   = [[[7,1], [1,3], [3,4]], 31]
-  order_array_total   = [[[7,1], [1,3], [3,4]], 30]
+  order_array_invalid = [[[10, 1], [1, 3], [3, 4]], 12]
+  order_array_valid   = [[[7, 1], [1, 3], [3, 4]], 31]
+  order_array_total   = [[[7, 1], [1, 3], [3, 4]], 30]
   let(:send_text) { double :text, send: true }
   let(:invalid_order) { described_class.new(menu, order_array_invalid, send_text) }
-  let(:valid_order)   { described_class.new(menu, order_array_valid, send_text)}
-  let(:invalid_total) { described_class.new(menu, order_array_total, send_text)}
+  let(:valid_order)   { described_class.new(menu, order_array_valid, send_text) }
+  let(:invalid_total) { described_class.new(menu, order_array_total, send_text) }
 
   describe '#check_order' do
 

@@ -16,7 +16,7 @@ describe OrderManager do
 
   describe '#place_order' do
     it 'passes #check_order to OrderChecker' do
-      order_array = [[[1,1], [3,1], [7,1]], 12]
+      order_array = [[[1, 1], [3, 1], [7, 1]], 12]
       expect(checker).to receive(:check_order).and_return(12)
       subject.place_order(order_array)
     end

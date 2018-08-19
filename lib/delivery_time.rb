@@ -18,6 +18,6 @@ class DeliveryTime
 
     mins.length < 2 ? (mins = "0#{mins}") : mins
     hour.length < 2 ? (hour = "0#{hour}") : hour
-    formatted_date = "#{hour}:#{mins}"
+    "#{hour}:#{mins}"
   end
 end

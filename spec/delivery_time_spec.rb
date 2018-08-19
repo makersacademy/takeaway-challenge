@@ -2,7 +2,7 @@ require 'delivery_time'
 
 describe DeliveryTime do
 
-  let(:time_klass)  { double :double }
+  let(:time_klass) { double :double }
   let(:time_object1) { double :double, hour: 12, min: 22 }
   let(:time_object2) { double :double, hour: 1, min: 1 }
   subject { described_class.new(time_klass) }

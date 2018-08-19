@@ -6,6 +6,19 @@ class OrderManager
   def initialize(printer = MenuPrinter, order_checker = OrderChecker)
     @printer = printer
     @order_checker = order_checker
+    set_menu
+  end
+
+  def see_menu
+    @printer.to_string(@menu)
+  end
+
+  def place_order(order_array)
+    checker = @order_checker.new(@menu, order_array)
+    checker.check_order
+  end
+
+  def set_menu
     @menu = [
       { dish: "Sea salt & caramel",      price: 3.5 },
       { dish: "Chilli & chocolate",      price: 3.5 },
@@ -16,15 +29,6 @@ class OrderManager
       { dish: "Wild strawberry",         price: 4.5 },
       { dish: "Dark chocolate & cherry", price: 5.5 }
     ]
-  end
-
-  def see_menu
-    @printer.to_string(@menu)
-  end
-
-  def place_order(order_array)
-    checker = @order_checker.new(@menu, order_array)
-    checker.check_order
   end
 
 end

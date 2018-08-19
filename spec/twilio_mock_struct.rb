@@ -2,7 +2,7 @@ class TwilioMockStruct
 
   attr_accessor :message, :sid
 
-  def initialize(account_sid, auth_token)
+  def initialize(_account_sid, _auth_token)
     @sid = "Mock Sid"
   end
 
@@ -11,8 +11,8 @@ class TwilioMockStruct
   end
 
   def create(body:, to:, from:)
-    @message = {body: body, to: to, from: from}
+    @message = { body: body, to: to, from: from }
     self
   end
-  
+
 end

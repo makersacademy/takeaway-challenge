@@ -20,7 +20,7 @@ describe SendText do
       it 'Assigns the correct time to the body' do
         allow(TwilioMockStruct).to receive(:new).and_return(@twilio_object)
         subject.send
-        expect(@twilio_object.message[:body]).to eq "Thank you! Your order was placed and will be delivered before 00:00"
+        expect(@twilio_object.message[:body]).to eq "Thanks! Your order was placed, it'll be delivered before 00:00"
       end
     end
 

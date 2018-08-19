@@ -21,9 +21,7 @@ class OrderChecker
   end
 
   def valid_order?
-    @order_array[0].each { |item|
-      return false if item[0] >= (@menu.length + 1)
-     }
+    @order_array[0].each { |i| return false if i[0] >= (@menu.length + 1) }
     true
   end
 
@@ -41,10 +39,8 @@ class OrderChecker
   end
 
   def compare_totals(given_total, calculated_total)
-    if calculated_total == given_total
-      p "Total cost = £#{given_total}"
-    else
-      raise "Incorrect order total provided!"
-    end
+    message = "Incorrect order total provided!"
+    raise message unless calculated_total == given_total
+    p "Total cost = £#{given_total}"
   end
 end
