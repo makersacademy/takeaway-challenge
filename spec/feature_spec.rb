@@ -1,5 +1,6 @@
 require 'dish'
 require 'menu'
+require 'order'
 
 describe '__TAKEAWAY FEATURE TESTS__' do
 
@@ -14,11 +15,18 @@ describe '__TAKEAWAY FEATURE TESTS__' do
     d__an_order_can_be_created
     e__the_customer_can_add_menu_items_to_order
   end
+  it 'calculates the price of the order' do
+    a__given_that_there_are_some_dishes
+    b__the_dishes_can_be_added_to_a_menu
+    d__an_order_can_be_created
+    e__the_customer_can_add_menu_items_to_order
+    f__the_order_price_is_totalled
+  end
 
   def a__given_that_there_are_some_dishes
-    @dish_1 = Dish.new('name1', 1)
+    @dish_1 = Dish.new('name1', 5)
     @dish_2 = Dish.new('name2', 2)
-    @dish_3 = Dish.new('name3', 3)
+    @dish_3 = Dish.new('name3', 4)
   end
 
   def b__the_dishes_can_be_added_to_a_menu
@@ -33,13 +41,17 @@ describe '__TAKEAWAY FEATURE TESTS__' do
   end
 
   def d__an_order_can_be_created
-    @order = Order.new
+    @order_object = Order.new(@menu)
   end
 
   def e__the_customer_can_add_menu_items_to_order
-    @order.add_item('name1', 2)
-    @order.add_item('name2', 1)
-    @order.add_item('name3', 2)
+    @order_object.add_item('name1', 2)
+    @order_object.add_item('name2', 1)
+    @order_object.add_item('name3', 2)
   end
 
+  def f__the_order_price_is_totalled
+    @order_object.update_price
+    @order_object.price
+  end
 end
