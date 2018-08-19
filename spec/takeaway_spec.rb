@@ -12,8 +12,14 @@ describe Takeaway do
   end
 
   describe "#add_to_order" do
+
     it "can select some number of several available dishes" do
-      expect(takeaway).to respond_to(:add_to_order).with(2).arguments
+      takeaway.add_to_order("Pepperoni", 2)
+      expect(takeaway.order).to eq({ "Pepperoni" => 2 })
+    end
+
+    it "will not allow items that are not on the menu to be added" do
+      expect { takeaway.add_to_order("Burger", 1) }.to raise_error("Burger is not on the menu")
     end
   end
 
