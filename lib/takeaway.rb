@@ -24,9 +24,6 @@ class Takeaway
 
 
 
-
-
-
   private
 
   def order_totals

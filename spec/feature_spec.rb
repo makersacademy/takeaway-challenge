@@ -8,6 +8,8 @@
 #
 # As a customer
 # So that I can verify that my order is correct
+
+### Not sure if i understand what is being asked on this one
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
 #
 # As a customer
