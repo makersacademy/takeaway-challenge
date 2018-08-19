@@ -34,12 +34,12 @@ The user interacts directly with the OrderManager class via the terminal. The di
 
 
 OrderManager
-     |
-     |
-     |<----------> MenuPrinter
-     |
-     |
-     |<----------> OrderChecker
+     '|
+     '|
+     '|<----------> MenuPrinter
+     '|
+     '|
+     '|<----------> OrderChecker
                         |
                         |
                         |<---------------> SendText
