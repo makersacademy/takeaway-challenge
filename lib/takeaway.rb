@@ -1,15 +1,16 @@
 require 'twilio-ruby'
 require_relative 'menu'
+require_relative 'sms'
 
 class Takeaway
 
 
   attr_reader :menu, :order
 
-  def initialize(menu = Menu.new, sms = SMS.new)
+  def initialize(menu = Menu.new)
     @menu = menu
     @order = {}
-    @sms = sms
+#    @sms = sms
   end
 
   def view_menu
