@@ -2,8 +2,7 @@ require 'order_checker'
 
 describe OrderChecker do
 
-  before do
-    @menu = [
+  menu = [
       { dish: "Sea salt & caramel",      price: 3.5 },
       { dish: "Chilli & chocolate",      price: 3.5 },
       { dish: "Avocado cream",           price: 4.0 },
@@ -13,29 +12,34 @@ describe OrderChecker do
       { dish: "Wild strawberry",         price: 4.5 },
       { dish: "Dark chocolate & cherry", price: 5.5 }
     ]
-  end
+  order_array_invalid = [[[10,1], [1,3], [3,4]], 12]
+  order_array_valid   = [[[7,1], [1,3], [3,4]], 31]
+  order_array_total   = [[[7,1], [1,3], [3,4]], 30]
+  let(:invalid_order) { described_class.new(menu, order_array_invalid) }
+  let(:valid_order)   { described_class.new(menu, order_array_valid)}
+  let(:invalid_total) { described_class.new(menu, order_array_total)}
 
   describe '#check_order' do
 
     context 'invalid order' do
       it 'raises error if invalid order item is included in array' do
-        order_array = [[10,1], [1,3], [3,4]]
-        expect { subject.check_order(@menu, order_array) }.to raise_error("Invalid dish selection!")
+        expect { invalid_order.check_order }.to raise_error("Invalid dish selection!")
+      end
+    end
+
+    context 'invalid total' do
+      it 'raises error if invalid total is provided' do
+        expect { invalid_total.check_order }.to raise_error("Incorrect order total provided!")
       end
     end
 
     context 'valid order' do
-
-      before do
-        @order_array = [[7,1], [1,3], [3,4]]
-      end
-
       it 'does not raise error' do
-        expect { subject.check_order(@menu, @order_array) }.not_to raise_error
+        expect { valid_order.check_order }.not_to raise_error
       end
 
       it 'returns the calculated total' do
-        expect(subject.check_order(@menu, @order_array)).to eq 31
+        expect { valid_order.check_order }.to output("\"Total cost = £31\"\n").to_stdout
       end
     end
   end

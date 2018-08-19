@@ -1,23 +1,24 @@
-require 'menu'
+require 'order_manager'
 
-describe Menu do
+describe OrderManager do
 
   let(:printer_module) { double :double }
-  let(:order_checker)  { double :double }
+  let(:checker)        { double :double }
+  let(:order_checker)  { double :double, new: checker }
   subject { described_class.new(printer_module, order_checker) }
 
-  describe '#print_menu' do
+  describe '#see_menu' do
     it 'passes #to_string to MenuPrinter' do
       expect(printer_module).to receive(:to_string)
-      subject.print_menu
+      subject.see_menu
     end
   end
 
-  describe '#check_order' do
+  describe '#place_order' do
     it 'passes #check_order to OrderChecker' do
       order_array = [[[1,1], [3,1], [7,1]], 12]
-      expect(order_checker).to receive(:check_order).and_return(12)
-      subject.check_order(order_array)
+      expect(checker).to receive(:check_order).and_return(12)
+      subject.place_order(order_array)
     end
   end
 

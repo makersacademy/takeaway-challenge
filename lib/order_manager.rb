@@ -1,6 +1,6 @@
-class Menu
+class OrderManager
 
-  def initialize(printer = Printer, order_checker = OrderChecker)
+  def initialize(printer = MenuPrinter, order_checker = OrderChecker)
     @printer = printer
     @order_checker = order_checker
     @menu = [
@@ -15,24 +15,13 @@ class Menu
     ]
   end
 
-  def print_menu
+  def see_menu
     @printer.to_string(@menu)
   end
 
-  def check_order(order_array)
-    given_total = order_array[1]
-    checked_total = @order_checker.check_order(@menu, order_array[0])
-    verify_order(given_total, checked_total)
-  end
-
-  private
-
-  def verify_order(given_total, checked_total)
-    if checked_total == given_total
-      p "Total cost = £#{given_total}"
-    else
-      raise "Incorrect order total provided!"
-    end
+  def place_order(order_array)
+    checker = @order_checker.new(@menu, order_array)
+    checker.check_order
   end
 
 end
