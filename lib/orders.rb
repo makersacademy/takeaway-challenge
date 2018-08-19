@@ -7,7 +7,8 @@ class Orders
 
   attr_reader :current
 
-  def initialize(bill = Bill.new)
+  def initialize(bill = Bill.new, sms = SMS.new)
+    @sms = sms
     @current = []
     @bill = bill
   end
@@ -25,7 +26,7 @@ class Orders
   end
 
   def buy 
-    send_sms
+    @sms.send_sms
   end
 
 end

@@ -29,8 +29,7 @@ describe "ordering a takeaway" do
 
   describe "confirmation of delivery" do
     it "will send a SMS to the customer" do
-      delivery = Delivery.new
-      allow(delivery).to receive(:confirm).and_return("SMS Sent")
+      allow(order).to receive(:buy).and_return("SMS Sent")
     end
   end
 
