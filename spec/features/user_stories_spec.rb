@@ -7,7 +7,7 @@ describe 'User Stories' do
 
   it "can see a list of dishes with prices" do
     menu = Menu.new
-    expect(menu.see_dishes).to eq({spring_rolls: 3.99 , crispy_duck: 11.95, chop_suey: 10.95, fried_rice: 4.99})
+    expect(menu.see_dishes).to eq({'spring rolls' => 3.99 , 'crispy duck' => 11.95, 'chop suey' => 10.95, 'fried rice' => 4.99})
   end
 
 # As a customer
@@ -17,14 +17,14 @@ describe 'User Stories' do
   it "can select a dish and quantity" do
     menu = Menu.new
     order = Order.new
-    expect(order.make_order('spring rolls', 2)).to eq('added to basket: spring rolls x2')
+    expect(order.make_order('spring rolls', 2)).to eq('added to basket: spring rolls x2 for 3.99 each')
   end
 
   it "adds dish and quantity to order basket" do
     menu = Menu.new
     order = Order.new
     order.make_order('spring rolls', 2)
-    expect(order.basket).to eq({'spring rolls' => 2})
+    expect(order.basket).to eq([{'spring rolls' => 3.99}, {'spring rolls' => 3.99}])
   end
 
 
@@ -37,7 +37,7 @@ describe 'User Stories' do
     menu = Menu.new
     order = Order.new
     order.make_order('spring rolls', 2)
-    expect(order.check_order).to eq("spring rolls x2: £7.98")
+    expect(order.check_order).to eq(["spring rolls: 3.99", "spring rolls: 3.99", "total = 7.98"])
   end
 
 # As a customer
