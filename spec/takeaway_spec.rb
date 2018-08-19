@@ -3,18 +3,11 @@ require 'menu'
 
 describe Takeaway do
 
-  let(:takeaway) { Takeaway.new(mockMenu, mockOrder) }
+  let(:takeaway) { Takeaway.new(mockMenu, mockOrder, mockText) }
   let(:mockMenu) { double :menu, dishes: [mockDish]}
-  let(:mockOrder) { double :order, add: [mockDish]}
-  let(:mockDish) { double :dish, name: "Green Eggs and Ham", price: "£2"}
-
-  #it "has a menu" do
-  #  expect(takeaway.menu).to be_a Menu
-  #end
-
-  #it "has an order" do
-  #  expect(takeaway.order).to be_an Order
-  #end
+  let(:mockOrder) { double :order, add: [mockDish], basket: [mockDish], total: 2}
+  let(:mockText) { double :message, send: "Your order will be ready in an hour" }
+  let(:mockDish) { double :dish, name: "Green Eggs and Ham", price: 2}
 
   describe "#add_to_order" do
     it "adds a dish to the .order" do
@@ -24,13 +17,19 @@ describe Takeaway do
 
   describe "#remove_from_order" do
     it "removes a dish from the order" do
-
+      
     end
   end
 
   describe "#show menu" do
     it "lists the dishes and price on a menu" do
-      expect(takeaway.show_menu).to eq "#{mockDish.name}, #{mockDish.price}"
+      expect(takeaway.show_menu).to eq "#{mockDish.name}, £#{mockDish.price}\n"
+    end
+  end
+
+  describe "#checkout" do
+    it "confirms the order and sends a text" do
+      expect(takeaway.checkout).to eq "Your order will be ready in an hour"
     end
   end
 

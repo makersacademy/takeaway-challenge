@@ -12,4 +12,9 @@ class Order
   def remove(dish)
     basket.delete(dish)
   end
+
+  def total
+    basket.map{ |dish| dish.price }.inject(:+)
+  end
+
 end
