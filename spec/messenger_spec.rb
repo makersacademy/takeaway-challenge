@@ -7,7 +7,7 @@ describe Messenger do
   describe '#complete_order' do
 
     before do
-      allow(messenger).to receive(:delivery_time) {"09:45"}
+      allow(messenger).to receive(:delivery_time) { "09:45" }
       allow(messenger).to receive(:send_sms)
     end
 
@@ -20,8 +20,8 @@ describe Messenger do
   describe '#midnight_compensate' do
 
     it 'compensates for midnight delivery time' do
-      messenger.delivery_time(Time.local(2018, 1, 1, 23, 30, 0))
-      expect(messenger.midnight_compensate).to eq 00
+      messenger.send(:delivery_time, Time.local(2018, 1, 1, 23, 30, 0))
+      expect(messenger.send(:midnight_compensate)).to eq 00
     end
   end
 end

@@ -9,19 +9,20 @@ class Messenger
   end
 
   def complete_order(total)
-    send_sms("Thank you! Your order totalling £#{total} was placed and will be delivered before #{delivery_time}")
+    send_sms("Thank you! Your order totalling £#{total} was placed and will be\
+ delivered before #{delivery_time}")
   end
 
+  private
   def send_sms(sms)
-    message = @client.messages.create(
+    @client.messages.create(
     body: sms,
     to: "+447863777269",
     from: "+447481346169")
   end
 
-  def delivery_time (current_time = Time.now)
+  def delivery_time(current_time = Time.now)
     @current_time = current_time
-    # Time.new.hour + 1 == 24 ? hour = 00 : hour = Time.new.hour
     "#{'%02d' % midnight_compensate}:#{'%02d' % current_time.min}"
   end
 
@@ -29,5 +30,3 @@ class Messenger
     @current_time.hour + 1 == 24 ? 00 : @current_time.hour + 1
   end
 end
-
-# puts message.sid
