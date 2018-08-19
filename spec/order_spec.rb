@@ -3,7 +3,8 @@ require 'order'
 describe Order do
 
   let(:menu) { double :menu, dishes: { 'item-1' => 2, 'item-2' => 3 } }
-  let(:subject) { described_class.new(menu) }
+  let(:subject) { described_class.new(menu, mock_text) }
+  let(:mock_text) { double :text_message }
 
   before do
     subject.add_item('item-1', 2)
@@ -27,6 +28,10 @@ describe Order do
   describe '#pay' do
     it 'raises an error if incorrect amount given' do
       expect { subject.pay(10) }.to raise_error('You must give the exact amount.')
+    end
+    it 'sends confirmation text if correct amount given' do
+      allow(mock_text).to receive(:send_confirmation) { 'text message' }
+      expect(subject.pay(0)).to eq 'text message'
     end
   end
 

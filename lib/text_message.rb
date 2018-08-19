@@ -16,6 +16,8 @@ class TextMessage
      )
   end
 
+  private
+  
   def delivery_time
     "#{Time.now.hour + 1}:#{Time.now.min}"
   end
