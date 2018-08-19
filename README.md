@@ -10,7 +10,7 @@ I planned out using the user story the main objects and how they should interact
 The Order class contained in the order.rb file acts as a sort of hub that all customer interactions go through, I would like to send more time making sure the dependencies are used in an efficient way as currently the instance of the order class contains a lot of variables. I would also like to add to some of the tests as I found it difficult completely testing the Twilio messenger part of the messenger class, although I did manage to stub effectively so as to stop texts being sent out whenever the tests were run! Also I should change some of the tests to reflect the London Style.
 
 ## Examples in IRB
-
+```
         2.5.0 :001 > require './lib/order'
 
         2.5.0 :002 > new_order = Order.new
@@ -38,7 +38,7 @@ The Order class contained in the order.rb file acts as a sort of hub that all cu
         Total: £37
 
         2.5.0 :008 > new_order.complete_order
-
+```
 ## Extras
 
 - SMS sent contains both total amount owning and current time + 1 hour
@@ -59,18 +59,21 @@ Written with Ruby Version 2.5.0
         ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-darwin17]
 
 Files
-        ./lib/order.rb
-        ./lib/messenger.rb
-        ./lib/menu.rb
-        ./lib/display.rb
+
+    ./lib/order.rb
+    ./lib/messenger.rb
+    ./lib/menu.rb
+    ./lib/display.rb
 
 Menu CSV file
-        ./lib/menus/current_menu.csv
+
+    ./lib/menus/current_menu.csv
 
 Test Files
-        ./spec/order_spec.rb
-        ./spec/messenger_send.rb
-        ./spec/menu_spec.rb
-        ./spec/display_spec.rb
-        ./spec/spec_help.rb
-        ./spec/test_menus/test.csv
+
+    ./spec/order_spec.rb
+    ./spec/messenger_send.rb
+    ./spec/menu_spec.rb
+    ./spec/display_spec.rb
+    ./spec/spec_help.rb
+    ./spec/test_menus/test.csv
