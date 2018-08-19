@@ -12,15 +12,4 @@ describe Bill do
     
   end
 
-  
-  describe ".total" do
-    it { is_expected.to respond_to(:total).with(1).argument }
-
-    it "will return the total price of the order" do
-      expect(bill.total([["Burger & Chips", 2, 7], ["Donner Kebab", 2, 8]])).to eq(30)
-    end
-  end
-  
-  
-
 end
