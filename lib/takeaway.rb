@@ -3,19 +3,21 @@ require_relative 'menu'
 
 class Takeaway
 
-  TIME_FORMAT =
 
   attr_reader :menu, :order
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sms = SMS.new)
     @menu = menu
     @order = {}
+    @sms = sms
   end
 
   def view_menu
     menu.print_menu
   end
 
+
+  # need to think about what place order will do at the moment it is responsible for sending the text!!!
   def place_order
     account_id
     message

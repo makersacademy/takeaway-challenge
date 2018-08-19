@@ -2,8 +2,12 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(menu) }
+  subject(:takeaway) { described_class.new(menu, sms) }
   let(:menu) { double(:menu, dishes: { "pepperoni" => 7.50, "hawaiian" => 6.50, "vegetarian" => 5.50 }) }
+
+# think about extracting Text/sms to its own class
+  let(:sms) { double(:sms, send_text: nil) }
+
 
   describe "#view_menu" do
     it "shows a shows a list of dishes with prices" do
@@ -36,6 +40,9 @@ describe Takeaway do
   describe "#place_order" do
     it "will place the order and confirm via text" do
       expect(takeaway).to respond_to(:place_order)
+    end
+    it "sends a text when place_order method called" do
+
     end
   end
 end
