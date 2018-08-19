@@ -1,32 +1,42 @@
 require 'order'
 
 describe Order do
-subject(:order) { Order.new }
-let(:menu)             { double :menu }
+  subject(:order)   { Order.new }
+# let(:menu)             { double :menu }
 # before { expect(menu).to receive(:make_order).with('spring rolls', 2) }
-let(:order_make_order)   { order.make_order('spring rolls', 2) }
+  let(:order_add)   { order.add('spring rolls', 2) }
+  let(:wrong_add)   { order.add('ring sprolls', 2) }
 
-  it "knows its basket" do
+  it "starts with an empty basket" do
     expect(order.basket).to eq([])
   end
 
-  describe '#make_order' do
-    it { is_expected.to respond_to(:make_order).with(2).arguments }
-    it 'shows items added to basket' do
-      expect(order_make_order).to eq('added to basket: spring rolls x2 for 3.99 each')
+  describe '#add' do
+    it { is_expected.to respond_to(:add).with(2).arguments }
+  # defaults to quantity 1
+    it 'raises an error' do
+      expect { wrong_add }.to raise_error("ring sprolls is not on the menu")
     end
-# should this be in basket spec? Seems tautological as its defined above
+    it 'gives items added to basket message' do
+      expect(order_add).to eq('added to basket: spring rolls x2 for 3.99 each')
+    end
     it "adds to basket" do
-      order_make_order
-      expect(order.basket).to eq([{"spring rolls"=>3.99}, {"spring rolls"=>3.99}])
-      # what about cost?
+      order_add
+      expect(order.basket).to eq([{ "spring rolls" => 3.99 }, { "spring rolls" => 3.99 }])
     end
   end
 
-  describe "#check_order" do
+  describe "#check" do
     it "shows order details" do
-      order_make_order
-      expect(order.check_order).to eq(["spring rolls: 3.99", "spring rolls: 3.99", "total = 7.98"])
+      order_add
+      expect(order.check).to eq(["spring rolls: £3.99", "spring rolls: £3.99", "Total: £7.98"])
     end
+  end
+
+  describe "#checkout" do
+    # it "gives confirmation message" do
+    #   expect(order.checkout).to eq("Order placed: you will receive a text message soon")
+    # end
+    # # what about sending a text? check in sms?
   end
 end

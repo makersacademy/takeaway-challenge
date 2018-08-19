@@ -1,44 +1,40 @@
 class Order
-attr_reader :basket
-  def initialize(menu = Menu.new)
+  attr_reader :basket, :menu, :messager
+  def initialize(menu = Menu.new, messager = Messager.new)
     @basket = []
     @menu = menu
+    @messager = messager
   end
 
-  def make_order(dish, quantity)
-    add_to_basket(dish, quantity)
-    # basket.merge!(dish quantity)
-    "added to basket: #{dish} x#{quantity} for #{Menu.new.dishes[dish]} each"
+  def add(dish, quantity = 1)
+    raise "#{dish} is not on the menu" unless menu.dishes.key?(dish)
+    quantity.times do
+      basket << { dish => menu.dishes[dish] }
+    end
+    "added to basket: #{dish} x#{quantity} for #{menu.dishes[dish]} each"
   end
 
-  def check_order
+  def checkout
+    messager.send_eta_text
+    "Order placed: you will receive a text message soon"
+  end
+
+  def check
+    pretty_basket
+  end
+
+private
+
+  def pretty_basket
+    new_basket = []
     total = 0
-    printout = []
-    basket.each do | element |
-      element.each do | dish, price |
+    basket.each do |element|
+      element.each do |dish, price|
+        new_basket << "#{dish}: £#{price}"
         total += price
-        printout << "#{dish}: #{price}"
       end
     end
-     printout << "total = #{total}"
-     printout
-    # "#{dish} x#{quantity}: #{price_calculator(dish, price, quantity)}"
+    new_basket << "Total: £#{total}"
+    new_basket
   end
-
-# "spring rolls x2: £7.98"
-
-# private
-
-  def add_to_basket(dish, quantity)
-    quantity.times do
-      basket << {dish => @menu.dishes[dish]}
-    end
-# currently only showing it once
-# array of hashes to allow for duplication?
-  end
-
-  # def price_calculator(dish, quantity)
-  #
-  # end
-
 end
