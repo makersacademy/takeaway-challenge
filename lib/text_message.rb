@@ -17,7 +17,7 @@ class TextMessage
   end
 
   def delivery_time
-    "#{(Time.now.hour)+1}:#{Time.now.min}"
+    "#{Time.now.hour + 1}:#{Time.now.min}"
   end
 
 end

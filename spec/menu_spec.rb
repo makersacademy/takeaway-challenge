@@ -12,9 +12,8 @@ describe Menu do
 
   describe '#view_menu' do
     let(:menu) { Menu.new }
-    before do
-      menu.add(dish1); menu.add(dish2); menu.add(dish3)
-    end
+    before { menu.add(dish1); menu.add(dish2); menu.add(dish3) }
+
     it 'shows a list of all dishes on the menu' do
       expect(menu.view_menu).to eq ["dish1 - 1", "dish2 - 2", "dish3 - 3"]
     end
