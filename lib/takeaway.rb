@@ -4,13 +4,13 @@ class Takeaway
 
   attr_reader :dishes, :order
 
-  def initialize(dishes = { "Pepperoni" => 7.50, "Hawaiian" => 6.50, "vegetarian" => 5.50 })
+  def initialize(dishes = { "pepperoni" => 7.50, "hawaiian" => 6.50, "vegetarian" => 5.50 })
     @dishes = dishes
     @order = {}
   end
 
   def view_menu
-    dishes
+    dishes.map { |dish, price| "#{dish.capitalize} £#{'%.2f' % price}" }.join(", ")
   end
 
   def place_order
@@ -20,7 +20,7 @@ class Takeaway
 
 
   def add_to_order(dish, quantity)
-    fail "#{dish} is not on the menu" unless dishes.has_key?(dish)
+    fail "#{dish} is not on the menu" unless dishes.has_key?(dish.downcase)
     order[dish] = quantity
   end
 
@@ -32,7 +32,7 @@ class Takeaway
 
   def order_totals
     order.map do |dish, quantity|
-      dishes[dish] * quantity
+      dishes[dish.downcase] * quantity
     end
   end
 
