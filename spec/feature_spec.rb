@@ -30,6 +30,9 @@ describe '__TAKEAWAY FEATURE TESTS__' do
     f__the_order_price_is_totalled
     g__the_given_payment_is_checked_to_equal_the_total
   end
+  it 'sends the customer a confirmation text message' do
+    
+  end
 
   def a__given_that_there_are_some_dishes
     @dish_1 = Dish.new('name1', 5)
