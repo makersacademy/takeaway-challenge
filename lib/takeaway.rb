@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require_relative 'menu'
 
 class Takeaway
 
