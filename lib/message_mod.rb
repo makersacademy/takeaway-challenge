@@ -13,8 +13,7 @@ module MessageMod
     # set up a client to talk to the Twilio REST API
     client = Twilio::REST::Client.new account_sid, auth_token
     client.messages.create(
-    body: "Thank you!\
-    Your order was placed and will be delivered before #{delivery_time}",
+    body: "Thank you! Your order will be delivered before #{delivery_time}",
     from: twilio_no,
     to: customer_no)
   end

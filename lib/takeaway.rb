@@ -6,7 +6,7 @@ class Takeaway
 
   include MessageMod
 
-  attr_reader :menu, :orders, :total
+  attr_reader :menu
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -21,17 +21,11 @@ class Takeaway
   end
 
   def check_order
-    @total = 0
-    order_string = menu.order.total_order.map { |hash|
-      @total += hash[:price]
-      "#{hash[:dish]} x #{hash[:quantity]}"
-    }.join(", ")
-
-    "Order: #{order_string}  Total: £#{total}"
+    menu.order.final_order
   end
 
   def confirm_order(amount)
-    fail "Incorrect amount given" unless total == amount
+    fail "Incorrect amount given" unless menu.order.total == amount
     send_message
   end
 

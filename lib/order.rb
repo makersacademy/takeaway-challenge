@@ -1,5 +1,5 @@
 class Order
-  attr_reader :total_order
+  attr_reader :total_order, :total
   def initialize
     @total_order = []
   end
@@ -10,6 +10,15 @@ class Order
     @price = price
     already_in_order? ? update_order : @total_order << current_order 
     "Ordered - #{dish} x #{quantity}"
+  end
+
+  def final_order
+    @total = 0
+    order_string = total_order.map { |hash|
+      @total += hash[:price]
+      "#{hash[:dish]} x #{hash[:quantity]}"
+    }.join(", ")
+    "Order: #{order_string}  Total: £#{total}"
   end
 
   private
