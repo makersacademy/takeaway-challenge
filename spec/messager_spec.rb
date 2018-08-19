@@ -12,8 +12,8 @@ describe Messager do
   end
 
   describe "#send_eta_text" do
-    # expect(messager) means it will check that it did receieve it
-    it "sends message eta one hour" do
+    it "sends text" do
+      allow(messager).to receive(:send_eta_text)
       expect(messager).to receive(:send_eta_text)
       messager.send_eta_text
     end

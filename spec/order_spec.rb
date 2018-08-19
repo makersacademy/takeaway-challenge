@@ -2,8 +2,6 @@ require 'order'
 
 describe Order do
   subject(:order)   { Order.new }
-# let(:menu)             { double :menu }
-# before { expect(menu).to receive(:make_order).with('spring rolls', 2) }
   let(:order_add)   { order.add('spring rolls', 2) }
   let(:wrong_add)   { order.add('ring sprolls', 2) }
 
@@ -12,8 +10,6 @@ describe Order do
   end
 
   describe '#add' do
-    it { is_expected.to respond_to(:add).with(2).arguments }
-  # defaults to quantity 1
     it 'raises an error' do
       expect { wrong_add }.to raise_error("ring sprolls is not on the menu")
     end
@@ -34,9 +30,8 @@ describe Order do
   end
 
   describe "#checkout" do
-    # it "gives confirmation message" do
-    #   expect(order.checkout).to eq("Order placed: you will receive a text message soon")
-    # end
-    # # what about sending a text? check in sms?
+    it "gives confirmation message" do
+      expect(order.checkout).to eq("Order placed: you will receive a text message soon")
+    end
   end
 end

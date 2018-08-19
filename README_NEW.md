@@ -1,34 +1,70 @@
-The user will make a menu.
-Go through menu with see_menu.
-When ready to order, create new order
-  - accepts different menu to be passed.
-  - accepts different message service to be passed.
-Order.add(dish, quantity)
-Order.check
-Order.checkout (when ready to leave)
+ __       ___,.-------..__        __
+//\\ _,-''                `'--._ //\\
+\\ ;'                           `: //
+`(             TAKEAWAY          )'
+  :.                           ,;
+   `.`--.___           ___.--','
+     `.     ``-------''     ,'
+        -.               ,-
+          `-._______.-'
 
-No Takeaway class.
+What does the program do?
+---------
 
-hardcoded menu in Menu class.
-- see dishes available in menu class.
+  It allows users to order food from a menu. Users can see the menu and add items to their order. Orders and the total can be checked. Once ready, can be placed: this triggers the automation of a text to the users mobile confirming that the delivery will arrive in an hours time.
 
-Order class is the highest one.
+  Test coverage is: 100%
+  All tests are passing
 
-injected dependency of Menu.new and SMS.new. Also holds basket.
-- menu allows the user to see the menu (could have add in a different menu if there was one)
-<!-- - sms allows access to SMS - messenger -->
-- basket is held as an array which will hold hashes of items added.
+How do I use it?
+---------
 
-Menu is a little redundant, only having one option.
+Instantiate new menu:
 
-- add_to_item takes dish and quantity. Fail if not on menu. Adds to basket quantity no. times. Gives confirmation message.
+`menu = Menu.new`
 
-- basket_checkout simply sends message that it's being delivered.
-    - add check order to this?
+See dishes and prices:
 
-- check_order shows formatted basket and total
-    - more room to make this prettier
+`menu.see_dishes`
 
-- pretty basic private method is too long. splitting adds more repetition though, as need to iterate over again to get total.
+When ready to order, create an create an instance of Order:
 
-SMS - account info and auth code are not held securely!
+`order = Order.new`
+
+Add the dish and quantity you want:
+
+`add(dish, quantity)`
+  - if the dish is not on the menu, you will receive an error and nothing will be added to your basket.
+
+Check what is currently in your basket and it's total cost:
+
+`order.check`
+
+When you are happy with your order:
+
+`order.checkout`
+  - you will receive a delivery ETA by text.
+
+
+What was my approach?
+---------
+Menu allows the user to view available dishes.
+
+Order allows users to check and manipulate their order.
+
+Messager holds twilio authentication details and allows for texts to be sent.
+
+
+How would I improve it?
+---------
+- Not hardcode the menu. This would allow for expansion of different menus.
+
+- Consider making a higher order Restaurant class as the majority of work being in the order class seems illogical.
+
+- Order is currently held as an array of hashes which makes it circuitous to accumulate items. A hash would have sufficed for this purpose.
+
+- Possibly add a formatter class to handle presenting menus and order checks in an easily readable fashion.
+
+- Find another way to manage the private pretty_basket method. The method is too long partly due to the basket data storage type.
+
+- Find a way to hold the Messager account info securely.
