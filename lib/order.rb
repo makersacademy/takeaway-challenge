@@ -26,6 +26,7 @@ class Order
   def add_items(item_number, amount = 0)
     fail 'Item number not recognised' if recognise_item?(item_number)
     amount.times { @selected << @menu[item_number - 1] }
+    puts "#{@selected[-1][:food]} x#{amount} £#{@selected[-1][:price]*amount}"
   end
 
   def total_cost
