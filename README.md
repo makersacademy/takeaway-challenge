@@ -84,9 +84,13 @@ If you'd like to place an order you need to provide an array containing your ord
 
 Then:
 
-`order.place_order(order_array)
+`order.place_order(order_array)`
 
+If you've provided the correct total cost you'll receive feedback on the terminal of the agreed total cost. A text message will also be sent confirming the expected deivery time.
 
+If you've provided an order with the incorrect total cost then you'll see an error (no text message will be sent). You'll need to re-submit your order with the correct total cost.
+
+If the text fails to send, we'll let you know through an error message on the terminal.
 
 
 User Stories
