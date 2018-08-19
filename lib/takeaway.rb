@@ -16,11 +16,8 @@ class Takeaway
 
   def add_item(name, quantity)
     quantity.times do
-      @basket.push(name)
+      @basket.push(name.capitalize)
     end
     @basket
-  end
-
-  def calculate_total
   end
 end
