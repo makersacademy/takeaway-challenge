@@ -2,10 +2,7 @@ require 'takeaway'
 require 'dish'
 
 describe "A Takeaway" do
-  let(:takeaway)      { Takeaway.new }
-  # let(:carbonara)     { Dish.new("Carbonara", 5) }
-  # let(:roast_chicken) { Dish.new("Roast Chicken", 12) }
-  # let(:burger)        { Dish.new("Burger", 7) }
+  let(:takeaway) { Takeaway.new }
 
   it "can add dishes from the menu to the order" do
     takeaway.add_to_order(takeaway.menu.dishes[0])

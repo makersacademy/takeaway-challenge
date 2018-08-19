@@ -43,7 +43,7 @@ class Takeaway
 
   def confirm_order
     p "Is this order correct? (y/n)"
-    gets.chomp.downcase == "y"
+    gets.chomp == "y"
   end
 
 end

@@ -1,7 +1,7 @@
 require 'dish'
 
 describe Dish do
-let(:carbonara) { Dish.new("Carbonara", 5) }
+  let(:carbonara) { Dish.new("Carbonara", 5) }
 
   it "has a name" do
     expect(carbonara.name).to eq "Carbonara"

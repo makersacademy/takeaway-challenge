@@ -10,12 +10,12 @@ class Message
 
     @from = '+441424531192' # Your Twilio number
     @to = '+447799537436' # Your mobile phone number
-
-    def send(body = "body empty")
-      @client.messages.create(
-      from: @from,
-      to: @to,
-      body: body)  
-    end
+  end
+  
+  def send(body = "body empty")
+    @client.messages.create(
+    from: @from,
+    to: @to,
+    body: body)  
   end
 end

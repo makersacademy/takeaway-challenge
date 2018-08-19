@@ -14,7 +14,7 @@ class Order
   end
 
   def total
-    basket.map{ |dish| dish.price }.inject(:+)
+    basket.map { |dish| dish.price }.inject(:+)
   end
 
 end
