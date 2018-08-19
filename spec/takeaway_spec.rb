@@ -27,7 +27,8 @@ describe Takeaway do
   describe "#checkout" do
     it "should check that the total I've given matches sum of dishes ordered" do
       subject.add_item("congee", 3)
-      expect()
+     p subject.calculate_total
+      expect(subject.checkout(6)).to eq(subject.calculate_total)
     end
   end
 
