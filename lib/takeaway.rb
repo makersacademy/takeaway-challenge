@@ -3,6 +3,8 @@ require_relative 'menu'
 
 class Takeaway
 
+  TIME_FORMAT =
+
   attr_reader :menu, :order
 
   def initialize(menu = Menu.new)
@@ -47,8 +49,13 @@ class Takeaway
     @client.messages.create(
       from: +447480537261,
       to: +7968841830,
-      body: "Thank you! Your order was placed and will be delivered before 18:52"
+      body: "Thank you! Your order was placed and will be delivered before #{delivery_time}"
     )
   end
+
+  def delivery_time
+    (Time.now + 3600).strftime("%H:%M")
+  end
+
 
 end
