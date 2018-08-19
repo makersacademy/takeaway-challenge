@@ -20,4 +20,7 @@ class Takeaway
     end
     @basket
   end
+
+  def calculate_total
+  end
 end
