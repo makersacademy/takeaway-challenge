@@ -1,9 +1,12 @@
 require 'twilio-ruby'
 class SMS
+# makes sense to call this client?
 
+attr_reader :account_sid, :auth_token
+# needed to att read and instant variable for instance to recognise the variables
   def initialize
-    account_sid = 'AC9c21a11caf4a1045f79f695742aae881'
-    auth_token  = 'a2669f5218a3e8f29703184280a528f7'
+    @account_sid = 'AC9c21a11caf4a1045f79f695742aae881'
+    @auth_token  = 'a2669f5218a3e8f29703184280a528f7'
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
