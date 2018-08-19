@@ -93,8 +93,26 @@ If you've provided an order with the incorrect total cost then you'll see an err
 If the text fails to send, we'll let you know through an error message on the terminal.
 
 
+Running Tests
+------------
+
+The following test specs are included:
+`./spec/order_manager_spec.rb`
+`./spec/menu_printer_spec.rb`
+`./spec/order_checker_spec.rb`
+`./spec/send_text_spec.rb`
+`./spec/delivery_time_spec.rb`
+`./spec/features/user_stories_spec.rb`
+
+To run these tests call `rspec` from the root of the directory. When you run the full suite of tests only one text will be sent (only the feature test actually sends a message). 
+
+All unit tests have been isolated using doubles through depedency injection. For unit tests on SendText a fake Twilio client class was created that stored all the test values and responses, mimicking how the real Twilio class object saves information.
+
+
 User Stories
 -----
+
+See below for the user stories:
 
 ```
 As a customer
