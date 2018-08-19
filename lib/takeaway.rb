@@ -12,6 +12,10 @@ class Takeaway
   def add_to_order(dish)
     order.add(dish)
   end
+
+  def remove_from_order(dish)
+    order.remove(dish)
+  end
   
   def show_menu
     food = ""
