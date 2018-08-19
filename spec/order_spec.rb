@@ -30,6 +30,12 @@ describe Order do
       expect(order.selected).to eq [{ :food => "food1", :price => 1 },
                                     { :food => "food1", :price => 1 }]
     end
+
+    it 'raises_error if item_number is not recognised' do
+      expect{order.add_items(2)}.to raise_error 'Item number not recognised'
+      expect{order.add_items(-2)}.to raise_error 'Item number not recognised'
+    end
+
   end
 
   describe '#list_order' do

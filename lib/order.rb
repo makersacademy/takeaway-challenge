@@ -12,10 +12,13 @@ class Order
   end
 
   def list_menu
-    @menu.each_with_index { |menu, index| puts "#{index + 1}: #{menu[:food]} £#{menu[:price]}" }
+    @menu.each_with_index { |menu, index| puts "#{index + 1}: #{menu[:food]}\
+ £#{menu[:price]}"
+    }
   end
 
   def add_items(item_number, ammount = 1)
+    fail 'Item number not recognised' if item_number > @menu.count || item_number < 1
     ammount.times { @selected << @menu[item_number - 1] }
   end
 
@@ -30,7 +33,15 @@ class Order
   end
 
   def complete_order
+    @total_cost
     @messenger.complete_order(@total)
+    reset_order
+    "Order Completed"
+  end
+
+  def reset_order
+    @selected = []
+    @total = 0
   end
 
 end
