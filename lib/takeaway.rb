@@ -1,5 +1,6 @@
 require './data/takeaway_menu.rb'
 require './data/messages.rb'
+require './lib/send_text.rb'
 
 class Takeaway
 
@@ -36,10 +37,14 @@ class Takeaway
   def checkout(money)
     if money == calculate_total
       puts messages[:payment_success]
+      send_message
     elsif money != calculate_total
-      puts messages[:payment_error]
-      puts "(£#{calculate_total})"
+      puts messages[:payment_error] + " (£#{calculate_total})"
     end
     money
+  end
+
+  def send_message(message = Message.new)
+    message.send_message  
   end
 end
