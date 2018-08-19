@@ -26,8 +26,11 @@ The Order class contained in the order.rb file acts as a sort of hub that all cu
         8: Gravy £1
 
         2.5.0 :004 > new_order.add_items(2 ,2)
+        Chick'n Spicy Burger x2 £14
         2.5.0 :005 > new_order.add_items(5 ,1)
-        2.5.0 :006 > new_order.add_items(2 ,3)
+        Fries x1 £2
+        2.5.0 :006 > new_order.add_items(7 ,3)
+        Coleslaw x3 £9
 
         2.5.0 :007 > new_order.display_order
         1: Chick'n Spicy Burger x5 - £35
