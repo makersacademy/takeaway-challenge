@@ -22,6 +22,14 @@ describe '__TAKEAWAY FEATURE TESTS__' do
     e__the_customer_can_add_menu_items_to_order
     f__the_order_price_is_totalled
   end
+  it 'checks that the payment is equal to the price total' do
+    a__given_that_there_are_some_dishes
+    b__the_dishes_can_be_added_to_a_menu
+    d__an_order_can_be_created
+    e__the_customer_can_add_menu_items_to_order
+    f__the_order_price_is_totalled
+    g__the_given_payment_is_checked_to_equal_the_total
+  end
 
   def a__given_that_there_are_some_dishes
     @dish_1 = Dish.new('name1', 5)
@@ -41,17 +49,22 @@ describe '__TAKEAWAY FEATURE TESTS__' do
   end
 
   def d__an_order_can_be_created
-    @order_object = Order.new(@menu)
+    @new_order = Order.new(@menu)
   end
 
   def e__the_customer_can_add_menu_items_to_order
-    @order_object.add_item('name1', 2)
-    @order_object.add_item('name2', 1)
-    @order_object.add_item('name3', 2)
+    @new_order.add_item('name1', 2)
+    @new_order.add_item('name2', 1)
+    @new_order.add_item('name3', 2)
   end
 
   def f__the_order_price_is_totalled
-    @order_object.update_price
-    @order_object.price
+    @new_order.update_price
+    @new_order.price
   end
+
+  def g__the_given_payment_is_checked_to_equal_the_total
+    @new_order.pay(20)
+  end
+
 end

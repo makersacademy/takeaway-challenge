@@ -3,9 +3,7 @@ class Order
   attr_reader :order, :price
 
   def initialize(menu = Menu.new)
-    @menu = menu
-    @order = {}
-    @price = 0
+    @menu, @order, @price = menu, {}, 0
   end
 
   def add_item(name, quantity)
@@ -13,7 +11,11 @@ class Order
   end
 
   def update_price
-  @order.to_a.each { |dish, quant| @price += @menu.dishes[dish] * quant}
+    @order.to_a.each { |dish, quant| @price += @menu.dishes[dish] * quant}
+  end
+
+  def pay(amount)
+    raise "You must give the exact amount." if amount != @price
   end
 
 end

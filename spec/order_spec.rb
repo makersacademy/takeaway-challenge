@@ -25,4 +25,10 @@ describe Order do
     # end
   end
 
+  describe '#pay' do
+    it 'raises an error if incorrect amount given' do
+      expect { subject.pay(10) }.to raise_error('You must give the exact amount.')
+    end
+  end
+
 end
