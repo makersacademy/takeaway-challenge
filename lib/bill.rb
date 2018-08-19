@@ -15,6 +15,8 @@ class Bill
     print "TOTAL = £#{total(current_order)}\n"
   end
 
+  private
+
   def total(current_order)
     total = 0
     
