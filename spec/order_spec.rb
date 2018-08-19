@@ -52,4 +52,30 @@ describe Order do
     end
   end
 
+  describe '#complete_order' do
+
+    before do
+      allow(order).to receive(:send_to_messenger)
+    end
+
+    it 'returns order completed' do
+      expect(order.complete_order).to eq 'Order Completed'
+    end
+
+    describe '#reset_order' do
+      it 'resets @selected @total' do
+        order.instance_variable_set(:@selected, menu_two)
+        order.instance_variable_set(:@total, 10)
+        order.send(:reset_order)
+        expect(order.instance_variable_get(:@selected)).to eq []
+        expect(order.instance_variable_get(:@total)).to eq 0
+      end
+    end
+
+    describe '#send_to_messenger' do
+      it 'responds to .Order' do
+        expect(order).respond_to?(:send_to_messenger)
+      end
+    end
+  end
 end

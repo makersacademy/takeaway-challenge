@@ -33,15 +33,20 @@ class Order
   end
 
   def complete_order
-    @total_cost
-    @messenger.complete_order(@total)
+    total_cost
+    send_to_messenger
     reset_order
     "Order Completed"
   end
 
+  private
   def reset_order
     @selected = []
     @total = 0
+  end
+
+  def send_to_messenger
+    @messenger.completed_order(@total)
   end
 
 end
