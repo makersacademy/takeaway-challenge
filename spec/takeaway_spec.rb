@@ -1,5 +1,4 @@
 require 'takeaway'
-require 'order'
 
 describe Takeaway do
   
@@ -25,16 +24,20 @@ describe Takeaway do
   end
 
   describe "#checkout" do
+    let(:takeaway_double) { double(:takeaway, checkout: 6) }
+
     it "should check that the total I've given matches sum of dishes ordered" do
       subject.add_item("congee", 3)
-     p subject.calculate_total
-      expect(subject.checkout(6)).to eq(subject.calculate_total)
+      subject.calculate_total
+      expect(takeaway_double.checkout(6)).to eq(subject.calculate_total)
     end
   end
 
-  # describe "#send_message" do
-  #   it "should send an sms message upon purchase" do
-  #     subject.
-  #   end
-  # end
+  describe "#send_message" do
+    let(:takeaway_double) { double(:takeaway, send_message: "yo") }
+
+    it "should send an sms message upon purchase" do
+      expect(takeaway_double.send_message).to eq("yo")
+    end
+  end
 end
