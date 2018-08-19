@@ -1,10 +1,10 @@
-number,food,price
+number,dish,price
 01,edamame,4.35
 02,wok-fried greens,4.35
 03,chicken gyoza,5.80
 04,yasai gyoza,5.75
 05,chicken ramen,8.95
-06,wagamama ramen,10.25
+06,seafood ramen,10.25
 07,grilled duck ramen,12.95
 08,chicken chilli ramen,10.25
 09,beef chilli ramen,12.95
