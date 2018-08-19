@@ -56,7 +56,8 @@ The Order class contained in the order.rb file acts as a sort of hub that all cu
 ## Files
 
 Written with Ruby Version 2.5.0
-        ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-darwin17]
+
+    ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-darwin17]
 
 Files
 
