@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :order, :price
+  attr_reader :order, :price, :menu
 
   def initialize(menu = Menu.new, text = TextMessage.new)
     @menu, @text_message, @order, @price = menu, text, {}, 0

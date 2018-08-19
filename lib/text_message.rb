@@ -10,14 +10,14 @@ class TextMessage
 
   def send_confirmation
     @client.messages.create(
-         body: "Thank you! Your order was placed and will be delivered before #{@time}",
+         body: "Thank you! Your order was placed and will be delivered before #{delivery_time}",
          from: '+441799252298',
          to: '+447761876094'
      )
   end
 
-  def order_time
-    @time = "#{(Time.now.hour)+1}:#{Time.now.min}"
+  def delivery_time
+    "#{(Time.now.hour)+1}:#{Time.now.min}"
   end
 
 end

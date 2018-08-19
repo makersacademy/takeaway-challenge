@@ -2,7 +2,8 @@ require 'order'
 
 describe Order do
 
-  let(:menu) { double :menu, dishes: 1 }
+  let(:menu) { double :menu, dishes: { 'item-1' => 2, 'item-2' => 3 } }
+  let(:new_order) { Order.new(menu) }
 
   it 'creates an order' do
     expect(described_class).to respond_to(:new)
@@ -17,12 +18,11 @@ describe Order do
   end
 
   describe '#update_price' do
-    # it 'totals the price of the order' do
-    #   subject.add_item('item-1', 2)
-    #   subject.add_item('item-2', 3)
-    #   subject.update_price
-    #   subject.price
-    # end
+    it 'totals the price of the order' do
+      new_order.add_item('item-1', 2)
+      new_order.add_item('item-2', 3)
+      expect{new_order.update_price}.to change{new_order.price}.by(13)
+    end
   end
 
   describe '#pay' do
