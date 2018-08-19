@@ -7,8 +7,8 @@ describe "Feature tests - menu" do
     menu = Menu.new
     menu.add_dish("Sweet and sour chicken", 8)
     menu.add_dish("Black bean pork", 10)
-    display = {"Sweet and sour chicken" => 8,
-    "Black bean pork" => 10}
+    display = { "Sweet and sour chicken" => 8,
+    "Black bean pork" => 10 }
     expect(menu.show).to eq display
   end
 end
@@ -20,7 +20,7 @@ describe "Feature tests - order" do
     menu.add_dish("Black bean pork", 10)
     order = Order.new
     request = "Sweet and sour chicken - 3, Black bean pork - 1"
-    out = {"sweet and sour chicken" => 3, "black bean pork" => 1}
+    out = { "sweet and sour chicken" => 3, "black bean pork" => 1 }
     expect(order.add_dishes(request)).to eq out
   end
 
@@ -42,5 +42,15 @@ describe "Feature tests - order" do
     request = "Sweet and sour chicken - 3, Black bean pork - 1, total -4"
     order.add_dishes(request)
     expect(order.count).to eq order.total
+  end
+
+  it "sends a message to confirm the order" do
+    menu = Menu.new
+    menu.add_dish("Sweet and sour chicken", 8)
+    menu.add_dish("Black bean pork", 10)
+    order = Order.new
+    request = "Sweet and sour chicken - 3, Black bean pork - 1, total -4"
+    order.add_dishes(request)
+    expect(order.confirm).to eq true
   end
 end

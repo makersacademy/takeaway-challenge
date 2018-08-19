@@ -5,7 +5,7 @@ class Menu
   end
 
   def add_dish(name, price, dish_klass = Dish)
-    @menu << dish_klass.new(name,price)
+    @menu << dish_klass.new(name, price)
   end
 
   def show

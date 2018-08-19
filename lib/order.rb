@@ -1,3 +1,5 @@
+require "message"
+
 class Order
   # for storing the order details
   attr_reader :total
@@ -22,6 +24,14 @@ class Order
 
   def count
     @dishes.values.inject(:+)
+  end
+
+  def confirm(message = Message.new)
+    if count == total
+      message.send_confirmation
+    else
+      false
+    end
   end
 
 end

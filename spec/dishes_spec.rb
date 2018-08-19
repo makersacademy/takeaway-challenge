@@ -1,7 +1,7 @@
 require "dishes"
 
 describe Dish do
-  let(:subject) {described_class.new("Sweet and sour chicken", 10)}
+  let(:subject) { described_class.new("Sweet and sour chicken", 10) }
   describe "#name" do
     it "returns the name of the dish" do
       expect(subject.name).to eq "Sweet and sour chicken"
