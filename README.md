@@ -33,11 +33,11 @@ Domain Model
 The user interacts directly with the OrderManager class via the terminal. The diagram below describes the class/module structure.
 
 
-OrderManager
-     '|
-     '|
-     '|<----------> MenuPrinter
-     '|
+OrderManager  
+     |  
+     |  
+     |<----------> MenuPrinter  
+     |  
      '|
      '|<----------> OrderChecker
                         |
