@@ -8,7 +8,7 @@ class Messenger
     @client = Twilio::REST::Client.new @account_sid, @auth_token
   end
 
-  def complete_order(total)
+  def completed_order(total)
     send_sms("Thank you! Your order totalling £#{total} was placed and will be\
  delivered before #{delivery_time}")
   end

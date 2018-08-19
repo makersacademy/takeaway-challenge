@@ -13,7 +13,7 @@ describe Messenger do
 
     it 'sends a payment confirmation text message' do
       expect(messenger).to receive(:send_sms).with("Thank you! Your order totalling £14 was placed and will be delivered before 09:45")
-      messenger.complete_order(14)
+      messenger.completed_order(14)
     end
   end
 
