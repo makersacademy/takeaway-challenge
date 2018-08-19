@@ -1,12 +1,14 @@
 require './data/takeaway_menu.rb'
+require './data/messages.rb'
 
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :messages
   attr_accessor :basket
 
-  def initialize(menu = MENU_LIST)
+  def initialize(menu = MENU_LIST, messages = MESSAGES_LIST)
     @menu = menu
+    @messages = messages
     @basket = []
   end
 
@@ -24,10 +26,20 @@ class Takeaway
   def calculate_total
     basket.map do |name|
       get_price(name)
-    end.reduce(0, :+)
+    end.sum
   end
 
   def get_price(name)
-    total = @menu[name]
+    @menu[name]
+  end
+
+  def checkout(money)
+    if money == calculate_total
+      puts messages[:payment_success]
+    elsif money != calculate_total
+      puts messages[:payment_error]
+      puts "(£#{calculate_total})"
+    end
+    money
   end
 end
