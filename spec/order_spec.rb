@@ -35,15 +35,13 @@ describe Order do
   describe '#list_order' do
     it 'creates new array with #selected duplicate count added' do
       order.instance_variable_set(:@selected, menu_two)
-      order.list_order
-      expect(order.ordered_list).to eq [[{ :food => "food1", :price => 1 }, 2], [{ :food => "food2", :price => 2 }, 1]]
+      expect(order.list_order).to eq [[{ :food => "food1", :price => 1 }, 2], [{ :food => "food2", :price => 2 }, 1]]
     end
   end
 
   describe '#total_cost' do
     it 'returns total added valuse of :price in #selected' do
       order.instance_variable_set(:@selected, menu_two)
-      order.total_cost
       expect(order.total_cost).to eq 4
     end
   end

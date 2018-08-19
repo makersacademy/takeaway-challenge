@@ -1,14 +1,14 @@
 require_relative 'menu'
+require_relative 'messenger'
 
 class Order
 
-  attr_reader :menu, :selected, :ordered_list
+  attr_reader :menu, :selected
 
-  def initialize(menu = Menu.new.current_menu)
+  def initialize(menu = Menu.new.current_menu, messenger = Messenger.new)
     @menu = menu
+    @messenger = messenger
     @selected = []
-    @ordered_list = ordered_list
-    @total = 0
   end
 
   def list_menu
@@ -20,13 +20,17 @@ class Order
   end
 
   def list_order
-    @ordered_list = @selected.group_by { |i| i }.map { |k, v| [k, v.count] }
+    @selected.group_by { |item| item }.map { |k, v| [k, v.count] }
   end
 
   def total_cost
     @total = 0
     @selected.each { |item| @total += item[:price] }
     @total
+  end
+
+  def complete_order
+    @messenger.complete_order(@total)
   end
 
 end
