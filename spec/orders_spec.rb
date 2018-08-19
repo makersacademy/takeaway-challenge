@@ -16,7 +16,7 @@ describe Orders do
 
   describe ".view_menu" do
     it "shows menu with prices" do
-      expect { order.view_menu }.to output("Burger & Chips - £7\nDonner Kebab - £8\nMystery Curry - £9\nHoisin Duck Pankcakes - £10\n").to_stdout
+      expect { order.view_menu }.to output("Burger & Chips - £7\nDonner Kebab - £8\nMystery Curry - £9\nHoisin Duck Pancakes - £10\n").to_stdout
     end
   end
 
