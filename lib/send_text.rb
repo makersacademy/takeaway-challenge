@@ -14,6 +14,6 @@ class SendText
       to: "+447891111865",
       from: "+447480538749"
     )
-    puts message.sid
+    message.sid
   end
 end

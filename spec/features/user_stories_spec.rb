@@ -50,6 +50,12 @@ describe 'User Stories' do
       expect { order.place_order(order_array) }.to raise_error("Incorrect order total provided!")
     end
 
+    it 'Raises an error if an incorrect order is provided' do
+      order = OrderManager.new
+      order_array = [[[1,1], [3,1], [10,1]], 15]
+      expect { order.place_order(order_array) }.to raise_error("Invalid dish selection!")      
+    end
+
     it 'Returns the total if the correct total was provided' do
       order = OrderManager.new
       order_array = [[[1,1], [3,1], [7,1]], 12]

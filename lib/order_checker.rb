@@ -1,14 +1,15 @@
 class OrderChecker
 
-  def initialize(menu, order_array)
+  def initialize(menu, order_array, send_text = SendText.new)
     @menu = menu
     @order_array = order_array
+    @send_text = send_text
   end
 
   def check_order
     check_if_valid
     check_if_correct_total
-    #send_text
+    @send_text.send
   end
 
   private
@@ -26,8 +27,7 @@ class OrderChecker
 
   def check_if_correct_total
     given_total = @order_array[1]
-    calculated_total = calculate_total
-    compare_totals(given_total, calculated_total)
+    compare_totals(given_total, calculate_total)
   end
 
   def calculate_total
