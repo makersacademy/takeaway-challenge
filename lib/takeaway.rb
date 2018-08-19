@@ -16,8 +16,18 @@ class Takeaway
 
   def add_item(name, quantity)
     quantity.times do
-      @basket.push(name.capitalize)
+      basket.push(name.capitalize)
     end
     @basket
+  end
+
+  def calculate_total
+    basket.map do |name|
+      get_price(name)
+    end.reduce(0, :+)
+  end
+
+  def get_price(name)
+    total = @menu[name]
   end
 end
