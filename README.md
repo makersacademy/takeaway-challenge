@@ -18,17 +18,19 @@ Takeaway Challenge
 What does it do?
 -------
 
-In response to the user stories (below)[user-stories] this program was created to allow a customer to:
+My takeaway offers a range of tasty ice-creams, take a look at the menu to find out what flavours we have! As a customer you can:
 - See the menu on offer
 - Place an order
 
-If the order is provided with an incorrect total cost then an error will be raised. If the correct order cost is provided a text will be sent confirming the order is on its way.
+If your order is provided with an incorrect total cost then an error will be raised. If the correct order cost is provided a text will be sent confirming the order is on its way.
 
 The code comes with feature and unit tests. Coverage is 100% and all tests are passing.
 
 
 Domain Model
 --------
+
+**OOP and TDD**
 
 The user interacts directly with the OrderManager class via the terminal. The diagram below describes the class/module structure.
 
@@ -46,6 +48,7 @@ OrderManager
                                               |
                                               |<--------------> DeliveryTime
 <pre>     
+
 
 
 User Stories
