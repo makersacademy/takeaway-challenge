@@ -14,6 +14,7 @@ class Messenger
   end
 
   private
+  
   def send_sms(sms)
     @client.messages.create(
     body: sms,

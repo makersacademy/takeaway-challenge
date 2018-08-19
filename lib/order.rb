@@ -1,29 +1,31 @@
 require_relative 'menu'
 require_relative 'messenger'
+require_relative 'display'
 
 class Order
 
   attr_reader :menu, :selected
 
-  def initialize(menu = Menu.new.current_menu, messenger = Messenger.new)
+  def initialize(menu = Menu.new.current_menu,
+                 messenger = Messenger.new,
+                 display = Display.new)
+    @display = display
     @menu = menu
     @messenger = messenger
     @selected = []
   end
 
-  def list_menu
-    @menu.each_with_index { |menu, index| puts "#{index + 1}: #{menu[:food]}\
- £#{menu[:price]}"
-    }
+  def display_menu
+    @display.menu(@menu)
   end
 
-  def add_items(item_number, ammount = 1)
-    fail 'Item number not recognised' if item_number > @menu.count || item_number < 1
+  def display_order
+    @display.order(@selected)
+  end
+
+  def add_items(item_number, ammount = 0)
+    fail 'Item number not recognised' if recognise_item?(item_number)
     ammount.times { @selected << @menu[item_number - 1] }
-  end
-
-  def list_order
-    @selected.group_by { |item| item }.map { |k, v| [k, v.count] }
   end
 
   def total_cost
@@ -33,20 +35,25 @@ class Order
   end
 
   def complete_order
+    fail 'No items selected' if @selected == []
     total_cost
     send_to_messenger
     reset_order
-    "Order Completed"
+    "Order Completed, TXT confirmation sent"
   end
 
-  private
   def reset_order
     @selected = []
     @total = 0
   end
 
+  private
+
   def send_to_messenger
     @messenger.completed_order(@total)
   end
 
+  def recognise_item?(item_number)
+    item_number > @menu.count || item_number < 1
+  end
 end
