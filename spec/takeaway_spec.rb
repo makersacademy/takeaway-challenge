@@ -1,12 +1,41 @@
 require 'takeaway'
+require 'menu'
 
 describe Takeaway do
 
-  it "" do
+  let(:takeaway) { Takeaway.new(mockMenu, mockOrder) }
+  let(:mockMenu) { double :menu, dishes: [mockDish]}
+  let(:mockOrder) { double :order, add: [mockDish]}
+  let(:mockDish) { double :dish, name: "Green Eggs and Ham", price: "£2"}
 
+  #it "has a menu" do
+  #  expect(takeaway.menu).to be_a Menu
+  #end
+
+  #it "has an order" do
+  #  expect(takeaway.order).to be_an Order
+  #end
+
+  describe "#add_to_order" do
+    it "adds a dish to the .order" do
+      expect(takeaway.add_to_order(mockDish)).to eq( [mockDish] )
+    end
+  end
+
+  describe "#remove_from_order" do
+    it "removes a dish from the order" do
+
+    end
+  end
+
+  describe "#show menu" do
+    it "lists the dishes and price on a menu" do
+      expect(takeaway.show_menu).to eq "#{mockDish.name}, #{mockDish.price}"
+    end
   end
 
 end
+
 =begin
 class Takeaway
 
@@ -33,12 +62,6 @@ class Menu
   dish_list
   def initialize(dishes = dish_list)
     @dishes = dishes
-  end
-
-  def print_dishes
-    @dishes.each do |dish|
-      "#{dish.name}, #{dish.contents}, #{dish.price}"
-    end
   end
 
   def find(dish)
@@ -76,3 +99,5 @@ class Order
   end
 
 end
+
+=end
