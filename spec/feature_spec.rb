@@ -27,4 +27,12 @@ describe 'having a takeaway' do
       expect(user.check_order).to eq "Order: Burger x 2  Total: £10"
     end
   end
+
+  describe 'confirm order correct amount given' do
+    it 'returns message if correct amount given and order is confirmed' do
+      allow(user).to receive(:send_message) { "Thank you! Your order was placed" }
+      expect(user.confirm_order(user.total)).to eq "Thank you! Your order was placed"
+    end
+  end
+
 end

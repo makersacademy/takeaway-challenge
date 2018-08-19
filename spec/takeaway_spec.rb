@@ -22,6 +22,11 @@ describe Takeaway do
         subject.order("Burger", 1)
         expect(subject.check_order).to eq "Order: Burger x 2  Total: £10"
       end
+
+      it '#confirm_order returns error if correct amount not given' do
+        expect { subject.confirm_order(1) }.to raise_error "Incorrect amount given"
+      end
+
     end
 
   end
