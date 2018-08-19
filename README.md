@@ -71,12 +71,20 @@ Usage
 -------
 
 As a user you can interact with my program through the terminal. First you need to instantiate a new OrderManager object:
+
 `order = OrderManager.new`
 
-After this you can see the range of ice-creams on offer:
+After this you can see the range of ice-creams on offer (the menu is itemised - you'll need the item number for your order):
+
 `order.see_menu`
 
 If you'd like to place an order you need to provide an array containing your order details:
+
+`order_array = [[[item_number, quantity], [item_number, quantity]...]], total_cost]`
+
+Then:
+
+`order.place_order(order_array)
 
 
 
