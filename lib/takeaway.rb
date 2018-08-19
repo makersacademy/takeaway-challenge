@@ -4,6 +4,7 @@ class Takeaway
 
   attr_reader :menu
   attr_accessor :basket
+
   def initialize(menu = MENU_LIST)
     @menu = menu
     @basket = []
@@ -13,7 +14,10 @@ class Takeaway
     menu
   end
 
-  def add_item(item)
-    @basket.push(item)
+  def add_item(name, quantity)
+    quantity.times do
+      @basket.push(name)
+    end
+    @basket
   end
 end
