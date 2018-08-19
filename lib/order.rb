@@ -4,8 +4,6 @@ require_relative 'display'
 
 class Order
 
-  attr_reader :menu, :selected
-
   def initialize(menu = Menu.new.current_menu,
                  messenger = Messenger.new,
                  display = Display.new)
@@ -15,24 +13,18 @@ class Order
     @selected = []
   end
 
-  def display_menu
-    @display.menu(@menu)
+  def display_menu(display = @display.menu)
+    display(@menu)
   end
 
-  def display_order
-    @display.order(@selected)
+  def display_order(display = @display.order)
+    display(@selected)
   end
 
   def add_items(item_number, amount = 0)
     fail 'Item number not recognised' if recognise_item?(item_number)
     amount.times { @selected << @menu[item_number - 1] }
     puts "#{@selected[-1][:food]} x#{amount} £#{@selected[-1][:price]*amount}"
-  end
-
-  def total_cost
-    @total = 0
-    @selected.each { |item| @total += item[:price] }
-    @total
   end
 
   def complete_order
@@ -46,15 +38,23 @@ class Order
   def reset_order
     @selected = []
     @total = 0
+    "Order reset"
   end
 
   private
+
+  def recognise_item?(item_number)
+    item_number > @menu.count || item_number < 1
+  end
 
   def send_to_messenger
     @messenger.completed_order(@total)
   end
 
-  def recognise_item?(item_number)
-    item_number > @menu.count || item_number < 1
+  def total_cost
+    @total = 0
+    @selected.each { |item| @total += item[:price] }
+    @total
   end
+
 end

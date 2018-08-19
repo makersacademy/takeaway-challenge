@@ -2,7 +2,7 @@ require 'messenger'
 
 describe Messenger do
 
-  subject(:messenger) { described_class.new }
+  let(:messenger) { Messenger.new }
 
   describe '#complete_order' do
 
