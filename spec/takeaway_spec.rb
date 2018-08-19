@@ -31,4 +31,9 @@ describe Takeaway do
       subject.choose_order(1, 3)
     ).to match_array(array)
   end
+
+  it '#total returns cost of order' do
+    subject.choose_order(1, 3)
+    expect(subject.total).to eq(24)
+  end
 end
