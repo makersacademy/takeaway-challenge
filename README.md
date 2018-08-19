@@ -15,6 +15,7 @@ Features
 * Raises error if dish is not on the menu
 * Customer can see the menu, place orders and confirm the bill of their order
 * Customer will receive a text message, confirming time of delivery
+* Will raise error if bill is not settled, or dish is not on the menu
 
 Tech/Framework
 -----
