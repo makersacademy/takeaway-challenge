@@ -1,26 +1,19 @@
-require_relative "message"
-
 class Order
   # for storing the order details
-  attr_reader :dishes, :total
+  attr_reader :dishes, :total, :number
 
-  def initialize(customer, request)
+  def initialize(customer, number, request)
     @dishes = {}
     add_dishes(request)
     @customer = customer
+    @number = number
   end
 
   def count
     @dishes.values.inject(:+)
   end
 
-  def confirm(message = Message.new)
-    if count == total
-      message.send_confirmation
-    else
-      false
-    end
-  end
+
 
   private
   def add_dishes(request)

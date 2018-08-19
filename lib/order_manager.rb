@@ -1,6 +1,7 @@
 require 'twilio-ruby'
 require_relative 'passw'
 require_relative 'order'
+require_relative "message"
 
 class Order_manager
   # tracks all the orders
@@ -11,8 +12,8 @@ class Order_manager
     @text_orders = []
   end
 
-  def new_order(customerID, request, order_klass = Order)
-    order = order_klass.new(customerID, request)
+  def new_order(customerID, number, request, order_klass = Order)
+    order = order_klass.new(customerID, number, request)
     @orders[customerID] = order
   end
 
@@ -28,10 +29,19 @@ class Order_manager
     create_text_orders
   end
 
+  def confirm(custID, message = Message.new)
+    order = @orders[custID]
+    if order.count == order.total
+      message.send_confirmation(order.number)
+    else
+      false
+    end
+  end
+
   private
   def create_text_orders
     @text_orders.each { |o|
-      new_order(o[0], o[1])
+      new_order(o[0], o[0], o[1])
     }
   end
 

@@ -1,9 +1,8 @@
 require "order"
 
 describe Order do
-  let(:subject) { described_class.new("John", "Sweet and sour chicken - 3, Black bean pork - 1, total - 4") }
-  let(:sub2) { described_class.new("John", "Sweet and sour chicken - 3, Black bean pork - 1, total - 3") }
-  let(:message) {double :message, send_confirmation: true}
+  let(:subject) { described_class.new("John", 12345, "Sweet and sour chicken - 3, Black bean pork - 1, total - 4") }
+  let(:sub2) { described_class.new("John", 12345, "Sweet and sour chicken - 3, Black bean pork - 1, total - 3") }
   describe "dishes" do
     it "returns the dishes ordered" do
       out = { "sweet and sour chicken" => 3, "black bean pork" => 1 }
@@ -18,14 +17,6 @@ describe Order do
   describe "#total" do
     it "returns the total number of items as specified in the order" do
       expect(subject.total).to eq 4
-    end
-  end
-  describe "#confirm" do
-    it "sends a message to confirm the order if totals match" do
-      expect(subject.confirm(message)).to eq true
-    end
-    it "won't send a message to confirm the order if totals don't match" do
-      expect(sub2.confirm).to eq false
     end
   end
 end
