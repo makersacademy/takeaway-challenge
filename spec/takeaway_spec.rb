@@ -32,4 +32,17 @@ describe Takeaway do
     end
   end
 
+  describe "#place_order" do
+    it "will place the order and confirm via text" do
+      expect(takeaway).to respond_to(:place_order)
+    end
+    # it "will place the order and confirm via text" do
+    #   text = "Thank you! Your order was placed and will be delivered before 18:52"
+    #   expect(takeaway.place_order).to eq(text)
+    # end
+
+  end
+
+
+
 end

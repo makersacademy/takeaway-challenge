@@ -24,3 +24,16 @@
 # takeout = Takeaway.new
 # takeout.view_menu
 # menu.print_menu
+
+#
+# 2.5.0 :001 > require './lib/takeaway.rb'
+#  => true
+# 2.5.0 :002 > takeaway = Takeaway.new
+#  => #<Takeaway:0x00007f98e5134018 @dishes={"Pepperoni"=>7.5, "Hawaiian"=>6.5, "vegetarian"=>5.5}, @order={}>
+# 2.5.0 :003 > takeaway.add_to_order("Pepperoni", 2)
+#  => 2
+# 2.5.0 :004 > takeaway.total
+#  => 15.0
+# 2.5.0 :005 > takeaway.place_order
+#  => "Thank you! Your order was placed and will be delivered before 18:52"
+# 2.5.0 :006 >
