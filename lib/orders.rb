@@ -15,7 +15,9 @@ class Orders
 
   def cust_order(dish, how_many)
     dish = dish.tr(" ", "_").to_sym
-    raise "sorry, dish is not available" unless Menu::MENU_SELECTIONS.include? dish
+    unless Menu::MENU_SELECTIONS.include? dish
+      raise "sorry, dish is not available"
+    end
     @orders[dish] = how_many
   end
 

@@ -8,7 +8,6 @@ describe Sms do
 
   it 'sends a confirmation text message' do
     text_message = sms.send_message
-    delivery_time = Time.now + 3600
-    expect(text_message.body).to include("Thank you! Your order will be delivered by #{delivery_time}")
+    expect(text_message.body).to include("Thank you! Your order will be delivered")
   end
 end
