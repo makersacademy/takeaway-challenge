@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require_relative 'delivery_time'
 
 class SendText
 

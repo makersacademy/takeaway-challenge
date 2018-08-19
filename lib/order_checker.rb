@@ -1,3 +1,5 @@
+require_relative 'send_text'
+
 class OrderChecker
 
   def initialize(menu, order_array, send_text = SendText.new)
@@ -45,5 +47,4 @@ class OrderChecker
       raise "Incorrect order total provided!"
     end
   end
-
 end

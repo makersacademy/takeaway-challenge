@@ -6,26 +6,30 @@ describe SendText do
   subject { described_class.new(TwilioMockStruct, delivery_time) }
 
   describe '#send' do
-
-    it 'Assigns the correct destination number to the message' do
-      twilio_object = TwilioMockStruct.new("fake_sid", "fake_auth")
-      allow(TwilioMockStruct).to receive(:new).and_return(twilio_object)
-      subject.send
-      expect(twilio_object.message[:to]).to eq '+447891111865'
+    before(:all) do
+      @twilio_object = TwilioMockStruct.new("fake_sid", "fake_auth")
     end
 
-    it 'Assigns the correct time to the body' do
-      twilio_object = TwilioMockStruct.new("fake_sid", "fake_auth")
-      allow(TwilioMockStruct).to receive(:new).and_return(twilio_object)
-      subject.send
-      expect(twilio_object.message[:body]).to eq "Thank you! Your order was placed and will be delivered before 00:00"
+    context 'Text message contains correct content' do
+      it 'Assigns the correct destination number to the message' do
+        allow(TwilioMockStruct).to receive(:new).and_return(@twilio_object)
+        subject.send
+        expect(@twilio_object.message[:to]).to eq '+447891111865'
+      end
+
+      it 'Assigns the correct time to the body' do
+        allow(TwilioMockStruct).to receive(:new).and_return(@twilio_object)
+        subject.send
+        expect(@twilio_object.message[:body]).to eq "Thank you! Your order was placed and will be delivered before 00:00"
+      end
     end
 
-    it 'Raises error if no message SID is provided' do
-      twilio_object = TwilioMockStruct.new("fake_sid", "fake_auth")
-      allow(TwilioMockStruct).to receive(:new).and_return(twilio_object)
-      twilio_object.sid = nil
-      expect { subject.send }.to raise_error("Sorry, text message failed to send!")
+    context 'Reports error if text message fails to send' do
+      it 'Raises error if no message SID is provided' do
+        allow(TwilioMockStruct).to receive(:new).and_return(@twilio_object)
+        @twilio_object.sid = nil
+        expect { subject.send }.to raise_error("Sorry, text message failed to send!")
+      end
     end
   end
 end

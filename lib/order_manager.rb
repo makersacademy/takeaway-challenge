@@ -1,3 +1,6 @@
+require_relative 'menu_printer'
+require_relative 'order_checker'
+
 class OrderManager
 
   def initialize(printer = MenuPrinter, order_checker = OrderChecker)
