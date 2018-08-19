@@ -36,4 +36,10 @@ describe Orders do
     end
   end
 
+  describe ".buy" do 
+    it "will confirm delivery of order" do
+      allow(order).to receive(:buy).and_return("Confirmation SMS sent.")
+    end
+  end 
+
 end

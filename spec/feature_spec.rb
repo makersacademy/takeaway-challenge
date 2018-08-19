@@ -30,7 +30,7 @@ describe "ordering a takeaway" do
   describe "confirmation of delivery" do
     it "will send a SMS to the customer" do
       delivery = Delivery.new
-      expect(delivery.confirm).to eq nil
+      allow(delivery).to receive(:confirm).and_return("SMS Sent")
     end
   end
 

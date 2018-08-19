@@ -1,5 +1,6 @@
 require './lib/dishes'
 require './lib/bill'
+require './lib/send-sms'
 
 class Orders
   include Dishes
@@ -21,6 +22,10 @@ class Orders
 
   def view_order
     @bill.create(current)
+  end
+
+  def buy 
+    send_sms
   end
 
 end
