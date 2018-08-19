@@ -9,5 +9,13 @@ class Order
 # and is then formatted to look pretty / have £ sign etc.
 # User can then confirm an order! Which triggers Twilio to send the message (and
 # also shows the time of now +1hr as delivery time)
+attr_reader :o_items
 
+def initialize
+  @o_items = []
+end
+
+  def create_order_item(menu_item:, quantity:)
+    @o_items << OrderItem.new(menu_item.number, menu_item.dish, menu_item.price, quantity)
+  end
 end
