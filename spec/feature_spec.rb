@@ -31,7 +31,13 @@ describe '__TAKEAWAY FEATURE TESTS__' do
     g__the_given_payment_is_checked_to_equal_the_total
   end
   it 'sends the customer a confirmation text message' do
-
+    a__given_that_there_are_some_dishes
+    b__the_dishes_can_be_added_to_a_menu
+    d__an_order_can_be_created
+    e__the_customer_can_add_menu_items_to_order
+    f__the_order_price_is_totalled
+    h__given_that_the_correct_payment_is_given
+    i__a_confirmation_text_should_be_sent_out
   end
 
   def a__given_that_there_are_some_dishes
@@ -69,6 +75,14 @@ describe '__TAKEAWAY FEATURE TESTS__' do
 
   def g__the_given_payment_is_checked_to_equal_the_total
     expect { @new_order.pay(10) }.to raise_error 'You must give the exact amount.'
+  end
+
+  def h__given_that_the_correct_payment_is_given
+    @correct_amount = 20
+  end
+
+  def i__a_confirmation_text_should_be_sent_out
+    expect(@new_order.pay(@correct_amount).to_s).to include 'Twilio.Api.V2010.MessageInstance'
   end
 
 end

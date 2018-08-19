@@ -17,7 +17,6 @@ describe Menu do
     it 'shows a list of all dishes on the menu' do
       expect(menu.view_menu).to eq ["dish1 - 1", "dish2 - 2", "dish3 - 3"]
     end
-
   end
 
 end
