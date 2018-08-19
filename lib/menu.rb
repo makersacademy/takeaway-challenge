@@ -2,19 +2,14 @@ require_relative 'menu_item'
 require 'csv'
 
 class Menu
-# Menu has method #load_from_csv which creates an @m_items hash that looks like:
-# { "01" => MenuItem.new(number, name, price) }
-# the m_items hash holds instances of MenuItem class
-# there is also a display method which makes it look pretty (a nice numbered list or something)
 
   DEFAULT_FILENAME = './lib/takeaway_menu.csv'
-  attr_reader :menu_list
+  attr_reader :m_items
 
   def load_from_csv
-    menu_list = []
+    @m_items = {}
     CSV.foreach(DEFAULT_FILENAME, headers: true) do |row|
-      menu_list << row.to_hash
+      @m_items[row["number"]] = MenuItem.new(number: row["number"], dish: row["name"], price: row["price"])
     end
   end
-
 end
