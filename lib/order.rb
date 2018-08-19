@@ -23,9 +23,9 @@ class Order
     @display.order(@selected)
   end
 
-  def add_items(item_number, ammount = 0)
+  def add_items(item_number, amount = 0)
     fail 'Item number not recognised' if recognise_item?(item_number)
-    ammount.times { @selected << @menu[item_number - 1] }
+    amount.times { @selected << @menu[item_number - 1] }
   end
 
   def total_cost

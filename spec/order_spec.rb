@@ -43,7 +43,9 @@ describe Order do
   describe '#complete_order' do
 
     it 'returns order completed' do
+      allow(order).to receive(:send_to_messenger)
       order.instance_variable_set(:@selected, menu_two)
+
       expect(order.complete_order).to eq 'Order Completed, TXT confirmation sent'
     end
 
