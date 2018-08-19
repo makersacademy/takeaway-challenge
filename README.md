@@ -47,7 +47,7 @@ OrderManager
                                               |
                                               |
                                               |<--------------> DeliveryTime
-   
+</pre>   
 
 **TDD using RSpec:**
 The program was developed test-first:
