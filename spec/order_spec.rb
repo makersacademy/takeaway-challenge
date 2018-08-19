@@ -32,8 +32,8 @@ describe Order do
     end
 
     it 'raises_error if item_number is not recognised' do
-      expect{order.add_items(2)}.to raise_error 'Item number not recognised'
-      expect{order.add_items(-2)}.to raise_error 'Item number not recognised'
+      expect { order.add_items(2) }.to raise_error 'Item number not recognised'
+      expect { order.add_items(-2) }.to raise_error 'Item number not recognised'
     end
 
   end
@@ -46,7 +46,7 @@ describe Order do
   end
 
   describe '#total_cost' do
-    it 'returns total added valuse of :price in #selected' do
+    it 'returns total added values of :price in #selected' do
       order.instance_variable_set(:@selected, menu_two)
       expect(order.total_cost).to eq 4
     end
