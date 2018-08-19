@@ -41,7 +41,7 @@ The Order class contained in the order.rb file acts as a sort of hub that all cu
 - SMS sent contains both total amount owning and current time + 1 hour
 - Menu is currently loaded from a CSV file, so new menus can be easily swapped in
 
-## Methods within order.rb
+## Methods within Order class
 
 - new_order = Order.new (creates new order)
 - new_order.display_menu (displays menu)
