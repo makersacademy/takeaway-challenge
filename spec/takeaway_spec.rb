@@ -23,4 +23,13 @@ describe Takeaway do
     end
   end
 
+  describe "#total" do
+    it "will calculate the total price of the order" do
+      takeaway.add_to_order("Pepperoni", 2)
+      takeaway.add_to_order("Hawaiian", 1)
+      total = 21.50  # Thats the actual total
+      expect(takeaway.total).to eq(total)
+    end
+  end
+
 end

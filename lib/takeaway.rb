@@ -18,6 +18,25 @@ class Takeaway
   end
 
 
+  def total
+    order_totals.sum
+  end
+
+
+
+
+
+
+  private
+
+  def order_totals
+    order.map do |dish, quantity|
+      dishes[dish] * quantity
+    end
+  end
+
+
+
 
 
 
