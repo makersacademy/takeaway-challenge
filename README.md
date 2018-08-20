@@ -11,7 +11,8 @@ Takeaway Challenge is the second weekend challenge on the Makers Course, reinfor
 
 run irb in terminal: require './lib/takeaway.rb'
 
-Example
+### Example runthrough
+
 New instance of Takeaway, order two kebabs, five congees, check the total price, then pay correct amount
 Upon successful payment, you will receive a text message telling you when you will receive your delivery
 ```python
