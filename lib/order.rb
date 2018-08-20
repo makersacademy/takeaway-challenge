@@ -13,12 +13,12 @@ class Order
     @selected = []
   end
 
-  def display_menu(display = @display.menu)
-    display(@menu)
+  def display_menu
+    @display.menu(@menu)
   end
 
-  def display_order(display = @display.order)
-    display(@selected)
+  def display_order
+    @display.order(@selected)
   end
 
   def add_items(item_number, amount = 0)
