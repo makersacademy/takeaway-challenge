@@ -22,12 +22,14 @@ class Order
 
   def place_order(estimated)
     raise "Incorrect total, please try again" if estimated != total
-    @message = "Thank you! Your order was placed and will be delivered before #{Time.now}"
-    send_message(@message)
+    # @message = "Thank you! Your order was placed and will be delivered before #{Time.now}"
+    send_message(message)
     "Order successfully placed!"
   end
 
   
+  
+  private
   
   def send_message(message)
     # To find these visit https://www.twilio.com/user/account
@@ -42,13 +44,11 @@ class Order
       body: message
     )
   end
+  
 
-  #self.send_message("Hello!")
-
-
-
-
-  private
+  def message
+    "Thank you! Your order was placed and will be delivered before #{Time.now}"
+  end
   
   def total
     @order_items.map { | dish |
