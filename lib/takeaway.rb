@@ -2,6 +2,11 @@ require './data/takeaway_menu.rb'
 require './data/messages.rb'
 require './lib/send_text.rb'
 
+# things still to be done:
+# still needs to move add_item, calculate_total and get_price to Order class
+# error messages required for add_item, checkout and calculate_total methods
+# make some methods private
+# improve tests
 class Takeaway
 
   attr_reader :menu, :messages
