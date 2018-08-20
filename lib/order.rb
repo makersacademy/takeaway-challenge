@@ -21,10 +21,14 @@ class Order
     @display.order(@selected)
   end
 
-  def add_items(item_number, amount = 0)
+  def display_added(amount)
+    @display.single_item(@selected, amount)
+  end
+
+  def add_items(item_number, amount = 1)
     fail 'Item number not recognised' if recognise_item?(item_number)
     amount.times { @selected << @menu[item_number - 1] }
-    puts "#{@selected[-1][:food]} x#{amount} £#{@selected[-1][:price]*amount}"
+    display_added(amount)
   end
 
   def complete_order

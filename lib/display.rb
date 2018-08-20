@@ -17,6 +17,10 @@ class Display
     puts "Total: £#{total}"
   end
 
+  def single_item(item, amount)
+    puts "#{item[-1][:food]} x#{amount} £#{item[-1][:price]*amount}"
+  end
+
   private
 
   def sort_order(selected)

@@ -1,10 +1,11 @@
 require 'twilio-ruby'
+require 'dotenv'
 
 class Messenger
 
   def initialize
-    @account_sid = "ACb489f10e61ac0362e458eb441c529c50"
-    @auth_token = "8cadc1eaeca68e215f7ea26fdd27aae0"
+    @account_sid = ENV['ACCOUNT_SID']
+    @auth_token = ENV['AUTH_TOKEN']
     @client = Twilio::REST::Client.new @account_sid, @auth_token
   end
 
@@ -14,12 +15,12 @@ class Messenger
   end
 
   private
-  
+
   def send_sms(sms)
     @client.messages.create(
     body: sms,
-    to: "+447863777269",
-    from: "+447481346169")
+    to: ENV['CUSTOMER_NUMBER'],
+    from: ENV['TWILIO_NUMBER'])
   end
 
   def delivery_time(current_time = Time.now)
