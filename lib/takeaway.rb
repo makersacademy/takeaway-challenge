@@ -27,6 +27,7 @@ class Takeaway
 
   def add_to_order(dish, quantity)
     fail "#{dish} is not on the menu" unless menu.dishes.has_key?(dish.downcase)
+    # write a test to test the downcase capitalize condition
     order[dish] = quantity
   end
 

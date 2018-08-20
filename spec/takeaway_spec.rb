@@ -45,5 +45,21 @@ describe Takeaway do
     #   expect(sms).to receive(:deliver_sms)
     #   takeaway.place_order
     # end
+
+    example
+
+    require 'dotenv/load'
+
+    class
+
+
+
+
+
+
+
+
+
+
   end
 end
