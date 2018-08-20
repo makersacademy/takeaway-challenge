@@ -1,6 +1,5 @@
 require_relative 'dish'
 require_relative 'order'
-require_relative 'message_sender'
 
 class Menu
 

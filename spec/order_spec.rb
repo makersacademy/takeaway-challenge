@@ -35,3 +35,5 @@ describe Order do
   #send_message currently has no tests
 
 end
+
+@food = [Dish.new("Sushi", 7), Dish.new("Udon",5), Dish.new("Ramen",8)]
