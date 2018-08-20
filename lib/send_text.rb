@@ -16,11 +16,11 @@ class Message
   end
 
   def send_message
-      message = @client.messages.create(
-      from: Config::TWILIO_NUMBER,
-      to: Config::MY_NUMBER,
-      body: Config::MESSAGE + "#{time_sent.strftime('%I:%M%P')}"
-      )
+    @client.messages.create(
+    from: Config::TWILIO_NUMBER,
+    to: Config::MY_NUMBER,
+    body: Config::MESSAGE + "#{time_sent.strftime('%I:%M%P')}"
+    )
   end
 
   def time_sent

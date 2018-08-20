@@ -8,7 +8,6 @@ describe Takeaway do
     end
   end
 
-
   describe "#add_item" do
     it "should add item to basket" do
       subject.add_item("congee", 3)
