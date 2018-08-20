@@ -2,7 +2,7 @@ require 'twilio-ruby'
 
 module Message_sender
 
-  def send_message
+  def send_message(message)
     # To find these visit https://www.twilio.com/user/account
     account_sid = "AC5bc426421c17af3f13cf2f44ca8e7ccf"
     auth_token = "25a60b262c7a3df165b78e8c8e80ab3b"
@@ -12,7 +12,7 @@ module Message_sender
     @message = @client.messages.create(
       to: "+447725799311",
       from: "+447480485261",
-      body: "Testing Testing!"
+      body: message
     )
   end
 end

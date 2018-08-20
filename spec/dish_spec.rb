@@ -18,4 +18,3 @@ describe Dish do
 
 end
 
-food = [Dish.new("Sushi", 7), Dish.new("Udon",5)]
