@@ -3,7 +3,7 @@ require_relative 'menu'
 
 class Order
 
-attr_reader :basket 
+attr_reader :basket, :menu 
 
 
   def initialize(menu) 
@@ -18,7 +18,7 @@ attr_reader :basket
 
   def remove(dish)
     fail "#{dish} is not in your basket" unless basket.include?(dish)
-    basket.delete(dish.downcase)
+    basket.delete(dish) # why is this not working? 
   end
 
   def list 
@@ -30,7 +30,7 @@ attr_reader :basket
 
   def total 
     empty_basket_error
-    @basket.map { |item| item[:amount] * item[:dish].price }.reduce{:+}
+    @basket.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
   end
 
 

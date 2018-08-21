@@ -41,7 +41,7 @@ let(:dish_off_menu) { instance_double Dish, name: 'Not on menu', price: 0 }
   end
 
   describe '#list' do 
-    it 'raises an error message if @basket is empty' do 
+    it 'throws an error message if @basket is empty' do 
       expect { subject.list }.to raise_error 'Basket is empty'
     end
     it 'prints dishes with amount in @basket' do 
@@ -53,6 +53,14 @@ let(:dish_off_menu) { instance_double Dish, name: 'Not on menu', price: 0 }
     end
   end
 
+  describe '#total' do 
+    it 'should return the total cost for a full order' do 
+      subject.add(pie, 2)
+      subject.add(mash, 2)
+      subject.add(peas, 2)
+      expect(subject.total).to eq 12
+    end
+  end
 
-
+  
 end

@@ -5,6 +5,8 @@ attr_reader :dishes
     @dishes = dishes
   end
 
+  # (dishes = [ {name: 'pie', price: 3 }])
+
   def list 
     raise 'This menu is empty' if dishes.empty?
     @dishes.each { |dish| puts "#{dish.name}  :  #{dish.price}" }
