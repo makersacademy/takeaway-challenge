@@ -21,10 +21,17 @@ attr_reader :basket
     basket.delete(dish.downcase)
   end
 
+  def list 
+    empty_basket_error 
+    @basket.each do |item|
+      puts "#{item[:amount]} x #{item[:dish].name}"
+    end
+  end
 
-
-
-
+  def total 
+    empty_basket_error
+    @basket.map { |item| item[:amount] * item[:dish].price }.reduce{:+}
+  end
 
 
 
@@ -34,5 +41,12 @@ attr_reader :basket
     @menu.dishes.include?(dish)
   end
 
+  def empty_basket?
+    @basket.empty?
+  end
+
+  def empty_basket_error
+    raise 'Basket is empty' if empty_basket?
+  end
 
 end

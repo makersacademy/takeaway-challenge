@@ -33,20 +33,25 @@ let(:dish_off_menu) { instance_double Dish, name: 'Not on menu', price: 0 }
     it 'should raise a message if dish not in @basket' do 
       expect { subject.remove(pie) }.to raise_error "#{pie} is not in your basket"
     end
+    # it 'should remove a dish if it is in the @basket' do 
+    #   subject.add(pie)
+    #   subject.remove(pie)
+    #   expect(subject.basket).to be_empty
+    # end
   end
 
-
-
-  # describe '#add(dish)' do
-  #   it 'adds dish to @basket' do 
-  #   # allow(mockDish).to receive(:downcase)
-  #   # subject.add(mockDish)
-  #   subject.add('Pie')
-  #   expect(subject.basket).to eq ['pie']
-  #   end
-  # end
-
-
+  describe '#list' do 
+    it 'raises an error message if @basket is empty' do 
+      expect { subject.list }.to raise_error 'Basket is empty'
+    end
+    it 'prints dishes with amount in @basket' do 
+      subject.add(pie, 5)
+      subject.add(mash, 2)
+      subject.add(peas, 3)
+      order_list = "5 x pie\n2 x mash\n3 x peas\n"
+      expect { subject.list }.to output(order_list).to_stdout
+    end
+  end
 
 
 
