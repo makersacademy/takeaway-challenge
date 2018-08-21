@@ -1,4 +1,5 @@
 require 'orders'
+require './spec/support/shared_examples_for_dishes.rb'
 
 describe Orders do
 
@@ -18,6 +19,8 @@ describe Orders do
     it "shows menu with prices" do
       expect { order.view_menu }.to output("Burger & Chips - £7\nDonner Kebab - £8\nMystery Curry - £9\nHoisin Duck Pancakes - £10\n").to_stdout
     end
+
+    it_behaves_like Dishes
   end
 
   describe ".choose_dish" do

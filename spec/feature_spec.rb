@@ -30,6 +30,7 @@ describe "ordering a takeaway" do
   describe "confirmation of delivery" do
     it "will send a SMS to the customer" do
       allow(order).to receive(:buy).and_return("SMS Sent")
+      order.buy
     end
   end
 

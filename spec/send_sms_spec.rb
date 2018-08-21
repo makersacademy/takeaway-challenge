@@ -6,6 +6,7 @@ describe SMS do
 
     it "will send a SMS to the cusomter's phone number" do
       allow(subject).to receive(:send_sms).and_return("SMS sent")
+      subject.send_sms
     end
 
   end
