@@ -1,7 +1,7 @@
 class Menu
 attr_reader :dishes
 
-  def initialize(dishes = [])
+  def initialize(dishes = [])  # (dishes = [{ 'pie' => 3, 'mash' => 2, "peas" => 1 }])
     @dishes = dishes
   end
 
