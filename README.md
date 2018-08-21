@@ -1,7 +1,7 @@
-UR1. I would like to see a list of dishes with prices__
-UR2. I would like to be able to select some number of several available dishes__
-UR3. I would like to check the total matches the sum of the various dishes__
-UR4. I would like to receive a confirmation text__
+UR1. I would like to see a list of dishes with prices <br />
+UR2. I would like to be able to select some number of several available dishes <br />
+UR3. I would like to check the total matches the sum of the various dishes <br />
+UR4. I would like to receive a confirmation text <br />
 
 Hints on functionality to implement:
 
