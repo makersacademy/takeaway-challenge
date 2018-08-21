@@ -17,4 +17,10 @@ describe Menu do
     end
   end
 
+  describe '#list_menu' do 
+    it 'raises error message if menu is empty' do 
+      expect{ subject.list }.to raise_error 'This menu is empty'
+    end
+  end
+
 end
