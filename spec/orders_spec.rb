@@ -1,5 +1,5 @@
 require 'orders'
-require 'sms'
+# require 'sms'
 
 describe Orders do
 
@@ -17,7 +17,7 @@ describe Orders do
   it "can place multiple orders" do
     subject.cust_order("pie", 3)
     subject.cust_order("chips", 2)
-    expect(subject.orders).to eq({ pie: 3, chips: 2 })
+    expect(subject.cust_orders).to eq({ pie: 3, chips: 2 })
   end
 
   it "raises an error if dish is not on the menu" do
@@ -28,20 +28,6 @@ describe Orders do
     subject.cust_order("pie", 2)
     subject.cust_order("cranberry juice", 2)
     expect(subject.order_conf).to eq({ :pie => 2, :cranberry_juice => 2 })
-  end
-
-  it 'returns the bill' do
-    subject.choose_menu
-    subject.cust_order("pie", 2)
-    subject.cust_order("cranberry juice", 2)
-    expect(subject.bill).to eq 14
-  end
-
-  it 'settles the bill' do
-    subject.choose_menu
-    subject.cust_order("pie", 2)
-    subject.bill
-    expect { subject.conf_message(0, conf = Sms.new) }.to raise_error "please settle the bill"
   end
 
 end

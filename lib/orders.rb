@@ -1,11 +1,11 @@
-require_relative 'sms'
+require_relative 'bill'
 
 class Orders
 
-  attr_reader :orders, :price_of_orders, :menu
+  attr_reader :cust_orders, :price_of_orders, :menu
 
   def initialize
-    @orders = {}
+    @cust_orders = {}
     @price_of_orders = []
   end
 
@@ -18,25 +18,13 @@ class Orders
     unless Menu::MENU_SELECTIONS.include? dish
       raise "sorry, dish is not available"
     end
-    @orders[dish] = how_many
+    @cust_orders[dish] = how_many
   end
 
   def order_conf
-    @orders.each do |item, how_many|
+    @cust_orders.each do |item, how_many|
       puts "#{item.to_s.tr("_", " ")} x #{how_many}"
     end
-  end
-
-  def bill
-    @orders.each do |dish, how_many|
-      @price_of_orders << @menu.menu_items[dish] * how_many
-    end
-    @total_bill = @price_of_orders.sum
-  end
-
-  def conf_message(amount, conf = Sms.new)
-    raise "please settle the bill" unless @total_bill <= amount
-    conf.send_message
   end
 
 end
