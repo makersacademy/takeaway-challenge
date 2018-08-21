@@ -16,6 +16,11 @@ attr_reader :basket
     @basket.push({ dish: dish, amount: amount })      
   end
 
+  def remove(dish)
+    fail "#{dish} is not in your basket" unless basket.include?(dish)
+    basket.delete(dish.downcase)
+  end
+
 
 
 

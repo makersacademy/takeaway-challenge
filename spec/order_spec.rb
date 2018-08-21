@@ -23,9 +23,17 @@ let(:dish_off_menu) { instance_double Dish, name: 'Not on menu', price: 0 }
       subject.add(pie)
       expect(subject.basket).to eq [{dish: pie, amount: 1}] 
     end  
-
+    it 'adds multiple dishes if amount varies' do 
+      subject.add(pie, 3)
+      expect(subject.basket).to eq [{dish: pie, amount: 3}]
+    end
   end
 
+  describe '#remove' do 
+    it 'should raise a message if dish not in @basket' do 
+      expect { subject.remove(pie) }.to raise_error "#{pie} is not in your basket"
+    end
+  end
 
 
 
