@@ -6,24 +6,25 @@ Dotenv.load
 
 class SMS
 
-  def initialize(calc_time = DeliveryTimeCalc.new)
+  def initialize(calc_time = DeliveryTimeCalc.new, client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']))
     @calc_time = calc_time
+    @client = client
   end
 
   def send_sms
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @client.messages.create(info)
+  end
 
-    client = Twilio::REST::Client.new(account_sid, auth_token)
+  def info
+    {
+      from: "+447480486810",
+      to: ENV['PHONE_NUMBER'],
+      body: "Thank you! Your order has been placed and will be delivered before #{delivery_time}."
+    }
+  end
 
-    from = "+447480486810"
-    to = ENV['PHONE_NUMBER']
-
-    client.messages.create(
-      from: from,
-      to: to,
-      body: "Thank you! Your order has been placed and will be delivered before #{@calc_time.add_one_hour}."
-    )
+  def delivery_time
+    @calc_time.add_one_hour
   end
 
 end
