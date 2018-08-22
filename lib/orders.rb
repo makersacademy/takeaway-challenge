@@ -18,6 +18,7 @@ class Orders
   end
 
   def choose_dish(dish, quantity)
+    fail "Dish not recognised: choose another" if !dish_exists?(dish)
     @current << [dish, quantity, Dishes::MENU[dish]]
   end
 
@@ -27,6 +28,12 @@ class Orders
 
   def buy 
     @sms.send_sms
+  end
+
+  private 
+
+  def dish_exists?(dish)
+    Dishes::MENU.include?(dish)
   end
 
 end

@@ -26,6 +26,10 @@ describe Orders do
   describe ".choose_dish" do
     it { is_expected.to respond_to(:choose_dish).with(2).argument }
 
+    it "will raise an error if dish argument not recognised" do
+      expect { order.choose_dish("Pizza", 2) }.to raise_error("Dish not recognised: choose another")
+    end
+
     it "will input dish and quantity to #current hash" do
       order.choose_dish(dish, qty)
       expect(order.current).to eq([[dish, qty, mockMenu.MENU[dish]]])
