@@ -2,20 +2,19 @@ require_relative 'bill'
 
 class Orders
 
-  attr_reader :cust_orders, :price_of_orders, :menu
+  attr_reader :cust_orders, :menu
 
   def initialize
     @cust_orders = {}
-    @price_of_orders = []
   end
 
   def choose_menu(menu = Menu.new)
-    @menu = menu
+    @menu = menu.menu_items
   end
 
   def cust_order(dish, how_many)
     dish = dish.tr(" ", "_").to_sym
-    unless Menu::MENU_SELECTIONS.include? dish
+    unless @menu.include? dish
       raise "sorry, dish is not available"
     end
     @cust_orders[dish] = how_many
@@ -25,6 +24,11 @@ class Orders
     @cust_orders.each do |item, how_many|
       puts "#{item.to_s.tr("_", " ")} x #{how_many}"
     end
+  end
+
+  def bill(bill_klass = Bill)
+    bill = bill_klass.new(@cust_orders, @menu)
+    bill.bill
   end
 
 end
