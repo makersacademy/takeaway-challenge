@@ -29,7 +29,6 @@ describe Orders do
   end
 
   describe ".choose_dish" do
-
     it "will raise an error if dish argument not recognised" do
       expect { order.choose_dish("Pizza", 2) }.to raise_error("Dish not recognised: choose another")
     end
@@ -41,15 +40,16 @@ describe Orders do
   end
 
   describe ".view_order" do 
-    it "will display current order along with total" do 
-      order.choose_dish(dish, qty)
-      expect(order.view_order).to eq("DISH || QUANTITY || PRICE\nDonner Kebab || 2 || 8\nTOTAL = £16\n")
+    it "tells the bill to print" do 
+      expect(bill).to receive(:create)
+      order.view_order
     end
   end
 
   describe ".buy" do 
     it "will confirm delivery of order" do
       allow(order).to receive(:buy).and_return("Confirmation SMS sent.")
+      order.buy
     end
   end 
 
