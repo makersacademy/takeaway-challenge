@@ -3,7 +3,12 @@ require './spec/support/shared_examples_for_dishes.rb'
 
 describe Orders do
 
-  let(:order) { Orders.new }
+  let(:bill) { 
+    double :bill, 
+    :create => "DISH || QUANTITY || PRICE\nDonner Kebab || 2 || 8\nTOTAL = £16\n"
+  }
+  let(:sms) { double :sms, :send_sms => "Confirmation SMS sent." }
+  let(:order) { Orders.new(bill, sms) }
   let(:dish)  { "Donner Kebab" }
   let(:qty)   { 2 }
   let(:mockMenu) { double :mockMenu, :MENU => { dish => 8 } }
@@ -24,7 +29,6 @@ describe Orders do
   end
 
   describe ".choose_dish" do
-    it { is_expected.to respond_to(:choose_dish).with(2).argument }
 
     it "will raise an error if dish argument not recognised" do
       expect { order.choose_dish("Pizza", 2) }.to raise_error("Dish not recognised: choose another")
@@ -39,7 +43,7 @@ describe Orders do
   describe ".view_order" do 
     it "will display current order along with total" do 
       order.choose_dish(dish, qty)
-      expect { order.view_order }.to output("DISH || QUANTITY || PRICE\nDonner Kebab || 2 || 8\nTOTAL = £16\n").to_stdout
+      expect(order.view_order).to eq("DISH || QUANTITY || PRICE\nDonner Kebab || 2 || 8\nTOTAL = £16\n")
     end
   end
 

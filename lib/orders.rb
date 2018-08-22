@@ -18,7 +18,7 @@ class Orders
   end
 
   def choose_dish(dish, quantity)
-    fail "Dish not recognised: choose another" if !dish_exists?(dish)
+    fail "Dish not recognised: choose another" unless dish_exists?(dish)
     @current << [dish, quantity, Dishes::MENU[dish]]
   end
 
