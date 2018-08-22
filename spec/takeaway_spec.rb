@@ -6,7 +6,7 @@ let(:menu) { instance_double Menu, dishes: [pie, mash, peas] }
 let(:pie) { instance_double Dish, name: 'pie', price: 3 }
 let(:mash) { instance_double Dish, name: 'mash', price: 2 }
 let(:peas) { instance_double Dish, name: 'peas', price: 1 }
-let(:dish_off_menu) { instance_double Dish, name: 'Not on menu', price: 0 }
+let(:dish_off_menu) { instance_double Dish, name: 'not on menu', price: 0 }
 
 
   describe '#initialize' do 
@@ -38,6 +38,13 @@ let(:dish_off_menu) { instance_double Dish, name: 'Not on menu', price: 0 }
     #   subject.remove(pie)
     #   expect(subject.basket).to be_empty
     # end
+  end
+
+  describe '#clear_basket' do 
+    it 'empties @basket' do 
+      subject.add(pie, 3)
+      expect(subject.clear_basket).to be_empty
+    end
   end
 
   describe '#list' do 

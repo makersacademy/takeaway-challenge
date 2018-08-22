@@ -2,9 +2,7 @@ require_relative 'menu'
 require_relative 'dish'
 
 class Takeaway
-
 attr_reader :basket, :menu 
-
 
   def initialize(menu) 
     @menu = menu
@@ -13,7 +11,7 @@ attr_reader :basket, :menu
 
   def add(dish, amount = 1)
     fail "#{dish} is off the menu" unless on_menu?(dish)
-    @basket.push({ dish: dish, amount: amount })      
+    @basket.push({ dish: dish, amount: amount })      # (dish, amount)  
   end
 
   def remove(dish)
@@ -21,7 +19,11 @@ attr_reader :basket, :menu
     basket.delete(dish) # why is this not working? 
   end
 
-  def list 
+  def clear_basket 
+    @basket.clear
+  end 
+
+  def list_basket 
     empty_basket_error 
     @basket.each do |item|
       puts "#{item[:amount]} x #{item[:dish].name}"
@@ -33,9 +35,7 @@ attr_reader :basket, :menu
     @basket.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
   end
 
-
-
-  private
+  # private
 
   def on_menu?(dish)
     @menu.dishes.include?(dish)
