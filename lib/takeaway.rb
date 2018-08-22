@@ -1,10 +1,8 @@
 require_relative 'menu'
 require_relative 'order'
-require_relative 'message_mod'
+require_relative 'message'
 
 class Takeaway
-
-  include MessageMod
 
   attr_reader :menu
 
