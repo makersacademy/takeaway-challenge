@@ -2,38 +2,35 @@ require_relative 'send_text'
 
 class OrderChecker
 
-  def initialize(menu, order_array, send_text = SendText.new)
+  def initialize(menu, send_text = SendText.new)
     @menu = menu
-    @order_array = order_array
     @send_text = send_text
   end
 
-  def check_order
-    check_if_valid
-    check_if_correct_total
+  def check_order(order)
+    validate_order(order[0])
+    validate_total(order)
     @send_text.send
   end
 
   private
 
-  def check_if_valid
-    raise "Invalid dish selection!" unless valid_order?
+  def validate_order(order)
+    order.each_key { |order_index|
+      raise "Invalid dish selection!" if order_index > @menu.length
+    }
   end
 
-  def valid_order?
-    @order_array[0].each { |i| return false if i[0] >= (@menu.length + 1) }
-    true
+  def validate_total(order)
+    given_total = order[1]
+    calculated_total = calculate_total(order[0])
+    compare_totals(given_total, calculated_total)
   end
 
-  def check_if_correct_total
-    given_total = @order_array[1]
-    compare_totals(given_total, calculate_total)
-  end
-
-  def calculate_total
+  def calculate_total(order)
     total = 0
-    @order_array[0].each do |order|
-      total += @menu[order[0] - 1][:price] * order[1]
+    order.each do |index, quantity|
+      total += @menu[index][:price] * quantity
     end
     total
   end

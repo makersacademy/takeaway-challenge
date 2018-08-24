@@ -5,20 +5,31 @@ class OrderManager
 
   def initialize(printer = MenuPrinter, order_checker = OrderChecker)
     @printer = printer
-    @order_checker = order_checker
-    set_menu
+    create_menu
+    @order_checker = order_checker.new(@menu)
   end
 
   def see_menu
     @printer.to_string(@menu)
   end
 
-  def place_order(order_array)
-    checker = @order_checker.new(@menu, order_array)
-    checker.check_order
+  def place_order(order_input)
+    order = [build_order(order_input), order_input[1]]
+    @order_checker.check_order(order)
   end
 
-  def set_menu
+  private
+
+  def build_order(order_input)
+    order_input[0].map do |order_line|
+      menu_index = order_line[0] - 1
+      item_quantity = order_line[1]
+      [ item: menu_index, quantity: item_quantity ]
+    end
+    order_input[0].to_h
+  end
+
+  def create_menu
     @menu = [
       { dish: "Sea salt & caramel",      price: 3.5 },
       { dish: "Chilli & chocolate",      price: 3.5 },
