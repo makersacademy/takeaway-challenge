@@ -40,7 +40,7 @@ attr_reader :basket, :menu
     empty_basket_error
     @basket.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
   end
-
+ 
   private
 
   def on_menu?(dish)
