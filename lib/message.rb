@@ -1,5 +1,0 @@
-class Message
-
-
-end
-

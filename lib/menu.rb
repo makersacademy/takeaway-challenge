@@ -2,10 +2,8 @@ class Menu
 attr_reader :dishes
 
   def initialize(dishes = [])  # (dishes = [{ 'pie' => 3, 'mash' => 2, "peas" => 1 }])
-    @dishes = dishes
+    @dishes = dishes            # (dishes = Dish::DISH_LIST)
   end
-
-  # (dishes = [ {name: 'pie', price: 3 }])
 
   def list 
     raise 'This menu is empty' if nothing_on_menu?

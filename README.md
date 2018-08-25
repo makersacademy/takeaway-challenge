@@ -6,7 +6,7 @@ UR4. I would like to receive a confirmation text <br />
 Functionality to implement:
 -------------------------
 * Ensure you have a list of dishes with prices <br />
-Place the order by giving the list of dishes, their quantities and a number that should be the exact total. <br />
+* Place the order by giving the list of dishes, their quantities and a number that should be the exact total. <br />
 * If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now. <br />
 e.g. "Thank you! Your order was placed and will be delivered before 18:52". <br />
 * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free. <br />

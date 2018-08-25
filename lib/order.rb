@@ -1,7 +1,8 @@
 require_relative 'menu'
 require_relative 'dish'
+# require 'sms'
 
-class Takeaway
+class Order
 attr_reader :basket, :menu 
 
   def initialize(menu) 
@@ -15,9 +16,14 @@ attr_reader :basket, :menu
   end
 
   def remove(dish)
-    fail "#{dish} is not in your basket" unless basket.include?(dish)
+    fail "#{dish} is not in your basket" unless basket.map { |item| item[:dish] }.include?(dish)
+    # add line that says basket.find(dish)
     basket.delete(dish) # why is this not working? 
   end
+
+  # def find_dish(dish)
+  #   basket.each { |item| break if item[name:] == (dish) } 
+  # end
 
   def clear_basket 
     @basket.clear
@@ -35,7 +41,7 @@ attr_reader :basket, :menu
     @basket.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
   end
 
-  # private
+  private
 
   def on_menu?(dish)
     @menu.dishes.include?(dish)

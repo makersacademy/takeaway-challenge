@@ -1,7 +1,7 @@
-require 'takeaway'
+require 'order'
 
-describe Takeaway do 
-subject(:takeaway) { Takeaway.new(menu) }
+describe Order do 
+subject(:order) { Order.new(menu) }
 let(:menu) { instance_double Menu, dishes: [pie, mash, peas] } 
 let(:pie) { instance_double Dish, name: 'pie', price: 3 }
 let(:mash) { instance_double Dish, name: 'mash', price: 2 }
@@ -49,14 +49,14 @@ let(:dish_off_menu) { instance_double Dish, name: 'not on menu', price: 0 }
 
   describe '#list' do 
     it 'throws an error message if @basket is empty' do 
-      expect { subject.list }.to raise_error 'Basket is empty'
+      expect { subject.list_basket }.to raise_error 'Basket is empty'
     end
     it 'prints dishes with amount in @basket' do 
       subject.add(pie, 5)
       subject.add(mash, 2)
       subject.add(peas, 3)
       order_list = "5 x pie\n2 x mash\n3 x peas\n"
-      expect { subject.list }.to output(order_list).to_stdout
+      expect { subject.list_basket }.to output(order_list).to_stdout
     end
   end
 
