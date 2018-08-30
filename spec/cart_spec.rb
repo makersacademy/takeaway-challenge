@@ -41,7 +41,7 @@ describe Cart do
       end
       it "updates quantity if one already in cart" do
         full_cart.add("Prime Rib")
-        expect(full_cart.items[0]).to eq ({ :name => "Prime Rib", :price => 9.25, :quantity => 2 })
+        expect(full_cart.items[0]).to eq ({ :name => "CHANGED FROM PRIME RIB", :price => 9.25, :quantity => 2 })
       end
     end
     context "item passed is an array of dish names" do
