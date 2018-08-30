@@ -1,4 +1,7 @@
 # Takeaway Challenge
+
+[![Build Status](https://travis-ci.com/Mschmidt19/takeaway-challenge.svg?branch=master)](https://travis-ci.com/Mschmidt19/takeaway-challenge)
+
 ```
                             _________
               r==           |       |
