@@ -1,9 +1,35 @@
-This is a takeaway application that allows you to:
+### Takeaway Challenge
 
-- see a list of items (#show_menu)
-- add an item to your order (#add_item(item))
-- calculate the sum total of your order (#calculate_sum)
-- and finally to place an order (#place_order). Placing an order will send a text message to the user confirming the order has been placed and giving an estimated time of arrival
+This is a weekend challenge completed during Makers. It is a simple REPL app that allows me to select a number of items from a menu, make an order, and receive an SMS confirmation via the Twilio SMS API. 
+
+#### Instructions:
+
+Open up IRB with:
+
+`
+irb
+`
+
+Require the takeaway file with:
+
+`
+require './lib/takeaway.rb'
+`
+
+Initialize a new order with:
+
+`
+order = Takeaway.new
+`
+
+And you're good to go! Simply run any of the following methods on your order instance:
+
+|method|description|
+|------|-----------|
+|#show_menu|see a list of items|
+|#add_item(item)|adds the item argument to your order|
+|#calculate_sum|calculate the sum of your order|
+|#place_order|place the order and receive an SMS confirmation! (only supports my number for now)|
 
 The text message feature is provided by the Twilio API.
 
