@@ -5,11 +5,12 @@ class Takeaway
 
   attr_reader :menu, :order, :time
 
-  def initialize(menu = Menu, sms = Send_message)
+  def initialize(menu = Menu, sms = Send_message, time = Time)
     @menu_class = menu.new
     @menu = @menu_class.menu
     @order = []
     @message = sms.new
+    @time = time.new + 3600
   end
 
   def show_menu
@@ -32,10 +33,7 @@ class Takeaway
   end
 
   def place_order # place order
-
-    @time = Time.new + 3600
-    @message.send(time)
-
+    @message.send(@time)
   end
 
 end

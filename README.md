@@ -7,4 +7,4 @@ This is a takeaway application that allows you to:
 
 The text message feature is provided by the Twilio API.
 
-All ingredients are responsibly sourced using trusted local farmers. 
+All ingredients are responsibly sourced using trusted local farmers.

@@ -1,13 +1,15 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:takeaway) { described_class.new(mock_menu_class, mock_sms_class) }
+  let(:takeaway) { described_class.new(mock_menu_class, mock_sms_class, mock_time_class) }
   let(:mock_menu_class) { double :menu_class, new: mock_menu }
   let(:mock_menu) { double :menu, menu: {salad: 5, chips: 5, chicken: 8, steak: 10}}
-  let(:mock_sms_class) { double :sms, new: mock_sms, send: mock_message}
+  let(:mock_sms_class) { double :sms, new: mock_sms}
   let(:mock_sms) {double :sms}
   let(:mock_message) {double :message}
-  let(:time) { Time.new }
+  let(:mock_time_class) { double :time, new: time }
+  let(:time) { 10000 }
+
 
   it "Whole class" do
     expect(takeaway).to respond_to(:menu, :add_item, :place_order, :calculate_sum)
@@ -52,8 +54,22 @@ describe Takeaway do
 
   describe "#place_order" do
     it "placing an order sends a message" do
-      allow(mock_sms).to receive(:send).and_return("Thank you, your order was placed and should arrive at #{:time}")
-      expect(takeaway.place_order).to eq "Thank you, your order was placed and should arrive at #{:time}"
+      # allow makes a stub whereas expect makes a mock
+      # using expect with "and_return" will fail if method :send is not called
+      # takeaway.place_order uses the actual time variable in the code, but allow uses the mock created above
+      allow(mock_sms).to receive(:send).with(time + 3600).and_return("Thank you, your order was placed and should arrive at #{time}")
+      expect(takeaway.place_order).to eq "Thank you, your order was placed and should arrive at #{time}"
+    end
+
+    # above #allow method lets RSpec believe the code is as follows:
+    # #takeaway.place_order
+    #   mock_sms.send-stub(time-double)
+    # end
+    # why isn't time variable stubbed by my stub? And how does it pass the test if two different instances of time are called?
+
+    it "#place_order method calls #send with time as an argument" do
+      expect(mock_sms).to receive(:send).with(time + 3600).and_return("Thank you, your order was placed and should arrive at #{time}")
+      takeaway.place_order
     end
   end
 
