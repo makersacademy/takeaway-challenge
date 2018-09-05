@@ -1,5 +1,5 @@
-require './lib/menu'
-require './lib/send_sms'
+require './menu'
+require './send_sms'
 
 class Takeaway
 
