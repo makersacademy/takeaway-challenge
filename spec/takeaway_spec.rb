@@ -9,6 +9,6 @@ describe Takeaway do
     expect(subject.menu).to eq(menu2)
   end
   it 'to responds to calling add' do  
-    expect(subject).to respond_to(:add)
+    expect(subject).to respond_to(:add_meal)
   end
 end
