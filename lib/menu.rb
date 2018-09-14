@@ -10,7 +10,7 @@ class Menu
   end
 
   def select(food_item, num)
-    @order << [food_item, num]
+    @order << {food_item => num}
     "You have added #{food_item} x#{num}"
   end
 
