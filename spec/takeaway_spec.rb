@@ -1,7 +1,7 @@
 require './lib/takeaway'
 
 describe Takeaway do
-  let(:menu2) {menu2 = {:fish_and_chips => '£3.20', :burger_and_chips => '£4.20', :chips => '£1'}}
+  let(:menu2) {menu2 = {:"1.fish_and_chips" => '£3.20', :"2.burger_and_chips" => '£4.20', :"3.chips" => '£1'}}
   it 'to responds to calling menu' do
     expect(subject).to respond_to(:menu)
   end

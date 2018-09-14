@@ -2,14 +2,14 @@ class Takeaway
 
   def initialize
     @menu = {
-      :fish_and_chips => '£3.20', 
-      :burger_and_chips => '£4.20', 
-      :chips => '£1'
+      :"1.fish_and_chips" => '£3.20', 
+      :"2.burger_and_chips" => '£4.20', 
+      :"3.chips" => '£1'
     }
   end
   
   def menu
-    @menu
+    @menu.each {|k, v| puts "#{k} - #{v}"}
   end
 
 end 
