@@ -8,4 +8,7 @@ describe Takeaway do
   it 'to be able to see the menu' do
     expect(subject.menu).to eq(menu2)
   end
+  it 'to responds to calling add' do  
+    expect(subject).to respond_to(:add)
+  end
 end
