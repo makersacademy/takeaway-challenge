@@ -1,7 +1,6 @@
-Makers academy is a coding bootcamp in London focusing on programming's best practices vs how to code.
-This project is part of the Makers Academy weekly weekend challenges to be completed. It covers the programming techniques learnt in that week. After
-completion our code will be reviewed and gone over by a Makers coach and we will receive feedback from them on how to improve (if needed).
-This challenge will be written in Ruby, and focus on writing unit tests, using doubles and mocking and dependency injection. 
+
+
+This command line app will be written in Ruby, and focus on writing unit tests using a TDD approach, mocking and dependency injection. 
 
 
 Takeaway Challenge
@@ -18,6 +17,14 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
+ ```
+
+Task
+-----
+
+* Fork this repo
+* Run the command 'bundle' in the project directory to ensure you have all the gems
+* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -40,8 +47,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
   * Use the Gemfile to manage your gems
   * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
   * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
