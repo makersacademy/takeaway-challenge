@@ -4,10 +4,10 @@ describe 'User Stories' do
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
-
+let(:menu2) {menu2 = {:fish_and_chips => '£3.20', :burger_and_chips => '£4.20', :chips => '£1'}}
   it 'so that takeaway has a menu, display list of dishes with prices' do
     takeaway = Takeaway.new
-    expect { takeaway.menu }.not_to raise_error
+    expect(takeaway.menu).to eq(menu2)
   end
 
 # As a customer
