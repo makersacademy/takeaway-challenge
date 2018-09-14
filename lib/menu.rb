@@ -47,9 +47,7 @@ class Menu
         puts "Invalid menu number, try again!"
       else
         @items.push(@menu[@input - 1])
-        puts "-------------------------------------------"
-        puts "Anything else? Type '0' to place the order!"
-        puts "-------------------------------------------"
+        print_header
       end
     end
   end
@@ -63,6 +61,12 @@ class Menu
   end
 
   private
+  def print_header
+    puts "-------------------------------------------"
+    puts "Anything else? Type '0' to place the order!"
+    puts "-------------------------------------------"
+  end
+
   def invalid?
     @input > @menu.length || @input.negative?
   end

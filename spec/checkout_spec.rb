@@ -1,4 +1,3 @@
-#absolutely terrible spec file - still have no clue on mocking
 require 'checkout'
 
 describe Checkout do

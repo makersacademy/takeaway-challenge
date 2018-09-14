@@ -1,4 +1,3 @@
-#absolutely terrible spec file - still have no clue on mocking
 require 'menu'
 
 describe Menu do
