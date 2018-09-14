@@ -16,12 +16,34 @@ I would like to be able to select some number of several available dishes
 ```
 require './lib/takeaway.rb'
 takeaway = Takeaway.new
+menu_obj = Menu.new
 takeaway.show_menu() #menu{dishes => price}
-takeaway.select_dishes #ordered_dishes
+<!-- expect(menu_obj).to receive(:show_menu)
+menu_obj.show_menu -->
+expect(menu_obj.show_menu).to eq(menu_obj.menu)
+takeaway.ready_to_order #ordered_dishes
+expect { menu_obj.select_dishes }.to change { menu_obj.ordered_dishes }
+menu_obj.ordered_dishes.each { |hash| expect(hash.keys).to contain_exactly(*hash_keys)}
 ```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
 
 ```
-takeaway.order(cust_order) #customer_order
-#expect(cust_order).to include(takeaway.menu[:dish])
-expect { takeaway.order(cust_order)}.to raise_error if cust_order.not_include(takeaway.menu[:dish])
+require './lib/takeaway.rb'
+takeaway = Takeaway.new
+menu_obj = Menu.new
+takeaway.show_menu() #menu{dishes => price}
+expect(menu_obj.show_menu).to eq(menu_obj.menu)
+takeaway.ready_to_order #ordered_dishes
+expect(menu_obj).to receive(:select_dishes)
+menu_obj.select_dishes
+expect { takeaway.ready_to_order }.to change { takeaway.customer_order }
+takeaway.customer_order.each { |hash| expect(hash.keys).to contain_exactly(*hash_keys)}
+expect(takeaway).to receive(:verify_order).with(takeaway.customer_order)
+takeaway.verify_order(customer_order)
+total = customer_order.each { |item| item[:price] * item[:quantity]}).reduce(:+)
+
+
 ```
