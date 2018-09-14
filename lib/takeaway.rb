@@ -12,4 +12,6 @@ class Takeaway
     @menu.each {|k, v| puts "#{k} - #{v}"}
   end
 
+  def add_meal
+  end
 end 
