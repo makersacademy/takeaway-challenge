@@ -13,4 +13,6 @@ menu.display_menu
 # I would like to be able to select some number of several available dishes
 require './lib/menu'
 menu = Menu.new
-menu.select
+menu.display_menu
+menu.select("chips", 2)
+menu.select("kebab", 3)
