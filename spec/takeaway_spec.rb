@@ -11,4 +11,7 @@ describe Takeaway do
   it 'to responds to calling add_meal' do  
     expect(subject).to respond_to(:add_meal)
   end
+  it 'to add meal to order, that customer selects' do
+    expect{subject.add_meal(2)}.to change{subject.order}.from(nil).to({:"2.burger_and_chips" => '£4.20'}) 
+  end
 end
