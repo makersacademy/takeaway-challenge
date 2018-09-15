@@ -8,6 +8,7 @@ describe Menu do
   context '#add_dish' do
     it 'adds hash to dishes array' do
       menu.add_dish(dish1)
+
       expect(menu.dishes).to include({ name: dish1.name, price: dish1.price })
     end
   end
@@ -16,6 +17,7 @@ describe Menu do
     it 'shows all dishes' do
       menu.add_dish(dish1)
       menu.add_dish(dish2)
+      
       expect(menu.show_menu).to eq("Pizza: £5\nPasta: £4")
     end
   end

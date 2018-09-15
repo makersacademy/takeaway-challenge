@@ -13,7 +13,7 @@ class Menu
 
   def show_menu
     @dishes.collect! do |dish|
-       "#{dish[:name].capitalize}: £#{dish[:price]}"
+      "#{dish[:name].capitalize}: £#{dish[:price]}"
     end
     @dishes.join("\n")
   end
