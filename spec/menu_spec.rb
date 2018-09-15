@@ -3,13 +3,25 @@ require 'menu'
 describe Menu do
   subject(:menu) { described_class.new }
 
-  it 'contains a list of dishes' do
-    expect(menu.dishes).not_to be_empty
+  it 'contains a list of menu @items that are instances of MenuItem' do
+    m = described_class.new()
+    expect(menu.items[0]).to be_an_instance_of(MenuItem)
+    expect(menu.items[-1]).to be_an_instance_of(MenuItem)
   end
 
-  describe '#show_dishes' do
-      # SHOULD THIS BE A FEATURE SPEC TEST INSTEAD OF UNIT TEST? IF SO, WHAT WOULD THE TEST LOOK LIKE USING DOUBLES?
-      specify { expect { menu.show_dishes }.to output { menu.show_dishes }.to_stdout }
+  describe '#show_menu' do
+    dummy_menu = <<-END
+    Pizza: 8
+    Burger: 9
+    Chips: 4.5
+    END
+    it 'lists the items inside the basket' do
+      expect { menu.show_menu }.to output { dummy_menu }.to_stdout
+    end
+  end
+
+  describe '#find_item' do
+   
   end
 
 end
