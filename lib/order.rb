@@ -1,9 +1,11 @@
 require_relative 'price_error'
+require_relative 'delivery_sms'
 
 class Order
 
-  def initialize
+  def initialize(sms = DeliverySMS.new)
     @order = []
+    @sms = sms
   end
 
   def add(dish_price_quantity)
@@ -13,7 +15,7 @@ class Order
 
   def confirm(price)
     raise PriceError unless price == total_cost
-    
+    @sms.send
   end
 
 
