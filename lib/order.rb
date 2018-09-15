@@ -7,6 +7,7 @@ class Order
   def initialize(food_options = Menu.new.food_options)
     @complete_order = []
     @food_options = food_options
+
   end
 
   def new_item(item, quantity)
@@ -16,11 +17,9 @@ class Order
       if item == hash[:Dish]
         @complete_order << hash
         counter += 1
-        break if counter == quantity
-        
       end
     }
-
+    break if counter == quantity
 
     end
   end
