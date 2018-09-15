@@ -17,14 +17,18 @@ class Takeaway
 
   
   def order_confirmation(message = Message.new, time = (Time.now + 3600))
-    message.send_text("Spasibo! Your total is #{order_total}. It will be there by #{time_format(time)}.")
-    "Spacibo! You will receive a text soon confirming your order."
+    message.send_text("Spasibo! Your total is #{order_total}. It will be there by #{time_format(time)}. Text 'Menu' to order over text!")
+    return_message
   end
   
   private
   
   def order_total
     "£#{@order_total.sum.round(2)}"
+  end
+
+  def return_message
+    "Spacibo! You will receive a text soon confirming your order. Next time, try ordering over text message!"
   end
   
   def calculate_total(food_choice, quantity)

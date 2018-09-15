@@ -44,7 +44,7 @@ describe Takeaway do
     it "gets a text confirming that my order has been placed" do
       takeaway.order("olivier", 2)
       takeaway.order("borscht", 1)
-      expect(takeaway.order_confirmation(message)).to eq("Spacibo! You will receive a text soon confirming your order.")
+      expect(takeaway.order_confirmation(message)).to eq("Spacibo! You will receive a text soon confirming your order. Next time, try ordering over text message!")
       # it calls the double here but doesn't the send_text method b/c of our last line
     end
 

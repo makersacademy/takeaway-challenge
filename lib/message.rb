@@ -1,6 +1,6 @@
+require 'rubygems'
 require 'twilio-ruby'
 require 'dotenv/load'
-
 class Message 
 
   def initialize
@@ -18,5 +18,4 @@ class Message
       body: body
     )
   end
-
 end

@@ -16,4 +16,11 @@ class Menu
     current_menu[dish] = price.to_f 
   end
 
+  def formatted_menu
+    ary = []
+    @current_menu.each do |key, value|
+      ary.push("#{key.capitalize} - £#{value}")
+    end
+    ary.join(" \n")
+  end
 end
