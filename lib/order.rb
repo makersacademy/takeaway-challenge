@@ -9,12 +9,20 @@ class Order
     @food_options = food_options
   end
 
-  def new_item(item)
-    food_options.each{ |hash|
+  def new_item(item, quantity)
+    counter = 0
+    while true
+    food_options.map{ |hash|
       if item == hash[:Dish]
         @complete_order << hash
+        counter += 1
+        break if counter == quantity
+        
       end
     }
+
+
+    end
   end
 
 end
