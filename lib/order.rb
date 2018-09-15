@@ -27,7 +27,6 @@ class Order
   end
 
   private
-
   attr_reader :delivery, :orderlist, :menu
 
   def format_list(list)
