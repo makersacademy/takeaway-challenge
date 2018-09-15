@@ -22,14 +22,15 @@ class Takeaway
 
   def display_basket
     @basket.each do |dish, quantity|
-      puts "#{dish[:name]} x #{quantity} = #{num_to_currency(dish[:price] * quantity)}"
+      puts "#{dish[:name]} x #{quantity} =
+        #{num_to_currency(dish[:price] * quantity)}"
     end
   end
 
   def checkout(sum)
     raise "Wrong sum entered, please enter correct sum" unless basket_sum?(sum)
     puts "You will shortly receive a text confirming your order"
-    @text_handler.confirm_order(@basket)
+    @text_handler.confirm_order
     empty_basket
   end
 

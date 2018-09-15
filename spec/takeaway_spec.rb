@@ -6,11 +6,11 @@ RSpec.describe Takeaway do
   let(:mock_menu_type) { double :mock_menu_type, new: mock_menu }
   let(:mock_menu) { double :mock_menu, display_menu: "Menu items and prices",
                     on_the_menu?: true, search_menu:
-                    { name: "Spaghetti and Meatballs", price: 5.00 } }
+                    { name: "Spaghetti and Meatballs", price: 5.00 }
+  }
   let(:mock_dish) { double :mock_dish, name: "Spaghetti and Meatballs", price: "5" }
   let(:mock_text_handler_type) { double :mock_text_handler_type, new: mock_text_handler }
   let(:mock_text_handler) { double :mock_text_handler, confirm_order: true }
-
 
   subject { described_class.new(menu_type: mock_menu_type, text_handler: mock_text_handler_type) }
 
