@@ -1,6 +1,7 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+require 'webmock/rspec'
 require 'dotenv'
 Dotenv.load
 

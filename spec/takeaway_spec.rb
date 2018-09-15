@@ -28,7 +28,16 @@ describe Takeaway do
     it "checks to see the order total" do
       subject.order("olivier", 2)
       subject.order("borscht", 1)
-      expect(subject.order_total). to eq "£24.97"
+      expect(subject.order_total).to eq "£24.97"
+    end
+
+    let(:takeaway) { described_class.new }
+    let(:message) { double :Message, send_text: "Thanks. Your total is £24.97. It'll be there by 12 pm."}
+
+    it "gets a text confirming that my order has been placed" do
+      takeaway.order("olivier", 2)
+      takeaway.order("borscht", 1)
+      expect(takeaway.order_confirmation(message)).to eq "Thanks. Your total is £24.97. It'll be there by 12 pm."
     end
   end
 end

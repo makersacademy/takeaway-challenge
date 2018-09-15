@@ -22,7 +22,8 @@ class Takeaway
     "£#{@order_total.sum}"
   end
 
-  def send_text
+  def order_confirmation(message = Message.new)
+    message.send_text("Thanks. Your total is #{order_total}. It'll be there by 12 pm.")
   end
 
   private
