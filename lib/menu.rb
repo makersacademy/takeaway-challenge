@@ -12,7 +12,7 @@ class Menu
   end
 
   def show_menu
-    @dishes.collect! { |dish| "#{dish[:name].capitalize}: £#{dish[:price]}" }
+    @dishes.map! { |dish| "#{dish[:name].capitalize}: £#{dish[:price]}" }
     @dishes.join("\n")
   end
 

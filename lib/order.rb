@@ -12,4 +12,11 @@ class Order
     order = { name: dish.name, price: dish.price }
     @summary[order] += quantity
   end
+
+  def place_order
+    arr = @summary.map do |k, v|
+      "#{k[:name].capitalize}: £#{k[:price]} x #{v}"
+    end
+    arr.join("\n")
+  end
 end
