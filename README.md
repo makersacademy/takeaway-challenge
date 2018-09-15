@@ -5,18 +5,20 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 `Ruby 2.5.1`
 
-[I would recommend using RVM to install and manage Ruby and different versions of Ruby.](https://rvm.io/)
+[RVM is a Ruby version controller.](https://rvm.io/)
 
 `Bundler`
 
-[Bundler is the easiest way to manage dependancies.](https://bundler.io/)
+[Bundler is used to manage dependancies.](https://bundler.io/)
 ### Installing
 - Clone this repo
 - `CD` into your cloned directory
+- Rim `gem install bundle`
 - Run `bundle install`
 
 ## Running the tests
 - `CD` into `takeaway-challenge`
 - run `rspec`
+- run `rubocop`
 ## Authors
 - [**Nathan Quayle**](https://github.com/NathanQuayle)
