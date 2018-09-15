@@ -18,20 +18,30 @@ describe 'User stories' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   it 'should let you order a meal from the list' do
-    menu = double(:menu)
     menu = Menu.new
     dish = Dish.new("Lasagna", 10)
     menu.add(dish)
     dish = Dish.new("Pasta", 8)
     menu.add(dish)
     order = Order.new
-    order.pick("Pasta",2)
-    expect(order.show).to eq([{"Pasta" => 2}])
-    order.pick("Lasagna",1)
-    expect(order.show).to eq([{"Pasta" => 2}, {"Lasagna" => 1}])
+    order.pick("Pasta", 2)
+    expect(order.show).to eq([{ "Pasta" => 2 }])
+    order.pick("Lasagna", 1)
+    expect(order.show).to eq([{ "Pasta" => 2 }, { "Lasagna" => 1 }])
   end
   #
   # it "should return an error if the meal isn't on the list" do
-  #
+  #  order.pick("Pizza", 1)
   # end
+
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  it 'should return the total sum' do
+    order = Order.new
+    order.pick("Pasta", 1)
+    order.pick("Pasta", 1)
+    order.pick("Lasagna", 1)
+    expect(order.quantity).to eq(3)
+  end
 end
