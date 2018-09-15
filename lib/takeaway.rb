@@ -23,7 +23,9 @@ class Takeaway
   end
 
   def order_confirmation(message = Message.new)
-    message.send_text("Thanks. Your total is #{order_total}. It'll be there by 12 pm.")
+    time = Time.now + 3600
+    message.send_text("Spasibo! Your total is #{order_total}. It will be there by #{time.strftime("%H:%M")}.")
+    "Confirmed."
   end
 
   private

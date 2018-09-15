@@ -37,7 +37,7 @@ describe Takeaway do
     it "gets a text confirming that my order has been placed" do
       takeaway.order("olivier", 2)
       takeaway.order("borscht", 1)
-      expect(takeaway.order_confirmation(message)).to eq "Thanks. Your total is £24.97. It'll be there by 12 pm."
+      expect(takeaway.order_confirmation(message)).to eq "Confirmed."
     end
   end
 end
