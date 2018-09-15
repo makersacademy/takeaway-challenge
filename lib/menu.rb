@@ -1,20 +1,19 @@
 class Menu
-  attr_reader :menu
+  attr_reader :current_menu
 
   def initialize
-    @dish = {
-      dish: nil,
-      price: nil,
-      quantity: nil
+    @current_menu = {
+      "pelmeni" => 6.99,
+      "borscht" => 5.99,
+      "tvarog" => 3.99,
+      "olivier" => 4.99,
+      "salat" => 1.99,
+      "blinchiki" => 9.99
     }
-    @menu = []
   end
 
-  def add_dish(dish, price, quantity)
-    @dish[:dish] = dish
-    @dish[:price] = price
-    @dish[:quantity] = quantity
-    @menu << @dish
+  def add_dish(dish, price)
+    current_menu[dish] = price.to_f 
   end
 
 end

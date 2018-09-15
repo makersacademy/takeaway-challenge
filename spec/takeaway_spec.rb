@@ -2,23 +2,29 @@ require 'takeaway'
 
 describe Takeaway do
   
-  context 'being able to use takeaway' do
+  context "able to take Menu class information and displays" do
+    let(:shop) { described_class.new(russian) }
+    let(:russian) { 
+      double :Menu, 
+      current_menu: {
+        "pelmeni" => 6.99,
+        "borscht" => 5.99
+      }
+    }
 
-    it "exists" do
-      expect(subject).to eq subject
+    it "#menu" do
+      expect(shop.menu).to eq({
+        "pelmeni" => 6.99,
+        "borscht" => 5.99
+      })
     end
-
-    it "displays a list of the dishes with price" do
-      expect(subject.menu).to eq({ "pelmeni" => 6.99, "borscht" => 4.99, 
-      "salat" => 5.99, "olivier" => 9.99, "tvarog" => 2.99, "smetyana" => 1.99 })
-    end
-
   end
-  
+
   context 'being able to select food and check basket' do
     
     it "allows user to select choice with amount" do
-      expect(subject.order("pelmeni", 2)).to eq "2x - Pelmeni added to basket."
+      # can use without blocks and include part of a string
+      expect(subject.order("pelmeni", 2)).to include "2x - Pelmeni added to basket."
     end
 
     it "checks to make sure food item is on menu" do
@@ -28,16 +34,19 @@ describe Takeaway do
     it "checks to see the order total" do
       subject.order("olivier", 2)
       subject.order("borscht", 1)
-      expect(subject.order_total).to eq "£24.97"
+      # here I check to seee the string includes the total!! 
+      expect(subject.order("salat")).to include { "£17.96" }
     end
 
     let(:takeaway) { described_class.new }
-    let(:message) { double :Message, send_text: "Thanks. Your total is £24.97. It'll be there by 12 pm."}
+    let(:message) { double :Message, send_text: "Spacibo!"}
 
     it "gets a text confirming that my order has been placed" do
       takeaway.order("olivier", 2)
       takeaway.order("borscht", 1)
-      expect(takeaway.order_confirmation(message)).to eq "Confirmed."
+      expect(takeaway.order_confirmation(message)).to eq("Spacibo! You will receive a text soon confirming your order.")
+      # it calls the double here but doesn't the send_text method b/c of our last line
     end
+
   end
 end
