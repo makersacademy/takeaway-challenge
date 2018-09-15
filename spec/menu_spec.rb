@@ -12,7 +12,15 @@ describe Menu do
     let(:order_double) { double :Order_Double, add: "Dish added to order" }
     let(:menu) { described_class.new(order_double) }
     it "adds dish to order" do
-      expect(menu.choose("Butterbeer")).to eq("Dish added to order")
+      expect(menu.choose("Butterbeer", 10)).to eq("Dish added to order")
+    end
+  end
+
+  context "#place_order" do
+    let(:order_double) { double :Order_Double, confirm: true }
+    let(:menu) { described_class.new(order_double) }
+    it "takes the Customer's Price as a variable" do
+      expect(menu.place_order(15)).to eq true
     end
   end
 end
