@@ -9,4 +9,11 @@ describe Order do
       expect { order.add(selected_dish) }.to output(return_string).to_stdout
     end
   end
+
+  context "#confirm" do
+    let(:order) { described_class.new }
+    it "checks whether there has been a miscalculation" do
+      expect { order.confirm(16) }.to raise_error(PriceError)
+    end
+  end
 end
