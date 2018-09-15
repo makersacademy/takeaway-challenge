@@ -5,7 +5,7 @@ describe 'user_stories' do
   # I would like to see a list of dishes with prices
   it 'so user can check the menu, list dishes with prices' do
     menu = Menu.new
-    expect { menu.list }.to_not raise_error
+    expect { menu.print_menu }.to_not raise_error
   end
 
   # As a customer
@@ -24,6 +24,6 @@ describe 'user_stories' do
     menu = Menu.new
     order = Order.new
     order.add([{egg: 12}, {pineapple: 3}], 15)
-    order.calculate
+    expect { order.calculate }.to_not raise_error
   end
 end
