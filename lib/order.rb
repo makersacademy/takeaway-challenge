@@ -1,19 +1,20 @@
 require './lib/menulist.rb'
+require './lib/orderlist.rb'
 #handles customer orders
 
 class Order
   attr_reader :menu, :orderlist
-  def initialize(menu = MenuList.new)
+  def initialize(menu = MenuList.new, orderlist = OrderList.new)
     @menu = menu.get_menu
-    @orderlist = []
+    @orderlist = orderlist
   end
 
   def add(index)
-    @orderlist << menu[index]
+    orderlist.store_order(menu[index])
   end
 
-  def complete_order
-    orderlist
+  def show_order
+    format_list(orderlist.show_orders)
   end
 
   def show_menu
@@ -29,3 +30,5 @@ class Order
   end
 
 end
+
+ # require './lib/order.rb'

@@ -3,7 +3,12 @@ class OrderList
   def initialize
     @orders = []
   end
-  def show_list
+
+  def show_orders
     orders
+  end
+
+  def store_order(order)
+    @orders << order
   end
 end
