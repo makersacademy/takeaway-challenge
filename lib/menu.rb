@@ -1,12 +1,14 @@
 class Menu
 
-attr_reader :menu
+attr_reader :dishes
 
-  def initialize
-    @menu = menu
+  def initialize(dish_hash)
+    @dishes = dish_hash
+
   end
 
-  def printing_menu
-    
-   end
+  # def printing_menu
+  #   @dishes
+  # end
+
 end
