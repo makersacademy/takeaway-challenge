@@ -2,6 +2,8 @@ require 'menu'
 
 describe Menu do
   
-  it { is_expected.to respond_to(:list) }
+  describe '#list' do
+    it { is_expected.to respond_to(:list) }
+  end
 
 end
