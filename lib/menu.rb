@@ -1,4 +1,4 @@
-require "printer"
+require_relative "printer"
 
 class Menu
 
@@ -7,9 +7,9 @@ class Menu
   def initialize(printer = Printer.new)
     @printer = printer
     @food_options = [
-      { Dish: "Duck_Pancakes", Price: "12" },
-      { Dish: "Spring_roll", Price: "8" },
-      { Dish: "Noodles", Price: "5" }
+      { Dish: "Duck_Pancakes", Price: "£12" },
+      { Dish: "Spring_roll", Price: "£8" },
+      { Dish: "Noodles", Price: "£5" }
     ]
   end
 
