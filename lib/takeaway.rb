@@ -1,4 +1,5 @@
 require_relative 'message'
+require_relative 'menu'
 
 class Takeaway
   attr_reader :menu
