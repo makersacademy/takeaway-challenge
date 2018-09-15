@@ -16,8 +16,9 @@ attr_accessor :ordered_dishes
     #@menu = @menu.map { |item| item.values }
     @menu.each do |item|
       item.each do |value|
-        "#{value}"
+        print "#{value}"
       end
+      puts
     end
   end
 

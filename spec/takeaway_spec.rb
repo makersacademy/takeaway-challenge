@@ -1,7 +1,7 @@
 require 'takeaway.rb'
 
 describe Takeaway do
-  #let(:sms_obj) { double :sms }
+  let(:sms_obj) { double :sms }
   subject(:takeaway) { described_class.new(menu_obj)}
   let(:menu_arr) { double('list of menu')}
   let(:dish) { double(:menu) }
@@ -31,9 +31,7 @@ describe Takeaway do
       menu_obj.show_menu
       list_of_dishes = [{dish:'pasta', price: 10.00, quantity: 4}]
       allow(menu_obj).to receive(:select_dishes).and_return(list_of_dishes)
-
       allow(takeaway).to receive(:ready_to_order).and_return(list_of_dishes)
-
       allow(takeaway).to receive(:verify_order).with(list_of_dishes).and_return('list of dishes and total sum of the ordered dishes')
     end
   end
@@ -55,9 +53,15 @@ describe Takeaway do
     end
 
     it 'raises error when total does not match the sum of the ordered dishes' do
-      
       allow(takeaway).to receive(:verify_order).with('list_of_dishes').and_return('Sum does not match the total sum of the dishes ordered.')
       expect(takeaway.verify_order('list_of_dishes')).to eq 'Sum does not match the total sum of the dishes ordered.'
+    end
+
+    it 'sends sms to the customer' do
+      allow(takeaway).to receive(:verify_order).with('list_of_dishes').and_return('send sms to the customer')
+      expect(takeaway.verify_order('list_of_dishes')).to eq 'send sms to the customer'
+      allow(sms_obj).to receive(:send_message).and_return("Hey friend!, You just sent an SMS from Ruby!")
+      sms_obj.send_message
     end
 
   end
