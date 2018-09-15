@@ -13,9 +13,16 @@ class Menu
 
   def display
     list.each do |dish|
-      print "\u2022 "
-      print dish[:name].ljust(20, ' ')
-      puts "£" + "%.2f" % (dish[:price]/100.00)
+      print format_name(dish[:name]) + format_price(dish[:price])
     end
+  end
+
+  private
+  def format_name(name)
+    "\u2022 #{name.ljust(20, ' ')}"
+  end
+
+  def format_price(price)
+    "£%.2f\n" % (price / 100.00)
   end
 end
