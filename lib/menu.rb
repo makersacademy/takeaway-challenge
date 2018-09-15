@@ -5,24 +5,16 @@ class Menu
     { name: "Avocado Toast",  price: 1995 },
     ]
 
-  attr_reader :list
+  attr_reader :list, :printer
 
-  def initialize(list = LIST)
+  def initialize(printer = Printer.new, list = LIST)
     @list = list
+    @printer = printer
   end
 
   def display
     list.each do |dish|
-      print format_name(dish[:name]) + format_price(dish[:price])
+      printer.display
     end
-  end
-
-  private
-  def format_name(name)
-    "\u2022 #{name.ljust(20, ' ')}"
-  end
-
-  def format_price(price)
-    "£%.2f\n" % (price / 100.00)
   end
 end

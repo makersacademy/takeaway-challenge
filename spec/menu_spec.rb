@@ -1,6 +1,8 @@
 require 'menu'
 
 describe Menu do
+  let(:mockprinter) { double(:mockprinter)}
+  subject { described_class.new(mockprinter) }
   describe 'instantiation' do
     it '@list is set to LIST' do
       expect(subject.list).to eq(Menu::LIST)
@@ -8,11 +10,10 @@ describe Menu do
   end
 
   describe '#display' do
-    it 'prints out @list in user-friendly format' do
-      response =  "\u2022 Fish and Chips      £12.95\n"\
-                  "\u2022 Roast Dinner        £14.95\n"\
-                  "\u2022 Avocado Toast       £19.95\n"
-      expect { subject.display }.to output(response).to_stdout
+    before { allow(mockprinter).to receive(:display) }
+    it 'calls printer.display' do
+      expect(subject.printer).to receive(:display)
+      subject.display
     end
   end
 end
