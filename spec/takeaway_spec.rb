@@ -1,0 +1,40 @@
+require 'takeaway'
+
+describe TakeAway do
+  describe '#read_menu' do
+    it 'returns a display of everything on the menu (currently hardcoded)' do
+      expect(subject.read_menu).to eq({ "Sweet & Sour Chicken Balls" => 3.99,
+                                        "Chicken Chowmein" => 4.50,
+                                        "Crispy Shredded Beef" => 5.90,
+                                        "Egg Fried Rice" => 3.00,
+                                        "Fried Duck with Black Bean Sauce" => 6.40 })
+    end
+  end
+
+  describe '#select_dish' do
+    it 'adds a dish to my basket when I select it' do
+      subject.add_dish('Egg Fried Rice')
+      expect(subject.basket).to eq({"Egg Fried Rice" => 1})
+    end
+
+    it 'adds the same dish multiple times to my basket' do
+      subject.add_dish('Egg Fried Rice',4)
+      expect(subject.basket).to eq({"Egg Fried Rice" => 4})
+    end
+
+    it 'adds several different dishes to my basket' do
+      subject.add_dish('Egg Fried Rice',4)
+      subject.add_dish('Chicken Chowmein',2)
+      subject.add_dish('Crispy Shredded Beef',4)
+      subject.add_dish('Egg Fried Rice',1)
+      expect(subject.basket).to eq({ "Egg Fried Rice" => 5,
+                                     "Chicken Chowmein" => 2,
+                                     "Crispy Shredded Beef" => 4 })
+    end
+
+    it 'fails when you try to add a dish that is not on the menu' do
+      expect{subject.add_dish('fish & chips')}.to raise_error("that dish isn't on the menu")
+    end
+
+  end
+end
