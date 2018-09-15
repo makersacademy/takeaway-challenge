@@ -14,9 +14,13 @@ class Order
   end
 
   def place_order
-    arr = @summary.map do |k, v|
-      "#{k[:name].capitalize}: £#{k[:price]} x #{v}"
-    end
+    arr = @summary.map { |k, v| "#{k[:name].capitalize}: £#{k[:price]} x #{v}" }
     arr.join("\n")
+  end
+
+  def total
+    sum = 0
+    arr = @summary.map { |k, v| sum += k[:price] * v }
+    sum
   end
 end

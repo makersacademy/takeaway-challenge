@@ -36,13 +36,23 @@ describe Order do
     end
   end
 
-  context 'place_order' do
+  context '#place_order' do
     it 'returns dishes with price and quantity' do
       order.add(dish1, 2)
       order.add(dish2, 1)
       order.add(dish3, 1)
 
       expect(order.place_order).to eq("Pizza: £5 x 2\nPasta: £4 x 1\nChicken: £7 x 1")
+    end
+  end
+
+  context '#total' do
+    it 'returns total' do
+      order.add(dish1, 2)
+      order.add(dish2, 1)
+      order.add(dish3, 1)
+
+      expect(order.total).to eq 21
     end
   end
 end

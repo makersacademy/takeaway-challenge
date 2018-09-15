@@ -31,5 +31,5 @@ describe Menu do
     it 'returns false if dish not on menu' do
       expect(menu.on_menu?(dish1)).to eq false
     end
-  end
+  end  
 end
