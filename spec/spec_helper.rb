@@ -1,6 +1,8 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+require 'dotenv'
+Dotenv.load
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,

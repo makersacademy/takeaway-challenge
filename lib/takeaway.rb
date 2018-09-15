@@ -1,3 +1,5 @@
+require_relative 'message'
+
 class Takeaway
   attr_reader :menu
 
@@ -20,8 +22,11 @@ class Takeaway
     "£#{@order_total.sum}"
   end
 
+  def send_text
+  end
+
   private
-  
+
   def calculate_total(food_choice, quantity)
     @menu.each do |food, price|
       if food_choice == food
