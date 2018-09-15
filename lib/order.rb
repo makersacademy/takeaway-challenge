@@ -3,12 +3,13 @@ require_relative "calculator"
 
 class Order
 
-  attr_reader :complete_order, :food_options, :calculator
+  attr_reader :complete_order, :food_options, :calculator, :total
 
   def initialize(food_options = Menu.new.food_options, calculator = Calculator.new)
     @complete_order = []
     @food_options = food_options
     @calculator = calculator
+    @total = 7 #change later
   end
 
   def new_item(item, quantity)
@@ -26,7 +27,7 @@ class Order
   end
 
   def total
-    @calculator.calculate_total(complete_order)
+    @total = @calculator.calculate_total(complete_order)
   end
 
 end
