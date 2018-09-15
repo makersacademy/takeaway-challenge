@@ -1,7 +1,7 @@
 class Menu
   attr_reader :dishes
 
-  def initialise
-    @dishes = []
+  def initialize
+    @dishes = ['']
   end
 end
