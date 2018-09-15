@@ -5,11 +5,11 @@ class Takeaway
 attr_reader :customer_order, :total
 @menu = []
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sms = Sms.new)
     @customer_order = []
     @menu = menu
     @total = 0.0
-    #@sms = sms
+    @sms = sms
   end
 
   def show_menu
@@ -25,7 +25,7 @@ attr_reader :customer_order, :total
     @total = order.map { |item| item[:price] * item[:quantity]}.reduce(:+)
     if @total == order.map { |item| item[:price] * item[:quantity]}.reduce(:+)
       #@sms.send_message
-      'true'
+        'true'
     else
       'Sum does not match the total sum of the dishes ordered.'
     end

@@ -10,25 +10,6 @@ describe Takeaway do
   let(:hash_keys){ [:dish, :price, :quantity]}
 
 
-
-  #it { is_expected.to respond_to :show_menu }
-  #it { is_expected.to respond_to :menu}
-  # context 'customers need to see the menu first' do
-  #   before :each do
-  #     show menu
-  #   end
-  #
-  #   describe 'select from menu' do
-  #     it 'does something'
-  #     expect()something
-  #   end
-  #
-  #   describe 'check out' do
-  #     it 'checks out'
-  #   end
-  #
-  # end
-
   describe 'initialize' do
     it 'intializes the menu' do
       expect(takeaway.customer_order).to eq([])
@@ -59,7 +40,6 @@ describe Takeaway do
 
   describe '#verify_order' do
     it 'it verifies the total matches the sum of the various dishes in my order' do
-
       takeaway = Takeaway.new
       menu_obj = Menu.new
       takeaway.show_menu() #menu{dishes => price}
@@ -72,18 +52,10 @@ describe Takeaway do
       expect(takeaway).to receive(:verify_order).with(takeaway.customer_order)
       takeaway.verify_order(takeaway.customer_order)
       expect(takeaway.total).to eq(takeaway.customer_order.map { |item| item[:price] * item[:quantity]}.reduce(:+))
-
     end
 
     it 'raises error when total does not match the sum of the ordered dishes' do
-      # allow(menu_obj).to receive(:show_menu).and_return('list of dishes with prices')
-      # takeaway.show_menu
-      # menu_obj.show_menu
-      # list_of_dishes = [{dish:'pasta', price: 10.00, quantity: 4}]
-      # allow(menu_obj).to receive(:select_dishes).and_return(list_of_dishes)
-      # allow(takeaway).to receive(:ready_to_order).and_return(list_of_dishes)
-      # total = 30
-      # final_total = list_of_dishes.map { |item| item[:price] * item[:quantity]}.reduce(:+)
+      
       allow(takeaway).to receive(:verify_order).with('list_of_dishes').and_return('Sum does not match the total sum of the dishes ordered.')
       expect(takeaway.verify_order('list_of_dishes')).to eq 'Sum does not match the total sum of the dishes ordered.'
     end
