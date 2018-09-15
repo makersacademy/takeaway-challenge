@@ -21,9 +21,11 @@ class Menu
   end
 
   def display_menu
+    displayable_menu = []
     @menu_items.each do |dish|
-      puts "#{dish[:name]}: #{num_to_currency(dish[:price])}"
+      displayable_menu << "#{dish[:name]}: #{num_to_currency(dish[:price])}"
     end
+    return displayable_menu
   end
 
   def on_the_menu?(dish)

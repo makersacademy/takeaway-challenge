@@ -1,6 +1,6 @@
 require 'text_handler'
 
-RSpec.describe TextHandler do
+RSpec.describe OrderConfirmer do
 
   let(:mock_text_api_type) { double :mock_text_api_type, new: mock_text_api }
   let(:mock_text_api) { double :mock_text_api, messages: mock_messages }

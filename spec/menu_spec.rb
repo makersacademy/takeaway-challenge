@@ -16,7 +16,7 @@ RSpec.describe Menu do
   end
 
   it "can display the menu" do
-    expect { subject.display_menu }.to output("Spaghetti and Meatballs: £5.00\n").to_stdout
+    expect(subject.display_menu).to eq(["Spaghetti and Meatballs: £5.00"])
   end
 
   it "can check if items are on the menu" do

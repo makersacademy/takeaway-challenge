@@ -1,18 +1,18 @@
 require './lib/menu'
-require './lib/text_handler'
+require './lib/order_confirmer'
 
-class Takeaway
+class Restaurant
 
   attr_reader :basket
 
-  def initialize(menu_type: Menu, text_handler: TextHandler)
+  def initialize(menu_type: Menu, order_confirmer: OrderConfirmer)
     @menu = menu_type.new
     @basket = Hash.new(0)
-    @text_handler = text_handler.new
+    @order_confirmer = order_confirmer.new
   end
 
   def display_menu
-    @menu.display_menu
+    puts @menu.display_menu
   end
 
   def add_to_basket(dish, number = 1)
@@ -22,15 +22,14 @@ class Takeaway
 
   def display_basket
     @basket.each do |dish, quantity|
-      puts "#{dish[:name]} x #{quantity} =
-        #{num_to_currency(dish[:price] * quantity)}"
+      puts "#{dish[:name]} x #{quantity} = #{num_to_currency(dish[:price] * quantity)}"
     end
   end
 
   def checkout(sum)
     raise "Wrong sum entered, please enter correct sum" unless basket_sum?(sum)
     puts "You will shortly receive a text confirming your order"
-    @text_handler.confirm_order
+    @order_confirmer.confirm_order
     empty_basket
   end
 

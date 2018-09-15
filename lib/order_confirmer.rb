@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 require 'time'
 
-class TextHandler
+class OrderConfirmer
 
   def initialize(text_api: Twilio::REST::Client)
     @account_sid = 'ACc6ec57ff4b9822b689c242826363aada'

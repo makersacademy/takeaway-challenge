@@ -1,7 +1,7 @@
-require 'takeaway'
+require 'restaurant'
 require 'pry'
 
-RSpec.describe Takeaway do
+RSpec.describe Restaurant do
 
   let(:mock_menu_type) { double :mock_menu_type, new: mock_menu }
   let(:mock_menu) { double :mock_menu, display_menu: "Menu items and prices",
@@ -15,7 +15,7 @@ RSpec.describe Takeaway do
   subject { described_class.new(menu_type: mock_menu_type, text_handler: mock_text_handler_type) }
 
   it "should display a list of dishes with prices" do
-    expect(subject.display_menu).to eq "Menu items and prices"
+    expect { subject.display_menu }.to output("Menu items and prices\n").to_stdout
   end
 
   it "should allow the user to select a number of dishes" do
