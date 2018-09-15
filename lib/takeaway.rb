@@ -1,9 +1,9 @@
 require_relative 'menu'
-#require_relative 'sms'
-class Takeaway
+require_relative 'sms'
 
-attr_reader :customer_order, :total, :sms
-@menu = []
+class Takeaway
+  attr_reader :customer_order, :total, :sms
+  @menu = []
 
   def initialize(menu = Menu.new, sms = Sms.new)
     @customer_order = []
@@ -22,23 +22,20 @@ attr_reader :customer_order, :total, :sms
   end
 
   def verify_order(order)
-    @total = order.map { |item| item[:price] * item[:quantity]}.reduce(:+)
+    @total = order.map { |item| item[:price] * item[:quantity] }.reduce(:+)
     order.each do |item|
       item.each do |value|
-        print "#{value}"
+      print "#{value}"
       end
       puts
     end
     puts
     puts "your total is #{@total} "
-    if @total == order.map { |item| item[:price] * item[:quantity]}.reduce(:+)
+    if @total == order.map { |item| item[:price] * item[:quantity] }.reduce(:+)
       'send sms to the customer'
+       # @sms.send_message("Thank you for your order: your total is £#{@total}")
     else
       'Sum does not match the total sum of the dishes ordered.'
     end
-    #{}"You have ordered #{order[:dish]} #{order[:price]} #{order[:quantity]} and your total is #{@total}"
   end
-
-
-
-  end
+end
