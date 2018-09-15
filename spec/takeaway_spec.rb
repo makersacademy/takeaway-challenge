@@ -37,47 +37,23 @@ describe Takeaway do
 
   describe 'show_menu' do
     it 'shows the dishes with prices' do
-      allow(menu_obj).to receive(:show_menu)
+      allow(menu_obj).to receive(:show_menu).and_return('list of dishes with prices')
       takeaway.show_menu
-
-
-      #menu_obj.show_menu
-      #allow(menu_obj).to receive(:show_menu).and_return('list of dishes with prices')
-      #list_of_dishes = ['pasta', £20, 'Non-veg main mean']
-      #expect(takeaway.show_menu).to eq(list_of_dishes)
+      menu_obj.show_menu
     end
   end
 
   describe '#ready_to_order' do
     it 'allows customers to select one of the available dishes' do
-      allow(menu_obj).to receive(:show_menu)
+      allow(menu_obj).to receive(:show_menu).and_return('list of dishes with prices')
       takeaway.show_menu
-      # expect(menu_obj).to receive(:show_menu)
-      # menu_obj.show_menu
-      allow(menu_obj).to receive(:select_dishes)
-      #takeaway.ready_to_order
+      menu_obj.show_menu
+      list_of_dishes = [{dish:'pasta', price: 10.00, quantity: 4}]
+      allow(menu_obj).to receive(:select_dishes).and_return(list_of_dishes)
 
-      #menu_obj.select_dishes
-      # expect { takeaway.ready_to_order }.to change { takeaway.customer_order }
-      # takeaway.customer_order.each { |hash| expect(hash.keys).to contain_exactly(*hash_keys)}
-      # expect(takeaway).to receive(:verify_order).with(takeaway.customer_order)#ordered_dishes
-      # takeaway.verify_order(takeaway.customer_order)
+      allow(takeaway).to receive(:ready_to_order).and_return(list_of_dishes)
 
-      #menu_obj = Menu.new()
-      # takeaway1 = Takeaway.new(menu_obj, sms_obj)
-      # allow(menu_obj).to receive(:show_menu)
-      # takeaway1.show_menu
-      # allow(menu_obj).to receive(:select_dishes)
-      # takeaway1.ready_to_order
-      #
-      # menu_obj.select_dishes
-      # expect { takeaway1.ready_to_order }.to change { takeaway1.customer_order }
-      # takeaway1.customer_order.each { |hash| expect(hash.keys).to contain_exactly(*hash_keys)}
-      # expect(takeaway1).to receive(:verify_order).with(takeaway1.customer_order)#ordered_dishes
-      # takeaway1.verify_order(takeaway1.customer_order)
-      # #allow(sms_obj).to receive(:show_menu)
-      # allow(sms_obj).to receive(:send_message).and_return("Hey friend!, You just sent an SMS from Ruby!")
-      # #sms_obj.send_message
+      allow(takeaway).to receive(:verify_order).with(list_of_dishes).and_return('list of dishes and total sum of the ordered dishes')
     end
   end
 
@@ -96,37 +72,21 @@ describe Takeaway do
       expect(takeaway).to receive(:verify_order).with(takeaway.customer_order)
       takeaway.verify_order(takeaway.customer_order)
       expect(takeaway.total).to eq(takeaway.customer_order.map { |item| item[:price] * item[:quantity]}.reduce(:+))
-      #expect { (takeaway.total) != takeaway.customer_order.map { |item| item[:price] * item[:quantity]}.reduce(:+)}.to raise_error 'Sum does not match the total sum of the dishes ordered.'
-      #takeaway1.total = 50
+
     end
 
-        # it 'raises error when total does not match' do
-        #   takeaway = Takeaway.new
-        #   menu_obj = Menu.new
-        #   takeaway.show_menu() #menu{dishes => price}
-        #   expect(menu_obj.show_menu).to eq(menu_obj.menu)
-        #   takeaway.ready_to_order #ordered_dishes
-        #   expect(menu_obj).to receive(:select_dishes)
-        #   menu_obj.select_dishes
-        #   expect { takeaway.ready_to_order }.to change { takeaway.customer_order }
-        #   takeaway.customer_order.each { |hash| expect(hash.keys).to contain_exactly(*hash_keys)}
-        #   expect(takeaway).to receive(:verify_order).with(takeaway.customer_order)
-        #   takeaway.verify_order(takeaway.customer_order)
-        #   takeaway.total != takeaway.customer_order.map { |item| item[:price] * item[:quantity]}.reduce(:+)
-        #   expect(takeaway.verify_order(takeaway.customer_order)).to eq 'Sum does not match the total sum of the dishes ordered.'
-        #
-        # end
-
-
-
-      # takeaway1.show_menu
-      # takeaway1.ready_to_order
-      # expect(menu_obj).to receive(:select_dishes)
-      # menu_obj.select_dishes
-      # expect { takeaway1.ready_to_order }.to change { takeaway1.customer_order }
-      # takeaway1.customer_order.each { |hash| expect(hash.keys).to contain_exactly(*hash_keys)}
-      # expect(takeaway1).to receive(:verify_order).with(takeaway1.customer_order)#ordered_dishes
-      # takeaway1.verify_order(takeaway1.customer_order)
+    it 'raises error when total does not match the sum of the ordered dishes' do
+      # allow(menu_obj).to receive(:show_menu).and_return('list of dishes with prices')
+      # takeaway.show_menu
+      # menu_obj.show_menu
+      # list_of_dishes = [{dish:'pasta', price: 10.00, quantity: 4}]
+      # allow(menu_obj).to receive(:select_dishes).and_return(list_of_dishes)
+      # allow(takeaway).to receive(:ready_to_order).and_return(list_of_dishes)
+      # total = 30
+      # final_total = list_of_dishes.map { |item| item[:price] * item[:quantity]}.reduce(:+)
+      allow(takeaway).to receive(:verify_order).with('list_of_dishes').and_return('Sum does not match the total sum of the dishes ordered.')
+      expect(takeaway.verify_order('list_of_dishes')).to eq 'Sum does not match the total sum of the dishes ordered.'
+    end
 
   end
 

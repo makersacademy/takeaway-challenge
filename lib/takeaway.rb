@@ -25,7 +25,7 @@ attr_reader :customer_order, :total
     @total = order.map { |item| item[:price] * item[:quantity]}.reduce(:+)
     if @total == order.map { |item| item[:price] * item[:quantity]}.reduce(:+)
       #@sms.send_message
-      "true"
+      'true'
     else
       'Sum does not match the total sum of the dishes ordered.'
     end
