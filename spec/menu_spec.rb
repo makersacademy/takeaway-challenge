@@ -17,8 +17,19 @@ describe Menu do
     it 'shows all dishes' do
       menu.add_dish(dish1)
       menu.add_dish(dish2)
-      
+
       expect(menu.show_menu).to eq("Pizza: £5\nPasta: £4")
+    end
+  end
+
+  context '#on_menu?' do
+    it 'returns true if dish on menu' do
+      menu.add_dish(dish1)
+      expect(menu.on_menu?(dish1)).to eq true
+    end
+
+    it 'returns false if dish not on menu' do
+      expect(menu.on_menu?(dish1)).to eq false
     end
   end
 end
