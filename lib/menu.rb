@@ -1,3 +1,5 @@
+require "printer"
+
 class Menu
 
   attr_reader :food_options, :printer
@@ -11,8 +13,8 @@ class Menu
     ]
   end
 
-   def print
-     @printer.format
-   end
+  def print
+    @printer.format(food_options)
+  end
 
 end
