@@ -1,3 +1,5 @@
+require_relative 'price_error'
+
 class Order
 
   def initialize
@@ -7,6 +9,11 @@ class Order
   def add(dish_price_quantity)
     @order << dish_price_quantity
     printer
+  end
+
+  def confirm(price)
+    raise PriceError unless price == total_cost
+    
   end
 
 
