@@ -1,6 +1,9 @@
+require_relative 'order'
+
 class Menu
 
-  def initialize
+  def initialize(order = Order.new)
+    @order = order
     @menu = [
       { name: "Butterbeer", price: "3" }
     ]
@@ -12,11 +15,11 @@ class Menu
     end
   end
 
-  # def choose
-  #
-  # end
+  def choose(dish)
+    order.add(dish)
+  end
 
   private
 
-  attr_reader :menu
+  attr_reader :menu, :order
 end
