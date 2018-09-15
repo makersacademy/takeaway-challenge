@@ -29,8 +29,8 @@ class Order
   end
 
   def view_total
-    # sum of price_count array
-    # @total = @price_count.reduce { |sum, item| sum + item }
+    @total = @price_count.inject(0, :+)
+    "£#{total}"
   end
 end
 

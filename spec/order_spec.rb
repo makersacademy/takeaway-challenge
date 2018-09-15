@@ -20,8 +20,10 @@ describe Order do
 
   describe 'creating an order' do
 
-    # before do
-    #   allow(menu_double).to receive(:dishes).and_return({ dish_choice => 1 })
+    # before(:each) do
+    #   order.add("doughnut")
+    #   order.add("cake")
+    #   #allow(menu_double).to receive(:dishes).and_return({ dish_choice => 1 })
     # end
 
     it 'adds a dish and its quantity from the menu to an order' do
@@ -36,11 +38,11 @@ describe Order do
       expect(order.price_count).to eq [2, 2]
     end
 
-    # it 'can display the current total of an order' do
-    #   order.add_dish(dish, 2)
-    #   order.add_dish(dish, 3)
-    #   expect(order.view_total).to eq(8)
-    # end
+    it 'can display the current total of an order' do
+      order.add("doughnut")
+      order.add("cake")
+      expect(order.view_total).to eq("£4")
+    end
 
     # it 'can view the basket' do
     #   expect(order.view_basket).to eq basket
