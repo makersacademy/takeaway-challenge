@@ -43,7 +43,15 @@ expect { takeaway.ready_to_order }.to change { takeaway.customer_order }
 takeaway.customer_order.each { |hash| expect(hash.keys).to contain_exactly(*hash_keys)}
 expect(takeaway).to receive(:verify_order).with(takeaway.customer_order)
 takeaway.verify_order(customer_order)
-total = customer_order.each { |item| item[:price] * item[:quantity]}).reduce(:+)
+total = takeaway.customer_order.each { |item| item[:price] * item[:quantity]}).reduce(:+)
 
+
+```
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+```
 
 ```
