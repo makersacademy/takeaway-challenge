@@ -6,7 +6,7 @@ describe Calculator do
   it "calculates a total" do
 
     calculator = Calculator.new
-    expect(calculator.calculate_total([{ Dish: "Pork", Price: 5} ])).to eq(5)
+    expect(calculator.calculate_total([{ Dish: "Pork", Price: "5"}, { Dish: "Rice", Price: "3"}])).to eq(8)
     end
 
 end
