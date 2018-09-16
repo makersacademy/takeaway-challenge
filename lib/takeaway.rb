@@ -10,14 +10,16 @@ class Takeaway
   end
 
   def order(food, quantity = 1)
-    raise "Sorry, we don't have that item." if !@menu.include?(food)
+    raise "Sorry, we don't have that item." unless @menu.include?(food)
     calculate_total(food, quantity)
-    "#{quantity}x - #{food.capitalize} added to basket. Your current total is: #{order_total}"
+    "#{quantity}x - #{food.capitalize} added to basket. 
+    Your current total is: #{order_total}"
   end
 
-  
   def order_confirmation(message = Message.new, time = (Time.now + 3600))
-    message.send_text("Spasibo! Your total is #{order_total}. It will be there by #{time_format(time)}. Text 'Menu' to order over text!")
+    message.send_text("Spasibo! Your total is #{order_total}. 
+      It will be there by #{time_format(time)}. 
+      Text 'Menu' to order over text!")
     return_message
   end
   
@@ -28,7 +30,8 @@ class Takeaway
   end
 
   def return_message
-    "Spacibo! You will receive a text soon confirming your order. Next time, try ordering over text message!"
+    "Spacibo! You will receive a text soon confirming your order. Next time, 
+    try ordering over text message!"
   end
   
   def calculate_total(food_choice, quantity)

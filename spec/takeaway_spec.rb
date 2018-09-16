@@ -35,11 +35,11 @@ describe Takeaway do
       subject.order("olivier", 2)
       subject.order("borscht", 1)
       # here I check to seee the string includes the total!! 
-      expect(subject.order("salat")).to include { "£17.96" }
+      expect(subject.order("salat")).to include({ "£17.96" })
     end
 
     let(:takeaway) { described_class.new }
-    let(:message) { double :Message, send_text: "Spacibo!"}
+    let(:message) { double :Message, send_text: "Spacibo!" }
 
     it "gets a text confirming that my order has been placed" do
       takeaway.order("olivier", 2)

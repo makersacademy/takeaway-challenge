@@ -13,22 +13,7 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## A takeaway program with the following user stories:
 
 ```
 As a customer
@@ -47,33 +32,60 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+### Technologies Used:
+* [dotenv](https://github.com/bkeepers/dotenv) - loads ENV variables
+* [ngrok](https://ngrok.com/) - A secure tunnel to my localhost
+* [Pry](http://pryrepl.org/) - An awesome REPL for Ruby
+* [Ruby](https://www.ruby-lang.org/en/) - Programming Language
+* [Sinatra](http://sinatrarb.com/) - Domain Specific Language for Web Apps
+* [Twilio-Ruby](https://www.twilio.com/docs/libraries/ruby) - API that allows user to send and receive texts.
+* [VCR](https://github.com/vcr/vcr) - Records HTTP interactions for tests
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+### Launch Program:
+```zsh
+$ pry -r './lib/takeaway.rb'
+[1] pry(main)> russian = Menu.new
+=> #<Menu:0x00007fde4d5c0a48
+ @current_menu=
+  {"pelmeni"=>6.99,
+   "borscht"=>5.99,
+   "tvarog"=>3.99,
+   "olivier"=>4.99,
+   "salat"=>1.99,
+   "blinchiki"=>9.99}>
+[2] pry(main)> shop = Takeaway.new
+[3] pry(main)> shop.order("pelmeni", 2)
+=> "2x - Pelmeni added to basket. Your current total is: £13.98"
+[5] pry(main)> shop.order_confirmation
+=> "Spacibo! You will receive a text soon confirming your order. Next time, try ordering over text message!"
+```
+#### Photo of text: 
+![photo of text](https://i.imgur.com/kbnSzxZ.jpg?1)
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+**I was able to integrate the bonus challenge** into my program using ngrok and Sinatra, allowing you to order food by texting the number. 
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Photos:
 
+![placing order](https://i.imgur.com/P6ojEIp.png?1)![choosing food](https://i.imgur.com/vJtBmq0.png?4)![getting total](https://i.imgur.com/i1cqSZ1.png?1)![final confirm](https://i.imgur.com/RgC6B95.png?1)
 
-In code review we'll be hoping to see:
+### My Process
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Following the user stories as stated above, I was able to create a program where a user can order food from a menu, receive the total amount, and then finally receive a text that confirms the order.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+I used a test-driven approach when completing this application, and the greatest challenge was writing tests when sending a text message. 
 
-Notes on Test Coverage
-------------------
+At first I thought to stub out the *send_text* method in order for the tests to pass AND avoid sending me un-needed texts. However, even though it worked, I was unsatisfied with the test coverage and that I wasn't technically writing the test that did exactly that. Thankfully, with some research, I was able to use VCR, a gem that sent http requests but stored the results in a yml file. You can see it in the [fixtures](./fixtures/vcr_cassettes/twilio.yml) folder.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+This helped me achieve one of my goals I set when starting this application which was to get 100% test coverage.
+
+Speaking of goals, I had three personal goals set:
+
+- [x] Get 100% Test Coverage (like in my Airplane Application)
+- [x] Continue to debug effectively -- debugging 3rd party APIs
+- [x] Get proof that I can learn anything on my own
+
+I can happily report I achieved all three goals for this challenge, and I will share my code with more experienced folk who can provide feedback regarding my application. 
+
+---
+
+A blog post about [this project](https://kharouk.github.io).
