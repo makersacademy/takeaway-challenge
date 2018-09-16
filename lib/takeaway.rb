@@ -5,11 +5,11 @@ class Takeaway
   attr_reader :customer_order, :total, :sms
   @menu = []
 
-  def initialize(menu = Menu.new, sms = Sms.new)
+  def initialize(menu = Menu.new, sms_obj)
     @customer_order = []
     @menu = menu
     @total = 0.0
-    @sms = sms
+    @sms = sms_obj || Sms.new
   end
 
   def show_menu
@@ -35,8 +35,8 @@ class Takeaway
   def complete_order(total)
     "your total is #{total} "
     if is_price_correct?
-      'send sms to the customer'
-       # @sms.send_message("Thank you for your order: your total is £#{@total}")
+      #'send sms to the customer'
+       @sms.send_message("Thank you for your order, it will be delivered before 18:55")
     else
       'Sum does not match the total sum of the dishes ordered.'
     end

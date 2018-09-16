@@ -9,7 +9,7 @@ class Sms
 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     from = '+447859893435' # Your Twilio number
-    to = '+447859893435' # Your mobile phone number
+    to = '+447449795582' # Your mobile phone number
 
     @client.messages.create(
       from: from,

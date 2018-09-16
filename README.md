@@ -55,9 +55,6 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-I have commented out my sms message method as my twilio API is
-giving me an error saying my number is invalid. 
-
 ```
 
 * Hints on functionality to implement:

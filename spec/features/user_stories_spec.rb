@@ -39,7 +39,8 @@ describe 'all user stories' do
 
   describe '#verify_order' do
     it 'it verifies the total matches the sum of the various dishes in my order' do
-      takeaway = Takeaway.new
+      allow(sms_obj).to receive(:send_message).with("Thank you for your order, it will be delivered before 18:55")
+      takeaway = Takeaway.new(sms_obj)
       menu_obj = Menu.new
       takeaway.show_menu() # menu{dishes => price}
       expect(menu_obj.show_menu).to eq(menu_obj.menu)
@@ -61,10 +62,10 @@ describe 'all user stories' do
     end
 
     it 'sends sms to the customer' do
+      allow(menu_obj).to receive(:send_message).with("Thank you for your order, it will be delivered before 18:55")
       allow(takeaway).to receive(:is_price_correct?).and_return(true)
-      expect(takeaway.complete_order(takeaway.total)).to eq 'send sms to the customer'
-      expect(sms_obj).to receive(:send_message).with("Thank you for your order: your total is £25.50")
-      sms_obj.send_message("Thank you for your order: your total is £25.50")
+      expect(sms_obj).to receive(:send_message).with("Thank you for your order, it will be delivered before 18:55")
+      sms_obj.send_message("Thank you for your order, it will be delivered before 18:55")
     end
 
   end
