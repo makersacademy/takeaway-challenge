@@ -6,10 +6,10 @@ describe Menu do
 
   let(:dish_hash) do
     {
-     pasta: 4.5,
-     pizza: 5.0,
-     veggy_wrap: 3.8,
-     noodles: 4.5
+     pasta: 4.50,
+     pizza: 5.00,
+     veggy_wrap: 3.85,
+     noodles: 4.50
      }
   end
 
@@ -19,7 +19,7 @@ describe Menu do
 
   describe '#printing_menu' do
     it 'prints the menu' do
-      formatted_menu = "Pasta 4.5, Pizza 5.0, Veggy_wrap 3.8, Noodles 4.5"
+      formatted_menu = "Pasta 4.50, Pizza 5.00, Veggy_wrap 3.85, Noodles 4.50"
       expect(menu.printing_menu).to eq(formatted_menu)
     end
   end

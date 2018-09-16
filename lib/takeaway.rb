@@ -2,7 +2,6 @@ class Takeaway
 
   def initialize(menu_class = Menu)
     @menu_class = menu_class
-
   end
 
   def print_menu
