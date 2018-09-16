@@ -17,7 +17,7 @@ class TakeAway
   end
 
   def read_menu
-    menu.each { |k, v| puts "#{k}: £#{v}" }
+    menu.each { |k, v| puts "#{k}: £#{'%.2f' % v}" }
   end
 
   def add_dish(dish, number = 1)

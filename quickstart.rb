@@ -1,5 +1,10 @@
+require 'twilio-ruby'
 require 'sinatra'
 
-get '/' do
-  "James is a nerd"
+get '/sms-quickstart' do
+  twiml = Twilio::TwiML::MessagingResponse.new do |r|
+    r.message(body: 'Thanks for placing your order!')
+  end
+
+  twiml.to_s
 end

@@ -11,7 +11,7 @@ class Message
   end
 
   def send_message
-    t = Time.now + 60 * 30
+    t = Time.now + 60 * 60
     client.messages.create(
     from: from,
     to: to,

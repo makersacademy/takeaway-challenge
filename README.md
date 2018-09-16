@@ -14,66 +14,59 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+This repository contains the week 2 Makers Academy homework challenge. The program is run on the command line and allows you to see everything on a takeaway menu, place orders from that menu and complete the order and have a message confirming your order and a delivery time sent to your phone using Twilio.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+The actual requirements for the program were a little thin in that to satisfy them required relatively little writing of code. If I were to continue with this program to bulk it out here are some things I would do:
+- Create a menu class so I could add and remove dishes being ordered
+- Create methods to require some details like address and phone number before allowing orders to be placed on the system
+- Play with the send messages to include further details about the order (total price, whether it was paid for already, where it's going to, delivery drivers name etc.)
+- Have a search function in the menu class so people could search for 'chicken' and have it return a list of chicken based dishes
 
-Task
------
+I did manage to be able to get Twilio to respond to texts I sent but wasn't sure how to get it to interact with them, the whole creating a server process is super unfamiliar but something I'd like to come back to.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+To use this program you can clone this repo, navigate to it's folder in the command line and require the 'lib/takeaway.rb' in irb. Currently when you run the program it would only send messages to my phone though ¯\_(ツ)_/¯
+
+an example of it's use it irb would be
+
+1. require the takeaway class (automatically requires message class)
+2. check what's on the menu using read_menu
+3. add a couple of dishes to your order
+4. check what's currently in your basket
+5. add some more dishes
+6. checkout to confirm your order
+
+this looks like:
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+2.5.0 :001 > require './lib/takeaway.rb'
+ => true
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+2.5.0 :002 > order = TakeAway.new
+ => #<TakeAway:0x00007fbbf60f9ee8    [A whole load of Twilio stuff is created here]
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+2.5.0 :003 > order.read_menu
+Sweet & Sour Chicken Balls: £3.99
+Chicken Chowmein: £4.50
+Crispy Shredded Beef: £5.90
+Egg Fried Rice: £3.00
+Fried Duck with Black Bean Sauce: £6.40
+ => {"Sweet & Sour Chicken Balls"=>3.99, "Chicken Chowmein"=>4.5, "Crispy Shredded Beef"=>5.9, "Egg Fried Rice"=>3.0, "Fried Duck with Black Bean Sauce"=>6.4}
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+2.5.0 :004 > order.add_dish('Egg Fried Rice')
+ => 3.0
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+2.5.0 :005 > order.basket_total
+ => "1x Egg Fried Rice = £3.00. Total £3.00"
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+2.5.0 :006 > order.add_dish('Sweet & Sour Chicken Balls',2)
+ => 10.98
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+2.5.0 :007 > order.add_dish('Chicken Chowmein',3)
+ => 24.48
 
+2.5.0 :008 > order.basket_total
+ => "1x Egg Fried Rice = £3.00, 2x Sweet & Sour Chicken Balls = £7.98, 3x Chicken Chowmein = £13.50. Total £24.48"
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+2.5.0 :009 > order.checkout
+ => <Twilio.Api.V2010.MessageInstance [A whole load of Twilio stuff is here too]
+ ```
