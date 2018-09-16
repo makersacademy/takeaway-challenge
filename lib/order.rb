@@ -1,4 +1,4 @@
-require 'sms'
+require_relative 'sms'
 
 class Order
   attr_reader :basket

@@ -1,6 +1,6 @@
-require 'menu'
-require 'order'
-require 'sms'
+require_relative 'menu'
+require_relative 'order'
+require_relative 'sms'
 
 class Takeaway
   def initialize(config)
