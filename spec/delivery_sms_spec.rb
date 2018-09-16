@@ -1,6 +1,6 @@
 require 'delivery_sms'
 
-describe DeliverySMS do
+xdescribe DeliverySMS do
   context "#send" do
     it "sends a text to my phone" do
       subject.send

@@ -2,7 +2,8 @@ require 'order'
 
 describe Order do
   context "#add" do
-    let(:order) { described_class.new }
+    let(:price_double) { double :Price_Double, total_cost: 132}
+    let(:order) { described_class.new(price_double) }
     it "adds dish to @order" do
       selected_dish = { name: "Butterbeer", price: 3, quantity: 44 }
       return_string = "\n\n\nCurrent order:\n\n44 Butterbeer\n\nTotal: 132 silver sickles\n\n\n\n"
@@ -11,12 +12,9 @@ describe Order do
   end
 
   context "#confirm" do
-    let(:sms_double) { double :Delivery_SMS_Double, send: true}
-    let(:order) { described_class.new(sms_double) }
-    it "checks whether there has been a miscalculation" do
-      expect { order.confirm(16) }.to raise_error(PriceError)
-    end
-    it "sends an sms when order sucessful" do
+    let(:price_double) { double :Price_Double, confirm: true}
+    let(:order) { described_class.new(price_double) }
+    it "calls Price#confirm" do
       expect(order.confirm(0)).to eq(true)
     end
   end

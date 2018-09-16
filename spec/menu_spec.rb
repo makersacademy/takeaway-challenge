@@ -16,11 +16,11 @@ describe Menu do
     end
   end
 
-  context "#place_order" do
+  context "#confirm_order" do
     let(:order_double) { double :Order_Double, confirm: true }
     let(:menu) { described_class.new(order_double) }
     it "takes the Customer's Price as a variable" do
-      expect(menu.place_order(15)).to eq true
+      expect(menu.confirm_order(15)).to eq true
     end
   end
 end

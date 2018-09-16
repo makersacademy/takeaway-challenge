@@ -2,13 +2,14 @@ require_relative 'order'
 
 class Menu
 
+  MENU = [
+    { name: "Butterbeer", price: 3 },
+    { name: "Bertie Botts Every Flavour beans", price: 7 },
+    { name: "Chocolate Frogs", price: 5 }
+  ]
+
   def initialize(order = Order.new)
     @order = order
-    @menu = [
-      { name: "Butterbeer", price: 3 },
-      { name: "Bertie Botts Every Flavour beans", price: 7 },
-      { name: "Chocolate Frogs", price: 5 }
-    ]
   end
 
   def see
@@ -20,7 +21,7 @@ class Menu
     order.add(dish_price_quantity)
   end
 
-  def place_order(price)
+  def confirm_order(price)
     order.confirm(price)
   end
 
@@ -30,7 +31,7 @@ class Menu
 
   def search_menu(dish, quantity)
     dish_price_quantity = []
-    menu.each do |item|
+    MENU.each do |item|
       dish_price_quantity = item if dish == item[:name]
     end
     dish_price_quantity[:quantity] = quantity
@@ -42,7 +43,7 @@ class Menu
     three_new_lines
     puts "Hogwarts Train Trolley"
     one_new_line
-    menu.each_with_index do |dish, index|
+    MENU.each_with_index do |dish, index|
       print "#{index + 1}. #{dish[:name]}:".ljust line_width
       puts " #{dish[:price]} sickles".rjust line_width
     end

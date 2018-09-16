@@ -1,44 +1,36 @@
-require_relative 'price_error'
-require_relative 'delivery_sms'
+require_relative 'price'
 
 class Order
 
-  def initialize(sms = DeliverySMS.new)
+  def initialize(price = Price.new)
     @order = []
-    @sms = sms
+    @price = price
   end
 
   def add(dish_price_quantity)
-    @order << dish_price_quantity
+    order << dish_price_quantity
     printer
   end
 
-  def confirm(price)
-    raise PriceError unless price == total_cost
-    @sms.send
+  def confirm(cost)
+    price.confirm(cost, order)
   end
 
 
   private
 
+  attr_reader :order, :price
+
   def printer
     three_new_lines
     puts "Current order:"
     one_new_line
-    @order.each do |dish|
+    order.each do |dish|
       puts "#{dish[:quantity]} #{dish[:name]}"
     end
     one_new_line
-    puts "Total: #{total_cost} silver sickles"
+    puts "Total: #{price.total_cost(order)} silver sickles"
     three_new_lines
-  end
-
-  def total_cost
-    total = 0
-    @order.each do |dish|
-      total += dish[:quantity] * dish[:price]
-    end
-    total
   end
 
   def three_new_lines
