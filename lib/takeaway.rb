@@ -24,4 +24,8 @@ class Takeaway
   def view_order
     print order.display
   end
+
+  def checkout
+    sender.send
+  end
 end
