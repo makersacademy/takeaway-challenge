@@ -5,9 +5,25 @@ describe 'User Stories' do
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
 
-let(:menu2) {menu2 = {:"1.fish_and_chips" => '£3.20', :"2.burger_and_chips" => '£4.20', :"3.chips" => '£1'}}
-  it 'so that takeaway has a menu, display list of dishes with prices' do
-    takeaway = Takeaway.new
+let(:menu2) {menu2 = {
+  "fish and chips" => '£3.20', 
+  "burger and chips" => '£4.20', 
+  "chips" => '£1',
+  }
+}
+
+let(:dish1) {dish1 = {"fish and chips" => '£3.20'}}
+let(:dish2) {dish2 = {"burger and chips" => '£4.20'}}
+let(:dish3) {dish3 = {"chips" => '£1'}}
+
+
+let(:selection1) {selection1 = "fish and chips"}
+let(:selection2) {selection2 = "burger and chips"}
+let(:selection3) {selection3 = "chips"}
+
+let(:takeaway) {takeaway = Takeaway.new}
+  
+it 'so that takeaway has a menu, display list of dishes with prices' do
     expect(takeaway.menu).to eq(menu2)
   end
 
@@ -15,11 +31,16 @@ let(:menu2) {menu2 = {:"1.fish_and_chips" => '£3.20', :"2.burger_and_chips" => 
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
 
-let(:menu2) {menu2 = {:"1.fish_and_chips" => '£3.20', :"2.burger_and_chips" => '£4.20', :"3.chips" => '£1'}}
-  xit 'so that I can select meals, add meals to my basket' do
-    takeaway = Takeaway.new
-    takeaway.add_meal(1)
-    expect(takeaway.order).to eq({:"1.fish_and_chips" => '£4.20'})
+it 'so that I can a select meal, add that meal to my basket' do
+  takeaway.add_meal(selection2)
+  expect(takeaway.order).to eq(dish2)
+end
+  
+it 'so that I can select different meals, add meals to my basket' do
+    takeaway.add_meal(selection1)
+    takeaway.add_meal(selection2)
+    takeaway.add_meal(selection3)
+    expect(takeaway.order).to eq(menu2)
   end
 # As a customer
 # So that I can verify that my order is correct
