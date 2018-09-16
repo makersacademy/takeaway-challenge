@@ -44,4 +44,35 @@ menu.get_dish_obj("xyz") == dish
 menu.display
 order.add_order('xyz', 2)
 menu.has_dish?('xyz') == true
-order.final_order.include?({Ordered_dish: dish, Quantity: 2}) == true
+order.final_order.include?({dish: dish, quantity: 2}) == true
+sum = order.final_order[0][:quantity] * order.final_order[0][:dish].price
+
+<!-- As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered -->
+
+irb
+require './lib/menu.rb'
+require './lib/order.rb'
+require './lib/dish.rb'
+menu = Menu.new
+order = Order.new(menu)
+dish1 = Dish.new("xyz", 10)
+dish2 = Dish.new("abc", 20)
+dish3 = Dish.new("lmn", 30)
+menu.add_dish(dish1)
+menu.add_dish(dish2)
+menu.add_dish(dish3)
+menu.get_dish_obj("xyz") == dish1
+menu.get_dish_obj("abc") == dish2
+menu.get_dish_obj("lmn") == dish3
+menu.display
+order.add_order('xyz', 3)
+order.add_order('abc', 1)
+menu.has_dish?('xyz') == true
+menu.has_dish?('abc') == true
+order.final_order
+sum = order.final_order[0][:quantity] * order.final_order[0][:dish].price
+sum = order.final_order[1][:quantity] * order.final_order[1][:dish].price
+
+order.final_bill
