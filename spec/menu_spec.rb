@@ -1,7 +1,9 @@
 require 'menu'
 
 describe Menu do
-  
+  let(:pizza_double) { double(:dish, id: :pizza, price: 2) }
+  let(:lasagne_double) { double(:dish, id: :lasagne, price: 5) }
+
   describe '#initialize' do
     it 'is expected to be empty at creation' do
       expect(subject.items).to eq({}) 
@@ -10,15 +12,15 @@ describe Menu do
 
   describe '#add' do
     it 'is expected to add item and price to the menu' do
-      subject.add(:egg, 1)
-      expect(subject.items).to eq({egg: 1})
+      subject.add(:pizza, pizza_double)
+      expect(subject.items).to eq({pizza: pizza_double})
     end
   end
 
   describe '#remove' do
     it 'is expected to remove item and price from the menu' do
-      subject.add(:egg, 1)
-      subject.remove(:egg)
+      subject.add(:pizza, pizza_double)
+      subject.remove(:pizza)
       expect(subject.items).to eq({})
     end
   end
@@ -27,16 +29,9 @@ describe Menu do
     it { is_expected.to respond_to(:print_menu) }
 
     it 'prints the menu for the user' do
-      subject.add(:egg, 1)
-      expect(subject.print_menu).to eq("Menu\nEgg £1")
+      subject.add(:pizza, pizza_double)
+      subject.add(:lasagne, lasagne_double)
+      expect(subject.print_menu).to eq("Menu\nPizza £2\nLasagne £5")
     end
-
-    it 'correctly formats the return with linebreaks' do
-      subject.add(:egg, 1)
-      subject.add(:toast, 2)
-      expect(subject.print_menu).to eq("Menu\nEgg £1\nToast £2")
-    end
-
   end
-
 end

@@ -5,18 +5,19 @@ class Menu
     @items = {}
   end
 
-  def add(item, price)
-    @items[item] = price
+  def add(key, item)
+    @items[key] = item
+    p @items
   end
 
-  def remove(item)
-    @items.delete(item)
+  def remove(key)
+    @items.delete(key)
   end
 
   def print_menu
     return_string = "Menu"
-    @items.each_pair do |key, value|
-      return_string << "\n#{key.capitalize} £#{value}"
+    @items.each_pair do |key, item|
+      return_string << "\n#{item.id.capitalize} £#{item.price}"
     end
     return_string
   end

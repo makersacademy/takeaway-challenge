@@ -5,6 +5,9 @@ describe 'user_stories' do
   # I would like to see a list of dishes with prices
   it 'so user can check the menu, list dishes with prices' do
     menu = Menu.new
+
+    menu.add(:pizza, Dish.new(:pizza, 2))
+
     expect { menu.print_menu }.to_not raise_error
   end
 
@@ -13,8 +16,13 @@ describe 'user_stories' do
   # I would like to be able to select some number of several available dishes
   it 'so user can order the meal, let user select some available dishes' do
     menu = Menu.new
-    order = Order.new
-    expect { order.add([{egg: 12}, {pineapple: 3}], 15) }.to_not raise_error
+    order = Order.new 
+
+    menu.add(:pizza, Dish.new(:pizza, 2))
+    menu.add(:lasagne, Dish.new(:lasagne, 5))
+    menu.print_menu
+
+    expect { order.add(menu.items[:lasagne] => 1, menu.items[:pizza] => 2) }.to_not raise_error
   end
 
   # As a customer
@@ -22,8 +30,14 @@ describe 'user_stories' do
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
   it 'so user can verify the cost of their order, display the total' do
     menu = Menu.new
-    order = Order.new
-    order.add([{egg: 12}, {pineapple: 3}], 15)
+    order = Order.new 
+
+    menu.add(:pizza, Dish.new(:pizza, 2))
+    menu.add(:lasagne, Dish.new(:lasagne, 5))
+    menu.print_menu
+
+    order.add(menu.items[:lasagne] => 1, menu.items[:pizza] => 2)
+
     expect { order.calculate }.to_not raise_error
   end
 end

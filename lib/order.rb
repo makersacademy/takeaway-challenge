@@ -1,7 +1,6 @@
 class Order
 
-  def add(order, total_cost)
-
+  def add(order)
   end
 
   def calculate
