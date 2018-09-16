@@ -12,11 +12,13 @@ class Order
   end
 
   def calculate_total_price
-    total = 0
-    @basket.each do |item, quantity|
-      total += item.price * quantity
-    end
-    puts "Total: £#{'%.2f' % total}"
+    puts "Total: £#{'%.2f' % calculate_total}"
+  end
+
+  def calculate_total
+    @basket.map do |item, quantity|
+      item.price * quantity
+    end.sum
   end
 
   def calculate_subtotals

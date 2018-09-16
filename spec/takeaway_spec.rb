@@ -3,7 +3,8 @@ require 'takeaway'
 describe Takeaway do
   let(:menu) { double :menu }
   let(:order) { double :order }
-  subject(:takeaway) { described_class.new(menu, order) }
+  let(:sms_sender) { double :smssender }
+  subject(:takeaway) { described_class.new(menu, order, sms_sender) }
  
   it 'contains a @menu that is an instance of Menu' do
     ta = described_class.new()
@@ -68,6 +69,39 @@ describe Takeaway do
       allow(order).to receive(:calculate_subtotals).and_return("SHOULD PRINT THIS")
       expect(takeaway.show_order_subtotals).to eq('SHOULD PRINT THIS')
     end
+  end
+
+  describe '#checkout' do
+
+    before :each do
+      dummy_total = 25
+      allow(order).to receive(:calculate_total).and_return(dummy_total)
+      allow(sms_sender).to receive(:send_order_confirmation).and_return("SHOULD SEND THIS")
+    end
+
+    context 'when no total is given by user' do
+
+      it 'does not raise an error' do
+        expect { takeaway.checkout() }.not_to raise_error
+      end
+
+      it 'sends a confirmation message to a customer' do
+        expect(takeaway.checkout()).to eq('SHOULD SEND THIS')
+      end
+
+    end    
+
+    context 'when total is given by user' do
+      
+      it 'raises an error if calculated total and given total do not match' do
+        expect { takeaway.checkout(20) }.to raise_error('Totals do not match!')
+      end
+
+      it 'sends a confirmation message to a customer' do
+        expect(takeaway.checkout()).to eq('SHOULD SEND THIS')
+      end
+    end
+
   end
 
 end

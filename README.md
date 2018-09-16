@@ -27,7 +27,7 @@ Work on this challenge as conclusion of week 2, to work towards these goals:
 Instructions
 -----
 
-* Fork [this repo] (https://github.com/makersacademy/takeaway-challenge)
+* Fork [this repo](https://github.com/makersacademy/takeaway-challenge)
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
@@ -57,14 +57,32 @@ STATUS
 - includes order.rb / order_spec.rb
 - includes menu.rb / menu_spec.rb
 - includes menu_item.rb / menu_item_spec.rb
+- includes sms_sender.rb / sms_sender_spec.rb (latter is empty)
+- uses dotenv to store environment variables
 
-completes user stories 1-3, passes all tests
-no rubocop offences, 100% test coverage according to Rspec
+completes user stories 1-4, passes all tests
+no rubocop offenses, 100% overall test coverage according to Rspec (but no sms_sender_spec.rb tests) when all tests are live (real SMS send currently xit). with xit test 97.66%.
+
+**Notes**
+takeaway.rb includes 'inspect' method:
+```
+  def inspect
+    "Takeaway"
+  end
+```
+Uncomment to make IRB output easier to read.
+
+**TO DO**
+
+- Unit tests for Twilio / SMS order confirmation (sms_sender_spec.rb)
+- refactoring (including removing numbers from specs)
+- tidy up order.rb methods to ensure single responsibility (formatting should be done somewhere else - maybe in takeaway)
+- fix heredoc indentation problem
 
 Notes on use in IRB
 ------------------
 ```
-.5.0 :001 > require './lib/order.rb'
+2.5.0 :001 > require './lib/order.rb'
  => true
 2.5.0 :002 > require './lib/menu.rb'
  => true
@@ -72,7 +90,6 @@ Notes on use in IRB
  => false
 2.5.0 :004 > require './lib/takeaway.rb'
  => true
-2.5.0 :005 >
 2.5.0 :005 > ta = Takeaway.new
  => #<Takeaway:0x00007ffe4a01c138 @menu=#<Menu:0x00007ffe49153e30 @items=[#<MenuItem:0x00007ffe49152f08 @name="Pizza", @price=8>, #<MenuItem:0x00007ffe49151a68 @name="Burger", @price=9>, #<MenuItem:0x00007ffe491518b0 @name="Chips", @price=4.5>]>, @order=#<Order:0x00007ffe49151770 @basket={}>>
 2.5.0 :006 > ta.read_menu
@@ -97,12 +114,12 @@ Pizza x 1: £8.00
 2.5.0 :012 > ta.show_order_total
 Total: £17.00
  => nil
+2.5.0 :01 > ta.checkout(15)
+RuntimeError (Totals do not match!)
+2.5.0 :015 > ta.checkout
+You will receive a confirmation text shortly.
 
 ```
-
-**TO DO**
-
-- Twilio integration for customers to receive order confirmation
 
 Author
 -----

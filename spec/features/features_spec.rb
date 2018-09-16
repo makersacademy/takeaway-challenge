@@ -2,11 +2,14 @@ require 'takeaway'
 require 'menu'
 require 'menu_item'
 require 'order'
+require 'sms_sender'
 
 describe 'User stories' do
   let(:menu) { Menu.new }
   let(:order) { Order.new }
-  let(:takeaway) { Takeaway.new(menu, order) }
+  let(:sms_sender) { SMSSender.new }
+  # using this uses a real instance of SMSSender, sending real texts
+  let(:takeaway) { Takeaway.new(menu, order, sms_sender) }
 
   # As a customer
   # So that I can check if I want to order something
@@ -55,11 +58,37 @@ Chips x 1: £4.50
     takeaway.order_item('Pizza', 2)
     takeaway.order_item('Chips')
     expect { takeaway.show_order_subtotals }.to output(dummy_subtotals).to_stdout
-
   end
 
   # As a customer
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+ 
+  # When active, this test sends real text messages
+  xit 'sends a confirmation text to the user on successful checkout' do
+    takeaway.order_item('Pizza', 2)
+    takeaway.order_item('Chips')
+    expect { takeaway.checkout(20.50) }.to output("You will receive a confirmation text shortly.\n").to_stdout
+  end
 
+# These are the same tests used in 'takeaway_spec' in order to not send real texts
+  context 'uses a mock of SMSSender' do
+    let(:sms_sender_mock) { double :sms_sender }
+    let(:takeaway) { Takeaway.new(menu, order, sms_sender_mock) }
+    
+    before :each do
+      dummy_total = 25
+      allow(order).to receive(:calculate_total).and_return(dummy_total)
+      allow(sms_sender_mock).to receive(:send_order_confirmation).and_return("SHOULD SEND THIS")
+    end
+
+    it 'sends a confirmation text to the user on successful checkout' do
+      expect(takeaway.checkout()).to eq('SHOULD SEND THIS')
+    end
+    it 'raises an error if calculated total and given total do not match' do
+      expect { takeaway.checkout(20) }.to raise_error('Totals do not match!')
+    end
+    
+  end
+  
 end

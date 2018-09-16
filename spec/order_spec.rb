@@ -30,6 +30,10 @@ describe Order do
           expect { order.calculate_total_price }.to output("Total: £8.50\n").to_stdout
         end
       end
+
+      describe 'calculate_total' do
+        
+      end
   
       describe '#calculate_subtotals' do
         dummy_subtotals = <<-HEREDOC
