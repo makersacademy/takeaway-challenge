@@ -13,15 +13,28 @@ class DeliverySMS
     @to = ENV["MY_PHONE_NUMBER"]
   end
 
-  def send
+  def send_confirmation
 
     delivery_time = Time.new + ONE_HOUR
+    formated_delivery_time = delivery_time.strftime("%H:%M")
+    response = "Thank you! Your order was placed and "
+    response += "will be delivered by Owl before #{formated_delivery_time}."
 
     client.messages.create(
       from: from,
       to: to,
-      body: "Thank you! Your order was placed and will be delivered before #{delivery_time.strftime("%H:%M")}"
+      body: response
     )
+  end
+
+  def send_by_sms(string)
+
+    client.messages.create(
+      from: from,
+      to: to,
+      body: string
+    )
+
   end
 
   private

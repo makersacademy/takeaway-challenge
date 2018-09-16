@@ -16,7 +16,6 @@ class Order
     price.confirm(customer_input_price, order)
   end
 
-
   private
 
   attr_reader :order, :price
