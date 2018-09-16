@@ -23,4 +23,10 @@ class Menu
     return false
   end
 
+  def get_dish_obj(dish_name)
+    @dishes.each do |dish|
+      return dish if dish.name == dish_name
+    end
+    nil
+  end
 end

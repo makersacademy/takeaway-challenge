@@ -9,10 +9,11 @@ class Order
     @final_order = []
   end
 
-  def add_order(dish)
-    fail 'Sorry, #{dish} is not availble' unless @menu.has_dish?(dish) 
-    if @menu.has_dish?(dish)
-      @final_order.push(dish)
+  def add_order(dish_name, quantity)
+    fail 'Sorry, #{dish} is not availble' unless @menu.has_dish?(dish_name) 
+    if @menu.has_dish?(dish_name)
+      dish = @menu.get_dish_obj(dish_name)
+      @final_order.push({Ordered_dish: dish, Quantity: quantity})
     end
   end
 
