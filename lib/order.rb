@@ -36,12 +36,12 @@ class Order
   end
 end
 
-# order = Order.new()
-# order.show_menu
-# order.add(2)
-# order.add(2)
-# order.show_orders
-# order.place_order
+order = Order.new()
+order.show_menu
+order.add(2)
+order.add(2)
+order.show_orders
+order.place_order
 
 
  # require './lib/order.rb'
