@@ -14,14 +14,14 @@ class Order
   end
 
   def place_order
-    arr = @summary.map { |k, v| "#{k[:name].capitalize}: £#{k[:price]} x #{v}" }
+    arr = @summary.map { |k, v| "#{k[:name].capitalize}: £#{"%.2f" %k[:price]} x #{v}" }
     arr.join("\n")
   end
 
   def total
     sum = 0
     @summary.map { |k, v| sum += k[:price] * v }
-    "£#{sum}"
+    "£#{"%.2f" % sum}"
   end
 
   def check_order

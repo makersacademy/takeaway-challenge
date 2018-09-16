@@ -11,7 +11,7 @@ describe Order do
     it 'takes order from customer' do
       order.add(dish1, 1)
 
-      expect(order.summary).to eq({ { name: 'pizza', price: 5 } => 1 })
+      expect(order.summary).to eq({ { name: 'pizza', price: 5} => 1 })
     end
 
     it 'selects several dishes' do
@@ -42,7 +42,7 @@ describe Order do
       order.add(dish2, 1)
       order.add(dish3, 1)
 
-      expect(order.place_order).to eq("Pizza: £5 x 2\nPasta: £4 x 1\nChicken: £7 x 1")
+      expect(order.place_order).to eq("Pizza: £5.00 x 2\nPasta: £4.00 x 1\nChicken: £7.00 x 1")
     end
   end
 
@@ -52,7 +52,7 @@ describe Order do
       order.add(dish2, 1)
       order.add(dish3, 1)
 
-      expect(order.total).to eq "£21"
+      expect(order.total).to eq "£21.00"
     end
   end
 
@@ -62,7 +62,7 @@ describe Order do
       order.add(dish2, 1)
       order.add(dish3, 1)
 
-      expect(order.check_order).to eq("Pizza: £5 x 2\nPasta: £4 x 1\nChicken: £7 x 1\nTotal: £21")
+      expect(order.check_order).to eq("Pizza: £5.00 x 2\nPasta: £4.00 x 1\nChicken: £7.00 x 1\nTotal: £21.00")
     end
   end
 end

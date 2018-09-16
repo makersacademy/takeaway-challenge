@@ -9,7 +9,7 @@ describe Menu do
     it 'adds hash to dishes array' do
       menu.add_dish(dish1)
 
-      expect(menu.dishes).to include({ name: dish1.name, price: dish1.price })
+      expect(menu.dishes).to include({ name: dish1.name, price:"%.2f" % dish1.price })
     end
   end
 
@@ -18,7 +18,7 @@ describe Menu do
       menu.add_dish(dish1)
       menu.add_dish(dish2)
 
-      expect(menu.show_menu).to eq("Pizza: £5\nPasta: £4")
+      expect(menu.show_menu).to eq("Pizza: £5.00\nPasta: £4.00")
     end
   end
 
@@ -31,5 +31,5 @@ describe Menu do
     it 'returns false if dish not on menu' do
       expect(menu.on_menu?(dish1)).to eq false
     end
-  end  
+  end
 end
