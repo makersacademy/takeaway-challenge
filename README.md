@@ -1,3 +1,7 @@
+Week 2 - Weekend Challenge
+
+Technologies used: Ruby, Rspec
+
 Takeaway Challenge
 ==================
 ```
@@ -13,22 +17,10 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
+Task
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Create a programme to satisfy the following user stories:
 
 ```
 As a customer
@@ -48,32 +40,52 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Install
+-----
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+If you don't have bundle already, run:
+```
+$ gem install bundle
+```
+When the installation completes, run:
+```
+$ bundle
+```
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Run
+-----
+To run rspec tests from the directory:
+```
+$ rspec
+```
 
+To check for any code styling offenses:
+```
+$ rubocop
+```
 
-In code review we'll be hoping to see:
+IRB Sample
+-----
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Viewing the takeaway menu:
+```
+2.5.0 :006 > takeaway = Takeaway.new
+ => #<Takeaway:0x00007fac6924eb28 @menu=#<Menu:0x00007fac6924eb00 @dishes={"doughnut"=>2, "cake"=>2, "pancakes"=>3, "ice-cream"=>2}>>
+2.5.0 :007 > takeaway.view_menu
+ => "Doughnut £2.00, Cake £2.00, Pancakes £3.00, Ice-cream £2.00"
+```
+Placing an order:
+```
+2.5.0 :008 > order = Order.new
+ => #<Order:0x00007fac69243278 @menu=#<Menu:0x00007fac69243250 @dishes={"doughnut"=>2, "cake"=>2, "pancakes"=>3, "ice-cream"=>2}>, @basket=[], @total=0, @price_count=[]>
+2.5.0 :009 > order.add("doughnut")
+ => {"doughnut"=>2, "cake"=>2, "pancakes"=>3, "ice-cream"=>2}
+2.5.0 :010 > order.add("cake")
+ => {"doughnut"=>2, "cake"=>2, "pancakes"=>3, "ice-cream"=>2}
+2.5.0 :011 > order.view_basket
+ => [{"doughnut"=>2}, {"cake"=>2}]
+2.5.0 :012 > order.view_total
+ => "£4"
+2.5.0 :013 > order.place_order
+ => "Order has been placed. It will arrive within 1 hour"
+```
