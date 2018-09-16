@@ -20,4 +20,8 @@ class Menu
     @basket
   end
 
+  def complete_order
+    "Thankyou for your order"
+  end
+
 end

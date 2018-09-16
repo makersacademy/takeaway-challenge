@@ -26,3 +26,13 @@ menu.display_menu
 menu.select("chips", 2)
 menu.select("kebab", 3)
 menu.summary
+
+# User story 4
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+require './lib/menu'
+menu = Menu.new
+menu.select("kebab", 3)
+menu.summary
+menu.complete_order
