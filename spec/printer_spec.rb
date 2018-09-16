@@ -2,7 +2,6 @@ require "printer"
 
 describe Printer do
 
-#  let(:mock_order) { double :mock_order, :total => 0}
   let(:total) { double :total }
 
   describe "#format" do

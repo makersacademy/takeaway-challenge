@@ -14,7 +14,7 @@ class Text
     client.messages.create(
     from: from,
     to: to,
-    body: "Thank you, your order has been placed and wil arrive before 15:30!"
+    body: "Thank you, your order has been placed and will arrive before 15:30!"
     )
 
   end
