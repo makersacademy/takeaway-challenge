@@ -14,21 +14,7 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+This project is a ruby implementation of the following four user stories:
 
 ```
 As a customer
@@ -48,32 +34,85 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+The behaviour in these user stories is captured in the `Restaurant` class, which the customer should interact with. There is also a `Menu` class which controls the Menu the customer can choose from. This class should be used by the Restaurant manager. Finally, the `Restaurant` instructs the `OrderConfirmer` to send a confirmation text to the customer. The `OrderConfirmer` uses a RESTful API by Twilio and so the confirmation text is always sent to my personal number since I'm using the free version of Twilio.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Additionally, a fifth user story is implemented in this repository:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+```
+As a customer
+So that I can place an order when I'm not at my computer
+I would like to be able to order food from the restaurant via SMS.
+```
+This is done in the `SMSReceiver` class and the Sinatra site `sms_receiver_app`.
+
+# Usage
+
+## Requirements
+
+A full Gemfile is included but three which were particularly useful are:
+
+``` ruby
+gem 'shotgun'
+gem "sinatra"
+gem 'twilio-ruby'
+```
+
+The `twilio-ruby` gem was used to interface with Twilio, who provide the SMS API used in this project. Next, `shotgun` was used to run the `sinatra` app locally.
+
+Finally, a service called [ngrok](https://ngrok.com/) was used to expose my local host. This was necessary for testing the `sms_receiver_app` and was especially helpful for debugging.
+
+## Setup
+
+To install the repository's dependencies simply run
+```
+bundle install
+```
+
+There are 19 tests to run, all of which are `rspec` tests. They are all passing and give 100% coverage of the code base. To run the tests simply run in the terminal:
+```
+rspec
+```
+
+The code has been linted with `rubocop` and `rubycritic`. The code scores 90.47 on `rubycritic`.
 
 
-In code review we'll be hoping to see:
+## Examples
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+### Restaurant example
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+We're only going to show how the `Restaurant` class behaves, which is the only class the Customer should directly interact with.
 
-Notes on Test Coverage
-------------------
+```ruby
+require 'restaurant'
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+# We can make a new restaurant easily
+sophies_caf = Restaurant.new
+
+# This restaurant has the default menu which can be accessed from the Menu class as the constant Menu::DEFAULT_MENU.
+sophies_caf.display_menu
+# => Spaghetti and Meatballs: £5.00
+# Chicken Curry: £7.00
+# Chop Suey: £8.00
+# Pepperoni Pizza: £6.99
+# Pho: £9.50
+# Fried Chicken: £4.50
+# Pad Thai: £9.50
+# Hawaiian Pizza: £5.50
+
+# To add items to the basket we use the add_to_basket method.
+sophies_caf.add_to_basket("Spaghetti and Meatballs")
+sophies_caf.display_basket
+# => Spaghetti and Meatballs x 1 = £5.00
+
+# add_to_basket takes an option second parameter indicating the number of times the item should be added.
+# The add_to_basket method will also raise an error if we try to add an item which is not on the menu.
+
+# Finally, we can checkout by supplying the total price of our order:
+sophies_caf.checkout(5)
+# => You will shortly receive a text confirming your order
+```
+
+At the end of this example the `order_confirmer` will send the user a text confirming their order:
+
+![confirmation text](images/IMG_3811.png)
+### SMSReceiver example
