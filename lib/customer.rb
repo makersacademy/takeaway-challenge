@@ -3,11 +3,12 @@ require_relative 'text'
 
 class Customer
 
-  attr_reader :order, :menu, :cost
+  attr_reader :order, :menu, :cost, :text
 
   def initialize(menu = Menu.new, text = Text.new)
     @menu = menu
     @order = []
+    @text = text
     @cost = 0
   end
 
@@ -30,7 +31,7 @@ class Customer
     end
 
   def complete_order
-    customer.send_text
+    text.send_text
   end
 
 end
