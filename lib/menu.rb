@@ -2,7 +2,7 @@ class Menu
   attr_reader :menu_items
 
   DEFAULT_MENU = [{ name: "Spaghetti and Meatballs", price: 5.00 },
-                  { name: "Chicken curry",           price: 7.00 },
+                  { name: "Chicken Curry",           price: 7.00 },
                   { name: "Chop Suey",               price: 8.00 },
                   { name: "Pepperoni Pizza",         price: 6.99 },
                   { name: "Pho",                     price: 9.50 },
@@ -34,7 +34,7 @@ class Menu
   end
 
   def search_menu(dish_name)
-    @menu_items.select { |item| item[:name] == dish_name }[0]
+    @menu_items.select { |item| item[:name].casecmp(dish_name).zero? }[0]
   end
 
   private

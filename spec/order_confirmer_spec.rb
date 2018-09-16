@@ -1,4 +1,4 @@
-require 'text_handler'
+require 'order_confirmer'
 
 RSpec.describe OrderConfirmer do
 

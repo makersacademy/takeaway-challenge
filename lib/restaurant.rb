@@ -3,7 +3,7 @@ require './lib/order_confirmer'
 
 class Restaurant
 
-  attr_reader :basket
+  attr_reader :basket, :menu
 
   def initialize(menu_type: Menu, order_confirmer: OrderConfirmer)
     @menu = menu_type.new
@@ -22,7 +22,8 @@ class Restaurant
 
   def display_basket
     @basket.each do |dish, quantity|
-      puts "#{dish[:name]} x #{quantity} = #{num_to_currency(dish[:price] * quantity)}"
+      puts "#{dish[:name]} x #{quantity} = #{num_to_currency(dish[:price] *
+        quantity)}"
     end
   end
 
@@ -36,7 +37,6 @@ class Restaurant
   def on_the_menu?(dish)
     @menu.on_the_menu?(dish)
   end
-  private
 
   def basket_sum?(sum)
     basket_total = @basket.reduce(0) do |total, (dish, quantity)|
@@ -45,6 +45,7 @@ class Restaurant
     basket_total == sum
   end
 
+  private
 
   def empty_basket
     @basket = Hash.new(0)
