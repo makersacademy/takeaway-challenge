@@ -14,21 +14,17 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Getting started
+---
+1. Fork this repo
+1. Run `bundle` in the project directory
+1. Use `rspec` to run your tests
+1. Use `rubucop` to fix syntax errors
 
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -48,32 +44,81 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+How my app would look like from a user perspective
+---
+```rb
+[1] pry(main)> require './lib/dish.rb'
+=> true
+[2] pry(main)> require './lib/menu.rb'
+=> true
+[3] pry(main)> require './lib/order.rb'
+=> true
+[4] pry(main)> require './lib/takeaway'
+=> true
+[5] pry(main)> require './lib/messager.rb'
+=> true
+[6] pry(main)> messager = Messager.new
+=> #<Messager:0x00007fa2a1165198>
+[7] pry(main)> takeaway = Takeaway.new(messager)
+=> #<Takeaway:0x00007fa2a0f0e2a0 @messager=#<Messager:0x00007fa2a1165198>, @order=nil>
+[8] pry(main)> dish1 = Dish.new('pizza', 10)
+=> #<Dish:0x00007fa2a1137ab8 @name="pizza", @price=10>
+[9] pry(main)> dish2 = Dish.new('potato', 3)
+=> #<Dish:0x00007fa2a222ff78 @name="potato", @price=3>
+[10] pry(main)> menu = Menu.new
+=> #<Menu:0x00007fa2a221c838 @dish=nil, @dishes=[]>
+[11] pry(main)> menu.add_dish(dish1)
+=> [{:name=>"pizza", :price=>10}]
+[12] pry(main)> menu.add_dish(dish2)
+=> [{:name=>"pizza", :price=>10}, {:name=>"potato", :price=>3}]
+[13] pry(main)>
+[14] pry(main)> menu.show_menu
+=> "Pizza: £10\nPotato: £3"
+[15] pry(main)> order = Order.new(menu)
+=> #<Order:0x00007fa2a11dc4a0
+ @menu=
+  #<Menu:0x00007fa2a221c838
+   @dish=nil,
+   @dishes=[{:name=>"pizza", :price=>10}, {:name=>"potato", :price=>3}]>,
+ @summary={}>
+[16] pry(main)> takeaway.new_order(order)
+=> #<Order:0x00007fa2a11dc4a0
+ @menu=
+  #<Menu:0x00007fa2a221c838
+   @dish=nil,
+   @dishes=[{:name=>"pizza", :price=>10}, {:name=>"potato", :price=>3}]>,
+ @summary={}>
+[17] pry(main)> order.add(dish1, 1)
+=> 1
+[18] pry(main)> order.add(dish2, 2)
+=> 2
+[19] pry(main)> order.check_order
+=> "Pizza: £10 x 1\nPotato: £3 x 2\nTotal: £16"
+[20] pry(main)> order.place_order
+=> "Pizza: £10 x 1\nPotato: £3 x 2"
+[21] pry(main)> takeaway.complete_order
+=> <Twilio.Api.V2010.MessageInstance account_sid: AC815cac0b6035b881ce280e3e01514709 api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you for your order: £16 date_created: 2018-09-16 10:48:42 +0000 date_updated: 2018-09-16 10:48:42 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: +447449606023 messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid: SM85d677646d5e4e7da2869d2c02490272 status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/AC815cac0b6035b881ce280e3e01514709/Messages/SM85d677646d5e4e7da2869d2c02490272/Media.json"} to: +447553027856 uri: /2010-04-01/Accounts/AC815cac0b6035b881ce280e3e01514709/Messages/SM85d677646d5e4e7da2869d2c02490272.json>
+```
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+My approach to solving this challenge
+---
+1. I created a takeaway app that allow a customer to order food and get a text confirmation.
+1. Using TDD:
+  - I tested that a dish can be created with a name and a price
+  - I tested that a dish can be added to the Menu
+  - I tested that a customer can see the menu
+  - I tested that an order can be placed
+  - I tested that a dish can be added to an order
+  - I tested that a customers can add several dishes
+  - I tested that a customer can check their order and get a list of the dishes they chose with price and quantity and total price
+  - I tested that a customer will get a text message to confirm their order
+1. I also tested for edge cases such as:
+  - A customer cannot order a dish that is not on the menu
+  - An order cannot be placed if it is empty
+1. In order to solve this challenge, I created 5 classes:
+  1. Dish class: creates a dish with name and price
+  1. Menu class: responsible for adding dishes to menu and showing menu to customers
+  1. Order class: responsible for adding dishes to order and placing order(list of dishes with quantity, price and total)
+  1. Takeaway class: responsible for completing order
+  1. Messager class: responsible for sending message through Twilio
