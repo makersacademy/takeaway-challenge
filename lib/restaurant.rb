@@ -33,6 +33,9 @@ class Restaurant
     empty_basket
   end
 
+  def on_the_menu?(dish)
+    @menu.on_the_menu?(dish)
+  end
   private
 
   def basket_sum?(sum)
@@ -42,9 +45,6 @@ class Restaurant
     basket_total == sum
   end
 
-  def on_the_menu?(dish)
-    @menu.on_the_menu?(dish)
-  end
 
   def empty_basket
     @basket = Hash.new(0)

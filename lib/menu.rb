@@ -29,8 +29,8 @@ class Menu
   end
 
   def on_the_menu?(dish)
-    menu_names = @menu_items.map { |item| item[:name] }
-    menu_names.include?(dish)
+    menu_names = @menu_items.map { |item| item[:name].downcase }
+    menu_names.include?(dish.downcase)
   end
 
   def search_menu(dish_name)

@@ -9,10 +9,10 @@ RSpec.describe Restaurant do
                     { name: "Spaghetti and Meatballs", price: 5.00 }
   }
   let(:mock_dish) { double :mock_dish, name: "Spaghetti and Meatballs", price: "5" }
-  let(:mock_text_handler_type) { double :mock_text_handler_type, new: mock_text_handler }
-  let(:mock_text_handler) { double :mock_text_handler, confirm_order: true }
+  let(:mock_order_confirmer_type) { double :mock_order_confirmer_type, new: mock_order_confirmer }
+  let(:mock_order_confirmer) { double :mock_order_confirmer, confirm_order: true }
 
-  subject { described_class.new(menu_type: mock_menu_type, text_handler: mock_text_handler_type) }
+  subject { described_class.new(menu_type: mock_menu_type, order_confirmer: mock_order_confirmer_type) }
 
   it "should display a list of dishes with prices" do
     expect { subject.display_menu }.to output("Menu items and prices\n").to_stdout
