@@ -1,4 +1,7 @@
 require_relative "order"
+require_relative "text"
+
+
 
 class Printer
 
@@ -11,6 +14,11 @@ class Printer
     complete_order.each{ |hash|
     puts "#{hash[:Dish]}: £#{hash[:Price]}"}
     puts "Total: £#{total}"
+  end
+
+
+  def message
+    Confirmation.new.text
   end
 
 end
