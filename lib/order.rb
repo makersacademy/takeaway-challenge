@@ -24,6 +24,10 @@ class Order
     format_list(menu)
   end
 
+  def show_cost
+    orderlist.stringify_cost
+  end
+
   def place_order
     delivery.send_sms
   end

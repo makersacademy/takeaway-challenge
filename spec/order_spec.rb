@@ -1,14 +1,15 @@
 require 'order'
 
 describe Order do
-  let(:delivery) { double('delivery', place_order: "Thank you for your order") }
+  let(:delivery) { double('delivery', send_sms: "Thank you for your order") }
   let(:order) { described_class.new(menu, orderlist, delivery) }
   let(:menu)  { double('menulist', list_menu: [{ order_num: 4, name: "Cold Potatoes", price: 1.00 }]) }
   let(:orderlist) { double('orderlist',
     show_orders: [{ order_num: 4, name: "Cold Potatoes", price: 1.00 }],
-    orders: [{ order_num: 4, name: "Cold Potatoes", price: 1.00 }]
+    orders: [{ order_num: 4, name: "Cold Potatoes", price: 1.00 }],
+    stringify_cost: "£3.00"
      )
-  }  
+  }
 
   context '#show_menu' do
     it 'formats menu in a people-friendly way' do
@@ -17,7 +18,8 @@ describe Order do
   end
   context '#add' do
     it 'adds a new order to the orderlist' do
-      expect(orderlist.orders).to eq [{ order_num: 4, name: "Cold Potatoes", price: 1.00 }]
+      expect(order).to receive(:add).with("Store order")
+      order.add("Store order")
     end
   end
 
@@ -29,7 +31,13 @@ describe Order do
 
   context '#place_order' do
     it 'should send a message to customer to confirm order' do
-      expect(delivery.place_order).to eq "Thank you for your order"
+      expect(order.place_order).to eq "Thank you for your order"
+    end
+  end
+
+  context '#show_cost' do
+    it 'should return a string value of the price so far' do
+      expect(order.show_cost).to eq "£3.00"
     end
   end
 end
