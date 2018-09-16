@@ -6,18 +6,23 @@ Dotenv.load 'config.env'
 
 class SMS
   def initialize
-    puts DEFAULT_CONFIG[:account_sid]
-    puts DEFAULT_CONFIG[:auth_token]
-    @client = Twilio::REST::Client.new(DEFAULT_CONFIG[:account_sid], DEFAULT_CONFIG[:auth_token])
+    @client = Twilio::REST::Client.new(
+      DEFAULT_CONFIG[:account_sid], 
+      DEFAULT_CONFIG[:auth_token]
+    )
   end
 
-  def send(message = 'Hey, there!', to = DEFAULT_CONFIG[:to], from = DEFAULT_CONFIG[:from])
+  def send(
+      message = 'Hey, there!', 
+      to = DEFAULT_CONFIG[:to], 
+      from = DEFAULT_CONFIG[:from]
+    )
     client.messages.create(
       from: from,
       to: to,
       body: message
     )
-    end
+  end
   
   private
 
