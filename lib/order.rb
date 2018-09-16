@@ -9,12 +9,12 @@ class Order
   end
 
   def place_order
-    sms.send(
-      "Thank you! " +
-      "Your order was placed and will be delivered before " +
-      "#{one_hours_time}"
-    )
+    message = "Thank you! " +
+              "Your order was placed and will be delivered before " +
+              "#{one_hours_time}"
+    sms.send(message)
     @basket = []
+    message
   end
 
   def add_dish(dish, quantity)
