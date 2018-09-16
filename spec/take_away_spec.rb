@@ -4,7 +4,8 @@ describe TakeAway do
   let(:dish) { double :dish }
   let(:dish2) { double :dish2 }
   let(:price) { double :price }
-  subject(:takeaway) { described_class.new(menu) }
+  let(:sms_sender) { double :sms_sender, text_confirmation: true }
+  subject(:takeaway) { described_class.new(menu, sms_sender) }
   describe "#initialize" do
     it 'creates an empty list of orders' do
       expect(takeaway.order_list).to eq []
@@ -76,6 +77,30 @@ describe TakeAway do
       takeaway.order(dish)
       takeaway.order(dish2, 2)
       expect { takeaway.print_total_price }.to output("The total price is £10.\n").to_stdout
+    end
+  end
+
+  describe '#place_order' do
+    before do
+      allow(menu).to receive(:dish_included?).with(dish).and_return(true)
+      allow(menu).to receive(:dish_included?).with(dish2).and_return(true)
+      allow(menu).to receive(:dish_price).with(dish).and_return(4)
+      allow(menu).to receive(:dish_price).with(dish2).and_return(3)
+      takeaway.order(dish)
+      takeaway.order(dish2, 2)
+    end
+
+    it 'raises an error if the total price entered is not correct' do
+      expect { takeaway.place_order(11) }.to raise_error 'The amount entered is incorrect'
+    end
+
+    it 'confirms an SMS will be sent now to the customer' do
+      expect { takeaway.place_order(10) }.to output("Thanks for your order, you will receive a confirmation SMS within a few minutes\n").to_stdout
+    end
+
+    it 'asks SMS sender to send a confirmation SMS' do
+      expect(takeaway.sms_sender).to respond_to(:text_confirmation)
+      takeaway.place_order(10)
     end
   end
 end

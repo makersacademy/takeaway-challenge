@@ -1,9 +1,10 @@
 class TakeAway
   DEFAULT_AMOUNT = 1
-  attr_reader :order_list, :menu
-  def initialize(menu = Menu.new)
+  attr_reader :order_list, :menu, :sms_sender
+  def initialize(menu = Menu.new, sms_sender = SmsSender.new)
     @order_list = []
     @menu = menu
+    @sms_sender = sms_sender
   end
 
   def display_menu
@@ -32,6 +33,12 @@ class TakeAway
 
   def print_total_price
     puts "The total price is £#{total_price}."
+  end
+
+  def place_order(amount)
+    raise 'The amount entered is incorrect' unless amount == total_price
+    puts "Thanks for your order, you will receive a confirmation SMS within a few minutes"
+    sms_sender.text_confirmation
   end
 
   private
