@@ -1,19 +1,19 @@
 require './lib/takeaway'
 
 describe Takeaway do
-  let(:menu2) {menu2 = {
+  let(:menu2) { menu2 = {
     "fish and chips" => 3.20, 
     "burger and chips" => 4.20, 
-    "chips" => 1}
+    "chips" => 1 }
   }
 
-let(:dish1_quantity1) {dish1_quantity1 = {"fish and chips x1" => 3.20}}
-let(:dish2_quantity2) {dish2_quantity2 = {"burger and chips x2" => 8.40}}
-let(:dish3_quantity3) {dish3_quantity3 = {"chips x3" => 3}}
+  let(:dish1_quantity1) { dish1_quantity1 = { "fish and chips x1" => 3.20 } }
+  let(:dish2_quantity2) { dish2_quantity2 = { "burger and chips x2" => 8.40 } }
+  let(:dish3_quantity3) { dish3_quantity3 = { "chips x3" => 3 } }
 
-let(:selection1) {selection1 = "fish and chips"}
-let(:selection2) {selection2 = "burger and chips"}
-let(:selection3) {selection3 = "chips"}
+  let(:selection1) { selection1 = "fish and chips" }
+  let(:selection2) { selection2 = "burger and chips" }
+  let(:selection3) { selection3 = "chips" }
 
   it 'to responds to calling menu' do
     expect(subject).to respond_to(:menu)

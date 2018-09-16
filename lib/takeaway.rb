@@ -9,25 +9,24 @@ class Takeaway
       "burger and chips" => 4.20, 
       "chips" => 1
     }
-
     @order = {}
     @total = 0
   end
   
   def menu
-    @menu.each {|k, v| puts "#{k} - £%.2f" % v}
+    @menu.each { |k, v| puts "#{k} - £%.2f" % v }
   end
 
   def add_meal(meal_selection, quantity)
     fail "Sorry that is not on the menu" unless @menu.has_key?(meal_selection)
-    @menu.each do | k, v |
-        if k == meal_selection
-          k = k + ' x' + quantity.to_s
-          v *= quantity
-          @order.store(k, v)
-        end
+    @menu.each do |k, v|
+      if k == meal_selection
+        k = k + ' x' + quantity.to_s
+        v *= quantity
+        @order.store(k, v)
       end
-    @total = "£%.2f" % ((@order.values.inject (:+)).to_s)
+    end
+    @total = "£%.2f" % @order.values.inject(:+).to_s
   end
   
   def place_order
@@ -37,7 +36,6 @@ class Takeaway
 
     from = '+447449672445' # Your Twilio number
     to = '+447905659510' # Your mobile phone number
-
     now = Time.new
     one_hour = now + 3600
 
@@ -47,5 +45,4 @@ class Takeaway
     body: "Thank you! Your ordered was placed. You have ordered #{@order}. The total for your order is: #{@total}. Your order will will be delivered before #{one_hour.strftime("%d of %B, %Y —  %H:%M")}"
     )
   end
-
 end 
