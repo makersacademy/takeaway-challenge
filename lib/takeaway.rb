@@ -17,8 +17,8 @@ class Takeaway
     order.place_order
   end
 
-  def select_dish(dish, quantity)
-    format_dish(order.select_dish(dish, quantity))
+  def add_to_basket(dish, quantity)
+    format_dish(order.add_dish(dish, quantity))
   end
 
   def total_price

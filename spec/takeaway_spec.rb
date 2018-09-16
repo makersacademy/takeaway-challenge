@@ -18,10 +18,10 @@ describe Takeaway do
     end
   end
 
-  describe '#select_dish' do
+  describe '#add_to_basket' do
     it 'should add the quantity of the selected dish to the order' do
       quantity = 2
-      expect(takeaway.select_dish(dish_1, quantity)).to eq(
+      expect(takeaway.add_to_basket(dish_1, quantity)).to eq(
         "#{quantity} * #{dish_1.name} = £#{dish_1.price}"
       )
     end
@@ -29,18 +29,18 @@ describe Takeaway do
 
   describe '#total_price' do
     it 'should calculate the total price of the order' do
-      takeaway.select_dish(dish_1, 2)
-      takeaway.select_dish(dish_2, 1)
-      takeaway.select_dish(dish_3, 3)
+      takeaway.add_to_basket(dish_1, 2)
+      takeaway.add_to_basket(dish_2, 1)
+      takeaway.add_to_basket(dish_3, 3)
       expect(takeaway.total_price).to eq((dish_1.price * 2) + dish_2.price + (dish_3.price * 3))
     end
   end
 
   describe '#place_order' do
     it 'should place an order and issue an SMS' do
-      takeaway.select_dish(dish_1, 2)
-      takeaway.select_dish(dish_2, 1)
-      takeaway.select_dish(dish_3, 3)
+      takeaway.add_to_basket(dish_1, 2)
+      takeaway.add_to_basket(dish_2, 1)
+      takeaway.add_to_basket(dish_3, 3)
       allow(sms).to receive(:send)
       expect(sms).to receive(:send).with(
         "Thank you! Your order was placed and will be delivered before #{one_hours_time}"

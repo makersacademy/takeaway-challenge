@@ -27,16 +27,16 @@ describe 'User Stories' do
   it 'so I can select dishes to order' do
     dish = menu.dishes.first
     quantity = 1
-    expect { order.select_dish(dish, quantity) }.not_to raise_error
+    expect { order.add_dish(dish, quantity) }.not_to raise_error
   end
 
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
   it 'so I can check the total price of my order' do
-    order.select_dish(dish_1, 2)
-    order.select_dish(dish_2, 1)
-    order.select_dish(dish_3, 3)
+    order.add_dish(dish_1, 2)
+    order.add_dish(dish_2, 1)
+    order.add_dish(dish_3, 3)
     expect(order.total).to eq((dish_1.price * 2) + dish_2.price + (dish_3.price * 3))
   end
 
@@ -46,9 +46,9 @@ describe 'User Stories' do
   #   "Thank you! Your order was placed and will be delivered before 18:52"
   # after I have ordered
   it 'so I know the order was placed I want to receive an SMS confirmation' do
-    order.select_dish(dish_1, 2)
-    order.select_dish(dish_2, 1)
-    order.select_dish(dish_3, 3)
+    order.add_dish(dish_1, 2)
+    order.add_dish(dish_2, 1)
+    order.add_dish(dish_3, 3)
     allow(sms).to receive(:send)
     expect(sms).to receive(:send).with(
       "Thank you! Your order was placed and will be delivered before #{one_hours_time}"

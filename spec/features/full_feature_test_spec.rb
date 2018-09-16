@@ -12,10 +12,10 @@ describe 'Full Feature Test' do
     config = { sms: sms }
     takeaway = Takeaway.new(config)
     dishes = takeaway.dishes
-    takeaway.select_dish(dishes[3], 1)
-    takeaway.select_dish(dishes[5], 3)
-    takeaway.select_dish(dishes[6], 1)
-    takeaway.select_dish(dishes[9], 2)
+    takeaway.add_to_basket(dishes[3], 1)
+    takeaway.add_to_basket(dishes[5], 3)
+    takeaway.add_to_basket(dishes[6], 1)
+    takeaway.add_to_basket(dishes[9], 2)
     takeaway.total_price
     allow(sms).to receive(:send)
     expect(sms).to receive(:send).with(
