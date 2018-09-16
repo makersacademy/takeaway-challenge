@@ -43,4 +43,12 @@ describe Takeaway do
       expect { subject.view_order }.to output("test passed2").to_stdout
     end
   end
+
+  describe '#checkout' do
+    before { allow(mocksender).to receive(:send) }
+    it 'calls #send on Sender' do
+      expect(subject.sender).to receive(:send)
+      subject.checkout
+    end
+  end
 end
