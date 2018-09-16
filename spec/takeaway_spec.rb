@@ -1,6 +1,9 @@
 require 'takeaway'
 
 describe TakeAway do
+  let(:mockmessage) {double :message, send_message: nil}
+  subject { described_class.new(mockmessage)}
+
   describe '#read_menu' do
     it 'returns a display of everything on the menu (currently hardcoded)' do
       expect(subject.read_menu).to eq({ "Sweet & Sour Chicken Balls" => 3.99,
@@ -59,5 +62,13 @@ describe TakeAway do
         subject.add_dish('Crispy Shredded Beef',4)
         expect(subject.basket_total).to eq '4x Egg Fried Rice = £12.00, 2x Chicken Chowmein = £9.00, 4x Crispy Shredded Beef = £23.60. Total £44.60'
       end
+  end
+
+  describe '#checkout' do
+    it 'tells the Message class to send a message off to confirm an order' do
+      subject.checkout
+      expect(subject.message).to have_received(:send_message)
+    end
+
   end
 end
