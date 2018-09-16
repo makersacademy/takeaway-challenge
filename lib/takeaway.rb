@@ -1,5 +1,5 @@
 class TakeAway
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :order_total
 
   def initialize
     @menu = {
@@ -10,6 +10,7 @@ class TakeAway
             "Fried Duck with Black Bean Sauce" => 6.40
             }
     @basket = {}
+    @order_total = 0
   end
 
   def read_menu
@@ -18,7 +19,13 @@ class TakeAway
 
   def add_dish(dish,number = 1)
     # binding.pry
-    fail "that dish isn't on the menu" unless menu.keys.include?(dish)
-    @basket.keys.include?(dish) ? @basket[dish] += number : @basket[dish] = number
+    fail "that dish isn't on the menu" unless menu.has_key?(dish)
+    @basket.has_key?(dish) ? @basket[dish] += number : @basket[dish] = number
+    @order_total += number * menu[dish]
+  end
+
+  def basket_total
+    return 'there is nothing in your basket' if basket.empty?
+    @basket.map{|k,v| "#{v}x #{k} = £#{'%.2f'%(v*menu[k])}"}.join(", ") + ". Total £#{'%.2f'%order_total}"
   end
 end

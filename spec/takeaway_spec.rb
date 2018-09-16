@@ -46,18 +46,18 @@ describe TakeAway do
         subject.add_dish('Egg Fried Rice',1)
         expect(subject.basket_total).to eq '1x Egg Fried Rice = £3.00. Total £3.00'
       end
-      
+
       it 'gives the total amount when one thing is in your basket' do
         subject.add_dish('Egg Fried Rice',4)
         subject.add_dish('Chicken Chowmein',2)
-        expect(subject.basket_total).to eq '4x Egg Fried Rice = £12.00 and 2x Chicken Chowmein = £9.00. Total £21.00'
+        expect(subject.basket_total).to eq '4x Egg Fried Rice = £12.00, 2x Chicken Chowmein = £9.00. Total £21.00'
       end
 
       it 'gives the total amount when one thing is in your basket' do
         subject.add_dish('Egg Fried Rice',4)
         subject.add_dish('Chicken Chowmein',2)
         subject.add_dish('Crispy Shredded Beef',4)
-        expect(subject.basket_total).to eq '4x Egg Fried Rice = £12.00, 2x Chicken Chowmein = £9.00 and 4x Crispy Shredded Beef = £23.60. Total £44.60'
+        expect(subject.basket_total).to eq '4x Egg Fried Rice = £12.00, 2x Chicken Chowmein = £9.00, 4x Crispy Shredded Beef = £23.60. Total £44.60'
       end
   end
 end
