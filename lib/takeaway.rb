@@ -1,34 +1,18 @@
-require 'dotenv/load'
 require_relative 'menu'
 require_relative 'order'
-require_relative 'sms'
 
 class Takeaway  
   def initialize
     @menu = Menu.new
     @order = Order.new
-    @sms = Sms.new
   end
 
   def show_menu
     @menu.show
   end
 
-  def order(list)
-    @order.add(list)
-  end
-
-  def show_order
-    total = 0
-    @order.current_order.each do |dish|
-      total += price(dish)
-      print_price_with(dish)
-    end
-    print(total)
-  end
-
-  def confirm_order
-    @sms.send
+  def order(list, customer_number)
+    @order.add(list, customer_number)
   end
 
   private
