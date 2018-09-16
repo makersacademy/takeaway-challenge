@@ -22,12 +22,12 @@ describe Takeaway do
     end
   end
 
-  # describe '#total_price' do
-  #   it 'should calculate the total price of the order' do
-  #     takeaway.select_dish(dish_1, 2)
-  #     takeaway.select_dish(dish_2, 1)
-  #     takeaway.select_dish(dish_3, 3)
-  #     expect(takeaway.total_price).to eq((dish_1.price * 2) + dish_2.price + (dish_3.price * 3))
-  #     end
-  # end
+  describe '#total_price' do
+    it 'should calculate the total price of the order' do
+      takeaway.select_dish(dish_1, 2)
+      takeaway.select_dish(dish_2, 1)
+      takeaway.select_dish(dish_3, 3)
+      expect(takeaway.total_price).to eq((dish_1.price * 2) + dish_2.price + (dish_3.price * 3))
+    end
+  end
 end

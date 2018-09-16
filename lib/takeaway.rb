@@ -17,6 +17,10 @@ class Takeaway
     format_dish(order.select_dish(dish, quantity))
   end
 
+  def total_price
+    order.total
+  end
+
   private
 
   attr_reader :menu, :order, :sms
