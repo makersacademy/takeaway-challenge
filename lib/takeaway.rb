@@ -2,8 +2,8 @@ require './lib/menu'
 
 class Takeaway
 
-  def initialize(menu = Menu.new) # Menu class
-    @menu = menu # menu object
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
 
   def view_menu
