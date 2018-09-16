@@ -4,9 +4,9 @@ require 'menu_item'
 require 'order'
 
 describe 'User stories' do
-  let(:takeaway) { Takeaway.new(Menu.new) }
   let(:menu) { Menu.new }
   let(:order) { Order.new }
+  let(:takeaway) { Takeaway.new(menu, order) }
 
   # As a customer
   # So that I can check if I want to order something
@@ -23,9 +23,12 @@ describe 'User stories' do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  it 'allows users to order bespoke quantities of available dishes' do
-    
+  it 'allows users to order one or more of an available dish' do
+    quantity = rand(1..5)
+    takeaway.order_item('Pizza', quantity)   
+    expect { takeaway.show_order_basket }.to output("Pizza: £8 x #{quantity}\n").to_stdout
   end
+
 
   # As a customer
   # So that I can verify that my order is correct

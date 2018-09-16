@@ -21,13 +21,21 @@ class Menu
   end  
 
   def find_item(name)
-    @items.detect do |item|
+    item = @items.detect do |item|
       item.name == name 
-    end #{ |item| item.name == name }
+    end
+    raise_error if item.nil?
+    item
   end
 
   def find_price(name)
     
+  end
+
+  private
+
+  def raise_error
+    fail 'This dish is not on the menu!'
   end
 
 end

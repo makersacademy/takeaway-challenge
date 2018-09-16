@@ -13,13 +13,13 @@ describe Order do
   describe '#show_basket' do
     let(:menu_item_1) { double :menu_item }
     let(:menu_item_2) { double :menu_item }
-    it 'lists the items inside the basket' do
+    it 'lists the items inside the @basket' do
       o = described_class.new()
-      o.basket <<  menu_item_1
-      o.basket <<  menu_item_2
+      o.basket[menu_item_1] = 4
+      o.basket[menu_item_2] = 3
       allow(menu_item_1).to receive(:format_item).and_return("MenuItem StandIn 1")
       allow(menu_item_2).to receive(:format_item).and_return("MenuItem StandIn 2")
-      expect { o.show_basket }.to output("MenuItem StandIn 1\nMenuItem StandIn 2\n").to_stdout
+      expect { o.show_basket }.to output("MenuItem StandIn 1 x 4\nMenuItem StandIn 2 x 3\n").to_stdout
     end
 
   end  

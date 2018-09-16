@@ -14,11 +14,13 @@ class Takeaway
     @menu.show_menu
   end  
 
-  def order_item(name)
-      @order.basket << menu.find_item(name)
+  def order_item(name, quantity= 1)
+    item = @menu.find_item(name)
+    previous_quantity = @order.basket[item] || 0
+    @order.basket[item] = previous_quantity + quantity
   end
 
-  def show_order
+  def show_order_basket
     @order.show_basket
   end
 
