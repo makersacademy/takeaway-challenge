@@ -28,9 +28,16 @@ describe Takeaway do
   end
 
   describe '#show_order' do
-    it 'prints the order to the screen' do
+    it 'prints the order with the price' do
       subject.add_to_order('sushi')
-      expect(subject.show_order).to eq ['sushi']
+      expect { subject.show_order }.to output("Sushi: £1\nTotal: £1\n").to_stdout
+    end
+
+    it 'works with multiple dishes, including duplicates' do
+      subject.add_to_order('sushi')
+      subject.add_to_order('burger')
+      subject.add_to_order('sushi')
+      expect { subject.show_order }.to output("Sushi: £1\nBurger: £2\nSushi: £1\nTotal: £4\n").to_stdout
     end
   end
 end

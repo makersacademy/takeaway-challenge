@@ -16,6 +16,25 @@ class Takeaway
   end
 
   def show_order
-    @order.current_order
+    total = 0
+    @order.current_order.each do |dish|
+      total += price(dish)
+      print_price_with(dish)
+    end
+    print(total)
+  end
+
+  private
+
+  def price(dish)
+    @menu.menu[dish.to_sym]
+  end
+
+  def print_price_with(dish)
+    puts dish.capitalize + ': £' + price(dish).to_s
+  end
+
+  def print(total)
+    puts "Total: £#{total}"
   end
 end

@@ -17,8 +17,11 @@ I would like to be able to select some number of several available dishes
 load './lib/takeaway.rb'
 order = Order.new
 order.add('sushi')
+# => ["sushi"]
 order.add('burger')
+# => ["sushi", "burger"]
 order.add('pizza')
+# => ["sushi", "burger", "pizza"]
 ```
 
 As a customer
@@ -27,18 +30,18 @@ I would like to check that the total I have been given matches the sum of the va
 
 ```
 load './lib/takeaway.rb'
-# => see a list with options to order
-# => see message saying 'type order number or leave blank to end order'
-1
-2
-3
-3
-2
-4
-
-# each number confirmed with dish and price.
-# blank line ends order
-# next line confirms full order and price which matches the total price of all dishes individually
+food = Takeaway.new
+food.add_to_order('sushi')
+# => ["sushi"]
+food.add_to_order('burger')
+# => ["sushi", "burger"]
+food.add_to_order('sushi')
+# => ["sushi", "burger", "sushi"]
+food.show_order
+# Sushi: £1
+# Burger: £2
+# Sushi: £1
+# Total: £4
 ```
 
 As a customer
@@ -47,17 +50,13 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ```
 load './lib/takeaway.rb'
-# => see a list with options to order
-# => see message saying 'type order number or leave blank to end order'
-1
-2
-3
-3
-2
-4
-
-# each number confirmed with dish and price.
-# blank line ends order
+food = Takeaway.new
+food.add_to_order('sushi')
+# => ["sushi"]
+food.add_to_order('burger')
+# => ["sushi", "burger"]
+food.add_to_order('sushi')
+# => ["sushi", "burger", "sushi"]
 # next line confirms full order and price which matches the total price of all dishes individually
 # line saying 'type yes to confirm order'
 yes
