@@ -6,7 +6,6 @@ require './lib/menu'
 menu = Menu.new
 menu.display_menu
 
-
 # User story 2
 # As a customer
 # So that I can order the meal I want
@@ -16,7 +15,6 @@ menu = Menu.new
 menu.display_menu
 menu.select("chips", 2)
 menu.select("kebab", 3)
-
 
 # User story 3
 # As a customer

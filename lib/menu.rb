@@ -3,7 +3,7 @@ require_relative 'basket'
 class Menu
 
   def initialize
-    @menu = {"chips" => 2.5, "kebab" => 5.5, "burger" => 4.75}
+    @menu = { "chips" => 2.5, "kebab" => 5.5, "burger" => 4.75 }
     @basket = []
   end
 
@@ -12,7 +12,7 @@ class Menu
   end
 
   def select(food_item, qty = 1)
-    @basket << {food_item => qty}
+    @basket << { food_item => qty }
     "You have added #{food_item} x#{qty} portions"
   end
 
