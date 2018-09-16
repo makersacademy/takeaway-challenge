@@ -29,7 +29,9 @@ To see the menu:
 
 In irb:
 require "./lib/menu"
+
 menu = Menu.new
+
 menu.print 
 
 
@@ -37,10 +39,15 @@ To order:
 
 In irb:
 require "./lib/order"
+
 order = Order.new
+
 order.new_item("Duck_pancakes", 2)
+
 order.new_item("Noodles", 1)
+
 order.print_order
+
 order.place_order(29)
 
 
