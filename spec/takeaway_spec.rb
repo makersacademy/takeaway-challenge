@@ -46,5 +46,11 @@ let(:selection3) {selection3 = "chips"}
     subject.add_meal(selection3, 1)    
     expect(subject.total).to eq("£5.20")
   end
+
+  describe 'once order has been finalised and order can be placed' do 
+    it 'responds to calling place_order' do
+    expect(subject).to respond_to(:place_order)
+    end
+  end
 end
 

@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Takeaway
   attr_reader :order, :total
 
@@ -27,5 +29,5 @@ class Takeaway
       end
     @total = "£%.2f" % ((@order.values.inject (:+)).to_s)
   end
- 
+  
 end 
