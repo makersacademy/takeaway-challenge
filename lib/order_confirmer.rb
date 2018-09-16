@@ -16,8 +16,8 @@ class OrderConfirmer
     @text_client.messages.create(
     from: @phone_numbers[:from],
     to: @phone_numbers[:to],
-    body: "Thank you! Your order was placed and will be delivered before
-    #{delivery_time}"
+    body: "Thank you! Your order was placed and will be delivered before"\
+      " #{delivery_time}"
     )
   end
 

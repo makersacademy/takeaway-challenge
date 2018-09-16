@@ -68,7 +68,7 @@ To install the repository's dependencies simply run
 bundle install
 ```
 
-There are 19 tests to run, all of which are `rspec` tests. They are all passing and give 100% coverage of the code base. To run the tests simply run in the terminal:
+There are 20 tests to run, all of which are `rspec` tests. They are all passing and give 100% coverage of the code base. To run the tests simply run in the terminal:
 ```
 rspec
 ```
@@ -114,5 +114,17 @@ sophies_caf.checkout(5)
 
 At the end of this example the `order_confirmer` will send the user a text confirming their order:
 
-![confirmation text](images/IMG_3811.png)
+![confirmation text](images/order_confirmation_text.png)
+
+
 ### SMSReceiver example
+
+The customer can also order food by texting the Restaurant. This is achieved by the `SMSReceiver` class and the `sms_receiver_app`, which uses Twilio and an HTTP GET webhook to send all texts to an ngrok website which is hosting our localhost. Then, a sinatra web app responds to text messages, as shown:
+
+![text conversation part 1](images/text_conversation_part_1.png)
+
+Obviously, the only thing to order is Spaghetti and Meatballs.
+
+![SPAGHETTI AND MEATBALLS!!](images/text_conversation_part_2.png)
+
+The customer is told their total bill and the time they can expect their food by.
