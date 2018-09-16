@@ -1,5 +1,5 @@
 class Order
-  attr_reader :basket, :menu, :printer
+  attr_reader :basket, :menu, :printer, :total
 
   def initialize(menu = Menu.new, printer = Printer.new)
     @basket = []
@@ -12,6 +12,15 @@ class Order
     raise("Dish not in menu!") unless choice
     search_basket(choice) ? update_entry(choice, qty) : add_entry(choice, qty)
   end
+
+  def display
+    calculate_subtotal
+    calculate_total
+    format_order
+  end
+
+  private
+  attr_writer :total
 
   # returns true if dish object already inside basket
   def search_basket(dish)
@@ -30,19 +39,24 @@ class Order
   def update_entry(dish, qty = 1)
     basket.each { |entry| entry[:qty] += qty if entry[:dish] == dish }
   end
+
+  # calls printer.format_order on each entry in @basket, and format_total at end
+  def format_order
+    basket.each do |entry|
+      printer.format_order(entry[:dish], entry[:qty], entry[:subt])
+    end
+    printer.format_total(total)
+  end
+
+  # adds subtotal to each hash in @basket
+  def calculate_subtotal
+    basket.each do |entry|
+      entry[:subt] = entry[:dish].price * entry[:qty]
+    end
+  end
+
+  def calculate_total
+    @total = 0
+    basket.each { |entry| @total += entry[:subt] }
+  end
 end
-
-=begin
-first look through menu to see if meal exists or raise error
-then look through basket to see if meal exists and += quantity
-finally look through menu again and add dish object and quanity
-
-
-
-sum
-go through baskets objects, get subtotal and add as key value to hash
-then send to print (or leave that under display?
-
-
-
-=end
