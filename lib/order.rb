@@ -43,7 +43,8 @@ class Order
   # calls printer.format_order on each entry in @basket, and format_total at end
   def format_order
     basket.each do |entry|
-      printer.format_order(entry[:dish], entry[:qty], entry[:subt])
+      printer.format_order(entry[:dish].name, entry[:dish].price,
+                            entry[:qty], entry[:subt])
     end
     printer.format_total(total)
   end
