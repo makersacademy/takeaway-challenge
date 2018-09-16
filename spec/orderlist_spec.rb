@@ -24,7 +24,7 @@ describe OrderList do
 
   context '#calculate_total' do
     it 'expects a total to be given for all items currently in list' do
-      orderlist.store_order( { order_num: 2, name: "Cheese Toastie", price: 2.00 })
+      orderlist.store_order({ order_num: 2, name: "Cheese Toastie", price: 2.00 })
       expect(orderlist.stringify_cost).to eq "£3.00"
     end
   end

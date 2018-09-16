@@ -5,7 +5,7 @@ describe MenuList do
 
   context '#show_list' do
     it 'should return an array value' do
-      expect(menulist.get_menu).to be_an_instance_of(Array)
+      expect(menulist.list_menu).to be_an_instance_of(Array)
     end
   end
 end

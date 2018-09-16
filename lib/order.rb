@@ -1,11 +1,13 @@
  require_relative './orderlist.rb'
  require_relative './menulist.rb'
- require_relative'./delivery.rb'
-#handles customer orders
+ require_relative './delivery.rb'
+# handles customer orders
 
 class Order
-  def initialize(menu = MenuList.new, orderlist = OrderList.new, delivery = Delivery.new)
-    @menu = menu.get_menu
+  def initialize(menu = MenuList.new,
+                 orderlist = OrderList.new,
+                 delivery = Delivery.new)
+    @menu = menu.list_menu
     @orderlist = orderlist
     @delivery = delivery
   end
@@ -31,17 +33,7 @@ class Order
 
   def format_list(list)
     list.map do |dish|
-       puts "#{dish[:order_num]}. #{dish[:name]}, price: £#{ "%.2f" % dish[:price]}\n"
+      puts "#{dish[:order_num]}. #{dish[:name]}, price: £#{"%.2f" % dish[:price]}\n"
     end
   end
 end
-
-order = Order.new()
-order.show_menu
-order.add(2)
-order.add(2)
-order.show_orders
-order.place_order
-
-
- # require './lib/order.rb'

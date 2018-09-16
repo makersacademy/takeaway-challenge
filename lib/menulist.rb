@@ -1,5 +1,5 @@
 class MenuList
-  #Stores menu info
+  # Stores menu info
 
   attr_reader :menu
   def initialize
@@ -11,7 +11,7 @@ class MenuList
     ]
   end
 
-  def get_menu
+  def list_menu
     menu
   end
 end
