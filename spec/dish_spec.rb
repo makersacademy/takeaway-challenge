@@ -5,7 +5,9 @@ describe Dish do
   let(:name) { double(:name) }
   let(:price) { double(:price) }
   subject { Dish.new(name, price) }
-
+  before(:each) {
+    allow(name).to receive(:to_sym).and_return(name)    
+  }
   it 'initializes a name with the argument given' do
     expect(subject.name).to eql(name)
   end

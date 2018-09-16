@@ -1,9 +1,12 @@
 require_relative "menu.rb"
+require_relative 'twilio'
 class Order
-  attr_reader :basket, :menu
+  include Twilio
+  attr_reader :basket, :menu, :orders
   def initialize(menu = Menu.new)
     @basket = []
     @menu = menu
+    @orders = []
   end
 
   def get_available_dishes
@@ -39,7 +42,18 @@ class Order
     total
   end
 
-  
+  def complete_order
+    time = (Time.now + 3600).strftime("%H:%M")
+    @orders << {time: @basket}
+  end
+
+  def reset_basket
+    @basket = []
+  end
+
+  def send_order_message(number)
+    send_message(number)
+  end
 
 
 end

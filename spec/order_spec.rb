@@ -23,12 +23,6 @@ describe Order do
     end
   end
 
-  describe '#show_menu' do
-    it 'shows list of available dishes' do
-
-    end
-  end
-
   describe '#add_to_basket' do
     it 'adds an item to the basket array' do
       allow(dish).to receive(:name).and_return(:chicken)
@@ -83,6 +77,34 @@ describe Order do
       allow(dish).to receive(:price).and_return(3)
       subject.add_to_basket(dish, 2)
       expect(subject.order_total).to eq(6)
+    end
+  end
+
+  describe '#send_order_message' do
+    it 'sends a text message confirming order' do
+      allow(subject).to receive(:send_message).with("123456").and_return("Your order was successful")
+      expect(subject.send_order_message("123456")).to eq("Your order was successful")
+    end
+    
+  end
+
+  describe '#complete_order' do
+    it 'stores order in order_array' do
+      allow(dish).to receive(:name).and_return(:chicken)
+      allow(dish).to receive(:price).and_return(3)
+      subject.add_to_basket(dish, 2)
+      subject.complete_order
+      time = (Time.now + 3600).strftime("%H:%M")
+      expect(subject.orders).to eq([
+        {time: subject.basket}      
+      ])
+    end
+  end
+
+  describe '#reset_basket' do
+    it 'resets basket back to empty array' do
+      subject.reset_basket
+      expect(subject.basket).to be_empty
     end
   end
 
