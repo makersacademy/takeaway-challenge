@@ -38,6 +38,13 @@ describe TakeAway do
     it 'fails when you try to add a dish that is not on the menu' do
       expect { subject.add_dish('fish & chips') }.to raise_error("that dish isn't on the menu")
     end
+
+    it 'adds the dishes to the total cost of the order' do
+      subject.add_dish('Egg Fried Rice', 4)
+      subject.add_dish('Chicken Chowmein', 2)
+      subject.add_dish('Crispy Shredded Beef', 4)
+      expect(subject.order_total).to eq (4 * 3 + 2 * 4.5 + 4 * 5.9)
+    end
   end
 
   describe '#basket_total' do
