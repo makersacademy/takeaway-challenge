@@ -23,9 +23,9 @@ order = Order.new(menu)
 dish = Dish.new("xyz", 10)
 menu.add_dish(dish)
 menu.display
-order.add_order(dish)
-menu.has_dish?(dish) == true
-order.final_order.include?(dish) == true
+order.add_order('xyz', 12)
+menu.has_dish?('xyz') == true
+<!-- order.final_order.include?(dish) == true -->
 
 
 <!-- As a customer
