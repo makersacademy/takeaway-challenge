@@ -7,8 +7,8 @@ class Price
     @sms = sms
   end
 
-  def confirm(price, order)
-    raise PriceError unless price == total_cost(order)
+  def confirm(customer_input_price, order)
+    raise PriceError unless customer_input_price == total_cost(order)
     @sms.send
   end
 

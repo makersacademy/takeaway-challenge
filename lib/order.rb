@@ -12,8 +12,8 @@ class Order
     printer
   end
 
-  def confirm(cost)
-    price.confirm(cost, order)
+  def confirm(customer_input_price)
+    price.confirm(customer_input_price, order)
   end
 
 

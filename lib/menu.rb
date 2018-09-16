@@ -21,8 +21,8 @@ class Menu
     order.add(dish_price_quantity)
   end
 
-  def confirm_order(price)
-    order.confirm(price)
+  def confirm_order(customer_input_price)
+    order.confirm(customer_input_price)
   end
 
   private
