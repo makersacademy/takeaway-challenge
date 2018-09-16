@@ -1,8 +1,13 @@
 # Download the twilio-ruby library from twilio.com/docs/libraries/ruby
+require 'dotenv'
 require 'twilio-ruby'
+
+Dotenv.load 'config.env'
 
 class SMS
   def initialize
+    puts DEFAULT_CONFIG[:account_sid]
+    puts DEFAULT_CONFIG[:auth_token]
     @client = Twilio::REST::Client.new(DEFAULT_CONFIG[:account_sid], DEFAULT_CONFIG[:auth_token])
   end
 
@@ -19,10 +24,10 @@ class SMS
   attr_reader :client
 
   DEFAULT_CONFIG = {
-    account_sid: 'AC3d8670509df17ad7546b9ec2bcf013dd',
-    auth_token: 'e67c55c82113398cd2ae19a7bb538173',
-    from: '+441522246322',
-    to: '+447986371299'
+    account_sid:  ENV['TWILIO_ACCOUNT_SID'],
+    auth_token:   ENV['TWILIO_AUTH_TOKEN'],
+    from:         ENV['FROM_PHONE_NUMBER'],
+    to:           ENV['TO_PHONE_NUMBER']
   }
 
 end
