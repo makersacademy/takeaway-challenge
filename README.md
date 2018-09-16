@@ -35,7 +35,7 @@ Strategy
 
 Diagrams
 --------
-<img src="./diagrams/Takeaway_1st_Attempt.xmlg" />
+<img src="./diagrams/Takeaway_1st_Attempt.pdf" />
 
 
 IRB print_out showing IRB interface
