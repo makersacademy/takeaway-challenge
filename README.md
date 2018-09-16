@@ -1,4 +1,4 @@
-˜Takeaway Challenge
+Takeaway Challenge
 ==================
 ```
                             _________
