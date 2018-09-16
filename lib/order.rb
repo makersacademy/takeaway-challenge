@@ -5,9 +5,12 @@ require_relative "calculator"
 
 class Order
 
-  attr_reader :complete_order, :food_options, :calculator, :total, :print_class, :text_class
+  attr_reader :complete_order, :food_options, :calculator,
+  :total, :print_class, :text_class
 
-  def initialize(food_options = Menu.new.food_options, calculator = Calculator.new, print_class = Printer.new, text_class = Text.new)
+  def initialize(food_options = Menu.new.food_options,
+    calculator = Calculator.new, print_class = Printer.new,
+    text_class = Text.new)
     @complete_order = []
     @food_options = food_options
     @calculator = calculator
@@ -19,13 +22,13 @@ class Order
   def new_item(item, quantity)
     counter = 0
     while true
-    food_options.map{ |hash|
-      if item == hash[:Dish]
-        @complete_order << hash
-        counter += 1
-      end
-    }
-    break if counter == quantity
+      food_options.map { |hash|
+        if item == hash[:Dish]
+          @complete_order << hash
+          counter += 1
+        end
+      }
+      break if counter == quantity
 
     end
   end
@@ -38,15 +41,12 @@ class Order
     @print_class.print_bill(@complete_order, @total)
   end
 
-
   def place_order(customer_confirm_total)
     if customer_confirm_total != total
       raise "I'm sorry that total is wrong, enter your total again or place a new order"
     else
       @text_class.confirmation
-    end
-
+    end    
   end
-
 
 end
