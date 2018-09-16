@@ -57,8 +57,11 @@ food.add_to_order('burger')
 # => ["sushi", "burger"]
 food.add_to_order('sushi')
 # => ["sushi", "burger", "sushi"]
-# next line confirms full order and price which matches the total price of all dishes individually
-# line saying 'type yes to confirm order'
-yes
-# receive text confirming order
+food.show_order
+# Sushi: £1
+# Burger: £2
+# Sushi: £1
+# Total: £4
+food.confirm_order
+# receive text on phone confirming order with 1h extra
 ```

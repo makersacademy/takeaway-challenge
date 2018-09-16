@@ -1,6 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
+
   describe '#show menu' do
     it 'prints the menu to the screen' do
       expect { subject.show_menu }.to output.to_stdout
@@ -39,5 +40,9 @@ describe Takeaway do
       subject.add_to_order('sushi')
       expect { subject.show_order }.to output("Sushi: £1\nBurger: £2\nSushi: £1\nTotal: £4\n").to_stdout
     end
+  end
+
+  describe '#confirm_order' do
+    it 'is implemented'
   end
 end

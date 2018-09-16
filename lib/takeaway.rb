@@ -1,10 +1,13 @@
+require 'dotenv/load'
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
 
 class Takeaway  
   def initialize
     @menu = Menu.new
     @order = Order.new
+    @sms = Sms.new
   end
 
   def show_menu
@@ -22,6 +25,10 @@ class Takeaway
       print_price_with(dish)
     end
     print(total)
+  end
+
+  def confirm_order
+    @sms.send
   end
 
   private
