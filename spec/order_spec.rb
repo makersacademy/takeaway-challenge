@@ -12,7 +12,7 @@ describe Order do
 
   context "#confirm" do
     let(:sms_double) { double :Delivery_SMS_Double, send: true}
-    let(:order) { described_class.new() }
+    let(:order) { described_class.new(sms_double) }
     it "checks whether there has been a miscalculation" do
       expect { order.confirm(16) }.to raise_error(PriceError)
     end
