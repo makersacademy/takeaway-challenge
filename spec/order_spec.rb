@@ -2,6 +2,6 @@ require 'order'
 require 'menu'
 
 describe Order do
-  subject(:order) {described_class.new}
+  subject(:order) { described_class.new }
 
 end

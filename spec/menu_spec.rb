@@ -2,8 +2,8 @@ require 'menu'
 require 'takeaway'
 
 describe Menu do
-  subject(:menu) { described_class.new(dish_hash, order_class) }
-  let(:dishes_quantity) { {Pasta: 2, Chicken: 1} }
+  subject(:menu) { described_class.new(dish_hash, dishes_quantity, order_class) }
+  let(:dishes_quantity) { { Pasta: 2, Chicken: 1 } }
   let(:order_class) { double :order_class }
   let(:dish_hash) do
     {
