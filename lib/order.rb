@@ -14,11 +14,12 @@ class Order
       "Your order was placed and will be delivered before " +
       "#{one_hours_time}"
     )
+    @dishes = []
   end
 
   def select_dish(dish, quantity)
-    @dishes << { dish: dish, quantity: quantity }
-    @dishes.last
+    dishes << { dish: dish, quantity: quantity }
+    dishes.last
   end
 
   def total
@@ -29,6 +30,7 @@ class Order
   private
 
   attr_reader :sms
+  attr_writer :dishes
 
   def line_item_total(line_item)
     line_item[:dish].price * line_item[:quantity]

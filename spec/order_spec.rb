@@ -33,13 +33,21 @@ describe Order do
       "%02d" % (now.hour + 1) + ":" + "%02d" % now.min
     end
   
-    it 'should send an sms' do
+    before do
       order.select_dish(dish, 2)
       allow(sms).to receive(:send)
+    end
+
+    it 'should send an sms' do
       expect(sms).to receive(:send).with(
         "Thank you! Your order was placed and will be delivered before #{one_hours_time}"
       )
       order.place_order
+    end
+
+    it 'should empty the basket once the order is placed' do
+      order.place_order
+      expect(order.dishes).to be_empty
     end
   end
 end
