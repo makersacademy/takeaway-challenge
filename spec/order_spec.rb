@@ -42,8 +42,8 @@ describe Order do
     it { is_expected.to respond_to(:text).with(1).argument }
 
     it 'calls text with a number' do
-        allow(subject).to receive(:text).and_return("Message sent!")
-        expect(subject.deliver(Secrets::PERSONAL_NUMBER)).to eq("Message sent!")
+      allow(subject).to receive(:text).and_return("Message sent!")
+      expect(subject.deliver(Secrets::PERSONAL_NUMBER)).to eq("Message sent!")
     end
   end
 end
