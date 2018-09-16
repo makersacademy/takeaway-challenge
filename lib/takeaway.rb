@@ -1,6 +1,6 @@
 require_relative 'send_sms'
 
-class Menu
+class TakeAway
 
   def initialize
     @menu = { "chips" => 2.5, "kebab" => 5.5, "burger" => 4.75 }
@@ -26,7 +26,7 @@ class Menu
 
   def text
     send = SendSMS.new
-    send.text
+    send.sms
   end
 
 end

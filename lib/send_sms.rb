@@ -1,6 +1,6 @@
 class SendSMS
 
-  def text
+  def sms
 
     require 'twilio-ruby'
 
