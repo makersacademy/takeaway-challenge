@@ -49,7 +49,44 @@ describe Order do
       allow(dish).to receive(:name).and_return(:chicken)
       expect(subject.find_dish("chicken")).to eql(dish)               
     end
+    it 'returns error message when searching for an unavailable dish' do
+      allow(dish).to receive(:available).and_return(true)
+      allow(fish_dish).to receive(:available).and_return(false)
+      allow(menu).to receive(:dishes).and_return([dish, fish_dish])
+      allow(dish).to receive(:name).and_return(:chicken)
+      allow(fish_dish).to receive(:name).and_return(:fish)
+      expect {subject.find_dish("fish")}.to raise_error "Error, dish not available"
+    end
   end
+
+  describe '#show_menu' do
+    it 'shows the menu with its prices' do
+      allow(menu).to receive(:dishes).and_return([dish, fish_dish])
+      allow(dish).to receive(:available).and_return(true)
+      allow(fish_dish).to receive(:available).and_return(false)
+      allow(dish).to receive(:name).and_return(:chicken)
+      allow(fish_dish).to receive(:name).and_return(:fish)
+      allow(dish).to receive(:price).and_return(3)
+      allow(fish_dish).to receive(:price).and_return(2)
+      expect(subject.show_menu).to eq([
+        {chicken: 3},
+        {fish: 2}                
+      ])
+      
+    end
+  end
+
+  describe '#order_total' do
+    it 'returns the total price of the basket' do
+      allow(menu).to receive(:dishes).and_return([dish, fish_dish])
+      allow(dish).to receive(:name).and_return(:chicken)
+      allow(dish).to receive(:price).and_return(3)
+      subject.add_to_basket(dish, 2)
+      expect(subject.order_total).to eq(6)
+    end
+  end
+
+
   
 
 end
