@@ -1,4 +1,5 @@
 require_relative 'menu'
+require 'date'
 
 class Order
 
@@ -10,10 +11,10 @@ class Order
   end
 
   def add_order(dish_name, quantity)
-    fail 'Sorry, #{dish} is not availble' unless @menu.has_dish?(dish_name) 
+    fail "Sorry, #{dish} is not availble" unless @menu.has_dish?(dish_name) 
     if @menu.has_dish?(dish_name)
       dish_obj = @menu.get_dish_obj(dish_name)
-      @final_order.push({dish: dish_obj, quantity: quantity})
+      @final_order.push({ dish: dish_obj, quantity: quantity })
     end
   end
 
@@ -22,8 +23,8 @@ class Order
     @final_order.each do |item|
       sum += (item[:dish].price * item[:quantity])
     end
-    puts "Thank you! Your order was placed and will be delivered within 1 hour"
+    puts "Thank you! Your order was placed and will be delivered before 
+    #{(Time.now + (1 / 24.0)).strftime("%H:%M")}."
     return sum
   end
-
 end

@@ -25,7 +25,7 @@ describe Order do
 
     it 'raise error if dish is not available' do
       allow(menu).to receive(:has_dish?).with(dish).and_return(false)
-      expect { subject.add_order(dish, 2) }.to raise_error(RuntimeError, 'Sorry, #{dish} is not availble')
+      expect { subject.add_order(dish, 2) }.to raise_error(RuntimeError, "Sorry, #{dish} is not availble")
     end
   end
 

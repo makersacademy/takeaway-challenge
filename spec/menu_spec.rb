@@ -5,13 +5,11 @@ describe Menu do
   subject(:menu) { described_class.new }
   let(:dish) { double :dish }
   
-
   # it { is_expected.to respond_to(:dishes) }
   it { is_expected.to respond_to(:add_dish).with(1).arguments }
   it { is_expected.to respond_to(:display) }
   it { is_expected.to respond_to(:has_dish?).with(1).arguments }
   it { is_expected.to respond_to(:get_dish_obj).with(1).arguments }
-
 
   describe '#display' do
     it 'display dishes in menu' do
