@@ -33,4 +33,11 @@ describe 'User Stories' do
     order.select_dish(dish_3, 3)
     expect(order.total).to eq((dish_1.price * 2) + dish_2.price + (dish_3.price * 3))
   end
+
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as:
+  #   "Thank you! Your order was placed and will be delivered before 18:52"
+  # after I have ordered
+
 end
