@@ -1,3 +1,9 @@
+# To install:
+
+Clone, check Ruby version: requires 2.5.1 (or change gemfile), bundle install.
+
+# Usage examples for user stories
+
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -54,3 +60,7 @@ in pry:
     --> £13.98
   food.submit_order
     --> "Your order will arrive by 19:26"
+
+# Extra information
+
+Works as expected in feature tests. Had some trouble implementing RSpec tests for testing text message functionality. Would like to use VCR to stop messages from sending every time tests are run. Will need to update with this once able to to do.

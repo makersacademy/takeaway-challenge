@@ -33,11 +33,11 @@ describe Takeaway do
     end
   end
 
-  describe '#itemsandprice' do
+  describe '#pricecheck' do
     it "should give a list of all items added and their costs" do
       @food.order("Sausage", 2)
       @food.order("Pepperoni", 3)
-      expect(@food.itemsandprice).to eq("2x Sausage: £13.98, 3x Pepperoni: £20.97")
+      expect(@food.pricecheck).to eq("2x Sausage: £13.98, 3x Pepperoni: £20.97")
     end
   end
 
