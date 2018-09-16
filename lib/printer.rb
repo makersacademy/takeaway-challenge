@@ -8,11 +8,11 @@ class Printer
     }
   end
 
-  def print_bill(complete_order, total)
+  def print_bill(complete_order, total_due)
     complete_order.each { |hash|
       puts "#{hash[:Dish]}: £#{hash[:Price]}"
     }
-    puts "Total: £#{total}"
+    puts "Total: £#{total_due}"
   end
 
 end

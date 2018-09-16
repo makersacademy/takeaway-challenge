@@ -14,7 +14,7 @@ class Order
     @complete_order = []
     @food_options = food_options
     @calculator = calculator
-    @total = 0
+    @total_due = 0
     @print_class = print_class
     @text_class = text_class
   end
@@ -34,11 +34,12 @@ class Order
   end
 
   def total
-    @total = @calculator.calculate_total(complete_order)
+    @total_due = @calculator.calculate_total(complete_order)
   end
 
   def print_order
-    @print_class.print_bill(@complete_order, @total)
+    total
+    @print_class.print_bill(@complete_order, @total_due)
   end
 
   def place_order(customer_confirm_total)
@@ -46,7 +47,7 @@ class Order
       raise "I'm sorry that total is wrong, enter your total again or place a new order"
     else
       @text_class.confirmation
-    end    
+    end
   end
 
 end
