@@ -12,8 +12,17 @@ class Order
   end
 
   def choose_item(item)
-    @menu.include? item
-    @order << item
+    if @menu.include?(item)
+      @order << item
+    else
+      fail "Sorry, this item is unavailable here!"
+    end
+  end
+
+  def calculate_sum
+    @sum = 0
+    @order.each {|x| @sum += @menu[x]}
+    @sum
   end
 
 end
