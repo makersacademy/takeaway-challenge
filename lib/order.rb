@@ -16,7 +16,7 @@ class Order
   def total
     sum = 0
     @summary.map { |k, v| sum += k[:price] * v }
-    "£#{"%.2f" % sum}"
+    format_price(sum)
   end
 
   def check_order
@@ -25,8 +25,13 @@ class Order
 
   def place_order
     arr = @summary.map do |k, v|
-      "#{k[:name].capitalize}: £#{"%.2f" % k[:price]} x #{v}"
+      "#{k[:name].capitalize}: #{format_price(k[:price])} x #{v}"
     end
     arr.join("\n")
+  end
+
+ private
+  def format_price(price)
+    "£#{"%.2f" % price}"
   end
 end
