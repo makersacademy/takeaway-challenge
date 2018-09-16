@@ -1,6 +1,8 @@
 require './lib/menu'
 require './lib/order_confirmer'
 
+# This class takes a menu and an order confirmer (which uses a Twilio API) and
+# allows users to order food from the restaurant. 
 class Restaurant
 
   attr_reader :basket, :menu

@@ -1,3 +1,6 @@
+# This class holds the menu for the restaurant. It comes with a default menu
+# constant which is for testing. Users can search for items by name, which
+# returns a hash containing name and price, if ths dish is on the menu.
 class Menu
   attr_reader :menu_items
 

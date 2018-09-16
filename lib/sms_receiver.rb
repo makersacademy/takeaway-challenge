@@ -1,6 +1,9 @@
 require 'twilio-ruby'
 require './lib/restaurant'
 
+# This class parses texts sent to the takeaway's mobile number and responds
+# based on some simple rules. It takes a time client and a restaurant as
+# parameters.
 class SMSReceiver
   def initialize(restaurant: Restaurant.new, time_client: Time)
     @restaurant = restaurant
@@ -47,7 +50,7 @@ class SMSReceiver
   def convert_bits_to_hash(order_bits)
     order = []
     order_bits.each do |item|
-      dish, quantity = item.split(":")[0], item.split(":")[1]
+      dish, quantity = item.split(":")
       order << { dish: dish, quantity: quantity.to_i }
     end
     return order
