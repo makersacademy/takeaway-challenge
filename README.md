@@ -1,4 +1,4 @@
-Takeaway Challenge
+˜Takeaway Challenge
 ==================
 ```
                             _________
@@ -103,22 +103,28 @@ How my app would look like from a user perspective
 
 My approach to solving this challenge
 ---
-1. I created a takeaway app that allow a customer to order food and get a text confirmation.
+1. I created a takeaway app that allow a customer to order food and get a text confirmation
+
 1. Using TDD:
-  - I tested that a dish can be created with a name and a price
-  - I tested that a dish can be added to the Menu
-  - I tested that a customer can see the menu
-  - I tested that an order can be placed
-  - I tested that a dish can be added to an order
-  - I tested that a customers can add several dishes
-  - I tested that a customer can check their order and get a list of the dishes they chose with price and quantity and total price
-  - I tested that a customer will get a text message to confirm their order
+    - I tested that a dish can be created with a name and a price
+    - I tested that a dish can be added to the Menu
+    - I tested that a customer can see the menu
+    - I tested that an order can be placed
+    - I tested that a dish can be added to an order
+    - I tested that a customers can add several dishes
+    - I tested that a customer can check their order and get a list of the dishes they chose with price and quantity and total price
+    - I tested that a customer will get a text message to confirm their order
+
+
 1. I also tested for edge cases such as:
-  - A customer cannot order a dish that is not on the menu
-  - An order cannot be placed if it is empty
+
+    - A customer cannot order a dish that is not on the menu
+    - An order cannot be placed if it is empty
+
+
 1. In order to solve this challenge, I created 5 classes:
-  1. Dish class: creates a dish with name and price
-  1. Menu class: responsible for adding dishes to menu and showing menu to customers
-  1. Order class: responsible for adding dishes to order and placing order(list of dishes with quantity, price and total)
-  1. Takeaway class: responsible for completing order
-  1. Messager class: responsible for sending message through Twilio
+    1. Dish class: creates a dish with name and price
+    1. Menu class: responsible for adding dishes to menu and showing menu to customers
+    1. Order class: responsible for adding dishes to order and placing order(list of dishes with quantity, price and total)
+    1. Takeaway class: responsible for completing order
+    1. Messager class: responsible for sending message through Twilio
