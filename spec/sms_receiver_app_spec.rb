@@ -5,6 +5,7 @@ ENV['RACK_ENV'] = 'test'
 
 require 'sms_receiver_app'
 
+# This module just includes rack testing methods and defines the app
 module RSpecMixin
   include Rack::Test::Methods
   def app() Sinatra::Application end
