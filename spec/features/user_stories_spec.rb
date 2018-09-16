@@ -9,6 +9,11 @@ describe 'User Stories' do
   let(:dish_2) { double :dish, :name => 'spare ribs', :price => 4.50 }
   let(:dish_3) { double :dish, :name => 'prawn crackers', :price => 1 }
 
+  def one_hours_time
+    now = Time.new
+    "%02d" % (now.hour + 1) + ":" + "%02d" % now.min
+  end
+
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -41,14 +46,12 @@ describe 'User Stories' do
   #   "Thank you! Your order was placed and will be delivered before 18:52"
   # after I have ordered
   it 'so I know the order was placed I want to receive an SMS confirmation' do
-    now = Time.now
-    delivery_time = "#{now.hour + 1}:#{now.min}"
     order.select_dish(dish_1, 2)
     order.select_dish(dish_2, 1)
     order.select_dish(dish_3, 3)
     allow(sms).to receive(:send)
     expect(sms).to receive(:send).with(
-      "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+      "Thank you! Your order was placed and will be delivered before #{one_hours_time}"
     )
     order.place_order
   end

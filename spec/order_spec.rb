@@ -28,13 +28,16 @@ describe Order do
   end
 
   describe '#place_order' do
+    def one_hours_time
+      now = Time.new
+      "%02d" % (now.hour + 1) + ":" + "%02d" % now.min
+    end
+  
     it 'should send an sms' do
-      now = Time.now
-      delivery_time = "#{now.hour + 1}:#{now.min}"
       order.select_dish(dish, 2)
       allow(sms).to receive(:send)
       expect(sms).to receive(:send).with(
-        "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+        "Thank you! Your order was placed and will be delivered before #{one_hours_time}"
       )
       order.place_order
     end
