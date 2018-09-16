@@ -18,6 +18,7 @@ class Order
 
   def select_dish(dish, quantity)
     @dishes << { dish: dish, quantity: quantity }
+    @dishes.last
   end
 
   def total
