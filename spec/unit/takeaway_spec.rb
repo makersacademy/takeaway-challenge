@@ -31,7 +31,6 @@ describe Takeaway do
     end
 
     it 'raises an error if order is nil' do
-
       expect { takeaway.complete_order }.to raise_error 'No order made!'
     end
   end

@@ -11,7 +11,7 @@ describe Order do
     it 'takes order from customer' do
       order.add(dish1, 1)
 
-      expect(order.summary).to eq({ { name: 'pizza', price: 5} => 1 })
+      expect(order.summary).to eq({ { name: 'pizza', price: 5 } => 1 })
     end
 
     it 'selects several dishes' do

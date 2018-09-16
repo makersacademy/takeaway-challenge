@@ -14,7 +14,9 @@ class Order
   end
 
   def place_order
-    arr = @summary.map { |k, v| "#{k[:name].capitalize}: £#{"%.2f" %k[:price]} x #{v}" }
+    arr = @summary.map do |k, v|
+      "#{k[:name].capitalize}: £#{"%.2f" % k[:price]} x #{v}"
+    end
     arr.join("\n")
   end
 

@@ -12,7 +12,7 @@ class Menu
   end
 
   def show_menu
-    h = @dishes.map { |dish| "#{dish[:name].capitalize}: £#{ "%.2f" % dish[:price]}" }
+    h = @dishes.map { |d| "#{d[:name].capitalize}: £#{"%.2f" % d[:price]}" }
     h.join("\n")
   end
 

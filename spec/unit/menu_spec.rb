@@ -9,7 +9,7 @@ describe Menu do
     it 'adds hash to dishes array' do
       menu.add_dish(dish1)
 
-      expect(menu.dishes).to include({ name: dish1.name, price:"%.2f" % dish1.price })
+      expect(menu.dishes).to include({ name: dish1.name, price: "%.2f" % dish1.price })
     end
   end
 
