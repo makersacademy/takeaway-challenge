@@ -35,3 +35,32 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ---
 
 ## Feature Tests
+---
+
+#### User Story 1
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+######  Feature Test 1
+  ` load './lib/takeaway.rb'
+  ` Dins = CustOrder.new
+  `Should fail, doesnt exist
+
+######  Feature Test 2
+  ` load './lib/takeaway.rb'
+  ` Dins = CustOrder.new
+  ` Dins.show_menu
+    Should show the menu
+    
+***
+
+#### User Story 2
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+######  Feature Test 1
+  ` load './lib/takeaway.rb'
+  ` Dins = CustOrder.new
+  `Should fail, doesnt exist
