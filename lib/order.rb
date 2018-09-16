@@ -1,7 +1,7 @@
 class Order
   attr_reader :summary, :menu
 
-  def initialize(menu = Menu.new)
+  def initialize(menu)
     @summary = Hash.new(0)
     @menu = menu
   end
@@ -20,7 +20,11 @@ class Order
 
   def total
     sum = 0
-    arr = @summary.map { |k, v| sum += k[:price] * v }
-    sum
+    @summary.map { |k, v| sum += k[:price] * v }
+    "£#{sum}"
+  end
+
+  def check_order
+    place_order + "\nTotal: #{total}"
   end
 end

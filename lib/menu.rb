@@ -12,12 +12,12 @@ class Menu
   end
 
   def show_menu
-    @dishes.map! { |dish| "#{dish[:name].capitalize}: £#{dish[:price]}" }
-    @dishes.join("\n")
+    h = @dishes.map { |dish| "#{dish[:name].capitalize}: £#{dish[:price]}" }
+    h.join("\n")
   end
 
   def on_menu?(dish)
-    items = @dishes.map! { |item| item[:name] }
+    items = @dishes.map { |item| item[:name] }
     items.include?(dish.name)
   end
 end

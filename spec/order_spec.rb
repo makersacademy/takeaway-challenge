@@ -7,7 +7,7 @@ describe Order do
   let(:dish2) { double :dish, name: 'pasta', price: 4 }
   let(:dish3) { double :dish, name: 'chicken', price: 7 }
 
-  context '#take_order' do
+  context '#add' do
     it 'takes order from customer' do
       order.add(dish1, 1)
 
@@ -21,7 +21,7 @@ describe Order do
       expect(order.summary).to eq({ { name: 'pizza', price: 5 } => 1, { name: 'pasta', price: 4 } => 1 })
     end
 
-    it 'selects the same dish' do
+    it 'increase quantity when selecting same dish' do
       order.add(dish1, 1)
       order.add(dish1, 1)
 
@@ -52,7 +52,17 @@ describe Order do
       order.add(dish2, 1)
       order.add(dish3, 1)
 
-      expect(order.total).to eq 21
+      expect(order.total).to eq "£21"
+    end
+  end
+
+  context 'check_order' do
+    it 'returns order with total' do
+      order.add(dish1, 2)
+      order.add(dish2, 1)
+      order.add(dish3, 1)
+
+      expect(order.check_order).to eq("Pizza: £5 x 2\nPasta: £4 x 1\nChicken: £7 x 1\nTotal: £21")
     end
   end
 end
