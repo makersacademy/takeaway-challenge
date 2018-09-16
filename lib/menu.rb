@@ -6,13 +6,17 @@ class Menu
   end
 
   def add_dish(dish)
-    raise "Dish is not currently available" if dish.available == false
     @dishes << dish
   end
 
-  def show_menu
-    menu_arr = []
-    @dishes.each { |dish| menu_arr << { dish.name.to_sym => dish.price}}
-    menu_arr
+  def remove_dish(dish)
+    @dishes.delete(dish)
   end
+
+  # def show_menu
+  #   menu_arr = []
+  #   @dishes.each { |dish| menu_arr << { dish.name.to_sym => dish.price}}
+  #   menu_arr
+  # end
+
 end
