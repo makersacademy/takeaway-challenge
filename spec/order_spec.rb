@@ -14,7 +14,7 @@ describe Order do
     end
 
     it 'checks dish is on the menu' do
-      expect{ subject.add('foo') }.to raise_error 'foo not on menu'
+      expect { subject.add('foo') }.to raise_error 'foo not on menu'
     end
   end
 end

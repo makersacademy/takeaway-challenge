@@ -9,7 +9,7 @@ class Order
 
   def add(dish)
     fail "#{dish} not on menu" if not_on_menu(dish)
-    @current_order.push(dish)
+    @current_order << dish
   end
 
   private
