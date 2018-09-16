@@ -89,6 +89,6 @@ PriceError (Difference in Price between Customer and Vendor)
 
 2.5.0 :006 > menu.confirm_order(37)
 
-Text sent saying "Thank you! Your order was placed and will be delivered by Owl before 20:19.
+Text sent saying "Thank you! Your order was placed and will be delivered by Owl before 20:19."
 
 ```
