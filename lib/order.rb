@@ -32,7 +32,7 @@ class Order
 
   def place_order(confirmation = Confirmation.new)
     confirmation.send_text
-    "Order has been placed!"
+    "Order has been placed. It will arrive within 1 hour"
   end
 
   # private
