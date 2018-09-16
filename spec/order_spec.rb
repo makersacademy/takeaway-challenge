@@ -91,49 +91,14 @@ describe Order do
     end
   end
 
-  # describe '#format_order' do
-  #   before do
-  #     allow(mockprinter).to receive(:format_order)
-  #     allow(mockprinter).to receive(:format_total)
-  #     basket_value = [{ dish: mockdish1, qty: 1, subt: 2 }, { dish: mockdish2, qty: 2, subt: 4 }]
-  #     allow(subject).to receive(:basket).and_return(basket_value)
-  #   end
-  #
-  #   it 'calls printer.format_order on each entry in basket' do
-  #     2.times { expect(mockprinter).to receive(:format_order) }
-  #     expect(mockprinter).to receive(:format_total)
-  #     subject.format_order
-  #   end
-  # end
-
-  # describe '#calculate_subtotal' do
-  #   context 'calculate_total called for first time' do
-  #     before do
-  #       basket_value = [{ dish: mockdish1, qty: 1 }, { dish: mockdish2, qty: 2 }]
-  #       allow(subject).to receive(:basket).and_return(basket_value)
-  #       subject.calculate_subtotal
-  #     end
-  #     it 'adds subtotal value to hash in @basket' do
-  #       new_basket_value = [{ dish: mockdish1, qty: 1, subt: 2 }, { dish: mockdish2, qty: 2, subt: 4 }]
-  #       expect(subject.basket). to eq(new_basket_value)
-  #     end
-  #   end
-  # end
-  #
-  # describe "#calculate_total" do
-  #   before do
-  #     basket_value = [{ dish: mockdish1, qty: 1, subt: 2 }, { dish: mockdish2, qty: 2, subt: 4 }]
-  #     allow(subject).to receive(:basket).and_return(basket_value)
-  #     subject.calculate_total
-  #   end
-  #
-  #   it 'calculates total based on subt values in @basket' do
-  #     expect(subject.total).to eq(6)
-  #   end
-  #
-  #   it 'resets total and counts again when called more than once' do
-  #     subject.calculate_total
-  #     expect(subject.total).to eq(6)
-  #   end
-  # end
+  describe '#check_total' do
+    it 'returns true if argument matches total' do
+      allow(subject).to receive(:total).and_return(1995)
+      expect(subject.check_total(19.95)).to eq(true)
+    end
+    it 'returns false if argument does not match total' do
+      allow(subject).to receive(:total).and_return(1995)
+      expect(subject.check_total(20.0)).to eq(false)
+    end
+  end
 end

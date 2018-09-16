@@ -19,6 +19,10 @@ class Order
     format_order
   end
 
+  def check_total(amount)
+    total == (amount * 100).to_i
+  end
+
   private
   attr_writer :total
 

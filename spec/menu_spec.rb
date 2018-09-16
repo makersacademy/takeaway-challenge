@@ -2,7 +2,6 @@ require 'menu'
 
 describe Menu do
   let(:mockprinter) { double(:mockprinter) }
-  # maybe remove mockdish name and price??
   let(:mockdish)    { double(:mockdish, new: "new", name: "name", price: "price") }
   subject           { described_class.new(mockprinter, mockdish) }
 

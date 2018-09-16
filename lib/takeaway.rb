@@ -14,7 +14,7 @@ class Takeaway
   end
 
   def view_menu
-    print menu.display
+    menu.display
   end
 
   def add(name, qty = 1)
@@ -22,10 +22,11 @@ class Takeaway
   end
 
   def view_order
-    print order.display
+    order.display
   end
 
-  def checkout
+  def checkout(amount)
+    raise "Please enter exact amount!" unless order.check_total(amount)
     sender.send
   end
 end

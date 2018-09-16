@@ -21,10 +21,10 @@ describe Takeaway do
   end
 
   describe '#view_menu' do
-    it 'prints #display on Menu' do
-      allow(mockmenu).to receive(:display).and_return("test passed1")
+    it 'calls #display on Menu' do
+      allow(mockmenu).to receive(:display)
       expect(subject.menu).to receive(:display)
-      expect { subject.view_menu }.to output("test passed1").to_stdout
+      subject.view_menu
     end
   end
 
@@ -37,18 +37,32 @@ describe Takeaway do
   end
 
   describe '#view_order' do
-    it 'prints #display on Order' do
-      allow(mockorder).to receive(:display).and_return("test passed2")
+    it 'calls #display on Order' do
+      allow(mockorder).to receive(:display)
       expect(subject.order).to receive(:display)
-      expect { subject.view_order }.to output("test passed2").to_stdout
+      subject.view_order
     end
   end
 
   describe '#checkout' do
-    before { allow(mocksender).to receive(:send) }
-    it 'calls #send on Sender' do
-      expect(subject.sender).to receive(:send)
-      subject.checkout
+    before do
+      allow(mocksender).to receive(:send)
+    end
+
+    context 'user enters exact amount' do
+      before { allow(mockorder).to receive(:check_total).and_return(true) }
+      it 'calls #send on Sender' do
+        expect(subject.order).to receive(:check_total)
+        expect(subject.sender).to receive(:send)
+        subject.checkout(3)
+      end
+    end
+
+    context 'user does not enter exact amount' do
+      before { allow(mockorder).to receive(:check_total).and_return(false) }
+      it 'raises error' do
+        expect { subject.checkout(3) }.to raise_error("Please enter exact amount!")
+      end
     end
   end
 end
