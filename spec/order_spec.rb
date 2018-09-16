@@ -19,8 +19,12 @@ describe Order do
       expect(subject.current_total).to eq 4
     end
 
-    it 'confirms an order is the same as the given total' do
+    it 'confirms an order total is the same as the given total' do
       expect(subject.add(test_order)).to eq true
+    end
+
+    it 'returns error if incorrect' do
+      expect { subject.add(fail_order) }.to raise_error 'Incorrect total'
     end
   end
   #   it 'adds a requested dish to the order' do

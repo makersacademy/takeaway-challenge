@@ -8,12 +8,18 @@ class Order
   end
 
   def add(list)
+    add_up_given(list)
+    fail 'Incorrect total' if !is_correct?(list[:total])
+    is_correct?(list[:total])
+  end
+
+  private
+
+  def add_up_given(list)
     list.each do |dish, amount|
       @current_total += (@menu.prices[dish]).to_f * amount.to_f
     end
   end
-
-  private
 
   def is_correct?(given_total)
     @current_total == given_total
