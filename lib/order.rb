@@ -1,6 +1,7 @@
 require_relative "menu"
+require_relative "printer"
+require_relative "text"
 require_relative "calculator"
-require_relative "order"
 
 class Order
 
@@ -35,5 +36,11 @@ class Order
   def print_order
     @print_class.print_bill(@complete_order, @total)
   end
+
+
+  def place_order(customer_confirm_total)
+    raise "I'm sorry that total is wrong, enter your total again or place a new order" if customer_confirm_total != total
+  end
+    
 
 end

@@ -1,6 +1,4 @@
 require_relative "order"
-require_relative "text"
-
 
 
 class Printer
@@ -16,9 +14,5 @@ class Printer
     puts "Total: £#{total}"
   end
 
-
-  def message
-    Confirmation.new.text
-  end
 
 end
