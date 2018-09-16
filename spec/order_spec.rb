@@ -3,9 +3,9 @@ require 'order'
 describe Order do
   let(:mockmenu)    { double(:mockmenu) }
   let(:mockprinter) { double(:mockprinter) }
-  let(:mockdish1)   { double(:mockdish, name: "mock1", price: 1) }
-  let(:mockdish2)   { double(:mockdish, name: "mock2", price: 1) }
-  let(:mockdish3)   { double(:mockdish, name: "mock3", price: 1) }
+  let(:mockdish1)   { double(:mockdish, name: "mock1", price: 2) }
+  let(:mockdish2)   { double(:mockdish, name: "mock2", price: 2) }
+  let(:mockdish3)   { double(:mockdish, name: "mock3", price: 2) }
   subject           { described_class.new(mockmenu, mockprinter) }
 
   describe 'instantiation' do
@@ -62,65 +62,78 @@ describe Order do
         subject.add("mock2")
         expect(subject.basket).to eq(new_basket_value)
       end
-
     end
   end
 
-  describe '#search_basket' do
+  describe '#display' do
     before do
-      allow(subject).to receive(:basket).and_return([{ dish: mockdish1 }, { dish: mockdish2 }])
-    end
-
-    it 'returns true if dish is inside @basket' do
-      expect(subject.search_basket(mockdish2)).to eq(true)
-    end
-
-    it 'returns false if dish is not inside @basket' do
-      expect(subject.search_basket(mockdish3)).to eq(false)
-    end
-  end
-
-  describe '#search_menu' do
-    before do
-      allow(subject.menu).to receive(:list).and_return([mockdish1, mockdish2])
-    end
-    it 'returns dish obj if present in menu.list' do
-      expect(subject.search_menu("mock2")).to eq(mockdish2)
-    end
-
-    it 'returns nil if dish obj not present in menu.list' do
-      expect(subject.search_menu("mock3")).to eq(nil)
-    end
-  end
-
-  describe 'add_entry' do
-    it 'adds dish object and  specified qty as hash inside @basket array' do
-      subject.add_entry(mockdish1, 3)
-      expect(subject.basket).to eq([{ dish: mockdish1, qty: 3 }])
-    end
-
-    it 'adds dish object and default qty 1 as hash inside @basket array' do
-      subject.add_entry(mockdish1)
-      expect(subject.basket).to eq([{ dish: mockdish1, qty: 1 }])
-    end
-  end
-
-  describe 'update_entry' do
-    before do
+      allow(mockprinter).to receive(:format_order)
+      allow(mockprinter).to receive(:format_total)
       basket_value = [{ dish: mockdish1, qty: 1 }, { dish: mockdish2, qty: 2 }]
       allow(subject).to receive(:basket).and_return(basket_value)
     end
 
-    it 'updates qty value with default argument for existing dish obj in @basket' do
-      new_basket_value = [{ dish: mockdish1, qty: 1 }, { dish: mockdish2, qty: 5 }]
-      subject.update_entry(mockdish2, 3)
+    it 'adds subtotals to hashes in @basket' do
+      subject.display
+      new_basket_value = [{ dish: mockdish1, qty: 1, subt: 2 }, { dish: mockdish2, qty: 2, subt: 4 }]
       expect(subject.basket).to eq(new_basket_value)
     end
 
-    it 'udpdate qty value with argument for existing dish obj in @basket' do
-      new_basket_value = [{ dish: mockdish1, qty: 1 }, { dish: mockdish2, qty: 3 }]
-      subject.update_entry(mockdish2)
-      expect(subject.basket).to eq(new_basket_value)
+    it 'updates total based on subtotals in hash' do
+      subject.display
+      expect(subject.total).to eq(6)
+    end
+
+    it 'calls printer.format_order for each hash and printer.format_total' do
+      2.times { expect(mockprinter).to receive(:format_order) }
+      expect(mockprinter).to receive(:format_total)
+      subject.display
     end
   end
+
+  # describe '#format_order' do
+  #   before do
+  #     allow(mockprinter).to receive(:format_order)
+  #     allow(mockprinter).to receive(:format_total)
+  #     basket_value = [{ dish: mockdish1, qty: 1, subt: 2 }, { dish: mockdish2, qty: 2, subt: 4 }]
+  #     allow(subject).to receive(:basket).and_return(basket_value)
+  #   end
+  #
+  #   it 'calls printer.format_order on each entry in basket' do
+  #     2.times { expect(mockprinter).to receive(:format_order) }
+  #     expect(mockprinter).to receive(:format_total)
+  #     subject.format_order
+  #   end
+  # end
+
+  # describe '#calculate_subtotal' do
+  #   context 'calculate_total called for first time' do
+  #     before do
+  #       basket_value = [{ dish: mockdish1, qty: 1 }, { dish: mockdish2, qty: 2 }]
+  #       allow(subject).to receive(:basket).and_return(basket_value)
+  #       subject.calculate_subtotal
+  #     end
+  #     it 'adds subtotal value to hash in @basket' do
+  #       new_basket_value = [{ dish: mockdish1, qty: 1, subt: 2 }, { dish: mockdish2, qty: 2, subt: 4 }]
+  #       expect(subject.basket). to eq(new_basket_value)
+  #     end
+  #   end
+  # end
+  #
+  # describe "#calculate_total" do
+  #   before do
+  #     basket_value = [{ dish: mockdish1, qty: 1, subt: 2 }, { dish: mockdish2, qty: 2, subt: 4 }]
+  #     allow(subject).to receive(:basket).and_return(basket_value)
+  #     subject.calculate_total
+  #   end
+  #
+  #   it 'calculates total based on subt values in @basket' do
+  #     expect(subject.total).to eq(6)
+  #   end
+  #
+  #   it 'resets total and counts again when called more than once' do
+  #     subject.calculate_total
+  #     expect(subject.total).to eq(6)
+  #   end
+  # end
 end
