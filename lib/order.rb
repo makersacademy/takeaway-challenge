@@ -11,4 +11,9 @@ class Order
     @menu
   end
 
+  def choose_item(item)
+    @menu.include? item
+    @order << item
+  end
+
 end

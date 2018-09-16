@@ -2,15 +2,8 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu = [
-      { dish: "Egg Fried Rice", price: 2 },
-      { dish: "White Rice", price: 2 },
-      { dish: "Can of Coke", price: 1},
-      { dish: "Bottle of Water", price: 1 },
-      { dish: "Duck in Black Bean Sauce", price: 5 },
-      { dish: "Quarter Aromatic Crispy Duck", price: 8 },
-      { dish: "Half Aromatic Crispy Duck", price: 15 },
-      { dish: "Full Aromatic Crispy Duck", price: 29 }
-    ]
+    @menu  = {egg_fried_rice: 2, white_rice: 2, can_of_coke: 1, bottle_of_water: 1, duck_in_black_bean_sauce: 5, quarter_aromatic_crispy_duck: 8, half_aromatic_crispy_duck: 15, full_aromatic_crispy_duck: 29}
   end
+
+
 end

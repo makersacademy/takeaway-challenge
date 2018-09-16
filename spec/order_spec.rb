@@ -9,6 +9,16 @@ describe Order do
       expect(subject.list_menu).to eq (subject.menu)
     end
 
+  describe '#choose items' do
+
+    it 'adds an item to the order' do
+      item = :egg_fried_rice
+      subject.choose_item(item)
+      expect(subject.order).to eq [item]
+    end
+
+  end
+
   end
 
 
