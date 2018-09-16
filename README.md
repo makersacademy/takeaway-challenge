@@ -59,46 +59,46 @@ How my app would look like from a user perspective
 [5] pry(main)> require './lib/messager.rb'
 => true
 [6] pry(main)> messager = Messager.new
-=> #<Messager:0x00007fa2a1165198>
+=> #<Messager:0x00007fd0c5ace048>
 [7] pry(main)> takeaway = Takeaway.new(messager)
-=> #<Takeaway:0x00007fa2a0f0e2a0 @messager=#<Messager:0x00007fa2a1165198>, @order=nil>
+=> #<Takeaway:0x00007fd0c43295a0 @messager=#<Messager:0x00007fd0c5ace048>, @order=nil>
 [8] pry(main)> dish1 = Dish.new('pizza', 10)
-=> #<Dish:0x00007fa2a1137ab8 @name="pizza", @price=10>
+=> #<Dish:0x00007fd0c43040e8 @name="pizza", @price=10>
 [9] pry(main)> dish2 = Dish.new('potato', 3)
-=> #<Dish:0x00007fa2a222ff78 @name="potato", @price=3>
+=> #<Dish:0x00007fd0c4b009b8 @name="potato", @price=3>
 [10] pry(main)> menu = Menu.new
-=> #<Menu:0x00007fa2a221c838 @dish=nil, @dishes=[]>
+=> #<Menu:0x00007fd0c712f378 @dish=nil, @dishes=[]>
 [11] pry(main)> menu.add_dish(dish1)
-=> [{:name=>"pizza", :price=>10}]
+=> [{:name=>"pizza", :price=>"10.00"}]
 [12] pry(main)> menu.add_dish(dish2)
-=> [{:name=>"pizza", :price=>10}, {:name=>"potato", :price=>3}]
+=> [{:name=>"pizza", :price=>"10.00"}, {:name=>"potato", :price=>"3.00"}]
 [13] pry(main)>
 [14] pry(main)> menu.show_menu
-=> "Pizza: £10\nPotato: £3"
+=> "Pizza: £10.00\nPotato: £3.00"
 [15] pry(main)> order = Order.new(menu)
-=> #<Order:0x00007fa2a11dc4a0
+=> #<Order:0x00007fd0c4b53258
  @menu=
-  #<Menu:0x00007fa2a221c838
+  #<Menu:0x00007fd0c712f378
    @dish=nil,
-   @dishes=[{:name=>"pizza", :price=>10}, {:name=>"potato", :price=>3}]>,
+   @dishes=[{:name=>"pizza", :price=>"10.00"}, {:name=>"potato", :price=>"3.00"}]>,
  @summary={}>
 [16] pry(main)> takeaway.new_order(order)
-=> #<Order:0x00007fa2a11dc4a0
+=> #<Order:0x00007fd0c4b53258
  @menu=
-  #<Menu:0x00007fa2a221c838
+  #<Menu:0x00007fd0c712f378
    @dish=nil,
-   @dishes=[{:name=>"pizza", :price=>10}, {:name=>"potato", :price=>3}]>,
+   @dishes=[{:name=>"pizza", :price=>"10.00"}, {:name=>"potato", :price=>"3.00"}]>,
  @summary={}>
 [17] pry(main)> order.add(dish1, 1)
 => 1
 [18] pry(main)> order.add(dish2, 2)
 => 2
 [19] pry(main)> order.check_order
-=> "Pizza: £10 x 1\nPotato: £3 x 2\nTotal: £16"
+=> "Pizza: £10.00 x 1\nPotato: £3.00 x 2\nTotal: £16.00"
 [20] pry(main)> order.place_order
-=> "Pizza: £10 x 1\nPotato: £3 x 2"
+=> "Pizza: £10.00 x 1\nPotato: £3.00 x 2"
 [21] pry(main)> takeaway.complete_order
-=> <Twilio.Api.V2010.MessageInstance account_sid: AC815cac0b6035b881ce280e3e01514709 api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you for your order: £16 date_created: 2018-09-16 10:48:42 +0000 date_updated: 2018-09-16 10:48:42 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: +447449606023 messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid: SM85d677646d5e4e7da2869d2c02490272 status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/AC815cac0b6035b881ce280e3e01514709/Messages/SM85d677646d5e4e7da2869d2c02490272/Media.json"} to: +447553027856 uri: /2010-04-01/Accounts/AC815cac0b6035b881ce280e3e01514709/Messages/SM85d677646d5e4e7da2869d2c02490272.json>
+=> <Twilio.Api.V2010.MessageInstance account_sid: AC815cac0b6035b881ce280e3e01514709 api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you for your order: £16.00. Your order will arrive at 18:34 date_created: 2018-09-16 17:34:34 +0000 date_updated: 2018-09-16 17:34:34 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: +447449606023 messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid: SM54f765b70aa94572959528aa7c9df2ba status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/AC815cac0b6035b881ce280e3e01514709/Messages/SM54f765b70aa94572959528aa7c9df2ba/Media.json"} to: +447553027856 uri: /2010-04-01/Accounts/AC815cac0b6035b881ce280e3e01514709/Messages/SM54f765b70aa94572959528aa7c9df2ba.json>
 ```
 
 My approach to solving this challenge
