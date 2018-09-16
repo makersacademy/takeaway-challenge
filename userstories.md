@@ -72,7 +72,4 @@ order.add_order('abc', 1)
 menu.has_dish?('xyz') == true
 menu.has_dish?('abc') == true
 order.final_order
-sum = order.final_order[0][:quantity] * order.final_order[0][:dish].price
-sum = order.final_order[1][:quantity] * order.final_order[1][:dish].price
-
 order.final_bill

@@ -8,7 +8,7 @@ describe Menu do
   # it { is_expected.to respond_to(:dishes) }
   it { is_expected.to respond_to(:add_dish).with(1).arguments }
   it { is_expected.to respond_to(:display) }
-  it { is_expected.to respond_to(:has_dish?).with(1).arguments }
+  it { is_expected.to respond_to(:dish?).with(1).arguments }
   it { is_expected.to respond_to(:get_dish_obj).with(1).arguments }
 
   describe '#display' do
@@ -29,13 +29,13 @@ describe Menu do
     it 'returns true if dish is available' do
       allow(dish).to receive(:name).and_return("dish_name")
       subject.add_dish(dish)
-      expect(subject.has_dish?("dish_name")).to be_truthy
+      expect(subject.dish?("dish_name")).to be_truthy
     end
 
     it 'returns false if dish is not availble' do
       allow(dish).to receive(:name).and_return("dish_name")
       subject.add_dish(dish)
-      expect(subject.has_dish?("dish_name_1")).to be_falsy
+      expect(subject.dish?("dish_name_1")).to be_falsy
     end
   end
  

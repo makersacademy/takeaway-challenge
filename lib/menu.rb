@@ -7,7 +7,8 @@ class Menu
     @dishes = []
   end
 
-  def add_dish(dish) # dish is instance of dish class
+  def add_dish(dish) 
+    # dish is instance of dish class
     # raise "add_dish expects an instance of Dish class" unless dish.is_a?(Dish)
     @dishes.push(dish)
   end
@@ -16,7 +17,7 @@ class Menu
     @dishes
   end
 
-  def has_dish?(dish_name)
+  def dish?(dish_name)
     @dishes.each do |dish|
       return true if dish_name_matches?(dish, dish_name)
     end
