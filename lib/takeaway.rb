@@ -14,8 +14,8 @@ class Takeaway
     @menu.show
   end
 
-  def add_to_order(dish)
-    @order.add(dish)
+  def order(list)
+    @order.add(list)
   end
 
   def show_order
