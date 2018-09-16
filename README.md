@@ -36,6 +36,7 @@ menu.print
 
 
 To order:
+--------
 
 In irb:
 require "./lib/order"
