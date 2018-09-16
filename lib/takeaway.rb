@@ -13,6 +13,10 @@ class Takeaway
     menu.dishes
   end
 
+  def place_order
+    order.place_order
+  end
+
   def select_dish(dish, quantity)
     format_dish(order.select_dish(dish, quantity))
   end
