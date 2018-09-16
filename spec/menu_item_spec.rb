@@ -14,7 +14,7 @@ describe MenuItem do
   describe '#format_item' do
     it 'returns the menu item as a string' do
       new_item = described_class.new('favourite', 5)
-      expect(new_item.format_item).to eq("favourite: £5")  
+      expect(new_item.format_item).to eq("favourite: £5.00")  
     end
   end
 

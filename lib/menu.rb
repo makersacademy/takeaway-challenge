@@ -10,26 +10,22 @@ class Menu
     [
       MenuItem.new('Pizza', 8),
       MenuItem.new('Burger', 9),
-      MenuItem.new('Chips', 4.5)                  
+      MenuItem.new('Chips', 4.50)                  
     ]
   end
 
   def show_menu
     @items.each_with_index do |item, index|
-      puts "#{index+1}. " + item.format_item
+      puts "#{index + 1}. " + item.format_item
     end
   end  
 
   def find_item(name)
-    item = @items.detect do |item|
+    found_item = @items.detect do |item|
       item.name == name 
     end
-    raise_error if item.nil?
-    item
-  end
-
-  def find_price(name)
-    
+    raise_error if found_item.nil?
+    found_item
   end
 
   private

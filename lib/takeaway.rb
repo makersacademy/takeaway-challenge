@@ -14,7 +14,7 @@ class Takeaway
     @menu.show_menu
   end  
 
-  def order_item(name, quantity= 1)
+  def order_item(name, quantity = 1)
     item = @menu.find_item(name)
     previous_quantity = @order.basket[item] || 0
     @order.basket[item] = previous_quantity + quantity
@@ -22,6 +22,14 @@ class Takeaway
 
   def show_order_basket
     @order.show_basket
+  end
+
+  def show_order_total
+    @order.calculate_total_price
+  end
+
+  def show_order_subtotals
+    @order.calculate_subtotals  
   end
 
 end

@@ -7,7 +7,7 @@ class MenuItem
   end
 
   def format_item
-    "#{name}: £#{price}"
+    "#{name}: £#{'%.2f' % price}"
   end
 
 end
