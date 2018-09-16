@@ -28,8 +28,9 @@ RSpec.describe SMSReceiver do
 
     it "tells the user when they try to order something not on the menu" do
       allow(mock_restaurant).to receive(:on_the_menu?).and_return(false)
-      error_response = "You have selected a dish which is not on the menu.\n"
-      expect(subject.respond([{ dish: "Bolognese", quantity: 1 }])).to eq error_response + subject.help
+      error_response = "You have selected a dish which is not on the menu.\n" +
+        subject.help
+      expect(subject.respond([{ dish: "Bolognese", quantity: 1 }])).to eq error_response
     end
   end
 
