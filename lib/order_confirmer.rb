@@ -5,10 +5,10 @@ require 'twilio-ruby'
 class OrderConfirmer
 
   def initialize(text_api: Twilio::REST::Client, time_client: Time)
-    @acc_details = { sid: 'ACc6ec57ff4b9822b689c242826363aada',
-      token: '46e2b36162050b8ae26ab9e0280c0c1e' }
+    @account_sid = 'ACc6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    @auth_token = '46e2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' 
     @phone_numbers = { from: '+447533006421', to: '+447969668210' }
-    @text_client = text_api.new(@acc_details[:sid], @acc_details[:token])
+    @text_client = text_api.new(@account_sid, @auth_token)
     @time_client = time_client
   end
 
