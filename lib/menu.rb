@@ -19,6 +19,11 @@ class Menu
     dishq.map do |dish, quantity|
       order.add(dish, quantity)
     end
+    order.total
+  end
+
+  def price(dish)
+    dishq[dish]
   end
 
 end
