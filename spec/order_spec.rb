@@ -38,19 +38,24 @@ end
      it "checks the total with customer and raises error if incorrect" do
       order = Order.new
       allow(order).to receive(:total) {5}
-      expect {order.place_order("6")}.to raise_error("I'm sorry that total is wrong, enter your total again or place a new order")
+      expect {order.place_order(6)}.to raise_error("I'm sorry that total is wrong, enter your total again or place a new order")
      end
     end
 
-    # context "total is correct" do
-    #   it "sends a text if the total is correct" do
-    #     let(:text_class) {double :text_class => :confirmation }
-    #     order = Order.new(text_class)
-    #     allow(order).to receive(:total) {5}
-    #     expect (order.place_order("5")).to eq(order.text_class.confirmation)
-    #
-    #   end
-  
+    context "total is correct" do
+      let(:food_options) { double :food_options }
+      let(:text_class) { double :text_class, :confirmation => 0 }
+      let(:mock_printer) {double :mock_printer => :print_bill }
+      let(:mock_calculator) { double :mock_calculator, :calculate_total => "something" }
+
+      it "sends a text if the total is correct" do
+        order = Order.new(food_options, mock_calculator, mock_printer, text_class)
+        allow(order).to receive(:total) {5}
+        expect(order.place_order(5)).to eq(order.text_class.confirmation)
+      end
+
+      end
+
   end
 
 
