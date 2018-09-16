@@ -35,7 +35,7 @@ describe Menu do
 
   # it { is_expected.to respond_to(:complete_order) }
   describe '#complete_order' do
-    it 'confirms completio of the order' do
+    it 'confirms completion of the order' do
       menu = Menu.new
       expect(menu.complete_order).to eq("Thankyou for your order")
     end

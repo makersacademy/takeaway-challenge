@@ -1,4 +1,4 @@
-require_relative 'basket'
+require_relative 'send_sms'
 
 class Menu
 
@@ -22,6 +22,11 @@ class Menu
 
   def complete_order
     "Thankyou for your order"
+  end
+
+  def text
+    send = SendSMS.new
+    send.text
   end
 
 end

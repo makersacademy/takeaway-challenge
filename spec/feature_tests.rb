@@ -36,3 +36,4 @@ menu = Menu.new
 menu.select("kebab", 3)
 menu.summary
 menu.complete_order
+menu.text
