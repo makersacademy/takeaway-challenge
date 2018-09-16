@@ -26,7 +26,9 @@ describe Takeaway do
       order.add(dish1)
       order.add(dish2)
       takeaway.new_order(order)
-      expect(messager).to receive(:send_message).with("Thank you for your order: £9")
+      message = "Thank you for your order: £9. Your order will arrive at"\
+      " #{(Time.now.utc + 3600).strftime("%H:%M")}"
+      expect(messager).to receive(:send_message).with(message)
       takeaway.complete_order
     end
 
