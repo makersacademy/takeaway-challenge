@@ -16,7 +16,7 @@ class Resturant
     @order = Order.new
   end
 
-  def display
+  def display_menu
     @formatter.format(@menu)
   end
 
