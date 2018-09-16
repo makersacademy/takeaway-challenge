@@ -1,3 +1,4 @@
+require 'secrets'
 describe 'user_stories' do
 
   # As a customer
@@ -40,4 +41,21 @@ describe 'user_stories' do
 
     expect { order.calculate }.to_not raise_error
   end
+
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  it 'so user can be sure there food is on the way, send text confirmation' do
+    menu = Menu.new
+    order = Order.new
+
+    menu.add(:pizza, Dish.new(:pizza, 2))
+    menu.add(:lasagne, Dish.new(:lasagne, 5))
+    menu.print_menu
+
+    order.add(menu.items[:lasagne] => 1, menu.items[:pizza] => 2)
+    order.calculate
+    order.deliver(Secrets::PERSONAL_NUMBER)
+  end
+
 end

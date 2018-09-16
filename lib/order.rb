@@ -1,5 +1,7 @@
-class Order
+require 'twilio'
 
+class Order
+  include Twilio
   attr_reader :current_order
 
   def initialize
@@ -21,6 +23,10 @@ class Order
     end
     receipt << "\nTotal: £#{total}"
     receipt
+  end
+
+  def deliver(number)
+    text(number)
   end
 
 end
