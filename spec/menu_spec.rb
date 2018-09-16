@@ -1,8 +1,8 @@
 require 'menu'
 
 describe Menu do
-  let(:pizza_double) { double(:dish, id: :pizza, price: 2) }
-  let(:lasagne_double) { double(:dish, id: :lasagne, price: 5) }
+  let(:pizza_double) { double(:dish_pizza, id: :Pizza, price: 2) }
+  let(:lasagne_double) { double(:dish_lasagne, id: :Lasagne, price: 5) }
 
   describe '#initialize' do
     it 'is expected to be empty at creation' do

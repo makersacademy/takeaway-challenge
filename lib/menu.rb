@@ -7,7 +7,6 @@ class Menu
 
   def add(key, item)
     @items[key] = item
-    p @items
   end
 
   def remove(key)
@@ -17,7 +16,7 @@ class Menu
   def print_menu
     return_string = "Menu"
     @items.each_pair do |key, item|
-      return_string << "\n#{item.id.capitalize} £#{item.price}"
+      return_string << "\n#{item.id} £#{item.price}"
     end
     return_string
   end
