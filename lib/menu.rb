@@ -1,9 +1,11 @@
 class Menu
+  attr_reader :menu
+
   def initialize
     @menu = {
-    foo: 1,
-    bar: 2,
-    baz: 3
+    sushi: 1,
+    burger: 2,
+    pizza: 3
     }
   end
 
@@ -11,4 +13,3 @@ class Menu
     @menu.each { |food, price| puts "#{food}: £#{price}" } 
   end
 end
-

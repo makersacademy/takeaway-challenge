@@ -15,15 +15,10 @@ I would like to be able to select some number of several available dishes
 
 ```
 load './lib/takeaway.rb'
-# => see a list with options to order
-# => see message saying 'type order number or leave blank to end order'
-1
-2
-3
-3
-4
-
-# each number confirmed with dish and price.
+order = Order.new
+order.add('sushi')
+order.add('burger')
+order.add('pizza')
 ```
 
 As a customer
