@@ -1,4 +1,12 @@
 class Order
-  def add
+  attr_reader :dishes
+
+  def initialize
+    @dishes = {}
   end
+
+  def add(dish, quantity)
+    dishes[dish] = quantity
+  end
+
 end

@@ -1,3 +1,4 @@
+require 'order'
 class Menu
 
   attr_reader :dishes, :order, :dishq
