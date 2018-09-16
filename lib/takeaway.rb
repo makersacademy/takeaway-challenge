@@ -25,17 +25,28 @@ class Takeaway
     @total = order.map { |item| item[:price] * item[:quantity] }.reduce(:+)
     order.each do |item|
       item.each do |value|
-      print "#{value}"
+        print "#{value}"
       end
       puts
     end
-    puts
-    puts "your total is #{@total} "
-    if @total == order.map { |item| item[:price] * item[:quantity] }.reduce(:+)
+    complete_order(@total)
+  end
+
+  def complete_order(total)
+    "your total is #{total} "
+    if is_price_correct?
       'send sms to the customer'
        # @sms.send_message("Thank you for your order: your total is £#{@total}")
     else
       'Sum does not match the total sum of the dishes ordered.'
     end
   end
+
+  private
+  def is_price_correct?
+    rand(0..9) > 7
+  end
+
 end
+
+#

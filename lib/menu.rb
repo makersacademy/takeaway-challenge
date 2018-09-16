@@ -12,7 +12,7 @@ class Menu
   end
 
   def show_menu
-    #@menu = @menu.map { |item| item.values }
+    # @menu = @menu.map { |item| puts item.values }
     @menu.each do |item|
       item.each do |value|
         print "#{value}"

@@ -53,28 +53,20 @@ describe 'all user stories' do
       expect(takeaway.total).to eq(takeaway.customer_order.map { |item| item[:price] * item[:quantity] }.reduce(:+))
     end
   end
-        # it 'raises error when total does not match' do
-        #   takeaway = Takeaway.new
-        #   menu_obj = Menu.new
-        #   takeaway.show_menu() #menu{dishes => price}
-        #   expect(menu_obj.show_menu).to eq(menu_obj.menu)
-        #   takeaway.ready_to_order #ordered_dishes
-        #   expect(menu_obj).to receive(:select_dishes)
-        #   menu_obj.select_dishes
-        #   expect { takeaway.ready_to_order }.to change { takeaway.customer_order }
-        #   takeaway.customer_order.each { |hash| expect(hash.keys).to contain_exactly(*hash_keys)}
-        #   expect(takeaway).to receive(:verify_order).with(takeaway.customer_order)
-        #   takeaway.verify_order(takeaway.customer_order)
-        #   takeaway.total != takeaway.customer_order.map { |item| item[:price] * item[:quantity]}.reduce(:+)
-        #   expect(takeaway.verify_order(takeaway.customer_order)).to eq 'Sum does not match the total sum of the dishes ordered.'
-        #
-        # end
-  describe 'sms is being sent to user with order information' do
+
+  describe 'complete_order' do
+    it 'raises error when total does not match the sum of the ordered dishes' do
+      allow(takeaway).to receive(:is_price_correct?).and_return(false)
+      expect(takeaway.complete_order(takeaway.total)).to eq 'Sum does not match the total sum of the dishes ordered.'
+    end
+
     it 'sends sms to the customer' do
-      allow(takeaway).to receive(:verify_order).with('list_of_dishes').and_return('send sms to the customer')
-      expect(takeaway.verify_order('list_of_dishes')).to eq 'send sms to the customer'
-      allow(sms_obj).to receive(:send_message).with("Thank you for your order: your total is £25.50")
+      allow(takeaway).to receive(:is_price_correct?).and_return(true)
+      expect(takeaway.complete_order(takeaway.total)).to eq 'send sms to the customer'
+      expect(sms_obj).to receive(:send_message).with("Thank you for your order: your total is £25.50")
       sms_obj.send_message("Thank you for your order: your total is £25.50")
     end
+
   end
+
 end
