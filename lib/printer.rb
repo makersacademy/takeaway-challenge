@@ -1,14 +1,14 @@
 class Printer
   def display_menu(name, price)
-    puts name_and_price(name, price)
+    "#{name_and_price(name, price)}\n"
   end
 
   def format_order(name, price, qty, subtotal)
-    puts name_and_price(name, price) + format_qty(qty) + format_price(subtotal)
+    name_and_price(name, price) + format_qty(qty) + format_price(subtotal) + "\n"
   end
 
   def format_total(total)
-    puts "Total:\t#{format_price(total)}"
+    "Total:\t#{format_price(total)}\n"
   end
 
   private
