@@ -4,18 +4,17 @@ class Menu
 
   def initialize
     @dishes = {
-      "doughnut" => 1.99,
-      "cake" => 2.50,
-      "pancakes" => 3.00,
-      "ice-cream" => 1.99
+      "doughnut" => 2,
+      "cake" => 2,
+      "pancakes" => 3,
+      "ice-cream" => 2
     }
   end
 
-  # def display_menu
-  #   # @dishes.each { | dish, price | puts "#{dish}...£#{price.round(2)}" }.to_a * "\n"
-  #   @dishes.each do | dish, price |
-  #     puts "#{dish}...£#{price.round(2)}"
-  #   end
-  # end
+  def display_menu
+    dishes.map do |dish, price|
+        "%s £%.2f" % [dish.to_s.capitalize, price]
+      end.join(", ")
+    end
 
 end
