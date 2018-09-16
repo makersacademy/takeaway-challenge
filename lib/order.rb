@@ -1,4 +1,5 @@
 require './lib/menu'
+require './lib/confirmation'
 
 class Order
 
@@ -20,10 +21,6 @@ class Order
     end
   end
 
-  def prices
-    @price_count
-  end
-
   def view_basket
     @basket
   end
@@ -32,8 +29,15 @@ class Order
     @total = @price_count.inject(0, :+)
     "£#{total}"
   end
-end
 
-#  def get_total(order)
-#   format_order(order).map { |item, quantity| quantity * menu.dishes[item] }.inject(0, :+)
-# end
+  def place_order(confirmation = Confirmation.new)
+    confirmation.send_text
+    "Order has been placed!"
+  end
+
+  # private
+  def prices
+    @price_count
+  end
+
+end
