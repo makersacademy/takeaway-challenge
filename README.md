@@ -14,19 +14,20 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Task
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Work on this challenge as conclusion of week 2, to work towards these goals:
 
-Task
+* I use a methodical approach to solving problems
+* I test-drive my code
+* I can work to a specification
+* I can write standards-compliant, clean object-oriented code
+
+Instructions
 -----
 
-* Fork this repo
+* Fork [this repo] (https://github.com/makersacademy/takeaway-challenge)
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
@@ -48,32 +49,61 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+STATUS
+-----
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+- includes feature_spec.rb
+- includes takeaway.rb / takeaway_spec.rb
+- includes order.rb / order_spec.rb
+- includes menu.rb / menu_spec.rb
+- includes menu_item.rb / menu_item_spec.rb
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+completes user stories 1-3, passes all tests
+no rubocop offences, 100% test coverage according to Rspec
 
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
+Notes on use in IRB
 ------------------
+```
+.5.0 :001 > require './lib/order.rb'
+ => true
+2.5.0 :002 > require './lib/menu.rb'
+ => true
+2.5.0 :003 > require './lib/menu_item.rb'
+ => false
+2.5.0 :004 > require './lib/takeaway.rb'
+ => true
+2.5.0 :005 >
+2.5.0 :005 > ta = Takeaway.new
+ => #<Takeaway:0x00007ffe4a01c138 @menu=#<Menu:0x00007ffe49153e30 @items=[#<MenuItem:0x00007ffe49152f08 @name="Pizza", @price=8>, #<MenuItem:0x00007ffe49151a68 @name="Burger", @price=9>, #<MenuItem:0x00007ffe491518b0 @name="Chips", @price=4.5>]>, @order=#<Order:0x00007ffe49151770 @basket={}>>
+2.5.0 :006 > ta.read_menu
+1. Pizza: £8.00
+2. Burger: £9.00
+3. Chips: £4.50
+ => [#<MenuItem:0x00007ffe49152f08 @name="Pizza", @price=8>, #<MenuItem:0x00007ffe49151a68 @name="Burger", @price=9>, #<MenuItem:0x00007ffe491518b0 @name="Chips", @price=4.5>]
+2.5.0 :007 > ta.order_item('Chips', 2)
+ => 2
+2.5.0 :008 > ta.order_item('Pizza')
+ => 1
+2.5.0 :009 > ta.order_item('Curry', 2)
+RuntimeError (This dish is not on the menu!)
+2.5.0 :010 > ta.show_order_basket
+Chips: £4.50 x 2
+Pizza: £8.00 x 1
+ => {#<MenuItem:0x00007ffe491518b0 @name="Chips", @price=4.5>=>2, #<MenuItem:0x00007ffe49152f08 @name="Pizza", @price=8>=>1}
+2.5.0 :011 > ta.show_order_subtotals
+Chips x 2: £9.00
+Pizza x 1: £8.00
+ => {#<MenuItem:0x00007ffe491518b0 @name="Chips", @price=4.5>=>2, #<MenuItem:0x00007ffe49152f08 @name="Pizza", @price=8>=>1}
+2.5.0 :012 > ta.show_order_total
+Total: £17.00
+ => nil
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+```
+
+**TO DO**
+
+- Twilio integration for customers to receive order confirmation
+
+Author
+-----
+Freya Becker [fbl11](https://github.com/fbl11/)
