@@ -13,7 +13,7 @@ describe Menu do
   describe '#add' do
     it 'is expected to add item and price to the menu' do
       subject.add(:pizza, pizza_double)
-      expect(subject.items).to eq({pizza: pizza_double})
+      expect(subject.items).to eq({ pizza: pizza_double })
     end
   end
 

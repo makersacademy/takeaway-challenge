@@ -15,7 +15,7 @@ class Menu
 
   def print_menu
     return_string = "Menu"
-    @items.each_pair do |key, item|
+    @items.each_value do |item|
       return_string << "\n#{item.id} £#{item.price}"
     end
     return_string
