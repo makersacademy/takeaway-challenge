@@ -4,8 +4,8 @@ I would like to see a list of dishes with prices
 
 ```
 load './lib/takeaway.rb'
-# => see a list with options to order
-1
+menu = Menu.new
+menu.show
 # => see a menu
 ```
 
@@ -16,7 +16,6 @@ I would like to be able to select some number of several available dishes
 ```
 load './lib/takeaway.rb'
 # => see a list with options to order
-2
 # => see message saying 'type order number or leave blank to end order'
 1
 2
@@ -34,7 +33,6 @@ I would like to check that the total I have been given matches the sum of the va
 ```
 load './lib/takeaway.rb'
 # => see a list with options to order
-2
 # => see message saying 'type order number or leave blank to end order'
 1
 2
@@ -55,7 +53,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 load './lib/takeaway.rb'
 # => see a list with options to order
-2
 # => see message saying 'type order number or leave blank to end order'
 1
 2
