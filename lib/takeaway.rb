@@ -1,3 +1,5 @@
+require_relative 'message'
+
 class TakeAway
   attr_reader :menu, :basket, :order_total, :message
 
@@ -18,7 +20,7 @@ class TakeAway
     menu
   end
 
-  def add_dish(dish,number = 1)
+  def add_dish(dish, number = 1)
     # binding.pry
     fail "that dish isn't on the menu" unless menu.has_key?(dish)
     @basket.has_key?(dish) ? @basket[dish] += number : @basket[dish] = number
@@ -27,7 +29,7 @@ class TakeAway
 
   def basket_total
     return 'there is nothing in your basket' if basket.empty?
-    @basket.map{|k,v| "#{v}x #{k} = £#{'%.2f'%(v*menu[k])}"}.join(", ") + ". Total £#{'%.2f'%order_total}"
+    @basket.map { |k, v| "#{v}x #{k} = £#{'%.2f' % (v * menu[k])}" }.join(", ") + ". Total £#{'%.2f' % order_total}"
   end
 
   def checkout

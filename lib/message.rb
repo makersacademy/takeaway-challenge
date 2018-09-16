@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Message
   attr_reader :account_sid, :auth_token,
               :client, :from, :to
@@ -14,7 +16,7 @@ class Message
     client.messages.create(
     from: from,
     to: to,
-    body: "you've placed a takeaway order, it will arrive in 50mins"
+    body: "you've placed a takeaway order, it will arrive by #{Time.now + 60 * 30}"
     )
   end
 

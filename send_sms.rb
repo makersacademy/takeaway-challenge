@@ -13,7 +13,6 @@ class Menu
     @to = '+447828166080' # Your mobile phone number
   end
 
-
   def send_message
     client.messages.create(
     from: from,
