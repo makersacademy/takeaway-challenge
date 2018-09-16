@@ -1,3 +1,4 @@
+require 'pry'
 class Order
   attr_reader :dishes, :menu_class
 
