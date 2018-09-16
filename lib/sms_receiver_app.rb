@@ -4,9 +4,11 @@ require 'shotgun'
 require 'twilio-ruby'
 
 sms_receiver = SMSReceiver.new
+test_string = "Spaghetti and Meatballs: 1"
 
 get '/sms-takeaway-order' do
-  body = params['Body'].downcase.strip
+  input = params['Body'] ||= test_string
+  body = input.downcase.strip
   order = sms_receiver.parse_order(body)
 
   twiml = Twilio::TwiML::MessagingResponse.new do |r|
@@ -14,8 +16,4 @@ get '/sms-takeaway-order' do
   end
 
   twiml.to_s
-end
-
-get '/help' do
-  sms_receiver.help
 end
