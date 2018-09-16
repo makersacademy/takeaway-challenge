@@ -12,7 +12,7 @@ class Menu
 
   def display
     list.each do |item|
-      printer.display(item.name, item.price)
+      printer.display_menu(item.name, item.price)
     end
   end
 

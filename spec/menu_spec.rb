@@ -24,7 +24,7 @@ describe Menu do
   describe 'display' do
     it 'calls #display on printer' do
       allow(mockdish).to receive(:new).and_return(mockdish)
-      3.times { expect(subject.printer).to receive(:display) }
+      3.times { expect(subject.printer).to receive(:display_menu) }
       subject.display
     end
   end
