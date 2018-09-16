@@ -8,9 +8,7 @@ I would like to see a list of dishes with prices
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
->> Order method, with numerous arguments
->> Order method has arguments as follows
->> order([dishes], )
+>> Order method
 
 As a customer
 So that I can verify that my order is correct
