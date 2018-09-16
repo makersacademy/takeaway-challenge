@@ -2,6 +2,8 @@ require_relative 'menu'
 
 class Order
 
+  attr_reader :add_total
+
   def initialize
     @menu = Menu.new
     @item = Hash.new(0)
@@ -24,11 +26,7 @@ class Order
     end
     p total
   end
-
-
 end
 
 # order = Order.new
-# order.chosen_dishes("snack seaweed", 2)
-# order.chosen_dishes("smoky huitlacoche, chilli sauce, vegan cheese, avocado and quesadillas")
 # order.add_total
