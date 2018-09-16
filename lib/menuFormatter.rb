@@ -1,9 +1,8 @@
 class MenuFormatter
 
   def format(menu)
-    # puts "Item, Price"
-    menu.each do |menuitem|
-      puts "#{menuitem[:item]}, #{menuitem[:price]}"
+    menu.each do |item|
+      puts "#{item[:dish]}, #{item[:price]}"
     end
   end
 end

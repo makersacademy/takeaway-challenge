@@ -6,8 +6,8 @@ class Order
     @order = []
   end
 
-  def add(menu1, item1)
-    selection = menu1.menu.select { |menuitem| menuitem[:item] == item1 }
+  def add(resturant, dish)
+    selection = resturant.menu.select { |item| item[:dish] == dish }
     @order.push(selection[0])
   end
 
