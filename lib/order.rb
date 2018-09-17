@@ -30,6 +30,9 @@ class Order
     final_balance
   end
 
-  
+  def confirm
+    delivery_time = Time.now (60 * 60)
+    "Your order has been received and will be delivered at, #{delivery_time}!"
+  end
 
 end

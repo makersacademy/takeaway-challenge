@@ -22,6 +22,13 @@ As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 #irb#
+require './lib/menu.rb'
+require './lib/order.rb'
+menu = Menu.new
+order = Order.new
+order.add('Burger', 2)
+order.review
+order.total
 
 
 As a customer

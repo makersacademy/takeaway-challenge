@@ -28,11 +28,16 @@ describe Order do
     end
   end
 
-    context 'cost' do
+    describe 'cost' do
       it 'should total the cost of items in the basket' do
         order = Order.new
         order.add('Burger', 1)
         expect(order.total).to eq(10)
+      end
+    end
+
+    describe 'confirm' do
+      it 'should return a message stating that the order has been received and will arrive within an hour' do
       end
     end
 end
