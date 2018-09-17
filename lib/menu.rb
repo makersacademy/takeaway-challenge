@@ -14,7 +14,7 @@ class Menu
 
   def display_menu
     @menu.each do |menu_item|
-       display_item(menu_item)
+      display_item(menu_item)
     end
   end
 
@@ -24,7 +24,6 @@ class Menu
     end
     false
   end
-
 
   def price(dish)
     @menu.each do |menu_item|
