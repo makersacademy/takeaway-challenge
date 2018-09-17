@@ -20,7 +20,7 @@ class Basket
 
   def order_list
     @order.select do |items|
-      puts "#{items[:dish]}: £#{items[:price]}"
+      puts "#{items[:platter]}: £#{items[:price]}"
     end
     order
   end

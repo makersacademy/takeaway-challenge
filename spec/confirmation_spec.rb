@@ -4,8 +4,9 @@ describe ConfirmText do
   context '#send_text' do
     subject(:text) { described_class.new }
     it "Should send txt" do
-      expect(text).to receive(:send_text)
-      text.send_text
+      # expect(text).to receive(:send_text)
+      allow(text).to receive(:initiate_msg).with(anything)
+      expect { text.send_text }.to_not raise_error
     end
   end
 end

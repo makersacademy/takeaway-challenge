@@ -15,7 +15,7 @@ describe Basket do
   context '#select_dish' do
     subject(:takeaway_class)      { described_class.new(new_order) }
     let(:new_order)               { double :menu_class, new: menu }
-    let(:menu)                    { [{ dish: "Chicken Gyoza 5pcs", price: 12 }] }
+    let(:menu)                    { [{ platter: "Chicken Gyoza 5pcs", price: 4.50 }] }
     let(:platter)                 { 'Chicken Gyoza 5pcs' }
 
     it "Should send request to menu" do
