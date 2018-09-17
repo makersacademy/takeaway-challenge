@@ -2,13 +2,7 @@ require 'menu'
 
 describe Menu do
   let(:menu)          { described_class.new }
-  let(:dishes) do {
-    "doughnut" => 2,
-    "cake" => 2,
-    "pancakes" => 3,
-    "ice-cream" => 2
-  }
-  end
+  let(:dishes) { {"doughnut" => 2, "cake" => 2, "pancakes" => 3, "ice-cream" => 2} }
   let(:pretty_dishes) { "Doughnut £2.00, Cake £2.00, Pancakes £3.00, Ice-cream £2.00" }
 
   describe 'menu contents' do

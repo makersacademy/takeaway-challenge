@@ -14,7 +14,7 @@ class Menu
   def display_menu
     dishes.map do |dish, price|
         "%s £%.2f" % [dish.to_s.capitalize, price]
-      end.join(", ")
-    end
+    end.join(", ")
+  end
 
 end
