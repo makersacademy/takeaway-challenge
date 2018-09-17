@@ -1,4 +1,5 @@
 require 'secrets'
+
 describe 'user_stories' do
 
   # As a customer
@@ -55,7 +56,7 @@ describe 'user_stories' do
 
     order.add(menu.items[:lasagne] => 1, menu.items[:pizza] => 2)
     order.calculate
-    order.deliver(Secrets::PERSONAL_NUMBER)
+    expect { order.deliver(Secrets::PERSONAL_NUMBER) }.to_not raise_error
   end
 
 end

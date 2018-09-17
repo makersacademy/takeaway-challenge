@@ -7,7 +7,7 @@ module Twilio
     account_sid = Secrets::ACCOUNT_SID
     auth_token = Secrets::AUTH_TOKEN
     @client = Twilio::REST::Client.new account_sid, auth_token
-    message = @client.messages.create(
+    @client.messages.create(
       body: "Thank you! Your order was placed and will be delivered before #{time}.",
       to: number,
       from: Secrets::TWILIO_NUMBER)

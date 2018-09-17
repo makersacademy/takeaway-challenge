@@ -38,8 +38,8 @@ describe Order do
     end
   end
 
-  describe '#text' do
-    it { is_expected.to respond_to(:text).with(1).argument }
+  describe '#deliver' do
+    it { is_expected.to respond_to(:deliver).with(1).argument }
 
     it 'calls text with a number' do
       allow(subject).to receive(:text).and_return("Message sent!")
