@@ -3,13 +3,13 @@ require_relative 'text'
 
 class Customer
 
-  attr_reader :order, :menu, :cost, :text
+  attr_reader :order, :cost, :text, :menu
 
   def initialize(menu = Menu.new, text = Text.new)
-    @menu = menu
     @order = []
-    @text = text
     @cost = 0
+    @menu = menu
+    @text = text
   end
 
   def add_dish(dish)
@@ -23,15 +23,19 @@ class Customer
   end
 
   def display_order
-      @order.each do |item, price|
+      order.each do |item, price|
         puts "#{item.keys.join} - £#{'%.2f' % item.values.join}"
       end
-      puts "Total cost: £#{'%.2f' % @cost}"
-      puts "You have ordered #{order.length} items"
+      puts "Total cost: £#{'%.2f' % @cost}\nYou have ordered #{order.length} items"
     end
 
   def complete_order
     text.send_text
   end
+
+  def display_menu
+    menu.print_menu
+  end
+
 
 end
