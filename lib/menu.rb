@@ -25,9 +25,8 @@ class Menu
   end
 
   def printed_list
-    @menu_list.each do |key, value|
-      puts key.to_a
-      puts value.to_a
+    @menu_list.each do |item|
+      puts item.to_a
       puts " "
     end
   end

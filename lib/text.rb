@@ -4,6 +4,8 @@ require 'date'
 
 class Text
 
+  attr_reader :message
+
   def initialize(order)
     @order = order
   end
@@ -11,13 +13,13 @@ class Text
   def time
     current_time = Time.now
     delivery_hour = current_time.hour + 1
-    delivery_minutues = current_time.min
-    return "#{delivery_hour}:#{delivery_minutues}"
+    delivery_minutes = current_time.min
+    return "#{delivery_hour}:#{delivery_minutes}"
   end
 
   def message
     if @order.add_total
-      puts "Thank you! Your order was placed and will be delivered before " + time + "."
+      "Thank you! Your order was placed and will be delivered before " + time + "."
     else
       raise "I'm sorry, there's an error in the total. Please place your order again."
     end
