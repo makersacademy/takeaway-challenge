@@ -1,6 +1,5 @@
 require_relative 'order'
 require_relative 'menu'
-require 'date'
 
 class Text
 
@@ -10,16 +9,15 @@ class Text
     @order = order
   end
 
-  def time
-    current_time = Time.now
-    delivery_hour = current_time.hour + 1
-    delivery_minutes = current_time.min
+  def format_time(time)
+    delivery_hour = time.hour + 1
+    delivery_minutes = time.min
     return "#{delivery_hour}:#{delivery_minutes}"
   end
 
-  def message
-    if @order.add_total
-      "Thank you! Your order was placed and will be delivered before " + time + "."
+  def message(time = Time.new)
+    if true#@order.add_total
+      "Thank you! Your order was placed and will be delivered before " + format_time(time) + "."
     else
       raise "I'm sorry, there's an error in the total. Please place your order again."
     end

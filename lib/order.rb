@@ -24,7 +24,7 @@ class Order
         end
       end
     end
-    p total
+    # p total
   end
 end
 
