@@ -17,7 +17,7 @@ class Order
   def calculate
     receipt = "Receipt"
     total = 0
-    
+
     @current_order.each_pair do |item, quantity|
       receipt << "\n#{item.id} x #{quantity}: £#{item.price * quantity}"
       total += item.price * quantity

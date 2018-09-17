@@ -13,9 +13,9 @@ describe Order do
     it 'add dish and quantity to order' do
       subject.add(lasagne_double => 1, pizza_double => 2)
       expect(subject.current_order).to eq({
-          lasagne_double => 1, 
-          pizza_double => 2
-        })
+        lasagne_double => 1, 
+        pizza_double => 2
+      })
     end
 
     it 'increases dish quantity if already in order' do
