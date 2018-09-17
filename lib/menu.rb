@@ -3,9 +3,9 @@ class Menu
   attr_reader :menu
 
   PIZZA_MENU = [
-    {dish: "margherita",       price: 8},
-    {dish: "pepperoni",       price: 10},
-    {dish: "meatfeast",  price: 15},
+    { dish: "margherita", price: 8 },
+    { dish: "pepperoni",  price: 10 },
+    { dish: "meatfeast",  price: 15 },
   ]
 
   def initialize(menu = PIZZA_MENU)
@@ -17,7 +17,6 @@ class Menu
        display_item(menu_item)
     end
   end
-
 
   def dish_avaliable?(dish)
     @menu.each do |menu_item|
@@ -34,8 +33,7 @@ class Menu
   end
 
   def display_item(menu_item)
-    space = 15
-    puts ("#{menu_item[:dish]}:".ljust(space) + "#{menu_item[:price]}")
+    puts ("#{menu_item[:dish]} #{menu_item[:price]}")
   end
 
   def on_the_menu?(menu_item, dish)

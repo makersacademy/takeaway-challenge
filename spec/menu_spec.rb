@@ -9,7 +9,7 @@ describe Menu do
   end
 
   it 'retuns a dish price' do
-    expect(subject.price("margherita")).to eq 3
+    expect(subject.price("margherita")).to eq 8
   end
 
   context '#includes_dish?' do
