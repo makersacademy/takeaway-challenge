@@ -78,6 +78,7 @@ Uncomment to make IRB output easier to read.
 - refactoring (including removing numbers from specs)
 - tidy up order.rb methods to ensure single responsibility (formatting should be done somewhere else - maybe in takeaway)
 - fix heredoc indentation problem
+- integrate use of files to load menu items into menu
 
 Notes on use in IRB
 ------------------
@@ -114,11 +115,10 @@ Pizza x 1: £8.00
 2.5.0 :012 > ta.show_order_total
 Total: £17.00
  => nil
-2.5.0 :01 > ta.checkout(15)
+2.5.0 :013 > ta.checkout(15)
 RuntimeError (Totals do not match!)
-2.5.0 :015 > ta.checkout
+2.5.0 :014 > ta.checkout
 You will receive a confirmation text shortly.
-
 ```
 
 Author
