@@ -24,7 +24,7 @@ dish = Dish.new("xyz", 10)
 menu.add_dish(dish)
 menu.display
 order.add_order('xyz', 12)
-menu.has_dish?('xyz') == true
+menu.dish?('xyz') == true
 <!-- order.final_order.include?(dish) == true -->
 
 
@@ -43,7 +43,7 @@ menu.add_dish(dish)
 menu.get_dish_obj("xyz") == dish
 menu.display
 order.add_order('xyz', 2)
-menu.has_dish?('xyz') == true
+menu.dish?('xyz') == true
 order.final_order.include?({dish: dish, quantity: 2}) == true
 sum = order.final_order[0][:quantity] * order.final_order[0][:dish].price
 
@@ -69,7 +69,7 @@ menu.get_dish_obj("lmn") == dish3
 menu.display
 order.add_order('xyz', 3)
 order.add_order('abc', 1)
-menu.has_dish?('xyz') == true
-menu.has_dish?('abc') == true
+menu.dish?('xyz') == true
+menu.dish?('abc') == true
 order.final_order
 order.final_bill

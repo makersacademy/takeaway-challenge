@@ -33,6 +33,8 @@ class Order
     return sum
   end
   
+  private
+  
   def send_delivery_message
     message = "Thank you! Your order was placed and will be delivered before 
       #{(Time.now + 60 * 60).strftime("%H:%M")}."
@@ -40,7 +42,8 @@ class Order
     CLIENT.messages.create(  
       from: '+447449647144',       
       to: '+447438856372',
-      body: message) 
+      body: message)
+    "message sent!"
   end
 
 end

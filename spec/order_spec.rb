@@ -30,18 +30,20 @@ describe Order do
   end
 
   describe '#final_bill' do
-    it 'sums the total price of ordered dishes' do
+    it 'sums the total price of ordered dishes and send deliverg y message' do
       dish_1 = object_double(Dish.new, :name => "dish_name", :price => 10)
       dish_2 = object_double(Dish.new, :name => "dish_name2", :price => 20)
       allow(menu).to receive(:dish?).with("dish_name").and_return(true)
       allow(menu).to receive(:dish?).with("dish_name2").and_return(true)
       allow(menu).to receive(:get_dish_obj).with("dish_name").and_return(dish_1)
       allow(menu).to receive(:get_dish_obj).with("dish_name2").and_return(dish_2)
+      # allow(subject).to receive(:send_delivery_message).and_return("message sent!")
 
       subject.add_order("dish_name", 1)
       subject.add_order("dish_name2", 3)
       expect(subject.final_bill).to eq(70)
-    end 
+
+    end
   end
 
 end
