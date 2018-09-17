@@ -24,7 +24,7 @@ describe Menu do
   end
 
   describe '#choose' do
-    it 'selects the users given dishes' do
+    it 'adds the users given dishes to the order' do
       menu.add("food", "price")
       dish2 = double(:dish2, name: "Mock B", price: 2.00)
       allow(dish_class).to receive(:new) {dish2}
@@ -32,7 +32,7 @@ describe Menu do
       dish3 = double(:dish3, name: "Mock C", price: 3.00)
       allow(dish_class).to receive(:new) {dish3}
       menu.add("food", "price")
-      menu.choose("1,2,2,3")
+      menu.choose(1,2,2,3)
       expect(menu.order).to eq [dish, dish2, dish2, dish3]
     end
   end

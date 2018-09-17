@@ -17,19 +17,11 @@ class Menu
     }
   end
 
-  def choose(num_list)
-    num_list.split(',').each { |num|
-      @order << @dishes[num.to_i-1]
+  def choose(*num_list)
+    num_list.each { |num|
+      @order << @dishes[num-1]
     }
   end
 
-  def clear
-    @order = nil
-  end
 
-  def total
-    @order.map { |item|
-      item.price.to_f
-    }.reduce(:+)
-  end
 end
