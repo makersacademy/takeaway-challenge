@@ -44,4 +44,12 @@ describe 'User stories' do
     order.pick("Lasagna", 1)
     expect(order.quantity).to eq(3)
   end
+
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+  it "should receive a text" do
+
+  end
 end
