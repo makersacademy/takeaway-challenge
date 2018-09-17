@@ -1,10 +1,12 @@
 class Menu
   attr_reader :dishes, :order
 
-  def initialize(dish_class = Dish)
+  def initialize(dish_class = Dish, order_class = Order)
     @dish_class = dish_class
+    @order_class = order_class
     @dishes = []
-    @order = []
+    @order = @order_class.new
+
   end
 
   def add(dish_name, price)

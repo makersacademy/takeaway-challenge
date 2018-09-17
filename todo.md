@@ -1,1 +1,2 @@
-- [ ] Put Twilio API key in a local file that's loaded on startup. 
+- [ ] Put Twilio API key in a local file that's loaded on startup.
+- [ ] Rewrite Menu#choose method to use the Order object
