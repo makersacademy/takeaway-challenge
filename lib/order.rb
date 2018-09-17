@@ -12,11 +12,8 @@ class Order
   end
 
   def choose_item(item)
-    if @menu.include?(item)
-      @order << item
-    else
-      fail "Sorry, this item is unavailable here!"
-    end
+    raise "Sorry, this item is unavailable here!" unless @menu.include?(item)
+    @order << item
   end
 
   def calculate_sum
