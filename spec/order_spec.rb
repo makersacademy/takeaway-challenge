@@ -5,7 +5,6 @@ describe Order do
   let(:order) { described_class.new(menu, orderlist, delivery) }
   let(:menu)  { double('menulist', list_menu: [{ order_num: 4, name: "Cold Potatoes", price: 1.00 }]) }
   let(:orderlist) { double('orderlist',
-    show_orders: [{ order_num: 4, name: "Cold Potatoes", price: 1.00 }],
     orders: [{ order_num: 4, name: "Cold Potatoes", price: 1.00 }],
     stringify_cost: "£3.00"
      )
@@ -39,5 +38,27 @@ describe Order do
     it 'should return a string value of the price so far' do
       expect(order.show_cost).to eq "£3.00"
     end
+  end
+
+  context 'error cases of methods attemped on no orders' do
+    before(:each) do
+      allow(orderlist).to receive(:orders) {[]}
+    end
+
+    it '#place_order' do
+
+      expect{order.place_order}.to raise_error("No orders yet!")
+    end
+
+    it '#show_orders' do
+
+      expect{order.show_orders}.to raise_error("No orders yet!")
+    end
+
+    it '#show_cost' do
+
+      expect{order.show_cost}.to raise_error("No orders yet!")
+    end
+
   end
 end
