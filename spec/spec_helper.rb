@@ -16,3 +16,9 @@ RSpec.configure do |config|
     puts "\e[33mTry it now! Just run: rubocop\e[0m"
   end
 end
+
+TWILIO_VARS = []
+TWILIO_VARS << 'TWILIO_ACCOUNT_SID'
+TWILIO_VARS << 'TWILIO_AUTH_TOKEN'
+TWILIO_VARS << 'TWILIO_PHONE'
+TWILIO_VARS << 'TWILIO_DESTINATION_PHONE'
