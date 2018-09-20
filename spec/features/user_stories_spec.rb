@@ -49,7 +49,9 @@ describe 'User stories' do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-  it "should receive a text" do
-
-  end
+  # it "should receive a text" do
+  #   order = Order.new
+  #   order.pick("Pasta", 2)
+  #   expect(order.confirm).to
+  # end
 end
