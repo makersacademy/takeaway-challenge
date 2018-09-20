@@ -1,3 +1,6 @@
+require_relative "menu"
+require_relative "sms_sender.rb"
+
 class TakeAway
   DEFAULT_AMOUNT = 1
   attr_reader :order_list, :menu, :sms_sender
@@ -37,7 +40,7 @@ class TakeAway
 
   def place_order(amount)
     raise 'The amount entered is incorrect' unless amount == total_price
-    puts "Thanks for your order, you will receive a confirmation SMS within a few minutes"
+    puts "Thanks for your order, you will receive a confirmation SMS soon"
     sms_sender.text_confirmation
   end
 

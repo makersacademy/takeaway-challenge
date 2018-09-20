@@ -17,7 +17,7 @@ describe TakeAway do
 
   describe '#display_menu' do
     it 'calls method display menu on menu instance' do
-      expect(takeaway.menu).to respond_to(:display_menu)
+      expect(takeaway.menu).to receive(:display_menu)
       takeaway.display_menu
     end
   end
@@ -95,7 +95,7 @@ describe TakeAway do
     end
 
     it 'confirms an SMS will be sent now to the customer' do
-      expect { takeaway.place_order(10) }.to output("Thanks for your order, you will receive a confirmation SMS within a few minutes\n").to_stdout
+      expect { takeaway.place_order(10) }.to output("Thanks for your order, you will receive a confirmation SMS soon\n").to_stdout
     end
 
     it 'asks SMS sender to send a confirmation SMS' do
