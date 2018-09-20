@@ -1,3 +1,4 @@
+require_relative "menu_printer"
 class Menu
   attr_reader :menu_list, :menu_printer
   def initialize(menu_printer = MenuPrinter.new)

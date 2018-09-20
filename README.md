@@ -26,10 +26,6 @@ To solve this challenge, we have created three different classes:
 Feature test
 -----
 ```
-2.5.0 :001 > require './lib/sms_sender'
- => true
-2.5.0 :002 > require './lib/menu'
- => true
 2.5.0 :003 > require './lib/take_away'
  => true
 2.5.0 :004 > takeaway = TakeAway.new
