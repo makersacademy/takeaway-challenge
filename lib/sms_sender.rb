@@ -14,8 +14,8 @@ class SmsSender
     @account_sid = ACCOUNT_SID
     @auth_token = AUTH_TOKEN
     @client = client
-    @from = +34955160758
-    @to = +34722420360
+    @from = '+34955160758'
+    @to = '+34722420360'
   end
 
   def text_confirmation
