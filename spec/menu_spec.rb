@@ -6,7 +6,7 @@ describe Menu do
       expect(subject).to respond_to(:show)
     end
     it "should show a list of dishes with price" do
-      expect(subject.show).to eq []
+      expect(subject.show).to eq [{"Lasagna"=>10}, {"Pasta"=>5}]
     end
   end
 
@@ -16,7 +16,7 @@ describe Menu do
     it "should add a dish to the menu" do
       dish = Dish.new("Lasagna", 10)
       subject.add(dish)
-      expect(subject.show).to eq([{ "Lasagna" => 10 }])
+      expect(subject.show).to eq([{"Lasagna"=>10}, {"Pasta"=>5}, { "Lasagna" => 10 }])
     end
   end
 end

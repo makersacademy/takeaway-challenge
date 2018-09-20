@@ -2,8 +2,7 @@ class Menu
   attr_reader :name, :price
 
   def initialize
-    @menu = []
-    @dish = Dish.new(@name, @price)
+    @menu = [{"Lasagna" => 10}, {"Pasta" => 5}]
   end
 
   def add(dish)
@@ -12,5 +11,9 @@ class Menu
 
   def show
     @menu
+  end
+
+  def include_dish?(ordered_dish)
+    @menu.map { |dish| dish.keys }.flatten.include?(ordered_dish)
   end
 end

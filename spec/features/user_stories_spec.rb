@@ -11,7 +11,7 @@ describe 'User stories' do
     menu = Menu.new
     dish = Dish.new("Lasagna", 10)
     menu.add(dish)
-    expect(menu.show).to eq([{ "Lasagna" => 10 }])
+    expect(menu.show).to eq([{"Lasagna"=>10}, {"Pasta"=>5}, { "Lasagna" => 10 }])
   end
 
   # As a customer

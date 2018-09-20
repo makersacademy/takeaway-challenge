@@ -13,6 +13,12 @@ describe Order do
 
   describe "#pick" do
     it { is_expected.to respond_to(:pick).with(2).arguments }
+
+    it "should not let me pick an item not on the menu" do
+      menu = double(Menu.new)
+      allow(menu).to receive(:include_dish?).with(1).and_return(false)
+      expect(subject.pick("Chili", 2)).to raise_error("This dish is unavailable")
+    end
   end
 
   describe "#quantity" do
