@@ -18,15 +18,25 @@ class Takeaway
   end
 
   def add_meal(meal_selection, quantity)
-    fail "Sorry that is not on the menu" unless @menu.has_key?(meal_selection)
-    @menu.each do |k, v|
-      if k == meal_selection
-        k = k + ' x' + quantity.to_s
-        v *= quantity
-        @order.store(k, v)
+    item_on_menu?(meal_selection)
+    
+    @menu.each do |meal, price|
+      if meal == meal_selection
+        meal = meal + ' x' + quantity.to_s
+        price *= quantity
+        @order.store(meal, price)
       end
     end
+    
+    sum_order
+  end
+
+  def sum_order
     @total = "£%.2f" % @order.values.inject(:+).to_s
+  end
+  
+  def item_on_menu?(item)
+    fail "Sorry that is not on the menu" unless @menu.has_key?(item)
   end
   
   def place_order
