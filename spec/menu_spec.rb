@@ -1,6 +1,9 @@
 require './lib/menu'
 describe Menu do
-  subject(:menu) { described_class.new }
+
+  let(:menu_printer) { double :menu_printer, display_menu: nil }
+  subject(:menu) { described_class.new(menu_printer) }
+
   describe '#initialize' do
     it 'creates a menu with dishes and prices' do
       expect(menu.menu_list).to be_an_instance_of(Hash)
@@ -11,8 +14,9 @@ describe Menu do
   end
 
   describe '#display_menu' do
-    it 'displays the menu in a readable way' do
-      expect { menu.display_menu }.to output("\"Dish: tortilla, price: £4\"\n\"Dish: gazpacho, price: £3\"\n\"Dish: pasta, price: £5\"\n\"Dish: pizza, price: £5\"\n\"Dish: lasagna, price: £6\"\n\"Dish: salad, price: £4\"\n\"Dish: coke, price: £2\"\n").to_stdout
+    it 'should call the display_menu method on the menu printer' do
+      expect(menu.menu_printer).to receive(:display_menu).with(anything)
+      menu.display_menu
     end
   end
 

@@ -1,6 +1,6 @@
 class Menu
-  attr_reader :menu_list
-  def initialize
+  attr_reader :menu_list, :menu_printer
+  def initialize(menu_printer = MenuPrinter.new)
     @menu_list = {
       tortilla: 4,
       gazpacho: 3,
@@ -10,10 +10,11 @@ class Menu
       salad: 4,
       coke: 2
     }
+    @menu_printer = menu_printer
   end
 
   def display_menu
-    menu_list.each_pair { |dish, price| p "Dish: #{dish}, price: £#{price}" }
+    menu_printer.display_menu(menu_list)
   end
 
   def dish_included?(dish)

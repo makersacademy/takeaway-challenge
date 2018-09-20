@@ -99,7 +99,7 @@ describe TakeAway do
     end
 
     it 'asks SMS sender to send a confirmation SMS' do
-      expect(takeaway.sms_sender).to respond_to(:text_confirmation)
+      expect(takeaway.sms_sender).to receive(:text_confirmation)
       takeaway.place_order(10)
     end
   end
