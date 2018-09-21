@@ -1,9 +1,10 @@
 class Order
-  attr_reader :summary, :menu
+  attr_reader :summary, :menu, :printer
 
-  def initialize(menu)
+  def initialize(menu = Menu.new)
     @summary = Hash.new(0)
     @menu = menu
+    @printer = Printer.new
   end
 
   def add(dish, quantity)
@@ -16,7 +17,7 @@ class Order
   def total
     sum = 0
     @summary.map { |k, v| sum += k[:price] * v }
-    format_price(sum)
+    "£#{printer.format_price(sum)}"
   end
 
   def check_order
@@ -25,13 +26,8 @@ class Order
 
   def place_order
     arr = @summary.map do |k, v|
-      "#{k[:name].capitalize}: #{format_price(k[:price])} x #{v}"
+      "#{k[:name].capitalize}: £#{printer.format_price(k[:price])} x #{v}"
     end
     arr.join("\n")
-  end
-
- private
-  def format_price(price)
-    "£#{"%.2f" % price}"
   end
 end

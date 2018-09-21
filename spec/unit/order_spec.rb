@@ -21,7 +21,7 @@ describe Order do
       expect(order.summary).to eq({ { name: 'pizza', price: 5 } => 1, { name: 'pasta', price: 4 } => 1 })
     end
 
-    it 'increase quantity when selecting same dish' do
+    it 'increases quantity when selecting same dish' do
       order.add(dish1, 1)
       order.add(dish1, 1)
 
@@ -64,5 +64,5 @@ describe Order do
 
       expect(order.place_order).to eq("Pizza: £5.00 x 2\nPasta: £4.00 x 1\nChicken: £7.00 x 1")
     end
-  end  
+  end
 end

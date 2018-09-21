@@ -1,18 +1,21 @@
 class Menu
 
-  attr_reader :dishes, :dish
+  attr_reader :dishes, :dish, :printer
 
   def initialize
     @dishes = []
     @dish = dish
+    @printer = Printer.new
   end
 
   def add_dish(dish)
-    @dishes << { name: dish.name, price: "%.2f" % dish.price }
+    @dishes << { name: dish.name, price: printer.format_price(dish.price) }
   end
 
   def show_menu
-    h = @dishes.map { |d| "#{d[:name].capitalize}: £#{"%.2f" % d[:price]}" }
+    h = @dishes.map do |d|
+      "#{d[:name].capitalize}: £#{printer.format_price(d[:price])}"
+    end
     h.join("\n")
   end
 

@@ -3,20 +3,16 @@ require 'dotenv'
 Dotenv.load
 
 class Messager
+  attr_reader :client, :to, :from
+
+  def initialize
+    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'],
+             ENV['TWILIO_AUTH_TOKEN'])
+    @to = ENV['NUM']
+    @from = '+447449606023'
+  end
 
   def send_message(message)
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
-
-    client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    from = '+447449606023'
-    to = ENV['NUM']
-
-    client.messages.create(
-    from: from,
-    to: to,
-    body: message
-    )
+    client.messages.create(from: from, to: to, body: message)
   end
 end
