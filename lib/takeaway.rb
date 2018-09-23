@@ -4,20 +4,22 @@ class TakeAway
 
   def initialize
     @menu = { "chips" => 2.5, "kebab" => 5.5, "burger" => 4.75 }
-    @basket = []
+    @basket = {}
   end
 
   def display_menu
-    puts @menu
+    @menu
   end
 
   def select(food_item, qty = 1)
-    @basket << { food_item => qty }
+    @basket[food_item] = qty
     "You have added #{food_item} x#{qty} portions"
   end
 
   def summary
-    @basket
+    total = 0
+    @basket.map { |k, v| total += @menu[k] * v }
+    "You summary total amount so far is £#{total}"
   end
 
   def complete_order
