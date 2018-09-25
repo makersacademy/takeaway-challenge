@@ -27,4 +27,8 @@ class Order
     end
   end
 
+  def wipe
+    @basket = {}
+  end
+
 end

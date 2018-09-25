@@ -22,6 +22,14 @@ describe Order do
         allow(menu_item_2).to receive(:format_item).and_return("MenuItem StandIn 2")
         expect { order.show_basket }.to output("MenuItem StandIn 1 x 2\nMenuItem StandIn 2 x 3\n").to_stdout
       end
+
+      #TODO
+    describe '#wipe' do
+      it 'empties the order basket' do
+        order.wipe
+        expect(order.basket).to be_empty
+      end
+    end
   
       describe '#calculate_total_price' do
         it 'adds up the prices of all items in the basket' do
@@ -29,10 +37,6 @@ describe Order do
           allow(menu_item_2).to receive(:price).and_return(1.50)
           expect { order.calculate_total_price }.to output("Total: £8.50\n").to_stdout
         end
-      end
-
-      describe 'calculate_total' do
-        
       end
   
       describe '#calculate_subtotals' do

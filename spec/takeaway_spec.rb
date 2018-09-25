@@ -11,6 +11,10 @@ describe Takeaway do
     expect(ta.menu).to be_an_instance_of(Menu)
   end
 
+  it 'contains a menu the user can order from' do
+    expect(takeaway.menu).to eq(menu)
+  end
+
   describe '#show_menu' do
     it 'shows menu using menu.show_menu' do
       default_return = "SHOULD PRINT THIS"

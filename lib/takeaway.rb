@@ -1,4 +1,4 @@
-
+ 
 class Takeaway
   require_relative './menu.rb'
   require_relative './order.rb'
@@ -12,7 +12,7 @@ class Takeaway
     @sms_sender = sms_sender
   end
   
-  # to get rid of walls of text on 'self'
+  # to get rid of walls of text on 'self' - see readme
   # def inspect
   #   "Takeaway"
   # end
@@ -45,6 +45,7 @@ class Takeaway
     fail 'Totals do not match!' unless total.nil? ||
       total == @order.calculate_total
     @sms_sender.send_order_confirmation(@order.calculate_total)
+    @order.wipe
   end
 
 end
