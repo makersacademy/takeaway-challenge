@@ -5,8 +5,8 @@ require 'twilio-ruby'
 Dotenv.load 'config.env'
 
 class SMS
-  def initialize
-    @client = Twilio::REST::Client.new(
+  def initialize(sms_service = nil)
+    @client = sms_service || Twilio::REST::Client.new(
       DEFAULT_CONFIG[:account_sid], 
       DEFAULT_CONFIG[:auth_token]
     )
