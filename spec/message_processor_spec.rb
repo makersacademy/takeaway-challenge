@@ -1,3 +1,4 @@
+
 require './lib/message_processor'
 describe MessageProcessor do
   context 'Feature 1 - Text confirmation message' do

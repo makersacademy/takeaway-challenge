@@ -50,7 +50,7 @@ describe Main do
       end
       it 'can place order correctly' do
         allow(subject).to receive(:gets).and_return('order')
-        expect { subject.main }.to output("#{def_output}Thank your for your order").to_stdout
+        expect { subject.main }.to output("#{def_output}Thank your for your order\n").to_stdout
       end
     end
   end

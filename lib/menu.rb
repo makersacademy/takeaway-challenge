@@ -18,6 +18,7 @@ class Menu
     end
     else @dish_list = menu
     end
+    
   end
 
 end

@@ -1,22 +1,20 @@
 # messaging class
-require 'date'
 require 'twilio-ruby'
+require 'date'
 class MessageProcessor
 
-
-
   def send_message
-    account_sid = 'AC316f47470521bb7a1c66213585dde814'
-    auth_token = 'b77d5c9768bf346ce88d9a4376dea84e'
+    account_sid = 'AC054b2e6d3d275987becb653d8a3ed5f4'
+    auth_token = '8581d5d33619c11370fb1ffd759c27d9'
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    from = '+441202068032' # Your Twilio number
-    to = '+07807795722' # Your mobile phone number
+    from = '+441472730326' # Your Twilio number
+    to = '+447807795722' # Your mobile phone number
 
     client.messages.create(
     from: from,
     to: to,
-    body: "Hey friend!"
+    body: "Your order has been delivered and will arrive at #{11} : #{30}"
     )
   end
 

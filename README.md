@@ -43,7 +43,7 @@ This will load the main class file, create a class instance and run the main met
 ### Ordering
 Following a placed order you should receive a text message like the one below :
 ```
-  No text messages cos twillo is total bollocks and im too tired now goodnight ..
+  Your order has been dielivered and will arrive at 11:30
 ```
 
 ### Credits

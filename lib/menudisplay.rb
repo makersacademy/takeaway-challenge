@@ -9,23 +9,23 @@ class MenuDisplay
 
   def print_menu
     @menu.dish_list.each_with_index do |n, i|
-      print "#{i + 1}: #{n.name.capitalize} - "\
-      "#{"%.2f" % (n.price / 100.round(2))}\n"
+      puts "#{i + 1}: #{n.name.capitalize} - "\
+      "#{"%.2f" % (n.price.to_f / 100.round(2))}"
     end
   end
 
   def print_basket
     @order.dish_list.each_with_index do |o, i| 
-      print "#{i + 1}: #{o.name.capitalize} - "\
-      "#{"%.2f" % (o.price / 100.round(2))}\n"
+      puts "#{i + 1}: #{o.name.capitalize} - "\
+      "#{"%.2f" % (o.price.to_f / 100.round(2))}"
     end
   end
 
   def print_total
     if @order.total_cost.nil?
-      print "Total: 0.00"
+      puts "Total: 0.00"
     else
-      print "Total: #{"%.2f" % (@order.total_cost / 100.round(2))}"
+      puts "Total: #{"%.2f" % (@order.total_cost.to_f / 100.round(2))}"
     end
   end
 
@@ -35,7 +35,6 @@ class MenuDisplay
     print "---------------------Basket-------------------\n"
     print_basket
     print_total
-    print "\n"
   end
 
 end
