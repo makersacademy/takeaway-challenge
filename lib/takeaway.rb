@@ -21,4 +21,8 @@ class Takeaway
     "#{quantity}x #{item} has been added to your basket"
   end
 
+  def check_order
+    @restaurant.bill(@basket)
+  end
+
 end

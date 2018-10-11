@@ -20,6 +20,13 @@ describe Takeaway do
     expect(subject.basket).to eq({ "fish" => 2 })
   end
 
+  it "should allow the user to verify the price of their order" do
+    subject = Takeaway.new(restaurant)
+    allow(restaurant).to receive(:bill) { 20 }
+    subject.add("fish", 2)
+    expect(subject.check_order).to eq 20
+  end
+
   context "a user adds another of the same item to the basket" do
     it "should increase the quantity of an item in the basket" do
       subject = Takeaway.new(restaurant)
