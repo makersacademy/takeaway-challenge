@@ -8,4 +8,5 @@ class TakeOut
   def show_menu
     MENU
   end
+  
 end
