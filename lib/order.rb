@@ -6,7 +6,7 @@ class Order
     @basket = []
   end
 
-  def add_dish(dish)
-    basket << dish
+  def add_dish(dish, price)
+    basket << { dish => price }
   end
 end
