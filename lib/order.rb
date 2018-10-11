@@ -7,6 +7,6 @@ class Order
   end
 
   def add_dish(dish, price)
-    basket << { dish => price }
+    @basket << { dish => price }
   end
 end
