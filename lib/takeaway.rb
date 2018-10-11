@@ -12,7 +12,7 @@ class Takeaway
   end
 
   def add(item, quantity)
-    if @basket.keys?(item)
+    if @basket.key?(item)
       @basket[item] += quantity
     else
       @basket[item] = quantity
