@@ -27,4 +27,12 @@ class Takeaway
     "Your order costs £#{bill}"
   end
 
+  def delete(item, quantity)
+    if @basket.key?(item)
+      @basket[item] -= quantity unless quantity > @basket[item]
+      @basket[item] = 0 if quantity > @basket[item]
+    end
+    "#{quantity}x #{item} has been deleted from your basket"
+  end
+
 end

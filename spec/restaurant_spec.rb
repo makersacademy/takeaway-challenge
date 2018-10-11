@@ -14,8 +14,16 @@ describe Restaurant do
                                 })
   end
 
-  it "calculates the bill of the user's basket" do
-    allow(takeaway).to receive(:basket) { { "fish" => 2 } }
-    expect(subject.bill(takeaway.basket)).to eq 20
+  context "calculating the bill" do
+    it "calculates the bill of the user's basket" do
+      allow(takeaway).to receive(:basket) { { "fish" => 2 } }
+      expect(subject.bill(takeaway.basket)).to eq 20
+    end
+
+    it "should ignore items not on the menu" do
+      allow(takeaway).to receive(:basket) { { "fish" => 2, "lol" => 1 } }
+      expect(subject.bill(takeaway.basket)).to eq 20
+    end
   end
+
 end

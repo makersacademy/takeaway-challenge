@@ -14,7 +14,8 @@ class Restaurant
   def bill(basket)
     total = 0
     basket.each { |key, value|
-      total += (value * @menu[key])
+      value = 0 if value.nil?
+      total += (value * @menu[key]) if @menu.key?(key)
     }
     total
   end
