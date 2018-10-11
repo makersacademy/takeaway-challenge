@@ -1,9 +1,11 @@
 class TakeOut
 
-  @menu = {}
+  MENU = {
+  "chicken soup" => 5,
+  "icecream" => 3
+  }
 
   def show_menu
-    @menu
+    MENU
   end
-
 end

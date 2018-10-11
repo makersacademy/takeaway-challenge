@@ -1,8 +1,10 @@
 require 'takeout'
 
 describe TakeOut do
-  it 'has a list of dishes with prices' do
-    expect(subject.show_menu).to eq @menu
+  describe '#show_menu' do
+    it 'has a menu which shows item and price' do
+      takeout = TakeOut.new
+      expect(takeout.show_menu).to eq TakeOut::MENU
+    end
   end
-
 end
