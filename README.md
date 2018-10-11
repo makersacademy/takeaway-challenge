@@ -25,7 +25,13 @@ Instructions
 
 Todo
 -----
-- [ ] Register for Twilio
+- [ ] Twilio setup
+  - [x] Sign up
+  - [x] review documentation
+  - [x] Send a dummy message
+  - [ ] Prevent credentials from entering production
+    - [x] .gitignore for dummy test
+    - [ ] dotenv and env variables for production code
 - [ ] Plan solution
   - [ ] List of methods
   - [ ] Methods grouped by shared concerns
