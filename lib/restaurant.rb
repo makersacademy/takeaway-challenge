@@ -1,14 +1,8 @@
 class Restaurant
   attr_reader :menu
 
-  def initialize
-    @menu = {
-              "fish" => 10,
-              "steak" => 20,
-              "chips" => 4,
-              "pie" => 12,
-              "dessert" => 8
-            }
+  def initialize(menu = Menu.new)
+    @menu = menu.display
   end
 
   def bill(basket)

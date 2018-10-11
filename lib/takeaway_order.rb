@@ -1,6 +1,6 @@
 require_relative 'restaurant'
 
-class Takeaway
+class TakeawayOrder
   attr_reader :basket
   def initialize(restaurant = Restaurant.new)
     @restaurant = restaurant
@@ -11,13 +11,9 @@ class Takeaway
     @restaurant.menu
   end
 
-  def add(item, quantity)
-    if @basket.key?(item)
-      @basket[item] += quantity
-    else
-      @basket[item] = quantity
-    end
-
+  def add(item, quantity = 1)
+    @basket[item] += quantity if @basket.key?(item)
+    @basket[item] = quantity unless @basket.key?(item)
     "#{quantity}x #{item} has been added to your basket"
   end
 
@@ -34,5 +30,4 @@ class Takeaway
     end
     "#{quantity}x #{item} has been deleted from your basket"
   end
-
 end
