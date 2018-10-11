@@ -16,12 +16,81 @@ Takeaway Challenge
 
 Instructions
 -------
-Test edit
+
 * Challenge time: rest of the day and weekend, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday morning
+
+Todo
+-----
+- [ ] Register for Twilio
+- [ ] Plan solution
+  - [ ] List of methods
+  - [ ] Methods grouped by shared concerns
+- [ ] User story 1
+    - [ ] Feature Tests
+    - [ ] Unit Tests
+    - [ ] Tests pass
+    - [ ] Tests Refactored
+    - [ ] Code Refactored
+- [ ] User story 2
+  - [ ] Feature Tests
+  - [ ] Unit Tests
+  - [ ] Tests pass
+  - [ ] Tests Refactored
+  - [ ] Code Refactored
+- [ ] User story 3
+  - [ ] Feature Tests
+  - [ ] Unit Tests
+  - [ ] Tests pass
+  - [ ] Tests Refactored
+  - [ ] Code Refactored
+- [ ] User story 4
+  - [ ] Feature Tests
+  - [ ] Unit Tests
+  - [ ] Tests pass
+  - [ ] Tests Refactored
+  - [ ] Code Refactored
+- [ ] Gem file contains all dependency gems
+- [ ] README
+  - [ ] Explain your approach to the challenge
+  - [ ] how to set up
+  - [ ] show the full story of how your app is used (from a user's perspective)
+
+Considerations
+----
+- [ ] use ENV variables and the dotenv gem to ensure that sensitive infomration such as phone numbers and security tokens are not pushed up to public repos on Github.
+- [ ] Code should be open for extension but closed for modification. For example the menu items should not be hard coded into a restaurant class.
+- [ ] Tests:
+  - [ ] Should test real behaviours not stubs
+  - [ ] Stubb out the Twilio API calls but this still needs testing - see Docs/reviews
+  - [ ] All public methods needs to be tested
+- [ ] Ensure that methods that should not be available in the public interface are made private
+- [ ] Classes
+  - [ ] employ dependency injection
+  - [ ] Should separate concerns
+  - [ ] Each object should have only limited knowledge about other units: only units "closely" related to the current unit.
+  - [ ] Each object should only talk to its friends; don't talk to strangers.
+  - [ ] Only talk to your immediate friends.
+  - [ ] We shouldn't see deep-reaching chains in the code
+- [ ] Have a list of dishes with prices
+- [ ] Place the order by
+  - [ ] giving the list of dishes,
+  - [ ] their quantities
+  - [ ] and a number that should be the exact total.
+  - [ ] If the sum is not correct the method should raise an error,
+  - [ ] otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now
+- [ ] Use the twilio-ruby gem to access the texting API
+- [ ] Use the Gemfile to manage your gems
+- [ ] Tests isolated using mocks and/or stubs (do not send texts when your tests are run)
+  - [ ] However, if run in IRB and the order is placed, the text should actually be sent
+- [ ] Methods should use have a single responsibility
+- [ ] 100% Test coverage
+- [ ] Code conforms to the Rubocop style guide
+
+
 
 Task
 -----
