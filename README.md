@@ -32,9 +32,9 @@ Todo
   - [ ] Prevent credentials from entering production
     - [x] .gitignore for dummy test
     - [ ] dotenv and env variables for production code
-- [ ] Plan solution
-  - [ ] List of methods
-  - [ ] Methods grouped by shared concerns
+- [x] Plan braod stroke solution
+  - [x] List of methods
+  - [x] Methods grouped by shared concerns
 - [ ] User story 1
     - [ ] Feature Tests
     - [ ] Unit Tests
@@ -95,6 +95,33 @@ Considerations
 - [ ] Methods should use have a single responsibility
 - [ ] 100% Test coverage
 - [ ] Code conforms to the Rubocop style guide
+
+
+Rough Plan for solution
+----
+Restaurant Class
+* Initialise with instances of menu, order and messaging
+
+
+Order Class
+* add_item_to_order(item, number = 1)
+* order_summary
+  * shows items and quantity
+* order_total
+* is_correct_amount?(price)
+  * total_price == price
+* check_out(total)
+  is_correct_amount? ? send_sms : raise error
+
+
+Menu Class
+* Initiates with a hash of dishes and prices
+* show menu
+  * returns dishes with their prices
+
+Messaging Class
+* Send text message
+
 
 
 
