@@ -1,4 +1,9 @@
-
 class TakeOut
 
-end 
+  @menu = {}
+
+  def show_menu
+    @menu
+  end
+
+end
