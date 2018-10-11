@@ -24,7 +24,7 @@ describe Takeaway do
     subject = Takeaway.new(restaurant)
     allow(restaurant).to receive(:bill) { 20 }
     subject.add("fish", 2)
-    expect(subject.check_order).to eq 20
+    expect(subject.check_bill(20)).to eq "Your order costs £20"
   end
 
   context "a user adds another of the same item to the basket" do
@@ -33,6 +33,15 @@ describe Takeaway do
       subject.add("fish", 2)
       subject.add("fish", 1)
       expect(subject.basket).to eq({ "fish" => 3 })
+    end
+  end
+
+  context "the user expects the wrong price" do
+    it "should raise an error" do
+      subject = Takeaway.new(restaurant)
+      allow(restaurant).to receive(:bill) { 20 }
+      subject.add("fish", 2)
+      expect { subject.check_bill(10) }.to raise_error "Order costs £20, not £10"
     end
   end
 

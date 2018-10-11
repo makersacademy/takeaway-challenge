@@ -21,8 +21,10 @@ class Takeaway
     "#{quantity}x #{item} has been added to your basket"
   end
 
-  def check_order
-    @restaurant.bill(@basket)
+  def check_bill(expected_bill)
+    bill = @restaurant.bill(@basket)
+    raise "Order costs £#{bill}, not £#{expected_bill}" if expected_bill != bill
+    "Your order costs £#{bill}"
   end
 
 end
