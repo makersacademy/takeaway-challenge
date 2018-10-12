@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
   it "should display the menu" do
-    expect(subject.display).to eq({
+    expect(subject.menu).to eq({
                                   "fish" => 10,
                                   "steak" => 20,
                                   "chips" => 4,

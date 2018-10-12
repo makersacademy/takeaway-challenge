@@ -7,14 +7,18 @@ class TakeawayOrder
     @basket = {}
   end
 
-  def list_menu
+  def display_menu
     @restaurant.menu
   end
 
   def add(item, quantity = 1)
-    @basket[item] += quantity if @basket.key?(item)
-    @basket[item] = quantity unless @basket.key?(item)
-    "#{quantity}x #{item} has been added to your basket"
+    if @restaurant.menu.key?(item)
+      @basket[item] += quantity if @basket.key?(item)
+      @basket[item] = quantity unless @basket.key?(item)
+      "#{quantity}x #{item} has been added to your basket"
+    else
+      "That's not on the menu!"
+    end
   end
 
   def check_bill(expected_bill)
@@ -23,11 +27,13 @@ class TakeawayOrder
     "Your order costs £#{bill}"
   end
 
-  def delete(item, quantity)
+  def delete(item, quantity = 1)
     if @basket.key?(item)
       @basket[item] -= quantity unless quantity > @basket[item]
       @basket[item] = 0 if quantity > @basket[item]
+      "#{quantity}x #{item} has been deleted from your basket"
+    else
+      "That's not in your basket!"
     end
-    "#{quantity}x #{item} has been deleted from your basket"
   end
 end
