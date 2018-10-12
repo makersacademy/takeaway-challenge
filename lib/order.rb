@@ -11,6 +11,7 @@ class Order
   end
 
   def order_summary
+    #Needs refactoring
     output = Array.new
     @basket.each { |key, value|
       output << "#{key} x#{value} = £#{@menu[key] * value}"

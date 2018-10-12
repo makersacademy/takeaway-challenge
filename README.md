@@ -42,10 +42,10 @@ Todo
     - [x] Tests Refactored
     - [x] Code Refactored
 - [ ] User story 2
-  - [ ] Feature Tests
-  - [ ] Unit Tests
-  - [ ] Tests pass
-  - [ ] Tests Refactored
+  - [x] Feature Tests
+  - [x] Unit Tests
+  - [x] Tests pass
+  - [x] Tests Refactored
   - [ ] Code Refactored
 - [ ] User story 3
   - [ ] Feature Tests
