@@ -14,5 +14,11 @@ describe Order do
       subject.add("Margarita Pizza")
       expect(subject.total).to eq 8
     end
+
+    it 'adds 2 items to the order' do
+      subject.add("Margarita Pizza")
+      subject.add("Chips")
+      expect(subject.total).to eq 10
+    end
   end
 end
