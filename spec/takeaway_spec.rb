@@ -8,11 +8,14 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(Menu.new) }
 
   let(:valid_selection) { {
-          dishes: [:miso, :tempura, :rice],
-          quantities: [1, 1, 1],
+          dishes: [{nickname: :miso, quantity: 1}, {nickname: :tempura, quantity: 1}, {nickname: :rice, quantity: 1}],
           total: 6.00
         } }
   let(:empty_selection) { {} }
+  let(:invalid_selection) { {
+          dishes: [{nickname: :miso, quantity: 1}, {nickname: :tempura, quantity: 1}, {nickname: :rice, quantity: 1}],
+          total: 0.00
+        } }
 
   describe "#list_food" do
     it "should list food items with their menu number, name, and price" do
@@ -42,8 +45,14 @@ describe Takeaway do
     # As a customer
     # So that I can verify that my order is correct
     # I would like to check that the total I have been given matches the sum of the various dishes in my order
-    it "should check whether the total I specified matches the actual total of the menu items" do
+    it "should return true when I check a valid selection" do
       expect(takeaway.check_total(valid_selection)).to eq true
+    end
+    it "should return false when I check an invalid selection" do
+      expect(takeaway.check_total(invalid_selection)).to eq false
+    end
+    it "should raise an error when I check an empty selection" do
+      expect { takeaway.check_total(empty_selection) }.to raise_error
     end
   end
 
