@@ -1,0 +1,5 @@
+# IRB #
+require './lib/takeaway.rb'
+Takeaway.new
+ta = Takeaway.new
+ta.menu
