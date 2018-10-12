@@ -23,6 +23,18 @@ describe Order do
       expect(subject.order).to eq({burger: 2})
     end
 
+    it "allows me to add item to order more than once" do
+      subject.add_to_order("burger", 2)
+      subject.add_to_order("burger", 1)
+      expect(subject.order).to eq({burger: 3})
+    end
+
+    it "allows me to add different items" do
+      subject.add_to_order("burger", 2)
+      subject.add_to_order("chips", 1)
+      expect(subject.order).to eq({burger: 2, chips: 1})
+    end
+
   end
 
 end

@@ -7,7 +7,11 @@ class Order
   end
 
   def add_to_order(dish, quantity)
-    @order[dish.to_sym] = quantity
+    if @order.keys.include?(dish.to_sym)
+      @order[dish.to_sym] = @order[dish.to_sym] + quantity
+    else
+      @order[dish.to_sym] = quantity
+    end
     return "#{dish.capitalize} x#{quantity}"
   end
 
