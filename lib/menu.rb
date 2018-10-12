@@ -1,5 +1,5 @@
 class Menu 
-  attr_reader :dishes, :order_dishes
+  attr_reader :dishes, :order_numbers
   def initialize 
     @dishes = [
     	{ item: 'Bruschetta', price: 6 }, 
@@ -19,7 +19,7 @@ class Menu
   end
   
   def order(dishes)
-    @order_dishes = dishes
+    @order_numbers = dishes
     'Thank you! Your order was placed.'
   end
 end

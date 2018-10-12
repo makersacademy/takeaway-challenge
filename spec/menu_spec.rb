@@ -28,12 +28,11 @@ describe Menu do
     
     it 'orders 3 menu items' do 
       subject.order([2, 4, 6])
-      expect(subject.order_dishes).to eq [2, 4, 6]
+      expect(subject.order_numbers).to eq [2, 4, 6]
     end
     
     it 'order returns a message' do
       expect(subject.order([2, 4, 6])).to eq 'Thank you! Your order was placed.'
     end
   end
-  
 end
