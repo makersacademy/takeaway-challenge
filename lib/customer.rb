@@ -1,6 +1,7 @@
 require_relative 'menu'
 require_relative 'order'
 
+
 class Customer
 
   attr_reader :order
@@ -18,5 +19,9 @@ class Customer
       @order.order << menu.find_dish(dish) if menu.is_a?(Menu)
     end
     "#{num} #{dish} added" if @order.added?
+  end
+
+  def verify_order
+    @order.print_list
   end
 end

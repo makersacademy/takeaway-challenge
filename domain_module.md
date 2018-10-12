@@ -15,5 +15,6 @@ order | dishes and quantity
 Class | Duty
 --------------
 customer | verify_order
+customer | total_balance
 order | printed list + total
 order | total

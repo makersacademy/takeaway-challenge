@@ -15,4 +15,29 @@ describe Order do
       expect(subject.added?).to be false
     end
   end
+
+  describe '#print_list' do
+    it 'is expected to return a cheese with the added total' do
+      thing = Dish.new("cheese", 40)
+      subject.order << thing
+      expect(subject.print_list).to eq ["cheese x1 $40"]
+    end
+
+    it 'is expected to return 3 cheese with the added total' do
+      thing = Dish.new("cheese", 40)
+      subject.order << thing
+      subject.order << thing
+      subject.order << thing
+      expect(subject.print_list).to eq ["cheese x3 $120"]
+    end
+
+    it 'is expected to return a list with the added total' do
+      thing = Dish.new("cheese", 40)
+      cow = Dish.new("COW", 500)
+      subject.order << thing
+      subject.order << thing
+      subject.order << cow
+      expect(subject.print_list).to eq ["cheese x2 $80", "COW x1 $500"]
+    end
+  end
 end
