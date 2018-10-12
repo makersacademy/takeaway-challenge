@@ -1,12 +1,16 @@
 require_relative 'menu'
+# require 'dotenv/load'
+
+# task mytask: :dotenv do
+#     # things that require .env
+# end
 
 class Takeaway
 
 include Menu
 
-  def initialize
-    # p @menu
-    # @menu = menu
+  def initialize()
+  # new_order = Order.new
   end
 
   def menu
