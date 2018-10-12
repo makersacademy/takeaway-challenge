@@ -2,11 +2,10 @@ require 'order'
 
 describe Order do
   let(:order) { Order.new(menu.show) }
-  let(:item) { "Margherita" }
   let(:menu) { double(:menu, show: [{ "Margherita" => "£8" }, { "Roasted Vegetable" => "£9" }, { "Chorizo" => "£12" }]) }
 
   describe '#choose' do
-    it 'let me choose the item that I want' do
+    it 'lets me choose the item that I want' do
       expect(order.choose(["Margherita"])).to eq ["Margherita"]
     end
 
@@ -16,7 +15,7 @@ describe Order do
     end
 
     it 'should not allow me to choose items that are not on the menu' do
-      expect{ order.choose(["Toast"]) }.to raise_exception "This item is not on the menu: please choose something else"
+      expect { order.choose(["Toast"]) }.to raise_exception "This item is not on the menu: choose something else"
     end
   end
 end

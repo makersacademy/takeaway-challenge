@@ -6,11 +6,13 @@ class Order
 
   def choose(items)
     items.each do |item|
-      if @menu.any? {|list|list[item] }
-        item
-      else
-        fail "This item is not on the menu: please choose something else"
-      end
+      fail_message unless @menu.any? { |list| list[item] }
     end
+  end
+
+  private
+
+  def fail_message
+    fail "This item is not on the menu: choose something else"
   end
 end
