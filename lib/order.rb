@@ -1,11 +1,13 @@
 class Order
 
-  def initialize
-    @menu = {Burger: 3, Hotdog: 2}
+  attr_reader :list
+
+  def initialize(list = [])
+    @list = list
   end
 
-  def view
-    @menu.each {|k,v| puts "#{k}, #{v}"}
+  def choose(selection)
+    @list << selection
   end
 
 end
