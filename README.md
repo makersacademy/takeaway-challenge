@@ -1,4 +1,5 @@
-Takeaway Challenge
+Takeaway Challenge by Neil Brockman
+
 ==================
 ```
                             _________
