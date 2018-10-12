@@ -7,8 +7,8 @@ class Menu
     @list = []
   end
 
-  def add_dish(dish) # Adds dish to the list array
-    @list << dish
+  def add_dish(dish)
+    @list << dish # Adds dish to the list array
   end
 
   def list_dishes

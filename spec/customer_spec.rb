@@ -12,7 +12,4 @@ describe Customer do
       expect(subject.check_menu(list)).to eq list.list_dishes
     end
   end
-
-
-
 end
