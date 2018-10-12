@@ -1,6 +1,5 @@
 require 'twilio-ruby'
 
-
 CONF = {
   account_sid: ENV['TWILIO_ACCOUNT_SID'],
   auth_token: ENV['TWILIO_AUTH_TOKEN'],
@@ -13,7 +12,7 @@ class Messaging
   end
 
   def message
-    "Thank you!"
+    "Thank you! Your order was placed and will be delivered before #{Time.now}"
   end
 
   def send_message(message_text)
