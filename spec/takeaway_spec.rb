@@ -1,8 +1,8 @@
-require 'takeaway'
+require "takeaway"
 
 describe Takeaway do
 
-  it 'should show dishes and prices' do
+  it "should show dishes and prices" do
     expect(subject.show_menu).to eq([{dish: "burger", price: 4},
       {dish: "cheeseburger", price: 5},
       {dish: "chicken burger", price: 4.5},
