@@ -28,6 +28,13 @@ menu.display
 # Margarita Pizza, £8
 # Hamburger, £6
 # Chips, £2
+
+require './lib/menu'
+menu = Menu.new
+order = Order.new
+menu.display
+order.add("Margarita Pizza")
+order.add("Chips")
 ```
 
 ## Domain Models ##
