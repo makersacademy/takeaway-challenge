@@ -10,4 +10,12 @@ class TokyoMenu
       { name: "Green Tea", nickname: :tea, price: 1.00 },
     ]
   end
+
+  def name
+    "Tokyo"
+  end
+
+  def logo
+    "(ﾉ◕ヮ◕)ﾉ"
+  end
 end

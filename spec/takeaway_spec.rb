@@ -8,12 +8,12 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(TokyoMenu.new) }
 
   let(:valid_selection) { {
-          dishes: [{nickname: :miso, quantity: 1}, {nickname: :tempura, quantity: 1}, {nickname: :rice, quantity: 1}],
+          dishes: [{ nickname: :miso, quantity: 1 }, { nickname: :tempura, quantity: 1 }, { nickname: :rice, quantity: 1 }],
           total: 6.00
         } }
   let(:empty_selection) { {} }
   let(:invalid_selection) { {
-          dishes: [{nickname: :miso, quantity: 1}, {nickname: :tempura, quantity: 1}, {nickname: :rice, quantity: 1}],
+          dishes: [{ nickname: :miso, quantity: 1 }, { nickname: :tempura, quantity: 1 }, { nickname: :rice, quantity: 1 }],
           total: 0.00
         } }
 
@@ -60,9 +60,17 @@ describe Takeaway do
     end
   end
 
-  describe "#send_confirmation" do
+  describe "#confirm_order" do
+    it "gives the takeaway the order" do
+      takeaway.order(valid_selection)
+      expect(takeaway.current_selection).to_not be_nil
+    end
+  end
+
+  describe "#send_confirmation_text" do
     # As a customer
     # So that I am reassured that my order will be delivered on time
     # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
   end
 end
