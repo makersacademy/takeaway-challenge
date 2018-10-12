@@ -25,22 +25,9 @@ require './lib/menu'
 menu = Menu.new
 menu.display
 
-# Burgers
-# ---
-# Hamburger, £5
-# Cheeseburger, £6
-# Chicken burger, £4
-#
-# Hot Dogs
-# ---
-# Cheese dog, £5
-# Chilli dog, £6
-# Corn dog, £4
-#
-# Chicken
-# ---
-# Southern fried chicken, £4
-# Chicken wings, £6
+# Margarita Pizza, £8
+# Hamburger, £6
+# Chips, £2
 ```
 
 ## Domain Models ##
