@@ -17,4 +17,10 @@ class Menu
     end
   end
 
+  def find_dish(dish)
+    @list.each do |name|
+      name if name.name == dish
+    end
+  end
+
 end
