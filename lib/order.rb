@@ -21,8 +21,11 @@ class Order
   def total
     order_prices = []
     @order_items.select do |order_dish|
-      @@menu.each {|d| order_prices << d[:price] * order_dish[:quantity] if d[:dish] == order_dish[:dish]}
+       # p order_dish[:quantity]
+      @@dishes.each {|d| order_prices << d[order_dish[:dish]] * order_dish[:quantity] if !d[order_dish[:dish]].nil?}
+      # @@dishes.each {|d| order_prices << d[:price] * order_dish[:quantity] if d[:dish] == order_dish[:dish]}
     end
+    # p order_prices
     order_prices.sum
   end
 
