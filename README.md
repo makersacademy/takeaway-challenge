@@ -35,12 +35,12 @@ Todo
 - [x] Plan braod stroke solution
   - [x] List of methods
   - [x] Methods grouped by shared concerns
-- [ ] User story 1
-    - [ ] Feature Tests
-    - [ ] Unit Tests
-    - [ ] Tests pass
-    - [ ] Tests Refactored
-    - [ ] Code Refactored
+- [x] User story 1
+    - [x] Feature Tests
+    - [x] Unit Tests
+    - [x] Tests pass
+    - [x] Tests Refactored
+    - [x] Code Refactored
 - [ ] User story 2
   - [ ] Feature Tests
   - [ ] Unit Tests

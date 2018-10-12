@@ -1,8 +1,11 @@
 require 'menu'
 
 describe Menu do
+  default_menu = { 'pizza' => 6.99, 'chips' => 1.50, 'burger' => 3.00 }
+  alt_menu = { "hotdog" => 2.00, "cake" => 2.50 }
+
   subject(:menu) { described_class.new }
-  let(:non_default_menu) { described_class.new({ "hotdog" => 2.00, "cake" => 2.50 }) }
+  let(:non_default_menu) { described_class.new(alt_menu) }
 
   describe '#menu_items' do
 
@@ -16,7 +19,7 @@ describe Menu do
 
     context 'initilized with a menu items paramater' do
       it 'should show menu items' do
-        expect(non_default_menu.menu_items).to eq({ "hotdog" => 2.00, "cake" => 2.50 })
+        expect(non_default_menu.menu_items).to eq(alt_menu)
       end
     end
 
