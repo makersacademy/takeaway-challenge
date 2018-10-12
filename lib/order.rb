@@ -1,7 +1,16 @@
 class Order
 
+  def initialize(menu)
+    @menu = menu
+  end
+
   def choose(items)
-    choice = items.join(" and ") if items.is_a?(Array)
-    "Great, you have selected #{choice}"
+    items.each do |item|
+      if @menu.any? {|list|list[item] }
+        item
+      else
+        fail "This item is not on the menu: please choose something else"
+      end
+    end
   end
 end
