@@ -1,4 +1,5 @@
 require 'messaging'
+# require 'twilio-ruby'
 
 describe 'Messaging' do
   describe 'construct message' do
