@@ -1,7 +1,7 @@
 class TakeAway
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order = Order.new(menu))
     @menu = menu
-    @order = Order.new(@menu)
+    @order = order
   end
 
   def show_menu
@@ -13,6 +13,6 @@ class TakeAway
   end
 
   def order_summary
-
+    @order.order_summary
   end
 end

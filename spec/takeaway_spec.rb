@@ -1,10 +1,16 @@
 require 'takeaway'
 
 describe TakeAway do
-  default_menu = { 'pizza' => 6.99, 'chips' => 1.50, 'burger' => 3.00 }
+  default_menu = { 'pizza' => 6.99, 'chips' => 1.50, 'burger' => 3 }
 
-  subject(:takeaway) { described_class.new(menu) }
   let(:menu) { double :Menu, :menu_items => default_menu }
+  let(:order) { double :Order }
+
+  subject(:takeaway) { described_class.new(menu, order) }
+
+  before do
+    allow(order).to receive(:add_items)
+  end
 
   describe '#show_menu' do
 
@@ -30,13 +36,18 @@ describe TakeAway do
     end
 
     it 'accepts 2 arguments' do
-      expect(takeaway).to respond_to(:add_to_order).with(1).arguments
+      expect(takeaway).to respond_to(:add_to_order).with(2).arguments
+    end
+
+    it 'sends message to order' do
+
+      expect(order).to receive(:add_items)
+      takeaway.add_to_order('Pizza')
     end
 
   end
 
   describe '#order_summary' do
-
 
   end
 
