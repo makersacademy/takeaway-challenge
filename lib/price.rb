@@ -8,4 +8,12 @@ class Price
     return @menu.items.detect { |hash| hash[:dish] == item }[:price]
   end
 
+  def total(order)
+    cost = 0
+    order.each do |dish, quantity|
+      cost += quantity * item_price(dish.to_s)
+    end
+    return cost
+  end
+
 end

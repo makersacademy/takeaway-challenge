@@ -14,4 +14,12 @@ describe Price do
 
   end
 
+  describe '#total' do
+
+    it "should return total of order" do
+      expect(subject.total(order.order)).to eq(10)
+    end
+
+  end
+
 end
