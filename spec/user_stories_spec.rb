@@ -1,4 +1,6 @@
 require 'menu'
+require 'order'
+require 'confirmation'
 
 # As a customer
 # So that I can check if I want to order something
@@ -46,6 +48,21 @@ describe Order do
       order.choose("Margherita")
       order.choose("Chorizo")
       expect(order.total).to eq "Total due: £20"
+    end
+  end
+end
+
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+describe Confirmation do
+  let(:confirmation) { Confirmation.new }
+
+  describe '#time' do
+    it 'tells me the time that my order was placed' do
+      time = Time.new
+      expect(confirmation.time). to eq time.strftime("%k:%M")
     end
   end
 end
