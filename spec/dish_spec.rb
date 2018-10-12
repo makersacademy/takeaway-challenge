@@ -6,4 +6,5 @@ describe Dish do
     expect(subject.name).to eq 'Pizza'
     expect(subject.price).to eq 7.85
   end
+  
 end
