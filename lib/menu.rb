@@ -10,7 +10,7 @@ class Menu
 
   def view
     @menu.map do |key, value|
-      "#{key}, £#{value.to_s}"
+      "#{key}, £#{value}"
     end.join("\n")
   end
 
