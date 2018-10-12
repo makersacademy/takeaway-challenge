@@ -2,6 +2,7 @@ require 'order'
 
 describe Order do
   let(:menu) { double :menu, :items => { "Margarita Pizza" => 8, "Hamburger" => 6, "Chips" => 2 } }
+  subject { Order.new(menu) }
 
   context '#initialize' do
     it 'creates a new order with a total of 0' do
