@@ -1,4 +1,4 @@
-class Menu
+class PizzeriaMenu
   def initialize
     @dishes = [{ name: "Margherita", price: 7.5 },
               { name: "Bufala", price: 8 },

@@ -1,6 +1,6 @@
-require 'menu'
+require 'pizzeria_menu'
 
-describe Menu do
+describe PizzeriaMenu do
   let(:list) { <<~HEREDOC
               * * * PAPA'S * PIZZERIA * * *
               1) Margherita: £7.50
