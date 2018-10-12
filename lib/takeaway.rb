@@ -1,3 +1,5 @@
+require 'pry'
+
 class Takeaway
   attr_reader :basket
 
@@ -17,6 +19,12 @@ class Takeaway
                  quantity: quantity,
                  cost: find_cost(name.downcase, quantity)
     }
+  end
+
+  def place_order(total)
+    raise "Incorrect total given!" if total != basket_total
+    send_text
+    "Order placed! Look out for a confirmation text."
   end
 
   private
@@ -40,5 +48,13 @@ class Takeaway
         return price * quantity.to_f if dish_name.downcase == name
       end
     end
+  end
+
+  def basket_total
+    @basket.map { |item| item[:cost] }.sum
+  end
+
+  def send_text
+    @text_class.new.send
   end
 end
