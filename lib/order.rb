@@ -16,7 +16,10 @@ class Order
     @basket.each do |item|
       order_total += item.values[0]
     end
-
     order_total
+  end
+
+  def show_basket
+    raise "Empty basket" if @basket.count.zero?
   end
 end

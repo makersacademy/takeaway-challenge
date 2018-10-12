@@ -60,5 +60,11 @@ describe Order do
       expect(order.total).to eq 12.30
     end
 
+    describe '#show_basket' do
+      it 'shows a message "Empty basket", if no dishes are added' do
+        order = Order.new
+        expect { order.show_basket } .to raise_error("Empty basket")
+      end
+    end
   end
 end
