@@ -5,7 +5,7 @@ require 'menu'
 # I would like to see a list of dishes with prices
 describe Menu do
   let(:menu) { Menu.new }
-  let(:items) { [{ "Margherita" => "£8" }, { "Roasted Vegetable" => "£9" }, { "Chorizo" => "£12" }] }
+  let(:items) { [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }] }
 
   it 'should show me a list of dishes with prices' do
     expect(menu.show(items)).to eq items
@@ -17,7 +17,8 @@ end
 # I would like to be able to select some number of several available dishes
 describe Order do
   let(:order) { Order.new(menu.show) }
-  let(:menu) { double(:menu, show: [{ "Margherita" => "£8" }, { "Roasted Vegetable" => "£9" }, { "Chorizo" => "£12" }]) }
+  let(:items) { ["Margherita", "Chorizo"] }
+  let(:menu) { double(:menu, show: [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }]) }
 
   describe '#choose' do
     it 'lets me choose the item that I want' do
@@ -25,12 +26,25 @@ describe Order do
     end
 
     it 'should let me choose multiple items from the menu' do
-      items = ["Margherita", "Chorizo"]
       expect(order.choose(items)).to eq ["Margherita", "Chorizo"]
     end
 
     it 'should not allow me to choose items that are not on the menu' do
       expect { order.choose(["Toast"]) }.to raise_exception "This item is not on the menu: choose something else"
+    end
+  end
+
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  describe '#total' do
+    it 'should show me the order total and the item that I have ordered' do
+      order.choose(["Roasted Vegetable"])
+      expect(order.total).to eq "Total due: £9"
+    end
+    it 'should show me the order total and the items that I have ordered' do
+      order.choose(items)
+      expect(order.total).to eq "Total due: £20"
     end
   end
 end

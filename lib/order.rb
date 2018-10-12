@@ -6,8 +6,13 @@ class Order
 
   def choose(items)
     items.each do |item|
-      fail_message unless @menu.any? { |list| list[item] }
+      fail_message unless @menu.any? { |list| list[item]}
     end
+    @items = items
+  end
+
+  def total
+
   end
 
   private
