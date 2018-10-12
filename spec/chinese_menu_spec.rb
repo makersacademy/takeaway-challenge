@@ -11,6 +11,7 @@ describe ChineseMenu do
                6) Satay Chicken: £7.00
                7) Peking Duck: £45.00
                8) Gold Peking Duck: £1500.00
+               * * * * * * * * * * * * * * *
                HEREDOC
   }
 

@@ -8,9 +8,10 @@ describe PizzeriaMenu do
               3) Anchovy: £8.00
               4) Pepperoni: £8.50
               5) Calabria: £8.50
-              6) Quattro Formaggi: £10.00
+              6) Quattro Formaggio: £10.00
               7) Truffle: £12.50
               8) Gold Pizza: £1200.00
+              * * * * * * * * * * * * * * *
               HEREDOC
   }
 
