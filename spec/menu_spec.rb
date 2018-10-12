@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  it 'check method list_dishes exists' do
+  it 'checks method list_dishes exists' do
     expect(subject).to respond_to(:list_dishes)
   end
 
@@ -10,6 +10,14 @@ describe Menu do
   # end
 
   it 'expects list_dishes to return list' do
-    expect(subject.list_dishes).to eq "Item: pizza, Price £5.99\nItem: chips, Price £1.99\nItem: burger, Price £2.99\nItem: kebab, Price £3.99\n"
+    expect(subject.list_dishes).to eq "1. Item: pizza, Price £5.99\n2. Item: chips, Price £1.99\n3. Item: burger, Price £2.99\n4. Item: kebab, Price £3.99\n"
+  end
+
+  it 'checks method select_dish exists' do
+    expect(subject).to respond_to(:select_dish)
+  end
+
+  it 'adds dish to order and returns the added dish' do
+    expect(subject.select_dish("pizza")).to eq "pizza"
   end
 end
