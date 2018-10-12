@@ -29,5 +29,9 @@ describe Order do
     end
   end
 
+  describe '#confirmation_text' do
+    it 
+  end
+
 
 end

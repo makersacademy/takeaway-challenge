@@ -1,3 +1,5 @@
+require '../apis/twilio/send_sms'
+
 class Order
 
   def initialize(dishes:, bill:)
