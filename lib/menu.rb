@@ -1,4 +1,9 @@
+require "order"
+
 class Menu
+
+attr_reader :menu
+
   def initialize
     @menu = {Burger: 3, Hotdog: 2}
   end

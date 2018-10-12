@@ -11,6 +11,12 @@ require "order"
     order.choose("Burger")
     expect(order.list).to include("Burger")
   end
+
+  it "finds the prices of selected items" do
+    order.choose("burger")
+    order.choose("Hotdog")
+    expect(order.price).to eq 5
+  end
 end
 
 # subject(:menu) {Order.new(menu)}
