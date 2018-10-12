@@ -1,4 +1,8 @@
+require_relative 'add_delete'
+
 class Order
+  include AddDelete
+
   def initialize(dishes = [])
     @dishes = dishes
   end
@@ -14,12 +18,12 @@ class Order
     puts "Total = £#{total}"
   end
 
-  def add(*new_dishes)
-    new_dishes.uniq.each do |dish|
-      @count = new_dishes.count(dish)
-      add_each(dish)
-      puts message(dish)
-    end
+  def add(*dishes)
+    add_all(dishes, @dishes)
+  end
+
+  def delete(*dishes)
+    delete_all(dishes, @dishes)
   end
 
   def total
@@ -27,14 +31,6 @@ class Order
   end
 
   private
-
-  def add_each(dish)
-    @count.times { @dishes << dish }
-  end
-
-  def message(dish)
-    "Added #{dish} x#{@count}"
-  end
 
   def quantity(dish)
     dishes.count(dish)

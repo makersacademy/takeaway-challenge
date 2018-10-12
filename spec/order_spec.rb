@@ -39,6 +39,27 @@ describe Order do
     end
   end
 
+  describe '#delete' do
+    it 'deletes a dish' do
+      order.add(pizza)
+      order.delete(pizza)
+      expect(order.dishes).not_to include(pizza)
+    end
+    it 'can delete multiple dishes' do
+      order.add(pizza, pasta)
+      order.delete(pizza, pasta)
+      expect(order.dishes).not_to include(pizza, pasta)
+    end
+    it 'cannot delete what isnt there' do
+      order.add(pizza)
+      expect{order.delete(pizza, pizza)}.to raise_error("Error: tried to delete 2 pizza(s) but order contained 1 pizza(s)")
+    end
+    it 'prints a summary of what was deleted' do
+      order.add(pizza, pizza)
+      expect { order.delete(pizza, pizza) }.to output("Deleted pizza x2\n").to_stdout
+    end
+  end
+
   describe '#total' do
     it 'returns sum of dish prices' do
       order.add(pizza)

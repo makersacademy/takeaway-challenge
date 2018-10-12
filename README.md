@@ -1,34 +1,9 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway Challenge
 
- ```
+## Goals
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* A weekend project for week 2 of Makers.
+* Goal was to learn more about object oriented programming, and test-driven development, by creating a takeaway program that satisfies the following user stories:
 
 ```
 As a customer
@@ -48,32 +23,53 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## My Approach
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+* Dishes have a name, and a price.
+* The menu stores an array of dishes. It can be initialized with dishes, and dishes can be added and deleted. The user can view its dishes and their prices in the standard output.
+* An order stores the dishes the user wishes to have delivered. Users can add to the order, delete items from the order, and view the dishes in their order with their quantities and prices.
+* Adding and deleting behaviour is defined in a separate module included in the Menu and Order classes, to avoid repetition.
+* The restaurant is responsible for placing the user's order. Restaurants will first check the total provided to ensure it is accurate, before using the texter to send a confirmation text to the user.
+* The texter is respondible for sending texts, using the Twilio API.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+## How to Use
 
+* Open irb
+* Require all the files in /lib
+* Create some dishes:
 
-In code review we'll be hoping to see:
+```
+> pizza = Dish.new("pizza", 10)
+> pasta = Dish.new("pasta", 15)
+```
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+* Create a menu and view it:
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+```
+> menu = Menu.new([pizza, pasta])
+> menu.view
+~~~Menu~~~
+pasta, £15
+pizza, £10
+```
+* Create an order, add some dishes to it, and view it:
 
-Notes on Test Coverage
-------------------
+```
+> order = Order.new
+> order.add(pizza, pizza, pasta)
+> order.view
+pizza x2 = £20
+pasta x1 = £15
+Total = £35
+```
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+* Create a restaurant and place the order, with the correct total:
+
+```
+> restaurant = Restaurant.new
+> restaurant.place(order, 30)
+RuntimeError: Incorrect total.
+> restaurant.place(order, 35)
+```
+
+* You should now receive a text telling you when your order will arrive.

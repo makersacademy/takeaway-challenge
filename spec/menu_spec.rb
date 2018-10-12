@@ -28,6 +28,29 @@ describe Menu do
       menu.add(pizza, pasta)
       expect(menu.dishes).to include(pizza, pasta)
     end
+    it 'prints a summary of what was added' do
+      expect { menu.add(pizza) }.to output("Added pizza\n").to_stdout
+    end
+  end
+
+  describe '#delete' do
+    it 'deletes a dish' do
+      menu.add(pizza)
+      menu.delete(pizza)
+      expect(menu.dishes).not_to include(pizza)
+    end
+    it 'can delete multiple dishes' do
+      menu.add(pizza, pasta)
+      menu.delete(pizza, pasta)
+      expect(menu.dishes).not_to include(pizza, pasta)
+    end
+    it 'cannot delete what isnt there' do
+      expect{menu.delete(pizza)}.to raise_error("Error: menu does not contain pizza.")
+    end
+    it 'prints a summary of what was deleted' do
+      menu.add(pizza)
+      expect { menu.delete(pizza) }.to output("Deleted pizza\n").to_stdout
+    end
   end
 
 end
