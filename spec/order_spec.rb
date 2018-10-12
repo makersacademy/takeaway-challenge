@@ -21,4 +21,12 @@ describe Order do
       expect(subject.total).to eq 10
     end
   end
+
+  context '#order_total' do
+    it 'shows the individual items and the total of the order' do
+      subject.add("Margarita Pizza")
+      subject.add("Chips")
+      expect{subject.order_total}.to output("Margarita Pizza, £8\nChips, £2\n---\nYour order total is £10\n").to_stdout
+    end
+  end
 end
