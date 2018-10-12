@@ -4,8 +4,8 @@ describe Order do
 
   describe '#initialize' do
 
-    it "should initialize with an empty order array" do
-      expect(subject.order).to eq([])
+    it "should initialize with an empty order hash" do
+      expect(subject.order).to eq({})
     end
 
   end
@@ -20,7 +20,7 @@ describe Order do
 
     it "adds item to order" do
       subject.add_to_order("burger", 2)
-      expect(subject.order).to eq([["burger", 2]])
+      expect(subject.order).to eq({burger: 2})
     end
 
   end
