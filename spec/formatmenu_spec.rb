@@ -8,6 +8,10 @@ describe FormatMenu do
       expect(subject.header).to eq("Mel's Place")
     end
 
+    it "should create a footer" do
+      expect(subject.footer).to eq("Hope you enjoy!")
+    end
+
   end
 
   describe '#format_price' do
