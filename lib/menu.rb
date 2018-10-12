@@ -1,3 +1,5 @@
+require_relative 'dish'
+
 # This class holds all of a resturants dish options
 class Menu
 
@@ -9,6 +11,10 @@ class Menu
     @list << dish
   end
 
-
+  def list_dishes
+    @list.each do |dish|
+      print "| #{dish.name} $#{dish.price} |"
+    end
+  end
 
 end
