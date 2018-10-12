@@ -1,6 +1,6 @@
 class Takeaway
     
-  attr_reader :menu
+  attr_reader :menu, :order, :quantities
     
   def initialize
     @menu = {
@@ -10,6 +10,8 @@ class Takeaway
       "sweetsour" => 8,
       "crispybeef" => 9
     }
+    @order = []
+    @quantities = []
   end
     
   def print_menu        
@@ -20,8 +22,24 @@ class Takeaway
         
   end
     
-  def take_order
-        
+  def take_order(item, quantity = 1)
+    if @menu.include?(item)
+      quantity.times do
+        @order << item
+        @quantities << quantity
+      end
+    else
+      puts "Item not found"
+    end
+  end
+  
+  def order_total
+    total = 0
+    @order.each do |x|
+      puts "#{x} - £#{@menu[x]}"
+      total += @menu[x]
+    end
+    total
   end
     
 end
