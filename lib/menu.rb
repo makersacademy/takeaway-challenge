@@ -1,4 +1,6 @@
 class Menu
+  attr_reader :items
+  
   def initialize
     @items = {
       "Margarita Pizza" => 8,
