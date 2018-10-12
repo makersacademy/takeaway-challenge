@@ -19,6 +19,30 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+## Feature Tests ##
+```ruby
+require './lib/menu'
+menu = Menu.new
+menu.display
+
+# Burgers
+# ---
+# Hamburger
+# Cheeseburger
+# Chicken burger
+#
+# Hot Dogs
+# ---
+# Cheese dog
+# Chilli dog
+# Corn dog
+#
+# Chicken
+# ---
+# Southern fried chicken
+# Chicken wings
+```
+
 ## Domain Models ##
 | Object    | Methods           |
 | --------- | ----------------- |
