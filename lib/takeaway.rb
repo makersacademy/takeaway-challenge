@@ -1,8 +1,10 @@
 class Takeaway
 
-  def initialize(menu = Menu.new, format = FormatMenu.new)
+  def initialize(menu = Menu.new, format = FormatMenu.new, order = Order.new, price = Price.new)
     @menu = menu
     @format = format
+    @order = order
+    @price = price
   end
 
   def show_menu
