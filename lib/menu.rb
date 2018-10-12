@@ -14,6 +14,4 @@ class Menu
       {dish: "cheesy garlic bread", price: 3.5}]
   end
 
-
-
 end
