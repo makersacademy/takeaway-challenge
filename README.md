@@ -27,20 +27,20 @@ menu.display
 
 # Burgers
 # ---
-# Hamburger
-# Cheeseburger
-# Chicken burger
+# Hamburger, £5
+# Cheeseburger, £6
+# Chicken burger, £4
 #
 # Hot Dogs
 # ---
-# Cheese dog
-# Chilli dog
-# Corn dog
+# Cheese dog, £5
+# Chilli dog, £6
+# Corn dog, £4
 #
 # Chicken
 # ---
-# Southern fried chicken
-# Chicken wings
+# Southern fried chicken, £4
+# Chicken wings, £6
 ```
 
 ## Domain Models ##
