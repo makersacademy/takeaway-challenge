@@ -16,9 +16,9 @@ describe Order do
     context "order given with correct total" do
       subject { described_class.new(dishes: { pizza => 1, pasta => 1, salad => 1 }, bill: 19.55) }
       it 'should send confirmation text message to customer' do
-        allow(subject).to receive(:confirmation_text)
+        allow(subject).to receive(:send_text)
         subject.check_bill
-        expect(subject).to have_received(:confirmation_text)
+        expect(subject).to have_received(:send_text)
       end
     end
     context "order given with incorrect total" do
@@ -30,7 +30,7 @@ describe Order do
   end
 
   describe '#confirmation_text' do
-    it 
+    it
   end
 
 
