@@ -2,6 +2,14 @@ require "formatmenu"
 
 describe FormatMenu do
 
+  describe '#initialize' do
+
+    it "should create a header" do
+      expect(subject.header).to eq("Mel's Place")
+    end
+
+  end
+
   describe '#format_price' do
 
     it "should convert 4 to £4.00" do
