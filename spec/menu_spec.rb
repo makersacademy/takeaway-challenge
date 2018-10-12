@@ -5,7 +5,6 @@ describe Menu do
   let(:pizza) { double(:pizza, name: "pizza", price: 5, to_s: "pizza") }
   let(:pasta) { double(:pasta, name: "pasta", price: 10, to_s: "pasta") }
 
-
   it 'has no dishes by default' do
     expect(menu.dishes).to be_empty
   end
@@ -17,7 +16,7 @@ describe Menu do
 
   it 'displays dishes with prices' do
     menu = Menu.new([pizza, pasta])
-    expect{menu.view}.to output("~~~Menu~~~\npizza, £5\npasta, £10\n").to_stdout
+    expect { menu.view }.to output("~~~Menu~~~\npizza, £5\npasta, £10\n").to_stdout
   end
 
   describe '#add' do

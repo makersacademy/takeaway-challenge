@@ -1,18 +1,10 @@
 class Order
-  def initialize(dishes=[])
+  def initialize(dishes = [])
     @dishes = dishes
   end
 
   def dishes
     @dishes.dup
-  end
-
-  def add(*dishes)
-    dishes.uniq.each do |dish|
-      count = dishes.count(dish)
-      count.times { @dishes << dish }
-      puts "Added #{dish} x#{count}"
-    end
   end
 
   def view
@@ -22,17 +14,34 @@ class Order
     puts "Total = £#{total}"
   end
 
+  def add(*new_dishes)
+    new_dishes.uniq.each do |dish|
+      @count = new_dishes.count(dish)
+      add_each(dish)
+      puts message(dish)
+    end
+  end
+
   def total
     dishes.map(&:price).inject(&:+)
   end
 
   private
+
+  def add_each(dish)
+    @count.times { @dishes << dish }
+  end
+
+  def message(dish)
+    "Added #{dish} x#{@count}"
+  end
+
   def quantity(dish)
     dishes.count(dish)
   end
 
   def summary(dish)
-    "#{dish} x#{quantity(dish)} = £#{dish.price*quantity(dish)}"
+    "#{dish} x#{quantity(dish)} = £#{dish.price * quantity(dish)}"
   end
 
 end

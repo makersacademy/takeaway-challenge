@@ -1,7 +1,7 @@
 require 'dish'
 
 describe Dish do
-  let(:dish) { Dish.new(name: "pizza", price: 7) }
+  let(:dish) { Dish.new("pizza", 7) }
 
   it 'has a price > 0' do
     expect(dish.price).to be > 0
@@ -12,7 +12,7 @@ describe Dish do
   end
 
   it 'returns its name when printed' do
-    expect{print dish}.to output("pizza").to_stdout
+    expect { print dish }.to output("pizza").to_stdout
   end
 
 end

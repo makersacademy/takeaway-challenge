@@ -15,9 +15,9 @@ describe Order do
   end
 
   describe '#view' do
-    before { order.add(pizza, pizza, pasta) }
     it 'prints a summary of each unique dish in order with total' do
-      expect{order.view}.to output("pizza x2 = £10\npasta x1 = £10\nTotal = £20\n").to_stdout
+      order.add(pizza, pizza, pasta)
+      expect { order.view }.to output("pizza x2 = £10\npasta x1 = £10\nTotal = £20\n").to_stdout
     end
   end
 
@@ -35,8 +35,7 @@ describe Order do
       expect(order.dishes).to eq [pizza, pizza]
     end
     it 'prints a summary of what was added' do
-      expect{order.add(pizza, pizza)}.to output("Added pizza x2\n").to_stdout
-
+      expect { order.add(pizza, pizza) }.to output("Added pizza x2\n").to_stdout
     end
   end
 
@@ -47,7 +46,5 @@ describe Order do
       expect(order.total).to eq 15
     end
   end
-
-
 
 end

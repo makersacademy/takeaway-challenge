@@ -7,9 +7,23 @@ class Restaurant
   end
 
   def place(order, total)
+    check_total(order, total)
+    send_text(success_message(order))
+  end
+
+  private
+
+  def check_total(order, total)
     raise("Incorrect total.") unless total == order.total
-    message = "Your order totalling £#{order.total} was successfully placed at #{Time.now.strftime("%H:%M on %d/%m/%Y")}. It will be with you soon!"
-    send_text(message)
+  end
+
+  def hour_from_now
+    hour = 1 * 60 * 60
+    (Time.now + hour).strftime("%H:%M on %d/%m/%Y")
+  end
+
+  def success_message(order)
+    "Your order totalling £#{order.total} was successful, and will arrive at #{hour_from_now}."
   end
 
   def send_text(message)
