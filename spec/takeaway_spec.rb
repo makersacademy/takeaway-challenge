@@ -1,11 +1,11 @@
 require 'takeaway'
-require 'menu'
+require 'tokyo_menu'
 
 describe Takeaway do
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  subject(:takeaway) { described_class.new(Menu.new) }
+  subject(:takeaway) { described_class.new(TokyoMenu.new) }
 
   let(:valid_selection) { {
           dishes: [{nickname: :miso, quantity: 1}, {nickname: :tempura, quantity: 1}, {nickname: :rice, quantity: 1}],
@@ -39,6 +39,10 @@ describe Takeaway do
     it "should raise error when I order with an empty selection" do
       expect { takeaway.order(empty_selection) }.to raise_error "ERROR: It looks like something went wrong with your order request."
     end
+
+    it "should raise error when I order with an invalid selection" do
+      expect { takeaway.order(invalid_selection) }.to raise_error "ERROR: It looks like something went wrong with your selection."
+    end
   end
 
   describe "#check_total" do
@@ -52,7 +56,7 @@ describe Takeaway do
       expect(takeaway.check_total(invalid_selection)).to eq false
     end
     it "should raise an error when I check an empty selection" do
-      expect { takeaway.check_total(empty_selection) }.to raise_error
+      expect { takeaway.check_total(empty_selection) }.to raise_error "ERROR: It looks like something went wrong with your selection."
     end
   end
 

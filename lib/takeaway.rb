@@ -14,6 +14,10 @@ class Takeaway
 
   def order(selection)
     raise "ERROR: It looks like something went wrong with your order request." unless is_nil_selection(selection)
+
+    raise "ERROR: It looks like something went wrong with your selection." unless check_total(selection)
+
+    
   end
 
   def check_total(selection)

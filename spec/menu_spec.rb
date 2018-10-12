@@ -1,7 +1,7 @@
-require 'menu'
+require 'tokyo_menu'
 
-describe Menu do
-  subject(:menu) { described_class.new }
+describe TokyoMenu do
+  subject(:tokyo_menu) { described_class.new }
   describe "#menu" do
     it "returns an array of the menu items" do
       menu_array = [
@@ -13,7 +13,7 @@ describe Menu do
             { name: "White Rice", nickname: :rice, price: 1.00 },
             { name: "Green Tea", nickname: :tea, price: 1.00 },
           ]
-      expect(menu.menu).to eq menu_array
+      expect(tokyo_menu.menu).to eq menu_array
     end
   end
 end

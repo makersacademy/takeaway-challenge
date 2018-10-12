@@ -1,4 +1,4 @@
-class Menu
+class TokyoMenu
   def menu
     [
       { name: "Miso Soup", nickname: :miso, price: 1.50 },
