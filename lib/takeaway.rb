@@ -1,6 +1,7 @@
 class Takeaway
-  def initialize(menu)
+  def initialize(menu, client)
     @menu = menu
+    @client = client
     @menu_array = @menu.menu
     @current_selection = nil
   end
@@ -21,7 +22,6 @@ class Takeaway
     raise "ERROR: It looks like something went wrong with your selection." unless check_total(selection)
 
     confirm_order(selection)
-
   end
 
   def check_total(selection)

@@ -1,11 +1,12 @@
 require 'takeaway'
 require 'tokyo_menu'
+require 'twilio_client'
 
 describe Takeaway do
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  subject(:takeaway) { described_class.new(TokyoMenu.new) }
+  subject(:takeaway) { described_class.new(TokyoMenu.new, TwilioClient.new) }
 
   let(:valid_selection) { {
           dishes: [{ nickname: :miso, quantity: 1 }, { nickname: :tempura, quantity: 1 }, { nickname: :rice, quantity: 1 }],
@@ -71,6 +72,8 @@ describe Takeaway do
     # As a customer
     # So that I am reassured that my order will be delivered on time
     # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-
+    it "calls the twilio client send_sms method with the right arguments" do
+      #TO DO 
+    end
   end
 end
