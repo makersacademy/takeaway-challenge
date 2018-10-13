@@ -12,9 +12,7 @@ class Menu
   end
 
   def list_menu
-    items.each do |key, value|
-    puts "#{key} : £#{value}"
-  end
+    items.map{|key,value| "#{key} : £#{value}"}.join("\n")
   end
 
 end
