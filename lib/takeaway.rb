@@ -1,5 +1,5 @@
 class Takeaway
-  def initialize(menu_class, text_class, basket_class)
+  def initialize(menu_class, basket_class, text_class)
     @menu = menu_class.new
     @basket_class = basket_class
     @basket = nil

@@ -28,7 +28,7 @@ describe ChineseMenu do
 
   describe "#list_dishes" do
     it 'should list a title + the available dishes with their name and price' do
-      expect(subject.list_dishes).to eq list
+      expect { subject.list_dishes }.to output(list).to_stdout
     end
   end
 

@@ -13,7 +13,7 @@ class PizzeriaMenu
   end
 
   def list_dishes
-    @title + formatted_list.join
+    puts @title + formatted_list.join
   end
 
   def dishes
@@ -30,3 +30,5 @@ class PizzeriaMenu
     end
   end
 end
+
+PizzeriaMenu.new.list_dishes

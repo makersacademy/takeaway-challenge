@@ -17,7 +17,7 @@ describe Takeaway do
   let(:text_class) { double(:text_class, new: text) }
   let(:basket) { double(:basket, items: []) }
   let(:basket_class) { double(:basket_class, new: basket) }
-  let(:subject) { Takeaway.new(menu_class, text_class, basket_class) }
+  let(:subject) { Takeaway.new(menu_class, basket_class, text_class) }
 
   describe "#list_dishes" do
     it 'should be able to list dishes from a menu' do

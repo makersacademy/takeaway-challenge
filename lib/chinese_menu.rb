@@ -13,7 +13,7 @@ class ChineseMenu
   end
 
   def list_dishes
-    @title + formatted_list.join
+    puts @title + formatted_list.join
   end
 
   def dishes
