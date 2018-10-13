@@ -21,6 +21,10 @@ describe Menu do
     it 'raises error message if menu is empty' do
       expect{ subject.list }.to raise_error 'This menu is empty'
     end
+
+    it 'lists menu items' do
+      expect(mockMenu.list).to eq [kungpaochicken, beeflomein, friedrice]
+    end
   end
 
 end
