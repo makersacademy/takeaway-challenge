@@ -19,7 +19,8 @@ Friday challenge - Week 2 of the Makers Academy Apprenticeship course
 
  - [Task](#task)
   * [My approach](#my-approach)
-  * [Instructions](#instructions)
+  * [Instructions and assumptions](#instructions-and-assumptions)
+    + [Assumptions](#assumptions)
     + [Before you start](#before-you-start)
     + [Running in terminal/Ruby file](#running-in-terminal-ruby-file)
     + [Running in IRB](#running-in-irb)
@@ -61,7 +62,12 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
   TBA
 
-  ### Instructions
+  ### Instructions and assumptions
+
+  #### Assumptions
+
+  * You are online when running - the Twilio integration and my approach to testing the API over rspec requires it.  
+
 
   #### Before you start
 
