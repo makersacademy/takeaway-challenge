@@ -6,11 +6,13 @@ require 'confirmation'
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
 describe Menu do
-  let(:menu) { Menu.new }
+  let(:menu) { Menu.new(items) }
   let(:items) { [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }] }
 
-  it 'should show me a list of dishes with prices' do
-    expect(menu.show(items)).to eq items
+  describe '#initialize' do
+    it 'should show a list of dishes with prices' do
+      expect(menu.items).to eq items
+    end
   end
 end
 
@@ -18,8 +20,9 @@ end
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
 describe Order do
-  let(:order) { Order.new(menu.show) }
-  let(:menu) { double(:menu, show: [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }]) }
+  let(:order) { Order.new(menu.new) }
+  let(:items) { ([{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }]) }
+  let(:menu) { double(:menu, new: items) }
 
   describe '#choose' do
     it 'lets me choose the item that I want' do

@@ -1,6 +1,8 @@
 class Menu
 
-  def show(items)
-    items
+attr_reader :items
+
+  def initialize(items)
+    @items = items
   end
 end

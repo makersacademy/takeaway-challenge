@@ -1,8 +1,10 @@
 require 'order'
 
 describe Order do
-  let(:order) { Order.new(menu.show) }
-  let(:menu) { double(:menu, show: [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }]) }
+  let(:items) { ([{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }]) }
+  let(:menu) { double(:menu, new: items) }
+  let(:order) { Order.new(menu.new) }
+
 
   describe '#choose' do
     it 'lets me choose the item that I want' do

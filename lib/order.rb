@@ -1,7 +1,7 @@
 class Order
 
-  def initialize(menu)
-    @menu = menu
+  def initialize(menu_items)
+    @menu = menu_items
     @items = []
     @total = 0
   end
