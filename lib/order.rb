@@ -1,6 +1,13 @@
 class Order
 
-  def select_dish(dish)
+  attr_reader :basket
+
+  def initialize
+    @basket = Hash.new(0)
+  end
+
+  def add_dish(dish, quantity = 1)
+    @basket[dish] += quantity
   end
 
 end

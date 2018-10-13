@@ -18,6 +18,7 @@ describe Menu do
   end
 
   it 'adds dish to order and returns the added dish' do
-    expect(subject.select_dish("pizza")).to eq "pizza"
+    expect(subject.select_dish("pizza")).to eq "Added 1 pizza to your order"
   end
+
 end
