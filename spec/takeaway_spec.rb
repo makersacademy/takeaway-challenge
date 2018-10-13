@@ -3,10 +3,11 @@ require 'tokyo_menu'
 require 'twilio_client'
 
 describe Takeaway do
+  let (:client) { double :client }
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  subject(:takeaway) { described_class.new(TokyoMenu.new, TwilioClient.new) }
+  subject(:takeaway) { described_class.new(TokyoMenu.new, TwilioClient.new("+44 115 824 3978", "+44 7950 290690")) }
 
   let(:valid_selection) { {
           dishes: [{ nickname: :miso, quantity: 1 }, { nickname: :tempura, quantity: 1 }, { nickname: :rice, quantity: 1 }],
@@ -34,6 +35,7 @@ describe Takeaway do
     # So that I can order the meal I want
     # I would like to be able to select some number of several available dishes
     it "should not raise error when I order correctly" do
+      allow(client).to receive(:send_sms).and_return({ body: "Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 18:52", error_code: 0 })
       expect { takeaway.order(valid_selection) }.to_not raise_error
     end
 
@@ -63,6 +65,7 @@ describe Takeaway do
 
   describe "#confirm_order" do
     it "gives the takeaway the order" do
+      allow(client).to receive(:send_sms).and_return({ body: "Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 18:52", error_code: 0 })
       takeaway.order(valid_selection)
       expect(takeaway.current_selection).to_not be_nil
     end
@@ -73,7 +76,8 @@ describe Takeaway do
     # So that I am reassured that my order will be delivered on time
     # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
     it "calls the twilio client send_sms method with the right arguments" do
-      #TO DO 
+      allow(client).to receive(:send_sms).and_return({ body: "Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 18:52", error_code: 0 })
+      takeaway.order(valid_selection)
     end
   end
 end

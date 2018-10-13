@@ -39,6 +39,9 @@ class Takeaway
 
   def confirm_order(selection)
     @current_selection = selection
+    time = Time.new + 3600
+    delivery_time = time.to_s.slice(11..15)
+    @client.prepare_sms(delivery_time)
   end
 
   private
