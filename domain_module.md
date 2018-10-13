@@ -18,3 +18,13 @@ customer | verify_order
 customer | total_balance
 order | printed list + total
 order | total
+
+Class | Duty
+--------------
+customer | place_order
+Takeaway | receive_order
+Takeaway | send_order
+Takeaway | init message(send_order)
+
+place_order--> Takeaway.receive_order
+receive_order ---> init message <--- send_order
