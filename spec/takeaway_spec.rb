@@ -44,7 +44,6 @@ describe Takeaway do
       allow(new_order).to receive(:submitted).and_return(true)
       expect { subject.submit_order }.to raise_error "Order already sent"
     end
-
   end
 
 end
