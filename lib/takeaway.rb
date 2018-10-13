@@ -1,7 +1,8 @@
 class Takeaway
   def initialize(menu_class, text_class, basket_class)
     @menu = menu_class.new
-    @basket = basket_class.new
+    @basket_class = basket_class
+    @basket = nil
     @text = text_class
   end
 
@@ -10,12 +11,12 @@ class Takeaway
   end
 
   def add_dish(name, quantity)
-    @basket.add_dish(name, quantity)
+    basket.add_dish(name, quantity)
     "#{name} x #{quantity} added to the basket."
   end
 
   def place_order(total)
-    raise "Incorrect total given!" if total != @basket.total
+    raise "Incorrect total given!" if total != basket.total
     send_text
     "Order placed! Look out for a confirmation text."
   end
@@ -24,5 +25,9 @@ class Takeaway
 
   def send_text
     @text.new.send
+  end
+
+  def basket
+    @basket ||= @basket_class.new(@menu)
   end
 end
