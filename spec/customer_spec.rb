@@ -2,6 +2,7 @@ require 'customer'
 require 'menu'
 require 'dish'
 require 'order'
+require 'pry'
 
 describe Customer do
 
@@ -35,7 +36,7 @@ describe Customer do
       dish = Dish.new("Cabage", 5)
       list.add_dish(dish)
       subject.select_dish(list, "Cabage", 2)
-      expect(subject.verify_order).to eq "Cabage x2 $10"
+      expect(subject.verify_order).to eq ["Cabage x2 $10"]
     end
   end
 end

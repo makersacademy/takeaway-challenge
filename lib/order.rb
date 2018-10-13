@@ -3,26 +3,27 @@ require_relative 'dish'
 
 class Order
 
-  attr_reader :order
+  attr_accessor :order, :list, :con
 
   def initialize
     @order = []
     @list  = []
-    @print_list = []
+    @con_list = []
   end
 
   def print_list
     @order.each do |dish|
       @list << dish if @list.include?(dish) == false
-      dish.up_quantity if @list.include?(dish)
+      dish.up_quantity if @list.include?(dish) && dish.is_a?(Dish)
     end
     @list.each do |dish|
-      @print_list << "#{dish.name} x#{dish.quantity} $#{dish.quantity * dish.price}"
+      @con_list << "#{dish.name} x#{dish.quantity} $#{dish.quantity * dish.price}" if dish.is_a?(Dish)
     end
-    @print_list
+    @con_list
   end
 
   def added?
     @order.empty? ? false : true
   end
+
 end

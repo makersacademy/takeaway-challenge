@@ -5,6 +5,7 @@ class Menu
 
   def initialize
     @list = []
+    @loaded_dish = nil
   end
 
   def add_dish(dish)
@@ -19,7 +20,8 @@ class Menu
 
   def find_dish(dish)
     @list.each do |name|
-      name if name.name == dish
+      @loaded_dish = name if name.name == dish
     end
+    @loaded_dish
   end
 end

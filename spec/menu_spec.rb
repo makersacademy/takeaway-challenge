@@ -21,7 +21,7 @@ describe Menu do
     it 'should find a dish and return it' do
       dish = Dish.new("Salmon", 18)
       subject.add_dish(dish)
-      expect(subject.find_dish("Salmon")).to eq [dish]
+      expect(subject.find_dish("Salmon")).to eq dish
     end
   end
 end

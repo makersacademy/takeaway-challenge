@@ -2,6 +2,7 @@ require_relative 'menu'
 require_relative 'order'
 
 
+
 class Customer
 
   attr_reader :order
@@ -16,7 +17,7 @@ class Customer
 
   def select_dish(menu, dish, num)
     num.times do |x|
-        @order.order << menu.find_dish(dish) 
+        @order.order << menu.find_dish(dish)
     end
     "#{num} #{dish} added" if @order.added?
   end
