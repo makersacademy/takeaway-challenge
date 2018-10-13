@@ -1,5 +1,6 @@
 Takeaway Challenge
 ==================
+This program allows users to view items from a menu and place orders.
 ```
                             _________
               r==           |       |
@@ -13,12 +14,6 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-
-# Takeaway Challenge
-
-This program allows users to view items from a menu and place orders.
-
 ## Motivations for this project
 
 * Week 2 Makers Academy weekend challenge
