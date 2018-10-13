@@ -10,4 +10,8 @@ describe Menu do
     expect(subject.list_menu).to eq("Steak : £15.0\nLasanga : £8.0\nLinguine : £9.0\nPizza : £7.0\nSalmon : £14.0")
   end
 
+  it 'prints out price of an item' do
+    expect(subject.get_price("Steak")).to eq(15.00)
+  end
+
 end

@@ -3,7 +3,7 @@ class Menu
   attr_reader :items
 
   def initialize
-    @items = { "Steak" =>  15.00,
+    @items = { "Steak" => 15.00,
       "Lasanga" => 8.00,
       "Linguine" => 9.00,
       "Pizza" => 7.00,
@@ -13,6 +13,10 @@ class Menu
 
   def list_menu
     items.map { |key, value| "#{key} : £#{value}" }.join("\n")
+  end
+
+  def get_price(item)
+    items[item]
   end
 
 end
