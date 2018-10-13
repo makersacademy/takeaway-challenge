@@ -3,7 +3,8 @@ require 'order'
 
 describe Takeaway do
 
-  let(:new_order) { instance_double(Order) }
+  # let(:new_order) { instance_double(Order) }
+  let(:new_order) {double :order, :submitted => false}
   subject { described_class.new(new_order) }
 
   describe 'Menu' do
@@ -29,4 +30,23 @@ describe Takeaway do
           expect {subject.print_basket}.to output("Your basket:\n2 x Small Chips\nOrder total: £4.00\n").to_stdout
         end
       end
+    describe "Submit" do
+      before do
+        # allow(new_order).to receive(:submitted).and_return(true)
+      end
+
+      it "should not submit empty basket" do
+        allow(new_order).to receive(:order_items).and_return([])
+        # subject.submit_order
+        expect {subject.submit_order}.to raise_error "Basket empty"
+      end
+
+      it "should not submit an order twice" do
+        allow(new_order).to receive(:order_items).and_return(["a"])
+        allow(new_order).to receive(:submitted).and_return(true)
+        # subject.submit_order
+        expect {subject.submit_order}.to raise_error "Order already sent"
+      end
+    end
+
 end

@@ -33,14 +33,18 @@ class Takeaway
   end
 
   def submit_order
+    raise "Basket empty" if @new_order.order_items.empty?
+    raise "Order already sent" if @new_order.submitted
+    send_message
     # submit_confirm = Messaging.new
-    # submit_confirm.send_message("WOOHOO!!!!")
+    # submit_confirm.send_message
     @new_order.submitted = true
   end
 
-  def submitted?
-    @new_order.submitted
-  end
+   def send_message(new_message = Messaging.new)
+     new_message.send
+     # @new_order.submitted
+   end
 
   private
 
