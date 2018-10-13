@@ -10,21 +10,30 @@ class Order
 
   def initialize
     @order_items = []
+    @order_prices = []
     @submitted = false
   end
 
-  def select_dish(dish, quantity = 1)
+  def add_dish(dish, quantity = 1)
+    # raise "Please select a valid item" unless 
     @order_items << { :dish => dish, :quantity => quantity }
   end
 
+  def basket
+    print "Your basket:\n"
+    print @order_items.map { |b| "#{b[:quantity]} x #{b[:dish]}" }.join("\n")
+    print "\nOrder total: £#{total}"
+  end
+
   def total
-    order_prices = []
     @order_items.select do |order_dish|
-      @@dishes.each do |d|
-        order_prices << d[order_dish[:dish]] * order_dish[:quantity] unless d[order_dish[:dish]].nil?
-      end
+      @order_prices << item_price(order_dish[:dish]) * order_dish[:quantity]
     end
-    order_prices.sum
+    @order_prices.reduce(:+)
+  end
+
+  def item_price(dish)
+    @@dishes.each { |d| return d[dish] unless d[dish].nil? }
   end
 
   def submit
