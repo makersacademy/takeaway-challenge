@@ -22,6 +22,7 @@ class Takeaway
 
   def add_to_order(dish, quantity)
     @order.add(dish, quantity)
+    "Added to your order"
   end
 
   def current_order
