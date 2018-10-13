@@ -7,32 +7,26 @@ class Basket
   end
 
   def add_dish(name, quantity)
-    @items << { name: find_name(name.downcase),
-                 quantity: quantity,
-                 cost: find_cost(name.downcase, quantity)
+    @items << { name: find_name(name),
+                quantity: quantity,
+                cost: find_cost(name, quantity)
     }
+  end
+
+  def total
+    @items.map { |item| item[:cost] }.sum
   end
 
   private
 
   def find_name(name)
-    @menu.dishes.each do |dish|
-      dish.each do |dish_name, _price|
-        return dish_name if dish_name.downcase == name
-      end
-    end
+    @menu.dishes.each { |dish| return name if dish.has_key?(name) }
     raise "Cannot find the specified dish!"
   end
 
   def find_cost(name, quantity)
     @menu.dishes.each do |dish|
-      dish.each do |dish_name, price|
-        return price * quantity.to_f if dish_name.downcase == name
-      end
+      return dish.values.first * quantity.to_f if dish.has_key?(name)
     end
-  end
-
-  def total
-    @items.map { |item| item[:cost] }.sum
   end
 end

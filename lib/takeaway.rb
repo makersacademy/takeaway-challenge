@@ -1,6 +1,4 @@
 class Takeaway
-  attr_reader :basket
-
   def initialize(menu_class, text_class, basket_class)
     @menu = menu_class.new
     @basket = basket_class.new
