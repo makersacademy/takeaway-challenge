@@ -7,7 +7,7 @@ describe Messaging do
       expect(subject.client).to be_an_instance_of(Twilio::REST::Client)
     end
 
-    it "can send a message" do
+    it "can send a message - receive the correct error message" do
       body = "message text"
       from = "000"
       to = "000"
