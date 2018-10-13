@@ -88,7 +88,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   ```
   ruby ./lib/takeaway_order.rb
   ```
-  This will give you an interface to place your order and select items
+  This will give you an interface to view menu, select items and place your order
 
   #### Running in IRB
 
