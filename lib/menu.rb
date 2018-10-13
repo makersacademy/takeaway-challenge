@@ -7,6 +7,6 @@ class Menu
 
   def list
     raise 'This menu is empty' if @dishes.empty?
-    @dishes.each { |dish| puts "#{dish.dish} :  #{dish.price}" }
+    @dishes.each { |dish| puts "#{dish.dish_name} :  #{dish.price}" }
   end
 end

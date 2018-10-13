@@ -5,7 +5,7 @@ describe Dish do
 
   describe '#initialize' do
     it 'defaults dishes with a name' do
-      expect(subject.dish).to eq 'Kung Pao Chicken'
+      expect(subject.dish_name).to eq 'Kung Pao Chicken'
     end
     it 'defaults dishes with a price' do
       expect(subject.price).to eq 10

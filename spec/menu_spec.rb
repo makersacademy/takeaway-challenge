@@ -2,9 +2,9 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { Menu.new }
-  let(:kungpaochicken) { instance_double Dish, dish: 'Kung Pao Chicken', price: 10 }
-  let(:beeflomein) { instance_double Dish, dish: 'Beef Lo Mein', price: 12 }
-  let(:friedrice) { instance_double Dish, dish: 'Fried Rice', price: 7 }
+  let(:kungpaochicken) { instance_double Dish, dish_name: 'Kung Pao Chicken', price: 10 }
+  let(:beeflomein) { instance_double Dish, dish_name: 'Beef Lo Mein', price: 12 }
+  let(:friedrice) { instance_double Dish, dish_name: 'Fried Rice', price: 7 }
   let(:mockMenu) { described_class.new([kungpaochicken, beeflomein, friedrice]) }
 
   describe '#initialize' do

@@ -1,10 +1,10 @@
 require_relative 'menu'
 
 class Dish
-  attr_reader :dish, :price
+  attr_reader :dish_name, :price
 
-  def initialize(dish, price)
-    @dish = dish
+  def initialize(dish_name, price)
+    @dish_name = dish_name
     @price = price
   end
 
