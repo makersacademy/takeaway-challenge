@@ -11,8 +11,9 @@ class Order
     @items << item
   end
 
-  def confirm_order
+  def confirm_order(notification)
     total
+    notification.send_message
     "You have ordered: #{@items.join(" and ")}. Total due: £#{@total}"
   end
 
