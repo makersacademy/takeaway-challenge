@@ -13,7 +13,23 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
+Example Usage
+-------
+```
+$ irb
+> require "./lib/takeaway"
+=> true
+> nandos = Takeaway.new
+=> #<Takeaway:0x00007f8a75096300>
+> nandos.menu
+=> "Quarter Chicken: £4\nHalf Chicken: £8\nWhole Chicken: £13\nChicken Wing: £1"
+> nandos.add_to_order("Half Chicken", 2)
+=> "Added to your order"
+> nandos.current_order
+=> "Your current order:\n2 x Half Chicken"
+> nandos.place_order(16)
+=> "Order placed. You will receive a confirmation text message shortly"
+```
 Instructions
 -------
 
