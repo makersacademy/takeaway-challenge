@@ -3,13 +3,15 @@
 
 class Order
 
+  DEFAULT_TOTAL = 0 # Base cost of order
+
   attr_accessor :order, :soter
 
   def initialize
     @order = []   # Initial array to recieve dishes
     @soter  = []  # Holds refinned array of dishes and quantities
     @basket = []  # Holds the string statements for checking
-    @total = 0    # Base cost of the order
+    @total = DEFAULT_TOTAL    # Base cost of the order
   end
 
   def print_list
