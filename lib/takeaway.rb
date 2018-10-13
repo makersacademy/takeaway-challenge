@@ -1,5 +1,5 @@
-require 'menu'
-require 'order'
+# require 'menu'
+# require 'order'
 
 class Takeaway
 
