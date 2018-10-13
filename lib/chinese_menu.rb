@@ -10,11 +10,10 @@ class ChineseMenu
               { "Gold Peking Duck" => 1500 }
     ]
     @title = "* * * STREET * CHINESE * * *\n"
-    @footer = "* * * * * * * * * * * * * * *\n"
   end
 
   def list_dishes
-    @title + formatted_list.join + @footer
+    @title + formatted_list.join
   end
 
   def dishes

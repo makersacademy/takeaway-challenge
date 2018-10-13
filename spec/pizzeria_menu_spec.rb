@@ -11,7 +11,6 @@ describe PizzeriaMenu do
               6) Quattro Formaggio: £10.00
               7) Truffle: £12.50
               8) Gold Pizza: £1200.00
-              * * * * * * * * * * * * * * *
               HEREDOC
   }
 

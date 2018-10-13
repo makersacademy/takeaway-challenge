@@ -10,11 +10,10 @@ class PizzeriaMenu
               { "Gold Pizza" => 1200 }
     ]
     @title = "* * * PAPA'S * PIZZERIA * * *\n"
-    @footer = "* * * * * * * * * * * * * * *\n"
   end
 
   def list_dishes
-    @title + formatted_list.join + @footer
+    @title + formatted_list.join
   end
 
   def dishes

@@ -43,5 +43,4 @@ describe Basket do
       expect(subject.total).to eq 12_125
     end
   end
-
 end
