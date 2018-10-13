@@ -25,14 +25,14 @@ class Order
 
   def total
     @order_items.select do |order_dish|
-      @order_prices << find_item_price(order_dish[:dish]) * order_dish[:quantity]
+      @order_prices << item_price(order_dish[:dish]) * order_dish[:quantity]
     end
     ('%.2f' % @order_prices.reduce(:+)) # .to_f
   end
 
 private
 
-  def find_item_price(dish)
+  def item_price(dish)
     DISHES.each { |d| return d[dish] unless d[dish].nil? }
   end
 

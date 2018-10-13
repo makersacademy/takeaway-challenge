@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 
 TWILIO = {
-  account_sid: ENV['TWILIO_ACCOUNT_SID'],
+  acct_sid: ENV['TWILIO_ACCOUNT_SID'],
   auth_token: ENV['TWILIO_AUTH_TOKEN'],
   from: ENV['TWILIO_FROM_NUMBER'],
   to: ENV['TWILIO_TO_NUMBER']
@@ -9,7 +9,7 @@ TWILIO = {
 
 class Messaging
   def initialize
-    @client = Twilio::REST::Client.new(TWILIO[:account_sid], TWILIO[:auth_token])
+    @client = Twilio::REST::Client.new(TWILIO[:acct_sid], TWILIO[:auth_token])
     @checkout_confirm = "Thank you! Your order was placed and "\
     "will be delivered before #{delivery_time.strftime('%H:%M')}"
   end

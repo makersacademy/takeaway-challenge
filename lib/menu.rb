@@ -24,8 +24,8 @@ module Menu
     DISHES.each_with_index.map { |_, i| format_dish_by_index(i) }.join("\n")
   end
 
-  def print_menu
-    format_menu_items
-  end
+  # def print_menu
+  #   format_menu_items
+  # end
 
 end
