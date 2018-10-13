@@ -9,8 +9,13 @@ describe Takeaway do
 
   describe "#add_to_order" do
     it "should add the dish and quantity to the current order" do
-      subject.add_to_order("Half Chicken", 2)
+      subject.add_to_order(["Half Chicken"], [2])
       expect(subject.current_order).to eq "Your current order:\n2 x Half Chicken"
+    end
+
+    it "should add several dishes to the current order" do
+      subject.add_to_order(["Half Chicken", "Chicken Wing"], [2, 5])
+      expect(subject.current_order).to eq "Your current order:\n2 x Half Chicken\n5 x Chicken Wing"
     end
   end
 end

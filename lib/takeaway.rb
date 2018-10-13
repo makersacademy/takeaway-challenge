@@ -14,11 +14,12 @@ class Takeaway
     MENU.map { |dish, price| "#{dish}: £#{price}" }.join("\n")
   end
 
-  def add_to_order(dish, quantity)
-    @order[dish] = quantity
+  def add_to_order(dishes, quantities)
+    dishes.each { |dish| @order[dish] = quantities[dishes.index(dish)] }
   end
 
   def current_order
-    "Your current order:\n" + @order.map { |dish, quantity| "#{quantity} x #{dish}"}.join("\n")
+    "Your current order:\n" +
+    @order.map { |dish, quantity| "#{quantity} x #{dish}" }.join("\n")
   end
 end
