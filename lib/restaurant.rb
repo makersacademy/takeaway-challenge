@@ -15,7 +15,7 @@ class Restaurant
   end
 
   def read_menu
-
+    @menu.view
   end
 
   def check_bill

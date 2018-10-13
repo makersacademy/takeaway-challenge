@@ -1,4 +1,4 @@
-class FoodItem
+class Item
 
   attr_reader :name, :price
 

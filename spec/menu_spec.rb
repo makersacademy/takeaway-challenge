@@ -12,7 +12,7 @@ describe Menu do
       expect(menu.items).to include coke
     end
     it "lists the food items with price" do
-      expect(menu.list_items).to eq ["Burger - £6", "Coke - £2"]
+      expect(menu.view).to eq ["Burger - £6", "Coke - £2"]
     end
   end
 end

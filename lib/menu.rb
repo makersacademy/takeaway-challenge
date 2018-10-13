@@ -6,7 +6,7 @@ class Menu
     @items += foods
   end
 
-  def list_items
+  def view
     @items.map { |i| "#{i.name} - £#{i.price}" }
   end
 

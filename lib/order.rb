@@ -6,8 +6,8 @@ class Order
     @current_order = []
   end
 
-  def add(*foods)
-    @current_order += foods
+  def add(item, quantity)
+    quantity.times {@current_order << item}
   end
 
   def view
