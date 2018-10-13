@@ -1,5 +1,4 @@
 require 'messaging'
-# require 'twilio-ruby'
 
 describe Messaging do
   describe "Twilio integration" do
@@ -15,12 +14,5 @@ describe Messaging do
       expect { subject.send(body, from, to) }.to raise_error(/HTTP 400] 21212/)
       expect { subject.send(body, from, to) }.to raise_error(/The 'From' number 000 is not a valid phone number/)
     end
-
-    # describe 'send message' do
-    #   it 'sends message with no error' do
-    #     # expect { subject.send }.not_to raise_error
-    #   end
-    # end
   end
-
 end
