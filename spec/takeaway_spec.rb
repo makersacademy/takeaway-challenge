@@ -14,7 +14,9 @@ describe Takeaway do
   let(:menu_class) { double(:menu_class, new: menu) }
   let(:text) { double(:text, send: nil) }
   let(:text_class) { double(:text_class, new: text) }
-  let(:subject) { Takeaway.new(menu_class, text_class) }
+  let(:basket) { double(:basket, items: []) }
+  let(:basket_class) { double(:basket_class, new: basket) }
+  let(:subject) { Takeaway.new(menu_class, text_class, basket_class) }
 
   describe "#list_dishes" do
     it 'should be able to list dishes from a menu' do
@@ -24,29 +26,14 @@ describe Takeaway do
   end
 
   describe "#add_dish" do
-    it 'should add a specified item to the basket' do
-      basket = [{ name: "Margherita", quantity: 1, cost: 7.5 }]
-      subject.add_dish("Margherita", 1)
-      expect(subject.basket).to eq basket
-    end
-
-    it 'should be able to add multiple quantities of an item' do
-      basket = [{ name: "Quattro Formaggi", quantity: 5, cost: 50.0}]
-      subject.add_dish("Quattro Formaggi", 5)
-      expect(subject.basket).to eq basket
-    end
-
-    it 'should raise error if the specified dish is not on the menu' do
-      message = "Cannot find the specified dish!"
-      expect { subject.add_dish("Snail pizza", 120) }.to raise_error message
+    it 'should add dish to the basket' do
+      expect(basket).to receive(:add_dish).with("Margherita", 2)
+      subject.add_dish("Margherita", 2)
     end
   end
 
   describe "#place_order" do
-    before do
-      subject.add_dish("Margherita", 1)
-      subject.add_dish("Pepperoni", 3)
-    end
+    before { allow(basket).to receive(:total).and_return(33) }
 
     it 'should raise error if the given total is incorrect' do
       message = "Incorrect total given!"
