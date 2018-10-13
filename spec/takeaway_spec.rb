@@ -1,14 +1,15 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:menu) { double(:menu, dishes: [{ "Margherita" => 7.5 },
-                                      { "Bufala" => 8 },
-                                      { "Anchovy" => 8 },
-                                      { "Pepperoni" => 8.5 },
-                                      { "Calabria" => 8.5 },
-                                      { "Quattro Formaggi" => 10 },
-                                      { "Truffle" => 12.5 },
-                                      { "Gold Pizza" => 1200 }
+  let(:menu) { double(:menu, dishes: [
+    { "Margherita" => 7.5 },
+    { "Bufala" => 8 },
+    { "Anchovy" => 8 },
+    { "Pepperoni" => 8.5 },
+    { "Calabria" => 8.5 },
+    { "Quattro Formaggi" => 10 },
+    { "Truffle" => 12.5 },
+    { "Gold Pizza" => 1200 }
   ])
   }
   let(:menu_class) { double(:menu_class, new: menu) }
