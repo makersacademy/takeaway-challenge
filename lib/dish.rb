@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class Dish
   attr_reader :dish, :price
 
