@@ -19,27 +19,19 @@ class Order
     @order_items << { :dish => dish, :quantity => quantity }
   end
 
-  def basket_printer
-    print "Your basket:\n"
-    print @order_items.map { |b| "#{b[:quantity]} x #{b[:dish]}" }.join("\n")
-    print "\nOrder total: £#{total}"
+  def basket_items
+    @order_items.map { |b| "#{b[:quantity]} x #{b[:dish]}" }.join("\n")
   end
 
   def total
     @order_items.select do |order_dish|
       @order_prices << find_item_price(order_dish[:dish]) * order_dish[:quantity]
     end
-    @order_prices.reduce(:+)
+    ('%.2f' % @order_prices.reduce(:+)).to_f
   end
 
   def find_item_price(dish)
     DISHES.each { |d| return d[dish] unless d[dish].nil? }
-  end
-
-  def submit_order
-    submit_confirm = Messaging.new
-    submit_confirm.send_message("WOOHOO!!!!")
-    @submitted = true
   end
 
 end
