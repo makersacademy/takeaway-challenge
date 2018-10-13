@@ -1,10 +1,13 @@
 class Menu
+  attr_reader :items
 
-  def list_food
-    ["Burger", "Double Cheeseburger"]
+  def initialize(*foods)
+    @items = []
+    @items += foods
   end
 
-  def list_drinks
-    ["Coke", "Sprite"]
+  def list_items
+    @items.map { |i| "#{i.name} - £#{i.price}" }
   end
+
 end
