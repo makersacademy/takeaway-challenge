@@ -1,6 +1,8 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+require 'twilio-ruby'
+require 'webmock/rspec'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,

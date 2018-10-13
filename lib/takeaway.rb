@@ -11,6 +11,7 @@ class Takeaway
 
   def add_dish(name, quantity)
     @basket.add_dish(name, quantity)
+    "#{name} x #{quantity} added to the basket."
   end
 
   def place_order(total)

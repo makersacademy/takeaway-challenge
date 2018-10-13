@@ -20,14 +20,14 @@ class Basket
   private
 
   def find_name(name)
-    @menu.dishes.each { |dish| return name if dish.has_key?(name) }
+    @menu.dishes.each { |dish| return name if dish.key?(name) }
     raise "Cannot find the specified dish!"
   end
 
   def find_cost(name, quantity)
     @menu.dishes.each do |dish|
       dish.each do |_name, price|
-        return price.to_f * quantity if dish.has_key?(name)
+        return price.to_f * quantity if dish.key?(name)
       end
     end
   end

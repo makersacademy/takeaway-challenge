@@ -30,6 +30,12 @@ describe Takeaway do
       expect(basket).to receive(:add_dish).with("Margherita", 2)
       subject.add_dish("Margherita", 2)
     end
+
+    it 'should display a confirmation message when an item is added' do
+      message = "Gold Pizza x 2 added to the basket."
+      allow(basket).to receive(:add_dish).with("Gold Pizza", 2)
+      expect(subject.add_dish("Gold Pizza", 2)).to eq message
+    end
   end
 
   describe "#place_order" do

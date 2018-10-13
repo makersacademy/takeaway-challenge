@@ -24,8 +24,9 @@ class PizzeriaMenu
 
   def formatted_list
     @dishes.map.with_index do |dish, index|
-      "#{index + 1}) #{dish.keys.first}: " \
-      "£#{sprintf('%.2f', dish.values.first)}\n"
+      dish.map do |name, price|
+        "#{index + 1}) #{name}: £#{sprintf('%.2f', price)}\n"
+      end
     end
   end
 end
