@@ -69,4 +69,10 @@ describe Customer do
       expect(subject.total_balance).to eq 56
     end
   end
+
+  describe '#place_order' do
+    it 'should eq something' do
+      expect(subject.place_order).to_not eq nil
+    end
+  end
 end

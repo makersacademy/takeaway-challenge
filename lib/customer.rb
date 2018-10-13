@@ -2,8 +2,9 @@ class Customer
 
   attr_reader :order
 
-  def initialize
+  def initialize(text = SmsText.new)
     @order = Order.new
+    @sms = text
   end
 
   def check_menu(menu)
@@ -24,4 +25,9 @@ class Customer
   def total_balance
     @order.total
   end
+
+  def place_order
+    @sms.send_text
+  end
+
 end
