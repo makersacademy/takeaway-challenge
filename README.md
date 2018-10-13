@@ -134,7 +134,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   ### Test results
 
   ```
-  97.86% COVERAGE
+  97.84% COVERAGE
   ```
 
   ```
