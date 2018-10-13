@@ -1,10 +1,9 @@
 require 'order'
 
 describe Order do
-  let(:items) { ([{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }]) }
+  let(:items) { [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }] }
   let(:menu) { double(:menu, new: items) }
   let(:order) { Order.new(menu.new) }
-
 
   describe '#choose' do
     it 'lets me choose the item that I want' do
@@ -30,6 +29,11 @@ describe Order do
     it 'shows the item you have ordered, and the total cost' do
       order.choose("Roasted Vegetable")
       expect(order.confirm_order).to eq "You have ordered: Roasted Vegetable. Total due: £9"
+    end
+    it 'receives the send_message method' do
+      order.choose("Roasted Vegetable")
+      order.confirm_order
+      expect(order).to receive(:send_message)
     end
   end
 end

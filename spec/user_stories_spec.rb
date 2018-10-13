@@ -1,6 +1,6 @@
 require 'menu'
 require 'order'
-require 'confirmation'
+require 'send_sms'
 
 # As a customer
 # So that I can check if I want to order something
@@ -21,7 +21,7 @@ end
 # I would like to be able to select some number of several available dishes
 describe Order do
   let(:order) { Order.new(menu.new) }
-  let(:items) { ([{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }]) }
+  let(:items) { [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }] }
   let(:menu) { double(:menu, new: items) }
 
   describe '#choose' do
@@ -52,6 +52,11 @@ describe Order do
       order.choose("Roasted Vegetable")
       expect(order.confirm_order).to eq "You have ordered: Roasted Vegetable. Total due: £9"
     end
+    it 'receives the send_message method' do
+      order.choose("Roasted Vegetable")
+      order.confirm_order
+      expect(order).to receive(:send_message)
+    end
   end
 end
 
@@ -59,19 +64,13 @@ end
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-describe Confirmation do
-  let(:confirmation) { Confirmation.new }
+describe SendSMS do
+  let(:confirmation) { SendSMS.new }
 
   describe '#time' do
     it 'tells me the time that my order was placed' do
       time = Time.new + 3600
       expect(confirmation.time). to eq time.strftime("%k:%M")
-    end
-  end
-
-  describe '#send_message' do
-    it 'calls the send_message method on my confirmation object' do
-      expect(confirmation).to receive(:send_message)
     end
   end
 end

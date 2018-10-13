@@ -1,11 +1,11 @@
 require 'twilio-ruby'
 
-class Confirmation
+class SendSMS
   TWILIO_PHONE_NUMBER = "+441727260173"
   # include twilio-ruby
 
   def time
-    time = Time.now + 3600
+    time = Time.new + 3600
     time.strftime("%k:%M")
   end
 
@@ -17,7 +17,7 @@ class Confirmation
 
     from = TWILIO_PHONE_NUMBER
     to = '+447598190395' # Your mobile phone number
-    body = "Thank you! Your order was placed and will be delivered before #{@time}"
+    body = "Thanks! Your order was placed and will be delivered before #{@time}"
 
     client.api.account.messages.create(
     from: from,
