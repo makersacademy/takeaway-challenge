@@ -11,13 +11,13 @@ describe Menu do
 
     it { is_expected.to respond_to :menu_items }
 
-    context 'initilized without a menu items paramater' do
+    context 'initilized without a menu_items paramater' do
       it 'Shows default menu items' do
         expect(menu.menu_items).to eq(default_menu)
       end
     end
 
-    context 'initilized with a menu items paramater' do
+    context 'initilized with a menu_items paramater' do
       it 'Shows menu items passed at initilization' do
         expect(non_default_menu.menu_items).to eq(alt_menu)
       end

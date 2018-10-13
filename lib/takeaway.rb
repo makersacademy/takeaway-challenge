@@ -17,15 +17,17 @@ class TakeAway
   end
 
   def total
+    # Should adding the currency be a part of order?
     "£#{@order.total}"
   end
 
   def checkout(amount)
+    # Should this be in the order class?
+    # What happens if checking out without ordering anything?
     raise('Incorrect amount. You need to enter the correct order total to checkout.') unless correct_amount?(amount)
   end
 
   private
-
   def correct_amount?(amount)
     amount == @order.total
   end

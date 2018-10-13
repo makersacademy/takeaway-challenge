@@ -7,14 +7,17 @@ class Order
   end
 
   def add_items(item, quantity)
+    # Needs a raise error for when dish is not on the menu
+    # Needs a raise error for when quantity is not an intiger
     @basket[item] += quantity
   end
 
   def order_summary
     # Needs refactoring
+    # What happens if the order is empty?
     output = Array.new
-    @basket.each { |key, value|
-      output << "#{key} x#{value} = £#{@menu[key] * value}"
+    @basket.each { |dish, quantity|
+      output << "#{dish} x#{quantity} = £#{@menu[dish] * quantity}"
     }
     output.join(', ')
   end
