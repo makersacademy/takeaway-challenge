@@ -22,4 +22,16 @@ class Takeaway
     "Your current order:\n" +
     @order.map { |dish, quantity| "#{quantity} x #{dish}" }.join("\n")
   end
+
+  def check_total
+    "£#{total}"
+  end
+
+  private
+
+  def total
+    @order.map { |dish, quantity|
+      MENU[dish] * quantity
+    }.reduce(:+)
+  end
 end

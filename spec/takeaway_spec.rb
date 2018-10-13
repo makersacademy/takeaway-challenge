@@ -18,4 +18,11 @@ describe Takeaway do
       expect(subject.current_order).to eq "Your current order:\n2 x Half Chicken\n5 x Chicken Wing"
     end
   end
+
+  describe "#check_total" do
+    it "should return the total cost of the order" do
+      subject.add_to_order(["Half Chicken", "Chicken Wing"], [2, 5])
+      expect(subject.check_total).to eq "£21"
+    end
+  end
 end
