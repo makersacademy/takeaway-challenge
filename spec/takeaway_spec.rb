@@ -25,6 +25,13 @@ describe Takeaway do
     expect(takeaway.order_summary).to eq order.order_summary
   end
 
+  it 'adds order' do
+    allow(menu.items).to receive(:has_key?).and_return(:true)
+    expect(order).to receive(:add_to_basket).with("Pizza", 1)
+    expect(order).to receive(:add_to_total).with(7.00, 1)
+    takeaway.add_to_order("Pizza", 1)
+  end
+
   it 'adds order to basket' do
     allow(menu.items).to receive(:has_key?).and_return(true)
     allow(order).to receive(:add_to_basket).with("Pizza", 2)
