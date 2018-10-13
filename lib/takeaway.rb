@@ -1,3 +1,5 @@
+require_relative 'message'
+
 class Takeaway
   MENU = {
     "Quarter Chicken" => 4,
@@ -6,8 +8,9 @@ class Takeaway
     "Chicken Wing" => 1
   }
 
-  def initialize
+  def initialize(txt_message: Message.new)
     @order = {}
+    @txt_message = txt_message
   end
 
   def menu
@@ -19,8 +22,8 @@ class Takeaway
   end
 
   def current_order
-    "Your current order:\n" +
-    @order.map { |dish, quantity| "#{quantity} x #{dish}" }.join("\n")
+    "Your current order:\n" + order
+
   end
 
   def check_total
@@ -28,7 +31,9 @@ class Takeaway
   end
 
   def place_order(amount)
-    raise("Incorrect total provided")
+    raise("Incorrect total provided") unless amount == total
+    @txt_message.send
+    "Order placed. You will receive a confirmation text message shortly"
   end
 
   private
@@ -37,5 +42,9 @@ class Takeaway
     @order.map { |dish, quantity|
       MENU[dish] * quantity
     }.reduce(:+)
+  end
+
+  def order
+    @order.map { |dish, quantity| "#{quantity} x #{dish}" }.join("\n")
   end
 end
