@@ -3,7 +3,7 @@ require 'order'
 
 class Takeaway
 
-  attr_reader :order
+  attr_reader :menu, :order
 
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
@@ -16,8 +16,8 @@ class Takeaway
 
   def add_to_order(item, quantity = 1)
     raise "Item not on menu!" if available(item) == false
-    @order.add_to_basket(@menu.items.select { |k| k == item.downcase.capitalize }, quantity)
-    @order.add_to_total(@menu.items[item], quantity)
+    @order.add_to_basket(item, quantity)
+    @order.add_to_total(menu.items[item], quantity)
   end
 
   def order_summary
@@ -33,7 +33,7 @@ class Takeaway
   end
 
   def available(item)
-    @menu.items.has_key?(item.downcase.capitalize)
+    menu.items.has_key?(item)
   end
 
 end
