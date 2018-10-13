@@ -15,8 +15,8 @@ class Customer
   end
 
   def select_dish(menu, dish, num)
-    num.times do
-      @order.order << menu.find_dish(dish) if menu.is_a?(Menu)
+    num.times do |x|
+        @order.order << menu.find_dish(dish) 
     end
     "#{num} #{dish} added" if @order.added?
   end

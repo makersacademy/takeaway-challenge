@@ -7,18 +7,19 @@ class Order
 
   def initialize
     @order = []
-    @counts = Hash.new(0)
-    @list = Array.new
+    @list  = []
+    @print_list = []
   end
 
   def print_list
-    @order.each do |x|
-      @counts[x] += 1
+    @order.each do |dish|
+      @list << dish if @list.include?(dish) == false
+      dish.up_quantity if @list.include?(dish)
     end
-    @counts.each do |key, value|
-      @list << "#{key.name} x#{value} $#{value * key.price}"
+    @list.each do |dish|
+      @print_list << "#{dish.name} x#{dish.quantity} $#{dish.quantity * dish.price}"
     end
-    @list
+    @print_list
   end
 
   def added?

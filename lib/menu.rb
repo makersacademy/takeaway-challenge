@@ -22,5 +22,4 @@ class Menu
       name if name.name == dish
     end
   end
-
 end
