@@ -32,6 +32,8 @@ class Takeaway
     @order.total
   end
 
+  private
+
   def get_price(item)
     @menu.get_price(item)
   end

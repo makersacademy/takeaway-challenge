@@ -16,30 +16,30 @@ describe Takeaway do
   end
 
   it 'adds order to order_summary' do
-    allow(menu.items).to receive(:has_key?).and_return(:true)
+    allow(menu.items).to receive(:has_key?).and_return(true)
     allow(order).to receive(:add_to_basket).with("Pizza", 1)
     allow(order).to receive(:add_to_total).with(7.00, 1)
     allow(order).to receive(:order_summary).and_return("A Summary...")
     takeaway.add_to_order("Pizza", 1)
     expect(takeaway.order_summary).to eq order.order_summary
-	end
+  end
 
-	it 'adds order to basket' do
+  it 'adds order to basket' do
     allow(menu.items).to receive(:has_key?).and_return(true)
     allow(order).to receive(:add_to_basket).with("Pizza", 2)
     allow(order).to receive(:add_to_total).with(7.00, 2)
-    allow(order).to receive(:basket).and_return({:item=>"Pizza", :quantity=>2})
+    allow(order).to receive(:basket).and_return({ :item => "Pizza", :quantity => 2 })
     takeaway.add_to_order("Pizza", 2)
-		expect(takeaway.basket).to eq({:item=>"Pizza", :quantity=>2})
-	end
+    expect(takeaway.basket).to eq({ :item => "Pizza", :quantity => 2 })
+  end
 
-	it 'adds the price of each item to the order total' do
-    allow(menu.items).to receive(:has_key?).and_return(:true)
+  it 'adds the price of each item to the order total' do
+    allow(menu.items).to receive(:has_key?).and_return(true)
     allow(order).to receive(:add_to_basket).with("Pizza", 1)
     allow(order).to receive(:add_to_total).with(7.00, 1)
     allow(order).to receive(:total).and_return(7.00)
     takeaway.add_to_order("Pizza", 1)
-		expect(takeaway.total).to eq(7.00)
-	end
+    expect(takeaway.total).to eq(7.00)
+  end
 
 end
