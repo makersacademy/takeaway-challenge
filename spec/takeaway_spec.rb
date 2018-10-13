@@ -3,11 +3,13 @@ require 'pry'
 
 describe Takeaway do
   let(:txt_message) { double :txt_message }
-  subject { described_class.new(txt_message: txt_message) }
+  let(:menu) { double :menu }
+  subject { described_class.new(menu: menu, txt_message: txt_message) }
 
   describe "#menu" do
     it "should display a list of dishes with prices" do
-      expect(subject.menu).to eq "Quarter Chicken: £4\nHalf Chicken: £8\nWhole Chicken: £13\nChicken Wing: £1"
+      expect(menu).to receive(:show_menu)
+      subject.menu
     end
   end
 

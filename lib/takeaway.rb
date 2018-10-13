@@ -1,3 +1,4 @@
+require_relative 'menu'
 require_relative 'message'
 
 class Takeaway
@@ -8,13 +9,14 @@ class Takeaway
     "Chicken Wing" => 1
   }
 
-  def initialize(txt_message: Message.new)
+  def initialize(menu: Menu.new, txt_message: Message.new)
+    @menu = menu
     @order = {}
     @txt_message = txt_message
   end
 
   def menu
-    MENU.map { |dish, price| "#{dish}: £#{price}" }.join("\n")
+    @menu.show_menu
   end
 
   def add_to_order(dish, quantity)
