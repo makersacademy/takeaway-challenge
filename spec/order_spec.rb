@@ -8,7 +8,7 @@ describe Order do
 
     it 'ready order - submitted = true' do
       subject.add_dish("Small chips")
-      expect(subject.submit).to eq true
+      expect(subject.submit_order).to eq true
     end
   end
   describe 'select dishes' do
@@ -50,7 +50,7 @@ describe Order do
     it 'returns the basket details' do
       subject.add_dish("Small chips", 2)
       subject.add_dish("Bread roll", 3)
-      expect { subject.basket }.to output("Your basket:\n2 x Small chips\n3 x Bread roll\nOrder total: £5.65").to_stdout
+      expect { subject.basket_printer }.to output("Your basket:\n2 x Small chips\n3 x Bread roll\nOrder total: £5.65").to_stdout
       # expect { subject.menu }.to output("Large chips - £2.45\nSmall chips - £2.00\nCod - £4.85\nPlaice - £4.85\nHaddock - £4.85\nFishcake - £1.15\nBattered sausage - £1.15\nSpring roll - £2.50\nBread roll - £0.55\nCurry sauce - £1.30\nMushy peas - £1.30").to_stdout
     end
   end

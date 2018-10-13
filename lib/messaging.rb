@@ -5,7 +5,7 @@ CONF = {
   auth_token: ENV['TWILIO_AUTH_TOKEN'],
   from: ENV['TWILIO_FROM_NUMBER'],
   to: ENV['TWILIO_TO_NUMBER']
-}
+}.freeze
 
 class Messaging
   def initialize
