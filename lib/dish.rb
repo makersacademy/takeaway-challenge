@@ -10,6 +10,8 @@ class Dish
     @quantity = 0
   end
 
+  # Function called by order when customer 
+  # selects more then one instance of the dish
   def up_quantity
     @quantity += 1
   end
