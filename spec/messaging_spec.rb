@@ -11,7 +11,7 @@ describe Messaging do
       body = "message text"
       from = "000"
       to = "000"
-      expect { subject.send(body, from, to) }.to raise_error(/HTTP 400] 21212/)
+      expect { subject.send(body, from, to) }.to raise_error(/HTTP 400\] 21212/)
       expect { subject.send(body, from, to) }.to raise_error(/The 'From' number 000 is not a valid phone number/)
     end
   end

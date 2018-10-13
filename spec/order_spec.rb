@@ -6,10 +6,6 @@ describe Order do
       expect(subject.submitted).to eq false
     end
 
-    # it 'ready order - submitted = true' do
-    #   subject.add_dish("Small chips")
-    #   expect(subject.submit_order).to eq true
-    # end
   end
   describe 'select dishes' do
     it 'records 1 dish selection' do
@@ -56,15 +52,5 @@ describe Order do
       subject.add_dish("Bread roll", 3)
       expect(subject.basket_items).to eq("2 x Small chips\n3 x Bread roll")
     end
-  end
-
-  describe 'submit order' do
-    # it 'create message object' do
-    #   order = Order.new
-    #   order.add_dish("Small chips", 2)
-    #   order.submit
-    #   # expect(submit_confirm).to exist
-    #   expect(order.submit_confirm).to exist
-    # end
   end
 end
