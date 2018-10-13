@@ -39,15 +39,15 @@ describe Order do
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
-  describe '#total' do
-    it 'should show me the order total and the item that I have ordered' do
+  describe '#place_order' do
+    it 'shows the items you have ordered, and the total cost' do
       order.choose("Roasted Vegetable")
-      expect(order.total).to eq "Total due: £9"
-    end
-    it 'should show me the order total and the items that I have ordered' do
-      order.choose("Margherita")
       order.choose("Chorizo")
-      expect(order.total).to eq "Total due: £20"
+      expect(order.confirm_order).to eq "You have ordered: Roasted Vegetable and Chorizo. Total due: £21"
+    end
+    it 'shows the item you have ordered, and the total cost' do
+      order.choose("Roasted Vegetable")
+      expect(order.confirm_order).to eq "You have ordered: Roasted Vegetable. Total due: £9"
     end
   end
 end
