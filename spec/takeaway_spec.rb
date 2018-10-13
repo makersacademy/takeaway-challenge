@@ -6,7 +6,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu, order) }
   let(:menu) { double :menu, list_menu: "Lists menu", items: { "Pizza" => 7.00 }, get_price: 7.00 }
   let(:order) { double :order }
-  let(:text) { double(:text) }
+  let(:text) { double(:text, send_sms: true) }
 
   it 'prints a menu' do
     expect(takeaway.print_menu).to eq menu.list_menu
@@ -44,8 +44,7 @@ describe Takeaway do
   end
 
   it 'sends an order confirmation via text' do
-    allow(text).to receive(:send_sms).and_return(true)
-    expect(takeaway.place_order).to eq text.send_sms
+    expect(takeaway.place_order).to eq(true)
   end
 
 end
