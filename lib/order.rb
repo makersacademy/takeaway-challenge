@@ -1,14 +1,13 @@
-require_relative 'customer'
-require_relative 'dish'
 
 class Order
 
-  attr_accessor :order, :list, :con
+  attr_accessor :order, :list
 
   def initialize
     @order = []
     @list  = []
     @con_list = []
+    @total = 0
   end
 
   def print_list
@@ -20,6 +19,13 @@ class Order
       @con_list << "#{dish.name} x#{dish.quantity} $#{dish.quantity * dish.price}" if dish.is_a?(Dish)
     end
     @con_list
+  end
+
+  def total
+    @order.each do |dish|
+      @total += dish.price
+    end
+    @total
   end
 
   def added?

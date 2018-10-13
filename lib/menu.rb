@@ -1,5 +1,3 @@
-require_relative 'dish'
-
 # This class holds all of a resturants dish options
 class Menu
 

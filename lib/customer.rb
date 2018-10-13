@@ -1,8 +1,3 @@
-require_relative 'menu'
-require_relative 'order'
-
-
-
 class Customer
 
   attr_reader :order
@@ -16,13 +11,17 @@ class Customer
   end
 
   def select_dish(menu, dish, num)
-    num.times do |x|
-        @order.order << menu.find_dish(dish)
+    num.times do
+      @order.order << menu.find_dish(dish)
     end
     "#{num} #{dish} added" if @order.added?
   end
 
   def verify_order
     @order.print_list
+  end
+
+  def total_balance
+    @order.total
   end
 end
