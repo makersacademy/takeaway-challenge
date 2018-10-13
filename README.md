@@ -1,5 +1,8 @@
 Takeaway Challenge
 ==================
+Friday challenge - Week 2 of the Makers Academy Apprenticeship course
+----------------------
+
 ```
                             _________
               r==           |       |
@@ -13,6 +16,15 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+
+ - [Task](#task)
+  * [My approach](#my-approach)
+  * [Instructions](#instructions)
+    + [Before you start](#before-you-start)
+    + [Running in terminal/Ruby file](#running-in-terminal-ruby-file)
+    + [Running in IRB](#running-in-irb)
+    + [Testing in Rspec](#testing-in-rspec)
+  * [Test results](#test-results)
 
 Task
 ----------
@@ -47,9 +59,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
   ### My approach
 
-  I made a decision not to have a separate class for weather and just to call it when needed.  The weather could change at any time so didn't feel it needed to be created up front.  I did separate weather into a module though as still felt I wanted to keep it separate.
-
-  Some additional steps that I might extend this with is to add in an overarching airport network object that can double check that there are no planes landed in the middle of nowhere or planes that are flying but are also booked into an airport.  This shouldn't happen using the recommended steps of creating airports and planes and asking them to land and take off but could be useful to if things get more complex.
+  TBA
 
   ### Instructions
 
@@ -66,6 +76,13 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   * Sign up for an account and get an API SID and Authorisation Token as well as a phone number to use.  For testing purposes you can get a single number to use
 
   you will need to use these as environment variables
+
+  #### Running in terminal/Ruby file
+
+  ```
+  ruby ./lib/front_end.rb
+  ```
+  This will give you an interface to place your order and select items
 
   #### Running in IRB
 
@@ -111,8 +128,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   ### Test results
 
   ```
-  100% COVERAGE
+  97.86% COVERAGE
   ```
 
   ```
   0 Offenses in Rubocop
+  ```
