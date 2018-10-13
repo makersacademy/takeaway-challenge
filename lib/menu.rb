@@ -1,31 +1,50 @@
-require "dish"
+require "./lib/dish.rb"
 
 class Menu
 
-attr_reader :dishlist
+  attr_reader :dishlist
 
   def initialize()
     @dishlist = {}
-    @dishlist[:drink]  = Dish.new("Juice","drink")
-    @dishlist[:dessert] =  Dish.new("Ice cream", "dessert")
-    @dishlist[:main] = Dish.new("Rissotto","main")
+    @dishlist[:drink]  = @dishlist[:drink] ||[] << Dish.new("Juice","drink")
+    @dishlist[:dessert] = @dishlist[:dessert] ||[] << Dish.new("Ice cream", "dessert")
+    @dishlist[:main] = @dishlist[:main] ||[] << Dish.new("Rissotto","main")
+    @dishlist[:main] = (@dishlist[:main] ||[]).push(Dish.new("Korma","main"))
   end
 
   def print
     publish
   end
 
-  def add_dish(name,category)
-    @dishlist[category] <<  Dish.new(name, category)
+  def add_dish_to_menu(dish)
+    raise "Dish already exists!" if check_item_in_menu(dish.name)
+    @dishlist[dish.category] = (@dishlist[dish.category] ||[]).push(dish)
   end
 
-  def publish
-    liststr = ""
-    @dishlist.each_with_index { |dish, key|
+  def get_dish(dishname)
+    val = check_item_in_menu(dishname)
+    raise ("Not in Menu") if  val == false
+    val
+  end
+
+
+  def check_item_in_menu(dishname)
+    @dishlist.each_value do |val|
+      val.each do |dish|
+        return dish if dish.getname ==  dishname
+      end
+    end
+    return false
+  end
+
+  def publish_menu
+    liststr = "* Welcome"
+    @dishlist.each_pair do |key, disharr|
       liststr << "\n" if liststr.length>0
-      liststr  " * " << dish.publish_dish << " * "
-    }
-    liststr
+      disharr.each do |dish|
+        liststr << " * " << dish.publish_dish << " *\n "
+      end
+    end
   end
 
 end
