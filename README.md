@@ -21,7 +21,7 @@ This program allows users to view items from a menu and place orders.
 
 ## Motivations for this project
 
-* Week 1 Makers Academy weekend challenge
+* Week 2 Makers Academy weekend challenge
 * Demonstrate knowledge of Ruby
 * Practise TDD
 * Practise OOD & Write code that is easy to change
