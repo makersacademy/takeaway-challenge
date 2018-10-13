@@ -25,4 +25,13 @@ describe Takeaway do
       expect(subject.check_total).to eq "£21"
     end
   end
+
+  describe "#place_order" do
+    context "incorrect sum" do
+      it "should raise an error" do
+        subject.add_to_order(["Half Chicken", "Chicken Wing"], [2, 5])
+        expect { subject.place_order(7) }.to raise_error("Incorrect total provided")
+      end
+    end
+  end
 end

@@ -27,6 +27,10 @@ class Takeaway
     "£#{total}"
   end
 
+  def place_order(amount)
+    raise("Incorrect total provided")
+  end
+
   private
 
   def total
