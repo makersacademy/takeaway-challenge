@@ -15,27 +15,9 @@ Takeaway Challenge
  ```
 
 
-To do: 
-read notes
-finish oyster
-watch SOLID vid
-
-_________________________________________________________________________________________________________________________________________________________________
-
-- Update Readmes & Diodes for all repos (oyster & takeaway) — oyster diode project exist?
-_________________________________________________________________________________________________________________________________________________________________
-
-* A README.md file in the root folder of your repo
-* The title of the project
-* What the project is/what it does
-* How to install it (what to clone, what to run to get all dependencies)
-* How to run it (is it a command line tool? Do you have to load it into IRB? Is is a web application? What port needs to be used?)
-* How to run the tests
-
-
 # Takeaway Challenge
 
-This program controls the landing and takeoff of planes at an airport.
+This program allows users to view items from a menu and place orders.
 
 ## Motivations for this project
 
