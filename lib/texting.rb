@@ -14,14 +14,14 @@ class SmsText
 
   # Links functionality with twilio
   def init_msg(msg)
-    account_sid = 'ACcb0e21414d3ab3d87192fa33e93fc1c0'
-    auth_token = 'fc23137ee0ee4262f9c677df35211a4d'
+    account_sid = 'ACcb0e21414d3ab3d87192fa33e93fc1c0' # => please change if testing
+    auth_token = 'fc23137ee0ee4262f9c677df35211a4d'    # => please change if testing
   # set up a client to talk to the twilio REST API
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   # send an sms
     @client.messages.create(
-    from: '+15403519705',
-    to: '+12102941400',
+    from: '+15403519705', # => please change if testing
+    to: '+12102941400',   # => please change if testing
     body: msg
     )
   end
