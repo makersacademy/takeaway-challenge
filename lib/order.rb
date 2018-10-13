@@ -23,6 +23,17 @@ class Order
   end
 
   def total
+    # Should adding the currency be a part of order?
+    "£#{sum}"
+  end
+
+  def checkout(amount)
+    # What happens if checking out without ordering anything?
+    raise('Incorrect amount. You need to enter the correct order total to checkout.') unless correct_amount?(amount)
+  end
+
+  private
+  def sum
     # Needs refactoring
     sum = 0
     @basket.each { |key, value|
@@ -30,5 +41,15 @@ class Order
     }
     sum
   end
+
+  def correct_amount?(amount)
+    amount == sum
+  end
+
+
+
+
+
+
 
 end

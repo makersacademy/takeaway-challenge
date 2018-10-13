@@ -69,8 +69,19 @@ describe Order do
     it 'shows total for items in basket' do
       order.add_items('pizza', 1)
       order.add_items('burger', 2)
-      expect(order.total).to eq 12.99
+      expect(order.total).to eq '£12.99'
     end
   end
+
+
+  describe '#checkout' do
+
+    it 'Raises error if incorrect amount inputted' do
+      expect { order.checkout(13.99) }.to raise_error('Incorrect amount. You need to enter the correct order total to checkout.')
+    end
+
+  end
+
+
 
 end

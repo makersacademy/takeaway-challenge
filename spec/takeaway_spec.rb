@@ -4,13 +4,11 @@ describe TakeAway do
   default_menu = { 'pizza' => 6.99, 'chips' => 1.50, 'burger' => 3 }
 
   let(:menu) { double :Menu, :menu_items => default_menu }
-  let(:order) { double :Order, :total => 13.98 }
+  let(:order) { double :Order }
 
   subject(:takeaway) { described_class.new(menu, order) }
 
-  before do
-    allow(order).to receive(:add_items)
-  end
+
 
   describe '#show_menu' do
 
@@ -24,6 +22,7 @@ describe TakeAway do
     end
 
     it 'shows the menu' do
+      # Is this a pointless tests considerinf the double contains the expected output?
       expect(takeaway.show_menu).to eq(default_menu)
     end
 
@@ -59,20 +58,12 @@ describe TakeAway do
       expect(order).to receive(:total)
       takeaway.total
     end
-
-    it 'formatts total with currency' do
-      expect(takeaway.total).to eq '£13.98'
-    end
   end
 
   describe '#checkout' do
-    it 'calls total on Order' do
-      expect(order).to receive(:total)
+    it 'calls checkout on Order' do
+      expect(order).to receive(:checkout)
       takeaway.checkout(13.98)
-    end
-
-    it 'Raises error if incorrect amount inputted' do
-      expect { takeaway.checkout(13.99) }.to raise_error('Incorrect amount. You need to enter the correct order total to checkout.')
     end
   end
 
