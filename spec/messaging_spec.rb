@@ -10,7 +10,7 @@ describe Messaging do
 
   describe 'send message' do
     it 'sends message with no error' do
-      expect{subject.send}.not_to raise_error
+      expect { subject.send }.not_to raise_error
     end
   end
 

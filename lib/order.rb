@@ -15,7 +15,7 @@ class Order
   end
 
   def add_dish(dish, quantity = 1)
-    # raise "Please select a valid item" unless
+    raise "Please try again" unless dish_exists?(dish)
     @order_items << { :dish => dish, :quantity => quantity }
   end
 
@@ -27,11 +27,17 @@ class Order
     @order_items.select do |order_dish|
       @order_prices << find_item_price(order_dish[:dish]) * order_dish[:quantity]
     end
-    ('%.2f' % @order_prices.reduce(:+)).to_f
+    ('%.2f' % @order_prices.reduce(:+)) # .to_f
   end
+
+private
 
   def find_item_price(dish)
     DISHES.each { |d| return d[dish] unless d[dish].nil? }
+  end
+
+  def dish_exists?(dish)
+    !DISHES.reject { |d| d[dish].nil? }.empty?
   end
 
 end

@@ -12,6 +12,10 @@ module Menu
     { "Curry sauce" => 1.30 },
     { "Mushy peas" => 1.30 }].freeze
 
+  # @MenuHeader = "Welcome to the Jolly Chip Shop.\n".center(50)
+  # @MenuHeader += "===============================\n".center(50)
+  # @MenuHeader += "Take a look at our menu\n".center(50)
+
   def format_dish_by_index(index)
     DISHES[index].map { |key, value| "#{key} - £#{'%.2f' % value}" }
   end
@@ -20,11 +24,8 @@ module Menu
     DISHES.each_with_index.map { |_, i| format_dish_by_index(i) }.join("\n")
   end
 
-  # def print_menu
-  #   puts "Welcome to the Jolly Chip Shop.".center(50)
-  #   puts "===============================".center(50)
-  #   puts "Take a look at our menu".center(50)
-  #   format_menu_items.ljust(50)
-  # end
+  def print_menu
+    format_menu_items
+  end
 
 end

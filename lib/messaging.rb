@@ -9,19 +9,14 @@ CONF = {
 
 class Messaging
   def initialize
-    @checkout_confirm = "Thank you! Your order was placed and will be delivered before #{ delivery_time.strftime('%H:%M')}"
+    @checkout_confirm = "Thank you! Your order was placed and will be delivered before #{delivery_time.strftime('%H:%M')}"
   end
 
   def delivery_time
     Time.new + 3600
   end
 
-  # def message(m = checkout)
-  #   "Thank you! Your order was placed and will be delivered before #{Time.now}" if m == checkout
-  # end
-
   def send(message_text = @checkout_confirm)
-  #
 
   #   client = Twilio::REST::Client.new(CONF[:account_sid], CONF[:auth_token])
   #
@@ -30,7 +25,6 @@ class Messaging
   #   to: CONF[:to],
   #   body: message_text
   # )
-
-
+  
   end
 end

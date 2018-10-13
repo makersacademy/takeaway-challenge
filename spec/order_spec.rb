@@ -32,19 +32,23 @@ describe Order do
       subject.add_dish("Small chips", 2)
       expect(subject.order_items[0][:quantity]).to eq 2
     end
+
+    it 'raises error if dish does not exist' do
+      expect { subject.add_dish("no dish", 2) }.to raise_error "Please try again"
+    end
   end
 
   describe 'basket' do
     it 'returns the cost of the order' do
       subject.add_dish("Small chips")
       subject.add_dish("Bread roll")
-      expect(subject.total).to eq 2.55
+      expect(subject.total).to eq "2.55"
     end
 
     it 'returns the cost of the order - multiple items' do
       subject.add_dish("Small chips", 2)
       subject.add_dish("Bread roll", 3)
-      expect(subject.total).to eq 5.65
+      expect(subject.total).to eq "5.65"
     end
 
     it 'returns the basket details' do

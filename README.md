@@ -86,7 +86,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
   To add an item to your basket:
   ```
-  takeaway.add_to_order("Small chips", 2)
+  takeaway.add("Small chips", 2)
   ```
   keep adding items until done
 
