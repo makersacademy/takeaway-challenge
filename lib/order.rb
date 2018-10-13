@@ -11,7 +11,7 @@ class Order
   end
 
   def order_summary
-    #Needs refactoring
+    # Needs refactoring
     output = Array.new
     @basket.each { |key, value|
       output << "#{key} x#{value} = £#{@menu[key] * value}"
@@ -20,6 +20,7 @@ class Order
   end
 
   def total
+    # Needs refactoring
     sum = 0
     @basket.each { |key, value|
       sum += @menu[key] * value

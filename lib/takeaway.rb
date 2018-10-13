@@ -21,6 +21,13 @@ class TakeAway
   end
 
   def checkout(amount)
-    raise('Incorrect amount. You need to enter the correct order total to checkout.') unless amount == @order.total
+    raise('Incorrect amount. You need to enter the correct order total to checkout.') unless correct_amount?(amount)
   end
+
+  private
+
+  def correct_amount?(amount)
+    amount == @order.total
+  end
+
 end
