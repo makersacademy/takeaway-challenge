@@ -4,7 +4,7 @@ require 'text'
 
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :text
 
   def initialize(menu = Menu.new, order = Order.new, text = Text.new)
     @menu = menu
@@ -45,7 +45,7 @@ class Takeaway
   end
 
   def available(item)
-    menu.items.has_key?(item)
+    @menu.items.has_key?(item)
   end
 
 end

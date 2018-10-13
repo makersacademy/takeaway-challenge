@@ -45,7 +45,7 @@ describe Takeaway do
 
   it 'sends an order confirmation via text' do
     allow(text).to receive(:send_sms).and_return(true)
-      expect(takeaway.place_order).to eq(true)
+    expect(takeaway.place_order).to eq text.send_sms
   end
 
 end
