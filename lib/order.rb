@@ -15,4 +15,10 @@ class Order
     @total += (price.to_f * quantity.to_f)
   end
 
+  def order_summary
+    @basket.map do |order|
+      "Item: #{order[:item]}, Quantity: #{order[:quantity]}"
+    end.join("\n") << "\nORDER TOTAL: £#{total}"
+  end
+
 end
