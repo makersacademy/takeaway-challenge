@@ -1,11 +1,9 @@
 require 'twilio-ruby'
 
 class Message
-  attr_reader :account_sid, :auth_token
-
   def initialize(client: Twilio::REST::Client.new(
-    "AC0c335080db1f411ec0a91201a29743f1",
-    "8f8e39564e1782d57d6eb144caa8f174").messages)
+    ENV["MY_TWILIO_SID"],
+    ENV["MY_TWILIO_AUTH_TOKEN"]).messages)
 
     @client = client
   end
