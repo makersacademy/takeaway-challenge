@@ -3,7 +3,6 @@ require 'order'
 
 describe Takeaway do
 
-  # let(:new_order) { instance_double(Order) }
   let(:new_order) { double :order, :submitted => false }
   subject { described_class.new(new_order) }
 
@@ -37,14 +36,12 @@ describe Takeaway do
 
     it "should not submit empty basket" do
       allow(new_order).to receive(:order_items).and_return([])
-      # subject.submit_order
       expect { subject.submit_order }.to raise_error "Basket empty"
     end
 
     it "should not submit an order twice" do
       allow(new_order).to receive(:order_items).and_return(["a"])
       allow(new_order).to receive(:submitted).and_return(true)
-      # subject.submit_order
       expect { subject.submit_order }.to raise_error "Order already sent"
     end
 
