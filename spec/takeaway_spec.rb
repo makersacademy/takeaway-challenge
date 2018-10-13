@@ -4,7 +4,7 @@ describe TakeAway do
   default_menu = { 'pizza' => 6.99, 'chips' => 1.50, 'burger' => 3 }
 
   let(:menu) { double :Menu, :menu_items => default_menu }
-  let(:order) { double :Order }
+  let(:order) { double :Order, :total => 13.98 }
 
   subject(:takeaway) { described_class.new(menu, order) }
 
@@ -31,7 +31,7 @@ describe TakeAway do
 
   describe '#add_to_order' do
 
-    it 'accpets 1 argument' do
+    it 'accepts 1 argument' do
       expect(takeaway).to respond_to(:add_to_order).with(1).arguments
     end
 
@@ -48,7 +48,32 @@ describe TakeAway do
   end
 
   describe '#order_summary' do
+    it 'receivies order summary' do
+      expect(order).to receive(:order_summary)
+      takeaway.order_summary
+    end
+  end
 
+  describe '#total' do
+    it 'calls total on Order' do
+      expect(order).to receive(:total)
+      takeaway.total
+    end
+
+    it 'formatts total with currency' do
+      expect(takeaway.total).to eq '£13.98'
+    end
+  end
+
+  describe '#checkout' do
+    it 'calls total on Order' do
+      expect(order).to receive(:total)
+      takeaway.checkout(13.98)
+    end
+
+    it 'Raises error if incorrect amount inputted' do
+      expect { takeaway.checkout(13.99) }.to raise_error('Incorrect amount. You need to enter the correct order total to checkout.')
+    end
   end
 
 end

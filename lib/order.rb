@@ -16,7 +16,15 @@ class Order
     @basket.each { |key, value|
       output << "#{key} x#{value} = £#{@menu[key] * value}"
     }
-    return output.join(', ')
+    output.join(', ')
+  end
+
+  def total
+    sum = 0
+    @basket.each { |key, value|
+      sum += @menu[key] * value
+    }
+    sum
   end
 
 end

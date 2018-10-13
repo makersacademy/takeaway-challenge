@@ -15,4 +15,12 @@ class TakeAway
   def order_summary
     @order.order_summary
   end
+
+  def total
+    "£#{@order.total}"
+  end
+
+  def checkout(amount)
+    raise('Incorrect amount. You need to enter the correct order total to checkout.') unless amount == @order.total
+  end
 end
