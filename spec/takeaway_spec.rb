@@ -32,7 +32,7 @@ describe Takeaway do
 
   describe "Submit" do
     before do
-      # allow(new_order).to receive(:submitted).and_return(true)
+      allow(new_order).to receive(:submitted).and_return(true)
     end
 
     it "should not submit empty basket" do
@@ -47,6 +47,7 @@ describe Takeaway do
       # subject.submit_order
       expect { subject.submit_order }.to raise_error "Order already sent"
     end
+
   end
 
 end
