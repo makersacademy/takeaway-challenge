@@ -6,9 +6,8 @@ describe Order do
   context 'when added' do
 
     it 'should add items added from menu to the order' do
-      menu = Menu.new
-      item = menu.add(1)
-      expect(subject.add(item)).to eq [item]
+      subject.add({ "1 Spaghetti Bolognese" => 9 })
+      expect(subject.order).to eq ["1 Spaghetti Bolognese" => 9]
     end
 
   end
@@ -16,7 +15,20 @@ describe Order do
   context 'when deleted' do
 
     it 'should delete items added from menu to the order' do
-      expect(subject.delete(1)).to eq []
+      subject.add({ "1 Spaghetti Bolognese" => 9 })
+      subject.add({ "2 Pasta Puttanesca" => 9 })
+      expect(subject.delete(1)).to eq [{ "2 Pasta Puttanesca" => 9 }]
+    end
+
+  end
+
+  context 'when totalled' do
+
+    it 'should show the total in the order' do
+      subject.add({ "1 Spaghetti Bolognese" => 9 })
+      subject.add({ "1 Spaghetti Bolognese" => 9 })
+      subject.sum_total
+      expect(subject.total).to eq 18
     end
 
   end
