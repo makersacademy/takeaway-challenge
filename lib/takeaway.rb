@@ -21,6 +21,10 @@ class Takeaway
     "Order placed! Look out for a confirmation text."
   end
 
+  def view_basket
+    basket.items
+  end
+
   private
 
   def send_text

@@ -30,5 +30,3 @@ class PizzeriaMenu
     end
   end
 end
-
-PizzeriaMenu.new.list_dishes

@@ -15,7 +15,7 @@ describe Takeaway do
   let(:menu_class) { double(:menu_class, new: menu) }
   let(:text) { double(:text, send: nil) }
   let(:text_class) { double(:text_class, new: text) }
-  let(:basket) { double(:basket, items: []) }
+  let(:basket) { double(:basket, items: [{ name: "Margherita", quantity: 2, cost: 17.0 }]) }
   let(:basket_class) { double(:basket_class, new: basket) }
   let(:subject) { Takeaway.new(menu_class, basket_class, text_class) }
 
@@ -55,6 +55,14 @@ describe Takeaway do
     it 'should confirm the order if the given total is correct' do
       message = "Order placed! Look out for a confirmation text."
       expect(subject.place_order(33)).to eq message
+    end
+  end
+
+  describe '#view basket' do
+    it 'should show the list of items currently in the basket' do
+      allow(basket).to receive(:add_dish).with("Margherita", 2)
+      subject.add_dish("Margherita", 2)
+      expect(subject.view_basket).to eq basket.items
     end
   end
 end
