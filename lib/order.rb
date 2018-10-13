@@ -4,7 +4,7 @@ class Order
   end
 
   def current
-    "Your current order:\n" + basket
+    "Your current order:\n" + order
   end
 
   def add(dish, quantity)
@@ -19,7 +19,7 @@ class Order
 
   private
 
-  def basket
+  def order
     @order.map { |dish, quantity| "#{quantity} x #{dish}" }.join("\n")
   end
 
