@@ -63,8 +63,25 @@ describe Order do
     describe '#show_basket' do
       it 'shows a message "Empty basket", if no dishes are added' do
         order = Order.new
-        expect { order.show_basket } .to raise_error("Empty basket")
+
+        expect(order.show_basket).to eq("Empty basket")
       end
+
+      it 'shows basket and total price with one dish ordered' do
+        order = Order.new
+        order.add_dish("chicken soup", 5)
+
+        expect(order.show_basket).to eq("Your order is: 'chicken soup $5.00', total is: $5.00")
+      end
+
+      it 'shows basket and total price with multiple dishes' do
+        order = Order.new
+        order.add_dish("chicken soup", 5)
+        order.add_dish("pizza", 2.30)
+
+        expect(order.show_basket).to eq("Your order is: 'chicken soup $5.00', 'pizza $2.30', total is: $7.30")
+      end
+
     end
   end
 end
