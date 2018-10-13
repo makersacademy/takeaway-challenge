@@ -13,6 +13,13 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Installation
+-------
+1. Clone this repo
+2. `cd` into the directory
+3. Run `bundle` to install gems
+4. Load into `irb`
+
 Example Usage
 -------
 ```
