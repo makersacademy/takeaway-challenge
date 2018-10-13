@@ -10,10 +10,10 @@ class Dish
   end
 
   def publish_dish
-    "In category: "<<@category<<" dish - "<<@name<<" cost - "<< @price.to_s
+    "In category: " << @category.ljust(10) << " dish - " << @name.ljust(10) << " cost - " << @price.to_s
   end
 
-  def getname()
+  def getname
     @name
   end
 end
