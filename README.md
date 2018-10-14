@@ -13,6 +13,14 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+My Approach
+-------
+I built this program following TDD practices. I took the user stories that were provided and wrote tests for them, the tests then infromed the code that I had written. The tests were written using doubles which allowed me to isolate the tests for each class as well as correctly mocking their behaviour when used in ohter classes.
+
+I was able to follow an OOD; the program has been separated into classes, each of which fulfilling only a single responsibility. This would make any future changes (such as a different menu) or additional functionality easy to implement as it would have minimal impact on any other area of the progam.
+
+This program also feature a text message function which sends the user a text confirming when there order will be arriving. This was achieved by using the twilio API and their provided documentation, which allowed me to modify their example into a method that could be executed on a method call.
+
 Installation
 -------
 1. Clone this repo
@@ -38,7 +46,7 @@ $ irb
 => "Order placed. You will receive a confirmation text message shortly"
 ```
 
-![Screenshot](./docs/screenshot.png)
+![Screenshot](./docs/text_screenshot.png)
 Instructions
 -------
 
