@@ -33,14 +33,13 @@ Menu
 
 Order
   allows a user to select a quantity of dishes from a menu
-  #select
+  select
     adds a quantity of items to the basket
     doesn't add an item not on the menu
-  #remove
+  remove
     removes an item from the basket
-
     wont remove an item that is not in the basket
-  #total
+  total
     displays the basket total
 
 SMS
@@ -54,28 +53,42 @@ Takeaway
 Example usage:
 
 Creating a Menu
-
+```
 pry(main)> menu = Menu.new(falafel: 3, houmous: 1)
+
 => #<Menu:0x00007fd510d58f80 @items={:falafel=>3, :houmous=>1}>
-
+```
 Creating a takeaway
+```
 pry(main)> chunkys = Takeaway.new(menu)
+
 => #<Takeaway:0x00007fd511097890>
-
+```
 Viewing a menu
+```
 pry(main)> chunkys.display_menu
+
 => "Falafel: £3.00, Houmous: £1.00"
-
+```
 Selecting items to Order
+```
 pry(main)> chunkys.order.select(:falafel, 5)
+
 => 5
+
 pry(main)> chunkys.order.select(:houmous, 3)
+
 => 3
-
+```
 Viewing the total
+```
 pry(main)> chunkys.order.total
-=> "£18"
 
+=> "£18"
+```
 Placing the Order & sending and SMS confirmation
+```
 pry(main)> chunkys.checkout
+
 => "Thankyou your order has been placed"
+```
