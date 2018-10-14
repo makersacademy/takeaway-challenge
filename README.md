@@ -1,6 +1,6 @@
-# Take Away Challenge
+# Take-Away Challenge
 
-Take Away Challenge for Makers
+Take-Away Challenge for Makers
 
 ## Approach
 
