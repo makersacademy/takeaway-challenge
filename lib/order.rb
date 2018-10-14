@@ -15,4 +15,10 @@ class Order
     return "#{dish.capitalize} x#{quantity}"
   end
 
+  def format_order
+    @order.each do |dish, quantity|
+      puts "#{dish.capitalize} x#{quantity}"
+    end
+  end
+
 end

@@ -37,4 +37,14 @@ describe Order do
 
   end
 
+  describe '#format_order' do
+
+    it "returns formatted order" do
+      subject.add_to_order("burger", 2)
+      subject.add_to_order("cheeseburger", 1)
+      expect{subject.format_order}.to output("Burger x2\nCheeseburger x1\n").to_stdout
+    end
+
+  end
+
 end
