@@ -1,14 +1,8 @@
-require_relative 'menu'
+require_relative 'nandos_menu'
 require_relative 'order'
 require_relative 'message'
 
 class Takeaway
-  MENU = {
-    "Quarter Chicken" => 4,
-    "Half Chicken" => 8,
-    "Whole Chicken" => 13,
-    "Chicken Wing" => 1
-  }
 
   def initialize(menu: Menu.new, order: Order.new, txt_message: Message.new)
     @menu = menu
