@@ -5,7 +5,8 @@ describe SMSService do
   let(:conf_mess_class) { double :conf_mess_class, new: conf_mess }
   let(:messages) { double :messages, create: conf_mess }
   let(:client) { double :client, messages: messages } 
-  subject { described_class.new(confirmation_message_class: conf_mess_class, client: client) }
+  let(:number) { '00000000' }
+  subject { described_class.new(number, confirmation_message_class: conf_mess_class, client: client) }
   
   describe '#send_sms' do
     it 'send an sms' do
