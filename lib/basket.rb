@@ -3,9 +3,7 @@ class Basket
   attr_reader :basket
 
   def initialize
-    @basket = {
-      "Boiled Rice" => 2
-    }
+    @basket = { }
   end
 
   def view
@@ -15,14 +13,11 @@ class Basket
   end
 
   def total
-    sum = 0
-    @basket.map do |key, value|
-      sum += value
-    end.join("")
+    @basket.values.sum
   end
 
   def review_order
-    "#{view}.\nTotal: £#{total}"
+    "#{view}\nTotal: £#{total}"
   end
 
 end

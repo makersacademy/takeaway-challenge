@@ -6,7 +6,7 @@ describe Takeaway do
   let(:menu) { double(:menu) }
   let(:takeaway) { Takeaway.new(menu) }
 
-  context 'describe order' do
+  context 'describe menu' do
     before do
       allow(menu).to receive(:view).and_return("menu")
     end
@@ -15,11 +15,18 @@ describe Takeaway do
     end
   end
 
-  context 'describe order' do
+  context 'describe order and review_order' do
     it 'adds boiled rice to the basket' do
       real = Takeaway.new
       real.order("Boiled Rice")
-      expect(takeaway.review_order).to eq "Boiled Rice, £2.\nTotal: £2"
+      expect(real.review_order).to eq "Boiled Rice, £2\nTotal: £2"
+    end
+
+    it 'adds boiled rice and satay chicken to the basket ' do
+      real = Takeaway.new
+      real.order("Boiled Rice")
+      real.order("Satay Chicken")
+      expect(real.review_order).to eq "Boiled Rice, £2\nSatay Chicken, £6\nTotal: £8"
     end
   end
 
