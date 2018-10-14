@@ -46,7 +46,7 @@ describe Order do
       expect(order.basket).to eq({})
     end
 
-    it 'wont delete an item that is not in the basket' do
+    it 'wont remove an item that is not in the basket' do
       expect { order.remove(:falafel) }.to raise_error("Item not in basket")
     end
   end
