@@ -12,7 +12,7 @@ class Message
     @client.messages.create(
       body: "Thank you for your order! It will be arriving shortly",
       to: ENV["MY_PHONE_NUMBER"],
-      from: ENV["MY_TWILO_PHONE_NUMBER"]
+      from: ENV["MY_TWILIO_PHONE_NUMBER"]
     )
   end
 end
