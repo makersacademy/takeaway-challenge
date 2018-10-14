@@ -8,8 +8,6 @@ describe TakeAway do
 
   subject(:takeaway) { described_class.new(menu, order) }
 
-
-
   describe '#show_menu' do
 
     it 'responds' do

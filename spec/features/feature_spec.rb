@@ -45,11 +45,11 @@ describe 'User Stories' do
       end
     end
 
-  context 'When the item is not on the menu' do
-    it 'raises and error' do
-      expect { takeaway.add_to_order('curry') }.to raise_error('Invalid dish. Only items on the menu can be added to your order.')
+    context 'When the item is not on the menu' do
+      it 'raises and error' do
+        expect { takeaway.add_to_order('curry') }.to raise_error('Invalid dish. Only items on the menu can be added to your order.')
+      end
     end
-  end
 
   end
 

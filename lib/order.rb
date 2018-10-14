@@ -23,7 +23,6 @@ class Order
   end
 
   def total
-    # Should adding the currency be a part of order?
     "£#{sum}"
   end
 
@@ -45,11 +44,5 @@ class Order
   def correct_amount?(amount)
     amount == sum
   end
-
-
-
-
-
-
 
 end
