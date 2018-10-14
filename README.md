@@ -22,12 +22,12 @@ As this is a command line app, clone the repo, then open then require the ./lib/
 
 3. View the items and their prices on the menu using menu.items
 
-4. You can then select the item that you want, one at a time.
+4. You can then select the a type of pizza that you want, and a quantity.
 
-`2.5.0 :008 > order.choose("Chorizo")
+`2.5.0 :008 > order.choose("Chorizo", 1)
 => ["Chorizo"]`
 
-`2.5.0 :009 > order.choose("Roasted Vegetable")
+`2.5.0 :009 > order.choose("Roasted Vegetable", 1)
  => ["Chorizo", "Roasted Vegetable"]`
 
 5. Confirm your order using confirm_order method. They should get a confirmation message with the total due and what they have ordered, as well as the notification
