@@ -44,7 +44,9 @@ The main files that you will need the items in the 'lib' folder. This includes:
 To run this program the gems required are Twilio-Ruby and Dotenv.
 
 ### My approach to this Challenge
-I used TDD and OOD to design and create this program. I aimed to create as little dependancies as possible using polymorphism and doubles.
+I used TDD and OOD to design and create this program. I aimed to create as little dependancy as possible using polymorphism and doubles. I used the Single Responsibility Principle to extract order and menu classes as well as a send_sms module. These follow the law of Demeter.
+
+I chose to not add the functionality where a user enters what they would expect the total to be as I initially found this to be a strange and perhaps un-user friendly feature. I have decided to seek further information before implementation.
 
 ## How to Test:
 To test this program, please use rspec. Note that this will run both unit tests (./menu_spec.rb ./order_spec.rb and ./send_sms_sepc.rb) and also feature tests (./feature_tests/user_stories_spec_rb).
