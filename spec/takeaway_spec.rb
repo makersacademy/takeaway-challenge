@@ -20,4 +20,9 @@ describe Takeaway do
       takeaway.order_request(meals)
     end
 end
+
+it 'calculates the total cost of the order' do
+  allow(order).to receive(:add)
+  expect(takeaway.order_request(meals)).to eq(14.75)
+end
 end
