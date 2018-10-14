@@ -1,7 +1,6 @@
 require './lib/menu.rb'
 
 class Order
-
   attr_reader :dishes
 
   def initialize(menu = Menu.new)
@@ -16,11 +15,10 @@ class Order
   end
 
   def summary
-    h = []
+    @summary = ["\nSummary"]
     dish_names = dishes.flatten.uniq.select { |x| x.is_a? String }
-    dish_names.each { |dish| h << "#{@dishes.flatten.count(dish)}x " + dish + " - £#{'%.2f' % (@dishes.flatten.count(dish) * @menu.menu.map { |_,value| value[dish] }.compact[0])}"}
-    h <<  "Order Total - £#{'%.2f' % @dishes.flatten.select { |x| x.is_a? Numeric }.inject(:+)}"
-    puts h
+    dish_names.each { |dish| @summary << "#{@dishes.flatten.count(dish)}x " + dish + " - £#{'%.2f' % (@dishes.flatten.count(dish) * @menu.menu.map { |_,value| value[dish] }.compact[0])}"}
+    @summary <<  "Order Total - £#{'%.2f' % @dishes.flatten.select { |x| x.is_a? Numeric }.inject(:+)}"
+    puts @summary
   end
-
 end

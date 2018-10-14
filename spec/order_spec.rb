@@ -16,7 +16,7 @@ describe Order do
   it 'summarises the order' do
     order.dish("Samosa", 3)
     order.dish("Duck Tikka", 4)
-    expect { order.summary }.to output("3x Samosa - £8.85\n4x Duck Tikka - £35.80\nOrder Total - £44.65\n").to_stdout
+    expect { order.summary }.to output("\nSummary\n3x Samosa - £8.85\n4x Duck Tikka - £35.80\nOrder Total - £44.65\n").to_stdout
   end
 
   it 'confirms a dish has been added to the order' do
