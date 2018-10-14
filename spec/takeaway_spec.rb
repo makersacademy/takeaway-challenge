@@ -5,8 +5,9 @@ describe Takeaway do
 
   let(:menu) { double(:menu) }
   let(:takeaway) { Takeaway.new(menu) }
+  let(:current_basket) { double(:current_basket) }
 
-  context 'describe menu' do
+  context 'Describe menu:' do
     before do
       allow(menu).to receive(:view).and_return("menu")
     end
@@ -15,7 +16,7 @@ describe Takeaway do
     end
   end
 
-  context 'describe order' do
+  context 'Describe order:' do
     before do
       allow(menu).to receive_message_chain(:list, :has_key?).and_return(false)
     end
@@ -24,7 +25,7 @@ describe Takeaway do
     end
   end
 
-  context 'describe order and review_order' do
+  context 'Describe order and review_order:' do
     it 'adds boiled rice to the basket' do
       real = Takeaway.new
       real.order("Boiled Rice")
@@ -36,6 +37,13 @@ describe Takeaway do
       real.order("Boiled Rice")
       real.order("Satay Chicken")
       expect(real.review_order).to eq "Boiled Rice, £2\nSatay Chicken, £6\nTotal: £8"
+    end
+  end
+
+  context 'Describe place_order' do
+    it 'rasies an error message if the total inputted by user does not match basket total' do
+      allow(current_basket).to receive(:total).and_return 2
+      expect { takeaway.place_order(4) }.to raise_error "Incorrect total"
     end
   end
 

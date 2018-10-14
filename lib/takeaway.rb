@@ -16,10 +16,16 @@ class Takeaway
     fail "Dish unavailable" unless @menu.list.has_key? dish
     cost = @menu.list[dish]
     @current_basket.basket[dish] = cost
+    "Added #{dish.downcase} to your order"
   end
 
   def review_order
     @current_basket.review_order
+  end
+
+  def place_order(total)
+    fail "Incorrect total" unless (total == @current_basket.total)
+    
   end
 
 end

@@ -2,7 +2,7 @@ require 'basket'
 
 describe Basket do
 
-  context 'describe review_order' do
+  context 'Describe review_order:' do
     before do
       subject.basket["Satay Chicken"] = 6
     end
