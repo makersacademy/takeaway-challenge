@@ -1,4 +1,4 @@
-require 'menu'
+require 'nandos_menu'
 
 describe NandosMenu do
   describe "#show_menu" do
