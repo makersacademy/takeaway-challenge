@@ -4,7 +4,7 @@ describe Menu do
 
   let(:menu) { described_class.new(items) }
   let(:items) do
-    {falafel: 3, houmous: 1}
+    { falafel: 3, houmous: 1 }
   end
   let(:printed_menu) { "Falafel: £3.00, Houmous: £1.00" }
 
