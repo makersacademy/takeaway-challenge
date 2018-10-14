@@ -33,7 +33,9 @@ private
   def valid(order)
     order.basket.each do |item|
       name = item.keys[0]
+      price = item[name]
       return false unless MENU.include?(name)
+      return false unless MENU[name] == price
     end
     true
   end

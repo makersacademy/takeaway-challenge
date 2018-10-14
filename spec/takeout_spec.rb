@@ -37,6 +37,16 @@ describe TakeOut do
       expect(message_sender).not_to have_received(:create)
     end
 
+    it "does not send text when an order item doesn't match the menu price" do
+      message_sender = spy('message_sender')
+      takeout = TakeOut.new(message_sender)
+      order = Order.new
+      order.add_dish("icecream", 999)
+
+      expect { takeout.process(order) }.to raise_error("Invalid order")
+      expect(message_sender).not_to have_received(:create)
+    end
+
   end
 
 end
