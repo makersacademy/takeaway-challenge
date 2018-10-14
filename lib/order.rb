@@ -1,8 +1,10 @@
 require_relative 'menu'
 require_relative 'dish'
+require_relative 'text'
+require 'twilio-ruby'
 
 class Order
-  attr_reader :basket, :menu
+  attr_reader :basket, :menu, :phone_number
 
   def initialize(menu)
     @menu = menu
@@ -42,7 +44,11 @@ class Order
 
   def check_total(expected_total)
     bill = @basket.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
-    raise "Sorry, your total is #{bill}, not #{expected_total}" if expected_total != bill
-    "Your order totals to #{bill}"
+    raise "Sorry, your total is £#{bill}, not £#{expected_total}" if expected_total != bill
+    "Your order totals to £#{bill}"
+  end
+
+  def confirm
+    text = Text.new.send_sms
   end
 end

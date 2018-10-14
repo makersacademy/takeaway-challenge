@@ -1,13 +1,13 @@
 require 'order'
+require 'vcr'
 
 describe Order do
-subject(:order) { Order.new(menu) }
-let(:menu) { instance_double Menu, dishes: [kungpaochicken, beeflomein, shanghaidumplings] }
-let(:kungpaochicken) { instance_double Dish, dish_name: 'kungpaochicken', price: 3 }
-let(:beeflomein) { instance_double Dish, dish_name: 'beeflomein', price: 2 }
-let(:shanghaidumplings) { instance_double Dish, dish_name: 'shanghaidumplings', price: 1 }
-let(:dish_off_menu) { instance_double Dish, dish_name: 'not on menu', price: 0 }
-
+  subject(:order) { Order.new(menu) }
+  let(:menu) { instance_double Menu, dishes: [kungpaochicken, beeflomein, shanghaidumplings] }
+  let(:kungpaochicken) { instance_double Dish, dish_name: 'kungpaochicken', price: 3 }
+  let(:beeflomein) { instance_double Dish, dish_name: 'beeflomein', price: 2 }
+  let(:shanghaidumplings) { instance_double Dish, dish_name: 'shanghaidumplings', price: 1 }
+  let(:dish_off_menu) { instance_double Dish, dish_name: 'not on menu', price: 0 }
 
   describe '#initialize' do
     it 'defaults with an empty basket' do
@@ -26,11 +26,11 @@ let(:dish_off_menu) { instance_double Dish, dish_name: 'not on menu', price: 0 }
     end
     it 'adds dishes to @basket that are on the @menu' do
       subject.add(kungpaochicken)
-      expect(subject.basket).to eq [{dish: kungpaochicken, amount: 1}]
+      expect(subject.basket).to eq [{ dish: kungpaochicken, amount: 1 }]
     end
     it 'adds multiple dishes if amount varies' do
       subject.add(kungpaochicken, 3)
-      expect(subject.basket).to eq [{dish: kungpaochicken, amount: 3}]
+      expect(subject.basket).to eq [{ dish: kungpaochicken, amount: 3 }]
     end
   end
 
@@ -79,16 +79,20 @@ let(:dish_off_menu) { instance_double Dish, dish_name: 'not on menu', price: 0 }
       subject.add(kungpaochicken, 2)
       subject.add(beeflomein, 2)
       subject.add(shanghaidumplings, 2)
-      expect(subject.check_total(12)).to eq "Your order totals to 12"
+      expect(subject.check_total(12)).to eq "Your order totals to £12"
     end
 
     it 'should return a correction if the expected total is different' do
       subject.add(kungpaochicken, 2)
       subject.add(beeflomein, 2)
       subject.add(shanghaidumplings, 2)
-      expect { subject.check_total(13) }.to raise_error("Sorry, your total is 12, not 13")
+      expect { subject.check_total(13) }.to raise_error("Sorry, your total is £12, not £13")
     end
   end
 
-
+  describe '#confirm' do
+    it 'should create a new text instance when confirmed' do
+      expect(subject.confirm).to eq Text.new.send_sms
+    end
+  end
 end
