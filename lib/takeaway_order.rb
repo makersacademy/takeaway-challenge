@@ -11,4 +11,8 @@ attr_reader :order, :price, :menu
    @order[name] = quantity
  end
 
+ def return_total
+    @order.to_a.each { |dish, amount| @price += @menu.dishes[dish] * amount }
+end
+
 end
