@@ -27,4 +27,13 @@ describe Takeaway do
 
   end
 
+  describe '#print_order' do
+
+    it "should print out order" do
+      expect(order).to receive(:format_order)
+      subject.print_order
+    end
+
+  end
+
 end

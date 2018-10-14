@@ -15,4 +15,8 @@ class Takeaway
     @order.add_to_order(dish, quantity)
   end
 
+  def print_order
+    @order.format_order
+  end
+
 end
