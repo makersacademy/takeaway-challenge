@@ -37,6 +37,8 @@ $ irb
 > nandos.place_order(16)
 => "Order placed. You will receive a confirmation text message shortly"
 ```
+
+![Screenshot](./docs/screenshot.png)
 Instructions
 -------
 
