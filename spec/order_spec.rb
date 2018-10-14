@@ -47,31 +47,26 @@ describe Order do
   end
 
   describe '#order_summary' do
-
-    it 'Shows summary for single item' do
-      order.add_items('pizza', 1)
-      expect(order.order_summary).to eq('pizza x1 = £6.99')
+    context 'When nothing has been ordered' do
+      it 'Raises error if nothing has been ordered' do
+        expect { order.order_summary }.to raise_error('You have not ordered any dishes.')
+      end
     end
 
-    it 'Shows summary for single item with quantity greater than 1' do
-      order.add_items('pizza', 2)
-      expect(order.order_summary).to eq('pizza x2 = £13.98')
+    context 'When a single item has been ordered' do
+      it 'Shows summary with correct amounts and subtotals' do
+        order.add_items('pizza', 1)
+        expect(order.order_summary).to eq('pizza x1 = £6.99')
+      end
     end
 
-    it 'Shows summary for multiple items with a quantity of 1' do
-      order.add_items('pizza', 1)
-      order.add_items('burger', 1)
-      expect(order.order_summary).to eq('pizza x1 = £6.99, burger x1 = £3')
-    end
-
-    it 'Shows summary for multiple items of multiple quantities' do
-      order.add_items('pizza', 1)
-      order.add_items('burger', 2)
-      expect(order.order_summary).to eq('pizza x1 = £6.99, burger x2 = £6')
-    end
-
-    it 'Raises error if nothing has been ordered' do
-      expect { order.order_summary }.to raise_error('You have not ordered any dishes.')
+    context 'When multiple items have been ordered' do
+      it 'Shows summary with correct amounts and subtotals' do
+        order.add_items('burger', 2)
+        order.add_items('chips', 3)
+        order.add_items('pizza', 1)
+        expect(order.order_summary).to eq('burger x2 = £6.00, chips x3 = £4.50, pizza x1 = £6.99')
+      end
     end
 
   end
@@ -94,7 +89,5 @@ describe Order do
       expect { order.checkout(13.99) }.to raise_error('Incorrect amount. You need to enter the correct order total to checkout.')
     end
   end
-
-
 
 end

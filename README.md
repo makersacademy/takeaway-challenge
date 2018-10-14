@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
 ```
                             _________
               r==           |       |
@@ -14,17 +14,57 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+A weekend challenge set by Makers Academy to tests our understanding of:
+* OOP
+* Test driven development
+* Feature Tests
+* Unit tests
+* Isolating tests through mocking behaviour of dependent classes
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
-Todo
------
+## Setup
+
+To run this application, either download or clone this repository.
+
+Install bundle:
+``` bash
+ gem install bundle
+```
+
+run bundle to install all dependent gems:
+
+``` bash
+bundle
+```
+
+## Example of the app in use
+in IRB:
+
+``` bash
+require './lib/takeaway.rb'
+require './lib/menu.rb'
+require './lib/order.rb'
+require './lib/messenger.rb'
+takeaway = TakeAway.new
+takeaway.add_to_order('pizza', 2)
+takeaway.add_to_order('burger', 1)
+takeaway.order_summary
+  => "pizza x2 = £13.98, burger x1 = £3.00"
+takeaway.total
+  => "£16.98"
+takeaway.checkout(16.98)
+```
+
+## Approach
+To begin I reviewed the brief, user stories and review documentation and created a todo list and considerations checklist to make sure that my solution would include all requirements.
+
+I then created a rough plan of the system I would be creating taking based on the user stories and other considerations I had noted down.
+
+After which, I began working through the user stories.
+
+For each story, I wrote a feature test, then unit tests to reflect any errors or unexpected errors encountered in the feature tests. Once I had tests in place write code that would pass the tests. Once I had something that passed the tests, I refactored.
+
+### Todo
 - [x] Twilio setup
   - [x] Sign up
   - [x] review documentation
@@ -41,40 +81,40 @@ Todo
     - [x] Tests pass
     - [x] Tests Refactored
     - [x] Code Refactored
-- [ ] User story 2
+- [x] User story 2
   - [x] Feature Tests
   - [x] Unit Tests
   - [x] Tests pass
   - [x] Tests Refactored
-  - [ ] Code Refactored
-- [ ] User story 3
+  - [x] Code Refactored
+- [x] User story 3
   - [x] Feature Tests
   - [x] Unit Tests
   - [x] Tests pass
   - [x] Tests Refactored
-  - [ ] Code Refactored
-- [ ] User story 4
+  - [x] Code Refactored
+- [x] User story 4
   - [x] Feature Tests
   - [x] Unit Tests
   - [x] Tests pass
-  - [ ] Tests Refactored
-  - [ ] Code Refactored
+  - [x] Tests Refactored
+  - [x] Code Refactored
 - [x] Gem file contains all dependency gems
-- [ ] README
-  - [ ] Explain your approach to the challenge
-  - [ ] how to set up
-  - [ ] show the full story of how your app is used (from a user's perspective)
+- [x] Edge cases
+- [x] README
+  - [x] Explain your approach to the challenge
+  - [x] how to set up
+  - [x] show the full story of how your app is used (from a user's perspective)
 
-Considerations
-----
+### Considerations
 - [x] use ENV variables and the dotenv gem to ensure that sensitive infomration such as phone numbers and security tokens are not pushed up to public repos on Github.
-- [] Code should be open for extension but closed for modification. For example the menu items should not be hard coded into a restaurant class.
-- [ ] Tests:
+- [x] Code should be open for extension but closed for modification. For example the menu items should not be hard coded into a restaurant class.
+- [x] Tests:
   - [x] Should test real behaviours not stubs
   - [x] Stubb out the Twilio API calls but this still needs testing - see Docs/reviews
   - [x] All public methods needs to be tested
 - [x] Ensure that methods that should not be available in the public interface are made private
-- [ ] Classes
+- [x] Classes
   - [x] employ dependency injection
   - [x] Should separate concerns
   - [x] Each object should have only limited knowledge about other units: only units "closely" related to the current unit.
@@ -92,13 +132,13 @@ Considerations
 - [x] Use the Gemfile to manage your gems
 - [x] Tests isolated using mocks and/or stubs (do not send texts when your tests are run)
   - [x] However, if run in IRB and the order is placed, the text should actually be sent
-- [ ] Methods should use have a single responsibility
+- [x] Methods should use have a single responsibility
 - [x] 100% Test coverage
 - [ ] Code conforms to the Rubocop style guide
 
 
-Rough Plan for solution
-----
+### Plan for solution
+
 Restaurant Class
 * Initialise with instances of menu, order and messaging
 
@@ -116,18 +156,23 @@ Order Class
 
 Menu Class
 * Initiates with a hash of dishes and prices
-* show menu
+* show_menu
   * returns dishes with their prices
 
 Messaging Class
-* Send text message
+* Send_text_message
 
 
+## Instructions
+
+* Challenge time: rest of the day and weekend, until Monday 9am
+* Feel free to use google, your notes, books, etc. but work on your own
+* If you refer to the solution of another coach or student, please put a link to that in your README
+* If you have a partial solution, **still check in a partial solution**
+* You must submit a pull request to this repo with your code by 9am Monday morning
 
 
-Task
------
-
+## Task
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:

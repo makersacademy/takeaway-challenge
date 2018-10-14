@@ -35,14 +35,14 @@ describe 'User Stories' do
       it 'Allows a customer to add multiple items in multiple quantities to their order' do
         takeaway.add_to_order('pizza', 2)
         takeaway.add_to_order('burger', 1)
-        expect(takeaway.order_summary).to eq('pizza x2 = £13.98, burger x1 = £3')
+        expect(takeaway.order_summary).to eq('pizza x2 = £13.98, burger x1 = £3.00')
       end
 
       it 'Allows customer to add the same items multiple times' do
         takeaway.add_to_order('pizza', 1)
         takeaway.add_to_order('burger', 1)
         takeaway.add_to_order('pizza', 1)
-        expect(takeaway.order_summary).to eq('pizza x2 = £13.98, burger x1 = £3')
+        expect(takeaway.order_summary).to eq('pizza x2 = £13.98, burger x1 = £3.00')
       end
     end
 

@@ -2,7 +2,7 @@ require 'messenger'
 
 describe Messenger do
   let(:messages) { double :Messages, :create => true }
-  let(:twilio_client) { double :Client, :messages => messages}
+  let(:twilio_client) { double :Client, :messages => messages }
 
   subject(:messenger) { described_class.new(client: twilio_client) }
 

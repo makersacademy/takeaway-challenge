@@ -12,14 +12,18 @@ class Order
   end
 
   def order_summary
-    # This methods was not required to meet the user stories but the review documentation showed it in the 'Instruction on README' section so I included it
+    # This methods was not required to complete the user stories
+    # Review doc showed it in 'Instruction on README' section so I included it
     raise('You have not ordered any dishes.') unless items_ordered?
-    @basket.map{ |dish, quantity|
-      "#{dish} x#{quantity} = £#{get_price(dish) * quantity}"}.join(', ')
+    @basket.map { |dish, quantity|
+      "#{dish} x#{quantity} = #{to_currency(get_price(dish) * quantity)}"
+    }.join(', ')
+
+
   end
 
   def total
-    "£#{total_order}"
+    to_currency(total_order)
   end
 
   def checkout(amount)
@@ -34,7 +38,8 @@ class Order
 
   def total_order
     @basket.map { |dish, quantity|
-      get_price(dish) * quantity }.sum
+      get_price(dish) * quantity
+    }.sum
   end
 
   def correct_amount?(amount)
@@ -42,7 +47,11 @@ class Order
   end
 
   def items_ordered?
-    @basket.length > 0
+    @basket.length.positive?
+  end
+
+  def to_currency(amount)
+    format("£%.2f", amount)
   end
 
 end

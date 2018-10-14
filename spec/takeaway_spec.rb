@@ -24,12 +24,8 @@ describe TakeAway do
 
   describe '#add_to_order' do
 
-    it 'Accepts 1 argument' do
-      expect(takeaway).to respond_to(:add_to_order).with(1).arguments
-    end
-
-    it 'Accepts 2 arguments' do
-      expect(takeaway).to respond_to(:add_to_order).with(2).arguments
+    it 'Accepts either 1 or 2 argument' do
+      expect(takeaway).to respond_to(:add_to_order).with(1..2).arguments
     end
 
     it 'Calls add_items method on Order class' do
