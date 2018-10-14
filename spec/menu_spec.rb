@@ -11,8 +11,10 @@ describe Menu do
     it "has some drinks" do
       expect(menu.items).to include coke
     end
-    it "lists the food items with price" do
-      expect(menu.view).to eq ["Burger - £6", "Coke - £2"]
+    it 'should puts the menu with price' do
+      menu = Menu.new(burger)
+      expect(STDOUT).to receive(:puts).with('Burger - £6')
+      menu.view
     end
   end
 end

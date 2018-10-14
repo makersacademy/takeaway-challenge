@@ -7,7 +7,7 @@ class Menu
   end
 
   def view
-    @items.map { |i| "#{i.name} - £#{i.price}" }
+    @items.each { |i| puts "#{i.name} - £#{i.price}" }
   end
 
 end

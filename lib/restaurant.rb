@@ -23,5 +23,6 @@ class Restaurant
   end
 
   def pay
+    
   end
 end

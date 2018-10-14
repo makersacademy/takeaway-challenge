@@ -11,4 +11,9 @@ describe Order do
   it "can view the menu" do
     expect(subject.view).to include burger, coke
   end
+  context "calculating the total cost" do
+    it "should be £16 for 2x burger and 2x coke" do
+      expect(subject.total).to eq 16
+    end
+  end
 end
