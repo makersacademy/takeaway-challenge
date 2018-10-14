@@ -1,4 +1,5 @@
-require 'dotenv/load'
+require 'dotenv'
+Dotenv.load('var.env')
 
 class Messenger
 
