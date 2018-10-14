@@ -16,9 +16,7 @@ class Order
   end
 
   def total
-    @order.map do |item|
-      price_of_item(item)
-    end.flatten.reduce(:+)
+    @order.map { |item| price_of_item(item) }.flatten.reduce(:+)
   end
 
   private
