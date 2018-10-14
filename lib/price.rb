@@ -13,7 +13,7 @@ class Price
     order.each do |dish, quantity|
       cost += quantity * item_price(dish.to_s)
     end
-    return cost
+    return "£#{sprintf( '%.2f', cost)}"
   end
 
 end

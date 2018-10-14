@@ -8,7 +8,7 @@ class CustomerContact
 
   def send_message(total, details = {from: ENV["TWILIO_NUMBER"],
       to: ENV["MY_NUMBER"],
-      body: "Thank you for your order - your total is £#{total}. Your food will be delivered by #{order_time}."
+      body: "Thank you for your order - your total is #{total}. Your food will be delivered by #{order_time}."
       })
 
     from = ENV["TWILIO_NUMBER"] # Your Twilio number

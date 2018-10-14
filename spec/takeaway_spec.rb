@@ -6,7 +6,8 @@ describe Takeaway do
   let(:menu) { double :menu, items: [{dish: "burger", price: 4}] }
   let(:format) { double :format, format_menu: "Burger - £4.00"}
   let(:order) { double :order, add_to_order: "burger x2" }
-  let(:price) { double :price }
+  let(:price) { double :price, total: 5.00 }
+  let(:contact) { double :customercontact, send_message: "sent" }
 
   describe '#show_menu' do
 
@@ -32,6 +33,17 @@ describe Takeaway do
     it "should print out order" do
       expect(order).to receive(:format_order)
       subject.print_order
+    end
+
+  end
+
+  describe '#finish_order' do
+
+    it "should finish order and send text" do
+      expect(price).to receive(:total)
+      allow(order).to receive(:order)
+      allow(contact).to receive(:send_message).with("£5.00")
+      subject.finish_order
     end
 
   end

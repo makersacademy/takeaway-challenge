@@ -18,11 +18,11 @@ describe Price do
   describe '#total' do
 
     it "should return total of order" do
-      expect(subject.total(order.order)).to eq(10)
+      expect(subject.total(order.order)).to eq("£10.00")
     end
 
     it "should return total of order2" do
-      expect(subject.total(order2.order)).to eq(22)
+      expect(subject.total(order2.order)).to eq("£22.00")
     end
 
   end
