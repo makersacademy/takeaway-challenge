@@ -70,6 +70,10 @@ describe Order do
       expect(order.order_summary).to eq('pizza x1 = £6.99, burger x2 = £6')
     end
 
+    it 'Raises error if nothing has been ordered' do
+      expect { order.order_summary }.to raise_error('You have not ordered any dishes.')
+    end
+
   end
 
   describe '#total' do
@@ -82,6 +86,11 @@ describe Order do
 
   describe '#checkout' do
     it 'Raises error if amount inputted does not match order total' do
+      expect { order.checkout(0) }.to raise_error('You have not ordered any dishes.')
+    end
+
+    it 'Raises error if amount inputted does not match order total' do
+      order.add_items('burger', 2)
       expect { order.checkout(13.99) }.to raise_error('Incorrect amount. You need to enter the correct order total to checkout.')
     end
   end
