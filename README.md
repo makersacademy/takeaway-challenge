@@ -1,6 +1,6 @@
 Takeaway Challenge
 ==================
-This challenge was completed using TDD. The unit tests were written in RSpec (and isolated using doubles) and the feature tests were performed in `irb`.
+This challenge was completed using TDD. The unit tests were written in RSpec (isolated using doubles/spies) and the feature tests were performed in `irb`. The text sending functionality was implemented using the Twilio API and the `dotenv` gem to keep sensitive information (i.e. phone numbers and security tokens) private.
 ```
                             _________
               r==           |       |
