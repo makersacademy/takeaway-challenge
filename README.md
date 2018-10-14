@@ -65,7 +65,7 @@ Here is an example of my code being used:
 2.5.0 :003 > takeaway = Takeaway.new(PizzeriaMenu, Basket, Text)
  => #<Takeaway:0x00007fd39225e320 @menu=#<PizzeriaMenu:0x00007fd39225e2d0 @dishes=[{"Margherita"=>7.5}, {"Bufala"=>8}, {"Anchovy"=>8}, {"Pepperoni"=>8.5}, {"Calabria"=>8.5}, {"Quattro Formaggio"=>10}, {"Truffle"=>12.5}, {"Gold Pizza"=>1200}], @title="* * * PAPA'S * PIZZERIA * * *\n">, @basket_class=Basket, @basket=nil, @text=Text>
 
- # The list_dishes method can be used to view the menu (it will appear without whitespace until used outside of irb)
+ # The list_dishes method can be used to view the menu (it will appear unformatted until used outside of irb)
 2.5.0 :004 > takeaway.list_dishes
  => "* * * PAPA'S * PIZZERIA * * *\n1) Margherita: £7.50\n2) Bufala: £8.00\n3) Anchovy: £8.00\n4) Pepperoni: £8.50\n5) Calabria: £8.50\n6) Quattro Formaggio: £10.00\n7) Truffle: £12.50\n8) Gold Pizza: £1200.00\n"
 
