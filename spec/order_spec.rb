@@ -22,14 +22,16 @@ describe Order do
   end
 
   describe '#place_order' do
-    it 'shows the items you have ordered, and the total cost' do
-      order.choose("Roasted Vegetable")
-      order.choose("Chorizo")
-      expect(order.confirm_order(notification)).to eq "You have ordered: Roasted Vegetable and Chorizo. Total due: £21"
-    end
-    it 'shows the item you have ordered, and the total cost' do
-      order.choose("Roasted Vegetable")
-      expect(order.confirm_order(notification)).to eq "You have ordered: Roasted Vegetable. Total due: £9"
+    context 'when I have chosen what I want' do
+      it 'shows the items ordered, and the total cost' do
+        order.choose("Roasted Vegetable")
+        order.choose("Chorizo")
+        expect(order.confirm_order(notification)).to eq "You have ordered: Roasted Vegetable and Chorizo. Total due: £21"
+      end
+      it 'shows the item ordered, and the total cost' do
+        order.choose("Roasted Vegetable")
+        expect(order.confirm_order(notification)).to eq "You have ordered: Roasted Vegetable. Total due: £9"
+      end
     end
 
     before do
