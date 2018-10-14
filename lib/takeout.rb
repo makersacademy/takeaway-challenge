@@ -20,11 +20,22 @@ class TakeOut
   end
 
   def process(order)
+    raise "Invalid order" unless valid order
+
     @sender.create(
       from: '+441303720101',
       to: '+44 7817 933608',
       body: "Your $#{format("%.2f", order.total)} order will arrive in 1 hour."
     )
+  end
+
+private
+  def valid(order)
+    order.basket.each do |item|
+      name = item.keys[0]
+      return false unless MENU.include?(name)
+    end
+    true
   end
 
 end

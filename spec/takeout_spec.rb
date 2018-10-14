@@ -23,9 +23,20 @@ describe TakeOut do
       expect(message_sender).to have_received(:create).with({
         :from => '+441303720101',
         :to => '+44 7817 933608',
-        :body => "Your $9.00 order will arrive in 1 hour."
+        :body => "Your $8.00 order will arrive in 1 hour."
       })
     end
+
+    it "does not send text when order contains an item not in the menu" do
+      message_sender = spy('message_sender')
+      takeout = TakeOut.new(message_sender)
+      order = Order.new
+      order.add_dish('invalid-item', 39)
+
+      expect { takeout.process(order) }.to raise_error("Invalid order")
+      expect(message_sender).not_to have_received(:create)
+    end
+
   end
 
 end
