@@ -39,6 +39,11 @@ class Takeaway
     @text.send_sms
   end
 
+  def clear_order
+    @order.clear_basket
+    @order.clear_total
+  end
+
   private
 
   def get_price(item)

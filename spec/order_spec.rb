@@ -26,4 +26,16 @@ describe Order do
     expect(subject.order_summary).to eq("Item: pizza, Quantity: 2\nORDER TOTAL: £14.0")
   end
 
+  it 'clears basket' do
+    subject.add_to_basket("pizza", 2)
+    subject.clear_basket
+    expect(subject.basket).to be_empty
+  end
+
+  it 'clears total' do
+    subject.add_to_total(7.00, 2)
+    subject.clear_total
+    expect(subject.total).to eq(0)
+  end
+
 end

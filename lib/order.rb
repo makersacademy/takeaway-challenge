@@ -21,4 +21,12 @@ class Order
     end.join("\n") << "\nORDER TOTAL: £#{total}"
   end
 
+  def clear_basket
+    @basket = []
+  end
+
+  def clear_total
+    @total = 0
+  end
+
 end
