@@ -3,4 +3,15 @@ class Menu
   def initialize(categories)
     @categories = categories
   end
+
+  def find_item_by_name(item_name)
+    res = nil
+    @categories.each do |category|
+      category.items.each do |item|
+        res = item if item.name == item_name
+      end
+    end
+    raise 'No item like that' if res.nil?
+    res
+  end
 end

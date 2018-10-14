@@ -5,8 +5,8 @@ class DishView
 
   def display
     name = "#{@item.name}".ljust(30)
-    price = "£#{@item.price}\n"
-    "#{name}#{price}"
+    price = "£#{@item.price}"
+    "  #{name}#{price}"
   end
 
 end

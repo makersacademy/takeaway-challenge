@@ -1,4 +1,4 @@
-require 'category_view'
+require_relative 'category_view'
 
 class MenuView
 
@@ -8,7 +8,7 @@ class MenuView
   end
 
   def display
-    @menu.categories.reduce("Menu\n") do |sum, category|
+    @menu.categories.reduce("MENU\n") do |sum, category|
       sum + @category_view_class.new(category).display
     end
   end

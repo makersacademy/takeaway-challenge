@@ -11,7 +11,7 @@ describe MenuView do
     subject { described_class.new(menu, category_view_class) }
 
     it "displays the categories' views' in the menu" do
-      expect(category_view_class).to receive(:new).with(category).and_return(category_view)
+      expect(category_view_class).to receive(:new).with(category)
       subject.display
     end
 

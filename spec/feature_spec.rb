@@ -1,7 +1,0 @@
-require 'takeaway'
-require 'menu_factory'
-require 'menu_view'
-require 'category'
-require 'category_view'
-require 'dish'
-require 'dish_view'
