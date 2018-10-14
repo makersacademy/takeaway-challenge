@@ -10,13 +10,13 @@ describe TakeOut do
   end
 
   describe '#process(order)' do
-    it 'sends a text' do
+    it 'sends a confirmation text when order is valid' do
       message_sender = spy('message_sender')
       takeout = TakeOut.new(message_sender)
 
       order = Order.new
-      order.add_dish('pizza', 5)
-      order.add_dish('chicken soup', 4)
+      order.add_dish('icecream', 3)
+      order.add_dish('chicken soup', 5)
 
       takeout.process(order)
 
