@@ -69,7 +69,9 @@ end
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 describe SendSMS do
-  let(:confirmation) { SendSMS.new }
+  let(:confirmation) { Order.new(menu.new) { include SendSMS } }
+  let(:menu) { double(:menu, new: items) }
+    let(:items) { [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }] }
 
   describe '#time' do
     it 'tells me the time that my order was placed' do

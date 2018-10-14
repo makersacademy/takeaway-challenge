@@ -4,7 +4,7 @@ describe Order do
   let(:items) { [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }] }
   let(:menu) { double(:menu, new: items) }
   let(:order) { Order.new(menu.new) }
-  let(:notification) { double(:send_sms, send_message: "Message Sent") }
+  let(:notification) { order { include SendSMS } }
 
   describe '#choose' do
     it 'lets me choose the item that I want' do

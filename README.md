@@ -12,7 +12,7 @@ As this is a command line app, clone the repo, then open then require all of the
 
 `2.5.0 :004 > menu =  Menu.new([{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }])
  => #<Menu:0x00007f9eaf1398b8 @items=[{"Margherita"=>8}, {"Roasted Vegetable"=>9}, {"Chorizo"=>12}]>`
- 
+
 `2.5.0 :005 > order = Order.new(menu.items)`
 
 2. Create a new order object. This needs access to the menu items.
@@ -49,4 +49,4 @@ The main files that you will need the items in the 'lib' folder. This includes:
 I used TDD and OOD to design and create this program. I aimed to create as little dependancies as possible using polymorphism and doubles.
 
 ## How to Test:
-To test this program, please use rspec. Note that this will run both unit tests (menu_spec.rb and order_spec.rb) and also feature tests (user_stories_spec_rb).
+To test this program, please use rspec. Note that this will run both unit tests (./menu_spec.rb ./order_spec.rb and ./send_sms_sepc.rb) and also feature tests (./feature_tests/user_stories_spec_rb).

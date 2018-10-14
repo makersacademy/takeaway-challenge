@@ -1,4 +1,8 @@
+require 'send_sms'
+
 class Order
+
+  include SendSMS
 
   def initialize(menu_items)
     @menu = menu_items
