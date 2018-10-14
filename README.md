@@ -42,14 +42,19 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+## Aproach
+* 3 Classes: Menu, Order & Takeaway
+* User interacts with the Takeaway Class which forwards methods on to Menu & Order
+
 ## Features
 
-* Can see a list of items with prices
-* Can select some number of several available dishes
-* Can view an order summary with a breakdown of items ordered & quantities
-* Can view basket
-* Can view order total
-* Can receive a text message on placing an order
+* Can see a list of items with prices `print_menu`
+* Can select some number of several available dishes `add_to_order(item, quantity = 1)`
+* Can view an order summary with a breakdown of items ordered & quantities `order_summary`
+* Can view basket `basket`
+* Can view order total `total`
+* Can receive a text message on placing an order if correct sum is paid `place_order(sum)`
+* Can clear order (resetting basket & total) `clear_order`
 
 
 ## Getting started
