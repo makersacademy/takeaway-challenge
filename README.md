@@ -40,6 +40,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ## My Approach
 
 I tackled this challenge by creating 4 types of classes: Takeaway, Menu, Basket, and Text. I created 2 different menus, allowing the user to load the menu that they prefer when ordering dishes. The way to use the app is as follows:
+* The user directly interacts only with the Takeaway class to place orders.
 * The preferred menu, the basket, and the text classes are loaded into the Takeaway class.
 * The user can `list_dishes` to see the menu.
 * Items can be added to the basket with `add_dish`, specifying the name of the item and the quantity. If the name given isn't on the menu, the user will see an error message.
