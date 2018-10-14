@@ -15,11 +15,18 @@ class Order
   end
 
   def view
-    @current_order.each { |i| puts "#{i.name} - £#{i.price}" }
+    "Your Order\n~~~~~~~~~~~\n#{list_items}\nTotal = £#{total}"
   end
 
   def total
-    @current_order.map {|i| i.price}.sum
+    @current_order.map { |i| i.price }.sum
+  end
+
+  private
+
+  def list_items
+    return "Nothing in basket!" if @current_order.empty?
+    @current_order.each { |i| puts "#{i.name} - £#{i.price}" }
   end
 
 end

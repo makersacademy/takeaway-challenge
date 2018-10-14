@@ -1,7 +1,5 @@
 class Restaurant
 
-  attr_reader :order
-
   def initialize(*foods)
     @menu = Menu.new(foods)
   end
@@ -10,19 +8,23 @@ class Restaurant
     @order = Order.new(mobile_num)
   end
 
-  def add_to_basket(item, quantity)
+  def add(item, quantity)
     @order.add(item, quantity)
+  end
+
+  def remove(item)
+    @order.remove(item)
   end
 
   def read_menu
     @menu.view
   end
 
-  def check_bill
+  def view_order
     @order.view
   end
 
   def pay
-    
+    check_bill
   end
 end
