@@ -18,16 +18,6 @@ describe Text do
   let(:time) { (Time.now + described_class::HOUR).strftime("%H:%M") }
   let(:message) { "Thanks for your order! It will be delivered by #{time}." }
 
-  describe "#class constants" do
-    it { expect(described_class::ACC_SID).to eq ENV['ACC_SID'] }
-
-    it { expect(described_class::AUTH_TOKEN).to eq ENV['AUTH_TOKEN'] }
-
-    it { expect(described_class::FROM).to eq ENV['FROM'] }
-
-    it { expect(described_class::TO).to eq ENV['TO'] }
-  end
-
   describe "#send" do
     before do
       allow(subject).to receive(:create_body).and_return message

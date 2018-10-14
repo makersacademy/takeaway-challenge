@@ -1,9 +1,5 @@
 class Text
-  ACC_SID = 'ACeeb78433dcba23619b98cde03e52ad52'
-  AUTH_TOKEN = 'a94d23d1ddf68e710fc6a823c7e50380'
-  CLIENT = Twilio::REST::Client.new(ACC_SID, AUTH_TOKEN)
-  FROM = '+441202286113'
-  TO = '+447982787204'
+  CLIENT = Twilio::REST::Client.new(ENV['ACC_SID'], ENV['AUTH_TOKEN'])
   HOUR = 3600
 
   def initialize
@@ -11,7 +7,7 @@ class Text
   end
 
   def send
-    CLIENT.messages.create(from: FROM, to: TO, body: create_body)
+    CLIENT.messages.create(from: ENV['FROM'], to: ENV['TO'], body: create_body)
     "Thanks! Look out for a confirmation text."
   end
 
