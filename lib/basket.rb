@@ -3,7 +3,7 @@ class Basket
   attr_reader :basket
 
   def initialize
-    @basket = { }
+    @basket = {}
   end
 
   def view

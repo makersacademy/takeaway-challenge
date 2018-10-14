@@ -1,6 +1,5 @@
-require 'menu'
-require 'basket'
-require 'pry'
+require_relative '../lib/menu.rb'
+require_relative '../lib/menu.rb'
 
 class Takeaway
 
@@ -14,9 +13,9 @@ class Takeaway
   end
 
   def order(dish)
-    fail "Dish unavailable" if !@menu.list.has_key? dish
+    fail "Dish unavailable" unless @menu.list.has_key? dish
     cost = @menu.list[dish]
-    @current_basket.basket[dish]=cost
+    @current_basket.basket[dish] = cost
   end
 
   def review_order
