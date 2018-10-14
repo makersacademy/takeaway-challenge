@@ -12,10 +12,8 @@ class Text
 
     @client.messages.create(
          body: 'Your order was placed and will be delivered within one hour',
-         from: '+4477...',
-         to: '+4477...'
-       )
-
+         from: '+447...',
+         to: '+441...')
   end
 
 end

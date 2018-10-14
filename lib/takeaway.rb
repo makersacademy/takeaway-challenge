@@ -34,9 +34,10 @@ class Takeaway
     @order.total
   end
 
-  def place_order
-		@text.send_sms
-	end
+  def place_order(sum)
+    raise "Incorrect sum given" if sum != @order.total
+    @text.send_sms
+  end
 
   private
 
