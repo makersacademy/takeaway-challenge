@@ -8,7 +8,7 @@ class CategoryView
   end
 
   def display
-    @category.items.reduce("") do |sum, dish|
+    @category.items.reduce("#{@category.name.capitalize}\n") do |sum, dish|
       sum + @dish_view_class.new(dish).display
     end
   end

@@ -7,7 +7,7 @@ describe CategoryView do
   let(:dish_view) { double :dish_view, display: "dishes" }
   let(:dish_view_class) { double :dish_view_class, new: dish_view }
   let(:items) { [dish] }
-  let(:category) { double :category, items: items }
+  let(:category) { double :category, name: name, items: items }
   subject { described_class.new(category, dish_view_class) }
 
   describe "#display" do
@@ -19,6 +19,11 @@ describe CategoryView do
     it "displays the items' views' in the category" do
       allow(dish_view_class).to receive(:new).with(dish).and_return(dish_view)
       expect(dish_view).to receive(:display)
+      subject.display
+    end
+
+    it "displays the category name" do
+      expect(category).to receive(:name)
       subject.display
     end
 

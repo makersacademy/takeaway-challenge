@@ -2,15 +2,24 @@ require 'menu_view'
 
 describe MenuView do
 
-  context 'display' do
-    let(:item1) { double :item1, name: 'item1', price: 8 }
-    let(:item2) { double :item2, name: 'item2', price: 8 }
-    let(:item3) { double :item3, name: 'item3', price: 8 }
-    let(:menu) { [item1, item2, item3] }
-    subject { described_class.new(menu) }
+  describe 'display' do
+    let(:category) { double :category, name: 'main', items: "items" }
+    let(:categories) { [category] }
+    let(:category_view) { double :category_view, display: 'category' }
+    let(:category_view_class) { double :category_view_class, new: category_view }
+    let(:menu) { double :menu, categories: categories }
+    subject { described_class.new(menu, category_view_class) }
 
-    it 'returns the menu' do
-      expect(subject.display).to eq(menu)
+    it "displays the categories' views' in the menu" do
+      expect(category_view_class).to receive(:new).with(category).and_return(category_view)
+      subject.display
     end
+
+    it "displays the categories' views' in the menu" do
+      allow(category_view_class).to receive(:new).with(category).and_return(category_view)
+      expect(category_view).to receive(:display)
+      subject.display
+    end
+  
   end
 end

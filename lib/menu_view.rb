@@ -1,11 +1,16 @@
+require 'category_view'
+
 class MenuView
 
-  def initialize(menu)
+  def initialize(menu, category_view_class = CategoryView)
     @menu = menu
+    @category_view_class = category_view_class
   end
 
   def display
-    @menu
+    @menu.categories.reduce("Menu\n") do |sum, category|
+      sum + @category_view_class.new(category).display
+    end
   end
 
 end
