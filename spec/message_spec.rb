@@ -6,7 +6,7 @@ describe Message do
 
   describe "#send" do
     it "should create a new txt message" do
-      expect(client).to receive(:create)
+      expect(client).to receive_message_chain(:messages, :create)
       subject.send
     end
   end
