@@ -4,7 +4,8 @@ require_relative 'message'
 
 class Takeaway
 
-  def initialize(menu: Menu.new, order: Order.new, txt_message: Message.new)
+  def initialize(menu: NandosMenu.new, order: Order.new,
+    txt_message: Message.new)
     @menu = menu
     @order = order
     @txt_message = txt_message
@@ -16,7 +17,7 @@ class Takeaway
 
   def add_to_order(dish, quantity)
     @order.add(dish, quantity)
-    "Added to your order"
+    "Added #{quantity} x #{dish} to your order"
   end
 
   def current_order

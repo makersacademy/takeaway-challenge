@@ -24,6 +24,11 @@ describe Takeaway do
       expect(order).to receive(:add).with("Half Chicken", 2)
       subject.add_to_order("Half Chicken", 2)
     end
+
+    it "should tell the user what was added to their order" do
+      allow(order).to receive(:add).with("Half Chicken", 2)
+      expect(subject.add_to_order("Half Chicken", 2)).to eq "Added 2 x Half Chicken to your order"
+    end
   end
 
   describe "#check_total" do
