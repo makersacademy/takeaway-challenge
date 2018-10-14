@@ -17,7 +17,7 @@ class Order
 
   def confirm_order
     total
-    self.send_message
+    send_message
     "You have ordered: #{@items.join(" and ")}. Total due: £#{@total}"
   end
 

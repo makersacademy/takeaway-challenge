@@ -70,7 +70,7 @@ end
 describe SendSMS do
   let(:confirmation) { Order.new(menu.new) { include SendSMS } }
   let(:menu) { double(:menu, new: items) }
-    let(:items) { [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }] }
+  let(:items) { [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }] }
 
   describe '#time' do
     it 'tells me the time that my order was placed' do

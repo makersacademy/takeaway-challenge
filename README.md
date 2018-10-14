@@ -32,13 +32,16 @@ As this is a command line app, clone the repo, then open then require the ./lib/
 
 5. Confirm your order using confirm_order method. They should get a confirmation message with the total due and what they have ordered, as well as the notification
 
-`2.5.0 :010 > order.confirm_order
+`2.5.0 :010 > order.confirm_order`
 
 ### File Manifest:
 The main files that you will need the items in the 'lib' folder. This includes:
 * menu.rb
 * order.rb
 * send_sms.rb
+
+### Gems:
+To run this program the gems required are Twilio-Ruby and Dotenv.
 
 ### My approach to this Challenge
 I used TDD and OOD to design and create this program. I aimed to create as little dependancies as possible using polymorphism and doubles.
