@@ -40,6 +40,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ## My Approach
 
 I tackled this challenge by creating 4 types of classes: Takeaway, Menu, Basket, and Text. I created 2 different menus, allowing the user to load the menu that they prefer when ordering dishes. The way to use the app is as follows:
+* The user directly interacts only with the Takeaway class to place orders.
 * The preferred menu, the basket, and the text classes are loaded into the Takeaway class.
 * The user can `list_dishes` to see the menu.
 * Items can be added to the basket with `add_dish`, specifying the name of the item and the quantity. If the name given isn't on the menu, the user will see an error message.
@@ -47,7 +48,7 @@ I tackled this challenge by creating 4 types of classes: Takeaway, Menu, Basket,
 * The user can then `place_order`, specifying the total cost of their basket. If the incorrect total is given, the user will see an error message and will have to enter the correct total.
 * When the order is successfully placed, a confirmation text will be sent to the user's phone, thanking them for the order and giving them an ETA for delivery (+ 1 hour from the current time).
 
-Because of the way I have structured my code, any type of menu, basket, or text class can be loaded into the takeaway, making the program much more flexible. All units are 100% isolated.
+Because of the way I have structured my code, any type of menu, basket, or text class can be loaded into the takeaway, making the program much more flexible.
 
 Twilio is used to send the texts. I used Webmock to test my texting system effectively without sending texts in the process.
 
@@ -56,6 +57,7 @@ Twilio is used to send the texts. I used Webmock to test my texting system effec
 Here is an example of my code being used:
 
 ```
+$ irb
 2.5.0 :001 > require 'twilio-ruby'
  => true
 2.5.0 :002 > Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].each { |f| require(f) }
@@ -65,7 +67,7 @@ Here is an example of my code being used:
 2.5.0 :003 > takeaway = Takeaway.new(PizzeriaMenu, Basket, Text)
  => #<Takeaway:0x00007fd39225e320 @menu=#<PizzeriaMenu:0x00007fd39225e2d0 @dishes=[{"Margherita"=>7.5}, {"Bufala"=>8}, {"Anchovy"=>8}, {"Pepperoni"=>8.5}, {"Calabria"=>8.5}, {"Quattro Formaggio"=>10}, {"Truffle"=>12.5}, {"Gold Pizza"=>1200}], @title="* * * PAPA'S * PIZZERIA * * *\n">, @basket_class=Basket, @basket=nil, @text=Text>
 
- # The list_dishes method can be used to view the menu (it will appear without whitespace until used outside of irb)
+ # The list_dishes method can be used to view the menu (it will appear unformatted until used outside of irb)
 2.5.0 :004 > takeaway.list_dishes
  => "* * * PAPA'S * PIZZERIA * * *\n1) Margherita: £7.50\n2) Bufala: £8.00\n3) Anchovy: £8.00\n4) Pepperoni: £8.50\n5) Calabria: £8.50\n6) Quattro Formaggio: £10.00\n7) Truffle: £12.50\n8) Gold Pizza: £1200.00\n"
 
