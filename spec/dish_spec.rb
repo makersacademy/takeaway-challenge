@@ -6,7 +6,7 @@ describe Dish do
   let(:type) { :main }
   subject { described_class.new(name, price, type) }
 
-  context 'attributtes' do
+  context 'attributes' do
 
     describe '#name' do
       it 'has a name' do

@@ -1,0 +1,34 @@
+require 'menu_factory'
+
+describe MenuFactory do
+  let(:dish) { double :dish }
+  let(:dish_class) { double :dish_class, new: dish }
+  let(:file_like_object) { double :file_obj }
+  let(:file_name) { 'file_name' }
+  let(:hash_object) { { "main" => [{ "name" => 'item1', 'price' => 8, 'type' => :main }] } }
+  let(:category_obj) { double :category_obj, :<< => true }
+  let(:category_class) { double :category_class, new: category_obj}
+  subject { described_class.new(dish_class, category_class) }
+
+  describe '#create_dishes' do
+    it 'reads json file, and creates a hash from it' do
+      allow(File).to receive(:read).with(file_name).and_return(file_like_object)
+      allow(JSON).to receive(:parse).with(file_like_object).and_return(hash_object)
+      expect(subject).to receive(:make_objects).with(hash_object).and_return(category_obj)
+      subject.create_dishes(file_name)
+    end
+  end
+
+  describe '#make_objects' do
+
+    it 'creates object from an hash' do
+      expect(subject.make_objects(hash_object)).to eq [category_obj]
+    end
+
+    it 'creates objects of the class specified in the initalize' do
+      allow(dish_class).to receive(:new).and_return(dish)
+      expect(category_obj).to receive(:<<).and_return(true)
+      subject.make_objects(hash_object)
+    end
+  end
+end

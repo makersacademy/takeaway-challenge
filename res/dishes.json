@@ -1,68 +1,66 @@
+{
+  "main":
+  [
+    {
+      "name": "Miso Ramen",
+      "price": 8
+    },
+    
+    {
+      "name": "Shoyu Ramen",
+      "price": 9
+    },
+
+    {
+      "name": "Tonkatsu Ramen",
+      "price": 10
+    },
+    
+    {
+      "name": "Duck Donburi",
+      "price": 6
+    },
+
+    {
+      "name": "Yakisoba",
+      "price": 6
+    }
+  ],
+
+"side": 
 [
   {
-    "name": "Miso Ramen",
-    "price": 8,
-    "type": "main"
-  },
-  
-  {
-    "name": "Shoyu Ramen",
-    "price": 9,
-    "type": "main"
-  },
-
-  {
-    "name": "Tonkatsu Ramen",
-    "price": 10,
-    "type": "main"
-  },
-  
-  {
-    "name": "Duck Donburi",
-    "price": 6,
-    "type": "main"
-  },
-
-  {
-    "name": "Yakisoba",
-    "price": 6,
-    "type": "main"
-  },
-
-  {
     "name": "Yasai Gyoza",
-    "price": 3,
-    "type": "side"
+    "price": 3  
   },
   
   {
     "name": "Wakame salad",
-    "price": 2,
-    "type": "side"
+    "price": 2
   },
-  
+], 
+"dessert":
+[
   {
     "name": "Azuki Ice",
-    "price": 3,
-    "type": "dessert"
+    "price": 3
   },
   
   {
     "name": "Ichigo Daifuku",
-    "price": 4,
-    "type": "dessert"
+    "price": 4
   },
-  
+],
+"beverege":
+[
   {
     "name": "Sake",
-    "price": 7,
-    "type": "beverege"
+    "price": 7
   },
   
   {
     "name": "Sparkling Water",
-    "price": 1,
-    "type": "beverege"
+    "price": 1
   }
-  
-]
+] 
+}
