@@ -3,7 +3,7 @@ class Takeaway
     @menu = menu_class.new
     @basket_class = basket_class
     @basket = nil
-    @text = text_class
+    @text_class = text_class
   end
 
   def list_dishes
@@ -28,7 +28,7 @@ class Takeaway
   private
 
   def send_text
-    @text.new.send
+    @text_class.new.send
   end
 
   def basket

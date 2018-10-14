@@ -2,7 +2,7 @@ class Basket
   attr_reader :items
 
   def initialize(menu)
-    @menu = menu
+    @menu = menu.dishes
     @items = []
   end
 
@@ -20,12 +20,12 @@ class Basket
   private
 
   def find_name(name)
-    @menu.dishes.each { |dish| return name if dish.key?(name) }
+    @menu.each { |dish| return name if dish.key?(name) }
     raise "Cannot find the specified dish!"
   end
 
   def find_cost(name, quantity)
-    @menu.dishes.each do |dish|
+    @menu.each do |dish|
       dish.each do |_name, price|
         return price.to_f * quantity if dish.key?(name)
       end
