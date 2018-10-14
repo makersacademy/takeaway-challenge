@@ -10,6 +10,6 @@ describe Takeaway do
   let(:menu) { double(:menu, print: 'Falafel: £3') }
 
   it 'allows the user to see a list of dishes and prices' do
-    expect(takeaway.print_menu).to eq 'Falafel: £3'
+    expect(takeaway.display_menu).to eq 'Falafel: £3'
   end
 end

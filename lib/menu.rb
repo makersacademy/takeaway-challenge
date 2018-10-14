@@ -16,5 +16,4 @@ class Menu
     items.has_key?(item)
   end
 
-
 end
