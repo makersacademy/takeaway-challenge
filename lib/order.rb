@@ -1,6 +1,9 @@
+require_relative 'nandos_menu'
+
 class Order
-  def initialize
-    @order = {}
+  def initialize(menu: NandosMenu.new)
+    @order = []
+    @menu = menu
   end
 
   def current
@@ -8,19 +11,27 @@ class Order
   end
 
   def add(dish, quantity)
-    @order[dish] = quantity
+    @order << { dish => quantity }
   end
 
   def total
-    @order.map { |dish, quantity|
-      Menu::MENU[dish] * quantity
-    }.reduce(:+)
+    @order.map do |item|
+      price_of_item(item)
+    end.flatten.reduce(:+)
   end
 
   private
 
   def order
-    @order.map { |dish, quantity| "#{quantity} x #{dish}" }.join("\n")
+    @order.map { |item|
+      item.map { |dish, quantity| "#{quantity} x #{dish}" }
+    }.join("\n")
+  end
+
+  def price_of_item(item)
+    item.map do |dish, quantity|
+      @menu.dishes[dish] * quantity
+    end
   end
 
 end
