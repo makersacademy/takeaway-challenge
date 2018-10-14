@@ -92,7 +92,7 @@ describe Order do
 
   describe '#confirm' do
     it 'should create a new text instance when confirmed' do
-      expect(subject.confirm).to eq Text.new.send_sms
+      expect(subject.confirm).to be_an_instance_of(Text)
     end
   end
 end

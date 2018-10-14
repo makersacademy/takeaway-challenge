@@ -13,6 +13,7 @@ class Text
 
   def initialize
     @time = time
+    @send_sms = send_sms
   end
 
 

@@ -49,6 +49,6 @@ class Order
   end
 
   def confirm
-    text = Text.new.send_sms
+    text = Text.new
   end
 end
