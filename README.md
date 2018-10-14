@@ -77,3 +77,26 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+HOW IT WORKS:
+
+1. User can view the menu without placing an order
+    menu = Menu.new
+    menu.list
+2. User can start an order
+    order = Order.new
+3. User can add items to their basket
+    order.add_to_order('veggie burger', 4)
+4. If a quantity is not specified, the programme assumes a quantity of 1
+    order.add_to_order('pizza')
+    basket = {'veggie burger' => 4, 'pizza' => 1}
+5. If user requests and item that is not on the menu, an error is raised
+    order.add_to_order('tuna sandwich')
+    RuntimeError (Item is unavailable)
+6. User can find out total per item
+    order.order_total
+    *This will return an array*
+7. User can find out the whole bill
+    order.sum_order
+8. User can check that the total bill is correct, and if so, a text will be sent
+    order.check_total

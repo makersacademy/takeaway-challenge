@@ -1,31 +1,24 @@
-require_relative 'item'
-require_relative 'order'
-
 class Menu
-attr_reader :items, :new_order
+attr_reader :items
 
   def initialize
     @items = {
-      "Small Margarita" => 4,
-      "Medium Margarita" => 6,
-      "Large Margarita" => 8,
-      "Small Pepperoni" => 5,
-      "Medium Pepperoni" => 7,
-      "Large Pepperoni" => 9,
-      "Small Vegetarian" => 6,
-      "Medium Vegetarian" => 8,
-      "Large Vegetarian" => 10
+      'pizza' => 9.00,
+      'pasta' => 8.00,
+      'curry' => 10.00,
+      'burger' => 11.00,
+      'veggie burger' => 10.00
     }
   end
 
   def list
-    @items.each_with_index do |(food, price), index|
-        puts "#{index +1}. #{food}: £#{price}\n"
+    @items.each do |name, price|
+        puts "#{name} £#{price}\n"
       end
   end
 
-  def order(items)
-    @new_order = Order.new(items)
+  def add_item(name, price)
+    @items[name] = price
   end
 
 end
