@@ -18,19 +18,19 @@ describe Takeaway do
     })
   end
 
-  it 'puts ordered items in a basket' do
-    basket = Basket.new
-    subject.order('margherita')
-    subject.order('pepperoni')
-    expect(basket).to eq ['margherita','pepperoni']
-  end
-
-  it 'allows user to check ordered items and total cost' do
-    subject.order('margherita')
-    subject.order('pepperoni')
-    expect(subject.display_basket).to eq(
-      "Your order:\nmargherita: £8\npepperoni: £9\nTotal: £17"
-    )
-  end
+  # it 'puts ordered items in a basket' do
+  #   basket = Basket.new
+  #   subject.order('margherita')
+  #   subject.order('pepperoni')
+  #   expect(basket).to eq ['margherita','pepperoni']
+  # end
+  #
+  # it 'allows user to check ordered items and total cost' do
+  #   subject.order('margherita')
+  #   subject.order('pepperoni')
+  #   expect(subject.display_basket).to eq(
+  #     "Your order:\nmargherita: £8\npepperoni: £9\nTotal: £17"
+  #   )
+  # end
 
 end

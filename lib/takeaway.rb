@@ -15,11 +15,11 @@ class Takeaway
     @basket
   end
 
-  def order(item)
-    if @menu.has_key?(item)
-      @basket << item
-    end
-  end
+  # def order(item)
+  #   if @menu.has_key?(item)
+  #     @basket << item
+  #   end
+  # end
 
   # def display_basket
   #   total_cost = 0

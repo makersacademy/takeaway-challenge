@@ -17,6 +17,6 @@ describe Menu do
     basket = Basket.new
     subject.order('margherita')
     subject.order('pepperoni')
-    expect(basket).to eq ['margherita','pepperoni']
+    expect(subject.basket).to eq ['margherita','pepperoni']
   end
 end

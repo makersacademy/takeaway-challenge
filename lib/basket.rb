@@ -3,9 +3,16 @@ require_relative 'takeaway'
 
 class Basket
 
+  attr_reader :basket
+
   def initialize
     @basket = []
   end
+
+  def basket
+    @basket
+  end
+
 
   def display
     total_cost = 0
