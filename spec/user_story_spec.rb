@@ -1,4 +1,4 @@
-require "menu"
+require "./lib/menu"
 
 describe "User Stories" do
 # As a customer
@@ -13,19 +13,17 @@ describe "User Stories" do
 # I would like to be able to select some number of several available dishes
   it "remembers selected dishes" do
     menu = Menu.new
-    order = Order.new
     menu.view
-    order.choose("burger")
-    expect(order.list).to include("Burger")
+    menu.choose("burger", 1)
+    expect(menu.list).to include({num: 1, name: "Burger"})
   end
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
   it "shows the total price of selected items" do
     menu = Menu.new
-    order = Order.new
     menu.view
-    order.choose("burger")
-    expect(order.price).to eq(3)
+    menu.choose("burger",1)
+    expect(menu.order_total).to eq(3)
   end
 end
