@@ -37,6 +37,15 @@ run bundle to install all dependent gems:
 bundle
 ```
 
+You will now need to create a .env file in the root of your project. Within this file you should store your Twilio credentials. Your file should look like the below but with your credentials:
+
+```
+TWILIO_ACCOUNT_SID=xxxxxxxxxxxxxxxx
+AUTH_TOKEN=xxxxxxxxxxxxxxxxx
+FROM=+441xxxxxxxxxx
+TO=+44xxxxxxxx
+```
+
 ## Example of the app in use
 in IRB:
 
