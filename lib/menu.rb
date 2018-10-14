@@ -1,11 +1,6 @@
 class Menu
-
-  def initialize(items)
-    @data = items
+  attr_reader :categories
+  def initialize(categories)
+    @categories = categories
   end
-
-  def data
-    @data.dup
-  end
-
 end

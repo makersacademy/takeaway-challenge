@@ -1,19 +1,7 @@
 class Dish
-  def initialize(name, price, type)
+  attr_reader :name, :price
+  def initialize(name, price)
     @name = name
     @price = price
-    @type = type
-  end
-
-  def name
-    @name.dup
-  end
-
-  def price
-    @price.dup
-  end
-
-  def type
-    @type.dup
   end
 end

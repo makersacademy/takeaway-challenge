@@ -21,7 +21,7 @@ class MenuFactory
       value.each do |item|
         name = item['name']
         price = item['price']
-        category << @dish_class.new(name, price)
+        category.add_dish(@dish_class.new(name, price))
       end
       category
     end

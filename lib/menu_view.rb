@@ -5,7 +5,7 @@ class MenuView
   end
 
   def display
-    @menu.dup
+    @menu
   end
 
 end

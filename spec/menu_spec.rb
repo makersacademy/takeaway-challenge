@@ -2,13 +2,13 @@ require 'menu'
 
 describe Menu do
 
-  describe '#data' do
-    let(:item) { double :item }
-    let(:items) { [item, item, item] }
-    subject { described_class.new(items) }
+  describe '#categories' do
+    let(:category) { double :category }
+    let(:categories) { [category] }
+    subject { described_class.new(categories) }
 
-    it "returns the list of items' duplicate" do
-      expect(subject.data).to eq items.dup
+    it "returns the list of categories'" do
+      expect(subject.categories).to eq categories.dup
     end
   end
 end
