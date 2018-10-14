@@ -53,10 +53,13 @@ describe Order do
       order.choose("Roasted Vegetable")
       expect(order.confirm_order(notification)).to eq "You have ordered: Roasted Vegetable. Total due: £9"
     end
-    it 'receives the send_message method' do
+    before do
+      allow(order).to receive(:send_message)
+    end
+    it 'sends a confirmation message' do
       order.choose("Roasted Vegetable")
-      order.confirm_order(notification)
       expect(notification).to receive(:send_message)
+      order.confirm_order(notification)
     end
   end
 end

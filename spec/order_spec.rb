@@ -4,7 +4,7 @@ describe Order do
   let(:items) { [{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }] }
   let(:menu) { double(:menu, new: items) }
   let(:order) { Order.new(menu.new) }
-  let(:notification) { double(:send_sms, send_message: nil) }
+  let(:notification) { double(:send_sms, send_message: "Message Sent") }
 
   describe '#choose' do
     it 'lets me choose the item that I want' do
@@ -31,10 +31,14 @@ describe Order do
       order.choose("Roasted Vegetable")
       expect(order.confirm_order(notification)).to eq "You have ordered: Roasted Vegetable. Total due: £9"
     end
-    it 'receives the send_message method' do
+
+    before do
+      allow(order).to receive(:send_message)
+    end
+    it 'sends a confirmation message' do
       order.choose("Roasted Vegetable")
-      order.confirm_order(notification)
       expect(notification).to receive(:send_message)
+      order.confirm_order(notification)
     end
   end
 end
