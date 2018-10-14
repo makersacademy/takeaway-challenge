@@ -16,4 +16,8 @@ describe Menu do
     expect(menu.print).to eq printed_menu
   end
 
+  it 'can tell if a dish is not on the menu' do
+    expect(menu.contains?(:chicken)).to be false
+  end
+
 end

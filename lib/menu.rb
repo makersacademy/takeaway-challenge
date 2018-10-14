@@ -12,4 +12,9 @@ class Menu
     end.join(", ")
   end
 
+  def contains?(item)
+    items.has_key?(item)
+  end
+
+
 end
