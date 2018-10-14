@@ -14,10 +14,15 @@ GEM
       xpath (>= 2.0, < 4.0)
     diff-lcs (1.3)
     docile (1.1.5)
+    faraday (0.15.3)
+      multipart-post (>= 1.2, < 3)
     hirb (0.7.3)
     json (2.1.0)
+    jwt (2.1.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
+    multipart-post (2.0.0)
+    mustermann (1.0.3)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     parallel (1.12.1)
@@ -26,6 +31,8 @@ GEM
     powerpack (0.1.1)
     public_suffix (3.0.1)
     rack (2.0.4)
+    rack-protection (2.0.4)
+      rack
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rainbow (3.0.0)
@@ -60,6 +67,16 @@ GEM
       hirb
       simplecov
     simplecov-html (0.10.2)
+    sinatra (2.0.4)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.4)
+      tilt (~> 2.0)
+    tilt (2.0.8)
+    twilio-ruby (5.14.1)
+      faraday (~> 0.9)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     unicode-display_width (1.3.2)
     xpath (3.0.0)
       nokogiri (~> 1.8)
@@ -74,9 +91,11 @@ DEPENDENCIES
   rubocop (= 0.56.0)
   simplecov
   simplecov-console
+  sinatra
+  twilio-ruby
 
 RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

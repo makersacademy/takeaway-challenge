@@ -11,4 +11,8 @@ class Takeaway
     @format.format_menu(@menu.items)
   end
 
+  def add_to_order(dish, quantity)
+    @order.add_to_order(dish, quantity)
+  end
+
 end
