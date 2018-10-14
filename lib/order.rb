@@ -11,6 +11,7 @@ class Order
   end
 
   def add(dish, quantity)
+    raise("Item not found on menu") unless on_menu?(dish)
     @order << { dish => quantity }
   end
 
@@ -32,6 +33,10 @@ class Order
     item.map do |dish, quantity|
       @menu.dishes[dish] * quantity
     end
+  end
+
+  def on_menu?(dish)
+    @menu.dishes.key?(dish)
   end
 
 end
