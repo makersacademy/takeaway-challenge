@@ -43,7 +43,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 ## Aproach
-* 3 Classes: Menu, Order & Takeaway
+* 4 Classes: Menu, Order, Text & Takeaway
 * User interacts with the Takeaway Class which forwards methods on to Menu & Order
 
 ## Features
