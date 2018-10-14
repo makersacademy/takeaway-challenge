@@ -56,8 +56,16 @@ describe TakeawayOrder do
       subject.delete("fish", 5)
       expect(subject.basket).to eq({ "fish" => 0 })
     end
+
     it "should not delete items that are not in the basket" do
       expect(subject.delete("fish", 1)). to eq "That's not in your basket!"
+    end
+  end
+
+  context "checking the order price" do
+    it "should show the user their order total" do
+      subject.add("fish", 2)
+      expect(subject.total).to eq 20
     end
   end
 

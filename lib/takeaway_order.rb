@@ -36,6 +36,10 @@ class TakeawayOrder
     end
   end
 
+  def total
+    @restaurant.bill(@basket)
+  end
+
   def complete_order(expected_bill)
     time = (Time.now + 60 * 60).strftime("%k:%M")
     check_bill(expected_bill)
