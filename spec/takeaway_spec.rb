@@ -5,8 +5,9 @@ describe TakeAway do
 
   let(:menu) { double :Menu, :menu_items => default_menu }
   let(:order) { double :Order }
+  let(:messenger) { double :Messenger }
 
-  subject(:takeaway) { described_class.new(menu, order) }
+  subject(:takeaway) { described_class.new(menu: menu, order: order, messenger: messenger) }
 
   describe '#show_menu' do
 
@@ -60,7 +61,15 @@ describe TakeAway do
 
   describe '#checkout' do
     it 'calls checkout on Order' do
+      allow(messenger).to receive(:send_text)
       expect(order).to receive(:checkout)
+      takeaway.checkout(13.98)
+    end
+
+    it 'calls send_text on Messenger' do
+      allow(order).to receive(:checkout)
+      allow(messenger).to receive(:send_text)
+      expect(messenger).to receive(:send_text)
       takeaway.checkout(13.98)
     end
   end

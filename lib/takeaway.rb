@@ -1,7 +1,11 @@
 class TakeAway
-  def initialize(menu = Menu.new, order = Order.new(menu))
+  def initialize(menu: Menu.new,
+    order: Order.new(menu),
+    messenger: Messenger.new)
+    
     @menu = menu
     @order = order
+    @messenger = messenger
   end
 
   def show_menu
@@ -23,6 +27,7 @@ class TakeAway
   def checkout(amount)
     # What happens if checking out without ordering anything?
     @order.checkout(amount)
+    @messenger.send_text
   end
 
 end
