@@ -23,6 +23,34 @@ Required files:
 './lib/sms.rb'
 './lib/order.rb'
 
+Classes and Methods:
+
+Menu
+  contains a list of dishes and prices
+  can print a list of dishes and prices
+  can tell if a dish is not on the menu
+  can tell the price of a dish
+
+Order
+  allows a user to select a quantity of dishes from a menu
+  #select
+    adds a quantity of items to the basket
+    doesn't add an item not on the menu
+  #remove
+    removes an item from the basket
+
+    wont remove an item that is not in the basket
+  #total
+    displays the basket total
+
+SMS
+  sends an SMS to the customer when an order is placed
+
+Takeaway
+  allows the user to see a list of dishes and prices
+  allows the user to checkout an order
+
+
 Example usage:
 
 Creating a Menu
