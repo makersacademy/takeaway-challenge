@@ -1,10 +1,15 @@
 require_relative 'restaurant'
+require 'twilio-ruby'
+require_relative 'messenger'
 
 class TakeawayOrder
+
   attr_reader :basket
-  def initialize(restaurant = Restaurant.new)
+
+  def initialize(restaurant = Restaurant.new, messenger = Messenger.new)
     @restaurant = restaurant
     @basket = {}
+    @messenger = messenger
   end
 
   def display_menu
@@ -21,12 +26,6 @@ class TakeawayOrder
     end
   end
 
-  def check_bill(expected_bill)
-    bill = @restaurant.bill(@basket)
-    raise "Order costs £#{bill}, not £#{expected_bill}" if expected_bill != bill
-    "Your order costs £#{bill}"
-  end
-
   def delete(item, quantity = 1)
     if @basket.key?(item)
       @basket[item] -= quantity unless quantity > @basket[item]
@@ -36,4 +35,18 @@ class TakeawayOrder
       "That's not in your basket!"
     end
   end
+
+  def complete_order(expected_bill)
+    time = (Time.now + 60 * 60).strftime("%k:%M")
+    check_bill(expected_bill)
+    @messenger.send_text("Thank you! Your order will be delivered before #{time}.")
+  end
+
+  private
+
+  def check_bill(expected_bill)
+    bill = @restaurant.bill(@basket)
+    raise "Order costs £#{bill}, not £#{expected_bill}" if expected_bill != bill
+  end
+
 end
