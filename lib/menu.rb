@@ -17,22 +17,24 @@ class Menu
     end
   end
 
-  def add(item_number)
+  def add(item_number, quantity)
     @items.each_with_index do |item, index|
       @item_selected = item if item_number == (index + 1)
     end
-    @order.add(@item_selected)
+    quantity.to_i.times { @order.add(@item_selected) }
     @order.sum_total
+    @order
   end
 
   def delete(item_number)
     @order.delete(item_number)
     @order.sum_total
+    @order
   end
 
   def check_total(number)
     raise 'Wrong total' if @order.total != number
-    # else send a text
+    @order.total
   end
 
 end

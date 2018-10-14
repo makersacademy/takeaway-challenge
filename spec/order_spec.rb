@@ -24,11 +24,19 @@ describe Order do
 
   context 'when totalled' do
 
-    it 'should show the total in the order' do
+    it 'should show the total in the order after adding' do
       subject.add({ "1 Spaghetti Bolognese" => 9 })
       subject.add({ "1 Spaghetti Bolognese" => 9 })
       subject.sum_total
       expect(subject.total).to eq 18
+    end
+
+    it 'should show the total in the order after deleting' do
+      subject.add({ "1 Spaghetti Bolognese" => 9 })
+      subject.add({ "2 Pasta Puttanesca" => 9 })
+      subject.delete(1)
+      subject.sum_total
+      expect(subject.total).to eq 9
     end
 
   end

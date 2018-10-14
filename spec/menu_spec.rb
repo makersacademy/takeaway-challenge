@@ -25,20 +25,12 @@ describe Menu do
 
   context 'when add' do
 
-    it 'should add item to an order' do
-      subject.add(1)
-      expect(subject.order.order).to eq [subject.item_selected]
-    end
-
-    it 'should show the total of the order' do
-      subject.add(1)
-      subject.add(2)
-      expect(subject.order.total).to eq 18
+    before(:each) do
+      subject.add(1, 1)
     end
 
     it 'should raise an error if the total is wrong' do
-      subject.add(1)
-      subject.add(2)
+      subject.add(2, 1)
       expect { subject.check_total(9) }.to raise_error "Wrong total"
     end
 
@@ -46,17 +38,14 @@ describe Menu do
 
   context 'when delete' do
 
-    it 'should delete item from order' do
-      subject.add(1)
-      subject.delete(1)
-      expect(subject.order.order).to eq []
+    before(:each) do
+      subject.add(1, 1)
     end
 
     it 'should show the total of the order' do
-      subject.add(1)
-      subject.add(2)
+      subject.add(2, 1)
       subject.delete(1)
-      expect(subject.order.total).to eq 9
+      expect(subject.check_total(9)).to eq 9
     end
 
   end

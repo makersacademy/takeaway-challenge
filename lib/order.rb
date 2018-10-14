@@ -9,12 +9,12 @@ class Order
   end
 
   def add(item_selected)
-    @sum = []
+    @inidividual_prices = []
     @order << item_selected
   end
 
   def delete(item_number)
-    @sum = []
+    @inidividual_prices = []
     @order.each do |item|
       item.each do |dish, _price|
         $number = dish.split(" ")[0].to_i
@@ -26,10 +26,10 @@ class Order
   def sum_total
     @order.map do |item|
       item.each do |dish, _price|
-        @sum << item[dish]
+        @inidividual_prices << item[dish]
       end
     end
-    @total = @sum.reduce(:+)
+    @total = @inidividual_prices.reduce(:+)
   end
 
 end
