@@ -47,7 +47,7 @@ I tackled this challenge by creating 4 types of classes: Takeaway, Menu, Basket,
 * The user can then `place_order`, specifying the total cost of their basket. If the incorrect total is given, the user will see an error message and will have to enter the correct total.
 * When the order is successfully placed, a confirmation text will be sent to the user's phone, thanking them for the order and giving them an ETA for delivery (+ 1 hour from the current time).
 
-Because of the way I have structured my code, any type of menu, basket, or text class can be loaded into the takeaway, making the program much more flexible. All units are 100% isolated.
+Because of the way I have structured my code, any type of menu, basket, or text class can be loaded into the takeaway, making the program much more flexible.
 
 Twilio is used to send the texts. I used Webmock to test my texting system effectively without sending texts in the process.
 
