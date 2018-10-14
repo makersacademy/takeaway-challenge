@@ -11,8 +11,9 @@ As this is a command line app, clone the repo, then open then require all of the
 1. Create new menu object, this will need an array of hashes that contain the name of the item and the price.
 
 `2.5.0 :004 > menu =  Menu.new([{ "Margherita" => 8 }, { "Roasted Vegetable" => 9 }, { "Chorizo" => 12 }])
- => #<Menu:0x00007f9eaf1398b8 @items=[{"Margherita"=>8}, {"Roasted Vegetable"=>9}, {"Chorizo"=>12}]>
-2.5.0 :005 > order = Order.new(menu.items)`
+ => #<Menu:0x00007f9eaf1398b8 @items=[{"Margherita"=>8}, {"Roasted Vegetable"=>9}, {"Chorizo"=>12}]>`
+ 
+`2.5.0 :005 > order = Order.new(menu.items)`
 
 2. Create a new order object. This needs access to the menu items.
 
@@ -29,8 +30,9 @@ As this is a command line app, clone the repo, then open then require all of the
 5. You can then select the item that you want, one at a time.
 
 `2.5.0 :008 > order.choose("Chorizo")
-=> ["Chorizo"]
-2.5.0 :009 > order.choose("Roasted Vegetable")
+=> ["Chorizo"]`
+
+`2.5.0 :009 > order.choose("Roasted Vegetable")
  => ["Chorizo", "Roasted Vegetable"]`
 
 6. Confirm your order using confirm_order method. Here you will need to pass in the notification channel that you would like to use to notify the customer of their order. They dhould get a confirmation message with the total due and what they have ordered, as well as the notification
