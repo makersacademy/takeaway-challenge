@@ -134,7 +134,7 @@ For each story, I wrote a feature test, then unit tests to reflect any errors or
   - [x] However, if run in IRB and the order is placed, the text should actually be sent
 - [x] Methods should use have a single responsibility
 - [x] 100% Test coverage
-- [ ] Code conforms to the Rubocop style guide
+- [x] Code conforms to the Rubocop style guide
 
 
 ### Plan for solution
