@@ -20,4 +20,8 @@ describe Menu do
     expect(menu.contains?(:chicken)).to be false
   end
 
+  it 'can tell the price of a dish' do
+    expect(menu.price(:falafel)).to eq 3
+  end
+
 end

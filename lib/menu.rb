@@ -16,5 +16,8 @@ class Menu
     items.has_key?(item)
   end
 
+  def price(item)
+    items[item]
+  end
 
 end
