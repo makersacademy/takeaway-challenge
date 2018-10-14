@@ -1,4 +1,4 @@
-#Takeaway Challenge!
+# Takeaway Challenge!
 ```
                             _________
               r==           |       |
@@ -15,7 +15,7 @@
 
 This is the week #2 weekend challenge for Makers Academy. The challenge is more advanced than the Airport Challenge, requiring use of a third party API to send texts, and more thorough application of SOLID principles.
 
-##User Stories
+## User Stories
 
 We have the following user stories to implement in this project:
 
@@ -37,7 +37,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-##My Approach
+## My Approach
 
 I tackled this challenge by creating 4 types of classes: Takeaway, Menu, Basket, and Text. I created 2 different menus, allowing the user to load the menu that they prefer when ordering dishes. The way to use the app is as follows:
 * The preferred menu, the basket, and the text classes are loaded into the Takeaway class.
@@ -51,7 +51,7 @@ Because of the way I have structured my code, any type of menu, basket, or text 
 
 Twilio is used to send the texts. I used Webmock to test my texting system effectively without sending texts in the process.
 
-##Example
+## Example
 
 Here is an example of my code being used:
 
