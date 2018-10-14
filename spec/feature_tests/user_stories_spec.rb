@@ -26,16 +26,16 @@ describe Order do
 
   describe '#choose' do
     it 'lets me choose the item that I want' do
-      expect(order.choose("Margherita")).to eq ["Margherita"]
+      expect(order.choose("Margherita", 1)).to eq ["Margherita"]
     end
 
     it 'should let me choose multiple items from the menu' do
-      order.choose("Margherita")
-      expect(order.choose("Chorizo")).to eq ["Margherita", "Chorizo"]
+      order.choose("Margherita", 1)
+      expect(order.choose("Chorizo",1 )).to eq ["Margherita", "Chorizo"]
     end
 
     it 'should not allow me to choose items that are not on the menu' do
-      expect { order.choose("Toast") }.to raise_exception "This item is not on the menu: choose something else"
+      expect { order.choose("Toast", 1) }.to raise_exception "This item is not on the menu: choose something else"
     end
   end
 
@@ -44,19 +44,19 @@ describe Order do
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
   describe '#place_order' do
     it 'shows the items you have ordered, and the total cost' do
-      order.choose("Roasted Vegetable")
-      order.choose("Chorizo")
+      order.choose("Roasted Vegetable",1 )
+      order.choose("Chorizo", 1)
       expect(order.confirm_order).to eq "You have ordered: Roasted Vegetable and Chorizo. Total due: £21"
     end
     it 'shows the item you have ordered, and the total cost' do
-      order.choose("Roasted Vegetable")
+      order.choose("Roasted Vegetable", 1)
       expect(order.confirm_order).to eq "You have ordered: Roasted Vegetable. Total due: £9"
     end
     before do
       allow(order).to receive(:send_message)
     end
     it 'sends a confirmation message' do
-      order.choose("Roasted Vegetable")
+      order.choose("Roasted Vegetable", 1)
       expect(order).to receive(:send_message)
       order.confirm_order
     end

@@ -10,9 +10,10 @@ class Order
     @total = 0
   end
 
-  def choose(item)
+  def choose(item, quantity)
     fail_message unless @menu.any? { |list| list[item] }
-    @items << item
+    quantity.times { @items << item }
+    @items
   end
 
   def confirm_order
