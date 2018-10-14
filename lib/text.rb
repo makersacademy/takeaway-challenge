@@ -2,18 +2,19 @@ require 'rubygems'
 require 'twilio-ruby'
 
 class Text
+    # credentials hidden
+    account_sid = 'AC86bdxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    auth_token = 'd20a9dxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    # setting up a client to talk to the Twilio REST API
+    CLIENT = Twilio::REST::Client.new(account_sid, auth_token)
+    FROM = '+441xxxxxxxxx'
+    TO = '+447xxxxxxxxx'
 
   def send_sms
-    # credentials hidden
-    account_sid = 'AC8...'
-    auth_token = 'd20...'
-    # setting up a client to talk to the Twilio REST API
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    @client.messages.create(
+    CLIENT.messages.create(
          body: 'Your order was placed and will be delivered within one hour',
-         from: '+447...',
-         to: '+441...')
+         from: FROM,
+         to: TO)
   end
 
 end
