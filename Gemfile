@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.5.0'
 
 gem 'capybara'
+gem 'json', '~> 2.1'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', '0.56.0'

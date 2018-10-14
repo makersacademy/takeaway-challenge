@@ -1,0 +1,79 @@
+{
+  "M01": {
+    "name": "Miso Ramen",
+    "price": 8,
+    "type": "main",
+    "quantity": 25
+  },
+  
+  "M02": {
+    "name": "Shoyu Ramen",
+    "price": 9,
+    "type": "main",
+    "quantity": 25
+  },
+
+  "M03": {
+    "name": "Tonkatsu Ramen",
+    "price": 10,
+    "type": "main",
+    "quantity": 25
+  },
+  
+  "M04": {
+    "name": "Duck Donburi",
+    "price": 6,
+    "type": "main",
+    "quantity": 25
+  },
+
+  "M05": {
+    "name": "Yakisoba",
+    "price": 6,
+    "type": "main",
+    "quantity": 11
+  },
+
+  "S01": {
+    "name": "Yasai Gyoza",
+    "price": 3,
+    "type": "side",
+    "quantity": 25
+  },
+  
+  "S02": {
+    "name": "Wakame salad",
+    "price": 2,
+    "type": "side",
+    "quantity": 25
+  },
+  
+  "D01": {
+    "name": "Azuki Ice",
+    "price": 3,
+    "type": "dessert",
+    "quantity": 6
+  },
+  
+  "D02": {
+    "name": "Ichigo Daifuku",
+    "price": 4,
+    "type": "dessert",
+    "quantity": 5
+  },
+  
+  "B01": {
+    "name": "Sake",
+    "price": 7,
+    "type": "beverege",
+    "quantity": 9
+  },
+  
+  "B02": {
+    "name": "Sparkling Water",
+    "price": 1,
+    "type": "beverege",
+    "quantity": 15
+  }
+  
+}
