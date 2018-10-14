@@ -31,7 +31,7 @@ describe Order do
 
     it 'should let me choose multiple items from the menu' do
       order.choose("Margherita", 1)
-      expect(order.choose("Chorizo",1 )).to eq ["Margherita", "Chorizo"]
+      expect(order.choose("Chorizo", 1)).to eq ["Margherita", "Chorizo"]
     end
 
     it 'should not allow me to choose items that are not on the menu' do
@@ -44,7 +44,7 @@ describe Order do
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
   describe '#place_order' do
     it 'shows the items you have ordered, and the total cost' do
-      order.choose("Roasted Vegetable",1 )
+      order.choose("Roasted Vegetable", 1)
       order.choose("Chorizo", 1)
       expect(order.confirm_order).to eq "You have ordered: Roasted Vegetable and Chorizo. Total due: £21"
     end
