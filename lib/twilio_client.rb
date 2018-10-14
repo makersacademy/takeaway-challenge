@@ -13,6 +13,9 @@ class TwilioClient
 
   attr_reader :from, :client
 
+
+
+
   def prepare_sms(timestamp)
     @timestamp = timestamp
     @body_message = "Thank you! Your order was placed and will be delivered before #{timestamp}"
@@ -20,6 +23,7 @@ class TwilioClient
   end
 
   private
+
   def send_sms(from_number_string, to_number_string, body_string)
     @client.api.account.messages.create(
       from: from_number_string,

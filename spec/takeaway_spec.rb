@@ -1,13 +1,11 @@
 require 'takeaway'
-require 'tokyo_menu'
-require 'twilio_client'
 
 describe Takeaway do
-  let (:client) { double :client }
-  # As a customer
-  # So that I can check if I want to order something
-  # I would like to see a list of dishes with prices
-  subject(:takeaway) { described_class.new(TokyoMenu.new, TwilioClient.new("+44 115 824 3978", "+44 7950 290690")) }
+  let (:client) { double :client, prepare_sms: true, from: true, to: true }
+
+  let (:menu) { double :menu, menu: [ { name: "Miso Soup", nickname: :miso, price: 1.50 } ], name: "Tokyo", logo: "(ﾉ◕ヮ◕)ﾉ" }
+
+  subject(:takeaway) { described_class.new(menu, client) }
 
   let(:valid_selection) { {
           dishes: [{ nickname: :miso, quantity: 1 }, { nickname: :tempura, quantity: 1 }, { nickname: :rice, quantity: 1 }],
@@ -18,7 +16,25 @@ describe Takeaway do
           dishes: [{ nickname: :miso, quantity: 1 }, { nickname: :tempura, quantity: 1 }, { nickname: :rice, quantity: 1 }],
           total: 0.00
         } }
+  before {
+    allow(takeaway).to receive(:order).with(valid_selection).and_return(valid_selection)
 
+    allow(takeaway).to receive(:order).with(empty_selection).and_raise("ERROR: It looks like something went wrong with your order request.")
+
+    allow(takeaway).to receive(:order).with(invalid_selection).and_raise("ERROR: It looks like something went wrong with your selection.")
+
+    allow(takeaway).to receive(:check_total).with(valid_selection).and_return(true)
+
+    allow(takeaway).to receive(:check_total).with(invalid_selection).and_return(false)
+
+    allow(takeaway).to receive(:check_total).with(empty_selection).and_raise("ERROR: It looks like something went wrong with your selection.")
+
+    allow(takeaway).to receive(:current_selection).and_return(true)
+  }
+
+  # As a customer
+  # So that I can check if I want to order something
+  # I would like to see a list of dishes with prices
   describe "#list_food" do
     it "should list food items with their menu number, name, and price" do
       # regex matcher for specific format
@@ -67,7 +83,7 @@ describe Takeaway do
     it "gives the takeaway the order" do
       allow(client).to receive(:send_sms).and_return({ body: "Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 18:52", error_code: 0 })
       takeaway.order(valid_selection)
-      expect(takeaway.current_selection).to_not be_nil
+      expect(takeaway.current_selection).to eq true
     end
   end
 

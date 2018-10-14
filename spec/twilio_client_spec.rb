@@ -8,4 +8,5 @@ describe TwilioClient do
   it "should get the client on initialize" do
     expect(client.client).to_not be_nil
   end
+
 end

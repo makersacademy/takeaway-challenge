@@ -16,4 +16,14 @@ describe TokyoMenu do
       expect(tokyo_menu.menu).to eq menu_array
     end
   end
+  describe "#name" do
+    it "returns the name" do
+      expect(tokyo_menu.name).to eq "Tokyo"
+    end
+  end
+  describe "#logo" do
+    it "returns the logo" do
+      expect(tokyo_menu.logo).to eq "(ﾉ◕ヮ◕)ﾉ"
+    end
+  end
 end

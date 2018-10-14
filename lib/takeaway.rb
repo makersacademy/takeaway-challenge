@@ -39,13 +39,15 @@ class Takeaway
 
   def confirm_order(selection)
     @current_selection = selection
-    time = Time.new + 3600
-    delivery_time = time.to_s.slice(11..15)
     @client.prepare_sms(delivery_time)
   end
 
   private
   def nil_selection?(selection)
     selection[:dishes] != nil && selection[:total] != nil
+  end
+  def delivery_time
+    time = Time.new + 3600
+    time.to_s.slice(11..15)
   end
 end

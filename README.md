@@ -14,66 +14,141 @@ Takeaway Challenge
 
  ```
 
-Instructions
+
+(updated: 14 Oct 2018 - COVERAGE:  84.17% -- 101/120 lines in 6 files)
+
+Installation
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+1. Fork this repo, and clone to your local machine
+1. When the installation completes, run `bundle`
 
-Task
------
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Usage
+---------
+
+Here's how you might explore the application using something like pry:
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+$ pry
+[1] pry(main)> load './lib/takeaway.rb'
+=> true
+[2] pry(main)> load './lib/tokyo_menu.rb'
+=> true
+[3] pry(main)> load './lib/twilio_client.rb'
+=> true
+[4] pry(main)> client = TwilioClient.new('+44 115 824 3978', '+44 7950 290690')
+=> #<TwilioClient:0x00007fa7bfa7db90
+ @client=
+  #<Twilio::REST::Client:0x00007fa7bfa7db18
+   @account_sid="AC95f23a31e4b43442665d0a8c65271ee5",
+   @accounts=nil,
+   @api=nil,
+   @auth=["AC95f23a31e4b43442665d0a8c65271ee5", "1aeed18dee8af028b1113e5b5f0d561b"],
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+   @auth_token="1aeed18dee8af028b1113e5b5f0d561b",
+   @chat=nil,
+   @fax=nil,
+   @http_client=
+    #<Twilio::HTTP::Client:0x00007fa7bfa7daf0
+     @adapter=:net_http,
+     @proxy_addr=nil,
+     @proxy_pass=nil,
+     @proxy_port=nil,
+     @proxy_user=nil,
+     @ssl_ca_file=nil,
+     @timeout=nil>,
+   @ip_messaging=nil,
+   @lookups=nil,
+   @messaging=nil,
+   @monitor=nil,
+   @notify=nil,
+   @password="1aeed18dee8af028b1113e5b5f0d561b",
+   @preview=nil,
+   @pricing=nil,
+   @proxy=nil,
+   @region=nil,
+   @studio=nil,
+   @sync=nil,
+   @taskrouter=nil,
+   @trunking=nil,
+   @username="AC95f23a31e4b43442665d0a8c65271ee5",
+   @verify=nil,
+   @video=nil,
+   @voice=nil,
+   @wireless=nil>,
+ @from="+44 115 824 3978",
+ @to="+44 7950 290690">
+[5] pry(main)> menu = TokyoMenu.new
+=> #<TokyoMenu:0x00007fa7c0a89c28>
+[6] pry(main)> takeaway = Takeaway.new(menu, client)
+=> #<Takeaway:0x00007fa7bfaec900
+ @client=
+  #<TwilioClient:0x00007fa7bfa7db90
+   @client=
+    #<Twilio::REST::Client:0x00007fa7bfa7db18
+     @account_sid="AC95f23a31e4b43442665d0a8c65271ee5",
+     @accounts=nil,
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+     @api=nil,
+     @auth=["AC95f23a31e4b43442665d0a8c65271ee5", "1aeed18dee8af028b1113e5b5f0d561b"],
+     @auth_token="1aeed18dee8af028b1113e5b5f0d561b",
+     @chat=nil,
+     @fax=nil,
+     @http_client=
+      #<Twilio::HTTP::Client:0x00007fa7bfa7daf0
+       @adapter=:net_http,
+       @proxy_addr=nil,
+       @proxy_pass=nil,
+       @proxy_port=nil,
+       @proxy_user=nil,
+       @ssl_ca_file=nil,
+       @timeout=nil>,
+     @ip_messaging=nil,
+     @lookups=nil,
+     @messaging=nil,
+     @monitor=nil,
+     @notify=nil,
+     @password="1aeed18dee8af028b1113e5b5f0d561b",
+     @preview=nil,
+     @pricing=nil,
+     @proxy=nil,
+     @region=nil,
+     @studio=nil,
+     @sync=nil,
+     @taskrouter=nil,
+     @trunking=nil,
+     @username="AC95f23a31e4b43442665d0a8c65271ee5",
+     @verify=nil,
+     @video=nil,
+     @voice=nil,
+     @wireless=nil>,
+   @from="+44 115 824 3978",
+   @to="+44 7950 290690">,
+ @current_selection=nil,
+ @menu=#<TokyoMenu:0x00007fa7c0a89c28>,
+ @menu_array=
+  [{:name=>"Miso Soup", :nickname=>:miso, :price=>1.5},
+   {:name=>"Soba Noodles", :nickname=>:soba, :price=>4.5},
+   {:name=>"Vegetable Tempura", :nickname=>:tempura, :price=>3.5},
+   {:name=>"Avocado Maki", :nickname=>:maki, :price=>4.0},
+   {:name=>"Teriyaki Tofu Don", :nickname=>:tofu, :price=>5.0},
+   {:name=>"White Rice", :nickname=>:rice, :price=>1.0},
+   {:name=>"Green Tea", :nickname=>:tea, :price=>1.0}]>
+[7] pry(main)> selection = {
+[7] pry(main)*   dishes: [{ nickname: :miso, quantity: 1 }, { nickname: :tempura, quantity: 1 }, { nickname: :rice, quantity: 1
+ }],
+[7] pry(main)*   total: 6.00
+[7] pry(main)* }
+=> {:dishes=>[{:nickname=>:miso, :quantity=>1}, {:nickname=>:tempura, :quantity=>1}, {:nickname=>:rice, :quantity=>1}],
+    :total=>6.0}
+[8] pry(main)> takeaway.order(selection)
+=> <Twilio.Api.V2010.MessageInstance account_sid: AC95f23a31e4b43442665d0a8c65271ee5 api_version: 2010-04-01 body: Sent from yo
+ur Twilio trial account - Thank you! Your order was placed and will be delivered before 19:39 date_created: 2018-10-14 17:39:20
+ +0000 date_updated: 2018-10-14 17:39:20 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: +4411582
+43978 messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid: SM86cca2f4e8e5499d9c0fe75db97b71bc s
+tatus: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/AC95f23a31e4b43442665d0a8c65271ee5/Messages/SM86cca2f4e8e5499d9
+c0fe75db97b71bc/Media.json"} to: +447950290690 uri: /2010-04-01/Accounts/AC95f23a31e4b43442665d0a8c65271ee5/Messages/SM86cca2f4
+e8e5499d9c0fe75db97b71bc.json>
+[9] pry(main)>
 ```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
