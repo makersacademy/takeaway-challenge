@@ -52,7 +52,7 @@ describe Order do
     end
     it 'cannot delete what isnt there' do
       order.add(pizza)
-      expect{order.delete(pizza, pizza)}.to raise_error("Error: tried to delete 2 pizza(s) but order contained 1 pizza(s)")
+      expect { order.delete(pizza, pizza) }.to raise_error("Error: tried to delete 2 pizza(s) but order contained 1 pizza(s)")
     end
     it 'prints a summary of what was deleted' do
       order.add(pizza, pizza)

@@ -35,9 +35,11 @@ class Menu
   def add_message(item)
     "Added #{item}"
   end
+
   def delete_message(item)
     "Deleted #{item}"
   end
+
   def error_message(item)
     "Error: menu does not contain #{item}."
   end

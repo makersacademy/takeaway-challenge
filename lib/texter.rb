@@ -1,8 +1,9 @@
+require 'dotenv/load'
 require 'twilio-ruby'
 
 class Texter
-  SID = 'ACf932e8a2e569785f9bc034f45520df0d'
-  AUTH_TOKEN = 'fb04b90afacb477abe4085deb8482c8a'
+  SID = ENV['SID']
+  AUTH_TOKEN = ENV['AUTH_TOKEN']
   CLIENT = Twilio::REST::Client.new(SID, AUTH_TOKEN)
   NUMBER_FROM = '+441212851936'
   NUMBER_TO = '+447702025165'

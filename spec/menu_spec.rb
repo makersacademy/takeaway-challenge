@@ -45,11 +45,18 @@ describe Menu do
       expect(menu.dishes).not_to include(pizza, pasta)
     end
     it 'cannot delete what isnt there' do
-      expect{menu.delete(pizza)}.to raise_error("Error: menu does not contain pizza.")
+      expect { menu.delete(pizza) }.to raise_error("Error: menu does not contain pizza.")
     end
     it 'prints a summary of what was deleted' do
       menu.add(pizza)
       expect { menu.delete(pizza) }.to output("Deleted pizza\n").to_stdout
+    end
+  end
+
+  describe '#view' do
+    it 'prints a description of each dish in menu' do
+      menu.add(pizza, pasta)
+      expect { menu.view }.to output("~~~Menu~~~\npizza, £5\npasta, £10\n").to_stdout
     end
   end
 
