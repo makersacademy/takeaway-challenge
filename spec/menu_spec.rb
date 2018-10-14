@@ -37,10 +37,9 @@ describe Menu do
     end
 
     it 'should raise an error if the total is wrong' do
-      order = double("order", :total => 9)
       subject.add(1)
       subject.add(2)
-      expect{ subject.check_total }.to raise_error "Wrong total"
+      expect { subject.check_total(9) }.to raise_error "Wrong total"
     end
 
   end

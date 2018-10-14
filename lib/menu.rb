@@ -23,18 +23,16 @@ class Menu
     end
     @order.add(@item_selected)
     @order.sum_total
-    @order
   end
 
   def delete(item_number)
     @order.delete(item_number)
     @order.sum_total
-    @order
   end
 
-  def check_total
-    raise 'Wrong total' if @order.total != @order.sum.reduce(:+)
-    #else send a text
+  def check_total(number)
+    raise 'Wrong total' if @order.total != number
+    # else send a text
   end
 
 end
