@@ -1,6 +1,6 @@
 class Menu
 
-  def menu_list
+  def list
     @menu = {
     "muffin" => 3,
     "croissant" => 3,
