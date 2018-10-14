@@ -15,7 +15,9 @@ class Order
   end
 
   def view
-    "Your Order\n~~~~~~~~~~~\n#{list_items}\nTotal = £#{total}"
+    puts "Your Order\n~~~~~~~~~~~"
+    list_items
+    puts "Total = £#{total}"
   end
 
   def total

@@ -18,7 +18,7 @@ describe Order do
       subject.remove(coke)
     end
     it "can view the current order" do
-      expect(subject.view).to eq "Your Order\n~~~~~~~~~~~\nNothing in basket!\nTotal = £0"
+      expect { subject.view }.to output("Your Order\n~~~~~~~~~~~\nTotal = £0\n").to_stdout
     end
   end
   context "calculating the bill" do
