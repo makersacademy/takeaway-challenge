@@ -2,15 +2,17 @@
 
 class Dish
 
+  DEFAULT_TOTAL = 0 # Zero for functionality with other classes
+
   attr_reader :name, :price, :quantity
 
   def initialize(name, price)
     @name = name
     @price = price
-    @quantity = 0
+    @quantity = DEFAULT_TOTAL
   end
 
-  # Function called by order when customer 
+  # Function called by order when customer
   # selects more then one instance of the dish
   def up_quantity
     @quantity += 1
