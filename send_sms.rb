@@ -8,7 +8,7 @@ client = Twilio::REST::Client.new(account_sid, auth_token)
 from = '+441303720101'
 to = '+44 7817 933608'
 
-client.api.account.messages.create(
+client.messages.create(
 from: from,
 to: to,
 body: "Hey friend!"
