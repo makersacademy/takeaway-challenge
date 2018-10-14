@@ -6,4 +6,8 @@ class Menu
   def initialize(menu_items = @@default_menu)
     @menu_items = menu_items
   end
+
+  def on_menu?(dish)
+    menu_items.include?(dish)
+  end
 end

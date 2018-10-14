@@ -24,4 +24,18 @@ describe Menu do
     end
 
   end
+
+  describe '#on_menu?' do
+    context 'When item is on the menu' do
+      it 'returns true' do
+        expect(menu.on_menu?('pizza')).to eq true
+      end
+    end
+
+    context 'When item is not on the menu' do
+      it 'returns false' do
+        expect(menu.on_menu?('curry')).to eq false
+      end
+    end
+  end
 end

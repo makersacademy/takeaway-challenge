@@ -20,28 +20,37 @@ describe 'User Stories' do
   # I would like to be able to select some number of several available dishes
 
   describe 'User Story 2' do
-    it 'allows customer to add an item to their order' do
-      takeaway.add_to_order('pizza')
-      expect(takeaway.order_summary).to eq('pizza x1 = £6.99')
+    context 'When item is on the menu' do
+      it 'allows customer to add an item to their order' do
+        takeaway.add_to_order('pizza')
+        expect(takeaway.order_summary).to eq('pizza x1 = £6.99')
+      end
+
+      it 'allows a customer to add a quantitity of an item to their order' do
+        takeaway.add_to_order('pizza', 2)
+        expect(takeaway.order_summary).to eq('pizza x2 = £13.98')
+      end
+
+      it 'allows customer to add multiple items in multiple quantities to their order' do
+        takeaway.add_to_order('pizza', 2)
+        takeaway.add_to_order('burger', 1)
+        expect(takeaway.order_summary).to eq('pizza x2 = £13.98, burger x1 = £3')
+      end
+
+      it 'allows customer to add the same items multiple times' do
+        takeaway.add_to_order('pizza', 1)
+        takeaway.add_to_order('burger', 1)
+        takeaway.add_to_order('pizza', 1)
+        expect(takeaway.order_summary).to eq('pizza x2 = £13.98, burger x1 = £3')
+      end
     end
 
-    it 'allows a customer to add a quantitity of an item to their order' do
-      takeaway.add_to_order('pizza', 2)
-      expect(takeaway.order_summary).to eq('pizza x2 = £13.98')
+  context 'When the item is not on the menu' do
+    it 'raises and error' do
+      expect { takeaway.add_to_order('curry') }.to raise_error('Invalid dish. Only items on the menu can be added to your order.')
     end
+  end
 
-    it 'allows customer to add multiple items in multiple quantities to their order' do
-      takeaway.add_to_order('pizza', 2)
-      takeaway.add_to_order('burger', 1)
-      expect(takeaway.order_summary).to eq('pizza x2 = £13.98, burger x1 = £3')
-    end
-
-    it 'allows customer to add the same items multiple times' do
-      takeaway.add_to_order('pizza', 1)
-      takeaway.add_to_order('burger', 1)
-      takeaway.add_to_order('pizza', 1)
-      expect(takeaway.order_summary).to eq('pizza x2 = £13.98, burger x1 = £3')
-    end
   end
 
   # Unit Test 3
