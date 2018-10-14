@@ -8,5 +8,10 @@ describe TakeawayMenu do
 
   describe '#view_menu' do
     before { subject.add(dish1); subject.add(dish2); subject.add(dish3) }
+
+    it 'returns a list of dishes with prices' do
+      expect(subject.view_menu).to eq ["Classic Burger - 5", "Steak - 10", "Milkshake - 3"]
+    end
   end
+
 end

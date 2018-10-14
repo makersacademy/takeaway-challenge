@@ -10,4 +10,8 @@ class TakeawayMenu
     @meals[dish.name] = dish.price
   end
 
+  def view_menu
+    @meals.map { |meal, price| "#{meal} - #{price}" }
+  end
+
 end
