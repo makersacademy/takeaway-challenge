@@ -43,7 +43,7 @@ pizzapizza = Restaurant.new(margherita, veggie_delight, coke)
 View the restaurant menu
 
 ```
-pizzapizza.view_menu
+pizzapizza.menu
 ```
 Create a new order
 
