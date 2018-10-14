@@ -1,7 +1,7 @@
-# require 'twilio-ruby'
+require 'twilio-ruby'
 
-# class Text
-#
+class Text
+
 #   ACCOUNT_SID = 'ACc68fbb7c5f4b5a7c5bb1a06faaab901d'
 #   AUTH_TOKEN = '4e5bdc58fcc22d2b586f396a43288263'
 #
@@ -10,16 +10,16 @@
 #   FROM = '+441785472436'
 #   TO = '+447478158606'
 #
-#   def text
+  def text
 #     @client.messages.create(
 #       from: FROM,
 #       to: TO,
 #       body: BODY
 #     )
-#   end
+  end
 #
 #   def text_body
 #
 #   end
 #
-# end
+end
