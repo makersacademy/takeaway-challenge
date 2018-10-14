@@ -16,8 +16,11 @@ class Menu
     items.has_key?(item)
   end
 
+<<<<<<< HEAD
   def price(item)
     items[item]
   end
 
+=======
+>>>>>>> d14941ceb290f225476639d0005181fbffee15f5
 end

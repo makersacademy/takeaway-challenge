@@ -25,10 +25,18 @@ class Order
 
 private
 
+<<<<<<< HEAD
   def calculate_basket
     basket.each do |item, quantity|
       @total += menu.price(item) * quantity
     end
   end
+=======
+def calculate_basket
+  basket.each do |item, quantity|
+    @total += menu.price(item) * quantity
+  end
+end
+>>>>>>> d14941ceb290f225476639d0005181fbffee15f5
 
 end
