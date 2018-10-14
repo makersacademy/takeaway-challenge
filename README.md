@@ -16,27 +16,27 @@ Takeaway Challenge
 
 Instructions
 -------
-  * Initialize a menu class
+  * **Initialize a menu class**
     * ex: Panda_Express = Menu.New
-  * Initialize dishes on the Menu (name, price)
+  * **Initialize dishes on the Menu (name, price)**
     * ex: Panda_Bowl = Dish.new("Panda Bowl", 10)
-  * Load dish to menu
+  * **Load dish to menu**
     * ex: Panda_Express.add_dish(Panda_Bowl)
-  * Initialize a customer class
+  * **Initialize a customer class**
     * ex: Ryan_Clark = Customer.new
-  * Check the menu (menu)
+  * **Check the menu (menu)**
     * ex: Ryan_Clark.check_menu(Panda_Express)
     * - returns ["| Panda Bowl $10 |"] -
-  * Select a dish and quantity (menu, dish, quantity)
+  * **Select a dish and quantity (menu, dish, quantity)**
     * ex: Ryan_Clark.select_dish(Panda_Express, Panda_Bowl, 4)
     * - returns "4 Panda Bowl added" -
-  * Verify your basket
+  * **Verify your basket**
     * ex: Ryan_Clark.verify_order
     * - returns ["Panda Bowl x4 $40"] -
-  * Verify total balance
+  * **Verify total balance**
     * ex: Ryan_Clark.total_balance
     * - returns 40 -
-  * Place order via Twilio
+  * **Place order via Twilio**
     * ex: Ryan_Clark.place_order
 
 
@@ -131,4 +131,4 @@ My Process
     * most of this was due to lack of knowledge for testing syntax
     * I would look up more accurate methods and then try to implement them.
     * once the old tests didn't fail, I would try to make new methods and make sure they didn't fail my old ones.
-    * My approach may have been initially time consuming, but it saved me a lot of heartache by the time I got to implementing the more serious and complex features. 
+    * My approach may have been initially time consuming, but it saved me a lot of heartache by the time I got to implementing the more serious and complex features.
