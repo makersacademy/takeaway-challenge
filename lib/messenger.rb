@@ -4,8 +4,6 @@ require 'twilio-ruby'
 
 class Messenger
 
-  attr_reader :client
-
   def initialize(account_sid: ENV['TWILIO_ACCOUNT_SID'],
      auth_token: ENV['AUTH_TOKEN'],
      client: Twilio::REST::Client.new(account_sid, auth_token),
