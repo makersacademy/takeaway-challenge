@@ -1,3 +1,15 @@
+This program is designed to be run from the command line, the final 2 lines of the mainmenu.rb are
+commented out:
+
+# test = MainMenu.new
+# test.interative_menu
+
+Once these are uncommented the program can run and will go through a loop, giving the customer options to
+view the menu, place an order and receive the sms confirmation. To leave the program you would press 4 at the mainmenu.
+
+I have not added the send_sms.rb to github as I have not been able to hide the credentials, so rather than putting private information up on github I have added this file to gitignore. 
+
+
 Takeaway Challenge
 ==================
 ```
