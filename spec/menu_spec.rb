@@ -12,7 +12,6 @@ describe Menu do
       expect(menu.items).to include coke
     end
     it 'should puts the menu with price' do
-      menu = Menu.new(burger)
       expect { subject.view }.to output("Menu\n~~~~~~~~~~~\n").to_stdout
     end
   end

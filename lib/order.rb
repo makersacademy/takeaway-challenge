@@ -1,8 +1,7 @@
 class Order
   attr_reader :current_order
 
-  def initialize(mobile_num = 001)
-    @mobile_num = mobile_num
+  def initialize
     @current_order = []
   end
 

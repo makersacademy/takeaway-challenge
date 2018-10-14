@@ -15,7 +15,7 @@ class Menu
 
   def list_items
     return "No menu set!" if @items.empty?
-    @items.each { |i| puts "#{i.name} - £#{i.price}" }
+    @items[0].each { |i| puts "#{i.name} - £#{i.price}" }
   end
 
 end

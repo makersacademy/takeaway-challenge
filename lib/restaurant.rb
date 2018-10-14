@@ -1,11 +1,19 @@
+require_relative 'menu'
+require_relative 'texting'
+require_relative 'order'
+require_relative 'item'
+
 class Restaurant
+
+  attr_reader :order
 
   def initialize(*foods)
     @menu = Menu.new(foods)
+    @texter = Texter.new
   end
 
-  def new_order(mobile_num)
-    @order = Order.new(mobile_num)
+  def new_order
+    @order = Order.new
   end
 
   def add(item, quantity)
@@ -16,7 +24,7 @@ class Restaurant
     @order.remove(item)
   end
 
-  def read_menu
+  def menu
     @menu.view
   end
 
@@ -24,7 +32,15 @@ class Restaurant
     @order.view
   end
 
-  def pay
-    check_bill
+  def place_order
+    msg = "Thanks, your order will arrive before #{time_now}"
+    @texter.send(msg)
+  end
+
+  private
+
+  def time_now
+    t = Time.new + 60 * 60
+    t.strftime("%I:%M%p")
   end
 end
