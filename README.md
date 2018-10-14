@@ -77,3 +77,54 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+-------
+MacBook-Pro-80:takeaway-challenge preetiudas$ irb
+2.5.1 :001 > require "./lib/takeaway.rb"
+ => true
+2.5.1 :002 > require "./lib/menu.rb"
+ => false
+2.5.1 :003 > require "./lib/order.rb"
+ => true
+2.5.1 :004 > require "./lib/pricemanager.rb"
+ => false
+2.5.1 :005 > require "./lib/text.rb"
+ => false
+2.5.1 :006 > require "./lib/dish.rb"
+ => false
+2.5.1 :007 > takeaway = Takeaway.new
+ 
+2.5.1 :008 >     puts takeaway.publish_menu
+      * Here is the menu      
+ * In category: drink      dish - Juice      cost - 5
+ * In category: dessert    dish - Ice cream  cost - 10
+ * In category: main       dish - Rissotto   cost - 15
+ * In category: main       dish - Korma      cost - 15
+ => nil
+2.5.1 :009 >     puts takeaway.select_dish("Juice", 1)
+added Juice for 1 to the order
+
+ => nil
+2.5.1 :010 >     puts takeaway.select_dish("Juice", 2)
+added Juice for 2 to the order
+
+ => nil
+2.5.1 :011 >     puts takeaway.select_dish("Korma", 1)
+added Korma for 1 to the order
+
+ => nil
+2.5.1 :012 >     puts takeaway.select_dish("Korma", 2)
+added Korma for 2 to the order
+
+ => nil
+2.5.1 :013 >     puts takeaway.publish_order
+   * Welcome to your order    
+* In category: drink      dish - Juice      cost - 5 -> 3
+* In category: main       dish - Korma      cost - 15 -> 3
+* TOTAL AMOUNT: 60
+ => nil
+2.5.1 :014 >     puts takeaway.confirm_order
+"Order confirmed; delivery in 1 hour at 23:50"
+Order confirmed; delivery in 1 hour at 23:50
+ => nil
+2.5.1 :015 >

@@ -11,11 +11,15 @@ class PriceManager
     return DEFAULT_DISH_PRICE
   end
 
+  # def calculate_order_value(orderlist)
+  #   total = 0
+  #   orderlist.each_pair do |dish, quantity|
+  #     total += get_dish_price(dish.category) * quantity
+  #   end
+  #   total
+  # end
+
   def calculate_order_value(orderlist)
-    total = 0
-    orderlist.each_pair do |dish, quantity|
-      total += get_dish_price(dish.category) * quantity
-    end
-    total
+    orderlist.inject(0) {|total, (dish, quantity)| total + get_dish_price(dish.category) * quantity}
   end
 end

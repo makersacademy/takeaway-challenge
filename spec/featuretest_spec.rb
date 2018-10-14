@@ -14,7 +14,12 @@ describe "Full Feature Test" do
     puts takeaway.select_dish("Korma", 1)
     puts takeaway.select_dish("Korma", 2)
     puts takeaway.publish_order
+    # the below method is a stub and dos not really send text
     puts takeaway.confirm_order
+    #puts takeaway.show_all_orders
+    text = Text.new
+    # the below really sends text
+    #puts text.send_real_text("Testing order")
     expect(2 + 3).to eq 5
   end
 end

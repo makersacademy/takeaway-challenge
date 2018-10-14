@@ -4,17 +4,15 @@ require "./lib/text.rb"
 class Order
 
   attr_reader :orderlist
+
   def initialize(pricer = PriceManager.new, text = Text.new)
-    @orderlist = {}
+    @orderlist = Hash.new(0)
     @pricer = pricer
     @text = text
   end
 
   def add_dish_to_order(dish, qty = 1)
-    if @orderlist.has_key?(dish)
       @orderlist[dish] += qty
-    else @orderlist[dish] = qty
-    end
   end
 
   def publish_order
