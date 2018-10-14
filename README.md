@@ -7,7 +7,7 @@ Take Away Challenge for Makers
 I tried to follow the single responsibility and the dependecy inversion principle.
 
 
-I created the view classes tthat are responsiblity for how the data get diplayed, I created the factory classes that creates menu or order objects from external data. 
+I created the view classes that are responsible for how the data get displayed, I created the factory classes that create menu or order objects from external data. 
 
 
 I used the twilio service to send a confirmation sms with delivery time.
