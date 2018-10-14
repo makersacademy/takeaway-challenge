@@ -1,7 +1,9 @@
 class Menu
 
-  def list
-    @menu = {
+attr_reader :list
+
+  def initialize
+    @list = {
     "muffin" => 3,
     "croissant" => 3,
     "bagel" => 3,
@@ -14,6 +16,12 @@ class Menu
     "pastry" => 3,
     "tart" => 2
     }
+  end
+
+  def print_menu
+    @list.each do |food, price|
+      puts "#{food.capitalize}: $#{price}"
+    end
   end
 
 end
