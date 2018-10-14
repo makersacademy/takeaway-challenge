@@ -34,7 +34,6 @@ describe Takeaway do
       real.order("Boiled Rice")
       expect(real.review_order).to eq "Boiled Rice, £2\nTotal: £2"
     end
-
     it 'adds boiled rice and satay chicken to the basket ' do
       real = Takeaway.new
       real.order("Boiled Rice")
