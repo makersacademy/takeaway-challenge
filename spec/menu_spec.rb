@@ -2,12 +2,8 @@ require 'menu'
 describe Menu do
 
 let(:menu) { described_class.new(meals) }
-let(:meals) do
-  {
-    Chicken_Tikka: 5.25,
-    Lamb_Biryani: 9.50
-  }
-end
+let(:meals) {{ Chicken_Tikka: 5.25,Lamb_Biryani: 9.50 }}
+
 
 
 it 'has a list of meals with their prices' do
