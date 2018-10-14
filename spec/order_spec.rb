@@ -8,8 +8,14 @@ describe Order do
     subject.add(burger, 2)
     subject.add(coke, 2)
   end
-  it "can view the menu" do
-    expect(subject.view).to include burger, coke
+  it "can remove items" do
+    subject.remove(coke)
+    expect(subject.current_order).not_to include coke
+  end
+  it "can view the current order" do
+    subject.remove(coke)
+    expect(STDOUT).to receive(:puts).twice.with('Burger - £6')
+    subject.view
   end
   context "calculating the total cost" do
     it "should be £16 for 2x burger and 2x coke" do
