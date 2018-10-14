@@ -6,7 +6,7 @@ Takeaway challenge is a command line app that allows a user to order take away f
 Once the order is confirmed, the user will get a text to confirm, including their expected delivery time.
 
 ### How to Use:
-As this is a command line app, clone the repo, then open then require all of the lib files in IRB.
+As this is a command line app, clone the repo, then open then require the ./lib/order.rb and ./lib/menu.rb files.
 
 1. Create new menu object, this will need an array of hashes that contain the name of the item and the price.
 
@@ -20,14 +20,9 @@ As this is a command line app, clone the repo, then open then require all of the
 `2.5.0 :005 > order = Order.new(menu.items)
  => #<Order:0x00007f9eb01aeb80 @menu=[{"Margherita"=>8}, {"Roasted Vegetable"=>9}, {"Chorizo"=>12}], @items=[], @total=0>`
 
-3. Create a new notification object, this program currently uses sms notifications.
+3. View the items and their prices on the menu using menu.items
 
-`2.5.0 :006 > notification = SendSMS.new
- => #<SendSMS:0x00007f9eaf4422a8>`
-
-4. View the items and their prices on the menu using menu.items
-
-5. You can then select the item that you want, one at a time.
+4. You can then select the item that you want, one at a time.
 
 `2.5.0 :008 > order.choose("Chorizo")
 => ["Chorizo"]`
@@ -35,9 +30,9 @@ As this is a command line app, clone the repo, then open then require all of the
 `2.5.0 :009 > order.choose("Roasted Vegetable")
  => ["Chorizo", "Roasted Vegetable"]`
 
-6. Confirm your order using confirm_order method. Here you will need to pass in the notification channel that you would like to use to notify the customer of their order. They dhould get a confirmation message with the total due and what they have ordered, as well as the notification
+5. Confirm your order using confirm_order method. They should get a confirmation message with the total due and what they have ordered, as well as the notification
 
-`2.5.0 :010 > order.confirm_order(notification)`
+`2.5.0 :010 > order.confirm_order
 
 ### File Manifest:
 The main files that you will need the items in the 'lib' folder. This includes:

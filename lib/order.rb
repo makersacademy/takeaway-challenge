@@ -1,4 +1,4 @@
-require 'send_sms'
+require_relative 'send_sms'
 
 class Order
 
@@ -15,9 +15,9 @@ class Order
     @items << item
   end
 
-  def confirm_order(notification)
+  def confirm_order
     total
-    notification.send_message
+    self.send_message
     "You have ordered: #{@items.join(" and ")}. Total due: £#{@total}"
   end
 
