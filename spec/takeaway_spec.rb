@@ -15,6 +15,15 @@ describe Takeaway do
     end
   end
 
+  context 'describe order' do
+    before do
+      allow(menu).to receive_message_chain(:list, :has_key?).and_return(false)
+    end
+    it 'rasies error if a dish is ordered which is not on the menu' do
+      expect { takeaway.order("Pizza") }.to raise_error "Dish unavailable"
+    end
+  end
+
   context 'describe order and review_order' do
     it 'adds boiled rice to the basket' do
       real = Takeaway.new
@@ -27,11 +36,6 @@ describe Takeaway do
       real.order("Boiled Rice")
       real.order("Satay Chicken")
       expect(real.review_order).to eq "Boiled Rice, £2\nSatay Chicken, £6\nTotal: £8"
-    end
-
-    it 'rasies error if a dish is ordered which is not on the menu' do
-      real = Takeaway.new
-      expect { real.order("Pizza") }.to raise_error "Dish unavailable"
     end
   end
 
