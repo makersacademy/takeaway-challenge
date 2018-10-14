@@ -1,5 +1,4 @@
 require 'takeaway'
-require 'pry'
 
 describe Takeaway do
   let(:menu) { double :menu }
@@ -7,9 +6,7 @@ describe Takeaway do
   let(:txt_message) { double :txt_message }
 
   subject {
-    described_class.new(menu: menu,
-    order: order,
-    txt_message: txt_message)
+    described_class.new(menu: menu, order: order, txt_message: txt_message)
   }
 
   describe "#menu" do

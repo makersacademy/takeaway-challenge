@@ -1,5 +1,5 @@
 require 'message'
-require 'pry'
+
 describe Message do
   let(:client) { double :client }
   subject { described_class.new(client: client) }
