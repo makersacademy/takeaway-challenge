@@ -28,7 +28,11 @@ describe Takeaway do
       real.order("Satay Chicken")
       expect(real.review_order).to eq "Boiled Rice, £2\nSatay Chicken, £6\nTotal: £8"
     end
-  end
 
+    it 'rasies error if a dish is ordered which is not on the menu' do
+      real = Takeaway.new
+      expect { real.order("Pizza") }.to raise_error "Dish unavailable"
+    end
+  end
 
 end
