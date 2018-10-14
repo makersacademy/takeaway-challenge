@@ -1,5 +1,5 @@
 Class    |    Duty
---------------
+_____________________
 customer | check_list
 Menu     | Dishes
 Dishes   | prices
