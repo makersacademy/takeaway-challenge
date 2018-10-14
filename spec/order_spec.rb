@@ -15,6 +15,11 @@ let(:dish_off_menu) { instance_double Dish, dish_name: 'not on menu', price: 0 }
     end
   end
 
+  describe '#list_menu' do
+    it 'should list the menu' do
+      expect(subject.list_menu).to eq menu
+    end
+  end
   describe '#add' do
     it 'should not add dishes to @basket that are not on @menu' do
       expect { subject.add(dish_off_menu) }.to raise_error "Sorry, #{dish_off_menu} is not on our menu."
@@ -47,7 +52,7 @@ let(:dish_off_menu) { instance_double Dish, dish_name: 'not on menu', price: 0 }
     end
   end
 
-  describe '#list' do
+  describe '#list_basket' do
     it 'throws an error message if @basket is empty' do
       expect { subject.list_basket }.to raise_error 'Basket is empty'
     end
@@ -66,6 +71,22 @@ let(:dish_off_menu) { instance_double Dish, dish_name: 'not on menu', price: 0 }
       subject.add(beeflomein, 2)
       subject.add(shanghaidumplings, 2)
       expect(subject.total).to eq 12
+    end
+  end
+
+  describe '#check_total' do
+    it 'should return the correct order total if the expected total is the same as total' do
+      subject.add(kungpaochicken, 2)
+      subject.add(beeflomein, 2)
+      subject.add(shanghaidumplings, 2)
+      expect(subject.check_total(12)).to eq "Your order totals to 12"
+    end
+
+    it 'should return a correction if the expected total is different' do
+      subject.add(kungpaochicken, 2)
+      subject.add(beeflomein, 2)
+      subject.add(shanghaidumplings, 2)
+      expect { subject.check_total(13) }.to raise_error("Sorry, your total is 12, not 13")
     end
   end
 

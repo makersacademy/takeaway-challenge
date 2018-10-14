@@ -9,6 +9,10 @@ class Order
     @basket = []
   end
 
+  def list_menu
+    menu
+  end
+
   def add(dish, amount = 1)
     fail "Sorry, #{dish} is not on our menu." unless @menu.dishes.include?(dish)
     @basket.push({ dish: dish, amount: amount })
@@ -36,5 +40,9 @@ class Order
     @basket.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
   end
 
-
+  def check_total(expected_total)
+    bill = @basket.map { |item| item[:amount] * item[:dish].price }.reduce(:+)
+    raise "Sorry, your total is #{bill}, not #{expected_total}" if expected_total != bill
+    "Your order totals to #{bill}"
+  end
 end
