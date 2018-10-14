@@ -2,4 +2,31 @@
 require './lib/takeaway.rb'
 Takeaway.new
 ta = Takeaway.new
-ta.menu
+ta.c_menu
+ta.l_menu
+item = "rice"
+ta.add_to_basket(item)
+item = "chicken curry"
+ta.add_to_basket(item)
+ta.basket_contents
+
+
+
+
+@counter =
+if @basket.has_key? item
+  @counter += 1
+  @basket[item] = @counter
+else
+  @basket[item] = 1
+end
+
+
+@new_menu = [
+{"item" => "rice", "price" => 1.20, "qty" => 1, "sub total" => 1.20},
+{"item" => "fried_rice", "price" => 2.10, "qty" => 1, "sub total" => 2.10},
+{"item" => "chicken curry", "price" => 4.10, "qty" => 1, "sub total" => 4.10},
+{"item" => "Beef Ho Fun", "price" => 5.10, "qty" => 1, "sub total" => 5.10}
+]
+
+#current['sub total'] = current['sub total'] + current['sub total']
