@@ -32,16 +32,13 @@ describe Order do
     expect{subject.add_to_order('bacon roll')}.to raise_error(RuntimeError)
   end
 
-  # it 'sends text' do
-  #   subject.add_to_order('veggie burger', 4)
-  #   subject.add_to_order('pizza', 2)
-  #   subject.sum_order
-  #   subject.check_total
-  #   expect(subject.sms).to be_a Message
-  # end
+  it 'sends text' do
+    subject.add_to_order('veggie burger', 4)
+    subject.add_to_order('pizza', 2)
+    subject.sum_order
+    subject.check_total
+    expect(subject.sms).to be_a Message
+  end
 
-  # it 'only sends text if total is correct' do
-  #   subject.sum_order = 58
-  #   subject.order_total = 45
 
 end
