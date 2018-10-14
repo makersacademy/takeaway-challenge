@@ -6,7 +6,7 @@ describe Messenger do
 
   subject(:messenger) { described_class.new(client: twilio_client) }
 
-  it 'Makes call to Twilio API' do
+  it 'Makes a call to Twilio API' do
     expect(twilio_client).to receive(:messages)
     expect(messages).to receive(:create)
     messenger.send_text

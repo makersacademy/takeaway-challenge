@@ -11,17 +11,12 @@ describe TakeAway do
 
   describe '#show_menu' do
 
-    it 'responds' do
-      expect(takeaway).to respond_to(:show_menu)
-    end
-
-    it 'receivies menu_items' do
+    it 'Calls menu_items method on Menu class' do
       expect(menu).to receive(:menu_items)
       takeaway.show_menu
     end
 
-    it 'shows the menu' do
-      # Is this a pointless tests considerinf the double contains the expected output?
+    it 'Shows the menu' do
       expect(takeaway.show_menu).to eq(default_menu)
     end
 
@@ -29,16 +24,15 @@ describe TakeAway do
 
   describe '#add_to_order' do
 
-    it 'accepts 1 argument' do
+    it 'Accepts 1 argument' do
       expect(takeaway).to respond_to(:add_to_order).with(1).arguments
     end
 
-    it 'accepts 2 arguments' do
+    it 'Accepts 2 arguments' do
       expect(takeaway).to respond_to(:add_to_order).with(2).arguments
     end
 
-    it 'sends message to order' do
-
+    it 'Calls add_items method on Order class' do
       expect(order).to receive(:add_items)
       takeaway.add_to_order('Pizza')
     end
@@ -46,29 +40,28 @@ describe TakeAway do
   end
 
   describe '#order_summary' do
-    it 'receivies order summary' do
+    it 'Calls order_summary method on Order class' do
       expect(order).to receive(:order_summary)
       takeaway.order_summary
     end
   end
 
   describe '#total' do
-    it 'calls total on Order' do
+    it 'calls total method on Order class' do
       expect(order).to receive(:total)
       takeaway.total
     end
   end
 
   describe '#checkout' do
-    it 'calls checkout on Order' do
+    it 'calls checkout on Order class' do
       allow(messenger).to receive(:send_text)
       expect(order).to receive(:checkout)
       takeaway.checkout(13.98)
     end
 
-    it 'calls send_text on Messenger' do
+    it 'calls send_text on Messenger class' do
       allow(order).to receive(:checkout)
-      allow(messenger).to receive(:send_text)
       expect(messenger).to receive(:send_text)
       takeaway.checkout(13.98)
     end

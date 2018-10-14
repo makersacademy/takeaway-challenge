@@ -8,7 +8,7 @@ describe Order do
 
   describe '#add_items' do
     context 'When item is on the menu' do
-      it 'can add a single item' do
+      it 'Can add a single item' do
         order.add_items('pizza', 1)
         expect(order.basket).to eq({ 'pizza' => 1 })
       end
@@ -48,23 +48,23 @@ describe Order do
 
   describe '#order_summary' do
 
-    it 'single item' do
+    it 'Shows summary for single item' do
       order.add_items('pizza', 1)
       expect(order.order_summary).to eq('pizza x1 = £6.99')
     end
 
-    it 'single item with quantity greater than 1' do
+    it 'Shows summary for single item with quantity greater than 1' do
       order.add_items('pizza', 2)
       expect(order.order_summary).to eq('pizza x2 = £13.98')
     end
 
-    it 'multiple items of quantitity of 1' do
+    it 'Shows summary for multiple items with a quantity of 1' do
       order.add_items('pizza', 1)
       order.add_items('burger', 1)
       expect(order.order_summary).to eq('pizza x1 = £6.99, burger x1 = £3')
     end
 
-    it 'multiple items of multiple quantities' do
+    it 'Shows summary for multiple items of multiple quantities' do
       order.add_items('pizza', 1)
       order.add_items('burger', 2)
       expect(order.order_summary).to eq('pizza x1 = £6.99, burger x2 = £6')
@@ -73,7 +73,7 @@ describe Order do
   end
 
   describe '#total' do
-    it 'shows total for items in basket' do
+    it 'Shows total for items ordered' do
       order.add_items('pizza', 1)
       order.add_items('burger', 2)
       expect(order.total).to eq '£12.99'
@@ -81,7 +81,7 @@ describe Order do
   end
 
   describe '#checkout' do
-    it 'Raises error if incorrect amount inputted' do
+    it 'Raises error if amount inputted does not match order total' do
       expect { order.checkout(13.99) }.to raise_error('Incorrect amount. You need to enter the correct order total to checkout.')
     end
   end
