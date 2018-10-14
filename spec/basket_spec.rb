@@ -7,6 +7,4 @@ describe Basket do
     expect(subject.list).to eq []
   end
 
-  
-
 end

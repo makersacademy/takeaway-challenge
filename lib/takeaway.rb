@@ -4,6 +4,7 @@ require_relative 'basket'
 class Takeaway
 
   attr_reader :basket, :menu
+  
   def initialize
     @menu = Menu.new
     @basket = Basket.new
@@ -30,7 +31,7 @@ class Takeaway
         total_cost += price
       end
     end
-    basket_string += "\nTotal: £" + total_cost.to_s
+    puts basket_string += "\nTotal: £" + total_cost.to_s
     basket_string
   end
 
