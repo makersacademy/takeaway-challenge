@@ -31,3 +31,5 @@ ta.add_to_basket(item)
 ta.basket_contents
 
 Link to Github repo >> https://github.com/Br0ckers/takeaway-challenge
+
+I had some great assistance from Sam with my array of hashes as i had an issue with attr_accessor.
