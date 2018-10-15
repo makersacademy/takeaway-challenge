@@ -30,10 +30,11 @@ describe Takeaway do
     before do
 
    subject.menu_take_input(1)
+ 
  end
-
   it 'Shows selection' do
   expect(subject.show_selected).to eql( "£5.99 Chicken tikka")
+ end
  end
  
  
@@ -45,8 +46,22 @@ describe Takeaway do
    end
      it 'adds order' do
      expect(subject.add_order).to eql( ["£5.99 Chicken tikka"])
+ end
+ end
+ 
+ describe '#show_total' do
 
- end
+    before do
+   subject.menu_take_input(1)
+   subject.show_selected
+   subject.add_order
+
+   end
+     it 'Prints total' do
+     expect(subject.show_total).to eql( [5.99])
 end
- end
+end
+ 
+
+ 
 end
