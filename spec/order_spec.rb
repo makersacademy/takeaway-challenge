@@ -7,7 +7,7 @@ describe Order do
   before {
     allow(menu).to receive_message_chain(:dishes, :key?).and_return true
   }
-  
+
   describe "#add" do
     before { subject.add("Half Chicken", 2) }
 
@@ -30,7 +30,7 @@ describe Order do
     end
 
     it "should return the total cost of the order" do
-      allow(menu).to receive_message_chain(:dishes, :[], :*).and_return(16)
+      allow(menu).to receive(:dishes).and_return({ "Half Chicken" => 8 })
       expect(subject.total).to eq 16
     end
   end
