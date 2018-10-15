@@ -10,8 +10,6 @@ class Messenger
      from: ENV['FROM'],
      to: ENV['TO'])
 
-    @account_sid = account_sid
-    @auth_token = auth_token
     @client = client
     @from = from
     @to = to

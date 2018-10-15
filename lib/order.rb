@@ -19,7 +19,6 @@ class Order
       "#{dish} x#{quantity} = #{to_currency(get_price(dish) * quantity)}"
     }.join(', ')
 
-
   end
 
   def total
