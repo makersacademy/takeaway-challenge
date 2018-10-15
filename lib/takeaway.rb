@@ -39,6 +39,7 @@ class Takeaway
       puts "#{x} - £#{@menu[x]}"
       total += @menu[x]
     end
+    puts "Total: £#{total}"
     total
   end
     
