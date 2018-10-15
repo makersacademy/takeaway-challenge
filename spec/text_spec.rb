@@ -4,7 +4,7 @@ describe Text do
   let(:text_send_stub) {
     stub_request(:post, "https://api.twilio.com/2010-04-01/Accounts/ACeeb78433dcba23619b98cde03e52ad52/Messages.json").
          with(
-           body: { "Body" => message, "From" => "+441202286113", "To" => "+447982787204" },
+           body: { "Body" => message, "From" => ENV['FROM'], "To" => ENV['TO'] },
            headers: {
           'Accept' => 'application/json',
           'Accept-Charset' => 'utf-8',
