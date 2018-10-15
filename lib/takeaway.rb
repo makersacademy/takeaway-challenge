@@ -29,11 +29,14 @@ class Takeaway
      @orders << @dish                                                              # adds the order to the dish array
    end
    
-   def show_total                                                                # method to print the total cost of the order array using the prices hash.
+   def show_total     
      @orders.each do |i|
-     p @prices[i]
+     @total += @prices[i]
    end
+      p @total
+
    end
+   
    
 end
 

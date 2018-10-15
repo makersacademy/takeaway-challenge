@@ -57,11 +57,11 @@ describe Takeaway do
    subject.add_order
 
    end
-     it 'Prints total' do
-     expect(subject.show_total).to eql( [5.99])
+     it 'shows total' do
+  expect(subject.show_total).to eql( 5.99)
+
 end
 end
  
 
- 
 end
