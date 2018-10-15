@@ -2,7 +2,7 @@ require "takeaway"
 
 describe Takeaway do
 
-  subject { Takeaway.new(menu, format, order, price) }
+  subject { Takeaway.new(menu, format, order, price, contact) }
   let(:menu) { double :menu, items: [{dish: "burger", price: 4}] }
   let(:format) { double :format, format_menu: "Burger - £4.00"}
   let(:order) { double :order, add_to_order: "burger x2" }
@@ -39,10 +39,17 @@ describe Takeaway do
 
   describe '#finish_order' do
 
-    it "should finish order and send text" do
-      expect(price).to receive(:total)
+    it "should finish order and calculate total" do
+      expect(price).to receive(:total) {"£5.00"}
       allow(order).to receive(:order)
-      allow(contact).to receive(:send_message).with("£5.00")
+      allow(contact).to receive(:send_message)
+      subject.finish_order
+    end
+
+    it "should finish order and send message" do
+      allow(price).to receive(:total)
+      allow(order).to receive(:order)
+      expect(contact).to receive(:send_message)
       subject.finish_order
     end
 
