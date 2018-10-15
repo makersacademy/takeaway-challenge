@@ -4,6 +4,7 @@ describe Order do
 
   let(:menu) { double :menu, dishes: { "dish-1" => 1, "dish-2" => 2 } }
   let(:subject) { described_class.new(menu) }
+  let()
 
   before do
     subject.add_item("dish-1", 1)

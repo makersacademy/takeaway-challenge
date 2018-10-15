@@ -4,7 +4,7 @@ class Dishes
 
   def initialize(name, price)
     @name = name
-    @price = zone
+    @price = price
   end
 
 end

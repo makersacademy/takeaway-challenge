@@ -17,6 +17,7 @@ class Order
 
   def pay(amount)
     raise "Incorrect amount, please try again." unless amount == @price
+    
   end
 
 end
