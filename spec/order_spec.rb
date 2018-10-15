@@ -4,7 +4,7 @@ require 'pry'
 describe Order do
 
   it 'displays the entire menu' do
-    expect(subject.view_menu).to eq "pizza £9.00\npasta £8.00\ncurry £10.00\nburger £11.00\nveggie burger £10.00"
+    expect(subject.view_menu).to eq "pizza £9.00\npasta £8.00\ncurry £10.00\nburger £11.00\nveggie burger £10.00\n"
   end
 
   it "allows the user to add items to their basket" do
@@ -30,14 +30,6 @@ describe Order do
 
   it 'raises error if user tries to add unavailable item' do
     expect{subject.add_to_order('bacon roll')}.to raise_error(RuntimeError)
-  end
-
-  it 'sends text' do
-    subject.add_to_order('veggie burger', 4)
-    subject.add_to_order('pizza', 2)
-    subject.sum_order
-    subject.check_total
-    expect(subject.sms).to be_a Message
   end
 
 

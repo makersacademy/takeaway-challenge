@@ -12,9 +12,11 @@ attr_reader :items
   end
 
   def list
+    string = ""
     @items.each do |name, price|
-        puts "#{name} £#{price}\n"
+        string += "#{name} £#{price}0\n"
       end
+    string
   end
 
   def add_item(name, price)

@@ -6,7 +6,7 @@ class Order
 attr_reader :basket, :menu, :sms
 
   def initialize(menu = Menu.new)
-    @menu = menu.items
+    @menu = menu
     @basket = {}
   end
 
@@ -15,13 +15,13 @@ attr_reader :basket, :menu, :sms
   end
 
   def add_to_order(name, quantity = 1)
-    raise 'Item is unavailable' unless @menu.include?(name)
+    raise 'Item is unavailable' unless @menu.items.include?(name)
     @basket[name] = quantity
   end
 
   def order_total
     @basket.map do |name, quantity|
-      @menu[name] * quantity
+      @menu.items[name] * quantity
     end
   end
 
