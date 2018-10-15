@@ -6,10 +6,11 @@ describe Order do
 
   before {
     allow(menu).to receive_message_chain(:dishes, :key?).and_return true
-    subject.add("Half Chicken", 2)
   }
-
+  
   describe "#add" do
+    before { subject.add("Half Chicken", 2) }
+
     it "should add several dishes to the current order" do
       expect(subject.current).to eq "Your current order:\n2 x Half Chicken"
     end
@@ -21,6 +22,8 @@ describe Order do
   end
 
   describe "#total" do
+    before { subject.add("Half Chicken", 2) }
+
     it "should call dishes on Menu obejct" do
       expect(menu).to receive_message_chain(:dishes, :[], :*)
       subject.total
