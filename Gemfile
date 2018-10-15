@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.0'
 
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'capybara'
 gem 'rake'
 gem 'rspec'

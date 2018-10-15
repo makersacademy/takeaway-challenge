@@ -1,14 +1,15 @@
+require 'dotenv'
 require 'twilio-ruby'
 
 class TwilioClient
-  def initialize(twilio_number, client_number)
-    account_sid = 'AC95f23a31e4b43442665d0a8c65271ee5'
-    auth_token = '1aeed18dee8af028b1113e5b5f0d561b'
+  def initialize
+    account_sid = ENV['account_sid']
+    auth_token = ENV['auth_token']
 
     @client = Twilio::REST::Client.new account_sid, auth_token
 
-    @from = twilio_number
-    @to = client_number
+    @from = ENV['twilio_number']
+    @to = ENV['client_number']
   end
 
   attr_reader :from, :client
