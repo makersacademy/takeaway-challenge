@@ -4,10 +4,11 @@ class Price
     @menu = menu
   end
 
+private
   def item_price(item)
     return @menu.items.detect { |hash| hash[:dish] == item }[:price]
   end
-
+public
   def total(order)
     cost = 0
     order.each do |dish, quantity|

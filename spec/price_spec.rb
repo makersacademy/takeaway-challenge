@@ -7,13 +7,13 @@ describe Price do
   let(:order2) { double :order, order: {burger: 4, :"onion rings" => 3}}
   let(:menu) { double :menu, items: [{dish: "burger", price: 4}, {dish: "chips", price: 2}, {dish: "onion rings", price: 2}] }
 
-  describe '#item_price' do
-
-    it "should return the price of a burger" do
-      expect(subject.item_price("burger")).to eq(4)
-    end
-
-  end
+  # describe '#item_price' do
+  #
+  #   it "should return the price of a burger" do
+  #     expect(subject.item_price("burger")).to eq(4)
+  #   end
+  #
+  # end
 
   describe '#total' do
 

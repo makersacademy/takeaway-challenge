@@ -11,8 +11,8 @@ class CustomerContact
       body: "Thank you for your order - your total is #{total}. Your food will be delivered by #{order_time}."
       })
 
-    from = ENV["TWILIO_NUMBER"] # Your Twilio number
-    to = ENV["MY_NUMBER"] # Your mobile phone number
+    from = ENV["TWILIO_NUMBER"]
+    to = ENV["MY_NUMBER"]
 
     @client.messages.create(details)
 

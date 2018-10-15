@@ -15,10 +15,9 @@ class FormatMenu
     puts @footer
   end
 
+private
   def format_price(price)
     return "£#{sprintf( '%.2f', price)}"
   end
-
-  private :format_price
 
 end
