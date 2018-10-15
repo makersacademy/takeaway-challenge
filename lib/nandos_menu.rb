@@ -9,11 +9,11 @@ class NandosMenu
     }
   end
 
-  def dishes
-    @dishes.dup
-  end
-
   def show_menu
     @dishes.map { |dish, price| "#{dish}: £#{price}" }.join("\n")
+  end
+
+  def price(dish)
+    @dishes[dish]
   end
 end

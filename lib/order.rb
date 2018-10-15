@@ -29,7 +29,7 @@ class Order
 
   def price_of_item(item)
     item.map do |dish, quantity|
-      @menu.dishes[dish] * quantity
+      @menu.price(dish) * quantity
     end
   end
 

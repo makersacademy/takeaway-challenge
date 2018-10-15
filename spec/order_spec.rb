@@ -25,12 +25,12 @@ describe Order do
     before { subject.add("Half Chicken", 2) }
 
     it "should call dishes on Menu obejct" do
-      expect(menu).to receive_message_chain(:dishes, :[], :*)
+      expect(menu).to receive_message_chain(:price, :*)
       subject.total
     end
 
     it "should return the total cost of the order" do
-      allow(menu).to receive(:dishes).and_return({ "Half Chicken" => 8 })
+      allow(menu).to receive(:price).and_return(8)
       expect(subject.total).to eq 16
     end
   end
