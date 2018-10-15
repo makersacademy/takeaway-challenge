@@ -1,19 +1,30 @@
-require_relative 'apis/twilio'
+require_relative 'twilio'
 
 class Order
 
-  def initialize(dishes:, bill:)
+  def initialize(dishes:)
     @dishes = dishes
-    @bill = bill
+    # @bill = bill
   end
 
-  def check_bill
-    bill = (@dishes.map { |dish, quantity| dish.price * quantity }.reduce(:+)).round(2)
-    raise 'Incorrect Bill' if @bill != bill
-    now = Time.now
-    delivery_time = "#{ now.hour + 1 }:#{ now.min }"
-    message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
-    send_text(message)
+  def dishes
+    @dishes.dup
+  end
+
+  def print_out
+    @dishes.map { |dish, quantity| "#{quantity} x #{dish.name}" }.join("\n")
+  end
+
+  def bill
+    (@dishes.map { |dish, quantity| dish.price * quantity }.reduce(:+)).round(2)
+  end
+
+  def confirm
+    @confirmed = true
+  end
+
+  def confirmed?
+    @confirmed ||= false
   end
 
 end
