@@ -14,6 +14,7 @@ class Menu
       puts heading.to_s
       dishes.each { |dish, cost| puts dish + " - £#{cost}" }
     end
+    return nil
   end
 
 end
