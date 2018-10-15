@@ -44,25 +44,25 @@ Instructions for Use
         02ae0 @dish_name="Cha Siu Pork Bun", @price=4>, :amount=>2}]
         2.5.0 :012 > order.add(beeflomein)
         => [{:dish=>#<Dish:0x00007faade9816c0 @dish_name="Salt and Pepper Squid", @price=9>, :amount=>3}, {:dish=>#<Dish:0x00007faadea
-02ae0 @dish_name="Cha Siu Pork Bun", @price=4>, :amount=>2}, {:dish=>#<Dish:0x00007faade1a1590 @dish_name="Beef Lo Mein", @pric
-e=12>, :amount=>1}]
-2.5.0 :013 > order.check_total(10)
-Traceback (most recent call last):
-        3: from /Users/chloeverity/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
-        2: from (irb):13
-        1: from /Users/chloeverity/Projects/takeaway-challenge/takeaway-challenge/lib/order.rb:47:in `check_total'
-        RuntimeError (Sorry, your total is £47, not £10)
-        2.5.0 :014 > order.total
-         => 47
-        2.5.0 :015 > order.confirm
-         => #<Text:0x00007faadea56050 @time="17:28", @send_sms=<Twilio.Api.V2010.MessageInstance account_sid: AC33738fa4d68c2290ddf1aad
-        512d2eb28 api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you, Your order will be delivered before 17
-        :28 date_created: 2018-10-14 15:28:00 +0000 date_updated: 2018-10-14 15:28:00 +0000 date_sent:  direction: outbound-api error_c
-        ode: 0 error_message:  from: +441698313045 messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid:
-         SM8c29086703884b86b735f591dbbbe8d2 status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/AC33738fa4d68c2290ddf1aad5
-        12d2eb28/Messages/SM8c29086703884b86b735f591dbbbe8d2/Media.json"} to: +447912210220 uri: /2010-04-01/Accounts/AC33738fa4d68c229
-        0ddf1aad512d2eb28/Messages/SM8c29086703884b86b735f591dbbbe8d2.json>>
-        2.5.0 :016 > exit
+        02ae0 @dish_name="Cha Siu Pork Bun", @price=4>, :amount=>2}, {:dish=>#<Dish:0x00007faade1a1590 @dish_name="Beef Lo Mein", @pric
+        e=12>, :amount=>1}]
+        2.5.0 :013 > order.check_total(10)
+        Traceback (most recent call last):
+                3: from /Users/chloeverity/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+                2: from (irb):13
+                1: from /Users/chloeverity/Projects/takeaway-challenge/takeaway-challenge/lib/order.rb:47:in `check_total'
+                RuntimeError (Sorry, your total is £47, not £10)
+                2.5.0 :014 > order.total
+                 => 47
+                2.5.0 :015 > order.confirm
+                 => #<Text:0x00007faadea56050 @time="17:28", @send_sms=<Twilio.Api.V2010.MessageInstance account_sid: AC33738fa4d68c2290ddf1aad
+                512d2eb28 api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you, Your order will be delivered before 17
+                :28 date_created: 2018-10-14 15:28:00 +0000 date_updated: 2018-10-14 15:28:00 +0000 date_sent:  direction: outbound-api error_c
+                ode: 0 error_message:  from: +441698313045 messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid:
+                 SM8c29086703884b86b735f591dbbbe8d2 status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/AC33738fa4d68c2290ddf1aad5
+                12d2eb28/Messages/SM8c29086703884b86b735f591dbbbe8d2/Media.json"} to: +447912210220 uri: /2010-04-01/Accounts/AC33738fa4d68c229
+                0ddf1aad512d2eb28/Messages/SM8c29086703884b86b735f591dbbbe8d2.json>>
+                2.5.0 :016 > exit
 
 Takeaway Challenge
 ==================
