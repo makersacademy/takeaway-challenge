@@ -44,6 +44,9 @@ $ brew cask install ngrok
 ```
 $ ruby './lib/twilio.rb'
 ```
+
+[![asciicast](https://asciinema.org/a/m0s3gCALX6e3tb2qDwy0RwQzx.png)](https://asciinema.org/a/m0s3gCALX6e3tb2qDwy0RwQzx)
+
 ##### open another terminal for ngrok tunnel
 ```
 $ ngrok http 4567
