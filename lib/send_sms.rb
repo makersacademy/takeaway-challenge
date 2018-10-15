@@ -2,7 +2,6 @@ require 'twilio-ruby'
 # require 'order'
 
 module SendSMS
-  TWILIO_PHONE_NUMBER = "+441727260173"
 
   def time
     time = Time.new + 3600
@@ -13,7 +12,7 @@ module SendSMS
     client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
     @time = time
 
-    from = TWILIO_PHONE_NUMBER
+    from = ENV['TWILIO_PHONE_NUMBER']
     to = '+447598190395'
     body = "Thanks! Your order was placed and will be delivered before #{@time}"
 
