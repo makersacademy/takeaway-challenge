@@ -37,104 +37,18 @@ $ pry
 => true
 [3] pry(main)> load './lib/twilio_client.rb'
 => true
-[4] pry(main)> client = TwilioClient.new('+44 115 824 3978', '+44 7950 290690')
+[4] pry(main)> client = TwilioClient.new
 => #<TwilioClient:0x00007fa7bfa7db90
  @client=
   #<Twilio::REST::Client:0x00007fa7bfa7db18
-   @account_sid="AC95f23a31e4b43442665d0a8c65271ee5",
-   @accounts=nil,
-   @api=nil,
-   @auth=["AC95f23a31e4b43442665d0a8c65271ee5", "1aeed18dee8af028b1113e5b5f0d561b"],
-
-   @auth_token="1aeed18dee8af028b1113e5b5f0d561b",
-   @chat=nil,
-   @fax=nil,
-   @http_client=
-    #<Twilio::HTTP::Client:0x00007fa7bfa7daf0
-     @adapter=:net_http,
-     @proxy_addr=nil,
-     @proxy_pass=nil,
-     @proxy_port=nil,
-     @proxy_user=nil,
-     @ssl_ca_file=nil,
-     @timeout=nil>,
-   @ip_messaging=nil,
-   @lookups=nil,
-   @messaging=nil,
-   @monitor=nil,
-   @notify=nil,
-   @password="1aeed18dee8af028b1113e5b5f0d561b",
-   @preview=nil,
-   @pricing=nil,
-   @proxy=nil,
-   @region=nil,
-   @studio=nil,
-   @sync=nil,
-   @taskrouter=nil,
-   @trunking=nil,
-   @username="AC95f23a31e4b43442665d0a8c65271ee5",
-   @verify=nil,
-   @video=nil,
-   @voice=nil,
-   @wireless=nil>,
- @from="+44 115 824 3978",
- @to="+44 7950 290690">
+  # ...
+  # ...
 [5] pry(main)> menu = TokyoMenu.new
 => #<TokyoMenu:0x00007fa7c0a89c28>
 [6] pry(main)> takeaway = Takeaway.new(menu, client)
 => #<Takeaway:0x00007fa7bfaec900
- @client=
-  #<TwilioClient:0x00007fa7bfa7db90
-   @client=
-    #<Twilio::REST::Client:0x00007fa7bfa7db18
-     @account_sid="AC95f23a31e4b43442665d0a8c65271ee5",
-     @accounts=nil,
-
-     @api=nil,
-     @auth=["AC95f23a31e4b43442665d0a8c65271ee5", "1aeed18dee8af028b1113e5b5f0d561b"],
-     @auth_token="1aeed18dee8af028b1113e5b5f0d561b",
-     @chat=nil,
-     @fax=nil,
-     @http_client=
-      #<Twilio::HTTP::Client:0x00007fa7bfa7daf0
-       @adapter=:net_http,
-       @proxy_addr=nil,
-       @proxy_pass=nil,
-       @proxy_port=nil,
-       @proxy_user=nil,
-       @ssl_ca_file=nil,
-       @timeout=nil>,
-     @ip_messaging=nil,
-     @lookups=nil,
-     @messaging=nil,
-     @monitor=nil,
-     @notify=nil,
-     @password="1aeed18dee8af028b1113e5b5f0d561b",
-     @preview=nil,
-     @pricing=nil,
-     @proxy=nil,
-     @region=nil,
-     @studio=nil,
-     @sync=nil,
-     @taskrouter=nil,
-     @trunking=nil,
-     @username="AC95f23a31e4b43442665d0a8c65271ee5",
-     @verify=nil,
-     @video=nil,
-     @voice=nil,
-     @wireless=nil>,
-   @from="+44 115 824 3978",
-   @to="+44 7950 290690">,
- @current_selection=nil,
- @menu=#<TokyoMenu:0x00007fa7c0a89c28>,
- @menu_array=
-  [{:name=>"Miso Soup", :nickname=>:miso, :price=>1.5},
-   {:name=>"Soba Noodles", :nickname=>:soba, :price=>4.5},
-   {:name=>"Vegetable Tempura", :nickname=>:tempura, :price=>3.5},
-   {:name=>"Avocado Maki", :nickname=>:maki, :price=>4.0},
-   {:name=>"Teriyaki Tofu Don", :nickname=>:tofu, :price=>5.0},
-   {:name=>"White Rice", :nickname=>:rice, :price=>1.0},
-   {:name=>"Green Tea", :nickname=>:tea, :price=>1.0}]>
+ # ...
+ # ...
 [7] pry(main)> selection = {
 [7] pry(main)*   dishes: [{ nickname: :miso, quantity: 1 }, { nickname: :tempura, quantity: 1 }, { nickname: :rice, quantity: 1
  }],
