@@ -4,7 +4,11 @@ class Menu
   def initialize
     @dishes = [
       { dish: "Fish", price: 1 },
-      { dish: "Chicken", price: 2 }
+      { dish: "Chicken nuggets", price: 2 },
+      { dish: "Roast Chicken", price: 5 },
+      { dish: "Chicken Burger", price: 2 },
+      { dish: "BBQ Chicken", price: 3 },
+      { dish: "Fried Chicken", price: 1 },
     ]
   end
   
