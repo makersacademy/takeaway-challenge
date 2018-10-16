@@ -47,5 +47,21 @@ class Takeaway
     p "Expected wait time: #{wait_time} minutes"
   end
    
+  
+  require 'twilio-ruby'
+
+  account_sid = '#deleted on push to github'
+  auth_token = '#deleted on push to github'
+  client = Twilio::REST::Client.new(account_sid, auth_token)
+ 
+  from = ' #deleted on push to github' # Your Twilio number
+  to = '#deleted on push to github' # Your mobile phone number
+
+  client.messages.create(
+  from: from,
+  to: to,
+  body: "Your order has been placed!
+  Enjoy your food ;)"
+)
 end
 
