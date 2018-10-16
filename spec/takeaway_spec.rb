@@ -11,6 +11,8 @@ describe Takeaway do
   describe '#order' do
     it 'order food to the basket' do
       subject.order("spring roll")
+      expect(subject.basket).to include("spring roll")
+      expect(subject.basket).to include("0.99")
     end
   end
   
