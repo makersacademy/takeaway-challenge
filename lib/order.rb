@@ -2,7 +2,7 @@ require_relative 'nandos_menu'
 
 class Order
   def initialize(menu: NandosMenu.new)
-    @order = []
+    @order = {}
     @menu = menu
   end
 
@@ -12,25 +12,25 @@ class Order
 
   def add(dish, quantity)
     raise("Item not found on menu") unless on_menu?(dish)
-    @order << { dish => quantity }
+    @order[dish] = quantity
   end
 
   def total
-    @order.map { |item| price_of_item(item) }.flatten.reduce(:+)
+    @order.collect { |dish, quantity|
+      price_of(dish) * quantity
+    }.reduce(:+)
   end
 
   private
 
   def order
-    @order.map { |item|
-      item.map { |dish, quantity| "#{quantity} x #{dish}" }
+    @order.map { |dish, quantity|
+      "#{quantity} x #{dish}"
     }.join("\n")
   end
 
-  def price_of_item(item)
-    item.map do |dish, quantity|
-      @menu.price(dish) * quantity
-    end
+  def price_of(dish)
+    @menu.price(dish)
   end
 
   def on_menu?(dish)
