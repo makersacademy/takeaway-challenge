@@ -4,7 +4,6 @@ class Order
 
   def initialize(dishes:)
     @dishes = dishes
-    # @bill = bill
   end
 
   def dishes

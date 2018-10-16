@@ -12,26 +12,36 @@ describe Order do
     allow(salad).to receive(:salad).and_return(5.85)
   end
 
-  describe '#check_bill' do
-    context "order given with correct total" do
-      subject { described_class.new(dishes: { pizza => 1, pasta => 1, salad => 1 }, bill: 19.55) }
-      it 'should send confirmation text message to customer' do
-        allow(subject).to receive(:send_text)
-        subject.check_bill
-        expect(subject).to have_received(:send_text)
-      end
-    end
-    context "order given with incorrect total" do
-      subject { described_class.new(dishes: { pizza => 2, pasta => 1, salad => 1 }, bill: 19.55) }
-      it 'should create order and send text message to customer' do
-        expect { subject.check_bill }.to raise_error('Incorrect Bill')
-      end
+  subject { described_class.new(dishes: { pizza => 4, pasta => 3, salad => 6 })}
+
+  it 'should initialize with the dishes and quantities' do
+    expect(subject.dishes).to eq ({ pizza => 4, pasta => 3, salad => 6 })
+  end
+
+  describe '#print_out' do
+    it 'should print a formatted list of dishes with quantities' do
+      print_out = "4 x Pizza\n3 x Pasta\n6 x Salad"
+      expect(subject.print_out).to eq print_out
     end
   end
 
-  describe '#confirmation_text' do
-    it
+  describe '#bill' do
+    it 'should return 84.05' do
+      expect(subject.bill).to eq 84.05
+    end
   end
 
+  describe '#confirm?' do
+    it 'should return false as default' do
+      expect(subject).not_to be_confirmed
+    end
+  end
 
+  describe '#confirm' do
+    it 'should make confirmed' do
+      subject.confirm
+      expect(subject).to be_confirmed
+    end
+  end
+  
 end

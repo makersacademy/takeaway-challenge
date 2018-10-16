@@ -24,17 +24,20 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Setup
 
+##### prerequisites
+
+* [ngrok](https://ngrok.com/) installed locally.
+For Macs users use [homebrew](https://brew.sh/).
+```
+$ brew cask install ngrok
+```
+* registered [twilio](https://www.twilio.com/) account
+
 ##### clone  and install
 ```
 $ git clone https://github.com/toddpla/takeaway-challenge.git
 
 $ bundle
-```
-The application uses [Twilio](https://www.twilio.com/) which requires a server connected to the internet. This can be achieved in a number of ways but I used [Ngrok](https://ngrok.com/) to tunnel to the localhost for the purposes of the challenge.
-
-For Macs Ngrok can be installed using brew.
-```
-$ brew cask install ngrok
 ```
 
 ## Run
@@ -45,9 +48,23 @@ $ brew cask install ngrok
 $ ruby './lib/twilio.rb'
 ```
 
-[![asciicast](https://asciinema.org/a/m0s3gCALX6e3tb2qDwy0RwQzx.png)](https://asciinema.org/a/m0s3gCALX6e3tb2qDwy0RwQzx)
+<!-- [![asciicast](https://asciinema.org/a/m0s3gCALX6e3tb2qDwy0RwQzx.png)](https://asciinema.org/a/m0s3gCALX6e3tb2qDwy0RwQzx) -->
 
 ##### open another terminal for ngrok tunnel
 ```
 $ ngrok http 4567
 ```
+This creates a tunnel to the localhost.
+
+Copy the forwarding url.
+
+![ngrok](./docs/images/ngrok.png)
+
+
+##### configure twilio accout settings
+
+Paste this url in the twilio webhook for **A MESSAGE COMES IN** and set the HTTP method to **POST**
+
+Make sure to add **/sms** to the end of the url.
+
+![twilio-webhook](./docs/images/twilio-webhook.png)
