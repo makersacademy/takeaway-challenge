@@ -14,7 +14,6 @@ class Takeaway
   
   def menu_instructions_display
       p "Enter the number of your selected dish"                                 # Tells the user to input the dish number
-
   end
  
    def menu_take_input(dish_number)                                              # takes the user input for dish number
@@ -23,6 +22,7 @@ class Takeaway
    
    def show_selected
       @dish = @menu.key(@dish_number)                                            # prints the dish name with the corresponding identifier
+      p "You have selected #{@dish}"   
    end
    
    def add_order                      
@@ -37,6 +37,15 @@ class Takeaway
 
    end
    
+  def expected_delivery
+    time = Time.new
+    p "Order was placed on:"
+    p time.ctime
+    order_number = rand(1..23490)
+    p "Order number: #{order_number}"
+    wait_time = rand(20..59)
+    p "Expected wait time: #{wait_time} minutes"
+  end
    
 end
 

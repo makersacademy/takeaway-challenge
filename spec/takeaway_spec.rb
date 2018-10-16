@@ -33,7 +33,7 @@ describe Takeaway do
  
  end
   it 'Shows selection' do
-  expect(subject.show_selected).to eql( "£5.99 Chicken tikka")
+  expect(subject.show_selected).to eql("You have selected £5.99 Chicken tikka")
  end
  end
  
@@ -52,13 +52,13 @@ describe Takeaway do
  describe '#show_total' do
 
     before do
-   subject.menu_take_input(1)
+   subject.menu_take_input(2)
    subject.show_selected
    subject.add_order
 
    end
      it 'shows total' do
-  expect(subject.show_total).to eql( 5.99)
+  expect(subject.show_total).to eql(4.50)
 
 end
 end
