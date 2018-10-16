@@ -19,5 +19,9 @@ class Takeaway
   def basket
     return "you have ordered #{@food}, it will cost #{@price.inject(0, :+)}"
   end
-
+  
+  def pay
+    return "Thank you! Your order was placed and will be delivered before 18:52"
+  end
+  
 end

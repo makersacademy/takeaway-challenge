@@ -16,4 +16,10 @@ describe Takeaway do
     end
   end
   
+  describe '#pay' do
+    it 'pays the bill' do
+      expect(subject.pay).to eq("Thank you! Your order was placed and will be delivered before 18:52")
+    end
+  end
+  
 end
