@@ -8,7 +8,7 @@ describe DishView do
 
   describe '#display' do
     it 'displays the dish' do
-      expect(subject.display).to eq "  #{name.ljust(30)}£#{price}"
+      expect(subject.display).to eq "  #{name.ljust(30)}£#{format("%.2f", price)}"
     end
   end
 end

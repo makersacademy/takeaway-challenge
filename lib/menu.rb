@@ -1,5 +1,6 @@
 class Menu
   attr_reader :categories
+  NO_ITEM = 'No item like that'
   def initialize(categories)
     @categories = categories
   end
@@ -11,7 +12,7 @@ class Menu
         res = item if item.name == item_name
       end
     end
-    raise 'No item like that' if res.nil?
+    raise NO_ITEM if res.nil?
     res
   end
 end
