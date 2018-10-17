@@ -5,15 +5,15 @@ class Order
   attr_reader :total
 
   def initialize(menu)
-    @items = {}
+    @items = Hash.new(0)
     @menu = menu
     @total = 0
   end
 
   def add(item, quantity)
     @total += (quantity * @menu.items[item].to_f)
-    @items[item] += quantity if @items.include?(item)
-    @items[item] = quantity unless @items.include?(item)
+    @items[item] += quantity
+    # @items[item] = quantity unless @items.include?(item)
   end
 
   def display_menu
