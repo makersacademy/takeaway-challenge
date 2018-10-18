@@ -6,15 +6,15 @@ class Menu
 
   def initialize(order = Order.new)
     @list = { "pizza" => 5.99, "chips" => 1.99, "burger" => 2.99, "kebab" => 3.99 }
-    @menu = ""
     @order = order
   end
 
   def list_dishes
+    @menu = ""
     @list.each_with_index do |(k, v), i|
       @menu << "#{i + 1}. Item: #{k}, Price £#{v}\n"
     end
-     @menu
+    @menu
   end
 
 # no rspec test for this yet

@@ -6,7 +6,7 @@ menu.list_dishes
 User Story 2
 require './lib/menu'
 menu = Menu.new
-menu.select_dish(dish)
+menu.select("pizza")
 menu.order
 
 User Story 3
