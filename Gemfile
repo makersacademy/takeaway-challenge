@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.5.0'
 
 gem 'capybara'
+gem 'codecov', :require => false, :group => :test
 gem 'pry'
 gem "rack"
 gem "rack-test"
