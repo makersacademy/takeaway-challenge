@@ -1,4 +1,5 @@
 Takeaway Challenge
+[![Build Status](https://travis-ci.com/camjw/takeaway-challenge.svg?branch=master)](https://travis-ci.com/camjw/takeaway-challenge)
 
 [![codecov](https://codecov.io/gh/camjw/takeaway-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/camjw/takeaway-challenge)
 
