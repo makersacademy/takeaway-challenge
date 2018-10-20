@@ -38,7 +38,7 @@ RSpec.describe SMSReceiver do
     it "confirms total bill and time of arrival" do
       order_confirmation = ["Thank you for your order.",
                             "Your total bill is £5.00.",
-                            "Your food will arrive by 02:00"
+                            "Your food will arrive by 01:00"
 ]
       expect(subject.respond(parsed_order)).to eq order_confirmation.join("\n")
     end

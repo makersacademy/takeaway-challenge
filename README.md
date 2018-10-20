@@ -1,4 +1,7 @@
 Takeaway Challenge
+
+[![codecov](https://codecov.io/gh/camjw/takeaway-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/camjw/takeaway-challenge)
+
 ==================
 ```
                             _________
