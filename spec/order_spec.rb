@@ -8,6 +8,7 @@ describe Order do
   subject(:order) { described_class.new(pricemanager,text) }
 
   it "adds items to the order" do
+    #allow(stdio).to receive(:gets){"1"}
     order.add_dish_to_order(dish, 1)
     expect(order.orderlist.length).to eq 1
   end

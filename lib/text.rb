@@ -2,7 +2,7 @@ require "twilio-ruby"
 
 class Text
 
-  def initialize
+  def initialize(client = Twilio::REST::Client)
     @account_sid = 'ACxxxxxxxxxxxxxxxxxxxxxxxx'
     @auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
