@@ -7,7 +7,8 @@ class Order
   end
 
   def add_items(item, quantity)
-    raise('Invalid dish. Only items on the menu can be added to your order.') unless @menu.on_menu?(item)
+    raise('Invalid dish. Only items on the menu'\
+      ' can be added to your order.') unless @menu.on_menu?(item)
     @basket[item] += quantity
   end
 
