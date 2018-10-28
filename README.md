@@ -122,13 +122,13 @@ To give you an idea about how you would use the application, here is a walk thro
 
 I began with writing a user story feature test. This required asking what dishes were on the menu. Once I had a failing feature test I wrote corresponding unit tests for a menu class. Once, both feature and unit tests were failing for the same reason I wrote the code to pass the failing tests. I continued like this for the remaining user stories and unit tests discovering the required classes and implementing them to pass the tests.
 
-When I came to implement the Order class I added the Twilio gem and configured the code. I read the online documentation in order to set it up correctly. I hid sensitive information in an `config.env` file so that it would not be publicly available. I posted an example file on github so that others could see the format and the required information and then added the file to `.gitignore` so that my real credentials would not be pushed to github. When testing the SMS functionality, I used a double (mock) and stubbed the `send` method so that real text messages were not sent with each test order. I made the unit test for sms messaging pending once I had gotten it to work so that a text message was not sent with each `rspec` run.
+When I came to implement the Order class I added the Twilio gem and configured the code. I read the online documentation in order to set it up correctly. I hid sensitive information in an `config.env` file so that it would not be publicly available. I posted an example file on github so that others could see the format and the required information and then added the file to `.gitignore` so that my real credentials would not be pushed to github. When testing the SMS functionality, I used a double (mock) and stubbed the `send` method so that real text messages were not sent with each test order.
 
 Once I had the basic functionality working across classes I wrote an end to end feature test. It was a little awkward using the classes that I had so I created a `Takeaway` class to help control the overall flow. The methods on the `Takeaway` class mostly delegated to the other classes but provided a cleaner interface.
 
 I enabled dependency injection so that either custom or default objects for `Order`, `Menu` and `SMS` could be used.
 
-Test coverage was 99% - This was because I set the sms test to be pending. Otherwise, it would have been 100%
+Test coverage was 100%
 
 Rubocop gave 2 warnings for too many lines. This was unavoidable because I needed to add lots of items to the menu.
 
