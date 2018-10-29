@@ -8,9 +8,9 @@ class Menu
   def find_item_by_name(item_name)
     res = nil
     @categories.each do |category|
-      res = find_item_in_category(category, item_name)
+      res ||= find_item_in_category(category, item_name)
     end
-    raise NO_ITEM if res.nil?
+    raise "#{NO_ITEM}: #{item_name}" if res.nil?
     res
   end
 
@@ -18,7 +18,7 @@ class Menu
 
   def find_item_in_category(category, name)
     category.items.find do |item| 
-      item.name == name 
+      item.name == name
     end
   end
 end
