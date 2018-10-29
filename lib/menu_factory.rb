@@ -19,16 +19,28 @@ class MenuFactory
   end
 
   def make_objects(hash)
-    categories = hash.map do |key, value|
-      category = @category_class.new(key)
-      value.each do |item|
-        name = item['name']
-        price = item['price']
-        category.add_dish(@dish_class.new(name, price))
-      end
-      category
+    categories = hash.map do |name, dishes|
+      create_category(name, dishes)
     end
     @menu_class.new(categories)
   end
 
+  private
+
+  def create_category(name, dishes)
+    category = @category_class.new(name)
+    add_dishes_to_category(dishes, category)
+    category
+  end
+
+  def add_dishes_to_category(dishes, category)
+    dishes.each do |dish|
+      dish = create_dish(dish['name'], dish['price'])
+      category.add_dish(dish)
+    end
+  end
+
+  def create_dish(name, price)
+    @dish_class.new(name, price)
+  end
 end
