@@ -8,11 +8,17 @@ class Menu
   def find_item_by_name(item_name)
     res = nil
     @categories.each do |category|
-      category.items.each do |item|
-        res = item if item.name == item_name
-      end
+      res = find_item_in_category(category, item_name)
     end
     raise NO_ITEM if res.nil?
     res
+  end
+
+  private
+
+  def find_item_in_category(category, name)
+    category.items.find do |item| 
+      item.name == name 
+    end
   end
 end
