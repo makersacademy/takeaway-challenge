@@ -1,11 +1,9 @@
-require_relative 'dish'
-require_relative 'category'
 require_relative 'menu'
 require 'json'
 
 class MenuFactory
 
-  def initialize(dish_class = Dish, category_class = Category,
+  def initialize(dish_class = Menu::Dish, category_class = Menu::Category,
       menu_class = Menu)
     @dish_class = dish_class
     @category_class = category_class

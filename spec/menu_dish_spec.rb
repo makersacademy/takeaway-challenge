@@ -1,6 +1,6 @@
-require 'dish'
+require 'menu'
 
-describe Dish do
+describe Menu::Dish do
   let(:name) { 'name' }
   let(:price) { 8 }
   subject { described_class.new(name, price) }

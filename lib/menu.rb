@@ -4,7 +4,27 @@ class Menu
   def initialize(categories)
     @categories = categories
   end
+  
+  class Category 
+    attr_reader :name, :items
+    def initialize(name)
+      @name = name
+      @items = []
+    end
+    
+    def add_dish(dish)
+      @items << dish
+    end
+  end
 
+  class Dish
+    attr_reader :name, :price
+    def initialize(name, price)
+      @name = name
+      @price = price
+    end
+  end
+  
   def find_item_by_name(item_name)
     res = nil
     @categories.each do |category|

@@ -1,6 +1,6 @@
-require 'category'
+require 'menu'
 
-describe Category do
+describe Menu::Category do
   let(:category_name) { 'category_name' }
   let(:dish) { double :dish }
   subject { described_class.new(category_name) }
