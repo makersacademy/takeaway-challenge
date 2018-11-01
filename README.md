@@ -128,3 +128,7 @@ My approach to solving this challenge
     1. Order class: responsible for adding dishes to order and placing order(list of dishes with quantity, price and total)
     1. Takeaway class: responsible for completing order
     1. Messager class: responsible for sending message through Twilio
+
+## Diagram
+
+![Takeaway diagram](takeaway-diagram.png)
