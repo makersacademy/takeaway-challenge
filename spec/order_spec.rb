@@ -1,74 +1,63 @@
 require 'order'
 
 describe Order do
-  # let(:menu_double)       { double :menu }
   let(:order)               { described_class.new }
-  let(:dish_choice)         { double :dish }
   let(:send_text)           { double :send_text }
   let(:confirmation_mock)   { double :confirmation }
 
+  context 'new order' do
+    describe '#initialize' do
+      it 'starts with an empy basket' do
+        expect(order.view_basket).to be_empty
+      end
 
-#-----------beginning of order-----------#
-
-  describe 'a new order' do
-    it 'starts with an empy basket' do
-      expect(order.basket).to be_empty
-    end
-
-    it 'starts with a total of zero' do
-      expect(order.total).to eq 0
+      it 'starts with a total of zero' do
+        expect(order.view_total).to eq "£0"
+      end
     end
   end
 
-  describe 'creating an order' do
-    # before(:each) do
-    #   #allow(menu_double).to receive(:dishes).and_return({ dish_choice => 1 })
-    # end
-
-#-----------basket of the order-----------#
-
-    it 'adds a dish and from the menu to the basket of an order' do
-      order.add("doughnut")
-      expect(order.basket).to eq([{ "doughnut" => 2 }])
-    end
-
-    it 'can view the basket' do
-      order.add("doughnut")
-      order.add("cake")
-      expect(order.view_basket).to eq([{ "doughnut" => 2 }, { "cake" => 2 }])
-    end
-
-#-----------prices of the order-----------#
-
-    context 'pricing' do
-      it 'adds the cost of a dish to #price_count' do
+  context 'creating an order' do
+    describe '#add' do
+      it 'adds a dish and from the menu to the basket of an order' do
         order.add("doughnut")
-        expect(order.price_count).to eq [2]
+        expect(order.view_basket).to eq([{ "doughnut" => 2 }])
       end
+    end
 
-      it 'can view a list of the prices of dishes in the order' do
+    describe '#view_basket' do
+      it 'can view the basket' do
         order.add("doughnut")
         order.add("cake")
-        expect(order.prices).to eq [2, 2]
+        expect(order.view_basket).to eq([{ "doughnut" => 2 }, { "cake" => 2 }])
       end
     end
+  end
 
-#-----------total of the order-----------#
+  context 'pricing' do
+    it 'adds the cost of a dish to #price_count' do
+      order.add("doughnut")
+      expect(order.price_count).to eq [2]
+    end
+  end
 
-    context 'total' do
+  context 'total of an order' do
+    describe '#view_total' do
       it 'can display the current total of an order' do
         order.add("doughnut")
         order.add("cake")
         expect(order.view_total).to eq("£4")
       end
     end
+  end
 
-#-----------placing an order-----------#
-
-    context 'placing an order' do
+  context 'placing an order' do
+    describe '#place_order' do
       it 'places an order and sends sms confirmation' do
         allow(confirmation_mock).to receive(:send_text)
-        order.place_order(confirmation_mock)
+        order.add("doughnut")
+        order.add("cake")
+        expect(order.place_order).to eq ("Order has been placed. It will arrive within 1 hour")
       end
     end
   end
