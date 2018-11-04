@@ -12,12 +12,17 @@ class Confirmation
   end
 
   def send_text
-    time = Time.now + 3600
     @client.messages.create(
     from: @from,
     to:   @to,
-    body: "Thank you! Your order was placed and will be delivered before #{time.strftime("%H:%M")}"
+    body: "Thank you! Your order was placed and will be delivered before #{format_time}"
     )
+  end
+
+  private
+
+  def format_time
+    time = (Time.now + 3600).strftime("%H:%M")
   end
 
 end
