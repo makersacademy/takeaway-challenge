@@ -3,10 +3,11 @@ require './lib/confirmation'
 
 class Order
 
-  attr_reader :basket, :total, :menu, :price_count
+  attr_reader :menu, :price_count
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, confirmation = Confirmation.new)
     @menu = menu
+    @confirmation = confirmation
     @basket = []
     @total = 0
     @price_count = []
@@ -27,17 +28,11 @@ class Order
 
   def view_total
     @total = @price_count.inject(0, :+)
-    "£#{total}"
+    "£#{@total}"
   end
 
-  def place_order(confirmation = Confirmation.new)
-    confirmation.send_text
+  def place_order
+    @confirmation.send_text
     "Order has been placed. It will arrive within 1 hour"
   end
-
-  # private
-  def prices
-    @price_count
-  end
-
 end
