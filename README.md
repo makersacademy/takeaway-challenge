@@ -1,6 +1,9 @@
-Week 2 - Weekend Challenge
+[![Build Status](https://travis-ci.org/darciew/takeaway-challenge.svg?branch=master)](https://travis-ci.org/darciew/takeaway-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/a5b24dec13a5e6822dd2/maintainability)](https://codeclimate.com/github/darciew/takeaway-challenge/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/a5b24dec13a5e6822dd2/test_coverage)](https://codeclimate.com/github/darciew/takeaway-challenge/test_coverage)
+## Technologies 
 
-Technologies used: Ruby, Rspec
+Ruby 
+
+Rspec
 
 Takeaway Challenge
 ==================
@@ -20,7 +23,7 @@ Takeaway Challenge
 Task
 -------
 
-Create a programme to satisfy the following user stories:
+Create a program that simulates a Takeaway service using the Twilio API to send and receive order confirmation texts.
 
 ```
 As a customer
@@ -43,23 +46,24 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Install
 -----
 
-If you don't have bundle already, run:
+### Clone this repo:
 ```
-$ gem install bundle
+$ git@github.com:darciew/takeaway-challenge.git
 ```
-When the installation completes, run:
+
+### To install gems, run:
 ```
-$ bundle
+$ bundle install
 ```
 
 Run
 -----
-To run rspec tests from the directory:
+### To run RSpec tests:
 ```
 $ rspec
 ```
 
-To check for any code styling offenses:
+### To check for any code styling offenses:
 ```
 $ rubocop
 ```
@@ -67,14 +71,15 @@ $ rubocop
 IRB Sample
 -----
 
-Viewing the takeaway menu:
+### Viewing the takeaway menu:
 ```
-2.5.0 :006 > takeaway = Takeaway.new
- => #<Takeaway:0x00007fac6924eb28 @menu=#<Menu:0x00007fac6924eb00 @dishes={"doughnut"=>2, "cake"=>2, "pancakes"=>3, "ice-cream"=>2}>>
-2.5.0 :007 > takeaway.view_menu
+2.5.0 :006 > menu = Menu.new
+ => #<Menu:0x00007f7f40092588 @dishes={"doughnut"=>2, "cake"=>2, "pancakes"=>3, "ice-cream"=>2}>
+ 
+2.5.0 :007 > menu.display_menu
  => "Doughnut £2.00, Cake £2.00, Pancakes £3.00, Ice-cream £2.00"
 ```
-Placing an order:
+### Placing an order:
 ```
 2.5.0 :008 > order = Order.new
  => #<Order:0x00007fac69243278 @menu=#<Menu:0x00007fac69243250 @dishes={"doughnut"=>2, "cake"=>2, "pancakes"=>3, "ice-cream"=>2}>, @basket=[], @total=0, @price_count=[]>
@@ -89,3 +94,7 @@ Placing an order:
 2.5.0 :013 > order.place_order
  => "Order has been placed. It will arrive within 1 hour"
 ```
+
+### Confirmation Text Example:
+
+![Imgur](https://i.imgur.com/QSR4NP9.png?1)
