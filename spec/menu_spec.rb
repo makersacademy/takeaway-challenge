@@ -2,11 +2,13 @@ require 'menu'
 
 describe Menu do
   it 'should contain a list of menu items' do
-    expect(subject.items).not_to be nil
+    expect(subject.items).to include({ name: "Peri Peri Chicken", cost: 8 })
   end
   describe '#view' do
     it 'should provide a list of dishes' do
-      expect(subject).to respond_to(:view)
+      expect(STDOUT).to receive(:puts).with("-" * Menu::DASHES_NUM)
+      require 'menu'
+      subject.view
     end
   end
 end

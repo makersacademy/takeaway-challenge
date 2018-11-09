@@ -1,5 +1,7 @@
 class Menu
 
+  DASHES_NUM = 26
+
   attr_reader :items
 
   def initialize
@@ -13,17 +15,15 @@ class Menu
         { name: "Bacon Cheeseburger", cost: 6 },
         { name: "Katsu Curry", cost: 8 }
     ]
-    @dashes_num = 26
   end
 
   def view
-    puts "-" * @dashes_num
+    puts "-" * DASHES_NUM
     puts "Menu"
-    puts "-" * @dashes_num
+    puts "-" * DASHES_NUM
     @items.each_with_index do |item, index|
       puts "#{index + 1}: #{item[:name]} £#{item[:cost]}"
     end
-    puts "-" * @dashes_num
+    puts "-" * DASHES_NUM
   end
-
 end

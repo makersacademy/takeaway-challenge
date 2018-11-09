@@ -25,16 +25,8 @@ class Takeaway
     @current_order.view_basket
   end
 
-  def submit_order
-
-  end
+  # def submit_order
+  #   code to be written here
+  # end
 
 end
-
-# shop = Takeaway.new
-# shop.view_menu
-# shop.add_to_order(1)
-# shop.empty_basket
-# shop.add_to_order(3)
-# shop.add_to_order(4)
-# shop.check_basket
