@@ -13,17 +13,18 @@ class Menu
         { name: "Bacon Cheeseburger", cost: 6 },
         { name: "Katsu Curry", cost: 8 }
     ]
+    @dashes_num
   end
 
   def view
     dashes = 26
-    puts "-" * dashes
+    puts "-" * @dashes_num
     puts "Menu"
-    puts "-" * dashes
+    puts "-" * @dashes_num
     @items.each_with_index do |item, index|
       puts "#{index + 1}: #{item[:name]} £#{item[:cost]}"
     end
-    puts "-" * dashes
+    puts "-" * @dashes_num
   end
 
 end
