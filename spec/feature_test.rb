@@ -3,7 +3,6 @@ require_relative './../lib/order'
 require_relative './../lib/menu'
 
 menu = Menu.new
-order = Order.new
 banana = Dish.new("Banana", 1)
 apple = Dish.new("Apple", 2)
 orange = Dish.new("Orange", 3)
