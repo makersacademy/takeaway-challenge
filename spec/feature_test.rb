@@ -17,6 +17,15 @@ puts "displaying the menu now"
 
 menu.display_menu
 
-p "orders an apple"
+p "starts a new order"
 
-p menu.order_dish(2)
+p menu.new_order
+
+p "orders a banana and an orange"
+
+p menu.order_dish(1)
+p menu.order_dish(3)
+
+p "shows the current order"
+
+menu.recite_order
