@@ -1,11 +1,11 @@
-require_relative 'dishes'
+require_relative 'menu'
 
 class Takeaway
 
-  attr_reader :view_dishes
+  attr_reader :view_menu
 
-  def initialize(dishes)
-    @view_dishes = dishes
+  def initialize(menu)
+    @view_menu = menu
   end
 
 end
