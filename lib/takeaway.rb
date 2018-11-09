@@ -12,7 +12,21 @@ class Takeaway
     end
   end
 
+  def order
+    cost_total = 0
+    puts 'Enter the number of the menu item'
+    puts "Enter 'done' to complete"
+    while true do
+      item_number = gets.chomp
+      break if item_number == 'done'
+      cost_total += @menu.items[item_number.to_i-1][:cost]
+      puts "#{@menu.items[item_number.to_i-1][:name]} added to basket"
+      puts "current total: £#{cost_total}"
+    end
+  end
+
 end
 
 shop = Takeaway.new(Menu.new)
 shop.view_menu
+shop.order
