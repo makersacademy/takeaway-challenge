@@ -23,12 +23,12 @@ class Order
     @basket.each do |item|
       puts item
     end
-    "Total cost of items in basket:\n£#{@cost}"
+    puts "Total cost of items in basket:\n£#{@cost}"
   end
 
   private
 
   def added_to_basket(num)
-    "#{@menu.items[num][:name]} added to basket"
+    puts "#{@menu.items[num][:name]} added to basket"
   end
 end

@@ -13,11 +13,10 @@ class Menu
         { name: "Bacon Cheeseburger", cost: 6 },
         { name: "Katsu Curry", cost: 8 }
     ]
-    @dashes_num
+    @dashes_num = 26
   end
 
   def view
-    dashes = 26
     puts "-" * @dashes_num
     puts "Menu"
     puts "-" * @dashes_num
