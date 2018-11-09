@@ -16,11 +16,14 @@ class Menu
   end
 
   def view
-    puts "--------------------------\nMenu\n--------------------------"
+    dashes = 26
+    puts "-" * dashes
+    puts "Menu"
+    puts "-" * dashes
     @items.each_with_index do |item, index|
       puts "#{index + 1}: #{item[:name]} £#{item[:cost]}"
     end
-    puts "--------------------------"
+    puts "-" * dashes
   end
 
 end

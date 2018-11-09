@@ -21,7 +21,7 @@ class Order
   private
 
   def added_to_basket(num)
-    puts "#{@menu.items[num][:name]} added to basket"
+    puts "\n#{@menu.items[num][:name]} added to basket"
   end
 
 end

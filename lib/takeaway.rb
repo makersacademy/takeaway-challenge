@@ -20,9 +20,13 @@ class Takeaway
     @current_order = Order.new
   end
 
+  def view_basket
+    @current_order.basket
+  end
+
 end
 
-shop = Takeaway.new
-shop.view_menu
-shop.add_to_order(1)
-shop.add_to_order(3)
+# shop = Takeaway.new
+# shop.view_menu
+# shop.add_to_order(1)
+# shop.add_to_order(3)
