@@ -4,7 +4,7 @@ class Menu
   end
 
   def view
-    formatted_list = @dishes.map do |dish|
+    @dishes.map do |dish|
       "#{dish.name}: £%.2f" % dish.price
     end
   end
