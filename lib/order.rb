@@ -5,23 +5,27 @@ class Order
   def initialize
     @cost = 0
     @menu = Menu.new
+    @basket = []
   end
 
   def add(num)
-    num = num.to_i - 1
-    @cost += @menu.items[num][:cost]
-    added_to_basket(num)
-    basket
+    index = num.to_i - 1
+    @cost += @menu.items[index][:cost]
+    @basket << "#{num}: #{@menu.@items[index][:name]} £#{@menu.@items[index][:cost]}"
+    added_to_basket(index)
   end
 
   def basket
+    @basket.each do |item|
+      puts item
+    end
     puts "Total cost of items in basket: £#{@cost}"
   end
 
   private
 
   def added_to_basket(num)
-    puts "\n#{@menu.items[num][:name]} added to basket"
+    puts "#{@menu.items[num][:name]} added to basket"
   end
 
 end

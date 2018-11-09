@@ -18,15 +18,22 @@ class Takeaway
 
   def empty_basket
     @current_order = Order.new
+    puts "Basket emptied"
   end
 
-  def view_basket
+  def check_basket
     @current_order.basket
+  end
+
+  def submit_order
+
   end
 
 end
 
-# shop = Takeaway.new
-# shop.view_menu
-# shop.add_to_order(1)
-# shop.add_to_order(3)
+shop = Takeaway.new
+shop.view_menu
+shop.add_to_order(1)
+shop.empty_basket
+shop.add_to_order(3)
+shop.check_basket
