@@ -33,16 +33,14 @@ class Menu
   def order_total
 
     @item.reverse.drop(1).each do |item|
+
       @total << 5  if item == "burger"
 
+      @total << 10 if item == "pizza"
 
-       @total << 10 if item == "pizza"
+      @total << 2 if item == "fries"
 
-
-       @total << 2 if item == "fries"
-
-
-       @total << 3if item == "salad"
+      @total << 3 if item == "salad"
     end
 
     sum = 0
