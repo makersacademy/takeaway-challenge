@@ -20,13 +20,13 @@ describe Menu do
 	it 'should return the name and price of a dish' do
 		subject.add_dish(dish1)
 
-		expect{subject.show_menu}.to output("#{dish1.name} - #{dish1.price}\n").to_stdout
+		expect{subject.show_menu}.to output("1.#{dish1.name} - #{dish1.price}\n").to_stdout
 	end
 
 	it 'should return the name and price of multiple dishes' do
 		subject.add_dish(dish1)
 		subject.add_dish(dish2)
 
-		expect{subject.show_menu}.to output("#{dish1.name} - #{dish1.price}\n#{dish2.name} - #{dish2.price}\n").to_stdout
+		expect{subject.show_menu}.to output("1.#{dish1.name} - #{dish1.price}\n2.#{dish2.name} - #{dish2.price}\n").to_stdout
 	end
 end

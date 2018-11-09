@@ -10,8 +10,8 @@ class Menu
 	end
 
 	def show_menu
-		@available_dishes.each do |dish|
-			puts "#{dish.name} - #{dish.price}"
+		@available_dishes.each_with_index do |dish, index|
+			puts "#{index + 1}.#{dish.name} - #{dish.price}"
 		end
 	end
 end
