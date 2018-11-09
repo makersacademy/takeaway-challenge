@@ -32,14 +32,23 @@ describe Menu do
 
 	describe '#get_selection' do
 		it 'should ask the user for their choice' do
-			expect{subject.get_selection}.to output("Please enter the number of the item you wish to order""\n").to_stdout
+			expect{subject.get_selection}.to output("Please enter the number of the item you wish to order, enter ""done"" when finished.""\n").to_stdout
 		end
 		it 'should retreive the appropiate dish and add that to cart' do
-			allow(STDIN).to receive(:gets).and_return(1)
+			allow(subject).to receive(:gets).and_return("1\n", "done\n")
 			subject.add_dish(dish1)
 			subject.get_selection
 
 			expect(subject.cart).to include(dish1)
+		end
+		it 'should add multiple dishes to cart' do
+			menu = Menu.new
+			allow(menu).to receive(:gets).and_return("1\n", "2\n", "done\n")
+			menu.add_dish(dish1)
+			menu.add_dish(dish2)
+			menu.get_selection
+
+			expect(menu.cart).to include(dish2)
 		end
 	end
 end

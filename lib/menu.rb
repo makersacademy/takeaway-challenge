@@ -16,13 +16,16 @@ class Menu
 		end
 	end
 
-	def get_selection(stdin: $stdin)
-		puts "Please enter the number of the item you wish to order"
-		selection = stdin.gets
-		@available_dishes.each_with_index do |dish, index|
-			if (selection - 1) == index
-				cart << dish
+	def get_selection 
+		puts "Please enter the number of the item you wish to order, enter ""done"" when finished."
+		selection = gets.chomp
+		while selection != "done" do
+			@available_dishes.each_with_index do |dish, index|
+				if (selection.to_i - 1) == index
+					@cart << dish
+				end
 			end
+			selection = gets.chomp
 		end
 	end
 end
