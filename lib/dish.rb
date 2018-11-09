@@ -1,5 +1,5 @@
 class Dish
-  attr_reader :name, :price
+  attr_accessor :name, :price
 
   def initialize(name, price)
     @name, @price = name, price
