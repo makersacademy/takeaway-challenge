@@ -1,12 +1,13 @@
 class Dishes
 
-attr_reader :list_of_dishes
+attr_reader :dish
 
   def initialize
-    @list_of_dishes = list_of_dishes
+    @dish = dish
   end
 
-  def dishes
-  @list_of_dishes = []
+  def list_of_dishes
+    @dish = {}
   end
+
 end
