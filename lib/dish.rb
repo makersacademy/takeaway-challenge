@@ -6,6 +6,12 @@ class Dish
     @price = dish_hash[:price]
   end
 
+  def set_all(dish_hash)
+    @name = dish_hash[:name]
+    @description = dish_hash[:description]
+    @price = dish_hash[:price]
+  end
+
   def name=(dish_hash)
     @name = dish_hash[:name]
   end
