@@ -1,4 +1,5 @@
 require_relative 'order'
+require_relative 'texter'
 
 class Menu
   attr_reader :dishes, :current_order

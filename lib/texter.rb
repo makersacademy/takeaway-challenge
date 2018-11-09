@@ -2,10 +2,10 @@ require 'twilio-ruby'
 
 class Texter
 
-  def initialize
+  def initialize(client = Twilio::REST::Client)
     @account_sid = 'ACf89596d0fba6c01a7ba140ade7edfefc'
     @auth_token = '5f9eadd286fa95924ddf3a86a02cfd59'
-    @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+    @client = client.new(@account_sid, @auth_token)
     @from = '+441233800623'
     @to = '+447504848546'
   end
