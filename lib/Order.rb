@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :order_items, :delivery_time, :provided_total, :calculated_total
+  attr_reader :order_time, :order_items, :delivery_time, :provided_total, :calculated_total
 
   TIME_TO_DELIVER = 60 * 60
 
@@ -24,9 +24,8 @@ class Order
   def total_order(order_items, menu)
     total = 0
     order_items.each do |item|
-      menu.each do |dish|
-        total += dish.price * item[:quantity] if dish.name == item[:name]
-      end
+      price = menu.select { |dish| dish.name == item[:name] }.first.price
+      total += price * item[:quantity]
     end
     total
   end
