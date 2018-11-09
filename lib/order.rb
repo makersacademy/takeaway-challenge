@@ -23,6 +23,6 @@ class Order
 
   def send_message
     delivery_estimate = (Time.new + (60 * 60)).strftime("%H:%M")
-    SendMessage.new.send_message(bill_amount, delivery_estimate)
+    SendMessage.new.create_message(bill_amount, delivery_estimate)
   end
 end
