@@ -7,6 +7,7 @@ describe Menu do
   let(:pumpkin) { double :pumpkin, name: "pumpkin", price: 3 }
   let(:order) { double :order, ordered: [] }
   let(:texter) { double :texter }
+  let(:menu) { Menu.new(order_class: order) }
 
   before do
     allow(order).to receive(:new) { order }
@@ -48,7 +49,6 @@ describe Menu do
 
   describe 'new_order' do
     it 'creates a new order and puts it in current_order' do
-      menu = Menu.new(order_class: order)
       menu.new_order
       expect(menu.current_order).to eq(order)
     end
@@ -56,7 +56,6 @@ describe Menu do
 
   describe '#order_dish' do
     it 'can receive an order' do
-      menu = Menu.new(order_class: order)
       menu.new_order
       menu.add_dish(broccoli)
       expect(order).to receive(:ordered)
@@ -76,7 +75,6 @@ describe Menu do
 
   describe '#recite_order' do
     it 'calls on the current order object to show the order details' do
-      menu = Menu.new(order_class: order)
       menu.new_order
       expect(order).to receive(:show_order)
       expect(order).to receive(:show_total)
