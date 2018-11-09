@@ -2,19 +2,29 @@ require 'order'
 
 describe Order do
   describe "#order" do
-    it "expects it to start out empty" do
+    it "should start out empty" do
       expect(subject.order).to be_empty
     end
   end
   describe "#add" do
-    it "expects it to add an item to an order" do
+    it "should add an item to an order" do
       subject.add("Pizza",1)
       expect(subject.order.last).to eq({item: "Pizza", num: 1})
     end
-    it "expects it to add multiple items to an order" do
+    it "should add multiple items to an order" do
       subject.add("Pizza",1)
       subject.add("Pepsi",2)
       expect(subject.order).to eq([{item: "Pizza", num: 1},{item: "Pepsi", num: 2}])
+    end
+  end
+  describe "#check" do
+    it "should show a message if totals match" do
+      subject.add("Pepsi",1)
+      expect{ subject.check(1) }.to output("Our totals match.\n").to_stdout
+    end
+    it "should an error if totals don't match" do
+      subject.add("Pepsi",1)
+      expect{ subject.check(2) }.to raise_error "Your total does not match ours."
     end
   end
 end
