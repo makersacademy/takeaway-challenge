@@ -14,6 +14,7 @@ describe Takeaway do
   it 'can recieve a list of dishes ordered by a customer' do
     allow(order).to receive(:select_dish)
     allow(order).to receive(:dishes).and_return({ :name => "Chicken Curry", :quantity => 1 })
+    allow(order).to receive(:available?).and_return(true)
     order.select_dish("Chicken Curry", 1)
     takeaway.place(order)
     expect(takeaway.ordered_dishes).to eq({ :name => "Chicken Curry", :quantity => 1 })

@@ -3,10 +3,15 @@ require 'order'
 describe Order do
   subject(:order) { described_class.new }
   let(:menu) { double() }
+  context '#select_dish' do
+    it 'stores selected dishes and quantities' do
+      order.select_dish("Chicken Curry", 2)
+      expect(order.dishes).to include({ :name => "Chicken Curry", :quantity => 2 })
+    end
 
-  it 'allows select dishes and quantities' do
-    order.select_dish("Chicken Curry", 2)
-    expect(order.dishes).to include({ :name => "Chicken Curry", :quantity => 2 })
+    it 'raises an error when the dish is not available' do
+      message = "Can't select: dish not available"
+      expect { order.select_dish("Fish & Chips", 1) }.to raise_error message
+    end
   end
-
 end
