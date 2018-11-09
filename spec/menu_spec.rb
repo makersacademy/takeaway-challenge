@@ -9,8 +9,8 @@ describe Menu do
   context '#view' do
     it 'returns a list of dishes and their prices' do
       expect(subject.view).to eq [
-        "#{fish.name}: %.2f" % fish.price,
-        "#{chips.name}: %.2f" % chips.price
+        "#{fish.name}: £%.2f" % fish.price,
+        "#{chips.name}: £%.2f" % chips.price
       ]
     end
   end
