@@ -51,27 +51,36 @@ describe Customer do
   end
 
   describe TakeAway do
+    let(:kfc) { TakeAway.new("KFC") }
+    let(:menu) { { large_chips: 1.99, medium_chips: 1.49, small_chips: 0.99 } }
 
     it 'can create a new take away' do
-      kfc = TakeAway.new("KFC")
       expect(kfc).to be_instance_of(TakeAway)
     end
 
     it 'will #initialize with a name' do
-    kfc = TakeAway.new("KFC")
     expect(kfc.take_away_name).to eq "KFC"
     end
 
     it 'will also #initialize with a menu' do
-      kfc = TakeAway.new("KFC")
-      menu = { large_chips: 1.99, medium_chips: 1.49, small_chips: 0.99 }
       expect(kfc.take_away_menu).to eq menu
     end
 
     it 'can #provide_menu to user' do
-      kfc = TakeAway.new("KFC")
-      menu = { large_chips: 1.99, medium_chips: 1.49, small_chips: 0.99 }
       expect(kfc.display_menu).to eq menu
+    end
+
+    it 'can #take_order and add it to the order list' do
+      kfc.take_order("medium_chips", 2)
+      kfc.take_order("small_chips", 2)
+      expect(kfc.order).to include( { medium_chips: 2.98, small_chips: 1.98 } )
+    end
+
+    it 'can #return_order and provide the total for checking' do
+      kfc.take_order("medium_chips", 2)
+      kfc.take_order("small_chips", 2)
+      kfc.return_order
+      expect(kfc.order).to include( { medium_chips: 2.98, small_chips: 1.98, total: 4.96 } )
     end
 
   end
