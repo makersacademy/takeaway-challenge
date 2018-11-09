@@ -20,9 +20,9 @@ class Menu
   end
 
   def order_items
-    input = ""
     p "What would you like to order?"
     p "To finish ordering please type end"
+    input = ""
     while input = gets.chomp
       @item << input
       break if input == "end"
@@ -44,7 +44,7 @@ class Menu
     end
 
     sum = 0
-    @total.each do |i| (sum += i) 
+    @total.each do |i| (sum += i)
     end
     p "Your order total is #{sum} pounds"
   end

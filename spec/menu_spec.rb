@@ -11,7 +11,7 @@ describe Menu do
     expect(menu).to respond_to(:order_items)
   end
 
-  it ' #@items will store an order' do
+  it 'will store an order' do
     expect(@item).to eq(nil)
   end
 
@@ -19,16 +19,13 @@ describe Menu do
   it 'will print an order' do
     expect { menu.order_items }.to output(@item).to_stdout
   end
-end
 
-#   context('when a customer wants to know the order total') do
-#     let(:sum) {double}
-#     before(:each) do
-#     sum = 0
-#     @total.each do |i| (sum += i)
-#   end
-#
-#   it 'will print the order total' do
-#     expect(menu.order_total).to output("Your order total is #{sum} pounds").to_stdout
-#   end
-# end
+  it 'will add an item to the order total' do
+    expect(@total).to eq(nil)
+  end
+
+  context('it can calculate the order total')
+  it 'will print the order total' do
+    expect { menu.order_total }.to output("\"Your order total is 0 pounds\"\n") .to_stdout
+  end
+end
