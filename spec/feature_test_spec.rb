@@ -10,13 +10,7 @@ describe 'Feature Tests' do
               Salmon roll     £5\n
               Tuna roll       £6\n
               Crab roll       £7"
-    expect{ takeaway.display_menu }.to output{<<-MENU.strip_heredoc
-      Sushi Takeaway Menu
-      Salmon roll     £5
-      Tuna roll       £6
-      Crab roll       £7"
-      MENU
-    }.to_stdout
+    expect{ takeaway.display_menu }.to output("Sushi Takeaway Menu\nSalmon roll    £5\nTuna roll      £6\nCrab roll      £7\n").to_stdout
   end
 
   # As a customer

@@ -17,7 +17,16 @@ describe Takeaway do
   end
 
   it 'adds price of selected dishes to total' do
-    expect{takeaway.select("Crab roll",3)}.to change{ takeaway.total }.by 21
+    expect{ takeaway.select("Crab roll",3) }.to change{ takeaway.total }.by 21
+  end
+
+  context 'after user places order' do
+    it 'calls #send_message on the MessageSender class' do
+      msg_sender_double = double :MessageSender
+      new_takeaway = Takeaway.new(msg_sender_double)
+      expect(msg_sender_double).to receive(:send_message).with(instance_of(String),instance_of(String))
+      new_takeaway.place_order
+    end
   end
 
 end
