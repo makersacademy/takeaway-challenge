@@ -16,4 +16,17 @@ describe Order do
     subject.add_to_order(dish, 3)
     expect(subject.items).to include({ :dish => dish, :quantity => 3 })
   end
+
+  context '#total' do
+    it 'reports the total cost' do
+      subject.add_to_order(dish, 2)
+      expect(subject.total).to eq(dish.price * 2)
+    end
+
+    it 'reports the updated total when more items are added' do
+      subject.add_to_order(dish, 2)
+      subject.add_to_order(dish, 3)
+      expect(subject.total).to eq(dish.price * 5)
+    end
+  end
 end
