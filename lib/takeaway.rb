@@ -2,10 +2,12 @@ require_relative 'menu'
 
 class Takeaway
 
-  attr_reader :view_menu
-
   def initialize(menu)
-    @view_menu = menu
+    @menu = menu
+  end
+
+  def view_menu
+    @menu.items
   end
 
 end
