@@ -1,7 +1,5 @@
 
 require 'twilio-ruby'
-require 'sms_config.rb'
-
 
 class Order
 
@@ -12,12 +10,15 @@ class Order
 
   def order_food(ordered_food, quantity)
     quantity.times { @food_ordered << @dishes.dishes[ordered_food] }
-    send_message
     return "#{ordered_food} ordered x #{quantity}"
   end
 
   def bill_amount
     return sprintf('%.2f', @food_ordered.sum)
+  end
+
+  def complete_order
+    send_message
   end
 
   def send_message

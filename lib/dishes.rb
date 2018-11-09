@@ -1,12 +1,10 @@
 class Dishes
 
-    attr_reader :dishes
+  attr_reader :dishes
 
   def initialize
-
-    @dishes = { "curry" => 5.00.to_f, "rice" => 2.50.to_f,
-     "spare ribs" => 4.50.to_f }
-
+    @dishes = { "curry" => 5.00, "rice" => 2.50,
+     "spare ribs" => 4.50 }
   end
 
   def list_prices
