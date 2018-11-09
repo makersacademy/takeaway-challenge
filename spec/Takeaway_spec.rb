@@ -2,23 +2,21 @@ require 'Takeaway'
 
 describe Takeaway do
 
-  let(:order) { double }
-
-  it 'can add a dish to the list of dishes' do
+  it 'can add a dish to the menu' do
     subject.add_dish("Chicken jalfrezi", 7.99)
-    expect(subject.dishes.size).to eq 1
+    expect(subject.menu.size).to eq 1
   end
 
-  it 'can display dishes' do
+  it 'can display menu' do
     name = "Chicken jalfrezi"
     price = 7.99
     subject.add_dish(name, price)
-    expect { subject.display_dishes }.to output("#{name}: £#{price}\n").to_stdout
+    expect { subject.display_menu }.to output("#{name}: £#{price}\n").to_stdout
   end
 
   it 'can be populated with a set menu' do
     subject.populate_menu
-    expect(subject.dishes.size).to eq 7
+    expect(subject.menu.size).to eq 7
   end
 
   it 'can correctly format currency values' do
@@ -28,10 +26,12 @@ describe Takeaway do
   context 'when ordering' do
 
     it 'can allow an order to be placed' do
+      takeaway = Takeaway.new
+      takeaway.populate_menu
       delivery_time = Time.now + 60 * 60
       time = delivery_time.strftime("%k:%M")
       m = "Thank you! Your order was placed and will be delivered before #{time}"
-      expect(subject.order(order)).to eq m
+      expect(takeaway.order("1 Chicken jalfrezi, £8.00")).to eq m
     end
 
   end

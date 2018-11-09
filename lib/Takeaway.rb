@@ -3,7 +3,7 @@ require_relative 'Dish'
 
 class Takeaway
 
-  attr_reader :dishes
+  attr_reader :menu
 
   SET_MENU = [
     { name: "Chicken jalfrezi", price: 8.00 },
@@ -16,12 +16,12 @@ class Takeaway
   ]
 
   def initialize
-    @dishes = Array.new
+    @menu = Array.new
     @orders = Array.new
   end
 
   def add_dish(name, price)
-    @dishes << Dish.new(name, price)
+    @menu << Dish.new(name, price)
   end
 
   def populate_menu(menu = SET_MENU)
@@ -30,14 +30,14 @@ class Takeaway
     end
   end
 
-  def display_dishes
-    @dishes.each do |dish|
+  def display_menu
+    @menu.each do |dish|
       puts "#{dish.name}: #{currency(dish.price)}"
     end
   end
 
   def order(received_order)
-    new_order = Order.new(received_order)
+    new_order = Order.new(received_order, menu)
     @orders << new_order
     order_success_message(new_order)
   end
