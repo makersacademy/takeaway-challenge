@@ -4,9 +4,10 @@ require_relative 'texter'
 class Menu
   attr_reader :dishes, :current_order
 
-  def initialize(order_class = Order)
+  def initialize(order_class: Order, texter_class: Texter)
     @dishes = []
     @order_class = order_class
+    @texter_class = texter_class
   end
 
   def add_dish(dish)
@@ -31,6 +32,11 @@ class Menu
   def recite_order
     @current_order.show_order
     @current_order.show_total
+  end
+
+  def finish_order
+    text = @texter_class.new
+    return text.send_text(current_order.find_total)
   end
 
   private

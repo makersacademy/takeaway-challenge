@@ -15,16 +15,16 @@ class Order
     puts "Total cost is £#{find_total}"
   end
 
-  private
-
-  def nothing_ordered
-    raise 'nothing has been ordered yet' if @ordered.empty?
-  end
-
   def find_total
     total = 0
     @ordered.each { |dish| total += dish_charge(dish) }
     return total
+  end
+
+  private
+
+  def nothing_ordered
+    raise 'nothing has been ordered yet' if @ordered.empty?
   end
 
   def show_dishes(item)

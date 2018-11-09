@@ -19,6 +19,7 @@ class Texter
       body: "You'll get your £#{cost} worth of "\
         "food by #{soon.strftime("%H:%M")}"
     )
+    return "sent"
   end
 
 end

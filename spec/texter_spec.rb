@@ -7,8 +7,8 @@ describe Texter do
     it 'tries to send a text' do
       allow(client).to receive(:new) { client }
       text = Texter.new(client)
-      expect(client).to receive_message_chain(:messages, :create)
-      text.send_text(5)
+      allow(client).to receive_message_chain(:messages, :create)
+      expect(text.send_text(5)).to eq("sent")
     end
   end
 end
