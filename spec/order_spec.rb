@@ -9,6 +9,11 @@ describe Order do
   end
   it 'checks the bill after ordering 2 curries' do
     subject.order_food("curry", 2)
-    expect(subject.bill) .to eq(10)
+    expect(subject.bill).to eq("The bill is £10.00")
+  end
+  it 'checks the bill after ordering a curry and a rice' do
+    subject.order_food("curry", 1)
+    subject.order_food("rice", 1)
+    expect(subject.bill).to eq("The bill is £7.50")
   end
 end

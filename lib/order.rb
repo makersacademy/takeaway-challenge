@@ -12,7 +12,8 @@ class Order
   end
 
   def bill
-    return @food_ordered.sum
+    puts @food_ordered.sum
+    return "The bill is £#{@food_ordered.sum}"
   end
 
 end
