@@ -21,10 +21,10 @@ p "starts a new order"
 
 p menu.new_order
 
-p "orders a banana and an orange"
+p "orders a banana and three oranges"
 
-p menu.order_dish(1)
-p menu.order_dish(3)
+p menu.order_dish(1, 1)
+p menu.order_dish(3, 3)
 
 p "shows the current order"
 

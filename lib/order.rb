@@ -7,7 +7,7 @@ class Order
 
   def show_order
     nothing_ordered
-    @ordered.each { |order| puts order.name }
+    @ordered.each { |dish| show_dishes(dish) }
   end
 
   def show_total
@@ -23,8 +23,20 @@ class Order
 
   def find_total
     total = 0
-    @ordered.each { |order| total += order.price }
+    @ordered.each { |dish| total += dish_charge(dish) }
     return total
+  end
+
+  def show_dishes(item)
+    item.each do |dish, quantity|
+      puts "#{quantity}x #{dish.name}, £#{dish.price}"
+    end
+  end
+
+  def dish_charge(item)
+    alltogether = 0
+    item.each { |dish, quantity| alltogether += (dish.price * quantity) }
+    return alltogether
   end
 
 end

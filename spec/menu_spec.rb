@@ -57,17 +57,17 @@ describe Menu do
       menu.new_order
       menu.add_dish(broccoli)
       expect(order).to receive(:ordered)
-      menu.order_dish(1)
+      menu.order_dish(1, 1)
     end
 
     it 'fails if the order is not a number' do
       error = 'please pick the dish number'
-      expect { subject.order_dish("lel") }.to raise_error(error)
+      expect { subject.order_dish("lel", 1) }.to raise_error(error)
     end
 
     it 'fails if the number given is not on the list' do
       error = 'please stick to numbers on the menu'
-      expect { subject.order_dish(4) }.to raise_error(error)
+      expect { subject.order_dish(4, 1) }.to raise_error(error)
     end
   end
 

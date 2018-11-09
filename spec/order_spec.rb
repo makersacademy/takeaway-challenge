@@ -9,8 +9,8 @@ describe Order do
 
   describe '#show_order' do
     it 'shows a list of all ordered item names' do
-      3.times { subject.ordered << dish }
-      3.times { expect(STDOUT).to receive(:puts).with("food") }
+      subject.ordered << { dish => 3 }
+      expect(STDOUT).to receive(:puts).with("3x food, £1")
       subject.show_order
     end
 
@@ -22,7 +22,7 @@ describe Order do
 
   describe '#show_total' do
     it 'shows the total cost of all ordered items' do
-      3.times { subject.ordered << dish }
+      subject.ordered << { dish => 3 }
       expect(STDOUT).to receive(:puts).with("Total cost is £3")
       subject.show_total
     end
