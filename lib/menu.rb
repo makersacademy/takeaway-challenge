@@ -1,7 +1,7 @@
 
 class Menu
 
-  attr_reader :item
+  # attr_reader :item
 
   def initialize
     @menu_items = {
@@ -44,8 +44,7 @@ class Menu
     end
 
     sum = 0
-    @total.each do |i|
-    sum += i
+    @total.each do |i| (sum += i) 
     end
     p "Your order total is #{sum} pounds"
   end

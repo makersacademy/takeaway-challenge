@@ -19,9 +19,16 @@ describe Menu do
   it 'will print an order' do
     expect { menu.order_items }.to output(@item).to_stdout
   end
-
-  # it 'will calculate the total price of the order if a customer asks for it' do
-  #   expect(menu.order_total).to eq([])
-  # end
-
 end
+
+#   context('when a customer wants to know the order total') do
+#     let(:sum) {double}
+#     before(:each) do
+#     sum = 0
+#     @total.each do |i| (sum += i)
+#   end
+#
+#   it 'will print the order total' do
+#     expect(menu.order_total).to output("Your order total is #{sum} pounds").to_stdout
+#   end
+# end
