@@ -1,4 +1,4 @@
-require 'dishes'
+require 'menu'
 
-describe Dishes do
+describe Menu do
 end
