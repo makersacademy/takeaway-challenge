@@ -1,7 +1,7 @@
-class Takeaway
-  attr_accessor :dishes, :basket, :order
+class Takeawaydraft
+  attr_accessor :dishes, :basket
 
-  def initialize(basket = Basket.new, order = Order.new)
+  def initialize(basket = Basket.new)
     @dishes = [{ name: "Pizza", price: 20},
       { name: "Kebab", price: 12 },
       { name: "Kebab", price: 12 },
@@ -9,7 +9,6 @@ class Takeaway
       { name: "Burger", price: 10 }
     ]
     @basket = basket
-    @order = order
   end  
 
   def see_dishes
@@ -30,26 +29,6 @@ class Takeaway
         dish[:quantity] = val
         basket.add(dish) if dish.has_value?(select.capitalize)
       end
-      puts "total £#{basket.total}"
+    #   puts "total £#{basket.total}"
     end
   end
-
-
-
-  def place_order
-    
-  #   basket.each do |dish|
-  #     puts "Name: #{dish[:name]} |||| Price: £#{dish[:price]}\n"
-  #   end 
-  #   puts "-----------"
-  #   puts "total £#{total}"
-  #   puts "Thank you! Your order was placed and will be delivered before #{delivery_time} O'Clock"
-  end
-
-  # def delivery_time
-  #   time = Time.new
-  #   time.hour + 1
-  #   "#{time.hour + 1}:#{time.minute}"
-  # end
-  
-end
