@@ -8,6 +8,10 @@ describe Menu do
   let(:order) { double :order, ordered: [] }
   let(:texter) { double :texter }
 
+  before do
+    allow(order).to receive(:new) { order }
+  end
+
   it 'shows an empty list of dishes from the start' do
     expect(subject.dishes).to eq([])
   end
@@ -44,7 +48,6 @@ describe Menu do
 
   describe 'new_order' do
     it 'creates a new order and puts it in current_order' do
-      allow(order).to receive(:new) { order }
       menu = Menu.new(order_class: order)
       menu.new_order
       expect(menu.current_order).to eq(order)
@@ -53,7 +56,6 @@ describe Menu do
 
   describe '#order_dish' do
     it 'can receive an order' do
-      allow(order).to receive(:new) { order }
       menu = Menu.new(order_class: order)
       menu.new_order
       menu.add_dish(broccoli)
@@ -74,7 +76,6 @@ describe Menu do
 
   describe '#recite_order' do
     it 'calls on the current order object to show the order details' do
-      allow(order).to receive(:new) { order }
       menu = Menu.new(order_class: order)
       menu.new_order
       expect(order).to receive(:show_order)
@@ -86,7 +87,6 @@ describe Menu do
   describe '#finish_order' do
     it 'finishes the order and asks for a text to be sent' do
       finished_order = Menu.new(order_class: order, texter_class: texter)
-      allow(order).to receive(:new) { order }
       allow(texter).to receive(:new) { texter }
       finished_order.new_order
       allow(order).to receive(:find_total) { 10 }
