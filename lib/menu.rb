@@ -11,7 +11,7 @@ class Menu
 
 	def show_menu
 		@available_dishes.each do |dish|
-			return dish.name
+			puts "#{dish.name} - #{dish.price}"
 		end
 	end
 end
