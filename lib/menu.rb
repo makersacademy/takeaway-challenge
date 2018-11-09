@@ -6,7 +6,9 @@ class Menu
   def print
     string = ""
     @data.each do |data|
-      string << "#{data[:id]}: #{data[:name]} £#{format_price(data[:price])}\n   #{data[:description]}\n"
+      string << "#{data[:id]}: #{data[:name]}" +
+                " £#{format_price(data[:price])}\n" +
+                "   #{data[:description]}\n"
     end
     puts string
   end
