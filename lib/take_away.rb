@@ -1,5 +1,5 @@
 class Takeaway
-  attr_reader :pricelist, :name, :quantity, :prices
+  attr_reader :pricelist, :name, :quantity, :sum
 
   def initialize
     @pricelist = []
@@ -8,25 +8,38 @@ class Takeaway
 
   def show_price_list
     @price_list = [
-      { names: "Jacket Potato (plain)", price: 1.00 },
-      { names: "Jacket Potato with cheese", price: 1.50 },
-      { names: "Jacket Potato with Tuna", price: 2.00 },
-      { names: "Spaghetti Bolognese", price: 3.50 },
-      { names: "Spaghetti Carbonara", price: 3.00 },
-      { names: "Chicken Curry", price: 5.00 }
+      { :item => "Jacket Potato (plain)", :cost => 1.00 },
+      { :item => "Jacket Potato with cheese", :cost => 1.50 },
+      { :item => "Jacket Potato with Tuna", :cost => 2.00 },
+      { :item => "Spaghetti Bolognese", :cost => 3.50 },
+      { :item => "Spaghetti Carbonara", :cost => 3.00 },
+      { :item => "Chicken Curry", :cost => 5.00 }
     ]
   end
 
-  def add_order(names, quantity, prices)
+  def add_order(names, quantity, sum)
     @name = names.to_s
     @quantity = quantity.to_i
-    @price = prices.to_f
-    @pricelist = [@name, @quantity, @price]
+    @sum = sum.to_f
+    @pricelist << [@name, @quantity, @sum]
+    @totals << @quantity * @sum
   end
 
   def total
-    original = @quantity * @price
-    @totals << original
     @totals.reduce(:+)
   end
+
+  def place_order
+    puts "Thank you your order has been placed"
+    exit
+  end
+
+  # def compare_totals
+  #   @pricelist.each do
+  #   @price_list.each do |item_name, quality, price|
+  #
+  #
+  #     raise "Incorrect total added" if @totals != total
+  #   end
+  # end
 end
