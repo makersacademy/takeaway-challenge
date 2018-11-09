@@ -1,5 +1,4 @@
 class Menu
-  attr_reader :list_of_dishes
 
 DEFAULT_MENU = [{ :dish => "Chicken Curry", :price => 6.50 },
                 { :dish => "Lamb Curry", :price => 7 },
@@ -10,6 +9,8 @@ DEFAULT_MENU = [{ :dish => "Chicken Curry", :price => 6.50 },
   end
 
   def print
-    p @list_of_dishes.to_s
+    @list_of_dishes.each { |line|
+      puts "#{line[:dish]} £#{line[:price]}"
+    }
   end
 end
