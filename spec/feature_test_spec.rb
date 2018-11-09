@@ -10,7 +10,7 @@ describe 'Feature Tests' do
               Salmon roll     £5\n
               Tuna roll       £6\n
               Crab roll       £7"
-    expect{ takeaway.display }.to output{<<-MENU.strip_heredoc
+    expect{ takeaway.display_menu }.to output{<<-MENU.strip_heredoc
       Sushi Takeaway Menu
       Salmon roll     £5
       Tuna roll       £6
@@ -26,4 +26,14 @@ describe 'Feature Tests' do
     takeaway.select("Salmon roll",2)
     expect(takeaway.order).to include({"Salmon roll"=>2})
   end
+
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+it 'checks dishes ordered sum up to the total' do
+  takeaway.select("Salmon roll",2)
+  takeaway.select("Crab roll",1)
+  expect(takeaway.total).to eq 17
+end
+
 end

@@ -12,4 +12,12 @@ describe Takeaway do
     expect(takeaway.order).to include ({"Salmon roll"=>2})
   end
 
+  it 'initializes with a total = 0' do
+    expect(takeaway.total).to eq 0
+  end
+
+  it 'adds price of selected dishes to total' do
+    expect{takeaway.select("Crab roll",3)}.to change{ takeaway.total }.by 21
+  end
+
 end
