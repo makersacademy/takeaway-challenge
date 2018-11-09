@@ -16,11 +16,6 @@ describe Takeaway do
     let(:dish) { instance_double("Dish", :name => 'Curry', :price => 2.95) }
 
     context '#view_order' do
-      it 'has nothing in the order to begin with' do
-        subject.start_order
-        expect { subject.view_order }.to output('').to_stdout
-      end
-
       it 'raises an error if an order has not been created' do
         error_message = 'There is currently no order open'
         expect { subject.view_order }.to raise_error error_message
