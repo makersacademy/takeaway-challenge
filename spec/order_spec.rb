@@ -6,7 +6,7 @@ describe Order do
 
   it 'allows select dishes and quantities' do
     order.select_dish("Chicken Curry", 2)
-    expect(order.dishes).to include({:name => "Chicken Curry", :quantity => 2})
+    expect(order.dishes).to include({ :name => "Chicken Curry", :quantity => 2 })
   end
 
 end

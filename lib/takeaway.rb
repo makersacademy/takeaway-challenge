@@ -3,12 +3,15 @@ require_relative 'order'
 
 class Takeaway
 
- def show_menu
-   menu = Menu.new
-   menu.print
- end
+  attr_reader :ordered_dishes
 
- def place_order
-   
- end
+  def show_menu
+    menu = Menu.new
+    menu.print
+  end
+
+  def place(order)
+    @ordered_dishes = order.dishes
+  end
+  
 end

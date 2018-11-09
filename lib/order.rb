@@ -9,6 +9,7 @@ class Order
   def select_dish(name = nil, quantity = 1)
     @name = name
     @quantity = quantity
-    @dishes << {:name => name, :quantity => quantity}
+    @dishes << { :name => name, :quantity => quantity }
   end
+  
 end
