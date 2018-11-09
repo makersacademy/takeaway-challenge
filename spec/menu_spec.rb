@@ -3,12 +3,10 @@ require_relative './test_data'
 
 describe Menu do
   let(:menu_data) { TestData::menu_data }
-
   let(:expected_menu_print_output) { TestData::expected_menu_print_output }
-
   let(:menu_data_pence) { TestData::menu_data_pence  }
-
   let(:expected_menu_print_output_pence) { TestData::expected_menu_print_output_pence }
+
   subject(:menu) { Menu.new(menu_data) }
 
   it 'can print a list of dishes with prices' do
