@@ -13,6 +13,11 @@ describe Order do
       3.times { expect(STDOUT).to receive(:puts).with("food") }
       subject.show_order
     end
+
+    it 'raises an error if nothing is ordered' do
+      error = 'nothing has been ordered yet'
+      expect { subject.show_order }.to raise_error(error)
+    end
   end
 
   describe '#show_total' do
@@ -20,6 +25,11 @@ describe Order do
       3.times { subject.ordered << dish }
       expect(STDOUT).to receive(:puts).with("Total cost is £3")
       subject.show_total
+    end
+
+    it 'raises an error if nothing is ordered' do
+      error = 'nothing has been ordered yet'
+      expect { subject.show_order }.to raise_error(error)
     end
   end
 
