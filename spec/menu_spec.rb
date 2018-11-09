@@ -58,7 +58,7 @@ describe Menu do
     it 'can receive an order' do
       menu.new_order
       menu.add_dish(broccoli)
-      expect(order).to receive(:ordered)
+      expect(order).to receive(:add_to_order)
       menu.order_dish(1, 1)
     end
 

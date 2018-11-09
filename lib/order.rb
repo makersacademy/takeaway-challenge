@@ -5,6 +5,10 @@ class Order
     @ordered = []
   end
 
+  def add_to_order(dish)
+    @ordered << dish    
+  end
+
   def show_order
     nothing_ordered
     @ordered.each { |dish| show_dishes(dish) }

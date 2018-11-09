@@ -7,6 +7,13 @@ describe Order do
     expect(subject.ordered).to eq([])
   end
 
+  describe '#add_to_order' do
+    it 'adds an item to the order' do
+      subject.add_to_order(dish)
+      expect(subject.ordered).to include(dish)
+    end
+  end
+
   describe '#show_order' do
     it 'shows a list of all ordered item names' do
       subject.ordered << { dish => 3 }

@@ -27,7 +27,7 @@ class Menu
 
   def order_dish(number, quantity)
     check_order_number(number)
-    @current_order.ordered << { @dishes[number - 1] => quantity }
+    @current_order.add_to_order({ @dishes[number - 1] => quantity })
   end
 
   def recite_order
