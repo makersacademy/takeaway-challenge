@@ -12,4 +12,8 @@ class Menu
   def remove_dish(dish)
     @menu.delete(dish.to_sym)
   end
+
+  
+
+
 end
