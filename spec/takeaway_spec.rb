@@ -15,6 +15,5 @@ describe Takeaway do
       takeaway.add_dish(dish)
       expect{takeaway.return_menu}.to output("1: Mango Chutney £1.00\n").to_stdout
     end
-
   end
 end
