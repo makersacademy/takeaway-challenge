@@ -1,12 +1,8 @@
 class Order
-  attr_reader :ordered
+  attr_accessor :ordered
 
   def initialize
     @ordered = []
-  end
-
-  def take_an_order(dish)
-    @ordered << dish
   end
 
   def show_order

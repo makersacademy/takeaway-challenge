@@ -2,6 +2,10 @@ require 'menu'
 
 describe Menu do
   let(:dish) { double :dish, name: "catfish", price: 1 }
+  let(:broccoli) { double :broccoli, name: "broccoli", price: 2 }
+  let(:aubergine) { double :aubergine, name: "aubergine", price: 10_000 }
+  let(:pumpkin) { double :pumpkin, name: "pumpkin", price: 3 }
+  let(:order) { double :order, ordered: [] }
 
   it 'shows an empty list of dishes from the start' do
     expect(subject.dishes).to eq([])
@@ -27,9 +31,6 @@ describe Menu do
     end
 
     it 'shows a list of crazy dishes with prices' do
-      broccoli = double :broccoli, name: "broccoli", price: 2
-      aubergine = double :aubergine, name: "aubergine", price: 10_000
-      pumpkin = double :pumpkin, name: "pumpkin", price: 3
       subject.add_dish(broccoli)
       subject.add_dish(aubergine)
       subject.add_dish(pumpkin)
@@ -40,15 +41,23 @@ describe Menu do
     end
   end
 
+  describe 'new_order' do
+    it 'creates a new order and puts it in current_order' do
+      allow(order).to receive(:new) { order }
+      menu = Menu.new(order)
+      menu.new_order
+      expect(menu.current_order).to eq(order)
+    end
+  end
+
   describe '#order_dish' do
-    it 'returns a dish from the correct reference' do
-      broccoli = double :broccoli, name: "broccoli", price: 2
-      aubergine = double :aubergine, name: "aubergine", price: 10_000
-      pumpkin = double :pumpkin, name: "pumpkin", price: 3
-      subject.add_dish(broccoli)
-      subject.add_dish(aubergine)
-      subject.add_dish(pumpkin)
-      expect(subject.order_dish(1)).to eq(broccoli)
+    it 'can receive an order' do
+      allow(order).to receive(:new) { order }
+      menu = Menu.new(order)
+      menu.new_order
+      menu.add_dish(broccoli)
+      expect(order).to receive(:ordered)
+      menu.order_dish(1)
     end
 
     it 'fails if the order is not a number' do
@@ -59,6 +68,17 @@ describe Menu do
     it 'fails if the number given is not on the list' do
       error = 'please stick to numbers on the menu'
       expect { subject.order_dish(4) }.to raise_error(error)
+    end
+  end
+
+  describe '#recite_order' do
+    it 'calls on the current order object to show the order details' do
+      allow(order).to receive(:new) { order }
+      menu = Menu.new(order)
+      menu.new_order
+      expect(order).to receive(:show_order)
+      expect(order).to receive(:show_total)
+      menu.recite_order
     end
   end
 

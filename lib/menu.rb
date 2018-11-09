@@ -1,8 +1,11 @@
-class Menu
-  attr_reader :dishes
+require_relative 'order'
 
-  def initialize
+class Menu
+  attr_reader :dishes, :current_order
+
+  def initialize(order_class = Order)
     @dishes = []
+    @order_class = order_class
   end
 
   def add_dish(dish)
@@ -15,10 +18,25 @@ class Menu
     end
   end
 
+  def new_order
+    @current_order = @order_class.new
+  end
+
   def order_dish(number)
+    check_order_number(number)
+    @current_order.ordered << @dishes[number - 1]
+  end
+
+  def recite_order
+    @current_order.show_order
+    @current_order.show_total
+  end
+
+  private
+
+  def check_order_number(number)
     raise 'please pick the dish number' unless number.is_a? Numeric
-    raise 'please stick to numbers on the menu' if number > @dishes.length 
-    return @dishes[number - 1]
+    raise 'please stick to numbers on the menu' if number > @dishes.length
   end
 
 end
