@@ -1,0 +1,26 @@
+menu(dishes)                      view
+
+takeaway(menu, order)             view_menu
+                                  start_order
+                                  add_to_order
+                                  view_order
+                                  complete_order > send text
+
+dish(price)                       get_details
+
+order(dishes(quantities), phone)  add_to_order
+                                  view_order_with_total
+                                  view_phone_number
+
+
+           +----------+         +------+                +------+
+  +--------+ takeaway +--view-->+ menu +--get_details-->+ dish |
+  |        +-+-----+--+         +------+    (each)      +--+---+
+  |          |     |                                       ^
+  |          |    add_to_order                             |
+  |  view_order_  (dish, quantity)                         |
+  |   with_total   |                                       |
+  |          |     v                                       |
+view_phone_  +>+---+---+                                   |
+ number------->+ order +----------get_details--------------+
+               +-------+
