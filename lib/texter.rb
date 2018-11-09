@@ -11,8 +11,7 @@ class Texter
   end
 
   def send_text(cost)
-    time = Time.now
-    soon = time + 3600
+    soon = Time.now + 3600
     @client.messages.create(
       from: @from,
       to: @to,
