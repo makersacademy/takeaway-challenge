@@ -36,14 +36,16 @@ describe Takeaway do
       it 'adds an item to the order' do
         subject.start_order
         subject.add_to_order(dish)
-        printout = "1 #{dish.name} @ %.2f" % dish.price
+        printout = "1 #{dish.name} @ %.2f".ljust(20) % dish.price
+        printout.concat("%.2f".rjust(6) % dish.price)
         expect { subject.view_order }.to output(printout).to_stdout
       end
 
       it 'records the quantity ordered for each dish' do
         subject.start_order
         subject.add_to_order(dish, 3)
-        printout = "3 #{dish.name} @ %.2f" % dish.price
+        printout = "3 #{dish.name} @ %.2f".ljust(20) % dish.price
+        printout.concat("%.2f".rjust(6) % (3 * dish.price))
         expect { subject.view_order }.to output(printout).to_stdout
       end
     end
