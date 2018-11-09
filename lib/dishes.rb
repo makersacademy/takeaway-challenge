@@ -4,8 +4,8 @@ class Dishes
 
   def initialize
 
-    @dishes = {"curry" => "£5", "rice" => "£2.50",
-     "spare ribs" => "4.50"}
+    @dishes = {"curry" => 5, "rice" => 2.50,
+     "spare ribs" => 4.50}
 
   end
 
