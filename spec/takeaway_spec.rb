@@ -12,22 +12,36 @@ describe Takeaway do
     end
   end
 
-  context 'placing an order' do
+  describe 'placing an order' do
     let(:dish) { instance_double("Dish", :name => 'Curry', :price => 2.95) }
     it 'can create an order' do
       subject.start_order
       expect(subject.current_order).not_to be nil
     end
 
-    it 'has nothing in the order to begin with' do
-      subject.start_order
-      expect(subject.view_order).to eq ''
+    context '#view_order' do
+      it 'has nothing in the order to begin with' do
+        subject.start_order
+        expect(subject.view_order).to eq ''
+      end
+
+      it 'raises an error if an order has not been created' do
+        error_message = 'There is currently no order open'
+        expect { subject.view_order }.to raise_error error_message
+      end
     end
 
     it 'adds an item to the order' do
       subject.start_order
       subject.add_to_order(dish)
       printout = "1 #{dish.name} @ %.2f" % dish.price
+      expect(subject.view_order).to eq printout
+    end
+
+    it 'records the quantity ordered of each dish' do
+      subject.start_order
+      subject.add_to_order dish, 3
+      printout = "3 #{dish.name} @ %.2f" % dish.price
       expect(subject.view_order).to eq printout
     end
   end

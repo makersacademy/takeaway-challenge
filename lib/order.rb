@@ -5,7 +5,7 @@ class Order
     @items = []
   end
 
-  def add_to_order(dish)
-    @items << { :dish => dish, :quantity => 1 }
+  def add_to_order(dish, quantity)
+    @items << { :dish => dish, :quantity => quantity }
   end
 end

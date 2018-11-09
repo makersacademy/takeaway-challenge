@@ -15,11 +15,12 @@ class Takeaway
     @current_order = Order.new
   end
 
-  def add_to_order(dish)
-    @current_order.add_to_order(dish)
+  def add_to_order(dish, quantity = 1)
+    @current_order.add_to_order(dish, quantity)
   end
 
   def view_order
+    raise 'There is currently no order open' unless @current_order
     @current_order.items.map { |item|
       "#{item[:quantity]} #{item[:dish].name} @ %.2f" % item[:dish].price
     }.join "\n"
