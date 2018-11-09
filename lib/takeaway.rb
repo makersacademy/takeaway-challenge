@@ -15,9 +15,13 @@ class Takeaway
     @current_order = Order.new
   end
 
+  def add_to_order(dish)
+    @current_order.add_to_order(dish)
+  end
+
   def view_order
     @current_order.items.map { |item|
-      "#{item.quantity} #{item.dish.name} @ #{item.dish.price}"
+      "#{item[:quantity]} #{item[:dish].name} @ %.2f" % item[:dish].price
     }.join "\n"
   end
 end
