@@ -20,9 +20,18 @@ class Takeaway
 
   def view_order
     raise 'There is currently no order open' unless @current_order
-    print @current_order.items.map { |item|
-      "#{item[:quantity]} #{item[:dish].name} @ %.2f".ljust(20)
-        .concat("%.2f".rjust(6)) % [item[:dish].price, (item[:quantity] * item[:dish].price)]
+    print format_order
+  end
+
+  private
+
+  def format_order
+    @current_order.items.map { |item|
+      qty = item[:quantity]
+      name = item[:dish].name
+      price = item[:dish].price
+      "#{qty} #{name} @ %.2f".ljust(20).concat("%.2f".rjust(6)) \
+        % [price, (qty * price)]
     }.join "\n"
   end
 end
