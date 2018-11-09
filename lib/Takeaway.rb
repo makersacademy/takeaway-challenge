@@ -1,5 +1,12 @@
 require_relative 'Order'
 require_relative 'Dish'
+require_relative 'twilio_parameters'
+require 'twilio-ruby'
+
+# twilio_parameters.rb should contain the following:
+# account_sid = "...."
+# auth_token = "...."
+# my_phone_number = "+447540..."
 
 class Takeaway
 
@@ -39,7 +46,8 @@ class Takeaway
   def order(received_order)
     new_order = Order.new(received_order, menu)
     @orders << new_order
-    order_success_message(new_order)
+    msg = order_success_message(new_order)
+    text_message($twilio_number, $my_number, msg, $account_sid, $auth_token)
   end
 
   def order_success_message(order)
@@ -51,4 +59,9 @@ end
 
 def currency(value, sign = "£")
   "#{sign}#{'%.2f' % value}"
+end
+
+def text_message(from, to, text, account_sid, auth_token)
+  @client = Twilio::REST::Client.new($account_sid, $auth_token)
+  message = @client.messages.create(body: text, from: from, to: to)
 end
