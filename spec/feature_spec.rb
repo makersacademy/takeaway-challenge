@@ -14,8 +14,9 @@ describe Takeaway do
     # I would like to be able to select some number of several available dishes
     it 'lets customer to place an order with dishes and their quantity' do
       takeaway = Takeaway.new
-      takeaway.select_dish("Chicken Curry", 1)
-      takeaway.select_dish("Lamb Curry", 2)
+      order = Order.new
+      order.select_dish("Chicken Curry", 1)
+      order.select_dish("Lamb Curry", 2)
       expect{ takeaway.place_order }.not_to raise_error
     end
   end

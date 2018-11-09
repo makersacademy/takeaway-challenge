@@ -11,14 +11,4 @@ describe Takeaway do
     expect{ takeaway.show_menu }.to output(message).to_stdout
   end
 
-  it 'stores name of the dish and quantity' do
-    takeaway.select_dish("Chicken Curry", 2)
-    expect(takeaway.dishes).to eq([{:name => "Chicken Curry", :quantity => 2}])
-  end
-
-  it 'allows select dishes and quantities' do
-    takeaway.select_dish("Chicken Curry", 2)
-    expect(takeaway.dishes).to eq([{:name => "Chicken Curry", :quantity => 2}])
-  end
-
 end
