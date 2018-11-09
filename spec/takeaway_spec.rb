@@ -14,15 +14,11 @@ describe Takeaway do
 
   describe 'placing an order' do
     let(:dish) { instance_double("Dish", :name => 'Curry', :price => 2.95) }
-    it 'can create an order' do
-      subject.start_order
-      expect(subject.current_order).not_to be nil
-    end
 
     context '#view_order' do
       it 'has nothing in the order to begin with' do
         subject.start_order
-        expect(subject.view_order).to eq ''
+        expect { subject.view_order }.to output('').to_stdout
       end
 
       it 'raises an error if an order has not been created' do
@@ -31,18 +27,25 @@ describe Takeaway do
       end
     end
 
-    it 'adds an item to the order' do
-      subject.start_order
-      subject.add_to_order(dish)
-      printout = "1 #{dish.name} @ %.2f" % dish.price
-      expect(subject.view_order).to eq printout
-    end
+    context '#add_to_order' do
+      it 'opens a new order if one is not already open' do
+        subject.add_to_order(dish)
+        expect { subject.view_order }.not_to raise_error
+      end
 
-    it 'records the quantity ordered of each dish' do
-      subject.start_order
-      subject.add_to_order dish, 3
-      printout = "3 #{dish.name} @ %.2f" % dish.price
-      expect(subject.view_order).to eq printout
+      it 'adds an item to the order' do
+        subject.start_order
+        subject.add_to_order(dish)
+        printout = "1 #{dish.name} @ %.2f" % dish.price
+        expect { subject.view_order }.to output(printout).to_stdout
+      end
+
+      it 'records the quantity ordered for each dish' do
+        subject.start_order
+        subject.add_to_order(dish, 3)
+        printout = "3 #{dish.name} @ %.2f" % dish.price
+        expect { subject.view_order }.to output(printout).to_stdout
+      end
     end
   end
 end
