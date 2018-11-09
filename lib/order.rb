@@ -8,9 +8,20 @@ class Order
   end
 
   def add(num)
-    @cost += num
-    # puts "#{@menu.items[item_number.to_i - 1][:name]} added to basket"
-    # puts "current total: £#{cost_total}"
+    num = num.to_i - 1
+    @cost += @menu.items[num][:cost]
+    added_to_basket(num)
+    basket
+  end
+
+  def basket
+    puts "Total cost of items in basket: £#{@cost}"
+  end
+
+  private
+
+  def added_to_basket(num)
+    puts "#{@menu.items[num][:name]} added to basket"
   end
 
 end

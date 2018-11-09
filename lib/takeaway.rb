@@ -9,17 +9,20 @@ class Takeaway
   end
 
   def view_menu
-    @menu.items.each_with_index do |item, index|
-      puts "#{index + 1}: #{item[:name]} £#{item[:cost]}"
-    end
+    @menu.view
   end
 
-  def order(num)
-    @current_order.add(@menu.items[num - 1][:cost])
+  def add_to_order(num)
+    @current_order.add(num)
+  end
+
+  def empty_basket
+    @current_order = Order.new
   end
 
 end
 
-shop = Takeaway.new(Menu.new)
+shop = Takeaway.new
 shop.view_menu
-shop.order
+shop.add_to_order(1)
+shop.add_to_order(3)
