@@ -2,6 +2,9 @@ require_relative 'menu'
 
 class Order
 
+  attr_reader :basket
+  attr_reader :cost
+
   def initialize
     @cost = 0
     @menu = Menu.new
@@ -15,16 +18,11 @@ class Order
     added_to_basket(index)
   end
 
-  def basket_items
+  def view_basket
     puts "Basket:"
     @basket.each do |item|
       puts item
     end
-    basket_cost
-    @basket
-  end
-
-  def basket_cost
     "Total cost of items in basket:\n£#{@cost}"
   end
 
@@ -33,5 +31,4 @@ class Order
   def added_to_basket(num)
     "#{@menu.items[num][:name]} added to basket"
   end
-
 end

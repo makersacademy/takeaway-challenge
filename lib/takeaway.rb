@@ -22,7 +22,7 @@ class Takeaway
   end
 
   def check_basket
-    @current_order.basket
+    @current_order.view_basket
   end
 
   def submit_order
