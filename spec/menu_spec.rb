@@ -19,4 +19,9 @@ describe Menu do
   it 'will print an order' do
     expect { menu.order_items }.to output(@item).to_stdout
   end
+
+  # it 'will calculate the total price of the order if a customer asks for it' do
+  #   expect(menu.order_total).to eq([])
+  # end
+
 end
