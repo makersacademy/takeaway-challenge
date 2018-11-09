@@ -29,3 +29,12 @@ p menu.order_dish(3, 3)
 p "shows the current order"
 
 menu.recite_order
+
+p "orders four apples"
+p menu.order_dish(2, 4)
+
+menu.recite_order
+
+p "finishes the order and sends confirmation text"
+
+p menu.finish_order
