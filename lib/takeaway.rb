@@ -1,20 +1,25 @@
 class Takeaway
-  attr_reader :dishes, :selected
+  attr_accessor :dishes
+  attr_reader :selected
 
   def initialize
-    @dishes = [{ item_no: 1, dish: "Pizza", price: 20 },
-      { item_no: 2, dish: "Kebab", price: 12 },
-      { item_no: 3, dish: "Sushi", price: 22 },
-      { item_no: 4, dish: "Burger", price: 10 }
+    @dishes = [{ name: "Pizza", price: 20 },
+      { name: "Kebab", price: 12 },
+      { name: "Kebab", price: 12 },
+      { name: "Sushi", price: 22 },
+      { name: "Burger", price: 10 }
     ]
     @selected = []
   end  
 
   def see_dishes
-    dishes
+    dishes.each do |dish|
+      puts "Name: #{dish[:name]} |||| Price: £#{dish[:price]}\n"
+    end
   end
 
   def select_dish
+
   end
 
 end

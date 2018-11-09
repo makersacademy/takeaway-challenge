@@ -7,7 +7,8 @@ describe Takeaway do
   end
 
   it 'shows a list of dishes with prices' do
-    expect(subject.see_dishes.length).to be > 0
+    subject.dishes = [{ name: "Pizza", price: 20 }]
+    expect { subject.see_dishes.length }.to output("Name: Pizza |||| Price: £20\n").to_stdout
   end
   
   it 'responds to .select_dish' do
