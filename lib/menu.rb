@@ -1,4 +1,5 @@
 class Menu
+  attr_accessor :data
   def initialize(menu_data)
    @data = menu_data
   end
