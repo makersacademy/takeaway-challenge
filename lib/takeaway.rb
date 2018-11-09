@@ -8,7 +8,7 @@ class Takeaway
 
   def view_menu
     @menu.items.each_with_index do |item, index|
-      puts "#{index+1}: #{item[:name]} £#{item[:cost]}"
+      puts "#{index + 1}: #{item[:name]} £#{item[:cost]}"
     end
   end
 
@@ -19,8 +19,8 @@ class Takeaway
     while true do
       item_number = gets.chomp
       break if item_number == 'done'
-      cost_total += @menu.items[item_number.to_i-1][:cost]
-      puts "#{@menu.items[item_number.to_i-1][:name]} added to basket"
+      cost_total += @menu.items[item_number.to_i - 1][:cost]
+      puts "#{@menu.items[item_number.to_i - 1][:name]} added to basket"
       puts "current total: £#{cost_total}"
     end
   end
