@@ -22,7 +22,7 @@ class Menu
     input = ""
     p "What would you like to order?"
     p "To finish ordering please type end"
-    while input == gets.chomp
+    while input = gets.chomp
       @item << input
       break if input == "end"
     end
