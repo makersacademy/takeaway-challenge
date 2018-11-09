@@ -23,9 +23,9 @@ describe Menu do
       expect(subject.dishes).to eq([dish])
     end
 
-    it 'adds many dishes to menu when asked' do
-      3.times { subject.add_dish(dish) }
-      expect(subject.dishes).to eq([dish, dish, dish])
+    it 'raises error when same dishes added to menu when' do
+      subject.add_dish(dish)
+      expect { subject.add_dish(dish) }.to raise_error('dish on menu')
     end
   end
 
@@ -89,7 +89,7 @@ describe Menu do
       finished_order.new_order
       allow(order).to receive(:find_total) { 10 }
       allow(texter).to receive(:send_text).with(10) { "sent" }
-      expect(finished_order.finish_order).to eq("sent")
+      expect(finished_order.finish_order).to eq(nil)
     end
   end
 end

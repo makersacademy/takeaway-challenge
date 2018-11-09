@@ -11,6 +11,7 @@ class Menu
   end
 
   def add_dish(dish)
+    @dishes.each { |item| raise 'dish on menu' if dish.name == item.name }
     @dishes << dish
   end
 
@@ -35,8 +36,9 @@ class Menu
   end
 
   def finish_order
-    text = @texter_class.new
-    return text.send_text(current_order.find_total)
+    raise 'start a new_order first brah' if @current_order.nil?
+    @texter_class.new.send_text(current_order.find_total)
+    @current_order = nil
   end
 
   private
