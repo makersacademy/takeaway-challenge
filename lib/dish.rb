@@ -9,4 +9,5 @@ class Dish
   def to_s
     "#{@name}".ljust(40) + "£#{@price}".ljust(70)
   end
+
 end
