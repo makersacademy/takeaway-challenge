@@ -1,6 +1,5 @@
 class Takeaway
-  attr_accessor :dishes
-  attr_reader :selected
+  attr_accessor :dishes, :basket
 
   def initialize
     @dishes = [{ name: "Pizza", price: 20 },
@@ -9,7 +8,7 @@ class Takeaway
       { name: "Sushi", price: 22 },
       { name: "Burger", price: 10 }
     ]
-    @selected = []
+    @basket = []
   end  
 
   def see_dishes
@@ -19,7 +18,18 @@ class Takeaway
   end
 
   def select_dish
-
+    loop do
+      puts "What dish would you like? (type exit to complete selection)"
+      select = gets.chomp.downcase
+      break if select == "exit"
+      
+      puts "Enter quantity"
+      val = gets.to_i
+      dishes.each do |dish|
+        dish[:quantity] = val
+        basket << dish if dish.has_value?(select.capitalize)
+      end
+    end
   end
-
+  
 end

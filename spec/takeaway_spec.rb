@@ -15,12 +15,16 @@ describe Takeaway do
     expect(subject).to respond_to(:select_dish)
   end
 
-  it 'responds to .selected' do
-    expect(subject).to respond_to(:selected)
+  it 'adds selected dishes to array' do
+    expect(subject).to receive(:gets).and_return("Pizza")
+    expect(subject).to receive(:gets).and_return(2)
+    expect(subject).to receive(:gets).and_return("exit")
+    subject.select_dish
+    expect(subject.basket.empty?).to eq false
   end
 
-  it 'responds to .select_dish' do
-    expect(subject).to respond_to(:see_dishes)
+  it 'responds to .basket' do
+    expect(subject).to respond_to(:basket)
   end
 
 end
