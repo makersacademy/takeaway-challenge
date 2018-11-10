@@ -11,4 +11,8 @@ class Order
     end
   end
 
+  def total
+    @basket.values.sum
+  end
+
 end
