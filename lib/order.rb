@@ -2,12 +2,13 @@ class Order
 
   DEFAULT_TOTAL = 0
 
-  attr_reader :basket, :menu, :total
+  attr_reader :basket, :menu, :total, :quantities
 
   def initialize(menu)
     @menu = menu
     @basket = []
     @total = DEFAULT_TOTAL
+    @quantities = Hash.new(0)
   end
 
   def add(item)
@@ -21,9 +22,18 @@ class Order
     @total
   end
 
-  def show_bill
-    @basket << ["Total: ", @total]
+  def get_quantities
+    @basket.each do |item, price|
+      @quantities[item] += 1
+    end
+    @quantities
   end
 
+  def show_bill
+    @quantities.each do |item, quantity|
+      "#{item}, #{quantity}"
+    end
+    "total: #{get_total}"
+  end
 
 end
