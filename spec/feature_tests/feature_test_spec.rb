@@ -53,7 +53,7 @@ describe 'User Stories' do
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
-  xit 'allows me to check the total of my basket' do
+  it 'allows me to check the total of my basket against the dishes prices' do
     dish_list = {
       'chicken korma' => 5.70,
       'chicken bhuna' => 6.70,
@@ -73,6 +73,7 @@ describe 'User Stories' do
     order.add('chicken korma')
     order.add('bombay aloo')
     order.add('peshwari naan')
+    order.add('chicken korma')
     expect{order.total}.not_to raise_error
   end
 end

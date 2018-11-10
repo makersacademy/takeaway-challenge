@@ -42,7 +42,15 @@ describe Order do
     end
   end
 
-  xit 'allows me to check the total of my order' do
+  describe '#total' do
+    it 'sets the total at 0 by default' do
+      menu = double(:menu)
+      order = Order.new(menu)
+      expect(order.total).to eq Order::DEFAULT_TOTAL
+    end
+  end
+
+  it 'allows me to check the total of my order against the sum of the dishes ordered' do
     dish_list = {
       'chicken korma' => 5.70,
       'chicken bhuna' => 6.70,
@@ -59,11 +67,6 @@ describe Order do
     }
     menu = double(:menu, list: dish_list)
     order = Order.new(menu)
-    order.add('chicken korma')
-    order.add('bombay aloo')
-    order.add('peshwari naan')
-    my_total = order.basket.values.sum
-    expect(order.total).to eq my_total
+    expect(order.total).to eq 0
   end
-
 end

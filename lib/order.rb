@@ -1,10 +1,13 @@
 class Order
 
-  attr_reader :basket, :menu
+  DEFAULT_TOTAL = 0
+
+  attr_reader :basket, :menu, :total
 
   def initialize(menu)
     @menu = menu
     @basket = []
+    @total = DEFAULT_TOTAL
   end
 
   def add(item)
@@ -12,4 +15,13 @@ class Order
       @basket << [dish, price] if item == dish
     end
   end
+  
 end
+
+
+# total = 0
+# basket.each do |item, price|
+#   puts "#{item}, #{price}"
+#   total += price
+# end
+# puts total
