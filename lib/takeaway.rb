@@ -12,8 +12,8 @@ class Takeaway
     @menu.view
   end
 
-  def add_to_order(num)
-    @current_order.add(num)
+  def add_to_order(menu_num, quantity = 1)
+    @current_order.add(menu_num, quantity)
   end
 
   def empty_basket

@@ -13,11 +13,13 @@ class Order
     @basket = []
   end
 
-  def add(num)
-    index = num.to_i - 1
-    @cost += @menu.items[index][:cost]
-    @basket << "#{@menu.items[index][:name]} £#{@menu.items[index][:cost]}"
-    added_to_basket(index)
+  def add(menu_num, quantity)
+    index = menu_num.to_i - 1
+    quantity.times do
+      @cost += @menu.items[index][:cost]
+      @basket << "#{@menu.items[index][:name]} £#{@menu.items[index][:cost]}"
+      added_to_basket(index, quantity)
+    end
   end
 
   def view_basket
@@ -42,7 +44,7 @@ class Order
 
   private
 
-  def added_to_basket(num)
-    puts "#{@menu.items[num][:name]} added to basket"
+  def added_to_basket(index)
+    puts "#{quantity}x #{@menu.items[index][:name]} added to basket"
   end
 end
