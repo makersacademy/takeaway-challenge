@@ -1,7 +1,5 @@
 class Menu
 
-  attr_reader :list
-
   DISH_LIST = {
           'chicken korma' => 5.70,
           'chicken bhuna' => 6.70,
@@ -17,8 +15,10 @@ class Menu
           'peshwari naan' => 3.00
         }
 
+  attr_reader :list
+
   def initialize(list = DISH_LIST )
-    @list = list     
+    @list = list
   end
 
 end

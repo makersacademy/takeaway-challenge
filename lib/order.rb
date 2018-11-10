@@ -1,26 +1,28 @@
+require_relative 'menu'
+
 class Order
 
   DEFAULT_TOTAL = 0
 
   attr_reader :basket, :menu, :quantities, :total
 
-  def initialize(menu)
+  def initialize(menu = Menu.new)
     @menu = menu
     @basket = []
     @total = DEFAULT_TOTAL
-    @quantities = Hash.new(0)
   end
 
   def add(item)
     @menu.list.each do |dish, price|
       @basket << [dish, price] if item == dish
     end
+    @basket
   end
 
-  def show_bill
+  def show_order
     @total = get_total
     get_quantities
-    format_bill
+    pretty_bill
   end
 
   def confirm
@@ -37,15 +39,15 @@ class Order
   private
 
   def get_quantities
+    @quantities = Hash.new(0)
     @basket.each { |item, price|  @quantities[item] += 1 }
-    @quantities
   end
 
   def get_total
     @basket.map { |item, price| price }.sum
   end
 
-  def format_bill
+  def pretty_bill
     (@quantities.to_a << ["total:", @total]).join(' ')
   end
 

@@ -48,7 +48,7 @@ describe Order do
     end
   end
 
-  describe '#show_bill' do
+  describe '#show_order' do
     it 'shows the user the items, quantities and total price of the order' do
       dish_list = {
         'chicken korma' => 5.70,
@@ -70,7 +70,7 @@ describe Order do
       order.add('bombay aloo')
       order.add('peshwari naan')
       order.add('chicken korma')
-      expect(order.show_bill).to eq "chicken korma 2 bombay aloo 1 peshwari naan 1 total: 17.65"
+      expect(order.show_order).to eq "chicken korma 2 bombay aloo 1 peshwari naan 1 total: 17.65"
     end
   end
 
@@ -96,7 +96,7 @@ describe Order do
       order.add('bombay aloo')
       order.add('peshwari naan')
       order.add('chicken korma')
-      order.show_bill
+      order.show_order
       order.empty_basket
       expect(order.basket).to be_empty
     end
@@ -122,7 +122,7 @@ describe Order do
       order.add('bombay aloo')
       order.add('peshwari naan')
       order.add('chicken korma')
-      order.show_bill
+      order.show_order
       order.empty_basket
       expect(order.quantities).to be_empty
     end
@@ -148,7 +148,7 @@ describe Order do
       order.add('bombay aloo')
       order.add('peshwari naan')
       order.add('chicken korma')
-      order.show_bill
+      order.show_order
       order.empty_basket
       expect(order.total).to eq Order::DEFAULT_TOTAL
     end
@@ -176,7 +176,7 @@ describe Order do
       order.add('bombay aloo')
       order.add('peshwari naan')
       order.add('chicken korma')
-      order.show_bill
+      order.show_order
       order.total = wrong_total
       expect { order.confirm }.to raise_error "Total incorrect!"
     end
