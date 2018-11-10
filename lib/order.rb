@@ -1,4 +1,6 @@
 require_relative 'menu'
+require 'twilio-ruby'
+require_relative 'numbers'
 
 class Order
 
@@ -24,6 +26,17 @@ class Order
       puts item
     end
     puts "Total cost of items in basket:\n£#{@cost}"
+  end
+
+  def submit
+    t = Time.now + 45*60
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    message = @client.messages.create(
+        body: "Your order will be delivered by #{t.strftime "%H:%M"}",
+        to: my_num,
+        from: twilio_num)
+
+    puts message.sid
   end
 
   private

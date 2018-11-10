@@ -25,8 +25,8 @@ class Takeaway
     @current_order.view_basket
   end
 
-  # def submit_order
-  #   code to be written here
-  # end
+  def submit_order
+    @current_order.submit
+  end
 
 end
