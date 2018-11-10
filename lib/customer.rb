@@ -9,7 +9,11 @@ class Customer
     @order.build(array)
   end
 
-  def varify_order
+  def print_order
     @order.print
+  end
+
+  def varify_order
+    @order.varify
   end
 end

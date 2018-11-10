@@ -23,4 +23,9 @@ describe Order do
     order.build(menu_ids)
     expect(order.print).to match(TestData::expected_order_print_output)
   end
+
+  it 'can be varified' do
+    order.varify
+    expect(order.varified).to eq(true)
+  end
 end

@@ -1,8 +1,13 @@
 class Order
-  attr_reader :items
+  attr_reader :items, :varified
   def initialize(menu)
     @items = []
     @menu = menu
+    @varified = false
+  end
+
+  def varify
+    @varified = true
   end
 
   def create_dish(menu_id, dish = Dish.new)
