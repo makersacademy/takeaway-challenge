@@ -1,3 +1,4 @@
+require 'price'
 class Order
   attr_reader :items, :varified
   def initialize(menu)
@@ -23,37 +24,14 @@ class Order
   def print
     string = "Your Order is:\n--------------\n"
     @items.each do |dish|
-      string << "#{dish.name} £#{format_price(dish.price)}\n"
+      string << "#{dish.name} £#{Price::format(dish.price)}\n"
     end
-    string << "--------------\n\nTotal: £#{format_price(total)}"
+    string << "--------------\n\nTotal: £#{Price::format(total)}"
   end
 
   def total
     total = 0
     @items.each { |dish| total +=  dish.price }
     total
-  end
-
-  private
-  def format_price(pence)
-    pence_array = arrayify_pence(pence)
-    if less_than_pound?(pence)
-      2.times { pence_array.unshift("0") }
-      add_decimal_point(pence_array)
-    else
-      add_decimal_point(pence_array)
-    end
-  end
-
-  def add_decimal_point(pence_array)
-    pence_array.insert(-3, '.').join
-  end
-
-  def arrayify_pence(pence)
-    pence.to_s.chars
-  end
-
-  def less_than_pound?(pence)
-    pence.to_s.size <= 2
   end
 end
