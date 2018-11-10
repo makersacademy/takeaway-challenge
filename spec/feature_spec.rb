@@ -4,6 +4,11 @@ describe Takeaway do
   let(:takeaway) { Takeaway.new }
   let(:order) { Order.new }
 
+before do
+  order.select_dish("Chicken Curry", 1)
+  order.select_dish("Lamb Curry", 2)
+end
+
   context 'User stories' do
     # As a customer
     # So that I can check if I want to order something
@@ -15,8 +20,6 @@ describe Takeaway do
     # So that I can order the meal I want
     # I would like to be able to select some number of several available dishes
     it 'lets customer to place an order with dishes and their quantity' do
-      order.select_dish("Chicken Curry", 1)
-      order.select_dish("Lamb Curry", 2)
       expect { takeaway.place(order) }.not_to raise_error
     end
     it 'does not let customer select dishes that are not available' do
@@ -26,8 +29,6 @@ describe Takeaway do
     # So that I can verify that my order is correct
     # I would like to check that the total I have been given matches the sum of the various dishes in my order
     it 'checks if the total given is the same as the one calculated' do
-      order.select_dish("Chicken Curry", 1)
-      order.select_dish("Lamb Curry", 1)
       takeaway.place(order)
       expect { order.total_cost }.not_to raise_error
     end

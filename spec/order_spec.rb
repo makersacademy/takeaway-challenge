@@ -3,6 +3,7 @@ require 'order'
 describe Order do
   subject(:order) { described_class.new }
   let(:menu) { double() }
+
   context '#select_dish' do
     it 'stores selected dishes and quantities' do
       order.select_dish("Chicken Curry", 2)
