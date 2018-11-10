@@ -96,7 +96,7 @@ describe Order do
       order.add('bombay aloo')
       order.add('peshwari naan')
       order.add('chicken korma')
-      expect(order.show_bill).to eq "chicken korma, 2\nbombay aloo, 1\npeshwari naan, 1\ntotal: 17.65"
+      expect(order.show_bill).to eq "chicken korma 2 bombay aloo 1 peshwari naan 1 total: 17.65"
     end
   end
 end

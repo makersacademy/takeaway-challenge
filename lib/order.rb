@@ -22,18 +22,20 @@ class Order
     @total
   end
 
+  def show_bill
+    get_quantities
+    format_bill
+  end
+
+  private
+
   def get_quantities
-    @basket.each do |item, price|
-      @quantities[item] += 1
-    end
+    @basket.each { |item, price|  @quantities[item] += 1 }
     @quantities
   end
 
-  def show_bill
-    @quantities.each do |item, quantity|
-      "#{item}, #{quantity}"
-    end
-    "total: #{get_total}"
+  def format_bill
+    (@quantities.to_a << ["total:", get_total]).join(' ')
   end
 
 end
