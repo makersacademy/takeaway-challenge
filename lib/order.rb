@@ -12,4 +12,8 @@ class Order
 
   end
 
+  def confirmation_text
+
+  end
+
 end

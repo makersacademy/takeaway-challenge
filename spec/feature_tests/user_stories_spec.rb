@@ -16,5 +16,9 @@ feature 'user_stories_spec' do
     expect { order.check_order }.not_to raise_error
   end
 
+  it "So that I know what time my order will be delivered, I would like to receive a text message such as 'Thank you! Your order was placed and will be delivered before 18:52' after I have ordered" do
+    order = Order.new
+    expect { order.confirmation_text }.not_to raise_error
+  end
 
 end
