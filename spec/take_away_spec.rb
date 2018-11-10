@@ -83,5 +83,24 @@ describe Customer do
       expect(kfc.order).to include( { medium_chips: 2.98, small_chips: 1.98, total: 4.96 } )
     end
 
+    it 'throws an error if the total is incorrect' do
+      allow(kfc).to receive(:correct?) {false}
+      kfc.take_order("medium_chips", 2)
+      kfc.take_order("small_chips", 2)
+      expect{ kfc.return_order }.to raise_error("Something went wrong")
+    end
+
+    it 'can state the #time_of_order' do
+      allow(kfc).to receive(:time_of_order) { Time.now }
+      expect(kfc.delivery_time).to be_within(3600).of(kfc.time_of_order)
+    end
+
+    it "can #confirm_order and #delivery_time" do
+      kfc.take_order("medium_chips", 2)
+      kfc.take_order("small_chips", 2)
+      msg = "Thank you!, your order was placed and will be delivered before #{kfc.delivery_time}"
+      expect(kfc.confirm_order).to eq msg
+    end
+
   end
 end

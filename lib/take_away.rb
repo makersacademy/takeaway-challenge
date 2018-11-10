@@ -5,7 +5,7 @@ require 'menu.rb'
 
 class TakeAway
   attr_reader :take_away_name, :take_away_menu
-  attr_accessor :order
+  attr_accessor :order, :order_time, :delivery_time, :total
 
   def initialize(name)
     @take_away_name = name
@@ -23,11 +23,29 @@ class TakeAway
   end
 
   def return_order
-    total = 0
-    @order.each { |key, val| total += val }
-    @order[:total] = total
+    @total = 0
+    @order.each { |key, val| @total += val }
+    fail "Error: Sum did not match the total" unless correct?
+    @order[:total] = @total
     @order.each { |key, val| puts "#{key}....£#{val}".center(160) }
   end
 
+  def correct?
+    sum = 0
+    @order.each { |key, val| sum += val }
+    true unless sum != @total
+  end
+
+  def time_of_order
+    @order_time = Time.now
+  end
+
+  def delivery_time
+    @delivery_time = time_of_order + 3600
+  end
+
+  def confirm_order
+    "Thank you!, your order was placed and will be delivered before #{delivery_time}"
+  end
 
 end
