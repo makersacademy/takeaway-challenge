@@ -10,4 +10,11 @@ feature 'user_stories_spec' do
     order = Order.new
     expect { order.select_item("soup", 2) }.not_to raise_error
   end
+
+  it "So that I can verify my order, I would like to check that the total I have been given matches the sum of the various dishes in my order" do
+    order = Order.new
+    expect { order.check_order }.not_to raise_error
+  end
+
+
 end

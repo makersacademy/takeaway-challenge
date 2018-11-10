@@ -8,4 +8,8 @@ class Order
 
   end
 
+  def check_order
+
+  end
+
 end
