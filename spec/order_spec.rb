@@ -13,5 +13,11 @@ describe Order do
       message = "Can't select: dish not available"
       expect { order.select_dish("Fish & Chips", 1) }.to raise_error message
     end
+
+    it 'calculates correct total cost of the order' do
+      order.select_dish("Chicken Curry", 1)
+      order.select_dish("Lamb Curry", 1)
+      expect(order.total_cost).to eq 13.50
+    end
   end
 end

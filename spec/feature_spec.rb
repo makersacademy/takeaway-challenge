@@ -22,16 +22,14 @@ describe Takeaway do
     it 'does not let customer select dishes that are not available' do
       expect { order.select_dish("Fish & Chips", 1) }.to raise_error "Can't select: dish not available"
     end
-    # # As a customer
-    # # So that I can verify that my order is correct
-    # # I would like to check that the total I have been given matches the sum of the various dishes in my order
-    # skip it 'checks if the total given is the same as the one calculated' do
-    #   takeaway = Takeaway.new
-    #   order = Order.new
-    #   order.select_dish("Chicken Curry", 1)
-    #   order.select_dish("Lamb Curry", 1)
-    #   takeaway.place(order)
-    #   expect
-    # end
+    # As a customer
+    # So that I can verify that my order is correct
+    # I would like to check that the total I have been given matches the sum of the various dishes in my order
+    it 'checks if the total given is the same as the one calculated' do
+      order.select_dish("Chicken Curry", 1)
+      order.select_dish("Lamb Curry", 1)
+      takeaway.place(order)
+      expect { order.total_cost }.not_to raise_error
+    end
   end
 end

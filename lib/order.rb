@@ -13,6 +13,15 @@ class Order
     @dishes << { :name => name, :quantity => quantity }
   end
 
+  def total_cost
+    menu = Menu.new
+    @dishes.map { |dish|
+      menu.price(dish[:name]) * dish[:quantity] }
+      .sum
+  end
+
+private
+
   def available?
     menu = Menu.new
     menu.list_of_dishes.any? { |hash| hash[:name] == @name }

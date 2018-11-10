@@ -11,8 +11,12 @@ class Menu
   end
 
   def print
-    @list_of_dishes.each { |line|
-      puts "#{line[:name]} £#{line[:price]}"
+    @list_of_dishes.each { |dish|
+      puts "#{dish[:name]} £#{dish[:price]}"
     }
+  end
+
+  def price(item)
+    @list_of_dishes.find { |dish| dish[:name] == item }[:price]
   end
 end

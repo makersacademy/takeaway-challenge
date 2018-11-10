@@ -12,6 +12,7 @@ class Takeaway
 
   def place(order)
     @ordered_dishes = order.dishes
+    order.total_cost
   end
-  
+
 end
