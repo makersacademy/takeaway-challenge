@@ -2,12 +2,11 @@ class Dish
   attr_accessor :name, :price
 
   def initialize(name, price)
-    @name = name
-    @price = price
+    @name, @price = name, price
   end
 
-  def to_s
-    "#{@name}".ljust(40) + "£#{@price}".ljust(70)
+  def dish_to_h
+    { name: @name, price: @price }
   end
 
 end

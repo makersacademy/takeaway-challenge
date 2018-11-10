@@ -1,26 +1,33 @@
+require './lib/dish'
 class Takeaway
 
-  attr_accessor :dishes, :basket
+  attr_accessor :menu, :basket, :basket_subtotal
 
-  def initialize(dishes)
-    @dishes = dishes
-    @basket = []
+  def initialize(menu)
+    @menu, @basket_subtotal = menu, Hash.new(0)
   end
 
   def display_menu
     puts "Here is the menu: \n\n"
-    @dishes.each do |dish|
-      puts dish
-    end
+    @menu.each { |dish|
+      puts "#{dish.name}".ljust(40) + "£#{dish.price}".ljust(70)
+    }
     puts
   end
 
-  def order(item)
-    @dishes.each do |dish|
-      if dish.name.start_with? item
-        @basket << dish
-        puts "#{dish.name} added to your basket. \n \n"
+  def order(item, quantity = 1)
+    @menu.each { |dish|
+      if dish.name.downcase.start_with? item.downcase
+        @basket_subtotal[dish] += quantity
+        puts "#{quantity}x #{dish.name}(s) added to your basket. \n \n"
       end
-    end
+    }
+  end
+
+  def show_basket
+    puts "Your basket contains:"
+    @basket_subtotal.each { |dish, quantity|
+      puts "#{quantity} x #{dish.name} = £#{quantity * dish.price}"
+    }
   end
 end
