@@ -74,7 +74,7 @@ describe 'User Stories' do
     order.add('bombay aloo')
     order.add('peshwari naan')
     order.add('chicken korma')
-    expect{order.get_total}.not_to raise_error
+    expect{order.show_bill}.not_to raise_error
   end
 
   it 'allows me to check a final breakdown showing item, quantity and toatl price' do

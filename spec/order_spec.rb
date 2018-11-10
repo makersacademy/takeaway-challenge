@@ -48,32 +48,6 @@ describe Order do
     end
   end
 
-  describe '#total' do
-    it 'allows me to check the total of my order against the sum of the dishes ordered' do
-      dish_list = {
-        'chicken korma' => 5.70,
-        'chicken bhuna' => 6.70,
-        'lamb rogan josh' => 6.50,
-        'lamb madras' => 5.80,
-        'king prawn dhansak' => 7.70,
-        'plain rice' => 1.90,
-        'pilau rice' => 2.00,
-        'bombay aloo' => 3.25,
-        'tarka daal' => 3.25,
-        'plain naan' => 2.50,
-        'garlic naan' => 2.75,
-        'peshwari naan' => 3.00
-      }
-      menu = double(:menu, list: dish_list)
-      order = Order.new(menu)
-      order.add('chicken korma')
-      order.add('bombay aloo')
-      order.add('peshwari naan')
-      order.add('chicken korma')
-      expect(order.get_total).to eq order.total
-    end
-  end
-
   describe '#show_bill' do
     it 'shows the user the items, quantities and total price of the order' do
       dish_list = {
@@ -122,6 +96,7 @@ describe Order do
       order.add('bombay aloo')
       order.add('peshwari naan')
       order.add('chicken korma')
+      order.show_bill
       order.empty_basket
       expect(order.basket).to be_empty
     end
@@ -147,6 +122,7 @@ describe Order do
       order.add('bombay aloo')
       order.add('peshwari naan')
       order.add('chicken korma')
+      order.show_bill
       order.empty_basket
       expect(order.quantities).to be_empty
     end
@@ -172,8 +148,37 @@ describe Order do
       order.add('bombay aloo')
       order.add('peshwari naan')
       order.add('chicken korma')
+      order.show_bill
       order.empty_basket
       expect(order.total).to eq Order::DEFAULT_TOTAL
+    end
+  end
+
+  describe '#confirm' do
+    xit 'raises and error if the total is not correct' do
+      dish_list = {
+        'chicken korma' => 5.70,
+        'chicken bhuna' => 6.70,
+        'lamb rogan josh' => 6.50,
+        'lamb madras' => 5.80,
+        'king prawn dhansak' => 7.70,
+        'plain rice' => 1.90,
+        'pilau rice' => 2.00,
+        'bombay aloo' => 3.25,
+        'tarka daal' => 3.25,
+        'plain naan' => 2.50,
+        'garlic naan' => 2.75,
+        'peshwari naan' => 3.00
+      }
+      menu = double(:menu, list: dish_list)
+      order = Order.new(menu)
+      order.add('chicken korma')
+      order.add('bombay aloo')
+      order.add('peshwari naan')
+      order.add('chicken korma')
+      order.show_bill
+      order.total = wrong_total
+      expect { order.confirm }.to raise_error "Total incorrect!"
     end
   end
 end
