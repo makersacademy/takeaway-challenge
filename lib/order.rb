@@ -18,6 +18,10 @@ class Order
     end
   end
 
+  def total
+    @order_price.reduce(0, :+)
+  end
+
   private
 
   def item_price(item)

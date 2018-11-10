@@ -23,5 +23,15 @@ let(:menu) {double (:menu) }
      end
  end
 
+   describe '#total' do
+     it { is_expected.to respond_to :total }
+    it 'return total price of order' do
+      subject.buy_item("kebab", 2)
+      expect(subject.total).to eq 6
+
+    end
+   end
+
+
 
 end
