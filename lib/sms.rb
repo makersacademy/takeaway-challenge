@@ -14,7 +14,7 @@ auth_token = "ce6bdf9ccd96d45faf12ba57ac332aea"   # Your Auth Token from www.twi
 @client = Twilio::REST::Client.new account_sid, auth_token
 message = @client.messages.create(
     body: "your order was placed !",
-    to: "+447480978178",    # Replace with your phone number
+    to: "+447480919129",    # Replace with your phone number
     from: "+441743562182 ")  # Replace with your Twilio number
 
 puts message.sid
