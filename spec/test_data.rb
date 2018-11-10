@@ -1,8 +1,4 @@
 class TestData
-  attr_reader :menu_data
-  attr_reader :expected_menu_print_output
-  attr_reader :menu_data_pence
-  attr_reader :expected_menu_print_output_pence
 
   @@menu_data = [ { id: 1, name: 'Chicken Korma', description: 'Mild cream based curry', price: 599 },
                            { id: 2, name: 'Vindaloo', description: 'Very hot curry', price: 699 },
@@ -33,9 +29,37 @@ class TestData
                                    "--------------\n\n" +
                                    "Total: £11.98"
 
-  def self.expected_order_print_output
-   @@expected_order_print_output
+  @@welcome_message = "*----------------------------------*\n" +
+                      "|  Welcome to Vindayou take away!  |\n" +
+                      "*----------------------------------*\n"
+
+  @@get_name_message = "What is your name?"
+
+  @@get_number_message = "What is your number?"
+
+  @@menu_header = "Our menu:\n" +
+                  "---------\n"
+
+  def self.menu_header
+    @@menu_header
   end
+
+  def self.get_name_message
+    @@get_name_message
+  end
+
+  def self.get_number_message
+    @@get_number_message
+  end
+
+  def self.welcome_message
+    @@welcome_message
+  end
+
+  def self.expected_order_print_output
+    @@expected_order_print_output
+  end
+
   def self.menu_data
     @@menu_data
   end
