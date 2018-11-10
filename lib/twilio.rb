@@ -1,11 +1,11 @@
 require 'twilio-ruby'
-require './info/authkeys_and_number.rb'
+require './info/info.rb'
 
 class Phone
   include Phone_info
   attr_reader :client
   def initialize
-    account_sid = get_account_sid 
+    account_sid = get_account_sid
     auth_token = get_auth_token
     @client = Twilio::REST::Client.new account_sid, auth_token
   end

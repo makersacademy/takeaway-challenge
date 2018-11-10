@@ -23,6 +23,8 @@ class Dish
     @price = pence
   end
 
+
+
 private
 
 
