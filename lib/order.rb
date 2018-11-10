@@ -2,6 +2,8 @@ require_relative 'restaurant'
 
 class Order
 
+  attr_reader :order
+
   def initialize(restaurant)
     @restaurant = restaurant
     @order = []
@@ -11,12 +13,18 @@ class Order
     @restaurant.list_dishes
   end
 
-  def add_to_order(name,quantity = 1)
+  def add(name,quantity = 1)
     quantity.times { order << @restaurant.dish(name) }
   end
 
-  def order
-    @order
+  def check
+    order_check = ""
+    total = 0
+    @order.each do |dish|
+      total += dish.price
+      order_check << "#{dish.name}\n"
+    end
+    order_check << "Your total is £#{total}.\n"
   end
 
 end
