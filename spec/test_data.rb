@@ -25,6 +25,17 @@ class TestData
                                        "   Very hot curry\n" +
                                        "3: Tikka £00.99\n" +
                                        "   Dry curry\n"
+
+  @@expected_order_print_output = "Your Order is:\n" +
+                                   "--------------\n" +
+                                   "Tikka £4.99\n" +
+                                   "Vindaloo £6.99\n" +
+                                   "--------------\n\n" +
+                                   "Total: £11.98"
+
+  def self.expected_order_print_output
+   @@expected_order_print_output
+  end
   def self.menu_data
     @@menu_data
   end

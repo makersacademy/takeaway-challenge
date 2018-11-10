@@ -1,7 +1,7 @@
 require 'order'
 require_relative './test_data'
 describe Order do
-  let(:menu_ids) { [1, 2, 3, 3, 2, 1] }
+  let(:menu_ids) { [3, 2] }
   let(:menu_id) { 3 }
   let(:menu) { double(:menu, :data => TestData::menu_data) }
   subject(:order) { Order.new(menu) }
@@ -17,5 +17,10 @@ describe Order do
   it 'can build an order based on the selection from a customer' do
     order.build(menu_ids)
     expect(order.items.size).to eq(menu_ids.size)
+  end
+
+  it 'can print an order' do
+    order.build(menu_ids)
+    expect(order.print).to match(TestData::expected_order_print_output)
   end
 end
