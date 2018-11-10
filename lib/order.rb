@@ -11,7 +11,7 @@ class Order
     dish
   end
 
-  def build_order(id_array)
+  def build(id_array)
    @items = id_array.map{ |id| create_dish(id) }
   end
 end

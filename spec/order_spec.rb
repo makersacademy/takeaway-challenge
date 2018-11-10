@@ -15,7 +15,7 @@ describe Order do
   end
 
   it 'can build an order based on the selection from a customer' do
-    order.build_order(menu_ids)
+    order.build(menu_ids)
     expect(order.items.size).to eq(menu_ids.size)
   end
 end

@@ -6,4 +6,8 @@ describe Customer do
   it 'can select a number of available dishes' do
     expect(customer.select_dishes([1, 2])).to eq(true)
   end
+
+  it 'can varify order' do
+
+  end
 end
