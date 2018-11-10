@@ -20,7 +20,7 @@ describe Dish do
     expect(dish.price).to eq(attributes_hash[:price])
   end
 
-  it 'has a method to reset all attributes at once' do
+  it 'has a method to set all attributes at once' do
     dish.set_all(attributes_hash2)
     expect(dish.name).to eq(attributes_hash2[:name])
     expect(dish.description).to eq(attributes_hash2[:description])
