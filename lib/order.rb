@@ -4,4 +4,8 @@ class Order
 
   end
 
+  def select_item(item, quantity)
+
+  end
+
 end

@@ -6,5 +6,8 @@ feature 'user_stories_spec' do
     expect { order.check_menu(menu) }.not_to raise_error
   end
 
-
+  it "So that I can order, I would like to be able to select some number of several available dishes" do
+    order = Order.new
+    expect { order.select_item("soup", 2) }.not_to raise_error
+  end
 end
