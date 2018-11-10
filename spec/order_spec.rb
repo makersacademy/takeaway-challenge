@@ -18,10 +18,10 @@ let(:menu) {double (:menu) }
      it 'is expected to change basket after buy_item' do
        expect{ subject.buy_item("coffe", 4) }.to change{ subject.basket.length }.by 4
      end
+     it 'is expected to change order_price after buy_item' do
+       expect{ subject.buy_item("coffe", 2) }.to change{ subject.order_price.length }.by 2
+     end
  end
+
+
 end
-
-
-    # it 'expect baskt to be empty array' do
-    #   expect(subject.basket).to eq []
-    # end
