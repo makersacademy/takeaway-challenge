@@ -1,6 +1,11 @@
 class Order
 
-  def check_menu(menu)
+  def initialize(menu)
+    @menu = menu
+  end
+
+  def check_menu
+    @menu
 
   end
 
