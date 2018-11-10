@@ -1,23 +1,38 @@
 require 'order'
 
 describe Order do
-  let(:menu)  { Menu.new}
-  let(:order) { Order.new(menu) }
+  let(:order) {Order.new}
 
   describe "#check_menu" do
-    it "so that I can order, it would like to check the menu list with prices" do
-      expect(order.check_menu).to eq menu
+    it "Consumer can check the menu list with prices" do
+      expect(order.check_menu).to eq Menu::MENU
     end
   end
 
   describe "#select_item" do
-    it "So that I can order, I would like to be able to select some number of several available dishes" do
-      item = "soup"
+    it "Consumer is able to select some number of several available dishes" do
+      item = :soup
       quantity = 2
-      expect(order.add_item(item, quantity)).to eq "Item: #{item} with  quantity: #{quantity}, has been added to your order"
+      expect(order.add_item(item, quantity)).to eq "Item: #{item}, Quantity: #{quantity}, has been added to your order"
     end
   end
 
+  describe "#check_order_summary" do
+    it "Consumer can check order summary" do
+      order.add_item(:soup, 2)
+      order.add_item(:meat, 2)
+      order.add_item(:wine, 1)
+      expect(order.check_order_summary).to eq [:soup, 12.0, :meat, 20.0, :wine, 6.00]
+    end
+  end
 
+  describe "#place order" do
+    it "A text message will be sent after order is completed" do
+      order.confirm_order
+      expect(order.place_order).to eq "Thank you! Your order was placed and will be delivered in about 30 minutes"
+
+    end
+
+  end
 
 end

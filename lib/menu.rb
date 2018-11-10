@@ -1,4 +1,4 @@
-class Menu
+module Menu
 
     MENU = {
         :soup => 6.00,
@@ -13,7 +13,4 @@ class Menu
         :wine => 6.00
     }
 
-    def initialize(menu = MENU)
-      @menu = menu
-    end
 end
