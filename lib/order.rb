@@ -1,18 +1,15 @@
 class Order
-  attr_reader :basket
+
+  attr_reader :basket, :menu
+
   def initialize(menu)
     @menu = menu
-    @basket = {}
+    @basket = []
   end
 
   def add(item)
-    @menu.list.select do |dish, price|
-      @basket[item] = price if item == dish
+    @menu.list.each do |dish, price|
+      @basket << [dish, price] if item == dish
     end
   end
-
-  def total
-    @basket.values.sum
-  end
-
 end
