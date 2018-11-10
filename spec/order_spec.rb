@@ -1,4 +1,5 @@
 require 'order'
+require 'twilio-ruby'
 
 describe Order do
 
@@ -34,8 +35,23 @@ describe Order do
     end
 
     it "prints the order and checks the total is correct" do
-      order_printed = "Eggs\nEggs\nSausages\nYour total is £10.\n"
+      order_printed = "Eggs-3\nEggs-3\nSausages-4\nYour total is £10.\n"
       expect(order.check).to eq order_printed
+    end
+  end
+
+  describe "#confirm" do
+
+    before "adds 5 eggs and 3 sausages to the order" do
+      allow(restaurant).to receive(:dish).with("Eggs").and_return(dish_eggs)
+      allow(restaurant).to receive(:dish).with("Sausages").and_return(dish_sausages)
+      order.add("Eggs",2)
+      order.add("Sausages",1)
+    end
+
+    it "sends the order to the restaurant" do
+      expect(restaurant).to receive(:confirm).with(dishes)
+      order.confirm
     end
   end
 
