@@ -2,26 +2,27 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { described_class.new }
+  it 'allows user to select dishes from a menu' do
+    dish_list = {
+      'chicken korma' => 5.70,
+      'chicken bhuna' => 6.70,
+      'lamb rogan josh' => 6.50,
+      'lamb madras' => 5.80,
+      'king prawn dhansak' => 7.70,
+      'plain rice' => 1.90,
+      'pilau rice' => 2.00,
+      'bombay aloo' => 3.25,
+      'tarka daal' => 3.25,
+      'plain naan' => 2.50,
+      'garlic naan' => 2.75,
+      'peshwari naan' => 3.00
+    }
+    menu = double(:menu, list: dish_list)
+    order = Order.new(menu)
+    order.add('chicken korma')
+    order.add('bombay aloo')
+    order.add('peshwari naan')
+    expect(order.basket).to eq selection = {'chicken korma'=>5.70, 'bombay aloo'=>3.25, 'peshwari naan'=>3.00}
+  end
 
-  # describe '#initialize' do
-  #   it 'accepts a menu as an argument' do
-  #     expect(order).to respond_to(:initialize).with(1).z
-  #   end
-  # end
-
-  # it 'allows me to select items from the menu' do
-  #   menu = double(:menu)
-  #   allow(order).to receive(:menu).and_return({      'chicken korma' => 5.70,
-  #   'chicken bhuna' => 6.70,
-  #   'lamb rogan josh' => 6.50})
-  #   order.select('chicken korma')
-  #   order.select('chicken bhuna')
-  #   order.select('lamb rogan josh')
-  #   expect(order.selection).to eq section = {
-  #     'chicken korma' => 5.70,
-  #     'chicken bhuna' => 6.70,
-  #     'lamb rogan josh' => 6.50
-  #   }
-  # end
 end
