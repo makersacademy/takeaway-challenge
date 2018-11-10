@@ -67,6 +67,10 @@ describe Order do
     }
     menu = double(:menu, list: dish_list)
     order = Order.new(menu)
-    expect(order.total).to eq 0
+    order.add('chicken korma')
+    order.add('bombay aloo')
+    order.add('peshwari naan')
+    order.add('chicken korma')
+    expect(order.get_total).to eq order.show_bill
   end
 end

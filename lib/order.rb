@@ -15,13 +15,15 @@ class Order
       @basket << [dish, price] if item == dish
     end
   end
-  
+
+  def get_total
+    @basket.each {|dish, price| @total += price }
+    @total
+  end
+
+  def show_bill
+    @basket << ["Total: ", @total]
+  end
+
+
 end
-
-
-# total = 0
-# basket.each do |item, price|
-#   puts "#{item}, #{price}"
-#   total += price
-# end
-# puts total

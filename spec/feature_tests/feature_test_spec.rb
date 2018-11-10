@@ -74,6 +74,6 @@ describe 'User Stories' do
     order.add('bombay aloo')
     order.add('peshwari naan')
     order.add('chicken korma')
-    expect{order.total}.not_to raise_error
+    expect{order.get_total}.not_to raise_error
   end
 end
