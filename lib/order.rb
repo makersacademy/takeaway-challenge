@@ -30,6 +30,7 @@ class Order
   def empty_basket
     @basket.clear
     empty_quantities
+    @total = 0
   end
 
   private
