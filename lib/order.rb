@@ -27,6 +27,11 @@ class Order
     format_bill
   end
 
+  def empty_basket
+    @basket.clear
+    empty_quantities
+  end
+
   private
 
   def get_quantities
@@ -36,6 +41,10 @@ class Order
 
   def format_bill
     (@quantities.to_a << ["total:", get_total]).join(' ')
+  end
+
+  def empty_quantities
+    @quantities.clear
   end
 
 end
