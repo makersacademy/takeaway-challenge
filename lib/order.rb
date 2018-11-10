@@ -29,12 +29,13 @@ class Order
   end
 
   def submit
+    m = MyNums.new
     t = Time.now + 45*60
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new m.account_sid, m.auth_token
     message = @client.messages.create(
         body: "Your order will be delivered by #{t.strftime "%H:%M"}",
-        to: my_num,
-        from: twilio_num)
+        to: m.my_num,
+        from: m.twilio_num)
 
     puts message.sid
   end
