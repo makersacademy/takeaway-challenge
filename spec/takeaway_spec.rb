@@ -1,26 +1,38 @@
 require 'takeaway'
 require 'menu'
-require 'order'
 
 describe TakeAway do
   describe '#view_menu' do
     it 'should respond to view_menu' do
-      expect(subject).to respond_to(:view_menu)
+
     end
   end
-  describe '#add_to_order' do
-    it 'should respond to add_to_order' do
-      expect(subject).to respond_to(:add_to_order)
+  describe 'a group of tests that require an item to be added to the basket' do
+    before do
+      subject.add_to_order(2)
     end
-  end
-  describe '#empty_basket' do
-    it 'should respond to empty_basket' do
-      expect(subject).to respond_to(:empty_basket)
+    describe '#add_to_order' do
+      it 'should update the cost' do
+        expect(subject.cost).to eq 7
+      end
+      it 'should add the item to the basket' do
+        expect(subject.basket).to eq ["American Hot Pizza £7"]
+      end
     end
-  end
-  describe '#check_basket' do
-    it 'should respond to check_basket' do
-      expect(subject).to respond_to(:check_basket)
+    describe '#empty_basket' do
+      it 'should' do
+
+      end
+    end
+    describe '#check_basket' do
+      it 'should' do
+
+      end
+    end
+    describe '#submit_order' do
+      it 'should' do
+
+      end
     end
   end
 end
