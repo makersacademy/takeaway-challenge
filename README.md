@@ -82,7 +82,7 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 ##How my code works
 
 ```
-eggs = Eggs.new("Eggs",3)
+eggs = Dish.new("Eggs",3)
 #makes a new dish with a name of "Eggs" and a price of 3
 diner = Restaurant.new([eggs])
 #makes a new restaurant with a an array of dishes(only eggs in this example)
