@@ -1,0 +1,13 @@
+current directory: C:/Users/Elly/Desktop/Project/takeaway-challenge/vendor/bundle/ruby/2.3.0/gems/json-2.1.0/ext/json
+C:/RailsInstaller/Ruby2.3.3/bin/ruby.exe -r ./siteconf20181110-2852-1smo8v3.rb extconf.rb
+creating Makefile
+
+current directory: C:/Users/Elly/Desktop/Project/takeaway-challenge/vendor/bundle/ruby/2.3.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" clean
+
+current directory: C:/Users/Elly/Desktop/Project/takeaway-challenge/vendor/bundle/ruby/2.3.0/gems/json-2.1.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: C:/Users/Elly/Desktop/Project/takeaway-challenge/vendor/bundle/ruby/2.3.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" install

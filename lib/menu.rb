@@ -1,5 +1,7 @@
 class Menu
 
+	attr_reader :menu
+
 	def initialize
 		@menu = {
 			soup: 4.5,
@@ -22,5 +24,3 @@ class Menu
 	end
 
 end
-
-#@menu.find_index{|x,y| x == :salmon}  -- return 5 (index)

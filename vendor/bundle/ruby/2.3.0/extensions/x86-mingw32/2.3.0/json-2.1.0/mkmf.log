@@ -1,0 +1,65 @@
+have_func: checking for rb_enc_raise() in ruby.h... -------------------- yes
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.3.3/include/ruby-2.3.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.3.3/include/ruby-2.3.0/ruby/backward -IC:/RailsInstaller/Ruby2.3.3/include/ruby-2.3.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat conftest.c  -L. -LC:/RailsInstaller/Ruby2.3.3/lib -L.      -lmsvcrt-ruby230  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <winsock2.h>
+4: #include <windows.h>
+5: int main(int argc, char **argv)
+6: {
+7:   return 0;
+8: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.3.3/include/ruby-2.3.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.3.3/include/ruby-2.3.0/ruby/backward -IC:/RailsInstaller/Ruby2.3.3/include/ruby-2.3.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat conftest.c  -L. -LC:/RailsInstaller/Ruby2.3.3/lib -L.      -lmsvcrt-ruby230  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:17:57: error: 'rb_enc_raise' undeclared (first use in this function)
+conftest.c:17:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: #include <ruby.h>
+ 6: 
+ 7: /*top*/
+ 8: extern int t(void);
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+17: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_enc_raise; return !p; }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.3.3/include/ruby-2.3.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.3.3/include/ruby-2.3.0/ruby/backward -IC:/RailsInstaller/Ruby2.3.3/include/ruby-2.3.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat conftest.c  -L. -LC:/RailsInstaller/Ruby2.3.3/lib -L.      -lmsvcrt-ruby230  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: #include <ruby.h>
+ 6: 
+ 7: /*top*/
+ 8: extern int t(void);
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+17: extern void rb_enc_raise();
+18: int t(void) { rb_enc_raise(); return 0; }
+/* end */
+
+--------------------
+
