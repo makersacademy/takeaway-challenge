@@ -52,11 +52,9 @@ class Menu
   def menu_selection
     @result = gets.chomp.downcase
     raise "I think you meant to say Y" unless @result == "y".downcase
-    @order.new
+    @order.new.order_process
   end
 end
-#
-#
-#
-# menu = Menu.new
-# menu.show_menu
+
+menu = Menu.new
+menu.show_menu
