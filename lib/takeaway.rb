@@ -1,3 +1,4 @@
+require_relative './menu.rb'
 class Takeaway
   attr_reader :inputs
   def initialize
@@ -10,6 +11,20 @@ class Takeaway
 
   def start
    welcome
+   name = get_name
+   number = get_number
+   order = Order.new(@menu)
+   customer = Customer.new(name, number, order)
+   puts "Please select what you'd like from our menu"
+   customer.select_dishes(get_selections)
+   puts ""
+   puts customer.print_order
+   puts ""
+   puts "Is this correct?"
+   answer = gets.chomp.downcase
+   if answer.include?('y')
+     customer.varify_order
+   end
 
   end
 
@@ -45,4 +60,23 @@ class Takeaway
     puts "Our menu:"
     puts "---------"
   end
+
+  def get_selections
+    print_menu
+    puts ""
+    puts "Please enter the numbers of the things you want."
+    puts "Press enter to add a selection. When you're finished"
+    puts "enter 'done' to continue'."
+    selections = []
+    loop do
+      puts "Enter selection: "
+      answer = gets.chomp
+      puts answer.to_s == 'done'
+      break if answer.to_s.downcase == 'done'
+      selections << answer.to_i
+    end
+    selections
+  end
 end
+
+Takeaway.new.start

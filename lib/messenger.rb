@@ -1,4 +1,4 @@
-require 'price'
+require_relative './price.rb'
 class Messenger
   def initialize(client, order, credentials)
     @client = client
