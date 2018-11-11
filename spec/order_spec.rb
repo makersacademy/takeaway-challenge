@@ -10,4 +10,14 @@ describe Order do
     expect(Menu::LIST).to include subject.my_order[0]
   end
 
+  describe '#check_total' do
+
+    it 'should return the correct total for my_order' do
+      subject.select("Mixed Fajita", 5)
+      expect(subject.check_total).to eq 45
+    end
+
+  end
+
+
 end

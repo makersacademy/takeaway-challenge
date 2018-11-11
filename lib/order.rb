@@ -11,6 +11,12 @@ class Order
     @my_order
   end
 
+  def check_total
+    total = 0
+    @my_order.each { |hash| total += hash[:price] }
+    total
+  end
+
 private
 
   def add_items(item, quantity)
