@@ -20,21 +20,21 @@ class Order
 
   def add_item(item, quantity = 1)
 
-    @menu.each {|k, v| @order_list[k] = v * quantity if item == k}
-    return "Item: #{item}, Quantity: #{quantity}, has been added to your order" if @order_list[item]
-    return "Item not in menu" if !@order_list[item]
+    @menu.each { |k, v| @order_list[k] = v * quantity if item == k }
+    return "Item not in menu" unless @order_list[item]
+    "Item: #{item}, Quantity: #{quantity}, has been added to your order"
 
   end
 
   def bill_total
 
-    @order_list.map {|k, v| v}.reduce(:+)
+    @order_list.map { |k, v| v }.reduce(:+)
 
   end
 
   def check_order_summary
 
-    @order_list.map {|v| v}.reduce(:+)
+    @order_list.map { |v| v }.reduce(:+)
 
   end
 
@@ -53,3 +53,9 @@ class Order
   end
 
 end
+order = Order.new
+p order.add_item(:soup, 2)
+# order.add_item(:meat, 2)
+#
+# p order.bill_total
+# p order.check_order
