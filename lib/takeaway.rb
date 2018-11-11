@@ -18,4 +18,8 @@ class Takeaway
     @order.select(item, quantity)
   end
 
+  def check_order
+    @order.check_total
+  end
+
 end

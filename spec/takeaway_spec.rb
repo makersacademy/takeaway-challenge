@@ -24,4 +24,15 @@ describe Takeaway do
 
   end
 
+  describe '#check_order' do
+
+    it 'should display the current order and total' do
+      subject.select('Beef Burrito', 2)
+      subject.select('Mixed Fajita', 1)
+      subject.select('Beef Chimichunga', 3)
+      expect(subject.check_order).to eq 52
+    end
+
+  end
+
 end

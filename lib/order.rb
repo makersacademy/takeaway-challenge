@@ -14,6 +14,7 @@ class Order
 
   def check_total
     @my_order.each { |hash| @total += hash[:price] }
+    display_order
     @total
   end
 
@@ -23,6 +24,12 @@ private
     Menu::LIST.each do |hash|
       quantity.times { @my_order << hash } if item == hash[:item]
     end
+  end
+
+  def display_order
+    display = @my_order.uniq.map { |x| "#{x[:item]} x#{@my_order.count(x)}" }
+    display.join(', ')
+    puts display
   end
 
 end
