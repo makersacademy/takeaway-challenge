@@ -1,14 +1,16 @@
-# require './customer.rb'
-# require './menu.rb'
 require 'customer.rb'
 require 'menu.rb'
+require 'txt_message'
+require 'rubygems'
+require 'twilio-ruby'
 
 class TakeAway
   attr_reader :take_away_name, :take_away_menu
-  attr_accessor :order, :order_time, :delivery_time, :total
+  attr_accessor :order, :total, :client
 
-  def initialize(name)
+  def initialize(name, message)
     @take_away_name = name
+    @txt_message = message
     @take_away_menu = Menu.new.menu
     @order = {}
   end
@@ -25,7 +27,7 @@ class TakeAway
   def return_order
     @total = 0
     @order.each { |key, val| @total += val }
-    fail "Error: Sum did not match the total" unless correct?
+    validate_total
     @order[:total] = @total
     @order.each { |key, val| puts "#{key}....£#{val}".center(160) }
   end
@@ -36,16 +38,12 @@ class TakeAway
     true unless sum != @total
   end
 
-  def time_of_order
-    @order_time = Time.now
-  end
-
-  def delivery_time
-    @delivery_time = time_of_order + 3600
+  def validate_total
+    fail "Error: Sum did not match the total" unless correct?
   end
 
   def confirm_order
-    "Thank you!, your order was placed and will be delivered before #{delivery_time}"
+    @txt_message.send_message
   end
 
 end

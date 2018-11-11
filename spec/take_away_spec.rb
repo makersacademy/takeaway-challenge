@@ -51,7 +51,7 @@ describe Customer do
   end
 
   describe TakeAway do
-    let(:kfc) { TakeAway.new("KFC") }
+    let(:kfc) { TakeAway.new("KFC", MessagingService.new) }
     let(:menu) { { large_chips: 1.99, medium_chips: 1.49, small_chips: 0.99 } }
 
     it 'can create a new take away' do
@@ -87,19 +87,22 @@ describe Customer do
       allow(kfc).to receive(:correct?) {false}
       kfc.take_order("medium_chips", 2)
       kfc.take_order("small_chips", 2)
-      expect{ kfc.return_order }.to raise_error("Something went wrong")
+      expect{ kfc.return_order }.to raise_error("Error: Sum did not match the total")
     end
+  end
+  
+  describe MessagingService do
+    let(:txt_message) { MessagingService.new }
+    let(:kfc) { TakeAway.new("KFC", MessagingService.new) }
 
     it 'can state the #time_of_order' do
-      allow(kfc).to receive(:time_of_order) { Time.now }
-      expect(kfc.delivery_time).to be_within(3600).of(kfc.time_of_order)
+      message = MessagingService.new
+      expect(message.delivery_time).to be_within(3600).of(message.time_of_order)
     end
 
-    it "can #confirm_order and #delivery_time" do
-      kfc.take_order("medium_chips", 2)
-      kfc.take_order("small_chips", 2)
-      msg = "Thank you!, your order was placed and will be delivered before #{kfc.delivery_time}"
-      expect(kfc.confirm_order).to eq msg
+    it 'confirms a text message was sent confirming the order' do
+      allow(kfc).to receive(:confirm_order).and_return("queued")
+      expect(kfc.confirm_order).to eq "queued"
     end
 
   end
