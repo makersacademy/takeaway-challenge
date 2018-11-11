@@ -25,20 +25,22 @@ class Order
     total = 0
     @order.each do |dish|
       total += dish.price
-      order_check << "#{dish.name}-#{dish.price}\n"
+      order_check << "\n#{dish.name} - #{dish.price}"
     end
-    order_check << "Your total is £#{total}.\nIt will be delivered at #{Time.now + 60*60}"
+    order_check << "\nYour total is £#{total}.\nIt will be delivered at #{Time.now + 60*60}"
   end
 
   def confirm
     @restaurant.confirm(@order)
+    send_text
+  end
 
-    @client = text_class.new Text::ACCOUNT_SID, Text::AUTH_TOKEN
+  def send_text
+    @client = @text_class.new Text::ACCOUNT_SID, Text::AUTH_TOKEN
     message = @client.messages.create(
         body: self.check,
-        to: "+447713920330",    # Replace with your phone number
-        from: "+441469727010")  # Replace with your Twilio number
-
+        to: Text::MY_NUMBER,
+        from: Text::TWILIO_NUMBER)
     puts message.sid
   end
 
