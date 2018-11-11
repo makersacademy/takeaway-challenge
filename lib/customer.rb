@@ -1,4 +1,5 @@
 class Customer
+  attr_reader :order
   def initialize(name, phone_number, order = Order.new)
     @name = name
     @phone_number = phone_number

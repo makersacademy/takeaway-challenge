@@ -1,4 +1,4 @@
-require 'price'
+require_relative 'price'
 class Menu
   attr_accessor :data
   def initialize(menu_data)

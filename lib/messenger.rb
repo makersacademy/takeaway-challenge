@@ -1,13 +1,13 @@
 require_relative './price.rb'
 class Messenger
-  def initialize(client, order, credentials)
+  def initialize(client, order, to_from)
     @client = client
     @order = order
-    @credentials = credentials
+    @to_from = to_from
   end
 
   def message
-    { from: @credentials[:from], to: @credentials[:to],
+    { from: @to_from[:from], to: @to_from[:to],
       body: "Hi there, your order totalling £#{Price::format(@order.total)} " +
               "will be with you at #{delivery_time}" }
   end
