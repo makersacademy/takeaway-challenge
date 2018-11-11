@@ -7,7 +7,7 @@ describe Menu do
   describe '#view' do
 
     it 'should return a list of items & prices' do
-      expect(subject.view).to eq subject.list
+      expect(subject.view).to eq Menu::LIST
     end
 
   end

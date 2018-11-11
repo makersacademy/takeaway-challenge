@@ -1,16 +1,14 @@
-require_relative 'menu.rb'
-
 class Order
 
-  attr_reader :my_order, :menu
+  attr_reader :my_order
 
-  def initialize(menu = Menu.new, my_order = [])
-    @menu = menu
+  def initialize(my_order = [])
+
     @my_order = my_order
   end
 
   def select(item, quantity)
-    @menu.list.each do |hash|
+    Menu::LIST.each do |hash|
       if item == hash[:item]
         quantity.times { @my_order << hash }
       end
