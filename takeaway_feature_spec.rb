@@ -13,3 +13,4 @@ takeaway.order("chicken wings")
 takeaway.order("small hamburger")
 
 takeaway.show_basket
+takeaway.total

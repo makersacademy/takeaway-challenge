@@ -30,4 +30,12 @@ class Takeaway
       puts "#{quantity} x #{dish.name} = £#{quantity * dish.price}"
     }
   end
+
+  def total
+    sum = 0
+    @basket_subtotal.each { |dish, quantity|
+      sum += quantity * dish.price
+    }
+    puts "Total: £#{sum.round(2)}"
+  end
 end

@@ -44,4 +44,12 @@ describe Takeaway do
       output("Your basket contains:\n2 x Chicken Wings = £2.98\n").to_stdout
     end
   end
+
+  describe '#total' do
+    it 'displays the total of the order' do
+      two_chick_wings
+      subject.order("small hamburger")
+      expect { subject.total }.to output("Total: £5.97\n").to_stdout
+    end
+  end
 end
