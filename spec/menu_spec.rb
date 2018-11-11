@@ -20,8 +20,28 @@ describe Menu do
 
   subject(:menu) { described_class.new(dish_list) }
 
-  it 'is expected to take a list as an argument and display it' do
-    expect(menu.list).to eq dish_list
+  describe '#initialize' do
+    it 'takes a dish list as an argument and display it' do
+      expect(menu.list).to eq dish_list
+    end
+
+    it 'creates an empty selection' do
+      expect(menu.selection).to be_empty
+    end
   end
+
+  describe '#select_item' do
+    it 'allows user to select items from a menu' do
+      menu.select_item('lamb rogan josh')
+      menu.select_item('bombay aloo')
+      menu.select_item('plain naan')
+      menu.select_item('lamb rogan josh')
+      expect(menu.selection).to eq [['lamb rogan josh', 6.50], ['bombay aloo', 3.25], ['plain naan', 2.50], ['lamb rogan josh', 6.50]]
+    end
+  end
+
+
+
+
 
 end

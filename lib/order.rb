@@ -2,16 +2,12 @@ class Order
 
   DEFAULT_TOTAL = 0
 
-  attr_reader :basket, :menu, :quantities, :total
+  attr_reader :basket, :menu, :quantities, :total, :selection
 
   def initialize(basket)
     @basket = basket
     @total = DEFAULT_TOTAL
   end
-
-  # def add(item)
-  #   @basket << [item, price]
-  # end
 
   def show_order
     @total = get_total
