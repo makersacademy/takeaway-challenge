@@ -24,13 +24,13 @@ class Order
 
   def show_basket
     puts "Your current order:"
-    @basket.each do |item, price|
+    @basket.each do |item, _price|
       puts "#{item.keys.join} price: #{item.values.join}"
     end
-    puts "Total: #{get_total}"
+    puts "Total: #{finalise_total}"
   end
 
-  def get_total
+  def finalise_total
     @total = @price_store.sum
   end
 
