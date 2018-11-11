@@ -1,8 +1,10 @@
 require 'takeaway'
+require 'fake_sms'
 
 describe Takeaway do
   let(:takeaway) { Takeaway.new }
   let(:order) { Order.new }
+  let(:fakeSMS) { FakeSMS.new(_account_sid, _auth_token) }
 
 before do
   order.select_dish("Chicken Curry", 1)
@@ -31,6 +33,15 @@ end
     it 'checks if the total given is the same as the one calculated' do
       takeaway.place(order)
       expect { order.total_cost }.not_to raise_error
+    end
+    # As a customer
+    # So that I am reassured that my order will be delivered on time
+    # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+    # Resource: https://robots.thoughtbot.com/testing-sms-interactions
+    it 'sends a confirmation text' do
+      # takeaway.place(order)
+      # extect(fakeSMS.messages).not_to raise_error
     end
   end
 end

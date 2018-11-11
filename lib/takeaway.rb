@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'Text'
 
 class Takeaway
 
@@ -12,6 +13,8 @@ class Takeaway
 
   def place(order)
     @ordered_dishes = order.dishes
+    text = Text.new
+    text.send
     order.total_cost
   end
 

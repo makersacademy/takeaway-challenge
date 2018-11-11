@@ -16,3 +16,9 @@ RSpec.configure do |config|
     puts "\e[33mTry it now! Just run: rubocop\e[0m"
   end
 end
+
+# RSpec.configure. do |config|
+#   config.before(:each) do
+#     stub_const("Twilio::REST::Client", FakeSMS)
+#   end
+# end

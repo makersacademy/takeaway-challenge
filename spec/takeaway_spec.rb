@@ -4,13 +4,14 @@ describe Takeaway do
   subject(:takeaway) { described_class.new }
   let(:menu) { double("menu") }
   let(:order) { double("order") }
+  let(:text) { double("text") }
 
   before do
     allow(order).to receive(:select_dish)
     allow(order).to receive(:dishes).and_return({ :name => "Chicken Curry", :quantity => 2 })
     allow(order).to receive(:available?).and_return(true)
     allow(order).to receive(:total_cost).and_return(13.00)
-
+    allow(text).to receive(:send).and_return("Text sent")
   end
 
   it 'can show menu (list of dishes with prices)' do
@@ -27,6 +28,5 @@ describe Takeaway do
   it 'return the total cost of the order' do
     order.select_dish("Chicken Curry", 2)
     expect(takeaway.place(order)).to eq 13.00
-
   end
 end
