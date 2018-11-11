@@ -26,8 +26,9 @@ describe TakeAway do
       end
     end
     describe '#check_basket' do
-      it 'should' do
-
+      it 'should return string stating total cost' do
+        message = "Total cost of items in basket: £7"
+        expect(subject.check_basket).to eq message
       end
     end
     describe '#submit_order' do
