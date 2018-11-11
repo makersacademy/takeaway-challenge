@@ -77,3 +77,25 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+##How my code works
+
+```
+eggs = Eggs.new("Eggs",3)
+#makes a new dish with a name of "Eggs" and a price of 3
+diner = Restaurant.new([eggs])
+#makes a new restaurant with a an array of dishes(only eggs in this example)
+order = Order.new(diner)
+#creates a new empty order from the diner
+order.add("Eggs",3)
+#checks if the diner has a dish called "Eggs" and returns it 3 times(once if no number specified)
+order.list_dishes
+#this lists the dishes available
+order.checks
+#prints your order with prices and totals
+order.confirm
+#sends text to confirm order
+```
+
+My keys are in a text class from which I access them and that file doesn't get uploaded to github.

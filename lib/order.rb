@@ -31,7 +31,6 @@ class Order
   end
 
   def confirm
-    @restaurant.confirm(@order)
     send_text
   end
 
