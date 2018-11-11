@@ -1,31 +1,28 @@
 describe 'user stories' do
-  let(:kfc) {TakeAway.new("KFC", MessagingService.new)}
+  let(:kfc) { TakeAway.new("KFC", MessagingService.new) }
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
   it 'should show the customer the menu' do
-    customer = Customer.new("Ajay")
-    expect{ kfc.display_menu }.not_to raise_error
+    expect { kfc.display_menu }.not_to raise_error
   end
 
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   it 'should allow the customer to select a number of several dishes' do
-    customer = Customer.new("Ajay")
     kfc.take_order("medium_chips", 2)
-    expect{ kfc.take_order("small_chips", 2) }.not_to raise_error
+    expect { kfc.take_order("small_chips", 2) }.not_to raise_error
   end
 
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
   it "raises an error if the total doesn't match the sum of the dish prices" do
-    customer = Customer.new("Ajay")
     kfc.take_order("medium_chips", 2)
     kfc.take_order("small_chips", 2)
-    allow(kfc).to receive(:correct?) {false}
-    expect{ kfc.return_order }.to raise_error("Error: Sum did not match the total")
+    allow(kfc).to receive(:correct?) { false }
+    expect { kfc.return_order }.to raise_error("Error: Sum did not match the total")
   end
 
   # As a customer
@@ -34,6 +31,4 @@ describe 'user stories' do
   it "confirms a text message was sent confirming the order" do
     expect(kfc.confirm_order).to eq "queued"
   end
-
-
 end

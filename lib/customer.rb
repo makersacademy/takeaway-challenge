@@ -3,8 +3,8 @@ class Customer
 
   def initialize(name)
     @name = name
-    @address
-    @number
+    @address = ""
+    @number = 0
   end
 
   def add_address(address)
