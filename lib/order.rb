@@ -53,9 +53,3 @@ class Order
   end
 
 end
-order = Order.new
-p order.add_item(:soup, 2)
-# order.add_item(:meat, 2)
-#
-# p order.bill_total
-# p order.check_order
