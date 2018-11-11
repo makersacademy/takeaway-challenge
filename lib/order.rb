@@ -1,29 +1,27 @@
+require_relative 'menu'
+require_relative 'send_sms'
+
 class Order
 
   DEFAULT_TOTAL = 0
 
-  attr_reader :basket, :menu, :quantities, :total, :selection
+  attr_reader :basket, :total, :final_bill
 
-  def initialize(basket)
+  def initialize(basket, send_sms = Send_Sms.new)
     @basket = basket
     @total = DEFAULT_TOTAL
+    @final_bill = []
+    @send_sms = send_sms
   end
 
   def show_order
-    @total = get_total
     get_quantities
-    pretty_bill
+    get_dish_breakdowns
+    show_final_bill
   end
 
-  def confirm
-    raise 'Total incorrect!' if order_not_verified?
-    "Order confirmed!" # call twilio
-  end
-
-  def empty_basket
-    @total = DEFAULT_TOTAL
-    @basket.clear
-    empty_quantities
+  def confirm!
+    @send_sms.send_text_message(@total)
   end
 
   private
@@ -33,20 +31,20 @@ class Order
     @basket.each { |item, price|  @quantities[item] += 1 }
   end
 
+  def get_dish_breakdowns
+    @quantities.each do |item, quantity|
+    dish_sum = quantity * Menu::DISH_LIST[item]
+      @final_bill << [item, quantity, dish_sum]
+    end
+  end
+
   def get_total
     @basket.map { |item, price| price }.sum
   end
 
-  def pretty_bill
-    (@quantities.to_a << ["total:", @total]).join(' ')
-  end
-
-  def empty_quantities
-    @quantities.clear
-  end
-
-  def order_not_verified?
-    @total != @basket.map { |item, price| price }.sum
+  def show_final_bill
+    @total = get_total
+    @final_bill << ["total: #{@total}"]
   end
 
 end
