@@ -12,7 +12,7 @@ RSpec.describe Menu do
 	}
 	# Se crea el dependency injection, es lo mismo de tener menu = Menu.new(dishes) / Dishes se crea como double arriba con los atributos
 	subject(:menu) { described_class.new(dishes) }
-	it 'Initialize the name of the dish' do
+	it 'Initialize the names and prices of the dishes' do
 		expect(menu.list).to eq dishes
 	end
 end

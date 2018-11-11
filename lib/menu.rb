@@ -1,5 +1,5 @@
 class Menu
-	attr_reader :list
+	attr_accessor :list
 	def initialize(dishes)
 		@list = dishes
 	end
