@@ -16,7 +16,6 @@ class Order
     order[menu.values[item].keys[0]] = { quantity => menu.values[item].values[0] }
     @order << order
     p "#{quantity} #{menu.values[item].keys[0]} sandwich(es) for £#{quantity * menu.values[item].values[0]} added to your shopping cart!"
-
   end
 
   def order_so_far
@@ -27,7 +26,7 @@ class Order
         end
       end
     end
-    "Order total is £#{check_total}"
+    p "Order total is £#{check_total}"
   end
 
   def check_total

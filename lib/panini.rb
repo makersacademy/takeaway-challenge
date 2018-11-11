@@ -23,7 +23,6 @@ class Menu
     @panini.each do |k, v|
       puts "#{k} - #{v.keys[0]} - #{v.values[0]}"
     end
-
   end
 
 end

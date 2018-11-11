@@ -7,7 +7,7 @@ describe Order do
     it 'returns the item, quantity and price of the item choosen' do
       expect(subject.choose_items(1, 2)).to eq "#{2} #{Menu::PANINI.values[1].keys[0]} sandwich(es) for £#{Menu::PANINI.values[1].values[0] * 2} added to your shopping cart!"
     end
-    
+
     it 'returns the item, quantity and price of the item choosen' do
       allow(subject).to receive(:choose_items).and_raise("The item you choose is not on the menu")
     end
