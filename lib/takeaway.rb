@@ -1,7 +1,7 @@
 require_relative 'menu'
 require_relative 'order'
 
-class Takeaway
+class TakeAway
 
   def initialize
     @menu = Menu.new

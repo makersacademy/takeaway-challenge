@@ -2,7 +2,7 @@ require 'takeaway'
 require 'menu'
 require 'order'
 
-describe Takeaway do
+describe TakeAway do
   describe '#view_menu' do
     it 'should respond to view_menu' do
       expect(subject).to respond_to(:view_menu)
