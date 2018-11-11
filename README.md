@@ -13,6 +13,7 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+ # How to use ...
  ```
  2.5.0 :001 > require './lib/order'
   => true
