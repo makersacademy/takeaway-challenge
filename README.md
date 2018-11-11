@@ -117,3 +117,11 @@ total: 15.2
 2.5.0 :013 > order.confirm!
  => <Twilio.Api.V2010.MessageIns....
 ```
+
+# Overall thoughts...
+
+I only managed to complete a very basic implementation of this challenge. I knew I wanted to create a seperate Menu and Order class in order to test interaction between two classes. However, I should have put the selecting of the menu items into the Order class as this would have been easier to implement and test.
+
+I also was unable to integrate the correct tests in mocking the API response and this is what I need to focus on next.
+
+Overall I enjoyed the challenge and will redo it when time allow with a cleaner and leaner design.
