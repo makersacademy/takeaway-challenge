@@ -11,7 +11,7 @@ class Message
   end
 
   def send(content)
-    phone_number = +441942316170 #this should be changed to my mobile number before a message will be sent
+    phone_number = +441942316170 #this should be changed to my mobile number before a message is sent
     message = eval(@message_builder)
     return eval(@output)
   end
