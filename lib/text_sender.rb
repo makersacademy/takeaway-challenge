@@ -1,7 +1,6 @@
 require 'twilio-ruby'
 
 class Text_sender
-
 ACCOUNT_SID = 'AC04bc3c411d276059731f2bb3cb259375'
 AUTH_TOKEN = 'a113ded30d75e81269b8cd4a41e12096'
 
@@ -13,8 +12,8 @@ AUTH_TOKEN = 'a113ded30d75e81269b8cd4a41e12096'
 
   def text_confirmation
     @client.messages.create(
-    from: "+12282313459", #twilio number
-    to: ENV["MY_PHONE"], #receive number
+    from: "+12282313459", # twilio number
+    to: ENV["MY_PHONE"], # receive number
     body: "Thank you! Your order was placed and will be delivered before" +
           " #{delivery_time}.")
   end
@@ -23,6 +22,4 @@ AUTH_TOKEN = 'a113ded30d75e81269b8cd4a41e12096'
     time = Time.now + 3600
     time.strftime("%H:%M")
   end
-
-
 end
