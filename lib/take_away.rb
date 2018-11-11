@@ -1,20 +1,22 @@
 require 'customer.rb'
 require 'menu.rb'
 require 'txt_message'
+require 'time_methods'
 require 'rubygems'
 require 'twilio-ruby'
 
 class TakeAway
+  include TimeMethods
   attr_reader :take_away_name, :take_away_menu
-  attr_accessor :order, :total, :client, :order_time
+  attr_accessor :order, :total, :client
 
-  def initialize(name, message)
+  def initialize(name)
     @take_away_name = name
-    @txt_message = message
     @take_away_menu = Menu.new
     @order = {}
   end
 
+# Planning to move the order methods will be moved to an Orders class
   def take_order(dish, quantity)
     sub_total = @take_away_menu.menu[dish.to_sym] * quantity
     @order[dish.to_sym] = sub_total
@@ -46,17 +48,9 @@ class TakeAway
     fail "Error: Sum did not match the total" unless correct?
   end
 
-  def time_of_order
-    @order_time = Time.now
-  end
-
-  def delivery_time
-    @delivery_time = time_of_order + 3600
-  end
-
   def confirm_order
     message = "Thank you!, your order was placed and will be delivered before #{delivery_time.hour}:#{delivery_time.min}"
-    @txt_message.send_message(message)
+    MessagingService.new.send_message(message)
   end
 
 end

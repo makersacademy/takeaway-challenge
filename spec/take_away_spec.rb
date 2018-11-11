@@ -1,7 +1,7 @@
 require 'take_away'
 
 describe TakeAway do
-  let(:kfc) { TakeAway.new("KFC", MessagingService.new) }
+  let(:kfc) { TakeAway.new("KFC") }
   let(:menu) { { large_chips: 1.99, medium_chips: 1.49, small_chips: 0.99 } }
 
   it 'can create a new take away' do
