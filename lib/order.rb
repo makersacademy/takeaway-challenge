@@ -32,7 +32,7 @@ class Order
 
   def submit
     m = MyNums.new
-    t = Time.now + 45*60
+    t = Time.now + 45 * 60
     @client = Twilio::REST::Client.new m.account_sid, m.auth_token
     message = @client.messages.create(
         body: "Your order will be delivered by #{t.strftime "%H:%M"}",
