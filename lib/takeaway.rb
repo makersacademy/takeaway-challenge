@@ -23,15 +23,14 @@ class Takeaway
    welcome
    loop do
      name = get_name
-     customer_number = get_number
-     customer = Customer.new(name, customer_number, Order.new(@menu))
-     puts "Please select what you'd like from our menu"
+     @customer_number = get_number
+     customer = Customer.new(name, @customer_number, Order.new(@menu))
+     puts "Please select what you'd like from our menu\n"
      customer.select_dishes(get_selections)
-     puts ""
-     puts customer.print_order
+     customer.print_order
      if check_order
        customer.varify_order
-       send_message(@client, customer.order, from_to_nums)
+       send_message(@client, customer, from_to_nums)
      else
        puts "\nPlease re-enter your details and selection\n\n"
      end
@@ -46,7 +45,7 @@ class Takeaway
   end
 
   def from_to_nums
-    { from: @from_number, to: customer_number }
+    { from: @from_number, to: @customer_number }
   end
 
   def send_message(client, customer, from_to)
