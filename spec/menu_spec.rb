@@ -4,7 +4,7 @@ describe Menu do
 
   subject(:menu) { described_class.new(dishes) }
 
-  let(:dishes) { {chicken: 5.00, kebab: 2.00} }
+  let(:dishes) { { chicken: 5.00, kebab: 2.00 } }
 
   it "Has a list of dishes with prices" do
     expect(menu.dishes).to eq(dishes)

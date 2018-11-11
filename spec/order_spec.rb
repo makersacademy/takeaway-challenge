@@ -5,7 +5,7 @@ describe Order do
 
   subject(:order) { described_class.new(menu) }
 
-  let(:dishes) { {chicken: 2, kebab: 1} }
+  let(:dishes) { { chicken: 2, kebab: 1 } }
   let(:menu) { instance_double("Menu") }
 
   before do
@@ -24,7 +24,7 @@ describe Order do
 
   it "Doesn't allow items that are not on the menu to be added" do
     allow(menu).to receive(:has_dish?).with(:beef).and_return(false)
-    expect{ order.add(:beef, 2) }.to raise_error "That isn't on the menu!"
+    expect { order.add(:beef, 2) }.to raise_error "That isn't on the menu!"
   end
 
   it "Calculates the total for the order" do

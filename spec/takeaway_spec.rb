@@ -7,7 +7,7 @@ describe Takeaway do
 
   let(:menu) { double(:menu) }
   let(:order) { instance_double("Order", total: 12) }
-  let(:dishes) { {chicken: 5, kebab: 2} }
+  let(:dishes) { { chicken: 5, kebab: 2 } }
 
   it "Displays a menu of dishes and prices" do
     expect(takeaway.show_menu).to eq(menu)
