@@ -4,11 +4,12 @@ require 'panini'
 describe Order do
 
   describe '#choose_items' do
-
     it 'returns the item, quantity and price of the item choosen' do
       expect(subject.choose_items(1, 2)).to eq "#{2} #{Menu::PANINI.values[1].keys[0]} sandwich(es) for £#{Menu::PANINI.values[1].values[0] * 2} added to your shopping cart!"
     end
-
+    # it 'returns the item, quantity and price of the item choosen' do
+    #   expect { subject.choose_items(9, 2) }.to raise_error "The item you choose is not on the menu"
+    # end
   end
 
   describe '#order_so_far' do
@@ -23,7 +24,6 @@ describe Order do
   end
 
   describe '#check_total' do
-
     it 'returns the total amount of the order' do
       expect(subject.check_total).to eq 0
     end
@@ -46,11 +46,10 @@ describe Order do
       subject.choose_items(1, 1)
       expect(subject.check_total).to eq 57
     end
-
   end
 
   describe '#confirm' do
-    it 'places the order and send a sms'
+    it { expect(subject).to respond_to :confirm }
   end
 
 end

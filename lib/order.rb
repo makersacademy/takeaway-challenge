@@ -1,16 +1,18 @@
 require_relative 'panini'
-require_relative 'panini'
+require_relative 'send_sms'
 class Order
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sms = Message.new)
     @order_total = nil
     @order = []
     @menu = menu
+    @sms = sms
   end
 
   def choose_items(item, quantity, menu = nil)
     menu = @menu.panini
     order = {}
+    # fail "The item you choose is not on the menu" if item > menu.count
     order[menu.values[item].keys[0]] = { quantity => menu.values[item].values[0] }
     @order << order
     p "#{quantity} #{menu.values[item].keys[0]} sandwich(es) for £#{quantity * menu.values[item].values[0]} added to your shopping cart!"
@@ -39,7 +41,8 @@ class Order
     @order_total
   end
 
-def confirm
-end
+  def confirm
+    @sms.send_message
+  end
 
 end
