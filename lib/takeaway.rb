@@ -18,7 +18,7 @@ class Takeaway
 
   def empty_basket
     @current_order = Order.new
-    puts "Basket emptied"
+    "Basket emptied"
   end
 
   def check_basket

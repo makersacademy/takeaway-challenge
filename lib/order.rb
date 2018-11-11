@@ -18,8 +18,8 @@ class Order
     quantity.times do
       @cost += @menu.items[index][:cost]
       @basket << "#{@menu.items[index][:name]} £#{@menu.items[index][:cost]}"
-      added_to_basket(index, quantity)
     end
+    added_to_basket(index, quantity)
   end
 
   def view_basket
@@ -27,7 +27,7 @@ class Order
     @basket.each do |item|
       puts item
     end
-    puts "Total cost of items in basket:\n£#{@cost}"
+    "Total cost of items in basket: £#{@cost}"
   end
 
   def submit
@@ -44,7 +44,8 @@ class Order
 
   private
 
-  def added_to_basket(index)
-    puts "#{quantity}x #{@menu.items[index][:name]} added to basket"
+  def added_to_basket(index, quantity)
+    quantity == 1 ? s = "" : s = "s"
+    "#{quantity}x #{@menu.items[index][:name]}#{s} added to basket"
   end
 end
