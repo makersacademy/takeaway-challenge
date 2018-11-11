@@ -6,15 +6,12 @@ class TakeAway
 
   attr_reader :basket
   attr_reader :cost
+  attr_reader :menu
 
   def initialize
     @menu = Menu.new
     @cost = 0
     @basket = []
-  end
-
-  def view_menu
-    @menu.view
   end
 
   def add_to_order(menu_num, quantity = 1)

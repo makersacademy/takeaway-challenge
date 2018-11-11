@@ -2,11 +2,6 @@ require 'takeaway'
 require 'menu'
 
 describe TakeAway do
-  describe '#view_menu' do
-    it 'should' do
-
-    end
-  end
   describe 'a group of tests that require an item to be added to the basket' do
     before do
       subject.add_to_order(2)

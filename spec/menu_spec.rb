@@ -6,7 +6,7 @@ describe Menu do
   end
   describe '#view' do
     it 'should provide a list of dishes' do
-      expect(STDOUT).to receive(:puts).with("-" * Menu::DASHES_NUM)
+      expect(STDOUT).to receive(:puts).with("Peri Peri Chicken")
       require 'menu'
       subject.view
     end
