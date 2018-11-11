@@ -1,52 +1,52 @@
-require_relative 'send_sms'
+require_relative './menu'
+require_relative './send_sms'
 
 class Order
 
   DEFAULT_TOTAL = 0
 
-  attr_reader :basket, :total, :final_bill
+  attr_reader :basket, :price_store, :total, :menu, :send_sms
 
-  def initialize(basket, send_sms = SendSms.new)
-    @basket = basket
+  def initialize(menu = Menu.new, send_sms = SendSms)
+    @menu = menu
+    @basket = []
+    @price_store = []
     @total = DEFAULT_TOTAL
-    @final_bill = []
     @send_sms = send_sms
   end
 
-  def show_order
-    get_quantities
-    get_dish_breakdowns
-    show_final_bill
+  def add_dish(dish)
+    @menu.dish_list.each do |food, price|
+      @basket << { dish => price } if dish == food
+    end
+    add_prices(dish)
   end
 
-  def confirm!
-    @send_sms.send_text_message(@total)
+  def show_basket
+    puts "Your current order:"
+    @basket.each do |item, price|
+      puts "#{item.keys.join} price: #{item.values.join}"
+    end
+    puts "Total: #{get_total}"
+  end
+
+  def get_total
+    @total = @price_store.sum
+  end
+
+  def confirm
+    puts "Please input your payment total: "
+    input = gets.chomp.to_i
+    return @send_sms.new.send if input == @total
+    return 'Sorry your order was cancelled!' if input != @total
   end
 
   private
 
-  def get_quantities
-    @quantities = Hash.new(0)
-    @basket.each { |item, price|  @quantities[item] += 1 }
-  end
-
-  def get_dish_breakdowns
-    @quantities.each do |item, quantity|
-    dish_sum = quantity * Menu::DISH_LIST[item]
-      @final_bill << [item, quantity, dish_sum]
+  def add_prices(dish)
+    @menu.dish_list.each do |food, price|
+      @price_store << price if dish == food
     end
-  end
-
-  def get_total
-    @basket.map { |item, price| price }.sum
-  end
-
-  def show_final_bill
-    @total = get_total
-    @final_bill.each do |item, quantity, price|
-      puts "#{item} quantity: #{quantity} price: #{price}"
-    end
-    puts "total: #{total}"
   end
 
 end

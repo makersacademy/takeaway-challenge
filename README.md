@@ -13,112 +13,33 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-## User Story 1  
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-```
-My approach to this user story was to create a Menu class whereby a user can pass in a hash with the dishes and their prices as an argument upon initialization. By default I created an Indian menu to be initialized for the purposes of my program.
-
-As shown in IRB:
-```
-2.5.0 :001 > require './lib/menu'
- => true
-2.5.0 :002 > menu = Menu.new
- => #<Menu:0x00007fa5aa1bf768 @list={"chicken korma"=>5.7, "chicken bhuna"=>6.7, "lamb rogan josh"=>6.5, "lamb madras"=>5.8, "king prawn dhansak"=>7.7, "plain rice"=>1.9, "pilau rice"=>2.0, "bombay aloo"=>3.25, "tarka daal"=>3.25, "plain naan"=>2.5, "garlic naan"=>2.75, "peshwari naan"=>3.0}, @selection=[]>
-2.5.0 :003 > menu.list
- => {"chicken korma"=>5.7, "chicken bhuna"=>6.7, "lamb rogan josh"=>6.5, "lamb madras"=>5.8, "king prawn dhansak"=>7.7, "plain rice"=>1.9, "pilau rice"=>2.0, "bombay aloo"=>3.25, "tarka daal"=>3.25, "plain naan"=>2.5, "garlic naan"=>2.75, "peshwari naan"=>3.0}
-2.5.0 :005 >
-```
-## User Story 2    
-```
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-```
-For this user story I decided to keep the selection of the menu items in the same class as the displayed menu. This was partly because I wanted to experiment with classes interacting with each other later on.
-
-In hindsight, however, this over complicated things!
-
-In IRB:
-```
-2.5.0 :001 > require './lib/menu'
- => true
-2.5.0 :002 > menu = Menu.new
- => #<Menu:0x00007fa5aa1bf768 @list={"chicken korma"=>5.7, "chicken bhuna"=>6.7, "lamb rogan josh"=>6.5, "lamb madras"=>5.8, "king prawn dhansak"=>7.7, "plain rice"=>1.9, "pilau rice"=>2.0, "bombay aloo"=>3.25, "tarka daal"=>3.25, "plain naan"=>2.5, "garlic naan"=>2.75, "peshwari naan"=>3.0}, @selection=[]>
-2.5.0 :004 > menu.list
- => {"chicken korma"=>5.7, "chicken bhuna"=>6.7, "lamb rogan josh"=>6.5, "lamb madras"=>5.8, "king prawn dhansak"=>7.7, "plain rice"=>1.9, "pilau rice"=>2.0, "bombay aloo"=>3.25, "tarka daal"=>3.25, "plain naan"=>2.5, "garlic naan"=>2.75, "peshwari naan"=>3.0}
-2.5.0 :005 > menu.select_item('chicken korma')
- => [["chicken korma", 5.7]]
-2.5.0 :006 > menu.select_item('plain naan')
- => [["chicken korma", 5.7], ["plain naan", 2.5]]
-2.5.0 :007 > menu.select_item('pilau rice')
- => [["chicken korma", 5.7], ["plain naan", 2.5], ["pilau rice", 2.0]]
-2.5.0 :008 > menu.selection
- => [["chicken korma", 5.7], ["plain naan", 2.5], ["pilau rice", 2.0]]
-```
-## User Story 3      
-```
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-```
-For this user story I decided to create a new Order class which would handle the order itself and displaying a total.
-
-I decided it would print a bill out with the items, their quantities, the item sum and a final total.
-
-In IRB:
-```
-2.5.0 :001 > require './lib/menu'
- => true
-2.5.0 :002 > require './lib/order'
- => true
-2.5.0 :004 > menu = Menu.new
- => #<Menu:0x00007fa45a8fd2b0 @list={"chicken korma"=>5.7, "chicken bhuna"=>6.7, "lamb rogan josh"=>6.5, "lamb madras"=>5.8, "king prawn dhansak"=>7.7, "plain rice"=>1.9, "pilau rice"=>2.0, "bombay aloo"=>3.25, "tarka daal"=>3.25, "plain naan"=>2.5, "garlic naan"=>2.75, "peshwari naan"=>3.0}, @selection=[]>
-2.5.0 :005 > menu.select_item('plain naan')
- => [["plain naan", 2.5]]
-2.5.0 :006 > menu.select_item('pilau rice')
- => [["plain naan", 2.5], ["pilau rice", 2.0]]
-2.5.0 :007 > menu.select_item('plain naan')
- => [["plain naan", 2.5], ["pilau rice", 2.0], ["plain naan", 2.5]]
-2.5.0 :008 > menu.select_item('chicken korma')
- => [["plain naan", 2.5], ["pilau rice", 2.0], ["plain naan", 2.5], ["chicken korma", 5.7]]
-2.5.0 :009 > menu.select_item('plain naan')
- => [["plain naan", 2.5], ["pilau rice", 2.0], ["plain naan", 2.5], ["chicken korma", 5.7], ["plain naan", 2.5]]
-2.5.0 :010 > order = Order.new(menu.selection)
- => #<Order:0x00007fa45c321d30 @basket=[["plain naan", 2.5], ["pilau rice", 2.0], ["plain naan", 2.5], ["chicken korma", 5.7], ["plain naan", 2.5]], @total=0, @final_bill=[], @send_sms=#<SendSms:0x00007fa45c321d08>>
-2.5.0 :011 > order.show_order
-plain naan quantity: 3 price: 7.5
-pilau rice quantity: 1 price: 2.0
-chicken korma quantity: 1 price: 5.7
-total: 15.2
-```
-## User Story 4      
-```
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-For this user story I created a new class which used the Twilio gem to send a text message with a time delivery slot of one hour.
-
-In IRB:
-```
-2.5.0 :011 > order.show_order
-plain naan quantity: 3 price: 7.5
-pilau rice quantity: 1 price: 2.0
-chicken korma quantity: 1 price: 5.7
-total: 15.2
- => nil
-2.5.0 :013 > order.confirm!
- => <Twilio.Api.V2010.MessageIns....
-```
+ 2.5.0 :001 > require './lib/order'
+  => true
+ 2.5.0 :002 > order = Order.new
+  => #<Order:0x00007f92df341a38 @menu=#<Menu:0x00007f92df341a10 @dish_list={"chicken korma"=>5, "chicken bhuna"=>6, "lamb rogan josh"=>7, "plain rice"=>1, "pilau rice"=>2, "plain naan"=>3, "peshwari naan"=>4}>, @basket=[], @price_store=[], @total=0, @send_sms=SendSms>
+ 2.5.0 :003 > order.add_dish('chicken korma')
+  => {"chicken korma"=>5, "chicken bhuna"=>6, "lamb rogan josh"=>7, "plain rice"=>1, "pilau rice"=>2, "plain naan"=>3, "peshwari naan"=>4}
+ 2.5.0 :004 > order.add_dish('plain rice')
+  => {"chicken korma"=>5, "chicken bhuna"=>6, "lamb rogan josh"=>7, "plain rice"=>1, "pilau rice"=>2, "plain naan"=>3, "peshwari naan"=>4}
+ 2.5.0 :005 > order.add_dish('plain naan')
+  => {"chicken korma"=>5, "chicken bhuna"=>6, "lamb rogan josh"=>7, "plain rice"=>1, "pilau rice"=>2, "plain naan"=>3, "peshwari naan"=>4}
+ 2.5.0 :006 > order.show_basket
+ Your current order:
+ chicken korma price: 5
+ plain rice price: 1
+ plain naan price: 3
+ Total: 9
+  => nil
+ 2.5.0 :007 > order.confirm
+ Please input your payment total:
+ 9
+Message on it's way....!
+  => nil
+ 2.5.0 :008 >
+ ```
 
 # Overall thoughts...
 
-I only managed to complete a very basic implementation of this challenge. I knew I wanted to create a seperate Menu and Order class in order to test interaction between two classes. However, I should have put the selecting of the menu items into the Order class as this would have been easier to implement and test.
+I only managed to complete a very basic implementation of this challenge. I was unable to integrate the correct tests in mocking the API response and this is what I need to focus on getting sorted.
 
-I also was unable to integrate the correct tests in mocking the API response and this is what I need to focus on next.
-
-Overall I enjoyed the challenge and will redo it when time allow with a cleaner and leaner design.
+I also was unable to mock the STDIN and STDOUT aspects which mean my test coverage was lower than I would have liked.

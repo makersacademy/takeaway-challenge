@@ -2,51 +2,74 @@ require 'order'
 
 describe Order do
 
-  selection = [["chicken korma", 5.7], ["king prawn dhansak", 7.7], ["garlic naan", 2.75], ["chicken korma", 5.7], ['peshwari naan'], 3.00]
-
-  let(:menu)  { double(:menu, selection: selection) }
-  let(:order) { described_class.new(menu.selection) }
+  let(:order) { described_class.new }
 
   describe '#initialize' do
-    it 'accepts a basket as an argument' do
-      selection = [["chicken korma", 5.7], ["king prawn dhansak", 7.7], ["garlic naan", 2.75]]
-      menu = double(:menu, selection: selection)
-      order = Order.new(menu.selection)
-      expect(order.basket).to eq selection
+    it 'creates an empty shopping basket' do
+      expect(order.basket).to be_empty
     end
 
-    it 'sets the order total at 0 by default' do
+    it 'creates an empty price list' do
+      expect(order.price_store).to be_empty
+    end
+
+    it 'creates a deafult total of 0' do
       expect(order.total).to eq Order::DEFAULT_TOTAL
     end
 
-    it 'creates an empty final bill' do
-      expect(order.final_bill).to be_empty
+    it 'adds the menu to the order' do
+      expect(order.menu).to be_an_instance_of Menu
     end
   end
 
-  # need to create test to repond to text output
-  describe '#show_order' do
-    xit 'shows the user the items, quantities and total price of the order' do
-      selection = [["chicken korma", 5.7], ["garlic naan", 2.75], ["pilau rice", 2.0], ["chicken korma", 5.7]]
-      menu = double(:menu, selection: selection)
-      order = Order.new(menu.selection)
-      expect(order.show_order).to eq "chicken korma quantity: 2 price: 11.4
-      garlic naan quantity: 1 price: 2.75
-      pilau rice quantity: 1 price: 2.0
-      total: 16.15"
+  describe '#add_dish' do
+    it 'allows user to add dish to basket' do
+      order.add_dish('chicken korma')
+      order.add_dish('plain naan')
+      order.add_dish('pilau rice')
+      expect(order.basket).to eq [{"chicken korma"=>5}, {"plain naan"=>3}, {"pilau rice"=>2}]
     end
   end
 
-  # need to over ride sending of actual text whence left pending
+  describe '#get_toal' do
+    it 'totals up the prices' do
+      order.add_dish('chicken korma')
+      order.add_dish('plain naan')
+      order.add_dish('pilau rice')
+      expect(order.get_total).to eq 10
+    end
+  end
+
   describe '#confirm' do
-    xit 'confirms order to send text' do
-      selection = [["chicken korma", 5.7], ["garlic naan", 2.75], ["pilau rice", 2.0], ["chicken korma", 5.7]]
-      menu = double(:menu, selection: selection)
-      order = Order.new(menu.selection)
-      order.show_order
-      send_sms = double(:send_sms, send_text_message: "message sent")
-      expect(send_sms).to respond_to :send_text_message
-      # order.confirm!
+
+    it 'asks for a user to confirm the delivery' do
+      allow($stdin).to receive(:gets).and_return(10)
+      input = $stdin.gets
+      expect(input).to eq(10)
     end
+
+    context 'user inputs incorrect payment' do
+      xit 'cancels the order' do
+        order.add_dish('chicken korma')
+        order.add_dish('plain naan')
+        order.add_dish('pilau rice')
+        allow($stdin).to receive(:gets).and_return(3254)
+        expect(order.confirm).to eq 'Sorry your order was cancelled!'
+      end
+    end
+
+    context 'user has confirmed the order' do
+      xit 'sends a message to confirm the order' do
+        order.add_dish('chicken korma')
+        order.add_dish('plain naan')
+        order.add_dish('pilau rice')
+        send_sms = double(:send_sms, send: 'message sent')
+        expect(send_sms).to receive(:send) { 'message sent' }
+        allow($stdin).to receive(:gets).and_return(10)
+        expect { order.confirm }.to output("message sent").to_stdout
+      end
+    end
+
   end
+
 end
