@@ -14,4 +14,8 @@ class Takeaway
     @menu.view
   end
 
+  def select(item)
+    @order.select(item)
+  end
+
 end
