@@ -27,7 +27,7 @@ class Order
       total += dish.price
       order_check << "\n#{dish.name} - #{dish.price}"
     end
-    order_check << "\nYour total is £#{total}.\nIt will be delivered at #{Time.now + 60*60}"
+    order_check << "\nYour total is £#{total}.\nIt will be delivered at #{Time.now.hour + 1}:#{Time.now.min}"
   end
 
   def confirm

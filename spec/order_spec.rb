@@ -37,7 +37,7 @@ describe Order do
     end
 
     it "prints the order and checks the total is correct" do
-      order_printed = "\nEggs - 3\nEggs - 3\nSausages - 4\nYour total is £10.\nIt will be delivered at #{Time.now + 60*60}"
+      order_printed = "\nEggs - 3\nEggs - 3\nSausages - 4\nYour total is £10.\nIt will be delivered at #{Time.now.hour + 1}:#{Time.now.min}"
       expect(order.check).to eq order_printed
     end
   end
@@ -56,6 +56,26 @@ describe Order do
       allow(order_no_text).to receive(:send_text).and_return("Text sent")
       expect(restaurant).to receive(:confirm).with(eggs_2_sausages_1)
       order_no_text.confirm
+    end
+  end
+
+  describe "#send_text" do
+
+    before "set fake Twilio" do
+      allow(twilio).to receive(:new).and_return(twilio)
+      allow(twilio).to receive(:messages).and_return(twilio)
+      allow(twilio).to receive(:create).and_return(twilio)
+      allow(twilio).to receive(:sid)
+    end
+
+    it "creates a message" do
+      expect(twilio).to receive(:new)
+      order_no_text.send_text
+    end
+
+    it "sends the message"do
+      expect(twilio).to receive(:sid)
+      order_no_text.send_text
     end
   end
 
