@@ -16,4 +16,5 @@ describe 'User Stories' do
           "spicy wings meal" => 5.49,
            "mega bucket meal" => 24.99)
   end
+
 end

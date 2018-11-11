@@ -1,14 +1,14 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { Takeaway.new }
 
   describe '#view_menu' do
 
-    it { is_expected.to respond_to :view_menu }
-
-    it 'has a list of dishes with prices' do
-      expect(takeaway.view_menu).not_to be_empty
+    it 'shows the customer a list of dishes with prices' do
+      menu = double(:menu, view_dishes: { "1 piece chicken meal" => 4.49 })
+      takeaway = Takeaway.new(menu)
+      expect(menu).to receive(:view_dishes)
+      takeaway.view_menu
     end
   end
 end
