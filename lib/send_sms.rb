@@ -1,6 +1,6 @@
 require 'twilio-ruby'
 
-class Send_Sms
+class SendSms
 
   def send_text_message(order_total)
     account_sid = 'ACce313cdc20d9b638b5a565e06b67f8de'

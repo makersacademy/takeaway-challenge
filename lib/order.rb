@@ -7,7 +7,7 @@ class Order
 
   attr_reader :basket, :total, :final_bill
 
-  def initialize(basket, send_sms = Send_Sms.new)
+  def initialize(basket, send_sms = SendSms.new)
     @basket = basket
     @total = DEFAULT_TOTAL
     @final_bill = []
@@ -44,7 +44,10 @@ class Order
 
   def show_final_bill
     @total = get_total
-    @final_bill << ["total: #{@total}"]
+    @final_bill.each do |item, quantity, price|
+      puts "#{item} quantity: #{quantity} price: #{price}"
+    end
+    puts "total: #{total}"
   end
 
 end

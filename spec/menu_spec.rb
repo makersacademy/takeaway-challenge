@@ -39,5 +39,5 @@ describe Menu do
       expect(menu.selection).to eq [['lamb rogan josh', 6.50], ['bombay aloo', 3.25], ['plain naan', 2.50], ['lamb rogan josh', 6.50]]
     end
   end
-  
+
 end
