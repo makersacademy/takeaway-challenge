@@ -64,11 +64,6 @@ class Takeaway
    puts "a text with an estimated delivery time!"
   end
 
-  def menu_header
-    puts "Our menu:"
-    puts "---------"
-  end
-
   def get_name
     puts "What is your name?"
     gets.chomp.downcase

@@ -22,7 +22,7 @@ class Order
   end
 
   def print
-    string = "Your Order is:\n--------------\n"
+    string = "\nYour Order is:\n--------------\n"
     @items.each do |dish|
       string << "#{dish.name} £#{Price::format(dish.price)}\n"
     end
