@@ -13,17 +13,14 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## User Story 1  
 
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 ```
-My approach to this user story was to create a Menu class whereby a user can pass in a hash with the dishes and their prices as an argument upon initialization.
+My approach to this user story was to create a Menu class whereby a user can pass in a hash with the dishes and their prices as an argument upon initialization. By default I created an Indian menu to be initialized for the purposes of my program.
 
 As shown in IRB:
 ```
@@ -35,7 +32,7 @@ As shown in IRB:
  => {"chicken korma"=>5.7, "chicken bhuna"=>6.7, "lamb rogan josh"=>6.5, "lamb madras"=>5.8, "king prawn dhansak"=>7.7, "plain rice"=>1.9, "pilau rice"=>2.0, "bombay aloo"=>3.25, "tarka daal"=>3.25, "plain naan"=>2.5, "garlic naan"=>2.75, "peshwari naan"=>3.0}
 2.5.0 :005 >
 ```
-
+## User Story 2    
 ```
 As a customer
 So that I can order the meal I want
@@ -62,7 +59,7 @@ In IRB:
 2.5.0 :008 > menu.selection
  => [["chicken korma", 5.7], ["plain naan", 2.5], ["pilau rice", 2.0]]
 ```
-
+## User Story 3      
 ```
 As a customer
 So that I can verify that my order is correct
@@ -98,7 +95,7 @@ pilau rice quantity: 1 price: 2.0
 chicken korma quantity: 1 price: 5.7
 total: 15.2
 ```
-
+## User Story 4      
 ```
 As a customer
 So that I am reassured that my order will be delivered on time
