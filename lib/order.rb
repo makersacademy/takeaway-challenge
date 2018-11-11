@@ -1,14 +1,15 @@
-require_relative 'menu'
+require_relative 'restaurant'
 
 class Order
-  include Menu
-  attr_reader :menu, :order_list, :confirmed
+  # include Menu
+  attr_reader :restaurant, :order_list, :confirmed, :menu
 
-  def initialize
+  def initialize(restaurant = Restaurant.new)
 
-    @menu = MENU
+    @restaurant = restaurant
     @order_list = Hash.new
     @confirmed = false
+    @menu = @restaurant.menu
 
   end
 
