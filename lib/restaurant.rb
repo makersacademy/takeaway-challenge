@@ -15,6 +15,13 @@ class Restaurant
     @menu.show
   end
 
+  def add_to_basket(dish, quantity=1)
+    @order.add_dish(dish, quantity)
+  end
+
+
+
+
 
 
 

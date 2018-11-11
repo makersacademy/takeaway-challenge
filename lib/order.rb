@@ -7,14 +7,16 @@ class Order
     @order = {}
   end
 
-  def add(dish, quantity)
+  def add_dish(dish, quantity=1)
     @order[dish] = quantity
   end
 
+  def submit_order()
 
-  def price(dish)
-    @menu[dish]
   end
+
+
+
 
 
 end

@@ -14,4 +14,8 @@ class Menu
     @menu.each { |dish, price| puts "#{dish}: £#{price}" }
   end
 
+  def available?(dish)
+    !@menu[dish].nil?
+  end
+
 end

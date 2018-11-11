@@ -11,7 +11,7 @@ describe Menu do
     end
   end
 
-  # describe "#available" do
+  # describe "#available?" do
   #   it "checks if a dish is available" do
   #     expect(menu.available?("Ruby's Salad")).to be true
   #     expect(menu.available?("Python's Steak")).to eq true
@@ -19,4 +19,7 @@ describe Menu do
   #     expect(menu.available?("Makers' Tagliolini")).to eq false
   #   end
   # end
+
+
+
 end
