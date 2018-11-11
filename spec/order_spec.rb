@@ -42,17 +42,11 @@ describe Order do
   end
 
   # needs fixing...
-  # describe '#confirm' do
-  #
-  #     before do
-  #       allow(order).to receive(:send_message)
-  #     end
-  #
-  #       it 'sends a message to confirm the order' do
-  #         expect(order).to receive(:send_text).with("message sent")
-  #         order.confirm
-  #       end
-  #
-  #     end
-
+  describe '#confirm' do
+      xit 'sends a message to confirm the order' do
+        send_sms = double(:send_sms, send_text: "message sent")
+        allow(send_sms).to receive(:send_text).and_return("message sent")
+        expect(order.confirm).to eq "message sent"
+      end
+    end
   end

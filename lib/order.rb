@@ -35,11 +35,7 @@ class Order
   end
 
   def confirm
-    send_message(@total)
-  end
-
-  def send_message(total_price)
-    @send_sms.send_text("Thank you for your order: £#{total_price}")
+    @send_sms.send_text
   end
 
   private
