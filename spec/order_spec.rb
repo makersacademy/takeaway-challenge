@@ -8,6 +8,7 @@ describe Order do
   let(:dishes) { [dish_eggs, dish_sausages] }
   let(:restaurant) { double :restaurant, list_dishes: dishes }
   subject(:order) { described_class.new(restaurant) }
+  let(:twilio) { double :twilio, messages: true, create: true, sid: true }
 
   it 'can give us a menu of dishes with prices' do
     expect(order.list_dishes).to eq dishes
@@ -35,7 +36,7 @@ describe Order do
     end
 
     it "prints the order and checks the total is correct" do
-      order_printed = "Eggs-3\nEggs-3\nSausages-4\nYour total is £10.\n"
+      order_printed = "Eggs-3\nEggs-3\nSausages-4\nYour total is £10.\nIt will be delivered at #{Time.now + 60*60}"
       expect(order.check).to eq order_printed
     end
   end
@@ -50,7 +51,9 @@ describe Order do
     end
 
     it "sends the order to the restaurant" do
-      expect(restaurant).to receive(:confirm).with(dishes)
+      allow(message).to receive(:sid).and_return("Text sent")
+      eggs_2_sausages_1 = [dish_eggs, dish_eggs, dish_sausages]
+      expect(restaurant).to receive(:confirm).with(eggs_2_sausages_1)
       order.confirm
     end
   end

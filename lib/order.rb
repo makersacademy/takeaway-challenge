@@ -1,13 +1,15 @@
 require_relative 'restaurant'
+require_relative 'text'
 require "twilio-ruby"
 
 class Order
 
   attr_reader :order
 
-  def initialize(restaurant)
+  def initialize(restaurant, text_service = Twilio::REST::Client)
     @restaurant = restaurant
     @order = []
+    @text_class = text_service
   end
 
   def list_dishes
@@ -25,24 +27,19 @@ class Order
       total += dish.price
       order_check << "#{dish.name}-#{dish.price}\n"
     end
-    order_check << "Your total is £#{total}.\n"
+    order_check << "Your total is £#{total}.\nIt will be delivered at #{Time.now + 60*60}"
   end
 
   def confirm
     @restaurant.confirm(@order)
 
-
-    account_sid = "AC86dc289721e21ddbdad9b772ba094d37" # Your Account SID from www.twilio.com/console
-    auth_token = "a40461cf687f5d27129c668b8c95ff66"   # Your Auth Token from www.twilio.com/console
-
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = text_class.new Text::ACCOUNT_SID, Text::AUTH_TOKEN
     message = @client.messages.create(
         body: self.check,
         to: "+447713920330",    # Replace with your phone number
         from: "+441469727010")  # Replace with your Twilio number
 
     puts message.sid
-
   end
 
 end
