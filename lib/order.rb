@@ -7,7 +7,7 @@ class Order
 
   attr_reader :basket, :price_store, :total, :menu, :send_sms
 
-  def initialize(menu = Menu.new, send_sms = SendSms)
+  def initialize(menu = Menu.new, send_sms = SendSms.new)
     @menu = menu
     @basket = []
     @price_store = []
@@ -35,10 +35,11 @@ class Order
   end
 
   def confirm
-    puts "Please input your payment total: "
-    input = gets.chomp.to_i
-    return @send_sms.new.send if input == @total
-    return 'Sorry your order was cancelled!' if input != @total
+    send_message(@total)
+  end
+
+  def send_message(total_price)
+    @send_sms.send_text("Thank you for your order: £#{total_price}")
   end
 
   private

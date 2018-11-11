@@ -2,7 +2,8 @@ require 'order'
 
 describe Order do
 
-  let(:order) { described_class.new }
+  let(:order)     { described_class.new }
+  let(:send_sms)  { double(:send_sms)   }
 
   describe '#initialize' do
     it 'creates an empty shopping basket' do
@@ -40,36 +41,18 @@ describe Order do
     end
   end
 
-  describe '#confirm' do
-
-    it 'asks for a user to confirm the delivery' do
-      allow($stdin).to receive(:gets).and_return(10)
-      input = $stdin.gets
-      expect(input).to eq(10)
-    end
-
-    context 'user inputs incorrect payment' do
-      xit 'cancels the order' do
-        order.add_dish('chicken korma')
-        order.add_dish('plain naan')
-        order.add_dish('pilau rice')
-        allow($stdin).to receive(:gets).and_return(3254)
-        expect(order.confirm).to eq 'Sorry your order was cancelled!'
-      end
-    end
-
-    context 'user has confirmed the order' do
-      xit 'sends a message to confirm the order' do
-        order.add_dish('chicken korma')
-        order.add_dish('plain naan')
-        order.add_dish('pilau rice')
-        send_sms = double(:send_sms, send: 'message sent')
-        expect(send_sms).to receive(:send) { 'message sent' }
-        allow($stdin).to receive(:gets).and_return(10)
-        expect { order.confirm }.to output("message sent").to_stdout
-      end
-    end
+  # needs fixing...
+  # describe '#confirm' do
+  #
+  #     before do
+  #       allow(order).to receive(:send_message)
+  #     end
+  #
+  #       it 'sends a message to confirm the order' do
+  #         expect(order).to receive(:send_text).with("message sent")
+  #         order.confirm
+  #       end
+  #
+  #     end
 
   end
-
-end
