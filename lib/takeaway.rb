@@ -97,10 +97,19 @@ class Takeaway
     loop do
       puts "\nEnter selection: "
       answer = gets.chomp
-      break if answer.to_s.downcase == 'done'
-      selections << answer.to_i
+      if selection_valid?(answer)
+        break if answer.to_s.downcase == 'done'
+        selections << answer.to_i
+      else
+        puts "\nThat is not in the menu please select again."
+      end
     end
     selections
+  end
+
+  def selection_valid?(answer)
+    available_menu_ids = @menu_data.map { |item| item[:id] }
+    (available_menu_ids.include?(answer.to_i)) || (answer.to_s == 'done')
   end
 
   def selection_instructions
