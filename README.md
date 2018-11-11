@@ -5,7 +5,6 @@ clone the repo
 bundle install
 unhide lines 59/60 on menu.rb
 $ ruby lib/menu.rb
-
 ```
 This will subsequently open up, and show you the menu in your terminal.
 
@@ -56,6 +55,8 @@ To complete the process - I just ask the customer to input their order in the Or
 > matches the sum of the various dishes in my order
 
 For this user-story, I ran the string through a method that formatted the text to a split up array. From here, I pushed the formatted array through a method that calculates the actual cost, then did a check on what the customer thought their food was going to cost. Then, a simple error is thrown if there is anything different between the two.
+
+## User Story 4
 
 > As a customer
 > So that I am reassured that my order will be
