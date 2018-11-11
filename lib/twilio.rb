@@ -2,7 +2,7 @@ require 'twilio-ruby'
 require './info/info.rb'
 
 class Phone
-  include Phone_info
+  include PhoneInfo
   attr_reader :client
   def initialize
     account_sid = get_account_sid

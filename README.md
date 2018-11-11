@@ -27,7 +27,7 @@ Enabling SMS response to order
 ------------------------------
  If you want to enable text messaging order confirmation, you will need to create a file ./info/info.rb which contains the following code:
 ```
- module Phone_info
+ module PhoneInfo
    def get_account_sid
      return #YOUR_ACCOUNT_SID_HERE
    end

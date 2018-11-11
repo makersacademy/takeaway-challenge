@@ -17,7 +17,7 @@ class Dish
   end
 
   def get_formatted_price
-    "£#{'%.2f' % (@price/100.0)}"
+    "£#{'%.2f' % (@price / 100.0)}"
   end
   def set_price(pence)
     @price = pence

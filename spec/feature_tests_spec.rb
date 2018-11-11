@@ -1,11 +1,10 @@
 require "takeaway"
 require "dish"
-require "customer"
 require "order"
 
 describe "Feature tests" do
   describe Takeaway do
-    context "When setting up the takeaway"  do
+    context "When setting up the takeaway" do
       let(:takeaway) { Takeaway.new("Chutney in Putney") }
       let(:dish) { Dish.new("poppadom", 150) }
       it "#add_dish adds specified dish to the menu" do
@@ -15,25 +14,22 @@ describe "Feature tests" do
 
       it "#return_menu prints the menu with an index and price" do
         takeaway.add_dish(dish)
-        expect{ takeaway.return_menu }.to output("1: poppadom £1.50\n").to_stdout
+        expect { takeaway.return_menu }.to output("1: poppadom £1.50\n").to_stdout
       end
     end
   end
 
-
   describe Order do
     let(:dish) { Dish.new("poppadom", 150) }
     let(:takeaway) { Takeaway.new("Chutney in Putney") }
-    let(:order) { Order.new(takeaway)}
+    let(:order) { Order.new(takeaway) }
     before(:each) { order.add_to_order(dish, 1) }
     it "#add_to_order adds the dish to the order array" do
-      expect(order.order.keys.include?(dish)).to eq true
+      expect(order.order.key?(dish)).to eq true
     end
 
     it "#get_price returns the price of the items so far" do
       expect(order.get_price).to eq("£1.50")
     end
   end
-
-
 end

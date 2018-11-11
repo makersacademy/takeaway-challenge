@@ -14,12 +14,12 @@ class Order
    def get_price
      price = 0
      order.each { |item, quantity| quantity.times { price += item.price } }
-     return "£#{'%.2f' % (price/100.0)}"
+     return "£#{'%.2f' % (price / 100.0)}"
    end
 
    def complete_order(number_of_items, phone=nil)
      fail("Number of items given does not match order") if order.values.sum != number_of_items
-     m = "Thank you! Your order was place and will be delivered before #{(Time.now + 60*60).strftime("%H:%M")}"
+     m = "Thank you! Your order was place and will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}"
      if phone.nil?
        puts m
      else

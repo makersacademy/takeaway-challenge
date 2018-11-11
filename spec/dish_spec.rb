@@ -5,7 +5,7 @@ describe Dish do
   it "Sets the name of the dish on initialisation" do
     expect(dish.name).to eq "Mango Chutney"
   end
-  it { expect(dish).to respond_to(:set_availability)}
+  it { expect(dish).to respond_to(:set_availability) }
   it "#available? returns true initially" do
     expect(dish.available?).to eq true
   end

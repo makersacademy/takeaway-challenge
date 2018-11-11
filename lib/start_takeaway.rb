@@ -1,6 +1,5 @@
 require "./lib/takeaway.rb"
 require "./lib/dish.rb"
-require "./lib/customer.rb"
 require "./lib/order.rb"
 require "./lib/twilio.rb"
 
@@ -20,32 +19,18 @@ takeaway.add_dish(dish3)
 takeaway.add_dish(dish4)
 takeaway.add_dish(dish5)
 
-takeaway.return_menu
-
 order = Order.new(takeaway)
 
-p "made it here"
-
-# order.add_to_order(dish1,1)
-# order.add_to_order(dish1,1)
-# order.add_to_order(dish2,1)
-# order.add_to_order(dish3,3)
-#
-# p "and here!"
-# order.get_price
-#
-# order.complete_order(6)
-#
-# order.view_order
 puts "welcome to #{takeaway.name}!"
-
-
 
 def order_food(order)
   ordering = true
   while ordering do
     puts "Enter the id of the type of food you want to add to your order (from the menu)"
-    food_array_pos = gets.chomp.to_i - 1
+    puts "(Or enter nothing to stop ordering)"
+    input = gets.chomp
+    break if input == ""
+    food_array_pos = input.to_i - 1
     if food_array_pos < order.takeaway.menu.count
       order_item = order.takeaway.menu[food_array_pos]
     else
@@ -54,11 +39,8 @@ def order_food(order)
     puts "Enter the quantity of this dish you want to order"
     quantity = gets.chomp.to_i
     order.add_to_order(order_item, quantity)
-    puts "Do you want to order more (y/n)?"
-    ordering = false if gets.chomp == "n"
   end
 end
-
 
 def show_options
   puts "Choose from the following (enter the number)"
@@ -73,7 +55,6 @@ end
 def complete_order(number_of_items,order)
   order.complete_order(number_of_items)
 end
-
 
 loop do
   show_options
