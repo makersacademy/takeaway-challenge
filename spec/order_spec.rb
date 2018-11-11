@@ -177,7 +177,6 @@ describe Order do
       order.add('peshwari naan')
       order.add('chicken korma')
       order.show_order
-      order.total = wrong_total
       expect { order.confirm }.to raise_error "Total incorrect!"
     end
   end

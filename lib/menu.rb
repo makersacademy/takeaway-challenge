@@ -15,10 +15,16 @@ class Menu
           'peshwari naan' => 3.00
         }
 
-  attr_reader :list
+  attr_reader :list, :selection
 
-  def initialize(list = DISH_LIST )
+  def initialize(list = DISH_LIST)
     @list = list
+    @selection = []
+  end
+
+  def select_item(item)
+    price = @list[item]
+    @selection << [item, price]
   end
 
 end

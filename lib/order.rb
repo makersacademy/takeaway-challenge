@@ -1,23 +1,17 @@
-require_relative 'menu'
-
 class Order
 
   DEFAULT_TOTAL = 0
 
   attr_reader :basket, :menu, :quantities, :total
 
-  def initialize(menu = Menu.new)
-    @menu = menu
-    @basket = []
+  def initialize(basket)
+    @basket = basket
     @total = DEFAULT_TOTAL
   end
 
-  def add(item)
-    @menu.list.each do |dish, price|
-      @basket << [dish, price] if item == dish
-    end
-    @basket
-  end
+  # def add(item)
+  #   @basket << [item, price]
+  # end
 
   def show_order
     @total = get_total
@@ -27,7 +21,7 @@ class Order
 
   def confirm
     raise 'Total incorrect!' if order_not_verified?
-    "Order confirmed!"
+    "Order confirmed!" # call twilio
   end
 
   def empty_basket
