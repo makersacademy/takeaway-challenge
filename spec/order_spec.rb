@@ -1,17 +1,18 @@
 require 'order'
 
 describe Order do
-  subject(:order){ described_class.new }
+  subject(:order) { described_class.new }
+  let(:menu) { double :menu }
+  let(:dish) { double :dish }
+  let(:quantity) { double :quantity }
 
-  describe '#order_pizza' do
-    it 'allow the customer to select a pizza from the menu' do
-      expect(order.order_pizza).to eq 'diavola'
-    end
-  end
+  it { expect(order.order).to be_empty }
 
-  describe '#select_quantity' do
-    it 'allow the customer to select quantity' do
-      expect(order).to respond_to(:select_quantity)
+  describe '#add' do
+    it "adds dishes to the order" do
+      order.add(dish, quantity)
+      expect(order.order).to have_key(dish)
+      expect(order.order).to have_value(quantity)
     end
   end
 

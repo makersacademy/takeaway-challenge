@@ -1,11 +1,20 @@
+
+
 class Order
+  attr_reader :menu, :order
 
-  def order_pizza
-    "diavola"
+  def initialize
+    @order = {}
   end
 
-  def select_quantity
-    
+  def add(dish, quantity)
+    @order[dish] = quantity
   end
+
+
+  def price(dish)
+    @menu[dish]
+  end
+
 
 end
