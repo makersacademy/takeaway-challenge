@@ -5,7 +5,8 @@ class Menu
     { :item => 'Chicken Burrito', :price => 7 },
     { :item => 'Pork Enchiladas', :price => 6 },
     { :item => 'Beef Chimichunga', :price => 9 },
-    { :item => 'Mixed Fajita', :price => 9 }
+    { :item => 'Mixed Fajita', :price => 9 },
+    { :item => 'Corona', :price => 2 }
     ]
 
   def view
