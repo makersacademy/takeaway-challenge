@@ -16,17 +16,13 @@ describe Order do
     end
   end
 
-  # describe "#available?" do
-  #   it "checks if a dish is available" do
-  #     allow(menu).to receive(:available?).with("Ruby's Salad").and_return(true)
-  #     expect(menu.available?("Ruby's Salad")).to be true
-  #     allow(menu).to receive(:available?).with("Python's Steak").and_return(true)
-  #     expect(menu.available?("Python's Steak")).to eq true
-  #     allow(menu).to receive(:available?).with("Rock's Soup").and_return(false)
-  #     expect(menu.available?("Rock's Soup")).to eq false
-  #     allow(menu).to receive(:available?).with("Makers' Tagliolini").and_return(false)
-  #     expect(menu.available?("Makers' Tagliolini")).to eq false
-  #   end
-  # end
+  describe '#check' do
+    it "checks the items in the basket" do
+      order.add_dish("Ruby's Salad", 6)
+      expect(order.check).to include("Ruby's Salad"=>6)
+    end
+  end
+
+  
 
 end

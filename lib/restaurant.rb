@@ -19,6 +19,10 @@ class Restaurant
     @order.add_dish(dish, quantity)
   end
 
+  def check_basket
+    @order.check
+  end
+
 
 
 

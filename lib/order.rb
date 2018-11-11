@@ -11,10 +11,9 @@ class Order
     @order[dish] = quantity
   end
 
-  def submit_order()
-
+  def check
+    @order
   end
-
 
 
 
