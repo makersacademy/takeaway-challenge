@@ -28,3 +28,10 @@ The customer is asking to make an order. This indicates the class Order is neede
 To complete the process - I just ask the customer to input their order in the Order class.
 
 ## User Story 3
+
+> As a customer
+> So that I can verify that my order is correct
+> I would like to check that the total I have been given
+> matches the sum of the various dishes in my order
+
+For this user-story, I ran the string through a method that formatted the text to a split up array. From here, I pushed the formatted array through a method that calculates the actual cost, then did a check on what the customer thought their food was going to cost. Then, a simple error is thrown if there is anything different between the two.

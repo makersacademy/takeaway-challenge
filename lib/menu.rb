@@ -5,16 +5,15 @@
 require_relative "./order.rb"
 
 class Menu
-attr_reader :MENU
+  MENU = {
+    "Garlic Bread" => 4, "Grissini Breadsticks" => 5,
+    "Tricolore Salad" => 5, "Zucchine Fritte" => 4,
+    "Margherita" => 8, "Quattro Formaggi" => 11,
+    "Napoletana" => 9, "Romana" => 13,
+    "Americana" => 10, "Penne Arrabiata" => 8,
+  }
 
-
-MENU = {
-  "Garlic Bread" => 5, "Mushrooms al Forno" => 6,
-  "Tricolore Salad" => 5, "Zucchine Fritte" => 4,
-  "Margherita" => 8, "Quattro Formaggi" => 11,
-  "Napoletana" => 9, "Romana" => 13,
-  "Americana" => 10, "Penne Arrabiata" => 8,
-}
+  attr_reader :MENU
 
   def initialize(order = Order)
     @order = order
@@ -58,6 +57,6 @@ MENU = {
 end
 #
 #
-# order = Order
-# menu = Menu.new(order)
+#
+# menu = Menu.new
 # menu.show_menu
