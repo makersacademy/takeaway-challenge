@@ -12,4 +12,9 @@ class Menu
   def remove_dish(dish)
     @menu.delete(dish.to_sym)
   end
+
+  def display
+    @menu.each { |key, val| puts "#{key}....£#{val}".center(160) }
+  end
+
 end

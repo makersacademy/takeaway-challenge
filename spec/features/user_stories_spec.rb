@@ -4,7 +4,7 @@ describe 'user stories' do
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
   it 'should show the customer the menu' do
-    expect { kfc.display_menu }.not_to raise_error
+    expect { kfc.take_away_menu.display }.not_to raise_error
   end
 
   # As a customer

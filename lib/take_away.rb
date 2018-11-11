@@ -11,16 +11,12 @@ class TakeAway
   def initialize(name, message)
     @take_away_name = name
     @txt_message = message
-    @take_away_menu = Menu.new.menu
+    @take_away_menu = Menu.new
     @order = {}
   end
 
-  def display_menu
-    @take_away_menu.each { |key, val| puts "#{key}....£#{val}".center(160) }
-  end
-
   def take_order(dish, quantity)
-    sub_total = @take_away_menu[dish.to_sym] * quantity
+    sub_total = @take_away_menu.menu[dish.to_sym] * quantity
     @order[dish.to_sym] = sub_total
   end
 
