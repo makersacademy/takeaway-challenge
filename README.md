@@ -1,3 +1,5 @@
+TakeAway Challenge
+-------
 ```sh
 2.5.0 :001 > require './lib/takeaway'
  => true
@@ -31,6 +33,5 @@ Basket:
 Tandori Chicken Wrap £6
  => "Total cost of items in basket: £6"
 2.5.0 :009 > shop.submit_order
-SMa1600bb538d6451f8dac1da001ea443d
- => nil
+ => "SMa1600bb538d6451f8dac1da001ea443d"
 ```
