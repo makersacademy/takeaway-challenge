@@ -92,7 +92,7 @@ order.add("Eggs",3)
 #checks if the diner has a dish called "Eggs" and returns it 3 times(once if no number specified)
 order.list_dishes
 #this lists the dishes available
-order.checks
+order.check
 #prints your order with prices and totals
 order.confirm
 #sends text to confirm order
