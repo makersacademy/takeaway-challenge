@@ -1,7 +1,3 @@
-# As a customer
-# So that I can check if I want to order something
-# I would like to see a list of dishes with prices
-
 require_relative "./order.rb"
 
 class Menu
@@ -19,6 +15,7 @@ class Menu
     @order = order
   end
 
+# all menu objects in one
   def show_menu
     menu_header
     put_menu
@@ -33,6 +30,7 @@ class Menu
     puts "|-------------------------|".center(30)
   end
 
+# iterates through the menu hash, showing it as a menu
   def put_menu
     MENU.each do |item, value|
       puts "#{item}: £#{value}".center(30)
@@ -56,5 +54,5 @@ class Menu
   end
 end
 
-menu = Menu.new
-menu.show_menu
+# menu = Menu.new
+# menu.show_menu

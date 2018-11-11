@@ -1,9 +1,9 @@
-
 require_relative "delivery"
 
 class Order
 
-  attr_reader :order_string, :order_formatted, :actual_order_cost, :customer_order_cost, :delivery
+  attr_reader :order_string, :order_formatted, :actual_order_cost,
+              :customer_order_cost, :delivery
 
   def initialize(delivery = Delivery)
     @delivery = delivery
@@ -12,6 +12,7 @@ class Order
     @customer_order_cost = 0
   end
 
+# runs through all aspects needed to complete the order
   def order_process
     order_number
     order_selection
@@ -36,13 +37,13 @@ class Order
 
   def order_formatter
     @order_string.split(",").each do |num|
-      @order_formatted << num.split(" ",2)
+      @order_formatted << num.split(" ", 2)
     end
   end
 
 # calculates the ACTUAL cost of the order
   def order_calculation
-    @order_formatted.each_with_index do |instance, index|
+    @order_formatted.each_with_index do |_instance, index|
       @actual_order_cost << Menu::MENU[@order_formatted[index][1]].to_i * @order_formatted[index][0].to_i if Menu::MENU.has_key?@order_formatted[index][1]
     end
     @actual_order_cost = @actual_order_cost.inject(:+)

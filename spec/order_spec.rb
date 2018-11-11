@@ -19,7 +19,7 @@ describe Order do
 
   describe "#order_number" do
     it "gives a random order number between 4563 and 4985" do
-      expect(subject.order_number).to be_between(4563,4985)
+      expect(subject.order_number).to be_between(4563, 4985)
     end
   end
 
@@ -59,7 +59,7 @@ describe Order do
       expect(subject.customer_order_cost).to eq(4)
     end
   end
-  
+
   describe "#order" do
     it "compares auto cost and customer cost to be the same" do
       subject.instance_variable_set("@customer_order_cost", 5)

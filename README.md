@@ -3,6 +3,7 @@
 ```
 clone the repo
 bundle install
+unhide lines 59/60 on menu.rb
 $ ruby lib/menu.rb
 
 ```
