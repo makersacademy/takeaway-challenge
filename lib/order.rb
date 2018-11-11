@@ -27,5 +27,6 @@ class Order
 	end
 
 	def send
+		@send_sms.send_sms
 	end
 end
