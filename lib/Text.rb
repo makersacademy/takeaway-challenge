@@ -12,11 +12,15 @@ class Text
     @client.messages.create(
       :from => @config.from,
       :to => @config.to,
-      :body => "Thank you! Your order was placed and will be delivered before #{delivery_time.strftime("%H:%M")}" )
+      :body => "Thank you! Your order was placed \
+      and will be delivered before #{delivery_time.strftime("%H:%M")}")
     "Text sent"
   end
+
+private
 
   def delivery_time
     Time.new + 360
   end
+
 end

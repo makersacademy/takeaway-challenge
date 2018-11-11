@@ -11,7 +11,7 @@ describe Order do
     end
 
     it 'raises an error when the dish is not available' do
-      message = "Can't select: dish not available"
+      message = "Can't select: dish not available. Type `takeaway.show_menu` to see the menu"
       expect { order.select_dish("Fish & Chips", 1) }.to raise_error message
     end
 

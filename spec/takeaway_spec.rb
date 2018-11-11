@@ -14,19 +14,29 @@ describe Takeaway do
     allow(text).to receive(:send).and_return("Text sent")
   end
 
-  it 'can show menu (list of dishes with prices)' do
-    message = "Chicken Curry £6.5\nLamb Curry £7\nVegetable Curry £6\n"
-    expect { takeaway.show_menu }.to output(message).to_stdout
+  context '#show_menu' do
+    it 'can show menu (list of dishes with prices)' do
+      message = "Chicken Curry £6.5\nLamb Curry £7\nVegetable Curry £6\n"
+      expect { takeaway.show_menu }.to output(message).to_stdout
+    end
   end
 
-  it 'can recieve a list of dishes ordered by a customer' do
-    order.select_dish("Chicken Curry", 2)
-    takeaway.place(order)
-    expect(takeaway.ordered_dishes).to eq({ :name => "Chicken Curry", :quantity => 2 })
-  end
+  context '#place(order)' do
+    it 'can recieve a list of dishes ordered by a customer' do
+      allow(order).to receive(:nothing_selected?).and_return(false)
+      takeaway.place(order)
+      expect(takeaway.ordered_dishes).to eq({ :name => "Chicken Curry", :quantity => 2 })
+    end
 
-  it 'return the total cost of the order' do
-    order.select_dish("Chicken Curry", 2)
-    expect(takeaway.place(order)).to eq 13.00
+    it 'return the total cost of the order' do
+      allow(order).to receive(:nothing_selected?).and_return(false)
+      expect(takeaway.place(order)).to eq 13.00
+    end
+
+    it 'prevents placing an order if no dish is selected' do
+      allow(order).to receive(:nothing_selected?).and_return(true)
+      message = "Can't place the order: no dish selected"
+      expect { takeaway.place(order) }.to raise_error message
+    end
   end
 end

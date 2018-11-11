@@ -1,6 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
-require_relative 'Text'
+require_relative 'text'
 
 class Takeaway
 
@@ -12,6 +12,7 @@ class Takeaway
   end
 
   def place(order)
+    fail "Can't place the order: no dish selected" if order.nothing_selected?
     @ordered_dishes = order.dishes
     text = Text.new
     text.send

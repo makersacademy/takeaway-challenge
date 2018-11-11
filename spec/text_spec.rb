@@ -4,7 +4,6 @@ describe Text do
   subject(:text) { described_class.new }
   let(:client) { double("client") }
 
-
   describe "#send" do
     it 'sends a text message' do
       allow(client).to receive(:new).and_return(client)

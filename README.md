@@ -14,14 +14,6 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
 -----
@@ -73,7 +65,32 @@ In code review we'll be hoping to see:
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
-Notes on Test Coverage
-------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Instructions
+-------
+```
+2.5.0 :002 > takeaway = Takeaway.new
+ => #<Takeaway:0x00007fb7399b75b0>
+2.5.0 :003 > takeaway.show_menu
+Chicken Curry £6.5
+Lamb Curry £7
+Vegetable Curry £6
+ => [{:name=>"Chicken Curry", :price=>6.5}, {:name=>"Lamb Curry", :price=>7}, {:name=>"Vegetable Curry", :price=>6}]
+2.5.0 :004 > order = Order.new
+ => #<Order:0x00007fb73a13ed10 @dishes=[], @menu=#<Menu:0x00007fb73a13ecc0 @list_of_dishes=[{:name=>"Chicken Curry", :price=>6.5}, {:name=>"Lamb Curry", :price=>7}, {:name=>"Vegetable Curry", :price=>6}]>>
+2.5.0 :005 > order.select_dish("Chicken Curry", 2)
+ => [{:name=>"Chicken Curry", :quantity=>2}]
+2.5.0 :006 > order.select_dish("Fish & Chips", 1)
+RuntimeError (Can't select: dish not available. Type `takeaway.show_menu` to see the menu)
+2.5.0 :007 > order.select_dish("Lamb Curry", 1)
+ => [{:name=>"Chicken Curry", :quantity=>2}, {:name=>"Lamb Curry", :quantity=>1}]
+2.5.0 :008 > order.total_cost
+ => 20.0
+2.5.0 :009 > takeaway.place(order)
+ => 20.0
+ ```
+
+ References
+ -------
+ * [Hide API Keys](https://gist.github.com/derzorngottes/3b57edc1f996dddcab25)
+ * [Testing SMS Interactions](https://robots.thoughtbot.com/testing-sms-interactions)
