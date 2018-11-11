@@ -1,4 +1,6 @@
 require 'order'
+# require'sms_text'
+# include Text
 
 describe Order do
   let(:soup) { double :soup}
@@ -7,7 +9,6 @@ describe Order do
   let(:menu) { { soup => 6.0, meat => 10.0, chicken => 8.0 } }
   let(:restaurant) { double :restaurant, menu: menu }
   let(:order) { Order.new(restaurant) }
-
 
   describe "#check_menu" do
     it "Consumer can check the menu list with prices" do
@@ -34,13 +35,18 @@ describe Order do
     end
   end
 
-  describe "#place order" do
-    it "A text message will be sent after order is completed" do
-      order.confirm_order
-      expect(order.place_order).to eq "Thank you! Your order was placed and will be delivered in about 30 minutes"
+  # describe "#place_order" do
+  #   it "A text message will be sent after order is completed" do
+  #     expect(new_order.place_order).to eq "Thank you! Your order has been placed you will receive a sms shortly"
+  #   end
+  # end
+
+
+  describe "#confirm_order" do
+    it "It returns confirmed as true" do
+      expect(order.confirm_order).to eq true
     end
   end
-
 
   describe "#bill_total" do
     it "It returns the total value of the order" do

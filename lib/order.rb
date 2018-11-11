@@ -1,7 +1,9 @@
 require_relative 'restaurant'
+require 'twilio-ruby'
+require_relative 'sms_text'
 
 class Order
-  # include Menu
+  include SMSText
   attr_reader :restaurant, :order_list, :confirmed, :menu
 
   def initialize(restaurant = Restaurant.new)
@@ -32,10 +34,8 @@ class Order
   end
 
   def delete_item(item)
-    @order_list.each do |product, total|
-      return "Item not in order list" unless @order_list[item]
-      @menu.each { |k, v| @order_list.delete(product) if item == product }
-    end
+    return "Item not in order list" unless @order_list[item]
+    @order_list.delete(item)
     "Item: #{item} has been deleted from your order"
   end
 
@@ -48,7 +48,8 @@ class Order
   end
 
   def confirmation_text
-    "Thank you! Your order was placed and will be delivered in about 30 minutes"
+    send_sms
+    "Thank you! Your order has been placed you will receive a sms shortly"
   end
 
   def place_order
