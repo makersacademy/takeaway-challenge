@@ -12,8 +12,8 @@ class SendSms
     message = @client.messages
       .create(
          body: "Order confirmed! Your food will be delivered before #{Time.now + 3600}!",
-         from: '+441212855678',
-         to: '+44 7708 542475'
+         from: 'xxx',
+         to: 'xxx'
        )
 
     puts "message sent"
