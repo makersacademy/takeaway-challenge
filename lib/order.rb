@@ -34,8 +34,8 @@ class Order
     @total = @price_store.sum
   end
 
-  def confirm
-    @send_sms.send_text
+  def complete_order(total_price)
+    send_text("Thank you for your order of £#{total_price}")
   end
 
   private
@@ -44,6 +44,10 @@ class Order
     @menu.dish_list.each do |food, price|
       @price_store << price if dish == food
     end
+  end
+
+  def send_text(message)
+    @send_sms.send(message)
   end
 
 end

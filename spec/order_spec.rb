@@ -32,7 +32,7 @@ describe Order do
     end
   end
 
-  describe '#get_toal' do
+  describe '#get_total' do
     it 'totals up the prices' do
       order.add_dish('chicken korma')
       order.add_dish('plain naan')
@@ -41,12 +41,13 @@ describe Order do
     end
   end
 
-  # needs fixing...
-  describe '#confirm' do
-      xit 'sends a message to confirm the order' do
-        send_sms = double(:send_sms, send_text: "message sent")
-        allow(send_sms).to receive(:send_text).and_return("message sent")
-        expect(order.confirm).to eq "message sent"
+  describe '#complete_order' do
+    before do
+      allow(order).to receive(:send_text)
+    end
+      it 'sends a payment confirmation text message' do
+        expect(order).to receive(:send_text).with("Thank you for your order of £20")
+        order.complete_order(20)
       end
     end
   end
