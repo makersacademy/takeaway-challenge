@@ -9,10 +9,10 @@ class Order
     @my_order = my_order
   end
 
-  def select(item)
+  def select(item, quantity)
     @menu.list.each do |hash|
       if item == hash[:item]
-        @my_order << hash
+        quantity.times { @my_order << hash }
       end
     end
     @my_order
