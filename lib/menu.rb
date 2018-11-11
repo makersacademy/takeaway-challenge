@@ -28,4 +28,12 @@ class Menu
 			selection = gets.chomp
 		end
 	end
+
+	def checkout
+		total = 0
+		@cart.each do |dish|
+			total += dish.price
+		end
+		puts "Your order comes to a total of £#{total}"
+	end
 end

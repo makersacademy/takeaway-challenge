@@ -19,8 +19,6 @@ describe Menu do
 			expect(subject.available_dishes).to include(dish1, dish2)
 		end
 
-
-
 		it 'should return the name and price of multiple dishes' do
 			expect{subject.show_menu}.to output("1.#{dish1.name} - #{dish1.price}\n2.#{dish2.name} - #{dish2.price}\n").to_stdout
 		end
@@ -31,24 +29,35 @@ describe Menu do
 	end
 
 	describe '#get_selection' do
+
+		before (:each) do
+			allow(subject).to receive(:gets).and_return("1\n", "2\n", "done\n")
+		end
+
 		it 'should ask the user for their choice' do
 			expect{subject.get_selection}.to output("Please enter the number of the item you wish to order, enter ""done"" when finished.""\n").to_stdout
 		end
-		it 'should retreive the appropiate dish and add that to cart' do
-			allow(subject).to receive(:gets).and_return("1\n", "done\n")
+
+		it 'should add multiple dishes to cart' do
 			subject.add_dish(dish1)
+			subject.add_dish(dish2)
 			subject.get_selection
 
-			expect(subject.cart).to include(dish1)
+			expect(subject.cart).to include(dish1, dish2)
 		end
-		it 'should add multiple dishes to cart' do
-			menu = Menu.new
-			allow(menu).to receive(:gets).and_return("1\n", "2\n", "done\n")
-			menu.add_dish(dish1)
-			menu.add_dish(dish2)
-			menu.get_selection
+		
+	end
+	describe '#checkout' do
+		before (:each) do
+			allow(subject).to receive(:gets).and_return("1\n", "2\n", "done\n")
+		end
+		it 'should total up items in the cart' do
+			expected_total = dish1.price + dish2.price
+			subject.add_dish(dish1)
+			subject.add_dish(dish2)
+			subject.get_selection
 
-			expect(menu.cart).to include(dish2)
+			expect{subject.checkout}.to output("Your order comes to a total of £#{dish1.price + dish2.price}""\n").to_stdout
 		end
 	end
 end
