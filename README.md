@@ -1,5 +1,6 @@
 TakeAway Challenge
 -------
+Please see below example of how to use my code in IRB.
 ```sh
 2.5.0 :001 > require './lib/takeaway'
  => true
@@ -35,3 +36,4 @@ Tandori Chicken Wrap £6
 2.5.0 :009 > shop.submit_order
  => "SMa1600bb538d6451f8dac1da001ea443d"
 ```
+I started this challenge with three classes: TakeAway, Order and Menu. All that the TakeAway class did was call on methods from the Order and Menu classes. This meant that I had several redundant tests on my TakeAway class. I decided to take the functionality of Order and merge it into TakeAway. I then removed the view_menu method and instead created an attribute reader for the menu instance variable. It still works the same, but in the IRB instead of typing `shop.view_menu` you type `shop.menu.view` which calls on the view method of the menu instance variable. This made the rspec testing simpler.
