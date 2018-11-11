@@ -2,8 +2,8 @@ require 'order'
 
 describe Order do
 
-  let(:order)     { described_class.new }
-  let(:send_sms)  { double(:send_sms)   }
+  let(:order)   { described_class.new }
+  let(:send_sms){ double(:send_sms) }
 
   describe '#initialize' do
     it 'creates an empty shopping basket' do
@@ -32,7 +32,7 @@ describe Order do
       order.add_dish('chicken korma')
       order.add_dish('plain naan')
       order.add_dish('pilau rice')
-      expect(order.basket).to eq [{"chicken korma"=>5}, {"plain naan"=>3}, {"pilau rice"=>2}]
+      expect(order.basket).to eq [{ "chicken korma" => 5 }, { "plain naan" => 3 }, { "pilau rice" => 2 }]
     end
   end
 
