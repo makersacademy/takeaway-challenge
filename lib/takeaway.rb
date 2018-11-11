@@ -30,13 +30,14 @@ class Takeaway
         dish[:quantity] = val
         basket.add(dish) if dish.has_value?(select.capitalize)
       end
-      puts "total £#{basket.total}"
     end
   end
 
 
 
   def place_order
+
+    order.add(basket,basket.total)
     
   #   basket.each do |dish|
   #     puts "Name: #{dish[:name]} |||| Price: £#{dish[:price]}\n"

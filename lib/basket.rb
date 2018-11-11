@@ -1,16 +1,12 @@
 class Basket
-  attr_accessor :basket
+  attr_accessor :items
 
   def initialize
-      @basket = []
+      @items = []
   end  
 
   def add(dish)
-    basket << dish
-  end  
-
-  def view
-    basket
+    items << dish
   end
 
   def checkout
@@ -21,7 +17,7 @@ class Basket
   end  
   
   def total
-    basket.inject(0) do |sum, hash| 
+    items.inject(0) do |sum, hash| 
       total = hash[:price] * hash[:quantity]
       sum + total
     end
