@@ -11,4 +11,17 @@ class Order
     fail "That isn't on the menu!" unless menu.has_dish?(dish)
     dishes[dish] += quantity
   end
+
+  def total
+    item_totals.inject(:+)
+  end
+
+  private
+
+  def item_totals
+    dishes.map do |dish, quantity|
+      menu.price(dish) * quantity
+    end
+  end
+
 end

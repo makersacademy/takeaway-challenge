@@ -20,7 +20,11 @@ describe Menu do
   end
 
   it "Tells if a dish is on the menu" do
-    expect(menu.has_dish?(:beef)).to be(false) 
+    expect(menu.has_dish?(:beef)).to be(false)
+  end
+
+  it "Calculates the price" do
+    expect(menu.price(:chicken)).to eq(dishes[:chicken])
   end
 
 end
