@@ -1,7 +1,5 @@
 class Menu
 
-  DASHES_NUM = 26
-
   attr_reader :items
 
   def initialize
@@ -18,12 +16,12 @@ class Menu
   end
 
   def view
-    puts "-" * DASHES_NUM
+    puts "--------------------------"
     puts "Menu"
-    puts "-" * DASHES_NUM
+    puts "--------------------------"
     @items.each_with_index do |item, index|
       puts "#{index + 1}: #{item[:name]} £#{item[:cost]}"
     end
-    puts "-" * DASHES_NUM
+    puts "--------------------------"
   end
 end
