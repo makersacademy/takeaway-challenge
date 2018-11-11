@@ -1,30 +1,40 @@
 require 'order'
 
 describe Order do
+  attr_reader :menu_double, :foo
+  before (:each) do
+    @menu_double = double :menu, items: {"foo" => 1}
+    @foo = Order.new(menu_double)
+  end
   describe "#order" do
     it "should start out empty" do
-      expect(subject.order).to be_empty
+      expect(foo.order).to be_empty
     end
   end
   describe "#add" do
     it "should add an item to an order" do
-      subject.add("Pizza",1)
-      expect(subject.order.last).to eq({item: "Pizza", num: 1})
+      foo.add("foo",1)
+      expect(foo.order.last).to eq({item: "foo", num: 1})
     end
     it "should add multiple items to an order" do
-      subject.add("Pizza",1)
-      subject.add("Pepsi",2)
-      expect(subject.order).to eq([{item: "Pizza", num: 1},{item: "Pepsi", num: 2}])
+      foo.add("foo",1)
+      foo.add("foo",2)
+      expect(foo.order).to eq([{item: "foo", num: 1},{item: "foo", num: 2}])
     end
   end
   describe "#check" do
     it "should show a message if totals match" do
-      subject.add("Pepsi",1)
-      expect{ subject.check(1) }.to output("Our totals match.\n").to_stdout
+      expect{ foo.check(0) }.to output("Our totals match.\n").to_stdout
     end
-    it "should an error if totals don't match" do
-      subject.add("Pepsi",1)
-      expect{ subject.check(2) }.to raise_error "Your total does not match ours."
+    it "should raise an error if totals don't match" do
+      expect{ foo.check(1) }.to raise_error "Your total does not match ours."
+    end
+  end
+  describe "#checkout" do
+    it "should return the message sid once a message is sent" do
+      message_double = double :message, send: "SM123456ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      expect(foo.checkout(message_double)).to start_with("SM")
+      expect(foo.checkout(message_double)).to have_attributes(length: 34)
     end
   end
 end
