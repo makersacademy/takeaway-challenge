@@ -28,6 +28,7 @@ class TakeAway
 
   def empty_basket
     @basket = []
+    @cost = 0
     "Basket emptied"
   end
 
