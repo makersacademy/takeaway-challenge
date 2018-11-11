@@ -1,4 +1,5 @@
 require 'order'
+require 'twilio-ruby'
 
 RSpec.describe Order do
 		let(:menu) { dishes = {
@@ -10,6 +11,7 @@ RSpec.describe Order do
 		'Tajada con queso' => 2.5 
 		}
 	}
+	let(:twilio) {double}
 	subject(:order) { described_class.new(menu)}
 	it 'Show the list of the dishes' do
 		expect(order.list_dishes).to eq menu
@@ -29,5 +31,13 @@ RSpec.describe Order do
 			order.add('Baho',2)
 			expect(order.check).to eq "Nacatamal - 1 || Baho - 2 || Your total is 19.5 £"
 		end
+
+		# it 'Sending sms confirmation' do
+		# 	order.add('Nacatamal')
+		# 	order.add('Baho',2)
+		# 	expect(order.check).to eq "Nacatamal - 1 || Baho - 2 || Your total is 19.5 £"
+		# 	expect(twilio).to receive(:send_message).and_return("message sent")
+		# 	order.send
+		# end
 	end
 end

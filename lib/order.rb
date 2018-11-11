@@ -1,9 +1,11 @@
 require_relative 'menu'
+require_relative 'send_sms'
 class Order
 	attr_accessor :list_dishes, :total_dishes
-	def initialize(menu = Menu.new, total_dishes = {})
+	def initialize(menu = Menu.new, total_dishes = {}, send_sms = SendOrder.new)
 		@list_dishes = menu
 		@total_dishes = total_dishes
+		@send_sms = send_sms
 	end
 
 	def add(dish, quantity = 1)
@@ -22,5 +24,8 @@ class Order
 			end
 		end
 		order_check << "Your total is #{total} £"
+	end
+
+	def send
 	end
 end
