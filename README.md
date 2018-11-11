@@ -13,6 +13,7 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+ ```
  2.5.0 :001 > require './lib/order'
   => true
  2.5.0 :002 > order = Order.new
