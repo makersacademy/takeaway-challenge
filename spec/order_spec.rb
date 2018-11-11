@@ -76,12 +76,13 @@ describe Order do
   end
 
   describe "#confirm_order" do
-    it "allows the user to confirm their order" do
+    it "Sends a text if the user confirms their order" do
       expect_any_instance_of(Order).to receive(:order_selection) { "n" }
       expect_any_instance_of(Order).to receive(:gets) { "y" }
-      expect(subject.confirm_order).to be_a Delivery
+      expect_any_instance_of(Delivery).to receive(:send_message) { "message sent" }
+      expect(subject.confirm_order).to eq("message sent")
     end
-    it "allows the user to confirm their order" do
+    it "cancels delivery if not confirmed" do
       expect_any_instance_of(Order).to receive(:order_selection) { "n" }
       expect_any_instance_of(Order).to receive(:gets) { "n" }
       expect(subject.confirm_order).to eq("cancelled delivery")

@@ -1,8 +1,9 @@
-require_relative "./delivery.rb"
+
+require_relative "delivery"
 
 class Order
 
-  attr_reader :order_string, :order_formatted, :actual_order_cost, :customer_order_cost
+  attr_reader :order_string, :order_formatted, :actual_order_cost, :customer_order_cost, :delivery
 
   def initialize(delivery = Delivery)
     @order_formatted = []
@@ -63,7 +64,7 @@ class Order
     puts
     puts "Please confirm: (y/n)"
     confirm = gets.chomp
-    return @delivery.new if confirm == "y"
+    return @delivery.new.send_message if confirm == "y"
     puts "cancelling delivery..." if confirm == "n"
     return "cancelled delivery"
   end
