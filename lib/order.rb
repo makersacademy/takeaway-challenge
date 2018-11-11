@@ -1,3 +1,4 @@
+require_relative 'dish'
 class Order
   attr_reader :items, :varified
   def initialize(menu)
@@ -26,6 +27,7 @@ class Order
       string << "#{dish.name} £#{Price::format(dish.price)}\n"
     end
     string << "--------------\n\nTotal: £#{Price::format(total)}"
+    puts string
   end
 
   def total

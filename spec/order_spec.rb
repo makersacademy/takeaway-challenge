@@ -21,7 +21,7 @@ describe Order do
 
   it 'can print an order' do
     order.build(menu_ids)
-    expect(order.print).to match(TestData::expected_order_print_output)
+    expect{ order.print }.to output{ TestData::expected_order_print_output }.to_stdout
   end
 
   it 'can be varified' do
