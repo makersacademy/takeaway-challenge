@@ -1,7 +1,5 @@
 class Menu
 
-  # attr_reader :list_of_dishes
-
   def initialize(list_of_dishes = [{dish_name: nil, dish_price: nil}])
     @list_of_dishes = list_of_dishes
     @order = []
@@ -22,4 +20,5 @@ class Menu
   def get_order
     @order
   end
+
 end
