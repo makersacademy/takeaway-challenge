@@ -13,11 +13,11 @@ describe Order do
     expect(subject.sub_total("beer",10)).to include 30
   end
 
-  # it "calculate the total if more item added" do # after update ruby version
-  #   subject.take_order("chicken", 1)
-  #   subject.take_order("beer", 10)
-  #   expect(subject.cal_total).to include 36
-  # end
+  it "calculate the total if more item added" do # after update ruby version
+    subject.take_order("chicken", 1)
+    subject.take_order("beer", 10)
+    expect(subject.cal_total).to eq 36.0
+  end
 
   it "raise warning if no order is added" do
     expect(subject.completed?).to eq "No order has been added"

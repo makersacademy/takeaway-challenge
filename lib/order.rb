@@ -1,5 +1,7 @@
 # encoding: UTF-8
-require_relative "menu.rb"
+require_relative "menu"
+require_relative "text_sender"
+require 'twilio-ruby'
 
 class Order
 
@@ -7,6 +9,7 @@ class Order
     @menu = Menu.new
     @order_list = []
 		@total_price = []
+		@text_sender = Text_sender.new
 	end
 
 	def take_order(dish, amount)
@@ -36,6 +39,7 @@ class Order
   end
 
   def print_receipt
+  	@text_sender.text_confirmation
     puts "Order total is :#{@charge}. Order list is as below:"
     @order_list.join("\n")
   end
