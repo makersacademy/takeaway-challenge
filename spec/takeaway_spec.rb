@@ -2,11 +2,10 @@ require 'takeaway'
 require 'dish'
 
 describe Takeaway do
-
   let(:dish) { double :dish }
-  let(:dish1) { Dish.new("Chicken Wings", 1.49) }
-  let(:dish2) { Dish.new("2 piece box of Fried Chicken", 2.99) }
-  let(:dish3) { Dish.new("Small Hamburger", 2.99) }
+  let(:dish1) { double :dish, name: "Chicken Wings", price: 1.49 }
+  let(:dish2) { double :dish, name: "2 piece box of Fried Chicken", price: 2.99 }
+  let(:dish3) { double dish, name: "Small Hamburger", price: 2.99 }
   subject { Takeaway.new([dish1, dish2, dish3]) }
 
   def two_chick_wings
@@ -26,11 +25,6 @@ describe Takeaway do
   end
 
   describe '#order' do
-    it 'records the customer order of one dish in the basket' do
-      subject.order("chicken wings")
-      expect(subject.basket_subtotal[dish1]).to eq 1
-    end
-
     it 'records the customer order of multiple orders of one item' do
       two_chick_wings
       expect(subject.basket_subtotal[dish1]).to eq 2

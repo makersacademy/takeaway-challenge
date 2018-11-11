@@ -1,7 +1,8 @@
 require './lib/dish'
+
 class Takeaway
 
-  attr_accessor :menu, :basket, :basket_subtotal
+  attr_reader :menu, :basket_subtotal
 
   def initialize(menu)
     @menu, @basket_subtotal = menu, Hash.new(0)
@@ -37,5 +38,8 @@ class Takeaway
       sum += quantity * dish.price
     }
     puts "Total: £#{sum.round(2)}"
+  end
+
+  def checkout
   end
 end

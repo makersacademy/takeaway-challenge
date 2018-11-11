@@ -8,5 +8,4 @@ class Dish
   def dish_to_h
     { name: @name, price: @price }
   end
-
 end

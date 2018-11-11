@@ -1,5 +1,6 @@
-source 'https://rubygems.org'
+gem 'dotenv-rails', groups: [:development, :test]
 
+source 'https://rubygems.org'
 ruby '2.5.0'
 
 gem 'capybara'

@@ -14,3 +14,4 @@ takeaway.order("small hamburger")
 
 takeaway.show_basket
 takeaway.total
+takeaway.checkout
