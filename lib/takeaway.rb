@@ -46,7 +46,7 @@ class TakeAway
         to: m.my_num,
         from: m.twilio_num)
 
-    puts message.sid
+    message.sid
   end
 
   private
