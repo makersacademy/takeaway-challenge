@@ -20,6 +20,7 @@ class Takeaway
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
     @messenger = nil
   end
+
   def start
    welcome
    loop do

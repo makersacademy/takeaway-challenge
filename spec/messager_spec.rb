@@ -4,13 +4,10 @@ describe Messenger do
   let(:messages) { double(:messages, create: true) }
   let(:client) { double(:client, messages: messages) }
   let(:credentials) do
-    { sid: 'ACxxxxxxxxxxxxxxx',
-      auth_token: 'yyyyyyyyyyyyyyyyyy',
-      to: '2340984',
+    { to: '2340984',
       from: '21390349' }
   end
 
-  let(:auth_token) { 'yyyyyyyyyyyyyyyyyy' }
   let(:order) { double(:order, total: 999) }
   subject(:messenger) { Messenger.new(client, order, credentials) }
 
