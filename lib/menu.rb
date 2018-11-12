@@ -1,6 +1,6 @@
 class Menu
 
-  def initialize(list_of_dishes = [{dish_name: nil, dish_price: nil}])
+  def initialize(list_of_dishes)
     @list_of_dishes = list_of_dishes
     @order = []
   end
@@ -14,7 +14,7 @@ class Menu
   end
 
   def select_dish(dish, quantity)
-    @order << {dish_name: dish, quantity: quantity}
+    quantity.times {@order << { @list_of_dishes[dish] }}
   end
 
   def get_order
