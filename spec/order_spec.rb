@@ -23,7 +23,7 @@ describe Order do
 
     it "can add a dish multiple times" do
       expect(restaurant).to receive(:dish).with("Eggs").exactly(5).times
-      order.add("Eggs",5)
+      order.add("Eggs", 5)
     end
   end
 
@@ -32,8 +32,8 @@ describe Order do
     before "adds 5 eggs and 3 sausages to the order" do
       allow(restaurant).to receive(:dish).with("Eggs").and_return(dish_eggs)
       allow(restaurant).to receive(:dish).with("Sausages").and_return(dish_sausages)
-      order.add("Eggs",2)
-      order.add("Sausages",1)
+      order.add("Eggs", 2)
+      order.add("Sausages", 1)
     end
 
     it "prints the order and checks the total is correct" do
@@ -47,8 +47,8 @@ describe Order do
     before "adds 5 eggs and 3 sausages to the order" do
       allow(restaurant).to receive(:dish).with("Eggs").and_return(dish_eggs)
       allow(restaurant).to receive(:dish).with("Sausages").and_return(dish_sausages)
-      order_no_text.add("Eggs",2)
-      order_no_text.add("Sausages",1)
+      order_no_text.add("Eggs", 2)
+      order_no_text.add("Sausages", 1)
     end
 
     it "sends the order to the restaurant" do
@@ -73,7 +73,7 @@ describe Order do
       order_no_text.send_text
     end
 
-    it "sends the message"do
+    it "sends the message" do
       expect(twilio).to receive(:sid)
       order_no_text.send_text
     end

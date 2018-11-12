@@ -16,6 +16,10 @@ class Restaurant
     find_dish(name)
   end
 
+  def add_dish(dish)
+    @dishes.push(dish)
+  end
+
   private
 
   def find_dish(name)

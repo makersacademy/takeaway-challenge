@@ -16,28 +16,30 @@ class Order
     @restaurant.list_dishes
   end
 
-  def add(name,quantity = 1)
+  def add(name, quantity = 1)
     quantity.times { order << @restaurant.dish(name) }
   end
 
   def check
-    order_check = ""
+    check = ""
     total = 0
     @order.each do |dish|
       total += dish.price
-      order_check << "\n#{dish.name} - #{dish.price}"
+      check << "\n#{dish.name} - #{dish.price}"
     end
-    order_check << "\nYour total is £#{total}.\nIt will be delivered at #{Time.now.hour + 1}:#{Time.now.min}"
+    check << "\nYour total is £#{total}.\n"
+    check << "It will be delivered at #{Time.now.hour + 1}:#{Time.now.min}"
   end
 
   def confirm
+    @restaurant.confirm(@order)
     send_text
   end
 
   def send_text
     @client = @text_class.new Text::ACCOUNT_SID, Text::AUTH_TOKEN
     message = @client.messages.create(
-        body: self.check,
+        body: check,
         to: Text::MY_NUMBER,
         from: Text::TWILIO_NUMBER)
     puts message.sid
