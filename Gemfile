@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.0'
 gem 'dotenv-rails', groups: [:development, :test]
-# gem 'Twilio'
+gem 'twilio-ruby', '~> 5.15.2'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'

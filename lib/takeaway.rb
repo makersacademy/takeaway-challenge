@@ -4,14 +4,14 @@ require './lib/basket'
 class Takeaway
   attr_accessor :dishes, :basket, :order
 
-  def initialize(basket = Basket, order = Order)
+  def initialize(basket_class = Basket, order_class = Order)
     @dishes = [{id: 1, name: "Pizza", price: 20},
       { id: 2, name: "Kebab", price: 12 },
       { id: 4, name: "Sushi", price: 22 },
       { id: 5, name: "Burger", price: 10 }
     ]
-    @basket = basket.new
-    @order = order.new
+    @basket = basket_class.new
+    @order = order_class.new
   end  
 
   def see_dishes
@@ -40,7 +40,7 @@ class Takeaway
   end
 
   def place_order
-    order.process(basket)
+    order.process(@basket)
   end
-  
+
 end

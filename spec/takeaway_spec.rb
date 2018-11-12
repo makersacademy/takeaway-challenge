@@ -1,13 +1,15 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:basket) { double("basket")}
+  subject(:takeaway) { Takeaway.new(basket_class,order_class)}
+  let(:basket_class) { double("basket_class", :new => basket)}
+  let(:order_class) { double("order_class", :new => order)}
+  let(:basket) { double("basket", :add => true)}
   let(:order) { double("order") }
-  subject(:takeaway) { Takeaway.new(basket,order)}
 
   it 'shows a list of dishes with prices' do
     takeaway.dishes = [{ name: "Pizza", price: 20 }]
-    expect { takeaway.see_dishes.length }.to output("Name: Pizza |||| Price: £20\n").to_stdout
+    expect { takeaway.see_dishes }.to output("Name: Pizza |||| Price: £20\n").to_stdout
   end
 
   context 'select pizza as only item' do
@@ -18,13 +20,18 @@ describe Takeaway do
       expect(takeaway).to receive(:gets).and_return("Pizza")
       expect(takeaway).to receive(:gets).and_return(quantity)
       expect(takeaway).to receive(:gets).and_return("exit")
-      expect(basket).to receive(:add).and_return(true)
+      
       takeaway.select_dish
-      expect {takeaway.select_dish}.to output("What dish would you like? (type exit to complete selection)").to_stdout
+      # expect {takeaway.select_dish}.to output("What dish would you like? (type exit to complete selection)").to_stdout
     end
 
     it 'should respond to place_order' do
       expect(takeaway).to respond_to(:place_order)
+    end
+
+    it 'can place order' do
+      expect(order).to receive(:process).with(basket)
+      takeaway.place_order
     end
 
   end
