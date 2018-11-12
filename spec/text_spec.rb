@@ -3,7 +3,7 @@ require 'text'
 describe Text do
 
   let(:client) { double :client }
-  subject(:text) { described_class.new(client) }
+  subject(:text) { described_class.new(client, ENV["TWILIO_SID_TEST"], ENV["TWILIO_KEY_TEST"]) }
 
   before "Allow to receive all methods" do
     allow(client).to receive(:new).and_return(client)

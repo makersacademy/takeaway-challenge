@@ -49,12 +49,12 @@ describe Order do
       order.add("Sausages", 1)
     end
 
-    # it "sends the order to the restaurant" do
-    #   allow(order).to receive(:send).with(anything()).and_return("Text sent")
-    #   eggs_2_sausages_1 = [dish_eggs, dish_eggs, dish_sausages]
-    #   expect(restaurant).to receive(:confirm).with(eggs_2_sausages_1)
-    #   order.confirm
-    # end
+    it "sends the order to the restaurant" do
+      allow(order).to receive(:send).with(anything()).and_return("Text sent")
+      eggs_2_sausages_1 = [dish_eggs, dish_eggs, dish_sausages]
+      expect(restaurant).to receive(:confirm).with(eggs_2_sausages_1)
+      order.confirm
+    end
 
     it 'calls text.rb and sends a text' do
       expect(order).to receive(:send).with(anything()).and_return("Text sent")
