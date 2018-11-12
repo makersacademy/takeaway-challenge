@@ -36,6 +36,10 @@ class Menu
 			total += dish.price
 		end
 		puts "Your order comes to a total of £#{total}"
+<<<<<<< HEAD
 		@text.send_message(total)
+=======
+		text = Text.new.send_message(total)
+>>>>>>> dea10be23a967657b87756319dad8b47d378e8bb
 	end
 end
