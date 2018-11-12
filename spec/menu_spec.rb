@@ -40,10 +40,8 @@ describe Menu do
       subject.add_dish(broccoli)
       subject.add_dish(aubergine)
       subject.add_dish(pumpkin)
-      expect(STDOUT).to receive(:puts).with("1. broccoli, £2")
-      expect(STDOUT).to receive(:puts).with("2. aubergine, £10000")
-      expect(STDOUT).to receive(:puts).with("3. pumpkin, £3")
-      subject.display_menu
+      displayed = "1. broccoli, £2\n2. aubergine, £10000\n3. pumpkin, £3\n"
+      expect { subject.display_menu }.to output(displayed).to_stdout
     end
   end
 
