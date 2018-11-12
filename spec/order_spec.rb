@@ -3,7 +3,8 @@ require 'order'
 describe Order do
 
   let(:send_sms)  { double(:send_sms) }
-  let(:menu)      { double(:menu, dish_list: {
+  let(:menu)      { double(:menu, dish_list:
+    {
           'chicken korma' => 5,
           'chicken bhuna' => 6,
           'lamb rogan josh' => 7,
@@ -11,7 +12,9 @@ describe Order do
           'pilau rice' => 2,
           'plain naan' => 3,
           'peshwari naan' => 4
-        })}
+        }
+      )
+    }
 
   let(:order)   { described_class.new(menu, send_sms) }
 
@@ -61,8 +64,8 @@ describe Order do
     end
 
       it 'tells send sms to send a message' do
-      allow(send_sms).to receive(:send).and_return(send_sms)
-      expect(order.confirm).to eq send_sms
+      allow(send_sms).to receive(:send).and_return("message sent")
+      expect(order.confirm).to eq "message sent"
       order.confirm
     end
   end
