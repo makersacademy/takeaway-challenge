@@ -2,8 +2,10 @@ require 'menu'
 
 describe Menu do
 
-  it 'takes a menu as an argument' do
-    expect(subject.display_menu).to eq Menu::DISH_LIST
+  describe '#display_menu' do
+    it 'displays the menu' do
+      expect(subject.display_menu).to eq Menu::DISH_LIST
+    end
   end
 
 end

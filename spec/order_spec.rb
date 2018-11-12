@@ -41,6 +41,7 @@ describe Order do
       order.add_dish('chicken korma')
       order.add_dish('plain naan')
       order.add_dish('pilau rice')
+      allow(order.show_basket).to receive(:puts)
       expect(order.show_basket).to eq "Total: 10"
     end
   end
@@ -54,16 +55,16 @@ describe Order do
     end
   end
 
-  describe '#complete_order' do
-
-    before do
-      allow(order).to receive(:send_text)
-    end
-
-      it 'sends a payment confirmation text message' do
-        expect(order).to receive(:send_text).with("Thank you for your order of £20")
-        order.complete_order(20)
+    describe '#confirm' do
+        it 'allows users to confirm an order' do
+        expect(order).to respond_to :confirm
       end
-
+        it 'tells send sms to send a message' do
+        allow(order).to receive(:confirm)
+        send_sms = double(:send_sms)
+        expect(send_sms).to respond_to(:send)
+        order.confirm
+      end
     end
+    
   end

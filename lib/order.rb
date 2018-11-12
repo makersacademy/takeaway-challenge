@@ -23,19 +23,19 @@ class Order
   end
 
   def show_basket
-    p "Your current order:"
+    "Your current order:"
     @basket.each do |item, _price|
-      p "item: #{item.keys.join} price: #{item.values.join}"
+      "item: #{item.keys.join} price: #{item.values.join}"
     end
-    p "Total: #{finalise_total}"
+    "Total: #{finalise_total}"
   end
 
   def finalise_total
     @total = @price_store.sum
   end
 
-  def complete_order(total_price = @total)
-    send_text("Thank you for your order of £#{total_price}")
+  def confirm
+    @send_sms.send
   end
 
   private
@@ -44,10 +44,6 @@ class Order
     @menu.dish_list.each do |food, price|
       @price_store << price if dish == food
     end
-  end
-
-  def send_text(message)
-    @send_sms.send(message)
   end
 
 end

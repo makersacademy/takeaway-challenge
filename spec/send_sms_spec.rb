@@ -6,25 +6,19 @@ describe SendSms do
   subject { described_class.new(client) }
 
   it 'allows users to send a message' do
-    expect(subject).to respond_to(:send).with(1).argument
+    expect(subject).to respond_to(:send)
   end
 
   it 'calls messages on the twilio client' do
     allow(client).to receive(:create)
     expect(client).to receive(:messages).and_return(client)
-    subject.send("hello")
+    subject.send
   end
 
   it 'calls create on twilio' do
     allow(client).to receive(:messages).and_return(client)
     expect(client).to receive(:create)
-    subject.send("hello")
+    subject.send
   end
 
 end
-
-
-
-# test you are passing in data that you are expecting to pass in
-# check you calling messages and create
-#

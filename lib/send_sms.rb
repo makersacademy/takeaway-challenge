@@ -9,7 +9,7 @@ class SendSms
     @client = client
   end
 
-  def send(message)
+  def send
 
     @client.messages.create
     # (
