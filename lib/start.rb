@@ -1,8 +1,8 @@
 require_relative 'takeaway'
 
 
-# Start app by running '$ ruby start.rb <twilio account sid> <twilio auth token> <phone number>'
+# Start app by adding the following environment variables, then running ruby start.rb
 
-creds = { account_sid: ARGV[0], auth_token: ARGV[1] , from_number: ARGV[2] }
+creds = { account_sid: ENV['A_SID'], auth_token: ENV['AUTH_TOKEN'] , from_number: ENV['FROM_NUMBER'] }
 takeaway = Takeaway.new(creds)
 takeaway.start
