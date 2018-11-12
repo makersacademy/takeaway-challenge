@@ -12,7 +12,7 @@ class Message
 def send_message
     @client.messages.create(
     from: '+441704320460', # Your Twilio number
-    to: '+447481966038.', # Your mobile phone number
+    to: '+xxxx.', # Your mobile phone number
     body: "Thank you! Your order was placed and will be delivered before #{@time + 3600}"
     )
   end
