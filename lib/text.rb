@@ -1,16 +1,16 @@
 require 'twilio-ruby'
+require './config'
 
 class Text
 
 attr_reader :client
 
-	def initialize
-		account_sid = 'ACa1c932796ecd271062330acc94582c1b'
-		auth_token = '6d0f848aed9f061211ad09f5c76b84a0'
-		@client = Twilio::REST::Client.new(account_sid, auth_token)
+	def initialize (config = Config.new)
+		@config = config
+		@client = Twilio::REST::Client.new(@config.account_sid, @config.auth_token)
 
-		@from = '+447481338117' 
-		@to = '+447738623761'
+		@from = @config.from 
+		@to = @config.to
 	end
 	
 
