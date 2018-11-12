@@ -1,8 +1,10 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load('.env')
 
 class Text_sender
-ACCOUNT_SID = 'AC04bc3c411d276059731f2bb3cb259375'
-AUTH_TOKEN = 'a113ded30d75e81269b8cd4a41e12096'
+ACCOUNT_SID = ENV['ACCOUNT_SID']
+AUTH_TOKEN = ENV['AUTH_TOKEN']
 
   def initialize(client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN))
     @account_sid = ACCOUNT_SID
@@ -12,7 +14,7 @@ AUTH_TOKEN = 'a113ded30d75e81269b8cd4a41e12096'
 
   def text_confirmation
     @client.messages.create(
-    from: "+12282313459", # twilio number
+    from: ENV["TWILIO_TRIAL_NO"], # twilio number
     to: ENV["MY_PHONE"], # receive number
     body: "Thank you! Your order was placed and will be delivered before" +
           " #{delivery_time}.")

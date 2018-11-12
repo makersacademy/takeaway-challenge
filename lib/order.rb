@@ -38,7 +38,7 @@ class Order
   end
 
   def print_receipt
-    @text_sender.text_confirmation
+    # @text_sender.text_confirmation
     puts "Order total is :#{@charge}. Order list is as below:"
     @order_list.join("\n")
   end
