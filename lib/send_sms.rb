@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require 'dotenv'
 require 'dotenv/load'
 
 class SendSms
@@ -9,11 +10,10 @@ class SendSms
   end
 
   def send
-      @client.messages.create(
+    @client.messages.create(
       from: 'ENV["TWILIO_NUM"]', # Your Twilio number
       to: 'ENV["MY_NUM"]', # Your mobile phone number
       body: "Thank you! Your order was placed and will be delivered before #{@time}"
-      )
-    end
-
+    )
+  end
 end
