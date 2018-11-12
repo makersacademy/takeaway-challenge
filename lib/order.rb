@@ -22,15 +22,15 @@ class Order
   
   def checkout(phone_number, message = Message.new)
     t = Time.now + 3600
-    content = "\n\nRuby's Ramen!\n\nYour order total is £#{'%.2f' % @total}.\nYour order will be delivered by #{t.strftime("%H:%M")}"
+    content = "\n\nRuby's Ramen!\n\nYour order total is £#{'%.2f' % total}.\nYour order will be delivered by #{t.strftime("%H:%M")}"
     message.send(phone_number, content)
   end
 
-  def show
+  def show(tally = total)
     print "             Your Order\n------------------------------------\n"
     @order.each do |item|
       print "#{item[:num]} x #{item[:item]}#{" " * (32 - item[:num].to_s.length - item[:item].length - ('%.2f' % menu.items[(item[:item])]).to_s.length)}£#{'%.2f' % menu.items[(item[:item])]}\n"
     end
-    print "------------------------------------\nTotal:#{" " * (29 - ('%.2f' % @total).to_s.length)}£#{'%.2f' % @total}\n\n"
+    print "------------------------------------\nTotal:#{" " * (29 - ('%.2f' % tally).to_s.length)}£#{'%.2f' % tally}\n\n"
   end
 end

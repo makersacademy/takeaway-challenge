@@ -39,8 +39,8 @@ describe Order do
   end
   describe "#show" do
     it "should show an itemised list of the customer's order" do
-      foo.add("foo", 1)
-      expect { foo.show() }.to output("             Your Order
+      foo.order << { item: "foo", num: 1 }
+      expect { foo.show(1) }.to output("             Your Order
 ------------------------------------
 1 x foo                        £1.00
 ------------------------------------
