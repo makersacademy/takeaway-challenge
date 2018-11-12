@@ -131,4 +131,4 @@ My approach to solving this challenge
 
 ## Diagram
 
-![Takeaway diagram](takeaway-diagram.png)
+![Diagram](diagram.png)
