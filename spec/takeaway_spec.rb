@@ -13,14 +13,18 @@ describe TakeAway do
       it 'should add the item to the basket' do
         expect(subject.basket).to eq ["American Hot Pizza £7"]
       end
-      it 'second parameter should add that quantity to the basket' do
-        arr = ["American Hot Pizza £7", "Madras Curry £8", "Madras Curry £8"]
-        subject.add_to_order(4,2)
-        expect(subject.basket).to eq arr
-      end
-      it 'second parameter should add that quantity to the cost' do
-        subject.add_to_order(4,2)
-        expect(subject.cost).to eq 23
+
+      describe 'a further group of tests that require another item' do
+        before do
+          subject.add_to_order(4,2)
+        end
+        it 'second parameter should add that quantity to the basket' do
+          arr = ["American Hot Pizza £7", "Madras Curry £8", "Madras Curry £8"]
+          expect(subject.basket).to eq arr
+        end
+        it 'second parameter should add that quantity to the cost' do
+          expect(subject.cost).to eq 23
+        end
       end
     end
 
@@ -34,7 +38,7 @@ describe TakeAway do
         expect(subject.cost).to eq 0
       end
     end
-    
+
     describe '#check_basket' do
       it 'should return string stating total cost' do
         message = "Total cost of items in basket: £7"
