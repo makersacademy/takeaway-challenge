@@ -30,10 +30,6 @@ class Order
     p "Total: #{finalise_total}"
   end
 
-  def finalise_total
-    @total = @price_store.sum
-  end
-
   def confirm
     @send_sms.new.send
   end
@@ -44,6 +40,10 @@ class Order
     @menu.dish_list.each do |food, price|
       @price_store << price if dish == food
     end
+  end
+
+  def finalise_total
+    @total = @price_store.sum
   end
 
 end

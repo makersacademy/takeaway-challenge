@@ -5,6 +5,10 @@ describe Order do
   let(:order)   { described_class.new }
   let(:send_sms){ double(:send_sms) }
 
+  before do
+      allow($stdout).to receive(:write)
+   end
+
   describe '#initialize' do
     it 'creates an empty shopping basket' do
       expect(order.basket).to be_empty
@@ -41,24 +45,15 @@ describe Order do
     end
   end
 
-  describe '#finalise_total' do
-    it 'totals up the prices' do
-      order.add_dish('chicken korma')
-      order.add_dish('plain naan')
-      order.add_dish('pilau rice')
-      expect(order.finalise_total).to eq 10
+  describe '#confirm' do
+      it 'allows users to confirm an order' do
+      expect(order).to respond_to :confirm
+    end
+      it 'tells send sms to send a message' do
+      allow(order).to receive(:confirm)
+      expect(send_sms).to respond_to(:send)
+      order.confirm
     end
   end
-
-    describe '#confirm' do
-        it 'allows users to confirm an order' do
-        expect(order).to respond_to :confirm
-      end
-        it 'tells send sms to send a message' do
-        allow(order).to receive(:confirm)
-        expect(send_sms).to respond_to(:send)
-        order.confirm
-      end
-    end
 
   end
