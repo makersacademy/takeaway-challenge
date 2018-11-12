@@ -16,7 +16,7 @@ class Order
 		order_check = ''
 		total = 0
 		@total_dishes.each do |dish, quantity|
-			@list_dishes.each do |dishes_menu, price|
+			@list_dishes.list.each do |dishes_menu, price|
 				if dish == dishes_menu
 					order_check << "#{dish} - #{quantity} || "
 					total += quantity * price
