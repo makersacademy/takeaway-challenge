@@ -19,10 +19,9 @@ class Takeaway
 
   def order(item, quantity = 1)
     @menu.each { |dish|
-      if dish.name.downcase.start_with? item.downcase
-        @basket_subtotal[dish] += quantity
-        puts "#{quantity}x #{dish.name}(s) added to your basket. \n \n"
-      end
+      next unless dish.name.downcase.start_with? item.downcase
+      @basket_subtotal[dish] += quantity
+      puts "#{quantity}x #{dish.name}(s) added to your basket. \n \n"
     }
   end
 
@@ -42,12 +41,11 @@ class Takeaway
   end
 
   def checkout(phone_number = nil)
-    unless @basket_subtotal.empty?
-      content = "Thank you! Your order will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}"
-        puts content if phone_number.nil?
-        message = Message.new
-        message.send(content) unless phone_number.nil?
-        return true
-    end
+    return false if @basket_subtotal.empty?
+    time = (Time.now + 60 * 60).strftime("%H:%M")
+    content = "Thank you! Your order will be delivered before #{time}"
+    puts content if phone_number.nil?
+    Message.new.send(content) unless phone_number.nil?
+    return true
   end
 end
