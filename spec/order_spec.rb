@@ -66,7 +66,6 @@ describe Order do
       it 'tells send sms to send a message' do
       allow(send_sms).to receive(:send).and_return("message sent")
       expect(order.confirm).to eq "message sent"
-      order.confirm
     end
   end
 end
