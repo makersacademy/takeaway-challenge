@@ -37,11 +37,11 @@ describe Order do
   end
 
   describe '#show_basket' do
-    xit 'prints out the basket' do
+    it 'prints out the basket' do
       order.add_dish('chicken korma')
       order.add_dish('plain naan')
       order.add_dish('pilau rice')
-      expect(order.show_basket).to eq # require test for ouput
+      expect(order.show_basket).to eq "Total: 10"
     end
   end
 

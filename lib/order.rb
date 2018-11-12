@@ -23,18 +23,18 @@ class Order
   end
 
   def show_basket
-    puts "Your current order:"
+    p "Your current order:"
     @basket.each do |item, _price|
-      puts "#{item.keys.join} price: #{item.values.join}"
+      p "#{item.keys.join} price: #{item.values.join}"
     end
-    puts "Total: #{finalise_total}"
+    p "Total: #{finalise_total}"
   end
 
   def finalise_total
     @total = @price_store.sum
   end
 
-  def complete_order(total_price)
+  def complete_order(total_price = @finalise_total)
     send_text("Thank you for your order of £#{total_price}")
   end
 
