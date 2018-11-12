@@ -21,10 +21,6 @@ describe Order do
     it 'adds the menu to the order' do
       expect(order.menu).to be_an_instance_of Menu
     end
-
-    it 'adds the sms service by default' do
-      expect(order.send_sms).to be_an_instance_of SendSms
-    end
   end
 
   describe '#add_dish' do

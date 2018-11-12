@@ -7,7 +7,7 @@ class Order
 
   attr_reader :basket, :price_store, :total, :menu, :send_sms
 
-  def initialize(menu = Menu.new, send_sms = SendSms.new)
+  def initialize(menu = Menu.new, send_sms = SendSms)
     @menu = menu
     @basket = []
     @price_store = []
@@ -23,11 +23,11 @@ class Order
   end
 
   def show_basket
-    "Your current order:"
+    p "Your current order:"
     @basket.each do |item, _price|
-      "item: #{item.keys.join} price: #{item.values.join}"
+      p "item: #{item.keys.join} price: #{item.values.join}"
     end
-    "Total: #{finalise_total}"
+    p "Total: #{finalise_total}"
   end
 
   def finalise_total
@@ -35,7 +35,7 @@ class Order
   end
 
   def confirm
-    @send_sms.send
+    @send_sms.new.send
   end
 
   private
