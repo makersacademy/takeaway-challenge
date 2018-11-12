@@ -13,11 +13,15 @@ class Takeaway
   end
 
   def order(dish, quantity = 1)
-    @order.add_order(dish, quantity)
+    @order.add_to_order(dish, quantity)
   end
 
   def view_basket
     @order.basket
+  end
+
+  def total_bill
+    @order.total_order
   end
 
 end
