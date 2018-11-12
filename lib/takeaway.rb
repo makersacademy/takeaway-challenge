@@ -40,21 +40,7 @@ class Takeaway
   end
 
   def place_order
-
     order.process(basket)
-    
-  #   basket.each do |dish|
-  #     puts "Name: #{dish[:name]} |||| Price: £#{dish[:price]}\n"
-  #   end 
-  #   puts "-----------"
-  #   puts "total £#{total}"
-  #   puts "Thank you! Your order was placed and will be delivered before #{delivery_time} O'Clock"
   end
-
-  # def delivery_time
-  #   time = Time.new
-  #   time.hour + 1
-  #   "#{time.hour + 1}:#{time.minute}"
-  # end
   
 end

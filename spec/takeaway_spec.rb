@@ -20,6 +20,7 @@ describe Takeaway do
       expect(takeaway).to receive(:gets).and_return("exit")
       expect(basket).to receive(:add).and_return(true)
       takeaway.select_dish
+      expect {takeaway.select_dish}.to output("What dish would you like? (type exit to complete selection)").to_stdout
     end
 
     it 'should respond to place_order' do

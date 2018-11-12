@@ -1,9 +1,12 @@
 require 'twilio-ruby' 
+require 'dotenv'
+Dotenv.load
+
 class Send_message
 
 def self.send
-  account_sid = 'AC9b1f564c8a8482f73893fa3ed349d5bd'
-  auth_token = '1a7408fb6f14309400dfb723b2d2a6f9'
+  account_sid = ENV['ACCOUNT_SID']
+  auth_token = ENV['AUTH_TOKEN']
   client = Twilio::REST::Client.new(account_sid, auth_token)
   
   from = '+441749200145' # Your Twilio number
