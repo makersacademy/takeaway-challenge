@@ -7,7 +7,7 @@ class Order
 
   attr_reader :basket, :price_store, :total, :menu, :send_sms
 
-  def initialize(menu = Menu.new, send_sms = SendSms)
+  def initialize(menu = Menu.new, send_sms = SendSms.new)
     @menu = menu
     @basket = []
     @price_store = []
@@ -31,7 +31,7 @@ class Order
   end
 
   def confirm
-    @send_sms.new.send
+    @send_sms.send
   end
 
   private

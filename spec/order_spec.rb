@@ -2,8 +2,18 @@ require 'order'
 
 describe Order do
 
-  let(:order)   { described_class.new }
-  let(:send_sms){ double(:send_sms) }
+  let(:send_sms)  { double(:send_sms) }
+  let(:menu)      { double(:menu, dish_list: {
+          'chicken korma' => 5,
+          'chicken bhuna' => 6,
+          'lamb rogan josh' => 7,
+          'plain rice' => 1,
+          'pilau rice' => 2,
+          'plain naan' => 3,
+          'peshwari naan' => 4
+        })}
+
+  let(:order)   { described_class.new(menu, send_sms) }
 
   before do
       allow($stdout).to receive(:write)
@@ -23,7 +33,7 @@ describe Order do
     end
 
     it 'adds the menu to the order' do
-      expect(order.menu).to be_an_instance_of Menu
+      expect(order.menu).to eq menu
     end
   end
 
@@ -49,11 +59,11 @@ describe Order do
       it 'allows users to confirm an order' do
       expect(order).to respond_to :confirm
     end
+
       it 'tells send sms to send a message' do
-      allow(order).to receive(:confirm)
-      expect(send_sms).to respond_to(:send)
+      allow(send_sms).to receive(:send).and_return(send_sms)
+      expect(order.confirm).to eq send_sms
       order.confirm
     end
   end
-
-  end
+end
