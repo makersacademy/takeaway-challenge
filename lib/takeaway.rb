@@ -1,4 +1,5 @@
 require './lib/dish'
+require './lib/message'
 
 class Takeaway
 
@@ -40,6 +41,13 @@ class Takeaway
     puts "Total: £#{sum.round(2)}"
   end
 
-  def checkout
+  def checkout(phone_number = nil)
+    if !@basket_subtotal.empty?
+      content = "Thank you! Your order will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}"
+        puts content if phone_number.nil?
+        message = Message.new
+        message.send(content) if !phone_number.nil?
+        return true
+    end
   end
 end
