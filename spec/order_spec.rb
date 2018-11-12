@@ -33,11 +33,10 @@ describe Order do
   end
 
   describe '#show_basket' do
-    it 'prints out the basket' do
+    it 'prints out the basket total' do
       order.add_dish('chicken korma')
       order.add_dish('plain naan')
       order.add_dish('pilau rice')
-      allow(order.show_basket).to receive(:puts)
       expect(order.show_basket).to eq "Total: 10"
     end
   end
