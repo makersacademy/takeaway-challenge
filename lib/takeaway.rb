@@ -4,9 +4,7 @@ require 'twilio-ruby'
 
 class TakeAway
 
-  attr_reader :basket
-  attr_reader :cost
-  attr_reader :menu
+  attr_reader :basket, :cost, :menu
 
   def initialize
     @menu = Menu.new
