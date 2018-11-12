@@ -1,10 +1,10 @@
 class Menu
-	attr_accessor :available_dishes, :cart
+	attr_accessor :available_dishes, :cart, :text
 
-	def initialize
+	def initialize (text = Text.new)
 		@available_dishes = []
 		@cart = []
-		@text = Text.new
+		@text = text
 	end
 
 	def add_dish(dish)
@@ -39,3 +39,5 @@ class Menu
 		@text.send_message(total)
 	end
 end
+
+#Menu is dependent on the Text class
