@@ -54,13 +54,13 @@ describe 'user_stories' do
   #   # on time I would like to receive a text such as "Thank you! Your order
   #   # was placed and will be delivered before 18:52" after I have ordered
   #
-  #   account_sid = "AC9c8b244f0356492969a5f19a729405fe"
-  #   auth_token = "e407b2742416e159bab79a43f30c8cd4"
+  #   account_sid = "*******************************"
+  #   auth_token = "********************************"
   #
   #   @client = Twilio::REST::Client.new account_sid, auth_token
   #   message = @client.messages.create(
   #       body: "Thank You! Your order has been placed!",
-  #       to:   "+447930984305",
-  #       from: "+441301272031")
+  #       to:   "+444573910384",
+  #       from: "+443450924051")
   #   end
   end

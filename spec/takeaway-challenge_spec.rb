@@ -31,14 +31,6 @@ describe Menu do
     expect(menu.calculate).to eq(total)
   end
 
-  # it 'sends sms confirmation of order' do
-  #   RSpec.configure do |config|
-  #     config.before(:each) do
-  #       stub_const("Twilio::REST::Client", FAKESMS)
-  #     end
-  #   end
-  # end
-
   context '#sms' do
     let(:send_sms) { double('fake sms') }
 
