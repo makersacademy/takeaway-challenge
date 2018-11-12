@@ -1,15 +1,17 @@
+require './lib/order'
+require './lib/basket'
+
 class Takeaway
   attr_accessor :dishes, :basket, :order
 
-  def initialize(basket = Basket.new, order = Order.new)
-    @dishes = [{ name: "Pizza", price: 20},
-      { name: "Kebab", price: 12 },
-      { name: "Kebab", price: 12 },
-      { name: "Sushi", price: 22 },
-      { name: "Burger", price: 10 }
+  def initialize(basket = Basket, order = Order)
+    @dishes = [{id: 1, name: "Pizza", price: 20},
+      { id: 2, name: "Kebab", price: 12 },
+      { id: 4, name: "Sushi", price: 22 },
+      { id: 5, name: "Burger", price: 10 }
     ]
-    @basket = basket
-    @order = order
+    @basket = basket.new
+    @order = order.new
   end  
 
   def see_dishes
@@ -26,18 +28,20 @@ class Takeaway
       
       puts "Enter quantity"
       val = gets.to_i
+
       dishes.each do |dish|
-        dish[:quantity] = val
-        basket.add(dish) if dish.has_value?(select.capitalize)
+        if dish.has_value?(select.capitalize)
+          dish[:quantity] = val
+          basket.add(dish)
+        end
       end
+
     end
   end
 
-
-
   def place_order
 
-    order.add(basket,basket.total)
+    order.process(basket)
     
   #   basket.each do |dish|
   #     puts "Name: #{dish[:name]} |||| Price: £#{dish[:price]}\n"

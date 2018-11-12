@@ -14,7 +14,7 @@ class Basket
     # order.process returns true or false if complete or not with error message
     # if order call good order will store this info in user account order history
     # if all good, basket.clear
-  end  
+  end 
   
   def total
     items.inject(0) do |sum, hash| 
