@@ -2,31 +2,38 @@ require 'Order'
 
 describe Order do
 
-  it 'puts the requested items into the order' do
-    takeaway = Takeaway.new
-    takeaway.populate_menu
-    order = Order.new("1 Chicken jalfrezi, 2 Lamb bhuna, £26.00", takeaway.menu)
-    expect(order.order_items).to eq([{ name: "Chicken jalfrezi", quantity: 1 }, { name: "Lamb bhuna", quantity: 2 }])
+  dish_1_name = "Chicken jalfrezi"
+  dish_1_price = 7.99
+  dish_2_name = "Lamb bhuna"
+  dish_2_price = 8.99
+
+  let(:dish_1_dbl) { double(:name => dish_1_name, :price => dish_1_price) }
+  let(:dish_2_dbl) { double(:name => dish_2_name, :price => dish_2_price) }
+
+  it 'adds one requested item to the order' do
+    subject.add_item(dish_1_dbl)
+    expect(subject.order_items.size).to eq 1
   end
 
-  it 'stores the provided total as a number' do
-    takeaway = Takeaway.new
-    takeaway.populate_menu
-    order = Order.new("1 Chicken jalfrezi, £8.00", takeaway.menu)
-    expect(order.provided_total).to eq 8
+  it 'keeps multiple items in the order' do
+    subject.add_item(dish_1_dbl)
+    subject.add_item(dish_2_dbl)
+    expect(subject.order_items.size).to eq 2
   end
 
-  it 'correctly calculates the total if more than one of a dish is ordered' do
-    takeaway = Takeaway.new
-    takeaway.populate_menu
-    order = Order.new("2 Chicken jalfrezi, £16.00", takeaway.menu)
-    expect(order.calculated_total).to eq 16
+  it 'correctly reports the order' do
+    subject.add_item(dish_1_dbl)
+    subject.add_item(dish_2_dbl)
+    expected_dish_1 = [dish_1_name, dish_1_price]
+    expected_dish_2 = [dish_2_name, dish_2_price]
+    expected_output = [expected_dish_1, expected_dish_2]
+    expect(subject.list_order).to eq expected_output
   end
 
-  it 'raises an error if an incorrect total is given when ordering' do
-    takeaway = Takeaway.new
-    takeaway.populate_menu
-    expect { Order.new("1 Chicken jalfrezi, £7.00", takeaway.menu) }.to raise_error(RuntimeError, "Wrong total")
+  it 'correctly calculates the total' do
+    subject.add_item(dish_1_dbl)
+    subject.add_item(dish_2_dbl)
+    expect(subject.give_total).to eq(dish_1_price + dish_2_price)
   end
 
 end

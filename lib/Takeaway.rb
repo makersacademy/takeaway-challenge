@@ -1,13 +1,11 @@
 require_relative 'Order'
 require_relative 'Dish'
-require_relative 'twilio_parameters'
-require 'twilio-ruby'
+require_relative 'Output'
 
-# twilio_parameters.rb should contain the following:
-# $account_sid = "...."
-# $auth_token = "...."
-# $twilio_num = "+441392..."
-# $customer_num = "+447540..."
+EMPTY_ORDER_ERROR = "Order is empty!"
+TOTAL_MISMATCH_ERROR = "Provided total doesn't match order total!"
+SUCCESSFUL_ORDER_MESSAGE =  "Thank you! Your order was placed "\
+                            "and will be delivered before"
 
 class Takeaway
 
@@ -25,7 +23,6 @@ class Takeaway
 
   def initialize
     @menu = Array.new
-    @orders = Array.new
   end
 
   def add_dish(name, price)
@@ -40,29 +37,67 @@ class Takeaway
 
   def display_menu
     @menu.each do |dish|
-      puts "#{dish.name}: #{currency(dish.price)}"
+      puts "#{dish.name}: #{number_to_currency(dish.price)}"
     end
   end
 
-  def order(received_order)
-    new_order = Order.new(received_order, menu)
-    @orders << new_order
-    msg = order_success_message(new_order)
-#    text_message($twilio_num, $customer_num, msg, $account_sid, $auth_token)
+  def add_to_order(input)
+    item, quantity = interpret_order_input(input)
+    menu_item = menu.select { |dish| dish.name == item }.first
+    raise "#{item} is not on the menu!" if menu_item.nil?
+    @customer_order = current_order_check
+    quantity.times { @customer_order.add_item(menu_item) }
   end
 
-  def order_success_message(order)
-    time = order.delivery_time.strftime("%k:%M")
-    "Thank you! Your order was placed and will be delivered before #{time}"
+  def view_order(order = @customer_order)
+    error_if_empty_order
+    order.list_order.uniq.each do |item|
+      quantity = order.list_order.count(item)
+      name = item[0]
+      cost = number_to_currency(item[1] * quantity)
+      puts "#{quantity}x #{name} = #{cost}"
+    end
+  end
+
+  def view_total(order = @customer_order)
+    puts number_to_currency(order.give_total)
+  end
+
+  def current_order_check
+    @customer_order.nil? ? Order.new : @customer_order
+  end
+
+  def remove_from_order(item)
+  end
+
+  def interpret_order_input(input)
+    return [input, 1] unless input.chr.match?(/[[:digit:]]/)
+    input_array = input.split(" ", 2)
+    [input_array[1].strip, input_array[0].strip.to_i]
+  end
+
+  def error_if_empty_order
+    raise EMPTY_ORDER_ERROR if @customer_order.nil?
+  end
+
+  def place_order(provided_total, output = Sms)
+    error_if_empty_order
+    raise TOTAL_MISMATCH_ERROR if provided_total != @customer_order.give_total
+    @customer_order.confirm_order
+    output.new(order_success)
+  end
+
+  def order_success
+    time = @customer_order.delivery_time.strftime("%k:%M")
+    SUCCESSFUL_ORDER_MESSAGE + time
   end
 
 end
 
-def currency(value, sign = "£")
+def number_to_currency(value, sign = "£")
   "#{sign}#{'%.2f' % value}"
 end
 
-def text_message(from, to, text, sid, token)
-  @client = Twilio::REST::Client.new(sid, token)
-  message = @client.messages.create(body: text, from: from, to: to)
+def currency_to_number(value)
+  value[0].match?(/[[:digit:]]/) ? value.to_f : value[1..-1].to_f
 end
