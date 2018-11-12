@@ -61,10 +61,9 @@ describe Order do
       end
         it 'tells send sms to send a message' do
         allow(order).to receive(:confirm)
-        send_sms = double(:send_sms)
         expect(send_sms).to respond_to(:send)
         order.confirm
       end
     end
-    
+
   end
