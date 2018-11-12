@@ -30,8 +30,9 @@ Takeaway Challenge
 "Your current order:"
 "item: chicken korma price: 5"
 "item: pilau rice price: 2"
-"Total: 7"
- => "Total: 7"
+"item: peshwari naan price: 4"
+"Total: 11"
+ => "Total: 11"
 2.5.0 :007 > order.confirm
  ```
 
