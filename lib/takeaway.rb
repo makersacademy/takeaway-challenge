@@ -5,19 +5,16 @@ require_relative 'order'
 require_relative 'messenger'
 
 class Takeaway
-  attr_reader :inputs
-
 # :nocov:
-  def initialize
+  def initialize(creds, client = Twilio::REST::Client, menu = Menu)
     @menu_data = [ { id: 1, name: 'Chicken Korma', description: 'Mild cream based curry', price: 599 },
                    { id: 2, name: 'Vindaloo', description: 'Very hot curry', price: 699 },
                    { id: 3, name: 'Tikka', description: 'Dry curry', price: 499 } ]
-    @inputs = ARGV
-    @accont_sid = @inputs[0]
-    @auth_token = @inputs[1]
-    @from_number = @inputs[2]
-    @menu = Menu.new(@menu_data)
-    @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+    @accont_sid = creds[:account_sid]
+    @auth_token = creds[:auth_token]
+    @from_number = creds[:from_number]
+    @menu = menu.new(@menu_data)
+    @client = client.new(@account_sid, @auth_token)
     @messenger = nil
   end
 
