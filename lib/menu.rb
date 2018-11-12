@@ -4,6 +4,7 @@ class Menu
 	def initialize
 		@available_dishes = []
 		@cart = []
+		@text = Text.new
 	end
 
 	def add_dish(dish)
@@ -35,6 +36,6 @@ class Menu
 			total += dish.price
 		end
 		puts "Your order comes to a total of £#{total}"
-		text = Text.new.send_message(total)
+		@text.send_message(total)
 	end
 end

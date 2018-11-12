@@ -3,7 +3,7 @@ require 'twilio-ruby'
 class Text
 
 attr_reader :client
-
+#config file with credentials
 	def initialize
 		account_sid = 'ACa1c932796ecd271062330acc94582c1b'
 		auth_token = '6d0f848aed9f061211ad09f5c76b84a0'
