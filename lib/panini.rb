@@ -5,7 +5,7 @@ class Menu
   attr_reader :panini
   PANINI = {
     item_number:  { 'Sandwich' => 'Cost' },
-    1 =>          { 'Egg salad' => 7 },
+    1 =>          { 'Egg salad' => 9 },
     2 =>          { 'The Dagwood' => 12 },
     3 =>          { 'The Caprese' => 7 },
     4 =>          { 'Ham and cheese' => 9 },
