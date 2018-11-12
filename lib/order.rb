@@ -6,10 +6,10 @@ class Order
 
   attr_reader :order
 
-  def initialize(restaurant, text_service = Twilio::REST::Client)
+  def initialize(restaurant, text_class = Text)
     @restaurant = restaurant
     @order = []
-    @text_class = text_service
+    @text = text_class.new
   end
 
   def list_dishes
@@ -33,16 +33,11 @@ class Order
 
   def confirm
     @restaurant.confirm(@order)
-    send_text
+    send(check)
   end
 
-  def send_text
-    @client = @text_class.new Text::ACCOUNT_SID, Text::AUTH_TOKEN
-    message = @client.messages.create(
-        body: check,
-        to: Text::MY_NUMBER,
-        from: Text::TWILIO_NUMBER)
-    puts message.sid
+  def send(check)
+    @text.send(check)
   end
 
 end
