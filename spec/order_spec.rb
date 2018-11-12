@@ -20,7 +20,7 @@ describe Order do
 
     it 'returns what you added so far' do
         subject.choose_items(1, 2)
-        expect(subject.order_so_far).to eq "Order total is £14"
+        expect(subject.order_so_far).to eq "Order total is £#{Menu::PANINI.values[1].values[0] * 2}"
     end
   end
 
@@ -31,13 +31,13 @@ describe Order do
 
     it 'returns the total amount of the order' do
       subject.choose_items(1, 2)
-      expect(subject.check_total).to eq 14
+      expect(subject.check_total).to eq Menu::PANINI.values[1].values[0] * 2
     end
 
     it 'returns the total amount of the order' do
       subject.choose_items(1, 2)
       subject.choose_items(2, 3)
-      expect(subject.check_total).to eq 50
+      expect(subject.check_total).to eq (Menu::PANINI.values[1].values[0] * 2) + (Menu::PANINI.values[2].values[0] * 3)
     end
 
     it 'returns the total amount of the order' do
@@ -45,7 +45,7 @@ describe Order do
       subject.choose_items(2, 3)
       subject.check_total
       subject.choose_items(1, 1)
-      expect(subject.check_total).to eq 57
+      expect(subject.check_total).to eq (Menu::PANINI.values[1].values[0] * 2) + (Menu::PANINI.values[2].values[0] * 3) + (Menu::PANINI.values[1].values[0])
     end
   end
 
