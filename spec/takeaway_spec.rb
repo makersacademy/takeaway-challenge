@@ -29,13 +29,16 @@ describe TakeAway do
     end
 
     describe '#empty_basket' do
-      it 'basket should show an empty array' do
+      before do
         subject.empty_basket
-        expect(subject.basket).to eq []
       end
-      it 'cost should reset to 0' do
-        subject.empty_basket
-        expect(subject.cost).to eq 0
+      describe 'a further group of tests that require empty basket' do
+        it 'basket should show an empty array' do
+          expect(subject.basket).to eq []
+        end
+        it 'cost should reset to 0' do
+          expect(subject.cost).to eq 0
+        end
       end
     end
 
