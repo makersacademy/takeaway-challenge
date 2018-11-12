@@ -5,6 +5,7 @@ describe TakeAway do
     before do
       subject.add_to_order(2)
     end
+
     describe '#add_to_order' do
       it 'should update the cost' do
         expect(subject.cost).to eq 7
@@ -22,6 +23,7 @@ describe TakeAway do
         expect(subject.cost).to eq 23
       end
     end
+
     describe '#empty_basket' do
       it 'basket should show an empty array' do
         subject.empty_basket
@@ -32,6 +34,7 @@ describe TakeAway do
         expect(subject.cost).to eq 0
       end
     end
+    
     describe '#check_basket' do
       it 'should return string stating total cost' do
         message = "Total cost of items in basket: £7"

@@ -45,7 +45,7 @@ class TakeAway
         body: "Your order will be delivered by #{t.strftime "%H:%M"}",
         to: m.my_num,
         from: m.twilio_num)
-
+    empty_basket
     message.sid
   end
 
