@@ -1,20 +1,18 @@
 require 'twilio-ruby'
-require './ignore/info'
+require './ignore/info.rb'
 
 class Message
   attr_reader :client
-  include Info
 
-  def initialize
-    account_sid = my_account_sid
-    auth_token = my_auth_token
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+  def initialize(client_class = Twilio::REST::Client, info = Info.new)
+    @info = info
+    @client = client_class.new(@info.my_account_sid, @info.my_auth_token)
   end
 
   def send(content)
-    @client.messages.create(
+    @client.messages.create({
       body: content,
-      to: test_to_number,
-      from: test_from_number)
+      to: @info.test_to_number,
+      from: @info.test_from_number })
   end
 end

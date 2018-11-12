@@ -54,7 +54,7 @@ describe Takeaway do
     end
     it 'sends a text message if an order exists and given a phone number' do
       two_chick_wings
-      expect (subject.checkout("07341928374")).to eq true
+      expect(subject.checkout("07341928374")).to eq true
     end
   end
 end

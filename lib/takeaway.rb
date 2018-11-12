@@ -42,11 +42,11 @@ class Takeaway
   end
 
   def checkout(phone_number = nil)
-    if !@basket_subtotal.empty?
+    unless @basket_subtotal.empty?
       content = "Thank you! Your order will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M")}"
         puts content if phone_number.nil?
         message = Message.new
-        message.send(content) if !phone_number.nil?
+        message.send(content) unless phone_number.nil?
         return true
     end
   end
