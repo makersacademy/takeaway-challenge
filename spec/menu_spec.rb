@@ -53,30 +53,15 @@ describe Menu do
 			allow(subject).to receive(:gets).and_return("1\n", "2\n", "done\n")
 		end
 		it 'should total up items in the cart' do
-<<<<<<< HEAD
 			text = Text.new
 			total = dish1.price + dish2.price
 			message = "Thank you for your order: £#{total}"
 			allow(text).to receive(:send_message) {:total}
-=======
->>>>>>> dea10be23a967657b87756319dad8b47d378e8bb
 			subject.add_dish(dish1)
 			subject.add_dish(dish2)
 			subject.get_selection
 
 			expect{subject.checkout}.to output("Your order comes to a total of £#{dish1.price + dish2.price}""\n").to_stdout
-		end
-
-		it 'send a text message' do
-			text = Text.new
-			total = dish1.price + dish2.price
-			message = "Thank you for your order: £#{total}"
-			expect(text).to receive(:send_message) {:total}
-			subject.add_dish(dish1)
-			subject.add_dish(dish2)
-			subject.get_selection
-
-			expect(subject.checkout).to eq(message)
 		end
 	end
 end
