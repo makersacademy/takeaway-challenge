@@ -1,7 +1,7 @@
 class Menu
   attr_reader :items
 
-  def initialize(items ={
+  def initialize(items = {
     "Shoryu Ganso Tonkotsu" => 9.50,
     "Kotteri Hakata Tonkotsu" => 9.90,
     "Dracula Tonkotsu" => 9.90,
@@ -16,7 +16,8 @@ class Menu
 
   def show
     items.each do |key, value|
-      print "#{key}#{" " * (35 - key.length - ('%.2f' % value).to_s.length)}£#{'%.2f' % value}\n"
+      print "#{key}#{" " * (35 - key.length - ('%.2f' % value).to_s.length)}"
+      print "£#{'%.2f' % value}\n"
     end
     print "\n"
   end

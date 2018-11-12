@@ -1,7 +1,8 @@
 require_relative 'order'
 
 class UserInterface
-  attr_reader :new_order, :user_input_item, :user_input_num, :user_input_mobile
+  attr_reader :new_order
+  attr_reader :user_input_item, :user_input_num, :user_input_mobile
   
   def initialize
     @new_order = Order.new
@@ -9,17 +10,19 @@ class UserInterface
   
   def close
     system "clear"
-    print "\n     Ruby's Ramen!\n-----------------------\nThank you for visiting.\nPlease come again soon.\n\n"
+    print "\n     Ruby's Ramen!\n-----------------------\n"
+    print "Thank you for visiting.\nPlease come again soon.\n\n"
     exit
   end
   
   def oops
-    print "Did you make a mistake?\n(type 'cancel' if you don't wish to continue)\n"
+    print "Did you make a mistake?\n"
+    print "(type 'cancel' if you don't wish to continue)\n"
   end
   
   def mobile_number
     while true
-      @user_input_mobile = gets.chomp
+      @user_input_mobile = gets.chomp.downcase
       if user_input_mobile == "cancel"
         break
       elsif (user_input_mobile =~ /\D/) != nil
@@ -46,7 +49,7 @@ class UserInterface
         break
       elsif (user_input_num =~ /\D/) != nil
         oops()
-      else 
+      else
         new_order.add(user_input_item.split.map(&:capitalize).join(" "), user_input_num.to_i); break
       end
     end
@@ -80,7 +83,8 @@ class UserInterface
   end
   
   def header
-    print "\n      Welcome to Ruby's Ramen!\n------------------------------------\n"
+    print "\n      Welcome to Ruby's Ramen!\n"
+    print "------------------------------------\n"
     new_order.menu.show
     order_check_a()
     print "'Exit' to leave.\n\n"

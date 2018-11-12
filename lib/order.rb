@@ -22,15 +22,23 @@ class Order
   
   def checkout(phone_number, message = Message.new)
     t = Time.now + 3600
-    content = "\n\nRuby's Ramen!\n\nYour order total is £#{'%.2f' % total}.\nYour order will be delivered by #{t.strftime("%H:%M")}"
+    content = "\n\nRuby's Ramen!\n\nYour order total is £#{'%.2f' % total}.
+Your order will be delivered by #{t.strftime("%H:%M")}"
     message.send(phone_number, content)
   end
 
   def show(tally = total)
     print "             Your Order\n------------------------------------\n"
     @order.each do |item|
-      print "#{item[:num]} x #{item[:item]}#{" " * (32 - item[:num].to_s.length - item[:item].length - ('%.2f' % menu.items[(item[:item])]).to_s.length)}£#{'%.2f' % menu.items[(item[:item])]}\n"
+      print "#{item[:num]} x #{item[:item]}"
+      quantity_length = item[:num].to_s.length
+      item_length = item[:item].length
+      cost_length = ('%.2f' % menu.items[(item[:item])]).to_s.length
+      print "#{" " * (32 - quantity_length - item_length - cost_length)}"
+      print "£#{'%.2f' % menu.items[(item[:item])]}\n"
     end
-    print "------------------------------------\nTotal:#{" " * (29 - ('%.2f' % tally).to_s.length)}£#{'%.2f' % tally}\n\n"
+    print "------------------------------------\n"
+    print "Total:#{" " * (29 - ('%.2f' % tally).to_s.length)}"
+    print "£#{'%.2f' % tally}\n\n"
   end
 end
