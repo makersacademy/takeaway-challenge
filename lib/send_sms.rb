@@ -11,8 +11,8 @@ class SendSms
 
   def send
     @client.messages.create(
-      from: 'ENV["TWILIO_NUM"]', # Your Twilio number
-      to: 'ENV["MY_NUM"]', # Your mobile phone number
+      from: ENV["TWILIO_NUM"], # Your Twilio number
+      to: ENV["MY_NUM"], # Your mobile phone number
       body: "Thank you! Your order was placed and will be delivered before #{@time}"
     )
   end
