@@ -1,5 +1,4 @@
 require 'order'
-<<<<<<< HEAD
 
 describe Order do
   subject(:order) { described_class.new }
@@ -14,7 +13,6 @@ describe Order do
                                         { "Stuffed pumpkin" => 12},
                                         { "Vegan chilli" => 15},
                                         { "Vegan brownies" => 8}]
-=======
 require 'menu'
 
 describe Order do
@@ -30,6 +28,5 @@ describe Order do
   it "should return the total amount for the order" do
     order.price_per_dish
     expect(order.total).to eq 28
->>>>>>> ffee618... create test and methods for totalling the order amount
   end
 end
