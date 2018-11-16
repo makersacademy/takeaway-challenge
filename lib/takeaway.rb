@@ -2,25 +2,29 @@
 class Takeaway
 
   def initialize(menu = Menu.new)
+    @menu = menu
     @item = []
     @total = []
+  end
+
+  def list_items
+    @menu.list_items
   end
 
 
   def order_items
     p "What would you like to order?"
     p "To finish ordering please type end"
-    input = ""
-    while input = gets.chomp
+    input = gets.chomp
+    while input != "end"
       @item << input
-      break if input == "end"
+      input = gets.chomp
     end
-    p @item.reverse.drop(1)
   end
 
   def order_total
 
-    @item.reverse.drop(1).each do |item|
+    @item.each do |item|
 
       @total << 5  if item == "burger"
 
@@ -34,6 +38,6 @@ class Takeaway
     sum = 0
     @total.each do |i| (sum += i)
     end
-    p "Your order total is #{sum} pounds"
+    p "Your order total is £#{sum}"
   end
 end
