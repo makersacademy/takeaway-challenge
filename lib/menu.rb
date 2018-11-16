@@ -1,6 +1,6 @@
 class Menu
 
-  attr_accessor :dishes
+  attr_reader :dishes
 
   DISHES = {
     "Beef Burger" => 7.00,

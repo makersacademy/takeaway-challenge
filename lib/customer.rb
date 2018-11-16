@@ -23,11 +23,11 @@ class Customer
   end
 
   def display_order
-      order.each do |item, price|
-        puts "#{item.keys.join} - £#{'%.2f' % item.values.join}"
-      end
-      puts "Total cost: £#{'%.2f' % @cost}\nYou have ordered #{order.length} items"
+    order.each do |item, _price|
+      puts "#{item.keys.join} - £#{'%.2f' % item.values.join}"
     end
+    puts "Total cost: £#{'%.2f' % @cost}\nYou have ordered #{order.length} items"
+  end
 
   def complete_order
     text.send_text
@@ -36,6 +36,5 @@ class Customer
   def display_menu
     menu.print_menu
   end
-
 
 end

@@ -1,10 +1,9 @@
 require 'text'
 
 describe 'text' do
-
-  xit 'should send text' do
-    described_class = Text.new
-  expect(described_class.send_text).to eq("Text sent")
+  it 'should send text' do
+    text = Text.new
+    allow(text).to receive(:send_text).and_return("thanks")
+    expect(text.send_text).to eq("thanks")
   end
-
 end
