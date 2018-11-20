@@ -1,6 +1,11 @@
 require 'menu'
 
 describe Menu do
+
+# how to make this better - inject a fake Order when creating the described_class
+# and double that class
+
+
   before do
     allow($stdout).to receive(:write)
   end

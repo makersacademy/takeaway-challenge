@@ -53,6 +53,6 @@ class Menu
     @order.new.order_process
   end
 end
-
+#
 # menu = Menu.new
 # menu.show_menu
