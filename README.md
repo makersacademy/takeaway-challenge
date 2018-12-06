@@ -38,35 +38,27 @@ How to use
 -----
 To see the menu:
 
-In irb:
-require "./lib/menu"
+Type IRB in terminal, then:
 
-menu = Menu.new
-
-menu.print 
-
-
-- Use rspec to run the tests. 
+![screen shot 2018-12-06 at 16 53 00](https://user-images.githubusercontent.com/42243785/49598844-6d997c80-f977-11e8-88cd-e3cf040d1f55.png)
 
 
 To order:
 --------
 
-In irb:
-require "./lib/order"
+In IRB:
 
-order = Order.new
-
-order.new_item("Duck_pancakes", 2)
-
-order.new_item("Noodles", 1)
-
-order.print_order
-
-order.place_order(29)
-
+![screen shot 2018-12-06 at 16 56 55](https://user-images.githubusercontent.com/42243785/49599114-1051fb00-f978-11e8-83c7-53e16f123436.png)
 
 The place_order method intends for the customer to enter what they expect the total bill for the order to be. It sends a text message to confirm the order if this is right, or raises an error if it's not right. (I wasn't sure how to interpret the instructions on placing an order, so I chose for it work like this). 
+
+
+To run the tests
+------
+- Use Rspec
+
+![screen shot 2018-12-06 at 16 47 58](https://user-images.githubusercontent.com/42243785/49598567-d3393900-f976-11e8-9409-c1e785a19ce4.png)
+
 
 
 What went well
