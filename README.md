@@ -55,7 +55,7 @@ The place_order method intends for the customer to enter what they expect the to
 
 To run the tests
 ------
-- Use Rspec
+- Use RSpec
 
 ![screen shot 2018-12-06 at 16 47 58](https://user-images.githubusercontent.com/42243785/49598567-d3393900-f976-11e8-9409-c1e785a19ce4.png)
 
@@ -64,8 +64,8 @@ To run the tests
 What went well
 ------
 
-* This was my first time using doubles and stubs by myself, and I think it went really well
-* The same goes for Depedancy Injection
+* This was my first time using doubles and stubs by myself and I think it went really well
+* The same goes for Dependency Injection
 * For my second weekend challenge at Makers, I'm pleased that my code was very encapsulated
 * I'm really pleased that I got the Twilio gem working, it was my first time learning a new technology like that by myself
 
