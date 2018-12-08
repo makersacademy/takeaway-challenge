@@ -1,3 +1,0 @@
-class Takeaway 
-
-end
