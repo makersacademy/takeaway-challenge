@@ -9,4 +9,8 @@ class TakeAway
     }
   end
 
+  def list
+    
+  end
+
 end

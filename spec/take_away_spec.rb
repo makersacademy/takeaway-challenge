@@ -9,4 +9,7 @@ describe TakeAway do
     expect(takeaway.dish['fried chicken']).to(be_a Float)
   end
 
+  it "list dishes with prices" do
+    expect(takeaway).to respond_to(:list)
+  end
 end
