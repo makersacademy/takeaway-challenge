@@ -5,7 +5,7 @@ RSpec.describe Order do
 
   describe '#initalize' do
     it 'creates an empty order list'do
-      expect(order.order_list).to be_empty
+      expect(order.items_ordered).to be_empty
     end
   end
   describe '#take_order' do 
@@ -14,9 +14,16 @@ RSpec.describe Order do
     end 
     it 'adds the item to the order_list' do
       item = "pizza"
-      expect{ order.take_order(item) }.to change(order.order_list, :count).by(1)
+      expect{ order.take_order(item) }.to change(order.items_ordered, :count).by(1)
       expect(order.take_order(item)).to include(item)
-    end 
+    end
   end 
+  describe '#calculate total' do
+    it 'returns total of order' do
+      order.take_order("pizza")
+      order.take_order("pasta")
+      expect(order.calculate_total).to eq("The total of the items you selected is 19.95")
+    end
+  end
 end
 
