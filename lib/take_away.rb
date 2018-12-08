@@ -10,7 +10,9 @@ class TakeAway
   end
 
   def list
-    
+    @dish.map do |key, value|
+      "#{key} - £ #{value}"
+    end
   end
 
 end
