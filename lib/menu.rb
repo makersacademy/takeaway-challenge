@@ -4,11 +4,11 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = []
+    @dishes = Hash.new(0)
   end
 
-  def add(dish = Dish.new)
-    @dishes << { dish.name => dish.price }
+  def add(dish)
+    @dishes[dish.name] = dish.price
   end
 
 end
