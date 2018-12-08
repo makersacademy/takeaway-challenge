@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.0'
 
+gem 'travis', '~> 1.8', '>= 1.8.8'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'
