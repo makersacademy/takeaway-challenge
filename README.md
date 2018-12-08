@@ -77,3 +77,8 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+Resources 
+------------------
+How to map over an array of hashes: https://medium.freecodecamp.org/ruby-using-the-select-map-and-reduce-methods-together-a9b2af30804b
