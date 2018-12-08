@@ -1,9 +1,12 @@
 class TakeAway
-  attr_reader :name, :price
+  attr_reader :dish
 
-  def initialize(name, price)
-    @name = name
-    @price = price
+  def initialize
+    @dish = {
+    'fried chicken' => 7.00,
+    'plain rice' => 2.00,
+    'steamed vegetables' => 4.50,
+    }
   end
 
 end
