@@ -1,2 +1,7 @@
 class Menu
-end 
+
+  def display
+    ["stake", "ravioli", "augbergine salad"]
+  end
+
+end
