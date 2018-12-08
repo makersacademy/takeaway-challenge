@@ -1,10 +1,14 @@
 class Menu
 
-attr_reader :current_menu
+attr_reader :menu_to_display
+
+def print_menu
+	current_menu
+end
 
 def current_menu
-current_menu = {
-	"Margherita " => 5.50,
+@menu_to_display = {
+	"Margherita" => 5.50,
 	"Quattro stagioni" => 7,
 	"Pepperoni" => 8,
 	"Pollo ad astra" => 6.50,
@@ -16,10 +20,6 @@ current_menu = {
 	"House red (bottle)" => 14.20,
 	"Sticky toffee pudding" => 4.20,
 }
-end
-
-def print_menu
-	current_menu
 end
 
 end
