@@ -1,5 +1,5 @@
 class TakeAway
-  attr_reader :dish
+  attr_reader :dish, :dish_name, :selected_dishes
 
   def initialize
     @dish = {
@@ -13,6 +13,10 @@ class TakeAway
     @dish.map do |key, value|
       "#{key} - £ #{value}"
     end
+  end
+
+  def select_dishes(*dish_name)
+  
   end
 
 end

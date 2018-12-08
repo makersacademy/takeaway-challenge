@@ -3,8 +3,9 @@ describe TakeAway do
 
   subject(:takeaway) { described_class.new }
   let(:dish) { double(:dish) }
+  let(:dish_name) { double(:dish_name) }
   describe 'A TakeAway' do
-    it "know it's dishes" do
+    it "knows it's dishes" do
       expect(takeaway.dish['fried chicken']).to(be_a Float)
     end
 
@@ -12,6 +13,12 @@ describe TakeAway do
       expect(takeaway).to respond_to(:list)
       expect(takeaway.list).to be_truthy
     end
+    
+    before { allow(takeaway).to receive(:select_dishes).with(any_args) }
+    it "selects several dishes available" do
+      expect(takeaway).to respond_to(:select_dishes).with_unlimited_arguments
+    end
+
   end
 
 end
