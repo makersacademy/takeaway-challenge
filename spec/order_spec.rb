@@ -17,13 +17,32 @@ RSpec.describe Order do
       expect{ order.take_order(item) }.to change(order.items_ordered, :count).by(1)
       expect(order.take_order(item)).to include(item)
     end
-  end 
-  describe '#calculate total' do
+    # it 'fail if dish not on the menu' do
+      
+    #   order = Order.new
+    #   item = "bananas"
+    #   thing = order.take_order(item)
+    #   expect{ thing }.to raise_error "dish not on the menu"
+    # end 
+  end
+  describe '#calculate_total' do
+    
+  context 'adds to order before calculation' do 
+    order = Order.new
+    order.take_order("pizza")
+    order.take_order("pasta")
     it 'returns total of order' do
-      order.take_order("pizza")
-      order.take_order("pasta")
-      expect(order.calculate_total).to eq("The total of the items you selected is 19.95")
+      expect(order.calculate_total).to eq( "The total of the items you selected is 19.95")
+    end
+    
+    describe '#print_basket' do
+      
+      it 'returns the items ordered and total' do 
+        expect(order.print_basket).to eq("You have ordered pizza, pasta and the total is 19.95")
+      end 
     end
   end
+  end
 end
+
 
