@@ -3,8 +3,6 @@ require 'menu'
 
 describe Restaurant do 
 
-
-
 let(:restaurant) {Restaurant.new}
 let(:menu) {double :menu}
 let(:current_menu) {double :current_menu}

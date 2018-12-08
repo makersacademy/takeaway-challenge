@@ -16,8 +16,8 @@ class Restaurant
 
   def order
     p "Please enter your order"
-    item = gets.chomp
-    @order.add(item)
+    input = gets.chomp
+    @order.add(input)
   end
 
 end

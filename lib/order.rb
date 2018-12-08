@@ -7,13 +7,14 @@ def initialize
 @total_order = []
 end
 
-def add(item, number = 1)
-  if number != 1
-    number.times do
-      @total_order << item
-    end
+def add(input)
+  order = input.split(" ")
+  if order[1].nil?
+     @total_order << order[0]
   else
-    @total_order << item
+    (order[1].to_i).times do
+      @total_order << order[0]
+    end
   end
 end
 
