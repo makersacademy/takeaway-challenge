@@ -9,7 +9,11 @@ end
 
 def add(input)
   order = input.split(" ")
-  if order[1].nil?
+  input_to_add(order)
+end
+
+def input_to_add(order)
+if order[1].nil?
      @total_order << order[0]
   else
     (order[1].to_i).times do
