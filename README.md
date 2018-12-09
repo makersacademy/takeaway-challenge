@@ -21,9 +21,10 @@ Afterward the basket will be created.<br/>
 This is the interface that the user will use.<br/>
 This class will display the menu, call the order (select item, quantity, until confirm order), show the total, and send a text to the user.<br/>
 
-The test for the order class are not passing at all as I struggled to stub the user input(I wrongly build the code after the feature test but before the spec), and the text for the text class are not build at all as for this one I construct the class first and had not the time to search how to test it.
+The tests for the order class are not passing at all as I struggled to stub the user input(I wrongly build the code after the feature test but before the spec), and the tests for the text class are not build at all as for this one I construct the class first (by looking at Twilio) and had not the time to search how to test it.
 
-The text is not really sent as it is not a free service.
+I send a request to Twilio API to implement the text message.
+The text is not really sent as it is not a free service.<br/>
 
 ## How to use ##
 
