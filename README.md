@@ -2,6 +2,16 @@ Takeaway Challenge
 ==================
 
 ```
+First diagram
+```
+![Image-of-application](https://github.com/AlinaGoaga/takeaway-challenge/blob/master/draft.jpg)
+
+```
+Final diagram
+```
+![Image-of-application](https://github.com/AlinaGoaga/takeaway-challenge/blob/master/final.jpg)
+
+```
 Code
 ```
 The code is structured in 5 classes: Takeaway (main class), Order, Menu, User_input (for placing the order) and Message (for the notification the user gets once the order has been placed) 
