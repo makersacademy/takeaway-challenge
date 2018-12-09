@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'send_sms'
 
 class Order
 
@@ -22,7 +23,10 @@ class Order
   end
 
   def checkout
-    p "Thank you! Your order was placed and will be delivered before 18:52"
+    @time = (Time.now + (60 * 60)).strftime("%k:%M")
+    sms = SMS.new(@time)
+    sms.send_confirmation
+    p "Thank you! Your order will be delivered by #{@time}"
   end
 
 end

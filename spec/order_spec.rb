@@ -69,10 +69,11 @@ describe Order do
     before(:each) do      
       @order = Order.new
       @order.select_items(["Korma"])
+      @time = (Time.now + (60 * 60)).strftime("%k:%M")
     end
 
-    it "returns order confirmation (NO TEXT AT THIS STAGE!)" do
-      expect(@order.checkout).to eq("Thank you! Your order was placed and will be delivered before 18:52")
+    it "returns order confirmation" do
+      expect(@order.checkout).to eq("Thank you! Your order will be delivered by #{@time}")
     end
   end
 
