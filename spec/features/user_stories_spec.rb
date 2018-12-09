@@ -2,19 +2,17 @@ describe 'User stories' do
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  xit 'so customers can order something, list menu with prices' do
-    dish1 = Dish.new(:butter_chicken, 4)
-    dish2 = Dish.new(:lamb_tikka, 5)
+  it 'so customers can order something, list menu with prices' do
+    burger_bar = Order.new
 
-    menu = Menu.new
-    menu.add(dish1)
-    menu.add(dish2)
-
-    curry_house = Takeaway.new(menu.dishes)
-
-    expect(curry_house.menu).to eq({
-      butter_chicken: 4,
-      lamb_tikka: 5
+    expect(burger_bar.menu).to eq({
+      "Hamburger" => 5,
+      "Cheeseburger" => 6,
+      "Bacon Burger" => 7,
+      "Bacon Cheeseburger" => 8,
+      "Hot Dog" => 3,
+      "Veggie Burger" => 4,
+      "BLT" => 6
     })
   end
 

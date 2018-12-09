@@ -12,7 +12,7 @@ class Order
     amount.times { @basket << dish }
   end
 
-  # def total
-  #
-  # end
+  def total
+
+  end
 end

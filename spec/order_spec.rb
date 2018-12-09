@@ -19,11 +19,11 @@ describe Order do
     end
   end
 
-  # describe '#total' do
-  #   it 'totals the prices of all the dishes in the basket' do
-  #     order.add_to_basket("Hamburger", 3)
-  #
-  #     expect(order.total).to eq 15
-  #   end
-  # end
+  describe '#total' do
+    it 'totals the prices of all the dishes in the basket' do
+      order.add_to_basket("Hamburger", 3)
+
+      expect(order.total).to eq 15
+    end
+  end
 end
