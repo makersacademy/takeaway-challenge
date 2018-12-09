@@ -9,4 +9,10 @@ require 'menu'
 # end
 
 describe Menu do
+  subject(:menu) { described_class.new }
+
+  it 'display a list of dishes' do
+  expect(menu).to respond_to(:display)
+
+ end
 end
