@@ -1,4 +1,4 @@
-require_relative 'Menu'
+require_relative 'menu'
 
 class Order
 
@@ -15,8 +15,10 @@ class Order
   end
 
   def total_to_pay
-    total_per_item = order.map { |item, quantity| menu.display[item] * quantity }
-    total_per_item.inject { |item, total| total += item }
+    total_per_item = order.map do
+      |item, quantity| menu.display[item] * quantity
+    end
+    total_per_item.inject { |item, total| total + item }
   end
 
 end
