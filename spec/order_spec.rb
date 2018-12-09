@@ -1,7 +1,8 @@
 require './lib/order'
 require './lib/menu'
+require './lib/takeaway'
 describe Order do
-  let(:order) { Order.new(Menu.new) } #Contructor injection - A  type of dependancy injection
+  let(:order) { Order.new(Takeaway.new('Pollys Pie Emporium')) } #Contructor injection - A  type of dependancy injection
 
   it 'Adds items from the menu to the shopping cart' do
     order.add('Chicken Pie')
@@ -23,10 +24,10 @@ describe Order do
     expect(order.total).to eq(19)
   end
 
-  it 'Can print an order summary with the correct price total' do
+  it 'Prints an order summary' do
     order.add('Chicken Pie')
     order.add('Chicken Pie')
-    order.add('Chicken and Leak')
-    expect(order.total).to eq(16)
+    order.add('Liver Pie')
+    expect(order.receipt).to eq("Chicken Pie . . . . . £5 \nChicken Pie . . . . . £5 \nLiver Pie . . . . . £3 \nThe total for your order is: £13")
   end
 end
