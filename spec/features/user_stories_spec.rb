@@ -50,8 +50,18 @@ describe 'User stories' do
       expect(burger_bar.total).to eq 21
     end
   end
-end
 
 # As a customer
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text after I have ordered
+
+  describe 'so customers can be reassured their order will be delivered' do
+    let(:message) { double :message, send: :txtmsg }
+
+    it 'sends a comfirmation text' do
+      burger_bar.add_to_order("Hamburger", 1)
+
+      expect(burger_bar.checkout(message)).to eq :txtmsg
+    end
+  end
+end
