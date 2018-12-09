@@ -48,7 +48,13 @@ class Takeaway
 
   def print_order
     fail 'Incorrect total' if !sum_correct?
-    "You have ordered: #{@dishes}. Total cost is: £#{@total}."
+    summary = @dishes.each_with_object(Hash.new(0)) { |dish,counts| counts[dish] += 1 }
+    puts "You have ordered the following:"
+    summary.each do |dish, counts|
+      puts "#{dish.capitalize}: x #{counts}"
+    end
+    puts "Total cost: £#{@total}"
+    "Thank-you for your order."
   end
 
 end
