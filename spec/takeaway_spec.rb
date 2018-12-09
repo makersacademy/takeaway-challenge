@@ -49,7 +49,7 @@ RSpec.describe Takeaway do
     takeaway.select_item("SAVELOY", 5)
     takeaway.get_total_cost
     allow(takeaway).to receive(:sum_correct?).and_return(false)
-    expect { takeaway.print_order }.to raise_error 'Incorrect total'
+    expect { takeaway.place_order }.to raise_error 'Incorrect total'
   end
 
   it 'will print order if total price is correct' do
@@ -58,26 +58,26 @@ RSpec.describe Takeaway do
     takeaway.add_item_to_list
     takeaway.get_total_cost
     allow(takeaway).to receive(:sum_correct?).and_return(true)
-    expect(takeaway.print_order).to be_instance_of(String)
+    expect(takeaway.place_order).to be_instance_of(String)
   end
 
-  it 'will send sms if print_order was successful' do
+  it 'will send sms if order was placed' do
     takeaway.menu
     takeaway.select_item("PIZZA", 3)
     takeaway.add_item_to_list
     takeaway.get_total_cost
     allow(takeaway).to receive(:sum_correct?).and_return(true)
-    allow(takeaway).to receive(:print_order).and_return("Thank-you for your order.")
+    allow(takeaway).to receive(:place_order).and_return("Thank-you for your order.")
     expect(takeaway).to respond_to(:send_sms)
   end
 
-  it 'will not send sms if total price is incorrect' do
+  it 'will not send sms if order is not placed' do
     takeaway.menu
     takeaway.select_item("PIZZA", 3)
     takeaway.add_item_to_list
     allow(takeaway).to receive(:sum_correct?).and_return(false)
-    allow(takeaway).to receive(:print_order).and_return("Incorrect total")
-    expect { takeaway.send_sms }.to raise_error 'Cannot send sms until total price is correct'
+    allow(takeaway).to receive(:place_order).and_return("Incorrect total")
+    expect { takeaway.send_sms }.to raise_error 'Cannot send sms until order is placed'
   end
 
 end

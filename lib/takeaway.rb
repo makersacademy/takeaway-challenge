@@ -48,19 +48,19 @@ class Takeaway
     @total == @prices.reduce(0){|sum,num| sum + num } ? true : false
   end
 
-  def print_order
+  def place_order
     fail 'Incorrect total' if !sum_correct?
     summary = @dishes.each_with_object(Hash.new(0)) { |dish,counts| counts[dish] += 1 }
-    puts "You have ordered the following:"
+    p "You have ordered the following:"
     summary.each do |dish, counts|
-      puts "#{dish.capitalize}: x #{counts}"
+     p "#{dish.capitalize}: x #{counts}"
     end
-    puts "Total cost: £#{@total}"
-    "Thank-you for your order."
+    p "Total cost: £#{@total}"
+    p "Thank-you for your order."
   end
 
   def send_sms
-    fail 'Cannot send sms until total price is correct' if !sum_correct?
+    fail 'Cannot send sms until order is placed' if !sum_correct?
     account_sid = 'ACc498e5e24694e51d025e18855db889d1'
     auth_token = '224cf41c7fbdc3727d9388670a7a9a9f'
     client = Twilio::REST::Client.new(account_sid, auth_token)
