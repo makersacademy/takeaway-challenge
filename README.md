@@ -193,7 +193,9 @@ I will, however, try to come back to this challenge during the Christmas holiday
 ## Evaluation
 All of my tests pass, and the sms works. I am therefore happy with my progress.
 
-I successfully used TDD and learned how to use Twilio by using the Twilio docs, so I believe I have met the required goals of this challenge.
+I successfully used TDD and learned how to use Twilio by using the Twilio docs.
+
+However, I was supposed to use the Twilio gem to order items from the menu, which I didn't do. I also put everything in to one class. I therefore believe I have met many of the required goals of this challenge, although not all.
 
 ________________________________________________________________
 
