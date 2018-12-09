@@ -29,11 +29,11 @@ module TakewayInterface
     end
 
     def show_total
-      return Summary.new(@order).run
+      puts Summary.new(@order).run
     end
 
     def send_text
-      Text.new.send_message
+      return Text.new.send_message
     end
 
   end

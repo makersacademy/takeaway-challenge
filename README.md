@@ -23,8 +23,24 @@ This class will display the menu, call the order (select item, quantity, until c
 
 The tests for the order class are not passing at all as I struggled to stub the user input(I wrongly build the code after the feature test but before the spec), and the tests for the text class are not build at all as for this one I construct the class first (by looking at Twilio) and had not the time to search how to test it.
 
-I send a request to Twilio API to implement the text message.
-The text is not really sent as it is not a free service.<br/>
+I send a request to Twilio API to implement the text message.<br/>
+The text is not really sent as it is not a free service. But I am receiving the
+successful response from the API that the message have been sent.<br/>
+
+## Test in IRB ##
+
+In IRB, you can require the *takeaway_interface* file. If you create a new
+instance of the takeway class, and call the method `.run` on it, everything is
+executed and you can actually see the menu, and select what you want to order
+and get the the successful response from the API that the message have been sent.
+The user will just not really receive it.<br/>
+
+```shell
+$ cd takeaway_challenge
+$ irb  -r './lib/takeaway_interface.rb'
+> take = TakewayInterface::Takeway.new
+> take.run
+```
 
 ## How to use ##
 
