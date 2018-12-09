@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'sms'
 
 class Order 
 attr_reader :menu, :items_ordered, :item, :dishes
@@ -9,23 +10,26 @@ attr_reader :menu, :items_ordered, :item, :dishes
     @items_ordered = []
   end 
 
+  def print_menu
+    @menu.dishes
+  end 
+
   def take_order(item)
     @items_ordered << item
-   
-
   end 
 
   def calculate_total
     @price = @menu.dishes.select{|x| x[:name] if @items_ordered.include?(x[:name]) }.map{|y| y[:price].to_f}.inject(:+)
-
-    "The total of the items you selected is #{@price}"
   end 
 
   def print_basket
     @list = @items_ordered.join(", ")
-    "You have ordered #{@list} and the total is #{@price}"
+    "You have ordered #{@list} and the total is #{calculate_total()}"
   end
-  
+
+  def complete_order
+    SMS.new.send_text()
+  end 
 
 end
 
