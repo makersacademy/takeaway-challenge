@@ -89,12 +89,12 @@ Beyond the menu class I would update the existing user feedback loops to give th
 - The menu class would be refactored into two classes, Menu and Menu item. As it stands menu is responsible for both presenting the menu and controlling whats on it. This responsibility could be moved and allow for easier use later on of menu changing methods.
 - Currently the summary, and total methods are ugly, the nested each methods while beautiful in their simplicity I feel could be reworked and perhaps some of the methods split into further private methods.
 - The send SMS module would be reworked to be made more general use friendly. This requires further research into ruby implementation of twilio API.
--The order class is very large and it could be argued that it should be shortened. Perhaps the extraction of certain methods could be done to create an order log class, logging the orders for one restaurant and letting the order class work only to update this class. In effect placing another level between takeaway and order classes.
+- The order class is very large and it could be argued that it should be shortened. Perhaps the extraction of certain methods could be done to create an order log class, logging the orders for one restaurant and letting the order class work only to update this class. In effect placing another level between takeaway and order classes.
 
 #### Refactoring to be done tests
 
 - One test was identified as vacuous after the final tests for user story 4 were completed. This test was adjusted throughout the program due to method name changes and the such and as such it continued to pass despite not testing much. This test is identified via comments in the takeaway_spec file.
--I have currently only used one double throughout my tests for the send sms module. I feel perhaps more could be used to test in isolation, however all tests currently pass at an acceptable level so this would be potentially an academic exercise.
+- I have currently only used one double throughout my tests for the send sms module. I feel perhaps more could be used to test in isolation, however all tests currently pass at an acceptable level so this would be potentially an academic exercise.
 -Menu spec would be given more tests to test ability to hold multiple menus, declare menus and the such in order to test drive the development of this class.
 
 ## Authors
