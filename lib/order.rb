@@ -14,12 +14,12 @@ class Order
 
   def total
     convert_to_prices
-    basket.reduce(0, :+)
+    @item_prices.reduce(0, :+)
   end
 
   private
 
   def convert_to_prices
-    basket.map! { |dish| @menu[dish] }
+    @item_prices = basket.map { |dish| @menu[dish] }
   end
 end

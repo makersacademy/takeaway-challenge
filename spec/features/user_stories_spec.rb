@@ -31,4 +31,20 @@ describe 'User stories' do
       expect { burger_bar.add_to_basket("Hamburger", 2) }.not_to raise_error
     end
   end
+
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  describe 'so customers can verify that their order is correct' do
+    it 'sums the prices of the dishes in the basket' do
+      burger_bar = Order.new
+
+      burger_bar.add_to_basket("Hamburger", 2)
+      burger_bar.add_to_basket("BLT", 1)
+      burger_bar.add_to_basket("Veggie Burger", 2)
+
+      expect(burger_bar.total).to eq 24
+    end
+  end
 end
