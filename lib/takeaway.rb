@@ -8,6 +8,18 @@ class Takeaway
   end
 
   def menu
-    order.menu.dup
+    order.menu
+  end
+
+  def basket
+    order.basket
+  end
+
+  def add_to_order(dish, amount = 1)
+    order.add_to_basket(dish, amount)
+  end
+
+  def total
+    order.total
   end
 end

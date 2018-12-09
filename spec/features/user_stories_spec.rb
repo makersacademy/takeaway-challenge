@@ -1,4 +1,5 @@
 describe 'User stories' do
+  let(:burger_bar) { Takeaway.new }
 
 # As a customer
 # So that I can check if I want to order something
@@ -6,8 +7,6 @@ describe 'User stories' do
 
   describe 'so customers can order something' do
     it 'lists menu with prices' do
-      burger_bar = Order.new
-
       expect(burger_bar.menu).to eq({
         "Hamburger" => 5,
         "Cheeseburger" => 6,
@@ -26,9 +25,7 @@ describe 'User stories' do
 
   describe 'so customers can order a meal' do
     it 'selects some number of dishes and adds them to the basket' do
-      burger_bar = Order.new
-
-      expect { burger_bar.add_to_basket("Hamburger", 2) }.not_to raise_error
+      expect { burger_bar.add_to_order("Hamburger", 2) }.not_to raise_error
     end
   end
 
@@ -37,14 +34,20 @@ describe 'User stories' do
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
   describe 'so customers can verify that their order is correct' do
+    before(:each) do
+      burger_bar.add_to_order("Hamburger", 1)
+      burger_bar.add_to_order("BLT", 2)
+      burger_bar.add_to_order("Veggie Burger", 1)
+    end
+
+    it 'displays the current basket' do
+      expect(burger_bar.basket).to eq [
+        "Hamburger", "BLT", "BLT", "Veggie Burger"
+      ]
+    end
+
     it 'sums the prices of the dishes in the basket' do
-      burger_bar = Order.new
-
-      burger_bar.add_to_basket("Hamburger", 2)
-      burger_bar.add_to_basket("BLT", 1)
-      burger_bar.add_to_basket("Veggie Burger", 2)
-
-      expect(burger_bar.total).to eq 24
+      expect(burger_bar.total).to eq 21
     end
   end
 end
