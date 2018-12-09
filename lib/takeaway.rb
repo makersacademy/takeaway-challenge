@@ -12,16 +12,16 @@ class Takeaway
     @menu.display
   end
 
-  def select_from_menu
-    selection = {}
-    display_menu.each do |item|
+  def order_from_menu
+    order = {}
+    display_menu.each do |item, _|
       number = 0
       if @user_input.ask(item)
         number = @user_input.quantity
       end
-      selection[item] = number if number != 0
+      order[item] = number if number != 0
     end
-    selection
+    order
   end
 
 end
