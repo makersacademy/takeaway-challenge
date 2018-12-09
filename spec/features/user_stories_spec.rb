@@ -51,3 +51,7 @@ describe 'User stories' do
     end
   end
 end
+
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text after I have ordered

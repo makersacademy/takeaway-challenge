@@ -1,4 +1,5 @@
 require_relative 'order'
+require_relative 'message'
 
 class Takeaway
   attr_reader :order
@@ -22,4 +23,16 @@ class Takeaway
   def total
     order.total
   end
+
+  def checkout(message = Message.new)
+    raise "Basket is empty" if empty?
+    message.send
+  end
+
+  private
+
+  def empty?
+    basket.empty?
+  end
+
 end
