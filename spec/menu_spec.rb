@@ -8,4 +8,5 @@ describe Menu do
     expect(menu).to have_attributes(:list => menu.list)
 
   end
+
 end
