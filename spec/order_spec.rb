@@ -35,15 +35,21 @@ describe Order do
 
   context "select_items" do
 
+    before(:each) do
+      @order = Order.new
+    end
+
     it "returns order total" do
-      order = Order.new
-      expect(order.select_items(["Biryani", "Naan"])).to eq(12)
+      expect(@order.select_items(["Biryani", "Naan"])).to eq(12)
     end
 
     it "lets user add items multiple times" do
-      order = Order.new
-      order.select_items(["Korma"])
-      expect(order.select_items(["Pilau rice", "Naan"])).to eq(15)
+      @order.select_items(["Korma"])
+      expect(@order.select_items(["Pilau rice", "Naan"])).to eq(15)
+    end
+
+    it "lets user add multiples of the same item" do
+      expect(@order.select_items(["Korma", "Korma"])).to eq(18)
     end
 
   end
@@ -74,6 +80,11 @@ describe Order do
 
     it "returns order confirmation" do
       expect(@order.checkout).to eq("Thank you! Your order will be delivered by #{@time}")
+    end
+
+    it "sends a text with the delivery time" do
+      expect(@order).to receive(:send_confirmation)
+      @order.send_confirmation(@time)
     end
   end
 
