@@ -27,10 +27,8 @@ class Message
     time.strftime("%H:%M")
   end
 
-  def generate_message(total = 0)
+  def generate_message
     "Thank you! Your order was placed "\
     "and will be delivered before #{delivery_time}"
   end
-
-
 end
