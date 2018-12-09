@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Takeaway
 
   attr_reader :menu, :dishes, :prices, :total, :item, :cost, :quantity
@@ -57,4 +59,19 @@ class Takeaway
     "Thank-you for your order."
   end
 
+  def send_sms
+    fail 'Cannot send sms until total price is correct' if !sum_correct?
+    account_sid = 'ACc498e5e24694e51d025e18855db889d1'
+    auth_token = '224cf41c7fbdc3727d9388670a7a9a9f'
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    from = '+441423740290'
+    to = '+447494454370'
+
+    client.messages.create(
+    from: from,
+    to: to,
+    body: "Thanks for ordering from Baker's Chipshop! Delivery will be within 45mins."
+    )
+  end
 end
