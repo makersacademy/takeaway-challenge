@@ -12,9 +12,17 @@ attr_reader :menu, :order
     end
 
     def place_order(dishes)
-        dishes.each do |dish, quantity|
-            order.add(dish, quantity)
-        end
+      add_dishes(dishes)
+      order.total
+    end
+
+    private
+    
+
+    def add_dishes(dishes)
+      dishes.each do |dish, quantity|
+        order.add(dish, quantity)
+      end
     end
 
 end

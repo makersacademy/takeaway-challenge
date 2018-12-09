@@ -18,10 +18,13 @@ class Menu
 
     def print
        @dishes.each do |item, price|
-          print "Item: #{item}. Price: £#{price}"
+          puts "Item: #{item}. Price: £#{price}"
        end
     end
 
+    def price(dish)
+      dishes[dish]
+    end
 
 
 end
