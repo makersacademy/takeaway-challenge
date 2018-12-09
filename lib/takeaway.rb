@@ -1,17 +1,24 @@
+require_relative 'menu'
+require_relative 'order'
+
 class Takeaway
 
   attr_accessor :menu
 
-  def initialize
-    @menu = { 'Chicken Pie' => 5,
-        'Beef Pie' => 6,
-        'Liver Pie' => 3,
-        'Steak and Kidney' => 3,
-        'Chicken and Leak' => 6
-      }
-    end
-
-  def show_menu
-    @menu.each { |key, value| puts "#{key}: £#{value} \n" }
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
+
+  def display_menu
+    @menu.show_menu
+  end
+
+  def order(order = Order.new(@menu))
+    @order = order
+  end
+
+  def price(order)
+    order.summary << "The total for your order is: £#{order.total}"
+  end
+
 end
