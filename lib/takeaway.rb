@@ -1,27 +1,29 @@
 require_relative 'menu'
 require_relative 'user_input'
+require_relative 'order'
 
 class Takeaway
 
-  def initialize(menu = Menu.new, user_input = UserInput.new)
+  attr_reader :menu, :order, :user_input
+
+  def initialize(menu = Menu.new, user_input = UserInput.new, order = Order.new)
     @menu = menu
     @user_input = user_input
+    @order = order
   end
 
   def display_menu
-    @menu.display
+    menu.display
   end
 
   def order_from_menu
-    order = {}
     display_menu.each do |item, _|
-      number = 0
-      if @user_input.ask(item)
-        number = @user_input.quantity
+      if user_input.ask(item)
+        quantity = user_input.quantity
       end
-      order[item] = number if number != 0
+      order.add(item, quantity) if quantity != nil
     end
-    order
+    order.total_to_pay
   end
 
 end
