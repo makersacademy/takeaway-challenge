@@ -13,9 +13,8 @@ describe Dishes do
 
   it 'shows whole list of dishes' do
     dish = Dishes.new
-    message = "Beatrice's restaurant menu\n1: Seeds £50\n2: Eyeballs £25\n3: Camel Breast £40\n4: shoes £78\n"
+    message = "Beatrice's restaurant menu -\n Seeds £50 \n Eyeballs £25 \n Camel Breast £40 \n shoes £78 \n"
     expect{ dish.viewlist }.to output(message).to_stdout
    end
-
 
 end
