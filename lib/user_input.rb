@@ -3,7 +3,7 @@ class UserInput
   def ask(item)
     puts "Would you like to have #{item}?"
     gets.chomp == 'Yes'
- end
+  end
 
   def quantity
     puts "How many?"

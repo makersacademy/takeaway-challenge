@@ -2,6 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
   let(:menu_double) { double(:menu) }
+  let(:order_double) { double(:order) }
   let(:user_input_double) { double(:user_input) }
   subject(:takeaway) { described_class.new(menu_double, user_input_double) }
 
@@ -12,26 +13,13 @@ describe Takeaway do
 
   describe '#order_from_menu' do
 
-    # it 'returns user selection of items and quantities when the menu has one element' do
-    #   allow(takeaway).to receive(:display_menu).and_return({ "steak" => 10 })
-    #   allow(user_input_double).to receive(:ask).and_return(true)
-    #   allow(user_input_double).to receive(:quantity).and_return(2)
-    #   expect(takeaway.order_from_menu).to eq({ "steak" => 2 })
-    # end
-    #
-    # it 'returns user selection of items and quantities when the menu has multiple elements' do
-    #   allow(takeaway).to receive(:display_menu).and_return({ "steak" => 10, "ravioli" => 20 })
-    #   allow(user_input_double).to receive(:ask).and_return(true)
-    #   allow(user_input_double).to receive(:quantity).and_return(1)
-    #   expect(takeaway.order_from_menu).to eq({ "steak" => 1, "ravioli" => 1 })
-    # end
-    #
-    # it 'returns an empty selection if the user hasnt chosen any items' do
-    #   allow(takeaway).to receive(:display_menu).and_return({ "steak" => 10 })
-    #   allow(user_input_double).to receive(:ask).and_return(false)
-    #   allow(user_input_double).to receive(:quantity).and_return(0)
-    #   expect(takeaway.order_from_menu).to eq({})
-    # end
+    it 'is aware of the total amount the user has to pay' do
+      allow(takeaway).to receive(:display_menu).and_return({ "steak" => 10 })
+      allow(user_input_double).to receive(:ask).and_return(true)
+      allow(user_input_double).to receive(:quantity).and_return(2)
+      allow(order_double).to receive(:add).and_return("steak" => 2)
+      expect(takeaway.order_from_menu).to eq 20
+    end
 
   end
 end
