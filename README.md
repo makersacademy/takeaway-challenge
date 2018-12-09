@@ -6,6 +6,7 @@ Program for control of orders through a takeaway restaurant or numerous restaura
 ```
 takeaway.rb in terminal
 
+```
 ## User stories
 ```
 1. As a customer
@@ -23,7 +24,7 @@ I would like to check that the total I have been given matches the sum of the va
 4. As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-
+```
 ## PRY Examples
 ```
 [1] pry(main)> require './lib/takeaway'
@@ -53,7 +54,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 [9] pry(main)> pie_order_1.complete
 => <Twilio.Api.V2010.MessageInstance account_sid: AC075335083d586d923150458c33d95328 api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you for ordering from Pollys Pie Emporium, your final price is: £12 and will delivered at 23:13 date_created: 2018-12-09 22:13:01 +0000 date_updated: 2018-12-09 22:13:01 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: +441233801132 messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid: SMe505aeaba0d244aa85e56fb7e35ebb9a status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/AC075335083d586d923150458c33d95328/Messages/SMe505aeaba0d244aa85e56fb7e35ebb9a/Media.json"} to: +447413527942 uri: /2010-04-01/Accounts/AC075335083d586d923150458c33d95328/Messages/SMe505aeaba0d244aa85e56fb7e35ebb9a.json>
 [10] pry(main)>
-
+```
 
 
 ### Prerequisites
