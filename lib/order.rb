@@ -13,6 +13,13 @@ class Order
   end
 
   def total
+    convert_to_prices
+    basket.reduce(0, :+)
+  end
 
+  private
+
+  def convert_to_prices
+    basket.map! { |dish| @menu[dish] }
   end
 end
