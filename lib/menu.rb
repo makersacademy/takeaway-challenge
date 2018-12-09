@@ -1,16 +1,18 @@
 class Menu
   # menu shows list
 
-  def initialize
-    @menu = []
+  attr_reader :filename, :loaded_menu
+
+  def initialize(filename = './lib/pizza_menu.csv')
+    @filename = filename
+    @loaded_menu = []
   end
 
   def load_menu
-    dishes = File.open("./lib/pizza_menu.csv", "r")
-    dishes.readlines.each_with_index do |line|
+    dishes = File.open(filename, "r")
+    dishes.readlines.each.with_index do |line|
       name, description, price = line.chomp.split(',')
-      @menu << { name: name, description: description, price: price}
+      loaded_menu << { name: name, description: description, price: price}
     end
-    puts @menu
   end
 end
