@@ -78,7 +78,7 @@ Chronologically I followed the user stories above top to bottom and allowed my p
 Finally I decided on using a module rather than a class for the twilio API interface as I feel this code will be better as a reusable block on other programs, as such I adjusted the complete method to take a text as an argument rather than hard code a text message into the module. Because of this approach my test coverage falls to just below %30 as currently the module is part of the lib. This requires further research, the results of which will likely be seen in later projects.
 
 
-### Work still to be done
+### How I move forward with this project
 
 Moving forward I would improve the Menu class as a priority. Currently the menu for 'Pollys Pie Emporium' is hardcoded into new menu instances. Ideally I would like to work this class to be able to store different menus for different restaurants. e.g. lunch menu, special menu etc. As well as be able to update current menu's stored. I would have most likely taken an file based approach using CSV's to keep menu's and load them when needed.
 
@@ -91,7 +91,7 @@ Beyond the menu class I would update the existing user feedback loops to give th
 - The send SMS module would be reworked to be made more general use friendly. This requires further research into ruby implementation of twilio API.
 - The order class is very large and it could be argued that it should be shortened. Perhaps the extraction of certain methods could be done to create an order log class, logging the orders for one restaurant and letting the order class work only to update this class. In effect placing another level between takeaway and order classes.
 
-#### Refactoring to be done tests
+#### Refactoring and changes to be done tests
 
 - One test was identified as vacuous after the final tests for user story 4 were completed. This test was adjusted throughout the program due to method name changes and the such and as such it continued to pass despite not testing much. This test is identified via comments in the takeaway_spec file.
 - I have currently only used one double throughout my tests for the send sms module. I feel perhaps more could be used to test in isolation, however all tests currently pass at an acceptable level so this would be potentially an academic exercise.
