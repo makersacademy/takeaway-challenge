@@ -1,8 +1,8 @@
 require 'order'
 
 describe Order do
-  let(:order) {Order.new}
-  let(:item) {double :item}
+  let(:order) { Order.new }
+  let(:item) { double :item }
 
   it 'responds to #add' do
     expect(order).to respond_to(:add)
@@ -18,8 +18,8 @@ describe Order do
   end
 
   it 'can add multiple items from single #order' do
-   order.add("Green salad, 3")
-   expect(order.total_order).to eq(["Green salad", "Green salad", "Green salad"])
+    order.add("Green salad, 3")
+    expect(order.total_order).to eq(["Green salad", "Green salad", "Green salad"])
   end
 
   it 'returns summary of ordered items and cost' do
