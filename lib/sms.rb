@@ -3,9 +3,9 @@ require 'twilio-ruby'
 class SMS
  attr_reader :time
 
-  def time 
-    time = Time.new + 60 * 60
-  end
+def time 
+    @time = Time.new + 60 * 60
+end
 
   def send_text
     account_sid = 'AC457ee397e709fd037976be537414e690'
@@ -18,7 +18,7 @@ class SMS
     client.messages.create(
       from: from,
       to: to,
-      body: "Your order will be delivered at #{time}!"
+      body: "Your order will be delivered at #{@time}!"
       )
       "Text sent"
   end 

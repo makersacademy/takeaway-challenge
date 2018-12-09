@@ -2,9 +2,7 @@ require 'sms'
 # Needs to recieve an order object to pass send text 
 
 RSpec.describe SMS do
-  let(:order){ double :order, send_text: "Your order will be delivered at 18:53" }
-  sms = SMS.new
-  
+  let(:order) { double :order, send_text: "Your order will be delivered at 18:53" }
 
   it 'sends a text' do
     allow(subject).to receive(:send_text)
@@ -14,4 +12,3 @@ RSpec.describe SMS do
     expect(order.send_text).to eq "Your order will be delivered at 18:53" 
   end
 end
-

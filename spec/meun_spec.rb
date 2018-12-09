@@ -18,7 +18,7 @@ RSpec.describe Menu do
   end 
   describe '#list_of_dishes' do 
     let(:name) { double :name }
-    let(:price) { double :price}
+    let(:price) { double :price }
     
    
       it 'stores a dishes with prices' do
