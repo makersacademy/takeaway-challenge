@@ -1,6 +1,6 @@
 class Takeaway
 
-  attr_reader :menu, :dishes, :item, :cost, :prices, :total, :input, :quantity
+  attr_reader :menu, :dishes, :prices, :total, :item, :cost, :quantity
 
   def initialize
     @menu = {}
@@ -9,7 +9,6 @@ class Takeaway
     @total = 0
     @item = item
     @cost = 0
-    @input = ''
     @quantity = 0
   end
 
@@ -33,7 +32,7 @@ class Takeaway
 
   def add_item_to_list
     @cost = @menu[@item]
-    quantity.times do
+    @quantity.times do
       @dishes << @item
       @prices << @cost
     end
