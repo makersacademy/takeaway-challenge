@@ -55,7 +55,7 @@ class Takeaway
     summary.each do |dish, counts|
      p "#{dish.capitalize}: x #{counts}"
     end
-    p "Total cost: £#{@total}"
+    p "Total cost: GBP #{@total}"
     p "Thank-you for your order."
   end
 
