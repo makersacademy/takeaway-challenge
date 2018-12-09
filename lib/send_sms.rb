@@ -1,8 +1,9 @@
-# Download the twilio-ruby library from twilio.com/docs/libraries/ruby
+
 require 'twilio-ruby'
 
 module SendTexts
-
+# time = (Time.now + (60 * 60)).strftime("%k:%M")
+# Commnted out to keep as example of time usage.
 
   def send_text(text)
     account_sid = 'AC075335083d586d923150458c33d95328'

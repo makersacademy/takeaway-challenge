@@ -1,6 +1,5 @@
 require_relative 'menu'
 require_relative 'order'
-#require_relative 'send_sms'
 
 class Takeaway
 
@@ -16,6 +15,6 @@ class Takeaway
   end
 
   def create_order(order = Order.new(self))
-     order
+    order
   end
 end

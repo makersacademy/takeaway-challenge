@@ -3,13 +3,13 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu =  { 'Chicken Pie' => 5,
+    @menu = { 'Chicken Pie' => 5,
         'Beef Pie' => 6,
         'Liver Pie' => 3,
         'Steak and Kidney' => 3,
         'Chicken and Leak' => 6
       }
-    end
+  end
 
   def show_menu
     menu_string = ""
