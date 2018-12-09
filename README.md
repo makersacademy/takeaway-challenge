@@ -1,79 +1,97 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway Challenge #
 
- ```
+The client request to have a software to be able to make a user order some meal which will be delivered to his place later on.<br/>
+The user have to be able to see the menu with the dish name and price, and to select the wanted amount of the desired dishes.<br/>
+The user may be able to see the total of his order.<br/>
+The user may receive a text to let him know that his order have been placed and will be delivered in less that an hour from the moment finalised the order.<br/>
 
-Instructions
--------
+Based on the user story, I have decided to create 5 classes and 1 module :<br/>
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+1. The class menu, which is the menu itself containing an array of hashes with the different dish available and their price.<br/>
 
-Task
------
+2. The class order, where the user will be able to select the dishes wanted and their quantity.<br/>
+This will be done until the user do not want to select any more item.<br/>
+Afterward the basket will be created.<br/>
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+3. The class summary which will make the total of the basket of the user, and show him a summary of his order.<br/>
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+4. The class text which is responsible for sending a text to the user when he is finalising his order.<br/>
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+5. Finally, I have created a file where all the previous classes are required. And I have created a general module called takeaway interface, which is wrapping the takeway class.<br/>
+This is the interface that the user will use.<br/>
+This class will display the menu, call the order (select item, quantity, until confirm order), show the total, and send a text to the user.<br/>
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+The test for the order class are not passing at all as I struggled to stub the user input(I wrongly build the code after the feature test but before the spec), and the text for the text class are not build at all as for this one I construct the class first and had not the time to search how to test it.
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+The text is not really sent as it is not a free service.
+
+## How to use ##
+
+1. clone the repo<br/>
+Under the repo name click *clone or download*<br/>
+Click on *use HTTPs*, copy the clone URL of the repo<br/>
+In the terminal go on the working directory where you want the cloned directory to be<br/>
+Use the `git clone` command and paste the clone URL then press enter :
+
+```shell
+$ git clone https://github.com/your-username/your-repositary.git
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+2. On your local machine go inside of the *takeaway_challenge* directory :
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+```shell
+$ cd airport_challenge
+```
+3. To install all the *gems* contained in the *Gemfile*, intall and run *Bundle* :
+Install :
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+```shell
+$ install bundle
+```
+Run:
 
+```shell
+$ bundle
+```
 
-In code review we'll be hoping to see:
+4. You can see the differents directories, with the `ls` command. If you want to see all the *.rb* files built for the challenge, go inside of the *lib* directory :
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+```shell
+$ cd lib
+```
+Or if you want to see all the tests built for all the code, go inside of the *sepc* directory :
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+```shell
+$ cd lib
+```
 
-Notes on Test Coverage
-------------------
+5. You can open the *.rb* file that you wanted to read and change the code in your text editor or using `vim` :
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+```shell
+$ vim wanted_file.rb
+```
+Or you can just read the contains of it from the command line with `cat` :
+
+```shell
+$ cat wanted_file.rb
+```
+6. Check that the codes are passing the tests by going back to the root *takeaway_challenge* directory and by running the *spec*.<br/>
+You can check all the code files in one time :
+
+```shell
+$ cd takeaway_challenge
+$ rspec
+```
+You can check only one code file at a time :
+
+```shell
+$ cd takeaway_challenge
+$ rspec spec/file_name_spec.rb
+```
+
+7. Check that the code respect the quality of the *Rubocop* guideline, by running `rubocop` from the *takeaway_challenge* directory :
+
+```shell
+$ cd takeaway_challenge
+$ rubocop
+```
