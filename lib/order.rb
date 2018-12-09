@@ -1,8 +1,11 @@
 class Order
 
 require_relative 'menu'
+require_relative 'send_sms'
 
 attr_reader :cart
+
+include SendTexts
 
   def initialize(takeaway)
     @cart = []
@@ -39,7 +42,8 @@ attr_reader :cart
      summary <<  "The total for your order is: £#{total}"
   end
 
-  def order_complete
-    #this method will send the text confirming
+  def complete
+    send_text("Thank you for ordering from #{@takeaway.name}, your final price is: £#{total}")
   end
+
 end

@@ -1,12 +1,10 @@
 require_relative 'menu'
 require_relative 'order'
-require_relative 'send_sms'
+#require_relative 'send_sms'
 
 class Takeaway
 
-  include SendTexts
-
-  attr_accessor :menu, :order
+  attr_reader :menu, :name
 
   def initialize(name, menu = Menu.new)
     @name = name
@@ -20,9 +18,4 @@ class Takeaway
   def create_order(order = Order.new(self))
      order
   end
-
-
-
-
-
 end
