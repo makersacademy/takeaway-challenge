@@ -1,6 +1,6 @@
 class Menu
 
-  def send_menu
-    
-  end
+  # def send_menu
+  #
+  # end
 end
