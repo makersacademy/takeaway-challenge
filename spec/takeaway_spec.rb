@@ -22,11 +22,18 @@ RSpec.describe Takeaway do
 
   it 'will sum the total price of all items ordered' do
     takeaway.menu
-    takeaway.select_item("PERONI", 4)
+    takeaway.select_item("plaice", 1)
     takeaway.add_item_to_list
-    takeaway.select_item("chips", 4)
+    takeaway.select_item("COD", 2)
     takeaway.add_item_to_list
-    expect(takeaway.get_total_cost).to eq 22
+    takeaway.select_item("CHIcken", 3)
+    takeaway.add_item_to_list
+    takeaway.select_item("chips", 6)
+    takeaway.add_item_to_list
+    takeaway.select_item("PERONI", 18)
+    takeaway.add_item_to_list
+    takeaway.get_total_cost
+    expect(takeaway.get_total_cost).to eq 97.5
   end
 
   it 'will return true or false when asked if sum is correct' do
