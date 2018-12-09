@@ -5,6 +5,10 @@ describe Order do
 
   let(:menu) { { "Hamburger" => 5 } }
 
+  it 'displays the menu' do
+    expect(order.menu).to eq menu
+  end
+
   describe '#add_to_basket' do
     it 'adds a dish to the basket' do
       order.add_to_basket("Hamburger")
@@ -22,7 +26,7 @@ describe Order do
   describe '#total' do
     it 'totals the prices of all the dishes in the basket' do
       order.add_to_basket("Hamburger", 3)
-  
+
       expect(order.total).to eq 15
     end
   end
