@@ -31,12 +31,22 @@ it '#show_menu displays menu_hash' do
 end
 
 it 'responds to #order' do
-   expect(restaurant).to respond_to(:order)
+   expect(restaurant).to respond_to(:ask_order)
 end
 
 it '#order receives user input' do
-  restaurant.stub(:gets) {"Beer\n"}
-  expect(restaurant.order).to eq(["Beer"])
+  allow(restaurant).to receive(:gets) {"Peroni\n"}
+  expect(restaurant.ask_order).to eq(["Peroni"])
+end
+
+it 'responds to #show_summary' do
+  expect(restaurant).to respond_to(:show_summary)
+end
+
+it 'returns summary of ordered items and cost' do
+  allow(restaurant).to receive(:gets) {"Green salad, 2\n"}
+  restaurant.ask_order
+  expect(restaurant.show_summary).to eq("          Total ........ £9.00          ")
 end
 
 end

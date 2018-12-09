@@ -2,11 +2,7 @@ class Menu
 
 attr_reader :menu_to_display
 
-def print_menu
-	current_menu
-end
-
-def current_menu
+def initialize
 @menu_to_display = {
 	"Margherita" => 5.50,
 	"Quattro stagioni" => 7,
@@ -20,6 +16,14 @@ def current_menu
 	"House red (bottle)" => 14.20,
 	"Sticky toffee pudding" => 4.20,
 }
+end
+
+def print_menu
+	current_menu
+end
+
+def current_menu
+	p @menu_to_display
 end
 
 end

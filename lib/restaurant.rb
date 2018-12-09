@@ -14,10 +14,14 @@ class Restaurant
     menu.print_menu
   end
 
-  def order
+  def ask_order
     p "Please enter your order"
     input = gets.chomp
     @order.add(input)
+  end
+
+  def show_summary
+    order.summary
   end
 
 end
