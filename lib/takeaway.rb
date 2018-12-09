@@ -1,26 +1,38 @@
-
 class Takeaway
 
-  attr_reader :menu, :dishes, :item, :cost, :prices, :total
+  attr_reader :menu, :dishes, :item, :cost, :prices, :total, :input, :quantity
 
   def initialize
     @menu = {}
     @dishes = []
     @prices = []
-    @total = total
+    @total = 0
     @item = item
-    @cost = cost
+    @cost = 0
+    @input = ''
+    @quantity = 0
   end
 
   def menu
     @menu = {
-      "dish" => 2.50
+      "saveloy" => 2.50,
+      "chicken" => 2.50,
+      "chips" => 2.00,
+      "cod" => 5.00,
+      "plaice" => 5.00,
+      "pizza" => 3.00,
+      "salad" => 4.00,
+      "peroni" => 3.50
     }
   end
 
-  def select_item(dish, quantity)
-    @item = @menu.key(2.50)
-    @cost = @menu["dish"]
+  def select_item(item, quantity)
+    @item = item.downcase
+    @quantity = quantity
+  end
+
+  def add_item_to_list
+    @cost = @menu[@item]
     quantity.times do
       @dishes << @item
       @prices << @cost
