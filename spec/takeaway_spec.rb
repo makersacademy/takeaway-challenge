@@ -13,4 +13,15 @@ describe Takeaway do
       expect(takeaway.show_menu).to be_an_instance_of(Array)
     end
   end
+
+  describe "#order" do
+    it 'adds items to the order list' do
+      takeaway.add
+      expect(takaway.order).not_to be_empty
+    end
+    it 'gets user input for ordering' do
+      allow(:takaway).to receive(:gets).and_return("food")
+      expect(takeaway.order).to eq("food")
+    end
+  end
 end

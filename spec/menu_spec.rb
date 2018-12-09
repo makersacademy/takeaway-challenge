@@ -15,4 +15,24 @@ describe Menu do
       expect(menu).to have_attributes(:loaded_menu => menu.loaded_menu)
     end
   end
+
+  describe '#show' do
+
+    it 'subject responds to show' do
+      expect(menu).to respond_to(:show)
+    end
+
+    it 'adds items to list' do
+      menu.show
+      expect(menu.list).not_to be_empty
+    end
+  end
+
+    # THIS TEST NEEDS WORK, CAN'T FATHOM HOW TO DO IT
+
+    # it 'shows a formatted list of menu items with index' do
+    # allow(menu).to receive(:menu).and_return(    )
+    #   menushow.show
+    #   expect(menu.show).to include(menu)
+    # end
 end
