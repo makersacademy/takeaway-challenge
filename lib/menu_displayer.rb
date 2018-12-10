@@ -11,7 +11,7 @@ class MenuDisplayer
 
   def display
     @menu.list.each_with_index { |item, index|
-      "#{index + 1}.#{item[:item]}:£#{item[:price]}"
+      p "#{index + 1}.#{item[:item]}:£#{item[:price]}"
     }
   end
 

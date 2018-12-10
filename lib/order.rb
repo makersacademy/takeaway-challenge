@@ -47,7 +47,21 @@ class Order
 
   def  send_to_kitchen(order)
     #sends kitchen(order) to print
-    "Thank you! Your order was placed and will be delivered before #{((Time.new.hour)+(1))}:#{(Time.new.min)}"
+    #twilio app works, but commented out for security
+    # require 'twilio-ruby'
+    #
+    # account_sid = 'AC2c244ca71ee936f113cd80568140dabf'
+    # auth_token = '9610d37e9c3c6e31f4c96afa9d66815d'
+    # client = Twilio::REST::Client.new(account_sid, auth_token)
+    #
+    # from = ' ' # Your Twilio number
+    # to = ' ' # Your mobile phone number
+    #
+    # client.messages.create(
+    #   from: from,
+    #   to: to,
+    #   body: "Thank you! Your order was placed and will be delivered before #{((Time.new.hour)+(1))}:#{(Time.new.min)}"
+    # )
   end
 
   def pay(total)
