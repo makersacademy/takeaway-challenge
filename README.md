@@ -1,3 +1,31 @@
+(A work in progress - not very happy with the quality of the code, especially the tests and their coverage)
+
+TAKEAWAY CHALLENGE
+
+This is my response to the 'weekend challenge' of Week 2 of Makers Academy.
+
+Getting started
+Instructions are for Terminal on Mac OS
+
+git clone git@github.com:jaywayawyaj/takeaway-challenge.git
+gem install bundle
+
+Usage
+Instructions are for Terminal on Mac OS
+
+irb
+require './lib.takeaway.rb'
+Make a new takeaway object with Takeaway.new
+Menu is taken from './lib/pizza_menu.csv'
+Menu can be viewed by #show_order
+Menu items are selected by #choose_order. User is prompted to enter item number
+Order is submitted by #confirm_order
+User receives SMS confirmation that order will be delivered by the time given (one hour from present)
+Running tests
+Run rspec
+
+Test coverage is not high currently, nor of high quality. This is very unfinished!
+
 Takeaway Challenge
 ==================
 ```
