@@ -4,7 +4,8 @@ class Order
 
   attr_reader :basket, :item, :quantity, :basket_total
 
-  def initialize(menu = Menu.new)
+  def initialize
+    @menu = Menu.new
     @basket = []
     @item = item
     @quantity = quantity
@@ -17,8 +18,8 @@ class Order
   end
 
   def to_basket
-    item_cost = @menu_items[@item]
-    quantity.times { @basket << item_cost }
+    item_cost = @menu[@item]
+    @basket << ( quantity * item_cost )
   end
 
   def order_total
