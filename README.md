@@ -1,3 +1,23 @@
+My approach to this challenge
+---------
+* Use user stories to build file structure and think about how I want them to interact with one another - I attempted to utilise some of what I learned in week 2 at Makers Academy in order to diagram my program before writing it
+* Build a test for a method I want, let it fail, then write the code and rework until it passes - using the TDD process learned in week 1 at Makers Academy
+* A takeaway, a menu, and food items were present in the stories. I added a final SMS class to represent the ability to send out messages using Twilio - I came into some difficulty here as my Twilio-generated number was unable to send SMS's
+* Used the user stories info to build these classes, for example allowing the user to select more than one item of food
+* Red - Green - Refactor across the board
+* Used effective debugging methods as I had been taught to this week when I found myself blocked and my tests failing
+* Were I to continue with this I would try to refactor it further, I would also try to get a fully functioning Twilio function
+* If I were to continue I also would increase the food offerings - I did have a pizza :pizza: and a lot of chicken wings this weekend :chicken:, hence the current list being dominated by these!
+
+![Imgur](https://i.imgur.com/J1h5X0g.png)
+
+Helpful resources
+---------
+
+- [How to use time in Ruby](https://www.rubyguides.com/2015/12/ruby-time/ "Ruby Guides time")
+- [SMS and Twilio - (with bonus cats!)](https://www.twilio.com/blog/2018/04/sms-notifications-ruby-on-rails.html "Twilio Blogpost")
+- [Twilio SMS guide](https://www.twilio.com/docs/sms/quickstart/ruby "Twilio SMS guide")
+
 Takeaway Challenge
 ==================
 ```
