@@ -27,6 +27,7 @@ class Order
 
   def summary
     running_total = 0
+    puts
     p "~ Your order so far ~".center(40)
     puts
     @total_order.each do |i|
