@@ -1,5 +1,3 @@
-(A work in progress - not very happy with the quality of the code, especially the tests and their coverage)
-
 TAKEAWAY CHALLENGE
 
 This is my response to the 'weekend challenge' of Week 2 of Makers Academy.
