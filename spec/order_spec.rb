@@ -19,5 +19,11 @@ describe Order do
        end
     end
 
+    describe '#place_order' do 
+      it 'expect a param of a customers phone number' do 
+         expect(order).to respond_to(:place_order).with(1)
+      end
+    end 
+
 
 end

@@ -13,5 +13,8 @@ class Order
        return @total
     end
 
+    def place_order(phone_string)
+        
+    end
     
 end

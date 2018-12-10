@@ -10,9 +10,10 @@ class Menu
         @choices = []
     end
 
-    def select(dish_string)
+    def select(dish_string, quantity)
         @list.each do |details|
             if details[:dish] == dish_string
+                details.merge!({:quantity => quantity})
                 return @choices.push(details)
             end
         end
