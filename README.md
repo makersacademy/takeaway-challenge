@@ -22,7 +22,9 @@ User receives SMS confirmation that order will be delivered by the time given (o
 Running tests
 Run rspec
 
-Test coverage is not high currently, nor of high quality. This is very unfinished!
+NOTES
+
+Test coverage is not high currently, nor of high quality. This is very unfinished! TDD went out the window a little on this challenge - if I were to go back to it I'd like to give myself more time, approach it with a stricter process and plan ahead a bit more. Not my finest work!
 
 Takeaway Challenge
 ==================
