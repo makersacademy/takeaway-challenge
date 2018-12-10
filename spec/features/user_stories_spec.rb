@@ -4,7 +4,6 @@ describe 'user_stories_spec' do
 # I would like to see a list of dishes with prices
   it 'so customers can view menu, Takeaway should return a menu' do
     takeaway = Takeaway.new
-    menu = Menu.new
     expect { takeaway.view_menu }.not_to raise_error
   end
 end
