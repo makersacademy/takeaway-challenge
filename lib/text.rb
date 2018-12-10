@@ -18,5 +18,4 @@ class Text
                                to: '+447519468660'
                              )
   end
-
 end
