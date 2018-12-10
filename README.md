@@ -13,6 +13,45 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+## Welcome 
+-------
+
+This is my Take-away challenge. I actually have two versions the second is in this directory saved as takeaway-challenge-v2. Neither are complete. 
+
+
+## This Takeaway Challenge
+
+This version of takeaway challenge uses two classes, Menu and Order, to communicate an order to be placed. 
+
+The Menu class contains a list of choices as well as a #select method that can be used to return a specific dish from the menu @list. It will save these choices in an array @choices. 
+
+I intended for the @hoices to be passed into the Order class and it to go from there really.
+
+
+
+## Takeaway challenge V2 
+
+I originally started with this one however abandoned as i found writing test doubles and stubs for this functionality pretty hard. However its fully functional bar not sending texts. 
+
+
+It comprises of 3 classes, Customer, Menu and Order (4 if included sms stuff). Customer initializes its own order class. This version works with nested hashes as i thought this would provide greater fexibility and performance then an array. 
+
+Menu stores a menu as a nested hash array. Customers can interact with any menu object passed in - allowing multiple versions of Menu's - incase you can decide betweeen chinese or thai! 
+
+users and menu have the ability to select a particular dish. Users can add this choice into their order class. 
+
+Menu includes :Select allowing us to choose a dish
+ 
+Order includes the functionality to :add, :sum and :close.
+
+Customer includes : check_menu, :add, check_order_total, :new_order : place_order
+
+all methods are designed to be single responsiblity. I made Order a part of customer as they couldnt exist without each other. 
+
+is the logic ok??
+
+
+
 
 Instructions
 -------
