@@ -15,6 +15,25 @@ The aim is to help us to:
 - TDD anything
 - Learn how to do anything
 
+## How to use it
+Firstly, you will need to instantiate an instance of the Takeaway Class.
+
+Step1: takeaway = Takeaway.new
+
+Then follow each of the steps below:
+
+Step2: takeaway.menu   (to see the menu)
+Step3: takeaway.select_item   (to select a dish and the quantity required)
+Step4: takeaway.add_item_to_list   (to store the customer's selected dish to an array)
+Step5: takeaway.get_total_cost   (to sum the total of all dishes stored)
+Step6: takeaway.sum_correct?  (will return false if you did not get_total_cost)
+Step7: takeaway.print_order   (will output a string detailing customer's order and cost)
+Step8: takeaway.send_sms   (will send an sms thanking customer for their order)  
+
+NOTE: Steps 3 and 4 ('select_item' and 'add_item_to_list') can be done as many times as you like.
+When you have added all the items you want, then go to Step5.
+
+
 ## Code
 Below is my Takeaway class:
 ```
@@ -96,7 +115,6 @@ class Takeaway
   end
 end
 ```
-
 
 ## Tests
 Below are my tests
