@@ -8,12 +8,12 @@ def time
 end
 
   def send_text
-    account_sid = 'AC457ee397e709fd037976be537414e690'
-    auth_token = 'ed570919637a415ef168079c0c0cb201'
+    account_sid = 'INPUT YOUR OWN ACCOUNT_SID'
+    auth_token = 'INPUT YOUR OWN AUTH_TOKEN'
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    from = '+441355377036' # Your Twilio number
-    to = '+447900612229' # Your mobile phone number
+    from = 'NUMBERBOUGHTFROMTWILIO' # Your Twilio number
+    to = 'YOURMOBILENUMBER' # Your mobile phone number
 
     client.messages.create(
       from: from,
