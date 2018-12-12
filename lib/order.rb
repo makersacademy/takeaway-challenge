@@ -1,24 +1,21 @@
-require_relative 'menu'
-
 class Order
 
-  attr_reader :order, :menu
-
-  def initialize(menu = Menu.new)
+  attr_reader :order
+  def initialize
     @order = {}
-    @menu = menu
   end
 
-  def add(item, quantity)
-    order[item] = quantity
+  def add(item, quantity, price)
+    order[item] = { "quantity" => quantity, "price" => price }
     order
   end
 
   def total_to_pay
-    total_per_item = order.map do
-      |item, quantity| menu.display[item] * quantity
+    total = 0
+    order.each do |_, value|
+      total += value["quantity"] * value["price"]
     end
-    total_per_item.inject { |item, total| total + item }
+    total
   end
 
 end

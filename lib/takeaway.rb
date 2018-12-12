@@ -19,29 +19,20 @@ class Takeaway
     menu.display
   end
 
-  # to be continued: implement a method that manages all the below?
-  # def manage_order
-  #   order_from_menu
-  #   order.total_to_pay
-  #   send_message
-  # end
+  def manage_order
+    order_from_menu
+    puts "You'll need to pay #{order.total_to_pay} for your order."
+    puts "You'll soon be receiving confirmation via sms." if message.send
+  end
 
   def order_from_menu
-    display_menu.each do |item, _|
+    display_menu.each do |item, price|
       if user_input.ask(item)
         quantity = user_input.quantity
       end
-      order.add(item, quantity) if quantity != nil
+      order.add(item, quantity, price) if quantity != nil
     end
     order
-  end
-
-  def total_to_pay
-    order.total_to_pay
-  end
-
-  def send_message
-    message.send
   end
 
 end
