@@ -1,20 +1,18 @@
 require 'twilio-ruby'
+require 'dotenv/load'
 
 class Message
 
-  ACC_SID = "AC03e3e64e1c4d3ee96ebe02eee3a3f113"
-  TOKEN = "979e76ccb92cdbd44a8bec88be4bfb52"
-
-  def initialize(twilio_client = Twilio::REST::Client.new(ACC_SID, TOKEN))
+  def initialize(twilio_client = Twilio::REST::Client.new(ENV['ACC_SID'], ENV['TOKEN']))
     @twilio_client = twilio_client
   end
 
   def send
     message = @twilio_client.messages.create(
       body: "Your order has been placed!
-        It will be with you at: #{Time.now + 3600}",
-      to: "+447427750432",
-      from: "+441543624591")
+        It will be with you at: #{(Time.now + 3600).strftime("%H:%M")}",
+      to: ENV['TWILIO_TO_NR'],
+      from: ENV['TWILIO_FROM_NR'])
     message.error_code.zero?
   end
 
