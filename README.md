@@ -34,6 +34,3 @@ Tests
 - to run tests simply run rspec in the main project folder 
 
 ```
-Application as of December 9th
-```
-![Image-of-application](https://github.com/AlinaGoaga/takeaway-challenge/blob/master/takeaway%20dec%209.jpeg)
