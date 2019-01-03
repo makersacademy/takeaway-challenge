@@ -8,12 +8,12 @@ RSpec.describe UserInput do
 
     it 'returns true if the user says Yes' do
       allow(user_input).to receive(:gets).and_return("Yes")
-      expect(user_input.ask("Stake")).to be_truthy
+      expect(user_input.ask("stake")).to be_truthy
     end
 
     it 'returns false if the user says No' do
       allow(user_input).to receive(:gets).and_return("No")
-      expect(user_input.ask("Stake")).to be_falsey
+      expect(user_input.ask("stake")).to be_falsey
     end
 
   end
@@ -32,4 +32,4 @@ RSpec.describe UserInput do
 
   end
 
-end 
+end

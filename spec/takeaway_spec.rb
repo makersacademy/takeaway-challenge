@@ -23,7 +23,24 @@ describe Takeaway do
       allow(order_double).to receive(:add).and_return("steak" => { "quantity" => 2, "price" => 10 })
       expect(takeaway.order_from_menu).to eq order_double
     end
-    # TODO add tests when the user does not ask for anything
+
+    it 'returns an empty hash if the user does not order anything' do
+      allow(takeaway).to receive(:display_menu).and_return({ "steak" => 10 })
+      allow(menu_double).to receive(:price).and_return(10)
+      allow(user_input_double).to receive(:ask).and_return(false)
+      allow(order_double).to receive(:add).and_return({})
+      expect(takeaway.order_from_menu).to eq order_double
+    end
+
+  end
+
+  describe '#confirmation' do
+
+    it 'confirms the order' do
+      allow(order_double).to receive(:total_to_pay).and_return(10)
+      allow(message_double).to receive(:send).and_return(true)
+      expect(takeaway.confirmation).to eq "The total to pay is 10. Confirmation sms arriving soon"
+    end
 
   end
 

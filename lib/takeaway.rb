@@ -19,12 +19,6 @@ class Takeaway
     menu.display
   end
 
-  def manage_order
-    order_from_menu
-    puts "You'll need to pay #{order.total_to_pay} for your order."
-    puts "You'll soon be receiving confirmation via sms." if message.send
-  end
-
   def order_from_menu
     display_menu.each do |item, price|
       if user_input.ask(item)
@@ -33,6 +27,10 @@ class Takeaway
       order.add(item, quantity, price) if quantity != nil
     end
     order
+  end
+
+  def confirmation
+    "The total to pay is #{order.total_to_pay}. Confirmation sms arriving soon" if message.send
   end
 
 end
