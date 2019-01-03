@@ -4,12 +4,12 @@ Takeaway Challenge
 ```
 First diagram
 ```
-![Image-of-application](https://github.com/AlinaGoaga/takeaway-challenge/blob/master/draft.jpg)
+![Image-of-application](https://github.com/AlinaGoaga/takeaway-challenge/blob/master/pics/draft.jpg)
 
 ```
 Final diagram
 ```
-![Image-of-application](https://github.com/AlinaGoaga/takeaway-challenge/blob/master/final.jpg)
+![Image-of-application](https://github.com/AlinaGoaga/takeaway-challenge/blob/master/pics/final.jpg)
 
 ```
 Code
@@ -36,5 +36,5 @@ Tests
 ```
 Application in irb
 ```
-![Image-of-application](https://github.com/AlinaGoaga/takeaway-challenge/blob/master/irb_takeaway.jpeg)
+![Image-of-application](https://github.com/AlinaGoaga/takeaway-challenge/blob/master/pics/irb_takeaway.jpeg)
 
