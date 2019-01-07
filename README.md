@@ -29,7 +29,7 @@ When running the application in IRB an actual message will be generated. For any
 ```
 Tests
 ```
-- used rspec to write unit tests
+- used rspec to write feature and unit tests
 - classes being test in isolation with the help of doubles
 - to run tests simply run rspec in the main project folder 
 
