@@ -1,5 +1,4 @@
 require 'twilio-ruby'
-# require 'order'
 
 module SendSMS
 
