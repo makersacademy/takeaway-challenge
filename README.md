@@ -36,6 +36,8 @@ The main files that you will need the items in the 'lib' folder. This includes:
 ### Dependancies:
 This program is written in Ruby, using Sinatra as the frame work. To run this program the gems required are Twilio-Ruby to send text messages and Dotenv to handle environment variables.
 
+Rubocop has been used for linting and simplecov for test coverage.
+
 ### My approach to this Challenge:
 I used TDD and OOD to design and create this program. I aimed to create as little dependancy as possible using polymorphism and doubles. I used the Single Responsibility Principle to extract order and `menu` classes as well as a `send_sms` module. These follow the law of Demeter.
 
@@ -45,3 +47,9 @@ I chose to not add the functionality where a user enters what they would expect 
 I test drove this app using rspec.
 
 To run the test, please use the command `rspec`. Note that this will run both unit tests (`./menu_spec.rb`, `./order_spec.rb`, and `./send_sms_sepc.rb`) and also feature tests (`./feature_tests/user_stories_spec_rb`).
+
+All tests are passing.
+![alt text](tests.png)
+
+## Known Issues:
+The test coverage is 95.31% due to use of Twilio. I have ensured that the `send_message` method is called correctly in a feature tests, but I would attempt to stub the method.
