@@ -9,6 +9,7 @@ describe Order do
   let(:menu) { { soup => 6.0, meat => 10.0, chicken => 8.0 } }
   let(:restaurant) { double :restaurant, menu: menu }
   let(:order) { Order.new(restaurant) }
+  let(:twilio) {double :twilio, send_sms: "You will receive your order around 11:00"}
 
   describe "#check_menu" do
     it "Consumer can check the menu list with prices" do
@@ -34,13 +35,6 @@ describe Order do
       expect(order.check_order_summary).to eq [soup, 12.0, meat, 20.0, chicken, 8.00]
     end
   end
-
-  # describe "#place_order" do
-  #   it "A text message will be sent after order is completed" do
-  #     expect(new_order.place_order).to eq "Thank you! Your order has been placed you will receive a sms shortly"
-  #   end
-  # end
-
 
   describe "#confirm_order" do
     it "It returns confirmed as true" do

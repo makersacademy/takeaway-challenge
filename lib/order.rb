@@ -3,7 +3,6 @@ require 'twilio-ruby'
 require_relative 'sms_text'
 
 class Order
-  include SMSText
   attr_reader :restaurant, :order_list, :confirmed, :menu
 
   def initialize(restaurant = Restaurant.new)
@@ -47,8 +46,8 @@ class Order
     @order_list.map { |v| v }.reduce(:+)
   end
 
-  def confirmation_text
-    send_sms
+  def confirmation_text(sms_text = SMSText.new)
+    sms_text.send_sms
     "Thank you! Your order has been placed you will receive a sms shortly"
   end
 
