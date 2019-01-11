@@ -47,7 +47,7 @@ class Order
   end
 
   def confirmation_text(sms_text = SMSText.new)
-    sms_text.send_sms
+    # sms_text.send_sms/ my twilio account has expired
     "Thank you! Your order has been placed you will receive a sms shortly"
   end
 
