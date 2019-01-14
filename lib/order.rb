@@ -1,21 +1,17 @@
 require_relative 'restaurant'
 require 'twilio-ruby'
 require_relative 'sms_text'
+require_relative 'menu'
 
 class Order
-  attr_reader :restaurant, :order_list, :confirmed, :menu
+  include Menu
+  attr_reader :order_list, :confirmed, :menu
 
-  def initialize(restaurant = Restaurant.new)
-
+  def initialize(restaurant)
     @restaurant = restaurant
+    @menu = @restaurant.menu
     @order_list = Hash.new
     @confirmed = false
-    @menu = @restaurant.menu
-
-  end
-
-  def check_menu
-    @menu
   end
 
   def add_item(item, quantity = 1)
