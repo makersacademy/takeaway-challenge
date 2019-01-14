@@ -67,6 +67,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order has been placed you will receive a sms shortly" after I have ordered
 ```
 
+## IRB example
 ```
 2.5.0 :001 > require './lib/menu'
  => true 
