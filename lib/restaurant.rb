@@ -5,9 +5,13 @@ class Restaurant
 
   attr_reader :menu
 
-  def initialize(name = "Deli")
+  def initialize(name)
     @name = name
-    @menu = MENU
+    @menu = MENU[name.to_sym]
+  end
+
+  def display_menu
+    @menu
   end
 
 end
