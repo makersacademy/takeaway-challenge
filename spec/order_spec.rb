@@ -11,12 +11,6 @@ describe Order do
   let(:order) { Order.new(restaurant) }
   let(:twilio) {double :twilio, send_sms: "You will receive your order around 11:00"}
 
-  describe "#check_menu" do
-    it "Consumer can check the menu list with prices" do
-      expect(order.check_menu).to eq menu
-    end
-  end
-
   describe "#add_item" do
     it "Consumer is able to select some number of several available dishes" do
       expect(order.add_item(soup, 1)).to eq "Item: #{soup}, Quantity: 1, has been added to your order"
