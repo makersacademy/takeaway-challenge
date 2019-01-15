@@ -3,11 +3,11 @@ require 'menu'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(Menu.new) }
+  subject(:takeaway) { described_class.new(@menu) }
 
   before(:all) do
-    @menu = Menu.new(@list)
     @list = { coconut_rice: 2, lassee: 1.5 }
+    @menu = Menu.new(@list)
   end
 
   # As a customer

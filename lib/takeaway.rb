@@ -5,7 +5,7 @@ class Takeaway
   end
 
   def menu
-    ""
+    @menu.list
   end
 
 end
