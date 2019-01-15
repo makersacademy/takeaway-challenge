@@ -6,13 +6,14 @@ describe Takeaway do
 
   before(:each) do
     @menu = double('menu')
+    @list = {korma: 3, vindaloo: 4, korai: 3.5}
+    allow(@menu).to receive(:list).and_return(@list)
   end
 
   context 'customers should be able to view the menu' do
 
     it '#menu' do
-      menu = ""
-      expect(subject.menu).to eq(menu)
+      expect(takeaway.menu).to eq(@list)
     end
 
     it 'should inject a menu into the takeaway class' do
