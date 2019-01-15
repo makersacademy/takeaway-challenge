@@ -2,13 +2,17 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new }
+  subject(:takeaway) { described_class.new(double('menu')) }
 
   context 'customers should be able to view the menu' do
 
     it '#menu' do
       menu = ""
       expect(subject.menu).to eq(menu)
+    end
+
+    it 'should inject a menu into the takeaway class' do
+      expect(takeaway.instance_variable_get(:@menu)).to eq 'menu'
     end
 
 

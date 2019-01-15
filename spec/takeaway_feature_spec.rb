@@ -1,8 +1,9 @@
 require 'takeaway'
+require 'menu'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new }
+  subject(:takeaway) { described_class.new(Menu.new) }
 
   # As a customer
   # So that I can check if I want to order something
