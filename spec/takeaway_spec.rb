@@ -20,6 +20,12 @@ describe Takeaway do
       expect(takeaway.instance_variable_get(:@menu)).to eq @menu
     end
 
+    it 'should create its own menu if none provided' do
+      standalone_takeaway = Takeaway.new
+      default_menu = { korma: 4, jalfrezi: 6, pilau: 2, naan: 2.5 }
+      expect(standalone_takeaway.show).to eq(default_menu)
+    end
+
 
 
   end
