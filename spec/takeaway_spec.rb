@@ -6,7 +6,7 @@ describe Takeaway do
 
   before(:each) do
     @menu = double('menu')
-    @list = {korma: 3, vindaloo: 4, korai: 3.5}
+    @list = { "korma": 3, "vindaloo": 4, "korai": 3.5 }
     allow(@menu).to receive(:list).and_return(@list)
   end
 
@@ -26,8 +26,23 @@ describe Takeaway do
       expect(standalone_takeaway.menu).to eq(default_menu)
     end
 
-
-
   end
 
+  context 'customers should be able to select orders' do
+
+    it 'should take orders from the customer' do
+      expect(takeaway).to respond_to(:order).with(1..2).arguments
+    end
+
+    it 'should add orders to the basket' do
+      takeaway.order('korai')
+      takeaway.order('vindaloo', 2)
+      takeaway.order('korma')
+      expect(takeaway.basket).to eq('korai x 1 (£3.5), vindaloo x 2 (£8), korma x 1 (£3)')
+    end
+
+    xit 'should refuse orders that are not on the menu' do
+
+    end
+  end
 end

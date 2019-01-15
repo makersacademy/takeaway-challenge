@@ -20,4 +20,19 @@ describe Takeaway do
       expect(subject.menu).to eq(@list)
     end
   end
+
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
+
+  it 'should allow customers to select dishes' do
+    takeaway.order('coconut_rice')
+    takeaway.order('coconut_rice')
+    takeaway.order('lassee')
+    takeaway.order('lassee', 3)
+    expect(takeaway.basket).to eq("coconut_rice x 2 (£4), lassee x 4 (£6)")
+ end
+
+
+
 end
