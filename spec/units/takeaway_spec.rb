@@ -8,6 +8,7 @@ describe Takeaway do
     @menu = double('menu')
     @list = { "korma": 3, "vindaloo": 4, "korai": 3.5 }
     allow(@menu).to receive(:list).and_return(@list)
+    allow(@menu).to receive(:has_dish?).and_return(true)
   end
 
   context 'customers should be able to view the menu' do
@@ -58,6 +59,7 @@ describe Takeaway do
     end
 
     it 'should refuse orders that are not on the menu' do
+      allow(@menu).to receive(:has_dish?).and_return(false)
       takeaway.order('fake', 2)
       takeaway.order('another_fake', 3)
       expect(takeaway.basket).to be_empty
