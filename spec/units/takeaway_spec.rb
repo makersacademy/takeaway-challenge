@@ -34,11 +34,12 @@ describe Takeaway do
       expect(takeaway).to respond_to(:order).with(1..2).arguments
     end
 
-    it 'should add orders to the basket' do
+    it 'should add dishes to the basket' do
       takeaway.order('korai')
-      takeaway.order('vindaloo', 2)
-      takeaway.order('korma')
-      expect(takeaway.basket).to eq('korai x 1 (£3.5), vindaloo x 2 (£8), korma x 1 (£3)')
+      # takeaway.order('vindaloo', 2)
+      # takeaway.order('korma')
+      # expect(takeaway.basket).to eq('korai x 1 (£3.5), vindaloo x 2 (£8), korma x 1 (£3)')
+      expect(takeaway.basket).to eq(['korai'])
     end
 
     xit 'should refuse orders that are not on the menu' do
