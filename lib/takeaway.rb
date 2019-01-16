@@ -37,4 +37,10 @@ class Takeaway
     @basket[dish.to_sym] += quantity
   end
 
+  def total
+    total = 0
+    @basket.each_pair { |dish, quantity| total += (@menu.list[dish] * quantity) }
+    total
+  end
+
 end
