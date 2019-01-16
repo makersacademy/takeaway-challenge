@@ -57,8 +57,10 @@ describe Takeaway do
       # expect(takeaway.basket).to eq('korai x 1 (£3.5), vindaloo x 2 (£8), korma x 1 (£3)')
     end
 
-    xit 'should refuse orders that are not on the menu' do
-
+    it 'should refuse orders that are not on the menu' do
+      takeaway.order('fake', 2)
+      takeaway.order('another_fake', 3)
+      expect(takeaway.basket).to be_empty
     end
   end
 end
