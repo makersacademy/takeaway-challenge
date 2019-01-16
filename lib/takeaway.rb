@@ -1,11 +1,9 @@
 class Takeaway
 
+  INVALID_DISH = "Dish not on menu; order ignored"
+
   def initialize(menu = Menu.new)
     @menu = menu
-    # TODO data structure to store basket?
-    # Either take the hash keys?
-    # Or make the array up on the fly?
-    # But doesn't allow for backtracking orders...
     setup_basket
   end
 
@@ -17,7 +15,7 @@ class Takeaway
     if @menu.has_dish?(dish)
       add_to_basket(dish, quantity)
     else
-      puts "Dish not on menu; order ignored"
+      puts INVALID_DISH
     end
 
   end

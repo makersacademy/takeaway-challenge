@@ -69,4 +69,21 @@ describe Takeaway do
     # expect(takeaway.basket).to eq('korai x 1 (£3.5), vindaloo x 2 (£8), korma x 1 (£3)')
 
   end
+
+  context 'it should be able to pretty-print the customer basket' do
+
+    it 'should be able to total the orders' do
+      takeaway.order('vindaloo', 2)
+      takeaway.order('korma')
+      takeaway.order('vindaloo', 1)
+      expect(takeaway.total).to eq(15)
+    end
+
+    xit 'should print the basket' do
+      takeaway.order('vindaloo', 2)
+      takeaway.order('korma')
+      takeaway.order('vindaloo', 1)
+    end
+
+  end
 end
