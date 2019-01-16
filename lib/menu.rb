@@ -8,4 +8,8 @@ class Menu
     @list
   end
 
+  def has_dish?(dish)
+    @list.has_key?(dish.to_sym)
+  end
+
 end

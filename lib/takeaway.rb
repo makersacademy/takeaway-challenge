@@ -15,7 +15,7 @@ class Takeaway
   end
 
   def order(dish, quantity = 1)
-    if @menu.has_dish?
+    if @menu.has_dish?(dish)
       quantity.times { @basket.push(dish) }
     else
       puts "Dish not on menu; order ignored"

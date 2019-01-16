@@ -16,4 +16,12 @@ describe Menu do
     menu = Menu.new
     expect(menu.list).to eq({ "korma": 4, "jalfrezi": 6, "pilau": 2, "naan": 2.5 })
   end
+
+  it 'should know when a dish is in the menu' do
+    expect(menu.has_dish?('roti')).to be true
+  end
+
+  it 'should know when a dish is not in the menu' do
+    expect(menu.has_dish?('fake')).to_not be true
+  end
 end

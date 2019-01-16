@@ -52,17 +52,17 @@ describe Takeaway do
       expect(takeaway.basket).to eq(['korai', 'korai', 'korma', 'korma'])
     end
 
-    xit 'placeholder' do
-      # takeaway.order('vindaloo', 2)
-      # takeaway.order('korma')
-      # expect(takeaway.basket).to eq('korai x 1 (£3.5), vindaloo x 2 (£8), korma x 1 (£3)')
-    end
-
     it 'should refuse orders that are not on the menu' do
       allow(@menu).to receive(:has_dish?).and_return(false)
       takeaway.order('fake', 2)
       takeaway.order('another_fake', 3)
       expect(takeaway.basket).to be_empty
+    end
+
+    it 'should collate orders for the same dish together' do
+      takeaway.order('vindaloo', 2)
+      takeaway.order('korma')
+      # expect(takeaway.basket).to eq('korai x 1 (£3.5), vindaloo x 2 (£8), korma x 1 (£3)')
     end
   end
 end
