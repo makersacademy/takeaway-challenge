@@ -15,7 +15,7 @@ class Takeaway
   end
 
   def order(dish, quantity = 1)
-    @basket.push(dish)
+    quantity.times { @basket.push(dish) }
   end
 
   def basket
