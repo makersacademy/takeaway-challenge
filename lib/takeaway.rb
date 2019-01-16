@@ -6,6 +6,7 @@ class Takeaway
     # Either take the hash keys?
     # Or make the array up on the fly?
     # But doesn't allow for backtracking orders...
+    @basket = []
 
   end
 
@@ -14,11 +15,11 @@ class Takeaway
   end
 
   def order(dish, quantity = 1)
-
+    @basket.push(dish)
   end
 
   def basket
-
+    @basket
   end
 
 end
