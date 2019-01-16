@@ -37,19 +37,19 @@ describe Takeaway do
 
     it 'should add dishes to the basket' do
       takeaway.order('korai')
-      expect(takeaway.basket).to eq(['korai'])
+      expect(takeaway.basket).to eq({:korai=>1})
     end
 
     it 'should add multiple dishes to the basket' do
       takeaway.order('korai')
       takeaway.order('korma')
-      expect(takeaway.basket).to eq(['korai', 'korma'])
+      expect(takeaway.basket).to eq({:korai => 1, :korma => 1})
     end
 
     it 'should allow quantities to be specified when ordering' do
       takeaway.order('korai', 2)
       takeaway.order('korma', 2)
-      expect(takeaway.basket).to eq(['korai', 'korai', 'korma', 'korma'])
+      expect(takeaway.basket).to eq({:korai => 2, :korma => 2})
     end
 
     it 'should refuse orders that are not on the menu' do
