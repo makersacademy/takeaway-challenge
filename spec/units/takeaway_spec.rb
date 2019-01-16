@@ -62,7 +62,11 @@ describe Takeaway do
     it 'should collate orders for the same dish together' do
       takeaway.order('vindaloo', 2)
       takeaway.order('korma')
-      # expect(takeaway.basket).to eq('korai x 1 (£3.5), vindaloo x 2 (£8), korma x 1 (£3)')
+      takeaway.order('vindaloo', 1)
+      expect(takeaway.basket).to eq({vindaloo: 3, korma: 1})
     end
+
+    # expect(takeaway.basket).to eq('korai x 1 (£3.5), vindaloo x 2 (£8), korma x 1 (£3)')
+
   end
 end
