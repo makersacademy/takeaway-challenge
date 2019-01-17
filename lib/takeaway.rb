@@ -21,7 +21,7 @@ class Takeaway
   end
 
   def basket
-    @basket.select { |k, v| v > 0 }
+    @basket.select { |_k, v| v.positive? }
   end
 
   def setup_basket
@@ -39,8 +39,29 @@ class Takeaway
 
   def total
     total = 0
-    @basket.each_pair { |dish, quantity| total += (@menu.list[dish] * quantity) }
+    @prepared_order.each_value { |numbers| total += (numbers[0] * numbers[1]) }
     total
+  end
+
+  def checkout
+    output = {}
+    @basket.each_pair do |dish, quantity|
+      output[dish] = [quantity, @menu.list[dish]] if quantity.positive?
+    end
+    @prepared_order = output
+  end
+
+  def print_basket
+    checkout unless @prepared_order
+    output = ""
+    alphabetical_order = @prepared_order.sort_by { |key| key }.to_h
+    alphabetical_order.each_pair do |dish, numbers|
+      quantity = numbers[0]
+      price = numbers[1]
+      output << ", " unless output == ""
+      output << "#{dish.to_s} x #{quantity} (£#{price * quantity})"
+    end
+    output << "\nThe total is £#{total}"
   end
 
 end
