@@ -11,12 +11,12 @@ class Order
     message = 'That dish is not on the menu. Please choose another one!'
     fail message unless menu.on_menu?(dish)
     order = { name: dish.name, price: dish.price }
-    @summary[order] += quantity
+    summary[order] += quantity
   end
 
   def total
     sum = 0
-    @summary.map { |k, v| sum += k[:price] * v }
+    summary.map { |k, v| sum += k[:price] * v }
     "£#{printer.format_price(sum)}"
   end
 
@@ -25,7 +25,7 @@ class Order
   end
 
   def place_order
-    arr = @summary.map do |k, v|
+    arr = summary.map do |k, v|
       "#{k[:name].capitalize}: £#{printer.format_price(k[:price])} x #{v}"
     end
     arr.join("\n")
