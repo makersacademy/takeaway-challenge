@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'reassurer'
 
 # Lets user see menu, select dishes, view order, finalize order
 class Interface
@@ -31,6 +32,11 @@ class Interface
     selected_dishes.each { |dish, quantity| output << [dish, quantity] }
     output.each { |line| line << price(line[0], line[1]) }
     output
+  end
+
+  # Instantiates the reassurer object
+  def finalize_order
+    Reassurer.new.reassure
   end
 
   private

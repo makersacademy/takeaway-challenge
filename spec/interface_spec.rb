@@ -31,4 +31,11 @@ describe Interface do
       expect(interface.verify_order).to eq [["Pizza", 3, 45]]
     end
   end
+
+  describe "#finalize_order" do
+    it 'creates a reassurer and calls reassure on it' do
+      ordertime = (Time.now + 3600).strftime("%H:%M:%S")
+      expect(subject.finalize_order).to eq "Thank you! Your order was placed and will be delivered before #{ordertime}"
+    end
+  end
 end
