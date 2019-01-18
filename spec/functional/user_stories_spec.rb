@@ -5,7 +5,7 @@
 # meal = chosen items
 # total =  total price
 # takeaway = main program
-# text = text object
+# text = text object - pass hash, not arguments
 
 require 'Takeaway'
 
