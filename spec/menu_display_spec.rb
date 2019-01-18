@@ -14,9 +14,9 @@ describe MenuDisplay do
 
   describe '#price_to_sterling' do
     it 'converts price to £' do
-      allow(menu).to receive(:menu).and_return({ lettuce: 0.5 })
-      item_on_menu = :lettuce
-      expect(MenuDisplay.new(menu).price_to_sterling(item_on_menu)).to eq '£0.5'
+      allow(menu).to receive(:menu)
+      price = 0.5
+      expect(MenuDisplay.new(menu).price_to_sterling(0.5)).to eq '£0.5'
     end
   end
 
