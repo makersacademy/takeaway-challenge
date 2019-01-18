@@ -4,21 +4,12 @@ describe Menu do
 
 subject(:menu) { Menu.new }
 
-context 'contains information on dishes and price' do
-  it 'does pizza' do
-    expect(menu.food[:pizza]).to eq 8
-  end
+  context 'list dish with price' do
 
-  it 'does pasta' do
-    expect(menu.food[:pasta]).to eq 7
-  end
-end
+    it "pizza 8, pasta 7, bread 2 " do
+      result = Menu::DEFAULT_MENU
+      expect(menu.list).to eq result
+    end
 
-context 'list dish with price' do
-  it { is_expected.to respond_to :print}
-
-  it "shows pizza £8, pasta £7" do
-    expect(menu.print).to eq "pizza £8, pasta £7"
   end
-end
 end

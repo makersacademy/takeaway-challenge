@@ -1,12 +1,10 @@
 class Menu
 
-attr_reader :food
+attr_reader :list
+DEFAULT_MENU = { pizza: 8, pasta: 7, soup: 5, bread: 2 }
 
-def initialize
-  @food = { pizza: 8, pasta: 7}
-end
-
-def print
+def initialize (menu=DEFAULT_MENU)
+  @list = menu
 end
 
 end
