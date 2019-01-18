@@ -1,11 +1,13 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:menu) { double(:menu, print_menu: true, list: ["pizza", "chips"]) }
+  let(:pizza) { double(:dish, price: 10, name: "Pizza") }
+  let(:chips) { double(:chips, price: 2, name: "Chips") }
+  let(:menu) { double(:menu, print_menu: true, list: [pizza, chips]) }
   let(:menu_class) { double(:menu_class, new: menu) }
-  let(:basket) { double(:basket, add: true)}
-  let(:basket_class) { double(:basket_class, new: basket) }
-  let(:takeaway) { Takeaway.new(menu_class, basket_class) }
+  let(:order) { double(:order, add: true)}
+  let(:order_class) { double(:order_class, new: order) }
+  let(:takeaway) { Takeaway.new(menu_class, order_class) }
 
   describe '#initialize' do
 
@@ -13,8 +15,8 @@ describe Takeaway do
       expect(takeaway.menu).to eq menu
     end
 
-    it 'should initialize with a basket' do
-      expect(takeaway.basket).to eq basket
+    it 'should initialize with a order' do
+      expect(takeaway.order).to eq order
     end
   end
 
@@ -26,16 +28,34 @@ describe Takeaway do
     end
   end
 
-  describe '#basket' do
+  describe '#order' do
 
-    it 'should tell basket to respond to add' do
-      expect(basket).to receive(:add)
-      takeaway.add_to_basket(1)
+    it 'should tell order to respond to add' do
+      expect(order).to receive(:add)
+      takeaway.add_to_order(1, 1)
     end
 
-    it 'should tell basket to respond to current_total' do
-      expect(basket).to receive(:current_total)
+    it 'should add item x times' do
+      expect(order).to receive(:add).exactly(3).times
+      takeaway.add_to_order(1, 3)
+    end
+
+    it 'should tell order to respond to current_total' do
+      expect(order).to receive(:current_total)
       takeaway.current_total
+    end
+
+    it 'should show the contents of the current order' do
+      expect(order).to receive(:contents)
+      takeaway.order_content
+    end
+
+  end
+
+  describe '#place_order' do
+
+    it 'should raise an error if the price given is wrong' do
+    expect { subject.place_order(1, 1, 9) }.to raise_error("Total given is not correct")
     end
 
   end

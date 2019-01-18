@@ -27,7 +27,7 @@ describe Menu do
   describe '#print_menu' do
     let(:menu) { Menu.new(print_class) }
 
-    it 'should tell menu to print_menu' do
+    it 'print class responds to print_menu' do
       expect(print).to receive(:print_menu)
       menu.print_menu
     end
