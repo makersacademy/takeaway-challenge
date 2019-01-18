@@ -8,7 +8,8 @@ class Menu
 
   def initialize(names, item = Item, formatter = Formatter, order = Order)
     @names = names
-    @items = create_items(item)
+    @item = item
+    @items = create_items
     @formatter = formatter.new
     @order = order.new
   end
@@ -32,13 +33,18 @@ class Menu
   end
 
   def place_order(choice)
+    choice = @item.new(choice)
     @order.place_order(choice)
+  end
+
+  def return_order_total
+    @order.order_total
   end
 
   private
 
-  def create_items(item)
-    @items = @names.map { |name| item.new(name) }
+  def create_items
+    @items = @names.map { |name| @item.new(name) }
   end
 
 end

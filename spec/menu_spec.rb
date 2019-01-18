@@ -5,7 +5,7 @@ describe Menu do
   let(:item_class) { double(:item_class, new: item_fish) }
   let(:formatter) { double(:formatter, format_items: "Fish --- 8") }
   let(:formatter_class) { double(:formatter_class, new: formatter) }
-  let(:order) { double(:order, place_order: nil) }
+  let(:order) { double(:order, place_order: nil, order_total: 1) }
   let(:order_class) { double(:order_class, new: order) }
   let(:subject) { Menu.new(["fish"], item_class, formatter_class, order_class) }
 
@@ -45,8 +45,13 @@ describe Menu do
   end
 
   describe '#view_order' do
+    it 'should run order object' do
+      expect(order).to receive(:order_total)
+      subject.return_order_total
+    end
+
     it 'should return the order' do
-#      subject.view_order
+      expect(subject.return_order_total).to eq 1
     end
   end
 
