@@ -1,3 +1,6 @@
+require_relative 'dish'
+
+# Stores dish objects and can send hash of names and prices
 class Menu
   attr_reader :items
 

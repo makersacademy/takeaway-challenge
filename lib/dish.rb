@@ -1,3 +1,4 @@
+# Initializes with name and price and can forward these
 class Dish
   attr_reader :name, :price
 
