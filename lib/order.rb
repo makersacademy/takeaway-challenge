@@ -14,12 +14,12 @@ class Order
   end
 
   def display
-    order_with_prices.map { |arr|
+    basket_with_prices.map { |arr|
       "#{arr[0]} X #{arr[1]} = £#{arr[2] * arr[1]}"
     }.join(", ")
   end
 
-  def order_with_prices
+  def basket_with_prices
     @basket.map { |arr|
       [arr[0], arr[1], @menu[arr[0]]]
     }

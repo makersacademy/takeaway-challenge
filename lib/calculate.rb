@@ -1,11 +1,7 @@
 module Calculate
   def self.add(array)
-    arr = []
-    array.each { |element|
-      element.each { |key, val|
-        arr << val.to_i
-      }
-    }
-    arr.reduce(:+)
+    array.map { |arr|
+      arr[1] * arr[2]
+    }.reduce(:+)
   end
 end

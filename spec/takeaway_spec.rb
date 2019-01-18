@@ -20,7 +20,7 @@ RSpec.describe Takeaway do
   it "can calculate the total of the order" do
     subject.order('Thing1', 2)
     subject.order('Thing2', 3)
-    expect(subject.total).to be(65)
+    expect(subject.total).to be(56)
   end
 
 end
