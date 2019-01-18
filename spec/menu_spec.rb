@@ -4,6 +4,8 @@ describe Menu do
 
   let(:pizza) { double(:dish, price: 10, name: "Pizza") }
   let(:chips) { double(:dish, price: 2, name: "Chips") }
+  let(:print) { double(:print, print_menu: true) }
+  let(:print_class) { double(:print_class, new: print) }
 
   describe '#list' do
     it { is_expected.to respond_to(:list) }
@@ -23,11 +25,11 @@ describe Menu do
   end
 
   describe '#print_menu' do
+    let(:menu) { Menu.new(print_class) }
 
-    it 'should print out a list of the items including prices' do
-      subject.add_dish(pizza)
-      subject.add_dish(chips)
-      expect(subject.print_menu). to eq "1. Pizza £10\n2. Chips £2"
+    it 'print class responds to print_menu' do
+      expect(print).to receive(:print_menu)
+      menu.print_menu
     end
 
   end

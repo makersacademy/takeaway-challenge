@@ -1,11 +1,13 @@
 require_relative 'dish'
+require_relative 'print'
 
 class Menu
 
   attr_reader :list
 
-  def initialize
+  def initialize(print = Print)
     @list = []
+    @print = print.new
   end
 
   def add_dish(dish)
@@ -13,15 +15,7 @@ class Menu
   end
 
   def print_menu
-    @list.each_with_index.map { |dish, menu_number|
-      todo_to_string(dish, menu_number + 1)
-    }.join("\n")
-  end
-
-  def todo_to_string(dish, menu_number)
-    name = dish.name
-    price = dish.price
-    "#{menu_number}. #{name} £#{price}"
+    @print.print_menu(@list)
   end
 
 end
