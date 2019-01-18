@@ -21,8 +21,9 @@ class Takeaway
   end
 
   def basket
-    @basket.select { |_k, v| v.positive? }
+    @basket.select { |_dish, numbers| numbers[:price].positive? }
   end
+  # TODO: Finish refactoring me -> move to hash of hashes
 
   def setup_basket
     @basket = {}
@@ -30,11 +31,11 @@ class Takeaway
   end
 
   def populate_valid_dishes
-    menu.each_key { |dish| @basket[dish] = 0 }
+    menu.each_pair { |dish, price| @basket[dish] = { quantity: 0, price: price } }
   end
 
   def add_to_basket(dish, quantity)
-    @basket[dish.to_sym] += quantity
+    @basket[dish.to_sym][:quantity] += quantity
   end
 
   def total
@@ -42,6 +43,9 @@ class Takeaway
     @prepared_order.each_value { |numbers| total += (numbers[0] * numbers[1]) }
     total
   end
+
+  # TODO WOrk out a proper data structure
+  # Hash of hashes? {Dish:  {Quantity: x, Price: y}     }
 
   def checkout
     output = {}
@@ -59,7 +63,7 @@ class Takeaway
       quantity = numbers[0]
       price = numbers[1]
       output << ", " unless output == ""
-      output << "#{dish.to_s} x #{quantity} (£#{price * quantity})"
+      output << "#{dish} x #{quantity} (£#{price * quantity})"
     end
     output << "\nThe total is £#{total}"
   end

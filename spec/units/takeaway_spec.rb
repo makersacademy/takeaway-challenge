@@ -37,7 +37,7 @@ describe Takeaway do
 
     it 'should add dishes to the basket' do
       takeaway.order('korai')
-      expect(takeaway.basket).to eq({:korai=>1})
+      expect(takeaway.basket).to eq({:korai=>{:price=>3.5, :quantity=>1}, :korma=>{:price=>3, :quantity=>0}, :vindaloo=>{:price=>4, :quantity=>0}})
     end
 
     it 'should add multiple dishes to the basket' do
