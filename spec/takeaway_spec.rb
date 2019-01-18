@@ -7,7 +7,8 @@ describe Takeaway do
   # I would like to see a list of dishes with prices
   describe "read_menu" do
     it "shows a list of dishes with prices" do
-      expect(subject).to respond_to(:read_menu)
+      dishes = Menu.new
+      expect(subject.read_menu).to eq(dishes.load_menu)
     end
   end
 end
