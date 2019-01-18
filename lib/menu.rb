@@ -32,16 +32,27 @@ class Menu
     end
   end
 
+  def return_order_total
+    @order.order_total
+  end
+
+  def show_order_breakdown
+    (return_order_total == order_recount) ? true : (fail "Calculation broken")
+  end
+
   def place_order(choice)
     choice = @item.new(choice)
     @order.place_order(choice)
   end
 
-  def return_order_total
-    @order.order_total
-  end
+    def order_recount
+      counter = 0
+      @order.items.map { |item| counter += item.price }
+      counter
+    end
 
   private
+
 
   def create_items
     @items = @names.map { |name| @item.new(name) }
