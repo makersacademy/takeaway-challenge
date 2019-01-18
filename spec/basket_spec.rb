@@ -1,11 +1,11 @@
 # todo:
 # make user input to select dishes easier
 
-require 'basket'
-describe Basket do
+require 'basketprinter'
+describe BasketPrinter do
   let(:selection) {{chips: 1, curry: 3}}
   let(:options) {{chips: 2, curry: 3.25}}
-  let(:basket) {basket = Basket.new(selection , options)}
+  let(:basket) {basket = BasketPrinter.new(selection , options)}
   describe "#initialize" do
     it "stores the list of items passed to it" do
       expect(basket.options).to eq options
@@ -22,7 +22,3 @@ describe Basket do
     end
   end
 end
-
-
-#
-# expect(subject.make_selection({chips: 2, curry: 4})).to eq [{item: chips, quanity: 2}, {item: curry, quanity: 4}]

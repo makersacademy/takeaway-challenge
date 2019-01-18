@@ -42,35 +42,4 @@ describe Takeaway do
       takeaway.show_items
     end
   end
-
-    describe "#validate_selection" do
-
-    end
-  #
-  #     it "checks if all items have quanity" do
-  #       subject = Basket.new({potatoe: 'string'} , options)
-  #       expect{subject.validate_selection}.to raise_error "each item must have quantity"
-  #     end
-  #
-  #     it "checks if all items are available" do
-  #       subject = Basket.new({potatoe: 2} , options)
-  #       expect{subject.validate_selection}.to raise_error "not all items available"
-  #     end
-  #   end
-  # end
 end
-
-=begin
-"ITEMS"
-currently takeaway is:
-adding items to it's list
-checking if the items are valid
-storing the items
-
-"DISPLAY"
-formatting price of items
-printing the items
-
-
-
-=end
