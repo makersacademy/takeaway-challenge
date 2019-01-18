@@ -5,10 +5,9 @@ describe Menu do
   let(:item_class) { double(:item_class, new: item_fish) }
   let(:formatter) { double(:formatter, format_items: "Fish --- 8") }
   let(:formatter_class) { double(:formatter_class, new: formatter) }
-  let(:order) { double(:order, place_order: nil, order_total: 1, items: [item_fish] ) }
+  let(:order) { double(:order, place_order: nil, order_total: 1, items: [item_fish]) }
   let(:order_class) { double(:order_class, new: order) }
   let(:subject) { Menu.new(["fish"], item_class, formatter_class, order_class) }
-
 
   describe '#initialize' do
     it 'should initialize with a list of item names' do
@@ -58,17 +57,22 @@ describe Menu do
       end
     end
 
-    describe '#show_order_breakdown' do
-      let(:false_order) { double(:false_order, order_total: 0, items: [item_fish] ) }
+    describe '#confirm_order_breakdown' do
+      let(:false_order) { double(:false_order, order_total: 0, items: [item_fish]) }
       let(:false_order_class) { double(:order_class, new: false_order) }
       let(:false_total_subject) { Menu.new(["fish"], item_class, formatter_class, false_order_class) }
 
+      it 'should run the order object on recount' do
+        expect(order).to receive(:items)
+        subject.confirm_order_breakdown
+      end
+
       it 'should return true if order total is correct' do
-        expect(subject.show_order_breakdown).to eq true
+        expect(subject.confirm_order_breakdown).to eq true
       end
 
       it 'should return error message if there is a miscalculation' do
-        expect { false_total_subject.show_order_breakdown } .to raise_error"Calculation broken"
+        expect { false_total_subject.confirm_order_breakdown } .to raise_error "Calculation broken"
       end
     end
   end

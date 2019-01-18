@@ -21,14 +21,10 @@ class Menu
   def user_input
     order_complete = false
     while order_complete == false
-      puts "Please select your option"
-      answer = gets.chomp
-      puts "How many #{answer}s would you like?"
-      volume = gets.chomp.to_i
+      answer = select_option
+      volume = select_volume(answer)
       volume.times { place_order(answer) }
-      puts "Is that all?"
-      finished = gets.chomp
-      order_complete = true if finished == "Yes"
+      order_complete = true if (check_finished) == "Yes"
     end
   end
 
@@ -36,7 +32,7 @@ class Menu
     @order.order_total
   end
 
-  def show_order_breakdown
+  def confirm_order_breakdown
     (return_order_total == order_recount) ? true : (fail "Calculation broken")
   end
 
@@ -45,17 +41,31 @@ class Menu
     @order.place_order(choice)
   end
 
-    def order_recount
-      counter = 0
-      @order.items.map { |item| counter += item.price }
-      counter
-    end
-
   private
 
+  def order_recount
+    counter = 0
+    @order.items.map { |item| counter += item.price }
+    counter
+  end
 
   def create_items
     @items = @names.map { |name| @item.new(name) }
+  end
+
+  def select_option
+    puts "Please select your option"
+    gets.chomp
+  end
+
+  def select_volume(answer)
+    puts "How many #{answer}s would you like?"
+    volume = gets.chomp.to_i
+  end
+
+  def check_finished
+    puts "Is that all?"
+    finished = gets.chomp
   end
 
 end
