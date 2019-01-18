@@ -6,4 +6,8 @@ class Basket
     @basket = []
   end
 
+  def add(dish)
+    @basket << dish
+  end
+
 end
