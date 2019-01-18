@@ -63,11 +63,9 @@ class Takeaway
     checkout
     output = ""
     alphabetical_order = @prepared_order.sort_by { |key| key }.to_h
-    alphabetical_order.each_pair do |dish, numbers|
-      quantity = numbers[0]
-      price = numbers[1]
+    alphabetical_order.each_pair do |dish, hash|
       output << ", " unless output == ""
-      output << "#{dish} x #{quantity} (£#{price * quantity})"
+      output << "#{dish} x #{hash[:quantity]} (£#{hash[:price] * hash[:quantity]})"
     end
     output << "\nThe total is £#{total}"
   end
