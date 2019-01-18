@@ -7,5 +7,7 @@ def ft_do
   m.add_to(pizza)
   m.add_to(goat)
   i = Interface.new(m)
-  puts i.see_list
+  puts "see_list = #{i.see_list}"
+  i.select_dish("Pizza", 3)
+  puts "verify_order = #{i.verify_order}"
 end

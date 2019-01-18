@@ -6,7 +6,7 @@ describe Interface do
   describe "#see_list" do
     it 'returns a menu' do
       interface = Interface.new(menu)
-      expect(interface.see_list).to eq "Pizza, 15\nGoat, 22"
+      expect(interface.see_list).to eq [["Pizza", 15], ["Goat", 22]]
     end
   end
 
@@ -26,7 +26,9 @@ describe Interface do
 
   describe "#verify_order" do
     it 'returns a list showing name, quantity & total price' do
-      
+      interface = Interface.new(menu)
+      interface.instance_variable_set(:@selected_dishes, { "Pizza" => 3 })
+      expect(interface.verify_order).to eq [["Pizza", 3, 45]]
     end
   end
 end
