@@ -21,7 +21,7 @@ class Order
 
   def basket_with_prices
     @basket.map { |arr|
-      [arr[0], arr[1], @menu[arr[0]]]
+      [ arr[0], arr[1], @menu[arr[0]] ]
     }
   end
 end
