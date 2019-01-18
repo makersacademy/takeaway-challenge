@@ -20,4 +20,12 @@ describe MenuDisplay do
     end
   end
 
+  describe '#print_item' do
+    it 'prints item capitalized' do
+      allow(menu).to receive(:menu).and_return({ lentil_stew: 20 })
+      item_on_menu = :lentil_stew
+      expect(MenuDisplay.new(menu).print_item(item_on_menu)).to eq 'Lentil Stew'
+    end
+  end
+
 end
