@@ -2,11 +2,11 @@ require_relative 'menu'
 
 class Takeaway
   def initialize(menu = Menu.new)
-    @menu
+    @menu = menu
   end
 
   def read_menu
-
+    @menu.display
   end
 
   def order(dish, quantity)
