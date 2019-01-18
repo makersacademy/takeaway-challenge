@@ -22,8 +22,5 @@ menu.add_item(item2)
 takeaway = Takeaway.new(menu)
 order = Order.new(menu)
 order.add(item1, 3)
-
-order.total
-
-
 order.add(item2, 5)
+order.total
