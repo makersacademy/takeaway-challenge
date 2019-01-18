@@ -18,20 +18,21 @@ class Menu
   end
 
   def user_input
-    # order_complete = false
-    # while order_complete == false
+    order_complete = false
+    while order_complete == false
       puts "Please select your option"
       answer = gets.chomp
       puts "How many #{answer}s would you like?"
-      volume = gets.chomp
+      volume = gets.chomp.to_i
       volume.times { place_order(answer) }
-    #   puts "Is that all?"
-    #   order_complete = true if gets.chomp = "Yes"
-    # end
+      puts "Is that all?"
+      finished = gets.chomp
+      order_complete = true if finished == "Yes"
+    end
   end
 
-  def place_order(choices)
-    @order.place_order(choices)
+  def place_order(choice)
+    @order.place_order(choice)
   end
 
   private

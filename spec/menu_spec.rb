@@ -30,14 +30,23 @@ describe Menu do
     end
   end
 
-  describe '#place order' do
+  describe '#user_input' do
 
     it 'should test user input' do
+    end
+
+    it 'should loop until order_complete = true' do
     end
 
     it 'should run order object' do
       expect(order).to receive(:place_order)
       subject.place_order(item_fish)
+    end
+  end
+
+  describe '#view_order' do
+    it 'should return the order' do
+#      subject.view_order
     end
   end
 
