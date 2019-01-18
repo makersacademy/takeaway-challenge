@@ -43,27 +43,27 @@ describe Takeaway do
     it 'should add multiple dishes to the basket' do
       takeaway.order('korai')
       takeaway.order('korma')
-      expect(takeaway.basket).to eq({:korai => 1, :korma => 1})
+      expect(takeaway.basket).to eq({:korai=>{:price=>3.5, :quantity=>1}, :korma=>{:price=>3, :quantity=>1}, :vindaloo=>{:price=>4, :quantity=>0}})
     end
 
     it 'should allow quantities to be specified when ordering' do
       takeaway.order('korai', 2)
       takeaway.order('korma', 2)
-      expect(takeaway.basket).to eq({:korai => 2, :korma => 2})
+      expect(takeaway.basket).to eq({:korai=>{:price=>3.5, :quantity=>2}, :korma=>{:price=>3, :quantity=>2}, :vindaloo=>{:price=>4, :quantity=>0}})
     end
 
     it 'should refuse orders that are not on the menu' do
       allow(@menu).to receive(:has_dish?).and_return(false)
       takeaway.order('fake', 2)
       takeaway.order('another_fake', 3)
-      expect(takeaway.basket).to be_empty
+      expect(takeaway.basket).to eq({:korai=>{:price=>3.5, :quantity=>0}, :korma=>{:price=>3, :quantity=>0}, :vindaloo=>{:price=>4, :quantity=>0}})
     end
 
     it 'should collate orders for the same dish together' do
       takeaway.order('vindaloo', 2)
       takeaway.order('korma')
       takeaway.order('vindaloo', 1)
-      expect(takeaway.basket).to eq({vindaloo: 3, korma: 1})
+      expect(takeaway.basket).to eq({:korai=>{:price=>3.5, :quantity=>0}, :korma=>{:price=>3, :quantity=>1}, :vindaloo=>{:price=>4, :quantity=>3}})
     end
 
 
