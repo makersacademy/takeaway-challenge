@@ -40,23 +40,27 @@ class Takeaway
 
   def total
     total = 0
-    @prepared_order.each_value { |numbers| total += (numbers[0] * numbers[1]) }
+    @prepared_order.each_value do |hash|
+      total += (hash[:price] * hash[:quantity])
+    end
     total
   end
 
   # TODO WOrk out a proper data structure
   # Hash of hashes? {Dish:  {Quantity: x, Price: y}     }
+  #
+  # TODO DRY the code with knowledge of the hash structure
 
   def checkout
     output = {}
-    @basket.each_pair do |dish, quantity|
-      output[dish] = [quantity, @menu.list[dish]] if quantity.positive?
+    @basket.each_pair do |dish, hash|
+      output[dish] = hash if hash[:quantity].positive?
     end
     @prepared_order = output
   end
 
   def print_basket
-    checkout unless @prepared_order
+    checkout
     output = ""
     alphabetical_order = @prepared_order.sort_by { |key| key }.to_h
     alphabetical_order.each_pair do |dish, numbers|
