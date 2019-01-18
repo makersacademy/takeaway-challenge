@@ -30,4 +30,14 @@ describe Order do
     end
   end
 
+  describe '#receipt' do
+    it "Returns a text representation of the order" do
+      message = "Order: Pizza, £5.0 x x7 \nFries, £1.99 x x5 \nTotal Price: comes to £44.95"
+      good_order.add(item1, 7)
+      good_order.add(item2, 5)
+      expect(good_order.receipt).to eq message
+    end
+  end
+
+
 end
