@@ -12,7 +12,7 @@ class Takeaway
   end
 
   def show_items
-    @printer.display_items(items)
+    @printer.print_items(items)
   end
 
   private

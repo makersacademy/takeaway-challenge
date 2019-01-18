@@ -6,10 +6,10 @@ describe Takeaway do
   let(:no_price_item) {{name: 'chips'}}
   let(:chips) {{name: 'chips', price: 2}}
   let(:curry) {{name: 'curry', price: 3.25}}
-  let(:chips_and_curry) {[chips, curry]}
   let(:printer) {double(:printer)}
   let(:printer_class) {double(:printer, new: printer)}
   let(:takeaway) {Takeaway.new(printer_class)}
+
   context "on creation" do
     it "has a printer" do
       expect(printer_class).to receive(:new)
@@ -31,7 +31,7 @@ describe Takeaway do
   end
   describe "#show_items" do
     it "gives printer it's list of items and asks to print them" do
-      expect(printer).to receive(:display_items).with(takeaway.items)
+      expect(printer).to receive(:print_items).with(takeaway.items)
       takeaway.show_items
     end
   end

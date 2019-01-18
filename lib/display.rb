@@ -1,12 +1,16 @@
 require 'money'
 I18n.enforce_available_locales = false
-class Display
+class Printer
 
-  def display_items(items)
+  def format_items(items)
     items.map.with_index do |item,index|
       "#{index +1}. #{item[:name].capitalize}: #{format_price(item)}"
     end
     .join("\n")
+  end
+
+  def print_items(items)
+    print format_items(items)
   end
 
   private
