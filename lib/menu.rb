@@ -1,29 +1,24 @@
 class Menu
   attr_reader :dishes
 
-  def initialize(dishes)
-    @dishes = dishes
+  def initialize
+    @dishes = []
+  end
+
+  def add_item(item)
+    @dishes << item
   end
 
   def print_menu
-    dishes.map do |food, price|
-      "%s £%.2f" % [food.to_s.capitalize, price]
+    dishes.map do |item|
+      "%s £%.2f" % [item.name, item.price]
     end.join(", ")
   end
 
-
-
-  # def price(dish)
-  #   dishes[dish]
-  # end
-
+  def has_item?(item)
+    @dishes.include?(item)
+  end
 end
 
-# As a customer
-# So that I can check if I want to order something
-# # I would like to see a list of dishes with prices
-# dishes.map do |title, price|
 #
-#
-# dish =
-#   { "Chicken": 3.00 }
+# @dishes = [Item => Item.name, Item.price]

@@ -1,25 +1,38 @@
 require 'menu'
 
 describe Menu do
-  subject(:burger_menu) { described_class.new(dishes) }
-  let(:dishes) do
-    {
-      chicken: 2.99,
-      beef: 3.49,
-      veggie: 1.99,
-      fries: 1.50
-    }
-  end
+
+  let(:item) { double :item, name: "Pizza", price: 5.00 }
+  let(:item2) { double :item, name: "Fries", price: 1.99 }
 
   describe '#new' do
-    it 'Initialises with argument dishes' do
-      expect(burger_menu.dishes.count).to eq 4
+    it 'Initialises with an empty array' do
+      expect(subject.dishes).to be_empty
     end
   end
 
-  describe '#Print Menu' do
+  describe 'add_item' do
+    it 'Adds an Item to the menu' do
+      subject.add_item(item)
+      expect(subject.dishes).to include item
+    end
+  end
+
+  describe '#print_menu' do
     it 'Should print a list of dishes with relevant prices' do
-      expect(burger_menu.print_menu).to eq "Chicken £2.99, Beef £3.49, Veggie £1.99, Fries £1.50"
+      subject.add_item(item)
+      expect(subject.print_menu).to eq "Pizza £5.00"
+    end
+  end
+
+  describe '#has_item?' do
+    it 'Returns true if dishes does contain item' do
+      subject.add_item(item)
+      expect(subject.has_item?(item)).to eq true
+    end
+    it 'Returns false if dishes does not contain item' do
+      subject.add_item(item)
+      expect(subject.has_item?(item2)).to eq false
     end
   end
 end
