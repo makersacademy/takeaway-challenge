@@ -6,7 +6,7 @@ I would like to see a list of dishes with prices
 
 | Object | Message |
 | :----: | :----: |
-|Dish| check_list, show_price |
+| Menu | show_dish, show_price |
 
 >As a customer
 So that I can order the meal I want
@@ -30,4 +30,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Object | Message |
 | :----: | :----: |
-| Order | print_message |
+| Order | send_text |
