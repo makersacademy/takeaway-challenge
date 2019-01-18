@@ -11,7 +11,6 @@ class Menu
     end.join(", ")
   end
 
-
 end
 
 # As a customer
