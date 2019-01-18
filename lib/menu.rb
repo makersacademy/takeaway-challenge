@@ -6,10 +6,6 @@ class Menu
     "Thing4" => 8
   }
 
-  def initialize
-    
-  end
-
   def display
     MENU
   end

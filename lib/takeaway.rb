@@ -1,10 +1,14 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'calculate'
 
 class Takeaway
+  attr_reader :basket
+  
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
     @order = order
+    @basket = @order.basket
   end
 
   def read_menu
@@ -19,8 +23,8 @@ class Takeaway
     @order.display
   end
 
-  def calculate_total
-
+  def total
+    Calculate.add(@basket)
   end
 
   def checkout
