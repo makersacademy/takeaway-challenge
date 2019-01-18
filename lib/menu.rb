@@ -11,6 +11,12 @@ class Menu
     end.join(", ")
   end
 
+
+
+  # def price(dish)
+  #   dishes[dish]
+  # end
+
 end
 
 # As a customer

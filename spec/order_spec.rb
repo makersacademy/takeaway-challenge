@@ -27,4 +27,10 @@ describe Order do
       it "Throws an error if item doesn't exist on menu" do      message = "vegan is not on the menu!"
       expect { example_order.add("vegan", 1) }.to raise_error(message)
   end
+
+  # describe '#total'
+  # it 'Adds all values in ordered array' do
+  #   example_order.add("chicken", 5)
+  #   expect(example_order.total).to eq 14.95
+  # end
 end

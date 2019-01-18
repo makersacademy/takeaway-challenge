@@ -18,3 +18,5 @@ dishes = { chicken: 2.99, beef: 3.49 }
 menu = Menu.new(dishes)
 takeaway = Takeaway.new(menu)
 order = Order.new(menu)
+order.add("chicken", 3)
+order.add("beef", 5)
