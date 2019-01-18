@@ -5,7 +5,7 @@ describe Formatter do
   let(:subject) { Formatter.new([item]) }
 
   it 'should format an array of items' do
-    expect(subject.format_items).to eq ["Fish --- 8\n"]
+    expect(subject.format_items).to eq ["Fish --- £8\n"]
   end
 
 end

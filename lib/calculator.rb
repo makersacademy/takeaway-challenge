@@ -1,7 +1,6 @@
 class Calculator
 
-  def initialize(item_name)
-    @item_name = item_name
+  def initialize
     @price_list = {
       "fish" => 8,
       "pizza" => 5,
@@ -10,8 +9,8 @@ class Calculator
     }
   end
 
-  def calculate_price
-    @price_list[@item_name]
+  def calculate_price(item_name)
+    @price_list[(item_name.downcase)]
   end
 
 end

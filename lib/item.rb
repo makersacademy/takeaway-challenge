@@ -1,4 +1,4 @@
-require 'calculator'
+require_relative 'calculator'
 class Item
 
   attr_reader :name, :price

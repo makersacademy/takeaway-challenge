@@ -4,6 +4,6 @@ class Formatter
   end
 
   def format_items
-    @items.map { |item| "#{item.name} --- #{item.price}\n" }
+    @items.map { |item| "#{item.name} --- £#{item.price}\n" }
   end
 end
