@@ -10,4 +10,10 @@ class Basket
     @basket << dish
   end
 
+  def current_total
+    total = 0
+    @basket.each { |dish| total += dish.price }
+    total
+  end
+
 end

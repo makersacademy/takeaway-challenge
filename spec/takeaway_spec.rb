@@ -28,9 +28,14 @@ describe Takeaway do
 
   describe '#basket' do
 
-    it 'add dishes to the basket' do
+    it 'should tell basket to respond to add' do
       expect(basket).to receive(:add)
       takeaway.add_to_basket(1)
+    end
+
+    it 'should tell basket to respond to current_total' do
+      expect(basket).to receive(:current_total)
+      takeaway.current_total
     end
 
   end

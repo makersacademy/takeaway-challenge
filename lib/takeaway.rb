@@ -18,4 +18,7 @@ class Takeaway
     @basket.add(@menu.list[dish_number])
   end
 
+  def current_total
+    @basket.current_total
+  end
 end
