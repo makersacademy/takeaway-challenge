@@ -12,4 +12,10 @@ RSpec.describe Takeaway do
     expect(subject.read_menu).to be_a(Hash)
   end
 
+  it "can order any dish in various quantities" do
+    subject.order('Thing1', 2)
+    expect(subject.basket_summary).to include('Thing1')
+  end
+
+
 end
