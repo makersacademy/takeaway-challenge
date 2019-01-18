@@ -1,11 +1,11 @@
 require 'menu'
 
 describe Menu do
-   let(:item_fish)   { double(:item ) }
-   let(:item_class)  { double(:item_class, new: item_fish) }
-   let(:formatter)    { double(:formatter, format_items: "Fish --- 8") }
-   let(:formatter_class)   { double(:formatter_class, new: formatter) }
-   let(:subject)     { Menu.new(["fish"], item_class, formatter_class)}
+  let(:item_fish) { double(:item) }
+  let(:item_class) { double(:item_class, new: item_fish) }
+  let(:formatter) { double(:formatter, format_items: "Fish --- 8") }
+  let(:formatter_class) { double(:formatter_class, new: formatter) }
+  let(:subject) { Menu.new(["fish"], item_class, formatter_class) }
 
   it 'should initialize with a list of item names' do
     expect(subject.names).to eq ["fish"]

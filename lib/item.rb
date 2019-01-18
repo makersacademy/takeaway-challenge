@@ -3,11 +3,9 @@ class Item
 
   attr_reader :name, :price
 
-  def initialize(name)
+  def initialize(name, calculator = Calculator)
     @name = name
-    @price
+    @calculator = calculator.new
+    @price = @calculator.calculate_price(@name)
   end
-
-
-
 end

@@ -18,7 +18,7 @@ class Menu
   private
 
   def create_items(item)
-    @items = @names.map{ |name| item.new(name) }
+    @items = @names.map { |name| item.new(name) }
   end
 
 end
