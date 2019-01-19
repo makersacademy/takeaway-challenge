@@ -22,7 +22,6 @@ class Takeaway
 private
 
   def calculate_total
-    p @order
    @total = 0
    @order.each { |element| @total += (@menu.price?(element[:item]) * element[:quantity]) }
    @total
