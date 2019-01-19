@@ -16,4 +16,9 @@ class Basket
     cost
   end
 
+  def return_order
+    @basket.each { |item| puts item[:name] }
+    puts "Total: £#{cost}"
+  end
+
 end

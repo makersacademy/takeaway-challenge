@@ -20,6 +20,8 @@ class Order
     end
   end
 
-  # def order_complete
+  def order_complete
+    basket.return_order
+  end
 
 end

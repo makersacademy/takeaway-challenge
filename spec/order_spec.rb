@@ -4,7 +4,7 @@ describe Order do
 
   let(:order)   { described_class.new(menu, basket) }
   let(:menu)    { double(:menu, display: nil, list: [hummus, pizza] ) }
-  let(:basket)  { double(:basket, add: nil) }
+  let(:basket)  { double(:basket, add: nil, basket: [hummus, pizza]) }
   let(:hummus)  { { name: "Hummus", price: 2 } }
   let(:pizza)   { { name: "Pizza", price: 10 } }
 
@@ -24,6 +24,13 @@ describe Order do
     it 'should enable a user to add more than 1 of an item if the user enters a quantity' do
       expect(basket).to receive(:add).exactly(3).times
       order.add_item("Pizza", 3)
+    end
+  end
+
+  describe "Completing an order" do
+    it 'Should return an order summary when the user indicates that their order is complete' do
+      expect(basket).to receive(:return_order)
+      order.order_complete
     end
   end
 end
