@@ -1,17 +1,19 @@
 require_relative 'item'
 require_relative 'formatter'
 require_relative 'order'
+require_relative 'text_message'
 
 class Menu
 
   attr_reader :names, :items
 
-  def initialize(names, item = Item, formatter = Formatter, order = Order)
+  def initialize(names, item = Item, formatter = Formatter, order = Order, text = TextMessage)
     @names = names
     @item = item
     @items = create_items
     @formatter = formatter.new
     @order = order.new
+    @textmessage = text.new
   end
 
   def print_menu
@@ -30,6 +32,10 @@ class Menu
 
   def return_order_total
     @order.order_total
+  end
+
+  def confirm_order
+    @textmessage.send_confirmation_text if confirm_order_breakdown == true
   end
 
   def confirm_order_breakdown
