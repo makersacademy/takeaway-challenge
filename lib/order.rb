@@ -25,4 +25,8 @@ attr_reader :food_order, :menu
     sum
   end
 
+  def correct_cost(price)
+    total_cost == price
+  end
+
 end
