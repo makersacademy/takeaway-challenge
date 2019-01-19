@@ -1,13 +1,10 @@
 class Menu
   
-  def food_menu
-     {:pizza => 5,
-      :chips => 6,
-      :curry => 7,
-      :cake => 3} 
+  def initialize(menu = {:pizza => 3, :chips => 6, :curry => 7, :cake => 6})
+   @menu = menu
   end
   
-  def print_menu
-    p food_menu
+  def display
+    p @menu
   end
 end
