@@ -2,9 +2,10 @@ require_relative 'menu'
 
 class Order
 
-attr_reader :food_order
+attr_reader :food_order, :menu
 
-  def initialize
+  def initialize(menu = Menu.new)
+    @menu = menu
     @food_order = []
   end
 
@@ -13,5 +14,15 @@ attr_reader :food_order
   end
 
   def print_order
-  end 
+    p @food_order
+  end
+
+  def total_cost
+    sum = 0
+    @food_order.each do |item|
+      sum += @menu.menu[item[:food]] * item[:quantity]
+    end
+    sum
+  end
+
 end
