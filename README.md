@@ -79,6 +79,26 @@ Approach
 
 I followed the YAGNI (you aren't gonna need it) principle here and tried to stick to the user stories as best as possible. 
 
+## Single Responsibility & Delegation
+
+In order to keep things as single responsibility as possible, I chose to go with the following classes:
+
+- **Takeaway class**: Acts as the 'controller' and delegates responsibilities
+- **Menu class**: Contains the menu as its state, displays it when `@menu.view` is called.
+- **Order class**: Takes the order and pushes it into its state (an array). Contains an instance of `Menu` in order to get the cost of each of the items being ordered. It also prints the current state of the order i.e. basket.
+- **Calculator module**: Created a module as it doesn't need any state and doesn't need to be instantiated. This module can potentially be used for calculations (discounts etc). 
+- **Printer module**: Unsure about the need for this module. 
+
+Delegating responsibilities has allowed me to ensure that all my methods are 3 lines or less, ensuring easy updating and debugging. 
+
+## Semantic naming
+
+I've made an effort to ensure code readability by using semantic names for methods (for eg: `@menu.display`, `@order.take(dish, quantity)`, `@order.display`, `@text.send(MESSAGE)`)
+
+## Testing for behavior and not state
+
+As best as possible, my tests check for behaviour of the system under test (i.e. the isolated class) by mocking/stubbing external dependencies and checking for correct behaviour, for eg: `ordering a dish should add it to the order summary (basket_summary)`.
+
 A few places where I didn't create features: 
 
 - The `order` method assumes that the user types in foods that exist, doesn't make a typo etc.
