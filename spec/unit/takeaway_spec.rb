@@ -1,6 +1,9 @@
-class Takeaway
-  def order(item, quantity = 1)
+require 'takeaway'
+
+RSpec.describe Takeaway do
+
+  it 'lets you add an order' do
+    expect(subject.order('Vegetable pie', 1)).to eq [{"Vegetable pie"=>1}]
   end
-  def show_order
-  end
+
 end

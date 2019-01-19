@@ -29,7 +29,7 @@ let(:menu) { Menu.new('menu.csv')}
     pieshop.order('Vegetable pie', 2)
     pieshop.order('Steak pie', 3)
     pieshop.order('Monkey pie')
-    expect(pieshop.show_order).to eq ['Hash with items and numbers']
+    expect(pieshop.show_order).to eq [{"Vegetable pie"=>2}, {"Steak pie"=>3}, {"Monkey pie"=>1}]
   end
 
 end
