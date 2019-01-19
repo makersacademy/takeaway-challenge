@@ -4,13 +4,21 @@ class Menu
 
   def initialize
     @menu = {
-    :pizza => 5.50,
-    :fish => 7.50,
-    :chips => 2.00,
-    :kebab => 5.00,
-    :curry => 7.50,
+    :pizza => 5,
+    :fish => 7,
+    :chips => 2,
+    :kebab => 5,
+    :curry => 7,
     }
 
+  end
+
+  def display
+    num = 1
+    @menu.each do |dish, value|
+      puts "#{num}. #{dish} - £#{value}"
+      num += 1
+    end
   end
 
 end

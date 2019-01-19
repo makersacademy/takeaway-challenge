@@ -3,8 +3,8 @@ require_relative 'print'
 
 class Takeaway
 
-  def initialize (menu = Menu.new)
-   @menu = menu
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
 
   def issue_menu
