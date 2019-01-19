@@ -41,12 +41,12 @@ class Menu
     (order_total == order_recount) ? true : (fail "Calculation broken")
   end
 
+  private
+
   def place_order(choice)
     choice = @item.new(choice)
     @order.place_order(choice)
   end
-
-#  private
 
   def order_total
     @order.order_total

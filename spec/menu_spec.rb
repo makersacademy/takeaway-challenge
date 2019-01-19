@@ -7,7 +7,7 @@ describe Menu do
   let(:order_class) { double(:order_class, new: order) }
   let(:formatter) { double(:formatter, format_items: "Fish --- £8", format_price: "£#{order.order_total}") }
   let(:formatter_class) { double(:formatter_class, new: formatter) }
-  let(:text_message) { double(:text_message, send_message: true)}
+  let(:text_message) { double(:text_message, send_message: true) }
   let(:text_class) { double(:text_class, new: text_message) }
   let(:subject) { Menu.new(["fish"], item_class, formatter_class, order_class, text_class) }
 
@@ -34,16 +34,28 @@ describe Menu do
 
   describe '#user_input' do
 
-    it 'should test user input' do
+    before(:each) do
+      subject.stub(:gets).and_return("Fish", "1", "Yes")
     end
 
-    it 'should loop until order_complete = true' do
+    it 'should not loop if final answer is yes' do
+      expect(subject.user_input).to eq nil
     end
 
-    it 'should run order object' do
+    it 'should loop until if final answer is yes' do
+      subject.stub(:gets).and_return("Fish", "1", "No", "Fish", "1", "Yes")
+      expect(subject.user_input).to eq nil
+    end
+
+    it 'should add the item to orders' do
       expect(order).to receive(:place_order)
-      subject.place_order(item_fish)
+      subject.user_input
     end
+
+    # it 'should run order object' do
+    #   expect(order).to receive(:place_order)
+    #   subject.place_order(item_fish)
+    # end
   end
 
   describe 'view order details' do
@@ -64,7 +76,6 @@ describe Menu do
       let(:false_order_class) { double(:false_order_class, new: false_order) }
       let(:false_formatter) { double(:false_formatter, format_price: "£#{false_order.order_total}") }
       let(:false_formatter_class) { double(:false_formatter_class, new: false_formatter) }
-
       let(:false_total_subject) { Menu.new(["fish"], item_class, false_formatter_class, false_order_class) }
 
       it 'should run the order object on recount' do

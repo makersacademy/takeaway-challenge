@@ -89,7 +89,6 @@ SM3eded974666a4cb49d4cb5392a09ae34
 [Outstanding](#outstanding)
 -----
 
-- test user input method with stubbed responses
 - test text messages outside IRB
 - add further functionality eg place order by text
 - restructure so menu calls directly to a single calculator and formatter rather than running through each item
