@@ -1,8 +1,18 @@
+require_relative 'menu'
 class Takeaway
 
-  def make_order(dish)
-    #  menu = Menu.new
-    #@order << menu.list #assoc(dish) #@menu.assoc(:soup)
+attr_reader :menu
+
+def initialize(menu=Menu.new.dish)
+  @menu = menu.to_h
+end
+
+  def display_menu
   end
+
+  def order
+
+  end
+
 
 end

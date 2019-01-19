@@ -9,10 +9,10 @@ describe Order do
   context "can take order" do
     it {is_expected.to respond_to :order_summary}
 
-  #  it "takes order 'soup'" do
-    #  order1 = order.make_order(:soup)
-    #  expect(order.order_summary).to eq [:soup, 5]
-  #  end
+    it "takes order 'soup'" do
+      order1 = order.make_order(:soup)
+      expect(order.order_summary).to eq [:soup, 5]
+    end
   end
 
 end
