@@ -5,7 +5,7 @@ describe Takeaway do
   let(:selection) {{chips: 2}}
   let(:printer) {double(:printer)}
   let(:printer_class) {double(:printer, new: printer)}
-  let(:takeaway) {Takeaway.new(printer_class, items)}
+  let(:takeaway) {Takeaway.new(items, printer_class)}
   let(:basket_printer_class) {double(:basket_printer_class, new: nil)}
 
   context "on creation" do

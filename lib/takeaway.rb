@@ -2,9 +2,9 @@ class Takeaway
 
   attr_reader :items
 
-  def initialize(printer = Printer, items)
+  def initialize(items, menuprinter = MenuPrinter)
     @items = items
-    @printer = printer.new
+    @menuprinter = menuprinter.new
   end
 
   def make_selection(selection, basket_printer = BasketPrinter)
@@ -13,7 +13,7 @@ class Takeaway
   end
 
   def show_items
-    @printer.print_items(items)
+    @menuprinter.print_items(items)
   end
 
   def validate_selection(selection)

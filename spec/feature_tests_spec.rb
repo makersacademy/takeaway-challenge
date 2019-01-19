@@ -1,15 +1,15 @@
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
-require 'display'
+require 'menuprinter'
 require 'takeaway'
+require 'basketprinter'
 
 describe "Takeaway feature" do
-  let(:chips) {{chips: 2}}
-  let(:curry) {{name: 'curry', price: 3.25}}
   let(:takeaway_with_items) {takeaway = Takeaway.new ; takeaway.add_item(chips) ; takeaway.add_item(curry) ; takeaway }
   it "shows formatted list of items to user" do
-    expect{takeaway_with_items.show_items}.to output("1. Chips: £2.00\n2. Curry: £3.25").to_stdout
+    takeaway = Takeaway.new({chips: 2, curry: 3.25})
+    expect{takeaway.show_items}.to output("1. Chips: £2.00\n2. Curry: £3.25").to_stdout
   end
 
   # it "allows users to order items" do
