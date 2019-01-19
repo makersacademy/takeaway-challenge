@@ -60,6 +60,7 @@ class Takeaway
   def checkout(customer_total)
     prepare_order
     raise 'Halting Order: Unexpected Total' if total != customer_total
+    'Thank you! Your order was placed and will be delivered before 18:52'
   end
 
   def print_basket
