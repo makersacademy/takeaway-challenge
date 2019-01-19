@@ -9,7 +9,7 @@ RSpec.describe "Features and user stories:" do
 it 'so that a customer can order, display a menu for their options' do
   restaurant = Restaurant.new
   menu = Menu.new
-  expect { restaurant.display_menu(menu) }.not_to raise_error
+  expect { restaurant.display_menu }.not_to raise_error
 end
 
 # As a customer
