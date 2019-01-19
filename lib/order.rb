@@ -1,11 +1,13 @@
 require_relative 'menu'
+require_relative 'send_sms'
 
 class Order
 
 attr_reader :food_order, :menu
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, message = Sendsms.new)
     @menu = menu
     @food_order = []
+    @message = message
   end
 
   def order_food(food, quantity)
@@ -27,4 +29,10 @@ attr_reader :food_order, :menu
   def is_correct_cost?(price)
     total_cost == price
   end
+  
+
+  def checkout(value)
+    raise "Incorrect total" if !is_correct_cost?(value)
+    @message.send_message("Thank you! Your order was placed and will be delivered within 1 hour")
+  end    
 end
