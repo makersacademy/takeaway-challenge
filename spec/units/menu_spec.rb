@@ -13,8 +13,8 @@ describe Menu do
   end
 
   it 'should show a default list of items and prices' do
-    menu = Menu.new
-    expect(menu.list).to eq({ "korma": 4, "jalfrezi": 6, "pilau": 2, "naan": 2.5 })
+    empty_menu = Menu.new
+    expect(empty_menu.list).to eq({ "korma": 4, "jalfrezi": 6, "pilau": 2, "naan": 2.5 })
   end
 
   it 'should know when a dish is in the menu' do

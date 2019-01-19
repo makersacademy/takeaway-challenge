@@ -23,12 +23,6 @@ describe Takeaway do
       expect(takeaway.instance_variable_get(:@menu)).to eq @menu
     end
 
-    it 'should create its own menu if none provided' do
-      standalone_takeaway = Takeaway.new({})
-      default_menu = { korma: 4, jalfrezi: 6, pilau: 2, naan: 2.5 }
-      expect(standalone_takeaway.menu).to eq(default_menu)
-    end
-
   end
 
   context 'customers should be able to select orders' do
@@ -37,22 +31,10 @@ describe Takeaway do
       expect(takeaway).to respond_to(:order).with(1..2).arguments
     end
 
-    it 'should add dishes to the basket' do
-      takeaway.order('korai')
-      expect(takeaway.basket).to eq({:korai=>{:price=>3.5, :quantity=>1}, :korma=>{:price=>3, :quantity=>0}, :vindaloo=>{:price=>4, :quantity=>0}})
-    end
 
-    it 'should add multiple dishes to the basket' do
-      takeaway.order('korai')
-      takeaway.order('korma')
-      expect(takeaway.basket).to eq({:korai=>{:price=>3.5, :quantity=>1}, :korma=>{:price=>3, :quantity=>1}, :vindaloo=>{:price=>4, :quantity=>0}})
-    end
 
-    it 'should allow quantities to be specified when ordering' do
-      takeaway.order('korai', 2)
-      takeaway.order('korma', 2)
-      expect(takeaway.basket).to eq({:korai=>{:price=>3.5, :quantity=>2}, :korma=>{:price=>3, :quantity=>2}, :vindaloo=>{:price=>4, :quantity=>0}})
-    end
+
+
 
     it 'should refuse orders that are not on the menu' do
       allow(@menu).to receive(:has_dish?).and_return(false)

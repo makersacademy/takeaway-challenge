@@ -19,7 +19,7 @@ describe Takeaway do
   context 'customers should be able to view the menu' do
 
     it 'should show customers a menu' do
-      expect(subject.menu).to eq(@list)
+      expect(takeaway.menu).to eq(@list)
     end
   end
 
@@ -27,7 +27,7 @@ describe Takeaway do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
 
-  it 'should allow customers to select dishes' do
+  xit 'should allow customers to select dishes' do
     takeaway.order('coconut_rice')
     takeaway.order('coconut_rice')
     takeaway.order('lassee')
@@ -39,7 +39,7 @@ describe Takeaway do
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-  it "the order should be placed if the customer confirms the total" do
+  xit "the order should be placed if the customer confirms the total" do
 
     allow(Time).to receive(:now).and_return(Time.new(2019, 01, 19, 17, 52))
     takeaway.order('coconut_rice')
@@ -54,7 +54,7 @@ describe Takeaway do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-  it 'should send a text message if the customer confirms the total' do
+  xit 'should send a text message if the customer confirms the total' do
     allow(Time).to receive(:now).and_return(Time.new(2019, 01, 19, 17, 52))
     takeaway.order('coconut_rice')
     takeaway.order('lassee')
