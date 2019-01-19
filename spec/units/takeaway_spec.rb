@@ -88,5 +88,24 @@ describe Takeaway do
       expect(takeaway.print_basket).to eq(expected_output)
     end
 
+    context '#checkout' do
+
+      before(:each) do
+        takeaway.order('vindaloo', 2)
+        takeaway.order('korma')
+        takeaway.order('vindaloo', 1)
+        takeaway.prepare_order
+      end
+
+      it 'should not give an error if the customer total matches :total' do
+        expect { takeaway.checkout(15) }.not_to raise_error
+      end
+
+      it "the order should be blocked if the customer total doesn't match" do
+        expect { takeaway.checkout(5) }.to raise_error('Halting Order: Unexpected Total')
+      end
+
+    end
+
   end
 end

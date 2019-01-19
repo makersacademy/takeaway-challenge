@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class Takeaway
 
   INVALID_DISH = "Dish not on menu; order ignored"

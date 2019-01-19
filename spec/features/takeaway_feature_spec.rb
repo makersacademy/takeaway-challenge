@@ -42,7 +42,7 @@ describe Takeaway do
     takeaway.order('lassee')
     takeaway.order('plain_naan')
     takeaway.order('jalfrezi')
-    expect { takeaway.checkout(5) }.to raise_error('Halting Order: Unexpected Total')
+    expect(takeaway.checkout(9.5)).to eq('Thank you! Your order was placed and will be delivered before 18:52')
   end
 
 
