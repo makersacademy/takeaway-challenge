@@ -17,4 +17,10 @@ describe Order do
     subject.order_food(:pizza, 3)
     expect(subject.is_correct_cost?(9)).to eq true
   end
+
+
+  it 'raises an error when total_cost at checkout is incorrect' do
+    subject.order_food(:pizza, 3)
+    expect { subject.checkout(10) }.to raise_error "Incorrect total"
+  end
 end
