@@ -16,6 +16,7 @@ RSpec.describe Menu do
     it "should return multiple lines of menu" do
       subject.add("Burger", 6.50)
       subject.add("Cheeseburger", 5.49)
+      p subject.menu_list
       expect(subject.to_string).to eq "Burger at £6.50\nCheeseburger at £5.49\n"
     end
   end
