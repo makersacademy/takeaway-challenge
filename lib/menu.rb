@@ -1,8 +1,8 @@
 class Menu
 
-attr_reader :display_menu
+attr_reader :menu
 
-  def initialize(menu = :pizza => 6.00, :burger => 7.00, :katsuwrap => 4.50, :curry => 5.50)
+  def initialize(menu = {:pizza => 6.00, :burger => 7.00, :katsuwrap => 4.50, :curry => 5.50})
     @menu = menu
   end
 
