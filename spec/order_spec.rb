@@ -16,7 +16,7 @@ RSpec.describe Order do
 
   it "takes an order and makes an array with items, quantities and price" do
     @order.take(@dish)
-    expect(@order.basket_with_prices).to eq([[@dish, 1, 10]])
+    expect(@order.details).to eq([[@dish, 1, 10]])
   end
 
   it "takes and order and updates basket accordingly" do

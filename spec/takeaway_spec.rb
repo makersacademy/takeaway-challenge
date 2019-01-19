@@ -10,7 +10,7 @@ RSpec.describe Takeaway do
     allow(@menu).to receive(:display).and_return({@dish => 10})
     allow(@order).to receive(:display).and_return("#{@dish} x 2 = £20")
     allow(@order).to receive(:take).and_return([[@dish, 2]])
-    allow(@order).to receive(:basket_with_prices).and_return([[@dish, 2, 10]])
+    allow(@order).to receive(:details).and_return([[@dish, 2, 10]])
     allow(@text).to receive(:send).and_return(true)
     @takeaway = Takeaway.new(@menu, @order, @text)
   end

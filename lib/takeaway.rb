@@ -27,7 +27,7 @@ class Takeaway
   end
 
   def total
-    Calculate.add(@order.basket_with_prices)
+    Calculate.add(@order.details)
   end
 
   def checkout(sum)

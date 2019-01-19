@@ -20,6 +20,12 @@ class Order
     }.join(", ")
   end
 
+  def details
+    basket_with_prices
+  end
+  
+  private
+
   def basket_with_prices
     @basket.map { |arr|
       [ arr[0], arr[1], @menu[arr[0]] ]
