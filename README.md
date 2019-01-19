@@ -61,7 +61,34 @@ To use this, after you've installed the necessary gems, open IRB...
 ```
 **Note**
 
-The checkout process will attempt to send a text message using Twilio and throw an error as it won't find any details to authenticate. To do this successfully, please sign up to Twilio and use the `dotenv` gem to add your authentication details and add them to `text.rb`.
+The checkout method will attempt to send a text message using Twilio and throw an error as it won't find any details to authenticate. To do this successfully, please sign up to Twilio and use the `dotenv` gem to add your authentication details and add them to `text.rb`.
+
+Running automated tests
+-------
+This project uses `RSpec` to run automated tests. 
+
+To run the automated tests, open the project root directory in your terminal and run `rspec`
+
+Domain Model Diagram
+-----
+
+[![Screen-Shot-2019-01-19-at-22-49-57.png](https://i.postimg.cc/8k75MVQN/Screen-Shot-2019-01-19-at-22-49-57.png)](https://postimg.cc/t7HpGw4M)
+
+Approach
+-----
+
+I followed the YAGNI (you aren't gonna need it) principle here and tried to stick to the user stories as best as possible. 
+
+A few places where I didn't create features: 
+
+- The `order` method assumes that the user types in foods that exist, doesn't make a typo etc.
+I did this because a) It wasn't explicitly mentioned in the user stories, and b) there was some discussion around the separation of business logic and the presentation/view layer where validation is done in one of the workshops. Of course, adding this functionality isn't difficult and would be fairly quick. 
+
+- Lack of a presentation layer
+Initially, I played around with the idea of displaying the dishes in a more presentational manner, however I chose to stick closely with the user stories. 
+
+
+
 
 
 User Stories
