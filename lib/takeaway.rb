@@ -4,24 +4,25 @@ require_relative 'dish'
 require_relative 'sms'
 
 class Takeaway
-  attr_reader :menu
+  attr_reader :order
 
-  def initialize(restaurant_menu)
-    @menu = restaurant_menu
+  def initialize(restaurant_menu, order = Order)
+    @order = order.new(restaurant_menu)
   end
 
   def print_menu
-    menu.print_menu
+    @order.menu.print_menu
+  end
+
+  def add(dish, quantity)
+    @order.add(dish, quantity)
+  end
+
+  def total
+    @order.total
+  end
+
+  def receipt
+    @order.receipt
   end
 end
-
-dish1 = Dish.new("chicken", 2.99)
-dish2 = Dish.new("beef", 3.49)
-menu = Menu.new()
-menu.add_dish(dish1)
-menu.add_dish(dish2)
-takeaway = Takeaway.new(menu)
-order = Order.new(menu)
-order.add(dish1, 3)
-order.add(dish2, 5)
-order.total
