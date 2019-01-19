@@ -18,6 +18,6 @@ class Takeaway
 private
 
   def calculate_total
-   p @menu
+   
   end
 end

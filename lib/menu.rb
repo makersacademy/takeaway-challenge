@@ -13,6 +13,10 @@ class Menu
     @output
   end
 
+  def price?(dish)
+    @hashed_menu.each { |element| return element[:price] if element[:item] == dish }
+  end
+
 private
 
   def prettify_menu
