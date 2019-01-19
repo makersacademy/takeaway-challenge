@@ -10,8 +10,8 @@ RSpec.describe Order do
   end
 
   it "Adds dishes and quantities to the basket" do
-    @order.take(@dish)
-    expect(@order.display).to eq("#{@dish} x 1 = £10")
+    @order.take(@dish, 2)
+    expect(@order.display).to eq("#{@dish} x 2 = £20")
   end
 
   it "takes an order and makes an array with items, quantities and price" do
