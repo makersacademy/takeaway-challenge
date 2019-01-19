@@ -9,4 +9,8 @@ class Restaurant
   def display_menu
     p @menu.menu_items
   end
+
+  def order(quantity = 1, item)
+    
+  end
 end
