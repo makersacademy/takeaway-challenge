@@ -11,6 +11,7 @@ class Order
 
   def take(dish, quantity = 1)
     @basket << [ dish,  quantity ]
+    repeat_order(dish, quantity)
   end
 
   def display
@@ -23,5 +24,9 @@ class Order
     @basket.map { |arr|
       [ arr[0], arr[1], @menu[arr[0]] ]
     }
+  end
+
+  def repeat_order(dish, quantity)
+    "#{quantity}x #{dish}(s) added to basket"
   end
 end
