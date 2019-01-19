@@ -5,17 +5,17 @@ class Menu
     @dishes = []
   end
 
-  def add_item(item)
-    @dishes << item
+  def add_dish(dish)
+    @dishes << dish
   end
 
   def print_menu
-    dishes.map do |item|
-      "%s £%.2f" % [item.name, item.price]
+    dishes.map do |dish|
+      "%s £%.2f" % [dish.name, dish.price]
     end.join(", ")
   end
 
-  def has_item?(item)
-    @dishes.include?(item)
+  def has_dish?(dish)
+    @dishes.include?(dish)
   end
 end

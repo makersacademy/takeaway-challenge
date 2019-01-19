@@ -1,6 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
-require_relative 'item'
+require_relative 'dish'
 require_relative 'sms'
 
 class Takeaway
@@ -15,13 +15,13 @@ class Takeaway
   end
 end
 
-item1 = Item.new("chicken", 2.99)
-item2 = Item.new("beef", 3.49)
+dish1 = Dish.new("chicken", 2.99)
+dish2 = Dish.new("beef", 3.49)
 menu = Menu.new()
-menu.add_item(item1)
-menu.add_item(item2)
+menu.add_dish(dish1)
+menu.add_dish(dish2)
 takeaway = Takeaway.new(menu)
 order = Order.new(menu)
-order.add(item1, 3)
-order.add(item2, 5)
+order.add(dish1, 3)
+order.add(dish2, 5)
 order.total

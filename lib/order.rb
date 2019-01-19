@@ -6,9 +6,9 @@ class Order
     @menu = restaurant_menu
   end
 
-  def add(item, quantity)
-    raise "#{item.name} is not on the menu!" unless menu.has_item?(item)
-    @ordered[item.name] = [item.price, quantity]
+  def add(dish, quantity)
+    raise "#{dish.name} is not on the menu!" unless menu.has_dish?(dish)
+    @ordered[dish.name] = [dish.price, quantity]
   end
 
   def total
