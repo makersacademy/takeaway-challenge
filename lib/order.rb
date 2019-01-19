@@ -9,18 +9,18 @@ class Order
   end
 
   def take(dish, quantity = 1)
-    if @menu.has_dish?(dish)
-      hash = @basket[dish.to_sym]
-      hash[:quantity] += quantity
-    else
-      puts INVALID_DISH
-    end
+    @basket[dish.to_sym][:quantity] += quantity if @menu.has_dish?(dish)
+    puts INVALID_DISH unless @menu.has_dish?(dish)
   end
 
   def basket
-    @basket.select { |_dish, numbers| numbers[:quantity].positive? }
+    @basket.select { |_dish, numbers| numbers[:quantity].positive? }.sort.to_h
+
   end
 
+  def total
+    calculate_total
+  end
 
   private
 
@@ -34,19 +34,9 @@ class Order
     end
   end
 
-
-
-  def prepare_order
-    output = {}
-    @basket.each_pair do |dish, hash|
-      output[dish] = hash if hash[:quantity].positive?
-    end
-    @prepared_order = output
-  end
-
   def calculate_total
     total = 0
-    @prepared_order.each_value do |hash|
+    @basket.each_value do |hash|
       total += (hash[:price] * hash[:quantity])
     end
     total

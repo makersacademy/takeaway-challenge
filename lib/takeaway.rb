@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'send_sms'
+require_relative 'order'
 require 'dotenv/load'
 
 class Takeaway
@@ -14,29 +15,26 @@ class Takeaway
     @menu.list
   end
 
-  def order(dish, quantity = 1)
+  def take_order(dish, quantity = 1)
     @order.take(dish, quantity)
   end
 
 
   def checkout(customer_total)
-    prepare_order
-    raise 'Halting Order: Unexpected Total' if total != customer_total
+    raise 'Halting Order: Unexpected Total' if @order.total != customer_total
     message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
     send_message(message)
     message
   end
 
   def print_basket
-    prepare_order
     output = ""
-    alphabetical_order = @prepared_order.sort.to_h
-    alphabetical_order.each_pair do |dish, hash|
+    @order.basket.each_pair do |dish, hash|
       output << ", " unless output == ""
       output << "#{dish} x #{hash[:quantity]} (£#{sprintf('%.2f',
                 hash[:price] * hash[:quantity])})"
     end
-    output << "\nThe total is £#{sprintf('%.2f', total)}"
+    output << "\nThe total is £#{sprintf('%.2f', @order.total)}"
   end
 
   private

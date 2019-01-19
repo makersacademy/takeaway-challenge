@@ -28,10 +28,10 @@ describe Takeaway do
   # I would like to be able to select some number of several available dishes
 
   xit 'should allow customers to select dishes' do
-    takeaway.order('coconut_rice')
-    takeaway.order('coconut_rice')
-    takeaway.order('lassee')
-    takeaway.order('lassee', 3)
+    takeaway.take_order('coconut_rice')
+    takeaway.take_order('coconut_rice')
+    takeaway.take_order('lassee')
+    takeaway.take_order('lassee', 3)
     expect(takeaway.print_basket).to eq("coconut_rice x 2 (£4.00), lassee x 4 (£6.00)\nThe total is £10.00")
   end
 
@@ -42,10 +42,10 @@ describe Takeaway do
   xit "the order should be placed if the customer confirms the total" do
 
     allow(Time).to receive(:now).and_return(Time.new(2019, 01, 19, 17, 52))
-    takeaway.order('coconut_rice')
-    takeaway.order('lassee')
-    takeaway.order('plain_naan')
-    takeaway.order('jalfrezi')
+    takeaway.take_order('coconut_rice')
+    takeaway.take_order('lassee')
+    takeaway.take_order('plain_naan')
+    takeaway.take_order('jalfrezi')
     allow(@messenger).to receive(:create_message)
     expect(takeaway.checkout(9.5)).to eq('Thank you! Your order was placed and will be delivered before 18:52')
   end
@@ -56,10 +56,10 @@ describe Takeaway do
 
   xit 'should send a text message if the customer confirms the total' do
     allow(Time).to receive(:now).and_return(Time.new(2019, 01, 19, 17, 52))
-    takeaway.order('coconut_rice')
-    takeaway.order('lassee')
-    takeaway.order('plain_naan')
-    takeaway.order('jalfrezi')
+    takeaway.take_order('coconut_rice')
+    takeaway.take_order('lassee')
+    takeaway.take_order('plain_naan')
+    takeaway.take_order('jalfrezi')
     message = 'Thank you! Your order was placed and will be delivered before 18:52'
     expect(@messenger).to receive(:create_message).with(message)
     takeaway.checkout(9.5)

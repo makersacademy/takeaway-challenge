@@ -31,10 +31,32 @@ describe Order do
     expect(order.basket).to eq({ jalfrezi: { price: 6, quantity: 2 }, korma: { price: 4, quantity: 2 } })
   end
 
+  it 'should refuse orders that are not on the menu' do
+    allow(@menu).to receive(:has_dish?).and_return(false)
+    order.take('fake', 2)
+    order.take('another_fake', 3)
+    expect(order.basket).to eq({})
+  end
+
+  it 'should collate orders for the same dish together' do
+    order.take('korma', 2)
+    order.take('naan')
+    order.take('korma', 1)
+    expect(order.basket).to eq({ korma: { price: 4, quantity: 3 }, naan: { price: 2.5, quantity: 1}})
+  end
+
+  it '#total' do
+    order.take('jalfrezi', 2)
+    order.take('pilau')
+    order.take('korma', 1)
+    expect(order.total).to eq(18)
+  end
 
 
 
-  # expect(order.basket).to eq({ jalfrezi: { price: 6, quantity: 0 }, korma: { price: 4, quantity: 1 }, pilau: { price: 2, quantity: 0 }, naan: { price: 2.5, quantity: 0}})
+
+
+    # expect(order.basket).to eq({ jalfrezi: { price: 6, quantity: 0 }, korma: { price: 4, quantity: 1 }, pilau: { price: 2, quantity: 0 }, naan: { price: 2.5, quantity: 0}})
 
 
 
