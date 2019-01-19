@@ -8,4 +8,7 @@ class Takeaway
     @menu = menu
   end
 
+  def show_menu
+    return @menu.to_string
+  end
 end
