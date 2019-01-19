@@ -1,6 +1,6 @@
 Takeaway Challenge
 ==================
-<a href= #task>TASK</a>  |  <a href= #edge>EDGE CASES</a>  |  <a href= #approach>APPROACH </a> | <a href= #tests>TESTS</a>
+<a href= #task>TASK</a>  |  <a href= #edge>EDGE CASES</a>  |  <a href= #approach>APPROACH </a> | <a href= #tests>TESTS</a> | <a href= #outstanding>OUTSTANDING</a>
 ```
                             _________
               r==           |       |
@@ -36,6 +36,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 [Edge Cases / Extra features](#edge)
+-----
 
   * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
   * Mocks and/or stubs to test texts without sending in rspec.
@@ -47,6 +48,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 [Feature Tests](#tests)
+-----
 
 Initialize with array of food to go on menu. This initializes all the other key components.
 ```
@@ -83,7 +85,9 @@ SM3eded974666a4cb49d4cb5392a09ae34
 2.5.0 :010 > exit
 ```
 
-Outstanding
+[Outstanding](#outstanding)
+-----
+
 - test user input method with stubbed responses
 - format return_total_price
 - test text messages outside IRB
