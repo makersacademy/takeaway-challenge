@@ -19,6 +19,9 @@ class Takeaway
     true if given_total == calculate_total
   end
 
+  def complete_order
+  end
+
 private
 
   def calculate_total
