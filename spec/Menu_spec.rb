@@ -12,5 +12,9 @@ RSpec.describe Menu do
     expect(menu.list_of_dishes).to eq(menu.food_we_offer)
   end
 
+  it 'allows to selects number of dishes' do
+    expect(menu).to respond_to(:select_dish).with(2).arguments
+  end
+
 
 end
