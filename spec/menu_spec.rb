@@ -35,4 +35,12 @@ describe Menu do
     expect{ @ppp_cafe.order(items) }.to change{ @ppp_cafe.orders.length }.by (1)
   end
 
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  # it 'allows customer to check total quantity' do
+  #   expect(@ppp_cafe).to respond_to(:quantity_check).with(1)
+  # end
+
+
 end
