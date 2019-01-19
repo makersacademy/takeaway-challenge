@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'send_sms'
+require 'dotenv/load'
 
 class Takeaway
 
@@ -34,7 +35,9 @@ class Takeaway
   end
 
   def populate_valid_dishes
-    menu.each_pair { |dish, price| @basket[dish] = { quantity: 0, price: price } }
+    menu.each_pair do |dish, price|
+      @basket[dish] = { quantity: 0, price: price }
+    end
   end
 
   def add_to_basket(dish, quantity)
