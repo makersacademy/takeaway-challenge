@@ -16,7 +16,11 @@ RSpec.describe Order do
 
   it "checks if the order price is correct" do
     subject.order_food(:pizza, 3)
-    expect(subject.correct_cost(18)).to eq true 
+      expect(subject.correct_cost(18)).to eq true
+    end
 
-end
+    it "raises and error when total_cost at checkout is incorrect" do
+      subject.order_food(:pizza, 3)
+      expect {subject.checkout(10) }.to raise_error "Incorrect total cost!"
+    end
 end
