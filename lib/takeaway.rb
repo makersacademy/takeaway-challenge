@@ -55,6 +55,11 @@ class Takeaway
     @prepared_order = output
   end
 
+  def checkout(customer_total)
+    prepare_order
+    raise 'Halting Order: Unexpected Total' if total != customer_total
+  end
+
   def print_basket
     prepare_order
     output = ""
