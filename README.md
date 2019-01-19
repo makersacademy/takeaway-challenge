@@ -1,11 +1,10 @@
 ### Takeaway Challenge ###
 
-Objectives
+### Objectives
 - I can TDD anything
 - I can build anything
 - I can program fluently
 - I can model anything
--
 
 
 
