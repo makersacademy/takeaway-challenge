@@ -52,7 +52,7 @@ let(:menu) { Menu.new('menu.csv')}
     pieshop.order('Steak pie', 3)
     pieshop.order('Dog pie')
     pieshop.check_total(12)
-    expect(pieshop.complete_order).to eq 'Order confirmed! Text sent'
+    expect(pieshop.complete_order).to have_attributes(:error_code => 0)
   end
 
 
