@@ -3,7 +3,7 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :order
 
   def initialize(menu_class = Pizza.new, order_class = Order)
     @menu = menu_class
@@ -14,14 +14,14 @@ class Takeaway
     @menu.view_food_and_price
   end
 
-  def place_order()
-    create_order
+  def place_order(item)
+    create_order.add_to_order(item)
   end
 
   private
 
   def create_order
-    # @order.new
+    @order.new
   end
 
 end
