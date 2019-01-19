@@ -18,7 +18,7 @@ describe Order do
   describe '#add' do
     it "Adds an dish on the menu to order hash" do
       good_order.add(dish1, 1)
-      expect(good_order.ordered).to include({"Pizza" => [5.0, 1]})
+      expect(good_order.ordered).to include({ "Pizza" => [5.0, 1] })
     end
   end
 
