@@ -24,9 +24,8 @@ class Menu
     order_complete = false
     while order_complete == false
       answer = select_option
-      volume = select_volume(answer)
-      volume.times { place_order(answer) }
-      order_complete = true if (check_finished) == "Yes"
+      select_volume(answer).times { place_order(answer) }
+      order_complete = true if check_finished == "Yes"
     end
   end
 
@@ -35,7 +34,7 @@ class Menu
   end
 
   def confirm_order
-    @textmessage.send_confirmation_text if confirm_order_breakdown == true
+    @textmessage.send_message if confirm_order_breakdown == true
   end
 
   def confirm_order_breakdown
@@ -66,12 +65,12 @@ class Menu
 
   def select_volume(answer)
     puts "How many #{answer}s would you like?"
-    volume = gets.chomp.to_i
+    gets.chomp.to_i
   end
 
   def check_finished
     puts "Is that all?"
-    finished = gets.chomp
+    gets.chomp
   end
 
 end

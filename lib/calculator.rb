@@ -10,7 +10,7 @@ class Calculator
   end
 
   def calculate_price(item_name)
-    @price_list[(item_name.downcase)]
+    @price_list[item_name.downcase]
   end
 
 end

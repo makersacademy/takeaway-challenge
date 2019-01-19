@@ -7,7 +7,9 @@ describe Menu do
   let(:formatter_class) { double(:formatter_class, new: formatter) }
   let(:order) { double(:order, place_order: nil, order_total: 1, items: [item_fish]) }
   let(:order_class) { double(:order_class, new: order) }
-  let(:subject) { Menu.new(["fish"], item_class, formatter_class, order_class) }
+  let(:text_message) { double(:text_message, send_message: true)}
+  let(:text_class) { double(:text_class, new: text_message) }
+  let(:subject) { Menu.new(["fish"], item_class, formatter_class, order_class, text_class) }
 
   describe '#initialize' do
     it 'should initialize with a list of item names' do
@@ -73,6 +75,13 @@ describe Menu do
 
       it 'should return error message if there is a miscalculation' do
         expect { false_total_subject.confirm_order_breakdown } .to raise_error "Calculation broken"
+      end
+    end
+
+    describe '#confirm_order' do
+      it 'should run text message class' do
+        expect(text_message).to receive(:send_message)
+        subject.confirm_order
       end
     end
   end

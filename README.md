@@ -1,5 +1,6 @@
 Takeaway Challenge
 ==================
+<a href= #task>TASK</a>  |  <a href= #edge>EDGE CASES</a>  |  <a href= #approach>APPROACH </a> | <a href= #tests>TESTS</a>
 ```
                             _________
               r==           |       |
@@ -13,22 +14,8 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
--------;dojfkjsdf
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
+[Task](#task)
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -48,35 +35,57 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
+[Edge Cases / Extra features](#edge)
+
   * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+  * Mocks and/or stubs to test texts without sending in rspec.
+  * IRB actually sends texts.(within UK)
+  * Environment variables to protect actual phone number.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* (Not yet:
+  * Implement the ability to place orders via text message.)
 
 
-In code review we'll be hoping to see:
+[Feature Tests](#tests)
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Initialize with array of food to go on menu. This initializes all the other key components.
+```
+2.5.0 :001 > require './lib/menu.rb'
+ => true
+2.5.0 :002 > menu = Menu.new(["fish", "pasta", "pizza"])
+ => #<Menu:0x00007fb4a4167780 @names=["fish", "pasta", "pizza"], @item=Item, @items=[#<Item:0x00007fb4a4167730 @name="fish", @calculator=#<Calculator:0x00007fb4a4167708 @price_list={"fish"=>8, "pizza"=>5, "pasta"=>6, "cake"=>3}>, @price=8>, #<Item:0x00007fb4a4167690 @name="pasta", @calculator=#<Calculator:0x00007fb4a4167668 @price_list={"fish"=>8, "pizza"=>5, "pasta"=>6, "cake"=>3}>, @price=6>, #<Item:0x00007fb4a41675f0 @name="pizza", @calculator=#<Calculator:0x00007fb4a41675c8 @price_list={"fish"=>8, "pizza"=>5, "pasta"=>6, "cake"=>3}>, @price=5>], @formatter=#<Formatter:0x00007fb4a4167550>, @order=#<Order:0x00007fb4a4167528 @items=[], @order_total=0>, @textmessage=#<TextMessage:0x00007fb4a41674d8 @client=<Twilio::REST::Client @account_sid=ACa8986a01f18546d43b9cfa6a82a57d5f>>>
+2.5.0 :003 >menu.print_menu
+ => ["fish --- £8\n", "pasta --- £6\n", "pizza --- £5\n"]
+```
+user_input allows interaction with stdin for choice, volume and loops if not all. NB while the methods adding this to the order are tested, the user input itself isn't currently.s
+```
+2.5.0 :006 > menu.user_input
+Please select your option
+Pizza
+How many Pizzas would you like?
+2
+Is that all?
+Yes
+ => nil
+```
+Return the total price with:  
+```
+2.5.0 :007 > menu.return_order_total
+ => 10
+```
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+confirm_order recalculates price and raises error if ther e is a mistake. Otherwise a confirmation text is sent.
 
-Notes on Test Coverage
-------------------
+```
+2.5.0 :009 > menu.confirm_order
+SM3eded974666a4cb49d4cb5392a09ae34
+ => nil
+2.5.0 :010 > exit
+```
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Outstanding
+- test user input method with stubbed responses
+- format return_total_price
+- test text messages outside IRB
+- add further functionality eg place order by text
+- restructure so menu calls directly to a single calculator and formatter rather than running through each item
