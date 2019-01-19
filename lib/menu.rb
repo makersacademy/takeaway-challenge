@@ -19,6 +19,3 @@ class Menu
     @dishes.include?(item)
   end
 end
-
-#
-# @dishes = [Item => Item.name, Item.price]
