@@ -1,19 +1,16 @@
 require_relative 'menu'
 
-class Order < Menu
-attr_reader :order_list
+class Order
 
-def initialize
-  @order_list = []
-  @menu = Menu.new.menu
+attr_reader :menu, :order_summary
+
+def initialize(menu=Menu.new)
+    @menu = menu
+    @order_summary = []
 end
 
-def make_order(dish)
-  dish_list = @menu.list
-  dish_list.assoc(dish) #@menu.assoc(:soup)
-end
-
-def order_summary
+def add_order(dish)
+  @order_summary << dish
 end
 
 end

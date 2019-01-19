@@ -2,17 +2,18 @@ require 'order'
 require 'menu'
 
 describe Order do
-  subject(:order) {Order.new}
-  before(:each) do
-  @menu = Menu.new.list
-  end
-  context "can take order" do
-    it {is_expected.to respond_to :order_summary}
 
-    it "takes order 'soup'" do
-      order1 = order.make_order(:soup)
-      expect(order.order_summary).to eq [:soup, 5]
-    end
-  end
+subject(:order) {Order.new}
 
+it {is_expected.to respond_to :menu }
+it {is_expected.to respond_to :order_summary}
+it {is_expected.to respond_to(:add_order).with(1).argument}
+
+describe '#add order' do
+  let(:pizza) { double :pizza }
+  it "orders 1 pizza" do
+    order.add_order(:pizza)
+    expect(order.order_summary[-1]).to eq :pizza
+  end
+end
 end
