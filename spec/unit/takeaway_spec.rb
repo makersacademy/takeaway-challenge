@@ -1,7 +1,7 @@
 require 'takeaway'
 
 RSpec.describe Takeaway do
-let(:pieshop) { Takeaway.new('menu.csv') }
+let(:pieshop) { Takeaway.new('menu') }
 
   it 'lets you add an order' do
     expect(pieshop.order('Vegetable pie', 1)).to eq [{:item=>"Vegetable pie", :quantity=>1}]

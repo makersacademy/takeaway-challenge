@@ -10,7 +10,7 @@
 require 'Takeaway'
 
 RSpec.describe 'Functional tests' do
-let(:pieshop) { Takeaway.new('menu.csv') }
+let(:pieshop) { Takeaway.new('pieshop') }
 let(:menu) { Menu.new('menu.csv')}
 
   # As a customer

@@ -3,7 +3,7 @@ require 'csv'
 class Menu
 
   def initialize(menu_csv)
-    @menu_csv= menu_csv
+    @menu_csv = menu_csv
     read_csv
     @output = "Item\t\tPrice\n"
   end

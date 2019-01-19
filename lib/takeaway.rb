@@ -2,8 +2,10 @@ require_relative 'menu'
 
 class Takeaway
 
-  def initialize(menu_csv)
-    @menu = Menu.new(menu_csv)
+  def initialize(name)
+    @business_name = name
+    @menu_name = name + ".csv"
+    @menu = Menu.new(@business_name + ".csv")
     @order =[]
   end
 
