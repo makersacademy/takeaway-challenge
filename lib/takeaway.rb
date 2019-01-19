@@ -1,15 +1,18 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'calculate'
+require_relative 'text'
 
 class Takeaway
-  attr_reader :basket
 
   ERROR = "Please enter the exact sum"
+  TIME = Time.new
+  MESSAGE = "Success! Your order was placed and will be delivered before #{TIME.hour + 1}#{TIME.min}"
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new, order = Order.new, text = Text.new)
     @menu = menu
     @order = order
+    @text = text
   end
 
   def read_menu
@@ -29,8 +32,9 @@ class Takeaway
   end
 
   def checkout(sum)
-    raise ERROR if sum != total
+    raise ERROR if sum != total 
     
+    @text.send(MESSAGE)
   end
 
 end
