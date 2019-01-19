@@ -76,9 +76,10 @@ class Takeaway
     alphabetical_order = @prepared_order.sort.to_h
     alphabetical_order.each_pair do |dish, hash|
       output << ", " unless output == ""
-      output << "#{dish} x #{hash[:quantity]} (£#{hash[:price] * hash[:quantity]})"
+      output << "#{dish} x #{hash[:quantity]} (£#{sprintf('%.2f',
+                hash[:price] * hash[:quantity])})"
     end
-    output << "\nThe total is £#{total}"
+    output << "\nThe total is £#{sprintf('%.2f', total)}"
   end
 
   private

@@ -32,7 +32,7 @@ describe Takeaway do
     takeaway.order('coconut_rice')
     takeaway.order('lassee')
     takeaway.order('lassee', 3)
-    expect(takeaway.print_basket).to eq("coconut_rice x 2 (£4), lassee x 4 (£6.0)\nThe total is £10.0")
+    expect(takeaway.print_basket).to eq("coconut_rice x 2 (£4.00), lassee x 4 (£6.00)\nThe total is £10.00")
   end
 
   # As a customer
