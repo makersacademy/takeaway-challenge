@@ -12,5 +12,8 @@ describe Restaurant do
     it 'responds to a request to display a restaurant menu' do
       expect(takeaway).to respond_to(:show_menu)
     end
+    it 'prints the menu items and prices of the instanced menu' do
+      expect(takeaway.show_menu).to include(:ratsoup)
+    end
   end
 end

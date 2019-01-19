@@ -5,7 +5,8 @@ class Restaurant
   def initialize
     @menu = Menu.new
   end
+
   def show_menu
-    puts @menu
+    p @menu.menu_items
   end
 end
