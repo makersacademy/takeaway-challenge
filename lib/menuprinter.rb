@@ -19,7 +19,9 @@ class MenuPrinter
   end
 
   def names_array(items)
-    items.keys.map.with_index { |key, index| "#{(index + 1)}. #{key.capitalize}" }
+    items.keys.map.with_index do |key, index|
+      "#{(index + 1)}. #{key.capitalize}"
+    end
   end
 
   def format_price(item)
