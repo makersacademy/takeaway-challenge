@@ -23,7 +23,6 @@ class Takeaway
   def basket
     @basket.select { |_dish, numbers| numbers[:price].positive? }
   end
-  # TODO: Finish refactoring me -> move to hash of hashes
 
   def setup_basket
     @basket = {}
@@ -46,12 +45,9 @@ class Takeaway
     total
   end
 
-  # TODO WOrk out a proper data structure
-  # Hash of hashes? {Dish:  {Quantity: x, Price: y}     }
-  #
   # TODO DRY the code with knowledge of the hash structure
 
-  def checkout
+  def prepare_order
     output = {}
     @basket.each_pair do |dish, hash|
       output[dish] = hash if hash[:quantity].positive?
@@ -60,7 +56,7 @@ class Takeaway
   end
 
   def print_basket
-    checkout
+    prepare_order
     output = ""
     alphabetical_order = @prepared_order.sort_by { |key| key }.to_h
     alphabetical_order.each_pair do |dish, hash|

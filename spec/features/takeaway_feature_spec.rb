@@ -6,7 +6,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(@menu) }
 
   before(:all) do
-    @list = { coconut_rice: 2, lassee: 1.5 }
+    @list = { coconut_rice: 2, lassee: 1.5, plain_naan: 2, jalfrezi: 4 }
     @menu = Menu.new(@list)
   end
 
@@ -31,7 +31,19 @@ describe Takeaway do
     takeaway.order('lassee')
     takeaway.order('lassee', 3)
     expect(takeaway.print_basket).to eq("coconut_rice x 2 (£4), lassee x 4 (£6.0)\nThe total is £10.0")
- end
+  end
+
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  it "the order should be blocked if the customer total doesn't match" do
+    takeaway.order('coconut_rice')
+    takeaway.order('lassee')
+    takeaway.order('plain_naan')
+    takeaway.order('jalfrezi')
+    expect { takeaway.checkout(5) }.to raise_error('Halting Order: Unexpected Total')
+  end
 
 
 

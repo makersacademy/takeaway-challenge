@@ -75,7 +75,7 @@ describe Takeaway do
       takeaway.order('vindaloo', 2)
       takeaway.order('korma')
       takeaway.order('vindaloo', 1)
-      takeaway.checkout
+      takeaway.prepare_order
       expect(takeaway.total).to eq(15)
     end
 
@@ -83,7 +83,7 @@ describe Takeaway do
       takeaway.order('korai', 1)
       takeaway.order('korma', 1)
       takeaway.order('vindaloo', 2)
-      takeaway.checkout
+      takeaway.prepare_order
       expected_output = "korai x 1 (£3.5), korma x 1 (£3), vindaloo x 2 (£8)\nThe total is £14.5"
       expect(takeaway.print_basket).to eq(expected_output)
     end
