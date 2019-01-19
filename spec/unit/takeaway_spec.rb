@@ -1,10 +1,10 @@
 require 'takeaway'
 
 RSpec.describe Takeaway do
-let(:pieshop) { Takeaway.new('menu') }
+  let(:pieshop) { Takeaway.new('menu') }
 
   it 'lets you add an order' do
-    expect(pieshop.order('Vegetable pie', 1)).to eq [{:item=>"Vegetable pie", :quantity=>1}]
+    expect(pieshop.order('Vegetable pie', 1)).to eq [{ :item => "Vegetable pie", :quantity => 1 }]
   end
 
   it 'lets you check the total' do
@@ -16,7 +16,7 @@ let(:pieshop) { Takeaway.new('menu') }
     expect(pieshop.show_order).to be_a(Array)
   end
 
-  it 'confirms sending of text message when order is complete' do
-    expect(pieshop.complete_order).to eq 'Order confirmed! Text sent'
+  xit 'confirms sending of text message when order is complete' do
+    expect(pieshop.complete_order).to have_attributes(:error_code => 0)
   end
 end

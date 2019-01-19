@@ -4,8 +4,8 @@ class Menu
 
   def initialize(menu_csv)
     @menu_csv = menu_csv
-    read_csv
     @output = "Item\t\tPrice\n"
+    read_csv
   end
 
   def list
@@ -14,7 +14,7 @@ class Menu
   end
 
   def price?(dish)
-    @hashed_menu.each { |element| return element[:price] if element[:item] == dish }
+    @hashed_menu.each { |e| return e[:price] if e[:item] == dish }
   end
 
 private
@@ -26,7 +26,12 @@ private
   end
 
   def read_csv
-    @menu_read = CSV.read(@menu_csv, { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all})
+    @menu_read = CSV.read(@menu_csv, {
+                                      encoding: "UTF-8",
+                                      headers: true,
+                                      header_converters: :symbol,
+                                      converters: :all
+                                      })
     @hashed_menu = @menu_read.map { |d| d.to_hash }
   end
 end

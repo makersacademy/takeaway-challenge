@@ -6,7 +6,7 @@ class Takeaway
   def initialize(name)
     @takeaway_name = name
     @menu = Menu.new(@takeaway_name + ".csv")
-    @order =[]
+    @order = []
     @sid = ENV['SID']
     @token = ENV['TOKEN']
     @takeaway_number = ENV['NUMBER']
@@ -26,16 +26,21 @@ class Takeaway
 
   def complete_order
     @client_number = ENV['CLIENT']
-    @sms = Text.new({ name: @takeaway_name, number: @takeaway_number, sid: @sid, token: @token })
-    p @sms
+    @sms = Text.new({
+                     name: @takeaway_name,
+                     number: @takeaway_number,
+                     sid: @sid,
+                     token: @token
+                     })
     @sms.send_confirmation(@client_number)
+    @order = []
   end
 
 private
 
   def calculate_total
-   @total = 0
-   @order.each { |element| @total += (@menu.price?(element[:item]) * element[:quantity]) }
-   @total
+    @total = 0
+    @order.each { |e| @total += (@menu.price?(e[:item]) * e[:quantity]) }
+    @total
   end
 end
