@@ -3,7 +3,7 @@ require 'dish'
 RSpec.describe Dish do
 
   context "#add" do
-    let(:pizza) { described_class.new("Pizza", 10.49)}
+    let(:pizza) { described_class.new("Pizza", 10.49) }
     it "should return the name of the dish" do
       expect(pizza.dish_name).to eq "Pizza"
     end

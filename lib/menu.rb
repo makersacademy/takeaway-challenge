@@ -2,7 +2,7 @@ require_relative 'dish'
 
 class Menu
 
-    attr_reader :menu_list
+  attr_reader :menu_list
 
   def initialize
     @menu_list = []
