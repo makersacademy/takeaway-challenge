@@ -14,4 +14,9 @@ RSpec.describe Order do
     expect(subject.total_cost).to eq (18)
   end
 
+  it "checks if the order price is correct" do
+    subject.order_food(:pizza, 3)
+    expect(subject.correct_cost(18)).to eq true 
+
+end
 end
