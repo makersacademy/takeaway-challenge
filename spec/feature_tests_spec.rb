@@ -6,18 +6,14 @@ require 'takeaway'
 require 'basketprinter'
 
 describe "Takeaway feature" do
-  let(:takeaway_with_items) {takeaway = Takeaway.new ; takeaway.add_item(chips) ; takeaway.add_item(curry) ; takeaway }
+  let(:takeaway) {Takeaway.new({chips: 2, curry: 3.25})}
   it "shows formatted list of items to user" do
-    takeaway = Takeaway.new({chips: 2, curry: 3.25})
     expect{takeaway.show_items}.to output("1. Chips: £2.00\n2. Curry: £3.25").to_stdout
   end
 
-  # it "allows users to order items" do
-  #   allow($stdin).to receive(:gets).and_return('Chips')
-  #   takeaway_with_items.make_selection
-  #   # allow($stdin).to receive(:gets).and_return(2)
-  #   # expect(selection.order).to eq something
-  # end
+  it "allows users to make a selection and see their invoice" do
+    expect{takeaway.make_selection({chips: 1, curry: 3})}.to output("Chips * 1, price = £2.00\nCurry * 3, price = £9.75\nTotal price = £11.75").to_stdout
+  end
 end
 #
 # As a customer

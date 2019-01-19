@@ -8,6 +8,7 @@ class BasketPrinter
   def initialize(selection, options)
     @selection = selection
     @options = options
+    print_invoice
   end
 
   def print_invoice

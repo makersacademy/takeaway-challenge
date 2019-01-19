@@ -14,11 +14,8 @@ describe BasketPrinter do
     it "stores the selection passed to it" do
       expect(basket.selection).to eq selection
     end
-  end
-
-  describe "#print_invoice" do
     it "prints out formatted invoice for user to check" do
-      expect{basket.print_invoice}.to output("Chips * 1, price = £2.00\nCurry * 3, price = £9.75\nTotal price = £11.75").to_stdout
+      expect{basket}.to output("Chips * 1, price = £2.00\nCurry * 3, price = £9.75\nTotal price = £11.75").to_stdout
     end
   end
 end
