@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Order
 
-attr_reader :menu, :order_summary
+attr_reader :menu, :order_summary, :bill
 
 def initialize(menu=Menu.new)
     @menu = menu
@@ -14,7 +14,7 @@ def add_order(dish,number)
 end
 
 def checkout
-  # run dish name in order summary and check for its value => array
+  @bill = @order_summary.map {|dish| takeaway.read_menu[dish]}
   # reduce (:+) to get the sum
 end
 

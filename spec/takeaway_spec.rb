@@ -11,9 +11,14 @@ describe Takeaway do
   end
 
  it "add order" do
-   takeaway.add_order(:seafood)
-   expect(takeaway.order_summary[-1]).to eq :seafood
+   takeaway.add_order(:seafood,1)
+   expect(takeaway.basket[-1]).to eq :seafood
+ end
 
-end
+ it "checkout" do
+   takeaway.add_order(:seafood,1)
+   takeaway.add_order(:garlic_bread,2)
+   expect(takeaway.checkout).to eq 24
+ end
 
 end
