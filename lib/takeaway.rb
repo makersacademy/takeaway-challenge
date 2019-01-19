@@ -66,7 +66,7 @@ class Takeaway
     prepare_order
     raise 'Halting Order: Unexpected Total' if total != customer_total
     message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
-    @messenger.create_message(message)
+    send_message(message)
     message
   end
 
@@ -87,6 +87,10 @@ class Takeaway
     one_hour = 3600
     current_time = Time.now + one_hour
     current_time.strftime('%H:%M')
+  end
+
+  def send_message(text)
+    @messenger.create_message(text)
   end
 
 end

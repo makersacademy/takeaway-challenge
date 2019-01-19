@@ -2,13 +2,15 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(menu: @menu) }
+  subject(:takeaway) { described_class.new(menu: @menu, twilio: @messenger) }
 
   before(:each) do
     @menu = double('menu')
+    @messenger = double('messenger')
     @list = { "korma": 3, "vindaloo": 4, "korai": 3.5 }
     allow(@menu).to receive(:list).and_return(@list)
     allow(@menu).to receive(:has_dish?).and_return(true)
+    allow(@messenger).to receive(:create_message)
   end
 
   context 'customers should be able to view the menu' do
