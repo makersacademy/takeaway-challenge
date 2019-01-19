@@ -1,34 +1,72 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+ ```
+                         (c)___c____(c)
+                            \ ........../
+                             |.........|
+                              |..M.A..|
+                              |.......|
+                              |=======|
+                              |=======|
+                             __o)""""::?
+                            C__    c)::;
+                               >--   ::     
+                               (____/      
+                               } /""|      
+                    __/       (|V ^ )\     
+                    o | _____/ |#/ / |     
+           @        o_|}|_____/|/ /  |     
+                          _____/ /   |     
+              ======ooo}{|______)#   |     
+          ~~~~ ;    ;          ###---|8    
+        ____;_____;____        ###====     
+       (///0///@///@///)       ###@@@@|
+       |~~~~~~~~~~~~~~~|       ###@@@@|
+        \             /        ###@@@@|               
+         \___________/         ###xxxxx      
+           H H   H  H          ###|| |    
+           H H   H  H           | || |     
+           H H   H  H           C |C |    
+           H H   H  H            || ||    
+           H(o) (o) H            || ::   
+          (o)      (o)        Ccc__)__)  
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  ```
 
-Instructions
+Setup
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
+* Fork or clone this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+
+Usage
+-------
+
+To use this, after you've installed the necessary gems, open IRB...
+
+```
+2.5.0 :001 > require './lib/takeaway'
+ => true
+2.5.0 :002 > takeaway = Takeaway.new
+2.5.0 :003 > takeaway.read_menu
+ => {"Thing1"=>10, "Thing2"=>12, "Thing3"=>15, "Thing4"=>8}
+ 2.5.0 :004 > takeaway.order("Thing1")
+ => "1x Thing1(s) added to basket"
+ 2.5.0 :005 > takeaway.basket_summary
+ => "Thing1 x 1 = £10"
+2.5.0 :006 > takeaway.total
+ => 10
+2.5.0 :007 > takeaway.checkout(10)
+```
+**Note**
+
+The checkout process will attempt to send a text message using Twilio and throw an error as it won't find any details to authenticate. To do this successfully, please sign up to Twilio and use the `dotenv` gem to add your authentication details and add them to `text.rb`.
+
+
+User Stories
+-----
+Here are the user stories this program solves for:
 
 ```
 As a customer
@@ -58,25 +96,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
   * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
