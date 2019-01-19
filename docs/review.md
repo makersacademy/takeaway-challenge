@@ -83,7 +83,7 @@ class Takeaway
   end
 
   def send_text(message)
-    # this method calls the Twilio API
+    SendSms
   end
 
   ...

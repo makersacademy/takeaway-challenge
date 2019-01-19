@@ -3,7 +3,7 @@ require 'menu'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(@menu) }
+  subject(:takeaway) { described_class.new(menu: @menu) }
 
   before(:all) do
     @list = { coconut_rice: 2, lassee: 1.5, plain_naan: 2, jalfrezi: 4 }
@@ -37,7 +37,8 @@ describe Takeaway do
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-  it "the order should be blocked if the customer total doesn't match" do
+  it "the order should be placed if the customer confirms the total" do
+    allow(Time).to receive(:now).and_return(Time.new(2019, 01, 19, 17, 52))
     takeaway.order('coconut_rice')
     takeaway.order('lassee')
     takeaway.order('plain_naan')

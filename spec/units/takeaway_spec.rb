@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(@menu) }
+  subject(:takeaway) { described_class.new(menu: @menu) }
 
   before(:each) do
     @menu = double('menu')
@@ -22,7 +22,7 @@ describe Takeaway do
     end
 
     it 'should create its own menu if none provided' do
-      standalone_takeaway = Takeaway.new
+      standalone_takeaway = Takeaway.new({})
       default_menu = { korma: 4, jalfrezi: 6, pilau: 2, naan: 2.5 }
       expect(standalone_takeaway.menu).to eq(default_menu)
     end
