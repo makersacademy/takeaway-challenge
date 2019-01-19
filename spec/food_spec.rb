@@ -1,4 +1,4 @@
-require 'customer'
+require 'food'
 
 RSpec.describe do
 end
