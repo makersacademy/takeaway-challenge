@@ -13,9 +13,4 @@ def add_order(dish,number)
   number.times {@order_summary << dish }
 end
 
-def checkout
-  @bill = @order_summary.map {|dish| takeaway.read_menu[dish]}
-  # reduce (:+) to get the sum
-end
-
 end
