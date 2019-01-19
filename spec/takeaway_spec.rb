@@ -10,6 +10,10 @@ describe Takeaway do
       subject.view_menu
     end
 
+    # it { is_expected.to respond_to(:create_order) }
+
+    it { is_expected.to respond_to(:place_order) }
+
   end
 
 end
