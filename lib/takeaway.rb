@@ -8,5 +8,4 @@ class Takeaway
     @menu = menu
   end
 
-
 end

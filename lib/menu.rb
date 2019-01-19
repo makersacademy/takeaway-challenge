@@ -5,18 +5,17 @@ class Menu
     attr_reader :menu_list
 
   def initialize
-    @menu_list = {}
-  end
-
-  def to_string
-    @menu_list.each { |dish, price|
-      return "#{dish} at £#{price}\n"
-    }
+    @menu_list = []
   end
 
   def add(dish_name, price, dish = Dish)
-    dish.new(dish_name, price)
-    @menu_list[dish_name] = price
+    @menu_list.push(dish.new(dish_name, price))
+  end
+
+  def to_string
+    @menu_list.each { |dish|
+      return "#{dish.dish_name} at £#{sprintf('%.2f', dish.price)}"
+    }
   end
   # def menu
   #   {
