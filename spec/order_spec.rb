@@ -12,4 +12,9 @@ describe Order do
     subject.order_food(:pizza, 3)
     expect(subject.total_cost).to eq 9
   end
+ 
+  it 'checks price is correct' do
+    subject.order_food(:pizza, 3)
+    expect(subject.is_correct_cost?(9)).to eq true
+  end
 end
