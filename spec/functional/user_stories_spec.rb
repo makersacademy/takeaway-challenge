@@ -10,7 +10,7 @@
 require 'Takeaway'
 
 RSpec.describe 'Functional tests' do
-let(:pieshop) { Takeaway.new }
+let(:pieshop) { Takeaway.new('menu.csv') }
 let(:menu) { Menu.new('menu.csv')}
 
   # As a customer
@@ -31,5 +31,16 @@ let(:menu) { Menu.new('menu.csv')}
     pieshop.order('Monkey pie')
     expect(pieshop.show_order).to eq [{"Vegetable pie"=>2}, {"Steak pie"=>3}, {"Monkey pie"=>1}]
   end
+
+ # As a customer
+ # So that I can verify that my order is correct
+ # I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+ it 'allows a customer to check the porice matches their total' do
+   pieshop.order('Vegetable pie', 2)
+   pieshop.order('Steak pie', 3)
+   pieshop.order('Monkey pie')
+   expect(pieshop.check_total(18)).to eq true
+ end
 
 end

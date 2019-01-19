@@ -12,4 +12,8 @@ RSpec.describe Menu do
     expect(new_menu.list).to eq "Item\t\tPrice\nVegetable pie\t\t2\nLamb pie\t\t3\nSteak pie\t\t3\nKangaroo pie\t\t4\nDog Pie\t\t1\nMonkey Pie\t\t5\nWhale Pie\t\t6\n"
   end
 
+  it 'returns price of a dish' do
+    expect(new_menu.price?('Monkey pie')).to eq 5
+  end
+
 end
