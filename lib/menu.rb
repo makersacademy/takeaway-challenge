@@ -2,7 +2,7 @@ class Menu
 
   attr_reader :menu
 
-def menu_list
+  def initialize
     @menu = {
     :pizza => 5.50,
     :fish => 7.50,
@@ -10,6 +10,7 @@ def menu_list
     :kebab => 5.00,
     :curry => 7.50,
     }
+
   end
 
 end

@@ -5,7 +5,7 @@ class Takeaway
   end
 
   def issue_menu
-    @menu.print
+    @menu.menu
   end
 
 end
