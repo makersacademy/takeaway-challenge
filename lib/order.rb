@@ -9,13 +9,13 @@ class Order
     @menu = menu.display
   end
 
-  def take(dish, quantity)
+  def take(dish, quantity = 1)
     @basket << [ dish,  quantity ]
   end
 
   def display
     basket_with_prices.map { |arr|
-      "#{arr[0]} X #{arr[1]} = £#{arr[2] * arr[1]}"
+      "#{arr[0]} x #{arr[1]} = £#{arr[2] * arr[1]}"
     }.join(", ")
   end
 

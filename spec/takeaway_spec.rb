@@ -2,6 +2,7 @@ require 'takeaway'
 
 RSpec.describe Takeaway do
 
+  let(:dish1) { double :dish }
   
 
   it { is_expected.to respond_to(:read_menu) }

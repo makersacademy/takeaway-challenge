@@ -9,6 +9,6 @@ class Menu
   }
 
   def display
-    Print.display(MENU)
+    MENU
   end
 end
