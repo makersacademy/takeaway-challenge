@@ -36,5 +36,4 @@ class Takeaway
     
     @text.send(MESSAGE)
   end
-
 end
