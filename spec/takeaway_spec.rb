@@ -1,6 +1,9 @@
 require 'takeaway'
 
 RSpec.describe Takeaway do
+
+  
+
   it { is_expected.to respond_to(:read_menu) }
   it { is_expected.to respond_to(:order).with(2).arguments }
   it { is_expected.to respond_to(:total) }
@@ -21,6 +24,11 @@ RSpec.describe Takeaway do
     subject.order('Thing1', 2)
     subject.order('Thing2', 3)
     expect(subject.total).to be(56)
+  end
+
+  it "raises an error if someone tries to checkout with the wrong sum" do
+    subject.order("Thing1", 2)
+    expect { subject.checkout(21) }.to raise_error "Please enter the exact sum"
   end
 
 end

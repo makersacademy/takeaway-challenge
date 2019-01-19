@@ -1,3 +1,5 @@
+require_relative 'print'
+
 class Menu
   MENU = {
     "Thing1" => 10,
@@ -7,6 +9,6 @@ class Menu
   }
 
   def display
-    MENU
+    Print.display(MENU)
   end
 end
