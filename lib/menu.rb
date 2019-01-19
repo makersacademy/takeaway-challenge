@@ -30,7 +30,7 @@ class Menu
   end
 
   def return_order_total
-    @order.order_total
+    @formatter.format_price(order_total)
   end
 
   def confirm_order
@@ -38,7 +38,7 @@ class Menu
   end
 
   def confirm_order_breakdown
-    (return_order_total == order_recount) ? true : (fail "Calculation broken")
+    (order_total == order_recount) ? true : (fail "Calculation broken")
   end
 
   def place_order(choice)
@@ -46,7 +46,11 @@ class Menu
     @order.place_order(choice)
   end
 
-  private
+#  private
+
+  def order_total
+    @order.order_total
+  end
 
   def order_recount
     counter = 0

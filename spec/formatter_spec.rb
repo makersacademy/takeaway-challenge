@@ -8,4 +8,8 @@ describe Formatter do
     expect(subject.format_items([item])).to eq ["Fish --- £8\n"]
   end
 
+  it 'should format a given price' do
+    expect(subject.format_price(8)).to eq "£8"
+  end
+
 end

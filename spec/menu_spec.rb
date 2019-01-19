@@ -1,12 +1,12 @@
 require 'menu'
 
 describe Menu do
-  let(:item_fish) { double(:item, price: 1) }
+  let(:item_fish) { double(:item, price: 8) }
   let(:item_class) { double(:item_class, new: item_fish) }
-  let(:formatter) { double(:formatter, format_items: "Fish --- 8") }
-  let(:formatter_class) { double(:formatter_class, new: formatter) }
-  let(:order) { double(:order, place_order: nil, order_total: 1, items: [item_fish]) }
+  let(:order) { double(:order, place_order: nil, order_total: item_fish.price, items: [item_fish]) }
   let(:order_class) { double(:order_class, new: order) }
+  let(:formatter) { double(:formatter, format_items: "Fish --- £8", format_price: "£#{order.order_total}") }
+  let(:formatter_class) { double(:formatter_class, new: formatter) }
   let(:text_message) { double(:text_message, send_message: true)}
   let(:text_class) { double(:text_class, new: text_message) }
   let(:subject) { Menu.new(["fish"], item_class, formatter_class, order_class, text_class) }
@@ -28,7 +28,7 @@ describe Menu do
     end
 
     it 'should return a formatted menu' do
-      expect(subject.print_menu).to eq "Fish --- 8"
+      expect(subject.print_menu).to eq "Fish --- £8"
     end
   end
 
@@ -55,14 +55,17 @@ describe Menu do
       end
 
       it 'should return the order total' do
-        expect(subject.return_order_total).to eq 1
+        expect(subject.return_order_total).to eq "£8"
       end
     end
 
     describe '#confirm_order_breakdown' do
-      let(:false_order) { double(:false_order, order_total: 0, items: [item_fish]) }
-      let(:false_order_class) { double(:order_class, new: false_order) }
-      let(:false_total_subject) { Menu.new(["fish"], item_class, formatter_class, false_order_class) }
+      let(:false_order) { double(:false_order, order_total: 1, items: [item_fish]) }
+      let(:false_order_class) { double(:false_order_class, new: false_order) }
+      let(:false_formatter) { double(:false_formatter, format_price: "£#{false_order.order_total}") }
+      let(:false_formatter_class) { double(:false_formatter_class, new: false_formatter) }
+
+      let(:false_total_subject) { Menu.new(["fish"], item_class, false_formatter_class, false_order_class) }
 
       it 'should run the order object on recount' do
         expect(order).to receive(:items)

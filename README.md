@@ -74,7 +74,7 @@ Yes
 **return_order_total** to return the total price
 ```
 2.5.0 :007 > menu.return_order_total
- => 10
+ => £10
 ```
 
 **confirm_order** recalculates price and raises error if ther e is a mistake. Otherwise a confirmation text is sent.
@@ -90,7 +90,6 @@ SM3eded974666a4cb49d4cb5392a09ae34
 -----
 
 - test user input method with stubbed responses
-- format return_total_price
 - test text messages outside IRB
 - add further functionality eg place order by text
 - restructure so menu calls directly to a single calculator and formatter rather than running through each item
