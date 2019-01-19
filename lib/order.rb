@@ -11,4 +11,7 @@ attr_reader :food_order
   def order_food(food, quantity)
     @food_order << {:food => food, :quantity => quantity}
   end
+
+  def print_order
+  end 
 end
