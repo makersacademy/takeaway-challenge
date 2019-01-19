@@ -5,7 +5,7 @@ RSpec.describe Order do
   before(:each) do
     @dish = double(:dish)
     @menu = double(:menu)
-    allow(@menu).to receive(:display).and_return({@dish => 10})
+    allow(@menu).to receive(:display).and_return({ @dish => 10 })
     @order = Order.new(@menu)
   end
 

@@ -10,7 +10,7 @@ class Order
   end
 
   def take(dish, quantity = 1)
-    @basket << [ dish,  quantity ]
+    @basket << [dish,  quantity]
     repeat_order(dish, quantity)
   end
 
@@ -28,7 +28,7 @@ class Order
 
   def basket_with_prices
     @basket.map { |arr|
-      [ arr[0], arr[1], @menu[arr[0]] ]
+      [arr[0], arr[1], @menu[arr[0]]]
     }
   end
 

@@ -7,14 +7,13 @@ RSpec.describe Takeaway do
     @order = double('order')
     @dish = double(:dish)
     @text = double(:text)
-    allow(@menu).to receive(:display).and_return({@dish => 10})
+    allow(@menu).to receive(:display).and_return({ @dish => 10 })
     allow(@order).to receive(:display).and_return("#{@dish} x 2 = £20")
     allow(@order).to receive(:take).and_return([[@dish, 2]])
     allow(@order).to receive(:details).and_return([[@dish, 2, 10]])
     allow(@text).to receive(:send).and_return(true)
     @takeaway = Takeaway.new(@menu, @order, @text)
   end
-
 
   it { is_expected.to respond_to(:read_menu) }
   it { is_expected.to respond_to(:order).with(2).arguments }
@@ -46,5 +45,4 @@ RSpec.describe Takeaway do
     @takeaway.order(@dish, 2)
     expect(@takeaway.checkout(20)).to eq(true)
   end
-
 end
