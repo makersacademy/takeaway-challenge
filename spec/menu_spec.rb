@@ -10,8 +10,13 @@ RSpec.describe Menu do
   end
   context "#to_string" do
     it "should return a string of menu" do
-      p subject.add("Burger", 6.50)
-      expect(subject.to_string).to eq "Burger at £6.50"
+      subject.add("Burger", 6.50)
+      expect(subject.to_string).to eq "Burger at £6.50\n"
+    end
+    it "should return multiple lines of menu" do
+      subject.add("Burger", 6.50)
+      subject.add("Cheeseburger", 5.49)
+      expect(subject.to_string).to eq "Burger at £6.50\nCheeseburger at £5.49\n"
     end
   end
 end

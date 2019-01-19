@@ -13,9 +13,11 @@ class Menu
   end
 
   def to_string
-    @menu_list.each { |dish|
-      return "#{dish.dish_name} at £#{sprintf('%.2f', dish.price)}"
+    menu_to_list = ""
+    @menu_list.map { |dish|
+      menu_to_list << "#{dish.dish_name} at £#{sprintf('%.2f', dish.price)}\n"
     }
+    return menu_to_list
   end
   # def menu
   #   {
