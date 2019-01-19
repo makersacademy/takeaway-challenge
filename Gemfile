@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.5.0'
 
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'capybara'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', '0.56.0'

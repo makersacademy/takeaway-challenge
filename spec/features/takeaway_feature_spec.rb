@@ -3,7 +3,6 @@ require 'menu'
 
 describe Takeaway do
 
-
   subject(:takeaway) { described_class.new(menu: @menu, twilio: @messenger) }
 
   before(:each) do
@@ -27,7 +26,7 @@ describe Takeaway do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
 
-  xit 'should allow customers to select dishes' do
+  it 'should allow customers to select dishes' do
     takeaway.take_order('coconut_rice')
     takeaway.take_order('coconut_rice')
     takeaway.take_order('lassee')
@@ -39,7 +38,7 @@ describe Takeaway do
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-  xit "the order should be placed if the customer confirms the total" do
+  it "the order should be placed if the customer confirms the total" do
 
     allow(Time).to receive(:now).and_return(Time.new(2019, 01, 19, 17, 52))
     takeaway.take_order('coconut_rice')
@@ -54,7 +53,7 @@ describe Takeaway do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-  xit 'should send a text message if the customer confirms the total' do
+  it 'should send a text message if the customer confirms the total' do
     allow(Time).to receive(:now).and_return(Time.new(2019, 01, 19, 17, 52))
     takeaway.take_order('coconut_rice')
     takeaway.take_order('lassee')

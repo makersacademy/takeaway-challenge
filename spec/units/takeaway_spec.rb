@@ -9,7 +9,7 @@ describe Takeaway do
     @messenger = double('messenger')
     @list = { "korma": 3, "vindaloo": 4, "korai": 3.5 }
     allow(@menu).to receive(:list).and_return(@list)
-    allow(@menu).to receive(:has_dish?).and_return(true)
+    allow(@menu).to receive(:dish?).and_return(true)
     allow(@messenger).to receive(:create_message)
   end
 

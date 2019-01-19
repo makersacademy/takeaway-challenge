@@ -9,8 +9,7 @@ class Order
   end
 
   def take(dish, quantity = 1)
-    @basket[dish.to_sym][:quantity] += quantity if @menu.has_dish?(dish)
-    puts INVALID_DISH unless @menu.has_dish?(dish)
+    @basket[dish.to_sym][:quantity] += quantity if @menu.dish?(dish)
   end
 
   def basket
@@ -30,7 +29,7 @@ class Order
 
   def populate_valid_dishes
     show_menu.each_pair do |dish, price|
-    @basket[dish] = { quantity: 0, price: price }
+      @basket[dish] = { quantity: 0, price: price }
     end
   end
 
@@ -41,6 +40,5 @@ class Order
     end
     total
   end
-
 
 end

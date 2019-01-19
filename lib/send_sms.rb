@@ -14,7 +14,6 @@ class SendSms
   end
 
   def create_message(text)
-    puts "Called!"
     @client.api.account.messages.create(
         from: ENV['TWILIO_FROM_NUMBER'],
         to: ENV['TWILIO_TO_NUMBER'],

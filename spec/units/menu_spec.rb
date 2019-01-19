@@ -18,10 +18,10 @@ describe Menu do
   end
 
   it 'should know when a dish is in the menu' do
-    expect(menu.has_dish?('roti')).to be true
+    expect(menu.dish?('roti')).to be true
   end
 
   it 'should know when a dish is not in the menu' do
-    expect(menu.has_dish?('fake')).to_not be true
+    expect(menu.dish?('fake')).to_not be true
   end
 end
